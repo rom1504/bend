@@ -5,29 +5,31 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-[Phase55 host02](../implementation/phase55/README.md) is installed and verified.
+[Phase56 string01](../implementation/phase56/README.md) is installed and verified.
 The [direct JavaScript backend](../selfhost/docs/direct-javascript.md) remains the
 default for emitted programs/libraries and `--run`. From `selfhost/`, use
 `node cli.mjs FILE --run` or `node cli.mjs FILE --library -o module.mjs`.
-Select `--legacy-js` for mutable descriptors and G. Bootstrap and maintained
-private compiler-image workers retain their explicit legacy contract; native C
-remains available, without a TypeScript fallback.
+Select `--legacy-js` for mutable descriptors and G. Maintained bootstrap/private
+clients retain their explicit legacy interface; native C remains available.
 
-The [phase report](../implementation/phase55/README.md) binds selected identities,
-the final 18 semantic gates, release integrity, 42 legacy + 24 default interface
-checks and exact 45-point output retention. The dated Phase53 **1.069599×
-TypeScript** result is retained by those identical bytes, not a new Phase55
-program-speed measurement. [Source accounting](../implementation/phase55/architecture.md)
-records the two-module +27 physical / +19 code-line change; native modules,
-runtimes and driver remain unchanged.
+The direct B2 freshly type-checks all source and emits a **byte-identical B3 in
+250.72 seconds**. The expected proof-trust refusal accounts for all 3,012 unsafe
+source definitions; this is type acceptance and reproducibility, not a kernel
+proof. The faster checked B1 remains installed. See the
+[image guide](self_hosted/compiler-image-generation.md) for these distinct roles.
 
-Full direct compiler-image generation passes for the fixed Phase54 subject and
-host02's own source, with eight exact ordinary-driver probes each. This qualifies
-those images and requests, not B2→B3 self-reproduction, a fresh full-source
-self-check or compiler-throughput parity. Phase54's
-[scaling](../implementation/phase54/scaling.md) remains historical evidence for
-source graphs and the retained 4,096-definition budget. See
-[backend boundaries](self_hosted/backend-boundaries.md) for the shared/target split.
+The [phase report](../implementation/phase56/README.md) records 96 source / 34
+numeric / 18 composition / 2 overapplication observations, eight maintained suites
+and 42 legacy + 24 default package checks. Counts overlap. B1 and B2 emit exactly
+the same 45 benchmark points. Relative to host02, 44 retain identical bytes and
+one map/set point takes 15.9% less time in fresh paired measurement. No new
+whole-corpus ratio is claimed. The [compiler latency screen](../implementation/phase56/latency.md)
+separately measures checked B1 at 2.8–3.1× TypeScript time and direct B2 at 5.1–5.6×.
+
+[Source accounting](../implementation/phase56/architecture.md) records net −40
+physical / −32 code lines and seven removed definitions. Native modules, runtimes
+and driver remain unchanged. [Backend boundaries](self_hosted/backend-boundaries.md)
+describes the shared and target-specific code.
 
 ## Historical release results: Phase53
 
@@ -407,7 +409,7 @@ npm run build -- /absolute/release-config.json /absolute/new-attempt
 Config fields and selection semantics are documented in the
 [maintained workflow guide](PHASE5_DEVELOPMENT.md). Broad conformance and checked
 self-reproduction are release/integration gates, not every small edit's build.
-The [Phase53 report](../implementation/phase53/README.md) records current
+The [Phase56 report](../implementation/phase56/README.md) records current
 qualification and installation status. The historical [Phase32 release report](../implementation/phase32/release-03.md)
 retains its own evidence, limits and ordinary/relocated CLI closure.
 
@@ -488,8 +490,14 @@ BEND_TYPED_API="$PWD/build/candidate-api.mjs" \
 
 This writes a checked API plus the assembled source and provenance in
 `build/typed/`. Keep source, API, runtime and host snapshots immutable during
-validation. Full H-to-H self-reproduction has not been rerun for the current
-compiler. The advanced runner, separate from the checked release build, is:
+validation. The current direct-image chain has a separate fresh source check and
+exact B2→B3 reproduction, recorded in [Phase56](../implementation/phase56/reproduction.md).
+Use the [bounded direct-image recipes](../selfhost/tools/performance/phase56/README.md)
+for that chain, with a 1 GiB heap and 2 GiB tree-RSS ceiling.
+
+The older H-to-H legacy pipeline below has not been rerun for the current compiler.
+It uses a different ABI and substantially larger resource allowance; it is a
+historical advanced workflow, not the recommended loop for direct-image work:
 
 ```sh
 BEND_TYPED_API="$PWD/build/candidate-api.mjs" \

@@ -16,38 +16,32 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 `selfhost/bootstrap`. Ordinary compilation runs Bend code without a TypeScript
 fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
 
-[Phase55 host02](implementation/phase55/README.md) is installed and verified.
-Direct JavaScript remains the default; `--legacy-js` retains the descriptor
-interface, and native C remains available. Matcher ownership and host-export
-work reuse improve full direct compiler-image generation. Fixed-subject emission
-completes in **96.2 seconds**, and host02's own-source image in **104
-seconds**; both pass eight exact ordinary-driver probes. This qualifies image
-generation and those probes, not B2→B3 self-reproduction or a fresh full-source
-self-check. Bootstrap/private-image clients retain their explicit legacy ABI.
+[Phase56 string01](implementation/phase56/README.md) is installed and verified.
+Direct JavaScript remains the default; `--legacy-js` and native C remain available.
+The direct compiler image now freshly type-checks its full source and emits a
+**byte-identical successor in 251 seconds**. The source still uses `@unsafe`;
+self-reproduction and type acceptance do not establish mathematical proof validity.
 
-The [phase report](implementation/phase55/README.md) records the final 18 semantic
-gates, 42 legacy + 24 default ordinary/relocated release checks and exact emitted
-output retention. All 45 benchmark point modules retain the dated Phase53
-**1.069599× TypeScript time** result by byte identity; Phase55 adds no new
-program-speed claim. These scopes overlap and are not full language/native/GPU
-conformance. [Source accounting](implementation/phase55/architecture.md) records
-+27 physical / +19 code lines in two modules; all 17 native modules, both runtimes
-and the typed driver remain exact. [Backend boundaries](docs/self_hosted/backend-boundaries.md)
-separates shared facts from target-specific representations. See the
-[compiler-image guide](docs/self_hosted/compiler-image-generation.md) for the
-bootstrap boundary and reproduction workflow.
+Seven unused legacy helpers were removed. Native string equality adds two lines,
+for a net **40 physical lines and seven definitions removed**. All 17 native
+modules, both runtimes and the typed driver remain unchanged. The new self-hosted
+image passes the semantic controls and emits the same 45 benchmark points as the
+checked compiler; all 42 legacy + 24 default package checks pass.
 
-The [Phase53 results](implementation/phase53/results.md) retain the full timing
-campaign, per-program regressions and measurement flags; those results describe
-generated-program execution, not compiler throughput.
+Generated programs retain identical bytes on **44/45 benchmark points**. The one
+changed map/set point takes **15.9% less time** in fresh paired measurements.
+There is no new full-corpus aggregate; [Phase53's full results](implementation/phase53/results.md)
+remain dated evidence. Compiler speed is a separate gap: a two-input screen puts
+the checked compiler at **2.8–3.1× TypeScript time**, versus **5.1–5.6×** for the
+new self-hosted image. The faster checked compiler remains the packaged default.
 
 From `selfhost/`, verify with `npm run verify:release`, then use
 `node cli.mjs FILE --run`. See the
-[compiler guide](docs/BEND-IN-BEND.md), [benchmark recipes](selfhost/tools/performance/phase53/PLAN.md),
-[checked workflow](docs/PHASE5_DEVELOPMENT.md), [architecture survey](docs/self_hosted/README.md),
+[compiler guide](docs/BEND-IN-BEND.md), [image workflow](docs/self_hosted/compiler-image-generation.md),
+[phase report](implementation/phase56/README.md),
+[benchmark recipes](selfhost/tools/performance/phase53/PLAN.md),
+[architecture](docs/self_hosted/backend-boundaries.md),
 [experiment ledger](experiments/ledger.md) and [current strategy](experiments/STEERING.md).
-The [Phase52 report](implementation/phase52/README.md) preserves the preceding
-2.34× improvement and its original validation/performance scope.
 
 ## Bend runs FAST
 

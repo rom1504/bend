@@ -1,0 +1,340 @@
+{
+  "kind": "phase56-b2-semantic-launch-plan",
+  "executed": false,
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "outBase": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/plan.py",
+    "sha256": "1c825b6465ea62ee1fbd15b7af84f75d168e362f0f54ae496a583e83b8a74f2a"
+  },
+  "emission": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-own-host02-full01/report.json",
+    "sha256": "654af8869256b3a9367f2ad98b5006c7791623790a25196a8a00fe8fb730531a"
+  },
+  "image": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-own-host02-full01/compiler.mjs",
+    "sha256": "ae5abd461c24f707747f37b187cedcecd86f5d3c727950f8f8a332fd9dca4091",
+    "bytes": 3900194
+  },
+  "commands": [
+    {
+      "name": "acquire-composition",
+      "guard": "one outer ExecutionGuard; parent unpinned",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "300",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/acquire-composition-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/acquire.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-own-host02-full01/report.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-composition-catalog-v8.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-composition-reference-rebind01.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/composition-acquisition"
+      ]
+    },
+    {
+      "name": "composition-controls",
+      "guard": "one outer ExecutionGuard; parent unpinned",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "60",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/composition-controls-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/composition-controls.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/composition-acquisition/manifest.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-composition-reference-rebind01.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/composition-controls"
+      ],
+      "requiredCandidateObservations": 18
+    },
+    {
+      "name": "acquire-overapplication",
+      "guard": "one outer ExecutionGuard; parent unpinned",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "300",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/acquire-overapplication-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/acquire.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-own-host02-full01/report.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-overapplication-catalog-v1.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-overapplication-upstream01/manifest.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/overapplication-acquisition"
+      ]
+    },
+    {
+      "name": "overapplication-controls",
+      "guard": "one outer ExecutionGuard; parent unpinned",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "60",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/overapplication-controls-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/overapplication-controls.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/overapplication-acquisition/manifest.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-overapplication-upstream01/manifest.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/overapplication-controls"
+      ],
+      "requiredCandidateObservations": 2
+    },
+    {
+      "name": "acquire-source",
+      "guard": "one outer ExecutionGuard; parent unpinned",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "300",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/acquire-source-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/acquire.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-own-host02-full01/report.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-v8.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final-host02/source-join.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/source-acquisition"
+      ]
+    },
+    {
+      "name": "source-controls",
+      "guard": "one outer ExecutionGuard; parent unpinned",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "110",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/source-controls-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/source-controls.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/source-acquisition/manifest.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/source-controls"
+      ],
+      "requiredCandidateObservations": 96
+    },
+    {
+      "name": "acquire-numeric",
+      "guard": "one outer ExecutionGuard; parent unpinned",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "300",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/acquire-numeric-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/acquire.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-own-host02-full01/report.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-numeric-catalog-v3.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-numeric-reference-rebind01.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/numeric-acquisition"
+      ]
+    },
+    {
+      "name": "numeric-controls",
+      "guard": "one outer ExecutionGuard; parent unpinned",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "60",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/numeric-controls-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/numeric-controls.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/source-acquisition/manifest.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/numeric-acquisition/manifest.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-numeric-reference-rebind01.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/semantic-b2-01/numeric-controls"
+      ],
+      "requiredCandidateObservations": 34
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/plan.py",
+      "sha256": "1c825b6465ea62ee1fbd15b7af84f75d168e362f0f54ae496a583e83b8a74f2a"
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-own-host02-full01/report.json",
+      "sha256": "654af8869256b3a9367f2ad98b5006c7791623790a25196a8a00fe8fb730531a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/acquire.mjs",
+      "sha256": "0110be4c296a776c8f977f792040c566eb6992d13b516e6bbc078ea7f60f221b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/image-provenance.mjs",
+      "sha256": "880e7c351af6b6b9d8d9a1447cec74809a70b4d8c384993be19fd9b2be52e6d4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/controls-derivation.json",
+      "sha256": "a7bcaf104f879dc9971a71642a6e6625d0ea20b21a7c8edfbe44122ef503ab40"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/bootstrap/setup.mjs",
+      "sha256": "31a849efd2a669ee69fdd7cb3e172390caef65e9cca4413da5bc7224b7734e35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+      "sha256": "860b59bce0b8c38e2e548368b14c51825bd62d8da1da200e2049737f1e0e383d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-own-host02-full01/compiler.mjs",
+      "sha256": "ae5abd461c24f707747f37b187cedcecd86f5d3c727950f8f8a332fd9dca4091"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-composition-catalog-v8.json",
+      "sha256": "74ce53d0d2b273630b6a33975ffa1b323f80a61e9baa83172c5c770a230781c0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-composition-reference-rebind01.json",
+      "sha256": "78e445f9a4ca62f4091ae53ff6984c403b427f2cf33b8722c484941c07475620"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/composition-controls.mjs",
+      "sha256": "e87340fdad71999fe7954e91d2b49b671e40db0979fd5cf8df69cc148f1f5b0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-overapplication-catalog-v1.json",
+      "sha256": "533f87d558bfc5ed0566dfcf9b29c57b2187f7c9279ec11278f9575d9e053bf3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-overapplication-upstream01/manifest.json",
+      "sha256": "b63d7a7f78e1d2550be44dd20cee538c920adab5142e7491ed2f62636122e2c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/overapplication-controls.mjs",
+      "sha256": "f42e3eaf13a38b3ada2f6c49f905b0e3cfd79c97512d28c51a63c8f5f6e27aa3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-v8.json",
+      "sha256": "6b4148bdea58feb31db614879203f8cb48fa588723d8e079bdd9f0562727c46a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final-host02/source-join.json",
+      "sha256": "0cb276a8aee095a87fbd443d1997d09a26a0568b4fd38bfd2d299b9b5387963f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/source-controls.mjs",
+      "sha256": "82661103d43b1642e813642d64c9c620eda509638baf12e34f62195df5ee725a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-numeric-catalog-v3.json",
+      "sha256": "dfcf99907fc0a9704c9fea16413119735e62722bdaa61a80caaac18d3293b703"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-numeric-reference-rebind01.json",
+      "sha256": "5590e90e579c465da5a7ba9f2e935d83c55e09d729d422da5561735f7c251c11"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/numeric-controls.mjs",
+      "sha256": "5edf683d8c9b877b79bf4ed5bfcbe2c1d4f32ff4fa7d2a7e6ad8d52944d1f747"
+    }
+  ],
+  "resources": {
+    "cpu": 3,
+    "heapMiB": 1024,
+    "treeRssMiB": 2048,
+    "availableMiB": 4096,
+    "stackKiB": 4096,
+    "serial": true
+  },
+  "scope": "Eight serial jobs: fresh B2 checked emissions and unchanged independent semantic oracles. Source96/numeric34/composition18/overapplication2 overlap. TS known defects remain explicit. No compiler bootstrap check or runtime benchmark is inferred; fresh own-source check is a separate gate."
+}

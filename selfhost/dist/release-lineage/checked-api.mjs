@@ -6846,7 +6846,7 @@ function $jd_primitive_find$(_name_0, _rows_0) {
 }
 
 function $jd_primitive_table$() {
-  return {$: "Con", "head": {$: "JDPrimitive", "name": "U32.add", "arity": 2, "code": "(($0 + $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.sub", "arity": 2, "code": "(($0 - $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.and", "arity": 2, "code": "(($0 & $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.or", "arity": 2, "code": "(($0 | $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.xor", "arity": 2, "code": "(($0 ^ $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_eq", "arity": 2, "code": "($0 === $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_ne", "arity": 2, "code": "($0 !== $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_lt", "arity": 2, "code": "($0 < $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_le", "arity": 2, "code": "($0 <= $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_gt", "arity": 2, "code": "($0 > $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_ge", "arity": 2, "code": "($0 >= $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.mul", "arity": 2, "code": "(Math.imul($0, $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.div", "arity": 2, "code": "($1 === 0 ? 0 : ($0 / $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.mod", "arity": 2, "code": "($1 === 0 ? $0 : $0 % $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.inc", "arity": 1, "code": "(($0 + 1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.shl", "arity": 1, "code": "(($0 << 1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.shr", "arity": 1, "code": "(($0 >>> 1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.shln", "arity": 2, "code": "($1 >= 32 ? 0 : ($0 << $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.shrn", "arity": 2, "code": "($1 >= 32 ? 0 : ($0 >>> $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.not", "arity": 1, "code": "(~$0 >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_zero", "arity": 1, "code": "($0 === 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.cmp", "arity": 2, "code": "cmp_new($0, $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.to_f32", "arity": 1, "code": "Math.fround($0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.to_nat", "arity": 1, "code": "$0"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.from_nat", "arity": 1, "code": "($0 >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.add", "arity": 2, "code": "Math.fround($0 + $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.sub", "arity": 2, "code": "Math.fround($0 - $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.mul", "arity": 2, "code": "Math.fround($0 * $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.div", "arity": 2, "code": "Math.fround($0 / $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.neg", "arity": 1, "code": "(-$0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.is_eq", "arity": 2, "code": "($0 === $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.is_ne", "arity": 2, "code": "($0 !== $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.is_lt", "arity": 2, "code": "($0 < $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.is_le", "arity": 2, "code": "($0 <= $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.is_gt", "arity": 2, "code": "($0 > $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.is_ge", "arity": 2, "code": "($0 >= $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.sqrt", "arity": 1, "code": "Math.fround(Math.sqrt($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.exp", "arity": 1, "code": "Math.fround(Math.exp($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.log", "arity": 1, "code": "Math.fround(Math.log($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.log2", "arity": 1, "code": "Math.fround(Math.log2($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.log10", "arity": 1, "code": "Math.fround(Math.log10($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.sin", "arity": 1, "code": "Math.fround(Math.sin($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.cos", "arity": 1, "code": "Math.fround(Math.cos($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.tan", "arity": 1, "code": "Math.fround(Math.tan($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.asin", "arity": 1, "code": "Math.fround(Math.asin($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.acos", "arity": 1, "code": "Math.fround(Math.acos($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.atan", "arity": 1, "code": "Math.fround(Math.atan($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.sinh", "arity": 1, "code": "Math.fround(Math.sinh($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.cosh", "arity": 1, "code": "Math.fround(Math.cosh($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.tanh", "arity": 1, "code": "Math.fround(Math.tanh($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.floor", "arity": 1, "code": "Math.fround(Math.floor($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.ceil", "arity": 1, "code": "Math.fround(Math.ceil($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.trunc", "arity": 1, "code": "Math.fround(Math.trunc($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.abs", "arity": 1, "code": "Math.fround(Math.abs($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.atan2", "arity": 2, "code": "Math.fround(Math.atan2($0, $1))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.pow", "arity": 2, "code": "($0 === 1 || $0 === -1 && Math.abs($1) === Infinity ? 1 : Math.fround(Math.pow($0, $1)))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.mod", "arity": 2, "code": "Math.fround($0 % $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.to_u32", "arity": 1, "code": "($0 >= 1 && $0 < 4294967296 ? Math.floor($0) : 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.bits", "arity": 1, "code": "f32_bits($0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.show", "arity": 1, "code": "f32_show($0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.read", "arity": 1, "code": "f32_read($0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.add", "arity": 2, "code": "nat_chk($0 + $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.mul", "arity": 2, "code": "nat_chk($0 * $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.double", "arity": 1, "code": "nat_chk($0 + $0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.cmp", "arity": 2, "code": "cmp_new($0, $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.sub", "arity": 2, "code": "($0 < $1 ? 0 : $0 - $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.is_lt", "arity": 2, "code": "($0 < $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.min", "arity": 2, "code": "($0 < $1 ? $0 : $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.max", "arity": 2, "code": "($0 > $1 ? $0 : $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.divmod", "arity": 2, "code": "nat_divmod($0, $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Bool.or", "arity": 2, "code": "($0 || $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Bool.xor", "arity": 2, "code": "($0 !== $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "String.append", "arity": 2, "code": "($0 + $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "String.length", "arity": 1, "code": "[...$0].length"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.new", "arity": 2, "code": "array_new($0, $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.set", "arity": 3, "code": "($0[$1 % $0.length] = $2, $0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.get", "arity": 2, "code": "{$: \"Tuple\", fst: $0, snd: $0[$1 % $0.length]}"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.swap", "arity": 3, "code": "array_rmw($0, $1, () => $2)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.size", "arity": 1, "code": "{$: \"Tuple\", fst: $0, snd: $0.length}"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.clone", "arity": 1, "code": "{$: \"Tuple\", fst: $0, snd: $0.slice()}"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.add", "arity": 3, "code": "array_rmw($0, $1, (o) => (o + $2) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.min", "arity": 3, "code": "array_rmw($0, $1, (o) => Math.min(o, $2))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.max", "arity": 3, "code": "array_rmw($0, $1, (o) => Math.max(o, $2))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.and", "arity": 3, "code": "array_rmw($0, $1, (o) => (o & $2) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.or", "arity": 3, "code": "array_rmw($0, $1, (o) => (o | $2) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.xor", "arity": 3, "code": "array_rmw($0, $1, (o) => (o ^ $2) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.exch", "arity": 3, "code": "array_rmw($0, $1, (o) => $2)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.cas", "arity": 4, "code": "array_rmw($0, $1, (o) => o === $2 ? $3 : o)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.fadd", "arity": 3, "code": "array_rmw($0, $1, (o) => Math.fround(o + $2))"}, "tail": {$: "Nil"}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}};
+  return {$: "Con", "head": {$: "JDPrimitive", "name": "U32.add", "arity": 2, "code": "(($0 + $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.sub", "arity": 2, "code": "(($0 - $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.and", "arity": 2, "code": "(($0 & $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.or", "arity": 2, "code": "(($0 | $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.xor", "arity": 2, "code": "(($0 ^ $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_eq", "arity": 2, "code": "($0 === $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_ne", "arity": 2, "code": "($0 !== $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_lt", "arity": 2, "code": "($0 < $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_le", "arity": 2, "code": "($0 <= $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_gt", "arity": 2, "code": "($0 > $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_ge", "arity": 2, "code": "($0 >= $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.mul", "arity": 2, "code": "(Math.imul($0, $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.div", "arity": 2, "code": "($1 === 0 ? 0 : ($0 / $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.mod", "arity": 2, "code": "($1 === 0 ? $0 : $0 % $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.inc", "arity": 1, "code": "(($0 + 1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.shl", "arity": 1, "code": "(($0 << 1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.shr", "arity": 1, "code": "(($0 >>> 1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.shln", "arity": 2, "code": "($1 >= 32 ? 0 : ($0 << $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.shrn", "arity": 2, "code": "($1 >= 32 ? 0 : ($0 >>> $1) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.not", "arity": 1, "code": "(~$0 >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.is_zero", "arity": 1, "code": "($0 === 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.cmp", "arity": 2, "code": "cmp_new($0, $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.to_f32", "arity": 1, "code": "Math.fround($0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.to_nat", "arity": 1, "code": "$0"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "U32.from_nat", "arity": 1, "code": "($0 >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.add", "arity": 2, "code": "Math.fround($0 + $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.sub", "arity": 2, "code": "Math.fround($0 - $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.mul", "arity": 2, "code": "Math.fround($0 * $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.div", "arity": 2, "code": "Math.fround($0 / $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.neg", "arity": 1, "code": "(-$0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.is_eq", "arity": 2, "code": "($0 === $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.is_ne", "arity": 2, "code": "($0 !== $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.is_lt", "arity": 2, "code": "($0 < $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.is_le", "arity": 2, "code": "($0 <= $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.is_gt", "arity": 2, "code": "($0 > $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.is_ge", "arity": 2, "code": "($0 >= $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.sqrt", "arity": 1, "code": "Math.fround(Math.sqrt($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.exp", "arity": 1, "code": "Math.fround(Math.exp($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.log", "arity": 1, "code": "Math.fround(Math.log($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.log2", "arity": 1, "code": "Math.fround(Math.log2($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.log10", "arity": 1, "code": "Math.fround(Math.log10($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.sin", "arity": 1, "code": "Math.fround(Math.sin($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.cos", "arity": 1, "code": "Math.fround(Math.cos($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.tan", "arity": 1, "code": "Math.fround(Math.tan($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.asin", "arity": 1, "code": "Math.fround(Math.asin($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.acos", "arity": 1, "code": "Math.fround(Math.acos($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.atan", "arity": 1, "code": "Math.fround(Math.atan($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.sinh", "arity": 1, "code": "Math.fround(Math.sinh($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.cosh", "arity": 1, "code": "Math.fround(Math.cosh($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.tanh", "arity": 1, "code": "Math.fround(Math.tanh($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.floor", "arity": 1, "code": "Math.fround(Math.floor($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.ceil", "arity": 1, "code": "Math.fround(Math.ceil($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.trunc", "arity": 1, "code": "Math.fround(Math.trunc($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.abs", "arity": 1, "code": "Math.fround(Math.abs($0))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.atan2", "arity": 2, "code": "Math.fround(Math.atan2($0, $1))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.pow", "arity": 2, "code": "($0 === 1 || $0 === -1 && Math.abs($1) === Infinity ? 1 : Math.fround(Math.pow($0, $1)))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.mod", "arity": 2, "code": "Math.fround($0 % $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.to_u32", "arity": 1, "code": "($0 >= 1 && $0 < 4294967296 ? Math.floor($0) : 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.bits", "arity": 1, "code": "f32_bits($0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.show", "arity": 1, "code": "f32_show($0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "F32.read", "arity": 1, "code": "f32_read($0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.add", "arity": 2, "code": "nat_chk($0 + $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.mul", "arity": 2, "code": "nat_chk($0 * $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.double", "arity": 1, "code": "nat_chk($0 + $0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.cmp", "arity": 2, "code": "cmp_new($0, $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.sub", "arity": 2, "code": "($0 < $1 ? 0 : $0 - $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.is_lt", "arity": 2, "code": "($0 < $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.min", "arity": 2, "code": "($0 < $1 ? $0 : $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.max", "arity": 2, "code": "($0 > $1 ? $0 : $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Nat.divmod", "arity": 2, "code": "nat_divmod($0, $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Bool.or", "arity": 2, "code": "($0 || $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Bool.xor", "arity": 2, "code": "($0 !== $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "String.append", "arity": 2, "code": "($0 + $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "String.eq", "arity": 2, "code": "($0 === $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "String.length", "arity": 1, "code": "[...$0].length"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.new", "arity": 2, "code": "array_new($0, $1)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.set", "arity": 3, "code": "($0[$1 % $0.length] = $2, $0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.get", "arity": 2, "code": "{$: \"Tuple\", fst: $0, snd: $0[$1 % $0.length]}"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.swap", "arity": 3, "code": "array_rmw($0, $1, () => $2)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.size", "arity": 1, "code": "{$: \"Tuple\", fst: $0, snd: $0.length}"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.clone", "arity": 1, "code": "{$: \"Tuple\", fst: $0, snd: $0.slice()}"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.add", "arity": 3, "code": "array_rmw($0, $1, (o) => (o + $2) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.min", "arity": 3, "code": "array_rmw($0, $1, (o) => Math.min(o, $2))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.max", "arity": 3, "code": "array_rmw($0, $1, (o) => Math.max(o, $2))"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.and", "arity": 3, "code": "array_rmw($0, $1, (o) => (o & $2) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.or", "arity": 3, "code": "array_rmw($0, $1, (o) => (o | $2) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.xor", "arity": 3, "code": "array_rmw($0, $1, (o) => (o ^ $2) >>> 0)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.exch", "arity": 3, "code": "array_rmw($0, $1, (o) => $2)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.cas", "arity": 4, "code": "array_rmw($0, $1, (o) => o === $2 ? $3 : o)"}, "tail": {$: "Con", "head": {$: "JDPrimitive", "name": "Array.atomic.fadd", "arity": 3, "code": "array_rmw($0, $1, (o) => Math.fround(o + $2))"}, "tail": {$: "Nil"}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}};
 }
 
 function $jd_name$(_name_0) {
@@ -9482,7 +9482,7 @@ function $jd_foreign_def$(_book_0, _d_0) {
 }
 
 function $jd_definition_params$(_book_0, _d_0, _params_0) {
-  return $jd_definition_native$(_book_0, _d_0, _params_0, run_loop($jd_intrinsic$(_book_0, ($dn$(_d_0)), _params_0)));
+  return $jd_definition_native$(_book_0, _d_0, _params_0, run_loop($jd_primitive_candidate_emit$(_book_0, _d_0, _params_0)));
 }
 
 function $jd_params$(_book_0, _ty_0, _left_0, _at_0) {
@@ -12598,8 +12598,12 @@ function $jd_definition_native$(_book_0, _d_0, _params_0, _native_0) {
 }));
 }
 
-function $jd_intrinsic$(_book_0, _name_0, _args_0) {
-  return $jd_primitive_candidate_emit$(_book_0, run_loop($lookup$(_book_0, _name_0)), _args_0);
+function $jd_primitive_candidate_emit$(_book_0, _d_0, _args_0) {
+  return $kc$(($jd_primitive_candidate$(_d_0)), run_clo((_x_0) => {
+  return $jd_primitive_emit$(_book_0, _d_0, _args_0, run_loop($jd_primitive_find$(($dn$(_d_0)), ($jd_primitive_table$()))));
+}), run_clo((_x_1) => {
+  return "";
+}));
 }
 
 function $jd_params_head$(_book_0, _ty_0, _left_0, _at_0) {
@@ -15666,10 +15670,14 @@ function $jd_component$(_book_0, _name_0) {
   return $jd_calls_component_members$(($index_child$(run_loop($lookup$(_book_0, "$JD.Calls")), true)), ($dt$(run_loop($jd_calls_fact$(_book_0, _name_0)))));
 }
 
-function $jd_primitive_candidate_emit$(_book_0, _d_0, _args_0) {
-  return $kc$(($jd_primitive_candidate$(_d_0)), run_clo((_x_0) => {
-  return $jd_primitive_emit$(_book_0, _d_0, _args_0, run_loop($jd_primitive_find$(($dn$(_d_0)), ($jd_primitive_table$()))));
-}), run_clo((_x_1) => {
+function $jd_primitive_emit$(_book_0, _d_0, _args_0, _p_0) {
+  const _name_0 = _p_0["name"];
+  const _arity_0 = _p_0["arity"];
+  const _code_0 = _p_0["code"];
+  const _x_0 = ($jd_primitive_arg_count$(_args_0));
+  return $kc$(($Bool$and$((_x_0 === _arity_0), run_loop($jd_primitive_admit$(_book_0, _d_0, {$: "JDPrimitive", "name": _name_0, "arity": _arity_0, "code": _code_0})))), run_clo((_x_1) => {
+  return $jd_primitive_template$(_code_0, _args_0);
+}), run_clo((_x_2) => {
   return "";
 }));
 }
@@ -18798,16 +18806,28 @@ function $jd_calls_fact$(_book_0, _name_0) {
   return $jd_calls_get$(($index_first$(($dc$(run_loop($lookup$(_book_0, "$JD.Calls")))))), _name_0);
 }
 
-function $jd_primitive_emit$(_book_0, _d_0, _args_0, _p_0) {
-  const _name_0 = _p_0["name"];
-  const _arity_0 = _p_0["arity"];
-  const _code_0 = _p_0["code"];
-  const _x_0 = ($jd_primitive_arg_count$(_args_0));
-  return $kc$(($Bool$and$((_x_0 === _arity_0), run_loop($jd_primitive_admit$(_book_0, _d_0, {$: "JDPrimitive", "name": _name_0, "arity": _arity_0, "code": _code_0})))), run_clo((_x_1) => {
-  return $jd_primitive_template$(_code_0, _args_0);
-}), run_clo((_x_2) => {
-  return "";
+function $jd_primitive_arg_count$(_args_0) {
+  if (_args_0.$ === "Nil") {
+    return 0;
+  } else {
+    const _rest_0 = _args_0["tail"];
+    const _x_0 = ($jd_primitive_arg_count$(_rest_0));
+    return ((_x_0 + 1) >>> 0);
+  }
+}
+
+function $jd_primitive_template$(_text_0, _args_0) {
+  if (_text_0 === "") {
+    return "";
+  } else {
+    const _h_0 = (_text_0.codePointAt(0) > 0xFFFF ? _text_0.slice(0, 2) : _text_0[0]);
+    const _rest_0 = (_text_0.codePointAt(0) > 0xFFFF ? _text_0.slice(2) : _text_0.slice(1));
+    return $kc$(($Char$is_eq$(_h_0, "$")), run_clo((_x_0) => {
+  return $jd_primitive_placeholder$(_rest_0, _args_0);
+}), run_clo((_x_1) => {
+  return (_h_0 + run_loop($jd_primitive_template$(_rest_0, _args_0)));
 }));
+  }
 }
 
 function $jd_host_nat_status_on$(_book_0, _t_0, _rest_0, _seen_0, _fuel_0) {
@@ -22029,26 +22049,37 @@ function $jd_calls_member_names$(_members_0) {
   }
 }
 
-function $jd_primitive_arg_count$(_args_0) {
-  if (_args_0.$ === "Nil") {
-    return 0;
-  } else {
-    const _rest_0 = _args_0["tail"];
-    const _x_0 = ($jd_primitive_arg_count$(_rest_0));
-    return ((_x_0 + 1) >>> 0);
-  }
-}
-
-function $jd_primitive_template$(_text_0, _args_0) {
+function $jd_primitive_placeholder$(_text_0, _args_0) {
   if (_text_0 === "") {
-    return "";
+    return "$";
   } else {
     const _h_0 = (_text_0.codePointAt(0) > 0xFFFF ? _text_0.slice(0, 2) : _text_0[0]);
     const _rest_0 = (_text_0.codePointAt(0) > 0xFFFF ? _text_0.slice(2) : _text_0.slice(1));
-    return $kc$(($Char$is_eq$(_h_0, "$")), run_clo((_x_0) => {
-  return $jd_primitive_placeholder$(_rest_0, _args_0);
-}), run_clo((_x_1) => {
-  return (_h_0 + run_loop($jd_primitive_template$(_rest_0, _args_0)));
+    return $kc$(($Char$is_eq$(_h_0, "0")), run_clo((_x_0) => {
+  const _x_1 = run_loop($jd_primitive_arg$(_args_0, 0));
+  const _x_2 = run_loop($jd_primitive_template$(_rest_0, _args_0));
+  return (_x_1 + _x_2);
+}), run_clo((_x_3) => {
+  return $kc$(($Char$is_eq$(_h_0, "1")), run_clo((_x_4) => {
+  const _x_5 = run_loop($jd_primitive_arg$(_args_0, 1));
+  const _x_6 = run_loop($jd_primitive_template$(_rest_0, _args_0));
+  return (_x_5 + _x_6);
+}), run_clo((_x_7) => {
+  return $kc$(($Char$is_eq$(_h_0, "2")), run_clo((_x_8) => {
+  const _x_9 = run_loop($jd_primitive_arg$(_args_0, 2));
+  const _x_10 = run_loop($jd_primitive_template$(_rest_0, _args_0));
+  return (_x_9 + _x_10);
+}), run_clo((_x_11) => {
+  return $kc$(($Char$is_eq$(_h_0, "3")), run_clo((_x_12) => {
+  const _x_13 = run_loop($jd_primitive_arg$(_args_0, 3));
+  const _x_14 = run_loop($jd_primitive_template$(_rest_0, _args_0));
+  return (_x_13 + _x_14);
+}), run_clo((_x_15) => {
+  const _x_16 = run_loop($jd_primitive_template$((_h_0 + _rest_0), _args_0));
+  return ("$" + _x_16);
+}));
+}));
+}));
 }));
   }
 }
@@ -24995,37 +25026,16 @@ function $jd_tail_position$(_env_0) {
   }
 }
 
-function $jd_primitive_placeholder$(_text_0, _args_0) {
-  if (_text_0 === "") {
-    return "$";
+function $jd_primitive_arg$(_args_0, _at_0) {
+  if (_args_0.$ === "Nil") {
+    return "";
   } else {
-    const _h_0 = (_text_0.codePointAt(0) > 0xFFFF ? _text_0.slice(0, 2) : _text_0[0]);
-    const _rest_0 = (_text_0.codePointAt(0) > 0xFFFF ? _text_0.slice(2) : _text_0.slice(1));
-    return $kc$(($Char$is_eq$(_h_0, "0")), run_clo((_x_0) => {
-  const _x_1 = run_loop($jd_primitive_arg$(_args_0, 0));
-  const _x_2 = run_loop($jd_primitive_template$(_rest_0, _args_0));
-  return (_x_1 + _x_2);
-}), run_clo((_x_3) => {
-  return $kc$(($Char$is_eq$(_h_0, "1")), run_clo((_x_4) => {
-  const _x_5 = run_loop($jd_primitive_arg$(_args_0, 1));
-  const _x_6 = run_loop($jd_primitive_template$(_rest_0, _args_0));
-  return (_x_5 + _x_6);
-}), run_clo((_x_7) => {
-  return $kc$(($Char$is_eq$(_h_0, "2")), run_clo((_x_8) => {
-  const _x_9 = run_loop($jd_primitive_arg$(_args_0, 2));
-  const _x_10 = run_loop($jd_primitive_template$(_rest_0, _args_0));
-  return (_x_9 + _x_10);
-}), run_clo((_x_11) => {
-  return $kc$(($Char$is_eq$(_h_0, "3")), run_clo((_x_12) => {
-  const _x_13 = run_loop($jd_primitive_arg$(_args_0, 3));
-  const _x_14 = run_loop($jd_primitive_template$(_rest_0, _args_0));
-  return (_x_13 + _x_14);
-}), run_clo((_x_15) => {
-  const _x_16 = run_loop($jd_primitive_template$((_h_0 + _rest_0), _args_0));
-  return ("$" + _x_16);
-}));
-}));
-}));
+    const _h_0 = _args_0["head"];
+    const _rest_0 = _args_0["tail"];
+    return $kc$((_at_0 === 0), run_clo((_x_0) => {
+  return _h_0;
+}), run_clo((_x_1) => {
+  return $jd_primitive_arg$(_rest_0, ((_at_0 - 1) >>> 0));
 }));
   }
 }
@@ -27372,20 +27382,6 @@ function $jd_arguments_more$(_book_0, _env_0, _xs_0, _ty_0, _left_0) {
 
 function $jd_ordered_return$(_book_0, _env_0, _t_0, _ty_0) {
   return $jd_ordered_return_done$(run_loop($jd_ordered_expr$(_book_0, _env_0, _t_0, _ty_0, run_loop($jd_tail_position$(_env_0)), 0)));
-}
-
-function $jd_primitive_arg$(_args_0, _at_0) {
-  if (_args_0.$ === "Nil") {
-    return "";
-  } else {
-    const _h_0 = _args_0["head"];
-    const _rest_0 = _args_0["tail"];
-    return $kc$((_at_0 === 0), run_clo((_x_0) => {
-  return _h_0;
-}), run_clo((_x_1) => {
-  return $jd_primitive_arg$(_rest_0, ((_at_0 - 1) >>> 0));
-}));
-  }
 }
 
 function $sk_var$($0, $1) {
@@ -34867,6 +34863,14 @@ function $jd_call_inline$(_book_0, _owner_0, _name_0, _values_0, _tail_0, _code_
 }), run_clo((_x_1) => {
   const _x_2 = (_code_0 + ")");
   return ("(" + _x_2);
+}));
+}
+
+function $jd_intrinsic$(_book_0, _name_0, _args_0) {
+  return $kc$(($String$eq$(_name_0, "String.eq")), run_clo((_x_0) => {
+  return "";
+}), run_clo((_x_1) => {
+  return $jd_primitive_candidate_emit$(_book_0, run_loop($lookup$(_book_0, _name_0)), _args_0);
 }));
 }
 

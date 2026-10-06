@@ -1,0 +1,34 @@
+{
+  "kind": "phase56-explicit-pins-setup-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/bootstrap/setup.mjs",
+    "sha256": "31a849efd2a669ee69fdd7cb3e172390caef65e9cca4413da5bc7224b7734e35"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/bootstrap/setup-v2.mjs",
+    "sha256": "74c9f097bc2ead3a8aef4ff07d52fd933ab574b45b9ef50bd1cd8cb9ecec212e"
+  },
+  "edits": [
+    {
+      "old": "const closed=path.join(root,'selfhost/build/phase55');\nconst defaultComparison=path.join(closed,'bootstrap-own-host02-driver-comparison01.json');\nconst pins={emission:'654af8869256b3a9367f2ad98b5006c7791623790a25196a8a00fe8fb730531a',\n  comparison:'69c556e987d3cbe4812911238b244b9613dbdf0dc3d63aac1f47a77f612f4f7e',\n  source:'e4383fa08d621716acac437224de182af52e0b16c32b3f29b2614fc1ad1d6710',\n  b1:'cfde1ebf44d958e593331cfd9af77f7b6ee657441dbd582db8d27f3928815a62',\n  b2:'ae5abd461c24f707747f37b187cedcecd86f5d3c727950f8f8a332fd9dca4091',\n  runtime:'c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23'};\n",
+      "new": ""
+    },
+    {
+      "old": "export async function setup(emissionFile,freshOut,{role='direct',comparisonFile=defaultComparison,progress=()=>{}}={}) {",
+      "new": "export async function setup(pinsFile,freshOut,{role='direct',progress=()=>{}}={}) {"
+    },
+    {
+      "old": "  const emissionId=pin(emissionFile),comparisonId=pin(comparisonFile);",
+      "new": "  const binding=read(pinsFile);assert.equal(binding.kind,'phase56-direct-image-pins');\n  for(const key of ['producer','plan','attempt','emission','comparison','source','b1','b2','runtime','rootsReference'])pin(binding[key]);\n  const reference=read(binding.rootsReference);assert.deepEqual(binding.roots,reference.roots);\n  const plan=read(binding.plan);assert.equal(plan.kind,'phase56-candidate-image-plan');assert.deepEqual(plan.attempt,binding.attempt);\n  for(const item of [...plan.inputs,...plan.configs])pin(item);\n  for(const derivative of plan.derivations) {\n    let text=fs.readFileSync(pin(derivative.parent).file,'utf8');\n    for(const edit of derivative.edits) {assert.ok(text.includes(edit.old));text=text.split(edit.old).join(edit.new);}\n    assert.equal(fs.readFileSync(pin(derivative.output).file,'utf8'),text,'Unrecorded diagnostic tool change');\n  }\n  const pins={emission:binding.emission.sha256,comparison:binding.comparison.sha256,source:binding.source.sha256,\n    b1:binding.b1.sha256,b2:binding.b2.sha256,runtime:binding.runtime.sha256};\n  const emissionId=pin(binding.emission),comparisonId=pin(binding.comparison);"
+    },
+    {
+      "old": "  const emission=read(emissionId),comparison=read(comparisonId);",
+      "new": "  const emission=read(emissionId),comparison=read(comparisonId);\n  assert.deepEqual(emission.subject.attempt,binding.attempt);assert.deepEqual(emission.subject.source,binding.source);\n  assert.deepEqual(emission.generator.api,binding.b1);assert.deepEqual(identity(emission.module.file),binding.b2);\n  assert.deepEqual(emission.directRuntime,binding.runtime);assert.deepEqual(emission.roots,binding.roots);\n  assert.deepEqual(emission.config,plan.configs[1]);"
+    },
+    {
+      "old": "    runtime,base:pin(attempt.base),directRuntime:identity(D.directRuntimePath),driver:identity(path.join(project,'tools/typed-driver.mjs'))};",
+      "new": "    pins:identity(pinsFile),runtime,base:pin(attempt.base),directRuntime:identity(D.directRuntimePath),driver:identity(path.join(project,'tools/typed-driver.mjs'))};"
+    }
+  ],
+  "scope": "Replace historical fixed hashes with explicit selected image pins and replay retained diagnostic derivatives. Existing genuine-attempt, emitted-image, driver-observation, private staging and final rehash checks remain."
+}

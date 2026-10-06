@@ -1,0 +1,50 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/plan.py",
+    "sha256": "1c825b6465ea62ee1fbd15b7af84f75d168e362f0f54ae496a583e83b8a74f2a"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/plan-v2.py",
+    "sha256": "42766f015d0ae96ebf11787d5c955b96b029365c6e249f82f38e28365aac4377"
+  },
+  "dataOnly": true,
+  "targetExecuted": false,
+  "edits": [
+    {
+      "old": "p.add_argument('--out-base'",
+      "new": "p.add_argument('--image-pins',type=Path,required=True)\np.add_argument('--out-base'"
+    },
+    {
+      "old": "emission=root/'selfhost/build/phase55/bootstrap-own-host02-full01/report.json'",
+      "new": "emission=a.image_pins.resolve(strict=True)"
+    },
+    {
+      "old": "here/'acquire.mjs'",
+      "new": "here/'acquire-v2.mjs'"
+    },
+    {
+      "old": "here/'image-provenance.mjs'",
+      "new": "here/'image-provenance-v2.mjs'"
+    },
+    {
+      "old": "here/'controls-derivation.json'",
+      "new": "here/'controls-derivation-v2.json'"
+    },
+    {
+      "old": "here.parent/'bootstrap/setup.mjs'",
+      "new": "here.parent/'bootstrap/setup-v2.mjs'"
+    },
+    {
+      "old": "origin=json.loads(emission.read_text());assert origin['complete'] and origin['pass']\nassert origin['module']['sha256']=='ae5abd461c24f707747f37b187cedcecd86f5d3c727950f8f8a332fd9dca4091'\npin(origin['module']['file'])",
+      "new": "origin=json.loads(emission.read_text());assert origin['kind']=='phase56-direct-image-pins'\nfor key in ['producer','plan','attempt','emission','comparison','source','b1','b2','runtime','rootsReference']:assert pin(origin[key]['file'])==origin[key]\nfor key in ['emission','comparison']:\n    evidence=json.loads(Path(origin[key]['file']).read_text());assert evidence['complete'] and evidence['pass']\npin(here/'plan.py')"
+    },
+    {
+      "old": "here/(name+'-controls.mjs')",
+      "new": "here/(name+'-controls-v2.mjs')"
+    },
+    {
+      "old": "emission=pin(emission),image=origin['module']",
+      "new": "imagePins=pin(emission),image=origin['b2']"
+    }
+  ]
+}

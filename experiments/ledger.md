@@ -3105,3 +3105,34 @@ exhaustion. Two harness book-event assumptions, launcher syntax failure and sand
 child-process EPERM remain preserved with their corrected successors. All 103
 unrelated files, 7 prior-release artifacts and 4,543 closed Phase54 files remain
 unchanged. Source commit c192b60; no PR comment posted.
+
+## Phase56 — dead helper cleanup, native equality and direct self-hosting
+
+[Design](../design/phase56/qualification-and-simplification.md),
+[String equality](../design/phase56/native-string-equality.md),
+[report](../implementation/phase56/README.md),
+[publication](../selfhost/tools/performance/phase56/publication.json).
+String01 is installed. Seven unused helpers are removed; the native equality
+change adds two lines, for net −40 physical / −32 code / −7 definitions. Native modules,
+runtimes and typed driver retain exact bytes. The original direct image's
+profile put 17.6% of ticks in String.cmp and its recursive helper. Definition-only
+native equality retains the callback order that call-site expansion would change.
+
+B1 emits B2 in 84.43 s; B2 freshly type-checks its own source in 29.68 s and reproduces
+its complete 3,896,951-byte image in 250.72 s. The prior B2 exceeded 300 s. Baseline
+self-check 55.84 s was profiled, selected 29.68 s unprofiled: no controlled ratio.
+All 3,012 source unsafe definitions remain, causing the expected proof-trust refusal.
+B2 type acceptance/fixed point are distinct from kernel validity and installed
+checked B1 provenance. The source commit is 8d2f4f0.
+
+B2 semantic 96/34/18/2, equality 484/8, benchmark 23 sources/45 points exact to B1,
+B1 focused 36/maintained 8 and release42 + 24 allpass. Scopes overlap; TS oracle
+failures remain visible.44/45 runtime points retain host02 bytes; changed map/set
+median 20.8518 → 17.5360 µs,TS 20.5952 µs, 15.9% less time over 15 correct samples.
+No new whole-corpus timing aggregate. Compiler requests remain slower than TS:
+B1 2.84–3.11× and B2 5.08–5.55× on a two-input, three-round cache-primed screen.
+
+Next profile emitted reachability 89.03 s and unsplit emission 111.68 s inside direct
+B2 reproduction. Keep checked B1 as the development loop while qualifying legacy
+client migration separately. The baseline timeout, contained profile-processor
+heap failure and corrected fixture-loader failure are preserved. No PR comment.

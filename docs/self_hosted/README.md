@@ -1,14 +1,15 @@
 # Self-hosted compiler: current architecture and development
 
-For installed host02, see the [Phase55 report](../../implementation/phase55/README.md),
-[source accounting](../../implementation/phase55/architecture.md) and
+For installed string01, see the [Phase56 report](../../implementation/phase56/README.md),
+[source accounting](../../implementation/phase56/architecture.md) and
 [direct JavaScript guide](../../selfhost/docs/direct-javascript.md).
-Full direct compiler-image generation and eight exact ordinary-driver probes per
-image now pass for the fixed Phase54 subject and host02's own source. This is
-not B2→B3 self-reproduction or a fresh full-source self-check. Legacy compiler-image
-clients are retained. Phase54's graph scaling remains historical evidence;
-Phase53's dated 1.069599× TS timing is retained by exact 45-point byte identity.
-Phase55 adds no new generated-program timing campaign.
+The emitted direct B2 freshly type-checks its complete source and emits a
+byte-identical B3 in 250.72 seconds. Its 3,012 unsafe declarations still cause the
+expected proof-trust refusal. The installed package remains the faster checked
+B1. Legacy compiler-image clients are retained. Net source change is −40 physical
+lines and seven removed helpers; 44/45 benchmark points retain identical bytes
+and the changed map/set point takes 15.9% less time in fresh paired measurements.
+There is no new full-corpus aggregate.
 The [Phase51 V8-guided runtime](v8-guided-runtime.md) describes the retained
 compatibility mode. The source survey below remains a dated Phase45 baseline;
 its counts and timings are historical.

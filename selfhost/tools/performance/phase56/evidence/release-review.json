@@ -1,0 +1,312 @@
+{
+  "kind": "phase56-independent-release-review",
+  "version": 1,
+  "complete": true,
+  "pass": true,
+  "reviewedUtc": "2026-10-06T05:05:39.309400+00:00",
+  "method": "Independent data-only readback, identity joins, selected file SHA-256 checks, observation recounts and saved prior-release verification. No compiler, generated-program or test target executed by this review.",
+  "installed": {
+    "artifact": "equality-derived-b1",
+    "compilerDefault": "checked B1",
+    "apiSha256": "128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea",
+    "sourceSha256": "5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244",
+    "legacyRuntimeSha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46",
+    "directRuntimeSha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23",
+    "release": {
+      "path": "selfhost/dist/release.json",
+      "sha256": "f9cc1f6492d251186c6f5faeb2c19847247babf02ede34fa48be79ba46b5671d",
+      "bytes": 35733
+    },
+    "files": [
+      {
+        "path": "selfhost/dist/typed-api.mjs",
+        "sha256": "128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea",
+        "bytes": 1830723
+      },
+      {
+        "path": "selfhost/dist/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+        "bytes": 71530
+      },
+      {
+        "path": "selfhost/dist/release-lineage/checked-api.mjs",
+        "sha256": "1498f6758c1ce713225209cc6ad9e0c27a0d5aee2ed674c4ae35990cf945cf52",
+        "bytes": 1807265
+      },
+      {
+        "path": "selfhost/dist/release-lineage/checked-bootstrap.json",
+        "sha256": "24ec503e7627d8d956a4589cbd4a4b06b7d148fbb616381436e5e4fa2580ace4",
+        "bytes": 84248
+      },
+      {
+        "path": "selfhost/dist/release-lineage/derivation.json",
+        "sha256": "5b0e2ecf90c7127cb122b6e56a119b7ca647216f804520fc202519388416308e",
+        "bytes": 381327
+      },
+      {
+        "path": "selfhost/dist/release-lineage/equality.mjs",
+        "sha256": "db2999aa879e0bc6c6359d37c19e7589c60d34b2b143d0ed6ecbc23eabfec951",
+        "bytes": 30150
+      }
+    ]
+  },
+  "release": {
+    "serialJobs": 5,
+    "jobNames": [
+      "install",
+      "verify-before",
+      "legacy42",
+      "default24",
+      "verify-after"
+    ],
+    "legacyObservations": 42,
+    "defaultObservations": 24,
+    "allStepAssertionsPassed": true,
+    "runtimeTamperRejected": true,
+    "restoredIntegrityPassed": true,
+    "legacyChangedInputs": 0
+  },
+  "maintainedLegacy": {
+    "suites": 8,
+    "names": [
+      "ir",
+      "backend",
+      "global-initializers",
+      "choice",
+      "arm",
+      "primitive-guards",
+      "provenance",
+      "foreign"
+    ],
+    "compilerApiSha256": "128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea"
+  },
+  "directB2": {
+    "apiSha256": "3f652f7d3e26e06fe74da18bf8709195c54e4620906ffb7c1d0643c96ecbd57e",
+    "roots": 77,
+    "ordinaryDriverObservations": 8,
+    "reproducedB3Sha256": "3f652f7d3e26e06fe74da18bf8709195c54e4620906ffb7c1d0643c96ecbd57e",
+    "completeByteEquality": true,
+    "moduleBytes": 3896951,
+    "installedAsDefaultCompiler": false,
+    "freshTypeAccepted": true,
+    "ordinaryVerdict": {
+      "status": "error",
+      "phase": "verdict",
+      "exitCode": 1,
+      "proofTrust": "failed",
+      "kernelChecked": false,
+      "unsafeDefinitions": 3012
+    },
+    "semanticCounts": {
+      "source": {
+        "candidateSourcePass": 96,
+        "referenceSourcePass": 95,
+        "differentialAgreement": 95,
+        "knownReferenceDefects": 1,
+        "total": 96
+      },
+      "numeric": {
+        "candidatePass": 34,
+        "referencePass": 28,
+        "referenceFailures": [
+          "original-cold-0",
+          "original-cold-1",
+          "original-cold-2",
+          "renamed-cold-0",
+          "renamed-cold-1",
+          "renamed-cold-2"
+        ],
+        "total": 34
+      },
+      "composition": {
+        "candidatePass": 18,
+        "referencePass": 18,
+        "referenceFailures": [],
+        "total": 18
+      },
+      "overapplication": {
+        "candidatePass": 2,
+        "referencePass": 2,
+        "referenceFailures": [],
+        "total": 2
+      }
+    },
+    "benchmarkByteEquality": {
+      "freshCheckedSources": 23,
+      "rawByteEqualModules": 23,
+      "pointByteEqual": 45,
+      "uniquePointModules": 24,
+      "observerModules": 1
+    }
+  },
+  "nativeStringEquality": {
+    "stringPairs": 484,
+    "orderedControls": 8,
+    "userNativeName": 2,
+    "duplicateRefusals": 2,
+    "activationEntries": 3
+  },
+  "preservation": {
+    "inventory": {
+      "path": "selfhost/build/phase56/prior-release/inventory.json",
+      "sha256": "061a553af79e3c4ee6c154b1d99be5e53d9611079405f273d83b1a9d7b84a5cf",
+      "bytes": 1087
+    },
+    "unchangedFiles": 7,
+    "files": [
+      {
+        "path": "selfhost/build/phase56/prior-release/dist/release.json",
+        "sha256": "50ae7d6fb95d51af954c5eecb5243fff87266811df2b14dcff2ba40c44daf5e8",
+        "bytes": 35733
+      },
+      {
+        "path": "selfhost/build/phase56/prior-release/dist/typed-api.mjs",
+        "sha256": "cfde1ebf44d958e593331cfd9af77f7b6ee657441dbd582db8d27f3928815a62",
+        "bytes": 1830492
+      },
+      {
+        "path": "selfhost/build/phase56/prior-release/dist/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+        "bytes": 71530
+      },
+      {
+        "path": "selfhost/build/phase56/prior-release/dist/release-lineage/checked-api.mjs",
+        "sha256": "79482fb656b9dbe1be44117ed2764271fb18b423bb59b79de90dd278e028060f",
+        "bytes": 1807041
+      },
+      {
+        "path": "selfhost/build/phase56/prior-release/dist/release-lineage/checked-bootstrap.json",
+        "sha256": "f37fcaa41a36d901387b9a4431c83d1d9ef8fb80785e1dfac0961d3af6f99546",
+        "bytes": 83784
+      },
+      {
+        "path": "selfhost/build/phase56/prior-release/dist/release-lineage/derivation.json",
+        "sha256": "24bd86f495571d71fd6e8df2ca06bef5a51dafd879076b54326f6c050ba98aa9",
+        "bytes": 380720
+      },
+      {
+        "path": "selfhost/build/phase56/prior-release/dist/release-lineage/equality.mjs",
+        "sha256": "db2999aa879e0bc6c6359d37c19e7589c60d34b2b143d0ed6ecbc23eabfec951",
+        "bytes": 30150
+      }
+    ],
+    "closedPhase54And55TreeAudit": "Separate root-owned audit; not repeated or claimed by this receipt."
+  },
+  "reports": {
+    "releaseExecutionPlan": {
+      "path": "selfhost/build/phase56/release-execution-plan-string01.json",
+      "sha256": "144e453ac13a6c786c5ae5dd01fb80590229b80289d2c189682e050f0da89adc",
+      "bytes": 128580
+    },
+    "releaseExecution": {
+      "path": "selfhost/build/phase56/release-execution-string01/report.json",
+      "sha256": "d37da53659a4626cadab063790e42a19b5488bee217457ee10682b21f3d25b6f",
+      "bytes": 6973
+    },
+    "checkedAttempt": {
+      "path": "selfhost/build/phase56/checked-string01/attempt.json",
+      "sha256": "236af8151841a63bc45d7c2691776fa6d272e4e1a29856cd831c3b4895c04ac7",
+      "bytes": 291406
+    },
+    "installedRelease": {
+      "path": "selfhost/dist/release.json",
+      "sha256": "f9cc1f6492d251186c6f5faeb2c19847247babf02ede34fa48be79ba46b5671d",
+      "bytes": 35733
+    },
+    "priorReleaseInventory": {
+      "path": "selfhost/build/phase56/prior-release/inventory.json",
+      "sha256": "061a553af79e3c4ee6c154b1d99be5e53d9611079405f273d83b1a9d7b84a5cf",
+      "bytes": 1087
+    },
+    "legacyLauncher": {
+      "path": "selfhost/build/phase56/release-string01/legacy42/launcher.json",
+      "sha256": "448bfff7a30d2e8ab88205c82ef79610989715d8e48cdf41d885fa7a2aa6b8cd",
+      "bytes": 2985
+    },
+    "legacyChecks": {
+      "path": "selfhost/build/phase56/release-string01/legacy42/checks/report.json",
+      "sha256": "3f732ae09739c3e17b1ab206f12cd0caf3886514232e80f222026f083c6017e5",
+      "bytes": 170312
+    },
+    "defaultChecks": {
+      "path": "selfhost/build/phase56/release-string01/default24/report.json",
+      "sha256": "a25f17612293de13c2de6a0c43b1e0db7b2fd69bd97d6047a527b3c894520da3",
+      "bytes": 155994
+    },
+    "maintainedLegacy": {
+      "path": "selfhost/build/phase56/maintained-legacy/report.json",
+      "sha256": "a72c2bcf6c48414bb308d5cc1bd696a6edcd13c4ac64c4d885f67835443e2228",
+      "bytes": 60383
+    },
+    "imagePins": {
+      "path": "selfhost/build/phase56/bootstrap-string01-plan/image-pins.json",
+      "sha256": "11c5e4982678ac88e86f7d304ba8c3fc12c22ec756b0b2fa43f615a23ab77619",
+      "bytes": 4082
+    },
+    "b2Emission": {
+      "path": "selfhost/build/phase56/bootstrap-string01-plan/full/report.json",
+      "sha256": "e65a5c34c097955e002910901b37f7ce6ff952dfae3d60003b6dd64925b3f077",
+      "bytes": 12857
+    },
+    "b2Driver": {
+      "path": "selfhost/build/phase56/bootstrap-string01-plan/driver-comparison.json",
+      "sha256": "a3fec2f4b41b671f65d30cfad80142a1aeb3d7544221ac5c2323e7dd681028ff",
+      "bytes": 1128
+    },
+    "b2Reproduction": {
+      "path": "selfhost/build/phase56/reproduce-string01/report.json",
+      "sha256": "a9d8233e26a1b614c7b6980abf7be204c796fa7f0d74641aa5e1a3c51df04e1d",
+      "bytes": 151476
+    },
+    "b2FreshSelfCheck": {
+      "path": "selfhost/build/phase56/self-check-string01/report.json",
+      "sha256": "5a366be103a45895bb8a7d0669f1245a0d2e8a7692981101866cedde2d07868e",
+      "bytes": 278715
+    },
+    "b2SemanticExecution": {
+      "path": "selfhost/build/phase56/semantic-string01-execution/report.json",
+      "sha256": "a05f442fc4057cdbf5f7825e20f63649d19e479a0463afb7924ab9f528d01e4d",
+      "bytes": 10654
+    },
+    "sourceControls": {
+      "path": "selfhost/build/phase56/semantic-string01/source-controls/report.json",
+      "sha256": "1230d72cb17a22554ba61604d30f685deeacfe01454e819f616cd2a285d444ee",
+      "bytes": 211516
+    },
+    "numericControls": {
+      "path": "selfhost/build/phase56/semantic-string01/numeric-controls/report.json",
+      "sha256": "29fe40ce5ecf1000fd1de560f5250fbacf152f1d2e6abf2241a1cac8558895d1",
+      "bytes": 230931
+    },
+    "compositionControls": {
+      "path": "selfhost/build/phase56/semantic-string01/composition-controls/report.json",
+      "sha256": "329c03648258a4ffd9a2c5da41988cb6bf4f42b2dde2b90f723044e1c6f5ab44",
+      "bytes": 169994
+    },
+    "overapplicationControls": {
+      "path": "selfhost/build/phase56/semantic-string01/overapplication-controls/report.json",
+      "sha256": "fa01a81d68f6331f3b6de881c205fc6dc9f2bbcdd155544275b27eb3a860357b",
+      "bytes": 126756
+    },
+    "b2BenchmarkEquality": {
+      "path": "selfhost/build/phase56/benchmark-b2-string01/report.json",
+      "sha256": "fd484566cab75a7debf48cde6987fc5b7334bc5a75ae7a69f08c5fd1fc009d02",
+      "bytes": 235302
+    },
+    "stringEqualityControls": {
+      "path": "selfhost/build/phase56/string-controls02/report.json",
+      "sha256": "050f7b292d1a497c086ef0f4de521d5b0af58f71d0e49f428a55a266a64ea508",
+      "bytes": 426569
+    }
+  },
+  "scopeLimits": [
+    "Semantic suites overlap and are not summed into a coverage total.",
+    "The one source-reference and six numeric-reference NaN failures remain explicit.",
+    "B2/B3 byte equality and fresh unsafe-source type acceptance do not establish a mathematical proof.",
+    "Benchmark equality checks emission bytes, not benchmark execution or fresh whole-corpus performance.",
+    "Historical method kind labels in reused controllers do not change the actual selected identities or scopes.",
+    "Transitive report inputs were not exhaustively rehashed here; this review binds the completed reports and selected artifacts."
+  ],
+  "reviewInputsRehashed": 96,
+  "mismatches": []
+}

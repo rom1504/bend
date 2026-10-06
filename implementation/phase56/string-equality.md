@@ -18,7 +18,10 @@ record exactly three edits:
 
 The checked build, focused equality controls, full image generation, ordinary
 driver comparison, exact B2→B3 reproduction and fresh type-check gate now pass
-within the scopes below. The candidate is **not yet installed as the default**.
+within the scopes below. The checked **B1 `string01` API is now installed**.
+Its release passes installation, verification before and after smoke testing,
+42 explicit legacy checks and 24 default direct checks. The separately qualified
+direct B2/B3 images remain distinct from that installed checked API.
 
 ## Admission and semantic domain
 
@@ -86,6 +89,7 @@ All raw paths below are relative to `selfhost/build/phase56/`.
 | Ordinary source/direct driver comparison | PASS, eight exact observations including emitted JS/C bytes | `bootstrap-string01-plan/driver-comparison.json` |
 | B2 emits B3 through the ordinary unsplit API | PASS, 250.719 s, complete byte equality | `reproduce-string01/report.json` |
 | B2 freshly checks its complete source | Type accepted; expected unsafe proof-trust refusal preserved; 29.681 s checking, 35.393 s total | `self-check-string01/report.json` |
+| Installed checked B1 release | PASS, all five jobs: installation, both verifications, 42 legacy checks and 24 default checks | `release-execution-string01/report.json`, `release-string01/legacy42/launcher.json`, `release-string01/default24/report.json` |
 
 The selected checked API is
 `128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea`.

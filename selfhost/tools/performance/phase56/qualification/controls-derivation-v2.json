@@ -1,0 +1,172 @@
+{
+  "kind": "phase56-explicit-image-controller-derivation",
+  "complete": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/make-v2.py",
+    "sha256": "3b1056f2dd8c79c4ad7c77bba11b0d63dc8d97bb89b47edfbc09c88780404ec9"
+  },
+  "setup": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/bootstrap/setup-v2.mjs",
+    "sha256": "74c9f097bc2ead3a8aef4ff07d52fd933ab574b45b9ef50bd1cd8cb9ecec212e"
+  },
+  "rows": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/self-check.mjs",
+        "sha256": "4a3a090420f82d7ba96058cd1f148a5bd8bb306b86ff78a3871db0e8ff848f60"
+      },
+      "edits": [
+        {
+          "old": "'../bootstrap/setup.mjs'",
+          "new": "'../bootstrap/setup-v2.mjs'"
+        },
+        {
+          "old": "emissionFile",
+          "new": "pinsFile"
+        },
+        {
+          "old": "B2_EMISSION_REPORT",
+          "new": "B2_IMAGE_PINS"
+        },
+        {
+          "old": "emissionReport:identity(pinsFile)",
+          "new": "imagePins:identity(pinsFile)"
+        },
+        {
+          "old": "report.emissionReport",
+          "new": "report.imagePins"
+        },
+        {
+          "old": "3019",
+          "new": "3012"
+        }
+      ],
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/self-check-v2.mjs",
+        "sha256": "fb7c322231cda3f5c59ee99be4c6d43b37387c07785ca165cbee59dad11b609e"
+      }
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/acquire.mjs",
+        "sha256": "0110be4c296a776c8f977f792040c566eb6992d13b516e6bbc078ea7f60f221b"
+      },
+      "edits": [
+        {
+          "old": "'../bootstrap/setup.mjs'",
+          "new": "'../bootstrap/setup-v2.mjs'"
+        },
+        {
+          "old": "emissionFile",
+          "new": "pinsFile"
+        },
+        {
+          "old": "B2_REPORT",
+          "new": "B2_IMAGE_PINS"
+        }
+      ],
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/acquire-v2.mjs",
+        "sha256": "cb5fd322c6553189f92a404e1a0dff2d28b94b8404650cf0b253a5859c958c43"
+      }
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/image-provenance.mjs",
+        "sha256": "880e7c351af6b6b9d8d9a1447cec74809a70b4d8c384993be19fd9b2be52e6d4"
+      },
+      "edits": [
+        {
+          "old": " assert.equal(image.api.sha256,'ae5abd461c24f707747f37b187cedcecd86f5d3c727950f8f8a332fd9dca4091');\n assert.equal(image.emission.sha256,'654af8869256b3a9367f2ad98b5006c7791623790a25196a8a00fe8fb730531a');\n assert.equal(image.driverQualification.sha256,'69c556e987d3cbe4812911238b244b9613dbdf0dc3d63aac1f47a77f612f4f7e');",
+          "new": " pin(image.pins);const binding=JSON.parse(fs.readFileSync(image.pins.file,'utf8'));\n assert.equal(binding.kind,'phase56-direct-image-pins');\n for(const key of ['producer','plan','attempt','emission','comparison','source','b1','b2','runtime','rootsReference'])pin(binding[key]);\n assert.deepEqual(image.emission,binding.emission);assert.deepEqual(image.driverQualification,binding.comparison);\n assert.equal(image.api.sha256,binding.b2.sha256);assert.deepEqual(image.source,binding.source);\n assert.deepEqual(image.checkedSubject,binding.attempt);assert.equal(image.directRuntime.sha256,binding.runtime.sha256);\n const plan=JSON.parse(fs.readFileSync(binding.plan.file,'utf8'));assert.equal(plan.kind,'phase56-candidate-image-plan');assert.deepEqual(plan.attempt,binding.attempt);\n for(const item of [...plan.inputs,...plan.configs])pin(item);\n for(const derivative of plan.derivations){let text=fs.readFileSync(pin(derivative.parent).file,'utf8');for(const edit of derivative.edits){assert(text.includes(edit.old));text=text.split(edit.old).join(edit.new);}assert.equal(fs.readFileSync(pin(derivative.output).file,'utf8'),text);}\n const comparison=JSON.parse(fs.readFileSync(binding.comparison.file,'utf8'));assert(comparison.complete&&comparison.pass);assert.equal(comparison.kind,'phase55-direct-compiler-driver-comparison');assert.equal(comparison.observations,8);\n const driverReports=[comparison.source,comparison.direct].map(row=>JSON.parse(fs.readFileSync(pin(row).file,'utf8')));\n for(const [i,r]of driverReports.entries()){assert(r.complete&&r.pass);assert.equal(r.kind,'phase55-direct-compiler-driver');assert.equal(r.role,i?'direct':'source');assert.deepEqual(r.emission,binding.emission);assert.equal(r.api.sha256,i?binding.b2.sha256:binding.b1.sha256);assert.equal(r.observations.length,8);for(const row of r.inputs)pin(row);for(const row of r.copies){pin(row.before);pin(row.after);}for(const row of r.outputs??[])pin(row);}\n assert.deepEqual(driverReports[0].config,driverReports[1].config);assert.deepEqual(driverReports[0].observations.map(x=>({id:x.id,value:x.value})),driverReports[1].observations.map(x=>({id:x.id,value:x.value})));"
+        },
+        {
+          "old": "assert.deepEqual(emission.generator,record.generator);",
+          "new": "assert.deepEqual(emission.generator,record.generator);assert.deepEqual(emission.generator.api,binding.b1);assert.deepEqual(emission.config,plan.configs[1]);assert.deepEqual(record.roots,binding.roots);assert.deepEqual(binding.roots,JSON.parse(fs.readFileSync(binding.rootsReference.file,'utf8')).roots);for(const r of driverReports){assert.deepEqual(r.subject,emission.subject);assert.deepEqual(r.generator,emission.generator);}"
+        },
+        {
+          "old": "'driverQualification','checkedSubject']",
+          "new": "'driverQualification','checkedSubject','pins']"
+        }
+      ],
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/image-provenance-v2.mjs",
+        "sha256": "9603a23f6e34295cd349810fc79cc77a50e5434ddd2753826229a22e74a16a45"
+      }
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/source-controls.mjs",
+        "sha256": "82661103d43b1642e813642d64c9c620eda509638baf12e34f62195df5ee725a"
+      },
+      "edits": [
+        {
+          "old": "'./image-provenance.mjs'",
+          "new": "'./image-provenance-v2.mjs'"
+        }
+      ],
+      "oracleTailByteIdentical": true,
+      "oracleTailSha256": "9560b2d49298121eeecfc3ec1e38330c4adf30569c456e7a542a21b8efd377d8",
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/source-controls-v2.mjs",
+        "sha256": "442dec4e8d8a1ed9ee08f40e2b3b3f04656a1ecc223150948d7830191997b225"
+      }
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/numeric-controls.mjs",
+        "sha256": "5edf683d8c9b877b79bf4ed5bfcbe2c1d4f32ff4fa7d2a7e6ad8d52944d1f747"
+      },
+      "edits": [
+        {
+          "old": "'./image-provenance.mjs'",
+          "new": "'./image-provenance-v2.mjs'"
+        }
+      ],
+      "oracleTailByteIdentical": true,
+      "oracleTailSha256": "5053af7d2610a3048d7a12e0ea4073b37a6d371ec604aa4519e20e5d2da57d76",
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/numeric-controls-v2.mjs",
+        "sha256": "ba8bd4f587a69f3b38bb579106be8afddc946eeed64bd0bd4d27d3f6c71ca145"
+      }
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/composition-controls.mjs",
+        "sha256": "e87340fdad71999fe7954e91d2b49b671e40db0979fd5cf8df69cc148f1f5b0a"
+      },
+      "edits": [
+        {
+          "old": "'./image-provenance.mjs'",
+          "new": "'./image-provenance-v2.mjs'"
+        }
+      ],
+      "oracleTailByteIdentical": true,
+      "oracleTailSha256": "605d146424e93b8158a82adce6300afc7d6d45827d022cd6dd879220c82df55c",
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/composition-controls-v2.mjs",
+        "sha256": "8b98ef9ebf47b55266d589a292a847ead84f6b76eed1470d2cf233a76268298a"
+      }
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/overapplication-controls.mjs",
+        "sha256": "f42e3eaf13a38b3ada2f6c49f905b0e3cfd79c97512d28c51a63c8f5f6e27aa3"
+      },
+      "edits": [
+        {
+          "old": "'./image-provenance.mjs'",
+          "new": "'./image-provenance-v2.mjs'"
+        }
+      ],
+      "oracleTailByteIdentical": true,
+      "oracleTailSha256": "7d081977b02934b4ed687ebf5009b8758f7e266461a39cb05179556424a8e08e",
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/overapplication-controls-v2.mjs",
+        "sha256": "5e5b33b8d69c3b5f4665f1643e34a059b90df895712ad1ea47956b5684fcea32"
+      }
+    }
+  ],
+  "scope": "Explicit candidate image pins replace fixed historical image admission; self-check keeps its exact 3012-definition candidate trust oracle. All four semantic execution/oracle tails are unchanged."
+}

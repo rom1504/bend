@@ -5,21 +5,21 @@ The compiler does not yet have one target-neutral executable IR. Its JavaScript
 and native representations serve different runtime contracts; moving them into a
 shared directory would not make those contracts interchangeable.
 
-Phase55 host02 is installed, retaining the direct JavaScript default introduced
+Phase56 string01 is installed, retaining the direct JavaScript default introduced
 in Phase53. Explicit legacy JavaScript and native targets remain available.
 See the [direct guide](../../selfhost/docs/direct-javascript.md) and
-[Phase55 report](../../implementation/phase55/README.md) for interfaces and tested
+[Phase56 report](../../implementation/phase56/README.md) for interfaces and tested
 scope. This architecture guide is not an independent conformance result.
 
-Phase54's shared-helper extraction and scalable graph implementation remain
-present; its [scaling evidence](../../implementation/phase54/scaling.md) remains
-historical. Phase55 reuses matcher ownership and host-export work. Full direct
-compiler-image generation and eight ordinary-driver probes per image now pass
-for the fixed Phase54 subject and host02's own source. They do not establish
-B2→B3 self-reproduction or a fresh full-source self-check; legacy bootstrap and
-private-image clients are not retired. [Source accounting](../../implementation/phase55/architecture.md)
-records the bounded change. A future runtime representation remains a proposal,
-not an unused module added to the compiler.
+Phase54's shared-helper extraction and scalable graph implementation and Phase55's
+matcher/host-export work reuse remain. Phase56 removes seven unused legacy helpers
+and adds definition-only native string equality. Its direct B2 freshly type-checks
+the complete source and emits a byte-identical B3; unsafe declarations still cause
+the expected proof-trust refusal. The checked B1 remains the installed package;
+legacy bootstrap and private-image dependencies are not retired. See
+[source accounting](../../implementation/phase56/architecture.md) and the
+[image workflow](compiler-image-generation.md). A future runtime representation
+remains a proposal, not an unused module added to the compiler.
 
 ## The shared compiler boundary
 

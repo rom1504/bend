@@ -1,0 +1,46 @@
+{
+  "kind": "phase56-clean-source-reproducer-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/bootstrap/reproduce.mjs",
+    "sha256": "ab425e7fc2cb34fb2a51ad354a4d4797c1e527dc390a9808ddd86fe90fcc33ad"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/bootstrap/reproduce-clean.mjs",
+    "sha256": "63b0859739e6177d6f6d07e5ae68d039c47899d1686d16d18e0915a280d40f3b"
+  },
+  "edits": [
+    {
+      "old": "// Unsplit B2 -> B3 emission, retaining inherited checking as a separate claim.",
+      "new": "// Successor: emit the independently checked cleaned source through the same B2."
+    },
+    {
+      "old": "import {setup} from './setup.mjs';",
+      "new": "import {setup} from './setup.mjs';\nimport {verifyAttempt} from '../../../development/workflow.mjs';"
+    },
+    {
+      "old": "const [emissionFile,outArg]=process.argv.slice(2);",
+      "new": "const [emissionFile,cleanAttempt,outArg]=process.argv.slice(2);"
+    },
+    {
+      "old": "assert.ok(emissionFile&&outArg,'reproduce.mjs B2_EMISSION_REPORT NEW_PHASE56_DIRECTORY');",
+      "new": "assert.ok(emissionFile&&cleanAttempt&&outArg,'reproduce-clean.mjs B2_EMISSION_REPORT CLEAN_CHECKED_ATTEMPT NEW_PHASE56_DIRECTORY');"
+    },
+    {
+      "old": "kind:'phase56-direct-self-emission'",
+      "new": "kind:'phase56-clean-source-direct-self-emission'"
+    },
+    {
+      "old": "  const {api,D,subject,emission,roots}=s;\n  Object.assign(report,{image:s.image,subject,b2:identity(emission.module.file),roots,inputs:s.inputs,copies:s.copies});",
+      "new": "  const {api,D,emission,roots}=s;\n  progress('verify-clean-subject','start');\n  const cleanDirectory=fs.realpathSync(cleanAttempt),clean=await verifyAttempt(cleanDirectory);\n  const bootstrap=JSON.parse(fs.readFileSync(clean.bootstrapReport.file,'utf8'));\n  const subject={attempt:identity(path.join(cleanDirectory,'attempt.json')),\n    bootstrap:identity(clean.bootstrapReport.file),source:identity(bootstrap.source)};\n  assert.equal(subject.source.sha256,'19498b7f40324cb5ff78345775d665f7530d413af87f7cbb6afeae6274294d5e');\n  assert.equal(bootstrap.sourceSha256,subject.source.sha256);\n  assert.equal(clean.api.sha256,emission.generator.api.sha256);\n  assert.equal(clean.base.sha256,s.image.base.sha256);assert.equal(clean.runtime.sha256,s.image.runtime.sha256);\n  const originalConfig=JSON.parse(fs.readFileSync(emission.config.file,'utf8'));\n  const cleanDriver=identity(path.join(clean.snapshot.root,'tools/typed-driver.mjs'));\n  const cleanCore=identity(path.join(clean.snapshot.root,'src/back/js/direct/core.bend'));\n  const cleanRuntime=identity(path.join(clean.snapshot.root,'src/runtime/js/direct.mjs'));\n  assert.equal(cleanDriver.sha256,originalConfig.driver.sha256);assert.equal(cleanCore.sha256,originalConfig.core.sha256);\n  assert.equal(cleanRuntime.sha256,emission.directRuntime.sha256);\n  s.inputs.push(...Object.values(subject),identity(clean.api.file),cleanDriver,cleanCore,cleanRuntime);\n  Object.assign(report,{image:s.image,imageOrigin:s.subject,subject,b2:identity(emission.module.file),roots,\n    inputs:s.inputs,copies:s.copies,cleanApi:identity(clean.api.file)});\n  progress('verify-clean-subject','complete');"
+    },
+    {
+      "old": "  report.verification=await s.verifyFinal();for(const input of report.inputs)verify(input);verify(report.b2);",
+      "new": "  report.verification=await s.verifyFinal();await verifyAttempt(cleanDirectory);\n  for(const input of report.inputs)verify(input);verify(report.b2);"
+    },
+    {
+      "old": "report.scope='Exact emission fixed point on the checked host02 source and 77-root closure. No fresh compiler-source self-check, new bootstrap trust, or installation claim.';",
+      "new": "report.scope='The existing host02 direct image emits independently checked Phase56 cleaned source to the same complete image with the same 77-root closure. Image-origin proof and current-subject proof remain separate; no fresh compiler-source self-check or installation claim.';"
+    }
+  ],
+  "scope": "Frozen predecessor preserved; only verified current subject selection/provenance added. Emission stages and exact byte oracle unchanged."
+}

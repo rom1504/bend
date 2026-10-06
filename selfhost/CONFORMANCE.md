@@ -1,19 +1,40 @@
 # Compiler validation
 
-## Current Phase55 qualification
+## Current Phase56 qualification
 
-Selected host02 is installed and verified. The [Phase55 report](../implementation/phase55/README.md)
-records the final 18 semantic gates, integrity checks, 42 legacy + 24 default
-ordinary/relocated interface checks and exact retention of all 45 point modules.
-Scopes overlap; no new whole-language/native/GPU conformance claim is made.
+Selected string01 is installed and verified. The [Phase56 report](../implementation/phase56/README.md)
+and [conformance detail](../implementation/phase56/conformance.md) bind the checked
+B1, emitted direct B2, source and runtime identities separately.
 
-Full direct compiler-image generation passes for the fixed graph02 subject and
-host02's own source; each passes eight exact ordinary-driver probes. Generation
-and these requests do not establish B2→B3 self-reproduction or a fresh full-source
-self-check. Legacy bootstrap/private-image clients remain supported dependencies.
-The dated Phase53 1.069599× TS result is retained by byte identity; Phase55 adds
-no new generated-program timing campaign. See [source accounting](../implementation/phase55/architecture.md)
-for the two-module change and unchanged native/runtime/driver identities.
+- B2 freshly type-checks its complete source and emits a byte-identical B3 in
+  250.72 seconds. All 3,012 expected unsafe declarations are accounted for;
+  proof trust is refused and no kernel proof is claimed.
+- B2 passes 96 source, 34 numeric, 18 composition and two overapplication
+  observations; known pinned TypeScript failures remain visible.
+- Native String.eq passes 484 UTF-16 pairs, eight callback/order/partial/throw
+  controls and the native-name/refusal checks.
+- Selected B1 passes all eight maintained legacy suites and 36 strict focused
+  gates. The installed package passes 42 legacy + 24 default/relocated checks,
+  integrity verification and tamper/restoration controls.
+- B2 checks all 23 benchmark sources and matches B1 bytes on all 45 final points.
+  Relative to host02, 44 points remain identical; only map/set changes, taking
+  15.9% less time in five fresh paired rounds.
+
+Scopes overlap; these counts are not a unique whole-language/native/GPU test total.
+The package remains checked B1; independently qualified direct B2 does not replace
+its artifact kind. Native IO.args, GPU coverage and proof validity remain separate
+frontiers. No new full runtime aggregate is claimed. See
+[source accounting](../implementation/phase56/architecture.md) and
+[image workflow](../docs/self_hosted/compiler-image-generation.md).
+
+## Historical Phase55 qualification
+
+Host02 was installed and verified at its checkpoint. Full direct image generation
+passed for the fixed Phase54 source and host02's own source, with eight exact
+ordinary-driver probes each. At that point B2→B3 reproduction and fresh full-source
+self-checking were not qualified. All 45 runtime modules were byte-identical to
+Phase53, retaining its dated evidence. The [Phase55 report](../implementation/phase55/README.md)
+preserves those identities, timings and release checks.
 
 ## Historical Phase54 qualification
 

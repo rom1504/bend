@@ -1,0 +1,38 @@
+{
+  "kind": "phase56-explicit-pins-reproducer-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/bootstrap/reproduce.mjs",
+    "sha256": "ab425e7fc2cb34fb2a51ad354a4d4797c1e527dc390a9808ddd86fe90fcc33ad"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/bootstrap/reproduce-v2.mjs",
+    "sha256": "da4e4448de2004464409c745e81a20e1847d0054ec5cbfe89774607cd3f6ab24"
+  },
+  "edits": [
+    {
+      "old": "import {setup} from './setup.mjs';",
+      "new": "import {setup} from './setup-v2.mjs';"
+    },
+    {
+      "old": "const [emissionFile,outArg]=process.argv.slice(2);",
+      "new": "const [pinsFile,outArg]=process.argv.slice(2);"
+    },
+    {
+      "old": "assert.ok(emissionFile&&outArg,'reproduce.mjs B2_EMISSION_REPORT NEW_PHASE56_DIRECTORY');",
+      "new": "assert.ok(pinsFile&&outArg,'reproduce-v2.mjs IMAGE_PINS NEW_PHASE56_DIRECTORY');"
+    },
+    {
+      "old": "kind:'phase56-direct-self-emission'",
+      "new": "kind:'phase56-direct-self-emission-v2'"
+    },
+    {
+      "old": "  const s=await setup(emissionFile,path.join(out,'private'),{progress});",
+      "new": "  const s=await setup(pinsFile,path.join(out,'private'),{progress});"
+    },
+    {
+      "old": "Exact emission fixed point on the checked host02 source and 77-root closure.",
+      "new": "Exact emission fixed point on the explicitly pinned checked source and 77-root closure."
+    }
+  ],
+  "scope": "Input/admission versioning only; completion, proofs, unsplit library call and full-byte oracle unchanged."
+}

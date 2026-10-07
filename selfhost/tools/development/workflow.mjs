@@ -58,8 +58,8 @@ export function verifyBootstrap(api, reportFile, base) {
 export function validatedCache(directory, api, base) {
   const apiSha=identity(api).sha256,baseSha=identity(base).sha256,canonical=fs.realpathSync(base);
   const stem=path.join(directory,`base-${apiSha}-${baseSha}-${digest(canonical)}`);
-  const frame3=stem+'-frame3.json',frame2=stem+'-frame2.json',frame1=stem+'-frame1.json';
-  const framed=fs.existsSync(frame3)?frame3:fs.existsSync(frame2)?frame2:frame1,isFrame=fs.existsSync(framed);
+  const frame4=stem+'-frame4.json',frame3=stem+'-frame3.json',frame2=stem+'-frame2.json',frame1=stem+'-frame1.json';
+  const framed=fs.existsSync(frame4)?frame4:fs.existsSync(frame3)?frame3:fs.existsSync(frame2)?frame2:frame1,isFrame=fs.existsSync(framed);
   const file=isFrame?framed:stem+'.json';
   // A corrupt framed artifact is rejected; it never falls through to old bytes.
   const c=isFrame?decodeBaseCacheFrame(fs.readFileSync(file)):json(file);

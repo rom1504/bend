@@ -1,0 +1,27 @@
+{
+  "status": "unapplied-proposal",
+  "requiresPatch": "selfhost/tools/performance/phase64/cache-artifact/checked-bound-helper.patch",
+  "beforeSha256": "4eb16574163ee957b42109b16a06c56ff2f5df28c382d153b9e788ed438ab468",
+  "afterSha256": "b58b927ac611f4ead292d4f736cfd427e955b81c1f0efa2f55d1e784755a0119",
+  "candidate": "selfhost/build/phase64/cache-artifact/arena-helper-v2.mjs",
+  "patch": "selfhost/tools/performance/phase64/cache-artifact/arena-helper-v2.patch",
+  "patchSha256": "182c7d99150696d257911ccf268dfdc768a80ecbbd2f1ce20fa99f76e1820b72",
+  "exports": [
+    "encodeBaseArena",
+    "decodeBaseArena"
+  ],
+  "keeps": [
+    "encodeBaseGraph",
+    "decodeBaseGraph"
+  ],
+  "worldRows": [
+    7,
+    8,
+    9
+  ],
+  "predecessor": {
+    "candidate": "selfhost/build/phase64/cache-artifact/arena-helper-v1.mjs",
+    "sha256": "a9c1a88e9c880d87488b15bd74e3ed81d3049103ead97653e630ad33699866f2"
+  },
+  "change": "Arena-only unsigned field validation before structural interning; legacy JSON behavior unchanged."
+}

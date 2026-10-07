@@ -1,0 +1,25 @@
+{
+  "kind": "phase64-context-empty-fallback-controller-successor",
+  "targetsExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/prefix-world-context-v4.mjs",
+    "sha256": "a2e50af5d9bd45041e594fec9b62548c38bd2a48dcd40333cf38d491e46638ba",
+    "bytes": 29865
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/prefix-world-context-v5.mjs",
+    "sha256": "2768cdeeaf9e3a474703a12df57c8a413f805647996bdd50d2ecf96561af7010",
+    "bytes": 29965
+  },
+  "edits": [
+    {
+      "old": "pin(path.join(import.meta.dirname,'prefix-world-context-v4.derivation.json'));",
+      "new": "pin(path.join(import.meta.dirname,'prefix-world-context-v4.derivation.json'));pin(path.join(import.meta.dirname,'prefix-world-context-v5.derivation.json'));"
+    },
+    {
+      "old": "const alreadyCached=assembled[0]?.kind==='BookCache';assert.equal(scans.length,alreadyCached?1:2,id+' generic fallback scan count');assert.deepEqual(scans[0],load.suffix,id+' unchanged admission scan');if(!alreadyCached)",
+      "new": "const skipsFullScan=assembled.length===0||assembled[0]?.kind==='BookCache';assert.equal(scans.length,skipsFullScan?1:2,id+' generic fallback scan count');assert.deepEqual(scans[0],load.suffix,id+' unchanged admission scan');if(!skipsFullScan)"
+    }
+  ],
+  "scope": "Independent review before execution found book_context(Nil) uses bound0 directly. Correct only empty generic fallback expected maximum-query count; all context/world/TODO/value/bound/index assertions remain. Frozen v4 preserved, no source change."
+}

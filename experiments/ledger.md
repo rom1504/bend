@@ -3309,3 +3309,24 @@ Phase59 raw writers closed approximately 15:20 UTC. [Publication](../selfhost/to
 and [streamed archive/member verification](../selfhost/tools/performance/phase59/artifacts/raw/archive.json)
 pass: 518 members, 86,059,319 raw bytes, 5,330,436 gzip bytes; archive SHA256
 `711cde7dc2d8576b1a39d37efe5195c8ec7836f9c639a9f4c474cc79b0989673`.
+
+## Phase60 — broad compiler-source survey (registered; measurement only)
+
+[Three hypotheses](phase60/) register broader population variation, recurring
+bottleneck groups and a small measured discriminating subset. Root is preparing
+`design/phase60/broad-compiler-survey.md`. The 45 benchmark runtime points are not
+45 distinct compile requests; 23 source inputs is provisional pending the exact
+source/entry/export/adapter audit and compilation-contract deduplication.
+
+Unchanged installed Phase58 last01/genuine B2 and pinned TS are the comparators.
+No compiler/runtime/driver changes, optimization, new release or PR comment.
+Root alone runs one guarded serial target on CPU3; agents analyze on CPU0. Closed
+Phase59 results/raw and all consumed methods stay unchanged; no outcomes credited
+here before completed preparation, output oracles and population/method review.
+
+**Updated frontier:** broaden attribution beyond Lexer/Evening, retain absolute
+cost and clean/profile/window distinctions, then select a small explicit group-
+covering subset and held-out falsifiers. Source/point weighting and compiler versus
+generated-program execution remain separate. Existing String reconstruction,
+metadata and index-event hypotheses may be supported or demoted, never assumed
+universal or promoted from a chosen small subset.

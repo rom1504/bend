@@ -5,16 +5,17 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Newest campaign: Phase59 first-request attribution
+## Newest campaign: Phase60 broad compiler survey
 
-[Design](../design/phase59/first-request-attribution.md) ·
-[Four hypothesis records](phase59/) · [Current frontier](STEERING.md).
-Completed information-only measurements attribute the remaining gap differently
-on Lexer and Evening. [Results](../implementation/phase59/README.md) rank a
-general unchanged-String reconstruction experiment first, then primitive-table
-and retained index-event work. Profiles/counters support future falsifiers, not
-proved speedups. Phase58 last01 remains installed; no compiler/release change or
-new full-program timing claim. Preservation and streamed [archive/publication verification](../selfhost/tools/performance/phase59/artifacts/raw/publication.json) pass; raw writers are closed.
+[Three registered hypotheses](phase60/) · [Current frontier](STEERING.md).
+Measurement only: broaden compiler attribution beyond Lexer/Evening, group
+bottlenecks and choose a fast falsification subset. The 45 runtime points are not
+45 compilation requests; 23 unique sources is provisional until the exact source/
+entry/adapter audit. Root design is forthcoming at
+`design/phase60/broad-compiler-survey.md`. Installed Phase58 last01 remains exact;
+no optimization, new release or PR comment. Closed [Phase59 results](../implementation/phase59/README.md)
+and its [publication](../selfhost/tools/performance/phase59/artifacts/raw/publication.json)
+remain historical evidence, not modified or pooled into this new population.
 
 This adapts the research method in `rom1504/math` at commit
 [`e2795031b5a35300d5c82613125c3bf9f3bd2b16`](https://github.com/rom1504/math/commit/e2795031b5a35300d5c82613125c3bf9f3bd2b16),

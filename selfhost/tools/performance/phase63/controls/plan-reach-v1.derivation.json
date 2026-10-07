@@ -1,0 +1,13 @@
+{
+  "parent": "selfhost/tools/performance/phase61/validation/reach-controls-v1.mjs",
+  "parentSha256": "2e550258d00b1f48791e153b430f11a1ab2d1ec381939e1982325646ccf55aa0",
+  "derived": "selfhost/tools/performance/phase63/controls/plan-reach-v1.mjs",
+  "derivedSha256": "14735f0a8431ab0ba455d56e4746776999b0f1e65fc2469ca723b3e0dbc3c2cd",
+  "changes": [
+    "Move output sandbox to Phase63.",
+    "Keep 22 metadata-scanner controls unchanged and 21 reach graph/error/budget controls.",
+    "Candidate invokes actual jd_plan_visit with same diagnostic emitter metadata and captures cached output strings.",
+    "Successful plan must lower each reachable definition once and concatenate saved code in original definition order."
+  ],
+  "execution": "Not executed by author; root owns guarded Node/compiler targets."
+}

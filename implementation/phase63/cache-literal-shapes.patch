@@ -1,0 +1,58 @@
+--- a/selfhost/tools/base-cache-graph.mjs
++++ b/selfhost/tools/base-cache-graph.mjs
+@@ -63,6 +63,25 @@
+   return {bytes:Buffer.from(JSON.stringify([1,baseCount,indexes,records.slice(baseCount)])),records,intern};
+ }
+ 
++// Literal construction gives each admitted constructor one stable object shape.
++function construct(row) {
++  switch(row[0]) {
++    case 0:return {$:'Nil'};
++    case 1:return {$:'Con',head:row[1],tail:row[2]};
++    case 2:return {$:'KTerm',tag:row[1],name:row[2],id:row[3],quant:row[4],kids:row[5],removed:row[6],originBegin:row[7],originEnd:row[8]};
++    case 3:return {$:'KLambda',name:row[1],id:row[2],quant:row[3],kids:row[4],removed:row[5],originBegin:row[6],originEnd:row[7],quantityPresent:row[8]};
++    case 4:return {$:'KLiteral',kind:row[1],number:row[2],text:row[3],originBegin:row[4],originEnd:row[5]};
++    case 5:return {$:'KDef',name:row[1],kind:row[2],arity:row[3],templates:row[4],typ:row[5],value:row[6],ctors:row[7],native:row[8],unsafe:row[9]};
++    case 6:return {$:'KIndexLeaf',hash:row[1],bucket:row[2]};
++    case 7:return {$:'KIndexNode',hash:row[1],mask:row[2],left:row[3],right:row[4]};
++    case 8:return {$:'KBasePrefixState',bound:row[1],delta:row[2],stamp:row[3],patches:row[4],ready:row[5]};
++    case 9:return {$:'FFreshPrefixState',next:row[1],ready:row[2]};
++    case 10:return {$:'KBasePreparedWorld',state:row[1],prefix:row[2],final:row[3],book:row[4],checked:row[5],seen:row[6]};
++    case 11:return {$:'FReadyPrefixState',names:row[1],ctors:row[2],count:row[3],ready:row[4]};
++  }
++  fail();
++}
++
+ // References are strictly backwards, so cycles and dangling references cannot
+ // enter the compiler. Each distinct node is type/range checked once while built.
+ export function decodeBaseGraph(bytes,{base=null,range,termAbi=1,rootKinds}={}) {
+@@ -81,20 +100,21 @@
+     if(!Array.isArray(row)||!Number.isSafeInteger(row[0]))fail();
+     const spec=specs[row[0]];
+     if(!spec||row.length!==spec[2].length+1)fail();
+-    const [tag,kind,fields]=spec,node={$:tag};let actualKind=kind;
++    const [tag,kind,fields]=spec;let actualKind=kind;
+     for(let i=0;i<fields.length;i++){
+-      const [key,type]=fields[i],value=row[i+1];
+-      if(type==='s'){if(typeof value!=='string')fail();node[key]=value;}
+-      else if(type==='u'){if(!uint(value))fail();node[key]=value;}
+-      else if(type==='b'){if(typeof value!=='boolean')fail();node[key]=value;}
++      const type=fields[i][1],value=row[i+1];
++      if(type==='s'){if(typeof value!=='string')fail();}
++      else if(type==='u'){if(!uint(value))fail();}
++      else if(type==='b'){if(typeof value!=='boolean')fail();}
+       else if(type==='head'){
+-        if(typeof value==='string'){node.head=value;actualKind='strings';}
++        if(typeof value==='string'){actualKind='strings';}
+         else {
+           if(!Number.isSafeInteger(value)||value<0||value>=nodes.length||!['term','def'].includes(kinds[value]))fail();
+-          node.head=nodes[value];actualKind=kinds[value]==='term'?'terms':'defs';
++          row[i+1]=nodes[value];actualKind=kinds[value]==='term'?'terms':'defs';
+         }
+-      }else node[key]=ref(value,type==='tail'?actualKind:type);
++      }else row[i+1]=ref(value,type==='tail'?actualKind:type);
+     }
++    const node=construct(row);
+     if(kind==='term'){
+       const a=node.originBegin,b=node.originEnd;
+       if(!((a===0&&b===0)||(a>=range.begin&&b>=a&&b<range.end)))fail();

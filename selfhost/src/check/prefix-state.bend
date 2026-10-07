@@ -264,3 +264,127 @@ def check_program_diagnostic_prefix(+load: FPrefixLoad, +validated: List<&2,KDef
           match result:
             case FResult{book, error, imports}:
               driver_program_checked(book, origins, base_prefix_check_load(state, load))
+
+# PRIVATE ready world. Its producer consumes the identity-bound checked prefix
+# state; the driver binds this whole immutable record to that same Base seed.
+# Raw books and old prefix-state exports retain their full admission paths.
+type KBasePreparedWorld is Data:
+  KBasePreparedWorld{+state: KBasePrefixState, +prefix: List<&2,KDef>, +final: List<&2,KDef>, +book: List<&2,KDef>, +checked: List<&2,KDef>, +seen: List<&2,KDef>}
+
+@unsafe
+def base_prefix_world_prepare(+prefix: List<&2,KDef>, +state: KBasePrefixState) -> KBasePreparedWorld:
+  +bound = norm_max_book(prefix)
+  +final = base_prefix_final(prefix)
+  kc(KBasePreparedWorld, base_prefix_admitted_bound(state, prefix, Nil{}, bound, final, bound),
+    u => base_prefix_world_saved(prefix, state, final, bound, rw(dg_checking_result(base_prefix_resume_saved(state, prefix, Nil{}, bound, final)))),
+    u => KBasePreparedWorld{KBasePrefixState{bound, 0, 0, Nil{}, False{}}, prefix, final, Nil{}, Nil{}, Nil{}})
+
+@unsafe
+def base_prefix_world_saved(+prefix: List<&2,KDef>, +state: KBasePrefixState, +final: List<&2,KDef>, +bound: U32, +world: KWorld) -> KBasePreparedWorld:
+  KBasePreparedWorld{state, prefix, final, kw_book(world), kw_checked(world), base_prefix_seen(prefix, bound)}
+
+# Sequential declaration installation puts suffix headers first in the list,
+# but prefix event publication historically puts Base definitions first. Keep
+# that observable list order while retaining the already extended lookup index.
+# Only list cells are copied; Base terms and index subtrees stay shared.
+@unsafe
+def base_prefix_world_order(+declared: List<&2,KDef>, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>) -> List<&2,KDef>:
+  match suffix:
+    case Nil{}: declared
+    case Con{d, rest}: base_prefix_world_order_tail(declared, prefix, suffix)
+
+@unsafe
+def base_prefix_world_order_tail(+book: List<&2,KDef>, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>) -> List<&2,KDef>:
+  match book:
+    case Nil{}: book
+    case Con{cache, more}: Con{cache, prefix_state_join(prefix, book_final_fast(prefix_state_headers(suffix), Nil{}))}
+
+@unsafe
+def base_prefix_resume_world(+prepared: KBasePreparedWorld, +suffix: List<&2,KDef>, +bound: U32) -> DChecking:
+  match prepared:
+    case KBasePreparedWorld{state, prefix, final, book, checked, seen}:
+      base_prefix_world_resume_state(state, book, checked, seen, suffix, bound)
+
+@unsafe
+def base_prefix_world_resume_state(+state: KBasePrefixState, +book: List<&2,KDef>, +checked: List<&2,KDef>, +seen: List<&2,KDef>, +suffix: List<&2,KDef>, +bound: U32) -> DChecking:
+  match state:
+    case KBasePrefixState{base_bound, delta, stamp, patches, ready}:
+      +declared = check_declarations(suffix, kw_bound_book(book, U32.add(bound, stamp)))
+      +ordered = base_prefix_world_order(declared, base_prefix_world_raw(book), suffix)
+      +world: KWorld = KWorld{ordered, Nil{}, KFreshKnown{U32.add(U32.add(bound, delta), 1)}, checked}
+      dg_check_events(suffix, world, kw_bound_book(seen, bound))
+
+# Full hash collisions preserve lookup semantics but change the exact bucket
+# event order when suffix headers move after Base publication. Retain the old
+# replay path for that rare case instead of weakening whole-world equality.
+@unsafe
+def base_prefix_world_hash_disjoint(+suffix: List<&2,KDef>, +index: KDef) -> Bool:
+  match suffix:
+    case Nil{}: True{}
+    case Con{d, rest}:
+      +hash = index_hash(dn(d), 2166136261)
+      +tip = index_tip(index, hash)
+      kc(Bool, String.eq(dk(tip), "Absent") || Bool.not(U32.is_eq(da(tip), hash)),
+        u => base_prefix_world_hash_disjoint(rest, index), u => False{})
+
+@unsafe
+def base_prefix_world_names_disjoint(+suffix: List<&2,KDef>, +saved: List<&2,KDef>) -> Bool:
+  match suffix:
+    case Nil{}: True{}
+    case Con{d, rest}: kc(Bool, String.eq(dk(lookup(saved, dn(d))), "Absent"),
+      u => base_prefix_world_names_disjoint(rest, saved), u => False{})
+
+# The saved index contains every prefix name. Reverse the old intersection
+# query so admission does not rebuild a suffix index or walk the Base prefix.
+@unsafe
+def base_prefix_world_admitted(+state: KBasePrefixState, +suffix: List<&2,KDef>, +bound: U32, +final: List<&2,KDef>, +saved: List<&2,KDef>) -> Bool:
+  match state:
+    case KBasePrefixState{base_bound, delta, stamp, patches, ready}:
+      ready && U32.is_ge(bound, base_bound) && U32.is_le(delta, 1048576) && U32.is_le(stamp, delta) && U32.is_le(bound, 1048576) && base_prefix_names(suffix) && base_prefix_world_names_disjoint(suffix, saved) && base_prefix_ctor_disjoint(suffix, final)
+
+# The driver must couple prepared and load through the same authenticated Base
+# injection. In that private scope state.bound is the already proved maximum
+# of load.prefix, and only newly freshened suffix terms need a maximum scan.
+@unsafe
+def base_prefix_check_world_load(+prepared: KBasePreparedWorld, +load: FPrefixLoad) -> DChecking:
+  match load:
+    case FPrefixLoad{trace, prefix, suffix, ready}:
+      base_prefix_check_world_trace(prepared, trace, prefix, suffix, ready)
+
+@unsafe
+def base_prefix_check_world_trace(+prepared: KBasePreparedWorld, +trace: FLoadTrace, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +ready: Bool) -> DChecking:
+  match trace:
+    case FLoadTrace{result, done, sources}:
+      base_prefix_check_world_result(prepared, result, prefix, suffix, ready)
+
+@unsafe
+def base_prefix_check_world_result(+prepared: KBasePreparedWorld, +result: FResult, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +ready: Bool) -> DChecking:
+  match result:
+    case FResult{book, error, imports}:
+      base_prefix_check_world_book(prepared, book, error, prefix, suffix, ready)
+
+@unsafe
+def base_prefix_world_bound(+state: KBasePrefixState) -> U32:
+  match state:
+    case KBasePrefixState{bound, delta, stamp, patches, ready}: bound
+
+@unsafe
+def base_prefix_check_world_book(+prepared: KBasePreparedWorld, +book: List<&2,KDef>, +error: String, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +ready: Bool) -> DChecking:
+  match prepared:
+    case KBasePreparedWorld{state, original, final, saved, checked, seen}:
+      +bound = norm_max(base_prefix_world_bound(state), norm_max_book(suffix))
+      kc(DChecking, ready && String.is_empty(error) && base_prefix_world_admitted(state, suffix, bound, final, saved),
+        u => kc(DChecking, base_prefix_world_hash_disjoint(suffix, index_first(dc(index_first(saved)))),
+          v => base_prefix_resume_world(prepared, suffix, bound),
+          v => base_prefix_resume_saved(state, prefix, suffix, bound, final)),
+        u => dg_check_world(book))
+
+@unsafe
+def check_program_diagnostic_world(+load: FPrefixLoad, +origins: List<&2,DOrigin>, +prepared: KBasePreparedWorld) -> DResult:
+  match load:
+    case FPrefixLoad{trace, prefix, suffix, ready}:
+      match trace:
+        case FLoadTrace{result, done, sources}:
+          match result:
+            case FResult{book, error, imports}:
+              driver_program_checked(book, origins, base_prefix_check_world_load(prepared, load))

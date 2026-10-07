@@ -1,0 +1,45 @@
+{
+  "kind": "phase63-stage-method-factory-derivation",
+  "dataOnly": true,
+  "targetExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/stages/make-method.py",
+    "sha256": "03e8b6cc6a37a0272bf55fa063da8036398c8a4b4321b073317af1e0b1db5d11"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/stages/make-method.py",
+    "sha256": "a4d60e965794451e08a77318348782d1afc01644cb809e27ee09d34309c7ae32"
+  },
+  "edits": [
+    {
+      "old": "ROOT=HERE.parents[4];RAW=ROOT/'selfhost/build/phase62'",
+      "new": "ROOT=HERE.parents[5];RAW=ROOT/'selfhost/build/phase63'",
+      "count": 1
+    },
+    {
+      "old": "edit(\"PROGRAMS/'support.py',PROGRAMS/'profile.mjs',catalog,node,a.bindings,\", \"PROGRAMS/'support.py',PROGRAMS/'profile.mjs',Path(__file__).with_name('clock.mjs'),catalog,node,a.bindings,\")",
+      "new": "edit(\"catalog,node,a.bindings,\", \"Path(__file__).with_name('clock.mjs'),catalog,node,a.bindings,\")",
+      "count": 1
+    },
+    {
+      "old": "subprocess.run([sys.executable,str(HERE/'derive-driver.py'),str(source),str(output)],check=True)",
+      "new": "subprocess.run([sys.executable,'-B',str(HERE/'derive-driver.py'),str(source),str(output),'--expected-sha',r['image']['driver']['sha256']],check=True)",
+      "count": 1
+    },
+    {
+      "old": "scope='Diagnostic successor only. Stage mode reuses exact prepared images/Base caches and complete raw module byte oracles.",
+      "new": "scope='Phase63 diagnostic successor only. Actual imported API entry observers retain owned private inspect paths. Stage mode reuses exact prepared images/Base caches and complete raw module byte oracles.",
+      "count": 1
+    }
+  ],
+  "clock": {
+    "parent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/stages/clock.mjs",
+      "sha256": "e2cc301aa024c65aa126477b44e570c8ef0f0f0724f8d057e0e2e95f5ab3d125"
+    },
+    "copy": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/stages/clock.mjs",
+      "sha256": "e2cc301aa024c65aa126477b44e570c8ef0f0f0724f8d057e0e2e95f5ab3d125"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": "unapplied-proposal",
+  "target": "selfhost/tools/base-cache-graph.mjs",
+  "beforeSha256": "5c5895859897497a407d0cdd5c8ead63d2b8b373e3808bb1333a2aa031041f54",
+  "afterSha256": "ae6c90f4c53de0a0ce63ee6c2be7cfa5e148893490dd002665d24a85149746c6",
+  "predecessor": {
+    "file": "selfhost/build/phase63/host-candidates/fast-constructors.mjs",
+    "sha256": "ab648b02027e78de9ce4b958ec4c931931184e33df7eaa1f4b3837c62b4c069d"
+  },
+  "candidate": "selfhost/build/phase63/host-candidates/fast-constructors-v2.mjs",
+  "patch": "implementation/phase63/cache-fast-constructors-v2.patch",
+  "patchSha256": "cd1e487d12c0037ae3c274a81202f054ed939bb7fa3c68d01e388e5b8f25f514",
+  "changes": [
+    "typeof number guard prevents malformed object numeric coercion",
+    "empty root kind compatibility restored; accepts only Nil"
+  ],
+  "note": "Internal kinds retain numeric masks; decoded roots/wire/validation preserved."
+}

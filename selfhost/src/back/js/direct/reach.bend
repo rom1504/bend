@@ -112,3 +112,95 @@ def jd_reach_filter(+defs: List<&2,KDef>, +seen: KDef) -> List<&2,KDef>:
     case Con{d, rest}: kc(List<&2,KDef>, Bool.not(String.eq(dk(d), "Def")) ||
       Bool.not(String.eq(dk(index_find(seen, dn(d), index_hash(dn(d), 2166136261), 32)), "Absent")),
       u => Con{d, jd_reach_filter(rest, seen)}, u => jd_reach_filter(rest, seen))
+
+# One lowering plan owns one immutable annotated lookup context and its call
+# facts. Runtime pruning removes emitted definitions, not the type world used
+# to produce their code. It must never be replayed against another book.
+# The exact-name index doubles as reach's visited set and stores final code;
+# JDText metadata is consumed before rendering, with the original scan cap.
+type JDPlan is Data:
+  JDPlan{+book: List<&2,KDef>, +defs: List<&2,KDef>, +texts: KDef, +error: String}
+
+@unsafe
+def jd_plan_defs(+plan: JDPlan) -> List<&2,KDef>:
+  match plan:
+    case JDPlan{book, defs, texts, error}: defs
+
+@unsafe
+def jd_plan_error(+plan: JDPlan) -> String:
+  match plan:
+    case JDPlan{book, defs, texts, error}: error
+
+@unsafe
+def jd_plan_bad(+error: String) -> JDPlan:
+  JDPlan{Nil{}, Nil{}, missing(), error}
+
+@unsafe
+def jd_plan_selected(+book: List<&2,KDef>, +defs: List<&2,KDef>, +roots: List<&2,String>) -> JDPlan:
+  jd_plan_context(defs, roots, jd_calls_context(jd_selected_context(book, defs), defs))
+
+@unsafe
+def jd_plan_context(+defs: List<&2,KDef>, +roots: List<&2,String>, +book: List<&2,KDef>) -> JDPlan:
+  kc(JDPlan, jd_calls_valid(book), u =>
+    jd_plan_visit(book, book_cached(jd_reach_names(defs), 0), defs, roots,
+      missing(), jd_definition_budget(), 65536),
+    u => jd_plan_bad("direct reachability tail-call analysis refused"))
+
+@unsafe
+def jd_plan_visit(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,KDef>,
+  +todo: List<&2,String>, +texts: KDef, +left: U32, +fuel: U32) -> JDPlan:
+  match todo:
+    case Nil{}: JDPlan{book, jd_reach_filter(defs, texts), texts, ""}
+    case Con{name, rest}: kc(JDPlan, U32.is_gt(fuel, 0), u =>
+      kc(JDPlan, String.eq(dk(index_find(texts, name, index_hash(name, 2166136261), 32)), "Absent"), v =>
+        kc(JDPlan, U32.is_gt(left, 0), w =>
+          jd_plan_definition(book, names, defs, rest, texts, U32.sub(left, 1),
+            U32.sub(fuel, 1), lookup(book, name)),
+          w => jd_plan_bad("direct reachability definition budget")),
+        v => jd_plan_visit(book, names, defs, rest, texts, left, U32.sub(fuel, 1))),
+      u => jd_plan_bad("direct reachability edge budget"))
+
+@unsafe
+def jd_plan_definition(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,KDef>,
+  +rest: List<&2,String>, +texts: KDef, +left: U32, +fuel: U32, +d: KDef) -> JDPlan:
+  kc(JDPlan, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0), u =>
+    jd_plan_document(book, names, defs, rest, texts, left, fuel, dn(d), jd_doc_definition(book, d)),
+    u => jd_plan_bad("direct reachability missing emitted definition"))
+
+@unsafe
+def jd_plan_document(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,KDef>,
+  +rest: List<&2,String>, +texts: KDef, +left: U32, +fuel: U32,
+  +name: String, +text: JDText) -> JDPlan:
+  jd_plan_follow(book, names, defs, rest, texts, left, fuel, name, text, jd_text_refs(names, text))
+
+@unsafe
+def jd_plan_follow(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,KDef>,
+  +rest: List<&2,String>, +texts: KDef, +left: U32, +fuel: U32,
+  +name: String, +text: JDText, +refs: Maybe<&2,List<&2,String>>) -> JDPlan:
+  match refs:
+    case None{}: jd_plan_bad("direct reachability metadata refused")
+    case Some{edges}: jd_plan_visit(book, names, defs, List.append(&2,String, edges, rest),
+      index_set(texts, KDef{name, "JDPlanText", 0, 0, atom("Absent"),
+        kt("JDPlanText", jd_text_render(text), 0, 0, Nil{}), Nil{}, False{}, False{}},
+        index_hash(name, 2166136261), 32), left, fuel)
+
+@unsafe
+def jd_plan_definitions(+defs: List<&2,KDef>, +texts: KDef) -> String:
+  match defs:
+    case Nil{}: ""
+    case Con{d, rest}: kc(String, String.eq(dk(d), "Def"),
+      u => jd_plan_text(index_find(texts, dn(d), index_hash(dn(d), 2166136261), 32)),
+      u => "") ++ jd_plan_definitions(rest, texts)
+
+@unsafe
+def jd_plan_text(+row: KDef) -> String:
+  kc(String, String.eq(dk(row), "JDPlanText"), u => nm(dv(row)),
+    u => jd_fail("direct lowering plan missing emitted definition"))
+
+@unsafe
+def jd_plan_library(+plan: JDPlan) -> String:
+  match plan:
+    case JDPlan{book, defs, texts, error}: kc(String, String.eq(error, ""),
+      u => "// Direct JavaScript prototype: native functions and live arguments.\n" ++
+        jd_plan_definitions(defs, texts) ++ jd_exports(book, defs),
+      u => jd_fail(error))

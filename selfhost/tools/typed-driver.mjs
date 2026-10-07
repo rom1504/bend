@@ -11,9 +11,11 @@ import {assemble} from './assemble.mjs';
 import {buildNative} from './native-build.mjs';
 import {nodeResourceArgs} from './node-resource-args.mjs';
 import {createCompilerAbi} from './compiler-abi.mjs';
+import {encodeBaseGraph,decodeBaseGraph} from './base-cache-graph.mjs';
 
 export const driverPath=fileURLToPath(import.meta.url);
 export const compilerAbiPath=fileURLToPath(new URL('./compiler-abi.mjs',import.meta.url));
+export const baseCacheGraphPath=fileURLToPath(new URL('./base-cache-graph.mjs',import.meta.url));
 export const nodeResourceArgsPath=fileURLToPath(new URL('./node-resource-args.mjs',import.meta.url));
 export const project=path.resolve(import.meta.dirname,'..');
 export const apiPath=path.resolve(process.env.BEND_TYPED_API||path.join(project,'dist/typed-api.mjs'));
@@ -58,7 +60,7 @@ function bootstrapUpstream(upstream,expectedRevision) {
   return revision;
 }
 const bootstrapInput=(file,role)=>({role,file:path.resolve(file),canonicalPath:fs.realpathSync(file),sha256:hash(file)});
-export function captureBootstrapProvenance(upstream,{expectedRevision=bootstrapPin,tools=[driverPath,path.join(project,'tools/stage0-library.mjs'),...['assemble.mjs','compiler-abi.mjs','node-resource-args.mjs','native-build.mjs'].map(name=>path.join(path.dirname(driverPath),name))]}={}) {
+export function captureBootstrapProvenance(upstream,{expectedRevision=bootstrapPin,tools=[driverPath,path.join(project,'tools/stage0-library.mjs'),...['assemble.mjs','compiler-abi.mjs','base-cache-graph.mjs','node-resource-args.mjs','native-build.mjs'].map(name=>path.join(path.dirname(driverPath),name))]}={}) {
   upstream=path.resolve(upstream);
   const revision=bootstrapUpstream(upstream,expectedRevision);
   return {version:1,upstream:{file:upstream,canonicalPath:fs.realpathSync(upstream),revision,trackedSourcesClean:true},
@@ -99,12 +101,14 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source','nc_foreign_scope');
   if(files.includes('src/check/prefix.bend'))exports.push('check_from_exact_prefix','exact_prefix');
   if(files.includes('src/check/prefix-state.bend'))exports.push('base_prefix_prepare','check_program_diagnostic_seed','check_program_diagnostic_prefix');
+  if(files.includes('src/check/prefix-state.bend')&&fs.readFileSync(path.join(project,'src/check/prefix-state.bend'),'utf8').includes('def base_prefix_world_prepare('))exports.push('base_prefix_world_prepare','check_program_diagnostic_world');
   if(files.includes('src/load/graph.bend'))exports.push('f_load_graph','f_load_graph_trace');
   if(files.includes('src/load/modules.bend')){exports.push('f_source_completed','f_source_located');if(fs.readFileSync(path.join(project,'src/load/modules.bend'),'utf8').includes('def compiler_load_abi('))exports.push('compiler_load_abi','f_source_header','f_complete_source','f_complete_seed','f_import_namespace_at','f_graph_trace');}
   if(files.includes('src/load/imports.bend')&&fs.readFileSync(path.join(project,'src/load/imports.bend'),'utf8').includes('def f_import_failure('))exports.push('f_import_failure');
   if(files.includes('src/core/index.bend'))exports.push('book_context','book_cached');
   if(files.includes('src/load/seed.bend'))exports.push('f_load_graph_seed','f_load_graph_seed_trace');
   if(files.includes('src/load/prefix.bend'))exports.push('f_fresh_prefix_prepare','f_graph_trace_from_prefix','f_prefix_graph_empty','f_prefix_complete_seed','f_prefix_complete_source','f_prefix_graph_trace');
+  if(files.includes('src/load/prefix.bend')&&fs.readFileSync(path.join(project,'src/load/prefix.bend'),'utf8').includes('def f_ready_prefix_prepare('))exports.push('f_ready_prefix_prepare','f_prefix_complete_ready_seed');
   if(files.includes('src/driver/report.bend'))exports.push('driver_report','driver_bad_names');
   if(files.includes('src/diagnostic/produce.bend'))exports.push('compiler_check_result_abi','check_book_diagnostic','check_book_diagnostic_from_exact_prefix','diagnostic_render','diagnostic_result_locate');
   if(files.includes('src/driver/api.bend')&&fs.readFileSync(path.join(project,'src/driver/api.bend'),'utf8').includes('def check_program_diagnostic('))exports.push('check_program_diagnostic');
@@ -119,6 +123,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   if(files.includes('src/back/js/direct/core.bend'))exports.push('jd_library_selected','jd_stops');
   if(files.includes('src/back/js/direct/program.bend'))exports.push('jd_program_selected','jd_modules','jd_roots','jd_foreign_paths','jd_foreign_error');
   if(files.includes('src/back/js/direct/reach.bend'))exports.push('jd_reach_selected','jd_reach_defs','jd_reach_error');
+  if(files.includes('src/back/js/direct/reach.bend')&&fs.readFileSync(path.join(project,'src/back/js/direct/reach.bend'),'utf8').includes('def jd_plan_selected('))exports.push('jd_plan_selected','jd_plan_defs','jd_plan_error','jd_plan_library');
   if(files.includes('src/back/js/foreign.bend'))exports.push('j_foreign_paths','j_foreign_error');
   const snapshots=files.map(file=>({file,bytes:fs.readFileSync(path.join(nativeSnapshot&&file.startsWith('src/back/native/')?path.resolve(nativeSnapshot):project,file))}));
   const fingerprint=crypto.createHash('sha256');
@@ -208,9 +213,12 @@ async function loadApiForIdentity(identity=null) {
     KTerm:spanAbi===3?['tag','name','id','quant','kids','removed','originBegin','originEnd']:['tag','name','id','quant','kids','removed'],KDef:['name','kind','arity','templates','typ','value','ctors','native','unsafe'],
     KIndexLeaf:['hash','bucket'],KIndexNode:['hash','mask','left','right'],
     KBasePrefixState:['bound','delta','stamp','patches','ready'],FFreshPrefixState:['next','ready'],
+    KBasePreparedWorld:['state','prefix','final','book','checked','seen'],FReadyPrefixState:['names','ctors','count','ready'],
+    FReadyPrefixGraph:['graph','prefix','suffix','count','ready','names','ctors','baseNames'],
     FPrefixGraph:['graph','prefix','suffix','count','ready'],FPrefixCompletion:['carrier','parsed'],FPrefixLoad:['trace','prefix','suffix','ready'],
     ...(termAbi===1?{KLiteral:['kind','number','text','originBegin','originEnd'],KLambda:['name','id','quant','kids','removed','originBegin','originEnd','quantityPresent']}:{}),
     KSpecialized:['book','error'],NC_Result:['source','error'],KF_Source:['parts','error'],
+    JDPlan:['book','defs','texts','error'],
     DText:['text'],DTerm:['term'],DNoSpan:[],DSpan:['source','begin','end'],
     DOrigin:['definition','term','source','begin','end','path'],DSourceOrigin:['source','begin','end'],
     DDiagnostic:['expected','observed','has_observed','context','definition','span','note','trail'],
@@ -275,10 +283,11 @@ export function validateSpanCache(c,{compilerSha256,baseSha256,sourcePath,source
   validateSpanBook(c.book,[range],termAbi);return true;
 }
 
-const FORMAT='bend-base-cache-frame-2',LEGACY_FORMAT='bend-base-cache-frame-1';
-const frameTrees=new WeakSet(),frameStates=new WeakMap();
+const FORMAT='bend-base-cache-frame-2',LEGACY_FORMAT='bend-base-cache-frame-1',GRAPH_FORMAT='bend-base-cache-frame-3';
+const frameTrees=new WeakSet(),frameGraphs=new WeakSet(),frameStates=new WeakMap();
 const digest=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 function encodeBaseCacheFrame(cached,bookJson=JSON.stringify(cached.book)) {
+  if(cached.preparedWorld||cached.frontendReadyState)return encodeBaseCacheGraphFrame(cached);
   if(typeof bookJson!=='string')throw Error('Invalid source-aware Base cache');
   const bookBytes=Buffer.from(bookJson);
   if(cached.bookSha256!==digest(bookBytes))throw Error('Invalid source-aware Base cache');
@@ -287,12 +296,45 @@ function encodeBaseCacheFrame(cached,bookJson=JSON.stringify(cached.book)) {
   const freshBytes=freshPrefixState===undefined?Buffer.alloc(0):Buffer.from(JSON.stringify(freshPrefixState));
   return Buffer.concat([Buffer.from(JSON.stringify({...metadata,format:FORMAT,segments:[bookBytes.length,checkedBytes.length,freshBytes.length]})+'\n'),bookBytes,checkedBytes,freshBytes]);
 }
+function encodeBaseCacheGraphFrame(cached) {
+  const book=encodeBaseGraph([cached.book]);
+  const prepared=encodeBaseGraph([cached.checkedPrefixState??null,cached.freshPrefixState??null,cached.preparedWorld??null,cached.frontendReadyState??null],book);
+  const {book:rawBook,checkedPrefixState,freshPrefixState,preparedWorld,frontendReadyState,...metadata}=cached;
+  const preparedGraphSha256=digest(prepared.bytes);
+  const header={...metadata,format:GRAPH_FORMAT,segments:[book.bytes.length,prepared.bytes.length],bookGraphSha256:digest(book.bytes),preparedGraphSha256,
+    checkedPrefixStateSha256:preparedGraphSha256,freshPrefixStateSha256:preparedGraphSha256};
+  return Buffer.concat([Buffer.from(JSON.stringify(header)+'\n'),book.bytes,prepared.bytes]);
+}
+function decodeBaseCacheGraphFrame(header,payload) {
+  if(['book','checkedPrefixState','freshPrefixState','preparedWorld','frontendReadyState'].some(key=>Object.hasOwn(header,key))||
+    !Array.isArray(header.segments)||header.segments.length!==2||header.segments.some(n=>!Number.isSafeInteger(n)||n<0)||header.segments[0]+header.segments[1]!==payload.length)throw Error('Invalid source-aware Base cache');
+  const [nb,np]=header.segments,bookBytes=payload.subarray(0,nb),preparedBytes=payload.subarray(nb);
+  if(typeof header.bookGraphSha256!=='string'||header.bookGraphSha256!==digest(bookBytes))throw Error('Invalid source-aware Base cache');
+  const options={range:{begin:header.sourceBegin,end:header.sourceEnd},termAbi:header.termAbi??0};
+  const book=decodeBaseGraph(bookBytes,{...options,rootKinds:['defs']});
+  if(book.roots[0]===null)throw Error('Invalid source-aware Base cache');
+  const {format,segments,bookGraphSha256,preparedGraphSha256,...metadata}=header;
+  const cached={...metadata,book:book.roots[0]},states={};
+  frameGraphs.add(cached);
+  if(np&&typeof preparedGraphSha256==='string'&&preparedGraphSha256===digest(preparedBytes)){
+    try {
+      const graph=decodeBaseGraph(preparedBytes,{...options,base:book,rootKinds:['checked','fresh','world','frontend']});
+      const [checked,fresh,world,frontend]=graph.roots;
+      if(checked){cached.checkedPrefixState=checked;states.checked={value:checked,sha256:preparedGraphSha256};}
+      if(fresh){cached.freshPrefixState=fresh;states.fresh={value:fresh,sha256:preparedGraphSha256};}
+      if(world)cached.preparedWorld=world;
+      if(frontend)cached.frontendReadyState=frontend;
+    }catch { /* Optional preparation failure retains the full checker path. */ }
+  }
+  frameStates.set(cached,states);return cached;
+}
 export function decodeBaseCacheFrame(bytes) {
   const cut=bytes.indexOf(10);
   if(cut<0)throw new SyntaxError('Malformed Base cache frame');
   const header=JSON.parse(bytes.subarray(0,cut).toString('utf8'));
-  if(header===null||typeof header!=='object'||Array.isArray(header)||![FORMAT,LEGACY_FORMAT].includes(header.format)||Object.hasOwn(header,'book'))throw Error('Invalid source-aware Base cache');
+  if(header===null||typeof header!=='object'||Array.isArray(header)||![FORMAT,LEGACY_FORMAT,GRAPH_FORMAT].includes(header.format)||Object.hasOwn(header,'book'))throw Error('Invalid source-aware Base cache');
   const payload=bytes.subarray(cut+1);
+  if(header.format===GRAPH_FORMAT)return decodeBaseCacheGraphFrame(header,payload);
   if(header.format===LEGACY_FORMAT) {
     if(typeof header.bookSha256!=='string'||header.bookSha256!==digest(payload))throw Error('Invalid source-aware Base cache');
     const {format,...cached}=header;
@@ -322,7 +364,7 @@ function validateSpanCacheFrame(c,{compilerSha256,baseSha256,sourcePath,sourceTe
   const range=interval(1,sourceText);
   if(c.version!==(termAbi===1?TERM_CACHE:SPAN_CACHE)||(c.termAbi??0)!==termAbi||c.spanAbi!==SPAN_ABI||c.compilerSha256!==compilerSha256||c.baseSha256!==baseSha256||
     c.sourcePath!==sourcePath||c.sourceBegin!==range.begin||c.sourceEnd!==range.end||c.validatedBy!=='check_book')throw Error('Invalid source-aware Base cache');
-  (frameTrees.has(c)?validateSpanJsonTree:validateSpanBook)(c.book,[range],termAbi);return true;
+  if(!frameGraphs.has(c))(frameTrees.has(c)?validateSpanJsonTree:validateSpanBook)(c.book,[range],termAbi);return true;
 }
 
 // Only ordinary inspection grants this private entry permission; raw public seed
@@ -380,7 +422,9 @@ export function discoverSources(api,input,{seed=null,freshPrefixPermission=null,
     {
       const supplied=list(sources),ns=edge?api.f_import_namespace_at(edge.item,edge.source,supplied,root):'';
       if(nativePrefix) {
-        const result=seeded?api.f_prefix_complete_seed(raw,ns,carrier,seed.sourcePath,seed.sourceText,seed.book):api.f_prefix_complete_source(raw,ns,header,supplied,carrier,root);
+        const result=seeded?(seed.frontendReadyState&&typeof api.f_prefix_complete_ready_seed==='function'?
+          api.f_prefix_complete_ready_seed(raw,ns,carrier,seed.sourcePath,seed.sourceText,seed.book,seed.frontendReadyState):
+          api.f_prefix_complete_seed(raw,ns,carrier,seed.sourcePath,seed.sourceText,seed.book)):api.f_prefix_complete_source(raw,ns,header,supplied,carrier,root);
         carrier=result.carrier;parsed=result.parsed;completed=carrier.graph;
       } else {
         const result=seeded?api.f_complete_seed(raw,completed,seed.sourcePath,seed.sourceText,seed.book):api.f_complete_source(raw,ns,header,supplied,completed,root);
@@ -417,7 +461,8 @@ function baseCacheInfo(api) {
   const version=termAbi===1?TERM_CACHE:api.compiler_span_abi?.()===SPAN_ABI?SPAN_CACHE:api.f_load_graph_seed?2:1;
   const directory=path.join(project,'build/typed/cache');
   const location=crypto.createHash('sha256').update(sourcePath).digest('hex');
-  const file=path.join(directory,`base-${compilerSha256}-${baseSha256}${version>=2?'-'+location:''}${version>=SPAN_CACHE?'-frame2':''}.json`);
+  const graph=version>=SPAN_CACHE&&(typeof api.base_prefix_world_prepare==='function'||typeof api.f_ready_prefix_prepare==='function');
+  const file=path.join(directory,`base-${compilerSha256}-${baseSha256}${version>=2?'-'+location:''}${version>=SPAN_CACHE?(graph?'-frame3':'-frame2'):''}.json`);
   return {version,termAbi,compilerSha256,baseSha256,sourcePath,sourceText,directory,file};
 }
 // Only persistent inspectors own this bounded memo. Re-read and hash the exact
@@ -454,7 +499,7 @@ function admitCheckedPrefixState(cached,info) {
     if(cached.checkedPrefixStateVersion!==1||cached.checkedPrefixStateProducer!=='base_prefix_prepare'||
       !checkedPrefixStateShape(cached.checkedPrefixState)||!cached.checkedPrefixState.ready||
       cached.checkedPrefixStateSha256!==frameStateDigest(cached,'checked',cached.checkedPrefixState))return false;
-    (frameTrees.has(cached)?validateSpanJsonTree:validateSpanBook)(cached.checkedPrefixState.patches,[interval(1,info.sourceText)],info.termAbi);
+    if(!frameGraphs.has(cached))(frameTrees.has(cached)?validateSpanJsonTree:validateSpanBook)(cached.checkedPrefixState.patches,[interval(1,info.sourceText)],info.termAbi);
     return true;
   }catch{return false;}
 }
@@ -467,11 +512,24 @@ function admitFreshPrefixState(cached) {
     cached.freshPrefixStateSha256===frameStateDigest(cached,'fresh',state);
 }
 
+function admitPreparedWorld(cached) {
+  const world=cached.preparedWorld;
+  return frameGraphs.has(cached)&&cached.preparedWorldVersion===1&&cached.preparedWorldProducer==='base_prefix_world_prepare'&&
+    cached.checkedPrefixState&&world?.$==='KBasePreparedWorld'&&world.prefix===cached.book&&world.state===cached.checkedPrefixState;
+}
+function admitFrontendReadyState(cached) {
+  const state=cached.frontendReadyState;
+  return frameGraphs.has(cached)&&cached.frontendReadyStateVersion===1&&cached.frontendReadyStateProducer==='f_ready_prefix_prepare'&&
+    state?.$==='FReadyPrefixState'&&state.ready===true&&Number.isSafeInteger(state.count)&&state.count>=0&&state.count<=65536;
+}
+
 function readBaseCache(info,memo=null) {
   try {
     const previous=memo?.entry;
     if(memo)memo.entry=null;
-    const readFile=info.file.endsWith('-frame2.json')&&!fs.existsSync(info.file)?info.file.replace(/-frame2\.json$/,'-frame1.json'):info.file;
+    let readFile=info.file;
+    if(readFile.endsWith('-frame3.json')&&!fs.existsSync(readFile))readFile=readFile.replace(/-frame3\.json$/,'-frame2.json');
+    if(readFile.endsWith('-frame2.json')&&!fs.existsSync(readFile))readFile=readFile.replace(/-frame2\.json$/,'-frame1.json');
     const bytes=fs.readFileSync(readFile);
     const key=memo?JSON.stringify([info.version,info.compilerSha256,info.baseSha256,info.sourcePath,info.file]):null;
     const digest=memo?crypto.createHash('sha256').update(bytes).digest('hex'):null;
@@ -485,10 +543,14 @@ function readBaseCache(info,memo=null) {
     if(info.version===2&&(cached.sourcePath!==info.sourcePath||cached.bookSha256!==crypto.createHash('sha256').update(JSON.stringify(cached.book)).digest('hex')))return null;
     if(!admitCheckedPrefixState(cached,info))delete cached.checkedPrefixState;
     if(!admitFreshPrefixState(cached))delete cached.freshPrefixState;
+    if(!admitPreparedWorld(cached))delete cached.preparedWorld;
+    if(!admitFrontendReadyState(cached))delete cached.frontendReadyState;
     if(memo) {
       freezeBaseBook(cached.book);
       if(cached.checkedPrefixState)freezeBaseBook(cached.checkedPrefixState);
       if(cached.freshPrefixState)freezeBaseBook(cached.freshPrefixState);
+      if(cached.preparedWorld)freezeBaseBook(cached.preparedWorld);
+      if(cached.frontendReadyState)freezeBaseBook(cached.frontendReadyState);
       Object.freeze(cached);
       memo.entry={key,digest,cached};
     }
@@ -499,13 +561,15 @@ export async function prepareBase(api) {
   api??=await loadApi();
   requireLoaderApi(api);
   const info=baseCacheInfo(api),prior=readBaseCache(info);
-  if(prior)return prior;
+  const wantWorld=typeof api.base_prefix_world_prepare==='function'&&typeof api.check_program_diagnostic_world==='function';
+  const wantFrontend=typeof api.f_ready_prefix_prepare==='function'&&typeof api.f_prefix_complete_ready_seed==='function';
+  if(prior&&(!wantWorld||prior.preparedWorld)&&(!wantFrontend||prior.frontendReadyState))return prior;
   const raw={$:'FSource',name:'Base',path:info.sourcePath,text:info.sourceText};
   const range=info.version>=SPAN_CACHE?interval(1,info.sourceText):null;
   const source=range?api.f_source_located(raw,range.begin,range.end):raw;
-  const loaded=api.f_load_graph('Base',list([source]));
+  const loaded=prior?{book:prior.book,error:''}:api.f_load_graph('Base',list([source]));
   if(loaded.error)throw Object.assign(Error(loaded.error),{phase:'parse'});
-  const error=api.check_book(loaded.book);
+  const error=prior?'':api.check_book(loaded.book);
   if(error)throw Object.assign(Error(error),{phase:'check'});
   const {version,compilerSha256,baseSha256,sourcePath,directory,file}=info;
   const bookJson=JSON.stringify(loaded.book);
@@ -514,7 +578,7 @@ export async function prepareBase(api) {
     ...(range?{spanAbi:SPAN_ABI,sourceBegin:range.begin,sourceEnd:range.end}:{})};
   if(range)validateSpanCacheFrame(cached,info);
   if(range&&typeof api.base_prefix_prepare==='function'&&typeof api.check_program_diagnostic_seed==='function') {
-    const state=api.base_prefix_prepare(loaded.book);
+    const state=prior?.checkedPrefixState??api.base_prefix_prepare(loaded.book);
     const prepared={...cached,checkedPrefixStateVersion:1,checkedPrefixStateProducer:'base_prefix_prepare',checkedPrefixState:state,
       checkedPrefixStateSha256:crypto.createHash('sha256').update(JSON.stringify(state)).digest('hex')};
     if(admitCheckedPrefixState(prepared,info))Object.assign(cached,prepared);
@@ -524,6 +588,14 @@ export async function prepareBase(api) {
     const prepared={...cached,freshPrefixStateVersion:1,freshPrefixStateProducer:'f_fresh_prefix_prepare',freshPrefixState:state,
       freshPrefixStateSha256:crypto.createHash('sha256').update(JSON.stringify(state)).digest('hex')};
     if(admitFreshPrefixState(prepared))Object.assign(cached,prepared);
+  }
+  if(range&&wantWorld&&cached.checkedPrefixState){
+    const world=api.base_prefix_world_prepare(loaded.book,cached.checkedPrefixState);
+    if(world?.$==='KBasePreparedWorld'&&world.state?.ready===true)Object.assign(cached,{preparedWorldVersion:1,preparedWorldProducer:'base_prefix_world_prepare',preparedWorld:world});
+  }
+  if(range&&wantFrontend){
+    const state=api.f_ready_prefix_prepare(loaded.book);
+    if(state?.$==='FReadyPrefixState'&&state.ready===true)Object.assign(cached,{frontendReadyStateVersion:1,frontendReadyStateProducer:'f_ready_prefix_prepare',frontendReadyState:state});
   }
   fs.mkdirSync(directory,{recursive:true});
   const staged=file+'.tmp-'+process.pid;
@@ -634,7 +706,8 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
     const checkAbi=typeof api.compiler_check_result_abi==='function'?api.compiler_check_result_abi():0;
     if(![0,1,2].includes(checkAbi))throw Error(`Unsupported compiler checker-result ABI: ${checkAbi}`);
     if(checkAbi===2&&typeof api.check_program_diagnostic!=='function')throw Error('Compiler checker-result ABI 2 requires check_program_diagnostic');
-    const checkedResult=checkAbi===2?(ownedApi&&graph.prefixLoad&&cached?.checkedPrefixState&&typeof api.check_program_diagnostic_prefix==='function'?
+    const checkedResult=checkAbi===2?(ownedApi&&graph.prefixLoad&&cached?.preparedWorld&&typeof api.check_program_diagnostic_world==='function'?
+      api.check_program_diagnostic_world(graph.prefixLoad,list([]),cached.preparedWorld):ownedApi&&graph.prefixLoad&&cached?.checkedPrefixState&&typeof api.check_program_diagnostic_prefix==='function'?
       api.check_program_diagnostic_prefix(graph.prefixLoad,cached.book,list([]),cached.checkedPrefixState):cached?.checkedPrefixState&&typeof api.check_program_diagnostic_seed==='function'?
       api.check_program_diagnostic_seed(loaded.book,cached.book,list([]),cached.checkedPrefixState):
       api.check_program_diagnostic(loaded.book,cached?cached.book:list([]),list([]))):checkAbi===1?
@@ -707,7 +780,7 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
       if(error)return {status:'error',phase,diagnostic:error.startsWith('Error:')?error:'Error: '+error,exitCode:1,checked:true};
     }
     trace('annotate book');
-    let layoutDefs,layoutStops;
+    let layoutDefs,layoutStops,directPlan;
     if(mode==='native'&&api.nc_annotation_stops&&api.nc_annotated_context&&api.reach_book&&api.annotate_selected) {
       const stops=api.nc_annotation_stops(contextBook);
       const selected=api.reach_book(contextBook,list(['main']),stops);
@@ -716,10 +789,12 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
     } else book=selectedEmission?api.annotate_selected(contextBook,book,stops):api.annotate_book(book);
     if(backend==='direct') {
       trace('prune direct runtime dependencies');
-      const reachable=api.jd_reach_selected(contextBook,book,roots);
-      const error=api.jd_reach_error(reachable);
+      const planned=mode==='library'&&['jd_plan_selected','jd_plan_defs','jd_plan_error','jd_plan_library'].every(name=>typeof api[name]==='function');
+      const reachable=planned?api.jd_plan_selected(contextBook,book,roots):api.jd_reach_selected(contextBook,book,roots);
+      const error=planned?api.jd_plan_error(reachable):api.jd_reach_error(reachable);
       if(error)throw Error(error);
-      book=api.jd_reach_defs(reachable);
+      book=planned?api.jd_plan_defs(reachable):api.jd_reach_defs(reachable);
+      if(planned)directPlan=reachable;
       const foreign=api.jd_foreign_error(book);
       if(foreign)return {status:'error',phase,diagnostic:foreign.startsWith('Error:')?foreign:'Error: '+foreign,exitCode:1,checked:true};
     }
@@ -754,7 +829,7 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
     if(backend==='direct') {
       const foreign=directForeignResolver(jsPaths),directInputs=jsPaths.map(foreign.resolve);
       const modules=api.jd_modules(book,foreignSources(graph,'.js',jsPaths,api,contextBook,book,foreign.resolve));
-      const emitted=mode==='library'?api.jd_library_selected(contextBook,book):api.jd_program_selected(contextBook,book);
+      const emitted=directPlan?api.jd_plan_library(directPlan):mode==='library'?api.jd_library_selected(contextBook,book):api.jd_program_selected(contextBook,book);
       if(emitted.includes('\n/*JD_UNSUPPORTED:'))throw Error('Direct JavaScript backend encountered an unsupported construct: '+emitted.split('\n').find(line=>line.startsWith('/*JD_UNSUPPORTED:')));
       const host=mode!=='library'||jsPaths.length?'import {createRequire as $jdCreateRequire} from "node:module";\nconst require=$jdCreateRequire(import.meta.url);\n':'';
       const code=host+fs.readFileSync(directRuntimePath,'utf8')+'\n'+modules+'\n'+emitted;

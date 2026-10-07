@@ -1,0 +1,75 @@
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -190,6 +190,8 @@
+   for(const name of loaderEntries)if(typeof api[name]!=='function')throw Error('Missing contextual compiler source API: '+name);
+ }
+ 
++const apiCacheOwnership=new WeakMap();
++
+ export async function loadApi() {
+   return loadApiForIdentity();
+ }
+@@ -223,8 +225,15 @@
+     DOrigin:['definition','term','source','begin','end','path'],DSourceOrigin:['source','begin','end'],
+     DDiagnostic:['expected','observed','has_observed','context','definition','span','note','trail'],
+     DResult:['error','book','diagnostic'],FProvenance:['result','origins']};
+-  return createCompilerAbi({fields,ctor:module.ctor,
+-    onPhase:process.env.BEND_TYPED_TRACE?event=>trace(`ABI ${event.name} ${event.phase} ${JSON.stringify(event.stats)}`):undefined}).wrap(module.default);
++  const abi=createCompilerAbi({fields,ctor:module.ctor,
++    onPhase:process.env.BEND_TYPED_TRACE?event=>trace(`ABI ${event.name} ${event.phase} ${JSON.stringify(event.stats)}`):undefined});
++  const api=abi.wrap(module.default);
++  apiCacheOwnership.set(api,roots=>{
++    const owned=abi.decode(abi.encode(roots));
++    if(process.env.BEND_TYPED_TRACE)trace('ABI prepared Base ownership '+JSON.stringify(abi.stats()));
++    return owned;
++  });
++  return api;
+ }
+ 
+ // Source coordinates belong to one request. Base always owns interval one, so
+@@ -523,7 +532,19 @@
+     state?.$==='FReadyPrefixState'&&state.ready===true&&Number.isSafeInteger(state.count)&&state.count>=0&&state.count<=65536;
+ }
+ 
+-function readBaseCache(info,memo=null) {
++// Only this driver's owned API has a converter. Admit all roots before calling
++// it; one encode retains cross-root sharing and read-only views unwrap on later
++// compiler calls. Public mutable host inputs still get a fresh encode per call.
++function ownAdmittedBaseCache(cached,api) {
++  const own=apiCacheOwnership.get(api);
++  if(!own)return cached;
++  const keys=['book','checkedPrefixState','freshPrefixState','preparedWorld','frontendReadyState'];
++  const roots=own(keys.map(key=>cached[key]??null)),result={...cached};
++  for(let i=0;i<keys.length;i++)if(roots[i]!==null)result[keys[i]]=roots[i];
++  return result;
++}
++
++function readBaseCache(info,memo=null,ownedApi=null) {
+   try {
+     const previous=memo?.entry;
+     if(memo)memo.entry=null;
+@@ -552,9 +573,12 @@
+       if(cached.preparedWorld)freezeBaseBook(cached.preparedWorld);
+       if(cached.frontendReadyState)freezeBaseBook(cached.frontendReadyState);
+       Object.freeze(cached);
+-      memo.entry={key,digest,cached};
+-    }
+-    return {...cached,sourcePath:info.sourcePath,sourceText:info.sourceText};
++    }
++    // Freeze named data before conversion; the ABI views intentionally reject
++    // Object.freeze and all mutation. Freeze only the resulting metadata shell.
++    const owned=ownAdmittedBaseCache(cached,ownedApi);
++    if(memo){Object.freeze(owned);memo.entry={key,digest,cached:owned};}
++    return {...owned,sourcePath:info.sourcePath,sourceText:info.sourceText};
+   } catch(error) {if(error.code!=='ENOENT'&&!(error instanceof SyntaxError))throw error;return null;}
+ }
+ export async function prepareBase(api) {
+@@ -692,7 +716,7 @@
+       memo.entry=null;
+       throw Error('Compiler API changed during persistent inspection');
+     }
+-    const seed=info?readBaseCache(info,memo):null;
++    const seed=info?readBaseCache(info,memo,ownedApi?api:null):null;
+     const graph=discoverSources(api,input,{seed,freshPrefixPermission:FRESH_PREFIX_PERMISSION,nativePrefixPermission:ownedApi?NATIVE_PREFIX_PERMISSION:null});
+     phase='parse';
+     trace('load and elaborate graph');

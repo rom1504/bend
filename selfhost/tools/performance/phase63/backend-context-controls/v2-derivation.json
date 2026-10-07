@@ -1,0 +1,55 @@
+{
+  "kind": "phase63-backend-context-scc-fixture-correction",
+  "reason": "Original SCC fixture used an unfilled ordinary law in live code; use established @unsafe mutual-def signatures. Original failure stays failed.",
+  "failedCampaign": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-contexts01/report.json",
+    "sha256": "8162bfa78dbb96cfb00d246a05b45b5adb77c8579656824ad68262ae064026bb"
+  },
+  "reference": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/choices/shared-scc-v1.bend",
+    "sha256": "ff635e7a8bc32ec03cf4d977441e63d86c18617924d6612812d11b71a19cc94a"
+  },
+  "parent": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/backend-context-controls/scc-alias.bend",
+      "sha256": "999ffdc9b5c98c63fc53fcde923f5a74f0bd98a700ddfd8c388decb95d38cde6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/backend-context-controls/cases.json",
+      "sha256": "050284a65fdbff11f41f47cf26124ae4110fa1091a1c135e54dfaa96a04e8de1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/backend-context-controls/run.mjs",
+      "sha256": "6a17ca07d0e7ea13d27e4c45fb77d84742e31ac9ea84dd099da29080820c79a6"
+    }
+  ],
+  "output": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/backend-context-controls/scc-alias-v2.bend",
+      "sha256": "81e69ad8832f36823e40ace1f949563b2a0befea698a4b18e4ec1ca2278705ab"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/backend-context-controls/cases-v2.json",
+      "sha256": "6b0e96708aa05daa07e6ae188be56edf3b0515a46be0b8927d11f9ff3f7ee496"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/backend-context-controls/run-v2.mjs",
+      "sha256": "aeebcff5dcf9b6ceb093c7935fc4aa3a9c1516baf39e51149b9b288c5fc5420e"
+    }
+  ],
+  "runnerReplacements": [
+    [
+      "kind:'phase63-real-source-backend-context-controls'",
+      "kind:'phase63-real-source-backend-context-controls-v2'"
+    ],
+    [
+      "Six real checked sources",
+      "The corrected SCC source"
+    ],
+    [
+      "path.join(import.meta.dirname,'cases.json')",
+      "path.join(import.meta.dirname,'cases-v2.json')"
+    ]
+  ],
+  "testsRun": false
+}

@@ -240,6 +240,33 @@ def f_complete_parsed(+source: FSource, +ns: String, +aliases: List<&2,KTerm>, +
     case FResult{book, error, imports}:
       FCompletion{f_graph_finish(source, ns, book, aliases, graph, sources, error), parsed}
 
+# Private admitted-prefix path: the scope indexes describe the exact prior
+# graph book. Contextual parsing and completion of the new source are unchanged.
+@unsafe
+def f_complete_source_indexed(+source: FSource, +ns: String, +header: FHeader, +sources: List<&2,FSource>, +graph: FGraph, +root: String, +names: KDef, +ctors: KDef) -> FCompletion:
+  match graph:
+    case FGraph{book, error, done}:
+      kc(FCompletion, String.is_empty(error),
+        u => f_complete_aliases_indexed(source, ns, header, graph, f_graph_aliases(f_header_imports(header), source, sources, root), book, sources, names, ctors),
+        u => FCompletion{graph, FResult{Nil{}, error, Nil{}}})
+
+@unsafe
+def f_complete_aliases_indexed(+source: FSource, +ns: String, +header: FHeader, +graph: FGraph, +aliases: List<&2,KTerm>, +prior: List<&2,KDef>, +sources: List<&2,FSource>, +names: KDef, +ctors: KDef) -> FCompletion:
+  f_complete_parsed_indexed(source, ns, graph, aliases, sources, names, f_source_body_indexed(source, header, FParseScope{prior, names, ctors, ns, aliases}, 0))
+
+@unsafe
+def f_complete_parsed_indexed(+source: FSource, +ns: String, +graph: FGraph, +aliases: List<&2,KTerm>, +sources: List<&2,FSource>, +names: KDef, +parsed: FResult) -> FCompletion:
+  match parsed:
+    case FResult{book, error, imports}:
+      FCompletion{f_graph_finish_indexed(source, ns, book, aliases, graph, sources, error, names), FResult{book, error, imports}}
+
+@unsafe
+def f_source_body_indexed(+source: FSource, +header: FHeader, +scope: FParseScope, +start: U32) -> FResult:
+  match source:
+    case FSource{name, path, text}: f_body_header(text, header, scope, start)
+    case FCompletedSource{name, path, text, parsed}: parsed
+    case FLocatedSource{inner, begin, end}: f_source_body_indexed(inner, header, scope, begin)
+
 @unsafe
 def f_completion_graph(+completion: FCompletion) -> FGraph:
   match completion:

@@ -1,0 +1,53 @@
+{
+  "kind": "phase63-real-source-backend-context-controls",
+  "cases": [
+    {
+      "id": "scc-alias-v2",
+      "file": "scc-alias-v2.bend",
+      "roots": [
+        "probe"
+      ],
+      "removedAliases": [
+        "Counter"
+      ],
+      "points": [
+        {
+          "name": "probe",
+          "args": [
+            {
+              "bigint": "0"
+            }
+          ],
+          "expected": 0
+        },
+        {
+          "name": "probe",
+          "args": [
+            {
+              "bigint": "1"
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "name": "probe",
+          "args": [
+            {
+              "bigint": "2"
+            }
+          ],
+          "expected": 8
+        },
+        {
+          "name": "probe",
+          "args": [
+            {
+              "bigint": "5"
+            }
+          ],
+          "expected": 17
+        }
+      ]
+    }
+  ]
+}

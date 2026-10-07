@@ -1,0 +1,75 @@
+{
+  "kind": "phase63-bootstrap-producer-derivation",
+  "dataOnly": true,
+  "targetExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/prepare-candidate-v5.py",
+    "sha256": "1e72fcf80a5386c9270eff0d6db4b661427283a11fe8cba906f41093f35a0bc6"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/prepare-bootstrap.py",
+    "sha256": "85d412656f7abd44688e0799013b4c9284a5d2c4df6cc09e221abbab600b8ead"
+  },
+  "edits": [
+    {
+      "old": "PARENT = Path(__file__).with_name('prepare-candidate-v4.py')",
+      "new": "PARENT = ROOT / 'selfhost/tools/performance/phase61/validation/prepare-candidate-v4.py'",
+      "count": 1
+    },
+    {
+      "old": "ROOT / 'selfhost/build/phase61'",
+      "new": "ROOT / 'selfhost/build/phase63'",
+      "count": 1
+    },
+    {
+      "old": "    current_core = Path(core['file']).read_text()",
+      "new": "    current_core = Path(core['file']).read_text()\n    reach = identity(Path(attempt['snapshot']['root']) / 'src/back/js/direct/reach.bend')\n    current_reach = Path(reach['file']).read_text()",
+      "count": 1
+    },
+    {
+      "old": "    out = fresh(output); out.mkdir(parents=True); (out / 'tools').mkdir()",
+      "new": "    plan_seams = []\n    expected_library = ('def jd_plan_library(+plan: JDPlan) -> String:\\n'\n        '  match plan:\\n'\n        '    case JDPlan{book, defs, texts, error}:\\n'\n        '      kc(String, String.is_empty(error),\\n'\n        '        u => String.concat(\"// Direct JavaScript prototype: native functions and live arguments.\\\\n\", String.concat(jd_plan_definitions(defs, texts), jd_exports(book, defs))),\\n'\n        '        u => jd_fail(error))')\n    actual_library = definition(current_reach, 'jd_plan_library')\n    assert actual_library == expected_library, 'JDPlan library decomposition changed'\n    plan_seams.append(dict(name='jd_plan_library', selectedBody=actual_library))\n    out = fresh(output); out.mkdir(parents=True); (out / 'tools').mkdir()",
+      "count": 1
+    },
+    {
+      "old": "source, identity(HISTORY/'full77.json'), identity(HISTORY/'driver.json'), identity(before['core']['file']), core]",
+      "new": "source, identity(HISTORY/'full77.json'), identity(HISTORY/'driver.json'), identity(before['core']['file']), core, reach]",
+      "count": 1
+    },
+    {
+      "old": "        # identity(new URL(...)) must point at the same unchanged dependencies too.",
+      "new": "        if name == 'expose-stages.mjs':\n            patches = [\n              (\"export function exposeStages(api,core,directory) {\", \"export const REACH_SHA=\"+repr(reach['sha256'])+\";\\nexport function exposeStages(api,core,reach,directory) {\"),\n              (\"  verify(api);verify(core);assert.equal(core.sha256,CORE_SHA,'Library decomposition source changed');\", \"  verify(api);verify(core);verify(reach);assert.equal(core.sha256,CORE_SHA,'Library decomposition source changed');assert.equal(reach.sha256,REACH_SHA,'Plan decomposition source changed');\"),\n              (\"  definitions:'jd_definitions',exports:'jd_exports',failure:'jd_fail'};\", \"  definitions:'jd_definitions',exports:'jd_exports',failure:'jd_fail',planDefinitions:'jd_plan_definitions'};\"),\n              (\"  verify(api);verify(core);\\n  const receipt=\", \"  verify(api);verify(core);verify(reach);\\n  const receipt=\"),\n              (\"helpers,scope:'Original checked API bytes/default export unchanged;\", \"helpers,reach,scope:'Original checked API bytes/default export unchanged;\"),\n            ]\n            for old,new in patches:\n                assert text.count(old)==1,(name,old);text=text.replace(old,new);edits.append(dict(old=old,new=new))\n        if name == 'emit-split.mjs':\n            patches = [\n              (\"  const derived=exposeStages(report.generator.api,core,out);report.derivation=derived.receipt;\", \"  const reach=identity(path.join(generator.snapshot.root,'src/back/js/direct/reach.bend'));assert.equal(reach.sha256,config.reach.sha256);report.inputs.push(reach);\\n  const derived=exposeStages(report.generator.api,core,reach,out);report.derivation=derived.receipt;\"),\n              (\"  const reachable=step('emitted-reachability',()=>api.jd_reach_selected(context,selected,roots));\\n  assert.equal(api.jd_reach_error(reachable),'');selected=api.jd_reach_defs(reachable);\", \"  const reachable=step('emitted-reachability',()=>api.jd_plan_selected(context,selected,roots));\\n  assert.equal(api.jd_plan_error(reachable),'');selected=api.jd_plan_defs(reachable);\"),\n              (\"  const overlaid=step('library-selected-context',()=>stages.selectedContext(context,selected),bookSize);\\n  const calls=step('library-callgraph',()=>stages.callgraph(overlaid,selected),bookSize);\\n  const valid=step('library-validity',()=>stages.valid(calls));\", \"  const calls=reachable.book;\\n  const valid=step('library-validity',()=>stages.valid(calls));\"),\n              (\"    const definitions=step('library-definitions',()=>stages.definitions(calls,selected),textSize);\", \"    const definitions=step('library-definitions',()=>stages.planDefinitions(selected,reachable.texts),textSize);\"),\n              (\"    const original=step('tiny-unsplit-equivalence',()=>api.jd_library_selected(context,selected),textSize);\\n    assert.equal(emitted,original,'Split pipeline changed emitted bytes');report.splitEqualsUnsplit=true;\", \"    const original=step('tiny-unsplit-equivalence',()=>api.jd_plan_library(reachable),textSize);\\n    assert.equal(emitted,original,'Split plan pipeline changed emitted bytes');\\n    const compatibility=step('tiny-compatibility-equivalence',()=>api.jd_library_selected(context,selected),textSize);\\n    assert.equal(emitted,compatibility,'Plan versus ordinary selected library changed emitted bytes');report.splitEqualsUnsplit=true;report.planEqualsCompatibility=true;\"),\n              (\"  const D=await import(pathToFileURL(driver.file)),api=await D.loadApi();\", \"  const graphHelper=identity(path.join(generator.snapshot.root,'tools/base-cache-graph.mjs'));report.inputs.push(graphHelper);\\n  const D=await import(pathToFileURL(driver.file)),api=await D.loadApi();assert.equal(D.baseCacheGraphPath,graphHelper.file);\"),\n            ]\n            for old,new in patches:\n                assert text.count(old)==1,(name,old);text=text.replace(old,new);edits.append(dict(old=old,new=new))\n        # identity(new URL(...)) must point at the same unchanged dependencies too.",
+      "count": 1
+    },
+    {
+      "old": "config.update(subjectAttempt=str(attempt_directory), subjectSource=source, core=core,",
+      "new": "config.update(subjectAttempt=str(attempt_directory), subjectSource=source, core=core, reach=reach,",
+      "count": 1
+    },
+    {
+      "old": "'rootsReference':identity(out/'roots-reference.json'),'admission':admission_id,'commands':commands,'librarySeams':library_seams,",
+      "new": "'rootsReference':identity(out/'roots-reference.json'),'admission':admission_id,'commands':commands,'librarySeams':library_seams,'planSeams':plan_seams,",
+      "count": 1
+    },
+    {
+      "old": "Phase61 candidate own-source generation",
+      "new": "Phase63 candidate own-source generation",
+      "count": 1
+    },
+    {
+      "old": "'scope':'Same split/driver algorithms. The two library decomposition bodies remain exact; selected context is either historical or the exact reviewed book_put_many call. The helper calls that actual selected function. Tiny split/unsplit byte equality remains mandatory; inherited checking is not a fresh self-check.'",
+      "new": "'scope':'Actual selected JDPlan pipeline with exact source-backed core/reach decomposition. Append-only helper exposes existing plan definitions; tiny output equals both ordinary plan library and compatibility selected library. Genuine checked provenance and inherited-checking scope retained; fresh self-check is separate.'",
+      "count": 1
+    },
+    {
+      "old": "    expected_library = ('def jd_plan_library(+plan: JDPlan) -> String:\\n'\n        '  match plan:\\n'\n        '    case JDPlan{book, defs, texts, error}:\\n'\n        '      kc(String, String.is_empty(error),\\n'\n        '        u => String.concat(\"// Direct JavaScript prototype: native functions and live arguments.\\\\n\", String.concat(jd_plan_definitions(defs, texts), jd_exports(book, defs))),\\n'\n        '        u => jd_fail(error))')\n",
+      "new": "    expected_library = 'def jd_plan_library(+plan: JDPlan) -> String:\\n  match plan:\\n    case JDPlan{book, defs, texts, error}: kc(String, String.eq(error, \"\"),\\n      u => \"// Direct JavaScript prototype: native functions and live arguments.\\\\n\" ++\\n        jd_plan_definitions(defs, texts) ++ jd_exports(book, defs),\\n      u => jd_fail(error))'\n",
+      "count": 1
+    },
+    {
+      "old": "        # identity(new URL(...)) must point at the same unchanged dependencies too.",
+      "new": "        if name == 'driver-probe.mjs':\n            patches = [\n              (\"  for(const name of ['typed-driver','assemble','compiler-abi','node-resource-args','native-build'])\", \"  for(const name of ['typed-driver','base-cache-graph','assemble','compiler-abi','node-resource-args','native-build'])\"),\n              (\"  assert.equal(D.apiPath,apiFile);assert.equal(identity(D.runtimePath).sha256,attempt.runtime.sha256);\", \"  assert.equal(D.apiPath,apiFile);assert.equal(identity(D.runtimePath).sha256,attempt.runtime.sha256);assert.equal(D.baseCacheGraphPath,path.join(project,'tools/base-cache-graph.mjs'));\"),\n            ]\n            for old,new in patches:\n                assert text.count(old)==1,(name,old);text=text.replace(old,new);edits.append(dict(old=old,new=new))\n        # identity(new URL(...)) must point at the same unchanged dependencies too.",
+      "count": 1
+    }
+  ]
+}

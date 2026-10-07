@@ -1,0 +1,773 @@
+{
+  "kind": "phase63-screen-analysis",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/analyze-screen.py",
+    "sha256": "8b1b89612d60adae778bbf43d6df2988cbc8ffbd16a249f258e23cedede99b24"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/report.json",
+    "sha256": "a5f5e9d28fb815918e5d1a8f829e6593fc6452cb44a3b995bfc8993be7f3afcf"
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/plan.json",
+    "sha256": "fbd691e514ca9b73be0e4c61cee36aca1151471fc1f43770ae05b8fbd433d895"
+  },
+  "binding": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/bindings.json",
+    "sha256": "3395cf89d9693da94157bb9c55cb1356473707357d3bcc8039255041f4b4600f"
+  },
+  "imageKinds": {
+    "baseline": "checked",
+    "candidate": "checked"
+  },
+  "rounds": 1,
+  "roles": [
+    "baseline",
+    "candidate",
+    "typescript"
+  ],
+  "cases": [
+    {
+      "id": "numeric-recurrence",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": 539.5058859999999,
+          "importApiAndFirstMs": 595.2009189999999,
+          "hostImportMs": 4.09120999999999,
+          "apiLoadMs": 51.60382299999998,
+          "maxRssKiB": 136572,
+          "peakTreeRssBytes": 139644928
+        },
+        "candidate": {
+          "firstRequestMs": 448.14892199999997,
+          "importApiAndFirstMs": 505.66568299999994,
+          "hostImportMs": 4.909336999999994,
+          "apiLoadMs": 52.60742400000001,
+          "maxRssKiB": 128280,
+          "peakTreeRssBytes": 131358720
+        },
+        "typescript": {
+          "firstRequestMs": 320.472228,
+          "importApiAndFirstMs": 580.668963,
+          "hostImportMs": 260.196735,
+          "apiLoadMs": 0,
+          "maxRssKiB": 132032,
+          "peakTreeRssBytes": 135200768
+        }
+      },
+      "ratios": {
+        "firstRequestMs": {
+          "candidateOverBaseline": 0.8306654915716712,
+          "candidateOverTypescript": 1.3984017423188384,
+          "baselineOverTypescript": 1.6834715737052883
+        },
+        "importApiAndFirstMs": {
+          "candidateOverBaseline": 0.849571408339845,
+          "candidateOverTypescript": 0.8708329792374316,
+          "baselineOverTypescript": 1.0250262316844372
+        }
+      }
+    },
+    {
+      "id": "test-map-set-ops",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": 2157.4963119999998,
+          "importApiAndFirstMs": 2213.3843319999996,
+          "hostImportMs": 4.149134000000004,
+          "apiLoadMs": 51.73888599999998,
+          "maxRssKiB": 178460,
+          "peakTreeRssBytes": 183074816
+        },
+        "candidate": {
+          "firstRequestMs": 1783.853845,
+          "importApiAndFirstMs": 1841.298884,
+          "hostImportMs": 4.8044570000000135,
+          "apiLoadMs": 52.64058200000002,
+          "maxRssKiB": 170848,
+          "peakTreeRssBytes": 174948352
+        },
+        "typescript": {
+          "firstRequestMs": 638.742786,
+          "importApiAndFirstMs": 900.362081,
+          "hostImportMs": 261.619295,
+          "apiLoadMs": 0,
+          "maxRssKiB": 157696,
+          "peakTreeRssBytes": 161751040
+        }
+      },
+      "ratios": {
+        "firstRequestMs": {
+          "candidateOverBaseline": 0.8268166369871414,
+          "candidateOverTypescript": 2.792757717345085,
+          "baselineOverTypescript": 3.377723176352241
+        },
+        "importApiAndFirstMs": {
+          "candidateOverBaseline": 0.8318929782683581,
+          "candidateOverTypescript": 2.04506489428668,
+          "baselineOverTypescript": 2.4583269094825413
+        }
+      }
+    }
+  ],
+  "geometricMeans": {
+    "firstRequestMs": {
+      "candidateOverBaseline": 0.8287388299111849,
+      "candidateOverTypescript": 1.976207797224206,
+      "baselineOverTypescript": 2.384596601363537
+    },
+    "importApiAndFirstMs": {
+      "candidateOverBaseline": 0.8406857255452105,
+      "candidateOverTypescript": 1.3345073827542329,
+      "baselineOverTypescript": 1.5874034043920084
+    }
+  },
+  "preparations": [
+    {
+      "role": "baseline",
+      "processSeconds": 6.226530808024108,
+      "basePrimeMs": 2752.272772,
+      "preflightMs": 5500.735616999999,
+      "workerElapsedMs": 6087.78774,
+      "peakTreeRssBytes": 591351808,
+      "image": {
+        "kind": "checked",
+        "role": "baseline",
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "sha256": "97f412afb692cc9f187144e418fb153f35f62fb6ff5eda698e28ebc3eaf260c8"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/snapshot/build/typed/snapshots/53e6c9a478002ea16896efb38028e00057028f51e58ccd9f68a35097ab6d9305/compiler.bend",
+          "sha256": "268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e"
+        },
+        "emission": null,
+        "checkedGenerator": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/attempt.json",
+          "sha256": "bf671a4e092f238879756b4c076f39733825b4390e6593795e8beea4c8561f13"
+        },
+        "strictExact": true,
+        "diagnosticDerivation": null,
+        "productionQualified": false,
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-baseline/stage/project/src/runtime.mjs",
+          "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+        },
+        "directRuntime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-baseline/stage/project/src/runtime/js/direct.mjs",
+          "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+          "sha256": "569f17b1e0ccd87da33dd07c2b7a7837f4578cae7d592e646f10eb4c2d2a313b"
+        }
+      },
+      "result": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-baseline.result.json",
+        "sha256": "5d7f230fe744db478d61d58091079b1ca4667898b91ea2d4d64bd881cfc8632f"
+      }
+    },
+    {
+      "role": "candidate",
+      "processSeconds": 6.692421421059407,
+      "basePrimeMs": 3155.988466,
+      "preflightMs": 5923.977347,
+      "workerElapsedMs": 6567.537596,
+      "peakTreeRssBytes": 599670784,
+      "image": {
+        "kind": "checked",
+        "role": "candidate",
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-candidate/stage/project/dist/api.mjs",
+          "sha256": "d8d0c45a14fd143a4eafa447ad70d961cfe95e03c96caf7c7212073461a8a4ed"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state05/snapshot/build/typed/snapshots/4b1ac022ec7ffa55806f0acf30095dccd5eb03a1ab6afbbe8e1c2e528e1ecce1/compiler.bend",
+          "sha256": "d9855a5ac29a1602c7e49a42aace17646c89f36ee3dc4510c1203259b4637e07"
+        },
+        "emission": null,
+        "checkedGenerator": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state05/attempt.json",
+          "sha256": "5967a37431a61c89cabacf3b9d8254351dedd18c8021ce93f5fc77198b424445"
+        },
+        "strictExact": true,
+        "diagnosticDerivation": null,
+        "productionQualified": false,
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-candidate/stage/project/src/runtime.mjs",
+          "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+        },
+        "directRuntime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-candidate/stage/project/src/runtime/js/direct.mjs",
+          "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-candidate/stage/project/tools/typed-driver.mjs",
+          "sha256": "345248c51b0337402d8d0bccf7bea9d8cd72b081f4e6f7e0a313031e3df958a8"
+        }
+      },
+      "result": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-candidate.result.json",
+        "sha256": "2d196f3f7f3b1d1fb63e64e11f2224d5ffb224d2eba9d7103c663be9290605bf"
+      }
+    },
+    {
+      "role": "typescript",
+      "processSeconds": 0.41184957104269415,
+      "basePrimeMs": null,
+      "preflightMs": 263.188727,
+      "workerElapsedMs": 300.668661,
+      "peakTreeRssBytes": 111185920,
+      "image": null,
+      "result": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-typescript.result.json",
+        "sha256": "bb8dcba249dfed518fb9e116c813ab94eee30b0aaa39b75a5791f5bd2717a5cb"
+      }
+    }
+  ],
+  "preparationReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/report.json",
+    "sha256": "705ea48e079b6cb29e9d3af97172bb81e2bdfb4adf4aea091b543b7e7506c6e4"
+  },
+  "screenWallSeconds": 9.353436278994195,
+  "measurementStageSeconds": 8.965087687945925,
+  "accounting": {
+    "start": "2026-10-07T20:04:24+00:00",
+    "cutoff": "2026-10-07T20:29:42.139980+00:00",
+    "elapsedSeconds": 1518.139979839325,
+    "completedSupervisorReceipts": 23,
+    "failedReceipts": 5,
+    "occupiedUnionSeconds": 128.91580080986023,
+    "occupiedFraction": 0.0849169394929605,
+    "uncoveredSeconds": 1389.2241790294647,
+    "unfinishedBeforeCutoff": [],
+    "intervals": [
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency01/preparation/prepare-baseline-process/process.json",
+          "sha256": "4e26e6422594cad716f67a59fdd650d89fb21044f97199268a38d740c546fc89"
+        },
+        "start": 1791404137.7243407,
+        "finish": 1791404144.0578673,
+        "complete": false,
+        "returncode": 1,
+        "processWallSeconds": 6.3335305450018495,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method01/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency01/preparation/prepare-baseline.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency01/preparation/prepare-baseline.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/preparation/prepare-baseline-process/process.json",
+          "sha256": "44b1b06b08a28900e3a0d80dce014ef6c0c5739ed4edbcbf9d29b493c448ba52"
+        },
+        "start": 1791404432.1901493,
+        "finish": 1791404438.531243,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 6.341096827061847,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/preparation/prepare-baseline.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/preparation/prepare-baseline.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/preparation/prepare-baseline_b1-process/process.json",
+          "sha256": "89c23dee8607f315148726ce3737d652f2b24cc72441846ecaa17da542dd89af"
+        },
+        "start": 1791404439.079434,
+        "finish": 1791404445.4718637,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 6.39243818691466,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/preparation/prepare-baseline_b1.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/preparation/prepare-baseline_b1.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/preparation/prepare-typescript-process/process.json",
+          "sha256": "ea1972a00debb6c750441bb86015eb8a899f74f714c8a3a477dcc93c56a21f79"
+        },
+        "start": 1791404438.6004894,
+        "finish": 1791404439.014386,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 0.413906162022613,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/preparation/prepare-typescript.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/preparation/prepare-typescript.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/screen/numeric-recurrence-0-baseline-process/process.json",
+          "sha256": "953d290e3d62dd2c9de93fac9daff1da29d249ffc06db30dedabd73ff3c614a7"
+        },
+        "start": 1791404528.5272322,
+        "finish": 1791404529.4277377,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 0.9005082809599116,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/screen/numeric-recurrence-0-baseline.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/screen/numeric-recurrence-0-baseline.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/screen/numeric-recurrence-0-typescript-process/process.json",
+          "sha256": "fad93ebcfcf76a96c6c4c1f258c75588cd5594f3a4b098489a839035618affc9"
+        },
+        "start": 1791404529.5109115,
+        "finish": 1791404530.2694745,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 0.7585687439423054,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/screen/numeric-recurrence-0-typescript.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/screen/numeric-recurrence-0-typescript.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/screen/test-map-set-ops-0-baseline-process/process.json",
+          "sha256": "6274f1482eaf9c8e10b56b9e7c0b8d0d823e6ae5ead6484e505c3fbc45a2f5d9"
+        },
+        "start": 1791404530.359361,
+        "finish": 1791404532.342711,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 1.983355386997573,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/screen/test-map-set-ops-0-baseline.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/screen/test-map-set-ops-0-baseline.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/screen/test-map-set-ops-0-typescript-process/process.json",
+          "sha256": "0cdf73ccb8c1f11db4e2caa0bd69e5d52267715b3f75f89d46c58937c8629b15"
+        },
+        "start": 1791404532.460996,
+        "finish": 1791404533.526216,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 1.065227232989855,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/screen/test-map-set-ops-0-typescript.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/baseline-latency02/screen/test-map-set-ops-0-typescript.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/codec01-execution/run.json",
+          "sha256": "4a374ebfa32fe7d3aac4a94eddb93e1254e2b116f794273742d57314ea895730"
+        },
+        "start": 1791404411.332753,
+        "finish": 1791404412.9428356,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 1.609457912039943,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "selfhost/tools/performance/phase63/cache-codec-probe.mjs",
+          "selfhost/build/typed/cache/base-97f412afb692cc9f187144e418fb153f35f62fb6ff5eda698e28ebc3eaf260c8-c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661-c04628cbf4595eb7fcc0fafe90e6e555f95b4b4691a19005149f3206f3d3f7db-frame2.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/codec01/report.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state01-build-plan/execution/run.json",
+          "sha256": "ad7a7d0eb6460c56d7a91c0ddbd90bc855259808290872d6725883a8541a1938"
+        },
+        "start": 1791404357.8281708,
+        "finish": 1791404363.8669941,
+        "complete": false,
+        "returncode": 1,
+        "processWallSeconds": 6.038191081956029,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+          "run",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state01-build-plan/development.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state01"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state02-build-plan/execution/run.json",
+          "sha256": "9b4a88437c242152c4c5e4f521d1635a5d20edc5a2bf6b36a0ecf8d5792e9626"
+        },
+        "start": 1791404463.6545253,
+        "finish": 1791404469.2916777,
+        "complete": false,
+        "returncode": 1,
+        "processWallSeconds": 5.636514765908942,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+          "run",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state02-build-plan/development.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state02"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state03-build-plan/execution/run.json",
+          "sha256": "b2c5365c628134c657d804c6d97b14beac7a88105014de0adc95188e259f8e05"
+        },
+        "start": 1791404655.8874962,
+        "finish": 1791404661.9286022,
+        "complete": false,
+        "returncode": 1,
+        "processWallSeconds": 6.040487238089554,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+          "run",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state03-build-plan/development.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state03"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state04-build-plan/execution/run.json",
+          "sha256": "71096c95a427abf9aaa7f9aa3b8f8c36a539edde92f9e50f69aa168e16fdadd8"
+        },
+        "start": 1791404755.8013673,
+        "finish": 1791404761.839527,
+        "complete": false,
+        "returncode": 1,
+        "processWallSeconds": 6.037547387066297,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+          "run",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state04-build-plan/development.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state04"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-baseline-process/process.json",
+          "sha256": "ee3ea45d4721f76efc20f5b6beaa361effebbf7fdfbadd0238728da250dd7864"
+        },
+        "start": 1791404953.476206,
+        "finish": 1791404959.702734,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 6.226530808024108,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-baseline.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-baseline.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-candidate-process/process.json",
+          "sha256": "356ba7b3f0157b2147c4cfb19b6cc984e05a7d0aedd2b997f622d46f4ccb0e68"
+        },
+        "start": 1791404959.7854092,
+        "finish": 1791404966.4778216,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 6.692421421059407,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-candidate.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-candidate.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-typescript-process/process.json",
+          "sha256": "8f00dfc6c8da023dcbdfe76617dcea4d132e5b68317c5d0e10848dcf385b47d0"
+        },
+        "start": 1791404966.6308813,
+        "finish": 1791404967.0427241,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 0.41184957104269415,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-typescript.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/preparation/prepare-typescript.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/numeric-recurrence-0-baseline-process/process.json",
+          "sha256": "2fe6e1efae5a4285825dcd0de1d3d1694bd0574b79e1ec6cea3adb028250bd7e"
+        },
+        "start": 1791404973.5504858,
+        "finish": 1791404974.4098325,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 0.8593502109870315,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/numeric-recurrence-0-baseline.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/numeric-recurrence-0-baseline.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/numeric-recurrence-0-candidate-process/process.json",
+          "sha256": "f8db9d5f7d42561dbcb3bd291c291140e20b754313181352c33107b139ef6087"
+        },
+        "start": 1791404974.5075555,
+        "finish": 1791404975.2652898,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 0.7577384910546243,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/numeric-recurrence-0-candidate.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/numeric-recurrence-0-candidate.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/numeric-recurrence-0-typescript-process/process.json",
+          "sha256": "c0f40289ca764b4e20eee81c84787658137af5b97b11d92b06cd09917db9010f"
+        },
+        "start": 1791404975.3681924,
+        "finish": 1791404976.1059942,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 0.7378059480106458,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/numeric-recurrence-0-typescript.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/numeric-recurrence-0-typescript.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/test-map-set-ops-0-baseline-process/process.json",
+          "sha256": "2dd9a28159ad158b7086a2962923c566883b3aae0720974663ec8affede8a4ff"
+        },
+        "start": 1791404976.2036216,
+        "finish": 1791404978.6970024,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 2.4933843249455094,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/test-map-set-ops-0-baseline.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/test-map-set-ops-0-baseline.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/test-map-set-ops-0-candidate-process/process.json",
+          "sha256": "5329bbb8a0d63bde0383f5db609c9c5f729549e6b9fadeaaab408a5927aa94b5"
+        },
+        "start": 1791404978.7962291,
+        "finish": 1791404980.8620756,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 2.0658520369324833,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/test-map-set-ops-0-candidate.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/test-map-set-ops-0-candidate.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/test-map-set-ops-0-typescript-process/process.json",
+          "sha256": "7d621666e84163855fb79d21066c88a693140ca8949d593c459c82a1b84b8bd5"
+        },
+        "start": 1791404981.0951068,
+        "finish": 1791404982.1399798,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 1.0448789990041405,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/latency-method02/worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/test-map-set-ops-0-typescript.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b1-latency/screen/test-map-set-ops-0-typescript.result.json"
+        ]
+      },
+      {
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-build-plan/execution/run.json",
+          "sha256": "315059884cd49872803a8988636206cba7b4ea8859f5d80ab6e18266ac5ea854"
+        },
+        "start": 1791404873.568608,
+        "finish": 1791404931.6407332,
+        "complete": true,
+        "returncode": 0,
+        "processWallSeconds": 58.071499835001305,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+          "run",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-build-plan/development.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state05"
+        ]
+      }
+    ],
+    "scope": "Recorded serial supervisor interval union, including failed targets, through last screen worker. No double-counting reused preparations or nested intervals. Uncovered wall is not classified as waiting; includes reasoning, source/tool work, review and unobserved activity. Subsequent targets excluded; incomplete intervals receive no invented finish."
+  },
+  "scope": "Preliminary two-source checked-B1 comparison; one sample per cell, fixed role order. Complete raw bytes match qualified references. No B2, broad-population, per-feature attribution, statistical-significance or emitted-program speed claim.",
+  "preparationWallSeconds": 14.184760569944046
+}

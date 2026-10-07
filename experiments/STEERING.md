@@ -6,7 +6,9 @@ The user authorized implementation toward TypeScript compilation parity.
 
 Phase62 investigation is complete. Phase63 prototypes retain a checked Base
 world/parser indexes, carry shared validated graphs, and lower reachable
-functions once in one owned context. No speed result or promotion exists yet.
+functions once in one owned context. State05 passes checked/B2 construction and
+23 raw module comparisons. Two-source B2 screens show12–14% less compilation
+time; full release qualification and a balanced broad comparison remain pending.
 Canonical annotated versus old pruned backend context is an explicit semantic
 qualification obligation. Prepared state requires exact private seed admission.
 

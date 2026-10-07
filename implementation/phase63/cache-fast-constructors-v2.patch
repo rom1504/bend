@@ -1,0 +1,135 @@
+--- a/selfhost/tools/base-cache-graph.mjs
++++ b/selfhost/tools/base-cache-graph.mjs
+@@ -19,7 +19,6 @@
+ const byTag=new Map(specs.map((s,i)=>[s[0],i]));
+ const object=x=>x!==null&&typeof x==='object'&&!Array.isArray(x);
+ const uint=x=>Number.isSafeInteger(x)&&x>=0&&x<=U32_MAX;
+-const listKinds=new Set(['terms','defs','strings']);
+ const fail=()=>{throw Error('Invalid prepared Base graph');};
+ const scalar=t=>t==='s'||t==='u'||t==='b';
+ 
+@@ -63,47 +62,95 @@
+   return {bytes:Buffer.from(JSON.stringify([1,baseCount,indexes,records.slice(baseCount)])),records,intern};
+ }
+ 
+-// References are strictly backwards, so cycles and dangling references cannot
+-// enter the compiler. Each distinct node is type/range checked once while built.
++// References are strictly backwards and constructor-specific checks run before
++// allocation. Fixed literal shapes match compiler-produced named ADTs. Wire rows
++// stay unchanged: numeric references are never replaced with object pointers.
+ export function decodeBaseGraph(bytes,{base=null,range,termAbi=1,rootKinds}={}) {
+   if(bytes.length>128*1024*1024)fail();
+   const wire=JSON.parse(bytes.toString('utf8'));
+   if(!Array.isArray(wire)||wire.length!==4||wire[0]!==1||!Array.isArray(wire[2])||!Array.isArray(wire[3])||
+     wire[1]!== (base?.nodes.length??0)||!Array.isArray(rootKinds)||wire[2].length!==rootKinds.length||
+     !range||!uint(range.begin)||range.begin===0||!uint(range.end)||range.end<=range.begin||wire[1]+wire[3].length>1048576)fail();
++  // The masks are private decode state: an empty list accepts each list family.
++  const TERM=1,DEF=2,TERMS=4,DEFS=8,STRINGS=16,EMPTY=28,CHECKED=32,FRESH=64,WORLD=128,FRONTEND=256;
+   const nodes=base?base.nodes.slice():[],kinds=base?base.kinds.slice():[];
+-  const accepts=(expected,actual)=>expected===actual||(actual==='empty'&&listKinds.has(expected));
+-  const ref=(index,type)=>{
+-    if(!Number.isSafeInteger(index)||index<0||index>=nodes.length||!accepts(type,kinds[index]))fail();
++  const u32=x=>typeof x==='number'&&(x>>>0)===x;
++  const ref=(index,mask)=>{
++    if(!u32(index)||index>=nodes.length||!(kinds[index]&mask))fail();
+     return nodes[index];
+   };
+-  for(const row of wire[3]){
+-    if(!Array.isArray(row)||!Number.isSafeInteger(row[0]))fail();
+-    const spec=specs[row[0]];
+-    if(!spec||row.length!==spec[2].length+1)fail();
+-    const [tag,kind,fields]=spec,node={$:tag};let actualKind=kind;
+-    for(let i=0;i<fields.length;i++){
+-      const [key,type]=fields[i],value=row[i+1];
+-      if(type==='s'){if(typeof value!=='string')fail();node[key]=value;}
+-      else if(type==='u'){if(!uint(value))fail();node[key]=value;}
+-      else if(type==='b'){if(typeof value!=='boolean')fail();node[key]=value;}
+-      else if(type==='head'){
+-        if(typeof value==='string'){node.head=value;actualKind='strings';}
++  const span=(a,b)=>{
++    if(!u32(a)||!u32(b)||!((a===0&&b===0)||(a>=range.begin&&b>=a&&b<range.end)))fail();
++  };
++  const records=wire[3];
++  for(let i=0;i<records.length;i++){
++    const r=records[i];if(!Array.isArray(r))fail();
++    let node,kind;
++    switch(r[0]){
++      case 0:
++        if(r.length!==1)fail();
++        node={$:'Nil'};kind=EMPTY;break;
++      case 1: {
++        if(r.length!==3)fail();
++        const head=r[1];
++        if(typeof head==='string'){kind=STRINGS;node={$:'Con',head,tail:ref(r[2],STRINGS)};}
+         else {
+-          if(!Number.isSafeInteger(value)||value<0||value>=nodes.length||!['term','def'].includes(kinds[value]))fail();
+-          node.head=nodes[value];actualKind=kinds[value]==='term'?'terms':'defs';
++          if(!u32(head)||head>=nodes.length)fail();
++          const hkind=kinds[head];
++          if(hkind===TERM)kind=TERMS;else if(hkind===DEF)kind=DEFS;else fail();
++          node={$:'Con',head:nodes[head],tail:ref(r[2],kind)};
+         }
+-      }else node[key]=ref(value,type==='tail'?actualKind:type);
++        break;
++      }
++      case 2:
++        if(r.length!==9||typeof r[1]!=='string'||typeof r[2]!=='string'||!u32(r[3])||!u32(r[4]))fail();
++        span(r[7],r[8]);
++        node={$:'KTerm',tag:r[1],name:r[2],id:r[3],quant:r[4],kids:ref(r[5],TERMS),removed:ref(r[6],STRINGS),originBegin:r[7],originEnd:r[8]};kind=TERM;break;
++      case 3:
++        if(r.length!==9||termAbi!==1||typeof r[1]!=='string'||!u32(r[2])||!u32(r[3])||typeof r[8]!=='boolean')fail();
++        span(r[6],r[7]);
++        node={$:'KLambda',name:r[1],id:r[2],quant:r[3],kids:ref(r[4],TERMS),removed:ref(r[5],STRINGS),originBegin:r[6],originEnd:r[7],quantityPresent:r[8]};kind=TERM;break;
++      case 4:
++        if(r.length!==6||termAbi!==1||!u32(r[2])||typeof r[3]!=='string')fail();
++        if(r[1]==='String'){
++          if(r[2]!==0)fail();
++          for(const c of r[3]){const n=c.codePointAt(0);if(n>=0xd800&&n<=0xdfff)fail();}
++        }else if((r[1]!=='Nat'&&r[1]!=='U32'&&r[1]!=='F32')||r[3]!=='')fail();
++        span(r[4],r[5]);
++        node={$:'KLiteral',kind:r[1],number:r[2],text:r[3],originBegin:r[4],originEnd:r[5]};kind=TERM;break;
++      case 5:
++        if(r.length!==10||typeof r[1]!=='string'||typeof r[2]!=='string'||!u32(r[3])||!u32(r[4])||typeof r[8]!=='boolean'||typeof r[9]!=='boolean')fail();
++        node={$:'KDef',name:r[1],kind:r[2],arity:r[3],templates:r[4],typ:ref(r[5],TERM),value:ref(r[6],TERM),ctors:ref(r[7],DEFS),native:r[8],unsafe:r[9]};kind=DEF;break;
++      case 6:
++        if(r.length!==3||!u32(r[1]))fail();
++        node={$:'KIndexLeaf',hash:r[1],bucket:ref(r[2],DEFS)};kind=DEF;break;
++      case 7:
++        if(r.length!==5||!u32(r[1])||!u32(r[2]))fail();
++        node={$:'KIndexNode',hash:r[1],mask:r[2],left:ref(r[3],DEF),right:ref(r[4],DEF)};kind=DEF;break;
++      case 8:
++        if(r.length!==6||!u32(r[1])||!u32(r[2])||!u32(r[3])||typeof r[5]!=='boolean')fail();
++        node={$:'KBasePrefixState',bound:r[1],delta:r[2],stamp:r[3],patches:ref(r[4],DEFS),ready:r[5]};kind=CHECKED;break;
++      case 9:
++        if(r.length!==3||!u32(r[1])||typeof r[2]!=='boolean')fail();
++        node={$:'FFreshPrefixState',next:r[1],ready:r[2]};kind=FRESH;break;
++      case 10:
++        if(r.length!==7)fail();
++        node={$:'KBasePreparedWorld',state:ref(r[1],CHECKED),prefix:ref(r[2],DEFS),final:ref(r[3],DEFS),book:ref(r[4],DEFS),checked:ref(r[5],DEFS),seen:ref(r[6],DEFS)};kind=WORLD;break;
++      case 11:
++        if(r.length!==5||!u32(r[3])||typeof r[4]!=='boolean')fail();
++        node={$:'FReadyPrefixState',names:ref(r[1],DEF),ctors:ref(r[2],DEF),count:r[3],ready:r[4]};kind=FRONTEND;break;
++      default:fail();
+     }
+-    if(kind==='term'){
+-      const a=node.originBegin,b=node.originEnd;
+-      if(!((a===0&&b===0)||(a>=range.begin&&b>=a&&b<range.end)))fail();
+-      if(tag!=='KTerm'&&termAbi!==1)fail();
+-      if(tag==='KLiteral'&&(!['Nat','U32','F32','String'].includes(node.kind)||
+-        (node.kind==='String'?(node.number!==0||Array.from(node.text).some(c=>{const n=c.codePointAt(0);return n>=0xd800&&n<=0xdfff;})):node.text!=='')))fail();
++    nodes.push(node);kinds.push(kind);
++  }
++  const masks={term:TERM,def:DEF,terms:TERMS,defs:DEFS,strings:STRINGS,checked:CHECKED,fresh:FRESH,world:WORLD,frontend:FRONTEND};
++  const roots=wire[2].map((id,i)=>{
++    if(id===null)return null;
++    if(rootKinds[i]==='empty'){
++      if(!u32(id)||id>=nodes.length||kinds[id]!==EMPTY)fail();
++      return nodes[id];
+     }
+-    nodes.push(node);kinds.push(actualKind);
+-  }
+-  const roots=wire[2].map((id,i)=>id===null?null:ref(id,rootKinds[i]));
++    return ref(id,Object.hasOwn(masks,rootKinds[i])?masks[rootKinds[i]]:0);
++  });
+   return {roots,nodes,kinds};
+ }

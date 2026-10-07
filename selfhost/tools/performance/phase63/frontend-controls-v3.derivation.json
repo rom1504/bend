@@ -1,0 +1,39 @@
+{
+  "kind": "phase63-frontend-controls-v3-derivation",
+  "parent": {
+    "file": "selfhost/tools/performance/phase63/frontend-controls-v2.mjs",
+    "sha256": "cf2e9cbd859eb4f0048136b2df93729de92deb9f430b2e207d35c5612eeba1e3"
+  },
+  "result": {
+    "file": "selfhost/tools/performance/phase63/frontend-controls-v3.mjs",
+    "sha256": "a5dd65b7f7b46a952282499379abba8f4b717c34a83bb508b98c00b73c704032"
+  },
+  "preservedFailure": "selfhost/build/phase63/state05-frontend02/report.json",
+  "reason": "Phase5 historical fixture accept flags predate current upstream semantics. The old current route rejects namespaced-base-shadow before candidate comparison. All ten old loader helper bodies were read-only compared identical between frozen Phase61 state08 and Phase63 state05. Use exact current old-route outcome/completions/trace/diagnostic as optimization oracle for maintained fixtures; record historical flags and drift without assigning new expected outcomes. Qualified supplied real sources still require acceptance; unexpected non-frontend exceptions still fail. This is differential optimization validation, not fresh upstream conformance qualification.",
+  "unchangedOldHelpers": [
+    "f_complete_source",
+    "f_complete_aliases",
+    "f_complete_parsed",
+    "f_source_body",
+    "f_complete_seed",
+    "f_graph_finish",
+    "f_graph_finish_alias",
+    "f_graph_finish_module",
+    "f_graph_result_at",
+    "f_graph_trace"
+  ],
+  "edits": [
+    {
+      "before": "const cases=[...sourceArgs.map(file=>[path.resolve(file),true]),...fixtures.map(([file,ok])=>[path.join(tests,file),ok])];",
+      "after": "const cases=[...sourceArgs.map(file=>[path.resolve(file),true,null]),...fixtures.map(([file,ok])=>[path.join(tests,file),null,ok])];"
+    },
+    {
+      "before": "for(const [file,expected]of cases){pin(file);const old=load(file,false),ready=load(file,true);assert.equal(old.ok,expected,file+' expected parser result');",
+      "after": "for(const [file,required,historicalExpected]of cases){pin(file);const old=load(file,false),ready=load(file,true);if(required!==null)assert.equal(old.ok,required,file+' qualified real source must parse');if(!old.ok)assert(['parse','load'].includes(old.error.phase),file+' old route must report a frontend diagnostic');"
+    },
+    {
+      "before": "eligible:old.carrier.ready,error:ready.error??null,observationSha256:",
+      "after": "eligible:old.carrier.ready,historicalExpected,historicalExpectationDrift:historicalExpected!==null&&old.ok!==historicalExpected,oldAccepted:old.ok,oldError:old.error??null,error:ready.error??null,observationSha256:"
+    }
+  ]
+}

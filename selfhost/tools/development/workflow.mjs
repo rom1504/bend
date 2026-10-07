@@ -58,8 +58,8 @@ export function verifyBootstrap(api, reportFile, base) {
 export function validatedCache(directory, api, base) {
   const apiSha=identity(api).sha256,baseSha=identity(base).sha256,canonical=fs.realpathSync(base);
   const stem=path.join(directory,`base-${apiSha}-${baseSha}-${digest(canonical)}`);
-  const frame2=stem+'-frame2.json',frame1=stem+'-frame1.json';
-  const framed=fs.existsSync(frame2)?frame2:frame1,isFrame=fs.existsSync(framed);
+  const frame3=stem+'-frame3.json',frame2=stem+'-frame2.json',frame1=stem+'-frame1.json';
+  const framed=fs.existsSync(frame3)?frame3:fs.existsSync(frame2)?frame2:frame1,isFrame=fs.existsSync(framed);
   const file=isFrame?framed:stem+'.json';
   // A corrupt framed artifact is rejected; it never falls through to old bytes.
   const c=isFrame?decodeBaseCacheFrame(fs.readFileSync(file)):json(file);
@@ -87,7 +87,7 @@ function selectedCases(file) {
 function snapshot(config, output) {
   const root=path.join(output,'snapshot'),sources=[];
   const files=[...walk(path.join(config.project,'src')),...walk(path.join(config.project,'tools/conformance')).filter(f=>f.endsWith('.mjs')),
-    ...['typed-driver','stage0-library','assemble','compiler-abi','native-build','node-resource-args'].map(name=>path.join(config.project,'tools',name+'.mjs')),
+    ...['typed-driver','stage0-library','assemble','compiler-abi','base-cache-graph','native-build','node-resource-args'].map(name=>path.join(config.project,'tools',name+'.mjs')),
     ...walk(path.join(config.project,'tools/development')).filter(f=>f.endsWith('.mjs')),
     ...walk(path.join(config.project,'tests/frontend/phase2-rules'))];
   for(const file of files){const original=identity(file),relative=path.relative(config.project,file),destination=path.join(root,relative);fs.mkdirSync(path.dirname(destination),{recursive:true});fs.copyFileSync(file,destination);sources.push({original,frozen:identity(destination)});}

@@ -1,0 +1,23 @@
+{
+  "kind": "phase63-frontend-controls-v2-derivation",
+  "parent": {
+    "file": "selfhost/tools/performance/phase63/frontend-controls.mjs",
+    "sha256": "19c73e8a25ea6cc8c6e6d648eb7b184c1d7fb7ab896eb62cfba3afff2fa6bc07"
+  },
+  "result": {
+    "file": "selfhost/tools/performance/phase63/frontend-controls-v2.mjs",
+    "sha256": "cf2e9cbd859eb4f0048136b2df93729de92deb9f430b2e207d35c5612eeba1e3"
+  },
+  "reason": "The maintained ctor-top-name fixture has no Base import. All parser/trace/index checks passed up to an overbroad controller assertion that every accepted fixture must use the ready-prefix path. Require ready-path use exactly when the old carrier admits a leading Base prefix; retain no-Base fixture as fallback coverage. Production code unchanged.",
+  "preservedFailure": "selfhost/build/phase63/state05-frontend01/report.json",
+  "edits": [
+    {
+      "before": "assert(ready.readySteps>0,file+' ready path reached');",
+      "after": "assert.equal(ready.readySteps>0,old.carrier.ready,file+' ready path iff admitted leading prefix');"
+    },
+    {
+      "before": "steps:ready.steps,readySteps:ready.readySteps,error:",
+      "after": "steps:ready.steps,readySteps:ready.readySteps,eligible:old.carrier.ready,error:"
+    }
+  ]
+}

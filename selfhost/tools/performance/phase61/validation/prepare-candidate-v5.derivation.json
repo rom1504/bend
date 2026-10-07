@@ -1,0 +1,65 @@
+{
+  "kind": "phase61-explicit-driver-export-admission-producer",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/prepare-candidate-v4.py",
+    "sha256": "ccd302ef74f60696d9e9a474235d83b00e7363b983408847cf65a60a92dcb144"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/prepare-candidate-v5.py",
+    "sha256": "1e72fcf80a5386c9270eff0d6db4b661427283a11fe8cba906f41093f35a0bc6"
+  },
+  "edits": [
+    {
+      "old": "PARENT = Path(__file__).with_name('prepare-candidate-v3.py')\nPARENT_SHA = 'de4f2632bb5a5614c4e2d5649b7970f017ca13555d3a4a7097accd8892b06cb3'",
+      "new": "PARENT = Path(__file__).with_name('prepare-candidate-v4.py')\nPARENT_SHA = 'ccd302ef74f60696d9e9a474235d83b00e7363b983408847cf65a60a92dcb144'"
+    },
+    {
+      "old": "SELECTED_DRIVER = ROOT / 'selfhost/tools/performance/phase61/cache/typed-driver-combined03.mjs'\nSELECTED_DRIVER_SHA = '30ec69e6677a6696ca6dd4f4779560968c48d93e583b8ebf5c2d6308f75e989b'\nADDED_ROOTS =",
+      "new": "BASE_ADDED_ROOTS ="
+    },
+    {
+      "old": "def plan(attempt_directory, output):",
+      "new": "def plan(attempt_directory, output, admission_file):"
+    },
+    {
+      "old": "    before = read(HISTORY / 'full77.json')",
+      "new": "    before = read(HISTORY / 'full77.json')\n    admission_id = identity(admission_file); admission = read(admission_file)\n    assert admission['kind'] == 'phase61-bootstrap-export-admission' and admission['version'] == 1\n    extra = admission['addedRoots']\n    assert isinstance(extra,list) and all(isinstance(x,str) and x for x in extra) and len(extra)==len(set(extra))\n    assert not (set(extra) & (set(before['roots']) | BASE_ADDED_ROOTS)), 'Duplicate supplementary exports'\n    added_roots = BASE_ADDED_ROOTS | set(extra)\n    selected_driver = identity(admission['driver']['file'])\n    assert selected_driver['sha256'] == admission['driver']['sha256']\n    if 'bytes' in admission['driver']: assert Path(selected_driver['file']).stat().st_size == admission['driver']['bytes']"
+    },
+    {
+      "old": "    selected_driver = identity(SELECTED_DRIVER)\n    assert selected_driver['sha256'] == SELECTED_DRIVER_SHA\n",
+      "new": ""
+    },
+    {
+      "old": "    assert set(roots) == set(before['roots']) | ADDED_ROOTS, 'Unexpected checked bootstrap export set'\n    assert [x for x in roots if x not in ADDED_ROOTS] == before['roots'], 'Historical export order changed'\n    inputs.append(selected_driver)",
+      "new": "    assert set(roots) == set(before['roots']) | added_roots, 'Unexpected checked bootstrap export set'\n    assert [x for x in roots if x not in added_roots] == before['roots'], 'Historical export order changed'\n    inputs.extend([admission_id,selected_driver])"
+    },
+    {
+      "old": "'historical':identity(HISTORY/'full77.json'),'addedRoots':sorted(ADDED_ROOTS)}",
+      "new": "'historical':identity(HISTORY/'full77.json'),'addedRoots':sorted(added_roots),\n                       'admission':admission_id,'baseAddedRoots':sorted(BASE_ADDED_ROOTS)}"
+    },
+    {
+      "old": "'rootsReference':identity(out/'roots-reference.json'),'commands':commands,'librarySeams':library_seams,",
+      "new": "'rootsReference':identity(out/'roots-reference.json'),'admission':admission_id,'commands':commands,'librarySeams':library_seams,"
+    },
+    {
+      "old": "    assert reference['attempt']==p['attempt'] and e['roots']==reference['roots']",
+      "new": "    assert reference['attempt']==p['attempt'] and e['roots']==reference['roots']\n    assert reference['admission']==p['admission'] and identity(p['admission']['file'])==p['admission']\n    admission=read(p['admission']['file']); assert admission['kind']=='phase61-bootstrap-export-admission' and admission['version']==1\n    assert identity(admission['driver']['file'])['sha256']==admission['driver']['sha256']\n    assert read(e['config']['file'])['driver']['sha256']==admission['driver']['sha256']"
+    },
+    {
+      "old": "'runtime':e['directRuntime'],'roots':e['roots'],'rootsReference':p['rootsReference']}",
+      "new": "'runtime':e['directRuntime'],'roots':e['roots'],'rootsReference':p['rootsReference'],'admission':p['admission']}"
+    },
+    {
+      "old": "for key in ['attempt','emission','comparison','source','b1','b2','runtime','rootsReference']:",
+      "new": "for key in ['attempt','emission','comparison','source','b1','b2','runtime','rootsReference','admission']:"
+    },
+    {
+      "old": "a=sub.add_parser('plan');a.add_argument('attempt');a.add_argument('out')",
+      "new": "a=sub.add_parser('plan');a.add_argument('attempt');a.add_argument('out');a.add_argument('--admission',required=True)"
+    },
+    {
+      "old": "if args.mode=='plan': plan(args.attempt,args.out)",
+      "new": "if args.mode=='plan': plan(args.attempt,args.out,args.admission)"
+    }
+  ]
+}

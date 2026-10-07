@@ -1,0 +1,353 @@
+{
+  "kind": "phase61-state04-broad-completed-triples-analysis",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/state04-b2-latency01/broad240/report.json",
+      "sha256": "e4b57bf836d2ea37b63bd02b7ca5477c6f052482db18000acace88ba249bb2b8",
+      "bytes": 945446
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/state04-b2-latency01/broad-tail60/report.json",
+      "sha256": "e9e5a8efee8ebda1c0d78b9fa678d90136657f91785d676e6757bbec03590187",
+      "bytes": 460275
+    }
+  ],
+  "scope": "Twenty complete original source triples plus three complete fresh tail triples; single round, fixed role order, no pooling of repeated Map baseline/candidate observations. Original broad campaign remains failed. Compilation raw-byte oracles passed; no new generated-program runtime execution.",
+  "sources": 23,
+  "observationsUsed": 69,
+  "successfulWorkersObserved": 71,
+  "originalFailures": [
+    {
+      "stage": "sample",
+      "role": "typescript",
+      "case": "map-churn",
+      "sample": 0,
+      "process": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/state04-b2-latency01/broad240/map-churn-0-typescript-process",
+      "reason": "deadline"
+    },
+    {
+      "stage": "sample",
+      "role": "baseline",
+      "case": "numeric-recurrence",
+      "sample": 0,
+      "reason": "campaign-deadline"
+    },
+    {
+      "stage": "sample",
+      "role": "candidate",
+      "case": "numeric-recurrence",
+      "sample": 0,
+      "reason": "campaign-deadline"
+    },
+    {
+      "stage": "sample",
+      "role": "typescript",
+      "case": "numeric-recurrence",
+      "sample": 0,
+      "reason": "campaign-deadline"
+    },
+    {
+      "stage": "sample",
+      "role": "baseline",
+      "case": "record-aggregation",
+      "sample": 0,
+      "reason": "campaign-deadline"
+    },
+    {
+      "stage": "sample",
+      "role": "candidate",
+      "case": "record-aggregation",
+      "sample": 0,
+      "reason": "campaign-deadline"
+    },
+    {
+      "stage": "sample",
+      "role": "typescript",
+      "case": "record-aggregation",
+      "sample": 0,
+      "reason": "campaign-deadline"
+    }
+  ],
+  "sourceRows": [
+    {
+      "id": "mandelbrot",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1775.639873,
+        "candidate": 1231.135871,
+        "typescript": 685.8228810000002
+      },
+      "candidateOverBaseline": 0.6933477276109804,
+      "candidateOverTypescript": 1.7951221884065423
+    },
+    {
+      "id": "editdist",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1602.9474750000004,
+        "candidate": 1126.6953280000002,
+        "typescript": 643.678864
+      },
+      "candidateOverBaseline": 0.7028897362965683,
+      "candidateOverTypescript": 1.7503997583490645
+    },
+    {
+      "id": "tree-bitonic",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1554.5958979999996,
+        "candidate": 1044.561103,
+        "typescript": 620.4646299999998
+      },
+      "candidateOverBaseline": 0.671918087744755,
+      "candidateOverTypescript": 1.6835143415024323
+    },
+    {
+      "id": "lexer",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1628.7489760000003,
+        "candidate": 1206.5657729999998,
+        "typescript": 661.697193
+      },
+      "candidateOverBaseline": 0.7407929587548668,
+      "candidateOverTypescript": 1.823440972342163
+    },
+    {
+      "id": "symreg",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1595.7617670000002,
+        "candidate": 1134.857233,
+        "typescript": 640.4065520000003
+      },
+      "candidateOverBaseline": 0.7111695846263497,
+      "candidateOverTypescript": 1.7720887293482899
+    },
+    {
+      "id": "test-morning-program",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1940.7292820000002,
+        "candidate": 1377.6636559999997,
+        "typescript": 833.734858
+      },
+      "candidateOverBaseline": 0.7098690522050872,
+      "candidateOverTypescript": 1.652400211866876
+    },
+    {
+      "id": "test-evening-program",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 2235.0929889999998,
+        "candidate": 1670.243344,
+        "typescript": 1063.84472
+      },
+      "candidateOverBaseline": 0.7472813669140815,
+      "candidateOverTypescript": 1.5700067054898763
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1491.3990639999997,
+        "candidate": 1016.782622,
+        "typescript": 622.2915830000002
+      },
+      "candidateOverBaseline": 0.6817642886759919,
+      "candidateOverTypescript": 1.6339327893496507
+    },
+    {
+      "id": "test-map-set-ops",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 2684.805215,
+        "candidate": 2260.0788949999996,
+        "typescript": 873.4862299999999
+      },
+      "candidateOverBaseline": 0.8418036743868585,
+      "candidateOverTypescript": 2.5874236105588064
+    },
+    {
+      "id": "raytrace",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 2071.7277619999995,
+        "candidate": 1577.8676460000001,
+        "typescript": 820.1580189999999
+      },
+      "candidateOverBaseline": 0.7616192025523479,
+      "candidateOverTypescript": 1.9238580973991555
+    },
+    {
+      "id": "local-row",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1642.121243,
+        "candidate": 1153.036646,
+        "typescript": 647.3780320000001
+      },
+      "candidateOverBaseline": 0.702162919403875,
+      "candidateOverTypescript": 1.781087075874085
+    },
+    {
+      "id": "local-fold",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1309.307613,
+        "candidate": 819.7187630000002,
+        "typescript": 600.317055
+      },
+      "candidateOverBaseline": 0.6260704168073911,
+      "candidateOverTypescript": 1.3654763864738113
+    },
+    {
+      "id": "scalar-region",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1451.4600060000002,
+        "candidate": 885.8856179999999,
+        "typescript": 610.9325829999998
+      },
+      "candidateOverBaseline": 0.6103410458007479,
+      "candidateOverTypescript": 1.450054625749107
+    },
+    {
+      "id": "mandelbrot-grid",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1866.1118230000002,
+        "candidate": 1309.0273690000004,
+        "typescript": 687.8713569999999
+      },
+      "candidateOverBaseline": 0.7014731662197932,
+      "candidateOverTypescript": 1.903011886857793
+    },
+    {
+      "id": "raytrace-active",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 2131.796201,
+        "candidate": 1582.534255,
+        "typescript": 818.2148099999999
+      },
+      "candidateOverBaseline": 0.74234781648342,
+      "candidateOverTypescript": 1.9341305432982814
+    },
+    {
+      "id": "closures",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1325.6060470000002,
+        "candidate": 824.565953,
+        "typescript": 598.166669
+      },
+      "candidateOverBaseline": 0.6220294142940039,
+      "candidateOverTypescript": 1.3784886315690053
+    },
+    {
+      "id": "list-pipeline",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1873.95459,
+        "candidate": 1332.2839279999998,
+        "typescript": 760.2585580000001
+      },
+      "candidateOverBaseline": 0.7109478186448477,
+      "candidateOverTypescript": 1.7524089850495306
+    },
+    {
+      "id": "bst",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1504.765499,
+        "candidate": 1044.664745,
+        "typescript": 626.7449229999999
+      },
+      "candidateOverBaseline": 0.6942375710329866,
+      "candidateOverTypescript": 1.6668100636532803
+    },
+    {
+      "id": "unicode-text",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1641.3574219999998,
+        "candidate": 1208.8411999999998,
+        "typescript": 665.72378
+      },
+      "candidateOverBaseline": 0.736488703677364,
+      "candidateOverTypescript": 1.815829982819601
+    },
+    {
+      "id": "expression",
+      "report": "broad240",
+      "combinedMs": {
+        "baseline": 1382.352865,
+        "candidate": 877.1236660000001,
+        "typescript": 597.5190119999999
+      },
+      "candidateOverBaseline": 0.63451502739136,
+      "candidateOverTypescript": 1.4679426903323376
+    },
+    {
+      "id": "map-churn",
+      "report": "broad-tail60",
+      "combinedMs": {
+        "baseline": 1940.0996250000003,
+        "candidate": 1390.459731,
+        "typescript": 797.4436929999999
+      },
+      "candidateOverBaseline": 0.7166950155974592,
+      "candidateOverTypescript": 1.7436462827476398
+    },
+    {
+      "id": "numeric-recurrence",
+      "report": "broad-tail60",
+      "combinedMs": {
+        "baseline": 1255.8754939999997,
+        "candidate": 819.9933469999999,
+        "typescript": 628.6795920000001
+      },
+      "candidateOverBaseline": 0.6529256689198524,
+      "candidateOverTypescript": 1.3043104268604917
+    },
+    {
+      "id": "record-aggregation",
+      "report": "broad-tail60",
+      "combinedMs": {
+        "baseline": 1981.4191749999998,
+        "candidate": 1380.9239790000001,
+        "typescript": 768.5203240000001
+      },
+      "candidateOverBaseline": 0.6969368200446533,
+      "candidateOverTypescript": 1.7968607151630775
+    }
+  ],
+  "equalSourceGeometricMean": {
+    "candidateOverBaseline": 0.6986154619737575,
+    "candidateOverTypescript": 1.7020665901855208
+  },
+  "ratioOfSummedCombinedMs": {
+    "candidateOverBaseline": 0.708878369826618,
+    "candidateOverTypescript": 1.7375340902932253
+  },
+  "broadWallAccounting": {
+    "successfulWorkers": 62,
+    "successfulChildSeconds": 183.7703241610434,
+    "successfulWorkerSeconds": 177.00549465300003,
+    "successfulPreflightSeconds": 25.892193702999997,
+    "successfulCombinedSeconds": 76.782524427,
+    "successfulInsideWorkerResidualSeconds": 74.33077652300003,
+    "successfulProcessOutsideWorkerSeconds": 6.764829508043363,
+    "allLaunchedChildSeconds": 184.7957617220236,
+    "measurementStageSeconds": 241.5565708730137,
+    "outsideChildrenSeconds": 56.7608091509901,
+    "campaignWallSeconds": 242.26934720296413,
+    "tailCampaignWallSeconds": 34.645937594003044
+  },
+  "limits": [
+    "No independent timers for hashes, byte checks, report serialization or guard work; residual intervals are not exclusive attribution.",
+    "Three roles each have one sample per source; no spread/drift or balanced-position estimate."
+  ]
+}

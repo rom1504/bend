@@ -1,0 +1,58 @@
+{
+  "kind": "phase61-final-framed81-plan-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/final-plan.py",
+    "sha256": "219af6925e5fe967b8fdeb15b72ba9763d9cd42dbe8931f4048ed89f504d7678"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/final-plan-frame01.py",
+    "sha256": "4c35d89b0cea6dac3f7dc00990c93dac9a1f843e90d2d664a34c51b1a510b2ec"
+  },
+  "edits": [
+    {
+      "old": "BOOTSTRAP_PRODUCER=TOOLS/'phase61/validation/prepare-candidate-v2.py'\nBOOTSTRAP_SHA='d258f311f7144302c7290fec18cb22354027cea25e454cc4fe84ff722f0da43e'",
+      "new": "BOOTSTRAP_PRODUCER=TOOLS/'phase61/validation/prepare-candidate-v4.py'\nBOOTSTRAP_SHA='ccd302ef74f60696d9e9a474235d83b00e7363b983408847cf65a60a92dcb144'\nPARENT=Path(__file__).with_name('final-plan.py');PARENT_SHA='219af6925e5fe967b8fdeb15b72ba9763d9cd42dbe8931f4048ed89f504d7678'\nFACTORY=Path(__file__).with_name('prepare-methods-frame01.py');FACTORY_SHA='4aa369b4beb521f5ff37abcb1f44a6158f55efe6e1e025d77cab5c2e6a187d58'"
+    },
+    {
+      "old": "pin(__file__);policy=read",
+      "new": "pin(__file__);assert pin(PARENT)['sha256']==PARENT_SHA\nassert pin(FACTORY)['sha256']==FACTORY_SHA\npolicy=read"
+    },
+    {
+      "old": "method['kind']=='phase61-frozen-validation-methods'",
+      "new": "method['kind']=='phase61-framed81-validation-methods'"
+    },
+    {
+      "old": "for row in method['rows']:assert pin(row['output']['file'])==row['output']",
+      "new": "assert method['producer']==pin(FACTORY)\nfor row in method['rows']:\n assert pin(row['parent']['file'])==row['parent'];text=Path(row['parent']['file']).read_text()\n for edit in row['edits']:\n  assert edit['old'] in text;text=text.replace(edit['old'],edit['new'])\n assert Path(row['output']['file']).read_text()==text\n assert pin(row['output']['file'])==row['output']"
+    },
+    {
+      "old": "assert m['node']['version']=='v24.18.0';",
+      "new": "boot=read(m['bootstrapReport']['file']);roots=boot['exports'];assert len(roots)==len(set(roots))==81\nassert {'base_prefix_prepare','check_program_diagnostic_seed','f_fresh_prefix_prepare','f_graph_trace_from_prefix'}.issubset(roots)\nassert m['node']['version']=='v24.18.0';"
+    },
+    {
+      "old": "77 exports and 8 driver observations.",
+      "new": "actual81 checked exports and 8 driver observations."
+    },
+    {
+      "old": "dict(exports=77,driverObservations=8,tinyUnsplitEquality=True)",
+      "new": "dict(exports=len(roots),driverObservations=8,tinyUnsplitEquality=True)"
+    },
+    {
+      "old": "s.add_argument('--plans',type=Path,required=True)",
+      "new": "s.add_argument('--plans',type=Path,required=True);s.add_argument('--bootstrap-pins',type=Path)"
+    },
+    {
+      "old": "stage('bootstrap',[\n command('prepare-bootstrap-plan',py(BOOTSTRAP_PRODUCER,'plan',attempt,out/'bootstrap')),\n command('execute-bootstrap-plan',run(out/'bootstrap/plan.json',out/'bootstrap-execution'))],\n 'Checked final gate admitted; source frozen. Generate this selected own-source B2 once, with actual checked B1 provenance, actual81 checked exports and 8 driver observations.',dict(exports=len(roots),driverObservations=8,tinyUnsplitEquality=True))\npins=out/'bootstrap/image-pins.json'\n",
+      "new": "bootstrap_reuse=None\nif a.bootstrap_pins:\n origin=read(a.bootstrap_pins);assert origin['kind']=='phase56-direct-image-pins'\n for key in ['producer','plan','attempt','emission','comparison','source','b1','b2','runtime','rootsReference']:\n  assert pin(origin[key]['file'])==origin[key]\n assert origin['producer']==pin(BOOTSTRAP_PRODUCER)\n assert origin['attempt']==pin(attempt/'attempt.json') and origin['b1']==pin(m['api']['file'])\n assert origin['source']==pin(boot['source']) and origin['source']['sha256']==boot['sourceSha256']\n assert origin['runtime']==pin(Path(m['snapshot']['root'])/'src/runtime/js/direct.mjs')\n assert origin['roots']==roots\n old_plan=read(origin['plan']['file']);emission=read(origin['emission']['file']);comparison=read(origin['comparison']['file'])\n assert old_plan['kind']=='phase56-candidate-image-plan' and old_plan['attempt']==origin['attempt']\n assert emission['complete'] and emission['pass'] and comparison['complete'] and comparison['pass'] and comparison['observations']==8\n assert emission['subject']['attempt']==emission['generator']['attempt']==origin['attempt']\n assert emission['subject']['source']==origin['source'] and emission['generator']['api']==origin['b1']\n assert emission['config']==old_plan['configs'][1] and emission['roots']==roots\n assert {k:emission['module'][k]for k in ['file','sha256']}==origin['b2']\n assert pin(emission['qualification']['file'])==emission['qualification'];tiny=read(emission['qualification']['file'])\n assert tiny['complete'] and tiny['pass'] and tiny['splitEqualsUnsplit'] and tiny['subject']==emission['subject']\n for row in old_plan['inputs']+old_plan['configs']+[d['output'] for d in old_plan['derivations']]:assert pin(row['file'])==row\n for role in ['source','direct']:\n  assert pin(comparison[role]['file'])==comparison[role];driver=read(comparison[role]['file'])\n  assert driver['complete'] and driver['pass'] and len(driver['observations'])==8\n  assert driver['emission']==origin['emission'] and driver['subject']==emission['subject']\n bootstrap_reuse=dict(imagePins=pin(a.bootstrap_pins),plan=origin['plan'],emission=origin['emission'],comparison=origin['comparison'],image=origin['b2'],newEmission=False)\n pins=out/'bootstrap-image-pins.json'\n stage('bootstrap',[\n  command('verify-and-rebind-existing-bootstrap',py(BOOTSTRAP_PRODUCER,'pins',origin['plan']['file'],origin['emission']['file'],origin['comparison']['file'],pins))],\n  'Reuse the exact selected source/API B2 construction and completed tiny/driver gates. One data-only revalidation writes fresh image pins; no emission or driver target is repeated.',\n  dict(exports=len(roots),driverObservations=8,tinyUnsplitEquality=True,generationReused=True,newTargetJobs=0))\nelse:\n stage('bootstrap',[\n  command('prepare-bootstrap-plan',py(BOOTSTRAP_PRODUCER,'plan',attempt,out/'bootstrap')),\n  command('execute-bootstrap-plan',run(out/'bootstrap/plan.json',out/'bootstrap-execution'))],\n  'Checked final gate admitted; source frozen. Generate this selected own-source B2 once, with actual checked B1 provenance, actual81 checked exports and 8 driver observations.',dict(exports=len(roots),driverObservations=8,tinyUnsplitEquality=True))\n pins=out/'bootstrap/image-pins.json'\n"
+    },
+    {
+      "old": "producer=pin(__file__),out=str(out),stages=stages,",
+      "new": "producer=pin(__file__),out=str(out),bootstrapReuse=bootstrap_reuse,stages=stages,"
+    },
+    {
+      "old": "pins=out/'bootstrap-image-pins.json'",
+      "new": "pins=plans/'reused-bootstrap-image-pins.json'"
+    }
+  ],
+  "scope": "Same14 checked jobs,6 bootstrap jobs,8 B2 semantic jobs,own-source/fixedpoint/raw23 gates and5 release jobs. Only framed method admission, actual81 exports and frozen bootstrap producer change. Optional explicitly joined genuine selected bootstrap reuse executes one data-only pins revalidation instead of repeating emission/driver targets."
+}

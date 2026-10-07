@@ -1,0 +1,38 @@
+--- a/selfhost/src/back/js/direct/host.bend
++++ b/selfhost/src/back/js/direct/host.bend
+@@ -34,7 +34,7 @@
+ 
+ @unsafe
+ def jd_marshal(+book: List<&2,KDef>, +ty: KTerm, +out: Bool) -> String:
+-  +status = jd_host_nat_status(book, [ty], Nil{}, 1024)
++  +status = jd_host_nat_known(book, ty)
+   kc(String, U32.is_eq(status, 2), u => jd_host_error("host type graph budget"), u =>
+     kc(String, U32.is_eq(status, 1), u => jd_host_marshal(book, ty, out, Nil{}, 0, 64), u => ""))
+ 
+@@ -56,7 +56,7 @@
+       kc(String, String.eq(nm(t), "Array") && db(lookup(book, nm(t))),
+         u => "((a)=>(a.forEach((x,i)=>a[i]=" ++
+           jd_host_marshal(book, kid(t, 0), out, seen, depth, fuel) ++ "(x)),a))", u =>
+-        jd_host_marshal_status(book, t, out, seen, depth, fuel, jd_host_nat_status(book, [t], Nil{}, 1024)))), u => ""))
++        jd_host_marshal_status(book, t, out, seen, depth, fuel, jd_host_nat_known(book, t)))), u => ""))
+ 
+ @unsafe
+ def jd_host_marshal_fun(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
+@@ -160,7 +160,7 @@
+ def jd_host(+book: List<&2,KDef>, +d: KDef) -> String:
+   +arity = jd_arity(book, d)
+   +live = jd_live_arity(book, dt(d), arity)
+-  +marshal = Bool.not(U32.is_eq(jd_host_nat_status(book, [dt(d)], Nil{}, 1024), 0))
++  +marshal = Bool.not(U32.is_eq(jd_host_nat_known(book, dt(d)), 0))
+   "(" ++ jd_host_names(live, 0) ++ ")=>{const r=" ++
+     jd_host_convert(book, jd_host_result(book, dt(d), arity), True{}, marshal) ++ "(run_loop(" ++ jd_name(dn(d)) ++
+     "(" ++ jd_host_args(book, dt(d), arity, 0, False{}, marshal) ++ ")));" ++
+@@ -219,7 +219,7 @@
+ @unsafe
+ def jd_exports(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:
+   "\nexport const backend={kind:\"direct-js\",representation:\"upstream-native\",prototype:true,foreign:\"upstream-cps\"};\nexport default {\n" ++
+-    jd_host_exports(book, defs) ++ "};\n"
++    jd_host_exports(jd_host_native_context(book), defs) ++ "};\n"
+ 
+ @unsafe
+ def jd_host_exports(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:

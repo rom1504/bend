@@ -1,0 +1,17 @@
+{
+  "kind": "phase61-private-workflow-frame2-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/workflow-frame01.mjs",
+    "sha256": "988e24c291c3094a65e988e76fc9fc5a04a8d38ad9e2b0219d02e03beb1f491c"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/workflow-frame02.mjs",
+    "sha256": "2181bb9248378675f8fc5488b9016b34c91da84f90d1dcf235c126c9693307df"
+  },
+  "edits": [
+    {
+      "old": "  const framed=fs.existsSync(stem+'-frame1.json'),file=stem+(framed?'-frame1.json':'.json');",
+      "new": "  const suffix=['-frame2.json','-frame1.json','.json'].find(x=>fs.existsSync(stem+x));\n  if(!suffix)throw Error('Missing API-specific checked Base cache: '+stem);\n  const framed=suffix!=='.json',file=stem+suffix;"
+    }
+  ]
+}

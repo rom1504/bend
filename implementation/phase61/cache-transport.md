@@ -1,10 +1,10 @@
-# Cache transport draft
+# Cache transport and private driver integration
 
 [Source identities and placement](../../selfhost/tools/performance/phase61/cache/source01.json) ·
 [Driver patch](../../selfhost/tools/performance/phase61/cache/frame01.patch) ·
 [Design and boundaries](../../design/phase61/cache-transport.md).
 
-The maintained driver is untouched. Root may stage `typed-driver-frame01.mjs` as a
+The initial frame01 proposal below is retained as lineage. Root initially staged `typed-driver-frame01.mjs` as a
 private project's `tools/typed-driver.mjs`; its framing helpers are inline so no
 new host dependency or snapshot copy-list change is needed. Keep the remaining tool dependencies and compiler configuration exactly copied.
 The framed writer only runs through normal `prepareBase`; no fake prepared book or
@@ -92,3 +92,39 @@ both source modules must be in the manifest, all four exact export branches must
 exist, and their actual Bend definitions must be present. This prevents the same
 source-wiring omission before a target, but does not substitute for a real checked
 bootstrap receipt and actual prepared-state controls. No performance claim follows.
+
+## Current reviewed source: segmented frame2 and native carrier
+
+Root authorized exact application of [combined04](../../selfhost/tools/performance/phase61/cache/combined04.json)
+to maintained `tools/typed-driver.mjs` after focused controls. Its five additional
+source exports bring the intended bootstrap inventory to86. The new carrier is
+returned/updated by actual Bend loader methods; JavaScript only threads its opaque
+value. Caller-supplied `inspect({api})` and raw `discoverSources` calls cannot obtain
+the distinct private token. A persistent inspector owns its API explicitly.
+
+Frame2 stores separate raw book/checked-state/fresh-state JSON segments, with exact
+lengths and byte hashes checked before parsing. Optional digest or JSON failure
+omits that state and keeps the independently valid book/full-check fallback.
+Private admission reuses the raw state digest. Its span walker is only for freshly
+parsed, privately held acyclic JSON trees; it checks the same literal/Lambda/spans
+and all extra own children without WeakSet/Object.values. Both public validators
+remain byte-identical. Memo freezing and file-change/deletion invalidation remain.
+
+Root's [controls08 report](../../selfhost/build/phase61/cache-frame2-controls08/report.json)
+passed56 host groups in0.905647s. [Controls09](../../selfhost/build/phase61/cache-carrier-controls09/report.json)
+passed57 groups in1.0066s, retaining those obligations and adding caller-supplied API
+carrier refusal with a ready synthetic cache. These are host IO/permission tests,
+not a proof of Bend checkpoint reuse. Actual86-root bootstrap, source differential
+qualification and representative throughput remain the separate root-owned gates.
+No standalone frame2 speedup or installation is claimed.
+
+Preserved failures: controls06 tried to expose an encoder absent from its old
+baseline; controls07 sealed an extra-child fixture before mutating it. Both failed
+in the harness, not candidate semantics. Successors correct those exact issues.
+Independent review also required optional malformed JSON to preserve the valid
+book; frame03 supplies that correction. All predecessors remain unchanged.
+
+The [synchronous workflow successor](../../selfhost/tools/performance/phase61/cache/workflow-sync02/proposal.json)
+is prepared but unapplied. It prefers frame2, then frame1, then the legacy filename;
+a present malformed frame never falls through. Canonical workflow application must
+wait for source/driver winner selection and completion of older pinned attempts.

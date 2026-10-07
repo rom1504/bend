@@ -38,8 +38,10 @@ count and a conservative safety bit. A join preserves left-to-right order withou
 rendering either child. Static emitter literals carry their checked literal size
 and no metadata. They are internal source constants, not an arbitrary-text API.
 
-Fifty-one existing String helper signatures remain wrappers. Their `jd_doc_*`
-implementations compose documents through lambda binding, parallel Let bodies,
+The initial candidate retained 51 String helper wrappers. The reviewed cleanup
+now retains the four used String boundaries: `jd_body`, `jd_definitions`,
+`jd_choice_body` and `jd_choice_branches`. Their `jd_doc_*` implementations
+compose documents through lambda binding, parallel Let bodies,
 ordinary matches, shared Nat/Word rows, literal choices, tail transfers, shared
 SCC entries and final definition assembly. The existing `JDOrdered` expression
 printer, constructor folds, native templates and eta rules still produce raw
@@ -57,8 +59,8 @@ liveness or reachability traversal is introduced.
 Render, demand queries and edge collection use explicit worklists so a skewed
 append tree does not create a new native stack-depth requirement. Rendering
 visits right-to-left and prepends each original leaf; concatenation is exact.
-The existing public `jd_body`, `jd_match`, `jd_definition`, `jd_definitions` and
-other String helper names retain their types. `jd_library_selected`,
+The four used String boundaries retain their types, and no public bootstrap API
+export is removed. `jd_library_selected`,
 `jd_library_context`, and the bootstrap split-emission policy do not change.
 The independent batch-context hook remains in `jd_selected_context`.
 
@@ -112,3 +114,22 @@ This applies the surveyed compilers' separation of emission structure from final
 text without adding a pass framework or introducing unconsumed SSA machinery.
 The remaining extension is to carry metadata through expression/native-template
 substitution directly, once this statement-level migration has measured value.
+
+## Applied wrapper cleanup, qualification pending
+
+The [source census and exact patch](../../selfhost/build/phase61/transport-cleanup01/source.json)
+identify 47 wrappers without Bend-source callers or public bootstrap exports.
+Root approved their deletion after independent static review. The
+[applied receipt](../../selfhost/build/phase61/transport-cleanup01/applied.json)
+records a reduction of 189 physical lines, 142 nonblank/noncomment code lines
+and 47 definitions across core, ordered, pattern and choices. No JDText
+implementation or expression-emission rule changed. Fresh checked-image and
+complete-output qualification remain required for this source identity.
+
+The [reviewed reach-control successor](../../selfhost/tools/performance/phase61/validation/reach-controls-v1.mjs)
+retains all 22 scanner and 21 graph cases per role, including tight distinct-edge
+budgets and per-definition emission counts. It hooks the actual String or JDText
+definition entry found in each image; a candidate must use JDText. The old
+Phase58 reach hook and Phase59 counter producer remain preserved with their
+historical images. No deleted compatibility wrapper is kept solely to mimic a
+hook that the structured path no longer calls.

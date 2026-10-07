@@ -149,3 +149,133 @@ private driver decoder. Original setup remains for earlier 77-root images.
 The original `final-plan.py` is still bound to the old bootstrap/setup and must
 receive an explicit successor before final qualification of a framed 81 image.
 These are prepared methods, not claims that state03 or later gates have passed.
+
+## Prepared final framed method package
+
+The unlaunched successors `prepare-methods-frame01.py` and
+`final-plan-frame01.py` preserve the existing final gates: 14 checked-B1 jobs,
+six bootstrap jobs, eight B2 semantic jobs, separate whole-source type check,
+fixed point and raw23/45 equality, then five release commands (42 legacy and
+24 default CLI observations). The method factory copies frozen methods01 and
+changes only the reviewed setup, actual-export receipt assertions, framed-cache
+verification and the fixed-point scope label. Semantic oracle bodies are exact.
+
+After root selects a useful candidate, prepare a fresh package and plan:
+
+```sh
+taskset -c 0 python3 -B selfhost/tools/performance/phase61/validation/prepare-methods-frame01.py --out selfhost/build/phase61/methods-frame01
+taskset -c 0 python3 -B selfhost/tools/performance/phase61/validation/final-plan-frame01.py plan --methods selfhost/build/phase61/methods-frame01 --attempt selfhost/build/phase61/checked-WINNER --out selfhost/build/phase61/final-WINNER --plans selfhost/build/phase61/final-WINNER-plans
+```
+
+These commands prepare data only. Root launches each stage separately after its
+barrier, using the exact `rootLaunch` command in the resulting index. The parent
+launcher stays unpinned and has no outer execution guard; each target child owns
+its single guard and CPU3 restriction. Do not run the old copied bootstrap
+planner or old copied final-orchestration: final-plan-frame01 explicitly selects
+the reviewed v4 producer instead.
+
+The new optional Base/loader API roots are admitted from the actual checked
+bootstrap list. Driver observations and fresh ordinary B2 source acquisitions
+retain their full output checks; the focused checked-Base/loader controls stay
+separate evidence. No root-count assertion of 79 was found in the maintained
+suite; only the real inherited 77 assertions are adapted. No preemptive change to
+maintained tests is made. JDText reach instrumentation must target the actual
+rendering hook if that optional focused diagnostic is selected; changing an
+unused legacy hook would not prove activation.
+
+### Exact existing-bootstrap reuse
+
+When the chosen attempt already has a completed genuine B2 bootstrap, append
+`--bootstrap-pins selfhost/build/phase61/bootstrap-state04/image-pins.json` to the
+final-plan-frame01 command (and select that exact checked-state04 attempt).
+The planner joins the original attempt, B1 API, exact assembly, direct runtime,
+actual 81 roots, full/tiny output and eight-driver reports. Its bootstrap stage
+then runs **one data-only v4 pins revalidation**, writing fresh pins inside the
+plan directory. It does not re-emit B2 or repeat the driver targets. The index
+records this as `bootstrapReuse`; the original receipts remain authoritative.
+Any changed attempt/source/API fails this reuse admission.
+
+Canonical workflow/cache integration is a separate owner task before promotion.
+The private prototype workflow is not a permanent replacement for normal build
+entry points. The maintained full-source-preflight and development tests call
+`validatedCache` synchronously; the canonical owner is preserving that API.
+Current B2 construction receipts pin the original global workflow path, so make
+this transition only at root's chosen provenance boundary, before the selected
+new bootstrap, or with an explicit preservation/rebinding receipt. Existing
+historical methods and their observed failures remain unchanged.
+
+## Explicit export/driver admissions and frame2
+
+The additive `workflow-frame02.mjs` prefers the selected API's `-frame2.json`
+cache, then `-frame1.json`, then the legacy name. Both framed formats use the
+actual frozen snapshot driver's decoder. The 36-case strict build, cache
+identity/span/book checks and resource policy are unchanged. It does not
+modify the maintained global workflow.
+
+`prepare-candidate-v5.py` accepts `--admission FILE`. The pinned admission
+contains an exact driver identity and supplementary exports. These supplement
+the historical 77 exports and the four already-admitted Base/loader exports;
+all sets must be disjoint and exactly equal the actual checked bootstrap's
+exports, with historical order retained. The driver must equal the selected
+snapshot byte for byte. An admission is configuration, not a checked image or
+semantic certificate. The current proposed carrier admission adds five roots
+for 86 total; future explicit admissions avoid changing this producer merely
+to pin another reviewed driver. Tiny split/unsplit equality and the eight-driver
+gate still execute for every new image.
+
+Root commands after the actual strict checked attempt exists (replace `WINNER`
+and use fresh output names):
+
+```sh
+python3 -B selfhost/tools/performance/phase61/validation/prepare-candidate-v5.py plan \
+  selfhost/build/phase61/checked-WINNER selfhost/build/phase61/bootstrap-WINNER \
+  --admission selfhost/tools/performance/phase61/cache/carrier-admission01.json
+
+python3 -B selfhost/tools/performance/phase61/validation/prepare-methods-frame02.py \
+  --out selfhost/build/phase61/methods-frame02
+python3 -B selfhost/tools/performance/phase61/validation/final-plan-frame02.py plan \
+  --methods selfhost/build/phase61/methods-frame02 \
+  --attempt selfhost/build/phase61/checked-WINNER \
+  --admission selfhost/tools/performance/phase61/cache/carrier-admission01.json \
+  --out selfhost/build/phase61/final-WINNER \
+  --plans selfhost/build/phase61/final-WINNER-plans
+```
+
+When that *same selected attempt's* bootstrap and driver gates already passed,
+add `--bootstrap-pins selfhost/build/phase61/bootstrap-WINNER/image-pins.json`
+to the final planner. It revalidates those exact v5 pins, source/API/runtime
+and admission without repeating generation. Fresh whole-source type checking,
+B2→B3 fixed point, semantic controls and raw23/45 equality remain downstream.
+The parent serial launcher stays unpinned; each target owns exactly one guard.
+These are prepared commands; no final gate is claimed by their existence.
+
+## Final canonical integration order
+
+1. Complete the selected candidate's mechanism controls and useful latency
+   screen. Pilot receipts keep their original helper pins.
+2. Apply the reviewed synchronous framed-cache support to the maintained
+   workflow, preserving existing synchronous consumers and the exact old helper
+   bytes. Freeze the selected source/driver and canonical tool. This maintenance
+   is required for normal compiler development; historical pins do not prohibit it.
+3. Materialize the reviewed final plan **after** that change. If earlier B2
+   receipts pin the old global workflow, omit `--bootstrap-pins` and use one
+   new bootstrap generation. Do not relax input checks or rewrite old receipts.
+4. Root runs checked, bootstrap, B2 and release-preparation stages at their
+   explicit barriers. The final release still requires semantic, emitted-program,
+   performance, preservation and installed CLI admission.
+
+For a selected unchanged `checked-state06`, the no-reuse plan command is:
+
+```sh
+taskset -c 0 python3 -B selfhost/tools/performance/phase61/validation/final-plan-frame02.py plan \
+  --methods selfhost/build/phase61/methods-frame02 \
+  --attempt selfhost/build/phase61/checked-state06 \
+  --admission selfhost/tools/performance/phase61/cache/carrier-admission01.json \
+  --out selfhost/build/phase61/final-state06 \
+  --plans selfhost/build/phase61/final-state06-plans
+```
+
+Use the `rootLaunch` arrays in the new index, without a parent CPU pin or outer
+guard. If source or driver changes, bind the new genuine checked attempt and
+matching explicit admission, using fresh output directories. No final-state06
+plan or stage has been executed merely by documenting this command.

@@ -1,133 +1,68 @@
-# Request-context prefix checkpoint (unselected prototype)
+# Private Base checkpoint and native prefix provenance
 
-`selfhost/src/check/prefix-state.bend` is a diagnostic-only Bend implementation.
-It does not replace ABI2 or accept persistent/host-provided checked worlds.
-Root must integrate and check it before any probe execution. No target has run.
+The selected development candidate `checked-state06` passed the focused native
+carrier gate: **29 world checks (15 admitted, 14 fallback) plus five producer
+checks**, in 43.221522 seconds with 642,203,648 bytes peak tree RSS. This compares
+complete full-check/resumed worlds, indexes, memo/fresh state, diagnostics and
+completed output, not acceptance alone. Ordinary and repeated actual Numeric
+and MapSet loading also match the entire ordinary `FLoadTrace`; counters require
+zero loader/checker deep prefix comparisons and exactly one resumed suffix check.
+[Actual report](../../../../build/phase61/prefix-carrier-controls-state06/report.json)
+and [bounded job](../../../../build/phase61/prefix-carrier-controls-state06-job/run.json).
 
-Preparation receives the actual prefix and suffix, uses their exact whole-book
-`norm_max_book`, performs unchanged `check_declarations`, and checks every prefix
-event with the actual complete remaining event list. It retains the successful
-`DChecking`, entire immutable `KWorld` (book, memo, fresh, checked), and `seen`.
-The split worker duplicates only the chronological diagnostic worker's stop
-condition; signatures, publication, failures and duplicate guards are unchanged.
+The API consumed was `61761c0272092792bdb7c9bdb7a5abe07bddb79d5c807318cf0d2c9fb3b0b2b6`.
+Separate [native host controls](../../../../build/phase61/host-native-controls01/report.json)
+passed eight exact wrapper cases and ten private proof cases. These are focused
+candidate qualifications; bootstrap, broader source/output/release and clean
+performance decisions remain root-owned and separate.
 
-Resume requires identical prefix values, constructor definitions, literals,
-quantities and source intervals; identical ordered whole declaration headers;
-identical whole-book fresh bound; no same-name prefix/suffix law fill; and a
-successful preparation. Foreign values remain in the declaration key. Failure
-of any predicate executes ordinary `dg_check_world` on the whole book. Source
-origins are applied by the unchanged completion/diagnostic consumer.
+The native `FPrefixGraph` is produced only by actual successful leading/global
+Base injection, then advanced through unchanged native module completion.
+`FPrefixLoad` retains the actual freshened suffix for the private checker bridge.
+Public raw graph/seed/check APIs keep exact comparisons; caller-created objects
+and caller-supplied APIs do not gain the driver's private permission. Whole-graph
+validation, source errors, duplicate/alias checks and all checker admission/world
+reconstruction guards remain. [Design](../../../../../design/phase61/prefix-provenance.md).
 
-This retains the whole request's predeclaration ordering and permits same-header
-suffix body revisions/repeated requests. It **does not** prove Base-only state
-can be extended to a different declaration context/fresh floor. Preparing a new
-checkpoint costs the prefix checking work, so the first request has no claimed
-saving. Prefix disjoint checks currently scan a cached suffix context; complete
-key validation/transport/allocation must be included in later measurements.
-
-Root-owned guarded probe (after checked integration):
-
-```sh
-NODE tools/performance/phase61/prefix-state/controls-v1.mjs ATTEMPT SOURCE NEW_OUT
-```
-
-Run from `selfhost/` under the existing single CPU3 process guard (1 GiB Node
-heap, 2 GiB tree RSS, 4 GiB available-memory floor). Substitute the selected
-frozen Node. The controller adds private lexical diagnostic exports, pins the
-checked API/runtime/Base/driver/source and module hashes, reads actual source
-through the unchanged loader, and compares whole checker outcomes with resume.
-It never calls `prepareBase`/`inspect`, so historical driver cache paths are not
-written. Its saved probe is a diagnostic derivative, never a checked image.
-
-Initial falsifiers: successful repeated actual source; empty prefix; changed
-prefix span; changed suffix header; changed fresh bound; cross-boundary fill;
-failed prefix; same-signature body revision; warm checkpoint immutability.
-Keep a failing source's world/diagnostic compared as well as acceptance. Retain
-all failures. A broader Base-only certificate/rebase is a separate experiment;
-never promote this checkpoint to the public raw API or serialize it as trusted.
-
-## Immediate Base-only diagnostic (no new build)
+Run from the repository root, after root selects and checks a new attempt:
 
 ```sh
-/home/ai/.nvm/versions/node/v24.18.0/bin/node tools/performance/phase61/prefix-state/base-probe-v2.mjs build/phase58/checked-last01 build/phase61/prefix-base-probe01
+python3 -B selfhost/tools/performance/phase32/bounded-run.py \
+  --seconds 120 --rss-mib 2048 --available-mib 4096 NEW_JOB -- \
+  taskset -c 3 /home/ai/.nvm/versions/node/v24.18.0/bin/node \
+  --max-old-space-size=1024 --stack-size=4096 \
+  selfhost/tools/performance/phase61/prefix-state/carrier-controls-v2.mjs \
+  ATTEMPT \
+  selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend \
+  selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend \
+  NEW_OUT
 ```
 
-Root supplies the existing external guard; run from `selfhost/`. This probes
-only the already checked baseline using exact Base source intervals. It records
-fresh state, generated names, live memo, completed-output maximum IDs and unresolved Ref
-names. It reads loader inputs without invoking cache-writing APIs. A zero-mint,
-empty-memo, closed-reference result would justify investigating a Base-only
-rebase, not establish it: exact declaration/checked-output order and negative
-lookup/constructor capture still need independent proof and full comparison.
+Root owns the only guard and all target scheduling. The controller pins the
+actual checked API/runtime/Base/Node/driver/source, preserves all input hashes,
+adds precisely recovered diagnostic exports/counters, and rechecks inputs at
+completion. Its derivative is diagnostic, never a checked image. Raw altered,
+dropped/reordered prefixes, moved floors, constructor/fill collisions and reserved
+names exercise original full fallback. Producer cases cover global leading seed,
+namespace, changed path/text and nonleading seed. No arbitrary ready flag is a
+proof of private provenance.
 
-## Cold-prefix candidate: not integrated or qualified
+Historical evidence remains unchanged:
 
-`base_prefix_prepare(prefix)` runs the actual checker and returns a compact
-`KBasePrefixState{bound,delta,stamp,patches,ready}`. The publication order is
-re-derived from the unchanged parsed Base book. Only checked definitions that
-actually differ from that book are stored, not a second complete KWorld.
-Preparation verifies the cached checked-publication order, exact world-book
-replay, empty memo, closed Ref/ADT queries and absence of escaped fresh IDs.
+- `request-context-draft-v1.bend` and `controls-v1.mjs` preserve the unselected
+  repeat-only request-context experiment; they are not the current cold path.
+- `base-probe-v2.mjs` records Base bound 3,412, next fresh 3,967, no escaped output
+  IDs/memo/generated names; actual advance from initial 3,413 is 554, not 555.
+- State03 refused preparation because replay installed checked bodies in the
+  raw world book. The raw-publication/checked-output correction then passed
+  [state04 cold controls](../../../../build/phase61/prefix-cold-controls-state04/report.json):
+  21 world checks, 11 admissions and ten full fallbacks.
+- `carrier-controls-v1.mjs` is preserved. Pre-execution state06 audit found an
+  unreachable diagnostic helper after the final-list hoist and an API namespace
+  assumption. V2 uses the actual retained helper composition and default callable
+  export map; semantic/refusal obligations were unchanged. V1 was not consumed.
 
-`base_prefix_check(state,whole,prefix)` verifies exact prefix including spans and
-Lambda quantity presence, then admits only disjoint declaration/constructor
-names, no reserved synthetic `~`/kernel namespace, an actual bounded fresh floor
-and a successful preparation. It rebuilds ordinary request declarations, replays
-cached publications, restores seen/output order, translates fresh and cache stamp
-by the whole-book bound offset, and invokes unchanged `dg_check_events` on the
-suffix. Otherwise it calls unchanged `dg_check_world` on the original request.
-The 1,048,576 admission bound is conservative refusal, not a broadened checker
-resource budget. It does not by itself prove fresh-translation equivariance.
-
-The measured baseline has source bound 3,412, next fresh 3,967, no memo/generated
-names and checked/assembled maximum 3,412. These are necessary empirical facts,
-not a proof that +555 or negative lookup behavior is invariant under extension.
-The module remains unreferenced/unselected until moved-floor/context controls and
-independent source audit establish that narrower contract. Required falsifiers:
-several whole bounds, empty/novel ADT suffix, same-name/fill/constructor capture,
-reserved names, changed Base/spans/quantity metadata, failed/rejected suffix,
-live specialization/forward references and generated-name/memo/fresh exhaustion.
-Compare **complete** world/memo/fresh/seen/checked output and first diagnostic,
-not acceptance or assembled output alone.
-
-Root alone owns driver/cache integration: exact API/Base/source-interval identity,
-new prepared-payload schema and whole-payload integrity are mandatory. A source
-cache marker, arbitrary host-created state, or unchecked disk sidecar cannot
-create a trusted checkpoint. Old/missing/drifting state uses the complete path.
-The raw checkpoint helper is private to the trusted inspector; it must never
-turn public `check_program_diagnostic` into a caller-injected proof capability.
-
-## Fast cold controls after checked integration
-
-```sh
-NODE tools/performance/phase61/prefix-state/cold-controls-v1.mjs ATTEMPT SOURCE [SOURCE...] build/phase61/prefix-cold-controls01
-```
-
-Root supplies the single guard. Use actual Numeric and MapSet sources first;
-additional held-outs follow only after the focused contract survives. The tool
-checks positive checker **and** complete-program outcomes, exact full versus
-resumed world/index/memo/fresh/checked/first diagnostic, and actual check-call
-counts. Per source: ordinary/repeated, three moved floors, five fallback cases;
-plus an empty-suffix case. Wrong source validity or a refused preparation fails
-rather than silently reducing the denominator. No clean latency is reported.
-The older `controls-v1.mjs` applies only to the preserved request-context draft;
-it is not the recommended cold-prefix command.
-
-Integration signatures (root/driver owner only):
-
-- `base_prefix_prepare(prefix) -> KBasePrefixState`.
-- `check_program_diagnostic_seed(book, validated, origins, state) -> DResult`.
-- State: `{$: 'KBasePrefixState', bound, delta, stamp, patches, ready}`;
-  three U32 metadata fields, `patches: List<KDef>`, `ready: Bool`.
-- Suggested private cache field `checkedPrefixState`, schema 1 and actual
-  `base_prefix_prepare` producer; whole state/payload integrity plus exact
-  API/Base/canonical path/source intervals. Freeze the nested state and book.
-- Keep existing complete checker and cache validation independent. Never upgrade
-  an old parsed cache into a checked state from its marker alone. A malformed,
-  absent, false, stale or unauthenticated state uses the original full method.
-
-Static review: source `94016ffec5955637a6f74e0cd2e7c89573e46d0da468dcd4179a0f3438c30ba5`
-and cold controls `f8c153e4924f6645c015e6e95a3286354add284ffcb4ed80f20f0a2cc7b3cd63`
-passed independent review for the private authenticated actual-Base scope.
-This is not runtime qualification. The unchanged checker bridge remains live
-until root freezes/builds the candidate and the complete differential passes.
+Cache preparation/transport remains independently authenticated to exact
+API/Base/path/source intervals and actual producer/payload metadata under the
+private local prepared-cache model. A digest does not prove adversarial cache
+contents semantically valid. Public raw cache validators retain their behavior.

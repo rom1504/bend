@@ -3441,3 +3441,120 @@ work in isolated reviewed source candidates. Use the prior measured rejection/
 confirmation subset plus held-out Lexer/Evening, then all 23 and applicable source,
 B2/fixed-point/native/legacy gates for the selected candidate. No new result,
 installation or speedup is claimed by this pre-outcome entry.
+
+
+### Phase61 measured state04 and state06 qualification frontier — 2026-10-07
+
+The [state04 broad analysis](../selfhost/tools/performance/phase61/validation/state04-broad-analysis.json)
+records all 23 sources: equal-source geometric mean B2/TS **2.436× → 1.702×**
+for import + API load + first compilation and **3.773× → 2.549×** for compilation
+alone. Candidate/baseline combined-first ratio is 0.698615. All 23 candidate raw
+modules equal their qualified references; no generated workloads were rerun.
+These are combined-candidate results, not isolated contributions or runtime gains.
+
+The exploratory screen has one round in fixed role order. Its original broad
+240-second queue remains failed after 62 successful workers, a TS deadline and
+six skipped rows. The aggregate uses 20 complete original triples plus three
+complete fresh tail triples, preserving the incomplete attempt and avoiding
+partial-role pooling. A separate [three-case confirmation](../selfhost/build/phase61/state04-b2-latency01/confirm90/report.json)
+passed all 18 workers over Numeric recurrence, MapSet and active raytrace with
+two rounds and no later requests. Preparation and post-return byte validation
+are excluded from the clean clocks. The [canonical report](../implementation/phase61/README.md)
+retains build, focused controls, genuine B2 and ordinary-driver scope separately.
+
+Current state06 has a successful checked B1 build and 36 strict paired probes.
+New native host facts, private prefix provenance and segmented JSON transport
+have no credited speedup at this checkpoint; focused controls, genuine B2 and
+fresh measurements remain gates. Installed Phase58 last01 is unchanged. Records
+[P61-005](phase61/P61-005-native-host-type-facts.md),
+[P61-006](phase61/P61-006-private-prefix-provenance.md) and
+[P61-007](phase61/P61-007-segmented-json-transport.md) now join the experiment
+index; P61-007 explicitly records its retrospective registration.
+
+The [current fast protocol](README.md#current-compiler-fast-method-protocol)
+binds genuine images and consumed methods (state04 uses `latency-method03`),
+keeps private preparation outside latency, and proceeds from two-source screen
+to three-source confirmation, held-out Lexer/Evening and all 23. The 20/60 labels
+are coverage names, not time guarantees. Root alone schedules guarded CPU3 jobs;
+failures and skipped observations retain their status. Final semantic, B2,
+native/legacy, performance and release checks still govern promotion.
+
+The [October 7 cleanup](../selfhost/build/cleanup-20261007/README.md) compacted
+49 old raw profiles only. Retained gzip payloads were round-trip hash verified;
+restoration mappings preserve historical replay. Source/reports, Phase6, active
+Phase58–61 and seven installed-file hashes were unchanged. This storage cleanup
+ran no compiler or benchmark and changes no historical result.
+
+**Updated frontier:** finish state06 focused and genuine-B2 qualification, then
+measure that exact candidate before attributing any additional benefit. Preserve
+the measured state04 checkpoint and all failed predecessors. Full installation
+and source promotion remain uncredited until the selected final gates pass.
+
+
+### Phase61 state06 genuine B2 and subset confirmation — 2026-10-07
+
+The [state06 bootstrap](../selfhost/build/phase61/bootstrap-state06-execution/report.json)
+passes six commands and all eight ordinary-driver observations. Its actual
+86-root B2 is 3,977,511 bytes, SHA256
+`f73ef8a5596e99d45108b0d31b4e6c3f49e008db000a428e27acd27d79bd6d1a`.
+Full construction took 71.728722 internal seconds /71.952000 supervised seconds,
+within the 132.061495-second enclosing stage. Source checking is inherited;
+these results do not establish fresh B2 self-checking or a B2/B3 fixed point.
+State06's checked36, native controls18 and carrier29 + five producer cases pass.
+
+[Preparation](../selfhost/build/phase61/state06-b2-latency01/preparation/report.json)
+passes separately in 13.768266 campaign seconds. The
+[two-source screen](../selfhost/build/phase61/state06-b2-latency01/screen45/report.json)
+passes 6/6 workers in 10.317683 seconds. The independent
+[three-source confirmation](../selfhost/build/phase61/state06-b2-latency01/confirm90/report.json)
+passes 18/18 workers in 30.996514 seconds: Numeric recurrence, MapSet and active
+raytrace, two rotated rounds, no later requests. Its median-based equal-source
+combined-first ratios are **0.569145 versus fresh Phase58 B2** and **1.468267
+versus TypeScript**. Compilation-only ratios are separately **0.532443** and
+**2.030508**. Every source improves against its baseline but remains slower than
+TS. Complete fresh raw-module comparisons pass; generated workloads were not
+executed. Neither pilot nor confirmation is an all23 state06 result.
+
+The consumed method05 uses reviewed stable-input verification and the actual
+frame decoder. Campaign wall includes changed orchestration outside clean clocks;
+it cannot be compared with method03 as pure compiler speed. Preparation and
+post-return raw-byte checking remain outside import/API-load/first-request
+measurements. Earlier candidate/state04 samples are not pooled with these rows.
+See the [reconciled report](../implementation/phase61/README.md) and
+[timing account](../implementation/phase61/timing-account.md).
+
+The [tracked cleanup report](../implementation/phase61/cleanup.md) now preserves
+receipt identities and restoration links for the 49 losslessly compacted old
+profiles. The local gzip payloads remain required; a Markdown link/hash is not
+an independent backup. Seven installed-file hashes and active Phase58–61 were
+unchanged by that storage-only work.
+
+**Updated frontier:** qualify the final maintained workflow and exact selected
+source/B2 lineage, then broad compiler measurements, self-check/reproduction,
+semantic/native/legacy and release gates. Installed Phase58 last01 remains
+unchanged. State04 retains the latest broad exploratory population result;
+state06's encouraging subset evidence does not replace it or authorize release.
+
+
+### Phase61 state06 broad23 screen complete — 2026-10-07
+
+The [broad180 receipt](../selfhost/build/phase61/state06-b2-latency01/broad180/report.json)
+passes all **69 workers**, covering 23 sources × three roles × one fixed-order
+round, with no later requests. Campaign wall is **108.100775 seconds** and the
+measurement-stage interval is 107.670503 seconds. All 23 newly emitted raw
+modules match qualified references. No generated runtime workload was rerun.
+
+Equal-source geometric means improve **2.468310 → 1.432999 B2/TS** for compiler
+import + API load + first compilation, and **3.802103 → 2.098952** for compilation
+alone. Candidate/baseline ratios are 0.580559 and 0.552050 respectively.
+Preparation and post-return output validation are outside clean clocks. This
+one-round screen has no within-cell variation or balanced-position estimate;
+no wall-time extrapolation is made. Earlier three-source confirmation and
+state04 observations remain distinct, with all failed predecessors preserved.
+
+**Updated frontier:** state06 controls/bootstrap and broad compiler screen are
+complete; investigate JDText duplication without assuming a performance cause,
+and finish selected final semantic/self-check/reproduction, preservation,
+native/legacy/generated-program-performance and release qualification. A changed
+source or canonical helper needs its own bound image lineage. Installed Phase58
+last01 remains unchanged; no final promotion follows from this screen alone.

@@ -1,0 +1,34 @@
+{
+  "kind": "phase61-admission-aware-bindings-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/latency/make-bindings.py",
+    "sha256": "eb53d3958882626837aced10948985eea4b55b8b434b5f1b8d34e2d889b1a57e"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/latency/make-bindings-v2.py",
+    "sha256": "ec7d7f146e0b8e3a8fff2c3f332a38fead53158d139a22479c35cde26ca25da3"
+  },
+  "edits": [
+    {
+      "old": "default=RAW/'latency-method01'",
+      "new": "default=RAW/'latency-method05'",
+      "count": 1
+    },
+    {
+      "old": "p.add_argument('--candidate-attempt',type=Path);p.add_argument('--candidate-emission',type=Path)",
+      "new": "p.add_argument('--candidate-attempt',type=Path);p.add_argument('--candidate-emission',type=Path)\np.add_argument('--candidate-admission',type=Path)\np.add_argument('--candidate-roots-reference',type=Path)",
+      "count": 1
+    },
+    {
+      "old": "assert not (a.diagnostic and a.candidate_attempt)",
+      "new": "assert not (a.diagnostic and a.candidate_attempt)\nassert bool(a.candidate_admission)==bool(a.candidate_roots_reference)\nassert not a.candidate_admission or a.candidate_attempt",
+      "count": 1
+    },
+    {
+      "old": " roles['candidate']=candidate;comparison='changed-source'",
+      "new": " if a.candidate_admission:\n  admission_id=pin(a.candidate_admission);admission=read(admission_id)\n  reference_id=pin(a.candidate_roots_reference);reference=read(reference_id)\n  assert admission['kind']=='phase61-bootstrap-export-admission' and admission['version']==1\n  assert reference['kind']=='phase61-checked-bootstrap-export-reference'\n  assert reference['admission']==admission_id and reference['attempt']==candidate['attempt']\n  assert pin(reference['bootstrap'])==pin(new['bootstrapReport'])\n  assert reference['roots']==read(new['bootstrapReport'])['exports']\n  assert pin(Path(new['snapshot']['root'])/'tools/typed-driver.mjs')['sha256']==pin(admission['driver'])['sha256']\n  pin(reference['historical'])\n  candidate={**candidate,'admission':admission_id,'rootsReference':reference_id}\n roles['candidate']=candidate;comparison='changed-source'",
+      "count": 1
+    }
+  ],
+  "scope": "Default reviewed method05; explicit optional candidate admission/reference pins. Original genuine image/output policy and replay arguments unchanged; no compiler execution."
+}

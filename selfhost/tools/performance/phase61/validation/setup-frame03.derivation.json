@@ -1,0 +1,37 @@
+{
+  "kind": "phase61-explicit-driver-frame2-setup-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/setup-frame02.mjs",
+    "sha256": "c8cc7bb20bc11486a874ee94f71395792c060d00c87e3e2f0696d37344798ac4"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/setup-frame03.mjs",
+    "sha256": "20e4207025f4081e28ebb84c33c461159fb7a8c686f8c3cb7a76094c9c8ce9f8"
+  },
+  "edits": [
+    {
+      "old": "for(const key of ['producer','plan','attempt','emission','comparison','source','b1','b2','runtime','rootsReference'])pin(binding[key]);",
+      "new": "for(const key of ['producer','plan','attempt','emission','comparison','source','b1','b2','runtime','rootsReference','admission'])pin(binding[key]);"
+    },
+    {
+      "old": "  const reference=read(binding.rootsReference);assert.deepEqual(binding.roots,reference.roots);",
+      "new": "  const reference=read(binding.rootsReference);assert.deepEqual(binding.roots,reference.roots);\n  const admission=read(binding.admission);assert.equal(admission.kind,'phase61-bootstrap-export-admission');assert.equal(admission.version,1);\n  pin(admission.driver);assert.deepEqual(reference.admission,binding.admission);"
+    },
+    {
+      "old": "  const plan=read(binding.plan);assert.equal(plan.kind,'phase56-candidate-image-plan');assert.deepEqual(plan.attempt,binding.attempt);",
+      "new": "  const plan=read(binding.plan);assert.equal(plan.kind,'phase56-candidate-image-plan');assert.deepEqual(plan.attempt,binding.attempt);\n  assert.deepEqual(plan.admission,binding.admission);"
+    },
+    {
+      "old": "  const added=['base_prefix_prepare','check_program_diagnostic_seed','f_fresh_prefix_prepare','f_graph_trace_from_prefix'];\n  assert.deepEqual(reference.addedRoots,[...added].sort());",
+      "new": "  const baseAdded=['base_prefix_prepare','check_program_diagnostic_seed','f_fresh_prefix_prepare','f_graph_trace_from_prefix'];\n  assert.ok(Array.isArray(admission.addedRoots)&&admission.addedRoots.every(x=>typeof x==='string'&&x));\n  const added=[...baseAdded,...admission.addedRoots];\n  assert.equal(new Set(added).size,added.length);assert.ok(added.every(x=>!previousRoots.includes(x)));\n  assert.deepEqual(reference.baseAddedRoots,[...baseAdded].sort());\n  assert.deepEqual(reference.addedRoots,[...added].sort());"
+    },
+    {
+      "old": "  assert.equal(config.driver.sha256,'30ec69e6677a6696ca6dd4f4779560968c48d93e583b8ebf5c2d6308f75e989b');",
+      "new": "  assert.equal(pin(config.driver).sha256,admission.driver.sha256);\n  assert.equal(identity(path.join(attempt.snapshot.root,'tools/typed-driver.mjs')).sha256,admission.driver.sha256);"
+    },
+    {
+      "old": "      const framed=item.file.endsWith('-frame1.json');",
+      "new": "      const framed=/-frame[12]\\.json$/.test(item.file);"
+    }
+  ]
+}

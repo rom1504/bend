@@ -1,0 +1,28 @@
+--- a/selfhost/tools/development/workflow.mjs
++++ b/selfhost/tools/development/workflow.mjs
+@@ -7,6 +7,7 @@
+ import {pathToFileURL} from 'node:url';
+ import {PIN} from '../conformance/inventory.mjs';
+ import {supervise,requireExecution} from './process.mjs';
++import {decodeBaseCacheFrame} from '../typed-driver.mjs';
+ 
+ const project=path.resolve(import.meta.dirname,'../..');
+ export const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
+@@ -56,10 +57,14 @@
+ }
+ export function validatedCache(directory, api, base) {
+   const apiSha=identity(api).sha256,baseSha=identity(base).sha256,canonical=fs.realpathSync(base);
+-  const file=path.join(directory,`base-${apiSha}-${baseSha}-${digest(canonical)}.json`);
+-  const c=json(file);
++  const stem=path.join(directory,`base-${apiSha}-${baseSha}-${digest(canonical)}`);
++  const frame2=stem+'-frame2.json',frame1=stem+'-frame1.json';
++  const framed=fs.existsSync(frame2)?frame2:frame1,isFrame=fs.existsSync(framed);
++  const file=isFrame?framed:stem+'.json';
++  // A corrupt framed artifact is rejected; it never falls through to old bytes.
++  const c=isFrame?decodeBaseCacheFrame(fs.readFileSync(file)):json(file);
+   const sourceSpan=(c.version===4||(c.version===6&&c.termAbi===1))&&c.spanAbi===3&&c.sourceBegin===1&&c.sourceEnd===fs.readFileSync(base,'utf8').length+2;
+-  if((c.version!==2&&!sourceSpan)||c.compilerSha256!==apiSha||c.baseSha256!==baseSha||c.sourcePath!==canonical||c.validatedBy!=='check_book'||c.bookSha256!==digest(JSON.stringify(c.book)))
++  if((isFrame?!sourceSpan:(c.version!==2&&!sourceSpan))||c.compilerSha256!==apiSha||c.baseSha256!==baseSha||c.sourcePath!==canonical||c.validatedBy!=='check_book'||(!isFrame&&c.bookSha256!==digest(JSON.stringify(c.book))))
+     throw Error('Invalid API-specific checked Base cache: '+file);
+   return identity(file);
+ }

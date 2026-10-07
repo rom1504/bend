@@ -1,0 +1,98 @@
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -98,13 +98,13 @@
+   }
+   if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source','nc_foreign_scope');
+   if(files.includes('src/check/prefix.bend'))exports.push('check_from_exact_prefix','exact_prefix');
+-  if(files.includes('src/check/prefix-state.bend'))exports.push('base_prefix_prepare','check_program_diagnostic_seed');
++  if(files.includes('src/check/prefix-state.bend'))exports.push('base_prefix_prepare','check_program_diagnostic_seed','check_program_diagnostic_prefix');
+   if(files.includes('src/load/graph.bend'))exports.push('f_load_graph','f_load_graph_trace');
+   if(files.includes('src/load/modules.bend')){exports.push('f_source_completed','f_source_located');if(fs.readFileSync(path.join(project,'src/load/modules.bend'),'utf8').includes('def compiler_load_abi('))exports.push('compiler_load_abi','f_source_header','f_complete_source','f_complete_seed','f_import_namespace_at','f_graph_trace');}
+   if(files.includes('src/load/imports.bend')&&fs.readFileSync(path.join(project,'src/load/imports.bend'),'utf8').includes('def f_import_failure('))exports.push('f_import_failure');
+   if(files.includes('src/core/index.bend'))exports.push('book_context','book_cached');
+   if(files.includes('src/load/seed.bend'))exports.push('f_load_graph_seed','f_load_graph_seed_trace');
+-  if(files.includes('src/load/prefix.bend'))exports.push('f_fresh_prefix_prepare','f_graph_trace_from_prefix');
++  if(files.includes('src/load/prefix.bend'))exports.push('f_fresh_prefix_prepare','f_graph_trace_from_prefix','f_prefix_graph_empty','f_prefix_complete_seed','f_prefix_complete_source','f_prefix_graph_trace');
+   if(files.includes('src/driver/report.bend'))exports.push('driver_report','driver_bad_names');
+   if(files.includes('src/diagnostic/produce.bend'))exports.push('compiler_check_result_abi','check_book_diagnostic','check_book_diagnostic_from_exact_prefix','diagnostic_render','diagnostic_result_locate');
+   if(files.includes('src/driver/api.bend')&&fs.readFileSync(path.join(project,'src/driver/api.bend'),'utf8').includes('def check_program_diagnostic('))exports.push('check_program_diagnostic');
+@@ -208,6 +208,7 @@
+     KTerm:spanAbi===3?['tag','name','id','quant','kids','removed','originBegin','originEnd']:['tag','name','id','quant','kids','removed'],KDef:['name','kind','arity','templates','typ','value','ctors','native','unsafe'],
+     KIndexLeaf:['hash','bucket'],KIndexNode:['hash','mask','left','right'],
+     KBasePrefixState:['bound','delta','stamp','patches','ready'],FFreshPrefixState:['next','ready'],
++    FPrefixGraph:['graph','prefix','suffix','count','ready'],FPrefixCompletion:['carrier','parsed'],FPrefixLoad:['trace','prefix','suffix','ready'],
+     ...(termAbi===1?{KLiteral:['kind','number','text','originBegin','originEnd'],KLambda:['name','id','quant','kids','removed','originBegin','originEnd','quantityPresent']}:{}),
+     KSpecialized:['book','error'],NC_Result:['source','error'],KF_Source:['parts','error'],
+     DText:['text'],DTerm:['term'],DNoSpan:[],DSpan:['source','begin','end'],
+@@ -326,11 +327,13 @@
+ 
+ // Only ordinary inspection grants this private entry permission; raw public seed
+ // objects do not select the new state-bearing loader API.
+-const FRESH_PREFIX_PERMISSION={};
+-export function discoverSources(api,input,{seed=null,freshPrefixPermission=null}={}) {
++const FRESH_PREFIX_PERMISSION={},NATIVE_PREFIX_PERMISSION={};
++export function discoverSources(api,input,{seed=null,freshPrefixPermission=null,nativePrefixPermission=null}={}) {
+   const sources=[],seen=new Map(),physical=new Map(),foreign=new Map(),active=new Set();
+   requireLoaderApi(api);
+   const located=api.compiler_span_abi?.()===SPAN_ABI;
++  const nativePrefix=nativePrefixPermission===NATIVE_PREFIX_PERMISSION&&located&&seed?.freshPrefixState&&['f_prefix_graph_empty','f_prefix_complete_seed','f_prefix_complete_source','f_prefix_graph_trace','check_program_diagnostic_prefix'].every(name=>typeof api[name]==='function');
++  let carrier=nativePrefix?api.f_prefix_graph_empty():null;
+   const baseCanonical=located?fs.realpathSync(basePath):null;
+   const baseText=located?fs.readFileSync(baseCanonical,'utf8'):null;
+   const baseRange=located?interval(1,baseText):null;
+@@ -376,8 +379,14 @@
+     }
+     {
+       const supplied=list(sources),ns=edge?api.f_import_namespace_at(edge.item,edge.source,supplied,root):'';
+-      const result=seeded?api.f_complete_seed(raw,completed,seed.sourcePath,seed.sourceText,seed.book):api.f_complete_source(raw,ns,header,supplied,completed,root);
+-      parsed=result.parsed;completed=result.graph;record.parsed=parsed;
++      if(nativePrefix) {
++        const result=seeded?api.f_prefix_complete_seed(raw,ns,carrier,seed.sourcePath,seed.sourceText,seed.book):api.f_prefix_complete_source(raw,ns,header,supplied,carrier,root);
++        carrier=result.carrier;parsed=result.parsed;completed=carrier.graph;
++      } else {
++        const result=seeded?api.f_complete_seed(raw,completed,seed.sourcePath,seed.sourceText,seed.book):api.f_complete_source(raw,ns,header,supplied,completed,root);
++        parsed=result.parsed;completed=result.graph;
++      }
++      record.parsed=parsed;
+       if(located&&!seeded&&!parsed.error)validateSpanBook(parsed.book,[...physical.values()].map(x=>x.range),api.compiler_term_abi?.()??0);
+     }
+     retain();
+@@ -395,8 +404,9 @@
+   const main=path.resolve(input);
+   visit(main,path.resolve(input));
+   const supplied=list(sources);
+-  return {main,sources:supplied,files:[...physical.keys()],foreign:[...foreign.values()],hasBase:seen.has('Base'),
+-    loadTrace:freshPrefixPermission===FRESH_PREFIX_PERMISSION&&usedSeed&&seed?.freshPrefixState&&typeof api.f_graph_trace_from_prefix==='function'?
++  const prefixLoad=nativePrefix&&usedSeed?api.f_prefix_graph_trace(carrier,supplied,seed.freshPrefixState):null;
++  return {prefixLoad,main,sources:supplied,files:[...physical.keys()],foreign:[...foreign.values()],hasBase:seen.has('Base'),
++    loadTrace:prefixLoad?prefixLoad.trace:freshPrefixPermission===FRESH_PREFIX_PERMISSION&&usedSeed&&seed?.freshPrefixState&&typeof api.f_graph_trace_from_prefix==='function'?
+       api.f_graph_trace_from_prefix(completed,supplied,seed.book,seed.freshPrefixState):api.f_graph_trace(completed,supplied)};
+ }
+ 
+@@ -597,6 +607,7 @@
+ }
+ 
+ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false,proofOnly=false}={},memo=null) {
++  const ownedApi=api===undefined||memo!==null;
+   backend=javascriptBackendForMode(mode,backend);
+   api??=await loadApi();
+   let phase='load';
+@@ -610,7 +621,7 @@
+       throw Error('Compiler API changed during persistent inspection');
+     }
+     const seed=info?readBaseCache(info,memo):null;
+-    const graph=discoverSources(api,input,{seed,freshPrefixPermission:FRESH_PREFIX_PERMISSION});
++    const graph=discoverSources(api,input,{seed,freshPrefixPermission:FRESH_PREFIX_PERMISSION,nativePrefixPermission:ownedApi?NATIVE_PREFIX_PERMISSION:null});
+     phase='parse';
+     trace('load and elaborate graph');
+     // Traces belong to this request and retain the exact parsed/source snapshots.
+@@ -623,7 +634,8 @@
+     const checkAbi=typeof api.compiler_check_result_abi==='function'?api.compiler_check_result_abi():0;
+     if(![0,1,2].includes(checkAbi))throw Error(`Unsupported compiler checker-result ABI: ${checkAbi}`);
+     if(checkAbi===2&&typeof api.check_program_diagnostic!=='function')throw Error('Compiler checker-result ABI 2 requires check_program_diagnostic');
+-    const checkedResult=checkAbi===2?(cached?.checkedPrefixState&&typeof api.check_program_diagnostic_seed==='function'?
++    const checkedResult=checkAbi===2?(ownedApi&&graph.prefixLoad&&cached?.checkedPrefixState&&typeof api.check_program_diagnostic_prefix==='function'?
++      api.check_program_diagnostic_prefix(graph.prefixLoad,cached.book,list([]),cached.checkedPrefixState):cached?.checkedPrefixState&&typeof api.check_program_diagnostic_seed==='function'?
+       api.check_program_diagnostic_seed(loaded.book,cached.book,list([]),cached.checkedPrefixState):
+       api.check_program_diagnostic(loaded.book,cached?cached.book:list([]),list([]))):checkAbi===1?
+       (cached?api.check_book_diagnostic_from_exact_prefix(loaded.book,cached.book,list([])):api.check_book_diagnostic(loaded.book,list([]))):null;

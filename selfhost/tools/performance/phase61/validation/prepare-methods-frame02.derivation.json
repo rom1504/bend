@@ -1,0 +1,37 @@
+{
+  "kind": "phase61-parameterized-admission-planner-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/prepare-methods-frame01.py",
+    "sha256": "4aa369b4beb521f5ff37abcb1f44a6158f55efe6e1e025d77cab5c2e6a187d58"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/prepare-methods-frame02.py",
+    "sha256": "62dc13dc6ef8ec6b0ae056e4223593f3f14c84c31f3eaa6a050dcb1cb07f8e7a"
+  },
+  "edits": [
+    {
+      "old": "Data-only framed81 successors",
+      "new": "Data-only explicit-export/frame2 successors"
+    },
+    {
+      "old": "SETUP=HERE/'setup-frame02.mjs';SETUP_SHA='c8cc7bb20bc11486a874ee94f71395792c060d00c87e3e2f0696d37344798ac4'",
+      "new": "SETUP=HERE/'setup-frame03.mjs';SETUP_SHA='20e4207025f4081e28ebb84c33c461159fb7a8c686f8c3cb7a76094c9c8ce9f8'"
+    },
+    {
+      "old": " const added=['base_prefix_prepare','check_program_diagnostic_seed','f_fresh_prefix_prepare','f_graph_trace_from_prefix'];",
+      "new": " pin(binding.admission);const admission=JSON.parse(fs.readFileSync(binding.admission.file,'utf8'));\\n assert.equal(admission.kind,'phase61-bootstrap-export-admission');assert.equal(admission.version,1);\\n assert.deepEqual(rootReference.admission,binding.admission);assert.deepEqual(plan.admission,binding.admission);pin(admission.driver);\\n assert.equal(image.driver.sha256,admission.driver.sha256);\\n const baseAdded=['base_prefix_prepare','check_program_diagnostic_seed','f_fresh_prefix_prepare','f_graph_trace_from_prefix'];\\n assert(Array.isArray(admission.addedRoots)&&admission.addedRoots.every(x=>typeof x==='string'&&x));\\n const added=[...baseAdded,...admission.addedRoots];assert.equal(new Set(added).size,added.length);\\n assert.deepEqual(rootReference.baseAddedRoots,[...baseAdded].sort());assert.deepEqual(rootReference.addedRoots,[...added].sort());"
+    },
+    {
+      "old": "row.file.endsWith('-frame1.json')",
+      "new": "(/-frame[12]\\\\.json$/).test(row.file)"
+    },
+    {
+      "old": "kind='phase61-framed81-validation-methods'",
+      "new": "kind='phase61-explicit-export-validation-methods'"
+    },
+    {
+      "old": "Reviewed setup-frame02 stages actual81 images; remaining self-check/image receipts bind actual checked exports; private checked staging decodes framed caches. Final-plan-frame01 uses external reviewed bootstrap-v4;",
+      "new": "Reviewed setup-frame03 stages admission-bound images; remaining self-check/image receipts bind actual checked exports; private checked staging decodes frame1/frame2 caches. Final-plan-frame02 uses external reviewed bootstrap-v5;"
+    }
+  ]
+}

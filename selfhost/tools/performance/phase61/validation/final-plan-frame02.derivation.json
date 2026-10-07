@@ -1,0 +1,65 @@
+{
+  "kind": "phase61-parameterized-admission-planner-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/final-plan-frame01.py",
+    "sha256": "4c35d89b0cea6dac3f7dc00990c93dac9a1f843e90d2d664a34c51b1a510b2ec"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/final-plan-frame02.py",
+    "sha256": "8338781e4eb6bf45c857e4c775bbe953aee1e00535cfbd5a858b528e715e6a57"
+  },
+  "edits": [
+    {
+      "old": "prepare-candidate-v4.py",
+      "new": "prepare-candidate-v5.py"
+    },
+    {
+      "old": "BOOTSTRAP_SHA='ccd302ef74f60696d9e9a474235d83b00e7363b983408847cf65a60a92dcb144'",
+      "new": "BOOTSTRAP_SHA='1e72fcf80a5386c9270eff0d6db4b661427283a11fe8cba906f41093f35a0bc6'"
+    },
+    {
+      "old": "PARENT=Path(__file__).with_name('final-plan.py');PARENT_SHA='219af6925e5fe967b8fdeb15b72ba9763d9cd42dbe8931f4048ed89f504d7678'",
+      "new": "PARENT=Path(__file__).with_name('final-plan-frame01.py');PARENT_SHA='4c35d89b0cea6dac3f7dc00990c93dac9a1f843e90d2d664a34c51b1a510b2ec'"
+    },
+    {
+      "old": "FACTORY=Path(__file__).with_name('prepare-methods-frame01.py');FACTORY_SHA='4aa369b4beb521f5ff37abcb1f44a6158f55efe6e1e025d77cab5c2e6a187d58'",
+      "new": "FACTORY=Path(__file__).with_name('prepare-methods-frame02.py');FACTORY_SHA='62dc13dc6ef8ec6b0ae056e4223593f3f14c84c31f3eaa6a050dcb1cb07f8e7a'"
+    },
+    {
+      "old": "s.add_argument('--bootstrap-pins',type=Path)",
+      "new": "s.add_argument('--bootstrap-pins',type=Path);s.add_argument('--admission',type=Path,required=True)"
+    },
+    {
+      "old": "method['kind']=='phase61-framed81-validation-methods'",
+      "new": "method['kind']=='phase61-explicit-export-validation-methods'"
+    },
+    {
+      "old": "boot=read(m['bootstrapReport']['file']);roots=boot['exports'];assert len(roots)==len(set(roots))==81\nassert {'base_prefix_prepare','check_program_diagnostic_seed','f_fresh_prefix_prepare','f_graph_trace_from_prefix'}.issubset(roots)",
+      "new": "boot=read(m['bootstrapReport']['file']);roots=boot['exports'];assert len(roots)==len(set(roots))\nadmission=read(a.admission);assert admission['kind']=='phase61-bootstrap-export-admission'and admission['version']==1\nassert pin(admission['driver']['file'])['sha256']==admission['driver']['sha256']\nassert pin(Path(m['snapshot']['root'])/'tools/typed-driver.mjs')['sha256']==admission['driver']['sha256']\nbase_added={'base_prefix_prepare','check_program_diagnostic_seed','f_fresh_prefix_prepare','f_graph_trace_from_prefix'}\nextra=admission['addedRoots'];assert isinstance(extra,list)and all(isinstance(x,str)and x for x in extra)and len(extra)==len(set(extra))\nprevious=read(ROOT/'selfhost/build/phase55/bootstrap-own-host02-plan01/full77.json')['roots']\nassert not(set(extra)&(set(previous)|base_added));added=base_added|set(extra)\nassert set(roots)==set(previous)|added and [x for x in roots if x not in added]==previous"
+    },
+    {
+      "old": "for key in ['producer','plan','attempt','emission','comparison','source','b1','b2','runtime','rootsReference']:",
+      "new": "for key in ['producer','plan','attempt','emission','comparison','source','b1','b2','runtime','rootsReference','admission']:"
+    },
+    {
+      "old": " assert origin['producer']==pin(BOOTSTRAP_PRODUCER)",
+      "new": " assert origin['producer']==pin(BOOTSTRAP_PRODUCER)and origin['admission']==pin(a.admission)"
+    },
+    {
+      "old": "assert old_plan['kind']=='phase56-candidate-image-plan' and old_plan['attempt']==origin['attempt']",
+      "new": "assert old_plan['kind']=='phase56-candidate-image-plan' and old_plan['attempt']==origin['attempt']and old_plan['admission']==pin(a.admission)"
+    },
+    {
+      "old": "py(BOOTSTRAP_PRODUCER,'plan',attempt,out/'bootstrap')",
+      "new": "py(BOOTSTRAP_PRODUCER,'plan',attempt,out/'bootstrap','--admission',a.admission.resolve())"
+    },
+    {
+      "old": "actual81 checked exports",
+      "new": "actual admission-bound checked exports"
+    },
+    {
+      "old": "out=str(out),bootstrapReuse=bootstrap_reuse,",
+      "new": "out=str(out),admission=pin(a.admission),bootstrapReuse=bootstrap_reuse,"
+    }
+  ]
+}

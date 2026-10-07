@@ -7,20 +7,35 @@ and emitted user programs separately.
 
 ## Newest campaign: Phase61 architectural compiler speed
 
-[Four registered hypotheses](phase61/) · [Research map](../implementation/phase61/research-map.md) ·
-[Current frontier](STEERING.md).
-The user authorizes major compiler-speed improvements implemented in Bend while
-maintaining correctness. New Phase61 experiments may change compiler source;
-Phase60's information-only scope remains historical and does not restrict this
-new authorization. No Phase61 outcome or promotion is established at registration.
-Installed Phase58 last01 and all closed evidence stay unchanged until a qualified
-root-admitted promotion.
+[Current results](../implementation/phase61/README.md) ·
+[Current frontier](STEERING.md) · [Research map](../implementation/phase61/research-map.md).
+State06's [broad180 screen](../selfhost/build/phase61/state06-b2-latency01/broad180/report.json)
+passes all **69 workers across 23 sources**. Equal-source geometric mean B2/TS
+improves **2.468310× → 1.432999×** for import + API load + first compilation,
+and **3.802103× → 2.098952×** for compilation alone. All 23 raw outputs match
+qualified references; no generated workloads were rerun. This is one fixed-order
+round. Preparation/output validation stay outside clean clocks; no wall-time
+extrapolation or individual-mechanism gain follows from the combined candidate.
 
-[Completed Phase60 survey](../implementation/phase60/README.md) measured the
-23-source compiler gap and registered contrasting short loops. Its shared-work
-and allocation evidence motivates complete frontend-state reuse, compact owned
-contexts and structured code/reference transport, without promised savings or
-permission to omit checking. Preserve its unknown samples, failures and archive.
+The earlier three-source confirmation passed 18/18 workers and remains distinct.
+State06 checked36, focused native/carrier controls, 86-root B2 construction and
+eight ordinary-driver comparisons also pass. Earlier state04 results and its
+original broad deadline remain in the [historical analysis](../selfhost/tools/performance/phase61/validation/state04-broad-analysis.json),
+without pooling campaigns. Installed Phase58 last01 is unchanged. The next work
+is JDText duplication research and selected final qualification; completed
+controls/bootstrap are no longer future gates for the measured state06 image.
+New source or maintained-helper changes need their own exact image lineage.
+
+The experiment records cover [shared frontend state](phase61/P61-001-shared-frontend-state.md),
+[owned contexts](phase61/P61-002-compact-owned-contexts.md),
+[structured emission](phase61/P61-003-structured-emission.md),
+[fast iteration](phase61/P61-004-fast-iteration.md),
+[proved native host types](phase61/P61-005-native-host-type-facts.md),
+[private prefix provenance](phase61/P61-006-private-prefix-provenance.md), and
+[segmented JSON transport](phase61/P61-007-segmented-json-transport.md).
+P61-007 is explicitly indexed retrospectively; it is not claimed preregistered.
+The [completed Phase60 survey](../implementation/phase60/README.md) remains the
+historical motivation, with its separate baseline, unknown samples and failures.
 
 This adapts the research method in `rom1504/math` at commit
 [`e2795031b5a35300d5c82613125c3bf9f3bd2b16`](https://github.com/rom1504/math/commit/e2795031b5a35300d5c82613125c3bf9f3bd2b16),
@@ -87,6 +102,37 @@ without seeing the preferred explanation, then check the archive for duplicates.
    within the existing user authorization. Revisit strategy after a decisive
    result or several unproductive rounds. New counters or renamed hypotheses
    alone are not progress; stop at the authorized campaign boundary.
+
+## Current compiler fast-method protocol
+
+Use the [Phase61 method recipes](../selfhost/tools/performance/phase61/latency/README.md)
+and [P61-004](phase61/P61-004-fast-iteration.md), with the exact consumed method
+and image bindings recorded by each run. State04 used frozen `latency-method03`;
+state06 uses `latency-method05`, including reviewed stable-input verification
+and the selected frame decoder. Earlier versions remain historical inputs, not
+interchangeable tools. Complete campaign wall includes changed harness work and
+is not a pure compiler-speed comparison across these methods.
+
+- First screen Numeric recurrence and MapSet with one fresh request per role;
+  then add active raytrace for two rotated rounds. The 20/60 labels identify
+  coverage, not guaranteed deadlines; adding the TS role requires its own budget.
+- Keep Lexer and Evening held out, then cover all 23 sources. The reported
+  state04 and state06 one-round broad screens are exploratory, not repeated gates.
+- Bind actual checked B1 or genuine B2 lineage and private API-keyed preparation.
+  Do not fabricate B2 checked metadata. Preparation/cache priming and post-return
+  full-byte validation stay outside import/API-load/first-request clocks.
+- Root alone runs serial CPU3 jobs under the process-tree resource guard. Keep
+  failures, deadlines and skipped rows; complete fresh triples can supplement an
+  interrupted queue without relabeling it successful or pooling partial roles.
+- Correctness, output identity, compiler latency and emitted-program performance
+  remain separate gates. Final source, B2, native/legacy and release checks still
+  precede any installed change.
+
+The [tracked October 7 cleanup report](../implementation/phase61/cleanup.md) compacted
+49 old raw profiles only, with decompressed-byte hash verification and retained
+restoration mappings. Active Phase58–61, Phase6, source/reports and all seven
+installed-file hashes were preserved. Restore a profile through that recipe
+before replaying a historical reader that expects its original raw path.
 
 ## Evidence labels are separate
 

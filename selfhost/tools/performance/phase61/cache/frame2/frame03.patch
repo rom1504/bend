@@ -1,0 +1,131 @@
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -246,6 +246,26 @@
+   }
+   return true;
+ }
++function validateSpanJsonTree(book,ranges,termAbi=0) {
++  const pending=[book];
++  while(pending.length) {
++    const value=pending.pop();
++    if(value===null||typeof value!=='object')continue;
++    if(value.$==='KLiteral') {
++      if(termAbi!==1||!['Nat','U32','F32','String'].includes(value.kind)||!Number.isSafeInteger(value.number)||value.number<0||value.number>U32_MAX||typeof value.text!=='string'||(value.kind==='String'?(value.number!==0||Array.from(value.text).some(c=>{const n=c.codePointAt(0);return n>=0xd800&&n<=0xdfff;})):value.text!==''))throw Error('Invalid compiler literal payload');
++    }
++    if(value.$==='KLambda'&&(termAbi!==1||typeof value.quantityPresent!=='boolean'))throw Error('Invalid compiler Lambda payload');
++    if(value.$==='KTerm'||value.$==='KLiteral'||value.$==='KLambda') {
++      const a=value.originBegin,b=value.originEnd;
++      if(!Number.isSafeInteger(a)||!Number.isSafeInteger(b)||a<0||b<0||a>U32_MAX||b>U32_MAX||
++        !((a===0&&b===0)||(a>0&&b>=a&&ranges.some(r=>a>=r.begin&&b<r.end))))
++        throw Error('Invalid compiler source range');
++    }
++    if(Array.isArray(value)){for(let i=0;i<value.length;i++){const child=value[i];if(child!==null&&typeof child==='object')pending.push(child);}}
++    else for(const key in value)if(Object.hasOwn(value,key)){const child=value[key];if(child!==null&&typeof child==='object')pending.push(child);}
++  }
++  return true;
++}
+ export function validateSpanCache(c,{compilerSha256,baseSha256,sourcePath,sourceText,termAbi=0}) {
+   const range=interval(1,sourceText);
+   if(c.version!==(termAbi===1?TERM_CACHE:SPAN_CACHE)||(c.termAbi??0)!==termAbi||c.spanAbi!==SPAN_ABI||c.compilerSha256!==compilerSha256||c.baseSha256!==baseSha256||
+@@ -254,24 +274,45 @@
+   validateSpanBook(c.book,[range],termAbi);return true;
+ }
+ 
+-const FORMAT='bend-base-cache-frame-1';
++const FORMAT='bend-base-cache-frame-2',LEGACY_FORMAT='bend-base-cache-frame-1';
++const frameTrees=new WeakSet(),frameStates=new WeakMap();
+ const digest=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+ function encodeBaseCacheFrame(cached,bookJson=JSON.stringify(cached.book)) {
+   if(typeof bookJson!=='string')throw Error('Invalid source-aware Base cache');
+-  const payload=Buffer.from(bookJson,'utf8');
+-  if(cached.bookSha256!==digest(payload))throw Error('Invalid source-aware Base cache');
+-  const {book,...metadata}=cached;
+-  return Buffer.concat([Buffer.from(JSON.stringify({...metadata,format:FORMAT})+'\n'),payload]);
++  const bookBytes=Buffer.from(bookJson);
++  if(cached.bookSha256!==digest(bookBytes))throw Error('Invalid source-aware Base cache');
++  const {book,checkedPrefixState,freshPrefixState,...metadata}=cached;
++  const checkedBytes=checkedPrefixState===undefined?Buffer.alloc(0):Buffer.from(JSON.stringify(checkedPrefixState));
++  const freshBytes=freshPrefixState===undefined?Buffer.alloc(0):Buffer.from(JSON.stringify(freshPrefixState));
++  return Buffer.concat([Buffer.from(JSON.stringify({...metadata,format:FORMAT,segments:[bookBytes.length,checkedBytes.length,freshBytes.length]})+'\n'),bookBytes,checkedBytes,freshBytes]);
+ }
+ export function decodeBaseCacheFrame(bytes) {
+   const cut=bytes.indexOf(10);
+   if(cut<0)throw new SyntaxError('Malformed Base cache frame');
+   const header=JSON.parse(bytes.subarray(0,cut).toString('utf8'));
+-  if(header===null||typeof header!=='object'||Array.isArray(header)||header.format!==FORMAT||Object.hasOwn(header,'book'))throw Error('Invalid source-aware Base cache');
++  if(header===null||typeof header!=='object'||Array.isArray(header)||![FORMAT,LEGACY_FORMAT].includes(header.format)||Object.hasOwn(header,'book'))throw Error('Invalid source-aware Base cache');
+   const payload=bytes.subarray(cut+1);
+-  if(typeof header.bookSha256!=='string'||header.bookSha256!==digest(payload))throw Error('Invalid source-aware Base cache');
+-  const {format,...cached}=header;
+-  return {...cached,book:JSON.parse(payload.toString('utf8'))};
++  if(header.format===LEGACY_FORMAT) {
++    if(typeof header.bookSha256!=='string'||header.bookSha256!==digest(payload))throw Error('Invalid source-aware Base cache');
++    const {format,...cached}=header;
++    return {...cached,book:JSON.parse(payload.toString('utf8'))};
++  }
++  if(Object.hasOwn(header,'checkedPrefixState')||Object.hasOwn(header,'freshPrefixState')||!Array.isArray(header.segments)||header.segments.length!==3||header.segments.some(n=>!Number.isSafeInteger(n)||n<0)||header.segments.reduce((a,b)=>a+b,0)!==payload.length)throw Error('Invalid source-aware Base cache');
++  const [nb,nc,nf]=header.segments;
++  const bookBytes=payload.subarray(0,nb),checkedBytes=payload.subarray(nb,nb+nc),freshBytes=payload.subarray(nb+nc);
++  if(typeof header.bookSha256!=='string'||header.bookSha256!==digest(bookBytes))throw Error('Invalid source-aware Base cache');
++  // Verify optional segment bytes before parsing. Invalid state keeps full-check fallback.
++  const checkedHash=nc?digest(checkedBytes):null,freshHash=nf?digest(freshBytes):null;
++  const {format,segments,...metadata}=header;
++  const cached={...metadata,book:JSON.parse(bookBytes.toString('utf8'))},states={};
++  frameTrees.add(cached);
++  if(nc&&checkedHash===header.checkedPrefixStateSha256){try{cached.checkedPrefixState=JSON.parse(checkedBytes.toString('utf8'));states.checked={value:cached.checkedPrefixState,sha256:checkedHash};}catch(error){if(!(error instanceof SyntaxError))throw error;}}
++  if(nf&&freshHash===header.freshPrefixStateSha256){try{cached.freshPrefixState=JSON.parse(freshBytes.toString('utf8'));states.fresh={value:cached.freshPrefixState,sha256:freshHash};}catch(error){if(!(error instanceof SyntaxError))throw error;}}
++  frameStates.set(cached,states);return cached;
++}
++function frameStateDigest(cached,key,value) {
++  const record=frameStates.get(cached)?.[key];
++  return record?.value===value?record.sha256:digest(JSON.stringify(value));
+ }
+ 
+ // Only decodeBaseCacheFrame supplies this JSON-owned cache object. Its exact
+@@ -280,7 +321,7 @@
+   const range=interval(1,sourceText);
+   if(c.version!==(termAbi===1?TERM_CACHE:SPAN_CACHE)||(c.termAbi??0)!==termAbi||c.spanAbi!==SPAN_ABI||c.compilerSha256!==compilerSha256||c.baseSha256!==baseSha256||
+     c.sourcePath!==sourcePath||c.sourceBegin!==range.begin||c.sourceEnd!==range.end||c.validatedBy!=='check_book')throw Error('Invalid source-aware Base cache');
+-  validateSpanBook(c.book,[range],termAbi);return true;
++  (frameTrees.has(c)?validateSpanJsonTree:validateSpanBook)(c.book,[range],termAbi);return true;
+ }
+ 
+ // Only ordinary inspection grants this private entry permission; raw public seed
+@@ -366,7 +407,7 @@
+   const version=termAbi===1?TERM_CACHE:api.compiler_span_abi?.()===SPAN_ABI?SPAN_CACHE:api.f_load_graph_seed?2:1;
+   const directory=path.join(project,'build/typed/cache');
+   const location=crypto.createHash('sha256').update(sourcePath).digest('hex');
+-  const file=path.join(directory,`base-${compilerSha256}-${baseSha256}${version>=2?'-'+location:''}${version>=SPAN_CACHE?'-frame1':''}.json`);
++  const file=path.join(directory,`base-${compilerSha256}-${baseSha256}${version>=2?'-'+location:''}${version>=SPAN_CACHE?'-frame2':''}.json`);
+   return {version,termAbi,compilerSha256,baseSha256,sourcePath,sourceText,directory,file};
+ }
+ // Only persistent inspectors own this bounded memo. Re-read and hash the exact
+@@ -402,8 +443,8 @@
+   try {
+     if(cached.checkedPrefixStateVersion!==1||cached.checkedPrefixStateProducer!=='base_prefix_prepare'||
+       !checkedPrefixStateShape(cached.checkedPrefixState)||!cached.checkedPrefixState.ready||
+-      cached.checkedPrefixStateSha256!==crypto.createHash('sha256').update(JSON.stringify(cached.checkedPrefixState)).digest('hex'))return false;
+-    validateSpanBook(cached.checkedPrefixState.patches,[interval(1,info.sourceText)],info.termAbi);
++      cached.checkedPrefixStateSha256!==frameStateDigest(cached,'checked',cached.checkedPrefixState))return false;
++    (frameTrees.has(cached)?validateSpanJsonTree:validateSpanBook)(cached.checkedPrefixState.patches,[interval(1,info.sourceText)],info.termAbi);
+     return true;
+   }catch{return false;}
+ }
+@@ -413,14 +454,15 @@
+   return cached.freshPrefixStateVersion===1&&cached.freshPrefixStateProducer==='f_fresh_prefix_prepare'&&
+     state!==null&&typeof state==='object'&&state.$==='FFreshPrefixState'&&state.ready===true&&
+     Number.isSafeInteger(state.next)&&state.next>=1&&state.next<=U32_MAX&&
+-    cached.freshPrefixStateSha256===crypto.createHash('sha256').update(JSON.stringify(state)).digest('hex');
++    cached.freshPrefixStateSha256===frameStateDigest(cached,'fresh',state);
+ }
+ 
+ function readBaseCache(info,memo=null) {
+   try {
+     const previous=memo?.entry;
+     if(memo)memo.entry=null;
+-    const bytes=fs.readFileSync(info.file);
++    const readFile=info.file.endsWith('-frame2.json')&&!fs.existsSync(info.file)?info.file.replace(/-frame2\.json$/,'-frame1.json'):info.file;
++    const bytes=fs.readFileSync(readFile);
+     const key=memo?JSON.stringify([info.version,info.compilerSha256,info.baseSha256,info.sourcePath,info.file]):null;
+     const digest=memo?crypto.createHash('sha256').update(bytes).digest('hex'):null;
+     if(previous?.key===key&&previous.digest===digest) {

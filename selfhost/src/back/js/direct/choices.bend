@@ -58,15 +58,21 @@ def jd_choice_expr(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTer
 
 @unsafe
 def jd_choice_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>) -> String:
-  jd_choice_done(book, env, xs, jd_ordered_expr(book, env, terms_at(xs, 1),
+  jd_text_render(jd_doc_choice_body(book, env, xs))
+
+@unsafe
+def jd_doc_choice_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>) -> JDText:
+  jd_doc_choice_done(book, env, xs, jd_ordered_expr(book, env, terms_at(xs, 1),
     j_type(book, env, terms_at(xs, 1)), False{}, 0))
 
 @unsafe
 def jd_choice_done(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +condition: JDOrdered) -> String:
-  match condition:
-    case JDOrdered{prefix, value, next}:
-      "{" ++ prefix ++ jd_choice_branches(book, env, xs, value) ++ "}"
+  jd_text_render(jd_doc_choice_done(book, env, xs, condition))
 
+@unsafe
+def jd_doc_choice_done(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +condition: JDOrdered) -> JDText:
+  match condition:
+    case JDOrdered{prefix, value, next}: jd_text_many([jd_text_raw("{" ++ prefix), jd_doc_choice_branches(book, env, xs, value), jd_text_literal("}", 1)])
 # A surrounding ordered expression owns the condition's prefixes. Keep them
 # outside the pending choice value, before the prefixes of later siblings.
 @unsafe
@@ -82,14 +88,19 @@ def jd_choice_ordered_done(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List
 
 @unsafe
 def jd_choice_branches(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +value: String) -> String:
-  "/* direct literal choice */if(" ++ value ++ "){" ++
-    jd_choice_arm(book, env, terms_at(xs, 2)) ++ "}else{" ++
-    jd_choice_arm(book, env, terms_at(xs, 3)) ++ "}"
+  jd_text_render(jd_doc_choice_branches(book, env, xs, value))
+
+@unsafe
+def jd_doc_choice_branches(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +value: String) -> JDText:
+  jd_text_many([jd_text_raw("/* direct literal choice */if(" ++ value ++ "){"), jd_doc_choice_arm(book, env, terms_at(xs, 2)), jd_text_literal("}else{", 6), jd_doc_choice_arm(book, env, terms_at(xs, 3)), jd_text_literal("}", 1)])
 
 @unsafe
 def jd_choice_arm(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> String:
-  jd_body(book, env, t, j_type(book, env, t), ["({$:\"Unit\"})"])
+  jd_text_render(jd_doc_choice_arm(book, env, t))
 
+@unsafe
+def jd_doc_choice_arm(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> JDText:
+  jd_doc_body(book, env, t, j_type(book, env, t), ["({$:\"Unit\"})"])
 # The scanner uses the identical admission decision. Both possible selected
 # bodies are tails of the caller; the condition remains an ordinary non-tail
 # computation. These scans consume the existing per-body fuel.

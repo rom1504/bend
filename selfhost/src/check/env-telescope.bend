@@ -32,9 +32,7 @@ def env_tele_apply_binding(+t: KTerm, +binding: KTelescopeBinding) -> KTerm:
 
 @unsafe
 def env_tele_apply(+t: KTerm, +bindings: List<&2,KTelescopeBinding>) -> KTerm:
-  match bindings:
-    case Nil{}: t
-    case Con{binding, rest}: env_tele_apply_binding(env_tele_apply(t, rest), binding)
+  env_subst_apply(t, bindings)
 
 @unsafe
 def env_tele_many(+args: List<&2,KTerm>) -> Bool:

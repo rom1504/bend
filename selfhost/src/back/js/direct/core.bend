@@ -164,43 +164,46 @@ def jd_over_head(+book: List<&2,KDef>, +env: List<&2,KTerm>, +value: String, +x:
 
 @unsafe
 def jd_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> String:
-  kc(String, String.eq(tg(t), "Ann"), u => jd_body(book, env, kid(t, 0), kid(t, 1), args), u =>
-  kc(String, String.eq(tg(t), "Rwt"), u => jd_body(book, env, kid(t, 2), ty, args), u =>
-  kc(String, String.eq(tg(t), "Efq"), u => "throw \"bend: runtime fail-stop\";", u =>
-  kc(String, String.eq(tg(t), "Lam"), u => jd_body_lambda(book, env, t, wnf(book, ty), args), u =>
-  kc(String, String.eq(tg(t), "Mat"),
-    u => kc(String, List.is_empty(&2,String, args), u => "return " ++ jd_expr(book, env, t, ty) ++ ";", u => jd_match(book, env, t, wnf(book, ty), args)), u =>
-  kc(String, String.eq(tg(t), "Let"), u => jd_body_let(book, env, ks(t), ty, args), u =>
-  kc(String, List.is_empty(&2,String, args), u => jd_return(book, env, t, ty, j_call_spine(t, Nil{})),
-    u => jd_body_apply(book, env, t, ty, args))))))))
+  jd_text_render(jd_doc_body(book, env, t, ty, args))
+
+@unsafe
+def jd_doc_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> JDText:
+  kc(JDText, String.eq(tg(t), "Ann"), u => jd_doc_body(book, env, kid(t, 0), kid(t, 1), args), u => kc(JDText, String.eq(tg(t), "Rwt"), u => jd_doc_body(book, env, kid(t, 2), ty, args), u => kc(JDText, String.eq(tg(t), "Efq"), u => jd_text_literal("throw \"bend: runtime fail-stop\";", 32), u => kc(JDText, String.eq(tg(t), "Lam"), u => jd_doc_body_lambda(book, env, t, wnf(book, ty), args), u => kc(JDText, String.eq(tg(t), "Mat"), u => kc(JDText, List.is_empty(&2,String, args), u => jd_text_raw("return " ++ jd_expr(book, env, t, ty) ++ ";"), u => jd_doc_match(book, env, t, wnf(book, ty), args)), u => kc(JDText, String.eq(tg(t), "Let"), u => jd_doc_body_let(book, env, ks(t), ty, args), u => kc(JDText, List.is_empty(&2,String, args), u => jd_doc_return(book, env, t, ty, j_call_spine(t, Nil{})), u => jd_doc_body_apply(book, env, t, ty, args))))))))
 
 @unsafe
 def jd_body_lambda(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> String:
-  kc(String, String.eq(tg(ty), "All"), u =>
-    kc(String, U32.is_eq(qt(ty), 0),
-      u => "const " ++ jd_local(ix(t)) ++ "=null;" ++ jd_body(book, jd_bind_env(env, ix(t), kid(ty, 0)),
-        kid(t, 0), j_app_type(ty, var(nm(t), ix(t))), args),
-      u => jd_body_live_lambda(book, env, t, ty, args)),
-    u => "return " ++ jd_fail("lambda lacks checked function type") ++ ";")
+  jd_text_render(jd_doc_body_lambda(book, env, t, ty, args))
+
+@unsafe
+def jd_doc_body_lambda(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> JDText:
+  kc(JDText, String.eq(tg(ty), "All"), u => kc(JDText, U32.is_eq(qt(ty), 0), u => jd_text_many([jd_text_raw("const " ++ jd_local(ix(t)) ++ "=null;"), jd_doc_body(book, jd_bind_env(env, ix(t), kid(ty, 0)), kid(t, 0), j_app_type(ty, var(nm(t), ix(t))), args)]), u => jd_doc_body_live_lambda(book, env, t, ty, args)), u => jd_text_raw("return " ++ jd_fail("lambda lacks checked function type") ++ ";"))
 
 @unsafe
 def jd_body_live_lambda(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> String:
+  jd_text_render(jd_doc_body_live_lambda(book, env, t, ty, args))
+
+@unsafe
+def jd_doc_body_live_lambda(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> JDText:
   match args:
-    case Nil{}: "return " ++ jd_expr(book, env, t, ty) ++ ";"
-    case Con{x, rest}: kc(String, jd_is_view(x), u =>
-      jd_body(book, Con{jd_view_binding(ix(t), kid(ty, 0), x), env}, kid(t, 0),
-        j_app_type(ty, var(nm(t), ix(t))), rest), u =>
-      jd_body_bound(ix(t), x, jd_body(book, jd_bind_env(env, ix(t), kid(ty, 0)), kid(t, 0),
-        j_app_type(ty, var(nm(t), ix(t))), rest)))
+    case Nil{}: jd_text_raw("return " ++ jd_expr(book, env, t, ty) ++ ";")
+    case Con{x, rest}: kc(JDText, jd_is_view(x), u => jd_doc_body(book, Con{jd_view_binding(ix(t), kid(ty, 0), x), env}, kid(t, 0), j_app_type(ty, var(nm(t), ix(t))), rest), u => jd_doc_body_bound(ix(t), x, jd_doc_body(book, jd_bind_env(env, ix(t), kid(ty, 0)), kid(t, 0), j_app_type(ty, var(nm(t), ix(t))), rest)))
 
 @unsafe
 def jd_body_bound(+id: U32, +value: String, +body: String) -> String:
-  kc(String, String.contains(body, jd_use(id)),
-    u => "const " ++ jd_local(id) ++ "=" ++ value ++ ";", u => "") ++ body
+  jd_text_render(jd_doc_body_bound(id, value, jd_text_raw(body)))
+
+@unsafe
+def jd_doc_body_bound(+id: U32, +value: String, +body: JDText) -> JDText:
+  jd_text_many([jd_text_raw(kc(String, jd_text_used(body, id),
+    u => "const " ++ jd_local(id) ++ "=" ++ value ++ ";", u => "")), body])
 
 @unsafe
 def jd_body_apply(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> String:
-  "return " ++ jd_apply_strings(jd_expr(book, env, t, ty), args, jd_tail_position(env)) ++ ";"
+  jd_text_render(jd_doc_body_apply(book, env, t, ty, args))
+
+@unsafe
+def jd_doc_body_apply(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> JDText:
+  jd_text_raw("return " ++ jd_apply_strings(jd_expr(book, env, t, ty), args, jd_tail_position(env)) ++ ";")
 
 @unsafe
 def jd_apply_strings(+value: String, +args: List<&2,String>, +tail: Bool) -> String:
@@ -211,112 +214,160 @@ def jd_apply_strings(+value: String, +args: List<&2,String>, +tail: Bool) -> Str
 
 @unsafe
 def jd_body_let(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +ty: KTerm, +args: List<&2,String>) -> String:
-  jd_body_let_render(book, env, xs, jd_body(book, j_context(book, env, xs), j_body(xs), ty, args))
+  jd_text_render(jd_doc_body_let(book, env, xs, ty, args))
+
+@unsafe
+def jd_doc_body_let(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +ty: KTerm, +args: List<&2,String>) -> JDText:
+  jd_doc_body_let_render(book, env, xs, jd_doc_body(book, j_context(book, env, xs), j_body(xs), ty, args))
 
 @unsafe
 def jd_body_let_render(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +body: String) -> String:
-  "{" ++ jd_let_values(book, env, xs, 0, body) ++ "{" ++ jd_let_bindings(xs, 0, body) ++ body ++ "}}"
+  jd_text_render(jd_doc_body_let_render(book, env, xs, jd_text_raw(body)))
+
+@unsafe
+def jd_doc_body_let_render(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +body: JDText) -> JDText:
+  jd_text_many([jd_text_literal("{", 1), jd_doc_let_values(book, env, xs, 0, body), jd_text_literal("{", 1), jd_doc_let_bindings(xs, 0, body), body, jd_text_literal("}}", 2)])
 
 @unsafe
 def jd_let_values(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +at: U32, +body: String) -> String:
-  jd_ordered_lets(book, env, xs, at, body, 0)
+  jd_text_render(jd_doc_let_values(book, env, xs, at, jd_text_raw(body)))
+
+@unsafe
+def jd_doc_let_values(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +at: U32, +body: JDText) -> JDText:
+  jd_doc_ordered_lets(book, env, xs, at, body, 0)
 
 @unsafe
 def jd_let_bindings(+xs: List<&2,KTerm>, +at: U32, +body: String) -> String:
+  jd_text_render(jd_doc_let_bindings(xs, at, jd_text_raw(body)))
+
+@unsafe
+def jd_doc_let_bindings(+xs: List<&2,KTerm>, +at: U32, +body: JDText) -> JDText:
   match xs:
-    case Nil{}: ""
-    case Con{x, Nil{}}: ""
-    case Con{x, rest}: kc(String, String.contains(body, jd_use(ix(x))), u =>
-      "const " ++ jd_local(ix(x)) ++ "=$let" ++ U32.show(at) ++ ";", u => "") ++ jd_let_bindings(rest, U32.inc(at), body)
+    case Nil{}: jd_text_literal("", 0)
+    case Con{x, Nil{}}: jd_text_literal("", 0)
+    case Con{x, rest}: jd_text_many([jd_text_raw(kc(String, jd_text_used(body, ix(x)), u =>
+      "const " ++ jd_local(ix(x)) ++ "=$let" ++ U32.show(at) ++ ";", u => "")), jd_doc_let_bindings(rest, U32.inc(at), body)])
 
 @unsafe
 def jd_return(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +spine: KTerm) -> String:
-  kc(String, jd_choice_call(book, spine), u => jd_choice_body(book, env, ks(spine)), u =>
-  kc(String, String.eq(tg(spine), "Call") && Bool.not(String.eq(jd_owner(env), "")) &&
-    jd_same_component(book, nm(spine), jd_owner(env)), u =>
-    jd_return_self(book, env, t, ty, spine, jd_arguments(book, env, ks(spine), dt(lookup(book, nm(spine))), jd_arity(book, lookup(book, nm(spine))))),
-    u => jd_return_regular(book, env, t, ty, spine)))
+  jd_text_render(jd_doc_return(book, env, t, ty, spine))
+
+@unsafe
+def jd_doc_return(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +spine: KTerm) -> JDText:
+  kc(JDText, jd_choice_call(book, spine), u => jd_doc_choice_body(book, env, ks(spine)), u => kc(JDText, String.eq(tg(spine), "Call") && Bool.not(String.eq(jd_owner(env), "")) &&
+    jd_same_component(book, nm(spine), jd_owner(env)), u => jd_doc_return_self(book, env, t, ty, spine, jd_arguments(book, env, ks(spine), dt(lookup(book, nm(spine))), jd_arity(book, lookup(book, nm(spine))))), u => jd_doc_return_regular(book, env, t, ty, spine)))
 
 @unsafe
 def jd_return_self(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +spine: KTerm, +r: JDArgs) -> String:
+  jd_text_render(jd_doc_return_self(book, env, t, ty, spine, r))
+
+@unsafe
+def jd_doc_return_self(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +spine: KTerm, +r: JDArgs) -> JDText:
   match r:
-    case JDArgs{values, rest, result, missing}:
-      kc(String, List.is_empty(&2,KTerm, rest) && U32.is_eq(jd_live_arity(book, result, missing), 0),
-        u => jd_ordered_transfer(book, env, nm(spine), ks(spine)),
-        u => jd_return_regular(book, env, t, ty, spine))
+    case JDArgs{values, rest, result, missing}: kc(JDText, List.is_empty(&2,KTerm, rest) && U32.is_eq(jd_live_arity(book, result, missing), 0), u => jd_doc_ordered_transfer(book, env, nm(spine), ks(spine)), u => jd_doc_return_regular(book, env, t, ty, spine))
 
 @unsafe
 def jd_return_regular(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +spine: KTerm) -> String:
-  jd_ordered_return(book, env, t, ty)
+  jd_text_render(jd_doc_return_regular(book, env, t, ty, spine))
+
+@unsafe
+def jd_doc_return_regular(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +spine: KTerm) -> JDText:
+  jd_doc_ordered_return(book, env, t, ty)
 
 @unsafe
 def jd_transfer_args(+book: List<&2,KDef>, +owner: String, +target: String, +values: List<&2,String>) -> String:
-  "{" ++ jd_ref(target) ++ jd_self_temps(values, 0) ++ jd_self_stores(values, 0) ++
-    kc(String, String.eq(owner, target), u => "",
-      u => "$pc=" ++ U32.show(jd_component_id(book, target)) ++ ";") ++ "continue;}"
+  jd_text_render(jd_doc_transfer_args(book, owner, target, values))
+
+@unsafe
+def jd_doc_transfer_args(+book: List<&2,KDef>, +owner: String, +target: String, +values: List<&2,String>) -> JDText:
+  jd_text_many([jd_text_raw("{" ++ jd_ref(target)), jd_doc_self_temps(values, 0), jd_doc_self_stores(values, 0), jd_text_raw(kc(String, String.eq(owner, target), u => "",
+      u => "$pc=" ++ U32.show(jd_component_id(book, target)) ++ ";") ++ "continue;}")])
 
 @unsafe
 def jd_self_temps(+values: List<&2,String>, +at: U32) -> String:
+  jd_text_render(jd_doc_self_temps(values, at))
+
+@unsafe
+def jd_doc_self_temps(+values: List<&2,String>, +at: U32) -> JDText:
   match values:
-    case Nil{}: ""
-    case Con{x, rest}: "const $next" ++ U32.show(at) ++ "=" ++ x ++ ";" ++ jd_self_temps(rest, U32.inc(at))
+    case Nil{}: jd_text_literal("", 0)
+    case Con{x, rest}: jd_text_many([jd_text_raw("const $next" ++ U32.show(at) ++ "=" ++ x ++ ";"), jd_doc_self_temps(rest, U32.inc(at))])
 
 @unsafe
 def jd_self_stores(+values: List<&2,String>, +at: U32) -> String:
+  jd_text_render(jd_doc_self_stores(values, at))
+
+@unsafe
+def jd_doc_self_stores(+values: List<&2,String>, +at: U32) -> JDText:
   match values:
-    case Nil{}: ""
-    case Con{x, rest}: "$a" ++ U32.show(at) ++ "=$next" ++ U32.show(at) ++ ";" ++ jd_self_stores(rest, U32.inc(at))
+    case Nil{}: jd_text_literal("", 0)
+    case Con{x, rest}: jd_text_many([jd_text_raw("$a" ++ U32.show(at) ++ "=$next" ++ U32.show(at) ++ ";"), jd_doc_self_stores(rest, U32.inc(at))])
 
 @unsafe
 def jd_definition(+book: List<&2,KDef>, +d: KDef) -> String:
-  kc(String, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
-    (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)),
-    u => kc(String, String.eq(tg(j_strip(dv(d))), "Foreign"), u => jd_foreign_def(book, d),
-      u => jd_definition_params(book, d, jd_params(book, dt(d), jd_arity(book, d), 0))), u => "")
+  jd_text_render(jd_doc_definition(book, d))
+
+@unsafe
+def jd_doc_definition(+book: List<&2,KDef>, +d: KDef) -> JDText:
+  kc(JDText, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
+    (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u => kc(JDText, String.eq(tg(j_strip(dv(d))), "Foreign"), u => jd_text_raw(jd_foreign_def(book, d)), u => jd_doc_definition_params(book, d, jd_params(book, dt(d), jd_arity(book, d), 0))), u => jd_text_literal("", 0))
 
 @unsafe
 def jd_definition_params(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String>) -> String:
-  jd_definition_native(book, d, params, jd_primitive_candidate_emit(book, d, params))
+  jd_text_render(jd_doc_definition_params(book, d, params))
+
+@unsafe
+def jd_doc_definition_params(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String>) -> JDText:
+  jd_doc_definition_native(book, d, params, jd_primitive_candidate_emit(book, d, params))
 
 @unsafe
 def jd_definition_native(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String>, +native: String) -> String:
-  kc(String, String.eq(native, ""),
-    u => jd_definition_loop(book, d, params, jd_component(book, dn(d))),
-    u => "function " ++ jd_name(dn(d)) ++ "(" ++ jd_join(params) ++ "){return " ++ native ++ ";}\n")
+  jd_text_render(jd_doc_definition_native(book, d, params, native))
 
+@unsafe
+def jd_doc_definition_native(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String>, +native: String) -> JDText:
+  kc(JDText, String.eq(native, ""), u => jd_doc_definition_loop(book, d, params, jd_component(book, dn(d))), u => jd_text_raw("function " ++ jd_name(dn(d)) ++ "(" ++ jd_join(params) ++ "){return " ++ native ++ ";}\n"))
 # A mutual tail component owns one private dispatcher. Named entry wrappers
 # retain the existing maximum-width parameter ABI and pass an inert initial PC.
 # The leader explicitly retains every member before emitted reach is filtered;
 # rebuilding call facts therefore keeps the same complete ordered component.
 @unsafe
 def jd_definition_loop(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String>, +members: List<&2,String>) -> String:
-  kc(String, U32.is_gt(jd_string_len(members), 1), u =>
-    jd_component_definition(book, d, members), u =>
-    "function " ++ jd_name(dn(d)) ++ "(" ++ jd_join(params) ++ "){for(;;){" ++
-      jd_body(book, [kt("$JD.Owner", dn(d), 4294967295, 0, Nil{})], dv(d), dt(d), params) ++ "}}\n")
+  jd_text_render(jd_doc_definition_loop(book, d, params, members))
+
+@unsafe
+def jd_doc_definition_loop(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String>, +members: List<&2,String>) -> JDText:
+  kc(JDText, U32.is_gt(jd_string_len(members), 1), u => jd_doc_component_definition(book, d, members), u => jd_text_many([jd_text_raw("function " ++ jd_name(dn(d)) ++ "(" ++ jd_join(params) ++ "){for(;;){"), jd_doc_body(book, [kt("$JD.Owner", dn(d), 4294967295, 0, Nil{})], dv(d), dt(d), params), jd_text_literal("}}\n", 3)]))
 
 @unsafe
 def jd_component_definition(+book: List<&2,KDef>, +d: KDef, +members: List<&2,String>) -> String:
+  jd_text_render(jd_doc_component_definition(book, d, members))
+
+@unsafe
+def jd_doc_component_definition(+book: List<&2,KDef>, +d: KDef, +members: List<&2,String>) -> JDText:
   match members:
-    case Nil{}: jd_fail("empty direct tail component")
-    case Con{leader, rest}: jd_component_shared(book, d, members, leader,
-      jd_width_params(jd_component_width(book, members), 0))
+    case Nil{}: jd_text_raw(jd_fail("empty direct tail component"))
+    case Con{leader, rest}: jd_doc_component_shared(book, d, members, leader, jd_width_params(jd_component_width(book, members), 0))
 
 @unsafe
 def jd_component_shared(+book: List<&2,KDef>, +d: KDef, +members: List<&2,String>,
   +leader: String, +params: List<&2,String>) -> String:
-  kc(String, String.eq(dn(d), leader), u =>
-    "function " ++ jd_name(leader) ++ "$scc(" ++ jd_join(Con{"$pc", params}) ++ "){" ++
-      jd_component_refs(members) ++ "for(;;)switch($pc){" ++ jd_component_cases(book, members, 0) ++ "}}\n",
-    u => "") ++
-    "function " ++ jd_name(dn(d)) ++ "(" ++ jd_join(params) ++ "){return (" ++ jd_ref(leader) ++
-      jd_name(leader) ++ "$scc(" ++ jd_join(Con{U32.show(jd_component_id(book, dn(d))), params}) ++ "));}\n"
+  jd_text_render(jd_doc_component_shared(book, d, members, leader, params))
+
+@unsafe
+def jd_doc_component_shared(+book: List<&2,KDef>, +d: KDef, +members: List<&2,String>,
+  +leader: String, +params: List<&2,String>) -> JDText:
+  jd_text_many([kc(JDText, String.eq(dn(d), leader), u => jd_text_many([jd_text_raw("function " ++ jd_name(leader) ++ "$scc(" ++ jd_join(Con{"$pc", params}) ++ "){"), jd_doc_component_refs(members), jd_text_literal("for(;;)switch($pc){", 19), jd_doc_component_cases(book, members, 0), jd_text_literal("}}\n", 3)]), u => jd_text_literal("", 0)), jd_text_raw("function " ++ jd_name(dn(d)) ++ "(" ++ jd_join(params) ++ "){return (" ++ jd_ref(leader) ++ jd_name(leader) ++ "$scc(" ++ jd_join(Con{U32.show(jd_component_id(book, dn(d))), params}) ++ "));}\n")])
 
 @unsafe
 def jd_component_refs(+members: List<&2,String>) -> String:
+  jd_text_render(jd_doc_component_refs(members))
+
+@unsafe
+def jd_doc_component_refs(+members: List<&2,String>) -> JDText:
   match members:
-    case Nil{}: ""
-    case Con{name, rest}: jd_ref(name) ++ jd_component_refs(rest)
+    case Nil{}: jd_text_literal("", 0)
+    case Con{name, rest}: jd_text_many([jd_text_raw(jd_ref(name)), jd_doc_component_refs(rest)])
 
 @unsafe
 def jd_component_width(+book: List<&2,KDef>, +members: List<&2,String>) -> U32:
@@ -327,21 +378,31 @@ def jd_component_width(+book: List<&2,KDef>, +members: List<&2,String>) -> U32:
 
 @unsafe
 def jd_component_cases(+book: List<&2,KDef>, +members: List<&2,String>, +at: U32) -> String:
+  jd_text_render(jd_doc_component_cases(book, members, at))
+
+@unsafe
+def jd_doc_component_cases(+book: List<&2,KDef>, +members: List<&2,String>, +at: U32) -> JDText:
   match members:
-    case Nil{}: ""
-    case Con{name, rest}: "case " ++ U32.show(at) ++ ":{" ++ jd_component_case(book, lookup(book, name)) ++
-      "}" ++ jd_component_cases(book, rest, U32.inc(at))
+    case Nil{}: jd_text_literal("", 0)
+    case Con{name, rest}: jd_text_many([jd_text_raw("case " ++ U32.show(at) ++ ":{"), jd_doc_component_case(book, lookup(book, name)), jd_text_literal("}", 1), jd_doc_component_cases(book, rest, U32.inc(at))])
 
 @unsafe
 def jd_component_case(+book: List<&2,KDef>, +d: KDef) -> String:
-  jd_body(book, [kt("$JD.Owner", dn(d), 4294967295, 0, Nil{})], dv(d), dt(d),
-    jd_params(book, dt(d), jd_arity(book, d), 0))
+  jd_text_render(jd_doc_component_case(book, d))
+
+@unsafe
+def jd_doc_component_case(+book: List<&2,KDef>, +d: KDef) -> JDText:
+  jd_doc_body(book, [kt("$JD.Owner", dn(d), 4294967295, 0, Nil{})], dv(d), dt(d), jd_params(book, dt(d), jd_arity(book, d), 0))
 
 @unsafe
 def jd_definitions(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:
+  jd_text_render(jd_doc_definitions(book, defs))
+
+@unsafe
+def jd_doc_definitions(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> JDText:
   match defs:
-    case Nil{}: ""
-    case Con{d, rest}: jd_definition(book, d) ++ jd_definitions(book, rest)
+    case Nil{}: jd_text_literal("", 0)
+    case Con{d, rest}: jd_text_many([jd_doc_definition(book, d), jd_doc_definitions(book, rest)])
 
 @unsafe
 def jd_library_selected(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:

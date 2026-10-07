@@ -181,44 +181,56 @@ def jd_ordered_native(+book: List<&2,KDef>, +name: String, +r: JDOrderedArgs) ->
 # The old demanded-use gate precedes all RHS lowering, including its prefixes.
 @unsafe
 def jd_ordered_return(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm) -> String:
-  jd_ordered_return_done(jd_ordered_expr(book, env, t, ty, jd_tail_position(env), 0))
+  jd_text_render(jd_doc_ordered_return(book, env, t, ty))
+
+@unsafe
+def jd_doc_ordered_return(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm) -> JDText:
+  jd_doc_ordered_return_done(jd_ordered_expr(book, env, t, ty, jd_tail_position(env), 0))
 
 @unsafe
 def jd_ordered_return_done(+r: JDOrdered) -> String:
+  jd_text_render(jd_doc_ordered_return_done(r))
+
+@unsafe
+def jd_doc_ordered_return_done(+r: JDOrdered) -> JDText:
   match r:
-    case JDOrdered{prefix, value, next}:
-      kc(String, String.eq(prefix, ""), u => "return " ++ value ++ ";",
-        u => "{" ++ prefix ++ "return " ++ value ++ ";}")
+    case JDOrdered{prefix, value, next}: kc(JDText, String.eq(prefix, ""), u => jd_text_raw("return " ++ value ++ ";"), u => jd_text_raw("{" ++ prefix ++ "return " ++ value ++ ";}"))
 
 @unsafe
 def jd_ordered_lets(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +at: U32, +body: String, +next: U32) -> String:
+  jd_text_render(jd_doc_ordered_lets(book, env, xs, at, jd_text_raw(body), next))
+
+@unsafe
+def jd_doc_ordered_lets(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +at: U32, +body: JDText, +next: U32) -> JDText:
   match xs:
-    case Nil{}: ""
-    case Con{x, Nil{}}: ""
-    case Con{x, rest}:
-      kc(String, String.contains(body, jd_use(ix(x))),
-        u => jd_ordered_let_done(book, env, rest, at, body,
-          kc(JDOrdered, U32.is_eq(qt(x), 0), v => JDOrdered{"", "null", next},
-            v => jd_ordered_expr(book, env, kid(x, 0), j_type(book, env, kid(x, 0)), False{}, next))),
-        u => jd_ordered_lets(book, env, rest, U32.inc(at), body, next))
+    case Nil{}: jd_text_literal("", 0)
+    case Con{x, Nil{}}: jd_text_literal("", 0)
+    case Con{x, rest}: kc(JDText, jd_text_used(body, ix(x)), u => jd_doc_ordered_let_done(book, env, rest, at, body, kc(JDOrdered, U32.is_eq(qt(x), 0), v => JDOrdered{"", "null", next},
+            v => jd_ordered_expr(book, env, kid(x, 0), j_type(book, env, kid(x, 0)), False{}, next))), u => jd_doc_ordered_lets(book, env, rest, U32.inc(at), body, next))
 
 @unsafe
 def jd_ordered_let_done(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,KTerm>, +at: U32, +body: String, +r: JDOrdered) -> String:
-  match r:
-    case JDOrdered{prefix, value, next}:
-      prefix ++ "const $let" ++ U32.show(at) ++ "=" ++ value ++ ";" ++
-        jd_ordered_lets(book, env, rest, U32.inc(at), body, next)
+  jd_text_render(jd_doc_ordered_let_done(book, env, rest, at, jd_text_raw(body), r))
 
+@unsafe
+def jd_doc_ordered_let_done(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,KTerm>, +at: U32, +body: JDText, +r: JDOrdered) -> JDText:
+  match r:
+    case JDOrdered{prefix, value, next}: jd_text_many([jd_text_raw(prefix ++ "const $let" ++ U32.show(at) ++ "=" ++ value ++ ";"), jd_doc_ordered_lets(book, env, rest, U32.inc(at), body, next)])
 # The caller proves complete live saturation and no surplus actuals. A missing
 # erased-only suffix needs no runtime value; lower every supplied live actual.
 @unsafe
 def jd_ordered_transfer(+book: List<&2,KDef>, +env: List<&2,KTerm>, +target: String, +xs: List<&2,KTerm>) -> String:
-  jd_ordered_transfer_done(book, jd_owner(env), target,
-    jd_ordered_args(book, env, xs, dt(lookup(book, target)), 0))
+  jd_text_render(jd_doc_ordered_transfer(book, env, target, xs))
+
+@unsafe
+def jd_doc_ordered_transfer(+book: List<&2,KDef>, +env: List<&2,KTerm>, +target: String, +xs: List<&2,KTerm>) -> JDText:
+  jd_doc_ordered_transfer_done(book, jd_owner(env), target, jd_ordered_args(book, env, xs, dt(lookup(book, target)), 0))
 
 @unsafe
 def jd_ordered_transfer_done(+book: List<&2,KDef>, +owner: String, +target: String, +r: JDOrderedArgs) -> String:
+  jd_text_render(jd_doc_ordered_transfer_done(book, owner, target, r))
+
+@unsafe
+def jd_doc_ordered_transfer_done(+book: List<&2,KDef>, +owner: String, +target: String, +r: JDOrderedArgs) -> JDText:
   match r:
-    case JDOrderedArgs{prefix, values, next}:
-      kc(String, String.eq(prefix, ""), u => jd_transfer_args(book, owner, target, values),
-        u => "{" ++ prefix ++ jd_transfer_args(book, owner, target, values) ++ "}")
+    case JDOrderedArgs{prefix, values, next}: kc(JDText, String.eq(prefix, ""), u => jd_doc_transfer_args(book, owner, target, values), u => jd_text_many([jd_text_raw("{" ++ prefix), jd_doc_transfer_args(book, owner, target, values), jd_text_literal("}", 1)]))

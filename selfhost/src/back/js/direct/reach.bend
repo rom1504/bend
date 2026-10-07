@@ -95,7 +95,7 @@ def jd_reach_definition(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List
   +rest: List<&2,String>, +seen: KDef, +left: U32, +fuel: U32, +d: KDef) -> JDReach:
   kc(JDReach, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0), u =>
     jd_reach_follow(book, names, defs, rest, index_set(seen, d, index_hash(dn(d), 2166136261), 32), left, fuel,
-      jd_reach_refs(names, jd_definition(book, d), False{}, 2097152, Nil{})),
+      jd_text_refs(names, jd_doc_definition(book, d))),
     u => JDReach{Nil{}, "direct reachability missing emitted definition"})
 
 @unsafe

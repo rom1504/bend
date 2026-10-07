@@ -22,6 +22,8 @@ type KTerm is Data:
 
 type KDef is Data:
   KDef{+name: String, +kind: String, +arity: U32, +templates: U32, +typ: KTerm, +value: KTerm, +ctors: List<&2, KDef>, +native: Bool, +unsafe: Bool}
+  KIndexLeaf{+hash: U32, +bucket: List<&2,KDef>}
+  KIndexNode{+hash: U32, +mask: U32, +left: KDef, +right: KDef}
 
 @unsafe
 def kt(
@@ -178,6 +180,8 @@ def dn(
   match d:
     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
       name
+    case KIndexLeaf{hash, bucket}: ""
+    case KIndexNode{hash, mask, left, right}: ""
 
 @unsafe
 def dk(
@@ -186,6 +190,8 @@ def dk(
   match d:
     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
       kind
+    case KIndexLeaf{hash, bucket}: "IndexLeaf"
+    case KIndexNode{hash, mask, left, right}: "IndexNode"
 
 @unsafe
 def da(
@@ -194,6 +200,8 @@ def da(
   match d:
     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
       arity
+    case KIndexLeaf{hash, bucket}: hash
+    case KIndexNode{hash, mask, left, right}: hash
 
 @unsafe
 def dx(
@@ -202,6 +210,8 @@ def dx(
   match d:
     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
       templates
+    case KIndexLeaf{hash, bucket}: 0
+    case KIndexNode{hash, mask, left, right}: mask
 
 @unsafe
 def dt(
@@ -210,6 +220,8 @@ def dt(
   match d:
     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
       typ
+    case KIndexLeaf{hash, bucket}: atom("Absent")
+    case KIndexNode{hash, mask, left, right}: atom("Absent")
 
 @unsafe
 def dv(
@@ -218,6 +230,8 @@ def dv(
   match d:
     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
       value
+    case KIndexLeaf{hash, bucket}: atom("Absent")
+    case KIndexNode{hash, mask, left, right}: atom("Absent")
 
 @unsafe
 def dc(
@@ -226,6 +240,8 @@ def dc(
   match d:
     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
       ctors
+    case KIndexLeaf{hash, bucket}: bucket
+    case KIndexNode{hash, mask, left, right}: Con{left, Con{right, Nil{}}}
 
 @unsafe
 def db(
@@ -234,6 +250,8 @@ def db(
   match d:
     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
       native
+    case KIndexLeaf{hash, bucket}: True{}
+    case KIndexNode{hash, mask, left, right}: True{}
 
 @unsafe
 def du(
@@ -242,6 +260,8 @@ def du(
   match d:
     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
       unsafe
+    case KIndexLeaf{hash, bucket}: False{}
+    case KIndexNode{hash, mask, left, right}: False{}
 
 @unsafe
 def missing() -> KDef:

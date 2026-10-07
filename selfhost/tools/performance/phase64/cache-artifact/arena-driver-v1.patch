@@ -1,0 +1,106 @@
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -11,7 +11,7 @@
+ import {buildNative} from './native-build.mjs';
+ import {nodeResourceArgs} from './node-resource-args.mjs';
+ import {createCompilerAbi} from './compiler-abi.mjs';
+-import {encodeBaseGraph,decodeBaseGraph} from './base-cache-graph.mjs';
++import {encodeBaseGraph,decodeBaseGraph,encodeBaseArena,decodeBaseArena} from './base-cache-graph.mjs';
+ 
+ export const driverPath=fileURLToPath(import.meta.url);
+ export const compilerAbiPath=fileURLToPath(new URL('./compiler-abi.mjs',import.meta.url));
+@@ -284,7 +284,7 @@
+   validateSpanBook(c.book,[range],termAbi);return true;
+ }
+ 
+-const FORMAT='bend-base-cache-frame-2',LEGACY_FORMAT='bend-base-cache-frame-1',GRAPH_FORMAT='bend-base-cache-frame-3';
++const FORMAT='bend-base-cache-frame-2',LEGACY_FORMAT='bend-base-cache-frame-1',GRAPH_FORMAT='bend-base-cache-frame-3',ARENA_FORMAT='bend-base-cache-frame-4';
+ const frameTrees=new WeakSet(),frameGraphs=new WeakSet(),frameStates=new WeakMap();
+ const digest=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+ function encodeBaseCacheFrame(cached,bookJson=JSON.stringify(cached.book)) {
+@@ -297,12 +297,14 @@
+   const freshBytes=freshPrefixState===undefined?Buffer.alloc(0):Buffer.from(JSON.stringify(freshPrefixState));
+   return Buffer.concat([Buffer.from(JSON.stringify({...metadata,format:FORMAT,segments:[bookBytes.length,checkedBytes.length,freshBytes.length]})+'\n'),bookBytes,checkedBytes,freshBytes]);
+ }
+-function encodeBaseCacheGraphFrame(cached) {
+-  const book=encodeBaseGraph([cached.book]);
+-  const prepared=encodeBaseGraph([cached.checkedPrefixState??null,cached.freshPrefixState??null,cached.preparedWorld??null,cached.frontendReadyState??null],book);
++function encodeBaseCacheArenaFrame(cached) {return encodeBaseCacheGraphFrame(cached,true);}
++function encodeBaseCacheGraphFrame(cached,arena=false) {
++  const encode=arena?encodeBaseArena:encodeBaseGraph;
++  const book=encode([cached.book]);
++  const prepared=encode([cached.checkedPrefixState??null,cached.freshPrefixState??null,cached.preparedWorld??null,cached.frontendReadyState??null],book);
+   const {book:rawBook,checkedPrefixState,freshPrefixState,preparedWorld,frontendReadyState,...metadata}=cached;
+   const preparedGraphSha256=digest(prepared.bytes);
+-  const header={...metadata,format:GRAPH_FORMAT,segments:[book.bytes.length,prepared.bytes.length],bookGraphSha256:digest(book.bytes),preparedGraphSha256,
++  const header={...metadata,format:arena?ARENA_FORMAT:GRAPH_FORMAT,segments:[book.bytes.length,prepared.bytes.length],bookGraphSha256:digest(book.bytes),preparedGraphSha256,
+     checkedPrefixStateSha256:preparedGraphSha256,freshPrefixStateSha256:preparedGraphSha256};
+   return Buffer.concat([Buffer.from(JSON.stringify(header)+'\n'),book.bytes,prepared.bytes]);
+ }
+@@ -312,14 +314,15 @@
+   const [nb,np]=header.segments,bookBytes=payload.subarray(0,nb),preparedBytes=payload.subarray(nb);
+   if(typeof header.bookGraphSha256!=='string'||header.bookGraphSha256!==digest(bookBytes))throw Error('Invalid source-aware Base cache');
+   const options={range:{begin:header.sourceBegin,end:header.sourceEnd},termAbi:header.termAbi??0};
+-  const book=decodeBaseGraph(bookBytes,{...options,rootKinds:['defs']});
++  const decode=header.format===ARENA_FORMAT?decodeBaseArena:decodeBaseGraph;
++  const book=decode(bookBytes,{...options,rootKinds:['defs']});
+   if(book.roots[0]===null)throw Error('Invalid source-aware Base cache');
+   const {format,segments,bookGraphSha256,preparedGraphSha256,...metadata}=header;
+   const cached={...metadata,book:book.roots[0]},states={};
+   frameGraphs.add(cached);
+   if(np&&typeof preparedGraphSha256==='string'&&preparedGraphSha256===digest(preparedBytes)){
+     try {
+-      const graph=decodeBaseGraph(preparedBytes,{...options,base:book,rootKinds:['checked','fresh','world','frontend']});
++      const graph=decode(preparedBytes,{...options,base:book,rootKinds:['checked','fresh','world','frontend']});
+       const [checked,fresh,world,frontend]=graph.roots;
+       if(checked){cached.checkedPrefixState=checked;states.checked={value:checked,sha256:preparedGraphSha256};}
+       if(fresh){cached.freshPrefixState=fresh;states.fresh={value:fresh,sha256:preparedGraphSha256};}
+@@ -333,9 +336,9 @@
+   const cut=bytes.indexOf(10);
+   if(cut<0)throw new SyntaxError('Malformed Base cache frame');
+   const header=JSON.parse(bytes.subarray(0,cut).toString('utf8'));
+-  if(header===null||typeof header!=='object'||Array.isArray(header)||![FORMAT,LEGACY_FORMAT,GRAPH_FORMAT].includes(header.format)||Object.hasOwn(header,'book'))throw Error('Invalid source-aware Base cache');
++  if(header===null||typeof header!=='object'||Array.isArray(header)||![FORMAT,LEGACY_FORMAT,GRAPH_FORMAT,ARENA_FORMAT].includes(header.format)||Object.hasOwn(header,'book'))throw Error('Invalid source-aware Base cache');
+   const payload=bytes.subarray(cut+1);
+-  if(header.format===GRAPH_FORMAT)return decodeBaseCacheGraphFrame(header,payload);
++  if(header.format===GRAPH_FORMAT||header.format===ARENA_FORMAT)return decodeBaseCacheGraphFrame(header,payload);
+   if(header.format===LEGACY_FORMAT) {
+     if(typeof header.bookSha256!=='string'||header.bookSha256!==digest(payload))throw Error('Invalid source-aware Base cache');
+     const {format,...cached}=header;
+@@ -463,7 +466,7 @@
+   const directory=path.join(project,'build/typed/cache');
+   const location=crypto.createHash('sha256').update(sourcePath).digest('hex');
+   const graph=version>=SPAN_CACHE&&(typeof api.base_prefix_world_prepare==='function'||typeof api.f_ready_prefix_prepare==='function');
+-  const file=path.join(directory,`base-${compilerSha256}-${baseSha256}${version>=2?'-'+location:''}${version>=SPAN_CACHE?(graph?'-frame3':'-frame2'):''}.json`);
++  const file=path.join(directory,`base-${compilerSha256}-${baseSha256}${version>=2?'-'+location:''}${version>=SPAN_CACHE?(graph?'-frame4':'-frame2'):''}.json`);
+   return {version,termAbi,compilerSha256,baseSha256,sourcePath,sourceText,directory,file};
+ }
+ // Only persistent inspectors own this bounded memo. Re-read and hash the exact
+@@ -531,6 +534,7 @@
+     const previous=memo?.entry;
+     if(memo)memo.entry=null;
+     let readFile=info.file;
++    if(readFile.endsWith('-frame4.json')&&!fs.existsSync(readFile))readFile=readFile.replace(/-frame4\.json$/,'-frame3.json');
+     if(readFile.endsWith('-frame3.json')&&!fs.existsSync(readFile))readFile=readFile.replace(/-frame3\.json$/,'-frame2.json');
+     if(readFile.endsWith('-frame2.json')&&!fs.existsSync(readFile))readFile=readFile.replace(/-frame2\.json$/,'-frame1.json');
+     const bytes=fs.readFileSync(readFile);
+@@ -566,7 +570,9 @@
+   const info=baseCacheInfo(api),prior=readBaseCache(info);
+   const wantWorld=typeof api.base_prefix_world_prepare==='function'&&typeof api.check_program_diagnostic_world==='function';
+   const wantFrontend=typeof api.f_ready_prefix_prepare==='function'&&typeof api.f_prefix_complete_ready_seed==='function';
+-  if(prior&&(!wantWorld||prior.preparedWorld)&&(!wantFrontend||prior.frontendReadyState))return prior;
++  // Inspection accepts older frames; explicit preparation writes the selected
++  // transport when only an older filename exists. Corrupt present files refuse.
++  if(prior&&fs.existsSync(info.file)&&(!wantWorld||prior.preparedWorld)&&(!wantFrontend||prior.frontendReadyState))return prior;
+   const raw={$:'FSource',name:'Base',path:info.sourcePath,text:info.sourceText};
+   const range=info.version>=SPAN_CACHE?interval(1,info.sourceText):null;
+   const source=range?api.f_source_located(raw,range.begin,range.end):raw;
+@@ -604,7 +610,7 @@
+   }
+   fs.mkdirSync(directory,{recursive:true});
+   const staged=file+'.tmp-'+process.pid;
+-  try {fs.writeFileSync(staged,range?encodeBaseCacheFrame(cached,bookJson):JSON.stringify(cached));fs.renameSync(staged,file);} finally {fs.rmSync(staged,{force:true});}
++  try {fs.writeFileSync(staged,range?(file.endsWith('-frame4.json')?encodeBaseCacheArenaFrame(cached):encodeBaseCacheFrame(cached,bookJson)):JSON.stringify(cached));fs.renameSync(staged,file);} finally {fs.rmSync(staged,{force:true});}
+   return {...cached,sourceText:info.sourceText};
+ }
+ 

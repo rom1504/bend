@@ -1,0 +1,14 @@
+{
+  "kind": "phase64-exact-checked-prefix-context-fact",
+  "status": "unapplied-source-candidate",
+  "source": "selfhost/src/check/prefix-state.bend",
+  "beforeSha256": "480bb80b2462b36d01eaf695913bd9bc8d2aeb4c9a6d669f7c9f010d50d4711c",
+  "afterSha256": "e3d23adaabb0ddc866adc3546a56d6362df2d6f55d91c73aef71c73cbd628a63",
+  "patchSha256": "6e4b285837b24f93ff17e93770dea82dff12df4d2593e7048c0199b8dae453c2",
+  "physicalLineDelta": 47,
+  "worldVersion": 3,
+  "newField": "checkedBound:U32",
+  "newPrivateExport": "book_context_world(book,load,prepared)",
+  "publicFallback": "book_context(book)",
+  "proof": "Producer records exact max over checked prefix. Checked-world updates only prepend output, so sp_assembled preserves reverse(saved.checked) as exact output prefix. Context maximum is max(saved checkedBound, actual checked-suffix maximum), identical to full scan."
+}

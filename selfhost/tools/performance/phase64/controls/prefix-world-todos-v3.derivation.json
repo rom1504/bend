@@ -1,0 +1,33 @@
+{
+  "kind": "phase64-reachable-world-capture-successor",
+  "targetsExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/prefix-world-todos-v2.mjs",
+    "sha256": "54978f7164b6f530893a763103af04310851687d6fda3aef5482f6a116a3b4bc",
+    "bytes": 23895
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/prefix-world-todos-v3.mjs",
+    "sha256": "ee76f29eb9bd1618f46adf11766e28d41ed6c176fb196409c16d863f0867891a",
+    "bytes": 24941
+  },
+  "edits": [
+    {
+      "old": "'$base_prefix_check_world_load$',",
+      "new": "'$check_program_diagnostic_world$','$driver_program_checked_prefix$',"
+    },
+    {
+      "old": "worldLoad:(p,l)=>run_loop($base_prefix_check_world_load$(p,l))",
+      "new": "worldLoad:(p,l)=>$p64CaptureWorld(p,l)"
+    },
+    {
+      "old": "const suffix='\\nconst $p64TodoBooks=[]",
+      "new": "const suffix='\\nlet $p64WorldActive=false,$p64CapturedWorld=null;const $p64OldComplete=$driver_program_checked$,$p64OldPrefixComplete=$driver_program_checked_prefix$;$driver_program_checked$=(book,origins,checked)=>{if($p64WorldActive){if($p64CapturedWorld!==null)throw Error(\"Multiple captured worlds\");$p64CapturedWorld=checked;}return $p64OldComplete(book,origins,checked);};$driver_program_checked_prefix$=(suffix,todos,origins,checked)=>{if($p64WorldActive){if($p64CapturedWorld!==null)throw Error(\"Multiple captured worlds\");$p64CapturedWorld=checked;}return $p64OldPrefixComplete(suffix,todos,origins,checked);};function $p64CaptureWorld(prepared,load){if($p64WorldActive)throw Error(\"Nested capture\");$p64WorldActive=true;$p64CapturedWorld=null;try{run_loop($check_program_diagnostic_world$(load,{$:\"Nil\"},prepared));if($p64CapturedWorld===null)throw Error(\"Missing captured world\");return $p64CapturedWorld;}finally{$p64WorldActive=false;$p64CapturedWorld=null;}}\\nconst $p64TodoBooks=[]"
+    },
+    {
+      "old": "pin(path.join(import.meta.dirname,'prefix-world-todos-v2.derivation.json'));",
+      "new": "pin(path.join(import.meta.dirname,'prefix-world-todos-v2.derivation.json'));pin(path.join(import.meta.dirname,'prefix-world-todos-v3.derivation.json'));"
+    }
+  ],
+  "scope": "State01 tree shaking removes the old private DChecking entry. Capture the actual DChecking passed by the unchanged exported check_program_diagnostic_world to existing completion helpers. All world, DResult, TODO, first-error and count-demand assertions remain unchanged. Captures pass original arguments through exactly; no compiler source/export change. The failed v2 receipt remains failed."
+}

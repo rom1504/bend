@@ -1,0 +1,22 @@
+--- a/selfhost/src/driver/api.bend
++++ b/selfhost/src/driver/api.bend
+@@ -76,8 +76,18 @@
+ def driver_emit_owned(
+   +book: List<&2,KDef>,
+ ) -> String:
+-  +error = driver_owned_names(book, ["IO", "Sigma", "String", "Word.Con", "IO.OP", "Result", "Maybe", "Bool", "Unit", "Nat", "U32", "F32", "Char", "Array"])
++  +error = driver_owned_names(driver_owned_candidates(book), ["IO", "Sigma", "String", "Word.Con", "IO.OP", "Result", "Maybe", "Bool", "Unit", "Nat", "U32", "F32", "Char", "Array"])
+   kc(String, String.eq(error, ""), u => driver_foreign_names(book, book), u => error)
++
++# Native definitions cannot violate the owned-name rule. Filter once instead
++# of revisiting the same native prefix for each reserved name. Retain duplicates
++# and source order; foreign/constructor policy still receives the original book.
++@unsafe
++def driver_owned_candidates(+book: List<&2,KDef>) -> List<&2,KDef>:
++  match book:
++    case Nil{}: Nil{}
++    case Con{d, rest}: kc(List<&2,KDef>, db(d),
++      u => driver_owned_candidates(rest), u => Con{d, driver_owned_candidates(rest)})
+ 
+ @unsafe
+ def driver_foreign_names(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:

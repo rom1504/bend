@@ -1,0 +1,64 @@
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -102,6 +102,7 @@
+   if(files.includes('src/check/prefix.bend'))exports.push('check_from_exact_prefix','exact_prefix');
+   if(files.includes('src/check/prefix-state.bend'))exports.push('base_prefix_prepare','check_program_diagnostic_seed','check_program_diagnostic_prefix');
+   if(files.includes('src/check/prefix-state.bend')&&fs.readFileSync(path.join(project,'src/check/prefix-state.bend'),'utf8').includes('def base_prefix_world_prepare('))exports.push('base_prefix_world_prepare','check_program_diagnostic_world');
++  if(files.includes('src/check/prefix-state.bend')&&fs.readFileSync(path.join(project,'src/check/prefix-state.bend'),'utf8').includes('def book_context_world('))exports.push('book_context_world');
+   if(files.includes('src/load/graph.bend'))exports.push('f_load_graph','f_load_graph_trace');
+   if(files.includes('src/load/modules.bend')){exports.push('f_source_completed','f_source_located');if(fs.readFileSync(path.join(project,'src/load/modules.bend'),'utf8').includes('def compiler_load_abi('))exports.push('compiler_load_abi','f_source_header','f_complete_source','f_complete_seed','f_import_namespace_at','f_graph_trace');}
+   if(files.includes('src/load/imports.bend')&&fs.readFileSync(path.join(project,'src/load/imports.bend'),'utf8').includes('def f_import_failure('))exports.push('f_import_failure');
+@@ -213,7 +214,7 @@
+     KTerm:spanAbi===3?['tag','name','id','quant','kids','removed','originBegin','originEnd']:['tag','name','id','quant','kids','removed'],KDef:['name','kind','arity','templates','typ','value','ctors','native','unsafe'],
+     KIndexLeaf:['hash','bucket'],KIndexNode:['hash','mask','left','right'],
+     KBasePrefixState:['bound','delta','stamp','patches','ready'],FFreshPrefixState:['next','ready'],
+-    KBasePreparedWorld:['state','prefix','final','book','checked','seen','todos'],FReadyPrefixState:['names','ctors','count','ready'],
++    KBasePreparedWorld:['state','prefix','final','book','checked','seen','todos','checkedBound'],FReadyPrefixState:['names','ctors','count','ready'],
+     FReadyPrefixGraph:['graph','prefix','suffix','count','ready','names','ctors','baseNames'],
+     FPrefixGraph:['graph','prefix','suffix','count','ready'],FPrefixCompletion:['carrier','parsed'],FPrefixLoad:['trace','prefix','suffix','ready'],
+     ...(termAbi===1?{KLiteral:['kind','number','text','originBegin','originEnd'],KLambda:['name','id','quant','kids','removed','originBegin','originEnd','quantityPresent']}:{}),
+@@ -514,9 +515,10 @@
+ 
+ function admitPreparedWorld(cached) {
+   const world=cached.preparedWorld;
+-  return frameGraphs.has(cached)&&cached.preparedWorldVersion===2&&cached.preparedWorldProducer==='base_prefix_world_prepare'&&
++  return frameGraphs.has(cached)&&cached.preparedWorldVersion===3&&cached.preparedWorldProducer==='base_prefix_world_prepare'&&
+     cached.checkedPrefixState&&world?.$==='KBasePreparedWorld'&&world.prefix===cached.book&&world.state===cached.checkedPrefixState&&
+-    Number.isSafeInteger(world.todos)&&world.todos>=0&&world.todos<=U32_MAX;
++    Number.isSafeInteger(world.todos)&&world.todos>=0&&world.todos<=U32_MAX&&
++    Number.isSafeInteger(world.checkedBound)&&world.checkedBound>=0&&world.checkedBound<=U32_MAX;
+ }
+ function admitFrontendReadyState(cached) {
+   const state=cached.frontendReadyState;
+@@ -592,8 +594,9 @@
+   }
+   if(range&&wantWorld&&cached.checkedPrefixState){
+     const world=api.base_prefix_world_prepare(loaded.book,cached.checkedPrefixState);
+-    if(world?.$==='KBasePreparedWorld'&&world.state?.ready===true&&Number.isSafeInteger(world.todos)&&world.todos>=0&&world.todos<=U32_MAX)
+-      Object.assign(cached,{preparedWorldVersion:2,preparedWorldProducer:'base_prefix_world_prepare',preparedWorld:world});
++    if(world?.$==='KBasePreparedWorld'&&world.state?.ready===true&&Number.isSafeInteger(world.todos)&&world.todos>=0&&world.todos<=U32_MAX&&
++      Number.isSafeInteger(world.checkedBound)&&world.checkedBound>=0&&world.checkedBound<=U32_MAX)
++      Object.assign(cached,{preparedWorldVersion:3,preparedWorldProducer:'base_prefix_world_prepare',preparedWorld:world});
+   }
+   if(range&&wantFrontend){
+     const state=api.f_ready_prefix_prepare(loaded.book);
+@@ -708,7 +711,8 @@
+     const checkAbi=typeof api.compiler_check_result_abi==='function'?api.compiler_check_result_abi():0;
+     if(![0,1,2].includes(checkAbi))throw Error(`Unsupported compiler checker-result ABI: ${checkAbi}`);
+     if(checkAbi===2&&typeof api.check_program_diagnostic!=='function')throw Error('Compiler checker-result ABI 2 requires check_program_diagnostic');
+-    const checkedResult=checkAbi===2?(ownedApi&&graph.prefixLoad&&cached?.preparedWorld&&typeof api.check_program_diagnostic_world==='function'?
++    const usedPreparedWorld=checkAbi===2&&ownedApi&&!!graph.prefixLoad&&!!cached?.preparedWorld&&typeof api.check_program_diagnostic_world==='function';
++    const checkedResult=checkAbi===2?(usedPreparedWorld?
+       api.check_program_diagnostic_world(graph.prefixLoad,list([]),cached.preparedWorld):ownedApi&&graph.prefixLoad&&cached?.checkedPrefixState&&typeof api.check_program_diagnostic_prefix==='function'?
+       api.check_program_diagnostic_prefix(graph.prefixLoad,cached.book,list([]),cached.checkedPrefixState):cached?.checkedPrefixState&&typeof api.check_program_diagnostic_seed==='function'?
+       api.check_program_diagnostic_seed(loaded.book,cached.book,list([]),cached.checkedPrefixState):
+@@ -768,7 +772,8 @@
+       const error=api.j_compile_error(book);
+       if(error)return {status:'error',phase,diagnostic:error.startsWith('Error:')?error:'Error: '+error,exitCode:1,checked:true};
+     }
+-    const contextBook=mode!=='native'&&api.book_context?api.book_context(book):book;
++    const contextBook=mode!=='native'&&api.book_context?
++      (usedPreparedWorld&&typeof api.book_context_world==='function'?api.book_context_world(book,graph.prefixLoad,cached.preparedWorld):api.book_context(book)):book;
+     const roots=backend==='direct'?api.jd_roots(contextBook,mode==='library'):api.j_roots?.(contextBook,mode==='library');
+     const stops=mode!=='native'?(backend==='direct'?api.jd_stops?.(contextBook):api.j_stops?.(contextBook)):null;
+     const selectedEmission=mode!=='native'&&api.reach_book&&api.annotate_selected&&api.j_program_selected&&api.j_library_selected;

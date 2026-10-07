@@ -1,0 +1,32 @@
+--- a/selfhost/src/back/js/direct/model.bend
++++ b/selfhost/src/back/js/direct/model.bend
+@@ -192,10 +192,10 @@
+ # Retain the child, environment and traversal; avoid only the discarded query.
+ @unsafe
+ def jd_lambda_child_type(+t: KTerm, +ty: KTerm) -> KTerm:
+-  kc(KTerm, String.eq(tg(kid(t, 0)), "Ann"), u => kid(kid(t, 0), 1),
++  kc(KTerm, String.eq(tg(kid(t, 0)), "Ann"), u => ty,
+     u => j_app_type(ty, var(nm(t), ix(t))))
+ 
+ @unsafe
+ def jd_arm_child_type(+book: List<&2,KDef>, +arm: KTerm, +tel: KTerm, +ret: KTerm) -> KTerm:
+-  kc(KTerm, String.eq(tg(arm), "Ann"), u => kid(arm, 1),
++  kc(KTerm, String.eq(tg(arm), "Ann"), u => ret,
+     u => j_arm_tel(book, tel, ret))
+--- a/selfhost/src/back/js/validate.bend
++++ b/selfhost/src/back/js/validate.bend
+@@ -299,12 +299,12 @@
+ # Raw public terms retain the original derivation, including non-All behavior.
+ @unsafe
+ def j_layout_lambda_child_type(+t: KTerm, +ty: KTerm) -> KTerm:
+-  kc(KTerm, String.eq(tg(kid(t, 0)), "Ann"), u => kid(kid(t, 0), 1),
++  kc(KTerm, String.eq(tg(kid(t, 0)), "Ann"), u => ty,
+     u => subst(kid(ty, 1), ix(ty), var(nm(t), ix(t))))
+ 
+ @unsafe
+ def j_layout_arm_child_type(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm) -> KTerm:
+-  kc(KTerm, String.eq(tg(kid(t, 0)), "Ann"), u => kid(kid(t, 0), 1),
++  kc(KTerm, String.eq(tg(kid(t, 0)), "Ann"), u => ty,
+     u => j_arm_tel(book, j_specialize(book,
+       dt(j_layout_ctor(book, wnf(book, kid(ty, 0)), nm(t))),
+       ks(wnf(book, kid(ty, 0)))), kid(ty, 1)))

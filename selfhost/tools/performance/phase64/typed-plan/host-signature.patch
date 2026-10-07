@@ -1,0 +1,73 @@
+--- a/selfhost/src/back/js/direct/host.bend
++++ b/selfhost/src/back/js/direct/host.bend
+@@ -173,16 +173,65 @@
+   kc(String, String.eq(marshal, ""), u => "", u =>
+     "," ++ jd_literal_field_key(name, False{}) ++ ":" ++ marshal ++ "(v[" ++ j_quote(name) ++ "])")
+ 
+-# Core owns arity raising and live formal names; use jd_arity consistently.
++# The host telescope substitutes Absent at each formal. Keep it separate from
++# the raw formal telescope used by live arity and internal parameter names.
++type JDHostSignature is Data:
++  JDHostSignature{+result: KTerm, +heads: List<&2,KTerm>}
++
++@unsafe
++def jd_host_signature(+book: List<&2,KDef>, +ty: KTerm, +left: U32) -> JDHostSignature:
++  kc(JDHostSignature, U32.is_gt(left, 0), u =>
++    jd_host_signature_head(book, wnf(book, ty), left),
++    u => JDHostSignature{wnf(book, ty), Nil{}})
++
++@unsafe
++def jd_host_signature_head(+book: List<&2,KDef>, +head: KTerm, +left: U32) -> JDHostSignature:
++  jd_host_signature_prepend(head,
++    jd_host_signature(book, j_app_type(head, atom("Absent")), U32.sub(left, 1)))
++
++@unsafe
++def jd_host_signature_prepend(+head: KTerm, +signature: JDHostSignature) -> JDHostSignature:
++  match signature:
++    case JDHostSignature{result, heads}: JDHostSignature{result, Con{head, heads}}
++
++# Build at the original result-telescope demand; conversion remains result,
++# all inputs, then all copybacks. Invalid heads retain each consumer's refusal.
+ @unsafe
+ def jd_host(+book: List<&2,KDef>, +d: KDef) -> String:
+   +arity = jd_emitted_arity(book, d)
+   +live = jd_live_arity(book, dt(d), arity)
+   +marshal = Bool.not(U32.is_eq(jd_host_nat_known(book, dt(d)), 0))
+-  "(" ++ jd_host_names(live, 0) ++ ")=>{const r=" ++
+-    jd_host_convert(book, jd_host_result(book, dt(d), arity), True{}, marshal) ++ "(run_loop(" ++ jd_name(dn(d)) ++
+-    "(" ++ jd_host_args(book, dt(d), arity, 0, False{}, marshal) ++ ")));" ++
+-    jd_host_back(book, dt(d), arity, 0, marshal) ++ "return r;}"
++  +names = jd_host_names(live, 0)
++  jd_host_signature_text(book, d, names, marshal, jd_host_signature(book, dt(d), arity))
++
++@unsafe
++def jd_host_signature_text(+book: List<&2,KDef>, +d: KDef, +names: String,
++  +marshal: Bool, +signature: JDHostSignature) -> String:
++  match signature:
++    case JDHostSignature{result, heads}:
++      "(" ++ names ++ ")=>{const r=" ++
++        jd_host_convert(book, result, True{}, marshal) ++ "(run_loop(" ++ jd_name(dn(d)) ++
++        "(" ++ jd_host_signature_args(book, heads, 0, marshal) ++ ")));" ++
++        jd_host_signature_back(book, heads, 0, marshal) ++ "return r;}"
++
++@unsafe
++def jd_host_signature_args(+book: List<&2,KDef>, +heads: List<&2,KTerm>, +at: U32, +marshal: Bool) -> String:
++  match heads:
++    case Nil{}: ""
++    case Con{t, rest}: kc(String, String.eq(tg(t), "All"), u =>
++      kc(String, U32.is_eq(qt(t), 0), v => jd_host_signature_args(book, rest, at, marshal), v =>
++        jd_host_convert(book, kid(t, 0), False{}, marshal) ++ "(a" ++ U32.show(at) ++ ")," ++
++          jd_host_signature_args(book, rest, U32.inc(at), marshal)),
++      u => jd_host_error("host formal telescope") ++ "(),")
++
++@unsafe
++def jd_host_signature_back(+book: List<&2,KDef>, +heads: List<&2,KTerm>, +at: U32, +marshal: Bool) -> String:
++  match heads:
++    case Nil{}: ""
++    case Con{t, rest}: kc(String, String.eq(tg(t), "All"), u =>
++      kc(String, U32.is_eq(qt(t), 0), v => jd_host_signature_back(book, rest, at, marshal), v =>
++        jd_host_convert(book, kid(t, 0), True{}, marshal) ++ "(a" ++ U32.show(at) ++ ");" ++
++          jd_host_signature_back(book, rest, U32.inc(at), marshal)), u => "")
+ 
+ # Only a completed no-Nat signature scan can bypass the component scans.
+ # Nat found or budget exhausted retains the original per-component marshalling.

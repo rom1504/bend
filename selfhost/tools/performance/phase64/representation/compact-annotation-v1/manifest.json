@@ -1,0 +1,161 @@
+{
+  "kind": "phase64-compact-annotation-patch-only",
+  "dataOnly": true,
+  "targetExecuted": false,
+  "productionEdited": false,
+  "productionQualified": false,
+  "generator": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/representation/make-annotation-patch.py",
+    "sha256": "05a00064ade6a1253b6a9327279b44f891c91195d78f1c9dd8d24a268a8ab00a"
+  },
+  "constructor": {
+    "name": "KAnnotation",
+    "fields": [
+      "term",
+      "typ"
+    ],
+    "logicalTag": "Ann"
+  },
+  "files": [
+    {
+      "file": "selfhost/src/core/term.bend",
+      "beforeSha256": "664cfe52e701723040f2679c3dcdaf2799730a0a7a47822686ab9d0db8c9e5f7",
+      "afterSha256": "ab0eb086498a994817bf930c5f76db7c8ef2127c351c646e3afe00d31ffc991d",
+      "beforeLines": 672,
+      "afterLines": 720
+    },
+    {
+      "file": "selfhost/src/check/annotate.bend",
+      "beforeSha256": "1912e5d177514733e706297fbb53e730c1f7a9edc91ffb06d2b1de7e2547648c",
+      "afterSha256": "d5a7a362d64961608e889577022fa3345440bdfccf898179a7d75f28260d58e2",
+      "beforeLines": 389,
+      "afterLines": 389
+    },
+    {
+      "file": "selfhost/src/check/prefix-state.bend",
+      "beforeSha256": "480bb80b2462b36d01eaf695913bd9bc8d2aeb4c9a6d669f7c9f010d50d4711c",
+      "afterSha256": "b485bb42f6eb718313cf8f68cad17f72627245c39e9ec8ff0a120ccaf12194fc",
+      "beforeLines": 408,
+      "afterLines": 410
+    },
+    {
+      "file": "selfhost/src/load/prefix.bend",
+      "beforeSha256": "6d98e35c38cb9e6491e6cb34b60517a86efe6f48992cb8bae9d54aabfe041096",
+      "afterSha256": "0a2bc5913ab19533ff0d880a7566970550234418c6a1fb21fffc21f596a7cb60",
+      "beforeLines": 267,
+      "afterLines": 269
+    },
+    {
+      "file": "selfhost/src/front/elaborate.bend",
+      "beforeSha256": "8537f483259d48fa1d710915d6e8e09916faa540560379ee550a7077f391dc1e",
+      "afterSha256": "8ea4161aa94c30cd21fda540dc6e1a3054f8c7b194463a5dc05fafafd95c734f",
+      "beforeLines": 242,
+      "afterLines": 246
+    },
+    {
+      "file": "selfhost/src/front/parser.bend",
+      "beforeSha256": "c1790685aea7c71430873d65c2d91996778f443aee0098e54c656fe10177ba28",
+      "afterSha256": "476bf0e8b16776c59efdd163bcd0b8400070696c521348e74793a2aa4efe3519",
+      "beforeLines": 730,
+      "afterLines": 733
+    }
+  ],
+  "preservationArms": [
+    {
+      "function": "tg",
+      "body": "\"Ann\""
+    },
+    {
+      "function": "nm",
+      "body": "\"\""
+    },
+    {
+      "function": "ix",
+      "body": "0"
+    },
+    {
+      "function": "qt",
+      "body": "0"
+    },
+    {
+      "function": "ks",
+      "body": "Con{term, Con{typ, Nil{}}}"
+    },
+    {
+      "function": "rm",
+      "body": "Nil{}"
+    },
+    {
+      "function": "subst_node",
+      "body": "KAnnotation{subst(term, id0, v), subst(typ, id0, v)}"
+    },
+    {
+      "function": "core_subst_stable",
+      "body": "core_subst_stable(term) && core_subst_stable(typ)"
+    },
+    {
+      "function": "kb",
+      "body": "0"
+    },
+    {
+      "function": "ke",
+      "body": "0"
+    },
+    {
+      "function": "k_with_children",
+      "body": "KTerm{\"Ann\", \"\", 0, 0, newKids, Nil{}, 0, 0}"
+    },
+    {
+      "function": "k_with_span",
+      "body": "KTerm{\"Ann\", \"\", 0, 0, Con{term, Con{typ, Nil{}}}, Nil{}, newBegin, newEnd}"
+    },
+    {
+      "function": "core_literal",
+      "body": "False{}"
+    },
+    {
+      "function": "kl_number",
+      "body": "0"
+    },
+    {
+      "function": "kl_text",
+      "body": "\"\""
+    },
+    {
+      "function": "k_quantity_present",
+      "body": "False{}"
+    },
+    {
+      "function": "k_rebuild",
+      "body": "KTerm{\"Ann\", name, id, quant, kids, removed, begin, end}"
+    },
+    {
+      "function": "k_snf_children",
+      "body": "KTerm{\"Ann\", \"\", 0, 0, kids, Nil{}, 0, 0}"
+    },
+    {
+      "function": "k_lambda_presence",
+      "body": "t"
+    },
+    {
+      "function": "prefix_state_variant",
+      "body": "3"
+    },
+    {
+      "function": "f_fresh_prefix_variant",
+      "body": "3"
+    },
+    {
+      "function": "f_pattern_value",
+      "body": "KTerm{\"Ann\", \"\", 0, 0, f_pattern_values(Con{term, Con{typ, Nil{}}}, begin, end), Nil{},\n        f_choose(U32, U32.is_gt(begin, 0), u => begin, u => 0),\n        f_choose(U32, U32.is_gt(begin, 0), u => end, u => 0)}"
+    },
+    {
+      "function": "f_span_created",
+      "body": "f_choose(KTerm, U32.is_eq(begin, 0), u => t,\n        u => KTerm{\"Ann\", \"\", 0, 0, f_spans_created(Con{term, Con{typ, Nil{}}}, begin, end), Nil{}, begin, end})"
+    }
+  ],
+  "patchSha256": "2f55e08d19b855ba4b447e53866dc731a36d76ea9f7f827f89f6535d010a0ddb",
+  "netLines": 59,
+  "hostBoundary": "NOT IMPLEMENTED: constructor positional ABI and explicit annotation/term-version/cache admission policy require host-owner coordination. Named-layout-only experimental source ablation; do not promote this patch alone.",
+  "allocationModel": "Ignoring promotion and Nil/header effects, each producer avoids 2 Con and 6 wrapper payload fields; each generic ks materialization allocates 2 Con. Net objects saved: 2*A-2*G. Retained-node census does not measure A/G."
+}

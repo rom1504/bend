@@ -1,0 +1,100 @@
+// Root owns the only resource guard. Diagnostic checkpoint, not public ABI.
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';import {pathToFileURL} from 'node:url';
+import {verifyAttempt} from '../../../development/workflow.mjs';
+const [attemptArg,...args]=process.argv.slice(2),outArg=args.pop(),sourceArgs=args;assert(attemptArg&&sourceArgs.length&&outArg);
+const legacy=path.resolve(import.meta.dirname,'../../phase61/prefix-state');
+const raw=path.resolve(import.meta.dirname,'../../../../build/phase64'),out=path.resolve(outArg);
+assert(out.startsWith(raw+path.sep)&&!fs.existsSync(out));fs.mkdirSync(out,{recursive:true});
+const hash=b=>createHash('sha256').update(b).digest('hex'),inputs=new Map();
+function pin(f,want){const b=fs.readFileSync(f),r={file:fs.realpathSync(f),sha256:hash(b),bytes:b.length};if(want){assert.equal(r.sha256,want.sha256);if(Object.hasOwn(want,'canonicalPath'))assert.equal(want.canonicalPath,r.file);if(Object.hasOwn(want,'bytes'))assert.equal(want.bytes,r.bytes);}if(inputs.has(r.file))assert.deepEqual(r,inputs.get(r.file));inputs.set(r.file,r);return r;}
+const stringify=x=>JSON.stringify(x,(_,v)=>typeof v==='bigint'?{$bigint:String(v)}:v),digest=x=>hash(stringify(x));
+const list=a=>a.reduceRight((tail,head)=>({$:'Con',head,tail}),{$:'Nil'});
+const array=xs=>{const a=[];while(xs?.$==='Con'){assert(a.length<20000);a.push(xs.head);xs=xs.tail;}assert.equal(xs?.$,'Nil');return a;};
+const report={kind:'phase64-immutable-base-world-controls',complete:false,pass:false,scope:'Checked candidate full-check versus original prefix replay versus shared immutable Base world. Exact entire DChecking and completion on actual carriers and differential admission/fallback controls; same deep-frozen world survives alternating sources. Private authenticated state/prefix coupling remains a host obligation; this is not a public raw-state authenticity, clean latency, or release claim.',roles:{},rows:[],inputs:[]};
+const save=()=>{report.inputs=[...inputs.values()];fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');};save();
+try{
+ pin(import.meta.filename);pin(path.join(import.meta.dirname,'derivation.json'));pin(path.resolve(import.meta.dirname,'../../phase63/controls/prefix-world-v1.mjs'));pin(path.join(legacy,'cold-controls-v1.mjs'));pin(path.join(legacy,'carrier-controls-v1.mjs'));pin(path.join(legacy,'carrier-controls-v2.mjs'));pin(path.join(legacy,'prefix-maximum-reuse-v1.patch'));pin(process.execPath);pin(new URL('../../../development/workflow.mjs',import.meta.url).pathname);
+ const directory=fs.realpathSync(attemptArg),attempt=pin(path.join(directory,'attempt.json')),m=await verifyAttempt(directory);assert(m.checked&&m.config.strictExact);
+ for(const k of ['api','runtime','base','node'])pin(m[k].file,m[k]);assert.equal(pin(process.execPath).sha256,m.node.sha256);
+ const prefixSource=pin(path.join(m.snapshot.root,'src/check/prefix-state.bend'));const loaderPrefixSource=pin(path.join(m.snapshot.root,'src/load/prefix.bend'));pin(path.join(m.snapshot.root,'src/load/modules.bend'));pin(path.join(m.snapshot.root,'src/load/graph.bend'));pin(path.join(m.snapshot.root,'src/load/seed.bend'));
+ const driverFile=pin(path.join(m.snapshot.root,'tools/typed-driver.mjs'));
+ for(const key of Object.keys(process.env))if(key.startsWith('BEND_'))delete process.env[key];
+ process.env.BEND_TYPED_API=m.api.file;process.env.BEND_TYPED_RUNTIME=m.runtime.file;process.env.BEND_BASE=m.base.file;
+ const D=await import(pathToFileURL(driverFile.file)),api=await D.loadApi();assert.equal(D.apiPath,m.api.file);
+ const original=fs.readFileSync(m.api.file,'utf8'),P={exports:{}};const parserText=process.binding('natives')['internal/deps/acorn/acorn/dist/acorn'];new Function('module','exports',parserText)(P,P.exports);
+ const parse=s=>P.exports.parse(s,{ecmaVersion:'latest',sourceType:'module'}),ast=parse(original),names=['run_loop','$base_prefix_prepare$','$base_prefix_check$','$base_prefix_admitted_bound$','$base_prefix_final$','$prefix_state_exact_defs$','$norm_max_book$','$norm_max$','$prefix_state_join$','$dg_check_world$','$base_prefix_resume_saved$','$check_definition_world$','$driver_program_checked$','$base_prefix_check_load$','$f_fresh_prefix_exact_terms$','$base_prefix_world_prepare$','$base_prefix_check_world_load$','$base_prefix_resume_world$','$index_hash$'];
+ const edits=[];for(const name of names){const hits=ast.body.filter(n=>n.type==='FunctionDeclaration'&&n.id?.name===name);assert.equal(hits.length,1,name);if(['$dg_check_world$','$base_prefix_resume_saved$','$check_definition_world$','$prefix_state_exact_defs$','$f_fresh_prefix_exact_terms$','$base_prefix_resume_world$'].includes(name))edits.push({at:hits[0].body.start+1,text:'$p61PrefixCounts['+JSON.stringify(name)+']++;'});}
+ let text=original;for(const e of [...edits].sort((a,b)=>b.at-a.at))text=text.slice(0,e.at)+e.text+text.slice(e.at);
+ const suffix='\nconst $p61PrefixCounts={"$dg_check_world$":0,"$base_prefix_resume_saved$":0,"$check_definition_world$":0,"$prefix_state_exact_defs$":0,"$f_fresh_prefix_exact_terms$":0,"$base_prefix_resume_world$":0};\nexport const phase61Prefix={hash:n=>run_loop($index_hash$(n,2166136261)),counts:$p61PrefixCounts,checkLoad:(s,l)=>run_loop($base_prefix_check_load$(s,l)),prepareWorld:(p,s)=>run_loop($base_prefix_world_prepare$(p,s)),worldLoad:(p,l)=>run_loop($base_prefix_check_world_load$(p,l)),prepare:p=>run_loop($base_prefix_prepare$(p)),resume:(c,b,p)=>run_loop($base_prefix_check$(c,b,p)),bound:b=>run_loop($norm_max_book$(b)),admitted:(c,p,s,n)=>run_loop($base_prefix_admitted_bound$(c,p,s,n,run_loop($base_prefix_final$(p)),run_loop($norm_max_book$(p)))),maxJoin:(p,s)=>run_loop($norm_max_book$(run_loop($prefix_state_join$(p,s)))),maxPair:(p,s)=>run_loop($norm_max$(run_loop($norm_max_book$(p)),run_loop($norm_max_book$(s)))),exact:(a,b)=>run_loop($prefix_state_exact_defs$(a,b)),full:b=>run_loop($dg_check_world$(b)),complete:(b,r)=>run_loop($driver_program_checked$(b,{$:"Nil"},r))};\n';
+ text+=suffix;parse(text);const derivative=path.join(out,'diagnostic-api.mjs');fs.writeFileSync(derivative,text,{flag:'wx'});pin(derivative);
+ let recovered=text.slice(0,-suffix.length);for(const e of [...edits].sort((a,b)=>a.at-b.at)){assert.equal(recovered.slice(e.at,e.at+e.text.length),e.text);recovered=recovered.slice(0,e.at)+recovered.slice(e.at+e.text.length);}assert.equal(recovered,original);
+ const freeze=value=>{const todo=[value],seen=new Set();while(todo.length){const x=todo.pop();if(x===null||typeof x!=='object'||seen.has(x))continue;seen.add(x);Object.freeze(x);todo.push(...Object.values(x));}return value;};
+ const mod=await import(pathToFileURL(derivative));assert.equal(mod.G,undefined);const Q=mod.phase61Prefix,native=mod.default;assert(native&&typeof native==='object');
+ // Same Base interval and ordinary loader as prepareBase, without writing cache.
+ const rawBase={$:'FSource',name:'Base',path:m.base.file,text:fs.readFileSync(m.base.file,'utf8')};
+ const located=api.f_source_located(rawBase,1,rawBase.text.length+2),base=api.f_load_graph('Base',list([located]));assert.equal(base.error,'');
+ const prefix=array(base.book);assert(prefix.length>0);for(const name of ['f_prefix_graph_empty','f_prefix_complete_seed','f_prefix_complete_source','f_prefix_graph_trace'])assert.equal(typeof native[name],'function',name);const freshState=native.f_fresh_prefix_prepare(base.book);assert(freshState.ready);
+ report.roles.candidate={attempt,api:m.api,runtime:m.runtime,base:m.base,node:m.node,driver:driverFile,prefixSource,loaderPrefixSource,derivative:pin(derivative),suffixSha256:hash(suffix),edits,prefixSha256:digest(prefix),prefixCount:prefix.length};save();
+ const counts=()=>({...Q.counts}),delta=(a,b)=>Object.fromEntries(Object.keys(a).map(k=>[k,b[k]-a[k]]));
+ // Pure bound distributivity: actual prefix fragments plus raw ordinary KDef
+ // fields/constructors. These do not rely on checker admission or cache trust.
+ const maxAtom=(tag,id,kids=[])=>({$:'KTerm',tag,name:'',id,quant:0,kids:list(kids),removed:list([]),originBegin:0,originEnd:0});
+ const maxDef=(name,typ,value,ctors=[])=>({$:'KDef',name,kind:'Def',arity:0,templates:0,typ,value,ctors:list(ctors),native:false,unsafe:false});
+ const zero=maxAtom('Typ',0),dType=maxDef('max.type',maxAtom('Unknown',4294967295),zero),dBody=maxDef('max.body',zero,maxAtom('Ref',65537));
+ const nested=maxDef('max.nested',zero,zero,[maxDef('max.child',zero,zero,[maxDef('max.grandchild',zero,maxAtom('App',7,[maxAtom('Var',1048577)]))])]);
+ const half=Math.floor(prefix.length/2),prefixBound=Q.bound(base.book);
+ const maxCases=[['empty',[],[],0],['base-empty',prefix,[],prefixBound],['empty-base',[],prefix,prefixBound],['split-base',prefix.slice(0,half),prefix.slice(half),prefixBound],['reverse-fragments',prefix.slice(half),prefix.slice(0,half),prefixBound],['maximum-type',[dType],[dBody],4294967295],['maximum-body',[],[dBody],65537],['nested-constructors',[dBody],[nested],1048577]];
+ report.maximumControls=[];
+ for(const [id,p,s,expected] of maxCases){const before=digest({p,s}),joined=Q.maxJoin(list(p),list(s)),separate=Q.maxPair(list(p),list(s));assert.equal(joined,expected,id+' original maximum');assert.equal(separate,expected,id+' distributed maximum');assert.equal(digest({p,s}),before,id+' immutable inputs');report.maximumControls.push({id,expected,joined,separate,pass:true});}assert.equal(report.maximumControls.length,8);save();
+
+ let before=counts();const state=Q.prepare(base.book),prepareCounts=delta(before,counts()),stateHash=digest(state);assert.equal(state.$,'KBasePrefixState');
+ report.prepared={ready:state.ready,bound:state.bound,delta:state.delta,stamp:state.stamp,patches:array(state.patches).map(d=>d.name),sha256:stateHash};save();assert(state.ready,'Prepared Base certificate refused; preserve report and diagnose invariant');
+ const prepared=freeze(Q.prepareWorld(base.book,state)),preparedHash=digest(prepared);assert.equal(prepared.$,'KBasePreparedWorld');
+ report.immutableWorld={tag:prepared.$,sha256:preparedHash};save();
+ function row(id,book,validated,expected,checkpoint=state){const p=validated,s=book.slice(p.length),beforeInput=digest({checkpoint,book,p}),matched=Q.exact(list(book.slice(0,p.length)),list(p)),admitted=matched&&Q.admitted(checkpoint,list(p),list(s),Q.bound(list(book)));if(expected!==null)assert.equal(admitted,expected,id);let c=counts();const full=Q.full(list(book)),fullCounts=delta(c,counts());c=counts();const resumed=Q.resume(checkpoint,list(book),list(p)),resumeCounts=delta(c,counts());assert.deepEqual(resumed,full,id+' whole world/diagnostic');
+ const load={$:'FPrefixLoad',trace:{$:'FLoadTrace',result:{$:'FResult',book:list(book),error:'',imports:list([])},done:list([]),sources:list([])},prefix:list(p),suffix:list(s),ready:matched};
+ const readyWorld=checkpoint===state?prepared:freeze(Q.prepareWorld(list(p),checkpoint));
+ c=counts();const direct=Q.worldLoad(readyWorld,load),worldCounts=delta(c,counts());assert.deepEqual(direct,full,id+' immutable-world entire DChecking');
+ assert.deepEqual(Q.complete(list(book),direct),Q.complete(list(book),full),id+' immutable-world completion');
+ assert.equal(digest(prepared),preparedHash,id+' shared world remained unchanged');if(expected===true){assert.equal(full.result.error,'',id+' positive checker outcome');assert.equal(Q.complete(list(book),full).error,'',id+' positive complete outcome');}assert.deepEqual(Q.complete(list(book),resumed),Q.complete(list(book),full),id+' full completion');assert.equal(digest({checkpoint,book,p}),beforeInput,id+' immutable input');assert.equal(resumeCounts['$base_prefix_resume_saved$'],admitted?1:0);assert.equal(resumeCounts['$dg_check_world$'],admitted?0:1);report.rows.push({id,admitted,pass:true,outcome:digest(full),error:full.result.error,fullCounts,resumeCounts,worldCounts});save();return {fullCounts,resumeCounts,worldCounts};}
+ for(const sourceArg of sourceArgs){const sourceFile=pin(sourceArg),graph=D.discoverSources(api,sourceFile.file);for(const f of graph.files)pin(f);assert.equal(graph.loadTrace.result.error,'');const all=array(graph.loadTrace.result.book);assert(all.length>prefix.length);assert(Q.exact(list(all.slice(0,prefix.length)),base.book),'Loaded graph is not exact Base prefix');
+  // Exercise the actual native completion calls made by the ordinary loader.
+  // The JS adapter only threads native carrier values; it does not construct a
+  // prefix/suffix proof. Raw discoverSources still selects its old finalizer.
+  let carrier=native.f_prefix_graph_empty();
+  const wrapped={...native,
+   f_complete_seed:(source,prior,p,t,b)=>{assert.deepEqual(prior,carrier.graph);const c=native.f_prefix_complete_seed(source,'',carrier,p,t,b);carrier=c.carrier;return {$:'FCompletion',graph:carrier.graph,parsed:c.parsed};},
+   f_complete_source:(source,ns,header,sources,prior,root)=>{assert.deepEqual(prior,carrier.graph);const c=native.f_prefix_complete_source(source,ns,header,sources,carrier,root);carrier=c.carrier;return {$:'FCompletion',graph:carrier.graph,parsed:c.parsed};}};
+  const seededGraph=D.discoverSources(wrapped,sourceFile.file,{seed:{book:base.book,sourcePath:m.base.file,sourceText:rawBase.text,spanAbi:api.compiler_span_abi(),sourceBegin:1,sourceEnd:rawBase.text.length+2}});
+  assert(carrier.ready,'actual leading Base carrier');
+  for(const iteration of [0,1]){const before=counts(),load=native.f_prefix_graph_trace(carrier,seededGraph.sources,freshState);assert(load.ready);assert.deepEqual(load.trace,seededGraph.loadTrace,'complete freshened trace');const resumed=Q.checkLoad(state,load),resumedCounts=delta(before,counts());const full=Q.full(load.trace.result.book);assert.equal(full.result.error,'');assert.deepEqual(resumed,full,'carrier entire world');const direct=Q.worldLoad(prepared,load);assert.deepEqual(direct,full,'native carrier immutable world');assert.deepEqual(Q.complete(load.trace.result.book,direct),Q.complete(load.trace.result.book,full),'native carrier completion');assert.equal(digest(prepared),preparedHash,'same state reused across iterations/sources');assert.deepEqual(Q.complete(load.trace.result.book,resumed),Q.complete(load.trace.result.book,full));assert.equal(resumedCounts['$prefix_state_exact_defs$'],0);assert.equal(resumedCounts['$f_fresh_prefix_exact_terms$'],0);assert.equal(resumedCounts['$base_prefix_resume_saved$'],1);assert.equal(resumedCounts['$dg_check_world$'],0);report.rows.push({id:'native-carrier-'+iteration+'-'+path.basename(sourceFile.file),admitted:true,pass:true,outcome:digest(full),error:full.result.error,resumeCounts:resumedCounts});save();}
+  const ordinary=row('actual-'+path.basename(sourceFile.file),all,prefix,true);assert.equal(ordinary.fullCounts['$check_definition_world$'],prepareCounts['$check_definition_world$']+ordinary.resumeCounts['$check_definition_world$']);assert(ordinary.fullCounts['$check_definition_world$']>ordinary.resumeCounts['$check_definition_world$']);
+  row('repeat-'+path.basename(sourceFile.file),all,prefix,true);assert.equal(digest(state),stateHash);
+  const atom=(tag,name='',id=0,kids=[])=>({$:'KTerm',tag,name,id,quant:0,kids:list(kids),removed:list([]),originBegin:0,originEnd:0});
+  for(const shift of [1,17,1024]){const id=Q.bound(list(all))+shift,type=atom('Ref','U32');const d={$:'KDef',name:'prefix61.floor.'+shift,kind:'Def',arity:1,templates:0,typ:{...atom('All','floor',id,[type,type]),quant:1},value:{...atom('Lam','floor',id,[atom('Var','floor',id)]),quant:1},ctors:list([]),native:false,unsafe:false};row('moved-floor-'+shift+'-'+path.basename(sourceFile.file),[...all,d],prefix,true);}
+
+  const suffix=all.slice(prefix.length),term=prefix[0].typ;
+  const changedPrefix=[{...prefix[0],typ:{...term,originBegin:term.originBegin===0?1:term.originBegin+1}},...prefix.slice(1)];row('changed-prefix-span-'+sourceArg,[...changedPrefix,...suffix],prefix,false);
+  row('dropped-prefix-'+sourceArg,[...prefix.slice(1),...suffix],prefix,false);
+  const reordered=[...prefix],other=reordered.findIndex((d,i)=>i>0&&d.name!==reordered[0].name);assert(other>0);[reordered[0],reordered[other]]=[reordered[other],reordered[0]];row('reordered-prefix-'+sourceArg,[...reordered,...suffix],prefix,false);
+  row('cross-prefix-fill-'+sourceArg,[...prefix,prefix[0],...suffix],prefix,false);
+  row('reserved-name-'+sourceArg,[...prefix,{...suffix[0],name:suffix[0].name+'~probe'},...suffix.slice(1)],prefix,false);
+  row('high-bound-'+sourceArg,[...prefix,{...suffix[0],typ:{...suffix[0].typ,id:1048577}},...suffix.slice(1)],prefix,false);
+  const adt=prefix.find(d=>d.kind==='ADT'&&array(d.ctors).length>0);assert(adt);row('constructor-capture-'+sourceArg,[...prefix,{...adt,name:'prefix61.collision'},...suffix],prefix,false);
+ }
+ report.producerControls=[];
+ const initial=native.f_prefix_graph_empty();
+ const seeds=[['ordinary',initial,'',m.base.file,rawBase.text,true],['namespace',initial,'qualified',m.base.file,rawBase.text,false],['changed-path',initial,'',m.base.file+'.wrong',rawBase.text,false],['changed-text',initial,'',m.base.file,rawBase.text+' ',false],['nonleading',{$:'FPrefixGraph',graph:{$:'FGraph',book:list([prefix[0]]),error:'',done:list([])},prefix:list([]),suffix:list([]),count:0,ready:false},'',m.base.file,rawBase.text,false]];
+ for(const [id,c,ns,p,t,expected] of seeds){const produced=native.f_prefix_complete_seed(located,ns,c,p,t,base.book);assert.equal(produced.carrier.ready,expected,id);const loaded=native.f_prefix_graph_trace(produced.carrier,list([located]),freshState),old=native.f_graph_trace(produced.carrier.graph,list([located]));assert.deepEqual(loaded.trace,old,id+' fallback/trace');assert.equal(loaded.ready,expected,id);report.producerControls.push({id,ready:loaded.ready,pass:true,traceSha256:digest(old)});}
+ row('empty-suffix',prefix,prefix,true);
+ const collisionFile=pin(path.resolve(import.meta.dirname,'../../phase63/controls/base-collision-v1.json')),collision=JSON.parse(fs.readFileSync(collisionFile.file));assert(prefix.some(d=>d.name===collision.first));assert.equal(Q.hash(collision.first),collision.hash);assert.equal(Q.hash(collision.second),collision.hash);
+ const collisionDef={$:'KDef',name:collision.second,kind:'Def',arity:0,templates:0,typ:{$:'KTerm',tag:'Ref',name:'U32',id:0,quant:0,kids:list([]),removed:list([]),originBegin:0,originEnd:0},value:{$:'KLiteral',kind:'U32',number:7,text:'',originBegin:0,originEnd:0},ctors:list([]),native:false,unsafe:false};
+ const collisionResult=row('Base-full-hash-collision',[...prefix,collisionDef],prefix,true);assert.equal(collisionResult.worldCounts['$base_prefix_resume_saved$'],1,'Base hash collision selects original replay');assert.equal(collisionResult.worldCounts['$base_prefix_resume_world$'],0,'collision must not enter saved-world reorder');
+ row('state-not-ready',prefix,prefix,false,{...state,ready:false});
+ row('delta-over-admission-bound',prefix,prefix,false,{...state,delta:1048577});
+ row('stamp-over-delta',prefix,prefix,false,{...state,stamp:state.delta+1});
+ assert.equal(digest(prepared),preparedHash,'final immutable world');
+ report.prepareCounts=prepareCounts;report.checkpointSha256=stateHash;report.counts={actualSources:sourceArgs.length,rows:report.rows.length,admitted:report.rows.filter(r=>r.admitted).length,fallback:report.rows.filter(r=>!r.admitted).length};
+ for(const r of inputs.values())pin(r.file,r);report.complete=true;report.pass=true;save();
+}catch(error){report.error={name:error.name,message:error.message,stack:error.stack};save();throw error;}

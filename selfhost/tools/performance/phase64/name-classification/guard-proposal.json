@@ -1,0 +1,43 @@
+{
+  "kind": "phase64-isolated-outer-tag-guard",
+  "applied": false,
+  "variants": {
+    "guard-only.patch": "applies to original membership expressions; narrow hunks omit classifier helper additions",
+    "guard-after-classifier.patch": "applies to matching classifier callsites; helpers already supplied by candidate.patch"
+  },
+  "scope": "Finite well-typed KTerm, KDef and String values; no equivalence claim for arbitrary JS object getters, cyclic forged values or host exhaustion",
+  "changes": [
+    {
+      "file": "selfhost/src/back/js/direct/constructors.bend",
+      "observedSha256": "6ac71b1f0271ee5592cb28f938b8dbaccb7b02c389a724020ee72bb3b8853116",
+      "skippedOnWrongTag": [
+        "nm",
+        "lookup",
+        "db",
+        "membership"
+      ],
+      "preservedAcceptedTagOrder": [
+        "nm",
+        "lookup",
+        "db",
+        "membership"
+      ]
+    },
+    {
+      "file": "selfhost/src/back/js/validate.bend",
+      "observedSha256": "df098471ed058f76a7f5e8cf6041e049a13e9315767c37bd40b6e2bb418defaa",
+      "skippedOnWrongTag": [
+        "nm",
+        "lookup",
+        "db",
+        "membership"
+      ],
+      "preservedAcceptedTagOrder": [
+        "nm",
+        "lookup",
+        "db",
+        "membership"
+      ]
+    }
+  ]
+}

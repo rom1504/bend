@@ -1,0 +1,4055 @@
+{
+  "kind": "phase64-state09-demand-analysis",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "timingClaims": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/demand/analyze.py",
+    "sha256": "e1cad8014b5b04e76be74b64bd6590b818b70ed5ef8e94d10bf6628307148fb5"
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/report.json",
+    "sha256": "07439c935831d39c009110579381094bb5cc7ce302bb49600f8f508db4b779fb"
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/plan.json",
+    "sha256": "677681abd6ca5264f3fb63c789cb52f197134f3c291762f9fc00f287cbf4929b"
+  },
+  "cache": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/build/typed/cache/base-e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003-c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661-c04628cbf4595eb7fcc0fafe90e6e555f95b4b4691a19005149f3206f3d3f7db-frame3.json",
+    "sha256": "b1714d24a76073d8e09481443f20212393b68e2bd48e164381c72752ea4c1c2b"
+  },
+  "graph": {
+    "bookNodes": 35378,
+    "preparedNodes": 11379,
+    "eagerConstructedNodes": 46757,
+    "bookSegmentBytes": 917613,
+    "preparedSegmentBytes": 280032,
+    "eagerConstructionRatio": 1,
+    "idMapping": "The helper registers raw nodes in decode order; book IDs0..35377, prepared IDs35378..46756. Shared book nodes are registered once.",
+    "validationCaveat": "Raw record validation and eager construction occur before proxy registration. Cache-decode read counters do not count that work; optional prepared data is validated if admitted."
+  },
+  "rows": [
+    {
+      "case": "numeric-recurrence",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/numeric-recurrence.json",
+        "sha256": "443cb1455e51cfbe16e48b69ad5fa79f5914b154a02536300f998b372212523e"
+      },
+      "rawDemand": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/numeric-recurrence.json.demand.json",
+        "sha256": "9067ca896c319c23b1d3fcbc2c221bff34c6396e534c3b64420dc453e95b0c2e"
+      },
+      "allAccess": {
+        "nodes": 44944,
+        "percentDecoded": 96.1225057210685,
+        "bookNodes": 34920,
+        "percentBook": 98.7054101418961,
+        "preparedNodes": 10024,
+        "percentPrepared": 88.09209948150101
+      },
+      "untouched": {
+        "nodes": 1813,
+        "percentDecoded": 3.877494278931497,
+        "bookNodes": 458,
+        "percentBook": 1.2945898581039064,
+        "preparedNodes": 1355,
+        "percentPrepared": 11.90790051849899
+      },
+      "postCacheApiAccess": {
+        "nodes": 44648,
+        "percentDecoded": 95.48944543063071,
+        "bookNodes": 34920,
+        "percentBook": 98.7054101418961,
+        "preparedNodes": 9728,
+        "percentPrepared": 85.49081641620529
+      },
+      "cacheOnlyAccess": {
+        "nodes": 296,
+        "percentDecoded": 0.6330602904377954,
+        "bookNodes": 0,
+        "percentBook": 0.0,
+        "preparedNodes": 296,
+        "percentPrepared": 2.6012830652957204
+      },
+      "selectedBackendAccess": {
+        "nodes": 687,
+        "percentDecoded": 1.4692987146309644,
+        "bookNodes": 343,
+        "percentBook": 0.9695290858725761,
+        "preparedNodes": 344,
+        "percentPrepared": 3.023112751559891
+      },
+      "exclusionDiagnostic": {
+        "excludedPhases": [
+          "api:book_context",
+          "api:check_program_diagnostic_world",
+          "cache-decode"
+        ],
+        "remainingAccess": {
+          "nodes": 2689,
+          "percentDecoded": 5.7510105438757835,
+          "bookNodes": 1943,
+          "percentBook": 5.4921137430041265,
+          "preparedNodes": 746,
+          "percentPrepared": 6.5559363740223215
+        },
+        "warning": "Excludes whole top-level phases including necessary source checks. It is not a semantics-preserving alternative or a prediction after removing Base scans."
+      },
+      "phases": [
+        {
+          "name": "cache-decode",
+          "reads": 6247,
+          "nodes": 597,
+          "percentDecoded": 1.2768141668627158,
+          "bookNodes": 1,
+          "percentBook": 0.0028266154107072193,
+          "preparedNodes": 596,
+          "percentPrepared": 5.237718604446788,
+          "definitionBodyNodes": 296,
+          "distinctDefinitionNames": 296,
+          "topFields": [
+            [
+              "KDef.arity",
+              888
+            ],
+            [
+              "KDef.templates",
+              888
+            ],
+            [
+              "Nil.$",
+              594
+            ],
+            [
+              "KDef.typ",
+              592
+            ],
+            [
+              "KDef.value",
+              592
+            ],
+            [
+              "Con.$",
+              296
+            ],
+            [
+              "Con.head",
+              296
+            ],
+            [
+              "KDef.$",
+              296
+            ]
+          ]
+        },
+        {
+          "name": "api:f_prefix_complete_ready_seed",
+          "reads": 1942,
+          "nodes": 486,
+          "percentDecoded": 1.0394165579485424,
+          "bookNodes": 485,
+          "percentBook": 1.3709084741930013,
+          "preparedNodes": 1,
+          "percentPrepared": 0.008788118463836892,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "Con.$",
+              968
+            ],
+            [
+              "Con.tail",
+              968
+            ],
+            [
+              "Nil.$",
+              2
+            ],
+            [
+              "FReadyPrefixState.names",
+              1
+            ],
+            [
+              "FReadyPrefixState.ctors",
+              1
+            ],
+            [
+              "FReadyPrefixState.count",
+              1
+            ],
+            [
+              "FReadyPrefixState.ready",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "api:f_prefix_complete_source",
+          "reads": 6528,
+          "nodes": 1082,
+          "percentDecoded": 2.314092007613833,
+          "bookNodes": 972,
+          "percentBook": 2.747470179207417,
+          "preparedNodes": 110,
+          "percentPrepared": 0.9666930310220582,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "Con.$",
+              982
+            ],
+            [
+              "Con.head",
+              982
+            ],
+            [
+              "Con.tail",
+              982
+            ],
+            [
+              "KIndexNode.$",
+              780
+            ],
+            [
+              "KDef.$",
+              516
+            ],
+            [
+              "KDef.name",
+              498
+            ],
+            [
+              "KIndexNode.hash",
+              386
+            ],
+            [
+              "KIndexNode.mask",
+              386
+            ]
+          ]
+        },
+        {
+          "name": "api:f_prefix_graph_trace",
+          "reads": 1751,
+          "nodes": 503,
+          "percentDecoded": 1.0757747503047672,
+          "bookNodes": 485,
+          "percentBook": 1.3709084741930013,
+          "preparedNodes": 18,
+          "percentPrepared": 0.15818613234906406,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "Con.$",
+              484
+            ],
+            [
+              "Con.head",
+              484
+            ],
+            [
+              "Con.tail",
+              484
+            ],
+            [
+              "KIndexNode.$",
+              92
+            ],
+            [
+              "KIndexNode.hash",
+              45
+            ],
+            [
+              "KIndexNode.mask",
+              45
+            ],
+            [
+              "KIndexNode.left",
+              45
+            ],
+            [
+              "KIndexNode.right",
+              45
+            ]
+          ]
+        },
+        {
+          "name": "api:check_program_diagnostic_world",
+          "reads": 193727,
+          "nodes": 35924,
+          "percentDecoded": 76.83127660029514,
+          "bookNodes": 34498,
+          "percentBook": 97.51257843857765,
+          "preparedNodes": 1426,
+          "percentPrepared": 12.53185692943141,
+          "definitionBodyNodes": 505,
+          "distinctDefinitionNames": 500,
+          "topFields": [
+            [
+              "KTerm.$",
+              37921
+            ],
+            [
+              "Nil.$",
+              22178
+            ],
+            [
+              "Con.$",
+              21798
+            ],
+            [
+              "Con.tail",
+              21780
+            ],
+            [
+              "Con.head",
+              21776
+            ],
+            [
+              "KTerm.tag",
+              19124
+            ],
+            [
+              "KTerm.kids",
+              18638
+            ],
+            [
+              "KLambda.$",
+              8618
+            ]
+          ]
+        },
+        {
+          "name": "api:driver_has_main",
+          "reads": 1852,
+          "nodes": 463,
+          "percentDecoded": 0.9902260624077678,
+          "bookNodes": 167,
+          "percentBook": 0.4720447735881056,
+          "preparedNodes": 296,
+          "percentPrepared": 2.6012830652957204,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KDef.$",
+              926
+            ],
+            [
+              "KDef.kind",
+              463
+            ],
+            [
+              "KDef.name",
+              463
+            ]
+          ]
+        },
+        {
+          "name": "api:driver_emit_owned",
+          "reads": 104827,
+          "nodes": 934,
+          "percentDecoded": 1.9975618623949356,
+          "bookNodes": 342,
+          "percentBook": 0.966702470461869,
+          "preparedNodes": 592,
+          "percentPrepared": 5.202566130591441,
+          "definitionBodyNodes": 463,
+          "distinctDefinitionNames": 463,
+          "topFields": [
+            [
+              "KDef.$",
+              38370
+            ],
+            [
+              "KDef.ctors",
+              20835
+            ],
+            [
+              "Nil.$",
+              20835
+            ],
+            [
+              "KDef.name",
+              8327
+            ],
+            [
+              "KDef.native",
+              6482
+            ],
+            [
+              "KDef.kind",
+              2263
+            ],
+            [
+              "Con.$",
+              1800
+            ],
+            [
+              "Con.head",
+              1800
+            ]
+          ]
+        },
+        {
+          "name": "api:book_context",
+          "reads": 137558,
+          "nodes": 28961,
+          "percentDecoded": 61.93938875462498,
+          "bookNodes": 20686,
+          "percentBook": 58.47136638588954,
+          "preparedNodes": 8275,
+          "percentPrepared": 72.72168028825028,
+          "definitionBodyNodes": 503,
+          "distinctDefinitionNames": 499,
+          "topFields": [
+            [
+              "KTerm.$",
+              29522
+            ],
+            [
+              "Nil.$",
+              16880
+            ],
+            [
+              "Con.$",
+              15530
+            ],
+            [
+              "Con.head",
+              15530
+            ],
+            [
+              "Con.tail",
+              15530
+            ],
+            [
+              "KTerm.kids",
+              14761
+            ],
+            [
+              "KTerm.id",
+              14761
+            ],
+            [
+              "KLambda.$",
+              6464
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_roots",
+          "reads": 10250,
+          "nodes": 853,
+          "percentDecoded": 1.8243257694035118,
+          "bookNodes": 261,
+          "percentBook": 0.7377466221945842,
+          "preparedNodes": 592,
+          "percentPrepared": 5.202566130591441,
+          "definitionBodyNodes": 463,
+          "distinctDefinitionNames": 463,
+          "topFields": [
+            [
+              "KDef.$",
+              3273
+            ],
+            [
+              "KLambda.$",
+              1832
+            ],
+            [
+              "KDef.name",
+              940
+            ],
+            [
+              "KTerm.$",
+              932
+            ],
+            [
+              "KTerm.tag",
+              932
+            ],
+            [
+              "KDef.value",
+              926
+            ],
+            [
+              "KDef.kind",
+              467
+            ],
+            [
+              "KDef.native",
+              467
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_stops",
+          "reads": 20810,
+          "nodes": 1571,
+          "percentDecoded": 3.3599247171546507,
+          "bookNodes": 979,
+          "percentBook": 2.7672564870823675,
+          "preparedNodes": 592,
+          "percentPrepared": 5.202566130591441,
+          "definitionBodyNodes": 463,
+          "distinctDefinitionNames": 463,
+          "topFields": [
+            [
+              "KDef.$",
+              4575
+            ],
+            [
+              "KTerm.$",
+              3527
+            ],
+            [
+              "KTerm.tag",
+              2793
+            ],
+            [
+              "KLambda.$",
+              2180
+            ],
+            [
+              "KDef.kind",
+              921
+            ],
+            [
+              "KDef.name",
+              919
+            ],
+            [
+              "KDef.value",
+              876
+            ],
+            [
+              "KDef.templates",
+              834
+            ]
+          ]
+        },
+        {
+          "name": "api:reach_book",
+          "reads": 3109,
+          "nodes": 646,
+          "percentDecoded": 1.3816113095365399,
+          "bookNodes": 343,
+          "percentBook": 0.9695290858725761,
+          "preparedNodes": 303,
+          "percentPrepared": 2.6627998945425784,
+          "definitionBodyNodes": 7,
+          "distinctDefinitionNames": 7,
+          "topFields": [
+            [
+              "KDef.$",
+              685
+            ],
+            [
+              "KTerm.$",
+              618
+            ],
+            [
+              "KDef.name",
+              539
+            ],
+            [
+              "KTerm.tag",
+              452
+            ],
+            [
+              "Nil.$",
+              145
+            ],
+            [
+              "KTerm.kids",
+              113
+            ],
+            [
+              "Con.$",
+              109
+            ],
+            [
+              "Con.head",
+              109
+            ]
+          ]
+        },
+        {
+          "name": "api:annotate_selected",
+          "reads": 1999,
+          "nodes": 116,
+          "percentDecoded": 0.2480911949012982,
+          "bookNodes": 103,
+          "percentBook": 0.29114138730284356,
+          "preparedNodes": 13,
+          "percentPrepared": 0.1142455400298796,
+          "definitionBodyNodes": 7,
+          "distinctDefinitionNames": 7,
+          "topFields": [
+            [
+              "KTerm.$",
+              419
+            ],
+            [
+              "KTerm.tag",
+              289
+            ],
+            [
+              "KDef.$",
+              288
+            ],
+            [
+              "KDef.name",
+              101
+            ],
+            [
+              "Con.$",
+              100
+            ],
+            [
+              "Con.head",
+              88
+            ],
+            [
+              "Con.tail",
+              88
+            ],
+            [
+              "KTerm.name",
+              75
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_plan_selected",
+          "reads": 29188,
+          "nodes": 597,
+          "percentDecoded": 1.2768141668627158,
+          "bookNodes": 258,
+          "percentBook": 0.7292667759624626,
+          "preparedNodes": 339,
+          "percentPrepared": 2.9791721592407066,
+          "definitionBodyNodes": 10,
+          "distinctDefinitionNames": 10,
+          "topFields": [
+            [
+              "KDef.$",
+              10562
+            ],
+            [
+              "KDef.name",
+              9550
+            ],
+            [
+              "KTerm.$",
+              3027
+            ],
+            [
+              "KTerm.tag",
+              2334
+            ],
+            [
+              "Con.$",
+              476
+            ],
+            [
+              "Con.head",
+              463
+            ],
+            [
+              "Con.tail",
+              463
+            ],
+            [
+              "KDef.kind",
+              252
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_foreign_error",
+          "reads": 24,
+          "nodes": 1,
+          "percentDecoded": 0.0021387171974249844,
+          "bookNodes": 1,
+          "percentBook": 0.0028266154107072193,
+          "preparedNodes": 0,
+          "percentPrepared": 0.0,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KTerm.$",
+              12
+            ],
+            [
+              "KTerm.tag",
+              12
+            ]
+          ]
+        },
+        {
+          "name": "api:j_layout_error",
+          "reads": 440,
+          "nodes": 40,
+          "percentDecoded": 0.08554868789699938,
+          "bookNodes": 35,
+          "percentBook": 0.09893153937475267,
+          "preparedNodes": 5,
+          "percentPrepared": 0.043940592319184464,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KTerm.$",
+              128
+            ],
+            [
+              "KTerm.tag",
+              99
+            ],
+            [
+              "KDef.$",
+              58
+            ],
+            [
+              "KDef.name",
+              27
+            ],
+            [
+              "Con.$",
+              22
+            ],
+            [
+              "Con.head",
+              22
+            ],
+            [
+              "Con.tail",
+              22
+            ],
+            [
+              "KTerm.kids",
+              14
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_foreign_paths",
+          "reads": 24,
+          "nodes": 1,
+          "percentDecoded": 0.0021387171974249844,
+          "bookNodes": 1,
+          "percentBook": 0.0028266154107072193,
+          "preparedNodes": 0,
+          "percentPrepared": 0.0,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KTerm.$",
+              12
+            ],
+            [
+              "KTerm.tag",
+              12
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_modules",
+          "reads": 24,
+          "nodes": 1,
+          "percentDecoded": 0.0021387171974249844,
+          "bookNodes": 1,
+          "percentBook": 0.0028266154107072193,
+          "preparedNodes": 0,
+          "percentPrepared": 0.0,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KTerm.$",
+              12
+            ],
+            [
+              "KTerm.tag",
+              12
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_plan_library",
+          "reads": 12922,
+          "nodes": 512,
+          "percentDecoded": 1.095023205081592,
+          "bookNodes": 217,
+          "percentBook": 0.6133755441234665,
+          "preparedNodes": 295,
+          "percentPrepared": 2.5924949468318834,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KTerm.$",
+              2162
+            ],
+            [
+              "KTerm.tag",
+              1784
+            ],
+            [
+              "Con.$",
+              1044
+            ],
+            [
+              "KDef.$",
+              1016
+            ],
+            [
+              "KDef.name",
+              926
+            ],
+            [
+              "Nil.$",
+              856
+            ],
+            [
+              "Con.head",
+              724
+            ],
+            [
+              "Con.tail",
+              724
+            ]
+          ]
+        }
+      ],
+      "rawLimits": [
+        "Proxy instrumentation is diagnostic and can perturb execution substantially.",
+        "Every node was eagerly decoded; accessed-node counts estimate demand, not actual selective allocation.",
+        "Current driver TODO scanning may touch all nodes; separate its phase or repeat after prepared TODO facts.",
+        "One fresh request only; persistent inspector freezing is intentionally unsupported by diagnostic proxies."
+      ]
+    },
+    {
+      "case": "lexer",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/lexer.json",
+        "sha256": "ecded8cfd0a83c7667b6aceb44d584c976795e2cc7ef316a888cf22b5d013427"
+      },
+      "rawDemand": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/lexer.json.demand.json",
+        "sha256": "3dc2f15a772994d77d90ad7df0dcc19e7814467cb8a9b240e1f52b0f327f44c3"
+      },
+      "allAccess": {
+        "nodes": 45136,
+        "percentDecoded": 96.5331394229741,
+        "bookNodes": 34920,
+        "percentBook": 98.7054101418961,
+        "preparedNodes": 10216,
+        "percentPrepared": 89.7794182265577
+      },
+      "untouched": {
+        "nodes": 1621,
+        "percentDecoded": 3.4668605770259,
+        "bookNodes": 458,
+        "percentBook": 1.2945898581039064,
+        "preparedNodes": 1163,
+        "percentPrepared": 10.220581773442307
+      },
+      "postCacheApiAccess": {
+        "nodes": 44840,
+        "percentDecoded": 95.9000791325363,
+        "bookNodes": 34920,
+        "percentBook": 98.7054101418961,
+        "preparedNodes": 9920,
+        "percentPrepared": 87.17813516126198
+      },
+      "cacheOnlyAccess": {
+        "nodes": 296,
+        "percentDecoded": 0.6330602904377954,
+        "bookNodes": 0,
+        "percentBook": 0.0,
+        "preparedNodes": 296,
+        "percentPrepared": 2.6012830652957204
+      },
+      "selectedBackendAccess": {
+        "nodes": 953,
+        "percentDecoded": 2.03819748914601,
+        "bookNodes": 551,
+        "percentBook": 1.5574650912996777,
+        "preparedNodes": 402,
+        "percentPrepared": 3.532823622462431
+      },
+      "exclusionDiagnostic": {
+        "excludedPhases": [
+          "api:book_context",
+          "api:check_program_diagnostic_world",
+          "cache-decode"
+        ],
+        "remainingAccess": {
+          "nodes": 3017,
+          "percentDecoded": 6.452509784631178,
+          "bookNodes": 2066,
+          "percentBook": 5.839787438521115,
+          "preparedNodes": 951,
+          "percentPrepared": 8.357500659108885
+        },
+        "warning": "Excludes whole top-level phases including necessary source checks. It is not a semantics-preserving alternative or a prediction after removing Base scans."
+      },
+      "phases": [
+        {
+          "name": "cache-decode",
+          "reads": 6247,
+          "nodes": 597,
+          "percentDecoded": 1.2768141668627158,
+          "bookNodes": 1,
+          "percentBook": 0.0028266154107072193,
+          "preparedNodes": 596,
+          "percentPrepared": 5.237718604446788,
+          "definitionBodyNodes": 296,
+          "distinctDefinitionNames": 296,
+          "topFields": [
+            [
+              "KDef.arity",
+              888
+            ],
+            [
+              "KDef.templates",
+              888
+            ],
+            [
+              "Nil.$",
+              594
+            ],
+            [
+              "KDef.typ",
+              592
+            ],
+            [
+              "KDef.value",
+              592
+            ],
+            [
+              "Con.$",
+              296
+            ],
+            [
+              "Con.head",
+              296
+            ],
+            [
+              "KDef.$",
+              296
+            ]
+          ]
+        },
+        {
+          "name": "api:f_prefix_complete_ready_seed",
+          "reads": 1942,
+          "nodes": 486,
+          "percentDecoded": 1.0394165579485424,
+          "bookNodes": 485,
+          "percentBook": 1.3709084741930013,
+          "preparedNodes": 1,
+          "percentPrepared": 0.008788118463836892,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "Con.$",
+              968
+            ],
+            [
+              "Con.tail",
+              968
+            ],
+            [
+              "Nil.$",
+              2
+            ],
+            [
+              "FReadyPrefixState.names",
+              1
+            ],
+            [
+              "FReadyPrefixState.ctors",
+              1
+            ],
+            [
+              "FReadyPrefixState.count",
+              1
+            ],
+            [
+              "FReadyPrefixState.ready",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "api:f_prefix_complete_source",
+          "reads": 29580,
+          "nodes": 1247,
+          "percentDecoded": 2.6669803451889558,
+          "bookNodes": 982,
+          "percentBook": 2.775736333314489,
+          "preparedNodes": 265,
+          "percentPrepared": 2.3288513929167767,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KIndexNode.$",
+              5072
+            ],
+            [
+              "KIndexNode.hash",
+              2531
+            ],
+            [
+              "KIndexNode.mask",
+              2531
+            ],
+            [
+              "KIndexNode.left",
+              2531
+            ],
+            [
+              "KIndexNode.right",
+              2531
+            ],
+            [
+              "Con.$",
+              2477
+            ],
+            [
+              "Con.head",
+              2477
+            ],
+            [
+              "Con.tail",
+              2477
+            ]
+          ]
+        },
+        {
+          "name": "api:f_prefix_graph_trace",
+          "reads": 3961,
+          "nodes": 637,
+          "percentDecoded": 1.362362854759715,
+          "bookNodes": 485,
+          "percentBook": 1.3709084741930013,
+          "preparedNodes": 152,
+          "percentPrepared": 1.3357940065032077,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KIndexNode.$",
+              726
+            ],
+            [
+              "Con.$",
+              484
+            ],
+            [
+              "Con.head",
+              484
+            ],
+            [
+              "Con.tail",
+              484
+            ],
+            [
+              "KIndexNode.hash",
+              362
+            ],
+            [
+              "KIndexNode.mask",
+              362
+            ],
+            [
+              "KIndexNode.left",
+              362
+            ],
+            [
+              "KIndexNode.right",
+              362
+            ]
+          ]
+        },
+        {
+          "name": "api:check_program_diagnostic_world",
+          "reads": 474643,
+          "nodes": 36076,
+          "percentDecoded": 77.15636161430373,
+          "bookNodes": 34498,
+          "percentBook": 97.51257843857765,
+          "preparedNodes": 1578,
+          "percentPrepared": 13.867650935934616,
+          "definitionBodyNodes": 505,
+          "distinctDefinitionNames": 500,
+          "topFields": [
+            [
+              "KDef.$",
+              76605
+            ],
+            [
+              "Con.$",
+              50275
+            ],
+            [
+              "Con.tail",
+              50013
+            ],
+            [
+              "Con.head",
+              49899
+            ],
+            [
+              "Nil.$",
+              48168
+            ],
+            [
+              "KTerm.$",
+              45455
+            ],
+            [
+              "KDef.kind",
+              28341
+            ],
+            [
+              "KDef.ctors",
+              25649
+            ]
+          ]
+        },
+        {
+          "name": "api:driver_has_main",
+          "reads": 1852,
+          "nodes": 463,
+          "percentDecoded": 0.9902260624077678,
+          "bookNodes": 167,
+          "percentBook": 0.4720447735881056,
+          "preparedNodes": 296,
+          "percentPrepared": 2.6012830652957204,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KDef.$",
+              926
+            ],
+            [
+              "KDef.kind",
+              463
+            ],
+            [
+              "KDef.name",
+              463
+            ]
+          ]
+        },
+        {
+          "name": "api:driver_emit_owned",
+          "reads": 104827,
+          "nodes": 934,
+          "percentDecoded": 1.9975618623949356,
+          "bookNodes": 342,
+          "percentBook": 0.966702470461869,
+          "preparedNodes": 592,
+          "percentPrepared": 5.202566130591441,
+          "definitionBodyNodes": 463,
+          "distinctDefinitionNames": 463,
+          "topFields": [
+            [
+              "KDef.$",
+              38370
+            ],
+            [
+              "KDef.ctors",
+              20835
+            ],
+            [
+              "Nil.$",
+              20835
+            ],
+            [
+              "KDef.name",
+              8327
+            ],
+            [
+              "KDef.native",
+              6482
+            ],
+            [
+              "KDef.kind",
+              2263
+            ],
+            [
+              "Con.$",
+              1800
+            ],
+            [
+              "Con.head",
+              1800
+            ]
+          ]
+        },
+        {
+          "name": "api:book_context",
+          "reads": 137558,
+          "nodes": 28961,
+          "percentDecoded": 61.93938875462498,
+          "bookNodes": 20686,
+          "percentBook": 58.47136638588954,
+          "preparedNodes": 8275,
+          "percentPrepared": 72.72168028825028,
+          "definitionBodyNodes": 503,
+          "distinctDefinitionNames": 499,
+          "topFields": [
+            [
+              "KTerm.$",
+              29522
+            ],
+            [
+              "Nil.$",
+              16880
+            ],
+            [
+              "Con.$",
+              15530
+            ],
+            [
+              "Con.head",
+              15530
+            ],
+            [
+              "Con.tail",
+              15530
+            ],
+            [
+              "KTerm.kids",
+              14761
+            ],
+            [
+              "KTerm.id",
+              14761
+            ],
+            [
+              "KLambda.$",
+              6464
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_roots",
+          "reads": 36146,
+          "nodes": 853,
+          "percentDecoded": 1.8243257694035118,
+          "bookNodes": 261,
+          "percentBook": 0.7377466221945842,
+          "preparedNodes": 592,
+          "percentPrepared": 5.202566130591441,
+          "definitionBodyNodes": 463,
+          "distinctDefinitionNames": 463,
+          "topFields": [
+            [
+              "KDef.$",
+              16221
+            ],
+            [
+              "KDef.name",
+              13635
+            ],
+            [
+              "KLambda.$",
+              1832
+            ],
+            [
+              "KTerm.$",
+              932
+            ],
+            [
+              "KTerm.tag",
+              932
+            ],
+            [
+              "KDef.value",
+              926
+            ],
+            [
+              "KDef.kind",
+              526
+            ],
+            [
+              "KDef.native",
+              521
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_stops",
+          "reads": 20810,
+          "nodes": 1571,
+          "percentDecoded": 3.3599247171546507,
+          "bookNodes": 979,
+          "percentBook": 2.7672564870823675,
+          "preparedNodes": 592,
+          "percentPrepared": 5.202566130591441,
+          "definitionBodyNodes": 463,
+          "distinctDefinitionNames": 463,
+          "topFields": [
+            [
+              "KDef.$",
+              4575
+            ],
+            [
+              "KTerm.$",
+              3527
+            ],
+            [
+              "KTerm.tag",
+              2793
+            ],
+            [
+              "KLambda.$",
+              2180
+            ],
+            [
+              "KDef.kind",
+              921
+            ],
+            [
+              "KDef.name",
+              919
+            ],
+            [
+              "KDef.value",
+              876
+            ],
+            [
+              "KDef.templates",
+              834
+            ]
+          ]
+        },
+        {
+          "name": "api:reach_book",
+          "reads": 35045,
+          "nodes": 848,
+          "percentDecoded": 1.8136321834163869,
+          "bookNodes": 540,
+          "percentBook": 1.5263723217818983,
+          "preparedNodes": 308,
+          "percentPrepared": 2.706740486861763,
+          "definitionBodyNodes": 11,
+          "distinctDefinitionNames": 11,
+          "topFields": [
+            [
+              "KDef.$",
+              12142
+            ],
+            [
+              "KDef.kind",
+              5775
+            ],
+            [
+              "Nil.$",
+              5470
+            ],
+            [
+              "KDef.ctors",
+              5200
+            ],
+            [
+              "KTerm.$",
+              1448
+            ],
+            [
+              "KDef.name",
+              1092
+            ],
+            [
+              "KTerm.tag",
+              1088
+            ],
+            [
+              "Con.$",
+              773
+            ]
+          ]
+        },
+        {
+          "name": "api:annotate_selected",
+          "reads": 21153,
+          "nodes": 268,
+          "percentDecoded": 0.5731762089098958,
+          "bookNodes": 242,
+          "percentBook": 0.684040929391147,
+          "preparedNodes": 26,
+          "percentPrepared": 0.2284910800597592,
+          "definitionBodyNodes": 11,
+          "distinctDefinitionNames": 11,
+          "topFields": [
+            [
+              "KTerm.$",
+              4410
+            ],
+            [
+              "KTerm.tag",
+              2767
+            ],
+            [
+              "KDef.$",
+              1958
+            ],
+            [
+              "Con.$",
+              1531
+            ],
+            [
+              "Con.head",
+              1308
+            ],
+            [
+              "Con.tail",
+              1308
+            ],
+            [
+              "KTerm.id",
+              964
+            ],
+            [
+              "KTerm.kids",
+              803
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_plan_selected",
+          "reads": 107401,
+          "nodes": 779,
+          "percentDecoded": 1.666060696794063,
+          "bookNodes": 387,
+          "percentBook": 1.0939001639436938,
+          "preparedNodes": 392,
+          "percentPrepared": 3.444942437824062,
+          "definitionBodyNodes": 12,
+          "distinctDefinitionNames": 12,
+          "topFields": [
+            [
+              "KDef.$",
+              33058
+            ],
+            [
+              "KDef.name",
+              27068
+            ],
+            [
+              "KTerm.$",
+              11751
+            ],
+            [
+              "KTerm.tag",
+              8807
+            ],
+            [
+              "Con.$",
+              3730
+            ],
+            [
+              "Con.head",
+              3475
+            ],
+            [
+              "Con.tail",
+              3475
+            ],
+            [
+              "KDef.kind",
+              2541
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_foreign_error",
+          "reads": 32,
+          "nodes": 1,
+          "percentDecoded": 0.0021387171974249844,
+          "bookNodes": 1,
+          "percentBook": 0.0028266154107072193,
+          "preparedNodes": 0,
+          "percentPrepared": 0.0,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KTerm.$",
+              16
+            ],
+            [
+              "KTerm.tag",
+              16
+            ]
+          ]
+        },
+        {
+          "name": "api:j_layout_error",
+          "reads": 18633,
+          "nodes": 142,
+          "percentDecoded": 0.3036978420343478,
+          "bookNodes": 129,
+          "percentBook": 0.3646333879812313,
+          "preparedNodes": 13,
+          "percentPrepared": 0.1142455400298796,
+          "definitionBodyNodes": 1,
+          "distinctDefinitionNames": 1,
+          "topFields": [
+            [
+              "KTerm.$",
+              2944
+            ],
+            [
+              "KTerm.tag",
+              2055
+            ],
+            [
+              "KLambda.$",
+              1920
+            ],
+            [
+              "KDef.$",
+              1583
+            ],
+            [
+              "Con.$",
+              1228
+            ],
+            [
+              "Con.head",
+              1014
+            ],
+            [
+              "Con.tail",
+              1014
+            ],
+            [
+              "KTerm.id",
+              976
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_foreign_paths",
+          "reads": 32,
+          "nodes": 1,
+          "percentDecoded": 0.0021387171974249844,
+          "bookNodes": 1,
+          "percentBook": 0.0028266154107072193,
+          "preparedNodes": 0,
+          "percentPrepared": 0.0,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KTerm.$",
+              16
+            ],
+            [
+              "KTerm.tag",
+              16
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_modules",
+          "reads": 32,
+          "nodes": 1,
+          "percentDecoded": 0.0021387171974249844,
+          "bookNodes": 1,
+          "percentBook": 0.0028266154107072193,
+          "preparedNodes": 0,
+          "percentPrepared": 0.0,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KTerm.$",
+              16
+            ],
+            [
+              "KTerm.tag",
+              16
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_plan_library",
+          "reads": 42152,
+          "nodes": 585,
+          "percentDecoded": 1.251149560493616,
+          "bookNodes": 291,
+          "percentBook": 0.8225450845158008,
+          "preparedNodes": 294,
+          "percentPrepared": 2.5837068283680464,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KDef.$",
+              13233
+            ],
+            [
+              "KDef.name",
+              12856
+            ],
+            [
+              "KTerm.$",
+              3649
+            ],
+            [
+              "KTerm.tag",
+              2807
+            ],
+            [
+              "Con.$",
+              1327
+            ],
+            [
+              "Nil.$",
+              1202
+            ],
+            [
+              "Con.head",
+              960
+            ],
+            [
+              "Con.tail",
+              960
+            ]
+          ]
+        }
+      ],
+      "rawLimits": [
+        "Proxy instrumentation is diagnostic and can perturb execution substantially.",
+        "Every node was eagerly decoded; accessed-node counts estimate demand, not actual selective allocation.",
+        "Current driver TODO scanning may touch all nodes; separate its phase or repeat after prepared TODO facts.",
+        "One fresh request only; persistent inspector freezing is intentionally unsupported by diagnostic proxies."
+      ]
+    },
+    {
+      "case": "test-map-set-ops",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/test-map-set-ops.json",
+        "sha256": "baef2fae098156446e65080cc0c83930e39240580144874ad0f3112c7e2db606"
+      },
+      "rawDemand": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/test-map-set-ops.json.demand.json",
+        "sha256": "581ca16d69a9fe0e352b1d3b7932dfb513997b7129fbc99bb07d4bd8302e5a42"
+      },
+      "allAccess": {
+        "nodes": 45174,
+        "percentDecoded": 96.61441067647625,
+        "bookNodes": 34920,
+        "percentBook": 98.7054101418961,
+        "preparedNodes": 10254,
+        "percentPrepared": 90.1133667281835
+      },
+      "untouched": {
+        "nodes": 1583,
+        "percentDecoded": 3.3855893235237504,
+        "bookNodes": 458,
+        "percentBook": 1.2945898581039064,
+        "preparedNodes": 1125,
+        "percentPrepared": 9.886633271816503
+      },
+      "postCacheApiAccess": {
+        "nodes": 44878,
+        "percentDecoded": 95.98135038603846,
+        "bookNodes": 34920,
+        "percentBook": 98.7054101418961,
+        "preparedNodes": 9958,
+        "percentPrepared": 87.51208366288778
+      },
+      "cacheOnlyAccess": {
+        "nodes": 296,
+        "percentDecoded": 0.6330602904377954,
+        "bookNodes": 0,
+        "percentBook": 0.0,
+        "preparedNodes": 296,
+        "percentPrepared": 2.6012830652957204
+      },
+      "selectedBackendAccess": {
+        "nodes": 9605,
+        "percentDecoded": 20.542378681266975,
+        "bookNodes": 5860,
+        "percentBook": 16.563966306744305,
+        "preparedNodes": 3745,
+        "percentPrepared": 32.91150364706916
+      },
+      "exclusionDiagnostic": {
+        "excludedPhases": [
+          "api:book_context",
+          "api:check_program_diagnostic_world",
+          "cache-decode"
+        ],
+        "remainingAccess": {
+          "nodes": 11332,
+          "percentDecoded": 24.235943281219924,
+          "bookNodes": 7051,
+          "percentBook": 19.930465260896604,
+          "preparedNodes": 4281,
+          "percentPrepared": 37.62193514368574
+        },
+        "warning": "Excludes whole top-level phases including necessary source checks. It is not a semantics-preserving alternative or a prediction after removing Base scans."
+      },
+      "phases": [
+        {
+          "name": "cache-decode",
+          "reads": 6247,
+          "nodes": 597,
+          "percentDecoded": 1.2768141668627158,
+          "bookNodes": 1,
+          "percentBook": 0.0028266154107072193,
+          "preparedNodes": 596,
+          "percentPrepared": 5.237718604446788,
+          "definitionBodyNodes": 296,
+          "distinctDefinitionNames": 296,
+          "topFields": [
+            [
+              "KDef.arity",
+              888
+            ],
+            [
+              "KDef.templates",
+              888
+            ],
+            [
+              "Nil.$",
+              594
+            ],
+            [
+              "KDef.typ",
+              592
+            ],
+            [
+              "KDef.value",
+              592
+            ],
+            [
+              "Con.$",
+              296
+            ],
+            [
+              "Con.head",
+              296
+            ],
+            [
+              "KDef.$",
+              296
+            ]
+          ]
+        },
+        {
+          "name": "api:f_prefix_complete_ready_seed",
+          "reads": 1942,
+          "nodes": 486,
+          "percentDecoded": 1.0394165579485424,
+          "bookNodes": 485,
+          "percentBook": 1.3709084741930013,
+          "preparedNodes": 1,
+          "percentPrepared": 0.008788118463836892,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "Con.$",
+              968
+            ],
+            [
+              "Con.tail",
+              968
+            ],
+            [
+              "Nil.$",
+              2
+            ],
+            [
+              "FReadyPrefixState.names",
+              1
+            ],
+            [
+              "FReadyPrefixState.ctors",
+              1
+            ],
+            [
+              "FReadyPrefixState.count",
+              1
+            ],
+            [
+              "FReadyPrefixState.ready",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "api:f_prefix_complete_source",
+          "reads": 22195,
+          "nodes": 876,
+          "percentDecoded": 1.8735162649442865,
+          "bookNodes": 561,
+          "percentBook": 1.58573124540675,
+          "preparedNodes": 315,
+          "percentPrepared": 2.7682573161086212,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KIndexNode.$",
+              4536
+            ],
+            [
+              "KIndexNode.hash",
+              2265
+            ],
+            [
+              "KIndexNode.mask",
+              2265
+            ],
+            [
+              "KIndexNode.left",
+              2265
+            ],
+            [
+              "KIndexNode.right",
+              2265
+            ],
+            [
+              "Con.$",
+              1278
+            ],
+            [
+              "Con.head",
+              1278
+            ],
+            [
+              "Con.tail",
+              1278
+            ]
+          ]
+        },
+        {
+          "name": "api:f_prefix_graph_trace",
+          "reads": 3641,
+          "nodes": 619,
+          "percentDecoded": 1.3238659452060655,
+          "bookNodes": 485,
+          "percentBook": 1.3709084741930013,
+          "preparedNodes": 134,
+          "percentPrepared": 1.1776078741541436,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KIndexNode.$",
+              626
+            ],
+            [
+              "Con.$",
+              484
+            ],
+            [
+              "Con.head",
+              484
+            ],
+            [
+              "Con.tail",
+              484
+            ],
+            [
+              "KIndexNode.hash",
+              312
+            ],
+            [
+              "KIndexNode.mask",
+              312
+            ],
+            [
+              "KIndexNode.left",
+              312
+            ],
+            [
+              "KIndexNode.right",
+              312
+            ]
+          ]
+        },
+        {
+          "name": "api:check_program_diagnostic_world",
+          "reads": 595505,
+          "nodes": 36110,
+          "percentDecoded": 77.22907799901618,
+          "bookNodes": 34498,
+          "percentBook": 97.51257843857765,
+          "preparedNodes": 1612,
+          "percentPrepared": 14.16644696370507,
+          "definitionBodyNodes": 505,
+          "distinctDefinitionNames": 500,
+          "topFields": [
+            [
+              "KDef.$",
+              107349
+            ],
+            [
+              "KTerm.$",
+              56528
+            ],
+            [
+              "Con.$",
+              56252
+            ],
+            [
+              "Con.tail",
+              55528
+            ],
+            [
+              "Con.head",
+              55156
+            ],
+            [
+              "Nil.$",
+              53089
+            ],
+            [
+              "KDef.name",
+              45474
+            ],
+            [
+              "KDef.kind",
+              30797
+            ]
+          ]
+        },
+        {
+          "name": "api:driver_has_main",
+          "reads": 1852,
+          "nodes": 463,
+          "percentDecoded": 0.9902260624077678,
+          "bookNodes": 167,
+          "percentBook": 0.4720447735881056,
+          "preparedNodes": 296,
+          "percentPrepared": 2.6012830652957204,
+          "definitionBodyNodes": 0,
+          "distinctDefinitionNames": 0,
+          "topFields": [
+            [
+              "KDef.$",
+              926
+            ],
+            [
+              "KDef.kind",
+              463
+            ],
+            [
+              "KDef.name",
+              463
+            ]
+          ]
+        },
+        {
+          "name": "api:driver_emit_owned",
+          "reads": 104827,
+          "nodes": 934,
+          "percentDecoded": 1.9975618623949356,
+          "bookNodes": 342,
+          "percentBook": 0.966702470461869,
+          "preparedNodes": 592,
+          "percentPrepared": 5.202566130591441,
+          "definitionBodyNodes": 463,
+          "distinctDefinitionNames": 463,
+          "topFields": [
+            [
+              "KDef.$",
+              38370
+            ],
+            [
+              "KDef.ctors",
+              20835
+            ],
+            [
+              "Nil.$",
+              20835
+            ],
+            [
+              "KDef.name",
+              8327
+            ],
+            [
+              "KDef.native",
+              6482
+            ],
+            [
+              "KDef.kind",
+              2263
+            ],
+            [
+              "Con.$",
+              1800
+            ],
+            [
+              "Con.head",
+              1800
+            ]
+          ]
+        },
+        {
+          "name": "api:book_context",
+          "reads": 137558,
+          "nodes": 28961,
+          "percentDecoded": 61.93938875462498,
+          "bookNodes": 20686,
+          "percentBook": 58.47136638588954,
+          "preparedNodes": 8275,
+          "percentPrepared": 72.72168028825028,
+          "definitionBodyNodes": 503,
+          "distinctDefinitionNames": 499,
+          "topFields": [
+            [
+              "KTerm.$",
+              29522
+            ],
+            [
+              "Nil.$",
+              16880
+            ],
+            [
+              "Con.$",
+              15530
+            ],
+            [
+              "Con.head",
+              15530
+            ],
+            [
+              "Con.tail",
+              15530
+            ],
+            [
+              "KTerm.kids",
+              14761
+            ],
+            [
+              "KTerm.id",
+              14761
+            ],
+            [
+              "KLambda.$",
+              6464
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_roots",
+          "reads": 36152,
+          "nodes": 853,
+          "percentDecoded": 1.8243257694035118,
+          "bookNodes": 261,
+          "percentBook": 0.7377466221945842,
+          "preparedNodes": 592,
+          "percentPrepared": 5.202566130591441,
+          "definitionBodyNodes": 463,
+          "distinctDefinitionNames": 463,
+          "topFields": [
+            [
+              "KDef.$",
+              16224
+            ],
+            [
+              "KDef.name",
+              13636
+            ],
+            [
+              "KLambda.$",
+              1832
+            ],
+            [
+              "KTerm.$",
+              932
+            ],
+            [
+              "KTerm.tag",
+              932
+            ],
+            [
+              "KDef.value",
+              926
+            ],
+            [
+              "KDef.kind",
+              527
+            ],
+            [
+              "KDef.native",
+              521
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_stops",
+          "reads": 20810,
+          "nodes": 1571,
+          "percentDecoded": 3.3599247171546507,
+          "bookNodes": 979,
+          "percentBook": 2.7672564870823675,
+          "preparedNodes": 592,
+          "percentPrepared": 5.202566130591441,
+          "definitionBodyNodes": 463,
+          "distinctDefinitionNames": 463,
+          "topFields": [
+            [
+              "KDef.$",
+              4575
+            ],
+            [
+              "KTerm.$",
+              3527
+            ],
+            [
+              "KTerm.tag",
+              2793
+            ],
+            [
+              "KLambda.$",
+              2180
+            ],
+            [
+              "KDef.kind",
+              921
+            ],
+            [
+              "KDef.name",
+              919
+            ],
+            [
+              "KDef.value",
+              876
+            ],
+            [
+              "KDef.templates",
+              834
+            ]
+          ]
+        },
+        {
+          "name": "api:reach_book",
+          "reads": 92336,
+          "nodes": 9454,
+          "percentDecoded": 20.219432384455803,
+          "bookNodes": 5839,
+          "percentBook": 16.504607383119453,
+          "preparedNodes": 3615,
+          "percentPrepared": 31.769048246770367,
+          "definitionBodyNodes": 78,
+          "distinctDefinitionNames": 78,
+          "topFields": [
+            [
+              "KTerm.$",
+              28674
+            ],
+            [
+              "KTerm.tag",
+              21620
+            ],
+            [
+              "Nil.$",
+              6221
+            ],
+            [
+              "Con.$",
+              6030
+            ],
+            [
+              "Con.head",
+              6030
+            ],
+            [
+              "Con.tail",
+              6030
+            ],
+            [
+              "KTerm.kids",
+              5405
+            ],
+            [
+              "KLambda.$",
+              5350
+            ]
+          ]
+        },
+        {
+          "name": "api:annotate_selected",
+          "reads": 524971,
+          "nodes": 8928,
+          "percentDecoded": 19.094467138610263,
+          "bookNodes": 5532,
+          "percentBook": 15.636836452032336,
+          "preparedNodes": 3396,
+          "percentPrepared": 29.844450303190087,
+          "definitionBodyNodes": 78,
+          "distinctDefinitionNames": 78,
+          "topFields": [
+            [
+              "KTerm.$",
+              131437
+            ],
+            [
+              "KTerm.tag",
+              77154
+            ],
+            [
+              "Con.$",
+              42233
+            ],
+            [
+              "Con.head",
+              37313
+            ],
+            [
+              "Con.tail",
+              37313
+            ],
+            [
+              "KTerm.id",
+              26962
+            ],
+            [
+              "KLambda.$",
+              25738
+            ],
+            [
+              "Nil.$",
+              25294
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_plan_selected",
+          "reads": 756323,
+          "nodes": 4026,
+          "percentDecoded": 8.610475436832987,
+          "bookNodes": 3598,
+          "percentBook": 10.170162247724575,
+          "preparedNodes": 428,
+          "percentPrepared": 3.76131470252219,
+          "definitionBodyNodes": 16,
+          "distinctDefinitionNames": 16,
+          "topFields": [
+            [
+              "KTerm.$",
+              135530
+            ],
+            [
+              "KTerm.tag",
+              100534
+            ],
+            [
+              "KDef.$",
+              90230
+            ],
+            [
+              "KDef.name",
+              63281
+            ],
+            [
+              "Con.$",
+              53169
+            ],
+            [
+              "Nil.$",
+              43692
+            ],
+            [
+              "KTerm.id",
+              42755
+            ],
+            [
+              "Con.head",
+              41835
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_foreign_error",
+          "reads": 58,
+          "nodes": 3,
+          "percentDecoded": 0.006416151592274953,
+          "bookNodes": 1,
+          "percentBook": 0.0028266154107072193,
+          "preparedNodes": 2,
+          "percentPrepared": 0.017576236927673784,
+          "definitionBodyNodes": 1,
+          "distinctDefinitionNames": 1,
+          "topFields": [
+            [
+              "KTerm.$",
+              26
+            ],
+            [
+              "KTerm.tag",
+              26
+            ],
+            [
+              "KLambda.$",
+              4
+            ],
+            [
+              "KDef.$",
+              1
+            ],
+            [
+              "KDef.value",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "api:j_layout_error",
+          "reads": 318287,
+          "nodes": 3160,
+          "percentDecoded": 6.758346343862951,
+          "bookNodes": 3084,
+          "percentBook": 8.717281926621064,
+          "preparedNodes": 76,
+          "percentPrepared": 0.6678970032516038,
+          "definitionBodyNodes": 1,
+          "distinctDefinitionNames": 1,
+          "topFields": [
+            [
+              "KTerm.$",
+              56325
+            ],
+            [
+              "KTerm.tag",
+              40576
+            ],
+            [
+              "Con.$",
+              24878
+            ],
+            [
+              "KLambda.$",
+              22932
+            ],
+            [
+              "KTerm.id",
+              21362
+            ],
+            [
+              "Con.head",
+              19024
+            ],
+            [
+              "Con.tail",
+              19024
+            ],
+            [
+              "Nil.$",
+              17067
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_foreign_paths",
+          "reads": 58,
+          "nodes": 3,
+          "percentDecoded": 0.006416151592274953,
+          "bookNodes": 1,
+          "percentBook": 0.0028266154107072193,
+          "preparedNodes": 2,
+          "percentPrepared": 0.017576236927673784,
+          "definitionBodyNodes": 1,
+          "distinctDefinitionNames": 1,
+          "topFields": [
+            [
+              "KTerm.$",
+              26
+            ],
+            [
+              "KTerm.tag",
+              26
+            ],
+            [
+              "KLambda.$",
+              4
+            ],
+            [
+              "KDef.$",
+              1
+            ],
+            [
+              "KDef.value",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_modules",
+          "reads": 58,
+          "nodes": 3,
+          "percentDecoded": 0.006416151592274953,
+          "bookNodes": 1,
+          "percentBook": 0.0028266154107072193,
+          "preparedNodes": 2,
+          "percentPrepared": 0.017576236927673784,
+          "definitionBodyNodes": 1,
+          "distinctDefinitionNames": 1,
+          "topFields": [
+            [
+              "KTerm.$",
+              26
+            ],
+            [
+              "KTerm.tag",
+              26
+            ],
+            [
+              "KLambda.$",
+              4
+            ],
+            [
+              "KDef.$",
+              1
+            ],
+            [
+              "KDef.value",
+              1
+            ]
+          ]
+        },
+        {
+          "name": "api:jd_plan_library",
+          "reads": 239873,
+          "nodes": 678,
+          "percentDecoded": 1.4500502598541394,
+          "bookNodes": 442,
+          "percentBook": 1.2493640115325908,
+          "preparedNodes": 236,
+          "percentPrepared": 2.0739959574655065,
+          "definitionBodyNodes": 1,
+          "distinctDefinitionNames": 1,
+          "topFields": [
+            [
+              "KTerm.$",
+              54507
+            ],
+            [
+              "KTerm.tag",
+              39147
+            ],
+            [
+              "Con.$",
+              18926
+            ],
+            [
+              "KTerm.id",
+              14979
+            ],
+            [
+              "Con.head",
+              13906
+            ],
+            [
+              "Con.tail",
+              13906
+            ],
+            [
+              "KDef.$",
+              13044
+            ],
+            [
+              "Nil.$",
+              12828
+            ]
+          ]
+        }
+      ],
+      "rawLimits": [
+        "Proxy instrumentation is diagnostic and can perturb execution substantially.",
+        "Every node was eagerly decoded; accessed-node counts estimate demand, not actual selective allocation.",
+        "Current driver TODO scanning may touch all nodes; separate its phase or repeat after prepared TODO facts.",
+        "One fresh request only; persistent inspector freezing is intentionally unsupported by diagnostic proxies."
+      ]
+    }
+  ],
+  "sourceEvidence": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/driver/api.bend",
+      "sha256": "5cae856aa306f52042cbead5bf72136da317649a0a09b7d73f8da1be3530d9d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/check/prefix-state.bend",
+      "sha256": "ed9b4bbbc42dcd37788be01fda07451a8ac21cbd47eac62ae936b7d8d59f0fbb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/core/index.bend",
+      "sha256": "51ce95941f955ed1c65f01ee88af31e35180c94d30ada97f359c6aa71dd47edb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/core/normalize.bend",
+      "sha256": "4845ff63f3c228abc9a432410ddc8b7e20bfce27e54d6d49412b06608f7ce702"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/report.json",
+      "sha256": "07439c935831d39c009110579381094bb5cc7ce302bb49600f8f508db4b779fb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/plan.json",
+      "sha256": "677681abd6ca5264f3fb63c789cb52f197134f3c291762f9fc00f287cbf4929b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/build/typed/cache/base-e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003-c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661-c04628cbf4595eb7fcc0fafe90e6e555f95b4b4691a19005149f3206f3d3f7db-frame3.json",
+      "sha256": "b1714d24a76073d8e09481443f20212393b68e2bd48e164381c72752ea4c1c2b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/numeric-recurrence.json",
+      "sha256": "443cb1455e51cfbe16e48b69ad5fa79f5914b154a02536300f998b372212523e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/numeric-recurrence.json.mjs",
+      "sha256": "2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/final-last01/b2-program-equality/modules/numeric-recurrence.mjs",
+      "sha256": "2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/numeric-recurrence.json.demand.json",
+      "sha256": "9067ca896c319c23b1d3fcbc2c221bff34c6396e534c3b64420dc453e95b0c2e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/lexer.json",
+      "sha256": "ecded8cfd0a83c7667b6aceb44d584c976795e2cc7ef316a888cf22b5d013427"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/lexer.json.mjs",
+      "sha256": "dcb0125d93015591a539320dd827b7d751d6985e69c44e51f7beefa43121e4a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/final-last01/b2-program-equality/modules/lexer.mjs",
+      "sha256": "dcb0125d93015591a539320dd827b7d751d6985e69c44e51f7beefa43121e4a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/lexer.json.demand.json",
+      "sha256": "3dc2f15a772994d77d90ad7df0dcc19e7814467cb8a9b240e1f52b0f327f44c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/test-map-set-ops.json",
+      "sha256": "baef2fae098156446e65080cc0c83930e39240580144874ad0f3112c7e2db606"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/test-map-set-ops.json.mjs",
+      "sha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/final-last01/b2-program-equality/modules/test-map-set-ops.mjs",
+      "sha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/execution/test-map-set-ops.json.demand.json",
+      "sha256": "581ca16d69a9fe0e352b1d3b7932dfb513997b7129fbc99bb07d4bd8302e5a42"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/demand/factory.py",
+      "sha256": "46bd3a3a0568a2a753afcbe0e189b8c519c18704311140750bacd54e8fa00f28"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/demand/worker.mjs",
+      "sha256": "f9cbb17af3247f7c0cbdef0ce2f81a4253b8e002998ff2ce8cf487799de8d258"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/cache-artifact/demand-state09-helper.mjs",
+      "sha256": "5880cae7c7049991b7cda749b09663fa907e5d83302b75511350ef377dad83dc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/report.json",
+      "sha256": "cacdf04a27f017d53fd09474f0fa924424d358299f5133dcf7ab6e6c1a3c2062"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/plan.json",
+      "sha256": "67b6020dd9eb5e458abea579eaeb9931f6d6a52d4b6be8df42ecd52e7877b96c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline.result.json",
+      "sha256": "6d5cae83c1208627131e5409b8ce9f44b29243a49c682b1c4531476b276eea7b"
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/host-variants.py",
+      "sha256": "cba4530733948264f174b62544b2e6eeecdf294e5aa1167a130f7530c8db2ca0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/host-variant-worker.mjs",
+      "sha256": "a3e1676344402001f57b3f91387555351f78d7268503750b3ceb801243a4f687"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/bindings.json",
+      "sha256": "3b7ed257a2290b25de386e8e1b9c71b820a1114f7aa1e741b82048af75613e78"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/attempt.json",
+      "sha256": "82379c94f3eec0bea44afb8a3c2ae8323de731dfa34c85da775d199ce4fb87cf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/api.mjs.bootstrap.json",
+      "sha256": "24d802c4549a7b6a5cb0a7b7ea313cd5291aa155e4ab40fec0ca6052a73d0efc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/build/typed/snapshots/06e828e5ccef453057af912cfd1701c9a8896b28ac9974991b34006f714d70b3/compiler.bend",
+      "sha256": "0ebe491e727721857ce981ff5a2167a52d1e040f5674915a3349fea33bed8ed5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/equality/api.mjs",
+      "sha256": "4a208bffcf47b5d19f8ff18be1fc01b2faf988b37d38e7f5db9e6bd42d79905f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/api.mjs",
+      "sha256": "04f2741a397bc8bbbfcccd86615439440360d1bf1877d92daa48e3018c527266"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime.mjs",
+      "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/exports09/admission.json",
+      "sha256": "cdff1f728467d09d88bf0dcc8407549a331078041ffc987c9d86b0347c4bcbbc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/exports09-reference/roots-reference.json",
+      "sha256": "dddebeff11a42ccea76cb72f9d3b19b4dd63a4bdf56f53b516fd31ca8e67d870"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/exports09/typed-driver.mjs",
+      "sha256": "345248c51b0337402d8d0bccf7bea9d8cd72b081f4e6f7e0a313031e3df958a8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/tools/typed-driver.mjs",
+      "sha256": "345248c51b0337402d8d0bccf7bea9d8cd72b081f4e6f7e0a313031e3df958a8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-own-host02-plan01/full77.json",
+      "sha256": "cabd21be8e7ab930221e72edab9fc39e72ec76b17a1b8b38889a7716b1b46077"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/full/report.json",
+      "sha256": "287ca58f72272c98e8ceec057b886c7f4d5cbb3927a2231225837c45affdaefb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/full-roots.json",
+      "sha256": "8c369ba78e18d63dbb4e8986137f1607c5a60be996c498dd924e14afece48288"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/tools/emit-split.mjs",
+      "sha256": "9f273524677b97deec908d4787204bda88a1c948777ff9c8dd1d44169f9ffa8a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/tools/expose-stages.mjs",
+      "sha256": "a669c885f9cbce38b945e0afa2f78e5faf1a02b622f9799517f3fde9dc3b2c83"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase54/bootstrap/adapter.mjs",
+      "sha256": "a2f135e4eb2deff002eaf898a7dd0856bbbc980360837e22cb4f19c2dee9462b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/tools/development/workflow.mjs",
+      "sha256": "54d4e745908cfd6119e8c548927c78f8380a4b0c5704c9d65b5b24a12b8a36a1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/back/js/direct/core.bend",
+      "sha256": "e452e3348e441b19f3f4fbfda41db8c6aa39f4f8696654cb0d6ce0229a559258"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/tiny/report.json",
+      "sha256": "0860ad403866b77b944d393c86252e953056b0426fa8ca7aae57916295dc7d46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/back/js/direct/reach.bend",
+      "sha256": "2a36a775a13169845f230555fe4d1373174d7e87e31600457c1ca574fa3ca538"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/full/api-stages.mjs",
+      "sha256": "040de9e778956acb8dfcc0b606e11b3d22d61013c963fb72120f35caa71502da"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/full/api-stages.json",
+      "sha256": "306df4f1fb19d220923216e8face5f377b78b547e8865f248c7d09a711b7c5c8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/tools/base-cache-graph.mjs",
+      "sha256": "ae6c90f4c53de0a0ce63ee6c2be7cfa5e148893490dd002665d24a85149746c6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/direct.mjs",
+      "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/full/progress.jsonl",
+      "sha256": "ecd4b9d21a75b1b9738cce146c1f7534a6dc0818809bd8d3991a42792d551b2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/full/compiler.mjs",
+      "sha256": "e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/tools/assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/tools/node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/tools/native-build.mjs",
+      "sha256": "a76f2c027459f7ffdb9fc16dc450ee33e0f39c74568df4c74d03309e662c9117"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/compiler.json",
+      "sha256": "f93bc23c8877c21e114a9cd2c1647e712ea8b0aa9a8b5e97b0677612d159b06b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/base.mjs",
+      "sha256": "1cf66725fbe281a07b502c903cf44fa69abaeca961dd61ed63b3ea1ab97372c0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/build.mjs",
+      "sha256": "4be85d590521e9453f0e7eb46f7b7d9d35bfd803510089c23db192c09d2b2a12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/core.mjs",
+      "sha256": "d1799585d02b0f8b3354e4680608672893097a64695bbfa42441dffc6582e246"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effects.mjs",
+      "sha256": "5f4951e6d34157769d59267d5803454bad9567859231fb06aad9edc292ca409e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/args.js",
+      "sha256": "ed1a7e7b73ae7fe58ac6d428d2762b66f223f4c70a165570fc5d68dc874ddc0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/audio_close.js",
+      "sha256": "c700e2fc0eda1f9a67afd317184999d9283912817aaec00637af41b135b84c62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/audio_open.js",
+      "sha256": "6f531ac205dab98dd366111cdcc5eed69fb9058350ca715f3419065cd979b088"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/audio_write.js",
+      "sha256": "377d3e938ce3cc9f083c662b69d34e3a0cf391c92ddaf3fca8a4b28c78662da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/chan.js",
+      "sha256": "c228f8c6ac2ef2fc7b09a016f43e894b524eb49f2ac5d0ebd629cef76d4d1248"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/file_close.js",
+      "sha256": "2b83f900113776ab875fa3afd29f31000a191fe48645abe78b1d7b34cb12a7fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/file_open.js",
+      "sha256": "dd549f5f05eb896aef9a3a02ffecf2ee902e653f5463be72781edab1cd1180ae"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/file_read.js",
+      "sha256": "7aa8a95a0b02f3c8db1167da5a936958a90c64e7df3e327ba5c66766d5e57da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/file_size.js",
+      "sha256": "41ec19c5777788144cc089bf78451d0918bdbf0c4afab9e35495cdd24a279051"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/file_write.js",
+      "sha256": "4fe307538beb1047add7646f52df6e382a1da5d8999d8fe96969bd5055bc9b59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/get_env.js",
+      "sha256": "2fab2162d5ff9842d1b84bfdc56466a606eeb0b81b04dd29f091652ff715ded6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/listener_close.js",
+      "sha256": "1b87fb43c373b1a8a54b5afaf0cf8e3ec2f8d39bdfde131e49527caa19ac0cb8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/manifest.json",
+      "sha256": "0c509cc90e56d95fe8fdb54f50dd4bd7f68a2d910acf04a93689364b126aad3c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/now.js",
+      "sha256": "b2c45fdcfeba0f155be5631b25708341c09d3c80929d8467afd5977473b087bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/print_err.js",
+      "sha256": "a7a00612edfe98af1a351e8f7b912af4ee33f4bb888c36f119f7712d72a9394e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/print.js",
+      "sha256": "814ceba4efbaa291b7b6a9ff29aa20e3a23c06eb4fa165c69ee0bd22878adaa9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/process_run.js",
+      "sha256": "6ebe3b9875ef62ee189209096fb422508e79d34e58913457aefe52a052631e42"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/random_u32.js",
+      "sha256": "c9a588139fb4afddc69b1b498374a014a12c639dbb88a9bb39d3b0ad7c671260"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/README.md",
+      "sha256": "9f4de68348084afbe787f3b4b70e290ee7dd434eff21a58dd0edc25f385154b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/sleep.js",
+      "sha256": "324704349471cacfb5ba94c1aed2f316d2e5fdbea486478ab1e2e5a278c7ad9d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/socket_close.js",
+      "sha256": "dc4bf1fa95692c91528d4eb855506dde8dfc9164a90de2c43cd1bd6916e0c380"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/spawn.js",
+      "sha256": "8a14c7a7a5ff80b049f0659f9e58d43bf0f3b1a6724d35a199c3f864b3242e4b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/tcp_accept.js",
+      "sha256": "3a9eb2359ec60af942fc0aa0390e1d5213a6c8b050bc832b6c8709f68e57b6ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/tcp_connect.js",
+      "sha256": "a20819822e4ce18c8878b94e6ee70466833415eb9ebc2b6a39b65cabfcc553c9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/tcp_listen.js",
+      "sha256": "0da4cfafaa24ba5e17d9fda5e6a5b207b2b36031b2c888944f67b85842d76399"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/tcp_poll.js",
+      "sha256": "b0654046a2bfd27a89a4788eec0d4e61cd24dea4efb992e8924cb17ac4238283"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/tcp_recv.js",
+      "sha256": "642735a0dd844d4ea1c83d4b5d100fec334d6032ba3115f3a41d0bbfe2d93dfd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/tcp_send.js",
+      "sha256": "b5e56fa57d7cd48d7d0ca42d793322971dfc96b77b83b0eef4a528c26e7c326b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/thread_count.js",
+      "sha256": "f4ef6d8ded95fe3114e50b7d2b6eb873e693419b85150f681b4a54a5043c2de9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/udp_bind.js",
+      "sha256": "e3afae5bf246184e76703efbcf41cb35bf5289e746cc40dc0300eef98753dfb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/udp_poll.js",
+      "sha256": "86a7c4eee06ac487f476589d3137e39c152d6ab87b9208adf18763a1ceb486bd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/udp_recv_from.js",
+      "sha256": "d2ca779e878b5f3f85db5fb56148de955f4d094b312299a33f27b70b5b330b1b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/udp_send_to.js",
+      "sha256": "0eb95a9c026918435f1eabc6d6d04044731d10f56950d06582086250240911c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/window_close.js",
+      "sha256": "be4ef11e9ac57c59aa4aee847f15ece18034ca9fe1c4a68c6e0b0d7bbd7c3590"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/window_frame.js",
+      "sha256": "78baa53aa46e02165c0c94da68d1f6362386ebcfb97dbb36fffb82792a03d34f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/window_grab.js",
+      "sha256": "55cfc1925114f2d1f177137fad24d6252fe28707d26a1aae18a98ad97060a668"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/window_open.js",
+      "sha256": "cd716864b8dfb27ca955c8aa58643c7d693ce76eb56472bd8255ff7ac0656e8d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/window_set_title.js",
+      "sha256": "eee0bf26b7f381f8800364e22e8c735e47dd6db3f58e23ff3dda8478a8411513"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/effs/write.js",
+      "sha256": "e3495066a5d8c53fe1c46cfd2bb32577e3bd7dcae9797808801599073504dacb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/foreign.mjs",
+      "sha256": "024d917ed34e44d44e889f19576ea05c7db17529dc81e683e8653f8a1ea9ea15"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/readback.mjs",
+      "sha256": "de7b7930f6e4167b7e44aaef6621b31d53b6d10e23f6e1a93366a214118dee69"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/README.md",
+      "sha256": "860b9d43ac1982b2b66b332b50f438a77d4ee95880e79144f89949dc58004afa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/test-apply.mjs",
+      "sha256": "ca8e877deb0db259f9c22bb5dc17bb774a413c1018796d08f63800ca834c82c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/test-phase8.mjs",
+      "sha256": "e6992665eeb60357ae27351b9bd5dc76c07b83619090e0bfcf2f9d1b45b1b0a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/js/test.mjs",
+      "sha256": "abbb1a4a34b8c0a9764966dd47e56bbeddf06d5e19bc626eb91fa3f94a80a440"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/args.c",
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/audio_close.c",
+      "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/audio_open.c",
+      "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/audio_write.c",
+      "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/audio.c",
+      "sha256": "049ac826d50def604c18cd4211d67573c4e27f4bc2600ce6c22e0dbe60c3783f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/chan_close.c",
+      "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/chan_new.c",
+      "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/chan_recv.c",
+      "sha256": "7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/chan_send.c",
+      "sha256": "f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/chan.c",
+      "sha256": "0c29532170ec3e400c9419b1e94474b769f7b8df262a7010b3b0f64f592683ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/file_close.c",
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/file_open.c",
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/file_read_at.c",
+      "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/file_read_bytes.c",
+      "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/file_read.c",
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/file_size.c",
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/file_write_bytes.c",
+      "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/file_write.c",
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/get_env.c",
+      "sha256": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/listener_close.c",
+      "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/now.c",
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/print_err.c",
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/print.c",
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/process_run.c",
+      "sha256": "c12e5a182de9fdc5ef83d65f9f7c2c5746865d1049e5f3700438f8ac317b17c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/random_u32.c",
+      "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/sleep.c",
+      "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/socket_close.c",
+      "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/spawn.c",
+      "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/tcp_accept.c",
+      "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/tcp_connect.c",
+      "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/tcp_listen.c",
+      "sha256": "6212a0bc400e960e8b486f85a091cd4964f92b0546475481271c0f369a234d8c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/tcp_poll.c",
+      "sha256": "feb6fa3f7c04b3143c71593e2c17088394d11474bd87ca791fb71fbf9f9a8f82"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/tcp_recv.c",
+      "sha256": "de6cfd9490f867c26056d1897e8d37ff657189788943f36151749101c7c9f0f6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/tcp_send.c",
+      "sha256": "503c8cdc1f885420057c46e6d9ed4ede6953805a13f8894e069f1b944f630c81"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/thread_count.c",
+      "sha256": "39515c611a2b42687fb670179f3d9032af1878727356754959061125d40fa7e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/udp_bind.c",
+      "sha256": "b30150927ffde3162d62012b67d43d95c79754f9539279628d2ad5bc9c040408"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/udp_poll.c",
+      "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/udp_recv_from.c",
+      "sha256": "140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/udp_send_to.c",
+      "sha256": "8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/window_close.c",
+      "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/window_frame.c",
+      "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/window_open.c",
+      "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/window_set_title.c",
+      "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/window.c",
+      "sha256": "7bda00a55917f11ff1fa532b1406ec5c1a8a7eef6f6ba2a933dd958256e0a409"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/effs/write.c",
+      "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/ORIGIN.md",
+      "sha256": "cc7d2b0e50253e3ccc3f88ed5c92134b3faba5a8c6eb86ae7aa9c7b5e7dd7073"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/runtime/native/runtime.c",
+      "sha256": "cbfb8933d007c10a0173f280888d6c94d5d77543548b25808596cd2d21f764f0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/latency-method01/setup.mjs",
+      "sha256": "fcfc8e39c75acdd75060aa226bd7e34022eafa1a4e989a946d41cb1a181a49f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/tools/development/process.mjs",
+      "sha256": "fe6afbc8964f695e3b7bfe8c636b6da6295fd7265fcdebbf58839f3eafce4989"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/tools/conformance/inventory.mjs",
+      "sha256": "91a1bd7be11e6e66a68c94251814286c9d0173d94a38b445240123bc558bc308"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+      "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/final-last01/b2-program-equality/image/project/src/runtime/js/direct.mjs",
+      "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+      "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+      "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/tools/typed-driver.mjs",
+      "sha256": "1c9f21e3c9f9c6e842d0a7230033131836645f17e4fe9b4a755c1d6d8dc64a8e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/tools/assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/tools/node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/tools/native-build.mjs",
+      "sha256": "a76f2c027459f7ffdb9fc16dc450ee33e0f39c74568df4c74d03309e662c9117"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/tools/base-cache-graph.mjs",
+      "sha256": "5880cae7c7049991b7cda749b09663fa907e5d83302b75511350ef377dad83dc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/compiler.json",
+      "sha256": "f93bc23c8877c21e114a9cd2c1647e712ea8b0aa9a8b5e97b0677612d159b06b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime.mjs",
+      "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/base.mjs",
+      "sha256": "1cf66725fbe281a07b502c903cf44fa69abaeca961dd61ed63b3ea1ab97372c0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/build.mjs",
+      "sha256": "4be85d590521e9453f0e7eb46f7b7d9d35bfd803510089c23db192c09d2b2a12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/core.mjs",
+      "sha256": "d1799585d02b0f8b3354e4680608672893097a64695bbfa42441dffc6582e246"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/direct.mjs",
+      "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effects.mjs",
+      "sha256": "5f4951e6d34157769d59267d5803454bad9567859231fb06aad9edc292ca409e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/args.js",
+      "sha256": "ed1a7e7b73ae7fe58ac6d428d2762b66f223f4c70a165570fc5d68dc874ddc0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/audio_close.js",
+      "sha256": "c700e2fc0eda1f9a67afd317184999d9283912817aaec00637af41b135b84c62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/audio_open.js",
+      "sha256": "6f531ac205dab98dd366111cdcc5eed69fb9058350ca715f3419065cd979b088"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/audio_write.js",
+      "sha256": "377d3e938ce3cc9f083c662b69d34e3a0cf391c92ddaf3fca8a4b28c78662da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/chan.js",
+      "sha256": "c228f8c6ac2ef2fc7b09a016f43e894b524eb49f2ac5d0ebd629cef76d4d1248"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/file_close.js",
+      "sha256": "2b83f900113776ab875fa3afd29f31000a191fe48645abe78b1d7b34cb12a7fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/file_open.js",
+      "sha256": "dd549f5f05eb896aef9a3a02ffecf2ee902e653f5463be72781edab1cd1180ae"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/file_read.js",
+      "sha256": "7aa8a95a0b02f3c8db1167da5a936958a90c64e7df3e327ba5c66766d5e57da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/file_size.js",
+      "sha256": "41ec19c5777788144cc089bf78451d0918bdbf0c4afab9e35495cdd24a279051"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/file_write.js",
+      "sha256": "4fe307538beb1047add7646f52df6e382a1da5d8999d8fe96969bd5055bc9b59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/get_env.js",
+      "sha256": "2fab2162d5ff9842d1b84bfdc56466a606eeb0b81b04dd29f091652ff715ded6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/listener_close.js",
+      "sha256": "1b87fb43c373b1a8a54b5afaf0cf8e3ec2f8d39bdfde131e49527caa19ac0cb8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/manifest.json",
+      "sha256": "0c509cc90e56d95fe8fdb54f50dd4bd7f68a2d910acf04a93689364b126aad3c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/now.js",
+      "sha256": "b2c45fdcfeba0f155be5631b25708341c09d3c80929d8467afd5977473b087bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/print_err.js",
+      "sha256": "a7a00612edfe98af1a351e8f7b912af4ee33f4bb888c36f119f7712d72a9394e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/print.js",
+      "sha256": "814ceba4efbaa291b7b6a9ff29aa20e3a23c06eb4fa165c69ee0bd22878adaa9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/process_run.js",
+      "sha256": "6ebe3b9875ef62ee189209096fb422508e79d34e58913457aefe52a052631e42"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/random_u32.js",
+      "sha256": "c9a588139fb4afddc69b1b498374a014a12c639dbb88a9bb39d3b0ad7c671260"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/README.md",
+      "sha256": "9f4de68348084afbe787f3b4b70e290ee7dd434eff21a58dd0edc25f385154b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/sleep.js",
+      "sha256": "324704349471cacfb5ba94c1aed2f316d2e5fdbea486478ab1e2e5a278c7ad9d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/socket_close.js",
+      "sha256": "dc4bf1fa95692c91528d4eb855506dde8dfc9164a90de2c43cd1bd6916e0c380"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/spawn.js",
+      "sha256": "8a14c7a7a5ff80b049f0659f9e58d43bf0f3b1a6724d35a199c3f864b3242e4b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/tcp_accept.js",
+      "sha256": "3a9eb2359ec60af942fc0aa0390e1d5213a6c8b050bc832b6c8709f68e57b6ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/tcp_connect.js",
+      "sha256": "a20819822e4ce18c8878b94e6ee70466833415eb9ebc2b6a39b65cabfcc553c9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/tcp_listen.js",
+      "sha256": "0da4cfafaa24ba5e17d9fda5e6a5b207b2b36031b2c888944f67b85842d76399"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/tcp_poll.js",
+      "sha256": "b0654046a2bfd27a89a4788eec0d4e61cd24dea4efb992e8924cb17ac4238283"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/tcp_recv.js",
+      "sha256": "642735a0dd844d4ea1c83d4b5d100fec334d6032ba3115f3a41d0bbfe2d93dfd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/tcp_send.js",
+      "sha256": "b5e56fa57d7cd48d7d0ca42d793322971dfc96b77b83b0eef4a528c26e7c326b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/thread_count.js",
+      "sha256": "f4ef6d8ded95fe3114e50b7d2b6eb873e693419b85150f681b4a54a5043c2de9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/udp_bind.js",
+      "sha256": "e3afae5bf246184e76703efbcf41cb35bf5289e746cc40dc0300eef98753dfb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/udp_poll.js",
+      "sha256": "86a7c4eee06ac487f476589d3137e39c152d6ab87b9208adf18763a1ceb486bd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/udp_recv_from.js",
+      "sha256": "d2ca779e878b5f3f85db5fb56148de955f4d094b312299a33f27b70b5b330b1b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/udp_send_to.js",
+      "sha256": "0eb95a9c026918435f1eabc6d6d04044731d10f56950d06582086250240911c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/window_close.js",
+      "sha256": "be4ef11e9ac57c59aa4aee847f15ece18034ca9fe1c4a68c6e0b0d7bbd7c3590"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/window_frame.js",
+      "sha256": "78baa53aa46e02165c0c94da68d1f6362386ebcfb97dbb36fffb82792a03d34f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/window_grab.js",
+      "sha256": "55cfc1925114f2d1f177137fad24d6252fe28707d26a1aae18a98ad97060a668"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/window_open.js",
+      "sha256": "cd716864b8dfb27ca955c8aa58643c7d693ce76eb56472bd8255ff7ac0656e8d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/window_set_title.js",
+      "sha256": "eee0bf26b7f381f8800364e22e8c735e47dd6db3f58e23ff3dda8478a8411513"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/effs/write.js",
+      "sha256": "e3495066a5d8c53fe1c46cfd2bb32577e3bd7dcae9797808801599073504dacb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/foreign.mjs",
+      "sha256": "024d917ed34e44d44e889f19576ea05c7db17529dc81e683e8653f8a1ea9ea15"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/readback.mjs",
+      "sha256": "de7b7930f6e4167b7e44aaef6621b31d53b6d10e23f6e1a93366a214118dee69"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/README.md",
+      "sha256": "860b9d43ac1982b2b66b332b50f438a77d4ee95880e79144f89949dc58004afa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/test-apply.mjs",
+      "sha256": "ca8e877deb0db259f9c22bb5dc17bb774a413c1018796d08f63800ca834c82c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/test-phase8.mjs",
+      "sha256": "e6992665eeb60357ae27351b9bd5dc76c07b83619090e0bfcf2f9d1b45b1b0a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/js/test.mjs",
+      "sha256": "abbb1a4a34b8c0a9764966dd47e56bbeddf06d5e19bc626eb91fa3f94a80a440"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/args.c",
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/audio_close.c",
+      "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/audio_open.c",
+      "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/audio_write.c",
+      "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/audio.c",
+      "sha256": "049ac826d50def604c18cd4211d67573c4e27f4bc2600ce6c22e0dbe60c3783f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/chan_close.c",
+      "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/chan_new.c",
+      "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/chan_recv.c",
+      "sha256": "7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/chan_send.c",
+      "sha256": "f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/chan.c",
+      "sha256": "0c29532170ec3e400c9419b1e94474b769f7b8df262a7010b3b0f64f592683ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/file_close.c",
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/file_open.c",
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/file_read_at.c",
+      "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/file_read_bytes.c",
+      "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/file_read.c",
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/file_size.c",
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/file_write_bytes.c",
+      "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/file_write.c",
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/get_env.c",
+      "sha256": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/listener_close.c",
+      "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/now.c",
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/print_err.c",
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/print.c",
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/process_run.c",
+      "sha256": "c12e5a182de9fdc5ef83d65f9f7c2c5746865d1049e5f3700438f8ac317b17c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/random_u32.c",
+      "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/sleep.c",
+      "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/socket_close.c",
+      "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/spawn.c",
+      "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/tcp_accept.c",
+      "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/tcp_connect.c",
+      "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/tcp_listen.c",
+      "sha256": "6212a0bc400e960e8b486f85a091cd4964f92b0546475481271c0f369a234d8c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/tcp_poll.c",
+      "sha256": "feb6fa3f7c04b3143c71593e2c17088394d11474bd87ca791fb71fbf9f9a8f82"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/tcp_recv.c",
+      "sha256": "de6cfd9490f867c26056d1897e8d37ff657189788943f36151749101c7c9f0f6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/tcp_send.c",
+      "sha256": "503c8cdc1f885420057c46e6d9ed4ede6953805a13f8894e069f1b944f630c81"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/thread_count.c",
+      "sha256": "39515c611a2b42687fb670179f3d9032af1878727356754959061125d40fa7e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/udp_bind.c",
+      "sha256": "b30150927ffde3162d62012b67d43d95c79754f9539279628d2ad5bc9c040408"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/udp_poll.c",
+      "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/udp_recv_from.c",
+      "sha256": "140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/udp_send_to.c",
+      "sha256": "8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/window_close.c",
+      "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/window_frame.c",
+      "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/window_open.c",
+      "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/window_set_title.c",
+      "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/window.c",
+      "sha256": "7bda00a55917f11ff1fa532b1406ec5c1a8a7eef6f6ba2a933dd958256e0a409"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/effs/write.c",
+      "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/ORIGIN.md",
+      "sha256": "cc7d2b0e50253e3ccc3f88ed5c92134b3faba5a8c6eb86ae7aa9c7b5e7dd7073"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/src/runtime/native/runtime.c",
+      "sha256": "cbfb8933d007c10a0173f280888d6c94d5d77543548b25808596cd2d21f764f0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-demand01/proxy/project/dist/api.mjs",
+      "sha256": "e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+      "sha256": "345248c51b0337402d8d0bccf7bea9d8cd72b081f4e6f7e0a313031e3df958a8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/native-build.mjs",
+      "sha256": "a76f2c027459f7ffdb9fc16dc450ee33e0f39c74568df4c74d03309e662c9117"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+      "sha256": "ae6c90f4c53de0a0ce63ee6c2be7cfa5e148893490dd002665d24a85149746c6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/compiler.json",
+      "sha256": "f93bc23c8877c21e114a9cd2c1647e712ea8b0aa9a8b5e97b0677612d159b06b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime.mjs",
+      "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/base.mjs",
+      "sha256": "1cf66725fbe281a07b502c903cf44fa69abaeca961dd61ed63b3ea1ab97372c0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/build.mjs",
+      "sha256": "4be85d590521e9453f0e7eb46f7b7d9d35bfd803510089c23db192c09d2b2a12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/core.mjs",
+      "sha256": "d1799585d02b0f8b3354e4680608672893097a64695bbfa42441dffc6582e246"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/direct.mjs",
+      "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effects.mjs",
+      "sha256": "5f4951e6d34157769d59267d5803454bad9567859231fb06aad9edc292ca409e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/args.js",
+      "sha256": "ed1a7e7b73ae7fe58ac6d428d2762b66f223f4c70a165570fc5d68dc874ddc0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/audio_close.js",
+      "sha256": "c700e2fc0eda1f9a67afd317184999d9283912817aaec00637af41b135b84c62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/audio_open.js",
+      "sha256": "6f531ac205dab98dd366111cdcc5eed69fb9058350ca715f3419065cd979b088"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/audio_write.js",
+      "sha256": "377d3e938ce3cc9f083c662b69d34e3a0cf391c92ddaf3fca8a4b28c78662da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/chan.js",
+      "sha256": "c228f8c6ac2ef2fc7b09a016f43e894b524eb49f2ac5d0ebd629cef76d4d1248"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/file_close.js",
+      "sha256": "2b83f900113776ab875fa3afd29f31000a191fe48645abe78b1d7b34cb12a7fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/file_open.js",
+      "sha256": "dd549f5f05eb896aef9a3a02ffecf2ee902e653f5463be72781edab1cd1180ae"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/file_read.js",
+      "sha256": "7aa8a95a0b02f3c8db1167da5a936958a90c64e7df3e327ba5c66766d5e57da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/file_size.js",
+      "sha256": "41ec19c5777788144cc089bf78451d0918bdbf0c4afab9e35495cdd24a279051"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/file_write.js",
+      "sha256": "4fe307538beb1047add7646f52df6e382a1da5d8999d8fe96969bd5055bc9b59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/get_env.js",
+      "sha256": "2fab2162d5ff9842d1b84bfdc56466a606eeb0b81b04dd29f091652ff715ded6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/listener_close.js",
+      "sha256": "1b87fb43c373b1a8a54b5afaf0cf8e3ec2f8d39bdfde131e49527caa19ac0cb8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/manifest.json",
+      "sha256": "0c509cc90e56d95fe8fdb54f50dd4bd7f68a2d910acf04a93689364b126aad3c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/now.js",
+      "sha256": "b2c45fdcfeba0f155be5631b25708341c09d3c80929d8467afd5977473b087bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/print_err.js",
+      "sha256": "a7a00612edfe98af1a351e8f7b912af4ee33f4bb888c36f119f7712d72a9394e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/print.js",
+      "sha256": "814ceba4efbaa291b7b6a9ff29aa20e3a23c06eb4fa165c69ee0bd22878adaa9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/process_run.js",
+      "sha256": "6ebe3b9875ef62ee189209096fb422508e79d34e58913457aefe52a052631e42"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/random_u32.js",
+      "sha256": "c9a588139fb4afddc69b1b498374a014a12c639dbb88a9bb39d3b0ad7c671260"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/README.md",
+      "sha256": "9f4de68348084afbe787f3b4b70e290ee7dd434eff21a58dd0edc25f385154b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/sleep.js",
+      "sha256": "324704349471cacfb5ba94c1aed2f316d2e5fdbea486478ab1e2e5a278c7ad9d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/socket_close.js",
+      "sha256": "dc4bf1fa95692c91528d4eb855506dde8dfc9164a90de2c43cd1bd6916e0c380"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/spawn.js",
+      "sha256": "8a14c7a7a5ff80b049f0659f9e58d43bf0f3b1a6724d35a199c3f864b3242e4b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/tcp_accept.js",
+      "sha256": "3a9eb2359ec60af942fc0aa0390e1d5213a6c8b050bc832b6c8709f68e57b6ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/tcp_connect.js",
+      "sha256": "a20819822e4ce18c8878b94e6ee70466833415eb9ebc2b6a39b65cabfcc553c9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/tcp_listen.js",
+      "sha256": "0da4cfafaa24ba5e17d9fda5e6a5b207b2b36031b2c888944f67b85842d76399"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/tcp_poll.js",
+      "sha256": "b0654046a2bfd27a89a4788eec0d4e61cd24dea4efb992e8924cb17ac4238283"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/tcp_recv.js",
+      "sha256": "642735a0dd844d4ea1c83d4b5d100fec334d6032ba3115f3a41d0bbfe2d93dfd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/tcp_send.js",
+      "sha256": "b5e56fa57d7cd48d7d0ca42d793322971dfc96b77b83b0eef4a528c26e7c326b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/thread_count.js",
+      "sha256": "f4ef6d8ded95fe3114e50b7d2b6eb873e693419b85150f681b4a54a5043c2de9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/udp_bind.js",
+      "sha256": "e3afae5bf246184e76703efbcf41cb35bf5289e746cc40dc0300eef98753dfb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/udp_poll.js",
+      "sha256": "86a7c4eee06ac487f476589d3137e39c152d6ab87b9208adf18763a1ceb486bd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/udp_recv_from.js",
+      "sha256": "d2ca779e878b5f3f85db5fb56148de955f4d094b312299a33f27b70b5b330b1b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/udp_send_to.js",
+      "sha256": "0eb95a9c026918435f1eabc6d6d04044731d10f56950d06582086250240911c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/window_close.js",
+      "sha256": "be4ef11e9ac57c59aa4aee847f15ece18034ca9fe1c4a68c6e0b0d7bbd7c3590"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/window_frame.js",
+      "sha256": "78baa53aa46e02165c0c94da68d1f6362386ebcfb97dbb36fffb82792a03d34f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/window_grab.js",
+      "sha256": "55cfc1925114f2d1f177137fad24d6252fe28707d26a1aae18a98ad97060a668"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/window_open.js",
+      "sha256": "cd716864b8dfb27ca955c8aa58643c7d693ce76eb56472bd8255ff7ac0656e8d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/window_set_title.js",
+      "sha256": "eee0bf26b7f381f8800364e22e8c735e47dd6db3f58e23ff3dda8478a8411513"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/effs/write.js",
+      "sha256": "e3495066a5d8c53fe1c46cfd2bb32577e3bd7dcae9797808801599073504dacb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/foreign.mjs",
+      "sha256": "024d917ed34e44d44e889f19576ea05c7db17529dc81e683e8653f8a1ea9ea15"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/readback.mjs",
+      "sha256": "de7b7930f6e4167b7e44aaef6621b31d53b6d10e23f6e1a93366a214118dee69"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/README.md",
+      "sha256": "860b9d43ac1982b2b66b332b50f438a77d4ee95880e79144f89949dc58004afa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/test-apply.mjs",
+      "sha256": "ca8e877deb0db259f9c22bb5dc17bb774a413c1018796d08f63800ca834c82c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/test-phase8.mjs",
+      "sha256": "e6992665eeb60357ae27351b9bd5dc76c07b83619090e0bfcf2f9d1b45b1b0a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/test.mjs",
+      "sha256": "abbb1a4a34b8c0a9764966dd47e56bbeddf06d5e19bc626eb91fa3f94a80a440"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/args.c",
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/audio_close.c",
+      "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/audio_open.c",
+      "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/audio_write.c",
+      "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/audio.c",
+      "sha256": "049ac826d50def604c18cd4211d67573c4e27f4bc2600ce6c22e0dbe60c3783f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/chan_close.c",
+      "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/chan_new.c",
+      "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/chan_recv.c",
+      "sha256": "7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/chan_send.c",
+      "sha256": "f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/chan.c",
+      "sha256": "0c29532170ec3e400c9419b1e94474b769f7b8df262a7010b3b0f64f592683ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/file_close.c",
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/file_open.c",
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/file_read_at.c",
+      "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/file_read_bytes.c",
+      "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/file_read.c",
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/file_size.c",
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/file_write_bytes.c",
+      "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/file_write.c",
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/get_env.c",
+      "sha256": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/listener_close.c",
+      "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/now.c",
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/print_err.c",
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/print.c",
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/process_run.c",
+      "sha256": "c12e5a182de9fdc5ef83d65f9f7c2c5746865d1049e5f3700438f8ac317b17c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/random_u32.c",
+      "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/sleep.c",
+      "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/socket_close.c",
+      "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/spawn.c",
+      "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/tcp_accept.c",
+      "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/tcp_connect.c",
+      "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/tcp_listen.c",
+      "sha256": "6212a0bc400e960e8b486f85a091cd4964f92b0546475481271c0f369a234d8c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/tcp_poll.c",
+      "sha256": "feb6fa3f7c04b3143c71593e2c17088394d11474bd87ca791fb71fbf9f9a8f82"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/tcp_recv.c",
+      "sha256": "de6cfd9490f867c26056d1897e8d37ff657189788943f36151749101c7c9f0f6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/tcp_send.c",
+      "sha256": "503c8cdc1f885420057c46e6d9ed4ede6953805a13f8894e069f1b944f630c81"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/thread_count.c",
+      "sha256": "39515c611a2b42687fb670179f3d9032af1878727356754959061125d40fa7e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/udp_bind.c",
+      "sha256": "b30150927ffde3162d62012b67d43d95c79754f9539279628d2ad5bc9c040408"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/udp_poll.c",
+      "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/udp_recv_from.c",
+      "sha256": "140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/udp_send_to.c",
+      "sha256": "8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/window_close.c",
+      "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/window_frame.c",
+      "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/window_open.c",
+      "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/window_set_title.c",
+      "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/window.c",
+      "sha256": "7bda00a55917f11ff1fa532b1406ec5c1a8a7eef6f6ba2a933dd958256e0a409"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/effs/write.c",
+      "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/ORIGIN.md",
+      "sha256": "cc7d2b0e50253e3ccc3f88ed5c92134b3faba5a8c6eb86ae7aa9c7b5e7dd7073"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/native/runtime.c",
+      "sha256": "cbfb8933d007c10a0173f280888d6c94d5d77543548b25808596cd2d21f764f0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+      "sha256": "e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/build/typed/cache/base-e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003-c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661-c04628cbf4595eb7fcc0fafe90e6e555f95b4b4691a19005149f3206f3d3f7db-frame3.json",
+      "sha256": "b1714d24a76073d8e09481443f20212393b68e2bd48e164381c72752ea4c1c2b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/driver/api.bend",
+      "sha256": "5cae856aa306f52042cbead5bf72136da317649a0a09b7d73f8da1be3530d9d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/check/prefix-state.bend",
+      "sha256": "ed9b4bbbc42dcd37788be01fda07451a8ac21cbd47eac62ae936b7d8d59f0fbb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/core/index.bend",
+      "sha256": "51ce95941f955ed1c65f01ee88af31e35180c94d30ada97f359c6aa71dd47edb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/src/core/normalize.bend",
+      "sha256": "4845ff63f3c228abc9a432410ddc8b7e20bfce27e54d6d49412b06608f7ce702"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/demand/analyze.py",
+      "sha256": "e1cad8014b5b04e76be74b64bd6590b818b70ed5ef8e94d10bf6628307148fb5"
+    }
+  ],
+  "conclusion": "Current post-cache phases read about96% of eagerly decoded nodes. Lazy materialization alone has little unused-node headroom. Broad TODO and maximum/index/context scans should be addressed before reassessing demand.",
+  "limits": "One request per case; proxy reads are not allocations or time. Node counts do not weight object size. Per-phase sets overlap. Counterfactual phase exclusion is an opportunity diagnostic, not a valid compiler change."
+}

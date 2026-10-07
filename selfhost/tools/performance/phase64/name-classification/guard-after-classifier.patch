@@ -1,0 +1,19 @@
+--- a/selfhost/src/back/js/direct/constructors.bend
++++ b/selfhost/src/back/js/direct/constructors.bend
+@@ -238,4 +238,5 @@
+ def jd_native_layout(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+-  String.eq(tg(ty), "ADT") && db(lookup(book, nm(ty))) &&
+-    jd_native_layout_name(nm(ty))
++  kc(Bool, String.eq(tg(ty), "ADT"),
++    u => db(lookup(book, nm(ty))) && jd_native_layout_name(nm(ty)),
++    u => False{})
+ 
+--- a/selfhost/src/back/js/validate.bend
++++ b/selfhost/src/back/js/validate.bend
+@@ -239,3 +239,5 @@
+ def j_layout_array_intrinsic(book, f):
+-  String.eq(tg(f), "Ref") && db(lookup(book, nm(f))) && j_layout_array_name(nm(f))
++  kc(Bool, String.eq(tg(f), "Ref"),
++    u => db(lookup(book, nm(f))) && j_layout_array_name(nm(f)),
++    u => False{})
+ 

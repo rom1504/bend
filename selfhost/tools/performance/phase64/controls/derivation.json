@@ -1,0 +1,79 @@
+{
+  "kind": "phase64-focused-controls-successor",
+  "targetsExecuted": false,
+  "scope": "Exact Phase63 controller derivation. Move output ownership to Phase64, pin this derivation and retained parents, keep Phase63 fixtures immutable, validate optional identity metadata. All differential and runtime assertions are unchanged.",
+  "rows": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/controls/prefix-world-v1.mjs",
+        "sha256": "d0be4ffcc1911eca808e4dee59f4e5a98d9d8c9ab0bc0e684f964530ee52cb95",
+        "bytes": 19257
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/prefix-world-v1.mjs",
+        "sha256": "0497dc24fd81017d48a444eaffc031e3bcda1ab77586705198037c2bb79e8ec3",
+        "bytes": 19566
+      },
+      "edits": [
+        {
+          "old": "'../../../../build/phase63'",
+          "new": "'../../../../build/phase64'"
+        },
+        {
+          "old": "kind:'phase63-immutable-base-world-controls'",
+          "new": "kind:'phase64-immutable-base-world-controls'"
+        },
+        {
+          "old": "pin(import.meta.filename);pin(path.join(legacy",
+          "new": "pin(import.meta.filename);pin(path.join(import.meta.dirname,'derivation.json'));pin(path.resolve(import.meta.dirname,'../../phase63/controls/prefix-world-v1.mjs'));pin(path.join(legacy"
+        },
+        {
+          "old": "path.join(import.meta.dirname,'base-collision-v1.json')",
+          "new": "path.resolve(import.meta.dirname,'../../phase63/controls/base-collision-v1.json')"
+        },
+        {
+          "old": "if(want)assert.equal(r.sha256,want.sha256);",
+          "new": "if(want){assert.equal(r.sha256,want.sha256);if(Object.hasOwn(want,'canonicalPath'))assert.equal(want.canonicalPath,r.file);if(Object.hasOwn(want,'bytes'))assert.equal(want.bytes,r.bytes);}"
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/backend-context-controls/run.mjs",
+        "sha256": "6a17ca07d0e7ea13d27e4c45fb77d84742e31ac9ea84dd099da29080820c79a6",
+        "bytes": 9740
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/backend-context-v1.mjs",
+        "sha256": "1d9631f2aa5b7574c0f15af84c39858d66605cb75809d720d819070a5f862cd4",
+        "bytes": 10130
+      },
+      "edits": [
+        {
+          "old": "'selfhost/build/phase63'",
+          "new": "'selfhost/build/phase64'"
+        },
+        {
+          "old": "kind:'phase63-real-source-backend-context-controls'",
+          "new": "kind:'phase64-real-source-backend-context-controls'"
+        },
+        {
+          "old": "pin(import.meta.filename);report.node",
+          "new": "pin(import.meta.filename);pin(path.join(import.meta.dirname,'derivation.json'));pin(path.resolve(import.meta.dirname,'../../phase63/backend-context-controls/run.mjs'));report.node"
+        },
+        {
+          "old": "path.join(import.meta.dirname,'cases.json')",
+          "new": "path.resolve(import.meta.dirname,'../../phase63/backend-context-controls/cases.json')"
+        },
+        {
+          "old": "path.join(import.meta.dirname,spec.file)",
+          "new": "path.resolve(import.meta.dirname,'../../phase63/backend-context-controls',spec.file)"
+        },
+        {
+          "old": "if(want)assert.equal(r.sha256,want.sha256);",
+          "new": "if(want){assert.equal(r.sha256,want.sha256);if(Object.hasOwn(want,'canonicalPath'))assert.equal(want.canonicalPath,r.file);if(Object.hasOwn(want,'bytes'))assert.equal(want.bytes,fs.statSync(r.file).size);}"
+        }
+      ]
+    }
+  ]
+}

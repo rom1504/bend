@@ -1,0 +1,35 @@
+{
+  "beforeSha256": "fc8abb378ecaa8ee01405885da995dab2021a0b624ef6cbeed0aa5169c8735ac",
+  "afterSha256": "458caf63a4c8231be6f2b7f97ef669f156e10487e0cb00f8b673ce8c70c2bef4",
+  "edits": [
+    [
+      "  if(files.includes('src/load/graph.bend'))exports.push('f_load_graph','f_load_graph_trace');",
+      "  if(files.includes('src/check/prefix-state.bend')&&fs.readFileSync(path.join(project,'src/check/prefix-state.bend'),'utf8').includes('def book_context_world('))exports.push('book_context_world');\n  if(files.includes('src/load/graph.bend'))exports.push('f_load_graph','f_load_graph_trace');"
+    ],
+    [
+      "KBasePreparedWorld:['state','prefix','final','book','checked','seen','todos']",
+      "KBasePreparedWorld:['state','prefix','final','book','checked','seen','todos','checkedBound']"
+    ],
+    [
+      "cached.preparedWorldVersion===2",
+      "cached.preparedWorldVersion===3"
+    ],
+    [
+      "Number.isSafeInteger(world.todos)&&world.todos>=0&&world.todos<=U32_MAX;",
+      "Number.isSafeInteger(world.todos)&&world.todos>=0&&world.todos<=U32_MAX&&\n    Number.isSafeInteger(world.checkedBound)&&world.checkedBound>=0&&world.checkedBound<=U32_MAX;"
+    ],
+    [
+      "if(world?.$==='KBasePreparedWorld'&&world.state?.ready===true&&Number.isSafeInteger(world.todos)&&world.todos>=0&&world.todos<=U32_MAX)\n      Object.assign(cached,{preparedWorldVersion:2",
+      "if(world?.$==='KBasePreparedWorld'&&world.state?.ready===true&&Number.isSafeInteger(world.todos)&&world.todos>=0&&world.todos<=U32_MAX&&\n      Number.isSafeInteger(world.checkedBound)&&world.checkedBound>=0&&world.checkedBound<=U32_MAX)\n      Object.assign(cached,{preparedWorldVersion:3"
+    ],
+    [
+      "    const checkedResult=checkAbi===2?(ownedApi&&graph.prefixLoad&&cached?.preparedWorld&&typeof api.check_program_diagnostic_world==='function'?",
+      "    const usedPreparedWorld=checkAbi===2&&ownedApi&&!!graph.prefixLoad&&!!cached?.preparedWorld&&typeof api.check_program_diagnostic_world==='function';\n    const checkedResult=checkAbi===2?(usedPreparedWorld?"
+    ],
+    [
+      "    const contextBook=mode!=='native'&&api.book_context?api.book_context(book):book;",
+      "    const contextBook=mode!=='native'&&api.book_context?\n      (usedPreparedWorld&&typeof api.book_context_world==='function'?api.book_context_world(book,graph.prefixLoad,cached.preparedWorld):api.book_context(book)):book;"
+    ]
+  ],
+  "scope": "Unapplied host world-v3 ABI admission and same-request successful world result context coupling."
+}

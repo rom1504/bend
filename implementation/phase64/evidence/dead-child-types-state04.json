@@ -1,0 +1,160 @@
+{
+  "kind": "phase64-dead-child-type-differential-summary",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "sourceReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/dead-types-state04/report.json",
+    "sha256": "0bac2c96df5ad00d1d906f9de2ba74fc45e205928df2f5971edb200daffadc7f"
+  },
+  "attempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state04/attempt.json",
+    "sha256": "e0188b8bc8ea69a05336ba74734dd07a8ee854339370b19c020dd4254c468db6"
+  },
+  "derivative": {
+    "parent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state04/equality/api.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state04/equality/api.mjs",
+      "sha256": "e316e9e1a10034d715a49866c7ca1d55299523e4df001f0c8b54ebdba8e1b703"
+    },
+    "output": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/dead-types-state04/diagnostic-api.mjs",
+      "sha256": "ad352b7bdb5f9d6dbf82731d10f201d4df5451e558a1dadf970e61635abdbada"
+    },
+    "suffixSha256": "c148ffd81676977e01b9631080ada82f8ddc87bfd909e19f1e6b18d63fa08267",
+    "appendOnly": true,
+    "parserSha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c"
+  },
+  "scope": "Compare enclosing JDText, JDCallScan and layout worklists under actual guarded type arguments versus original eager reconstruction; also exact complete module bytes. Helpers may legitimately return different types because the unchanged child Ann replaces them. Lexical query counts are diagnostic, not timings or proof of arbitrary malformed input termination.",
+  "cases": [
+    {
+      "id": "numeric-recurrence",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+        "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3"
+      },
+      "pass": true,
+      "rawOutputEqual": true,
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/dead-types-state04/numeric-recurrence.mjs",
+        "sha256": "2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3"
+      },
+      "consumerComparisons": 9,
+      "helperCounts": {
+        "direct-lambda": {
+          "calls": 15,
+          "admitted": 15,
+          "fallback": 0,
+          "forced": 15
+        },
+        "layout-arm": {
+          "calls": 2,
+          "admitted": 2,
+          "fallback": 0,
+          "forced": 2
+        },
+        "layout-lambda": {
+          "calls": 7,
+          "admitted": 7,
+          "fallback": 0,
+          "forced": 7
+        }
+      },
+      "admissions": 24,
+      "fallbacks": 0,
+      "lexicalActualQueries": {
+        "wnf": 262,
+        "j_app_type": 43,
+        "subst": 97
+      },
+      "lexicalOriginalQueries": {
+        "j_app_type": 58,
+        "subst": 150,
+        "wnf": 266,
+        "j_specialize": 2,
+        "j_arm_tel": 3
+      },
+      "lexicalQueriesAvoided": {
+        "j_app_type": 15,
+        "j_arm_tel": 3,
+        "j_specialize": 2,
+        "subst": 53,
+        "wnf": 4
+      },
+      "syntheticControls": {
+        "raw": 1,
+        "rewriteFallback": 1,
+        "scans": 6
+      }
+    },
+    {
+      "id": "test-map-set-ops",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+        "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6"
+      },
+      "pass": true,
+      "rawOutputEqual": true,
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/dead-types-state04/test-map-set-ops.mjs",
+        "sha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd"
+      },
+      "consumerComparisons": 250,
+      "helperCounts": {
+        "direct-lambda": {
+          "calls": 1189,
+          "admitted": 1189,
+          "fallback": 0,
+          "forced": 1189
+        },
+        "direct-arm": {
+          "calls": 792,
+          "admitted": 792,
+          "fallback": 0,
+          "forced": 792
+        },
+        "layout-arm": {
+          "calls": 402,
+          "admitted": 402,
+          "fallback": 0,
+          "forced": 402
+        },
+        "layout-lambda": {
+          "calls": 593,
+          "admitted": 593,
+          "fallback": 0,
+          "forced": 593
+        }
+      },
+      "admissions": 2976,
+      "fallbacks": 0,
+      "lexicalActualQueries": {
+        "wnf": 15508,
+        "j_specialize": 1748,
+        "subst": 110612,
+        "j_app_type": 6928,
+        "j_arm_tel": 12
+      },
+      "lexicalOriginalQueries": {
+        "j_app_type": 8739,
+        "subst": 143189,
+        "wnf": 16934,
+        "j_arm_tel": 2412,
+        "j_specialize": 2150
+      },
+      "lexicalQueriesAvoided": {
+        "j_app_type": 1811,
+        "j_arm_tel": 2400,
+        "j_specialize": 402,
+        "subst": 32577,
+        "wnf": 1426
+      },
+      "syntheticControls": {
+        "raw": 1,
+        "rewriteFallback": 1,
+        "scans": 6
+      }
+    }
+  ],
+  "note": "Real-source counters precede synthetic controls and the separate disabled full-module compilation. Counts are lexical wrapper observations, not timings or exhaustive generated SCC accounting."
+}

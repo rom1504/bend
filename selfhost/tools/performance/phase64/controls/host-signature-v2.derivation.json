@@ -1,0 +1,50 @@
+{
+  "kind": "phase64-host-signature-reference-successor",
+  "targetsExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/host-signature-v1.mjs",
+    "sha256": "4881e30828a070b77afbfd9a60035a9c8c8f97d8a19044d392efc5b66d3b6a75",
+    "bytes": 9843
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/host-signature-v2.mjs",
+    "sha256": "97b64b0014140be369ebea1fafbc6027a594d061020812280fec46c077b9bf57",
+    "bytes": 12700
+  },
+  "edits": [
+    {
+      "old": "ast=parse(original);",
+      "new": "originalAst=parse(original);"
+    },
+    {
+      "old": "  const names=['run_loop','$jd_host$'",
+      "new": "  const referenceDirectory=path.join(root,'selfhost/build/phase64/checked-state01'),reference=await verifyAttempt(referenceDirectory);\n  assert(reference.checked&&reference.config.strictExact);assert.equal(reference.api.sha256,'e61393c96ffc803a1b9ed1f0d351a9af1e68137eea57fedd53411169663ef1e8');\n  report.reference={attempt:pin(path.join(referenceDirectory,'attempt.json')),api:pin(reference.api.file,reference.api),host:pin(path.join(reference.snapshot.root,'src/back/js/direct/host.bend'))};\n  pin(path.join(import.meta.dirname,'host-signature-v2.derivation.json'));\n  const referenceText=fs.readFileSync(reference.api.file,'utf8'),referenceAst=parse(referenceText);\n  const functions=ast=>new Map(ast.body.filter(n=>n.type==='FunctionDeclaration').map(n=>[n.id.name,n]));\n  const existing=functions(originalAst),available=functions(referenceAst),restored=[],seen=new Set();\n  const calls=node=>{const names=new Set(),todo=[node];while(todo.length){const n=todo.pop();if(!n||typeof n!=='object')continue;if(n.type==='CallExpression'&&n.callee?.type==='Identifier')names.add(n.callee.name);for(const value of Object.values(n))if(Array.isArray(value))todo.push(...value);else if(value&&typeof value==='object')todo.push(value);}return [...names].sort();};\n  const pending=['$jd_host_args$','$jd_host_args_on$','$jd_host_back$','$jd_host_back_on$'];\n  while(pending.length){const name=pending.shift();if(existing.has(name)||seen.has(name))continue;seen.add(name);const n=available.get(name);assert(n,'Missing reference function '+name);const source=referenceText.slice(n.start,n.end),dependencies=calls(n);restored.push({name,source,range:[n.start,n.end],sha256:hash(source),dependencies});for(const dep of dependencies)if(!existing.has(dep)&&!seen.has(dep))pending.push(dep);}\n  assert.deepEqual(restored.map(x=>x.name).sort(),['$jd_host_args$','$jd_host_args_on$','$jd_host_back$','$jd_host_back_on$'].sort(),'Unexpected old-helper closure');\n  const sourceBody=(source,name)=>{const lines=source.split('\\n'),start=lines.findIndex(x=>x.startsWith('def '+name+'('));assert(start>=0,name);let end=start+1;while(end<lines.length&&(!lines[end].trim()||/^\\s/.test(lines[end])))end++;return lines.slice(start,end).join('\\n').trim();};\n  const oldBend=fs.readFileSync(report.reference.host.file,'utf8'),newBend=fs.readFileSync(path.join(attempt.snapshot.root,'src/back/js/direct/host.bend'),'utf8');\n  for(const {name}of restored){const bend=name.slice(1,-1);assert.equal(sourceBody(newBend,bend),sourceBody(oldBend,bend),'Old source helper changed: '+bend);}\n  const restoredHelpers='\\n'+restored.map(x=>x.source).join('\\n')+'\\n',ast=parse(original+restoredHelpers);\n  report.restoredFunctions=restored.map(({source,...row})=>row);\n  const names=['run_loop','$jd_host$'"
+    },
+    {
+      "old": "parse(original+suffix);const apiFile",
+      "new": "parse(original+restoredHelpers+suffix);const apiFile"
+    },
+    {
+      "old": "fs.writeFileSync(apiFile,original+suffix,{flag:'wx'});",
+      "new": "fs.writeFileSync(apiFile,original+restoredHelpers+suffix,{flag:'wx'});"
+    },
+    {
+      "old": "suffixSha256:hash(suffix),parserSha256",
+      "new": "suffixSha256:hash(suffix),restoredSha256:hash(restoredHelpers),parserSha256"
+    },
+    {
+      "old": "  await verifyAttempt(attemptArg);for(const x",
+      "new": "  await verifyAttempt(attemptArg);await verifyAttempt(referenceDirectory);for(const x"
+    },
+    {
+      "old": "kind:'phase64-host-signature-exact-comparison'",
+      "new": "kind:'phase64-host-signature-restored-reference-comparison'"
+    }
+  ],
+  "referenceAttempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state01/attempt.json",
+    "sha256": "b31efe318353714afd2626375998c4a921637746b98da7ddbd92642ca8ecbf07",
+    "bytes": 300469
+  },
+  "scope": "Preserve all v1 wrapper/component/full-module assertions. Restore exactly four pruned old helper declarations from pinned State01 API; verify runtime call dependencies and unchanged corresponding Bend bodies. Append-only diagnostic derivative, not production source. Failed v1 remains failed."
+}

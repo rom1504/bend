@@ -1,0 +1,4731 @@
+{
+  "kind": "phase64-state09-allocation-analysis",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/analysis/allocations.py",
+    "sha256": "f826c2be6d7f897411429a6446103adc164b8ba8c7b0e778c5bca24f7646b513"
+  },
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/analysis/profiles-v2.py",
+    "sha256": "4fb715bddc5262f6c7b53d869840f46d225cd3eed2b9ae3b53cdb0ee00bb3679"
+  },
+  "boundaryAdditions": {
+    "jd_plan_selected": "lowering-plan",
+    "jd_plan_library": "plan-render",
+    "f_prefix_complete_ready_seed": "source-completion"
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/report.json",
+    "sha256": "a6341028780b717ad4b58502e6b3bf5929cd21134f9a00ed68dc536dd0e64745"
+  },
+  "rows": [
+    {
+      "case": "numeric-recurrence",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-baseline.result.json",
+        "sha256": "a121bae72633809a4bd15ebeaead43676db08987332219daa8ed8a787ed4f7b7"
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-baseline-profile/report.json",
+        "sha256": "326c2cbd6f99761646fc3784331db9ce985fbd1c8b1342c17d423fbad7e30235"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-baseline-profile/profile.heapprofile",
+        "sha256": "eeee9ae35c0901e1c49ab009a3c0c9eac1dba40987235b22cf1e2b3cced4965b"
+      },
+      "sampling": {
+        "intervalBytes": 131072,
+        "includeObjectsCollectedByMajorGC": true,
+        "includeObjectsCollectedByMinorGC": true
+      },
+      "sampleBytes": 32347400,
+      "treeSelfBytes": 32085792,
+      "accountingMismatchNodes": 7,
+      "accountingLargestDifferences": [
+        {
+          "nodeId": 2019,
+          "sampleBytes": 697536,
+          "treeSelfBytes": 556992,
+          "deltaBytes": 140544
+        },
+        {
+          "nodeId": 48,
+          "sampleBytes": 9008560,
+          "treeSelfBytes": 8887528,
+          "deltaBytes": 121032
+        },
+        {
+          "nodeId": 37,
+          "sampleBytes": 262272,
+          "treeSelfBytes": 262208,
+          "deltaBytes": 64
+        },
+        {
+          "nodeId": 1123,
+          "sampleBytes": 917728,
+          "treeSelfBytes": 917776,
+          "deltaBytes": -48
+        },
+        {
+          "nodeId": 1126,
+          "sampleBytes": 655440,
+          "treeSelfBytes": 655488,
+          "deltaBytes": -48
+        },
+        {
+          "nodeId": 449,
+          "sampleBytes": 262208,
+          "treeSelfBytes": 262176,
+          "deltaBytes": 32
+        },
+        {
+          "nodeId": 561,
+          "sampleBytes": 393296,
+          "treeSelfBytes": 393264,
+          "deltaBytes": 32
+        }
+      ],
+      "exclusiveStages": [
+        {
+          "name": "base-cache",
+          "weight": 12620872,
+          "percent": 39.01665048813815
+        },
+        {
+          "name": "other-generated-image",
+          "weight": 4654136,
+          "percent": 14.387975540538035
+        },
+        {
+          "name": "checker",
+          "weight": 3543624,
+          "percent": 10.954895911263348
+        },
+        {
+          "name": "lowering-plan",
+          "weight": 2228848,
+          "percent": 6.8903466739212424
+        },
+        {
+          "name": "book-context",
+          "weight": 2228640,
+          "percent": 6.889703654698677
+        },
+        {
+          "name": "api-load",
+          "weight": 1869376,
+          "percent": 5.779061068277512
+        },
+        {
+          "name": "source-completion",
+          "weight": 1180400,
+          "percent": 3.6491340880565364
+        },
+        {
+          "name": "host-wrapper",
+          "weight": 918696,
+          "percent": 2.8400922485269295
+        },
+        {
+          "name": "inspector-overhead",
+          "weight": 697536,
+          "percent": 2.156389694380383
+        },
+        {
+          "name": "other-node",
+          "weight": 684648,
+          "percent": 2.116547234089911
+        },
+        {
+          "name": "layout-proof",
+          "weight": 655616,
+          "percent": 2.0267965895249693
+        },
+        {
+          "name": "source-loading",
+          "weight": 397416,
+          "percent": 1.2285871507447275
+        },
+        {
+          "name": "annotation",
+          "weight": 262272,
+          "percent": 0.8107977766373804
+        },
+        {
+          "name": "base-identity",
+          "weight": 143104,
+          "percent": 0.44239722512473956
+        },
+        {
+          "name": "roots-and-stops",
+          "weight": 131136,
+          "percent": 0.4053988883186902
+        },
+        {
+          "name": "owned-foreign-layout",
+          "weight": 131080,
+          "percent": 0.40522576775876884
+        }
+      ],
+      "inclusiveAncestorUnions": [
+        {
+          "name": "index",
+          "weight": 3539928,
+          "percent": 10.943469954308538
+        },
+        {
+          "name": "normalization",
+          "weight": 3150176,
+          "percent": 9.738575588764476
+        },
+        {
+          "name": "host",
+          "weight": 918696,
+          "percent": 2.8400922485269295
+        },
+        {
+          "name": "definition",
+          "weight": 786696,
+          "percent": 2.4320223572837385
+        },
+        {
+          "name": "calls",
+          "weight": 786624,
+          "percent": 2.4317997737066968
+        },
+        {
+          "name": "strings",
+          "weight": 393312,
+          "percent": 1.2158998868533484
+        },
+        {
+          "name": "substitution",
+          "weight": 262272,
+          "percent": 0.8107977766373804
+        },
+        {
+          "name": "arityQueries",
+          "weight": 131104,
+          "percent": 0.4052999622844494
+        },
+        {
+          "name": "jdArity",
+          "weight": 131104,
+          "percent": 0.4052999622844494
+        }
+      ],
+      "supplementalInclusiveUnions": [
+        {
+          "name": "todoScan",
+          "bytes": 2228640,
+          "percent": 6.889703654698677
+        },
+        {
+          "name": "hostExport",
+          "bytes": 918696,
+          "percent": 2.8400922485269295
+        },
+        {
+          "name": "callAnalysis",
+          "bytes": 786624,
+          "percent": 2.4317997737066968
+        },
+        {
+          "name": "constructorLookup",
+          "bytes": 655568,
+          "percent": 2.0266482004736086
+        }
+      ],
+      "absentTreeNodes": {
+        "weight": 0,
+        "ids": {}
+      },
+      "topSelf": [
+        {
+          "functionName": "decodeBaseGraph",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+          "lineNumber": 67,
+          "columnNumber": 31,
+          "weight": 9008560,
+          "percent": 27.849409844376982
+        },
+        {
+          "functionName": "$jd$driver_95_holes",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 66309,
+          "columnNumber": 28,
+          "weight": 2228640,
+          "percent": 6.889703654698677
+        },
+        {
+          "functionName": "compileSourceTextModule",
+          "url": "node:internal/modules/esm/utils",
+          "lineNumber": 315,
+          "columnNumber": 32,
+          "weight": 1869376,
+          "percent": 5.779061068277512
+        },
+        {
+          "functionName": "slice",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 1745968,
+          "percent": 5.397552817227969
+        },
+        {
+          "functionName": "push",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 1713768,
+          "percent": 5.298008495273191
+        },
+        {
+          "functionName": "$jd$missing",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 831,
+          "columnNumber": 20,
+          "weight": 1311248,
+          "percent": 4.053642642067059
+        },
+        {
+          "functionName": "toString",
+          "url": "node:buffer",
+          "lineNumber": 907,
+          "columnNumber": 45,
+          "weight": 1197680,
+          "percent": 3.702554146546554
+        },
+        {
+          "functionName": "$jd$index_95_node",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 1530,
+          "columnNumber": 26,
+          "weight": 1179968,
+          "percent": 3.647798586594286
+        },
+        {
+          "functionName": "$jd$norm_95_join",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 1067,
+          "columnNumber": 25,
+          "weight": 1179888,
+          "percent": 3.647551271508684
+        },
+        {
+          "functionName": "$jd$norm_95_max_95_term",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 2436,
+          "columnNumber": 32,
+          "weight": 917728,
+          "percent": 2.837099735991146
+        },
+        {
+          "functionName": "post",
+          "url": "node:inspector",
+          "lineNumber": 114,
+          "columnNumber": 6,
+          "weight": 697536,
+          "percent": 2.156389694380383
+        },
+        {
+          "functionName": "$jd$atom",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 745,
+          "columnNumber": 17,
+          "weight": 655552,
+          "percent": 2.026598737456488
+        },
+        {
+          "functionName": "$jd$index_95_remove$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 1457,
+          "columnNumber": 32,
+          "weight": 655536,
+          "percent": 2.026549274439368
+        },
+        {
+          "functionName": "",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 0,
+          "columnNumber": 0,
+          "weight": 590040,
+          "percent": 1.8240724138570643
+        },
+        {
+          "functionName": "#asyncInstantiate",
+          "url": "node:internal/modules/esm/module_job",
+          "lineNumber": 304,
+          "columnNumber": 25,
+          "weight": 553248,
+          "percent": 1.7103322059887347
+        }
+      ],
+      "unresolvedSelf": [
+        {
+          "functionName": "$jd$driver_95_holes",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 66309,
+          "columnNumber": 28,
+          "weight": 1835312,
+          "percent": 5.673754304828209,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$driver_95_holes_95_terms",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66316,
+              "columnNumber": 37
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$driver_95_holes_95_terms",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66316,
+              "columnNumber": 37
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66290,
+              "columnNumber": 40
+            },
+            {
+              "functionName": "$jd$driver_95_count_95_todos",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66285,
+              "columnNumber": 37
+            },
+            {
+              "functionName": "$jd$driver_95_count_95_todos",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66285,
+              "columnNumber": 37
+            },
+            {
+              "functionName": "$jd$driver_95_count_95_todos",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66285,
+              "columnNumber": 37
+            },
+            {
+              "functionName": "$jd$driver_95_count_95_todos",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66285,
+              "columnNumber": 37
+            },
+            {
+              "functionName": "$jd$driver_95_count_95_todos",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66285,
+              "columnNumber": 37
+            }
+          ]
+        },
+        {
+          "functionName": "",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 0,
+          "columnNumber": 0,
+          "weight": 590040,
+          "percent": 1.8240724138570643,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            {
+              "functionName": "#asyncInstantiate",
+              "scriptId": "74",
+              "url": "node:internal/modules/esm/module_job",
+              "lineNumber": 304,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "(root)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            }
+          ]
+        },
+        {
+          "functionName": "#asyncInstantiate",
+          "url": "node:internal/modules/esm/module_job",
+          "lineNumber": 304,
+          "columnNumber": 25,
+          "weight": 553248,
+          "percent": 1.7103322059887347,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "#asyncInstantiate",
+              "scriptId": "74",
+              "url": "node:internal/modules/esm/module_job",
+              "lineNumber": 304,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "(root)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            }
+          ]
+        },
+        {
+          "functionName": "$jd$index_95_node",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 1530,
+          "columnNumber": 26,
+          "weight": 524448,
+          "percent": 1.6212987751720385,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "$jd$index_95_node",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1530,
+              "columnNumber": 26
+            },
+            {
+              "functionName": "$jd$index_95_join",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1535,
+              "columnNumber": 26
+            },
+            {
+              "functionName": "$jd$index_95_insert",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1554,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$index_95_insert",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1554,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$index_95_insert",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1554,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$index_95_insert",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1554,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$index_95_insert",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1554,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$index_95_insert",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1554,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$index_95_set",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1672,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "$jd$index_95_build",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1689,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "$jd$index_95_build",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1689,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "$jd$index_95_build",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1689,
+              "columnNumber": 27
+            }
+          ]
+        },
+        {
+          "functionName": "run_lib",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 155,
+          "columnNumber": 16,
+          "weight": 524368,
+          "percent": 1.6210514600864365,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "run_lib",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 155,
+              "columnNumber": 16
+            },
+            {
+              "functionName": "",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            {
+              "functionName": "next",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "run",
+              "scriptId": "74",
+              "url": "node:internal/modules/esm/module_job",
+              "lineNumber": 427,
+              "columnNumber": 11
+            },
+            {
+              "functionName": "",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "(root)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            }
+          ]
+        }
+      ],
+      "warnings": [
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ]
+    },
+    {
+      "case": "numeric-recurrence",
+      "role": "typescript",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-typescript.result.json",
+        "sha256": "0967b739941647ae3d3339a62b9d68189bbbbd24dd6d69ce7a94cbcdc85f571d"
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-typescript-profile/report.json",
+        "sha256": "6bcb697acc81edb30e0efb5b4172bf5e794ba1033bea4a9d8f20eea818f97a27"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-typescript-profile/profile.heapprofile",
+        "sha256": "7bb25eb658b39c4f4b8f8e1af65bd7d4a15293d3e7d0f234d82fd7fdd7291b59"
+      },
+      "sampling": {
+        "intervalBytes": 131072,
+        "includeObjectsCollectedByMajorGC": true,
+        "includeObjectsCollectedByMinorGC": true
+      },
+      "sampleBytes": 55805808,
+      "treeSelfBytes": 55805896,
+      "accountingMismatchNodes": 4,
+      "accountingLargestDifferences": [
+        {
+          "nodeId": 132,
+          "sampleBytes": 262160,
+          "treeSelfBytes": 262200,
+          "deltaBytes": -40
+        },
+        {
+          "nodeId": 466,
+          "sampleBytes": 262160,
+          "treeSelfBytes": 262200,
+          "deltaBytes": -40
+        },
+        {
+          "nodeId": 2227,
+          "sampleBytes": 262160,
+          "treeSelfBytes": 262200,
+          "deltaBytes": -40
+        },
+        {
+          "nodeId": 2389,
+          "sampleBytes": 262208,
+          "treeSelfBytes": 262176,
+          "deltaBytes": 32
+        }
+      ],
+      "exclusiveStages": [
+        {
+          "name": "checker",
+          "weight": 28194776,
+          "percent": 50.52301366194716
+        },
+        {
+          "name": "source-loading",
+          "weight": 17337256,
+          "percent": 31.067117601809475
+        },
+        {
+          "name": "typescript-module-stripping",
+          "weight": 4387864,
+          "percent": 7.862737154526998
+        },
+        {
+          "name": "other-typescript",
+          "weight": 2492096,
+          "percent": 4.4656570513234035
+        },
+        {
+          "name": "ts-library",
+          "weight": 1050560,
+          "percent": 1.8825280694797932
+        },
+        {
+          "name": "module-compilation",
+          "weight": 941472,
+          "percent": 1.6870502081073713
+        },
+        {
+          "name": "other-unassigned",
+          "weight": 524752,
+          "percent": 0.9403178966605052
+        },
+        {
+          "name": "other-node",
+          "weight": 459856,
+          "percent": 0.8240289254480465
+        },
+        {
+          "name": "ts-file-analysis",
+          "weight": 262216,
+          "percent": 0.4698722398213462
+        },
+        {
+          "name": "inspector-overhead",
+          "weight": 154960,
+          "percent": 0.2776771908759031
+        }
+      ],
+      "inclusiveAncestorUnions": [],
+      "supplementalInclusiveUnions": [],
+      "absentTreeNodes": {
+        "weight": 0,
+        "ids": {}
+      },
+      "topSelf": [
+        {
+          "functionName": "term_higher",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 692,
+          "columnNumber": 27,
+          "weight": 9700912,
+          "percent": 17.383337590954692
+        },
+        {
+          "functionName": "__require",
+          "url": "node:internal/deps/amaro/dist/index",
+          "lineNumber": 7,
+          "columnNumber": 48,
+          "weight": 3851304,
+          "percent": 6.901260169909197
+        },
+        {
+          "functionName": "term_wnf",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 2783,
+          "columnNumber": 24,
+          "weight": 3277704,
+          "percent": 5.87341016547955
+        },
+        {
+          "functionName": "term_check",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 3478,
+          "columnNumber": 26,
+          "weight": 2098832,
+          "percent": 3.760956207282224
+        },
+        {
+          "functionName": "Var",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 362,
+          "columnNumber": 22,
+          "weight": 1967040,
+          "percent": 3.5247944084959757
+        },
+        {
+          "functionName": "Infer",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 477,
+          "columnNumber": 21,
+          "weight": 1841032,
+          "percent": 3.2989971223066963
+        },
+        {
+          "functionName": "App",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 402,
+          "columnNumber": 22,
+          "weight": 1835360,
+          "percent": 3.288833305665962
+        },
+        {
+          "functionName": "match_flatten",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 2630,
+          "columnNumber": 29,
+          "weight": 1442080,
+          "percent": 2.5841037907738924
+        },
+        {
+          "functionName": "term_infer",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 3264,
+          "columnNumber": 26,
+          "weight": 1311000,
+          "percent": 2.349217844852278
+        },
+        {
+          "functionName": "push",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 1180584,
+          "percent": 2.115521739242625
+        },
+        {
+          "functionName": "map",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 1179976,
+          "percent": 2.1144322469087804
+        },
+        {
+          "functionName": "Bin",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 455,
+          "columnNumber": 22,
+          "weight": 1179864,
+          "percent": 2.114231550952546
+        },
+        {
+          "functionName": "slice",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 1048728,
+          "percent": 1.8792452570528142
+        },
+        {
+          "functionName": "compileSourceTextModule",
+          "url": "node:internal/modules/esm/utils",
+          "lineNumber": 315,
+          "columnNumber": 32,
+          "weight": 941472,
+          "percent": 1.6870502081073713
+        },
+        {
+          "functionName": "compare_go",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 3056,
+          "columnNumber": 19,
+          "weight": 917952,
+          "percent": 1.6449040572981222
+        }
+      ],
+      "unresolvedSelf": [
+        {
+          "functionName": "term_higher",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 692,
+          "columnNumber": 27,
+          "weight": 917648,
+          "percent": 1.6443593111311998,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 761,
+              "columnNumber": 32
+            },
+            {
+              "functionName": "map",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            }
+          ]
+        },
+        {
+          "functionName": "patt_term",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 2717,
+          "columnNumber": 25,
+          "weight": 524336,
+          "percent": 0.9395724545373485,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "patt_term",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2717,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 761,
+              "columnNumber": 32
+            },
+            {
+              "functionName": "map",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 761,
+              "columnNumber": 32
+            },
+            {
+              "functionName": "map",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            }
+          ]
+        },
+        {
+          "functionName": "decode",
+          "url": "node:internal/encoding",
+          "lineNumber": 481,
+          "columnNumber": 8,
+          "weight": 459856,
+          "percent": 0.8240289254480465,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "decode",
+              "scriptId": "50",
+              "url": "node:internal/encoding",
+              "lineNumber": 481,
+              "columnNumber": 8
+            },
+            {
+              "functionName": "stringify",
+              "scriptId": "55",
+              "url": "node:internal/modules/helpers",
+              "lineNumber": 412,
+              "columnNumber": 18
+            },
+            {
+              "functionName": "",
+              "scriptId": "76",
+              "url": "node:internal/modules/esm/translators",
+              "lineNumber": 675,
+              "columnNumber": 45
+            },
+            {
+              "functionName": "#translate",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 424,
+              "columnNumber": 12
+            },
+            {
+              "functionName": "afterLoad",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 494,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "loadAndTranslate",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 491,
+              "columnNumber": 18
+            },
+            {
+              "functionName": "#getOrCreateModuleJobAfterResolve",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 521,
+              "columnNumber": 35
+            },
+            {
+              "functionName": "afterResolve",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 605,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "getOrCreateModuleJob",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 595,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 627,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "tracePromise",
+              "scriptId": "31",
+              "url": "node:diagnostics_channel",
+              "lineNumber": 359,
+              "columnNumber": 14
+            },
+            {
+              "functionName": "import",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 626,
+              "columnNumber": 14
+            }
+          ]
+        },
+        {
+          "functionName": "",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "lineNumber": 0,
+          "columnNumber": 0,
+          "weight": 394536,
+          "percent": 0.7069801766869857,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            {
+              "functionName": "next",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "run",
+              "scriptId": "74",
+              "url": "node:internal/modules/esm/module_job",
+              "lineNumber": 427,
+              "columnNumber": 11
+            },
+            {
+              "functionName": "",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "(root)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            }
+          ]
+        },
+        {
+          "functionName": "Var",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 362,
+          "columnNumber": 22,
+          "weight": 393408,
+          "percent": 0.7049588816991952,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "Var",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 362,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "patt_term",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2717,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2723,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "map",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "patt_term",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2717,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 761,
+              "columnNumber": 32
+            },
+            {
+              "functionName": "map",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            }
+          ]
+        }
+      ],
+      "warnings": [
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ]
+    },
+    {
+      "case": "lexer",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-baseline.result.json",
+        "sha256": "967588452436b5d402b3f414a575786f12a8d956b375eb63feff9966283622d3"
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-baseline-profile/report.json",
+        "sha256": "a61c0fe52c5d40cac9944e815253d26327ef8099c2a5cf691c0da13c8d2e1a2a"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-baseline-profile/profile.heapprofile",
+        "sha256": "cedf9dc0f1d80c3eae65d5192cfce12f83ee4da7ca1dd379060a3efc44a6459b"
+      },
+      "sampling": {
+        "intervalBytes": 131072,
+        "includeObjectsCollectedByMajorGC": true,
+        "includeObjectsCollectedByMinorGC": true
+      },
+      "sampleBytes": 70218712,
+      "treeSelfBytes": 70098352,
+      "accountingMismatchNodes": 18,
+      "accountingLargestDifferences": [
+        {
+          "nodeId": 61,
+          "sampleBytes": 10056880,
+          "treeSelfBytes": 9935776,
+          "deltaBytes": 121104
+        },
+        {
+          "nodeId": 1120,
+          "sampleBytes": 3938160,
+          "treeSelfBytes": 3939624,
+          "deltaBytes": -1464
+        },
+        {
+          "nodeId": 1850,
+          "sampleBytes": 1442976,
+          "treeSelfBytes": 1442464,
+          "deltaBytes": 512
+        },
+        {
+          "nodeId": 3607,
+          "sampleBytes": 1705816,
+          "treeSelfBytes": 1706168,
+          "deltaBytes": -352
+        },
+        {
+          "nodeId": 857,
+          "sampleBytes": 1573528,
+          "treeSelfBytes": 1573360,
+          "deltaBytes": 168
+        },
+        {
+          "nodeId": 5008,
+          "sampleBytes": 393600,
+          "treeSelfBytes": 393440,
+          "deltaBytes": 160
+        },
+        {
+          "nodeId": 861,
+          "sampleBytes": 918192,
+          "treeSelfBytes": 918048,
+          "deltaBytes": 144
+        },
+        {
+          "nodeId": 3606,
+          "sampleBytes": 262368,
+          "treeSelfBytes": 262224,
+          "deltaBytes": 144
+        },
+        {
+          "nodeId": 3608,
+          "sampleBytes": 262368,
+          "treeSelfBytes": 262224,
+          "deltaBytes": 144
+        },
+        {
+          "nodeId": 45,
+          "sampleBytes": 655456,
+          "treeSelfBytes": 655504,
+          "deltaBytes": -48
+        }
+      ],
+      "exclusiveStages": [
+        {
+          "name": "base-cache",
+          "weight": 13534408,
+          "percent": 19.274645766786495
+        },
+        {
+          "name": "other-generated-image",
+          "weight": 12855320,
+          "percent": 18.30754172762383
+        },
+        {
+          "name": "checker",
+          "weight": 9836680,
+          "percent": 14.008630633954095
+        },
+        {
+          "name": "source-completion",
+          "weight": 9439728,
+          "percent": 13.443322628874196
+        },
+        {
+          "name": "lowering-plan",
+          "weight": 7093136,
+          "percent": 10.10148975674746
+        },
+        {
+          "name": "layout-proof",
+          "weight": 2622216,
+          "percent": 3.7343550249113084
+        },
+        {
+          "name": "book-context",
+          "weight": 2621792,
+          "percent": 3.733751197259215
+        },
+        {
+          "name": "source-reach",
+          "weight": 2361656,
+          "percent": 3.363285843237911
+        },
+        {
+          "name": "api-load",
+          "weight": 1919080,
+          "percent": 2.733003704197821
+        },
+        {
+          "name": "source-loading",
+          "weight": 1711448,
+          "percent": 2.437310442265019
+        },
+        {
+          "name": "annotation",
+          "weight": 1705928,
+          "percent": 2.429449289813234
+        },
+        {
+          "name": "host-wrapper",
+          "weight": 1573680,
+          "percent": 2.241112027232855
+        },
+        {
+          "name": "roots-and-stops",
+          "weight": 655904,
+          "percent": 0.9340871988651686
+        },
+        {
+          "name": "inspector-overhead",
+          "weight": 556992,
+          "percent": 0.7932244613088317
+        },
+        {
+          "name": "other-node",
+          "weight": 538720,
+          "percent": 0.7672029073959659
+        },
+        {
+          "name": "source-graph-freshening",
+          "weight": 524464,
+          "percent": 0.746900626716138
+        },
+        {
+          "name": "source-error-scan",
+          "weight": 393376,
+          "percent": 0.5602153454480908
+        },
+        {
+          "name": "base-identity",
+          "weight": 143104,
+          "percent": 0.2037975290688898
+        },
+        {
+          "name": "owned-foreign-layout",
+          "weight": 131080,
+          "percent": 0.1866738882934794
+        }
+      ],
+      "inclusiveAncestorUnions": [
+        {
+          "name": "index",
+          "weight": 8786728,
+          "percent": 12.513371079777139
+        },
+        {
+          "name": "normalization",
+          "weight": 5506752,
+          "percent": 7.842285685900932
+        },
+        {
+          "name": "definition",
+          "weight": 3158336,
+          "percent": 4.497855215572738
+        },
+        {
+          "name": "strings",
+          "weight": 3158144,
+          "percent": 4.497581784183111
+        },
+        {
+          "name": "calls",
+          "weight": 2098488,
+          "percent": 2.9885025518554085
+        },
+        {
+          "name": "substitution",
+          "weight": 1967248,
+          "percent": 2.801600804070573
+        },
+        {
+          "name": "host",
+          "weight": 1573680,
+          "percent": 2.241112027232855
+        }
+      ],
+      "supplementalInclusiveUnions": [
+        {
+          "name": "constructorLookup",
+          "bytes": 10891072,
+          "percent": 15.510213289016182
+        },
+        {
+          "name": "todoScan",
+          "bytes": 3146472,
+          "percent": 4.480959434288684
+        },
+        {
+          "name": "callAnalysis",
+          "bytes": 2360664,
+          "percent": 3.361873114391503
+        },
+        {
+          "name": "hostExport",
+          "bytes": 1573680,
+          "percent": 2.241112027232855
+        },
+        {
+          "name": "nativeLayout",
+          "bytes": 917688,
+          "percent": 1.3068995056474406
+        }
+      ],
+      "absentTreeNodes": {
+        "weight": 0,
+        "ids": {}
+      },
+      "topSelf": [
+        {
+          "functionName": "decodeBaseGraph",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+          "lineNumber": 67,
+          "columnNumber": 31,
+          "weight": 10056880,
+          "percent": 14.322222258932918
+        },
+        {
+          "functionName": "$jd$constructor_95_exists",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 7301,
+          "columnNumber": 34,
+          "weight": 6169784,
+          "percent": 8.786524025106015
+        },
+        {
+          "functionName": "$jd$lookup$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 834,
+          "columnNumber": 23,
+          "weight": 4066128,
+          "percent": 5.790661611679804
+        },
+        {
+          "functionName": "$jd$index_95_remove$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 1457,
+          "columnNumber": 32,
+          "weight": 3541872,
+          "percent": 5.044057202302429
+        },
+        {
+          "functionName": "$jd$kt",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 739,
+          "columnNumber": 15,
+          "weight": 3279328,
+          "percent": 4.670162562936215
+        },
+        {
+          "functionName": "slice",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 2925856,
+          "percent": 4.166775374632334
+        },
+        {
+          "functionName": "$jd$driver_95_holes",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 66309,
+          "columnNumber": 28,
+          "weight": 2228632,
+          "percent": 3.173843462124455
+        },
+        {
+          "functionName": "compileSourceTextModule",
+          "url": "node:internal/modules/esm/utils",
+          "lineNumber": 315,
+          "columnNumber": 32,
+          "weight": 1787992,
+          "percent": 2.546318422929774
+        },
+        {
+          "functionName": "$jd$String_46_contains_46_if$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 593,
+          "columnNumber": 41,
+          "weight": 1716080,
+          "percent": 2.443906974539778
+        },
+        {
+          "functionName": "push",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 1713768,
+          "percent": 2.4406144048896823
+        },
+        {
+          "functionName": "$jd$subst$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 886,
+          "columnNumber": 22,
+          "weight": 1705024,
+          "percent": 2.4281618836870718
+        },
+        {
+          "functionName": "$jd$index_95_node",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 1530,
+          "columnNumber": 26,
+          "weight": 1442304,
+          "percent": 2.054016598880367
+        },
+        {
+          "functionName": "$jd$wnf",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 2009,
+          "columnNumber": 16,
+          "weight": 1311232,
+          "percent": 1.8673541035614551
+        },
+        {
+          "functionName": "$jd$norm_95_max_95_term",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 2436,
+          "columnNumber": 32,
+          "weight": 1310960,
+          "percent": 1.8669667424261498
+        },
+        {
+          "functionName": "toString",
+          "url": "node:buffer",
+          "lineNumber": 907,
+          "columnNumber": 45,
+          "weight": 1197680,
+          "percent": 1.705642222546036
+        }
+      ],
+      "unresolvedSelf": [
+        {
+          "functionName": "$jd$constructor_95_exists",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 7301,
+          "columnNumber": 34,
+          "weight": 4200704,
+          "percent": 5.982314229859414,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            }
+          ]
+        },
+        {
+          "functionName": "$jd$lookup$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 834,
+          "columnNumber": 23,
+          "weight": 1704672,
+          "percent": 2.4276605928060886,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "$jd$lookup$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 834,
+              "columnNumber": 23
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            }
+          ]
+        },
+        {
+          "functionName": "$jd$index_95_remove$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 1457,
+          "columnNumber": 32,
+          "weight": 1574080,
+          "percent": 2.241681675961245,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "$jd$index_95_remove$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1457,
+              "columnNumber": 32
+            },
+            {
+              "functionName": "$jd$index_95_leaf",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1523,
+              "columnNumber": 26
+            },
+            {
+              "functionName": "$jd$index_95_join",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1535,
+              "columnNumber": 26
+            },
+            {
+              "functionName": "$jd$index_95_insert",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1554,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$index_95_insert",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1554,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$index_95_insert",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1554,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$index_95_insert",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1554,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$index_95_insert",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1554,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$index_95_set",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1672,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "$jd$index_95_build",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1689,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "$jd$index_95_build",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1689,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "$jd$index_95_build",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1689,
+              "columnNumber": 27
+            }
+          ]
+        },
+        {
+          "functionName": "$jd$driver_95_holes",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 66309,
+          "columnNumber": 28,
+          "weight": 1310928,
+          "percent": 1.8669211705278788,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$driver_95_holes_95_terms",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66316,
+              "columnNumber": 37
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28
+            }
+          ]
+        },
+        {
+          "functionName": "$jd$kt",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 739,
+          "columnNumber": 15,
+          "weight": 1049376,
+          "percent": 1.4944392600080731,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "$jd$kt",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 739,
+              "columnNumber": 15
+            },
+            {
+              "functionName": "$jd$lookup$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 834,
+              "columnNumber": 23
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            }
+          ]
+        }
+      ],
+      "warnings": [
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ]
+    },
+    {
+      "case": "lexer",
+      "role": "typescript",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-typescript.result.json",
+        "sha256": "6ab12cecd980cd40669410ca3e8fead8523b1c5045439d5928c4bb7ed4ef393a"
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-typescript-profile/report.json",
+        "sha256": "4d313d07c31366f425f3d07e7a6c4df3b5858e438d0cb73689cf84adda6847a7"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-typescript-profile/profile.heapprofile",
+        "sha256": "bf9f9171fa021b0a9bc93e2446b8ab11b82204936583f3e873ca8d71f84e9198"
+      },
+      "sampling": {
+        "intervalBytes": 131072,
+        "includeObjectsCollectedByMajorGC": true,
+        "includeObjectsCollectedByMinorGC": true
+      },
+      "sampleBytes": 66026056,
+      "treeSelfBytes": 65844912,
+      "accountingMismatchNodes": 7,
+      "accountingLargestDifferences": [
+        {
+          "nodeId": 5207,
+          "sampleBytes": 135728,
+          "treeSelfBytes": 0,
+          "deltaBytes": 135728
+        },
+        {
+          "nodeId": 4061,
+          "sampleBytes": 1700224,
+          "treeSelfBytes": 1669376,
+          "deltaBytes": 30848
+        },
+        {
+          "nodeId": 4496,
+          "sampleBytes": 287520,
+          "treeSelfBytes": 273144,
+          "deltaBytes": 14376
+        },
+        {
+          "nodeId": 2444,
+          "sampleBytes": 262272,
+          "treeSelfBytes": 262208,
+          "deltaBytes": 64
+        },
+        {
+          "nodeId": 2579,
+          "sampleBytes": 262272,
+          "treeSelfBytes": 262208,
+          "deltaBytes": 64
+        },
+        {
+          "nodeId": 224,
+          "sampleBytes": 262208,
+          "treeSelfBytes": 262176,
+          "deltaBytes": 32
+        },
+        {
+          "nodeId": 2538,
+          "sampleBytes": 262208,
+          "treeSelfBytes": 262176,
+          "deltaBytes": 32
+        }
+      ],
+      "exclusiveStages": [
+        {
+          "name": "checker",
+          "weight": 30424208,
+          "percent": 46.079093380952514
+        },
+        {
+          "name": "source-loading",
+          "weight": 16560280,
+          "percent": 25.081431488199144
+        },
+        {
+          "name": "ts-library",
+          "weight": 5513056,
+          "percent": 8.349818744284832
+        },
+        {
+          "name": "ts-file-analysis",
+          "weight": 4857824,
+          "percent": 7.357434767874064
+        },
+        {
+          "name": "typescript-module-stripping",
+          "weight": 4311192,
+          "percent": 6.529531311093305
+        },
+        {
+          "name": "other-typescript",
+          "weight": 2621816,
+          "percent": 3.970880829228994
+        },
+        {
+          "name": "module-compilation",
+          "weight": 854576,
+          "percent": 1.2943011468078602
+        },
+        {
+          "name": "other-node",
+          "weight": 459856,
+          "percent": 0.6964765546498795
+        },
+        {
+          "name": "other-unassigned",
+          "weight": 287520,
+          "percent": 0.4354644475508275
+        },
+        {
+          "name": "absent-tree-node",
+          "weight": 135728,
+          "percent": 0.2055673293585793
+        }
+      ],
+      "inclusiveAncestorUnions": [],
+      "supplementalInclusiveUnions": [],
+      "absentTreeNodes": {
+        "weight": 135728,
+        "ids": {
+          "5207": 135728
+        }
+      },
+      "topSelf": [
+        {
+          "functionName": "term_higher",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 692,
+          "columnNumber": 27,
+          "weight": 9177576,
+          "percent": 13.899930657678539
+        },
+        {
+          "functionName": "term_wnf",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 2783,
+          "columnNumber": 24,
+          "weight": 4457104,
+          "percent": 6.7505228541895645
+        },
+        {
+          "functionName": "__require",
+          "url": "node:internal/deps/amaro/dist/index",
+          "lineNumber": 7,
+          "columnNumber": 48,
+          "weight": 3720200,
+          "percent": 5.63444225715981
+        },
+        {
+          "functionName": "Infer",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 477,
+          "columnNumber": 21,
+          "weight": 3015624,
+          "percent": 4.567324148514944
+        },
+        {
+          "functionName": "Bin",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 455,
+          "columnNumber": 22,
+          "weight": 2621936,
+          "percent": 3.9710625756595244
+        },
+        {
+          "functionName": "App",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 402,
+          "columnNumber": 22,
+          "weight": 1835344,
+          "percent": 2.7797268399614845
+        },
+        {
+          "functionName": "map",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 1704328,
+          "percent": 2.5812960871083988
+        },
+        {
+          "functionName": "match_flatten",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 2630,
+          "columnNumber": 29,
+          "weight": 1704272,
+          "percent": 2.5812112721074842
+        },
+        {
+          "functionName": "slice",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 1704272,
+          "percent": 2.5812112721074842
+        },
+        {
+          "functionName": "assign",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 1700224,
+          "percent": 2.575080359184259
+        },
+        {
+          "functionName": "Var",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 362,
+          "columnNumber": 22,
+          "weight": 1573632,
+          "percent": 2.383349991403394
+        },
+        {
+          "functionName": "term_check",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 3478,
+          "columnNumber": 26,
+          "weight": 1573352,
+          "percent": 2.382925916398823
+        },
+        {
+          "functionName": "Ctr",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 410,
+          "columnNumber": 22,
+          "weight": 1442072,
+          "percent": 2.18409532139857
+        },
+        {
+          "functionName": "next",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 1310800,
+          "percent": 1.9852768428270198
+        },
+        {
+          "functionName": "push",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 1180584,
+          "percent": 1.7880577328441365
+        }
+      ],
+      "unresolvedSelf": [
+        {
+          "functionName": "term_higher",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 692,
+          "columnNumber": 27,
+          "weight": 1048728,
+          "percent": 1.588354754977338,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            }
+          ]
+        },
+        {
+          "functionName": "patt_term",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 2717,
+          "columnNumber": 25,
+          "weight": 524336,
+          "percent": 0.794134969988212,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "patt_term",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2717,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2723,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "map",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "patt_term",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2717,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 761,
+              "columnNumber": 32
+            },
+            {
+              "functionName": "map",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            }
+          ]
+        },
+        {
+          "functionName": "decode",
+          "url": "node:internal/encoding",
+          "lineNumber": 481,
+          "columnNumber": 8,
+          "weight": 459856,
+          "percent": 0.6964765546498795,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "decode",
+              "scriptId": "50",
+              "url": "node:internal/encoding",
+              "lineNumber": 481,
+              "columnNumber": 8
+            },
+            {
+              "functionName": "stringify",
+              "scriptId": "55",
+              "url": "node:internal/modules/helpers",
+              "lineNumber": 412,
+              "columnNumber": 18
+            },
+            {
+              "functionName": "",
+              "scriptId": "76",
+              "url": "node:internal/modules/esm/translators",
+              "lineNumber": 675,
+              "columnNumber": 45
+            },
+            {
+              "functionName": "#translate",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 424,
+              "columnNumber": 12
+            },
+            {
+              "functionName": "afterLoad",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 494,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "loadAndTranslate",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 491,
+              "columnNumber": 18
+            },
+            {
+              "functionName": "#getOrCreateModuleJobAfterResolve",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 521,
+              "columnNumber": 35
+            },
+            {
+              "functionName": "afterResolve",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 605,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "getOrCreateModuleJob",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 595,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 627,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "tracePromise",
+              "scriptId": "31",
+              "url": "node:diagnostics_channel",
+              "lineNumber": 359,
+              "columnNumber": 14
+            },
+            {
+              "functionName": "import",
+              "scriptId": "71",
+              "url": "node:internal/modules/esm/loader",
+              "lineNumber": 626,
+              "columnNumber": 14
+            }
+          ]
+        },
+        {
+          "functionName": "set",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 287520,
+          "percent": 0.4354644475508275,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "set",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "memo",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 1941,
+              "columnNumber": 19
+            },
+            {
+              "functionName": "term_const",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 839,
+              "columnNumber": 19
+            },
+            {
+              "functionName": "every",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 843,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "memo",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 1941,
+              "columnNumber": 19
+            },
+            {
+              "functionName": "term_const",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 839,
+              "columnNumber": 19
+            },
+            {
+              "functionName": "every",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 843,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "memo",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 1941,
+              "columnNumber": 19
+            },
+            {
+              "functionName": "term_const",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 839,
+              "columnNumber": 19
+            },
+            {
+              "functionName": "every",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            }
+          ]
+        },
+        {
+          "functionName": "Ctr",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 410,
+          "columnNumber": 22,
+          "weight": 262192,
+          "percent": 0.39710383428021206,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "Ctr",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 410,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "patt_term",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2717,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 761,
+              "columnNumber": 32
+            },
+            {
+              "functionName": "map",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            }
+          ]
+        }
+      ],
+      "warnings": [
+        "1 allocation samples (135728 estimated bytes) refer to absent tree nodes; preserved as unattributed, with no inferred call path.",
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ]
+    },
+    {
+      "case": "test-map-set-ops",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-baseline.result.json",
+        "sha256": "8cd7cc5a742cc2820fcfba6db79493bdbd8b0112653cb6ebb27b50224a0ac37b"
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-baseline-profile/report.json",
+        "sha256": "868eba835a7a37af7e8698093af63204a4286a17d018115e3e11b6b704319ee2"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-baseline-profile/profile.heapprofile",
+        "sha256": "6c9a0ca079386532716fae9b9fcf94d3d00c83aae33c6fefd669ddd53d82b7df"
+      },
+      "sampling": {
+        "intervalBytes": 131072,
+        "includeObjectsCollectedByMajorGC": true,
+        "includeObjectsCollectedByMinorGC": true
+      },
+      "sampleBytes": 160085736,
+      "treeSelfBytes": 160083736,
+      "accountingMismatchNodes": 15,
+      "accountingLargestDifferences": [
+        {
+          "nodeId": 1096,
+          "sampleBytes": 3939840,
+          "treeSelfBytes": 3938928,
+          "deltaBytes": 912
+        },
+        {
+          "nodeId": 744,
+          "sampleBytes": 5114232,
+          "treeSelfBytes": 5113680,
+          "deltaBytes": 552
+        },
+        {
+          "nodeId": 49,
+          "sampleBytes": 9828600,
+          "treeSelfBytes": 9828216,
+          "deltaBytes": 384
+        },
+        {
+          "nodeId": 2460,
+          "sampleBytes": 524352,
+          "treeSelfBytes": 524400,
+          "deltaBytes": -48
+        },
+        {
+          "nodeId": 13674,
+          "sampleBytes": 655880,
+          "treeSelfBytes": 655928,
+          "deltaBytes": -48
+        },
+        {
+          "nodeId": 562,
+          "sampleBytes": 262160,
+          "treeSelfBytes": 262200,
+          "deltaBytes": -40
+        },
+        {
+          "nodeId": 36,
+          "sampleBytes": 1876464,
+          "treeSelfBytes": 1876432,
+          "deltaBytes": 32
+        },
+        {
+          "nodeId": 9239,
+          "sampleBytes": 262208,
+          "treeSelfBytes": 262176,
+          "deltaBytes": 32
+        },
+        {
+          "nodeId": 12572,
+          "sampleBytes": 393296,
+          "treeSelfBytes": 393264,
+          "deltaBytes": 32
+        },
+        {
+          "nodeId": 19916,
+          "sampleBytes": 262208,
+          "treeSelfBytes": 262176,
+          "deltaBytes": 32
+        }
+      ],
+      "exclusiveStages": [
+        {
+          "name": "lowering-plan",
+          "weight": 48785696,
+          "percent": 30.474730115867413
+        },
+        {
+          "name": "other-generated-image",
+          "weight": 28921832,
+          "percent": 18.066464085219934
+        },
+        {
+          "name": "layout-proof",
+          "weight": 22555128,
+          "percent": 14.089405192227744
+        },
+        {
+          "name": "host-wrapper",
+          "weight": 13636368,
+          "percent": 8.518165540994858
+        },
+        {
+          "name": "base-cache",
+          "weight": 12608008,
+          "percent": 7.87578476073596
+        },
+        {
+          "name": "checker",
+          "weight": 9618072,
+          "percent": 6.008075572704366
+        },
+        {
+          "name": "source-completion",
+          "weight": 8664312,
+          "percent": 5.412294821819728
+        },
+        {
+          "name": "annotation",
+          "weight": 6556520,
+          "percent": 4.0956303564734835
+        },
+        {
+          "name": "api-load",
+          "weight": 1876464,
+          "percent": 1.1721618970474672
+        },
+        {
+          "name": "source-loading",
+          "weight": 1716368,
+          "percent": 1.072155485483104
+        },
+        {
+          "name": "source-reach",
+          "weight": 1704568,
+          "percent": 1.0647844352603657
+        },
+        {
+          "name": "book-context",
+          "weight": 1048752,
+          "percent": 0.6551189545082268
+        },
+        {
+          "name": "roots-and-stops",
+          "weight": 786784,
+          "percent": 0.49147664224125504
+        },
+        {
+          "name": "source-error-scan",
+          "weight": 655552,
+          "percent": 0.409500569120037
+        },
+        {
+          "name": "source-graph-freshening",
+          "weight": 393312,
+          "percent": 0.24568834789877844
+        },
+        {
+          "name": "other-node",
+          "weight": 282896,
+          "percent": 0.176715307102689
+        },
+        {
+          "name": "base-identity",
+          "weight": 143104,
+          "percent": 0.08939209924362031
+        },
+        {
+          "name": "module-compilation",
+          "weight": 132000,
+          "percent": 0.08245581605096909
+        }
+      ],
+      "inclusiveAncestorUnions": [
+        {
+          "name": "substitution",
+          "weight": 33445344,
+          "percent": 20.892144944131687
+        },
+        {
+          "name": "definition",
+          "weight": 31602040,
+          "percent": 19.74069694754066
+        },
+        {
+          "name": "index",
+          "weight": 18225016,
+          "percent": 11.384534597136124
+        },
+        {
+          "name": "host",
+          "weight": 13636368,
+          "percent": 8.518165540994858
+        },
+        {
+          "name": "normalization",
+          "weight": 12458104,
+          "percent": 7.782144937635168
+        },
+        {
+          "name": "calls",
+          "weight": 12331400,
+          "percent": 7.702997348870608
+        },
+        {
+          "name": "strings",
+          "weight": 8259168,
+          "percent": 5.159215434409472
+        },
+        {
+          "name": "arityQueries",
+          "weight": 2229184,
+          "percent": 1.3924938321800264
+        },
+        {
+          "name": "jdArity",
+          "weight": 1835696,
+          "percent": 1.14669554319318
+        },
+        {
+          "name": "jdDomains",
+          "weight": 524512,
+          "percent": 0.3276444317312568
+        },
+        {
+          "name": "jdParams",
+          "weight": 262352,
+          "percent": 0.1638821837318473
+        },
+        {
+          "name": "jdLiveArity",
+          "weight": 131136,
+          "percent": 0.08191610525499911
+        }
+      ],
+      "supplementalInclusiveUnions": [
+        {
+          "name": "callAnalysis",
+          "bytes": 17052368,
+          "percent": 10.65202211395024
+        },
+        {
+          "name": "hostExport",
+          "bytes": 13636368,
+          "percent": 8.518165540994858
+        },
+        {
+          "name": "constructorLookup",
+          "bytes": 11547152,
+          "percent": 7.2131048577619685
+        },
+        {
+          "name": "nativeLayout",
+          "bytes": 11012128,
+          "percent": 6.878893944679743
+        },
+        {
+          "name": "todoScan",
+          "bytes": 1312168,
+          "percent": 0.8196657820906668
+        }
+      ],
+      "absentTreeNodes": {
+        "weight": 0,
+        "ids": {}
+      },
+      "topSelf": [
+        {
+          "functionName": "$jd$subst$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 886,
+          "columnNumber": 22,
+          "weight": 29123280,
+          "percent": 18.192301655158083
+        },
+        {
+          "functionName": "$jd$String_46_contains_46_if$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 593,
+          "columnNumber": 41,
+          "weight": 19271616,
+          "percent": 12.038309271976612
+        },
+        {
+          "functionName": "decodeBaseGraph",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+          "lineNumber": 67,
+          "columnNumber": 31,
+          "weight": 9828600,
+          "percent": 6.139585103322385
+        },
+        {
+          "functionName": "$jd$subst_95_terms",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 977,
+          "columnNumber": 27,
+          "weight": 8389984,
+          "percent": 5.240931646777074
+        },
+        {
+          "functionName": "$jd$missing",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 831,
+          "columnNumber": 20,
+          "weight": 7081776,
+          "percent": 4.423739539167937
+        },
+        {
+          "functionName": "$jd$index_95_remove$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 1457,
+          "columnNumber": 32,
+          "weight": 6425536,
+          "percent": 4.013809200339998
+        },
+        {
+          "functionName": "$jd$constructor_95_exists",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 7301,
+          "columnNumber": 34,
+          "weight": 4990464,
+          "percent": 3.1173695575226015
+        },
+        {
+          "functionName": "$jd$index_95_find$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 1365,
+          "columnNumber": 30,
+          "weight": 3671680,
+          "percent": 2.2935709899850165
+        },
+        {
+          "functionName": "$jd$index_95_hash",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 1341,
+          "columnNumber": 26,
+          "weight": 3670512,
+          "percent": 2.29284138094602
+        },
+        {
+          "functionName": "$jd$wnf",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 2009,
+          "columnNumber": 16,
+          "weight": 3410496,
+          "percent": 2.1304184152921657
+        },
+        {
+          "functionName": "$jd$kt",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 739,
+          "columnNumber": 15,
+          "weight": 3016192,
+          "percent": 1.8841103994424588
+        },
+        {
+          "functionName": "slice",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 2794768,
+          "percent": 1.7457945160085968
+        },
+        {
+          "functionName": "$jd$jd_95_text_95_scan$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 54066,
+          "columnNumber": 35,
+          "weight": 2753528,
+          "percent": 1.7200333201454001
+        },
+        {
+          "functionName": "$jd$String_46_reverse_46_go",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 562,
+          "columnNumber": 36,
+          "weight": 2228544,
+          "percent": 1.3920940464052338
+        },
+        {
+          "functionName": "compileSourceTextModule",
+          "url": "node:internal/modules/esm/utils",
+          "lineNumber": 315,
+          "columnNumber": 32,
+          "weight": 2008464,
+          "percent": 1.2546177130984362
+        }
+      ],
+      "unresolvedSelf": [
+        {
+          "functionName": "$jd$subst$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 886,
+          "columnNumber": 22,
+          "weight": 6691136,
+          "percent": 4.1797202968789176,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "$jd$subst$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 886,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "$jd$subst$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 886,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "$jd$subst_95_terms",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 977,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "$jd$subst$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 886,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "$jd$subst_95_terms",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 977,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "$jd$subst$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 886,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "$jd$jd_95_calls_95_saturated$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 58012,
+              "columnNumber": 41
+            },
+            {
+              "functionName": "$jd$jd_95_calls_95_saturated",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 58067,
+              "columnNumber": 37
+            },
+            {
+              "functionName": "$jd$jd_95_calls_95_named",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 57989,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "$jd$jd_95_calls_95_body$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 57562,
+              "columnNumber": 36
+            },
+            {
+              "functionName": "$jd$jd_95_calls_95_body",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 57909,
+              "columnNumber": 32
+            },
+            {
+              "functionName": "$jd$jd_95_calls_95_match_95_arm",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 57925,
+              "columnNumber": 40
+            }
+          ]
+        },
+        {
+          "functionName": "$jd$missing",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 831,
+          "columnNumber": 20,
+          "weight": 5638760,
+          "percent": 3.5223375554209277,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "$jd$missing",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 831,
+              "columnNumber": 20
+            },
+            {
+              "functionName": "$jd$lookup$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 834,
+              "columnNumber": 23
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            }
+          ]
+        },
+        {
+          "functionName": "$jd$constructor_95_exists",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 7301,
+          "columnNumber": 34,
+          "weight": 4071168,
+          "percent": 2.5431172706105434,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34
+            }
+          ]
+        },
+        {
+          "functionName": "$jd$subst_95_terms",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 977,
+          "columnNumber": 27,
+          "weight": 1442096,
+          "percent": 0.9008272916957448,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "$jd$subst_95_terms",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 977,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "$jd$subst_95_terms",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 977,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "$jd$subst$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 886,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "$jd$subst$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 886,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "$jd$subst_95_terms",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 977,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "$jd$subst$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 886,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "$jd$subst$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 886,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "$jd$subst_95_terms",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 977,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "$jd$subst$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 886,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "$jd$subst_95_terms",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 977,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "$jd$subst$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 886,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "$jd$jd_95_calls_95_saturated$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 58012,
+              "columnNumber": 41
+            }
+          ]
+        },
+        {
+          "functionName": "$jd$String_46_contains_46_if$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 593,
+          "columnNumber": 41,
+          "weight": 1310984,
+          "percent": 0.8189261784073004,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "$jd$String_46_contains_46_if$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 593,
+              "columnNumber": 41
+            },
+            {
+              "functionName": "$jd$jd_95_native_95_layout",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 55620,
+              "columnNumber": 35
+            },
+            {
+              "functionName": "$jd$jd_95_ordered_95_ctor_95_native_95_check",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 59326,
+              "columnNumber": 53
+            },
+            {
+              "functionName": "$jd$jd_95_ordered_95_ctor_95_checked",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 59308,
+              "columnNumber": 45
+            },
+            {
+              "functionName": "$jd$jd_95_ordered_95_ctor_95_type",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 59291,
+              "columnNumber": 42
+            },
+            {
+              "functionName": "$jd$jd_95_ordered_95_ctor",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 59276,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$jd_95_ordered_95_expr$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 58697,
+              "columnNumber": 38
+            },
+            {
+              "functionName": "$jd$jd_95_ordered_95_expr",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 58933,
+              "columnNumber": 34
+            },
+            {
+              "functionName": "$jd$jd_95_doc_95_ordered_95_return",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 59180,
+              "columnNumber": 43
+            },
+            {
+              "functionName": "$jd$jd_95_doc_95_return_95_regular",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 60744,
+              "columnNumber": 43
+            },
+            {
+              "functionName": "$jd$jd_95_doc_95_return",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 60671,
+              "columnNumber": 32
+            },
+            {
+              "functionName": "$jd$jd_95_doc_95_body$scc",
+              "scriptId": "194",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 60409,
+              "columnNumber": 34
+            }
+          ]
+        }
+      ],
+      "warnings": [
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ]
+    },
+    {
+      "case": "test-map-set-ops",
+      "role": "typescript",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-typescript.result.json",
+        "sha256": "cf387ce94c9ca692732a8f6daea5235aed3c6364b797754f3f130e5b6896dcf0"
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-typescript-profile/report.json",
+        "sha256": "837ce331c368c2dde882484729dc8f0fa9161fb47a765017670c8a4178e3c449"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-typescript-profile/profile.heapprofile",
+        "sha256": "36e3eae64c5409a9f15af53d169b908e79cc4b3a17c1bdfc89882e054dd399c3"
+      },
+      "sampling": {
+        "intervalBytes": 131072,
+        "includeObjectsCollectedByMajorGC": true,
+        "includeObjectsCollectedByMinorGC": true
+      },
+      "sampleBytes": 109775456,
+      "treeSelfBytes": 109634264,
+      "accountingMismatchNodes": 11,
+      "accountingLargestDifferences": [
+        {
+          "nodeId": 10226,
+          "sampleBytes": 290256,
+          "treeSelfBytes": 155352,
+          "deltaBytes": 134904
+        },
+        {
+          "nodeId": 3901,
+          "sampleBytes": 704704,
+          "treeSelfBytes": 698496,
+          "deltaBytes": 6208
+        },
+        {
+          "nodeId": 3902,
+          "sampleBytes": 1049072,
+          "treeSelfBytes": 1048904,
+          "deltaBytes": 168
+        },
+        {
+          "nodeId": 5915,
+          "sampleBytes": 786520,
+          "treeSelfBytes": 786608,
+          "deltaBytes": -88
+        },
+        {
+          "nodeId": 157,
+          "sampleBytes": 262272,
+          "treeSelfBytes": 262208,
+          "deltaBytes": 64
+        },
+        {
+          "nodeId": 4503,
+          "sampleBytes": 262272,
+          "treeSelfBytes": 262208,
+          "deltaBytes": 64
+        },
+        {
+          "nodeId": 4048,
+          "sampleBytes": 262160,
+          "treeSelfBytes": 262200,
+          "deltaBytes": -40
+        },
+        {
+          "nodeId": 4663,
+          "sampleBytes": 393240,
+          "treeSelfBytes": 393280,
+          "deltaBytes": -40
+        },
+        {
+          "nodeId": 5588,
+          "sampleBytes": 262160,
+          "treeSelfBytes": 262200,
+          "deltaBytes": -40
+        },
+        {
+          "nodeId": 5847,
+          "sampleBytes": 262160,
+          "treeSelfBytes": 262200,
+          "deltaBytes": -40
+        }
+      ],
+      "exclusiveStages": [
+        {
+          "name": "ts-file-analysis",
+          "weight": 38364984,
+          "percent": 34.94859907482416
+        },
+        {
+          "name": "checker",
+          "weight": 26877000,
+          "percent": 24.483614989492732
+        },
+        {
+          "name": "source-loading",
+          "weight": 16807632,
+          "percent": 15.310919774270854
+        },
+        {
+          "name": "ts-library",
+          "weight": 13221376,
+          "percent": 12.044018291301837
+        },
+        {
+          "name": "other-typescript",
+          "weight": 7734712,
+          "percent": 7.045939303590777
+        },
+        {
+          "name": "typescript-module-stripping",
+          "weight": 4036744,
+          "percent": 3.6772737250119008
+        },
+        {
+          "name": "other-unassigned",
+          "weight": 1578024,
+          "percent": 1.4375016579298017
+        },
+        {
+          "name": "module-compilation",
+          "weight": 590336,
+          "percent": 0.5377668392468349
+        },
+        {
+          "name": "inspector-overhead",
+          "weight": 290256,
+          "percent": 0.26440883105964963
+        },
+        {
+          "name": "other-node",
+          "weight": 274392,
+          "percent": 0.24995751327145477
+        }
+      ],
+      "inclusiveAncestorUnions": [],
+      "supplementalInclusiveUnions": [],
+      "absentTreeNodes": {
+        "weight": 0,
+        "ids": {}
+      },
+      "topSelf": [
+        {
+          "functionName": "term_higher",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 692,
+          "columnNumber": 27,
+          "weight": 15731048,
+          "percent": 14.330205105228622
+        },
+        {
+          "functionName": "term_wnf",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 2783,
+          "columnNumber": 24,
+          "weight": 7603616,
+          "percent": 6.926517344642139
+        },
+        {
+          "functionName": "type_adts",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "lineNumber": 983,
+          "columnNumber": 18,
+          "weight": 7093080,
+          "percent": 6.461444350547722
+        },
+        {
+          "functionName": "__require",
+          "url": "node:internal/deps/amaro/dist/index",
+          "lineNumber": 7,
+          "columnNumber": 48,
+          "weight": 3720200,
+          "percent": 3.388917828772217
+        },
+        {
+          "functionName": "push",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 3699768,
+          "percent": 3.370305289371788
+        },
+        {
+          "functionName": "ADT",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 406,
+          "columnNumber": 22,
+          "weight": 3671712,
+          "percent": 3.3447476638129383
+        },
+        {
+          "functionName": "Var",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 362,
+          "columnNumber": 22,
+          "weight": 3147248,
+          "percent": 2.8669869519831463
+        },
+        {
+          "functionName": "term_any",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "lineNumber": 822,
+          "columnNumber": 17,
+          "weight": 3015056,
+          "percent": 2.7465665913517134
+        },
+        {
+          "functionName": "",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "lineNumber": 738,
+          "columnNumber": 26,
+          "weight": 2884120,
+          "percent": 2.6272903844735565
+        },
+        {
+          "functionName": "next",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 2752680,
+          "percent": 2.5075550585733843
+        },
+        {
+          "functionName": "Bin",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 455,
+          "columnNumber": 22,
+          "weight": 2097536,
+          "percent": 1.9107513431782055
+        },
+        {
+          "functionName": "match_flatten",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 2630,
+          "columnNumber": 29,
+          "weight": 2097536,
+          "percent": 1.9107513431782055
+        },
+        {
+          "functionName": "map",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 1966536,
+          "percent": 1.7914168354718563
+        },
+        {
+          "functionName": "slice",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "weight": 1837136,
+          "percent": 1.6735398484703174
+        },
+        {
+          "functionName": "Lam",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 398,
+          "columnNumber": 22,
+          "weight": 1835592,
+          "percent": 1.6721333409901755
+        }
+      ],
+      "unresolvedSelf": [
+        {
+          "functionName": "term_any",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "lineNumber": 822,
+          "columnNumber": 17,
+          "weight": 1573064,
+          "percent": 1.4329833437448896,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "term_any",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 826,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "some",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_any",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 826,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "some",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_any",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 826,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "some",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_any",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 826,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "some",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            }
+          ]
+        },
+        {
+          "functionName": "",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "lineNumber": 738,
+          "columnNumber": 26,
+          "weight": 655496,
+          "percent": 0.5971243699502373,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 738,
+              "columnNumber": 26
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 1434,
+              "columnNumber": 35
+            },
+            {
+              "functionName": "term_any",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 826,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "some",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_any",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 826,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "some",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_any",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 826,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "some",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_any",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17
+            }
+          ]
+        },
+        {
+          "functionName": "Var",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 362,
+          "columnNumber": 22,
+          "weight": 524544,
+          "percent": 0.47783358786503244,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "Var",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 362,
+              "columnNumber": 22
+            },
+            {
+              "functionName": "patt_term",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2717,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2723,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "map",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "patt_term",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2717,
+              "columnNumber": 25
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 717,
+              "columnNumber": 51
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 761,
+              "columnNumber": 32
+            },
+            {
+              "functionName": "map",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            }
+          ]
+        },
+        {
+          "functionName": "term_higher",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "lineNumber": 692,
+          "columnNumber": 27,
+          "weight": 524368,
+          "percent": 0.47767326058750326,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "term_higher",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "190",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 739,
+              "columnNumber": 27
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 718,
+              "columnNumber": 24
+            },
+            {
+              "functionName": "term_open",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 717,
+              "columnNumber": 18
+            },
+            {
+              "functionName": "term_kids",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 790,
+              "columnNumber": 18
+            },
+            {
+              "functionName": "term_any",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 826,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "some",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_any",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 826,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "some",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            }
+          ]
+        },
+        {
+          "functionName": "live_dom",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "lineNumber": 887,
+          "columnNumber": 17,
+          "weight": 524352,
+          "percent": 0.4776586853804552,
+          "exampleLeafFirstStack": [
+            {
+              "functionName": "live_dom",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 887,
+              "columnNumber": 17
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 1115,
+              "columnNumber": 19
+            },
+            {
+              "functionName": "filter",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "ctr_flds",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 1113,
+              "columnNumber": 17
+            },
+            {
+              "functionName": "term_kids",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 790,
+              "columnNumber": 18
+            },
+            {
+              "functionName": "term_any",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 826,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "some",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_any",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17
+            },
+            {
+              "functionName": "",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 826,
+              "columnNumber": 33
+            },
+            {
+              "functionName": "some",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            },
+            {
+              "functionName": "term_any",
+              "scriptId": "191",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17
+            }
+          ]
+        }
+      ],
+      "warnings": [
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ]
+    }
+  ],
+  "ratios": [
+    {
+      "case": "lexer",
+      "baselineBytes": 70218712,
+      "typescriptBytes": 66026056,
+      "ratio": 1.0635000218701538
+    },
+    {
+      "case": "numeric-recurrence",
+      "baselineBytes": 32347400,
+      "typescriptBytes": 55805808,
+      "ratio": 0.5796421763125443
+    },
+    {
+      "case": "test-map-set-ops",
+      "baselineBytes": 160085736,
+      "typescriptBytes": 109775456,
+      "ratio": 1.4583017172800448
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/analysis/profiles-v2.py",
+      "sha256": "4fb715bddc5262f6c7b53d869840f46d225cd3eed2b9ae3b53cdb0ee00bb3679"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/report.json",
+      "sha256": "a6341028780b717ad4b58502e6b3bf5929cd21134f9a00ed68dc536dd0e64745"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/plan.json",
+      "sha256": "cafc8c6ac0df053b608182d9a93c35f8708d73d0c4ef5960e128d62abc123a67"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-baseline.result.json",
+      "sha256": "a121bae72633809a4bd15ebeaead43676db08987332219daa8ed8a787ed4f7b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+      "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/final-last01/b2-program-equality/modules/numeric-recurrence.mjs",
+      "sha256": "2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-baseline.mjs",
+      "sha256": "2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-baseline-profile/report.json",
+      "sha256": "326c2cbd6f99761646fc3784331db9ce985fbd1c8b1342c17d423fbad7e30235"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-baseline-profile/profile.heapprofile",
+      "sha256": "eeee9ae35c0901e1c49ab009a3c0c9eac1dba40987235b22cf1e2b3cced4965b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-baseline-profile/summary.json",
+      "sha256": "90c037c61880e2f1dc5b7a1cb11cf39bd015b3b1576ec5542e42f9aef94e854d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+      "sha256": "e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/build/typed/snapshots/06e828e5ccef453057af912cfd1701c9a8896b28ac9974991b34006f714d70b3/compiler.bend",
+      "sha256": "0ebe491e727721857ce981ff5a2167a52d1e040f5674915a3349fea33bed8ed5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+      "sha256": "345248c51b0337402d8d0bccf7bea9d8cd72b081f4e6f7e0a313031e3df958a8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-typescript.result.json",
+      "sha256": "0967b739941647ae3d3339a62b9d68189bbbbd24dd6d69ce7a94cbcdc85f571d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/final-performance-last01/baseline/reference/typescript/0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee.mjs",
+      "sha256": "0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-typescript.mjs",
+      "sha256": "0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-typescript-profile/report.json",
+      "sha256": "6bcb697acc81edb30e0efb5b4172bf5e794ba1033bea4a9d8f20eea818f97a27"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-typescript-profile/profile.heapprofile",
+      "sha256": "7bb25eb658b39c4f4b8f8e1af65bd7d4a15293d3e7d0f234d82fd7fdd7291b59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-typescript-profile/summary.json",
+      "sha256": "6108979c0b7e7563235590a93ee0ccf2271dee3b055ddd93bc32410fe2c352a9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-baseline.result.json",
+      "sha256": "967588452436b5d402b3f414a575786f12a8d956b375eb63feff9966283622d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+      "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/final-last01/b2-program-equality/modules/lexer.mjs",
+      "sha256": "dcb0125d93015591a539320dd827b7d751d6985e69c44e51f7beefa43121e4a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-baseline.mjs",
+      "sha256": "dcb0125d93015591a539320dd827b7d751d6985e69c44e51f7beefa43121e4a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-baseline-profile/report.json",
+      "sha256": "a61c0fe52c5d40cac9944e815253d26327ef8099c2a5cf691c0da13c8d2e1a2a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-baseline-profile/profile.heapprofile",
+      "sha256": "cedf9dc0f1d80c3eae65d5192cfce12f83ee4da7ca1dd379060a3efc44a6459b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-baseline-profile/summary.json",
+      "sha256": "b380cd9b006cc3a4b94a135a36369f1c8aabb20725d625a905a4b88573ffd480"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-typescript.result.json",
+      "sha256": "6ab12cecd980cd40669410ca3e8fead8523b1c5045439d5928c4bb7ed4ef393a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/final-performance-last01/baseline/reference/typescript/2d9378dfdcacc5904f4b2ac65fd90ba1dcc4a51d9c68b00f6042c42aaeadbbba.mjs",
+      "sha256": "2d9378dfdcacc5904f4b2ac65fd90ba1dcc4a51d9c68b00f6042c42aaeadbbba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-typescript.mjs",
+      "sha256": "2d9378dfdcacc5904f4b2ac65fd90ba1dcc4a51d9c68b00f6042c42aaeadbbba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-typescript-profile/report.json",
+      "sha256": "4d313d07c31366f425f3d07e7a6c4df3b5858e438d0cb73689cf84adda6847a7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-typescript-profile/profile.heapprofile",
+      "sha256": "bf9f9171fa021b0a9bc93e2446b8ab11b82204936583f3e873ca8d71f84e9198"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-typescript-profile/summary.json",
+      "sha256": "20c32833af9352135cc79c94b55858e062b37c2f2f12683f788a686fbcbc3352"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-baseline.result.json",
+      "sha256": "8cd7cc5a742cc2820fcfba6db79493bdbd8b0112653cb6ebb27b50224a0ac37b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+      "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/final-last01/b2-program-equality/modules/test-map-set-ops.mjs",
+      "sha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-baseline.mjs",
+      "sha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-baseline-profile/report.json",
+      "sha256": "868eba835a7a37af7e8698093af63204a4286a17d018115e3e11b6b704319ee2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-baseline-profile/profile.heapprofile",
+      "sha256": "6c9a0ca079386532716fae9b9fcf94d3d00c83aae33c6fefd669ddd53d82b7df"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-baseline-profile/summary.json",
+      "sha256": "d49909378985135e55a1b2da63df31e455df753a7f4504529ca87e74a509a897"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-typescript.result.json",
+      "sha256": "cf387ce94c9ca692732a8f6daea5235aed3c6364b797754f3f130e5b6896dcf0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/final-performance-last01/baseline/reference/typescript/91812e3092688bdc609a2f9f21c1280120b8392eab7cd7148586702bf551e9bf.mjs",
+      "sha256": "91812e3092688bdc609a2f9f21c1280120b8392eab7cd7148586702bf551e9bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-typescript.mjs",
+      "sha256": "91812e3092688bdc609a2f9f21c1280120b8392eab7cd7148586702bf551e9bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-typescript-profile/report.json",
+      "sha256": "837ce331c368c2dde882484729dc8f0fa9161fb47a765017670c8a4178e3c449"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-typescript-profile/profile.heapprofile",
+      "sha256": "36e3eae64c5409a9f15af53d169b908e79cc4b3a17c1bdfc89882e054dd399c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-typescript-profile/summary.json",
+      "sha256": "9efe4c674913808c8d4e4d07470fa7fb6fc7ee628a45440c9f23de2d1221ec3b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/analysis/allocations.py",
+      "sha256": "f826c2be6d7f897411429a6446103adc164b8ba8c7b0e778c5bca24f7646b513"
+    }
+  ],
+  "policy": "Weights use samples[].size only. Tree selfSize disagreements remain explicit. Exclusive stages partition each sample by nearest actual named ancestor. Inclusive unions overlap; shared SCC names are worker labels, not individual operation attribution. Missing/deep anonymous boundaries remain unresolved. Allocation is estimated cumulative bytes, not retained memory, CPU or a predicted latency gain. The profile window includes imports, API load and first compilation."
+}

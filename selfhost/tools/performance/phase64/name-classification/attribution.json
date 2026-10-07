@@ -1,0 +1,58 @@
+{
+  "kind": "phase64-constant-name-allocation-attribution",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/name-classification/attribution.py",
+    "sha256": "015608f413d8d23767f548fe5f6a7ab0a220d7827936c06147a010aa9de81332"
+  },
+  "dataOnly": true,
+  "targetExecuted": false,
+  "scope": "Only samples whose leaf is a String.contains shared-SCC symbol; nearest non-String generated ancestor is attributed. This is sampled allocation, not complete allocation or CPU time, and SCC labels do not isolate every logical function.",
+  "rows": [
+    {
+      "case": "numeric-recurrence",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/numeric-recurrence-0-baseline-profile/profile.heapprofile",
+        "sha256": "eeee9ae35c0901e1c49ab009a3c0c9eac1dba40987235b22cf1e2b3cced4965b"
+      },
+      "sampledLeafBytes": 262208,
+      "leafSymbols": {
+        "$jd$String_46_contains_46_if$scc": 262208
+      },
+      "nearestNonStringGeneratedCaller": {
+        "$jd$j_95_layout_95_array_95_intrinsic": 262208
+      }
+    },
+    {
+      "case": "lexer",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/lexer-0-baseline-profile/profile.heapprofile",
+        "sha256": "cedf9dc0f1d80c3eae65d5192cfce12f83ee4da7ca1dd379060a3efc44a6459b"
+      },
+      "sampledLeafBytes": 1716080,
+      "leafSymbols": {
+        "$jd$String_46_contains_46_if$scc": 1716080
+      },
+      "nearestNonStringGeneratedCaller": {
+        "$jd$j_95_layout_95_array_95_intrinsic": 1310968,
+        "$jd$jd_95_native_95_layout": 262200,
+        "$jd$jd_95_is_95_view": 142912
+      }
+    },
+    {
+      "case": "test-map-set-ops",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/allocation/test-map-set-ops-0-baseline-profile/profile.heapprofile",
+        "sha256": "6c9a0ca079386532716fae9b9fcf94d3d00c83aae33c6fefd669ddd53d82b7df"
+      },
+      "sampledLeafBytes": 19271616,
+      "leafSymbols": {
+        "$jd$String_46_contains_46_if$scc": 19271616
+      },
+      "nearestNonStringGeneratedCaller": {
+        "$jd$jd_95_native_95_layout": 9701216,
+        "$jd$j_95_layout_95_array_95_intrinsic": 8783808,
+        "$jd$jd_95_is_95_view": 786592
+      }
+    }
+  ]
+}

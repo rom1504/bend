@@ -1,0 +1,49 @@
+{
+  "kind": "phase64-world-version3-admission-successor",
+  "targetsExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/cache-artifact/world-todos-controls.mjs",
+    "sha256": "c082ce2c2b4bcdf5b473b71c33ccbfc75d955d39e41df06d14d57634f5da65e4",
+    "bytes": 9771
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/cache-world-context-v3.mjs",
+    "sha256": "7ebdf9d27febd3846985c697fb49850095bb471ee806ab54a6264acdc6da204a",
+    "bytes": 11710
+  },
+  "edits": [
+    {
+      "old": "Usage: world-todos-controls.mjs DRIVER FRAME3 BASE OUTPUT.json",
+      "new": "Usage: cache-world-context-v3.mjs DRIVER FRAME3 BASE OUTPUT.json"
+    },
+    {
+      "old": "const original=fs.readFileSync(driverFile,'utf8'),project=path.resolve(path.dirname(driverFile),'..');",
+      "new": "const original=fs.readFileSync(driverFile,'utf8'),project=path.resolve(path.dirname(driverFile),'..');\nconst helperFile=path.join(path.dirname(driverFile),'base-cache-graph.mjs'),helperBytes=fs.readFileSync(helperFile),controllerBytes=fs.readFileSync(import.meta.filename);\nconst derivationFile=path.join(import.meta.dirname,'cache-world-context-v3.derivation.json'),derivationBytes=fs.readFileSync(derivationFile);"
+    },
+    {
+      "old": "check('world version2 unsigned fact admitted',()=>{const c=full(read());assert.equal(header.preparedWorldVersion,2);assert.ok(Number.isSafeInteger(c.preparedWorld.todos)&&c.preparedWorld.todos>=0&&c.preparedWorld.todos<=0xffffffff);});",
+      "new": "check('world version3 unsigned facts admitted',()=>{const c=full(read());assert.equal(header.preparedWorldVersion,3);for(const key of ['todos','checkedBound'])assert.ok(Number.isSafeInteger(c.preparedWorld[key])&&c.preparedWorld[key]>=0&&c.preparedWorld[key]<=0xffffffff);});"
+    },
+    {
+      "old": "check('world version1 capability rejected',()=>{const c=read(frame({...header,preparedWorldVersion:1}));assert.equal(c.preparedWorld,undefined);assert.ok(c.checkedPrefixState);assert.ok(c.frontendReadyState);});",
+      "new": "check('world version1 capability rejected',()=>{const c=read(frame({...header,preparedWorldVersion:1}));assert.equal(c.preparedWorld,undefined);assert.ok(c.checkedPrefixState);assert.ok(c.frontendReadyState);});\ncheck('world version2 capability rejected',()=>{const c=read(frame({...header,preparedWorldVersion:2}));assert.equal(c.preparedWorld,undefined);assert.ok(c.checkedPrefixState);assert.ok(c.frontendReadyState);});"
+    },
+    {
+      "old": "check('legacy world missing TODO fact rejected by version2 host',()=>{const c=read(editPrepared(w=>{const row=w[3][w[2][2]-w[1]];assert.equal(row.length,8);row.pop();}));assert.equal(c.preparedWorld,undefined);assert.ok(c.checkedPrefixState);assert.ok(c.frontendReadyState);});",
+      "new": "check('legacy world missing both facts rejected by version3 host',()=>{const c=read(editPrepared(w=>{const row=w[3][w[2][2]-w[1]];assert.equal(row.length,9);row.pop();row.pop();}));assert.equal(c.preparedWorld,undefined);assert.ok(c.checkedPrefixState);assert.ok(c.frontendReadyState);});\ncheck('legacy world missing checkedBound rejected by version3 host',()=>{const c=read(editPrepared(w=>{const row=w[3][w[2][2]-w[1]];assert.equal(row.length,9);row.pop();}));assert.equal(c.preparedWorld,undefined);assert.ok(c.checkedPrefixState);assert.ok(c.frontendReadyState);});"
+    },
+    {
+      "old": "assert.equal(row.length,8);row[7]=value;",
+      "new": "assert.equal(row.length,9);row[7]=value;"
+    },
+    {
+      "old": "check('optional digest mismatch drops all acceleration',",
+      "new": "for(const value of [-1,0.5,4294967296,'0',{},null])check('malformed checkedBound fact '+JSON.stringify(value),()=>{\n  const c=read(editPrepared(w=>{const row=w[3][w[2][2]-w[1]];assert.equal(row.length,9);row[8]=value;}));\n  assert.ok(c.book);for(const key of ['checkedPrefixState','freshPrefixState','preparedWorld','frontendReadyState'])assert.equal(c[key],undefined);\n});\ncheck('optional digest mismatch drops all acceleration',"
+    },
+    {
+      "old": "const report={schema:'phase64-cache-todos-admission-controls-1'",
+      "new": "assert.equal(sha(fs.readFileSync(driverFile)),sha(original),'driver unchanged');assert.equal(sha(fs.readFileSync(helperFile)),sha(helperBytes),'graph helper unchanged');assert.equal(sha(fs.readFileSync(cacheFile)),sha(bytes),'frame unchanged');assert.equal(sha(fs.readFileSync(baseFile)),info.baseSha256,'Base unchanged');assert.equal(sha(fs.readFileSync(import.meta.filename)),sha(controllerBytes),'controller unchanged');assert.equal(sha(fs.readFileSync(derivationFile)),sha(derivationBytes),'derivation unchanged');\nconst report={schema:'phase64-cache-checked-context-admission-controls-3',helper:{file:helperFile,sha256:sha(helperBytes)},controller:{file:import.meta.filename,sha256:sha(controllerBytes)},derivation:{file:derivationFile,sha256:sha(derivationBytes)}"
+    }
+  ],
+  "scope": "Retain prior TODO/count corruption, identity, coupling, persistence and legacy transport controls; require world version3 with both scalar facts. Reject version2 and old rows lacking checkedBound without losing other independently valid acceleration; malformed checkedBound invalidates optional graph. Bind imported baseline graph helper and immutable inputs. No compiler execution."
+}

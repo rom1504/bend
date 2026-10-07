@@ -227,9 +227,17 @@ def jd_float_literal(+bits: U32) -> String:
 # Native ownership is a property of the checked datatype, not a constructor
 # spelling. The direct driver separately rejects unsupported/shadowed Base ABI.
 @unsafe
+def jd_native_layout_name(+name: String) -> Bool:
+  kc(Bool, String.eq(name, "Nat") || String.eq(name, "Bool") || String.eq(name, "U32") || String.eq(name, "F32") || String.eq(name, "Char") || String.eq(name, "String") || String.eq(name, "Array"),
+    u => True{},
+    u => kc(Bool, String.contains(name, "|"),
+      v => String.contains("|Nat|Bool|U32|F32|Char|String|Array|", "|" ++ name ++ "|"),
+      v => False{}))
+
+@unsafe
 def jd_native_layout(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
   String.eq(tg(ty), "ADT") && db(lookup(book, nm(ty))) &&
-    String.contains("|Nat|Bool|U32|F32|Char|String|Array|", "|" ++ nm(ty) ++ "|")
+    jd_native_layout_name(nm(ty))
 
 @unsafe
 def jd_ctor_values(+book: List<&2,KDef>, +env: List<&2,KTerm>, +fields: List<&2,KTerm>, +tel: KTerm) -> List<&2,String>:

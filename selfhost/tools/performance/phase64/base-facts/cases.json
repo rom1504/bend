@@ -1,0 +1,19 @@
+{
+  "kind": "phase64-original-prefix-todo-controls",
+  "status": "planned-controls-not-executed",
+  "baseline": "fd01066",
+  "observation": "Compare complete private ready-world DResult with ordinary driver_program_checked, preserve input state and emitted module bytes where compilation succeeds.",
+  "cases": [
+    {"id":"ordinary-base","prefix":"actual prepared Base","suffix":"Numeric, MapSet, Lexer","expectation":"stored count equals driver_todos(prefix); exact successful DResult"},
+    {"id":"prefix-todo","prefix":"actual Base plus native Def whose U32 body is Hol TODO","suffix":"empty or successful ordinary source","expectation":"preparation can remain ready; stored TODO count is nonzero; final completion reports identical count"},
+    {"id":"suffix-todo","prefix":"actual prepared Base","suffix":"Def with Hol TODO body","expectation":"prefix count plus final suffix count matches full original-event fold"},
+    {"id":"suffix-law-fill","prefix":"actual prepared Base","suffix":"same-name U32 law then U32 literal fill","expectation":"final event selection removes open law; no spurious TODO"},
+    {"id":"duplicate-suffix","prefix":"actual prepared Base","suffix":"two full same-name definitions plus later TODO","expectation":"duplicate checker error preempts TODO completion"},
+    {"id":"check-failure-before-todo","prefix":"actual prepared Base","suffix":"type-mismatched definition then TODO","expectation":"same first checker error, diagnostic and failed world"},
+    {"id":"cross-prefix-fill","prefix":"actual prepared Base","suffix":"law/fill or definition reusing prefix name","expectation":"no split-count admission; ordinary full-book completion path"},
+    {"id":"hash-collision","prefix":"actual Base containing Nat","suffix":"definition phase63.collision.RTPZTk","expectation":"same FNV hash retains old world replay; split TODO count remains valid for distinct names"},
+    {"id":"false-ready","prefix":"actual prepared Base","suffix":"valid source with non-ready load carrier","expectation":"ordinary checker and full-book TODO scan"},
+    {"id":"old-world-version","prefix":"legacy six-field version-one prepared world","suffix":"valid source","expectation":"host drops optional world; other valid prefix state remains usable"},
+    {"id":"malformed-count","prefix":"world with missing, negative, fractional, over-U32, string or coercion-object todos","suffix":"valid source","expectation":"no version-two optional-world admission"}
+  ]
+}

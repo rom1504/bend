@@ -1,0 +1,69 @@
+{
+  "kind": "phase64-stage-factory-successor",
+  "dataOnly": true,
+  "targetExecuted": false,
+  "derivations": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/stages/make-method.py",
+        "sha256": "a4d60e965794451e08a77318348782d1afc01644cb809e27ee09d34309c7ae32"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/stages/make-method.py",
+        "sha256": "9f983b4d2a4f0f82678064e9701b9d09c85a631b9d93bb3145e341cd24c30744"
+      },
+      "edits": [
+        {
+          "old": "selfhost/build/phase63",
+          "new": "selfhost/build/phase64",
+          "count": 1
+        },
+        {
+          "old": "Phase63 diagnostic successor",
+          "new": "Phase64 diagnostic successor",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/stages/derive-driver.py",
+        "sha256": "846f73ff79ec188103ce7de9d9db5106f4403dc6d9deeca8af86e58d523e1c61"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/stages/derive-driver.py",
+        "sha256": "0cca07ba1f3b9df473215fac79a89dc6ef95b4ee5a2c21268e68c035380fdabb"
+      },
+      "edits": [
+        {
+          "old": "selfhost/build/phase63",
+          "new": "selfhost/build/phase64",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/stages/clock.mjs",
+        "sha256": "e2cc301aa024c65aa126477b44e570c8ef0f0f0724f8d057e0e2e95f5ab3d125"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/stages/clock.mjs",
+        "sha256": "e2cc301aa024c65aa126477b44e570c8ef0f0f0724f8d057e0e2e95f5ab3d125"
+      },
+      "edits": []
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/stages/summarize.py",
+        "sha256": "2954c0565a68039295183f6b3683881f9fcc786330fd5b5c1b7b3ca24f28e1a7"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/stages/summarize.py",
+        "sha256": "2954c0565a68039295183f6b3683881f9fcc786330fd5b5c1b7b3ca24f28e1a7"
+      },
+      "edits": []
+    }
+  ],
+  "scope": "Preserve Phase62/63 timers, ordinary owned inspect path, synchronous API observers and exact inverse insertion proof; relocate Phase64 writable boundary only."
+}

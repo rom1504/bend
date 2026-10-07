@@ -1,0 +1,65 @@
+{
+  "kind": "phase64-exact-checked-context-successor",
+  "targetsExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/prefix-world-todos-v3.mjs",
+    "sha256": "ee76f29eb9bd1618f46adf11766e28d41ed6c176fb196409c16d863f0867891a",
+    "bytes": 24941
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/prefix-world-context-v4.mjs",
+    "sha256": "a2e50af5d9bd45041e594fec9b62548c38bd2a48dcd40333cf38d491e46638ba",
+    "bytes": 29865
+  },
+  "edits": [
+    {
+      "old": "kind:'phase64-prefix-todo-completion-controls'",
+      "new": "kind:'phase64-prefix-checked-context-controls'"
+    },
+    {
+      "old": "pin(path.join(import.meta.dirname,'prefix-world-todos-v3.derivation.json'));",
+      "new": "pin(path.join(import.meta.dirname,'prefix-world-todos-v3.derivation.json'));pin(path.join(import.meta.dirname,'prefix-world-context-v4.derivation.json'));"
+    },
+    {
+      "old": "'$index_hash$','$driver_todos$'];",
+      "new": "'$index_hash$','$driver_todos$','$book_context$','$book_context_world$'];"
+    },
+    {
+      "old": "\\nexport const phase61Prefix={",
+      "new": "\\nconst $p64ContextBooks=[],$p64OldNormMaxBook=$norm_max_book$;let $p64ContextActive=false;$norm_max_book$=(book)=>{if($p64ContextActive)$p64ContextBooks.push(book);return $p64OldNormMaxBook(book);};function $p64Context(book,load,prepared){if($p64ContextActive)throw Error(\"Nested context capture\");$p64ContextActive=true;try{return run_loop($book_context_world$(book,load,prepared));}finally{$p64ContextActive=false;}}\\nexport const phase61Prefix={context:(b,l,p)=>$p64Context(b,l,p),contextBooks:$p64ContextBooks,"
+    },
+    {
+      "old": "report.immutableWorld={tag:prepared.$,sha256:preparedHash,todos:prepared.todos};assert.equal(prepared.todos,Q.todos(base.book),'Original Base TODO fact');save();",
+      "new": "report.immutableWorld={tag:prepared.$,sha256:preparedHash,todos:prepared.todos};assert.equal(prepared.todos,Q.todos(base.book),'Original Base TODO fact');save();\n assert.equal(typeof native.book_context_world,'function');assert.equal(typeof native.book_context,'function');assert.equal(prepared.checkedBound,Q.bound(prepared.checked),'Exact checked Base maximum');report.immutableWorld.checkedBound=prepared.checkedBound;report.contextControls=[];\n function contextRow(id,program,load,pw,optimized){\n  if(program.error)return;\n  const book=program.book,before=digest({book,load,pw}),expected=native.book_context(book),at=Q.contextBooks.length;\n  const actual=Q.context(book,load,pw),scans=Q.contextBooks.slice(at),assembled=array(book),saved=array(pw.checked),tail=assembled.slice(saved.length);\n  assert.deepEqual(actual,expected,id+' entire context/index/bound');assert.equal(digest({book,load,pw}),before,id+' immutable context inputs');\n  if(optimized){assert.deepEqual(assembled.slice(0,saved.length),[...saved].reverse(),id+' exact leading checked Base');assert.equal(scans.length,2,id+' raw suffix and checked suffix maximum only');assert.deepEqual(scans[0],load.suffix,id+' source-suffix admission maximum');assert.deepEqual(scans[1],list(tail),id+' actual assembled suffix maximum');}\n  const cache=array(actual)[0];assert.equal(cache.kind,'BookCache',id+' context sentinel');assert.equal(cache.arity,Q.bound(book),id+' exact full-book bound');\n  report.contextControls.push({id,pass:true,optimized,definitionCount:assembled.length,checkedPrefixCount:saved.length,scannedDefinitionCounts:scans.map(b=>array(b).length),bound:cache.arity,syntheticDefinitions:tail.filter(d=>d.name.includes('~')).map(d=>d.name),contextSha256:digest(actual)});save();\n }\n"
+    },
+    {
+      "old": "assert.deepEqual(native.check_program_diagnostic_world(load,list([]),readyWorld),Q.complete(list(book),full),id+' optimized complete program');",
+      "new": "const program=native.check_program_diagnostic_world(load,list([]),readyWorld);assert.deepEqual(program,Q.complete(list(book),full),id+' optimized complete program');contextRow(id,program,load,readyWorld,worldCounts['$base_prefix_resume_world$']===1);"
+    },
+    {
+      "old": "assert.deepEqual(native.check_program_diagnostic_world(load,list([]),prepared),Q.complete(load.trace.result.book,full),'native carrier optimized completion');",
+      "new": "const program=native.check_program_diagnostic_world(load,list([]),prepared);assert.deepEqual(program,Q.complete(load.trace.result.book,full),'native carrier optimized completion');contextRow('native-carrier-'+iteration+'-'+path.basename(sourceFile.file),program,load,prepared,true);"
+    },
+    {
+      "old": "assert.deepEqual(actual,expected,id+' complete result');assert.equal(digest(pw),before,id+' immutable prepared world');",
+      "new": "assert.deepEqual(actual,expected,id+' complete result');assert.equal(digest(pw),before,id+' immutable prepared world');contextRow(id,actual,load,pw,ready);"
+    },
+    {
+      "old": " report.prepareCounts=prepareCounts;",
+      "new": " // Real source specializations must contribute their generated IDs and terms.\n const templateSources=[['dependent-template','tests/comptime/dep_params.bend'],['nested-template','tests/comptime/nested_arg.bend']];\n for(const [id,relative]of templateSources){const source=pin(path.resolve(import.meta.dirname,'../../../../..',relative)),graph=D.discoverSources(api,source.file);for(const f of graph.files)pin(f);assert.equal(graph.loadTrace.result.error,'',id+' frontend');const all=array(graph.loadTrace.result.book);assert(Q.exact(list(all.slice(0,prefix.length)),base.book),id+' exact Base');row(id,all,prefix,true);const evidence=report.contextControls.find(x=>x.id===id);assert(evidence&&evidence.optimized&&evidence.syntheticDefinitions.length>0,id+' generated specialization covered');}\n // These deliberately malformed books only exercise explicit refusal guards.\n // Arbitrary same-length forged books are outside the private owned API contract.\n const emptyLoad={$:'FPrefixLoad',trace:{$:'FLoadTrace',result:{$:'FResult',book:base.book,error:'',imports:list([])},done:list([]),sources:list([])},prefix:base.book,suffix:list([]),ready:true};\n const arbitrary=list([dType,nested]);\n contextRow('fallback-raw-unready',{book:arbitrary,error:''},{...emptyLoad,ready:false},prepared,false);\n contextRow('fallback-load-error',{book:arbitrary,error:''},{...emptyLoad,trace:{...emptyLoad.trace,result:{...emptyLoad.trace.result,error:'fixture loader error'}}},prepared,false);\n contextRow('fallback-short-assembled',{book:list([]),error:''},emptyLoad,prepared,false);\n contextRow('fallback-cached-assembled',{book:native.book_context(arbitrary),error:''},emptyLoad,prepared,false);\n const refusedWorld=freeze(Q.prepareWorld(base.book,{...state,ready:false}));\n contextRow('fallback-refused-world',{book:arbitrary,error:''},emptyLoad,refusedWorld,false);\n assert(report.contextControls.some(x=>x.optimized),'No checked-context admission exercised');assert(report.contextControls.some(x=>!x.optimized),'No checked-context fallback exercised');\n\n report.prepareCounts=prepareCounts;"
+    },
+    {
+      "old": "  const cache=array(actual)[0];",
+      "new": "  if(!optimized){const alreadyCached=assembled[0]?.kind==='BookCache';assert.equal(scans.length,alreadyCached?1:2,id+' generic fallback scan count');assert.deepEqual(scans[0],load.suffix,id+' unchanged admission scan');if(!alreadyCached)assert.deepEqual(scans[1],book,id+' full assembled fallback scan');}\n  const cache=array(actual)[0];"
+    },
+    {
+      "old": "const direct=Q.worldLoad(prepared,load);assert.deepEqual(direct,full,'native carrier immutable world');",
+      "new": "const directBefore=counts(),direct=Q.worldLoad(prepared,load),directCounts=delta(directBefore,counts());assert.deepEqual(direct,full,'native carrier immutable world');"
+    },
+    {
+      "old": "contextRow('native-carrier-'+iteration+'-'+path.basename(sourceFile.file),program,load,prepared,true);",
+      "new": "contextRow('native-carrier-'+iteration+'-'+path.basename(sourceFile.file),program,load,prepared,directCounts['$base_prefix_resume_world$']===1);"
+    }
+  ],
+  "scope": "Preserves every TODO-v3 checker/completion/admission assertion. Adds complete context/index/bound comparisons on actual successful owned results, exact producer fact, diagnostic maximum-scan inputs, real dependent/nested specializations, existing high-floor cases, and explicit refusal guards. No arbitrary same-length forged private-book equivalence claim. No compiler execution during derivation."
+}

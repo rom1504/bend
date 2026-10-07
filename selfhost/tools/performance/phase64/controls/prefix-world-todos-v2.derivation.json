@@ -1,0 +1,53 @@
+{
+  "kind": "phase64-prefix-world-todo-control-derivation",
+  "targetsExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/prefix-world-v1.mjs",
+    "sha256": "0497dc24fd81017d48a444eaffc031e3bcda1ab77586705198037c2bb79e8ec3",
+    "bytes": 19566
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/prefix-world-todos-v2.mjs",
+    "sha256": "54978f7164b6f530893a763103af04310851687d6fda3aef5482f6a116a3b4bc",
+    "bytes": 23895
+  },
+  "edits": [
+    {
+      "old": "kind:'phase64-immutable-base-world-controls'",
+      "new": "kind:'phase64-prefix-todo-completion-controls'"
+    },
+    {
+      "old": "'$base_prefix_resume_world$','$index_hash$'];",
+      "new": "'$base_prefix_resume_world$','$index_hash$','$driver_todos$'];"
+    },
+    {
+      "old": "const suffix='\\nconst $p61PrefixCounts=",
+      "new": "const suffix='\\nconst $p64TodoBooks=[],$p64PriorTodos=$driver_todos$;$driver_todos$=(book)=>{$p64TodoBooks.push(book);return $p64PriorTodos(book);};\\nconst $p61PrefixCounts="
+    },
+    {
+      "old": "export const phase61Prefix={hash:",
+      "new": "export const phase61Prefix={todos:b=>run_loop($driver_todos$(b)),todoBooks:$p64TodoBooks,hash:"
+    },
+    {
+      "old": "report.immutableWorld={tag:prepared.$,sha256:preparedHash};save();",
+      "new": "report.immutableWorld={tag:prepared.$,sha256:preparedHash,todos:prepared.todos};assert.equal(prepared.todos,Q.todos(base.book),'Original Base TODO fact');save();"
+    },
+    {
+      "old": "assert.deepEqual(direct,full,id+' immutable-world entire DChecking');",
+      "new": "assert.deepEqual(direct,full,id+' immutable-world entire DChecking');assert.deepEqual(native.check_program_diagnostic_world(load,list([]),readyWorld),Q.complete(list(book),full),id+' optimized complete program');"
+    },
+    {
+      "old": "assert.deepEqual(direct,full,'native carrier immutable world');",
+      "new": "assert.deepEqual(direct,full,'native carrier immutable world');assert.deepEqual(native.check_program_diagnostic_world(load,list([]),prepared),Q.complete(load.trace.result.book,full),'native carrier optimized completion');"
+    },
+    {
+      "old": " report.prepareCounts=prepareCounts;",
+      "new": "\n report.todoControls=[];\n const atom64=(tag,name='',id=0,kids=[])=>({$:'KTerm',tag,name,id,quant:0,kids:list(kids),removed:list([]),originBegin:23,originEnd:29});\n const literal64=n=>({$:'KLiteral',kind:'U32',number:n,text:'',originBegin:31,originEnd:32});\n const def64=(name,value,nativeFlag=false)=>({$:'KDef',name,kind:'Def',arity:0,templates:0,typ:atom64('Ref','U32'),value,ctors:list([]),native:nativeFlag,unsafe:nativeFlag});\n const hole64=()=>atom64('Hol','TODO'),suffixHole=def64('phase64.suffix.todo',hole64());\n function todoRow(id,p,s,pw,expectedTodos,visibleError='',ready=true){\n  const whole=list([...p,...s]),full=Q.full(whole),expected=Q.complete(whole,full),before=digest(pw);\n  const load={$:'FPrefixLoad',trace:{$:'FLoadTrace',result:{$:'FResult',book:whole,error:'',imports:list([])},done:list([]),sources:list([])},prefix:list(p),suffix:list(s),ready};\n  assert.equal(Q.todos(whole),expectedTodos,id+' independent TODO count');\n  const at=Q.todoBooks.length,actual=native.check_program_diagnostic_world(load,list([]),pw),counted=Q.todoBooks.slice(at);\n  assert.deepEqual(actual,expected,id+' complete result');assert.equal(digest(pw),before,id+' immutable prepared world');\n  if(visibleError){assert(actual.error.includes(visibleError),id+' selected first error');assert(!actual.error.includes('TODO'),id+' checker error before TODO');assert.equal(counted.length,0,id+' failed check must not count TODO');}\n  else{assert.equal(full.result.error,'',id+' checker accepted');assert.equal(counted.length,1,id+' one final count');assert.deepEqual(counted[0],ready?list(s):whole,id+' only actual suffix counted on admitted completion');if(expectedTodos)assert(actual.error.includes(expectedTodos+' TODO'),id+' TODO completion diagnostic');else assert.equal(actual.error,'',id+' complete');}\n  report.todoControls.push({id,pass:true,ready,expectedTodos,error:actual.error,outcome:digest(actual),countCalls:counted.length});save();\n }\n todoRow('suffix-TODO',prefix,[suffixHole],prepared,1);\n todoRow('suffix-law-fill',prefix,[def64('phase64.claim',atom64('Absent')),def64('phase64.claim',literal64(7))],prepared,0);\n todoRow('duplicate-before-TODO',prefix,[def64('phase64.duplicate',literal64(7)),def64('phase64.duplicate',literal64(8)),suffixHole],prepared,1,'duplicate declaration');\n todoRow('undefined-before-TODO',prefix,[def64('phase64.broken',atom64('Ref','phase64.missing')),suffixHole],prepared,1,'undefined name');\n todoRow('false-ready-full-completion',prefix,[suffixHole],prepared,1,'',false);\n const todoPrefix=[...prefix,def64('phase64.prefix.todo',hole64(),true)],todoState=Q.prepare(list(todoPrefix));\n assert(todoState.ready,'Actual prefix TODO producer must admit; a refusal is not a TODO-fact pass');\n const todoWorld=freeze(Q.prepareWorld(list(todoPrefix),todoState));assert.equal(todoWorld.todos,1,'Nonzero original prefix TODO fact');\n todoRow('prefix-TODO',todoPrefix,[],todoWorld,1);\n todoRow('prefix-and-suffix-TODO',todoPrefix,[suffixHole],todoWorld,2);\n const actualTodoSources=[['typed-suffix-TODO','selfhost/tests/phase8-bootstrap/fixtures/todo.bend',1],['typed-law-fill','selfhost/tests/frontend/phase5-imported-freshness/ordinary-law-fill.bend',0]];\n for(const [id,relative,want]of actualTodoSources){const source=pin(path.resolve(import.meta.dirname,'../../../../..',relative)),graph=D.discoverSources(api,source.file);for(const f of graph.files)pin(f);assert.equal(graph.loadTrace.result.error,'',id+' frontend');const all=array(graph.loadTrace.result.book);assert(Q.exact(list(all.slice(0,prefix.length)),base.book),id+' exact Base');todoRow(id,prefix,all.slice(prefix.length),prepared,want);}\n\n report.prepareCounts=prepareCounts;"
+    },
+    {
+      "old": "pin(path.join(import.meta.dirname,'derivation.json'));",
+      "new": "pin(path.join(import.meta.dirname,'derivation.json'));pin(path.join(import.meta.dirname,'prefix-world-todos-v2.derivation.json'));"
+    }
+  ],
+  "scope": "Retain every world-v1 oracle; additionally compare actual optimized DResult entry, count demand after checker acceptance, original-prefix and suffix TODO totals, law/fill and first-error ordering, and two maintained real parser fixtures."
+}

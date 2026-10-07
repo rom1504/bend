@@ -1,0 +1,257 @@
+--- a/selfhost/src/core/term.bend
++++ b/selfhost/src/core/term.bend
+@@ -19,6 +19,7 @@
+   KTerm{+tag: String, +name: String, +id: U32, +quant: U32, +kids: List<&2, KTerm>, +removed: List<&2, String>, +originBegin: U32, +originEnd: U32}
+   KLambda{+name: String, +id: U32, +quant: U32, +kids: List<&2,KTerm>, +removed: List<&2,String>, +originBegin: U32, +originEnd: U32, +quantityPresent: Bool}
+   KLiteral{+kind: String, +number: U32, +text: String, +originBegin: U32, +originEnd: U32}
++  KAnnotation{+term: KTerm, +typ: KTerm}
+ 
+ type KDef is Data:
+   KDef{+name: String, +kind: String, +arity: U32, +templates: U32, +typ: KTerm, +value: KTerm, +ctors: List<&2, KDef>, +native: Bool, +unsafe: Bool}
+@@ -48,6 +49,8 @@
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, originBegin, originEnd}:
+       tag
++    case KAnnotation{term, typ}:
++      "Ann"
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       "Lam"
+     case KLiteral{kind, number, text, literalBegin, literalEnd}:
+@@ -60,6 +63,8 @@
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, originBegin, originEnd}:
+       name
++    case KAnnotation{term, typ}:
++      ""
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       name
+     case KLiteral{kind, number, text, literalBegin, literalEnd}:
+@@ -72,6 +77,8 @@
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, originBegin, originEnd}:
+       id
++    case KAnnotation{term, typ}:
++      0
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       id
+     case KLiteral{kind, number, text, literalBegin, literalEnd}:
+@@ -84,6 +91,8 @@
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, originBegin, originEnd}:
+       quant
++    case KAnnotation{term, typ}:
++      0
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       quant
+     case KLiteral{kind, number, text, literalBegin, literalEnd}:
+@@ -96,6 +105,8 @@
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, originBegin, originEnd}:
+       kids
++    case KAnnotation{term, typ}:
++      Con{term, Con{typ, Nil{}}}
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       kids
+     case KLiteral{kind, number, text, literalBegin, literalEnd}:
+@@ -108,6 +119,8 @@
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, originBegin, originEnd}:
+       removed
++    case KAnnotation{term, typ}:
++      Nil{}
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       removed
+     case KLiteral{kind, number, text, literalBegin, literalEnd}:
+@@ -129,7 +142,16 @@
+   +t: KTerm,
+   +n: U32,
+ ) -> KTerm:
+-  terms_at(ks(t), n)
++  match t:
++    case KAnnotation{term, typ}:
++      kc(KTerm, U32.is_eq(n, 0), u => term,
++        u => kc(KTerm, U32.is_eq(n, 1), u => typ, u => atom("Absent")))
++    case KTerm{tag, name, id, quant, kids, removed, begin, end}:
++      terms_at(kids, n)
++    case KLambda{name, id, quant, kids, removed, begin, end, present}:
++      terms_at(kids, n)
++    case KLiteral{kind, number, text, begin, end}:
++      atom("Absent")
+ 
+ @unsafe
+ def var(
+@@ -363,6 +385,8 @@
+       kc(KTerm, List.is_empty(&2, KTerm, kids) && Bool.not(String.eq(tag, "App")),
+         u => t,
+         u => core_rebuild(KTerm{tag, name, n, q, subst_terms(kids, id0, v), removed, originBegin, originEnd}))
++    case KAnnotation{term, typ}:
++      KAnnotation{subst(term, id0, v), subst(typ, id0, v)}
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       core_rebuild(KLambda{name, id, quant, subst_terms(kids, id0, v), removed, begin, end, present})
+     case KLiteral{kind, number, text, literalBegin, literalEnd}:
+@@ -428,6 +452,8 @@
+             u => kc(Bool, String.eq(name, "") && U32.is_eq(id, 0) && U32.is_eq(quant, 0), u => core_subst_stable_app(kids, removed), u => False{}),
+             u => True{}),
+           u => False{}))
++    case KAnnotation{term, typ}:
++      core_subst_stable(term) && core_subst_stable(typ)
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       core_subst_stable_terms(kids)
+     case KLiteral{kind, number, text, literalBegin, literalEnd}:
+@@ -551,6 +577,8 @@
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, originBegin, originEnd}:
+       originBegin
++    case KAnnotation{term, typ}:
++      0
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       begin
+     case KLiteral{kind, number, text, literalBegin, literalEnd}:
+@@ -561,6 +589,8 @@
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, originBegin, originEnd}:
+       originEnd
++    case KAnnotation{term, typ}:
++      0
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       end
+     case KLiteral{kind, number, text, literalBegin, literalEnd}:
+@@ -578,6 +608,8 @@
+       KTerm{tag, name, id, quant, newKids, removed, originBegin, originEnd}
+ 
+ # Explicit replacement does not guess or inherit an occurrence.
++    case KAnnotation{term, typ}:
++      KTerm{"Ann", "", 0, 0, newKids, Nil{}, 0, 0}
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       KLambda{name, id, quant, newKids, removed, begin, end, present}
+     case KLiteral{kind, number, text, literalBegin, literalEnd}:
+@@ -588,6 +620,8 @@
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, oldBegin, oldEnd}:
+       KTerm{tag, name, id, quant, kids, removed, newBegin, newEnd}
++    case KAnnotation{term, typ}:
++      KTerm{"Ann", "", 0, 0, Con{term, Con{typ, Nil{}}}, Nil{}, newBegin, newEnd}
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       KLambda{name, id, quant, kids, removed, newBegin, newEnd, present}
+     case KLiteral{kind, number, text, literalBegin, literalEnd}:
+@@ -603,6 +637,8 @@
+ def core_literal(+t: KTerm) -> Bool:
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, begin, end}: False{}
++    case KAnnotation{term, typ}:
++      False{}
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       False{}
+     case KLiteral{kind, number, text, begin, end}: True{}
+@@ -611,6 +647,8 @@
+ def kl_number(+t: KTerm) -> U32:
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, begin, end}: 0
++    case KAnnotation{term, typ}:
++      0
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       0
+     case KLiteral{kind, number, text, begin, end}: number
+@@ -619,6 +657,8 @@
+ def kl_text(+t: KTerm) -> String:
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, begin, end}: ""
++    case KAnnotation{term, typ}:
++      ""
+     case KLambda{name, id, quant, kids, removed, begin, end, present}:
+       ""
+     case KLiteral{kind, number, text, begin, end}: text
+@@ -637,6 +677,8 @@
+ def k_quantity_present(+t: KTerm) -> Bool:
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, begin, end}: String.eq(tag, "Lam")
++    case KAnnotation{term, typ}:
++      False{}
+     case KLambda{name, id, quant, kids, removed, begin, end, present}: present
+     case KLiteral{kind, number, text, begin, end}: False{}
+ 
+@@ -646,6 +688,8 @@
+   match t:
+     case KTerm{tag, oldName, oldId, oldQuant, oldKids, oldRemoved, oldBegin, oldEnd}:
+       KTerm{tag, name, id, quant, kids, removed, begin, end}
++    case KAnnotation{term, typ}:
++      KTerm{"Ann", name, id, quant, kids, removed, begin, end}
+     case KLambda{oldName, oldId, oldQuant, oldKids, oldRemoved, oldBegin, oldEnd, present}:
+       KLambda{name, id, quant, kids, removed, begin, end, present}
+     case KLiteral{kind, number, text, oldBegin, oldEnd}: t
+@@ -656,6 +700,8 @@
+   match t:
+     case KTerm{tag, name, id, quant, oldKids, removed, begin, end}:
+       kc(KTerm, String.eq(tag, "Lam"), u => KLambda{name, id, quant, kids, removed, begin, end, False{}}, u => KTerm{tag, name, id, quant, kids, removed, begin, end})
++    case KAnnotation{term, typ}:
++      KTerm{"Ann", "", 0, 0, kids, Nil{}, 0, 0}
+     case KLambda{name, id, quant, oldKids, removed, begin, end, present}:
+       KLambda{name, id, quant, kids, removed, begin, end, False{}}
+     case KLiteral{kind, number, text, begin, end}: t
+@@ -667,6 +713,8 @@
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, begin, end}:
+       kc(KTerm, String.eq(tag, "Lam"), u => KLambda{name, id, quant, kids, removed, begin, end, present}, u => t)
++    case KAnnotation{term, typ}:
++      t
+     case KLambda{name, id, quant, kids, removed, begin, end, oldPresent}:
+       KLambda{name, id, quant, kids, removed, begin, end, present}
+     case KLiteral{kind, number, text, begin, end}: t
+--- a/selfhost/src/check/annotate.bend
++++ b/selfhost/src/check/annotate.bend
+@@ -125,7 +125,7 @@
+   +t: KTerm,
+   +ty: KTerm,
+ ) -> KTerm:
+-  kt("Ann", "", 0, 0, Con{t, Con{ty, Nil{}}})
++  KAnnotation{t, ty}
+ 
+ @unsafe
+ def annotate_book(
+--- a/selfhost/src/check/prefix-state.bend
++++ b/selfhost/src/check/prefix-state.bend
+@@ -21,6 +21,8 @@
+ def prefix_state_variant(+t: KTerm) -> U32:
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, begin, end}: 0
++    case KAnnotation{term, typ}:
++      3
+     case KLambda{name, id, quant, kids, removed, begin, end, present}: 1
+     case KLiteral{kind, number, text, begin, end}: 2
+ 
+--- a/selfhost/src/load/prefix.bend
++++ b/selfhost/src/load/prefix.bend
+@@ -15,6 +15,8 @@
+ def f_fresh_prefix_variant(+t: KTerm) -> U32:
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed, begin, end}: 0
++    case KAnnotation{term, typ}:
++      3
+     case KLambda{name, id, quant, kids, removed, begin, end, present}: 1
+     case KLiteral{kind, number, text, begin, end}: 2
+ 
+--- a/selfhost/src/front/elaborate.bend
++++ b/selfhost/src/front/elaborate.bend
+@@ -203,6 +203,10 @@
+       KTerm{tag, name, id, quant, f_pattern_values(kids, begin, end), removed,
+         f_choose(U32, U32.is_gt(begin, 0), u => begin, u => oldBegin),
+         f_choose(U32, U32.is_gt(begin, 0), u => end, u => oldEnd)}
++    case KAnnotation{term, typ}:
++      KTerm{"Ann", "", 0, 0, f_pattern_values(Con{term, Con{typ, Nil{}}}, begin, end), Nil{},
++        f_choose(U32, U32.is_gt(begin, 0), u => begin, u => 0),
++        f_choose(U32, U32.is_gt(begin, 0), u => end, u => 0)}
+     case KLambda{name, id, quant, kids, removed, oldBegin, oldEnd, present}:
+       KLambda{name, id, quant, f_pattern_values(kids, begin, end), removed,
+         f_choose(U32, U32.is_gt(begin, 0), u => begin, u => oldBegin),
+--- a/selfhost/src/front/parser.bend
++++ b/selfhost/src/front/parser.bend
+@@ -644,6 +644,9 @@
+     case KTerm{tag, name, id, quant, kids, removed, oldBegin, oldEnd}:
+       f_choose(KTerm, U32.is_eq(begin, 0) || U32.is_gt(oldBegin, 0), u => t,
+         u => KTerm{tag, name, id, quant, f_spans_created(kids, begin, end), removed, begin, end})
++    case KAnnotation{term, typ}:
++      f_choose(KTerm, U32.is_eq(begin, 0), u => t,
++        u => KTerm{"Ann", "", 0, 0, f_spans_created(Con{term, Con{typ, Nil{}}}, begin, end), Nil{}, begin, end})
+     case KLambda{name, id, quant, kids, removed, oldBegin, oldEnd, present}:
+       f_choose(KTerm, U32.is_eq(begin, 0) || U32.is_gt(oldBegin, 0), u => t,
+         u => KLambda{name, id, quant, f_spans_created(kids, begin, end), removed, begin, end, present})

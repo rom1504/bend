@@ -222,6 +222,14 @@ law j_layout_function:
 def j_layout_function(book, env, t, ty, todo):
   kc(List<&2, String>, String.eq(tg(j_strip(t)), "Ref"), u => Con{nm(j_strip(t)), todo}, u => j_layout_term(book, env, t, ty, todo))
 
+@unsafe
+def j_layout_array_name(+name: String) -> Bool:
+  kc(Bool, String.eq(name, "Array.new") || String.eq(name, "Array.set") || String.eq(name, "Array.get") || String.eq(name, "Array.swap") || String.eq(name, "Array.size"),
+    u => True{},
+    u => kc(Bool, String.contains(name, "|"),
+      v => String.contains("|Array.new|Array.set|Array.get|Array.swap|Array.size|", "|" ++ name ++ "|"),
+      v => False{}))
+
 law j_layout_array_intrinsic:
   for +book: List<&2, KDef>
   for +f: KTerm
@@ -229,7 +237,7 @@ law j_layout_array_intrinsic:
 
 @unsafe
 def j_layout_array_intrinsic(book, f):
-  String.eq(tg(f), "Ref") && db(lookup(book, nm(f))) && String.contains("|Array.new|Array.set|Array.get|Array.swap|Array.size|", "|" ++ nm(f) ++ "|")
+  String.eq(tg(f), "Ref") && db(lookup(book, nm(f))) && j_layout_array_name(nm(f))
 
 law j_layout_intrinsic:
   for +book: List<&2, KDef>

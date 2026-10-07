@@ -1,0 +1,42 @@
+{
+  "kind": "phase64-explicit-baseline-binding-derivation",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/make-bindings.py",
+    "sha256": "966cbbfa5ac7729c193db40e06585aac33d091907c41c9e91342b12fabec2f10"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/make-bindings-v2.py",
+    "sha256": "1ce1b72d7336a57a1b7cfeadf99a3832ed7002de08a07bab3ac3e8825afffbb6"
+  },
+  "edits": [
+    {
+      "old": "p.add_argument('--baseline-image', choices=['b1', 'b2'],",
+      "new": "p.add_argument('--baseline-bindings', type=Path, help='Explicit previous candidate binding for incremental attribution')\np.add_argument('--baseline-role', default='candidate', help='Role to select from explicit baseline bindings')\np.add_argument('--baseline-image', choices=['b1', 'b2'],",
+      "count": 1
+    },
+    {
+      "old": "roles = {'baseline': baseline if baseline_image == 'b2' else old_b1}",
+      "new": "roles = {'baseline': baseline if baseline_image == 'b2' else old_b1}\nbaseline_override = None\nbaseline_policy = dict(kind='catalog', referenceRole='direct')\nif a.baseline_bindings:\n    baseline_override = pin(a.baseline_bindings)\n    prior = read(baseline_override)\n    assert prior['kind'] == 'phase61-compiler-image-bindings' and prior['version'] == 1\n    assert a.baseline_role in prior['roles']\n    previous = prior['roles'][a.baseline_role]\n    assert previous['kind'] == ('direct' if baseline_image == 'b2' else 'checked')\n    previous_attempt = read(previous['attempt'])\n    assert previous_attempt['checked'] is True\n    for value in previous.values():\n        if isinstance(value, dict) and 'file' in value and 'sha256' in value:\n            pin(value)\n    if previous['kind'] == 'direct':\n        previous_emission = read(previous['emission'])\n        assert previous_emission['complete'] and previous_emission['pass']\n        assert pin(previous_emission['generator']['attempt']) == pin(previous['attempt'])\n    roles['baseline'] = previous\n    baseline_policy = prior['outputPolicies'][a.baseline_role]\n    if baseline_policy.get('kind') == 'qualified':\n        pin(baseline_policy['manifest'])",
+      "count": 1
+    },
+    {
+      "old": "policies = {role: dict(kind='catalog', referenceRole='direct') for role in roles}",
+      "new": "policies = {role: dict(kind='catalog', referenceRole='direct') for role in roles}\npolicies['baseline'] = baseline_policy",
+      "count": 1
+    },
+    {
+      "old": "scope='Actual State09 checked B1/genuine B2 versus independently checked candidate B1/genuine B2. '",
+      "new": "scope='Actual selected checked B1/genuine B2 versus independently checked candidate B1/genuine B2. '",
+      "count": 1
+    },
+    {
+      "old": "crossGenerationComparison=baseline_image != a.image, roles=role_list,",
+      "new": "crossGenerationComparison=baseline_image != a.image, roles=role_list,\n    explicitBaselineBindings=baseline_override, explicitBaselineRole=a.baseline_role if baseline_override else None,",
+      "count": 1
+    }
+  ],
+  "scope": "Explicit previous admitted role becomes baseline; candidate lineage and target workers unchanged. Existing bindings and factories remain immutable."
+}

@@ -1,0 +1,365 @@
+{
+  "kind": "phase64-clean-latency-summary",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/analysis/clean.py",
+    "sha256": "f3b603b2bfd6217b862b2a9b7343738b7af2b87a847cb3ad7a4ed84e5c0f5e94"
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state02-vs01-b1-latency/baseline-three/report.json",
+    "sha256": "9936983e3044dba9e6780a838899649f21f794b01ba8a98f5c1994bb251d5558"
+  },
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state02-vs01-b1-latency/baseline-three/plan.json",
+    "sha256": "2955207d342a1ea213db40e62ca45e05fa2e81f697dc4f15afa92c2db2d41942"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/latency-method01/derivation.json",
+    "sha256": "3f631cd26cc6086be7b16e1dd224bebb2a577e50955b648d415c4e3a9897a958"
+  },
+  "successfulWorkers": 18,
+  "exactRawOutputs": 18,
+  "sourceCount": 3,
+  "rounds": 3,
+  "roles": [
+    "baseline",
+    "candidate"
+  ],
+  "images": {
+    "baseline": {
+      "kind": "checked",
+      "role": "baseline",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state02-vs01-b1-latency/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "e61393c96ffc803a1b9ed1f0d351a9af1e68137eea57fedd53411169663ef1e8"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state01/snapshot/build/typed/snapshots/1cf0e453aded42ccc6e2bffae93844bc84e10b604fe9de01ea713715ff46d1da/compiler.bend",
+        "sha256": "8892160ca7bb04167e832f4caff2219c34914e4e39634210eb55d61dccc374ed"
+      },
+      "emission": null,
+      "checkedGenerator": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state01/attempt.json",
+        "sha256": "b31efe318353714afd2626375998c4a921637746b98da7ddbd92642ca8ecbf07"
+      },
+      "strictExact": true,
+      "diagnosticDerivation": null,
+      "productionQualified": false,
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state02-vs01-b1-latency/preparation/prepare-baseline/stage/project/src/runtime.mjs",
+        "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+      },
+      "base": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      "directRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state02-vs01-b1-latency/preparation/prepare-baseline/stage/project/src/runtime/js/direct.mjs",
+        "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+      },
+      "driver": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state02-vs01-b1-latency/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+        "sha256": "fc8abb378ecaa8ee01405885da995dab2021a0b624ef6cbeed0aa5169c8735ac"
+      }
+    },
+    "candidate": {
+      "kind": "checked",
+      "role": "candidate",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state02-vs01-b1-latency/preparation/prepare-candidate/stage/project/dist/api.mjs",
+        "sha256": "8e27c588dfcfe77d916d9388604c501f16b6749f1735f4bc33ec2771f254f6b6"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state02/snapshot/build/typed/snapshots/1bb97492685ce93a5f0e51b79f20070fbdcbd2817eb88dbe636941a5b4721984/compiler.bend",
+        "sha256": "163ff553a639df7a6d8635d73bf93550de42604d739c309038ce2c61fe70cf5c"
+      },
+      "emission": null,
+      "checkedGenerator": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state02/attempt.json",
+        "sha256": "34b725e801f94c6e876fbd8e6ab5dfdc56340debdbe12fc7608577a6fae15782"
+      },
+      "strictExact": true,
+      "diagnosticDerivation": null,
+      "productionQualified": false,
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state02-vs01-b1-latency/preparation/prepare-candidate/stage/project/src/runtime.mjs",
+        "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+      },
+      "base": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      "directRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state02-vs01-b1-latency/preparation/prepare-candidate/stage/project/src/runtime/js/direct.mjs",
+        "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+      },
+      "driver": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state02-vs01-b1-latency/preparation/prepare-candidate/stage/project/tools/typed-driver.mjs",
+        "sha256": "fc8abb378ecaa8ee01405885da995dab2021a0b624ef6cbeed0aa5169c8735ac"
+      }
+    }
+  },
+  "aggregate": {
+    "candidate/baseline": {
+      "firstRequestMs": {
+        "geometricMean": 0.9863298200875148,
+        "minimum": 0.9810903314006145,
+        "maximum": 0.9920755490485973,
+        "belowOne": 3,
+        "sources": 3
+      },
+      "importApiAndFirstMs": {
+        "geometricMean": 0.9878613417684783,
+        "minimum": 0.9813310791777857,
+        "maximum": 0.9956196884824087,
+        "belowOne": 3,
+        "sources": 3
+      }
+    }
+  },
+  "sources": [
+    {
+      "case": "numeric-recurrence",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 375.485601,
+            "samples": [
+              361.665902,
+              375.485601,
+              377.43554300000005
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.875491000000011,
+            "samples": [
+              5.3595479999999895,
+              4.840247000000005,
+              4.875491000000011
+            ]
+          },
+          "apiLoadMs": {
+            "median": 53.153715999999974,
+            "samples": [
+              54.398382,
+              53.153715999999974,
+              52.911963000000014
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 433.479564,
+            "samples": [
+              421.423832,
+              433.479564,
+              435.2229970000001
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 370.17410599999994,
+            "samples": [
+              382.15213600000004,
+              370.17410599999994,
+              356.991766
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.8388789999999915,
+            "samples": [
+              4.8388789999999915,
+              4.869716000000011,
+              4.811439000000007
+            ]
+          },
+          "apiLoadMs": {
+            "median": 52.99641599999998,
+            "samples": [
+              53.146907999999996,
+              52.66437100000002,
+              52.99641599999998
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 427.70819299999994,
+            "samples": [
+              440.137923,
+              427.70819299999994,
+              414.799621
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "candidate/baseline": {
+          "firstRequestMs": 0.9858543310692757,
+          "importApiAndFirstMs": 0.9866859444382018
+        }
+      }
+    },
+    {
+      "case": "lexer",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 777.750489,
+            "samples": [
+              698.1935530000001,
+              777.750489,
+              786.888635
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.8339909999999975,
+            "samples": [
+              4.792563999999999,
+              4.8339909999999975,
+              4.83657199999999
+            ]
+          },
+          "apiLoadMs": {
+            "median": 57.46378100000001,
+            "samples": [
+              52.543755000000004,
+              61.566670999999985,
+              57.46378100000001
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 844.151151,
+            "samples": [
+              755.5298720000001,
+              844.151151,
+              849.188988
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 763.043485,
+            "samples": [
+              708.41052,
+              763.043485,
+              775.4649400000001
+            ]
+          },
+          "hostImportMs": {
+            "median": 5.025400999999988,
+            "samples": [
+              4.842718000000019,
+              5.025400999999988,
+              6.862171000000018
+            ]
+          },
+          "apiLoadMs": {
+            "median": 59.83059500000002,
+            "samples": [
+              53.01905100000002,
+              60.32287400000001,
+              59.83059500000002
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 828.39176,
+            "samples": [
+              766.272289,
+              828.39176,
+              842.1577060000001
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "candidate/baseline": {
+          "firstRequestMs": 0.9810903314006145,
+          "importApiAndFirstMs": 0.9813310791777857
+        }
+      }
+    },
+    {
+      "case": "test-map-set-ops",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 1478.7384100000002,
+            "samples": [
+              1567.203145,
+              1478.7384100000002,
+              1428.225281
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.820900999999992,
+            "samples": [
+              4.81088299999999,
+              4.820900999999992,
+              4.939711000000017
+            ]
+          },
+          "apiLoadMs": {
+            "median": 53.99172900000002,
+            "samples": [
+              56.97340600000001,
+              52.954239,
+              53.99172900000002
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 1536.5135500000001,
+            "samples": [
+              1628.987434,
+              1536.5135500000001,
+              1487.156721
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 1467.0202199999999,
+            "samples": [
+              1467.0202199999999,
+              1471.703487,
+              1439.4906500000002
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.875039999999984,
+            "samples": [
+              6.8390970000000095,
+              4.875039999999984,
+              4.857289000000009
+            ]
+          },
+          "apiLoadMs": {
+            "median": 53.20461499999999,
+            "samples": [
+              59.314246,
+              53.20461499999999,
+              52.82879699999998
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 1529.783142,
+            "samples": [
+              1533.1735629999998,
+              1529.783142,
+              1497.1767360000001
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "candidate/baseline": {
+          "firstRequestMs": 0.9920755490485973,
+          "importApiAndFirstMs": 0.9956196884824087
+        }
+      }
+    }
+  ],
+  "wallSeconds": 23.691128771053627,
+  "peakTreeRssBytes": 178921472,
+  "scope": "Equal-source geometric mean of within-source median ratios; every sample uses a fresh process with prepared persistent cache. Compilation excludes imports; combined adds actual host/API imports. Full raw emitted modules match each role-qualified oracle, not necessarily the other role. This verifies compilation outputs, not fresh generated-program runtime or complete conformance."
+}

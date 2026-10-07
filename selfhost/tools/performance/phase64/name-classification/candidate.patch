@@ -1,0 +1,47 @@
+--- a/selfhost/src/back/js/direct/constructors.bend
++++ b/selfhost/src/back/js/direct/constructors.bend
+@@ -227,9 +227,17 @@
+ # Native ownership is a property of the checked datatype, not a constructor
+ # spelling. The direct driver separately rejects unsupported/shadowed Base ABI.
+ @unsafe
++def jd_native_layout_name(+name: String) -> Bool:
++  kc(Bool, String.eq(name, "Nat") || String.eq(name, "Bool") || String.eq(name, "U32") || String.eq(name, "F32") || String.eq(name, "Char") || String.eq(name, "String") || String.eq(name, "Array"),
++    u => True{},
++    u => kc(Bool, String.contains(name, "|"),
++      v => String.contains("|Nat|Bool|U32|F32|Char|String|Array|", "|" ++ name ++ "|"),
++      v => False{}))
++
++@unsafe
+ def jd_native_layout(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+   String.eq(tg(ty), "ADT") && db(lookup(book, nm(ty))) &&
+-    String.contains("|Nat|Bool|U32|F32|Char|String|Array|", "|" ++ nm(ty) ++ "|")
++    jd_native_layout_name(nm(ty))
+ 
+ @unsafe
+ def jd_ctor_values(+book: List<&2,KDef>, +env: List<&2,KTerm>, +fields: List<&2,KTerm>, +tel: KTerm) -> List<&2,String>:
+--- a/selfhost/src/back/js/validate.bend
++++ b/selfhost/src/back/js/validate.bend
+@@ -222,6 +222,14 @@
+ def j_layout_function(book, env, t, ty, todo):
+   kc(List<&2, String>, String.eq(tg(j_strip(t)), "Ref"), u => Con{nm(j_strip(t)), todo}, u => j_layout_term(book, env, t, ty, todo))
+ 
++@unsafe
++def j_layout_array_name(+name: String) -> Bool:
++  kc(Bool, String.eq(name, "Array.new") || String.eq(name, "Array.set") || String.eq(name, "Array.get") || String.eq(name, "Array.swap") || String.eq(name, "Array.size"),
++    u => True{},
++    u => kc(Bool, String.contains(name, "|"),
++      v => String.contains("|Array.new|Array.set|Array.get|Array.swap|Array.size|", "|" ++ name ++ "|"),
++      v => False{}))
++
+ law j_layout_array_intrinsic:
+   for +book: List<&2, KDef>
+   for +f: KTerm
+@@ -229,7 +237,7 @@
+ 
+ @unsafe
+ def j_layout_array_intrinsic(book, f):
+-  String.eq(tg(f), "Ref") && db(lookup(book, nm(f))) && String.contains("|Array.new|Array.set|Array.get|Array.swap|Array.size|", "|" ++ nm(f) ++ "|")
++  String.eq(tg(f), "Ref") && db(lookup(book, nm(f))) && j_layout_array_name(nm(f))
+ 
+ law j_layout_intrinsic:
+   for +book: List<&2, KDef>

@@ -1,0 +1,4084 @@
+{
+  "kind": "phase64-cpu-ancestry-analysis",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/analysis/cpu.py",
+    "sha256": "007336a585c0d93978906dfb6bed938ce2c0e35553179bce5ca8b96bddc2105b"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/analysis/profiles-v2.py",
+    "sha256": "4fb715bddc5262f6c7b53d869840f46d225cd3eed2b9ae3b53cdb0ee00bb3679"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/cpu/report.json",
+    "sha256": "fa5fcffd3491c651cf3ebe2f803fcf194e618ec350abe5b7957e3fd0deacff65"
+  },
+  "rows": [
+    {
+      "case": "numeric-recurrence",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/cpu/numeric-recurrence-0-baseline.result.json",
+        "sha256": "5e04c39d27aa37978ec4166639935cde121885b986e4e9977378cd337d7c64c9"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/cpu/numeric-recurrence-0-baseline-profile/profile.cpuprofile",
+        "sha256": "9e3dcfcc67d291e3221e1aa406db31f37a629ce631ec1089fc5a2e21db6d87e6",
+        "bytes": 1034665
+      },
+      "image": {
+        "kind": "direct",
+        "role": "baseline",
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "sha256": "e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/build/typed/snapshots/06e828e5ccef453057af912cfd1701c9a8896b28ac9974991b34006f714d70b3/compiler.bend",
+          "sha256": "0ebe491e727721857ce981ff5a2167a52d1e040f5674915a3349fea33bed8ed5"
+        },
+        "emission": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/full/report.json",
+          "sha256": "287ca58f72272c98e8ceec057b886c7f4d5cbb3927a2231225837c45affdaefb"
+        },
+        "checkedGenerator": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/attempt.json",
+          "sha256": "82379c94f3eec0bea44afb8a3c2ae8323de731dfa34c85da775d199ce4fb87cf"
+        },
+        "strictExact": true,
+        "diagnosticDerivation": null,
+        "productionQualified": false,
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime.mjs",
+          "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+        },
+        "directRuntime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/direct.mjs",
+          "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+          "sha256": "345248c51b0337402d8d0bccf7bea9d8cd72b081f4e6f7e0a313031e3df958a8"
+        }
+      },
+      "weightedStatus": "admitted",
+      "weightedAccounting": {
+        "weightSource": "max(timeDeltas[i],0) only when the explicit tiny-jitter policy admits a weighted view",
+        "weightedStatus": "admitted",
+        "reasons": [],
+        "policy": {
+          "maxNegativeMagnitudeUs": 2,
+          "maxCorrectionPartsPerMillion": 10
+        },
+        "negativeDeltas": [],
+        "negativeDeltaCount": 0,
+        "signedRawTimeDeltaUs": 557969,
+        "correctionUs": 0,
+        "correctionPartsPerMillion": 0,
+        "admittedWeightedUs": 557969,
+        "profileDurationUs": 558953,
+        "profileMinusSignedRawUs": 984,
+        "profileMinusWeightedUs": 984,
+        "rawProfileUnmodified": true,
+        "scope": "Observed signed increments are retained; cause is not established. Negative values are clipped only in an admitted weighted view. Count-based summary is an independent view; no timing/semantic result is changed."
+      },
+      "views": {
+        "counts": {
+          "total": 382,
+          "sampleEvents": 382,
+          "exclusiveStages": [
+            {
+              "name": "api-load",
+              "weight": 80,
+              "percent": 20.94240837696335
+            },
+            {
+              "name": "base-cache",
+              "weight": 54,
+              "percent": 14.136125654450261
+            },
+            {
+              "name": "checker",
+              "weight": 50,
+              "percent": 13.089005235602095
+            },
+            {
+              "name": "plan-selection",
+              "weight": 41,
+              "percent": 10.732984293193716
+            },
+            {
+              "name": "source-completion",
+              "weight": 36,
+              "percent": 9.424083769633508
+            },
+            {
+              "name": "other-generated-image",
+              "weight": 19,
+              "percent": 4.973821989528796
+            },
+            {
+              "name": "host-wrapper",
+              "weight": 15,
+              "percent": 3.926701570680628
+            },
+            {
+              "name": "GC",
+              "weight": 14,
+              "percent": 3.6649214659685865
+            },
+            {
+              "name": "book-context",
+              "weight": 13,
+              "percent": 3.4031413612565444
+            },
+            {
+              "name": "base-identity",
+              "weight": 12,
+              "percent": 3.141361256544503
+            },
+            {
+              "name": "source-loading",
+              "weight": 11,
+              "percent": 2.8795811518324608
+            },
+            {
+              "name": "roots-and-stops",
+              "weight": 10,
+              "percent": 2.6178010471204187
+            },
+            {
+              "name": "owned-foreign-layout",
+              "weight": 9,
+              "percent": 2.356020942408377
+            },
+            {
+              "name": "source-reach",
+              "weight": 4,
+              "percent": 1.0471204188481675
+            },
+            {
+              "name": "layout-proof",
+              "weight": 4,
+              "percent": 1.0471204188481675
+            },
+            {
+              "name": "source-graph-freshening",
+              "weight": 3,
+              "percent": 0.7853403141361257
+            },
+            {
+              "name": "annotation",
+              "weight": 3,
+              "percent": 0.7853403141361257
+            },
+            {
+              "name": "inspector-overhead",
+              "weight": 1,
+              "percent": 0.2617801047120419
+            },
+            {
+              "name": "other-node",
+              "weight": 1,
+              "percent": 0.2617801047120419
+            },
+            {
+              "name": "other-host-driver",
+              "weight": 1,
+              "percent": 0.2617801047120419
+            },
+            {
+              "name": "source-error-scan",
+              "weight": 1,
+              "percent": 0.2617801047120419
+            }
+          ],
+          "inclusiveAncestorUnions": [
+            {
+              "name": "index",
+              "weight": 27,
+              "percent": 7.0680628272251305
+            },
+            {
+              "name": "normalization",
+              "weight": 27,
+              "percent": 7.0680628272251305
+            },
+            {
+              "name": "definition",
+              "weight": 18,
+              "percent": 4.712041884816754
+            },
+            {
+              "name": "calls",
+              "weight": 15,
+              "percent": 3.926701570680628
+            },
+            {
+              "name": "host",
+              "weight": 15,
+              "percent": 3.926701570680628
+            },
+            {
+              "name": "strings",
+              "weight": 7,
+              "percent": 1.8324607329842932
+            },
+            {
+              "name": "substitution",
+              "weight": 2,
+              "percent": 0.5235602094240838
+            },
+            {
+              "name": "arityQueries",
+              "weight": 2,
+              "percent": 0.5235602094240838
+            },
+            {
+              "name": "jdArity",
+              "weight": 2,
+              "percent": 0.5235602094240838
+            }
+          ],
+          "intersections": [
+            {
+              "name": "normalizationUnderHost",
+              "weight": 5,
+              "percent": 1.3089005235602094
+            },
+            {
+              "name": "substitutionUnderHost",
+              "weight": 1,
+              "percent": 0.2617801047120419
+            }
+          ],
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "topSelf": [
+            {
+              "functionName": "compileSourceTextModule",
+              "url": "node:internal/modules/esm/utils",
+              "lineNumber": 315,
+              "columnNumber": 32,
+              "weight": 80,
+              "percent": 20.94240837696335
+            },
+            {
+              "functionName": "decodeBaseGraph",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+              "lineNumber": 67,
+              "columnNumber": 31,
+              "weight": 35,
+              "percent": 9.162303664921465
+            },
+            {
+              "functionName": "update",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 14,
+              "percent": 3.6649214659685865
+            },
+            {
+              "functionName": "(garbage collector)",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 14,
+              "percent": 3.6649214659685865
+            },
+            {
+              "functionName": "decodeBaseCacheGraphFrame",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+              "lineNumber": 307,
+              "columnNumber": 34,
+              "weight": 9,
+              "percent": 2.356020942408377
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28,
+              "weight": 9,
+              "percent": 2.356020942408377
+            },
+            {
+              "functionName": "$jd$j_95_find_95_ctor$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 25440,
+              "columnNumber": 34,
+              "weight": 7,
+              "percent": 1.8324607329842932
+            },
+            {
+              "functionName": "$jd$norm_95_max_95_term",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2436,
+              "columnNumber": 32,
+              "weight": 7,
+              "percent": 1.8324607329842932
+            },
+            {
+              "functionName": "$jd$norm_95_eval_95_node$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2014,
+              "columnNumber": 37,
+              "weight": 6,
+              "percent": 1.5706806282722514
+            },
+            {
+              "functionName": "$jd$index_95_node",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1530,
+              "columnNumber": 26,
+              "weight": 5,
+              "percent": 1.3089005235602094
+            },
+            {
+              "functionName": "$jd$tg",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 748,
+              "columnNumber": 15,
+              "weight": 5,
+              "percent": 1.3089005235602094
+            },
+            {
+              "functionName": "$jd$index_95_set",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1672,
+              "columnNumber": 25,
+              "weight": 4,
+              "percent": 1.0471204188481675
+            },
+            {
+              "functionName": "$jd$norm_95_join",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1067,
+              "columnNumber": 25,
+              "weight": 4,
+              "percent": 1.0471204188481675
+            },
+            {
+              "functionName": "ref",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+              "lineNumber": 77,
+              "columnNumber": 12,
+              "weight": 3,
+              "percent": 0.7853403141361257
+            },
+            {
+              "functionName": "$jd$f_95_tops",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 17454,
+              "columnNumber": 22,
+              "weight": 3,
+              "percent": 0.7853403141361257
+            },
+            {
+              "functionName": "$jd$f_95_find$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 17432,
+              "columnNumber": 26,
+              "weight": 3,
+              "percent": 0.7853403141361257
+            },
+            {
+              "functionName": "$jd$index_95_hash",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1341,
+              "columnNumber": 26,
+              "weight": 3,
+              "percent": 0.7853403141361257
+            },
+            {
+              "functionName": "$jd$index_95_find",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1435,
+              "columnNumber": 26,
+              "weight": 3,
+              "percent": 0.7853403141361257
+            },
+            {
+              "functionName": "$jd$index_95_remove$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1457,
+              "columnNumber": 32,
+              "weight": 3,
+              "percent": 0.7853403141361257
+            },
+            {
+              "functionName": "$jd$index_95_find$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1365,
+              "columnNumber": 30,
+              "weight": 3,
+              "percent": 0.7853403141361257
+            },
+            {
+              "functionName": "$jd$book_95_final_95_scan$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1824,
+              "columnNumber": 38,
+              "weight": 3,
+              "percent": 0.7853403141361257
+            },
+            {
+              "functionName": "$jd$driver_95_holes_95_terms",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66316,
+              "columnNumber": 37,
+              "weight": 3,
+              "percent": 0.7853403141361257
+            },
+            {
+              "functionName": "$jd$sk_95_escape",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 9238,
+              "columnNumber": 25,
+              "weight": 3,
+              "percent": 0.7853403141361257
+            },
+            {
+              "functionName": "",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 0,
+              "columnNumber": 0,
+              "weight": 2,
+              "percent": 0.5235602094240838
+            },
+            {
+              "functionName": "$jd$f_95_lex_95_scanned$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 11902,
+              "columnNumber": 36,
+              "weight": 2,
+              "percent": 0.5235602094240838
+            }
+          ]
+        },
+        "microseconds": {
+          "total": 557969,
+          "sampleEvents": 382,
+          "exclusiveStages": [
+            {
+              "name": "api-load",
+              "weight": 106459,
+              "percent": 19.07973382033769
+            },
+            {
+              "name": "base-cache",
+              "weight": 99830,
+              "percent": 17.89167498552787
+            },
+            {
+              "name": "checker",
+              "weight": 73872,
+              "percent": 13.239445202152808
+            },
+            {
+              "name": "plan-selection",
+              "weight": 53001,
+              "percent": 9.498914814263875
+            },
+            {
+              "name": "GC",
+              "weight": 46174,
+              "percent": 8.275370137050624
+            },
+            {
+              "name": "source-completion",
+              "weight": 35507,
+              "percent": 6.363615182922349
+            },
+            {
+              "name": "other-generated-image",
+              "weight": 20388,
+              "percent": 3.653966438995715
+            },
+            {
+              "name": "inspector-overhead",
+              "weight": 19935,
+              "percent": 3.5727791328908953
+            },
+            {
+              "name": "source-loading",
+              "weight": 17432,
+              "percent": 3.124187902912169
+            },
+            {
+              "name": "host-wrapper",
+              "weight": 17293,
+              "percent": 3.099276124659255
+            },
+            {
+              "name": "book-context",
+              "weight": 14262,
+              "percent": 2.556055981604713
+            },
+            {
+              "name": "base-identity",
+              "weight": 12677,
+              "percent": 2.2719900209509847
+            },
+            {
+              "name": "owned-foreign-layout",
+              "weight": 12144,
+              "percent": 2.176465000743769
+            },
+            {
+              "name": "roots-and-stops",
+              "weight": 11186,
+              "percent": 2.0047708743675723
+            },
+            {
+              "name": "source-reach",
+              "weight": 4009,
+              "percent": 0.718498697956338
+            },
+            {
+              "name": "annotation",
+              "weight": 3807,
+              "percent": 0.6822959698477873
+            },
+            {
+              "name": "layout-proof",
+              "weight": 3625,
+              "percent": 0.6496776702648355
+            },
+            {
+              "name": "source-graph-freshening",
+              "weight": 3190,
+              "percent": 0.5717163498330552
+            },
+            {
+              "name": "source-error-scan",
+              "weight": 1062,
+              "percent": 0.1903331547093118
+            },
+            {
+              "name": "other-node",
+              "weight": 1058,
+              "percent": 0.18961626900419198
+            },
+            {
+              "name": "other-host-driver",
+              "weight": 1058,
+              "percent": 0.18961626900419198
+            }
+          ],
+          "inclusiveAncestorUnions": [
+            {
+              "name": "index",
+              "weight": 39657,
+              "percent": 7.10738410198416
+            },
+            {
+              "name": "normalization",
+              "weight": 30880,
+              "percent": 5.534357643524999
+            },
+            {
+              "name": "definition",
+              "weight": 20069,
+              "percent": 3.596794804012409
+            },
+            {
+              "name": "host",
+              "weight": 17293,
+              "percent": 3.099276124659255
+            },
+            {
+              "name": "calls",
+              "weight": 12623,
+              "percent": 2.262312063931867
+            },
+            {
+              "name": "strings",
+              "weight": 7442,
+              "percent": 1.3337658543754223
+            },
+            {
+              "name": "substitution",
+              "weight": 2674,
+              "percent": 0.47923809387259864
+            },
+            {
+              "name": "arityQueries",
+              "weight": 906,
+              "percent": 0.1623746122096389
+            },
+            {
+              "name": "jdArity",
+              "weight": 906,
+              "percent": 0.1623746122096389
+            }
+          ],
+          "intersections": [
+            {
+              "name": "normalizationUnderHost",
+              "weight": 6675,
+              "percent": 1.196303020418697
+            },
+            {
+              "name": "substitutionUnderHost",
+              "weight": 1013,
+              "percent": 0.18155130482159404
+            }
+          ],
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "topSelf": [
+            {
+              "functionName": "compileSourceTextModule",
+              "url": "node:internal/modules/esm/utils",
+              "lineNumber": 315,
+              "columnNumber": 32,
+              "weight": 106459,
+              "percent": 19.07973382033769
+            },
+            {
+              "functionName": "decodeBaseGraph",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+              "lineNumber": 67,
+              "columnNumber": 31,
+              "weight": 76191,
+              "percent": 13.655059689696023
+            },
+            {
+              "functionName": "(garbage collector)",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 46174,
+              "percent": 8.275370137050624
+            },
+            {
+              "functionName": "post",
+              "url": "node:inspector",
+              "lineNumber": 114,
+              "columnNumber": 6,
+              "weight": 19935,
+              "percent": 3.5727791328908953
+            },
+            {
+              "functionName": "decodeBaseCacheGraphFrame",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+              "lineNumber": 307,
+              "columnNumber": 34,
+              "weight": 14711,
+              "percent": 2.6365264020044124
+            },
+            {
+              "functionName": "update",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 14303,
+              "percent": 2.563404060082191
+            },
+            {
+              "functionName": "$jd$driver_95_holes_95_terms",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66316,
+              "columnNumber": 37,
+              "weight": 13530,
+              "percent": 2.424865897567786
+            },
+            {
+              "functionName": "$jd$index_95_remove$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1457,
+              "columnNumber": 32,
+              "weight": 12940,
+              "percent": 2.319125256062613
+            },
+            {
+              "functionName": "$jd$book_95_final_95_scan$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1824,
+              "columnNumber": 38,
+              "weight": 12762,
+              "percent": 2.287223842184781
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28,
+              "weight": 9071,
+              "percent": 1.6257175577854683
+            },
+            {
+              "functionName": "$jd$j_95_find_95_ctor$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 25440,
+              "columnNumber": 34,
+              "weight": 9007,
+              "percent": 1.6142473865035514
+            },
+            {
+              "functionName": "$jd$norm_95_max_95_term",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2436,
+              "columnNumber": 32,
+              "weight": 7659,
+              "percent": 1.3726569038781724
+            },
+            {
+              "functionName": "$jd$index_95_node",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1530,
+              "columnNumber": 26,
+              "weight": 5712,
+              "percent": 1.023712786911101
+            },
+            {
+              "functionName": "$jd$index_95_set",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1672,
+              "columnNumber": 25,
+              "weight": 5352,
+              "percent": 0.9591930734503171
+            },
+            {
+              "functionName": "$jd$tg",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 748,
+              "columnNumber": 15,
+              "weight": 5288,
+              "percent": 0.9477229021684
+            },
+            {
+              "functionName": "$jd$norm_95_eval_95_node$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2014,
+              "columnNumber": 37,
+              "weight": 5118,
+              "percent": 0.9172552597008078
+            },
+            {
+              "functionName": "$jd$index_95_lookup",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1698,
+              "columnNumber": 28,
+              "weight": 4846,
+              "percent": 0.8685070317526601
+            },
+            {
+              "functionName": "$jd$f_95_tops",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 17454,
+              "columnNumber": 22,
+              "weight": 4230,
+              "percent": 0.758106633164208
+            },
+            {
+              "functionName": "$jd$norm_95_join",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1067,
+              "columnNumber": 25,
+              "weight": 4211,
+              "percent": 0.7547014260648889
+            },
+            {
+              "functionName": "$jd$index_95_find",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1435,
+              "columnNumber": 26,
+              "weight": 3730,
+              "percent": 0.6684959200242307
+            },
+            {
+              "functionName": "$jd$norm_95_eval",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2505,
+              "columnNumber": 25,
+              "weight": 3329,
+              "percent": 0.5966281280859689
+            },
+            {
+              "functionName": "$jd$f_95_lex_95_scanned$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 11902,
+              "columnNumber": 36,
+              "weight": 3242,
+              "percent": 0.5810358639996129
+            },
+            {
+              "functionName": "$jd$wnf",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2009,
+              "columnNumber": 16,
+              "weight": 2896,
+              "percent": 0.5190252505067486
+            },
+            {
+              "functionName": "$jd$jd_95_text_95_scan$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 54066,
+              "columnNumber": 35,
+              "weight": 2833,
+              "percent": 0.5077343006511115
+            },
+            {
+              "functionName": "$jd$atom",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 745,
+              "columnNumber": 17,
+              "weight": 2625,
+              "percent": 0.4704562439848809
+            }
+          ]
+        }
+      },
+      "warnings": []
+    },
+    {
+      "case": "numeric-recurrence",
+      "role": "typescript",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/cpu/numeric-recurrence-0-typescript.result.json",
+        "sha256": "e4836a457d9b7410a257dcf1f501aabe99161a235f28f7ef7c03546c3f11bfb8"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/cpu/numeric-recurrence-0-typescript-profile/profile.cpuprofile",
+        "sha256": "fcae32b99d66004b91fcd4b8e26f0de5d6775c12430ebb7a5aa09f3b469a9a6a",
+        "bytes": 620296
+      },
+      "image": null,
+      "weightedStatus": "admitted",
+      "weightedAccounting": {
+        "weightSource": "max(timeDeltas[i],0) only when the explicit tiny-jitter policy admits a weighted view",
+        "weightedStatus": "admitted",
+        "reasons": [],
+        "policy": {
+          "maxNegativeMagnitudeUs": 2,
+          "maxCorrectionPartsPerMillion": 10
+        },
+        "negativeDeltas": [],
+        "negativeDeltaCount": 0,
+        "signedRawTimeDeltaUs": 704654,
+        "correctionUs": 0,
+        "correctionPartsPerMillion": 0,
+        "admittedWeightedUs": 704654,
+        "profileDurationUs": 705439,
+        "profileMinusSignedRawUs": 785,
+        "profileMinusWeightedUs": 785,
+        "rawProfileUnmodified": true,
+        "scope": "Observed signed increments are retained; cause is not established. Negative values are clipped only in an admitted weighted view. Count-based summary is an independent view; no timing/semantic result is changed."
+      },
+      "views": {
+        "counts": {
+          "total": 541,
+          "sampleEvents": 541,
+          "exclusiveStages": [
+            {
+              "name": "checker",
+              "weight": 201,
+              "percent": 37.15341959334565
+            },
+            {
+              "name": "typescript-module-stripping",
+              "weight": 143,
+              "percent": 26.432532347504623
+            },
+            {
+              "name": "source-loading",
+              "weight": 128,
+              "percent": 23.65988909426987
+            },
+            {
+              "name": "ts-file-analysis",
+              "weight": 26,
+              "percent": 4.805914972273568
+            },
+            {
+              "name": "GC",
+              "weight": 15,
+              "percent": 2.7726432532347505
+            },
+            {
+              "name": "ts-library",
+              "weight": 9,
+              "percent": 1.6635859519408502
+            },
+            {
+              "name": "module-compilation",
+              "weight": 8,
+              "percent": 1.478743068391867
+            },
+            {
+              "name": "other-typescript",
+              "weight": 4,
+              "percent": 0.7393715341959335
+            },
+            {
+              "name": "other-node",
+              "weight": 2,
+              "percent": 0.36968576709796674
+            },
+            {
+              "name": "other-unassigned",
+              "weight": 2,
+              "percent": 0.36968576709796674
+            },
+            {
+              "name": "program",
+              "weight": 2,
+              "percent": 0.36968576709796674
+            },
+            {
+              "name": "inspector-overhead",
+              "weight": 1,
+              "percent": 0.18484288354898337
+            }
+          ],
+          "inclusiveAncestorUnions": [],
+          "intersections": [],
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "topSelf": [
+            {
+              "functionName": "term_check",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3478,
+              "columnNumber": 26,
+              "weight": 99,
+              "percent": 18.299445471349355
+            },
+            {
+              "functionName": "term_higher",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27,
+              "weight": 32,
+              "percent": 5.914972273567468
+            },
+            {
+              "functionName": "__require",
+              "url": "node:internal/deps/amaro/dist/index",
+              "lineNumber": 7,
+              "columnNumber": 48,
+              "weight": 22,
+              "percent": 4.066543438077634
+            },
+            {
+              "functionName": "term_wnf",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2783,
+              "columnNumber": 24,
+              "weight": 18,
+              "percent": 3.3271719038817005
+            },
+            {
+              "functionName": "compare_go",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3056,
+              "columnNumber": 19,
+              "weight": 17,
+              "percent": 3.142329020332717
+            },
+            {
+              "functionName": "(garbage collector)",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 15,
+              "percent": 2.7726432532347505
+            },
+            {
+              "functionName": "term_lower",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 781,
+              "columnNumber": 26,
+              "weight": 12,
+              "percent": 2.2181146025878005
+            },
+            {
+              "functionName": "parse_term_base",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 1747,
+              "columnNumber": 31,
+              "weight": 10,
+              "percent": 1.8484288354898337
+            },
+            {
+              "functionName": "parse_term_ops",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2011,
+              "columnNumber": 30,
+              "weight": 9,
+              "percent": 1.6635859519408502
+            },
+            {
+              "functionName": "compileSourceTextModule",
+              "url": "node:internal/modules/esm/utils",
+              "lineNumber": 315,
+              "columnNumber": 32,
+              "weight": 8,
+              "percent": 1.478743068391867
+            },
+            {
+              "functionName": "term_infer",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3264,
+              "columnNumber": 26,
+              "weight": 8,
+              "percent": 1.478743068391867
+            },
+            {
+              "functionName": "pmap_set",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 529,
+              "columnNumber": 27,
+              "weight": 8,
+              "percent": 1.478743068391867
+            },
+            {
+              "functionName": "parse_body",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2282,
+              "columnNumber": 26,
+              "weight": 7,
+              "percent": 1.2939001848428835
+            },
+            {
+              "functionName": "parse_term_args",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2142,
+              "columnNumber": 31,
+              "weight": 7,
+              "percent": 1.2939001848428835
+            },
+            {
+              "functionName": "term_compare",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3052,
+              "columnNumber": 28,
+              "weight": 7,
+              "percent": 1.2939001848428835
+            },
+            {
+              "functionName": "parse_lexeme",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 1589,
+              "columnNumber": 28,
+              "weight": 6,
+              "percent": 1.1090573012939002
+            },
+            {
+              "functionName": "match_flatten",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2630,
+              "columnNumber": 29,
+              "weight": 6,
+              "percent": 1.1090573012939002
+            },
+            {
+              "functionName": "parse_var",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 1649,
+              "columnNumber": 25,
+              "weight": 6,
+              "percent": 1.1090573012939002
+            },
+            {
+              "functionName": "wasm-function[206]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 978626,
+              "weight": 5,
+              "percent": 0.9242144177449169
+            },
+            {
+              "functionName": "parse_term",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 1739,
+              "columnNumber": 26,
+              "weight": 5,
+              "percent": 0.9242144177449169
+            },
+            {
+              "functionName": "compileForInternalLoader",
+              "url": "node:internal/bootstrap/realm",
+              "lineNumber": 382,
+              "columnNumber": 26,
+              "weight": 4,
+              "percent": 0.7393715341959335
+            },
+            {
+              "functionName": "wasm-function[103]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 539644,
+              "weight": 4,
+              "percent": 0.7393715341959335
+            },
+            {
+              "functionName": "passStringToWasm0",
+              "url": "node:internal/deps/amaro/dist/index",
+              "lineNumber": 194,
+              "columnNumber": 30,
+              "weight": 4,
+              "percent": 0.7393715341959335
+            },
+            {
+              "functionName": "wasm-function[123]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 663358,
+              "weight": 4,
+              "percent": 0.7393715341959335
+            },
+            {
+              "functionName": "wasm-function[156]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 809264,
+              "weight": 4,
+              "percent": 0.7393715341959335
+            }
+          ]
+        },
+        "microseconds": {
+          "total": 704654,
+          "sampleEvents": 541,
+          "exclusiveStages": [
+            {
+              "name": "typescript-module-stripping",
+              "weight": 284091,
+              "percent": 40.31638222446761
+            },
+            {
+              "name": "checker",
+              "weight": 167014,
+              "percent": 23.701561333647437
+            },
+            {
+              "name": "source-loading",
+              "weight": 149783,
+              "percent": 21.256247747121282
+            },
+            {
+              "name": "GC",
+              "weight": 40981,
+              "percent": 5.815762061948133
+            },
+            {
+              "name": "inspector-overhead",
+              "weight": 22078,
+              "percent": 3.133168902752273
+            },
+            {
+              "name": "module-compilation",
+              "weight": 11632,
+              "percent": 1.6507392280466726
+            },
+            {
+              "name": "ts-library",
+              "weight": 9612,
+              "percent": 1.364073715610782
+            },
+            {
+              "name": "ts-file-analysis",
+              "weight": 8962,
+              "percent": 1.271829862599233
+            },
+            {
+              "name": "other-typescript",
+              "weight": 5430,
+              "percent": 0.770590956696478
+            },
+            {
+              "name": "other-node",
+              "weight": 3175,
+              "percent": 0.45057574355641206
+            },
+            {
+              "name": "other-unassigned",
+              "weight": 1739,
+              "percent": 0.24678778521089784
+            },
+            {
+              "name": "program",
+              "weight": 157,
+              "percent": 0.02228043834278951
+            }
+          ],
+          "inclusiveAncestorUnions": [],
+          "intersections": [],
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "topSelf": [
+            {
+              "functionName": "(garbage collector)",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 40981,
+              "percent": 5.815762061948133
+            },
+            {
+              "functionName": "compare_go",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3056,
+              "columnNumber": 19,
+              "weight": 40496,
+              "percent": 5.746933956239516
+            },
+            {
+              "functionName": "term_check",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3478,
+              "columnNumber": 26,
+              "weight": 30812,
+              "percent": 4.372642459987455
+            },
+            {
+              "functionName": "compileForInternalLoader",
+              "url": "node:internal/bootstrap/realm",
+              "lineNumber": 382,
+              "columnNumber": 26,
+              "weight": 27559,
+              "percent": 3.910997454069657
+            },
+            {
+              "functionName": "__require",
+              "url": "node:internal/deps/amaro/dist/index",
+              "lineNumber": 7,
+              "columnNumber": 48,
+              "weight": 23263,
+              "percent": 3.301336542473327
+            },
+            {
+              "functionName": "post",
+              "url": "node:inspector",
+              "lineNumber": 114,
+              "columnNumber": 6,
+              "weight": 22078,
+              "percent": 3.133168902752273
+            },
+            {
+              "functionName": "parse_term_args",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2142,
+              "columnNumber": 31,
+              "weight": 20869,
+              "percent": 2.9615953361507916
+            },
+            {
+              "functionName": "Module",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 19634,
+              "percent": 2.7863320154288487
+            },
+            {
+              "functionName": "parse_term_base",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 1747,
+              "columnNumber": 31,
+              "weight": 17810,
+              "percent": 2.527481572516441
+            },
+            {
+              "functionName": "",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 733,
+              "columnNumber": 35,
+              "weight": 17096,
+              "percent": 2.4261552478237545
+            },
+            {
+              "functionName": "term_higher",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27,
+              "weight": 16515,
+              "percent": 2.3437034345934316
+            },
+            {
+              "functionName": "term_wnf",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2783,
+              "columnNumber": 24,
+              "weight": 14726,
+              "percent": 2.0898199683816454
+            },
+            {
+              "functionName": "wasm-function[63]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 95140,
+              "weight": 14179,
+              "percent": 2.0121932182319267
+            },
+            {
+              "functionName": "wasm-function[67]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 169228,
+              "weight": 13974,
+              "percent": 1.9831009261282841
+            },
+            {
+              "functionName": "term_infer",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3264,
+              "columnNumber": 26,
+              "weight": 13265,
+              "percent": 1.882484169535687
+            },
+            {
+              "functionName": "compileSourceTextModule",
+              "url": "node:internal/modules/esm/utils",
+              "lineNumber": 315,
+              "columnNumber": 32,
+              "weight": 11632,
+              "percent": 1.6507392280466726
+            },
+            {
+              "functionName": "wasm-function[156]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 809264,
+              "weight": 9181,
+              "percent": 1.3029089453831242
+            },
+            {
+              "functionName": "wasm-function[88]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 423511,
+              "weight": 8965,
+              "percent": 1.2722556034592865
+            },
+            {
+              "functionName": "wasm-function[118]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 636701,
+              "weight": 8898,
+              "percent": 1.262747390918096
+            },
+            {
+              "functionName": "parse_body",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2282,
+              "columnNumber": 26,
+              "weight": 8779,
+              "percent": 1.2458596701359816
+            },
+            {
+              "functionName": "parse_term_ops",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2011,
+              "columnNumber": 30,
+              "weight": 8165,
+              "percent": 1.1587247074450724
+            },
+            {
+              "functionName": "wasm-function[123]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 663358,
+              "weight": 8067,
+              "percent": 1.1448171726833312
+            },
+            {
+              "functionName": "wasm-function[206]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 978626,
+              "weight": 7687,
+              "percent": 1.0908899970765795
+            },
+            {
+              "functionName": "",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 739,
+              "columnNumber": 27,
+              "weight": 7499,
+              "percent": 1.064210236513239
+            },
+            {
+              "functionName": "parse_term",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 1739,
+              "columnNumber": 26,
+              "weight": 7486,
+              "percent": 1.0623653594530083
+            }
+          ]
+        }
+      },
+      "warnings": []
+    },
+    {
+      "case": "lexer",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/cpu/lexer-0-baseline.result.json",
+        "sha256": "be3b62b1a54ea9899697c87e06fe1e3baf2fa14fac43a5ff683543838d6ab704"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/cpu/lexer-0-baseline-profile/profile.cpuprofile",
+        "sha256": "ea5f2ae78893bc26c0e421aca3e5f628b8d691af60ce57396dd6314dca1e2759",
+        "bytes": 1952186
+      },
+      "image": {
+        "kind": "direct",
+        "role": "baseline",
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "sha256": "e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/build/typed/snapshots/06e828e5ccef453057af912cfd1701c9a8896b28ac9974991b34006f714d70b3/compiler.bend",
+          "sha256": "0ebe491e727721857ce981ff5a2167a52d1e040f5674915a3349fea33bed8ed5"
+        },
+        "emission": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/full/report.json",
+          "sha256": "287ca58f72272c98e8ceec057b886c7f4d5cbb3927a2231225837c45affdaefb"
+        },
+        "checkedGenerator": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/attempt.json",
+          "sha256": "82379c94f3eec0bea44afb8a3c2ae8323de731dfa34c85da775d199ce4fb87cf"
+        },
+        "strictExact": true,
+        "diagnosticDerivation": null,
+        "productionQualified": false,
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime.mjs",
+          "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+        },
+        "directRuntime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/direct.mjs",
+          "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+          "sha256": "345248c51b0337402d8d0bccf7bea9d8cd72b081f4e6f7e0a313031e3df958a8"
+        }
+      },
+      "weightedStatus": "admitted",
+      "weightedAccounting": {
+        "weightSource": "max(timeDeltas[i],0) only when the explicit tiny-jitter policy admits a weighted view",
+        "weightedStatus": "admitted",
+        "reasons": [],
+        "policy": {
+          "maxNegativeMagnitudeUs": 2,
+          "maxCorrectionPartsPerMillion": 10
+        },
+        "negativeDeltas": [],
+        "negativeDeltaCount": 0,
+        "signedRawTimeDeltaUs": 1026940,
+        "correctionUs": 0,
+        "correctionPartsPerMillion": 0,
+        "admittedWeightedUs": 1026940,
+        "profileDurationUs": 1027955,
+        "profileMinusSignedRawUs": 1015,
+        "profileMinusWeightedUs": 1015,
+        "rawProfileUnmodified": true,
+        "scope": "Observed signed increments are retained; cause is not established. Negative values are clipped only in an admitted weighted view. Count-based summary is an independent view; no timing/semantic result is changed."
+      },
+      "views": {
+        "counts": {
+          "total": 653,
+          "sampleEvents": 653,
+          "exclusiveStages": [
+            {
+              "name": "source-completion",
+              "weight": 133,
+              "percent": 20.367534456355283
+            },
+            {
+              "name": "checker",
+              "weight": 105,
+              "percent": 16.079632465543646
+            },
+            {
+              "name": "plan-selection",
+              "weight": 91,
+              "percent": 13.935681470137826
+            },
+            {
+              "name": "api-load",
+              "weight": 87,
+              "percent": 13.32312404287902
+            },
+            {
+              "name": "base-cache",
+              "weight": 62,
+              "percent": 9.494640122511486
+            },
+            {
+              "name": "source-loading",
+              "weight": 29,
+              "percent": 4.44104134762634
+            },
+            {
+              "name": "host-wrapper",
+              "weight": 22,
+              "percent": 3.3690658499234303
+            },
+            {
+              "name": "layout-proof",
+              "weight": 19,
+              "percent": 2.909647779479326
+            },
+            {
+              "name": "base-identity",
+              "weight": 15,
+              "percent": 2.2970903522205206
+            },
+            {
+              "name": "other-generated-image",
+              "weight": 14,
+              "percent": 2.1439509954058193
+            },
+            {
+              "name": "GC",
+              "weight": 11,
+              "percent": 1.6845329249617151
+            },
+            {
+              "name": "source-graph-freshening",
+              "weight": 11,
+              "percent": 1.6845329249617151
+            },
+            {
+              "name": "roots-and-stops",
+              "weight": 11,
+              "percent": 1.6845329249617151
+            },
+            {
+              "name": "annotation",
+              "weight": 11,
+              "percent": 1.6845329249617151
+            },
+            {
+              "name": "owned-foreign-layout",
+              "weight": 8,
+              "percent": 1.225114854517611
+            },
+            {
+              "name": "book-context",
+              "weight": 8,
+              "percent": 1.225114854517611
+            },
+            {
+              "name": "source-reach",
+              "weight": 8,
+              "percent": 1.225114854517611
+            },
+            {
+              "name": "other-host-driver",
+              "weight": 2,
+              "percent": 0.30627871362940273
+            },
+            {
+              "name": "source-error-scan",
+              "weight": 2,
+              "percent": 0.30627871362940273
+            },
+            {
+              "name": "inspector-overhead",
+              "weight": 1,
+              "percent": 0.15313935681470137
+            },
+            {
+              "name": "foreign-validation",
+              "weight": 1,
+              "percent": 0.15313935681470137
+            },
+            {
+              "name": "foreign-modules",
+              "weight": 1,
+              "percent": 0.15313935681470137
+            },
+            {
+              "name": "final-library",
+              "weight": 1,
+              "percent": 0.15313935681470137
+            }
+          ],
+          "inclusiveAncestorUnions": [
+            {
+              "name": "definition",
+              "weight": 46,
+              "percent": 7.044410413476263
+            },
+            {
+              "name": "normalization",
+              "weight": 45,
+              "percent": 6.891271056661562
+            },
+            {
+              "name": "index",
+              "weight": 36,
+              "percent": 5.51301684532925
+            },
+            {
+              "name": "calls",
+              "weight": 30,
+              "percent": 4.594180704441041
+            },
+            {
+              "name": "host",
+              "weight": 22,
+              "percent": 3.3690658499234303
+            },
+            {
+              "name": "arityQueries",
+              "weight": 11,
+              "percent": 1.6845329249617151
+            },
+            {
+              "name": "jdArity",
+              "weight": 10,
+              "percent": 1.5313935681470139
+            },
+            {
+              "name": "strings",
+              "weight": 9,
+              "percent": 1.3782542113323124
+            },
+            {
+              "name": "substitution",
+              "weight": 8,
+              "percent": 1.225114854517611
+            },
+            {
+              "name": "jdDomains",
+              "weight": 2,
+              "percent": 0.30627871362940273
+            },
+            {
+              "name": "jdParams",
+              "weight": 1,
+              "percent": 0.15313935681470137
+            }
+          ],
+          "intersections": [
+            {
+              "name": "normalizationUnderHost",
+              "weight": 5,
+              "percent": 0.7656967840735069
+            },
+            {
+              "name": "substitutionUnderHost",
+              "weight": 1,
+              "percent": 0.15313935681470137
+            }
+          ],
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "topSelf": [
+            {
+              "functionName": "compileSourceTextModule",
+              "url": "node:internal/modules/esm/utils",
+              "lineNumber": 315,
+              "columnNumber": 32,
+              "weight": 86,
+              "percent": 13.169984686064318
+            },
+            {
+              "functionName": "decodeBaseGraph",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+              "lineNumber": 67,
+              "columnNumber": 31,
+              "weight": 46,
+              "percent": 7.044410413476263
+            },
+            {
+              "functionName": "update",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 17,
+              "percent": 2.6033690658499236
+            },
+            {
+              "functionName": "$jd$f_95_lex_95_scanned$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 11902,
+              "columnNumber": 36,
+              "weight": 16,
+              "percent": 2.450229709035222
+            },
+            {
+              "functionName": "(garbage collector)",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 11,
+              "percent": 1.6845329249617151
+            },
+            {
+              "functionName": "$jd$f_95_context_95_grow$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 12569,
+              "columnNumber": 37,
+              "weight": 10,
+              "percent": 1.5313935681470139
+            },
+            {
+              "functionName": "$jd$lookup$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 834,
+              "columnNumber": 23,
+              "weight": 9,
+              "percent": 1.3782542113323124
+            },
+            {
+              "functionName": "validateSpanBook",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+              "lineNumber": 237,
+              "columnNumber": 32,
+              "weight": 8,
+              "percent": 1.225114854517611
+            },
+            {
+              "functionName": "$jd$wnf",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2009,
+              "columnNumber": 16,
+              "weight": 8,
+              "percent": 1.225114854517611
+            },
+            {
+              "functionName": "$jd$norm_95_max_95_term",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2436,
+              "columnNumber": 32,
+              "weight": 7,
+              "percent": 1.0719754977029097
+            },
+            {
+              "functionName": "$jd$norm_95_eval_95_node$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2014,
+              "columnNumber": 37,
+              "weight": 7,
+              "percent": 1.0719754977029097
+            },
+            {
+              "functionName": "$jd$j_95_find_95_ctor$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 25440,
+              "columnNumber": 34,
+              "weight": 7,
+              "percent": 1.0719754977029097
+            },
+            {
+              "functionName": "$jd$f_95_find$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 17432,
+              "columnNumber": 26,
+              "weight": 6,
+              "percent": 0.9188361408882083
+            },
+            {
+              "functionName": "$jd$driver_95_holes",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66309,
+              "columnNumber": 28,
+              "weight": 6,
+              "percent": 0.9188361408882083
+            },
+            {
+              "functionName": "$jd$j_95_layout_95_term$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 26431,
+              "columnNumber": 36,
+              "weight": 6,
+              "percent": 0.9188361408882083
+            },
+            {
+              "functionName": "ref",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+              "lineNumber": 77,
+              "columnNumber": 12,
+              "weight": 5,
+              "percent": 0.7656967840735069
+            },
+            {
+              "functionName": "$jd$f_95_symbol_95_text",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 12272,
+              "columnNumber": 32,
+              "weight": 5,
+              "percent": 0.7656967840735069
+            },
+            {
+              "functionName": "$jd$index_95_set",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1672,
+              "columnNumber": 25,
+              "weight": 5,
+              "percent": 0.7656967840735069
+            },
+            {
+              "functionName": "$jd$subst$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 886,
+              "columnNumber": 22,
+              "weight": 5,
+              "percent": 0.7656967840735069
+            },
+            {
+              "functionName": "$jd$book_95_final_95_scan$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1824,
+              "columnNumber": 38,
+              "weight": 5,
+              "percent": 0.7656967840735069
+            },
+            {
+              "functionName": "$jd$tg",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 748,
+              "columnNumber": 15,
+              "weight": 5,
+              "percent": 0.7656967840735069
+            },
+            {
+              "functionName": "$jd$sk_95_node",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 9380,
+              "columnNumber": 23,
+              "weight": 5,
+              "percent": 0.7656967840735069
+            },
+            {
+              "functionName": "decodeBaseCacheGraphFrame",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+              "lineNumber": 307,
+              "columnNumber": 34,
+              "weight": 4,
+              "percent": 0.6125574272588055
+            },
+            {
+              "functionName": "$jd$f_95_context_95_higher$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 20276,
+              "columnNumber": 39,
+              "weight": 4,
+              "percent": 0.6125574272588055
+            },
+            {
+              "functionName": "$jd$f_95_context_95_resolve",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 12389,
+              "columnNumber": 36,
+              "weight": 4,
+              "percent": 0.6125574272588055
+            }
+          ]
+        },
+        "microseconds": {
+          "total": 1026940,
+          "sampleEvents": 653,
+          "exclusiveStages": [
+            {
+              "name": "source-completion",
+              "weight": 191756,
+              "percent": 18.672561201238633
+            },
+            {
+              "name": "plan-selection",
+              "weight": 168998,
+              "percent": 16.45646288975013
+            },
+            {
+              "name": "checker",
+              "weight": 141831,
+              "percent": 13.811030829454495
+            },
+            {
+              "name": "api-load",
+              "weight": 114758,
+              "percent": 11.17475217636863
+            },
+            {
+              "name": "base-cache",
+              "weight": 109170,
+              "percent": 10.630611330749606
+            },
+            {
+              "name": "source-loading",
+              "weight": 62703,
+              "percent": 6.10580949227803
+            },
+            {
+              "name": "GC",
+              "weight": 40445,
+              "percent": 3.9383995170117045
+            },
+            {
+              "name": "layout-proof",
+              "weight": 28408,
+              "percent": 2.7662765107990728
+            },
+            {
+              "name": "host-wrapper",
+              "weight": 23259,
+              "percent": 2.264884024383119
+            },
+            {
+              "name": "inspector-overhead",
+              "weight": 23074,
+              "percent": 2.2468693399809143
+            },
+            {
+              "name": "annotation",
+              "weight": 17616,
+              "percent": 1.715387461779656
+            },
+            {
+              "name": "roots-and-stops",
+              "weight": 17389,
+              "percent": 1.6932829571347887
+            },
+            {
+              "name": "other-generated-image",
+              "weight": 16850,
+              "percent": 1.6407969306872845
+            },
+            {
+              "name": "base-identity",
+              "weight": 15876,
+              "percent": 1.5459520517264884
+            },
+            {
+              "name": "source-reach",
+              "weight": 14152,
+              "percent": 1.3780746684324303
+            },
+            {
+              "name": "owned-foreign-layout",
+              "weight": 10771,
+              "percent": 1.0488441388980856
+            },
+            {
+              "name": "source-graph-freshening",
+              "weight": 10421,
+              "percent": 1.0147623035425632
+            },
+            {
+              "name": "book-context",
+              "weight": 9241,
+              "percent": 0.8998578300582313
+            },
+            {
+              "name": "other-host-driver",
+              "weight": 3143,
+              "percent": 0.30605488149258964
+            },
+            {
+              "name": "source-error-scan",
+              "weight": 2167,
+              "percent": 0.21101524918690479
+            },
+            {
+              "name": "foreign-modules",
+              "weight": 2116,
+              "percent": 0.20604903889224296
+            },
+            {
+              "name": "foreign-validation",
+              "weight": 1743,
+              "percent": 0.1697275400705007
+            },
+            {
+              "name": "final-library",
+              "weight": 1053,
+              "percent": 0.10253763608389974
+            }
+          ],
+          "inclusiveAncestorUnions": [
+            {
+              "name": "definition",
+              "weight": 103244,
+              "percent": 10.053557169844392
+            },
+            {
+              "name": "normalization",
+              "weight": 76808,
+              "percent": 7.479307457105576
+            },
+            {
+              "name": "index",
+              "weight": 64156,
+              "percent": 6.2472977973396695
+            },
+            {
+              "name": "calls",
+              "weight": 46197,
+              "percent": 4.498510136911602
+            },
+            {
+              "name": "host",
+              "weight": 23259,
+              "percent": 2.264884024383119
+            },
+            {
+              "name": "arityQueries",
+              "weight": 23136,
+              "percent": 2.2529066936724638
+            },
+            {
+              "name": "jdArity",
+              "weight": 22636,
+              "percent": 2.2042183574502894
+            },
+            {
+              "name": "strings",
+              "weight": 18725,
+              "percent": 1.8233781915204395
+            },
+            {
+              "name": "substitution",
+              "weight": 18155,
+              "percent": 1.7678734882271603
+            },
+            {
+              "name": "jdDomains",
+              "weight": 1031,
+              "percent": 0.10039534929012406
+            },
+            {
+              "name": "jdParams",
+              "weight": 500,
+              "percent": 0.04868833622217462
+            }
+          ],
+          "intersections": [
+            {
+              "name": "normalizationUnderHost",
+              "weight": 5353,
+              "percent": 0.5212573275946014
+            },
+            {
+              "name": "substitutionUnderHost",
+              "weight": 492,
+              "percent": 0.047909322842619825
+            }
+          ],
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "topSelf": [
+            {
+              "functionName": "compileSourceTextModule",
+              "url": "node:internal/modules/esm/utils",
+              "lineNumber": 315,
+              "columnNumber": 32,
+              "weight": 113700,
+              "percent": 11.071727656922508
+            },
+            {
+              "functionName": "decodeBaseGraph",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+              "lineNumber": 67,
+              "columnNumber": 31,
+              "weight": 95168,
+              "percent": 9.267143163183828
+            },
+            {
+              "functionName": "$jd$f_95_lex_95_scanned$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 11902,
+              "columnNumber": 36,
+              "weight": 48399,
+              "percent": 4.712933569634059
+            },
+            {
+              "functionName": "(garbage collector)",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 40445,
+              "percent": 3.9383995170117045
+            },
+            {
+              "functionName": "$jd$wnf",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2009,
+              "columnNumber": 16,
+              "weight": 26431,
+              "percent": 2.5737628293765944
+            },
+            {
+              "functionName": "post",
+              "url": "node:inspector",
+              "lineNumber": 114,
+              "columnNumber": 6,
+              "weight": 23074,
+              "percent": 2.2468693399809143
+            },
+            {
+              "functionName": "validateSpanBook",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+              "lineNumber": 237,
+              "columnNumber": 32,
+              "weight": 18778,
+              "percent": 1.8285391551599899
+            },
+            {
+              "functionName": "$jd$jd_95_text_95_scan$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 54066,
+              "columnNumber": 35,
+              "weight": 18025,
+              "percent": 1.755214520809395
+            },
+            {
+              "functionName": "$jd$jd_95_text_95_scan",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 54194,
+              "columnNumber": 31,
+              "weight": 17433,
+              "percent": 1.6975675307223401
+            },
+            {
+              "functionName": "update",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 17340,
+              "percent": 1.6885115001850157
+            },
+            {
+              "functionName": "$jd$book_95_final_95_scan$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1824,
+              "columnNumber": 38,
+              "weight": 13456,
+              "percent": 1.3103005044111633
+            },
+            {
+              "functionName": "$jd$subst",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 973,
+              "columnNumber": 18,
+              "weight": 12796,
+              "percent": 1.2460319005978928
+            },
+            {
+              "functionName": "$jd$f_95_find$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 17432,
+              "columnNumber": 26,
+              "weight": 12311,
+              "percent": 1.1988042144623834
+            },
+            {
+              "functionName": "$jd$index_95_lookup",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1698,
+              "columnNumber": 28,
+              "weight": 11600,
+              "percent": 1.1295694003544512
+            },
+            {
+              "functionName": "$jd$j_95_layout_95_open_95_head",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 26416,
+              "columnNumber": 40,
+              "weight": 11353,
+              "percent": 1.1055173622606969
+            },
+            {
+              "functionName": "$jd$index_95_set",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1672,
+              "columnNumber": 25,
+              "weight": 11265,
+              "percent": 1.096948215085594
+            },
+            {
+              "functionName": "$jd$index_95_remove",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1475,
+              "columnNumber": 28,
+              "weight": 10770,
+              "percent": 1.0487467622256412
+            },
+            {
+              "functionName": "$jd$lookup$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 834,
+              "columnNumber": 23,
+              "weight": 10155,
+              "percent": 0.9888601086723664
+            },
+            {
+              "functionName": "$jd$String_46_contains",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 610,
+              "columnNumber": 31,
+              "weight": 9306,
+              "percent": 0.9061873137671139
+            },
+            {
+              "functionName": "$jd$j_95_find_95_ctor$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 25440,
+              "columnNumber": 34,
+              "weight": 8938,
+              "percent": 0.8703526983075934
+            },
+            {
+              "functionName": "$jd$norm_95_max_95_term",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2436,
+              "columnNumber": 32,
+              "weight": 8730,
+              "percent": 0.8500983504391688
+            },
+            {
+              "functionName": "$jd$f_95_context_95_grow$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 12569,
+              "columnNumber": 37,
+              "weight": 8628,
+              "percent": 0.8401659298498452
+            },
+            {
+              "functionName": "$jd$base_95_prefix_95_ctor_95_disjoint",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 10534,
+              "columnNumber": 47,
+              "weight": 8319,
+              "percent": 0.8100765380645413
+            },
+            {
+              "functionName": "$jd$f_95_symbol_95_text",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 12272,
+              "columnNumber": 32,
+              "weight": 7303,
+              "percent": 0.7111418388610824
+            },
+            {
+              "functionName": "",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 66290,
+              "columnNumber": 40,
+              "weight": 7148,
+              "percent": 0.6960484546322083
+            }
+          ]
+        }
+      },
+      "warnings": []
+    },
+    {
+      "case": "lexer",
+      "role": "typescript",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/cpu/lexer-0-typescript.result.json",
+        "sha256": "2b6cddaeb25193c0e423439ed04bc1d7530c46e38deb3bf8d992904f0991bcca"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/cpu/lexer-0-typescript-profile/profile.cpuprofile",
+        "sha256": "96786248ffe8064c44b19ccdb553d318672d4b9fe52d6685a8f781ff6a04263a",
+        "bytes": 605719
+      },
+      "image": null,
+      "weightedStatus": "admitted",
+      "weightedAccounting": {
+        "weightSource": "max(timeDeltas[i],0) only when the explicit tiny-jitter policy admits a weighted view",
+        "weightedStatus": "admitted",
+        "reasons": [],
+        "policy": {
+          "maxNegativeMagnitudeUs": 2,
+          "maxCorrectionPartsPerMillion": 10
+        },
+        "negativeDeltas": [],
+        "negativeDeltaCount": 0,
+        "signedRawTimeDeltaUs": 762459,
+        "correctionUs": 0,
+        "correctionPartsPerMillion": 0,
+        "admittedWeightedUs": 762459,
+        "profileDurationUs": 762781,
+        "profileMinusSignedRawUs": 322,
+        "profileMinusWeightedUs": 322,
+        "rawProfileUnmodified": true,
+        "scope": "Observed signed increments are retained; cause is not established. Negative values are clipped only in an admitted weighted view. Count-based summary is an independent view; no timing/semantic result is changed."
+      },
+      "views": {
+        "counts": {
+          "total": 594,
+          "sampleEvents": 594,
+          "exclusiveStages": [
+            {
+              "name": "checker",
+              "weight": 203,
+              "percent": 34.17508417508417
+            },
+            {
+              "name": "source-loading",
+              "weight": 138,
+              "percent": 23.232323232323232
+            },
+            {
+              "name": "typescript-module-stripping",
+              "weight": 136,
+              "percent": 22.895622895622896
+            },
+            {
+              "name": "ts-file-analysis",
+              "weight": 53,
+              "percent": 8.922558922558922
+            },
+            {
+              "name": "ts-library",
+              "weight": 25,
+              "percent": 4.2087542087542085
+            },
+            {
+              "name": "GC",
+              "weight": 19,
+              "percent": 3.1986531986531985
+            },
+            {
+              "name": "module-compilation",
+              "weight": 8,
+              "percent": 1.3468013468013469
+            },
+            {
+              "name": "other-typescript",
+              "weight": 6,
+              "percent": 1.0101010101010102
+            },
+            {
+              "name": "program",
+              "weight": 3,
+              "percent": 0.5050505050505051
+            },
+            {
+              "name": "inspector-overhead",
+              "weight": 1,
+              "percent": 0.16835016835016836
+            },
+            {
+              "name": "other-node",
+              "weight": 1,
+              "percent": 0.16835016835016836
+            },
+            {
+              "name": "other-unassigned",
+              "weight": 1,
+              "percent": 0.16835016835016836
+            }
+          ],
+          "inclusiveAncestorUnions": [],
+          "intersections": [],
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "topSelf": [
+            {
+              "functionName": "term_check",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3478,
+              "columnNumber": 26,
+              "weight": 105,
+              "percent": 17.67676767676768
+            },
+            {
+              "functionName": "term_higher",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27,
+              "weight": 29,
+              "percent": 4.882154882154882
+            },
+            {
+              "functionName": "__require",
+              "url": "node:internal/deps/amaro/dist/index",
+              "lineNumber": 7,
+              "columnNumber": 48,
+              "weight": 23,
+              "percent": 3.872053872053872
+            },
+            {
+              "functionName": "(garbage collector)",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 19,
+              "percent": 3.1986531986531985
+            },
+            {
+              "functionName": "compare_go",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3056,
+              "columnNumber": 19,
+              "weight": 16,
+              "percent": 2.6936026936026938
+            },
+            {
+              "functionName": "term_wnf",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2783,
+              "columnNumber": 24,
+              "weight": 15,
+              "percent": 2.525252525252525
+            },
+            {
+              "functionName": "term_lower",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 781,
+              "columnNumber": 26,
+              "weight": 12,
+              "percent": 2.0202020202020203
+            },
+            {
+              "functionName": "parse_term_ops",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2011,
+              "columnNumber": 30,
+              "weight": 12,
+              "percent": 2.0202020202020203
+            },
+            {
+              "functionName": "term_infer",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3264,
+              "columnNumber": 26,
+              "weight": 12,
+              "percent": 2.0202020202020203
+            },
+            {
+              "functionName": "wasm-function[206]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 978626,
+              "weight": 11,
+              "percent": 1.8518518518518519
+            },
+            {
+              "functionName": "parse_def",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2427,
+              "columnNumber": 25,
+              "weight": 11,
+              "percent": 1.8518518518518519
+            },
+            {
+              "functionName": "",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 733,
+              "columnNumber": 35,
+              "weight": 11,
+              "percent": 1.8518518518518519
+            },
+            {
+              "functionName": "parse_term",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 1739,
+              "columnNumber": 26,
+              "weight": 10,
+              "percent": 1.6835016835016836
+            },
+            {
+              "functionName": "match_flatten",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2630,
+              "columnNumber": 29,
+              "weight": 10,
+              "percent": 1.6835016835016836
+            },
+            {
+              "functionName": "parse_term_base",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 1747,
+              "columnNumber": 31,
+              "weight": 10,
+              "percent": 1.6835016835016836
+            },
+            {
+              "functionName": "parse_body",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2282,
+              "columnNumber": 26,
+              "weight": 10,
+              "percent": 1.6835016835016836
+            },
+            {
+              "functionName": "type_adts",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 983,
+              "columnNumber": 18,
+              "weight": 10,
+              "percent": 1.6835016835016836
+            },
+            {
+              "functionName": "compileSourceTextModule",
+              "url": "node:internal/modules/esm/utils",
+              "lineNumber": 315,
+              "columnNumber": 32,
+              "weight": 8,
+              "percent": 1.3468013468013469
+            },
+            {
+              "functionName": "pmap_set",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 529,
+              "columnNumber": 27,
+              "weight": 8,
+              "percent": 1.3468013468013469
+            },
+            {
+              "functionName": "wasm-function[103]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 539644,
+              "weight": 6,
+              "percent": 1.0101010101010102
+            },
+            {
+              "functionName": "term_compare",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3052,
+              "columnNumber": 28,
+              "weight": 5,
+              "percent": 0.8417508417508418
+            },
+            {
+              "functionName": "passStringToWasm0",
+              "url": "node:internal/deps/amaro/dist/index",
+              "lineNumber": 194,
+              "columnNumber": 30,
+              "weight": 4,
+              "percent": 0.6734006734006734
+            },
+            {
+              "functionName": "wasm-function[338]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 1244842,
+              "weight": 4,
+              "percent": 0.6734006734006734
+            },
+            {
+              "functionName": "",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 739,
+              "columnNumber": 27,
+              "weight": 4,
+              "percent": 0.6734006734006734
+            },
+            {
+              "functionName": "def_check",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3709,
+              "columnNumber": 25,
+              "weight": 4,
+              "percent": 0.6734006734006734
+            }
+          ]
+        },
+        "microseconds": {
+          "total": 762459,
+          "sampleEvents": 594,
+          "exclusiveStages": [
+            {
+              "name": "typescript-module-stripping",
+              "weight": 280576,
+              "percent": 36.79883115026513
+            },
+            {
+              "name": "checker",
+              "weight": 173749,
+              "percent": 22.78797941922123
+            },
+            {
+              "name": "source-loading",
+              "weight": 159098,
+              "percent": 20.8664334737999
+            },
+            {
+              "name": "GC",
+              "weight": 42166,
+              "percent": 5.530264578160924
+            },
+            {
+              "name": "ts-file-analysis",
+              "weight": 35190,
+              "percent": 4.61533013578435
+            },
+            {
+              "name": "ts-library",
+              "weight": 28563,
+              "percent": 3.7461686464452515
+            },
+            {
+              "name": "inspector-overhead",
+              "weight": 22660,
+              "percent": 2.9719630826050976
+            },
+            {
+              "name": "module-compilation",
+              "weight": 11609,
+              "percent": 1.5225736728138826
+            },
+            {
+              "name": "other-typescript",
+              "weight": 6612,
+              "percent": 0.8671941704406401
+            },
+            {
+              "name": "other-node",
+              "weight": 1056,
+              "percent": 0.1384992504514997
+            },
+            {
+              "name": "other-unassigned",
+              "weight": 1029,
+              "percent": 0.13495807643427385
+            },
+            {
+              "name": "program",
+              "weight": 151,
+              "percent": 0.01980434357781861
+            }
+          ],
+          "inclusiveAncestorUnions": [],
+          "intersections": [],
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "topSelf": [
+            {
+              "functionName": "(garbage collector)",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 42166,
+              "percent": 5.530264578160924
+            },
+            {
+              "functionName": "term_check",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3478,
+              "columnNumber": 26,
+              "weight": 38613,
+              "percent": 5.064272308412649
+            },
+            {
+              "functionName": "compare_go",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3056,
+              "columnNumber": 19,
+              "weight": 36222,
+              "percent": 4.750681675998316
+            },
+            {
+              "functionName": "",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 733,
+              "columnNumber": 35,
+              "weight": 25829,
+              "percent": 3.387591988552827
+            },
+            {
+              "functionName": "",
+              "url": "node:internal/deps/amaro/dist/index",
+              "lineNumber": 0,
+              "columnNumber": 0,
+              "weight": 25710,
+              "percent": 3.371984591958387
+            },
+            {
+              "functionName": "__require",
+              "url": "node:internal/deps/amaro/dist/index",
+              "lineNumber": 7,
+              "columnNumber": 48,
+              "weight": 24361,
+              "percent": 3.1950570456903256
+            },
+            {
+              "functionName": "post",
+              "url": "node:inspector",
+              "lineNumber": 114,
+              "columnNumber": 6,
+              "weight": 22660,
+              "percent": 2.9719630826050976
+            },
+            {
+              "functionName": "Module",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 19606,
+              "percent": 2.5714169548788854
+            },
+            {
+              "functionName": "match_flatten",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2630,
+              "columnNumber": 29,
+              "weight": 19364,
+              "percent": 2.539677543317083
+            },
+            {
+              "functionName": "parse_term_base",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 1747,
+              "columnNumber": 31,
+              "weight": 18073,
+              "percent": 2.3703569634563957
+            },
+            {
+              "functionName": "term_infer",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3264,
+              "columnNumber": 26,
+              "weight": 17142,
+              "percent": 2.2482520371587196
+            },
+            {
+              "functionName": "term_higher",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27,
+              "weight": 16669,
+              "percent": 2.186215914560652
+            },
+            {
+              "functionName": "wasm-function[63]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 95140,
+              "weight": 14429,
+              "percent": 1.8924296257241373
+            },
+            {
+              "functionName": "wasm-function[206]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 978626,
+              "weight": 14288,
+              "percent": 1.8739368280786246
+            },
+            {
+              "functionName": "parse_term",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 1739,
+              "columnNumber": 26,
+              "weight": 12923,
+              "percent": 1.6949108083188735
+            },
+            {
+              "functionName": "wasm-function[67]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 169228,
+              "weight": 12853,
+              "percent": 1.6857299867927324
+            },
+            {
+              "functionName": "parse_def",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2427,
+              "columnNumber": 25,
+              "weight": 12501,
+              "percent": 1.639563569975566
+            },
+            {
+              "functionName": "parse_body",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2282,
+              "columnNumber": 26,
+              "weight": 11700,
+              "percent": 1.534508740797866
+            },
+            {
+              "functionName": "compileSourceTextModule",
+              "url": "node:internal/modules/esm/utils",
+              "lineNumber": 315,
+              "columnNumber": 32,
+              "weight": 11609,
+              "percent": 1.5225736728138826
+            },
+            {
+              "functionName": "parse_term_ops",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2011,
+              "columnNumber": 30,
+              "weight": 10666,
+              "percent": 1.398894891397439
+            },
+            {
+              "functionName": "term_wnf",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2783,
+              "columnNumber": 24,
+              "weight": 10439,
+              "percent": 1.369122798734096
+            },
+            {
+              "functionName": "wasm-function[156]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 809264,
+              "weight": 9862,
+              "percent": 1.2934465984400472
+            },
+            {
+              "functionName": "wasm-function[88]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 423511,
+              "weight": 8841,
+              "percent": 1.159537758751618
+            },
+            {
+              "functionName": "wasm-function[118]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 636701,
+              "weight": 8534,
+              "percent": 1.119273298629828
+            },
+            {
+              "functionName": "wasm-function[103]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 539644,
+              "weight": 8326,
+              "percent": 1.091993143237866
+            }
+          ]
+        }
+      },
+      "warnings": []
+    },
+    {
+      "case": "test-map-set-ops",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/cpu/test-map-set-ops-0-baseline.result.json",
+        "sha256": "a7cdf137f5580f13c5950b470f7ed5a08cfb39582f5d48a05501e09f9680fabc"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/cpu/test-map-set-ops-0-baseline-profile/profile.cpuprofile",
+        "sha256": "36578c32c18deb2fdb83326779e52503c5976778df4bbed79216da7dd92b8667",
+        "bytes": 4271518
+      },
+      "image": {
+        "kind": "direct",
+        "role": "baseline",
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "sha256": "e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/build/typed/snapshots/06e828e5ccef453057af912cfd1701c9a8896b28ac9974991b34006f714d70b3/compiler.bend",
+          "sha256": "0ebe491e727721857ce981ff5a2167a52d1e040f5674915a3349fea33bed8ed5"
+        },
+        "emission": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/full/report.json",
+          "sha256": "287ca58f72272c98e8ceec057b886c7f4d5cbb3927a2231225837c45affdaefb"
+        },
+        "checkedGenerator": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/attempt.json",
+          "sha256": "82379c94f3eec0bea44afb8a3c2ae8323de731dfa34c85da775d199ce4fb87cf"
+        },
+        "strictExact": true,
+        "diagnosticDerivation": null,
+        "productionQualified": false,
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime.mjs",
+          "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+        },
+        "directRuntime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/direct.mjs",
+          "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+          "sha256": "345248c51b0337402d8d0bccf7bea9d8cd72b081f4e6f7e0a313031e3df958a8"
+        }
+      },
+      "weightedStatus": "admitted",
+      "weightedAccounting": {
+        "weightSource": "max(timeDeltas[i],0) only when the explicit tiny-jitter policy admits a weighted view",
+        "weightedStatus": "admitted",
+        "reasons": [],
+        "policy": {
+          "maxNegativeMagnitudeUs": 2,
+          "maxCorrectionPartsPerMillion": 10
+        },
+        "negativeDeltas": [],
+        "negativeDeltaCount": 0,
+        "signedRawTimeDeltaUs": 1584786,
+        "correctionUs": 0,
+        "correctionPartsPerMillion": 0,
+        "admittedWeightedUs": 1584786,
+        "profileDurationUs": 1585218,
+        "profileMinusSignedRawUs": 432,
+        "profileMinusWeightedUs": 432,
+        "rawProfileUnmodified": true,
+        "scope": "Observed signed increments are retained; cause is not established. Negative values are clipped only in an admitted weighted view. Count-based summary is an independent view; no timing/semantic result is changed."
+      },
+      "views": {
+        "counts": {
+          "total": 1037,
+          "sampleEvents": 1037,
+          "exclusiveStages": [
+            {
+              "name": "plan-selection",
+              "weight": 267,
+              "percent": 25.747348119575697
+            },
+            {
+              "name": "source-completion",
+              "weight": 128,
+              "percent": 12.343297974927676
+            },
+            {
+              "name": "checker",
+              "weight": 113,
+              "percent": 10.896817743490839
+            },
+            {
+              "name": "annotation",
+              "weight": 96,
+              "percent": 9.257473481195756
+            },
+            {
+              "name": "api-load",
+              "weight": 89,
+              "percent": 8.5824493731919
+            },
+            {
+              "name": "host-wrapper",
+              "weight": 71,
+              "percent": 6.846673095467695
+            },
+            {
+              "name": "layout-proof",
+              "weight": 58,
+              "percent": 5.593056894889103
+            },
+            {
+              "name": "base-cache",
+              "weight": 57,
+              "percent": 5.496624879459981
+            },
+            {
+              "name": "GC",
+              "weight": 32,
+              "percent": 3.085824493731919
+            },
+            {
+              "name": "other-generated-image",
+              "weight": 24,
+              "percent": 2.314368370298939
+            },
+            {
+              "name": "source-loading",
+              "weight": 24,
+              "percent": 2.314368370298939
+            },
+            {
+              "name": "source-reach",
+              "weight": 14,
+              "percent": 1.3500482160077145
+            },
+            {
+              "name": "source-graph-freshening",
+              "weight": 13,
+              "percent": 1.253616200578592
+            },
+            {
+              "name": "base-identity",
+              "weight": 12,
+              "percent": 1.1571841851494695
+            },
+            {
+              "name": "book-context",
+              "weight": 10,
+              "percent": 0.9643201542912246
+            },
+            {
+              "name": "roots-and-stops",
+              "weight": 10,
+              "percent": 0.9643201542912246
+            },
+            {
+              "name": "owned-foreign-layout",
+              "weight": 8,
+              "percent": 0.7714561234329798
+            },
+            {
+              "name": "other-host-driver",
+              "weight": 3,
+              "percent": 0.2892960462873674
+            },
+            {
+              "name": "source-error-scan",
+              "weight": 3,
+              "percent": 0.2892960462873674
+            },
+            {
+              "name": "inspector-overhead",
+              "weight": 1,
+              "percent": 0.09643201542912247
+            },
+            {
+              "name": "other-node",
+              "weight": 1,
+              "percent": 0.09643201542912247
+            },
+            {
+              "name": "program",
+              "weight": 1,
+              "percent": 0.09643201542912247
+            },
+            {
+              "name": "foreign-modules",
+              "weight": 1,
+              "percent": 0.09643201542912247
+            },
+            {
+              "name": "final-library",
+              "weight": 1,
+              "percent": 0.09643201542912247
+            }
+          ],
+          "inclusiveAncestorUnions": [
+            {
+              "name": "definition",
+              "weight": 183,
+              "percent": 17.647058823529413
+            },
+            {
+              "name": "host",
+              "weight": 71,
+              "percent": 6.846673095467695
+            },
+            {
+              "name": "normalization",
+              "weight": 69,
+              "percent": 6.65380906460945
+            },
+            {
+              "name": "calls",
+              "weight": 68,
+              "percent": 6.557377049180328
+            },
+            {
+              "name": "substitution",
+              "weight": 56,
+              "percent": 5.400192864030858
+            },
+            {
+              "name": "index",
+              "weight": 51,
+              "percent": 4.918032786885246
+            },
+            {
+              "name": "strings",
+              "weight": 36,
+              "percent": 3.471552555448409
+            },
+            {
+              "name": "arityQueries",
+              "weight": 14,
+              "percent": 1.3500482160077145
+            },
+            {
+              "name": "jdArity",
+              "weight": 13,
+              "percent": 1.253616200578592
+            },
+            {
+              "name": "jdDomains",
+              "weight": 1,
+              "percent": 0.09643201542912247
+            },
+            {
+              "name": "jdParams",
+              "weight": 1,
+              "percent": 0.09643201542912247
+            }
+          ],
+          "intersections": [
+            {
+              "name": "substitutionUnderHost",
+              "weight": 6,
+              "percent": 0.5785920925747348
+            },
+            {
+              "name": "normalizationUnderHost",
+              "weight": 2,
+              "percent": 0.19286403085824494
+            }
+          ],
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "topSelf": [
+            {
+              "functionName": "compileSourceTextModule",
+              "url": "node:internal/modules/esm/utils",
+              "lineNumber": 315,
+              "columnNumber": 32,
+              "weight": 89,
+              "percent": 8.5824493731919
+            },
+            {
+              "functionName": "decodeBaseGraph",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+              "lineNumber": 67,
+              "columnNumber": 31,
+              "weight": 40,
+              "percent": 3.8572806171648986
+            },
+            {
+              "functionName": "(garbage collector)",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 32,
+              "percent": 3.085824493731919
+            },
+            {
+              "functionName": "$jd$subst$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 886,
+              "columnNumber": 22,
+              "weight": 29,
+              "percent": 2.7965284474445515
+            },
+            {
+              "functionName": "$jd$annotate",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 11116,
+              "columnNumber": 21,
+              "weight": 29,
+              "percent": 2.7965284474445515
+            },
+            {
+              "functionName": "$jd$f_95_lex_95_scanned$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 11902,
+              "columnNumber": 36,
+              "weight": 23,
+              "percent": 2.217936354869817
+            },
+            {
+              "functionName": "$jd$norm_95_eval_95_node$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2014,
+              "columnNumber": 37,
+              "weight": 22,
+              "percent": 2.1215043394406945
+            },
+            {
+              "functionName": "$jd$j_95_layout_95_term$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 26431,
+              "columnNumber": 36,
+              "weight": 18,
+              "percent": 1.7357762777242045
+            },
+            {
+              "functionName": "$jd$ka_95_node",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 11128,
+              "columnNumber": 23,
+              "weight": 17,
+              "percent": 1.639344262295082
+            },
+            {
+              "functionName": "$jd$String_46_starts_95_with_46_if$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 571,
+              "columnNumber": 47,
+              "weight": 14,
+              "percent": 1.3500482160077145
+            },
+            {
+              "functionName": "update",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 13,
+              "percent": 1.253616200578592
+            },
+            {
+              "functionName": "$jd$jd_95_calls_95_body$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 57562,
+              "columnNumber": 36,
+              "weight": 12,
+              "percent": 1.1571841851494695
+            },
+            {
+              "functionName": "$jd$index_95_find$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1365,
+              "columnNumber": 30,
+              "weight": 11,
+              "percent": 1.0607521697203472
+            },
+            {
+              "functionName": "$jd$String_46_contains_46_if$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 593,
+              "columnNumber": 41,
+              "weight": 10,
+              "percent": 0.9643201542912246
+            },
+            {
+              "functionName": "$jd$lookup$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 834,
+              "columnNumber": 23,
+              "weight": 10,
+              "percent": 0.9643201542912246
+            },
+            {
+              "functionName": "$jd$app",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 792,
+              "columnNumber": 16,
+              "weight": 10,
+              "percent": 0.9643201542912246
+            },
+            {
+              "functionName": "$jd$jd_95_text_95_scan$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 54066,
+              "columnNumber": 35,
+              "weight": 10,
+              "percent": 0.9643201542912246
+            },
+            {
+              "functionName": "$jd$constructor_95_exists",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 7301,
+              "columnNumber": 34,
+              "weight": 9,
+              "percent": 0.8678881388621023
+            },
+            {
+              "functionName": "$jd$tg",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 748,
+              "columnNumber": 15,
+              "weight": 9,
+              "percent": 0.8678881388621023
+            },
+            {
+              "functionName": "$jd$norm_95_max_95_term",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2436,
+              "columnNumber": 32,
+              "weight": 8,
+              "percent": 0.7714561234329798
+            },
+            {
+              "functionName": "$jd$index_95_lookup",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1698,
+              "columnNumber": 28,
+              "weight": 8,
+              "percent": 0.7714561234329798
+            },
+            {
+              "functionName": "$jd$f_95_context_95_grow$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 12569,
+              "columnNumber": 37,
+              "weight": 7,
+              "percent": 0.6750241080038573
+            },
+            {
+              "functionName": "$jd$subst",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 973,
+              "columnNumber": 18,
+              "weight": 7,
+              "percent": 0.6750241080038573
+            },
+            {
+              "functionName": "$jd$j_95_find_95_ctor$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 25440,
+              "columnNumber": 34,
+              "weight": 7,
+              "percent": 0.6750241080038573
+            },
+            {
+              "functionName": "$jd$wnf",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2009,
+              "columnNumber": 16,
+              "weight": 7,
+              "percent": 0.6750241080038573
+            }
+          ]
+        },
+        "microseconds": {
+          "total": 1584786,
+          "sampleEvents": 1037,
+          "exclusiveStages": [
+            {
+              "name": "plan-selection",
+              "weight": 410887,
+              "percent": 25.926970581517
+            },
+            {
+              "name": "source-completion",
+              "weight": 203222,
+              "percent": 12.823308635992493
+            },
+            {
+              "name": "checker",
+              "weight": 157069,
+              "percent": 9.911054236975843
+            },
+            {
+              "name": "api-load",
+              "weight": 116680,
+              "percent": 7.362508250325281
+            },
+            {
+              "name": "host-wrapper",
+              "weight": 112064,
+              "percent": 7.071238640422114
+            },
+            {
+              "name": "annotation",
+              "weight": 111221,
+              "percent": 7.0180453386135415
+            },
+            {
+              "name": "base-cache",
+              "weight": 109779,
+              "percent": 6.927055135519875
+            },
+            {
+              "name": "GC",
+              "weight": 94223,
+              "percent": 5.945471502146031
+            },
+            {
+              "name": "layout-proof",
+              "weight": 53919,
+              "percent": 3.4022890156778267
+            },
+            {
+              "name": "other-generated-image",
+              "weight": 43216,
+              "percent": 2.7269296927156095
+            },
+            {
+              "name": "source-loading",
+              "weight": 39797,
+              "percent": 2.511190785380487
+            },
+            {
+              "name": "source-reach",
+              "weight": 36037,
+              "percent": 2.2739347773137824
+            },
+            {
+              "name": "inspector-overhead",
+              "weight": 19454,
+              "percent": 1.227547441736613
+            },
+            {
+              "name": "source-graph-freshening",
+              "weight": 18633,
+              "percent": 1.1757423399752396
+            },
+            {
+              "name": "roots-and-stops",
+              "weight": 14868,
+              "percent": 0.9381708318978083
+            },
+            {
+              "name": "base-identity",
+              "weight": 12672,
+              "percent": 0.7996032271865098
+            },
+            {
+              "name": "book-context",
+              "weight": 11622,
+              "percent": 0.7333482249338397
+            },
+            {
+              "name": "owned-foreign-layout",
+              "weight": 9836,
+              "percent": 0.6206516211021551
+            },
+            {
+              "name": "source-error-scan",
+              "weight": 3274,
+              "percent": 0.20658940702403983
+            },
+            {
+              "name": "other-host-driver",
+              "weight": 3062,
+              "percent": 0.19321220656921503
+            },
+            {
+              "name": "final-library",
+              "weight": 1068,
+              "percent": 0.06739080229128727
+            },
+            {
+              "name": "other-node",
+              "weight": 1059,
+              "percent": 0.06682290227197868
+            },
+            {
+              "name": "foreign-modules",
+              "weight": 1042,
+              "percent": 0.06575020223550687
+            },
+            {
+              "name": "program",
+              "weight": 82,
+              "percent": 0.005174200175922806
+            }
+          ],
+          "inclusiveAncestorUnions": [
+            {
+              "name": "definition",
+              "weight": 290205,
+              "percent": 18.31193612260583
+            },
+            {
+              "name": "host",
+              "weight": 112064,
+              "percent": 7.071238640422114
+            },
+            {
+              "name": "calls",
+              "weight": 98996,
+              "percent": 6.246647812386025
+            },
+            {
+              "name": "normalization",
+              "weight": 91894,
+              "percent": 5.798511597149394
+            },
+            {
+              "name": "index",
+              "weight": 91624,
+              "percent": 5.781474596570137
+            },
+            {
+              "name": "substitution",
+              "weight": 89334,
+              "percent": 5.63697559165717
+            },
+            {
+              "name": "strings",
+              "weight": 56119,
+              "percent": 3.5411090203977067
+            },
+            {
+              "name": "arityQueries",
+              "weight": 28224,
+              "percent": 1.7809344605517716
+            },
+            {
+              "name": "jdArity",
+              "weight": 26075,
+              "percent": 1.645332555941307
+            },
+            {
+              "name": "jdParams",
+              "weight": 2149,
+              "percent": 0.13560190461046476
+            },
+            {
+              "name": "jdDomains",
+              "weight": 1089,
+              "percent": 0.06871590233634067
+            }
+          ],
+          "intersections": [
+            {
+              "name": "substitutionUnderHost",
+              "weight": 6236,
+              "percent": 0.39349161337871486
+            },
+            {
+              "name": "normalizationUnderHost",
+              "weight": 1989,
+              "percent": 0.12550590426720074
+            }
+          ],
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "topSelf": [
+            {
+              "functionName": "compileSourceTextModule",
+              "url": "node:internal/modules/esm/utils",
+              "lineNumber": 315,
+              "columnNumber": 32,
+              "weight": 116680,
+              "percent": 7.362508250325281
+            },
+            {
+              "functionName": "(garbage collector)",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 94223,
+              "percent": 5.945471502146031
+            },
+            {
+              "functionName": "decodeBaseGraph",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+              "lineNumber": 67,
+              "columnNumber": 31,
+              "weight": 89747,
+              "percent": 5.6630358925432205
+            },
+            {
+              "functionName": "$jd$f_95_lex_95_scanned$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 11902,
+              "columnNumber": 36,
+              "weight": 48635,
+              "percent": 3.0688686043415325
+            },
+            {
+              "functionName": "$jd$subst",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 973,
+              "columnNumber": 18,
+              "weight": 29542,
+              "percent": 1.864100263379409
+            },
+            {
+              "functionName": "$jd$lookup$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 834,
+              "columnNumber": 23,
+              "weight": 26516,
+              "percent": 1.6731596568874283
+            },
+            {
+              "functionName": "$jd$wnf",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2009,
+              "columnNumber": 16,
+              "weight": 23355,
+              "percent": 1.4737005501058187
+            },
+            {
+              "functionName": "$jd$subst$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 886,
+              "columnNumber": 22,
+              "weight": 22984,
+              "percent": 1.4502904493098754
+            },
+            {
+              "functionName": "$jd$index_95_lookup",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1698,
+              "columnNumber": 28,
+              "weight": 22426,
+              "percent": 1.415080648112742
+            },
+            {
+              "functionName": "$jd$f_95_context_95_publish$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 13714,
+              "columnNumber": 40,
+              "weight": 20596,
+              "percent": 1.29960764418666
+            },
+            {
+              "functionName": "$jd$norm_95_eval_95_node$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 2014,
+              "columnNumber": 37,
+              "weight": 20270,
+              "percent": 1.2790370434872596
+            },
+            {
+              "functionName": "$jd$annotate",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 11116,
+              "columnNumber": 21,
+              "weight": 19672,
+              "percent": 1.2413032422043102
+            },
+            {
+              "functionName": "post",
+              "url": "node:inspector",
+              "lineNumber": 114,
+              "columnNumber": 6,
+              "weight": 19454,
+              "percent": 1.227547441736613
+            },
+            {
+              "functionName": "$jd$jd_95_host_95_native_95_on$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 57455,
+              "columnNumber": 43,
+              "weight": 18723,
+              "percent": 1.1814213401683256
+            },
+            {
+              "functionName": "$jd$book_95_final_95_scan$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1824,
+              "columnNumber": 38,
+              "weight": 16156,
+              "percent": 1.0194436346610836
+            },
+            {
+              "functionName": "$jd$index_95_remove$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 1457,
+              "columnNumber": 32,
+              "weight": 15788,
+              "percent": 0.9962228338715764
+            },
+            {
+              "functionName": "$jd$String_46_starts_95_with_46_if$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 571,
+              "columnNumber": 47,
+              "weight": 15396,
+              "percent": 0.9714876330305795
+            },
+            {
+              "functionName": "$jd$jd_95_text_95_scan",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 54194,
+              "columnNumber": 31,
+              "weight": 14940,
+              "percent": 0.9427140320522771
+            },
+            {
+              "functionName": "$jd$jd_95_text_95_scan$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 54066,
+              "columnNumber": 35,
+              "weight": 14814,
+              "percent": 0.9347634317819566
+            },
+            {
+              "functionName": "",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 156,
+              "columnNumber": 9,
+              "weight": 14253,
+              "percent": 0.8993643305783873
+            },
+            {
+              "functionName": "update",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 13503,
+              "percent": 0.8520393289693372
+            },
+            {
+              "functionName": "$jd$kr_95_visit$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 4156,
+              "columnNumber": 28,
+              "weight": 13305,
+              "percent": 0.839545528544548
+            },
+            {
+              "functionName": "$jd$jd_95_doc_95_body$scc",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 60409,
+              "columnNumber": 34,
+              "weight": 12884,
+              "percent": 0.8129804276413345
+            },
+            {
+              "functionName": "validateSpanBook",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+              "lineNumber": 237,
+              "columnNumber": 32,
+              "weight": 12589,
+              "percent": 0.7943659270084416
+            },
+            {
+              "functionName": "$jd$env_95_subst_95_term",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+              "lineNumber": 9193,
+              "columnNumber": 33,
+              "weight": 11980,
+              "percent": 0.7559380257018928
+            }
+          ]
+        }
+      },
+      "warnings": []
+    },
+    {
+      "case": "test-map-set-ops",
+      "role": "typescript",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/cpu/test-map-set-ops-0-typescript.result.json",
+        "sha256": "5bcfe7cd245a6edb4b07527dbfaef754692ee300e1173198383f96b8ea49d85e"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/cpu/test-map-set-ops-0-typescript-profile/profile.cpuprofile",
+        "sha256": "bf1cf0a7c1e22be4938ec11b56080a7b030afd94e16047f343914890b00d9338",
+        "bytes": 1022474
+      },
+      "image": null,
+      "weightedStatus": "refused",
+      "weightedAccounting": {
+        "weightSource": "max(timeDeltas[i],0) only when the explicit tiny-jitter policy admits a weighted view",
+        "weightedStatus": "refused",
+        "reasons": [
+          "Negative CPU delta exceeds 2us magnitude"
+        ],
+        "policy": {
+          "maxNegativeMagnitudeUs": 2,
+          "maxCorrectionPartsPerMillion": 10
+        },
+        "negativeDeltas": [
+          {
+            "index": 597,
+            "value": -4
+          }
+        ],
+        "negativeDeltaCount": 1,
+        "signedRawTimeDeltaUs": 1078538,
+        "correctionUs": 4,
+        "correctionPartsPerMillion": 3.705975329322233,
+        "admittedWeightedUs": null,
+        "profileDurationUs": 1079338,
+        "profileMinusSignedRawUs": 800,
+        "profileMinusWeightedUs": null,
+        "rawProfileUnmodified": true,
+        "scope": "Observed signed increments are retained; cause is not established. Negative values are clipped only in an admitted weighted view. Count-based summary is an independent view; no timing/semantic result is changed."
+      },
+      "views": {
+        "counts": {
+          "total": 798,
+          "sampleEvents": 798,
+          "exclusiveStages": [
+            {
+              "name": "checker",
+              "weight": 202,
+              "percent": 25.31328320802005
+            },
+            {
+              "name": "ts-file-analysis",
+              "weight": 202,
+              "percent": 25.31328320802005
+            },
+            {
+              "name": "typescript-module-stripping",
+              "weight": 142,
+              "percent": 17.794486215538846
+            },
+            {
+              "name": "source-loading",
+              "weight": 131,
+              "percent": 16.416040100250626
+            },
+            {
+              "name": "ts-library",
+              "weight": 70,
+              "percent": 8.771929824561404
+            },
+            {
+              "name": "GC",
+              "weight": 27,
+              "percent": 3.3834586466165413
+            },
+            {
+              "name": "other-typescript",
+              "weight": 12,
+              "percent": 1.5037593984962405
+            },
+            {
+              "name": "module-compilation",
+              "weight": 8,
+              "percent": 1.0025062656641603
+            },
+            {
+              "name": "program",
+              "weight": 2,
+              "percent": 0.2506265664160401
+            },
+            {
+              "name": "inspector-overhead",
+              "weight": 1,
+              "percent": 0.12531328320802004
+            },
+            {
+              "name": "other-node",
+              "weight": 1,
+              "percent": 0.12531328320802004
+            }
+          ],
+          "inclusiveAncestorUnions": [],
+          "intersections": [],
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "topSelf": [
+            {
+              "functionName": "term_check",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3478,
+              "columnNumber": 26,
+              "weight": 103,
+              "percent": 12.907268170426065
+            },
+            {
+              "functionName": "term_any",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 822,
+              "columnNumber": 17,
+              "weight": 44,
+              "percent": 5.513784461152882
+            },
+            {
+              "functionName": "term_higher",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 692,
+              "columnNumber": 27,
+              "weight": 39,
+              "percent": 4.887218045112782
+            },
+            {
+              "functionName": "",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 826,
+              "columnNumber": 33,
+              "weight": 29,
+              "percent": 3.6340852130325816
+            },
+            {
+              "functionName": "(garbage collector)",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "weight": 27,
+              "percent": 3.3834586466165413
+            },
+            {
+              "functionName": "term_wnf",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2783,
+              "columnNumber": 24,
+              "weight": 23,
+              "percent": 2.882205513784461
+            },
+            {
+              "functionName": "__require",
+              "url": "node:internal/deps/amaro/dist/index",
+              "lineNumber": 7,
+              "columnNumber": 48,
+              "weight": 22,
+              "percent": 2.756892230576441
+            },
+            {
+              "functionName": "compare_go",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3056,
+              "columnNumber": 19,
+              "weight": 20,
+              "percent": 2.506265664160401
+            },
+            {
+              "functionName": "",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 738,
+              "columnNumber": 26,
+              "weight": 20,
+              "percent": 2.506265664160401
+            },
+            {
+              "functionName": "parse_term_ops",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2011,
+              "columnNumber": 30,
+              "weight": 19,
+              "percent": 2.380952380952381
+            },
+            {
+              "functionName": "type_adts",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 983,
+              "columnNumber": 18,
+              "weight": 18,
+              "percent": 2.255639097744361
+            },
+            {
+              "functionName": "pmap_set",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 529,
+              "columnNumber": 27,
+              "weight": 15,
+              "percent": 1.8796992481203008
+            },
+            {
+              "functionName": "term_lower",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 781,
+              "columnNumber": 26,
+              "weight": 14,
+              "percent": 1.7543859649122806
+            },
+            {
+              "functionName": "parse_term_base",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 1747,
+              "columnNumber": 31,
+              "weight": 11,
+              "percent": 1.3784461152882206
+            },
+            {
+              "functionName": "term_infer",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 3264,
+              "columnNumber": 26,
+              "weight": 11,
+              "percent": 1.3784461152882206
+            },
+            {
+              "functionName": "",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 1434,
+              "columnNumber": 35,
+              "weight": 11,
+              "percent": 1.3784461152882206
+            },
+            {
+              "functionName": "parse_term",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 1739,
+              "columnNumber": 26,
+              "weight": 9,
+              "percent": 1.1278195488721805
+            },
+            {
+              "functionName": "parse_term_args",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2142,
+              "columnNumber": 31,
+              "weight": 9,
+              "percent": 1.1278195488721805
+            },
+            {
+              "functionName": "",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 733,
+              "columnNumber": 35,
+              "weight": 9,
+              "percent": 1.1278195488721805
+            },
+            {
+              "functionName": "compileSourceTextModule",
+              "url": "node:internal/modules/esm/utils",
+              "lineNumber": 315,
+              "columnNumber": 32,
+              "weight": 8,
+              "percent": 1.0025062656641603
+            },
+            {
+              "functionName": "match_flatten",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "lineNumber": 2630,
+              "columnNumber": 29,
+              "weight": 7,
+              "percent": 0.8771929824561403
+            },
+            {
+              "functionName": "file_book",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 1385,
+              "columnNumber": 18,
+              "weight": 7,
+              "percent": 0.8771929824561403
+            },
+            {
+              "functionName": "term_spine",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 737,
+              "columnNumber": 19,
+              "weight": 7,
+              "percent": 0.8771929824561403
+            },
+            {
+              "functionName": "term_kids",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "lineNumber": 790,
+              "columnNumber": 18,
+              "weight": 7,
+              "percent": 0.8771929824561403
+            },
+            {
+              "functionName": "wasm-function[206]",
+              "url": "wasm://wasm/00aa4bda",
+              "lineNumber": 0,
+              "columnNumber": 978626,
+              "weight": 6,
+              "percent": 0.7518796992481203
+            }
+          ]
+        }
+      },
+      "warnings": [
+        "Weighted timestamp view REFUSED: Negative CPU delta exceeds 2us magnitude. Only sample-count attribution is available; units are samples, not microseconds."
+      ]
+    }
+  ],
+  "scope": "One instrumented first window per source/role, including host/API imports. Nearest exact named boundaries produce disjoint semantic stages; compiler-specific boundaries are not asserted equivalent across Bend and TypeScript. SCC dispatcher names never identify an individual member. Family ancestor unions overlap. CPU weights are admitted diagnostics, not clean times or directly removable excess."
+}

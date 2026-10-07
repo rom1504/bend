@@ -1,0 +1,58 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/make-bindings.py",
+    "sha256": "8efdd7b93b941377e1cfe9f744ebead0fd0f181b91f98b822c68401108aac8c3"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/make-bindings.py",
+    "sha256": "966cbbfa5ac7729c193db40e06585aac33d091907c41c9e91342b12fabec2f10"
+  },
+  "edits": [
+    {
+      "old": "RAW = ROOT / 'selfhost/build/phase63'",
+      "new": "RAW = ROOT / 'selfhost/build/phase64'",
+      "count": 1
+    },
+    {
+      "old": "SOURCE_BINDING = ROOT / 'selfhost/build/phase61/state08-b2-latency01/bindings.json'",
+      "new": "SOURCE_BINDING = ROOT / 'selfhost/build/phase63/state09-b2-latency/bindings.json'",
+      "count": 1
+    },
+    {
+      "old": "97f412afb692cc9f187144e418fb153f35f62fb6ff5eda698e28ebc3eaf260c8",
+      "new": "4a208bffcf47b5d19f8ff18be1fc01b2faf988b37d38e7f5db9e6bd42d79905f",
+      "count": 1
+    },
+    {
+      "old": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477",
+      "new": "e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003",
+      "count": 1
+    },
+    {
+      "old": "State08",
+      "new": "State09",
+      "count": 2
+    },
+    {
+      "old": "kind='phase63-fast-loop-recipe'",
+      "new": "kind='phase64-fast-loop-recipe'",
+      "count": 1
+    },
+    {
+      "old": "for label, cases, rounds, seconds, warm in [",
+      "new": "for label, cases, rounds, seconds, warm in [\n    ('baseline-three', 'numeric-recurrence,lexer,test-map-set-ops', len(role_list), 90, 0),",
+      "count": 1
+    },
+    {
+      "old": "'--roles', ','.join(prepared_roles), '--cases', 'all', '--prepare-only', '--seconds', '240'",
+      "new": "'--roles', ','.join(prepared_roles), '--cases', 'all', '--prepare-only', '--seconds', '240'",
+      "count": 1
+    },
+    {
+      "old": "*prepared, '--cases', 'numeric-recurrence,test-map-set-ops',\n        '--rounds', '1'",
+      "new": "*prepared, '--cases', 'numeric-recurrence,lexer,test-map-set-ops',\n        '--rounds', '1'",
+      "count": 1
+    }
+  ],
+  "scope": "Immutable Phase63 State09 baseline, writable Phase64 only, explicit Numeric/Lexer/Map baseline and diagnostic recipes; no compiler target execution."
+}

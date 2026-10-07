@@ -13,7 +13,7 @@ const specs=[
   ['KIndexNode','def',[['hash','u'],['mask','u'],['left','def'],['right','def']]],
   ['KBasePrefixState','checked',[['bound','u'],['delta','u'],['stamp','u'],['patches','defs'],['ready','b']]],
   ['FFreshPrefixState','fresh',[['next','u'],['ready','b']]],
-  ['KBasePreparedWorld','world',[['state','checked'],['prefix','defs'],['final','defs'],['book','defs'],['checked','defs'],['seen','defs']]],
+  ['KBasePreparedWorld','world',[['state','checked'],['prefix','defs'],['final','defs'],['book','defs'],['checked','defs'],['seen','defs'],['todos','u'],['checkedBound','u']]],
   ['FReadyPrefixState','frontend',[['names','def'],['ctors','def'],['count','u'],['ready','b']]],
 ];
 const byTag=new Map(specs.map((s,i)=>[s[0],i]));
@@ -134,8 +134,12 @@ export function decodeBaseGraph(bytes,{base=null,range,termAbi=1,rootKinds}={}) 
         if(r.length!==3||!u32(r[1])||typeof r[2]!=='boolean')fail();
         node={$:'FFreshPrefixState',next:r[1],ready:r[2]};kind=FRESH;break;
       case 10:
-        if(r.length!==7)fail();
-        node={$:'KBasePreparedWorld',state:ref(r[1],CHECKED),prefix:ref(r[2],DEFS),final:ref(r[3],DEFS),book:ref(r[4],DEFS),checked:ref(r[5],DEFS),seen:ref(r[6],DEFS)};kind=WORLD;break;
+        if((r.length!==7&&r.length!==8&&r.length!==9)||(r.length>=8&&!u32(r[7]))||(r.length===9&&!u32(r[8])))fail();
+        // Old optional worlds remain decodable; the host's version admission
+        // decides whether their missing fact can be consumed by this API.
+        node=r.length===7?{$:'KBasePreparedWorld',state:ref(r[1],CHECKED),prefix:ref(r[2],DEFS),final:ref(r[3],DEFS),book:ref(r[4],DEFS),checked:ref(r[5],DEFS),seen:ref(r[6],DEFS)}:
+          r.length===8?{$:'KBasePreparedWorld',state:ref(r[1],CHECKED),prefix:ref(r[2],DEFS),final:ref(r[3],DEFS),book:ref(r[4],DEFS),checked:ref(r[5],DEFS),seen:ref(r[6],DEFS),todos:r[7]}:
+          {$:'KBasePreparedWorld',state:ref(r[1],CHECKED),prefix:ref(r[2],DEFS),final:ref(r[3],DEFS),book:ref(r[4],DEFS),checked:ref(r[5],DEFS),seen:ref(r[6],DEFS),todos:r[7],checkedBound:r[8]};kind=WORLD;break;
       case 11:
         if(r.length!==5||!u32(r[3])||typeof r[4]!=='boolean')fail();
         node={$:'FReadyPrefixState',names:ref(r[1],DEF),ctors:ref(r[2],DEF),count:r[3],ready:r[4]};kind=FRONTEND;break;

@@ -1,0 +1,42 @@
+{
+  "kind": "phase64-isolated-name-classification",
+  "applied": false,
+  "changes": [
+    {
+      "file": "selfhost/src/back/js/direct/constructors.bend",
+      "helper": "jd_native_layout_name",
+      "sourceSha256": "992e76f1058321b6bdcf28f054326f4640873bcd5d1a3c80478657560a8a8752",
+      "candidateSha256": "6ac71b1f0271ee5592cb28f938b8dbaccb7b02c389a724020ee72bb3b8853116",
+      "unchangedPredicatePrefix": true,
+      "members": [
+        "Nat",
+        "Bool",
+        "U32",
+        "F32",
+        "Char",
+        "String",
+        "Array"
+      ],
+      "table": "|Nat|Bool|U32|F32|Char|String|Array|",
+      "oldExpression": "String.contains(\"|Nat|Bool|U32|F32|Char|String|Array|\", \"|\" ++ nm(ty) ++ \"|\")",
+      "newExpression": "jd_native_layout_name(nm(ty))"
+    },
+    {
+      "file": "selfhost/src/back/js/validate.bend",
+      "helper": "j_layout_array_name",
+      "sourceSha256": "0e5df67a45a2fcddc6a453d8dcc6266d7194ae28dcf19b8ba00d85e0bf47e097",
+      "candidateSha256": "fa882ac2c13bc6dc08156c50907a44eee3699dbb80be3939f338313cbb147454",
+      "unchangedPredicatePrefix": true,
+      "members": [
+        "Array.new",
+        "Array.set",
+        "Array.get",
+        "Array.swap",
+        "Array.size"
+      ],
+      "table": "|Array.new|Array.set|Array.get|Array.swap|Array.size|",
+      "oldExpression": "String.contains(\"|Array.new|Array.set|Array.get|Array.swap|Array.size|\", \"|\" ++ nm(f) ++ \"|\")",
+      "newExpression": "j_layout_array_name(nm(f))"
+    }
+  ]
+}

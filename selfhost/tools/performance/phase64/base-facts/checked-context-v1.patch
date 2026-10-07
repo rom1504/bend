@@ -1,0 +1,112 @@
+--- a/selfhost/src/check/prefix-state.bend
++++ b/selfhost/src/check/prefix-state.bend
+@@ -269,7 +269,7 @@
+ # state; the driver binds this whole immutable record to that same Base seed.
+ # Raw books and old prefix-state exports retain their full admission paths.
+ type KBasePreparedWorld is Data:
+-  KBasePreparedWorld{+state: KBasePrefixState, +prefix: List<&2,KDef>, +final: List<&2,KDef>, +book: List<&2,KDef>, +checked: List<&2,KDef>, +seen: List<&2,KDef>, +todos: U32}
++  KBasePreparedWorld{+state: KBasePrefixState, +prefix: List<&2,KDef>, +final: List<&2,KDef>, +book: List<&2,KDef>, +checked: List<&2,KDef>, +seen: List<&2,KDef>, +todos: U32, +checkedBound: U32}
+ 
+ @unsafe
+ def base_prefix_world_prepare(+prefix: List<&2,KDef>, +state: KBasePrefixState) -> KBasePreparedWorld:
+@@ -277,11 +277,11 @@
+   +final = base_prefix_final(prefix)
+   kc(KBasePreparedWorld, base_prefix_admitted_bound(state, prefix, Nil{}, bound, final, bound),
+     u => base_prefix_world_saved(prefix, state, final, bound, rw(dg_checking_result(base_prefix_resume_saved(state, prefix, Nil{}, bound, final)))),
+-    u => KBasePreparedWorld{KBasePrefixState{bound, 0, 0, Nil{}, False{}}, prefix, final, Nil{}, Nil{}, Nil{}, 0})
++    u => KBasePreparedWorld{KBasePrefixState{bound, 0, 0, Nil{}, False{}}, prefix, final, Nil{}, Nil{}, Nil{}, 0, 0})
+ 
+ @unsafe
+ def base_prefix_world_saved(+prefix: List<&2,KDef>, +state: KBasePrefixState, +final: List<&2,KDef>, +bound: U32, +world: KWorld) -> KBasePreparedWorld:
+-  KBasePreparedWorld{state, prefix, final, kw_book(world), kw_checked(world), base_prefix_seen(prefix, bound), driver_count_todos(final)}
++  KBasePreparedWorld{state, prefix, final, kw_book(world), kw_checked(world), base_prefix_seen(prefix, bound), driver_count_todos(final), norm_max_book(kw_checked(world))}
+ 
+ # Sequential declaration installation puts suffix headers first in the list,
+ # but prefix event publication historically puts Base definitions first. Keep
+@@ -302,7 +302,7 @@
+ @unsafe
+ def base_prefix_resume_world(+prepared: KBasePreparedWorld, +suffix: List<&2,KDef>, +bound: U32) -> DChecking:
+   match prepared:
+-    case KBasePreparedWorld{state, prefix, final, book, checked, seen, todos}:
++    case KBasePreparedWorld{state, prefix, final, book, checked, seen, todos, checkedBound}:
+       base_prefix_world_resume_state(state, book, checked, seen, suffix, bound)
+ 
+ @unsafe
+@@ -371,7 +371,7 @@
+ @unsafe
+ def base_prefix_check_world_book(+prepared: KBasePreparedWorld, +book: List<&2,KDef>, +error: String, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +ready: Bool) -> DChecking:
+   match prepared:
+-    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos}:
++    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound}:
+       +bound = norm_max(base_prefix_world_bound(state), norm_max_book(suffix))
+       kc(DChecking, ready && String.is_empty(error) && base_prefix_world_admitted(state, suffix, bound, final, saved),
+         u => base_prefix_world_check_admitted(prepared, prefix, suffix, bound),
+@@ -380,7 +380,7 @@
+ @unsafe
+ def base_prefix_world_check_admitted(+prepared: KBasePreparedWorld, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +bound: U32) -> DChecking:
+   match prepared:
+-    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos}:
++    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound}:
+       kc(DChecking, base_prefix_world_hash_disjoint(suffix, index_first(dc(index_first(saved)))),
+         u => base_prefix_resume_world(prepared, suffix, bound),
+         u => base_prefix_resume_saved(state, prefix, suffix, bound, final))
+@@ -391,7 +391,7 @@
+ @unsafe
+ def base_prefix_program_world_book(+prepared: KBasePreparedWorld, +book: List<&2,KDef>, +error: String, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +ready: Bool, +origins: List<&2,DOrigin>) -> DResult:
+   match prepared:
+-    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos}:
++    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound}:
+       +bound = norm_max(base_prefix_world_bound(state), norm_max_book(suffix))
+       kc(DResult, ready && String.is_empty(error) && base_prefix_world_admitted(state, suffix, bound, final, saved),
+         u => driver_program_checked_prefix(suffix, todos, origins, base_prefix_world_check_admitted(prepared, prefix, suffix, bound)),
+@@ -406,3 +406,50 @@
+           match result:
+             case FResult{book, error, imports}:
+               base_prefix_program_world_book(prepared, book, error, prefix, suffix, ready, origins)
++
++# PRIVATE context for the successful result of this same admitted world check.
++# The driver couples that result, load and prepared seed; a raw book supplied by
++# a public caller does not acquire this permission. Public book_context is intact.
++@unsafe
++def book_context_world(+book: List<&2,KDef>, +load: FPrefixLoad, +prepared: KBasePreparedWorld) -> List<&2,KDef>:
++  match load:
++    case FPrefixLoad{trace, prefix, suffix, ready}:
++      match trace:
++        case FLoadTrace{result, done, sources}:
++          match result:
++            case FResult{original, error, imports}:
++              base_prefix_context_world(book, error, suffix, ready, prepared)
++
++@unsafe
++def base_prefix_context_world(+book: List<&2,KDef>, +error: String, +suffix: List<&2,KDef>, +ready: Bool, +prepared: KBasePreparedWorld) -> List<&2,KDef>:
++  match prepared:
++    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound}:
++      +bound = norm_max(base_prefix_world_bound(state), norm_max_book(suffix))
++      kc(List<&2,KDef>, ready && String.is_empty(error) && Bool.not(String.eq(dk(index_first(book)), "BookCache")) &&
++        base_prefix_world_admitted(state, suffix, bound, final, saved) &&
++        base_prefix_world_hash_disjoint(suffix, index_first(dc(index_first(saved)))),
++        u => base_prefix_context_tail(book, checkedBound, base_prefix_context_drop(book, checked)),
++        u => book_context(book))
++
++# Checking only prepends output to the saved reverse checked list. Reversing the
++# result therefore preserves its entire original checked prefix, in forward
++# order. Count the known prefix cells; do not rescan their immutable term trees.
++@unsafe
++def base_prefix_context_drop(+book: List<&2,KDef>, +prefix: List<&2,KDef>) -> KBasePrefixTail:
++  match prefix:
++    case Nil{}: KBasePrefixTail{book, True{}}
++    case Con{d, rest}: base_prefix_context_drop_head(book, rest)
++
++@unsafe
++def base_prefix_context_drop_head(+book: List<&2,KDef>, +prefix: List<&2,KDef>) -> KBasePrefixTail:
++  match book:
++    case Nil{}: KBasePrefixTail{Nil{}, False{}}
++    case Con{d, rest}: base_prefix_context_drop(rest, prefix)
++
++@unsafe
++def base_prefix_context_tail(+book: List<&2,KDef>, +checkedBound: U32, +tail: KBasePrefixTail) -> List<&2,KDef>:
++  match tail:
++    case KBasePrefixTail{suffix, matched}:
++      kc(List<&2,KDef>, matched,
++        u => book_cached(book, norm_max(checkedBound, norm_max_book(suffix))),
++        u => book_context(book))

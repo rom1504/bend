@@ -1,0 +1,5024 @@
+{
+  "kind": "phase63-exclusive-stage-analysis",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/stages/summarize.py",
+    "sha256": "2954c0565a68039295183f6b3683881f9fcc786330fd5b5c1b7b3ca24f28e1a7"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stages01/report.json",
+    "sha256": "ab6a3f48073bf14e4a1af3e4de47d9195f4b0d5816ec5b7961e8f890b522a7a2"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stage-method01/derivation.json",
+    "sha256": "c3ccb1849e727d392c60bb12f280f72019989bb075bffdf37b63da5fc071b5ec"
+  },
+  "rows": [
+    {
+      "case": "numeric-recurrence",
+      "role": "baseline",
+      "sample": 0,
+      "result": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stages01/numeric-recurrence-0-baseline.result.json",
+        "sha256": "dd1c13346b932cb31dd64a9d26fe0541ca8d60054c42e8e47628d03702db18eb"
+      },
+      "image": {
+        "kind": "direct",
+        "role": "baseline",
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "sha256": "e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/build/typed/snapshots/06e828e5ccef453057af912cfd1701c9a8896b28ac9974991b34006f714d70b3/compiler.bend",
+          "sha256": "0ebe491e727721857ce981ff5a2167a52d1e040f5674915a3349fea33bed8ed5"
+        },
+        "emission": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/full/report.json",
+          "sha256": "287ca58f72272c98e8ceec057b886c7f4d5cbb3927a2231225837c45affdaefb"
+        },
+        "checkedGenerator": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/attempt.json",
+          "sha256": "82379c94f3eec0bea44afb8a3c2ae8323de731dfa34c85da775d199ce4fb87cf"
+        },
+        "strictExact": true,
+        "diagnosticDerivation": null,
+        "productionQualified": false,
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime.mjs",
+          "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+        },
+        "directRuntime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/direct.mjs",
+          "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+          "sha256": "345248c51b0337402d8d0bccf7bea9d8cd72b081f4e6f7e0a313031e3df958a8"
+        }
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stages01/numeric-recurrence-0-baseline.mjs",
+        "sha256": "2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3",
+        "bytes": 14917
+      },
+      "firstRequestMs": 379.900242,
+      "combinedMs": 517.410985,
+      "instrumentedCompileWindowMs": 379.919972,
+      "exclusiveSumMs": 379.919972,
+      "cacheInclusiveMs": 126.11927400000002,
+      "activePaths": {
+        "api.f-prefix-complete-ready-seed": 1,
+        "api.f-prefix-complete-seed": 0,
+        "api.f-prefix-complete-source": 1,
+        "api.f-prefix-graph-trace": 1,
+        "api.check-program-diagnostic-world": 1,
+        "api.check-program-diagnostic-prefix": 0,
+        "api.jd-plan-selected": 1,
+        "api.jd-plan-library": 1,
+        "api.jd-reach-selected": 0,
+        "api.jd-library-selected": 0
+      },
+      "abiExclusiveMs": {
+        "encode": 0,
+        "invoke": 0,
+        "decode": 0
+      },
+      "compileStages": [
+        {
+          "name": "api.check-program-diagnostic-world",
+          "calls": 1,
+          "exclusiveMs": 80.13912499999998,
+          "inclusiveMs": 80.13912499999998
+        },
+        {
+          "name": "driver.graph-book-decode",
+          "calls": 1,
+          "exclusiveMs": 70.02076199999999,
+          "inclusiveMs": 70.02076199999999
+        },
+        {
+          "name": "driver.graph-prepared-decode",
+          "calls": 1,
+          "exclusiveMs": 50.409047999999984,
+          "inclusiveMs": 50.409047999999984
+        },
+        {
+          "name": "api.jd-plan-selected",
+          "calls": 1,
+          "exclusiveMs": 47.22638800000004,
+          "inclusiveMs": 47.22638800000004
+        },
+        {
+          "name": "api.f-prefix-complete-source",
+          "calls": 1,
+          "exclusiveMs": 34.299597000000006,
+          "inclusiveMs": 34.299597000000006
+        },
+        {
+          "name": "api.jd-plan-library",
+          "calls": 1,
+          "exclusiveMs": 17.036483999999973,
+          "inclusiveMs": 17.036483999999973
+        },
+        {
+          "name": "driver.base-identity",
+          "calls": 1,
+          "exclusiveMs": 12.411955999999975,
+          "inclusiveMs": 12.427456999999947
+        },
+        {
+          "name": "api.book-context",
+          "calls": 1,
+          "exclusiveMs": 11.016693000000032,
+          "inclusiveMs": 11.016693000000032
+        },
+        {
+          "name": "api.driver-emit-owned",
+          "calls": 1,
+          "exclusiveMs": 10.796694000000002,
+          "inclusiveMs": 10.796694000000002
+        },
+        {
+          "name": "api.jd-stops",
+          "calls": 1,
+          "exclusiveMs": 10.594042999999942,
+          "inclusiveMs": 10.594042999999942
+        },
+        {
+          "name": "api.f-source-header",
+          "calls": 1,
+          "exclusiveMs": 6.262838999999985,
+          "inclusiveMs": 6.262838999999985
+        },
+        {
+          "name": "api.reach-book",
+          "calls": 1,
+          "exclusiveMs": 5.3169339999999465,
+          "inclusiveMs": 5.3169339999999465
+        },
+        {
+          "name": "api.annotate-selected",
+          "calls": 1,
+          "exclusiveMs": 3.937895000000026,
+          "inclusiveMs": 3.937895000000026
+        },
+        {
+          "name": "api.f-prefix-graph-trace",
+          "calls": 1,
+          "exclusiveMs": 2.8863870000000134,
+          "inclusiveMs": 2.8863870000000134
+        },
+        {
+          "name": "api.j-layout-error",
+          "calls": 1,
+          "exclusiveMs": 2.713569000000007,
+          "inclusiveMs": 2.713569000000007
+        },
+        {
+          "name": "driver.graph-book-digest",
+          "calls": 1,
+          "exclusiveMs": 2.4974619999999845,
+          "inclusiveMs": 2.4974619999999845
+        },
+        {
+          "name": "driver.inspect",
+          "calls": 1,
+          "exclusiveMs": 1.6012920000000008,
+          "inclusiveMs": 378.465404
+        },
+        {
+          "name": "driver.cache-graph-decode",
+          "calls": 1,
+          "exclusiveMs": 1.5696370000000002,
+          "inclusiveMs": 124.49690899999996
+        },
+        {
+          "name": "worker.compile",
+          "calls": 1,
+          "exclusiveMs": 1.4545679999999948,
+          "inclusiveMs": 379.919972
+        },
+        {
+          "name": "api.jd-roots",
+          "calls": 1,
+          "exclusiveMs": 1.3380610000000388,
+          "inclusiveMs": 1.3380610000000388
+        },
+        {
+          "name": "driver.source-graph",
+          "calls": 1,
+          "exclusiveMs": 1.3337980000001721,
+          "inclusiveMs": 46.627634
+        },
+        {
+          "name": "api.f-prefix-complete-ready-seed",
+          "calls": 1,
+          "exclusiveMs": 0.8866150000000061,
+          "inclusiveMs": 0.8866150000000061
+        },
+        {
+          "name": "driver.base-cache",
+          "calls": 1,
+          "exclusiveMs": 0.6207520000000386,
+          "inclusiveMs": 126.11927400000002
+        },
+        {
+          "name": "driver.span-validation",
+          "calls": 1,
+          "exclusiveMs": 0.5988830000000007,
+          "inclusiveMs": 0.5988830000000007
+        },
+        {
+          "name": "api.driver-has-main",
+          "calls": 1,
+          "exclusiveMs": 0.4876639999999952,
+          "inclusiveMs": 0.4876639999999952
+        },
+        {
+          "name": "driver.api-load",
+          "calls": 1,
+          "exclusiveMs": 0.47074400000008154,
+          "inclusiveMs": 0.5048990000000231
+        },
+        {
+          "name": "driver.checked-state-shape",
+          "calls": 1,
+          "exclusiveMs": 0.3443879999999808,
+          "inclusiveMs": 0.3443879999999808
+        },
+        {
+          "name": "driver.cache-decode",
+          "calls": 1,
+          "exclusiveMs": 0.188645000000065,
+          "inclusiveMs": 124.736154
+        },
+        {
+          "name": "driver.cache-read",
+          "calls": 1,
+          "exclusiveMs": 0.18422500000002628,
+          "inclusiveMs": 0.18422500000002628
+        },
+        {
+          "name": "api.jd-modules",
+          "calls": 1,
+          "exclusiveMs": 0.1772040000000743,
+          "inclusiveMs": 0.1772040000000743
+        },
+        {
+          "name": "driver.checked-state-admission",
+          "calls": 1,
+          "exclusiveMs": 0.15859199999999873,
+          "inclusiveMs": 0.5029799999999796
+        },
+        {
+          "name": "api.jd-foreign-paths",
+          "calls": 1,
+          "exclusiveMs": 0.1489040000000159,
+          "inclusiveMs": 0.1489040000000159
+        },
+        {
+          "name": "api.f-import-namespace-at",
+          "calls": 1,
+          "exclusiveMs": 0.09436799999997447,
+          "inclusiveMs": 0.09436799999997447
+        },
+        {
+          "name": "api.f-source-located",
+          "calls": 3,
+          "exclusiveMs": 0.09111399999994774,
+          "inclusiveMs": 0.09111399999994774
+        },
+        {
+          "name": "api.jd-foreign-error",
+          "calls": 1,
+          "exclusiveMs": 0.07778799999994135,
+          "inclusiveMs": 0.07778799999994135
+        },
+        {
+          "name": "api.f-prefix-graph-empty",
+          "calls": 1,
+          "exclusiveMs": 0.07477699999998322,
+          "inclusiveMs": 0.07477699999998322
+        },
+        {
+          "name": "api.f-source-completed",
+          "calls": 1,
+          "exclusiveMs": 0.07293599999997014,
+          "inclusiveMs": 0.07293599999997014
+        },
+        {
+          "name": "driver.cache-validation",
+          "calls": 1,
+          "exclusiveMs": 0.05707400000000007,
+          "inclusiveMs": 0.05707400000000007
+        },
+        {
+          "name": "api.jd-plan-error",
+          "calls": 1,
+          "exclusiveMs": 0.0509270000000015,
+          "inclusiveMs": 0.0509270000000015
+        },
+        {
+          "name": "driver.cache-header-parse",
+          "calls": 1,
+          "exclusiveMs": 0.05059999999997444,
+          "inclusiveMs": 0.05059999999997444
+        },
+        {
+          "name": "api.compiler-term-abi",
+          "calls": 3,
+          "exclusiveMs": 0.04259899999993877,
+          "inclusiveMs": 0.04259899999993877
+        },
+        {
+          "name": "api.jd-plan-defs",
+          "calls": 1,
+          "exclusiveMs": 0.04042700000002242,
+          "inclusiveMs": 0.04042700000002242
+        },
+        {
+          "name": "api.compiler-check-result-abi",
+          "calls": 1,
+          "exclusiveMs": 0.03985499999998865,
+          "inclusiveMs": 0.03985499999998865
+        },
+        {
+          "name": "api.compiler-load-abi",
+          "calls": 3,
+          "exclusiveMs": 0.026381999999955497,
+          "inclusiveMs": 0.026381999999955497
+        },
+        {
+          "name": "driver.foreign-source",
+          "calls": 1,
+          "exclusiveMs": 0.022460000000023683,
+          "inclusiveMs": 0.022460000000023683
+        },
+        {
+          "name": "api.compiler-span-abi",
+          "calls": 2,
+          "exclusiveMs": 0.015946999999925993,
+          "inclusiveMs": 0.015946999999925993
+        },
+        {
+          "name": "driver.foreign-resolver",
+          "calls": 1,
+          "exclusiveMs": 0.014780999999970845,
+          "inclusiveMs": 0.014780999999970845
+        },
+        {
+          "name": "driver.fresh-state-admission",
+          "calls": 1,
+          "exclusiveMs": 0.0074419999999690845,
+          "inclusiveMs": 0.0074419999999690845
+        },
+        {
+          "name": "driver.frontend-state-admission",
+          "calls": 1,
+          "exclusiveMs": 0.005671000000006643,
+          "inclusiveMs": 0.005671000000006643
+        },
+        {
+          "name": "driver.world-admission",
+          "calls": 1,
+          "exclusiveMs": 0.004975999999999203,
+          "inclusiveMs": 0.004975999999999203
+        }
+      ],
+      "fullStageClock": {
+        "kind": "phase62-exclusive-stage-clock",
+        "version": 1,
+        "diagnosticOnly": true,
+        "timingScope": "Monotonic wall time including synchronous hook overhead; never add nested inclusive intervals.",
+        "events": [
+          {
+            "id": 0,
+            "parent": null,
+            "name": "worker.first-window",
+            "startMs": 86.174035,
+            "endMs": 604.2161179999999,
+            "inclusiveMs": 518.0420829999999,
+            "childMs": 517.6015,
+            "exclusiveMs": 0.4405829999999469,
+            "incomplete": false
+          },
+          {
+            "id": 1,
+            "parent": 0,
+            "name": "worker.host-import",
+            "startMs": 86.40054800000001,
+            "endMs": 95.544139,
+            "inclusiveMs": 9.143590999999986,
+            "childMs": 0,
+            "exclusiveMs": 9.143590999999986,
+            "incomplete": false
+          },
+          {
+            "id": 2,
+            "parent": 0,
+            "name": "worker.api-load",
+            "startMs": 95.728703,
+            "endMs": 224.26664000000002,
+            "inclusiveMs": 128.53793700000003,
+            "childMs": 128.20130300000002,
+            "exclusiveMs": 0.33663400000000365,
+            "incomplete": false
+          },
+          {
+            "id": 3,
+            "parent": 2,
+            "name": "driver.api-load",
+            "startMs": 96.02537000000001,
+            "endMs": 224.22667300000003,
+            "inclusiveMs": 128.20130300000002,
+            "childMs": 0.310167999999976,
+            "exclusiveMs": 127.89113500000005,
+            "incomplete": false
+          },
+          {
+            "id": 4,
+            "parent": 3,
+            "name": "api.compiler-term-abi",
+            "startMs": 223.74981900000003,
+            "endMs": 223.929357,
+            "inclusiveMs": 0.17953799999997955,
+            "childMs": 0,
+            "exclusiveMs": 0.17953799999997955,
+            "incomplete": false
+          },
+          {
+            "id": 5,
+            "parent": 3,
+            "name": "api.compiler-span-abi",
+            "startMs": 223.966896,
+            "endMs": 224.02888,
+            "inclusiveMs": 0.061983999999995376,
+            "childMs": 0,
+            "exclusiveMs": 0.061983999999995376,
+            "incomplete": false
+          },
+          {
+            "id": 6,
+            "parent": 3,
+            "name": "api.compiler-load-abi",
+            "startMs": 224.13081300000002,
+            "endMs": 224.19945900000002,
+            "inclusiveMs": 0.0686460000000011,
+            "childMs": 0,
+            "exclusiveMs": 0.0686460000000011,
+            "incomplete": false
+          },
+          {
+            "id": 7,
+            "parent": 0,
+            "name": "worker.compile",
+            "startMs": 224.286146,
+            "endMs": 604.206118,
+            "inclusiveMs": 379.919972,
+            "childMs": 378.465404,
+            "exclusiveMs": 1.4545679999999948,
+            "incomplete": false
+          },
+          {
+            "id": 8,
+            "parent": 7,
+            "name": "driver.inspect",
+            "startMs": 225.62466600000002,
+            "endMs": 604.09007,
+            "inclusiveMs": 378.465404,
+            "childMs": 376.864112,
+            "exclusiveMs": 1.6012920000000008,
+            "incomplete": false
+          },
+          {
+            "id": 9,
+            "parent": 8,
+            "name": "driver.api-load",
+            "startMs": 225.68276699999998,
+            "endMs": 226.187666,
+            "inclusiveMs": 0.5048990000000231,
+            "childMs": 0.03415499999994154,
+            "exclusiveMs": 0.47074400000008154,
+            "incomplete": false
+          },
+          {
+            "id": 10,
+            "parent": 9,
+            "name": "api.compiler-term-abi",
+            "startMs": 225.916506,
+            "endMs": 225.935419,
+            "inclusiveMs": 0.018912999999997737,
+            "childMs": 0,
+            "exclusiveMs": 0.018912999999997737,
+            "incomplete": false
+          },
+          {
+            "id": 11,
+            "parent": 9,
+            "name": "api.compiler-span-abi",
+            "startMs": 225.96069100000003,
+            "endMs": 225.96883499999998,
+            "inclusiveMs": 0.00814399999995885,
+            "childMs": 0,
+            "exclusiveMs": 0.00814399999995885,
+            "incomplete": false
+          },
+          {
+            "id": 12,
+            "parent": 9,
+            "name": "api.compiler-load-abi",
+            "startMs": 225.98970900000003,
+            "endMs": 225.99680700000002,
+            "inclusiveMs": 0.00709799999998495,
+            "childMs": 0,
+            "exclusiveMs": 0.00709799999998495,
+            "incomplete": false
+          },
+          {
+            "id": 13,
+            "parent": 8,
+            "name": "api.compiler-load-abi",
+            "startMs": 226.28372800000002,
+            "endMs": 226.29268,
+            "inclusiveMs": 0.00895199999996521,
+            "childMs": 0,
+            "exclusiveMs": 0.00895199999996521,
+            "incomplete": false
+          },
+          {
+            "id": 14,
+            "parent": 8,
+            "name": "driver.base-identity",
+            "startMs": 226.45215500000003,
+            "endMs": 238.87961199999998,
+            "inclusiveMs": 12.427456999999947,
+            "childMs": 0.01550099999997201,
+            "exclusiveMs": 12.411955999999975,
+            "incomplete": false
+          },
+          {
+            "id": 15,
+            "parent": 14,
+            "name": "api.compiler-term-abi",
+            "startMs": 238.79726100000002,
+            "endMs": 238.812762,
+            "inclusiveMs": 0.01550099999997201,
+            "childMs": 0,
+            "exclusiveMs": 0.01550099999997201,
+            "incomplete": false
+          },
+          {
+            "id": 16,
+            "parent": 8,
+            "name": "driver.base-cache",
+            "startMs": 239.109165,
+            "endMs": 365.228439,
+            "inclusiveMs": 126.11927400000002,
+            "childMs": 125.49852199999998,
+            "exclusiveMs": 0.6207520000000386,
+            "incomplete": false
+          },
+          {
+            "id": 17,
+            "parent": 16,
+            "name": "driver.cache-read",
+            "startMs": 239.134376,
+            "endMs": 239.31860100000003,
+            "inclusiveMs": 0.18422500000002628,
+            "childMs": 0,
+            "exclusiveMs": 0.18422500000002628,
+            "incomplete": false
+          },
+          {
+            "id": 18,
+            "parent": 16,
+            "name": "driver.cache-decode",
+            "startMs": 239.541054,
+            "endMs": 364.277208,
+            "inclusiveMs": 124.736154,
+            "childMs": 124.54750899999993,
+            "exclusiveMs": 0.188645000000065,
+            "incomplete": false
+          },
+          {
+            "id": 19,
+            "parent": 18,
+            "name": "driver.cache-header-parse",
+            "startMs": 239.55291200000002,
+            "endMs": 239.603512,
+            "inclusiveMs": 0.05059999999997444,
+            "childMs": 0,
+            "exclusiveMs": 0.05059999999997444,
+            "incomplete": false
+          },
+          {
+            "id": 20,
+            "parent": 18,
+            "name": "driver.cache-graph-decode",
+            "startMs": 239.77229200000002,
+            "endMs": 364.26920099999995,
+            "inclusiveMs": 124.49690899999996,
+            "childMs": 122.92727199999996,
+            "exclusiveMs": 1.5696370000000002,
+            "incomplete": false
+          },
+          {
+            "id": 21,
+            "parent": 20,
+            "name": "driver.graph-book-digest",
+            "startMs": 239.82947600000003,
+            "endMs": 242.326938,
+            "inclusiveMs": 2.4974619999999845,
+            "childMs": 0,
+            "exclusiveMs": 2.4974619999999845,
+            "incomplete": false
+          },
+          {
+            "id": 22,
+            "parent": 20,
+            "name": "driver.graph-book-decode",
+            "startMs": 242.34877200000003,
+            "endMs": 312.36953400000004,
+            "inclusiveMs": 70.02076199999999,
+            "childMs": 0,
+            "exclusiveMs": 70.02076199999999,
+            "incomplete": false
+          },
+          {
+            "id": 23,
+            "parent": 20,
+            "name": "driver.graph-prepared-decode",
+            "startMs": 313.81879000000004,
+            "endMs": 364.227838,
+            "inclusiveMs": 50.409047999999984,
+            "childMs": 0,
+            "exclusiveMs": 50.409047999999984,
+            "incomplete": false
+          },
+          {
+            "id": 24,
+            "parent": 16,
+            "name": "driver.cache-validation",
+            "startMs": 364.426458,
+            "endMs": 364.48353199999997,
+            "inclusiveMs": 0.05707400000000007,
+            "childMs": 0,
+            "exclusiveMs": 0.05707400000000007,
+            "incomplete": false
+          },
+          {
+            "id": 25,
+            "parent": 16,
+            "name": "driver.checked-state-admission",
+            "startMs": 364.54685100000006,
+            "endMs": 365.04983100000004,
+            "inclusiveMs": 0.5029799999999796,
+            "childMs": 0.3443879999999808,
+            "exclusiveMs": 0.15859199999999873,
+            "incomplete": false
+          },
+          {
+            "id": 26,
+            "parent": 25,
+            "name": "driver.checked-state-shape",
+            "startMs": 364.664044,
+            "endMs": 365.00843199999997,
+            "inclusiveMs": 0.3443879999999808,
+            "childMs": 0,
+            "exclusiveMs": 0.3443879999999808,
+            "incomplete": false
+          },
+          {
+            "id": 27,
+            "parent": 16,
+            "name": "driver.fresh-state-admission",
+            "startMs": 365.104653,
+            "endMs": 365.11209499999995,
+            "inclusiveMs": 0.0074419999999690845,
+            "childMs": 0,
+            "exclusiveMs": 0.0074419999999690845,
+            "incomplete": false
+          },
+          {
+            "id": 28,
+            "parent": 16,
+            "name": "driver.world-admission",
+            "startMs": 365.15780700000005,
+            "endMs": 365.162783,
+            "inclusiveMs": 0.004975999999999203,
+            "childMs": 0,
+            "exclusiveMs": 0.004975999999999203,
+            "incomplete": false
+          },
+          {
+            "id": 29,
+            "parent": 16,
+            "name": "driver.frontend-state-admission",
+            "startMs": 365.20499099999995,
+            "endMs": 365.21066199999996,
+            "inclusiveMs": 0.005671000000006643,
+            "childMs": 0,
+            "exclusiveMs": 0.005671000000006643,
+            "incomplete": false
+          },
+          {
+            "id": 30,
+            "parent": 8,
+            "name": "driver.source-graph",
+            "startMs": 365.51650300000006,
+            "endMs": 412.144137,
+            "inclusiveMs": 46.627634,
+            "childMs": 45.29383599999983,
+            "exclusiveMs": 1.3337980000001721,
+            "incomplete": false
+          },
+          {
+            "id": 31,
+            "parent": 30,
+            "name": "api.compiler-load-abi",
+            "startMs": 365.53952200000003,
+            "endMs": 365.549854,
+            "inclusiveMs": 0.010332000000005337,
+            "childMs": 0,
+            "exclusiveMs": 0.010332000000005337,
+            "incomplete": false
+          },
+          {
+            "id": 32,
+            "parent": 30,
+            "name": "api.compiler-span-abi",
+            "startMs": 365.570113,
+            "endMs": 365.57791599999996,
+            "inclusiveMs": 0.007802999999967142,
+            "childMs": 0,
+            "exclusiveMs": 0.007802999999967142,
+            "incomplete": false
+          },
+          {
+            "id": 33,
+            "parent": 30,
+            "name": "api.f-prefix-graph-empty",
+            "startMs": 365.60958800000003,
+            "endMs": 365.68436499999996,
+            "inclusiveMs": 0.07477699999998322,
+            "childMs": 0,
+            "exclusiveMs": 0.07477699999998322,
+            "incomplete": false
+          },
+          {
+            "id": 34,
+            "parent": 30,
+            "name": "api.f-source-located",
+            "startMs": 366.347085,
+            "endMs": 366.41964299999995,
+            "inclusiveMs": 0.07255799999995816,
+            "childMs": 0,
+            "exclusiveMs": 0.07255799999995816,
+            "incomplete": false
+          },
+          {
+            "id": 35,
+            "parent": 30,
+            "name": "api.f-source-header",
+            "startMs": 366.437054,
+            "endMs": 372.699893,
+            "inclusiveMs": 6.262838999999985,
+            "childMs": 0,
+            "exclusiveMs": 6.262838999999985,
+            "incomplete": false
+          },
+          {
+            "id": 36,
+            "parent": 30,
+            "name": "api.f-source-located",
+            "startMs": 372.91598999999997,
+            "endMs": 372.925294,
+            "inclusiveMs": 0.00930399999998599,
+            "childMs": 0,
+            "exclusiveMs": 0.00930399999998599,
+            "incomplete": false
+          },
+          {
+            "id": 37,
+            "parent": 30,
+            "name": "api.f-import-namespace-at",
+            "startMs": 372.96553700000004,
+            "endMs": 373.05990499999996,
+            "inclusiveMs": 0.09436799999997447,
+            "childMs": 0,
+            "exclusiveMs": 0.09436799999997447,
+            "incomplete": false
+          },
+          {
+            "id": 38,
+            "parent": 30,
+            "name": "api.f-prefix-complete-ready-seed",
+            "startMs": 373.072218,
+            "endMs": 373.958833,
+            "inclusiveMs": 0.8866150000000061,
+            "childMs": 0,
+            "exclusiveMs": 0.8866150000000061,
+            "incomplete": false
+          },
+          {
+            "id": 39,
+            "parent": 30,
+            "name": "api.f-prefix-complete-source",
+            "startMs": 374.006494,
+            "endMs": 408.30609100000004,
+            "inclusiveMs": 34.299597000000006,
+            "childMs": 0,
+            "exclusiveMs": 34.299597000000006,
+            "incomplete": false
+          },
+          {
+            "id": 40,
+            "parent": 30,
+            "name": "api.compiler-term-abi",
+            "startMs": 408.352896,
+            "endMs": 408.361081,
+            "inclusiveMs": 0.008184999999969023,
+            "childMs": 0,
+            "exclusiveMs": 0.008184999999969023,
+            "incomplete": false
+          },
+          {
+            "id": 41,
+            "parent": 30,
+            "name": "driver.span-validation",
+            "startMs": 408.510187,
+            "endMs": 409.10907,
+            "inclusiveMs": 0.5988830000000007,
+            "childMs": 0,
+            "exclusiveMs": 0.5988830000000007,
+            "incomplete": false
+          },
+          {
+            "id": 42,
+            "parent": 30,
+            "name": "api.f-source-completed",
+            "startMs": 409.12092900000005,
+            "endMs": 409.19386499999996,
+            "inclusiveMs": 0.07293599999997014,
+            "childMs": 0,
+            "exclusiveMs": 0.07293599999997014,
+            "incomplete": false
+          },
+          {
+            "id": 43,
+            "parent": 30,
+            "name": "api.f-source-located",
+            "startMs": 409.20285,
+            "endMs": 409.21210199999996,
+            "inclusiveMs": 0.00925200000000359,
+            "childMs": 0,
+            "exclusiveMs": 0.00925200000000359,
+            "incomplete": false
+          },
+          {
+            "id": 44,
+            "parent": 30,
+            "name": "api.f-prefix-graph-trace",
+            "startMs": 409.235688,
+            "endMs": 412.122075,
+            "inclusiveMs": 2.8863870000000134,
+            "childMs": 0,
+            "exclusiveMs": 2.8863870000000134,
+            "incomplete": false
+          },
+          {
+            "id": 45,
+            "parent": 8,
+            "name": "api.compiler-check-result-abi",
+            "startMs": 412.16515300000003,
+            "endMs": 412.205008,
+            "inclusiveMs": 0.03985499999998865,
+            "childMs": 0,
+            "exclusiveMs": 0.03985499999998865,
+            "incomplete": false
+          },
+          {
+            "id": 46,
+            "parent": 8,
+            "name": "api.check-program-diagnostic-world",
+            "startMs": 412.22166000000004,
+            "endMs": 492.36078499999996,
+            "inclusiveMs": 80.13912499999998,
+            "childMs": 0,
+            "exclusiveMs": 80.13912499999998,
+            "incomplete": false
+          },
+          {
+            "id": 47,
+            "parent": 8,
+            "name": "api.driver-has-main",
+            "startMs": 492.40158199999996,
+            "endMs": 492.88924599999996,
+            "inclusiveMs": 0.4876639999999952,
+            "childMs": 0,
+            "exclusiveMs": 0.4876639999999952,
+            "incomplete": false
+          },
+          {
+            "id": 48,
+            "parent": 8,
+            "name": "api.driver-emit-owned",
+            "startMs": 492.934262,
+            "endMs": 503.730956,
+            "inclusiveMs": 10.796694000000002,
+            "childMs": 0,
+            "exclusiveMs": 10.796694000000002,
+            "incomplete": false
+          },
+          {
+            "id": 49,
+            "parent": 8,
+            "name": "api.book-context",
+            "startMs": 503.75231399999996,
+            "endMs": 514.769007,
+            "inclusiveMs": 11.016693000000032,
+            "childMs": 0,
+            "exclusiveMs": 11.016693000000032,
+            "incomplete": false
+          },
+          {
+            "id": 50,
+            "parent": 8,
+            "name": "api.jd-roots",
+            "startMs": 514.792793,
+            "endMs": 516.130854,
+            "inclusiveMs": 1.3380610000000388,
+            "childMs": 0,
+            "exclusiveMs": 1.3380610000000388,
+            "incomplete": false
+          },
+          {
+            "id": 51,
+            "parent": 8,
+            "name": "api.jd-stops",
+            "startMs": 516.140763,
+            "endMs": 526.7348059999999,
+            "inclusiveMs": 10.594042999999942,
+            "childMs": 0,
+            "exclusiveMs": 10.594042999999942,
+            "incomplete": false
+          },
+          {
+            "id": 52,
+            "parent": 8,
+            "name": "api.reach-book",
+            "startMs": 526.778458,
+            "endMs": 532.095392,
+            "inclusiveMs": 5.3169339999999465,
+            "childMs": 0,
+            "exclusiveMs": 5.3169339999999465,
+            "incomplete": false
+          },
+          {
+            "id": 53,
+            "parent": 8,
+            "name": "api.annotate-selected",
+            "startMs": 532.1212889999999,
+            "endMs": 536.059184,
+            "inclusiveMs": 3.937895000000026,
+            "childMs": 0,
+            "exclusiveMs": 3.937895000000026,
+            "incomplete": false
+          },
+          {
+            "id": 54,
+            "parent": 8,
+            "name": "api.jd-plan-selected",
+            "startMs": 536.108395,
+            "endMs": 583.334783,
+            "inclusiveMs": 47.22638800000004,
+            "childMs": 0,
+            "exclusiveMs": 47.22638800000004,
+            "incomplete": false
+          },
+          {
+            "id": 55,
+            "parent": 8,
+            "name": "api.jd-plan-error",
+            "startMs": 583.358617,
+            "endMs": 583.409544,
+            "inclusiveMs": 0.0509270000000015,
+            "childMs": 0,
+            "exclusiveMs": 0.0509270000000015,
+            "incomplete": false
+          },
+          {
+            "id": 56,
+            "parent": 8,
+            "name": "api.jd-plan-defs",
+            "startMs": 583.417516,
+            "endMs": 583.457943,
+            "inclusiveMs": 0.04042700000002242,
+            "childMs": 0,
+            "exclusiveMs": 0.04042700000002242,
+            "incomplete": false
+          },
+          {
+            "id": 57,
+            "parent": 8,
+            "name": "api.jd-foreign-error",
+            "startMs": 583.466324,
+            "endMs": 583.5441119999999,
+            "inclusiveMs": 0.07778799999994135,
+            "childMs": 0,
+            "exclusiveMs": 0.07778799999994135,
+            "incomplete": false
+          },
+          {
+            "id": 58,
+            "parent": 8,
+            "name": "api.j-layout-error",
+            "startMs": 583.566094,
+            "endMs": 586.279663,
+            "inclusiveMs": 2.713569000000007,
+            "childMs": 0,
+            "exclusiveMs": 2.713569000000007,
+            "incomplete": false
+          },
+          {
+            "id": 59,
+            "parent": 8,
+            "name": "api.jd-foreign-paths",
+            "startMs": 586.299315,
+            "endMs": 586.448219,
+            "inclusiveMs": 0.1489040000000159,
+            "childMs": 0,
+            "exclusiveMs": 0.1489040000000159,
+            "incomplete": false
+          },
+          {
+            "id": 60,
+            "parent": 8,
+            "name": "driver.foreign-resolver",
+            "startMs": 586.575235,
+            "endMs": 586.590016,
+            "inclusiveMs": 0.014780999999970845,
+            "childMs": 0,
+            "exclusiveMs": 0.014780999999970845,
+            "incomplete": false
+          },
+          {
+            "id": 61,
+            "parent": 8,
+            "name": "driver.foreign-source",
+            "startMs": 586.691957,
+            "endMs": 586.714417,
+            "inclusiveMs": 0.022460000000023683,
+            "childMs": 0,
+            "exclusiveMs": 0.022460000000023683,
+            "incomplete": false
+          },
+          {
+            "id": 62,
+            "parent": 8,
+            "name": "api.jd-modules",
+            "startMs": 586.727371,
+            "endMs": 586.904575,
+            "inclusiveMs": 0.1772040000000743,
+            "childMs": 0,
+            "exclusiveMs": 0.1772040000000743,
+            "incomplete": false
+          },
+          {
+            "id": 63,
+            "parent": 8,
+            "name": "api.jd-plan-library",
+            "startMs": 586.913501,
+            "endMs": 603.949985,
+            "inclusiveMs": 17.036483999999973,
+            "childMs": 0,
+            "exclusiveMs": 17.036483999999973,
+            "incomplete": false
+          }
+        ],
+        "aggregate": [
+          {
+            "name": "worker.first-window",
+            "calls": 1,
+            "inclusiveMs": 518.0420829999999,
+            "exclusiveMs": 0.4405829999999469,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.host-import",
+            "calls": 1,
+            "inclusiveMs": 9.143590999999986,
+            "exclusiveMs": 9.143590999999986,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.api-load",
+            "calls": 1,
+            "inclusiveMs": 128.53793700000003,
+            "exclusiveMs": 0.33663400000000365,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.api-load",
+            "calls": 2,
+            "inclusiveMs": 128.70620200000005,
+            "exclusiveMs": 128.36187900000013,
+            "incomplete": 0
+          },
+          {
+            "name": "api.compiler-term-abi",
+            "calls": 4,
+            "inclusiveMs": 0.22213699999991832,
+            "exclusiveMs": 0.22213699999991832,
+            "incomplete": 0
+          },
+          {
+            "name": "api.compiler-span-abi",
+            "calls": 3,
+            "inclusiveMs": 0.07793099999992137,
+            "exclusiveMs": 0.07793099999992137,
+            "incomplete": 0
+          },
+          {
+            "name": "api.compiler-load-abi",
+            "calls": 4,
+            "inclusiveMs": 0.09502799999995659,
+            "exclusiveMs": 0.09502799999995659,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.compile",
+            "calls": 1,
+            "inclusiveMs": 379.919972,
+            "exclusiveMs": 1.4545679999999948,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.inspect",
+            "calls": 1,
+            "inclusiveMs": 378.465404,
+            "exclusiveMs": 1.6012920000000008,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.base-identity",
+            "calls": 1,
+            "inclusiveMs": 12.427456999999947,
+            "exclusiveMs": 12.411955999999975,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.base-cache",
+            "calls": 1,
+            "inclusiveMs": 126.11927400000002,
+            "exclusiveMs": 0.6207520000000386,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-read",
+            "calls": 1,
+            "inclusiveMs": 0.18422500000002628,
+            "exclusiveMs": 0.18422500000002628,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-decode",
+            "calls": 1,
+            "inclusiveMs": 124.736154,
+            "exclusiveMs": 0.188645000000065,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-header-parse",
+            "calls": 1,
+            "inclusiveMs": 0.05059999999997444,
+            "exclusiveMs": 0.05059999999997444,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-graph-decode",
+            "calls": 1,
+            "inclusiveMs": 124.49690899999996,
+            "exclusiveMs": 1.5696370000000002,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.graph-book-digest",
+            "calls": 1,
+            "inclusiveMs": 2.4974619999999845,
+            "exclusiveMs": 2.4974619999999845,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.graph-book-decode",
+            "calls": 1,
+            "inclusiveMs": 70.02076199999999,
+            "exclusiveMs": 70.02076199999999,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.graph-prepared-decode",
+            "calls": 1,
+            "inclusiveMs": 50.409047999999984,
+            "exclusiveMs": 50.409047999999984,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-validation",
+            "calls": 1,
+            "inclusiveMs": 0.05707400000000007,
+            "exclusiveMs": 0.05707400000000007,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.checked-state-admission",
+            "calls": 1,
+            "inclusiveMs": 0.5029799999999796,
+            "exclusiveMs": 0.15859199999999873,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.checked-state-shape",
+            "calls": 1,
+            "inclusiveMs": 0.3443879999999808,
+            "exclusiveMs": 0.3443879999999808,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.fresh-state-admission",
+            "calls": 1,
+            "inclusiveMs": 0.0074419999999690845,
+            "exclusiveMs": 0.0074419999999690845,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.world-admission",
+            "calls": 1,
+            "inclusiveMs": 0.004975999999999203,
+            "exclusiveMs": 0.004975999999999203,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.frontend-state-admission",
+            "calls": 1,
+            "inclusiveMs": 0.005671000000006643,
+            "exclusiveMs": 0.005671000000006643,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.source-graph",
+            "calls": 1,
+            "inclusiveMs": 46.627634,
+            "exclusiveMs": 1.3337980000001721,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-prefix-graph-empty",
+            "calls": 1,
+            "inclusiveMs": 0.07477699999998322,
+            "exclusiveMs": 0.07477699999998322,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-source-located",
+            "calls": 3,
+            "inclusiveMs": 0.09111399999994774,
+            "exclusiveMs": 0.09111399999994774,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-source-header",
+            "calls": 1,
+            "inclusiveMs": 6.262838999999985,
+            "exclusiveMs": 6.262838999999985,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-import-namespace-at",
+            "calls": 1,
+            "inclusiveMs": 0.09436799999997447,
+            "exclusiveMs": 0.09436799999997447,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-prefix-complete-ready-seed",
+            "calls": 1,
+            "inclusiveMs": 0.8866150000000061,
+            "exclusiveMs": 0.8866150000000061,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-prefix-complete-source",
+            "calls": 1,
+            "inclusiveMs": 34.299597000000006,
+            "exclusiveMs": 34.299597000000006,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.span-validation",
+            "calls": 1,
+            "inclusiveMs": 0.5988830000000007,
+            "exclusiveMs": 0.5988830000000007,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-source-completed",
+            "calls": 1,
+            "inclusiveMs": 0.07293599999997014,
+            "exclusiveMs": 0.07293599999997014,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-prefix-graph-trace",
+            "calls": 1,
+            "inclusiveMs": 2.8863870000000134,
+            "exclusiveMs": 2.8863870000000134,
+            "incomplete": 0
+          },
+          {
+            "name": "api.compiler-check-result-abi",
+            "calls": 1,
+            "inclusiveMs": 0.03985499999998865,
+            "exclusiveMs": 0.03985499999998865,
+            "incomplete": 0
+          },
+          {
+            "name": "api.check-program-diagnostic-world",
+            "calls": 1,
+            "inclusiveMs": 80.13912499999998,
+            "exclusiveMs": 80.13912499999998,
+            "incomplete": 0
+          },
+          {
+            "name": "api.driver-has-main",
+            "calls": 1,
+            "inclusiveMs": 0.4876639999999952,
+            "exclusiveMs": 0.4876639999999952,
+            "incomplete": 0
+          },
+          {
+            "name": "api.driver-emit-owned",
+            "calls": 1,
+            "inclusiveMs": 10.796694000000002,
+            "exclusiveMs": 10.796694000000002,
+            "incomplete": 0
+          },
+          {
+            "name": "api.book-context",
+            "calls": 1,
+            "inclusiveMs": 11.016693000000032,
+            "exclusiveMs": 11.016693000000032,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-roots",
+            "calls": 1,
+            "inclusiveMs": 1.3380610000000388,
+            "exclusiveMs": 1.3380610000000388,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-stops",
+            "calls": 1,
+            "inclusiveMs": 10.594042999999942,
+            "exclusiveMs": 10.594042999999942,
+            "incomplete": 0
+          },
+          {
+            "name": "api.reach-book",
+            "calls": 1,
+            "inclusiveMs": 5.3169339999999465,
+            "exclusiveMs": 5.3169339999999465,
+            "incomplete": 0
+          },
+          {
+            "name": "api.annotate-selected",
+            "calls": 1,
+            "inclusiveMs": 3.937895000000026,
+            "exclusiveMs": 3.937895000000026,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-plan-selected",
+            "calls": 1,
+            "inclusiveMs": 47.22638800000004,
+            "exclusiveMs": 47.22638800000004,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-plan-error",
+            "calls": 1,
+            "inclusiveMs": 0.0509270000000015,
+            "exclusiveMs": 0.0509270000000015,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-plan-defs",
+            "calls": 1,
+            "inclusiveMs": 0.04042700000002242,
+            "exclusiveMs": 0.04042700000002242,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-foreign-error",
+            "calls": 1,
+            "inclusiveMs": 0.07778799999994135,
+            "exclusiveMs": 0.07778799999994135,
+            "incomplete": 0
+          },
+          {
+            "name": "api.j-layout-error",
+            "calls": 1,
+            "inclusiveMs": 2.713569000000007,
+            "exclusiveMs": 2.713569000000007,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-foreign-paths",
+            "calls": 1,
+            "inclusiveMs": 0.1489040000000159,
+            "exclusiveMs": 0.1489040000000159,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.foreign-resolver",
+            "calls": 1,
+            "inclusiveMs": 0.014780999999970845,
+            "exclusiveMs": 0.014780999999970845,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.foreign-source",
+            "calls": 1,
+            "inclusiveMs": 0.022460000000023683,
+            "exclusiveMs": 0.022460000000023683,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-modules",
+            "calls": 1,
+            "inclusiveMs": 0.1772040000000743,
+            "exclusiveMs": 0.1772040000000743,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-plan-library",
+            "calls": 1,
+            "inclusiveMs": 17.036483999999973,
+            "exclusiveMs": 17.036483999999973,
+            "incomplete": 0
+          }
+        ],
+        "rootMs": 518.0420829999999,
+        "exclusiveMs": 518.0420829999999,
+        "incomplete": 0
+      }
+    },
+    {
+      "case": "numeric-recurrence",
+      "role": "typescript",
+      "sample": 0,
+      "result": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stages01/numeric-recurrence-0-typescript.result.json",
+        "sha256": "e38ee1c6bce756bef6d33966058d6ed3edf2b4a5d7b44aab7cb7c0464d2e8c87"
+      },
+      "image": null,
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stages01/numeric-recurrence-0-typescript.mjs",
+        "sha256": "0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee",
+        "bytes": 4699
+      },
+      "firstRequestMs": 369.01657100000006,
+      "combinedMs": 654.6800150000001,
+      "instrumentedCompileWindowMs": 369.03244700000005,
+      "exclusiveSumMs": 369.03244700000005,
+      "cacheInclusiveMs": 0,
+      "activePaths": {
+        "api.f-prefix-complete-ready-seed": 0,
+        "api.f-prefix-complete-seed": 0,
+        "api.f-prefix-complete-source": 0,
+        "api.f-prefix-graph-trace": 0,
+        "api.check-program-diagnostic-world": 0,
+        "api.check-program-diagnostic-prefix": 0,
+        "api.jd-plan-selected": 0,
+        "api.jd-plan-library": 0,
+        "api.jd-reach-selected": 0,
+        "api.jd-library-selected": 0
+      },
+      "abiExclusiveMs": {
+        "encode": 0,
+        "invoke": 0,
+        "decode": 0
+      },
+      "compileStages": [
+        {
+          "name": "typescript.book-valid",
+          "calls": 1,
+          "exclusiveMs": 191.590909,
+          "inclusiveMs": 191.590909
+        },
+        {
+          "name": "typescript.book-load",
+          "calls": 1,
+          "exclusiveMs": 156.291071,
+          "inclusiveMs": 156.291071
+        },
+        {
+          "name": "typescript.js-lib",
+          "calls": 1,
+          "exclusiveMs": 20.91211999999996,
+          "inclusiveMs": 20.91211999999996
+        },
+        {
+          "name": "worker.compile",
+          "calls": 1,
+          "exclusiveMs": 0.2383470000000898,
+          "inclusiveMs": 369.03244700000005
+        }
+      ],
+      "fullStageClock": {
+        "kind": "phase62-exclusive-stage-clock",
+        "version": 1,
+        "diagnosticOnly": true,
+        "timingScope": "Monotonic wall time including synchronous hook overhead; never add nested inclusive intervals.",
+        "events": [
+          {
+            "id": 0,
+            "parent": null,
+            "name": "worker.first-window",
+            "startMs": 18.945586000000006,
+            "endMs": 674.224412,
+            "inclusiveMs": 655.278826,
+            "childMs": 654.8132330000001,
+            "exclusiveMs": 0.4655929999998989,
+            "incomplete": false
+          },
+          {
+            "id": 1,
+            "parent": 0,
+            "name": "worker.host-import",
+            "startMs": 19.123283999999998,
+            "endMs": 304.887568,
+            "inclusiveMs": 285.764284,
+            "childMs": 0,
+            "exclusiveMs": 285.764284,
+            "incomplete": false
+          },
+          {
+            "id": 2,
+            "parent": 0,
+            "name": "worker.api-load",
+            "startMs": 305.014297,
+            "endMs": 305.030799,
+            "inclusiveMs": 0.01650200000000268,
+            "childMs": 0,
+            "exclusiveMs": 0.01650200000000268,
+            "incomplete": false
+          },
+          {
+            "id": 3,
+            "parent": 0,
+            "name": "worker.compile",
+            "startMs": 305.044971,
+            "endMs": 674.0774180000001,
+            "inclusiveMs": 369.03244700000005,
+            "childMs": 368.79409999999996,
+            "exclusiveMs": 0.2383470000000898,
+            "incomplete": false
+          },
+          {
+            "id": 4,
+            "parent": 3,
+            "name": "typescript.book-load",
+            "startMs": 305.169141,
+            "endMs": 461.460212,
+            "inclusiveMs": 156.291071,
+            "childMs": 0,
+            "exclusiveMs": 156.291071,
+            "incomplete": false
+          },
+          {
+            "id": 5,
+            "parent": 3,
+            "name": "typescript.book-valid",
+            "startMs": 461.48266199999995,
+            "endMs": 653.0735709999999,
+            "inclusiveMs": 191.590909,
+            "childMs": 0,
+            "exclusiveMs": 191.590909,
+            "incomplete": false
+          },
+          {
+            "id": 6,
+            "parent": 3,
+            "name": "typescript.js-lib",
+            "startMs": 653.1194620000001,
+            "endMs": 674.0315820000001,
+            "inclusiveMs": 20.91211999999996,
+            "childMs": 0,
+            "exclusiveMs": 20.91211999999996,
+            "incomplete": false
+          }
+        ],
+        "aggregate": [
+          {
+            "name": "worker.first-window",
+            "calls": 1,
+            "inclusiveMs": 655.278826,
+            "exclusiveMs": 0.4655929999998989,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.host-import",
+            "calls": 1,
+            "inclusiveMs": 285.764284,
+            "exclusiveMs": 285.764284,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.api-load",
+            "calls": 1,
+            "inclusiveMs": 0.01650200000000268,
+            "exclusiveMs": 0.01650200000000268,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.compile",
+            "calls": 1,
+            "inclusiveMs": 369.03244700000005,
+            "exclusiveMs": 0.2383470000000898,
+            "incomplete": 0
+          },
+          {
+            "name": "typescript.book-load",
+            "calls": 1,
+            "inclusiveMs": 156.291071,
+            "exclusiveMs": 156.291071,
+            "incomplete": 0
+          },
+          {
+            "name": "typescript.book-valid",
+            "calls": 1,
+            "inclusiveMs": 191.590909,
+            "exclusiveMs": 191.590909,
+            "incomplete": 0
+          },
+          {
+            "name": "typescript.js-lib",
+            "calls": 1,
+            "inclusiveMs": 20.91211999999996,
+            "exclusiveMs": 20.91211999999996,
+            "incomplete": 0
+          }
+        ],
+        "rootMs": 655.278826,
+        "exclusiveMs": 655.278826,
+        "incomplete": 0
+      }
+    },
+    {
+      "case": "lexer",
+      "role": "baseline",
+      "sample": 0,
+      "result": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stages01/lexer-0-baseline.result.json",
+        "sha256": "a1b6399ad40da6cfc4d6fbd8bb41b3c1c3664bd45d2f709157c0e12318bc56ff"
+      },
+      "image": {
+        "kind": "direct",
+        "role": "baseline",
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "sha256": "e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/build/typed/snapshots/06e828e5ccef453057af912cfd1701c9a8896b28ac9974991b34006f714d70b3/compiler.bend",
+          "sha256": "0ebe491e727721857ce981ff5a2167a52d1e040f5674915a3349fea33bed8ed5"
+        },
+        "emission": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/full/report.json",
+          "sha256": "287ca58f72272c98e8ceec057b886c7f4d5cbb3927a2231225837c45affdaefb"
+        },
+        "checkedGenerator": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/attempt.json",
+          "sha256": "82379c94f3eec0bea44afb8a3c2ae8323de731dfa34c85da775d199ce4fb87cf"
+        },
+        "strictExact": true,
+        "diagnosticDerivation": null,
+        "productionQualified": false,
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime.mjs",
+          "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+        },
+        "directRuntime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/direct.mjs",
+          "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+          "sha256": "345248c51b0337402d8d0bccf7bea9d8cd72b081f4e6f7e0a313031e3df958a8"
+        }
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stages01/lexer-0-baseline.mjs",
+        "sha256": "dcb0125d93015591a539320dd827b7d751d6985e69c44e51f7beefa43121e4a5",
+        "bytes": 28426
+      },
+      "firstRequestMs": 854.26124,
+      "combinedMs": 989.4098160000001,
+      "instrumentedCompileWindowMs": 854.280675,
+      "exclusiveSumMs": 854.2806750000001,
+      "cacheInclusiveMs": 126.62463600000001,
+      "activePaths": {
+        "api.f-prefix-complete-ready-seed": 1,
+        "api.f-prefix-complete-seed": 0,
+        "api.f-prefix-complete-source": 1,
+        "api.f-prefix-graph-trace": 1,
+        "api.check-program-diagnostic-world": 1,
+        "api.check-program-diagnostic-prefix": 0,
+        "api.jd-plan-selected": 1,
+        "api.jd-plan-library": 1,
+        "api.jd-reach-selected": 0,
+        "api.jd-library-selected": 0
+      },
+      "abiExclusiveMs": {
+        "encode": 0,
+        "invoke": 0,
+        "decode": 0
+      },
+      "compileStages": [
+        {
+          "name": "api.f-prefix-complete-source",
+          "calls": 1,
+          "exclusiveMs": 189.09946600000006,
+          "inclusiveMs": 189.09946600000006
+        },
+        {
+          "name": "api.jd-plan-selected",
+          "calls": 1,
+          "exclusiveMs": 171.25027599999999,
+          "inclusiveMs": 171.25027599999999
+        },
+        {
+          "name": "api.check-program-diagnostic-world",
+          "calls": 1,
+          "exclusiveMs": 144.10934299999997,
+          "inclusiveMs": 144.10934299999997
+        },
+        {
+          "name": "driver.graph-book-decode",
+          "calls": 1,
+          "exclusiveMs": 69.08186500000005,
+          "inclusiveMs": 69.08186500000005
+        },
+        {
+          "name": "driver.graph-prepared-decode",
+          "calls": 1,
+          "exclusiveMs": 51.841364999999996,
+          "inclusiveMs": 51.841364999999996
+        },
+        {
+          "name": "api.jd-stops",
+          "calls": 1,
+          "exclusiveMs": 33.63877100000002,
+          "inclusiveMs": 33.63877100000002
+        },
+        {
+          "name": "api.f-source-header",
+          "calls": 1,
+          "exclusiveMs": 26.64543900000001,
+          "inclusiveMs": 26.64543900000001
+        },
+        {
+          "name": "api.jd-plan-library",
+          "calls": 1,
+          "exclusiveMs": 20.624755999999934,
+          "inclusiveMs": 20.624755999999934
+        },
+        {
+          "name": "driver.span-validation",
+          "calls": 1,
+          "exclusiveMs": 18.83662400000003,
+          "inclusiveMs": 18.83662400000003
+        },
+        {
+          "name": "driver.inspect",
+          "calls": 1,
+          "exclusiveMs": 16.716603999999847,
+          "inclusiveMs": 852.807116
+        },
+        {
+          "name": "api.annotate-selected",
+          "calls": 1,
+          "exclusiveMs": 15.720182999999906,
+          "inclusiveMs": 15.720182999999906
+        },
+        {
+          "name": "driver.base-identity",
+          "calls": 1,
+          "exclusiveMs": 14.953108999999984,
+          "inclusiveMs": 14.969173000000012
+        },
+        {
+          "name": "api.book-context",
+          "calls": 1,
+          "exclusiveMs": 13.915918000000033,
+          "inclusiveMs": 13.915918000000033
+        },
+        {
+          "name": "api.j-layout-error",
+          "calls": 1,
+          "exclusiveMs": 11.404151000000184,
+          "inclusiveMs": 11.404151000000184
+        },
+        {
+          "name": "api.f-prefix-graph-trace",
+          "calls": 1,
+          "exclusiveMs": 10.825049000000035,
+          "inclusiveMs": 10.825049000000035
+        },
+        {
+          "name": "api.driver-emit-owned",
+          "calls": 1,
+          "exclusiveMs": 10.536983999999961,
+          "inclusiveMs": 10.536983999999961
+        },
+        {
+          "name": "api.reach-book",
+          "calls": 1,
+          "exclusiveMs": 9.349225000000047,
+          "inclusiveMs": 9.349225000000047
+        },
+        {
+          "name": "api.jd-foreign-error",
+          "calls": 1,
+          "exclusiveMs": 7.001444999999876,
+          "inclusiveMs": 7.001444999999876
+        },
+        {
+          "name": "api.jd-roots",
+          "calls": 1,
+          "exclusiveMs": 6.665014000000042,
+          "inclusiveMs": 6.665014000000042
+        },
+        {
+          "name": "driver.graph-book-digest",
+          "calls": 1,
+          "exclusiveMs": 2.532097999999962,
+          "inclusiveMs": 2.532097999999962
+        },
+        {
+          "name": "driver.source-graph",
+          "calls": 1,
+          "exclusiveMs": 1.7031899999998927,
+          "inclusiveMs": 248.97235700000004
+        },
+        {
+          "name": "driver.cache-graph-decode",
+          "calls": 1,
+          "exclusiveMs": 1.5416149999999789,
+          "inclusiveMs": 124.99694299999999
+        },
+        {
+          "name": "worker.compile",
+          "calls": 1,
+          "exclusiveMs": 1.473559000000023,
+          "inclusiveMs": 854.280675
+        },
+        {
+          "name": "api.f-prefix-complete-ready-seed",
+          "calls": 1,
+          "exclusiveMs": 1.3877969999999777,
+          "inclusiveMs": 1.3877969999999777
+        },
+        {
+          "name": "driver.base-cache",
+          "calls": 1,
+          "exclusiveMs": 0.6530640000001426,
+          "inclusiveMs": 126.62463600000001
+        },
+        {
+          "name": "driver.api-load",
+          "calls": 1,
+          "exclusiveMs": 0.46816499999999905,
+          "inclusiveMs": 0.5016770000000292
+        },
+        {
+          "name": "driver.checked-state-shape",
+          "calls": 1,
+          "exclusiveMs": 0.34039999999998827,
+          "inclusiveMs": 0.34039999999998827
+        },
+        {
+          "name": "api.jd-modules",
+          "calls": 1,
+          "exclusiveMs": 0.29120000000011714,
+          "inclusiveMs": 0.29120000000011714
+        },
+        {
+          "name": "api.jd-foreign-paths",
+          "calls": 1,
+          "exclusiveMs": 0.19852800000012394,
+          "inclusiveMs": 0.19852800000012394
+        },
+        {
+          "name": "driver.cache-decode",
+          "calls": 1,
+          "exclusiveMs": 0.1907850000000053,
+          "inclusiveMs": 125.23872799999998
+        },
+        {
+          "name": "driver.cache-read",
+          "calls": 1,
+          "exclusiveMs": 0.15974799999997913,
+          "inclusiveMs": 0.15974799999997913
+        },
+        {
+          "name": "driver.checked-state-admission",
+          "calls": 1,
+          "exclusiveMs": 0.15885100000002694,
+          "inclusiveMs": 0.4992510000000152
+        },
+        {
+          "name": "api.f-import-namespace-at",
+          "calls": 1,
+          "exclusiveMs": 0.14606299999996963,
+          "inclusiveMs": 0.14606299999996963
+        },
+        {
+          "name": "api.f-source-completed",
+          "calls": 1,
+          "exclusiveMs": 0.1293510000000424,
+          "inclusiveMs": 0.1293510000000424
+        },
+        {
+          "name": "api.driver-has-main",
+          "calls": 1,
+          "exclusiveMs": 0.11019099999998616,
+          "inclusiveMs": 0.11019099999998616
+        },
+        {
+          "name": "api.f-source-located",
+          "calls": 3,
+          "exclusiveMs": 0.09906699999999091,
+          "inclusiveMs": 0.09906699999999091
+        },
+        {
+          "name": "api.f-prefix-graph-empty",
+          "calls": 1,
+          "exclusiveMs": 0.07320599999997057,
+          "inclusiveMs": 0.07320599999997057
+        },
+        {
+          "name": "api.compiler-check-result-abi",
+          "calls": 1,
+          "exclusiveMs": 0.0618370000000823,
+          "inclusiveMs": 0.0618370000000823
+        },
+        {
+          "name": "driver.cache-validation",
+          "calls": 1,
+          "exclusiveMs": 0.0555859999999484,
+          "inclusiveMs": 0.0555859999999484
+        },
+        {
+          "name": "driver.cache-header-parse",
+          "calls": 1,
+          "exclusiveMs": 0.05099999999998772,
+          "inclusiveMs": 0.05099999999998772
+        },
+        {
+          "name": "api.jd-plan-error",
+          "calls": 1,
+          "exclusiveMs": 0.05097899999987021,
+          "inclusiveMs": 0.05097899999987021
+        },
+        {
+          "name": "api.compiler-term-abi",
+          "calls": 3,
+          "exclusiveMs": 0.042928000000131306,
+          "inclusiveMs": 0.042928000000131306
+        },
+        {
+          "name": "api.jd-plan-defs",
+          "calls": 1,
+          "exclusiveMs": 0.038710000000037326,
+          "inclusiveMs": 0.038710000000037326
+        },
+        {
+          "name": "api.compiler-load-abi",
+          "calls": 3,
+          "exclusiveMs": 0.027756000000010772,
+          "inclusiveMs": 0.027756000000010772
+        },
+        {
+          "name": "driver.foreign-resolver",
+          "calls": 1,
+          "exclusiveMs": 0.026039999999966312,
+          "inclusiveMs": 0.026039999999966312
+        },
+        {
+          "name": "driver.foreign-source",
+          "calls": 1,
+          "exclusiveMs": 0.019669999999905485,
+          "inclusiveMs": 0.019669999999905485
+        },
+        {
+          "name": "api.compiler-span-abi",
+          "calls": 2,
+          "exclusiveMs": 0.015444999999999709,
+          "inclusiveMs": 0.015444999999999709
+        },
+        {
+          "name": "driver.fresh-state-admission",
+          "calls": 1,
+          "exclusiveMs": 0.007558999999957905,
+          "inclusiveMs": 0.007558999999957905
+        },
+        {
+          "name": "driver.frontend-state-admission",
+          "calls": 1,
+          "exclusiveMs": 0.005791999999985364,
+          "inclusiveMs": 0.005791999999985364
+        },
+        {
+          "name": "driver.world-admission",
+          "calls": 1,
+          "exclusiveMs": 0.0049080000000003565,
+          "inclusiveMs": 0.0049080000000003565
+        }
+      ],
+      "fullStageClock": {
+        "kind": "phase62-exclusive-stage-clock",
+        "version": 1,
+        "diagnosticOnly": true,
+        "timingScope": "Monotonic wall time including synchronous hook overhead; never add nested inclusive intervals.",
+        "events": [
+          {
+            "id": 0,
+            "parent": null,
+            "name": "worker.first-window",
+            "startMs": 87.74639599999999,
+            "endMs": 1077.7435420000002,
+            "inclusiveMs": 989.997146,
+            "childMs": 989.584477,
+            "exclusiveMs": 0.4126690000000508,
+            "incomplete": false
+          },
+          {
+            "id": 1,
+            "parent": 0,
+            "name": "worker.host-import",
+            "startMs": 87.91107899999999,
+            "endMs": 95.235991,
+            "inclusiveMs": 7.324912000000012,
+            "childMs": 0,
+            "exclusiveMs": 7.324912000000012,
+            "incomplete": false
+          },
+          {
+            "id": 2,
+            "parent": 0,
+            "name": "worker.api-load",
+            "startMs": 95.45438299999999,
+            "endMs": 223.43327299999999,
+            "inclusiveMs": 127.97889,
+            "childMs": 127.63009799999998,
+            "exclusiveMs": 0.3487920000000315,
+            "incomplete": false
+          },
+          {
+            "id": 3,
+            "parent": 2,
+            "name": "driver.api-load",
+            "startMs": 95.754351,
+            "endMs": 223.38444899999996,
+            "inclusiveMs": 127.63009799999998,
+            "childMs": 0.30530699999991384,
+            "exclusiveMs": 127.32479100000006,
+            "incomplete": false
+          },
+          {
+            "id": 4,
+            "parent": 3,
+            "name": "api.compiler-term-abi",
+            "startMs": 222.897581,
+            "endMs": 223.07516899999996,
+            "inclusiveMs": 0.17758799999995745,
+            "childMs": 0,
+            "exclusiveMs": 0.17758799999995745,
+            "incomplete": false
+          },
+          {
+            "id": 5,
+            "parent": 3,
+            "name": "api.compiler-span-abi",
+            "startMs": 223.11228899999998,
+            "endMs": 223.17240399999997,
+            "inclusiveMs": 0.060114999999996144,
+            "childMs": 0,
+            "exclusiveMs": 0.060114999999996144,
+            "incomplete": false
+          },
+          {
+            "id": 6,
+            "parent": 3,
+            "name": "api.compiler-load-abi",
+            "startMs": 223.272781,
+            "endMs": 223.34038499999997,
+            "inclusiveMs": 0.06760399999996025,
+            "childMs": 0,
+            "exclusiveMs": 0.06760399999996025,
+            "incomplete": false
+          },
+          {
+            "id": 7,
+            "parent": 0,
+            "name": "worker.compile",
+            "startMs": 223.452612,
+            "endMs": 1077.733287,
+            "inclusiveMs": 854.280675,
+            "childMs": 852.807116,
+            "exclusiveMs": 1.473559000000023,
+            "incomplete": false
+          },
+          {
+            "id": 8,
+            "parent": 7,
+            "name": "driver.inspect",
+            "startMs": 224.78270299999997,
+            "endMs": 1077.589819,
+            "inclusiveMs": 852.807116,
+            "childMs": 836.0905120000001,
+            "exclusiveMs": 16.716603999999847,
+            "incomplete": false
+          },
+          {
+            "id": 9,
+            "parent": 8,
+            "name": "driver.api-load",
+            "startMs": 224.84058999999996,
+            "endMs": 225.342267,
+            "inclusiveMs": 0.5016770000000292,
+            "childMs": 0.033512000000030184,
+            "exclusiveMs": 0.46816499999999905,
+            "incomplete": false
+          },
+          {
+            "id": 10,
+            "parent": 9,
+            "name": "api.compiler-term-abi",
+            "startMs": 225.07358499999998,
+            "endMs": 225.091974,
+            "inclusiveMs": 0.01838900000001331,
+            "childMs": 0,
+            "exclusiveMs": 0.01838900000001331,
+            "incomplete": false
+          },
+          {
+            "id": 11,
+            "parent": 9,
+            "name": "api.compiler-span-abi",
+            "startMs": 225.117913,
+            "endMs": 225.12586,
+            "inclusiveMs": 0.00794700000000148,
+            "childMs": 0,
+            "exclusiveMs": 0.00794700000000148,
+            "incomplete": false
+          },
+          {
+            "id": 12,
+            "parent": 9,
+            "name": "api.compiler-load-abi",
+            "startMs": 225.14746399999996,
+            "endMs": 225.15463999999997,
+            "inclusiveMs": 0.007176000000015392,
+            "childMs": 0,
+            "exclusiveMs": 0.007176000000015392,
+            "incomplete": false
+          },
+          {
+            "id": 13,
+            "parent": 8,
+            "name": "api.compiler-load-abi",
+            "startMs": 225.43878899999999,
+            "endMs": 225.448237,
+            "inclusiveMs": 0.009448000000020329,
+            "childMs": 0,
+            "exclusiveMs": 0.009448000000020329,
+            "incomplete": false
+          },
+          {
+            "id": 14,
+            "parent": 8,
+            "name": "driver.base-identity",
+            "startMs": 225.60384599999998,
+            "endMs": 240.573019,
+            "inclusiveMs": 14.969173000000012,
+            "childMs": 0.0160640000000285,
+            "exclusiveMs": 14.953108999999984,
+            "incomplete": false
+          },
+          {
+            "id": 15,
+            "parent": 14,
+            "name": "api.compiler-term-abi",
+            "startMs": 240.49118199999998,
+            "endMs": 240.507246,
+            "inclusiveMs": 0.0160640000000285,
+            "childMs": 0,
+            "exclusiveMs": 0.0160640000000285,
+            "incomplete": false
+          },
+          {
+            "id": 16,
+            "parent": 8,
+            "name": "driver.base-cache",
+            "startMs": 240.805794,
+            "endMs": 367.43043,
+            "inclusiveMs": 126.62463600000001,
+            "childMs": 125.97157199999987,
+            "exclusiveMs": 0.6530640000001426,
+            "incomplete": false
+          },
+          {
+            "id": 17,
+            "parent": 16,
+            "name": "driver.cache-read",
+            "startMs": 240.830133,
+            "endMs": 240.98988099999997,
+            "inclusiveMs": 0.15974799999997913,
+            "childMs": 0,
+            "exclusiveMs": 0.15974799999997913,
+            "incomplete": false
+          },
+          {
+            "id": 18,
+            "parent": 16,
+            "name": "driver.cache-decode",
+            "startMs": 241.217397,
+            "endMs": 366.456125,
+            "inclusiveMs": 125.23872799999998,
+            "childMs": 125.04794299999998,
+            "exclusiveMs": 0.1907850000000053,
+            "incomplete": false
+          },
+          {
+            "id": 19,
+            "parent": 18,
+            "name": "driver.cache-header-parse",
+            "startMs": 241.22947499999998,
+            "endMs": 241.28047499999997,
+            "inclusiveMs": 0.05099999999998772,
+            "childMs": 0,
+            "exclusiveMs": 0.05099999999998772,
+            "incomplete": false
+          },
+          {
+            "id": 20,
+            "parent": 18,
+            "name": "driver.cache-graph-decode",
+            "startMs": 241.451456,
+            "endMs": 366.448399,
+            "inclusiveMs": 124.99694299999999,
+            "childMs": 123.45532800000001,
+            "exclusiveMs": 1.5416149999999789,
+            "incomplete": false
+          },
+          {
+            "id": 21,
+            "parent": 20,
+            "name": "driver.graph-book-digest",
+            "startMs": 241.507562,
+            "endMs": 244.03965999999997,
+            "inclusiveMs": 2.532097999999962,
+            "childMs": 0,
+            "exclusiveMs": 2.532097999999962,
+            "incomplete": false
+          },
+          {
+            "id": 22,
+            "parent": 20,
+            "name": "driver.graph-book-decode",
+            "startMs": 244.06125699999996,
+            "endMs": 313.143122,
+            "inclusiveMs": 69.08186500000005,
+            "childMs": 0,
+            "exclusiveMs": 69.08186500000005,
+            "incomplete": false
+          },
+          {
+            "id": 23,
+            "parent": 20,
+            "name": "driver.graph-prepared-decode",
+            "startMs": 314.568498,
+            "endMs": 366.409863,
+            "inclusiveMs": 51.841364999999996,
+            "childMs": 0,
+            "exclusiveMs": 51.841364999999996,
+            "incomplete": false
+          },
+          {
+            "id": 24,
+            "parent": 16,
+            "name": "driver.cache-validation",
+            "startMs": 366.604735,
+            "endMs": 366.66032099999995,
+            "inclusiveMs": 0.0555859999999484,
+            "childMs": 0,
+            "exclusiveMs": 0.0555859999999484,
+            "incomplete": false
+          },
+          {
+            "id": 25,
+            "parent": 16,
+            "name": "driver.checked-state-admission",
+            "startMs": 366.72360399999997,
+            "endMs": 367.222855,
+            "inclusiveMs": 0.4992510000000152,
+            "childMs": 0.34039999999998827,
+            "exclusiveMs": 0.15885100000002694,
+            "incomplete": false
+          },
+          {
+            "id": 26,
+            "parent": 25,
+            "name": "driver.checked-state-shape",
+            "startMs": 366.840699,
+            "endMs": 367.18109899999996,
+            "inclusiveMs": 0.34039999999998827,
+            "childMs": 0,
+            "exclusiveMs": 0.34039999999998827,
+            "incomplete": false
+          },
+          {
+            "id": 27,
+            "parent": 16,
+            "name": "driver.fresh-state-admission",
+            "startMs": 367.277827,
+            "endMs": 367.28538599999996,
+            "inclusiveMs": 0.007558999999957905,
+            "childMs": 0,
+            "exclusiveMs": 0.007558999999957905,
+            "incomplete": false
+          },
+          {
+            "id": 28,
+            "parent": 16,
+            "name": "driver.world-admission",
+            "startMs": 367.331935,
+            "endMs": 367.336843,
+            "inclusiveMs": 0.0049080000000003565,
+            "childMs": 0,
+            "exclusiveMs": 0.0049080000000003565,
+            "incomplete": false
+          },
+          {
+            "id": 29,
+            "parent": 16,
+            "name": "driver.frontend-state-admission",
+            "startMs": 367.406728,
+            "endMs": 367.41252,
+            "inclusiveMs": 0.005791999999985364,
+            "childMs": 0,
+            "exclusiveMs": 0.005791999999985364,
+            "incomplete": false
+          },
+          {
+            "id": 30,
+            "parent": 8,
+            "name": "driver.source-graph",
+            "startMs": 367.72639899999996,
+            "endMs": 616.698756,
+            "inclusiveMs": 248.97235700000004,
+            "childMs": 247.26916700000015,
+            "exclusiveMs": 1.7031899999998927,
+            "incomplete": false
+          },
+          {
+            "id": 31,
+            "parent": 30,
+            "name": "api.compiler-load-abi",
+            "startMs": 367.750633,
+            "endMs": 367.76176499999997,
+            "inclusiveMs": 0.01113199999997505,
+            "childMs": 0,
+            "exclusiveMs": 0.01113199999997505,
+            "incomplete": false
+          },
+          {
+            "id": 32,
+            "parent": 30,
+            "name": "api.compiler-span-abi",
+            "startMs": 367.78159899999997,
+            "endMs": 367.78909699999997,
+            "inclusiveMs": 0.007497999999998228,
+            "childMs": 0,
+            "exclusiveMs": 0.007497999999998228,
+            "incomplete": false
+          },
+          {
+            "id": 33,
+            "parent": 30,
+            "name": "api.f-prefix-graph-empty",
+            "startMs": 367.820787,
+            "endMs": 367.89399299999997,
+            "inclusiveMs": 0.07320599999997057,
+            "childMs": 0,
+            "exclusiveMs": 0.07320599999997057,
+            "incomplete": false
+          },
+          {
+            "id": 34,
+            "parent": 30,
+            "name": "api.f-source-located",
+            "startMs": 368.569705,
+            "endMs": 368.640184,
+            "inclusiveMs": 0.07047899999997753,
+            "childMs": 0,
+            "exclusiveMs": 0.07047899999997753,
+            "incomplete": false
+          },
+          {
+            "id": 35,
+            "parent": 30,
+            "name": "api.f-source-header",
+            "startMs": 368.65973099999997,
+            "endMs": 395.30517,
+            "inclusiveMs": 26.64543900000001,
+            "childMs": 0,
+            "exclusiveMs": 26.64543900000001,
+            "incomplete": false
+          },
+          {
+            "id": 36,
+            "parent": 30,
+            "name": "api.f-source-located",
+            "startMs": 395.764642,
+            "endMs": 395.783328,
+            "inclusiveMs": 0.018686000000002423,
+            "childMs": 0,
+            "exclusiveMs": 0.018686000000002423,
+            "incomplete": false
+          },
+          {
+            "id": 37,
+            "parent": 30,
+            "name": "api.f-import-namespace-at",
+            "startMs": 395.847012,
+            "endMs": 395.993075,
+            "inclusiveMs": 0.14606299999996963,
+            "childMs": 0,
+            "exclusiveMs": 0.14606299999996963,
+            "incomplete": false
+          },
+          {
+            "id": 38,
+            "parent": 30,
+            "name": "api.f-prefix-complete-ready-seed",
+            "startMs": 396.006651,
+            "endMs": 397.39444799999995,
+            "inclusiveMs": 1.3877969999999777,
+            "childMs": 0,
+            "exclusiveMs": 1.3877969999999777,
+            "incomplete": false
+          },
+          {
+            "id": 39,
+            "parent": 30,
+            "name": "api.f-prefix-complete-source",
+            "startMs": 397.47013799999996,
+            "endMs": 586.569604,
+            "inclusiveMs": 189.09946600000006,
+            "childMs": 0,
+            "exclusiveMs": 189.09946600000006,
+            "incomplete": false
+          },
+          {
+            "id": 40,
+            "parent": 30,
+            "name": "api.compiler-term-abi",
+            "startMs": 586.6207929999999,
+            "endMs": 586.629268,
+            "inclusiveMs": 0.008475000000089494,
+            "childMs": 0,
+            "exclusiveMs": 0.008475000000089494,
+            "incomplete": false
+          },
+          {
+            "id": 41,
+            "parent": 30,
+            "name": "driver.span-validation",
+            "startMs": 586.776399,
+            "endMs": 605.613023,
+            "inclusiveMs": 18.83662400000003,
+            "childMs": 0,
+            "exclusiveMs": 18.83662400000003,
+            "incomplete": false
+          },
+          {
+            "id": 42,
+            "parent": 30,
+            "name": "api.f-source-completed",
+            "startMs": 605.641362,
+            "endMs": 605.770713,
+            "inclusiveMs": 0.1293510000000424,
+            "childMs": 0,
+            "exclusiveMs": 0.1293510000000424,
+            "incomplete": false
+          },
+          {
+            "id": 43,
+            "parent": 30,
+            "name": "api.f-source-located",
+            "startMs": 605.780541,
+            "endMs": 605.790443,
+            "inclusiveMs": 0.009902000000010958,
+            "childMs": 0,
+            "exclusiveMs": 0.009902000000010958,
+            "incomplete": false
+          },
+          {
+            "id": 44,
+            "parent": 30,
+            "name": "api.f-prefix-graph-trace",
+            "startMs": 605.836656,
+            "endMs": 616.661705,
+            "inclusiveMs": 10.825049000000035,
+            "childMs": 0,
+            "exclusiveMs": 10.825049000000035,
+            "incomplete": false
+          },
+          {
+            "id": 45,
+            "parent": 8,
+            "name": "api.compiler-check-result-abi",
+            "startMs": 616.7356179999999,
+            "endMs": 616.797455,
+            "inclusiveMs": 0.0618370000000823,
+            "childMs": 0,
+            "exclusiveMs": 0.0618370000000823,
+            "incomplete": false
+          },
+          {
+            "id": 46,
+            "parent": 8,
+            "name": "api.check-program-diagnostic-world",
+            "startMs": 616.817991,
+            "endMs": 760.927334,
+            "inclusiveMs": 144.10934299999997,
+            "childMs": 0,
+            "exclusiveMs": 144.10934299999997,
+            "incomplete": false
+          },
+          {
+            "id": 47,
+            "parent": 8,
+            "name": "api.driver-has-main",
+            "startMs": 760.972636,
+            "endMs": 761.082827,
+            "inclusiveMs": 0.11019099999998616,
+            "childMs": 0,
+            "exclusiveMs": 0.11019099999998616,
+            "incomplete": false
+          },
+          {
+            "id": 48,
+            "parent": 8,
+            "name": "api.driver-emit-owned",
+            "startMs": 761.126078,
+            "endMs": 771.663062,
+            "inclusiveMs": 10.536983999999961,
+            "childMs": 0,
+            "exclusiveMs": 10.536983999999961,
+            "incomplete": false
+          },
+          {
+            "id": 49,
+            "parent": 8,
+            "name": "api.book-context",
+            "startMs": 771.687319,
+            "endMs": 785.603237,
+            "inclusiveMs": 13.915918000000033,
+            "childMs": 0,
+            "exclusiveMs": 13.915918000000033,
+            "incomplete": false
+          },
+          {
+            "id": 50,
+            "parent": 8,
+            "name": "api.jd-roots",
+            "startMs": 785.6275449999999,
+            "endMs": 792.292559,
+            "inclusiveMs": 6.665014000000042,
+            "childMs": 0,
+            "exclusiveMs": 6.665014000000042,
+            "incomplete": false
+          },
+          {
+            "id": 51,
+            "parent": 8,
+            "name": "api.jd-stops",
+            "startMs": 792.312731,
+            "endMs": 825.951502,
+            "inclusiveMs": 33.63877100000002,
+            "childMs": 0,
+            "exclusiveMs": 33.63877100000002,
+            "incomplete": false
+          },
+          {
+            "id": 52,
+            "parent": 8,
+            "name": "api.reach-book",
+            "startMs": 825.991683,
+            "endMs": 835.340908,
+            "inclusiveMs": 9.349225000000047,
+            "childMs": 0,
+            "exclusiveMs": 9.349225000000047,
+            "incomplete": false
+          },
+          {
+            "id": 53,
+            "parent": 8,
+            "name": "api.annotate-selected",
+            "startMs": 850.20176,
+            "endMs": 865.9219429999999,
+            "inclusiveMs": 15.720182999999906,
+            "childMs": 0,
+            "exclusiveMs": 15.720182999999906,
+            "incomplete": false
+          },
+          {
+            "id": 54,
+            "parent": 8,
+            "name": "api.jd-plan-selected",
+            "startMs": 866.007248,
+            "endMs": 1037.257524,
+            "inclusiveMs": 171.25027599999999,
+            "childMs": 0,
+            "exclusiveMs": 171.25027599999999,
+            "incomplete": false
+          },
+          {
+            "id": 55,
+            "parent": 8,
+            "name": "api.jd-plan-error",
+            "startMs": 1037.2835400000001,
+            "endMs": 1037.334519,
+            "inclusiveMs": 0.05097899999987021,
+            "childMs": 0,
+            "exclusiveMs": 0.05097899999987021,
+            "incomplete": false
+          },
+          {
+            "id": 56,
+            "parent": 8,
+            "name": "api.jd-plan-defs",
+            "startMs": 1037.34245,
+            "endMs": 1037.3811600000001,
+            "inclusiveMs": 0.038710000000037326,
+            "childMs": 0,
+            "exclusiveMs": 0.038710000000037326,
+            "incomplete": false
+          },
+          {
+            "id": 57,
+            "parent": 8,
+            "name": "api.jd-foreign-error",
+            "startMs": 1037.3892930000002,
+            "endMs": 1044.390738,
+            "inclusiveMs": 7.001444999999876,
+            "childMs": 0,
+            "exclusiveMs": 7.001444999999876,
+            "incomplete": false
+          },
+          {
+            "id": 58,
+            "parent": 8,
+            "name": "api.j-layout-error",
+            "startMs": 1044.421701,
+            "endMs": 1055.8258520000002,
+            "inclusiveMs": 11.404151000000184,
+            "childMs": 0,
+            "exclusiveMs": 11.404151000000184,
+            "incomplete": false
+          },
+          {
+            "id": 59,
+            "parent": 8,
+            "name": "api.jd-foreign-paths",
+            "startMs": 1055.873912,
+            "endMs": 1056.0724400000001,
+            "inclusiveMs": 0.19852800000012394,
+            "childMs": 0,
+            "exclusiveMs": 0.19852800000012394,
+            "incomplete": false
+          },
+          {
+            "id": 60,
+            "parent": 8,
+            "name": "driver.foreign-resolver",
+            "startMs": 1056.27185,
+            "endMs": 1056.29789,
+            "inclusiveMs": 0.026039999999966312,
+            "childMs": 0,
+            "exclusiveMs": 0.026039999999966312,
+            "incomplete": false
+          },
+          {
+            "id": 61,
+            "parent": 8,
+            "name": "driver.foreign-source",
+            "startMs": 1056.4444910000002,
+            "endMs": 1056.464161,
+            "inclusiveMs": 0.019669999999905485,
+            "childMs": 0,
+            "exclusiveMs": 0.019669999999905485,
+            "incomplete": false
+          },
+          {
+            "id": 62,
+            "parent": 8,
+            "name": "api.jd-modules",
+            "startMs": 1056.474013,
+            "endMs": 1056.7652130000001,
+            "inclusiveMs": 0.29120000000011714,
+            "childMs": 0,
+            "exclusiveMs": 0.29120000000011714,
+            "incomplete": false
+          },
+          {
+            "id": 63,
+            "parent": 8,
+            "name": "api.jd-plan-library",
+            "startMs": 1056.777896,
+            "endMs": 1077.402652,
+            "inclusiveMs": 20.624755999999934,
+            "childMs": 0,
+            "exclusiveMs": 20.624755999999934,
+            "incomplete": false
+          }
+        ],
+        "aggregate": [
+          {
+            "name": "worker.first-window",
+            "calls": 1,
+            "inclusiveMs": 989.997146,
+            "exclusiveMs": 0.4126690000000508,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.host-import",
+            "calls": 1,
+            "inclusiveMs": 7.324912000000012,
+            "exclusiveMs": 7.324912000000012,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.api-load",
+            "calls": 1,
+            "inclusiveMs": 127.97889,
+            "exclusiveMs": 0.3487920000000315,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.api-load",
+            "calls": 2,
+            "inclusiveMs": 128.131775,
+            "exclusiveMs": 127.79295600000006,
+            "incomplete": 0
+          },
+          {
+            "name": "api.compiler-term-abi",
+            "calls": 4,
+            "inclusiveMs": 0.22051600000008875,
+            "exclusiveMs": 0.22051600000008875,
+            "incomplete": 0
+          },
+          {
+            "name": "api.compiler-span-abi",
+            "calls": 3,
+            "inclusiveMs": 0.07555999999999585,
+            "exclusiveMs": 0.07555999999999585,
+            "incomplete": 0
+          },
+          {
+            "name": "api.compiler-load-abi",
+            "calls": 4,
+            "inclusiveMs": 0.09535999999997102,
+            "exclusiveMs": 0.09535999999997102,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.compile",
+            "calls": 1,
+            "inclusiveMs": 854.280675,
+            "exclusiveMs": 1.473559000000023,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.inspect",
+            "calls": 1,
+            "inclusiveMs": 852.807116,
+            "exclusiveMs": 16.716603999999847,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.base-identity",
+            "calls": 1,
+            "inclusiveMs": 14.969173000000012,
+            "exclusiveMs": 14.953108999999984,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.base-cache",
+            "calls": 1,
+            "inclusiveMs": 126.62463600000001,
+            "exclusiveMs": 0.6530640000001426,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-read",
+            "calls": 1,
+            "inclusiveMs": 0.15974799999997913,
+            "exclusiveMs": 0.15974799999997913,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-decode",
+            "calls": 1,
+            "inclusiveMs": 125.23872799999998,
+            "exclusiveMs": 0.1907850000000053,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-header-parse",
+            "calls": 1,
+            "inclusiveMs": 0.05099999999998772,
+            "exclusiveMs": 0.05099999999998772,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-graph-decode",
+            "calls": 1,
+            "inclusiveMs": 124.99694299999999,
+            "exclusiveMs": 1.5416149999999789,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.graph-book-digest",
+            "calls": 1,
+            "inclusiveMs": 2.532097999999962,
+            "exclusiveMs": 2.532097999999962,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.graph-book-decode",
+            "calls": 1,
+            "inclusiveMs": 69.08186500000005,
+            "exclusiveMs": 69.08186500000005,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.graph-prepared-decode",
+            "calls": 1,
+            "inclusiveMs": 51.841364999999996,
+            "exclusiveMs": 51.841364999999996,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-validation",
+            "calls": 1,
+            "inclusiveMs": 0.0555859999999484,
+            "exclusiveMs": 0.0555859999999484,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.checked-state-admission",
+            "calls": 1,
+            "inclusiveMs": 0.4992510000000152,
+            "exclusiveMs": 0.15885100000002694,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.checked-state-shape",
+            "calls": 1,
+            "inclusiveMs": 0.34039999999998827,
+            "exclusiveMs": 0.34039999999998827,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.fresh-state-admission",
+            "calls": 1,
+            "inclusiveMs": 0.007558999999957905,
+            "exclusiveMs": 0.007558999999957905,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.world-admission",
+            "calls": 1,
+            "inclusiveMs": 0.0049080000000003565,
+            "exclusiveMs": 0.0049080000000003565,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.frontend-state-admission",
+            "calls": 1,
+            "inclusiveMs": 0.005791999999985364,
+            "exclusiveMs": 0.005791999999985364,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.source-graph",
+            "calls": 1,
+            "inclusiveMs": 248.97235700000004,
+            "exclusiveMs": 1.7031899999998927,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-prefix-graph-empty",
+            "calls": 1,
+            "inclusiveMs": 0.07320599999997057,
+            "exclusiveMs": 0.07320599999997057,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-source-located",
+            "calls": 3,
+            "inclusiveMs": 0.09906699999999091,
+            "exclusiveMs": 0.09906699999999091,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-source-header",
+            "calls": 1,
+            "inclusiveMs": 26.64543900000001,
+            "exclusiveMs": 26.64543900000001,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-import-namespace-at",
+            "calls": 1,
+            "inclusiveMs": 0.14606299999996963,
+            "exclusiveMs": 0.14606299999996963,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-prefix-complete-ready-seed",
+            "calls": 1,
+            "inclusiveMs": 1.3877969999999777,
+            "exclusiveMs": 1.3877969999999777,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-prefix-complete-source",
+            "calls": 1,
+            "inclusiveMs": 189.09946600000006,
+            "exclusiveMs": 189.09946600000006,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.span-validation",
+            "calls": 1,
+            "inclusiveMs": 18.83662400000003,
+            "exclusiveMs": 18.83662400000003,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-source-completed",
+            "calls": 1,
+            "inclusiveMs": 0.1293510000000424,
+            "exclusiveMs": 0.1293510000000424,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-prefix-graph-trace",
+            "calls": 1,
+            "inclusiveMs": 10.825049000000035,
+            "exclusiveMs": 10.825049000000035,
+            "incomplete": 0
+          },
+          {
+            "name": "api.compiler-check-result-abi",
+            "calls": 1,
+            "inclusiveMs": 0.0618370000000823,
+            "exclusiveMs": 0.0618370000000823,
+            "incomplete": 0
+          },
+          {
+            "name": "api.check-program-diagnostic-world",
+            "calls": 1,
+            "inclusiveMs": 144.10934299999997,
+            "exclusiveMs": 144.10934299999997,
+            "incomplete": 0
+          },
+          {
+            "name": "api.driver-has-main",
+            "calls": 1,
+            "inclusiveMs": 0.11019099999998616,
+            "exclusiveMs": 0.11019099999998616,
+            "incomplete": 0
+          },
+          {
+            "name": "api.driver-emit-owned",
+            "calls": 1,
+            "inclusiveMs": 10.536983999999961,
+            "exclusiveMs": 10.536983999999961,
+            "incomplete": 0
+          },
+          {
+            "name": "api.book-context",
+            "calls": 1,
+            "inclusiveMs": 13.915918000000033,
+            "exclusiveMs": 13.915918000000033,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-roots",
+            "calls": 1,
+            "inclusiveMs": 6.665014000000042,
+            "exclusiveMs": 6.665014000000042,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-stops",
+            "calls": 1,
+            "inclusiveMs": 33.63877100000002,
+            "exclusiveMs": 33.63877100000002,
+            "incomplete": 0
+          },
+          {
+            "name": "api.reach-book",
+            "calls": 1,
+            "inclusiveMs": 9.349225000000047,
+            "exclusiveMs": 9.349225000000047,
+            "incomplete": 0
+          },
+          {
+            "name": "api.annotate-selected",
+            "calls": 1,
+            "inclusiveMs": 15.720182999999906,
+            "exclusiveMs": 15.720182999999906,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-plan-selected",
+            "calls": 1,
+            "inclusiveMs": 171.25027599999999,
+            "exclusiveMs": 171.25027599999999,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-plan-error",
+            "calls": 1,
+            "inclusiveMs": 0.05097899999987021,
+            "exclusiveMs": 0.05097899999987021,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-plan-defs",
+            "calls": 1,
+            "inclusiveMs": 0.038710000000037326,
+            "exclusiveMs": 0.038710000000037326,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-foreign-error",
+            "calls": 1,
+            "inclusiveMs": 7.001444999999876,
+            "exclusiveMs": 7.001444999999876,
+            "incomplete": 0
+          },
+          {
+            "name": "api.j-layout-error",
+            "calls": 1,
+            "inclusiveMs": 11.404151000000184,
+            "exclusiveMs": 11.404151000000184,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-foreign-paths",
+            "calls": 1,
+            "inclusiveMs": 0.19852800000012394,
+            "exclusiveMs": 0.19852800000012394,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.foreign-resolver",
+            "calls": 1,
+            "inclusiveMs": 0.026039999999966312,
+            "exclusiveMs": 0.026039999999966312,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.foreign-source",
+            "calls": 1,
+            "inclusiveMs": 0.019669999999905485,
+            "exclusiveMs": 0.019669999999905485,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-modules",
+            "calls": 1,
+            "inclusiveMs": 0.29120000000011714,
+            "exclusiveMs": 0.29120000000011714,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-plan-library",
+            "calls": 1,
+            "inclusiveMs": 20.624755999999934,
+            "exclusiveMs": 20.624755999999934,
+            "incomplete": 0
+          }
+        ],
+        "rootMs": 989.997146,
+        "exclusiveMs": 989.997146,
+        "incomplete": 0
+      }
+    },
+    {
+      "case": "lexer",
+      "role": "typescript",
+      "sample": 0,
+      "result": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stages01/lexer-0-typescript.result.json",
+        "sha256": "02c9394b3923f95f52dba23e0d06a44ae0fcf0fc2ec1be2d1460fbbd3e578034"
+      },
+      "image": null,
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stages01/lexer-0-typescript.mjs",
+        "sha256": "2d9378dfdcacc5904f4b2ac65fd90ba1dcc4a51d9c68b00f6042c42aaeadbbba",
+        "bytes": 14110
+      },
+      "firstRequestMs": 374.7584959999999,
+      "combinedMs": 658.131053,
+      "instrumentedCompileWindowMs": 374.777481,
+      "exclusiveSumMs": 374.777481,
+      "cacheInclusiveMs": 0,
+      "activePaths": {
+        "api.f-prefix-complete-ready-seed": 0,
+        "api.f-prefix-complete-seed": 0,
+        "api.f-prefix-complete-source": 0,
+        "api.f-prefix-graph-trace": 0,
+        "api.check-program-diagnostic-world": 0,
+        "api.check-program-diagnostic-prefix": 0,
+        "api.jd-plan-selected": 0,
+        "api.jd-plan-library": 0,
+        "api.jd-reach-selected": 0,
+        "api.jd-library-selected": 0
+      },
+      "abiExclusiveMs": {
+        "encode": 0,
+        "invoke": 0,
+        "decode": 0
+      },
+      "compileStages": [
+        {
+          "name": "typescript.book-valid",
+          "calls": 1,
+          "exclusiveMs": 164.596946,
+          "inclusiveMs": 164.596946
+        },
+        {
+          "name": "typescript.book-load",
+          "calls": 1,
+          "exclusiveMs": 155.988066,
+          "inclusiveMs": 155.988066
+        },
+        {
+          "name": "typescript.js-lib",
+          "calls": 1,
+          "exclusiveMs": 53.940151000000014,
+          "inclusiveMs": 53.940151000000014
+        },
+        {
+          "name": "worker.compile",
+          "calls": 1,
+          "exclusiveMs": 0.2523180000000025,
+          "inclusiveMs": 374.777481
+        }
+      ],
+      "fullStageClock": {
+        "kind": "phase62-exclusive-stage-clock",
+        "version": 1,
+        "diagnosticOnly": true,
+        "timingScope": "Monotonic wall time including synchronous hook overhead; never add nested inclusive intervals.",
+        "events": [
+          {
+            "id": 0,
+            "parent": null,
+            "name": "worker.first-window",
+            "startMs": 25.345929999999996,
+            "endMs": 684.079723,
+            "inclusiveMs": 658.733793,
+            "childMs": 658.277014,
+            "exclusiveMs": 0.45677899999998317,
+            "incomplete": false
+          },
+          {
+            "id": 1,
+            "parent": 0,
+            "name": "worker.host-import",
+            "startMs": 25.53347699999999,
+            "endMs": 309.016277,
+            "inclusiveMs": 283.4828,
+            "childMs": 0,
+            "exclusiveMs": 283.4828,
+            "incomplete": false
+          },
+          {
+            "id": 2,
+            "parent": 0,
+            "name": "worker.api-load",
+            "startMs": 309.142172,
+            "endMs": 309.158905,
+            "inclusiveMs": 0.016732999999987896,
+            "childMs": 0,
+            "exclusiveMs": 0.016732999999987896,
+            "incomplete": false
+          },
+          {
+            "id": 3,
+            "parent": 0,
+            "name": "worker.compile",
+            "startMs": 309.172901,
+            "endMs": 683.950382,
+            "inclusiveMs": 374.777481,
+            "childMs": 374.525163,
+            "exclusiveMs": 0.2523180000000025,
+            "incomplete": false
+          },
+          {
+            "id": 4,
+            "parent": 3,
+            "name": "typescript.book-load",
+            "startMs": 309.307621,
+            "endMs": 465.295687,
+            "inclusiveMs": 155.988066,
+            "childMs": 0,
+            "exclusiveMs": 155.988066,
+            "incomplete": false
+          },
+          {
+            "id": 5,
+            "parent": 3,
+            "name": "typescript.book-valid",
+            "startMs": 465.32519299999996,
+            "endMs": 629.9221389999999,
+            "inclusiveMs": 164.596946,
+            "childMs": 0,
+            "exclusiveMs": 164.596946,
+            "incomplete": false
+          },
+          {
+            "id": 6,
+            "parent": 3,
+            "name": "typescript.js-lib",
+            "startMs": 629.955569,
+            "endMs": 683.89572,
+            "inclusiveMs": 53.940151000000014,
+            "childMs": 0,
+            "exclusiveMs": 53.940151000000014,
+            "incomplete": false
+          }
+        ],
+        "aggregate": [
+          {
+            "name": "worker.first-window",
+            "calls": 1,
+            "inclusiveMs": 658.733793,
+            "exclusiveMs": 0.45677899999998317,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.host-import",
+            "calls": 1,
+            "inclusiveMs": 283.4828,
+            "exclusiveMs": 283.4828,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.api-load",
+            "calls": 1,
+            "inclusiveMs": 0.016732999999987896,
+            "exclusiveMs": 0.016732999999987896,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.compile",
+            "calls": 1,
+            "inclusiveMs": 374.777481,
+            "exclusiveMs": 0.2523180000000025,
+            "incomplete": 0
+          },
+          {
+            "name": "typescript.book-load",
+            "calls": 1,
+            "inclusiveMs": 155.988066,
+            "exclusiveMs": 155.988066,
+            "incomplete": 0
+          },
+          {
+            "name": "typescript.book-valid",
+            "calls": 1,
+            "inclusiveMs": 164.596946,
+            "exclusiveMs": 164.596946,
+            "incomplete": 0
+          },
+          {
+            "name": "typescript.js-lib",
+            "calls": 1,
+            "inclusiveMs": 53.940151000000014,
+            "exclusiveMs": 53.940151000000014,
+            "incomplete": 0
+          }
+        ],
+        "rootMs": 658.733793,
+        "exclusiveMs": 658.733793,
+        "incomplete": 0
+      }
+    },
+    {
+      "case": "test-map-set-ops",
+      "role": "baseline",
+      "sample": 0,
+      "result": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stages01/test-map-set-ops-0-baseline.result.json",
+        "sha256": "87a3ad674f48bf72074ea128c9c782ed2a5a3e88ed5f2616747e6953e1195501"
+      },
+      "image": {
+        "kind": "direct",
+        "role": "baseline",
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "sha256": "e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/build/typed/snapshots/06e828e5ccef453057af912cfd1701c9a8896b28ac9974991b34006f714d70b3/compiler.bend",
+          "sha256": "0ebe491e727721857ce981ff5a2167a52d1e040f5674915a3349fea33bed8ed5"
+        },
+        "emission": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state09/bootstrap/full/report.json",
+          "sha256": "287ca58f72272c98e8ceec057b886c7f4d5cbb3927a2231225837c45affdaefb"
+        },
+        "checkedGenerator": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/attempt.json",
+          "sha256": "82379c94f3eec0bea44afb8a3c2ae8323de731dfa34c85da775d199ce4fb87cf"
+        },
+        "strictExact": true,
+        "diagnosticDerivation": null,
+        "productionQualified": false,
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime.mjs",
+          "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+        },
+        "directRuntime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/src/runtime/js/direct.mjs",
+          "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/baseline-state09/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+          "sha256": "345248c51b0337402d8d0bccf7bea9d8cd72b081f4e6f7e0a313031e3df958a8"
+        }
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stages01/test-map-set-ops-0-baseline.mjs",
+        "sha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd",
+        "bytes": 132866
+      },
+      "firstRequestMs": 1184.540887,
+      "combinedMs": 1311.7196800000002,
+      "instrumentedCompileWindowMs": 1184.5547740000002,
+      "exclusiveSumMs": 1184.5547740000002,
+      "cacheInclusiveMs": 113.44672099999997,
+      "activePaths": {
+        "api.f-prefix-complete-ready-seed": 1,
+        "api.f-prefix-complete-seed": 0,
+        "api.f-prefix-complete-source": 1,
+        "api.f-prefix-graph-trace": 1,
+        "api.check-program-diagnostic-world": 1,
+        "api.check-program-diagnostic-prefix": 0,
+        "api.jd-plan-selected": 1,
+        "api.jd-plan-library": 1,
+        "api.jd-reach-selected": 0,
+        "api.jd-library-selected": 0
+      },
+      "abiExclusiveMs": {
+        "encode": 0,
+        "invoke": 0,
+        "decode": 0
+      },
+      "compileStages": [
+        {
+          "name": "api.jd-plan-selected",
+          "calls": 1,
+          "exclusiveMs": 349.6455349999999,
+          "inclusiveMs": 349.6455349999999
+        },
+        {
+          "name": "api.f-prefix-complete-source",
+          "calls": 1,
+          "exclusiveMs": 190.178002,
+          "inclusiveMs": 190.178002
+        },
+        {
+          "name": "api.check-program-diagnostic-world",
+          "calls": 1,
+          "exclusiveMs": 160.24862800000005,
+          "inclusiveMs": 160.24862800000005
+        },
+        {
+          "name": "api.annotate-selected",
+          "calls": 1,
+          "exclusiveMs": 88.91856699999994,
+          "inclusiveMs": 88.91856699999994
+        },
+        {
+          "name": "api.jd-plan-library",
+          "calls": 1,
+          "exclusiveMs": 78.48327300000005,
+          "inclusiveMs": 78.48327300000005
+        },
+        {
+          "name": "driver.graph-book-decode",
+          "calls": 1,
+          "exclusiveMs": 65.57616300000001,
+          "inclusiveMs": 65.57616300000001
+        },
+        {
+          "name": "api.j-layout-error",
+          "calls": 1,
+          "exclusiveMs": 53.288430999999946,
+          "inclusiveMs": 53.288430999999946
+        },
+        {
+          "name": "driver.graph-prepared-decode",
+          "calls": 1,
+          "exclusiveMs": 35.478790000000004,
+          "inclusiveMs": 35.478790000000004
+        },
+        {
+          "name": "api.jd-stops",
+          "calls": 1,
+          "exclusiveMs": 31.29679699999997,
+          "inclusiveMs": 31.29679699999997
+        },
+        {
+          "name": "api.reach-book",
+          "calls": 1,
+          "exclusiveMs": 30.097831999999926,
+          "inclusiveMs": 30.097831999999926
+        },
+        {
+          "name": "api.f-prefix-graph-trace",
+          "calls": 1,
+          "exclusiveMs": 22.246757000000002,
+          "inclusiveMs": 22.246757000000002
+        },
+        {
+          "name": "driver.base-identity",
+          "calls": 1,
+          "exclusiveMs": 12.39035100000001,
+          "inclusiveMs": 12.405507
+        },
+        {
+          "name": "driver.span-validation",
+          "calls": 1,
+          "exclusiveMs": 11.927209000000062,
+          "inclusiveMs": 11.927209000000062
+        },
+        {
+          "name": "api.f-source-header",
+          "calls": 1,
+          "exclusiveMs": 10.507174999999961,
+          "inclusiveMs": 10.507174999999961
+        },
+        {
+          "name": "api.driver-emit-owned",
+          "calls": 1,
+          "exclusiveMs": 9.660374000000047,
+          "inclusiveMs": 9.660374000000047
+        },
+        {
+          "name": "api.book-context",
+          "calls": 1,
+          "exclusiveMs": 7.816263000000049,
+          "inclusiveMs": 7.816263000000049
+        },
+        {
+          "name": "driver.checked-state-shape",
+          "calls": 1,
+          "exclusiveMs": 7.553629999999998,
+          "inclusiveMs": 7.553629999999998
+        },
+        {
+          "name": "api.jd-roots",
+          "calls": 1,
+          "exclusiveMs": 5.620965999999953,
+          "inclusiveMs": 5.620965999999953
+        },
+        {
+          "name": "driver.inspect",
+          "calls": 1,
+          "exclusiveMs": 3.332880000000614,
+          "inclusiveMs": 1183.478033
+        },
+        {
+          "name": "driver.graph-book-digest",
+          "calls": 1,
+          "exclusiveMs": 2.5275720000000206,
+          "inclusiveMs": 2.5275720000000206
+        },
+        {
+          "name": "driver.source-graph",
+          "calls": 1,
+          "exclusiveMs": 1.76006000000001,
+          "inclusiveMs": 238.00500999999997
+        },
+        {
+          "name": "worker.compile",
+          "calls": 1,
+          "exclusiveMs": 1.0767410000000837,
+          "inclusiveMs": 1184.5547740000002
+        },
+        {
+          "name": "driver.cache-graph-decode",
+          "calls": 1,
+          "exclusiveMs": 0.9591619999999921,
+          "inclusiveMs": 104.54168700000002
+        },
+        {
+          "name": "api.f-prefix-complete-ready-seed",
+          "calls": 1,
+          "exclusiveMs": 0.9102920000000267,
+          "inclusiveMs": 0.9102920000000267
+        },
+        {
+          "name": "driver.base-cache",
+          "calls": 1,
+          "exclusiveMs": 0.6739919999999415,
+          "inclusiveMs": 113.44672099999997
+        },
+        {
+          "name": "driver.api-load",
+          "calls": 1,
+          "exclusiveMs": 0.3454250000000343,
+          "inclusiveMs": 0.36865000000000236
+        },
+        {
+          "name": "api.jd-modules",
+          "calls": 1,
+          "exclusiveMs": 0.21862099999998463,
+          "inclusiveMs": 0.21862099999998463
+        },
+        {
+          "name": "driver.cache-decode",
+          "calls": 1,
+          "exclusiveMs": 0.19483500000001186,
+          "inclusiveMs": 104.79494400000004
+        },
+        {
+          "name": "api.jd-foreign-paths",
+          "calls": 1,
+          "exclusiveMs": 0.19446999999991021,
+          "inclusiveMs": 0.19446999999991021
+        },
+        {
+          "name": "driver.checked-state-admission",
+          "calls": 1,
+          "exclusiveMs": 0.18438699999995833,
+          "inclusiveMs": 7.738016999999957
+        },
+        {
+          "name": "api.f-source-completed",
+          "calls": 1,
+          "exclusiveMs": 0.17007599999999456,
+          "inclusiveMs": 0.17007599999999456
+        },
+        {
+          "name": "driver.cache-read",
+          "calls": 1,
+          "exclusiveMs": 0.16410300000001143,
+          "inclusiveMs": 0.16410300000001143
+        },
+        {
+          "name": "api.jd-foreign-error",
+          "calls": 1,
+          "exclusiveMs": 0.14483499999982996,
+          "inclusiveMs": 0.14483499999982996
+        },
+        {
+          "name": "api.driver-has-main",
+          "calls": 1,
+          "exclusiveMs": 0.10679199999992761,
+          "inclusiveMs": 0.10679199999992761
+        },
+        {
+          "name": "api.f-source-located",
+          "calls": 3,
+          "exclusiveMs": 0.10433399999999438,
+          "inclusiveMs": 0.10433399999999438
+        },
+        {
+          "name": "api.f-import-namespace-at",
+          "calls": 1,
+          "exclusiveMs": 0.09528999999997723,
+          "inclusiveMs": 0.09528999999997723
+        },
+        {
+          "name": "api.f-prefix-graph-empty",
+          "calls": 1,
+          "exclusiveMs": 0.07452200000000175,
+          "inclusiveMs": 0.07452200000000175
+        },
+        {
+          "name": "driver.cache-header-parse",
+          "calls": 1,
+          "exclusiveMs": 0.0584220000000073,
+          "inclusiveMs": 0.0584220000000073
+        },
+        {
+          "name": "driver.cache-validation",
+          "calls": 1,
+          "exclusiveMs": 0.05621800000000121,
+          "inclusiveMs": 0.05621800000000121
+        },
+        {
+          "name": "api.jd-plan-error",
+          "calls": 1,
+          "exclusiveMs": 0.053881999999930486,
+          "inclusiveMs": 0.053881999999930486
+        },
+        {
+          "name": "api.compiler-check-result-abi",
+          "calls": 1,
+          "exclusiveMs": 0.04170299999998406,
+          "inclusiveMs": 0.04170299999998406
+        },
+        {
+          "name": "api.jd-plan-defs",
+          "calls": 1,
+          "exclusiveMs": 0.04067200000008597,
+          "inclusiveMs": 0.04067200000008597
+        },
+        {
+          "name": "api.compiler-term-abi",
+          "calls": 3,
+          "exclusiveMs": 0.037587999999914246,
+          "inclusiveMs": 0.037587999999914246
+        },
+        {
+          "name": "api.compiler-load-abi",
+          "calls": 3,
+          "exclusiveMs": 0.022444000000007236,
+          "inclusiveMs": 0.022444000000007236
+        },
+        {
+          "name": "driver.foreign-resolver",
+          "calls": 1,
+          "exclusiveMs": 0.020323000000189495,
+          "inclusiveMs": 0.020323000000189495
+        },
+        {
+          "name": "api.compiler-span-abi",
+          "calls": 2,
+          "exclusiveMs": 0.01638199999996459,
+          "inclusiveMs": 0.01638199999996459
+        },
+        {
+          "name": "driver.foreign-source",
+          "calls": 1,
+          "exclusiveMs": 0.014560999999957858,
+          "inclusiveMs": 0.014560999999957858
+        },
+        {
+          "name": "driver.fresh-state-admission",
+          "calls": 1,
+          "exclusiveMs": 0.007984999999962383,
+          "inclusiveMs": 0.007984999999962383
+        },
+        {
+          "name": "driver.frontend-state-admission",
+          "calls": 1,
+          "exclusiveMs": 0.006172000000049138,
+          "inclusiveMs": 0.006172000000049138
+        },
+        {
+          "name": "driver.world-admission",
+          "calls": 1,
+          "exclusiveMs": 0.005290000000002237,
+          "inclusiveMs": 0.005290000000002237
+        }
+      ],
+      "fullStageClock": {
+        "kind": "phase62-exclusive-stage-clock",
+        "version": 1,
+        "diagnosticOnly": true,
+        "timingScope": "Monotonic wall time including synchronous hook overhead; never add nested inclusive intervals.",
+        "events": [
+          {
+            "id": 0,
+            "parent": null,
+            "name": "worker.first-window",
+            "startMs": 79.294141,
+            "endMs": 1391.474509,
+            "inclusiveMs": 1312.180368,
+            "childMs": 1311.8729470000003,
+            "exclusiveMs": 0.30742099999974926,
+            "incomplete": false
+          },
+          {
+            "id": 1,
+            "parent": 0,
+            "name": "worker.host-import",
+            "startMs": 79.45321799999999,
+            "endMs": 85.81607500000001,
+            "inclusiveMs": 6.3628570000000195,
+            "childMs": 0,
+            "exclusiveMs": 6.3628570000000195,
+            "incomplete": false
+          },
+          {
+            "id": 2,
+            "parent": 0,
+            "name": "worker.api-load",
+            "startMs": 85.943287,
+            "endMs": 206.898603,
+            "inclusiveMs": 120.95531600000001,
+            "childMs": 120.72584799999998,
+            "exclusiveMs": 0.22946800000002554,
+            "incomplete": false
+          },
+          {
+            "id": 3,
+            "parent": 2,
+            "name": "driver.api-load",
+            "startMs": 86.144979,
+            "endMs": 206.870827,
+            "inclusiveMs": 120.72584799999998,
+            "childMs": 0.2784470000000283,
+            "exclusiveMs": 120.44740099999996,
+            "incomplete": false
+          },
+          {
+            "id": 4,
+            "parent": 3,
+            "name": "api.compiler-term-abi",
+            "startMs": 206.462214,
+            "endMs": 206.63224699999998,
+            "inclusiveMs": 0.17003299999998944,
+            "childMs": 0,
+            "exclusiveMs": 0.17003299999998944,
+            "incomplete": false
+          },
+          {
+            "id": 5,
+            "parent": 3,
+            "name": "api.compiler-span-abi",
+            "startMs": 206.670606,
+            "endMs": 206.730284,
+            "inclusiveMs": 0.05967800000001944,
+            "childMs": 0,
+            "exclusiveMs": 0.05967800000001944,
+            "incomplete": false
+          },
+          {
+            "id": 6,
+            "parent": 3,
+            "name": "api.compiler-load-abi",
+            "startMs": 206.80376099999998,
+            "endMs": 206.852497,
+            "inclusiveMs": 0.04873600000001943,
+            "childMs": 0,
+            "exclusiveMs": 0.04873600000001943,
+            "incomplete": false
+          },
+          {
+            "id": 7,
+            "parent": 0,
+            "name": "worker.compile",
+            "startMs": 206.90978500000003,
+            "endMs": 1391.464559,
+            "inclusiveMs": 1184.5547740000002,
+            "childMs": 1183.478033,
+            "exclusiveMs": 1.0767410000000837,
+            "incomplete": false
+          },
+          {
+            "id": 8,
+            "parent": 7,
+            "name": "driver.inspect",
+            "startMs": 207.821857,
+            "endMs": 1391.29989,
+            "inclusiveMs": 1183.478033,
+            "childMs": 1180.1451529999995,
+            "exclusiveMs": 3.332880000000614,
+            "incomplete": false
+          },
+          {
+            "id": 9,
+            "parent": 8,
+            "name": "driver.api-load",
+            "startMs": 207.86527600000002,
+            "endMs": 208.23392600000003,
+            "inclusiveMs": 0.36865000000000236,
+            "childMs": 0.023224999999968077,
+            "exclusiveMs": 0.3454250000000343,
+            "incomplete": false
+          },
+          {
+            "id": 10,
+            "parent": 9,
+            "name": "api.compiler-term-abi",
+            "startMs": 208.04645100000002,
+            "endMs": 208.060081,
+            "inclusiveMs": 0.013629999999977827,
+            "childMs": 0,
+            "exclusiveMs": 0.013629999999977827,
+            "incomplete": false
+          },
+          {
+            "id": 11,
+            "parent": 9,
+            "name": "api.compiler-span-abi",
+            "startMs": 208.07688900000002,
+            "endMs": 208.08212,
+            "inclusiveMs": 0.005230999999980668,
+            "childMs": 0,
+            "exclusiveMs": 0.005230999999980668,
+            "incomplete": false
+          },
+          {
+            "id": 12,
+            "parent": 9,
+            "name": "api.compiler-load-abi",
+            "startMs": 208.094368,
+            "endMs": 208.098732,
+            "inclusiveMs": 0.0043640000000095824,
+            "childMs": 0,
+            "exclusiveMs": 0.0043640000000095824,
+            "incomplete": false
+          },
+          {
+            "id": 13,
+            "parent": 8,
+            "name": "api.compiler-load-abi",
+            "startMs": 208.304293,
+            "endMs": 208.31103299999998,
+            "inclusiveMs": 0.006739999999979318,
+            "childMs": 0,
+            "exclusiveMs": 0.006739999999979318,
+            "incomplete": false
+          },
+          {
+            "id": 14,
+            "parent": 8,
+            "name": "driver.base-identity",
+            "startMs": 208.42205600000003,
+            "endMs": 220.82756300000003,
+            "inclusiveMs": 12.405507,
+            "childMs": 0.0151559999999904,
+            "exclusiveMs": 12.39035100000001,
+            "incomplete": false
+          },
+          {
+            "id": 15,
+            "parent": 14,
+            "name": "api.compiler-term-abi",
+            "startMs": 220.74676300000002,
+            "endMs": 220.761919,
+            "inclusiveMs": 0.0151559999999904,
+            "childMs": 0,
+            "exclusiveMs": 0.0151559999999904,
+            "incomplete": false
+          },
+          {
+            "id": 16,
+            "parent": 8,
+            "name": "driver.base-cache",
+            "startMs": 221.08468100000002,
+            "endMs": 334.53140199999996,
+            "inclusiveMs": 113.44672099999997,
+            "childMs": 112.77272900000003,
+            "exclusiveMs": 0.6739919999999415,
+            "incomplete": false
+          },
+          {
+            "id": 17,
+            "parent": 16,
+            "name": "driver.cache-read",
+            "startMs": 221.10806499999998,
+            "endMs": 221.272168,
+            "inclusiveMs": 0.16410300000001143,
+            "childMs": 0,
+            "exclusiveMs": 0.16410300000001143,
+            "incomplete": false
+          },
+          {
+            "id": 18,
+            "parent": 16,
+            "name": "driver.cache-decode",
+            "startMs": 221.54448599999998,
+            "endMs": 326.33943,
+            "inclusiveMs": 104.79494400000004,
+            "childMs": 104.60010900000003,
+            "exclusiveMs": 0.19483500000001186,
+            "incomplete": false
+          },
+          {
+            "id": 19,
+            "parent": 18,
+            "name": "driver.cache-header-parse",
+            "startMs": 221.56060699999998,
+            "endMs": 221.61902899999998,
+            "inclusiveMs": 0.0584220000000073,
+            "childMs": 0,
+            "exclusiveMs": 0.0584220000000073,
+            "incomplete": false
+          },
+          {
+            "id": 20,
+            "parent": 18,
+            "name": "driver.cache-graph-decode",
+            "startMs": 221.792117,
+            "endMs": 326.333804,
+            "inclusiveMs": 104.54168700000002,
+            "childMs": 103.58252500000003,
+            "exclusiveMs": 0.9591619999999921,
+            "incomplete": false
+          },
+          {
+            "id": 21,
+            "parent": 20,
+            "name": "driver.graph-book-digest",
+            "startMs": 221.85121,
+            "endMs": 224.37878200000003,
+            "inclusiveMs": 2.5275720000000206,
+            "childMs": 0,
+            "exclusiveMs": 2.5275720000000206,
+            "incomplete": false
+          },
+          {
+            "id": 22,
+            "parent": 20,
+            "name": "driver.graph-book-decode",
+            "startMs": 224.401845,
+            "endMs": 289.97800800000005,
+            "inclusiveMs": 65.57616300000001,
+            "childMs": 0,
+            "exclusiveMs": 65.57616300000001,
+            "incomplete": false
+          },
+          {
+            "id": 23,
+            "parent": 20,
+            "name": "driver.graph-prepared-decode",
+            "startMs": 290.81553699999995,
+            "endMs": 326.29432699999995,
+            "inclusiveMs": 35.478790000000004,
+            "childMs": 0,
+            "exclusiveMs": 35.478790000000004,
+            "incomplete": false
+          },
+          {
+            "id": 24,
+            "parent": 16,
+            "name": "driver.cache-validation",
+            "startMs": 326.48307,
+            "endMs": 326.53928800000006,
+            "inclusiveMs": 0.05621800000000121,
+            "childMs": 0,
+            "exclusiveMs": 0.05621800000000121,
+            "incomplete": false
+          },
+          {
+            "id": 25,
+            "parent": 16,
+            "name": "driver.checked-state-admission",
+            "startMs": 326.60143000000005,
+            "endMs": 334.33944699999995,
+            "inclusiveMs": 7.738016999999957,
+            "childMs": 7.553629999999998,
+            "exclusiveMs": 0.18438699999995833,
+            "incomplete": false
+          },
+          {
+            "id": 26,
+            "parent": 25,
+            "name": "driver.checked-state-shape",
+            "startMs": 326.71867999999995,
+            "endMs": 334.27230999999995,
+            "inclusiveMs": 7.553629999999998,
+            "childMs": 0,
+            "exclusiveMs": 7.553629999999998,
+            "incomplete": false
+          },
+          {
+            "id": 27,
+            "parent": 16,
+            "name": "driver.fresh-state-admission",
+            "startMs": 334.399634,
+            "endMs": 334.40761899999995,
+            "inclusiveMs": 0.007984999999962383,
+            "childMs": 0,
+            "exclusiveMs": 0.007984999999962383,
+            "incomplete": false
+          },
+          {
+            "id": 28,
+            "parent": 16,
+            "name": "driver.world-admission",
+            "startMs": 334.457725,
+            "endMs": 334.46301500000004,
+            "inclusiveMs": 0.005290000000002237,
+            "childMs": 0,
+            "exclusiveMs": 0.005290000000002237,
+            "incomplete": false
+          },
+          {
+            "id": 29,
+            "parent": 16,
+            "name": "driver.frontend-state-admission",
+            "startMs": 334.507293,
+            "endMs": 334.513465,
+            "inclusiveMs": 0.006172000000049138,
+            "childMs": 0,
+            "exclusiveMs": 0.006172000000049138,
+            "incomplete": false
+          },
+          {
+            "id": 30,
+            "parent": 8,
+            "name": "driver.source-graph",
+            "startMs": 334.903586,
+            "endMs": 572.908596,
+            "inclusiveMs": 238.00500999999997,
+            "childMs": 236.24494999999996,
+            "exclusiveMs": 1.76006000000001,
+            "incomplete": false
+          },
+          {
+            "id": 31,
+            "parent": 30,
+            "name": "api.compiler-load-abi",
+            "startMs": 334.92810899999995,
+            "endMs": 334.93944899999997,
+            "inclusiveMs": 0.011340000000018335,
+            "childMs": 0,
+            "exclusiveMs": 0.011340000000018335,
+            "incomplete": false
+          },
+          {
+            "id": 32,
+            "parent": 30,
+            "name": "api.compiler-span-abi",
+            "startMs": 334.95657000000006,
+            "endMs": 334.967721,
+            "inclusiveMs": 0.011150999999983924,
+            "childMs": 0,
+            "exclusiveMs": 0.011150999999983924,
+            "incomplete": false
+          },
+          {
+            "id": 33,
+            "parent": 30,
+            "name": "api.f-prefix-graph-empty",
+            "startMs": 335.00043800000003,
+            "endMs": 335.07496000000003,
+            "inclusiveMs": 0.07452200000000175,
+            "childMs": 0,
+            "exclusiveMs": 0.07452200000000175,
+            "incomplete": false
+          },
+          {
+            "id": 34,
+            "parent": 30,
+            "name": "api.f-source-located",
+            "startMs": 335.78696,
+            "endMs": 335.868522,
+            "inclusiveMs": 0.08156200000001945,
+            "childMs": 0,
+            "exclusiveMs": 0.08156200000001945,
+            "incomplete": false
+          },
+          {
+            "id": 35,
+            "parent": 30,
+            "name": "api.f-source-header",
+            "startMs": 335.886302,
+            "endMs": 346.39347699999996,
+            "inclusiveMs": 10.507174999999961,
+            "childMs": 0,
+            "exclusiveMs": 10.507174999999961,
+            "incomplete": false
+          },
+          {
+            "id": 36,
+            "parent": 30,
+            "name": "api.f-source-located",
+            "startMs": 346.659994,
+            "endMs": 346.67163800000003,
+            "inclusiveMs": 0.011643999999989774,
+            "childMs": 0,
+            "exclusiveMs": 0.011643999999989774,
+            "incomplete": false
+          },
+          {
+            "id": 37,
+            "parent": 30,
+            "name": "api.f-import-namespace-at",
+            "startMs": 346.71666000000005,
+            "endMs": 346.81195,
+            "inclusiveMs": 0.09528999999997723,
+            "childMs": 0,
+            "exclusiveMs": 0.09528999999997723,
+            "incomplete": false
+          },
+          {
+            "id": 38,
+            "parent": 30,
+            "name": "api.f-prefix-complete-ready-seed",
+            "startMs": 346.821324,
+            "endMs": 347.73161600000003,
+            "inclusiveMs": 0.9102920000000267,
+            "childMs": 0,
+            "exclusiveMs": 0.9102920000000267,
+            "incomplete": false
+          },
+          {
+            "id": 39,
+            "parent": 30,
+            "name": "api.f-prefix-complete-source",
+            "startMs": 347.785518,
+            "endMs": 537.96352,
+            "inclusiveMs": 190.178002,
+            "childMs": 0,
+            "exclusiveMs": 190.178002,
+            "incomplete": false
+          },
+          {
+            "id": 40,
+            "parent": 30,
+            "name": "api.compiler-term-abi",
+            "startMs": 538.0156380000001,
+            "endMs": 538.02444,
+            "inclusiveMs": 0.00880199999994602,
+            "childMs": 0,
+            "exclusiveMs": 0.00880199999994602,
+            "incomplete": false
+          },
+          {
+            "id": 41,
+            "parent": 30,
+            "name": "driver.span-validation",
+            "startMs": 538.174762,
+            "endMs": 550.101971,
+            "inclusiveMs": 11.927209000000062,
+            "childMs": 0,
+            "exclusiveMs": 11.927209000000062,
+            "incomplete": false
+          },
+          {
+            "id": 42,
+            "parent": 30,
+            "name": "api.f-source-completed",
+            "startMs": 550.131172,
+            "endMs": 550.301248,
+            "inclusiveMs": 0.17007599999999456,
+            "childMs": 0,
+            "exclusiveMs": 0.17007599999999456,
+            "incomplete": false
+          },
+          {
+            "id": 43,
+            "parent": 30,
+            "name": "api.f-source-located",
+            "startMs": 550.311532,
+            "endMs": 550.32266,
+            "inclusiveMs": 0.01112799999998515,
+            "childMs": 0,
+            "exclusiveMs": 0.01112799999998515,
+            "incomplete": false
+          },
+          {
+            "id": 44,
+            "parent": 30,
+            "name": "api.f-prefix-graph-trace",
+            "startMs": 550.630618,
+            "endMs": 572.877375,
+            "inclusiveMs": 22.246757000000002,
+            "childMs": 0,
+            "exclusiveMs": 22.246757000000002,
+            "incomplete": false
+          },
+          {
+            "id": 45,
+            "parent": 8,
+            "name": "api.compiler-check-result-abi",
+            "startMs": 572.938844,
+            "endMs": 572.980547,
+            "inclusiveMs": 0.04170299999998406,
+            "childMs": 0,
+            "exclusiveMs": 0.04170299999998406,
+            "incomplete": false
+          },
+          {
+            "id": 46,
+            "parent": 8,
+            "name": "api.check-program-diagnostic-world",
+            "startMs": 573.01036,
+            "endMs": 733.258988,
+            "inclusiveMs": 160.24862800000005,
+            "childMs": 0,
+            "exclusiveMs": 160.24862800000005,
+            "incomplete": false
+          },
+          {
+            "id": 47,
+            "parent": 8,
+            "name": "api.driver-has-main",
+            "startMs": 733.298657,
+            "endMs": 733.405449,
+            "inclusiveMs": 0.10679199999992761,
+            "childMs": 0,
+            "exclusiveMs": 0.10679199999992761,
+            "incomplete": false
+          },
+          {
+            "id": 48,
+            "parent": 8,
+            "name": "api.driver-emit-owned",
+            "startMs": 733.452316,
+            "endMs": 743.11269,
+            "inclusiveMs": 9.660374000000047,
+            "childMs": 0,
+            "exclusiveMs": 9.660374000000047,
+            "incomplete": false
+          },
+          {
+            "id": 49,
+            "parent": 8,
+            "name": "api.book-context",
+            "startMs": 743.132663,
+            "endMs": 750.948926,
+            "inclusiveMs": 7.816263000000049,
+            "childMs": 0,
+            "exclusiveMs": 7.816263000000049,
+            "incomplete": false
+          },
+          {
+            "id": 50,
+            "parent": 8,
+            "name": "api.jd-roots",
+            "startMs": 750.9707070000001,
+            "endMs": 756.591673,
+            "inclusiveMs": 5.620965999999953,
+            "childMs": 0,
+            "exclusiveMs": 5.620965999999953,
+            "incomplete": false
+          },
+          {
+            "id": 51,
+            "parent": 8,
+            "name": "api.jd-stops",
+            "startMs": 756.6114640000001,
+            "endMs": 787.908261,
+            "inclusiveMs": 31.29679699999997,
+            "childMs": 0,
+            "exclusiveMs": 31.29679699999997,
+            "incomplete": false
+          },
+          {
+            "id": 52,
+            "parent": 8,
+            "name": "api.reach-book",
+            "startMs": 787.9503940000001,
+            "endMs": 818.048226,
+            "inclusiveMs": 30.097831999999926,
+            "childMs": 0,
+            "exclusiveMs": 30.097831999999926,
+            "incomplete": false
+          },
+          {
+            "id": 53,
+            "parent": 8,
+            "name": "api.annotate-selected",
+            "startMs": 818.090448,
+            "endMs": 907.009015,
+            "inclusiveMs": 88.91856699999994,
+            "childMs": 0,
+            "exclusiveMs": 88.91856699999994,
+            "incomplete": false
+          },
+          {
+            "id": 54,
+            "parent": 8,
+            "name": "api.jd-plan-selected",
+            "startMs": 907.0862470000001,
+            "endMs": 1256.7317819999998,
+            "inclusiveMs": 349.6455349999999,
+            "childMs": 0,
+            "exclusiveMs": 349.6455349999999,
+            "incomplete": false
+          },
+          {
+            "id": 55,
+            "parent": 8,
+            "name": "api.jd-plan-error",
+            "startMs": 1256.758991,
+            "endMs": 1256.8128729999999,
+            "inclusiveMs": 0.053881999999930486,
+            "childMs": 0,
+            "exclusiveMs": 0.053881999999930486,
+            "incomplete": false
+          },
+          {
+            "id": 56,
+            "parent": 8,
+            "name": "api.jd-plan-defs",
+            "startMs": 1256.820783,
+            "endMs": 1256.861455,
+            "inclusiveMs": 0.04067200000008597,
+            "childMs": 0,
+            "exclusiveMs": 0.04067200000008597,
+            "incomplete": false
+          },
+          {
+            "id": 57,
+            "parent": 8,
+            "name": "api.jd-foreign-error",
+            "startMs": 1256.870052,
+            "endMs": 1257.0148869999998,
+            "inclusiveMs": 0.14483499999982996,
+            "childMs": 0,
+            "exclusiveMs": 0.14483499999982996,
+            "incomplete": false
+          },
+          {
+            "id": 58,
+            "parent": 8,
+            "name": "api.j-layout-error",
+            "startMs": 1257.04885,
+            "endMs": 1310.3372809999998,
+            "inclusiveMs": 53.288430999999946,
+            "childMs": 0,
+            "exclusiveMs": 53.288430999999946,
+            "incomplete": false
+          },
+          {
+            "id": 59,
+            "parent": 8,
+            "name": "api.jd-foreign-paths",
+            "startMs": 1310.383877,
+            "endMs": 1310.578347,
+            "inclusiveMs": 0.19446999999991021,
+            "childMs": 0,
+            "exclusiveMs": 0.19446999999991021,
+            "incomplete": false
+          },
+          {
+            "id": 60,
+            "parent": 8,
+            "name": "driver.foreign-resolver",
+            "startMs": 1310.7131869999998,
+            "endMs": 1310.73351,
+            "inclusiveMs": 0.020323000000189495,
+            "childMs": 0,
+            "exclusiveMs": 0.020323000000189495,
+            "incomplete": false
+          },
+          {
+            "id": 61,
+            "parent": 8,
+            "name": "driver.foreign-source",
+            "startMs": 1310.838026,
+            "endMs": 1310.8525869999999,
+            "inclusiveMs": 0.014560999999957858,
+            "childMs": 0,
+            "exclusiveMs": 0.014560999999957858,
+            "incomplete": false
+          },
+          {
+            "id": 62,
+            "parent": 8,
+            "name": "api.jd-modules",
+            "startMs": 1310.8596459999999,
+            "endMs": 1311.0782669999999,
+            "inclusiveMs": 0.21862099999998463,
+            "childMs": 0,
+            "exclusiveMs": 0.21862099999998463,
+            "incomplete": false
+          },
+          {
+            "id": 63,
+            "parent": 8,
+            "name": "api.jd-plan-library",
+            "startMs": 1311.0876059999998,
+            "endMs": 1389.5708789999999,
+            "inclusiveMs": 78.48327300000005,
+            "childMs": 0,
+            "exclusiveMs": 78.48327300000005,
+            "incomplete": false
+          }
+        ],
+        "aggregate": [
+          {
+            "name": "worker.first-window",
+            "calls": 1,
+            "inclusiveMs": 1312.180368,
+            "exclusiveMs": 0.30742099999974926,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.host-import",
+            "calls": 1,
+            "inclusiveMs": 6.3628570000000195,
+            "exclusiveMs": 6.3628570000000195,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.api-load",
+            "calls": 1,
+            "inclusiveMs": 120.95531600000001,
+            "exclusiveMs": 0.22946800000002554,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.api-load",
+            "calls": 2,
+            "inclusiveMs": 121.09449799999999,
+            "exclusiveMs": 120.79282599999999,
+            "incomplete": 0
+          },
+          {
+            "name": "api.compiler-term-abi",
+            "calls": 4,
+            "inclusiveMs": 0.2076209999999037,
+            "exclusiveMs": 0.2076209999999037,
+            "incomplete": 0
+          },
+          {
+            "name": "api.compiler-span-abi",
+            "calls": 3,
+            "inclusiveMs": 0.07605999999998403,
+            "exclusiveMs": 0.07605999999998403,
+            "incomplete": 0
+          },
+          {
+            "name": "api.compiler-load-abi",
+            "calls": 4,
+            "inclusiveMs": 0.07118000000002667,
+            "exclusiveMs": 0.07118000000002667,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.compile",
+            "calls": 1,
+            "inclusiveMs": 1184.5547740000002,
+            "exclusiveMs": 1.0767410000000837,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.inspect",
+            "calls": 1,
+            "inclusiveMs": 1183.478033,
+            "exclusiveMs": 3.332880000000614,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.base-identity",
+            "calls": 1,
+            "inclusiveMs": 12.405507,
+            "exclusiveMs": 12.39035100000001,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.base-cache",
+            "calls": 1,
+            "inclusiveMs": 113.44672099999997,
+            "exclusiveMs": 0.6739919999999415,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-read",
+            "calls": 1,
+            "inclusiveMs": 0.16410300000001143,
+            "exclusiveMs": 0.16410300000001143,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-decode",
+            "calls": 1,
+            "inclusiveMs": 104.79494400000004,
+            "exclusiveMs": 0.19483500000001186,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-header-parse",
+            "calls": 1,
+            "inclusiveMs": 0.0584220000000073,
+            "exclusiveMs": 0.0584220000000073,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-graph-decode",
+            "calls": 1,
+            "inclusiveMs": 104.54168700000002,
+            "exclusiveMs": 0.9591619999999921,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.graph-book-digest",
+            "calls": 1,
+            "inclusiveMs": 2.5275720000000206,
+            "exclusiveMs": 2.5275720000000206,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.graph-book-decode",
+            "calls": 1,
+            "inclusiveMs": 65.57616300000001,
+            "exclusiveMs": 65.57616300000001,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.graph-prepared-decode",
+            "calls": 1,
+            "inclusiveMs": 35.478790000000004,
+            "exclusiveMs": 35.478790000000004,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.cache-validation",
+            "calls": 1,
+            "inclusiveMs": 0.05621800000000121,
+            "exclusiveMs": 0.05621800000000121,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.checked-state-admission",
+            "calls": 1,
+            "inclusiveMs": 7.738016999999957,
+            "exclusiveMs": 0.18438699999995833,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.checked-state-shape",
+            "calls": 1,
+            "inclusiveMs": 7.553629999999998,
+            "exclusiveMs": 7.553629999999998,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.fresh-state-admission",
+            "calls": 1,
+            "inclusiveMs": 0.007984999999962383,
+            "exclusiveMs": 0.007984999999962383,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.world-admission",
+            "calls": 1,
+            "inclusiveMs": 0.005290000000002237,
+            "exclusiveMs": 0.005290000000002237,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.frontend-state-admission",
+            "calls": 1,
+            "inclusiveMs": 0.006172000000049138,
+            "exclusiveMs": 0.006172000000049138,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.source-graph",
+            "calls": 1,
+            "inclusiveMs": 238.00500999999997,
+            "exclusiveMs": 1.76006000000001,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-prefix-graph-empty",
+            "calls": 1,
+            "inclusiveMs": 0.07452200000000175,
+            "exclusiveMs": 0.07452200000000175,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-source-located",
+            "calls": 3,
+            "inclusiveMs": 0.10433399999999438,
+            "exclusiveMs": 0.10433399999999438,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-source-header",
+            "calls": 1,
+            "inclusiveMs": 10.507174999999961,
+            "exclusiveMs": 10.507174999999961,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-import-namespace-at",
+            "calls": 1,
+            "inclusiveMs": 0.09528999999997723,
+            "exclusiveMs": 0.09528999999997723,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-prefix-complete-ready-seed",
+            "calls": 1,
+            "inclusiveMs": 0.9102920000000267,
+            "exclusiveMs": 0.9102920000000267,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-prefix-complete-source",
+            "calls": 1,
+            "inclusiveMs": 190.178002,
+            "exclusiveMs": 190.178002,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.span-validation",
+            "calls": 1,
+            "inclusiveMs": 11.927209000000062,
+            "exclusiveMs": 11.927209000000062,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-source-completed",
+            "calls": 1,
+            "inclusiveMs": 0.17007599999999456,
+            "exclusiveMs": 0.17007599999999456,
+            "incomplete": 0
+          },
+          {
+            "name": "api.f-prefix-graph-trace",
+            "calls": 1,
+            "inclusiveMs": 22.246757000000002,
+            "exclusiveMs": 22.246757000000002,
+            "incomplete": 0
+          },
+          {
+            "name": "api.compiler-check-result-abi",
+            "calls": 1,
+            "inclusiveMs": 0.04170299999998406,
+            "exclusiveMs": 0.04170299999998406,
+            "incomplete": 0
+          },
+          {
+            "name": "api.check-program-diagnostic-world",
+            "calls": 1,
+            "inclusiveMs": 160.24862800000005,
+            "exclusiveMs": 160.24862800000005,
+            "incomplete": 0
+          },
+          {
+            "name": "api.driver-has-main",
+            "calls": 1,
+            "inclusiveMs": 0.10679199999992761,
+            "exclusiveMs": 0.10679199999992761,
+            "incomplete": 0
+          },
+          {
+            "name": "api.driver-emit-owned",
+            "calls": 1,
+            "inclusiveMs": 9.660374000000047,
+            "exclusiveMs": 9.660374000000047,
+            "incomplete": 0
+          },
+          {
+            "name": "api.book-context",
+            "calls": 1,
+            "inclusiveMs": 7.816263000000049,
+            "exclusiveMs": 7.816263000000049,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-roots",
+            "calls": 1,
+            "inclusiveMs": 5.620965999999953,
+            "exclusiveMs": 5.620965999999953,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-stops",
+            "calls": 1,
+            "inclusiveMs": 31.29679699999997,
+            "exclusiveMs": 31.29679699999997,
+            "incomplete": 0
+          },
+          {
+            "name": "api.reach-book",
+            "calls": 1,
+            "inclusiveMs": 30.097831999999926,
+            "exclusiveMs": 30.097831999999926,
+            "incomplete": 0
+          },
+          {
+            "name": "api.annotate-selected",
+            "calls": 1,
+            "inclusiveMs": 88.91856699999994,
+            "exclusiveMs": 88.91856699999994,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-plan-selected",
+            "calls": 1,
+            "inclusiveMs": 349.6455349999999,
+            "exclusiveMs": 349.6455349999999,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-plan-error",
+            "calls": 1,
+            "inclusiveMs": 0.053881999999930486,
+            "exclusiveMs": 0.053881999999930486,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-plan-defs",
+            "calls": 1,
+            "inclusiveMs": 0.04067200000008597,
+            "exclusiveMs": 0.04067200000008597,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-foreign-error",
+            "calls": 1,
+            "inclusiveMs": 0.14483499999982996,
+            "exclusiveMs": 0.14483499999982996,
+            "incomplete": 0
+          },
+          {
+            "name": "api.j-layout-error",
+            "calls": 1,
+            "inclusiveMs": 53.288430999999946,
+            "exclusiveMs": 53.288430999999946,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-foreign-paths",
+            "calls": 1,
+            "inclusiveMs": 0.19446999999991021,
+            "exclusiveMs": 0.19446999999991021,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.foreign-resolver",
+            "calls": 1,
+            "inclusiveMs": 0.020323000000189495,
+            "exclusiveMs": 0.020323000000189495,
+            "incomplete": 0
+          },
+          {
+            "name": "driver.foreign-source",
+            "calls": 1,
+            "inclusiveMs": 0.014560999999957858,
+            "exclusiveMs": 0.014560999999957858,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-modules",
+            "calls": 1,
+            "inclusiveMs": 0.21862099999998463,
+            "exclusiveMs": 0.21862099999998463,
+            "incomplete": 0
+          },
+          {
+            "name": "api.jd-plan-library",
+            "calls": 1,
+            "inclusiveMs": 78.48327300000005,
+            "exclusiveMs": 78.48327300000005,
+            "incomplete": 0
+          }
+        ],
+        "rootMs": 1312.180368,
+        "exclusiveMs": 1312.180368,
+        "incomplete": 0
+      }
+    },
+    {
+      "case": "test-map-set-ops",
+      "role": "typescript",
+      "sample": 0,
+      "result": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stages01/test-map-set-ops-0-typescript.result.json",
+        "sha256": "a47fa3cac5dc293fa79cbb2b891626a4124e98372e2807199d770253f4ac362d"
+      },
+      "image": null,
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state09-stages01/test-map-set-ops-0-typescript.mjs",
+        "sha256": "91812e3092688bdc609a2f9f21c1280120b8392eab7cd7148586702bf551e9bf",
+        "bytes": 69178
+      },
+      "firstRequestMs": 633.4742289999999,
+      "combinedMs": 896.362349,
+      "instrumentedCompileWindowMs": 633.490414,
+      "exclusiveSumMs": 633.4904140000001,
+      "cacheInclusiveMs": 0,
+      "activePaths": {
+        "api.f-prefix-complete-ready-seed": 0,
+        "api.f-prefix-complete-seed": 0,
+        "api.f-prefix-complete-source": 0,
+        "api.f-prefix-graph-trace": 0,
+        "api.check-program-diagnostic-world": 0,
+        "api.check-program-diagnostic-prefix": 0,
+        "api.jd-plan-selected": 0,
+        "api.jd-plan-library": 0,
+        "api.jd-reach-selected": 0,
+        "api.jd-library-selected": 0
+      },
+      "abiExclusiveMs": {
+        "encode": 0,
+        "invoke": 0,
+        "decode": 0
+      },
+      "compileStages": [
+        {
+          "name": "typescript.js-lib",
+          "calls": 1,
+          "exclusiveMs": 308.25444300000004,
+          "inclusiveMs": 308.25444300000004
+        },
+        {
+          "name": "typescript.book-valid",
+          "calls": 1,
+          "exclusiveMs": 171.54431699999998,
+          "inclusiveMs": 171.54431699999998
+        },
+        {
+          "name": "typescript.book-load",
+          "calls": 1,
+          "exclusiveMs": 153.456707,
+          "inclusiveMs": 153.456707
+        },
+        {
+          "name": "worker.compile",
+          "calls": 1,
+          "exclusiveMs": 0.23494700000003377,
+          "inclusiveMs": 633.490414
+        }
+      ],
+      "fullStageClock": {
+        "kind": "phase62-exclusive-stage-clock",
+        "version": 1,
+        "diagnosticOnly": true,
+        "timingScope": "Monotonic wall time including synchronous hook overhead; never add nested inclusive intervals.",
+        "events": [
+          {
+            "id": 0,
+            "parent": null,
+            "name": "worker.first-window",
+            "startMs": 19.509542999999994,
+            "endMs": 916.478793,
+            "inclusiveMs": 896.96925,
+            "childMs": 896.498261,
+            "exclusiveMs": 0.4709890000000314,
+            "incomplete": false
+          },
+          {
+            "id": 1,
+            "parent": 0,
+            "name": "worker.host-import",
+            "startMs": 19.688281000000003,
+            "endMs": 282.675265,
+            "inclusiveMs": 262.986984,
+            "childMs": 0,
+            "exclusiveMs": 262.986984,
+            "incomplete": false
+          },
+          {
+            "id": 2,
+            "parent": 0,
+            "name": "worker.api-load",
+            "startMs": 282.799327,
+            "endMs": 282.82019,
+            "inclusiveMs": 0.020863000000019838,
+            "childMs": 0,
+            "exclusiveMs": 0.020863000000019838,
+            "incomplete": false
+          },
+          {
+            "id": 3,
+            "parent": 0,
+            "name": "worker.compile",
+            "startMs": 282.835101,
+            "endMs": 916.325515,
+            "inclusiveMs": 633.490414,
+            "childMs": 633.255467,
+            "exclusiveMs": 0.23494700000003377,
+            "incomplete": false
+          },
+          {
+            "id": 4,
+            "parent": 3,
+            "name": "typescript.book-load",
+            "startMs": 282.953602,
+            "endMs": 436.410309,
+            "inclusiveMs": 153.456707,
+            "childMs": 0,
+            "exclusiveMs": 153.456707,
+            "incomplete": false
+          },
+          {
+            "id": 5,
+            "parent": 3,
+            "name": "typescript.book-valid",
+            "startMs": 436.440243,
+            "endMs": 607.98456,
+            "inclusiveMs": 171.54431699999998,
+            "childMs": 0,
+            "exclusiveMs": 171.54431699999998,
+            "incomplete": false
+          },
+          {
+            "id": 6,
+            "parent": 3,
+            "name": "typescript.js-lib",
+            "startMs": 608.018882,
+            "endMs": 916.273325,
+            "inclusiveMs": 308.25444300000004,
+            "childMs": 0,
+            "exclusiveMs": 308.25444300000004,
+            "incomplete": false
+          }
+        ],
+        "aggregate": [
+          {
+            "name": "worker.first-window",
+            "calls": 1,
+            "inclusiveMs": 896.96925,
+            "exclusiveMs": 0.4709890000000314,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.host-import",
+            "calls": 1,
+            "inclusiveMs": 262.986984,
+            "exclusiveMs": 262.986984,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.api-load",
+            "calls": 1,
+            "inclusiveMs": 0.020863000000019838,
+            "exclusiveMs": 0.020863000000019838,
+            "incomplete": 0
+          },
+          {
+            "name": "worker.compile",
+            "calls": 1,
+            "inclusiveMs": 633.490414,
+            "exclusiveMs": 0.23494700000003377,
+            "incomplete": 0
+          },
+          {
+            "name": "typescript.book-load",
+            "calls": 1,
+            "inclusiveMs": 153.456707,
+            "exclusiveMs": 153.456707,
+            "incomplete": 0
+          },
+          {
+            "name": "typescript.book-valid",
+            "calls": 1,
+            "inclusiveMs": 171.54431699999998,
+            "exclusiveMs": 171.54431699999998,
+            "incomplete": 0
+          },
+          {
+            "name": "typescript.js-lib",
+            "calls": 1,
+            "inclusiveMs": 308.25444300000004,
+            "exclusiveMs": 308.25444300000004,
+            "incomplete": 0
+          }
+        ],
+        "rootMs": 896.96925,
+        "exclusiveMs": 896.9692500000001,
+        "incomplete": 0
+      }
+    }
+  ],
+  "wallSeconds": 7.461333413026296,
+  "scope": "Single diagnostic first requests; nested exclusive clocks partition each compilation. API wrappers and host clocks perturb execution. These are not clean timing samples. Actual owned world/ready/plan calls are observed, not inferred from function availability. ABI encode/invoke/decode is zero when the image needs no positional adapter. TS load/check/emission boundaries retain their own semantic scope."
+}

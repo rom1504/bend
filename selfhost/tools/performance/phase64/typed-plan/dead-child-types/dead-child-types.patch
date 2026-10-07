@@ -1,0 +1,114 @@
+--- a/selfhost/src/back/js/direct/model.bend
++++ b/selfhost/src/back/js/direct/model.bend
+@@ -187,3 +187,15 @@
+ def jd_width_params(+left: U32, +at: U32) -> List<&2,String>:
+   kc(List<&2,String>, U32.is_eq(left, 0), u => Nil{},
+     u => Con{"$a" ++ U32.show(at), jd_width_params(U32.sub(left, 1), U32.inc(at))})
++
++# These consumers immediately replace a supplied type for a direct Ann child.
++# Retain the child, environment and traversal; avoid only the discarded query.
++@unsafe
++def jd_lambda_child_type(+t: KTerm, +ty: KTerm) -> KTerm:
++  kc(KTerm, String.eq(tg(kid(t, 0)), "Ann"), u => kid(kid(t, 0), 1),
++    u => j_app_type(ty, var(nm(t), ix(t))))
++
++@unsafe
++def jd_arm_child_type(+book: List<&2,KDef>, +arm: KTerm, +tel: KTerm, +ret: KTerm) -> KTerm:
++  kc(KTerm, String.eq(tg(arm), "Ann"), u => kid(arm, 1),
++    u => j_arm_tel(book, tel, ret))
+--- a/selfhost/src/back/js/direct/core.bend
++++ b/selfhost/src/back/js/direct/core.bend
+@@ -172,13 +172,13 @@
+ 
+ @unsafe
+ def jd_doc_body_lambda(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> JDText:
+-  kc(JDText, String.eq(tg(ty), "All"), u => kc(JDText, U32.is_eq(qt(ty), 0), u => jd_text_many([jd_text_raw("const " ++ jd_local(ix(t)) ++ "=null;"), jd_doc_body(book, jd_bind_env(env, ix(t), kid(ty, 0)), kid(t, 0), j_app_type(ty, var(nm(t), ix(t))), args)]), u => jd_doc_body_live_lambda(book, env, t, ty, args)), u => jd_text_raw("return " ++ jd_fail("lambda lacks checked function type") ++ ";"))
++  kc(JDText, String.eq(tg(ty), "All"), u => kc(JDText, U32.is_eq(qt(ty), 0), u => jd_text_many([jd_text_raw("const " ++ jd_local(ix(t)) ++ "=null;"), jd_doc_body(book, jd_bind_env(env, ix(t), kid(ty, 0)), kid(t, 0), jd_lambda_child_type(t, ty), args)]), u => jd_doc_body_live_lambda(book, env, t, ty, args)), u => jd_text_raw("return " ++ jd_fail("lambda lacks checked function type") ++ ";"))
+ 
+ @unsafe
+ def jd_doc_body_live_lambda(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> JDText:
+   match args:
+     case Nil{}: jd_text_raw("return " ++ jd_expr(book, env, t, ty) ++ ";")
+-    case Con{x, rest}: kc(JDText, jd_is_view(x), u => jd_doc_body(book, Con{jd_view_binding(ix(t), kid(ty, 0), x), env}, kid(t, 0), j_app_type(ty, var(nm(t), ix(t))), rest), u => jd_doc_body_bound(ix(t), x, jd_doc_body(book, jd_bind_env(env, ix(t), kid(ty, 0)), kid(t, 0), j_app_type(ty, var(nm(t), ix(t))), rest)))
++    case Con{x, rest}: kc(JDText, jd_is_view(x), u => jd_doc_body(book, Con{jd_view_binding(ix(t), kid(ty, 0), x), env}, kid(t, 0), jd_lambda_child_type(t, ty), rest), u => jd_doc_body_bound(ix(t), x, jd_doc_body(book, jd_bind_env(env, ix(t), kid(ty, 0)), kid(t, 0), jd_lambda_child_type(t, ty), rest)))
+ 
+ @unsafe
+ def jd_doc_body_bound(+id: U32, +value: String, +body: JDText) -> JDText:
+--- a/selfhost/src/back/js/direct/calls.bend
++++ b/selfhost/src/back/js/direct/calls.bend
+@@ -51,7 +51,7 @@
+   kc(JDCallScan, String.eq(tg(ty), "All"), u =>
+     kc(JDCallScan, U32.is_eq(qt(ty), 0) || U32.is_gt(args, 0), v =>
+       jd_calls_body(book, jd_bind_env(env, ix(t), kid(ty, 0)), kid(t, 0),
+-        j_app_type(ty, var(nm(t), ix(t))), kc(U32, U32.is_eq(qt(ty), 0), w => args, w => U32.sub(args, 1)), s),
++        jd_lambda_child_type(t, ty), kc(U32, U32.is_eq(qt(ty), 0), w => args, w => U32.sub(args, 1)), s),
+       v => s), u => jd_calls_bad(s))
+ 
+ @unsafe
+@@ -82,7 +82,7 @@
+     u => jd_calls_word_rows(book, env, U32.sub(args, 1), s,
+       jd_word_rows(book, j_strip(kid(t, 0)), j_arm_tel(book, tel, kid(ty, 1)), 0, 0,
+         JDWordCover{atom("Absent"), 0, Nil{}})),
+-    u => jd_calls_match_arm(book, env, kid(t, 0), j_arm_tel(book, tel, kid(ty, 1)),
++    u => jd_calls_match_arm(book, env, kid(t, 0), jd_arm_child_type(book, kid(t, 0), tel, kid(ty, 1)),
+       U32.sub(args, 1), jd_calls_fields(tel, 64), s))
+   kc(JDCallScan, U32.is_eq(j_constructor_count(book, domain), 1) ||
+     (jd_native_layout(book, domain) && String.eq(jd_match_test(nm(domain), nm(t), "x"), "")),
+--- a/selfhost/src/back/js/direct/pattern.bend
++++ b/selfhost/src/back/js/direct/pattern.bend
+@@ -29,7 +29,7 @@
+   +native = jd_native_layout(book, domain)
+   +condition = kc(String, native, u => jd_match_test(nm(domain), nm(t), value), u => value ++ ".$===" ++ j_quote(nm(t)))
+   +fields = kc(List<&2,String>, native, u => jd_match_views(nm(domain), nm(t), value), u => jd_match_fields(tel, value))
+-  +arm: JDText = kc(JDText, native && (String.eq(nm(domain), "U32") || String.eq(nm(domain), "F32")) && j_u32_native_book(book), u => jd_doc_word_start(book, env, kid(t, 0), j_arm_tel(book, tel, kid(ty, 1)), rest, value, String.eq(nm(domain), "F32")), u => jd_doc_body(book, env, kid(t, 0), j_arm_tel(book, tel, kid(ty, 1)), List.append(&2,String, fields, rest)))
++  +arm: JDText = kc(JDText, native && (String.eq(nm(domain), "U32") || String.eq(nm(domain), "F32")) && j_u32_native_book(book), u => jd_doc_word_start(book, env, kid(t, 0), j_arm_tel(book, tel, kid(ty, 1)), rest, value, String.eq(nm(domain), "F32")), u => jd_doc_body(book, env, kid(t, 0), jd_arm_child_type(book, kid(t, 0), tel, kid(ty, 1)), List.append(&2,String, fields, rest)))
+   jd_text_many([jd_text_raw("{const " ++ value ++ "=" ++ arg ++ ";" ++ kc(String, String.eq(nm(domain), "IO.OP"), u => "if(" ++ value ++ ".$===\"$FFI\")throw " ++ value ++ ";", u => "")), kc(JDText, U32.is_eq(j_constructor_count(book, domain), 1) || String.eq(condition, ""), u => arm, u => jd_text_many([jd_text_raw("if(" ++ condition ++ "){"), arm, jd_text_literal("}else{", 6), jd_doc_body(book, env, kid(t, 1), ty, Con{value, rest}), jd_text_literal("}", 1)])), jd_text_literal("}", 1)])
+ 
+ @unsafe
+@@ -257,7 +257,7 @@
+ @unsafe
+ def jd_doc_word_bind_type(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: List<&2,String>, +bits: String, +depth: U32, +fields: U32) -> JDText:
+   kc(JDText, String.eq(tg(t), "Lam") && String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)), u => jd_doc_word_bind_used(ix(t), jd_doc_word_bind(book, Con{kt("$JD.U32Fragment", "", ix(t), 0,
+-          [kid(ty, 0), kt(kc(String, U32.is_eq(fields, 2), v => "Bit", v => "Tail"), bits, depth, 0, Nil{})]), env}, kid(t, 0), j_app_type(ty, var(nm(t), ix(t))), rest, bits, kc(U32, U32.is_eq(fields, 2), v => U32.inc(depth), v => depth), U32.sub(fields, 1))), u => jd_text_literal("", 0))
++          [kid(ty, 0), kt(kc(String, U32.is_eq(fields, 2), v => "Bit", v => "Tail"), bits, depth, 0, Nil{})]), env}, kid(t, 0), jd_lambda_child_type(t, ty), rest, bits, kc(U32, U32.is_eq(fields, 2), v => U32.inc(depth), v => depth), U32.sub(fields, 1))), u => jd_text_literal("", 0))
+ 
+ @unsafe
+ def jd_doc_word_bind_used(+id: U32, +body: JDText) -> JDText:
+--- a/selfhost/src/back/js/validate.bend
++++ b/selfhost/src/back/js/validate.bend
+@@ -184,7 +184,7 @@
+ 
+ @unsafe
+ def j_layout_lam(book, env, t, ty, todo):
+-  j_layout_term(book, Con{kt("Env", "", ix(t), 0, Con{kid(ty, 0), Nil{}}), env}, kid(t, 0), subst(kid(ty, 1), ix(ty), var(nm(t), ix(t))), todo)
++  j_layout_term(book, Con{kt("Env", "", ix(t), 0, Con{kid(ty, 0), Nil{}}), env}, kid(t, 0), j_layout_lambda_child_type(t, ty), todo)
+ 
+ law j_layout_match:
+   for +book: List<&2, KDef>
+@@ -196,7 +196,7 @@
+ 
+ @unsafe
+ def j_layout_match(book, env, t, ty, todo):
+-  j_layout_mark(j_layout_open(book, kid(ty, 0)), j_layout_term(book, env, kid(t, 0), j_arm_tel(book, j_specialize(book, dt(j_layout_ctor(book, wnf(book, kid(ty, 0)), nm(t))), ks(wnf(book, kid(ty, 0)))), kid(ty, 1)), kc(List<&2, String>, U32.is_eq(j_constructor_count(book, wnf(book, kid(ty, 0))), 1), u => todo, u => j_layout_term(book, env, kid(t, 1), ty, todo))))
++  j_layout_mark(j_layout_open(book, kid(ty, 0)), j_layout_term(book, env, kid(t, 0), j_layout_arm_child_type(book, t, ty), kc(List<&2, String>, U32.is_eq(j_constructor_count(book, wnf(book, kid(ty, 0))), 1), u => todo, u => j_layout_term(book, env, kid(t, 1), ty, todo))))
+ 
+ law j_layout_app:
+   for +book: List<&2, KDef>
+@@ -294,3 +294,17 @@
+   +ty: KTerm,
+ ) -> Bool:
+   String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Nat") && db(lookup(book, "Nat")) && ((String.eq(nm(t), "Zero") && U32.is_eq(terms_len(ks(t)), 0)) || (String.eq(nm(t), "Succ") && U32.is_eq(terms_len(ks(t)), 1)))
++
++# Keep the actual annotated child: j_layout_term overwrites its supplied type.
++# Raw public terms retain the original derivation, including non-All behavior.
++@unsafe
++def j_layout_lambda_child_type(+t: KTerm, +ty: KTerm) -> KTerm:
++  kc(KTerm, String.eq(tg(kid(t, 0)), "Ann"), u => kid(kid(t, 0), 1),
++    u => subst(kid(ty, 1), ix(ty), var(nm(t), ix(t))))
++
++@unsafe
++def j_layout_arm_child_type(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm) -> KTerm:
++  kc(KTerm, String.eq(tg(kid(t, 0)), "Ann"), u => kid(kid(t, 0), 1),
++    u => j_arm_tel(book, j_specialize(book,
++      dt(j_layout_ctor(book, wnf(book, kid(ty, 0)), nm(t))),
++      ks(wnf(book, kid(ty, 0)))), kid(ty, 1)))

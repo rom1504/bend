@@ -3851,3 +3851,14 @@ The [capsule](../selfhost/tools/performance/phase63/artifacts/README.md) preserv
 `8dc20dcc3961cc479a343a275ae7d0d9b3eaca4401f10336da72aae9d7c63c22`.
 Every member was reopened and byte-verified; original input inventory/hashes
 remain unchanged. All raw writers are closed. No failed receipt was relabelled.
+
+
+### Phase64 implementation authorized — 2026-10-07
+
+[Design](../design/phase64/typed-facts-and-compact-state.md) and
+[P64-001](phase64/P64-001-residual-costs-and-typed-facts.md) register a new
+State09 residual-cost survey and separate Base-completion and typed-backend
+fact experiments. Indexed Base loading or compact representation follow only
+when measurements justify them. Root retains serial guarded target execution;
+agents own disjoint source/data/review work. Baseline110 inherited files and
+seven installed artifacts were rehashed. No Phase64 result or promotion yet.

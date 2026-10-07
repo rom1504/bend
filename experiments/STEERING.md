@@ -1,6 +1,10 @@
-# Current frontier: Phase63 State09 installed
+# Current frontier: Phase64 implementation authorized
 
-The authorized implementation phase is complete. State09 is installed and
+The user authorized [Phase64](../design/phase64/typed-facts-and-compact-state.md):
+measure the selected State09 image, prototype remaining Base summaries and
+shared typed facts separately, then choose indexed state or compact representation
+from measured cost. [Live report](../implementation/phase64/README.md).
+No Phase64 result or promotion is claimed yet. State09 is installed and
 verified as equality-derived checked B1; its separate genuine B2/B3 images pass
 their gates. The compiler algorithms remain Bend. No upstream update or PR
 comment was made.
@@ -51,7 +55,7 @@ remains. These finite, overlapping suites are not full-language soundness proofs
 Metadata and permission failures remain failed; explicit successful successors
 close the selected gates.
 
-## Next investigation, not selected implementation
+## Authorized Phase64 sequence
 
 1. Profile the selected image on Numeric, Lexer and Map, then confirm attribution
    across all23. Earlier profiles no longer assign the current residual gap.

@@ -5,6 +5,14 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Active implementation: Phase64 retained typed facts
+
+[Design](../design/phase64/typed-facts-and-compact-state.md) ·
+[Report](../implementation/phase64/README.md) · [Experiment](phase64/P64-001-residual-costs-and-typed-facts.md).
+The user authorized a fresh State09 cost survey, independent Base-fact and typed
+backend prototypes, then an evidence-selected representation improvement.
+State09 remains installed; no Phase64 speed or promotion result exists yet.
+
 ## Completed implementation: Phase63 ready worlds and lower-once plans
 
 [Design](../design/phase63/ready-world-and-lowering-plan.md) ·

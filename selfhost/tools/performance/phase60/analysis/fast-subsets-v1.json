@@ -1,0 +1,157 @@
+{
+  "kind": "phase60-proposed-fast-subsets",
+  "version": 1,
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "createdUtc": "2026-10-07T05:32:03.519835+00:00",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase60/stages01/report.json",
+      "sha256": "3383e42db487b1b1a6f742c575e838d8b70f0160fa5721c22af4c1d0dab25bf2",
+      "bytes": 1053122
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase60/clean-analysis01/report.json",
+      "sha256": "bcfb5bd0f4099862b819435c461a5b2adfd2f0870ece7fc623dd1efbadbc3f52",
+      "bytes": 477650
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase60/first-cpu01/report.json",
+      "sha256": "f6974ee13acced71fce66ca5ca5256001a925897b7999b263cb04061f0b56cf6",
+      "bytes": 802111
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase60/catalog.json",
+      "sha256": "d5903c18804afa14b9ca4fc51196d1d419148989a9496e768822f6637004c9ba",
+      "bytes": 272192
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase60/method03/run.py",
+      "sha256": "4d013e0ae2692170f0f675665a8a2916a869e8eedf6c0fdc6956caa3d86f19ab",
+      "bytes": 14434
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase60/method03/derivation.json",
+      "sha256": "2909a57de8c9e79b758a2ece751430608665143461e51146774e64e0ee345188",
+      "bytes": 9594
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase60/preparation01/report.json",
+      "sha256": "f50dabeb4f3e5f607482aa06a06f3dcdcd998127ed9c1567657573b69c231f58",
+      "bytes": 231926
+    }
+  ],
+  "selectionStatus": "Chosen after complete23-source clean/stage/CPU surveys; allocation survey still pending and will be checked for missing families.",
+  "selection": {
+    "numeric-recurrence": "Low-text/back-end negative; cheap fixed frontend/index contrast.",
+    "test-map-set-ops": "Largest final-library stage; high String and primitive-metadata frame shares.",
+    "raytrace-active": "Large14,680-byte F32 source and high source-loading/checking cost; complements backend-heavy case.",
+    "heldOut": [
+      "lexer",
+      "test-evening-program"
+    ],
+    "populationGate": "All23 source inputs/45 inherited point oracles remain the broad gate; these subsets do not establish general parity or replace semantic controls."
+  },
+  "budgetMethod": {
+    "stageWorkerWallSumSeconds": 135.7841957117198,
+    "stageMeasurementSeconds": 175.96373488602694,
+    "observedRunnerOverheadPerWorkerSeconds": 0.8734682429197204,
+    "scope": "Projected queue uses diagnostic first-only worker durations plus average observed runner overhead. Not a clean speed result or guaranteed bound; preparation/image generation and initial CLI preflight are outside. Root must qualify both actual deadline-limited loops."
+  },
+  "plans": [
+    {
+      "id": "screen20",
+      "seconds": 20,
+      "rounds": 1,
+      "cases": [
+        "numeric-recurrence",
+        "test-map-set-ops"
+      ],
+      "roles": [
+        "direct",
+        "typescript"
+      ],
+      "warmRequests": 0,
+      "workers": 4,
+      "pointIds": [
+        "test-map-set-ops",
+        "coverage-numeric-recurrence-256",
+        "coverage-numeric-recurrence-1024"
+      ],
+      "stageDerivedEstimatedQueueSeconds": 15.745861077620445,
+      "budgetMinusEstimateSeconds": 4.254138922379555,
+      "targetExecuted": false,
+      "qualified": false,
+      "argv": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase60/method03/run.py",
+        "FRESH_PHASE60_OUTPUT",
+        "--mode",
+        "clean",
+        "--cases",
+        "numeric-recurrence,test-map-set-ops",
+        "--roles",
+        "direct,typescript",
+        "--rounds",
+        "1",
+        "--warm-requests",
+        "0",
+        "--preparations",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase60/preparation01/report.json",
+        "--seconds",
+        "20",
+        "--child-seconds",
+        "20"
+      ]
+    },
+    {
+      "id": "confirm60",
+      "seconds": 60,
+      "rounds": 2,
+      "cases": [
+        "numeric-recurrence",
+        "test-map-set-ops",
+        "raytrace-active"
+      ],
+      "roles": [
+        "direct",
+        "typescript"
+      ],
+      "warmRequests": 0,
+      "workers": 12,
+      "pointIds": [
+        "test-map-set-ops",
+        "variation-ray-active-64-2440",
+        "variation-ray-active-256-2240",
+        "coverage-numeric-recurrence-256",
+        "coverage-numeric-recurrence-1024"
+      ],
+      "stageDerivedEstimatedQueueSeconds": 47.682071902839795,
+      "budgetMinusEstimateSeconds": 12.317928097160205,
+      "targetExecuted": false,
+      "qualified": false,
+      "argv": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase60/method03/run.py",
+        "FRESH_PHASE60_OUTPUT",
+        "--mode",
+        "clean",
+        "--cases",
+        "numeric-recurrence,test-map-set-ops,raytrace-active",
+        "--roles",
+        "direct,typescript",
+        "--rounds",
+        "2",
+        "--warm-requests",
+        "0",
+        "--preparations",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase60/preparation01/report.json",
+        "--seconds",
+        "60",
+        "--child-seconds",
+        "20"
+      ]
+    }
+  ]
+}

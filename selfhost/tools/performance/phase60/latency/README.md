@@ -7,9 +7,10 @@ runtime points to exactly 23 distinct source/options inputs. Generic-row shares
 the local-row input with local-pair; its observer is a post-emission adapter and
 is never inserted into the compiler's timed output.
 
-The method is prepared, with no target execution by its author. The root owns
-all guarded preparation and measurements. Nothing here modifies the compiler,
-installed image, or closed Phase54–59 artifacts.
+Root executed the guarded survey successfully: all 138 clean workers and all
+46 workers in each of the stage, CPU and allocation campaigns passed. See the
+[report](../../../../../implementation/phase60/README.md) for results and scope.
+Nothing here modifies the compiler, installed image, or closed Phase54–59 artifacts.
 
 ## Method and retained correctness evidence
 

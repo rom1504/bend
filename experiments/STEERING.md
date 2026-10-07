@@ -55,31 +55,59 @@ Source grows 314 physical/238 code lines to 26,560 physical/21,823 code,
 3,055 definitions,101 types,108 modules. 98 modules retain bytes. Generated-code
 shrinkage and source growth are different quantities; no source-simplification claim.
 
-## Active Phase60 information-only survey
+## Phase60 survey complete; no optimization promoted
 
-[Registered hypotheses](phase60/). Root design is forthcoming at
-`design/phase60/broad-compiler-survey.md`. Compiler/source/runtime/driver and
-installed last01 remain unchanged; no optimization, new release or PR comment.
-Closed [Phase59](../implementation/phase59/README.md) is preserved unchanged.
+[Design](../design/phase60/broad-compiler-survey.md) · [Hypotheses](phase60/) ·
+[Clean measurements](../implementation/phase60/measurements.md) ·
+[Common-frontend audit](../implementation/phase60/common-frontend.md).
+Measurement only; no compiler/runtime/driver/source or installed-release change.
 
-1. Audit all45 runtime points against actual source/module/export/adapter and
-   compile-mode/options identities. The expected 23 unique source inputs remain
-   provisional; do not compile every point as if it were a distinct source.
-2. Survey unchanged last01 B2 versus pinned TS on the exact admitted request
-   population, retaining first-window/loaded/warmed and clean/profile distinctions.
-   Benchmark program execution and compiler-request performance are different.
-3. Group recurring costs using absolute clocks and defensible profile ancestry:
-   frontend, String/text scans, reconstruction/index/event work and metadata are
-   hypotheses, not preassigned universal explanations. Keep every null/failure.
-4. Choose a fast small subset only after measured group coverage, retaining an
-   opposite/negative-group input and held-out checks. Rank general bounded next
-   experiments without implementing a transform or claiming subset-wide parity.
+The audited population is 23 compilation inputs mapped to 45 runtime points.
+Post-emission observers do not create extra requests. Clean 23×2×3 completes 138
+fresh processes/552 compiles, no missing/excluded sources, every output equal to
+its role's qualified raw bytes. Runtime oracles are inherited by exact identity,
+not fresh executions. Combined-first equal-source B2/TS GM is 2.461296885; ratio
+of summed medians 2.485×. Every source is slower, spanning 2.103–3.049×. Later
+windows still warm; diagnostic times/profiles do not enter clean ratios.
 
-Initial status: registration only; population/method audit and results pending.
-The survey addresses two-case overfit. Phase59's String head+tail, primitive-table
-and retained event-list leads remain candidates that this broader evidence may
-support or demote, not optimization authorizations. No full compiler image build,
-new release or generated-program speed claim is implied by the records.
+Check-and-complete is 611–726 ms and largest individual stage on 22/23 inputs.
+ABI2's validated prefix is unused: Base source events are checked again in a
+fresh world. The source-only cache preserves parsed IR, not checked memo/output.
+This establishes shared work, not its isolated time or permission to skip it;
+user checking, specialization, GC and first-process V8 work remain bundled.
+Pinned TS also loads/checks Base each request; rechecking alone is not the
+explanation of the relative gap.
+
+[Final diagnostics](../implementation/phase60/diagnostics.md),
+[bottleneck ranking](../implementation/phase60/bottlenecks.md) and
+[tested fast loop](../implementation/phase60/fast-loop.md) are complete. All 138
+rows classify; the original data-only reader failure remains separate from zero
+failed targets. Its TS allocation missing-node 138,000 bytes stays in the sample
+denominator and explicit unknown bins. All 46 CPU count views are valid; 38
+weighted views admit and 8 refuse. Uniform count shares never mix with weights.
+
+1. Separate shared world/check/completion from source-dependent work before any
+   checked-state reuse proposal. Both pipelines recheck Base, so this alone does
+   not explain their relative gap; source-only cache is not a resume proof.
+2. Investigate String/reference transport on contrasting contexts: allocation
+   family ≥5% on 18/23 and 8/23 respectively. Preserve liveness/order and provenance;
+   shared dispatcher names are not single-member causal attribution.
+3. Keep index/substitution coverage: index CPU/allocation family ≥5% on 23/23,
+   substitution allocation 22/23. Metadata is smaller (CPU 4/23, allocation none
+   above 5%), not the universal explanation or guaranteed physical table cost.
+4. Tested first-only subset: Numeric recurrence + MapSet, four workers/full CLI
+   17.528899 s; add active raytrace/two rotated rounds, 12 workers/49.509634 s.
+   Excludes reusable preparation; observed costs, not guarantees. Lexer/Evening
+   held out, all 23 remain population gate. Selection preceded allocation evidence.
+
+300 targets/712 compilations pass (298 first/414 later), child sum 1,246.100 s,
+peak 630.91 MiB. Final preservation passes 30,687 closed Phase58/59 files plus 7
+installed plus 103 protected unchanged. Raw writers closed 05:42:28 UTC; [publication](../selfhost/tools/performance/phase60/artifacts/raw/publication.json)
+and [reopened/member verification](../selfhost/tools/performance/phase60/artifacts/raw/archive.json)
+pass with stable raw inputs; no compiler, runtime, driver, release or PR comment changed.
+
+Closed Phase59 history stays unchanged. No new compiler image generation,
+optimization, full45 program execution campaign, release or PR comment occurs.
 
 Heavy jobs remain root-serialized under one guard, private staging and fresh paths.
 Preserve failed attempts, consumed producers, closed Phase54–59 history, seven

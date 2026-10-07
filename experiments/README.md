@@ -7,15 +7,21 @@ and emitted user programs separately.
 
 ## Newest campaign: Phase60 broad compiler survey
 
-[Three registered hypotheses](phase60/) · [Current frontier](STEERING.md).
-Measurement only: broaden compiler attribution beyond Lexer/Evening, group
-bottlenecks and choose a fast falsification subset. The 45 runtime points are not
-45 compilation requests; 23 unique sources is provisional until the exact source/
-entry/adapter audit. Root design is forthcoming at
-`design/phase60/broad-compiler-survey.md`. Installed Phase58 last01 remains exact;
-no optimization, new release or PR comment. Closed [Phase59 results](../implementation/phase59/README.md)
-and its [publication](../selfhost/tools/performance/phase59/artifacts/raw/publication.json)
-remain historical evidence, not modified or pooled into this new population.
+[Design](../design/phase60/broad-compiler-survey.md) · [Three hypotheses](phase60/) ·
+[Current frontier](STEERING.md) · [Clean results](../implementation/phase60/measurements.md).
+The audited 23 compiler inputs map to 45 runtime points; fresh compiler outputs
+match qualified raw bytes, while runtime observations are inherited, not rerun.
+Clean combined-first equal-source B2/TS GM is 2.4613. Stage/CPU evidence and the
+[Base recheck audit](../implementation/phase60/common-frontend.md) identify common
+checking work without quantifying Base alone. All target campaigns, [diagnostic classification](../implementation/phase60/diagnostics.md)
+and [tested fast screens](../implementation/phase60/fast-loop.md) pass. The
+[ranked conclusions](../implementation/phase60/bottlenecks.md) preserve common
+frontend and source-dependent String/reference/index/substitution work, without
+predicted savings or relaxed cache proofs. Original reader failure/unknown mass
+remain intact. Raw writers closed 05:42:28 UTC; [archive/publication verification](../selfhost/tools/performance/phase60/artifacts/raw/publication.json)
+passes with reopened members and stable raw inputs. Measurement only: installed Phase58
+last01/compiler/runtime/driver unchanged; no optimization, release or PR comment.
+Closed [Phase59](../implementation/phase59/README.md) remains separate evidence.
 
 This adapts the research method in `rom1504/math` at commit
 [`e2795031b5a35300d5c82613125c3bf9f3bd2b16`](https://github.com/rom1504/math/commit/e2795031b5a35300d5c82613125c3bf9f3bd2b16),

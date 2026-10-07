@@ -3330,3 +3330,83 @@ covering subset and held-out falsifiers. Source/point weighting and compiler ver
 generated-program execution remain separate. Existing String reconstruction,
 metadata and index-event hypotheses may be supported or demoted, never assumed
 universal or promoted from a chosen small subset.
+
+### Phase60 interim results: audited population and common frontend
+
+[Clean measurements](../implementation/phase60/measurements.md) confirm 23 audited
+compiler inputs mapped to 45 inherited runtime points. All 138 fresh clean workers/
+552 requests pass their qualified raw output oracle; no failed/missing/excluded
+source. Combined-first equal-source B2/TS GM is 2.461296885 (summed-median ratio
+2.485×); every source slower, 2.103–3.049×. Absolute-gap and ratio rankings differ;
+three later requests remain still warming. This is unchanged last01 B2 versus
+pinned TS, not a compiler update or fresh generated-program performance claim.
+
+Stage/CPU complete; allocation running. [Source audit](../implementation/phase60/common-frontend.md)
+shows ABI2's validated prefix is ignored and loaded Base declaration events are
+rechecked. Check-and-complete 611–726 ms is largest individual stage on 22/23 inputs.
+The cache saves parsed/source IR, not checked world/memo/output; observed common
+stage time does not isolate Base from user checking, specialization, GC or V8.
+No unchecked Base-skip or context-incomplete reuse is authorized by this finding.
+
+**Interim frontier:** await allocation and final diagnostics/grouping before
+choosing a fast subset or final hypothesis ranking. Preserve shared-work and
+source-dependent distinctions, unlike TS stages and clean/profile boundaries.
+No optimization promoted, installed release unchanged, archive pending.
+
+### Phase60 target closure and tested short loops
+
+All target campaigns pass: 300 processes, 712 observed compilations (298 first/
+414 later), child wall sum 1,246.100 s and peak 630.91 MiB. Whole CLI first-only
+Numeric recurrence+MapSet screen passes in 17.528899 s/four workers; adding active
+raytrace and two rotated rounds passes 49.509634 s/12 workers. Reusable preparation
+is excluded; these costs are observations, not guaranteed budgets or a substitute
+for all 23 inputs. Final preservation passes 30,687 closed Phase58/59 files,
+installed 7 and protected 103 unchanged. No compiler/runtime/driver/release change.
+
+The original diagnostic population reader fails data-only because one TS
+allocation sample's 138,000 bytes reference a missing node. Target profiles and
+original unknown mass remain intact. The reviewed successor must retain that
+unknown mass before final grouping is credited; this is not a failed target.
+Final diagnostic interpretation and archive publication remain pending.
+
+### Phase60 final classification and measured iteration subset
+
+[Diagnostics](../implementation/phase60/diagnostics.md) classify 138 rows with
+zero failures, retaining the original data-only reader failure and TS 138,000-byte
+missing-node allocation sample in the denominator/explicit unknown bins. All
+target workers passed; no profile rerun or source modification repaired the reader.
+At a descriptive 5% screen, index names recur in CPU/allocation on 23/23 inputs,
+substitution allocation 22/23, String allocation 18/23 and refs/uses 8/23. CPU
+String appears 10/23, metadata 4/23. Families, ancestry and wall stages overlap
+and cannot be added or interpreted as removable shares.
+
+[Ranked next discriminators](../implementation/phase60/bottlenecks.md) address
+common frontend/world/check completion, contrasting String/reference transport,
+and persistent index/substitution invariants; primitive metadata is a smaller
+independent candidate. Both pipelines check Base, so omission is neither a
+relative-gap explanation nor permitted by a source-only cache. No optimization
+was implemented or promoted.
+
+[Tested short-loop protocol](../implementation/phase60/fast-loop.md) retains
+Numeric recurrence+MapSet rejection screen 17.528899 s/four workers and adds active
+raytrace for 49.509634 s/12-worker confirmation. Preparation excluded; measured host
+costs are not guarantees. Selection followed clean/stage/CPU and preceded
+allocation, which corroborates distinct coverage. Lexer/Evening remain held-out;
+all 23 sources remain the broad gate and no subset represents universal parity.
+
+**Updated frontier:** information pass complete, installed last01 unchanged.
+Use the measured subset to falsify a separately authorized general proposal with
+complete semantic/cache-state proofs before broad integration. Archive publication
+remains pending until explicit writer closure and reopened member verification.
+
+Phase60 raw writers closed at 05:42:28 UTC. All 46 CPU count views remain valid;
+38 weighted views admitted/8 refused, with uniform count units used in the broad
+family comparisons. Streamed archive/member verification is in progress; final
+archive identity is the remaining publication item. No further raw writes.
+
+Phase60 [publication](../selfhost/tools/performance/phase60/artifacts/raw/publication.json)
+and [archive manifest](../selfhost/tools/performance/phase60/artifacts/raw/archive.json)
+pass reopened/member verification with stable input bytes: 2,286 members,
+463,038,119 raw bytes and 18,788,706 gzip bytes; one unsplit archive, SHA256
+`a02e1bed02335b8bb35451cd129f2c85fe23484ca0f4f68da2daaa30a0b9ef6b`.
+No further raw writes; installed last01 remains unchanged.

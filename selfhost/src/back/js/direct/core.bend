@@ -351,9 +351,7 @@ def jd_library_selected(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:
 # definitions while retaining the original cached context and provenance.
 @unsafe
 def jd_selected_context(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> List<&2,KDef>:
-  match defs:
-    case Nil{}: book
-    case Con{d, rest}: jd_selected_context(book_put(book, d), rest)
+  book_put_many(book, defs)
 
 @unsafe
 def jd_library_context(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:

@@ -381,3 +381,71 @@ def book_final_legacy(book, done):
   match book:
     case Nil{}: done
     case Con{d, rest}: book_final_legacy(rest, Con{d, index_remove(done, dn(d))})
+
+# Batch an immutable declaration overlay. Retain the original sequential path
+# for cache-valued declarations, malformed names and cache misses that disagree
+# with the retained event list. Definition references/order are retained;
+# event-list cell identity is not promised.
+@unsafe
+def book_put_many_regular(+defs: List<&2,KDef>) -> Bool:
+  match defs:
+    case Nil{}: True{}
+    case Con{d, rest}:
+      kc(Bool, String.eq(dk(d), "BookCache"),
+        u => False{}, u => book_put_many_regular(rest))
+
+@unsafe
+def book_put_many_legacy(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> List<&2,KDef>:
+  match defs:
+    case Nil{}: book
+    case Con{d, rest}: book_put_many_legacy(book_put(book, d), rest)
+
+@unsafe
+def index_set_many(+tree: KDef, +defs: List<&2,KDef>) -> KDef:
+  match defs:
+    case Nil{}: tree
+    case Con{d, rest}:
+      index_set_many(index_set(tree, d, index_hash(dn(d), 2166136261), 32), rest)
+
+@unsafe
+def book_put_many_cache_name(+cache: KDef, +rest: List<&2,KDef>, +name: String) -> Bool:
+  kc(Bool, String.eq(name, ""), u => True{},
+    u => kc(Bool, String.eq(dn(index_lookup(cache, name)), ""),
+      u => String.eq(dn(index_bucket(rest, name)), ""), u => True{}))
+
+@unsafe
+def book_put_many_cache_valid(+cache: KDef, +rest: List<&2,KDef>, +defs: List<&2,KDef>) -> Bool:
+  match defs:
+    case Nil{}: True{}
+    case Con{d, more}:
+      kc(Bool, book_put_many_cache_name(cache, rest, dn(d)),
+        u => book_put_many_cache_valid(cache, rest, more), u => False{})
+
+@unsafe
+def book_put_many_cached(+cache: KDef, +rest: List<&2,KDef>, +defs: List<&2,KDef>) -> List<&2,KDef>:
+  Con{KDef{dn(cache), dk(cache), da(cache), 0, atom("Absent"), atom("Absent"),
+    Con{index_set_many(index_first(dc(cache)), defs), Nil{}}, True{}, False{}},
+    book_final_fast(defs, rest)}
+
+@unsafe
+def book_put_many_fast(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> List<&2,KDef>:
+  match book:
+    case Nil{}: book_final_fast(defs, Nil{})
+    case Con{cache, rest}:
+      kc(List<&2,KDef>, String.eq(dk(cache), "BookCache"),
+        u => kc(List<&2,KDef>, book_put_many_cache_valid(cache, rest, defs),
+          u => book_put_many_cached(cache, rest, defs),
+          u => book_put_many_legacy(book, defs)),
+        u => book_final_fast(defs, book))
+
+@unsafe
+def book_put_many(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> List<&2,KDef>:
+  match defs:
+    case Nil{}: book
+    case Con{d, rest}:
+      kc(List<&2,KDef>, book_put_many_regular(defs),
+        u => kc(List<&2,KDef>, book_final_names_valid(defs),
+          u => kc(List<&2,KDef>, book_final_names_valid(book),
+            u => book_put_many_fast(book, defs), u => book_put_many_legacy(book, defs)),
+          u => book_put_many_legacy(book, defs)),
+        u => book_put_many_legacy(book, defs))

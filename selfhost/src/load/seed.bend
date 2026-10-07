@@ -129,8 +129,8 @@ def fs_imports(s, ns, header, imports, sources, g, stack, seed):
       fs_imports(s, ns, header, rest, sources, fs_load(f_import_pathname(im, s, sources), f_import_namespace_at(im, s, sources, fs_root(seed)), sources, g, stack, seed), stack, seed)
 
 
-# Base is larger than the call-stack limit of the library's recursive compare.
-# This equality scan is tail-recursive and compares the entire source exactly.
+# Compare the complete source through the canonical String equality primitive.
+# Native compiler images compare primitive text directly without constructing tails.
 law f_seed_text_equal:
   for +a: String
   for +b: String
@@ -138,13 +138,7 @@ law f_seed_text_equal:
 
 @unsafe
 def f_seed_text_equal(a, b):
-  match a b:
-    case SNil{} SNil{}:
-      True{}
-    case SCon{x, xs} SCon{y, ys}:
-      f_choose(Bool, Char.is_eq(x, y), u => f_seed_text_equal(xs, ys), u => False{})
-    case _ _:
-      False{}
+  String.eq(a, b)
 
 @unsafe
 def f_load_graph_seed_trace(

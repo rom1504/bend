@@ -704,11 +704,7 @@ def tele_fill(
   +tel: KTerm,
   +args: List<&2, KTerm>,
 ) -> KTerm:
-  match args:
-    case Nil{}:
-      tel
-    case Con{h, t}:
-      tele_fill_head(book, wnf(book, tel), h, t)
+  env_tele_fill(book, tel, args)
 
 @unsafe
 def tele_fill_head(book, tel, h, rest):
@@ -1192,7 +1188,7 @@ law tele_check_after_head:
 def tele_check_after_head(e, ctx, tel, h, rest, dem, checked_head):
   kc(KChecking, good(checked_head), u => kc(KChecking, core_subst_stable(kid(tel, 1)),
     u => tele_check_done(checked_head, tele_check_static(ke_world(e, rw(checked_head)), ctx, kid(tel, 1), rest, dem)),
-    u => tele_check_done(checked_head, tele_check_legacy(ke_world(e, rw(checked_head)), ctx, subst(kid(tel, 1), ix(tel), h), rest, dem))), u => checked_head)
+    u => tele_check_done(checked_head, env_tele_check(ke_world(e, rw(checked_head)), ctx, subst(kid(tel, 1), ix(tel), h), rest, dem))), u => checked_head)
 
 @unsafe
 def check_mat_filled(+e: KEnv, +ctx: List<&2,KTerm>, +t: KTerm, +dem: U32, +ty: KTerm, +a: KTerm, +ctr: KDef, +tel: KTerm) -> KChecking:

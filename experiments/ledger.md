@@ -3794,3 +3794,16 @@ safe admitted Base state for library sessions with reusable backend analysis and
 documents. Use a small signature-fact bundle as a cheap architecture prototype,
 not a parity promise. Fresh-process state transport and completion/freshening
 remain distinct opportunities. No optimization or target is currently selected.
+
+
+### Phase63 implementation authorized — 2026-10-07
+
+[Design](../design/phase63/ready-world-and-lowering-plan.md) records the
+ready semantic Base world, parser indexes, validated sharing transport and
+one owned lowering plan. Six agents prepared source/control/measurement
+prototypes in parallel. Root retains exclusive serial guarded target execution.
+Phase63 target evidence is separate from closed Phase62. No result or promotion
+is claimed at registration.
+
+**Updated frontier:** execute fast correctness and clean latency screens, then
+qualify the best genuineB2 on all23 sources. Parity remains the objective.

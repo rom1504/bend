@@ -1,28 +1,21 @@
-# Current frontier: Phase62 investigation complete; Phase61 state08 unchanged
+# Current frontier: Phase63 ready worlds and lower-once implementation
 
-The user authorized investigation of the remaining compiler-speed gap.
-[Phase62 report](../implementation/phase62/README.md) ·
-[Design](../design/phase62/compiler-parity-investigation.md) ·
-[P62-001](phase62/P62-001-remaining-compiler-cost.md) ·
-[Closed evidence](../implementation/phase62/artifacts.md).
+The user authorized implementation toward TypeScript compilation parity.
+[Design](../design/phase63/ready-world-and-lowering-plan.md) ·
+[Report](../implementation/phase63/README.md) · [Experiments](phase63/).
 
-All 23 inputs have current CPU/allocation/stage evidence and logical work counts.
-The four-source same-Bend-source comparison finds B2 uses 12.82% less compile
-time than equality-derived B1. Diagnostic arithmetic excess is 510.20 ms:
-265.99 ms prepared-state/loading/checking, 241.55 ms backend, 2.65 ms other.
-The narrow check boundary is similar in time but includes different Base work.
-Repeated ordinary requests narrow B2/TS 2.114→1.380 by the fourth request; no
-steady-state plateau is established. Scaling shows higher marginal cost, not
-observed quadratic growth. All target outputs/oracles pass. Compiler source,
-seven installed files and 110 inherited unrelated files remain unchanged.
+Phase62 investigation is complete. Phase63 prototypes retain a checked Base
+world/parser indexes, carry shared validated graphs, and lower reachable
+functions once in one owned context. No speed result or promotion exists yet.
+Canonical annotated versus old pruned backend context is an explicit semantic
+qualification obligation. Prepared state requires exact private seed admission.
 
-Next proposals: admitted immutable Base state for library sessions; one coherent
-backend analysis/document with valid dependency/context reuse; signature bundles
-as a small first prototype; completion/freshening reconstruction; compact/lazy
-prepared state for fresh processes. Narrow arity CPU ancestry is only ~2.3%, so
-do not promise parity from that cache. Preserve checking provenance, eager-beta
-semantics and context/budget contracts. No optimization is selected or executed
-by this investigation, no target remains active, and raw writers are closed.
+Six agents own source/data/review tasks; root alone runs serial guarded CPU3
+compiler targets. Use checkedB1 and short Numeric/Map screens before genuineB2
+and balanced23-source integration. Preserve110 inherited files, seven installed
+files until selection, closed Phase58–62 evidence and every rejected attempt.
+No upstream migration, PR comments or goal creation. See phase experiment
+records for falsifiers and the report for live evidence. Historical baseline:
 
 ## Closed Phase61 release baseline
 
@@ -129,7 +122,7 @@ Base: source-only omission was never justified.
 
 Any future heavy jobs remain serial on CPU3 under one process-tree guard: 1 GiB
 Node heap, 2 GiB tree RSS and 4 GiB available-memory floor unless root records a
-justified successor. Data/source work uses CPU0. Preserve the 103 unrelated
+justified successor. Data/source work uses CPU0. Preserve the 110 inherited unrelated
 files, selected and prior installed artifacts, closed evidence, consumed tools
 and every rejected attempt. Stage explicit owned paths only.
 

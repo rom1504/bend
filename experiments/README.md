@@ -5,7 +5,14 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Newest investigation: Phase62 remaining compiler costs
+## Active implementation: Phase63 ready worlds and lower-once plans
+
+[Design](../design/phase63/ready-world-and-lowering-plan.md) ·
+[Report](../implementation/phase63/README.md) · [Hypotheses](phase63/).
+The user authorized implementation after Phase62. No new speed result or
+selected release exists yet; Phase61 state08 remains installed.
+
+## Completed investigation: Phase62 remaining compiler costs
 
 [Phase62 results](../implementation/phase62/README.md) explain the remaining
 gap on unchanged Phase61 state08 using 23-source CPU/allocation/stage surveys,

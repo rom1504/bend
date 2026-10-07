@@ -1,0 +1,113 @@
+{
+  "kind": "phase61-host-plan-source-proposal",
+  "status": "unapplied-unchecked",
+  "compilerOrTargetExecution": false,
+  "decision": "deferred by root: 177 added lines for unmeasured 0\u20133% Map / near-zero Numeric does not justify complexity or build cost at state06",
+  "scope": "export-local complete expression memo; old recursive and foreign printers unchanged",
+  "manifestEntryRequired": "src/back/js/direct/host-plan.bend",
+  "manifestAfter": "src/back/js/direct/host-native.bend",
+  "inputs": [
+    {
+      "file": "selfhost/src/back/js/direct/host.bend",
+      "sha256": "0c2920c65edd0d4dcd5ffd0508b80f0d351463e79717e307b24e283f0896e155",
+      "bytes": 17198
+    },
+    {
+      "file": "selfhost/src/back/js/direct/host-native.bend",
+      "sha256": "79008fbcbf15bab398e5f2a6bd63fa0b8fe444d62e2cf5d89f8c7469f81d5303",
+      "bytes": 3088
+    },
+    {
+      "file": "selfhost/src/check/specialize.bend",
+      "sha256": "76e0f9249ae15cc0734a8e9d2e75677794e2eb5464c7756a19daff8b8217e7ee",
+      "bytes": 16212
+    },
+    {
+      "file": "selfhost/src/core/index.bend",
+      "sha256": "51ce95941f955ed1c65f01ee88af31e35180c94d30ada97f359c6aa71dd47edb",
+      "bytes": 14879
+    },
+    {
+      "file": "selfhost/src/core/term.bend",
+      "sha256": "5e80c433f3dc11d1f52de8a6df5ad2362a0f391bbd3d520ee4193fc9eb87ea2c",
+      "bytes": 19300
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+      "sha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee",
+      "bytes": 185444
+    },
+    {
+      "file": "selfhost/build/phase61/state06-b2-latency01/cpu-map-numeric01/numeric-recurrence-0-candidate-profile/summary.json",
+      "sha256": "91d411625fd06cb34c7099b70cd103baf0f66b2ca4d10148ee4af935d92c354e",
+      "bytes": 469004
+    },
+    {
+      "file": "selfhost/build/phase61/state06-b2-latency01/allocation-map-numeric01/numeric-recurrence-0-candidate-profile/summary.json",
+      "sha256": "36cac241dcd6d184fbfae79b948de34b67a4858c5186b4078f9f884b593a2f52",
+      "bytes": 317940
+    },
+    {
+      "file": "selfhost/build/phase61/state06-b2-latency01/cpu-map-numeric01/numeric-recurrence-0-candidate.mjs",
+      "sha256": "2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3",
+      "bytes": 14917
+    },
+    {
+      "file": "selfhost/build/phase61/state06-b2-latency01/cpu-map-numeric01/test-map-set-ops-0-candidate-profile/summary.json",
+      "sha256": "76f7f163898d88da291da2655bd553ea6a607488c4ad7fd1a5b894001c40c845",
+      "bytes": 660556
+    },
+    {
+      "file": "selfhost/build/phase61/state06-b2-latency01/allocation-map-numeric01/test-map-set-ops-0-candidate-profile/summary.json",
+      "sha256": "350d39b9f1065468593394301c5c834e05fb5a839bed456bb4bc7a53f4bb0b97",
+      "bytes": 582407
+    },
+    {
+      "file": "selfhost/build/phase61/state06-b2-latency01/cpu-map-numeric01/test-map-set-ops-0-candidate.mjs",
+      "sha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd",
+      "bytes": 132866
+    },
+    {
+      "file": "selfhost/build/phase61/state04-b2-latency01/cpu-map-numeric01/numeric-recurrence-0-candidate.mjs",
+      "sha256": "2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3",
+      "bytes": 14917
+    },
+    {
+      "file": "selfhost/build/phase61/state04-b2-latency01/cpu-map-numeric01/test-map-set-ops-0-candidate.mjs",
+      "sha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd",
+      "bytes": 132866
+    }
+  ],
+  "outputs": [
+    {
+      "file": "selfhost/tools/performance/phase61/host-plan/host-plan.bend",
+      "sha256": "00a6f48f7cd0a7f5d82d9ba8c58b3778b97c7edb7a46caf685db953b1fd50656",
+      "bytes": 8553
+    },
+    {
+      "file": "selfhost/tools/performance/phase61/host-plan/host-before.bend",
+      "sha256": "0c2920c65edd0d4dcd5ffd0508b80f0d351463e79717e307b24e283f0896e155",
+      "bytes": 17198
+    },
+    {
+      "file": "selfhost/tools/performance/phase61/host-plan/host-after.bend",
+      "sha256": "7d32fe0f8b38085d0e20a3e27855441fc68516760734df73d94e8c793649ea55",
+      "bytes": 17219
+    },
+    {
+      "file": "selfhost/tools/performance/phase61/host-plan/host-plan.patch",
+      "sha256": "59b19444a60e07ec2d870ccbfd89b3f321b1b5139675ae5e7019428d17e28a47",
+      "bytes": 9389
+    }
+  ],
+  "limits": {
+    "memoInsertions": 512,
+    "comparisonAndAdmissionBranchListFuel": 64,
+    "marshallerDepthUnchanged": 64,
+    "classificationGraphUnchanged": 1024
+  },
+  "emittedBytesRequirement": "exact equality; no module-wide converter interning",
+  "rawTypeReuse": "same non-span raw fields; no Sub in key-admitted tree; term_key alone is not equality proof",
+  "reviewStatus": "concept reviewed; complete source review stopped at root request",
+  "nextAction": "none; preserve unapplied proposal"
+}

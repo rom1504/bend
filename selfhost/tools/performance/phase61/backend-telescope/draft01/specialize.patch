@@ -1,0 +1,91 @@
+--- a/selfhost/src/compiler.json
++++ b/selfhost/src/compiler.json
+@@ -85,6 +85,7 @@
+     "src/back/js/direct/transport.bend",
+     "src/back/js/direct/model.bend",
+     "src/back/js/direct/primitive.bend",
++    "src/back/js/direct/telescope.bend",
+     "src/back/js/direct/constructors.bend",
+     "src/back/js/direct/pattern.bend",
+     "src/back/js/direct/host.bend",
+--- a/selfhost/src/back/js/direct/constructors.bend
++++ b/selfhost/src/back/js/direct/constructors.bend
+@@ -25,7 +25,7 @@
+ @unsafe
+ def jd_ctor_checked(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +ctor: KDef) -> String:
+   kc(String, String.eq(dk(ctor), "Ctr"),
+-    u => jd_ctor_emit(book, env, t, ty, j_specialize(book, dt(ctor), ks(ty))),
++    u => jd_ctor_emit(book, env, t, ty, jd_specialize(book, dt(ctor), ks(ty))),
+     u => jd_fail("missing constructor telescope"))
+ 
+ @unsafe
+--- a/selfhost/src/back/js/direct/ordered-values.bend
++++ b/selfhost/src/back/js/direct/ordered-values.bend
+@@ -20,7 +20,7 @@
+ @unsafe
+ def jd_ordered_ctor_checked(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +next: U32, +ctor: KDef) -> JDOrdered:
+   kc(JDOrdered, String.eq(dk(ctor), "Ctr"),
+-    u => jd_ordered_ctor_native_check(book, env, t, ty, j_specialize(book, dt(ctor), ks(ty)), next),
++    u => jd_ordered_ctor_native_check(book, env, t, ty, jd_specialize(book, dt(ctor), ks(ty)), next),
+     u => JDOrdered{"", jd_fail("ordered constructor missing telescope"), next})
+ 
+ @unsafe
+--- a/selfhost/src/back/js/direct/pattern.bend
++++ b/selfhost/src/back/js/direct/pattern.bend
+@@ -18,7 +18,7 @@
+ 
+ @unsafe
+ def jd_doc_match_ctor(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +arg: String, +rest: List<&2,String>, +ctor: KDef) -> JDText:
+-  kc(JDText, String.eq(dk(ctor), "Ctr"), u => jd_doc_match_emit(book, env, t, ty, domain, arg, rest, j_specialize(book, dt(ctor), ks(domain))), u => jd_text_raw("return " ++ jd_fail("missing match constructor telescope") ++ ";"))
++  kc(JDText, String.eq(dk(ctor), "Ctr"), u => jd_doc_match_emit(book, env, t, ty, domain, arg, rest, jd_specialize(book, dt(ctor), ks(domain))), u => jd_text_raw("return " ++ jd_fail("missing match constructor telescope") ++ ";"))
+ 
+ @unsafe
+ def jd_doc_match_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +arg: String, +rest: List<&2,String>, +tel: KTerm) -> JDText:
+--- a/selfhost/src/back/js/direct/calls.bend
++++ b/selfhost/src/back/js/direct/calls.bend
+@@ -67,7 +67,7 @@
+ @unsafe
+ def jd_calls_match_ctor(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +args: U32, +s: JDCallScan, +ctor: KDef) -> JDCallScan:
+   kc(JDCallScan, String.eq(dk(ctor), "Ctr"), u =>
+-    jd_calls_match_tel(book, env, t, ty, domain, args, s, j_specialize(book, dt(ctor), ks(domain))), u => jd_calls_bad(s))
++    jd_calls_match_tel(book, env, t, ty, domain, args, s, jd_specialize(book, dt(ctor), ks(domain))), u => jd_calls_bad(s))
+ 
+ @unsafe
+ def jd_calls_match_tel(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +args: U32, +s: JDCallScan, +tel: KTerm) -> JDCallScan:
+--- /dev/null
++++ b/selfhost/src/back/js/direct/telescope.bend
+@@ -0,0 +1,34 @@
++# Private direct-backend specialization. Same result/fallback as j_specialize;
++# the beta-stable environment proof and realization are shared with the checker.
++@unsafe
++def jd_specialize(+book: List<&2,KDef>, +tel: KTerm, +args: List<&2,KTerm>) -> KTerm:
++  kc(KTerm, env_tele_many(args),
++    u => kc(KTerm, env_tele_safe(tel),
++      v => jd_specialize_cursor(book, tel, args, Nil{}, 0),
++      v => j_specialize(book, tel, args)),
++    u => j_specialize(book, tel, args))
++
++law jd_specialize_cursor:
++  for +book: List<&2,KDef>
++  for +tel: KTerm
++  for +args: List<&2,KTerm>
++  for +bindings: List<&2,KTelescopeBinding>
++  for +count: U32
++  KTerm
++
++@unsafe
++def jd_specialize_cursor(book, tel, args, bindings, count):
++  match args:
++    case Nil{}: env_subst_apply(tel, bindings)
++    case Con{h, rest}:
++      kc(KTerm, String.eq(tg(tel), "All") && U32.is_lt(count, 64),
++        u => kc(KTerm, env_tele_safe(h),
++          v => jd_specialize_cursor(book, kid(tel, 1), rest,
++            Con{KTelescopeBinding{ix(tel), h}, bindings}, U32.inc(count)),
++          v => jd_specialize_fallback(book, tel, args, bindings)),
++        u => jd_specialize_fallback(book, tel, args, bindings))
++
++@unsafe
++def jd_specialize_fallback(+book: List<&2,KDef>, +tel: KTerm,
++  +args: List<&2,KTerm>, +bindings: List<&2,KTelescopeBinding>) -> KTerm:
++  j_specialize(book, env_subst_apply(tel, bindings), args)

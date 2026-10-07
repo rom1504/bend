@@ -1,0 +1,825 @@
+{
+  "kind": "phase63-state05-followup-summary",
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/analyze-state05.py",
+    "sha256": "274843dc852affb27d4f4f76a0cb7c5cfc7882172670b2e059b31d6be25cf2a5"
+  },
+  "cleanB2": {
+    "report": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b2-latency/screen/report.json",
+      "sha256": "4daaa6152ef45fed3e8d5ede0ef3fd35f202e7eafbb3f8870706de1af2d4d519"
+    },
+    "pass_": true,
+    "workers": 6,
+    "wallSeconds": 7.9916045010322705,
+    "coverage": {
+      "compileInputIds": [
+        "numeric-recurrence",
+        "test-map-set-ops"
+      ],
+      "pointIds": [
+        "test-map-set-ops",
+        "coverage-numeric-recurrence-256",
+        "coverage-numeric-recurrence-1024"
+      ],
+      "oracleFreshness": "catalog or image-bound separately qualified outputs",
+      "freshRuntimeExecutions": 0
+    },
+    "statistics": {
+      "numeric-recurrence": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 476.04327600000005,
+            "min": 476.04327600000005,
+            "max": 476.04327600000005,
+            "samples": [
+              476.04327600000005
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.11542,
+            "min": 4.11542,
+            "max": 4.11542,
+            "samples": [
+              4.11542
+            ]
+          },
+          "apiLoadMs": {
+            "median": 103.12086700000003,
+            "min": 103.12086700000003,
+            "max": 103.12086700000003,
+            "samples": [
+              103.12086700000003
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 583.279563,
+            "min": 583.279563,
+            "max": 583.279563,
+            "samples": [
+              583.279563
+            ]
+          },
+          "maxRssKiB": {
+            "median": 131748,
+            "min": 131748,
+            "max": 131748,
+            "samples": [
+              131748
+            ]
+          },
+          "warmRequestMedianMs": null,
+          "warmRequestMsByProcess": [
+            []
+          ],
+          "processWallMs": {
+            "median": 859.5363129861653,
+            "min": 859.5363129861653,
+            "max": 859.5363129861653,
+            "samples": [
+              859.5363129861653
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 134909952,
+            "min": 134909952,
+            "max": 134909952,
+            "samples": [
+              134909952
+            ]
+          },
+          "outputBytes": {
+            "median": 14917,
+            "min": 14917,
+            "max": 14917,
+            "samples": [
+              14917
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 408.024642,
+            "min": 408.024642,
+            "max": 408.024642,
+            "samples": [
+              408.024642
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.887400000000014,
+            "min": 4.887400000000014,
+            "max": 4.887400000000014,
+            "samples": [
+              4.887400000000014
+            ]
+          },
+          "apiLoadMs": {
+            "median": 92.15340199999997,
+            "min": 92.15340199999997,
+            "max": 92.15340199999997,
+            "samples": [
+              92.15340199999997
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 505.06544399999996,
+            "min": 505.06544399999996,
+            "max": 505.06544399999996,
+            "samples": [
+              505.06544399999996
+            ]
+          },
+          "maxRssKiB": {
+            "median": 131260,
+            "min": 131260,
+            "max": 131260,
+            "samples": [
+              131260
+            ]
+          },
+          "warmRequestMedianMs": null,
+          "warmRequestMsByProcess": [
+            []
+          ],
+          "processWallMs": {
+            "median": 778.0797110171989,
+            "min": 778.0797110171989,
+            "max": 778.0797110171989,
+            "samples": [
+              778.0797110171989
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 134742016,
+            "min": 134742016,
+            "max": 134742016,
+            "samples": [
+              134742016
+            ]
+          },
+          "outputBytes": {
+            "median": 14917,
+            "min": 14917,
+            "max": 14917,
+            "samples": [
+              14917
+            ]
+          }
+        },
+        "typescript": {
+          "firstRequestMs": {
+            "median": 320.437571,
+            "min": 320.437571,
+            "max": 320.437571,
+            "samples": [
+              320.437571
+            ]
+          },
+          "hostImportMs": {
+            "median": 259.81487000000004,
+            "min": 259.81487000000004,
+            "max": 259.81487000000004,
+            "samples": [
+              259.81487000000004
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "samples": [
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 580.2524410000001,
+            "min": 580.2524410000001,
+            "max": 580.2524410000001,
+            "samples": [
+              580.2524410000001
+            ]
+          },
+          "maxRssKiB": {
+            "median": 133796,
+            "min": 133796,
+            "max": 133796,
+            "samples": [
+              133796
+            ]
+          },
+          "warmRequestMedianMs": null,
+          "warmRequestMsByProcess": [
+            []
+          ],
+          "processWallMs": {
+            "median": 737.8657730296254,
+            "min": 737.8657730296254,
+            "max": 737.8657730296254,
+            "samples": [
+              737.8657730296254
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 137007104,
+            "min": 137007104,
+            "max": 137007104,
+            "samples": [
+              137007104
+            ]
+          },
+          "outputBytes": {
+            "median": 4699,
+            "min": 4699,
+            "max": 4699,
+            "samples": [
+              4699
+            ]
+          }
+        }
+      },
+      "test-map-set-ops": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 1544.6660259999999,
+            "min": 1544.6660259999999,
+            "max": 1544.6660259999999,
+            "samples": [
+              1544.6660259999999
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.181409000000002,
+            "min": 4.181409000000002,
+            "max": 4.181409000000002,
+            "samples": [
+              4.181409000000002
+            ]
+          },
+          "apiLoadMs": {
+            "median": 104.11323300000001,
+            "min": 104.11323300000001,
+            "max": 104.11323300000001,
+            "samples": [
+              104.11323300000001
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 1652.960668,
+            "min": 1652.960668,
+            "max": 1652.960668,
+            "samples": [
+              1652.960668
+            ]
+          },
+          "maxRssKiB": {
+            "median": 166152,
+            "min": 166152,
+            "max": 166152,
+            "samples": [
+              166152
+            ]
+          },
+          "warmRequestMedianMs": null,
+          "warmRequestMsByProcess": [
+            []
+          ],
+          "processWallMs": {
+            "median": 1921.6615200275555,
+            "min": 1921.6615200275555,
+            "max": 1921.6615200275555,
+            "samples": [
+              1921.6615200275555
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 170139648,
+            "min": 170139648,
+            "max": 170139648,
+            "samples": [
+              170139648
+            ]
+          },
+          "outputBytes": {
+            "median": 132866,
+            "min": 132866,
+            "max": 132866,
+            "samples": [
+              132866
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 1353.513652,
+            "min": 1353.513652,
+            "max": 1353.513652,
+            "samples": [
+              1353.513652
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.915469999999999,
+            "min": 4.915469999999999,
+            "max": 4.915469999999999,
+            "samples": [
+              4.915469999999999
+            ]
+          },
+          "apiLoadMs": {
+            "median": 93.250686,
+            "min": 93.250686,
+            "max": 93.250686,
+            "samples": [
+              93.250686
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 1451.679808,
+            "min": 1451.679808,
+            "max": 1451.679808,
+            "samples": [
+              1451.679808
+            ]
+          },
+          "maxRssKiB": {
+            "median": 162516,
+            "min": 162516,
+            "max": 162516,
+            "samples": [
+              162516
+            ]
+          },
+          "warmRequestMedianMs": null,
+          "warmRequestMsByProcess": [
+            []
+          ],
+          "processWallMs": {
+            "median": 1717.6314849639311,
+            "min": 1717.6314849639311,
+            "max": 1717.6314849639311,
+            "samples": [
+              1717.6314849639311
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 166416384,
+            "min": 166416384,
+            "max": 166416384,
+            "samples": [
+              166416384
+            ]
+          },
+          "outputBytes": {
+            "median": 132866,
+            "min": 132866,
+            "max": 132866,
+            "samples": [
+              132866
+            ]
+          }
+        },
+        "typescript": {
+          "firstRequestMs": {
+            "median": 630.7319540000001,
+            "min": 630.7319540000001,
+            "max": 630.7319540000001,
+            "samples": [
+              630.7319540000001
+            ]
+          },
+          "hostImportMs": {
+            "median": 263.38191,
+            "min": 263.38191,
+            "max": 263.38191,
+            "samples": [
+              263.38191
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "samples": [
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 894.1138640000001,
+            "min": 894.1138640000001,
+            "max": 894.1138640000001,
+            "samples": [
+              894.1138640000001
+            ]
+          },
+          "maxRssKiB": {
+            "median": 151548,
+            "min": 151548,
+            "max": 151548,
+            "samples": [
+              151548
+            ]
+          },
+          "warmRequestMedianMs": null,
+          "warmRequestMsByProcess": [
+            []
+          ],
+          "processWallMs": {
+            "median": 1043.981913011521,
+            "min": 1043.981913011521,
+            "max": 1043.981913011521,
+            "samples": [
+              1043.981913011521
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 155996160,
+            "min": 155996160,
+            "max": 155996160,
+            "samples": [
+              155996160
+            ]
+          },
+          "outputBytes": {
+            "median": 69178,
+            "min": 69178,
+            "max": 69178,
+            "samples": [
+              69178
+            ]
+          }
+        }
+      }
+    },
+    "geometricMeanRatios": {
+      "firstRequestMs": {
+        "candidateOverBaseline": 0.8666305641383092,
+        "candidateOverTS": 1.653028662908185
+      },
+      "importApiAndFirstMs": {
+        "candidateOverBaseline": 0.8720464251006222,
+        "candidateOverTS": 1.1887878103965317
+      }
+    },
+    "limitation": "One fixed-order sample per role/input; two sources, not a broad headline."
+  },
+  "raw23": {
+    "report": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-b2-bytegate23/report.json",
+      "sha256": "b4dcff48e7839de167d52df5443cb28f2ef8739948f89cb2a34c6b90fd38590c"
+    },
+    "pass_": true,
+    "workers": 23,
+    "wallSeconds": 31.133962963940576,
+    "coverage": {
+      "compileInputIds": [
+        "mandelbrot",
+        "editdist",
+        "tree-bitonic",
+        "lexer",
+        "symreg",
+        "test-morning-program",
+        "test-evening-program",
+        "test-rle-roundtrip",
+        "test-map-set-ops",
+        "raytrace",
+        "local-row",
+        "local-fold",
+        "scalar-region",
+        "mandelbrot-grid",
+        "raytrace-active",
+        "closures",
+        "list-pipeline",
+        "bst",
+        "unicode-text",
+        "expression",
+        "map-churn",
+        "numeric-recurrence",
+        "record-aggregation"
+      ],
+      "pointIds": [
+        "mandelbrot",
+        "editdist",
+        "tree-bitonic",
+        "lexer",
+        "symreg",
+        "test-morning-program",
+        "test-evening-program",
+        "test-rle-roundtrip",
+        "test-map-set-ops",
+        "raytrace",
+        "local-pair",
+        "local-fold",
+        "scalar-region-0",
+        "scalar-region-8192",
+        "complete-generic-row32",
+        "variation-editdist-0-17",
+        "variation-editdist-3-123",
+        "variation-lexer-6-17",
+        "variation-lexer-10-123",
+        "variation-tree-bitonic-6-17",
+        "variation-tree-bitonic-9-123",
+        "variation-symreg-4-17",
+        "variation-symreg-7-123",
+        "variation-local-fold-128-0",
+        "variation-local-fold-8192-123",
+        "variation-mandelbrot-grid-4-7",
+        "variation-mandelbrot-grid-5-31",
+        "variation-ray-active-64-2440",
+        "variation-ray-active-256-2240",
+        "coverage-closures-64",
+        "coverage-closures-256",
+        "coverage-list-pipeline-128",
+        "coverage-list-pipeline-512",
+        "coverage-bst-32",
+        "coverage-bst-64",
+        "coverage-unicode-text-16",
+        "coverage-unicode-text-64",
+        "coverage-expression-32",
+        "coverage-expression-128",
+        "coverage-map-churn-32",
+        "coverage-map-churn-128",
+        "coverage-numeric-recurrence-256",
+        "coverage-numeric-recurrence-1024",
+        "coverage-record-aggregation-64",
+        "coverage-record-aggregation-256"
+      ],
+      "oracleFreshness": "catalog or image-bound separately qualified outputs",
+      "freshRuntimeExecutions": 0
+    },
+    "limitation": "Candidate-only byte equality; no fresh runtime execution or paired speed conclusion."
+  },
+  "hostVariants": [
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-host-shapes01/screen/report.json",
+        "sha256": "0999c55a5b89dee7ecfc0a1378f128b5d516f00d1b6482ae2a8e39861933ee31"
+      },
+      "workers": 4,
+      "wallSeconds": 13.946000811993144,
+      "executionOrder": [
+        {
+          "case": "numeric-recurrence",
+          "role": "baseline",
+          "sample": 0
+        },
+        {
+          "case": "numeric-recurrence",
+          "role": "literal_shapes",
+          "sample": 0
+        },
+        {
+          "case": "test-map-set-ops",
+          "role": "baseline",
+          "sample": 0
+        },
+        {
+          "case": "test-map-set-ops",
+          "role": "literal_shapes",
+          "sample": 0
+        }
+      ],
+      "comparisons": [
+        {
+          "case": "numeric-recurrence",
+          "role": "literal_shapes",
+          "baseline": [
+            {
+              "firstRequestMs": 437.6098159999999,
+              "importApiAndFirstMs": 552.6729979999998,
+              "sample": 0
+            }
+          ],
+          "variant": [
+            {
+              "firstRequestMs": 390.7424819999999,
+              "importApiAndFirstMs": 511.16886399999976,
+              "sample": 0
+            }
+          ],
+          "meanRatio": {
+            "firstRequestMs": 0.8929015477111691,
+            "importApiAndFirstMs": 0.9249029097672689
+          }
+        },
+        {
+          "case": "test-map-set-ops",
+          "role": "literal_shapes",
+          "baseline": [
+            {
+              "firstRequestMs": 1313.4987729999998,
+              "importApiAndFirstMs": 1429.6292519999997,
+              "sample": 0
+            }
+          ],
+          "variant": [
+            {
+              "firstRequestMs": 1270.0682100000001,
+              "importApiAndFirstMs": 1384.0661420000004,
+              "sample": 0
+            }
+          ],
+          "meanRatio": {
+            "firstRequestMs": 0.9669352085492967,
+            "importApiAndFirstMs": 0.9681294224105598
+          }
+        }
+      ]
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-host-fast01/screen/report.json",
+        "sha256": "698aafdbc0c794a9d30957c70aed036ecb0a6c92de6b51ca6b974126416de99a"
+      },
+      "workers": 4,
+      "wallSeconds": 13.59856231091544,
+      "executionOrder": [
+        {
+          "case": "numeric-recurrence",
+          "role": "baseline",
+          "sample": 0
+        },
+        {
+          "case": "numeric-recurrence",
+          "role": "fast_constructors",
+          "sample": 0
+        },
+        {
+          "case": "test-map-set-ops",
+          "role": "baseline",
+          "sample": 0
+        },
+        {
+          "case": "test-map-set-ops",
+          "role": "fast_constructors",
+          "sample": 0
+        }
+      ],
+      "comparisons": [
+        {
+          "case": "numeric-recurrence",
+          "role": "fast_constructors",
+          "baseline": [
+            {
+              "firstRequestMs": 417.7329619999998,
+              "importApiAndFirstMs": 531.596953,
+              "sample": 0
+            }
+          ],
+          "variant": [
+            {
+              "firstRequestMs": 337.2078899999999,
+              "importApiAndFirstMs": 450.897342,
+              "sample": 0
+            }
+          ],
+          "meanRatio": {
+            "firstRequestMs": 0.8072331385714304,
+            "importApiAndFirstMs": 0.8481939925641372
+          }
+        },
+        {
+          "case": "test-map-set-ops",
+          "role": "fast_constructors",
+          "baseline": [
+            {
+              "firstRequestMs": 1337.2232640000002,
+              "importApiAndFirstMs": 1451.414412,
+              "sample": 0
+            }
+          ],
+          "variant": [
+            {
+              "firstRequestMs": 1231.975316,
+              "importApiAndFirstMs": 1347.303223,
+              "sample": 0
+            }
+          ],
+          "meanRatio": {
+            "firstRequestMs": 0.9212936606523171,
+            "importApiAndFirstMs": 0.9282691503272739
+          }
+        }
+      ]
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-host-fastv2/confirm/report.json",
+        "sha256": "1f1034a3f12d6400baff56021f68626ce17458d2e8918914dd19fe1aa5bdcd0d"
+      },
+      "workers": 8,
+      "wallSeconds": 27.884323481936008,
+      "executionOrder": [
+        {
+          "case": "numeric-recurrence",
+          "role": "baseline",
+          "sample": 0
+        },
+        {
+          "case": "numeric-recurrence",
+          "role": "fast",
+          "sample": 0
+        },
+        {
+          "case": "numeric-recurrence",
+          "role": "fast",
+          "sample": 1
+        },
+        {
+          "case": "numeric-recurrence",
+          "role": "baseline",
+          "sample": 1
+        },
+        {
+          "case": "test-map-set-ops",
+          "role": "baseline",
+          "sample": 0
+        },
+        {
+          "case": "test-map-set-ops",
+          "role": "fast",
+          "sample": 0
+        },
+        {
+          "case": "test-map-set-ops",
+          "role": "fast",
+          "sample": 1
+        },
+        {
+          "case": "test-map-set-ops",
+          "role": "baseline",
+          "sample": 1
+        }
+      ],
+      "comparisons": [
+        {
+          "case": "numeric-recurrence",
+          "role": "fast",
+          "baseline": [
+            {
+              "firstRequestMs": 453.614967,
+              "importApiAndFirstMs": 578.8737769999998,
+              "sample": 0
+            },
+            {
+              "firstRequestMs": 474.893742,
+              "importApiAndFirstMs": 603.4810869999999,
+              "sample": 1
+            }
+          ],
+          "variant": [
+            {
+              "firstRequestMs": 350.58918900000003,
+              "importApiAndFirstMs": 465.24724300000025,
+              "sample": 0
+            },
+            {
+              "firstRequestMs": 356.268505,
+              "importApiAndFirstMs": 472.3299360000001,
+              "sample": 1
+            }
+          ],
+          "meanRatio": {
+            "firstRequestMs": 0.7612827829706442,
+            "importApiAndFirstMs": 0.7929744339428713
+          }
+        },
+        {
+          "case": "test-map-set-ops",
+          "role": "fast",
+          "baseline": [
+            {
+              "firstRequestMs": 1491.0919769999998,
+              "importApiAndFirstMs": 1618.9485019999997,
+              "sample": 0
+            },
+            {
+              "firstRequestMs": 1344.1791919999998,
+              "importApiAndFirstMs": 1459.4005439999999,
+              "sample": 1
+            }
+          ],
+          "variant": [
+            {
+              "firstRequestMs": 1202.3457409999999,
+              "importApiAndFirstMs": 1318.0298859999998,
+              "sample": 0
+            },
+            {
+              "firstRequestMs": 1221.5311449999997,
+              "importApiAndFirstMs": 1336.4462879999996,
+              "sample": 1
+            }
+          ],
+          "meanRatio": {
+            "firstRequestMs": 0.8549012568892664,
+            "importApiAndFirstMs": 0.8623051299037127
+          }
+        }
+      ]
+    }
+  ],
+  "hostLimitation": "Same genuine State05 B2 API with only a recorded private graph-helper replacement. Diagnostic, not production-qualified. Compare each variant with its own campaign baseline; no TS role and no cross-campaign comparison."
+}

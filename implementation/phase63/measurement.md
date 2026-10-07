@@ -152,3 +152,128 @@ Each cell is one instrumented first request. The exclusive stage partitions
 close, but hooks perturb JIT/GC and execution time. These differences locate
 work; they do not establish isolated feature speedups or replace clean latency
 measurements. Narrow TS checking still includes a different Base boundary.
+
+## State05: clean genuine-B2 screen and broader byte gate
+
+The [follow-up receipts](evidence/state05-followups.json) keep clean timings,
+candidate-only byte checks and host-only counterfactuals separate. The clean
+State05 B2 image was genuinely emitted by checked State05 B1; it is not a B1
+image with a bootstrap sidecar. All six screen workers pass full raw-output
+equality in 7.992 seconds.
+
+| Input / clock | State08 B2 | State05 B2 | Pinned TS |
+|---|---:|---:|---:|
+| Numeric, compilation | 476.04 ms | 408.02 ms | 320.44 ms |
+| MapSet, compilation | 1,544.67 ms | 1,353.51 ms | 630.73 ms |
+| Numeric, import + API + compilation | 583.28 ms | 505.07 ms | 580.25 ms |
+| MapSet, import + API + compilation | 1,652.96 ms | 1,451.68 ms | 894.11 ms |
+
+On these **two sources only**, equal-source geometric means are 0.867× old B2
+compilation time and 1.653× TS; combined-first ratios are 0.872× old B2 and
+1.189× TS. Each cell has one fixed-order sample. This is preliminary evidence
+of a 13.3% compilation reduction, not a replacement for the 23-source balanced
+headline. Candidate API loading also fell from about 103–104 to 92–93 ms.
+
+The separate `state05-b2-bytegate23/report.json` completes **23/23 fresh source
+compilations** in 31.134 seconds. Every full emitted module equals its qualified
+reference, covering the modules used by all 45 program points. This gate has
+zero fresh runtime executions and no baseline/TS timing roles: it establishes
+artifact preservation on those sources, not broader speed or full semantics.
+
+## State05: what sampled CPU work supports
+
+The [CPU ancestry analysis](evidence/state05-cpu01.json) reconstructs raw V8
+sample parents and produces disjoint semantic and mechanism partitions. The
+two candidate-only first-window profiles contain 395/1,075 samples and
+580.175/1,600.645 ms admitted weighted time for Numeric/MapSet, with no negative
+deltas. The campaign takes 4.085 seconds and both raw-output checks pass.
+Import and module parsing are inside this diagnostic window.
+
+| Disjoint semantic region | Numeric | MapSet |
+|---|---:|---:|
+| Prepared cache read/decode/admission | 27.06% | 10.01% |
+| Module parsing | 18.00% | 6.55% |
+| Source loading | 9.41% | 12.20% |
+| Checking | 10.89% | 9.80% |
+| Annotation | 0.86% | 7.47% |
+| Plan selection | 8.03% | 26.71% |
+| Final library emission | 2.45% | 9.24% |
+| Garbage collection | 6.20% | 5.46% |
+
+Remaining regions are listed in the evidence; the complete partition sums to
+100%. A second view groups mechanisms. It must not be added to this table.
+MapSet's independent substitution/normalization family union is 14.96%, and
+its host-export union is 9.24%; those overlap each other and their parent
+stages. Native host walking alone is an inclusive 6.03%, already inside host
+exports. These numbers support sharing type/normal-form facts across plan,
+annotation and wrapper generation; they do not imply every sampled operation
+can be eliminated. No paired TS CPU profile establishes which work is excess.
+
+The generated implementation of `index_hash` uses a Unicode-aware destructive
+String loop (`codePointAt`, head/suffix slicing, FNV U32 multiplication), matching
+[its Bend source](../../selfhost/src/core/index.bend). However, **no named
+`index_hash` frame was sampled**. Inlining or sampling can hide it, so this is
+neither evidence of zero cost nor support for a large hashing claim. The wider
+index/book/lookup union is 13.55% on Numeric and 8.66% on MapSet; hashing is only
+one possible component of that work.
+
+MapSet's sampled String-library union is 3.28%. Generated `String.contains` and
+`String.starts_with` destructure String values repeatedly; generated-JS text
+inspection calls them in the direct backend. A proven native-string lowering
+could reduce that work, but this profile supports a small bounded experiment,
+not a parity prediction. Unicode semantics and exact body recognition remain
+requirements. The strongest measured next steps are the cache decoder and
+repeated host/type traversal, followed by sharing plan and annotation facts.
+
+## State05: fast host-helper counterfactuals
+
+The host-only loop copies the actual prepared State05 B2 project and changes
+only the recorded graph decoder helper. API/image, driver, Base, runtime and
+cache bytes stay identical. Every worker uses ordinary `inspect` and saves its
+complete module for exact comparison. These are explicitly diagnostic images,
+without fabricated checked sidecars or production qualification.
+
+| Helper experiment | Samples per role/source | Numeric compilation ratio | MapSet compilation ratio | Campaign wall |
+|---|---:|---:|---:|---:|
+| Literal object shapes | 1 | 0.893× | 0.967× | 13.946 s |
+| Specialized constructors v1 | 1 | 0.807× | 0.921× | 13.599 s |
+| Specialized constructors v2 | 2, reversed order | 0.761× | 0.855× | 27.884 s |
+
+Each ratio compares that experiment's own unchanged baseline. Separate
+campaigns must not be compared directly. All 4/4, 4/4 and 8/8 workers pass
+exact module equality. The v2 confirmation gives 23.9%/14.5% lower mean
+compilation time and 20.7%/13.8% lower combined-first time. There is no TS role.
+Malformed-cache differential controls, checked integration, actual new B2 and
+broader qualification are still required before promoting these gains.
+
+## Final qualification readiness
+
+Root requested data-only State06 plans after its strict36 build passed. The
+generated `state06-final-plans/index.json` binds the actual checked attempt,
+export admission and frozen qualification method01; its SHA256 is
+`c5abc44224a84dc8f24671150b731de0f67fe3c86947df9b075bc6fa03c697da`.
+It contains four exact root launch commands for checked-B1, genuine bootstrap,
+B2/self-check/fixed-point qualification and release preparation. No bootstrap
+reuse was supplied and no stage was executed by the measurement agent.
+State06 remains a provisional selection while further source changes are
+investigated; plans do not authorize skipping the recorded stage barriers.
+
+The reviewed staging code copies and pins the selected graph helper, preserves
+the decoder-authoritative frame3 admission, and uses the plan-based genuine
+B2/B3 emission. Logical exported roots number 94; B2 also retains reachable
+internal definitions, so exact default-export-key checks apply only to the
+checked B1 facade. Release preparation produces commands and never installs.
+
+The first State06 final checked run subsequently stopped at composition controls:
+both TS and candidate reported `spawnSync .../node EPERM` and `healthy:false`,
+although their observed events and values agreed. The receipt remains failed
+and preserved; matching observations do not override process-health checks.
+At root's request, the data-only factory created fresh `state06r2-final-plans`
+and `final-state06r2` bindings, reusing the already recorded genuine State06 B2
+through its original bootstrap pins. The new index SHA256 is
+`57d0cb0f0fb6a6ae433a35c2bbe6a2b10a8ad7f8b9ce18aac7e8274b963c1cd5`.
+Before handoff, all 114 live manifest modules, `compiler.json` and seven host
+helpers matched the selected State06 snapshot byte-for-byte. Snapshot staging
+supplies the compiler image and driver; maintained8 additionally checks current
+host/manifest equality and reads the maintained live test scripts. No retry
+target was executed by the measurement agent.

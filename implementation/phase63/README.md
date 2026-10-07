@@ -114,3 +114,37 @@ Raw evidence: `selfhost/build/phase63/checked-state06/attempt.json`,
 `state06-b1-latency/screen/report.json`. State07 tests the separately registered
 checker-annotation reuse hypothesis on top of State06. Unused positional-ABI
 patches remain rejected for this named-layout B1 **and B2** configuration.
+
+Root starts State06's frozen B2 construction before its full final checked matrix
+so the next performance decision uses a genuine self-hosted image. The generated
+plan's generic checked-first barrier is intentionally reordered for this
+measurement-only step: checked36, exact export admission and the initial output
+screens already pass; installation is still blocked on all final semantic gates.
+No pending checked/fresh-source/reproduction gate is treated as passed.
+
+## Current second-stage result and negative experiments
+
+State06 genuine B2 construction/driver checks pass. A three-round, rotated-role
+Numeric/Map screen passes18 workers and all exact raw-output checks. Median
+compilation: Numeric478.65→360.15ms, with TS322.69ms; Map1543.27→1232.37ms, with
+TS629.48ms. Median combined first request: Numeric585.96→457.46ms versus TS586.08;
+Map1650.92→1330.49ms versus TS890.68. Compilation and combined latency give
+different comparisons; this is still only a two-source screen. Broad23×3 is
+running separately. Raw: `state06-b2-latency/screen-balanced/report.json`.
+
+State07 annotation reuse passes389 exact internal argument comparisons and full
+module equality with its fallback, but no clear whole-request improvement.
+Its49-line source change is restored to State06; the isolated patch and counts
+are retained. The frontend suffix-carry simplification is also only a proposal.
+
+The first full checked matrix preserves a failed composition receipt: both TS
+and candidate child observations agree, but `spawnSync ... EPERM` makes all18
+unhealthy. It is not a semantic pass. A fresh permission-correct retry is planned,
+reusing the already qualified B2 image without relabelling the failed parent.
+
+Exact-identity query hooks are diagnostic only. Initial Map arity caching has
+523/756 hits, avoids8,075 WNF entries and reduces its single diagnostic request
+1443→1331ms. General WNF caching saves less; combining it adds no clear benefit.
+The original Numeric baseline prepared the cache and is invalid for timing
+comparison. A successor requires a preexisting, unchanged frame. Production
+compiler algorithms remain Bend; no JavaScript memo hook is selected.

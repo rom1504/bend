@@ -1,0 +1,1026 @@
+{
+  "kind": "phase63-cpu-ancestry-analysis",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/analyze-cpu.py",
+    "sha256": "0a511e4b753701d09bb10e9db3a225d5520184c6b9e6ca298da3143320cf03bd"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-cpu01/report.json",
+    "sha256": "185140827849b7b32c3bef111f2ef9535b8edc4ab5ed58a8662fb55648fc26c3"
+  },
+  "rows": [
+    {
+      "case": "numeric-recurrence",
+      "role": "candidate",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-cpu01/numeric-recurrence-0-candidate.result.json",
+        "sha256": "c735037d2db5a54ee21ed12ba9fbb3545093cb9bf375954f6f1103ab5fa58f6d"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-cpu01/numeric-recurrence-0-candidate-profile/profile.cpuprofile",
+        "sha256": "412881b0a2de69c45d38c565e5009b60ca361b7d051c5549ce10560d9753f379",
+        "bytes": 962761
+      },
+      "totalMicroseconds": 580175,
+      "samples": 395,
+      "semanticPartition": [
+        {
+          "name": "prepared-cache",
+          "microseconds": 157024,
+          "percent": 27.064937303399837
+        },
+        {
+          "name": "module-parse",
+          "microseconds": 104413,
+          "percent": 17.996811306933253
+        },
+        {
+          "name": "checking",
+          "microseconds": 63160,
+          "percent": 10.886370491661998
+        },
+        {
+          "name": "other",
+          "microseconds": 62836,
+          "percent": 10.830525272547076
+        },
+        {
+          "name": "source-loading",
+          "microseconds": 54577,
+          "percent": 9.406989270478734
+        },
+        {
+          "name": "plan-selection",
+          "microseconds": 46600,
+          "percent": 8.032059292454862
+        },
+        {
+          "name": "gc",
+          "microseconds": 35963,
+          "percent": 6.1986469599689755
+        },
+        {
+          "name": "profiler-overhead",
+          "microseconds": 19716,
+          "percent": 3.398285000215452
+        },
+        {
+          "name": "final-library",
+          "microseconds": 14192,
+          "percent": 2.446158486663507
+        },
+        {
+          "name": "context-building",
+          "microseconds": 8811,
+          "percent": 1.5186797087085793
+        },
+        {
+          "name": "annotation",
+          "microseconds": 4966,
+          "percent": 0.8559486361873573
+        },
+        {
+          "name": "source-reach",
+          "microseconds": 4696,
+          "percent": 0.8094109535915887
+        },
+        {
+          "name": "layout-proof",
+          "microseconds": 3221,
+          "percent": 0.5551773171887793
+        }
+      ],
+      "mechanismPartition": [
+        {
+          "name": "other",
+          "microseconds": 178380,
+          "percent": 30.745895634937735
+        },
+        {
+          "name": "cache-decode-and-admission",
+          "microseconds": 157024,
+          "percent": 27.064937303399837
+        },
+        {
+          "name": "module-parse",
+          "microseconds": 104413,
+          "percent": 17.996811306933253
+        },
+        {
+          "name": "index-book-lookup",
+          "microseconds": 78625,
+          "percent": 13.551945533675184
+        },
+        {
+          "name": "gc",
+          "microseconds": 35963,
+          "percent": 6.1986469599689755
+        },
+        {
+          "name": "substitution-normalization",
+          "microseconds": 19983,
+          "percent": 3.4443055974490453
+        },
+        {
+          "name": "string-library",
+          "microseconds": 5787,
+          "percent": 0.9974576636359719
+        }
+      ],
+      "independentFamilyUnions": [
+        {
+          "name": "index-book-lookup",
+          "microseconds": 78625,
+          "percent": 13.551945533675184
+        },
+        {
+          "name": "substitution-normalization",
+          "microseconds": 32944,
+          "percent": 5.6782867238333266
+        },
+        {
+          "name": "host-exports",
+          "microseconds": 13132,
+          "percent": 2.2634549920282674
+        },
+        {
+          "name": "string-library",
+          "microseconds": 5787,
+          "percent": 0.9974576636359719
+        }
+      ],
+      "cross": [
+        {
+          "stage": "prepared-cache",
+          "mechanism": "cache-decode-and-admission",
+          "microseconds": 157024,
+          "percent": 27.064937303399837
+        },
+        {
+          "stage": "module-parse",
+          "mechanism": "module-parse",
+          "microseconds": 104413,
+          "percent": 17.996811306933253
+        },
+        {
+          "stage": "source-loading",
+          "mechanism": "other",
+          "microseconds": 47078,
+          "percent": 8.114448226828113
+        },
+        {
+          "stage": "other",
+          "mechanism": "other",
+          "microseconds": 45869,
+          "percent": 7.906062825871504
+        },
+        {
+          "stage": "gc",
+          "mechanism": "gc",
+          "microseconds": 35963,
+          "percent": 6.1986469599689755
+        },
+        {
+          "stage": "checking",
+          "mechanism": "other",
+          "microseconds": 29195,
+          "percent": 5.03210238290171
+        },
+        {
+          "stage": "checking",
+          "mechanism": "index-book-lookup",
+          "microseconds": 28686,
+          "percent": 4.944370233119318
+        },
+        {
+          "stage": "plan-selection",
+          "mechanism": "index-book-lookup",
+          "microseconds": 22983,
+          "percent": 3.961390959624252
+        },
+        {
+          "stage": "plan-selection",
+          "mechanism": "other",
+          "microseconds": 21379,
+          "percent": 3.684922652647908
+        },
+        {
+          "stage": "profiler-overhead",
+          "mechanism": "other",
+          "microseconds": 19716,
+          "percent": 3.398285000215452
+        },
+        {
+          "stage": "other",
+          "mechanism": "index-book-lookup",
+          "microseconds": 10689,
+          "percent": 1.842375145430258
+        },
+        {
+          "stage": "context-building",
+          "mechanism": "index-book-lookup",
+          "microseconds": 8811,
+          "percent": 1.5186797087085793
+        },
+        {
+          "stage": "final-library",
+          "mechanism": "other",
+          "microseconds": 7570,
+          "percent": 1.3047787305554357
+        },
+        {
+          "stage": "other",
+          "mechanism": "substitution-normalization",
+          "microseconds": 6278,
+          "percent": 1.0820873012453138
+        },
+        {
+          "stage": "final-library",
+          "mechanism": "substitution-normalization",
+          "microseconds": 5570,
+          "percent": 0.9600551557719654
+        },
+        {
+          "stage": "source-loading",
+          "mechanism": "index-book-lookup",
+          "microseconds": 5302,
+          "percent": 0.9138621967509802
+        },
+        {
+          "stage": "checking",
+          "mechanism": "substitution-normalization",
+          "microseconds": 5279,
+          "percent": 0.9098978756409705
+        },
+        {
+          "stage": "source-reach",
+          "mechanism": "other",
+          "microseconds": 4391,
+          "percent": 0.7568406084371095
+        },
+        {
+          "stage": "plan-selection",
+          "mechanism": "string-library",
+          "microseconds": 2238,
+          "percent": 0.3857456801827035
+        },
+        {
+          "stage": "annotation",
+          "mechanism": "other",
+          "microseconds": 2103,
+          "percent": 0.36247683888481924
+        },
+        {
+          "stage": "annotation",
+          "mechanism": "substitution-normalization",
+          "microseconds": 1773,
+          "percent": 0.3055974490455466
+        },
+        {
+          "stage": "layout-proof",
+          "mechanism": "string-library",
+          "microseconds": 1383,
+          "percent": 0.23837635196276985
+        },
+        {
+          "stage": "source-loading",
+          "mechanism": "string-library",
+          "microseconds": 1114,
+          "percent": 0.19201103115439308
+        },
+        {
+          "stage": "annotation",
+          "mechanism": "index-book-lookup",
+          "microseconds": 1090,
+          "percent": 0.18787434825699142
+        },
+        {
+          "stage": "source-loading",
+          "mechanism": "substitution-normalization",
+          "microseconds": 1083,
+          "percent": 0.18666781574524927
+        },
+        {
+          "stage": "layout-proof",
+          "mechanism": "other",
+          "microseconds": 1079,
+          "percent": 0.18597836859568234
+        },
+        {
+          "stage": "final-library",
+          "mechanism": "string-library",
+          "microseconds": 1052,
+          "percent": 0.18132460033610548
+        },
+        {
+          "stage": "layout-proof",
+          "mechanism": "index-book-lookup",
+          "microseconds": 759,
+          "percent": 0.13082259663032705
+        },
+        {
+          "stage": "source-reach",
+          "mechanism": "index-book-lookup",
+          "microseconds": 305,
+          "percent": 0.05257034515447925
+        }
+      ],
+      "topSelf": [
+        {
+          "name": "decodeBaseGraph",
+          "microseconds": 144657,
+          "percent": 24.933339078726245
+        },
+        {
+          "name": "compileSourceTextModule",
+          "microseconds": 104413,
+          "percent": 17.996811306933253
+        },
+        {
+          "name": "(garbage collector)",
+          "microseconds": 35963,
+          "percent": 6.1986469599689755
+        },
+        {
+          "name": "post",
+          "microseconds": 19716,
+          "percent": 3.398285000215452
+        },
+        {
+          "name": "",
+          "microseconds": 19060,
+          "percent": 3.2852156676864737
+        },
+        {
+          "name": "update",
+          "microseconds": 15477,
+          "percent": 2.6676433834618867
+        },
+        {
+          "name": "book_final_scan",
+          "microseconds": 15071,
+          "percent": 2.5976644977808423
+        },
+        {
+          "name": "index_remove",
+          "microseconds": 13701,
+          "percent": 2.3615288490541646
+        },
+        {
+          "name": "j_find_ctor",
+          "microseconds": 9997,
+          "percent": 1.7231007885551775
+        },
+        {
+          "name": "lookup",
+          "microseconds": 7803,
+          "percent": 1.3449390270177102
+        },
+        {
+          "name": "index_lookup",
+          "microseconds": 7529,
+          "percent": 1.2977118972723747
+        },
+        {
+          "name": "index_find",
+          "microseconds": 7518,
+          "percent": 1.2958159176110655
+        },
+        {
+          "name": "norm_eval",
+          "microseconds": 5200,
+          "percent": 0.8962812944370233
+        },
+        {
+          "name": "driver_holes_terms",
+          "microseconds": 4996,
+          "percent": 0.8611194898091094
+        },
+        {
+          "name": "index_set",
+          "microseconds": 4589,
+          "percent": 0.7909682423406731
+        },
+        {
+          "name": "f_tl",
+          "microseconds": 4193,
+          "percent": 0.7227129745335459
+        },
+        {
+          "name": "missing",
+          "microseconds": 3731,
+          "percent": 0.6430818287585642
+        },
+        {
+          "name": "index_insert",
+          "microseconds": 3546,
+          "percent": 0.6111948980910932
+        },
+        {
+          "name": "f_prefix_drop",
+          "microseconds": 3496,
+          "percent": 0.6025768087215064
+        },
+        {
+          "name": "jd_doc_body",
+          "microseconds": 3438,
+          "percent": 0.5925798250527858
+        },
+        {
+          "name": "wnf",
+          "microseconds": 3421,
+          "percent": 0.5896496746671264
+        },
+        {
+          "name": "f_eq",
+          "microseconds": 3269,
+          "percent": 0.5634506829835825
+        },
+        {
+          "name": "book_final_reverse",
+          "microseconds": 3241,
+          "percent": 0.558624552936614
+        },
+        {
+          "name": "f_lex_scanned",
+          "microseconds": 3188,
+          "percent": 0.549489378204852
+        },
+        {
+          "name": "norm_max_term",
+          "microseconds": 3177,
+          "percent": 0.5475933985435429
+        },
+        {
+          "name": "jd_text_scan",
+          "microseconds": 2995,
+          "percent": 0.5162235532382471
+        },
+        {
+          "name": "subst",
+          "microseconds": 2534,
+          "percent": 0.4367647692506571
+        },
+        {
+          "name": "decodeBaseCacheGraphFrame",
+          "microseconds": 2489,
+          "percent": 0.429008488818029
+        },
+        {
+          "name": "driver_count_todos",
+          "microseconds": 2427,
+          "percent": 0.4183220579997414
+        },
+        {
+          "name": "jd_raise",
+          "microseconds": 2277,
+          "percent": 0.3924677898909812
+        },
+        {
+          "name": "String.starts_with",
+          "microseconds": 2238,
+          "percent": 0.3857456801827035
+        },
+        {
+          "name": "f_find",
+          "microseconds": 2224,
+          "percent": 0.38333261515921924
+        },
+        {
+          "name": "has_name",
+          "microseconds": 2216,
+          "percent": 0.38195372086008533
+        },
+        {
+          "name": "sk_escape",
+          "microseconds": 2186,
+          "percent": 0.37678286723833326
+        },
+        {
+          "name": "kr_visit",
+          "microseconds": 2175,
+          "percent": 0.37488688757702415
+        }
+      ],
+      "caveat": "Two complete independent partitions sum to100%; do not add across views. Family unions overlap one another. Missing named hash samples do not prove zero cost when code is inlined or unsampled."
+    },
+    {
+      "case": "test-map-set-ops",
+      "role": "candidate",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-cpu01/test-map-set-ops-0-candidate.result.json",
+        "sha256": "07e3603068aea2d899f515e9abb3064905b641862eb7e3abaa5685c2edb6ead4"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state05-cpu01/test-map-set-ops-0-candidate-profile/profile.cpuprofile",
+        "sha256": "3da80d009067e3e3fa75e7cbd11a16ff014cca39966d2f69ecb8bd6b3a3e6607",
+        "bytes": 4867955
+      },
+      "totalMicroseconds": 1600645,
+      "samples": 1075,
+      "semanticPartition": [
+        {
+          "name": "plan-selection",
+          "microseconds": 427563,
+          "percent": 26.711919257549297
+        },
+        {
+          "name": "source-loading",
+          "microseconds": 195329,
+          "percent": 12.203143107934613
+        },
+        {
+          "name": "prepared-cache",
+          "microseconds": 160298,
+          "percent": 10.014587869265203
+        },
+        {
+          "name": "checking",
+          "microseconds": 156887,
+          "percent": 9.80148627584505
+        },
+        {
+          "name": "final-library",
+          "microseconds": 147875,
+          "percent": 9.23846324450456
+        },
+        {
+          "name": "annotation",
+          "microseconds": 119643,
+          "percent": 7.474674271934127
+        },
+        {
+          "name": "module-parse",
+          "microseconds": 104841,
+          "percent": 6.549922062668487
+        },
+        {
+          "name": "gc",
+          "microseconds": 87333,
+          "percent": 5.456113004445083
+        },
+        {
+          "name": "other",
+          "microseconds": 74329,
+          "percent": 4.6436905122622445
+        },
+        {
+          "name": "layout-proof",
+          "microseconds": 66299,
+          "percent": 4.142017749094896
+        },
+        {
+          "name": "source-reach",
+          "microseconds": 28889,
+          "percent": 1.804834925920488
+        },
+        {
+          "name": "profiler-overhead",
+          "microseconds": 19403,
+          "percent": 1.2121988323457107
+        },
+        {
+          "name": "context-building",
+          "microseconds": 11956,
+          "percent": 0.7469488862302385
+        }
+      ],
+      "mechanismPartition": [
+        {
+          "name": "other",
+          "microseconds": 839156,
+          "percent": 52.42611572209953
+        },
+        {
+          "name": "substitution-normalization",
+          "microseconds": 217910,
+          "percent": 13.613886901842696
+        },
+        {
+          "name": "cache-decode-and-admission",
+          "microseconds": 160298,
+          "percent": 10.014587869265203
+        },
+        {
+          "name": "index-book-lookup",
+          "microseconds": 138544,
+          "percent": 8.655510747230023
+        },
+        {
+          "name": "module-parse",
+          "microseconds": 104841,
+          "percent": 6.549922062668487
+        },
+        {
+          "name": "gc",
+          "microseconds": 87333,
+          "percent": 5.456113004445083
+        },
+        {
+          "name": "string-library",
+          "microseconds": 52563,
+          "percent": 3.2838636924489815
+        }
+      ],
+      "independentFamilyUnions": [
+        {
+          "name": "substitution-normalization",
+          "microseconds": 239401,
+          "percent": 14.956533147574882
+        },
+        {
+          "name": "host-exports",
+          "microseconds": 147875,
+          "percent": 9.23846324450456
+        },
+        {
+          "name": "index-book-lookup",
+          "microseconds": 138544,
+          "percent": 8.655510747230023
+        },
+        {
+          "name": "string-library",
+          "microseconds": 52563,
+          "percent": 3.2838636924489815
+        }
+      ],
+      "cross": [
+        {
+          "stage": "plan-selection",
+          "mechanism": "other",
+          "microseconds": 266633,
+          "percent": 16.657847305305047
+        },
+        {
+          "stage": "source-loading",
+          "mechanism": "other",
+          "microseconds": 183674,
+          "percent": 11.474999140971295
+        },
+        {
+          "stage": "prepared-cache",
+          "mechanism": "cache-decode-and-admission",
+          "microseconds": 160298,
+          "percent": 10.014587869265203
+        },
+        {
+          "stage": "final-library",
+          "mechanism": "other",
+          "microseconds": 118938,
+          "percent": 7.430629527471738
+        },
+        {
+          "stage": "module-parse",
+          "mechanism": "module-parse",
+          "microseconds": 104841,
+          "percent": 6.549922062668487
+        },
+        {
+          "stage": "plan-selection",
+          "mechanism": "substitution-normalization",
+          "microseconds": 93079,
+          "percent": 5.81509329051726
+        },
+        {
+          "stage": "gc",
+          "mechanism": "gc",
+          "microseconds": 87333,
+          "percent": 5.456113004445083
+        },
+        {
+          "stage": "annotation",
+          "mechanism": "other",
+          "microseconds": 63463,
+          "percent": 3.9648391742078974
+        },
+        {
+          "stage": "other",
+          "mechanism": "other",
+          "microseconds": 61820,
+          "percent": 3.8621930534253375
+        },
+        {
+          "stage": "checking",
+          "mechanism": "other",
+          "microseconds": 58767,
+          "percent": 3.671457443718001
+        },
+        {
+          "stage": "checking",
+          "mechanism": "index-book-lookup",
+          "microseconds": 52526,
+          "percent": 3.2815521242998913
+        },
+        {
+          "stage": "annotation",
+          "mechanism": "substitution-normalization",
+          "microseconds": 45981,
+          "percent": 2.872654461170341
+        },
+        {
+          "stage": "checking",
+          "mechanism": "substitution-normalization",
+          "microseconds": 45594,
+          "percent": 2.848476707827157
+        },
+        {
+          "stage": "plan-selection",
+          "mechanism": "string-library",
+          "microseconds": 38673,
+          "percent": 2.416088514317666
+        },
+        {
+          "stage": "layout-proof",
+          "mechanism": "other",
+          "microseconds": 38435,
+          "percent": 2.401219508385682
+        },
+        {
+          "stage": "plan-selection",
+          "mechanism": "index-book-lookup",
+          "microseconds": 29178,
+          "percent": 1.8228901474093258
+        },
+        {
+          "stage": "source-reach",
+          "mechanism": "other",
+          "microseconds": 28023,
+          "percent": 1.7507317362688166
+        },
+        {
+          "stage": "profiler-overhead",
+          "mechanism": "other",
+          "microseconds": 19403,
+          "percent": 1.2121988323457107
+        },
+        {
+          "stage": "layout-proof",
+          "mechanism": "substitution-normalization",
+          "microseconds": 16011,
+          "percent": 1.0002842604075233
+        },
+        {
+          "stage": "final-library",
+          "mechanism": "substitution-normalization",
+          "microseconds": 15040,
+          "percent": 0.9396212151976234
+        },
+        {
+          "stage": "context-building",
+          "mechanism": "index-book-lookup",
+          "microseconds": 11956,
+          "percent": 0.7469488862302385
+        },
+        {
+          "stage": "final-library",
+          "mechanism": "index-book-lookup",
+          "microseconds": 11790,
+          "percent": 0.736578066966754
+        },
+        {
+          "stage": "source-loading",
+          "mechanism": "index-book-lookup",
+          "microseconds": 10592,
+          "percent": 0.6617332387881135
+        },
+        {
+          "stage": "other",
+          "mechanism": "index-book-lookup",
+          "microseconds": 10304,
+          "percent": 0.6437404921141165
+        },
+        {
+          "stage": "layout-proof",
+          "mechanism": "string-library",
+          "microseconds": 9665,
+          "percent": 0.6038190854311856
+        },
+        {
+          "stage": "annotation",
+          "mechanism": "index-book-lookup",
+          "microseconds": 9144,
+          "percent": 0.5712697068994061
+        },
+        {
+          "stage": "other",
+          "mechanism": "substitution-normalization",
+          "microseconds": 2205,
+          "percent": 0.13775696672278986
+        },
+        {
+          "stage": "layout-proof",
+          "mechanism": "index-book-lookup",
+          "microseconds": 2188,
+          "percent": 0.13669489487050532
+        },
+        {
+          "stage": "final-library",
+          "mechanism": "string-library",
+          "microseconds": 2107,
+          "percent": 0.13163443486844367
+        },
+        {
+          "stage": "source-loading",
+          "mechanism": "string-library",
+          "microseconds": 1063,
+          "percent": 0.06641072817520437
+        },
+        {
+          "stage": "annotation",
+          "mechanism": "string-library",
+          "microseconds": 1055,
+          "percent": 0.06591092965648224
+        },
+        {
+          "stage": "source-reach",
+          "mechanism": "index-book-lookup",
+          "microseconds": 866,
+          "percent": 0.05410318965167167
+        }
+      ],
+      "topSelf": [
+        {
+          "name": "decodeBaseGraph",
+          "microseconds": 143137,
+          "percent": 8.942457571791373
+        },
+        {
+          "name": "compileSourceTextModule",
+          "microseconds": 103786,
+          "percent": 6.484011133012005
+        },
+        {
+          "name": "(garbage collector)",
+          "microseconds": 87333,
+          "percent": 5.456113004445083
+        },
+        {
+          "name": "subst",
+          "microseconds": 66256,
+          "percent": 4.139331332056765
+        },
+        {
+          "name": "",
+          "microseconds": 49005,
+          "percent": 3.0615783012473097
+        },
+        {
+          "name": "wnf",
+          "microseconds": 42108,
+          "percent": 2.6306895032939845
+        },
+        {
+          "name": "f_lex_scanned",
+          "microseconds": 26770,
+          "percent": 1.6724507932739614
+        },
+        {
+          "name": "lookup",
+          "microseconds": 23383,
+          "percent": 1.4608485954099752
+        },
+        {
+          "name": "jd_text_scan",
+          "microseconds": 20652,
+          "percent": 1.2902298760812048
+        },
+        {
+          "name": "index_find",
+          "microseconds": 20260,
+          "percent": 1.26573974866382
+        },
+        {
+          "name": "post",
+          "microseconds": 19403,
+          "percent": 1.2121988323457107
+        },
+        {
+          "name": "j_specialize",
+          "microseconds": 17738,
+          "percent": 1.1081782656366652
+        },
+        {
+          "name": "index_remove",
+          "microseconds": 17581,
+          "percent": 1.0983697197067432
+        },
+        {
+          "name": "annotate",
+          "microseconds": 17350,
+          "percent": 1.0839380374786414
+        },
+        {
+          "name": "j_layout_term",
+          "microseconds": 16419,
+          "percent": 1.0257739848623524
+        },
+        {
+          "name": "String.starts_with.if",
+          "microseconds": 15637,
+          "percent": 0.9769186796572632
+        },
+        {
+          "name": "norm_eval_node",
+          "microseconds": 15534,
+          "percent": 0.9704837737287155
+        },
+        {
+          "name": "index_lookup",
+          "microseconds": 15385,
+          "percent": 0.9611750263175157
+        },
+        {
+          "name": "jd_host_native_walk",
+          "microseconds": 15377,
+          "percent": 0.9606752277987937
+        },
+        {
+          "name": "update",
+          "microseconds": 15131,
+          "percent": 0.9453064233480878
+        },
+        {
+          "name": "j_find_ctor",
+          "microseconds": 14711,
+          "percent": 0.9190670011151755
+        },
+        {
+          "name": "sk_node",
+          "microseconds": 14493,
+          "percent": 0.9054474914799971
+        },
+        {
+          "name": "jd_raise_match",
+          "microseconds": 14211,
+          "percent": 0.8878295936950417
+        },
+        {
+          "name": "jd_calls_body",
+          "microseconds": 13857,
+          "percent": 0.865713509241587
+        },
+        {
+          "name": "jd_native_layout",
+          "microseconds": 13811,
+          "percent": 0.8628396677589347
+        },
+        {
+          "name": "book_final_scan",
+          "microseconds": 13489,
+          "percent": 0.8427227773803685
+        },
+        {
+          "name": "kr_visit",
+          "microseconds": 13158,
+          "percent": 0.8220436136682399
+        },
+        {
+          "name": "ref",
+          "microseconds": 13008,
+          "percent": 0.8126723914421998
+        },
+        {
+          "name": "String.contains.if",
+          "microseconds": 12777,
+          "percent": 0.7982407092140981
+        },
+        {
+          "name": "subst_terms",
+          "microseconds": 12306,
+          "percent": 0.768815071424332
+        },
+        {
+          "name": "env_subst_term",
+          "microseconds": 12246,
+          "percent": 0.765066582533916
+        },
+        {
+          "name": "driver_holes_terms",
+          "microseconds": 12205,
+          "percent": 0.762505115125465
+        },
+        {
+          "name": "jd_raise",
+          "microseconds": 12021,
+          "percent": 0.7510097491948559
+        },
+        {
+          "name": "validateSpanBook",
+          "microseconds": 10860,
+          "percent": 0.6784764891653052
+        },
+        {
+          "name": "norm_eval",
+          "microseconds": 10703,
+          "percent": 0.6686679432353833
+        }
+      ],
+      "caveat": "Two complete independent partitions sum to100%; do not add across views. Family unions overlap one another. Missing named hash samples do not prove zero cost when code is inlined or unsampled."
+    }
+  ],
+  "scope": "One candidate-only first-window CPU profile per source, including module/API import. No paired TS CPU counterfactual; measured work is not automatically excess or removable. Signed weighted accounting admitted with zero negative samples. GC is separate and unassigned to allocating stages. SCC names group primary dispatcher members; source anchors require review."
+}

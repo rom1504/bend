@@ -1,0 +1,66 @@
+--- a/selfhost/src/back/js/direct/ordered.bend
++++ b/selfhost/src/back/js/direct/ordered.bend
+@@ -68,13 +68,62 @@
+   kc(JDOrdered, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
+     (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u =>
+       kc(JDOrdered, U32.is_eq(terms_len(xs), jd_arity(book, d)),
+-        v => jd_ordered_call(book, jd_owner(env), dn(d), tail, jd_ordered_args(book, env, xs, dt(d), next)),
++        v => jd_ordered_call(book, jd_owner(env), dn(d), tail, jd_ordered_checked_args(book, env, t, dn(d), xs, dt(d), next)),
+         v => kc(JDOrdered, U32.is_lt(terms_len(xs), jd_arity(book, d)),
+           w => jd_ordered_eta(book, jd_owner(env), dn(d), jd_ordered_after(book, xs, dt(d)),
+             U32.sub(jd_arity(book, d), terms_len(xs)), terms_len(env), tail,
+             jd_ordered_args(book, env, xs, dt(d), next)),
+           w => jd_ordered_unknown(book, env, t, tail, next, wnf(book, j_type(book, env, kid(t, 0)))))),
+     u => jd_ordered_leaf(book, env, t, ty, tail, next)))
++
++# The annotator stores the already-instantiated function telescope on every
++# App callee. Keep those existing App nodes rather than substituting each actual
++# through the remaining declaration type again. This path is saturated only;
++# missing annotations, unexpected shapes and a mismatched Ref retain the old
++# telescope walker. Every actual must also carry its producer annotation.
++@unsafe
++def jd_ordered_checked_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm,
++  +name: String, +xs: List<&2,KTerm>, +ty: KTerm, +next: U32) -> JDOrderedArgs:
++  jd_ordered_checked_args_on(book, env, xs, ty, next,
++    jd_ordered_typed_spine(t, name, terms_len(xs), Nil{}))
++
++@unsafe
++def jd_ordered_typed_spine(+t: KTerm, +name: String, +left: U32,
++  +apps: List<&2,KTerm>) -> Maybe<&2,List<&2,KTerm>>:
++  kc(Maybe<&2,List<&2,KTerm>>, String.eq(tg(t), "Ann") && U32.is_eq(terms_len(ks(t)), 2),
++    u => jd_ordered_typed_spine(kid(t, 0), name, left, apps), u =>
++  kc(Maybe<&2,List<&2,KTerm>>, String.eq(tg(t), "App") && U32.is_gt(left, 0) &&
++    U32.is_eq(terms_len(ks(t)), 2) &&
++    String.eq(tg(kid(t, 0)), "Ann") && U32.is_eq(terms_len(ks(kid(t, 0))), 2) &&
++    String.eq(tg(kid(kid(t, 0), 1)), "All") && U32.is_eq(terms_len(ks(kid(kid(t, 0), 1))), 2) &&
++    String.eq(tg(kid(t, 1)), "Ann") && U32.is_eq(terms_len(ks(kid(t, 1))), 2),
++    u => jd_ordered_typed_spine(kid(t, 0), name, U32.sub(left, 1), Con{t, apps}), u =>
++  kc(Maybe<&2,List<&2,KTerm>>, String.eq(tg(t), "Ref") && String.eq(nm(t), name) && U32.is_eq(left, 0),
++    u => Some{apps}, u => None{})))
++
++@unsafe
++def jd_ordered_checked_args_on(+book: List<&2,KDef>, +env: List<&2,KTerm>,
++  +xs: List<&2,KTerm>, +ty: KTerm, +next: U32, +result: Maybe<&2,List<&2,KTerm>>) -> JDOrderedArgs:
++  match result:
++    case None{}: jd_ordered_args(book, env, xs, ty, next)
++    case Some{apps}: jd_ordered_typed_args(book, env, apps, next)
++
++@unsafe
++def jd_ordered_typed_args(+book: List<&2,KDef>, +env: List<&2,KTerm>,
++  +apps: List<&2,KTerm>, +next: U32) -> JDOrderedArgs:
++  match apps:
++    case Nil{}: JDOrderedArgs{"", Nil{}, next}
++    case Con{t, rest}: kc(JDOrderedArgs, U32.is_eq(qt(kid(kid(t, 0), 1)), 0),
++      u => jd_ordered_typed_args(book, env, rest, next), u =>
++      jd_ordered_typed_arg_head(book, env, rest,
++        jd_ordered_expr(book, env, kid(t, 1), kid(kid(kid(t, 0), 1), 0), False{}, next)))
++
++@unsafe
++def jd_ordered_typed_arg_head(+book: List<&2,KDef>, +env: List<&2,KTerm>,
++  +rest: List<&2,KTerm>, +head: JDOrdered) -> JDOrderedArgs:
++  match head:
++    case JDOrdered{prefix, value, next}:
++      jd_ordered_arg_join(prefix, value, jd_ordered_typed_args(book, env, rest, next))
+ 
+ # Eta expansion keeps supplied prefixes and expressions in the eventual fully
+ # applied closure. No provided computation runs merely to allocate the closure.

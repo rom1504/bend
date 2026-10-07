@@ -1,0 +1,30 @@
+{
+  "kind": "phase63-private-frontend-suffix-carry-patch",
+  "status": "unapplied-unchecked",
+  "sourceFiles": [
+    {
+      "path": "selfhost/src/load/modules.bend",
+      "beforeSha256": "86a674bd5b2cc2a6e4be84010da6bc69f0e829d60b5a008a8efab01d13df405d",
+      "afterSha256": "bcfa3f440069f44b9b115f7718fcef210cc5e782983dc61607d6eb4337afb070",
+      "beforeLines": 285,
+      "afterLines": 283
+    },
+    {
+      "path": "selfhost/src/load/graph.bend",
+      "beforeSha256": "ed44dca0ba2b024bbfafb56031199fb1d44542bd021a8436a4134e1efea5641e",
+      "afterSha256": "afe210aab6faaaa2709c4d84489e55fbf6ac8ebfd4d8af9f397bb693ff1898e1",
+      "beforeLines": 468,
+      "afterLines": 472
+    },
+    {
+      "path": "selfhost/src/load/prefix.bend",
+      "beforeSha256": "ed8cdf0e3dea003b766648e8d6e49afc6d1db6fd0a617e1cb22f502855f8e2bf",
+      "afterSha256": "6d98e35c38cb9e6491e6cb34b60517a86efe6f48992cb8bae9d54aabfe041096",
+      "beforeLines": 273,
+      "afterLines": 267
+    }
+  ],
+  "patchSha256": "0ea9e4593f375cb297d127f168e9ea3c62c5537b023a97df8b5312269672bdd2",
+  "reason": "State05 CPU shows two ready-path f_prefix_drop traversals consume 6/42 Numeric and 5/121 Map frontend samples. Carry the already-produced qualified module fragment to avoid both Base-spine walks; preserve full graph/parsed/error ordering and original public loader paths.",
+  "qualification": "Unchecked. Root owns strict build, frontend-v3 differential controls and clean short measurement. No speed claim."
+}

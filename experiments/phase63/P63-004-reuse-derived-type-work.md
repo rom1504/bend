@@ -23,3 +23,21 @@ substitution is an explicit equivalence obligation. No gain is established yet.
 Stop a candidate on semantic mismatch; small cases and profiles precede expensive
 self-host rebuilding. Algorithms remain in Bend. Keep generated-program artifacts
 identical unless a separately justified backend change is qualified.
+
+State07 checked36 and exact output screens pass. The diagnostic admits every
+selected saturated call:13 Numeric and376 Map, and all389 full argument records
+(prefix, ordered values, next temporary) match the old walker. Map counters show
+fewer substitution and normalization entries, but its clean single-round
+whole-request screen does not improve over State06; Numeric is slightly worse.
+These separate small campaigns cannot establish a small regression or gain.
+Root therefore keeps the49-line typed-spine change experimental and restores
+State06 source. No complexity increase is selected on hit rate alone.
+Raw: `selfhost/build/phase63/state07-typed-controls01/report.json`,
+`state07-b1-latency/screen/report.json`. Exact patches/controllers remain available.
+
+A further diagnostic measures exact-identity arity and weak-head normalization
+memoization separately in the actual B2. It is a disposable JavaScript hook to
+estimate reusable-work headroom, not a host-language compiler implementation.
+All variants use the same supplied-API loader route and require equal complete
+modules. Any production optimization must still be implemented in Bend and
+qualified with ordinary owned-API clocks.

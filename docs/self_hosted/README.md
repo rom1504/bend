@@ -9,7 +9,10 @@ all 3,192 unsafe declarations retain the expected proof-trust refusal.
 
 [Compiler requests](compiler-request-pipeline.md) explains prepared frontend state,
 private loader provenance, dependent-term cursors, persistent books and structured
-emission metadata. Its balanced compiler campaign passes all 207 workers across
+emission metadata. It also documents the separately tracked
+[Phase63 candidate](../../implementation/phase63/README.md): ready worlds, shared
+graph transport, a library lowering plan and shared host-field analysis. The
+Phase61 balanced compiler campaign passes all 207 workers across
 23 sources, three roles and three rounds. Equal-source median B2/TypeScript
 geometric means improve **2.476542× → 1.433877×** for import + API load + first
 compilation and **3.816429× → 2.071828×** for compilation alone. These are genuine
@@ -48,7 +51,7 @@ The survey changes documentation only; it does not qualify a new compiler.
 | [Direct JavaScript backend](../../selfhost/docs/direct-javascript.md) | Current callable/data interface, ordered prefix/value lowering, 4,096-definition analysis bound and qualification limits. |
 | [Architecture](architecture.md) | Dated Phase45 source organization, representations, pipeline and complexity; use backend boundaries for the current backend split. |
 | [Optimization inventory](optimization-inventory.md) | Existing transformations, where they live, how generally they apply, and missing analyses. |
-| [Compiler requests](compiler-request-pipeline.md) | Phase61 state08 mechanisms, source/host boundaries, fallbacks and release qualification. |
+| [Compiler requests](compiler-request-pipeline.md) | Phase61 state08 mechanisms and the Phase63 candidate's ready world, graph transport and lowering plan; source/host boundaries and fallbacks. |
 | [Compiler allocation](compiler-allocation.md) | Six retained Phase58 changes: final-live-field record syntax, constructor queries, scalar residuals, literal choices, distinct dependency edges and shared recursive dispatch; proof and fallback boundaries. |
 | [Private array regions](private-array-regions.md) | Phase47 closed-array representation, ordered operations, host guards and research limits; separate from release qualification. |
 | [Phase48 representations](phase48-representations.md) | RNFA04 mechanisms, composition controls and original-path mutation contracts; the phase report records release status. |

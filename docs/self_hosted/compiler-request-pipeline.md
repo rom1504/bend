@@ -1,11 +1,17 @@
 # Compiler requests: prepared state and structured emission
 
-This describes installed **Phase61 state08**. The
+The installed baseline is **Phase61 state08**. The
 [state08 results](../../implementation/phase61/state08-results.md) bind the checked
 B1 package, genuine B2/B3 images, source and completed release gates separately.
 Release integrity and all 42 legacy plus 24 default ordinary/relocated CLI checks
 pass. The original failed attempts retain their own receipts and scope. These
 changes accelerate compiler work; they do not establish faster generated programs.
+
+The [Phase63 candidate](#phase63-candidate-ready-world-and-one-lowering-plan)
+extends this architecture with ready worlds, shared graph transport and one
+library lowering plan. Its [phase report](../../implementation/phase63/README.md)
+records qualification and selection separately; implementation in the source
+tree does not itself mean that the installed package has changed.
 
 The compiler owns parsing, checking, specialization and emission in Bend. The
 host owns files, cache transport, identity checks and processes. There is no
@@ -14,7 +20,7 @@ framework. Public core values, quantities, source spans and diagnostic results
 remain the contracts. The [backend boundaries](backend-boundaries.md) describe
 the existing direct JavaScript, legacy JavaScript and native C separation.
 
-## Where work is reused
+## Where Phase61 reuses work
 
 | Work | Implemented mechanism | Main source |
 |---|---|---|
@@ -136,6 +142,92 @@ not cause its RHS, references or effects to be introduced; ordered operands,
 branch scope, capture, aliasing and SCC member retention stay intact. A diagnostic
 found equal retained text/facts on 23 inputs, but that is not a general proof for
 reusing emission across different pruned contexts. No such cache was selected.
+
+## Phase63 candidate: ready world and one lowering plan
+
+This section describes State06's candidate mechanisms. Later experiments and
+their live source changes are not included here. The phase report is the
+authority for selected source, complete gates and measured gains.
+
+| Boundary | Retained value | Request work |
+|---|---|---|
+| Parser | `FReadyPrefixState`: name and constructor indexes, event count | Extend indexes with new source events and validate the actual suffix. |
+| Checker | `KBasePreparedWorld`: raw world/index, checked output, event history and original prefix state | Install suffix headers, rebase fresh counters and check suffix events. |
+| Library backend | `JDPlan`: one annotation context, call/SCC facts, reached definitions and rendered bodies | Discover dependencies while lowering each reached definition once; emit saved bodies in source order. |
+| Export wrappers | `JDHostFields`: field names and their converters | Select the final self-recursive field and produce field output from the same plan. |
+
+**Ready frontend and checker.** Preparation derives the parser indexes from the
+same validated Base book and creates the checker snapshot through the existing
+checked-prefix resume path. The raw unfolding book and elaborated checked output
+remain separate. The prepared world retains actual indexes and term references;
+it is more than a marker that says Base previously passed checking.
+
+Only an authenticated leading global Base injection admits the ready loader
+carrier. Parsing, qualification, fill ordering and origin refinement still run
+for new modules. The loader maintains latest-event name lookup and first
+depth-first constructor lookup, checks the suffix against the saved Base scope,
+and freshens that suffix from the separately admitted counter. Old/raw carriers
+keep whole-graph validation and freshening.
+
+The checker extends the saved immutable index with suffix headers and retains
+the historical declaration-list order. It reuses the prefix maximum, checked
+output and event history. Name intersection queries now scan suffix names
+against the saved index. Bounds, reserved names and constructor collisions still
+control admission. A full 32-bit hash collision between a Base name and suffix
+name selects old prefix replay, preserving exact index bucket order as well as
+lookup results. Invalid admission uses the ordinary full checker.
+
+**Shared prepared transport.** Frame3 in
+[`base-cache-graph.mjs`](../../selfhost/tools/base-cache-graph.mjs) stores a
+mandatory raw-book graph and optional prepared-state graph. Exact structural
+interning includes source intervals and flags; state can refer to book nodes
+without serializing each copy. References point backward, excluding cycles and
+dangling edges. Specialized constructor decoding validates scalar values, child
+categories, list element types, literal payloads and ranges as it constructs
+named ADT objects. The 128 MiB segment and 1,048,576-node bounds remain explicit.
+
+Both segments have digests. API/Base bytes, canonical path, interval, ABI and
+producer metadata remain required. The admitted world's `prefix` must be the
+decoded mandatory book root, and its `state` must be the admitted checked-state
+root. The private driver couples that same seed to the loader carrier. Shape and
+hash validation preserve a trusted-local producer relationship; they are not a
+proof that an arbitrary supplied index or checked world is semantically valid.
+Invalid optional state drops the accelerators. Invalid mandatory bytes fail
+admission; an absent newer cache may fall back to frame2/frame1. Public object
+validation and caller-supplied API paths retain their prior behavior.
+
+State06's B1 and B2 use **named-layout APIs**. Their measured requests do not
+perform positional ABI encoding. The proposed owned-ABI adapter optimization is
+therefore not part of this candidate. Frame3 is data transport, and its decoder
+does not implement parsing, checking, lowering or compiler analysis in JavaScript.
+The persistent inspector still supports parse/check modes only.
+
+**One context for library lowering.** `jd_plan_selected` in
+[`reach.bend`](../../selfhost/src/back/js/direct/reach.bend) owns the complete
+annotation overlay and call/SCC facts until emission finishes. Runtime pruning
+does not remove type information from that context. Reachability consumes each
+definition's actual `JDText` references, validates metadata and saves the rendered
+body in an exact-name index. `jd_plan_library` emits those saved bodies in
+original definition order, then generates exports under the same context.
+
+This deliberately replaces the former distinction between an all-annotation
+reachability context and a pruned-annotation final context. It is not arbitrary
+cross-context cache reuse. Context, alias, demand and refusal controls are
+required alongside byte comparisons; the
+[backend design](../../implementation/phase63/backend-plan.md) records those
+obligations. The 4,096-definition, 65,536-worklist and document metadata bounds,
+SCC member retention and unknown-reference failures remain. The driver selects
+this plan for direct JavaScript **library mode** when its APIs exist. Program
+mode, older images, legacy JavaScript and native C retain their existing paths.
+
+**One field conversion plan.** In
+[`host.bend`](../../selfhost/src/back/js/direct/host.bend), each constructor's
+live field converter is computed once. The same immutable `JDHostFields` supplies
+tail selection and emitted field conversions. Erased fields remain erased; the
+last directly self-recursive field remains the iterative continuation. Field
+conversion order, marshalling depth/fuel and the exhausted-telescope refusal
+fragment are preserved. This reduces compiler work while retaining emitted
+wrapper behavior. It does not eliminate required host value conversion.
 
 ## Host transport and evidence boundaries
 

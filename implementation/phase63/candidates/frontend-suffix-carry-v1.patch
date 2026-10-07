@@ -1,0 +1,100 @@
+--- a/selfhost/src/load/modules.bend
++++ b/selfhost/src/load/modules.bend
+@@ -146,6 +146,10 @@
+ type FCompletion is Data:
+   FCompletion{+graph: FGraph, +parsed: FResult}
+ 
++# The private ready loader retains the fragment it has just completed.
++type FIndexedCompletion is Data:
++  FIndexedCompletion{+graph: FGraph, +parsed: FResult, +fragment: List<&2,KDef>}
++
+ @unsafe
+ def compiler_load_abi() -> U32:
+   2
+@@ -243,22 +247,16 @@
+ # Private admitted-prefix path: the scope indexes describe the exact prior
+ # graph book. Contextual parsing and completion of the new source are unchanged.
+ @unsafe
+-def f_complete_source_indexed(+source: FSource, +ns: String, +header: FHeader, +sources: List<&2,FSource>, +graph: FGraph, +root: String, +names: KDef, +ctors: KDef) -> FCompletion:
++def f_complete_source_indexed(+source: FSource, +ns: String, +header: FHeader, +sources: List<&2,FSource>, +graph: FGraph, +root: String, +names: KDef, +ctors: KDef) -> FIndexedCompletion:
+   match graph:
+     case FGraph{book, error, done}:
+-      kc(FCompletion, String.is_empty(error),
++      kc(FIndexedCompletion, String.is_empty(error),
+         u => f_complete_aliases_indexed(source, ns, header, graph, f_graph_aliases(f_header_imports(header), source, sources, root), book, sources, names, ctors),
+-        u => FCompletion{graph, FResult{Nil{}, error, Nil{}}})
+-
+-@unsafe
+-def f_complete_aliases_indexed(+source: FSource, +ns: String, +header: FHeader, +graph: FGraph, +aliases: List<&2,KTerm>, +prior: List<&2,KDef>, +sources: List<&2,FSource>, +names: KDef, +ctors: KDef) -> FCompletion:
+-  f_complete_parsed_indexed(source, ns, graph, aliases, sources, names, f_source_body_indexed(source, header, FParseScope{prior, names, ctors, ns, aliases}, 0))
+-
+-@unsafe
+-def f_complete_parsed_indexed(+source: FSource, +ns: String, +graph: FGraph, +aliases: List<&2,KTerm>, +sources: List<&2,FSource>, +names: KDef, +parsed: FResult) -> FCompletion:
+-  match parsed:
+-    case FResult{book, error, imports}:
+-      FCompletion{f_graph_finish_indexed(source, ns, book, aliases, graph, sources, error, names), FResult{book, error, imports}}
++        u => FIndexedCompletion{graph, FResult{Nil{}, error, Nil{}}, Nil{}})
++
++@unsafe
++def f_complete_aliases_indexed(+source: FSource, +ns: String, +header: FHeader, +graph: FGraph, +aliases: List<&2,KTerm>, +prior: List<&2,KDef>, +sources: List<&2,FSource>, +names: KDef, +ctors: KDef) -> FIndexedCompletion:
++  f_graph_finish_indexed(source, ns, aliases, graph, sources, names, f_source_body_indexed(source, header, FParseScope{prior, names, ctors, ns, aliases}, 0))
+ 
+ @unsafe
+ def f_source_body_indexed(+source: FSource, +header: FHeader, +scope: FParseScope, +start: U32) -> FResult:
+--- a/selfhost/src/load/graph.bend
++++ b/selfhost/src/load/graph.bend
+@@ -198,10 +198,14 @@
+       f_graph_finish_alias(s, ns, f_graph_fill_defs(book, imports, prior), imports, prior, f_choose(String, String.is_empty(err) && String.is_empty(fallback), u => f_graph_fresh_names(book, index_build(List.reverse(&2,KDef,prior))), u => err), done, sources, fallback)
+ 
+ @unsafe
+-def f_graph_finish_indexed(+source: FSource, +ns: String, +book: List<&2,KDef>, +imports: List<&2,KTerm>, +graph: FGraph, +sources: List<&2,FSource>, +fallback: String, +names: KDef) -> FGraph:
+-  match graph:
+-    case FGraph{prior, error, done}:
+-      f_graph_finish_alias(source, ns, f_graph_fill_defs(book, imports, prior), imports, prior, kc(String, String.is_empty(error) && String.is_empty(fallback), u => f_graph_fresh_names(book, names), u => error), done, sources, fallback)
++def f_graph_finish_indexed(+source: FSource, +ns: String, +imports: List<&2,KTerm>, +graph: FGraph, +sources: List<&2,FSource>, +names: KDef, +parsed: FResult) -> FIndexedCompletion:
++  match graph parsed:
++    case FGraph{prior, error, done} FResult{book, fallback, parsedImports}:
++      +filled = f_graph_fill_defs(book, imports, prior)
++      +selected = kc(String, String.is_empty(error) && String.is_empty(fallback), u => f_graph_fresh_names(book, names), u => error)
++      +loaded = Con{kt("Loaded", f_source_path(source), f_graph_count_defs(filled, 0), 0, Con{ref(ns), imports}), done}
++      +fragment = f_path_defs(f_context_modules(filled, ns), f_path_dir(f_source_path(source)), f_eq(f_source_name(source), "Base"))
++      FIndexedCompletion{f_graph_finish_module(source, prior, selected, loaded, fragment, sources, fallback), parsed, fragment}
+ 
+ @unsafe
+ def f_graph_finish_alias(s, ns, book, imports, prior, err, done, sources, fallback):
+--- a/selfhost/src/load/prefix.bend
++++ b/selfhost/src/load/prefix.bend
+@@ -176,26 +176,20 @@
+       f_prefix_source_completed(prefix, count, ready, f_complete_source(source, ns, header, sources, graph, root))
+     case FReadyPrefixGraph{graph, prefix, suffix, count, ready, names, ctors, baseNames}:
+       kc(FPrefixCompletion, ready,
+-        u => f_prefix_ready_source_completed(prefix, count, baseNames, names, ctors, f_graph_count_defs(suffix, count), f_complete_source_indexed(source, ns, header, sources, graph, root, names, ctors)),
++        u => f_prefix_ready_source_completed(prefix, suffix, count, baseNames, names, ctors, f_complete_source_indexed(source, ns, header, sources, graph, root, names, ctors)),
+         u => f_prefix_source_completed(prefix, count, False{}, f_complete_source(source, ns, header, sources, graph, root)))
+ 
+-# Only the appended fragment extends these persistent indexes. No old term or
+-# constructor tree is revisited, and the original completion still selects errors.
+-@unsafe
+-def f_prefix_ready_source_completed(+prefix: List<&2,KDef>, +count: U32, +baseNames: KDef, +names: KDef, +ctors: KDef, +priorCount: U32, +completion: FCompletion) -> FPrefixCompletion:
++# Carry the actual completed fragment instead of walking the Base spine twice
++# to rediscover it. Prior suffix cells and all prior term trees stay unchanged.
++@unsafe
++def f_prefix_ready_source_completed(+prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +count: U32, +baseNames: KDef, +names: KDef, +ctors: KDef, +completion: FIndexedCompletion) -> FPrefixCompletion:
+   match completion:
+-    case FCompletion{graph, parsed}:
++    case FIndexedCompletion{graph, parsed, fragment}:
+       match graph:
+         case FGraph{book, error, done}:
+           kc(FPrefixCompletion, String.is_empty(error),
+-            u => f_prefix_ready_source_tail(graph, parsed, prefix, count, baseNames, names, ctors, f_prefix_drop(book, count), f_prefix_drop(book, priorCount)),
++            u => FPrefixCompletion{FReadyPrefixGraph{graph, prefix, norm_defs_join(suffix, fragment), count, True{}, f_prefix_names_extend(fragment, names), f_prefix_ctors_extend(fragment, ctors), baseNames}, parsed},
+             u => FPrefixCompletion{FPrefixGraph{graph, prefix, Nil{}, count, False{}}, parsed})
+-
+-@unsafe
+-def f_prefix_ready_source_tail(+graph: FGraph, +parsed: FResult, +prefix: List<&2,KDef>, +count: U32, +baseNames: KDef, +names: KDef, +ctors: KDef, +all: FFreshPrefixTail, +added: FFreshPrefixTail) -> FPrefixCompletion:
+-  match all added:
+-    case FFreshPrefixTail{suffix, matched} FFreshPrefixTail{fragment, appended}:
+-      FPrefixCompletion{FReadyPrefixGraph{graph, prefix, suffix, count, matched && appended, f_prefix_names_extend(fragment, names), f_prefix_ctors_extend(fragment, ctors), baseNames}, parsed}
+ 
+ @unsafe
+ def f_prefix_names_extend(+defs: List<&2,KDef>, +names: KDef) -> KDef:

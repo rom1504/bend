@@ -1,8 +1,52 @@
 # Compiler validation
 
-## Current Phase58 qualification
+## Current Phase61 qualification
 
-Selected last01 is installed and verified. The [Phase58 report](../implementation/phase58/README.md)
+**Phase61 state08 is installed and verified.** The
+[results matrix](../implementation/phase61/state08-results.md) binds the installed
+checked B1, genuine emitted B2/B3, complete source, driver and runtimes separately.
+
+- Checked B1 passes 36 strict paired probes and its final 14-step matrix,
+  including maintained suites, direct census, three retained native C outputs
+  and the 45-point generated-program correctness smoke.
+- Genuine B2 passes eight ordinary-driver observations and its final semantic
+  matrix: 96 source, 34 numeric, 18 composition and two overapplication
+  observations. Known pinned TypeScript NaN failures remain explicit; scopes overlap.
+- B2 freshly checks its complete source with an empty private Base cache in
+  11.397 seconds of check-request time, 17.248 internal / 17.385 supervised seconds.
+  All 3,192 unsafe declarations are accounted for; proof trust is refused.
+- B2 emits byte-identical B3 in 34.386 internal / 34.568 supervised seconds.
+  Both are 3,978,248 bytes with 86 explicit roots, SHA256
+  `23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477`.
+- B2 matches selected B1 on all 23 freshly emitted raw benchmark modules and
+  their 45-point observer mapping.
+- Release admission, installation and integrity verification pass. Healthy
+  installed/relocated checks pass all 42 legacy and 24 default cases; the final
+  two-command CLI resume and post-check integrity verification also pass.
+
+The installed checked B1 API is
+`97f412afb692cc9f187144e418fb153f35f62fb6ff5eda698e28ebc3eaf260c8`;
+its complete source is
+`268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e`.
+B2/B3 are separately qualified images. These overlapping gates are not a unique
+whole-language test total or a kernel proof. Native IO.args, GPU coverage and
+legacy-client migration remain separate frontiers. Original failed receipts
+remain failed and preserved in the results matrix.
+
+The balanced compiler campaign passes 207 fresh workers: 23 sources × three
+roles × three rounds. Equal-source geometric means of per-source medians improve
+from 2.476542× to 1.433877× B2/TS for import/load plus first compilation, and
+3.816429× to 2.071828× for compilation alone. These measure genuine B2 with
+prepared persistent Base caches, not cold OS caches or installed-B1 CLI latency.
+The correctness durations above are separate from these controlled measurements.
+Historical [Phase58 runtime evidence](../implementation/phase58/program-performance.md)
+transfers only to identical artifacts; no new
+669-sample runtime campaign or generated-program speed claim is made. See the
+[image workflow](../docs/self_hosted/compiler-image-generation.md).
+
+## Historical Phase58 qualification
+
+Selected last01 was installed and verified at that checkpoint. The [Phase58 report](../implementation/phase58/README.md)
 and [qualification record](../implementation/phase58/validation.md) bind checked
 B1, genuine emitted B2/B3, source, driver and runtimes separately.
 

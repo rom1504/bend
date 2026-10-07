@@ -1,27 +1,118 @@
 # Phase61: compiler architecture experiments
 
-**State06's broad first-request screen passes all 69 workers across 23 sources.**
-Its equal-source geometric mean B2/TS ratio improves **2.468310× → 1.432999×**
-for import + API load + first compilation, and **3.802103× → 2.098952×** for
-compilation alone. All 23 raw modules match their qualified references; generated
-workloads were not rerun. This is one fixed-order round, not final qualification
-or release. **Installed Phase58 last01 remains unchanged.**
+**State08's balanced compiler campaign passes all 207 workers across 23 sources.**
+Equal-source median B2/TS geometric means improve **2.476542× → 1.433877×** for
+host import + API load + first compilation, and **3.816429× → 2.071828×** for
+compilation alone. Every source improves versus the same-campaign Phase58 B2.
+All fresh raw modules match; this is compiler-request evidence, not a new
+user-program runtime-speed result. **Phase61 state08 is installed and verified
+as a checked B1 release; the compiler timings below use genuine B2.**
 
-State06 also passes its checked B1/36 probes, native/carrier controls, 86-root
-B2 construction and eight ordinary-driver comparisons. The preceding two-source
-pilot and three-source, two-round confirmation remain separate campaigns below.
-Earlier state04 results and failures retain their own identities and are not
-pooled with the new broad screen. The next work is research into repeated JDText
-emission/metadata work and completion of the selected final qualification gates;
-no further optimization gain or release is credited in advance.
+The campaign's [evidence capsule and restoration guide](../../selfhost/tools/performance/phase61/artifacts/README.md)
+are closed and published, with 17,386 reopened-verified raw files including all
+failed and interrupted attempts. The [timing account](timing-account.md) ends at
+the recorded target-work cutoff; publication is separate.
 
-This report retains successive source/image identities and failures. The first
-source checkpoint was `f17585c92399aa4dd90aa791945eaa9f4c478949`; later text and
-Base-state candidates have separate evidence below. The
-[design](../../design/phase61/architectural-compiler-speed.md) sets the objective;
-[validation commands](../../selfhost/tools/performance/phase61/validation/README.md)
-keep prototype gates separate from selected integration. See the
-[timing account](timing-account.md) and [lossless cleanup record](cleanup.md).
+The [final qualification index](../../selfhost/build/phase61/final-state08/qualification.json)
+binds the installed release and reconciles the preserved failures.
+The [selected state08 results](state08-results.md) contain the balanced three-round
+[JSON](evidence/state08-broad3.json), [CSV](evidence/state08-broad3.csv),
+[figure](figures-state08-broad3-v2/broad-ratios.svg) and current gate matrix.
+The clocks measure genuine B2 in fresh processes using prepared persistent Base
+caches; preparation and post-return oracles are excluded. They are not cold
+OS-cache or installed checked-B1 CLI measurements. Combined state08/TS ranges
+from 0.994869 to 1.846615; compilation alone remains slower on every source.
+
+State08 checked-B1's logical 14-step matrix passes, as do carrier/leaf controls,
+86-root B2 construction and eight driver observations. The genuine B2 freshly
+accepts its exact source's types (3,192 unsafe declarations retain their expected
+proof-trust refusal), reproduces identical B3 bytes, and matches selected B1 on
+23 raw modules / 45 points. The original failed launch and receipt-validation
+attempts are preserved. B2 semantics pass 96 source, 34 numeric, 18 composition
+and two overapplication observations; installed legacy42, default24 and final
+identity verification pass. The daemon-interrupted release wrapper remains
+incomplete, with healthy child receipts and the successful two-command resume
+recorded separately in the [results matrix](state08-results.md).
+
+State08 retains state06 plus private childless-term reuse and maximum-bound
+hoisting. State07's backend cursor was reverted after mixed B1 results; no
+isolated-pass or B2 effect is inferred. Context-reuse research is deferred without
+a general proof, and binary cache transport was rejected on measured cost.
+The [architecture guide](../../docs/self_hosted/compiler-request-pipeline.md)
+explains the actual mechanisms, ownership and fallback boundaries.
+
+The successive evidence below remains historical and is not pooled with state08.
+Its pending-gate statements describe those checkpoints; the current installed
+status and [remaining practical opportunities](state08-results.md#result-and-remaining-practical-opportunities)
+are recorded in the selected state08 report.
+See the [design](../../design/phase61/architectural-compiler-speed.md),
+[validation commands](../../selfhost/tools/performance/phase61/validation/README.md),
+[final target-work timing account](timing-account.md), [source footprint](source-footprint.md) and
+[lossless cleanup record](cleanup.md).
+
+## Earlier state07 checkpoint and state08 selection
+
+The [state06 fresh own-source check](../../selfhost/build/phase61/self-check-state06-early01/report.json)
+passes in **18.897 supervised seconds** (18.784 internal; 12.448 for the actual
+check request), starting with an empty private Base cache. The genuine state06 B2
+accepts its exact source's types. All **3,191 explicitly unsafe declarations**
+produce the expected separate proof-trust failure; kernel checking is false.
+This is neither a mathematical proof nor a B2/B3 fixed point, and it does not
+qualify state07's changed source.
+
+The [context-reuse diagnostic](../../selfhost/build/phase61/reuse-probe-all01/report.json)
+passes all 23 inputs: retained definition text and call/component facts agree
+between captured contexts, and complete raw modules match. These finite matches
+do not establish general context invariance or a safe cache key. No cross-context
+emission cache was selected; that research is deferred rather than credited with
+an unmeasured saving.
+
+State07 applies immutable private substitution-leaf reuse and a 34-line backend
+telescope cursor. Its checked API is
+`e334010c1f02479fbb348b866aa04de56454b2efd3660138e1ef48aa135973d7`.
+
+| Completed state07 gate | Result |
+|---|---|
+| [Checked build](../../selfhost/build/phase61/checked-state07/validation-001/report.json) | 36 strict paired probes, zero exact differences; 56.558 supervised seconds |
+| [Leaf controls](../../selfhost/build/phase61/leaf-controls-state07/report.json) | 14 structural/input-retention cases; 9.049 seconds; intentional private leaf identity reuse |
+| [Backend telescope controls](../../selfhost/build/phase61/backend-telescope-state07/report.json) | 24 differential rows + one ordinary direct-constructor bridge; 10.250 seconds |
+| [B1 latency preparation](../../selfhost/build/phase61/state07-b1-latency01/preparation/report.json) | Complete PASS, 13.019 campaign seconds; preparation is not a request-speed sample |
+
+The [canonical workflow application](../../selfhost/build/phase61/workflow-sync02-application01/report.json)
+installs reviewed frame2 support in the maintained development helper, SHA256
+`cdd71b72cb2efeec31fdaac322fc3267644f4c6c51fd6575ea0b37e8920be27c`.
+Its [development tests](../../selfhost/build/phase61/workflow-sync02-tests01-supervisor/run.json)
+pass in 6.345 seconds. Consumed pilot helpers/receipts remain unchanged; subsequent
+selected images must bind the actual maintained workflow.
+
+The separate [binary codec discriminator](../../selfhost/build/phase61/binary-codec01/report.json)
+passes value/metadata comparisons but is **rejected on cost**: median decode plus
+required validation is 225.676 ms versus JSON's 99.840 ms, **2.260389× slower**.
+The complete supervised diagnostic took 4.222 seconds. These warmed, resident-byte
+codec samples are not first-request compiler timings; binary receives no
+JSON-owned-tree shortcut. The existing JSON path remains selected. The
+[transport report](cache-transport.md) owns the detailed interpretation.
+
+The [state07 B1 analysis](../../selfhost/build/phase61/state07-analysis01/report.json)
+subsequently reports mixed changes: three-case confirmation combined-first
+candidate/baseline geometric mean **1.010232**, and compile-only **1.010398**.
+This compares two B1 images with both source changes combined, not B2 or isolated
+pass effects. The backend cursor was reverted; `back/common/queries.bend` in
+state08 is byte-identical to state06.
+
+State08 retains only the two-line private leaf change and maximum-bound hoisting
+on top of state06's Bend source. Its checked API is
+`97f412afb692cc9f187144e418fb153f35f62fb6ff5eda698e28ebc3eaf260c8`.
+[Checked36](../../selfhost/build/phase61/checked-state08/validation-001/report.json)
+passes in **58.679 seconds**; [carrier controls](../../selfhost/build/phase61/prefix-carrier-controls-state08/report.json)
+pass 29 world rows, five producer cases and eight maximum-bound cases in
+**44.113 seconds**. [Leaf controls](../../selfhost/build/phase61/leaf-controls-state08/report.json)
+pass all 14 cases in **9.044 seconds**. These are correctness process durations,
+not speed samples. Genuine state08 B2 and short-screen results now pass as
+recorded with the completed broad campaign in [state08-results.md](state08-results.md);
+the final qualification and installed release now pass in that report. The [source footprint](source-footprint.md)
+compares the frozen Phase58 and selected state08 Bend manifests separately from runtime,
+host helpers and research/test tooling.
 
 ## First candidate evidence
 
@@ -413,8 +504,8 @@ Campaign wall includes orchestration and verification outside clean clocks;
 its reduction from earlier method03 campaigns is not wholly compiler speed.
 Each newly emitted module passed complete raw-byte comparison with its qualified
 reference. These subset runs execute no generated workloads. The subsequent
-broad screen follows; fresh self-check/reproduction, final integration and
-release remain unclaimed.
+broad screen follows; the subsequent fresh state06 type check is recorded above; reproduction, final
+integration and release remain unclaimed.
 
 ## State06 broad first-request screen
 
@@ -436,13 +527,12 @@ has no within-cell spread or balanced-position estimate. The three-source
 confirmation and state04's broad measurements are not pooled with these rows.
 There is no wall-time extrapolation or isolated gain credited to an individual
 mechanism. All23 coverage is now measured for this candidate; final semantic,
-self-check/reproduction, native/legacy, generated-program performance and release
-qualification remain pending.
+selected-source self-check/reproduction, native/legacy, generated-program
+performance and release qualification remain pending. The fresh state06 type
+check above is a separate completed gate.
 
-For final integration, maintained workflow support for the chosen framed cache
-must land before final qualification. Exact pilot helper pins must not prevent
-that maintenance. If the canonical helper changes, preserve its old bytes and
-the consumed pilot receipts, then generate one fresh selected bootstrap under
-the maintained helper. The checked attempt's frozen source/API remains valid;
-its pilot B2 is not silently rebound to changed tools. The final checked/B2
-matrices and release gates then consume the fresh lineage.
+Canonical frame2 workflow support has now landed and passed development tests,
+as recorded above. Preserve the old pilot helper bytes and receipts; the final
+selected bootstrap and qualification must bind the maintained helper. Existing
+checked source/API identities remain valid, but pilot B2 receipts are not
+silently rebound to changed tools.

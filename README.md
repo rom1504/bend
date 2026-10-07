@@ -16,32 +16,34 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 `selfhost/bootstrap`. Ordinary compilation runs Bend code without a TypeScript
 fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
 
-[Phase58 last01](implementation/phase58/README.md) is installed and verified.
+[Phase61 state08](implementation/phase61/README.md) is installed and verified.
 Direct JavaScript remains the default; `--legacy-js` and native C remain available.
-The direct B2 compiler image freshly type-checks its complete source in **11.71
-seconds** and emits a **byte-identical B3 in 39.20 seconds**. Its 3,055 unsafe
-source definitions still cause the expected proof-trust refusal: type acceptance
-and self-reproduction do not establish mathematical proof validity.
+Across **23 sources and three balanced rounds**, genuine B2 startup plus first
+compilation improves from **2.477× to 1.434× TypeScript's time**—42.1% less time.
+Compilation alone improves from **3.816× to 2.072×**. These are fresh processes
+with a prepared Base cache; preparation and output verification are outside the
+clocks. The [results and diagrams](implementation/phase61/state08-results.md)
+keep compiler latency separate from generated-program execution speed.
 
-Six general changes target compiler work and direct emission: record-key syntax,
-constructor queries, scalar residuals, literal choices, distinct reachability
-edges and shared recursive dispatch. The [allocation guide](docs/self_hosted/compiler-allocation.md)
-explains their proofs and fallbacks. B1 and B2 emit identical raw modules for all
-23 benchmark sources and all 45 observed points. The packaged compiler remains
-the checked B1; the separately qualified B2/B3 image is **3,821,470 bytes**.
-Native modules, runtimes and the typed driver retain their Phase56 bytes.
+The [request pipeline guide](docs/self_hosted/compiler-request-pipeline.md)
+explains checked Base reuse, delayed substitution, compact persistent indexes,
+structured emission and proved native type facts. All 23 benchmark JavaScript
+modules retain their qualified bytes; 45 behavior checks and the native,
+legacy and default CLI gates pass. The runtimes and native compiler modules
+retain their prior bytes.
 
-Compiler latency, allocation and generated-program speed have separate scopes
-in the [Phase58 report](implementation/phase58/README.md). Historical
-[Phase56 results](implementation/phase56/README.md) and
-[Phase53's full campaign](implementation/phase53/results.md) retain their original
-measurements; none is relabeled as a new timing observation.
+The direct B2 freshly type-checks its complete source in **11.40 seconds** and
+emits a **byte-identical B3 in 34.39 seconds**. Its 3,192 unsafe source definitions
+still cause the expected proof-trust refusal: type acceptance and self-reproduction
+do not establish mathematical proof validity. The packaged compiler remains the
+checked B1; the separately qualified B2/B3 image is **3,978,248 bytes**. The B2
+timings above are not measurements of the installed B1 CLI. Historical
+[Phase58 results](implementation/phase58/README.md) retain their original scope.
 
 From `selfhost/`, verify with `npm run verify:release`, then use
 `node cli.mjs FILE --run`. See the
 [compiler guide](docs/BEND-IN-BEND.md), [image workflow](docs/self_hosted/compiler-image-generation.md),
-[qualification record](implementation/phase58/validation.md),
-[compiler latency](implementation/phase58/latency.md),
+[qualification and compiler latency](implementation/phase61/state08-results.md),
 [architecture](docs/self_hosted/backend-boundaries.md),
 [experiment ledger](experiments/ledger.md) and [current strategy](experiments/STEERING.md).
 

@@ -9,22 +9,39 @@ and emitted user programs separately.
 
 [Current results](../implementation/phase61/README.md) ·
 [Current frontier](STEERING.md) · [Research map](../implementation/phase61/research-map.md).
-State06's [broad180 screen](../selfhost/build/phase61/state06-b2-latency01/broad180/report.json)
-passes all **69 workers across 23 sources**. Equal-source geometric mean B2/TS
-improves **2.468310× → 1.432999×** for import + API load + first compilation,
-and **3.802103× → 2.098952×** for compilation alone. All 23 raw outputs match
-qualified references; no generated workloads were rerun. This is one fixed-order
-round. Preparation/output validation stay outside clean clocks; no wall-time
-extrapolation or individual-mechanism gain follows from the combined candidate.
+State08's [balanced broad campaign](../implementation/phase61/state08-results.md#balanced-broad-compiler-measurements)
+passes **207/207 workers across 23 sources**, with three position-balanced rounds
+per source/role. Equal-source B2/TS geometric means improve **2.476542× →
+1.433877×** for import + API load + first compilation, and **3.816429× →
+2.071828×** for compilation alone. All sources improve versus same-campaign
+Phase58 B2, but compilation alone remains slower than TS on every source.
+Complete raw modules match; there is no new generated-program speed claim.
 
-The earlier three-source confirmation passed 18/18 workers and remains distinct.
-State06 checked36, focused native/carrier controls, 86-root B2 construction and
-eight ordinary-driver comparisons also pass. Earlier state04 results and its
-original broad deadline remain in the [historical analysis](../selfhost/tools/performance/phase61/validation/state04-broad-analysis.json),
-without pooling campaigns. Installed Phase58 last01 is unchanged. The next work
-is JDText duplication research and selected final qualification; completed
-controls/bootstrap are no longer future gates for the measured state06 image.
-New source or maintained-helper changes need their own exact image lineage.
+The clocks use genuine B2 fresh processes with prepared persistent Base caches;
+preparation and post-return validation are excluded. They do not measure the
+installed checked-B1 CLI or claim cold operating-system caches. Earlier short
+confirmation, state06 and state04 campaigns remain separate. The
+[current results matrix](../implementation/phase61/state08-results.md) records
+completed checked-B1 logical14, native3, smoke45, B2 own-source type acceptance,
+B2/B3 equality, the 96/34/18/2 B2 semantic matrix and 23/45 emission equality.
+Installed legacy42, default24 and final identity verification pass. Unsafe proof-trust refusal remains
+expected; failed launch/receipt-validation attempts are preserved.
+
+State08 retains private leaf reuse and maximum-bound hoisting on state06.
+The backend cursor was reverted; cross-context caching is deferred without a
+general proof and binary transport was rejected. **Phase61 state08 is installed
+and verified as checked B1.** The daemon-interrupted release wrapper stays
+incomplete; complete child receipts and the fresh two-step resume bind the
+release. Phase58 remains the frozen comparison baseline.
+
+The [final qualification index](../selfhost/build/phase61/final-state08/qualification.json)
+binds all selected correctness/release receipts and preserves the failed and
+interrupted predecessors. The [timing account](../implementation/phase61/timing-account.md)
+separates supervised occupancy from clean request clocks and uncovered wall time.
+
+The [closed Phase61 evidence capsule](../selfhost/tools/performance/phase61/artifacts/README.md)
+preserves 17,386 reopened-verified raw files, including failed and interrupted
+attempts. Follow its restoration guide before replaying a historical raw path.
 
 The experiment records cover [shared frontend state](phase61/P61-001-shared-frontend-state.md),
 [owned contexts](phase61/P61-002-compact-owned-contexts.md),

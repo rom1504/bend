@@ -1,111 +1,113 @@
-# Current frontier: Phase61 architectural compiler speed
+# Current frontier: Phase61 state08 installed; campaign closed
 
-**Installed Phase58 last01 remains unchanged.** Direct JavaScript is the default;
-explicit legacy JavaScript and native C remain available. Compiler algorithms
-execute Bend source, without TypeScript fallback or a fabricated checked sidecar
-on B2. Root owns source integration, target scheduling and promotion. No PR
-comments or goal creation are authorized.
+**Phase61 state08 is installed as checked B1 and its CLI is verified.** Direct
+JavaScript is the default; explicit legacy JavaScript and native C remain
+available. Compiler algorithms execute Bend source, without TypeScript fallback
+or a fabricated checked sidecar on B2. The campaign evidence is closed and
+published. No PR comments or goal creation are authorized.
 
-[Current results](../implementation/phase61/README.md) ·
-[Experiment records](phase61/) · [Fast protocol](README.md#current-compiler-fast-method-protocol) ·
-[Research map](../implementation/phase61/research-map.md).
+[Final qualification](../selfhost/build/phase61/final-state08/qualification.json) ·
+[Current results](../implementation/phase61/state08-results.md) ·
+[Campaign history](../implementation/phase61/README.md) ·
+[Experiment records](phase61/) · [Fast protocol](README.md#current-compiler-fast-method-protocol).
 
-## Current evidence and next gates
+## Completed evidence
 
-State06 is the latest measured broad candidate. Its checked B1/36 strict probes,
-native host-fact controls18, carrier controls29 + five producer cases, six-step
-86-root bootstrap and eight-driver comparison pass. B2 is 3,977,511 bytes,
-SHA256 `f73ef8a5596e99d45108b0d31b4e6c3f49e008db000a428e27acd27d79bd6d1a`.
-Full construction took 71.729 internal seconds /71.952 supervised seconds;
-source checking was inherited, not a fresh B2 self-check or fixed point.
+The [balanced broad campaign](../implementation/phase61/evidence/state08-broad3.json)
+passes 207 workers: 23 sources × three roles × three rounds. Each role occupies
+each position once per source; source order remains fixed. Equal-source B2/TS
+means improve **2.476542× → 1.433877×** combined-first and **3.816429× →
+2.071828×** compilation-only. All 23 sources improve over same-campaign Phase58
+B2. State08 compilation alone remains slower than TS on every source. The three
+samples per cell describe variation; they do not establish significance or
+individual-pass attribution.
 
-Its [screen45](../selfhost/build/phase61/state06-b2-latency01/screen45/report.json)
-passes 6/6 workers. The separate
-[confirm90](../selfhost/build/phase61/state06-b2-latency01/confirm90/report.json)
-passes 18/18 over Numeric recurrence, MapSet and active raytrace, two rounds and
-no later requests. Equal-source median combined-first ratios are **0.569145×
-baseline** and **1.468267× TS**; compilation-only ratios are **0.532443× baseline**
-and **2.030508× TS**. Pilot/confirmation are separate; all three inputs remain
-slower than TS. Preparation/output validation are outside clean clocks.
+These are genuine B2 fresh processes with prepared persistent Base caches.
+Preparation and post-return byte checks are outside the clocks. They do not
+measure installed checked-B1 CLI latency or cold OS caches. All raw modules
+match. Campaign wall is 327.660806 s; no extrapolation is made. Earlier subset
+confirmations and state06's one-round broad campaign remain separate.
 
-The [state06 broad180 screen](../selfhost/build/phase61/state06-b2-latency01/broad180/report.json)
-passes 69/69 workers, all 23 sources × three roles × one fixed-order round, with
-no later requests. Equal-source B2/TS means improve **2.468310× → 1.432999×**
-combined and **3.802103× → 2.098952×** compilation-only. All 23 raw modules match
-qualified references; no generated workloads were rerun. Campaign wall is
-108.100775 seconds, with no new extrapolation. No within-cell spread or balanced
-position estimate is available. Earlier confirmation and state04's broad screen
-remain separate; the original state04 deadline remains failed. These combined
-candidate measurements do not isolate each mechanism's contribution.
+The [selected qualification](../implementation/phase61/state08-results.md#current-qualification-matrix)
+passes checked36, carrier29 + five producer + eight bound cases, leaf14,
+logical14 checked-B1 qualification, native3 and smoke45. Genuine B2 passes
+construction/driver8, fresh own-source type acceptance, exact B2/B3 reproduction,
+96 source/34 numeric/18 composition/two overapplication observations, and 23 raw
+modules/45-point emission equality. The 3,192 unsafe declarations retain their
+expected trust refusal; `kernelChecked:false` remains explicit.
 
-State06 uses frozen method05; state04 used method03. Changed untimed verification
-work affects campaign wall, so do not attribute the whole wall reduction to
-compiler speed. Final broad semantics, self-check/reproduction, emitted-program
-preservation and release remain required. No installed change is admitted here.
+[Release admission](../selfhost/build/phase61/final-state08/release-admission.json),
+installed legacy42, default24 and before/after identity verification pass. The
+original permission/identity-validator failures stay failed. The daemon restart
+left the original outer release receipt incomplete after a healthy legacy42
+child; the [fresh two-command resume](../selfhost/build/phase61/final-state08/release-resume02-execution/report.json)
+passes separately. Successful children do not relabel their failed or incomplete
+parents.
 
-## Ranked work at this checkpoint
+[Final preservation](../selfhost/build/phase61/preservation-final.json) verifies
+seven selected installed files, exact preserved copies of the prior release,
+32,973 closed Phase58–60 files and 103 protected files. No compiler target remains
+required. The [completed timing account](../implementation/phase61/timing-account.md)
+records 58.577315 min observed supervised occupancy in the 7 h 47 min target-work
+window; uncovered time is not waiting. The [closed evidence capsule](../selfhost/tools/performance/phase61/artifacts/README.md)
+preserves 17,386 raw files (882,650,258 uncompressed bytes); reopening/member and
+input-stability verification pass. All raw writers are closed. Archive publication
+is separate from semantic qualification and speed measurements.
 
-1. Investigate repeated JDText emission/metadata work with a bounded source
-   census and falsifiable general proposal. Preserve exact rendered bytes,
-   reference/use order, demand, SCC behavior and resource refusals; no gain is
-   inferred from duplicate code or text counts alone.
-2. Finish selected final-source semantic/B2 self-check/reproduction and broad
-   preservation gates. State06's focused controls and six-command bootstrap
-   already pass. New source/helper changes require fresh bound lineage rather
-   than silently reusing the pilot's qualification.
-3. Close native/legacy/generated-program-performance and release gates. Root
-   schedules targets. Keep failed builds/timeouts and prior methods unchanged;
-   the completed one-round compiler screen is not final release admission.
+## Selected source and remaining opportunities
 
-The hypotheses remain [P61-001 checked frontend state](phase61/P61-001-shared-frontend-state.md),
-[P61-002 owned contexts](phase61/P61-002-compact-owned-contexts.md),
-[P61-003 structured emission](phase61/P61-003-structured-emission.md), and
-[P61-004 fast iteration](phase61/P61-004-fast-iteration.md).
-New records are [P61-005 native host type facts](phase61/P61-005-native-host-type-facts.md),
-[P61-006 private prefix provenance](phase61/P61-006-private-prefix-provenance.md),
-and [P61-007 segmented JSON transport](phase61/P61-007-segmented-json-transport.md).
-P61-007 is retrospectively indexed. Profile shares motivate these tests; they
-are neither clean gains nor additive removable fractions.
+State08 is state06 plus private childless-term reuse and maximum-bound hoisting.
+State07's backend telescope cursor was reverted after mixed B1 results, with no
+isolated or B2 attribution. Canonical frame2 helper `cdd71b72…` is bound to the
+selected images. The [request guide](../docs/self_hosted/compiler-request-pipeline.md)
+explains prepared Base state, persistent indexes, delayed substitution,
+export-local facts and structured emission with their fallback boundaries.
+
+The [remaining practical opportunities](../implementation/phase61/state08-results.md#result-and-remaining-practical-opportunities)
+are proposals, not selected source changes. A body-only Base patch model removes
+9.69% of one saved frame's bytes but has no measured request gain. Larger
+substitution reuse still needs eager-beta/order proofs. The 23-input emission
+reuse diagnostic does not establish a general safe context key. Binary decode
+plus required validation was 2.260389× JSON and is rejected. Do not restart those
+ideas without a new falsifier and whole-request evidence.
 
 Structured output must preserve demand, reference order, SCC behavior and
-bounded refusals. Native facts require actual canonical proofs; prefix carriers
-require authenticated leading injection. Parsed or identity-bound cached data
-alone is not a checked-world proof. Invalid optional state retains full checking.
+bounded refusals. Native facts require canonical proofs; prefix carriers require
+authenticated leading injection. Identity-bound parsed data alone is not a
+checked-world proof. Invalid optional state retains full checking.
 
-## Installed baseline and historical context
+## Installed identity and historical comparisons
 
-Attempt: `selfhost/build/phase58/checked-last01`.
-B1 API: `641381f638f1f4c1c8b349bef06502b42738c1c7feff0391f2e09b90f4ef282a`.
-Source: `85454aab7a6ef25d1e78970b1c24d68ac2a90a23a4b39b64a30de311c2fc5091`.
-B2/B3: `a73daccf86a807092a334d5f3121745e0b91c3054164c25462f1658644b7b081`.
+Attempt: `selfhost/build/phase61/checked-state08`.
+B1 API: `97f412afb692cc9f187144e418fb153f35f62fb6ff5eda698e28ebc3eaf260c8`.
+Source: `268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e`.
+B2/B3: `23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477`.
 Upstream `018751270e800bc222a93dad7f257083ee53a5f7`; Node 24.18.0.
-Source acceptance, unsafe trust refusal and fixed point remain distinct from
-kernel validity. Known TS NaN oracle defects do not waive a new mismatch.
+The package is checked B1; genuine B2 has 86 roots and 3,978,248 bytes.
+[Source footprint](../implementation/phase61/source-footprint.md) separates Bend,
+runtime/host support and research tooling.
 
-Phase58 generated-program qualification passed 23 sources / 45 points / 669
-samples, new/old equal-point ratio 0.985287 with no point >10% regression. It is
-separate from compiler-request latency and has not been replaced by this screen.
+Phase58 generated-program qualification passed 23 sources/45 points/669 samples,
+new/old equal-point ratio 0.985287 with no point >10% regression. This historical
+speed evidence transfers only to identical program/runtime artifacts. State08's
+exact emitted-byte checks and current 45-point correctness smoke do not create
+a fresh 669-sample timing result or new generated-program speed gain.
 
 The [closed Phase60 survey](../implementation/phase60/README.md) measured combined
-first B2/TS 2.461297× on its own baseline run; do not mix it with fresh state04's
-2.436× baseline. Checking/completion dominated 22/23 inputs; index allocation
-recurred on 23/23, substitution on 22/23 and String on 18/23 at the descriptive
-5% threshold. TS also checks Base: source-only omission was never justified.
-Its 46 CPU count views, eight refused weighted views and 138,000 unknown TS
-allocation bytes remain preserved with the original reader failure.
+first B2/TS 2.461297× on its own baseline. Its sampled stage shares, 46 CPU count
+views, eight refused weighted views and 138,000 unknown TS allocation bytes remain
+historical motivation, with the original reader failure retained. TS also checks
+Base: source-only omission was never justified.
 
 ## Working limits and preservation
 
-Run heavy jobs serially on CPU3 under one process-tree guard: 1 GiB Node heap,
-2 GiB tree RSS and 4 GiB available-memory floor unless root records a justified
-successor. Keep data/source work on CPU0 and away from clean timing interference.
-The Numeric/MapSet screen and active-raytrace confirmation remain cheap rejection
-loops, not substitutes for broad acceptance or guaranteed 20/60-second durations.
+Any future heavy jobs remain serial on CPU3 under one process-tree guard: 1 GiB
+Node heap, 2 GiB tree RSS and 4 GiB available-memory floor unless root records a
+justified successor. Data/source work uses CPU0. Preserve the 103 unrelated
+files, selected and prior installed artifacts, closed evidence, consumed tools
+and every rejected attempt. Stage explicit owned paths only.
 
-Preserve all 103 unrelated files, installed artifacts, closed evidence, consumed
-tools and rejected attempts. All new raw belongs to Phase61. The
-[October 7 cleanup](../implementation/phase61/cleanup.md) compacted 49 old
-profiles with verified restoration mappings; active Phase58–61, Phase6 and all
-seven installed-file hashes were preserved. Restore historical raw profiles
-before replay. Stage only explicit owned paths; installation waits for root's
-completed qualification and release decision.
+The [October 7 cleanup](../implementation/phase61/cleanup.md) compacted 49 old
+profiles with verified restoration mappings; active Phase58–61 and Phase6 were
+preserved. Restore historical raw profiles before replay. The campaign is closed;
+no new cache, codec or backend-cursor experiment is selected.

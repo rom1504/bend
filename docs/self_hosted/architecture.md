@@ -1,11 +1,12 @@
 # Compiler architecture: source survey
 
-Current installed host02 is described by the [Phase55 report](../../implementation/phase55/README.md),
-[source accounting](../../implementation/phase55/architecture.md) and
-[backend boundaries](backend-boundaries.md). Full direct image generation and
-eight ordinary-driver probes per image pass; B2→B3 self-reproduction and a fresh
-full-source self-check remain unqualified. The survey below retains its dated
-Phase45 source/count scope.
+Installed **Phase61 state08** is described by the
+[results matrix](../../implementation/phase61/state08-results.md),
+[source footprint](../../implementation/phase61/source-footprint.md) and
+[compiler-request guide](compiler-request-pipeline.md). Its checked B1 package and
+qualified genuine B2/B3 images have distinct identities. The survey below retains
+its dated Phase45 source/count scope, including that checkpoint's full-checking
+path; current request-state mechanisms are documented in the guide above.
 
 This survey describes the compiler written in Bend at repository snapshot
 `55e5b79dc9ac3e02436a712e34722f2eb519e5df`, inspected on **2026-10-04**.

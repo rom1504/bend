@@ -1,9 +1,37 @@
-# Phase61 timing account — state06 broad-screen checkpoint
+# Phase61 timing account — completed target-work cutoff
 
 The campaign [start receipt](../../selfhost/build/phase61/start.json) records
-`2026-10-07T08:51:24.549669+00:00`. This is an incremental account of completed
-jobs; the campaign and its writers remain open. There is no final elapsed-time
-denominator or work/wait percentage yet.
+`2026-10-07T08:51:24.549669+00:00`. The final target-work cutoff is
+`2026-10-07T16:38:11.916235+00:00`: **28,007.366566 seconds** (7 h 47 min).
+The [final interval account](../../selfhost/tools/performance/phase61/evidence/time-use-final01.json)
+observes **3,514.638909 seconds** (58.577315 min, **12.548980%**) of supervised
+process wall occupancy. Its **24,492.727657-second** uncovered remainder is not
+called waiting: it includes editing, research, review, orchestration, disk
+interruption/restart and work without a qualifying process receipt. These are
+wall intervals, not CPU usage or agent effort. Documentation, this final analysis
+and publication after the cutoff are excluded.
+
+| Exclusive supervised category | Occupied wall seconds |
+|---|---:|
+| Checked builds | 488.116986 |
+| Focused controls | 558.182179 |
+| Bootstrap construction/driver gates | 575.807345 |
+| Latency preparation | 91.164575 |
+| Clean-latency jobs | 951.393766 |
+| Profile jobs | 97.296184 |
+| Final qualification/release | 752.677875 |
+| Other / mixed-category overlap | 0 / 0 |
+| **Union** | **3,514.638909** |
+
+“Clean-latency jobs” denotes the enclosing supervised job wall, including its
+setup and orchestration; it is not the sum of clean request clocks. The account
+scans 730 process/run receipts and admits 729 finished unique intervals. Fourteen
+finished failures occupy a diagnostic union of 219.724759 seconds, already
+included in the categories above. The state05 disk-interrupted supervisor has no
+end and supplies no invented duration. The daemon-interrupted release queue also
+has no end; its completed child process receipts are included separately. The
+account verifies stable inputs and category/union arithmetic. Earlier checkpoint
+tables below retain their original narrower scope and are not additional time.
 
 Root executes targets serially on CPU3. Bounds are a 1 GiB Node heap, 2 GiB
 process-tree RSS, 4 GiB available-memory floor and 4 MiB stack. Reviewer/data
@@ -74,7 +102,7 @@ controlled comparison with the prior77-export constructions.
 
 ## Final accounting method
 
-At root's final cutoff, use completed process/supervisor start/end intervals.
+At the recorded final cutoff, the account uses completed process/supervisor start/end intervals.
 Deduplicate identical intervals, remove enclosed child intervals when their
 supervisor is retained, and union half-open intervals so partial overlaps are
 not counted twice. Keep build, preparation, focused control, qualification,
@@ -87,8 +115,8 @@ does not include every baseline preparation, data-only audit or later candidate.
 Do not subtract its sum from campaign wall and call the remainder waiting.
 Unrecorded intervals can include source editing, review, planning, orchestration
 and ordinary tool work. These receipts measure wall occupancy, not CPU time or
-agent effort. Final publication after writer closure will be accounted for
-separately; no archive-closure or final release claim is made here.
+agent effort. Final publication after writer closure is outside this cutoff;
+archive closure is a separate evidence-preservation claim.
 
 ## Why the broad240 screen exhausted its campaign budget
 
@@ -210,3 +238,158 @@ compilation alone. Candidate/baseline ratios are separately **0.580559** and
 This one-round screen does not supply per-cell variation or justify a wall-time
 extrapolation. Method05's outer orchestration includes untimed work, and neither
 its campaign wall nor its role ratios constitute final release qualification.
+
+
+## Subsequent correctness and rejected codec checkpoint
+
+| Completed receipt | Supervised/campaign seconds | Scope |
+|---|---:|---|
+| [State06 own-source check](../../selfhost/build/phase61/self-check-state06-early01-supervisor/run.json) | 18.896774 | Fresh type acceptance; expected proof-trust refusal for 3,191 unsafe declarations |
+| [Canonical workflow development tests](../../selfhost/build/phase61/workflow-sync02-tests01-supervisor/run.json) | 6.344696 | Maintained frame2 helper tests PASS |
+| [State07 checked build](../../selfhost/build/phase61/checked-state07-supervisor/run.json) | 56.558074 | 36 strict paired probes PASS |
+| [State07 leaf controls](../../selfhost/build/phase61/leaf-controls-state07-supervisor/run.json) | 9.048651 | 14 cases PASS |
+| [State07 backend cursor controls](../../selfhost/build/phase61/backend-telescope-state07-supervisor/run.json) | 10.250364 | 24 rows + one constructor bridge PASS |
+| [State07 B1 preparation](../../selfhost/build/phase61/state07-b1-latency01/preparation/report.json) | 13.018674 | Preparation PASS; no request-speed result |
+| [Binary codec diagnostic](../../selfhost/build/phase61/binary-codec01-supervisor/run.json) | 4.221657 | Values agree; binary rejected as 2.260389× slower with required validation |
+
+State06 own-source checking records 18.783894 internal seconds, including the
+12.448330-second check request. These nested durations are not added to its
+supervised interval. Type acceptance is distinct from the expected unsafe trust
+refusal; this is not kernel proof or fixed-point evidence.
+
+The binary medians (225.676447 ms versus JSON 99.839660 ms) come from five
+alternating warmed codec/validation samples per role with resident input bytes.
+They measure neither whole cache-read nor first compiler request. State07's
+build/control/preparation durations supply no compiler-speed claim. Its candidate
+source differs from state06; no source-duration extrapolation or final campaign
+occupancy percentage is introduced here.
+
+
+## State08 successor after the mixed B1 screen
+
+The [state07 B1 analysis](../../selfhost/build/phase61/state07-analysis01/report.json)
+retains its one-round screen and two-round confirmation separately. Confirmation
+candidate/baseline geometric mean is 1.010232 combined-first and 1.010398
+compile-only; both leaf and backend-cursor changes were present. No isolated
+pass effect or B2 performance result follows. The backend cursor was reverted.
+
+| State08 completed gate | Supervised seconds | Scope |
+|---|---:|---|
+| [Checked build](../../selfhost/build/phase61/checked-state08-supervisor/run.json) | 58.678729 | Strict36 PASS |
+| [Carrier controls](../../selfhost/build/phase61/prefix-carrier-controls-state08-job/run.json) | 44.113050 | 29 world rows + five producer + eight maximum-bound cases PASS |
+| [Leaf controls](../../selfhost/build/phase61/leaf-controls-state08-supervisor/run.json) | 9.044181 | 14 cases PASS |
+
+State08 source is state06 plus private leaf reuse and maximum-bound hoisting.
+These control/build durations are not clean compiler-request measurements.
+At this earlier checkpoint, state06 remained the latest broadly measured B2;
+state08 bootstrap, short screens and the balanced broad campaign are recorded
+below. No wall-time extrapolation is added.
+
+
+## State08 maintained-workflow bootstrap and short B2 requests
+
+| Completed receipt | Campaign/stage seconds | Scope |
+|---|---:|---|
+| [State08 bootstrap](../../selfhost/build/phase61/final-state08/bootstrap-execution/report.json) | 132.873596 | Six commands PASS, actual 86 roots, tiny equality and eight-driver join |
+| [Method06 preparation](../../selfhost/build/phase61/state08-b2-latency01/preparation/report.json) | 13.159379 | Three role preparations PASS; outside clean clocks |
+| [State08 screen45](../../selfhost/build/phase61/state08-b2-latency01/screen45/report.json) | 10.384859 | 6/6 first-only workers |
+| [State08 confirm90](../../selfhost/build/phase61/state08-b2-latency01/confirm90/report.json) | 31.276166 | 18/18 workers; three sources, three roles, two rounds |
+
+The full emission's 73.272635 internal / 73.458295 supervised seconds are nested
+inside the bootstrap stage, not additional intervals. Peak full-emission tree
+RSS is 1,136,381,952 bytes. The 3,978,248-byte B2 has SHA256
+`23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477`.
+The [state08 report](state08-results.md) separates its inherited checking lane
+from the subsequently completed fresh own-source/reproduction gates below.
+
+Confirmation B2/TS means are 2.599648 → 1.452451 combined-first and
+3.828061 → 2.007350 compilation-only. Method06's historical dependency relocation
+changes provenance handling, not the clean method05 clock boundary. No samples
+are pooled with state06, and no small cross-campaign difference is attributed
+to state08's individual passes. The subsequently completed balanced broad campaign is recorded below.
+
+The original final checked-stage attempt stops at composition with process-health
+`spawnSync EPERM`; its failed receipts remain retained. The unchanged controller's
+fresh retry passes 18 and overapplication passes two. The subsequent
+[13-command resume](../../selfhost/build/phase61/final-state08/checked-resume02-execution/report.json)
+passes, completing the logical 14-step checked-B1 matrix with the preserved
+initial acquisition. Native3 and the 45-point output smoke also pass. Failure/retry time belongs to eventual whole-campaign accounting;
+no incomplete stage is relabelled as completed occupancy here.
+
+These compiler clocks measure genuine B2 in fresh processes with prepared
+persistent Base caches; neither preparation nor post-return oracle validation
+is included. They do not claim cold OS/page caches, installed checked-B1 CLI
+latency or a new generated-program runtime-speed measurement.
+
+
+## State08 exact-image B2 correctness
+
+| Completed receipt | Internal seconds | Supervised seconds | Scope |
+|---|---:|---:|---|
+| [Own-source check](../../selfhost/build/phase61/final-state08/self-check/report.json) | 17.247517 | 17.385388 | Actual check request 11.397480 s; type acceptance, expected unsafe trust refusal for 3,192 declarations |
+| [Fixed point](../../selfhost/build/phase61/final-state08/fixed-point/report.json) | 34.386270 | 34.567764 | Complete B2/B3 equality, SHA256 `23bd6a48…` |
+
+The own-source gate begins with an empty private Base cache and differs from
+primed-cache compiler latency. The original enclosing B2 stage remains failed:
+its semantic acquisition passed, then a validator rejected extra identity
+metadata. Neither successful child changes that enclosing receipt to PASS.
+The separately executed B2 program-equality gate passes all 23 raw modules;
+its preserved bytes do not supply a new runtime-speed measurement.
+
+
+## State08 balanced broad campaign
+
+The [audited summary](evidence/state08-broad3.json) joins all 207 successful
+first-only workers: 23 sources × three roles × three rounds. Campaign wall is
+**327.660806 s**; the measurement-stage interval is **327.230365 s**,
+and child process wall sums to **292.450882 s**. These nested intervals
+must not be added together. Preparation is reused outside the campaign.
+
+Combined-first B2/TS geometric means are **2.476542 → 1.433877**, and
+compilation-only **3.816429 → 2.071828**. These use each source/role's median
+followed by an equal-source geometric mean. Role positions are balanced within
+each source; source order remains fixed. The three samples per cell do not
+support a significance claim or isolated attribution among source and host
+changes. Previous pilots remain separate. All raw bytes pass; this campaign
+executes no new user-program workload or runtime-speed measurement.
+
+
+## State08 semantic retry and release interruption
+
+The [B2 semantic retry](../../selfhost/build/phase61/final-state08/b2-semantics-resume02-execution/report.json)
+passes seven resumed commands in **105.044043 stage seconds**, covering 96 source,
+34 numeric, 18 composition and two overapplication observations. Its separate
+identity normalization corrects receipt comparison only. The original enclosing
+B2 and semantic-stage failures remain preserved; one source and six numeric TS
+oracle defects remain explicit in the completed controls.
+
+The [checked resolution](../../selfhost/build/phase61/final-state08/checked-resolution.json)
+joins the preserved successful acquisition with 13 healthy resumed commands.
+This completes 14 logical steps without rewriting the failed original queue.
+The [release admission](../../selfhost/build/phase61/final-state08/release-admission.json)
+binds those gates, B2 correctness, exact program bytes, broad compiler cost and
+pre-release preservation to the selected checked B1.
+
+| Completed release process | Supervised seconds | Scope |
+|---|---:|---|
+| [Install](../../selfhost/build/phase61/final-state08/release/job-install/process.json) | 7.893706 | Checked state08 B1 installation, exit 0 |
+| [Verify before](../../selfhost/build/phase61/final-state08/release/job-verify-before/process.json) | 1.227523 | Installed identity verification, exit 0 |
+| [Legacy42](../../selfhost/build/phase61/final-state08/release/job-legacy42/process.json) | 33.018760 | Complete supervisor and 42-step launcher PASS |
+
+The daemon restart interrupted the [outer release receipt](../../selfhost/build/phase61/final-state08/release-execution/report.json)
+before it recorded legacy42 completion. That outer receipt stays `complete:false`
+and has no finished timestamp: do not invent its full interval. Legacy42's own
+completed process and oracle receipts remain usable. The
+[resume plan](../../selfhost/build/phase61/final-state08/release-resume02-plan.json)
+records this interruption and reuses the healthy install/verify/legacy receipts.
+The restart gap is not compiler execution time, and no failed or incomplete
+wrapper is relabelled PASS.
+
+
+The [fresh release resume](../../selfhost/build/phase61/final-state08/release-resume02-execution/report.json)
+passes both commands in **19.881522 stage seconds**: default24 passes all 24
+ordinary/relocated installed CLI checks, and verify-after exits 0 in
+**1.227149 supervised seconds**. The verification is nested within the resume;
+do not add it to the stage duration again. These release process durations are
+not compiler-request or generated-program speed samples. State08 is now installed
+and verified as checked B1, while genuine B2 timings remain separately scoped.

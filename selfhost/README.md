@@ -1,33 +1,44 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
-[Phase58 report](../implementation/phase58/README.md),
+[Phase61 results](../implementation/phase61/state08-results.md),
 [backend boundaries](../docs/self_hosted/backend-boundaries.md) and
 [direct JavaScript guide](docs/direct-javascript.md).
-**Last01 is installed and verified.** Direct JavaScript is the default;
+**Phase61 state08 is installed and verified.** Direct JavaScript is the default;
 `--legacy-js` and native targets retain their contracts. Ordinary compilation
 runs Bend code without a TypeScript fallback.
 
-The emitted direct B2 freshly type-checks its complete source in **11.712 seconds**
-and emits a byte-identical B3 in **39.199 seconds**. All 3,055 definitions remain
-`@unsafe`; proof trust is refused. These are type acceptance and reproducibility
-results, not kernel proof validity. The installed package remains checked B1.
-B2 passes eight exact driver observations, broader semantic controls and complete
-raw-module equality with B1 for all 23 benchmark sources and 45 observed points.
+The genuine direct B2 freshly type-checks its complete source in **11.397 seconds
+of check-request time** (**17.248 internal / 17.385 supervised seconds**) and emits a
+byte-identical B3 in **34.386 internal / 34.568 supervised seconds**. All 3,192
+definitions remain `@unsafe`; proof trust is refused. These correctness durations
+are not controlled compiler-speed comparisons, and type acceptance and
+reproducibility do not establish kernel proof validity. The installed package
+remains checked B1. B2/B3 are **3,978,248 bytes**, with **86 explicit roots**.
+B2 passes eight exact driver observations and the final semantic controls; all
+23 raw benchmark modules and their 45-point observer mapping equal selected B1.
 See the [image workflow](../docs/self_hosted/compiler-image-generation.md).
 
-[Source accounting](../implementation/phase58/source-complexity-last.md) records
-**26,560 physical / 21,823 code lines**, 3,055 definitions, 101 types and 108
-modules: +314 physical / +238 code lines relative to Phase56. All 17 native
-modules, both runtimes and the typed driver remain unchanged. The
-[allocation guide](../docs/self_hosted/compiler-allocation.md) describes the six
-source changes; smaller emitted images are a separate measure from source size.
+[Source accounting](../implementation/phase61/source-footprint.md) records
+**27,753 physical / 22,799 code lines**, 3,192 definitions, 112 types and 114
+modules: +1,193 physical / +976 code lines relative to Phase58. All 17 native
+modules and both runtimes retain exact bytes; the typed driver and maintained
+workflow changed. The [compiler-request guide](../docs/self_hosted/compiler-request-pipeline.md)
+describes the current mechanisms. The six changes in the
+[allocation guide](../docs/self_hosted/compiler-allocation.md) remain Phase58 history.
 
-The [phase report](../implementation/phase58/README.md) separates generated-program
-speed, compiler latency, allocation and qualification. Phase56's 44/45 byte
-retention and map/set timing remain [historical results](../implementation/phase56/performance.md),
-not measurements of this release. The same applies to the
-[Phase53 campaign](../implementation/phase53/results.md).
+The [Phase61 results](../implementation/phase61/state08-results.md) separate
+compiler measurements, generated-program behavior and release qualification.
+The balanced compiler campaign passes **207 workers: 23 sources × three roles ×
+three rounds**. Equal-source geometric means of per-source medians improve from
+**2.476542× to 1.433877× B2/TS** for API import/load plus first compilation and
+**3.816429× to 2.071828×** for compilation alone. These use genuine B2 in fresh
+processes with prepared persistent Base caches, without a cold OS-cache or
+installed-B1 CLI-latency claim. The [Phase58 runtime campaign](../implementation/phase58/program-performance.md)
+remains dated evidence, transferable only to byte-identical artifacts; no new
+669-sample runtime campaign or generated-program speed gain is claimed.
+Phase56's 44/45 byte retention and map/set timing remain
+[historical results](../implementation/phase56/performance.md).
 
 ```sh
 # From selfhost/, with Node.js 24+:
@@ -38,7 +49,7 @@ node cli.mjs tests/conformance/typed-smoke/base-u32.bend --legacy-js --run
 
 The [benchmark recipes](tools/performance/phase53/PLAN.md) cover checked acquisition,
 fast screens and serial full-corpus validation. Use fresh attempts and the
-[Phase58 qualification record](../implementation/phase58/validation.md) for the
+[Phase61 results matrix](../implementation/phase61/state08-results.md) for the
 selected image. Historical [Phase56 recipes](tools/performance/phase56/README.md)
 require fresh identity bindings before replay. CPU/allocation/V8
 [diagnostics](tools/performance/programs/DIAGNOSTICS.md) remain separate from clean
@@ -123,7 +134,7 @@ For experiments that should leave the default intact, use the
 
 Direct self-reproduction is a separate integration gate using a genuine checked
 parent. Follow the [image workflow](../docs/self_hosted/compiler-image-generation.md)
-and [Phase58 qualification record](../implementation/phase58/validation.md). The
+and [Phase61 results matrix](../implementation/phase61/state08-results.md). The
 [legacy reproduction instructions](../docs/BEND-IN-BEND.md#full-self-reproduction-and-component-checks)
 and [Phase 5 record](../implementation/phase5/final-selfhost.md) describe the older
 pipeline. A derived API must not acquire a bootstrap sidecar. Low-level bootstrap commands need an

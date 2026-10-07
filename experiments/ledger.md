@@ -3558,3 +3558,197 @@ and finish selected final semantic/self-check/reproduction, preservation,
 native/legacy/generated-program-performance and release qualification. A changed
 source or canonical helper needs its own bound image lineage. Installed Phase58
 last01 remains unchanged; no final promotion follows from this screen alone.
+
+
+### Phase61 state07 correctness and deferred alternatives — 2026-10-07
+
+The [state06 fresh own-source check](../selfhost/build/phase61/self-check-state06-early01/report.json)
+passes type acceptance in 18.896774 supervised seconds (12.448330 seconds for
+the check request). All 3,191 explicitly unsafe declarations cause the expected
+separate proof-trust refusal; kernel checking is false. This is not a fixed
+point or qualification of a later source.
+
+The [reuse diagnostic](../selfhost/build/phase61/reuse-probe-all01/report.json)
+passes all 23 inputs, retaining definition text/call facts and complete raw
+outputs. Finite matches do not prove context invariance or a general safe cache;
+cross-context emission reuse is deferred, with no speedup credited.
+
+State07 applies private substitution-leaf reuse plus a 34-line backend telescope
+cursor. [Checked36](../selfhost/build/phase61/checked-state07/validation-001/report.json)
+passes in 56.558074 seconds; [leaf14](../selfhost/build/phase61/leaf-controls-state07/report.json)
+in 9.048651 seconds and [backend24 + one bridge](../selfhost/build/phase61/backend-telescope-state07/report.json)
+in 10.250364 seconds. B1 preparation completes separately; no state07 request
+speed result is credited at this checkpoint.
+
+The maintained [frame2 workflow application](../selfhost/build/phase61/workflow-sync02-application01/report.json)
+records helper `cdd71b72cb2efeec31fdaac322fc3267644f4c6c51fd6575ea0b37e8920be27c`;
+its development tests pass in 6.344696 seconds. Historical pilot tools remain
+unchanged. The [binary codec discriminator](../selfhost/build/phase61/binary-codec01/report.json)
+passes value checks but rejects the alternative: required decode/validation is
+2.260389× JSON (225.676447 versus 99.839660 ms medians), in a 4.221657-second
+supervised diagnostic. Warm resident-byte codec cost is not compiler latency.
+
+**Updated frontier:** measure state07 before retention, then qualify the final
+source, maintained workflow and genuine B2 lineage through semantic, fresh
+self-check/reproduction, preservation and release gates. General context caching
+remains deferred and binary transport rejected. State06 retains the latest
+broad measured result; installed Phase58 last01 remains unchanged.
+
+
+### Phase61 state08 retains leaf reuse and hoists maximum bounds — 2026-10-07
+
+The [state07 B1 confirmation](../selfhost/build/phase61/state07-analysis01/report.json)
+is mixed: combined-first candidate/baseline geometric mean1.010232, compile-only
+1.010398. It combines leaf and backend-cursor changes; no isolated effect or B2
+claim follows. The backend cursor was reverted. State08's Bend source is state06
+plus only the two-line private leaf reuse and maximum-bound hoisting.
+
+[State08 checked36](../selfhost/build/phase61/checked-state08/validation-001/report.json)
+passes in 58.678729 supervised seconds. Carrier controls pass 29 world rows,
+five producer and eight maximum-bound cases in 44.113050 seconds; leaf controls
+pass14 in 9.044181 seconds. These are correctness durations, not speed gains.
+The [source footprint](../implementation/phase61/source-footprint.md) compares
+frozen installed Phase58 and state08 manifests with the inherited counting rules,
+separating runtime/host support and excluding tests/research from Bend totals.
+
+**Updated frontier:** measure the actual state08 image, then qualify selected
+source/B2/helper lineage and final release. State06 retains the latest broad B2
+measurement; state07's failed retention case is preserved. Installed last01
+remains unchanged, and no state08 performance or B2 result is inferred.
+
+
+### Phase61 state08 B2 and short confirmation, final matrix open — 2026-10-07
+
+The [state08 results matrix](../implementation/phase61/state08-results.md) records
+successful six-command bootstrap and eight-driver join for the genuine 86-root
+B2, SHA256`23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477`,
+3,978,248 bytes. Bootstrap stage132.873596s includes full emission73.272635s
+internal/73.458295s supervised; this uses inherited exact-source checking.
+
+Method06 preparation and short screens pass. Three-source/two-round confirmation
+passes18 workers; combined-first B2/TS2.599648→1.452451 and compilation-only
+3.828061→2.007350. Complete raw output checks pass; no generated workload is
+rerun. The one-round pilot and earlier state06 campaigns remain separate. A
+small cross-campaign difference is not attributed to individual state08 passes.
+
+The original composition controller remains FAIL due to recorded process-health
+`spawnSync EPERM`, despite matching saved observations. The unchanged controller's
+fresh permission-corrected retry passes18; overapplication passes2. No compiler
+fix or complete final-matrix PASS is inferred from that retry. Balanced all23,
+remaining semantics, exact B2 own-source/reproduction and release remain pending.
+
+The [new architecture guide](../docs/self_hosted/compiler-request-pipeline.md)
+describes prepared state, private provenance, dependent-term/index operations,
+export-local facts and JDText's bounded composition. Its status remains candidate;
+installed Phase58 last01 and the historical Phase45 survey are kept distinct.
+
+**Updated frontier:** complete final state08 measurement/qualification and retain
+all failures, then consider release admission. No installed change or generated-
+program speed result follows from the completed compiler subset.
+
+
+### Phase61 state08 checked matrix complete, release still open — 2026-10-07
+
+The [13-command resume](../selfhost/build/phase61/final-state08/checked-resume02-execution/report.json)
+passes every step. Together with the preserved initial acquisition, it completes
+the logical 14-step checked-B1 matrix. The 96 source, 34 numeric, 18 composition and two overapplication observations,
+eight maintained suites, direct census, three exact C/stdout oracles and the
+45-point generated-program smoke pass. The original permission failure remains
+failed; no compiler change was required to retry it.
+
+[Pre-release preservation](../selfhost/build/phase61/preservation-pre-release-state08.json)
+passes for seven installed files, 32,973 closed files and 103 protected files.
+State08 compiler timings describe genuine B2 fresh processes using prepared
+persistent Base caches, excluding preparation and post-return oracle work.
+They are not cold OS-cache, installed checked-B1 CLI or generated-program speed
+measurements.
+
+**Updated frontier:** finish the balanced three-round broad campaign and exact
+B2 semantic/self-check/reproduction gates, then decide release admission.
+Installed Phase58 last01 remains unchanged.
+
+
+### Phase61 state08 balanced broad and B2 child gates — 2026-10-07
+
+The [audited broad summary](../implementation/phase61/evidence/state08-broad3.json)
+passes 207 fresh workers, 23 sources × three roles × three rounds with balanced
+role positions and fixed source order. Equal-source median B2/TS geometric means
+are **2.476542 → 1.433877** combined-first and **3.816429 → 2.071828** compilation-
+only; every source improves versus same-campaign Phase58 B2. All raw module
+comparisons pass. Compiler clocks use prepared persistent Base caches, exclude
+preparation/post-return checks, and do not claim cold OS caches, installed-B1 CLI
+latency or fresh user-program runtime gains. Earlier campaigns remain separate.
+
+The actual B2 freshly accepts its source's types in 11.397480 request seconds
+(17.385388 supervised), with expected trust refusal for 3,192 unsafe declarations.
+Exact B2/B3 equality at `23bd6a48…` passes in 34.567764 supervised seconds; B2 raw
+modules and the 45-point observer mapping equal selected B1. These successful
+child gates do not relabel the original enclosing B2 stage, which failed later
+at a receipt metadata comparison; the corrected identity-normalization retry is
+separate. No Bend source change is implied by that tooling correction.
+
+**Updated frontier:** finish the exact B2 semantic retry and remaining release
+admission/preservation gates. Installed Phase58 last01 is still unchanged.
+
+
+### Phase61 state08 installed and verified — 2026-10-07
+
+The [resolved checked matrix](../selfhost/build/phase61/final-state08/checked-resolution.json)
+passes 14 logical steps: the original healthy acquisition plus 13 healthy retry
+commands. The [genuine-B2 semantic retry](../selfhost/build/phase61/final-state08/b2-semantics-resume02-execution/report.json)
+passes seven commands, covering 96 source, 34 numeric, 18 composition and two
+overapplication observations in 105.044043 stage seconds. Original permission
+and receipt-validator failures remain failed; known TS oracle defects remain
+explicit. Receipt identity normalization required no Bend source change.
+
+The [release admission](../selfhost/build/phase61/final-state08/release-admission.json)
+selects checked B1 API `97f412af…`, source `268b3cf2…`. Genuine B2/B3
+`23bd6a48…` retains its separate own-source, reproduction and timing evidence.
+Installation and verification-before pass, as does the complete legacy42 child.
+A daemon restart interrupts the original outer release receipt before it records
+that child completion; the wrapper remains incomplete. The independent
+[two-command resume](../selfhost/build/phase61/final-state08/release-resume02-execution/report.json)
+passes default24 and verification-after in 19.881522 stage seconds. **Phase61
+state08 is installed and verified.**
+
+[Final preservation](../selfhost/build/phase61/preservation-final.json) verifies
+seven selected installed files, preserved prior-release copies, 32,973 closed
+historical files and all 103 protected files. Selected runtime and 23 raw
+programs/45 observation modules retain qualified bytes. Prior runtime performance
+evidence transfers only to identical artifacts; no fresh 669-sample timing or
+new program-speed gain is claimed.
+
+The [final state08 report](../implementation/phase61/state08-results.md) retains
+the balanced207 compiler result (combined B2/TS 2.476542→1.433877;
+compilation-only 3.816429→2.071828), completed gates, failures and remaining
+practical proposals. Body-only Base patch bytes are a model; larger substitution
+and emission reuse still need proofs, and measured binary transport stays rejected.
+
+**Updated frontier:** semantic, measurement and installed-release qualification
+are complete. Finish publication accounting and evidence archive/writer closure;
+no further compiler target or source experiment is selected. Preserve all failed
+and interrupted receipts with their original statuses.
+
+
+The [final timing account](../implementation/phase61/timing-account.md) closes
+its target-work window at `2026-10-07T16:38:11.916235+00:00`: 28,007.366566 s
+elapsed and 3,514.638909 s observed supervised wall union (12.548980%). Fourteen
+finished failures are included; incomplete intervals receive no invented end.
+The uncovered 24,492.727657 s is not classified as waiting. Documentation,
+analysis and publication after the cutoff remain outside that measurement.
+
+
+### Phase61 evidence closed and published — 2026-10-07
+
+The [archive and restoration guide](../selfhost/tools/performance/phase61/artifacts/README.md)
+records 17,386 raw files, 882,650,258 uncompressed bytes and one 90,979,618-byte
+capsule, SHA256 `0f3ceb5a8f90686a05469af2bf0ab2b18e9b479e11a14ad18a7f23461ee62d43`.
+Reopening/member verification and input-stability verification pass. The closed
+snapshot retains failed, interrupted and rejected attempts without status edits.
+Publication metadata and later documentation remain outside the raw archive;
+all raw writers are closed.
+
+**Updated frontier:** Phase61 is complete and its evidence is published. State08
+is installed and verified as checked B1, with separate genuine-B2 correctness
+and compiler-request measurements. No further compiler source change, target or
+follow-up optimization is selected.

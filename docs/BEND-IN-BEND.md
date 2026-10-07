@@ -5,31 +5,44 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-[Phase58 last01](../implementation/phase58/README.md) is installed and verified.
+[Phase61 state08](../implementation/phase61/state08-results.md) is installed and verified.
 The [direct JavaScript backend](../selfhost/docs/direct-javascript.md) remains the
 default for emitted programs/libraries and `--run`. From `selfhost/`, use
 `node cli.mjs FILE --run` or `node cli.mjs FILE --library -o module.mjs`.
 Select `--legacy-js` for mutable descriptors and G. Maintained bootstrap/private
 clients retain their explicit legacy interface; native C remains available.
 
-Direct B2 freshly type-checks the complete source in **11.712 seconds** and emits
-a **byte-identical B3 in 39.199 seconds**. The expected proof-trust refusal
-accounts for 3,055 unsafe definitions. Type acceptance and reproduction are not
-a kernel proof. The installed package remains checked B1; the
+Genuine direct B2 freshly type-checks the complete source in **11.397 seconds of
+check-request time** (**17.248 internal / 17.385 supervised seconds**) and emits a
+**byte-identical B3 in 34.386 internal / 34.568 supervised seconds**. Both images
+are **3,978,248 bytes**, with **86 explicit roots**. The expected proof-trust
+refusal accounts for 3,192 unsafe definitions. These correctness durations are
+not controlled speed comparisons; type acceptance and reproduction are not a
+kernel proof. The installed package remains checked B1; the
 [image guide](self_hosted/compiler-image-generation.md) separates these roles.
 
-The [qualification record](../implementation/phase58/validation.md) records the
+The [results matrix](../implementation/phase61/state08-results.md) records the
 selected B1 broad matrix, B2's 96 source / 34 numeric / 18 composition / two
-overapplication observations and installed interfaces. Counts overlap. B1 and
-B2 emit identical raw modules for all 23 benchmark sources and 45 observed
-points. Compiler latency and generated-program speed are separate results in
-the [phase report](../implementation/phase58/README.md).
+overapplication observations and passing installed interfaces. Counts overlap.
+B1 and B2 emit identical raw modules for all 23 benchmark sources and their
+45-point observer mapping. The balanced compiler campaign passes **207 workers**
+(23 sources × three roles × three rounds). Equal-source geometric means of
+per-source medians improve **2.476542× → 1.433877× B2/TS** for import/load plus
+first compilation and **3.816429× → 2.071828×** for compilation alone. These are
+genuine B2 requests in fresh processes with prepared persistent Base caches;
+OS caches are not claimed cold, and installed-B1 CLI latency is not measured.
+No new 669-sample runtime campaign or generated-program speed gain is claimed;
+historical [Phase58 runtime evidence](../implementation/phase58/program-performance.md)
+transfers only to byte-identical artifacts.
 
-[Source accounting](../implementation/phase58/source-complexity-last.md) records
-26,560 physical / 21,823 code lines, 3,055 definitions, 101 types and 108 modules.
-The six changes are explained in the [allocation guide](self_hosted/compiler-allocation.md).
-Native modules, runtimes and driver retain exact Phase56 bytes;
-[backend boundaries](self_hosted/backend-boundaries.md) explains their separation.
+[Source accounting](../implementation/phase61/source-footprint.md) records
+27,753 physical / 22,799 code lines, 3,192 definitions, 112 types and 114 modules.
+The [compiler-request guide](self_hosted/compiler-request-pipeline.md) explains
+current mechanisms; the six changes in the
+[allocation guide](self_hosted/compiler-allocation.md) retain their Phase58 scope.
+Native modules and runtimes retain exact bytes; the typed driver and maintained
+workflow changed. [Backend boundaries](self_hosted/backend-boundaries.md)
+explains their separation.
 
 ## Historical release results: Phase56
 
@@ -340,8 +353,9 @@ reduction targets remain unachieved.
 The [release manifest](../selfhost/dist/release.json) binds the installed compiler
 to source, checked bootstrap, Base, runtime and host. The installed API is a
 guarded native-equality/literal-choice derivative of a genuine checked B1. Its original checked
-parent and exact transformation are preserved separately. This is not a new
-self-hosting fixed point. [Conformance](../selfhost/CONFORMANCE.md) distinguishes acceptance,
+parent and exact transformation are preserved separately. The installed artifact
+remains a checked B1 derivative; the separately qualified direct B2 reproduces B3.
+[Conformance](../selfhost/CONFORMANCE.md) distinguishes acceptance,
 proof trust, exact diagnostics, execution and unavailable platforms.
 
 Phase23 reuses the existing graph evaluator for conversion. It compares rigid
@@ -351,7 +365,7 @@ still cache evaluated heads. This prevents
 repeated traversal of shared terms: two depth-32 checks that previously exhausted
 a 1 GiB heap now complete within that limit. Its historical ordinary-checking
 comparison was around three times the pinned TypeScript compiler. That scope
-differs from the historical Phase32 library compile requests and the current
+differs from the historical Phase32 library compile requests and the historical
 [Phase45 compiler-cost study](../implementation/phase45/compiler-cost.md);
 these ratios must not be substituted for each other.
 
@@ -418,7 +432,7 @@ npm run build -- /absolute/release-config.json /absolute/new-attempt
 Config fields and selection semantics are documented in the
 [maintained workflow guide](PHASE5_DEVELOPMENT.md). Broad conformance and checked
 self-reproduction are release/integration gates, not every small edit's build.
-The [Phase56 report](../implementation/phase56/README.md) records current
+The [Phase61 results](../implementation/phase61/state08-results.md) record current
 qualification and installation status. The historical [Phase32 release report](../implementation/phase32/release-03.md)
 retains its own evidence, limits and ordinary/relocated CLI closure.
 
@@ -500,9 +514,11 @@ BEND_TYPED_API="$PWD/build/candidate-api.mjs" \
 This writes a checked API plus the assembled source and provenance in
 `build/typed/`. Keep source, API, runtime and host snapshots immutable during
 validation. The current direct-image chain has a separate fresh source check and
-exact B2→B3 reproduction, recorded in [Phase56](../implementation/phase56/reproduction.md).
-Use the [bounded direct-image recipes](../selfhost/tools/performance/phase56/README.md)
-for that chain, with a 1 GiB heap and 2 GiB tree-RSS ceiling.
+exact B2→B3 reproduction, recorded in the
+[Phase61 results](../implementation/phase61/state08-results.md).
+The historical [Phase56 direct-image recipes](../selfhost/tools/performance/phase56/README.md)
+require fresh source/API bindings before replay; their bounded chain uses a
+1 GiB heap and 2 GiB tree-RSS ceiling.
 
 The older H-to-H legacy pipeline below has not been rerun for the current compiler.
 It uses a different ABI and substantially larger resource allowance; it is a
@@ -666,12 +682,20 @@ full-source fixed point is not relabeled as B02's.
 
 ## Current release boundary
 
-Use the [Phase55 report](../implementation/phase55/README.md) and
-[current conformance record](../selfhost/CONFORMANCE.md) for host02's installed
-identities and qualification. Historical reproduction results above remain
-bound to their original artifacts. This is a checked B1 release. Full direct
-image generation and eight ordinary-driver probes per image now pass; they do
-not establish B2→B3 self-reproduction or a fresh full-source self-check.
+Use the [Phase61 results](../implementation/phase61/state08-results.md) and
+[current conformance record](../selfhost/CONFORMANCE.md) for installed state08's
+identities and qualification. The installed checked B1 API is
+`97f412afb692cc9f187144e418fb153f35f62fb6ff5eda698e28ebc3eaf260c8`, bound to complete
+source `268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e`.
+The separately qualified genuine B2 freshly checks that source and reproduces
+B3 exactly at `23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477`.
+Release admission, installation, all 42 legacy and 24 default interface checks,
+the final two-command CLI resume and post-check integrity verification pass.
+Historical reproduction results remain bound to their original artifacts, and
+original failed receipts remain preserved. All 3,192 definitions are unsafe;
+proof trust is refused and no kernel proof is established.
+
 The [backend boundary guide](self_hosted/backend-boundaries.md) explains what
 remains shared, what belongs to legacy/direct JS or native C, and the proposed
-future native-IR seam. No LLVM or assembly backend was added in this cleanup.
+future native-IR seam. Native IO.args and actual GPU execution remain outside
+the demonstrated coverage. No LLVM or assembly backend was added.

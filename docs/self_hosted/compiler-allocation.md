@@ -1,10 +1,11 @@
 # Compiler allocation and direct JavaScript generation
 
-This page describes six implemented **Phase58 last01** changes. The selected
-checked B1 is installed and verified; its exact release identity remains in the
-[self-hosted compiler index](README.md). The [Phase58 report](../../implementation/phase58/README.md)
-records checked artifacts, focused controls, measurements and the selection
-decision. Implementation does not by itself establish a speedup.
+This page describes six retained changes introduced in **Phase58 last01**.
+For installed **Phase61 state08**, see the [self-hosted compiler index](README.md)
+and [compiler-request guide](compiler-request-pipeline.md). The
+[Phase58 report](../../implementation/phase58/README.md) preserves these mechanisms'
+original checked artifacts, controls, measurements and selection decision.
+Implementation does not by itself establish a speedup.
 
 Four changes target the JavaScript emitted by the compiler, including a
 self-emitted compiler image. Two target the compiler's constructor queries and
@@ -199,14 +200,14 @@ The [design](../../design/phase58/shared-recursive-dispatch.md),
 [dispatcher report](../../implementation/phase58/shared-scc.md) and
 [latency report](../../implementation/phase58/latency.md#fixed-source-scc-sharing-pilot)
 distinguish the fixed-source saved-image diagnostic from the genuine checked
-implementation. The selected `checked-last01` passes its checked build,
+implementation. The Phase58 `checked-last01` passed its checked build,
 focused and broad controls, genuine B2 generation, fresh source check and exact
 B2→B3 reproduction. Diagnostic image-size and startup observations remain
 separate from the source implementation's request throughput and program speed.
 
-## Remaining key reuse is a separate, unmeasured proposal
+## Phase58 key-reuse proposal: separate and unmeasured
 
-`jd_host_nat_status_on` currently serializes an unseen non-native-Nat ADT twice:
+At the Phase58 checkpoint, `jd_host_nat_status_on` serialized an unseen non-native-Nat ADT twice:
 once for membership in its visited set and once for insertion. The isolated
 [local-key proposal](../../selfhost/tools/performance/phase58/allocation/README.md)
 would share that one immutable String inside the same selected branch. It is not
@@ -225,5 +226,6 @@ keeps that question separate from the scalar Word reconstruction removed here.
 The qualification record distinguishes compiler request time, emitted-program
 runtime, sampled cumulative allocation, peak memory and source/code size. Public
 calling behavior, native/legacy support and the compiler's explicit proof-trust
-limits remain separate obligations. The Phase58 report binds the installed
-selection to its completed evidence.
+limits remain separate obligations. The Phase58 report binds its historical
+selection to its completed evidence; the [State08 results](../../implementation/phase61/state08-results.md)
+record the current release.

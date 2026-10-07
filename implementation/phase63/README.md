@@ -94,3 +94,23 @@ State05 source SHA256: `d9855a5ac29a1602c7e49a42aace17646c89f36ee3dc4510c1203259
 Checked B1 API: `d8d0c45a14fd143a4eafa447ad70d961cfe95e03c96caf7c7212073461a8a4ed`.
 Genuine B2: `9b5d260b08e015cd1c2911a6ef0b880130978a3933416db704731f9028dc8cc2`.
 The seven installed artifacts remain the previous release.
+
+State05 architecture checkpoint pushed as `79c3e5f`. Decoder V2 confirmation
+passes eight workers: mean Numeric ratio0.7613 and MapSet0.8549 against the same
+State05 image with the generic decoder. The V2 differential gate passes206 valid
+and1331 malformed cases. State06 now integrates it with shared host field
+conversion; source checking and subsequent measurements are pending.
+
+## State06 checked candidate
+
+State06 integrates decoder V2 and a44-line Bend host-field plan that computes each
+constructor's converter once, reusing it for tail selection and output. Strict
+checked36 and94-root admission pass. A clean single-round checked-B1 screen passes
+all six output checks: Numeric543.02→374.93ms (TS323.86), MapSet2291.32→1511.50ms
+(TS641.26). These are compilation-only values within this campaign; no B2 speed
+or full release claim follows. Build58.49s; peak supervised RSS1.61GB.
+
+Raw evidence: `selfhost/build/phase63/checked-state06/attempt.json`,
+`state06-b1-latency/screen/report.json`. State07 tests the separately registered
+checker-annotation reuse hypothesis on top of State06. Unused positional-ABI
+patches remain rejected for this named-layout B1 **and B2** configuration.

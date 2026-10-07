@@ -104,15 +104,59 @@ def jd_host_marshal_ctors(+book: List<&2,KDef>, +ctors: List<&2,KDef>, +args: Li
       jd_host_marshal_arm(book, c, j_specialize(book, dt(c), args), out, seen, depth, fuel, self) ++
       jd_host_marshal_ctors(book, rest, args, out, seen, depth, fuel, self)
 
+# One constructor field plan supplies both tail selection and field output.
+# The end retains the original field-telescope refusal fragment, including when
+# the exhausted telescope might otherwise have ended. Conversion depth/fuel is
+# identical to the old independent tail and field traversals.
+type JDHostFields is Data:
+  JDHostFieldsEnd{+error: String}
+  JDHostFieldsCon{+name: String, +marshal: String, +rest: JDHostFields}
+
 @unsafe
 def jd_host_marshal_arm(+book: List<&2,KDef>, +c: KDef, +tel: KTerm, +out: Bool,
   +seen: List<&2,KTerm>, +depth: U32, +fuel: U32, +self: String) -> String:
-  +tail = jd_host_marshal_tail(book, tel, out, seen, depth, fuel, self)
-  +copy = jd_host_marshal_fields(book, tel, out, seen, depth, fuel, tail)
+  jd_host_marshal_arm_fields(c, jd_host_marshal_field_rows(book, tel, out, seen, depth, fuel), self)
+
+@unsafe
+def jd_host_marshal_arm_fields(+c: KDef, +fields: JDHostFields, +self: String) -> String:
+  +tail = jd_host_marshal_rows_tail(fields, self)
+  +copy = jd_host_marshal_rows_text(fields, tail)
   "case " ++ j_quote(dn(c)) ++ ":" ++
     kc(String, String.eq(copy ++ tail, ""), u => "at[key]=v;return top[0];", u =>
       "at=at[key]={...v" ++ copy ++ "};" ++ kc(String, String.eq(tail, ""),
         u => "return top[0];", u => "key=" ++ j_quote(tail) ++ ";v=v[key];continue;"))
+
+@unsafe
+def jd_host_marshal_field_rows(+book: List<&2,KDef>, +tel: KTerm, +out: Bool,
+  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> JDHostFields:
+  kc(JDHostFields, U32.is_gt(fuel, 0), u =>
+    jd_host_marshal_field_rows_on(book, wnf(book, tel), out, seen, depth, U32.sub(fuel, 1)),
+    u => JDHostFieldsEnd{",[\"$unsupported\"]:" ++ jd_host_error("host field telescope depth") ++ "()"})
+
+@unsafe
+def jd_host_marshal_field_rows_on(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
+  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> JDHostFields:
+  kc(JDHostFields, String.eq(tg(t), "All"), u =>
+    kc(JDHostFields, U32.is_eq(qt(t), 0), v =>
+      jd_host_marshal_field_rows(book, j_app_type(t, atom("Absent")), out, seen, depth, fuel), v =>
+      JDHostFieldsCon{nm(t), jd_host_marshal(book, kid(t, 0), out, seen, depth, fuel),
+        jd_host_marshal_field_rows(book, j_app_type(t, atom("Absent")), out, seen, depth, fuel)}),
+    u => JDHostFieldsEnd{""})
+
+@unsafe
+def jd_host_marshal_rows_tail(+fields: JDHostFields, +self: String) -> String:
+  match fields:
+    case JDHostFieldsEnd{error}: ""
+    case JDHostFieldsCon{name, marshal, rest}:
+      jd_host_marshal_tail_done(name, String.eq(marshal, self), jd_host_marshal_rows_tail(rest, self))
+
+@unsafe
+def jd_host_marshal_rows_text(+fields: JDHostFields, +tail: String) -> String:
+  match fields:
+    case JDHostFieldsEnd{error}: error
+    case JDHostFieldsCon{name, marshal, rest}:
+      kc(String, String.eq(name, tail), u => "", u => jd_host_marshal_field(name, marshal)) ++
+        jd_host_marshal_rows_text(rest, tail)
 
 # Like pinned js_marshal: choose the last directly self-recursive field as the
 # iterative spine, converting other fields left-to-right before following it.

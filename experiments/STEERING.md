@@ -1,4 +1,30 @@
-# Current frontier: Phase61 state08 installed; campaign closed
+# Current frontier: Phase62 investigation complete; Phase61 state08 unchanged
+
+The user authorized investigation of the remaining compiler-speed gap.
+[Phase62 report](../implementation/phase62/README.md) ·
+[Design](../design/phase62/compiler-parity-investigation.md) ·
+[P62-001](phase62/P62-001-remaining-compiler-cost.md) ·
+[Closed evidence](../implementation/phase62/artifacts.md).
+
+All 23 inputs have current CPU/allocation/stage evidence and logical work counts.
+The four-source same-Bend-source comparison finds B2 uses 12.82% less compile
+time than equality-derived B1. Diagnostic arithmetic excess is 510.20 ms:
+265.99 ms prepared-state/loading/checking, 241.55 ms backend, 2.65 ms other.
+The narrow check boundary is similar in time but includes different Base work.
+Repeated ordinary requests narrow B2/TS 2.114→1.380 by the fourth request; no
+steady-state plateau is established. Scaling shows higher marginal cost, not
+observed quadratic growth. All target outputs/oracles pass. Compiler source,
+seven installed files and 110 inherited unrelated files remain unchanged.
+
+Next proposals: admitted immutable Base state for library sessions; one coherent
+backend analysis/document with valid dependency/context reuse; signature bundles
+as a small first prototype; completion/freshening reconstruction; compact/lazy
+prepared state for fresh processes. Narrow arity CPU ancestry is only ~2.3%, so
+do not promise parity from that cache. Preserve checking provenance, eager-beta
+semantics and context/budget contracts. No optimization is selected or executed
+by this investigation, no target remains active, and raw writers are closed.
+
+## Closed Phase61 release baseline
 
 **Phase61 state08 is installed as checked B1 and its CLI is verified.** Direct
 JavaScript is the default; explicit legacy JavaScript and native C remain

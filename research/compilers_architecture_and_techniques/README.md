@@ -1,5 +1,12 @@
 # Compiler architectures and optimization techniques
 
+The [Phase62 compilation-speed investigation](../../implementation/phase62/README.md)
+adds focused [term-processing research](phase62-term-processing.md) on Lean,
+Lean4Lean and smalltt, and [query-reuse research](phase62-query-reuse.md) on the
+pinned TS implementation, Rust and LLVM. These address the current compiler's
+own execution cost. The original Phase45 survey below primarily informed
+generated-program optimization and retains its historical source snapshots.
+
 Source survey completed 2026-10-04 against our selected Phase45 worker23 compiler
 at `55e5b79dc9ac3e02436a712e34722f2eb519e5df`. This collection studies seven
 external/reference implementations and connects them to current Bend code.

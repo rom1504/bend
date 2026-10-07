@@ -3752,3 +3752,45 @@ all raw writers are closed.
 is installed and verified as checked B1, with separate genuine-B2 correctness
 and compiler-request measurements. No further compiler source change, target or
 follow-up optimization is selected.
+
+
+### Phase62 remaining compiler-cost investigation — 2026-10-07
+
+[Design](../design/phase62/compiler-parity-investigation.md) and
+[P62-001](phase62/P62-001-remaining-compiler-cost.md) precede target collection.
+The [report](../implementation/phase62/README.md) records an unchanged-compiler
+study: 92 CPU/allocation profiles, 50 exclusive-stage workers, 36 clean
+same-source B1/B2/TS workers, 16 repeated-request workers/64 requests, 27 paired
+counter inputs and 16 synthetic-scaling workers with 1,488 exact runtime checks.
+All target results pass their scoped output/value oracles. Raw evidence is
+closed, archived and reopened-verified; one data-only plot failure is preserved.
+
+The current arithmetic diagnostic gap is 510.20 ms per input: 265.99 ms in
+prepared-state/loading/checking, 241.55 ms in backend work, 2.65 ms elsewhere.
+The checker boundary itself averages171.94 ms B2 versus172.91 ms TS, with
+unequal Base work. Cache admission costs173.42 ms, mainly JSON parse88.77 ms
+and tree validation52.02 ms, versus file read1.75 ms. These diagnostic clocks
+are separate from the historical clean23 headline1.433877×/2.071828×.
+
+Same-source B2 uses12.82% less compilation time than optimized checked B1 on
+four inputs; runtime/ABI/profile confounders remain explicit. Later ordinary
+requests change B2/TS2.114→1.577→1.293→1.380×; no plateau or isolated JIT
+attribution. All23 inputs repeat signature facts, but that family's CPUcount
+union averages only2.25%. Sampled allocation ratio1.185× and varying per-stage
+substitution counts refute a universal allocation-only explanation. Simple
+size/width screens reveal higher marginal cost without quadratic growth over
+the tested range; one round is not an asymptotic proof.
+
+Focused primary-source research compares current Bend with TS caches, Lean
+metadata/sharing, Lean4Lean, smalltt, Rust query dependencies and LLVM analysis
+preservation. Root alone ran serial guarded CPU3 targets; seven agents handled
+independent tooling/source research and review. Ten collection workflows total
+401.903 seconds including their preflight/preparation/verification; this is not
+whole-session elapsed. Preservation passes110 inherited files and7 installed
+files. No production source change, upstream update, installation or PR comment.
+
+**Updated frontier:** investigation complete. The strongest next work combines
+safe admitted Base state for library sessions with reusable backend analysis and
+documents. Use a small signature-fact bundle as a cheap architecture prototype,
+not a parity promise. Fresh-process state transport and completion/freshening
+remain distinct opportunities. No optimization or target is currently selected.

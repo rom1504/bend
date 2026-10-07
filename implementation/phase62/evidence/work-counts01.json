@@ -1,0 +1,1351 @@
+{
+  "kind": "phase62-work-counts-summary",
+  "complete": true,
+  "pass": true,
+  "diagnosticOnly": true,
+  "productionQualified": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/work-counts01/report.json",
+    "sha256": "fa879063c23fafcf8eb6724ac2bd931e419941919d27a93770172026e1eb3bbc"
+  },
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/work-counts/summarize.py",
+    "sha256": "3c908ba3bff1dfa2c6b59caad4e19f78fafa58731fa4d26eb0a952d029c8a675"
+  },
+  "scope": "Operation counts only. Derivative Base cache is primed on its real API identity before counters reset. Requests reuse one process; output bytes are checked against qualified uninstrumented output. Instrumented times are not performance claims.",
+  "node": {
+    "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+    "bytes": 123655872
+  },
+  "image": {
+    "kind": "direct",
+    "role": "candidate",
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/state08-b2-latency01/preparation/prepare-candidate/stage/project/dist/api.mjs",
+      "sha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477"
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/snapshot/build/typed/snapshots/53e6c9a478002ea16896efb38028e00057028f51e58ccd9f68a35097ab6d9305/compiler.bend",
+      "sha256": "268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e"
+    },
+    "emission": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/final-state08/bootstrap/full/report.json",
+      "sha256": "56eb860d154fcf1bdec1e6ecab43262a073b3bdfeaa2dd9fa6781901aee52b74"
+    },
+    "checkedGenerator": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/attempt.json",
+      "sha256": "bf671a4e092f238879756b4c076f39733825b4390e6593795e8beea4c8561f13"
+    },
+    "strictExact": true,
+    "diagnosticDerivation": null,
+    "productionQualified": false,
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/state08-b2-latency01/preparation/prepare-candidate/stage/project/src/runtime.mjs",
+      "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+    },
+    "base": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    "directRuntime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/state08-b2-latency01/preparation/prepare-candidate/stage/project/src/runtime/js/direct.mjs",
+      "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+    },
+    "driver": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/state08-b2-latency01/preparation/prepare-candidate/stage/project/tools/typed-driver.mjs",
+      "sha256": "569f17b1e0ccd87da33dd07c2b7a7837f4578cae7d592e646f10eb4c2d2a313b"
+    }
+  },
+  "preparation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/state08-b2-latency01/preparation/prepare-candidate.result.json",
+    "sha256": "ceffe68a27ac4c877e2d6841ec4a6a211a919db8d6c886cd4dcd747ac24cd518",
+    "bytes": 137360
+  },
+  "derivations": [
+    {
+      "role": "bend",
+      "originalSha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477",
+      "strippedSha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477",
+      "outputSha256": "36137acd61c5ccad524cc28bf4ea63c90284c96fc69b76752ad1e703a885c3de",
+      "exactInverseToStripped": true,
+      "parserSha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c",
+      "probes": [
+        {
+          "name": "subst",
+          "kind": "scc-logical-entry",
+          "bodySha256": "b971642c62b58ea6766d0f3dfbae6e146440a0cc00ce148c3d0aa7c9bf5cc778"
+        },
+        {
+          "name": "subst_node",
+          "kind": "scc-logical-entry",
+          "bodySha256": "fb8d8c93ce8c8b3594a41f82f40cc8f5b24ec762bd92d5cacfa694980dca8f76"
+        },
+        {
+          "name": "core_rebuild",
+          "kind": "scc-logical-entry",
+          "bodySha256": "0f46f759313003ccac0d42e1ef22223a6c638614189291a262956f0256334d5b"
+        },
+        {
+          "name": "env_subst_term",
+          "kind": "scc-logical-entry",
+          "bodySha256": "340adbd84ff56f9a1ba518291922d999a20c40ee7345df4a9e37c1bedef29795"
+        },
+        {
+          "name": "env_subst_find",
+          "kind": "scc-logical-entry",
+          "bodySha256": "9cc02c545cd304fe74a73cb66c1e96ad9dee8b767a94c36501c52f11e7b68097"
+        },
+        {
+          "name": "env_tele_fill_loop",
+          "kind": "scc-logical-entry",
+          "bodySha256": "920a97391fe85671e628209bc84b1d9d72874afd83477718fc81902f7ae7587b"
+        },
+        {
+          "name": "env_tele_fill_eager",
+          "kind": "scc-logical-entry",
+          "bodySha256": "f3d228884af282ed1e98e9a1647021d653b5fd58bb9cf4452fc6b2c23e70ff13"
+        },
+        {
+          "name": "env_tele_check_loop",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "011600ad5fd932db188a425884b81d848127e50b62215fd1b901405a364661fa"
+        },
+        {
+          "name": "tele_check_legacy",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "d87185a80e41ff3fd57d9e01feb08babdb80f2cffa79813e84d78ac74e8c0b01"
+        },
+        {
+          "name": "norm_eval",
+          "kind": "scc-logical-entry",
+          "bodySha256": "ce159ac9f4f99faf014801b04c125738ffa541b863757b14910b03d3cd5860d2"
+        },
+        {
+          "name": "norm_eval_node",
+          "kind": "scc-logical-entry",
+          "bodySha256": "5cb65526c731f25734e38c4ecae0ba6a12bca552f369610e75399fef325295fa"
+        },
+        {
+          "name": "index_lookup",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "e6dd2ca54974d74dd6dbf53f0bafed62be7a8e43fa9ffc368c54d93cf6820803"
+        },
+        {
+          "name": "index_find",
+          "kind": "scc-logical-entry",
+          "bodySha256": "32d28a841ceec0ca3dd5d876c5cf5e7a75ddf34629a76c5d3e70d13291e58a72"
+        },
+        {
+          "name": "index_child_list",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "6d146dfa3e84777f92ef38702b1ae26a7f006991bcc211b607dda197e4b1f741"
+        },
+        {
+          "name": "infer",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "a978ba329c712a661f84d82ff766cb95b52e12c949cd8a7cb56fe31431afdf38"
+        },
+        {
+          "name": "check",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "0c0a9fb0ac2e0bc400d8a21ba0ab9b0fda0b7b1c11f756595802cdcac09650db"
+        },
+        {
+          "name": "jd_doc_definition",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "13d621ed436826f6bab3d74a3bc8c4f69f6fba32ff3deb79e59168c43159d144"
+        },
+        {
+          "name": "jd_calls_context",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "ecc941d6479abc4b2866e80c5d592d8ad4febd12c473f9f30f7902cb5527ded1"
+        },
+        {
+          "name": "jd_arity",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "3b53a32122377a6f9d8473aac8bb97e13eff9b3fd2f66a39dd96ae5f56d453d2"
+        },
+        {
+          "name": "jd_domains",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "b75a643aac50e6d514922f9b6ec568e616872dbd1a04cd1b8cabd07d41878aac"
+        },
+        {
+          "name": "jd_raise",
+          "kind": "scc-logical-entry",
+          "bodySha256": "b0a8ae6fbb90324bacd02bcea2771e23e9c00313ab900d8d8b50ad0aa004b227"
+        },
+        {
+          "name": "jd_params",
+          "kind": "scc-logical-entry",
+          "bodySha256": "aff8d4085c1ab73f8f42f809534f0fb30684f16f979fd973da3c04bab1c4464f"
+        },
+        {
+          "name": "jd_live_arity",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "41cce9a4e04e161efd4bd95e52da3c5136bb5e6e7a6e70d7b9a271932ae7c4bb"
+        },
+        {
+          "name": "jd_calls_rows",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "20e52964d315f167eb878e4bae9fdb9aa456e0578213e0ce60e6303c7a8368a4"
+        },
+        {
+          "name": "jd_calls_fact",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "de0437292b447b3a7da0843dc7d543f3662c4f1556f05e0e1fd50342bd731669"
+        },
+        {
+          "name": "jd_selected_context",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "06e352be5b5154504ed3a8378c65c9f41685fd902f94339c9aaf6cccee2ed508"
+        },
+        {
+          "name": "j_call_spine",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "1e143602929449364c0a8a912d82da59e683d25dc89a5b43d4508527738b56a0"
+        },
+        {
+          "name": "j_specialize",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "1195d814ce7fc02f623d9ecfb6f7d55b8fa42fdb766ffe7a2627602c59041f4f"
+        },
+        {
+          "name": "j_app_type",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "b95cc17e2fad74999b3bdbd1404cc3fc7e9addc74ea4d44b25e9113576aa9b35"
+        }
+      ],
+      "missing": [],
+      "scope": "Diagnostic logical entries, not physical allocations or directly comparable AST node counts. TS counts function entries; B2 counts logical tail-loop/SCC visits."
+    },
+    {
+      "role": "theory",
+      "originalSha256": "de2b39db2fcbd2f9115053e85e34d791693e1297bfeb6874da1013ff7b44b7dd",
+      "strippedSha256": "664d1080f8ae575122bf4903d20fe1e94c823a5c0094fd566df3ce3d134bf1c8",
+      "outputSha256": "93b43e732d7826b75f5cd226bdbb2c6a9e412ce1794cdfd9ef9aa438ddc63495",
+      "exactInverseToStripped": true,
+      "parserSha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c",
+      "probes": [
+        {
+          "name": "term_higher",
+          "kind": "function-entry",
+          "bodySha256": "0b6293bed000ad2bca38287c6458225ceeb8d7d10cb812d6511dc262b24827ec"
+        },
+        {
+          "name": "term_lower",
+          "kind": "function-entry",
+          "bodySha256": "63d9a0694fcc95ba950221ce0a38016aab17db90d06159a31964fac98d5b264f"
+        },
+        {
+          "name": "term_wnf",
+          "kind": "function-entry",
+          "bodySha256": "64e3da1c5966364dad2907a18ed8fdfedfcfb8427d65d99135def18e3db0d3a1"
+        },
+        {
+          "name": "term_force",
+          "kind": "function-entry",
+          "bodySha256": "40eff10387a14992386b4710a4261e27e2174ce62d74b57749508304134583f1"
+        },
+        {
+          "name": "term_infer",
+          "kind": "function-entry",
+          "bodySha256": "8accb7eb31320eb0ce063ce2645acdc57ab44af2ecc48e91e29095ccd68764e6"
+        },
+        {
+          "name": "term_check",
+          "kind": "function-entry",
+          "bodySha256": "a0c467a3a25cf147adb9dda817f0235d7c07197cf1550e2aae3161a0ed1611fd"
+        },
+        {
+          "name": "tele_open",
+          "kind": "function-entry",
+          "bodySha256": "c8090cdcf68f1e07b8796ccb7046c929cc997c33b127d91fb5095ef28ec37245"
+        },
+        {
+          "name": "tele_fill",
+          "kind": "function-entry",
+          "bodySha256": "92fa6066f4932e51e1e4709f4ba73d05e0455be3115a673cd9ef87e0c3c59e1e"
+        },
+        {
+          "name": "tele_unbind",
+          "kind": "function-entry",
+          "bodySha256": "5dd8e7a3cb71cdf77b20be81c5898cb3a95c49c321f1f117f1da199f94d7a99c"
+        },
+        {
+          "name": "tele_check",
+          "kind": "function-entry",
+          "bodySha256": "5f6afe09d0bae8689f7a0aacca0fcde676063e060b87ecf4ebe3c64418f7a6a5"
+        }
+      ],
+      "missing": [],
+      "scope": "Diagnostic logical entries, not physical allocations or directly comparable AST node counts. TS counts function entries; B2 counts logical tail-loop/SCC visits."
+    },
+    {
+      "role": "backend",
+      "originalSha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee",
+      "strippedSha256": "42af6690c860fe5a1b487ff11efe35396530b469b11a7e56179400c9776b8bbc",
+      "outputSha256": "77ca6aa3b9e0594f237ef6c961ff6284758999c99e2118e65be685668cccc6e9",
+      "exactInverseToStripped": true,
+      "parserSha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c",
+      "probes": [
+        {
+          "name": "fun_of",
+          "kind": "function-entry",
+          "bodySha256": "f569c2e6e51940168ead928ddb1514274d6bacc8068b316ebadf1e733b0581a9"
+        },
+        {
+          "name": "tele_unbind",
+          "kind": "function-entry",
+          "bodySha256": "8ab9da6bc6c2de09d11c2c797a548841a6a2dc9d10212aafdf83ee3e481e34a4"
+        },
+        {
+          "name": "term_open",
+          "kind": "function-entry",
+          "bodySha256": "58e4eac9eea22b4026fd125dfaf6389d0d30554c789eb43fb2d53d5f5107c38e"
+        },
+        {
+          "name": "term_spine",
+          "kind": "function-entry",
+          "bodySha256": "442d06be5ddbefe25855d4bafbb94e3e8bb8491ddd4b66f60f7885483238717e"
+        },
+        {
+          "name": "def_raise",
+          "kind": "function-entry",
+          "bodySha256": "d9db765ac24177755ae06aa943d8f41444097d0dbbf5a56c475076e36ba3ea54"
+        },
+        {
+          "name": "js_def",
+          "kind": "function-entry",
+          "bodySha256": "92dea114fe12f7c088bd8e631ae658d3e96615471dd556b95fb1ee8c2ed84718"
+        },
+        {
+          "name": "js_expr",
+          "kind": "function-entry",
+          "bodySha256": "342810972c0e4a20cba8a149b2bc266bab6772fa3e55e36c33001eaaf7c128e2"
+        },
+        {
+          "name": "js_func",
+          "kind": "function-entry",
+          "bodySha256": "1a0ec7bd60b5884c88ee47579fcb1949f85c3136303bde9af319ab0392560f80"
+        },
+        {
+          "name": "js_host",
+          "kind": "function-entry",
+          "bodySha256": "ad22f2a4d308667b4d5626eb6c29a46fb1d7b37273c5ea90eeb7185a126faae6"
+        },
+        {
+          "name": "js_lib",
+          "kind": "function-entry",
+          "bodySha256": "9ac5ae93757f69f15add8728e25c44c7f747bd6b4c42019c2b1f68077958487b"
+        },
+        {
+          "name": "memo_FUNS_calls",
+          "kind": "memo-table-call"
+        },
+        {
+          "name": "memo_FUNS_misses",
+          "kind": "memo-table-miss"
+        },
+        {
+          "name": "memo_TELES_calls",
+          "kind": "memo-table-call"
+        },
+        {
+          "name": "memo_TELES_misses",
+          "kind": "memo-table-miss"
+        },
+        {
+          "name": "memo_OPENS_calls",
+          "kind": "memo-table-call"
+        },
+        {
+          "name": "memo_OPENS_misses",
+          "kind": "memo-table-miss"
+        },
+        {
+          "name": "memo_SPINES_calls",
+          "kind": "memo-table-call"
+        },
+        {
+          "name": "memo_SPINES_misses",
+          "kind": "memo-table-miss"
+        }
+      ],
+      "missing": [],
+      "scope": "Diagnostic logical entries, not physical allocations or directly comparable AST node counts. TS counts function entries; B2 counts logical tail-loop/SCC visits."
+    }
+  ],
+  "rows": [
+    {
+      "id": "numeric-recurrence",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+        "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+        "bytes": 556
+      },
+      "bendOutput": {
+        "sha256": "2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3",
+        "bytes": 14917
+      },
+      "typescriptOutput": {
+        "sha256": "0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee",
+        "bytes": 4699
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 1888,
+          "subst_node": 1641,
+          "core_rebuild": 828,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 6,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 1948,
+          "norm_eval_node": 1948,
+          "index_lookup": 3835,
+          "index_find": 54437,
+          "index_child_list": 4,
+          "infer": 64,
+          "check": 54,
+          "jd_doc_definition": 10,
+          "jd_calls_context": 2,
+          "jd_arity": 53,
+          "jd_domains": 164,
+          "jd_raise": 274,
+          "jd_params": 14,
+          "jd_live_arity": 32,
+          "jd_calls_rows": 29,
+          "jd_calls_fact": 24,
+          "jd_selected_context": 2,
+          "j_call_spine": 217,
+          "j_specialize": 151,
+          "j_app_type": 327
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 370
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 3948
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 109,
+            "subst_node": 104,
+            "core_rebuild": 36,
+            "env_tele_fill_eager": 2,
+            "norm_eval": 53,
+            "norm_eval_node": 53,
+            "index_lookup": 2756,
+            "index_find": 38320,
+            "infer": 64,
+            "check": 54
+          },
+          "jd_roots": {
+            "norm_eval": 2,
+            "norm_eval_node": 2,
+            "index_lookup": 8,
+            "index_find": 80
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 21,
+            "index_find": 219
+          },
+          "annotate_selected": {
+            "subst": 101,
+            "subst_node": 97,
+            "core_rebuild": 38,
+            "env_tele_fill_eager": 4,
+            "norm_eval": 83,
+            "norm_eval_node": 83,
+            "index_lookup": 63,
+            "index_find": 685
+          },
+          "jd_reach_selected": {
+            "subst": 133,
+            "subst_node": 133,
+            "core_rebuild": 38,
+            "norm_eval": 359,
+            "norm_eval_node": 359,
+            "index_lookup": 223,
+            "index_find": 2977,
+            "index_child_list": 2,
+            "jd_doc_definition": 2,
+            "jd_calls_context": 1,
+            "jd_arity": 25,
+            "jd_domains": 76,
+            "jd_raise": 127,
+            "jd_params": 7,
+            "jd_live_arity": 10,
+            "jd_calls_rows": 20,
+            "jd_calls_fact": 12,
+            "jd_selected_context": 1,
+            "j_call_spine": 109,
+            "j_specialize": 8,
+            "j_app_type": 58
+          },
+          "j_layout_error": {
+            "subst": 17,
+            "subst_node": 17,
+            "core_rebuild": 5,
+            "norm_eval": 44,
+            "norm_eval_node": 44,
+            "index_lookup": 37,
+            "index_find": 361,
+            "j_specialize": 2
+          },
+          "jd_library_selected": {
+            "subst": 1333,
+            "subst_node": 1141,
+            "core_rebuild": 628,
+            "norm_eval": 1084,
+            "norm_eval_node": 1084,
+            "index_lookup": 640,
+            "index_find": 6568,
+            "index_child_list": 2,
+            "jd_doc_definition": 8,
+            "jd_calls_context": 1,
+            "jd_arity": 28,
+            "jd_domains": 88,
+            "jd_raise": 147,
+            "jd_params": 7,
+            "jd_live_arity": 22,
+            "jd_calls_rows": 9,
+            "jd_calls_fact": 12,
+            "jd_selected_context": 1,
+            "j_call_spine": 108,
+            "j_specialize": 141,
+            "j_app_type": 269
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 97010,
+          "term_lower": 15222,
+          "term_wnf": 52272,
+          "term_force": 26673,
+          "term_infer": 11359,
+          "term_check": 12988,
+          "tele_open": 8662,
+          "tele_fill": 2908,
+          "tele_unbind": 408,
+          "tele_check": 2362
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36373,
+            "term_lower": 15222,
+            "term_force": 15222
+          },
+          "check": {
+            "term_higher": 59588,
+            "term_wnf": 51880,
+            "term_force": 8491,
+            "term_infer": 11359,
+            "term_check": 12988,
+            "tele_open": 8544,
+            "tele_fill": 2894,
+            "tele_unbind": 368,
+            "tele_check": 2362
+          },
+          "emit": {
+            "term_higher": 1049,
+            "term_wnf": 392,
+            "term_force": 2960,
+            "tele_open": 118,
+            "tele_fill": 14,
+            "tele_unbind": 40
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 53,
+          "tele_unbind": 143,
+          "term_open": 35,
+          "term_spine": 210,
+          "def_raise": 45,
+          "js_def": 2,
+          "js_expr": 29,
+          "js_func": 12,
+          "js_host": 2,
+          "js_lib": 1,
+          "memo_FUNS_calls": 53,
+          "memo_FUNS_misses": 12,
+          "memo_TELES_calls": 143,
+          "memo_TELES_misses": 40,
+          "memo_OPENS_calls": 35,
+          "memo_OPENS_misses": 26,
+          "memo_SPINES_calls": 210,
+          "memo_SPINES_misses": 172
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 53,
+            "tele_unbind": 143,
+            "term_open": 35,
+            "term_spine": 210,
+            "def_raise": 45,
+            "js_def": 2,
+            "js_expr": 29,
+            "js_func": 12,
+            "js_host": 2,
+            "js_lib": 1,
+            "memo_FUNS_calls": 53,
+            "memo_FUNS_misses": 12,
+            "memo_TELES_calls": 143,
+            "memo_TELES_misses": 40,
+            "memo_OPENS_calls": 35,
+            "memo_OPENS_misses": 26,
+            "memo_SPINES_calls": 210,
+            "memo_SPINES_misses": 172
+          }
+        }
+      }
+    },
+    {
+      "id": "test-map-set-ops",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+        "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+        "bytes": 5266
+      },
+      "bendOutput": {
+        "sha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd",
+        "bytes": 132866
+      },
+      "typescriptOutput": {
+        "sha256": "91812e3092688bdc609a2f9f21c1280120b8392eab7cd7148586702bf551e9bf",
+        "bytes": 69178
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 376325,
+          "subst_node": 267624,
+          "core_rebuild": 173729,
+          "env_subst_term": 6447,
+          "env_subst_find": 4793,
+          "env_tele_fill_loop": 1557,
+          "env_tele_fill_eager": 1282,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 96,
+          "norm_eval": 92775,
+          "norm_eval_node": 92589,
+          "index_lookup": 63072,
+          "index_find": 708082,
+          "index_child_list": 180,
+          "infer": 913,
+          "check": 818,
+          "jd_doc_definition": 195,
+          "jd_calls_context": 2,
+          "jd_arity": 1453,
+          "jd_domains": 6244,
+          "jd_raise": 27282,
+          "jd_params": 706,
+          "jd_live_arity": 866,
+          "jd_calls_rows": 228,
+          "jd_calls_fact": 1892,
+          "jd_selected_context": 2,
+          "j_call_spine": 11071,
+          "j_specialize": 15799,
+          "j_app_type": 21659
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 6873
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4486
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 4724,
+            "subst_node": 3839,
+            "core_rebuild": 2065,
+            "env_subst_term": 196,
+            "env_subst_find": 114,
+            "env_tele_fill_loop": 60,
+            "env_tele_fill_eager": 113,
+            "tele_check_legacy": 96,
+            "norm_eval": 922,
+            "norm_eval_node": 922,
+            "index_lookup": 3932,
+            "index_find": 52782,
+            "infer": 913,
+            "check": 818
+          },
+          "jd_roots": {
+            "norm_eval": 30,
+            "norm_eval_node": 30,
+            "index_lookup": 123,
+            "index_find": 1236
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 140,
+            "index_find": 1419
+          },
+          "annotate_selected": {
+            "subst": 47393,
+            "subst_node": 31915,
+            "core_rebuild": 21107,
+            "env_subst_term": 6251,
+            "env_subst_find": 4679,
+            "env_tele_fill_loop": 1497,
+            "env_tele_fill_eager": 1169,
+            "norm_eval": 9212,
+            "norm_eval_node": 9026,
+            "index_lookup": 3149,
+            "index_find": 32876
+          },
+          "jd_reach_selected": {
+            "subst": 123468,
+            "subst_node": 91294,
+            "core_rebuild": 60292,
+            "norm_eval": 30572,
+            "norm_eval_node": 30572,
+            "index_lookup": 19553,
+            "index_find": 219423,
+            "index_child_list": 90,
+            "jd_doc_definition": 91,
+            "jd_calls_context": 1,
+            "jd_arity": 700,
+            "jd_domains": 3050,
+            "jd_raise": 13497,
+            "jd_params": 353,
+            "jd_live_arity": 361,
+            "jd_calls_rows": 123,
+            "jd_calls_fact": 946,
+            "jd_selected_context": 1,
+            "j_call_spine": 5536,
+            "j_specialize": 3694,
+            "j_app_type": 6340
+          },
+          "j_layout_error": {
+            "subst": 47096,
+            "subst_node": 30297,
+            "core_rebuild": 20607,
+            "norm_eval": 11200,
+            "norm_eval_node": 11200,
+            "index_lookup": 4416,
+            "index_find": 43972,
+            "j_specialize": 2658,
+            "j_app_type": 2690
+          },
+          "jd_library_selected": {
+            "subst": 153449,
+            "subst_node": 110130,
+            "core_rebuild": 69575,
+            "norm_eval": 40516,
+            "norm_eval_node": 40516,
+            "index_lookup": 31672,
+            "index_find": 344106,
+            "index_child_list": 90,
+            "jd_doc_definition": 104,
+            "jd_calls_context": 1,
+            "jd_arity": 753,
+            "jd_domains": 3194,
+            "jd_raise": 13785,
+            "jd_params": 353,
+            "jd_live_arity": 505,
+            "jd_calls_rows": 105,
+            "jd_calls_fact": 946,
+            "jd_selected_context": 1,
+            "j_call_spine": 5535,
+            "j_specialize": 9447,
+            "j_app_type": 12629
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 224441,
+          "term_lower": 17071,
+          "term_wnf": 100539,
+          "term_force": 119615,
+          "term_infer": 12208,
+          "term_check": 13732,
+          "tele_open": 18098,
+          "tele_fill": 3589,
+          "tele_unbind": 3659,
+          "tele_check": 2428
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 37339,
+            "term_lower": 15799,
+            "term_force": 15799
+          },
+          "check": {
+            "term_higher": 62241,
+            "term_wnf": 55045,
+            "term_force": 8684,
+            "term_infer": 12208,
+            "term_check": 13732,
+            "tele_open": 8904,
+            "tele_fill": 2937,
+            "tele_unbind": 395,
+            "tele_check": 2428
+          },
+          "emit": {
+            "term_higher": 124861,
+            "term_lower": 1272,
+            "term_wnf": 45494,
+            "term_force": 95132,
+            "tele_open": 9194,
+            "tele_fill": 652,
+            "tele_unbind": 3264
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 2868,
+          "tele_unbind": 10152,
+          "term_open": 1858,
+          "term_spine": 11721,
+          "def_raise": 1593,
+          "js_def": 94,
+          "js_expr": 2403,
+          "js_func": 1112,
+          "js_host": 28,
+          "js_lib": 1,
+          "memo_FUNS_calls": 2868,
+          "memo_FUNS_misses": 108,
+          "memo_TELES_calls": 10152,
+          "memo_TELES_misses": 3264,
+          "memo_OPENS_calls": 1858,
+          "memo_OPENS_misses": 1792,
+          "memo_SPINES_calls": 11721,
+          "memo_SPINES_misses": 11092
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 2868,
+            "tele_unbind": 10152,
+            "term_open": 1858,
+            "term_spine": 11721,
+            "def_raise": 1593,
+            "js_def": 94,
+            "js_expr": 2403,
+            "js_func": 1112,
+            "js_host": 28,
+            "js_lib": 1,
+            "memo_FUNS_calls": 2868,
+            "memo_FUNS_misses": 108,
+            "memo_TELES_calls": 10152,
+            "memo_TELES_misses": 3264,
+            "memo_OPENS_calls": 1858,
+            "memo_OPENS_misses": 1792,
+            "memo_SPINES_calls": 11721,
+            "memo_SPINES_misses": 11092
+          }
+        }
+      }
+    },
+    {
+      "id": "lexer",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+        "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "bytes": 7134
+      },
+      "bendOutput": {
+        "sha256": "dcb0125d93015591a539320dd827b7d751d6985e69c44e51f7beefa43121e4a5",
+        "bytes": 28426
+      },
+      "typescriptOutput": {
+        "sha256": "2d9378dfdcacc5904f4b2ac65fd90ba1dcc4a51d9c68b00f6042c42aaeadbbba",
+        "bytes": 14110
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 16943,
+          "subst_node": 13888,
+          "core_rebuild": 6856,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 345,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 10655,
+          "norm_eval_node": 10655,
+          "index_lookup": 12408,
+          "index_find": 154818,
+          "index_child_list": 58,
+          "infer": 577,
+          "check": 657,
+          "jd_doc_definition": 69,
+          "jd_calls_context": 2,
+          "jd_arity": 406,
+          "jd_domains": 1241,
+          "jd_raise": 3311,
+          "jd_params": 168,
+          "jd_live_arity": 337,
+          "jd_calls_rows": 96,
+          "jd_calls_fact": 422,
+          "jd_selected_context": 2,
+          "j_call_spine": 1571,
+          "j_specialize": 885,
+          "j_app_type": 1726
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 4687
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4231
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 2573,
+            "subst_node": 2078,
+            "core_rebuild": 1023,
+            "env_tele_fill_eager": 170,
+            "norm_eval": 821,
+            "norm_eval_node": 821,
+            "index_lookup": 3687,
+            "index_find": 50197,
+            "infer": 577,
+            "check": 657
+          },
+          "jd_roots": {
+            "norm_eval": 30,
+            "norm_eval_node": 30,
+            "index_lookup": 122,
+            "index_find": 1225
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 950
+          },
+          "reach_book": {
+            "index_lookup": 73,
+            "index_find": 741
+          },
+          "annotate_selected": {
+            "subst": 2434,
+            "subst_node": 1957,
+            "core_rebuild": 990,
+            "env_tele_fill_eager": 175,
+            "norm_eval": 981,
+            "norm_eval_node": 981,
+            "index_lookup": 688,
+            "index_find": 7177
+          },
+          "jd_reach_selected": {
+            "subst": 3744,
+            "subst_node": 3174,
+            "core_rebuild": 1555,
+            "norm_eval": 2846,
+            "norm_eval_node": 2846,
+            "index_lookup": 2914,
+            "index_find": 33921,
+            "index_child_list": 29,
+            "jd_doc_definition": 29,
+            "jd_calls_context": 1,
+            "jd_arity": 176,
+            "jd_domains": 542,
+            "jd_raise": 1416,
+            "jd_params": 84,
+            "jd_live_arity": 90,
+            "jd_calls_rows": 55,
+            "jd_calls_fact": 211,
+            "jd_selected_context": 1,
+            "j_call_spine": 786,
+            "j_specialize": 245,
+            "j_app_type": 581
+          },
+          "j_layout_error": {
+            "subst": 2385,
+            "subst_node": 1800,
+            "core_rebuild": 955,
+            "norm_eval": 1166,
+            "norm_eval_node": 1166,
+            "index_lookup": 790,
+            "index_find": 7731,
+            "j_specialize": 168,
+            "j_app_type": 103
+          },
+          "jd_library_selected": {
+            "subst": 5612,
+            "subst_node": 4730,
+            "core_rebuild": 2250,
+            "norm_eval": 4488,
+            "norm_eval_node": 4488,
+            "index_lookup": 4047,
+            "index_find": 43958,
+            "index_child_list": 29,
+            "jd_doc_definition": 40,
+            "jd_calls_context": 1,
+            "jd_arity": 230,
+            "jd_domains": 699,
+            "jd_raise": 1895,
+            "jd_params": 84,
+            "jd_live_arity": 247,
+            "jd_calls_rows": 41,
+            "jd_calls_fact": 211,
+            "jd_selected_context": 1,
+            "j_call_spine": 785,
+            "j_specialize": 472,
+            "j_app_type": 1042
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 109101,
+          "term_lower": 15921,
+          "term_wnf": 58485,
+          "term_force": 50902,
+          "term_infer": 11872,
+          "term_check": 13574,
+          "tele_open": 10003,
+          "tele_fill": 3249,
+          "tele_unbind": 873,
+          "tele_check": 2416
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 37354,
+            "term_lower": 15864,
+            "term_force": 15864
+          },
+          "check": {
+            "term_higher": 61333,
+            "term_wnf": 53566,
+            "term_force": 8684,
+            "term_infer": 11872,
+            "term_check": 13574,
+            "tele_open": 8749,
+            "tele_fill": 3002,
+            "tele_unbind": 398,
+            "tele_check": 2416
+          },
+          "emit": {
+            "term_higher": 10414,
+            "term_lower": 57,
+            "term_wnf": 4919,
+            "term_force": 26354,
+            "tele_open": 1254,
+            "tele_fill": 247,
+            "tele_unbind": 475
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 579,
+          "tele_unbind": 1991,
+          "term_open": 372,
+          "term_spine": 2118,
+          "def_raise": 320,
+          "js_def": 29,
+          "js_expr": 487,
+          "js_func": 212,
+          "js_host": 28,
+          "js_lib": 1,
+          "memo_FUNS_calls": 579,
+          "memo_FUNS_misses": 41,
+          "memo_TELES_calls": 1991,
+          "memo_TELES_misses": 475,
+          "memo_OPENS_calls": 372,
+          "memo_OPENS_misses": 253,
+          "memo_SPINES_calls": 2118,
+          "memo_SPINES_misses": 1919
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 579,
+            "tele_unbind": 1991,
+            "term_open": 372,
+            "term_spine": 2118,
+            "def_raise": 320,
+            "js_def": 29,
+            "js_expr": 487,
+            "js_func": 212,
+            "js_host": 28,
+            "js_lib": 1,
+            "memo_FUNS_calls": 579,
+            "memo_FUNS_misses": 41,
+            "memo_TELES_calls": 1991,
+            "memo_TELES_misses": 475,
+            "memo_OPENS_calls": 372,
+            "memo_OPENS_misses": 253,
+            "memo_SPINES_calls": 2118,
+            "memo_SPINES_misses": 1919
+          }
+        }
+      }
+    },
+    {
+      "id": "raytrace-active",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+        "sha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+        "bytes": 14680
+      },
+      "bendOutput": {
+        "sha256": "d0b070f1c63cc2a92f15911780ad00dbee9d9789b99af8ae42a3efd1fd2baf95",
+        "bytes": 52082
+      },
+      "typescriptOutput": {
+        "sha256": "6ec766bd399abe64a706e778efd247cf84fe1cc37e183704a44d17bfbf162895",
+        "bytes": 29926
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 54874,
+          "subst_node": 49578,
+          "core_rebuild": 24955,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 302,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 26773,
+          "norm_eval_node": 26773,
+          "index_lookup": 24184,
+          "index_find": 291431,
+          "index_child_list": 68,
+          "infer": 2133,
+          "check": 1861,
+          "jd_doc_definition": 76,
+          "jd_calls_context": 2,
+          "jd_arity": 1275,
+          "jd_domains": 4160,
+          "jd_raise": 8106,
+          "jd_params": 280,
+          "jd_live_arity": 574,
+          "jd_calls_rows": 107,
+          "jd_calls_fact": 734,
+          "jd_selected_context": 2,
+          "j_call_spine": 6319,
+          "j_specialize": 916,
+          "j_app_type": 3770
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 10911
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4277
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 17088,
+            "subst_node": 14529,
+            "core_rebuild": 8185,
+            "env_tele_fill_eager": 150,
+            "norm_eval": 2012,
+            "norm_eval_node": 2012,
+            "index_lookup": 5802,
+            "index_find": 72528,
+            "infer": 2133,
+            "check": 1861
+          },
+          "jd_roots": {
+            "norm_eval": 36,
+            "norm_eval_node": 36,
+            "index_lookup": 143,
+            "index_find": 1432
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 67,
+            "index_find": 690
+          },
+          "annotate_selected": {
+            "subst": 17555,
+            "subst_node": 15056,
+            "core_rebuild": 8540,
+            "env_tele_fill_eager": 152,
+            "norm_eval": 2907,
+            "norm_eval_node": 2907,
+            "index_lookup": 2264,
+            "index_find": 24223
+          },
+          "jd_reach_selected": {
+            "subst": 7528,
+            "subst_node": 7528,
+            "core_rebuild": 2983,
+            "norm_eval": 8655,
+            "norm_eval_node": 8655,
+            "index_lookup": 6374,
+            "index_find": 73877,
+            "index_child_list": 34,
+            "jd_doc_definition": 34,
+            "jd_calls_context": 1,
+            "jd_arity": 604,
+            "jd_domains": 1941,
+            "jd_raise": 3587,
+            "jd_params": 140,
+            "jd_live_arity": 148,
+            "jd_calls_rows": 64,
+            "jd_calls_fact": 367,
+            "jd_selected_context": 1,
+            "j_call_spine": 3160,
+            "j_specialize": 300,
+            "j_app_type": 1563
+          },
+          "j_layout_error": {
+            "subst": 1480,
+            "subst_node": 1480,
+            "core_rebuild": 632,
+            "norm_eval": 1800,
+            "norm_eval_node": 1800,
+            "index_lookup": 1570,
+            "index_find": 15461,
+            "j_specialize": 150,
+            "j_app_type": 51
+          },
+          "jd_library_selected": {
+            "subst": 11028,
+            "subst_node": 10836,
+            "core_rebuild": 4532,
+            "norm_eval": 11040,
+            "norm_eval_node": 11040,
+            "index_lookup": 7877,
+            "index_find": 87123,
+            "index_child_list": 34,
+            "jd_doc_definition": 42,
+            "jd_calls_context": 1,
+            "jd_arity": 671,
+            "jd_domains": 2219,
+            "jd_raise": 4519,
+            "jd_params": 140,
+            "jd_live_arity": 426,
+            "jd_calls_rows": 43,
+            "jd_calls_fact": 367,
+            "jd_selected_context": 1,
+            "j_call_spine": 3159,
+            "j_specialize": 466,
+            "j_app_type": 2156
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 165770,
+          "term_lower": 17703,
+          "term_wnf": 68189,
+          "term_force": 179461,
+          "term_infer": 13428,
+          "term_check": 14727,
+          "tele_open": 11754,
+          "tele_fill": 3184,
+          "tele_unbind": 1589,
+          "tele_check": 2377
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 40170,
+            "term_lower": 17687,
+            "term_force": 17687
+          },
+          "check": {
+            "term_higher": 63849,
+            "term_wnf": 56523,
+            "term_force": 8990,
+            "term_infer": 13428,
+            "term_check": 14727,
+            "tele_open": 8807,
+            "tele_fill": 3042,
+            "tele_unbind": 403,
+            "tele_check": 2377
+          },
+          "emit": {
+            "term_higher": 61751,
+            "term_lower": 16,
+            "term_wnf": 11666,
+            "term_force": 152784,
+            "tele_open": 2947,
+            "tele_fill": 142,
+            "tele_unbind": 1186
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 2146,
+          "tele_unbind": 7105,
+          "term_open": 2282,
+          "term_spine": 9999,
+          "def_raise": 538,
+          "js_def": 34,
+          "js_expr": 1113,
+          "js_func": 315,
+          "js_host": 34,
+          "js_lib": 1,
+          "memo_FUNS_calls": 2146,
+          "memo_FUNS_misses": 54,
+          "memo_TELES_calls": 7105,
+          "memo_TELES_misses": 1186,
+          "memo_OPENS_calls": 2282,
+          "memo_OPENS_misses": 1148,
+          "memo_SPINES_calls": 9999,
+          "memo_SPINES_misses": 8308
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 2146,
+            "tele_unbind": 7105,
+            "term_open": 2282,
+            "term_spine": 9999,
+            "def_raise": 538,
+            "js_def": 34,
+            "js_expr": 1113,
+            "js_func": 315,
+            "js_host": 34,
+            "js_lib": 1,
+            "memo_FUNS_calls": 2146,
+            "memo_FUNS_misses": 54,
+            "memo_TELES_calls": 7105,
+            "memo_TELES_misses": 1186,
+            "memo_OPENS_calls": 2282,
+            "memo_OPENS_misses": 1148,
+            "memo_SPINES_calls": 9999,
+            "memo_SPINES_misses": 8308
+          }
+        }
+      }
+    }
+  ]
+}

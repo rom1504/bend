@@ -1,0 +1,794 @@
+{
+  "kind": "phase62-generation-clean-summary",
+  "complete": true,
+  "pass": true,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/generations/summarize.py",
+    "sha256": "d4302553eb0552a53f2529b591aee488f7324bc1baf4aba047f219efa2c04920"
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/warm16/report.json",
+    "sha256": "51c7ab76042095be93c10c92b6958b1d590c386a3eeefa4189fd833d1a560dbd"
+  },
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/warm16/plan.json",
+    "sha256": "9f8af44ed5908b1c7e5e46d541d97b234000e3b0e76159855832911531dd438b"
+  },
+  "roles": [
+    "b2",
+    "typescript"
+  ],
+  "rounds": 2,
+  "warmRequests": 3,
+  "successfulWorkers": 16,
+  "wallSeconds": 42.8029389209114,
+  "images": {
+    "b2": {
+      "kind": "direct",
+      "role": "b2",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/dist/api.mjs",
+        "sha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/snapshot/build/typed/snapshots/53e6c9a478002ea16896efb38028e00057028f51e58ccd9f68a35097ab6d9305/compiler.bend",
+        "sha256": "268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/final-state08/bootstrap/full/report.json",
+        "sha256": "56eb860d154fcf1bdec1e6ecab43262a073b3bdfeaa2dd9fa6781901aee52b74"
+      },
+      "checkedGenerator": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/attempt.json",
+        "sha256": "bf671a4e092f238879756b4c076f39733825b4390e6593795e8beea4c8561f13"
+      },
+      "strictExact": true,
+      "diagnosticDerivation": null,
+      "productionQualified": false,
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime.mjs",
+        "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+      },
+      "base": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      "directRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime/js/direct.mjs",
+        "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+      },
+      "driver": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/tools/typed-driver.mjs",
+        "sha256": "569f17b1e0ccd87da33dd07c2b7a7837f4578cae7d592e646f10eb4c2d2a313b"
+      }
+    }
+  },
+  "cases": [
+    {
+      "case": "numeric-recurrence",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+        "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+        "bytes": 556
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": {
+            "median": 483.82409299999995,
+            "min": 483.711854,
+            "max": 483.93633199999994,
+            "samples": [
+              483.711854,
+              483.93633199999994
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 581.4866294999999,
+            "min": 581.376384,
+            "max": 581.596875,
+            "samples": [
+              581.376384,
+              581.596875
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.459069000000014,
+            "min": 4.44466700000001,
+            "max": 4.473471000000018,
+            "samples": [
+              4.44466700000001,
+              4.473471000000018
+            ]
+          },
+          "apiLoadMs": {
+            "median": 93.2034675,
+            "min": 93.18707200000003,
+            "max": 93.21986299999998,
+            "samples": [
+              93.21986299999998,
+              93.18707200000003
+            ]
+          },
+          "maxRssKiB": {
+            "median": 183020.0,
+            "min": 179996,
+            "max": 186044,
+            "samples": [
+              179996,
+              186044
+            ]
+          },
+          "laterRequest1Ms": {
+            "median": 297.9664185,
+            "min": 297.955286,
+            "max": 297.97755099999995,
+            "samples": [
+              297.97755099999995,
+              297.955286
+            ]
+          },
+          "laterRequest2Ms": {
+            "median": 286.39057949999994,
+            "min": 285.9727989999999,
+            "max": 286.80836,
+            "samples": [
+              285.9727989999999,
+              286.80836
+            ]
+          },
+          "laterRequest3Ms": {
+            "median": 281.9420695,
+            "min": 280.68981400000007,
+            "max": 283.19432499999994,
+            "samples": [
+              283.19432499999994,
+              280.68981400000007
+            ]
+          }
+        },
+        "typescript": {
+          "firstRequestMs": {
+            "median": 327.17197450000003,
+            "min": 326.05482000000006,
+            "max": 328.28912899999995,
+            "samples": [
+              326.05482000000006,
+              328.28912899999995
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 591.7843439999999,
+            "min": 589.247881,
+            "max": 594.3208069999998,
+            "samples": [
+              589.247881,
+              594.3208069999998
+            ]
+          },
+          "hostImportMs": {
+            "median": 264.6123695,
+            "min": 263.193061,
+            "max": 266.03167799999994,
+            "samples": [
+              263.193061,
+              266.03167799999994
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0.0,
+            "min": 0,
+            "max": 0,
+            "samples": [
+              0,
+              0
+            ]
+          },
+          "maxRssKiB": {
+            "median": 198578.0,
+            "min": 197288,
+            "max": 199868,
+            "samples": [
+              199868,
+              197288
+            ]
+          },
+          "laterRequest1Ms": {
+            "median": 250.47245650000002,
+            "min": 249.95415500000001,
+            "max": 250.99075800000003,
+            "samples": [
+              250.99075800000003,
+              249.95415500000001
+            ]
+          },
+          "laterRequest2Ms": {
+            "median": 236.19498100000004,
+            "min": 235.7314,
+            "max": 236.65856200000007,
+            "samples": [
+              235.7314,
+              236.65856200000007
+            ]
+          },
+          "laterRequest3Ms": {
+            "median": 195.644495,
+            "min": 194.18372599999998,
+            "max": 197.10526400000003,
+            "samples": [
+              194.18372599999998,
+              197.10526400000003
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "b2/typescript": {
+          "firstRequestMs": 1.4788066543272944,
+          "importApiAndFirstMs": 0.9825988730448739,
+          "laterRequest1Ms": 1.1896175039110537,
+          "laterRequest2Ms": 1.212517633895023,
+          "laterRequest3Ms": 1.4410938038404812
+        }
+      },
+      "laterVersusFirst": {
+        "b2": {
+          "laterRequest1Ms/firstRequestMs": 0.6158569257112213,
+          "laterRequest2Ms/firstRequestMs": 0.5919312073200125,
+          "laterRequest3Ms/firstRequestMs": 0.5827367292765224
+        },
+        "typescript": {
+          "laterRequest1Ms/firstRequestMs": 0.7655681904991529,
+          "laterRequest2Ms/firstRequestMs": 0.7219291363845103,
+          "laterRequest3Ms/firstRequestMs": 0.5979867172272116
+        }
+      }
+    },
+    {
+      "case": "test-map-set-ops",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+        "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+        "bytes": 5266
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": {
+            "median": 1570.2234950000002,
+            "min": 1568.782603,
+            "max": 1571.664387,
+            "samples": [
+              1571.664387,
+              1568.782603
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 1681.4866975,
+            "min": 1678.847311,
+            "max": 1684.126084,
+            "samples": [
+              1684.126084,
+              1678.847311
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.546980499999989,
+            "min": 4.539912999999984,
+            "max": 4.5540479999999945,
+            "samples": [
+              4.539912999999984,
+              4.5540479999999945
+            ]
+          },
+          "apiLoadMs": {
+            "median": 106.71622200000002,
+            "min": 105.51066,
+            "max": 107.92178400000003,
+            "samples": [
+              107.92178400000003,
+              105.51066
+            ]
+          },
+          "maxRssKiB": {
+            "median": 294814.0,
+            "min": 291652,
+            "max": 297976,
+            "samples": [
+              291652,
+              297976
+            ]
+          },
+          "laterRequest1Ms": {
+            "median": 984.4776260000001,
+            "min": 979.6790810000002,
+            "max": 989.276171,
+            "samples": [
+              979.6790810000002,
+              989.276171
+            ]
+          },
+          "laterRequest2Ms": {
+            "median": 674.8825215000002,
+            "min": 669.641071,
+            "max": 680.1239720000003,
+            "samples": [
+              669.641071,
+              680.1239720000003
+            ]
+          },
+          "laterRequest3Ms": {
+            "median": 608.5372669999999,
+            "min": 580.893392,
+            "max": 636.1811419999999,
+            "samples": [
+              636.1811419999999,
+              580.893392
+            ]
+          }
+        },
+        "typescript": {
+          "firstRequestMs": {
+            "median": 647.934213,
+            "min": 637.993277,
+            "max": 657.875149,
+            "samples": [
+              657.875149,
+              637.993277
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 918.2592474999999,
+            "min": 902.412739,
+            "max": 934.1057559999999,
+            "samples": [
+              934.1057559999999,
+              902.412739
+            ]
+          },
+          "hostImportMs": {
+            "median": 270.32503449999996,
+            "min": 264.41946199999995,
+            "max": 276.23060699999996,
+            "samples": [
+              276.23060699999996,
+              264.41946199999995
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0.0,
+            "min": 0,
+            "max": 0,
+            "samples": [
+              0,
+              0
+            ]
+          },
+          "maxRssKiB": {
+            "median": 282334.0,
+            "min": 281840,
+            "max": 282828,
+            "samples": [
+              281840,
+              282828
+            ]
+          },
+          "laterRequest1Ms": {
+            "median": 418.107163,
+            "min": 390.820338,
+            "max": 445.39398800000004,
+            "samples": [
+              390.820338,
+              445.39398800000004
+            ]
+          },
+          "laterRequest2Ms": {
+            "median": 488.569573,
+            "min": 450.75474899999995,
+            "max": 526.384397,
+            "samples": [
+              526.384397,
+              450.75474899999995
+            ]
+          },
+          "laterRequest3Ms": {
+            "median": 453.95383400000014,
+            "min": 365.8750950000001,
+            "max": 542.0325730000002,
+            "samples": [
+              542.0325730000002,
+              365.8750950000001
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "b2/typescript": {
+          "firstRequestMs": 2.4234304401518,
+          "importApiAndFirstMs": 1.8311677253214922,
+          "laterRequest1Ms": 2.3546059793287974,
+          "laterRequest2Ms": 1.3813437405771485,
+          "laterRequest3Ms": 1.3405267703940127
+        }
+      },
+      "laterVersusFirst": {
+        "b2": {
+          "laterRequest1Ms/firstRequestMs": 0.6269665618523941,
+          "laterRequest2Ms/firstRequestMs": 0.4298002950847453,
+          "laterRequest3Ms/firstRequestMs": 0.3875481859351492
+        },
+        "typescript": {
+          "laterRequest1Ms/firstRequestMs": 0.6452926155328674,
+          "laterRequest2Ms/firstRequestMs": 0.7540419431440025,
+          "laterRequest3Ms/firstRequestMs": 0.7006171689840989
+        }
+      }
+    },
+    {
+      "case": "lexer",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+        "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "bytes": 7134
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": {
+            "median": 1014.726974,
+            "min": 934.907373,
+            "max": 1094.546575,
+            "samples": [
+              934.907373,
+              1094.546575
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 1117.877426,
+            "min": 1034.628271,
+            "max": 1201.126581,
+            "samples": [
+              1034.628271,
+              1201.126581
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.477141999999986,
+            "min": 4.4480629999999906,
+            "max": 4.506220999999982,
+            "samples": [
+              4.506220999999982,
+              4.4480629999999906
+            ]
+          },
+          "apiLoadMs": {
+            "median": 98.67330999999999,
+            "min": 95.21467699999997,
+            "max": 102.131943,
+            "samples": [
+              95.21467699999997,
+              102.131943
+            ]
+          },
+          "maxRssKiB": {
+            "median": 251144.0,
+            "min": 246500,
+            "max": 255788,
+            "samples": [
+              246500,
+              255788
+            ]
+          },
+          "laterRequest1Ms": {
+            "median": 482.345913,
+            "min": 481.50053,
+            "max": 483.19129599999997,
+            "samples": [
+              483.19129599999997,
+              481.50053
+            ]
+          },
+          "laterRequest2Ms": {
+            "median": 392.94243099999994,
+            "min": 391.7921889999998,
+            "max": 394.0926730000001,
+            "samples": [
+              394.0926730000001,
+              391.7921889999998
+            ]
+          },
+          "laterRequest3Ms": {
+            "median": 348.15908149999996,
+            "min": 347.0218239999999,
+            "max": 349.296339,
+            "samples": [
+              349.296339,
+              347.0218239999999
+            ]
+          }
+        },
+        "typescript": {
+          "firstRequestMs": {
+            "median": 415.4605975,
+            "min": 399.83923599999997,
+            "max": 431.08195900000004,
+            "samples": [
+              399.83923599999997,
+              431.08195900000004
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 688.820099,
+            "min": 665.125147,
+            "max": 712.5150510000001,
+            "samples": [
+              665.125147,
+              712.5150510000001
+            ]
+          },
+          "hostImportMs": {
+            "median": 273.35950149999996,
+            "min": 265.285911,
+            "max": 281.433092,
+            "samples": [
+              265.285911,
+              281.433092
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0.0,
+            "min": 0,
+            "max": 0,
+            "samples": [
+              0,
+              0
+            ]
+          },
+          "maxRssKiB": {
+            "median": 213144.0,
+            "min": 212608,
+            "max": 213680,
+            "samples": [
+              212608,
+              213680
+            ]
+          },
+          "laterRequest1Ms": {
+            "median": 332.42179100000004,
+            "min": 314.2018710000001,
+            "max": 350.641711,
+            "samples": [
+              314.2018710000001,
+              350.641711
+            ]
+          },
+          "laterRequest2Ms": {
+            "median": 301.57781699999987,
+            "min": 291.6835689999998,
+            "max": 311.47206499999993,
+            "samples": [
+              311.47206499999993,
+              291.6835689999998
+            ]
+          },
+          "laterRequest3Ms": {
+            "median": 265.6141815000001,
+            "min": 253.64618300000006,
+            "max": 277.5821800000001,
+            "samples": [
+              253.64618300000006,
+              277.5821800000001
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "b2/typescript": {
+          "firstRequestMs": 2.4424144674754626,
+          "importApiAndFirstMs": 1.6228873513169655,
+          "laterRequest1Ms": 1.4510056983598887,
+          "laterRequest2Ms": 1.3029553529794273,
+          "laterRequest3Ms": 1.3107699277720977
+        }
+      },
+      "laterVersusFirst": {
+        "b2": {
+          "laterRequest1Ms/firstRequestMs": 0.47534551200370473,
+          "laterRequest2Ms/firstRequestMs": 0.38723956400906706,
+          "laterRequest3Ms/firstRequestMs": 0.3431061659153253
+        },
+        "typescript": {
+          "laterRequest1Ms/firstRequestMs": 0.8001283226383461,
+          "laterRequest2Ms/firstRequestMs": 0.725887891209707,
+          "laterRequest3Ms/firstRequestMs": 0.6393246028583977
+        }
+      }
+    },
+    {
+      "case": "raytrace-active",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+        "sha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+        "bytes": 14680
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": {
+            "median": 1252.293912,
+            "min": 1196.4357539999999,
+            "max": 1308.15207,
+            "samples": [
+              1196.4357539999999,
+              1308.15207
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 1366.54551,
+            "min": 1303.486297,
+            "max": 1429.6047230000001,
+            "samples": [
+              1303.486297,
+              1429.6047230000001
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.5594435,
+            "min": 4.498760000000004,
+            "max": 4.6201269999999965,
+            "samples": [
+              4.498760000000004,
+              4.6201269999999965
+            ]
+          },
+          "apiLoadMs": {
+            "median": 109.69215450000002,
+            "min": 102.55178300000003,
+            "max": 116.832526,
+            "samples": [
+              102.55178300000003,
+              116.832526
+            ]
+          },
+          "maxRssKiB": {
+            "median": 293272.0,
+            "min": 293160,
+            "max": 293384,
+            "samples": [
+              293384,
+              293160
+            ]
+          },
+          "laterRequest1Ms": {
+            "median": 702.7003935000001,
+            "min": 668.680376,
+            "max": 736.7204110000002,
+            "samples": [
+              668.680376,
+              736.7204110000002
+            ]
+          },
+          "laterRequest2Ms": {
+            "median": 567.8265884999998,
+            "min": 566.7411499999998,
+            "max": 568.9120269999999,
+            "samples": [
+              568.9120269999999,
+              566.7411499999998
+            ]
+          },
+          "laterRequest3Ms": {
+            "median": 469.96596999999997,
+            "min": 465.6664999999998,
+            "max": 474.2654400000001,
+            "samples": [
+              465.6664999999998,
+              474.2654400000001
+            ]
+          }
+        },
+        "typescript": {
+          "firstRequestMs": {
+            "median": 548.6065595,
+            "min": 532.8887239999999,
+            "max": 564.324395,
+            "samples": [
+              532.8887239999999,
+              564.324395
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 815.9577425,
+            "min": 796.210972,
+            "max": 835.7045129999999,
+            "samples": [
+              796.210972,
+              835.7045129999999
+            ]
+          },
+          "hostImportMs": {
+            "median": 267.351183,
+            "min": 263.32224800000006,
+            "max": 271.380118,
+            "samples": [
+              263.32224800000006,
+              271.380118
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0.0,
+            "min": 0,
+            "max": 0,
+            "samples": [
+              0,
+              0
+            ]
+          },
+          "maxRssKiB": {
+            "median": 285816.0,
+            "min": 284316,
+            "max": 287316,
+            "samples": [
+              284316,
+              287316
+            ]
+          },
+          "laterRequest1Ms": {
+            "median": 461.4610869999999,
+            "min": 436.6645249999999,
+            "max": 486.2576489999999,
+            "samples": [
+              436.6645249999999,
+              486.2576489999999
+            ]
+          },
+          "laterRequest2Ms": {
+            "median": 443.37666749999994,
+            "min": 408.101586,
+            "max": 478.6517489999999,
+            "samples": [
+              408.101586,
+              478.6517489999999
+            ]
+          },
+          "laterRequest3Ms": {
+            "median": 328.31793149999976,
+            "min": 318.67508199999975,
+            "max": 337.96078099999977,
+            "samples": [
+              337.96078099999977,
+              318.67508199999975
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "b2/typescript": {
+          "firstRequestMs": 2.282681259118266,
+          "importApiAndFirstMs": 1.6747748551451485,
+          "laterRequest1Ms": 1.5227728042429725,
+          "laterRequest2Ms": 1.2806866714518754,
+          "laterRequest3Ms": 1.4314355839562187
+        }
+      },
+      "laterVersusFirst": {
+        "b2": {
+          "laterRequest1Ms/firstRequestMs": 0.5611305674861414,
+          "laterRequest2Ms/firstRequestMs": 0.4534291695095295,
+          "laterRequest3Ms/firstRequestMs": 0.3752840810744115
+        },
+        "typescript": {
+          "laterRequest1Ms/firstRequestMs": 0.8411512385498553,
+          "laterRequest2Ms/firstRequestMs": 0.8081869598936138,
+          "laterRequest3Ms/firstRequestMs": 0.5984579036007676
+        }
+      }
+    }
+  ],
+  "geometricMeans": {
+    "b2/typescript": {
+      "firstRequestMs": 2.114227161777566,
+      "importApiAndFirstMs": 1.487090155225495,
+      "laterRequest1Ms": 1.5772751264185467,
+      "laterRequest2Ms": 1.292976295444957,
+      "laterRequest3Ms": 1.3798011579732907
+    }
+  },
+  "scope": "Equal-source geometric mean of per-source medians. Each first request has its own process; later request indexes remain separate. Position balance depends on role count/rounds. Only selected sources; no significance, steady-state plateau or new program-runtime claim. B1 is equality-derived TS bootstrap; images include ABI/runtime differences."
+}

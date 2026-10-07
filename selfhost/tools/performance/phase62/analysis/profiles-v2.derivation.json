@@ -1,0 +1,26 @@
+{
+  "kind": "phase62-profile-reader-v2-derivation",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/analysis/profiles.py",
+    "sha256": "e488c6e4acc0dd6ad3a992684c170d0d8202a4a2b9863ff18dd1a7015c9b9822"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/analysis/profiles-v2.py",
+    "sha256": "4fb715bddc5262f6c7b53d869840f46d225cd3eed2b9ae3b53cdb0ee00bb3679"
+  },
+  "edits": [
+    {
+      "old": "    for f in stack:\n        name, url = f.get('functionName', ''), f.get('url', '')\n",
+      "new": "    if not api and any(f.get('url') == 'node:internal/modules/typescript' and\n            f.get('functionName') in {'parseTypeScript', 'processTypeScriptCode', 'stripTypeScriptModuleTypes'}\n            for f in stack):\n        return 'typescript-module-stripping'\n    for f in stack:\n        name, url = f.get('functionName', ''), f.get('url', '')\n"
+    },
+    {
+      "old": "    cpu_method = pin(CPU_READER)\n",
+      "new": "    predecessor = pin(Path(__file__).with_name('profiles.py'))\n    assert predecessor['sha256'] == 'e488c6e4acc0dd6ad3a992684c170d0d8202a4a2b9863ff18dd1a7015c9b9822'\n    cpu_method = pin(CPU_READER)\n"
+    }
+  ],
+  "reason": "V1 explicitly retained TypeScript import Amaro/WASM samples as unknown; V2 recognizes only actual exact node:internal/modules/typescript named ancestors. No timing/sample weights or B2 rules change; V1 output remains valid with coarser attribution.",
+  "pass": true
+}

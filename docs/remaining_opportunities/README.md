@@ -1,5 +1,12 @@
 # Remaining opportunities after the architecture survey
 
+For the current compiler's **compilation speed**, start with the
+[Phase62 measured opportunities](../../implementation/phase62/README.md#research-and-the-next-experiments):
+prepared immutable state, reusable backend analysis/documents, and reduced
+completion/freshening reconstruction. The Phase45 recommendations below are
+historical and concern generated-program execution, not the remaining Phase61
+compiler-latency gap.
+
 Date: 2026-10-04. Baseline: installed Phase45 worker23, repository `55e5b79`.
 **Recommendation: build a small shared value/use/effect foundation in JW, then
 test selective private inlining followed by aggregate elimination. In parallel,

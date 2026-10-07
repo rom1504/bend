@@ -1,0 +1,899 @@
+{
+  "kind": "phase62-synthetic-scaling-summary",
+  "complete": true,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/scaling/analyze.py",
+    "sha256": "9d1ae9f215681a58d604f3a8d97330502fd91430fea76706d858892d46b6bcc5"
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/report.json",
+    "sha256": "0f467ce870decc31066c1cac9fa78f113c4bb4368ce97838c1349be6cc6750aa"
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/plan.json",
+    "sha256": "df93e0f4fa9fcc7f36bba0e0b2ccd8d378b99055ee074823fd10d915103f25d5"
+  },
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "node": {
+    "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+  },
+  "elapsedSeconds": 32.436718181939796,
+  "freshProcesses": 16,
+  "freshExactRuntimeChecks": 1488,
+  "cases": [
+    {
+      "id": "definitions-8",
+      "family": "independent-definitions",
+      "size": 8,
+      "definitionCount": 8,
+      "parameterWidth": 1,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/sources/definitions-8.bend",
+        "sha256": "4893e92cb138adcccc6ad807bf4f55df2a29be214af6c9840849e60407c09fe6",
+        "bytes": 372
+      },
+      "roles": {
+        "b2": {
+          "hostImportMs": 12.218533999999977,
+          "apiLoadMs": 116.33133800000007,
+          "firstRequestMs": 449.8763200000001,
+          "importApiAndFirstMs": 578.4261920000001,
+          "freshRuntimeExecutions": 8,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-8-0-b2.mjs",
+            "sha256": "8caa0969f8ca63fcc45917cea696094f6f36effee40a9101bfc597d82a861bec",
+            "bytes": 14936
+          },
+          "maxRssKiB": 235756,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2.result.json",
+            "sha256": "534e87a3237c7c00b8dc86dbec8b798c16f2ff14af08e3d5db27c61ee232f80e"
+          },
+          "image": {
+            "kind": "direct",
+            "role": "b2",
+            "api": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/dist/api.mjs",
+              "sha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477"
+            },
+            "source": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/snapshot/build/typed/snapshots/53e6c9a478002ea16896efb38028e00057028f51e58ccd9f68a35097ab6d9305/compiler.bend",
+              "sha256": "268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e"
+            },
+            "emission": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/final-state08/bootstrap/full/report.json",
+              "sha256": "56eb860d154fcf1bdec1e6ecab43262a073b3bdfeaa2dd9fa6781901aee52b74"
+            },
+            "checkedGenerator": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/attempt.json",
+              "sha256": "bf671a4e092f238879756b4c076f39733825b4390e6593795e8beea4c8561f13"
+            },
+            "strictExact": true,
+            "diagnosticDerivation": null,
+            "productionQualified": false,
+            "runtime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime.mjs",
+              "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+            },
+            "base": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            },
+            "directRuntime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime/js/direct.mjs",
+              "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+            },
+            "driver": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/tools/typed-driver.mjs",
+              "sha256": "569f17b1e0ccd87da33dd07c2b7a7837f4578cae7d592e646f10eb4c2d2a313b"
+            }
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-8-0-b2.result.json",
+            "sha256": "dd3b2178c64718bef7d1c717824a11ea8ec41786190ccd76af96013662896fb8"
+          },
+          "exactOraclesPassed": 8
+        },
+        "typescript": {
+          "hostImportMs": 277.509632,
+          "apiLoadMs": 0,
+          "firstRequestMs": 317.206945,
+          "importApiAndFirstMs": 594.716577,
+          "freshRuntimeExecutions": 8,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-8-0-typescript.mjs",
+            "sha256": "bb47576fbe8a2062e89a768a5ebf78f12826eeef1527e674d1751488650c8278",
+            "bytes": 4758
+          },
+          "maxRssKiB": 251120,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-typescript.result.json",
+            "sha256": "decad544a0775ce57359a15c5cd4fcabb99bf38c956bf7c4af14c641163b5fbc"
+          },
+          "image": null,
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-8-0-typescript.result.json",
+            "sha256": "0be73c5d3cc3365dfc45055e21a25f1a4e240c3422c1e16ad481ef8d57d96528"
+          },
+          "exactOraclesPassed": 8
+        }
+      },
+      "firstRequestMsRatio": 1.4182423401858368,
+      "importApiAndFirstMsRatio": 0.9726081538164356
+    },
+    {
+      "id": "definitions-32",
+      "family": "independent-definitions",
+      "size": 32,
+      "definitionCount": 32,
+      "parameterWidth": 1,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/sources/definitions-32.bend",
+        "sha256": "875bb89bfe5a9ba08ab12a9c2cc5322c338feee04170d200152414858c7f3a33",
+        "bytes": 1496
+      },
+      "roles": {
+        "b2": {
+          "hostImportMs": 12.054487999999992,
+          "apiLoadMs": 104.96490099999994,
+          "firstRequestMs": 605.649517,
+          "importApiAndFirstMs": 722.6689059999999,
+          "freshRuntimeExecutions": 32,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-32-0-b2.mjs",
+            "sha256": "e8be65e7d9d912519aa596be138ef43c084d43efbf71203edbd7eacc38ff06ea",
+            "bytes": 19584
+          },
+          "maxRssKiB": 246000,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2.result.json",
+            "sha256": "534e87a3237c7c00b8dc86dbec8b798c16f2ff14af08e3d5db27c61ee232f80e"
+          },
+          "image": {
+            "kind": "direct",
+            "role": "b2",
+            "api": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/dist/api.mjs",
+              "sha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477"
+            },
+            "source": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/snapshot/build/typed/snapshots/53e6c9a478002ea16896efb38028e00057028f51e58ccd9f68a35097ab6d9305/compiler.bend",
+              "sha256": "268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e"
+            },
+            "emission": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/final-state08/bootstrap/full/report.json",
+              "sha256": "56eb860d154fcf1bdec1e6ecab43262a073b3bdfeaa2dd9fa6781901aee52b74"
+            },
+            "checkedGenerator": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/attempt.json",
+              "sha256": "bf671a4e092f238879756b4c076f39733825b4390e6593795e8beea4c8561f13"
+            },
+            "strictExact": true,
+            "diagnosticDerivation": null,
+            "productionQualified": false,
+            "runtime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime.mjs",
+              "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+            },
+            "base": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            },
+            "directRuntime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime/js/direct.mjs",
+              "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+            },
+            "driver": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/tools/typed-driver.mjs",
+              "sha256": "569f17b1e0ccd87da33dd07c2b7a7837f4578cae7d592e646f10eb4c2d2a313b"
+            }
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-32-0-b2.result.json",
+            "sha256": "ef05a8cb30b508858293c4494b81d73828ecaed336278a016897d0b6dff18435"
+          },
+          "exactOraclesPassed": 32
+        },
+        "typescript": {
+          "hostImportMs": 277.32796300000007,
+          "apiLoadMs": 0,
+          "firstRequestMs": 337.496312,
+          "importApiAndFirstMs": 614.8242750000001,
+          "freshRuntimeExecutions": 32,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-32-0-typescript.mjs",
+            "sha256": "7a7da9abaab05e525350e08e955b9faaf0e76a452aab81f2b0c27eba8aa8c2bb",
+            "bytes": 8422
+          },
+          "maxRssKiB": 251936,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-typescript.result.json",
+            "sha256": "decad544a0775ce57359a15c5cd4fcabb99bf38c956bf7c4af14c641163b5fbc"
+          },
+          "image": null,
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-32-0-typescript.result.json",
+            "sha256": "c6f2e10a76281486b7983d9b37fc8848ebfd25d64f1e5ff152c2b00feae6e4fb"
+          },
+          "exactOraclesPassed": 32
+        }
+      },
+      "firstRequestMsRatio": 1.7945366970410035,
+      "importApiAndFirstMsRatio": 1.1754072429882503
+    },
+    {
+      "id": "definitions-128",
+      "family": "independent-definitions",
+      "size": 128,
+      "definitionCount": 128,
+      "parameterWidth": 1,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/sources/definitions-128.bend",
+        "sha256": "4fd3d5b0e0a24edccc057b86afc03726524a1ec854efdfe328a8e81b0114d4e5",
+        "bytes": 6064
+      },
+      "roles": {
+        "b2": {
+          "hostImportMs": 12.052014999999983,
+          "apiLoadMs": 103.1745830000001,
+          "firstRequestMs": 916.4524349999999,
+          "importApiAndFirstMs": 1031.679033,
+          "freshRuntimeExecutions": 128,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-128-0-b2.mjs",
+            "sha256": "bd08f9eba285a2124deed3ffcee96d0a46932d991b5a53088ddc9b7f7d5ab073",
+            "bytes": 38320
+          },
+          "maxRssKiB": 274784,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2.result.json",
+            "sha256": "534e87a3237c7c00b8dc86dbec8b798c16f2ff14af08e3d5db27c61ee232f80e"
+          },
+          "image": {
+            "kind": "direct",
+            "role": "b2",
+            "api": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/dist/api.mjs",
+              "sha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477"
+            },
+            "source": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/snapshot/build/typed/snapshots/53e6c9a478002ea16896efb38028e00057028f51e58ccd9f68a35097ab6d9305/compiler.bend",
+              "sha256": "268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e"
+            },
+            "emission": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/final-state08/bootstrap/full/report.json",
+              "sha256": "56eb860d154fcf1bdec1e6ecab43262a073b3bdfeaa2dd9fa6781901aee52b74"
+            },
+            "checkedGenerator": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/attempt.json",
+              "sha256": "bf671a4e092f238879756b4c076f39733825b4390e6593795e8beea4c8561f13"
+            },
+            "strictExact": true,
+            "diagnosticDerivation": null,
+            "productionQualified": false,
+            "runtime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime.mjs",
+              "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+            },
+            "base": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            },
+            "directRuntime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime/js/direct.mjs",
+              "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+            },
+            "driver": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/tools/typed-driver.mjs",
+              "sha256": "569f17b1e0ccd87da33dd07c2b7a7837f4578cae7d592e646f10eb4c2d2a313b"
+            }
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-128-0-b2.result.json",
+            "sha256": "ce50a379538893b764de6d1eab04f1c1557871810830aa16511e55d1cc04d604"
+          },
+          "exactOraclesPassed": 128
+        },
+        "typescript": {
+          "hostImportMs": 280.329428,
+          "apiLoadMs": 0,
+          "firstRequestMs": 385.83918199999994,
+          "importApiAndFirstMs": 666.16861,
+          "freshRuntimeExecutions": 128,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-128-0-typescript.mjs",
+            "sha256": "f24747aba46fbe21deb4c7ffd979b88299adf74f1c678a360ef6f4c4e94482ff",
+            "bytes": 23222
+          },
+          "maxRssKiB": 262228,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-typescript.result.json",
+            "sha256": "decad544a0775ce57359a15c5cd4fcabb99bf38c956bf7c4af14c641163b5fbc"
+          },
+          "image": null,
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-128-0-typescript.result.json",
+            "sha256": "9245e3dd30758ddbd880be9b25fe3dac1ae32b3ea03ec99c8f919bea284633e1"
+          },
+          "exactOraclesPassed": 128
+        }
+      },
+      "firstRequestMsRatio": 2.3752186863178664,
+      "importApiAndFirstMsRatio": 1.548675541767121
+    },
+    {
+      "id": "definitions-512",
+      "family": "independent-definitions",
+      "size": 512,
+      "definitionCount": 512,
+      "parameterWidth": 1,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/sources/definitions-512.bend",
+        "sha256": "c121ffb668a172f6c9ceaa31ba7ea4f643c1ba58b9a695b67999973d297281ea",
+        "bytes": 24880
+      },
+      "roles": {
+        "b2": {
+          "hostImportMs": 11.98993999999999,
+          "apiLoadMs": 102.63,
+          "firstRequestMs": 1868.439613,
+          "importApiAndFirstMs": 1983.059553,
+          "freshRuntimeExecutions": 512,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-512-0-b2.mjs",
+            "sha256": "d1edf965927c15d5c62d0853a04d443027e18e53a8485448a9a44310ed338d1a",
+            "bytes": 114352
+          },
+          "maxRssKiB": 328196,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2.result.json",
+            "sha256": "534e87a3237c7c00b8dc86dbec8b798c16f2ff14af08e3d5db27c61ee232f80e"
+          },
+          "image": {
+            "kind": "direct",
+            "role": "b2",
+            "api": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/dist/api.mjs",
+              "sha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477"
+            },
+            "source": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/snapshot/build/typed/snapshots/53e6c9a478002ea16896efb38028e00057028f51e58ccd9f68a35097ab6d9305/compiler.bend",
+              "sha256": "268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e"
+            },
+            "emission": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/final-state08/bootstrap/full/report.json",
+              "sha256": "56eb860d154fcf1bdec1e6ecab43262a073b3bdfeaa2dd9fa6781901aee52b74"
+            },
+            "checkedGenerator": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/attempt.json",
+              "sha256": "bf671a4e092f238879756b4c076f39733825b4390e6593795e8beea4c8561f13"
+            },
+            "strictExact": true,
+            "diagnosticDerivation": null,
+            "productionQualified": false,
+            "runtime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime.mjs",
+              "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+            },
+            "base": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            },
+            "directRuntime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime/js/direct.mjs",
+              "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+            },
+            "driver": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/tools/typed-driver.mjs",
+              "sha256": "569f17b1e0ccd87da33dd07c2b7a7837f4578cae7d592e646f10eb4c2d2a313b"
+            }
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-512-0-b2.result.json",
+            "sha256": "6f4f227be3db1af8a77fdc9e31cf85f864b86903e45ac43b2f0d70ffe44118fc"
+          },
+          "exactOraclesPassed": 512
+        },
+        "typescript": {
+          "hostImportMs": 286.6023019999999,
+          "apiLoadMs": 0,
+          "firstRequestMs": 579.0887799999999,
+          "importApiAndFirstMs": 865.6910819999998,
+          "freshRuntimeExecutions": 512,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-512-0-typescript.mjs",
+            "sha256": "527df5c169bf732d331b11f20466c73c946cbe5a4bd32809f6686fcf9158088b",
+            "bytes": 83510
+          },
+          "maxRssKiB": 278356,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-typescript.result.json",
+            "sha256": "decad544a0775ce57359a15c5cd4fcabb99bf38c956bf7c4af14c641163b5fbc"
+          },
+          "image": null,
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/definitions-512-0-typescript.result.json",
+            "sha256": "e53537f1916c53888e335f66bb5b1870c082dc9389f2b20226862783c6f7dbf2"
+          },
+          "exactOraclesPassed": 512
+        }
+      },
+      "firstRequestMsRatio": 3.226516688857277,
+      "importApiAndFirstMsRatio": 2.290724248213984
+    },
+    {
+      "id": "width-2",
+      "family": "ordinary-telescope-width",
+      "size": 2,
+      "definitionCount": 16,
+      "parameterWidth": 2,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/sources/width-2.bend",
+        "sha256": "715812db2966ec5b9d51f1325ba592e34bbb162192134ba1c54d90b9f947caf4",
+        "bytes": 876
+      },
+      "roles": {
+        "b2": {
+          "hostImportMs": 12.302888999999936,
+          "apiLoadMs": 102.32288600000004,
+          "firstRequestMs": 533.212999,
+          "importApiAndFirstMs": 647.838774,
+          "freshRuntimeExecutions": 16,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-2-0-b2.mjs",
+            "sha256": "b05d5023771cf7207a2cda9aa29f474b60b0511049b9216c5ef578864cbb38f3",
+            "bytes": 17000
+          },
+          "maxRssKiB": 246052,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2.result.json",
+            "sha256": "534e87a3237c7c00b8dc86dbec8b798c16f2ff14af08e3d5db27c61ee232f80e"
+          },
+          "image": {
+            "kind": "direct",
+            "role": "b2",
+            "api": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/dist/api.mjs",
+              "sha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477"
+            },
+            "source": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/snapshot/build/typed/snapshots/53e6c9a478002ea16896efb38028e00057028f51e58ccd9f68a35097ab6d9305/compiler.bend",
+              "sha256": "268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e"
+            },
+            "emission": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/final-state08/bootstrap/full/report.json",
+              "sha256": "56eb860d154fcf1bdec1e6ecab43262a073b3bdfeaa2dd9fa6781901aee52b74"
+            },
+            "checkedGenerator": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/attempt.json",
+              "sha256": "bf671a4e092f238879756b4c076f39733825b4390e6593795e8beea4c8561f13"
+            },
+            "strictExact": true,
+            "diagnosticDerivation": null,
+            "productionQualified": false,
+            "runtime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime.mjs",
+              "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+            },
+            "base": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            },
+            "directRuntime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime/js/direct.mjs",
+              "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+            },
+            "driver": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/tools/typed-driver.mjs",
+              "sha256": "569f17b1e0ccd87da33dd07c2b7a7837f4578cae7d592e646f10eb4c2d2a313b"
+            }
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-2-0-b2.result.json",
+            "sha256": "bd9d01214a56c19945359e952f8ebcd4c2dbde0f740ab04bb846c7610137c5b1"
+          },
+          "exactOraclesPassed": 16
+        },
+        "typescript": {
+          "hostImportMs": 279.130543,
+          "apiLoadMs": 0,
+          "firstRequestMs": 324.8809480000001,
+          "importApiAndFirstMs": 604.0114910000001,
+          "freshRuntimeExecutions": 16,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-2-0-typescript.mjs",
+            "sha256": "5d8be24df7df3c90b3a3e20972e1b5fb7b30c539259a9cfdba2a0a28b21ee266",
+            "bytes": 6334
+          },
+          "maxRssKiB": 251144,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-typescript.result.json",
+            "sha256": "decad544a0775ce57359a15c5cd4fcabb99bf38c956bf7c4af14c641163b5fbc"
+          },
+          "image": null,
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-2-0-typescript.result.json",
+            "sha256": "4db16338f9dfa926c6b3eb4e71cbb8ef0f16b0273f2e544b1495993baa8df717"
+          },
+          "exactOraclesPassed": 16
+        }
+      },
+      "firstRequestMsRatio": 1.6412565965548702,
+      "importApiAndFirstMsRatio": 1.0725603463726154
+    },
+    {
+      "id": "width-8",
+      "family": "ordinary-telescope-width",
+      "size": 8,
+      "definitionCount": 16,
+      "parameterWidth": 8,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/sources/width-8.bend",
+        "sha256": "6e825ed4dbd31bb6d2c2383f566b97fd16803dc415301b7029f4cbebc267ef3a",
+        "bytes": 2124
+      },
+      "roles": {
+        "b2": {
+          "hostImportMs": 13.177970999999957,
+          "apiLoadMs": 102.94338599999992,
+          "firstRequestMs": 656.030135,
+          "importApiAndFirstMs": 772.1514919999998,
+          "freshRuntimeExecutions": 16,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-8-0-b2.mjs",
+            "sha256": "c38bfc215a9fafd10f0777fbe65c2bd8e5e7e7a29d8fa7eb91afda7f09599f15",
+            "bytes": 21464
+          },
+          "maxRssKiB": 250964,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2.result.json",
+            "sha256": "534e87a3237c7c00b8dc86dbec8b798c16f2ff14af08e3d5db27c61ee232f80e"
+          },
+          "image": {
+            "kind": "direct",
+            "role": "b2",
+            "api": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/dist/api.mjs",
+              "sha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477"
+            },
+            "source": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/snapshot/build/typed/snapshots/53e6c9a478002ea16896efb38028e00057028f51e58ccd9f68a35097ab6d9305/compiler.bend",
+              "sha256": "268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e"
+            },
+            "emission": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/final-state08/bootstrap/full/report.json",
+              "sha256": "56eb860d154fcf1bdec1e6ecab43262a073b3bdfeaa2dd9fa6781901aee52b74"
+            },
+            "checkedGenerator": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/attempt.json",
+              "sha256": "bf671a4e092f238879756b4c076f39733825b4390e6593795e8beea4c8561f13"
+            },
+            "strictExact": true,
+            "diagnosticDerivation": null,
+            "productionQualified": false,
+            "runtime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime.mjs",
+              "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+            },
+            "base": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            },
+            "directRuntime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime/js/direct.mjs",
+              "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+            },
+            "driver": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/tools/typed-driver.mjs",
+              "sha256": "569f17b1e0ccd87da33dd07c2b7a7837f4578cae7d592e646f10eb4c2d2a313b"
+            }
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-8-0-b2.result.json",
+            "sha256": "285c253b20f81342c8cc81ded88834e5067757d6dd0caeff4eb7b499584fa4ce"
+          },
+          "exactOraclesPassed": 16
+        },
+        "typescript": {
+          "hostImportMs": 279.323622,
+          "apiLoadMs": 0,
+          "firstRequestMs": 356.50219400000003,
+          "importApiAndFirstMs": 635.825816,
+          "freshRuntimeExecutions": 16,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-8-0-typescript.mjs",
+            "sha256": "fc2fa50c4b006855bfb4bdf036a2565712950ef65a425cbc42c1ff7444e75cae",
+            "bytes": 9454
+          },
+          "maxRssKiB": 253496,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-typescript.result.json",
+            "sha256": "decad544a0775ce57359a15c5cd4fcabb99bf38c956bf7c4af14c641163b5fbc"
+          },
+          "image": null,
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-8-0-typescript.result.json",
+            "sha256": "af3a021efbacecc4fea5e018df383e35571c04d06663cae25bf557497bf4ad1f"
+          },
+          "exactOraclesPassed": 16
+        }
+      },
+      "firstRequestMsRatio": 1.8401854071057973,
+      "importApiAndFirstMsRatio": 1.2144072677917184
+    },
+    {
+      "id": "width-32",
+      "family": "ordinary-telescope-width",
+      "size": 32,
+      "definitionCount": 16,
+      "parameterWidth": 32,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/sources/width-32.bend",
+        "sha256": "dace0803d10f82f33495decaeda56cfa7e1d2c48179f05885a983e24e1adec61",
+        "bytes": 7652
+      },
+      "roles": {
+        "b2": {
+          "hostImportMs": 12.28096400000004,
+          "apiLoadMs": 103.29649399999994,
+          "firstRequestMs": 1130.562677,
+          "importApiAndFirstMs": 1246.1401349999999,
+          "freshRuntimeExecutions": 16,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-32-0-b2.mjs",
+            "sha256": "124dc8adad775f74254e0b27fe577f3e7382b046343f67976a039f2f82b7a3fc",
+            "bytes": 40728
+          },
+          "maxRssKiB": 276940,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2.result.json",
+            "sha256": "534e87a3237c7c00b8dc86dbec8b798c16f2ff14af08e3d5db27c61ee232f80e"
+          },
+          "image": {
+            "kind": "direct",
+            "role": "b2",
+            "api": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/dist/api.mjs",
+              "sha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477"
+            },
+            "source": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/snapshot/build/typed/snapshots/53e6c9a478002ea16896efb38028e00057028f51e58ccd9f68a35097ab6d9305/compiler.bend",
+              "sha256": "268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e"
+            },
+            "emission": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/final-state08/bootstrap/full/report.json",
+              "sha256": "56eb860d154fcf1bdec1e6ecab43262a073b3bdfeaa2dd9fa6781901aee52b74"
+            },
+            "checkedGenerator": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/attempt.json",
+              "sha256": "bf671a4e092f238879756b4c076f39733825b4390e6593795e8beea4c8561f13"
+            },
+            "strictExact": true,
+            "diagnosticDerivation": null,
+            "productionQualified": false,
+            "runtime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime.mjs",
+              "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+            },
+            "base": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            },
+            "directRuntime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime/js/direct.mjs",
+              "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+            },
+            "driver": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/tools/typed-driver.mjs",
+              "sha256": "569f17b1e0ccd87da33dd07c2b7a7837f4578cae7d592e646f10eb4c2d2a313b"
+            }
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-32-0-b2.result.json",
+            "sha256": "8e4e47e2830fd315cc6c0308afecd6bd77864c09e454ec828abec37bb4f3ab44"
+          },
+          "exactOraclesPassed": 16
+        },
+        "typescript": {
+          "hostImportMs": 303.26781099999994,
+          "apiLoadMs": 0,
+          "firstRequestMs": 475.85835599999996,
+          "importApiAndFirstMs": 779.1261669999999,
+          "freshRuntimeExecutions": 16,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-32-0-typescript.mjs",
+            "sha256": "550fe58b791c765ebef2658bdea2bfbbb5aa41f59b75afac88f66525eb6d4730",
+            "bytes": 23342
+          },
+          "maxRssKiB": 270752,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-typescript.result.json",
+            "sha256": "decad544a0775ce57359a15c5cd4fcabb99bf38c956bf7c4af14c641163b5fbc"
+          },
+          "image": null,
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-32-0-typescript.result.json",
+            "sha256": "d6072f75e280b4ca1f3e1e889ec806a6383d46f3851baa72a0a913cfda687617"
+          },
+          "exactOraclesPassed": 16
+        }
+      },
+      "firstRequestMsRatio": 2.3758386560726907,
+      "importApiAndFirstMsRatio": 1.5994073717203237
+    },
+    {
+      "id": "width-64",
+      "family": "ordinary-telescope-width",
+      "size": 64,
+      "definitionCount": 16,
+      "parameterWidth": 64,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/sources/width-64.bend",
+        "sha256": "f692dc88ea7b5476bfde238762f5180e9fd797db29bd8c9003b85ffa0e501895",
+        "bytes": 15076
+      },
+      "roles": {
+        "b2": {
+          "hostImportMs": 15.887988999999948,
+          "apiLoadMs": 113.086273,
+          "firstRequestMs": 1496.057895,
+          "importApiAndFirstMs": 1625.0321569999999,
+          "freshRuntimeExecutions": 16,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-64-0-b2.mjs",
+            "sha256": "f93c93aa7442e21ec9884c51fb149032952b5e8b37953ae63a6b9c75220c0123",
+            "bytes": 66584
+          },
+          "maxRssKiB": 322628,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2.result.json",
+            "sha256": "534e87a3237c7c00b8dc86dbec8b798c16f2ff14af08e3d5db27c61ee232f80e"
+          },
+          "image": {
+            "kind": "direct",
+            "role": "b2",
+            "api": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/dist/api.mjs",
+              "sha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477"
+            },
+            "source": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/snapshot/build/typed/snapshots/53e6c9a478002ea16896efb38028e00057028f51e58ccd9f68a35097ab6d9305/compiler.bend",
+              "sha256": "268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e"
+            },
+            "emission": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/final-state08/bootstrap/full/report.json",
+              "sha256": "56eb860d154fcf1bdec1e6ecab43262a073b3bdfeaa2dd9fa6781901aee52b74"
+            },
+            "checkedGenerator": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/attempt.json",
+              "sha256": "bf671a4e092f238879756b4c076f39733825b4390e6593795e8beea4c8561f13"
+            },
+            "strictExact": true,
+            "diagnosticDerivation": null,
+            "productionQualified": false,
+            "runtime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime.mjs",
+              "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+            },
+            "base": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            },
+            "directRuntime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/src/runtime/js/direct.mjs",
+              "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+            },
+            "driver": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-b2/stage/project/tools/typed-driver.mjs",
+              "sha256": "569f17b1e0ccd87da33dd07c2b7a7837f4578cae7d592e646f10eb4c2d2a313b"
+            }
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-64-0-b2.result.json",
+            "sha256": "6e182d15327c4b613069322f078acdb10d745904018feaf085dc9eea82e74511"
+          },
+          "exactOraclesPassed": 16
+        },
+        "typescript": {
+          "hostImportMs": 301.501299,
+          "apiLoadMs": 0,
+          "firstRequestMs": 601.3054770000001,
+          "importApiAndFirstMs": 902.8067760000001,
+          "freshRuntimeExecutions": 16,
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-64-0-typescript.mjs",
+            "sha256": "6c5208d71c48b25b76a61fde52f7fd03572a3820b4d4c3567a25d63872888dc4",
+            "bytes": 42030
+          },
+          "maxRssKiB": 282180,
+          "preparation": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/preparation/prepare-typescript.result.json",
+            "sha256": "decad544a0775ce57359a15c5cd4fcabb99bf38c956bf7c4af14c641163b5fbc"
+          },
+          "image": null,
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/scaling01/width-64-0-typescript.result.json",
+            "sha256": "a5e868bf721267aecf1438696e987b4b4c1164d91a1eefc9e0d7863798d77f94"
+          },
+          "exactOraclesPassed": 16
+        }
+      },
+      "firstRequestMsRatio": 2.4880164113323047,
+      "importApiAndFirstMsRatio": 1.7999778027806912
+    }
+  ],
+  "families": [
+    {
+      "family": "independent-definitions",
+      "firstSize": 8,
+      "lastSize": 512,
+      "endpointFirstRequestDeltaMs": {
+        "b2": 1418.563293,
+        "typescript": 261.8818349999999
+      },
+      "endpointDeltaRatio": 5.416806755611745,
+      "adjacentFirstRequestSlopes": [
+        {
+          "low": 8,
+          "high": 32,
+          "b2MsPerUnit": 6.490549874999995,
+          "typescriptMsPerUnit": 0.8453902916666655
+        },
+        {
+          "low": 32,
+          "high": 128,
+          "b2MsPerUnit": 3.2375303958333332,
+          "typescriptMsPerUnit": 0.5035715624999995
+        },
+        {
+          "low": 128,
+          "high": 512,
+          "b2MsPerUnit": 2.479133276041667,
+          "typescriptMsPerUnit": 0.5032541614583333
+        }
+      ],
+      "note": "Whole-request endpoint difference; not an isolated operation cost or fitted complexity class."
+    },
+    {
+      "family": "ordinary-telescope-width",
+      "firstSize": 2,
+      "lastSize": 64,
+      "endpointFirstRequestDeltaMs": {
+        "b2": 962.844896,
+        "typescript": 276.424529
+      },
+      "endpointDeltaRatio": 3.4832107681731816,
+      "adjacentFirstRequestSlopes": [
+        {
+          "low": 2,
+          "high": 8,
+          "b2MsPerUnit": 20.469522666666666,
+          "typescriptMsPerUnit": 5.270207666666654
+        },
+        {
+          "low": 8,
+          "high": 32,
+          "b2MsPerUnit": 19.772189249999997,
+          "typescriptMsPerUnit": 4.973173416666664
+        },
+        {
+          "low": 32,
+          "high": 64,
+          "b2MsPerUnit": 11.4217255625,
+          "typescriptMsPerUnit": 3.9202225312500047
+        }
+      ],
+      "note": "Whole-request endpoint difference; not an isolated operation cost or fitted complexity class."
+    }
+  ],
+  "limitations": [
+    "One fresh-process sample per case and compiler; no error bars or significance claim.",
+    "Prepared Base cache; not OS-cold execution or a steady-state benchmark.",
+    "Declaration counts also change parsing, checking, output and export costs.",
+    "Parameter width also changes balanced expression size, argument spines and wrappers.",
+    "U32 parameters do not isolate dependent-type substitution.",
+    "Numeric execution checks correctness only; generated-program speed was not measured."
+  ],
+  "pass": true
+}

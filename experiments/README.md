@@ -5,7 +5,16 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Newest campaign: Phase61 architectural compiler speed
+## Newest investigation: Phase62 remaining compiler costs
+
+[Phase62 results](../implementation/phase62/README.md) explain the remaining
+gap on unchanged Phase61 state08 using 23-source CPU/allocation/stage surveys,
+same-source B1/B2 comparisons, repeated requests, logical work counters and
+synthetic scaling. Compiler code and installed images are unchanged. See
+[P62-001](phase62/P62-001-remaining-compiler-cost.md) and the
+[design](../design/phase62/compiler-parity-investigation.md).
+
+## Completed campaign: Phase61 architectural compiler speed
 
 [Current results](../implementation/phase61/README.md) ·
 [Current frontier](STEERING.md) · [Research map](../implementation/phase61/research-map.md).

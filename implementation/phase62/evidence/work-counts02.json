@@ -1,0 +1,5989 @@
+{
+  "kind": "phase62-work-counts-summary",
+  "complete": true,
+  "pass": true,
+  "diagnosticOnly": true,
+  "productionQualified": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/work-counts02/report.json",
+    "sha256": "9cebb6ad55c1d80860e55a1f1ea78733922863e29399db6021de82373355f578"
+  },
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/work-counts/summarize.py",
+    "sha256": "3c908ba3bff1dfa2c6b59caad4e19f78fafa58731fa4d26eb0a952d029c8a675"
+  },
+  "scope": "Operation counts only. Derivative Base cache is primed on its real API identity before counters reset. Requests reuse one process; output bytes are checked against qualified uninstrumented output. Instrumented times are not performance claims.",
+  "node": {
+    "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+    "bytes": 123655872
+  },
+  "image": {
+    "kind": "direct",
+    "role": "candidate",
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/state08-b2-latency01/preparation/prepare-candidate/stage/project/dist/api.mjs",
+      "sha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477"
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/snapshot/build/typed/snapshots/53e6c9a478002ea16896efb38028e00057028f51e58ccd9f68a35097ab6d9305/compiler.bend",
+      "sha256": "268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e"
+    },
+    "emission": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/final-state08/bootstrap/full/report.json",
+      "sha256": "56eb860d154fcf1bdec1e6ecab43262a073b3bdfeaa2dd9fa6781901aee52b74"
+    },
+    "checkedGenerator": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/attempt.json",
+      "sha256": "bf671a4e092f238879756b4c076f39733825b4390e6593795e8beea4c8561f13"
+    },
+    "strictExact": true,
+    "diagnosticDerivation": null,
+    "productionQualified": false,
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/state08-b2-latency01/preparation/prepare-candidate/stage/project/src/runtime.mjs",
+      "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+    },
+    "base": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    "directRuntime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/state08-b2-latency01/preparation/prepare-candidate/stage/project/src/runtime/js/direct.mjs",
+      "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+    },
+    "driver": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/state08-b2-latency01/preparation/prepare-candidate/stage/project/tools/typed-driver.mjs",
+      "sha256": "569f17b1e0ccd87da33dd07c2b7a7837f4578cae7d592e646f10eb4c2d2a313b"
+    }
+  },
+  "preparation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/state08-b2-latency01/preparation/prepare-candidate.result.json",
+    "sha256": "ceffe68a27ac4c877e2d6841ec4a6a211a919db8d6c886cd4dcd747ac24cd518",
+    "bytes": 137360
+  },
+  "derivations": [
+    {
+      "role": "bend",
+      "originalSha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477",
+      "strippedSha256": "23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477",
+      "outputSha256": "36137acd61c5ccad524cc28bf4ea63c90284c96fc69b76752ad1e703a885c3de",
+      "exactInverseToStripped": true,
+      "parserSha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c",
+      "probes": [
+        {
+          "name": "subst",
+          "kind": "scc-logical-entry",
+          "bodySha256": "b971642c62b58ea6766d0f3dfbae6e146440a0cc00ce148c3d0aa7c9bf5cc778"
+        },
+        {
+          "name": "subst_node",
+          "kind": "scc-logical-entry",
+          "bodySha256": "fb8d8c93ce8c8b3594a41f82f40cc8f5b24ec762bd92d5cacfa694980dca8f76"
+        },
+        {
+          "name": "core_rebuild",
+          "kind": "scc-logical-entry",
+          "bodySha256": "0f46f759313003ccac0d42e1ef22223a6c638614189291a262956f0256334d5b"
+        },
+        {
+          "name": "env_subst_term",
+          "kind": "scc-logical-entry",
+          "bodySha256": "340adbd84ff56f9a1ba518291922d999a20c40ee7345df4a9e37c1bedef29795"
+        },
+        {
+          "name": "env_subst_find",
+          "kind": "scc-logical-entry",
+          "bodySha256": "9cc02c545cd304fe74a73cb66c1e96ad9dee8b767a94c36501c52f11e7b68097"
+        },
+        {
+          "name": "env_tele_fill_loop",
+          "kind": "scc-logical-entry",
+          "bodySha256": "920a97391fe85671e628209bc84b1d9d72874afd83477718fc81902f7ae7587b"
+        },
+        {
+          "name": "env_tele_fill_eager",
+          "kind": "scc-logical-entry",
+          "bodySha256": "f3d228884af282ed1e98e9a1647021d653b5fd58bb9cf4452fc6b2c23e70ff13"
+        },
+        {
+          "name": "env_tele_check_loop",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "011600ad5fd932db188a425884b81d848127e50b62215fd1b901405a364661fa"
+        },
+        {
+          "name": "tele_check_legacy",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "d87185a80e41ff3fd57d9e01feb08babdb80f2cffa79813e84d78ac74e8c0b01"
+        },
+        {
+          "name": "norm_eval",
+          "kind": "scc-logical-entry",
+          "bodySha256": "ce159ac9f4f99faf014801b04c125738ffa541b863757b14910b03d3cd5860d2"
+        },
+        {
+          "name": "norm_eval_node",
+          "kind": "scc-logical-entry",
+          "bodySha256": "5cb65526c731f25734e38c4ecae0ba6a12bca552f369610e75399fef325295fa"
+        },
+        {
+          "name": "index_lookup",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "e6dd2ca54974d74dd6dbf53f0bafed62be7a8e43fa9ffc368c54d93cf6820803"
+        },
+        {
+          "name": "index_find",
+          "kind": "scc-logical-entry",
+          "bodySha256": "32d28a841ceec0ca3dd5d876c5cf5e7a75ddf34629a76c5d3e70d13291e58a72"
+        },
+        {
+          "name": "index_child_list",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "6d146dfa3e84777f92ef38702b1ae26a7f006991bcc211b607dda197e4b1f741"
+        },
+        {
+          "name": "infer",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "a978ba329c712a661f84d82ff766cb95b52e12c949cd8a7cb56fe31431afdf38"
+        },
+        {
+          "name": "check",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "0c0a9fb0ac2e0bc400d8a21ba0ab9b0fda0b7b1c11f756595802cdcac09650db"
+        },
+        {
+          "name": "jd_doc_definition",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "13d621ed436826f6bab3d74a3bc8c4f69f6fba32ff3deb79e59168c43159d144"
+        },
+        {
+          "name": "jd_calls_context",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "ecc941d6479abc4b2866e80c5d592d8ad4febd12c473f9f30f7902cb5527ded1"
+        },
+        {
+          "name": "jd_arity",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "3b53a32122377a6f9d8473aac8bb97e13eff9b3fd2f66a39dd96ae5f56d453d2"
+        },
+        {
+          "name": "jd_domains",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "b75a643aac50e6d514922f9b6ec568e616872dbd1a04cd1b8cabd07d41878aac"
+        },
+        {
+          "name": "jd_raise",
+          "kind": "scc-logical-entry",
+          "bodySha256": "b0a8ae6fbb90324bacd02bcea2771e23e9c00313ab900d8d8b50ad0aa004b227"
+        },
+        {
+          "name": "jd_params",
+          "kind": "scc-logical-entry",
+          "bodySha256": "aff8d4085c1ab73f8f42f809534f0fb30684f16f979fd973da3c04bab1c4464f"
+        },
+        {
+          "name": "jd_live_arity",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "41cce9a4e04e161efd4bd95e52da3c5136bb5e6e7a6e70d7b9a271932ae7c4bb"
+        },
+        {
+          "name": "jd_calls_rows",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "20e52964d315f167eb878e4bae9fdb9aa456e0578213e0ce60e6303c7a8368a4"
+        },
+        {
+          "name": "jd_calls_fact",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "de0437292b447b3a7da0843dc7d543f3662c4f1556f05e0e1fd50342bd731669"
+        },
+        {
+          "name": "jd_selected_context",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "06e352be5b5154504ed3a8378c65c9f41685fd902f94339c9aaf6cccee2ed508"
+        },
+        {
+          "name": "j_call_spine",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "1e143602929449364c0a8a912d82da59e683d25dc89a5b43d4508527738b56a0"
+        },
+        {
+          "name": "j_specialize",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "1195d814ce7fc02f623d9ecfb6f7d55b8fa42fdb766ffe7a2627602c59041f4f"
+        },
+        {
+          "name": "j_app_type",
+          "kind": "tail-loop-logical-entry",
+          "bodySha256": "b95cc17e2fad74999b3bdbd1404cc3fc7e9addc74ea4d44b25e9113576aa9b35"
+        }
+      ],
+      "missing": [],
+      "scope": "Diagnostic logical entries, not physical allocations or directly comparable AST node counts. TS counts function entries; B2 counts logical tail-loop/SCC visits."
+    },
+    {
+      "role": "theory",
+      "originalSha256": "de2b39db2fcbd2f9115053e85e34d791693e1297bfeb6874da1013ff7b44b7dd",
+      "strippedSha256": "664d1080f8ae575122bf4903d20fe1e94c823a5c0094fd566df3ce3d134bf1c8",
+      "outputSha256": "93b43e732d7826b75f5cd226bdbb2c6a9e412ce1794cdfd9ef9aa438ddc63495",
+      "exactInverseToStripped": true,
+      "parserSha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c",
+      "probes": [
+        {
+          "name": "term_higher",
+          "kind": "function-entry",
+          "bodySha256": "0b6293bed000ad2bca38287c6458225ceeb8d7d10cb812d6511dc262b24827ec"
+        },
+        {
+          "name": "term_lower",
+          "kind": "function-entry",
+          "bodySha256": "63d9a0694fcc95ba950221ce0a38016aab17db90d06159a31964fac98d5b264f"
+        },
+        {
+          "name": "term_wnf",
+          "kind": "function-entry",
+          "bodySha256": "64e3da1c5966364dad2907a18ed8fdfedfcfb8427d65d99135def18e3db0d3a1"
+        },
+        {
+          "name": "term_force",
+          "kind": "function-entry",
+          "bodySha256": "40eff10387a14992386b4710a4261e27e2174ce62d74b57749508304134583f1"
+        },
+        {
+          "name": "term_infer",
+          "kind": "function-entry",
+          "bodySha256": "8accb7eb31320eb0ce063ce2645acdc57ab44af2ecc48e91e29095ccd68764e6"
+        },
+        {
+          "name": "term_check",
+          "kind": "function-entry",
+          "bodySha256": "a0c467a3a25cf147adb9dda817f0235d7c07197cf1550e2aae3161a0ed1611fd"
+        },
+        {
+          "name": "tele_open",
+          "kind": "function-entry",
+          "bodySha256": "c8090cdcf68f1e07b8796ccb7046c929cc997c33b127d91fb5095ef28ec37245"
+        },
+        {
+          "name": "tele_fill",
+          "kind": "function-entry",
+          "bodySha256": "92fa6066f4932e51e1e4709f4ba73d05e0455be3115a673cd9ef87e0c3c59e1e"
+        },
+        {
+          "name": "tele_unbind",
+          "kind": "function-entry",
+          "bodySha256": "5dd8e7a3cb71cdf77b20be81c5898cb3a95c49c321f1f117f1da199f94d7a99c"
+        },
+        {
+          "name": "tele_check",
+          "kind": "function-entry",
+          "bodySha256": "5f6afe09d0bae8689f7a0aacca0fcde676063e060b87ecf4ebe3c64418f7a6a5"
+        }
+      ],
+      "missing": [],
+      "scope": "Diagnostic logical entries, not physical allocations or directly comparable AST node counts. TS counts function entries; B2 counts logical tail-loop/SCC visits."
+    },
+    {
+      "role": "backend",
+      "originalSha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee",
+      "strippedSha256": "42af6690c860fe5a1b487ff11efe35396530b469b11a7e56179400c9776b8bbc",
+      "outputSha256": "77ca6aa3b9e0594f237ef6c961ff6284758999c99e2118e65be685668cccc6e9",
+      "exactInverseToStripped": true,
+      "parserSha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c",
+      "probes": [
+        {
+          "name": "fun_of",
+          "kind": "function-entry",
+          "bodySha256": "f569c2e6e51940168ead928ddb1514274d6bacc8068b316ebadf1e733b0581a9"
+        },
+        {
+          "name": "tele_unbind",
+          "kind": "function-entry",
+          "bodySha256": "8ab9da6bc6c2de09d11c2c797a548841a6a2dc9d10212aafdf83ee3e481e34a4"
+        },
+        {
+          "name": "term_open",
+          "kind": "function-entry",
+          "bodySha256": "58e4eac9eea22b4026fd125dfaf6389d0d30554c789eb43fb2d53d5f5107c38e"
+        },
+        {
+          "name": "term_spine",
+          "kind": "function-entry",
+          "bodySha256": "442d06be5ddbefe25855d4bafbb94e3e8bb8491ddd4b66f60f7885483238717e"
+        },
+        {
+          "name": "def_raise",
+          "kind": "function-entry",
+          "bodySha256": "d9db765ac24177755ae06aa943d8f41444097d0dbbf5a56c475076e36ba3ea54"
+        },
+        {
+          "name": "js_def",
+          "kind": "function-entry",
+          "bodySha256": "92dea114fe12f7c088bd8e631ae658d3e96615471dd556b95fb1ee8c2ed84718"
+        },
+        {
+          "name": "js_expr",
+          "kind": "function-entry",
+          "bodySha256": "342810972c0e4a20cba8a149b2bc266bab6772fa3e55e36c33001eaaf7c128e2"
+        },
+        {
+          "name": "js_func",
+          "kind": "function-entry",
+          "bodySha256": "1a0ec7bd60b5884c88ee47579fcb1949f85c3136303bde9af319ab0392560f80"
+        },
+        {
+          "name": "js_host",
+          "kind": "function-entry",
+          "bodySha256": "ad22f2a4d308667b4d5626eb6c29a46fb1d7b37273c5ea90eeb7185a126faae6"
+        },
+        {
+          "name": "js_lib",
+          "kind": "function-entry",
+          "bodySha256": "9ac5ae93757f69f15add8728e25c44c7f747bd6b4c42019c2b1f68077958487b"
+        },
+        {
+          "name": "memo_FUNS_calls",
+          "kind": "memo-table-call"
+        },
+        {
+          "name": "memo_FUNS_misses",
+          "kind": "memo-table-miss"
+        },
+        {
+          "name": "memo_TELES_calls",
+          "kind": "memo-table-call"
+        },
+        {
+          "name": "memo_TELES_misses",
+          "kind": "memo-table-miss"
+        },
+        {
+          "name": "memo_OPENS_calls",
+          "kind": "memo-table-call"
+        },
+        {
+          "name": "memo_OPENS_misses",
+          "kind": "memo-table-miss"
+        },
+        {
+          "name": "memo_SPINES_calls",
+          "kind": "memo-table-call"
+        },
+        {
+          "name": "memo_SPINES_misses",
+          "kind": "memo-table-miss"
+        }
+      ],
+      "missing": [],
+      "scope": "Diagnostic logical entries, not physical allocations or directly comparable AST node counts. TS counts function entries; B2 counts logical tail-loop/SCC visits."
+    }
+  ],
+  "rows": [
+    {
+      "id": "mandelbrot",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+        "sha256": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+        "bytes": 6576
+      },
+      "bendOutput": {
+        "sha256": "655aa300fc8968117f160211e552d3ae48a419cebd61561a6eeb016038d04fe1",
+        "bytes": 32152
+      },
+      "typescriptOutput": {
+        "sha256": "037f070e948ab7701364b7413c624bca4327db0bc6171ac4523b906d2ae9e222",
+        "bytes": 15442
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 24056,
+          "subst_node": 22406,
+          "core_rebuild": 10595,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 40,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 11064,
+          "norm_eval_node": 11064,
+          "index_lookup": 10145,
+          "index_find": 129445,
+          "index_child_list": 34,
+          "infer": 1019,
+          "check": 843,
+          "jd_doc_definition": 41,
+          "jd_calls_context": 2,
+          "jd_arity": 499,
+          "jd_domains": 1836,
+          "jd_raise": 3880,
+          "jd_params": 162,
+          "jd_live_arity": 330,
+          "jd_calls_rows": 66,
+          "jd_calls_fact": 218,
+          "jd_selected_context": 2,
+          "j_call_spine": 2539,
+          "j_specialize": 247,
+          "j_app_type": 2000
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 4357
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4115
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 5408,
+            "subst_node": 4708,
+            "core_rebuild": 2458,
+            "env_tele_fill_eager": 19,
+            "norm_eval": 773,
+            "norm_eval_node": 773,
+            "index_lookup": 3711,
+            "index_find": 50024,
+            "infer": 1019,
+            "check": 843
+          },
+          "jd_roots": {
+            "norm_eval": 19,
+            "norm_eval_node": 19,
+            "index_lookup": 74,
+            "index_find": 741
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 45,
+            "index_find": 453
+          },
+          "annotate_selected": {
+            "subst": 5772,
+            "subst_node": 5060,
+            "core_rebuild": 2676,
+            "env_tele_fill_eager": 21,
+            "norm_eval": 1220,
+            "norm_eval_node": 1220,
+            "index_lookup": 815,
+            "index_find": 8764
+          },
+          "jd_reach_selected": {
+            "subst": 4222,
+            "subst_node": 4222,
+            "core_rebuild": 1734,
+            "norm_eval": 3299,
+            "norm_eval_node": 3299,
+            "index_lookup": 1931,
+            "index_find": 22885,
+            "index_child_list": 17,
+            "jd_doc_definition": 17,
+            "jd_calls_context": 1,
+            "jd_arity": 233,
+            "jd_domains": 838,
+            "jd_raise": 1776,
+            "jd_params": 81,
+            "jd_live_arity": 85,
+            "jd_calls_rows": 41,
+            "jd_calls_fact": 109,
+            "jd_selected_context": 1,
+            "j_call_spine": 1270,
+            "j_specialize": 42,
+            "j_app_type": 755
+          },
+          "j_layout_error": {
+            "subst": 1146,
+            "subst_node": 1146,
+            "core_rebuild": 502,
+            "norm_eval": 599,
+            "norm_eval_node": 599,
+            "index_lookup": 492,
+            "index_find": 4730,
+            "j_specialize": 19,
+            "j_app_type": 24
+          },
+          "jd_library_selected": {
+            "subst": 7313,
+            "subst_node": 7121,
+            "core_rebuild": 3142,
+            "norm_eval": 4831,
+            "norm_eval_node": 4831,
+            "index_lookup": 2990,
+            "index_find": 32467,
+            "index_child_list": 17,
+            "jd_doc_definition": 24,
+            "jd_calls_context": 1,
+            "jd_arity": 266,
+            "jd_domains": 998,
+            "jd_raise": 2104,
+            "jd_params": 81,
+            "jd_live_arity": 245,
+            "jd_calls_rows": 25,
+            "jd_calls_fact": 109,
+            "jd_selected_context": 1,
+            "j_call_spine": 1269,
+            "j_specialize": 186,
+            "j_app_type": 1221
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 121138,
+          "term_lower": 16226,
+          "term_wnf": 60342,
+          "term_force": 70346,
+          "term_infer": 12314,
+          "term_check": 13768,
+          "tele_open": 10514,
+          "tele_fill": 2984,
+          "tele_unbind": 913,
+          "tele_check": 2365
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 37721,
+            "term_lower": 16213,
+            "term_force": 16213
+          },
+          "check": {
+            "term_higher": 61624,
+            "term_wnf": 54079,
+            "term_force": 8638,
+            "term_infer": 12314,
+            "term_check": 13768,
+            "tele_open": 8698,
+            "tele_fill": 2911,
+            "tele_unbind": 386,
+            "tele_check": 2365
+          },
+          "emit": {
+            "term_higher": 21793,
+            "term_lower": 13,
+            "term_wnf": 6263,
+            "term_force": 45495,
+            "tele_open": 1816,
+            "tele_fill": 73,
+            "tele_unbind": 527
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 791,
+          "tele_unbind": 2725,
+          "term_open": 943,
+          "term_spine": 3540,
+          "def_raise": 253,
+          "js_def": 17,
+          "js_expr": 647,
+          "js_func": 191,
+          "js_host": 17,
+          "js_lib": 1,
+          "memo_FUNS_calls": 791,
+          "memo_FUNS_misses": 32,
+          "memo_TELES_calls": 2725,
+          "memo_TELES_misses": 527,
+          "memo_OPENS_calls": 943,
+          "memo_OPENS_misses": 502,
+          "memo_SPINES_calls": 3540,
+          "memo_SPINES_misses": 2963
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 791,
+            "tele_unbind": 2725,
+            "term_open": 943,
+            "term_spine": 3540,
+            "def_raise": 253,
+            "js_def": 17,
+            "js_expr": 647,
+            "js_func": 191,
+            "js_host": 17,
+            "js_lib": 1,
+            "memo_FUNS_calls": 791,
+            "memo_FUNS_misses": 32,
+            "memo_TELES_calls": 2725,
+            "memo_TELES_misses": 527,
+            "memo_OPENS_calls": 943,
+            "memo_OPENS_misses": 502,
+            "memo_SPINES_calls": 3540,
+            "memo_SPINES_misses": 2963
+          }
+        }
+      }
+    },
+    {
+      "id": "editdist",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+        "sha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+        "bytes": 5874
+      },
+      "bendOutput": {
+        "sha256": "dc730e3490703480f841c7152f9de7731be6cf9285b951ccfd85946895396e90",
+        "bytes": 25614
+      },
+      "typescriptOutput": {
+        "sha256": "33721b7770aa4e367896cf1b842cc8ec309dced3a2608e25c5709217474eabc6",
+        "bytes": 11907
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 21874,
+          "subst_node": 19349,
+          "core_rebuild": 10977,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 106,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 9169,
+          "norm_eval_node": 9169,
+          "index_lookup": 8221,
+          "index_find": 110541,
+          "index_child_list": 44,
+          "infer": 614,
+          "check": 587,
+          "jd_doc_definition": 52,
+          "jd_calls_context": 2,
+          "jd_arity": 326,
+          "jd_domains": 1241,
+          "jd_raise": 2355,
+          "jd_params": 174,
+          "jd_live_arity": 361,
+          "jd_calls_rows": 77,
+          "jd_calls_fact": 212,
+          "jd_selected_context": 2,
+          "j_call_spine": 1483,
+          "j_specialize": 533,
+          "j_app_type": 1729
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 3669
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4165
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 2614,
+            "subst_node": 2320,
+            "core_rebuild": 1276,
+            "env_tele_fill_eager": 52,
+            "norm_eval": 634,
+            "norm_eval_node": 634,
+            "index_lookup": 3455,
+            "index_find": 47862,
+            "infer": 614,
+            "check": 587
+          },
+          "jd_roots": {
+            "norm_eval": 24,
+            "norm_eval_node": 24,
+            "index_lookup": 95,
+            "index_find": 1045
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 936
+          },
+          "reach_book": {
+            "index_lookup": 50,
+            "index_find": 519
+          },
+          "annotate_selected": {
+            "subst": 2568,
+            "subst_node": 2282,
+            "core_rebuild": 1272,
+            "env_tele_fill_eager": 54,
+            "norm_eval": 739,
+            "norm_eval_node": 739,
+            "index_lookup": 355,
+            "index_find": 3820
+          },
+          "jd_reach_selected": {
+            "subst": 5589,
+            "subst_node": 5009,
+            "core_rebuild": 2889,
+            "norm_eval": 2579,
+            "norm_eval_node": 2579,
+            "index_lookup": 1370,
+            "index_find": 17500,
+            "index_child_list": 22,
+            "jd_doc_definition": 22,
+            "jd_calls_context": 1,
+            "jd_arity": 142,
+            "jd_domains": 536,
+            "jd_raise": 1020,
+            "jd_params": 87,
+            "jd_live_arity": 96,
+            "jd_calls_rows": 46,
+            "jd_calls_fact": 106,
+            "jd_selected_context": 1,
+            "j_call_spine": 742,
+            "j_specialize": 108,
+            "j_app_type": 526
+          },
+          "j_layout_error": {
+            "subst": 1476,
+            "subst_node": 1242,
+            "core_rebuild": 715,
+            "norm_eval": 565,
+            "norm_eval_node": 565,
+            "index_lookup": 351,
+            "index_find": 3443,
+            "j_specialize": 52,
+            "j_app_type": 40
+          },
+          "jd_library_selected": {
+            "subst": 9432,
+            "subst_node": 8347,
+            "core_rebuild": 4742,
+            "norm_eval": 4305,
+            "norm_eval_node": 4305,
+            "index_lookup": 2458,
+            "index_find": 27582,
+            "index_child_list": 22,
+            "jd_doc_definition": 30,
+            "jd_calls_context": 1,
+            "jd_arity": 184,
+            "jd_domains": 705,
+            "jd_raise": 1335,
+            "jd_params": 87,
+            "jd_live_arity": 265,
+            "jd_calls_rows": 31,
+            "jd_calls_fact": 106,
+            "jd_selected_context": 1,
+            "j_call_spine": 741,
+            "j_specialize": 373,
+            "j_app_type": 1163
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 109255,
+          "term_lower": 15844,
+          "term_wnf": 60533,
+          "term_force": 40904,
+          "term_infer": 11909,
+          "term_check": 13505,
+          "tele_open": 10437,
+          "tele_fill": 3163,
+          "tele_unbind": 881,
+          "tele_check": 2398
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 37065,
+            "term_lower": 15719,
+            "term_force": 15719
+          },
+          "check": {
+            "term_higher": 61205,
+            "term_wnf": 53767,
+            "term_force": 8656,
+            "term_infer": 11909,
+            "term_check": 13505,
+            "tele_open": 8736,
+            "tele_fill": 2920,
+            "tele_unbind": 390,
+            "tele_check": 2398
+          },
+          "emit": {
+            "term_higher": 10985,
+            "term_lower": 125,
+            "term_wnf": 6766,
+            "term_force": 16529,
+            "tele_open": 1701,
+            "tele_fill": 243,
+            "tele_unbind": 491
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 424,
+          "tele_unbind": 3452,
+          "term_open": 397,
+          "term_spine": 1590,
+          "def_raise": 236,
+          "js_def": 22,
+          "js_expr": 1318,
+          "js_func": 148,
+          "js_host": 22,
+          "js_lib": 1,
+          "memo_FUNS_calls": 424,
+          "memo_FUNS_misses": 35,
+          "memo_TELES_calls": 3452,
+          "memo_TELES_misses": 491,
+          "memo_OPENS_calls": 397,
+          "memo_OPENS_misses": 254,
+          "memo_SPINES_calls": 1590,
+          "memo_SPINES_misses": 1400
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 424,
+            "tele_unbind": 3452,
+            "term_open": 397,
+            "term_spine": 1590,
+            "def_raise": 236,
+            "js_def": 22,
+            "js_expr": 1318,
+            "js_func": 148,
+            "js_host": 22,
+            "js_lib": 1,
+            "memo_FUNS_calls": 424,
+            "memo_FUNS_misses": 35,
+            "memo_TELES_calls": 3452,
+            "memo_TELES_misses": 491,
+            "memo_OPENS_calls": 397,
+            "memo_OPENS_misses": 254,
+            "memo_SPINES_calls": 1590,
+            "memo_SPINES_misses": 1400
+          }
+        }
+      }
+    },
+    {
+      "id": "tree-bitonic",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+        "sha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "bytes": 4633
+      },
+      "bendOutput": {
+        "sha256": "f519fcf0a7d22e54c7e133bc284fdbba4645b5f642cf7df912f4f1fd58887e42",
+        "bytes": 23386
+      },
+      "typescriptOutput": {
+        "sha256": "c24fff66dd20c4579b7912b42450f1574e4c0b7a84e5d8b2d3d1d1345ef2b159",
+        "bytes": 10593
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 5694,
+          "subst_node": 5339,
+          "core_rebuild": 2167,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 117,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 5989,
+          "norm_eval_node": 5989,
+          "index_lookup": 8331,
+          "index_find": 111037,
+          "index_child_list": 36,
+          "infer": 368,
+          "check": 420,
+          "jd_doc_definition": 43,
+          "jd_calls_context": 2,
+          "jd_arity": 229,
+          "jd_domains": 700,
+          "jd_raise": 2110,
+          "jd_params": 104,
+          "jd_live_arity": 210,
+          "jd_calls_rows": 65,
+          "jd_calls_fact": 210,
+          "jd_selected_context": 2,
+          "j_call_spine": 833,
+          "j_specialize": 418,
+          "j_app_type": 1040
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 3377
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4137
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 837,
+            "subst_node": 758,
+            "core_rebuild": 307,
+            "env_tele_fill_eager": 58,
+            "norm_eval": 459,
+            "norm_eval_node": 459,
+            "index_lookup": 3315,
+            "index_find": 46275,
+            "infer": 368,
+            "check": 420
+          },
+          "jd_roots": {
+            "norm_eval": 20,
+            "norm_eval_node": 20,
+            "index_lookup": 81,
+            "index_find": 814
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 950
+          },
+          "reach_book": {
+            "index_lookup": 45,
+            "index_find": 470
+          },
+          "annotate_selected": {
+            "subst": 720,
+            "subst_node": 682,
+            "core_rebuild": 265,
+            "env_tele_fill_eager": 59,
+            "norm_eval": 545,
+            "norm_eval_node": 545,
+            "index_lookup": 374,
+            "index_find": 4092
+          },
+          "jd_reach_selected": {
+            "subst": 948,
+            "subst_node": 948,
+            "core_rebuild": 317,
+            "norm_eval": 1448,
+            "norm_eval_node": 1448,
+            "index_lookup": 1579,
+            "index_find": 19447,
+            "index_child_list": 18,
+            "jd_doc_definition": 18,
+            "jd_calls_context": 1,
+            "jd_arity": 97,
+            "jd_domains": 299,
+            "jd_raise": 907,
+            "jd_params": 52,
+            "jd_live_arity": 54,
+            "jd_calls_rows": 39,
+            "jd_calls_fact": 105,
+            "jd_selected_context": 1,
+            "j_call_spine": 417,
+            "j_specialize": 93,
+            "j_app_type": 315
+          },
+          "j_layout_error": {
+            "subst": 332,
+            "subst_node": 332,
+            "core_rebuild": 111,
+            "norm_eval": 434,
+            "norm_eval_node": 434,
+            "index_lookup": 404,
+            "index_find": 4240,
+            "j_specialize": 57,
+            "j_app_type": 39
+          },
+          "jd_library_selected": {
+            "subst": 2662,
+            "subst_node": 2470,
+            "core_rebuild": 1084,
+            "norm_eval": 2760,
+            "norm_eval_node": 2760,
+            "index_lookup": 2446,
+            "index_find": 27235,
+            "index_child_list": 18,
+            "jd_doc_definition": 25,
+            "jd_calls_context": 1,
+            "jd_arity": 132,
+            "jd_domains": 401,
+            "jd_raise": 1203,
+            "jd_params": 52,
+            "jd_live_arity": 156,
+            "jd_calls_rows": 26,
+            "jd_calls_fact": 105,
+            "jd_selected_context": 1,
+            "j_call_spine": 416,
+            "j_specialize": 268,
+            "j_app_type": 686
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 102757,
+          "term_lower": 15616,
+          "term_wnf": 55673,
+          "term_force": 34828,
+          "term_infer": 11663,
+          "term_check": 13338,
+          "tele_open": 9528,
+          "tele_fill": 3080,
+          "tele_unbind": 680,
+          "tele_check": 2389
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36979,
+            "term_lower": 15584,
+            "term_force": 15584
+          },
+          "check": {
+            "term_higher": 60337,
+            "term_wnf": 52876,
+            "term_force": 8618,
+            "term_infer": 11663,
+            "term_check": 13338,
+            "tele_open": 8683,
+            "tele_fill": 2950,
+            "tele_unbind": 387,
+            "tele_check": 2389
+          },
+          "emit": {
+            "term_higher": 5441,
+            "term_lower": 32,
+            "term_wnf": 2797,
+            "term_force": 10626,
+            "tele_open": 845,
+            "tele_fill": 130,
+            "tele_unbind": 293
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 316,
+          "tele_unbind": 1082,
+          "term_open": 270,
+          "term_spine": 1244,
+          "def_raise": 218,
+          "js_def": 18,
+          "js_expr": 242,
+          "js_func": 126,
+          "js_host": 18,
+          "js_lib": 1,
+          "memo_FUNS_calls": 316,
+          "memo_FUNS_misses": 30,
+          "memo_TELES_calls": 1082,
+          "memo_TELES_misses": 293,
+          "memo_OPENS_calls": 270,
+          "memo_OPENS_misses": 182,
+          "memo_SPINES_calls": 1244,
+          "memo_SPINES_misses": 1136
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 316,
+            "tele_unbind": 1082,
+            "term_open": 270,
+            "term_spine": 1244,
+            "def_raise": 218,
+            "js_def": 18,
+            "js_expr": 242,
+            "js_func": 126,
+            "js_host": 18,
+            "js_lib": 1,
+            "memo_FUNS_calls": 316,
+            "memo_FUNS_misses": 30,
+            "memo_TELES_calls": 1082,
+            "memo_TELES_misses": 293,
+            "memo_OPENS_calls": 270,
+            "memo_OPENS_misses": 182,
+            "memo_SPINES_calls": 1244,
+            "memo_SPINES_misses": 1136
+          }
+        }
+      }
+    },
+    {
+      "id": "lexer",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+        "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "bytes": 7134
+      },
+      "bendOutput": {
+        "sha256": "dcb0125d93015591a539320dd827b7d751d6985e69c44e51f7beefa43121e4a5",
+        "bytes": 28426
+      },
+      "typescriptOutput": {
+        "sha256": "2d9378dfdcacc5904f4b2ac65fd90ba1dcc4a51d9c68b00f6042c42aaeadbbba",
+        "bytes": 14110
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 16943,
+          "subst_node": 13888,
+          "core_rebuild": 6856,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 345,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 10655,
+          "norm_eval_node": 10655,
+          "index_lookup": 12408,
+          "index_find": 154818,
+          "index_child_list": 58,
+          "infer": 577,
+          "check": 657,
+          "jd_doc_definition": 69,
+          "jd_calls_context": 2,
+          "jd_arity": 406,
+          "jd_domains": 1241,
+          "jd_raise": 3311,
+          "jd_params": 168,
+          "jd_live_arity": 337,
+          "jd_calls_rows": 96,
+          "jd_calls_fact": 422,
+          "jd_selected_context": 2,
+          "j_call_spine": 1571,
+          "j_specialize": 885,
+          "j_app_type": 1726
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 4687
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4231
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 2573,
+            "subst_node": 2078,
+            "core_rebuild": 1023,
+            "env_tele_fill_eager": 170,
+            "norm_eval": 821,
+            "norm_eval_node": 821,
+            "index_lookup": 3687,
+            "index_find": 50197,
+            "infer": 577,
+            "check": 657
+          },
+          "jd_roots": {
+            "norm_eval": 30,
+            "norm_eval_node": 30,
+            "index_lookup": 122,
+            "index_find": 1225
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 950
+          },
+          "reach_book": {
+            "index_lookup": 73,
+            "index_find": 741
+          },
+          "annotate_selected": {
+            "subst": 2434,
+            "subst_node": 1957,
+            "core_rebuild": 990,
+            "env_tele_fill_eager": 175,
+            "norm_eval": 981,
+            "norm_eval_node": 981,
+            "index_lookup": 688,
+            "index_find": 7177
+          },
+          "jd_reach_selected": {
+            "subst": 3744,
+            "subst_node": 3174,
+            "core_rebuild": 1555,
+            "norm_eval": 2846,
+            "norm_eval_node": 2846,
+            "index_lookup": 2914,
+            "index_find": 33921,
+            "index_child_list": 29,
+            "jd_doc_definition": 29,
+            "jd_calls_context": 1,
+            "jd_arity": 176,
+            "jd_domains": 542,
+            "jd_raise": 1416,
+            "jd_params": 84,
+            "jd_live_arity": 90,
+            "jd_calls_rows": 55,
+            "jd_calls_fact": 211,
+            "jd_selected_context": 1,
+            "j_call_spine": 786,
+            "j_specialize": 245,
+            "j_app_type": 581
+          },
+          "j_layout_error": {
+            "subst": 2385,
+            "subst_node": 1800,
+            "core_rebuild": 955,
+            "norm_eval": 1166,
+            "norm_eval_node": 1166,
+            "index_lookup": 790,
+            "index_find": 7731,
+            "j_specialize": 168,
+            "j_app_type": 103
+          },
+          "jd_library_selected": {
+            "subst": 5612,
+            "subst_node": 4730,
+            "core_rebuild": 2250,
+            "norm_eval": 4488,
+            "norm_eval_node": 4488,
+            "index_lookup": 4047,
+            "index_find": 43958,
+            "index_child_list": 29,
+            "jd_doc_definition": 40,
+            "jd_calls_context": 1,
+            "jd_arity": 230,
+            "jd_domains": 699,
+            "jd_raise": 1895,
+            "jd_params": 84,
+            "jd_live_arity": 247,
+            "jd_calls_rows": 41,
+            "jd_calls_fact": 211,
+            "jd_selected_context": 1,
+            "j_call_spine": 785,
+            "j_specialize": 472,
+            "j_app_type": 1042
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 109101,
+          "term_lower": 15921,
+          "term_wnf": 58485,
+          "term_force": 50902,
+          "term_infer": 11872,
+          "term_check": 13574,
+          "tele_open": 10003,
+          "tele_fill": 3249,
+          "tele_unbind": 873,
+          "tele_check": 2416
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 37354,
+            "term_lower": 15864,
+            "term_force": 15864
+          },
+          "check": {
+            "term_higher": 61333,
+            "term_wnf": 53566,
+            "term_force": 8684,
+            "term_infer": 11872,
+            "term_check": 13574,
+            "tele_open": 8749,
+            "tele_fill": 3002,
+            "tele_unbind": 398,
+            "tele_check": 2416
+          },
+          "emit": {
+            "term_higher": 10414,
+            "term_lower": 57,
+            "term_wnf": 4919,
+            "term_force": 26354,
+            "tele_open": 1254,
+            "tele_fill": 247,
+            "tele_unbind": 475
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 579,
+          "tele_unbind": 1991,
+          "term_open": 372,
+          "term_spine": 2118,
+          "def_raise": 320,
+          "js_def": 29,
+          "js_expr": 487,
+          "js_func": 212,
+          "js_host": 28,
+          "js_lib": 1,
+          "memo_FUNS_calls": 579,
+          "memo_FUNS_misses": 41,
+          "memo_TELES_calls": 1991,
+          "memo_TELES_misses": 475,
+          "memo_OPENS_calls": 372,
+          "memo_OPENS_misses": 253,
+          "memo_SPINES_calls": 2118,
+          "memo_SPINES_misses": 1919
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 579,
+            "tele_unbind": 1991,
+            "term_open": 372,
+            "term_spine": 2118,
+            "def_raise": 320,
+            "js_def": 29,
+            "js_expr": 487,
+            "js_func": 212,
+            "js_host": 28,
+            "js_lib": 1,
+            "memo_FUNS_calls": 579,
+            "memo_FUNS_misses": 41,
+            "memo_TELES_calls": 1991,
+            "memo_TELES_misses": 475,
+            "memo_OPENS_calls": 372,
+            "memo_OPENS_misses": 253,
+            "memo_SPINES_calls": 2118,
+            "memo_SPINES_misses": 1919
+          }
+        }
+      }
+    },
+    {
+      "id": "symreg",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+        "sha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+        "bytes": 5406
+      },
+      "bendOutput": {
+        "sha256": "7d7d5587ac32645a82a865cf34c1323c7e1cd8789b40ed82f4332ccbe8b9bf65",
+        "bytes": 27254
+      },
+      "typescriptOutput": {
+        "sha256": "545d6112dbbb0cc66074407a0daf7076b148f9d311e7e9bbffff3376f8e00651",
+        "bytes": 12815
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 6982,
+          "subst_node": 6527,
+          "core_rebuild": 2507,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 92,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 8587,
+          "norm_eval_node": 8587,
+          "index_lookup": 9981,
+          "index_find": 130201,
+          "index_child_list": 44,
+          "infer": 604,
+          "check": 573,
+          "jd_doc_definition": 51,
+          "jd_calls_context": 2,
+          "jd_arity": 401,
+          "jd_domains": 1214,
+          "jd_raise": 3546,
+          "jd_params": 134,
+          "jd_live_arity": 274,
+          "jd_calls_rows": 74,
+          "jd_calls_fact": 322,
+          "jd_selected_context": 2,
+          "j_call_spine": 1617,
+          "j_specialize": 437,
+          "j_app_type": 1429
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 4382
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4169
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 1248,
+            "subst_node": 1122,
+            "core_rebuild": 447,
+            "env_tele_fill_eager": 45,
+            "norm_eval": 566,
+            "norm_eval_node": 566,
+            "index_lookup": 3497,
+            "index_find": 48190,
+            "infer": 604,
+            "check": 573
+          },
+          "jd_roots": {
+            "norm_eval": 24,
+            "norm_eval_node": 24,
+            "index_lookup": 95,
+            "index_find": 952
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 936
+          },
+          "reach_book": {
+            "index_lookup": 53,
+            "index_find": 537
+          },
+          "annotate_selected": {
+            "subst": 1092,
+            "subst_node": 1001,
+            "core_rebuild": 415,
+            "env_tele_fill_eager": 47,
+            "norm_eval": 763,
+            "norm_eval_node": 763,
+            "index_lookup": 538,
+            "index_find": 5786
+          },
+          "jd_reach_selected": {
+            "subst": 1163,
+            "subst_node": 1163,
+            "core_rebuild": 348,
+            "norm_eval": 2364,
+            "norm_eval_node": 2364,
+            "index_lookup": 2042,
+            "index_find": 24817,
+            "index_child_list": 22,
+            "jd_doc_definition": 22,
+            "jd_calls_context": 1,
+            "jd_arity": 179,
+            "jd_domains": 541,
+            "jd_raise": 1593,
+            "jd_params": 67,
+            "jd_live_arity": 71,
+            "jd_calls_rows": 44,
+            "jd_calls_fact": 161,
+            "jd_selected_context": 1,
+            "j_call_spine": 809,
+            "j_specialize": 90,
+            "j_app_type": 468
+          },
+          "j_layout_error": {
+            "subst": 278,
+            "subst_node": 278,
+            "core_rebuild": 88,
+            "norm_eval": 511,
+            "norm_eval_node": 511,
+            "index_lookup": 411,
+            "index_find": 4087,
+            "j_specialize": 45,
+            "j_app_type": 15
+          },
+          "jd_library_selected": {
+            "subst": 3006,
+            "subst_node": 2814,
+            "core_rebuild": 1126,
+            "norm_eval": 4036,
+            "norm_eval_node": 4036,
+            "index_lookup": 3258,
+            "index_find": 36345,
+            "index_child_list": 22,
+            "jd_doc_definition": 29,
+            "jd_calls_context": 1,
+            "jd_arity": 222,
+            "jd_domains": 673,
+            "jd_raise": 1953,
+            "jd_params": 67,
+            "jd_live_arity": 203,
+            "jd_calls_rows": 30,
+            "jd_calls_fact": 161,
+            "jd_selected_context": 1,
+            "j_call_spine": 808,
+            "j_specialize": 302,
+            "j_app_type": 946
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 106349,
+          "term_lower": 15828,
+          "term_wnf": 57121,
+          "term_force": 43274,
+          "term_infer": 11899,
+          "term_check": 13491,
+          "tele_open": 9676,
+          "tele_fill": 3100,
+          "tele_unbind": 764,
+          "tele_check": 2370
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 37245,
+            "term_lower": 15807,
+            "term_force": 15807
+          },
+          "check": {
+            "term_higher": 60710,
+            "term_wnf": 53302,
+            "term_force": 8711,
+            "term_infer": 11899,
+            "term_check": 13491,
+            "tele_open": 8675,
+            "tele_fill": 2937,
+            "tele_unbind": 391,
+            "tele_check": 2370
+          },
+          "emit": {
+            "term_higher": 8394,
+            "term_lower": 21,
+            "term_wnf": 3819,
+            "term_force": 18756,
+            "tele_open": 1001,
+            "tele_fill": 163,
+            "tele_unbind": 373
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 628,
+          "tele_unbind": 1883,
+          "term_open": 399,
+          "term_spine": 2007,
+          "def_raise": 258,
+          "js_def": 22,
+          "js_expr": 493,
+          "js_func": 158,
+          "js_host": 22,
+          "js_lib": 1,
+          "memo_FUNS_calls": 628,
+          "memo_FUNS_misses": 35,
+          "memo_TELES_calls": 1883,
+          "memo_TELES_misses": 373,
+          "memo_OPENS_calls": 399,
+          "memo_OPENS_misses": 247,
+          "memo_SPINES_calls": 2007,
+          "memo_SPINES_misses": 1741
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 628,
+            "tele_unbind": 1883,
+            "term_open": 399,
+            "term_spine": 2007,
+            "def_raise": 258,
+            "js_def": 22,
+            "js_expr": 493,
+            "js_func": 158,
+            "js_host": 22,
+            "js_lib": 1,
+            "memo_FUNS_calls": 628,
+            "memo_FUNS_misses": 35,
+            "memo_TELES_calls": 1883,
+            "memo_TELES_misses": 373,
+            "memo_OPENS_calls": 399,
+            "memo_OPENS_misses": 247,
+            "memo_SPINES_calls": 2007,
+            "memo_SPINES_misses": 1741
+          }
+        }
+      }
+    },
+    {
+      "id": "test-morning-program",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend",
+        "sha256": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+        "bytes": 3077
+      },
+      "bendOutput": {
+        "sha256": "2162dd8313581c4ebadeaadb237f48acc3c38485f3dd2869d2fc8e2289634412",
+        "bytes": 83112
+      },
+      "typescriptOutput": {
+        "sha256": "faff88b122b84d0d18698210c66233cae52493e3cc68c92d95e0c639e20990ad",
+        "bytes": 48892
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 218953,
+          "subst_node": 156015,
+          "core_rebuild": 101425,
+          "env_subst_term": 5124,
+          "env_subst_find": 3678,
+          "env_tele_fill_loop": 1200,
+          "env_tele_fill_eager": 891,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 42,
+          "norm_eval": 55130,
+          "norm_eval_node": 54976,
+          "index_lookup": 37737,
+          "index_find": 422779,
+          "index_child_list": 114,
+          "infer": 421,
+          "check": 431,
+          "jd_doc_definition": 126,
+          "jd_calls_context": 2,
+          "jd_arity": 880,
+          "jd_domains": 3883,
+          "jd_raise": 18203,
+          "jd_params": 490,
+          "jd_live_arity": 609,
+          "jd_calls_rows": 163,
+          "jd_calls_fact": 1222,
+          "jd_selected_context": 2,
+          "j_call_spine": 6647,
+          "j_specialize": 7875,
+          "j_app_type": 11463
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 3103
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4195
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 2174,
+            "subst_node": 1819,
+            "core_rebuild": 983,
+            "env_subst_term": 292,
+            "env_subst_find": 168,
+            "env_tele_fill_loop": 78,
+            "env_tele_fill_eager": 51,
+            "tele_check_legacy": 42,
+            "norm_eval": 440,
+            "norm_eval_node": 440,
+            "index_lookup": 3244,
+            "index_find": 44631,
+            "infer": 421,
+            "check": 431
+          },
+          "jd_roots": {
+            "norm_eval": 15,
+            "norm_eval_node": 15,
+            "index_lookup": 58,
+            "index_find": 581
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 110,
+            "index_find": 1106
+          },
+          "annotate_selected": {
+            "subst": 30726,
+            "subst_node": 21024,
+            "core_rebuild": 13650,
+            "env_subst_term": 4832,
+            "env_subst_find": 3510,
+            "env_tele_fill_loop": 1122,
+            "env_tele_fill_eager": 840,
+            "norm_eval": 6248,
+            "norm_eval_node": 6094,
+            "index_lookup": 2289,
+            "index_find": 23896
+          },
+          "jd_reach_selected": {
+            "subst": 78654,
+            "subst_node": 58673,
+            "core_rebuild": 38315,
+            "norm_eval": 20324,
+            "norm_eval_node": 20324,
+            "index_lookup": 13744,
+            "index_find": 151131,
+            "index_child_list": 57,
+            "jd_doc_definition": 57,
+            "jd_calls_context": 1,
+            "jd_arity": 428,
+            "jd_domains": 1908,
+            "jd_raise": 9016,
+            "jd_params": 245,
+            "jd_live_arity": 271,
+            "jd_calls_rows": 93,
+            "jd_calls_fact": 611,
+            "jd_selected_context": 1,
+            "j_call_spine": 3324,
+            "j_specialize": 2661,
+            "j_app_type": 4324
+          },
+          "j_layout_error": {
+            "subst": 33417,
+            "subst_node": 21803,
+            "core_rebuild": 14619,
+            "norm_eval": 7995,
+            "norm_eval_node": 7995,
+            "index_lookup": 3193,
+            "index_find": 31974,
+            "j_specialize": 1945,
+            "j_app_type": 2027
+          },
+          "jd_library_selected": {
+            "subst": 73787,
+            "subst_node": 52547,
+            "core_rebuild": 33775,
+            "norm_eval": 19785,
+            "norm_eval_node": 19785,
+            "index_lookup": 15012,
+            "index_find": 161253,
+            "index_child_list": 57,
+            "jd_doc_definition": 69,
+            "jd_calls_context": 1,
+            "jd_arity": 452,
+            "jd_domains": 1975,
+            "jd_raise": 9187,
+            "jd_params": 245,
+            "jd_live_arity": 338,
+            "jd_calls_rows": 70,
+            "jd_calls_fact": 611,
+            "jd_selected_context": 1,
+            "j_call_spine": 3323,
+            "j_specialize": 3269,
+            "j_app_type": 5112
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 181556,
+          "term_lower": 16077,
+          "term_wnf": 83307,
+          "term_force": 90264,
+          "term_infer": 11716,
+          "term_check": 13353,
+          "tele_open": 15066,
+          "tele_fill": 3299,
+          "tele_unbind": 2744,
+          "tele_check": 2411
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36790,
+            "term_lower": 15450,
+            "term_force": 15450
+          },
+          "check": {
+            "term_higher": 60869,
+            "term_wnf": 53348,
+            "term_force": 8617,
+            "term_infer": 11716,
+            "term_check": 13353,
+            "tele_open": 8755,
+            "tele_fill": 2941,
+            "tele_unbind": 380,
+            "tele_check": 2411
+          },
+          "emit": {
+            "term_higher": 83897,
+            "term_lower": 627,
+            "term_wnf": 29959,
+            "term_force": 66197,
+            "tele_open": 6311,
+            "tele_fill": 358,
+            "tele_unbind": 2364
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 1702,
+          "tele_unbind": 7380,
+          "term_open": 1367,
+          "term_spine": 8320,
+          "def_raise": 1179,
+          "js_def": 59,
+          "js_expr": 1846,
+          "js_func": 803,
+          "js_host": 13,
+          "js_lib": 1,
+          "memo_FUNS_calls": 1702,
+          "memo_FUNS_misses": 78,
+          "memo_TELES_calls": 7380,
+          "memo_TELES_misses": 2364,
+          "memo_OPENS_calls": 1367,
+          "memo_OPENS_misses": 1272,
+          "memo_SPINES_calls": 8320,
+          "memo_SPINES_misses": 7924
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 1702,
+            "tele_unbind": 7380,
+            "term_open": 1367,
+            "term_spine": 8320,
+            "def_raise": 1179,
+            "js_def": 59,
+            "js_expr": 1846,
+            "js_func": 803,
+            "js_host": 13,
+            "js_lib": 1,
+            "memo_FUNS_calls": 1702,
+            "memo_FUNS_misses": 78,
+            "memo_TELES_calls": 7380,
+            "memo_TELES_misses": 2364,
+            "memo_OPENS_calls": 1367,
+            "memo_OPENS_misses": 1272,
+            "memo_SPINES_calls": 8320,
+            "memo_SPINES_misses": 7924
+          }
+        }
+      }
+    },
+    {
+      "id": "test-evening-program",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+        "sha256": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+        "bytes": 2152
+      },
+      "bendOutput": {
+        "sha256": "5fd27e637f0c90027ba0893cf46f4a662651e457eaf5a2a50a850e0d514ef415",
+        "bytes": 99795
+      },
+      "typescriptOutput": {
+        "sha256": "0c1d34b107501041c6e5a3bb5b896e91b8ab56b8826c3f616ea6b4e3a3e1d6d0",
+        "bytes": 62658
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 334375,
+          "subst_node": 251475,
+          "core_rebuild": 158378,
+          "env_subst_term": 5329,
+          "env_subst_find": 3952,
+          "env_tele_fill_loop": 1254,
+          "env_tele_fill_eager": 2779,
+          "env_tele_check_loop": 4,
+          "tele_check_legacy": 12,
+          "norm_eval": 95311,
+          "norm_eval_node": 95134,
+          "index_lookup": 57719,
+          "index_find": 636063,
+          "index_child_list": 160,
+          "infer": 315,
+          "check": 288,
+          "jd_doc_definition": 174,
+          "jd_calls_context": 2,
+          "jd_arity": 1243,
+          "jd_domains": 5144,
+          "jd_raise": 24974,
+          "jd_params": 638,
+          "jd_live_arity": 784,
+          "jd_calls_rows": 223,
+          "jd_calls_fact": 1602,
+          "jd_selected_context": 2,
+          "j_call_spine": 8827,
+          "j_specialize": 11453,
+          "j_app_type": 15549
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 3404
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4240
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 1238,
+            "subst_node": 976,
+            "core_rebuild": 533,
+            "env_subst_term": 37,
+            "env_subst_find": 20,
+            "env_tele_fill_loop": 12,
+            "env_tele_fill_eager": 43,
+            "env_tele_check_loop": 4,
+            "tele_check_legacy": 12,
+            "norm_eval": 306,
+            "norm_eval_node": 306,
+            "index_lookup": 3184,
+            "index_find": 44418,
+            "infer": 315,
+            "check": 288
+          },
+          "jd_roots": {
+            "norm_eval": 17,
+            "norm_eval_node": 17,
+            "index_lookup": 67,
+            "index_find": 672
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 147,
+            "index_find": 1485
+          },
+          "annotate_selected": {
+            "subst": 43250,
+            "subst_node": 29859,
+            "core_rebuild": 19491,
+            "env_subst_term": 5292,
+            "env_subst_find": 3932,
+            "env_tele_fill_loop": 1242,
+            "env_tele_fill_eager": 2736,
+            "norm_eval": 13286,
+            "norm_eval_node": 13117,
+            "index_lookup": 5333,
+            "index_find": 54238
+          },
+          "jd_reach_selected": {
+            "subst": 122277,
+            "subst_node": 96949,
+            "core_rebuild": 60481,
+            "norm_eval": 28373,
+            "norm_eval_node": 28369,
+            "index_lookup": 18027,
+            "index_find": 200515,
+            "index_child_list": 80,
+            "jd_doc_definition": 80,
+            "jd_calls_context": 1,
+            "jd_arity": 608,
+            "jd_domains": 2546,
+            "jd_raise": 12434,
+            "jd_params": 319,
+            "jd_live_arity": 366,
+            "jd_calls_rows": 128,
+            "jd_calls_fact": 801,
+            "jd_selected_context": 1,
+            "j_call_spine": 4414,
+            "j_specialize": 3264,
+            "j_app_type": 5222
+          },
+          "j_layout_error": {
+            "subst": 51529,
+            "subst_node": 34825,
+            "core_rebuild": 23287,
+            "norm_eval": 26012,
+            "norm_eval_node": 26012,
+            "index_lookup": 10982,
+            "index_find": 110820,
+            "j_specialize": 3966,
+            "j_app_type": 4002
+          },
+          "jd_library_selected": {
+            "subst": 115886,
+            "subst_node": 88717,
+            "core_rebuild": 54503,
+            "norm_eval": 26994,
+            "norm_eval_node": 26990,
+            "index_lookup": 19892,
+            "index_find": 215362,
+            "index_child_list": 80,
+            "jd_doc_definition": 94,
+            "jd_calls_context": 1,
+            "jd_arity": 635,
+            "jd_domains": 2598,
+            "jd_raise": 12540,
+            "jd_params": 319,
+            "jd_live_arity": 418,
+            "jd_calls_rows": 95,
+            "jd_calls_fact": 801,
+            "jd_selected_context": 1,
+            "j_call_spine": 4413,
+            "j_specialize": 4223,
+            "j_app_type": 6325
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 229824,
+          "term_lower": 22372,
+          "term_wnf": 95242,
+          "term_force": 142071,
+          "term_infer": 11610,
+          "term_check": 13214,
+          "tele_open": 18452,
+          "tele_fill": 3266,
+          "tele_unbind": 4580,
+          "tele_check": 2378
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36704,
+            "term_lower": 15402,
+            "term_force": 15402
+          },
+          "check": {
+            "term_higher": 60220,
+            "term_wnf": 52795,
+            "term_force": 8535,
+            "term_infer": 11610,
+            "term_check": 13214,
+            "tele_open": 8648,
+            "tele_fill": 2908,
+            "tele_unbind": 382,
+            "tele_check": 2378
+          },
+          "emit": {
+            "term_higher": 132900,
+            "term_lower": 6970,
+            "term_wnf": 42447,
+            "term_force": 118134,
+            "tele_open": 9804,
+            "tele_fill": 358,
+            "tele_unbind": 4198
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 2283,
+          "tele_unbind": 11485,
+          "term_open": 1829,
+          "term_spine": 13396,
+          "def_raise": 1657,
+          "js_def": 82,
+          "js_expr": 2161,
+          "js_func": 989,
+          "js_host": 15,
+          "js_lib": 1,
+          "memo_FUNS_calls": 2283,
+          "memo_FUNS_misses": 110,
+          "memo_TELES_calls": 11485,
+          "memo_TELES_misses": 4198,
+          "memo_OPENS_calls": 1829,
+          "memo_OPENS_misses": 1785,
+          "memo_SPINES_calls": 13396,
+          "memo_SPINES_misses": 12814
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 2283,
+            "tele_unbind": 11485,
+            "term_open": 1829,
+            "term_spine": 13396,
+            "def_raise": 1657,
+            "js_def": 82,
+            "js_expr": 2161,
+            "js_func": 989,
+            "js_host": 15,
+            "js_lib": 1,
+            "memo_FUNS_calls": 2283,
+            "memo_FUNS_misses": 110,
+            "memo_TELES_calls": 11485,
+            "memo_TELES_misses": 4198,
+            "memo_OPENS_calls": 1829,
+            "memo_OPENS_misses": 1785,
+            "memo_SPINES_calls": 13396,
+            "memo_SPINES_misses": 12814
+          }
+        }
+      }
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+        "sha256": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+        "bytes": 2743
+      },
+      "bendOutput": {
+        "sha256": "4989b2a6a64628acd875ac8a82505943d54d2346d5225d187b81015db9273d66",
+        "bytes": 19976
+      },
+      "typescriptOutput": {
+        "sha256": "f21a8eb4239ff0db7fbfda6121f24b04b48c5478fe6de5798660ca5b417c80a8",
+        "bytes": 8728
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 18159,
+          "subst_node": 13988,
+          "core_rebuild": 8063,
+          "env_subst_term": 635,
+          "env_subst_find": 364,
+          "env_tele_fill_loop": 180,
+          "env_tele_fill_eager": 144,
+          "env_tele_check_loop": 4,
+          "tele_check_legacy": 84,
+          "norm_eval": 5995,
+          "norm_eval_node": 5995,
+          "index_lookup": 6854,
+          "index_find": 90691,
+          "index_child_list": 28,
+          "infer": 382,
+          "check": 429,
+          "jd_doc_definition": 35,
+          "jd_calls_context": 2,
+          "jd_arity": 174,
+          "jd_domains": 467,
+          "jd_raise": 1301,
+          "jd_params": 70,
+          "jd_live_arity": 151,
+          "jd_calls_rows": 50,
+          "jd_calls_fact": 162,
+          "jd_selected_context": 2,
+          "j_call_spine": 507,
+          "j_specialize": 908,
+          "j_app_type": 1292
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 3624
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4236
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 2559,
+            "subst_node": 2012,
+            "core_rebuild": 1154,
+            "env_subst_term": 323,
+            "env_subst_find": 184,
+            "env_tele_fill_loop": 90,
+            "env_tele_fill_eager": 71,
+            "env_tele_check_loop": 4,
+            "tele_check_legacy": 84,
+            "norm_eval": 498,
+            "norm_eval_node": 498,
+            "index_lookup": 3242,
+            "index_find": 44774,
+            "infer": 382,
+            "check": 429
+          },
+          "jd_roots": {
+            "norm_eval": 16,
+            "norm_eval_node": 16,
+            "index_lookup": 62,
+            "index_find": 621
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 34,
+            "index_find": 351
+          },
+          "annotate_selected": {
+            "subst": 1700,
+            "subst_node": 1299,
+            "core_rebuild": 739,
+            "env_subst_term": 312,
+            "env_subst_find": 180,
+            "env_tele_fill_loop": 90,
+            "env_tele_fill_eager": 73,
+            "norm_eval": 445,
+            "norm_eval_node": 445,
+            "index_lookup": 209,
+            "index_find": 2109
+          },
+          "jd_reach_selected": {
+            "subst": 4190,
+            "subst_node": 3280,
+            "core_rebuild": 1912,
+            "norm_eval": 1416,
+            "norm_eval_node": 1416,
+            "index_lookup": 1138,
+            "index_find": 12709,
+            "index_child_list": 14,
+            "jd_doc_definition": 14,
+            "jd_calls_context": 1,
+            "jd_arity": 74,
+            "jd_domains": 201,
+            "jd_raise": 555,
+            "jd_params": 35,
+            "jd_live_arity": 43,
+            "jd_calls_rows": 28,
+            "jd_calls_fact": 81,
+            "jd_selected_context": 1,
+            "j_call_spine": 254,
+            "j_specialize": 241,
+            "j_app_type": 365
+          },
+          "j_layout_error": {
+            "subst": 2476,
+            "subst_node": 1795,
+            "core_rebuild": 1066,
+            "norm_eval": 634,
+            "norm_eval_node": 634,
+            "index_lookup": 229,
+            "index_find": 2164,
+            "j_specialize": 161,
+            "j_app_type": 150
+          },
+          "jd_library_selected": {
+            "subst": 7039,
+            "subst_node": 5453,
+            "core_rebuild": 3109,
+            "norm_eval": 2663,
+            "norm_eval_node": 2663,
+            "index_lookup": 1853,
+            "index_find": 19194,
+            "index_child_list": 14,
+            "jd_doc_definition": 21,
+            "jd_calls_context": 1,
+            "jd_arity": 100,
+            "jd_domains": 266,
+            "jd_raise": 746,
+            "jd_params": 35,
+            "jd_live_arity": 108,
+            "jd_calls_rows": 22,
+            "jd_calls_fact": 81,
+            "jd_selected_context": 1,
+            "j_call_spine": 253,
+            "j_specialize": 506,
+            "j_app_type": 777
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 103456,
+          "term_lower": 15513,
+          "term_wnf": 57304,
+          "term_force": 32185,
+          "term_infer": 11677,
+          "term_check": 13349,
+          "tele_open": 9701,
+          "tele_fill": 3063,
+          "tele_unbind": 637,
+          "tele_check": 2429
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36768,
+            "term_lower": 15421,
+            "term_force": 15421
+          },
+          "check": {
+            "term_higher": 61011,
+            "term_wnf": 53346,
+            "term_force": 8605,
+            "term_infer": 11677,
+            "term_check": 13349,
+            "tele_open": 8837,
+            "tele_fill": 2941,
+            "tele_unbind": 381,
+            "tele_check": 2429
+          },
+          "emit": {
+            "term_higher": 5677,
+            "term_lower": 92,
+            "term_wnf": 3958,
+            "term_force": 8159,
+            "tele_open": 864,
+            "tele_fill": 122,
+            "tele_unbind": 256
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 252,
+          "tele_unbind": 657,
+          "term_open": 136,
+          "term_spine": 787,
+          "def_raise": 121,
+          "js_def": 14,
+          "js_expr": 110,
+          "js_func": 78,
+          "js_host": 14,
+          "js_lib": 1,
+          "memo_FUNS_calls": 252,
+          "memo_FUNS_misses": 18,
+          "memo_TELES_calls": 657,
+          "memo_TELES_misses": 256,
+          "memo_OPENS_calls": 136,
+          "memo_OPENS_misses": 89,
+          "memo_SPINES_calls": 787,
+          "memo_SPINES_misses": 704
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 252,
+            "tele_unbind": 657,
+            "term_open": 136,
+            "term_spine": 787,
+            "def_raise": 121,
+            "js_def": 14,
+            "js_expr": 110,
+            "js_func": 78,
+            "js_host": 14,
+            "js_lib": 1,
+            "memo_FUNS_calls": 252,
+            "memo_FUNS_misses": 18,
+            "memo_TELES_calls": 657,
+            "memo_TELES_misses": 256,
+            "memo_OPENS_calls": 136,
+            "memo_OPENS_misses": 89,
+            "memo_SPINES_calls": 787,
+            "memo_SPINES_misses": 704
+          }
+        }
+      }
+    },
+    {
+      "id": "test-map-set-ops",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+        "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+        "bytes": 5266
+      },
+      "bendOutput": {
+        "sha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd",
+        "bytes": 132866
+      },
+      "typescriptOutput": {
+        "sha256": "91812e3092688bdc609a2f9f21c1280120b8392eab7cd7148586702bf551e9bf",
+        "bytes": 69178
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 376325,
+          "subst_node": 267624,
+          "core_rebuild": 173729,
+          "env_subst_term": 6447,
+          "env_subst_find": 4793,
+          "env_tele_fill_loop": 1557,
+          "env_tele_fill_eager": 1282,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 96,
+          "norm_eval": 92775,
+          "norm_eval_node": 92589,
+          "index_lookup": 63072,
+          "index_find": 708082,
+          "index_child_list": 180,
+          "infer": 913,
+          "check": 818,
+          "jd_doc_definition": 195,
+          "jd_calls_context": 2,
+          "jd_arity": 1453,
+          "jd_domains": 6244,
+          "jd_raise": 27282,
+          "jd_params": 706,
+          "jd_live_arity": 866,
+          "jd_calls_rows": 228,
+          "jd_calls_fact": 1892,
+          "jd_selected_context": 2,
+          "j_call_spine": 11071,
+          "j_specialize": 15799,
+          "j_app_type": 21659
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 6873
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4486
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 4724,
+            "subst_node": 3839,
+            "core_rebuild": 2065,
+            "env_subst_term": 196,
+            "env_subst_find": 114,
+            "env_tele_fill_loop": 60,
+            "env_tele_fill_eager": 113,
+            "tele_check_legacy": 96,
+            "norm_eval": 922,
+            "norm_eval_node": 922,
+            "index_lookup": 3932,
+            "index_find": 52782,
+            "infer": 913,
+            "check": 818
+          },
+          "jd_roots": {
+            "norm_eval": 30,
+            "norm_eval_node": 30,
+            "index_lookup": 123,
+            "index_find": 1236
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 140,
+            "index_find": 1419
+          },
+          "annotate_selected": {
+            "subst": 47393,
+            "subst_node": 31915,
+            "core_rebuild": 21107,
+            "env_subst_term": 6251,
+            "env_subst_find": 4679,
+            "env_tele_fill_loop": 1497,
+            "env_tele_fill_eager": 1169,
+            "norm_eval": 9212,
+            "norm_eval_node": 9026,
+            "index_lookup": 3149,
+            "index_find": 32876
+          },
+          "jd_reach_selected": {
+            "subst": 123468,
+            "subst_node": 91294,
+            "core_rebuild": 60292,
+            "norm_eval": 30572,
+            "norm_eval_node": 30572,
+            "index_lookup": 19553,
+            "index_find": 219423,
+            "index_child_list": 90,
+            "jd_doc_definition": 91,
+            "jd_calls_context": 1,
+            "jd_arity": 700,
+            "jd_domains": 3050,
+            "jd_raise": 13497,
+            "jd_params": 353,
+            "jd_live_arity": 361,
+            "jd_calls_rows": 123,
+            "jd_calls_fact": 946,
+            "jd_selected_context": 1,
+            "j_call_spine": 5536,
+            "j_specialize": 3694,
+            "j_app_type": 6340
+          },
+          "j_layout_error": {
+            "subst": 47096,
+            "subst_node": 30297,
+            "core_rebuild": 20607,
+            "norm_eval": 11200,
+            "norm_eval_node": 11200,
+            "index_lookup": 4416,
+            "index_find": 43972,
+            "j_specialize": 2658,
+            "j_app_type": 2690
+          },
+          "jd_library_selected": {
+            "subst": 153449,
+            "subst_node": 110130,
+            "core_rebuild": 69575,
+            "norm_eval": 40516,
+            "norm_eval_node": 40516,
+            "index_lookup": 31672,
+            "index_find": 344106,
+            "index_child_list": 90,
+            "jd_doc_definition": 104,
+            "jd_calls_context": 1,
+            "jd_arity": 753,
+            "jd_domains": 3194,
+            "jd_raise": 13785,
+            "jd_params": 353,
+            "jd_live_arity": 505,
+            "jd_calls_rows": 105,
+            "jd_calls_fact": 946,
+            "jd_selected_context": 1,
+            "j_call_spine": 5535,
+            "j_specialize": 9447,
+            "j_app_type": 12629
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 224441,
+          "term_lower": 17071,
+          "term_wnf": 100539,
+          "term_force": 119615,
+          "term_infer": 12208,
+          "term_check": 13732,
+          "tele_open": 18098,
+          "tele_fill": 3589,
+          "tele_unbind": 3659,
+          "tele_check": 2428
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 37339,
+            "term_lower": 15799,
+            "term_force": 15799
+          },
+          "check": {
+            "term_higher": 62241,
+            "term_wnf": 55045,
+            "term_force": 8684,
+            "term_infer": 12208,
+            "term_check": 13732,
+            "tele_open": 8904,
+            "tele_fill": 2937,
+            "tele_unbind": 395,
+            "tele_check": 2428
+          },
+          "emit": {
+            "term_higher": 124861,
+            "term_lower": 1272,
+            "term_wnf": 45494,
+            "term_force": 95132,
+            "tele_open": 9194,
+            "tele_fill": 652,
+            "tele_unbind": 3264
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 2868,
+          "tele_unbind": 10152,
+          "term_open": 1858,
+          "term_spine": 11721,
+          "def_raise": 1593,
+          "js_def": 94,
+          "js_expr": 2403,
+          "js_func": 1112,
+          "js_host": 28,
+          "js_lib": 1,
+          "memo_FUNS_calls": 2868,
+          "memo_FUNS_misses": 108,
+          "memo_TELES_calls": 10152,
+          "memo_TELES_misses": 3264,
+          "memo_OPENS_calls": 1858,
+          "memo_OPENS_misses": 1792,
+          "memo_SPINES_calls": 11721,
+          "memo_SPINES_misses": 11092
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 2868,
+            "tele_unbind": 10152,
+            "term_open": 1858,
+            "term_spine": 11721,
+            "def_raise": 1593,
+            "js_def": 94,
+            "js_expr": 2403,
+            "js_func": 1112,
+            "js_host": 28,
+            "js_lib": 1,
+            "memo_FUNS_calls": 2868,
+            "memo_FUNS_misses": 108,
+            "memo_TELES_calls": 10152,
+            "memo_TELES_misses": 3264,
+            "memo_OPENS_calls": 1858,
+            "memo_OPENS_misses": 1792,
+            "memo_SPINES_calls": 11721,
+            "memo_SPINES_misses": 11092
+          }
+        }
+      }
+    },
+    {
+      "id": "raytrace",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend",
+        "sha256": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+        "bytes": 14223
+      },
+      "bendOutput": {
+        "sha256": "9acab30e62b6339fcae0fc41b7f3fcb422b3531a013e669658e348d63ebfe82c",
+        "bytes": 50830
+      },
+      "typescriptOutput": {
+        "sha256": "87bd526f04705416db047a31eb4ccc186f1c90f5c911f57736a3216a7629ddd2",
+        "bytes": 28974
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 54356,
+          "subst_node": 49069,
+          "core_rebuild": 24787,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 298,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 26076,
+          "norm_eval_node": 26076,
+          "index_lookup": 23675,
+          "index_find": 284802,
+          "index_child_list": 64,
+          "infer": 2078,
+          "check": 1812,
+          "jd_doc_definition": 72,
+          "jd_calls_context": 2,
+          "jd_arity": 1231,
+          "jd_domains": 4020,
+          "jd_raise": 7826,
+          "jd_params": 266,
+          "jd_live_arity": 544,
+          "jd_calls_rows": 101,
+          "jd_calls_fact": 712,
+          "jd_selected_context": 2,
+          "j_call_spine": 6139,
+          "j_specialize": 904,
+          "j_app_type": 3652
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 10564
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4258
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 16986,
+            "subst_node": 14432,
+            "core_rebuild": 8150,
+            "env_tele_fill_eager": 148,
+            "norm_eval": 1965,
+            "norm_eval_node": 1965,
+            "index_lookup": 5731,
+            "index_find": 71709,
+            "infer": 2078,
+            "check": 1812
+          },
+          "jd_roots": {
+            "norm_eval": 34,
+            "norm_eval_node": 34,
+            "index_lookup": 135,
+            "index_find": 1352
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 63,
+            "index_find": 647
+          },
+          "annotate_selected": {
+            "subst": 17452,
+            "subst_node": 14957,
+            "core_rebuild": 8501,
+            "env_tele_fill_eager": 150,
+            "norm_eval": 2841,
+            "norm_eval_node": 2841,
+            "index_lookup": 2215,
+            "index_find": 23691
+          },
+          "jd_reach_selected": {
+            "subst": 7404,
+            "subst_node": 7404,
+            "core_rebuild": 2946,
+            "norm_eval": 8412,
+            "norm_eval_node": 8412,
+            "index_lookup": 6223,
+            "index_find": 71768,
+            "index_child_list": 32,
+            "jd_doc_definition": 32,
+            "jd_calls_context": 1,
+            "jd_arity": 584,
+            "jd_domains": 1878,
+            "jd_raise": 3460,
+            "jd_params": 133,
+            "jd_live_arity": 140,
+            "jd_calls_rows": 60,
+            "jd_calls_fact": 356,
+            "jd_selected_context": 1,
+            "j_call_spine": 3070,
+            "j_specialize": 295,
+            "j_app_type": 1513
+          },
+          "j_layout_error": {
+            "subst": 1463,
+            "subst_node": 1463,
+            "core_rebuild": 627,
+            "norm_eval": 1761,
+            "norm_eval_node": 1761,
+            "index_lookup": 1538,
+            "index_find": 15141,
+            "j_specialize": 148,
+            "j_app_type": 51
+          },
+          "jd_library_selected": {
+            "subst": 10856,
+            "subst_node": 10664,
+            "core_rebuild": 4480,
+            "norm_eval": 10740,
+            "norm_eval_node": 10740,
+            "index_lookup": 7683,
+            "index_find": 84763,
+            "index_child_list": 32,
+            "jd_doc_definition": 40,
+            "jd_calls_context": 1,
+            "jd_arity": 647,
+            "jd_domains": 2142,
+            "jd_raise": 4366,
+            "jd_params": 133,
+            "jd_live_arity": 404,
+            "jd_calls_rows": 41,
+            "jd_calls_fact": 356,
+            "jd_selected_context": 1,
+            "j_call_spine": 3069,
+            "j_specialize": 461,
+            "j_app_type": 2088
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 164802,
+          "term_lower": 17644,
+          "term_wnf": 67749,
+          "term_force": 176947,
+          "term_infer": 13373,
+          "term_check": 14679,
+          "tele_open": 11666,
+          "tele_fill": 3176,
+          "tele_unbind": 1557,
+          "tele_check": 2377
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 40095,
+            "term_lower": 17628,
+            "term_force": 17628
+          },
+          "check": {
+            "term_higher": 63733,
+            "term_wnf": 56386,
+            "term_force": 8977,
+            "term_infer": 13373,
+            "term_check": 14679,
+            "tele_open": 8799,
+            "tele_fill": 3040,
+            "tele_unbind": 401,
+            "tele_check": 2377
+          },
+          "emit": {
+            "term_higher": 60974,
+            "term_lower": 16,
+            "term_wnf": 11363,
+            "term_force": 150342,
+            "tele_open": 2867,
+            "tele_fill": 136,
+            "tele_unbind": 1156
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 2094,
+          "tele_unbind": 6991,
+          "term_open": 2253,
+          "term_spine": 9821,
+          "def_raise": 514,
+          "js_def": 32,
+          "js_expr": 1089,
+          "js_func": 303,
+          "js_host": 32,
+          "js_lib": 1,
+          "memo_FUNS_calls": 2094,
+          "memo_FUNS_misses": 50,
+          "memo_TELES_calls": 6991,
+          "memo_TELES_misses": 1156,
+          "memo_OPENS_calls": 2253,
+          "memo_OPENS_misses": 1128,
+          "memo_SPINES_calls": 9821,
+          "memo_SPINES_misses": 8159
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 2094,
+            "tele_unbind": 6991,
+            "term_open": 2253,
+            "term_spine": 9821,
+            "def_raise": 514,
+            "js_def": 32,
+            "js_expr": 1089,
+            "js_func": 303,
+            "js_host": 32,
+            "js_lib": 1,
+            "memo_FUNS_calls": 2094,
+            "memo_FUNS_misses": 50,
+            "memo_TELES_calls": 6991,
+            "memo_TELES_misses": 1156,
+            "memo_OPENS_calls": 2253,
+            "memo_OPENS_misses": 1128,
+            "memo_SPINES_calls": 9821,
+            "memo_SPINES_misses": 8159
+          }
+        }
+      }
+    },
+    {
+      "id": "local-row",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+        "sha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+        "bytes": 6245
+      },
+      "bendOutput": {
+        "sha256": "30891e2f177cbe7b738c676722a1bc4ba962163a61260f49c6c1a457d9e58586",
+        "bytes": 26543
+      },
+      "typescriptOutput": {
+        "sha256": "e303d7add56bca3c62ab3a7d636f01b65007556f5a80d43d59f94018b4154de6",
+        "bytes": 12457
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 23128,
+          "subst_node": 20508,
+          "core_rebuild": 11601,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 108,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 9835,
+          "norm_eval_node": 9835,
+          "index_lookup": 8665,
+          "index_find": 115810,
+          "index_child_list": 46,
+          "infer": 688,
+          "check": 644,
+          "jd_doc_definition": 54,
+          "jd_calls_context": 2,
+          "jd_arity": 360,
+          "jd_domains": 1363,
+          "jd_raise": 2633,
+          "jd_params": 180,
+          "jd_live_arity": 373,
+          "jd_calls_rows": 79,
+          "jd_calls_fact": 226,
+          "jd_selected_context": 2,
+          "j_call_spine": 1681,
+          "j_specialize": 541,
+          "j_app_type": 1842
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 3889
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4174
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 2961,
+            "subst_node": 2630,
+            "core_rebuild": 1444,
+            "env_tele_fill_eager": 53,
+            "norm_eval": 691,
+            "norm_eval_node": 691,
+            "index_lookup": 3542,
+            "index_find": 48831,
+            "infer": 688,
+            "check": 644
+          },
+          "jd_roots": {
+            "norm_eval": 25,
+            "norm_eval_node": 25,
+            "index_lookup": 99,
+            "index_find": 1089
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 936
+          },
+          "reach_book": {
+            "index_lookup": 51,
+            "index_find": 529
+          },
+          "annotate_selected": {
+            "subst": 2956,
+            "subst_node": 2633,
+            "core_rebuild": 1467,
+            "env_tele_fill_eager": 55,
+            "norm_eval": 835,
+            "norm_eval_node": 835,
+            "index_lookup": 416,
+            "index_find": 4480
+          },
+          "jd_reach_selected": {
+            "subst": 5806,
+            "subst_node": 5218,
+            "core_rebuild": 2999,
+            "norm_eval": 2792,
+            "norm_eval_node": 2792,
+            "index_lookup": 1482,
+            "index_find": 18854,
+            "index_child_list": 23,
+            "jd_doc_definition": 23,
+            "jd_calls_context": 1,
+            "jd_arity": 158,
+            "jd_domains": 594,
+            "jd_raise": 1156,
+            "jd_params": 90,
+            "jd_live_arity": 99,
+            "jd_calls_rows": 47,
+            "jd_calls_fact": 113,
+            "jd_selected_context": 1,
+            "j_call_spine": 841,
+            "j_specialize": 109,
+            "j_app_type": 572
+          },
+          "j_layout_error": {
+            "subst": 1502,
+            "subst_node": 1268,
+            "core_rebuild": 728,
+            "norm_eval": 609,
+            "norm_eval_node": 609,
+            "index_lookup": 396,
+            "index_find": 3885,
+            "j_specialize": 53,
+            "j_app_type": 44
+          },
+          "jd_library_selected": {
+            "subst": 9708,
+            "subst_node": 8610,
+            "core_rebuild": 4880,
+            "norm_eval": 4560,
+            "norm_eval_node": 4560,
+            "index_lookup": 2592,
+            "index_find": 29143,
+            "index_child_list": 23,
+            "jd_doc_definition": 31,
+            "jd_calls_context": 1,
+            "jd_arity": 202,
+            "jd_domains": 769,
+            "jd_raise": 1477,
+            "jd_params": 90,
+            "jd_live_arity": 274,
+            "jd_calls_rows": 32,
+            "jd_calls_fact": 113,
+            "jd_selected_context": 1,
+            "j_call_spine": 840,
+            "j_specialize": 379,
+            "j_app_type": 1226
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 110960,
+          "term_lower": 15928,
+          "term_wnf": 61034,
+          "term_force": 45303,
+          "term_infer": 11983,
+          "term_check": 13562,
+          "tele_open": 10498,
+          "tele_fill": 3169,
+          "tele_unbind": 917,
+          "tele_check": 2402
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 37151,
+            "term_lower": 15802,
+            "term_force": 15802
+          },
+          "check": {
+            "term_higher": 61377,
+            "term_wnf": 53947,
+            "term_force": 8658,
+            "term_infer": 11983,
+            "term_check": 13562,
+            "tele_open": 8746,
+            "tele_fill": 2921,
+            "tele_unbind": 391,
+            "tele_check": 2402
+          },
+          "emit": {
+            "term_higher": 12432,
+            "term_lower": 126,
+            "term_wnf": 7087,
+            "term_force": 20843,
+            "tele_open": 1752,
+            "tele_fill": 248,
+            "tele_unbind": 526
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 486,
+          "tele_unbind": 3679,
+          "term_open": 447,
+          "term_spine": 1824,
+          "def_raise": 239,
+          "js_def": 23,
+          "js_expr": 1384,
+          "js_func": 155,
+          "js_host": 23,
+          "js_lib": 1,
+          "memo_FUNS_calls": 486,
+          "memo_FUNS_misses": 36,
+          "memo_TELES_calls": 3679,
+          "memo_TELES_misses": 526,
+          "memo_OPENS_calls": 447,
+          "memo_OPENS_misses": 276,
+          "memo_SPINES_calls": 1824,
+          "memo_SPINES_misses": 1587
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 486,
+            "tele_unbind": 3679,
+            "term_open": 447,
+            "term_spine": 1824,
+            "def_raise": 239,
+            "js_def": 23,
+            "js_expr": 1384,
+            "js_func": 155,
+            "js_host": 23,
+            "js_lib": 1,
+            "memo_FUNS_calls": 486,
+            "memo_FUNS_misses": 36,
+            "memo_TELES_calls": 3679,
+            "memo_TELES_misses": 526,
+            "memo_OPENS_calls": 447,
+            "memo_OPENS_misses": 276,
+            "memo_SPINES_calls": 1824,
+            "memo_SPINES_misses": 1587
+          }
+        }
+      }
+    },
+    {
+      "id": "local-fold",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+        "sha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+        "bytes": 768
+      },
+      "bendOutput": {
+        "sha256": "3f15a27a23ad1f4153e27ea4a9be22a33d020bbe5d614adab91581f09897eb80",
+        "bytes": 15742
+      },
+      "typescriptOutput": {
+        "sha256": "591c3e3a895f4092a80eac58fef2ea4ecd15f59c01433fc69ce09143055e2444",
+        "bytes": 5191
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 9022,
+          "subst_node": 7315,
+          "core_rebuild": 4364,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 56,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 3245,
+          "norm_eval_node": 3245,
+          "index_lookup": 4260,
+          "index_find": 60425,
+          "index_child_list": 10,
+          "infer": 135,
+          "check": 120,
+          "jd_doc_definition": 17,
+          "jd_calls_context": 2,
+          "jd_arity": 66,
+          "jd_domains": 211,
+          "jd_raise": 415,
+          "jd_params": 32,
+          "jd_live_arity": 71,
+          "jd_calls_rows": 35,
+          "jd_calls_fact": 44,
+          "jd_selected_context": 2,
+          "j_call_spine": 213,
+          "j_specialize": 310,
+          "j_app_type": 547
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 858
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 3987
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 861,
+            "subst_node": 697,
+            "core_rebuild": 414,
+            "env_tele_fill_eager": 27,
+            "norm_eval": 163,
+            "norm_eval_node": 163,
+            "index_lookup": 2840,
+            "index_find": 40035,
+            "infer": 135,
+            "check": 120
+          },
+          "jd_roots": {
+            "norm_eval": 7,
+            "norm_eval_node": 7,
+            "index_lookup": 25,
+            "index_find": 250
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 24,
+            "index_find": 249
+          },
+          "annotate_selected": {
+            "subst": 874,
+            "subst_node": 690,
+            "core_rebuild": 414,
+            "env_tele_fill_eager": 29,
+            "norm_eval": 201,
+            "norm_eval_node": 201,
+            "index_lookup": 69,
+            "index_find": 741
+          },
+          "jd_reach_selected": {
+            "subst": 2198,
+            "subst_node": 1854,
+            "core_rebuild": 1123,
+            "norm_eval": 732,
+            "norm_eval_node": 732,
+            "index_lookup": 298,
+            "index_find": 3825,
+            "index_child_list": 5,
+            "jd_doc_definition": 5,
+            "jd_calls_context": 1,
+            "jd_arity": 29,
+            "jd_domains": 92,
+            "jd_raise": 181,
+            "jd_params": 16,
+            "jd_live_arity": 22,
+            "jd_calls_rows": 22,
+            "jd_calls_fact": 22,
+            "jd_selected_context": 1,
+            "j_call_spine": 107,
+            "j_specialize": 48,
+            "j_app_type": 112
+          },
+          "j_layout_error": {
+            "subst": 736,
+            "subst_node": 553,
+            "core_rebuild": 336,
+            "norm_eval": 180,
+            "norm_eval_node": 180,
+            "index_lookup": 70,
+            "index_find": 684,
+            "j_specialize": 27,
+            "j_app_type": 24
+          },
+          "jd_library_selected": {
+            "subst": 4158,
+            "subst_node": 3372,
+            "core_rebuild": 1994,
+            "norm_eval": 1639,
+            "norm_eval_node": 1639,
+            "index_lookup": 847,
+            "index_find": 8887,
+            "index_child_list": 5,
+            "jd_doc_definition": 12,
+            "jd_calls_context": 1,
+            "jd_arity": 37,
+            "jd_domains": 119,
+            "jd_raise": 234,
+            "jd_params": 16,
+            "jd_live_arity": 49,
+            "jd_calls_rows": 13,
+            "jd_calls_fact": 22,
+            "jd_selected_context": 1,
+            "j_call_spine": 106,
+            "j_specialize": 235,
+            "j_app_type": 411
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 99776,
+          "term_lower": 15323,
+          "term_wnf": 53662,
+          "term_force": 26121,
+          "term_infer": 11430,
+          "term_check": 13051,
+          "tele_open": 8972,
+          "tele_fill": 2951,
+          "tele_unbind": 473,
+          "tele_check": 2371
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36449,
+            "term_lower": 15255,
+            "term_force": 15255
+          },
+          "check": {
+            "term_higher": 60019,
+            "term_wnf": 52260,
+            "term_force": 8547,
+            "term_infer": 11430,
+            "term_check": 13051,
+            "tele_open": 8593,
+            "tele_fill": 2899,
+            "tele_unbind": 372,
+            "tele_check": 2371
+          },
+          "emit": {
+            "term_higher": 3308,
+            "term_lower": 68,
+            "term_wnf": 1402,
+            "term_force": 2319,
+            "tele_open": 379,
+            "tele_fill": 52,
+            "tele_unbind": 101
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 79,
+          "tele_unbind": 237,
+          "term_open": 70,
+          "term_spine": 264,
+          "def_raise": 71,
+          "js_def": 5,
+          "js_expr": 40,
+          "js_func": 27,
+          "js_host": 5,
+          "js_lib": 1,
+          "memo_FUNS_calls": 79,
+          "memo_FUNS_misses": 12,
+          "memo_TELES_calls": 237,
+          "memo_TELES_misses": 101,
+          "memo_OPENS_calls": 70,
+          "memo_OPENS_misses": 52,
+          "memo_SPINES_calls": 264,
+          "memo_SPINES_misses": 238
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 79,
+            "tele_unbind": 237,
+            "term_open": 70,
+            "term_spine": 264,
+            "def_raise": 71,
+            "js_def": 5,
+            "js_expr": 40,
+            "js_func": 27,
+            "js_host": 5,
+            "js_lib": 1,
+            "memo_FUNS_calls": 79,
+            "memo_FUNS_misses": 12,
+            "memo_TELES_calls": 237,
+            "memo_TELES_misses": 101,
+            "memo_OPENS_calls": 70,
+            "memo_OPENS_misses": 52,
+            "memo_SPINES_calls": 264,
+            "memo_SPINES_misses": 238
+          }
+        }
+      }
+    },
+    {
+      "id": "scalar-region",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+        "sha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+        "bytes": 1496
+      },
+      "bendOutput": {
+        "sha256": "385e48fd905666695951de333c87bca50a67ad1c08e70fb5dd9173ed9ddedfc2",
+        "bytes": 17811
+      },
+      "typescriptOutput": {
+        "sha256": "752a5711b92b0ba8b0e146f41e70ac3934e50965f77950d009b5e738320b594a",
+        "bytes": 6552
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 5378,
+          "subst_node": 4889,
+          "core_rebuild": 2349,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 14,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 3454,
+          "norm_eval_node": 3454,
+          "index_lookup": 4938,
+          "index_find": 67820,
+          "index_child_list": 14,
+          "infer": 226,
+          "check": 200,
+          "jd_doc_definition": 19,
+          "jd_calls_context": 2,
+          "jd_arity": 129,
+          "jd_domains": 494,
+          "jd_raise": 912,
+          "jd_params": 62,
+          "jd_live_arity": 128,
+          "jd_calls_rows": 36,
+          "jd_calls_fact": 80,
+          "jd_selected_context": 2,
+          "j_call_spine": 621,
+          "j_specialize": 175,
+          "j_app_type": 631
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 1183
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 3996
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 911,
+            "subst_node": 785,
+            "core_rebuild": 405,
+            "env_tele_fill_eager": 6,
+            "norm_eval": 170,
+            "norm_eval_node": 170,
+            "index_lookup": 2917,
+            "index_find": 40629,
+            "infer": 226,
+            "check": 200
+          },
+          "jd_roots": {
+            "norm_eval": 7,
+            "norm_eval_node": 7,
+            "index_lookup": 28,
+            "index_find": 280
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 26,
+            "index_find": 265
+          },
+          "annotate_selected": {
+            "subst": 918,
+            "subst_node": 793,
+            "core_rebuild": 417,
+            "env_tele_fill_eager": 8,
+            "norm_eval": 259,
+            "norm_eval_node": 259,
+            "index_lookup": 180,
+            "index_find": 1929
+          },
+          "jd_reach_selected": {
+            "subst": 797,
+            "subst_node": 797,
+            "core_rebuild": 312,
+            "norm_eval": 806,
+            "norm_eval_node": 806,
+            "index_lookup": 531,
+            "index_find": 6453,
+            "index_child_list": 7,
+            "jd_doc_definition": 7,
+            "jd_calls_context": 1,
+            "jd_arity": 58,
+            "jd_domains": 217,
+            "jd_raise": 412,
+            "jd_params": 31,
+            "jd_live_arity": 34,
+            "jd_calls_rows": 23,
+            "jd_calls_fact": 40,
+            "jd_selected_context": 1,
+            "j_call_spine": 311,
+            "j_specialize": 16,
+            "j_app_type": 174
+          },
+          "j_layout_error": {
+            "subst": 156,
+            "subst_node": 156,
+            "core_rebuild": 64,
+            "norm_eval": 138,
+            "norm_eval_node": 138,
+            "index_lookup": 111,
+            "index_find": 1035,
+            "j_specialize": 6
+          },
+          "jd_library_selected": {
+            "subst": 2401,
+            "subst_node": 2209,
+            "core_rebuild": 1068,
+            "norm_eval": 1751,
+            "norm_eval_node": 1751,
+            "index_lookup": 1058,
+            "index_find": 11141,
+            "index_child_list": 7,
+            "jd_doc_definition": 12,
+            "jd_calls_context": 1,
+            "jd_arity": 71,
+            "jd_domains": 277,
+            "jd_raise": 500,
+            "jd_params": 31,
+            "jd_live_arity": 94,
+            "jd_calls_rows": 13,
+            "jd_calls_fact": 40,
+            "jd_selected_context": 1,
+            "j_call_spine": 310,
+            "j_specialize": 153,
+            "j_app_type": 457
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 100834,
+          "term_lower": 15382,
+          "term_wnf": 53695,
+          "term_force": 33153,
+          "term_infer": 11521,
+          "term_check": 13132,
+          "tele_open": 8953,
+          "tele_fill": 2931,
+          "tele_unbind": 503,
+          "tele_check": 2362
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36564,
+            "term_lower": 15378,
+            "term_force": 15378
+          },
+          "check": {
+            "term_higher": 59929,
+            "term_wnf": 52301,
+            "term_force": 8516,
+            "term_infer": 11521,
+            "term_check": 13132,
+            "tele_open": 8568,
+            "tele_fill": 2898,
+            "tele_unbind": 373,
+            "tele_check": 2362
+          },
+          "emit": {
+            "term_higher": 4341,
+            "term_lower": 4,
+            "term_wnf": 1394,
+            "term_force": 9259,
+            "tele_open": 385,
+            "tele_fill": 33,
+            "tele_unbind": 130
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 205,
+          "tele_unbind": 583,
+          "term_open": 217,
+          "term_spine": 730,
+          "def_raise": 98,
+          "js_def": 7,
+          "js_expr": 144,
+          "js_func": 50,
+          "js_host": 7,
+          "js_lib": 1,
+          "memo_FUNS_calls": 205,
+          "memo_FUNS_misses": 16,
+          "memo_TELES_calls": 583,
+          "memo_TELES_misses": 130,
+          "memo_OPENS_calls": 217,
+          "memo_OPENS_misses": 121,
+          "memo_SPINES_calls": 730,
+          "memo_SPINES_misses": 618
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 205,
+            "tele_unbind": 583,
+            "term_open": 217,
+            "term_spine": 730,
+            "def_raise": 98,
+            "js_def": 7,
+            "js_expr": 144,
+            "js_func": 50,
+            "js_host": 7,
+            "js_lib": 1,
+            "memo_FUNS_calls": 205,
+            "memo_FUNS_misses": 16,
+            "memo_TELES_calls": 583,
+            "memo_TELES_misses": 130,
+            "memo_OPENS_calls": 217,
+            "memo_OPENS_misses": 121,
+            "memo_SPINES_calls": 730,
+            "memo_SPINES_misses": 618
+          }
+        }
+      }
+    },
+    {
+      "id": "mandelbrot-grid",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend",
+        "sha256": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+        "bytes": 7395
+      },
+      "bendOutput": {
+        "sha256": "d69d2d22908c4d9e88611620f757b231711f4524e6d8f067201b80c2d0d7833a",
+        "bytes": 34843
+      },
+      "typescriptOutput": {
+        "sha256": "6a047013a60f774f78942303fd5f3fc2cf778ba09e986aa7b60190bb745068ea",
+        "bytes": 17412
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 26439,
+          "subst_node": 24662,
+          "core_rebuild": 11586,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 44,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 12507,
+          "norm_eval_node": 12507,
+          "index_lookup": 11048,
+          "index_find": 140294,
+          "index_child_list": 38,
+          "infer": 1155,
+          "check": 951,
+          "jd_doc_definition": 45,
+          "jd_calls_context": 2,
+          "jd_arity": 575,
+          "jd_domains": 2120,
+          "jd_raise": 4492,
+          "jd_params": 184,
+          "jd_live_arity": 376,
+          "jd_calls_rows": 70,
+          "jd_calls_fact": 244,
+          "jd_selected_context": 2,
+          "j_call_spine": 2943,
+          "j_specialize": 259,
+          "j_app_type": 2258
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 4883
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4134
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 5957,
+            "subst_node": 5193,
+            "core_rebuild": 2697,
+            "env_tele_fill_eager": 21,
+            "norm_eval": 868,
+            "norm_eval_node": 868,
+            "index_lookup": 3839,
+            "index_find": 51511,
+            "infer": 1155,
+            "check": 951
+          },
+          "jd_roots": {
+            "norm_eval": 21,
+            "norm_eval_node": 21,
+            "index_lookup": 82,
+            "index_find": 821
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 47,
+            "index_find": 474
+          },
+          "annotate_selected": {
+            "subst": 6313,
+            "subst_node": 5538,
+            "core_rebuild": 2918,
+            "env_tele_fill_eager": 23,
+            "norm_eval": 1377,
+            "norm_eval_node": 1377,
+            "index_lookup": 924,
+            "index_find": 9953
+          },
+          "jd_reach_selected": {
+            "subst": 4736,
+            "subst_node": 4736,
+            "core_rebuild": 1934,
+            "norm_eval": 3800,
+            "norm_eval_node": 3800,
+            "index_lookup": 2186,
+            "index_find": 25929,
+            "index_child_list": 19,
+            "jd_doc_definition": 19,
+            "jd_calls_context": 1,
+            "jd_arity": 269,
+            "jd_domains": 969,
+            "jd_raise": 2061,
+            "jd_params": 92,
+            "jd_live_arity": 97,
+            "jd_calls_rows": 43,
+            "jd_calls_fact": 122,
+            "jd_selected_context": 1,
+            "j_call_spine": 1472,
+            "j_specialize": 47,
+            "j_app_type": 869
+          },
+          "j_layout_error": {
+            "subst": 1235,
+            "subst_node": 1235,
+            "core_rebuild": 539,
+            "norm_eval": 679,
+            "norm_eval_node": 679,
+            "index_lookup": 557,
+            "index_find": 5364,
+            "j_specialize": 21,
+            "j_app_type": 24
+          },
+          "jd_library_selected": {
+            "subst": 8003,
+            "subst_node": 7811,
+            "core_rebuild": 3415,
+            "norm_eval": 5439,
+            "norm_eval_node": 5439,
+            "index_lookup": 3326,
+            "index_find": 36316,
+            "index_child_list": 19,
+            "jd_doc_definition": 26,
+            "jd_calls_context": 1,
+            "jd_arity": 306,
+            "jd_domains": 1151,
+            "jd_raise": 2431,
+            "jd_params": 92,
+            "jd_live_arity": 279,
+            "jd_calls_rows": 27,
+            "jd_calls_fact": 122,
+            "jd_selected_context": 1,
+            "j_call_spine": 1471,
+            "j_specialize": 191,
+            "j_app_type": 1365
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 124019,
+          "term_lower": 16369,
+          "term_wnf": 61331,
+          "term_force": 76357,
+          "term_infer": 12450,
+          "term_check": 13875,
+          "tele_open": 10707,
+          "tele_fill": 2990,
+          "tele_unbind": 980,
+          "tele_check": 2365
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 37886,
+            "term_lower": 16356,
+            "term_force": 16356
+          },
+          "check": {
+            "term_higher": 61908,
+            "term_wnf": 54368,
+            "term_force": 8659,
+            "term_infer": 12450,
+            "term_check": 13875,
+            "tele_open": 8710,
+            "tele_fill": 2913,
+            "tele_unbind": 388,
+            "tele_check": 2365
+          },
+          "emit": {
+            "term_higher": 24225,
+            "term_lower": 13,
+            "term_wnf": 6963,
+            "term_force": 51342,
+            "tele_open": 1997,
+            "tele_fill": 77,
+            "tele_unbind": 592
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 879,
+          "tele_unbind": 3015,
+          "term_open": 1048,
+          "term_spine": 4006,
+          "def_raise": 274,
+          "js_def": 19,
+          "js_expr": 709,
+          "js_func": 216,
+          "js_host": 19,
+          "js_lib": 1,
+          "memo_FUNS_calls": 879,
+          "memo_FUNS_misses": 34,
+          "memo_TELES_calls": 3015,
+          "memo_TELES_misses": 592,
+          "memo_OPENS_calls": 1048,
+          "memo_OPENS_misses": 557,
+          "memo_SPINES_calls": 4006,
+          "memo_SPINES_misses": 3340
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 879,
+            "tele_unbind": 3015,
+            "term_open": 1048,
+            "term_spine": 4006,
+            "def_raise": 274,
+            "js_def": 19,
+            "js_expr": 709,
+            "js_func": 216,
+            "js_host": 19,
+            "js_lib": 1,
+            "memo_FUNS_calls": 879,
+            "memo_FUNS_misses": 34,
+            "memo_TELES_calls": 3015,
+            "memo_TELES_misses": 592,
+            "memo_OPENS_calls": 1048,
+            "memo_OPENS_misses": 557,
+            "memo_SPINES_calls": 4006,
+            "memo_SPINES_misses": 3340
+          }
+        }
+      }
+    },
+    {
+      "id": "raytrace-active",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+        "sha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+        "bytes": 14680
+      },
+      "bendOutput": {
+        "sha256": "d0b070f1c63cc2a92f15911780ad00dbee9d9789b99af8ae42a3efd1fd2baf95",
+        "bytes": 52082
+      },
+      "typescriptOutput": {
+        "sha256": "6ec766bd399abe64a706e778efd247cf84fe1cc37e183704a44d17bfbf162895",
+        "bytes": 29926
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 54874,
+          "subst_node": 49578,
+          "core_rebuild": 24955,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 302,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 26773,
+          "norm_eval_node": 26773,
+          "index_lookup": 24184,
+          "index_find": 291431,
+          "index_child_list": 68,
+          "infer": 2133,
+          "check": 1861,
+          "jd_doc_definition": 76,
+          "jd_calls_context": 2,
+          "jd_arity": 1275,
+          "jd_domains": 4160,
+          "jd_raise": 8106,
+          "jd_params": 280,
+          "jd_live_arity": 574,
+          "jd_calls_rows": 107,
+          "jd_calls_fact": 734,
+          "jd_selected_context": 2,
+          "j_call_spine": 6319,
+          "j_specialize": 916,
+          "j_app_type": 3770
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 10911
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4277
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 17088,
+            "subst_node": 14529,
+            "core_rebuild": 8185,
+            "env_tele_fill_eager": 150,
+            "norm_eval": 2012,
+            "norm_eval_node": 2012,
+            "index_lookup": 5802,
+            "index_find": 72528,
+            "infer": 2133,
+            "check": 1861
+          },
+          "jd_roots": {
+            "norm_eval": 36,
+            "norm_eval_node": 36,
+            "index_lookup": 143,
+            "index_find": 1432
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 67,
+            "index_find": 690
+          },
+          "annotate_selected": {
+            "subst": 17555,
+            "subst_node": 15056,
+            "core_rebuild": 8540,
+            "env_tele_fill_eager": 152,
+            "norm_eval": 2907,
+            "norm_eval_node": 2907,
+            "index_lookup": 2264,
+            "index_find": 24223
+          },
+          "jd_reach_selected": {
+            "subst": 7528,
+            "subst_node": 7528,
+            "core_rebuild": 2983,
+            "norm_eval": 8655,
+            "norm_eval_node": 8655,
+            "index_lookup": 6374,
+            "index_find": 73877,
+            "index_child_list": 34,
+            "jd_doc_definition": 34,
+            "jd_calls_context": 1,
+            "jd_arity": 604,
+            "jd_domains": 1941,
+            "jd_raise": 3587,
+            "jd_params": 140,
+            "jd_live_arity": 148,
+            "jd_calls_rows": 64,
+            "jd_calls_fact": 367,
+            "jd_selected_context": 1,
+            "j_call_spine": 3160,
+            "j_specialize": 300,
+            "j_app_type": 1563
+          },
+          "j_layout_error": {
+            "subst": 1480,
+            "subst_node": 1480,
+            "core_rebuild": 632,
+            "norm_eval": 1800,
+            "norm_eval_node": 1800,
+            "index_lookup": 1570,
+            "index_find": 15461,
+            "j_specialize": 150,
+            "j_app_type": 51
+          },
+          "jd_library_selected": {
+            "subst": 11028,
+            "subst_node": 10836,
+            "core_rebuild": 4532,
+            "norm_eval": 11040,
+            "norm_eval_node": 11040,
+            "index_lookup": 7877,
+            "index_find": 87123,
+            "index_child_list": 34,
+            "jd_doc_definition": 42,
+            "jd_calls_context": 1,
+            "jd_arity": 671,
+            "jd_domains": 2219,
+            "jd_raise": 4519,
+            "jd_params": 140,
+            "jd_live_arity": 426,
+            "jd_calls_rows": 43,
+            "jd_calls_fact": 367,
+            "jd_selected_context": 1,
+            "j_call_spine": 3159,
+            "j_specialize": 466,
+            "j_app_type": 2156
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 165770,
+          "term_lower": 17703,
+          "term_wnf": 68189,
+          "term_force": 179461,
+          "term_infer": 13428,
+          "term_check": 14727,
+          "tele_open": 11754,
+          "tele_fill": 3184,
+          "tele_unbind": 1589,
+          "tele_check": 2377
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 40170,
+            "term_lower": 17687,
+            "term_force": 17687
+          },
+          "check": {
+            "term_higher": 63849,
+            "term_wnf": 56523,
+            "term_force": 8990,
+            "term_infer": 13428,
+            "term_check": 14727,
+            "tele_open": 8807,
+            "tele_fill": 3042,
+            "tele_unbind": 403,
+            "tele_check": 2377
+          },
+          "emit": {
+            "term_higher": 61751,
+            "term_lower": 16,
+            "term_wnf": 11666,
+            "term_force": 152784,
+            "tele_open": 2947,
+            "tele_fill": 142,
+            "tele_unbind": 1186
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 2146,
+          "tele_unbind": 7105,
+          "term_open": 2282,
+          "term_spine": 9999,
+          "def_raise": 538,
+          "js_def": 34,
+          "js_expr": 1113,
+          "js_func": 315,
+          "js_host": 34,
+          "js_lib": 1,
+          "memo_FUNS_calls": 2146,
+          "memo_FUNS_misses": 54,
+          "memo_TELES_calls": 7105,
+          "memo_TELES_misses": 1186,
+          "memo_OPENS_calls": 2282,
+          "memo_OPENS_misses": 1148,
+          "memo_SPINES_calls": 9999,
+          "memo_SPINES_misses": 8308
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 2146,
+            "tele_unbind": 7105,
+            "term_open": 2282,
+            "term_spine": 9999,
+            "def_raise": 538,
+            "js_def": 34,
+            "js_expr": 1113,
+            "js_func": 315,
+            "js_host": 34,
+            "js_lib": 1,
+            "memo_FUNS_calls": 2146,
+            "memo_FUNS_misses": 54,
+            "memo_TELES_calls": 7105,
+            "memo_TELES_misses": 1186,
+            "memo_OPENS_calls": 2282,
+            "memo_OPENS_misses": 1148,
+            "memo_SPINES_calls": 9999,
+            "memo_SPINES_misses": 8308
+          }
+        }
+      }
+    },
+    {
+      "id": "closures",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+        "sha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+        "bytes": 1392
+      },
+      "bendOutput": {
+        "sha256": "b707d3f0657123299f4ac1456b411b11bc7bae0b2fa53cbb826e7d340c59a71b",
+        "bytes": 16130
+      },
+      "typescriptOutput": {
+        "sha256": "595d9752cd6eb8cf3dac09ff8393e1cfe08f9eddcd15c2e10c6d5d01dfc77887",
+        "bytes": 5416
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 4086,
+          "subst_node": 3308,
+          "core_rebuild": 1951,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 10,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 2526,
+          "norm_eval_node": 2501,
+          "index_lookup": 4270,
+          "index_find": 61245,
+          "index_child_list": 12,
+          "infer": 186,
+          "check": 167,
+          "jd_doc_definition": 18,
+          "jd_calls_context": 2,
+          "jd_arity": 105,
+          "jd_domains": 366,
+          "jd_raise": 582,
+          "jd_params": 34,
+          "jd_live_arity": 74,
+          "jd_calls_rows": 31,
+          "jd_calls_fact": 72,
+          "jd_selected_context": 2,
+          "j_call_spine": 417,
+          "j_specialize": 160,
+          "j_app_type": 425
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 1512
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4062
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 533,
+            "subst_node": 399,
+            "core_rebuild": 227,
+            "env_tele_fill_eager": 4,
+            "norm_eval": 103,
+            "norm_eval_node": 103,
+            "index_lookup": 2871,
+            "index_find": 40489,
+            "infer": 186,
+            "check": 167
+          },
+          "jd_roots": {
+            "norm_eval": 8,
+            "norm_eval_node": 8,
+            "index_lookup": 30,
+            "index_find": 301
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 20,
+            "index_find": 201
+          },
+          "annotate_selected": {
+            "subst": 431,
+            "subst_node": 342,
+            "core_rebuild": 197,
+            "env_tele_fill_eager": 6,
+            "norm_eval": 159,
+            "norm_eval_node": 156,
+            "index_lookup": 91,
+            "index_find": 980
+          },
+          "jd_reach_selected": {
+            "subst": 727,
+            "subst_node": 605,
+            "core_rebuild": 367,
+            "norm_eval": 502,
+            "norm_eval_node": 492,
+            "index_lookup": 316,
+            "index_find": 3886,
+            "index_child_list": 6,
+            "jd_doc_definition": 6,
+            "jd_calls_context": 1,
+            "jd_arity": 47,
+            "jd_domains": 166,
+            "jd_raise": 270,
+            "jd_params": 17,
+            "jd_live_arity": 21,
+            "jd_calls_rows": 18,
+            "jd_calls_fact": 36,
+            "jd_selected_context": 1,
+            "j_call_spine": 209,
+            "j_specialize": 11,
+            "j_app_type": 91
+          },
+          "j_layout_error": {
+            "subst": 68,
+            "subst_node": 43,
+            "core_rebuild": 27,
+            "norm_eval": 82,
+            "norm_eval_node": 82,
+            "index_lookup": 74,
+            "index_find": 693,
+            "j_specialize": 4,
+            "j_app_type": 1
+          },
+          "jd_library_selected": {
+            "subst": 2132,
+            "subst_node": 1770,
+            "core_rebuild": 1050,
+            "norm_eval": 1349,
+            "norm_eval_node": 1337,
+            "index_lookup": 781,
+            "index_find": 8212,
+            "index_child_list": 6,
+            "jd_doc_definition": 12,
+            "jd_calls_context": 1,
+            "jd_arity": 58,
+            "jd_domains": 200,
+            "jd_raise": 312,
+            "jd_params": 17,
+            "jd_live_arity": 53,
+            "jd_calls_rows": 13,
+            "jd_calls_fact": 36,
+            "jd_selected_context": 1,
+            "j_call_spine": 208,
+            "j_specialize": 145,
+            "j_app_type": 333
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 98036,
+          "term_lower": 15292,
+          "term_wnf": 53041,
+          "term_force": 28334,
+          "term_infer": 11481,
+          "term_check": 13100,
+          "tele_open": 8768,
+          "tele_fill": 2918,
+          "tele_unbind": 444,
+          "tele_check": 2363
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36496,
+            "term_lower": 15291,
+            "term_force": 15291
+          },
+          "check": {
+            "term_higher": 59768,
+            "term_wnf": 52298,
+            "term_force": 8497,
+            "term_infer": 11481,
+            "term_check": 13100,
+            "tele_open": 8562,
+            "tele_fill": 2896,
+            "tele_unbind": 374,
+            "tele_check": 2363
+          },
+          "emit": {
+            "term_higher": 1772,
+            "term_lower": 1,
+            "term_wnf": 743,
+            "term_force": 4546,
+            "tele_open": 206,
+            "tele_fill": 22,
+            "tele_unbind": 70
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 118,
+          "tele_unbind": 261,
+          "term_open": 91,
+          "term_spine": 387,
+          "def_raise": 48,
+          "js_def": 6,
+          "js_expr": 67,
+          "js_func": 41,
+          "js_host": 6,
+          "js_lib": 1,
+          "memo_FUNS_calls": 118,
+          "memo_FUNS_misses": 10,
+          "memo_TELES_calls": 261,
+          "memo_TELES_misses": 70,
+          "memo_OPENS_calls": 91,
+          "memo_OPENS_misses": 55,
+          "memo_SPINES_calls": 387,
+          "memo_SPINES_misses": 313
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 118,
+            "tele_unbind": 261,
+            "term_open": 91,
+            "term_spine": 387,
+            "def_raise": 48,
+            "js_def": 6,
+            "js_expr": 67,
+            "js_func": 41,
+            "js_host": 6,
+            "js_lib": 1,
+            "memo_FUNS_calls": 118,
+            "memo_FUNS_misses": 10,
+            "memo_TELES_calls": 261,
+            "memo_TELES_misses": 70,
+            "memo_OPENS_calls": 91,
+            "memo_OPENS_misses": 55,
+            "memo_SPINES_calls": 387,
+            "memo_SPINES_misses": 313
+          }
+        }
+      }
+    },
+    {
+      "id": "list-pipeline",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+        "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+        "bytes": 3249
+      },
+      "bendOutput": {
+        "sha256": "46a7edd053f6fcf0722b37575c9ce6db1f561e28c8b5b7a35624017c2beb36bf",
+        "bytes": 71824
+      },
+      "typescriptOutput": {
+        "sha256": "b96abde772d5e7675b28548e738e495a52dd7ecb88f067026245e75213694c8b",
+        "bytes": 40351
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 167657,
+          "subst_node": 116379,
+          "core_rebuild": 77368,
+          "env_subst_term": 4908,
+          "env_subst_find": 3601,
+          "env_tele_fill_loop": 1170,
+          "env_tele_fill_eager": 679,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 50,
+          "norm_eval": 43293,
+          "norm_eval_node": 43177,
+          "index_lookup": 31840,
+          "index_find": 358939,
+          "index_child_list": 94,
+          "infer": 385,
+          "check": 430,
+          "jd_doc_definition": 106,
+          "jd_calls_context": 2,
+          "jd_arity": 710,
+          "jd_domains": 3017,
+          "jd_raise": 14299,
+          "jd_params": 380,
+          "jd_live_arity": 461,
+          "jd_calls_rows": 141,
+          "jd_calls_fact": 990,
+          "jd_selected_context": 2,
+          "j_call_spine": 5163,
+          "j_specialize": 6746,
+          "j_app_type": 9650
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 3519
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4198
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 1587,
+            "subst_node": 1389,
+            "core_rebuild": 694,
+            "env_subst_term": 522,
+            "env_subst_find": 293,
+            "env_tele_fill_loop": 144,
+            "env_tele_fill_eager": 24,
+            "tele_check_legacy": 50,
+            "norm_eval": 431,
+            "norm_eval_node": 431,
+            "index_lookup": 3335,
+            "index_find": 45642,
+            "infer": 385,
+            "check": 430
+          },
+          "jd_roots": {
+            "norm_eval": 16,
+            "norm_eval_node": 16,
+            "index_lookup": 62,
+            "index_find": 621
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 923
+          },
+          "reach_book": {
+            "index_lookup": 98,
+            "index_find": 989
+          },
+          "annotate_selected": {
+            "subst": 23561,
+            "subst_node": 15774,
+            "core_rebuild": 10452,
+            "env_subst_term": 4386,
+            "env_subst_find": 3308,
+            "env_tele_fill_loop": 1026,
+            "env_tele_fill_eager": 655,
+            "norm_eval": 4954,
+            "norm_eval_node": 4838,
+            "index_lookup": 1935,
+            "index_find": 20269
+          },
+          "jd_reach_selected": {
+            "subst": 58701,
+            "subst_node": 42468,
+            "core_rebuild": 28379,
+            "norm_eval": 15417,
+            "norm_eval_node": 15417,
+            "index_lookup": 11201,
+            "index_find": 122664,
+            "index_child_list": 47,
+            "jd_doc_definition": 47,
+            "jd_calls_context": 1,
+            "jd_arity": 342,
+            "jd_domains": 1476,
+            "jd_raise": 7054,
+            "jd_params": 190,
+            "jd_live_arity": 198,
+            "jd_calls_rows": 81,
+            "jd_calls_fact": 495,
+            "jd_selected_context": 1,
+            "j_call_spine": 2582,
+            "j_specialize": 2243,
+            "j_app_type": 3571
+          },
+          "j_layout_error": {
+            "subst": 27537,
+            "subst_node": 17673,
+            "core_rebuild": 12082,
+            "norm_eval": 6529,
+            "norm_eval_node": 6529,
+            "index_lookup": 2601,
+            "index_find": 26327,
+            "j_specialize": 1674,
+            "j_app_type": 1759
+          },
+          "jd_library_selected": {
+            "subst": 56076,
+            "subst_node": 38926,
+            "core_rebuild": 25678,
+            "norm_eval": 15623,
+            "norm_eval_node": 15623,
+            "index_lookup": 12521,
+            "index_find": 133787,
+            "index_child_list": 47,
+            "jd_doc_definition": 59,
+            "jd_calls_context": 1,
+            "jd_arity": 368,
+            "jd_domains": 1541,
+            "jd_raise": 7245,
+            "jd_params": 190,
+            "jd_live_arity": 263,
+            "jd_calls_rows": 60,
+            "jd_calls_fact": 495,
+            "jd_selected_context": 1,
+            "j_call_spine": 2581,
+            "j_specialize": 2829,
+            "j_app_type": 4320
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 162994,
+          "term_lower": 16040,
+          "term_wnf": 76859,
+          "term_force": 80926,
+          "term_infer": 11680,
+          "term_check": 13353,
+          "tele_open": 13968,
+          "tele_fill": 3197,
+          "tele_unbind": 2333,
+          "tele_check": 2425
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36862,
+            "term_lower": 15535,
+            "term_force": 15535
+          },
+          "check": {
+            "term_higher": 60795,
+            "term_wnf": 53139,
+            "term_force": 8602,
+            "term_infer": 11680,
+            "term_check": 13353,
+            "tele_open": 8798,
+            "tele_fill": 2956,
+            "tele_unbind": 381,
+            "tele_check": 2425
+          },
+          "emit": {
+            "term_higher": 65337,
+            "term_lower": 505,
+            "term_wnf": 23720,
+            "term_force": 56789,
+            "tele_open": 5170,
+            "tele_fill": 241,
+            "tele_unbind": 1952
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 1322,
+          "tele_unbind": 5822,
+          "term_open": 1090,
+          "term_spine": 6942,
+          "def_raise": 972,
+          "js_def": 48,
+          "js_expr": 1416,
+          "js_func": 628,
+          "js_host": 14,
+          "js_lib": 1,
+          "memo_FUNS_calls": 1322,
+          "memo_FUNS_misses": 66,
+          "memo_TELES_calls": 5822,
+          "memo_TELES_misses": 1952,
+          "memo_OPENS_calls": 1090,
+          "memo_OPENS_misses": 1013,
+          "memo_SPINES_calls": 6942,
+          "memo_SPINES_misses": 6564
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 1322,
+            "tele_unbind": 5822,
+            "term_open": 1090,
+            "term_spine": 6942,
+            "def_raise": 972,
+            "js_def": 48,
+            "js_expr": 1416,
+            "js_func": 628,
+            "js_host": 14,
+            "js_lib": 1,
+            "memo_FUNS_calls": 1322,
+            "memo_FUNS_misses": 66,
+            "memo_TELES_calls": 5822,
+            "memo_TELES_misses": 1952,
+            "memo_OPENS_calls": 1090,
+            "memo_OPENS_misses": 1013,
+            "memo_SPINES_calls": 6942,
+            "memo_SPINES_misses": 6564
+          }
+        }
+      }
+    },
+    {
+      "id": "bst",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+        "sha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+        "bytes": 3051
+      },
+      "bendOutput": {
+        "sha256": "8192335074451107cc62a9ce8611161e2d28be6d4e50e4fd3cbb5ddcef74c64b",
+        "bytes": 20983
+      },
+      "typescriptOutput": {
+        "sha256": "23f7abd0dc835ca76c4abe928fdc95a771234f03a613e11ab7b161f776765706",
+        "bytes": 9080
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 14309,
+          "subst_node": 12085,
+          "core_rebuild": 6233,
+          "env_subst_term": 114,
+          "env_subst_find": 66,
+          "env_tele_fill_loop": 36,
+          "env_tele_fill_eager": 128,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 32,
+          "norm_eval": 5951,
+          "norm_eval_node": 5951,
+          "index_lookup": 6974,
+          "index_find": 90940,
+          "index_child_list": 22,
+          "infer": 408,
+          "check": 415,
+          "jd_doc_definition": 31,
+          "jd_calls_context": 2,
+          "jd_arity": 174,
+          "jd_domains": 595,
+          "jd_raise": 1639,
+          "jd_params": 78,
+          "jd_live_arity": 171,
+          "jd_calls_rows": 50,
+          "jd_calls_fact": 144,
+          "jd_selected_context": 2,
+          "j_call_spine": 703,
+          "j_specialize": 575,
+          "j_app_type": 1171
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 2893
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4156
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 2165,
+            "subst_node": 1854,
+            "core_rebuild": 964,
+            "env_subst_term": 57,
+            "env_subst_find": 33,
+            "env_tele_fill_loop": 18,
+            "env_tele_fill_eager": 63,
+            "tele_check_legacy": 32,
+            "norm_eval": 429,
+            "norm_eval_node": 429,
+            "index_lookup": 3195,
+            "index_find": 44083,
+            "infer": 408,
+            "check": 415
+          },
+          "jd_roots": {
+            "norm_eval": 13,
+            "norm_eval_node": 13,
+            "index_lookup": 50,
+            "index_find": 501
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 38,
+            "index_find": 390
+          },
+          "annotate_selected": {
+            "subst": 1646,
+            "subst_node": 1381,
+            "core_rebuild": 715,
+            "env_subst_term": 57,
+            "env_subst_find": 33,
+            "env_tele_fill_loop": 18,
+            "env_tele_fill_eager": 65,
+            "norm_eval": 484,
+            "norm_eval_node": 484,
+            "index_lookup": 261,
+            "index_find": 2641
+          },
+          "jd_reach_selected": {
+            "subst": 3083,
+            "subst_node": 2689,
+            "core_rebuild": 1376,
+            "norm_eval": 1419,
+            "norm_eval_node": 1419,
+            "index_lookup": 1070,
+            "index_find": 12163,
+            "index_child_list": 11,
+            "jd_doc_definition": 11,
+            "jd_calls_context": 1,
+            "jd_arity": 77,
+            "jd_domains": 261,
+            "jd_raise": 726,
+            "jd_params": 39,
+            "jd_live_arity": 49,
+            "jd_calls_rows": 29,
+            "jd_calls_fact": 72,
+            "jd_selected_context": 1,
+            "j_call_spine": 352,
+            "j_specialize": 119,
+            "j_app_type": 330
+          },
+          "j_layout_error": {
+            "subst": 1437,
+            "subst_node": 1125,
+            "core_rebuild": 600,
+            "norm_eval": 493,
+            "norm_eval_node": 493,
+            "index_lookup": 286,
+            "index_find": 2728,
+            "j_specialize": 81,
+            "j_app_type": 72
+          },
+          "jd_library_selected": {
+            "subst": 5783,
+            "subst_node": 4887,
+            "core_rebuild": 2495,
+            "norm_eval": 2790,
+            "norm_eval_node": 2790,
+            "index_lookup": 1987,
+            "index_find": 20476,
+            "index_child_list": 11,
+            "jd_doc_definition": 20,
+            "jd_calls_context": 1,
+            "jd_arity": 97,
+            "jd_domains": 334,
+            "jd_raise": 913,
+            "jd_params": 39,
+            "jd_live_arity": 122,
+            "jd_calls_rows": 21,
+            "jd_calls_fact": 72,
+            "jd_selected_context": 1,
+            "j_call_spine": 351,
+            "j_specialize": 375,
+            "j_app_type": 769
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 104314,
+          "term_lower": 15542,
+          "term_wnf": 56352,
+          "term_force": 33306,
+          "term_infer": 11703,
+          "term_check": 13339,
+          "tele_open": 9550,
+          "tele_fill": 3106,
+          "tele_unbind": 635,
+          "tele_check": 2400
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36750,
+            "term_lower": 15470,
+            "term_force": 15470
+          },
+          "check": {
+            "term_higher": 60817,
+            "term_wnf": 53218,
+            "term_force": 8638,
+            "term_infer": 11703,
+            "term_check": 13339,
+            "tele_open": 8713,
+            "tele_fill": 2933,
+            "tele_unbind": 380,
+            "tele_check": 2400
+          },
+          "emit": {
+            "term_higher": 6747,
+            "term_lower": 72,
+            "term_wnf": 3134,
+            "term_force": 9198,
+            "tele_open": 837,
+            "tele_fill": 173,
+            "tele_unbind": 255
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 277,
+          "tele_unbind": 796,
+          "term_open": 239,
+          "term_spine": 902,
+          "def_raise": 134,
+          "js_def": 11,
+          "js_expr": 137,
+          "js_func": 87,
+          "js_host": 11,
+          "js_lib": 1,
+          "memo_FUNS_calls": 277,
+          "memo_FUNS_misses": 17,
+          "memo_TELES_calls": 796,
+          "memo_TELES_misses": 255,
+          "memo_OPENS_calls": 239,
+          "memo_OPENS_misses": 143,
+          "memo_SPINES_calls": 902,
+          "memo_SPINES_misses": 821
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 277,
+            "tele_unbind": 796,
+            "term_open": 239,
+            "term_spine": 902,
+            "def_raise": 134,
+            "js_def": 11,
+            "js_expr": 137,
+            "js_func": 87,
+            "js_host": 11,
+            "js_lib": 1,
+            "memo_FUNS_calls": 277,
+            "memo_FUNS_misses": 17,
+            "memo_TELES_calls": 796,
+            "memo_TELES_misses": 255,
+            "memo_OPENS_calls": 239,
+            "memo_OPENS_misses": 143,
+            "memo_SPINES_calls": 902,
+            "memo_SPINES_misses": 821
+          }
+        }
+      }
+    },
+    {
+      "id": "unicode-text",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+        "sha256": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+        "bytes": 5277
+      },
+      "bendOutput": {
+        "sha256": "9394fb7d2d9091be3d95fdb2f96a97abe8e5002fd20996b7a5fe4f37cbab78bc",
+        "bytes": 28570
+      },
+      "typescriptOutput": {
+        "sha256": "ab955a289baef45d1c73b7e05051c052b0c1ccc573d574f8ba88b73e363f5d62",
+        "bytes": 15109
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 21191,
+          "subst_node": 17115,
+          "core_rebuild": 9060,
+          "env_subst_term": 379,
+          "env_subst_find": 228,
+          "env_tele_fill_loop": 132,
+          "env_tele_fill_eager": 269,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 56,
+          "norm_eval": 11004,
+          "norm_eval_node": 10996,
+          "index_lookup": 12485,
+          "index_find": 156059,
+          "index_child_list": 56,
+          "infer": 645,
+          "check": 701,
+          "jd_doc_definition": 66,
+          "jd_calls_context": 2,
+          "jd_arity": 376,
+          "jd_domains": 1183,
+          "jd_raise": 3275,
+          "jd_params": 196,
+          "jd_live_arity": 363,
+          "jd_calls_rows": 87,
+          "jd_calls_fact": 384,
+          "jd_selected_context": 2,
+          "j_call_spine": 1295,
+          "j_specialize": 1228,
+          "j_app_type": 1866
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 5666
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4365
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 3238,
+            "subst_node": 2681,
+            "core_rebuild": 1411,
+            "env_subst_term": 183,
+            "env_subst_find": 108,
+            "env_tele_fill_loop": 63,
+            "env_tele_fill_eager": 126,
+            "tele_check_legacy": 56,
+            "norm_eval": 793,
+            "norm_eval_node": 793,
+            "index_lookup": 3775,
+            "index_find": 50892,
+            "infer": 645,
+            "check": 701
+          },
+          "jd_roots": {
+            "norm_eval": 24,
+            "norm_eval_node": 24,
+            "index_lookup": 94,
+            "index_find": 941
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 59,
+            "index_find": 598
+          },
+          "annotate_selected": {
+            "subst": 2329,
+            "subst_node": 1894,
+            "core_rebuild": 975,
+            "env_subst_term": 196,
+            "env_subst_find": 120,
+            "env_tele_fill_loop": 69,
+            "env_tele_fill_eager": 143,
+            "norm_eval": 902,
+            "norm_eval_node": 900,
+            "index_lookup": 572,
+            "index_find": 5961
+          },
+          "jd_reach_selected": {
+            "subst": 5016,
+            "subst_node": 4131,
+            "core_rebuild": 2219,
+            "norm_eval": 3014,
+            "norm_eval_node": 3011,
+            "index_lookup": 2970,
+            "index_find": 33986,
+            "index_child_list": 28,
+            "jd_doc_definition": 28,
+            "jd_calls_context": 1,
+            "jd_arity": 167,
+            "jd_domains": 527,
+            "jd_raise": 1443,
+            "jd_params": 98,
+            "jd_live_arity": 117,
+            "jd_calls_rows": 48,
+            "jd_calls_fact": 192,
+            "jd_selected_context": 1,
+            "j_call_spine": 648,
+            "j_specialize": 338,
+            "j_app_type": 582
+          },
+          "j_layout_error": {
+            "subst": 2381,
+            "subst_node": 1759,
+            "core_rebuild": 992,
+            "norm_eval": 1070,
+            "norm_eval_node": 1070,
+            "index_lookup": 661,
+            "index_find": 6606,
+            "j_specialize": 197,
+            "j_app_type": 133
+          },
+          "jd_library_selected": {
+            "subst": 8032,
+            "subst_node": 6501,
+            "core_rebuild": 3380,
+            "norm_eval": 4878,
+            "norm_eval_node": 4875,
+            "index_lookup": 4267,
+            "index_find": 46135,
+            "index_child_list": 28,
+            "jd_doc_definition": 38,
+            "jd_calls_context": 1,
+            "jd_arity": 209,
+            "jd_domains": 656,
+            "jd_raise": 1832,
+            "jd_params": 98,
+            "jd_live_arity": 246,
+            "jd_calls_rows": 39,
+            "jd_calls_fact": 192,
+            "jd_selected_context": 1,
+            "j_call_spine": 647,
+            "j_specialize": 693,
+            "j_app_type": 1151
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 109815,
+          "term_lower": 15835,
+          "term_wnf": 59625,
+          "term_force": 45341,
+          "term_infer": 11940,
+          "term_check": 13603,
+          "tele_open": 10224,
+          "tele_fill": 3314,
+          "tele_unbind": 875,
+          "tele_check": 2432
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 37162,
+            "term_lower": 15693,
+            "term_force": 15693
+          },
+          "check": {
+            "term_higher": 61551,
+            "term_wnf": 54119,
+            "term_force": 8767,
+            "term_infer": 11940,
+            "term_check": 13603,
+            "tele_open": 8831,
+            "tele_fill": 2991,
+            "tele_unbind": 389,
+            "tele_check": 2432
+          },
+          "emit": {
+            "term_higher": 11102,
+            "term_lower": 142,
+            "term_wnf": 5506,
+            "term_force": 20881,
+            "tele_open": 1393,
+            "tele_fill": 323,
+            "tele_unbind": 486
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 617,
+          "tele_unbind": 1923,
+          "term_open": 325,
+          "term_spine": 1979,
+          "def_raise": 281,
+          "js_def": 29,
+          "js_expr": 451,
+          "js_func": 198,
+          "js_host": 22,
+          "js_lib": 1,
+          "memo_FUNS_calls": 617,
+          "memo_FUNS_misses": 35,
+          "memo_TELES_calls": 1923,
+          "memo_TELES_misses": 486,
+          "memo_OPENS_calls": 325,
+          "memo_OPENS_misses": 239,
+          "memo_SPINES_calls": 1979,
+          "memo_SPINES_misses": 1795
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 617,
+            "tele_unbind": 1923,
+            "term_open": 325,
+            "term_spine": 1979,
+            "def_raise": 281,
+            "js_def": 29,
+            "js_expr": 451,
+            "js_func": 198,
+            "js_host": 22,
+            "js_lib": 1,
+            "memo_FUNS_calls": 617,
+            "memo_FUNS_misses": 35,
+            "memo_TELES_calls": 1923,
+            "memo_TELES_misses": 486,
+            "memo_OPENS_calls": 325,
+            "memo_OPENS_misses": 239,
+            "memo_SPINES_calls": 1979,
+            "memo_SPINES_misses": 1795
+          }
+        }
+      }
+    },
+    {
+      "id": "expression",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+        "sha256": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+        "bytes": 1522
+      },
+      "bendOutput": {
+        "sha256": "1ab90723a82d8267702ebdf995690a64601d1f5cede942d44a1e9b75be617a31",
+        "bytes": 16771
+      },
+      "typescriptOutput": {
+        "sha256": "3ccc019bb4179db2b0c69dcf57282d95863e62db08ca4c91754b979b9613497e",
+        "bytes": 5977
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 2341,
+          "subst_node": 2081,
+          "core_rebuild": 929,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 68,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 2898,
+          "norm_eval_node": 2898,
+          "index_lookup": 5107,
+          "index_find": 70277,
+          "index_child_list": 10,
+          "infer": 126,
+          "check": 158,
+          "jd_doc_definition": 16,
+          "jd_calls_context": 2,
+          "jd_arity": 85,
+          "jd_domains": 222,
+          "jd_raise": 856,
+          "jd_params": 26,
+          "jd_live_arity": 54,
+          "jd_calls_rows": 30,
+          "jd_calls_fact": 78,
+          "jd_selected_context": 2,
+          "j_call_spine": 301,
+          "j_specialize": 282,
+          "j_app_type": 522
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 1330
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 4026
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 203,
+            "subst_node": 185,
+            "core_rebuild": 68,
+            "env_tele_fill_eager": 33,
+            "norm_eval": 167,
+            "norm_eval_node": 167,
+            "index_lookup": 2930,
+            "index_find": 41050,
+            "infer": 126,
+            "check": 158
+          },
+          "jd_roots": {
+            "norm_eval": 7,
+            "norm_eval_node": 7,
+            "index_lookup": 26,
+            "index_find": 261
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 23,
+            "index_find": 236
+          },
+          "annotate_selected": {
+            "subst": 137,
+            "subst_node": 133,
+            "core_rebuild": 49,
+            "env_tele_fill_eager": 35,
+            "norm_eval": 199,
+            "norm_eval_node": 199,
+            "index_lookup": 165,
+            "index_find": 1812
+          },
+          "jd_reach_selected": {
+            "subst": 215,
+            "subst_node": 215,
+            "core_rebuild": 50,
+            "norm_eval": 545,
+            "norm_eval_node": 545,
+            "index_lookup": 539,
+            "index_find": 6361,
+            "index_child_list": 5,
+            "jd_doc_definition": 5,
+            "jd_calls_context": 1,
+            "jd_arity": 38,
+            "jd_domains": 99,
+            "jd_raise": 387,
+            "jd_params": 13,
+            "jd_live_arity": 15,
+            "jd_calls_rows": 18,
+            "jd_calls_fact": 39,
+            "jd_selected_context": 1,
+            "j_call_spine": 151,
+            "j_specialize": 48,
+            "j_app_type": 116
+          },
+          "j_layout_error": {
+            "subst": 92,
+            "subst_node": 92,
+            "core_rebuild": 20,
+            "norm_eval": 193,
+            "norm_eval_node": 193,
+            "index_lookup": 211,
+            "index_find": 2266,
+            "j_specialize": 33,
+            "j_app_type": 33
+          },
+          "jd_library_selected": {
+            "subst": 1499,
+            "subst_node": 1307,
+            "core_rebuild": 659,
+            "norm_eval": 1464,
+            "norm_eval_node": 1464,
+            "index_lookup": 1126,
+            "index_find": 12026,
+            "index_child_list": 5,
+            "jd_doc_definition": 11,
+            "jd_calls_context": 1,
+            "jd_arity": 47,
+            "jd_domains": 123,
+            "jd_raise": 469,
+            "jd_params": 13,
+            "jd_live_arity": 39,
+            "jd_calls_rows": 12,
+            "jd_calls_fact": 39,
+            "jd_selected_context": 1,
+            "j_call_spine": 150,
+            "j_specialize": 201,
+            "j_app_type": 373
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 97966,
+          "term_lower": 15311,
+          "term_wnf": 52969,
+          "term_force": 27776,
+          "term_infer": 11421,
+          "term_check": 13089,
+          "tele_open": 8830,
+          "tele_fill": 2964,
+          "tele_unbind": 462,
+          "tele_check": 2385
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36535,
+            "term_lower": 15307,
+            "term_force": 15307
+          },
+          "check": {
+            "term_higher": 59745,
+            "term_wnf": 52155,
+            "term_force": 8544,
+            "term_infer": 11421,
+            "term_check": 13089,
+            "tele_open": 8603,
+            "tele_fill": 2925,
+            "tele_unbind": 373,
+            "tele_check": 2385
+          },
+          "emit": {
+            "term_higher": 1686,
+            "term_lower": 4,
+            "term_wnf": 814,
+            "term_force": 3925,
+            "tele_open": 227,
+            "tele_fill": 39,
+            "tele_unbind": 89
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 131,
+          "tele_unbind": 356,
+          "term_open": 80,
+          "term_spine": 416,
+          "def_raise": 76,
+          "js_def": 5,
+          "js_expr": 76,
+          "js_func": 35,
+          "js_host": 5,
+          "js_lib": 1,
+          "memo_FUNS_calls": 131,
+          "memo_FUNS_misses": 10,
+          "memo_TELES_calls": 356,
+          "memo_TELES_misses": 89,
+          "memo_OPENS_calls": 80,
+          "memo_OPENS_misses": 52,
+          "memo_SPINES_calls": 416,
+          "memo_SPINES_misses": 370
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 131,
+            "tele_unbind": 356,
+            "term_open": 80,
+            "term_spine": 416,
+            "def_raise": 76,
+            "js_def": 5,
+            "js_expr": 76,
+            "js_func": 35,
+            "js_host": 5,
+            "js_lib": 1,
+            "memo_FUNS_calls": 131,
+            "memo_FUNS_misses": 10,
+            "memo_TELES_calls": 356,
+            "memo_TELES_misses": 89,
+            "memo_OPENS_calls": 80,
+            "memo_OPENS_misses": 52,
+            "memo_SPINES_calls": 416,
+            "memo_SPINES_misses": 370
+          }
+        }
+      }
+    },
+    {
+      "id": "map-churn",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+        "sha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+        "bytes": 1703
+      },
+      "bendOutput": {
+        "sha256": "28c04d78a7715979e85d916a0edeaf7da6c9ed3324d86a65fe97a686fa4af574",
+        "bytes": 83422
+      },
+      "typescriptOutput": {
+        "sha256": "4925966fd24084ae41a7becd510a60214e87e3b39b2b786d7675794ddfad541b",
+        "bytes": 46419
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 218694,
+          "subst_node": 150978,
+          "core_rebuild": 101253,
+          "env_subst_term": 4594,
+          "env_subst_find": 3594,
+          "env_tele_fill_loop": 1077,
+          "env_tele_fill_eager": 830,
+          "env_tele_check_loop": 4,
+          "tele_check_legacy": 20,
+          "norm_eval": 54201,
+          "norm_eval_node": 54070,
+          "index_lookup": 36914,
+          "index_find": 412997,
+          "index_child_list": 104,
+          "infer": 245,
+          "check": 224,
+          "jd_doc_definition": 116,
+          "jd_calls_context": 2,
+          "jd_arity": 856,
+          "jd_domains": 3911,
+          "jd_raise": 18185,
+          "jd_params": 484,
+          "jd_live_arity": 573,
+          "jd_calls_rows": 150,
+          "jd_calls_fact": 1178,
+          "jd_selected_context": 2,
+          "j_call_spine": 6715,
+          "j_specialize": 7830,
+          "j_app_type": 11541
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 1276
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 3997
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 973,
+            "subst_node": 854,
+            "core_rebuild": 422,
+            "env_subst_term": 30,
+            "env_subst_find": 15,
+            "env_tele_fill_loop": 6,
+            "env_tele_fill_eager": 14,
+            "env_tele_check_loop": 4,
+            "tele_check_legacy": 20,
+            "norm_eval": 227,
+            "norm_eval_node": 227,
+            "index_lookup": 2955,
+            "index_find": 41358,
+            "infer": 245,
+            "check": 224
+          },
+          "jd_roots": {
+            "norm_eval": 7,
+            "norm_eval_node": 7,
+            "index_lookup": 28,
+            "index_find": 280
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 102,
+            "index_find": 1037
+          },
+          "annotate_selected": {
+            "subst": 31198,
+            "subst_node": 20531,
+            "core_rebuild": 13865,
+            "env_subst_term": 4564,
+            "env_subst_find": 3579,
+            "env_tele_fill_loop": 1071,
+            "env_tele_fill_eager": 816,
+            "norm_eval": 6095,
+            "norm_eval_node": 5964,
+            "index_lookup": 2165,
+            "index_find": 22720
+          },
+          "jd_reach_selected": {
+            "subst": 78458,
+            "subst_node": 56744,
+            "core_rebuild": 38112,
+            "norm_eval": 19913,
+            "norm_eval_node": 19913,
+            "index_lookup": 13352,
+            "index_find": 146835,
+            "index_child_list": 52,
+            "jd_doc_definition": 52,
+            "jd_calls_context": 1,
+            "jd_arity": 422,
+            "jd_domains": 1933,
+            "jd_raise": 9035,
+            "jd_params": 242,
+            "jd_live_arity": 264,
+            "jd_calls_rows": 85,
+            "jd_calls_fact": 589,
+            "jd_selected_context": 1,
+            "j_call_spine": 3358,
+            "j_specialize": 2563,
+            "j_app_type": 4292
+          },
+          "j_layout_error": {
+            "subst": 33143,
+            "subst_node": 20993,
+            "core_rebuild": 14521,
+            "norm_eval": 7766,
+            "norm_eval_node": 7766,
+            "index_lookup": 3050,
+            "index_find": 31125,
+            "j_specialize": 1876,
+            "j_app_type": 1943
+          },
+          "jd_library_selected": {
+            "subst": 74727,
+            "subst_node": 51707,
+            "core_rebuild": 34250,
+            "norm_eval": 19870,
+            "norm_eval_node": 19870,
+            "index_lookup": 15175,
+            "index_find": 163460,
+            "index_child_list": 52,
+            "jd_doc_definition": 64,
+            "jd_calls_context": 1,
+            "jd_arity": 434,
+            "jd_domains": 1978,
+            "jd_raise": 9150,
+            "jd_params": 242,
+            "jd_live_arity": 309,
+            "jd_calls_rows": 65,
+            "jd_calls_fact": 589,
+            "jd_selected_context": 1,
+            "j_call_spine": 3357,
+            "j_specialize": 3391,
+            "j_app_type": 5306
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 179827,
+          "term_lower": 16041,
+          "term_wnf": 82413,
+          "term_force": 85246,
+          "term_infer": 11540,
+          "term_check": 13152,
+          "tele_open": 14745,
+          "tele_fill": 3129,
+          "tele_unbind": 2634,
+          "tele_check": 2373
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36611,
+            "term_lower": 15397,
+            "term_force": 15397
+          },
+          "check": {
+            "term_higher": 60129,
+            "term_wnf": 52455,
+            "term_force": 8553,
+            "term_infer": 11540,
+            "term_check": 13152,
+            "tele_open": 8603,
+            "tele_fill": 2904,
+            "tele_unbind": 373,
+            "tele_check": 2373
+          },
+          "emit": {
+            "term_higher": 83087,
+            "term_lower": 644,
+            "term_wnf": 29958,
+            "term_force": 61296,
+            "tele_open": 6142,
+            "tele_fill": 225,
+            "tele_unbind": 2261
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 1566,
+          "tele_unbind": 6568,
+          "term_open": 1308,
+          "term_spine": 8008,
+          "def_raise": 1147,
+          "js_def": 53,
+          "js_expr": 1585,
+          "js_func": 775,
+          "js_host": 7,
+          "js_lib": 1,
+          "memo_FUNS_calls": 1566,
+          "memo_FUNS_misses": 70,
+          "memo_TELES_calls": 6568,
+          "memo_TELES_misses": 2261,
+          "memo_OPENS_calls": 1308,
+          "memo_OPENS_misses": 1256,
+          "memo_SPINES_calls": 8008,
+          "memo_SPINES_misses": 7639
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 1566,
+            "tele_unbind": 6568,
+            "term_open": 1308,
+            "term_spine": 8008,
+            "def_raise": 1147,
+            "js_def": 53,
+            "js_expr": 1585,
+            "js_func": 775,
+            "js_host": 7,
+            "js_lib": 1,
+            "memo_FUNS_calls": 1566,
+            "memo_FUNS_misses": 70,
+            "memo_TELES_calls": 6568,
+            "memo_TELES_misses": 2261,
+            "memo_OPENS_calls": 1308,
+            "memo_OPENS_misses": 1256,
+            "memo_SPINES_calls": 8008,
+            "memo_SPINES_misses": 7639
+          }
+        }
+      }
+    },
+    {
+      "id": "numeric-recurrence",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+        "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+        "bytes": 556
+      },
+      "bendOutput": {
+        "sha256": "2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3",
+        "bytes": 14917
+      },
+      "typescriptOutput": {
+        "sha256": "0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee",
+        "bytes": 4699
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 1888,
+          "subst_node": 1641,
+          "core_rebuild": 828,
+          "env_subst_term": 0,
+          "env_subst_find": 0,
+          "env_tele_fill_loop": 0,
+          "env_tele_fill_eager": 6,
+          "env_tele_check_loop": 0,
+          "tele_check_legacy": 0,
+          "norm_eval": 1948,
+          "norm_eval_node": 1948,
+          "index_lookup": 3835,
+          "index_find": 54437,
+          "index_child_list": 4,
+          "infer": 64,
+          "check": 54,
+          "jd_doc_definition": 10,
+          "jd_calls_context": 2,
+          "jd_arity": 53,
+          "jd_domains": 164,
+          "jd_raise": 274,
+          "jd_params": 14,
+          "jd_live_arity": 32,
+          "jd_calls_rows": 29,
+          "jd_calls_fact": 24,
+          "jd_selected_context": 2,
+          "j_call_spine": 217,
+          "j_specialize": 151,
+          "j_app_type": 327
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 370
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 3948
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 109,
+            "subst_node": 104,
+            "core_rebuild": 36,
+            "env_tele_fill_eager": 2,
+            "norm_eval": 53,
+            "norm_eval_node": 53,
+            "index_lookup": 2756,
+            "index_find": 38320,
+            "infer": 64,
+            "check": 54
+          },
+          "jd_roots": {
+            "norm_eval": 2,
+            "norm_eval_node": 2,
+            "index_lookup": 8,
+            "index_find": 80
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 21,
+            "index_find": 219
+          },
+          "annotate_selected": {
+            "subst": 101,
+            "subst_node": 97,
+            "core_rebuild": 38,
+            "env_tele_fill_eager": 4,
+            "norm_eval": 83,
+            "norm_eval_node": 83,
+            "index_lookup": 63,
+            "index_find": 685
+          },
+          "jd_reach_selected": {
+            "subst": 133,
+            "subst_node": 133,
+            "core_rebuild": 38,
+            "norm_eval": 359,
+            "norm_eval_node": 359,
+            "index_lookup": 223,
+            "index_find": 2977,
+            "index_child_list": 2,
+            "jd_doc_definition": 2,
+            "jd_calls_context": 1,
+            "jd_arity": 25,
+            "jd_domains": 76,
+            "jd_raise": 127,
+            "jd_params": 7,
+            "jd_live_arity": 10,
+            "jd_calls_rows": 20,
+            "jd_calls_fact": 12,
+            "jd_selected_context": 1,
+            "j_call_spine": 109,
+            "j_specialize": 8,
+            "j_app_type": 58
+          },
+          "j_layout_error": {
+            "subst": 17,
+            "subst_node": 17,
+            "core_rebuild": 5,
+            "norm_eval": 44,
+            "norm_eval_node": 44,
+            "index_lookup": 37,
+            "index_find": 361,
+            "j_specialize": 2
+          },
+          "jd_library_selected": {
+            "subst": 1333,
+            "subst_node": 1141,
+            "core_rebuild": 628,
+            "norm_eval": 1084,
+            "norm_eval_node": 1084,
+            "index_lookup": 640,
+            "index_find": 6568,
+            "index_child_list": 2,
+            "jd_doc_definition": 8,
+            "jd_calls_context": 1,
+            "jd_arity": 28,
+            "jd_domains": 88,
+            "jd_raise": 147,
+            "jd_params": 7,
+            "jd_live_arity": 22,
+            "jd_calls_rows": 9,
+            "jd_calls_fact": 12,
+            "jd_selected_context": 1,
+            "j_call_spine": 108,
+            "j_specialize": 141,
+            "j_app_type": 269
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 97010,
+          "term_lower": 15222,
+          "term_wnf": 52272,
+          "term_force": 26673,
+          "term_infer": 11359,
+          "term_check": 12988,
+          "tele_open": 8662,
+          "tele_fill": 2908,
+          "tele_unbind": 408,
+          "tele_check": 2362
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36373,
+            "term_lower": 15222,
+            "term_force": 15222
+          },
+          "check": {
+            "term_higher": 59588,
+            "term_wnf": 51880,
+            "term_force": 8491,
+            "term_infer": 11359,
+            "term_check": 12988,
+            "tele_open": 8544,
+            "tele_fill": 2894,
+            "tele_unbind": 368,
+            "tele_check": 2362
+          },
+          "emit": {
+            "term_higher": 1049,
+            "term_wnf": 392,
+            "term_force": 2960,
+            "tele_open": 118,
+            "tele_fill": 14,
+            "tele_unbind": 40
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 53,
+          "tele_unbind": 143,
+          "term_open": 35,
+          "term_spine": 210,
+          "def_raise": 45,
+          "js_def": 2,
+          "js_expr": 29,
+          "js_func": 12,
+          "js_host": 2,
+          "js_lib": 1,
+          "memo_FUNS_calls": 53,
+          "memo_FUNS_misses": 12,
+          "memo_TELES_calls": 143,
+          "memo_TELES_misses": 40,
+          "memo_OPENS_calls": 35,
+          "memo_OPENS_misses": 26,
+          "memo_SPINES_calls": 210,
+          "memo_SPINES_misses": 172
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 53,
+            "tele_unbind": 143,
+            "term_open": 35,
+            "term_spine": 210,
+            "def_raise": 45,
+            "js_def": 2,
+            "js_expr": 29,
+            "js_func": 12,
+            "js_host": 2,
+            "js_lib": 1,
+            "memo_FUNS_calls": 53,
+            "memo_FUNS_misses": 12,
+            "memo_TELES_calls": 143,
+            "memo_TELES_misses": 40,
+            "memo_OPENS_calls": 35,
+            "memo_OPENS_misses": 26,
+            "memo_SPINES_calls": 210,
+            "memo_SPINES_misses": 172
+          }
+        }
+      }
+    },
+    {
+      "id": "record-aggregation",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend",
+        "sha256": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+        "bytes": 1651
+      },
+      "bendOutput": {
+        "sha256": "e772f9c34a84313a28c01b53eed049ba24d769373dc3431f120c1d3db82369d1",
+        "bytes": 82645
+      },
+      "typescriptOutput": {
+        "sha256": "618be635b95dc29393bdfaff8307552b51219ef0b7c46fd61d0b2a9d928e2acf",
+        "bytes": 48905
+      },
+      "rawBytesEqual": true,
+      "bend": {
+        "totals": {
+          "subst": 215076,
+          "subst_node": 152515,
+          "core_rebuild": 99656,
+          "env_subst_term": 4784,
+          "env_subst_find": 3491,
+          "env_tele_fill_loop": 1116,
+          "env_tele_fill_eager": 821,
+          "env_tele_check_loop": 12,
+          "tele_check_legacy": 16,
+          "norm_eval": 53449,
+          "norm_eval_node": 53294,
+          "index_lookup": 36846,
+          "index_find": 409348,
+          "index_child_list": 100,
+          "infer": 188,
+          "check": 182,
+          "jd_doc_definition": 112,
+          "jd_calls_context": 2,
+          "jd_arity": 826,
+          "jd_domains": 3775,
+          "jd_raise": 18047,
+          "jd_params": 460,
+          "jd_live_arity": 545,
+          "jd_calls_rows": 147,
+          "jd_calls_fact": 1160,
+          "jd_selected_context": 2,
+          "j_call_spine": 6631,
+          "j_specialize": 7882,
+          "j_app_type": 11465
+        },
+        "nonzeroPhases": {
+          "f_prefix_complete_source": {
+            "index_find": 1082
+          },
+          "f_prefix_graph_trace": {
+            "index_find": 3987
+          },
+          "check_program_diagnostic_prefix": {
+            "subst": 1065,
+            "subst_node": 858,
+            "core_rebuild": 465,
+            "env_subst_term": 103,
+            "env_subst_find": 53,
+            "env_tele_fill_loop": 24,
+            "env_tele_fill_eager": 23,
+            "env_tele_check_loop": 12,
+            "tele_check_legacy": 16,
+            "norm_eval": 202,
+            "norm_eval_node": 202,
+            "index_lookup": 2914,
+            "index_find": 40482,
+            "infer": 188,
+            "check": 182
+          },
+          "jd_roots": {
+            "norm_eval": 6,
+            "norm_eval_node": 6,
+            "index_lookup": 24,
+            "index_find": 240
+          },
+          "jd_stops": {
+            "subst": 195,
+            "subst_node": 149,
+            "core_rebuild": 83,
+            "norm_eval": 323,
+            "norm_eval_node": 323,
+            "index_lookup": 87,
+            "index_find": 909
+          },
+          "reach_book": {
+            "index_lookup": 101,
+            "index_find": 1021
+          },
+          "annotate_selected": {
+            "subst": 30160,
+            "subst_node": 20502,
+            "core_rebuild": 13376,
+            "env_subst_term": 4681,
+            "env_subst_find": 3438,
+            "env_tele_fill_loop": 1092,
+            "env_tele_fill_eager": 798,
+            "norm_eval": 6039,
+            "norm_eval_node": 5884,
+            "index_lookup": 2165,
+            "index_find": 22654
+          },
+          "jd_reach_selected": {
+            "subst": 76962,
+            "subst_node": 57127,
+            "core_rebuild": 37454,
+            "norm_eval": 19607,
+            "norm_eval_node": 19607,
+            "index_lookup": 13367,
+            "index_find": 146219,
+            "index_child_list": 50,
+            "jd_doc_definition": 50,
+            "jd_calls_context": 1,
+            "jd_arity": 408,
+            "jd_domains": 1872,
+            "jd_raise": 8980,
+            "jd_params": 230,
+            "jd_live_arity": 257,
+            "jd_calls_rows": 84,
+            "jd_calls_fact": 580,
+            "jd_selected_context": 1,
+            "j_call_spine": 3316,
+            "j_specialize": 2565,
+            "j_app_type": 4234
+          },
+          "j_layout_error": {
+            "subst": 32365,
+            "subst_node": 20991,
+            "core_rebuild": 14177,
+            "norm_eval": 7640,
+            "norm_eval_node": 7640,
+            "index_lookup": 3033,
+            "index_find": 30372,
+            "j_specialize": 1878,
+            "j_app_type": 1953
+          },
+          "jd_library_selected": {
+            "subst": 74329,
+            "subst_node": 52888,
+            "core_rebuild": 34101,
+            "norm_eval": 19632,
+            "norm_eval_node": 19632,
+            "index_lookup": 15155,
+            "index_find": 162382,
+            "index_child_list": 50,
+            "jd_doc_definition": 62,
+            "jd_calls_context": 1,
+            "jd_arity": 418,
+            "jd_domains": 1903,
+            "jd_raise": 9067,
+            "jd_params": 230,
+            "jd_live_arity": 288,
+            "jd_calls_rows": 63,
+            "jd_calls_fact": 580,
+            "jd_selected_context": 1,
+            "j_call_spine": 3315,
+            "j_specialize": 3439,
+            "j_app_type": 5278
+          }
+        }
+      },
+      "theory": {
+        "totals": {
+          "term_higher": 178568,
+          "term_lower": 15948,
+          "term_wnf": 81924,
+          "term_force": 85093,
+          "term_infer": 11483,
+          "term_check": 13110,
+          "tele_open": 14854,
+          "tele_fill": 3191,
+          "tele_unbind": 2669,
+          "tele_check": 2377
+        },
+        "nonzeroPhases": {
+          "load": {
+            "term_higher": 36558,
+            "term_lower": 15331,
+            "term_force": 15331
+          },
+          "check": {
+            "term_higher": 60130,
+            "term_wnf": 52385,
+            "term_force": 8545,
+            "term_infer": 11483,
+            "term_check": 13110,
+            "tele_open": 8630,
+            "tele_fill": 2907,
+            "tele_unbind": 372,
+            "tele_check": 2377
+          },
+          "emit": {
+            "term_higher": 81880,
+            "term_lower": 617,
+            "term_wnf": 29539,
+            "term_force": 61217,
+            "tele_open": 6224,
+            "tele_fill": 284,
+            "tele_unbind": 2297
+          }
+        }
+      },
+      "backend": {
+        "totals": {
+          "fun_of": 1576,
+          "tele_unbind": 6658,
+          "term_open": 1260,
+          "term_spine": 7992,
+          "def_raise": 1138,
+          "js_def": 51,
+          "js_expr": 1621,
+          "js_func": 771,
+          "js_host": 6,
+          "js_lib": 1,
+          "memo_FUNS_calls": 1576,
+          "memo_FUNS_misses": 69,
+          "memo_TELES_calls": 6658,
+          "memo_TELES_misses": 2297,
+          "memo_OPENS_calls": 1260,
+          "memo_OPENS_misses": 1223,
+          "memo_SPINES_calls": 7992,
+          "memo_SPINES_misses": 7616
+        },
+        "nonzeroPhases": {
+          "emit": {
+            "fun_of": 1576,
+            "tele_unbind": 6658,
+            "term_open": 1260,
+            "term_spine": 7992,
+            "def_raise": 1138,
+            "js_def": 51,
+            "js_expr": 1621,
+            "js_func": 771,
+            "js_host": 6,
+            "js_lib": 1,
+            "memo_FUNS_calls": 1576,
+            "memo_FUNS_misses": 69,
+            "memo_TELES_calls": 6658,
+            "memo_TELES_misses": 2297,
+            "memo_OPENS_calls": 1260,
+            "memo_OPENS_misses": 1223,
+            "memo_SPINES_calls": 7992,
+            "memo_SPINES_misses": 7616
+          }
+        }
+      }
+    }
+  ]
+}

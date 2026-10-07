@@ -25,6 +25,11 @@ with a prepared Base cache; preparation and output verification are outside the
 clocks. The [results and diagrams](implementation/phase61/state08-results.md)
 keep compiler latency separate from generated-program execution speed.
 
+The [Phase62 investigation](implementation/phase62/README.md) profiles the
+unchanged compiler across all 23 sources. It locates the remaining compilation
+gap in prepared-state/source loading and backend work, and records same-source
+B1/B2 comparisons, repeated requests, operation counts and scaling experiments.
+
 The [request pipeline guide](docs/self_hosted/compiler-request-pipeline.md)
 explains checked Base reuse, delayed substitution, compact persistent indexes,
 structured emission and proved native type facts. All 23 benchmark JavaScript

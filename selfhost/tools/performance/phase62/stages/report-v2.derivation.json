@@ -1,0 +1,20 @@
+{
+  "kind": "phase62-stage-report-plot-repair",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/stages/report.py",
+    "sha256": "73a73ee3948b4c2e7144e9c6bf6f9c3679d2b73f4b6b9953ab87e86541e85b80"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/stages/report-v2.py",
+    "sha256": "6423c5f6c417a69c0145e640bf4c97e31802c3b2e8d8bf69004955d809bbb46d"
+  },
+  "change": {
+    "old": "for a in [ax,bx]:a.spines[['top','right']].set_visible(False)",
+    "new": "for axis in [ax,bx]:axis.spines[['top','right']].set_visible(False)"
+  },
+  "priorFailure": "report.py stage-report01 wrote valid data summary then failed plotting: loop variable a shadowed argparse arguments; AttributeError Axes object has no attribute out. No target or compiler error. Prior script and partial output retained.",
+  "pass": true
+}

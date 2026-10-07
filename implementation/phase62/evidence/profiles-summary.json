@@ -1,0 +1,3303 @@
+{
+  "kind": "phase62-profile-compact-summary",
+  "complete": true,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/profile-analysis02/report.json",
+    "sha256": "96b8ced343f7ee0f6e8111858ea3c569cb524a80332ad2f8094cd07a680a1319",
+    "bytes": 9362462
+  },
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/analysis/summarize.py",
+    "sha256": "473302c54ea8d57d614852f87425ab31ee9d1d6494c36114aab2e7eba2d2e650",
+    "bytes": 4077
+  },
+  "targetExecuted": false,
+  "rows": [
+    {
+      "case": "mandelbrot",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 765,
+          "exclusiveStagePercents": {
+            "source-completion": 18.823529411764707,
+            "checker": 15.163398692810457,
+            "base-cache": 14.509803921568627,
+            "api-load": 10.457516339869281,
+            "emitted-reach": 10.065359477124183,
+            "final-library": 3.6601307189542482,
+            "source-loading": 3.2679738562091503,
+            "other-generated-image": 2.8758169934640523,
+            "source-error-scan": 2.8758169934640523,
+            "GC": 2.7450980392156863,
+            "source-graph-freshening": 2.6143790849673203,
+            "host-wrapper": 2.3529411764705883,
+            "book-context": 2.2222222222222223,
+            "annotation": 1.9607843137254901,
+            "layout-proof": 1.8300653594771241,
+            "base-identity": 1.4379084967320261,
+            "roots-and-stops": 1.3071895424836601,
+            "owned-foreign-layout": 1.0457516339869282,
+            "source-reach": 0.39215686274509803,
+            "other-host-driver": 0.26143790849673204,
+            "inspector-overhead": 0.13071895424836602
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 10.065359477124183,
+            "definition": 9.019607843137255,
+            "normalization": 7.189542483660131,
+            "library": 6.0130718954248366,
+            "index": 5.882352941176471,
+            "calls": 2.8758169934640523,
+            "host": 2.3529411764705883,
+            "substitution": 2.0915032679738563,
+            "strings": 1.9607843137254901,
+            "arityQueries": 1.9607843137254901,
+            "jdArity": 1.9607843137254901,
+            "jdDomains": 0.6535947712418301
+          }
+        },
+        "typescript": {
+          "sampleEvents": 563,
+          "exclusiveStagePercents": {
+            "checker": 34.81349911190053,
+            "typescript-module-stripping": 22.912966252220247,
+            "source-loading": 21.847246891651864,
+            "ts-file-analysis": 8.703374777975133,
+            "ts-library": 5.328596802841918,
+            "GC": 3.019538188277087,
+            "module-compilation": 1.4209591474245116,
+            "other-typescript": 0.7104795737122558,
+            "other-unassigned": 0.5328596802841918,
+            "program": 0.3552397868561279,
+            "inspector-overhead": 0.17761989342806395,
+            "other-node": 0.17761989342806395
+          },
+          "weightedStatus": "refused"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 85079504,
+          "exclusiveStagePercents": {
+            "checker": 18.65735371470901,
+            "source-completion": 15.010675191524388,
+            "other-generated-image": 12.176121760183275,
+            "base-cache": 9.246466693082743,
+            "final-library": 7.861334029403839,
+            "source-error-scan": 7.089237379663144,
+            "emitted-reach": 6.6275797752652625,
+            "book-context": 4.6228196158736425,
+            "layout-proof": 4.006567786290809,
+            "host-wrapper": 3.3909647616187324,
+            "source-loading": 2.094436281621952,
+            "api-load": 1.8633865096345648,
+            "annotation": 1.8493948906895368,
+            "source-graph-freshening": 1.695110963505382,
+            "source-reach": 1.0792258497416722,
+            "roots-and-stops": 1.0787651042253372,
+            "inspector-overhead": 0.6476013306330511,
+            "other-node": 0.5396646412043022,
+            "other-unassigned": 0.3092260622487879,
+            "owned-foreign-layout": 0.15406765888056892
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 14.95752020369089,
+            "definition": 11.252421029628946,
+            "library": 11.252298791022572,
+            "normalization": 8.62930277543696,
+            "reach": 6.6275797752652625,
+            "strings": 5.855389095827357,
+            "substitution": 4.624267673210695,
+            "host": 3.3909647616187324,
+            "calls": 2.4659758242126095,
+            "arityQueries": 1.2329832106214442,
+            "jdArity": 0.9248008780117006,
+            "jdDomains": 0.7706862042825261,
+            "jdLiveArity": 0.3081823326097435
+          }
+        },
+        "typescript": {
+          "bytes": 72965064,
+          "exclusiveStagePercents": {
+            "checker": 39.1743095024216,
+            "source-loading": 28.58936435661867,
+            "ts-library": 10.20414920762627,
+            "ts-file-analysis": 7.753902607417709,
+            "typescript-module-stripping": 6.704841648600486,
+            "other-typescript": 3.7763826260743087,
+            "other-unassigned": 1.8314627943038602,
+            "module-compilation": 0.9910167419300832,
+            "other-node": 0.6137402963149597,
+            "inspector-overhead": 0.3608302186920579
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.1660306910715517
+      }
+    },
+    {
+      "case": "editdist",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 701,
+          "exclusiveStagePercents": {
+            "source-completion": 17.261055634807416,
+            "checker": 16.119828815977176,
+            "base-cache": 15.691868758915835,
+            "api-load": 11.269614835948644,
+            "emitted-reach": 9.70042796005706,
+            "GC": 3.138373751783167,
+            "host-wrapper": 2.9957203994293864,
+            "other-generated-image": 2.8530670470756063,
+            "source-loading": 2.8530670470756063,
+            "final-library": 2.8530670470756063,
+            "source-error-scan": 2.5677603423680457,
+            "source-graph-freshening": 2.425106990014265,
+            "book-context": 2.1398002853067046,
+            "base-identity": 1.7118402282453637,
+            "layout-proof": 1.5691868758915835,
+            "roots-and-stops": 1.4265335235378032,
+            "owned-foreign-layout": 1.1412268188302426,
+            "annotation": 0.9985734664764622,
+            "source-reach": 0.42796005706134094,
+            "inspector-overhead": 0.28530670470756064,
+            "other-host-driver": 0.28530670470756064,
+            "other-node": 0.14265335235378032,
+            "foreign-validation": 0.14265335235378032
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 9.70042796005706,
+            "definition": 7.845934379457917,
+            "normalization": 6.847360912981455,
+            "index": 5.848787446504993,
+            "library": 5.848787446504993,
+            "calls": 3.4236804564907275,
+            "host": 2.9957203994293864,
+            "substitution": 2.1398002853067046,
+            "strings": 1.854493580599144,
+            "arityQueries": 1.2838801711840229,
+            "jdArity": 1.2838801711840229,
+            "jdDomains": 0.28530670470756064
+          }
+        },
+        "typescript": {
+          "sampleEvents": 555,
+          "exclusiveStagePercents": {
+            "checker": 35.31531531531532,
+            "typescript-module-stripping": 24.504504504504503,
+            "source-loading": 22.7027027027027,
+            "ts-file-analysis": 6.486486486486487,
+            "ts-library": 4.324324324324325,
+            "GC": 2.8828828828828827,
+            "module-compilation": 1.4414414414414414,
+            "other-typescript": 1.2612612612612613,
+            "other-node": 0.36036036036036034,
+            "other-unassigned": 0.36036036036036034,
+            "inspector-overhead": 0.18018018018018017,
+            "program": 0.18018018018018017
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 76273456,
+          "exclusiveStagePercents": {
+            "checker": 23.73093989604981,
+            "other-generated-image": 13.838932380355232,
+            "source-completion": 11.689214659422277,
+            "base-cache": 9.456532296110982,
+            "source-error-scan": 8.767086678227875,
+            "final-library": 6.704644404732362,
+            "emitted-reach": 6.360965209181029,
+            "host-wrapper": 4.836649856275033,
+            "book-context": 3.7815934287807806,
+            "layout-proof": 2.4068766465754483,
+            "source-graph-freshening": 1.3755034254642926,
+            "annotation": 1.3752621881982114,
+            "api-load": 1.3750209509321303,
+            "source-loading": 1.133101927359893,
+            "inspector-overhead": 0.9032972099756434,
+            "other-node": 0.8890956770072147,
+            "other-unassigned": 0.3438784785102697,
+            "roots-and-stops": 0.34381554704955286,
+            "module-compilation": 0.34379456989598056,
+            "source-reach": 0.34379456989598056
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 23.724069878254895,
+            "library": 11.369386487482618,
+            "normalization": 9.458011185437828,
+            "definition": 7.908156148057589,
+            "substitution": 6.878660382191152,
+            "reach": 6.360965209181029,
+            "host": 4.836649856275033,
+            "calls": 3.9540990511823666,
+            "strings": 2.2344234670577925,
+            "arityQueries": 1.7193504382442037,
+            "jdArity": 1.7193504382442037,
+            "jdDomains": 0.5156603891136124
+          }
+        },
+        "typescript": {
+          "bytes": 74920032,
+          "exclusiveStagePercents": {
+            "checker": 41.1371313883048,
+            "source-loading": 28.031103884205496,
+            "ts-library": 8.373055686895595,
+            "ts-file-analysis": 6.671102329481119,
+            "typescript-module-stripping": 6.310034678041782,
+            "other-typescript": 6.125699465798413,
+            "module-compilation": 1.3226689492070691,
+            "other-unassigned": 0.8749168713649241,
+            "other-node": 0.6137957869532144,
+            "inspector-overhead": 0.540490959747588
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.0180649148681624
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 657,
+          "exclusiveStagePercents": {
+            "base-cache": 17.35159817351598,
+            "source-completion": 16.590563165905632,
+            "checker": 15.068493150684931,
+            "api-load": 12.32876712328767,
+            "emitted-reach": 8.82800608828006,
+            "final-library": 4.41400304414003,
+            "GC": 2.8919330289193304,
+            "source-loading": 2.73972602739726,
+            "source-error-scan": 2.73972602739726,
+            "source-graph-freshening": 2.5875190258751903,
+            "book-context": 2.43531202435312,
+            "other-generated-image": 2.13089802130898,
+            "host-wrapper": 2.13089802130898,
+            "base-identity": 1.67427701674277,
+            "roots-and-stops": 1.5220700152207,
+            "owned-foreign-layout": 1.36986301369863,
+            "source-reach": 0.91324200913242,
+            "annotation": 0.91324200913242,
+            "layout-proof": 0.91324200913242,
+            "other-host-driver": 0.30441400304414,
+            "inspector-overhead": 0.15220700152207
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 8.82800608828006,
+            "definition": 8.37138508371385,
+            "index": 7.30593607305936,
+            "library": 6.544901065449011,
+            "normalization": 6.2404870624048705,
+            "calls": 3.34855403348554,
+            "strings": 2.2831050228310503,
+            "arityQueries": 2.13089802130898,
+            "host": 2.13089802130898,
+            "jdArity": 1.82648401826484,
+            "substitution": 0.60882800608828,
+            "jdParams": 0.30441400304414
+          }
+        },
+        "typescript": {
+          "sampleEvents": 533,
+          "exclusiveStagePercents": {
+            "checker": 36.96060037523452,
+            "typescript-module-stripping": 25.140712945590995,
+            "source-loading": 23.452157598499063,
+            "ts-file-analysis": 5.440900562851782,
+            "ts-library": 3.377110694183865,
+            "GC": 2.626641651031895,
+            "module-compilation": 1.5009380863039399,
+            "other-node": 0.5628517823639775,
+            "other-typescript": 0.37523452157598497,
+            "inspector-overhead": 0.18761726078799248,
+            "other-unassigned": 0.18761726078799248,
+            "program": 0.18761726078799248
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 66101216,
+          "exclusiveStagePercents": {
+            "checker": 24.79924121214351,
+            "other-generated-image": 15.176918984364827,
+            "base-cache": 12.892882333662364,
+            "source-completion": 8.342599930385546,
+            "source-error-scan": 7.33924168656746,
+            "emitted-reach": 6.3473809619478105,
+            "final-library": 5.355399210810282,
+            "book-context": 4.564732969511484,
+            "host-wrapper": 3.768390584524194,
+            "api-load": 2.6329439990937535,
+            "source-graph-freshening": 1.9836004227214217,
+            "source-reach": 1.3937655851898398,
+            "layout-proof": 1.3884283157514077,
+            "inspector-overhead": 1.0388674241635736,
+            "source-loading": 0.9919575458339526,
+            "other-node": 0.5949421565860452,
+            "other-host-driver": 0.39701538924790736,
+            "roots-and-stops": 0.3967491309085751,
+            "other-unassigned": 0.39662810439069685,
+            "annotation": 0.19831405219534842
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 21.622488760267284,
+            "library": 9.123789795334476,
+            "normalization": 8.729715350471011,
+            "reach": 6.3473809619478105,
+            "strings": 5.354769872917315,
+            "definition": 5.156855208230965,
+            "calls": 4.760856441733235,
+            "host": 3.768390584524194,
+            "substitution": 1.3885130343139225,
+            "arityQueries": 0.793377235299272,
+            "jdArity": 0.793377235299272,
+            "jdDomains": 0.1983382574989241
+          }
+        },
+        "typescript": {
+          "bytes": 59576712,
+          "exclusiveStagePercents": {
+            "checker": 45.77341562589087,
+            "source-loading": 28.903454759302594,
+            "typescript-module-stripping": 7.769841343375915,
+            "ts-file-analysis": 5.943073864163567,
+            "other-typescript": 4.6251763608572425,
+            "ts-library": 4.559929389859581,
+            "module-compilation": 0.993059167145713,
+            "other-node": 0.7718720697442988,
+            "other-unassigned": 0.6601774196602189
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.1095143350643453
+      }
+    },
+    {
+      "case": "lexer",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 758,
+          "exclusiveStagePercents": {
+            "source-completion": 17.150395778364118,
+            "base-cache": 14.511873350923484,
+            "checker": 13.984168865435356,
+            "emitted-reach": 11.609498680738787,
+            "api-load": 10.422163588390502,
+            "final-library": 4.485488126649076,
+            "other-generated-image": 3.5620052770448547,
+            "source-loading": 3.034300791556728,
+            "GC": 2.9023746701846966,
+            "layout-proof": 2.638522427440633,
+            "host-wrapper": 2.638522427440633,
+            "source-error-scan": 2.5065963060686016,
+            "source-graph-freshening": 2.37467018469657,
+            "book-context": 2.1108179419525066,
+            "base-identity": 1.4511873350923483,
+            "annotation": 1.3192612137203166,
+            "roots-and-stops": 1.0554089709762533,
+            "owned-foreign-layout": 0.9234828496042217,
+            "source-reach": 0.7915567282321899,
+            "inspector-overhead": 0.13192612137203166,
+            "other-node": 0.13192612137203166,
+            "foreign-modules": 0.13192612137203166,
+            "other-host-driver": 0.13192612137203166
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 11.609498680738787,
+            "definition": 10.158311345646437,
+            "normalization": 7.783641160949868,
+            "library": 7.124010554089709,
+            "index": 4.881266490765172,
+            "calls": 4.089709762532982,
+            "strings": 2.9023746701846966,
+            "host": 2.638522427440633,
+            "arityQueries": 1.9788918205804749,
+            "substitution": 1.5831134564643798,
+            "jdArity": 1.5831134564643798,
+            "jdDomains": 0.39577836411609496,
+            "jdParams": 0.2638522427440633,
+            "jdLiveArity": 0.13192612137203166
+          }
+        },
+        "typescript": {
+          "sampleEvents": 569,
+          "exclusiveStagePercents": {
+            "checker": 34.797891036906854,
+            "typescript-module-stripping": 23.550087873462214,
+            "source-loading": 22.671353251318102,
+            "ts-file-analysis": 9.13884007029877,
+            "ts-library": 4.21792618629174,
+            "GC": 2.81195079086116,
+            "module-compilation": 1.40597539543058,
+            "other-typescript": 0.8787346221441125,
+            "inspector-overhead": 0.1757469244288225,
+            "other-node": 0.1757469244288225,
+            "program": 0.1757469244288225
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 88708376,
+          "exclusiveStagePercents": {
+            "checker": 20.400860455386987,
+            "other-generated-image": 15.304764456515358,
+            "source-completion": 10.789934876048232,
+            "base-cache": 9.910207351783782,
+            "emitted-reach": 8.585489153808881,
+            "source-error-scan": 7.833794635131185,
+            "final-library": 5.61745375656522,
+            "host-wrapper": 3.8427757937987725,
+            "book-context": 3.3992731419184135,
+            "source-reach": 2.811775068455768,
+            "layout-proof": 2.2195513983933153,
+            "source-loading": 2.0868018145208747,
+            "api-load": 1.528784609922292,
+            "source-graph-freshening": 1.478327142410994,
+            "annotation": 1.3301832963326936,
+            "inspector-overhead": 0.9249363329568788,
+            "roots-and-stops": 0.7390959338495837,
+            "other-node": 0.44334032222616726,
+            "owned-foreign-layout": 0.29576462993753827,
+            "other-unassigned": 0.29556622702685936,
+            "base-identity": 0.16131960301020504
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 20.693793334690287,
+            "library": 9.016835118253095,
+            "reach": 8.585489153808881,
+            "normalization": 8.287046084577177,
+            "definition": 7.540158327326385,
+            "calls": 4.445027829164633,
+            "strings": 4.142508481949889,
+            "host": 3.8427757937987725,
+            "substitution": 2.9561131859746816,
+            "arityQueries": 1.932300056986727,
+            "jdArity": 1.932300056986727,
+            "jdDomains": 0.5913308569643976
+          }
+        },
+        "typescript": {
+          "bytes": 67353784,
+          "exclusiveStagePercents": {
+            "checker": 44.40793408132793,
+            "source-loading": 29.60459652868204,
+            "ts-library": 7.540755245466238,
+            "typescript-module-stripping": 6.547991423911684,
+            "ts-file-analysis": 6.429940150058978,
+            "other-typescript": 3.1139928233282337,
+            "module-compilation": 0.8650917073939008,
+            "other-unassigned": 0.8069509502242665,
+            "other-node": 0.682747089606725
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.3170511102984206
+      }
+    },
+    {
+      "case": "symreg",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 728,
+          "exclusiveStagePercents": {
+            "source-completion": 18.543956043956044,
+            "base-cache": 14.697802197802197,
+            "checker": 14.697802197802197,
+            "api-load": 10.43956043956044,
+            "emitted-reach": 10.302197802197803,
+            "final-library": 3.708791208791209,
+            "other-generated-image": 3.5714285714285716,
+            "GC": 3.434065934065934,
+            "source-loading": 3.434065934065934,
+            "host-wrapper": 2.7472527472527473,
+            "source-error-scan": 2.4725274725274726,
+            "source-graph-freshening": 2.4725274725274726,
+            "book-context": 1.9230769230769231,
+            "base-identity": 1.510989010989011,
+            "owned-foreign-layout": 1.098901098901099,
+            "roots-and-stops": 1.098901098901099,
+            "source-reach": 1.098901098901099,
+            "layout-proof": 1.098901098901099,
+            "annotation": 0.9615384615384616,
+            "other-host-driver": 0.27472527472527475,
+            "inspector-overhead": 0.13736263736263737,
+            "other-node": 0.13736263736263737,
+            "program": 0.13736263736263737
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 10.302197802197803,
+            "definition": 8.241758241758241,
+            "normalization": 6.456043956043956,
+            "library": 6.456043956043956,
+            "index": 5.21978021978022,
+            "calls": 3.9835164835164836,
+            "host": 2.7472527472527473,
+            "strings": 2.60989010989011,
+            "arityQueries": 1.3736263736263736,
+            "jdArity": 1.098901098901099,
+            "substitution": 0.6868131868131868,
+            "jdLiveArity": 0.13736263736263737,
+            "jdDomains": 0.13736263736263737,
+            "jdParams": 0.13736263736263737
+          }
+        },
+        "typescript": {
+          "sampleEvents": 555,
+          "exclusiveStagePercents": {
+            "checker": 36.03603603603604,
+            "typescript-module-stripping": 25.045045045045047,
+            "source-loading": 22.52252252252252,
+            "ts-file-analysis": 6.846846846846847,
+            "ts-library": 3.6036036036036037,
+            "GC": 2.7027027027027026,
+            "module-compilation": 1.4414414414414414,
+            "other-typescript": 0.7207207207207207,
+            "other-unassigned": 0.5405405405405406,
+            "other-node": 0.36036036036036034,
+            "inspector-overhead": 0.18018018018018017
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 76806064,
+          "exclusiveStagePercents": {
+            "checker": 22.367994277118537,
+            "other-generated-image": 15.110827707562256,
+            "source-completion": 11.613957981234398,
+            "base-cache": 8.193842611177159,
+            "source-error-scan": 6.83348127304115,
+            "emitted-reach": 6.321709181712527,
+            "final-library": 5.121074815134389,
+            "book-context": 4.779310133637365,
+            "host-wrapper": 3.243223087177075,
+            "source-loading": 2.543892888457349,
+            "api-load": 2.272101848624869,
+            "source-reach": 2.0509630593751034,
+            "layout-proof": 2.0483486824686135,
+            "annotation": 1.365829656366716,
+            "other-node": 1.2873983491720133,
+            "inspector-overhead": 1.2456099820451676,
+            "source-graph-freshening": 1.1949368997739553,
+            "roots-and-stops": 1.024231628377676,
+            "other-unassigned": 0.8536200995796374,
+            "owned-foreign-layout": 0.34132721603856697,
+            "base-identity": 0.18631862192547713
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 20.485715815355412,
+            "library": 8.364297902311463,
+            "normalization": 8.193103086235483,
+            "definition": 7.170433834495151,
+            "reach": 6.321709181712527,
+            "strings": 4.9499320782796525,
+            "host": 3.243223087177075,
+            "calls": 3.0772257773813276,
+            "arityQueries": 0.8535784362026415,
+            "substitution": 0.682925244027607,
+            "jdArity": 0.6828419172736153,
+            "jdDomains": 0.34147303785805244,
+            "jdLiveArity": 0.17073651892902622
+          }
+        },
+        "typescript": {
+          "bytes": 69540800,
+          "exclusiveStagePercents": {
+            "checker": 43.748786323999724,
+            "source-loading": 28.115143915514345,
+            "ts-file-analysis": 7.541264984009388,
+            "ts-library": 6.939385224213699,
+            "typescript-module-stripping": 6.623070197639372,
+            "other-typescript": 3.5818972459333227,
+            "module-compilation": 1.2380990727745438,
+            "other-node": 1.2348434300439455,
+            "other-unassigned": 0.754112693555438,
+            "inspector-overhead": 0.223396912316223
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.1044748406690748
+      }
+    },
+    {
+      "case": "test-morning-program",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 949,
+          "exclusiveStagePercents": {
+            "emitted-reach": 18.545837723919917,
+            "checker": 11.801896733403582,
+            "base-cache": 11.591148577449948,
+            "source-completion": 11.169652265542677,
+            "final-library": 8.640674394099051,
+            "annotation": 8.535300316122234,
+            "api-load": 7.79768177028451,
+            "GC": 3.0558482613277134,
+            "layout-proof": 2.9504741833508956,
+            "host-wrapper": 2.73972602739726,
+            "other-generated-image": 2.3182297154899896,
+            "source-error-scan": 1.791359325605901,
+            "source-graph-freshening": 1.5806111696522656,
+            "book-context": 1.5806111696522656,
+            "source-loading": 1.4752370916754478,
+            "base-identity": 1.2644889357218125,
+            "roots-and-stops": 0.9483667017913593,
+            "source-reach": 0.9483667017913593,
+            "owned-foreign-layout": 0.8429926238145417,
+            "inspector-overhead": 0.1053740779768177,
+            "other-node": 0.1053740779768177,
+            "other-host-driver": 0.1053740779768177,
+            "foreign-modules": 0.1053740779768177
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 18.545837723919917,
+            "definition": 17.49209694415174,
+            "library": 11.380400421496311,
+            "normalization": 8.008429926238145,
+            "calls": 7.6923076923076925,
+            "index": 5.584826132771338,
+            "substitution": 4.3203371970495255,
+            "arityQueries": 4.3203371970495255,
+            "jdArity": 4.109589041095891,
+            "host": 2.73972602739726,
+            "strings": 2.6343519494204424,
+            "jdDomains": 0.5268703898840885,
+            "jdLiveArity": 0.2107481559536354
+          }
+        },
+        "typescript": {
+          "sampleEvents": 697,
+          "exclusiveStagePercents": {
+            "checker": 28.12051649928264,
+            "ts-file-analysis": 19.655667144906744,
+            "typescript-module-stripping": 18.220946915351508,
+            "source-loading": 17.790530846484934,
+            "ts-library": 9.32568149210904,
+            "GC": 3.586800573888092,
+            "module-compilation": 1.1477761836441893,
+            "other-typescript": 0.860832137733142,
+            "other-unassigned": 0.7173601147776184,
+            "program": 0.28694404591104733,
+            "inspector-overhead": 0.14347202295552366,
+            "other-node": 0.14347202295552366
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 160068016,
+          "exclusiveStagePercents": {
+            "emitted-reach": 21.545316086131784,
+            "other-generated-image": 19.620524315113645,
+            "final-library": 15.07218781296071,
+            "checker": 9.340289442957799,
+            "layout-proof": 9.257999424444668,
+            "base-cache": 5.4880820163348565,
+            "annotation": 3.8504381787302218,
+            "source-error-scan": 3.4403974870282643,
+            "source-completion": 3.112496877577342,
+            "host-wrapper": 2.866801322757696,
+            "book-context": 1.5560885067757697,
+            "api-load": 1.5028261486042283,
+            "source-graph-freshening": 0.8191567764543293,
+            "source-reach": 0.7372266049702272,
+            "source-loading": 0.6218756406651532,
+            "inspector-overhead": 0.4304270254714721,
+            "other-unassigned": 0.32760073692673247,
+            "other-node": 0.24578551657690315,
+            "owned-foreign-layout": 0.08258489316191688,
+            "roots-and-stops": 0.08189518635627994
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "definition": 27.93424515238572,
+            "reach": 21.545316086131784,
+            "substitution": 18.926674270767496,
+            "library": 17.857073957860514,
+            "index": 15.482303472793715,
+            "calls": 12.697217412877785,
+            "normalization": 10.405616572395076,
+            "arityQueries": 5.40807102900557,
+            "jdArity": 5.162265520927054,
+            "strings": 4.914150994412275,
+            "host": 2.866801322757696,
+            "jdDomains": 1.2288576126288715,
+            "jdParams": 0.16390032597142953,
+            "jdLiveArity": 0.08190518210708628
+          }
+        },
+        "typescript": {
+          "bytes": 99038208,
+          "exclusiveStagePercents": {
+            "checker": 31.136742700352574,
+            "ts-file-analysis": 27.28102673263232,
+            "source-loading": 17.88817503644654,
+            "ts-library": 12.049491040871821,
+            "other-typescript": 5.303852024463124,
+            "typescript-module-stripping": 3.943593163559664,
+            "other-unassigned": 1.365339728279413,
+            "module-compilation": 0.597862190721383,
+            "other-node": 0.2770567092651757,
+            "inspector-overhead": 0.15686067340798412
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.6162248816133669
+      }
+    },
+    {
+      "case": "test-evening-program",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 1136,
+          "exclusiveStagePercents": {
+            "emitted-reach": 26.320422535211268,
+            "final-library": 11.003521126760564,
+            "base-cache": 9.595070422535212,
+            "checker": 9.154929577464788,
+            "source-completion": 7.922535211267606,
+            "layout-proof": 7.482394366197183,
+            "api-load": 6.514084507042254,
+            "annotation": 5.457746478873239,
+            "other-generated-image": 3.609154929577465,
+            "GC": 3.1690140845070425,
+            "host-wrapper": 1.4964788732394365,
+            "source-graph-freshening": 1.3204225352112675,
+            "source-loading": 1.1443661971830985,
+            "base-identity": 1.056338028169014,
+            "source-reach": 1.056338028169014,
+            "source-error-scan": 0.8802816901408451,
+            "book-context": 0.7922535211267606,
+            "roots-and-stops": 0.7922535211267606,
+            "owned-foreign-layout": 0.704225352112676,
+            "other-host-driver": 0.352112676056338,
+            "inspector-overhead": 0.0880281690140845,
+            "foreign-modules": 0.0880281690140845
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 26.320422535211268,
+            "definition": 20.070422535211268,
+            "calls": 15.22887323943662,
+            "library": 12.5,
+            "normalization": 10.035211267605634,
+            "substitution": 7.834507042253521,
+            "arityQueries": 5.545774647887324,
+            "index": 5.457746478873239,
+            "jdArity": 5.017605633802817,
+            "strings": 3.3450704225352115,
+            "host": 1.4964788732394365,
+            "jdDomains": 0.528169014084507,
+            "jdLiveArity": 0.2640845070422535,
+            "jdParams": 0.2640845070422535
+          }
+        },
+        "typescript": {
+          "sampleEvents": 854,
+          "exclusiveStagePercents": {
+            "ts-file-analysis": 24.12177985948478,
+            "checker": 23.185011709601874,
+            "typescript-module-stripping": 15.105386416861826,
+            "source-loading": 14.637002341920375,
+            "ts-library": 11.124121779859484,
+            "other-typescript": 7.142857142857143,
+            "GC": 3.161592505854801,
+            "module-compilation": 0.936768149882904,
+            "other-unassigned": 0.234192037470726,
+            "program": 0.234192037470726,
+            "inspector-overhead": 0.117096018735363
+          },
+          "weightedStatus": "refused"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 222793088,
+          "exclusiveStagePercents": {
+            "other-generated-image": 31.990629799071684,
+            "emitted-reach": 22.24737600477085,
+            "final-library": 15.067397423029568,
+            "layout-proof": 8.77039776027522,
+            "checker": 6.65268035604408,
+            "base-cache": 3.707878046916788,
+            "source-error-scan": 2.060789246747188,
+            "host-wrapper": 1.9421787447912209,
+            "source-completion": 1.8894553856177083,
+            "book-context": 1.2356792684699447,
+            "annotation": 1.0594942694092915,
+            "api-load": 0.860680202071619,
+            "source-graph-freshening": 0.5885532678643962,
+            "source-reach": 0.5296717284155602,
+            "other-unassigned": 0.4307781756676401,
+            "source-loading": 0.35857844925602,
+            "inspector-overhead": 0.2473039019953797,
+            "other-node": 0.11970927931121454,
+            "owned-foreign-layout": 0.11767690028157426,
+            "base-identity": 0.06423179519824242,
+            "roots-and-stops": 0.05885999479481159
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "definition": 29.13406721127722,
+            "substitution": 24.312689628863172,
+            "reach": 22.24737600477085,
+            "library": 16.65642338060326,
+            "calls": 14.832086711774469,
+            "index": 13.947868975181134,
+            "normalization": 9.948322992856943,
+            "arityQueries": 6.298773505935696,
+            "jdArity": 6.1220427089730896,
+            "strings": 5.17832941029122,
+            "host": 1.9421787447912209,
+            "jdDomains": 1.2949557932425624,
+            "jdParams": 0.17673079696260596
+          }
+        },
+        "typescript": {
+          "bytes": 126857608,
+          "exclusiveStagePercents": {
+            "ts-file-analysis": 27.49852259550724,
+            "checker": 22.73777068222822,
+            "source-loading": 15.85501754061136,
+            "ts-library": 13.638819360365048,
+            "other-typescript": 13.338722262522875,
+            "typescript-module-stripping": 3.726080031400245,
+            "other-unassigned": 2.083633801450836,
+            "module-compilation": 0.5324710205792309,
+            "other-node": 0.36249776994060934,
+            "inspector-overhead": 0.226464935394336
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.7562453802534255
+      }
+    },
+    {
+      "case": "test-rle-roundtrip",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 645,
+          "exclusiveStagePercents": {
+            "checker": 17.674418604651162,
+            "base-cache": 16.899224806201552,
+            "source-completion": 16.124031007751938,
+            "api-load": 11.317829457364342,
+            "emitted-reach": 7.441860465116279,
+            "source-error-scan": 3.255813953488372,
+            "GC": 3.10077519379845,
+            "other-generated-image": 3.10077519379845,
+            "host-wrapper": 3.10077519379845,
+            "final-library": 2.945736434108527,
+            "source-graph-freshening": 2.4806201550387597,
+            "book-context": 2.3255813953488373,
+            "source-loading": 2.1705426356589146,
+            "base-identity": 1.7054263565891472,
+            "layout-proof": 1.3953488372093024,
+            "owned-foreign-layout": 1.2403100775193798,
+            "roots-and-stops": 1.2403100775193798,
+            "annotation": 0.9302325581395349,
+            "other-host-driver": 0.6201550387596899,
+            "source-reach": 0.6201550387596899,
+            "inspector-overhead": 0.15503875968992248,
+            "program": 0.15503875968992248
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "normalization": 8.062015503875969,
+            "reach": 7.441860465116279,
+            "index": 6.046511627906977,
+            "definition": 6.046511627906977,
+            "library": 6.046511627906977,
+            "calls": 3.255813953488372,
+            "host": 3.10077519379845,
+            "substitution": 2.945736434108527,
+            "strings": 1.8604651162790697,
+            "arityQueries": 1.2403100775193798,
+            "jdArity": 0.7751937984496124,
+            "jdLiveArity": 0.46511627906976744,
+            "jdDomains": 0.15503875968992248
+          }
+        },
+        "typescript": {
+          "sampleEvents": 548,
+          "exclusiveStagePercents": {
+            "checker": 36.496350364963504,
+            "typescript-module-stripping": 24.27007299270073,
+            "source-loading": 22.445255474452555,
+            "ts-file-analysis": 7.481751824817518,
+            "ts-library": 2.9197080291970803,
+            "GC": 2.7372262773722627,
+            "module-compilation": 1.4598540145985401,
+            "program": 0.7299270072992701,
+            "other-typescript": 0.5474452554744526,
+            "other-unassigned": 0.5474452554744526,
+            "inspector-overhead": 0.18248175182481752,
+            "other-node": 0.18248175182481752
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 66728376,
+          "exclusiveStagePercents": {
+            "checker": 23.97870435210352,
+            "base-cache": 13.951186223983632,
+            "other-generated-image": 13.855215058733034,
+            "source-error-scan": 10.027038572016199,
+            "source-completion": 8.055799230000742,
+            "final-library": 6.680300446694521,
+            "book-context": 6.483430677227931,
+            "emitted-reach": 4.128942086047471,
+            "host-wrapper": 3.340264117921887,
+            "api-load": 2.2222509955884435,
+            "source-graph-freshening": 1.9649092014467728,
+            "layout-proof": 1.775304706951058,
+            "source-loading": 1.6884930632809048,
+            "inspector-overhead": 0.8256996993303118,
+            "annotation": 0.393044182582834,
+            "other-node": 0.2365170703390114,
+            "roots-and-stops": 0.19645015787586378,
+            "other-unassigned": 0.19645015787586378
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 21.42078806173853,
+            "normalization": 11.205523719024722,
+            "library": 10.020564564616409,
+            "definition": 6.486691658733011,
+            "strings": 4.715007600364799,
+            "reach": 4.128942086047471,
+            "host": 3.340264117921887,
+            "substitution": 2.751117455638363,
+            "calls": 2.554139786048442,
+            "arityQueries": 1.375414860988075,
+            "jdArity": 1.178892769696658,
+            "jdLiveArity": 0.196522091291417,
+            "jdDomains": 0.19645015787586378
+          }
+        },
+        "typescript": {
+          "bytes": 63488248,
+          "exclusiveStagePercents": {
+            "checker": 45.03341783821157,
+            "source-loading": 32.667500920800336,
+            "typescript-module-stripping": 7.035254776600545,
+            "ts-file-analysis": 4.750220859772347,
+            "other-typescript": 4.129872980586895,
+            "ts-library": 3.4448202130258814,
+            "module-compilation": 1.3503223462710767,
+            "other-node": 0.7243167270893978,
+            "other-unassigned": 0.6195792329944275,
+            "inspector-overhead": 0.2446941046475247
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.0510350829022719
+      }
+    },
+    {
+      "case": "test-map-set-ops",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 1218,
+          "exclusiveStagePercents": {
+            "emitted-reach": 20.935960591133004,
+            "checker": 10.755336617405582,
+            "source-completion": 10.591133004926109,
+            "final-library": 10.426929392446635,
+            "base-cache": 9.0311986863711,
+            "annotation": 7.22495894909688,
+            "api-load": 6.486042692939245,
+            "host-wrapper": 5.747126436781609,
+            "layout-proof": 4.597701149425287,
+            "GC": 3.4482758620689653,
+            "source-graph-freshening": 1.9704433497536946,
+            "other-generated-image": 1.80623973727422,
+            "source-loading": 1.477832512315271,
+            "source-reach": 0.9852216748768473,
+            "base-identity": 0.90311986863711,
+            "roots-and-stops": 0.90311986863711,
+            "source-error-scan": 0.8210180623973727,
+            "book-context": 0.6568144499178982,
+            "owned-foreign-layout": 0.6568144499178982,
+            "other-host-driver": 0.24630541871921183,
+            "inspector-overhead": 0.16420361247947454,
+            "program": 0.08210180623973727,
+            "foreign-modules": 0.08210180623973727
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "definition": 21.839080459770116,
+            "reach": 20.935960591133004,
+            "library": 16.091954022988507,
+            "normalization": 7.8817733990147785,
+            "calls": 7.799671592775041,
+            "host": 5.747126436781609,
+            "arityQueries": 5.500821018062397,
+            "jdArity": 5.336617405582923,
+            "substitution": 4.926108374384237,
+            "index": 4.679802955665025,
+            "strings": 2.7914614121510675,
+            "jdDomains": 0.3284072249589491,
+            "jdParams": 0.08210180623973727,
+            "jdLiveArity": 0.08210180623973727
+          }
+        },
+        "typescript": {
+          "sampleEvents": 756,
+          "exclusiveStagePercents": {
+            "checker": 25.925925925925927,
+            "ts-file-analysis": 25.52910052910053,
+            "typescript-module-stripping": 17.195767195767196,
+            "source-loading": 16.798941798941797,
+            "ts-library": 8.201058201058201,
+            "GC": 3.0423280423280423,
+            "other-typescript": 1.5873015873015872,
+            "module-compilation": 1.0582010582010581,
+            "other-unassigned": 0.26455026455026454,
+            "inspector-overhead": 0.13227513227513227,
+            "other-node": 0.13227513227513227,
+            "program": 0.13227513227513227
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 247218528,
+          "exclusiveStagePercents": {
+            "emitted-reach": 22.070035139113845,
+            "other-generated-image": 21.30291140638132,
+            "final-library": 13.791820651889005,
+            "host-wrapper": 10.563036763975878,
+            "checker": 8.49637612921957,
+            "layout-proof": 7.955989447522315,
+            "annotation": 3.8724864505301158,
+            "source-completion": 3.606344585952716,
+            "base-cache": 2.5481132223228835,
+            "source-error-scan": 1.8041560380134616,
+            "source-graph-freshening": 0.6901262675587163,
+            "source-reach": 0.6894369988320617,
+            "api-load": 0.599828828363544,
+            "book-context": 0.5833090309477128,
+            "source-loading": 0.5086867922779639,
+            "inspector-overhead": 0.22287002695849722,
+            "roots-and-stops": 0.21215238365952896,
+            "other-unassigned": 0.21211355161859066,
+            "other-node": 0.10605030380247228,
+            "base-identity": 0.057885629025345546,
+            "owned-foreign-layout": 0.05323225611957369,
+            "foreign-validation": 0.05303809591488224
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "definition": 29.016025853855098,
+            "substitution": 22.179179062177734,
+            "reach": 22.070035139113845,
+            "library": 19.043084019980896,
+            "index": 15.644681777249318,
+            "calls": 12.78770173730668,
+            "host": 10.563036763975878,
+            "normalization": 8.069744675447627,
+            "arityQueries": 7.267639745836526,
+            "jdArity": 7.161524721965823,
+            "strings": 3.659023485488919,
+            "jdDomains": 1.8034764772970415,
+            "jdLiveArity": 0.05308987196946662,
+            "jdParams": 0.05302515190123614
+          }
+        },
+        "typescript": {
+          "bytes": 116810032,
+          "exclusiveStagePercents": {
+            "ts-file-analysis": 36.1957541455001,
+            "checker": 21.788628565738257,
+            "source-loading": 16.09035771859047,
+            "ts-library": 12.784922445702266,
+            "other-typescript": 6.51318030629424,
+            "typescript-module-stripping": 4.030544225858957,
+            "other-unassigned": 1.6071975735782693,
+            "module-compilation": 0.46274107689654603,
+            "other-node": 0.39367851555763633,
+            "inspector-overhead": 0.13299542628324937
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 2.1164152065295214
+      }
+    },
+    {
+      "case": "raytrace",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 959,
+          "exclusiveStagePercents": {
+            "source-completion": 21.48070907194995,
+            "checker": 14.80709071949948,
+            "emitted-reach": 11.78310740354536,
+            "base-cache": 11.470281543274243,
+            "api-load": 8.237747653806048,
+            "final-library": 4.796663190823775,
+            "source-graph-freshening": 3.441084462982273,
+            "GC": 3.3368091762252345,
+            "annotation": 2.9197080291970803,
+            "source-error-scan": 2.6068821689259645,
+            "source-loading": 2.502606882168926,
+            "layout-proof": 2.3983315954118876,
+            "other-generated-image": 2.2940563086548487,
+            "host-wrapper": 2.0855057351407718,
+            "book-context": 1.8769551616266944,
+            "base-identity": 1.1470281543274243,
+            "roots-and-stops": 1.0427528675703859,
+            "owned-foreign-layout": 0.8342022940563086,
+            "source-reach": 0.4171011470281543,
+            "other-host-driver": 0.31282586027111575,
+            "inspector-overhead": 0.10427528675703858,
+            "foreign-modules": 0.10427528675703858
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "definition": 12.408759124087592,
+            "reach": 11.78310740354536,
+            "library": 6.882168925964546,
+            "normalization": 5.9436913451511995,
+            "index": 4.692387904066736,
+            "calls": 2.9197080291970803,
+            "substitution": 2.18978102189781,
+            "host": 2.0855057351407718,
+            "arityQueries": 1.5641293013555788,
+            "jdArity": 1.5641293013555788,
+            "strings": 1.251303441084463,
+            "jdDomains": 0.20855057351407716
+          }
+        },
+        "typescript": {
+          "sampleEvents": 714,
+          "exclusiveStagePercents": {
+            "checker": 28.991596638655462,
+            "source-loading": 18.207282913165265,
+            "typescript-module-stripping": 17.92717086834734,
+            "ts-library": 15.966386554621849,
+            "ts-file-analysis": 12.324929971988796,
+            "GC": 3.5014005602240896,
+            "other-typescript": 1.5406162464985995,
+            "module-compilation": 1.1204481792717087,
+            "inspector-overhead": 0.1400560224089636,
+            "other-node": 0.1400560224089636,
+            "other-unassigned": 0.1400560224089636
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 128791224,
+          "exclusiveStagePercents": {
+            "other-generated-image": 19.398949108520004,
+            "source-completion": 15.48176294993516,
+            "checker": 13.454804964040097,
+            "emitted-reach": 9.687318446480484,
+            "final-library": 8.247071244543806,
+            "layout-proof": 7.227448975871213,
+            "source-error-scan": 6.721694018530331,
+            "base-cache": 4.684753986032464,
+            "annotation": 2.9524806752360706,
+            "book-context": 2.4429739094645146,
+            "source-loading": 1.948952670874531,
+            "host-wrapper": 1.8327956880043317,
+            "source-graph-freshening": 1.4253082958509657,
+            "api-load": 1.2651607379707797,
+            "other-node": 0.7500697407767474,
+            "roots-and-stops": 0.7125827144868194,
+            "source-reach": 0.7125081752464749,
+            "inspector-overhead": 0.636813576676622,
+            "other-unassigned": 0.3054369605183658,
+            "base-identity": 0.11111316094022058
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "definition": 13.760341310212254,
+            "index": 12.421771843708854,
+            "library": 9.978058753444257,
+            "reach": 9.687318446480484,
+            "normalization": 8.666273720637983,
+            "substitution": 7.942454215669229,
+            "strings": 5.802165526433695,
+            "calls": 3.5634601935299566,
+            "arityQueries": 2.0369338208945043,
+            "jdArity": 2.0369338208945043,
+            "host": 1.8327956880043317,
+            "jdDomains": 0.6110726923443168
+          }
+        },
+        "typescript": {
+          "bytes": 116523120,
+          "exclusiveStagePercents": {
+            "checker": 31.194708826883456,
+            "ts-library": 21.319834209725933,
+            "source-loading": 19.14852262795572,
+            "ts-file-analysis": 10.612870647473223,
+            "other-typescript": 10.575714072880986,
+            "typescript-module-stripping": 3.8504083996377716,
+            "other-unassigned": 2.2550580519986076,
+            "module-compilation": 0.6889688501303433,
+            "other-node": 0.2354828809939178,
+            "absent-tree-node": 0.11843143232004086
+          },
+          "absentTreeNodes": {
+            "weight": 138000,
+            "ids": {
+              "15619": 138000
+            }
+          }
+        },
+        "b2OverTS": 1.1052847194616828
+      }
+    },
+    {
+      "case": "local-row",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 712,
+          "exclusiveStagePercents": {
+            "source-completion": 17.696629213483146,
+            "checker": 15.589887640449438,
+            "base-cache": 15.308988764044944,
+            "api-load": 10.674157303370787,
+            "emitted-reach": 9.691011235955056,
+            "final-library": 3.230337078651685,
+            "host-wrapper": 3.0898876404494384,
+            "other-generated-image": 2.949438202247191,
+            "GC": 2.808988764044944,
+            "source-loading": 2.808988764044944,
+            "source-error-scan": 2.668539325842697,
+            "source-graph-freshening": 2.3876404494382024,
+            "book-context": 2.106741573033708,
+            "layout-proof": 2.106741573033708,
+            "base-identity": 1.6853932584269662,
+            "annotation": 1.404494382022472,
+            "roots-and-stops": 1.2640449438202248,
+            "owned-foreign-layout": 1.1235955056179776,
+            "source-reach": 0.42134831460674155,
+            "other-unassigned": 0.2808988764044944,
+            "other-host-driver": 0.2808988764044944,
+            "inspector-overhead": 0.1404494382022472,
+            "other-node": 0.1404494382022472,
+            "program": 0.1404494382022472
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 9.691011235955056,
+            "definition": 8.286516853932584,
+            "normalization": 7.584269662921348,
+            "library": 6.320224719101123,
+            "index": 5.337078651685394,
+            "calls": 3.5112359550561796,
+            "host": 3.0898876404494384,
+            "strings": 1.5449438202247192,
+            "substitution": 1.2640449438202248,
+            "arityQueries": 0.9831460674157303,
+            "jdArity": 0.9831460674157303,
+            "jdDomains": 0.2808988764044944
+          }
+        },
+        "typescript": {
+          "sampleEvents": 553,
+          "exclusiveStagePercents": {
+            "checker": 36.52802893309222,
+            "typescript-module-stripping": 22.965641952983724,
+            "source-loading": 22.423146473779386,
+            "ts-file-analysis": 6.6907775768535265,
+            "ts-library": 4.701627486437613,
+            "GC": 2.8933092224231465,
+            "other-typescript": 1.6274864376130198,
+            "module-compilation": 1.4466546112115732,
+            "other-unassigned": 0.3616636528028933,
+            "inspector-overhead": 0.18083182640144665,
+            "other-node": 0.18083182640144665
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 82891240,
+          "exclusiveStagePercents": {
+            "checker": 23.25796549792234,
+            "other-generated-image": 14.955018165972666,
+            "source-completion": 10.134175818819939,
+            "emitted-reach": 9.334863370363383,
+            "base-cache": 9.015997347850027,
+            "source-error-scan": 8.067342218550477,
+            "final-library": 6.643683940546673,
+            "book-context": 3.487094655599313,
+            "host-wrapper": 3.4802519542475174,
+            "layout-proof": 2.2288097029312146,
+            "api-load": 2.081098075019749,
+            "source-graph-freshening": 1.8980920058621393,
+            "roots-and-stops": 1.2656681212634773,
+            "annotation": 1.265523353251803,
+            "source-loading": 1.1071954044842374,
+            "inspector-overhead": 0.6646975000012064,
+            "source-reach": 0.4744433790591141,
+            "other-node": 0.32173242914450306,
+            "owned-foreign-layout": 0.1581831807558917,
+            "other-host-driver": 0.15816387835433515
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 22.619905312069164,
+            "library": 9.965752714038299,
+            "definition": 9.649231933314063,
+            "reach": 9.334863370363383,
+            "normalization": 9.022666327587812,
+            "substitution": 4.90688280209103,
+            "strings": 3.4937057281324297,
+            "host": 3.4802519542475174,
+            "calls": 2.849372261773379,
+            "arityQueries": 1.4236293244014686,
+            "jdArity": 1.4236293244014686,
+            "jdDomains": 0.632848537432906
+          }
+        },
+        "typescript": {
+          "bytes": 74148096,
+          "exclusiveStagePercents": {
+            "checker": 42.83590505142573,
+            "source-loading": 26.02566625581323,
+            "ts-library": 10.612307563501023,
+            "ts-file-analysis": 6.188630925870301,
+            "typescript-module-stripping": 6.125513998363491,
+            "other-typescript": 4.066542720125949,
+            "other-unassigned": 1.76846078421218,
+            "module-compilation": 1.1613730445620614,
+            "other-node": 0.6201858507600788,
+            "inspector-overhead": 0.595413805365953
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.1179146123994876
+      }
+    },
+    {
+      "case": "local-fold",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 537,
+          "exclusiveStagePercents": {
+            "base-cache": 21.042830540037244,
+            "checker": 15.456238361266294,
+            "api-load": 15.083798882681565,
+            "source-completion": 11.1731843575419,
+            "emitted-reach": 7.262569832402234,
+            "source-error-scan": 3.538175046554935,
+            "host-wrapper": 3.35195530726257,
+            "GC": 3.165735567970205,
+            "other-generated-image": 2.60707635009311,
+            "book-context": 2.60707635009311,
+            "source-loading": 2.2346368715083798,
+            "final-library": 2.2346368715083798,
+            "base-identity": 2.0484171322160147,
+            "source-graph-freshening": 2.0484171322160147,
+            "roots-and-stops": 1.675977653631285,
+            "owned-foreign-layout": 1.303538175046555,
+            "source-reach": 0.931098696461825,
+            "annotation": 0.74487895716946,
+            "other-host-driver": 0.5586592178770949,
+            "layout-proof": 0.5586592178770949,
+            "inspector-overhead": 0.186219739292365,
+            "program": 0.186219739292365
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "normalization": 8.007448789571695,
+            "reach": 7.262569832402234,
+            "index": 6.70391061452514,
+            "library": 5.58659217877095,
+            "definition": 5.400372439478585,
+            "host": 3.35195530726257,
+            "calls": 2.60707635009311,
+            "substitution": 1.303538175046555,
+            "arityQueries": 1.303538175046555,
+            "jdArity": 1.303538175046555,
+            "strings": 0.931098696461825
+          }
+        },
+        "typescript": {
+          "sampleEvents": 528,
+          "exclusiveStagePercents": {
+            "checker": 37.68939393939394,
+            "source-loading": 24.431818181818183,
+            "typescript-module-stripping": 24.053030303030305,
+            "ts-file-analysis": 5.113636363636363,
+            "GC": 3.409090909090909,
+            "ts-library": 2.272727272727273,
+            "module-compilation": 1.5151515151515151,
+            "other-typescript": 0.7575757575757576,
+            "other-node": 0.3787878787878788,
+            "inspector-overhead": 0.1893939393939394,
+            "other-unassigned": 0.1893939393939394
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 49394552,
+          "exclusiveStagePercents": {
+            "checker": 28.935563581991797,
+            "base-cache": 16.988853345607833,
+            "other-generated-image": 12.607690014072807,
+            "source-error-scan": 9.55616319791705,
+            "source-completion": 5.574363747645692,
+            "api-load": 4.338049265028257,
+            "emitted-reach": 3.45040481387502,
+            "book-context": 3.185096202512374,
+            "final-library": 2.919739002795288,
+            "host-wrapper": 2.9196256299682606,
+            "source-graph-freshening": 2.6602771900836353,
+            "other-node": 1.7270730585834648,
+            "annotation": 1.592726258555802,
+            "inspector-overhead": 1.3948420870382627,
+            "source-loading": 0.7980313294470208,
+            "source-reach": 0.530908752851934,
+            "base-identity": 0.2897161614098656,
+            "layout-proof": 0.26548676866226056,
+            "other-unassigned": 0.2653895919533798
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 26.54987537896892,
+            "normalization": 9.024477031394069,
+            "library": 5.839364632763549,
+            "reach": 3.45040481387502,
+            "definition": 3.1850800063942275,
+            "host": 2.9196256299682606,
+            "substitution": 2.654673333204844,
+            "calls": 1.8579376932095668,
+            "arityQueries": 1.0616717406405467,
+            "strings": 0.7962659525690201,
+            "jdArity": 0.5308763606156404,
+            "jdLiveArity": 0.5307953800249063,
+            "jdDomains": 0.26548676866226056
+          }
+        },
+        "typescript": {
+          "bytes": 60099040,
+          "exclusiveStagePercents": {
+            "checker": 47.999901495930715,
+            "source-loading": 32.335677907667076,
+            "typescript-module-stripping": 8.03347274765121,
+            "other-typescript": 5.017371325731659,
+            "ts-file-analysis": 1.963359148498878,
+            "ts-library": 1.7451992577585267,
+            "module-compilation": 0.9901788780652736,
+            "inspector-overhead": 0.9315024000383367,
+            "other-node": 0.7651636365572562,
+            "other-unassigned": 0.21817320210106517
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 0.8218858737177832
+      }
+    },
+    {
+      "case": "scalar-region",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 610,
+          "exclusiveStagePercents": {
+            "base-cache": 20.327868852459016,
+            "api-load": 14.59016393442623,
+            "source-completion": 14.426229508196721,
+            "checker": 13.442622950819672,
+            "emitted-reach": 7.213114754098361,
+            "source-error-scan": 3.9344262295081966,
+            "GC": 2.7868852459016393,
+            "other-generated-image": 2.622950819672131,
+            "base-identity": 2.622950819672131,
+            "book-context": 2.2950819672131146,
+            "host-wrapper": 2.2950819672131146,
+            "source-loading": 2.1311475409836067,
+            "source-graph-freshening": 2.1311475409836067,
+            "final-library": 2.1311475409836067,
+            "owned-foreign-layout": 1.639344262295082,
+            "roots-and-stops": 1.639344262295082,
+            "annotation": 1.4754098360655739,
+            "source-reach": 0.819672131147541,
+            "layout-proof": 0.819672131147541,
+            "other-host-driver": 0.32786885245901637,
+            "inspector-overhead": 0.16393442622950818,
+            "other-node": 0.16393442622950818
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 7.213114754098361,
+            "normalization": 6.229508196721311,
+            "index": 5.573770491803279,
+            "definition": 5.573770491803279,
+            "library": 4.426229508196721,
+            "host": 2.2950819672131146,
+            "calls": 2.1311475409836067,
+            "strings": 1.639344262295082,
+            "substitution": 1.1475409836065573,
+            "arityQueries": 0.819672131147541,
+            "jdArity": 0.819672131147541
+          }
+        },
+        "typescript": {
+          "sampleEvents": 520,
+          "exclusiveStagePercents": {
+            "checker": 37.11538461538461,
+            "typescript-module-stripping": 24.23076923076923,
+            "source-loading": 23.26923076923077,
+            "ts-file-analysis": 5.769230769230769,
+            "ts-library": 3.269230769230769,
+            "GC": 2.8846153846153846,
+            "module-compilation": 1.5384615384615385,
+            "other-typescript": 0.9615384615384616,
+            "other-node": 0.38461538461538464,
+            "inspector-overhead": 0.19230769230769232,
+            "other-unassigned": 0.19230769230769232,
+            "program": 0.19230769230769232
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 45454416,
+          "exclusiveStagePercents": {
+            "checker": 23.94604739834299,
+            "base-cache": 17.595526912060645,
+            "source-error-scan": 14.429401094934319,
+            "other-generated-image": 8.508955433505074,
+            "source-completion": 7.527506238337767,
+            "book-context": 5.480127607403426,
+            "api-load": 5.480127607403426,
+            "final-library": 3.470870685039711,
+            "emitted-reach": 2.307753772482744,
+            "host-wrapper": 2.01992255273943,
+            "source-graph-freshening": 2.019148150533933,
+            "other-node": 1.9008230135439426,
+            "inspector-overhead": 1.5056666881387277,
+            "roots-and-stops": 1.1537184857902476,
+            "source-loading": 0.6346578075054358,
+            "annotation": 0.5768944429953736,
+            "other-host-driver": 0.28923922375330924,
+            "other-unassigned": 0.2884296214475619,
+            "source-reach": 0.28841202139743694,
+            "layout-proof": 0.288394421347312,
+            "owned-foreign-layout": 0.28837682129718706
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 19.613707059837708,
+            "normalization": 9.807240731021603,
+            "library": 5.490793237779141,
+            "definition": 2.893729841342588,
+            "reach": 2.307753772482744,
+            "host": 2.01992255273943,
+            "calls": 1.7308065293369956,
+            "substitution": 1.4421129071375596,
+            "arityQueries": 0.8653416644930605,
+            "jdArity": 0.5769296430956236,
+            "strings": 0.576788842694624,
+            "jdDomains": 0.2884296214475619,
+            "jdLiveArity": 0.28841202139743694
+          }
+        },
+        "typescript": {
+          "bytes": 55123272,
+          "exclusiveStagePercents": {
+            "checker": 50.4334212961814,
+            "source-loading": 29.75344424402093,
+            "typescript-module-stripping": 8.1356999272467,
+            "other-typescript": 4.280994060004275,
+            "ts-library": 3.8232708682459924,
+            "ts-file-analysis": 1.4284493126605402,
+            "module-compilation": 0.8348125633761363,
+            "other-node": 0.8342320463124903,
+            "other-unassigned": 0.4756756819515358
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 0.8245957533144984
+      }
+    },
+    {
+      "case": "mandelbrot-grid",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 814,
+          "exclusiveStagePercents": {
+            "source-completion": 18.05896805896806,
+            "checker": 15.847665847665848,
+            "base-cache": 14.742014742014742,
+            "emitted-reach": 11.302211302211303,
+            "api-load": 9.582309582309582,
+            "final-library": 3.6855036855036856,
+            "other-generated-image": 2.8255528255528257,
+            "source-loading": 2.8255528255528257,
+            "GC": 2.7027027027027026,
+            "source-error-scan": 2.7027027027027026,
+            "source-graph-freshening": 2.457002457002457,
+            "book-context": 2.3341523341523343,
+            "layout-proof": 2.3341523341523343,
+            "annotation": 1.9656019656019657,
+            "host-wrapper": 1.9656019656019657,
+            "base-identity": 1.597051597051597,
+            "roots-and-stops": 1.2285012285012284,
+            "owned-foreign-layout": 0.9828009828009828,
+            "source-reach": 0.4914004914004914,
+            "inspector-overhead": 0.12285012285012285,
+            "other-node": 0.12285012285012285,
+            "other-host-driver": 0.12285012285012285
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 11.302211302211303,
+            "definition": 10.31941031941032,
+            "normalization": 6.6339066339066335,
+            "index": 5.896805896805897,
+            "library": 5.651105651105651,
+            "calls": 3.0712530712530715,
+            "host": 1.9656019656019657,
+            "strings": 1.8427518427518428,
+            "substitution": 1.71990171990172,
+            "arityQueries": 1.1056511056511056,
+            "jdArity": 1.1056511056511056,
+            "jdDomains": 0.12285012285012285
+          }
+        },
+        "typescript": {
+          "sampleEvents": 601,
+          "exclusiveStagePercents": {
+            "checker": 33.277870216306155,
+            "typescript-module-stripping": 23.62728785357737,
+            "source-loading": 20.965058236272878,
+            "ts-file-analysis": 8.153078202995008,
+            "ts-library": 7.653910149750416,
+            "GC": 3.327787021630616,
+            "module-compilation": 1.3311148086522462,
+            "other-typescript": 0.49916805324459235,
+            "other-node": 0.33277870216306155,
+            "other-unassigned": 0.33277870216306155,
+            "program": 0.33277870216306155,
+            "inspector-overhead": 0.16638935108153077
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 91813592,
+          "exclusiveStagePercents": {
+            "checker": 19.85356590775797,
+            "source-completion": 13.469831351331946,
+            "other-generated-image": 10.78230770014967,
+            "emitted-reach": 8.569363019802122,
+            "source-error-scan": 8.282869490608753,
+            "final-library": 7.998223182467362,
+            "base-cache": 7.854523325914533,
+            "layout-proof": 4.011257940981113,
+            "book-context": 3.7125483555855214,
+            "host-wrapper": 3.574398875495471,
+            "annotation": 3.570033508764149,
+            "source-loading": 2.171042387710961,
+            "api-load": 2.0163027713805164,
+            "other-node": 1.2280360406768531,
+            "inspector-overhead": 0.7504074124449897,
+            "roots-and-stops": 0.7140206430437881,
+            "source-graph-freshening": 0.5714709429950198,
+            "base-identity": 0.29869215878189365,
+            "source-reach": 0.285552492053682,
+            "owned-foreign-layout": 0.285552492053682
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 17.285066028132306,
+            "definition": 11.568430957368491,
+            "library": 11.429810958708597,
+            "reach": 8.569363019802122,
+            "normalization": 7.567925237038978,
+            "substitution": 5.712722795988637,
+            "strings": 4.724834205375605,
+            "host": 3.574398875495471,
+            "calls": 2.57161053017074,
+            "arityQueries": 0.999590561711168,
+            "jdArity": 0.7139683632026944,
+            "jdDomains": 0.2855699186673799,
+            "jdParams": 0.14282852586793468,
+            "jdLiveArity": 0.14279367264053888
+          }
+        },
+        "typescript": {
+          "bytes": 78764000,
+          "exclusiveStagePercents": {
+            "checker": 38.78342389924331,
+            "source-loading": 22.971804377634452,
+            "ts-library": 14.95861053273069,
+            "ts-file-analysis": 8.999756233812402,
+            "typescript-module-stripping": 5.860372759128536,
+            "other-typescript": 4.994708242344218,
+            "other-unassigned": 1.7281702300543396,
+            "module-compilation": 0.7555736123101925,
+            "other-node": 0.7503427962013103,
+            "inspector-overhead": 0.19723731654055152
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.1656796506017977
+      }
+    },
+    {
+      "case": "raytrace-active",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 1024,
+          "exclusiveStagePercents": {
+            "source-completion": 20.1171875,
+            "checker": 14.94140625,
+            "emitted-reach": 12.109375,
+            "base-cache": 10.9375,
+            "api-load": 8.10546875,
+            "annotation": 5.46875,
+            "final-library": 5.46875,
+            "source-graph-freshening": 3.125,
+            "source-loading": 2.83203125,
+            "GC": 2.44140625,
+            "source-error-scan": 2.44140625,
+            "layout-proof": 2.34375,
+            "host-wrapper": 2.24609375,
+            "other-generated-image": 1.953125,
+            "book-context": 1.66015625,
+            "base-identity": 1.171875,
+            "roots-and-stops": 1.171875,
+            "owned-foreign-layout": 0.78125,
+            "source-reach": 0.390625,
+            "inspector-overhead": 0.09765625,
+            "other-node": 0.09765625,
+            "other-host-driver": 0.09765625
+          },
+          "weightedStatus": "refused",
+          "ancestorUnionPercents": {
+            "definition": 12.5,
+            "reach": 12.109375,
+            "library": 7.71484375,
+            "normalization": 5.6640625,
+            "index": 4.19921875,
+            "calls": 3.125,
+            "host": 2.24609375,
+            "substitution": 2.1484375,
+            "arityQueries": 2.05078125,
+            "jdArity": 1.7578125,
+            "strings": 1.66015625,
+            "jdLiveArity": 0.1953125,
+            "jdParams": 0.09765625,
+            "jdDomains": 0.09765625
+          }
+        },
+        "typescript": {
+          "sampleEvents": 732,
+          "exclusiveStagePercents": {
+            "checker": 28.14207650273224,
+            "typescript-module-stripping": 18.306010928961747,
+            "source-loading": 18.0327868852459,
+            "ts-library": 16.120218579234972,
+            "ts-file-analysis": 12.431693989071038,
+            "GC": 3.278688524590164,
+            "other-typescript": 1.7759562841530054,
+            "module-compilation": 1.092896174863388,
+            "other-unassigned": 0.273224043715847,
+            "program": 0.273224043715847,
+            "inspector-overhead": 0.1366120218579235,
+            "other-node": 0.1366120218579235
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 140595080,
+          "exclusiveStagePercents": {
+            "other-generated-image": 21.881846790086822,
+            "source-completion": 15.014272192170594,
+            "checker": 13.808528719497154,
+            "emitted-reach": 9.527491289168868,
+            "source-error-scan": 6.994497958250033,
+            "final-library": 6.808864150865023,
+            "base-cache": 6.528074808876669,
+            "layout-proof": 5.501780005388524,
+            "annotation": 2.704379129056294,
+            "source-loading": 2.3396835792546935,
+            "book-context": 2.2378251073935163,
+            "source-graph-freshening": 1.8652942905256713,
+            "host-wrapper": 1.6840532399853536,
+            "api-load": 0.7749175860207911,
+            "other-node": 0.5309887088509783,
+            "inspector-overhead": 0.49185220421653447,
+            "other-unassigned": 0.4663776285770455,
+            "roots-and-stops": 0.4662808968848697,
+            "source-reach": 0.37299171493056515
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 15.112836096398253,
+            "definition": 11.961499648494101,
+            "reach": 9.527491289168868,
+            "library": 8.492917390850376,
+            "substitution": 8.114531461556123,
+            "normalization": 6.533759218316885,
+            "strings": 5.315042318692802,
+            "calls": 3.730981197919586,
+            "arityQueries": 1.8748422775533824,
+            "jdArity": 1.6882183928484553,
+            "host": 1.6840532399853536,
+            "jdDomains": 0.7461655130464024,
+            "jdLiveArity": 0.18662388470492708
+          }
+        },
+        "typescript": {
+          "bytes": 108521144,
+          "exclusiveStagePercents": {
+            "checker": 30.56595864857451,
+            "source-loading": 19.330559213419278,
+            "ts-library": 19.299715454529302,
+            "ts-file-analysis": 11.779175494132277,
+            "other-typescript": 10.7511804335568,
+            "typescript-module-stripping": 4.23663060536848,
+            "other-unassigned": 2.983455463757367,
+            "other-node": 0.6653892259005305,
+            "module-compilation": 0.2451430110246534,
+            "inspector-overhead": 0.14279244973679966
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.2955547169683357
+      }
+    },
+    {
+      "case": "closures",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 612,
+          "exclusiveStagePercents": {
+            "base-cache": 18.464052287581698,
+            "api-load": 14.869281045751634,
+            "checker": 14.542483660130719,
+            "source-completion": 13.88888888888889,
+            "emitted-reach": 6.209150326797386,
+            "other-generated-image": 4.084967320261438,
+            "source-error-scan": 4.084967320261438,
+            "GC": 2.9411764705882355,
+            "book-context": 2.7777777777777777,
+            "source-loading": 2.6143790849673203,
+            "base-identity": 2.450980392156863,
+            "source-graph-freshening": 2.287581699346405,
+            "host-wrapper": 2.1241830065359477,
+            "final-library": 1.9607843137254901,
+            "roots-and-stops": 1.6339869281045751,
+            "owned-foreign-layout": 1.4705882352941178,
+            "annotation": 1.3071895424836601,
+            "layout-proof": 0.8169934640522876,
+            "source-reach": 0.6535947712418301,
+            "other-host-driver": 0.49019607843137253,
+            "inspector-overhead": 0.16339869281045752,
+            "other-node": 0.16339869281045752
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "normalization": 7.8431372549019605,
+            "index": 6.699346405228758,
+            "reach": 6.209150326797386,
+            "definition": 5.065359477124183,
+            "library": 4.084967320261438,
+            "host": 2.1241830065359477,
+            "calls": 1.9607843137254901,
+            "strings": 1.4705882352941178,
+            "arityQueries": 1.3071895424836601,
+            "jdArity": 1.1437908496732025,
+            "substitution": 0.9803921568627451,
+            "jdParams": 0.16339869281045752,
+            "jdDomains": 0.16339869281045752
+          }
+        },
+        "typescript": {
+          "sampleEvents": 513,
+          "exclusiveStagePercents": {
+            "checker": 38.20662768031189,
+            "typescript-module-stripping": 24.756335282651072,
+            "source-loading": 23.78167641325536,
+            "ts-file-analysis": 4.8732943469785575,
+            "GC": 2.729044834307992,
+            "ts-library": 1.949317738791423,
+            "module-compilation": 1.5594541910331383,
+            "other-typescript": 0.9746588693957114,
+            "other-unassigned": 0.5847953216374269,
+            "program": 0.3898635477582846,
+            "inspector-overhead": 0.1949317738791423
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 51358576,
+          "exclusiveStagePercents": {
+            "checker": 25.021971014149614,
+            "base-cache": 14.558550065718332,
+            "other-generated-image": 13.274822884497421,
+            "source-error-scan": 11.998775043918663,
+            "book-context": 7.402479383384773,
+            "source-completion": 4.927177108648807,
+            "api-load": 4.537150718509018,
+            "emitted-reach": 3.574180094089836,
+            "final-library": 2.552734328148039,
+            "source-graph-freshening": 2.2974468762529554,
+            "roots-and-stops": 1.7875885032326442,
+            "host-wrapper": 1.7868252421951887,
+            "source-loading": 1.6198268425510862,
+            "inspector-overhead": 1.5968511276480875,
+            "layout-proof": 1.5319583627084987,
+            "other-unassigned": 0.5104814432549688,
+            "source-reach": 0.25534975891854944,
+            "annotation": 0.255334182162683,
+            "owned-foreign-layout": 0.2552562983833508,
+            "other-node": 0.2552407216274844
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 25.01860643488246,
+            "normalization": 10.976254481822082,
+            "library": 4.339559570343227,
+            "reach": 3.574180094089836,
+            "definition": 3.063433845985138,
+            "substitution": 2.0425176897428,
+            "calls": 1.7870588935331853,
+            "host": 1.7868252421951887,
+            "arityQueries": 0.7658467789293847,
+            "jdArity": 0.7658467789293847,
+            "strings": 0.7657844719059189,
+            "jdDomains": 0.5106060573019002
+          }
+        },
+        "typescript": {
+          "bytes": 60440472,
+          "exclusiveStagePercents": {
+            "checker": 48.81580673294543,
+            "source-loading": 33.45576785039005,
+            "typescript-module-stripping": 7.604162985358553,
+            "other-typescript": 3.038004071179325,
+            "ts-library": 2.912816432009333,
+            "ts-file-analysis": 1.3036297929638934,
+            "module-compilation": 1.201221592048454,
+            "other-node": 0.9777289628049232,
+            "other-unassigned": 0.4338285114649667,
+            "inspector-overhead": 0.257033068835068
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 0.8497381688217127
+      }
+    },
+    {
+      "case": "list-pipeline",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 912,
+          "exclusiveStagePercents": {
+            "emitted-reach": 17.214912280701753,
+            "checker": 13.596491228070175,
+            "base-cache": 12.171052631578947,
+            "source-completion": 11.842105263157896,
+            "api-load": 8.771929824561404,
+            "final-library": 8.114035087719298,
+            "annotation": 6.68859649122807,
+            "GC": 2.960526315789474,
+            "layout-proof": 2.6315789473684212,
+            "host-wrapper": 2.412280701754386,
+            "other-generated-image": 2.0833333333333335,
+            "source-error-scan": 2.0833333333333335,
+            "source-loading": 1.644736842105263,
+            "book-context": 1.644736842105263,
+            "source-graph-freshening": 1.5350877192982457,
+            "base-identity": 1.3157894736842106,
+            "roots-and-stops": 1.0964912280701755,
+            "owned-foreign-layout": 0.8771929824561403,
+            "source-reach": 0.7675438596491229,
+            "other-host-driver": 0.32894736842105265,
+            "inspector-overhead": 0.10964912280701754,
+            "other-node": 0.10964912280701754
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 17.214912280701753,
+            "definition": 16.44736842105263,
+            "library": 10.526315789473685,
+            "calls": 7.565789473684211,
+            "normalization": 6.68859649122807,
+            "substitution": 5.2631578947368425,
+            "index": 4.824561403508772,
+            "strings": 3.3991228070175437,
+            "arityQueries": 3.0701754385964914,
+            "jdArity": 2.8508771929824563,
+            "host": 2.412280701754386,
+            "jdDomains": 0.43859649122807015,
+            "jdParams": 0.10964912280701754,
+            "jdLiveArity": 0.10964912280701754
+          }
+        },
+        "typescript": {
+          "sampleEvents": 639,
+          "exclusiveStagePercents": {
+            "checker": 31.142410015649453,
+            "typescript-module-stripping": 20.031298904538342,
+            "source-loading": 19.561815336463223,
+            "ts-file-analysis": 14.553990610328638,
+            "ts-library": 7.668231611893583,
+            "GC": 3.1298904538341157,
+            "other-typescript": 1.408450704225352,
+            "module-compilation": 1.2519561815336464,
+            "other-unassigned": 0.6259780907668232,
+            "inspector-overhead": 0.3129890453834116,
+            "other-node": 0.3129890453834116
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 140279280,
+          "exclusiveStagePercents": {
+            "emitted-reach": 20.564297164912738,
+            "other-generated-image": 16.78135787409231,
+            "final-library": 12.619129496530064,
+            "checker": 10.470062292877465,
+            "layout-proof": 8.600409126707808,
+            "base-cache": 5.701517715232072,
+            "annotation": 5.234723189340579,
+            "source-error-scan": 5.047371215478152,
+            "source-completion": 4.211324723080986,
+            "book-context": 2.897294596892713,
+            "host-wrapper": 1.9632036890979194,
+            "api-load": 1.5353543303045183,
+            "source-graph-freshening": 1.4019005515283511,
+            "source-reach": 0.6542833695753214,
+            "source-loading": 0.5141286724596819,
+            "inspector-overhead": 0.4862870696228267,
+            "other-unassigned": 0.4672621644479498,
+            "other-node": 0.3827792671875704,
+            "roots-and-stops": 0.1869299585797703,
+            "base-identity": 0.09347068219911023,
+            "module-compilation": 0.09347068219911023,
+            "foreign-modules": 0.09344216765298481
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "definition": 23.555912177479097,
+            "reach": 20.564297164912738,
+            "substitution": 16.828532339202198,
+            "library": 14.582333185627984,
+            "index": 14.113799272422842,
+            "normalization": 11.031422459539284,
+            "calls": 11.029591825678033,
+            "strings": 5.5140174657297925,
+            "arityQueries": 5.143505156285376,
+            "jdArity": 4.9565809006148305,
+            "host": 1.9632036890979194,
+            "jdDomains": 0.9347980685387036,
+            "jdLiveArity": 0.18692425567054521
+          }
+        },
+        "typescript": {
+          "bytes": 86721984,
+          "exclusiveStagePercents": {
+            "checker": 31.15971147523562,
+            "ts-file-analysis": 26.532464939916505,
+            "source-loading": 19.652539314598705,
+            "ts-library": 8.220411562539898,
+            "other-typescript": 6.65125927008312,
+            "typescript-module-stripping": 5.275811033105516,
+            "other-unassigned": 1.5187106420443517,
+            "module-compilation": 0.6237126678282637,
+            "other-node": 0.3653790946480191
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.6175746163740903
+      }
+    },
+    {
+      "case": "bst",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 721,
+          "exclusiveStagePercents": {
+            "checker": 19.41747572815534,
+            "base-cache": 15.672676837725382,
+            "source-completion": 15.672676837725382,
+            "api-load": 10.818307905686547,
+            "emitted-reach": 8.321775312066574,
+            "final-library": 3.606102635228849,
+            "host-wrapper": 3.606102635228849,
+            "source-error-scan": 3.19001386962552,
+            "other-generated-image": 2.635228848821082,
+            "GC": 2.496532593619972,
+            "source-graph-freshening": 2.3578363384188625,
+            "source-loading": 2.0804438280166435,
+            "book-context": 1.941747572815534,
+            "base-identity": 1.5256588072122053,
+            "owned-foreign-layout": 1.3869625520110958,
+            "layout-proof": 1.3869625520110958,
+            "roots-and-stops": 1.248266296809986,
+            "source-reach": 1.1095700416088765,
+            "annotation": 0.970873786407767,
+            "other-host-driver": 0.27739251040221913,
+            "inspector-overhead": 0.13869625520110956,
+            "foreign-sources": 0.13869625520110956
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "index": 9.847434119278779,
+            "reach": 8.321775312066574,
+            "definition": 7.212205270457698,
+            "library": 7.212205270457698,
+            "normalization": 7.0735090152565885,
+            "host": 3.606102635228849,
+            "calls": 3.19001386962552,
+            "strings": 2.635228848821082,
+            "substitution": 2.0804438280166435,
+            "arityQueries": 1.8030513176144245,
+            "jdArity": 1.6643550624133148,
+            "jdDomains": 0.4160887656033287,
+            "jdParams": 0.13869625520110956
+          }
+        },
+        "typescript": {
+          "sampleEvents": 538,
+          "exclusiveStagePercents": {
+            "checker": 36.2453531598513,
+            "typescript-module-stripping": 24.1635687732342,
+            "source-loading": 22.304832713754646,
+            "ts-file-analysis": 7.806691449814126,
+            "ts-library": 2.973977695167286,
+            "GC": 2.6022304832713754,
+            "module-compilation": 1.486988847583643,
+            "other-typescript": 1.1152416356877324,
+            "program": 0.5576208178438662,
+            "other-unassigned": 0.37174721189591076,
+            "inspector-overhead": 0.18587360594795538,
+            "other-node": 0.18587360594795538
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 65132672,
+          "exclusiveStagePercents": {
+            "checker": 20.940040660392377,
+            "other-generated-image": 16.20739895332407,
+            "base-cache": 12.480667152730968,
+            "source-error-scan": 8.858485031905339,
+            "source-completion": 7.861271221914556,
+            "book-context": 6.8436068460388055,
+            "final-library": 6.248133041432724,
+            "emitted-reach": 5.837574113342072,
+            "host-wrapper": 4.227997893284648,
+            "layout-proof": 2.214274273900509,
+            "api-load": 1.8817714095930227,
+            "annotation": 1.2078730625391816,
+            "inspector-overhead": 1.0566985490784102,
+            "other-node": 1.013451436477226,
+            "source-graph-freshening": 1.0065486028271649,
+            "source-loading": 0.9062241450803676,
+            "other-unassigned": 0.6038382702923657,
+            "source-reach": 0.20154554691077314,
+            "other-host-driver": 0.20133674233416987,
+            "roots-and-stops": 0.20126304660125105
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 19.729391725246586,
+            "normalization": 10.668353971413916,
+            "library": 10.274818757627509,
+            "definition": 7.254546535416204,
+            "reach": 5.837574113342072,
+            "substitution": 4.83166420686687,
+            "strings": 4.436335730246104,
+            "host": 4.227997893284648,
+            "calls": 2.6168986280802358,
+            "arityQueries": 1.0064503418499398,
+            "jdArity": 0.8051995778708418,
+            "jdDomains": 0.603862835536672,
+            "jdLiveArity": 0.2012507639790979
+          }
+        },
+        "typescript": {
+          "bytes": 63704040,
+          "exclusiveStagePercents": {
+            "checker": 42.4059384616737,
+            "source-loading": 35.02864810457861,
+            "typescript-module-stripping": 7.8714003067937295,
+            "ts-file-analysis": 5.146323529873459,
+            "ts-library": 3.1395559842044554,
+            "other-typescript": 2.884338261749176,
+            "module-compilation": 1.3552170317612509,
+            "other-unassigned": 1.2349483643423558,
+            "other-node": 0.7218631659781704,
+            "inspector-overhead": 0.2117667890450904
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.0224260816111506
+      }
+    },
+    {
+      "case": "unicode-text",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 785,
+          "exclusiveStagePercents": {
+            "source-completion": 17.452229299363058,
+            "checker": 15.414012738853502,
+            "base-cache": 13.503184713375797,
+            "emitted-reach": 12.611464968152866,
+            "api-load": 10.19108280254777,
+            "final-library": 5.095541401273885,
+            "host-wrapper": 3.3121019108280256,
+            "GC": 2.8025477707006368,
+            "other-generated-image": 2.5477707006369426,
+            "source-graph-freshening": 2.5477707006369426,
+            "source-error-scan": 2.4203821656050954,
+            "book-context": 2.038216560509554,
+            "source-loading": 1.78343949044586,
+            "layout-proof": 1.6560509554140128,
+            "base-identity": 1.4012738853503184,
+            "annotation": 1.4012738853503184,
+            "roots-and-stops": 1.2738853503184713,
+            "owned-foreign-layout": 1.019108280254777,
+            "source-reach": 0.6369426751592356,
+            "other-host-driver": 0.3821656050955414,
+            "program": 0.3821656050955414,
+            "inspector-overhead": 0.12738853503184713
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 12.611464968152866,
+            "definition": 12.101910828025478,
+            "library": 8.40764331210191,
+            "normalization": 7.770700636942675,
+            "index": 6.369426751592357,
+            "calls": 3.949044585987261,
+            "host": 3.3121019108280256,
+            "substitution": 2.5477707006369426,
+            "strings": 2.4203821656050954,
+            "arityQueries": 2.1656050955414012,
+            "jdArity": 2.1656050955414012,
+            "jdDomains": 0.3821656050955414
+          }
+        },
+        "typescript": {
+          "sampleEvents": 570,
+          "exclusiveStagePercents": {
+            "checker": 34.73684210526316,
+            "typescript-module-stripping": 23.157894736842106,
+            "source-loading": 22.280701754385966,
+            "ts-file-analysis": 8.947368421052632,
+            "ts-library": 4.7368421052631575,
+            "GC": 2.807017543859649,
+            "module-compilation": 1.4035087719298245,
+            "other-typescript": 0.8771929824561403,
+            "inspector-overhead": 0.3508771929824561,
+            "other-unassigned": 0.3508771929824561,
+            "other-node": 0.17543859649122806,
+            "program": 0.17543859649122806
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 82709600,
+          "exclusiveStagePercents": {
+            "checker": 20.136264714132338,
+            "other-generated-image": 14.033311731649047,
+            "source-completion": 10.467466896224863,
+            "source-error-scan": 9.670132608548464,
+            "emitted-reach": 9.40338727306141,
+            "base-cache": 8.877334674572237,
+            "final-library": 8.718281795583584,
+            "host-wrapper": 4.596999622776558,
+            "source-graph-freshening": 3.1736581968719473,
+            "layout-proof": 2.5365471480940545,
+            "api-load": 2.085774807277511,
+            "book-context": 1.9021153529940902,
+            "source-loading": 1.0055326104829427,
+            "annotation": 0.9510866936848927,
+            "other-unassigned": 0.7924980897018,
+            "inspector-overhead": 0.6661572538133421,
+            "other-node": 0.5079168560844207,
+            "source-reach": 0.3170417944228965,
+            "module-compilation": 0.15849188002360065
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 22.03797382649656,
+            "library": 13.156789538336541,
+            "definition": 11.146430402274948,
+            "reach": 9.40338727306141,
+            "normalization": 8.559896311915425,
+            "calls": 4.755742985094838,
+            "strings": 4.755211003317632,
+            "host": 4.596999622776558,
+            "substitution": 3.6461063770106494,
+            "arityQueries": 1.4638687649317612,
+            "jdArity": 1.1468269705088647,
+            "jdParams": 0.3170417944228965,
+            "jdDomains": 0.15851122481549904
+          }
+        },
+        "typescript": {
+          "bytes": 69655968,
+          "exclusiveStagePercents": {
+            "checker": 42.944282965100705,
+            "source-loading": 30.552087080320238,
+            "ts-library": 7.8390985823354,
+            "ts-file-analysis": 6.966432510133231,
+            "typescript-module-stripping": 6.189195446971608,
+            "other-typescript": 3.1996913746141606,
+            "module-compilation": 1.2377862583145782,
+            "other-node": 0.6601817664783584,
+            "inspector-overhead": 0.22302755163778645,
+            "other-unassigned": 0.1882164640939309
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.1874014872638048
+      }
+    },
+    {
+      "case": "expression",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 569,
+          "exclusiveStagePercents": {
+            "base-cache": 19.68365553602812,
+            "checker": 14.76274165202109,
+            "api-load": 13.884007029876978,
+            "source-completion": 13.884007029876978,
+            "emitted-reach": 6.502636203866432,
+            "other-generated-image": 3.866432337434095,
+            "source-error-scan": 3.866432337434095,
+            "GC": 3.1634446397188047,
+            "host-wrapper": 2.9876977152899826,
+            "book-context": 2.6362038664323375,
+            "source-graph-freshening": 2.460456942003515,
+            "source-loading": 2.2847100175746924,
+            "base-identity": 1.9332161687170475,
+            "final-library": 1.757469244288225,
+            "roots-and-stops": 1.5817223198594024,
+            "owned-foreign-layout": 1.40597539543058,
+            "source-reach": 1.2302284710017575,
+            "annotation": 0.8787346221441125,
+            "layout-proof": 0.5272407732864675,
+            "inspector-overhead": 0.1757469244288225,
+            "other-host-driver": 0.1757469244288225,
+            "program": 0.1757469244288225,
+            "foreign-validation": 0.1757469244288225
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 6.502636203866432,
+            "normalization": 6.151142355008787,
+            "index": 5.799648506151143,
+            "library": 4.745166959578207,
+            "definition": 4.042179261862917,
+            "host": 2.9876977152899826,
+            "calls": 2.6362038664323375,
+            "strings": 1.5817223198594024,
+            "arityQueries": 1.2302284710017575,
+            "jdArity": 1.054481546572935,
+            "jdParams": 0.1757469244288225,
+            "substitution": 0.1757469244288225
+          }
+        },
+        "typescript": {
+          "sampleEvents": 518,
+          "exclusiveStagePercents": {
+            "checker": 37.06563706563706,
+            "typescript-module-stripping": 25.096525096525095,
+            "source-loading": 23.745173745173744,
+            "ts-file-analysis": 5.019305019305019,
+            "GC": 3.088803088803089,
+            "ts-library": 1.9305019305019304,
+            "module-compilation": 1.5444015444015444,
+            "other-typescript": 0.9652509652509652,
+            "other-unassigned": 0.5791505791505791,
+            "program": 0.5791505791505791,
+            "inspector-overhead": 0.19305019305019305,
+            "other-node": 0.19305019305019305
+          },
+          "weightedStatus": "refused"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 52924944,
+          "exclusiveStagePercents": {
+            "checker": 27.01668989956796,
+            "base-cache": 14.619374939725963,
+            "other-generated-image": 14.492130591578897,
+            "source-error-scan": 13.625968125729147,
+            "source-completion": 6.201990501869969,
+            "book-context": 4.954155454562219,
+            "emitted-reach": 3.4690031981894967,
+            "host-wrapper": 2.724945726914704,
+            "api-load": 2.5071882929153406,
+            "final-library": 1.7341237054497403,
+            "source-reach": 1.4878730906167799,
+            "annotation": 1.487071956089363,
+            "source-graph-freshening": 1.4865580207321523,
+            "other-node": 1.3631228405267657,
+            "inspector-overhead": 1.2931369374712989,
+            "source-loading": 0.7708728043245544,
+            "base-identity": 0.5181073030516574,
+            "layout-proof": 0.24768661068399053
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 18.58609429988249,
+            "normalization": 9.170874134510186,
+            "library": 4.459069432364444,
+            "reach": 3.4690031981894967,
+            "definition": 2.725414315034514,
+            "host": 2.724945726914704,
+            "calls": 2.2299655149375313,
+            "strings": 1.7338516220253346,
+            "substitution": 0.49546391584278293
+          }
+        },
+        "typescript": {
+          "bytes": 56247384,
+          "exclusiveStagePercents": {
+            "checker": 50.34768550302713,
+            "source-loading": 32.444445771913585,
+            "typescript-module-stripping": 7.337784811467854,
+            "other-typescript": 2.5651681863106734,
+            "module-compilation": 1.7657710090126146,
+            "other-unassigned": 1.6315923243648096,
+            "ts-file-analysis": 1.3998019890133913,
+            "ts-library": 0.9347848070587603,
+            "other-node": 0.8175597997588653,
+            "inspector-overhead": 0.7554057980723157
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 0.9409316529280721
+      }
+    },
+    {
+      "case": "map-churn",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 888,
+          "exclusiveStagePercents": {
+            "emitted-reach": 19.594594594594593,
+            "base-cache": 12.274774774774775,
+            "source-completion": 9.797297297297296,
+            "checker": 9.572072072072071,
+            "api-load": 9.346846846846846,
+            "final-library": 8.896396396396396,
+            "annotation": 6.86936936936937,
+            "host-wrapper": 3.265765765765766,
+            "layout-proof": 3.0405405405405403,
+            "GC": 2.815315315315315,
+            "other-generated-image": 2.59009009009009,
+            "source-error-scan": 2.364864864864865,
+            "source-graph-freshening": 1.6891891891891893,
+            "source-loading": 1.5765765765765767,
+            "book-context": 1.5765765765765767,
+            "base-identity": 1.2387387387387387,
+            "source-reach": 1.0135135135135136,
+            "owned-foreign-layout": 0.9009009009009009,
+            "roots-and-stops": 0.9009009009009009,
+            "other-host-driver": 0.33783783783783783,
+            "inspector-overhead": 0.11261261261261261,
+            "other-node": 0.11261261261261261,
+            "program": 0.11261261261261261
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "reach": 19.594594594594593,
+            "definition": 19.03153153153153,
+            "library": 12.162162162162161,
+            "calls": 7.657657657657658,
+            "normalization": 7.094594594594595,
+            "index": 5.63063063063063,
+            "substitution": 4.391891891891892,
+            "arityQueries": 4.166666666666667,
+            "jdArity": 4.166666666666667,
+            "host": 3.265765765765766,
+            "strings": 2.815315315315315,
+            "jdDomains": 0.11261261261261261
+          }
+        },
+        "typescript": {
+          "sampleEvents": 660,
+          "exclusiveStagePercents": {
+            "checker": 28.939393939393938,
+            "typescript-module-stripping": 20.0,
+            "source-loading": 18.636363636363637,
+            "ts-file-analysis": 18.636363636363637,
+            "ts-library": 6.96969696969697,
+            "GC": 3.484848484848485,
+            "other-typescript": 1.5151515151515151,
+            "module-compilation": 1.2121212121212122,
+            "inspector-overhead": 0.15151515151515152,
+            "other-node": 0.15151515151515152,
+            "other-unassigned": 0.15151515151515152,
+            "program": 0.15151515151515152
+          },
+          "weightedStatus": "refused"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 144031888,
+          "exclusiveStagePercents": {
+            "emitted-reach": 25.583751287076094,
+            "other-generated-image": 16.207805316000577,
+            "final-library": 14.656693245595726,
+            "checker": 9.291570211174347,
+            "layout-proof": 7.647645360310767,
+            "base-cache": 5.552892565013103,
+            "annotation": 4.5534805459191094,
+            "source-error-scan": 4.2786191902171,
+            "host-wrapper": 3.1863777276876353,
+            "source-completion": 2.822686042968485,
+            "book-context": 1.5474128895678991,
+            "api-load": 1.0295220180686655,
+            "source-graph-freshening": 0.9108149717512555,
+            "source-loading": 0.7367146364144029,
+            "source-reach": 0.7281387577173188,
+            "inspector-overhead": 0.38253751141552766,
+            "other-node": 0.32192315634993274,
+            "other-unassigned": 0.2795492064923845,
+            "base-identity": 0.09935577599316063,
+            "roots-and-stops": 0.09132977552859683,
+            "other-host-driver": 0.09117980873790948
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "definition": 29.40731013676638,
+            "reach": 25.583751287076094,
+            "substitution": 19.940628702999437,
+            "library": 17.84307097328336,
+            "index": 14.202643792324656,
+            "calls": 13.655487179339064,
+            "normalization": 8.561676286573428,
+            "strings": 7.281759716987116,
+            "arityQueries": 6.376948971188936,
+            "jdArity": 6.19487817864333,
+            "host": 3.1863777276876353,
+            "jdDomains": 1.8210411849909236,
+            "jdParams": 0.1820707925456063
+          }
+        },
+        "typescript": {
+          "bytes": 98512608,
+          "exclusiveStagePercents": {
+            "checker": 29.81176175946941,
+            "ts-file-analysis": 24.26175540901323,
+            "source-loading": 19.430617449494385,
+            "ts-library": 10.678576289443074,
+            "other-typescript": 8.253124310748122,
+            "typescript-module-stripping": 4.665433281392773,
+            "other-unassigned": 1.6969036085208504,
+            "module-compilation": 0.46712396447772453,
+            "other-node": 0.45998579186940214,
+            "inspector-overhead": 0.2747181355710327
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.4620655256634765
+      }
+    },
+    {
+      "case": "numeric-recurrence",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 496,
+          "exclusiveStagePercents": {
+            "base-cache": 22.177419354838708,
+            "api-load": 15.92741935483871,
+            "checker": 14.71774193548387,
+            "source-completion": 9.475806451612904,
+            "emitted-reach": 6.451612903225806,
+            "source-error-scan": 4.435483870967742,
+            "GC": 4.233870967741935,
+            "other-generated-image": 3.024193548387097,
+            "book-context": 3.024193548387097,
+            "base-identity": 2.4193548387096775,
+            "host-wrapper": 2.4193548387096775,
+            "source-loading": 2.217741935483871,
+            "source-graph-freshening": 2.217741935483871,
+            "roots-and-stops": 2.0161290322580645,
+            "owned-foreign-layout": 1.6129032258064515,
+            "final-library": 1.2096774193548387,
+            "source-reach": 0.6048387096774194,
+            "annotation": 0.6048387096774194,
+            "layout-proof": 0.6048387096774194,
+            "inspector-overhead": 0.20161290322580644,
+            "other-node": 0.20161290322580644,
+            "foreign-paths": 0.20161290322580644
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "normalization": 6.854838709677419,
+            "reach": 6.451612903225806,
+            "index": 6.048387096774194,
+            "definition": 4.233870967741935,
+            "library": 3.629032258064516,
+            "host": 2.4193548387096775,
+            "calls": 2.0161290322580645,
+            "arityQueries": 1.4112903225806452,
+            "jdArity": 1.2096774193548387,
+            "strings": 0.6048387096774194,
+            "substitution": 0.4032258064516129,
+            "jdParams": 0.20161290322580644
+          }
+        },
+        "typescript": {
+          "sampleEvents": 527,
+          "exclusiveStagePercents": {
+            "checker": 37.00189753320683,
+            "typescript-module-stripping": 25.23719165085389,
+            "source-loading": 23.529411764705884,
+            "ts-file-analysis": 4.933586337760911,
+            "GC": 3.225806451612903,
+            "module-compilation": 1.7077798861480076,
+            "ts-library": 1.5180265654648957,
+            "other-unassigned": 1.1385199240986716,
+            "other-typescript": 0.5692599620493358,
+            "program": 0.5692599620493358,
+            "other-node": 0.3795066413662239,
+            "inspector-overhead": 0.18975332068311196
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 46135008,
+          "exclusiveStagePercents": {
+            "checker": 24.729541609703418,
+            "base-cache": 16.770553068940618,
+            "source-error-scan": 14.499045930587029,
+            "other-generated-image": 13.924783539649543,
+            "book-context": 7.672715695638332,
+            "api-load": 4.680003523571514,
+            "source-completion": 3.9780983672962624,
+            "emitted-reach": 2.5583868978628983,
+            "host-wrapper": 2.273570647262053,
+            "source-loading": 1.7411333276456786,
+            "final-library": 1.7050132515420828,
+            "inspector-overhead": 1.4884661990304628,
+            "source-graph-freshening": 1.4210293406690209,
+            "layout-proof": 1.1366639407540582,
+            "roots-and-stops": 0.2842786978599852,
+            "annotation": 0.2842786978599852,
+            "source-reach": 0.28415731498301683,
+            "other-unassigned": 0.28413997457202134,
+            "other-node": 0.28413997457202134
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "index": 25.5784240895764,
+            "normalization": 9.661903602574426,
+            "library": 3.978583898804136,
+            "reach": 2.5583868978628983,
+            "host": 2.273570647262053,
+            "strings": 1.7049785707200917,
+            "substitution": 1.1368026640420221,
+            "definition": 1.1367853236310266,
+            "calls": 0.8532869442658382,
+            "arityQueries": 0.28424401703799423,
+            "jdArity": 0.28424401703799423,
+            "jdDomains": 0.28424401703799423
+          }
+        },
+        "typescript": {
+          "bytes": 54488920,
+          "exclusiveStagePercents": {
+            "checker": 49.32879565240052,
+            "source-loading": 34.69395245859158,
+            "typescript-module-stripping": 8.197233492607305,
+            "other-typescript": 2.1656512920424924,
+            "ts-library": 1.7469973712086788,
+            "module-compilation": 1.3306925518068629,
+            "ts-file-analysis": 0.9624709023412467,
+            "other-node": 0.8439440532130202,
+            "other-unassigned": 0.48116938269284837,
+            "absent-tree-node": 0.24909284309544033
+          },
+          "absentTreeNodes": {
+            "weight": 135728,
+            "ids": {
+              "3388": 135728
+            }
+          }
+        },
+        "b2OverTS": 0.8466860418595193
+      }
+    },
+    {
+      "case": "record-aggregation",
+      "cpuCounts": {
+        "b2": {
+          "sampleEvents": 904,
+          "exclusiveStagePercents": {
+            "emitted-reach": 19.690265486725664,
+            "base-cache": 11.946902654867257,
+            "final-library": 10.287610619469026,
+            "source-completion": 9.623893805309734,
+            "checker": 9.513274336283185,
+            "api-load": 9.070796460176991,
+            "annotation": 7.632743362831858,
+            "layout-proof": 3.3185840707964602,
+            "host-wrapper": 2.9867256637168142,
+            "GC": 2.8761061946902653,
+            "source-error-scan": 2.433628318584071,
+            "other-generated-image": 1.7699115044247788,
+            "source-graph-freshening": 1.5486725663716814,
+            "book-context": 1.5486725663716814,
+            "source-loading": 1.3274336283185841,
+            "base-identity": 1.2168141592920354,
+            "source-reach": 0.995575221238938,
+            "owned-foreign-layout": 0.8849557522123894,
+            "roots-and-stops": 0.7743362831858407,
+            "other-host-driver": 0.4424778761061947,
+            "inspector-overhead": 0.11061946902654868
+          },
+          "weightedStatus": "admitted",
+          "ancestorUnionPercents": {
+            "definition": 19.800884955752213,
+            "reach": 19.690265486725664,
+            "library": 13.274336283185841,
+            "calls": 8.185840707964601,
+            "normalization": 6.5265486725663715,
+            "index": 4.867256637168142,
+            "strings": 4.535398230088496,
+            "substitution": 3.650442477876106,
+            "arityQueries": 3.5398230088495577,
+            "jdArity": 3.0973451327433628,
+            "host": 2.9867256637168142,
+            "jdLiveArity": 0.33185840707964603,
+            "jdDomains": 0.33185840707964603,
+            "jdParams": 0.11061946902654868
+          }
+        },
+        "typescript": {
+          "sampleEvents": 642,
+          "exclusiveStagePercents": {
+            "checker": 29.75077881619938,
+            "typescript-module-stripping": 20.24922118380062,
+            "source-loading": 18.69158878504673,
+            "ts-file-analysis": 17.445482866043612,
+            "ts-library": 6.542056074766355,
+            "GC": 3.2710280373831777,
+            "other-typescript": 2.1806853582554515,
+            "module-compilation": 1.2461059190031152,
+            "inspector-overhead": 0.1557632398753894,
+            "other-node": 0.1557632398753894,
+            "program": 0.1557632398753894,
+            "other-unassigned": 0.1557632398753894
+          },
+          "weightedStatus": "admitted"
+        }
+      },
+      "allocation": {
+        "b2": {
+          "bytes": 158069176,
+          "exclusiveStagePercents": {
+            "emitted-reach": 24.88617768210546,
+            "other-generated-image": 17.876851588066735,
+            "final-library": 15.015511942695266,
+            "layout-proof": 8.378792333300959,
+            "checker": 7.633655280141398,
+            "base-cache": 5.0635552120547525,
+            "source-error-scan": 4.728238730111429,
+            "annotation": 4.065298600658234,
+            "host-wrapper": 3.0690360529240692,
+            "book-context": 2.3223148832002516,
+            "source-completion": 1.907716656914818,
+            "api-load": 1.2698693387254705,
+            "source-loading": 0.8294090177328437,
+            "source-reach": 0.7465288488629813,
+            "other-unassigned": 0.5903845541650701,
+            "source-graph-freshening": 0.4976656549408469,
+            "other-node": 0.4379601498017551,
+            "inspector-overhead": 0.43207411924510825,
+            "roots-and-stops": 0.16591216999827973,
+            "owned-foreign-layout": 0.08304718435427284
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          },
+          "ancestorUnionPercents": {
+            "definition": 30.776388686937928,
+            "reach": 24.88617768210546,
+            "substitution": 22.070696439892874,
+            "library": 18.084547995619335,
+            "index": 13.853828149265484,
+            "calls": 13.19005800346552,
+            "normalization": 9.125903205821734,
+            "strings": 6.303346580360487,
+            "arityQueries": 5.392752853978311,
+            "jdArity": 5.309827135430883,
+            "host": 3.0690360529240692,
+            "jdDomains": 1.2444171911163755,
+            "jdLiveArity": 0.08292571854742888
+          }
+        },
+        "typescript": {
+          "bytes": 94910232,
+          "exclusiveStagePercents": {
+            "checker": 29.162596504874205,
+            "ts-file-analysis": 28.684586926307375,
+            "source-loading": 18.540584749597915,
+            "ts-library": 9.025168118859934,
+            "other-typescript": 7.324344123402838,
+            "typescript-module-stripping": 4.704310489937481,
+            "other-unassigned": 1.1187076225880472,
+            "module-compilation": 0.6282315272393392,
+            "other-node": 0.4845167800243076,
+            "inspector-overhead": 0.32695315716855483
+          },
+          "absentTreeNodes": {
+            "weight": 0,
+            "ids": {}
+          }
+        },
+        "b2OverTS": 1.6654597999507577
+      }
+    }
+  ],
+  "meanCpuCountStagePercent": {
+    "b2": {
+      "source-completion": 14.728985395985138,
+      "checker": 14.175716451148084,
+      "base-cache": 14.939251831647166,
+      "api-load": 10.70376426658991,
+      "emitted-reach": 12.16119012730964,
+      "final-library": 4.983173781650091,
+      "source-loading": 2.280936418734126,
+      "other-generated-image": 2.768771420698746,
+      "source-error-scan": 2.725310346855156,
+      "GC": 3.0181655130817537,
+      "source-graph-freshening": 2.263518656569916,
+      "host-wrapper": 2.786859995939843,
+      "book-context": 2.011077342610957,
+      "annotation": 2.9840913350597464,
+      "layout-proof": 2.1313014422519485,
+      "base-identity": 1.5865268566292974,
+      "roots-and-stops": 1.2540159832834676,
+      "owned-foreign-layout": 1.0976907157638685,
+      "source-reach": 0.770302227974109,
+      "other-host-driver": 0.29205567845402963,
+      "inspector-overhead": 0.14370764421080298,
+      "other-node": 0.0708469459914365,
+      "foreign-validation": 0.013843490294895774,
+      "foreign-modules": 0.02224806353737868,
+      "program": 0.05963902273582112,
+      "other-unassigned": 0.012212994626282366,
+      "foreign-sources": 0.006030271965265633,
+      "foreign-paths": 0.00876577840112202
+    },
+    "typescript": {
+      "checker": 33.32541032766282,
+      "typescript-module-stripping": 22.162932039461705,
+      "source-loading": 21.075156566832852,
+      "ts-file-analysis": 10.700181637573529,
+      "ts-library": 5.943255765957293,
+      "GC": 3.052401070247566,
+      "module-compilation": 1.3595825347710742,
+      "other-typescript": 1.3414391328641873,
+      "other-unassigned": 0.3840302729983024,
+      "program": 0.24604542209042324,
+      "inspector-overhead": 0.18334842354627753,
+      "other-node": 0.22621680599396823
+    }
+  },
+  "meanB2AncestorUnionPercent": {
+    "cpuCounts": {
+      "reach": 12.16119012730964,
+      "definition": 10.935184713174555,
+      "normalization": 7.155237414401019,
+      "library": 7.76646413384038,
+      "index": 5.7998640967705235,
+      "calls": 4.618470811365899,
+      "host": 2.786859995939843,
+      "substitution": 2.452307098939856,
+      "strings": 2.1988778931353345,
+      "arityQueries": 2.2546205015171776,
+      "jdArity": 2.0816920514798163,
+      "jdDomains": 0.24196540274973657,
+      "jdParams": 0.08909542669272147,
+      "jdLiveArity": 0.08383302334464027
+    },
+    "allocation": {
+      "index": 18.900137112540616,
+      "definition": 12.768851719332218,
+      "library": 10.896488045958959,
+      "normalization": 9.18717448530655,
+      "reach": 10.564728087860523,
+      "strings": 4.095983574859995,
+      "substitution": 8.107214338626605,
+      "host": 3.353664764148853,
+      "calls": 5.565069084870262,
+      "arityQueries": 2.416396295348521,
+      "jdArity": 2.265711117890116,
+      "jdDomains": 0.6664470616391628,
+      "jdLiveArity": 0.1056592040813748,
+      "jdParams": 0.04502597337703083
+    }
+  },
+  "allocationComparison": {
+    "equalSourceGeometricMean": 1.1849158504157788,
+    "minimum": 0.8218858737177832,
+    "maximum": 2.1164152065295214,
+    "belowTS": 5,
+    "aboveTS": 18
+  },
+  "weightedCpuRefusals": [
+    {
+      "case": "mandelbrot",
+      "role": "typescript",
+      "accounting": {
+        "weightSource": "max(timeDeltas[i],0) only when the explicit tiny-jitter policy admits a weighted view",
+        "weightedStatus": "refused",
+        "reasons": [
+          "Negative CPU delta exceeds 2us magnitude",
+          "CPU correction exceeds 10ppm of raw profile duration"
+        ],
+        "policy": {
+          "maxNegativeMagnitudeUs": 2,
+          "maxCorrectionPartsPerMillion": 10
+        },
+        "negativeDeltas": [
+          {
+            "index": 505,
+            "value": -10
+          }
+        ],
+        "negativeDeltaCount": 1,
+        "signedRawTimeDeltaUs": 730060,
+        "correctionUs": 10,
+        "correctionPartsPerMillion": 13.657992930622859,
+        "admittedWeightedUs": null,
+        "profileDurationUs": 732172,
+        "profileMinusSignedRawUs": 2112,
+        "profileMinusWeightedUs": null,
+        "rawProfileUnmodified": true,
+        "scope": "Observed signed increments are retained; cause is not established. Negative values are clipped only in an admitted weighted view. Count-based summary is an independent view; no timing/semantic result is changed."
+      }
+    },
+    {
+      "case": "test-evening-program",
+      "role": "typescript",
+      "accounting": {
+        "weightSource": "max(timeDeltas[i],0) only when the explicit tiny-jitter policy admits a weighted view",
+        "weightedStatus": "refused",
+        "reasons": [
+          "Negative CPU delta exceeds 2us magnitude"
+        ],
+        "policy": {
+          "maxNegativeMagnitudeUs": 2,
+          "maxCorrectionPartsPerMillion": 10
+        },
+        "negativeDeltas": [
+          {
+            "index": 620,
+            "value": -6
+          }
+        ],
+        "negativeDeltaCount": 1,
+        "signedRawTimeDeltaUs": 1030875,
+        "correctionUs": 6,
+        "correctionPartsPerMillion": 5.818401859561234,
+        "admittedWeightedUs": null,
+        "profileDurationUs": 1031211,
+        "profileMinusSignedRawUs": 336,
+        "profileMinusWeightedUs": null,
+        "rawProfileUnmodified": true,
+        "scope": "Observed signed increments are retained; cause is not established. Negative values are clipped only in an admitted weighted view. Count-based summary is an independent view; no timing/semantic result is changed."
+      }
+    },
+    {
+      "case": "raytrace-active",
+      "role": "b2",
+      "accounting": {
+        "weightSource": "max(timeDeltas[i],0) only when the explicit tiny-jitter policy admits a weighted view",
+        "weightedStatus": "refused",
+        "reasons": [
+          "Negative CPU delta exceeds 2us magnitude"
+        ],
+        "policy": {
+          "maxNegativeMagnitudeUs": 2,
+          "maxCorrectionPartsPerMillion": 10
+        },
+        "negativeDeltas": [
+          {
+            "index": 814,
+            "value": -5
+          }
+        ],
+        "negativeDeltaCount": 1,
+        "signedRawTimeDeltaUs": 1470286,
+        "correctionUs": 5,
+        "correctionPartsPerMillion": 3.3886220913762277,
+        "admittedWeightedUs": null,
+        "profileDurationUs": 1475526,
+        "profileMinusSignedRawUs": 5240,
+        "profileMinusWeightedUs": null,
+        "rawProfileUnmodified": true,
+        "scope": "Observed signed increments are retained; cause is not established. Negative values are clipped only in an admitted weighted view. Count-based summary is an independent view; no timing/semantic result is changed."
+      }
+    },
+    {
+      "case": "expression",
+      "role": "typescript",
+      "accounting": {
+        "weightSource": "max(timeDeltas[i],0) only when the explicit tiny-jitter policy admits a weighted view",
+        "weightedStatus": "refused",
+        "reasons": [
+          "Negative CPU delta exceeds 2us magnitude"
+        ],
+        "policy": {
+          "maxNegativeMagnitudeUs": 2,
+          "maxCorrectionPartsPerMillion": 10
+        },
+        "negativeDeltas": [
+          {
+            "index": 358,
+            "value": -3
+          }
+        ],
+        "negativeDeltaCount": 1,
+        "signedRawTimeDeltaUs": 658326,
+        "correctionUs": 3,
+        "correctionPartsPerMillion": 4.55078447939784,
+        "admittedWeightedUs": null,
+        "profileDurationUs": 659227,
+        "profileMinusSignedRawUs": 901,
+        "profileMinusWeightedUs": null,
+        "rawProfileUnmodified": true,
+        "scope": "Observed signed increments are retained; cause is not established. Negative values are clipped only in an admitted weighted view. Count-based summary is an independent view; no timing/semantic result is changed."
+      }
+    },
+    {
+      "case": "map-churn",
+      "role": "typescript",
+      "accounting": {
+        "weightSource": "max(timeDeltas[i],0) only when the explicit tiny-jitter policy admits a weighted view",
+        "weightedStatus": "refused",
+        "reasons": [
+          "Negative CPU delta exceeds 2us magnitude",
+          "CPU correction exceeds 10ppm of raw profile duration"
+        ],
+        "policy": {
+          "maxNegativeMagnitudeUs": 2,
+          "maxCorrectionPartsPerMillion": 10
+        },
+        "negativeDeltas": [
+          {
+            "index": 404,
+            "value": -19
+          }
+        ],
+        "negativeDeltaCount": 1,
+        "signedRawTimeDeltaUs": 882118,
+        "correctionUs": 19,
+        "correctionPartsPerMillion": 21.516847125066107,
+        "admittedWeightedUs": null,
+        "profileDurationUs": 883029,
+        "profileMinusSignedRawUs": 911,
+        "profileMinusWeightedUs": null,
+        "rawProfileUnmodified": true,
+        "scope": "Observed signed increments are retained; cause is not established. Negative values are clipped only in an admitted weighted view. Count-based summary is an independent view; no timing/semantic result is changed."
+      }
+    }
+  ],
+  "absentAllocationTreeNodes": [
+    {
+      "case": "raytrace",
+      "role": "typescript",
+      "weight": 138000,
+      "ids": {
+        "15619": 138000
+      }
+    },
+    {
+      "case": "numeric-recurrence",
+      "role": "typescript",
+      "weight": 135728,
+      "ids": {
+        "3388": 135728
+      }
+    }
+  ],
+  "scope": "Arithmetic mean of per-source CPU count percentages and geometric mean of per-source cumulative sampled-allocation ratios. CPU weighting refusals remain refused. Counts are not wall time; allocation is not peak memory. Ancestor unions overlap and cannot be added to each other or to exclusive partitions.",
+  "pass": true
+}

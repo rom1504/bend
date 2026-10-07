@@ -1,0 +1,2503 @@
+{
+  "kind": "phase62-current-stage-cost-survey",
+  "version": 1,
+  "complete": true,
+  "diagnosticOnly": true,
+  "inputs": {
+    "summary": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46-analysis/summary.json",
+      "sha256": "5e7c305cc9ae649476b976fdc925c7cd953ed6cb7b1a17acb5f48da864dbcdd9"
+    },
+    "clean": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/clean36/report.json",
+      "sha256": "8db6ba4a64104a52baa0e54dd1c027690b686de1a0450e13ef9ec05f98f9167c"
+    },
+    "producer": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/stages/report-v2.py",
+      "sha256": "6423c5f6c417a69c0145e640bf4c97e31802c3b2e8d8bf69004955d809bbb46d"
+    }
+  },
+  "method": "23 sources x two roles x one diagnostic run. Exclusive event partitions. Means are arithmetic equal-source ms, not headline geometric mean ratios. Single-run diagnostic/clean comparisons include run variation and cannot isolate instrumentation overhead.",
+  "means": {
+    "b2": {
+      "compileMs": 964.6429755652174,
+      "groupsExclusiveMs": {
+        "cache": 173.41993939130435,
+        "load": 255.06959813043477,
+        "check": 171.94295247826088,
+        "backend": 361.30937378260876,
+        "request-other": 2.901111782608639
+      },
+      "stagesExclusiveMs": {
+        "compiler.annotation": 33.702389478260855,
+        "compiler.check-and-complete": 171.94295247826088,
+        "compiler.context": 13.416652826086978,
+        "compiler.emitted-reach": 153.35856452173914,
+        "compiler.foreign-check": 0.11530295652170994,
+        "compiler.foreign-modules": 0.4375812608695578,
+        "compiler.foreign-paths": 0.18275799999998585,
+        "compiler.layout-proof": 23.790240608695672,
+        "compiler.library": 104.29388230434783,
+        "compiler.owned-layout": 10.115983565217379,
+        "compiler.prefix-freshening": 62.641535,
+        "compiler.prefix-source-completion": 160.8304617826087,
+        "compiler.roots-and-stops": 10.829265521739137,
+        "compiler.source-header": 18.103634130434777,
+        "compiler.source-reach": 10.956739826086954,
+        "driver.api-load": 0.15981617391305314,
+        "driver.base-cache": 0.890222304347827,
+        "driver.base-identity": 12.634083391304342,
+        "driver.cache-book-digest": 9.846573869565217,
+        "driver.cache-book-parse": 65.34986469565217,
+        "driver.cache-checked-state-parse": 23.317296565217394,
+        "driver.cache-decode": 0.2802166086956489,
+        "driver.cache-fresh-state-parse": 0.036891217391302154,
+        "driver.cache-header-parse": 0.06167443478260467,
+        "driver.cache-read": 1.7509076956521756,
+        "driver.cache-state-digests": 6.384820043478264,
+        "driver.cache-validation": 0.23664478260869135,
+        "driver.checked-state-admission": 0.20805826086955617,
+        "driver.checked-state-shape": 0.3904318695652231,
+        "driver.foreign-resolver": 0.021814608695703813,
+        "driver.foreign-source": 0.019739086956539486,
+        "driver.fresh-state-admission": 0.009943478260867245,
+        "driver.inspect": 1.679917826086894,
+        "driver.json-tree-validation": 52.02231017391305,
+        "driver.output-assembly": 0.06845921739130992,
+        "driver.source-graph": 1.7924834347826069,
+        "driver.span-validation": 11.701483782608692,
+        "worker.compile": 1.0613777826086916
+      },
+      "equalSourceMeanGroupShare": {
+        "cache": 0.19619367954330524,
+        "load": 0.2702794782992157,
+        "check": 0.1864959135053827,
+        "backend": 0.3438618548717118,
+        "request-other": 0.003169073780384557
+      }
+    },
+    "typescript": {
+      "compileMs": 454.442875,
+      "groupsExclusiveMs": {
+        "cache": 0.0,
+        "load": 161.52745169565216,
+        "check": 172.91176439130436,
+        "backend": 119.75495734782609,
+        "request-other": 0.24870156521737757
+      },
+      "stagesExclusiveMs": {
+        "typescript.book-load": 161.52745169565216,
+        "typescript.book-valid": 172.91176439130436,
+        "typescript.js-lib": 119.75495734782609,
+        "worker.compile": 0.24870156521737757
+      },
+      "equalSourceMeanGroupShare": {
+        "cache": 0.0,
+        "load": 0.3717708379967632,
+        "check": 0.39822300003780675,
+        "backend": 0.22943334322716383,
+        "request-other": 0.000572818738266254
+      }
+    }
+  },
+  "meanExtraCompileMs": 510.2001005652174,
+  "meanExtraGroupMs": {
+    "cache": 173.41993939130435,
+    "load": 93.54214643478261,
+    "check": -0.9688119130434814,
+    "backend": 241.55441643478267,
+    "request-other": 2.6524102173912616
+  },
+  "checkStageB2LowerCount": 13,
+  "perturbation": [
+    {
+      "case": "lexer",
+      "role": "b2",
+      "cleanMedianMs": 945.790702,
+      "diagnosticMs": 953.3606580000001,
+      "diagnosticOverClean": 1.008003838464464
+    },
+    {
+      "case": "lexer",
+      "role": "typescript",
+      "cleanMedianMs": 392.843504,
+      "diagnosticMs": 393.97299399999997,
+      "diagnosticOverClean": 1.0028751652719194
+    },
+    {
+      "case": "test-map-set-ops",
+      "role": "b2",
+      "cleanMedianMs": 1580.779079,
+      "diagnosticMs": 1590.103228,
+      "diagnosticOverClean": 1.0058984516709941
+    },
+    {
+      "case": "test-map-set-ops",
+      "role": "typescript",
+      "cleanMedianMs": 643.539385,
+      "diagnosticMs": 661.4102849999999,
+      "diagnosticOverClean": 1.0277697067445217
+    },
+    {
+      "case": "raytrace-active",
+      "role": "b2",
+      "cleanMedianMs": 1238.208063,
+      "diagnosticMs": 1371.070111,
+      "diagnosticOverClean": 1.1073018759691278
+    },
+    {
+      "case": "raytrace-active",
+      "role": "typescript",
+      "cleanMedianMs": 568.5495990000001,
+      "diagnosticMs": 592.208906,
+      "diagnosticOverClean": 1.0416134441772773
+    },
+    {
+      "case": "numeric-recurrence",
+      "role": "b2",
+      "cleanMedianMs": 481.93649200000004,
+      "diagnosticMs": 485.523141,
+      "diagnosticOverClean": 1.0074421610721271
+    },
+    {
+      "case": "numeric-recurrence",
+      "role": "typescript",
+      "cleanMedianMs": 325.92796,
+      "diagnosticMs": 324.655185,
+      "diagnosticOverClean": 0.9960949192576176
+    }
+  ],
+  "rows": [
+    {
+      "case": "mandelbrot",
+      "extraCompileMs": 525.5071399999999,
+      "extraGroupMs": {
+        "cache": 169.05937599999993,
+        "load": 158.22623,
+        "check": 5.607292999999913,
+        "backend": 190.06714399999964,
+        "request-other": 2.5470970000005195
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 943.2058120000002,
+          "combinedFirstMs": 1042.730814,
+          "clockCompileMs": 943.225469,
+          "groupsExclusiveMs": {
+            "cache": 169.05937599999993,
+            "load": 315.269898,
+            "check": 183.11120299999993,
+            "backend": 272.96371899999974,
+            "request-other": 2.8212730000003603
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0303589999999758,
+            "driver.inspect": 1.6318350000003647,
+            "driver.api-load": 0.15907900000001973,
+            "driver.base-identity": 12.048446999999953,
+            "driver.base-cache": 0.9275169999999662,
+            "driver.cache-read": 1.7728720000000067,
+            "driver.cache-decode": 0.28672799999998233,
+            "driver.cache-header-parse": 0.06349699999998393,
+            "driver.cache-book-digest": 9.736279000000025,
+            "driver.cache-state-digests": 6.033734999999979,
+            "driver.cache-book-parse": 63.98193200000003,
+            "driver.cache-checked-state-parse": 23.07192900000001,
+            "driver.cache-fresh-state-parse": 0.035861000000011245,
+            "driver.cache-validation": 0.22328799999996818,
+            "driver.json-tree-validation": 50.30522000000002,
+            "driver.checked-state-admission": 0.20105100000000675,
+            "driver.checked-state-shape": 0.3628669999999943,
+            "driver.fresh-state-admission": 0.008152999999992971,
+            "driver.source-graph": 1.8767979999998943,
+            "compiler.source-header": 34.787796000000014,
+            "compiler.prefix-source-completion": 197.747459,
+            "driver.span-validation": 18.03374800000006,
+            "compiler.prefix-freshening": 62.82409700000005,
+            "compiler.check-and-complete": 183.11120299999993,
+            "compiler.owned-layout": 10.300641000000041,
+            "compiler.context": 12.902334999999994,
+            "compiler.roots-and-stops": 12.747685000000047,
+            "compiler.source-reach": 5.643754999999942,
+            "compiler.annotation": 24.974026000000094,
+            "compiler.emitted-reach": 125.23463700000002,
+            "compiler.foreign-check": 0.09690699999987373,
+            "compiler.layout-proof": 20.053292000000056,
+            "compiler.foreign-paths": 0.13889399999993657,
+            "driver.foreign-resolver": 0.02198699999985365,
+            "compiler.foreign-modules": 0.34892899999999827,
+            "driver.foreign-source": 0.01431800000000294,
+            "compiler.library": 60.42009899999994,
+            "driver.output-assembly": 0.06621399999994537
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/mandelbrot-0-b2.result.json",
+            "sha256": "23f88d5cbd2dbcb85ac00d325ab1464331bef7920011fe13dc511092015cd95d"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/mandelbrot-0-b2.mjs",
+            "sha256": "655aa300fc8968117f160211e552d3ae48a419cebd61561a6eeb016038d04fe1",
+            "bytes": 32152
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 417.703488,
+          "combinedFirstMs": 691.8878649999999,
+          "clockCompileMs": 417.718329,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 157.04366800000003,
+            "check": 177.50391000000002,
+            "backend": 82.8965750000001,
+            "request-other": 0.27417599999984077
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.27417599999984077,
+            "typescript.book-load": 157.04366800000003,
+            "typescript.book-valid": 177.50391000000002,
+            "typescript.js-lib": 82.8965750000001
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/mandelbrot-0-typescript.result.json",
+            "sha256": "6aafc49a96129721074998ae4a0f29aff00e6016076c42129bc40c6f50bd9f81"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/mandelbrot-0-typescript.mjs",
+            "sha256": "037f070e948ab7701364b7413c624bca4327db0bc6171ac4523b906d2ae9e222",
+            "bytes": 15442
+          }
+        }
+      }
+    },
+    {
+      "case": "editdist",
+      "extraCompileMs": 469.479604,
+      "extraGroupMs": {
+        "cache": 167.63317699999993,
+        "load": 111.24403800000005,
+        "check": 2.651962000000026,
+        "backend": 185.48425100000054,
+        "request-other": 2.46617599999945
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 856.0603590000001,
+          "combinedFirstMs": 954.75742,
+          "clockCompileMs": 856.079737,
+          "groupsExclusiveMs": {
+            "cache": 167.63317699999993,
+            "load": 270.39454700000005,
+            "check": 171.89680299999998,
+            "backend": 243.44601400000056,
+            "request-other": 2.7091959999995083
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0680760000000191,
+            "driver.inspect": 1.4785449999994853,
+            "driver.api-load": 0.1625750000000039,
+            "driver.base-identity": 12.211642999999981,
+            "driver.base-cache": 0.859628999999984,
+            "driver.cache-read": 1.5813039999999887,
+            "driver.cache-decode": 0.24628099999995356,
+            "driver.cache-header-parse": 0.057974999999999,
+            "driver.cache-book-digest": 9.625350999999966,
+            "driver.cache-state-digests": 5.99047900000005,
+            "driver.cache-book-parse": 63.79490700000002,
+            "driver.cache-checked-state-parse": 22.35203100000001,
+            "driver.cache-fresh-state-parse": 0.032326000000011845,
+            "driver.cache-validation": 0.22326500000002625,
+            "driver.json-tree-validation": 50.07469800000001,
+            "driver.checked-state-admission": 0.20558899999997493,
+            "driver.checked-state-shape": 0.3681569999999965,
+            "driver.fresh-state-admission": 0.009541999999953532,
+            "driver.source-graph": 1.8108890000000883,
+            "compiler.source-header": 27.16321899999997,
+            "compiler.prefix-source-completion": 174.60110800000007,
+            "driver.span-validation": 9.573467999999934,
+            "compiler.prefix-freshening": 57.245862999999986,
+            "compiler.check-and-complete": 171.89680299999998,
+            "compiler.owned-layout": 9.757652000000007,
+            "compiler.context": 13.268633000000023,
+            "compiler.roots-and-stops": 9.79303200000004,
+            "compiler.source-reach": 5.523987000000034,
+            "compiler.annotation": 7.589661999999976,
+            "compiler.emitted-reach": 116.383378,
+            "compiler.foreign-check": 0.18109800000001997,
+            "compiler.layout-proof": 19.937265000000025,
+            "compiler.foreign-paths": 0.12096400000018548,
+            "driver.foreign-resolver": 0.022364000000152373,
+            "compiler.foreign-modules": 0.2832750000000033,
+            "driver.foreign-source": 0.014793999999938023,
+            "compiler.library": 60.498682000000144,
+            "driver.output-assembly": 0.07122800000001916
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/editdist-0-b2.result.json",
+            "sha256": "985cd815ebadbe1f0b3c83c033c177867e2768420aa61fc82111d763f1791da6"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/editdist-0-b2.mjs",
+            "sha256": "dc730e3490703480f841c7152f9de7731be6cf9285b951ccfd85946895396e90",
+            "bytes": 25614
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 386.58445,
+          "combinedFirstMs": 653.868467,
+          "clockCompileMs": 386.600133,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 159.150509,
+            "check": 169.24484099999995,
+            "backend": 57.96176300000002,
+            "request-other": 0.2430200000000582
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.2430200000000582,
+            "typescript.book-load": 159.150509,
+            "typescript.book-valid": 169.24484099999995,
+            "typescript.js-lib": 57.96176300000002
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/editdist-0-typescript.result.json",
+            "sha256": "69fe7743bfe20ec5ceddc671228b15b0d1172733ce0c6db500ff9ed6625f6236"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/editdist-0-typescript.mjs",
+            "sha256": "33721b7770aa4e367896cf1b842cc8ec309dced3a2608e25c5709217474eabc6",
+            "bytes": 11907
+          }
+        }
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "extraCompileMs": 477.9945330000001,
+      "extraGroupMs": {
+        "cache": 182.19701800000007,
+        "load": 106.19759899999997,
+        "check": -7.110830000000078,
+        "backend": 194.28004099999998,
+        "request-other": 2.4307050000001595
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 866.167809,
+          "combinedFirstMs": 972.742024,
+          "clockCompileMs": 866.1872430000001,
+          "groupsExclusiveMs": {
+            "cache": 182.19701800000007,
+            "load": 278.194559,
+            "check": 171.36692299999993,
+            "backend": 231.75975800000003,
+            "request-other": 2.6689850000000206
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0083250000000135,
+            "driver.inspect": 1.500312000000008,
+            "driver.api-load": 0.16034799999999905,
+            "driver.base-identity": 12.07101700000004,
+            "driver.base-cache": 0.9653600000000324,
+            "driver.cache-read": 2.0646019999999794,
+            "driver.cache-decode": 0.32618899999994255,
+            "driver.cache-header-parse": 0.08093999999999824,
+            "driver.cache-book-digest": 13.211077000000046,
+            "driver.cache-state-digests": 5.9506170000000225,
+            "driver.cache-book-parse": 68.59000900000001,
+            "driver.cache-checked-state-parse": 24.962833999999987,
+            "driver.cache-fresh-state-parse": 0.037918999999988046,
+            "driver.cache-validation": 0.2225360000000478,
+            "driver.json-tree-validation": 53.137429,
+            "driver.checked-state-admission": 0.20103199999994104,
+            "driver.checked-state-shape": 0.36695600000001605,
+            "driver.fresh-state-admission": 0.00850100000002385,
+            "driver.source-graph": 1.7886659999999779,
+            "compiler.source-header": 37.659719999999936,
+            "compiler.prefix-source-completion": 168.54231000000016,
+            "driver.span-validation": 9.205351999999948,
+            "compiler.prefix-freshening": 60.99851100000001,
+            "compiler.check-and-complete": 171.36692299999993,
+            "compiler.owned-layout": 10.829831000000013,
+            "compiler.context": 12.950974999999971,
+            "compiler.roots-and-stops": 9.189555999999925,
+            "compiler.source-reach": 17.889744999999948,
+            "compiler.annotation": 5.682532000000037,
+            "compiler.emitted-reach": 88.76345400000014,
+            "compiler.foreign-check": 0.16652800000019852,
+            "compiler.layout-proof": 6.101000999999997,
+            "compiler.foreign-paths": 0.1885379999998804,
+            "driver.foreign-resolver": 0.017646000000013373,
+            "compiler.foreign-modules": 0.27852499999994507,
+            "driver.foreign-source": 0.018165000000180953,
+            "compiler.library": 79.62695199999985,
+            "driver.output-assembly": 0.056309999999939464
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/tree-bitonic-0-b2.result.json",
+            "sha256": "019829e1fd64128e57ea00059ff1931713ae82112ac6d1fe2e58d2299ef737c3"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/tree-bitonic-0-b2.mjs",
+            "sha256": "f519fcf0a7d22e54c7e133bc284fdbba4645b5f642cf7df912f4f1fd58887e42",
+            "bytes": 23386
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 388.17752299999995,
+          "combinedFirstMs": 681.5871089999999,
+          "clockCompileMs": 388.19271,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 171.99696000000006,
+            "check": 178.477753,
+            "backend": 37.47971700000005,
+            "request-other": 0.23827999999986105
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.23827999999986105,
+            "typescript.book-load": 171.99696000000006,
+            "typescript.book-valid": 178.477753,
+            "typescript.js-lib": 37.47971700000005
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/tree-bitonic-0-typescript.result.json",
+            "sha256": "f27c77e55d3f9051b4352f75614ad4d6590d1ee5a21ee6e9ff7a5542b46f85e2"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/tree-bitonic-0-typescript.mjs",
+            "sha256": "c24fff66dd20c4579b7912b42450f1574e4c0b7a84e5d8b2d3d1d1345ef2b159",
+            "bytes": 10593
+          }
+        }
+      }
+    },
+    {
+      "case": "lexer",
+      "extraCompileMs": 559.392678,
+      "extraGroupMs": {
+        "cache": 168.21348699999993,
+        "load": 133.19189999999998,
+        "check": -7.5162070000000085,
+        "backend": 262.9513470000003,
+        "request-other": 2.552150999999867
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 953.3606580000001,
+          "combinedFirstMs": 1052.71916,
+          "clockCompileMs": 953.381071,
+          "groupsExclusiveMs": {
+            "cache": 168.21348699999993,
+            "load": 294.04268999999994,
+            "check": 170.10278200000005,
+            "backend": 318.22305700000027,
+            "request-other": 2.7990549999998393
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.1004809999999452,
+            "driver.inspect": 1.5430599999998549,
+            "driver.api-load": 0.15551400000003923,
+            "driver.base-identity": 12.015082999999947,
+            "driver.base-cache": 0.9357779999999707,
+            "driver.cache-read": 1.607797000000005,
+            "driver.cache-decode": 0.24964000000005626,
+            "driver.cache-header-parse": 0.060114999999996144,
+            "driver.cache-book-digest": 9.573428999999976,
+            "driver.cache-state-digests": 5.993313000000001,
+            "driver.cache-book-parse": 63.57550999999995,
+            "driver.cache-checked-state-parse": 22.48614900000001,
+            "driver.cache-fresh-state-parse": 0.03498500000000604,
+            "driver.cache-validation": 0.22981700000002547,
+            "driver.json-tree-validation": 50.76920999999999,
+            "driver.checked-state-admission": 0.2249760000000265,
+            "driver.checked-state-shape": 0.4428479999999695,
+            "driver.fresh-state-admission": 0.014836999999999989,
+            "driver.source-graph": 1.7979979999998932,
+            "compiler.source-header": 35.373099000000025,
+            "compiler.prefix-source-completion": 180.05341100000004,
+            "driver.span-validation": 24.034789000000046,
+            "compiler.prefix-freshening": 52.78339299999993,
+            "compiler.check-and-complete": 170.10278200000005,
+            "compiler.owned-layout": 10.092453999999975,
+            "compiler.context": 14.902496000000042,
+            "compiler.roots-and-stops": 9.23305700000003,
+            "compiler.source-reach": 12.522784999999999,
+            "compiler.annotation": 11.963182999999958,
+            "compiler.emitted-reach": 147.73880699999995,
+            "compiler.foreign-check": 0.10249199999998382,
+            "compiler.layout-proof": 25.466091000000006,
+            "compiler.foreign-paths": 0.19289900000012494,
+            "driver.foreign-resolver": 0.022055000000136715,
+            "compiler.foreign-modules": 2.327532999999903,
+            "driver.foreign-source": 0.015399000000115848,
+            "compiler.library": 83.57825600000001,
+            "driver.output-assembly": 0.0655500000000302
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/lexer-0-b2.result.json",
+            "sha256": "c35eed2ee6b9b1569323070f72205bc552702bd63c9c556b9d3328826c4cb3e3"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/lexer-0-b2.mjs",
+            "sha256": "dcb0125d93015591a539320dd827b7d751d6985e69c44e51f7beefa43121e4a5",
+            "bytes": 28426
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 393.97299399999997,
+          "combinedFirstMs": 662.2799769999999,
+          "clockCompileMs": 393.988393,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 160.85078999999996,
+            "check": 177.61898900000006,
+            "backend": 55.271709999999985,
+            "request-other": 0.24690399999997226
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.24690399999997226,
+            "typescript.book-load": 160.85078999999996,
+            "typescript.book-valid": 177.61898900000006,
+            "typescript.js-lib": 55.271709999999985
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/lexer-0-typescript.result.json",
+            "sha256": "b1ee38a3e4a2ee106a9f9efb5b304732a9ab7457a8316209ef127339b97b49c0"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/lexer-0-typescript.mjs",
+            "sha256": "2d9378dfdcacc5904f4b2ac65fd90ba1dcc4a51d9c68b00f6042c42aaeadbbba",
+            "bytes": 14110
+          }
+        }
+      }
+    },
+    {
+      "case": "symreg",
+      "extraCompileMs": 509.367259,
+      "extraGroupMs": {
+        "cache": 167.20946399999997,
+        "load": 118.89905400000004,
+        "check": 9.913736000000085,
+        "backend": 210.95434299999988,
+        "request-other": 2.3906619999999634
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 896.9801590000001,
+          "combinedFirstMs": 994.7857630000001,
+          "clockCompileMs": 897.000028,
+          "groupsExclusiveMs": {
+            "cache": 167.20946399999997,
+            "load": 283.0375690000001,
+            "check": 185.49396000000002,
+            "backend": 258.6186409999999,
+            "request-other": 2.640394000000015
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0381530000000794,
+            "driver.inspect": 1.449647999999911,
+            "driver.api-load": 0.1525930000000244,
+            "driver.base-identity": 12.100948000000017,
+            "driver.base-cache": 0.8377529999999638,
+            "driver.cache-read": 1.6476699999999482,
+            "driver.cache-decode": 0.3054210000000239,
+            "driver.cache-header-parse": 0.06034799999997631,
+            "driver.cache-book-digest": 9.662244000000044,
+            "driver.cache-state-digests": 5.932189999999991,
+            "driver.cache-book-parse": 63.41927899999996,
+            "driver.cache-checked-state-parse": 22.208843,
+            "driver.cache-fresh-state-parse": 0.03401200000001836,
+            "driver.cache-validation": 0.22464400000001206,
+            "driver.json-tree-validation": 50.20977800000003,
+            "driver.checked-state-admission": 0.1997700000000009,
+            "driver.checked-state-shape": 0.3586559999999963,
+            "driver.fresh-state-admission": 0.00790799999998626,
+            "driver.source-graph": 1.805887000000098,
+            "compiler.source-header": 34.754981999999984,
+            "compiler.prefix-source-completion": 165.546807,
+            "driver.span-validation": 17.441400999999928,
+            "compiler.prefix-freshening": 63.488492000000065,
+            "compiler.check-and-complete": 185.49396000000002,
+            "compiler.owned-layout": 9.964470000000006,
+            "compiler.context": 13.15616,
+            "compiler.roots-and-stops": 8.925246000000016,
+            "compiler.source-reach": 14.248961000000008,
+            "compiler.annotation": 6.991127000000006,
+            "compiler.emitted-reach": 121.34990300000004,
+            "compiler.foreign-check": 0.09692099999983839,
+            "compiler.layout-proof": 8.13601000000017,
+            "compiler.foreign-paths": 0.1385419999999158,
+            "driver.foreign-resolver": 0.02348400000005313,
+            "compiler.foreign-modules": 0.35793299999977535,
+            "driver.foreign-source": 0.014478000000053726,
+            "compiler.library": 75.15031599999998,
+            "driver.output-assembly": 0.06509000000005472
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/symreg-0-b2.result.json",
+            "sha256": "8db6a773477618ed1348dd19ba59978f7006584bbe5af7168bb3c93d0542d82b"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/symreg-0-b2.mjs",
+            "sha256": "7d7d5587ac32645a82a865cf34c1323c7e1cd8789b40ed82f4332ccbe8b9bf65",
+            "bytes": 27254
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 387.61762699999997,
+          "combinedFirstMs": 667.845466,
+          "clockCompileMs": 387.63276900000005,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 164.13851500000004,
+            "check": 175.58022399999993,
+            "backend": 47.66429800000003,
+            "request-other": 0.24973200000005136
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.24973200000005136,
+            "typescript.book-load": 164.13851500000004,
+            "typescript.book-valid": 175.58022399999993,
+            "typescript.js-lib": 47.66429800000003
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/symreg-0-typescript.result.json",
+            "sha256": "9778e051fa3582388693070fcde767f08603e51bb5525e989fe79c3a5fa81dc6"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/symreg-0-typescript.mjs",
+            "sha256": "545d6112dbbb0cc66074407a0daf7076b148f9d311e7e9bbffff3376f8e00651",
+            "bytes": 12815
+          }
+        }
+      }
+    },
+    {
+      "case": "test-morning-program",
+      "extraCompileMs": 613.4579079999999,
+      "extraGroupMs": {
+        "cache": 197.81210100000004,
+        "load": 64.10153800000006,
+        "check": -0.6745950000000676,
+        "backend": 348.99429100000043,
+        "request-other": 3.224572999999282
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 1206.536624,
+          "combinedFirstMs": 1315.938637,
+          "clockCompileMs": 1206.561323,
+          "groupsExclusiveMs": {
+            "cache": 197.81210100000004,
+            "load": 232.54212700000005,
+            "check": 169.78274699999997,
+            "backend": 602.9359860000004,
+            "request-other": 3.48836199999937
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.5633809999999357,
+            "driver.inspect": 1.7409459999994397,
+            "driver.api-load": 0.1840349999999944,
+            "driver.base-identity": 15.573581999999988,
+            "driver.base-cache": 1.0415000000000987,
+            "driver.cache-read": 1.6543990000000122,
+            "driver.cache-decode": 0.3086829999999736,
+            "driver.cache-header-parse": 0.06931700000001229,
+            "driver.cache-book-digest": 9.708390000000009,
+            "driver.cache-state-digests": 6.246590000000026,
+            "driver.cache-book-parse": 74.189976,
+            "driver.cache-checked-state-parse": 26.878844000000015,
+            "driver.cache-fresh-state-parse": 0.05117899999999054,
+            "driver.cache-validation": 0.34670499999998583,
+            "driver.json-tree-validation": 61.090445000000045,
+            "driver.checked-state-admission": 0.22514799999987645,
+            "driver.checked-state-shape": 0.4101800000000253,
+            "driver.fresh-state-admission": 0.017162999999982276,
+            "driver.source-graph": 1.8936540000000832,
+            "compiler.source-header": 8.352621999999883,
+            "compiler.prefix-source-completion": 157.30102900000009,
+            "driver.span-validation": 10.926601000000005,
+            "compiler.prefix-freshening": 54.068220999999994,
+            "compiler.check-and-complete": 169.78274699999997,
+            "compiler.owned-layout": 10.191654000000085,
+            "compiler.context": 13.749664000000053,
+            "compiler.roots-and-stops": 9.348484999999982,
+            "compiler.source-reach": 17.207827000000066,
+            "compiler.annotation": 91.34387499999991,
+            "compiler.emitted-reach": 249.8939150000001,
+            "compiler.foreign-check": 0.10608400000000984,
+            "compiler.layout-proof": 32.768174000000045,
+            "compiler.foreign-paths": 0.37578000000007705,
+            "driver.foreign-resolver": 0.023969999999962965,
+            "compiler.foreign-modules": 0.3017859999999928,
+            "driver.foreign-source": 0.014887000000044281,
+            "compiler.library": 177.52444300000002,
+            "driver.output-assembly": 0.0854420000000573
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-morning-program-0-b2.result.json",
+            "sha256": "3173f6cdee82aa13ee56432516865ed127c1367230eb8847b3558eebd4261e09"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-morning-program-0-b2.mjs",
+            "sha256": "2162dd8313581c4ebadeaadb237f48acc3c38485f3dd2869d2fc8e2289634412",
+            "bytes": 83112
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 593.0884249999999,
+          "combinedFirstMs": 866.528155,
+          "clockCompileMs": 593.103415,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 168.440589,
+            "check": 170.45734200000004,
+            "backend": 253.94169499999998,
+            "request-other": 0.263789000000088
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.263789000000088,
+            "typescript.book-load": 168.440589,
+            "typescript.book-valid": 170.45734200000004,
+            "typescript.js-lib": 253.94169499999998
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-morning-program-0-typescript.result.json",
+            "sha256": "ec4649bb82331550f7760946e2260fbee2ace6864476818e2c37d89ebfec44fc"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-morning-program-0-typescript.mjs",
+            "sha256": "faff88b122b84d0d18698210c66233cae52493e3cc68c92d95e0c639e20990ad",
+            "bytes": 48892
+          }
+        }
+      }
+    },
+    {
+      "case": "test-evening-program",
+      "extraCompileMs": 722.048899,
+      "extraGroupMs": {
+        "cache": 168.50017200000002,
+        "load": 27.967234999999903,
+        "check": -23.513753000000065,
+        "backend": 546.4624530000002,
+        "request-other": 2.6327919999998244
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 1390.2772160000002,
+          "combinedFirstMs": 1488.6182090000002,
+          "clockCompileMs": 1390.296623,
+          "groupsExclusiveMs": {
+            "cache": 168.50017200000002,
+            "load": 186.48339499999997,
+            "check": 147.35773099999994,
+            "backend": 885.0809490000001,
+            "request-other": 2.8743759999998133
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0277810000000045,
+            "driver.inspect": 1.6982199999997647,
+            "driver.api-load": 0.1483750000000441,
+            "driver.base-identity": 11.942991000000006,
+            "driver.base-cache": 0.8839719999999716,
+            "driver.cache-read": 1.9318770000000427,
+            "driver.cache-decode": 0.26130500000004986,
+            "driver.cache-header-parse": 0.059550000000001546,
+            "driver.cache-book-digest": 9.72301699999997,
+            "driver.cache-state-digests": 6.101749999999981,
+            "driver.cache-book-parse": 63.825199999999995,
+            "driver.cache-checked-state-parse": 22.892538000000002,
+            "driver.cache-fresh-state-parse": 0.034898999999995794,
+            "driver.cache-validation": 0.2253509999999892,
+            "driver.json-tree-validation": 49.917214,
+            "driver.checked-state-admission": 0.19563000000005104,
+            "driver.checked-state-shape": 0.4962380000000053,
+            "driver.fresh-state-admission": 0.008639999999957126,
+            "driver.source-graph": 1.7026520000000005,
+            "compiler.source-header": 7.2046399999999835,
+            "compiler.prefix-source-completion": 123.19842000000006,
+            "driver.span-validation": 14.35429099999999,
+            "compiler.prefix-freshening": 40.023391999999944,
+            "compiler.check-and-complete": 147.35773099999994,
+            "compiler.owned-layout": 9.594756999999959,
+            "compiler.context": 11.379451000000017,
+            "compiler.roots-and-stops": 9.970259000000055,
+            "compiler.source-reach": 27.927013999999986,
+            "compiler.annotation": 105.88214700000003,
+            "compiler.emitted-reach": 463.676057,
+            "compiler.foreign-check": 0.12817199999994955,
+            "compiler.layout-proof": 74.97607799999992,
+            "compiler.foreign-paths": 0.2004340000000866,
+            "driver.foreign-resolver": 0.020879000000149972,
+            "compiler.foreign-modules": 0.3194300000002386,
+            "driver.foreign-source": 0.01676699999984521,
+            "compiler.library": 180.91027499999996,
+            "driver.output-assembly": 0.07922899999994115
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-evening-program-0-b2.result.json",
+            "sha256": "24a288418fa1ca02ec250819192e732a68e17982c6e87dee52a83ad4017364f4"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-evening-program-0-b2.mjs",
+            "sha256": "5fd27e637f0c90027ba0893cf46f4a662651e457eaf5a2a50a850e0d514ef415",
+            "bytes": 99795
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 668.2332880000001,
+          "combinedFirstMs": 937.8348080000001,
+          "clockCompileMs": 668.247724,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 158.51616000000007,
+            "check": 170.871484,
+            "backend": 338.61849599999994,
+            "request-other": 0.24158399999998892
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.24158399999998892,
+            "typescript.book-load": 158.51616000000007,
+            "typescript.book-valid": 170.871484,
+            "typescript.js-lib": 338.61849599999994
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-evening-program-0-typescript.result.json",
+            "sha256": "a082922deee99ba924393ab484bebaf2fb5e0b54636827ec4f53a971759ccbf4"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-evening-program-0-typescript.mjs",
+            "sha256": "0c1d34b107501041c6e5a3bb5b896e91b8ab56b8826c3f616ea6b4e3a3e1d6d0",
+            "bytes": 62658
+          }
+        }
+      }
+    },
+    {
+      "case": "test-rle-roundtrip",
+      "extraCompileMs": 406.35928399999995,
+      "extraGroupMs": {
+        "cache": 167.12084899999996,
+        "load": 72.65429800000004,
+        "check": 2.8614710000000514,
+        "backend": 161.38472600000023,
+        "request-other": 2.337939999999719
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 767.5308450000001,
+          "combinedFirstMs": 865.4246400000001,
+          "clockCompileMs": 767.550844,
+          "groupsExclusiveMs": {
+            "cache": 167.12084899999996,
+            "load": 228.320581,
+            "check": 170.67229500000008,
+            "backend": 198.8608290000002,
+            "request-other": 2.5762899999998012
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0093550000000278,
+            "driver.inspect": 1.4094669999997222,
+            "driver.api-load": 0.15746800000005123,
+            "driver.base-identity": 12.17450500000001,
+            "driver.base-cache": 0.9045419999999922,
+            "driver.cache-read": 1.5649809999999889,
+            "driver.cache-decode": 0.25679700000000594,
+            "driver.cache-header-parse": 0.05982499999998936,
+            "driver.cache-book-digest": 9.527277999999967,
+            "driver.cache-state-digests": 5.957914999999957,
+            "driver.cache-book-parse": 63.54195200000004,
+            "driver.cache-checked-state-parse": 22.06859700000001,
+            "driver.cache-fresh-state-parse": 0.034912000000019816,
+            "driver.cache-validation": 0.2366700000000037,
+            "driver.json-tree-validation": 50.19881399999997,
+            "driver.checked-state-admission": 0.20225899999996955,
+            "driver.checked-state-shape": 0.3816910000000462,
+            "driver.fresh-state-admission": 0.010110999999994874,
+            "driver.source-graph": 1.7225650000000314,
+            "compiler.source-header": 7.054040999999984,
+            "compiler.prefix-source-completion": 152.11369799999994,
+            "driver.span-validation": 8.828598000000056,
+            "compiler.prefix-freshening": 58.60167899999999,
+            "compiler.check-and-complete": 170.67229500000008,
+            "compiler.owned-layout": 9.399659999999926,
+            "compiler.context": 12.806375000000003,
+            "compiler.roots-and-stops": 9.265154999999936,
+            "compiler.source-reach": 5.042378999999983,
+            "compiler.annotation": 6.114089000000035,
+            "compiler.emitted-reach": 48.991138999999976,
+            "compiler.foreign-check": 0.09002700000007735,
+            "compiler.layout-proof": 38.706394000000046,
+            "compiler.foreign-paths": 0.16434700000002067,
+            "driver.foreign-resolver": 0.02391099999999824,
+            "compiler.foreign-modules": 0.8706050000000687,
+            "driver.foreign-source": 0.018455000000017208,
+            "compiler.library": 67.31129900000008,
+            "driver.output-assembly": 0.05699400000003152
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-rle-roundtrip-0-b2.result.json",
+            "sha256": "5dd92b08fafd3f92ecc6290d81ab70c4cb1e8ba27cf9364e200940e5384f7364"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-rle-roundtrip-0-b2.mjs",
+            "sha256": "4989b2a6a64628acd875ac8a82505943d54d2346d5225d187b81015db9273d66",
+            "bytes": 19976
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 361.177487,
+          "combinedFirstMs": 627.8680059999999,
+          "clockCompileMs": 361.19156000000004,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 155.66628299999996,
+            "check": 167.81082400000003,
+            "backend": 37.476102999999966,
+            "request-other": 0.23835000000008222
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.23835000000008222,
+            "typescript.book-load": 155.66628299999996,
+            "typescript.book-valid": 167.81082400000003,
+            "typescript.js-lib": 37.476102999999966
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-rle-roundtrip-0-typescript.result.json",
+            "sha256": "d96217ba93f34afc8434a804a01c9c2fa27cf2e1d2ecf1c7ac9e742f52658e4a"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-rle-roundtrip-0-typescript.mjs",
+            "sha256": "f21a8eb4239ff0db7fbfda6121f24b04b48c5478fe6de5798660ca5b417c80a8",
+            "bytes": 8728
+          }
+        }
+      }
+    },
+    {
+      "case": "test-map-set-ops",
+      "extraCompileMs": 928.6985639999999,
+      "extraGroupMs": {
+        "cache": 168.95473300000003,
+        "load": 128.75322200000005,
+        "check": 26.814816999999948,
+        "backend": 600.9607999999997,
+        "request-other": 3.2149920000001657
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 1590.103228,
+          "combinedFirstMs": 1690.1941649999999,
+          "clockCompileMs": 1590.124261,
+          "groupsExclusiveMs": {
+            "cache": 168.95473300000003,
+            "load": 292.934971,
+            "check": 200.23006899999996,
+            "backend": 924.5402719999998,
+            "request-other": 3.4642160000000786
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.1145959999998922,
+            "driver.inspect": 2.124384000000191,
+            "driver.api-load": 0.22523599999999533,
+            "driver.base-identity": 12.213405000000023,
+            "driver.base-cache": 0.9496699999999691,
+            "driver.cache-read": 1.7436950000000024,
+            "driver.cache-decode": 0.33927699999992456,
+            "driver.cache-header-parse": 0.08730000000002747,
+            "driver.cache-book-digest": 9.907973000000027,
+            "driver.cache-state-digests": 6.01136200000002,
+            "driver.cache-book-parse": 63.83131900000001,
+            "driver.cache-checked-state-parse": 22.588100999999995,
+            "driver.cache-fresh-state-parse": 0.036889999999971224,
+            "driver.cache-validation": 0.22868800000003375,
+            "driver.json-tree-validation": 50.40824300000003,
+            "driver.checked-state-admission": 0.20398199999999633,
+            "driver.checked-state-shape": 0.3934380000000033,
+            "driver.fresh-state-admission": 0.011390000000005784,
+            "driver.source-graph": 1.9901749999999652,
+            "compiler.source-header": 10.71432900000002,
+            "compiler.prefix-source-completion": 219.05556100000007,
+            "driver.span-validation": 10.90058399999998,
+            "compiler.prefix-freshening": 50.274321999999984,
+            "compiler.check-and-complete": 200.23006899999996,
+            "compiler.owned-layout": 9.586618999999928,
+            "compiler.context": 11.792569000000071,
+            "compiler.roots-and-stops": 17.179924000000028,
+            "compiler.source-reach": 25.606087000000002,
+            "compiler.annotation": 94.56042200000013,
+            "compiler.emitted-reach": 414.7597249999999,
+            "compiler.foreign-check": 0.13171799999986433,
+            "compiler.layout-proof": 51.68908099999999,
+            "compiler.foreign-paths": 0.19675899999992907,
+            "driver.foreign-resolver": 0.02402499999993779,
+            "compiler.foreign-modules": 0.33259400000019923,
+            "driver.foreign-source": 0.0151299999999992,
+            "compiler.library": 298.57422900000006,
+            "driver.output-assembly": 0.09138999999981934
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-map-set-ops-0-b2.result.json",
+            "sha256": "ad09cbb205e7ce28a120a28b1f09240cac65bd18128faf7283939feb27aa7d77"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-map-set-ops-0-b2.mjs",
+            "sha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd",
+            "bytes": 132866
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 661.4102849999999,
+          "combinedFirstMs": 926.9993229999999,
+          "clockCompileMs": 661.425697,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 164.18174899999997,
+            "check": 173.415252,
+            "backend": 323.5794720000001,
+            "request-other": 0.24922399999991285
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.24922399999991285,
+            "typescript.book-load": 164.18174899999997,
+            "typescript.book-valid": 173.415252,
+            "typescript.js-lib": 323.5794720000001
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-map-set-ops-0-typescript.result.json",
+            "sha256": "e43fbbc0acf5d0d9fc1456999f83a7f31ca72c123955b19e37e8d5f12395ff48"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/test-map-set-ops-0-typescript.mjs",
+            "sha256": "91812e3092688bdc609a2f9f21c1280120b8392eab7cd7148586702bf551e9bf",
+            "bytes": 69178
+          }
+        }
+      }
+    },
+    {
+      "case": "raytrace",
+      "extraCompileMs": 731.2407130000001,
+      "extraGroupMs": {
+        "cache": 167.44797499999999,
+        "load": 265.80601699999994,
+        "check": 64.81229899999994,
+        "backend": 227.54468399999985,
+        "request-other": 5.629738000000543
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 1275.484215,
+          "combinedFirstMs": 1373.1178869999999,
+          "clockCompileMs": 1275.503365,
+          "groupsExclusiveMs": {
+            "cache": 167.44797499999999,
+            "load": 430.209866,
+            "check": 248.410036,
+            "backend": 423.5561539999999,
+            "request-other": 5.879334000000313
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0332610000000386,
+            "driver.inspect": 4.690779000000248,
+            "driver.api-load": 0.15529400000002624,
+            "driver.base-identity": 12.102308999999991,
+            "driver.base-cache": 0.8407940000000167,
+            "driver.cache-read": 1.6114939999999933,
+            "driver.cache-decode": 0.2672769999999218,
+            "driver.cache-header-parse": 0.06260600000001659,
+            "driver.cache-book-digest": 9.463060000000041,
+            "driver.cache-state-digests": 5.990925000000004,
+            "driver.cache-book-parse": 63.99161200000003,
+            "driver.cache-checked-state-parse": 22.466003999999998,
+            "driver.cache-fresh-state-parse": 0.03383399999995618,
+            "driver.cache-validation": 0.22235899999992625,
+            "driver.json-tree-validation": 49.81083700000005,
+            "driver.checked-state-admission": 0.20558099999999513,
+            "driver.checked-state-shape": 0.3707130000000234,
+            "driver.fresh-state-admission": 0.008570000000020173,
+            "driver.source-graph": 1.8572860000001583,
+            "compiler.source-header": 36.07022499999994,
+            "compiler.prefix-source-completion": 278.68330199999997,
+            "driver.span-validation": 11.175028999999995,
+            "compiler.prefix-freshening": 102.42402399999992,
+            "compiler.check-and-complete": 248.410036,
+            "compiler.owned-layout": 10.058797999999797,
+            "compiler.context": 13.519870999999966,
+            "compiler.roots-and-stops": 11.134596000000101,
+            "compiler.source-reach": 5.593820999999934,
+            "compiler.annotation": 45.377623000000085,
+            "compiler.emitted-reach": 151.740186,
+            "compiler.foreign-check": 0.09658300000000963,
+            "compiler.layout-proof": 25.544415999999956,
+            "compiler.foreign-paths": 0.30928399999993417,
+            "driver.foreign-resolver": 0.022101000000020576,
+            "compiler.foreign-modules": 0.2849780000001374,
+            "driver.foreign-source": 0.014932000000044354,
+            "compiler.library": 159.7717580000001,
+            "driver.output-assembly": 0.08720699999980752
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/raytrace-0-b2.result.json",
+            "sha256": "824e96a33cee84739b3aa90e6a92967dc1cf6c0134c3f8b2532c3eccba276884"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/raytrace-0-b2.mjs",
+            "sha256": "9acab30e62b6339fcae0fc41b7f3fcb422b3531a013e669658e348d63ebfe82c",
+            "bytes": 50830
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 544.248115,
+          "combinedFirstMs": 811.6707759999999,
+          "clockCompileMs": 544.2626519999999,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 164.40384900000004,
+            "check": 183.59773700000005,
+            "backend": 196.01147000000003,
+            "request-other": 0.24959599999976945
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.24959599999976945,
+            "typescript.book-load": 164.40384900000004,
+            "typescript.book-valid": 183.59773700000005,
+            "typescript.js-lib": 196.01147000000003
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/raytrace-0-typescript.result.json",
+            "sha256": "c6efe70b46833fd0f755e8489dc24028e27aaa772c850aeba52c07ec5b838901"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/raytrace-0-typescript.mjs",
+            "sha256": "87bd526f04705416db047a31eb4ccc186f1c90f5c911f57736a3216a7629ddd2",
+            "bytes": 28974
+          }
+        }
+      }
+    },
+    {
+      "case": "local-row",
+      "extraCompileMs": 489.93436299999996,
+      "extraGroupMs": {
+        "cache": 171.59292,
+        "load": 106.15468700000002,
+        "check": -5.656480000000101,
+        "backend": 215.3469789999997,
+        "request-other": 2.496257000000412
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 910.884529,
+          "combinedFirstMs": 1010.567665,
+          "clockCompileMs": 910.9037139999999,
+          "groupsExclusiveMs": {
+            "cache": 171.59292,
+            "load": 278.426455,
+            "check": 178.87663799999996,
+            "backend": 279.1883889999997,
+            "request-other": 2.819312000000366
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.075281999999902,
+            "driver.inspect": 1.5896350000004986,
+            "driver.api-load": 0.15439499999996542,
+            "driver.base-identity": 12.19770299999999,
+            "driver.base-cache": 0.9172650000000431,
+            "driver.cache-read": 2.0059870000000046,
+            "driver.cache-decode": 0.26569199999994453,
+            "driver.cache-header-parse": 0.05908700000003364,
+            "driver.cache-book-digest": 9.820401000000004,
+            "driver.cache-state-digests": 6.22088100000002,
+            "driver.cache-book-parse": 65.45404400000001,
+            "driver.cache-checked-state-parse": 23.27271300000001,
+            "driver.cache-fresh-state-parse": 0.03615199999995866,
+            "driver.cache-validation": 0.22724799999997458,
+            "driver.json-tree-validation": 50.53065400000003,
+            "driver.checked-state-admission": 0.20511399999992364,
+            "driver.checked-state-shape": 0.36942700000003015,
+            "driver.fresh-state-admission": 0.010552000000018324,
+            "driver.source-graph": 1.8149500000000671,
+            "compiler.source-header": 35.199989000000016,
+            "compiler.prefix-source-completion": 174.95489699999996,
+            "driver.span-validation": 9.84375,
+            "compiler.prefix-freshening": 56.61286899999993,
+            "compiler.check-and-complete": 178.87663799999996,
+            "compiler.owned-layout": 10.658229000000006,
+            "compiler.context": 13.48535800000002,
+            "compiler.roots-and-stops": 9.322798999999918,
+            "compiler.source-reach": 7.978349999999978,
+            "compiler.annotation": 13.42357299999992,
+            "compiler.emitted-reach": 126.777469,
+            "compiler.foreign-check": 0.10269399999992856,
+            "compiler.layout-proof": 27.44129699999985,
+            "compiler.foreign-paths": 0.16328699999985474,
+            "driver.foreign-resolver": 0.02721400000018548,
+            "compiler.foreign-modules": 0.28572799999983545,
+            "driver.foreign-source": 0.014521000000058848,
+            "compiler.library": 69.44176900000002,
+            "driver.output-assembly": 0.06610100000011698
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/local-row-0-b2.result.json",
+            "sha256": "2d3992ac2675d022100cfacea21cb82e3442d31693d0329ef99a0c627abec3f9"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/local-row-0-b2.mjs",
+            "sha256": "30891e2f177cbe7b738c676722a1bc4ba962163a61260f49c6c1a457d9e58586",
+            "bytes": 26543
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 420.947966,
+          "combinedFirstMs": 714.032055,
+          "clockCompileMs": 420.96935099999996,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 172.27176799999995,
+            "check": 184.53311800000006,
+            "backend": 63.841409999999996,
+            "request-other": 0.3230549999999539
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.3230549999999539,
+            "typescript.book-load": 172.27176799999995,
+            "typescript.book-valid": 184.53311800000006,
+            "typescript.js-lib": 63.841409999999996
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/local-row-0-typescript.result.json",
+            "sha256": "bdccca349642d7b9e430205de26169fa20e27c9bb6c6ef7217ae1fcdcff119f8"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/local-row-0-typescript.mjs",
+            "sha256": "e303d7add56bca3c62ab3a7d636f01b65007556f5a80d43d59f94018b4154de6",
+            "bytes": 12457
+          }
+        }
+      }
+    },
+    {
+      "case": "local-fold",
+      "extraCompileMs": 256.99549699999994,
+      "extraGroupMs": {
+        "cache": 182.38527000000005,
+        "load": -19.709617000000037,
+        "check": -28.83287699999994,
+        "backend": 120.86702299999979,
+        "request-other": 2.2856980000000817
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 613.916389,
+          "combinedFirstMs": 723.0192959999999,
+          "clockCompileMs": 613.935798,
+          "groupsExclusiveMs": {
+            "cache": 182.38527000000005,
+            "load": 138.51739899999995,
+            "check": 138.86768500000005,
+            "backend": 151.6282279999998,
+            "request-other": 2.5372160000001145
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.9920630000000301,
+            "driver.inspect": 1.3940260000000535,
+            "driver.api-load": 0.15112700000003088,
+            "driver.base-identity": 11.859773000000018,
+            "driver.base-cache": 0.8350800000000049,
+            "driver.cache-read": 1.630646000000013,
+            "driver.cache-decode": 0.3098979999998619,
+            "driver.cache-header-parse": 0.059657000000015614,
+            "driver.cache-book-digest": 9.581650000000025,
+            "driver.cache-state-digests": 10.189509000000044,
+            "driver.cache-book-parse": 67.63104900000002,
+            "driver.cache-checked-state-parse": 26.31067200000001,
+            "driver.cache-fresh-state-parse": 0.036262000000022,
+            "driver.cache-validation": 0.22384099999999307,
+            "driver.json-tree-validation": 53.141801999999984,
+            "driver.checked-state-admission": 0.2000009999999861,
+            "driver.checked-state-shape": 0.36713100000002896,
+            "driver.fresh-state-admission": 0.00829900000002226,
+            "driver.source-graph": 1.6060830000000124,
+            "compiler.source-header": 6.003441000000009,
+            "compiler.prefix-source-completion": 64.73864299999997,
+            "driver.span-validation": 1.9668839999999363,
+            "compiler.prefix-freshening": 64.20234800000003,
+            "compiler.check-and-complete": 138.86768500000005,
+            "compiler.owned-layout": 13.493076999999971,
+            "compiler.context": 13.672167999999942,
+            "compiler.roots-and-stops": 9.336896000000024,
+            "compiler.source-reach": 4.589036999999962,
+            "compiler.annotation": 3.8629159999999274,
+            "compiler.emitted-reach": 61.50772800000004,
+            "compiler.foreign-check": 0.08489299999996547,
+            "compiler.layout-proof": 2.5407619999999724,
+            "compiler.foreign-paths": 0.09548900000004323,
+            "driver.foreign-resolver": 0.015540999999984706,
+            "compiler.foreign-modules": 0.2912820000000238,
+            "driver.foreign-source": 0.01361599999995633,
+            "compiler.library": 42.06926800000008,
+            "driver.output-assembly": 0.05555499999991298
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/local-fold-0-b2.result.json",
+            "sha256": "9c0d6431871f72a228844cf1b313a11bb7c6a2857f197cb240b8cb092411e9af"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/local-fold-0-b2.mjs",
+            "sha256": "3f15a27a23ad1f4153e27ea4a9be22a33d020bbe5d614adab91581f09897eb80",
+            "bytes": 15742
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 356.924837,
+          "combinedFirstMs": 622.7366959999999,
+          "clockCompileMs": 356.94030100000003,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 158.227016,
+            "check": 167.700562,
+            "backend": 30.761205000000018,
+            "request-other": 0.25151800000003277
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.25151800000003277,
+            "typescript.book-load": 158.227016,
+            "typescript.book-valid": 167.700562,
+            "typescript.js-lib": 30.761205000000018
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/local-fold-0-typescript.result.json",
+            "sha256": "4a58a0a36232ab8e3af443c4446c6cc4878032673885aad6f4e8ce648be38891"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/local-fold-0-typescript.mjs",
+            "sha256": "591c3e3a895f4092a80eac58fef2ea4ecd15f59c01433fc69ce09143055e2444",
+            "bytes": 5191
+          }
+        }
+      }
+    },
+    {
+      "case": "scalar-region",
+      "extraCompileMs": 239.34298600000005,
+      "extraGroupMs": {
+        "cache": 167.663459,
+        "load": 26.75003300000003,
+        "check": -45.862448000000086,
+        "backend": 88.53843300000005,
+        "request-other": 2.253509000000065
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 620.109288,
+          "combinedFirstMs": 718.212029,
+          "clockCompileMs": 620.128541,
+          "groupsExclusiveMs": {
+            "cache": 167.663459,
+            "load": 192.541425,
+            "check": 127.1277409999999,
+            "backend": 130.31198500000005,
+            "request-other": 2.483931000000098
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.9743020000000797,
+            "driver.inspect": 1.353603000000021,
+            "driver.api-load": 0.1560259999999971,
+            "driver.base-identity": 11.941474999999969,
+            "driver.base-cache": 0.898392000000058,
+            "driver.cache-read": 1.9805020000000013,
+            "driver.cache-decode": 0.29724099999998543,
+            "driver.cache-header-parse": 0.05508499999996275,
+            "driver.cache-book-digest": 9.547888999999998,
+            "driver.cache-state-digests": 6.025091000000032,
+            "driver.cache-book-parse": 63.48552699999999,
+            "driver.cache-checked-state-parse": 22.797438,
+            "driver.cache-fresh-state-parse": 0.034971000000041386,
+            "driver.cache-validation": 0.22330699999997705,
+            "driver.json-tree-validation": 49.756371,
+            "driver.checked-state-admission": 0.1993959999999788,
+            "driver.checked-state-shape": 0.4123739999999998,
+            "driver.fresh-state-admission": 0.008399999999994634,
+            "driver.source-graph": 1.672147999999936,
+            "compiler.source-header": 6.022132000000056,
+            "compiler.prefix-source-completion": 113.799555,
+            "driver.span-validation": 8.58971699999995,
+            "compiler.prefix-freshening": 62.45787300000006,
+            "compiler.check-and-complete": 127.1277409999999,
+            "compiler.owned-layout": 9.766858999999954,
+            "compiler.context": 12.965487999999937,
+            "compiler.roots-and-stops": 9.318135999999981,
+            "compiler.source-reach": 5.135367999999971,
+            "compiler.annotation": 5.660481000000004,
+            "compiler.emitted-reach": 35.22249899999997,
+            "compiler.foreign-check": 0.08908200000007582,
+            "compiler.layout-proof": 6.062150000000088,
+            "compiler.foreign-paths": 0.12346400000001267,
+            "driver.foreign-resolver": 0.019998000000100546,
+            "compiler.foreign-modules": 0.3663370000000441,
+            "driver.foreign-source": 0.01465799999994033,
+            "compiler.library": 45.51194799999996,
+            "driver.output-assembly": 0.05551700000000892
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/scalar-region-0-b2.result.json",
+            "sha256": "ba3961365f02713633e77b6c1a7d0a69036276a36c724d848d697b0c63b254e7"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/scalar-region-0-b2.mjs",
+            "sha256": "385e48fd905666695951de333c87bca50a67ad1c08e70fb5dd9173ed9ddedfc2",
+            "bytes": 17811
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 380.770193,
+          "combinedFirstMs": 673.2944190000001,
+          "clockCompileMs": 380.785555,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 165.79139199999997,
+            "check": 172.990189,
+            "backend": 41.773551999999995,
+            "request-other": 0.23042200000003277
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.23042200000003277,
+            "typescript.book-load": 165.79139199999997,
+            "typescript.book-valid": 172.990189,
+            "typescript.js-lib": 41.773551999999995
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/scalar-region-0-typescript.result.json",
+            "sha256": "0640662e42a88bde8c41dfc1f9ecd82059df33904166ee77424314af3143a90d"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/scalar-region-0-typescript.mjs",
+            "sha256": "752a5711b92b0ba8b0e146f41e70ac3934e50965f77950d009b5e738320b594a",
+            "bytes": 6552
+          }
+        }
+      }
+    },
+    {
+      "case": "mandelbrot-grid",
+      "extraCompileMs": 611.8115549999999,
+      "extraGroupMs": {
+        "cache": 187.19746700000002,
+        "load": 183.48513100000002,
+        "check": 25.35083899999995,
+        "backend": 213.3327540000007,
+        "request-other": 2.445363999999188
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 1069.563687,
+          "combinedFirstMs": 1175.859532,
+          "clockCompileMs": 1069.582387,
+          "groupsExclusiveMs": {
+            "cache": 187.19746700000002,
+            "load": 355.24648499999995,
+            "check": 214.07232799999997,
+            "backend": 310.3552120000006,
+            "request-other": 2.7108949999993683
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0611699999999473,
+            "driver.inspect": 1.4989739999994072,
+            "driver.api-load": 0.15075100000001385,
+            "driver.base-identity": 16.824066000000016,
+            "driver.base-cache": 0.9155249999999455,
+            "driver.cache-read": 1.624970000000019,
+            "driver.cache-decode": 0.2709870000001615,
+            "driver.cache-header-parse": 0.06031999999999016,
+            "driver.cache-book-digest": 9.677341999999953,
+            "driver.cache-state-digests": 6.0192539999999894,
+            "driver.cache-book-parse": 71.34271000000001,
+            "driver.cache-checked-state-parse": 22.149823999999967,
+            "driver.cache-fresh-state-parse": 0.03360599999996339,
+            "driver.cache-validation": 0.22412000000002763,
+            "driver.json-tree-validation": 57.46097599999996,
+            "driver.checked-state-admission": 0.21750700000001189,
+            "driver.checked-state-shape": 0.36342899999999645,
+            "driver.fresh-state-admission": 0.012831000000005588,
+            "driver.source-graph": 2.0469199999998864,
+            "compiler.source-header": 37.160897000000034,
+            "compiler.prefix-source-completion": 229.96180500000003,
+            "driver.span-validation": 18.538785000000075,
+            "compiler.prefix-freshening": 67.53807799999993,
+            "compiler.check-and-complete": 214.07232799999997,
+            "compiler.owned-layout": 9.914179000000104,
+            "compiler.context": 13.40524100000016,
+            "compiler.roots-and-stops": 10.491860000000088,
+            "compiler.source-reach": 8.55039099999999,
+            "compiler.annotation": 39.44368999999983,
+            "compiler.emitted-reach": 123.41305899999998,
+            "compiler.foreign-check": 0.18268800000009833,
+            "compiler.layout-proof": 26.98116300000015,
+            "compiler.foreign-paths": 0.15821099999993748,
+            "driver.foreign-resolver": 0.021341000000120403,
+            "compiler.foreign-modules": 0.35594799999989846,
+            "driver.foreign-source": 0.014822000000094704,
+            "compiler.library": 77.35851000000002,
+            "driver.output-assembly": 0.06410900000014408
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/mandelbrot-grid-0-b2.result.json",
+            "sha256": "7a0087f5d91a8206e04a12202341350f6be4504d5cfdff01e73b9ea55e032776"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/mandelbrot-grid-0-b2.mjs",
+            "sha256": "d69d2d22908c4d9e88611620f757b231711f4524e6d8f067201b80c2d0d7833a",
+            "bytes": 34843
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 457.755173,
+          "combinedFirstMs": 751.626096,
+          "clockCompileMs": 457.77083200000004,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 171.76135399999993,
+            "check": 188.72148900000002,
+            "backend": 97.02245799999992,
+            "request-other": 0.2655310000001805
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.2655310000001805,
+            "typescript.book-load": 171.76135399999993,
+            "typescript.book-valid": 188.72148900000002,
+            "typescript.js-lib": 97.02245799999992
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/mandelbrot-grid-0-typescript.result.json",
+            "sha256": "41663b962338c9fb5c9f253dcee289b334ab3f5b080e0ef52914795a4d2231e4"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/mandelbrot-grid-0-typescript.mjs",
+            "sha256": "6a047013a60f774f78942303fd5f3fc2cf778ba09e986aa7b60190bb745068ea",
+            "bytes": 17412
+          }
+        }
+      }
+    },
+    {
+      "case": "raytrace-active",
+      "extraCompileMs": 778.8645240000001,
+      "extraGroupMs": {
+        "cache": 167.61468199999996,
+        "load": 295.9965659999999,
+        "check": 89.05707800000016,
+        "backend": 223.6394399999998,
+        "request-other": 2.5567580000002863
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 1371.070111,
+          "combinedFirstMs": 1469.964455,
+          "clockCompileMs": 1371.089379,
+          "groupsExclusiveMs": {
+            "cache": 167.61468199999996,
+            "load": 474.497937,
+            "check": 283.5483630000001,
+            "backend": 442.62505699999974,
+            "request-other": 2.8033400000002757
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0613650000000234,
+            "driver.inspect": 1.5823940000002494,
+            "driver.api-load": 0.15958100000000286,
+            "driver.base-identity": 12.643149999999991,
+            "driver.base-cache": 0.8492949999999269,
+            "driver.cache-read": 2.051146000000017,
+            "driver.cache-decode": 0.26364900000004354,
+            "driver.cache-header-parse": 0.05983400000002348,
+            "driver.cache-book-digest": 9.51034999999996,
+            "driver.cache-state-digests": 6.021647999999971,
+            "driver.cache-book-parse": 63.44924900000001,
+            "driver.cache-checked-state-parse": 22.54546899999997,
+            "driver.cache-fresh-state-parse": 0.03553900000002841,
+            "driver.cache-validation": 0.22561199999995551,
+            "driver.json-tree-validation": 49.37950000000001,
+            "driver.checked-state-admission": 0.20153800000002775,
+            "driver.checked-state-shape": 0.3700450000000046,
+            "driver.fresh-state-admission": 0.008658000000025368,
+            "driver.source-graph": 1.8966999999998961,
+            "compiler.source-header": 36.02136899999999,
+            "compiler.prefix-source-completion": 301.982461,
+            "driver.span-validation": 23.276861000000054,
+            "compiler.prefix-freshening": 111.32054600000004,
+            "compiler.check-and-complete": 283.5483630000001,
+            "compiler.owned-layout": 10.260851999999886,
+            "compiler.context": 12.91479100000015,
+            "compiler.roots-and-stops": 14.861112999999932,
+            "compiler.source-reach": 5.8703740000000835,
+            "compiler.annotation": 52.14274899999987,
+            "compiler.emitted-reach": 158.37051900000006,
+            "compiler.foreign-check": 0.14912699999990764,
+            "compiler.layout-proof": 25.765467999999828,
+            "compiler.foreign-paths": 0.2764999999999418,
+            "driver.foreign-resolver": 0.025771000000077038,
+            "compiler.foreign-modules": 0.28593799999998737,
+            "driver.foreign-source": 0.014856000000008862,
+            "compiler.library": 161.59952399999997,
+            "driver.output-assembly": 0.08747500000004038
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/raytrace-active-0-b2.result.json",
+            "sha256": "86d6169281f5ba602c9028df82bf9f0e822e02225a15e257894bae8f000e09d4"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/raytrace-active-0-b2.mjs",
+            "sha256": "d0b070f1c63cc2a92f15911780ad00dbee9d9789b99af8ae42a3efd1fd2baf95",
+            "bytes": 52082
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 592.208906,
+          "combinedFirstMs": 882.077606,
+          "clockCompileMs": 592.2248549999999,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 178.50137100000006,
+            "check": 194.49128499999995,
+            "backend": 218.98561699999993,
+            "request-other": 0.24658199999998942
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.24658199999998942,
+            "typescript.book-load": 178.50137100000006,
+            "typescript.book-valid": 194.49128499999995,
+            "typescript.js-lib": 218.98561699999993
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/raytrace-active-0-typescript.result.json",
+            "sha256": "43eaa62ab1dc49f8105e7c05e29ffbf7434dc887e3afcb7fbf2bc4338203298b"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/raytrace-active-0-typescript.mjs",
+            "sha256": "6ec766bd399abe64a706e778efd247cf84fe1cc37e183704a44d17bfbf162895",
+            "bytes": 29926
+          }
+        }
+      }
+    },
+    {
+      "case": "closures",
+      "extraCompileMs": 265.1484080000001,
+      "extraGroupMs": {
+        "cache": 177.115832,
+        "load": 38.52849000000003,
+        "check": -30.361780000000067,
+        "backend": 77.62272400000006,
+        "request-other": 2.2431420000000912
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 598.4927849999999,
+          "combinedFirstMs": 697.1789829999999,
+          "clockCompileMs": 598.5115860000001,
+          "groupsExclusiveMs": {
+            "cache": 177.115832,
+            "load": 187.64533999999998,
+            "check": 129.60373099999993,
+            "backend": 101.67605300000002,
+            "request-other": 2.470630000000199
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.9792019999999866,
+            "driver.inspect": 1.3389050000001816,
+            "driver.api-load": 0.1525230000000306,
+            "driver.base-identity": 12.153125999999986,
+            "driver.base-cache": 0.9171100000000365,
+            "driver.cache-read": 1.6103049999999826,
+            "driver.cache-decode": 0.3048460000001114,
+            "driver.cache-header-parse": 0.062263999999970565,
+            "driver.cache-book-digest": 10.732762999999977,
+            "driver.cache-state-digests": 6.299074999999959,
+            "driver.cache-book-parse": 63.53851500000002,
+            "driver.cache-checked-state-parse": 25.517742999999996,
+            "driver.cache-fresh-state-parse": 0.04419599999999946,
+            "driver.cache-validation": 0.32672900000000027,
+            "driver.json-tree-validation": 55.00916799999999,
+            "driver.checked-state-admission": 0.20041200000002846,
+            "driver.checked-state-shape": 0.39118199999995795,
+            "driver.fresh-state-admission": 0.008397999999999683,
+            "driver.source-graph": 1.650126000000057,
+            "compiler.source-header": 7.05567400000001,
+            "compiler.prefix-source-completion": 109.13538499999999,
+            "driver.span-validation": 8.557158999999956,
+            "compiler.prefix-freshening": 61.24699599999997,
+            "compiler.check-and-complete": 129.60373099999993,
+            "compiler.owned-layout": 9.955038000000059,
+            "compiler.context": 13.594683000000032,
+            "compiler.roots-and-stops": 13.95279800000003,
+            "compiler.source-reach": 5.410096000000067,
+            "compiler.annotation": 5.259047999999893,
+            "compiler.emitted-reach": 28.108919000000014,
+            "compiler.foreign-check": 0.08650299999999334,
+            "compiler.layout-proof": 2.696156999999971,
+            "compiler.foreign-paths": 0.08816799999999603,
+            "driver.foreign-resolver": 0.014763000000016291,
+            "compiler.foreign-modules": 0.26290099999994254,
+            "driver.foreign-source": 0.01368400000001202,
+            "compiler.library": 22.173271,
+            "driver.output-assembly": 0.06002399999999852
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/closures-0-b2.result.json",
+            "sha256": "e4229359a49058923f84064568c9a30d520fe5fd71ff756cd842f94670d2cbca"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/closures-0-b2.mjs",
+            "sha256": "b707d3f0657123299f4ac1456b411b11bc7bae0b2fa53cbb826e7d340c59a71b",
+            "bytes": 16130
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 333.348592,
+          "combinedFirstMs": 602.488376,
+          "clockCompileMs": 333.363178,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 149.11684999999994,
+            "check": 159.965511,
+            "backend": 24.053328999999962,
+            "request-other": 0.2274880000001076
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.2274880000001076,
+            "typescript.book-load": 149.11684999999994,
+            "typescript.book-valid": 159.965511,
+            "typescript.js-lib": 24.053328999999962
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/closures-0-typescript.result.json",
+            "sha256": "5c3fdf190a357ad1fc218b9b3cf0cfebf3417e8d526e3547f84e41ed96d235ae"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/closures-0-typescript.mjs",
+            "sha256": "595d9752cd6eb8cf3dac09ff8393e1cfe08f9eddcd15c2e10c6d5d01dfc77887",
+            "bytes": 5416
+          }
+        }
+      }
+    },
+    {
+      "case": "list-pipeline",
+      "extraCompileMs": 545.072459,
+      "extraGroupMs": {
+        "cache": 168.42751599999997,
+        "load": 62.72733899999997,
+        "check": 0.34112800000013976,
+        "backend": 311.0333370000001,
+        "request-other": 2.543138999999826
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 1075.053465,
+          "combinedFirstMs": 1173.6684129999999,
+          "clockCompileMs": 1075.073324,
+          "groupsExclusiveMs": {
+            "cache": 168.42751599999997,
+            "load": 219.675836,
+            "check": 171.33665600000006,
+            "backend": 512.8446290000002,
+            "request-other": 2.7886869999996975
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0422099999998409,
+            "driver.inspect": 1.5890379999998459,
+            "driver.api-load": 0.15743900000001076,
+            "driver.base-identity": 12.299449999999979,
+            "driver.base-cache": 0.8500410000000329,
+            "driver.cache-read": 1.6412779999999998,
+            "driver.cache-decode": 0.281934999999919,
+            "driver.cache-header-parse": 0.05644799999998895,
+            "driver.cache-book-digest": 9.57973400000003,
+            "driver.cache-state-digests": 5.99870100000004,
+            "driver.cache-book-parse": 63.37776199999996,
+            "driver.cache-checked-state-parse": 22.705412000000024,
+            "driver.cache-fresh-state-parse": 0.038202000000012504,
+            "driver.cache-validation": 0.22173300000002882,
+            "driver.json-tree-validation": 50.796291,
+            "driver.checked-state-admission": 0.20159499999994068,
+            "driver.checked-state-shape": 0.36880000000002156,
+            "driver.fresh-state-admission": 0.010133999999993648,
+            "driver.source-graph": 1.8820340000000897,
+            "compiler.source-header": 7.747969000000012,
+            "compiler.prefix-source-completion": 144.63721099999998,
+            "driver.span-validation": 10.515416999999957,
+            "compiler.prefix-freshening": 54.893204999999966,
+            "compiler.check-and-complete": 171.33665600000006,
+            "compiler.owned-layout": 9.570647000000008,
+            "compiler.context": 13.13099699999998,
+            "compiler.roots-and-stops": 12.759345000000053,
+            "compiler.source-reach": 7.373138999999924,
+            "compiler.annotation": 73.75072699999998,
+            "compiler.emitted-reach": 252.421565,
+            "compiler.foreign-check": 0.11440799999991214,
+            "compiler.layout-proof": 25.40509700000007,
+            "compiler.foreign-paths": 0.1837359999999535,
+            "driver.foreign-resolver": 0.022405000000162545,
+            "compiler.foreign-modules": 0.2883160000001226,
+            "driver.foreign-source": 0.015441999999893596,
+            "compiler.library": 117.74361900000008,
+            "driver.output-assembly": 0.06518600000003971
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/list-pipeline-0-b2.result.json",
+            "sha256": "e02e63b7fa15563078edc04ca11f033d78b312b5cfcf6db5c3530db8cf885d25"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/list-pipeline-0-b2.mjs",
+            "sha256": "46a7edd053f6fcf0722b37575c9ce6db1f561e28c8b5b7a35624017c2beb36bf",
+            "bytes": 71824
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 529.985672,
+          "combinedFirstMs": 799.367695,
+          "clockCompileMs": 530.000865,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 156.94849700000003,
+            "check": 170.99552799999992,
+            "backend": 201.8112920000001,
+            "request-other": 0.24554799999987154
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.24554799999987154,
+            "typescript.book-load": 156.94849700000003,
+            "typescript.book-valid": 170.99552799999992,
+            "typescript.js-lib": 201.8112920000001
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/list-pipeline-0-typescript.result.json",
+            "sha256": "6a049508d740bfadbb4bb2b52aa3451a58b5daba0e03c1ed5a13afdb101b71aa"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/list-pipeline-0-typescript.mjs",
+            "sha256": "b96abde772d5e7675b28548e738e495a52dd7ecb88f067026245e75213694c8b",
+            "bytes": 40351
+          }
+        }
+      }
+    },
+    {
+      "case": "bst",
+      "extraCompileMs": 410.98851699999994,
+      "extraGroupMs": {
+        "cache": 168.38346499999994,
+        "load": 59.176983000000064,
+        "check": -1.1255769999999075,
+        "backend": 182.15478400000006,
+        "request-other": 2.398861999999724
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 782.6281240000001,
+          "combinedFirstMs": 883.3602600000002,
+          "clockCompileMs": 782.6481899999999,
+          "groupsExclusiveMs": {
+            "cache": 168.38346499999994,
+            "load": 218.70836500000001,
+            "check": 171.17364600000008,
+            "backend": 221.73984600000006,
+            "request-other": 2.642867999999737
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0278869999999642,
+            "driver.inspect": 1.4520049999997582,
+            "driver.api-load": 0.16297600000001466,
+            "driver.base-identity": 11.922222999999974,
+            "driver.base-cache": 0.8483609999999544,
+            "driver.cache-read": 1.6418170000000032,
+            "driver.cache-decode": 0.27338500000001886,
+            "driver.cache-header-parse": 0.056490999999994074,
+            "driver.cache-book-digest": 9.719809999999995,
+            "driver.cache-state-digests": 6.093947999999955,
+            "driver.cache-book-parse": 64.12422400000003,
+            "driver.cache-checked-state-parse": 22.777647,
+            "driver.cache-fresh-state-parse": 0.03624999999999545,
+            "driver.cache-validation": 0.2452289999999948,
+            "driver.json-tree-validation": 50.06720899999999,
+            "driver.checked-state-admission": 0.20117100000004484,
+            "driver.checked-state-shape": 0.3669559999999592,
+            "driver.fresh-state-admission": 0.008744000000035612,
+            "driver.source-graph": 1.6934549999999717,
+            "compiler.source-header": 7.1716370000000325,
+            "compiler.prefix-source-completion": 143.89172200000002,
+            "driver.span-validation": 8.96199200000001,
+            "compiler.prefix-freshening": 56.989558999999986,
+            "compiler.check-and-complete": 171.17364600000008,
+            "compiler.owned-layout": 9.772475999999983,
+            "compiler.context": 13.152423999999996,
+            "compiler.roots-and-stops": 9.53145399999994,
+            "compiler.source-reach": 13.526245000000017,
+            "compiler.annotation": 5.638660999999956,
+            "compiler.emitted-reach": 57.23986400000001,
+            "compiler.foreign-check": 0.09407999999996264,
+            "compiler.layout-proof": 40.33594900000003,
+            "compiler.foreign-paths": 0.166054000000031,
+            "driver.foreign-resolver": 0.024668000000019674,
+            "compiler.foreign-modules": 0.2846440000000712,
+            "driver.foreign-source": 0.1145129999999881,
+            "compiler.library": 71.79640099999995,
+            "driver.output-assembly": 0.06241300000010597
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/bst-0-b2.result.json",
+            "sha256": "cd5be2bf0de6ce61f8def1999ccc47ba71cda0b21ec8a94302a83a8098419266"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/bst-0-b2.mjs",
+            "sha256": "8192335074451107cc62a9ce8611161e2d28be6d4e50e4fd3cbb5ddcef74c64b",
+            "bytes": 20983
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 371.644667,
+          "combinedFirstMs": 641.47955,
+          "clockCompileMs": 371.65967299999994,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 159.53138199999995,
+            "check": 172.29922299999998,
+            "backend": 39.58506199999999,
+            "request-other": 0.24400600000001305
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.24400600000001305,
+            "typescript.book-load": 159.53138199999995,
+            "typescript.book-valid": 172.29922299999998,
+            "typescript.js-lib": 39.58506199999999
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/bst-0-typescript.result.json",
+            "sha256": "5bb16f6287c0dc38e89b2850e072285cc0bcb9c84cde306b685ba29406bcfb4c"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/bst-0-typescript.mjs",
+            "sha256": "23f7abd0dc835ca76c4abe928fdc95a771234f03a613e11ab7b161f776765706",
+            "bytes": 9080
+          }
+        }
+      }
+    },
+    {
+      "case": "unicode-text",
+      "extraCompileMs": 549.82893,
+      "extraGroupMs": {
+        "cache": 170.183855,
+        "load": 111.534765,
+        "check": 14.863007999999923,
+        "backend": 250.73405400000024,
+        "request-other": 2.513247999999919
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 951.267683,
+          "combinedFirstMs": 1052.364796,
+          "clockCompileMs": 951.287417,
+          "groupsExclusiveMs": {
+            "cache": 170.183855,
+            "load": 264.514541,
+            "check": 180.70314599999995,
+            "backend": 333.1325330000002,
+            "request-other": 2.7533419999999182
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0779029999998784,
+            "driver.inspect": 1.5188550000000305,
+            "driver.api-load": 0.15658400000000938,
+            "driver.base-identity": 12.106675999999993,
+            "driver.base-cache": 0.9049980000000346,
+            "driver.cache-read": 1.9847649999999817,
+            "driver.cache-decode": 0.29568700000004355,
+            "driver.cache-header-parse": 0.05540999999999485,
+            "driver.cache-book-digest": 9.856330000000014,
+            "driver.cache-state-digests": 6.006826999999987,
+            "driver.cache-book-parse": 64.69640400000003,
+            "driver.cache-checked-state-parse": 22.754774999999995,
+            "driver.cache-fresh-state-parse": 0.03812699999997449,
+            "driver.cache-validation": 0.23141199999992068,
+            "driver.json-tree-validation": 50.655125000000055,
+            "driver.checked-state-admission": 0.2102610000000027,
+            "driver.checked-state-shape": 0.37357800000000907,
+            "driver.fresh-state-admission": 0.013479999999958636,
+            "driver.source-graph": 2.0522490000000744,
+            "compiler.source-header": 7.55995299999995,
+            "compiler.prefix-source-completion": 187.75806899999998,
+            "driver.span-validation": 16.89495999999997,
+            "compiler.prefix-freshening": 50.24931000000004,
+            "compiler.check-and-complete": 180.70314599999995,
+            "compiler.owned-layout": 10.925022000000013,
+            "compiler.context": 14.202223000000004,
+            "compiler.roots-and-stops": 10.391509000000042,
+            "compiler.source-reach": 5.800783000000024,
+            "compiler.annotation": 17.342767999999978,
+            "compiler.emitted-reach": 149.89731400000005,
+            "compiler.foreign-check": 0.09686399999986861,
+            "compiler.layout-proof": 15.5310750000001,
+            "compiler.foreign-paths": 0.2378449999998793,
+            "driver.foreign-resolver": 0.027530000000069776,
+            "compiler.foreign-modules": 0.410801999999876,
+            "driver.foreign-source": 0.02020400000014888,
+            "compiler.library": 108.18915100000004,
+            "driver.output-assembly": 0.059443000000101165
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/unicode-text-0-b2.result.json",
+            "sha256": "3cb43c09bae02e0ffceca17ab9c2218c934a9abead08f2cb1cee73a7d0b1ded4"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/unicode-text-0-b2.mjs",
+            "sha256": "9394fb7d2d9091be3d95fdb2f96a97abe8e5002fd20996b7a5fe4f37cbab78bc",
+            "bytes": 28570
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 401.44409600000006,
+          "combinedFirstMs": 677.142413,
+          "clockCompileMs": 401.458487,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 152.97977600000002,
+            "check": 165.84013800000002,
+            "backend": 82.39847899999995,
+            "request-other": 0.24009399999999914
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.24009399999999914,
+            "typescript.book-load": 152.97977600000002,
+            "typescript.book-valid": 165.84013800000002,
+            "typescript.js-lib": 82.39847899999995
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/unicode-text-0-typescript.result.json",
+            "sha256": "bab5294fc691be082c4ebadde415dbd9633103066e7693d702f7602d0091db08"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/unicode-text-0-typescript.mjs",
+            "sha256": "ab955a289baef45d1c73b7e05051c052b0c1ccc573d574f8ba88b73e363f5d62",
+            "bytes": 15109
+          }
+        }
+      }
+    },
+    {
+      "case": "expression",
+      "extraCompileMs": 322.52431400000006,
+      "extraGroupMs": {
+        "cache": 185.02851500000003,
+        "load": 45.16494299999994,
+        "check": -27.057105999999976,
+        "backend": 117.13647899999978,
+        "request-other": 2.2514830000002917
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 683.0243009999999,
+          "combinedFirstMs": 787.535446,
+          "clockCompileMs": 683.043803,
+          "groupsExclusiveMs": {
+            "cache": 185.02851500000003,
+            "load": 207.63077099999998,
+            "check": 144.01898300000005,
+            "backend": 143.87061399999982,
+            "request-other": 2.4949200000001497
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.9820690000001377,
+            "driver.inspect": 1.3612130000000207,
+            "driver.api-load": 0.15163799999999128,
+            "driver.base-identity": 16.228208999999993,
+            "driver.base-cache": 0.8936710000000403,
+            "driver.cache-read": 1.5909000000000333,
+            "driver.cache-decode": 0.24419000000000324,
+            "driver.cache-header-parse": 0.05793799999997873,
+            "driver.cache-book-digest": 9.473937000000035,
+            "driver.cache-state-digests": 5.96443800000003,
+            "driver.cache-book-parse": 70.19111699999996,
+            "driver.cache-checked-state-parse": 21.98338799999999,
+            "driver.cache-fresh-state-parse": 0.03064799999998513,
+            "driver.cache-validation": 0.22783199999997805,
+            "driver.json-tree-validation": 57.305307000000084,
+            "driver.checked-state-admission": 0.28717699999992874,
+            "driver.checked-state-shape": 0.539841000000024,
+            "driver.fresh-state-admission": 0.009921999999960462,
+            "driver.source-graph": 1.682247000000018,
+            "compiler.source-header": 6.983700999999996,
+            "compiler.prefix-source-completion": 117.99334099999993,
+            "driver.span-validation": 9.001682000000073,
+            "compiler.prefix-freshening": 71.96979999999996,
+            "compiler.check-and-complete": 144.01898300000005,
+            "compiler.owned-layout": 9.425449999999955,
+            "compiler.context": 14.240267000000017,
+            "compiler.roots-and-stops": 12.498534999999947,
+            "compiler.source-reach": 13.487784000000033,
+            "compiler.annotation": 4.6416730000000825,
+            "compiler.emitted-reach": 36.978006999999934,
+            "compiler.foreign-check": 0.16350999999997384,
+            "compiler.layout-proof": 2.894569000000047,
+            "compiler.foreign-paths": 0.09570599999995011,
+            "driver.foreign-resolver": 0.01486499999998614,
+            "compiler.foreign-modules": 0.2677410000000009,
+            "driver.foreign-source": 0.013822000000004664,
+            "compiler.library": 49.09268499999996,
+            "driver.output-assembly": 0.05599999999992633
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/expression-0-b2.result.json",
+            "sha256": "d60d55478631f47a92a9ed02cf3ca1ed3191cde7610de927421e787281b43688"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/expression-0-b2.mjs",
+            "sha256": "1ab90723a82d8267702ebdf995690a64601d1f5cede942d44a1e9b75be617a31",
+            "bytes": 16771
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 360.5051619999999,
+          "combinedFirstMs": 646.748806,
+          "clockCompileMs": 360.51948899999996,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 162.46582800000004,
+            "check": 171.07608900000002,
+            "backend": 26.734135000000038,
+            "request-other": 0.24343699999985802
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.24343699999985802,
+            "typescript.book-load": 162.46582800000004,
+            "typescript.book-valid": 171.07608900000002,
+            "typescript.js-lib": 26.734135000000038
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/expression-0-typescript.result.json",
+            "sha256": "c9b9fae2dfbe78265ce3a69df585be3d883f6013b70b4f28d2a0d3ee8ba2f1ea"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/expression-0-typescript.mjs",
+            "sha256": "3ccc019bb4179db2b0c69dcf57282d95863e62db08ca4c91754b979b9613497e",
+            "bytes": 5977
+          }
+        }
+      }
+    },
+    {
+      "case": "map-churn",
+      "extraCompileMs": 605.9146350000001,
+      "extraGroupMs": {
+        "cache": 185.690836,
+        "load": 53.748996000000034,
+        "check": -23.881136999999967,
+        "backend": 387.6726229999996,
+        "request-other": 2.6833170000002724
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 1190.175058,
+          "combinedFirstMs": 1298.5888830000001,
+          "clockCompileMs": 1190.194001,
+          "groupsExclusiveMs": {
+            "cache": 185.690836,
+            "load": 219.23866399999997,
+            "check": 143.02073400000006,
+            "backend": 639.3232969999996,
+            "request-other": 2.920470000000307
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0975160000000415,
+            "driver.inspect": 1.671996000000263,
+            "driver.api-load": 0.1509580000000028,
+            "driver.base-identity": 12.00436400000001,
+            "driver.base-cache": 0.8385449999999537,
+            "driver.cache-read": 1.6282540000000267,
+            "driver.cache-decode": 0.26649299999996856,
+            "driver.cache-header-parse": 0.05966899999998532,
+            "driver.cache-book-digest": 9.918273999999997,
+            "driver.cache-state-digests": 9.800635,
+            "driver.cache-book-parse": 66.857482,
+            "driver.cache-checked-state-parse": 26.492961000000037,
+            "driver.cache-fresh-state-parse": 0.034582000000000335,
+            "driver.cache-validation": 0.23302100000000792,
+            "driver.json-tree-validation": 56.976563,
+            "driver.checked-state-admission": 0.20162600000003295,
+            "driver.checked-state-shape": 0.37009199999999964,
+            "driver.fresh-state-admission": 0.008274999999969168,
+            "driver.source-graph": 1.659253999999919,
+            "compiler.source-header": 6.865565000000004,
+            "compiler.prefix-source-completion": 131.16206700000004,
+            "driver.span-validation": 8.54433599999993,
+            "compiler.prefix-freshening": 71.00744200000008,
+            "compiler.check-and-complete": 143.02073400000006,
+            "compiler.owned-layout": 10.150536999999986,
+            "compiler.context": 16.354752000000076,
+            "compiler.roots-and-stops": 10.446822999999995,
+            "compiler.source-reach": 17.83831799999996,
+            "compiler.annotation": 81.02914999999996,
+            "compiler.emitted-reach": 282.7492789999999,
+            "compiler.foreign-check": 0.10696399999983441,
+            "compiler.layout-proof": 34.940182999999934,
+            "compiler.foreign-paths": 0.24764699999991535,
+            "driver.foreign-resolver": 0.027712000000065018,
+            "compiler.foreign-modules": 0.6040169999998852,
+            "driver.foreign-source": 0.01792000000000371,
+            "compiler.library": 184.73367600000006,
+            "driver.output-assembly": 0.07631900000001224
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/map-churn-0-b2.result.json",
+            "sha256": "d216028a6d530fd80fe1c6d90e938c1ab41fb88105225a663c98461d40047b6a"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/map-churn-0-b2.mjs",
+            "sha256": "28c04d78a7715979e85d916a0edeaf7da6c9ed3324d86a65fe97a686fa4af574",
+            "bytes": 83422
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 584.264565,
+          "combinedFirstMs": 865.527818,
+          "clockCompileMs": 584.279366,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 165.48966799999994,
+            "check": 166.90187100000003,
+            "backend": 251.65067399999998,
+            "request-other": 0.2371530000000348
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.2371530000000348,
+            "typescript.book-load": 165.48966799999994,
+            "typescript.book-valid": 166.90187100000003,
+            "typescript.js-lib": 251.65067399999998
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/map-churn-0-typescript.result.json",
+            "sha256": "dbe426778203c59fbeca5af354c6e253889d4943891093d6b0ea91cd00461876"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/map-churn-0-typescript.mjs",
+            "sha256": "4925966fd24084ae41a7becd510a60214e87e3b39b2b786d7675794ddfad541b",
+            "bytes": 46419
+          }
+        }
+      }
+    },
+    {
+      "case": "numeric-recurrence",
+      "extraCompileMs": 160.87142999999992,
+      "extraGroupMs": {
+        "cache": 167.50363100000004,
+        "load": -43.40056099999998,
+        "check": -36.43256500000007,
+        "backend": 70.95387500000015,
+        "request-other": 2.247049999999774
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 485.523141,
+          "combinedFirstMs": 582.337887,
+          "clockCompileMs": 485.54182699999996,
+          "groupsExclusiveMs": {
+            "cache": 167.50363100000004,
+            "load": 103.12946499999998,
+            "check": 121.26414499999998,
+            "backend": 91.17541000000017,
+            "request-other": 2.469175999999777
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.9825829999999769,
+            "driver.inspect": 1.328268999999807,
+            "driver.api-load": 0.15832399999999325,
+            "driver.base-identity": 11.98608200000001,
+            "driver.base-cache": 0.8282580000000621,
+            "driver.cache-read": 1.991788999999983,
+            "driver.cache-decode": 0.27691200000003846,
+            "driver.cache-header-parse": 0.05555299999997487,
+            "driver.cache-book-digest": 9.440707999999972,
+            "driver.cache-state-digests": 6.057855000000018,
+            "driver.cache-book-parse": 63.99475799999999,
+            "driver.cache-checked-state-parse": 22.698083999999994,
+            "driver.cache-fresh-state-parse": 0.051684999999963566,
+            "driver.cache-validation": 0.22258700000003273,
+            "driver.json-tree-validation": 49.325065999999936,
+            "driver.checked-state-admission": 0.1977040000000443,
+            "driver.checked-state-shape": 0.368267000000003,
+            "driver.fresh-state-admission": 0.00832300000001851,
+            "driver.source-graph": 1.5701989999999455,
+            "compiler.source-header": 6.356165000000033,
+            "compiler.prefix-source-completion": 43.02922699999999,
+            "driver.span-validation": 0.556650999999988,
+            "compiler.prefix-freshening": 51.617223000000024,
+            "compiler.check-and-complete": 121.26414499999998,
+            "compiler.owned-layout": 9.389664000000039,
+            "compiler.context": 14.447404000000006,
+            "compiler.roots-and-stops": 10.503460000000018,
+            "compiler.source-reach": 3.591075000000046,
+            "compiler.annotation": 3.1533470000000534,
+            "compiler.emitted-reach": 28.337415000000078,
+            "compiler.foreign-check": 0.08091400000000704,
+            "compiler.layout-proof": 2.707363999999984,
+            "compiler.foreign-paths": 0.15788499999996475,
+            "driver.foreign-resolver": 0.015709000000015294,
+            "compiler.foreign-modules": 0.2671429999999191,
+            "driver.foreign-source": 0.014229999999997744,
+            "compiler.library": 18.454458000000045,
+            "driver.output-assembly": 0.055341999999996005
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/numeric-recurrence-0-b2.result.json",
+            "sha256": "90ed35af1b8b0e4aa0b9eb63cdf6991ee9337f0f1429f79422531ab22473dca8"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/numeric-recurrence-0-b2.mjs",
+            "sha256": "2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3",
+            "bytes": 14917
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 324.655185,
+          "combinedFirstMs": 590.697852,
+          "clockCompileMs": 324.67039700000004,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 146.53002599999996,
+            "check": 157.69671000000005,
+            "backend": 20.221535000000017,
+            "request-other": 0.22212600000000293
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.22212600000000293,
+            "typescript.book-load": 146.53002599999996,
+            "typescript.book-valid": 157.69671000000005,
+            "typescript.js-lib": 20.221535000000017
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/numeric-recurrence-0-typescript.result.json",
+            "sha256": "5e3c589d1825e8bc7f41e5378a0bf5ffb627845ca5990c6a75570f4628a9204f"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/numeric-recurrence-0-typescript.mjs",
+            "sha256": "0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee",
+            "bytes": 4699
+          }
+        }
+      }
+    },
+    {
+      "case": "record-aggregation",
+      "extraCompileMs": 553.7581130000001,
+      "extraGroupMs": {
+        "cache": 165.722806,
+        "load": 44.270482000000015,
+        "check": -26.530950000000075,
+        "backend": 367.6349930000006,
+        "request-other": 2.6607819999995854
+      },
+      "roles": {
+        "b2": {
+          "firstRequestMs": 1088.919525,
+          "combinedFirstMs": 1184.813008,
+          "clockCompileMs": 1088.938507,
+          "groupsExclusiveMs": {
+            "cache": 165.722806,
+            "load": 195.397871,
+            "check": 132.64956199999995,
+            "backend": 592.2589650000006,
+            "request-other": 2.909302999999568
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 1.0643690000001698,
+            "driver.inspect": 1.6920009999994363,
+            "driver.api-load": 0.1529329999999618,
+            "driver.base-identity": 11.963690999999983,
+            "driver.base-cache": 0.8320569999999634,
+            "driver.cache-read": 1.7078270000000089,
+            "driver.cache-decode": 0.2464689999999905,
+            "driver.cache-header-parse": 0.059282999999993535,
+            "driver.cache-book-digest": 9.473912999999982,
+            "driver.cache-state-digests": 5.9441229999999905,
+            "driver.cache-book-parse": 62.162351,
+            "driver.cache-checked-state-parse": 22.315825000000018,
+            "driver.cache-fresh-state-parse": 0.03146100000003571,
+            "driver.cache-validation": 0.2268359999999916,
+            "driver.json-tree-validation": 50.18721399999998,
+            "driver.checked-state-admission": 0.19682000000000244,
+            "driver.checked-state-shape": 0.36706700000002,
+            "driver.fresh-state-admission": 0.007869000000027881,
+            "driver.source-graph": 1.7541839999998956,
+            "compiler.source-header": 7.1004199999999855,
+            "compiler.prefix-source-completion": 119.21313299999997,
+            "driver.span-validation": 9.41207200000008,
+            "compiler.prefix-freshening": 57.91806200000008,
+            "compiler.check-and-complete": 132.64956199999995,
+            "compiler.owned-layout": 9.60905600000001,
+            "compiler.context": 12.588690000000042,
+            "compiler.roots-and-stops": 8.871384000000035,
+            "compiler.source-reach": 15.647694999999999,
+            "compiler.annotation": 69.32748900000001,
+            "compiler.emitted-reach": 257.6921460000001,
+            "compiler.foreign-check": 0.10371099999997568,
+            "compiler.layout-proof": 30.4964980000002,
+            "compiler.foreign-paths": 0.1830010000001039,
+            "driver.foreign-resolver": 0.02179700000010598,
+            "compiler.foreign-modules": 0.38798399999996036,
+            "driver.foreign-source": 0.01438600000005863,
+            "compiler.library": 187.22870399999988,
+            "driver.output-assembly": 0.0864240000000791
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/record-aggregation-0-b2.result.json",
+            "sha256": "c9795848763d1cd98cf3eb847cdf8898f5c1f2f8213647bd6ab407f6956b5e79"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/record-aggregation-0-b2.mjs",
+            "sha256": "e772f9c34a84313a28c01b53eed049ba24d769373dc3431f120c1d3db82369d1",
+            "bytes": 82645
+          }
+        },
+        "typescript": {
+          "firstRequestMs": 535.166166,
+          "combinedFirstMs": 799.694575,
+          "clockCompileMs": 535.180394,
+          "groupsExclusiveMs": {
+            "cache": 0.0,
+            "load": 151.127389,
+            "check": 159.18051200000002,
+            "backend": 224.62397199999998,
+            "request-other": 0.24852099999998245
+          },
+          "stagesExclusiveMs": {
+            "worker.compile": 0.24852099999998245,
+            "typescript.book-load": 151.127389,
+            "typescript.book-valid": 159.18051200000002,
+            "typescript.js-lib": 224.62397199999998
+          },
+          "result": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/record-aggregation-0-typescript.result.json",
+            "sha256": "6c1d6924c29f4238b4ce05bec15a3cef23b927fd13c5675a49546c276c873843"
+          },
+          "output": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase62/generations01/stages46/record-aggregation-0-typescript.mjs",
+            "sha256": "618be635b95dc29393bdfaff8307552b51219ef0b7c46fd61d0b2a9d928e2acf",
+            "bytes": 48905
+          }
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "TS book_load/book_valid/js_lib are coarse unchanged calls. Bend cache+load+check form comparable combined pre-backend work; individual inner stage labels are not algorithm equivalence.",
+    "Prepared Base cache transport exists only on Bend; TS Base parsing/checking is accounted in its load/check stages. The cache cost is not a standalone avoidable overhead claim.",
+    "Wall stages include GC and scheduling; no independent GC cost subtraction. Private driver try/finally can affect V8 optimization.",
+    "Backend total contains dependency discovery/annotation/layout/export conversion and text production; it is not solely source-string emission.",
+    "No compiler modification, generated-program speed claim or semantic admission beyond byte-preserving diagnostic requests."
+  ],
+  "pass": true
+}

@@ -331,3 +331,46 @@ is **19m52.415s (26.76%)**; nested/reused intervals are counted once. Remaining
 54m23.531s is unclassified wall time, not measured waiting or idle time.
 No open worker was present at that cutoff. The data-only helper can produce
 a fresh account at the final selected-state cutoff.
+
+## State09: final-candidate balanced performance
+
+The [State09 broad summary](evidence/state09-broad3.json) and
+[standalone diagram](evidence/state09-broad3.svg) use the same frozen 23-source,
+three-role, three-round method. **207/207 fresh workers pass exact emitted-module
+oracles.** The source medians are compared with old State08 B2 and pinned TS
+measured in this same campaign.
+
+![State09 and old State08 B2 compilation ratios to TypeScript across 23 sources](evidence/state09-broad3.svg)
+
+| Equal-source geometric mean | Old State08 B2 / TS | State09 B2 / TS | State09 / old State08 |
+|---|---:|---:|---:|
+| Compilation, first request | 2.05505× | **1.63275×** | **0.79451×** |
+| Host import + API + first request | 1.40665× | **1.15092×** | **0.81820×** |
+
+State09 reduces compilation time by **20.55%** and combined first-use time by
+**18.18%**. All 23 source medians improve on both clocks: compilation ratios
+to the old baseline span 0.73706–0.84842× and combined ratios span
+0.77064–0.86550×. The slowest remaining compilation ratio to TS is 1.98448×
+on Lexer; the closest is Numeric at 1.08537×. No source reaches TS compilation
+parity yet. Five combined-first medians beat TS—local fold, scalar region,
+closures, expression and Numeric—with the full combined range 0.77272–1.46335×.
+
+The campaign takes **267.311 seconds**, including **231.062 seconds** in the
+serial worker interval union; peak observed tree RSS is 177,102,848 bytes.
+The SVG sidecar binds its compact data and original report identities. Results
+describe compilation with prepared caches, not generated-program execution
+speed, cache creation cost, or all possible Bend programs. Three-sample medians
+are not a statistical-significance claim. State06 and State09 were measured in
+different campaigns, so their headline difference is not an isolated attribution
+to the later arity/cleanup changes. Final semantic and release admission are
+recorded separately when complete.
+
+The [final qualification join](qualification.md) subsequently passes all
+selected-state correctness and release gates, while retaining the original
+failed metadata precondition and its successful continuation as separate
+receipts. The [time account at qualification closure](evidence/time-account-final-qualification.json)
+cuts off at **21:48:25.927 UTC**: 1h44m1.927s elapsed since 20:04:24,
+736 closed guard receipts including 12 failures, and an interval union of
+**38m9.086s (36.67%)**. No open worker was present. The remaining 1h5m52.841s
+is unclassified wall time, not a measured waiting or idle total. Documentation,
+commit/push and raw/archive closure after this cutoff are outside this account.

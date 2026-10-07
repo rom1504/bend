@@ -18,6 +18,16 @@ function local(name,root=project){
 const record=file=>({path:relative(file),sha256:identity(file).sha256,bytes:fs.statSync(file).size});
 function check(item,root=project){const file=local(item.path,root);assert.equal(identity(file).sha256,item.sha256,'Changed release input: '+item.path);assert.equal(fs.statSync(file).size,item.bytes);return file;}
 const hostNames=['typed-driver','compiler-abi','native-build','node-resource-args','assemble'];
+// Phase63 adds a static driver dependency; old releases have neither this
+// import nor its checked provenance and retain their historical inventory.
+function graphHelperInput(bootstrap,root=project){
+ const inputs=(bootstrap.provenance?.inputs??[]).filter(x=>x.role==='host-tool'&&path.basename(x.file)==='base-cache-graph.mjs');
+ const driver=fs.readFileSync(local('tools/typed-driver.mjs',root),'utf8');
+ const required=/from\s+['"]\.\/base-cache-graph\.mjs['"]/.test(driver);
+ if(!required&&!inputs.length)return null;
+ assert.equal(inputs.length,1,'Missing or duplicate checked graph-helper provenance');
+ return inputs[0];
+}
 
 export function verifyRelease(root=project){
  const dist=path.join(root,'dist');
@@ -49,6 +59,8 @@ export function verifyRelease(root=project){
    assert.equal(entry?.sha256,item.sha256,'Unbound vendored effect: '+item.path);assert.equal(entry?.bytes,item.bytes);
   }
  }
+ const graphInput=graphHelperInput(bootstrap,root);
+ if(graphInput)assert.equal(manifest.checkout.find(x=>x.path==='tools/base-cache-graph.mjs')?.sha256,graphInput.sha256,'Unbound checked graph helper');
  if(checked){
   assert.equal(api.sha256,parent.sha256,'Checked default differs from checked API');
   assert.equal(manifest.lineage.checkedApiSha256,parent.sha256);
@@ -90,12 +102,14 @@ export async function installAttempt(directory,derivationFile){
   assert.equal(derived.metadata.original.bootstrapReport.sha256,attempt.bootstrapReport.sha256);
  }else assert.equal(attempt.artifactKind,'checked-b1','Checked release requires a genuine checked attempt');
  const bootstrap=read(attempt.bootstrapReport.file),checkout=[];
+ const graphInput=graphHelperInput(bootstrap);
+ if(graphInput)assert.equal(identity(local('tools/base-cache-graph.mjs')).sha256,graphInput.sha256,'Graph helper differs from checked provenance');
  // Prove the default source/host actually corresponds to this frozen attempt.
  for(const module of bootstrap.modules){
   const file=path.join(project,'src',module.file.replace(/^src\//,''));
   assert.equal(identity(file).sha256,module.sha256,'Current source differs: '+module.file);checkout.push(record(file));
  }
- for(const name of [...hostNames,...(derived?[]:['stage0-library'])]){const file=path.join(project,'tools',name+'.mjs');assert.equal(identity(file).sha256,identity(path.join(attempt.snapshot.root,'tools',name+'.mjs')).sha256);checkout.push(record(file));}
+ for(const name of [...hostNames,...(graphInput?['base-cache-graph']:[]),...(derived?[]:['stage0-library'])]){const file=path.join(project,'tools',name+'.mjs');assert.equal(identity(file).sha256,identity(path.join(attempt.snapshot.root,'tools',name+'.mjs')).sha256);checkout.push(record(file));}
  for(const name of ['src/compiler.json','src/runtime.mjs']){const file=path.join(project,name);assert.equal(identity(file).sha256,identity(path.join(attempt.snapshot.root,name)).sha256);checkout.push(record(file));}
  const hasDirect=bootstrap.modules.some(x=>x.file==='src/back/js/direct/core.bend');
  if(hasDirect){const name='src/runtime/js/direct.mjs',file=path.join(project,name);assert.equal(identity(file).sha256,identity(path.join(attempt.snapshot.root,name)).sha256);checkout.push(record(file));}

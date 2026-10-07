@@ -1,34 +1,42 @@
 # Self-hosted compiler: current architecture and development
 
-Installed **Phase61 state08** is a checked B1 release. The
-[results matrix](../../implementation/phase61/state08-results.md) binds its checked
-API, genuine B2/B3 images, source and final release checks separately. Release
-integrity, 42 legacy and 24 default ordinary/relocated CLI checks pass. The genuine
-B2 freshly accepts its complete source's types and reproduces byte-identical B3;
-all 3,192 unsafe declarations retain the expected proof-trust refusal.
+**Phase63 State09** combines a prepared Base world and parser indexes, shared
+validated graph transport, one library lowering plan, retained arity facts and
+shared host-field analysis. It also carries actual completed source fragments
+instead of rediscovering them through Base. The
+[compiler-request guide](compiler-request-pipeline.md) explains these mechanisms,
+their source/host boundaries and their fallback contracts.
 
-[Compiler requests](compiler-request-pipeline.md) explains prepared frontend state,
-private loader provenance, dependent-term cursors, persistent books and structured
-emission metadata. It also documents the separately tracked
-[Phase63 candidate](../../implementation/phase63/README.md): ready worlds, shared
-graph transport, a library lowering plan, retained arity facts and shared
-host-field analysis. State09 also carries actual completed suffix fragments;
-its final qualification remains separate from installed Phase61. The
-Phase61 balanced compiler campaign passes all 207 workers across
-23 sources, three roles and three rounds. Equal-source median B2/TypeScript
-geometric means improve **2.476542× → 1.433877×** for import + API load + first
-compilation and **3.816429× → 2.071828×** for compilation alone. These are genuine
-B2 requests in fresh processes with prepared persistent Base caches, not installed
-B1 CLI latency or cold OS-cache measurements.
+The [State09 results](../../implementation/phase63/state09-results.md) pass all
+**207 workers across 23 sources, three roles and three rotated rounds**. Genuine
+B2 compilation becomes faster than the Phase61 baseline in the same campaign:
 
-The [source footprint](../../implementation/phase61/source-footprint.md) separates
-Bend modules, runtime support, host helpers and tooling. The
-[allocation guide](compiler-allocation.md) describes six retained Phase58 changes
-and their fallback boundaries. State08 B1/B2 emissions agree on all 23 raw
-benchmark modules and their 45-point mapping. Historical
+| Clock | Phase61 B2 / TypeScript | State09 B2 / TypeScript |
+| --- | ---: | ---: |
+| Compilation alone | 2.05505× | **1.63275×** |
+| Host/API import plus first compilation | 1.40665× | **1.15092×** |
+
+These are equal-source geometric means of per-source three-run median ratios.
+Each sample uses a fresh process with a prepared persistent Base cache;
+preparation and full output verification are outside the clocks. They do not
+measure cold OS caches or the installed checked-B1 CLI. Compilation-only parity
+remains unfinished. All emitted modules pass their qualified byte oracle; this
+is not a new generated-program runtime measurement or speedup claim.
+
+**State09 is installed and verified as an equality-derived checked-B1 release.**
+Legacy42, default24 including relocation, and five helper-integrity controls pass. The
+[final qualification index](../../selfhost/build/phase63/final-state09/qualification.json)
+separates source checks, genuine B2/B3 reproduction, output/behavior checks and
+installation. Failed predecessor receipts remain preserved separately. The
+[Phase61 results](../../implementation/phase61/state08-results.md) retain the
+previous release's identities and completed gates; its historical benchmark
+ratios remain separate from the fresh comparison above.
+
+The [allocation guide](compiler-allocation.md) describes six retained Phase58
+changes and their fallback boundaries. Historical
 [Phase58 generated-program timing](../../implementation/phase58/program-performance.md)
-applies only to retained identical artifacts; no new 669-sample runtime campaign
-or generated-program speedup is claimed.
+applies only to retained identical artifacts. Compiler latency, generated-program
+execution, checked B1 packaging and self-reproduction are distinct results.
 
 The [Phase51 V8-guided runtime](v8-guided-runtime.md) describes the retained
 compatibility mode. The source survey below remains a dated Phase45 baseline;
@@ -53,7 +61,7 @@ The survey changes documentation only; it does not qualify a new compiler.
 | [Direct JavaScript backend](../../selfhost/docs/direct-javascript.md) | Current callable/data interface, ordered prefix/value lowering, 4,096-definition analysis bound and qualification limits. |
 | [Architecture](architecture.md) | Dated Phase45 source organization, representations, pipeline and complexity; use backend boundaries for the current backend split. |
 | [Optimization inventory](optimization-inventory.md) | Existing transformations, where they live, how generally they apply, and missing analyses. |
-| [Compiler requests](compiler-request-pipeline.md) | Phase61 state08 mechanisms and the Phase63 candidate's ready world, graph transport and lowering plan; source/host boundaries and fallbacks. |
+| [Compiler requests](compiler-request-pipeline.md) | Phase63 State09 ready world, graph transport and lowering plan, with the retained Phase61 foundation; source/host boundaries, measured request costs and fallbacks. |
 | [Compiler allocation](compiler-allocation.md) | Six retained Phase58 changes: final-live-field record syntax, constructor queries, scalar residuals, literal choices, distinct dependency edges and shared recursive dispatch; proof and fallback boundaries. |
 | [Private array regions](private-array-regions.md) | Phase47 closed-array representation, ordered operations, host guards and research limits; separate from release qualification. |
 | [Phase48 representations](phase48-representations.md) | RNFA04 mechanisms, composition controls and original-path mutation contracts; the phase report records release status. |

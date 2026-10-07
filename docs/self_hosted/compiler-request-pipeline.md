@@ -1,17 +1,23 @@
 # Compiler requests: prepared state and structured emission
 
-The installed baseline is **Phase61 state08**. The
-[state08 results](../../implementation/phase61/state08-results.md) bind the checked
-B1 package, genuine B2/B3 images, source and completed release gates separately.
-Release integrity and all 42 legacy plus 24 default ordinary/relocated CLI checks
-pass. The original failed attempts retain their own receipts and scope. These
-changes accelerate compiler work; they do not establish faster generated programs.
+**Phase63 State09** is installed and verified. Its balanced campaign
+passes **207 workers across 23 sources and three rotated rounds**. Equal-source
+geometric means of median genuine-B2/TypeScript times improve **2.05505× →
+1.63275× for compilation alone**, and **1.40665× → 1.15092× for host/API import
+plus first compilation**. Both comparisons use fresh processes and prepared
+persistent Base caches. Preparation and full output verification are outside
+the clocks; these are not cold OS-cache or installed checked-B1 CLI measurements.
+Every emitted module passes its qualified raw-byte oracle. There is no new
+generated-program speed claim, and compilation-only parity remains unfinished.
 
-The [Phase63 candidate](#phase63-candidate-ready-world-and-one-lowering-plan)
-extends this architecture with ready worlds, shared graph transport and one
-library lowering plan. Its [phase report](../../implementation/phase63/README.md)
-records qualification and selection separately; implementation in the source
-tree does not itself mean that the installed package has changed.
+The [State09 results](../../implementation/phase63/state09-results.md) and
+[final qualification index](../../selfhost/build/phase63/final-state09/qualification.json)
+record correctness, self-host reproduction, measurement and release separately.
+The installed package is equality-derived checked B1; legacy42, default24
+including relocation, and five cache-helper integrity controls pass. Phase61's
+[historical release results](../../implementation/phase61/state08-results.md)
+remain unchanged. Source mechanisms for State09 are described
+[below](#phase63-state09-ready-world-and-one-lowering-plan).
 
 The compiler owns parsing, checking, specialization and emission in Bend. The
 host owns files, cache transport, identity checks and processes. There is no
@@ -141,14 +147,18 @@ Demand remains defined by the emitted representation. An unused binding must
 not cause its RHS, references or effects to be introduced; ordered operands,
 branch scope, capture, aliasing and SCC member retention stay intact. A diagnostic
 found equal retained text/facts on 23 inputs, but that is not a general proof for
-reusing emission across different pruned contexts. No such cache was selected.
+reusing emission across different pruned contexts. Phase61 did not select such a
+cache. State09 instead retains one complete context through library lowering and
+emission, as described below.
 
-## Phase63 candidate: ready world and one lowering plan
+## Phase63 State09: ready world and one lowering plan
 
-This section describes State09's candidate mechanisms. Its final qualification
-and B2 comparison are pending; Phase61 remains installed. Rejected experiments
-are not included here. The phase report is the authority for selected source,
-complete gates and measured gains.
+This section describes the State09 source measured in the completed B2 campaign.
+The installed package passes its separate release gates; the
+[results report](../../implementation/phase63/state09-results.md) and
+[qualification index](../../selfhost/build/phase63/final-state09/qualification.json)
+are the authority for completed gates and release status. Rejected experiments
+are not part of these mechanisms.
 
 | Boundary | Retained value | Request work |
 |---|---|---|
@@ -179,7 +189,11 @@ rediscover the same boundary. Its private invariant is
 consists of actual successful completion fragments in order. It is established
 by the loader, not inferred from a caller's event count. Errors retain the whole
 graph and select the original fallback. Raw carriers still rediscover their
-suffix through the existing checked path.
+suffix through the existing checked path. Manually constructed or modified
+`FReadyPrefixGraph` values are outside the private producer contract: matching
+counts alone do not authenticate their prefix, suffix or indexes. Public raw
+entry points keep their permission or structural checks; supplying prepared
+fields to `discoverSources` cannot grant the private path.
 
 The checker extends the saved immutable index with suffix headers and retains
 the historical declaration-list order. It reuses the prefix maximum, checked
@@ -270,6 +284,10 @@ preparation precedes the clean clock and output validation follows it. This does
 not imply cold operating-system/page caches or installed checked-B1 CLI timing. A smaller compiler-request time is
 not a generated-program speed result. Likewise, checked B1, an emitted B2, fresh
 own-source type acceptance, unsafe proof-trust refusal, B2/B3 byte equality and
-installation are distinct gates. The [results matrix](../../implementation/phase61/state08-results.md)
-records which actually passed. The [source footprint](../../implementation/phase61/source-footprint.md)
-keeps Bend modules, runtime support, host helpers and research/tests separate.
+installation are distinct gates. The
+[State09 results matrix](../../implementation/phase63/state09-results.md) and
+[qualification index](../../selfhost/build/phase63/final-state09/qualification.json)
+record which actually passed. The historical
+[Phase61 source footprint](../../implementation/phase61/source-footprint.md)
+keeps Bend modules, runtime support, host helpers and research/tests separate;
+its counts are not a new State09 census.

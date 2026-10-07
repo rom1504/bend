@@ -386,6 +386,30 @@ function $check_program_diagnostic_prefix$(_load_0, _validated_0, _origins_0, _s
   return $driver_program_checked$(_book_0, _origins_0, run_loop($base_prefix_check_load$(_state_0, {$: "FPrefixLoad", "trace": {$: "FLoadTrace", "result": {$: "FResult", "book": _book_0, "error": _error_0, "imports": _imports_0}, "done": _done_0, "sources": _sources_0}, "prefix": _prefix_0, "suffix": _suffix_0, "ready": _ready_0})));
 }
 
+function $base_prefix_world_prepare$(_prefix_0, _state_0) {
+  const _bound_0 = ($norm_max_book$(_prefix_0));
+  const _final_0 = ($base_prefix_final$(_prefix_0));
+  return run_tail((($base_prefix_admitted_bound$(_state_0, _prefix_0, {$: "Nil"}, _bound_0, _final_0, _bound_0))) ? ((_x_0) => {
+  return $base_prefix_world_saved$(_prefix_0, _state_0, _final_0, _bound_0, ($rw$(($dg_checking_result$(run_loop($base_prefix_resume_saved$(_state_0, _prefix_0, {$: "Nil"}, _bound_0, _final_0)))))));
+}) : ((_x_1) => {
+  return {$: "KBasePreparedWorld", "state": {$: "KBasePrefixState", "bound": _bound_0, "delta": 0, "stamp": 0, "patches": {$: "Nil"}, "ready": false}, "prefix": _prefix_0, "final": _final_0, "book": {$: "Nil"}, "checked": {$: "Nil"}, "seen": {$: "Nil"}};
+}), {$: "Unit"});
+}
+
+function $check_program_diagnostic_world$(_load_0, _origins_0, _prepared_0) {
+  const _t_0 = _load_0["trace"];
+  const _t_1 = _t_0["result"];
+  const _book_0 = _t_1["book"];
+  const _error_0 = _t_1["error"];
+  const _imports_0 = _t_1["imports"];
+  const _done_0 = _t_0["done"];
+  const _sources_0 = _t_0["sources"];
+  const _prefix_0 = _load_0["prefix"];
+  const _suffix_0 = _load_0["suffix"];
+  const _ready_0 = _load_0["ready"];
+  return $driver_program_checked$(_book_0, _origins_0, run_loop($base_prefix_check_world_load$(_prepared_0, {$: "FPrefixLoad", "trace": {$: "FLoadTrace", "result": {$: "FResult", "book": _book_0, "error": _error_0, "imports": _imports_0}, "done": _done_0, "sources": _sources_0}, "prefix": _prefix_0, "suffix": _suffix_0, "ready": _ready_0})));
+}
+
 function $f_load_graph$(_main_0, _sources_0) {
   return $f_graph_result_at$(run_loop($f_graph_load$(_main_0, "", _sources_0, {$: "FGraph", "book": {$: "Nil"}, "error": "", "done": {$: "Nil"}}, {$: "Nil"})), _sources_0);
 }
@@ -525,30 +549,79 @@ function $f_prefix_graph_empty$() {
 }
 
 function $f_prefix_complete_seed$(_source_0, _ns_0, _carrier_0, _path_0, _text_0, _book_0) {
-  const _graph_0 = _carrier_0["graph"];
-  const _ready_0 = _carrier_0["ready"];
-  return $f_prefix_seed_completed$(_graph_0, _ns_0, _ready_0, _book_0, run_loop($f_complete_seed$(_source_0, _graph_0, _path_0, _text_0, _book_0)));
+  if (_carrier_0.$ === "FPrefixGraph") {
+    const _graph_0 = _carrier_0["graph"];
+    const _ready_0 = _carrier_0["ready"];
+    return $f_prefix_seed_completed$(_graph_0, _ns_0, _ready_0, _book_0, run_loop($f_complete_seed$(_source_0, _graph_0, _path_0, _text_0, _book_0)));
+  } else {
+    const _graph_1 = _carrier_0["graph"];
+    const _ready_1 = _carrier_0["ready"];
+    return $f_prefix_seed_completed$(_graph_1, _ns_0, _ready_1, _book_0, run_loop($f_complete_seed$(_source_0, _graph_1, _path_0, _text_0, _book_0)));
+  }
 }
 
 function $f_prefix_complete_source$(_source_0, _ns_0, _header_0, _sources_0, _carrier_0, _root_0) {
-  const _graph_0 = _carrier_0["graph"];
-  const _prefix_0 = _carrier_0["prefix"];
-  const _count_0 = _carrier_0["count"];
-  const _ready_0 = _carrier_0["ready"];
-  return $f_prefix_source_completed$(_prefix_0, _count_0, _ready_0, run_loop($f_complete_source$(_source_0, _ns_0, _header_0, _sources_0, _graph_0, _root_0)));
+  if (_carrier_0.$ === "FPrefixGraph") {
+    const _graph_0 = _carrier_0["graph"];
+    const _prefix_0 = _carrier_0["prefix"];
+    const _count_0 = _carrier_0["count"];
+    const _ready_0 = _carrier_0["ready"];
+    return $f_prefix_source_completed$(_prefix_0, _count_0, _ready_0, run_loop($f_complete_source$(_source_0, _ns_0, _header_0, _sources_0, _graph_0, _root_0)));
+  } else {
+    const _graph_1 = _carrier_0["graph"];
+    const _prefix_1 = _carrier_0["prefix"];
+    const _suffix_1 = _carrier_0["suffix"];
+    const _count_1 = _carrier_0["count"];
+    const _ready_1 = _carrier_0["ready"];
+    const _names_0 = _carrier_0["names"];
+    const _ctors_0 = _carrier_0["ctors"];
+    const _baseNames_0 = _carrier_0["baseNames"];
+    return run_tail((_ready_1) ? ((_x_0) => {
+  return $f_prefix_ready_source_completed$(_prefix_1, _suffix_1, _count_1, _baseNames_0, _names_0, _ctors_0, run_loop($f_complete_source_indexed$(_source_0, _ns_0, _header_0, _sources_0, _graph_1, _root_0, _names_0, _ctors_0)));
+}) : ((_x_1) => {
+  return $f_prefix_source_completed$(_prefix_1, _count_1, false, run_loop($f_complete_source$(_source_0, _ns_0, _header_0, _sources_0, _graph_1, _root_0)));
+}), {$: "Unit"});
+  }
 }
 
 function $f_prefix_graph_trace$(_carrier_0, _sources_0, _state_0) {
-  const _t_0 = _carrier_0["graph"];
-  const _book_0 = _t_0["book"];
-  const _error_0 = _t_0["error"];
-  const _done_0 = _t_0["done"];
-  const _prefix_0 = _carrier_0["prefix"];
-  const _suffix_0 = _carrier_0["suffix"];
-  const _ready_0 = _carrier_0["ready"];
-  const _next_0 = _state_0["next"];
-  const _fresh_ready_0 = _state_0["ready"];
-  return $f_prefix_trace_validated$({$: "FGraph", "book": _book_0, "error": _error_0, "done": _done_0}, _sources_0, _prefix_0, _suffix_0, _next_0, ($Bool$and$(_ready_0, _fresh_ready_0)), run_loop($f_graph_fresh_result$(($f_validate_result$({$: "FResult", "book": _book_0, "error": _error_0, "imports": {$: "Nil"}})))));
+  if (_carrier_0.$ === "FPrefixGraph") {
+    const _t_0 = _carrier_0["graph"];
+    const _book_0 = _t_0["book"];
+    const _error_0 = _t_0["error"];
+    const _done_0 = _t_0["done"];
+    const _prefix_0 = _carrier_0["prefix"];
+    const _suffix_0 = _carrier_0["suffix"];
+    const _ready_0 = _carrier_0["ready"];
+    const _next_0 = _state_0["next"];
+    const _fresh_ready_0 = _state_0["ready"];
+    return $f_prefix_trace_validated$({$: "FGraph", "book": _book_0, "error": _error_0, "done": _done_0}, _sources_0, _prefix_0, _suffix_0, _next_0, ($Bool$and$(_ready_0, _fresh_ready_0)), run_loop($f_graph_fresh_result$(($f_validate_result$({$: "FResult", "book": _book_0, "error": _error_0, "imports": {$: "Nil"}})))));
+  } else {
+    const _t_1 = _carrier_0["graph"];
+    const _book_1 = _t_1["book"];
+    const _error_1 = _t_1["error"];
+    const _done_1 = _t_1["done"];
+    const _prefix_1 = _carrier_0["prefix"];
+    const _suffix_1 = _carrier_0["suffix"];
+    const _count_1 = _carrier_0["count"];
+    const _ready_1 = _carrier_0["ready"];
+    const _baseNames_0 = _carrier_0["baseNames"];
+    const _next_1 = _state_0["next"];
+    const _fresh_ready_1 = _state_0["ready"];
+    return run_tail((($Bool$and$(_ready_1, _fresh_ready_1))) ? ((_x_0) => {
+  return $f_prefix_trace_validated$({$: "FGraph", "book": _book_1, "error": _error_1, "done": _done_1}, _sources_0, _prefix_1, _suffix_1, _next_1, true, ($f_prefix_ready_validate$(_book_1, _suffix_1, _error_1, _baseNames_0)));
+}) : ((_x_1) => {
+  return $f_prefix_graph_trace$({$: "FPrefixGraph", "graph": {$: "FGraph", "book": _book_1, "error": _error_1, "done": _done_1}, "prefix": _prefix_1, "suffix": _suffix_1, "count": _count_1, "ready": _ready_1}, _sources_0, {$: "FFreshPrefixState", "next": _next_1, "ready": _fresh_ready_1});
+}), {$: "Unit"});
+  }
+}
+
+function $f_ready_prefix_prepare$(_prefix_0) {
+  return {$: "FReadyPrefixState", "names": run_loop($index_build$(($List$reverse$(_prefix_0)))), "ctors": run_loop($f_ctor_index$(_prefix_0, ($missing$()))), "count": ($f_graph_count_defs$(_prefix_0, 0)), "ready": ($Bool$and$(($String$is_empty$(($f_error_defs$(_prefix_0)))), ($String$is_empty$(run_loop($f_graph_fresh_names$(_prefix_0, ($missing$())))))))};
+}
+
+function $f_prefix_complete_ready_seed$(_source_0, _ns_0, _carrier_0, _path_0, _text_0, _book_0, _state_0) {
+  return $f_prefix_ready_seed_completed$(_state_0, ($f_prefix_complete_seed$(_source_0, _ns_0, _carrier_0, _path_0, _text_0, _book_0)));
 }
 
 function $driver_report$(_book_0, _names_0) {
@@ -801,6 +874,35 @@ function $jd_reach_defs$(_r_0) {
 function $jd_reach_error$(_r_0) {
   const _error_0 = _r_0["error"];
   return _error_0;
+}
+
+function $jd_plan_selected$(_book_0, _defs_0, _roots_0) {
+  return $jd_plan_context$(_defs_0, _roots_0, run_loop($jd_calls_context$(run_loop($jd_selected_context$(_book_0, _defs_0)), _defs_0)));
+}
+
+function $jd_plan_defs$(_plan_0) {
+  const _defs_0 = _plan_0["defs"];
+  return _defs_0;
+}
+
+function $jd_plan_error$(_plan_0) {
+  const _error_0 = _plan_0["error"];
+  return _error_0;
+}
+
+function $jd_plan_library$(_plan_0) {
+  const _book_0 = _plan_0["book"];
+  const _defs_0 = _plan_0["defs"];
+  const _texts_0 = _plan_0["texts"];
+  const _error_0 = _plan_0["error"];
+  return run_tail((($String$eq$(_error_0, ""))) ? ((_x_0) => {
+  const _x_1 = ($jd_plan_definitions$(_defs_0, _texts_0));
+  const _x_2 = ($jd_exports$(_book_0, _defs_0));
+  const _x_3 = (_x_1 + _x_2);
+  return ("// Direct JavaScript prototype: native functions and live arguments.\n" + _x_3);
+}) : ((_x_4) => {
+  return $jd_fail$(_error_0);
+}), {$: "Unit"});
 }
 
 function $j_foreign_paths$(_book_0) {
@@ -1553,6 +1655,42 @@ return {$: "$JMP", f: $dg_check_world$, x: [_book_0]};
 }
 }
 
+function $base_prefix_final$(_prefix_0) {
+  return $book_final_reverse$(run_loop($book_final_fast$(_prefix_0, {$: "Nil"})), {$: "Nil"});
+}
+
+function $base_prefix_admitted_bound$(_state_0, _prefix_0, _suffix_0, _bound_0, _final_0, _prefix_bound_0) {
+  const _base_bound_0 = _state_0["bound"];
+  const _delta_0 = _state_0["delta"];
+  const _stamp_0 = _state_0["stamp"];
+  const _ready_0 = _state_0["ready"];
+  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(_ready_0, (_base_bound_0 === _prefix_bound_0))), (_bound_0 >= _base_bound_0))), (_delta_0 <= 1048576))), (_stamp_0 <= _delta_0))), (_bound_0 <= 1048576))), run_loop($base_prefix_names$(_suffix_0)))), run_loop($prefix_state_disjoint$(_prefix_0, run_loop($book_context$(_suffix_0)))))), run_loop($base_prefix_ctor_disjoint$(_suffix_0, _final_0)));
+}
+
+function $base_prefix_world_saved$(_prefix_0, _state_0, _final_0, _bound_0, _world_0) {
+  return {$: "KBasePreparedWorld", "state": _state_0, "prefix": _prefix_0, "final": _final_0, "book": ($kw_book$(_world_0)), "checked": ($kw_checked$(_world_0)), "seen": run_loop($base_prefix_seen$(_prefix_0, _bound_0))};
+}
+
+function $base_prefix_resume_saved$(_state_0, _prefix_0, _suffix_0, _bound_0, _final_0) {
+  const _delta_0 = _state_0["delta"];
+  const _stamp_0 = _state_0["stamp"];
+  const _patches_0 = _state_0["patches"];
+  const _ordered_0 = ($base_prefix_patch$(_final_0, run_loop($book_context$(_patches_0))));
+  const _seed_0 = ($book_cached$({$: "Nil"}, _bound_0));
+  const _declared_0 = ($check_declarations$(($prefix_state_join$(_prefix_0, _suffix_0)), _seed_0));
+  const _x_0 = ((_bound_0 + _delta_0) >>> 0);
+  const _world_0 = {$: "KWorld", "book": run_loop($kw_bound_book$(run_loop($base_prefix_put$(_declared_0, _final_0)), ((_bound_0 + _stamp_0) >>> 0))), "memo": {$: "Nil"}, "fresh": {$: "KFreshKnown", "next": ((_x_0 + 1) >>> 0)}, "checked": ($book_final_reverse$(_ordered_0, {$: "Nil"}))};
+  return $dg_check_events$(_suffix_0, _world_0, run_loop($base_prefix_seen$(_prefix_0, _bound_0)));
+}
+
+function $base_prefix_check_world_load$(_prepared_0, _load_0) {
+  const _trace_0 = _load_0["trace"];
+  const _prefix_0 = _load_0["prefix"];
+  const _suffix_0 = _load_0["suffix"];
+  const _ready_0 = _load_0["ready"];
+  return $base_prefix_check_world_trace$(_prepared_0, _trace_0, _prefix_0, _suffix_0, _ready_0);
+}
+
 function $f_graph_result_at$(_graph_0, _sources_0) {
   return $fpe_graph_result$(_graph_0, _sources_0, ($f_graph_result$(_graph_0)));
 }
@@ -1890,6 +2028,31 @@ function $f_prefix_source_completed$(_prefix_0, _count_0, _ready_0, _completion_
 }), {$: "Unit"});
 }
 
+function $f_prefix_ready_source_completed$(_prefix_0, _suffix_0, _count_0, _baseNames_0, _names_0, _ctors_0, _completion_0) {
+  const _t_0 = _completion_0["graph"];
+  const _book_0 = _t_0["book"];
+  const _error_0 = _t_0["error"];
+  const _done_0 = _t_0["done"];
+  const _parsed_0 = _completion_0["parsed"];
+  const _fragment_0 = _completion_0["fragment"];
+  return run_tail((($String$is_empty$(_error_0))) ? ((_x_0) => {
+  return {$: "FPrefixCompletion", "carrier": {$: "FReadyPrefixGraph", "graph": {$: "FGraph", "book": _book_0, "error": _error_0, "done": _done_0}, "prefix": _prefix_0, "suffix": ($norm_defs_join$(_suffix_0, _fragment_0)), "count": _count_0, "ready": true, "names": ($f_prefix_names_extend$(_fragment_0, _names_0)), "ctors": ($f_prefix_ctors_extend$(_fragment_0, _ctors_0)), "baseNames": _baseNames_0}, "parsed": _parsed_0};
+}) : ((_x_1) => {
+  return {$: "FPrefixCompletion", "carrier": {$: "FPrefixGraph", "graph": {$: "FGraph", "book": _book_0, "error": _error_0, "done": _done_0}, "prefix": _prefix_0, "suffix": {$: "Nil"}, "count": _count_0, "ready": false}, "parsed": _parsed_0};
+}), {$: "Unit"});
+}
+
+function $f_complete_source_indexed$(_source_0, _ns_0, _header_0, _sources_0, _graph_0, _root_0, _names_0, _ctors_0) {
+  const _book_0 = _graph_0["book"];
+  const _error_0 = _graph_0["error"];
+  const _done_0 = _graph_0["done"];
+  return run_tail((($String$is_empty$(_error_0))) ? ((_x_0) => {
+  return $f_complete_aliases_indexed$(_source_0, _ns_0, _header_0, {$: "FGraph", "book": _book_0, "error": _error_0, "done": _done_0}, ($f_graph_aliases$(($f_header_imports$(_header_0)), _source_0, _sources_0, _root_0)), _book_0, _sources_0, _names_0, _ctors_0);
+}) : ((_x_1) => {
+  return {$: "FIndexedCompletion", "graph": {$: "FGraph", "book": _book_0, "error": _error_0, "done": _done_0}, "parsed": {$: "FResult", "book": {$: "Nil"}, "error": _error_0, "imports": {$: "Nil"}}, "fragment": {$: "Nil"}};
+}), {$: "Unit"});
+}
+
 function $f_prefix_trace_validated$(_graph_0, _sources_0, _prefix_0, _suffix_0, _next_0, _ready_0, _validated_0) {
   const _book_0 = _validated_0["book"];
   const _error_0 = _validated_0["error"];
@@ -1899,6 +2062,93 @@ function $f_prefix_trace_validated$(_graph_0, _sources_0, _prefix_0, _suffix_0, 
 }) : ((_x_1) => {
   return $f_prefix_trace_fallback$(_graph_0, _sources_0, {$: "FResult", "book": _book_0, "error": _error_0, "imports": _imports_0});
 }), {$: "Unit"});
+}
+
+function $f_prefix_ready_validate$(_whole_0, _suffix_0, _error_0, _baseNames_0) {
+  return $f_prefix_ready_validated$(_whole_0, _baseNames_0, ($f_validate_result$({$: "FResult", "book": _suffix_0, "error": _error_0, "imports": {$: "Nil"}})));
+}
+
+function $List$reverse$(_xs_0) {
+  return $List$reverse$go$(_xs_0, {$: "Nil"});
+}
+
+function $f_ctor_index$(_book_0, _tree_0) {
+  if (_book_0.$ === "Nil") {
+    return _tree_0;
+  } else {
+    const _d_0 = _book_0["head"];
+    const _rest_0 = _book_0["tail"];
+    return $f_ctor_index_def$(_d_0, run_loop($f_ctor_index$(_rest_0, _tree_0)));
+  }
+}
+
+function $missing$() {
+  return {$: "KDef", "name": "", "kind": "Absent", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false};
+}
+
+function $f_graph_count_defs$($0, $1) {
+  for (;;) {
+    {
+      const _book_0 = $0;
+      const _count_0 = $1;
+      if (_book_0.$ === "Nil") {
+        return _count_0;
+      } else {
+        const _tail_0 = _book_0["tail"];
+        $0 = _tail_0;
+        $1 = ((_count_0 + 1) >>> 0);
+        continue;
+      }
+    }
+  }
+}
+
+function $f_error_defs$(_ds_0) {
+  return $nm$(run_loop($fpe_defs$(_ds_0)));
+}
+
+function $f_graph_fresh_names$(_todo_0, _done_0) {
+  if (_todo_0.$ === "Nil") {
+    return "";
+  } else {
+    const _d_0 = _todo_0["head"];
+    const _rest_0 = _todo_0["tail"];
+    return $f_graph_fresh_hashed$(_rest_0, _done_0, _d_0, ($index_hash$(($dn$(_d_0)), 2166136261)));
+  }
+}
+
+function $f_prefix_ready_seed_completed$(_state_0, _completed_0) {
+  const _names_0 = _state_0["names"];
+  const _ctors_0 = _state_0["ctors"];
+  const _count_0 = _state_0["count"];
+  const _ready_0 = _state_0["ready"];
+  const _t_0 = _completed_0["carrier"];
+  if (_t_0.$ === "FPrefixGraph") {
+    const _graph_0 = _t_0["graph"];
+    const _prefix_0 = _t_0["prefix"];
+    const _suffix_0 = _t_0["suffix"];
+    const _actual_0 = _t_0["count"];
+    const _eligible_0 = _t_0["ready"];
+    const _parsed_0 = _completed_0["parsed"];
+    if ((($Bool$and$(($Bool$and$(_eligible_0, _ready_0)), (_count_0 === _actual_0))))) {
+const _x_0 = {$: "Unit"};
+return {$: "FPrefixCompletion", "carrier": {$: "FReadyPrefixGraph", "graph": _graph_0, "prefix": _prefix_0, "suffix": _suffix_0, "count": _count_0, "ready": true, "names": _names_0, "ctors": _ctors_0, "baseNames": _names_0}, "parsed": _parsed_0};
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "FPrefixCompletion", "carrier": {$: "FPrefixGraph", "graph": _graph_0, "prefix": _prefix_0, "suffix": _suffix_0, "count": _actual_0, "ready": _eligible_0}, "parsed": _parsed_0};
+}
+  } else {
+    const _graph_1 = _t_0["graph"];
+    const _prefix_1 = _t_0["prefix"];
+    const _suffix_1 = _t_0["suffix"];
+    const _actual_1 = _t_0["count"];
+    const _eligible_1 = _t_0["ready"];
+    const _oldNames_0 = _t_0["names"];
+    const _oldCtors_0 = _t_0["ctors"];
+    const _baseNames_0 = _t_0["baseNames"];
+    const _parsed_1 = _completed_0["parsed"];
+    return {$: "FPrefixCompletion", "carrier": {$: "FReadyPrefixGraph", "graph": _graph_1, "prefix": _prefix_1, "suffix": _suffix_1, "count": _actual_1, "ready": _eligible_1, "names": _oldNames_0, "ctors": _oldCtors_0, "baseNames": _baseNames_0}, "parsed": _parsed_1};
+  }
 }
 
 function $dr_verdict$(_names_0) {
@@ -2151,10 +2401,6 @@ function $dg_render_parts_in$(_book_0, _expected_0, _observed_0, _has_observed_0
   const _x_18 = (_x_15 + _x_16);
   const _x_19 = (_x_17 + _x_18);
   return ("Error:" + _x_19);
-}
-
-function $List$reverse$(_xs_0) {
-  return $List$reverse$go$(_xs_0, {$: "Nil"});
 }
 
 function $fp_diagnostic_env$(_trail_0, _sources_0, _done_0, _span_0) {
@@ -2464,6 +2710,42 @@ function $jd_reach_context$(_defs_0, _roots_0, _book_0) {
 }), {$: "Unit"});
 }
 
+function $jd_plan_context$(_defs_0, _roots_0, _book_0) {
+  return run_tail((($jd_calls_valid$(_book_0))) ? ((_x_0) => {
+  return $jd_plan_visit$(_book_0, ($book_cached$(($jd_reach_names$(_defs_0)), 0)), _defs_0, _roots_0, ($missing$()), ($jd_definition_budget$()), 65536);
+}) : ((_x_1) => {
+  return $jd_plan_bad$("direct reachability tail-call analysis refused");
+}), {$: "Unit"});
+}
+
+function $jd_plan_definitions$(_defs_0, _texts_0) {
+  if (_defs_0.$ === "Nil") {
+    return "";
+  } else {
+    const _d_0 = _defs_0["head"];
+    const _rest_0 = _defs_0["tail"];
+    const _x_2 = run_loop(run_tail((($String$eq$(($dk$(_d_0)), "Def"))) ? ((_x_0) => {
+  return $jd_plan_text$(run_loop($index_find$(_texts_0, ($dn$(_d_0)), ($index_hash$(($dn$(_d_0)), 2166136261)), 32)));
+}) : ((_x_1) => {
+  return "";
+}), {$: "Unit"}));
+    const _x_3 = ($jd_plan_definitions$(_rest_0, _texts_0));
+    return (_x_2 + _x_3);
+  }
+}
+
+function $jd_exports$(_book_0, _defs_0) {
+  const _x_0 = ($jd_host_exports$(run_loop($jd_host_native_context$(_book_0)), _defs_0));
+  const _x_1 = (_x_0 + "};\n");
+  return ("\nexport const backend={kind:\"direct-js\",representation:\"upstream-native\",prototype:true,foreign:\"upstream-cps\"};\nexport default {\n" + _x_1);
+}
+
+function $jd_fail$(_message_0) {
+  const _x_0 = ($j_quote$(_message_0));
+  const _x_1 = (_x_0 + ");})())");
+  return ("(\n/*JD_UNSUPPORTED: direct lowering */(()=>{throw new Error(" + _x_1);
+}
+
 function $j_builtin_effect$(_name_0) {
   const _x_0 = (_name_0 + "|");
   return $String$contains$("|IO.print|IO.write|IO.print_err|IO.get_env|IO.args|IO.random_u32|IO.spawn|IO.sleep|IO.now|IO.thread_count|Process.run|Chan.new|Chan.send|Chan.recv|Chan.close|File.open|File.read|File.read_bytes|File.read_at|File.size|File.write|File.write_bytes|File.close|TCP.listen|TCP.accept|TCP.connect|TCP.send|TCP.recv|TCP.send_bytes|TCP.recv_bytes|TCP.poll|UDP.bind|UDP.send_to|UDP.recv_from|UDP.poll|Socket.close|Listener.close|Window.open|Window.frame|Window.set_title|Window.grab|Window.close|Audio.open|Audio.write|Audio.close|", ("|" + _x_0));
@@ -2729,10 +3011,6 @@ function $Cmp$is_eq$(_c_0) {
 
 function $String$order$(_a_0, _b_0) {
   return $Pair$snd$(($String$cmp$(_a_0, _b_0)));
-}
-
-function $missing$() {
-  return {$: "KDef", "name": "", "kind": "Absent", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false};
 }
 
 function $lookup_cached$($0, $1, $2, $3) {
@@ -3569,6 +3847,164 @@ function $base_prefix_resume$(_state_0, _prefix_0, _suffix_0) {
 }), {$: "Unit"});
 }
 
+function $book_final_reverse$($0, $1) {
+  for (;;) {
+    {
+      const _book_0 = $0;
+      const _done_0 = $1;
+      if (_book_0.$ === "Nil") {
+        return _done_0;
+      } else {
+        const _d_0 = _book_0["head"];
+        const _rest_0 = _book_0["tail"];
+        $0 = _rest_0;
+        $1 = {$: "Con", "head": _d_0, "tail": _done_0};
+        continue;
+      }
+    }
+  }
+}
+
+function $base_prefix_names$(_defs_0) {
+  if (_defs_0.$ === "Nil") {
+    return true;
+  } else {
+    const _d_0 = _defs_0["head"];
+    const _rest_0 = _defs_0["tail"];
+    const _x_0 = ($String$eq$(($dk$(_d_0)), "Def"));
+    const _x_1 = ($String$eq$(($dk$(_d_0)), "ADT"));
+    const _x_2 = (_x_0 || _x_1);
+    const _x_3 = ($String$eq$(($dk$(_d_0)), "Ctr"));
+    if ((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$not$(($String$eq$(($dn$(_d_0)), "")))), ($Bool$not$(($String$contains$(($dn$(_d_0)), "~")))))), ($Bool$not$(($String$contains$(($dn$(_d_0)), "$kernel.")))))), (_x_2 || _x_3))), run_loop($base_prefix_names$(($dc$(_d_0)))))))) {
+const _x_4 = {$: "Unit"};
+return {$: "$JMP", f: $base_prefix_names$, x: [_rest_0]};
+} else {
+const _x_5 = {$: "Unit"};
+return false;
+}
+  }
+}
+
+function $prefix_state_disjoint$(_prefix_0, _suffix_0) {
+  if (_prefix_0.$ === "Nil") {
+    return true;
+  } else {
+    const _d_0 = _prefix_0["head"];
+    const _rest_0 = _prefix_0["tail"];
+    if ((($String$eq$(($dk$(run_loop($lookup$(_suffix_0, ($dn$(_d_0)))))), "Absent")))) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $prefix_state_disjoint$, x: [_rest_0, _suffix_0]};
+} else {
+const _x_1 = {$: "Unit"};
+return false;
+}
+  }
+}
+
+function $base_prefix_ctor_disjoint$(_defs_0, _context_0) {
+  if (_defs_0.$ === "Nil") {
+    return true;
+  } else {
+    const _d_0 = _defs_0["head"];
+    const _rest_0 = _defs_0["tail"];
+    if ((($Bool$and$(($Bool$not$(($constructor_exists$(_context_0, ($dn$(_d_0)))))), run_loop($base_prefix_ctor_disjoint$(($dc$(_d_0)), _context_0)))))) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $base_prefix_ctor_disjoint$, x: [_rest_0, _context_0]};
+} else {
+const _x_1 = {$: "Unit"};
+return false;
+}
+  }
+}
+
+function $kw_checked$(_world_0) {
+  const _checked_0 = _world_0["checked"];
+  return _checked_0;
+}
+
+function $base_prefix_seen$(_prefix_0, _bound_0) {
+  return $base_prefix_put$(($book_cached$({$: "Nil"}, _bound_0)), _prefix_0);
+}
+
+function $base_prefix_patch$(_defs_0, _patches_0) {
+  if (_defs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _d_0 = _defs_0["head"];
+    const _rest_0 = _defs_0["tail"];
+    return {$: "Con", "head": run_loop(run_tail((($String$eq$(($dk$(run_loop($lookup$(_patches_0, ($dn$(_d_0)))))), "Absent"))) ? ((_x_0) => {
+  return _d_0;
+}) : ((_x_1) => {
+  return $lookup$(_patches_0, ($dn$(_d_0)));
+}), {$: "Unit"})), "tail": ($base_prefix_patch$(_rest_0, _patches_0))};
+  }
+}
+
+function $check_declarations$($0, $1) {
+  for (;;) {
+    {
+      const _todo_0 = $0;
+      const _done_0 = $1;
+      if (_todo_0.$ === "Nil") {
+        return _done_0;
+      } else {
+        const _d_0 = _todo_0["head"];
+        const _rest_0 = _todo_0["tail"];
+        $0 = _rest_0;
+        $1 = run_loop($book_put$(_done_0, run_loop(run_tail((($String$eq$(($tg$(($dv$(_d_0)))), "Foreign"))) ? ((_x_0) => {
+  return _d_0;
+}) : ((_x_1) => {
+  return $declared$(_d_0);
+}), {$: "Unit"}))));
+        continue;
+      }
+    }
+  }
+}
+
+function $prefix_state_join$(_left_0, _right_0) {
+  if (_left_0.$ === "Nil") {
+    return _right_0;
+  } else {
+    const _h_0 = _left_0["head"];
+    const _rest_0 = _left_0["tail"];
+    return {$: "Con", "head": _h_0, "tail": ($prefix_state_join$(_rest_0, _right_0))};
+  }
+}
+
+function $kw_bound_book$(_book_0, _bound_0) {
+  if (_book_0.$ === "Nil") {
+    return $book_cached$({$: "Nil"}, _bound_0);
+  } else {
+    const _h_0 = _book_0["head"];
+    const _rest_0 = _book_0["tail"];
+    return run_tail((($String$eq$(($dk$(_h_0)), "BookCache"))) ? ((_x_0) => {
+  return {$: "Con", "head": {$: "KDef", "name": ($dn$(_h_0)), "kind": ($dk$(_h_0)), "arity": run_loop($norm_max$(($da$(_h_0)), _bound_0)), "templates": ($dx$(_h_0)), "typ": ($dt$(_h_0)), "value": ($dv$(_h_0)), "ctors": ($dc$(_h_0)), "native": ($db$(_h_0)), "unsafe": ($du$(_h_0))}, "tail": _rest_0};
+}) : ((_x_1) => {
+  return $book_cached$({$: "Con", "head": _h_0, "tail": _rest_0}, _bound_0);
+}), {$: "Unit"});
+  }
+}
+
+function $base_prefix_put$(_book_0, _defs_0) {
+  return $book_put_many$(_book_0, _defs_0);
+}
+
+function $dg_check_events$(_todo_0, _world_0, _seen_0) {
+  if (_todo_0.$ === "Nil") {
+    return {$: "DChecking", "result": ($bad$(_world_0, "")), "diagnostic": ($dg_no_report$("", ""))};
+  } else {
+    const _d_0 = _todo_0["head"];
+    const _rest_0 = _todo_0["tail"];
+    return $dg_check_guard$(_rest_0, _world_0, _seen_0, _d_0, run_loop($event_error$(_seen_0, _d_0, run_loop($lookup$(_seen_0, ($dn$(_d_0)))))));
+  }
+}
+
+function $base_prefix_check_world_trace$(_prepared_0, _trace_0, _prefix_0, _suffix_0, _ready_0) {
+  const _result_0 = _trace_0["result"];
+  return $base_prefix_check_world_result$(_prepared_0, _result_0, _prefix_0, _suffix_0, _ready_0);
+}
+
 function $f_graph_result$(_g_0) {
   const _book_0 = _g_0["book"];
   const _err_0 = _g_0["error"];
@@ -3702,23 +4138,6 @@ function $fs_book$(_seed_0) {
 function $fs_path$(_seed_0) {
   const _path_0 = _seed_0["path"];
   return _path_0;
-}
-
-function $f_graph_count_defs$($0, $1) {
-  for (;;) {
-    {
-      const _book_0 = $0;
-      const _count_0 = $1;
-      if (_book_0.$ === "Nil") {
-        return _count_0;
-      } else {
-        const _tail_0 = _book_0["tail"];
-        $0 = _tail_0;
-        $1 = ((_count_0 + 1) >>> 0);
-        continue;
-      }
-    }
-  }
 }
 
 function $ref$(_name_0) {
@@ -4010,20 +4429,6 @@ function $f_fresh_result$(_r_0) {
   return $f_fresh_result_end$(($f_fresh_defs$(_book_0, 1)), _err_0, _imports_0);
 }
 
-function $f_graph_fresh_names$(_todo_0, _done_0) {
-  if (_todo_0.$ === "Nil") {
-    return "";
-  } else {
-    const _d_0 = _todo_0["head"];
-    const _rest_0 = _todo_0["tail"];
-    return $f_graph_fresh_hashed$(_rest_0, _done_0, _d_0, ($index_hash$(($dn$(_d_0)), 2166136261)));
-  }
-}
-
-function $f_error_defs$(_ds_0) {
-  return $nm$(run_loop($fpe_defs$(_ds_0)));
-}
-
 function $f_prefix_seed_graph$(_graph_0, _parsed_0, _prefix_0, _eligible_0) {
   const _book_0 = _graph_0["book"];
   const _error_0 = _graph_0["error"];
@@ -4050,6 +4455,52 @@ return {$: "$JMP", f: $f_prefix_drop_next$, x: [_book_0, _count_0]};
 }
 }
 
+function $f_prefix_names_extend$($0, $1) {
+  for (;;) {
+    {
+      const _defs_0 = $0;
+      const _names_0 = $1;
+      if (_defs_0.$ === "Nil") {
+        return _names_0;
+      } else {
+        const _d_0 = _defs_0["head"];
+        const _rest_0 = _defs_0["tail"];
+        $0 = _rest_0;
+        $1 = run_loop($index_set$(_names_0, _d_0, ($index_hash$(($dn$(_d_0)), 2166136261)), 32));
+        continue;
+      }
+    }
+  }
+}
+
+function $f_prefix_ctors_extend$($0, $1) {
+  for (;;) {
+    {
+      const _defs_0 = $0;
+      const _ctors_0 = $1;
+      if (_defs_0.$ === "Nil") {
+        return _ctors_0;
+      } else {
+        const _d_0 = _defs_0["head"];
+        const _rest_0 = _defs_0["tail"];
+        const _hash_0 = ($index_hash$(($dn$(_d_0)), 2166136261));
+        const _next_0 = run_loop(run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "Ctr")), ($String$eq$(($dk$(run_loop($index_find$(_ctors_0, ($dn$(_d_0)), _hash_0, 32)))), "Absent"))))) ? ((_x_0) => {
+  return $index_set$(_ctors_0, _d_0, _hash_0, 32);
+}) : ((_x_1) => {
+  return _ctors_0;
+}), {$: "Unit"}));
+        $0 = _rest_0;
+        $1 = ($f_prefix_ctors_extend$(($dc$(_d_0)), _next_0));
+        continue;
+      }
+    }
+  }
+}
+
+function $f_complete_aliases_indexed$(_source_0, _ns_0, _header_0, _graph_0, _aliases_0, _prior_0, _sources_0, _names_0, _ctors_0) {
+  return $f_graph_finish_indexed$(_source_0, _ns_0, _aliases_0, _graph_0, _sources_0, _names_0, run_loop($f_source_body_indexed$(_source_0, _header_0, {$: "FParseScope", "prior": _prior_0, "index": _names_0, "ctors": _ctors_0, "ns": _ns_0, "aliases": _aliases_0}, 0)));
+}
+
 function $f_prefix_trace_fresh$(_graph_0, _sources_0, _prefix_0, _imports_0, _fresh_0) {
   const _book_0 = _graph_0["book"];
   const _error_0 = _graph_0["error"];
@@ -4063,6 +4514,58 @@ function $f_prefix_trace_fallback$(_graph_0, _sources_0, _validated_0) {
   const _error_0 = _graph_0["error"];
   const _done_0 = _graph_0["done"];
   return {$: "FPrefixLoad", "trace": {$: "FLoadTrace", "result": run_loop($fpe_graph_result$({$: "FGraph", "book": _book_0, "error": _error_0, "done": _done_0}, _sources_0, ($f_fresh_result$(_validated_0)))), "done": _done_0, "sources": _sources_0}, "prefix": {$: "Nil"}, "suffix": {$: "Nil"}, "ready": false};
+}
+
+function $f_prefix_ready_validated$(_whole_0, _baseNames_0, _validated_0) {
+  const _book_0 = _validated_0["book"];
+  const _checked_0 = _validated_0["error"];
+  const _imports_0 = _validated_0["imports"];
+  return {$: "FResult", "book": _whole_0, "error": run_loop(run_tail((($String$is_empty$(_checked_0))) ? ((_x_0) => {
+  return $f_graph_fresh_names$(_book_0, _baseNames_0);
+}) : ((_x_1) => {
+  return _checked_0;
+}), {$: "Unit"})), "imports": _imports_0};
+}
+
+function $List$reverse$go$($0, $1) {
+  for (;;) {
+    {
+      const _xs_0 = $0;
+      const _acc_0 = $1;
+      if (_xs_0.$ === "Nil") {
+        return _acc_0;
+      } else {
+        const _h_0 = _xs_0["head"];
+        const _t_0 = _xs_0["tail"];
+        $0 = _t_0;
+        $1 = {$: "Con", "head": _h_0, "tail": _acc_0};
+        continue;
+      }
+    }
+  }
+}
+
+function $f_ctor_index_def$(_d_0, _tree_0) {
+  const _children_0 = run_loop($f_ctor_index$(($dc$(_d_0)), _tree_0));
+  return run_tail((($f_eq$(($dk$(_d_0)), "Ctr"))) ? ((_x_0) => {
+  return $index_set$(_children_0, _d_0, ($index_hash$(($dn$(_d_0)), 2166136261)), 32);
+}) : ((_x_1) => {
+  return _children_0;
+}), {$: "Unit"});
+}
+
+function $fpe_defs$(_ds_0) {
+  if (_ds_0.$ === "Nil") {
+    return $atom$("Absent");
+  } else {
+    const _head_0 = _ds_0["head"];
+    const _tail_0 = _ds_0["tail"];
+    return $fpe_defs_next$(run_loop($fpe_def$(_head_0)), _tail_0);
+  }
+}
+
+function $f_graph_fresh_hashed$(_rest_0, _done_0, _d_0, _hash_0) {
+  return $f_graph_fresh_name$(_rest_0, _done_0, _d_0, _hash_0, run_loop($index_find$(_done_0, ($dn$(_d_0)), _hash_0, 32)));
 }
 
 function $dr_count$(_names_0) {
@@ -4140,24 +4643,6 @@ function $book_final_scan$(_book_0, _seen_0, _kept_0, _done_0) {
     const _d_0 = _book_0["head"];
     const _rest_0 = _book_0["tail"];
     return $book_final_step$(_d_0, _rest_0, _seen_0, _kept_0, _done_0, ($index_hash$(($dn$(_d_0)), 2166136261)));
-  }
-}
-
-function $book_final_reverse$($0, $1) {
-  for (;;) {
-    {
-      const _book_0 = $0;
-      const _done_0 = $1;
-      if (_book_0.$ === "Nil") {
-        return _done_0;
-      } else {
-        const _d_0 = _book_0["head"];
-        const _rest_0 = _book_0["tail"];
-        $0 = _rest_0;
-        $1 = {$: "Con", "head": _d_0, "tail": _done_0};
-        continue;
-      }
-    }
   }
 }
 
@@ -4446,24 +4931,6 @@ function $kp_name$($0, $1) {
   return $kp_alias_name$(_aliases_0, _name_0);
 }), {$: "Unit"});
         }
-      }
-    }
-  }
-}
-
-function $List$reverse$go$($0, $1) {
-  for (;;) {
-    {
-      const _xs_0 = $0;
-      const _acc_0 = $1;
-      if (_xs_0.$ === "Nil") {
-        return _acc_0;
-      } else {
-        const _h_0 = _xs_0["head"];
-        const _t_0 = _xs_0["tail"];
-        $0 = _t_0;
-        $1 = {$: "Con", "head": _h_0, "tail": _acc_0};
-        continue;
       }
     }
   }
@@ -4814,18 +5281,6 @@ function $jd_definitions$(_book_0, _defs_0) {
   return $jd_text_render$(run_loop($jd_doc_definitions$(_book_0, _defs_0)));
 }
 
-function $jd_exports$(_book_0, _defs_0) {
-  const _x_0 = ($jd_host_exports$(run_loop($jd_host_native_context$(_book_0)), _defs_0));
-  const _x_1 = (_x_0 + "};\n");
-  return ("\nexport const backend={kind:\"direct-js\",representation:\"upstream-native\",prototype:true,foreign:\"upstream-cps\"};\nexport default {\n" + _x_1);
-}
-
-function $jd_fail$(_message_0) {
-  const _x_0 = ($j_quote$(_message_0));
-  const _x_1 = (_x_0 + ");})())");
-  return ("(\n/*JD_UNSUPPORTED: direct lowering */(()=>{throw new Error(" + _x_1);
-}
-
 function $jd_calls_context_rows$(_book_0, _rows_0) {
   return $jd_calls_context_bounded$(_book_0, _rows_0, ($jd_definition_budget$()), 4194304);
 }
@@ -4843,11 +5298,11 @@ function $jd_calls_rows$(_book_0, _defs_0, _left_0) {
   return run_tail(((_left_0 > 0)) ? ((_x_4) => {
   const _x_5 = run_loop($jd_native_known$(_book_0, _d_0));
   const _x_6 = ($String$eq$(($tg$(run_loop($j_strip$(($dv$(_d_0)))))), "Foreign"));
-  return $jd_calls_row_done$(($dn$(_d_0)), run_loop(run_tail(((_x_5 || _x_6)) ? ((_x_7) => {
-  return {$: "JDCallScan", "edges": {$: "Nil"}, "unknown": false, "fuel": 8192, "valid": true};
+  return run_tail(((_x_5 || _x_6)) ? ((_x_7) => {
+  return $jd_calls_row_done$(($dn$(_d_0)), ($atom$("Absent")), {$: "JDCallScan", "edges": {$: "Nil"}, "unknown": false, "fuel": 8192, "valid": true}, run_loop($jd_calls_rows$(_book_0, _rest_0, ((_left_0 - 1) >>> 0))));
 }) : ((_x_8) => {
-  return $jd_calls_body$(_book_0, {$: "Nil"}, ($dv$(_d_0)), ($dt$(_d_0)), run_loop($jd_live_arity$(_book_0, ($dt$(_d_0)), run_loop($jd_arity$(_book_0, _d_0)))), {$: "JDCallScan", "edges": {$: "Nil"}, "unknown": false, "fuel": 8192, "valid": true});
-}), {$: "Unit"})), run_loop($jd_calls_rows$(_book_0, _rest_0, ((_left_0 - 1) >>> 0))));
+  return $jd_calls_row_arity$(_book_0, _d_0, _rest_0, ((_left_0 - 1) >>> 0), run_loop($jd_arity$(_book_0, _d_0)));
+}), {$: "Unit"});
 }) : ((_x_9) => {
   return {$: "None"};
 }), {$: "Unit"});
@@ -4965,6 +5420,162 @@ function $jd_reach_names$(_defs_0) {
     const _rest_0 = _defs_0["tail"];
     return {$: "Con", "head": {$: "KDef", "name": ($jd_name$(($dn$(_d_0)))), "kind": "JDReachName", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($ref$(($dn$(_d_0)))), "ctors": {$: "Nil"}, "native": false, "unsafe": false}, "tail": ($jd_reach_names$(_rest_0))};
   }
+}
+
+function $jd_plan_visit$(_book_0, _names_0, _defs_0, _todo_0, _texts_0, _left_0, _fuel_0) {
+  if (_todo_0.$ === "Nil") {
+    return {$: "JDPlan", "book": _book_0, "defs": run_loop($jd_reach_filter$(_defs_0, _texts_0)), "texts": _texts_0, "error": ""};
+  } else {
+    const _name_0 = _todo_0["head"];
+    const _rest_0 = _todo_0["tail"];
+    return run_tail(((_fuel_0 > 0)) ? ((_x_0) => {
+  return run_tail((($String$eq$(($dk$(run_loop($index_find$(_texts_0, _name_0, ($index_hash$(_name_0, 2166136261)), 32)))), "Absent"))) ? ((_x_1) => {
+  return run_tail(((_left_0 > 0)) ? ((_x_2) => {
+  return $jd_plan_definition$(_book_0, _names_0, _defs_0, _rest_0, _texts_0, ((_left_0 - 1) >>> 0), ((_fuel_0 - 1) >>> 0), run_loop($lookup$(_book_0, _name_0)));
+}) : ((_x_3) => {
+  return $jd_plan_bad$("direct reachability definition budget");
+}), {$: "Unit"});
+}) : ((_x_4) => {
+  return $jd_plan_visit$(_book_0, _names_0, _defs_0, _rest_0, _texts_0, _left_0, ((_fuel_0 - 1) >>> 0));
+}), {$: "Unit"});
+}) : ((_x_5) => {
+  return $jd_plan_bad$("direct reachability edge budget");
+}), {$: "Unit"});
+  }
+}
+
+function $jd_plan_bad$(_error_0) {
+  return {$: "JDPlan", "book": {$: "Nil"}, "defs": {$: "Nil"}, "texts": ($missing$()), "error": _error_0};
+}
+
+function $jd_plan_text$(_row_0) {
+  return run_tail((($String$eq$(($dk$(_row_0)), "JDPlanText"))) ? ((_x_0) => {
+  return $nm$(($dv$(_row_0)));
+}) : ((_x_1) => {
+  return $jd_fail$("direct lowering plan missing emitted definition");
+}), {$: "Unit"});
+}
+
+function $index_find$($0, $1, $2, $3, $4) {
+  let $pc = 0;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _tree_0 = $0;
+      const _name_0 = $1;
+      const _hash_0 = $2;
+      const _bits_0 = $3;
+      if (_tree_0.$ === "KDef") {
+        const _label_0 = _tree_0["name"];
+        const _kind_0 = _tree_0["kind"];
+        const _arity_0 = _tree_0["arity"];
+        const _templates_0 = _tree_0["templates"];
+        const _typ_0 = _tree_0["typ"];
+        const _value_0 = _tree_0["value"];
+        const _ctors_0 = _tree_0["ctors"];
+        const _native_0 = _tree_0["native"];
+        const _unsafe_0 = _tree_0["unsafe"];
+        $0 = {$: "KDef", "name": _label_0, "kind": _kind_0, "arity": _arity_0, "templates": _templates_0, "typ": _typ_0, "value": _value_0, "ctors": _ctors_0, "native": _native_0, "unsafe": _unsafe_0};
+        $1 = _name_0;
+        $2 = _hash_0;
+        $3 = _bits_0;
+        $4 = ($String$eq$(_kind_0, "Absent"));
+        $pc = 1; continue;
+      } else if (_tree_0.$ === "KIndexLeaf") {
+        const _stored_0 = _tree_0["hash"];
+        const _bucket_0 = _tree_0["bucket"];
+        if (((_stored_0 === _hash_0))) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $index_bucket$, x: [_bucket_0, _name_0]};
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $missing$, x: []};
+}
+      } else {
+        const _stored_1 = _tree_0["hash"];
+        const _mask_0 = _tree_0["mask"];
+        const _left_0 = _tree_0["left"];
+        const _right_0 = _tree_0["right"];
+        return run_tail(((_mask_0 === 0)) ? ((_x_2) => {
+  return $index_find_hash$({$: "KIndexNode", "hash": _stored_1, "mask": _mask_0, "left": _left_0, "right": _right_0}, _name_0, (_stored_1 === _hash_0));
+}) : ((_x_3) => {
+  const _x_4 = ((_hash_0 & _mask_0) >>> 0);
+  if (((_x_4 === 0))) {
+const _x_5 = {$: "Unit"};
+return {$: "$JMP", f: $index_find$, x: [_left_0, _name_0, _hash_0, _bits_0]};
+} else {
+const _x_6 = {$: "Unit"};
+return {$: "$JMP", f: $index_find$, x: [_right_0, _name_0, _hash_0, _bits_0]};
+}
+}), {$: "Unit"});
+      }
+    }
+    case 1: {
+      const _tree_0 = $0;
+      const _name_0 = $1;
+      const _hash_0 = $2;
+      const _bits_0 = $3;
+      const _absent_0 = $4;
+      if (_absent_0) {
+        return $missing$();
+      } else {
+        const _x_0 = ($dx$(_tree_0));
+        $0 = _tree_0;
+        $1 = _name_0;
+        $2 = _hash_0;
+        $3 = _bits_0;
+        $4 = (_x_0 === 0);
+        $pc = 2; continue;
+      }
+    }
+    case 2: {
+      const _tree_0 = $0;
+      const _name_0 = $1;
+      const _hash_0 = $2;
+      const _bits_0 = $3;
+      const _leaf_0 = $4;
+      if (_leaf_0) {
+        const _x_0 = ($da$(_tree_0));
+        return $index_find_hash$(_tree_0, _name_0, (_x_0 === _hash_0));
+      } else {
+        const _x_1 = ($dx$(_tree_0));
+        const _x_2 = ((_hash_0 & _x_1) >>> 0);
+        $0 = ($index_child$(_tree_0, ($Bool$not$((_x_2 === 0)))));
+        $1 = _name_0;
+        $2 = _hash_0;
+        $3 = _bits_0;
+        $pc = 0; continue;
+      }
+    }
+  }
+}
+
+function $jd_host_exports$(_book_0, _defs_0) {
+  if (_defs_0.$ === "Nil") {
+    return "";
+  } else {
+    const _d_0 = _defs_0["head"];
+    const _rest_0 = _defs_0["tail"];
+    const _x_0 = ($dx$(_d_0));
+    const _x_5 = run_loop(run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_0 === 0))), ($Bool$not$(($db$(_d_0)))))), ($Bool$not$(($String$eq$(($tg$(run_loop($j_strip$(($dv$(_d_0)))))), "Absent")))))), ($Bool$not$(($String$eq$(($tg$(run_loop($j_strip$(($dv$(_d_0)))))), "Foreign"))))))) ? ((_x_1) => {
+  return $jd_host_export$(_book_0, _d_0, run_loop(run_tail((run_loop($j_io_type$(_book_0, ($dt$(_d_0))))) ? ((_x_2) => {
+  return 1;
+}) : ((_x_3) => {
+  return 0;
+}), {$: "Unit"})));
+}) : ((_x_4) => {
+  return "";
+}), {$: "Unit"}));
+    const _x_6 = ($jd_host_exports$(_book_0, _rest_0));
+    return (_x_5 + _x_6);
+  }
+}
+
+function $jd_host_native_context$(_book_0) {
+  const _x_0 = run_loop($jd_host_native_proof$(_book_0, "F32"));
+  const _x_1 = run_loop($jd_host_native_proof$(_book_0, "U32"));
+  const _x_2 = (Math.imul(2, _x_0) >>> 0);
+  const _flags_0 = ((_x_1 + _x_2) >>> 0);
+  return $book_put$(_book_0, {$: "KDef", "name": "$JD.Host.NativeWord", "kind": "JDHostNativeWord", "arity": _flags_0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false});
 }
 
 function $annotate$(_e_0, _ctx_0, _t_0, _ty_0) {
@@ -5778,49 +6389,12 @@ return {$: "$JMP", f: $j_find_ctor_children$, x: [_more_0, _rest_0, _name_0]};
   }
 }
 
-function $kw_checked$(_world_0) {
-  const _checked_0 = _world_0["checked"];
-  return _checked_0;
-}
-
-function $dg_check_events$(_todo_0, _world_0, _seen_0) {
-  if (_todo_0.$ === "Nil") {
-    return {$: "DChecking", "result": ($bad$(_world_0, "")), "diagnostic": ($dg_no_report$("", ""))};
-  } else {
-    const _d_0 = _todo_0["head"];
-    const _rest_0 = _todo_0["tail"];
-    return $dg_check_guard$(_rest_0, _world_0, _seen_0, _d_0, run_loop($event_error$(_seen_0, _d_0, run_loop($lookup$(_seen_0, ($dn$(_d_0)))))));
-  }
-}
-
 function $kw_seed$(_book_0, _bound_0) {
   return {$: "KWorld", "book": _book_0, "memo": {$: "Nil"}, "fresh": run_loop(run_tail(((_bound_0 === 4294967295)) ? ((_x_0) => {
   return {$: "KFreshDeferred", "roots": {$: "Nil"}};
 }) : ((_x_1) => {
   return {$: "KFreshKnown", "next": ((_bound_0 + 1) >>> 0)};
 }), {$: "Unit"})), "checked": {$: "Nil"}};
-}
-
-function $check_declarations$($0, $1) {
-  for (;;) {
-    {
-      const _todo_0 = $0;
-      const _done_0 = $1;
-      if (_todo_0.$ === "Nil") {
-        return _done_0;
-      } else {
-        const _d_0 = _todo_0["head"];
-        const _rest_0 = _todo_0["tail"];
-        $0 = _rest_0;
-        $1 = run_loop($book_put$(_done_0, run_loop(run_tail((($String$eq$(($tg$(($dv$(_d_0)))), "Foreign"))) ? ((_x_0) => {
-  return _d_0;
-}) : ((_x_1) => {
-  return $declared$(_d_0);
-}), {$: "Unit"}))));
-        continue;
-      }
-    }
-  }
 }
 
 function $index_put_rest$(_cache_0, _rest_0, _name_0) {
@@ -6330,10 +6904,6 @@ function $exact_defs$(_a_0, _b_0) {
   }
 }
 
-function $base_prefix_final$(_prefix_0) {
-  return $book_final_reverse$(run_loop($book_final_fast$(_prefix_0, {$: "Nil"})), {$: "Nil"});
-}
-
 function $base_prefix_stamp$(_book_0, _bound_0) {
   if (_book_0.$ === "Nil") {
     return _bound_0;
@@ -6363,24 +6933,6 @@ function $base_prefix_deltas$(_defs_0, _raw_0) {
   }
 }
 
-function $kw_bound_book$(_book_0, _bound_0) {
-  if (_book_0.$ === "Nil") {
-    return $book_cached$({$: "Nil"}, _bound_0);
-  } else {
-    const _h_0 = _book_0["head"];
-    const _rest_0 = _book_0["tail"];
-    return run_tail((($String$eq$(($dk$(_h_0)), "BookCache"))) ? ((_x_0) => {
-  return {$: "Con", "head": {$: "KDef", "name": ($dn$(_h_0)), "kind": ($dk$(_h_0)), "arity": run_loop($norm_max$(($da$(_h_0)), _bound_0)), "templates": ($dx$(_h_0)), "typ": ($dt$(_h_0)), "value": ($dv$(_h_0)), "ctors": ($dc$(_h_0)), "native": ($db$(_h_0)), "unsafe": ($du$(_h_0))}, "tail": _rest_0};
-}) : ((_x_1) => {
-  return $book_cached$({$: "Con", "head": _h_0, "tail": _rest_0}, _bound_0);
-}), {$: "Unit"});
-  }
-}
-
-function $base_prefix_put$(_book_0, _defs_0) {
-  return $book_put_many$(_book_0, _defs_0);
-}
-
 function $base_prefix_native$(_prefix_0) {
   if (_prefix_0.$ === "Nil") {
     return true;
@@ -6392,26 +6944,6 @@ const _x_0 = {$: "Unit"};
 return {$: "$JMP", f: $base_prefix_native$, x: [_rest_0]};
 } else {
 const _x_1 = {$: "Unit"};
-return false;
-}
-  }
-}
-
-function $base_prefix_names$(_defs_0) {
-  if (_defs_0.$ === "Nil") {
-    return true;
-  } else {
-    const _d_0 = _defs_0["head"];
-    const _rest_0 = _defs_0["tail"];
-    const _x_0 = ($String$eq$(($dk$(_d_0)), "Def"));
-    const _x_1 = ($String$eq$(($dk$(_d_0)), "ADT"));
-    const _x_2 = (_x_0 || _x_1);
-    const _x_3 = ($String$eq$(($dk$(_d_0)), "Ctr"));
-    if ((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$not$(($String$eq$(($dn$(_d_0)), "")))), ($Bool$not$(($String$contains$(($dn$(_d_0)), "~")))))), ($Bool$not$(($String$contains$(($dn$(_d_0)), "$kernel.")))))), (_x_2 || _x_3))), run_loop($base_prefix_names$(($dc$(_d_0)))))))) {
-const _x_4 = {$: "Unit"};
-return {$: "$JMP", f: $base_prefix_names$, x: [_rest_0]};
-} else {
-const _x_5 = {$: "Unit"};
 return false;
 }
   }
@@ -6480,20 +7012,6 @@ return false;
   }
 }
 
-function $base_prefix_patch$(_defs_0, _patches_0) {
-  if (_defs_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _d_0 = _defs_0["head"];
-    const _rest_0 = _defs_0["tail"];
-    return {$: "Con", "head": run_loop(run_tail((($String$eq$(($dk$(run_loop($lookup$(_patches_0, ($dn$(_d_0)))))), "Absent"))) ? ((_x_0) => {
-  return _d_0;
-}) : ((_x_1) => {
-  return $lookup$(_patches_0, ($dn$(_d_0)));
-}), {$: "Unit"})), "tail": ($base_prefix_patch$(_rest_0, _patches_0))};
-  }
-}
-
 function $base_prefix_split_head$(_book_0, _d_0, _rest_0) {
   if (_book_0.$ === "Nil") {
     return {$: "KBasePrefixTail", "suffix": {$: "Nil"}, "matched": false};
@@ -6510,34 +7028,64 @@ return {$: "KBasePrefixTail", "suffix": {$: "Nil"}, "matched": false};
   }
 }
 
-function $base_prefix_admitted_bound$(_state_0, _prefix_0, _suffix_0, _bound_0, _final_0, _prefix_bound_0) {
-  const _base_bound_0 = _state_0["bound"];
-  const _delta_0 = _state_0["delta"];
-  const _stamp_0 = _state_0["stamp"];
-  const _ready_0 = _state_0["ready"];
-  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(_ready_0, (_base_bound_0 === _prefix_bound_0))), (_bound_0 >= _base_bound_0))), (_delta_0 <= 1048576))), (_stamp_0 <= _delta_0))), (_bound_0 <= 1048576))), run_loop($base_prefix_names$(_suffix_0)))), run_loop($prefix_state_disjoint$(_prefix_0, run_loop($book_context$(_suffix_0)))))), run_loop($base_prefix_ctor_disjoint$(_suffix_0, _final_0)));
-}
-
-function $base_prefix_resume_saved$(_state_0, _prefix_0, _suffix_0, _bound_0, _final_0) {
-  const _delta_0 = _state_0["delta"];
-  const _stamp_0 = _state_0["stamp"];
-  const _patches_0 = _state_0["patches"];
-  const _ordered_0 = ($base_prefix_patch$(_final_0, run_loop($book_context$(_patches_0))));
-  const _seed_0 = ($book_cached$({$: "Nil"}, _bound_0));
-  const _declared_0 = ($check_declarations$(($prefix_state_join$(_prefix_0, _suffix_0)), _seed_0));
-  const _x_0 = ((_bound_0 + _delta_0) >>> 0);
-  const _world_0 = {$: "KWorld", "book": run_loop($kw_bound_book$(run_loop($base_prefix_put$(_declared_0, _final_0)), ((_bound_0 + _stamp_0) >>> 0))), "memo": {$: "Nil"}, "fresh": {$: "KFreshKnown", "next": ((_x_0 + 1) >>> 0)}, "checked": ($book_final_reverse$(_ordered_0, {$: "Nil"}))};
-  return $dg_check_events$(_suffix_0, _world_0, run_loop($base_prefix_seen$(_prefix_0, _bound_0)));
-}
-
-function $prefix_state_join$(_left_0, _right_0) {
-  if (_left_0.$ === "Nil") {
-    return _right_0;
+function $constructor_exists$(_ds_0, _name_0) {
+  if (_ds_0.$ === "Nil") {
+    return false;
   } else {
-    const _h_0 = _left_0["head"];
-    const _rest_0 = _left_0["tail"];
-    return {$: "Con", "head": _h_0, "tail": ($prefix_state_join$(_rest_0, _right_0))};
+    const _h_0 = _ds_0["head"];
+    const _rest_0 = _ds_0["tail"];
+    const _x_0 = ($Bool$and$(($Bool$not$(($String$eq$(($dk$(_h_0)), "BookCache")))), ($Bool$not$(($String$eq$(($dk$(run_loop($lookup$(($dc$(_h_0)), _name_0)))), "Absent"))))));
+    const _x_1 = ($constructor_exists$(_rest_0, _name_0));
+    return (_x_0 || _x_1);
   }
+}
+
+function $declared$(_d_0) {
+  return {$: "KDef", "name": ($dn$(_d_0)), "kind": ($dk$(_d_0)), "arity": ($da$(_d_0)), "templates": ($dx$(_d_0)), "typ": ($dt$(_d_0)), "value": ($atom$("Absent")), "ctors": ($dc$(_d_0)), "native": ($db$(_d_0)), "unsafe": ($du$(_d_0))};
+}
+
+function $bad$(_world_0, _msg_0) {
+  return {$: "KChecking", "term": ($atom$("Error")), "typ": ($atom$("Error")), "uses": {$: "Nil"}, "error": _msg_0, "world": _world_0, "consumed": 0};
+}
+
+function $dg_check_guard$(_rest_0, _world_0, _seen_0, _d_0, _guard_0) {
+  return run_tail((($String$eq$(_guard_0, ""))) ? ((_x_0) => {
+  return $dg_check_next$(_rest_0, _seen_0, _d_0, run_loop($check_definition_world$(_world_0, run_loop($signature_mode$(_d_0, _rest_0)), 0)));
+}) : ((_x_1) => {
+  const _x_2 = ($dn$(_d_0));
+  const _x_3 = (": " + _guard_0);
+  return {$: "DChecking", "result": ($bad$(_world_0, (_x_2 + _x_3))), "diagnostic": ($dg_no_report$(($dn$(_d_0)), _guard_0))};
+}), {$: "Unit"});
+}
+
+function $event_error$(_done_0, _d_0, _old_0) {
+  return run_tail((($String$eq$(($dk$(_old_0)), "Absent"))) ? ((_x_0) => {
+  return run_tail((($String$eq$(($dk$(_d_0)), "ADT"))) ? ((_x_1) => {
+  return $constructor_names$(_done_0, ($dc$(_d_0)), {$: "Nil"});
+}) : ((_x_2) => {
+  return "";
+}), {$: "Unit"});
+}) : ((_x_3) => {
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_old_0)), "Def")), ($String$eq$(($dk$(_d_0)), "Def")))), ($String$eq$(($tg$(($dv$(_old_0)))), "Absent")))), ($Bool$not$(($String$eq$(($tg$(($dv$(_d_0)))), "Absent"))))))) ? ((_x_4) => {
+  const _x_5 = ($dx$(_old_0));
+  const _x_6 = ($dx$(_d_0));
+  if ((($Bool$and$(run_loop($compare$(_done_0, ($dt$(_old_0)), ($dt$(_d_0)), false)), (_x_5 === _x_6))))) {
+const _x_7 = {$: "Unit"};
+return "";
+} else {
+const _x_8 = {$: "Unit"};
+return "definition does not match prior law signature";
+}
+}) : ((_x_9) => {
+  return "duplicate declaration";
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $base_prefix_check_world_result$(_prepared_0, _result_0, _prefix_0, _suffix_0, _ready_0) {
+  const _book_0 = _result_0["book"];
+  const _error_0 = _result_0["error"];
+  return $base_prefix_check_world_book$(_prepared_0, _book_0, _error_0, _prefix_0, _suffix_0, _ready_0);
 }
 
 function $f_header_prefix$(_line_0) {
@@ -6648,16 +7196,6 @@ function $f_body_header$(_source_0, _header_0, _scope_0, _start_0) {
 }) : ((_x_1) => {
   return {$: "FResult", "book": {$: "Nil"}, "error": _error_0, "imports": _imports_0};
 }), {$: "Unit"});
-}
-
-function $f_ctor_index$(_book_0, _tree_0) {
-  if (_book_0.$ === "Nil") {
-    return _tree_0;
-  } else {
-    const _d_0 = _book_0["head"];
-    const _rest_0 = _book_0["tail"];
-    return $f_ctor_index_def$(_d_0, run_loop($f_ctor_index$(_rest_0, _tree_0)));
-  }
 }
 
 function $String$reverse$go$($0, $1) {
@@ -7009,20 +7547,6 @@ function $f_fresh_result_end$(_r_0, _err_0, _imports_0) {
   return {$: "FResult", "book": _book_0, "error": _err_0, "imports": _imports_0};
 }
 
-function $f_graph_fresh_hashed$(_rest_0, _done_0, _d_0, _hash_0) {
-  return $f_graph_fresh_name$(_rest_0, _done_0, _d_0, _hash_0, run_loop($index_find$(_done_0, ($dn$(_d_0)), _hash_0, 32)));
-}
-
-function $fpe_defs$(_ds_0) {
-  if (_ds_0.$ === "Nil") {
-    return $atom$("Absent");
-  } else {
-    const _head_0 = _ds_0["head"];
-    const _tail_0 = _ds_0["tail"];
-    return $fpe_defs_next$(run_loop($fpe_def$(_head_0)), _tail_0);
-  }
-}
-
 function $f_prefix_drop_next$(_book_0, _count_0) {
   if (_book_0.$ === "Nil") {
     return {$: "FFreshPrefixTail", "suffix": {$: "Nil"}, "matched": false};
@@ -7030,6 +7554,78 @@ function $f_prefix_drop_next$(_book_0, _count_0) {
     const _rest_0 = _book_0["tail"];
     return $f_prefix_drop$(_rest_0, ((_count_0 - 1) >>> 0));
   }
+}
+
+function $f_graph_finish_indexed$(_source_0, _ns_0, _imports_0, _graph_0, _sources_0, _names_0, _parsed_0) {
+  const _prior_0 = _graph_0["book"];
+  const _error_0 = _graph_0["error"];
+  const _done_0 = _graph_0["done"];
+  const _book_0 = _parsed_0["book"];
+  const _fallback_0 = _parsed_0["error"];
+  const _parsedImports_0 = _parsed_0["imports"];
+  const _filled_0 = ($f_graph_fill_defs$(_book_0, _imports_0, _prior_0));
+  const _selected_0 = run_loop(run_tail((($Bool$and$(($String$is_empty$(_error_0)), ($String$is_empty$(_fallback_0))))) ? ((_x_0) => {
+  return $f_graph_fresh_names$(_book_0, _names_0);
+}) : ((_x_1) => {
+  return _error_0;
+}), {$: "Unit"}));
+  const _loaded_0 = {$: "Con", "head": ($kt$("Loaded", ($f_source_path$(_source_0)), ($f_graph_count_defs$(_filled_0, 0)), 0, {$: "Con", "head": ($ref$(_ns_0)), "tail": _imports_0})), "tail": _done_0};
+  const _fragment_0 = ($f_path_defs$(($f_context_modules$(_filled_0, _ns_0)), run_loop($f_path_dir$(($f_source_path$(_source_0)))), ($f_eq$(($f_source_name$(_source_0)), "Base"))));
+  return {$: "FIndexedCompletion", "graph": ($f_graph_finish_module$(_source_0, _prior_0, _selected_0, _loaded_0, _fragment_0, _sources_0, _fallback_0)), "parsed": {$: "FResult", "book": _book_0, "error": _fallback_0, "imports": _parsedImports_0}, "fragment": _fragment_0};
+}
+
+function $f_source_body_indexed$($0, $1, $2, $3) {
+  for (;;) {
+    {
+      const _source_0 = $0;
+      const _header_0 = $1;
+      const _scope_0 = $2;
+      const _start_0 = $3;
+      if (_source_0.$ === "FSource") {
+        const _text_0 = _source_0["text"];
+        return $f_body_header$(_text_0, _header_0, _scope_0, _start_0);
+      } else if (_source_0.$ === "FCompletedSource") {
+        const _parsed_0 = _source_0["parsed"];
+        return _parsed_0;
+      } else {
+        const _inner_0 = _source_0["source"];
+        const _begin_0 = _source_0["begin"];
+        $0 = _inner_0;
+        $1 = _header_0;
+        $2 = _scope_0;
+        $3 = _begin_0;
+        continue;
+      }
+    }
+  }
+}
+
+function $fpe_defs_next$(_error_0, _rest_0) {
+  if ((($f_eq$(($tg$(_error_0)), "Absent")))) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $fpe_defs$, x: [_rest_0]};
+} else {
+const _x_1 = {$: "Unit"};
+return _error_0;
+}
+}
+
+function $fpe_def$(_d_0) {
+  return $fpe_defs_next$(run_loop($fpe_terms$({$: "Con", "head": ($dt$(_d_0)), "tail": {$: "Con", "head": ($dv$(_d_0)), "tail": {$: "Nil"}}})), ($dc$(_d_0)));
+}
+
+function $f_graph_fresh_name$(_rest_0, _done_0, _d_0, _hash_0, _old_0) {
+  const _x_0 = ($Bool$not$(($db$(_old_0))));
+  const _x_1 = ($db$(_d_0));
+  const _x_2 = ($f_eq$(($dk$(_old_0)), "Absent"));
+  const _x_3 = ($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($f_eq$(($dk$(_old_0)), "Def")), ($f_eq$(($dk$(_d_0)), "Def")))), ($f_eq$(($tg$(($dv$(_old_0)))), "Absent")))), ($Bool$not$(($f_eq$(($tg$(($dv$(_d_0)))), "Absent")))))), (_x_0 || _x_1)));
+  return run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
+  return $f_graph_fresh_names$(_rest_0, run_loop($index_set$(_done_0, _d_0, _hash_0, 32)));
+}) : ((_x_5) => {
+  const _x_6 = ($dn$(_d_0));
+  const _x_7 = (_x_6 + ")");
+  return ("expected a fresh name (duplicate declaration: " + _x_7);
+}), {$: "Unit"});
 }
 
 function $dr_relies_def$(_book_0, _todo_0, _seen_0, _d_0) {
@@ -7718,35 +8314,6 @@ function $jd_doc_definitions$(_book_0, _defs_0) {
   }
 }
 
-function $jd_host_exports$(_book_0, _defs_0) {
-  if (_defs_0.$ === "Nil") {
-    return "";
-  } else {
-    const _d_0 = _defs_0["head"];
-    const _rest_0 = _defs_0["tail"];
-    const _x_0 = ($dx$(_d_0));
-    const _x_5 = run_loop(run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_0 === 0))), ($Bool$not$(($db$(_d_0)))))), ($Bool$not$(($String$eq$(($tg$(run_loop($j_strip$(($dv$(_d_0)))))), "Absent")))))), ($Bool$not$(($String$eq$(($tg$(run_loop($j_strip$(($dv$(_d_0)))))), "Foreign"))))))) ? ((_x_1) => {
-  return $jd_host_export$(_book_0, _d_0, run_loop(run_tail((run_loop($j_io_type$(_book_0, ($dt$(_d_0))))) ? ((_x_2) => {
-  return 1;
-}) : ((_x_3) => {
-  return 0;
-}), {$: "Unit"})));
-}) : ((_x_4) => {
-  return "";
-}), {$: "Unit"}));
-    const _x_6 = ($jd_host_exports$(_book_0, _rest_0));
-    return (_x_5 + _x_6);
-  }
-}
-
-function $jd_host_native_context$(_book_0) {
-  const _x_0 = run_loop($jd_host_native_proof$(_book_0, "F32"));
-  const _x_1 = run_loop($jd_host_native_proof$(_book_0, "U32"));
-  const _x_2 = (Math.imul(2, _x_0) >>> 0);
-  const _flags_0 = ((_x_1 + _x_2) >>> 0);
-  return $book_put$(_book_0, {$: "KDef", "name": "$JD.Host.NativeWord", "kind": "JDHostNativeWord", "arity": _flags_0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false});
-}
-
 function $jd_calls_context_bounded$(_book_0, _rows_0, _vertices_0, _edges_0) {
   if (_rows_0.$ === "None") {
     return $jd_calls_status$(_book_0, false);
@@ -7756,7 +8323,7 @@ function $jd_calls_context_bounded$(_book_0, _rows_0, _vertices_0, _edges_0) {
   }
 }
 
-function $jd_calls_row_done$(_name_0, _s_0, _more_0) {
+function $jd_calls_row_done$(_name_0, _arity_0, _s_0, _more_0) {
   const _edges_0 = _s_0["edges"];
   const _unknown_0 = _s_0["unknown"];
   const _valid_0 = _s_0["valid"];
@@ -7765,32 +8332,14 @@ function $jd_calls_row_done$(_name_0, _s_0, _more_0) {
   return 1;
 }) : ((_x_2) => {
   return 0;
-}), {$: "Unit"})), "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDCall", _name_0, 0, 0, _edges_0)), "ctors": {$: "Nil"}, "native": false, "unsafe": false}, _more_0);
+}), {$: "Unit"})), "templates": 0, "typ": _arity_0, "value": ($kt$("JDCall", _name_0, 0, 0, _edges_0)), "ctors": {$: "Nil"}, "native": false, "unsafe": false}, _more_0);
 }) : ((_x_3) => {
   return {$: "None"};
 }), {$: "Unit"});
 }
 
-function $jd_calls_body$(_book_0, _env_0, _t_0, _ty_0, _args_0, _s_0) {
-  const _edges_0 = _s_0["edges"];
-  const _unknown_0 = _s_0["unknown"];
-  const _fuel_0 = _s_0["fuel"];
-  const _valid_0 = _s_0["valid"];
-  if ((($Bool$and$(_valid_0, (_fuel_0 > 0))))) {
-const _x_0 = {$: "Unit"};
-return {$: "$JMP", f: $jd_calls_node$, x: [_book_0, _env_0, _t_0, _ty_0, _args_0, {$: "JDCallScan", "edges": _edges_0, "unknown": _unknown_0, "fuel": ((_fuel_0 - 1) >>> 0), "valid": _valid_0}]};
-} else {
-const _x_1 = {$: "Unit"};
-return {$: "JDCallScan", "edges": _edges_0, "unknown": _unknown_0, "fuel": _fuel_0, "valid": false};
-}
-}
-
-function $jd_live_arity$(_book_0, _ty_0, _left_0) {
-  return run_tail(((_left_0 === 0)) ? ((_x_0) => {
-  return 0;
-}) : ((_x_1) => {
-  return $jd_live_arity_head$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _left_0);
-}), {$: "Unit"});
+function $jd_calls_row_arity$(_book_0, _d_0, _rest_0, _left_0, _arity_0) {
+  return $jd_calls_row_done$(($dn$(_d_0)), ($kt$("JDArity", "", _arity_0, 0, {$: "Nil"})), run_loop($jd_calls_body$(_book_0, {$: "Nil"}, ($dv$(_d_0)), ($dt$(_d_0)), run_loop($jd_live_arity$(_book_0, ($dt$(_d_0)), _arity_0)), {$: "JDCallScan", "edges": {$: "Nil"}, "unknown": false, "fuel": 8192, "valid": true})), run_loop($jd_calls_rows$(_book_0, _rest_0, _left_0)));
 }
 
 function $jd_arity$(_book_0, _d_0) {
@@ -7965,8 +8514,26 @@ function $jd_reach_filter$(_defs_0, _seen_0) {
   }
 }
 
-function $index_find$($0, $1, $2, $3, $4) {
-  let $pc = 0;
+function $jd_reach_definition$(_book_0, _names_0, _defs_0, _rest_0, _seen_0, _left_0, _fuel_0, _d_0) {
+  const _x_0 = ($dx$(_d_0));
+  return run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_0 === 0)))) ? ((_x_1) => {
+  return $jd_reach_follow$(_book_0, _names_0, _defs_0, _rest_0, run_loop($index_set$(_seen_0, _d_0, ($index_hash$(($dn$(_d_0)), 2166136261)), 32)), _left_0, _fuel_0, run_loop($jd_text_refs$(_names_0, run_loop($jd_doc_definition$(_book_0, _d_0)))));
+}) : ((_x_2) => {
+  return {$: "JDReach", "defs": {$: "Nil"}, "error": "direct reachability missing emitted definition"};
+}), {$: "Unit"});
+}
+
+function $jd_plan_definition$(_book_0, _names_0, _defs_0, _rest_0, _texts_0, _left_0, _fuel_0, _d_0) {
+  const _x_0 = ($dx$(_d_0));
+  return run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_0 === 0)))) ? ((_x_1) => {
+  return $jd_plan_document$(_book_0, _names_0, _defs_0, _rest_0, _texts_0, _left_0, _fuel_0, ($dn$(_d_0)), run_loop($jd_doc_definition$(_book_0, _d_0)));
+}) : ((_x_2) => {
+  return $jd_plan_bad$("direct reachability missing emitted definition");
+}), {$: "Unit"});
+}
+
+function $index_find_absent$($0, $1, $2, $3, $4) {
+  let $pc = 1;
   for (;;) switch ($pc) {
     case 0: {
       const _tree_0 = $0;
@@ -8058,12 +8625,68 @@ return {$: "$JMP", f: $index_find$, x: [_right_0, _name_0, _hash_0, _bits_0]};
   }
 }
 
-function $jd_reach_definition$(_book_0, _names_0, _defs_0, _rest_0, _seen_0, _left_0, _fuel_0, _d_0) {
-  const _x_0 = ($dx$(_d_0));
-  return run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_0 === 0)))) ? ((_x_1) => {
-  return $jd_reach_follow$(_book_0, _names_0, _defs_0, _rest_0, run_loop($index_set$(_seen_0, _d_0, ($index_hash$(($dn$(_d_0)), 2166136261)), 32)), _left_0, _fuel_0, run_loop($jd_text_refs$(_names_0, run_loop($jd_doc_definition$(_book_0, _d_0)))));
-}) : ((_x_2) => {
-  return {$: "JDReach", "defs": {$: "Nil"}, "error": "direct reachability missing emitted definition"};
+function $index_bucket$(_ds_0, _name_0) {
+  if (_ds_0.$ === "Nil") {
+    return $missing$();
+  } else {
+    const _h_0 = _ds_0["head"];
+    const _rest_0 = _ds_0["tail"];
+    if ((($String$eq$(($dn$(_h_0)), _name_0)))) {
+const _x_0 = {$: "Unit"};
+return _h_0;
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $index_bucket$, x: [_rest_0, _name_0]};
+}
+  }
+}
+
+function $index_find_hash$(_tree_0, _name_0, _same_0) {
+  if (_same_0) {
+    return $index_bucket$(($dc$(_tree_0)), _name_0);
+  } else {
+    return $missing$();
+  }
+}
+
+function $jd_host_export$(_book_0, _d_0, _status_0) {
+  return run_tail(((_status_0 === 1)) ? ((_x_0) => {
+  return "";
+}) : ((_x_1) => {
+  return run_tail(((_status_0 === 2)) ? ((_x_2) => {
+  const _x_3 = ($jd_host_error$("host result telescope budget"));
+  const _x_4 = (_x_3 + ",\n");
+  const _x_5 = ($j_quote$(($dn$(_d_0))));
+  const _x_6 = (":" + _x_4);
+  return (_x_5 + _x_6);
+}) : ((_x_7) => {
+  const _x_8 = ($U32$show$(run_loop($jd_live_arity$(_book_0, ($dt$(_d_0)), run_loop($jd_emitted_arity$(_book_0, _d_0))))));
+  const _x_9 = (_x_8 + "),\n");
+  const _x_10 = ($jd_host$(_book_0, _d_0));
+  const _x_11 = ("," + _x_9);
+  const _x_12 = (_x_10 + _x_11);
+  const _x_13 = ($j_quote$(($dn$(_d_0))));
+  const _x_14 = (":run_lib(" + _x_12);
+  return (_x_13 + _x_14);
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $jd_host_native_proof$(_book_0, _name_0) {
+  const _d_0 = run_loop($lookup$(_book_0, _name_0));
+  const _x_0 = ($da$(_d_0));
+  const _x_1 = ($dx$(_d_0));
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "ADT")), ($db$(_d_0)))), (_x_0 === 0))), (_x_1 === 0)))) ? ((_x_2) => {
+  const _x_3 = run_loop($jd_host_nat_status$(_book_0, {$: "Con", "head": ($kt$("ADT", _name_0, 0, 0, {$: "Nil"})), "tail": {$: "Nil"}}, {$: "Nil"}, 1024));
+  if (((_x_3 === 0))) {
+const _x_4 = {$: "Unit"};
+return 1;
+} else {
+const _x_5 = {$: "Unit"};
+return 0;
+}
+}) : ((_x_6) => {
+  return 0;
 }), {$: "Unit"});
 }
 
@@ -9127,48 +9750,6 @@ return _found_0;
 }
 }
 
-function $bad$(_world_0, _msg_0) {
-  return {$: "KChecking", "term": ($atom$("Error")), "typ": ($atom$("Error")), "uses": {$: "Nil"}, "error": _msg_0, "world": _world_0, "consumed": 0};
-}
-
-function $dg_check_guard$(_rest_0, _world_0, _seen_0, _d_0, _guard_0) {
-  return run_tail((($String$eq$(_guard_0, ""))) ? ((_x_0) => {
-  return $dg_check_next$(_rest_0, _seen_0, _d_0, run_loop($check_definition_world$(_world_0, run_loop($signature_mode$(_d_0, _rest_0)), 0)));
-}) : ((_x_1) => {
-  const _x_2 = ($dn$(_d_0));
-  const _x_3 = (": " + _guard_0);
-  return {$: "DChecking", "result": ($bad$(_world_0, (_x_2 + _x_3))), "diagnostic": ($dg_no_report$(($dn$(_d_0)), _guard_0))};
-}), {$: "Unit"});
-}
-
-function $event_error$(_done_0, _d_0, _old_0) {
-  return run_tail((($String$eq$(($dk$(_old_0)), "Absent"))) ? ((_x_0) => {
-  return run_tail((($String$eq$(($dk$(_d_0)), "ADT"))) ? ((_x_1) => {
-  return $constructor_names$(_done_0, ($dc$(_d_0)), {$: "Nil"});
-}) : ((_x_2) => {
-  return "";
-}), {$: "Unit"});
-}) : ((_x_3) => {
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_old_0)), "Def")), ($String$eq$(($dk$(_d_0)), "Def")))), ($String$eq$(($tg$(($dv$(_old_0)))), "Absent")))), ($Bool$not$(($String$eq$(($tg$(($dv$(_d_0)))), "Absent"))))))) ? ((_x_4) => {
-  const _x_5 = ($dx$(_old_0));
-  const _x_6 = ($dx$(_d_0));
-  if ((($Bool$and$(run_loop($compare$(_done_0, ($dt$(_old_0)), ($dt$(_d_0)), false)), (_x_5 === _x_6))))) {
-const _x_7 = {$: "Unit"};
-return "";
-} else {
-const _x_8 = {$: "Unit"};
-return "definition does not match prior law signature";
-}
-}) : ((_x_9) => {
-  return "duplicate declaration";
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $declared$(_d_0) {
-  return {$: "KDef", "name": ($dn$(_d_0)), "kind": ($dk$(_d_0)), "arity": ($da$(_d_0)), "templates": ($dx$(_d_0)), "typ": ($dt$(_d_0)), "value": ($atom$("Absent")), "ctors": ($dc$(_d_0)), "native": ($db$(_d_0)), "unsafe": ($du$(_d_0))};
-}
-
 function $index_remove_step$($0, $1, $2, $3) {
   let $pc = 1;
   for (;;) switch ($pc) {
@@ -9962,40 +10543,71 @@ function $base_prefix_closed_terms$(_terms_0, _context_0) {
   }
 }
 
-function $prefix_state_disjoint$(_prefix_0, _suffix_0) {
-  if (_prefix_0.$ === "Nil") {
-    return true;
-  } else {
-    const _d_0 = _prefix_0["head"];
-    const _rest_0 = _prefix_0["tail"];
-    if ((($String$eq$(($dk$(run_loop($lookup$(_suffix_0, ($dn$(_d_0)))))), "Absent")))) {
-const _x_0 = {$: "Unit"};
-return {$: "$JMP", f: $prefix_state_disjoint$, x: [_rest_0, _suffix_0]};
-} else {
-const _x_1 = {$: "Unit"};
-return false;
+function $dg_check_next$(_rest_0, _seen_0, _d_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return $dg_check_events$(_rest_0, run_loop($dg_event_publish$(_rest_0, _d_0, _r_0)), run_loop($book_put$(_seen_0, _d_0)));
+}) : ((_x_1) => {
+  return $dg_event_failed$(_r_0, ($dn$(_d_0)));
+}), {$: "Unit"});
 }
+
+function $check_definition_world$(_world_0, _d_0, _depth_0) {
+  const _e_0 = {$: "KEnv", "world": _world_0, "name": ($dn$(_d_0)), "lhs": ($ref$(($dn$(_d_0)))), "pending": 0, "quantities": {$: "Nil"}, "unsafe": ($du$(_d_0)), "depth": _depth_0};
+  return $check_definition_type$(($kw_book$(_world_0)), _d_0, _e_0, run_loop($check$(_e_0, {$: "Nil"}, ($dt$(_d_0)), 0, ($typ$(1)))));
+}
+
+function $signature_mode$(_d_0, _later_0) {
+  return run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($String$eq$(($tg$(($dv$(_d_0)))), "Absent"))))) ? ((_x_0) => {
+  return $signature_fill_mode$(_d_0, run_loop($lookup$(_later_0, ($dn$(_d_0)))));
+}) : ((_x_1) => {
+  return _d_0;
+}), {$: "Unit"});
+}
+
+function $constructor_names$(_done_0, _ctrs_0, _names_0) {
+  if (_ctrs_0.$ === "Nil") {
+    return "";
+  } else {
+    const _h_0 = _ctrs_0["head"];
+    const _rest_0 = _ctrs_0["tail"];
+    const _x_0 = ($has_name$(_names_0, ($dn$(_h_0))));
+    const _x_1 = ($constructor_exists$(_done_0, ($dn$(_h_0))));
+    return run_tail(((_x_0 || _x_1)) ? ((_x_2) => {
+  return "duplicate constructor name";
+}) : ((_x_3) => {
+  return $constructor_names$(_done_0, _rest_0, {$: "Con", "head": ($dn$(_h_0)), "tail": _names_0});
+}), {$: "Unit"});
   }
 }
 
-function $base_prefix_ctor_disjoint$(_defs_0, _context_0) {
-  if (_defs_0.$ === "Nil") {
-    return true;
-  } else {
-    const _d_0 = _defs_0["head"];
-    const _rest_0 = _defs_0["tail"];
-    if ((($Bool$and$(($Bool$not$(($constructor_exists$(_context_0, ($dn$(_d_0)))))), run_loop($base_prefix_ctor_disjoint$(($dc$(_d_0)), _context_0)))))) {
-const _x_0 = {$: "Unit"};
-return {$: "$JMP", f: $base_prefix_ctor_disjoint$, x: [_rest_0, _context_0]};
-} else {
-const _x_1 = {$: "Unit"};
-return false;
-}
-  }
+function $compare$(_book_0, _a_0, _b_0, _le_0) {
+  return run_tail((run_loop($norm_exact$(_a_0, _b_0))) ? ((_x_0) => {
+  return true;
+}) : ((_x_1) => {
+  const _x_2 = run_loop($norm_max$(run_loop($norm_book_bound$(_book_0)), run_loop($norm_max$(($norm_max_term$(_a_0)), ($norm_max_term$(_b_0))))));
+  return $norm_convert$(_book_0, _a_0, _b_0, _le_0, ((1 + _x_2) >>> 0));
+}), {$: "Unit"});
 }
 
-function $base_prefix_seen$(_prefix_0, _bound_0) {
-  return $base_prefix_put$(($book_cached$({$: "Nil"}, _bound_0)), _prefix_0);
+function $base_prefix_check_world_book$(_prepared_0, _book_0, _error_0, _prefix_0, _suffix_0, _ready_0) {
+  const _state_0 = _prepared_0["state"];
+  const _original_0 = _prepared_0["prefix"];
+  const _final_0 = _prepared_0["final"];
+  const _saved_0 = _prepared_0["book"];
+  const _checked_0 = _prepared_0["checked"];
+  const _seen_0 = _prepared_0["seen"];
+  const _bound_0 = run_loop($norm_max$(($base_prefix_world_bound$(_state_0)), ($norm_max_book$(_suffix_0))));
+  return run_tail((($Bool$and$(($Bool$and$(_ready_0, ($String$is_empty$(_error_0)))), ($base_prefix_world_admitted$(_state_0, _suffix_0, _bound_0, _final_0, _saved_0))))) ? ((_x_0) => {
+  if ((run_loop($base_prefix_world_hash_disjoint$(_suffix_0, ($index_first$(($dc$(($index_first$(_saved_0)))))))))) {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $base_prefix_resume_world$, x: [{$: "KBasePreparedWorld", "state": _state_0, "prefix": _original_0, "final": _final_0, "book": _saved_0, "checked": _checked_0, "seen": _seen_0}, _suffix_0, _bound_0]};
+} else {
+const _x_2 = {$: "Unit"};
+return {$: "$JMP", f: $base_prefix_resume_saved$, x: [_state_0, _prefix_0, _suffix_0, _bound_0, _final_0]};
+}
+}) : ((_x_3) => {
+  return $dg_check_world$(_book_0);
+}), {$: "Unit"});
 }
 
 function $f_header_space$(_source_0) {
@@ -10246,15 +10858,6 @@ function $f_context_result$(_result_0) {
   const _error_0 = _result_0["error"];
   const _imports_0 = _result_0["imports"];
   return {$: "FResult", "book": ($f_context_defs$(_book_0, ($String$is_empty$(_error_0)))), "error": _error_0, "imports": _imports_0};
-}
-
-function $f_ctor_index_def$(_d_0, _tree_0) {
-  const _children_0 = run_loop($f_ctor_index$(($dc$(_d_0)), _tree_0));
-  return run_tail((($f_eq$(($dk$(_d_0)), "Ctr"))) ? ((_x_0) => {
-  return $index_set$(_children_0, _d_0, ($index_hash$(($dn$(_d_0)), 2166136261)), 32);
-}) : ((_x_1) => {
-  return _children_0;
-}), {$: "Unit"});
 }
 
 function $f_path_parent$(_parts_0) {
@@ -10652,32 +11255,47 @@ return {$: "$JMP", f: $kt$, x: ["ParseOwner", "", _index_0, 0, {$: "Con", "head"
 }
 }
 
-function $fpe_def$(_d_0) {
-  return $fpe_defs_next$(run_loop($fpe_terms$({$: "Con", "head": ($dt$(_d_0)), "tail": {$: "Con", "head": ($dv$(_d_0)), "tail": {$: "Nil"}}})), ($dc$(_d_0)));
+function $f_path_defs$(_ds_0, _dir_0, _native_0) {
+  if (_ds_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _d_0 = _ds_0["head"];
+    const _rest_0 = _ds_0["tail"];
+    const _x_2 = ($db$(_d_0));
+    return {$: "Con", "head": {$: "KDef", "name": ($dn$(_d_0)), "kind": ($dk$(_d_0)), "arity": ($da$(_d_0)), "templates": ($dx$(_d_0)), "typ": ($dt$(_d_0)), "value": run_loop(run_tail((($f_eq$(($tg$(($dv$(_d_0)))), "Foreign"))) ? ((_x_0) => {
+  return $f_path_term$(($dv$(_d_0)), _dir_0);
+}) : ((_x_1) => {
+  return $dv$(_d_0);
+}), {$: "Unit"})), "ctors": ($f_path_defs$(($dc$(_d_0)), _dir_0, _native_0)), "native": (_native_0 || _x_2), "unsafe": ($du$(_d_0))}, "tail": ($f_path_defs$(_rest_0, _dir_0, _native_0))};
+  }
 }
 
-function $f_graph_fresh_name$(_rest_0, _done_0, _d_0, _hash_0, _old_0) {
-  const _x_0 = ($Bool$not$(($db$(_old_0))));
-  const _x_1 = ($db$(_d_0));
-  const _x_2 = ($f_eq$(($dk$(_old_0)), "Absent"));
-  const _x_3 = ($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($f_eq$(($dk$(_old_0)), "Def")), ($f_eq$(($dk$(_d_0)), "Def")))), ($f_eq$(($tg$(($dv$(_old_0)))), "Absent")))), ($Bool$not$(($f_eq$(($tg$(($dv$(_d_0)))), "Absent")))))), (_x_0 || _x_1)));
-  return run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
-  return $f_graph_fresh_names$(_rest_0, run_loop($index_set$(_done_0, _d_0, _hash_0, 32)));
-}) : ((_x_5) => {
-  const _x_6 = ($dn$(_d_0));
-  const _x_7 = (_x_6 + ")");
-  return ("expected a fresh name (duplicate declaration: " + _x_7);
-}), {$: "Unit"});
+function $f_context_modules$(_defs_0, _ns_0) {
+  if (_defs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _d_0 = _defs_0["head"];
+    const _rest_0 = _defs_0["tail"];
+    return {$: "Con", "head": ($f_context_module$(_d_0, _ns_0)), "tail": ($f_context_modules$(_rest_0, _ns_0))};
+  }
 }
 
-function $fpe_defs_next$(_error_0, _rest_0) {
-  if ((($f_eq$(($tg$(_error_0)), "Absent")))) {
-const _x_0 = {$: "Unit"};
-return {$: "$JMP", f: $fpe_defs$, x: [_rest_0]};
-} else {
-const _x_1 = {$: "Unit"};
-return _error_0;
+function $f_graph_finish_module$(_source_0, _prior_0, _error_0, _done_0, _book_0, _sources_0, _fallback_0) {
+  return {$: "FGraph", "book": ($norm_defs_join$(_prior_0, _book_0)), "error": run_loop(run_tail((($String$is_empty$(_error_0))) ? ((_x_0) => {
+  return $f_graph_module_error$(_source_0, run_loop($fpe_defs$(_book_0)), _sources_0, _fallback_0);
+}) : ((_x_1) => {
+  return _error_0;
+}), {$: "Unit"})), "done": _done_0};
 }
+
+function $fpe_terms$(_ts_0) {
+  if (_ts_0.$ === "Nil") {
+    return $atom$("Absent");
+  } else {
+    const _head_0 = _ts_0["head"];
+    const _tail_0 = _ts_0["tail"];
+    return $fpe_terms_next$(run_loop($fpe_term$(_head_0)), _tail_0);
+  }
 }
 
 function $book_final_seen$(_seen_0, _name_0, _hash_0) {
@@ -11056,51 +11674,10 @@ function $jd_doc_definition$(_book_0, _d_0) {
   return run_tail((($String$eq$(($tg$(run_loop($j_strip$(($dv$(_d_0)))))), "Foreign"))) ? ((_x_4) => {
   return $jd_text_raw$(run_loop($jd_foreign_def$(_book_0, _d_0)));
 }) : ((_x_5) => {
-  return $jd_doc_definition_params$(_book_0, _d_0, run_loop($jd_params$(_book_0, ($dt$(_d_0)), run_loop($jd_arity$(_book_0, _d_0)), 0)));
+  return $jd_doc_definition_params$(_book_0, _d_0, run_loop($jd_params$(_book_0, ($dt$(_d_0)), run_loop($jd_emitted_arity$(_book_0, _d_0)), 0)));
 }), {$: "Unit"});
 }) : ((_x_6) => {
   return $jd_text_literal$("", 0);
-}), {$: "Unit"});
-}
-
-function $jd_host_export$(_book_0, _d_0, _status_0) {
-  return run_tail(((_status_0 === 1)) ? ((_x_0) => {
-  return "";
-}) : ((_x_1) => {
-  return run_tail(((_status_0 === 2)) ? ((_x_2) => {
-  const _x_3 = ($jd_host_error$("host result telescope budget"));
-  const _x_4 = (_x_3 + ",\n");
-  const _x_5 = ($j_quote$(($dn$(_d_0))));
-  const _x_6 = (":" + _x_4);
-  return (_x_5 + _x_6);
-}) : ((_x_7) => {
-  const _x_8 = ($U32$show$(run_loop($jd_live_arity$(_book_0, ($dt$(_d_0)), run_loop($jd_arity$(_book_0, _d_0))))));
-  const _x_9 = (_x_8 + "),\n");
-  const _x_10 = ($jd_host$(_book_0, _d_0));
-  const _x_11 = ("," + _x_9);
-  const _x_12 = (_x_10 + _x_11);
-  const _x_13 = ($j_quote$(($dn$(_d_0))));
-  const _x_14 = (":run_lib(" + _x_12);
-  return (_x_13 + _x_14);
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $jd_host_native_proof$(_book_0, _name_0) {
-  const _d_0 = run_loop($lookup$(_book_0, _name_0));
-  const _x_0 = ($da$(_d_0));
-  const _x_1 = ($dx$(_d_0));
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "ADT")), ($db$(_d_0)))), (_x_0 === 0))), (_x_1 === 0)))) ? ((_x_2) => {
-  const _x_3 = run_loop($jd_host_nat_status$(_book_0, {$: "Con", "head": ($kt$("ADT", _name_0, 0, 0, {$: "Nil"})), "tail": {$: "Nil"}}, {$: "Nil"}, 1024));
-  if (((_x_3 === 0))) {
-const _x_4 = {$: "Unit"};
-return 1;
-} else {
-const _x_5 = {$: "Unit"};
-return 0;
-}
-}) : ((_x_6) => {
-  return 0;
 }), {$: "Unit"});
 }
 
@@ -11140,60 +11717,25 @@ function $jd_calls_row_cons$(_row_0, _more_0) {
   }
 }
 
-function $jd_calls_node$(_book_0, _env_0, _t_0, _ty_0, _args_0, _s_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Ann"))) ? ((_x_0) => {
-  return $jd_calls_body$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), run_loop($kid$(_t_0, 1)), _args_0, _s_0);
-}) : ((_x_1) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Rwt"))) ? ((_x_2) => {
-  return $jd_calls_body$(_book_0, _env_0, run_loop($kid$(_t_0, 2)), _ty_0, _args_0, _s_0);
-}) : ((_x_3) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Let"))) ? ((_x_4) => {
-  return $jd_calls_body$(_book_0, ($j_context$(_book_0, _env_0, ($ks$(_t_0)))), ($j_body$(($ks$(_t_0)))), _ty_0, _args_0, _s_0);
-}) : ((_x_5) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Lam"))) ? ((_x_6) => {
-  return $jd_calls_lambda$(_book_0, _env_0, _t_0, run_loop($wnf$(_book_0, _ty_0)), _args_0, _s_0);
-}) : ((_x_7) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_8) => {
-  return run_tail(((_args_0 === 0)) ? ((_x_9) => {
-  return _s_0;
-}) : ((_x_10) => {
-  return $jd_calls_match$(_book_0, _env_0, _t_0, run_loop($wnf$(_book_0, _ty_0)), _args_0, _s_0);
-}), {$: "Unit"});
-}) : ((_x_11) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Efq"))) ? ((_x_12) => {
-  return _s_0;
-}) : ((_x_13) => {
-  return run_tail(((_args_0 > 0)) ? ((_x_14) => {
-  return $jd_calls_unknown$(_s_0);
-}) : ((_x_15) => {
-  const _x_16 = ($String$eq$(($tg$(_t_0)), "App"));
-  const _x_17 = ($String$eq$(($tg$(_t_0)), "Ref"));
-  return run_tail(((_x_16 || _x_17)) ? ((_x_18) => {
-  return $jd_calls_application$(_book_0, _env_0, _t_0, run_loop($j_call_spine$(_t_0, {$: "Nil"})), _s_0);
-}) : ((_x_19) => {
-  return _s_0;
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
+function $jd_calls_body$(_book_0, _env_0, _t_0, _ty_0, _args_0, _s_0) {
+  const _edges_0 = _s_0["edges"];
+  const _unknown_0 = _s_0["unknown"];
+  const _fuel_0 = _s_0["fuel"];
+  const _valid_0 = _s_0["valid"];
+  if ((($Bool$and$(_valid_0, (_fuel_0 > 0))))) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $jd_calls_node$, x: [_book_0, _env_0, _t_0, _ty_0, _args_0, {$: "JDCallScan", "edges": _edges_0, "unknown": _unknown_0, "fuel": ((_fuel_0 - 1) >>> 0), "valid": _valid_0}]};
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "JDCallScan", "edges": _edges_0, "unknown": _unknown_0, "fuel": _fuel_0, "valid": false};
+}
 }
 
-function $jd_live_arity_head$(_book_0, _ty_0, _left_0) {
-  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
-  const _x_1 = ($qt$(_ty_0));
-  const _x_4 = run_loop(run_tail(((_x_1 === 0)) ? ((_x_2) => {
+function $jd_live_arity$(_book_0, _ty_0, _left_0) {
+  return run_tail(((_left_0 === 0)) ? ((_x_0) => {
   return 0;
-}) : ((_x_3) => {
-  return 1;
-}), {$: "Unit"}));
-  const _x_5 = run_loop($jd_live_arity$(_book_0, run_loop($kid$(_ty_0, 1)), ((_left_0 - 1) >>> 0)));
-  return ((_x_4 + _x_5) >>> 0);
-}) : ((_x_6) => {
-  return 0;
+}) : ((_x_1) => {
+  return $jd_live_arity_head$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _left_0);
 }), {$: "Unit"});
 }
 
@@ -11353,8 +11895,34 @@ function $jd_show_node$(_book_0, _ty_0, _types_0, _names_0) {
 }), {$: "Unit"})));
 }
 
-function $index_find_absent$($0, $1, $2, $3, $4) {
-  let $pc = 1;
+function $jd_reach_follow$(_book_0, _names_0, _defs_0, _rest_0, _seen_0, _left_0, _fuel_0, _refs_0) {
+  if (_refs_0.$ === "None") {
+    return {$: "JDReach", "defs": {$: "Nil"}, "error": "direct reachability metadata refused"};
+  } else {
+    const _edges_0 = _refs_0["value"];
+    return $jd_reach_visit$(_book_0, _names_0, _defs_0, ($List$append$(_edges_0, _rest_0)), _seen_0, _left_0, _fuel_0);
+  }
+}
+
+function $jd_text_refs$(_names_0, _text_0) {
+  const _x_0 = ($jd_text_size$(_text_0));
+  return run_tail(((_x_0 <= 2097152)) ? ((_x_1) => {
+  return run_tail((($jd_text_safe$(_text_0))) ? ((_x_2) => {
+  return $jd_text_refs_work$(_names_0, {$: "Con", "head": _text_0, "tail": {$: "Nil"}}, {$: "Nil"}, ($missing$()));
+}) : ((_x_3) => {
+  return $jd_reach_refs$(_names_0, ($jd_text_render$(_text_0)), false, 2097152, {$: "Nil"});
+}), {$: "Unit"});
+}) : ((_x_4) => {
+  return {$: "None"};
+}), {$: "Unit"});
+}
+
+function $jd_plan_document$(_book_0, _names_0, _defs_0, _rest_0, _texts_0, _left_0, _fuel_0, _name_0, _text_0) {
+  return $jd_plan_follow$(_book_0, _names_0, _defs_0, _rest_0, _texts_0, _left_0, _fuel_0, _name_0, _text_0, run_loop($jd_text_refs$(_names_0, _text_0)));
+}
+
+function $index_find_leaf$($0, $1, $2, $3, $4) {
+  let $pc = 2;
   for (;;) switch ($pc) {
     case 0: {
       const _tree_0 = $0;
@@ -11446,50 +12014,50 @@ return {$: "$JMP", f: $index_find$, x: [_right_0, _name_0, _hash_0, _bits_0]};
   }
 }
 
-function $index_bucket$(_ds_0, _name_0) {
-  if (_ds_0.$ === "Nil") {
-    return $missing$();
-  } else {
-    const _h_0 = _ds_0["head"];
-    const _rest_0 = _ds_0["tail"];
-    if ((($String$eq$(($dn$(_h_0)), _name_0)))) {
-const _x_0 = {$: "Unit"};
-return _h_0;
-} else {
-const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $index_bucket$, x: [_rest_0, _name_0]};
-}
-  }
+function $jd_host_error$(_message_0) {
+  const _x_0 = ($j_quote$(("direct-js prototype unsupported: " + _message_0)));
+  const _x_1 = (_x_0 + ");})");
+  return ("(\n/*JD_UNSUPPORTED: host marshalling */()=>{throw new Error(" + _x_1);
 }
 
-function $index_find_hash$(_tree_0, _name_0, _same_0) {
-  if (_same_0) {
-    return $index_bucket$(($dc$(_tree_0)), _name_0);
-  } else {
-    return $missing$();
-  }
+function $jd_host$(_book_0, _d_0) {
+  const _arity_0 = run_loop($jd_emitted_arity$(_book_0, _d_0));
+  const _live_0 = run_loop($jd_live_arity$(_book_0, ($dt$(_d_0)), _arity_0));
+  const _x_0 = run_loop($jd_host_nat_known$(_book_0, ($dt$(_d_0))));
+  const _marshal_0 = ($Bool$not$((_x_0 === 0)));
+  const _x_1 = run_loop($jd_host_back$(_book_0, ($dt$(_d_0)), _arity_0, 0, _marshal_0));
+  const _x_2 = (_x_1 + "return r;}");
+  const _x_3 = run_loop($jd_host_args$(_book_0, ($dt$(_d_0)), _arity_0, 0, false, _marshal_0));
+  const _x_4 = (")));" + _x_2);
+  const _x_5 = (_x_3 + _x_4);
+  const _x_6 = ($jd_name$(($dn$(_d_0))));
+  const _x_7 = ("(" + _x_5);
+  const _x_8 = (_x_6 + _x_7);
+  const _x_9 = run_loop($jd_host_convert$(_book_0, run_loop($jd_host_result$(_book_0, ($dt$(_d_0)), _arity_0)), true, _marshal_0));
+  const _x_10 = ("(run_loop(" + _x_8);
+  const _x_11 = (_x_9 + _x_10);
+  const _x_12 = run_loop($jd_host_names$(_live_0, 0));
+  const _x_13 = (")=>{const r=" + _x_11);
+  const _x_14 = (_x_12 + _x_13);
+  return ("(" + _x_14);
 }
 
-function $jd_reach_follow$(_book_0, _names_0, _defs_0, _rest_0, _seen_0, _left_0, _fuel_0, _refs_0) {
-  if (_refs_0.$ === "None") {
-    return {$: "JDReach", "defs": {$: "Nil"}, "error": "direct reachability metadata refused"};
-  } else {
-    const _edges_0 = _refs_0["value"];
-    return $jd_reach_visit$(_book_0, _names_0, _defs_0, ($List$append$(_edges_0, _rest_0)), _seen_0, _left_0, _fuel_0);
-  }
+function $jd_emitted_arity$(_book_0, _d_0) {
+  return $jd_emitted_arity_on$(_book_0, _d_0, run_loop($kid$(($dv$(run_loop($jd_calls_fact$(_book_0, ($dn$(_d_0)))))), 0)));
 }
 
-function $jd_text_refs$(_names_0, _text_0) {
-  const _x_0 = ($jd_text_size$(_text_0));
-  return run_tail(((_x_0 <= 2097152)) ? ((_x_1) => {
-  return run_tail((($jd_text_safe$(_text_0))) ? ((_x_2) => {
-  return $jd_text_refs_work$(_names_0, {$: "Con", "head": _text_0, "tail": {$: "Nil"}}, {$: "Nil"}, ($missing$()));
-}) : ((_x_3) => {
-  return $jd_reach_refs$(_names_0, ($jd_text_render$(_text_0)), false, 2097152, {$: "Nil"});
+function $jd_host_nat_status$(_book_0, _todo_0, _seen_0, _fuel_0) {
+  if (_todo_0.$ === "Nil") {
+    return 0;
+  } else {
+    const _t_0 = _todo_0["head"];
+    const _rest_0 = _todo_0["tail"];
+    return run_tail(((_fuel_0 > 0)) ? ((_x_0) => {
+  return $jd_host_nat_status_on$(_book_0, run_loop($wnf$(_book_0, _t_0)), _rest_0, _seen_0, ((_fuel_0 - 1) >>> 0));
+}) : ((_x_1) => {
+  return 2;
 }), {$: "Unit"});
-}) : ((_x_4) => {
-  return {$: "None"};
-}), {$: "Unit"});
+  }
 }
 
 function $core_literal_type$(_book_0, _t_0, _ty_0) {
@@ -12378,52 +12946,6 @@ function $g_wnf$(_book_0, _st_0, _t_0) {
   return $g_eval$(_book_0, _st_0, _t_0, {$: "Nil"}, 0, ($atom$("Absent")), {$: "Nil"});
 }
 
-function $dg_check_next$(_rest_0, _seen_0, _d_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $dg_check_events$(_rest_0, run_loop($dg_event_publish$(_rest_0, _d_0, _r_0)), run_loop($book_put$(_seen_0, _d_0)));
-}) : ((_x_1) => {
-  return $dg_event_failed$(_r_0, ($dn$(_d_0)));
-}), {$: "Unit"});
-}
-
-function $check_definition_world$(_world_0, _d_0, _depth_0) {
-  const _e_0 = {$: "KEnv", "world": _world_0, "name": ($dn$(_d_0)), "lhs": ($ref$(($dn$(_d_0)))), "pending": 0, "quantities": {$: "Nil"}, "unsafe": ($du$(_d_0)), "depth": _depth_0};
-  return $check_definition_type$(($kw_book$(_world_0)), _d_0, _e_0, run_loop($check$(_e_0, {$: "Nil"}, ($dt$(_d_0)), 0, ($typ$(1)))));
-}
-
-function $signature_mode$(_d_0, _later_0) {
-  return run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($String$eq$(($tg$(($dv$(_d_0)))), "Absent"))))) ? ((_x_0) => {
-  return $signature_fill_mode$(_d_0, run_loop($lookup$(_later_0, ($dn$(_d_0)))));
-}) : ((_x_1) => {
-  return _d_0;
-}), {$: "Unit"});
-}
-
-function $constructor_names$(_done_0, _ctrs_0, _names_0) {
-  if (_ctrs_0.$ === "Nil") {
-    return "";
-  } else {
-    const _h_0 = _ctrs_0["head"];
-    const _rest_0 = _ctrs_0["tail"];
-    const _x_0 = ($has_name$(_names_0, ($dn$(_h_0))));
-    const _x_1 = ($constructor_exists$(_done_0, ($dn$(_h_0))));
-    return run_tail(((_x_0 || _x_1)) ? ((_x_2) => {
-  return "duplicate constructor name";
-}) : ((_x_3) => {
-  return $constructor_names$(_done_0, _rest_0, {$: "Con", "head": ($dn$(_h_0)), "tail": _names_0});
-}), {$: "Unit"});
-  }
-}
-
-function $compare$(_book_0, _a_0, _b_0, _le_0) {
-  return run_tail((run_loop($norm_exact$(_a_0, _b_0))) ? ((_x_0) => {
-  return true;
-}) : ((_x_1) => {
-  const _x_2 = run_loop($norm_max$(run_loop($norm_book_bound$(_book_0)), run_loop($norm_max$(($norm_max_term$(_a_0)), ($norm_max_term$(_b_0))))));
-  return $norm_convert$(_book_0, _a_0, _b_0, _le_0, ((1 + _x_2) >>> 0));
-}), {$: "Unit"});
-}
-
 function $nt_count_go$($0, $1) {
   for (;;) {
     {
@@ -13246,16 +13768,121 @@ function $prefix_state_exact_term$(_left_0, _right_0) {
   return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$((_x_0 === _x_1), ($norm_exact_head$(_left_0, _right_0)))), ($Bool$not$((_x_2 !== _x_3))))), (_x_4 === _x_5))), (_x_6 === _x_7))), run_loop($prefix_state_exact_terms$(($ks$(_left_0)), ($ks$(_right_0)))));
 }
 
-function $constructor_exists$(_ds_0, _name_0) {
-  if (_ds_0.$ === "Nil") {
-    return false;
+function $dg_event_publish$(_rest_0, _d_0, _r_0) {
+  return run_tail((($String$eq$(($dk$(run_loop($lookup$(_rest_0, ($dn$(_d_0)))))), "Absent"))) ? ((_x_0) => {
+  return $kw_put_checked$(($kw_with_book$(($rw$(_r_0)), run_loop($book_put$(($kw_book$(($rw$(_r_0)))), _d_0)))), run_loop($dg_event_output$(_d_0, ($ct$(_r_0)))));
+}) : ((_x_1) => {
+  return $rw$(_r_0);
+}), {$: "Unit"});
+}
+
+function $dg_event_failed$(_r_0, _fallback_0) {
+  const _owner_0 = run_loop(run_tail((($String$eq$(($tg$(($ct$(_r_0)))), "DTrace"))) ? ((_x_0) => {
+  return $nm$(($ct$(_r_0)));
+}) : ((_x_1) => {
+  return _fallback_0;
+}), {$: "Unit"}));
+  const _x_4 = run_loop(run_tail((($String$eq$(_owner_0, ""))) ? ((_x_2) => {
+  return "";
+}) : ((_x_3) => {
+  return (_owner_0 + ": ");
+}), {$: "Unit"}));
+  const _x_5 = ($ce$(_r_0));
+  return {$: "DChecking", "result": {$: "KChecking", "term": ($ct$(_r_0)), "typ": ($cy$(_r_0)), "uses": ($cs$(_r_0)), "error": (_x_4 + _x_5), "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))}, "diagnostic": run_loop($dg_report$(_r_0, _fallback_0))};
+}
+
+function $check_definition_type$(_book_0, _d_0, _e_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return run_tail((($String$eq$(($dk$(_d_0)), "ADT"))) ? ((_x_1) => {
+  return $check_adt_declaration$(($ke_world$(_e_0, ($rw$(_r_0)))), _d_0);
+}) : ((_x_2) => {
+  return run_tail((($String$eq$(($tg$(($dv$(_d_0)))), "Absent"))) ? ((_x_3) => {
+  return _r_0;
+}) : ((_x_4) => {
+  return run_tail((($String$eq$(($tg$(($dv$(_d_0)))), "Foreign"))) ? ((_x_5) => {
+  return $check_foreign$(($rw$(_r_0)), _d_0, ($cd$(_e_0)));
+}) : ((_x_6) => {
+  return $check_definition_body$(($rw$(_r_0)), _d_0, ($cd$(_e_0)));
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}) : ((_x_7) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $check$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0) {
+  return $dg_trace$(_e_0, _ctx_0, _t_0, _ty_0, run_loop($check_node$(_e_0, _ctx_0, run_loop($core_beta$(_t_0)), _dem_0, _ty_0)));
+}
+
+function $typ$(_q_0) {
+  return $kt$("Typ", "", 0, 0, {$: "Con", "head": ($qua$(_q_0)), "tail": {$: "Nil"}});
+}
+
+function $signature_fill_mode$(_d_0, _fill_0) {
+  if ((($String$eq$(($dk$(_fill_0)), "Def")))) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $declared$, x: [_fill_0]};
+} else {
+const _x_1 = {$: "Unit"};
+return _d_0;
+}
+}
+
+function $norm_exact$(_a_0, _b_0) {
+  return $norm_exact_lists$({$: "Con", "head": _a_0, "tail": {$: "Nil"}}, {$: "Con", "head": _b_0, "tail": {$: "Nil"}});
+}
+
+function $norm_convert$(_book_0, _a_0, _b_0, _le_0, _fresh_0) {
+  if ((run_loop($norm_cmp_loop$({$: "Nil"}, {$: "GState", "heap": {$: "GEmpty"}, "next": 1}, {$: "Con", "head": {$: "KNormCmp", "a": _a_0, "b": _b_0, "le": _le_0, "fresh": _fresh_0}, "tail": {$: "Nil"}}, {$: "Nil"})))) {
+const _x_0 = {$: "Unit"};
+return true;
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $norm_cmp_loop$, x: [_book_0, {$: "GState", "heap": {$: "GEmpty"}, "next": 1}, {$: "Con", "head": {$: "KNormCmp", "a": _a_0, "b": _b_0, "le": _le_0, "fresh": _fresh_0}, "tail": {$: "Nil"}}, {$: "Nil"}]};
+}
+}
+
+function $base_prefix_world_bound$(_state_0) {
+  const _bound_0 = _state_0["bound"];
+  return _bound_0;
+}
+
+function $base_prefix_world_admitted$(_state_0, _suffix_0, _bound_0, _final_0, _saved_0) {
+  const _base_bound_0 = _state_0["bound"];
+  const _delta_0 = _state_0["delta"];
+  const _stamp_0 = _state_0["stamp"];
+  const _ready_0 = _state_0["ready"];
+  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(_ready_0, (_bound_0 >= _base_bound_0))), (_delta_0 <= 1048576))), (_stamp_0 <= _delta_0))), (_bound_0 <= 1048576))), run_loop($base_prefix_names$(_suffix_0)))), run_loop($base_prefix_world_names_disjoint$(_suffix_0, _saved_0)))), run_loop($base_prefix_ctor_disjoint$(_suffix_0, _final_0)));
+}
+
+function $base_prefix_world_hash_disjoint$(_suffix_0, _index_0) {
+  if (_suffix_0.$ === "Nil") {
+    return true;
   } else {
-    const _h_0 = _ds_0["head"];
-    const _rest_0 = _ds_0["tail"];
-    const _x_0 = ($Bool$and$(($Bool$not$(($String$eq$(($dk$(_h_0)), "BookCache")))), ($Bool$not$(($String$eq$(($dk$(run_loop($lookup$(($dc$(_h_0)), _name_0)))), "Absent"))))));
-    const _x_1 = ($constructor_exists$(_rest_0, _name_0));
-    return (_x_0 || _x_1);
+    const _d_0 = _suffix_0["head"];
+    const _rest_0 = _suffix_0["tail"];
+    const _hash_0 = ($index_hash$(($dn$(_d_0)), 2166136261));
+    const _tip_0 = run_loop($index_tip$(_index_0, _hash_0));
+    const _x_0 = ($da$(_tip_0));
+    const _x_1 = ($String$eq$(($dk$(_tip_0)), "Absent"));
+    const _x_2 = ($Bool$not$((_x_0 === _hash_0)));
+    if (((_x_1 || _x_2))) {
+const _x_3 = {$: "Unit"};
+return {$: "$JMP", f: $base_prefix_world_hash_disjoint$, x: [_rest_0, _index_0]};
+} else {
+const _x_4 = {$: "Unit"};
+return false;
+}
   }
+}
+
+function $base_prefix_resume_world$(_prepared_0, _suffix_0, _bound_0) {
+  const _state_0 = _prepared_0["state"];
+  const _book_0 = _prepared_0["book"];
+  const _checked_0 = _prepared_0["checked"];
+  const _seen_0 = _prepared_0["seen"];
+  return $base_prefix_world_resume_state$(_state_0, _book_0, _checked_0, _seen_0, _suffix_0, _bound_0);
 }
 
 function $f_ascii_space_code$(_code_0) {
@@ -13500,39 +14127,6 @@ function $f_symbol_text$(_s_0, _c_0, _acc_0) {
   return (($f_head$(_s_0)) + "");
 }), {$: "Unit"});
 }), {$: "Unit"});
-}
-
-function $f_graph_finish_module$(_source_0, _prior_0, _error_0, _done_0, _book_0, _sources_0, _fallback_0) {
-  return {$: "FGraph", "book": ($norm_defs_join$(_prior_0, _book_0)), "error": run_loop(run_tail((($String$is_empty$(_error_0))) ? ((_x_0) => {
-  return $f_graph_module_error$(_source_0, run_loop($fpe_defs$(_book_0)), _sources_0, _fallback_0);
-}) : ((_x_1) => {
-  return _error_0;
-}), {$: "Unit"})), "done": _done_0};
-}
-
-function $f_path_defs$(_ds_0, _dir_0, _native_0) {
-  if (_ds_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _d_0 = _ds_0["head"];
-    const _rest_0 = _ds_0["tail"];
-    const _x_2 = ($db$(_d_0));
-    return {$: "Con", "head": {$: "KDef", "name": ($dn$(_d_0)), "kind": ($dk$(_d_0)), "arity": ($da$(_d_0)), "templates": ($dx$(_d_0)), "typ": ($dt$(_d_0)), "value": run_loop(run_tail((($f_eq$(($tg$(($dv$(_d_0)))), "Foreign"))) ? ((_x_0) => {
-  return $f_path_term$(($dv$(_d_0)), _dir_0);
-}) : ((_x_1) => {
-  return $dv$(_d_0);
-}), {$: "Unit"})), "ctors": ($f_path_defs$(($dc$(_d_0)), _dir_0, _native_0)), "native": (_native_0 || _x_2), "unsafe": ($du$(_d_0))}, "tail": ($f_path_defs$(_rest_0, _dir_0, _native_0))};
-  }
-}
-
-function $f_context_modules$(_defs_0, _ns_0) {
-  if (_defs_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _d_0 = _defs_0["head"];
-    const _rest_0 = _defs_0["tail"];
-    return {$: "Con", "head": ($f_context_module$(_d_0, _ns_0)), "tail": ($f_context_modules$(_rest_0, _ns_0))};
-  }
 }
 
 function $f_graph_fill_alias$(_d_0, _imports_0, _scope_0) {
@@ -13822,14 +14416,69 @@ function $f_fresh_stack$(_term_0, _env_0, _next_0) {
   return $ffw_walk$(_term_0, _env_0, _next_0, {$: "Nil"});
 }
 
-function $fpe_terms$(_ts_0) {
-  if (_ts_0.$ === "Nil") {
-    return $atom$("Absent");
-  } else {
-    const _head_0 = _ts_0["head"];
-    const _tail_0 = _ts_0["tail"];
-    return $fpe_terms_next$(run_loop($fpe_term$(_head_0)), _tail_0);
-  }
+function $f_path_term$(_t_0, _dir_0) {
+  return run_tail((($core_literal$(_t_0))) ? ((_x_0) => {
+  return _t_0;
+}) : ((_x_1) => {
+  return $k_rebuild$(_t_0, run_loop(run_tail((($f_eq$(($tg$(_t_0)), "Path"))) ? ((_x_2) => {
+  return $f_path_join$(_dir_0, ($nm$(_t_0)));
+}) : ((_x_3) => {
+  return $nm$(_t_0);
+}), {$: "Unit"})), ($ix$(_t_0)), ($qt$(_t_0)), ($f_path_terms$(($ks$(_t_0)), _dir_0)), ($rm$(_t_0)), ($kb$(_t_0)), ($ke$(_t_0)));
+}), {$: "Unit"});
+}
+
+function $f_context_module$(_d_0, _ns_0) {
+  return {$: "KDef", "name": run_loop(run_tail((($f_eq$(($dk$(_d_0)), "ImportFill"))) ? ((_x_0) => {
+  return $dn$(_d_0);
+}) : ((_x_1) => {
+  return $f_qual_name$(($dn$(_d_0)), _ns_0);
+}), {$: "Unit"})), "kind": run_loop(run_tail((($f_eq$(($dk$(_d_0)), "ImportFill"))) ? ((_x_2) => {
+  return "Def";
+}) : ((_x_3) => {
+  return $dk$(_d_0);
+}), {$: "Unit"})), "arity": ($da$(_d_0)), "templates": ($dx$(_d_0)), "typ": ($dt$(_d_0)), "value": ($dv$(_d_0)), "ctors": ($f_context_modules$(($dc$(_d_0)), _ns_0)), "native": ($db$(_d_0)), "unsafe": ($du$(_d_0))};
+}
+
+function $f_graph_module_error$(_source_0, _error_0, _sources_0, _fallback_0) {
+  return run_tail((($f_eq$(($tg$(_error_0)), "Absent"))) ? ((_x_0) => {
+  return _fallback_0;
+}) : ((_x_1) => {
+  const _x_2 = ($kb$(_error_0));
+  return $fpe_source_render$(($nm$(_error_0)), _error_0, run_loop(run_tail(((_x_2 > 0)) ? ((_x_3) => {
+  return $fpe_located_source$(_error_0, _sources_0);
+}) : ((_x_4) => {
+  return $kt$("ParseSource", ($f_source_text$(_source_0)), 0, 0, {$: "Nil"});
+}), {$: "Unit"})));
+}), {$: "Unit"});
+}
+
+function $fpe_terms_next$(_error_0, _rest_0) {
+  if ((($f_eq$(($tg$(_error_0)), "Absent")))) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $fpe_terms$, x: [_rest_0]};
+} else {
+const _x_1 = {$: "Unit"};
+return _error_0;
+}
+}
+
+function $fpe_term$(_t_0) {
+  return run_tail((($f_eq$(($tg$(_t_0)), "Error"))) ? ((_x_0) => {
+  if ((($String$is_empty$(($nm$(_t_0)))))) {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $atom$, x: ["Absent"]};
+} else {
+const _x_2 = {$: "Unit"};
+return _t_0;
+}
+}) : ((_x_3) => {
+  return run_tail((($f_eq$(($tg$(_t_0)), "ImportLaw"))) ? ((_x_4) => {
+  return $kt$("Error", "imported law fills require the canonical graph loader", 0, 0, {$: "Nil"});
+}) : ((_x_5) => {
+  return $fpe_terms$(($ks$(_t_0)));
+}), {$: "Unit"});
+}), {$: "Unit"});
 }
 
 function $String$trim_start$($0, $1, $2) {
@@ -14464,7 +15113,7 @@ function $jd_text_raw$(_code_0) {
 
 function $jd_foreign_def$(_book_0, _d_0) {
   return run_tail((run_loop($j_io_type$(_book_0, run_loop($jd_host_result$(run_loop($j_io_shadow$(_book_0)), ($dt$(_d_0)), ($da$(_d_0))))))) ? ((_x_0) => {
-  return $jd_foreign_ready$(_book_0, _d_0, run_loop($jd_arity$(_book_0, _d_0)), run_loop($jd_live_arity$(_book_0, ($dt$(_d_0)), run_loop($jd_arity$(_book_0, _d_0)))));
+  return $jd_foreign_ready$(_book_0, _d_0, run_loop($jd_emitted_arity$(_book_0, _d_0)), run_loop($jd_live_arity$(_book_0, ($dt$(_d_0)), run_loop($jd_emitted_arity$(_book_0, _d_0)))));
 }) : ((_x_1) => {
   return $jd_fail$("foreign result is not IO");
 }), {$: "Unit"});
@@ -14480,48 +15129,6 @@ function $jd_params$(_book_0, _ty_0, _left_0, _at_0) {
 }) : ((_x_1) => {
   return $jd_params_head$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _left_0, _at_0);
 }), {$: "Unit"});
-}
-
-function $jd_host_error$(_message_0) {
-  const _x_0 = ($j_quote$(("direct-js prototype unsupported: " + _message_0)));
-  const _x_1 = (_x_0 + ");})");
-  return ("(\n/*JD_UNSUPPORTED: host marshalling */()=>{throw new Error(" + _x_1);
-}
-
-function $jd_host$(_book_0, _d_0) {
-  const _arity_0 = run_loop($jd_arity$(_book_0, _d_0));
-  const _live_0 = run_loop($jd_live_arity$(_book_0, ($dt$(_d_0)), _arity_0));
-  const _x_0 = run_loop($jd_host_nat_known$(_book_0, ($dt$(_d_0))));
-  const _marshal_0 = ($Bool$not$((_x_0 === 0)));
-  const _x_1 = run_loop($jd_host_back$(_book_0, ($dt$(_d_0)), _arity_0, 0, _marshal_0));
-  const _x_2 = (_x_1 + "return r;}");
-  const _x_3 = run_loop($jd_host_args$(_book_0, ($dt$(_d_0)), _arity_0, 0, false, _marshal_0));
-  const _x_4 = (")));" + _x_2);
-  const _x_5 = (_x_3 + _x_4);
-  const _x_6 = ($jd_name$(($dn$(_d_0))));
-  const _x_7 = ("(" + _x_5);
-  const _x_8 = (_x_6 + _x_7);
-  const _x_9 = run_loop($jd_host_convert$(_book_0, run_loop($jd_host_result$(_book_0, ($dt$(_d_0)), _arity_0)), true, _marshal_0));
-  const _x_10 = ("(run_loop(" + _x_8);
-  const _x_11 = (_x_9 + _x_10);
-  const _x_12 = run_loop($jd_host_names$(_live_0, 0));
-  const _x_13 = (")=>{const r=" + _x_11);
-  const _x_14 = (_x_12 + _x_13);
-  return ("(" + _x_14);
-}
-
-function $jd_host_nat_status$(_book_0, _todo_0, _seen_0, _fuel_0) {
-  if (_todo_0.$ === "Nil") {
-    return 0;
-  } else {
-    const _t_0 = _todo_0["head"];
-    const _rest_0 = _todo_0["tail"];
-    return run_tail(((_fuel_0 > 0)) ? ((_x_0) => {
-  return $jd_host_nat_status_on$(_book_0, run_loop($wnf$(_book_0, _t_0)), _rest_0, _seen_0, ((_fuel_0 - 1) >>> 0));
-}) : ((_x_1) => {
-  return 2;
-}), {$: "Unit"});
-  }
 }
 
 function $jd_calls_tables$(_book_0, _valid_0, _facts_0, _groups_0) {
@@ -14609,55 +15216,60 @@ function $jd_calls_put$(_index_0, _row_0) {
   return $index_set$(_index_0, _row_0, ($index_hash$(($dn$(_row_0)), 2166136261)), 32);
 }
 
-function $jd_calls_lambda$(_book_0, _env_0, _t_0, _ty_0, _args_0, _s_0) {
-  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
-  const _x_1 = ($qt$(_ty_0));
-  const _x_2 = (_x_1 === 0);
-  const _x_3 = (_args_0 > 0);
-  return run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
-  const _x_5 = ($qt$(_ty_0));
-  return $jd_calls_body$(_book_0, ($jd_bind_env$(_env_0, ($ix$(_t_0)), run_loop($kid$(_ty_0, 0)))), run_loop($kid$(_t_0, 0)), run_loop($j_app_type$(_ty_0, ($var$(($nm$(_t_0)), ($ix$(_t_0)))))), run_loop(run_tail(((_x_5 === 0)) ? ((_x_6) => {
-  return _args_0;
+function $jd_calls_node$(_book_0, _env_0, _t_0, _ty_0, _args_0, _s_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Ann"))) ? ((_x_0) => {
+  return $jd_calls_body$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), run_loop($kid$(_t_0, 1)), _args_0, _s_0);
+}) : ((_x_1) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Rwt"))) ? ((_x_2) => {
+  return $jd_calls_body$(_book_0, _env_0, run_loop($kid$(_t_0, 2)), _ty_0, _args_0, _s_0);
+}) : ((_x_3) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Let"))) ? ((_x_4) => {
+  return $jd_calls_body$(_book_0, ($j_context$(_book_0, _env_0, ($ks$(_t_0)))), ($j_body$(($ks$(_t_0)))), _ty_0, _args_0, _s_0);
+}) : ((_x_5) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Lam"))) ? ((_x_6) => {
+  return $jd_calls_lambda$(_book_0, _env_0, _t_0, run_loop($wnf$(_book_0, _ty_0)), _args_0, _s_0);
 }) : ((_x_7) => {
-  return ((_args_0 - 1) >>> 0);
-}), {$: "Unit"})), _s_0);
-}) : ((_x_8) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_8) => {
+  return run_tail(((_args_0 === 0)) ? ((_x_9) => {
+  return _s_0;
+}) : ((_x_10) => {
+  return $jd_calls_match$(_book_0, _env_0, _t_0, run_loop($wnf$(_book_0, _ty_0)), _args_0, _s_0);
+}), {$: "Unit"});
+}) : ((_x_11) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Efq"))) ? ((_x_12) => {
+  return _s_0;
+}) : ((_x_13) => {
+  return run_tail(((_args_0 > 0)) ? ((_x_14) => {
+  return $jd_calls_unknown$(_s_0);
+}) : ((_x_15) => {
+  const _x_16 = ($String$eq$(($tg$(_t_0)), "App"));
+  const _x_17 = ($String$eq$(($tg$(_t_0)), "Ref"));
+  return run_tail(((_x_16 || _x_17)) ? ((_x_18) => {
+  return $jd_calls_application$(_book_0, _env_0, _t_0, run_loop($j_call_spine$(_t_0, {$: "Nil"})), _s_0);
+}) : ((_x_19) => {
   return _s_0;
 }), {$: "Unit"});
-}) : ((_x_9) => {
-  return $jd_calls_bad$(_s_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
 }), {$: "Unit"});
 }
 
-function $jd_calls_match$(_book_0, _env_0, _t_0, _ty_0, _args_0, _s_0) {
-  const _x_0 = ($qt$(_ty_0));
-  return run_tail((($Bool$and$(($String$eq$(($tg$(_ty_0)), "All")), ($Bool$not$((_x_0 === 0)))))) ? ((_x_1) => {
-  return $jd_calls_match_type$(_book_0, _env_0, _t_0, _ty_0, run_loop($wnf$(_book_0, run_loop($kid$(_ty_0, 0)))), _args_0, _s_0);
-}) : ((_x_2) => {
-  return $jd_calls_bad$(_s_0);
-}), {$: "Unit"});
-}
-
-function $jd_calls_unknown$(_s_0) {
-  const _edges_0 = _s_0["edges"];
-  const _fuel_0 = _s_0["fuel"];
-  const _valid_0 = _s_0["valid"];
-  return {$: "JDCallScan", "edges": _edges_0, "unknown": true, "fuel": _fuel_0, "valid": _valid_0};
-}
-
-function $jd_calls_application$(_book_0, _env_0, _t_0, _spine_0, _s_0) {
-  return run_tail((($String$eq$(($tg$(_spine_0)), "Call"))) ? ((_x_0) => {
-  return run_tail((run_loop($jd_choice_call$(_book_0, _spine_0))) ? ((_x_1) => {
-  return $jd_choice_calls$(_book_0, _env_0, ($ks$(_spine_0)), _s_0);
-}) : ((_x_2) => {
-  return $jd_calls_named$(_book_0, run_loop($lookup$(_book_0, ($nm$(_spine_0)))), ($ks$(_spine_0)), _s_0);
-}), {$: "Unit"});
+function $jd_live_arity_head$(_book_0, _ty_0, _left_0) {
+  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
+  const _x_1 = ($qt$(_ty_0));
+  const _x_4 = run_loop(run_tail(((_x_1 === 0)) ? ((_x_2) => {
+  return 0;
 }) : ((_x_3) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "App"))) ? ((_x_4) => {
-  return $jd_calls_unknown_type$(run_loop($wnf$(_book_0, run_loop($j_type$(_book_0, _env_0, run_loop($kid$(_t_0, 0)))))), _s_0);
-}) : ((_x_5) => {
-  return $jd_calls_bad$(_s_0);
-}), {$: "Unit"});
+  return 1;
+}), {$: "Unit"}));
+  const _x_5 = run_loop($jd_live_arity$(_book_0, run_loop($kid$(_ty_0, 1)), ((_left_0 - 1) >>> 0)));
+  return ((_x_4 + _x_5) >>> 0);
+}) : ((_x_6) => {
+  return 0;
 }), {$: "Unit"});
 }
 
@@ -14870,99 +15482,6 @@ return {$: "JDShowDesc", "cells": {$: "Nil"}, "types": _types_0, "names": _names
 }), {$: "Unit"});
 }
 
-function $index_find_leaf$($0, $1, $2, $3, $4) {
-  let $pc = 2;
-  for (;;) switch ($pc) {
-    case 0: {
-      const _tree_0 = $0;
-      const _name_0 = $1;
-      const _hash_0 = $2;
-      const _bits_0 = $3;
-      if (_tree_0.$ === "KDef") {
-        const _label_0 = _tree_0["name"];
-        const _kind_0 = _tree_0["kind"];
-        const _arity_0 = _tree_0["arity"];
-        const _templates_0 = _tree_0["templates"];
-        const _typ_0 = _tree_0["typ"];
-        const _value_0 = _tree_0["value"];
-        const _ctors_0 = _tree_0["ctors"];
-        const _native_0 = _tree_0["native"];
-        const _unsafe_0 = _tree_0["unsafe"];
-        $0 = {$: "KDef", "name": _label_0, "kind": _kind_0, "arity": _arity_0, "templates": _templates_0, "typ": _typ_0, "value": _value_0, "ctors": _ctors_0, "native": _native_0, "unsafe": _unsafe_0};
-        $1 = _name_0;
-        $2 = _hash_0;
-        $3 = _bits_0;
-        $4 = ($String$eq$(_kind_0, "Absent"));
-        $pc = 1; continue;
-      } else if (_tree_0.$ === "KIndexLeaf") {
-        const _stored_0 = _tree_0["hash"];
-        const _bucket_0 = _tree_0["bucket"];
-        if (((_stored_0 === _hash_0))) {
-const _x_0 = {$: "Unit"};
-return {$: "$JMP", f: $index_bucket$, x: [_bucket_0, _name_0]};
-} else {
-const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $missing$, x: []};
-}
-      } else {
-        const _stored_1 = _tree_0["hash"];
-        const _mask_0 = _tree_0["mask"];
-        const _left_0 = _tree_0["left"];
-        const _right_0 = _tree_0["right"];
-        return run_tail(((_mask_0 === 0)) ? ((_x_2) => {
-  return $index_find_hash$({$: "KIndexNode", "hash": _stored_1, "mask": _mask_0, "left": _left_0, "right": _right_0}, _name_0, (_stored_1 === _hash_0));
-}) : ((_x_3) => {
-  const _x_4 = ((_hash_0 & _mask_0) >>> 0);
-  if (((_x_4 === 0))) {
-const _x_5 = {$: "Unit"};
-return {$: "$JMP", f: $index_find$, x: [_left_0, _name_0, _hash_0, _bits_0]};
-} else {
-const _x_6 = {$: "Unit"};
-return {$: "$JMP", f: $index_find$, x: [_right_0, _name_0, _hash_0, _bits_0]};
-}
-}), {$: "Unit"});
-      }
-    }
-    case 1: {
-      const _tree_0 = $0;
-      const _name_0 = $1;
-      const _hash_0 = $2;
-      const _bits_0 = $3;
-      const _absent_0 = $4;
-      if (_absent_0) {
-        return $missing$();
-      } else {
-        const _x_0 = ($dx$(_tree_0));
-        $0 = _tree_0;
-        $1 = _name_0;
-        $2 = _hash_0;
-        $3 = _bits_0;
-        $4 = (_x_0 === 0);
-        $pc = 2; continue;
-      }
-    }
-    case 2: {
-      const _tree_0 = $0;
-      const _name_0 = $1;
-      const _hash_0 = $2;
-      const _bits_0 = $3;
-      const _leaf_0 = $4;
-      if (_leaf_0) {
-        const _x_0 = ($da$(_tree_0));
-        return $index_find_hash$(_tree_0, _name_0, (_x_0 === _hash_0));
-      } else {
-        const _x_1 = ($dx$(_tree_0));
-        const _x_2 = ((_hash_0 & _x_1) >>> 0);
-        $0 = ($index_child$(_tree_0, ($Bool$not$((_x_2 === 0)))));
-        $1 = _name_0;
-        $2 = _hash_0;
-        $3 = _bits_0;
-        $pc = 0; continue;
-      }
-    }
-  }
-}
-
 function $jd_text_size$(_text_0) {
   if (_text_0.$ === "JDTextLeaf") {
     const _size_0 = _text_0["size"];
@@ -15050,6 +15569,111 @@ function $jd_text_refs_work$($0, $1, $2, $3, $4) {
 
 function $jd_reach_refs$(_names_0, _text_0, _line_0, _fuel_0, _out_0) {
   return $jd_reach_refs_unique$(_names_0, _text_0, _line_0, _fuel_0, _out_0, ($missing$()));
+}
+
+function $jd_plan_follow$(_book_0, _names_0, _defs_0, _rest_0, _texts_0, _left_0, _fuel_0, _name_0, _text_0, _refs_0) {
+  if (_refs_0.$ === "None") {
+    return $jd_plan_bad$("direct reachability metadata refused");
+  } else {
+    const _edges_0 = _refs_0["value"];
+    return $jd_plan_visit$(_book_0, _names_0, _defs_0, ($List$append$(_edges_0, _rest_0)), run_loop($index_set$(_texts_0, {$: "KDef", "name": _name_0, "kind": "JDPlanText", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDPlanText", ($jd_text_render$(_text_0)), 0, 0, {$: "Nil"})), "ctors": {$: "Nil"}, "native": false, "unsafe": false}, ($index_hash$(_name_0, 2166136261)), 32)), _left_0, _fuel_0);
+  }
+}
+
+function $jd_host_nat_known$(_book_0, _ty_0) {
+  const _fact_0 = run_loop($lookup$(_book_0, "$JD.Host.NativeWord"));
+  const _x_0 = ($da$(_fact_0));
+  const _x_1 = ($da$(_fact_0));
+  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($dk$(_fact_0)), "JDHostNativeWord")), (_x_0 > 0))), (_x_1 <= 3)))) ? ((_x_2) => {
+  return $jd_host_native_walk$(_book_0, {$: "Con", "head": _ty_0, "tail": {$: "Nil"}}, {$: "Nil"}, 1024, ($da$(_fact_0)));
+}) : ((_x_3) => {
+  return $jd_host_nat_status$(_book_0, {$: "Con", "head": _ty_0, "tail": {$: "Nil"}}, {$: "Nil"}, 1024);
+}), {$: "Unit"});
+}
+
+function $jd_host_names$(_left_0, _at_0) {
+  return run_tail(((_left_0 > 0)) ? ((_x_0) => {
+  const _x_1 = run_loop($jd_host_names$(((_left_0 - 1) >>> 0), ((_at_0 + 1) >>> 0)));
+  const _x_2 = ($U32$show$(_at_0));
+  const _x_3 = ("," + _x_1);
+  const _x_4 = (_x_2 + _x_3);
+  return ("a" + _x_4);
+}) : ((_x_5) => {
+  return "";
+}), {$: "Unit"});
+}
+
+function $jd_host_convert$(_book_0, _ty_0, _out_0, _marshal_0) {
+  if ((_marshal_0)) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $jd_marshal$, x: [_book_0, _ty_0, _out_0]};
+} else {
+const _x_1 = {$: "Unit"};
+return "";
+}
+}
+
+function $jd_host_result$(_book_0, _ty_0, _left_0) {
+  return run_tail(((_left_0 > 0)) ? ((_x_0) => {
+  return $jd_host_result$(_book_0, run_loop($j_app_type$(run_loop($wnf$(_book_0, _ty_0)), ($atom$("Absent")))), ((_left_0 - 1) >>> 0));
+}) : ((_x_1) => {
+  return $wnf$(_book_0, _ty_0);
+}), {$: "Unit"});
+}
+
+function $jd_host_args$(_book_0, _ty_0, _left_0, _at_0, _out_0, _marshal_0) {
+  return run_tail(((_left_0 > 0)) ? ((_x_0) => {
+  return $jd_host_args_on$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _left_0, _at_0, _out_0, _marshal_0);
+}) : ((_x_1) => {
+  return "";
+}), {$: "Unit"});
+}
+
+function $jd_host_back$(_book_0, _ty_0, _left_0, _at_0, _marshal_0) {
+  return run_tail(((_left_0 > 0)) ? ((_x_0) => {
+  return $jd_host_back_on$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _left_0, _at_0, _marshal_0);
+}) : ((_x_1) => {
+  return "";
+}), {$: "Unit"});
+}
+
+function $jd_emitted_arity_on$(_book_0, _d_0, _fact_0) {
+  if ((($String$eq$(($tg$(_fact_0)), "JDArity")))) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $ix$, x: [_fact_0]};
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $jd_arity$, x: [_book_0, _d_0]};
+}
+}
+
+function $jd_calls_fact$(_book_0, _name_0) {
+  return $jd_calls_get$(($index_first$(($dc$(run_loop($lookup$(_book_0, "$JD.Calls")))))), _name_0);
+}
+
+function $jd_host_nat_status_on$(_book_0, _t_0, _rest_0, _seen_0, _fuel_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
+  const _x_1 = ($qt$(_t_0));
+  return $jd_host_nat_status$(_book_0, run_loop(run_tail(((_x_1 === 0)) ? ((_x_2) => {
+  return {$: "Con", "head": run_loop($j_app_type$(_t_0, ($atom$("Absent")))), "tail": _rest_0};
+}) : ((_x_3) => {
+  return {$: "Con", "head": run_loop($kid$(_t_0, 0)), "tail": {$: "Con", "head": run_loop($j_app_type$(_t_0, ($atom$("Absent")))), "tail": _rest_0}};
+}), {$: "Unit"})), _seen_0, _fuel_0);
+}) : ((_x_4) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "ADT"))) ? ((_x_5) => {
+  return run_tail((($Bool$and$(($String$eq$(($nm$(_t_0)), "Nat")), ($db$(run_loop($lookup$(_book_0, ($nm$(_t_0))))))))) ? ((_x_6) => {
+  return 1;
+}) : ((_x_7) => {
+  return run_tail((($has_name$(_seen_0, run_loop($term_key$(_t_0))))) ? ((_x_8) => {
+  return $jd_host_nat_status$(_book_0, _rest_0, _seen_0, _fuel_0);
+}) : ((_x_9) => {
+  return $jd_host_nat_status$(_book_0, ($List$append$(($jd_host_ctor_types$(_book_0, ($dc$(run_loop($lookup$(_book_0, ($nm$(_t_0)))))), ($ks$(_t_0)))), _rest_0)), {$: "Con", "head": run_loop($term_key$(_t_0)), "tail": _seen_0}, _fuel_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+}) : ((_x_10) => {
+  return $jd_host_nat_status$(_book_0, _rest_0, _seen_0, _fuel_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
 }
 
 function $ctx_bind$(_ctx_0, _id_0, _q_0, _name_0, _ty_0) {
@@ -15884,81 +16508,6 @@ function $g_eval$(_book_0, _st_0, _t_0, _args_0, _pending_0, _fallback_0, _stack
 }), {$: "Unit"});
 }
 
-function $dg_event_publish$(_rest_0, _d_0, _r_0) {
-  return run_tail((($String$eq$(($dk$(run_loop($lookup$(_rest_0, ($dn$(_d_0)))))), "Absent"))) ? ((_x_0) => {
-  return $kw_put_checked$(($kw_with_book$(($rw$(_r_0)), run_loop($book_put$(($kw_book$(($rw$(_r_0)))), _d_0)))), run_loop($dg_event_output$(_d_0, ($ct$(_r_0)))));
-}) : ((_x_1) => {
-  return $rw$(_r_0);
-}), {$: "Unit"});
-}
-
-function $dg_event_failed$(_r_0, _fallback_0) {
-  const _owner_0 = run_loop(run_tail((($String$eq$(($tg$(($ct$(_r_0)))), "DTrace"))) ? ((_x_0) => {
-  return $nm$(($ct$(_r_0)));
-}) : ((_x_1) => {
-  return _fallback_0;
-}), {$: "Unit"}));
-  const _x_4 = run_loop(run_tail((($String$eq$(_owner_0, ""))) ? ((_x_2) => {
-  return "";
-}) : ((_x_3) => {
-  return (_owner_0 + ": ");
-}), {$: "Unit"}));
-  const _x_5 = ($ce$(_r_0));
-  return {$: "DChecking", "result": {$: "KChecking", "term": ($ct$(_r_0)), "typ": ($cy$(_r_0)), "uses": ($cs$(_r_0)), "error": (_x_4 + _x_5), "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))}, "diagnostic": run_loop($dg_report$(_r_0, _fallback_0))};
-}
-
-function $check_definition_type$(_book_0, _d_0, _e_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return run_tail((($String$eq$(($dk$(_d_0)), "ADT"))) ? ((_x_1) => {
-  return $check_adt_declaration$(($ke_world$(_e_0, ($rw$(_r_0)))), _d_0);
-}) : ((_x_2) => {
-  return run_tail((($String$eq$(($tg$(($dv$(_d_0)))), "Absent"))) ? ((_x_3) => {
-  return _r_0;
-}) : ((_x_4) => {
-  return run_tail((($String$eq$(($tg$(($dv$(_d_0)))), "Foreign"))) ? ((_x_5) => {
-  return $check_foreign$(($rw$(_r_0)), _d_0, ($cd$(_e_0)));
-}) : ((_x_6) => {
-  return $check_definition_body$(($rw$(_r_0)), _d_0, ($cd$(_e_0)));
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}) : ((_x_7) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $check$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0) {
-  return $dg_trace$(_e_0, _ctx_0, _t_0, _ty_0, run_loop($check_node$(_e_0, _ctx_0, run_loop($core_beta$(_t_0)), _dem_0, _ty_0)));
-}
-
-function $typ$(_q_0) {
-  return $kt$("Typ", "", 0, 0, {$: "Con", "head": ($qua$(_q_0)), "tail": {$: "Nil"}});
-}
-
-function $signature_fill_mode$(_d_0, _fill_0) {
-  if ((($String$eq$(($dk$(_fill_0)), "Def")))) {
-const _x_0 = {$: "Unit"};
-return {$: "$JMP", f: $declared$, x: [_fill_0]};
-} else {
-const _x_1 = {$: "Unit"};
-return _d_0;
-}
-}
-
-function $norm_exact$(_a_0, _b_0) {
-  return $norm_exact_lists$({$: "Con", "head": _a_0, "tail": {$: "Nil"}}, {$: "Con", "head": _b_0, "tail": {$: "Nil"}});
-}
-
-function $norm_convert$(_book_0, _a_0, _b_0, _le_0, _fresh_0) {
-  if ((run_loop($norm_cmp_loop$({$: "Nil"}, {$: "GState", "heap": {$: "GEmpty"}, "next": 1}, {$: "Con", "head": {$: "KNormCmp", "a": _a_0, "b": _b_0, "le": _le_0, "fresh": _fresh_0}, "tail": {$: "Nil"}}, {$: "Nil"})))) {
-const _x_0 = {$: "Unit"};
-return true;
-} else {
-const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $norm_cmp_loop$, x: [_book_0, {$: "GState", "heap": {$: "GEmpty"}, "next": 1}, {$: "Con", "head": {$: "KNormCmp", "a": _a_0, "b": _b_0, "le": _le_0, "fresh": _fresh_0}, "tail": {$: "Nil"}}, {$: "Nil"}]};
-}
-}
-
 function $nv_id$(_name_0) {
   return {$: "KDef", "name": _name_0, "kind": "NativeId", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false};
 }
@@ -16785,6 +17334,220 @@ return false;
   }
 }
 
+function $kw_put_checked$(_world_0, _d_0) {
+  return $kw_with_checked$(_world_0, {$: "Con", "head": _d_0, "tail": ($kw_checked$(_world_0))});
+}
+
+function $kw_with_book$(_world_0, _book_0) {
+  return {$: "KWorld", "book": _book_0, "memo": ($kw_memo$(_world_0)), "fresh": ($kw_fresh$(_world_0)), "checked": ($kw_checked$(_world_0))};
+}
+
+function $dg_event_output$(_d_0, _body_0) {
+  const _x_0 = ($dx$(_d_0));
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_0 === 0))), ($Bool$not$(($String$eq$(($tg$(($dv$(_d_0)))), "Absent")))))), ($Bool$not$(($String$eq$(($tg$(($dv$(_d_0)))), "Foreign"))))))) ? ((_x_1) => {
+  return {$: "KDef", "name": ($dn$(_d_0)), "kind": ($dk$(_d_0)), "arity": ($da$(_d_0)), "templates": ($dx$(_d_0)), "typ": ($dt$(_d_0)), "value": _body_0, "ctors": ($dc$(_d_0)), "native": ($db$(_d_0)), "unsafe": ($du$(_d_0))};
+}) : ((_x_2) => {
+  return _d_0;
+}), {$: "Unit"});
+}
+
+function $rx$(_r_0) {
+  const _consumed_0 = _r_0["consumed"];
+  return _consumed_0;
+}
+
+function $dg_report$(_r_0, _name_0) {
+  return $dg_report_payload$(($ct$(_r_0)), ($ce$(_r_0)), _name_0);
+}
+
+function $check_adt_declaration$(_e_0, _d_0) {
+  return run_tail((($String$eq$(($tg$(run_loop($tele_tip$(($cb$(_e_0)), ($dt$(_d_0)))))), "Typ"))) ? ((_x_0) => {
+  return $check_ctors$(_e_0, _d_0, ($dc$(_d_0)), ($dt$(_d_0)));
+}) : ((_x_1) => {
+  return $check_adt_kind$(_e_0, _d_0, ($dt$(_d_0)), {$: "Nil"});
+}), {$: "Unit"});
+}
+
+function $ke_world$(_e_0, _world_0) {
+  return {$: "KEnv", "world": _world_0, "name": ($cn$(_e_0)), "lhs": ($cl$(_e_0)), "pending": ($cp$(_e_0)), "quantities": ($cq$(_e_0)), "unsafe": ($cu$(_e_0)), "depth": ($cd$(_e_0))};
+}
+
+function $check_foreign$(_world_0, _d_0, _depth_0) {
+  const _book_0 = ($kw_book$(_world_0));
+  const _x_0 = ($dx$(_d_0));
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$((_x_0 === 0), ($String$eq$(($tg$(run_loop($foreign_head$(run_loop($foreign_tip$(($dt$(_d_0)))))))), "Ref")))), ($String$eq$(($nm$(run_loop($foreign_head$(run_loop($foreign_tip$(($dt$(_d_0)))))))), "IO")))), ($String$eq$(($dk$(run_loop($lookup$(_book_0, "IO")))), "Def")))), ($db$(run_loop($lookup$(_book_0, "IO"))))))) ? ((_x_1) => {
+  return $bad$(_world_0, "");
+}) : ((_x_2) => {
+  return $dg_trace$({$: "KEnv", "world": _world_0, "name": ($dn$(_d_0)), "lhs": ($ref$(($dn$(_d_0)))), "pending": 0, "quantities": {$: "Nil"}, "unsafe": ($du$(_d_0)), "depth": _depth_0}, {$: "Nil"}, run_loop($foreign_tip$(($dt$(_d_0)))), ($atom$("Absent")), ($dg_bad_detail$(_world_0, "foreign definition must return base IO directly", ($dg_text$("a foreign definition returning base IO(...) directly (return type aliases are not unfolded)")), ($dg_text$(($dn$(_d_0)))))));
+}), {$: "Unit"});
+}
+
+function $cd$(_e_0) {
+  const _depth_0 = _e_0["depth"];
+  return _depth_0;
+}
+
+function $check_definition_body$(_world_0, _d_0, _depth_0) {
+  return $kw_restore_definition$(_world_0, _d_0, run_loop($check_template_definition$(($kw_owner$(_world_0, ($dt$(_d_0)), ($dv$(_d_0)))), _d_0, ($dt$(_d_0)), ($dv$(_d_0)), ($ref$(($dn$(_d_0)))), ($dx$(_d_0)), _depth_0)));
+}
+
+function $dg_trace$(_e_0, _ctx_0, _t_0, _ty_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return _r_0;
+}) : ((_x_1) => {
+  return run_tail((($String$eq$(($tg$(($ct$(_r_0)))), "DTrace"))) ? ((_x_2) => {
+  return {$: "KChecking", "term": ($kt$("DTrace", ($nm$(($ct$(_r_0)))), ($ix$(($ct$(_r_0)))), ($qt$(($ct$(_r_0)))), {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 0)), "tail": {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 1)), "tail": {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 2)), "tail": {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 3)), "tail": {$: "Con", "head": ($kt$("DTrail", "", 0, 0, ($norm_join$(($ks$(run_loop($kid$(($ct$(_r_0)), 4)))), {$: "Con", "head": _t_0, "tail": {$: "Nil"}})))), "tail": {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 5)), "tail": {$: "Nil"}}}}}}})), "typ": ($cy$(_r_0)), "uses": ($cs$(_r_0)), "error": ($ce$(_r_0)), "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))};
+}) : ((_x_3) => {
+  return $dg_trace_detail$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, _t_0, _r_0, run_loop(run_tail((($String$eq$(($tg$(($ct$(_r_0)))), "DDetail"))) ? ((_x_4) => {
+  return $ct$(_r_0);
+}) : ((_x_5) => {
+  return $dg_reason$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, _t_0, _ty_0, ($ce$(_r_0)));
+}), {$: "Unit"})));
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $check_node$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0) {
+  return run_tail((($core_literal$(_t_0))) ? ((_x_0) => {
+  return run_tail((($core_literal_type$(($cb$(_e_0)), _t_0, run_loop($wnf$(($cb$(_e_0)), _ty_0))))) ? ((_x_1) => {
+  return $ok$(($cw$(_e_0)), _t_0, _ty_0, {$: "Nil"});
+}) : ((_x_2) => {
+  return $check$(_e_0, _ctx_0, run_loop($core_literal_step$(_t_0)), _dem_0, _ty_0);
+}), {$: "Unit"});
+}) : ((_x_3) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Lam"))) ? ((_x_4) => {
+  return $check_lam$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)));
+}) : ((_x_5) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Ctr"))) ? ((_x_6) => {
+  return $check_ctr$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)));
+}) : ((_x_7) => {
+  const _x_8 = ($String$eq$(($tg$(_t_0)), "Mat"));
+  const _x_9 = ($String$eq$(($tg$(_t_0)), "Efq"));
+  return run_tail(((_x_8 || _x_9)) ? ((_x_10) => {
+  return $check_mat$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)));
+}) : ((_x_11) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Rfl"))) ? ((_x_12) => {
+  return $check_rfl$(_e_0, _t_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)));
+}) : ((_x_13) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Hol"))) ? ((_x_14) => {
+  return run_tail((($String$eq$(($nm$(_t_0)), "TODO"))) ? ((_x_15) => {
+  return $ok$(($cw$(_e_0)), _t_0, _ty_0, {$: "Nil"});
+}) : ((_x_16) => {
+  return $bad$(($cw$(_e_0)), "unresolved hole");
+}), {$: "Unit"});
+}) : ((_x_17) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Let"))) ? ((_x_18) => {
+  return $check_let$(_e_0, _ctx_0, _ctx_0, ($ks$(_t_0)), _dem_0, _ty_0, {$: "Nil"}, {$: "Nil"}, _t_0, {$: "Nil"});
+}) : ((_x_19) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Rwt"))) ? ((_x_20) => {
+  return $check_rwt$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, run_loop($infer$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), _dem_0, {$: "Nil"})));
+}) : ((_x_21) => {
+  return $check_fits$(_e_0, run_loop($infer$(_e_0, _ctx_0, _t_0, _dem_0, {$: "Nil"})), _ty_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $qua$(_q_0) {
+  return $kt$("Qua", "", 0, _q_0, {$: "Nil"});
+}
+
+function $norm_exact_lists$(_as_0, _bs_0) {
+  if (_as_0.$ === "Nil") {
+    if (_bs_0.$ === "Nil") {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    const _a_0 = _as_0["head"];
+    const _ar_0 = _as_0["tail"];
+    if (_bs_0.$ === "Con") {
+      const _b_0 = _bs_0["head"];
+      const _br_0 = _bs_0["tail"];
+      return run_tail((($norm_exact_head$(_a_0, _b_0))) ? ((_x_0) => {
+  return $norm_exact_lists$(($norm_join$(($ks$(_a_0)), _ar_0)), ($norm_join$(($ks$(_b_0)), _br_0)));
+}) : ((_x_1) => {
+  return false;
+}), {$: "Unit"});
+    } else {
+      return false;
+    }
+  }
+}
+
+function $norm_cmp_loop$($0, $1, $2, $3) {
+  for (;;) {
+    {
+      const _book_0 = $0;
+      const _st_0 = $1;
+      const _todo_0 = $2;
+      const _alts_0 = $3;
+      if (_todo_0.$ === "Nil") {
+        return true;
+      } else {
+        const _t_0 = _todo_0["head"];
+        if (_t_0.$ === "KNormShare") {
+          const _left_0 = _t_0["left"];
+          const _right_0 = _t_0["right"];
+          const _rest_0 = _todo_0["tail"];
+          $0 = _book_0;
+          $1 = {$: "GState", "heap": run_loop($g_put$(($g_heap$(_st_0)), _right_0, run_loop($g_get$(($g_heap$(_st_0)), _left_0)))), "next": ($g_next$(_st_0))};
+          $2 = _rest_0;
+          $3 = _alts_0;
+          continue;
+        } else {
+          const _a_0 = _t_0["a"];
+          const _b_0 = _t_0["b"];
+          const _le_0 = _t_0["le"];
+          const _fresh_0 = _t_0["fresh"];
+          const _rest_1 = _todo_0["tail"];
+          return run_tail((run_loop($norm_cmp_quick$(_a_0, _b_0))) ? ((_x_0) => {
+  return $norm_cmp_loop$(_book_0, _st_0, _rest_1, _alts_0);
+}) : ((_x_1) => {
+  return $norm_cmp_left$(_book_0, _b_0, _le_0, _fresh_0, run_loop(run_tail((($Bool$and$(($Bool$and$(($Bool$not$(_le_0)), ($String$eq$(($tg$(_a_0)), "GCell")))), ($String$eq$(($tg$(_b_0)), "GCell"))))) ? ((_x_2) => {
+  return {$: "Con", "head": {$: "KNormShare", "left": ($ix$(_a_0)), "right": ($ix$(_b_0))}, "tail": _rest_1};
+}) : ((_x_3) => {
+  return _rest_1;
+}), {$: "Unit"})), _alts_0, run_loop($g_wnf$(_book_0, _st_0, _a_0)));
+}), {$: "Unit"});
+        }
+      }
+    }
+  }
+}
+
+function $base_prefix_world_names_disjoint$(_suffix_0, _saved_0) {
+  if (_suffix_0.$ === "Nil") {
+    return true;
+  } else {
+    const _d_0 = _suffix_0["head"];
+    const _rest_0 = _suffix_0["tail"];
+    if ((($String$eq$(($dk$(run_loop($lookup$(_saved_0, ($dn$(_d_0)))))), "Absent")))) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $base_prefix_world_names_disjoint$, x: [_rest_0, _saved_0]};
+} else {
+const _x_1 = {$: "Unit"};
+return false;
+}
+  }
+}
+
+function $base_prefix_world_resume_state$(_state_0, _book_0, _checked_0, _seen_0, _suffix_0, _bound_0) {
+  const _delta_0 = _state_0["delta"];
+  const _stamp_0 = _state_0["stamp"];
+  const _declared_0 = ($check_declarations$(_suffix_0, run_loop($kw_bound_book$(_book_0, ((_bound_0 + _stamp_0) >>> 0)))));
+  const _ordered_0 = ($base_prefix_world_order$(_declared_0, run_loop($base_prefix_world_raw$(_book_0)), _suffix_0));
+  const _x_0 = ((_bound_0 + _delta_0) >>> 0);
+  const _world_0 = {$: "KWorld", "book": _ordered_0, "memo": {$: "Nil"}, "fresh": {$: "KFreshKnown", "next": ((_x_0 + 1) >>> 0)}, "checked": _checked_0};
+  return $dg_check_events$(_suffix_0, _world_0, run_loop($kw_bound_book$(_seen_0, _bound_0)));
+}
+
 function $fpe_seek$(_source_0, _rest_0, _line_0, _column_0, _offset_0, _error_0) {
   const _x_0 = ($ix$(_error_0));
   const _x_1 = ($qt$(_error_0));
@@ -16939,43 +17702,6 @@ function $f_ascii_alpha$(_c_0) {
   return (_x_2 <= 25);
 }
 
-function $f_graph_module_error$(_source_0, _error_0, _sources_0, _fallback_0) {
-  return run_tail((($f_eq$(($tg$(_error_0)), "Absent"))) ? ((_x_0) => {
-  return _fallback_0;
-}) : ((_x_1) => {
-  const _x_2 = ($kb$(_error_0));
-  return $fpe_source_render$(($nm$(_error_0)), _error_0, run_loop(run_tail(((_x_2 > 0)) ? ((_x_3) => {
-  return $fpe_located_source$(_error_0, _sources_0);
-}) : ((_x_4) => {
-  return $kt$("ParseSource", ($f_source_text$(_source_0)), 0, 0, {$: "Nil"});
-}), {$: "Unit"})));
-}), {$: "Unit"});
-}
-
-function $f_path_term$(_t_0, _dir_0) {
-  return run_tail((($core_literal$(_t_0))) ? ((_x_0) => {
-  return _t_0;
-}) : ((_x_1) => {
-  return $k_rebuild$(_t_0, run_loop(run_tail((($f_eq$(($tg$(_t_0)), "Path"))) ? ((_x_2) => {
-  return $f_path_join$(_dir_0, ($nm$(_t_0)));
-}) : ((_x_3) => {
-  return $nm$(_t_0);
-}), {$: "Unit"})), ($ix$(_t_0)), ($qt$(_t_0)), ($f_path_terms$(($ks$(_t_0)), _dir_0)), ($rm$(_t_0)), ($kb$(_t_0)), ($ke$(_t_0)));
-}), {$: "Unit"});
-}
-
-function $f_context_module$(_d_0, _ns_0) {
-  return {$: "KDef", "name": run_loop(run_tail((($f_eq$(($dk$(_d_0)), "ImportFill"))) ? ((_x_0) => {
-  return $dn$(_d_0);
-}) : ((_x_1) => {
-  return $f_qual_name$(($dn$(_d_0)), _ns_0);
-}), {$: "Unit"})), "kind": run_loop(run_tail((($f_eq$(($dk$(_d_0)), "ImportFill"))) ? ((_x_2) => {
-  return "Def";
-}) : ((_x_3) => {
-  return $dk$(_d_0);
-}), {$: "Unit"})), "arity": ($da$(_d_0)), "templates": ($dx$(_d_0)), "typ": ($dt$(_d_0)), "value": ($dv$(_d_0)), "ctors": ($f_context_modules$(($dc$(_d_0)), _ns_0)), "native": ($db$(_d_0)), "unsafe": ($du$(_d_0))};
-}
-
 function $f_graph_fill$(_d_0, _old_0) {
   const _x_0 = ($da$(_d_0));
   const _x_1 = ($dx$(_old_0));
@@ -17097,31 +17823,22 @@ function $ffw_walk$(_term_0, _env_0, _next_0, _stack_0) {
 }), {$: "Unit"});
 }
 
-function $fpe_terms_next$(_error_0, _rest_0) {
-  if ((($f_eq$(($tg$(_error_0)), "Absent")))) {
-const _x_0 = {$: "Unit"};
-return {$: "$JMP", f: $fpe_terms$, x: [_rest_0]};
-} else {
-const _x_1 = {$: "Unit"};
-return _error_0;
-}
+function $f_path_terms$(_ts_0, _dir_0) {
+  if (_ts_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _t_0 = _ts_0["head"];
+    const _rest_0 = _ts_0["tail"];
+    return {$: "Con", "head": run_loop($f_path_term$(_t_0, _dir_0)), "tail": ($f_path_terms$(_rest_0, _dir_0))};
+  }
 }
 
-function $fpe_term$(_t_0) {
-  return run_tail((($f_eq$(($tg$(_t_0)), "Error"))) ? ((_x_0) => {
-  if ((($String$is_empty$(($nm$(_t_0)))))) {
-const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $atom$, x: ["Absent"]};
-} else {
-const _x_2 = {$: "Unit"};
-return _t_0;
-}
-}) : ((_x_3) => {
-  return run_tail((($f_eq$(($tg$(_t_0)), "ImportLaw"))) ? ((_x_4) => {
-  return $kt$("Error", "imported law fills require the canonical graph loader", 0, 0, {$: "Nil"});
-}) : ((_x_5) => {
-  return $fpe_terms$(($ks$(_t_0)));
-}), {$: "Unit"});
+function $f_qual_name$(_name_0, _ns_0) {
+  return run_tail((($String$is_empty$(_ns_0))) ? ((_x_0) => {
+  return _name_0;
+}) : ((_x_1) => {
+  const _x_2 = ("." + _name_0);
+  return (_ns_0 + _x_2);
 }), {$: "Unit"});
 }
 
@@ -17723,14 +18440,6 @@ function $jd_text_prefix$(_text_0, _pattern_0) {
   }
 }
 
-function $jd_host_result$(_book_0, _ty_0, _left_0) {
-  return run_tail(((_left_0 > 0)) ? ((_x_0) => {
-  return $jd_host_result$(_book_0, run_loop($j_app_type$(run_loop($wnf$(_book_0, _ty_0)), ($atom$("Absent")))), ((_left_0 - 1) >>> 0));
-}) : ((_x_1) => {
-  return $wnf$(_book_0, _ty_0);
-}), {$: "Unit"});
-}
-
 function $jd_foreign_ready$(_book_0, _d_0, _arity_0, _live_0) {
   return run_tail(((_live_0 > 0)) ? ((_x_0) => {
   const _x_1 = run_loop($jd_foreign_values$(_book_0, ($dt$(_d_0)), _arity_0, 0, _live_0, true));
@@ -17790,80 +18499,6 @@ function $jd_params_head$(_book_0, _ty_0, _left_0, _at_0) {
 }), {$: "Unit"});
 }) : ((_x_5) => {
   return {$: "Nil"};
-}), {$: "Unit"});
-}
-
-function $jd_host_nat_known$(_book_0, _ty_0) {
-  const _fact_0 = run_loop($lookup$(_book_0, "$JD.Host.NativeWord"));
-  const _x_0 = ($da$(_fact_0));
-  const _x_1 = ($da$(_fact_0));
-  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($dk$(_fact_0)), "JDHostNativeWord")), (_x_0 > 0))), (_x_1 <= 3)))) ? ((_x_2) => {
-  return $jd_host_native_walk$(_book_0, {$: "Con", "head": _ty_0, "tail": {$: "Nil"}}, {$: "Nil"}, 1024, ($da$(_fact_0)));
-}) : ((_x_3) => {
-  return $jd_host_nat_status$(_book_0, {$: "Con", "head": _ty_0, "tail": {$: "Nil"}}, {$: "Nil"}, 1024);
-}), {$: "Unit"});
-}
-
-function $jd_host_names$(_left_0, _at_0) {
-  return run_tail(((_left_0 > 0)) ? ((_x_0) => {
-  const _x_1 = run_loop($jd_host_names$(((_left_0 - 1) >>> 0), ((_at_0 + 1) >>> 0)));
-  const _x_2 = ($U32$show$(_at_0));
-  const _x_3 = ("," + _x_1);
-  const _x_4 = (_x_2 + _x_3);
-  return ("a" + _x_4);
-}) : ((_x_5) => {
-  return "";
-}), {$: "Unit"});
-}
-
-function $jd_host_convert$(_book_0, _ty_0, _out_0, _marshal_0) {
-  if ((_marshal_0)) {
-const _x_0 = {$: "Unit"};
-return {$: "$JMP", f: $jd_marshal$, x: [_book_0, _ty_0, _out_0]};
-} else {
-const _x_1 = {$: "Unit"};
-return "";
-}
-}
-
-function $jd_host_args$(_book_0, _ty_0, _left_0, _at_0, _out_0, _marshal_0) {
-  return run_tail(((_left_0 > 0)) ? ((_x_0) => {
-  return $jd_host_args_on$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _left_0, _at_0, _out_0, _marshal_0);
-}) : ((_x_1) => {
-  return "";
-}), {$: "Unit"});
-}
-
-function $jd_host_back$(_book_0, _ty_0, _left_0, _at_0, _marshal_0) {
-  return run_tail(((_left_0 > 0)) ? ((_x_0) => {
-  return $jd_host_back_on$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _left_0, _at_0, _marshal_0);
-}) : ((_x_1) => {
-  return "";
-}), {$: "Unit"});
-}
-
-function $jd_host_nat_status_on$(_book_0, _t_0, _rest_0, _seen_0, _fuel_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
-  const _x_1 = ($qt$(_t_0));
-  return $jd_host_nat_status$(_book_0, run_loop(run_tail(((_x_1 === 0)) ? ((_x_2) => {
-  return {$: "Con", "head": run_loop($j_app_type$(_t_0, ($atom$("Absent")))), "tail": _rest_0};
-}) : ((_x_3) => {
-  return {$: "Con", "head": run_loop($kid$(_t_0, 0)), "tail": {$: "Con", "head": run_loop($j_app_type$(_t_0, ($atom$("Absent")))), "tail": _rest_0}};
-}), {$: "Unit"})), _seen_0, _fuel_0);
-}) : ((_x_4) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "ADT"))) ? ((_x_5) => {
-  return run_tail((($Bool$and$(($String$eq$(($nm$(_t_0)), "Nat")), ($db$(run_loop($lookup$(_book_0, ($nm$(_t_0))))))))) ? ((_x_6) => {
-  return 1;
-}) : ((_x_7) => {
-  return run_tail((($has_name$(_seen_0, run_loop($term_key$(_t_0))))) ? ((_x_8) => {
-  return $jd_host_nat_status$(_book_0, _rest_0, _seen_0, _fuel_0);
-}) : ((_x_9) => {
-  return $jd_host_nat_status$(_book_0, ($List$append$(($jd_host_ctor_types$(_book_0, ($dc$(run_loop($lookup$(_book_0, ($nm$(_t_0)))))), ($ks$(_t_0)))), _rest_0)), {$: "Con", "head": run_loop($term_key$(_t_0)), "tail": _seen_0}, _fuel_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-}) : ((_x_10) => {
-  return $jd_host_nat_status$(_book_0, _rest_0, _seen_0, _fuel_0);
-}), {$: "Unit"});
 }), {$: "Unit"});
 }
 
@@ -17978,63 +18613,55 @@ function $jd_calls_reverse_edges$($0, $1, $2, $3, $4, $5, $6) {
   }
 }
 
-function $jd_bind_env$(_env_0, _id_0, _ty_0) {
-  return {$: "Con", "head": ($kt$("Env", "", _id_0, 0, {$: "Con", "head": _ty_0, "tail": {$: "Nil"}})), "tail": _env_0};
-}
-
-function $jd_calls_bad$(_s_0) {
-  const _edges_0 = _s_0["edges"];
-  const _unknown_0 = _s_0["unknown"];
-  const _fuel_0 = _s_0["fuel"];
-  return {$: "JDCallScan", "edges": _edges_0, "unknown": _unknown_0, "fuel": _fuel_0, "valid": false};
-}
-
-function $jd_calls_match_type$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0) {
-  return run_tail((($String$eq$(($tg$(_domain_0)), "ADT"))) ? ((_x_0) => {
-  return $jd_calls_match_ctor$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, run_loop($j_layout_ctor$(_book_0, _domain_0, ($nm$(_t_0)))));
-}) : ((_x_1) => {
-  return $jd_calls_bad$(_s_0);
-}), {$: "Unit"});
-}
-
-function $jd_choice_call$(_book_0, _spine_0) {
-  const _x_0 = ($terms_len$(($ks$(_spine_0))));
-  return run_tail((($Bool$and$(($String$eq$(($tg$(_spine_0)), "Call")), (_x_0 === 4)))) ? ((_x_1) => {
-  return $jd_choice_named$(_book_0, run_loop($lookup$(_book_0, ($nm$(_spine_0)))), ($ks$(_spine_0)));
-}) : ((_x_2) => {
-  return false;
-}), {$: "Unit"});
-}
-
-function $jd_choice_calls$(_book_0, _env_0, _xs_0, _s_0) {
-  return $jd_calls_body$(_book_0, _env_0, run_loop($terms_at$(_xs_0, 3)), run_loop($j_type$(_book_0, _env_0, run_loop($terms_at$(_xs_0, 3)))), 1, run_loop($jd_calls_body$(_book_0, _env_0, run_loop($terms_at$(_xs_0, 2)), run_loop($j_type$(_book_0, _env_0, run_loop($terms_at$(_xs_0, 2)))), 1, _s_0)));
-}
-
-function $jd_calls_named$(_book_0, _d_0, _xs_0, _s_0) {
-  return run_tail((($String$eq$(($dk$(_d_0)), "ADT"))) ? ((_x_0) => {
-  return _s_0;
-}) : ((_x_1) => {
-  const _x_2 = ($dx$(_d_0));
-  return run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_2 === 0)))) ? ((_x_3) => {
-  return $jd_calls_saturated$(_book_0, _d_0, _xs_0, ($dt$(_d_0)), run_loop($jd_arity$(_book_0, _d_0)), _s_0);
-}) : ((_x_4) => {
-  return $jd_calls_bad$(_s_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $jd_calls_unknown_type$(_ty_0, _s_0) {
+function $jd_calls_lambda$(_book_0, _env_0, _t_0, _ty_0, _args_0, _s_0) {
   return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
   const _x_1 = ($qt$(_ty_0));
-  if (((_x_1 === 0))) {
-const _x_2 = {$: "Unit"};
-return _s_0;
-} else {
-const _x_3 = {$: "Unit"};
-return {$: "$JMP", f: $jd_calls_unknown$, x: [_s_0]};
-}
-}) : ((_x_4) => {
+  const _x_2 = (_x_1 === 0);
+  const _x_3 = (_args_0 > 0);
+  return run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
+  const _x_5 = ($qt$(_ty_0));
+  return $jd_calls_body$(_book_0, ($jd_bind_env$(_env_0, ($ix$(_t_0)), run_loop($kid$(_ty_0, 0)))), run_loop($kid$(_t_0, 0)), run_loop($j_app_type$(_ty_0, ($var$(($nm$(_t_0)), ($ix$(_t_0)))))), run_loop(run_tail(((_x_5 === 0)) ? ((_x_6) => {
+  return _args_0;
+}) : ((_x_7) => {
+  return ((_args_0 - 1) >>> 0);
+}), {$: "Unit"})), _s_0);
+}) : ((_x_8) => {
+  return _s_0;
+}), {$: "Unit"});
+}) : ((_x_9) => {
   return $jd_calls_bad$(_s_0);
+}), {$: "Unit"});
+}
+
+function $jd_calls_match$(_book_0, _env_0, _t_0, _ty_0, _args_0, _s_0) {
+  const _x_0 = ($qt$(_ty_0));
+  return run_tail((($Bool$and$(($String$eq$(($tg$(_ty_0)), "All")), ($Bool$not$((_x_0 === 0)))))) ? ((_x_1) => {
+  return $jd_calls_match_type$(_book_0, _env_0, _t_0, _ty_0, run_loop($wnf$(_book_0, run_loop($kid$(_ty_0, 0)))), _args_0, _s_0);
+}) : ((_x_2) => {
+  return $jd_calls_bad$(_s_0);
+}), {$: "Unit"});
+}
+
+function $jd_calls_unknown$(_s_0) {
+  const _edges_0 = _s_0["edges"];
+  const _fuel_0 = _s_0["fuel"];
+  const _valid_0 = _s_0["valid"];
+  return {$: "JDCallScan", "edges": _edges_0, "unknown": true, "fuel": _fuel_0, "valid": _valid_0};
+}
+
+function $jd_calls_application$(_book_0, _env_0, _t_0, _spine_0, _s_0) {
+  return run_tail((($String$eq$(($tg$(_spine_0)), "Call"))) ? ((_x_0) => {
+  return run_tail((run_loop($jd_choice_call$(_book_0, _spine_0))) ? ((_x_1) => {
+  return $jd_choice_calls$(_book_0, _env_0, ($ks$(_spine_0)), _s_0);
+}) : ((_x_2) => {
+  return $jd_calls_named$(_book_0, run_loop($lookup$(_book_0, ($nm$(_spine_0)))), ($ks$(_spine_0)), _s_0);
+}), {$: "Unit"});
+}) : ((_x_3) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "App"))) ? ((_x_4) => {
+  return $jd_calls_unknown_type$(run_loop($wnf$(_book_0, run_loop($j_type$(_book_0, _env_0, run_loop($kid$(_t_0, 0)))))), _s_0);
+}) : ((_x_5) => {
+  return $jd_calls_bad$(_s_0);
+}), {$: "Unit"});
 }), {$: "Unit"});
 }
 
@@ -18192,6 +18819,88 @@ function $jd_reach_refs_unique$(_names_0, _text_0, _line_0, _fuel_0, _out_0, _se
 }) : ((_x_5) => {
   return {$: "None"};
 }), {$: "Unit"});
+  }
+}
+
+function $jd_host_native_walk$(_book_0, _todo_0, _seen_0, _fuel_0, _flags_0) {
+  if (_todo_0.$ === "Nil") {
+    return 0;
+  } else {
+    const _t_0 = _todo_0["head"];
+    const _rest_0 = _todo_0["tail"];
+    return run_tail(((_fuel_0 > 0)) ? ((_x_0) => {
+  return $jd_host_native_on$(_book_0, run_loop($wnf$(_book_0, _t_0)), _rest_0, _seen_0, ((_fuel_0 - 1) >>> 0), _flags_0);
+}) : ((_x_1) => {
+  return 2;
+}), {$: "Unit"});
+  }
+}
+
+function $jd_marshal$(_book_0, _ty_0, _out_0) {
+  const _status_0 = run_loop($jd_host_nat_known$(_book_0, _ty_0));
+  return run_tail(((_status_0 === 2)) ? ((_x_0) => {
+  return $jd_host_error$("host type graph budget");
+}) : ((_x_1) => {
+  if (((_status_0 === 1))) {
+const _x_2 = {$: "Unit"};
+return {$: "$JMP", f: $jd_host_marshal$, x: [_book_0, _ty_0, _out_0, {$: "Nil"}, 0, 64]};
+} else {
+const _x_3 = {$: "Unit"};
+return "";
+}
+}), {$: "Unit"});
+}
+
+function $jd_host_args_on$(_book_0, _t_0, _left_0, _at_0, _out_0, _marshal_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
+  const _x_1 = ($qt$(_t_0));
+  return run_tail(((_x_1 === 0)) ? ((_x_2) => {
+  return $jd_host_args$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), ((_left_0 - 1) >>> 0), _at_0, _out_0, _marshal_0);
+}) : ((_x_3) => {
+  const _x_4 = run_loop($jd_host_args$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), ((_left_0 - 1) >>> 0), ((_at_0 + 1) >>> 0), _out_0, _marshal_0));
+  const _x_5 = ($U32$show$(_at_0));
+  const _x_6 = (")," + _x_4);
+  const _x_7 = (_x_5 + _x_6);
+  const _x_8 = run_loop($jd_host_convert$(_book_0, run_loop($kid$(_t_0, 0)), _out_0, _marshal_0));
+  const _x_9 = ("(a" + _x_7);
+  return (_x_8 + _x_9);
+}), {$: "Unit"});
+}) : ((_x_10) => {
+  const _x_11 = ($jd_host_error$("host formal telescope"));
+  return (_x_11 + "(),");
+}), {$: "Unit"});
+}
+
+function $jd_host_back_on$(_book_0, _t_0, _left_0, _at_0, _marshal_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
+  const _x_1 = ($qt$(_t_0));
+  return run_tail(((_x_1 === 0)) ? ((_x_2) => {
+  return $jd_host_back$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), ((_left_0 - 1) >>> 0), _at_0, _marshal_0);
+}) : ((_x_3) => {
+  const _x_4 = run_loop($jd_host_back$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), ((_left_0 - 1) >>> 0), ((_at_0 + 1) >>> 0), _marshal_0));
+  const _x_5 = ($U32$show$(_at_0));
+  const _x_6 = (");" + _x_4);
+  const _x_7 = (_x_5 + _x_6);
+  const _x_8 = run_loop($jd_host_convert$(_book_0, run_loop($kid$(_t_0, 0)), true, _marshal_0));
+  const _x_9 = ("(a" + _x_7);
+  return (_x_8 + _x_9);
+}), {$: "Unit"});
+}) : ((_x_10) => {
+  return "";
+}), {$: "Unit"});
+}
+
+function $term_key$(_t_0) {
+  return $sk_term$(_t_0, {$: "Nil"}, 0);
+}
+
+function $jd_host_ctor_types$(_book_0, _ctors_0, _args_0) {
+  if (_ctors_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _c_0 = _ctors_0["head"];
+    const _rest_0 = _ctors_0["tail"];
+    return {$: "Con", "head": ($j_specialize$(_book_0, ($dt$(_c_0)), _args_0)), "tail": ($jd_host_ctor_types$(_book_0, _rest_0, _args_0))};
   }
 }
 
@@ -19150,194 +19859,6 @@ function $g_args$(_book_0, _st_0, _t_0, _args_0, _pending_0, _fallback_0, _stack
   }
 }
 
-function $kw_put_checked$(_world_0, _d_0) {
-  return $kw_with_checked$(_world_0, {$: "Con", "head": _d_0, "tail": ($kw_checked$(_world_0))});
-}
-
-function $kw_with_book$(_world_0, _book_0) {
-  return {$: "KWorld", "book": _book_0, "memo": ($kw_memo$(_world_0)), "fresh": ($kw_fresh$(_world_0)), "checked": ($kw_checked$(_world_0))};
-}
-
-function $dg_event_output$(_d_0, _body_0) {
-  const _x_0 = ($dx$(_d_0));
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_0 === 0))), ($Bool$not$(($String$eq$(($tg$(($dv$(_d_0)))), "Absent")))))), ($Bool$not$(($String$eq$(($tg$(($dv$(_d_0)))), "Foreign"))))))) ? ((_x_1) => {
-  return {$: "KDef", "name": ($dn$(_d_0)), "kind": ($dk$(_d_0)), "arity": ($da$(_d_0)), "templates": ($dx$(_d_0)), "typ": ($dt$(_d_0)), "value": _body_0, "ctors": ($dc$(_d_0)), "native": ($db$(_d_0)), "unsafe": ($du$(_d_0))};
-}) : ((_x_2) => {
-  return _d_0;
-}), {$: "Unit"});
-}
-
-function $rx$(_r_0) {
-  const _consumed_0 = _r_0["consumed"];
-  return _consumed_0;
-}
-
-function $dg_report$(_r_0, _name_0) {
-  return $dg_report_payload$(($ct$(_r_0)), ($ce$(_r_0)), _name_0);
-}
-
-function $check_adt_declaration$(_e_0, _d_0) {
-  return run_tail((($String$eq$(($tg$(run_loop($tele_tip$(($cb$(_e_0)), ($dt$(_d_0)))))), "Typ"))) ? ((_x_0) => {
-  return $check_ctors$(_e_0, _d_0, ($dc$(_d_0)), ($dt$(_d_0)));
-}) : ((_x_1) => {
-  return $check_adt_kind$(_e_0, _d_0, ($dt$(_d_0)), {$: "Nil"});
-}), {$: "Unit"});
-}
-
-function $ke_world$(_e_0, _world_0) {
-  return {$: "KEnv", "world": _world_0, "name": ($cn$(_e_0)), "lhs": ($cl$(_e_0)), "pending": ($cp$(_e_0)), "quantities": ($cq$(_e_0)), "unsafe": ($cu$(_e_0)), "depth": ($cd$(_e_0))};
-}
-
-function $check_foreign$(_world_0, _d_0, _depth_0) {
-  const _book_0 = ($kw_book$(_world_0));
-  const _x_0 = ($dx$(_d_0));
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$((_x_0 === 0), ($String$eq$(($tg$(run_loop($foreign_head$(run_loop($foreign_tip$(($dt$(_d_0)))))))), "Ref")))), ($String$eq$(($nm$(run_loop($foreign_head$(run_loop($foreign_tip$(($dt$(_d_0)))))))), "IO")))), ($String$eq$(($dk$(run_loop($lookup$(_book_0, "IO")))), "Def")))), ($db$(run_loop($lookup$(_book_0, "IO"))))))) ? ((_x_1) => {
-  return $bad$(_world_0, "");
-}) : ((_x_2) => {
-  return $dg_trace$({$: "KEnv", "world": _world_0, "name": ($dn$(_d_0)), "lhs": ($ref$(($dn$(_d_0)))), "pending": 0, "quantities": {$: "Nil"}, "unsafe": ($du$(_d_0)), "depth": _depth_0}, {$: "Nil"}, run_loop($foreign_tip$(($dt$(_d_0)))), ($atom$("Absent")), ($dg_bad_detail$(_world_0, "foreign definition must return base IO directly", ($dg_text$("a foreign definition returning base IO(...) directly (return type aliases are not unfolded)")), ($dg_text$(($dn$(_d_0)))))));
-}), {$: "Unit"});
-}
-
-function $cd$(_e_0) {
-  const _depth_0 = _e_0["depth"];
-  return _depth_0;
-}
-
-function $check_definition_body$(_world_0, _d_0, _depth_0) {
-  return $kw_restore_definition$(_world_0, _d_0, run_loop($check_template_definition$(($kw_owner$(_world_0, ($dt$(_d_0)), ($dv$(_d_0)))), _d_0, ($dt$(_d_0)), ($dv$(_d_0)), ($ref$(($dn$(_d_0)))), ($dx$(_d_0)), _depth_0)));
-}
-
-function $dg_trace$(_e_0, _ctx_0, _t_0, _ty_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return _r_0;
-}) : ((_x_1) => {
-  return run_tail((($String$eq$(($tg$(($ct$(_r_0)))), "DTrace"))) ? ((_x_2) => {
-  return {$: "KChecking", "term": ($kt$("DTrace", ($nm$(($ct$(_r_0)))), ($ix$(($ct$(_r_0)))), ($qt$(($ct$(_r_0)))), {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 0)), "tail": {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 1)), "tail": {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 2)), "tail": {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 3)), "tail": {$: "Con", "head": ($kt$("DTrail", "", 0, 0, ($norm_join$(($ks$(run_loop($kid$(($ct$(_r_0)), 4)))), {$: "Con", "head": _t_0, "tail": {$: "Nil"}})))), "tail": {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 5)), "tail": {$: "Nil"}}}}}}})), "typ": ($cy$(_r_0)), "uses": ($cs$(_r_0)), "error": ($ce$(_r_0)), "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))};
-}) : ((_x_3) => {
-  return $dg_trace_detail$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, _t_0, _r_0, run_loop(run_tail((($String$eq$(($tg$(($ct$(_r_0)))), "DDetail"))) ? ((_x_4) => {
-  return $ct$(_r_0);
-}) : ((_x_5) => {
-  return $dg_reason$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, _t_0, _ty_0, ($ce$(_r_0)));
-}), {$: "Unit"})));
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $check_node$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0) {
-  return run_tail((($core_literal$(_t_0))) ? ((_x_0) => {
-  return run_tail((($core_literal_type$(($cb$(_e_0)), _t_0, run_loop($wnf$(($cb$(_e_0)), _ty_0))))) ? ((_x_1) => {
-  return $ok$(($cw$(_e_0)), _t_0, _ty_0, {$: "Nil"});
-}) : ((_x_2) => {
-  return $check$(_e_0, _ctx_0, run_loop($core_literal_step$(_t_0)), _dem_0, _ty_0);
-}), {$: "Unit"});
-}) : ((_x_3) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Lam"))) ? ((_x_4) => {
-  return $check_lam$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)));
-}) : ((_x_5) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Ctr"))) ? ((_x_6) => {
-  return $check_ctr$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)));
-}) : ((_x_7) => {
-  const _x_8 = ($String$eq$(($tg$(_t_0)), "Mat"));
-  const _x_9 = ($String$eq$(($tg$(_t_0)), "Efq"));
-  return run_tail(((_x_8 || _x_9)) ? ((_x_10) => {
-  return $check_mat$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)));
-}) : ((_x_11) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Rfl"))) ? ((_x_12) => {
-  return $check_rfl$(_e_0, _t_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)));
-}) : ((_x_13) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Hol"))) ? ((_x_14) => {
-  return run_tail((($String$eq$(($nm$(_t_0)), "TODO"))) ? ((_x_15) => {
-  return $ok$(($cw$(_e_0)), _t_0, _ty_0, {$: "Nil"});
-}) : ((_x_16) => {
-  return $bad$(($cw$(_e_0)), "unresolved hole");
-}), {$: "Unit"});
-}) : ((_x_17) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Let"))) ? ((_x_18) => {
-  return $check_let$(_e_0, _ctx_0, _ctx_0, ($ks$(_t_0)), _dem_0, _ty_0, {$: "Nil"}, {$: "Nil"}, _t_0, {$: "Nil"});
-}) : ((_x_19) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Rwt"))) ? ((_x_20) => {
-  return $check_rwt$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, run_loop($infer$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), _dem_0, {$: "Nil"})));
-}) : ((_x_21) => {
-  return $check_fits$(_e_0, run_loop($infer$(_e_0, _ctx_0, _t_0, _dem_0, {$: "Nil"})), _ty_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $qua$(_q_0) {
-  return $kt$("Qua", "", 0, _q_0, {$: "Nil"});
-}
-
-function $norm_exact_lists$(_as_0, _bs_0) {
-  if (_as_0.$ === "Nil") {
-    if (_bs_0.$ === "Nil") {
-      return true;
-    } else {
-      return false;
-    }
-  } else {
-    const _a_0 = _as_0["head"];
-    const _ar_0 = _as_0["tail"];
-    if (_bs_0.$ === "Con") {
-      const _b_0 = _bs_0["head"];
-      const _br_0 = _bs_0["tail"];
-      return run_tail((($norm_exact_head$(_a_0, _b_0))) ? ((_x_0) => {
-  return $norm_exact_lists$(($norm_join$(($ks$(_a_0)), _ar_0)), ($norm_join$(($ks$(_b_0)), _br_0)));
-}) : ((_x_1) => {
-  return false;
-}), {$: "Unit"});
-    } else {
-      return false;
-    }
-  }
-}
-
-function $norm_cmp_loop$($0, $1, $2, $3) {
-  for (;;) {
-    {
-      const _book_0 = $0;
-      const _st_0 = $1;
-      const _todo_0 = $2;
-      const _alts_0 = $3;
-      if (_todo_0.$ === "Nil") {
-        return true;
-      } else {
-        const _t_0 = _todo_0["head"];
-        if (_t_0.$ === "KNormShare") {
-          const _left_0 = _t_0["left"];
-          const _right_0 = _t_0["right"];
-          const _rest_0 = _todo_0["tail"];
-          $0 = _book_0;
-          $1 = {$: "GState", "heap": run_loop($g_put$(($g_heap$(_st_0)), _right_0, run_loop($g_get$(($g_heap$(_st_0)), _left_0)))), "next": ($g_next$(_st_0))};
-          $2 = _rest_0;
-          $3 = _alts_0;
-          continue;
-        } else {
-          const _a_0 = _t_0["a"];
-          const _b_0 = _t_0["b"];
-          const _le_0 = _t_0["le"];
-          const _fresh_0 = _t_0["fresh"];
-          const _rest_1 = _todo_0["tail"];
-          return run_tail((run_loop($norm_cmp_quick$(_a_0, _b_0))) ? ((_x_0) => {
-  return $norm_cmp_loop$(_book_0, _st_0, _rest_1, _alts_0);
-}) : ((_x_1) => {
-  return $norm_cmp_left$(_book_0, _b_0, _le_0, _fresh_0, run_loop(run_tail((($Bool$and$(($Bool$and$(($Bool$not$(_le_0)), ($String$eq$(($tg$(_a_0)), "GCell")))), ($String$eq$(($tg$(_b_0)), "GCell"))))) ? ((_x_2) => {
-  return {$: "Con", "head": {$: "KNormShare", "left": ($ix$(_a_0)), "right": ($ix$(_b_0))}, "tail": _rest_1};
-}) : ((_x_3) => {
-  return _rest_1;
-}), {$: "Unit"})), _alts_0, run_loop($g_wnf$(_book_0, _st_0, _a_0)));
-}), {$: "Unit"});
-        }
-      }
-    }
-  }
-}
-
 function $nt_replace_step$(_s_0, _key_0, _value_0, _acc_0) {
   if (_s_0 === "") {
     return _acc_0;
@@ -19873,6 +20394,332 @@ function $ni_fill$($0, $1, $2) {
   }
 }
 
+function $kw_with_checked$(_world_0, _checked_0) {
+  return {$: "KWorld", "book": ($kw_book$(_world_0)), "memo": ($kw_memo$(_world_0)), "fresh": ($kw_fresh$(_world_0)), "checked": _checked_0};
+}
+
+function $tele_tip$(_book_0, _t_0) {
+  return $tele_tip_head$(_book_0, run_loop($wnf$(_book_0, _t_0)));
+}
+
+function $check_ctors$(_e_0, _d_0, _ctrs_0, _kind_0) {
+  if (_ctrs_0.$ === "Nil") {
+    return $bad$(($cw$(_e_0)), "");
+  } else {
+    const _h_0 = _ctrs_0["head"];
+    const _t_0 = _ctrs_0["tail"];
+    return $check_ctors_next$(_e_0, _d_0, _t_0, _kind_0, run_loop($check_ctor_tel$({$: "KEnv", "world": ($cw$(_e_0)), "name": ($dn$(_h_0)), "lhs": ($ref$(($dn$(_h_0)))), "pending": 0, "quantities": {$: "Nil"}, "unsafe": ($cu$(_e_0)), "depth": ($cd$(_e_0))}, _d_0, ($dt$(_h_0)), _kind_0, ($da$(_d_0)), ($da$(_h_0)), {$: "Nil"}, {$: "Nil"})));
+  }
+}
+
+function $check_adt_kind$(_e_0, _d_0, _tel_0, _ctx_0) {
+  return $dg_trace$(_e_0, _ctx_0, _tel_0, ($atom$("Absent")), run_loop($check_adt_kind_head$(_e_0, _d_0, run_loop($wnf$(($cb$(_e_0)), _tel_0)), _ctx_0)));
+}
+
+function $cn$(_e_0) {
+  const _name_0 = _e_0["name"];
+  return _name_0;
+}
+
+function $cl$(_e_0) {
+  const _lhs_0 = _e_0["lhs"];
+  return _lhs_0;
+}
+
+function $cp$(_e_0) {
+  const _pending_0 = _e_0["pending"];
+  return _pending_0;
+}
+
+function $cq$(_e_0) {
+  const _quantities_0 = _e_0["quantities"];
+  return _quantities_0;
+}
+
+function $cu$(_e_0) {
+  const _unsafe_0 = _e_0["unsafe"];
+  return _unsafe_0;
+}
+
+function $foreign_head$(_t_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "App"))) ? ((_x_0) => {
+  return $foreign_head$(run_loop($kid$(_t_0, 0)));
+}) : ((_x_1) => {
+  return _t_0;
+}), {$: "Unit"});
+}
+
+function $foreign_tip$(_t_0) {
+  return run_tail((($String$eq$(($tg$(run_loop($strip$(_t_0)))), "All"))) ? ((_x_0) => {
+  return $foreign_tip$(run_loop($kid$(run_loop($strip$(_t_0)), 1)));
+}) : ((_x_1) => {
+  return $strip$(_t_0);
+}), {$: "Unit"});
+}
+
+function $dg_bad_detail$(_world_0, _message_0, _expected_0, _observed_0) {
+  return {$: "KChecking", "term": ($kt$("DDetail", "", 0, 1, {$: "Con", "head": _expected_0, "tail": {$: "Con", "head": _observed_0, "tail": {$: "Nil"}}})), "typ": ($atom$("Error")), "uses": {$: "Nil"}, "error": _message_0, "world": _world_0, "consumed": 0};
+}
+
+function $dg_text$(_s_0) {
+  return $kt$("DText", _s_0, 0, 0, {$: "Nil"});
+}
+
+function $kw_restore_definition$(_world_0, _d_0, _r_0) {
+  const _x_0 = ($dx$(_d_0));
+  return run_tail((($Bool$and$(($good$(_r_0)), (_x_0 > 0)))) ? ((_x_1) => {
+  return {$: "KChecking", "term": ($ct$(_r_0)), "typ": ($cy$(_r_0)), "uses": ($cs$(_r_0)), "error": ($ce$(_r_0)), "world": ($kw_with_book$(($rw$(_r_0)), ($kw_book$(_world_0)))), "consumed": ($rx$(_r_0))};
+}) : ((_x_2) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $check_template_definition$(_world_0, _d_0, _ty_0, _body_0, _lhs_0, _n_0, _depth_0) {
+  const _book_0 = ($kw_book$(_world_0));
+  return run_tail(((_n_0 === 0)) ? ((_x_0) => {
+  return $check$({$: "KEnv", "world": _world_0, "name": ($dn$(_d_0)), "lhs": _lhs_0, "pending": run_loop(run_tail((($Bool$and$((_depth_0 > 0), ($Bool$not$(($du$(_d_0))))))) ? ((_x_1) => {
+  const _x_2 = ($da$(_d_0));
+  const _x_3 = ($dx$(_d_0));
+  return ((_x_2 - _x_3) >>> 0);
+}) : ((_x_4) => {
+  return $self_pending$(_d_0, _body_0);
+}), {$: "Unit"})), "quantities": run_loop($tele_quantities$(_book_0, ($dt$(_d_0)), ($da$(_d_0)))), "unsafe": ($du$(_d_0)), "depth": _depth_0}, {$: "Nil"}, _body_0, 1, _ty_0);
+}) : ((_x_5) => {
+  return $check_template_binder$(_world_0, _d_0, run_loop($wnf$(_book_0, _ty_0)), _body_0, _lhs_0, _n_0, _depth_0);
+}), {$: "Unit"});
+}
+
+function $kw_owner$(_world_0, _ty_0, _body_0) {
+  return $kw_owner_fresh$(_world_0, _ty_0, _body_0, ($kw_fresh$(_world_0)));
+}
+
+function $dg_trace_detail$(_e_0, _ctx_0, _t_0, _r_0, _detail_0) {
+  return {$: "KChecking", "term": ($kt$("DTrace", ($cn$(_e_0)), 0, ($qt$(_detail_0)), {$: "Con", "head": run_loop($kid$(_detail_0, 0)), "tail": {$: "Con", "head": run_loop($kid$(_detail_0, 1)), "tail": {$: "Con", "head": ($kt$("DCtx", "", 0, 0, _ctx_0)), "tail": {$: "Con", "head": _t_0, "tail": {$: "Con", "head": ($kt$("DTrail", "", 0, 0, {$: "Con", "head": _t_0, "tail": {$: "Nil"}})), "tail": {$: "Con", "head": ($dg_text$(run_loop(run_tail((($Bool$and$(($Bool$and$(($String$eq$(($ce$(_r_0)), "constructor requires a datatype goal")), ($String$eq$(($dk$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_t_0)))))), "ADT")))), ($String$eq$(run_loop($dg_family$(($cb$(_e_0)), ($nm$(_t_0)))), ""))))) ? ((_x_0) => {
+  const _x_1 = ($nm$(_t_0));
+  const _x_2 = (_x_1 + " is a datatype: write its arguments as <>");
+  return ("Note: " + _x_2);
+}) : ((_x_3) => {
+  return "";
+}), {$: "Unit"})))), "tail": {$: "Nil"}}}}}}})), "typ": ($cy$(_r_0)), "uses": ($cs$(_r_0)), "error": ($ce$(_r_0)), "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))};
+}
+
+function $dg_reason$(_e_0, _ctx_0, _t_0, _ty_0, _code_0) {
+  return run_tail((($String$eq$(_code_0, "undefined name"))) ? ((_x_0) => {
+  return $dg_pair$(($dg_text$("a defined name")), _t_0);
+}) : ((_x_1) => {
+  return run_tail((($String$eq$(_code_0, "unbound variable"))) ? ((_x_2) => {
+  return $dg_pair$(($dg_text$("a bound variable")), run_loop(run_tail((($String$eq$(($tg$(_t_0)), "FUnboundVar"))) ? ((_x_3) => {
+  const _x_6 = ($nm$(_t_0));
+  const _x_7 = run_loop(run_tail((($kp_bound$(($dg_scope$(_ctx_0, {$: "Nil"})), ($nm$(_t_0))))) ? ((_x_4) => {
+  return "^-1";
+}) : ((_x_5) => {
+  return "";
+}), {$: "Unit"}));
+  return $dg_text$((_x_6 + _x_7));
+}) : ((_x_8) => {
+  return _t_0;
+}), {$: "Unit"})));
+}) : ((_x_9) => {
+  return run_tail((($String$eq$(_code_0, "nondecreasing self-call"))) ? ((_x_10) => {
+  return $dg_pair$(($dg_text$("a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)")), _t_0);
+}) : ((_x_11) => {
+  return run_tail((($String$eq$(_code_0, "live use of an unfilled law"))) ? ((_x_12) => {
+  return $dg_pair$(($dg_text$("a filled definition (an unfilled law is a dead claim: live code cannot use it)")), _t_0);
+}) : ((_x_13) => {
+  return run_tail((($String$eq$(_code_0, "a family requires angle-bracket parameters"))) ? ((_x_14) => {
+  const _x_15 = ($nm$(_t_0));
+  const _x_16 = (_x_15 + "<..>)");
+  return $dg_pair$(($dg_text$(("a family instance (write " + _x_16))), _t_0);
+}) : ((_x_17) => {
+  return run_tail((($String$eq$(_code_0, "unresolved hole"))) ? ((_x_18) => {
+  return $dg_pair$(_ty_0, _t_0);
+}) : ((_x_19) => {
+  return run_tail((($String$eq$(_code_0, "cannot infer: annotation required"))) ? ((_x_20) => {
+  const _x_21 = ($String$eq$(($tg$(_t_0)), "Ctr"));
+  const _x_22 = ($core_literal$(_t_0));
+  return $dg_pair$(($dg_text$(run_loop(run_tail((($Bool$and$((_x_21 || _x_22), ($String$eq$(run_loop($dg_family$(($cb$(_e_0)), ($nm$(run_loop(run_tail((($core_literal$(_t_0))) ? ((_x_23) => {
+  return $core_literal_step$(_t_0);
+}) : ((_x_24) => {
+  return _t_0;
+}), {$: "Unit"})))))), ""))))) ? ((_x_25) => {
+  return "a declared constructor";
+}) : ((_x_26) => {
+  return "an annotated term (cannot infer)";
+}), {$: "Unit"})))), _t_0);
+}) : ((_x_27) => {
+  const _x_28 = ($String$eq$(_code_0, "lambda requires a function type"));
+  const _x_29 = ($String$eq$(_code_0, "matcher requires a function type"));
+  const _x_30 = (_x_28 || _x_29);
+  const _x_31 = ($String$eq$(_code_0, "reflexivity requires equality goal"));
+  return run_tail(((_x_30 || _x_31)) ? ((_x_32) => {
+  return $dg_pair$(_ty_0, ($dg_text$("non-inferrable term")));
+}) : ((_x_33) => {
+  return run_tail((($String$eq$(_code_0, "constructor requires a datatype goal"))) ? ((_x_34) => {
+  return $dg_pair$(_ty_0, run_loop(run_tail((($String$eq$(run_loop($dg_family$(($cb$(_e_0)), ($nm$(_t_0)))), ""))) ? ((_x_35) => {
+  return $dg_text$("non-inferrable term");
+}) : ((_x_36) => {
+  return $ref$(run_loop($dg_family$(($cb$(_e_0)), ($nm$(_t_0)))));
+}), {$: "Unit"})));
+}) : ((_x_37) => {
+  return $kt$("DDetail", "", 0, 0, {$: "Con", "head": ($dg_text$(_code_0)), "tail": {$: "Con", "head": ($atom$("Absent")), "tail": {$: "Nil"}}});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $ok$(_world_0, _t_0, _ty_0, _us_0) {
+  return {$: "KChecking", "term": _t_0, "typ": _ty_0, "uses": _us_0, "error": "", "world": _world_0, "consumed": 0};
+}
+
+function $cw$(_e_0) {
+  const _world_0 = _e_0["world"];
+  return _world_0;
+}
+
+function $check_lam$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0) {
+  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
+  const _x_1 = ($qt$(_t_0));
+  const _x_2 = ($qt$(_ty_0));
+  return $check_lam_q$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, run_loop(run_tail((($Bool$and$(($Bool$and$(($k_quantity_present$(_t_0)), (_x_1 === 2))), (_x_2 === 1)))) ? ((_x_3) => {
+  return 2;
+}) : ((_x_4) => {
+  return $qt$(_ty_0);
+}), {$: "Unit"})));
+}) : ((_x_5) => {
+  return $bad$(($cw$(_e_0)), "lambda requires a function type");
+}), {$: "Unit"});
+}
+
+function $check_ctr$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0) {
+  return run_tail((($String$eq$(($tg$(_ty_0)), "ADT"))) ? ((_x_0) => {
+  return $check_ctr_found$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, run_loop($lookup$(($dc$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_ty_0)))))), ($nm$(_t_0)))));
+}) : ((_x_1) => {
+  return $bad$(($cw$(_e_0)), "constructor requires a datatype goal");
+}), {$: "Unit"});
+}
+
+function $check_mat$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0) {
+  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
+  const _x_1 = ($qt$(_ty_0));
+  return run_tail((($Bool$and$(($Bool$not$((_dem_0 === 0))), (_x_1 === 0)))) ? ((_x_2) => {
+  return $dg_bad_message$(($cw$(_e_0)), "erased scrutinee in live match", ($dg_text$("a live scrutinee (a - scrutinee matches only in a dead region)")));
+}) : ((_x_3) => {
+  return $check_mat_type$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, run_loop($wnf$(($cb$(_e_0)), run_loop($kid$(_ty_0, 0)))));
+}), {$: "Unit"});
+}) : ((_x_4) => {
+  return $bad$(($cw$(_e_0)), "matcher requires a function type");
+}), {$: "Unit"});
+}
+
+function $check_rfl$(_e_0, _t_0, _ty_0) {
+  return run_tail((($String$eq$(($tg$(_ty_0)), "Eql"))) ? ((_x_0) => {
+  return run_tail((run_loop($compare$(($cb$(_e_0)), run_loop($kid$(_ty_0, 0)), run_loop($kid$(_ty_0, 1)), false))) ? ((_x_1) => {
+  return $ok$(($cw$(_e_0)), _t_0, _ty_0, {$: "Nil"});
+}) : ((_x_2) => {
+  return $dg_bad_detail$(($cw$(_e_0)), "reflexivity endpoints differ", run_loop($kid$(_ty_0, 0)), run_loop($kid$(_ty_0, 1)));
+}), {$: "Unit"});
+}) : ((_x_3) => {
+  return $bad$(($cw$(_e_0)), "reflexivity requires equality goal");
+}), {$: "Unit"});
+}
+
+function $check_let$(_e_0, _outer_0, _ctx_0, _xs_0, _dem_0, _ty_0, _bindings_0, _us_0, _site_0, _out_0) {
+  if (_xs_0.$ === "Nil") {
+    return $bad$(($cw$(_e_0)), "let has no body");
+  } else {
+    const _h_0 = _xs_0["head"];
+    const _rest_0 = _xs_0["tail"];
+    return run_tail((($String$eq$(($tg$(_h_0)), "Bind"))) ? ((_x_0) => {
+  return $check_let_value$(_e_0, _outer_0, _ctx_0, _h_0, _rest_0, _dem_0, _ty_0, _bindings_0, _us_0, _site_0, _out_0, run_loop($infer$(_e_0, _outer_0, run_loop($kid$(_h_0, 0)), run_loop($qdem$(($qt$(_h_0)), _dem_0)), {$: "Nil"})));
+}) : ((_x_1) => {
+  const _x_2 = ($kb$(_site_0));
+  return $ki_let_finish$(_site_0, _out_0, run_loop($check_let_done$(_e_0, _outer_0, run_loop($check$(_e_0, _ctx_0, ($let_cells$(_h_0, _bindings_0)), _dem_0, _ty_0)), ($ki_reverse_terms$(_bindings_0, {$: "Nil"})), _us_0, run_loop(run_tail(((_x_2 === 0)) ? ((_x_3) => {
+  return $kid$(_site_0, 0);
+}) : ((_x_4) => {
+  return _site_0;
+}), {$: "Unit"})))));
+}), {$: "Unit"});
+  }
+}
+
+function $check_rwt$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return $check_rwt_type$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, _t_0, _dem_0, _ty_0, _r_0, run_loop($wnf$(($kw_book$(($rw$(_r_0)))), ($cy$(_r_0)))));
+}) : ((_x_1) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $infer$(_e_0, _ctx_0, _t_0, _dem_0, _sp_0) {
+  return $dg_trace$(_e_0, _ctx_0, _t_0, ($atom$("Absent")), run_loop($infer_node$(_e_0, _ctx_0, run_loop($core_beta$(_t_0)), _dem_0, _sp_0)));
+}
+
+function $check_fits$(_e_0, _r_0, _ty_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return run_tail((run_loop($compare$(($kw_book$(($rw$(_r_0)))), ($cy$(_r_0)), _ty_0, true))) ? ((_x_1) => {
+  return $checked$(_r_0, ($ct$(_r_0)), _ty_0);
+}) : ((_x_2) => {
+  return $kr_from$(_r_0, ($dg_bad_detail$(($rw$(_r_0)), "type mismatch", _ty_0, ($cy$(_r_0)))));
+}), {$: "Unit"});
+}) : ((_x_3) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $g_put$(_heap_0, _id_0, _value_0) {
+  if (_heap_0.$ === "GEmpty") {
+    return $g_put_node$(($atom$("Absent")), {$: "GEmpty"}, {$: "GEmpty"}, _id_0, _value_0);
+  } else {
+    const _old_0 = _heap_0["value"];
+    const _left_0 = _heap_0["left"];
+    const _right_0 = _heap_0["right"];
+    return $g_put_node$(_old_0, _left_0, _right_0, _id_0, _value_0);
+  }
+}
+
+function $g_next$(_st_0) {
+  const _next_0 = _st_0["next"];
+  return _next_0;
+}
+
+function $norm_cmp_quick$(_a_0, _b_0) {
+  const _x_0 = ($String$eq$(($tg$(_a_0)), "App"));
+  const _x_1 = ($String$eq$(($tg$(_a_0)), "Ref"));
+  const _x_2 = (_x_0 || _x_1);
+  const _x_3 = ($String$eq$(($tg$(_a_0)), "Var"));
+  const _x_4 = (_x_2 || _x_3);
+  const _x_5 = ($String$eq$(($tg$(_a_0)), "GCell"));
+  if (((_x_4 || _x_5))) {
+const _x_6 = {$: "Unit"};
+return {$: "$JMP", f: $norm_exact$, x: [_a_0, _b_0]};
+} else {
+const _x_7 = {$: "Unit"};
+return false;
+}
+}
+
+function $norm_cmp_left$(_book_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0, _r_0) {
+  const _st_0 = _r_0["state"];
+  const _a_0 = _r_0["term"];
+  return $norm_cmp_right$(_book_0, _a_0, _le_0, _fresh_0, _rest_0, _alts_0, run_loop($g_wnf$(_book_0, _st_0, _b_0)));
+}
+
+function $base_prefix_world_order$(_declared_0, _prefix_0, _suffix_0) {
+  if (_suffix_0.$ === "Nil") {
+    return _declared_0;
+  } else {
+    const _d_0 = _suffix_0["head"];
+    const _rest_0 = _suffix_0["tail"];
+    return $base_prefix_world_order_tail$(_declared_0, _prefix_0, {$: "Con", "head": _d_0, "tail": _rest_0});
+  }
+}
+
 function $fpe_here$(_source_0, _rest_0, _offset_0, _error_0) {
   return run_tail((($String$is_empty$(_rest_0))) ? ((_x_0) => {
   if ((($String$eq$(($nm$(run_loop($kid$(_error_0, 1)))), "<eof>")))) {
@@ -20080,25 +20927,6 @@ function $f_empty$(_input_0) {
 
 function $f_context_failure_rest$(_start_0, _end_0) {
   return _end_0;
-}
-
-function $f_path_terms$(_ts_0, _dir_0) {
-  if (_ts_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _t_0 = _ts_0["head"];
-    const _rest_0 = _ts_0["tail"];
-    return {$: "Con", "head": run_loop($f_path_term$(_t_0, _dir_0)), "tail": ($f_path_terms$(_rest_0, _dir_0))};
-  }
-}
-
-function $f_qual_name$(_name_0, _ns_0) {
-  return run_tail((($String$is_empty$(_ns_0))) ? ((_x_0) => {
-  return _name_0;
-}) : ((_x_1) => {
-  const _x_2 = ("." + _name_0);
-  return (_ns_0 + _x_2);
-}), {$: "Unit"});
 }
 
 function $f_bare_params$(_params_0) {
@@ -20975,88 +21803,6 @@ return "";
 }
 }
 
-function $jd_host_native_walk$(_book_0, _todo_0, _seen_0, _fuel_0, _flags_0) {
-  if (_todo_0.$ === "Nil") {
-    return 0;
-  } else {
-    const _t_0 = _todo_0["head"];
-    const _rest_0 = _todo_0["tail"];
-    return run_tail(((_fuel_0 > 0)) ? ((_x_0) => {
-  return $jd_host_native_on$(_book_0, run_loop($wnf$(_book_0, _t_0)), _rest_0, _seen_0, ((_fuel_0 - 1) >>> 0), _flags_0);
-}) : ((_x_1) => {
-  return 2;
-}), {$: "Unit"});
-  }
-}
-
-function $jd_marshal$(_book_0, _ty_0, _out_0) {
-  const _status_0 = run_loop($jd_host_nat_known$(_book_0, _ty_0));
-  return run_tail(((_status_0 === 2)) ? ((_x_0) => {
-  return $jd_host_error$("host type graph budget");
-}) : ((_x_1) => {
-  if (((_status_0 === 1))) {
-const _x_2 = {$: "Unit"};
-return {$: "$JMP", f: $jd_host_marshal$, x: [_book_0, _ty_0, _out_0, {$: "Nil"}, 0, 64]};
-} else {
-const _x_3 = {$: "Unit"};
-return "";
-}
-}), {$: "Unit"});
-}
-
-function $jd_host_args_on$(_book_0, _t_0, _left_0, _at_0, _out_0, _marshal_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
-  const _x_1 = ($qt$(_t_0));
-  return run_tail(((_x_1 === 0)) ? ((_x_2) => {
-  return $jd_host_args$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), ((_left_0 - 1) >>> 0), _at_0, _out_0, _marshal_0);
-}) : ((_x_3) => {
-  const _x_4 = run_loop($jd_host_args$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), ((_left_0 - 1) >>> 0), ((_at_0 + 1) >>> 0), _out_0, _marshal_0));
-  const _x_5 = ($U32$show$(_at_0));
-  const _x_6 = (")," + _x_4);
-  const _x_7 = (_x_5 + _x_6);
-  const _x_8 = run_loop($jd_host_convert$(_book_0, run_loop($kid$(_t_0, 0)), _out_0, _marshal_0));
-  const _x_9 = ("(a" + _x_7);
-  return (_x_8 + _x_9);
-}), {$: "Unit"});
-}) : ((_x_10) => {
-  const _x_11 = ($jd_host_error$("host formal telescope"));
-  return (_x_11 + "(),");
-}), {$: "Unit"});
-}
-
-function $jd_host_back_on$(_book_0, _t_0, _left_0, _at_0, _marshal_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
-  const _x_1 = ($qt$(_t_0));
-  return run_tail(((_x_1 === 0)) ? ((_x_2) => {
-  return $jd_host_back$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), ((_left_0 - 1) >>> 0), _at_0, _marshal_0);
-}) : ((_x_3) => {
-  const _x_4 = run_loop($jd_host_back$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), ((_left_0 - 1) >>> 0), ((_at_0 + 1) >>> 0), _marshal_0));
-  const _x_5 = ($U32$show$(_at_0));
-  const _x_6 = (");" + _x_4);
-  const _x_7 = (_x_5 + _x_6);
-  const _x_8 = run_loop($jd_host_convert$(_book_0, run_loop($kid$(_t_0, 0)), true, _marshal_0));
-  const _x_9 = ("(a" + _x_7);
-  return (_x_8 + _x_9);
-}), {$: "Unit"});
-}) : ((_x_10) => {
-  return "";
-}), {$: "Unit"});
-}
-
-function $term_key$(_t_0) {
-  return $sk_term$(_t_0, {$: "Nil"}, 0);
-}
-
-function $jd_host_ctor_types$(_book_0, _ctors_0, _args_0) {
-  if (_ctors_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _c_0 = _ctors_0["head"];
-    const _rest_0 = _ctors_0["tail"];
-    return {$: "Con", "head": ($j_specialize$(_book_0, ($dt$(_c_0)), _args_0)), "tail": ($jd_host_ctor_types$(_book_0, _rest_0, _args_0))};
-  }
-}
-
 function $jd_calls_context_groups$(_book_0, _bounces_0, _groups_0) {
   const _index_0 = _groups_0["index"];
   const _keys_0 = _groups_0["keys"];
@@ -21077,7 +21823,7 @@ function $jd_calls_mark$(_reverse_0, _todo_0, _seen_0, _key_0) {
   }
 }
 
-function $jd_calls_groups$($0, $1, $2, $3, $4, $5, $6) {
+function $jd_calls_groups$($0, $1, $2, $3, $4, $5, $6, $7) {
   let $pc = 0;
   for (;;) switch ($pc) {
     case 0: {
@@ -21096,6 +21842,7 @@ function $jd_calls_groups$($0, $1, $2, $3, $4, $5, $6) {
         $3 = _keys_0;
         $4 = ($dn$(_row_0));
         $5 = ($nm$(($dv$(run_loop($jd_calls_get$(_labels_0, ($dn$(_row_0))))))));
+        $6 = ($dt$(_row_0));
         $pc = 1; continue;
       }
     }
@@ -21106,13 +21853,15 @@ function $jd_calls_groups$($0, $1, $2, $3, $4, $5, $6) {
       const _keys_0 = $3;
       const _name_0 = $4;
       const _key_0 = $5;
+      const _arity_0 = $6;
       $0 = _rest_0;
       $1 = _labels_0;
       $2 = _groups_0;
       $3 = _keys_0;
       $4 = _name_0;
       $5 = _key_0;
-      $6 = run_loop($jd_calls_get$(_groups_0, _key_0));
+      $6 = _arity_0;
+      $7 = run_loop($jd_calls_get$(_groups_0, _key_0));
       $pc = 2; continue;
     }
     case 2: {
@@ -21122,10 +21871,11 @@ function $jd_calls_groups$($0, $1, $2, $3, $4, $5, $6) {
       const _keys_0 = $3;
       const _name_0 = $4;
       const _key_0 = $5;
-      const _old_0 = $6;
+      const _arity_0 = $6;
+      const _old_0 = $7;
       $0 = _rest_0;
       $1 = _labels_0;
-      $2 = run_loop($jd_calls_put$(_groups_0, {$: "KDef", "name": _key_0, "kind": "JDGroup", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDGroup", _name_0, 0, 0, {$: "Con", "head": ($ref$(_name_0)), "tail": ($ks$(($dv$(_old_0))))})), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
+      $2 = run_loop($jd_calls_put$(_groups_0, {$: "KDef", "name": _key_0, "kind": "JDGroup", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDGroup", _name_0, 0, 0, {$: "Con", "head": ($kt$("JDMember", _name_0, 0, 0, {$: "Con", "head": _arity_0, "tail": {$: "Nil"}})), "tail": ($ks$(($dv$(_old_0))))})), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
       $3 = run_loop(run_tail((($String$eq$(($dk$(_old_0)), "Absent"))) ? ((_x_0) => {
   return {$: "Con", "head": ($ref$(_key_0)), "tail": _keys_0};
 }) : ((_x_1) => {
@@ -21140,52 +21890,63 @@ function $jd_calls_finish_row$(_forward_0, _rest_0, _seen_0, _order_0, _row_0) {
   return $jd_calls_finish$(_forward_0, ($List$reverse$go$(($ks$(($dv$(_row_0)))), {$: "Con", "head": ($kt$("JDExit", ($dn$(_row_0)), 0, 0, {$: "Nil"})), "tail": _rest_0})), run_loop($jd_calls_put$(_seen_0, _row_0)), _order_0);
 }
 
-function $jd_calls_match_ctor$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, _ctor_0) {
-  return run_tail((($String$eq$(($dk$(_ctor_0)), "Ctr"))) ? ((_x_0) => {
-  return $jd_calls_match_tel$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, ($j_specialize$(_book_0, ($dt$(_ctor_0)), ($ks$(_domain_0)))));
+function $jd_bind_env$(_env_0, _id_0, _ty_0) {
+  return {$: "Con", "head": ($kt$("Env", "", _id_0, 0, {$: "Con", "head": _ty_0, "tail": {$: "Nil"}})), "tail": _env_0};
+}
+
+function $jd_calls_bad$(_s_0) {
+  const _edges_0 = _s_0["edges"];
+  const _unknown_0 = _s_0["unknown"];
+  const _fuel_0 = _s_0["fuel"];
+  return {$: "JDCallScan", "edges": _edges_0, "unknown": _unknown_0, "fuel": _fuel_0, "valid": false};
+}
+
+function $jd_calls_match_type$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0) {
+  return run_tail((($String$eq$(($tg$(_domain_0)), "ADT"))) ? ((_x_0) => {
+  return $jd_calls_match_ctor$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, run_loop($j_layout_ctor$(_book_0, _domain_0, ($nm$(_t_0)))));
 }) : ((_x_1) => {
   return $jd_calls_bad$(_s_0);
 }), {$: "Unit"});
 }
 
-function $jd_choice_named$(_book_0, _d_0, _xs_0) {
-  const _x_0 = ($terms_len$(_xs_0));
-  return run_tail(((_x_0 === 4)) ? ((_x_1) => {
-  const _x_2 = ($qt$(run_loop($j_strip$(run_loop($terms_at$(_xs_0, 2))))));
-  const _x_3 = ($qt$(run_loop($j_strip$(run_loop($terms_at$(_xs_0, 3))))));
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(run_loop($j_strip$(run_loop($terms_at$(_xs_0, 2)))))), "Lam")), ($String$eq$(($tg$(run_loop($j_strip$(run_loop($terms_at$(_xs_0, 3)))))), "Lam")))), ($Bool$not$((_x_2 === 0))))), ($Bool$not$((_x_3 === 0)))))) ? ((_x_4) => {
-  const _x_5 = ($dx$(_d_0));
-  const _x_6 = ($da$(_d_0));
-  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_5 === 0))), (_x_6 === 4)))) ? ((_x_7) => {
-  return run_tail((run_loop($j_choice_definition$(_book_0, _d_0))) ? ((_x_8) => {
-  return $jd_choice_signature$(_book_0, ($dt$(_d_0)), 0);
-}) : ((_x_9) => {
-  return false;
-}), {$: "Unit"});
-}) : ((_x_10) => {
-  return false;
-}), {$: "Unit"});
-}) : ((_x_11) => {
-  return false;
-}), {$: "Unit"});
-}) : ((_x_12) => {
+function $jd_choice_call$(_book_0, _spine_0) {
+  const _x_0 = ($terms_len$(($ks$(_spine_0))));
+  return run_tail((($Bool$and$(($String$eq$(($tg$(_spine_0)), "Call")), (_x_0 === 4)))) ? ((_x_1) => {
+  return $jd_choice_named$(_book_0, run_loop($lookup$(_book_0, ($nm$(_spine_0)))), ($ks$(_spine_0)));
+}) : ((_x_2) => {
   return false;
 }), {$: "Unit"});
 }
 
-function $jd_calls_saturated$(_book_0, _d_0, _xs_0, _ty_0, _left_0, _s_0) {
-  return run_tail(((_left_0 === 0)) ? ((_x_0) => {
-  return run_tail((($List$is_empty$(_xs_0))) ? ((_x_1) => {
-  return run_tail((run_loop($jd_native_known$(_book_0, _d_0))) ? ((_x_2) => {
+function $jd_choice_calls$(_book_0, _env_0, _xs_0, _s_0) {
+  return $jd_calls_body$(_book_0, _env_0, run_loop($terms_at$(_xs_0, 3)), run_loop($j_type$(_book_0, _env_0, run_loop($terms_at$(_xs_0, 3)))), 1, run_loop($jd_calls_body$(_book_0, _env_0, run_loop($terms_at$(_xs_0, 2)), run_loop($j_type$(_book_0, _env_0, run_loop($terms_at$(_xs_0, 2)))), 1, _s_0)));
+}
+
+function $jd_calls_named$(_book_0, _d_0, _xs_0, _s_0) {
+  return run_tail((($String$eq$(($dk$(_d_0)), "ADT"))) ? ((_x_0) => {
   return _s_0;
-}) : ((_x_3) => {
-  return $jd_calls_edge$(_s_0, ($dn$(_d_0)));
-}), {$: "Unit"});
+}) : ((_x_1) => {
+  const _x_2 = ($dx$(_d_0));
+  return run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_2 === 0)))) ? ((_x_3) => {
+  return $jd_calls_saturated$(_book_0, _d_0, _xs_0, ($dt$(_d_0)), run_loop($jd_arity$(_book_0, _d_0)), _s_0);
 }) : ((_x_4) => {
-  return $jd_calls_extra$(_book_0, _xs_0, _ty_0, _s_0);
+  return $jd_calls_bad$(_s_0);
 }), {$: "Unit"});
-}) : ((_x_5) => {
-  return $jd_calls_saturated_next$(_book_0, _d_0, _xs_0, run_loop($wnf$(_book_0, _ty_0)), _left_0, _s_0);
+}), {$: "Unit"});
+}
+
+function $jd_calls_unknown_type$(_ty_0, _s_0) {
+  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
+  const _x_1 = ($qt$(_ty_0));
+  if (((_x_1 === 0))) {
+const _x_2 = {$: "Unit"};
+return _s_0;
+} else {
+const _x_3 = {$: "Unit"};
+return {$: "$JMP", f: $jd_calls_unknown$, x: [_s_0]};
+}
+}) : ((_x_4) => {
+  return $jd_calls_bad$(_s_0);
 }), {$: "Unit"});
 }
 
@@ -21290,6 +22051,59 @@ function $jd_reach_marker$(_names_0, _text_0, _rev_0, _fuel_0, _out_0, _seen_0) 
   return {$: "None"};
 }), {$: "Unit"});
   }
+}
+
+function $jd_host_native_on$(_book_0, _t_0, _rest_0, _seen_0, _fuel_0, _flags_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
+  const _x_1 = ($qt$(_t_0));
+  return $jd_host_native_walk$(_book_0, run_loop(run_tail(((_x_1 === 0)) ? ((_x_2) => {
+  return {$: "Con", "head": run_loop($j_app_type$(_t_0, ($atom$("Absent")))), "tail": _rest_0};
+}) : ((_x_3) => {
+  return {$: "Con", "head": run_loop($kid$(_t_0, 0)), "tail": {$: "Con", "head": run_loop($j_app_type$(_t_0, ($atom$("Absent")))), "tail": _rest_0}};
+}), {$: "Unit"})), _seen_0, _fuel_0, _flags_0);
+}) : ((_x_4) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "ADT"))) ? ((_x_5) => {
+  return run_tail((($Bool$and$(($String$eq$(($nm$(_t_0)), "Nat")), ($db$(run_loop($lookup$(_book_0, ($nm$(_t_0))))))))) ? ((_x_6) => {
+  return 1;
+}) : ((_x_7) => {
+  return run_tail((($jd_host_native_leaf$(_t_0, _flags_0))) ? ((_x_8) => {
+  return $jd_host_native_walk$(_book_0, _rest_0, _seen_0, _fuel_0, _flags_0);
+}) : ((_x_9) => {
+  return run_tail((($has_name$(_seen_0, run_loop($term_key$(_t_0))))) ? ((_x_10) => {
+  return $jd_host_native_walk$(_book_0, _rest_0, _seen_0, _fuel_0, _flags_0);
+}) : ((_x_11) => {
+  return $jd_host_native_walk$(_book_0, ($List$append$(($jd_host_ctor_types$(_book_0, ($dc$(run_loop($lookup$(_book_0, ($nm$(_t_0)))))), ($ks$(_t_0)))), _rest_0)), {$: "Con", "head": run_loop($term_key$(_t_0)), "tail": _seen_0}, _fuel_0, _flags_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}) : ((_x_12) => {
+  return $jd_host_native_walk$(_book_0, _rest_0, _seen_0, _fuel_0, _flags_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $jd_host_marshal$(_book_0, _ty_0, _out_0, _seen_0, _depth_0, _fuel_0) {
+  return run_tail(((_fuel_0 > 0)) ? ((_x_0) => {
+  return $jd_host_marshal_on$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _out_0, _seen_0, _depth_0, ((_fuel_0 - 1) >>> 0));
+}) : ((_x_1) => {
+  return $jd_host_error$("host type marshalling depth");
+}), {$: "Unit"});
+}
+
+function $sk_term$(_t_0, _env_0, _depth_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Var"))) ? ((_x_0) => {
+  return run_tail((($List$is_empty$(($ks$(_t_0))))) ? ((_x_1) => {
+  return $sk_var$(_t_0, _env_0);
+}) : ((_x_2) => {
+  return $sk_term$(run_loop($kid$(_t_0, 0)), _env_0, _depth_0);
+}), {$: "Unit"});
+}) : ((_x_3) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Sub"))) ? ((_x_4) => {
+  return $sk_term$(run_loop($subst$(run_loop($kid$(_t_0, 1)), ($ix$(_t_0)), run_loop($kid$(_t_0, 0)))), _env_0, _depth_0);
+}) : ((_x_5) => {
+  return $sk_node$(_t_0, _env_0, _depth_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
 }
 
 function $ka_spine_step$(_e_0, _ctx_0, _arg_0, _node_0, _fty_0) {
@@ -22168,22 +22982,6 @@ return {$: "KTerm", "tag": _tag_0, "name": _name_0, "id": _id_0, "quant": _quant
   }
 }
 
-function $g_put$(_heap_0, _id_0, _value_0) {
-  if (_heap_0.$ === "GEmpty") {
-    return $g_put_node$(($atom$("Absent")), {$: "GEmpty"}, {$: "GEmpty"}, _id_0, _value_0);
-  } else {
-    const _old_0 = _heap_0["value"];
-    const _left_0 = _heap_0["left"];
-    const _right_0 = _heap_0["right"];
-    return $g_put_node$(_old_0, _left_0, _right_0, _id_0, _value_0);
-  }
-}
-
-function $g_next$(_st_0) {
-  const _next_0 = _st_0["next"];
-  return _next_0;
-}
-
 function $g_return$($0, $1, $2, $3, $4) {
   let $pc = 0;
   for (;;) switch ($pc) {
@@ -22281,306 +23079,6 @@ return 0;
 const _x_1 = {$: "Unit"};
 return ((_n_0 - 1) >>> 0);
 }
-}
-
-function $kw_with_checked$(_world_0, _checked_0) {
-  return {$: "KWorld", "book": ($kw_book$(_world_0)), "memo": ($kw_memo$(_world_0)), "fresh": ($kw_fresh$(_world_0)), "checked": _checked_0};
-}
-
-function $tele_tip$(_book_0, _t_0) {
-  return $tele_tip_head$(_book_0, run_loop($wnf$(_book_0, _t_0)));
-}
-
-function $check_ctors$(_e_0, _d_0, _ctrs_0, _kind_0) {
-  if (_ctrs_0.$ === "Nil") {
-    return $bad$(($cw$(_e_0)), "");
-  } else {
-    const _h_0 = _ctrs_0["head"];
-    const _t_0 = _ctrs_0["tail"];
-    return $check_ctors_next$(_e_0, _d_0, _t_0, _kind_0, run_loop($check_ctor_tel$({$: "KEnv", "world": ($cw$(_e_0)), "name": ($dn$(_h_0)), "lhs": ($ref$(($dn$(_h_0)))), "pending": 0, "quantities": {$: "Nil"}, "unsafe": ($cu$(_e_0)), "depth": ($cd$(_e_0))}, _d_0, ($dt$(_h_0)), _kind_0, ($da$(_d_0)), ($da$(_h_0)), {$: "Nil"}, {$: "Nil"})));
-  }
-}
-
-function $check_adt_kind$(_e_0, _d_0, _tel_0, _ctx_0) {
-  return $dg_trace$(_e_0, _ctx_0, _tel_0, ($atom$("Absent")), run_loop($check_adt_kind_head$(_e_0, _d_0, run_loop($wnf$(($cb$(_e_0)), _tel_0)), _ctx_0)));
-}
-
-function $cn$(_e_0) {
-  const _name_0 = _e_0["name"];
-  return _name_0;
-}
-
-function $cl$(_e_0) {
-  const _lhs_0 = _e_0["lhs"];
-  return _lhs_0;
-}
-
-function $cp$(_e_0) {
-  const _pending_0 = _e_0["pending"];
-  return _pending_0;
-}
-
-function $cq$(_e_0) {
-  const _quantities_0 = _e_0["quantities"];
-  return _quantities_0;
-}
-
-function $cu$(_e_0) {
-  const _unsafe_0 = _e_0["unsafe"];
-  return _unsafe_0;
-}
-
-function $foreign_head$(_t_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "App"))) ? ((_x_0) => {
-  return $foreign_head$(run_loop($kid$(_t_0, 0)));
-}) : ((_x_1) => {
-  return _t_0;
-}), {$: "Unit"});
-}
-
-function $foreign_tip$(_t_0) {
-  return run_tail((($String$eq$(($tg$(run_loop($strip$(_t_0)))), "All"))) ? ((_x_0) => {
-  return $foreign_tip$(run_loop($kid$(run_loop($strip$(_t_0)), 1)));
-}) : ((_x_1) => {
-  return $strip$(_t_0);
-}), {$: "Unit"});
-}
-
-function $dg_bad_detail$(_world_0, _message_0, _expected_0, _observed_0) {
-  return {$: "KChecking", "term": ($kt$("DDetail", "", 0, 1, {$: "Con", "head": _expected_0, "tail": {$: "Con", "head": _observed_0, "tail": {$: "Nil"}}})), "typ": ($atom$("Error")), "uses": {$: "Nil"}, "error": _message_0, "world": _world_0, "consumed": 0};
-}
-
-function $dg_text$(_s_0) {
-  return $kt$("DText", _s_0, 0, 0, {$: "Nil"});
-}
-
-function $kw_restore_definition$(_world_0, _d_0, _r_0) {
-  const _x_0 = ($dx$(_d_0));
-  return run_tail((($Bool$and$(($good$(_r_0)), (_x_0 > 0)))) ? ((_x_1) => {
-  return {$: "KChecking", "term": ($ct$(_r_0)), "typ": ($cy$(_r_0)), "uses": ($cs$(_r_0)), "error": ($ce$(_r_0)), "world": ($kw_with_book$(($rw$(_r_0)), ($kw_book$(_world_0)))), "consumed": ($rx$(_r_0))};
-}) : ((_x_2) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $check_template_definition$(_world_0, _d_0, _ty_0, _body_0, _lhs_0, _n_0, _depth_0) {
-  const _book_0 = ($kw_book$(_world_0));
-  return run_tail(((_n_0 === 0)) ? ((_x_0) => {
-  return $check$({$: "KEnv", "world": _world_0, "name": ($dn$(_d_0)), "lhs": _lhs_0, "pending": run_loop(run_tail((($Bool$and$((_depth_0 > 0), ($Bool$not$(($du$(_d_0))))))) ? ((_x_1) => {
-  const _x_2 = ($da$(_d_0));
-  const _x_3 = ($dx$(_d_0));
-  return ((_x_2 - _x_3) >>> 0);
-}) : ((_x_4) => {
-  return $self_pending$(_d_0, _body_0);
-}), {$: "Unit"})), "quantities": run_loop($tele_quantities$(_book_0, ($dt$(_d_0)), ($da$(_d_0)))), "unsafe": ($du$(_d_0)), "depth": _depth_0}, {$: "Nil"}, _body_0, 1, _ty_0);
-}) : ((_x_5) => {
-  return $check_template_binder$(_world_0, _d_0, run_loop($wnf$(_book_0, _ty_0)), _body_0, _lhs_0, _n_0, _depth_0);
-}), {$: "Unit"});
-}
-
-function $kw_owner$(_world_0, _ty_0, _body_0) {
-  return $kw_owner_fresh$(_world_0, _ty_0, _body_0, ($kw_fresh$(_world_0)));
-}
-
-function $dg_trace_detail$(_e_0, _ctx_0, _t_0, _r_0, _detail_0) {
-  return {$: "KChecking", "term": ($kt$("DTrace", ($cn$(_e_0)), 0, ($qt$(_detail_0)), {$: "Con", "head": run_loop($kid$(_detail_0, 0)), "tail": {$: "Con", "head": run_loop($kid$(_detail_0, 1)), "tail": {$: "Con", "head": ($kt$("DCtx", "", 0, 0, _ctx_0)), "tail": {$: "Con", "head": _t_0, "tail": {$: "Con", "head": ($kt$("DTrail", "", 0, 0, {$: "Con", "head": _t_0, "tail": {$: "Nil"}})), "tail": {$: "Con", "head": ($dg_text$(run_loop(run_tail((($Bool$and$(($Bool$and$(($String$eq$(($ce$(_r_0)), "constructor requires a datatype goal")), ($String$eq$(($dk$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_t_0)))))), "ADT")))), ($String$eq$(run_loop($dg_family$(($cb$(_e_0)), ($nm$(_t_0)))), ""))))) ? ((_x_0) => {
-  const _x_1 = ($nm$(_t_0));
-  const _x_2 = (_x_1 + " is a datatype: write its arguments as <>");
-  return ("Note: " + _x_2);
-}) : ((_x_3) => {
-  return "";
-}), {$: "Unit"})))), "tail": {$: "Nil"}}}}}}})), "typ": ($cy$(_r_0)), "uses": ($cs$(_r_0)), "error": ($ce$(_r_0)), "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))};
-}
-
-function $dg_reason$(_e_0, _ctx_0, _t_0, _ty_0, _code_0) {
-  return run_tail((($String$eq$(_code_0, "undefined name"))) ? ((_x_0) => {
-  return $dg_pair$(($dg_text$("a defined name")), _t_0);
-}) : ((_x_1) => {
-  return run_tail((($String$eq$(_code_0, "unbound variable"))) ? ((_x_2) => {
-  return $dg_pair$(($dg_text$("a bound variable")), run_loop(run_tail((($String$eq$(($tg$(_t_0)), "FUnboundVar"))) ? ((_x_3) => {
-  const _x_6 = ($nm$(_t_0));
-  const _x_7 = run_loop(run_tail((($kp_bound$(($dg_scope$(_ctx_0, {$: "Nil"})), ($nm$(_t_0))))) ? ((_x_4) => {
-  return "^-1";
-}) : ((_x_5) => {
-  return "";
-}), {$: "Unit"}));
-  return $dg_text$((_x_6 + _x_7));
-}) : ((_x_8) => {
-  return _t_0;
-}), {$: "Unit"})));
-}) : ((_x_9) => {
-  return run_tail((($String$eq$(_code_0, "nondecreasing self-call"))) ? ((_x_10) => {
-  return $dg_pair$(($dg_text$("a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)")), _t_0);
-}) : ((_x_11) => {
-  return run_tail((($String$eq$(_code_0, "live use of an unfilled law"))) ? ((_x_12) => {
-  return $dg_pair$(($dg_text$("a filled definition (an unfilled law is a dead claim: live code cannot use it)")), _t_0);
-}) : ((_x_13) => {
-  return run_tail((($String$eq$(_code_0, "a family requires angle-bracket parameters"))) ? ((_x_14) => {
-  const _x_15 = ($nm$(_t_0));
-  const _x_16 = (_x_15 + "<..>)");
-  return $dg_pair$(($dg_text$(("a family instance (write " + _x_16))), _t_0);
-}) : ((_x_17) => {
-  return run_tail((($String$eq$(_code_0, "unresolved hole"))) ? ((_x_18) => {
-  return $dg_pair$(_ty_0, _t_0);
-}) : ((_x_19) => {
-  return run_tail((($String$eq$(_code_0, "cannot infer: annotation required"))) ? ((_x_20) => {
-  const _x_21 = ($String$eq$(($tg$(_t_0)), "Ctr"));
-  const _x_22 = ($core_literal$(_t_0));
-  return $dg_pair$(($dg_text$(run_loop(run_tail((($Bool$and$((_x_21 || _x_22), ($String$eq$(run_loop($dg_family$(($cb$(_e_0)), ($nm$(run_loop(run_tail((($core_literal$(_t_0))) ? ((_x_23) => {
-  return $core_literal_step$(_t_0);
-}) : ((_x_24) => {
-  return _t_0;
-}), {$: "Unit"})))))), ""))))) ? ((_x_25) => {
-  return "a declared constructor";
-}) : ((_x_26) => {
-  return "an annotated term (cannot infer)";
-}), {$: "Unit"})))), _t_0);
-}) : ((_x_27) => {
-  const _x_28 = ($String$eq$(_code_0, "lambda requires a function type"));
-  const _x_29 = ($String$eq$(_code_0, "matcher requires a function type"));
-  const _x_30 = (_x_28 || _x_29);
-  const _x_31 = ($String$eq$(_code_0, "reflexivity requires equality goal"));
-  return run_tail(((_x_30 || _x_31)) ? ((_x_32) => {
-  return $dg_pair$(_ty_0, ($dg_text$("non-inferrable term")));
-}) : ((_x_33) => {
-  return run_tail((($String$eq$(_code_0, "constructor requires a datatype goal"))) ? ((_x_34) => {
-  return $dg_pair$(_ty_0, run_loop(run_tail((($String$eq$(run_loop($dg_family$(($cb$(_e_0)), ($nm$(_t_0)))), ""))) ? ((_x_35) => {
-  return $dg_text$("non-inferrable term");
-}) : ((_x_36) => {
-  return $ref$(run_loop($dg_family$(($cb$(_e_0)), ($nm$(_t_0)))));
-}), {$: "Unit"})));
-}) : ((_x_37) => {
-  return $kt$("DDetail", "", 0, 0, {$: "Con", "head": ($dg_text$(_code_0)), "tail": {$: "Con", "head": ($atom$("Absent")), "tail": {$: "Nil"}}});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $ok$(_world_0, _t_0, _ty_0, _us_0) {
-  return {$: "KChecking", "term": _t_0, "typ": _ty_0, "uses": _us_0, "error": "", "world": _world_0, "consumed": 0};
-}
-
-function $cw$(_e_0) {
-  const _world_0 = _e_0["world"];
-  return _world_0;
-}
-
-function $check_lam$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0) {
-  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
-  const _x_1 = ($qt$(_t_0));
-  const _x_2 = ($qt$(_ty_0));
-  return $check_lam_q$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, run_loop(run_tail((($Bool$and$(($Bool$and$(($k_quantity_present$(_t_0)), (_x_1 === 2))), (_x_2 === 1)))) ? ((_x_3) => {
-  return 2;
-}) : ((_x_4) => {
-  return $qt$(_ty_0);
-}), {$: "Unit"})));
-}) : ((_x_5) => {
-  return $bad$(($cw$(_e_0)), "lambda requires a function type");
-}), {$: "Unit"});
-}
-
-function $check_ctr$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0) {
-  return run_tail((($String$eq$(($tg$(_ty_0)), "ADT"))) ? ((_x_0) => {
-  return $check_ctr_found$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, run_loop($lookup$(($dc$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_ty_0)))))), ($nm$(_t_0)))));
-}) : ((_x_1) => {
-  return $bad$(($cw$(_e_0)), "constructor requires a datatype goal");
-}), {$: "Unit"});
-}
-
-function $check_mat$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0) {
-  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
-  const _x_1 = ($qt$(_ty_0));
-  return run_tail((($Bool$and$(($Bool$not$((_dem_0 === 0))), (_x_1 === 0)))) ? ((_x_2) => {
-  return $dg_bad_message$(($cw$(_e_0)), "erased scrutinee in live match", ($dg_text$("a live scrutinee (a - scrutinee matches only in a dead region)")));
-}) : ((_x_3) => {
-  return $check_mat_type$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, run_loop($wnf$(($cb$(_e_0)), run_loop($kid$(_ty_0, 0)))));
-}), {$: "Unit"});
-}) : ((_x_4) => {
-  return $bad$(($cw$(_e_0)), "matcher requires a function type");
-}), {$: "Unit"});
-}
-
-function $check_rfl$(_e_0, _t_0, _ty_0) {
-  return run_tail((($String$eq$(($tg$(_ty_0)), "Eql"))) ? ((_x_0) => {
-  return run_tail((run_loop($compare$(($cb$(_e_0)), run_loop($kid$(_ty_0, 0)), run_loop($kid$(_ty_0, 1)), false))) ? ((_x_1) => {
-  return $ok$(($cw$(_e_0)), _t_0, _ty_0, {$: "Nil"});
-}) : ((_x_2) => {
-  return $dg_bad_detail$(($cw$(_e_0)), "reflexivity endpoints differ", run_loop($kid$(_ty_0, 0)), run_loop($kid$(_ty_0, 1)));
-}), {$: "Unit"});
-}) : ((_x_3) => {
-  return $bad$(($cw$(_e_0)), "reflexivity requires equality goal");
-}), {$: "Unit"});
-}
-
-function $check_let$(_e_0, _outer_0, _ctx_0, _xs_0, _dem_0, _ty_0, _bindings_0, _us_0, _site_0, _out_0) {
-  if (_xs_0.$ === "Nil") {
-    return $bad$(($cw$(_e_0)), "let has no body");
-  } else {
-    const _h_0 = _xs_0["head"];
-    const _rest_0 = _xs_0["tail"];
-    return run_tail((($String$eq$(($tg$(_h_0)), "Bind"))) ? ((_x_0) => {
-  return $check_let_value$(_e_0, _outer_0, _ctx_0, _h_0, _rest_0, _dem_0, _ty_0, _bindings_0, _us_0, _site_0, _out_0, run_loop($infer$(_e_0, _outer_0, run_loop($kid$(_h_0, 0)), run_loop($qdem$(($qt$(_h_0)), _dem_0)), {$: "Nil"})));
-}) : ((_x_1) => {
-  const _x_2 = ($kb$(_site_0));
-  return $ki_let_finish$(_site_0, _out_0, run_loop($check_let_done$(_e_0, _outer_0, run_loop($check$(_e_0, _ctx_0, ($let_cells$(_h_0, _bindings_0)), _dem_0, _ty_0)), ($ki_reverse_terms$(_bindings_0, {$: "Nil"})), _us_0, run_loop(run_tail(((_x_2 === 0)) ? ((_x_3) => {
-  return $kid$(_site_0, 0);
-}) : ((_x_4) => {
-  return _site_0;
-}), {$: "Unit"})))));
-}), {$: "Unit"});
-  }
-}
-
-function $check_rwt$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $check_rwt_type$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, _t_0, _dem_0, _ty_0, _r_0, run_loop($wnf$(($kw_book$(($rw$(_r_0)))), ($cy$(_r_0)))));
-}) : ((_x_1) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $infer$(_e_0, _ctx_0, _t_0, _dem_0, _sp_0) {
-  return $dg_trace$(_e_0, _ctx_0, _t_0, ($atom$("Absent")), run_loop($infer_node$(_e_0, _ctx_0, run_loop($core_beta$(_t_0)), _dem_0, _sp_0)));
-}
-
-function $check_fits$(_e_0, _r_0, _ty_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return run_tail((run_loop($compare$(($kw_book$(($rw$(_r_0)))), ($cy$(_r_0)), _ty_0, true))) ? ((_x_1) => {
-  return $checked$(_r_0, ($ct$(_r_0)), _ty_0);
-}) : ((_x_2) => {
-  return $kr_from$(_r_0, ($dg_bad_detail$(($rw$(_r_0)), "type mismatch", _ty_0, ($cy$(_r_0)))));
-}), {$: "Unit"});
-}) : ((_x_3) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $norm_cmp_quick$(_a_0, _b_0) {
-  const _x_0 = ($String$eq$(($tg$(_a_0)), "App"));
-  const _x_1 = ($String$eq$(($tg$(_a_0)), "Ref"));
-  const _x_2 = (_x_0 || _x_1);
-  const _x_3 = ($String$eq$(($tg$(_a_0)), "Var"));
-  const _x_4 = (_x_2 || _x_3);
-  const _x_5 = ($String$eq$(($tg$(_a_0)), "GCell"));
-  if (((_x_4 || _x_5))) {
-const _x_6 = {$: "Unit"};
-return {$: "$JMP", f: $norm_exact$, x: [_a_0, _b_0]};
-} else {
-const _x_7 = {$: "Unit"};
-return false;
-}
-}
-
-function $norm_cmp_left$(_book_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0, _r_0) {
-  const _st_0 = _r_0["state"];
-  const _a_0 = _r_0["term"];
-  return $norm_cmp_right$(_book_0, _a_0, _le_0, _fresh_0, _rest_0, _alts_0, run_loop($g_wnf$(_book_0, _st_0, _b_0)));
 }
 
 function $nb_max$(_a_0, _b_0) {
@@ -22881,6 +23379,346 @@ function $ni_replace_all$(_s_0, _key_0, _value_0) {
 }) : ((_x_2) => {
   return (_h_0 + run_loop($ni_replace_all$(_t_0, _key_0, _value_0)));
 }), {$: "Unit"});
+  }
+}
+
+function $tele_tip_head$(_book_0, _t_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
+  return $tele_tip$(_book_0, run_loop($kid$(_t_0, 1)));
+}) : ((_x_1) => {
+  return _t_0;
+}), {$: "Unit"});
+}
+
+function $check_ctors_next$(_e_0, _d_0, _rest_0, _kind_0, _err_0) {
+  return run_tail((($good$(_err_0))) ? ((_x_0) => {
+  return $check_ctors$(($ke_world$(_e_0, ($rw$(_err_0)))), _d_0, _rest_0, _kind_0);
+}) : ((_x_1) => {
+  return _err_0;
+}), {$: "Unit"});
+}
+
+function $check_ctor_tel$(_e_0, _d_0, _tel_0, _kind_0, _params_0, _fields_0, _ctx_0, _args_0) {
+  const _x_0 = ((_params_0 + _fields_0) >>> 0);
+  return run_tail(((_x_0 === 0)) ? ((_x_1) => {
+  return run_tail((run_loop($compare$(($cb$(_e_0)), _tel_0, ($kt$("ADT", ($dn$(_d_0)), 0, 0, _args_0)), false))) ? ((_x_2) => {
+  return $bad$(($cw$(_e_0)), "");
+}) : ((_x_3) => {
+  const _x_4 = ($dn$(_d_0));
+  const _x_5 = (_x_4 + " applied to its own parameters");
+  return $dg_trace$(_e_0, _ctx_0, _tel_0, ($atom$("Absent")), ($dg_bad_detail$(($cw$(_e_0)), "constructor result must apply family to its parameters", ($dg_text$(("a telescope tipped at " + _x_5))), _tel_0)));
+}), {$: "Unit"});
+}) : ((_x_6) => {
+  return $check_ctor_head$(_e_0, _d_0, run_loop($wnf$(($cb$(_e_0)), _tel_0)), _kind_0, _params_0, _fields_0, _ctx_0, _args_0);
+}), {$: "Unit"});
+}
+
+function $check_adt_kind_head$(_e_0, _d_0, _tel_0, _ctx_0) {
+  return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
+  return $check_adt_kind$(_e_0, _d_0, run_loop($kid$(_tel_0, 1)), ($ctx_bind$(_ctx_0, ($ix$(_tel_0)), ($qt$(_tel_0)), ($nm$(_tel_0)), run_loop($kid$(_tel_0, 0)))));
+}) : ((_x_1) => {
+  return run_tail((($String$eq$(($tg$(_tel_0)), "Typ"))) ? ((_x_2) => {
+  return $check_ctors$(_e_0, _d_0, ($dc$(_d_0)), ($dt$(_d_0)));
+}) : ((_x_3) => {
+  const _x_4 = ($dn$(_d_0));
+  const _x_5 = (_x_4 + "<..> is Kind(g))");
+  return $dg_trace$(_e_0, _ctx_0, _tel_0, ($atom$("Absent")), ($dg_bad_detail$(($cw$(_e_0)), "datatype declaration must return a kind", ($dg_text$(("a kind (type " + _x_5))), _tel_0)));
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $self_pending$(_d_0, _body_0) {
+  return run_tail((($du$(_d_0))) ? ((_x_0) => {
+  return 0;
+}) : ((_x_1) => {
+  return run_tail((run_loop($contains_self$({$: "Con", "head": _body_0, "tail": {$: "Nil"}}, ($dn$(_d_0))))) ? ((_x_2) => {
+  const _x_3 = ($da$(_d_0));
+  const _x_4 = ($dx$(_d_0));
+  return ((_x_3 - _x_4) >>> 0);
+}) : ((_x_5) => {
+  return 0;
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $tele_quantities$(_book_0, _ty_0, _n_0) {
+  return run_tail(((_n_0 === 0)) ? ((_x_0) => {
+  return {$: "Nil"};
+}) : ((_x_1) => {
+  return $tele_quantities_head$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _n_0);
+}), {$: "Unit"});
+}
+
+function $check_template_binder$(_world_0, _d_0, _ty_0, _body_0, _lhs_0, _n_0, _depth_0) {
+  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
+  const _x_1 = ($nm$(_ty_0));
+  const _x_2 = ($dn$(_d_0));
+  const _x_3 = ("~" + _x_1);
+  return $check_template_open$(_world_0, _d_0, _ty_0, _body_0, _lhs_0, _n_0, (_x_2 + _x_3), _depth_0);
+}) : ((_x_4) => {
+  return $bad$(_world_0, "template telescope is too short");
+}), {$: "Unit"});
+}
+
+function $kw_owner_fresh$(_world_0, _ty_0, _body_0, _fresh_0) {
+  if (_fresh_0.$ === "KFreshKnown") {
+    return _world_0;
+  } else {
+    const _roots_0 = _fresh_0["roots"];
+    return {$: "KWorld", "book": ($kw_book$(_world_0)), "memo": ($kw_memo$(_world_0)), "fresh": {$: "KFreshDeferred", "roots": {$: "Con", "head": _ty_0, "tail": {$: "Con", "head": _body_0, "tail": _roots_0}}}, "checked": ($kw_checked$(_world_0))};
+  }
+}
+
+function $dg_family$(_book_0, _name_0) {
+  if (_book_0.$ === "Nil") {
+    return "";
+  } else {
+    const _d_0 = _book_0["head"];
+    const _rest_0 = _book_0["tail"];
+    if ((($Bool$and$(($String$eq$(($dk$(_d_0)), "ADT")), ($Bool$not$(($String$eq$(($dk$(run_loop($lookup$(($dc$(_d_0)), _name_0)))), "Absent")))))))) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $dn$, x: [_d_0]};
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $dg_family$, x: [_rest_0, _name_0]};
+}
+  }
+}
+
+function $dg_pair$(_expected_0, _observed_0) {
+  return $kt$("DDetail", "", 0, 1, {$: "Con", "head": _expected_0, "tail": {$: "Con", "head": _observed_0, "tail": {$: "Nil"}}});
+}
+
+function $check_lam_q$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _q_0) {
+  const _x_0 = ($qt$(_t_0));
+  const _x_1 = ($qt$(_ty_0));
+  return $ki_lam_kind$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _q_0, run_loop(run_tail((($Bool$and$(($Bool$and$(($k_quantity_present$(_t_0)), (_x_0 === 2))), (_x_1 === 1)))) ? ((_x_2) => {
+  return $dg_kind_check$(_e_0, _ctx_0, run_loop($kid$(_ty_0, 0)), _q_0, ($nm$(_t_0)));
+}) : ((_x_3) => {
+  return $ok$(($cw$(_e_0)), _t_0, _ty_0, {$: "Nil"});
+}), {$: "Unit"})));
+}
+
+function $check_ctr_found$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _ctr_0) {
+  const _x_0 = ($da$(_ctr_0));
+  const _x_1 = ($terms_len$(($ks$(_t_0))));
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$not$(($String$eq$(($dk$(_ctr_0)), "Absent")))), ($Bool$not$(($has_name$(($rm$(_ty_0)), ($nm$(_t_0)))))))), (_x_0 === _x_1)))) ? ((_x_2) => {
+  return $ki_args$(_t_0, _ty_0, run_loop($tele_check$(_e_0, _ctx_0, run_loop($tele_fill$(($cb$(_e_0)), ($dt$(_ctr_0)), ($ks$(_ty_0)))), ($ks$(_t_0)), _dem_0)));
+}) : ((_x_3) => {
+  return $dg_ctor_error$(_e_0, _t_0, _ty_0, _ctr_0);
+}), {$: "Unit"});
+}
+
+function $dg_bad_message$(_world_0, _message_0, _expected_0) {
+  return {$: "KChecking", "term": ($kt$("DDetail", "", 0, 0, {$: "Con", "head": _expected_0, "tail": {$: "Con", "head": ($atom$("Absent")), "tail": {$: "Nil"}}})), "typ": ($atom$("Error")), "uses": {$: "Nil"}, "error": _message_0, "world": _world_0, "consumed": 0};
+}
+
+function $check_mat_type$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0) {
+  return run_tail((($Bool$and$(($String$eq$(($tg$(_a_0)), "ADT")), ($String$eq$(($dk$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_a_0)))))), "ADT"))))) ? ((_x_0) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Efq"))) ? ((_x_1) => {
+  const _x_2 = ($dead_type$(($cb$(_e_0)), _a_0));
+  const _x_3 = run_loop($ctx_dead$(($cb$(_e_0)), _ctx_0));
+  return run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
+  return $ok$(($cw$(_e_0)), _t_0, _ty_0, {$: "Nil"});
+}) : ((_x_5) => {
+  const _x_6 = ($dg_constructor_names$(run_loop($remaining$(($dc$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_a_0)))))), ($rm$(_a_0))))));
+  return $dg_bad_detail$(($cw$(_e_0)), "nonexhaustive match", ($dg_text$(("cases for " + _x_6))), _t_0);
+}), {$: "Unit"});
+}) : ((_x_7) => {
+  return $check_mat_ctr$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, run_loop($lookup$(run_loop($remaining$(($dc$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_a_0)))))), ($rm$(_a_0)))), ($nm$(_t_0)))));
+}), {$: "Unit"});
+}) : ((_x_8) => {
+  return $dg_bad_detail$(($cw$(_e_0)), "match scrutinee requires a datatype", ($dg_text$("a datatype")), run_loop($kid$(_ty_0, 0)));
+}), {$: "Unit"});
+}
+
+function $check_let_value$(_e_0, _outer_0, _ctx_0, _h_0, _rest_0, _dem_0, _ty_0, _bindings_0, _us_0, _site_0, _out_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return $check_let_kind$(($ke_world$(_e_0, ($rw$(_r_0)))), _outer_0, _ctx_0, _h_0, _rest_0, _dem_0, _ty_0, _bindings_0, _us_0, _site_0, _out_0, _r_0, run_loop($dg_kind_at$(($ke_world$(_e_0, ($rw$(_r_0)))), _outer_0, ($cy$(_r_0)), ($qt$(_h_0)), ($nm$(_h_0)), _h_0)));
+}) : ((_x_1) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $qdem$(_q_0, _d_0) {
+  if (((_q_0 === 0))) {
+const _x_0 = {$: "Unit"};
+return 0;
+} else {
+const _x_1 = {$: "Unit"};
+return _d_0;
+}
+}
+
+function $ki_let_finish$(_site_0, _out_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return $checked$(_r_0, ($k_with_children$(_site_0, ($ki_reverse_terms$(_out_0, {$: "Con", "head": ($ct$(_r_0)), "tail": {$: "Nil"}})))), ($cy$(_r_0)));
+}) : ((_x_1) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $check_let_done$(_e_0, _ctx_0, _r_0, _bs_0, _us_0, _site_0) {
+  if (_bs_0.$ === "Nil") {
+    return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return {$: "KChecking", "term": ($ct$(_r_0)), "typ": ($cy$(_r_0)), "uses": ($uses_merge$(_us_0, ($cs$(_r_0)), false)), "error": "", "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))};
+}) : ((_x_1) => {
+  return _r_0;
+}), {$: "Unit"});
+  } else {
+    const _h_0 = _bs_0["head"];
+    const _t_0 = _bs_0["tail"];
+    return run_tail((($good$(_r_0))) ? ((_x_2) => {
+  const _x_3 = run_loop($uses_get$(($cs$(_r_0)), ($ix$(_h_0))));
+  const _x_4 = ($qt$(_h_0));
+  return run_tail(((_x_3 > _x_4)) ? ((_x_5) => {
+  return $dg_trace$(_e_0, _ctx_0, _site_0, ($cy$(_r_0)), ($kr_from$(_r_0, ($dg_quant_error$(($rw$(_r_0)), "let binder consumed more than allowed", ($nm$(_h_0)), ($qt$(_h_0)), run_loop($uses_get$(($cs$(_r_0)), ($ix$(_h_0)))))))));
+}) : ((_x_6) => {
+  return $check_let_done$(_e_0, _ctx_0, {$: "KChecking", "term": ($ct$(_r_0)), "typ": ($cy$(_r_0)), "uses": run_loop($uses_del$(($cs$(_r_0)), ($ix$(_h_0)))), "error": "", "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))}, _t_0, _us_0, _site_0);
+}), {$: "Unit"});
+}) : ((_x_7) => {
+  return _r_0;
+}), {$: "Unit"});
+  }
+}
+
+function $let_cells$($0, $1) {
+  for (;;) {
+    {
+      const _body_0 = $0;
+      const _bs_0 = $1;
+      if (_bs_0.$ === "Nil") {
+        return _body_0;
+      } else {
+        const _h_0 = _bs_0["head"];
+        const _t_0 = _bs_0["tail"];
+        $0 = run_loop($subst$(_body_0, ($ix$(_h_0)), ($kt$("Var", ($nm$(_h_0)), ($ix$(_h_0)), 0, {$: "Con", "head": run_loop($kid$(_h_0, 0)), "tail": {$: "Nil"}}))));
+        $1 = _t_0;
+        continue;
+      }
+    }
+  }
+}
+
+function $ki_reverse_terms$($0, $1) {
+  for (;;) {
+    {
+      const _xs_0 = $0;
+      const _out_0 = $1;
+      if (_xs_0.$ === "Nil") {
+        return _out_0;
+      } else {
+        const _h_0 = _xs_0["head"];
+        const _rest_0 = _xs_0["tail"];
+        $0 = _rest_0;
+        $1 = {$: "Con", "head": _h_0, "tail": _out_0};
+        continue;
+      }
+    }
+  }
+}
+
+function $check_rwt_type$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0) {
+  return run_tail((($String$eq$(($tg$(_eq_0)), "Eql"))) ? ((_x_0) => {
+  return $ki_rwt_bound$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0, ($kw_temp_floor$(($cw$(_e_0)), {$: "Con", "head": _t_0, "tail": {$: "Con", "head": _ty_0, "tail": {$: "Con", "head": ($cl$(_e_0)), "tail": {$: "Nil"}}}})));
+}) : ((_x_1) => {
+  return $dg_trace$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), _ty_0, ($kr_from$(_r_0, ($dg_bad_detail$(($rw$(_r_0)), "rewrite requires equality evidence", ($dg_text$("an equation {a == b : T}")), ($cy$(_r_0)))))));
+}), {$: "Unit"});
+}
+
+function $infer_node$(_e_0, _ctx_0, _t_0, _dem_0, _sp_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Var"))) ? ((_x_0) => {
+  return $infer_var$(_e_0, _ctx_0, _t_0, _dem_0);
+}) : ((_x_1) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Ref"))) ? ((_x_2) => {
+  return $infer_ref$(_e_0, _ctx_0, _t_0, _dem_0, _sp_0, run_loop($lookup$(($cb$(_e_0)), ($nm$(_t_0)))));
+}) : ((_x_3) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Typ"))) ? ((_x_4) => {
+  return $ki_one$(_t_0, ($typ$(1)), run_loop($check$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), 0, ($atom$("Qnt")))));
+}) : ((_x_5) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Qnt"))) ? ((_x_6) => {
+  return $ok$(($cw$(_e_0)), _t_0, ($typ$(1)), {$: "Nil"});
+}) : ((_x_7) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Qua"))) ? ((_x_8) => {
+  return $ok$(($cw$(_e_0)), _t_0, ($atom$("Qnt")), {$: "Nil"});
+}) : ((_x_9) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Min"))) ? ((_x_10) => {
+  return $ki_min$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($check$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), _dem_0, ($atom$("Qnt")))));
+}) : ((_x_11) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_12) => {
+  return $ki_all$(_e_0, _ctx_0, _t_0, run_loop($dg_kind_check$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), ($qt$(_t_0)), ($nm$(_t_0)))));
+}) : ((_x_13) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "App"))) ? ((_x_14) => {
+  return $infer_app$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($infer$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), _dem_0, {$: "Con", "head": run_loop($kid$(_t_0, 1)), "tail": _sp_0})));
+}) : ((_x_15) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "ADT"))) ? ((_x_16) => {
+  return $infer_adt$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($lookup$(($cb$(_e_0)), ($nm$(_t_0)))));
+}) : ((_x_17) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Eql"))) ? ((_x_18) => {
+  return $ki_eql_type$(_e_0, _ctx_0, _t_0, run_loop($check$(_e_0, _ctx_0, run_loop($kid$(_t_0, 2)), 0, ($typ$(1)))));
+}) : ((_x_19) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Ann"))) ? ((_x_20) => {
+  return $ki_ann$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($check$(_e_0, _ctx_0, run_loop($kid$(_t_0, 1)), 0, ($typ$(1)))));
+}) : ((_x_21) => {
+  return run_tail((($core_literal$(_t_0))) ? ((_x_22) => {
+  return $bad$(($cw$(_e_0)), "cannot infer: annotation required");
+}) : ((_x_23) => {
+  return $bad$(($cw$(_e_0)), run_loop(run_tail((($String$eq$(($tg$(_t_0)), "FUnboundVar"))) ? ((_x_24) => {
+  return "unbound variable";
+}) : ((_x_25) => {
+  return "cannot infer: annotation required";
+}), {$: "Unit"})));
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $checked$(_r_0, _t_0, _ty_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return {$: "KChecking", "term": _t_0, "typ": _ty_0, "uses": ($cs$(_r_0)), "error": "", "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))};
+}) : ((_x_1) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $kr_from$(_origin_0, _derived_0) {
+  return {$: "KChecking", "term": ($ct$(_derived_0)), "typ": ($cy$(_derived_0)), "uses": ($cs$(_derived_0)), "error": ($ce$(_derived_0)), "world": ($rw$(_origin_0)), "consumed": ($rx$(_origin_0))};
+}
+
+function $g_put_node$(_old_0, _left_0, _right_0, _id_0, _value_0) {
+  return run_tail(((_id_0 === 0)) ? ((_x_0) => {
+  return {$: "GNode", "value": _value_0, "left": _left_0, "right": _right_0};
+}) : ((_x_1) => {
+  const _x_2 = ((_id_0 & 1) >>> 0);
+  return run_tail(((_x_2 === 0)) ? ((_x_3) => {
+  return {$: "GNode", "value": _old_0, "left": run_loop($g_put$(_left_0, ((_id_0 >>> 1) >>> 0), _value_0)), "right": _right_0};
+}) : ((_x_4) => {
+  return {$: "GNode", "value": _old_0, "left": _left_0, "right": run_loop($g_put$(_right_0, ((_id_0 >>> 1) >>> 0), _value_0))};
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $norm_cmp_right$(_book_0, _a_0, _le_0, _fresh_0, _rest_0, _alts_0, _r_0) {
+  const _st_0 = _r_0["state"];
+  const _b_0 = _r_0["term"];
+  return $norm_cmp_heads$(_book_0, _st_0, _a_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0);
+}
+
+function $base_prefix_world_order_tail$(_book_0, _prefix_0, _suffix_0) {
+  if (_book_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _cache_0 = _book_0["head"];
+    return {$: "Con", "head": _cache_0, "tail": ($prefix_state_join$(_prefix_0, run_loop($book_final_fast$(($prefix_state_headers$(_suffix_0)), {$: "Nil"}))))};
   }
 }
 
@@ -24595,10 +25433,6 @@ function $jd_calls_component_members$(_groups_0, _fact_0) {
 }), {$: "Unit"});
 }
 
-function $jd_calls_fact$(_book_0, _name_0) {
-  return $jd_calls_get$(($index_first$(($dc$(run_loop($lookup$(_book_0, "$JD.Calls")))))), _name_0);
-}
-
 function $jd_primitive_arg_count$(_args_0) {
   if (_args_0.$ === "Nil") {
     return 0;
@@ -24621,59 +25455,6 @@ function $jd_primitive_template$(_text_0, _args_0) {
   return (_h_0 + run_loop($jd_primitive_template$(_rest_0, _args_0)));
 }), {$: "Unit"});
   }
-}
-
-function $jd_host_native_on$(_book_0, _t_0, _rest_0, _seen_0, _fuel_0, _flags_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
-  const _x_1 = ($qt$(_t_0));
-  return $jd_host_native_walk$(_book_0, run_loop(run_tail(((_x_1 === 0)) ? ((_x_2) => {
-  return {$: "Con", "head": run_loop($j_app_type$(_t_0, ($atom$("Absent")))), "tail": _rest_0};
-}) : ((_x_3) => {
-  return {$: "Con", "head": run_loop($kid$(_t_0, 0)), "tail": {$: "Con", "head": run_loop($j_app_type$(_t_0, ($atom$("Absent")))), "tail": _rest_0}};
-}), {$: "Unit"})), _seen_0, _fuel_0, _flags_0);
-}) : ((_x_4) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "ADT"))) ? ((_x_5) => {
-  return run_tail((($Bool$and$(($String$eq$(($nm$(_t_0)), "Nat")), ($db$(run_loop($lookup$(_book_0, ($nm$(_t_0))))))))) ? ((_x_6) => {
-  return 1;
-}) : ((_x_7) => {
-  return run_tail((($jd_host_native_leaf$(_t_0, _flags_0))) ? ((_x_8) => {
-  return $jd_host_native_walk$(_book_0, _rest_0, _seen_0, _fuel_0, _flags_0);
-}) : ((_x_9) => {
-  return run_tail((($has_name$(_seen_0, run_loop($term_key$(_t_0))))) ? ((_x_10) => {
-  return $jd_host_native_walk$(_book_0, _rest_0, _seen_0, _fuel_0, _flags_0);
-}) : ((_x_11) => {
-  return $jd_host_native_walk$(_book_0, ($List$append$(($jd_host_ctor_types$(_book_0, ($dc$(run_loop($lookup$(_book_0, ($nm$(_t_0)))))), ($ks$(_t_0)))), _rest_0)), {$: "Con", "head": run_loop($term_key$(_t_0)), "tail": _seen_0}, _fuel_0, _flags_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}) : ((_x_12) => {
-  return $jd_host_native_walk$(_book_0, _rest_0, _seen_0, _fuel_0, _flags_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $jd_host_marshal$(_book_0, _ty_0, _out_0, _seen_0, _depth_0, _fuel_0) {
-  return run_tail(((_fuel_0 > 0)) ? ((_x_0) => {
-  return $jd_host_marshal_on$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _out_0, _seen_0, _depth_0, ((_fuel_0 - 1) >>> 0));
-}) : ((_x_1) => {
-  return $jd_host_error$("host type marshalling depth");
-}), {$: "Unit"});
-}
-
-function $sk_term$(_t_0, _env_0, _depth_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Var"))) ? ((_x_0) => {
-  return run_tail((($List$is_empty$(($ks$(_t_0))))) ? ((_x_1) => {
-  return $sk_var$(_t_0, _env_0);
-}) : ((_x_2) => {
-  return $sk_term$(run_loop($kid$(_t_0, 0)), _env_0, _depth_0);
-}), {$: "Unit"});
-}) : ((_x_3) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Sub"))) ? ((_x_4) => {
-  return $sk_term$(run_loop($subst$(run_loop($kid$(_t_0, 1)), ($ix$(_t_0)), run_loop($kid$(_t_0, 0)))), _env_0, _depth_0);
-}) : ((_x_5) => {
-  return $sk_node$(_t_0, _env_0, _depth_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
 }
 
 function $jd_calls_install$($0, $1, $2, $3, $4, $5, $6) {
@@ -24720,7 +25501,7 @@ function $jd_calls_install$($0, $1, $2, $3, $4, $5, $6) {
   }
 }
 
-function $jd_calls_group_row$($0, $1, $2, $3, $4, $5, $6) {
+function $jd_calls_group_row$($0, $1, $2, $3, $4, $5, $6, $7) {
   let $pc = 1;
   for (;;) switch ($pc) {
     case 0: {
@@ -24739,6 +25520,7 @@ function $jd_calls_group_row$($0, $1, $2, $3, $4, $5, $6) {
         $3 = _keys_0;
         $4 = ($dn$(_row_0));
         $5 = ($nm$(($dv$(run_loop($jd_calls_get$(_labels_0, ($dn$(_row_0))))))));
+        $6 = ($dt$(_row_0));
         $pc = 1; continue;
       }
     }
@@ -24749,13 +25531,15 @@ function $jd_calls_group_row$($0, $1, $2, $3, $4, $5, $6) {
       const _keys_0 = $3;
       const _name_0 = $4;
       const _key_0 = $5;
+      const _arity_0 = $6;
       $0 = _rest_0;
       $1 = _labels_0;
       $2 = _groups_0;
       $3 = _keys_0;
       $4 = _name_0;
       $5 = _key_0;
-      $6 = run_loop($jd_calls_get$(_groups_0, _key_0));
+      $6 = _arity_0;
+      $7 = run_loop($jd_calls_get$(_groups_0, _key_0));
       $pc = 2; continue;
     }
     case 2: {
@@ -24765,10 +25549,11 @@ function $jd_calls_group_row$($0, $1, $2, $3, $4, $5, $6) {
       const _keys_0 = $3;
       const _name_0 = $4;
       const _key_0 = $5;
-      const _old_0 = $6;
+      const _arity_0 = $6;
+      const _old_0 = $7;
       $0 = _rest_0;
       $1 = _labels_0;
-      $2 = run_loop($jd_calls_put$(_groups_0, {$: "KDef", "name": _key_0, "kind": "JDGroup", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDGroup", _name_0, 0, 0, {$: "Con", "head": ($ref$(_name_0)), "tail": ($ks$(($dv$(_old_0))))})), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
+      $2 = run_loop($jd_calls_put$(_groups_0, {$: "KDef", "name": _key_0, "kind": "JDGroup", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDGroup", _name_0, 0, 0, {$: "Con", "head": ($kt$("JDMember", _name_0, 0, 0, {$: "Con", "head": _arity_0, "tail": {$: "Nil"}})), "tail": ($ks$(($dv$(_old_0))))})), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
       $3 = run_loop(run_tail((($String$eq$(($dk$(_old_0)), "Absent"))) ? ((_x_0) => {
   return {$: "Con", "head": ($ref$(_key_0)), "tail": _keys_0};
 }) : ((_x_1) => {
@@ -24779,61 +25564,53 @@ function $jd_calls_group_row$($0, $1, $2, $3, $4, $5, $6) {
   }
 }
 
-function $jd_calls_match_tel$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, _tel_0) {
-  return run_tail((($Bool$and$(($jd_native_layout$(_book_0, _domain_0)), ($String$eq$(($nm$(_domain_0)), "Nat"))))) ? ((_x_0) => {
-  return $jd_calls_word_rows$(_book_0, _env_0, ((_args_0 - 1) >>> 0), _s_0, ($jd_nat_rows$(_book_0, _t_0, _ty_0, 0)));
+function $jd_calls_match_ctor$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, _ctor_0) {
+  return run_tail((($String$eq$(($dk$(_ctor_0)), "Ctr"))) ? ((_x_0) => {
+  return $jd_calls_match_tel$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, ($j_specialize$(_book_0, ($dt$(_ctor_0)), ($ks$(_domain_0)))));
 }) : ((_x_1) => {
-  return $jd_calls_match_other$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, _tel_0);
+  return $jd_calls_bad$(_s_0);
 }), {$: "Unit"});
 }
 
-function $jd_choice_signature$(_book_0, _ty_0, _at_0) {
-  return run_tail(((_at_0 === 4)) ? ((_x_0) => {
-  return true;
-}) : ((_x_1) => {
-  return $jd_choice_domain$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _at_0);
+function $jd_choice_named$(_book_0, _d_0, _xs_0) {
+  const _x_0 = ($terms_len$(_xs_0));
+  return run_tail(((_x_0 === 4)) ? ((_x_1) => {
+  const _x_2 = ($qt$(run_loop($j_strip$(run_loop($terms_at$(_xs_0, 2))))));
+  const _x_3 = ($qt$(run_loop($j_strip$(run_loop($terms_at$(_xs_0, 3))))));
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(run_loop($j_strip$(run_loop($terms_at$(_xs_0, 2)))))), "Lam")), ($String$eq$(($tg$(run_loop($j_strip$(run_loop($terms_at$(_xs_0, 3)))))), "Lam")))), ($Bool$not$((_x_2 === 0))))), ($Bool$not$((_x_3 === 0)))))) ? ((_x_4) => {
+  const _x_5 = ($dx$(_d_0));
+  const _x_6 = ($da$(_d_0));
+  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_5 === 0))), (_x_6 === 4)))) ? ((_x_7) => {
+  return run_tail((run_loop($j_choice_definition$(_book_0, _d_0))) ? ((_x_8) => {
+  return $jd_choice_signature$(_book_0, ($dt$(_d_0)), 0);
+}) : ((_x_9) => {
+  return false;
+}), {$: "Unit"});
+}) : ((_x_10) => {
+  return false;
+}), {$: "Unit"});
+}) : ((_x_11) => {
+  return false;
+}), {$: "Unit"});
+}) : ((_x_12) => {
+  return false;
 }), {$: "Unit"});
 }
 
-function $jd_calls_edge$(_s_0, _name_0) {
-  const _edges_0 = _s_0["edges"];
-  const _unknown_0 = _s_0["unknown"];
-  const _fuel_0 = _s_0["fuel"];
-  const _valid_0 = _s_0["valid"];
-  return {$: "JDCallScan", "edges": {$: "Con", "head": ($kt$("Ref", _name_0, 0, 0, {$: "Nil"})), "tail": _edges_0}, "unknown": _unknown_0, "fuel": _fuel_0, "valid": _valid_0};
-}
-
-function $jd_calls_extra$(_book_0, _xs_0, _ty_0, _s_0) {
-  if (_xs_0.$ === "Nil") {
-    return _s_0;
-  } else {
-    const _x_0 = _xs_0["head"];
-    const _rest_0 = _xs_0["tail"];
-    return $jd_calls_extra_type$(_book_0, _x_0, _rest_0, run_loop($wnf$(_book_0, _ty_0)), _s_0);
-  }
-}
-
-function $jd_calls_saturated_next$(_book_0, _d_0, _xs_0, _ty_0, _left_0, _s_0) {
-  if (_xs_0.$ === "Nil") {
-    const _x_0 = run_loop($jd_live_arity$(_book_0, _ty_0, _left_0));
-    return run_tail(((_x_0 === 0)) ? ((_x_1) => {
+function $jd_calls_saturated$(_book_0, _d_0, _xs_0, _ty_0, _left_0, _s_0) {
+  return run_tail(((_left_0 === 0)) ? ((_x_0) => {
+  return run_tail((($List$is_empty$(_xs_0))) ? ((_x_1) => {
   return run_tail((run_loop($jd_native_known$(_book_0, _d_0))) ? ((_x_2) => {
   return _s_0;
 }) : ((_x_3) => {
   return $jd_calls_edge$(_s_0, ($dn$(_d_0)));
 }), {$: "Unit"});
 }) : ((_x_4) => {
-  return _s_0;
+  return $jd_calls_extra$(_book_0, _xs_0, _ty_0, _s_0);
 }), {$: "Unit"});
-  } else {
-    const _x_5 = _xs_0["head"];
-    const _rest_0 = _xs_0["tail"];
-    return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_6) => {
-  return $jd_calls_saturated$(_book_0, _d_0, _rest_0, run_loop($j_app_type$(_ty_0, _x_5)), ((_left_0 - 1) >>> 0), _s_0);
-}) : ((_x_7) => {
-  return $jd_calls_bad$(_s_0);
+}) : ((_x_5) => {
+  return $jd_calls_saturated_next$(_book_0, _d_0, _xs_0, run_loop($wnf$(_book_0, _ty_0)), _left_0, _s_0);
 }), {$: "Unit"});
-  }
 }
 
 function $jd_primitive_select_5$(_name_0) {
@@ -24951,6 +25728,169 @@ function $jd_reach_marker_done$(_names_0, _rest_0, _fuel_0, _out_0, _d_0, _seen_
 }), {$: "Unit"});
 }) : ((_x_3) => {
   return {$: "None"};
+}), {$: "Unit"});
+}
+
+function $jd_host_native_leaf$(_t_0, _flags_0) {
+  const _x_0 = ((_flags_0 & 1) >>> 0);
+  const _x_1 = ((_flags_0 & 2) >>> 0);
+  const _x_2 = ($Bool$and$(($String$eq$(($nm$(_t_0)), "U32")), ($Bool$not$((_x_0 === 0)))));
+  const _x_3 = ($Bool$and$(($String$eq$(($nm$(_t_0)), "F32")), ($Bool$not$((_x_1 === 0)))));
+  return $Bool$and$(($List$is_empty$(($ks$(_t_0)))), (_x_2 || _x_3));
+}
+
+function $jd_host_marshal_on$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
+  return $jd_host_marshal_fun$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0);
+}) : ((_x_1) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "ADT"))) ? ((_x_2) => {
+  return run_tail((($Bool$and$(($String$eq$(($nm$(_t_0)), "Nat")), ($db$(run_loop($lookup$(_book_0, ($nm$(_t_0))))))))) ? ((_x_3) => {
+  if ((_out_0)) {
+const _x_4 = {$: "Unit"};
+return "BigInt";
+} else {
+const _x_5 = {$: "Unit"};
+return "nat_host";
+}
+}) : ((_x_6) => {
+  return run_tail((($Bool$and$(($String$eq$(($nm$(_t_0)), "Array")), ($db$(run_loop($lookup$(_book_0, ($nm$(_t_0))))))))) ? ((_x_7) => {
+  const _x_8 = run_loop($jd_host_marshal$(_book_0, run_loop($kid$(_t_0, 0)), _out_0, _seen_0, _depth_0, _fuel_0));
+  const _x_9 = (_x_8 + "(x)),a))");
+  return ("((a)=>(a.forEach((x,i)=>a[i]=" + _x_9);
+}) : ((_x_10) => {
+  return $jd_host_marshal_status$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0, run_loop($jd_host_nat_known$(_book_0, _t_0)));
+}), {$: "Unit"});
+}), {$: "Unit"});
+}) : ((_x_11) => {
+  return "";
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $sk_var$($0, $1) {
+  for (;;) {
+    {
+      const _t_0 = $0;
+      const _env_0 = $1;
+      if (_env_0.$ === "Nil") {
+        return $sk_variable$(($nm$(_t_0)), ($ix$(_t_0)));
+      } else {
+        const _t_1 = _env_0["head"];
+        if (_t_1.$ === "KPFile") {
+          const _rest_0 = _env_0["tail"];
+          $0 = _t_0;
+          $1 = _rest_0;
+          continue;
+        } else {
+          const _name_0 = _t_1["name"];
+          const _id_0 = _t_1["id"];
+          const _depth_0 = _t_1["depth"];
+          const _rest_1 = _env_0["tail"];
+          const _x_0 = ($ix$(_t_0));
+          if (((_x_0 === _id_0))) {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $sk_variable$, x: [_name_0, _depth_0]};
+} else {
+const _x_2 = {$: "Unit"};
+return {$: "$JMP", f: $sk_var$, x: [_t_0, _rest_1]};
+}
+        }
+      }
+    }
+  }
+}
+
+function $sk_node$(_t_0, _env_0, _depth_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Ref"))) ? ((_x_0) => {
+  const _x_1 = ($qt$(_t_0));
+  const _x_4 = run_loop(run_tail(((_x_1 === 3)) ? ((_x_2) => {
+  return ",\"b\":true";
+}) : ((_x_3) => {
+  return "";
+}), {$: "Unit"}));
+  const _x_5 = ($sk_quote$(($nm$(_t_0))));
+  const _x_6 = (_x_4 + "}");
+  const _x_7 = (_x_5 + _x_6);
+  return ("{\"$\":\"Ref\",\"k\":" + _x_7);
+}) : ((_x_8) => {
+  return run_tail((($core_literal$(_t_0))) ? ((_x_9) => {
+  const _x_12 = run_loop(run_tail((($String$eq$(($nm$(_t_0)), "String"))) ? ((_x_10) => {
+  return $sk_quote$(($kl_text$(_t_0)));
+}) : ((_x_11) => {
+  return $U32$show$(($kl_number$(_t_0)));
+}), {$: "Unit"}));
+  const _x_13 = (_x_12 + "}");
+  const _x_14 = ($sk_quote$(($nm$(_t_0))));
+  const _x_15 = (",\"v\":" + _x_13);
+  const _x_16 = (_x_14 + _x_15);
+  return ("{\"$\":\"Lit\",\"k\":" + _x_16);
+}) : ((_x_17) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Lam"))) ? ((_x_18) => {
+  const _x_22 = run_loop(run_tail((($k_quantity_present$(_t_0))) ? ((_x_19) => {
+  const _x_20 = ($sk_quant$(($qt$(_t_0))));
+  return (",\"q\":" + _x_20);
+}) : ((_x_21) => {
+  return "";
+}), {$: "Unit"}));
+  const _x_23 = run_loop($sk_term$(run_loop($kid$(_t_0, 0)), {$: "Con", "head": {$: "KPName", "name": ($nm$(_t_0)), "id": ($ix$(_t_0)), "depth": _depth_0}, "tail": _env_0}, ((_depth_0 + 1) >>> 0)));
+  const _x_24 = (_x_22 + "}");
+  const _x_25 = (_x_23 + _x_24);
+  const _x_26 = ($U32$show$(_depth_0));
+  const _x_27 = (",\"f\":" + _x_25);
+  const _x_28 = (_x_26 + _x_27);
+  const _x_29 = ($sk_quote$(($nm$(_t_0))));
+  const _x_30 = (",\"i\":" + _x_28);
+  const _x_31 = (_x_29 + _x_30);
+  return ("{\"$\":\"Lam\",\"k\":" + _x_31);
+}) : ((_x_32) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_33) => {
+  const _x_34 = run_loop($sk_term$(run_loop($kid$(_t_0, 1)), {$: "Con", "head": {$: "KPName", "name": ($nm$(_t_0)), "id": ($ix$(_t_0)), "depth": _depth_0}, "tail": _env_0}, ((_depth_0 + 1) >>> 0)));
+  const _x_35 = (_x_34 + "}");
+  const _x_36 = run_loop($sk_term$(run_loop($kid$(_t_0, 0)), _env_0, _depth_0));
+  const _x_37 = (",\"B\":" + _x_35);
+  const _x_38 = (_x_36 + _x_37);
+  const _x_39 = ($U32$show$(_depth_0));
+  const _x_40 = (",\"A\":" + _x_38);
+  const _x_41 = (_x_39 + _x_40);
+  const _x_42 = ($sk_quote$(($nm$(_t_0))));
+  const _x_43 = (",\"i\":" + _x_41);
+  const _x_44 = (_x_42 + _x_43);
+  const _x_45 = ($sk_quant$(($qt$(_t_0))));
+  const _x_46 = (",\"k\":" + _x_44);
+  const _x_47 = (_x_45 + _x_46);
+  return ("{\"$\":\"All\",\"q\":" + _x_47);
+}) : ((_x_48) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Let"))) ? ((_x_49) => {
+  return $sk_let$(($ks$(_t_0)), _env_0, _depth_0);
+}) : ((_x_50) => {
+  const _x_51 = ($String$eq$(($tg$(_t_0)), "ADT"));
+  const _x_52 = ($String$eq$(($tg$(_t_0)), "Ctr"));
+  return run_tail(((_x_51 || _x_52)) ? ((_x_53) => {
+  const _x_58 = run_loop(run_tail((($String$eq$(($tg$(_t_0)), "ADT"))) ? ((_x_54) => {
+  const _x_55 = ($sk_names$(($rm$(_t_0))));
+  const _x_56 = (_x_55 + "]");
+  return (",\"r\":[" + _x_56);
+}) : ((_x_57) => {
+  return "";
+}), {$: "Unit"}));
+  const _x_59 = (_x_58 + "}");
+  const _x_60 = ($sk_terms$(($ks$(_t_0)), _env_0, _depth_0));
+  const _x_61 = ("]" + _x_59);
+  const _x_62 = (_x_60 + _x_61);
+  const _x_63 = ($sk_quote$(($nm$(_t_0))));
+  const _x_64 = (",\"x\":[" + _x_62);
+  const _x_65 = (_x_63 + _x_64);
+  const _x_66 = ($sk_quote$(($tg$(_t_0))));
+  const _x_67 = (",\"k\":" + _x_65);
+  const _x_68 = (_x_66 + _x_67);
+  return ("{\"$\":" + _x_68);
+}) : ((_x_69) => {
+  return $sk_other$(_t_0, _env_0, _depth_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
 }), {$: "Unit"});
 }
 
@@ -25613,19 +26553,6 @@ function $kp_escape$(_n_0, _quote_0) {
 }), {$: "Unit"});
 }
 
-function $g_put_node$(_old_0, _left_0, _right_0, _id_0, _value_0) {
-  return run_tail(((_id_0 === 0)) ? ((_x_0) => {
-  return {$: "GNode", "value": _value_0, "left": _left_0, "right": _right_0};
-}) : ((_x_1) => {
-  const _x_2 = ((_id_0 & 1) >>> 0);
-  return run_tail(((_x_2 === 0)) ? ((_x_3) => {
-  return {$: "GNode", "value": _old_0, "left": run_loop($g_put$(_left_0, ((_id_0 >>> 1) >>> 0), _value_0)), "right": _right_0};
-}) : ((_x_4) => {
-  return {$: "GNode", "value": _old_0, "left": _left_0, "right": run_loop($g_put$(_right_0, ((_id_0 >>> 1) >>> 0), _value_0))};
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
 function $g_resume$($0, $1, $2, $3, $4) {
   let $pc = 1;
   for (;;) switch ($pc) {
@@ -25691,324 +26618,6 @@ function $g_resume$($0, $1, $2, $3, $4) {
       }
     }
   }
-}
-
-function $tele_tip_head$(_book_0, _t_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
-  return $tele_tip$(_book_0, run_loop($kid$(_t_0, 1)));
-}) : ((_x_1) => {
-  return _t_0;
-}), {$: "Unit"});
-}
-
-function $check_ctors_next$(_e_0, _d_0, _rest_0, _kind_0, _err_0) {
-  return run_tail((($good$(_err_0))) ? ((_x_0) => {
-  return $check_ctors$(($ke_world$(_e_0, ($rw$(_err_0)))), _d_0, _rest_0, _kind_0);
-}) : ((_x_1) => {
-  return _err_0;
-}), {$: "Unit"});
-}
-
-function $check_ctor_tel$(_e_0, _d_0, _tel_0, _kind_0, _params_0, _fields_0, _ctx_0, _args_0) {
-  const _x_0 = ((_params_0 + _fields_0) >>> 0);
-  return run_tail(((_x_0 === 0)) ? ((_x_1) => {
-  return run_tail((run_loop($compare$(($cb$(_e_0)), _tel_0, ($kt$("ADT", ($dn$(_d_0)), 0, 0, _args_0)), false))) ? ((_x_2) => {
-  return $bad$(($cw$(_e_0)), "");
-}) : ((_x_3) => {
-  const _x_4 = ($dn$(_d_0));
-  const _x_5 = (_x_4 + " applied to its own parameters");
-  return $dg_trace$(_e_0, _ctx_0, _tel_0, ($atom$("Absent")), ($dg_bad_detail$(($cw$(_e_0)), "constructor result must apply family to its parameters", ($dg_text$(("a telescope tipped at " + _x_5))), _tel_0)));
-}), {$: "Unit"});
-}) : ((_x_6) => {
-  return $check_ctor_head$(_e_0, _d_0, run_loop($wnf$(($cb$(_e_0)), _tel_0)), _kind_0, _params_0, _fields_0, _ctx_0, _args_0);
-}), {$: "Unit"});
-}
-
-function $check_adt_kind_head$(_e_0, _d_0, _tel_0, _ctx_0) {
-  return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
-  return $check_adt_kind$(_e_0, _d_0, run_loop($kid$(_tel_0, 1)), ($ctx_bind$(_ctx_0, ($ix$(_tel_0)), ($qt$(_tel_0)), ($nm$(_tel_0)), run_loop($kid$(_tel_0, 0)))));
-}) : ((_x_1) => {
-  return run_tail((($String$eq$(($tg$(_tel_0)), "Typ"))) ? ((_x_2) => {
-  return $check_ctors$(_e_0, _d_0, ($dc$(_d_0)), ($dt$(_d_0)));
-}) : ((_x_3) => {
-  const _x_4 = ($dn$(_d_0));
-  const _x_5 = (_x_4 + "<..> is Kind(g))");
-  return $dg_trace$(_e_0, _ctx_0, _tel_0, ($atom$("Absent")), ($dg_bad_detail$(($cw$(_e_0)), "datatype declaration must return a kind", ($dg_text$(("a kind (type " + _x_5))), _tel_0)));
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $self_pending$(_d_0, _body_0) {
-  return run_tail((($du$(_d_0))) ? ((_x_0) => {
-  return 0;
-}) : ((_x_1) => {
-  return run_tail((run_loop($contains_self$({$: "Con", "head": _body_0, "tail": {$: "Nil"}}, ($dn$(_d_0))))) ? ((_x_2) => {
-  const _x_3 = ($da$(_d_0));
-  const _x_4 = ($dx$(_d_0));
-  return ((_x_3 - _x_4) >>> 0);
-}) : ((_x_5) => {
-  return 0;
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $tele_quantities$(_book_0, _ty_0, _n_0) {
-  return run_tail(((_n_0 === 0)) ? ((_x_0) => {
-  return {$: "Nil"};
-}) : ((_x_1) => {
-  return $tele_quantities_head$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _n_0);
-}), {$: "Unit"});
-}
-
-function $check_template_binder$(_world_0, _d_0, _ty_0, _body_0, _lhs_0, _n_0, _depth_0) {
-  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
-  const _x_1 = ($nm$(_ty_0));
-  const _x_2 = ($dn$(_d_0));
-  const _x_3 = ("~" + _x_1);
-  return $check_template_open$(_world_0, _d_0, _ty_0, _body_0, _lhs_0, _n_0, (_x_2 + _x_3), _depth_0);
-}) : ((_x_4) => {
-  return $bad$(_world_0, "template telescope is too short");
-}), {$: "Unit"});
-}
-
-function $kw_owner_fresh$(_world_0, _ty_0, _body_0, _fresh_0) {
-  if (_fresh_0.$ === "KFreshKnown") {
-    return _world_0;
-  } else {
-    const _roots_0 = _fresh_0["roots"];
-    return {$: "KWorld", "book": ($kw_book$(_world_0)), "memo": ($kw_memo$(_world_0)), "fresh": {$: "KFreshDeferred", "roots": {$: "Con", "head": _ty_0, "tail": {$: "Con", "head": _body_0, "tail": _roots_0}}}, "checked": ($kw_checked$(_world_0))};
-  }
-}
-
-function $dg_family$(_book_0, _name_0) {
-  if (_book_0.$ === "Nil") {
-    return "";
-  } else {
-    const _d_0 = _book_0["head"];
-    const _rest_0 = _book_0["tail"];
-    if ((($Bool$and$(($String$eq$(($dk$(_d_0)), "ADT")), ($Bool$not$(($String$eq$(($dk$(run_loop($lookup$(($dc$(_d_0)), _name_0)))), "Absent")))))))) {
-const _x_0 = {$: "Unit"};
-return {$: "$JMP", f: $dn$, x: [_d_0]};
-} else {
-const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $dg_family$, x: [_rest_0, _name_0]};
-}
-  }
-}
-
-function $dg_pair$(_expected_0, _observed_0) {
-  return $kt$("DDetail", "", 0, 1, {$: "Con", "head": _expected_0, "tail": {$: "Con", "head": _observed_0, "tail": {$: "Nil"}}});
-}
-
-function $check_lam_q$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _q_0) {
-  const _x_0 = ($qt$(_t_0));
-  const _x_1 = ($qt$(_ty_0));
-  return $ki_lam_kind$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _q_0, run_loop(run_tail((($Bool$and$(($Bool$and$(($k_quantity_present$(_t_0)), (_x_0 === 2))), (_x_1 === 1)))) ? ((_x_2) => {
-  return $dg_kind_check$(_e_0, _ctx_0, run_loop($kid$(_ty_0, 0)), _q_0, ($nm$(_t_0)));
-}) : ((_x_3) => {
-  return $ok$(($cw$(_e_0)), _t_0, _ty_0, {$: "Nil"});
-}), {$: "Unit"})));
-}
-
-function $check_ctr_found$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _ctr_0) {
-  const _x_0 = ($da$(_ctr_0));
-  const _x_1 = ($terms_len$(($ks$(_t_0))));
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$not$(($String$eq$(($dk$(_ctr_0)), "Absent")))), ($Bool$not$(($has_name$(($rm$(_ty_0)), ($nm$(_t_0)))))))), (_x_0 === _x_1)))) ? ((_x_2) => {
-  return $ki_args$(_t_0, _ty_0, run_loop($tele_check$(_e_0, _ctx_0, run_loop($tele_fill$(($cb$(_e_0)), ($dt$(_ctr_0)), ($ks$(_ty_0)))), ($ks$(_t_0)), _dem_0)));
-}) : ((_x_3) => {
-  return $dg_ctor_error$(_e_0, _t_0, _ty_0, _ctr_0);
-}), {$: "Unit"});
-}
-
-function $dg_bad_message$(_world_0, _message_0, _expected_0) {
-  return {$: "KChecking", "term": ($kt$("DDetail", "", 0, 0, {$: "Con", "head": _expected_0, "tail": {$: "Con", "head": ($atom$("Absent")), "tail": {$: "Nil"}}})), "typ": ($atom$("Error")), "uses": {$: "Nil"}, "error": _message_0, "world": _world_0, "consumed": 0};
-}
-
-function $check_mat_type$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0) {
-  return run_tail((($Bool$and$(($String$eq$(($tg$(_a_0)), "ADT")), ($String$eq$(($dk$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_a_0)))))), "ADT"))))) ? ((_x_0) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Efq"))) ? ((_x_1) => {
-  const _x_2 = ($dead_type$(($cb$(_e_0)), _a_0));
-  const _x_3 = run_loop($ctx_dead$(($cb$(_e_0)), _ctx_0));
-  return run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
-  return $ok$(($cw$(_e_0)), _t_0, _ty_0, {$: "Nil"});
-}) : ((_x_5) => {
-  const _x_6 = ($dg_constructor_names$(run_loop($remaining$(($dc$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_a_0)))))), ($rm$(_a_0))))));
-  return $dg_bad_detail$(($cw$(_e_0)), "nonexhaustive match", ($dg_text$(("cases for " + _x_6))), _t_0);
-}), {$: "Unit"});
-}) : ((_x_7) => {
-  return $check_mat_ctr$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, run_loop($lookup$(run_loop($remaining$(($dc$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_a_0)))))), ($rm$(_a_0)))), ($nm$(_t_0)))));
-}), {$: "Unit"});
-}) : ((_x_8) => {
-  return $dg_bad_detail$(($cw$(_e_0)), "match scrutinee requires a datatype", ($dg_text$("a datatype")), run_loop($kid$(_ty_0, 0)));
-}), {$: "Unit"});
-}
-
-function $check_let_value$(_e_0, _outer_0, _ctx_0, _h_0, _rest_0, _dem_0, _ty_0, _bindings_0, _us_0, _site_0, _out_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $check_let_kind$(($ke_world$(_e_0, ($rw$(_r_0)))), _outer_0, _ctx_0, _h_0, _rest_0, _dem_0, _ty_0, _bindings_0, _us_0, _site_0, _out_0, _r_0, run_loop($dg_kind_at$(($ke_world$(_e_0, ($rw$(_r_0)))), _outer_0, ($cy$(_r_0)), ($qt$(_h_0)), ($nm$(_h_0)), _h_0)));
-}) : ((_x_1) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $qdem$(_q_0, _d_0) {
-  if (((_q_0 === 0))) {
-const _x_0 = {$: "Unit"};
-return 0;
-} else {
-const _x_1 = {$: "Unit"};
-return _d_0;
-}
-}
-
-function $ki_let_finish$(_site_0, _out_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $checked$(_r_0, ($k_with_children$(_site_0, ($ki_reverse_terms$(_out_0, {$: "Con", "head": ($ct$(_r_0)), "tail": {$: "Nil"}})))), ($cy$(_r_0)));
-}) : ((_x_1) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $check_let_done$(_e_0, _ctx_0, _r_0, _bs_0, _us_0, _site_0) {
-  if (_bs_0.$ === "Nil") {
-    return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return {$: "KChecking", "term": ($ct$(_r_0)), "typ": ($cy$(_r_0)), "uses": ($uses_merge$(_us_0, ($cs$(_r_0)), false)), "error": "", "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))};
-}) : ((_x_1) => {
-  return _r_0;
-}), {$: "Unit"});
-  } else {
-    const _h_0 = _bs_0["head"];
-    const _t_0 = _bs_0["tail"];
-    return run_tail((($good$(_r_0))) ? ((_x_2) => {
-  const _x_3 = run_loop($uses_get$(($cs$(_r_0)), ($ix$(_h_0))));
-  const _x_4 = ($qt$(_h_0));
-  return run_tail(((_x_3 > _x_4)) ? ((_x_5) => {
-  return $dg_trace$(_e_0, _ctx_0, _site_0, ($cy$(_r_0)), ($kr_from$(_r_0, ($dg_quant_error$(($rw$(_r_0)), "let binder consumed more than allowed", ($nm$(_h_0)), ($qt$(_h_0)), run_loop($uses_get$(($cs$(_r_0)), ($ix$(_h_0)))))))));
-}) : ((_x_6) => {
-  return $check_let_done$(_e_0, _ctx_0, {$: "KChecking", "term": ($ct$(_r_0)), "typ": ($cy$(_r_0)), "uses": run_loop($uses_del$(($cs$(_r_0)), ($ix$(_h_0)))), "error": "", "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))}, _t_0, _us_0, _site_0);
-}), {$: "Unit"});
-}) : ((_x_7) => {
-  return _r_0;
-}), {$: "Unit"});
-  }
-}
-
-function $let_cells$($0, $1) {
-  for (;;) {
-    {
-      const _body_0 = $0;
-      const _bs_0 = $1;
-      if (_bs_0.$ === "Nil") {
-        return _body_0;
-      } else {
-        const _h_0 = _bs_0["head"];
-        const _t_0 = _bs_0["tail"];
-        $0 = run_loop($subst$(_body_0, ($ix$(_h_0)), ($kt$("Var", ($nm$(_h_0)), ($ix$(_h_0)), 0, {$: "Con", "head": run_loop($kid$(_h_0, 0)), "tail": {$: "Nil"}}))));
-        $1 = _t_0;
-        continue;
-      }
-    }
-  }
-}
-
-function $ki_reverse_terms$($0, $1) {
-  for (;;) {
-    {
-      const _xs_0 = $0;
-      const _out_0 = $1;
-      if (_xs_0.$ === "Nil") {
-        return _out_0;
-      } else {
-        const _h_0 = _xs_0["head"];
-        const _rest_0 = _xs_0["tail"];
-        $0 = _rest_0;
-        $1 = {$: "Con", "head": _h_0, "tail": _out_0};
-        continue;
-      }
-    }
-  }
-}
-
-function $check_rwt_type$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0) {
-  return run_tail((($String$eq$(($tg$(_eq_0)), "Eql"))) ? ((_x_0) => {
-  return $ki_rwt_bound$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0, ($kw_temp_floor$(($cw$(_e_0)), {$: "Con", "head": _t_0, "tail": {$: "Con", "head": _ty_0, "tail": {$: "Con", "head": ($cl$(_e_0)), "tail": {$: "Nil"}}}})));
-}) : ((_x_1) => {
-  return $dg_trace$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), _ty_0, ($kr_from$(_r_0, ($dg_bad_detail$(($rw$(_r_0)), "rewrite requires equality evidence", ($dg_text$("an equation {a == b : T}")), ($cy$(_r_0)))))));
-}), {$: "Unit"});
-}
-
-function $infer_node$(_e_0, _ctx_0, _t_0, _dem_0, _sp_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Var"))) ? ((_x_0) => {
-  return $infer_var$(_e_0, _ctx_0, _t_0, _dem_0);
-}) : ((_x_1) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Ref"))) ? ((_x_2) => {
-  return $infer_ref$(_e_0, _ctx_0, _t_0, _dem_0, _sp_0, run_loop($lookup$(($cb$(_e_0)), ($nm$(_t_0)))));
-}) : ((_x_3) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Typ"))) ? ((_x_4) => {
-  return $ki_one$(_t_0, ($typ$(1)), run_loop($check$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), 0, ($atom$("Qnt")))));
-}) : ((_x_5) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Qnt"))) ? ((_x_6) => {
-  return $ok$(($cw$(_e_0)), _t_0, ($typ$(1)), {$: "Nil"});
-}) : ((_x_7) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Qua"))) ? ((_x_8) => {
-  return $ok$(($cw$(_e_0)), _t_0, ($atom$("Qnt")), {$: "Nil"});
-}) : ((_x_9) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Min"))) ? ((_x_10) => {
-  return $ki_min$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($check$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), _dem_0, ($atom$("Qnt")))));
-}) : ((_x_11) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_12) => {
-  return $ki_all$(_e_0, _ctx_0, _t_0, run_loop($dg_kind_check$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), ($qt$(_t_0)), ($nm$(_t_0)))));
-}) : ((_x_13) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "App"))) ? ((_x_14) => {
-  return $infer_app$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($infer$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), _dem_0, {$: "Con", "head": run_loop($kid$(_t_0, 1)), "tail": _sp_0})));
-}) : ((_x_15) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "ADT"))) ? ((_x_16) => {
-  return $infer_adt$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($lookup$(($cb$(_e_0)), ($nm$(_t_0)))));
-}) : ((_x_17) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Eql"))) ? ((_x_18) => {
-  return $ki_eql_type$(_e_0, _ctx_0, _t_0, run_loop($check$(_e_0, _ctx_0, run_loop($kid$(_t_0, 2)), 0, ($typ$(1)))));
-}) : ((_x_19) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Ann"))) ? ((_x_20) => {
-  return $ki_ann$(_e_0, _ctx_0, _t_0, _dem_0, run_loop($check$(_e_0, _ctx_0, run_loop($kid$(_t_0, 1)), 0, ($typ$(1)))));
-}) : ((_x_21) => {
-  return run_tail((($core_literal$(_t_0))) ? ((_x_22) => {
-  return $bad$(($cw$(_e_0)), "cannot infer: annotation required");
-}) : ((_x_23) => {
-  return $bad$(($cw$(_e_0)), run_loop(run_tail((($String$eq$(($tg$(_t_0)), "FUnboundVar"))) ? ((_x_24) => {
-  return "unbound variable";
-}) : ((_x_25) => {
-  return "cannot infer: annotation required";
-}), {$: "Unit"})));
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $checked$(_r_0, _t_0, _ty_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return {$: "KChecking", "term": _t_0, "typ": _ty_0, "uses": ($cs$(_r_0)), "error": "", "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))};
-}) : ((_x_1) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $kr_from$(_origin_0, _derived_0) {
-  return {$: "KChecking", "term": ($ct$(_derived_0)), "typ": ($cy$(_derived_0)), "uses": ($cs$(_derived_0)), "error": ($ce$(_derived_0)), "world": ($rw$(_origin_0)), "consumed": ($rx$(_origin_0))};
-}
-
-function $norm_cmp_right$(_book_0, _a_0, _le_0, _fresh_0, _rest_0, _alts_0, _r_0) {
-  const _st_0 = _r_0["state"];
-  const _b_0 = _r_0["term"];
-  return $norm_cmp_heads$(_book_0, _st_0, _a_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0);
 }
 
 function $nl_c_type$(_k_0) {
@@ -26144,6 +26753,372 @@ function $nc_field_word$(_name_0, _word_0, _i_0) {
 }), {$: "Unit"});
 }), {$: "Unit"});
 }), {$: "Unit"});
+}
+
+function $check_ctor_head$(_e_0, _d_0, _tel_0, _kind_0, _params_0, _fields_0, _ctx_0, _args_0) {
+  return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
+  const _x_1 = ($qt$(_tel_0));
+  return $check_ctor_domain$(_e_0, _d_0, _tel_0, _kind_0, _params_0, _fields_0, _ctx_0, _args_0, run_loop($check$(_e_0, _ctx_0, run_loop($kid$(_tel_0, 0)), 0, run_loop(run_tail((($Bool$and$((_params_0 === 0), (_x_1 === 1)))) ? ((_x_2) => {
+  return _kind_0;
+}) : ((_x_3) => {
+  return $typ$(($qt$(_tel_0)));
+}), {$: "Unit"})))));
+}) : ((_x_4) => {
+  return $bad$(($cw$(_e_0)), "constructor telescope missing a binder");
+}), {$: "Unit"});
+}
+
+function $contains_self$(_todo_0, _name_0) {
+  if (_todo_0.$ === "Nil") {
+    return false;
+  } else {
+    const _h_0 = _todo_0["head"];
+    const _rest_0 = _todo_0["tail"];
+    return run_tail((($Bool$and$(($String$eq$(($tg$(_h_0)), "Ref")), ($String$eq$(($nm$(_h_0)), _name_0))))) ? ((_x_0) => {
+  return true;
+}) : ((_x_1) => {
+  return $contains_self$(($norm_join$(($ks$(_h_0)), _rest_0)), _name_0);
+}), {$: "Unit"});
+  }
+}
+
+function $tele_quantities_head$(_book_0, _ty_0, _n_0) {
+  return {$: "Con", "head": ($qua$(run_loop(run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
+  return $qt$(_ty_0);
+}) : ((_x_1) => {
+  return 1;
+}), {$: "Unit"})))), "tail": run_loop($tele_quantities$(_book_0, run_loop($kid$(_ty_0, 1)), ((_n_0 - 1) >>> 0)))};
+}
+
+function $check_template_open$(_world_0, _d_0, _ty_0, _body_0, _lhs_0, _n_0, _name_0, _depth_0) {
+  const _book_0 = ($kw_book$(_world_0));
+  return run_tail((($String$eq$(($dk$(run_loop($lookup$(_book_0, _name_0)))), "Absent"))) ? ((_x_0) => {
+  return $check_template_definition$(($kw_with_book$(_world_0, run_loop($book_put$(_book_0, {$: "KDef", "name": _name_0, "kind": "Def", "arity": 0, "templates": 0, "typ": run_loop($kid$(_ty_0, 0)), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": true, "unsafe": false})))), _d_0, run_loop($subst$(run_loop($kid$(_ty_0, 1)), ($ix$(_ty_0)), ($ref$(_name_0)))), run_loop($kapply$(_body_0, ($ref$(_name_0)))), ($app$(_lhs_0, ($ref$(_name_0)))), ((_n_0 - 1) >>> 0), _depth_0);
+}) : ((_x_1) => {
+  return $dg_trace$({$: "KEnv", "world": _world_0, "name": "", "lhs": ($ref$(($dn$(_d_0)))), "pending": 0, "quantities": {$: "Nil"}, "unsafe": ($du$(_d_0)), "depth": _depth_0}, {$: "Nil"}, _ty_0, ($atom$("Absent")), ($dg_bad_detail$(_world_0, "duplicate comptime binder", ($dg_text$("a fresh ~ binder name")), ($dg_text$(($nm$(_ty_0)))))));
+}), {$: "Unit"});
+}
+
+function $ki_lam_kind$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _q_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return $check_lam_done$(_t_0, _ty_0, _q_0, run_loop($check$(run_loop($lhs_step$(($ke_world$(_e_0, ($rw$(_r_0)))), ($var$(($nm$(_t_0)), ($ix$(_t_0)))))), ($ctx_bind$(_ctx_0, ($ix$(_t_0)), _q_0, ($nm$(_t_0)), run_loop($kid$(_ty_0, 0)))), run_loop($kid$(_t_0, 0)), _dem_0, run_loop($subst$(run_loop($kid$(_ty_0, 1)), ($ix$(_ty_0)), ($var$(($nm$(_t_0)), ($ix$(_t_0)))))))));
+}) : ((_x_1) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $dg_kind_check$(_e_0, _ctx_0, _t_0, _q_0, _name_0) {
+  return $dg_kind_at$(_e_0, _ctx_0, _t_0, _q_0, _name_0, _t_0);
+}
+
+function $ki_args$(_t_0, _ty_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return $checked$(_r_0, ($k_with_children$(_t_0, ($ks$(($ct$(_r_0)))))), _ty_0);
+}) : ((_x_1) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $tele_check$(_e_0, _ctx_0, _tel_0, _args_0, _dem_0) {
+  if (_args_0.$ === "Nil") {
+    return $ok$(($cw$(_e_0)), ($atom$("Args")), _tel_0, {$: "Nil"});
+  } else {
+    const _h_0 = _args_0["head"];
+    const _t_0 = _args_0["tail"];
+    return $tele_check_cached_head$(_e_0, _ctx_0, run_loop($wnf$(($cb$(_e_0)), _tel_0)), _h_0, _t_0, _dem_0);
+  }
+}
+
+function $dg_ctor_error$(_e_0, _t_0, _ty_0, _ctr_0) {
+  return run_tail((($Bool$and$(($Bool$not$(($String$eq$(($dk$(_ctr_0)), "Absent")))), ($Bool$not$(($has_name$(($rm$(_ty_0)), ($nm$(_t_0))))))))) ? ((_x_0) => {
+  const _x_1 = ($da$(_ctr_0));
+  const _x_4 = ($U32$show$(($da$(_ctr_0))));
+  const _x_5 = run_loop(run_tail(((_x_1 === 1)) ? ((_x_2) => {
+  return " field";
+}) : ((_x_3) => {
+  return " fields";
+}), {$: "Unit"}));
+  const _x_6 = (_x_4 + _x_5);
+  const _x_7 = ($nm$(_t_0));
+  const _x_8 = (" with " + _x_6);
+  return $dg_bad_detail$(($cw$(_e_0)), "constructor does not belong to goal or field count differs", ($dg_text$((_x_7 + _x_8))), _t_0);
+}) : ((_x_9) => {
+  return run_tail((($String$eq$(run_loop($dg_family$(($cb$(_e_0)), ($nm$(_t_0)))), ""))) ? ((_x_10) => {
+  const _x_11 = ($dg_constructor_names$(($dc$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_ty_0))))))));
+  const _x_12 = (_x_11 + ")");
+  const _x_13 = ($nm$(_ty_0));
+  const _x_14 = (" declares " + _x_12);
+  const _x_15 = (_x_13 + _x_14);
+  return $dg_bad_detail$(($cw$(_e_0)), "constructor does not belong to goal or field count differs", ($dg_text$(("a declared constructor (" + _x_15))), _t_0);
+}) : ((_x_16) => {
+  return $dg_bad_detail$(($cw$(_e_0)), "constructor does not belong to goal or field count differs", _ty_0, ($ref$(run_loop($dg_family$(($cb$(_e_0)), ($nm$(_t_0)))))));
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $dead_type$(_book_0, _ty_0) {
+  return $Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "ADT")), ($String$eq$(($dk$(run_loop($lookup$(_book_0, ($nm$(_ty_0)))))), "ADT")))), ($defs_empty$(run_loop($remaining$(($dc$(run_loop($lookup$(_book_0, ($nm$(_ty_0)))))), ($rm$(_ty_0)))))));
+}
+
+function $ctx_dead$(_book_0, _ctx_0) {
+  if (_ctx_0.$ === "Nil") {
+    return false;
+  } else {
+    const _h_0 = _ctx_0["head"];
+    const _t_0 = _ctx_0["tail"];
+    const _x_0 = ($qt$(_h_0));
+    return run_tail(((_x_0 === 0)) ? ((_x_1) => {
+  return $ctx_dead$(_book_0, _t_0);
+}) : ((_x_2) => {
+  const _x_3 = ($dead_type$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_h_0, 0))))));
+  const _x_4 = run_loop($ctx_dead$(_book_0, _t_0));
+  return (_x_3 || _x_4);
+}), {$: "Unit"});
+  }
+}
+
+function $dg_constructor_names$(_ds_0) {
+  if (_ds_0.$ === "Nil") {
+    return "";
+  } else {
+    const _d_0 = _ds_0["head"];
+    const _rest_0 = _ds_0["tail"];
+    const _x_3 = ($dn$(_d_0));
+    const _x_4 = run_loop(run_tail((($defs_empty$(_rest_0))) ? ((_x_0) => {
+  return "";
+}) : ((_x_1) => {
+  const _x_2 = ($dg_constructor_names$(_rest_0));
+  return (", " + _x_2);
+}), {$: "Unit"}));
+    return (_x_3 + _x_4);
+  }
+}
+
+function $check_mat_ctr$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, _ctr_0) {
+  return run_tail((($String$eq$(($dk$(_ctr_0)), "Absent"))) ? ((_x_0) => {
+  const _x_1 = ($nm$(_a_0));
+  const _x_2 = (_x_1 + " (missing, or already matched)");
+  return $dg_bad_detail$(($cw$(_e_0)), "unknown or duplicate match constructor", ($dg_text$(("a constructor of " + _x_2))), _t_0);
+}) : ((_x_3) => {
+  return $check_mat_filled$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, _ctr_0, run_loop($tele_fill$(($cb$(_e_0)), ($dt$(_ctr_0)), ($ks$(_a_0)))));
+}), {$: "Unit"});
+}
+
+function $check_let_kind$(_e_0, _outer_0, _ctx_0, _h_0, _rest_0, _dem_0, _ty_0, _bindings_0, _us_0, _site_0, _out_0, _r_0, _k_0) {
+  return run_tail((($good$(_k_0))) ? ((_x_0) => {
+  return $check_let$(($ke_world$(_e_0, ($rw$(_k_0)))), _outer_0, ($ctx_bind$(_ctx_0, ($ix$(_h_0)), ($qt$(_h_0)), ($nm$(_h_0)), ($cy$(_r_0)))), _rest_0, _dem_0, _ty_0, {$: "Con", "head": _h_0, "tail": _bindings_0}, ($uses_merge$(_us_0, ($cs$(_r_0)), false)), _site_0, {$: "Con", "head": ($k_with_children$(_h_0, {$: "Con", "head": ($ct$(_r_0)), "tail": {$: "Nil"}})), "tail": _out_0});
+}) : ((_x_1) => {
+  return _k_0;
+}), {$: "Unit"});
+}
+
+function $dg_kind_at$(_e_0, _ctx_0, _t_0, _q_0, _name_0, _site_0) {
+  const _kind_0 = ($typ$(run_loop($kindq$(_e_0, _q_0))));
+  return $dg_kind_result$(_t_0, _q_0, _name_0, _site_0, _kind_0, run_loop($check$(_e_0, _ctx_0, _t_0, 0, _kind_0)));
+}
+
+function $uses_merge$(_a_0, _b_0, _join_0) {
+  if (_a_0.$ === "Nil") {
+    return _b_0;
+  } else {
+    const _h_0 = _a_0["head"];
+    const _t_0 = _a_0["tail"];
+    return {$: "Con", "head": ($kt$("Use", "", ($ix$(_h_0)), run_loop(run_tail((_join_0) ? ((_x_0) => {
+  return $qjoin$(($qt$(_h_0)), run_loop($uses_get$(_b_0, ($ix$(_h_0)))));
+}) : ((_x_1) => {
+  return $qadd$(($qt$(_h_0)), run_loop($uses_get$(_b_0, ($ix$(_h_0)))));
+}), {$: "Unit"})), {$: "Nil"})), "tail": ($uses_merge$(_t_0, run_loop($uses_del$(_b_0, ($ix$(_h_0)))), _join_0))};
+  }
+}
+
+function $uses_get$(_xs_0, _id_0) {
+  if (_xs_0.$ === "Nil") {
+    return 0;
+  } else {
+    const _h_0 = _xs_0["head"];
+    const _t_0 = _xs_0["tail"];
+    const _x_0 = ($ix$(_h_0));
+    if (((_x_0 === _id_0))) {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $qt$, x: [_h_0]};
+} else {
+const _x_2 = {$: "Unit"};
+return {$: "$JMP", f: $uses_get$, x: [_t_0, _id_0]};
+}
+  }
+}
+
+function $dg_quant_error$(_world_0, _message_0, _name_0, _allowed_0, _used_0) {
+  const _x_0 = run_loop($kp_quant$(_allowed_0));
+  return $dg_bad_detail$(_world_0, _message_0, ($dg_text$((_x_0 + _name_0))), ($dg_text$(run_loop(run_tail(((_used_0 === 2)) ? ((_x_1) => {
+  return (_name_0 + " (consumed more than once)");
+}) : ((_x_2) => {
+  const _x_3 = run_loop($kp_quant$(_used_0));
+  return (_x_3 + _name_0);
+}), {$: "Unit"})))));
+}
+
+function $uses_del$(_xs_0, _id_0) {
+  if (_xs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _xs_0["head"];
+    const _t_0 = _xs_0["tail"];
+    const _x_0 = ($ix$(_h_0));
+    return run_tail(((_x_0 === _id_0)) ? ((_x_1) => {
+  return $uses_del$(_t_0, _id_0);
+}) : ((_x_2) => {
+  return {$: "Con", "head": _h_0, "tail": run_loop($uses_del$(_t_0, _id_0))};
+}), {$: "Unit"});
+  }
+}
+
+function $ki_rwt_bound$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0, _bound_0) {
+  return run_tail(((_bound_0 <= 4294967292)) ? ((_x_0) => {
+  return $check_rwt_goal$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0, ((_bound_0 + 1) >>> 0));
+}) : ((_x_1) => {
+  return $kr_from$(_r_0, ($bad$(($rw$(_r_0)), "fresh binder space exhausted")));
+}), {$: "Unit"});
+}
+
+function $kw_temp_floor$(_world_0, _roots_0) {
+  return $kw_temp_fresh$(_world_0, ($kw_fresh$(_world_0)), _roots_0);
+}
+
+function $infer_var$(_e_0, _ctx_0, _t_0, _dem_0) {
+  const _bound_0 = run_loop($ctx_get$(_ctx_0, ($ix$(_t_0))));
+  return run_tail((($String$eq$(($tg$(_bound_0)), "Absent"))) ? ((_x_0) => {
+  return $bad$(($cw$(_e_0)), "unbound variable");
+}) : ((_x_1) => {
+  return $ok$(($cw$(_e_0)), ($k_with_children$(_t_0, {$: "Nil"})), run_loop($kid$(_bound_0, 0)), {$: "Con", "head": ($kt$("Use", "", ($ix$(_t_0)), _dem_0, {$: "Nil"})), "tail": {$: "Nil"}});
+}), {$: "Unit"});
+}
+
+function $infer_ref$(_e_0, _ctx_0, _t_0, _dem_0, _sp_0, _d_0) {
+  return run_tail((($String$eq$(($dk$(_d_0)), "Absent"))) ? ((_x_0) => {
+  return $bad$(($cw$(_e_0)), "undefined name");
+}) : ((_x_1) => {
+  const _x_2 = ($da$(_d_0));
+  return run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "ADT")), (_x_2 > 0)))) ? ((_x_3) => {
+  return $bad$(($cw$(_e_0)), "a family requires angle-bracket parameters");
+}) : ((_x_4) => {
+  return run_tail(((_dem_0 === 0)) ? ((_x_5) => {
+  return $ok$(($cw$(_e_0)), _t_0, ($dt$(_d_0)), {$: "Nil"});
+}) : ((_x_6) => {
+  const _x_7 = ($dx$(_d_0));
+  const _x_8 = ($dx$(run_loop($lookup$(($cb$(_e_0)), ($cn$(_e_0))))));
+  const _x_9 = ($Bool$and$(($Bool$not$(($db$(_d_0)))), ($Bool$not$(($cu$(_e_0))))));
+  const _x_10 = ($Bool$and$((_x_7 > 0), (_x_8 === 0)));
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($String$eq$(($tg$(($dv$(_d_0)))), "Absent")))), ($Bool$not$(($String$eq$(($nm$(_t_0)), ($cn$(_e_0)))))))), (_x_9 || _x_10)))) ? ((_x_11) => {
+  return $bad$(($cw$(_e_0)), "live use of an unfilled law");
+}) : ((_x_12) => {
+  return $ki_ref_result$(_e_0, _t_0, _sp_0, run_loop($infer_template$(_e_0, _ctx_0, _t_0, _dem_0, _sp_0, _d_0)));
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $ki_one$(_t_0, _ty_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return $checked$(_r_0, ($k_with_children$(_t_0, {$: "Con", "head": ($ct$(_r_0)), "tail": {$: "Nil"}})), _ty_0);
+}) : ((_x_1) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $ki_min$(_e_0, _ctx_0, _t_0, _dem_0, _a_0) {
+  return run_tail((($good$(_a_0))) ? ((_x_0) => {
+  return $ki_pair$(_t_0, ($atom$("Qnt")), _a_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_a_0)))), _ctx_0, run_loop($kid$(_t_0, 1)), _dem_0, ($atom$("Qnt")))), false);
+}) : ((_x_1) => {
+  return _a_0;
+}), {$: "Unit"});
+}
+
+function $ki_all$(_e_0, _ctx_0, _t_0, _a_0) {
+  return run_tail((($good$(_a_0))) ? ((_x_0) => {
+  return $ki_pair$(_t_0, ($typ$(1)), _a_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_a_0)))), ($ctx_bind$(_ctx_0, ($ix$(_t_0)), ($qt$(_t_0)), ($nm$(_t_0)), run_loop($kid$(_t_0, 0)))), run_loop($kid$(_t_0, 1)), 0, ($typ$(1)))), false);
+}) : ((_x_1) => {
+  return _a_0;
+}), {$: "Unit"});
+}
+
+function $infer_app$(_e_0, _ctx_0, _t_0, _dem_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  const _x_1 = ($rx$(_r_0));
+  return run_tail(((_x_1 > 0)) ? ((_x_2) => {
+  const _x_3 = ($rx$(_r_0));
+  return {$: "KChecking", "term": ($ct$(_r_0)), "typ": ($cy$(_r_0)), "uses": ($cs$(_r_0)), "error": "", "world": ($rw$(_r_0)), "consumed": ((_x_3 - 1) >>> 0)};
+}) : ((_x_4) => {
+  return $infer_app_type$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, _t_0, _dem_0, _r_0, run_loop($wnf$(($kw_book$(($rw$(_r_0)))), ($cy$(_r_0)))));
+}), {$: "Unit"});
+}) : ((_x_5) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $infer_adt$(_e_0, _ctx_0, _t_0, _dem_0, _d_0) {
+  const _x_0 = ($terms_len$(($ks$(_t_0))));
+  const _x_1 = ($da$(_d_0));
+  return run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "ADT")), (_x_0 === _x_1)))) ? ((_x_2) => {
+  return $infer_adt_done$(_t_0, run_loop($tele_check$(_e_0, _ctx_0, ($dt$(_d_0)), ($ks$(_t_0)), _dem_0)));
+}) : ((_x_3) => {
+  return $dg_adt_error$(($cw$(_e_0)), _t_0, _d_0);
+}), {$: "Unit"});
+}
+
+function $ki_eql_type$(_e_0, _ctx_0, _t_0, _a_0) {
+  return run_tail((($good$(_a_0))) ? ((_x_0) => {
+  return $ki_eql_left$(($ke_world$(_e_0, ($rw$(_a_0)))), _ctx_0, _t_0, _a_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_a_0)))), _ctx_0, run_loop($kid$(_t_0, 0)), 0, run_loop($kid$(_t_0, 2)))));
+}) : ((_x_1) => {
+  return _a_0;
+}), {$: "Unit"});
+}
+
+function $ki_ann$(_e_0, _ctx_0, _t_0, _dem_0, _a_0) {
+  return run_tail((($good$(_a_0))) ? ((_x_0) => {
+  return $ki_ann_done$(_t_0, _a_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_a_0)))), _ctx_0, run_loop($kid$(_t_0, 0)), _dem_0, run_loop($kid$(_t_0, 1)))));
+}) : ((_x_1) => {
+  return _a_0;
+}), {$: "Unit"});
+}
+
+function $norm_cmp_heads$(_book_0, _st_0, _a_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0) {
+  const _x_0 = ($String$eq$(($tg$(_a_0)), "Lam"));
+  const _x_1 = ($String$eq$(($tg$(_b_0)), "Lam"));
+  return run_tail(((_x_0 || _x_1)) ? ((_x_2) => {
+  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": ($app$(_a_0, ($var$("_", _fresh_0)))), "b": ($app$(_b_0, ($var$("_", _fresh_0)))), "le": _le_0, "fresh": ((_fresh_0 + 1) >>> 0)}, "tail": _rest_0}, _alts_0);
+}) : ((_x_3) => {
+  return run_tail((($Bool$and$(($core_literal$(_a_0)), ($String$eq$(($tg$(_b_0)), "Ctr"))))) ? ((_x_4) => {
+  return $norm_cmp_heads$(_book_0, _st_0, run_loop($core_literal_step$(_a_0)), _b_0, _le_0, _fresh_0, _rest_0, _alts_0);
+}) : ((_x_5) => {
+  return run_tail((($Bool$and$(($core_literal$(_b_0)), ($String$eq$(($tg$(_a_0)), "Ctr"))))) ? ((_x_6) => {
+  return $norm_cmp_heads$(_book_0, _st_0, _a_0, run_loop($core_literal_step$(_b_0)), _le_0, _fresh_0, _rest_0, _alts_0);
+}) : ((_x_7) => {
+  if ((($String$eq$(($tg$(_a_0)), ($tg$(_b_0)))))) {
+const _x_8 = {$: "Unit"};
+return {$: "$JMP", f: $norm_cmp_same$, x: [_book_0, _st_0, _a_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0]};
+} else {
+const _x_9 = {$: "Unit"};
+return {$: "$JMP", f: $norm_cmp_fail$, x: [_book_0, _st_0, _alts_0]};
+}
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $prefix_state_headers$(_book_0) {
+  if (_book_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _d_0 = _book_0["head"];
+    const _rest_0 = _book_0["tail"];
+    return {$: "Con", "head": run_loop(run_tail((($String$eq$(($tg$(($dv$(_d_0)))), "Foreign"))) ? ((_x_0) => {
+  return _d_0;
+}) : ((_x_1) => {
+  return $declared$(_d_0);
+}), {$: "Unit"})), "tail": ($prefix_state_headers$(_rest_0))};
+  }
 }
 
 function $fpe_line_text$(_lines_0, _line_0) {
@@ -27645,7 +28620,7 @@ function $jd_component_width$(_book_0, _members_0) {
   } else {
     const _name_0 = _members_0["head"];
     const _rest_0 = _members_0["tail"];
-    return $U32$max$(run_loop($jd_live_arity$(_book_0, ($dt$(run_loop($lookup$(_book_0, _name_0)))), run_loop($jd_arity$(_book_0, run_loop($lookup$(_book_0, _name_0)))))), ($jd_component_width$(_book_0, _rest_0)));
+    return $U32$max$(run_loop($jd_live_arity$(_book_0, ($dt$(run_loop($lookup$(_book_0, _name_0)))), run_loop($jd_emitted_arity$(_book_0, run_loop($lookup$(_book_0, _name_0)))))), ($jd_component_width$(_book_0, _rest_0)));
   }
 }
 
@@ -27687,7 +28662,7 @@ function $jd_doc_return$(_book_0, _env_0, _t_0, _ty_0, _spine_0) {
   return $jd_doc_choice_body$(_book_0, _env_0, ($ks$(_spine_0)));
 }) : ((_x_1) => {
   return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($tg$(_spine_0)), "Call")), ($Bool$not$(($String$eq$(run_loop($jd_owner$(_env_0)), "")))))), ($jd_same_component$(_book_0, ($nm$(_spine_0)), run_loop($jd_owner$(_env_0))))))) ? ((_x_2) => {
-  return $jd_doc_return_self$(_book_0, _env_0, _t_0, _ty_0, _spine_0, run_loop($jd_arguments$(_book_0, _env_0, ($ks$(_spine_0)), ($dt$(run_loop($lookup$(_book_0, ($nm$(_spine_0)))))), run_loop($jd_arity$(_book_0, run_loop($lookup$(_book_0, ($nm$(_spine_0)))))))));
+  return $jd_doc_return_self$(_book_0, _env_0, _t_0, _ty_0, _spine_0, run_loop($jd_arguments$(_book_0, _env_0, ($ks$(_spine_0)), ($dt$(run_loop($lookup$(_book_0, ($nm$(_spine_0)))))), run_loop($jd_emitted_arity$(_book_0, run_loop($lookup$(_book_0, ($nm$(_spine_0)))))))));
 }) : ((_x_3) => {
   return $jd_doc_return_regular$(_book_0, _env_0, _t_0, _ty_0, _spine_0);
 }), {$: "Unit"});
@@ -27745,169 +28720,6 @@ function $jd_primitive_placeholder$(_text_0, _args_0) {
   }
 }
 
-function $jd_host_native_leaf$(_t_0, _flags_0) {
-  const _x_0 = ((_flags_0 & 1) >>> 0);
-  const _x_1 = ((_flags_0 & 2) >>> 0);
-  const _x_2 = ($Bool$and$(($String$eq$(($nm$(_t_0)), "U32")), ($Bool$not$((_x_0 === 0)))));
-  const _x_3 = ($Bool$and$(($String$eq$(($nm$(_t_0)), "F32")), ($Bool$not$((_x_1 === 0)))));
-  return $Bool$and$(($List$is_empty$(($ks$(_t_0)))), (_x_2 || _x_3));
-}
-
-function $jd_host_marshal_on$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
-  return $jd_host_marshal_fun$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0);
-}) : ((_x_1) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "ADT"))) ? ((_x_2) => {
-  return run_tail((($Bool$and$(($String$eq$(($nm$(_t_0)), "Nat")), ($db$(run_loop($lookup$(_book_0, ($nm$(_t_0))))))))) ? ((_x_3) => {
-  if ((_out_0)) {
-const _x_4 = {$: "Unit"};
-return "BigInt";
-} else {
-const _x_5 = {$: "Unit"};
-return "nat_host";
-}
-}) : ((_x_6) => {
-  return run_tail((($Bool$and$(($String$eq$(($nm$(_t_0)), "Array")), ($db$(run_loop($lookup$(_book_0, ($nm$(_t_0))))))))) ? ((_x_7) => {
-  const _x_8 = run_loop($jd_host_marshal$(_book_0, run_loop($kid$(_t_0, 0)), _out_0, _seen_0, _depth_0, _fuel_0));
-  const _x_9 = (_x_8 + "(x)),a))");
-  return ("((a)=>(a.forEach((x,i)=>a[i]=" + _x_9);
-}) : ((_x_10) => {
-  return $jd_host_marshal_status$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0, run_loop($jd_host_nat_known$(_book_0, _t_0)));
-}), {$: "Unit"});
-}), {$: "Unit"});
-}) : ((_x_11) => {
-  return "";
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $sk_var$($0, $1) {
-  for (;;) {
-    {
-      const _t_0 = $0;
-      const _env_0 = $1;
-      if (_env_0.$ === "Nil") {
-        return $sk_variable$(($nm$(_t_0)), ($ix$(_t_0)));
-      } else {
-        const _t_1 = _env_0["head"];
-        if (_t_1.$ === "KPFile") {
-          const _rest_0 = _env_0["tail"];
-          $0 = _t_0;
-          $1 = _rest_0;
-          continue;
-        } else {
-          const _name_0 = _t_1["name"];
-          const _id_0 = _t_1["id"];
-          const _depth_0 = _t_1["depth"];
-          const _rest_1 = _env_0["tail"];
-          const _x_0 = ($ix$(_t_0));
-          if (((_x_0 === _id_0))) {
-const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $sk_variable$, x: [_name_0, _depth_0]};
-} else {
-const _x_2 = {$: "Unit"};
-return {$: "$JMP", f: $sk_var$, x: [_t_0, _rest_1]};
-}
-        }
-      }
-    }
-  }
-}
-
-function $sk_node$(_t_0, _env_0, _depth_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Ref"))) ? ((_x_0) => {
-  const _x_1 = ($qt$(_t_0));
-  const _x_4 = run_loop(run_tail(((_x_1 === 3)) ? ((_x_2) => {
-  return ",\"b\":true";
-}) : ((_x_3) => {
-  return "";
-}), {$: "Unit"}));
-  const _x_5 = ($sk_quote$(($nm$(_t_0))));
-  const _x_6 = (_x_4 + "}");
-  const _x_7 = (_x_5 + _x_6);
-  return ("{\"$\":\"Ref\",\"k\":" + _x_7);
-}) : ((_x_8) => {
-  return run_tail((($core_literal$(_t_0))) ? ((_x_9) => {
-  const _x_12 = run_loop(run_tail((($String$eq$(($nm$(_t_0)), "String"))) ? ((_x_10) => {
-  return $sk_quote$(($kl_text$(_t_0)));
-}) : ((_x_11) => {
-  return $U32$show$(($kl_number$(_t_0)));
-}), {$: "Unit"}));
-  const _x_13 = (_x_12 + "}");
-  const _x_14 = ($sk_quote$(($nm$(_t_0))));
-  const _x_15 = (",\"v\":" + _x_13);
-  const _x_16 = (_x_14 + _x_15);
-  return ("{\"$\":\"Lit\",\"k\":" + _x_16);
-}) : ((_x_17) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Lam"))) ? ((_x_18) => {
-  const _x_22 = run_loop(run_tail((($k_quantity_present$(_t_0))) ? ((_x_19) => {
-  const _x_20 = ($sk_quant$(($qt$(_t_0))));
-  return (",\"q\":" + _x_20);
-}) : ((_x_21) => {
-  return "";
-}), {$: "Unit"}));
-  const _x_23 = run_loop($sk_term$(run_loop($kid$(_t_0, 0)), {$: "Con", "head": {$: "KPName", "name": ($nm$(_t_0)), "id": ($ix$(_t_0)), "depth": _depth_0}, "tail": _env_0}, ((_depth_0 + 1) >>> 0)));
-  const _x_24 = (_x_22 + "}");
-  const _x_25 = (_x_23 + _x_24);
-  const _x_26 = ($U32$show$(_depth_0));
-  const _x_27 = (",\"f\":" + _x_25);
-  const _x_28 = (_x_26 + _x_27);
-  const _x_29 = ($sk_quote$(($nm$(_t_0))));
-  const _x_30 = (",\"i\":" + _x_28);
-  const _x_31 = (_x_29 + _x_30);
-  return ("{\"$\":\"Lam\",\"k\":" + _x_31);
-}) : ((_x_32) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_33) => {
-  const _x_34 = run_loop($sk_term$(run_loop($kid$(_t_0, 1)), {$: "Con", "head": {$: "KPName", "name": ($nm$(_t_0)), "id": ($ix$(_t_0)), "depth": _depth_0}, "tail": _env_0}, ((_depth_0 + 1) >>> 0)));
-  const _x_35 = (_x_34 + "}");
-  const _x_36 = run_loop($sk_term$(run_loop($kid$(_t_0, 0)), _env_0, _depth_0));
-  const _x_37 = (",\"B\":" + _x_35);
-  const _x_38 = (_x_36 + _x_37);
-  const _x_39 = ($U32$show$(_depth_0));
-  const _x_40 = (",\"A\":" + _x_38);
-  const _x_41 = (_x_39 + _x_40);
-  const _x_42 = ($sk_quote$(($nm$(_t_0))));
-  const _x_43 = (",\"i\":" + _x_41);
-  const _x_44 = (_x_42 + _x_43);
-  const _x_45 = ($sk_quant$(($qt$(_t_0))));
-  const _x_46 = (",\"k\":" + _x_44);
-  const _x_47 = (_x_45 + _x_46);
-  return ("{\"$\":\"All\",\"q\":" + _x_47);
-}) : ((_x_48) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Let"))) ? ((_x_49) => {
-  return $sk_let$(($ks$(_t_0)), _env_0, _depth_0);
-}) : ((_x_50) => {
-  const _x_51 = ($String$eq$(($tg$(_t_0)), "ADT"));
-  const _x_52 = ($String$eq$(($tg$(_t_0)), "Ctr"));
-  return run_tail(((_x_51 || _x_52)) ? ((_x_53) => {
-  const _x_58 = run_loop(run_tail((($String$eq$(($tg$(_t_0)), "ADT"))) ? ((_x_54) => {
-  const _x_55 = ($sk_names$(($rm$(_t_0))));
-  const _x_56 = (_x_55 + "]");
-  return (",\"r\":[" + _x_56);
-}) : ((_x_57) => {
-  return "";
-}), {$: "Unit"}));
-  const _x_59 = (_x_58 + "}");
-  const _x_60 = ($sk_terms$(($ks$(_t_0)), _env_0, _depth_0));
-  const _x_61 = ("]" + _x_59);
-  const _x_62 = (_x_60 + _x_61);
-  const _x_63 = ($sk_quote$(($nm$(_t_0))));
-  const _x_64 = (",\"x\":[" + _x_62);
-  const _x_65 = (_x_63 + _x_64);
-  const _x_66 = ($sk_quote$(($tg$(_t_0))));
-  const _x_67 = (",\"k\":" + _x_65);
-  const _x_68 = (_x_66 + _x_67);
-  return ("{\"$\":" + _x_68);
-}) : ((_x_69) => {
-  return $sk_other$(_t_0, _env_0, _depth_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
 function $jd_calls_install_group$($0, $1, $2, $3, $4, $5, $6) {
   let $pc = 1;
   for (;;) switch ($pc) {
@@ -27952,7 +28764,7 @@ function $jd_calls_install_group$($0, $1, $2, $3, $4, $5, $6) {
   }
 }
 
-function $jd_calls_group_old$($0, $1, $2, $3, $4, $5, $6) {
+function $jd_calls_group_old$($0, $1, $2, $3, $4, $5, $6, $7) {
   let $pc = 2;
   for (;;) switch ($pc) {
     case 0: {
@@ -27971,6 +28783,7 @@ function $jd_calls_group_old$($0, $1, $2, $3, $4, $5, $6) {
         $3 = _keys_0;
         $4 = ($dn$(_row_0));
         $5 = ($nm$(($dv$(run_loop($jd_calls_get$(_labels_0, ($dn$(_row_0))))))));
+        $6 = ($dt$(_row_0));
         $pc = 1; continue;
       }
     }
@@ -27981,13 +28794,15 @@ function $jd_calls_group_old$($0, $1, $2, $3, $4, $5, $6) {
       const _keys_0 = $3;
       const _name_0 = $4;
       const _key_0 = $5;
+      const _arity_0 = $6;
       $0 = _rest_0;
       $1 = _labels_0;
       $2 = _groups_0;
       $3 = _keys_0;
       $4 = _name_0;
       $5 = _key_0;
-      $6 = run_loop($jd_calls_get$(_groups_0, _key_0));
+      $6 = _arity_0;
+      $7 = run_loop($jd_calls_get$(_groups_0, _key_0));
       $pc = 2; continue;
     }
     case 2: {
@@ -27997,10 +28812,11 @@ function $jd_calls_group_old$($0, $1, $2, $3, $4, $5, $6) {
       const _keys_0 = $3;
       const _name_0 = $4;
       const _key_0 = $5;
-      const _old_0 = $6;
+      const _arity_0 = $6;
+      const _old_0 = $7;
       $0 = _rest_0;
       $1 = _labels_0;
-      $2 = run_loop($jd_calls_put$(_groups_0, {$: "KDef", "name": _key_0, "kind": "JDGroup", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDGroup", _name_0, 0, 0, {$: "Con", "head": ($ref$(_name_0)), "tail": ($ks$(($dv$(_old_0))))})), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
+      $2 = run_loop($jd_calls_put$(_groups_0, {$: "KDef", "name": _key_0, "kind": "JDGroup", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDGroup", _name_0, 0, 0, {$: "Con", "head": ($kt$("JDMember", _name_0, 0, 0, {$: "Con", "head": _arity_0, "tail": {$: "Nil"}})), "tail": ($ks$(($dv$(_old_0))))})), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
       $3 = run_loop(run_tail((($String$eq$(($dk$(_old_0)), "Absent"))) ? ((_x_0) => {
   return {$: "Con", "head": ($ref$(_key_0)), "tail": _keys_0};
 }) : ((_x_1) => {
@@ -28011,110 +28827,61 @@ function $jd_calls_group_old$($0, $1, $2, $3, $4, $5, $6) {
   }
 }
 
-function $jd_native_layout$(_book_0, _ty_0) {
-  const _x_0 = ($nm$(_ty_0));
-  const _x_1 = (_x_0 + "|");
-  return $Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "ADT")), ($db$(run_loop($lookup$(_book_0, ($nm$(_ty_0)))))))), ($String$contains$("|Nat|Bool|U32|F32|Char|String|Array|", ("|" + _x_1))));
+function $jd_calls_match_tel$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, _tel_0) {
+  return run_tail((($Bool$and$(($jd_native_layout$(_book_0, _domain_0)), ($String$eq$(($nm$(_domain_0)), "Nat"))))) ? ((_x_0) => {
+  return $jd_calls_word_rows$(_book_0, _env_0, ((_args_0 - 1) >>> 0), _s_0, ($jd_nat_rows$(_book_0, _t_0, _ty_0, 0)));
+}) : ((_x_1) => {
+  return $jd_calls_match_other$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, _tel_0);
+}), {$: "Unit"});
 }
 
-function $jd_calls_word_rows$($0, $1, $2, $3, $4, $5) {
-  let $pc = 0;
-  for (;;) switch ($pc) {
-    case 0: {
-      const _book_0 = $0;
-      const _env_0 = $1;
-      const _rest_0 = $2;
-      const _s_0 = $3;
-      const _rows_0 = $4;
-      if (_rows_0.$ === "Nil") {
-        return _s_0;
-      } else {
-        const _row_0 = _rows_0["head"];
-        const _more_0 = _rows_0["tail"];
-        $0 = _book_0;
-        $1 = _env_0;
-        $2 = _rest_0;
-        $3 = _s_0;
-        $4 = _row_0;
-        $5 = _more_0;
-        $pc = 1; continue;
-      }
-    }
-    case 1: {
-      const _book_0 = $0;
-      const _env_0 = $1;
-      const _rest_0 = $2;
-      const _s_0 = $3;
-      const _row_0 = $4;
-      const _more_0 = $5;
-      const _term_0 = _row_0["term"];
-      const _typ_0 = _row_0["typ"];
-      const _fields_0 = _row_0["fields"];
-      $0 = _book_0;
-      $1 = _env_0;
-      $2 = _rest_0;
-      $3 = run_loop($jd_calls_body$(_book_0, _env_0, _term_0, _typ_0, ((_fields_0 + _rest_0) >>> 0), _s_0));
-      $4 = _more_0;
-      $pc = 0; continue;
-    }
+function $jd_choice_signature$(_book_0, _ty_0, _at_0) {
+  return run_tail(((_at_0 === 4)) ? ((_x_0) => {
+  return true;
+}) : ((_x_1) => {
+  return $jd_choice_domain$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _at_0);
+}), {$: "Unit"});
+}
+
+function $jd_calls_edge$(_s_0, _name_0) {
+  const _edges_0 = _s_0["edges"];
+  const _unknown_0 = _s_0["unknown"];
+  const _fuel_0 = _s_0["fuel"];
+  const _valid_0 = _s_0["valid"];
+  return {$: "JDCallScan", "edges": {$: "Con", "head": ($kt$("Ref", _name_0, 0, 0, {$: "Nil"})), "tail": _edges_0}, "unknown": _unknown_0, "fuel": _fuel_0, "valid": _valid_0};
+}
+
+function $jd_calls_extra$(_book_0, _xs_0, _ty_0, _s_0) {
+  if (_xs_0.$ === "Nil") {
+    return _s_0;
+  } else {
+    const _x_0 = _xs_0["head"];
+    const _rest_0 = _xs_0["tail"];
+    return $jd_calls_extra_type$(_book_0, _x_0, _rest_0, run_loop($wnf$(_book_0, _ty_0)), _s_0);
   }
 }
 
-function $jd_nat_rows$(_book_0, _t_0, _ty_0, _level_0) {
-  return $jd_nat_parts$(_book_0, _ty_0, _level_0, run_loop($jd_nat_arm$(_t_0, "Zero")), run_loop($jd_nat_arm$(_t_0, "Succ")), run_loop($jd_word_end$(_t_0)));
-}
-
-function $jd_calls_match_other$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, _tel_0) {
-  const _x_0 = ($String$eq$(($nm$(_domain_0)), "U32"));
-  const _x_1 = ($String$eq$(($nm$(_domain_0)), "F32"));
-  const _arm_0 = run_loop(run_tail((($Bool$and$(($Bool$and$(($jd_native_layout$(_book_0, _domain_0)), (_x_0 || _x_1))), ($j_u32_native_book$(_book_0))))) ? ((_x_2) => {
-  return $jd_calls_word_rows$(_book_0, _env_0, ((_args_0 - 1) >>> 0), _s_0, run_loop($jd_word_rows$(_book_0, run_loop($j_strip$(run_loop($kid$(_t_0, 0)))), run_loop($j_arm_tel$(_book_0, _tel_0, run_loop($kid$(_ty_0, 1)))), 0, 0, {$: "JDWordCover", "term": ($atom$("Absent")), "fields": 0, "prefix": {$: "Nil"}})));
+function $jd_calls_saturated_next$(_book_0, _d_0, _xs_0, _ty_0, _left_0, _s_0) {
+  if (_xs_0.$ === "Nil") {
+    const _x_0 = run_loop($jd_live_arity$(_book_0, _ty_0, _left_0));
+    return run_tail(((_x_0 === 0)) ? ((_x_1) => {
+  return run_tail((run_loop($jd_native_known$(_book_0, _d_0))) ? ((_x_2) => {
+  return _s_0;
 }) : ((_x_3) => {
-  return $jd_calls_match_arm$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), run_loop($j_arm_tel$(_book_0, _tel_0, run_loop($kid$(_ty_0, 1)))), ((_args_0 - 1) >>> 0), run_loop($jd_calls_fields$(_tel_0, 64)), _s_0);
-}), {$: "Unit"}));
-  const _x_4 = ($j_constructor_count$(_book_0, _domain_0));
-  const _x_5 = (_x_4 === 1);
-  const _x_6 = ($Bool$and$(($jd_native_layout$(_book_0, _domain_0)), ($String$eq$(run_loop($jd_match_test$(($nm$(_domain_0)), ($nm$(_t_0)), "x")), ""))));
-  return run_tail(((_x_5 || _x_6)) ? ((_x_7) => {
-  return _arm_0;
-}) : ((_x_8) => {
-  return $jd_calls_body$(_book_0, _env_0, run_loop($kid$(_t_0, 1)), _ty_0, _args_0, _arm_0);
+  return $jd_calls_edge$(_s_0, ($dn$(_d_0)));
 }), {$: "Unit"});
-}
-
-function $jd_choice_domain$(_book_0, _ty_0, _at_0) {
-  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
-  return run_tail((run_loop(run_tail(((_at_0 === 0)) ? ((_x_1) => {
-  const _x_2 = ($qt$(_ty_0));
-  return $Bool$and$((_x_2 === 0), ($String$eq$(($tg$(run_loop($wnf$(_book_0, run_loop($kid$(_ty_0, 0)))))), "Typ")));
-}) : ((_x_3) => {
-  const _x_4 = ($qt$(_ty_0));
-  return $Bool$and$(($Bool$not$((_x_4 === 0))), run_loop(run_tail(((_at_0 === 1)) ? ((_x_5) => {
-  return $jd_choice_owner$(_book_0, run_loop($kid$(_ty_0, 0)), "Bool");
-}) : ((_x_6) => {
-  return $jd_choice_callback$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_ty_0, 0)))));
-}), {$: "Unit"})));
-}), {$: "Unit"}))) ? ((_x_7) => {
-  return $jd_choice_signature$(_book_0, run_loop($kid$(_ty_0, 1)), ((_at_0 + 1) >>> 0));
-}) : ((_x_8) => {
-  return false;
-}), {$: "Unit"});
-}) : ((_x_9) => {
-  return false;
-}), {$: "Unit"});
-}
-
-function $jd_calls_extra_type$(_book_0, _x_0, _rest_0, _ty_0, _s_0) {
-  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_1) => {
-  const _x_2 = ($qt$(_ty_0));
-  return run_tail((($Bool$and$(($List$is_empty$(_rest_0)), ($Bool$not$((_x_2 === 0)))))) ? ((_x_3) => {
-  return $jd_calls_unknown$(_s_0);
 }) : ((_x_4) => {
-  return $jd_calls_extra$(_book_0, _rest_0, run_loop($j_app_type$(_ty_0, _x_0)), _s_0);
+  return _s_0;
 }), {$: "Unit"});
-}) : ((_x_5) => {
+  } else {
+    const _x_5 = _xs_0["head"];
+    const _rest_0 = _xs_0["tail"];
+    return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_6) => {
+  return $jd_calls_saturated$(_book_0, _d_0, _rest_0, run_loop($j_app_type$(_ty_0, _x_5)), ((_left_0 - 1) >>> 0), _s_0);
+}) : ((_x_7) => {
   return $jd_calls_bad$(_s_0);
 }), {$: "Unit"});
+  }
 }
 
 function $jd_primitive_select_6$(_name_0) {
@@ -28181,6 +28948,181 @@ function $jd_show_fields_on$(_book_0, _t_0, _left_0, _types_0, _names_0) {
 }), {$: "Unit"});
 }) : ((_x_4) => {
   return {$: "JDShowDesc", "cells": {$: "Nil"}, "types": _types_0, "names": _names_0, "error": "cannot print a dependent field telescope"};
+}), {$: "Unit"});
+}
+
+function $jd_host_marshal_fun$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0) {
+  const _result_0 = run_loop($jd_host_marshal$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), _out_0, _seen_0, _depth_0, _fuel_0));
+  const _x_0 = ($qt$(_t_0));
+  return run_tail(((_x_0 === 0)) ? ((_x_1) => {
+  return _result_0;
+}) : ((_x_2) => {
+  return $jd_host_marshal_fun_done$(run_loop($jd_host_marshal$(_book_0, run_loop($kid$(_t_0, 0)), ($Bool$not$(_out_0)), _seen_0, _depth_0, _fuel_0)), _result_0);
+}), {$: "Unit"});
+}
+
+function $jd_host_marshal_status$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0, _status_0) {
+  return run_tail(((_status_0 === 2)) ? ((_x_0) => {
+  return $jd_host_error$("host type graph budget");
+}) : ((_x_1) => {
+  if (((_status_0 === 1))) {
+const _x_2 = {$: "Unit"};
+return {$: "$JMP", f: $jd_host_marshal_named$, x: [_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0]};
+} else {
+const _x_3 = {$: "Unit"};
+return "";
+}
+}), {$: "Unit"});
+}
+
+function $sk_variable$(_name_0, _id_0) {
+  const _x_2 = run_loop(run_tail(((_id_0 === 4294967295)) ? ((_x_0) => {
+  return "-1";
+}) : ((_x_1) => {
+  return $U32$show$(_id_0);
+}), {$: "Unit"}));
+  const _x_3 = (_x_2 + "}");
+  const _x_4 = ($sk_quote$(_name_0));
+  const _x_5 = (",\"i\":" + _x_3);
+  const _x_6 = (_x_4 + _x_5);
+  return ("{\"$\":\"Var\",\"k\":" + _x_6);
+}
+
+function $sk_quote$(_s_0) {
+  const _x_0 = ($String$reverse$(($sk_escape$(_s_0, ""))));
+  const _x_1 = (_x_0 + "\"");
+  return ("\"" + _x_1);
+}
+
+function $sk_quant$(_q_0) {
+  const _x_4 = run_loop(run_tail(((_q_0 === 0)) ? ((_x_0) => {
+  return "None";
+}) : ((_x_1) => {
+  if (((_q_0 === 2))) {
+const _x_2 = {$: "Unit"};
+return "Many";
+} else {
+const _x_3 = {$: "Unit"};
+return "Lone";
+}
+}), {$: "Unit"}));
+  const _x_5 = (_x_4 + "\"}");
+  return ("{\"$\":\"" + _x_5);
+}
+
+function $sk_let$(_xs_0, _env_0, _depth_0) {
+  const _x_0 = run_loop($sk_let_body$(_xs_0, _env_0, _depth_0));
+  const _x_1 = (_x_0 + "}");
+  const _x_2 = run_loop($sk_let_field$(_xs_0, 3, _env_0, _depth_0, _depth_0));
+  const _x_3 = ("],\"f\":" + _x_1);
+  const _x_4 = (_x_2 + _x_3);
+  const _x_5 = run_loop($sk_let_field$(_xs_0, 2, _env_0, _depth_0, _depth_0));
+  const _x_6 = ("],\"v\":[" + _x_4);
+  const _x_7 = (_x_5 + _x_6);
+  const _x_8 = run_loop($sk_let_field$(_xs_0, 1, _env_0, _depth_0, _depth_0));
+  const _x_9 = ("],\"q\":[" + _x_7);
+  const _x_10 = (_x_8 + _x_9);
+  const _x_11 = run_loop($sk_let_field$(_xs_0, 0, _env_0, _depth_0, _depth_0));
+  const _x_12 = ("],\"i\":[" + _x_10);
+  const _x_13 = (_x_11 + _x_12);
+  return ("{\"$\":\"Let\",\"k\":[" + _x_13);
+}
+
+function $sk_terms$(_ts_0, _env_0, _depth_0) {
+  if (_ts_0.$ === "Nil") {
+    return "";
+  } else {
+    const _head_0 = _ts_0["head"];
+    const _rest_0 = _ts_0["tail"];
+    const _x_3 = run_loop($sk_term$(_head_0, _env_0, _depth_0));
+    const _x_4 = run_loop(run_tail((($List$is_empty$(_rest_0))) ? ((_x_0) => {
+  return "";
+}) : ((_x_1) => {
+  const _x_2 = ($sk_terms$(_rest_0, _env_0, _depth_0));
+  return ("," + _x_2);
+}), {$: "Unit"}));
+    return (_x_3 + _x_4);
+  }
+}
+
+function $sk_names$(_names_0) {
+  if (_names_0.$ === "Nil") {
+    return "";
+  } else {
+    const _head_0 = _names_0["head"];
+    const _rest_0 = _names_0["tail"];
+    const _x_3 = ($sk_quote$(_head_0));
+    const _x_4 = run_loop(run_tail((($List$is_empty$(_rest_0))) ? ((_x_0) => {
+  return "";
+}) : ((_x_1) => {
+  const _x_2 = ($sk_names$(_rest_0));
+  return ("," + _x_2);
+}), {$: "Unit"}));
+    return (_x_3 + _x_4);
+  }
+}
+
+function $sk_other$(_t_0, _env_0, _depth_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "App"))) ? ((_x_0) => {
+  return $sk_pair$("App", "f", "x", _t_0, _env_0, _depth_0);
+}) : ((_x_1) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Min"))) ? ((_x_2) => {
+  return $sk_pair$("Min", "a", "b", _t_0, _env_0, _depth_0);
+}) : ((_x_3) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Ann"))) ? ((_x_4) => {
+  return $sk_pair$("Ann", "x", "T", _t_0, _env_0, _depth_0);
+}) : ((_x_5) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Typ"))) ? ((_x_6) => {
+  const _x_7 = run_loop($sk_term$(run_loop($kid$(_t_0, 0)), _env_0, _depth_0));
+  const _x_8 = (_x_7 + "}");
+  return ("{\"$\":\"Typ\",\"g\":" + _x_8);
+}) : ((_x_9) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Qua"))) ? ((_x_10) => {
+  const _x_11 = ($sk_quant$(($qt$(_t_0))));
+  const _x_12 = (_x_11 + "}");
+  return ("{\"$\":\"Qua\",\"q\":" + _x_12);
+}) : ((_x_13) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_14) => {
+  const _x_15 = run_loop($sk_term$(run_loop($kid$(_t_0, 1)), _env_0, _depth_0));
+  const _x_16 = (_x_15 + "}");
+  const _x_17 = run_loop($sk_term$(run_loop($kid$(_t_0, 0)), _env_0, _depth_0));
+  const _x_18 = (",\"m\":" + _x_16);
+  const _x_19 = (_x_17 + _x_18);
+  const _x_20 = ($sk_quote$(($nm$(_t_0))));
+  const _x_21 = (",\"h\":" + _x_19);
+  const _x_22 = (_x_20 + _x_21);
+  return ("{\"$\":\"Mat\",\"k\":" + _x_22);
+}) : ((_x_23) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Eql"))) ? ((_x_24) => {
+  return $sk_triple$("Eql", "a", "b", "T", _t_0, _env_0, _depth_0);
+}) : ((_x_25) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Rwt"))) ? ((_x_26) => {
+  return $sk_triple$("Rwt", "e", "p", "f", _t_0, _env_0, _depth_0);
+}) : ((_x_27) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Hol"))) ? ((_x_28) => {
+  const _x_29 = ($sk_quote$(($nm$(_t_0))));
+  const _x_30 = (_x_29 + "}");
+  return ("{\"$\":\"Hol\",\"k\":" + _x_30);
+}) : ((_x_31) => {
+  const _x_32 = ($String$eq$(($tg$(_t_0)), "Qnt"));
+  const _x_33 = ($String$eq$(($tg$(_t_0)), "Efq"));
+  const _x_34 = (_x_32 || _x_33);
+  const _x_35 = ($String$eq$(($tg$(_t_0)), "Rfl"));
+  return run_tail(((_x_34 || _x_35)) ? ((_x_36) => {
+  const _x_37 = ($sk_quote$(($tg$(_t_0))));
+  const _x_38 = (_x_37 + "}");
+  return ("{\"$\":" + _x_38);
+}) : ((_x_39) => {
+  return $sk_internal$(_t_0, _env_0, _depth_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
 }), {$: "Unit"});
 }
 
@@ -28473,358 +29415,6 @@ return _b_0;
 }), {$: "Unit"});
 }
 
-function $check_ctor_head$(_e_0, _d_0, _tel_0, _kind_0, _params_0, _fields_0, _ctx_0, _args_0) {
-  return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
-  const _x_1 = ($qt$(_tel_0));
-  return $check_ctor_domain$(_e_0, _d_0, _tel_0, _kind_0, _params_0, _fields_0, _ctx_0, _args_0, run_loop($check$(_e_0, _ctx_0, run_loop($kid$(_tel_0, 0)), 0, run_loop(run_tail((($Bool$and$((_params_0 === 0), (_x_1 === 1)))) ? ((_x_2) => {
-  return _kind_0;
-}) : ((_x_3) => {
-  return $typ$(($qt$(_tel_0)));
-}), {$: "Unit"})))));
-}) : ((_x_4) => {
-  return $bad$(($cw$(_e_0)), "constructor telescope missing a binder");
-}), {$: "Unit"});
-}
-
-function $contains_self$(_todo_0, _name_0) {
-  if (_todo_0.$ === "Nil") {
-    return false;
-  } else {
-    const _h_0 = _todo_0["head"];
-    const _rest_0 = _todo_0["tail"];
-    return run_tail((($Bool$and$(($String$eq$(($tg$(_h_0)), "Ref")), ($String$eq$(($nm$(_h_0)), _name_0))))) ? ((_x_0) => {
-  return true;
-}) : ((_x_1) => {
-  return $contains_self$(($norm_join$(($ks$(_h_0)), _rest_0)), _name_0);
-}), {$: "Unit"});
-  }
-}
-
-function $tele_quantities_head$(_book_0, _ty_0, _n_0) {
-  return {$: "Con", "head": ($qua$(run_loop(run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
-  return $qt$(_ty_0);
-}) : ((_x_1) => {
-  return 1;
-}), {$: "Unit"})))), "tail": run_loop($tele_quantities$(_book_0, run_loop($kid$(_ty_0, 1)), ((_n_0 - 1) >>> 0)))};
-}
-
-function $check_template_open$(_world_0, _d_0, _ty_0, _body_0, _lhs_0, _n_0, _name_0, _depth_0) {
-  const _book_0 = ($kw_book$(_world_0));
-  return run_tail((($String$eq$(($dk$(run_loop($lookup$(_book_0, _name_0)))), "Absent"))) ? ((_x_0) => {
-  return $check_template_definition$(($kw_with_book$(_world_0, run_loop($book_put$(_book_0, {$: "KDef", "name": _name_0, "kind": "Def", "arity": 0, "templates": 0, "typ": run_loop($kid$(_ty_0, 0)), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": true, "unsafe": false})))), _d_0, run_loop($subst$(run_loop($kid$(_ty_0, 1)), ($ix$(_ty_0)), ($ref$(_name_0)))), run_loop($kapply$(_body_0, ($ref$(_name_0)))), ($app$(_lhs_0, ($ref$(_name_0)))), ((_n_0 - 1) >>> 0), _depth_0);
-}) : ((_x_1) => {
-  return $dg_trace$({$: "KEnv", "world": _world_0, "name": "", "lhs": ($ref$(($dn$(_d_0)))), "pending": 0, "quantities": {$: "Nil"}, "unsafe": ($du$(_d_0)), "depth": _depth_0}, {$: "Nil"}, _ty_0, ($atom$("Absent")), ($dg_bad_detail$(_world_0, "duplicate comptime binder", ($dg_text$("a fresh ~ binder name")), ($dg_text$(($nm$(_ty_0)))))));
-}), {$: "Unit"});
-}
-
-function $ki_lam_kind$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _q_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $check_lam_done$(_t_0, _ty_0, _q_0, run_loop($check$(run_loop($lhs_step$(($ke_world$(_e_0, ($rw$(_r_0)))), ($var$(($nm$(_t_0)), ($ix$(_t_0)))))), ($ctx_bind$(_ctx_0, ($ix$(_t_0)), _q_0, ($nm$(_t_0)), run_loop($kid$(_ty_0, 0)))), run_loop($kid$(_t_0, 0)), _dem_0, run_loop($subst$(run_loop($kid$(_ty_0, 1)), ($ix$(_ty_0)), ($var$(($nm$(_t_0)), ($ix$(_t_0)))))))));
-}) : ((_x_1) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $dg_kind_check$(_e_0, _ctx_0, _t_0, _q_0, _name_0) {
-  return $dg_kind_at$(_e_0, _ctx_0, _t_0, _q_0, _name_0, _t_0);
-}
-
-function $ki_args$(_t_0, _ty_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $checked$(_r_0, ($k_with_children$(_t_0, ($ks$(($ct$(_r_0)))))), _ty_0);
-}) : ((_x_1) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $tele_check$(_e_0, _ctx_0, _tel_0, _args_0, _dem_0) {
-  if (_args_0.$ === "Nil") {
-    return $ok$(($cw$(_e_0)), ($atom$("Args")), _tel_0, {$: "Nil"});
-  } else {
-    const _h_0 = _args_0["head"];
-    const _t_0 = _args_0["tail"];
-    return $tele_check_cached_head$(_e_0, _ctx_0, run_loop($wnf$(($cb$(_e_0)), _tel_0)), _h_0, _t_0, _dem_0);
-  }
-}
-
-function $dg_ctor_error$(_e_0, _t_0, _ty_0, _ctr_0) {
-  return run_tail((($Bool$and$(($Bool$not$(($String$eq$(($dk$(_ctr_0)), "Absent")))), ($Bool$not$(($has_name$(($rm$(_ty_0)), ($nm$(_t_0))))))))) ? ((_x_0) => {
-  const _x_1 = ($da$(_ctr_0));
-  const _x_4 = ($U32$show$(($da$(_ctr_0))));
-  const _x_5 = run_loop(run_tail(((_x_1 === 1)) ? ((_x_2) => {
-  return " field";
-}) : ((_x_3) => {
-  return " fields";
-}), {$: "Unit"}));
-  const _x_6 = (_x_4 + _x_5);
-  const _x_7 = ($nm$(_t_0));
-  const _x_8 = (" with " + _x_6);
-  return $dg_bad_detail$(($cw$(_e_0)), "constructor does not belong to goal or field count differs", ($dg_text$((_x_7 + _x_8))), _t_0);
-}) : ((_x_9) => {
-  return run_tail((($String$eq$(run_loop($dg_family$(($cb$(_e_0)), ($nm$(_t_0)))), ""))) ? ((_x_10) => {
-  const _x_11 = ($dg_constructor_names$(($dc$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_ty_0))))))));
-  const _x_12 = (_x_11 + ")");
-  const _x_13 = ($nm$(_ty_0));
-  const _x_14 = (" declares " + _x_12);
-  const _x_15 = (_x_13 + _x_14);
-  return $dg_bad_detail$(($cw$(_e_0)), "constructor does not belong to goal or field count differs", ($dg_text$(("a declared constructor (" + _x_15))), _t_0);
-}) : ((_x_16) => {
-  return $dg_bad_detail$(($cw$(_e_0)), "constructor does not belong to goal or field count differs", _ty_0, ($ref$(run_loop($dg_family$(($cb$(_e_0)), ($nm$(_t_0)))))));
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $dead_type$(_book_0, _ty_0) {
-  return $Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "ADT")), ($String$eq$(($dk$(run_loop($lookup$(_book_0, ($nm$(_ty_0)))))), "ADT")))), ($defs_empty$(run_loop($remaining$(($dc$(run_loop($lookup$(_book_0, ($nm$(_ty_0)))))), ($rm$(_ty_0)))))));
-}
-
-function $ctx_dead$(_book_0, _ctx_0) {
-  if (_ctx_0.$ === "Nil") {
-    return false;
-  } else {
-    const _h_0 = _ctx_0["head"];
-    const _t_0 = _ctx_0["tail"];
-    const _x_0 = ($qt$(_h_0));
-    return run_tail(((_x_0 === 0)) ? ((_x_1) => {
-  return $ctx_dead$(_book_0, _t_0);
-}) : ((_x_2) => {
-  const _x_3 = ($dead_type$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_h_0, 0))))));
-  const _x_4 = run_loop($ctx_dead$(_book_0, _t_0));
-  return (_x_3 || _x_4);
-}), {$: "Unit"});
-  }
-}
-
-function $dg_constructor_names$(_ds_0) {
-  if (_ds_0.$ === "Nil") {
-    return "";
-  } else {
-    const _d_0 = _ds_0["head"];
-    const _rest_0 = _ds_0["tail"];
-    const _x_3 = ($dn$(_d_0));
-    const _x_4 = run_loop(run_tail((($defs_empty$(_rest_0))) ? ((_x_0) => {
-  return "";
-}) : ((_x_1) => {
-  const _x_2 = ($dg_constructor_names$(_rest_0));
-  return (", " + _x_2);
-}), {$: "Unit"}));
-    return (_x_3 + _x_4);
-  }
-}
-
-function $check_mat_ctr$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, _ctr_0) {
-  return run_tail((($String$eq$(($dk$(_ctr_0)), "Absent"))) ? ((_x_0) => {
-  const _x_1 = ($nm$(_a_0));
-  const _x_2 = (_x_1 + " (missing, or already matched)");
-  return $dg_bad_detail$(($cw$(_e_0)), "unknown or duplicate match constructor", ($dg_text$(("a constructor of " + _x_2))), _t_0);
-}) : ((_x_3) => {
-  return $check_mat_filled$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, _ctr_0, run_loop($tele_fill$(($cb$(_e_0)), ($dt$(_ctr_0)), ($ks$(_a_0)))));
-}), {$: "Unit"});
-}
-
-function $check_let_kind$(_e_0, _outer_0, _ctx_0, _h_0, _rest_0, _dem_0, _ty_0, _bindings_0, _us_0, _site_0, _out_0, _r_0, _k_0) {
-  return run_tail((($good$(_k_0))) ? ((_x_0) => {
-  return $check_let$(($ke_world$(_e_0, ($rw$(_k_0)))), _outer_0, ($ctx_bind$(_ctx_0, ($ix$(_h_0)), ($qt$(_h_0)), ($nm$(_h_0)), ($cy$(_r_0)))), _rest_0, _dem_0, _ty_0, {$: "Con", "head": _h_0, "tail": _bindings_0}, ($uses_merge$(_us_0, ($cs$(_r_0)), false)), _site_0, {$: "Con", "head": ($k_with_children$(_h_0, {$: "Con", "head": ($ct$(_r_0)), "tail": {$: "Nil"}})), "tail": _out_0});
-}) : ((_x_1) => {
-  return _k_0;
-}), {$: "Unit"});
-}
-
-function $dg_kind_at$(_e_0, _ctx_0, _t_0, _q_0, _name_0, _site_0) {
-  const _kind_0 = ($typ$(run_loop($kindq$(_e_0, _q_0))));
-  return $dg_kind_result$(_t_0, _q_0, _name_0, _site_0, _kind_0, run_loop($check$(_e_0, _ctx_0, _t_0, 0, _kind_0)));
-}
-
-function $uses_merge$(_a_0, _b_0, _join_0) {
-  if (_a_0.$ === "Nil") {
-    return _b_0;
-  } else {
-    const _h_0 = _a_0["head"];
-    const _t_0 = _a_0["tail"];
-    return {$: "Con", "head": ($kt$("Use", "", ($ix$(_h_0)), run_loop(run_tail((_join_0) ? ((_x_0) => {
-  return $qjoin$(($qt$(_h_0)), run_loop($uses_get$(_b_0, ($ix$(_h_0)))));
-}) : ((_x_1) => {
-  return $qadd$(($qt$(_h_0)), run_loop($uses_get$(_b_0, ($ix$(_h_0)))));
-}), {$: "Unit"})), {$: "Nil"})), "tail": ($uses_merge$(_t_0, run_loop($uses_del$(_b_0, ($ix$(_h_0)))), _join_0))};
-  }
-}
-
-function $uses_get$(_xs_0, _id_0) {
-  if (_xs_0.$ === "Nil") {
-    return 0;
-  } else {
-    const _h_0 = _xs_0["head"];
-    const _t_0 = _xs_0["tail"];
-    const _x_0 = ($ix$(_h_0));
-    if (((_x_0 === _id_0))) {
-const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $qt$, x: [_h_0]};
-} else {
-const _x_2 = {$: "Unit"};
-return {$: "$JMP", f: $uses_get$, x: [_t_0, _id_0]};
-}
-  }
-}
-
-function $dg_quant_error$(_world_0, _message_0, _name_0, _allowed_0, _used_0) {
-  const _x_0 = run_loop($kp_quant$(_allowed_0));
-  return $dg_bad_detail$(_world_0, _message_0, ($dg_text$((_x_0 + _name_0))), ($dg_text$(run_loop(run_tail(((_used_0 === 2)) ? ((_x_1) => {
-  return (_name_0 + " (consumed more than once)");
-}) : ((_x_2) => {
-  const _x_3 = run_loop($kp_quant$(_used_0));
-  return (_x_3 + _name_0);
-}), {$: "Unit"})))));
-}
-
-function $uses_del$(_xs_0, _id_0) {
-  if (_xs_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _xs_0["head"];
-    const _t_0 = _xs_0["tail"];
-    const _x_0 = ($ix$(_h_0));
-    return run_tail(((_x_0 === _id_0)) ? ((_x_1) => {
-  return $uses_del$(_t_0, _id_0);
-}) : ((_x_2) => {
-  return {$: "Con", "head": _h_0, "tail": run_loop($uses_del$(_t_0, _id_0))};
-}), {$: "Unit"});
-  }
-}
-
-function $ki_rwt_bound$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0, _bound_0) {
-  return run_tail(((_bound_0 <= 4294967292)) ? ((_x_0) => {
-  return $check_rwt_goal$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0, ((_bound_0 + 1) >>> 0));
-}) : ((_x_1) => {
-  return $kr_from$(_r_0, ($bad$(($rw$(_r_0)), "fresh binder space exhausted")));
-}), {$: "Unit"});
-}
-
-function $kw_temp_floor$(_world_0, _roots_0) {
-  return $kw_temp_fresh$(_world_0, ($kw_fresh$(_world_0)), _roots_0);
-}
-
-function $infer_var$(_e_0, _ctx_0, _t_0, _dem_0) {
-  const _bound_0 = run_loop($ctx_get$(_ctx_0, ($ix$(_t_0))));
-  return run_tail((($String$eq$(($tg$(_bound_0)), "Absent"))) ? ((_x_0) => {
-  return $bad$(($cw$(_e_0)), "unbound variable");
-}) : ((_x_1) => {
-  return $ok$(($cw$(_e_0)), ($k_with_children$(_t_0, {$: "Nil"})), run_loop($kid$(_bound_0, 0)), {$: "Con", "head": ($kt$("Use", "", ($ix$(_t_0)), _dem_0, {$: "Nil"})), "tail": {$: "Nil"}});
-}), {$: "Unit"});
-}
-
-function $infer_ref$(_e_0, _ctx_0, _t_0, _dem_0, _sp_0, _d_0) {
-  return run_tail((($String$eq$(($dk$(_d_0)), "Absent"))) ? ((_x_0) => {
-  return $bad$(($cw$(_e_0)), "undefined name");
-}) : ((_x_1) => {
-  const _x_2 = ($da$(_d_0));
-  return run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "ADT")), (_x_2 > 0)))) ? ((_x_3) => {
-  return $bad$(($cw$(_e_0)), "a family requires angle-bracket parameters");
-}) : ((_x_4) => {
-  return run_tail(((_dem_0 === 0)) ? ((_x_5) => {
-  return $ok$(($cw$(_e_0)), _t_0, ($dt$(_d_0)), {$: "Nil"});
-}) : ((_x_6) => {
-  const _x_7 = ($dx$(_d_0));
-  const _x_8 = ($dx$(run_loop($lookup$(($cb$(_e_0)), ($cn$(_e_0))))));
-  const _x_9 = ($Bool$and$(($Bool$not$(($db$(_d_0)))), ($Bool$not$(($cu$(_e_0))))));
-  const _x_10 = ($Bool$and$((_x_7 > 0), (_x_8 === 0)));
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($String$eq$(($tg$(($dv$(_d_0)))), "Absent")))), ($Bool$not$(($String$eq$(($nm$(_t_0)), ($cn$(_e_0)))))))), (_x_9 || _x_10)))) ? ((_x_11) => {
-  return $bad$(($cw$(_e_0)), "live use of an unfilled law");
-}) : ((_x_12) => {
-  return $ki_ref_result$(_e_0, _t_0, _sp_0, run_loop($infer_template$(_e_0, _ctx_0, _t_0, _dem_0, _sp_0, _d_0)));
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $ki_one$(_t_0, _ty_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $checked$(_r_0, ($k_with_children$(_t_0, {$: "Con", "head": ($ct$(_r_0)), "tail": {$: "Nil"}})), _ty_0);
-}) : ((_x_1) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $ki_min$(_e_0, _ctx_0, _t_0, _dem_0, _a_0) {
-  return run_tail((($good$(_a_0))) ? ((_x_0) => {
-  return $ki_pair$(_t_0, ($atom$("Qnt")), _a_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_a_0)))), _ctx_0, run_loop($kid$(_t_0, 1)), _dem_0, ($atom$("Qnt")))), false);
-}) : ((_x_1) => {
-  return _a_0;
-}), {$: "Unit"});
-}
-
-function $ki_all$(_e_0, _ctx_0, _t_0, _a_0) {
-  return run_tail((($good$(_a_0))) ? ((_x_0) => {
-  return $ki_pair$(_t_0, ($typ$(1)), _a_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_a_0)))), ($ctx_bind$(_ctx_0, ($ix$(_t_0)), ($qt$(_t_0)), ($nm$(_t_0)), run_loop($kid$(_t_0, 0)))), run_loop($kid$(_t_0, 1)), 0, ($typ$(1)))), false);
-}) : ((_x_1) => {
-  return _a_0;
-}), {$: "Unit"});
-}
-
-function $infer_app$(_e_0, _ctx_0, _t_0, _dem_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  const _x_1 = ($rx$(_r_0));
-  return run_tail(((_x_1 > 0)) ? ((_x_2) => {
-  const _x_3 = ($rx$(_r_0));
-  return {$: "KChecking", "term": ($ct$(_r_0)), "typ": ($cy$(_r_0)), "uses": ($cs$(_r_0)), "error": "", "world": ($rw$(_r_0)), "consumed": ((_x_3 - 1) >>> 0)};
-}) : ((_x_4) => {
-  return $infer_app_type$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, _t_0, _dem_0, _r_0, run_loop($wnf$(($kw_book$(($rw$(_r_0)))), ($cy$(_r_0)))));
-}), {$: "Unit"});
-}) : ((_x_5) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $infer_adt$(_e_0, _ctx_0, _t_0, _dem_0, _d_0) {
-  const _x_0 = ($terms_len$(($ks$(_t_0))));
-  const _x_1 = ($da$(_d_0));
-  return run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "ADT")), (_x_0 === _x_1)))) ? ((_x_2) => {
-  return $infer_adt_done$(_t_0, run_loop($tele_check$(_e_0, _ctx_0, ($dt$(_d_0)), ($ks$(_t_0)), _dem_0)));
-}) : ((_x_3) => {
-  return $dg_adt_error$(($cw$(_e_0)), _t_0, _d_0);
-}), {$: "Unit"});
-}
-
-function $ki_eql_type$(_e_0, _ctx_0, _t_0, _a_0) {
-  return run_tail((($good$(_a_0))) ? ((_x_0) => {
-  return $ki_eql_left$(($ke_world$(_e_0, ($rw$(_a_0)))), _ctx_0, _t_0, _a_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_a_0)))), _ctx_0, run_loop($kid$(_t_0, 0)), 0, run_loop($kid$(_t_0, 2)))));
-}) : ((_x_1) => {
-  return _a_0;
-}), {$: "Unit"});
-}
-
-function $ki_ann$(_e_0, _ctx_0, _t_0, _dem_0, _a_0) {
-  return run_tail((($good$(_a_0))) ? ((_x_0) => {
-  return $ki_ann_done$(_t_0, _a_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_a_0)))), _ctx_0, run_loop($kid$(_t_0, 0)), _dem_0, run_loop($kid$(_t_0, 1)))));
-}) : ((_x_1) => {
-  return _a_0;
-}), {$: "Unit"});
-}
-
-function $norm_cmp_heads$(_book_0, _st_0, _a_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0) {
-  const _x_0 = ($String$eq$(($tg$(_a_0)), "Lam"));
-  const _x_1 = ($String$eq$(($tg$(_b_0)), "Lam"));
-  return run_tail(((_x_0 || _x_1)) ? ((_x_2) => {
-  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": ($app$(_a_0, ($var$("_", _fresh_0)))), "b": ($app$(_b_0, ($var$("_", _fresh_0)))), "le": _le_0, "fresh": ((_fresh_0 + 1) >>> 0)}, "tail": _rest_0}, _alts_0);
-}) : ((_x_3) => {
-  return run_tail((($Bool$and$(($core_literal$(_a_0)), ($String$eq$(($tg$(_b_0)), "Ctr"))))) ? ((_x_4) => {
-  return $norm_cmp_heads$(_book_0, _st_0, run_loop($core_literal_step$(_a_0)), _b_0, _le_0, _fresh_0, _rest_0, _alts_0);
-}) : ((_x_5) => {
-  return run_tail((($Bool$and$(($core_literal$(_b_0)), ($String$eq$(($tg$(_a_0)), "Ctr"))))) ? ((_x_6) => {
-  return $norm_cmp_heads$(_book_0, _st_0, _a_0, run_loop($core_literal_step$(_b_0)), _le_0, _fresh_0, _rest_0, _alts_0);
-}) : ((_x_7) => {
-  if ((($String$eq$(($tg$(_a_0)), ($tg$(_b_0)))))) {
-const _x_8 = {$: "Unit"};
-return {$: "$JMP", f: $norm_cmp_same$, x: [_book_0, _st_0, _a_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0]};
-} else {
-const _x_9 = {$: "Unit"};
-return {$: "$JMP", f: $norm_cmp_fail$, x: [_book_0, _st_0, _alts_0]};
-}
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
 function $np_emit_join$(_index_0, _last_0, _word_0, _code_0, _tail_0) {
   const _x_0 = ($nc_body$(_tail_0));
   const _x_1 = ($nc_body$(_code_0));
@@ -28836,6 +29426,258 @@ function $np_emit_join$(_index_0, _last_0, _word_0, _code_0, _tail_0) {
   const _x_7 = (" == " + _x_6);
   const _x_8 = (_word_0 + _x_7);
   return {$: "NC_Code", "body": ("if (" + _x_8), "segments": ($nt_append$(($nc_segs$(_code_0)), ($nc_segs$(_tail_0)))), "fresh": ($nc_fresh$(_tail_0)), "error": run_loop($nc_first_error$(_code_0, _tail_0))};
+}
+
+function $check_ctor_domain$(_e_0, _d_0, _tel_0, _kind_0, _params_0, _fields_0, _ctx_0, _args_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return $check_ctor_tel$(($ke_world$(_e_0, ($rw$(_r_0)))), _d_0, run_loop($kid$(_tel_0, 1)), run_loop(run_tail(((_params_0 === 0)) ? ((_x_1) => {
+  return _kind_0;
+}) : ((_x_2) => {
+  return $subst$(run_loop($kid$(run_loop($wnf$(($kw_book$(($rw$(_r_0)))), _kind_0)), 1)), ($ix$(run_loop($wnf$(($kw_book$(($rw$(_r_0)))), _kind_0)))), ($var$(($nm$(_tel_0)), ($ix$(_tel_0)))));
+}), {$: "Unit"})), run_loop(run_tail(((_params_0 === 0)) ? ((_x_3) => {
+  return 0;
+}) : ((_x_4) => {
+  return ((_params_0 - 1) >>> 0);
+}), {$: "Unit"})), run_loop(run_tail(((_params_0 === 0)) ? ((_x_5) => {
+  return ((_fields_0 - 1) >>> 0);
+}) : ((_x_6) => {
+  return _fields_0;
+}), {$: "Unit"})), ($ctx_bind$(_ctx_0, ($ix$(_tel_0)), ($qt$(_tel_0)), ($nm$(_tel_0)), run_loop($kid$(_tel_0, 0)))), run_loop(run_tail(((_params_0 === 0)) ? ((_x_7) => {
+  return _args_0;
+}) : ((_x_8) => {
+  return $norm_join$(_args_0, {$: "Con", "head": ($var$(($nm$(_tel_0)), ($ix$(_tel_0)))), "tail": {$: "Nil"}});
+}), {$: "Unit"})));
+}) : ((_x_9) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $check_lam_done$(_t_0, _ty_0, _q_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  const _x_1 = run_loop($uses_get$(($cs$(_r_0)), ($ix$(_t_0))));
+  return run_tail(((_x_1 > _q_0)) ? ((_x_2) => {
+  return $kr_from$(_r_0, ($dg_quant_error$(($rw$(_r_0)), "affine variable consumed more than allowed", ($nm$(_t_0)), _q_0, run_loop($uses_get$(($cs$(_r_0)), ($ix$(_t_0)))))));
+}) : ((_x_3) => {
+  return {$: "KChecking", "term": ($k_with_children$(_t_0, {$: "Con", "head": ($ct$(_r_0)), "tail": {$: "Nil"}})), "typ": _ty_0, "uses": run_loop($uses_del$(($cs$(_r_0)), ($ix$(_t_0)))), "error": "", "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))};
+}), {$: "Unit"});
+}) : ((_x_4) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $lhs_step$(_e_0, _x_0) {
+  const _x_1 = ($cp$(_e_0));
+  return run_tail(((_x_1 === 0)) ? ((_x_2) => {
+  return _e_0;
+}) : ((_x_3) => {
+  const _x_4 = ($cp$(_e_0));
+  return {$: "KEnv", "world": ($cw$(_e_0)), "name": ($cn$(_e_0)), "lhs": run_loop($kapply$(($cl$(_e_0)), _x_0)), "pending": ((_x_4 - 1) >>> 0), "quantities": ($cq$(_e_0)), "unsafe": ($cu$(_e_0)), "depth": ($cd$(_e_0))};
+}), {$: "Unit"});
+}
+
+function $tele_check_cached_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0) {
+  return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
+  return $tele_check_after_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, run_loop($check$(_e_0, _ctx_0, _h_0, run_loop($qdem$(($qt$(_tel_0)), _dem_0)), run_loop($kid$(_tel_0, 0)))));
+}) : ((_x_1) => {
+  return $bad$(($cw$(_e_0)), "too many telescope arguments");
+}), {$: "Unit"});
+}
+
+function $check_mat_filled$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, _ctr_0, _tel_0) {
+  const _x_0 = ($cp$(_e_0));
+  const _x_1 = ($da$(_ctr_0));
+  const _x_2 = (_x_0 === 0);
+  const _x_3 = (_x_1 === 0);
+  return $ki_match_bound$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, _ctr_0, _tel_0, run_loop(run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
+  return 0;
+}) : ((_x_5) => {
+  return $kw_temp_floor$(($cw$(_e_0)), {$: "Con", "head": ($cl$(_e_0)), "tail": {$: "Con", "head": _tel_0, "tail": {$: "Con", "head": _t_0, "tail": {$: "Con", "head": _ty_0, "tail": _ctx_0}}}});
+}), {$: "Unit"})));
+}
+
+function $kindq$(_e_0, _q_0) {
+  if ((($Bool$and$(($cu$(_e_0)), (_q_0 === 2))))) {
+const _x_0 = {$: "Unit"};
+return 1;
+} else {
+const _x_1 = {$: "Unit"};
+return _q_0;
+}
+}
+
+function $dg_kind_result$(_t_0, _q_0, _name_0, _site_0, _kind_0, _r_0) {
+  const _x_0 = ($kb$(_t_0));
+  const _x_1 = ($kb$(run_loop($kid$(($ct$(_r_0)), 3))));
+  const _x_2 = (_x_0 === 0);
+  const _x_3 = (_x_1 === 0);
+  const _x_4 = ($kb$(_t_0));
+  const _x_5 = ($kb$(run_loop($kid$(($ct$(_r_0)), 3))));
+  const _x_6 = ($ke$(_t_0));
+  const _x_7 = ($ke$(run_loop($kid$(($ct$(_r_0)), 3))));
+  const _x_8 = (_x_2 || _x_3);
+  const _x_9 = ($Bool$and$((_x_4 === _x_5), (_x_6 === _x_7)));
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($ce$(_r_0)), "type mismatch")), ($String$eq$(($tg$(($ct$(_r_0)))), "DTrace")))), run_loop($norm_exact$(run_loop($kid$(($ct$(_r_0)), 0)), _kind_0)))), run_loop($norm_exact$(run_loop($kid$(($ct$(_r_0)), 3)), _t_0)))), (_x_8 || _x_9)))) ? ((_x_10) => {
+  return {$: "KChecking", "term": ($kt$("DTrace", ($nm$(($ct$(_r_0)))), ($ix$(($ct$(_r_0)))), ($qt$(($ct$(_r_0)))), {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 0)), "tail": {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 1)), "tail": {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 2)), "tail": {$: "Con", "head": _site_0, "tail": {$: "Con", "head": ($kt$("DTrail", "", 0, 0, {$: "Con", "head": _site_0, "tail": ($ks$(run_loop($kid$(($ct$(_r_0)), 4))))})), "tail": {$: "Con", "head": run_loop(run_tail(((_q_0 === 2)) ? ((_x_11) => {
+  const _x_12 = (_name_0 + " can be used many times, so its type must be Data.");
+  return $dg_text$(("Note: +" + _x_12));
+}) : ((_x_13) => {
+  return $kid$(($ct$(_r_0)), 5);
+}), {$: "Unit"})), "tail": {$: "Nil"}}}}}}})), "typ": ($cy$(_r_0)), "uses": ($cs$(_r_0)), "error": ($ce$(_r_0)), "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))};
+}) : ((_x_14) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $qjoin$(_a_0, _b_0) {
+  if (((_a_0 > _b_0))) {
+const _x_0 = {$: "Unit"};
+return _a_0;
+} else {
+const _x_1 = {$: "Unit"};
+return _b_0;
+}
+}
+
+function $check_rwt_goal$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0, _fresh_0) {
+  const _goal_0 = ($all$(1, "_", _fresh_0, run_loop($kid$(_eq_0, 2)), ($all$(1, "e", ((_fresh_0 + 1) >>> 0), ($kt$("Eql", "", 0, 0, {$: "Con", "head": run_loop($kid$(_eq_0, 0)), "tail": {$: "Con", "head": ($var$("_", _fresh_0)), "tail": {$: "Con", "head": run_loop($kid$(_eq_0, 2)), "tail": {$: "Nil"}}}})), ($typ$(1))))));
+  const _next_0 = ($ke_world$(_e_0, ($kw_temporary$(($cw$(_e_0)), _goal_0, ((_fresh_0 + 1) >>> 0)))));
+  return $ki_rwt_motive$(_next_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0, run_loop($check$(_next_0, _ctx_0, run_loop($kid$(_t_0, 1)), 0, _goal_0)));
+}
+
+function $kw_temp_fresh$(_world_0, _fresh_0, _roots_0) {
+  if (_fresh_0.$ === "KFreshKnown") {
+    const _next_0 = _fresh_0["next"];
+    return $norm_max_walk$(_roots_0, ((_next_0 - 1) >>> 0));
+  } else {
+    return $norm_max_walk$(_roots_0, run_loop($norm_book_bound$(($kw_book$(_world_0)))));
+  }
+}
+
+function $ki_ref_result$(_e_0, _t_0, _sp_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($nm$(($ct$(_r_0)))), ($cn$(_e_0)))), ($Bool$not$(($cu$(_e_0)))))), ($Bool$not$(run_loop($descend_spine$(($cq$(_e_0)), run_loop($sp_drop$(_sp_0, ($rx$(_r_0)))), run_loop($unargs$(($cl$(_e_0)), {$: "Nil"}))))))))) ? ((_x_1) => {
+  return $kr_from$(_r_0, ($bad$(($rw$(_r_0)), "nondecreasing self-call")));
+}) : ((_x_2) => {
+  return _r_0;
+}), {$: "Unit"});
+}) : ((_x_3) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $infer_template$(_e_0, _ctx_0, _t_0, _dem_0, _sp_0, _d_0) {
+  const _x_0 = ($dx$(_d_0));
+  const _x_1 = (_dem_0 === 0);
+  const _x_2 = (_x_0 === 0);
+  const _x_3 = ($dx$(run_loop($lookup$(($cb$(_e_0)), ($cn$(_e_0))))));
+  const _x_4 = (_x_1 || _x_2);
+  const _x_5 = (_x_3 > 0);
+  return run_tail(((_x_4 || _x_5)) ? ((_x_6) => {
+  return $ok$(($cw$(_e_0)), _t_0, ($dt$(_d_0)), {$: "Nil"});
+}) : ((_x_7) => {
+  return $sp_live_checked$(_e_0, _ctx_0, _t_0, _sp_0, _d_0, run_loop($dg_template_result$(_e_0, _ctx_0, _t_0, run_loop($template_args$(_e_0, ($dt$(_d_0)), _sp_0, ($dx$(_d_0)))))));
+}), {$: "Unit"});
+}
+
+function $ki_pair$(_t_0, _ty_0, _a_0, _b_0, _join_0) {
+  return $both$(_a_0, _b_0, ($k_with_children$(_t_0, {$: "Con", "head": ($ct$(_a_0)), "tail": {$: "Con", "head": ($ct$(_b_0)), "tail": {$: "Nil"}}})), _ty_0, _join_0);
+}
+
+function $infer_app_type$(_e_0, _ctx_0, _t_0, _dem_0, _r_0, _ty_0) {
+  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
+  return $ki_pair$(_t_0, run_loop($subst$(run_loop($kid$(_ty_0, 1)), ($ix$(_ty_0)), run_loop($kid$(_t_0, 1)))), _r_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, run_loop($kid$(_t_0, 1)), run_loop($qdem$(($qt$(_ty_0)), _dem_0)), run_loop($kid$(_ty_0, 0)))), false);
+}) : ((_x_1) => {
+  return $kr_from$(_r_0, ($dg_bad_detail$(($rw$(_r_0)), "application requires a function type", ($dg_text$("a function type")), ($cy$(_r_0)))));
+}), {$: "Unit"});
+}
+
+function $infer_adt_done$(_t_0, _r_0) {
+  return $ki_args$(_t_0, ($cy$(_r_0)), _r_0);
+}
+
+function $dg_adt_error$(_world_0, _t_0, _d_0) {
+  return run_tail((($String$eq$(($dk$(_d_0)), "ADT"))) ? ((_x_0) => {
+  const _x_1 = ($da$(_d_0));
+  const _x_4 = ($U32$show$(($da$(_d_0))));
+  const _x_5 = run_loop(run_tail(((_x_1 === 1)) ? ((_x_2) => {
+  return " parameter";
+}) : ((_x_3) => {
+  return " parameters";
+}), {$: "Unit"}));
+  const _x_6 = (_x_4 + _x_5);
+  const _x_7 = ($nm$(_t_0));
+  const _x_8 = (" with " + _x_6);
+  return $dg_bad_detail$(_world_0, "unknown family or wrong parameter count", ($dg_text$((_x_7 + _x_8))), _t_0);
+}) : ((_x_9) => {
+  const _x_10 = ($nm$(_t_0));
+  const _x_11 = (_x_10 + ")");
+  return $dg_bad_message$(_world_0, "unknown family or wrong parameter count", ($dg_text$(("a declared datatype (unknown: " + _x_11))));
+}), {$: "Unit"});
+}
+
+function $ki_eql_left$(_e_0, _ctx_0, _t_0, _a_0, _b_0) {
+  return run_tail((($good$(_b_0))) ? ((_x_0) => {
+  return $ki_eql_done$(_t_0, _a_0, _b_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_b_0)))), _ctx_0, run_loop($kid$(_t_0, 1)), 0, run_loop($kid$(_t_0, 2)))));
+}) : ((_x_1) => {
+  return _b_0;
+}), {$: "Unit"});
+}
+
+function $ki_ann_done$(_t_0, _a_0, _b_0) {
+  return $both$(_a_0, _b_0, ($k_with_children$(_t_0, {$: "Con", "head": ($ct$(_b_0)), "tail": {$: "Con", "head": run_loop($kid$(_t_0, 1)), "tail": {$: "Nil"}}})), run_loop($kid$(_t_0, 1)), false);
+}
+
+function $norm_cmp_same$(_book_0, _st_0, _a_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0) {
+  return run_tail((($String$eq$(($tg$(_a_0)), "Var"))) ? ((_x_0) => {
+  const _x_1 = ($ix$(_a_0));
+  const _x_2 = ($ix$(_b_0));
+  return $norm_cmp_test$(_book_0, _st_0, (_x_1 === _x_2), _rest_0, _alts_0);
+}) : ((_x_3) => {
+  return run_tail((($String$eq$(($tg$(_a_0)), "Typ"))) ? ((_x_4) => {
+  return run_tail((_le_0) ? ((_x_5) => {
+  return $norm_cmp_kind_left$(_book_0, _a_0, _b_0, _fresh_0, _rest_0, _alts_0, run_loop($g_wnf$(_book_0, _st_0, run_loop($kid$(_a_0, 0)))));
+}) : ((_x_6) => {
+  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": run_loop($kid$(_a_0, 0)), "b": run_loop($kid$(_b_0, 0)), "le": false, "fresh": _fresh_0}, "tail": _rest_0}, _alts_0);
+}), {$: "Unit"});
+}) : ((_x_7) => {
+  return run_tail((($String$eq$(($tg$(_a_0)), "All"))) ? ((_x_8) => {
+  const _x_9 = ($qt$(_a_0));
+  const _x_10 = ($qt$(_b_0));
+  return run_tail(((_x_9 === _x_10)) ? ((_x_11) => {
+  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": run_loop($kid$(_b_0, 0)), "b": run_loop($kid$(_a_0, 0)), "le": _le_0, "fresh": _fresh_0}, "tail": {$: "Con", "head": {$: "KNormCmp", "a": run_loop($subst$(run_loop($kid$(_a_0, 1)), ($ix$(_a_0)), ($var$("_", _fresh_0)))), "b": run_loop($subst$(run_loop($kid$(_b_0, 1)), ($ix$(_b_0)), ($var$("_", _fresh_0)))), "le": _le_0, "fresh": ((_fresh_0 + 1) >>> 0)}, "tail": _rest_0}}, _alts_0);
+}) : ((_x_12) => {
+  return $norm_cmp_fail$(_book_0, _st_0, _alts_0);
+}), {$: "Unit"});
+}) : ((_x_13) => {
+  return run_tail((($String$eq$(($tg$(_a_0)), "ADT"))) ? ((_x_14) => {
+  return run_tail((($Bool$and$(($String$eq$(($nm$(_a_0)), ($nm$(_b_0)))), run_loop($norm_removed$(($rm$(_a_0)), ($rm$(_b_0)), _le_0))))) ? ((_x_15) => {
+  return $norm_cmp_fields$(_book_0, _st_0, ($ks$(_a_0)), ($ks$(_b_0)), _fresh_0, _rest_0, _alts_0);
+}) : ((_x_16) => {
+  return $norm_cmp_fail$(_book_0, _st_0, _alts_0);
+}), {$: "Unit"});
+}) : ((_x_17) => {
+  return run_tail((($String$eq$(($tg$(_a_0)), "Qua"))) ? ((_x_18) => {
+  const _x_19 = ($qt$(_a_0));
+  const _x_20 = ($qt$(_b_0));
+  return $norm_cmp_test$(_book_0, _st_0, (_x_19 === _x_20), _rest_0, _alts_0);
+}) : ((_x_21) => {
+  return $norm_cmp_plain$(_book_0, _st_0, _a_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $norm_cmp_fail$(_book_0, _st_0, _alts_0) {
+  if (_alts_0.$ === "Nil") {
+    return false;
+  } else {
+    const _t_0 = _alts_0["head"];
+    const _todo_0 = _t_0["todo"];
+    const _rest_0 = _alts_0["tail"];
+    return $norm_cmp_loop$(_book_0, _st_0, _todo_0, _rest_0);
+  }
 }
 
 function $String$trim$(_s_0) {
@@ -30423,181 +31265,6 @@ return {$: "$JMP", f: $jd_primitive_arg$, x: [_rest_0, ((_at_0 - 1) >>> 0)]};
   }
 }
 
-function $jd_host_marshal_fun$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0) {
-  const _result_0 = run_loop($jd_host_marshal$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), _out_0, _seen_0, _depth_0, _fuel_0));
-  const _x_0 = ($qt$(_t_0));
-  return run_tail(((_x_0 === 0)) ? ((_x_1) => {
-  return _result_0;
-}) : ((_x_2) => {
-  return $jd_host_marshal_fun_done$(run_loop($jd_host_marshal$(_book_0, run_loop($kid$(_t_0, 0)), ($Bool$not$(_out_0)), _seen_0, _depth_0, _fuel_0)), _result_0);
-}), {$: "Unit"});
-}
-
-function $jd_host_marshal_status$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0, _status_0) {
-  return run_tail(((_status_0 === 2)) ? ((_x_0) => {
-  return $jd_host_error$("host type graph budget");
-}) : ((_x_1) => {
-  if (((_status_0 === 1))) {
-const _x_2 = {$: "Unit"};
-return {$: "$JMP", f: $jd_host_marshal_named$, x: [_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0]};
-} else {
-const _x_3 = {$: "Unit"};
-return "";
-}
-}), {$: "Unit"});
-}
-
-function $sk_variable$(_name_0, _id_0) {
-  const _x_2 = run_loop(run_tail(((_id_0 === 4294967295)) ? ((_x_0) => {
-  return "-1";
-}) : ((_x_1) => {
-  return $U32$show$(_id_0);
-}), {$: "Unit"}));
-  const _x_3 = (_x_2 + "}");
-  const _x_4 = ($sk_quote$(_name_0));
-  const _x_5 = (",\"i\":" + _x_3);
-  const _x_6 = (_x_4 + _x_5);
-  return ("{\"$\":\"Var\",\"k\":" + _x_6);
-}
-
-function $sk_quote$(_s_0) {
-  const _x_0 = ($String$reverse$(($sk_escape$(_s_0, ""))));
-  const _x_1 = (_x_0 + "\"");
-  return ("\"" + _x_1);
-}
-
-function $sk_quant$(_q_0) {
-  const _x_4 = run_loop(run_tail(((_q_0 === 0)) ? ((_x_0) => {
-  return "None";
-}) : ((_x_1) => {
-  if (((_q_0 === 2))) {
-const _x_2 = {$: "Unit"};
-return "Many";
-} else {
-const _x_3 = {$: "Unit"};
-return "Lone";
-}
-}), {$: "Unit"}));
-  const _x_5 = (_x_4 + "\"}");
-  return ("{\"$\":\"" + _x_5);
-}
-
-function $sk_let$(_xs_0, _env_0, _depth_0) {
-  const _x_0 = run_loop($sk_let_body$(_xs_0, _env_0, _depth_0));
-  const _x_1 = (_x_0 + "}");
-  const _x_2 = run_loop($sk_let_field$(_xs_0, 3, _env_0, _depth_0, _depth_0));
-  const _x_3 = ("],\"f\":" + _x_1);
-  const _x_4 = (_x_2 + _x_3);
-  const _x_5 = run_loop($sk_let_field$(_xs_0, 2, _env_0, _depth_0, _depth_0));
-  const _x_6 = ("],\"v\":[" + _x_4);
-  const _x_7 = (_x_5 + _x_6);
-  const _x_8 = run_loop($sk_let_field$(_xs_0, 1, _env_0, _depth_0, _depth_0));
-  const _x_9 = ("],\"q\":[" + _x_7);
-  const _x_10 = (_x_8 + _x_9);
-  const _x_11 = run_loop($sk_let_field$(_xs_0, 0, _env_0, _depth_0, _depth_0));
-  const _x_12 = ("],\"i\":[" + _x_10);
-  const _x_13 = (_x_11 + _x_12);
-  return ("{\"$\":\"Let\",\"k\":[" + _x_13);
-}
-
-function $sk_terms$(_ts_0, _env_0, _depth_0) {
-  if (_ts_0.$ === "Nil") {
-    return "";
-  } else {
-    const _head_0 = _ts_0["head"];
-    const _rest_0 = _ts_0["tail"];
-    const _x_3 = run_loop($sk_term$(_head_0, _env_0, _depth_0));
-    const _x_4 = run_loop(run_tail((($List$is_empty$(_rest_0))) ? ((_x_0) => {
-  return "";
-}) : ((_x_1) => {
-  const _x_2 = ($sk_terms$(_rest_0, _env_0, _depth_0));
-  return ("," + _x_2);
-}), {$: "Unit"}));
-    return (_x_3 + _x_4);
-  }
-}
-
-function $sk_names$(_names_0) {
-  if (_names_0.$ === "Nil") {
-    return "";
-  } else {
-    const _head_0 = _names_0["head"];
-    const _rest_0 = _names_0["tail"];
-    const _x_3 = ($sk_quote$(_head_0));
-    const _x_4 = run_loop(run_tail((($List$is_empty$(_rest_0))) ? ((_x_0) => {
-  return "";
-}) : ((_x_1) => {
-  const _x_2 = ($sk_names$(_rest_0));
-  return ("," + _x_2);
-}), {$: "Unit"}));
-    return (_x_3 + _x_4);
-  }
-}
-
-function $sk_other$(_t_0, _env_0, _depth_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "App"))) ? ((_x_0) => {
-  return $sk_pair$("App", "f", "x", _t_0, _env_0, _depth_0);
-}) : ((_x_1) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Min"))) ? ((_x_2) => {
-  return $sk_pair$("Min", "a", "b", _t_0, _env_0, _depth_0);
-}) : ((_x_3) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Ann"))) ? ((_x_4) => {
-  return $sk_pair$("Ann", "x", "T", _t_0, _env_0, _depth_0);
-}) : ((_x_5) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Typ"))) ? ((_x_6) => {
-  const _x_7 = run_loop($sk_term$(run_loop($kid$(_t_0, 0)), _env_0, _depth_0));
-  const _x_8 = (_x_7 + "}");
-  return ("{\"$\":\"Typ\",\"g\":" + _x_8);
-}) : ((_x_9) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Qua"))) ? ((_x_10) => {
-  const _x_11 = ($sk_quant$(($qt$(_t_0))));
-  const _x_12 = (_x_11 + "}");
-  return ("{\"$\":\"Qua\",\"q\":" + _x_12);
-}) : ((_x_13) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_14) => {
-  const _x_15 = run_loop($sk_term$(run_loop($kid$(_t_0, 1)), _env_0, _depth_0));
-  const _x_16 = (_x_15 + "}");
-  const _x_17 = run_loop($sk_term$(run_loop($kid$(_t_0, 0)), _env_0, _depth_0));
-  const _x_18 = (",\"m\":" + _x_16);
-  const _x_19 = (_x_17 + _x_18);
-  const _x_20 = ($sk_quote$(($nm$(_t_0))));
-  const _x_21 = (",\"h\":" + _x_19);
-  const _x_22 = (_x_20 + _x_21);
-  return ("{\"$\":\"Mat\",\"k\":" + _x_22);
-}) : ((_x_23) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Eql"))) ? ((_x_24) => {
-  return $sk_triple$("Eql", "a", "b", "T", _t_0, _env_0, _depth_0);
-}) : ((_x_25) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Rwt"))) ? ((_x_26) => {
-  return $sk_triple$("Rwt", "e", "p", "f", _t_0, _env_0, _depth_0);
-}) : ((_x_27) => {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Hol"))) ? ((_x_28) => {
-  const _x_29 = ($sk_quote$(($nm$(_t_0))));
-  const _x_30 = (_x_29 + "}");
-  return ("{\"$\":\"Hol\",\"k\":" + _x_30);
-}) : ((_x_31) => {
-  const _x_32 = ($String$eq$(($tg$(_t_0)), "Qnt"));
-  const _x_33 = ($String$eq$(($tg$(_t_0)), "Efq"));
-  const _x_34 = (_x_32 || _x_33);
-  const _x_35 = ($String$eq$(($tg$(_t_0)), "Rfl"));
-  return run_tail(((_x_34 || _x_35)) ? ((_x_36) => {
-  const _x_37 = ($sk_quote$(($tg$(_t_0))));
-  const _x_38 = (_x_37 + "}");
-  return ("{\"$\":" + _x_38);
-}) : ((_x_39) => {
-  return $sk_internal$(_t_0, _env_0, _depth_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
 function $jd_calls_fact_members$($0, $1, $2, $3, $4) {
   for (;;) {
     {
@@ -30619,15 +31286,21 @@ function $jd_calls_fact_members$($0, $1, $2, $3, $4) {
   return 1;
 }) : ((_x_1) => {
   return 0;
-}), {$: "Unit"})), 0, {$: "Nil"})), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
+}), {$: "Unit"})), 0, ($ks$(_member_0)))), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
         continue;
       }
     }
   }
 }
 
-function $jd_calls_word_row$($0, $1, $2, $3, $4, $5) {
-  let $pc = 1;
+function $jd_native_layout$(_book_0, _ty_0) {
+  const _x_0 = ($nm$(_ty_0));
+  const _x_1 = (_x_0 + "|");
+  return $Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "ADT")), ($db$(run_loop($lookup$(_book_0, ($nm$(_ty_0)))))))), ($String$contains$("|Nat|Bool|U32|F32|Char|String|Array|", ("|" + _x_1))));
+}
+
+function $jd_calls_word_rows$($0, $1, $2, $3, $4, $5) {
+  let $pc = 0;
   for (;;) switch ($pc) {
     case 0: {
       const _book_0 = $0;
@@ -30669,134 +31342,60 @@ function $jd_calls_word_row$($0, $1, $2, $3, $4, $5) {
   }
 }
 
-function $jd_nat_parts$(_book_0, _ty_0, _level_0, _zero_0, _succ_0, _end_0) {
-  const _head_0 = run_loop(run_tail((($String$eq$(($tg$(_zero_0)), "Absent"))) ? ((_x_0) => {
-  return {$: "JDWordRow", "term": _end_0, "typ": _ty_0, "depth": 64, "value": _level_0, "fields": 1};
-}) : ((_x_1) => {
-  return {$: "JDWordRow", "term": _zero_0, "typ": run_loop($j_arm_type$(_book_0, run_loop($wnf$(_book_0, _ty_0)), "Zero")), "depth": 64, "value": _level_0, "fields": 0};
+function $jd_nat_rows$(_book_0, _t_0, _ty_0, _level_0) {
+  return $jd_nat_parts$(_book_0, _ty_0, _level_0, run_loop($jd_nat_arm$(_t_0, "Zero")), run_loop($jd_nat_arm$(_t_0, "Succ")), run_loop($jd_word_end$(_t_0)));
+}
+
+function $jd_calls_match_other$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, _tel_0) {
+  const _x_0 = ($String$eq$(($nm$(_domain_0)), "U32"));
+  const _x_1 = ($String$eq$(($nm$(_domain_0)), "F32"));
+  const _arm_0 = run_loop(run_tail((($Bool$and$(($Bool$and$(($jd_native_layout$(_book_0, _domain_0)), (_x_0 || _x_1))), ($j_u32_native_book$(_book_0))))) ? ((_x_2) => {
+  return $jd_calls_word_rows$(_book_0, _env_0, ((_args_0 - 1) >>> 0), _s_0, run_loop($jd_word_rows$(_book_0, run_loop($j_strip$(run_loop($kid$(_t_0, 0)))), run_loop($j_arm_tel$(_book_0, _tel_0, run_loop($kid$(_ty_0, 1)))), 0, 0, {$: "JDWordCover", "term": ($atom$("Absent")), "fields": 0, "prefix": {$: "Nil"}})));
+}) : ((_x_3) => {
+  return $jd_calls_match_arm$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), run_loop($j_arm_tel$(_book_0, _tel_0, run_loop($kid$(_ty_0, 1)))), ((_args_0 - 1) >>> 0), run_loop($jd_calls_fields$(_tel_0, 64)), _s_0);
 }), {$: "Unit"}));
-  return {$: "Con", "head": _head_0, "tail": run_loop(run_tail((($String$eq$(($tg$(_succ_0)), "Absent"))) ? ((_x_2) => {
-  return {$: "Con", "head": {$: "JDWordRow", "term": _end_0, "typ": _ty_0, "depth": 0, "value": _level_0, "fields": 1}, "tail": {$: "Nil"}};
-}) : ((_x_3) => {
-  return $jd_nat_next$(_book_0, run_loop($j_strip$(_succ_0)), run_loop($j_arm_type$(_book_0, run_loop($wnf$(_book_0, _ty_0)), "Succ")), ((_level_0 + 1) >>> 0));
-}), {$: "Unit"}))};
-}
-
-function $jd_nat_arm$(_t_0, _name_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_0) => {
-  return run_tail((($String$eq$(($nm$(_t_0)), _name_0))) ? ((_x_1) => {
-  return $kid$(_t_0, 0);
-}) : ((_x_2) => {
-  return $jd_nat_arm$(run_loop($j_strip$(run_loop($kid$(_t_0, 1)))), _name_0);
-}), {$: "Unit"});
-}) : ((_x_3) => {
-  return $atom$("Absent");
-}), {$: "Unit"});
-}
-
-function $jd_word_end$(_t_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_0) => {
-  return $jd_word_end$(run_loop($j_strip$(run_loop($kid$(_t_0, 1)))));
-}) : ((_x_1) => {
-  return _t_0;
-}), {$: "Unit"});
-}
-
-function $jd_word_rows$(_book_0, _t_0, _ty_0, _depth_0, _value_0, _cover_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_0) => {
-  return run_tail(((_depth_0 === 32)) ? ((_x_1) => {
-  return {$: "Con", "head": {$: "JDWordRow", "term": run_loop($kid$(_t_0, 0)), "typ": run_loop($j_arm_type$(_book_0, run_loop($wnf$(_book_0, _ty_0)), ($nm$(_t_0)))), "depth": _depth_0, "value": _value_0, "fields": 0}, "tail": {$: "Nil"}};
-}) : ((_x_2) => {
-  return $jd_word_parts$(_book_0, run_loop($j_strip$(run_loop($kid$(_t_0, 0)))), run_loop($j_arm_type$(_book_0, run_loop($wnf$(_book_0, _ty_0)), ($nm$(_t_0)))), _depth_0, _value_0, 2, _cover_0);
-}), {$: "Unit"});
-}) : ((_x_3) => {
-  return $jd_word_parts$(_book_0, _t_0, _ty_0, _depth_0, _value_0, 1, _cover_0);
-}), {$: "Unit"});
-}
-
-function $jd_calls_match_arm$(_book_0, _env_0, _t_0, _ty_0, _rest_0, _fields_0, _s_0) {
-  if (((_fields_0 < 65))) {
-const _x_0 = {$: "Unit"};
-return {$: "$JMP", f: $jd_calls_body$, x: [_book_0, _env_0, _t_0, _ty_0, ((_rest_0 + _fields_0) >>> 0), _s_0]};
-} else {
-const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $jd_calls_bad$, x: [_s_0]};
-}
-}
-
-function $jd_calls_fields$(_tel_0, _fuel_0) {
-  return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
-  return run_tail(((_fuel_0 > 0)) ? ((_x_1) => {
-  const _x_2 = ($qt$(_tel_0));
-  const _x_5 = run_loop(run_tail(((_x_2 === 0)) ? ((_x_3) => {
-  return 0;
-}) : ((_x_4) => {
-  return 1;
-}), {$: "Unit"}));
-  const _x_6 = run_loop($jd_calls_fields$(run_loop($kid$(_tel_0, 1)), ((_fuel_0 - 1) >>> 0)));
-  return ((_x_5 + _x_6) >>> 0);
-}) : ((_x_7) => {
-  return 65536;
-}), {$: "Unit"});
+  const _x_4 = ($j_constructor_count$(_book_0, _domain_0));
+  const _x_5 = (_x_4 === 1);
+  const _x_6 = ($Bool$and$(($jd_native_layout$(_book_0, _domain_0)), ($String$eq$(run_loop($jd_match_test$(($nm$(_domain_0)), ($nm$(_t_0)), "x")), ""))));
+  return run_tail(((_x_5 || _x_6)) ? ((_x_7) => {
+  return _arm_0;
 }) : ((_x_8) => {
-  return 0;
+  return $jd_calls_body$(_book_0, _env_0, run_loop($kid$(_t_0, 1)), _ty_0, _args_0, _arm_0);
 }), {$: "Unit"});
 }
 
-function $jd_match_test$(_owner_0, _name_0, _value_0) {
-  return run_tail((($String$eq$(_owner_0, "Nat"))) ? ((_x_0) => {
-  if ((($String$eq$(_name_0, "Zero")))) {
-const _x_1 = {$: "Unit"};
-return (_value_0 + "===0");
-} else {
-const _x_2 = {$: "Unit"};
-return (_value_0 + "!==0");
-}
+function $jd_choice_domain$(_book_0, _ty_0, _at_0) {
+  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
+  return run_tail((run_loop(run_tail(((_at_0 === 0)) ? ((_x_1) => {
+  const _x_2 = ($qt$(_ty_0));
+  return $Bool$and$((_x_2 === 0), ($String$eq$(($tg$(run_loop($wnf$(_book_0, run_loop($kid$(_ty_0, 0)))))), "Typ")));
 }) : ((_x_3) => {
-  return run_tail((($String$eq$(_owner_0, "Bool"))) ? ((_x_4) => {
-  if ((($String$eq$(_name_0, "True")))) {
-const _x_5 = {$: "Unit"};
-return _value_0;
-} else {
-const _x_6 = {$: "Unit"};
-return ("!" + _value_0);
-}
-}) : ((_x_7) => {
-  return run_tail((($String$eq$(_owner_0, "String"))) ? ((_x_8) => {
-  if ((($String$eq$(_name_0, "SNil")))) {
-const _x_9 = {$: "Unit"};
-return (_value_0 + "===\"\"");
-} else {
-const _x_10 = {$: "Unit"};
-return (_value_0 + "!==\"\"");
-}
-}) : ((_x_11) => {
-  return run_tail((($String$eq$(_owner_0, "Array"))) ? ((_x_12) => {
-  if ((($String$eq$(_name_0, "ALeaf")))) {
-const _x_13 = {$: "Unit"};
-return (_value_0 + ".length===1");
-} else {
-const _x_14 = {$: "Unit"};
-return (_value_0 + ".length!==1");
-}
-}) : ((_x_15) => {
-  return "";
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $jd_choice_owner$(_book_0, _ty_0, _name_0) {
-  return $jd_choice_owner_head$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _name_0);
-}
-
-function $jd_choice_callback$(_book_0, _ty_0) {
-  const _x_0 = ($qt$(_ty_0));
-  return run_tail((($Bool$and$(($String$eq$(($tg$(_ty_0)), "All")), ($Bool$not$((_x_0 === 0)))))) ? ((_x_1) => {
-  return $jd_choice_owner$(_book_0, run_loop($kid$(_ty_0, 0)), "Unit");
-}) : ((_x_2) => {
+  const _x_4 = ($qt$(_ty_0));
+  return $Bool$and$(($Bool$not$((_x_4 === 0))), run_loop(run_tail(((_at_0 === 1)) ? ((_x_5) => {
+  return $jd_choice_owner$(_book_0, run_loop($kid$(_ty_0, 0)), "Bool");
+}) : ((_x_6) => {
+  return $jd_choice_callback$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_ty_0, 0)))));
+}), {$: "Unit"})));
+}), {$: "Unit"}))) ? ((_x_7) => {
+  return $jd_choice_signature$(_book_0, run_loop($kid$(_ty_0, 1)), ((_at_0 + 1) >>> 0));
+}) : ((_x_8) => {
   return false;
+}), {$: "Unit"});
+}) : ((_x_9) => {
+  return false;
+}), {$: "Unit"});
+}
+
+function $jd_calls_extra_type$(_book_0, _x_0, _rest_0, _ty_0, _s_0) {
+  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_1) => {
+  const _x_2 = ($qt$(_ty_0));
+  return run_tail((($Bool$and$(($List$is_empty$(_rest_0)), ($Bool$not$((_x_2 === 0)))))) ? ((_x_3) => {
+  return $jd_calls_unknown$(_s_0);
+}) : ((_x_4) => {
+  return $jd_calls_extra$(_book_0, _rest_0, run_loop($j_app_type$(_ty_0, _x_0)), _s_0);
+}), {$: "Unit"});
+}) : ((_x_5) => {
+  return $jd_calls_bad$(_s_0);
 }), {$: "Unit"});
 }
 
@@ -30848,6 +31447,172 @@ return {$: "$JMP", f: $jd_primitive_select_8$, x: [_name_0]};
 
 function $jd_show_field_more$(_book_0, _t_0, _left_0, _d_0) {
   return $jd_show_join$({$: "JDShowDesc", "cells": {$: "Con", "head": "0", "tail": ($jd_show_cells$(_d_0))}, "types": ($jd_show_types$(_d_0)), "names": ($jd_show_names$(_d_0)), "error": ($jd_show_error$(_d_0))}, run_loop($jd_show_fields$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), ((_left_0 - 1) >>> 0), ($jd_show_types$(_d_0)), ($jd_show_names$(_d_0)))));
+}
+
+function $jd_host_marshal_fun_done$(_input_0, _result_0) {
+  return run_tail((($String$eq$((_input_0 + _result_0), ""))) ? ((_x_0) => {
+  return "";
+}) : ((_x_1) => {
+  const _x_2 = (_input_0 + "(x))))");
+  const _x_3 = ("(f(" + _x_2);
+  const _x_4 = (_result_0 + _x_3);
+  return ("((f)=>(x)=>" + _x_4);
+}), {$: "Unit"});
+}
+
+function $jd_host_marshal_named$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0) {
+  const _key_0 = ($jd_host_marshal_key$(_t_0, _out_0));
+  const _found_0 = run_loop($jd_host_marshal_find$(_seen_0, _key_0));
+  return run_tail((($Bool$not$(($String$eq$(_found_0, ""))))) ? ((_x_0) => {
+  return _found_0;
+}) : ((_x_1) => {
+  const _x_2 = ($U32$show$(_depth_0));
+  const _x_3 = ($nm$(_t_0));
+  const _x_4 = (_x_3 + " has no tag ");
+  const _x_5 = ($jd_host_ctor_tags$(($dc$(run_loop($lookup$(_book_0, ($nm$(_t_0))))))));
+  const _x_6 = (_x_5 + "); a tag names its constructor as the loading file sees it, which a later version will make the same everywhere (#1105)");
+  const _x_7 = ($j_quote$((" (its tags: " + _x_6)));
+  const _x_8 = (_x_7 + ";}}})");
+  const _x_9 = ($j_quote$(("bend: " + _x_4)));
+  const _x_10 = ("+v?.$+" + _x_8);
+  const _x_11 = (_x_9 + _x_10);
+  const _x_12 = ($jd_host_marshal_ctors$(_book_0, ($dc$(run_loop($lookup$(_book_0, ($nm$(_t_0)))))), ($ks$(_t_0)), _out_0, {$: "Con", "head": ($kt$("JDMarshal", _key_0, _depth_0, 0, {$: "Nil"})), "tail": _seen_0}, ((_depth_0 + 1) >>> 0), _fuel_0, ("$dm" + _x_2)));
+  const _x_13 = ("default:throw " + _x_11);
+  const _x_14 = (_x_12 + _x_13);
+  const _x_15 = ($U32$show$(_depth_0));
+  const _x_16 = ("(v){const top=[v];for(let at=top,key=0;;){switch(v.$){" + _x_14);
+  const _x_17 = (_x_15 + _x_16);
+  return ("(function $dm" + _x_17);
+}), {$: "Unit"});
+}
+
+function $sk_escape$($0, $1) {
+  for (;;) {
+    {
+      const _s_0 = $0;
+      const _acc_0 = $1;
+      if (_s_0 === "") {
+        return _acc_0;
+      } else {
+        const _c_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(0, 2) : _s_0[0]);
+        const _rest_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(2) : _s_0.slice(1));
+        const _x_0 = ($String$reverse$(run_loop($sk_char$(_c_0, ($Char$to_u32$(_c_0))))));
+        $0 = _rest_0;
+        $1 = (_x_0 + _acc_0);
+        continue;
+      }
+    }
+  }
+}
+
+function $sk_let_field$(_xs_0, _field_0, _env_0, _depth_0, _id_0) {
+  if (_xs_0.$ === "Nil") {
+    return "";
+  } else {
+    const _head_0 = _xs_0["head"];
+    const _rest_0 = _xs_0["tail"];
+    return run_tail((($String$eq$(($tg$(_head_0)), "Bind"))) ? ((_x_0) => {
+  const _x_10 = run_loop(run_tail(((_field_0 === 0)) ? ((_x_1) => {
+  return $sk_quote$(($nm$(_head_0)));
+}) : ((_x_2) => {
+  return run_tail(((_field_0 === 1)) ? ((_x_3) => {
+  return $U32$show$(_id_0);
+}) : ((_x_4) => {
+  return run_tail(((_field_0 === 2)) ? ((_x_5) => {
+  return $sk_quant$(($qt$(_head_0)));
+}) : ((_x_6) => {
+  return $sk_term$(run_loop($kid$(_head_0, 0)), _env_0, _depth_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"}));
+  const _x_11 = run_loop(run_tail((($String$eq$(($tg$(run_loop($terms_at$(_rest_0, 0)))), "Bind"))) ? ((_x_7) => {
+  const _x_8 = run_loop($sk_let_field$(_rest_0, _field_0, _env_0, _depth_0, ((_id_0 + 1) >>> 0)));
+  return ("," + _x_8);
+}) : ((_x_9) => {
+  return "";
+}), {$: "Unit"}));
+  return (_x_10 + _x_11);
+}) : ((_x_12) => {
+  return "";
+}), {$: "Unit"});
+  }
+}
+
+function $sk_let_body$(_xs_0, _env_0, _depth_0) {
+  if (_xs_0.$ === "Nil") {
+    return "null";
+  } else {
+    const _head_0 = _xs_0["head"];
+    const _rest_0 = _xs_0["tail"];
+    return run_tail((($String$eq$(($tg$(_head_0)), "Bind"))) ? ((_x_0) => {
+  return $sk_let_body$(_rest_0, {$: "Con", "head": {$: "KPName", "name": ($nm$(_head_0)), "id": ($ix$(_head_0)), "depth": _depth_0}, "tail": _env_0}, ((_depth_0 + 1) >>> 0));
+}) : ((_x_1) => {
+  return $sk_term$(_head_0, _env_0, _depth_0);
+}), {$: "Unit"});
+  }
+}
+
+function $sk_pair$(_tag_0, _a_0, _b_0, _t_0, _env_0, _depth_0) {
+  const _x_0 = run_loop($sk_term$(run_loop($kid$(_t_0, 1)), _env_0, _depth_0));
+  const _x_1 = (_x_0 + "}");
+  const _x_2 = ($sk_quote$(_b_0));
+  const _x_3 = (":" + _x_1);
+  const _x_4 = (_x_2 + _x_3);
+  const _x_5 = run_loop($sk_term$(run_loop($kid$(_t_0, 0)), _env_0, _depth_0));
+  const _x_6 = ("," + _x_4);
+  const _x_7 = (_x_5 + _x_6);
+  const _x_8 = ($sk_quote$(_a_0));
+  const _x_9 = (":" + _x_7);
+  const _x_10 = (_x_8 + _x_9);
+  const _x_11 = ($sk_quote$(_tag_0));
+  const _x_12 = ("," + _x_10);
+  const _x_13 = (_x_11 + _x_12);
+  return ("{\"$\":" + _x_13);
+}
+
+function $sk_triple$(_tag_0, _a_0, _b_0, _c_0, _t_0, _env_0, _depth_0) {
+  const _x_0 = run_loop($sk_term$(run_loop($kid$(_t_0, 2)), _env_0, _depth_0));
+  const _x_1 = (_x_0 + "}");
+  const _x_2 = ($sk_quote$(_c_0));
+  const _x_3 = (":" + _x_1);
+  const _x_4 = (_x_2 + _x_3);
+  const _x_5 = run_loop($sk_term$(run_loop($kid$(_t_0, 1)), _env_0, _depth_0));
+  const _x_6 = ("," + _x_4);
+  const _x_7 = (_x_5 + _x_6);
+  const _x_8 = ($sk_quote$(_b_0));
+  const _x_9 = (":" + _x_7);
+  const _x_10 = (_x_8 + _x_9);
+  const _x_11 = run_loop($sk_term$(run_loop($kid$(_t_0, 0)), _env_0, _depth_0));
+  const _x_12 = ("," + _x_10);
+  const _x_13 = (_x_11 + _x_12);
+  const _x_14 = ($sk_quote$(_a_0));
+  const _x_15 = (":" + _x_13);
+  const _x_16 = (_x_14 + _x_15);
+  const _x_17 = ($sk_quote$(_tag_0));
+  const _x_18 = ("," + _x_16);
+  const _x_19 = (_x_17 + _x_18);
+  return ("{\"$\":" + _x_19);
+}
+
+function $sk_internal$(_t_0, _env_0, _depth_0) {
+  const _x_0 = ($sk_names$(($rm$(_t_0))));
+  const _x_1 = (_x_0 + "]}");
+  const _x_2 = ($sk_terms$(($ks$(_t_0)), _env_0, _depth_0));
+  const _x_3 = ("],\"removed\":[" + _x_1);
+  const _x_4 = (_x_2 + _x_3);
+  const _x_5 = ($U32$show$(($qt$(_t_0))));
+  const _x_6 = (",\"kids\":[" + _x_4);
+  const _x_7 = (_x_5 + _x_6);
+  const _x_8 = ($U32$show$(($ix$(_t_0))));
+  const _x_9 = (",\"quant\":" + _x_7);
+  const _x_10 = (_x_8 + _x_9);
+  const _x_11 = ($sk_quote$(($nm$(_t_0))));
+  const _x_12 = (",\"id\":" + _x_10);
+  const _x_13 = (_x_11 + _x_12);
+  const _x_14 = ($sk_quote$(($tg$(_t_0))));
+  const _x_15 = (",\"name\":" + _x_13);
+  const _x_16 = (_x_14 + _x_15);
+  return ("{\"$\":\"Internal\",\"tag\":" + _x_16);
 }
 
 function $core_subst_stable_app_last$(_f_0, _x_0, _rest_0) {
@@ -31071,256 +31836,212 @@ function $norm_stuck$(_t_0, _x_0, _args_0, _left_0, _fallback_0) {
 }), {$: "Unit"});
 }
 
-function $check_ctor_domain$(_e_0, _d_0, _tel_0, _kind_0, _params_0, _fields_0, _ctx_0, _args_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $check_ctor_tel$(($ke_world$(_e_0, ($rw$(_r_0)))), _d_0, run_loop($kid$(_tel_0, 1)), run_loop(run_tail(((_params_0 === 0)) ? ((_x_1) => {
-  return _kind_0;
+function $tele_check_after_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, _checked_head_0) {
+  return run_tail((($good$(_checked_head_0))) ? ((_x_0) => {
+  return run_tail((run_loop($core_subst_stable$(run_loop($kid$(_tel_0, 1))))) ? ((_x_1) => {
+  return $tele_check_done$(_checked_head_0, run_loop($tele_check_static$(($ke_world$(_e_0, ($rw$(_checked_head_0)))), _ctx_0, run_loop($kid$(_tel_0, 1)), _rest_0, _dem_0)));
 }) : ((_x_2) => {
-  return $subst$(run_loop($kid$(run_loop($wnf$(($kw_book$(($rw$(_r_0)))), _kind_0)), 1)), ($ix$(run_loop($wnf$(($kw_book$(($rw$(_r_0)))), _kind_0)))), ($var$(($nm$(_tel_0)), ($ix$(_tel_0)))));
-}), {$: "Unit"})), run_loop(run_tail(((_params_0 === 0)) ? ((_x_3) => {
-  return 0;
-}) : ((_x_4) => {
-  return ((_params_0 - 1) >>> 0);
-}), {$: "Unit"})), run_loop(run_tail(((_params_0 === 0)) ? ((_x_5) => {
-  return ((_fields_0 - 1) >>> 0);
-}) : ((_x_6) => {
-  return _fields_0;
-}), {$: "Unit"})), ($ctx_bind$(_ctx_0, ($ix$(_tel_0)), ($qt$(_tel_0)), ($nm$(_tel_0)), run_loop($kid$(_tel_0, 0)))), run_loop(run_tail(((_params_0 === 0)) ? ((_x_7) => {
-  return _args_0;
-}) : ((_x_8) => {
-  return $norm_join$(_args_0, {$: "Con", "head": ($var$(($nm$(_tel_0)), ($ix$(_tel_0)))), "tail": {$: "Nil"}});
-}), {$: "Unit"})));
-}) : ((_x_9) => {
-  return _r_0;
+  return $tele_check_done$(_checked_head_0, run_loop($env_tele_check$(($ke_world$(_e_0, ($rw$(_checked_head_0)))), _ctx_0, run_loop($subst$(run_loop($kid$(_tel_0, 1)), ($ix$(_tel_0)), _h_0)), _rest_0, _dem_0)));
 }), {$: "Unit"});
-}
-
-function $check_lam_done$(_t_0, _ty_0, _q_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  const _x_1 = run_loop($uses_get$(($cs$(_r_0)), ($ix$(_t_0))));
-  return run_tail(((_x_1 > _q_0)) ? ((_x_2) => {
-  return $kr_from$(_r_0, ($dg_quant_error$(($rw$(_r_0)), "affine variable consumed more than allowed", ($nm$(_t_0)), _q_0, run_loop($uses_get$(($cs$(_r_0)), ($ix$(_t_0)))))));
 }) : ((_x_3) => {
-  return {$: "KChecking", "term": ($k_with_children$(_t_0, {$: "Con", "head": ($ct$(_r_0)), "tail": {$: "Nil"}})), "typ": _ty_0, "uses": run_loop($uses_del$(($cs$(_r_0)), ($ix$(_t_0)))), "error": "", "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))};
-}), {$: "Unit"});
-}) : ((_x_4) => {
-  return _r_0;
+  return _checked_head_0;
 }), {$: "Unit"});
 }
 
-function $lhs_step$(_e_0, _x_0) {
-  const _x_1 = ($cp$(_e_0));
-  return run_tail(((_x_1 === 0)) ? ((_x_2) => {
-  return _e_0;
-}) : ((_x_3) => {
-  const _x_4 = ($cp$(_e_0));
-  return {$: "KEnv", "world": ($cw$(_e_0)), "name": ($cn$(_e_0)), "lhs": run_loop($kapply$(($cl$(_e_0)), _x_0)), "pending": ((_x_4 - 1) >>> 0), "quantities": ($cq$(_e_0)), "unsafe": ($cu$(_e_0)), "depth": ($cd$(_e_0))};
-}), {$: "Unit"});
-}
-
-function $tele_check_cached_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0) {
-  return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
-  return $tele_check_after_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, run_loop($check$(_e_0, _ctx_0, _h_0, run_loop($qdem$(($qt$(_tel_0)), _dem_0)), run_loop($kid$(_tel_0, 0)))));
-}) : ((_x_1) => {
-  return $bad$(($cw$(_e_0)), "too many telescope arguments");
-}), {$: "Unit"});
-}
-
-function $check_mat_filled$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, _ctr_0, _tel_0) {
+function $ki_match_bound$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, _ctr_0, _tel_0, _bound_0) {
   const _x_0 = ($cp$(_e_0));
   const _x_1 = ($da$(_ctr_0));
   const _x_2 = (_x_0 === 0);
   const _x_3 = (_x_1 === 0);
-  return $ki_match_bound$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, _ctr_0, _tel_0, run_loop(run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
-  return 0;
-}) : ((_x_5) => {
-  return $kw_temp_floor$(($cw$(_e_0)), {$: "Con", "head": ($cl$(_e_0)), "tail": {$: "Con", "head": _tel_0, "tail": {$: "Con", "head": _t_0, "tail": {$: "Con", "head": _ty_0, "tail": _ctx_0}}}});
-}), {$: "Unit"})));
-}
-
-function $kindq$(_e_0, _q_0) {
-  if ((($Bool$and$(($cu$(_e_0)), (_q_0 === 2))))) {
-const _x_0 = {$: "Unit"};
-return 1;
-} else {
-const _x_1 = {$: "Unit"};
-return _q_0;
-}
-}
-
-function $dg_kind_result$(_t_0, _q_0, _name_0, _site_0, _kind_0, _r_0) {
-  const _x_0 = ($kb$(_t_0));
-  const _x_1 = ($kb$(run_loop($kid$(($ct$(_r_0)), 3))));
-  const _x_2 = (_x_0 === 0);
-  const _x_3 = (_x_1 === 0);
-  const _x_4 = ($kb$(_t_0));
-  const _x_5 = ($kb$(run_loop($kid$(($ct$(_r_0)), 3))));
-  const _x_6 = ($ke$(_t_0));
-  const _x_7 = ($ke$(run_loop($kid$(($ct$(_r_0)), 3))));
-  const _x_8 = (_x_2 || _x_3);
-  const _x_9 = ($Bool$and$((_x_4 === _x_5), (_x_6 === _x_7)));
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($ce$(_r_0)), "type mismatch")), ($String$eq$(($tg$(($ct$(_r_0)))), "DTrace")))), run_loop($norm_exact$(run_loop($kid$(($ct$(_r_0)), 0)), _kind_0)))), run_loop($norm_exact$(run_loop($kid$(($ct$(_r_0)), 3)), _t_0)))), (_x_8 || _x_9)))) ? ((_x_10) => {
-  return {$: "KChecking", "term": ($kt$("DTrace", ($nm$(($ct$(_r_0)))), ($ix$(($ct$(_r_0)))), ($qt$(($ct$(_r_0)))), {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 0)), "tail": {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 1)), "tail": {$: "Con", "head": run_loop($kid$(($ct$(_r_0)), 2)), "tail": {$: "Con", "head": _site_0, "tail": {$: "Con", "head": ($kt$("DTrail", "", 0, 0, {$: "Con", "head": _site_0, "tail": ($ks$(run_loop($kid$(($ct$(_r_0)), 4))))})), "tail": {$: "Con", "head": run_loop(run_tail(((_q_0 === 2)) ? ((_x_11) => {
-  const _x_12 = (_name_0 + " can be used many times, so its type must be Data.");
-  return $dg_text$(("Note: +" + _x_12));
+  const _x_4 = ($da$(_ctr_0));
+  const _x_5 = ($da$(_ctr_0));
+  const _x_6 = ((4294967294 - _x_5) >>> 0);
+  const _x_7 = (_x_2 || _x_3);
+  const _x_8 = ($Bool$and$((_x_4 < 4294967295), (_bound_0 <= _x_6)));
+  return run_tail(((_x_7 || _x_8)) ? ((_x_9) => {
+  const _x_10 = ($cp$(_e_0));
+  return $ki_match_arm$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, run_loop($check$(run_loop(run_tail(((_x_10 === 0)) ? ((_x_11) => {
+  return _e_0;
+}) : ((_x_12) => {
+  return $ki_lhs$(_e_0, ($nm$(_t_0)), _tel_0, ($da$(_ctr_0)), ((_bound_0 + 1) >>> 0));
+}), {$: "Unit"})), _ctx_0, run_loop($kid$(_t_0, 0)), _dem_0, run_loop($mat_goal$(($cb$(_e_0)), _ty_0, _tel_0, ($da$(_ctr_0)), ($nm$(_t_0)), {$: "Nil"})))));
 }) : ((_x_13) => {
-  return $kid$(($ct$(_r_0)), 5);
-}), {$: "Unit"})), "tail": {$: "Nil"}}}}}}})), "typ": ($cy$(_r_0)), "uses": ($cs$(_r_0)), "error": ($ce$(_r_0)), "world": ($rw$(_r_0)), "consumed": ($rx$(_r_0))};
-}) : ((_x_14) => {
-  return _r_0;
+  return $bad$(($cw$(_e_0)), "fresh binder space exhausted");
 }), {$: "Unit"});
 }
 
-function $qjoin$(_a_0, _b_0) {
-  if (((_a_0 > _b_0))) {
-const _x_0 = {$: "Unit"};
-return _a_0;
-} else {
-const _x_1 = {$: "Unit"};
-return _b_0;
-}
+function $kw_temporary$(_world_0, _root_0, _bound_0) {
+  return $kw_temporary_fresh$(_world_0, _root_0, _bound_0, ($kw_fresh$(_world_0)));
 }
 
-function $check_rwt_goal$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0, _fresh_0) {
-  const _goal_0 = ($all$(1, "_", _fresh_0, run_loop($kid$(_eq_0, 2)), ($all$(1, "e", ((_fresh_0 + 1) >>> 0), ($kt$("Eql", "", 0, 0, {$: "Con", "head": run_loop($kid$(_eq_0, 0)), "tail": {$: "Con", "head": ($var$("_", _fresh_0)), "tail": {$: "Con", "head": run_loop($kid$(_eq_0, 2)), "tail": {$: "Nil"}}}})), ($typ$(1))))));
-  const _next_0 = ($ke_world$(_e_0, ($kw_temporary$(($cw$(_e_0)), _goal_0, ((_fresh_0 + 1) >>> 0)))));
-  return $ki_rwt_motive$(_next_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0, run_loop($check$(_next_0, _ctx_0, run_loop($kid$(_t_0, 1)), 0, _goal_0)));
+function $ki_rwt_motive$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0, _motive_0) {
+  return run_tail((($good$(_motive_0))) ? ((_x_0) => {
+  return run_tail((run_loop($compare$(($kw_book$(($rw$(_motive_0)))), run_loop($kapply$(run_loop($kapply$(run_loop($kid$(_t_0, 1)), run_loop($kid$(_eq_0, 1)))), run_loop($kid$(_t_0, 0)))), _ty_0, true))) ? ((_x_1) => {
+  return $ki_rwt_done$(_t_0, _ty_0, _r_0, _motive_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_motive_0)))), _ctx_0, run_loop($kid$(_t_0, 2)), _dem_0, run_loop($kapply$(run_loop($kapply$(run_loop($kid$(_t_0, 1)), run_loop($kid$(_eq_0, 0)))), ($atom$("Rfl")))))));
+}) : ((_x_2) => {
+  return $kr_from$(_motive_0, ($dg_bad_detail$(($rw$(_motive_0)), "rewrite motive does not fit goal", _ty_0, run_loop($kapply$(run_loop($kapply$(run_loop($kid$(_t_0, 1)), run_loop($kid$(_eq_0, 1)))), run_loop($kid$(_t_0, 0)))))));
+}), {$: "Unit"});
+}) : ((_x_3) => {
+  return _motive_0;
+}), {$: "Unit"});
 }
 
-function $kw_temp_fresh$(_world_0, _fresh_0, _roots_0) {
-  if (_fresh_0.$ === "KFreshKnown") {
-    const _next_0 = _fresh_0["next"];
-    return $norm_max_walk$(_roots_0, ((_next_0 - 1) >>> 0));
+function $descend_spine$(_qs_0, _args_0, _cols_0) {
+  if (_cols_0.$ === "Nil") {
+    return false;
   } else {
-    return $norm_max_walk$(_roots_0, run_loop($norm_book_bound$(($kw_book$(_world_0)))));
+    const _h_0 = _cols_0["head"];
+    const _t_0 = _cols_0["tail"];
+    return $descend_step$(run_loop($descend$(($qt$(run_loop($terms_at$(_qs_0, 0)))), run_loop($terms_at$(_args_0, 0)), _h_0)), ($terms_tail$(_qs_0)), ($terms_tail$(_args_0)), _t_0);
   }
 }
 
-function $ki_ref_result$(_e_0, _t_0, _sp_0, _r_0) {
+function $sp_drop$(_ts_0, _n_0) {
+  if (((_n_0 === 0))) {
+const _x_0 = {$: "Unit"};
+return _ts_0;
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $sp_drop_next$, x: [_ts_0, _n_0]};
+}
+}
+
+function $unargs$(_t_0, _acc_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "App"))) ? ((_x_0) => {
+  return $unargs$(run_loop($kid$(_t_0, 0)), {$: "Con", "head": run_loop($kid$(_t_0, 1)), "tail": _acc_0});
+}) : ((_x_1) => {
+  return _acc_0;
+}), {$: "Unit"});
+}
+
+function $sp_live_checked$(_e_0, _ctx_0, _head_0, _sp_0, _d_0, _r_0) {
   return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($nm$(($ct$(_r_0)))), ($cn$(_e_0)))), ($Bool$not$(($cu$(_e_0)))))), ($Bool$not$(run_loop($descend_spine$(($cq$(_e_0)), run_loop($sp_drop$(_sp_0, ($rx$(_r_0)))), run_loop($unargs$(($cl$(_e_0)), {$: "Nil"}))))))))) ? ((_x_1) => {
-  return $kr_from$(_r_0, ($bad$(($rw$(_r_0)), "nondecreasing self-call")));
+  return $sp_live_args$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, _head_0, _sp_0, _d_0, run_loop($sp_take$(_sp_0, ($dx$(_d_0)))));
+}) : ((_x_1) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $dg_template_result$(_e_0, _ctx_0, _t_0, _r_0) {
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($ce$(_r_0)), "unbound variable")), ($String$eq$(($tg$(($ct$(_r_0)))), "DTrace")))), ($String$eq$(($tg$(run_loop($kid$(($ct$(_r_0)), 1)))), "Var")))), ($Bool$not$(($String$eq$(($tg$(run_loop($ctx_get$(_ctx_0, ($ix$(run_loop($kid$(($ct$(_r_0)), 1)))))))), "Absent"))))))) ? ((_x_0) => {
+  const _x_1 = ($nm$(run_loop($kid$(($ct$(_r_0)), 1))));
+  const _x_2 = (_x_1 + " is a variable here, not comptime: pass it at run time)");
+  return $dg_trace$(_e_0, _ctx_0, _t_0, ($atom$("Absent")), ($kr_from$(_r_0, ($dg_bad_detail$(($rw$(_r_0)), ($ce$(_r_0)), ($dg_text$(("a template applied to closed ~ arguments (" + _x_2))), _t_0)))));
+}) : ((_x_3) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $template_args$(_e_0, _ty_0, _sp_0, _n_0) {
+  return run_tail(((_n_0 === 0)) ? ((_x_0) => {
+  return $ok$(($cw$(_e_0)), ($atom$("Args")), _ty_0, {$: "Nil"});
+}) : ((_x_1) => {
+  return $template_arg_head$(_e_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)), _sp_0, _n_0);
+}), {$: "Unit"});
+}
+
+function $both$(_a_0, _b_0, _t_0, _ty_0, _join_0) {
+  return run_tail((($good$(_a_0))) ? ((_x_0) => {
+  return run_tail((($good$(_b_0))) ? ((_x_1) => {
+  return {$: "KChecking", "term": _t_0, "typ": _ty_0, "uses": ($uses_merge$(($cs$(_a_0)), ($cs$(_b_0)), _join_0)), "error": "", "world": ($rw$(_b_0)), "consumed": ($rx$(_b_0))};
 }) : ((_x_2) => {
-  return _r_0;
-}), {$: "Unit"});
-}) : ((_x_3) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $infer_template$(_e_0, _ctx_0, _t_0, _dem_0, _sp_0, _d_0) {
-  const _x_0 = ($dx$(_d_0));
-  const _x_1 = (_dem_0 === 0);
-  const _x_2 = (_x_0 === 0);
-  const _x_3 = ($dx$(run_loop($lookup$(($cb$(_e_0)), ($cn$(_e_0))))));
-  const _x_4 = (_x_1 || _x_2);
-  const _x_5 = (_x_3 > 0);
-  return run_tail(((_x_4 || _x_5)) ? ((_x_6) => {
-  return $ok$(($cw$(_e_0)), _t_0, ($dt$(_d_0)), {$: "Nil"});
-}) : ((_x_7) => {
-  return $sp_live_checked$(_e_0, _ctx_0, _t_0, _sp_0, _d_0, run_loop($dg_template_result$(_e_0, _ctx_0, _t_0, run_loop($template_args$(_e_0, ($dt$(_d_0)), _sp_0, ($dx$(_d_0)))))));
-}), {$: "Unit"});
-}
-
-function $ki_pair$(_t_0, _ty_0, _a_0, _b_0, _join_0) {
-  return $both$(_a_0, _b_0, ($k_with_children$(_t_0, {$: "Con", "head": ($ct$(_a_0)), "tail": {$: "Con", "head": ($ct$(_b_0)), "tail": {$: "Nil"}}})), _ty_0, _join_0);
-}
-
-function $infer_app_type$(_e_0, _ctx_0, _t_0, _dem_0, _r_0, _ty_0) {
-  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
-  return $ki_pair$(_t_0, run_loop($subst$(run_loop($kid$(_ty_0, 1)), ($ix$(_ty_0)), run_loop($kid$(_t_0, 1)))), _r_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, run_loop($kid$(_t_0, 1)), run_loop($qdem$(($qt$(_ty_0)), _dem_0)), run_loop($kid$(_ty_0, 0)))), false);
-}) : ((_x_1) => {
-  return $kr_from$(_r_0, ($dg_bad_detail$(($rw$(_r_0)), "application requires a function type", ($dg_text$("a function type")), ($cy$(_r_0)))));
-}), {$: "Unit"});
-}
-
-function $infer_adt_done$(_t_0, _r_0) {
-  return $ki_args$(_t_0, ($cy$(_r_0)), _r_0);
-}
-
-function $dg_adt_error$(_world_0, _t_0, _d_0) {
-  return run_tail((($String$eq$(($dk$(_d_0)), "ADT"))) ? ((_x_0) => {
-  const _x_1 = ($da$(_d_0));
-  const _x_4 = ($U32$show$(($da$(_d_0))));
-  const _x_5 = run_loop(run_tail(((_x_1 === 1)) ? ((_x_2) => {
-  return " parameter";
-}) : ((_x_3) => {
-  return " parameters";
-}), {$: "Unit"}));
-  const _x_6 = (_x_4 + _x_5);
-  const _x_7 = ($nm$(_t_0));
-  const _x_8 = (" with " + _x_6);
-  return $dg_bad_detail$(_world_0, "unknown family or wrong parameter count", ($dg_text$((_x_7 + _x_8))), _t_0);
-}) : ((_x_9) => {
-  const _x_10 = ($nm$(_t_0));
-  const _x_11 = (_x_10 + ")");
-  return $dg_bad_message$(_world_0, "unknown family or wrong parameter count", ($dg_text$(("a declared datatype (unknown: " + _x_11))));
-}), {$: "Unit"});
-}
-
-function $ki_eql_left$(_e_0, _ctx_0, _t_0, _a_0, _b_0) {
-  return run_tail((($good$(_b_0))) ? ((_x_0) => {
-  return $ki_eql_done$(_t_0, _a_0, _b_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_b_0)))), _ctx_0, run_loop($kid$(_t_0, 1)), 0, run_loop($kid$(_t_0, 2)))));
-}) : ((_x_1) => {
   return _b_0;
 }), {$: "Unit"});
-}
-
-function $ki_ann_done$(_t_0, _a_0, _b_0) {
-  return $both$(_a_0, _b_0, ($k_with_children$(_t_0, {$: "Con", "head": ($ct$(_b_0)), "tail": {$: "Con", "head": run_loop($kid$(_t_0, 1)), "tail": {$: "Nil"}}})), run_loop($kid$(_t_0, 1)), false);
-}
-
-function $norm_cmp_same$(_book_0, _st_0, _a_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0) {
-  return run_tail((($String$eq$(($tg$(_a_0)), "Var"))) ? ((_x_0) => {
-  const _x_1 = ($ix$(_a_0));
-  const _x_2 = ($ix$(_b_0));
-  return $norm_cmp_test$(_book_0, _st_0, (_x_1 === _x_2), _rest_0, _alts_0);
 }) : ((_x_3) => {
-  return run_tail((($String$eq$(($tg$(_a_0)), "Typ"))) ? ((_x_4) => {
-  return run_tail((_le_0) ? ((_x_5) => {
-  return $norm_cmp_kind_left$(_book_0, _a_0, _b_0, _fresh_0, _rest_0, _alts_0, run_loop($g_wnf$(_book_0, _st_0, run_loop($kid$(_a_0, 0)))));
-}) : ((_x_6) => {
-  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": run_loop($kid$(_a_0, 0)), "b": run_loop($kid$(_b_0, 0)), "le": false, "fresh": _fresh_0}, "tail": _rest_0}, _alts_0);
+  return _a_0;
 }), {$: "Unit"});
+}
+
+function $ki_eql_done$(_t_0, _a_0, _b_0, _c_0) {
+  return $both$(_a_0, run_loop($both$(_b_0, _c_0, _t_0, ($typ$(2)), false)), ($k_with_children$(_t_0, {$: "Con", "head": ($ct$(_b_0)), "tail": {$: "Con", "head": ($ct$(_c_0)), "tail": {$: "Con", "head": ($ct$(_a_0)), "tail": {$: "Nil"}}}})), ($typ$(2)), false);
+}
+
+function $norm_cmp_test$(_book_0, _st_0, _yes_0, _rest_0, _alts_0) {
+  if ((_yes_0)) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $norm_cmp_loop$, x: [_book_0, _st_0, _rest_0, _alts_0]};
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $norm_cmp_fail$, x: [_book_0, _st_0, _alts_0]};
+}
+}
+
+function $norm_cmp_kind_left$(_book_0, _a_0, _b_0, _fresh_0, _rest_0, _alts_0, _r_0) {
+  const _st_0 = _r_0["state"];
+  const _g_0 = _r_0["term"];
+  return $norm_cmp_kind_right$(_book_0, _a_0, _b_0, _g_0, _fresh_0, _rest_0, _alts_0, run_loop($g_wnf$(_book_0, _st_0, run_loop($kid$(_b_0, 0)))));
+}
+
+function $norm_removed$(_as_0, _bs_0, _le_0) {
+  return run_tail((_le_0) ? ((_x_0) => {
+  return $norm_subset$(_as_0, _bs_0);
+}) : ((_x_1) => {
+  const _x_2 = ($norm_names_len$(_as_0));
+  const _x_3 = ($norm_names_len$(_bs_0));
+  return $Bool$and$((_x_2 === _x_3), ($norm_subset$(_as_0, _bs_0)));
+}), {$: "Unit"});
+}
+
+function $norm_cmp_fields$(_book_0, _st_0, _as_0, _bs_0, _fresh_0, _rest_0, _alts_0) {
+  const _x_0 = ($terms_len$(_as_0));
+  const _x_1 = ($terms_len$(_bs_0));
+  return run_tail(((_x_0 === _x_1)) ? ((_x_2) => {
+  return $norm_cmp_loop$(_book_0, _st_0, ($norm_cmp_zip$(_as_0, _bs_0, _fresh_0, _rest_0)), _alts_0);
+}) : ((_x_3) => {
+  return $norm_cmp_fail$(_book_0, _st_0, _alts_0);
+}), {$: "Unit"});
+}
+
+function $norm_cmp_plain$(_book_0, _st_0, _a_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0) {
+  return run_tail((($Bool$and$(($core_literal$(_a_0)), ($core_literal$(_b_0))))) ? ((_x_0) => {
+  return $norm_cmp_test$(_book_0, _st_0, ($core_literal_same$(_a_0, _b_0)), _rest_0, _alts_0);
+}) : ((_x_1) => {
+  return run_tail((($String$eq$(($tg$(_a_0)), "Ref"))) ? ((_x_2) => {
+  return run_tail((($String$eq$(($nm$(_a_0)), ($nm$(_b_0))))) ? ((_x_3) => {
+  return $norm_cmp_loop$(_book_0, _st_0, _rest_0, _alts_0);
+}) : ((_x_4) => {
+  return $norm_cmp_ref$(_book_0, _st_0, _a_0, _b_0, _le_0, run_loop($norm_max$(($da$(run_loop($lookup$(_book_0, ($nm$(_a_0)))))), ($da$(run_loop($lookup$(_book_0, ($nm$(_b_0)))))))), _fresh_0, _rest_0, _alts_0);
+}), {$: "Unit"});
+}) : ((_x_5) => {
+  return run_tail((($String$eq$(($tg$(_a_0)), "Hol"))) ? ((_x_6) => {
+  return $norm_cmp_test$(_book_0, _st_0, ($String$eq$(($nm$(_a_0)), ($nm$(_b_0)))), _rest_0, _alts_0);
 }) : ((_x_7) => {
-  return run_tail((($String$eq$(($tg$(_a_0)), "All"))) ? ((_x_8) => {
-  const _x_9 = ($qt$(_a_0));
-  const _x_10 = ($qt$(_b_0));
-  return run_tail(((_x_9 === _x_10)) ? ((_x_11) => {
-  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": run_loop($kid$(_b_0, 0)), "b": run_loop($kid$(_a_0, 0)), "le": _le_0, "fresh": _fresh_0}, "tail": {$: "Con", "head": {$: "KNormCmp", "a": run_loop($subst$(run_loop($kid$(_a_0, 1)), ($ix$(_a_0)), ($var$("_", _fresh_0)))), "b": run_loop($subst$(run_loop($kid$(_b_0, 1)), ($ix$(_b_0)), ($var$("_", _fresh_0)))), "le": _le_0, "fresh": ((_fresh_0 + 1) >>> 0)}, "tail": _rest_0}}, _alts_0);
+  const _x_8 = ($String$eq$(($tg$(_a_0)), "Ctr"));
+  const _x_9 = ($String$eq$(($tg$(_a_0)), "Mat"));
+  return run_tail(((_x_8 || _x_9)) ? ((_x_10) => {
+  return run_tail((($String$eq$(($nm$(_a_0)), ($nm$(_b_0))))) ? ((_x_11) => {
+  return $norm_cmp_fields$(_book_0, _st_0, ($ks$(_a_0)), ($ks$(_b_0)), _fresh_0, _rest_0, _alts_0);
 }) : ((_x_12) => {
   return $norm_cmp_fail$(_book_0, _st_0, _alts_0);
 }), {$: "Unit"});
 }) : ((_x_13) => {
-  return run_tail((($String$eq$(($tg$(_a_0)), "ADT"))) ? ((_x_14) => {
-  return run_tail((($Bool$and$(($String$eq$(($nm$(_a_0)), ($nm$(_b_0)))), run_loop($norm_removed$(($rm$(_a_0)), ($rm$(_b_0)), _le_0))))) ? ((_x_15) => {
-  return $norm_cmp_fields$(_book_0, _st_0, ($ks$(_a_0)), ($ks$(_b_0)), _fresh_0, _rest_0, _alts_0);
+  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($tg$(_a_0)), "App")), ($String$eq$(($tg$(run_loop($kid$(_a_0, 0)))), "Ref")))), ($String$eq$(($tg$(run_loop($kid$(_b_0, 0)))), "Ref"))))) ? ((_x_14) => {
+  return run_tail((($String$eq$(($nm$(run_loop($kid$(_a_0, 0)))), ($nm$(run_loop($kid$(_b_0, 0))))))) ? ((_x_15) => {
+  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": run_loop($kid$(_a_0, 1)), "b": run_loop($kid$(_b_0, 1)), "le": false, "fresh": _fresh_0}, "tail": _rest_0}, _alts_0);
 }) : ((_x_16) => {
   return $norm_cmp_fail$(_book_0, _st_0, _alts_0);
 }), {$: "Unit"});
 }) : ((_x_17) => {
-  return run_tail((($String$eq$(($tg$(_a_0)), "Qua"))) ? ((_x_18) => {
-  const _x_19 = ($qt$(_a_0));
-  const _x_20 = ($qt$(_b_0));
-  return $norm_cmp_test$(_book_0, _st_0, (_x_19 === _x_20), _rest_0, _alts_0);
-}) : ((_x_21) => {
-  return $norm_cmp_plain$(_book_0, _st_0, _a_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0);
+  const _x_18 = ($String$eq$(($tg$(_a_0)), "App"));
+  const _x_19 = ($String$eq$(($tg$(_a_0)), "Min"));
+  const _x_20 = (_x_18 || _x_19);
+  const _x_21 = ($String$eq$(($tg$(_a_0)), "Eql"));
+  const _x_22 = (_x_20 || _x_21);
+  const _x_23 = ($String$eq$(($tg$(_a_0)), "Rwt"));
+  return run_tail(((_x_22 || _x_23)) ? ((_x_24) => {
+  return $norm_cmp_fields$(_book_0, _st_0, ($ks$(_a_0)), ($ks$(_b_0)), _fresh_0, _rest_0, _alts_0);
+}) : ((_x_25) => {
+  const _x_26 = ($String$eq$(($tg$(_a_0)), "Qnt"));
+  const _x_27 = ($String$eq$(($tg$(_a_0)), "Rfl"));
+  const _x_28 = (_x_26 || _x_27);
+  const _x_29 = ($String$eq$(($tg$(_a_0)), "Efq"));
+  return $norm_cmp_test$(_book_0, _st_0, (_x_28 || _x_29), _rest_0, _alts_0);
 }), {$: "Unit"});
 }), {$: "Unit"});
 }), {$: "Unit"});
 }), {$: "Unit"});
 }), {$: "Unit"});
-}
-
-function $norm_cmp_fail$(_book_0, _st_0, _alts_0) {
-  if (_alts_0.$ === "Nil") {
-    return false;
-  } else {
-    const _t_0 = _alts_0["head"];
-    const _todo_0 = _t_0["todo"];
-    const _rest_0 = _alts_0["tail"];
-    return $norm_cmp_loop$(_book_0, _st_0, _todo_0, _rest_0);
-  }
+}), {$: "Unit"});
 }
 
 function $String$trim_end$(_s_0) {
@@ -32805,7 +33526,7 @@ function $jd_text_marker_end$(_text_0, _name_0, _notes_0, _size_0, _safe_0, _use
 }
 
 function $jd_doc_component_case$(_book_0, _d_0) {
-  return $jd_doc_body$(_book_0, {$: "Con", "head": ($kt$("$JD.Owner", ($dn$(_d_0)), 4294967295, 0, {$: "Nil"})), "tail": {$: "Nil"}}, ($dv$(_d_0)), ($dt$(_d_0)), run_loop($jd_params$(_book_0, ($dt$(_d_0)), run_loop($jd_arity$(_book_0, _d_0)), 0)));
+  return $jd_doc_body$(_book_0, {$: "Con", "head": ($kt$("$JD.Owner", ($dn$(_d_0)), 4294967295, 0, {$: "Nil"})), "tail": {$: "Nil"}}, ($dv$(_d_0)), ($dt$(_d_0)), run_loop($jd_params$(_book_0, ($dt$(_d_0)), run_loop($jd_emitted_arity$(_book_0, _d_0)), 0)));
 }
 
 function $jd_calls_component_id$(_fact_0) {
@@ -32983,203 +33704,178 @@ function $jd_doc_ordered_return$(_book_0, _env_0, _t_0, _ty_0) {
   return $jd_doc_ordered_return_done$(run_loop($jd_ordered_expr$(_book_0, _env_0, _t_0, _ty_0, run_loop($jd_tail_position$(_env_0)), 0)));
 }
 
-function $jd_host_marshal_fun_done$(_input_0, _result_0) {
-  return run_tail((($String$eq$((_input_0 + _result_0), ""))) ? ((_x_0) => {
-  return "";
-}) : ((_x_1) => {
-  const _x_2 = (_input_0 + "(x))))");
-  const _x_3 = ("(f(" + _x_2);
-  const _x_4 = (_result_0 + _x_3);
-  return ("((f)=>(x)=>" + _x_4);
-}), {$: "Unit"});
-}
-
-function $jd_host_marshal_named$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0) {
-  const _key_0 = ($jd_host_marshal_key$(_t_0, _out_0));
-  const _found_0 = run_loop($jd_host_marshal_find$(_seen_0, _key_0));
-  return run_tail((($Bool$not$(($String$eq$(_found_0, ""))))) ? ((_x_0) => {
-  return _found_0;
-}) : ((_x_1) => {
-  const _x_2 = ($U32$show$(_depth_0));
-  const _x_3 = ($nm$(_t_0));
-  const _x_4 = (_x_3 + " has no tag ");
-  const _x_5 = ($jd_host_ctor_tags$(($dc$(run_loop($lookup$(_book_0, ($nm$(_t_0))))))));
-  const _x_6 = (_x_5 + "); a tag names its constructor as the loading file sees it, which a later version will make the same everywhere (#1105)");
-  const _x_7 = ($j_quote$((" (its tags: " + _x_6)));
-  const _x_8 = (_x_7 + ";}}})");
-  const _x_9 = ($j_quote$(("bend: " + _x_4)));
-  const _x_10 = ("+v?.$+" + _x_8);
-  const _x_11 = (_x_9 + _x_10);
-  const _x_12 = ($jd_host_marshal_ctors$(_book_0, ($dc$(run_loop($lookup$(_book_0, ($nm$(_t_0)))))), ($ks$(_t_0)), _out_0, {$: "Con", "head": ($kt$("JDMarshal", _key_0, _depth_0, 0, {$: "Nil"})), "tail": _seen_0}, ((_depth_0 + 1) >>> 0), _fuel_0, ("$dm" + _x_2)));
-  const _x_13 = ("default:throw " + _x_11);
-  const _x_14 = (_x_12 + _x_13);
-  const _x_15 = ($U32$show$(_depth_0));
-  const _x_16 = ("(v){const top=[v];for(let at=top,key=0;;){switch(v.$){" + _x_14);
-  const _x_17 = (_x_15 + _x_16);
-  return ("(function $dm" + _x_17);
-}), {$: "Unit"});
-}
-
-function $sk_escape$($0, $1) {
-  for (;;) {
-    {
-      const _s_0 = $0;
-      const _acc_0 = $1;
-      if (_s_0 === "") {
-        return _acc_0;
+function $jd_calls_word_row$($0, $1, $2, $3, $4, $5) {
+  let $pc = 1;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _book_0 = $0;
+      const _env_0 = $1;
+      const _rest_0 = $2;
+      const _s_0 = $3;
+      const _rows_0 = $4;
+      if (_rows_0.$ === "Nil") {
+        return _s_0;
       } else {
-        const _c_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(0, 2) : _s_0[0]);
-        const _rest_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(2) : _s_0.slice(1));
-        const _x_0 = ($String$reverse$(run_loop($sk_char$(_c_0, ($Char$to_u32$(_c_0))))));
-        $0 = _rest_0;
-        $1 = (_x_0 + _acc_0);
-        continue;
+        const _row_0 = _rows_0["head"];
+        const _more_0 = _rows_0["tail"];
+        $0 = _book_0;
+        $1 = _env_0;
+        $2 = _rest_0;
+        $3 = _s_0;
+        $4 = _row_0;
+        $5 = _more_0;
+        $pc = 1; continue;
       }
+    }
+    case 1: {
+      const _book_0 = $0;
+      const _env_0 = $1;
+      const _rest_0 = $2;
+      const _s_0 = $3;
+      const _row_0 = $4;
+      const _more_0 = $5;
+      const _term_0 = _row_0["term"];
+      const _typ_0 = _row_0["typ"];
+      const _fields_0 = _row_0["fields"];
+      $0 = _book_0;
+      $1 = _env_0;
+      $2 = _rest_0;
+      $3 = run_loop($jd_calls_body$(_book_0, _env_0, _term_0, _typ_0, ((_fields_0 + _rest_0) >>> 0), _s_0));
+      $4 = _more_0;
+      $pc = 0; continue;
     }
   }
 }
 
-function $sk_let_field$(_xs_0, _field_0, _env_0, _depth_0, _id_0) {
-  if (_xs_0.$ === "Nil") {
-    return "";
-  } else {
-    const _head_0 = _xs_0["head"];
-    const _rest_0 = _xs_0["tail"];
-    return run_tail((($String$eq$(($tg$(_head_0)), "Bind"))) ? ((_x_0) => {
-  const _x_10 = run_loop(run_tail(((_field_0 === 0)) ? ((_x_1) => {
-  return $sk_quote$(($nm$(_head_0)));
-}) : ((_x_2) => {
-  return run_tail(((_field_0 === 1)) ? ((_x_3) => {
-  return $U32$show$(_id_0);
-}) : ((_x_4) => {
-  return run_tail(((_field_0 === 2)) ? ((_x_5) => {
-  return $sk_quant$(($qt$(_head_0)));
-}) : ((_x_6) => {
-  return $sk_term$(run_loop($kid$(_head_0, 0)), _env_0, _depth_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"}));
-  const _x_11 = run_loop(run_tail((($String$eq$(($tg$(run_loop($terms_at$(_rest_0, 0)))), "Bind"))) ? ((_x_7) => {
-  const _x_8 = run_loop($sk_let_field$(_rest_0, _field_0, _env_0, _depth_0, ((_id_0 + 1) >>> 0)));
-  return ("," + _x_8);
-}) : ((_x_9) => {
-  return "";
-}), {$: "Unit"}));
-  return (_x_10 + _x_11);
-}) : ((_x_12) => {
-  return "";
-}), {$: "Unit"});
-  }
-}
-
-function $sk_let_body$(_xs_0, _env_0, _depth_0) {
-  if (_xs_0.$ === "Nil") {
-    return "null";
-  } else {
-    const _head_0 = _xs_0["head"];
-    const _rest_0 = _xs_0["tail"];
-    return run_tail((($String$eq$(($tg$(_head_0)), "Bind"))) ? ((_x_0) => {
-  return $sk_let_body$(_rest_0, {$: "Con", "head": {$: "KPName", "name": ($nm$(_head_0)), "id": ($ix$(_head_0)), "depth": _depth_0}, "tail": _env_0}, ((_depth_0 + 1) >>> 0));
+function $jd_nat_parts$(_book_0, _ty_0, _level_0, _zero_0, _succ_0, _end_0) {
+  const _head_0 = run_loop(run_tail((($String$eq$(($tg$(_zero_0)), "Absent"))) ? ((_x_0) => {
+  return {$: "JDWordRow", "term": _end_0, "typ": _ty_0, "depth": 64, "value": _level_0, "fields": 1};
 }) : ((_x_1) => {
-  return $sk_term$(_head_0, _env_0, _depth_0);
+  return {$: "JDWordRow", "term": _zero_0, "typ": run_loop($j_arm_type$(_book_0, run_loop($wnf$(_book_0, _ty_0)), "Zero")), "depth": 64, "value": _level_0, "fields": 0};
+}), {$: "Unit"}));
+  return {$: "Con", "head": _head_0, "tail": run_loop(run_tail((($String$eq$(($tg$(_succ_0)), "Absent"))) ? ((_x_2) => {
+  return {$: "Con", "head": {$: "JDWordRow", "term": _end_0, "typ": _ty_0, "depth": 0, "value": _level_0, "fields": 1}, "tail": {$: "Nil"}};
+}) : ((_x_3) => {
+  return $jd_nat_next$(_book_0, run_loop($j_strip$(_succ_0)), run_loop($j_arm_type$(_book_0, run_loop($wnf$(_book_0, _ty_0)), "Succ")), ((_level_0 + 1) >>> 0));
+}), {$: "Unit"}))};
+}
+
+function $jd_nat_arm$(_t_0, _name_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_0) => {
+  return run_tail((($String$eq$(($nm$(_t_0)), _name_0))) ? ((_x_1) => {
+  return $kid$(_t_0, 0);
+}) : ((_x_2) => {
+  return $jd_nat_arm$(run_loop($j_strip$(run_loop($kid$(_t_0, 1)))), _name_0);
 }), {$: "Unit"});
-  }
+}) : ((_x_3) => {
+  return $atom$("Absent");
+}), {$: "Unit"});
 }
 
-function $sk_pair$(_tag_0, _a_0, _b_0, _t_0, _env_0, _depth_0) {
-  const _x_0 = run_loop($sk_term$(run_loop($kid$(_t_0, 1)), _env_0, _depth_0));
-  const _x_1 = (_x_0 + "}");
-  const _x_2 = ($sk_quote$(_b_0));
-  const _x_3 = (":" + _x_1);
-  const _x_4 = (_x_2 + _x_3);
-  const _x_5 = run_loop($sk_term$(run_loop($kid$(_t_0, 0)), _env_0, _depth_0));
-  const _x_6 = ("," + _x_4);
-  const _x_7 = (_x_5 + _x_6);
-  const _x_8 = ($sk_quote$(_a_0));
-  const _x_9 = (":" + _x_7);
-  const _x_10 = (_x_8 + _x_9);
-  const _x_11 = ($sk_quote$(_tag_0));
-  const _x_12 = ("," + _x_10);
-  const _x_13 = (_x_11 + _x_12);
-  return ("{\"$\":" + _x_13);
+function $jd_word_end$(_t_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_0) => {
+  return $jd_word_end$(run_loop($j_strip$(run_loop($kid$(_t_0, 1)))));
+}) : ((_x_1) => {
+  return _t_0;
+}), {$: "Unit"});
 }
 
-function $sk_triple$(_tag_0, _a_0, _b_0, _c_0, _t_0, _env_0, _depth_0) {
-  const _x_0 = run_loop($sk_term$(run_loop($kid$(_t_0, 2)), _env_0, _depth_0));
-  const _x_1 = (_x_0 + "}");
-  const _x_2 = ($sk_quote$(_c_0));
-  const _x_3 = (":" + _x_1);
-  const _x_4 = (_x_2 + _x_3);
-  const _x_5 = run_loop($sk_term$(run_loop($kid$(_t_0, 1)), _env_0, _depth_0));
-  const _x_6 = ("," + _x_4);
-  const _x_7 = (_x_5 + _x_6);
-  const _x_8 = ($sk_quote$(_b_0));
-  const _x_9 = (":" + _x_7);
-  const _x_10 = (_x_8 + _x_9);
-  const _x_11 = run_loop($sk_term$(run_loop($kid$(_t_0, 0)), _env_0, _depth_0));
-  const _x_12 = ("," + _x_10);
-  const _x_13 = (_x_11 + _x_12);
-  const _x_14 = ($sk_quote$(_a_0));
-  const _x_15 = (":" + _x_13);
-  const _x_16 = (_x_14 + _x_15);
-  const _x_17 = ($sk_quote$(_tag_0));
-  const _x_18 = ("," + _x_16);
-  const _x_19 = (_x_17 + _x_18);
-  return ("{\"$\":" + _x_19);
+function $jd_word_rows$(_book_0, _t_0, _ty_0, _depth_0, _value_0, _cover_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_0) => {
+  return run_tail(((_depth_0 === 32)) ? ((_x_1) => {
+  return {$: "Con", "head": {$: "JDWordRow", "term": run_loop($kid$(_t_0, 0)), "typ": run_loop($j_arm_type$(_book_0, run_loop($wnf$(_book_0, _ty_0)), ($nm$(_t_0)))), "depth": _depth_0, "value": _value_0, "fields": 0}, "tail": {$: "Nil"}};
+}) : ((_x_2) => {
+  return $jd_word_parts$(_book_0, run_loop($j_strip$(run_loop($kid$(_t_0, 0)))), run_loop($j_arm_type$(_book_0, run_loop($wnf$(_book_0, _ty_0)), ($nm$(_t_0)))), _depth_0, _value_0, 2, _cover_0);
+}), {$: "Unit"});
+}) : ((_x_3) => {
+  return $jd_word_parts$(_book_0, _t_0, _ty_0, _depth_0, _value_0, 1, _cover_0);
+}), {$: "Unit"});
 }
 
-function $sk_internal$(_t_0, _env_0, _depth_0) {
-  const _x_0 = ($sk_names$(($rm$(_t_0))));
-  const _x_1 = (_x_0 + "]}");
-  const _x_2 = ($sk_terms$(($ks$(_t_0)), _env_0, _depth_0));
-  const _x_3 = ("],\"removed\":[" + _x_1);
-  const _x_4 = (_x_2 + _x_3);
-  const _x_5 = ($U32$show$(($qt$(_t_0))));
-  const _x_6 = (",\"kids\":[" + _x_4);
-  const _x_7 = (_x_5 + _x_6);
-  const _x_8 = ($U32$show$(($ix$(_t_0))));
-  const _x_9 = (",\"quant\":" + _x_7);
-  const _x_10 = (_x_8 + _x_9);
-  const _x_11 = ($sk_quote$(($nm$(_t_0))));
-  const _x_12 = (",\"id\":" + _x_10);
-  const _x_13 = (_x_11 + _x_12);
-  const _x_14 = ($sk_quote$(($tg$(_t_0))));
-  const _x_15 = (",\"name\":" + _x_13);
-  const _x_16 = (_x_14 + _x_15);
-  return ("{\"$\":\"Internal\",\"tag\":" + _x_16);
-}
-
-function $jd_nat_next$(_book_0, _t_0, _ty_0, _level_0) {
-  if ((($String$eq$(($tg$(_t_0)), "Mat")))) {
+function $jd_calls_match_arm$(_book_0, _env_0, _t_0, _ty_0, _rest_0, _fields_0, _s_0) {
+  if (((_fields_0 < 65))) {
 const _x_0 = {$: "Unit"};
-return {$: "$JMP", f: $jd_nat_rows$, x: [_book_0, _t_0, _ty_0, _level_0]};
+return {$: "$JMP", f: $jd_calls_body$, x: [_book_0, _env_0, _t_0, _ty_0, ((_rest_0 + _fields_0) >>> 0), _s_0]};
 } else {
 const _x_1 = {$: "Unit"};
-return {$: "Con", "head": {$: "JDWordRow", "term": _t_0, "typ": _ty_0, "depth": 0, "value": _level_0, "fields": 1}, "tail": {$: "Nil"}};
+return {$: "$JMP", f: $jd_calls_bad$, x: [_s_0]};
 }
 }
 
-function $jd_word_parts$(_book_0, _t_0, _ty_0, _depth_0, _value_0, _fields_0, _cover_0) {
-  const _end_0 = run_loop($jd_word_end$(_t_0));
-  const _x_0 = run_loop($jd_word_arms$(_t_0));
-  const _own_0 = run_loop(run_tail(((_x_0 < 2)) ? ((_x_1) => {
-  return $jd_word_cover_diff$(_cover_0, {$: "JDWordCover", "term": _end_0, "fields": _fields_0, "prefix": {$: "Nil"}});
+function $jd_calls_fields$(_tel_0, _fuel_0) {
+  return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
+  return run_tail(((_fuel_0 > 0)) ? ((_x_1) => {
+  const _x_2 = ($qt$(_tel_0));
+  const _x_5 = run_loop(run_tail(((_x_2 === 0)) ? ((_x_3) => {
+  return 0;
+}) : ((_x_4) => {
+  return 1;
+}), {$: "Unit"}));
+  const _x_6 = run_loop($jd_calls_fields$(run_loop($kid$(_tel_0, 1)), ((_fuel_0 - 1) >>> 0)));
+  return ((_x_5 + _x_6) >>> 0);
+}) : ((_x_7) => {
+  return 65536;
+}), {$: "Unit"});
+}) : ((_x_8) => {
+  return 0;
+}), {$: "Unit"});
+}
+
+function $jd_match_test$(_owner_0, _name_0, _value_0) {
+  return run_tail((($String$eq$(_owner_0, "Nat"))) ? ((_x_0) => {
+  if ((($String$eq$(_name_0, "Zero")))) {
+const _x_1 = {$: "Unit"};
+return (_value_0 + "===0");
+} else {
+const _x_2 = {$: "Unit"};
+return (_value_0 + "!==0");
+}
+}) : ((_x_3) => {
+  return run_tail((($String$eq$(_owner_0, "Bool"))) ? ((_x_4) => {
+  if ((($String$eq$(_name_0, "True")))) {
+const _x_5 = {$: "Unit"};
+return _value_0;
+} else {
+const _x_6 = {$: "Unit"};
+return ("!" + _value_0);
+}
+}) : ((_x_7) => {
+  return run_tail((($String$eq$(_owner_0, "String"))) ? ((_x_8) => {
+  if ((($String$eq$(_name_0, "SNil")))) {
+const _x_9 = {$: "Unit"};
+return (_value_0 + "===\"\"");
+} else {
+const _x_10 = {$: "Unit"};
+return (_value_0 + "!==\"\"");
+}
+}) : ((_x_11) => {
+  return run_tail((($String$eq$(_owner_0, "Array"))) ? ((_x_12) => {
+  if ((($String$eq$(_name_0, "ALeaf")))) {
+const _x_13 = {$: "Unit"};
+return (_value_0 + ".length===1");
+} else {
+const _x_14 = {$: "Unit"};
+return (_value_0 + ".length!==1");
+}
+}) : ((_x_15) => {
+  return "";
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $jd_choice_owner$(_book_0, _ty_0, _name_0) {
+  return $jd_choice_owner_head$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _name_0);
+}
+
+function $jd_choice_callback$(_book_0, _ty_0) {
+  const _x_0 = ($qt$(_ty_0));
+  return run_tail((($Bool$and$(($String$eq$(($tg$(_ty_0)), "All")), ($Bool$not$((_x_0 === 0)))))) ? ((_x_1) => {
+  return $jd_choice_owner$(_book_0, run_loop($kid$(_ty_0, 0)), "Unit");
 }) : ((_x_2) => {
   return false;
-}), {$: "Unit"}));
-  return $List$append$(run_loop($jd_word_branches$(_book_0, _t_0, _ty_0, _depth_0, _value_0, run_loop(run_tail((_own_0) ? ((_x_3) => {
-  return {$: "JDWordCover", "term": _end_0, "fields": _fields_0, "prefix": {$: "Nil"}};
-}) : ((_x_4) => {
-  return _cover_0;
-}), {$: "Unit"})))), run_loop(run_tail((_own_0) ? ((_x_5) => {
-  return {$: "Con", "head": {$: "JDWordRow", "term": _end_0, "typ": _ty_0, "depth": _depth_0, "value": _value_0, "fields": _fields_0}, "tail": {$: "Nil"}};
-}) : ((_x_6) => {
-  return {$: "Nil"};
-}), {$: "Unit"})));
-}
-
-function $jd_choice_owner_head$(_book_0, _ty_0, _name_0) {
-  return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "ADT")), ($String$eq$(($nm$(_ty_0)), _name_0)))), ($List$is_empty$(($ks$(_ty_0)))))), ($db$(run_loop($lookup$(_book_0, _name_0)))));
+}), {$: "Unit"});
 }
 
 function $jd_primitive_select_8$(_name_0) {
@@ -33226,6 +33922,175 @@ return {$: "JDPrimitive", "name": "", "arity": 0, "code": ""};
 }), {$: "Unit"});
 }), {$: "Unit"});
 }), {$: "Unit"});
+}
+
+function $jd_host_marshal_key$(_t_0, _out_0) {
+  const _x_2 = run_loop(run_tail((_out_0) ? ((_x_0) => {
+  return "out ";
+}) : ((_x_1) => {
+  return "in ";
+}), {$: "Unit"}));
+  const _x_3 = run_loop($term_key$(_t_0));
+  return (_x_2 + _x_3);
+}
+
+function $jd_host_marshal_find$(_seen_0, _key_0) {
+  if (_seen_0.$ === "Nil") {
+    return "";
+  } else {
+    const _t_0 = _seen_0["head"];
+    const _rest_0 = _seen_0["tail"];
+    return run_tail((($String$eq$(($nm$(_t_0)), _key_0))) ? ((_x_0) => {
+  const _x_1 = ($U32$show$(($ix$(_t_0))));
+  return ("$dm" + _x_1);
+}) : ((_x_2) => {
+  return $jd_host_marshal_find$(_rest_0, _key_0);
+}), {$: "Unit"});
+  }
+}
+
+function $jd_host_marshal_ctors$(_book_0, _ctors_0, _args_0, _out_0, _seen_0, _depth_0, _fuel_0, _self_0) {
+  if (_ctors_0.$ === "Nil") {
+    return "";
+  } else {
+    const _c_0 = _ctors_0["head"];
+    const _rest_0 = _ctors_0["tail"];
+    const _x_0 = ($jd_host_marshal_arm$(_book_0, _c_0, ($j_specialize$(_book_0, ($dt$(_c_0)), _args_0)), _out_0, _seen_0, _depth_0, _fuel_0, _self_0));
+    const _x_1 = ($jd_host_marshal_ctors$(_book_0, _rest_0, _args_0, _out_0, _seen_0, _depth_0, _fuel_0, _self_0));
+    return (_x_0 + _x_1);
+  }
+}
+
+function $jd_host_ctor_tags$(_ctors_0) {
+  if (_ctors_0.$ === "Nil") {
+    return "";
+  } else {
+    const _c_0 = _ctors_0["head"];
+    const _rest_0 = _ctors_0["tail"];
+    const _x_2 = run_loop(run_tail((($List$is_empty$(_rest_0))) ? ((_x_0) => {
+  return "";
+}) : ((_x_1) => {
+  return ", ";
+}), {$: "Unit"}));
+    const _x_3 = ($jd_host_ctor_tags$(_rest_0));
+    const _x_4 = ($dn$(_c_0));
+    const _x_5 = (_x_2 + _x_3);
+    return (_x_4 + _x_5);
+  }
+}
+
+function $sk_char$(_c_0, _n_0) {
+  if (_n_0 == 34) {
+    return "\\\"";
+  } else if (_n_0 == 10) {
+    return "\\n";
+  } else if ((_n_0 & 3) == 2) {
+    const _28_0 = u32_to_word(_n_0)["tail"]["tail"]["head"];
+    const _29_0 = u32_to_word(_n_0)["tail"]["tail"]["tail"];
+    const _x_0 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _28_0, "tail": _29_0}}});
+    return run_tail(((_x_0 < 32)) ? ((_x_1) => {
+  const _x_2 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _28_0, "tail": _29_0}}});
+  const _x_5 = run_loop(run_tail(((_x_2 < 16)) ? ((_x_3) => {
+  return "0";
+}) : ((_x_4) => {
+  return "";
+}), {$: "Unit"}));
+  const _x_6 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _28_0, "tail": _29_0}}})));
+  const _x_7 = (_x_5 + _x_6);
+  return ("\\u00" + _x_7);
+}) : ((_x_8) => {
+  const _x_9 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _28_0, "tail": _29_0}}});
+  const _x_10 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _28_0, "tail": _29_0}}});
+  return run_tail((($Bool$and$((_x_9 >= 55296), (_x_10 <= 57343)))) ? ((_x_11) => {
+  const _x_12 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _28_0, "tail": _29_0}}})));
+  return ("\\u" + _x_12);
+}) : ((_x_13) => {
+  return $Char$show$(_c_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+  } else if (_n_0 == 92) {
+    return "\\\\";
+  } else if (_n_0 == 12) {
+    return "\\f";
+  } else if ((_n_0 & 7) == 4) {
+    const _146_0 = u32_to_word(_n_0)["tail"]["tail"]["tail"]["head"];
+    const _147_0 = u32_to_word(_n_0)["tail"]["tail"]["tail"]["tail"];
+    const _x_14 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _146_0, "tail": _147_0}}}});
+    return run_tail(((_x_14 < 32)) ? ((_x_15) => {
+  const _x_16 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _146_0, "tail": _147_0}}}});
+  const _x_19 = run_loop(run_tail(((_x_16 < 16)) ? ((_x_17) => {
+  return "0";
+}) : ((_x_18) => {
+  return "";
+}), {$: "Unit"}));
+  const _x_20 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _146_0, "tail": _147_0}}}})));
+  const _x_21 = (_x_19 + _x_20);
+  return ("\\u00" + _x_21);
+}) : ((_x_22) => {
+  const _x_23 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _146_0, "tail": _147_0}}}});
+  const _x_24 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _146_0, "tail": _147_0}}}});
+  return run_tail((($Bool$and$((_x_23 >= 55296), (_x_24 <= 57343)))) ? ((_x_25) => {
+  const _x_26 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _146_0, "tail": _147_0}}}})));
+  return ("\\u" + _x_26);
+}) : ((_x_27) => {
+  return $Char$show$(_c_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+  } else if (_n_0 == 8) {
+    return "\\b";
+  } else if ((_n_0 & 7) == 0) {
+    const _258_0 = u32_to_word(_n_0)["tail"]["tail"]["tail"]["head"];
+    const _259_0 = u32_to_word(_n_0)["tail"]["tail"]["tail"]["tail"];
+    const _x_28 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": _258_0, "tail": _259_0}}}});
+    return run_tail(((_x_28 < 32)) ? ((_x_29) => {
+  const _x_30 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": _258_0, "tail": _259_0}}}});
+  const _x_33 = run_loop(run_tail(((_x_30 < 16)) ? ((_x_31) => {
+  return "0";
+}) : ((_x_32) => {
+  return "";
+}), {$: "Unit"}));
+  const _x_34 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": _258_0, "tail": _259_0}}}})));
+  const _x_35 = (_x_33 + _x_34);
+  return ("\\u00" + _x_35);
+}) : ((_x_36) => {
+  const _x_37 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": _258_0, "tail": _259_0}}}});
+  const _x_38 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": _258_0, "tail": _259_0}}}});
+  return run_tail((($Bool$and$((_x_37 >= 55296), (_x_38 <= 57343)))) ? ((_x_39) => {
+  const _x_40 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": _258_0, "tail": _259_0}}}})));
+  return ("\\u" + _x_40);
+}) : ((_x_41) => {
+  return $Char$show$(_c_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+  } else if (_n_0 == 9) {
+    return "\\t";
+  } else if (_n_0 == 13) {
+    return "\\r";
+  } else {
+    const _316_0 = u32_to_word(_n_0)["tail"]["head"];
+    const _317_0 = u32_to_word(_n_0)["tail"]["tail"];
+    const _x_42 = word_to_u32({$: "WCon", "head": true, "tail": {$: "WCon", "head": _316_0, "tail": _317_0}});
+    return run_tail(((_x_42 < 32)) ? ((_x_43) => {
+  const _x_44 = word_to_u32({$: "WCon", "head": true, "tail": {$: "WCon", "head": _316_0, "tail": _317_0}});
+  const _x_47 = run_loop(run_tail(((_x_44 < 16)) ? ((_x_45) => {
+  return "0";
+}) : ((_x_46) => {
+  return "";
+}), {$: "Unit"}));
+  const _x_48 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": true, "tail": {$: "WCon", "head": _316_0, "tail": _317_0}})));
+  const _x_49 = (_x_47 + _x_48);
+  return ("\\u00" + _x_49);
+}) : ((_x_50) => {
+  const _x_51 = word_to_u32({$: "WCon", "head": true, "tail": {$: "WCon", "head": _316_0, "tail": _317_0}});
+  const _x_52 = word_to_u32({$: "WCon", "head": true, "tail": {$: "WCon", "head": _316_0, "tail": _317_0}});
+  return run_tail((($Bool$and$((_x_51 >= 55296), (_x_52 <= 57343)))) ? ((_x_53) => {
+  const _x_54 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": true, "tail": {$: "WCon", "head": _316_0, "tail": _317_0}})));
+  return ("\\u" + _x_54);
+}) : ((_x_55) => {
+  return $Char$show$(_c_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+  }
 }
 
 function $env_subst_find$(_t_0, _bindings_0) {
@@ -33297,210 +34162,181 @@ function $g_shared_term$($0, $1, $2) {
   }
 }
 
-function $tele_check_after_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, _checked_head_0) {
-  return run_tail((($good$(_checked_head_0))) ? ((_x_0) => {
-  return run_tail((run_loop($core_subst_stable$(run_loop($kid$(_tel_0, 1))))) ? ((_x_1) => {
-  return $tele_check_done$(_checked_head_0, run_loop($tele_check_static$(($ke_world$(_e_0, ($rw$(_checked_head_0)))), _ctx_0, run_loop($kid$(_tel_0, 1)), _rest_0, _dem_0)));
-}) : ((_x_2) => {
-  return $tele_check_done$(_checked_head_0, run_loop($env_tele_check$(($ke_world$(_e_0, ($rw$(_checked_head_0)))), _ctx_0, run_loop($subst$(run_loop($kid$(_tel_0, 1)), ($ix$(_tel_0)), _h_0)), _rest_0, _dem_0)));
-}), {$: "Unit"});
-}) : ((_x_3) => {
-  return _checked_head_0;
-}), {$: "Unit"});
+function $tele_check_done$(_a_0, _b_0) {
+  return $both$(_a_0, _b_0, ($k_with_children$(($atom$("Args")), {$: "Con", "head": ($ct$(_a_0)), "tail": ($ks$(($ct$(_b_0))))})), ($cy$(_b_0)), false);
 }
 
-function $ki_match_bound$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, _ctr_0, _tel_0, _bound_0) {
-  const _x_0 = ($cp$(_e_0));
-  const _x_1 = ($da$(_ctr_0));
-  const _x_2 = (_x_0 === 0);
-  const _x_3 = (_x_1 === 0);
-  const _x_4 = ($da$(_ctr_0));
-  const _x_5 = ($da$(_ctr_0));
-  const _x_6 = ((4294967294 - _x_5) >>> 0);
-  const _x_7 = (_x_2 || _x_3);
-  const _x_8 = ($Bool$and$((_x_4 < 4294967295), (_bound_0 <= _x_6)));
-  return run_tail(((_x_7 || _x_8)) ? ((_x_9) => {
-  const _x_10 = ($cp$(_e_0));
-  return $ki_match_arm$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, run_loop($check$(run_loop(run_tail(((_x_10 === 0)) ? ((_x_11) => {
-  return _e_0;
-}) : ((_x_12) => {
-  return $ki_lhs$(_e_0, ($nm$(_t_0)), _tel_0, ($da$(_ctr_0)), ((_bound_0 + 1) >>> 0));
-}), {$: "Unit"})), _ctx_0, run_loop($kid$(_t_0, 0)), _dem_0, run_loop($mat_goal$(($cb$(_e_0)), _ty_0, _tel_0, ($da$(_ctr_0)), ($nm$(_t_0)), {$: "Nil"})))));
-}) : ((_x_13) => {
-  return $bad$(($cw$(_e_0)), "fresh binder space exhausted");
-}), {$: "Unit"});
-}
-
-function $kw_temporary$(_world_0, _root_0, _bound_0) {
-  return $kw_temporary_fresh$(_world_0, _root_0, _bound_0, ($kw_fresh$(_world_0)));
-}
-
-function $ki_rwt_motive$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _r_0, _eq_0, _motive_0) {
-  return run_tail((($good$(_motive_0))) ? ((_x_0) => {
-  return run_tail((run_loop($compare$(($kw_book$(($rw$(_motive_0)))), run_loop($kapply$(run_loop($kapply$(run_loop($kid$(_t_0, 1)), run_loop($kid$(_eq_0, 1)))), run_loop($kid$(_t_0, 0)))), _ty_0, true))) ? ((_x_1) => {
-  return $ki_rwt_done$(_t_0, _ty_0, _r_0, _motive_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_motive_0)))), _ctx_0, run_loop($kid$(_t_0, 2)), _dem_0, run_loop($kapply$(run_loop($kapply$(run_loop($kid$(_t_0, 1)), run_loop($kid$(_eq_0, 0)))), ($atom$("Rfl")))))));
-}) : ((_x_2) => {
-  return $kr_from$(_motive_0, ($dg_bad_detail$(($rw$(_motive_0)), "rewrite motive does not fit goal", _ty_0, run_loop($kapply$(run_loop($kapply$(run_loop($kid$(_t_0, 1)), run_loop($kid$(_eq_0, 1)))), run_loop($kid$(_t_0, 0)))))));
-}), {$: "Unit"});
-}) : ((_x_3) => {
-  return _motive_0;
-}), {$: "Unit"});
-}
-
-function $descend_spine$(_qs_0, _args_0, _cols_0) {
-  if (_cols_0.$ === "Nil") {
-    return false;
+function $tele_check_static$(_e_0, _ctx_0, _tel_0, _args_0, _dem_0) {
+  if (_args_0.$ === "Nil") {
+    return $ok$(($cw$(_e_0)), ($atom$("Args")), _tel_0, {$: "Nil"});
   } else {
-    const _h_0 = _cols_0["head"];
-    const _t_0 = _cols_0["tail"];
-    return $descend_step$(run_loop($descend$(($qt$(run_loop($terms_at$(_qs_0, 0)))), run_loop($terms_at$(_args_0, 0)), _h_0)), ($terms_tail$(_qs_0)), ($terms_tail$(_args_0)), _t_0);
+    const _h_0 = _args_0["head"];
+    const _rest_0 = _args_0["tail"];
+    return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
+  return $ki_tele_static$(_e_0, _ctx_0, _tel_0, _rest_0, _dem_0, run_loop($check$(_e_0, _ctx_0, _h_0, run_loop($qdem$(($qt$(_tel_0)), _dem_0)), run_loop($kid$(_tel_0, 0)))));
+}) : ((_x_1) => {
+  return $tele_check$(_e_0, _ctx_0, _tel_0, {$: "Con", "head": _h_0, "tail": _rest_0}, _dem_0);
+}), {$: "Unit"});
   }
 }
 
-function $sp_drop$(_ts_0, _n_0) {
+function $env_tele_check$(_e_0, _ctx_0, _tel_0, _args_0, _dem_0) {
+  return run_tail((($env_tele_many$(_args_0))) ? ((_x_0) => {
+  if ((run_loop($env_tele_safe$(_tel_0)))) {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $env_tele_check_loop$, x: [_e_0, _ctx_0, _tel_0, _args_0, _dem_0, {$: "Nil"}, 0]};
+} else {
+const _x_2 = {$: "Unit"};
+return {$: "$JMP", f: $tele_check_legacy$, x: [_e_0, _ctx_0, _tel_0, _args_0, _dem_0]};
+}
+}) : ((_x_3) => {
+  return $tele_check_legacy$(_e_0, _ctx_0, _tel_0, _args_0, _dem_0);
+}), {$: "Unit"});
+}
+
+function $ki_match_arm$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return $ki_pair$(_t_0, _ty_0, _r_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, run_loop($mat_rest$(($kw_book$(($rw$(_r_0)))), _t_0, _a_0)), _dem_0, ($all$(($qt$(_ty_0)), ($nm$(_ty_0)), ($ix$(_ty_0)), {$: "KTerm", "tag": ($tg$(_a_0)), "name": ($nm$(_a_0)), "id": ($ix$(_a_0)), "quant": ($qt$(_a_0)), "kids": ($ks$(_a_0)), "removed": {$: "Con", "head": ($nm$(_t_0)), "tail": ($rm$(_a_0))}, "originBegin": ($kb$(_a_0)), "originEnd": ($ke$(_a_0))}, run_loop($kid$(_ty_0, 1)))))), true);
+}) : ((_x_1) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $ki_lhs$(_e_0, _name_0, _tel_0, _n_0, _fresh_0) {
+  const _lhs_0 = run_loop($lhs_ext$(($cl$(_e_0)), _name_0, _tel_0, _n_0, {$: "Nil"}, _fresh_0));
+  const _x_3 = ($cp$(_e_0));
+  const _x_4 = ((_x_3 - 1) >>> 0);
+  return {$: "KEnv", "world": run_loop(run_tail(((_n_0 === 0)) ? ((_x_0) => {
+  return $cw$(_e_0);
+}) : ((_x_1) => {
+  const _x_2 = ((_fresh_0 + _n_0) >>> 0);
+  return $kw_temporary$(($cw$(_e_0)), _lhs_0, ((_x_2 - 1) >>> 0));
+}), {$: "Unit"})), "name": ($cn$(_e_0)), "lhs": _lhs_0, "pending": ((_x_4 + _n_0) >>> 0), "quantities": ($cq$(_e_0)), "unsafe": ($cu$(_e_0)), "depth": ($cd$(_e_0))};
+}
+
+function $kw_temporary_fresh$(_world_0, _root_0, _bound_0, _fresh_0) {
+  if (_fresh_0.$ === "KFreshKnown") {
+    const _next_0 = _fresh_0["next"];
+    return {$: "KWorld", "book": run_loop($kw_bound_book$(($kw_book$(_world_0)), _bound_0)), "memo": ($kw_memo$(_world_0)), "fresh": {$: "KFreshKnown", "next": run_loop($norm_max$(_next_0, ((_bound_0 + 1) >>> 0)))}, "checked": ($kw_checked$(_world_0))};
+  } else {
+    const _roots_0 = _fresh_0["roots"];
+    return {$: "KWorld", "book": ($kw_book$(_world_0)), "memo": ($kw_memo$(_world_0)), "fresh": {$: "KFreshDeferred", "roots": {$: "Con", "head": _root_0, "tail": _roots_0}}, "checked": ($kw_checked$(_world_0))};
+  }
+}
+
+function $ki_rwt_done$(_t_0, _ty_0, _r_0, _motive_0, _body_0) {
+  return $both$(_r_0, _body_0, ($k_with_children$(_t_0, {$: "Con", "head": ($ct$(_r_0)), "tail": {$: "Con", "head": ($ct$(_motive_0)), "tail": {$: "Con", "head": ($ct$(_body_0)), "tail": {$: "Nil"}}}})), _ty_0, false);
+}
+
+function $descend_step$(_ord_0, _qs_0, _args_0, _cols_0) {
+  return run_tail(((_ord_0 === 0)) ? ((_x_0) => {
+  return true;
+}) : ((_x_1) => {
+  if (((_ord_0 === 1))) {
+const _x_2 = {$: "Unit"};
+return {$: "$JMP", f: $descend_spine$, x: [_qs_0, _args_0, _cols_0]};
+} else {
+const _x_3 = {$: "Unit"};
+return false;
+}
+}), {$: "Unit"});
+}
+
+function $descend$(_q_0, _a_0, _p_0) {
+  return run_tail(((_q_0 === 0)) ? ((_x_0) => {
+  return 1;
+}) : ((_x_1) => {
+  return $descend_go$(run_loop($strip$(_a_0)), run_loop($strip$(_p_0)));
+}), {$: "Unit"});
+}
+
+function $sp_drop_next$(_ts_0, _n_0) {
+  if (_ts_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _rest_0 = _ts_0["tail"];
+    return $sp_drop$(_rest_0, ((_n_0 - 1) >>> 0));
+  }
+}
+
+function $sp_live_args$(_e_0, _ctx_0, _head_0, _sp_0, _d_0, _xs_0) {
+  return $sp_live_key$(_e_0, _ctx_0, _head_0, _sp_0, _d_0, _xs_0, ($sp_keys$(_xs_0)));
+}
+
+function $sp_take$(_ts_0, _n_0) {
   if (((_n_0 === 0))) {
 const _x_0 = {$: "Unit"};
-return _ts_0;
+return {$: "Nil"};
 } else {
 const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $sp_drop_next$, x: [_ts_0, _n_0]};
+return {$: "$JMP", f: $sp_take_next$, x: [_ts_0, _n_0]};
 }
 }
 
-function $unargs$(_t_0, _acc_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "App"))) ? ((_x_0) => {
-  return $unargs$(run_loop($kid$(_t_0, 0)), {$: "Con", "head": run_loop($kid$(_t_0, 1)), "tail": _acc_0});
+function $template_arg_head$(_e_0, _ty_0, _sp_0, _n_0) {
+  if (_sp_0.$ === "Nil") {
+    return $bad$(($cw$(_e_0)), "template requires all closed comptime arguments");
+  } else {
+    const _h_0 = _sp_0["head"];
+    const _t_0 = _sp_0["tail"];
+    return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
+  return $template_arg_done$(_e_0, _ty_0, _h_0, _t_0, _n_0, run_loop($check$(_e_0, {$: "Nil"}, _h_0, 0, run_loop($kid$(_ty_0, 0)))));
 }) : ((_x_1) => {
-  return _acc_0;
+  return $bad$(($cw$(_e_0)), "invalid template telescope");
 }), {$: "Unit"});
+  }
 }
 
-function $sp_live_checked$(_e_0, _ctx_0, _head_0, _sp_0, _d_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $sp_live_args$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, _head_0, _sp_0, _d_0, run_loop($sp_take$(_sp_0, ($dx$(_d_0)))));
-}) : ((_x_1) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $dg_template_result$(_e_0, _ctx_0, _t_0, _r_0) {
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($ce$(_r_0)), "unbound variable")), ($String$eq$(($tg$(($ct$(_r_0)))), "DTrace")))), ($String$eq$(($tg$(run_loop($kid$(($ct$(_r_0)), 1)))), "Var")))), ($Bool$not$(($String$eq$(($tg$(run_loop($ctx_get$(_ctx_0, ($ix$(run_loop($kid$(($ct$(_r_0)), 1)))))))), "Absent"))))))) ? ((_x_0) => {
-  const _x_1 = ($nm$(run_loop($kid$(($ct$(_r_0)), 1))));
-  const _x_2 = (_x_1 + " is a variable here, not comptime: pass it at run time)");
-  return $dg_trace$(_e_0, _ctx_0, _t_0, ($atom$("Absent")), ($kr_from$(_r_0, ($dg_bad_detail$(($rw$(_r_0)), ($ce$(_r_0)), ($dg_text$(("a template applied to closed ~ arguments (" + _x_2))), _t_0)))));
-}) : ((_x_3) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $template_args$(_e_0, _ty_0, _sp_0, _n_0) {
-  return run_tail(((_n_0 === 0)) ? ((_x_0) => {
-  return $ok$(($cw$(_e_0)), ($atom$("Args")), _ty_0, {$: "Nil"});
-}) : ((_x_1) => {
-  return $template_arg_head$(_e_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)), _sp_0, _n_0);
-}), {$: "Unit"});
-}
-
-function $both$(_a_0, _b_0, _t_0, _ty_0, _join_0) {
-  return run_tail((($good$(_a_0))) ? ((_x_0) => {
-  return run_tail((($good$(_b_0))) ? ((_x_1) => {
-  return {$: "KChecking", "term": _t_0, "typ": _ty_0, "uses": ($uses_merge$(($cs$(_a_0)), ($cs$(_b_0)), _join_0)), "error": "", "world": ($rw$(_b_0)), "consumed": ($rx$(_b_0))};
-}) : ((_x_2) => {
-  return _b_0;
-}), {$: "Unit"});
-}) : ((_x_3) => {
-  return _a_0;
-}), {$: "Unit"});
-}
-
-function $ki_eql_done$(_t_0, _a_0, _b_0, _c_0) {
-  return $both$(_a_0, run_loop($both$(_b_0, _c_0, _t_0, ($typ$(2)), false)), ($k_with_children$(_t_0, {$: "Con", "head": ($ct$(_b_0)), "tail": {$: "Con", "head": ($ct$(_c_0)), "tail": {$: "Con", "head": ($ct$(_a_0)), "tail": {$: "Nil"}}}})), ($typ$(2)), false);
-}
-
-function $norm_cmp_test$(_book_0, _st_0, _yes_0, _rest_0, _alts_0) {
-  if ((_yes_0)) {
-const _x_0 = {$: "Unit"};
-return {$: "$JMP", f: $norm_cmp_loop$, x: [_book_0, _st_0, _rest_0, _alts_0]};
-} else {
-const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $norm_cmp_fail$, x: [_book_0, _st_0, _alts_0]};
-}
-}
-
-function $norm_cmp_kind_left$(_book_0, _a_0, _b_0, _fresh_0, _rest_0, _alts_0, _r_0) {
+function $norm_cmp_kind_right$(_book_0, _a_0, _b_0, _g_0, _fresh_0, _rest_0, _alts_0, _r_0) {
   const _st_0 = _r_0["state"];
-  const _g_0 = _r_0["term"];
-  return $norm_cmp_kind_right$(_book_0, _a_0, _b_0, _g_0, _fresh_0, _rest_0, _alts_0, run_loop($g_wnf$(_book_0, _st_0, run_loop($kid$(_b_0, 0)))));
+  const _h_0 = _r_0["term"];
+  return $norm_cmp_kind$(_book_0, _st_0, _a_0, _b_0, _g_0, _h_0, _fresh_0, _rest_0, _alts_0);
 }
 
-function $norm_removed$(_as_0, _bs_0, _le_0) {
-  return run_tail((_le_0) ? ((_x_0) => {
-  return $norm_subset$(_as_0, _bs_0);
+function $norm_subset$(_as_0, _bs_0) {
+  if (_bs_0.$ === "Nil") {
+    return true;
+  } else {
+    const _h_0 = _bs_0["head"];
+    const _t_0 = _bs_0["tail"];
+    return $Bool$and$(($has_name$(_as_0, _h_0)), ($norm_subset$(_as_0, _t_0)));
+  }
+}
+
+function $norm_names_len$(_names_0) {
+  if (_names_0.$ === "Nil") {
+    return 0;
+  } else {
+    const _rest_0 = _names_0["tail"];
+    const _x_0 = ($norm_names_len$(_rest_0));
+    return ((1 + _x_0) >>> 0);
+  }
+}
+
+function $norm_cmp_zip$(_as_0, _bs_0, _fresh_0, _rest_0) {
+  if (_as_0.$ === "Con") {
+    const _a_0 = _as_0["head"];
+    const _ar_0 = _as_0["tail"];
+    if (_bs_0.$ === "Con") {
+      const _b_0 = _bs_0["head"];
+      const _br_0 = _bs_0["tail"];
+      return {$: "Con", "head": {$: "KNormCmp", "a": _a_0, "b": _b_0, "le": false, "fresh": _fresh_0}, "tail": ($norm_cmp_zip$(_ar_0, _br_0, _fresh_0, _rest_0))};
+    } else {
+      return _rest_0;
+    }
+  } else {
+    return _rest_0;
+  }
+}
+
+function $norm_cmp_ref$(_book_0, _st_0, _a_0, _b_0, _le_0, _n_0, _fresh_0, _rest_0, _alts_0) {
+  return run_tail(((_n_0 === 0)) ? ((_x_0) => {
+  return $norm_cmp_fail$(_book_0, _st_0, _alts_0);
 }) : ((_x_1) => {
-  const _x_2 = ($norm_names_len$(_as_0));
-  const _x_3 = ($norm_names_len$(_bs_0));
-  return $Bool$and$((_x_2 === _x_3), ($norm_subset$(_as_0, _bs_0)));
-}), {$: "Unit"});
-}
-
-function $norm_cmp_fields$(_book_0, _st_0, _as_0, _bs_0, _fresh_0, _rest_0, _alts_0) {
-  const _x_0 = ($terms_len$(_as_0));
-  const _x_1 = ($terms_len$(_bs_0));
-  return run_tail(((_x_0 === _x_1)) ? ((_x_2) => {
-  return $norm_cmp_loop$(_book_0, _st_0, ($norm_cmp_zip$(_as_0, _bs_0, _fresh_0, _rest_0)), _alts_0);
+  return run_tail(((_n_0 === 1)) ? ((_x_2) => {
+  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": ($app$(_a_0, ($var$("_", _fresh_0)))), "b": ($app$(_b_0, ($var$("_", _fresh_0)))), "le": _le_0, "fresh": ((_fresh_0 + 1) >>> 0)}, "tail": _rest_0}, _alts_0);
 }) : ((_x_3) => {
-  return $norm_cmp_fail$(_book_0, _st_0, _alts_0);
-}), {$: "Unit"});
-}
-
-function $norm_cmp_plain$(_book_0, _st_0, _a_0, _b_0, _le_0, _fresh_0, _rest_0, _alts_0) {
-  return run_tail((($Bool$and$(($core_literal$(_a_0)), ($core_literal$(_b_0))))) ? ((_x_0) => {
-  return $norm_cmp_test$(_book_0, _st_0, ($core_literal_same$(_a_0, _b_0)), _rest_0, _alts_0);
-}) : ((_x_1) => {
-  return run_tail((($String$eq$(($tg$(_a_0)), "Ref"))) ? ((_x_2) => {
-  return run_tail((($String$eq$(($nm$(_a_0)), ($nm$(_b_0))))) ? ((_x_3) => {
-  return $norm_cmp_loop$(_book_0, _st_0, _rest_0, _alts_0);
-}) : ((_x_4) => {
-  return $norm_cmp_ref$(_book_0, _st_0, _a_0, _b_0, _le_0, run_loop($norm_max$(($da$(run_loop($lookup$(_book_0, ($nm$(_a_0)))))), ($da$(run_loop($lookup$(_book_0, ($nm$(_b_0)))))))), _fresh_0, _rest_0, _alts_0);
-}), {$: "Unit"});
-}) : ((_x_5) => {
-  return run_tail((($String$eq$(($tg$(_a_0)), "Hol"))) ? ((_x_6) => {
-  return $norm_cmp_test$(_book_0, _st_0, ($String$eq$(($nm$(_a_0)), ($nm$(_b_0)))), _rest_0, _alts_0);
-}) : ((_x_7) => {
-  const _x_8 = ($String$eq$(($tg$(_a_0)), "Ctr"));
-  const _x_9 = ($String$eq$(($tg$(_a_0)), "Mat"));
-  return run_tail(((_x_8 || _x_9)) ? ((_x_10) => {
-  return run_tail((($String$eq$(($nm$(_a_0)), ($nm$(_b_0))))) ? ((_x_11) => {
-  return $norm_cmp_fields$(_book_0, _st_0, ($ks$(_a_0)), ($ks$(_b_0)), _fresh_0, _rest_0, _alts_0);
-}) : ((_x_12) => {
-  return $norm_cmp_fail$(_book_0, _st_0, _alts_0);
-}), {$: "Unit"});
-}) : ((_x_13) => {
-  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($tg$(_a_0)), "App")), ($String$eq$(($tg$(run_loop($kid$(_a_0, 0)))), "Ref")))), ($String$eq$(($tg$(run_loop($kid$(_b_0, 0)))), "Ref"))))) ? ((_x_14) => {
-  return run_tail((($String$eq$(($nm$(run_loop($kid$(_a_0, 0)))), ($nm$(run_loop($kid$(_b_0, 0))))))) ? ((_x_15) => {
-  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": run_loop($kid$(_a_0, 1)), "b": run_loop($kid$(_b_0, 1)), "le": false, "fresh": _fresh_0}, "tail": _rest_0}, _alts_0);
-}) : ((_x_16) => {
-  return $norm_cmp_fail$(_book_0, _st_0, _alts_0);
-}), {$: "Unit"});
-}) : ((_x_17) => {
-  const _x_18 = ($String$eq$(($tg$(_a_0)), "App"));
-  const _x_19 = ($String$eq$(($tg$(_a_0)), "Min"));
-  const _x_20 = (_x_18 || _x_19);
-  const _x_21 = ($String$eq$(($tg$(_a_0)), "Eql"));
-  const _x_22 = (_x_20 || _x_21);
-  const _x_23 = ($String$eq$(($tg$(_a_0)), "Rwt"));
-  return run_tail(((_x_22 || _x_23)) ? ((_x_24) => {
-  return $norm_cmp_fields$(_book_0, _st_0, ($ks$(_a_0)), ($ks$(_b_0)), _fresh_0, _rest_0, _alts_0);
-}) : ((_x_25) => {
-  const _x_26 = ($String$eq$(($tg$(_a_0)), "Qnt"));
-  const _x_27 = ($String$eq$(($tg$(_a_0)), "Rfl"));
-  const _x_28 = (_x_26 || _x_27);
-  const _x_29 = ($String$eq$(($tg$(_a_0)), "Efq"));
-  return $norm_cmp_test$(_book_0, _st_0, (_x_28 || _x_29), _rest_0, _alts_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
+  return $norm_cmp_ref$(_book_0, _st_0, ($app$(_a_0, ($var$("_", _fresh_0)))), ($app$(_b_0, ($var$("_", _fresh_0)))), _le_0, ((_n_0 - 1) >>> 0), ((_fresh_0 + 1) >>> 0), _rest_0, _alts_0);
 }), {$: "Unit"});
 }), {$: "Unit"});
 }
@@ -34889,7 +35725,7 @@ function $jd_named$(_book_0, _env_0, _d_0, _xs_0, _tail_0) {
   const _x_3 = ($Bool$not$(($String$eq$(($tg$(($dv$(_d_0)))), "Absent"))));
   const _x_4 = run_loop($jd_native_known$(_book_0, _d_0));
   return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_2 === 0))), (_x_3 || _x_4)))) ? ((_x_5) => {
-  return $jd_named_args$(_book_0, _env_0, _d_0, _tail_0, run_loop($jd_arguments$(_book_0, _env_0, _xs_0, ($dt$(_d_0)), run_loop($jd_arity$(_book_0, _d_0)))));
+  return $jd_named_args$(_book_0, _env_0, _d_0, _tail_0, run_loop($jd_arguments$(_book_0, _env_0, _xs_0, ($dt$(_d_0)), run_loop($jd_emitted_arity$(_book_0, _d_0)))));
 }) : ((_x_6) => {
   const _x_7 = ($dn$(_d_0));
   return $jd_fail$(("unknown direct definition: " + _x_7));
@@ -35075,206 +35911,41 @@ function $jd_doc_ordered_return_done$(_r_0) {
 }), {$: "Unit"});
 }
 
-function $jd_host_marshal_key$(_t_0, _out_0) {
-  const _x_2 = run_loop(run_tail((_out_0) ? ((_x_0) => {
-  return "out ";
-}) : ((_x_1) => {
-  return "in ";
-}), {$: "Unit"}));
-  const _x_3 = run_loop($term_key$(_t_0));
-  return (_x_2 + _x_3);
+function $jd_nat_next$(_book_0, _t_0, _ty_0, _level_0) {
+  if ((($String$eq$(($tg$(_t_0)), "Mat")))) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $jd_nat_rows$, x: [_book_0, _t_0, _ty_0, _level_0]};
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "Con", "head": {$: "JDWordRow", "term": _t_0, "typ": _ty_0, "depth": 0, "value": _level_0, "fields": 1}, "tail": {$: "Nil"}};
+}
 }
 
-function $jd_host_marshal_find$(_seen_0, _key_0) {
-  if (_seen_0.$ === "Nil") {
-    return "";
-  } else {
-    const _t_0 = _seen_0["head"];
-    const _rest_0 = _seen_0["tail"];
-    return run_tail((($String$eq$(($nm$(_t_0)), _key_0))) ? ((_x_0) => {
-  const _x_1 = ($U32$show$(($ix$(_t_0))));
-  return ("$dm" + _x_1);
+function $jd_word_parts$(_book_0, _t_0, _ty_0, _depth_0, _value_0, _fields_0, _cover_0) {
+  const _end_0 = run_loop($jd_word_end$(_t_0));
+  const _x_0 = run_loop($jd_word_arms$(_t_0));
+  const _own_0 = run_loop(run_tail(((_x_0 < 2)) ? ((_x_1) => {
+  return $jd_word_cover_diff$(_cover_0, {$: "JDWordCover", "term": _end_0, "fields": _fields_0, "prefix": {$: "Nil"}});
 }) : ((_x_2) => {
-  return $jd_host_marshal_find$(_rest_0, _key_0);
-}), {$: "Unit"});
-  }
-}
-
-function $jd_host_marshal_ctors$(_book_0, _ctors_0, _args_0, _out_0, _seen_0, _depth_0, _fuel_0, _self_0) {
-  if (_ctors_0.$ === "Nil") {
-    return "";
-  } else {
-    const _c_0 = _ctors_0["head"];
-    const _rest_0 = _ctors_0["tail"];
-    const _x_0 = ($jd_host_marshal_arm$(_book_0, _c_0, ($j_specialize$(_book_0, ($dt$(_c_0)), _args_0)), _out_0, _seen_0, _depth_0, _fuel_0, _self_0));
-    const _x_1 = ($jd_host_marshal_ctors$(_book_0, _rest_0, _args_0, _out_0, _seen_0, _depth_0, _fuel_0, _self_0));
-    return (_x_0 + _x_1);
-  }
-}
-
-function $jd_host_ctor_tags$(_ctors_0) {
-  if (_ctors_0.$ === "Nil") {
-    return "";
-  } else {
-    const _c_0 = _ctors_0["head"];
-    const _rest_0 = _ctors_0["tail"];
-    const _x_2 = run_loop(run_tail((($List$is_empty$(_rest_0))) ? ((_x_0) => {
-  return "";
-}) : ((_x_1) => {
-  return ", ";
+  return false;
 }), {$: "Unit"}));
-    const _x_3 = ($jd_host_ctor_tags$(_rest_0));
-    const _x_4 = ($dn$(_c_0));
-    const _x_5 = (_x_2 + _x_3);
-    return (_x_4 + _x_5);
-  }
-}
-
-function $sk_char$(_c_0, _n_0) {
-  if (_n_0 == 34) {
-    return "\\\"";
-  } else if (_n_0 == 10) {
-    return "\\n";
-  } else if ((_n_0 & 3) == 2) {
-    const _28_0 = u32_to_word(_n_0)["tail"]["tail"]["head"];
-    const _29_0 = u32_to_word(_n_0)["tail"]["tail"]["tail"];
-    const _x_0 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _28_0, "tail": _29_0}}});
-    return run_tail(((_x_0 < 32)) ? ((_x_1) => {
-  const _x_2 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _28_0, "tail": _29_0}}});
-  const _x_5 = run_loop(run_tail(((_x_2 < 16)) ? ((_x_3) => {
-  return "0";
+  return $List$append$(run_loop($jd_word_branches$(_book_0, _t_0, _ty_0, _depth_0, _value_0, run_loop(run_tail((_own_0) ? ((_x_3) => {
+  return {$: "JDWordCover", "term": _end_0, "fields": _fields_0, "prefix": {$: "Nil"}};
 }) : ((_x_4) => {
-  return "";
-}), {$: "Unit"}));
-  const _x_6 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _28_0, "tail": _29_0}}})));
-  const _x_7 = (_x_5 + _x_6);
-  return ("\\u00" + _x_7);
-}) : ((_x_8) => {
-  const _x_9 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _28_0, "tail": _29_0}}});
-  const _x_10 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _28_0, "tail": _29_0}}});
-  return run_tail((($Bool$and$((_x_9 >= 55296), (_x_10 <= 57343)))) ? ((_x_11) => {
-  const _x_12 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _28_0, "tail": _29_0}}})));
-  return ("\\u" + _x_12);
-}) : ((_x_13) => {
-  return $Char$show$(_c_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-  } else if (_n_0 == 92) {
-    return "\\\\";
-  } else if (_n_0 == 12) {
-    return "\\f";
-  } else if ((_n_0 & 7) == 4) {
-    const _146_0 = u32_to_word(_n_0)["tail"]["tail"]["tail"]["head"];
-    const _147_0 = u32_to_word(_n_0)["tail"]["tail"]["tail"]["tail"];
-    const _x_14 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _146_0, "tail": _147_0}}}});
-    return run_tail(((_x_14 < 32)) ? ((_x_15) => {
-  const _x_16 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _146_0, "tail": _147_0}}}});
-  const _x_19 = run_loop(run_tail(((_x_16 < 16)) ? ((_x_17) => {
-  return "0";
-}) : ((_x_18) => {
-  return "";
-}), {$: "Unit"}));
-  const _x_20 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _146_0, "tail": _147_0}}}})));
-  const _x_21 = (_x_19 + _x_20);
-  return ("\\u00" + _x_21);
-}) : ((_x_22) => {
-  const _x_23 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _146_0, "tail": _147_0}}}});
-  const _x_24 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _146_0, "tail": _147_0}}}});
-  return run_tail((($Bool$and$((_x_23 >= 55296), (_x_24 <= 57343)))) ? ((_x_25) => {
-  const _x_26 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": true, "tail": {$: "WCon", "head": _146_0, "tail": _147_0}}}})));
-  return ("\\u" + _x_26);
-}) : ((_x_27) => {
-  return $Char$show$(_c_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-  } else if (_n_0 == 8) {
-    return "\\b";
-  } else if ((_n_0 & 7) == 0) {
-    const _258_0 = u32_to_word(_n_0)["tail"]["tail"]["tail"]["head"];
-    const _259_0 = u32_to_word(_n_0)["tail"]["tail"]["tail"]["tail"];
-    const _x_28 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": _258_0, "tail": _259_0}}}});
-    return run_tail(((_x_28 < 32)) ? ((_x_29) => {
-  const _x_30 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": _258_0, "tail": _259_0}}}});
-  const _x_33 = run_loop(run_tail(((_x_30 < 16)) ? ((_x_31) => {
-  return "0";
-}) : ((_x_32) => {
-  return "";
-}), {$: "Unit"}));
-  const _x_34 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": _258_0, "tail": _259_0}}}})));
-  const _x_35 = (_x_33 + _x_34);
-  return ("\\u00" + _x_35);
-}) : ((_x_36) => {
-  const _x_37 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": _258_0, "tail": _259_0}}}});
-  const _x_38 = word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": _258_0, "tail": _259_0}}}});
-  return run_tail((($Bool$and$((_x_37 >= 55296), (_x_38 <= 57343)))) ? ((_x_39) => {
-  const _x_40 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": false, "tail": {$: "WCon", "head": _258_0, "tail": _259_0}}}})));
-  return ("\\u" + _x_40);
-}) : ((_x_41) => {
-  return $Char$show$(_c_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-  } else if (_n_0 == 9) {
-    return "\\t";
-  } else if (_n_0 == 13) {
-    return "\\r";
-  } else {
-    const _316_0 = u32_to_word(_n_0)["tail"]["head"];
-    const _317_0 = u32_to_word(_n_0)["tail"]["tail"];
-    const _x_42 = word_to_u32({$: "WCon", "head": true, "tail": {$: "WCon", "head": _316_0, "tail": _317_0}});
-    return run_tail(((_x_42 < 32)) ? ((_x_43) => {
-  const _x_44 = word_to_u32({$: "WCon", "head": true, "tail": {$: "WCon", "head": _316_0, "tail": _317_0}});
-  const _x_47 = run_loop(run_tail(((_x_44 < 16)) ? ((_x_45) => {
-  return "0";
-}) : ((_x_46) => {
-  return "";
-}), {$: "Unit"}));
-  const _x_48 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": true, "tail": {$: "WCon", "head": _316_0, "tail": _317_0}})));
-  const _x_49 = (_x_47 + _x_48);
-  return ("\\u00" + _x_49);
-}) : ((_x_50) => {
-  const _x_51 = word_to_u32({$: "WCon", "head": true, "tail": {$: "WCon", "head": _316_0, "tail": _317_0}});
-  const _x_52 = word_to_u32({$: "WCon", "head": true, "tail": {$: "WCon", "head": _316_0, "tail": _317_0}});
-  return run_tail((($Bool$and$((_x_51 >= 55296), (_x_52 <= 57343)))) ? ((_x_53) => {
-  const _x_54 = run_loop($kp_hex$(word_to_u32({$: "WCon", "head": true, "tail": {$: "WCon", "head": _316_0, "tail": _317_0}})));
-  return ("\\u" + _x_54);
-}) : ((_x_55) => {
-  return $Char$show$(_c_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-  }
-}
-
-function $jd_word_arms$(_t_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_0) => {
-  const _x_1 = run_loop($jd_word_arms$(run_loop($j_strip$(run_loop($kid$(_t_0, 1))))));
-  return ((_x_1 + 1) >>> 0);
-}) : ((_x_2) => {
-  return 0;
-}), {$: "Unit"});
-}
-
-function $jd_word_cover_diff$(_outer_0, _inner_0) {
-  const _term_0 = _outer_0["term"];
-  const _fields_0 = _outer_0["fields"];
-  const _prefix_0 = _outer_0["prefix"];
-  return run_tail((($String$eq$(($tg$(_term_0)), "Absent"))) ? ((_x_0) => {
-  return true;
-}) : ((_x_1) => {
-  return $Bool$not$(($String$eq$(run_loop($jd_word_cover_key$({$: "JDWordCover", "term": _term_0, "fields": _fields_0, "prefix": _prefix_0})), run_loop($jd_word_cover_key$(_inner_0)))));
-}), {$: "Unit"});
-}
-
-function $jd_word_branches$(_book_0, _t_0, _ty_0, _depth_0, _value_0, _cover_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_0) => {
-  const _x_3 = run_loop(run_tail((($String$eq$(($nm$(_t_0)), "True"))) ? ((_x_1) => {
-  return (_depth_0 >= 32 ? 0 : (1 << _depth_0) >>> 0);
-}) : ((_x_2) => {
-  return 0;
-}), {$: "Unit"}));
-  return $List$append$(run_loop($jd_word_rows$(_book_0, run_loop($j_strip$(run_loop($kid$(_t_0, 0)))), run_loop($j_arm_type$(_book_0, run_loop($wnf$(_book_0, _ty_0)), ($nm$(_t_0)))), ((_depth_0 + 1) >>> 0), ((_value_0 + _x_3) >>> 0), ($jd_word_cover_push$(_cover_0, ($nm$(_t_0)))))), run_loop($jd_word_branches$(_book_0, run_loop($j_strip$(run_loop($kid$(_t_0, 1)))), _ty_0, _depth_0, _value_0, _cover_0)));
-}) : ((_x_4) => {
+  return _cover_0;
+}), {$: "Unit"})))), run_loop(run_tail((_own_0) ? ((_x_5) => {
+  return {$: "Con", "head": {$: "JDWordRow", "term": _end_0, "typ": _ty_0, "depth": _depth_0, "value": _value_0, "fields": _fields_0}, "tail": {$: "Nil"}};
+}) : ((_x_6) => {
   return {$: "Nil"};
-}), {$: "Unit"});
+}), {$: "Unit"})));
+}
+
+function $jd_choice_owner_head$(_book_0, _ty_0, _name_0) {
+  return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "ADT")), ($String$eq$(($nm$(_ty_0)), _name_0)))), ($List$is_empty$(($ks$(_ty_0)))))), ($db$(run_loop($lookup$(_book_0, _name_0)))));
+}
+
+function $jd_host_marshal_arm$(_book_0, _c_0, _tel_0, _out_0, _seen_0, _depth_0, _fuel_0, _self_0) {
+  return $jd_host_marshal_arm_fields$(_c_0, run_loop($jd_host_marshal_field_rows$(_book_0, _tel_0, _out_0, _seen_0, _depth_0, _fuel_0)), _self_0);
 }
 
 function $env_subst_binding$(_t_0, _binding_0, _rest_0) {
@@ -35290,181 +35961,140 @@ return {$: "$JMP", f: $env_subst_find$, x: [_t_0, _rest_0]};
 }
 }
 
-function $tele_check_done$(_a_0, _b_0) {
-  return $both$(_a_0, _b_0, ($k_with_children$(($atom$("Args")), {$: "Con", "head": ($ct$(_a_0)), "tail": ($ks$(($ct$(_b_0))))})), ($cy$(_b_0)), false);
-}
-
-function $tele_check_static$(_e_0, _ctx_0, _tel_0, _args_0, _dem_0) {
-  if (_args_0.$ === "Nil") {
-    return $ok$(($cw$(_e_0)), ($atom$("Args")), _tel_0, {$: "Nil"});
-  } else {
-    const _h_0 = _args_0["head"];
-    const _rest_0 = _args_0["tail"];
-    return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
-  return $ki_tele_static$(_e_0, _ctx_0, _tel_0, _rest_0, _dem_0, run_loop($check$(_e_0, _ctx_0, _h_0, run_loop($qdem$(($qt$(_tel_0)), _dem_0)), run_loop($kid$(_tel_0, 0)))));
-}) : ((_x_1) => {
-  return $tele_check$(_e_0, _ctx_0, _tel_0, {$: "Con", "head": _h_0, "tail": _rest_0}, _dem_0);
-}), {$: "Unit"});
-  }
-}
-
-function $env_tele_check$(_e_0, _ctx_0, _tel_0, _args_0, _dem_0) {
-  return run_tail((($env_tele_many$(_args_0))) ? ((_x_0) => {
-  if ((run_loop($env_tele_safe$(_tel_0)))) {
-const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $env_tele_check_loop$, x: [_e_0, _ctx_0, _tel_0, _args_0, _dem_0, {$: "Nil"}, 0]};
-} else {
-const _x_2 = {$: "Unit"};
-return {$: "$JMP", f: $tele_check_legacy$, x: [_e_0, _ctx_0, _tel_0, _args_0, _dem_0]};
-}
-}) : ((_x_3) => {
-  return $tele_check_legacy$(_e_0, _ctx_0, _tel_0, _args_0, _dem_0);
-}), {$: "Unit"});
-}
-
-function $ki_match_arm$(_e_0, _ctx_0, _t_0, _dem_0, _ty_0, _a_0, _r_0) {
+function $ki_tele_static$(_e_0, _ctx_0, _tel_0, _rest_0, _dem_0, _r_0) {
   return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $ki_pair$(_t_0, _ty_0, _r_0, run_loop($check$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, run_loop($mat_rest$(($kw_book$(($rw$(_r_0)))), _t_0, _a_0)), _dem_0, ($all$(($qt$(_ty_0)), ($nm$(_ty_0)), ($ix$(_ty_0)), {$: "KTerm", "tag": ($tg$(_a_0)), "name": ($nm$(_a_0)), "id": ($ix$(_a_0)), "quant": ($qt$(_a_0)), "kids": ($ks$(_a_0)), "removed": {$: "Con", "head": ($nm$(_t_0)), "tail": ($rm$(_a_0))}, "originBegin": ($kb$(_a_0)), "originEnd": ($ke$(_a_0))}, run_loop($kid$(_ty_0, 1)))))), true);
+  return $tele_check_done$(_r_0, run_loop($tele_check_static$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, run_loop($kid$(_tel_0, 1)), _rest_0, _dem_0)));
 }) : ((_x_1) => {
   return _r_0;
 }), {$: "Unit"});
 }
 
-function $ki_lhs$(_e_0, _name_0, _tel_0, _n_0, _fresh_0) {
-  const _lhs_0 = run_loop($lhs_ext$(($cl$(_e_0)), _name_0, _tel_0, _n_0, {$: "Nil"}, _fresh_0));
-  const _x_3 = ($cp$(_e_0));
-  const _x_4 = ((_x_3 - 1) >>> 0);
-  return {$: "KEnv", "world": run_loop(run_tail(((_n_0 === 0)) ? ((_x_0) => {
-  return $cw$(_e_0);
-}) : ((_x_1) => {
-  const _x_2 = ((_fresh_0 + _n_0) >>> 0);
-  return $kw_temporary$(($cw$(_e_0)), _lhs_0, ((_x_2 - 1) >>> 0));
-}), {$: "Unit"})), "name": ($cn$(_e_0)), "lhs": _lhs_0, "pending": ((_x_4 + _n_0) >>> 0), "quantities": ($cq$(_e_0)), "unsafe": ($cu$(_e_0)), "depth": ($cd$(_e_0))};
-}
-
-function $kw_temporary_fresh$(_world_0, _root_0, _bound_0, _fresh_0) {
-  if (_fresh_0.$ === "KFreshKnown") {
-    const _next_0 = _fresh_0["next"];
-    return {$: "KWorld", "book": run_loop($kw_bound_book$(($kw_book$(_world_0)), _bound_0)), "memo": ($kw_memo$(_world_0)), "fresh": {$: "KFreshKnown", "next": run_loop($norm_max$(_next_0, ((_bound_0 + 1) >>> 0)))}, "checked": ($kw_checked$(_world_0))};
+function $env_tele_check_loop$(_e_0, _ctx_0, _tel_0, _args_0, _dem_0, _bindings_0, _count_0) {
+  if (_args_0.$ === "Nil") {
+    return $ok$(($cw$(_e_0)), ($atom$("Args")), run_loop($env_tele_apply$(_tel_0, _bindings_0)), {$: "Nil"});
   } else {
-    const _roots_0 = _fresh_0["roots"];
-    return {$: "KWorld", "book": ($kw_book$(_world_0)), "memo": ($kw_memo$(_world_0)), "fresh": {$: "KFreshDeferred", "roots": {$: "Con", "head": _root_0, "tail": _roots_0}}, "checked": ($kw_checked$(_world_0))};
+    const _h_0 = _args_0["head"];
+    const _rest_0 = _args_0["tail"];
+    return run_tail((run_loop($env_tele_safe$(_h_0))) ? ((_x_0) => {
+  return run_tail((($Bool$and$(($String$eq$(($tg$(_tel_0)), "All")), (_count_0 < 64)))) ? ((_x_1) => {
+  return $env_tele_check_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, _bindings_0, _count_0);
+}) : ((_x_2) => {
+  return $env_tele_check_open$(_e_0, _ctx_0, run_loop($wnf$(($cb$(_e_0)), run_loop($env_tele_apply$(_tel_0, _bindings_0)))), _h_0, _rest_0, _dem_0);
+}), {$: "Unit"});
+}) : ((_x_3) => {
+  return $tele_check_legacy$(_e_0, _ctx_0, run_loop($env_tele_apply$(_tel_0, _bindings_0)), {$: "Con", "head": _h_0, "tail": _rest_0}, _dem_0);
+}), {$: "Unit"});
   }
 }
 
-function $ki_rwt_done$(_t_0, _ty_0, _r_0, _motive_0, _body_0) {
-  return $both$(_r_0, _body_0, ($k_with_children$(_t_0, {$: "Con", "head": ($ct$(_r_0)), "tail": {$: "Con", "head": ($ct$(_motive_0)), "tail": {$: "Con", "head": ($ct$(_body_0)), "tail": {$: "Nil"}}}})), _ty_0, false);
+function $tele_check_legacy$(_e_0, _ctx_0, _tel_0, _args_0, _dem_0) {
+  if (_args_0.$ === "Nil") {
+    return $ok$(($cw$(_e_0)), ($atom$("Args")), _tel_0, {$: "Nil"});
+  } else {
+    const _h_0 = _args_0["head"];
+    const _rest_0 = _args_0["tail"];
+    return $tele_check_legacy_head$(_e_0, _ctx_0, run_loop($wnf$(($cb$(_e_0)), _tel_0)), _h_0, _rest_0, _dem_0);
+  }
 }
 
-function $descend_step$(_ord_0, _qs_0, _args_0, _cols_0) {
-  return run_tail(((_ord_0 === 0)) ? ((_x_0) => {
-  return true;
+function $lhs_ext$(_lhs_0, _name_0, _tel_0, _n_0, _xs_0, _fresh_0) {
+  return run_tail(((_n_0 === 0)) ? ((_x_0) => {
+  return $kapply$(_lhs_0, ($kt$("Ctr", _name_0, 0, 0, _xs_0)));
 }) : ((_x_1) => {
-  if (((_ord_0 === 1))) {
-const _x_2 = {$: "Unit"};
-return {$: "$JMP", f: $descend_spine$, x: [_qs_0, _args_0, _cols_0]};
+  return $k_lam$(($nm$(_tel_0)), _fresh_0, ($qt$(_tel_0)), {$: "Con", "head": run_loop($lhs_ext$(_lhs_0, _name_0, run_loop($kid$(_tel_0, 1)), ((_n_0 - 1) >>> 0), ($norm_join$(_xs_0, {$: "Con", "head": ($var$(($nm$(_tel_0)), _fresh_0)), "tail": {$: "Nil"}})), ((_fresh_0 + 1) >>> 0))), "tail": {$: "Nil"}}, 0, 0, false);
+}), {$: "Unit"});
+}
+
+function $descend_go$(_a_0, _p_0) {
+  return run_tail((($Bool$and$(($core_literal$(_a_0)), ($String$eq$(($tg$(_p_0)), "Ctr"))))) ? ((_x_0) => {
+  return $descend_go$(run_loop($core_literal_step$(_a_0)), _p_0);
+}) : ((_x_1) => {
+  return run_tail((($String$eq$(($tg$(_p_0)), "Var"))) ? ((_x_2) => {
+  const _x_3 = ($ix$(_a_0));
+  const _x_4 = ($ix$(_p_0));
+  if ((($Bool$and$(($String$eq$(($tg$(_a_0)), "Var")), (_x_3 === _x_4))))) {
+const _x_5 = {$: "Unit"};
+return 1;
 } else {
-const _x_3 = {$: "Unit"};
-return false;
+const _x_6 = {$: "Unit"};
+return 2;
 }
+}) : ((_x_7) => {
+  return run_tail((($String$eq$(($tg$(_p_0)), "Ctr"))) ? ((_x_8) => {
+  const _x_9 = ($terms_len$(($ks$(_a_0))));
+  const _x_10 = ($terms_len$(($ks$(_p_0))));
+  return $descend_ctr$(_a_0, _p_0, run_loop(run_tail((($Bool$and$(($Bool$and$(($String$eq$(($tg$(_a_0)), "Ctr")), ($String$eq$(($nm$(_a_0)), ($nm$(_p_0)))))), (_x_9 === _x_10)))) ? ((_x_11) => {
+  return $descend_fields$(($ks$(_a_0)), ($ks$(_p_0)), 1, 0);
+}) : ((_x_12) => {
+  return {$: "KDescent", "order": 2, "bad": 4294967295};
+}), {$: "Unit"})));
+}) : ((_x_13) => {
+  return 2;
+}), {$: "Unit"});
+}), {$: "Unit"});
 }), {$: "Unit"});
 }
 
-function $descend$(_q_0, _a_0, _p_0) {
-  return run_tail(((_q_0 === 0)) ? ((_x_0) => {
-  return 1;
+function $sp_live_key$(_e_0, _ctx_0, _head_0, _sp_0, _d_0, _xs_0, _key_0) {
+  const _x_0 = ($sp_len$(_key_0));
+  return run_tail(((_x_0 > 32768)) ? ((_x_1) => {
+  return $sp_live_error$(_e_0, _ctx_0, _head_0, "a comptime argument must stop growing", "a ~ argument that stops growing");
+}) : ((_x_2) => {
+  return $sp_live_memo$(_e_0, _ctx_0, _head_0, _sp_0, _d_0, _xs_0, _key_0, run_loop($sp_find$(($kw_memo$(($cw$(_e_0)))), ($dn$(_d_0)), _key_0)));
+}), {$: "Unit"});
+}
+
+function $sp_keys$(_ts_0) {
+  if (_ts_0.$ === "Nil") {
+    return "";
+  } else {
+    const _head_0 = _ts_0["head"];
+    const _rest_0 = _ts_0["tail"];
+    const _x_3 = run_loop($term_key$(_head_0));
+    const _x_4 = run_loop(run_tail((($List$is_empty$(_rest_0))) ? ((_x_0) => {
+  return "";
 }) : ((_x_1) => {
-  return $descend_go$(run_loop($strip$(_a_0)), run_loop($strip$(_p_0)));
-}), {$: "Unit"});
+  const _x_2 = ($sp_keys$(_rest_0));
+  return ("\n" + _x_2);
+}), {$: "Unit"}));
+    return (_x_3 + _x_4);
+  }
 }
 
-function $sp_drop_next$(_ts_0, _n_0) {
+function $sp_take_next$(_ts_0, _n_0) {
   if (_ts_0.$ === "Nil") {
     return {$: "Nil"};
   } else {
+    const _h_0 = _ts_0["head"];
     const _rest_0 = _ts_0["tail"];
-    return $sp_drop$(_rest_0, ((_n_0 - 1) >>> 0));
+    return {$: "Con", "head": _h_0, "tail": run_loop($sp_take$(_rest_0, ((_n_0 - 1) >>> 0)))};
   }
 }
 
-function $sp_live_args$(_e_0, _ctx_0, _head_0, _sp_0, _d_0, _xs_0) {
-  return $sp_live_key$(_e_0, _ctx_0, _head_0, _sp_0, _d_0, _xs_0, ($sp_keys$(_xs_0)));
-}
-
-function $sp_take$(_ts_0, _n_0) {
-  if (((_n_0 === 0))) {
-const _x_0 = {$: "Unit"};
-return {$: "Nil"};
-} else {
-const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $sp_take_next$, x: [_ts_0, _n_0]};
-}
-}
-
-function $template_arg_head$(_e_0, _ty_0, _sp_0, _n_0) {
-  if (_sp_0.$ === "Nil") {
-    return $bad$(($cw$(_e_0)), "template requires all closed comptime arguments");
-  } else {
-    const _h_0 = _sp_0["head"];
-    const _t_0 = _sp_0["tail"];
-    return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
-  return $template_arg_done$(_e_0, _ty_0, _h_0, _t_0, _n_0, run_loop($check$(_e_0, {$: "Nil"}, _h_0, 0, run_loop($kid$(_ty_0, 0)))));
+function $template_arg_done$(_e_0, _ty_0, _h_0, _rest_0, _n_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return $template_args$(($ke_world$(_e_0, ($rw$(_r_0)))), run_loop($subst$(run_loop($kid$(_ty_0, 1)), ($ix$(_ty_0)), _h_0)), _rest_0, ((_n_0 - 1) >>> 0));
 }) : ((_x_1) => {
-  return $bad$(($cw$(_e_0)), "invalid template telescope");
+  return _r_0;
 }), {$: "Unit"});
-  }
 }
 
-function $norm_cmp_kind_right$(_book_0, _a_0, _b_0, _g_0, _fresh_0, _rest_0, _alts_0, _r_0) {
-  const _st_0 = _r_0["state"];
-  const _h_0 = _r_0["term"];
-  return $norm_cmp_kind$(_book_0, _st_0, _a_0, _b_0, _g_0, _h_0, _fresh_0, _rest_0, _alts_0);
-}
-
-function $norm_subset$(_as_0, _bs_0) {
-  if (_bs_0.$ === "Nil") {
-    return true;
-  } else {
-    const _h_0 = _bs_0["head"];
-    const _t_0 = _bs_0["tail"];
-    return $Bool$and$(($has_name$(_as_0, _h_0)), ($norm_subset$(_as_0, _t_0)));
-  }
-}
-
-function $norm_names_len$(_names_0) {
-  if (_names_0.$ === "Nil") {
-    return 0;
-  } else {
-    const _rest_0 = _names_0["tail"];
-    const _x_0 = ($norm_names_len$(_rest_0));
-    return ((1 + _x_0) >>> 0);
-  }
-}
-
-function $norm_cmp_zip$(_as_0, _bs_0, _fresh_0, _rest_0) {
-  if (_as_0.$ === "Con") {
-    const _a_0 = _as_0["head"];
-    const _ar_0 = _as_0["tail"];
-    if (_bs_0.$ === "Con") {
-      const _b_0 = _bs_0["head"];
-      const _br_0 = _bs_0["tail"];
-      return {$: "Con", "head": {$: "KNormCmp", "a": _a_0, "b": _b_0, "le": false, "fresh": _fresh_0}, "tail": ($norm_cmp_zip$(_ar_0, _br_0, _fresh_0, _rest_0))};
-    } else {
-      return _rest_0;
-    }
-  } else {
-    return _rest_0;
-  }
-}
-
-function $norm_cmp_ref$(_book_0, _st_0, _a_0, _b_0, _le_0, _n_0, _fresh_0, _rest_0, _alts_0) {
-  return run_tail(((_n_0 === 0)) ? ((_x_0) => {
-  return $norm_cmp_fail$(_book_0, _st_0, _alts_0);
-}) : ((_x_1) => {
-  return run_tail(((_n_0 === 1)) ? ((_x_2) => {
-  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": ($app$(_a_0, ($var$("_", _fresh_0)))), "b": ($app$(_b_0, ($var$("_", _fresh_0)))), "le": _le_0, "fresh": ((_fresh_0 + 1) >>> 0)}, "tail": _rest_0}, _alts_0);
-}) : ((_x_3) => {
-  return $norm_cmp_ref$(_book_0, _st_0, ($app$(_a_0, ($var$("_", _fresh_0)))), ($app$(_b_0, ($var$("_", _fresh_0)))), _le_0, ((_n_0 - 1) >>> 0), ((_fresh_0 + 1) >>> 0), _rest_0, _alts_0);
+function $norm_cmp_kind$(_book_0, _st_0, _a_0, _b_0, _g_0, _h_0, _fresh_0, _rest_0, _alts_0) {
+  const _x_0 = ($qt$(_g_0));
+  const _x_1 = ($qt$(_h_0));
+  const _x_2 = ($Bool$and$(($String$eq$(($tg$(_g_0)), "Qua")), (_x_0 === 2)));
+  const _x_3 = ($Bool$and$(($String$eq$(($tg$(_h_0)), "Qua")), ($Bool$not$((_x_1 === 2)))));
+  return run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
+  return $norm_cmp_loop$(_book_0, _st_0, _rest_0, _alts_0);
+}) : ((_x_5) => {
+  return run_tail((($String$eq$(($tg$(_g_0)), "Min"))) ? ((_x_6) => {
+  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": ($kt$("Typ", "", 0, 0, {$: "Con", "head": run_loop($kid$(_g_0, 0)), "tail": {$: "Nil"}})), "b": _b_0, "le": true, "fresh": _fresh_0}, "tail": {$: "Con", "head": {$: "KNormCmp", "a": ($kt$("Typ", "", 0, 0, {$: "Con", "head": run_loop($kid$(_g_0, 1)), "tail": {$: "Nil"}})), "b": _b_0, "le": true, "fresh": _fresh_0}, "tail": _rest_0}}, _alts_0);
+}) : ((_x_7) => {
+  return run_tail((($String$eq$(($tg$(_h_0)), "Min"))) ? ((_x_8) => {
+  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": _a_0, "b": ($kt$("Typ", "", 0, 0, {$: "Con", "head": run_loop($kid$(_h_0, 0)), "tail": {$: "Nil"}})), "le": true, "fresh": _fresh_0}, "tail": _rest_0}, {$: "Con", "head": {$: "KNormAlt", "todo": {$: "Con", "head": {$: "KNormCmp", "a": _a_0, "b": ($kt$("Typ", "", 0, 0, {$: "Con", "head": run_loop($kid$(_h_0, 1)), "tail": {$: "Nil"}})), "le": true, "fresh": _fresh_0}, "tail": _rest_0}}, "tail": _alts_0});
+}) : ((_x_9) => {
+  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": _g_0, "b": _h_0, "le": true, "fresh": _fresh_0}, "tail": _rest_0}, _alts_0);
+}), {$: "Unit"});
 }), {$: "Unit"});
 }), {$: "Unit"});
 }
@@ -36552,9 +37182,42 @@ function $jd_ordered_arg_type$(_book_0, _env_0, _x_0, _rest_0, _ty_0, _next_0) {
 }), {$: "Unit"});
 }
 
-function $jd_host_marshal_arm$(_book_0, _c_0, _tel_0, _out_0, _seen_0, _depth_0, _fuel_0, _self_0) {
-  const _tail_0 = run_loop($jd_host_marshal_tail$(_book_0, _tel_0, _out_0, _seen_0, _depth_0, _fuel_0, _self_0));
-  const _copy_0 = run_loop($jd_host_marshal_fields$(_book_0, _tel_0, _out_0, _seen_0, _depth_0, _fuel_0, _tail_0));
+function $jd_word_arms$(_t_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_0) => {
+  const _x_1 = run_loop($jd_word_arms$(run_loop($j_strip$(run_loop($kid$(_t_0, 1))))));
+  return ((_x_1 + 1) >>> 0);
+}) : ((_x_2) => {
+  return 0;
+}), {$: "Unit"});
+}
+
+function $jd_word_cover_diff$(_outer_0, _inner_0) {
+  const _term_0 = _outer_0["term"];
+  const _fields_0 = _outer_0["fields"];
+  const _prefix_0 = _outer_0["prefix"];
+  return run_tail((($String$eq$(($tg$(_term_0)), "Absent"))) ? ((_x_0) => {
+  return true;
+}) : ((_x_1) => {
+  return $Bool$not$(($String$eq$(run_loop($jd_word_cover_key$({$: "JDWordCover", "term": _term_0, "fields": _fields_0, "prefix": _prefix_0})), run_loop($jd_word_cover_key$(_inner_0)))));
+}), {$: "Unit"});
+}
+
+function $jd_word_branches$(_book_0, _t_0, _ty_0, _depth_0, _value_0, _cover_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Mat"))) ? ((_x_0) => {
+  const _x_3 = run_loop(run_tail((($String$eq$(($nm$(_t_0)), "True"))) ? ((_x_1) => {
+  return (_depth_0 >= 32 ? 0 : (1 << _depth_0) >>> 0);
+}) : ((_x_2) => {
+  return 0;
+}), {$: "Unit"}));
+  return $List$append$(run_loop($jd_word_rows$(_book_0, run_loop($j_strip$(run_loop($kid$(_t_0, 0)))), run_loop($j_arm_type$(_book_0, run_loop($wnf$(_book_0, _ty_0)), ($nm$(_t_0)))), ((_depth_0 + 1) >>> 0), ((_value_0 + _x_3) >>> 0), ($jd_word_cover_push$(_cover_0, ($nm$(_t_0)))))), run_loop($jd_word_branches$(_book_0, run_loop($j_strip$(run_loop($kid$(_t_0, 1)))), _ty_0, _depth_0, _value_0, _cover_0)));
+}) : ((_x_4) => {
+  return {$: "Nil"};
+}), {$: "Unit"});
+}
+
+function $jd_host_marshal_arm_fields$(_c_0, _fields_0, _self_0) {
+  const _tail_0 = run_loop($jd_host_marshal_rows_tail$(_fields_0, _self_0));
+  const _copy_0 = ($jd_host_marshal_rows_text$(_fields_0, _tail_0));
   const _x_9 = run_loop(run_tail((($String$eq$((_copy_0 + _tail_0), ""))) ? ((_x_0) => {
   return "at[key]=v;return top[0];";
 }) : ((_x_1) => {
@@ -36575,153 +37238,104 @@ function $jd_host_marshal_arm$(_book_0, _c_0, _tel_0, _out_0, _seen_0, _depth_0,
   return ("case " + _x_12);
 }
 
-function $jd_word_cover_key$(_cover_0) {
-  return $term_key$(run_loop($jd_word_unann$(run_loop($jd_word_cover_apply$(_cover_0, ($kt$("Ctr", "WCon", 0, 0, {$: "Con", "head": ($var$("$bit", 4294967264)), "tail": {$: "Con", "head": ($var$("$tail", 4294967265)), "tail": {$: "Nil"}}})))))));
-}
-
-function $jd_word_cover_push$(_cover_0, _name_0) {
-  const _term_0 = _cover_0["term"];
-  const _fields_0 = _cover_0["fields"];
-  const _prefix_0 = _cover_0["prefix"];
-  return {$: "JDWordCover", "term": _term_0, "fields": _fields_0, "prefix": ($List$append$(_prefix_0, {$: "Con", "head": ($kt$("Ctr", _name_0, 0, 0, {$: "Nil"})), "tail": {$: "Nil"}}))};
-}
-
-function $ki_tele_static$(_e_0, _ctx_0, _tel_0, _rest_0, _dem_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $tele_check_done$(_r_0, run_loop($tele_check_static$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, run_loop($kid$(_tel_0, 1)), _rest_0, _dem_0)));
+function $jd_host_marshal_field_rows$(_book_0, _tel_0, _out_0, _seen_0, _depth_0, _fuel_0) {
+  return run_tail(((_fuel_0 > 0)) ? ((_x_0) => {
+  return $jd_host_marshal_field_rows_on$(_book_0, run_loop($wnf$(_book_0, _tel_0)), _out_0, _seen_0, _depth_0, ((_fuel_0 - 1) >>> 0));
 }) : ((_x_1) => {
-  return _r_0;
+  const _x_2 = ($jd_host_error$("host field telescope depth"));
+  const _x_3 = (_x_2 + "()");
+  return {$: "JDHostFieldsEnd", "error": (",[\"$unsupported\"]:" + _x_3)};
 }), {$: "Unit"});
 }
 
-function $env_tele_check_loop$(_e_0, _ctx_0, _tel_0, _args_0, _dem_0, _bindings_0, _count_0) {
-  if (_args_0.$ === "Nil") {
-    return $ok$(($cw$(_e_0)), ($atom$("Args")), run_loop($env_tele_apply$(_tel_0, _bindings_0)), {$: "Nil"});
+function $env_tele_check_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, _bindings_0, _count_0) {
+  return $env_tele_check_after$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, _bindings_0, _count_0, run_loop($check$(_e_0, _ctx_0, _h_0, run_loop($qdem$(($qt$(_tel_0)), _dem_0)), run_loop($env_tele_apply$(run_loop($kid$(_tel_0, 0)), _bindings_0)))));
+}
+
+function $env_tele_check_open$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0) {
+  return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
+  if ((run_loop($env_tele_safe$(_tel_0)))) {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $env_tele_check_head$, x: [_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, {$: "Nil"}, 0]};
+} else {
+const _x_2 = {$: "Unit"};
+return {$: "$JMP", f: $tele_check_legacy_head$, x: [_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0]};
+}
+}) : ((_x_3) => {
+  return $bad$(($cw$(_e_0)), "too many telescope arguments");
+}), {$: "Unit"});
+}
+
+function $tele_check_legacy_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0) {
+  return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
+  return $ki_tele_legacy$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, run_loop($check$(_e_0, _ctx_0, _h_0, run_loop($qdem$(($qt$(_tel_0)), _dem_0)), run_loop($kid$(_tel_0, 0)))));
+}) : ((_x_1) => {
+  return $bad$(($cw$(_e_0)), "too many telescope arguments");
+}), {$: "Unit"});
+}
+
+function $descend_ctr$(_a_0, _p_0, _result_0) {
+  const _ord_0 = _result_0["order"];
+  const _bad_0 = _result_0["bad"];
+  return run_tail(((_ord_0 === 2)) ? ((_x_0) => {
+  return $descend_sub$(_a_0, ($ks$(_p_0)), _bad_0, 0);
+}) : ((_x_1) => {
+  return _ord_0;
+}), {$: "Unit"});
+}
+
+function $descend_fields$(_a_0, _p_0, _ord_0, _index_0) {
+  if (_a_0.$ === "Nil") {
+    return {$: "KDescent", "order": _ord_0, "bad": 4294967295};
   } else {
-    const _h_0 = _args_0["head"];
-    const _rest_0 = _args_0["tail"];
-    return run_tail((run_loop($env_tele_safe$(_h_0))) ? ((_x_0) => {
-  return run_tail((($Bool$and$(($String$eq$(($tg$(_tel_0)), "All")), (_count_0 < 64)))) ? ((_x_1) => {
-  return $env_tele_check_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, _bindings_0, _count_0);
+    const _h_0 = _a_0["head"];
+    const _t_0 = _a_0["tail"];
+    return $descend_field$(_t_0, ($terms_tail$(_p_0)), _ord_0, _index_0, run_loop($descend$(1, _h_0, run_loop($terms_at$(_p_0, 0)))));
+  }
+}
+
+function $sp_len$(_s_0) {
+  return $sk_width$(_s_0, 0);
+}
+
+function $sp_live_error$(_e_0, _ctx_0, _head_0, _message_0, _expected_0) {
+  return $dg_trace$(_e_0, _ctx_0, _head_0, ($atom$("Absent")), ($dg_bad_detail$(($cw$(_e_0)), _message_0, ($dg_text$(_expected_0)), _head_0)));
+}
+
+function $sp_live_memo$(_e_0, _ctx_0, _head_0, _sp_0, _d_0, _xs_0, _key_0, _memo_0) {
+  return run_tail((($Bool$not$(($String$eq$(($sp_mname$(_memo_0)), ""))))) ? ((_x_0) => {
+  return run_tail((($Bool$and$(($sp_active$(_memo_0)), ($Bool$not$(($String$eq$(($sp_mname$(_memo_0)), ($cn$(_e_0))))))))) ? ((_x_1) => {
+  return $sp_live_error$(_e_0, _ctx_0, _head_0, "nondecreasing cross-instance template recursion", "a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)");
 }) : ((_x_2) => {
-  return $env_tele_check_open$(_e_0, _ctx_0, run_loop($wnf$(($cb$(_e_0)), run_loop($env_tele_apply$(_tel_0, _bindings_0)))), _h_0, _rest_0, _dem_0);
+  return $sp_live_ref$(($cw$(_e_0)), _head_0, ($sp_mname$(_memo_0)), ($dx$(_d_0)));
 }), {$: "Unit"});
 }) : ((_x_3) => {
-  return $tele_check_legacy$(_e_0, _ctx_0, run_loop($env_tele_apply$(_tel_0, _bindings_0)), {$: "Con", "head": _h_0, "tail": _rest_0}, _dem_0);
+  const _x_4 = ($cd$(_e_0));
+  return run_tail(((_x_4 >= 64)) ? ((_x_5) => {
+  return $sp_live_error$(_e_0, _ctx_0, _head_0, "template instantiation exceeds 64 levels", "a template that stops instantiating itself (64 levels at most)");
+}) : ((_x_6) => {
+  const _x_7 = ($U32$show$(($sp_ordinal$(($kw_memo$(($cw$(_e_0)))), ($dn$(_d_0))))));
+  const _x_8 = ($dn$(_d_0));
+  const _x_9 = ("~" + _x_7);
+  return $sp_live_fresh$(_e_0, _ctx_0, _head_0, _d_0, _xs_0, _key_0, (_x_8 + _x_9), ($kw_mint_floor$(($cw$(_e_0)), {$: "Con", "head": ($cl$(_e_0)), "tail": ($norm_join$(_ctx_0, _sp_0))})), run_loop($norm_max$(($norm_max_term$(($dt$(_d_0)))), ($norm_max_term$(($dv$(_d_0)))))));
 }), {$: "Unit"});
-  }
+}), {$: "Unit"});
 }
 
-function $tele_check_legacy$(_e_0, _ctx_0, _tel_0, _args_0, _dem_0) {
-  if (_args_0.$ === "Nil") {
-    return $ok$(($cw$(_e_0)), ($atom$("Args")), _tel_0, {$: "Nil"});
+function $sp_find$(_ms_0, _name_0, _key_0) {
+  if (_ms_0.$ === "Nil") {
+    return {$: "KSpecMemo", "template": "", "key": "", "name": "", "active": false};
   } else {
-    const _h_0 = _args_0["head"];
-    const _rest_0 = _args_0["tail"];
-    return $tele_check_legacy_head$(_e_0, _ctx_0, run_loop($wnf$(($cb$(_e_0)), _tel_0)), _h_0, _rest_0, _dem_0);
-  }
-}
-
-function $lhs_ext$(_lhs_0, _name_0, _tel_0, _n_0, _xs_0, _fresh_0) {
-  return run_tail(((_n_0 === 0)) ? ((_x_0) => {
-  return $kapply$(_lhs_0, ($kt$("Ctr", _name_0, 0, 0, _xs_0)));
-}) : ((_x_1) => {
-  return $k_lam$(($nm$(_tel_0)), _fresh_0, ($qt$(_tel_0)), {$: "Con", "head": run_loop($lhs_ext$(_lhs_0, _name_0, run_loop($kid$(_tel_0, 1)), ((_n_0 - 1) >>> 0), ($norm_join$(_xs_0, {$: "Con", "head": ($var$(($nm$(_tel_0)), _fresh_0)), "tail": {$: "Nil"}})), ((_fresh_0 + 1) >>> 0))), "tail": {$: "Nil"}}, 0, 0, false);
-}), {$: "Unit"});
-}
-
-function $descend_go$(_a_0, _p_0) {
-  return run_tail((($Bool$and$(($core_literal$(_a_0)), ($String$eq$(($tg$(_p_0)), "Ctr"))))) ? ((_x_0) => {
-  return $descend_go$(run_loop($core_literal_step$(_a_0)), _p_0);
-}) : ((_x_1) => {
-  return run_tail((($String$eq$(($tg$(_p_0)), "Var"))) ? ((_x_2) => {
-  const _x_3 = ($ix$(_a_0));
-  const _x_4 = ($ix$(_p_0));
-  if ((($Bool$and$(($String$eq$(($tg$(_a_0)), "Var")), (_x_3 === _x_4))))) {
-const _x_5 = {$: "Unit"};
-return 1;
+    const _h_0 = _ms_0["head"];
+    const _rest_0 = _ms_0["tail"];
+    if ((($Bool$and$(($String$eq$(($sp_mtemplate$(_h_0)), _name_0)), ($String$eq$(($sp_mkey$(_h_0)), _key_0)))))) {
+const _x_0 = {$: "Unit"};
+return _h_0;
 } else {
-const _x_6 = {$: "Unit"};
-return 2;
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $sp_find$, x: [_rest_0, _name_0, _key_0]};
 }
-}) : ((_x_7) => {
-  return run_tail((($String$eq$(($tg$(_p_0)), "Ctr"))) ? ((_x_8) => {
-  const _x_9 = ($terms_len$(($ks$(_a_0))));
-  const _x_10 = ($terms_len$(($ks$(_p_0))));
-  return $descend_ctr$(_a_0, _p_0, run_loop(run_tail((($Bool$and$(($Bool$and$(($String$eq$(($tg$(_a_0)), "Ctr")), ($String$eq$(($nm$(_a_0)), ($nm$(_p_0)))))), (_x_9 === _x_10)))) ? ((_x_11) => {
-  return $descend_fields$(($ks$(_a_0)), ($ks$(_p_0)), 1, 0);
-}) : ((_x_12) => {
-  return {$: "KDescent", "order": 2, "bad": 4294967295};
-}), {$: "Unit"})));
-}) : ((_x_13) => {
-  return 2;
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $sp_live_key$(_e_0, _ctx_0, _head_0, _sp_0, _d_0, _xs_0, _key_0) {
-  const _x_0 = ($sp_len$(_key_0));
-  return run_tail(((_x_0 > 32768)) ? ((_x_1) => {
-  return $sp_live_error$(_e_0, _ctx_0, _head_0, "a comptime argument must stop growing", "a ~ argument that stops growing");
-}) : ((_x_2) => {
-  return $sp_live_memo$(_e_0, _ctx_0, _head_0, _sp_0, _d_0, _xs_0, _key_0, run_loop($sp_find$(($kw_memo$(($cw$(_e_0)))), ($dn$(_d_0)), _key_0)));
-}), {$: "Unit"});
-}
-
-function $sp_keys$(_ts_0) {
-  if (_ts_0.$ === "Nil") {
-    return "";
-  } else {
-    const _head_0 = _ts_0["head"];
-    const _rest_0 = _ts_0["tail"];
-    const _x_3 = run_loop($term_key$(_head_0));
-    const _x_4 = run_loop(run_tail((($List$is_empty$(_rest_0))) ? ((_x_0) => {
-  return "";
-}) : ((_x_1) => {
-  const _x_2 = ($sp_keys$(_rest_0));
-  return ("\n" + _x_2);
-}), {$: "Unit"}));
-    return (_x_3 + _x_4);
   }
-}
-
-function $sp_take_next$(_ts_0, _n_0) {
-  if (_ts_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _ts_0["head"];
-    const _rest_0 = _ts_0["tail"];
-    return {$: "Con", "head": _h_0, "tail": run_loop($sp_take$(_rest_0, ((_n_0 - 1) >>> 0)))};
-  }
-}
-
-function $template_arg_done$(_e_0, _ty_0, _h_0, _rest_0, _n_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $template_args$(($ke_world$(_e_0, ($rw$(_r_0)))), run_loop($subst$(run_loop($kid$(_ty_0, 1)), ($ix$(_ty_0)), _h_0)), _rest_0, ((_n_0 - 1) >>> 0));
-}) : ((_x_1) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $norm_cmp_kind$(_book_0, _st_0, _a_0, _b_0, _g_0, _h_0, _fresh_0, _rest_0, _alts_0) {
-  const _x_0 = ($qt$(_g_0));
-  const _x_1 = ($qt$(_h_0));
-  const _x_2 = ($Bool$and$(($String$eq$(($tg$(_g_0)), "Qua")), (_x_0 === 2)));
-  const _x_3 = ($Bool$and$(($String$eq$(($tg$(_h_0)), "Qua")), ($Bool$not$((_x_1 === 2)))));
-  return run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
-  return $norm_cmp_loop$(_book_0, _st_0, _rest_0, _alts_0);
-}) : ((_x_5) => {
-  return run_tail((($String$eq$(($tg$(_g_0)), "Min"))) ? ((_x_6) => {
-  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": ($kt$("Typ", "", 0, 0, {$: "Con", "head": run_loop($kid$(_g_0, 0)), "tail": {$: "Nil"}})), "b": _b_0, "le": true, "fresh": _fresh_0}, "tail": {$: "Con", "head": {$: "KNormCmp", "a": ($kt$("Typ", "", 0, 0, {$: "Con", "head": run_loop($kid$(_g_0, 1)), "tail": {$: "Nil"}})), "b": _b_0, "le": true, "fresh": _fresh_0}, "tail": _rest_0}}, _alts_0);
-}) : ((_x_7) => {
-  return run_tail((($String$eq$(($tg$(_h_0)), "Min"))) ? ((_x_8) => {
-  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": _a_0, "b": ($kt$("Typ", "", 0, 0, {$: "Con", "head": run_loop($kid$(_h_0, 0)), "tail": {$: "Nil"}})), "le": true, "fresh": _fresh_0}, "tail": _rest_0}, {$: "Con", "head": {$: "KNormAlt", "todo": {$: "Con", "head": {$: "KNormCmp", "a": _a_0, "b": ($kt$("Typ", "", 0, 0, {$: "Con", "head": run_loop($kid$(_h_0, 1)), "tail": {$: "Nil"}})), "le": true, "fresh": _fresh_0}, "tail": _rest_0}}, "tail": _alts_0});
-}) : ((_x_9) => {
-  return $norm_cmp_loop$(_book_0, _st_0, {$: "Con", "head": {$: "KNormCmp", "a": _g_0, "b": _h_0, "le": true, "fresh": _fresh_0}, "tail": _rest_0}, _alts_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
 }
 
 function $f_context_headers$(_defs_0, _ns_0, _aliases_0) {
@@ -37824,14 +38438,14 @@ function $jd_ordered_named$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0, _xs_
   const _x_4 = run_loop($jd_native_known$(_book_0, _d_0));
   return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_2 === 0))), (_x_3 || _x_4)))) ? ((_x_5) => {
   const _x_6 = ($terms_len$(_xs_0));
-  const _x_7 = run_loop($jd_arity$(_book_0, _d_0));
+  const _x_7 = run_loop($jd_emitted_arity$(_book_0, _d_0));
   return run_tail(((_x_6 === _x_7)) ? ((_x_8) => {
   return $jd_ordered_call$(_book_0, run_loop($jd_owner$(_env_0)), ($dn$(_d_0)), _tail_0, run_loop($jd_ordered_args$(_book_0, _env_0, _xs_0, ($dt$(_d_0)), _next_0)));
 }) : ((_x_9) => {
   const _x_10 = ($terms_len$(_xs_0));
-  const _x_11 = run_loop($jd_arity$(_book_0, _d_0));
+  const _x_11 = run_loop($jd_emitted_arity$(_book_0, _d_0));
   return run_tail(((_x_10 < _x_11)) ? ((_x_12) => {
-  const _x_13 = run_loop($jd_arity$(_book_0, _d_0));
+  const _x_13 = run_loop($jd_emitted_arity$(_book_0, _d_0));
   const _x_14 = ($terms_len$(_xs_0));
   return $jd_ordered_eta$(_book_0, run_loop($jd_owner$(_env_0)), ($dn$(_d_0)), ($jd_ordered_after$(_book_0, _xs_0, ($dt$(_d_0)))), ((_x_13 - _x_14) >>> 0), ($terms_len$(_env_0)), _tail_0, run_loop($jd_ordered_args$(_book_0, _env_0, _xs_0, ($dt$(_d_0)), _next_0)));
 }) : ((_x_15) => {
@@ -37892,127 +38506,179 @@ function $jd_ordered_arg_head$(_book_0, _env_0, _rest_0, _ty_0, _head_0) {
   return $jd_ordered_arg_join$(_prefix_0, _value_0, run_loop($jd_ordered_args$(_book_0, _env_0, _rest_0, _ty_0, _next_0)));
 }
 
-function $jd_host_marshal_tail$(_book_0, _tel_0, _out_0, _seen_0, _depth_0, _fuel_0, _self_0) {
-  return run_tail(((_fuel_0 > 0)) ? ((_x_0) => {
-  return $jd_host_marshal_tail_on$(_book_0, run_loop($wnf$(_book_0, _tel_0)), _out_0, _seen_0, _depth_0, ((_fuel_0 - 1) >>> 0), _self_0);
-}) : ((_x_1) => {
-  return "";
-}), {$: "Unit"});
+function $jd_word_cover_key$(_cover_0) {
+  return $term_key$(run_loop($jd_word_unann$(run_loop($jd_word_cover_apply$(_cover_0, ($kt$("Ctr", "WCon", 0, 0, {$: "Con", "head": ($var$("$bit", 4294967264)), "tail": {$: "Con", "head": ($var$("$tail", 4294967265)), "tail": {$: "Nil"}}})))))));
 }
 
-function $jd_host_marshal_fields$(_book_0, _tel_0, _out_0, _seen_0, _depth_0, _fuel_0, _tail_0) {
-  return run_tail(((_fuel_0 > 0)) ? ((_x_0) => {
-  return $jd_host_marshal_fields_on$(_book_0, run_loop($wnf$(_book_0, _tel_0)), _out_0, _seen_0, _depth_0, ((_fuel_0 - 1) >>> 0), _tail_0);
-}) : ((_x_1) => {
-  const _x_2 = ($jd_host_error$("host field telescope depth"));
-  const _x_3 = (_x_2 + "()");
-  return (",[\"$unsupported\"]:" + _x_3);
-}), {$: "Unit"});
-}
-
-function $jd_word_unann$(_t_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "Ann"))) ? ((_x_0) => {
-  return $jd_word_unann$(run_loop($kid$(_t_0, 0)));
-}) : ((_x_1) => {
-  return $k_rebuild$(_t_0, ($nm$(_t_0)), ($ix$(_t_0)), ($qt$(_t_0)), ($jd_word_unanns$(($ks$(_t_0)))), ($rm$(_t_0)), ($kb$(_t_0)), ($ke$(_t_0)));
-}), {$: "Unit"});
-}
-
-function $jd_word_cover_apply$(_cover_0, _word_0) {
+function $jd_word_cover_push$(_cover_0, _name_0) {
   const _term_0 = _cover_0["term"];
   const _fields_0 = _cover_0["fields"];
   const _prefix_0 = _cover_0["prefix"];
-  return $jd_word_cover_args$(_term_0, _fields_0, ($jd_word_prefix$(_prefix_0, _word_0)));
+  return {$: "JDWordCover", "term": _term_0, "fields": _fields_0, "prefix": ($List$append$(_prefix_0, {$: "Con", "head": ($kt$("Ctr", _name_0, 0, 0, {$: "Nil"})), "tail": {$: "Nil"}}))};
 }
 
-function $env_tele_check_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, _bindings_0, _count_0) {
-  return $env_tele_check_after$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, _bindings_0, _count_0, run_loop($check$(_e_0, _ctx_0, _h_0, run_loop($qdem$(($qt$(_tel_0)), _dem_0)), run_loop($env_tele_apply$(run_loop($kid$(_tel_0, 0)), _bindings_0)))));
-}
-
-function $env_tele_check_open$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0) {
-  return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
-  if ((run_loop($env_tele_safe$(_tel_0)))) {
-const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $env_tele_check_head$, x: [_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, {$: "Nil"}, 0]};
-} else {
-const _x_2 = {$: "Unit"};
-return {$: "$JMP", f: $tele_check_legacy_head$, x: [_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0]};
-}
-}) : ((_x_3) => {
-  return $bad$(($cw$(_e_0)), "too many telescope arguments");
-}), {$: "Unit"});
-}
-
-function $tele_check_legacy_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0) {
-  return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
-  return $ki_tele_legacy$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, run_loop($check$(_e_0, _ctx_0, _h_0, run_loop($qdem$(($qt$(_tel_0)), _dem_0)), run_loop($kid$(_tel_0, 0)))));
-}) : ((_x_1) => {
-  return $bad$(($cw$(_e_0)), "too many telescope arguments");
-}), {$: "Unit"});
-}
-
-function $descend_ctr$(_a_0, _p_0, _result_0) {
-  const _ord_0 = _result_0["order"];
-  const _bad_0 = _result_0["bad"];
-  return run_tail(((_ord_0 === 2)) ? ((_x_0) => {
-  return $descend_sub$(_a_0, ($ks$(_p_0)), _bad_0, 0);
-}) : ((_x_1) => {
-  return _ord_0;
-}), {$: "Unit"});
-}
-
-function $descend_fields$(_a_0, _p_0, _ord_0, _index_0) {
-  if (_a_0.$ === "Nil") {
-    return {$: "KDescent", "order": _ord_0, "bad": 4294967295};
+function $jd_host_marshal_rows_tail$(_fields_0, _self_0) {
+  if (_fields_0.$ === "JDHostFieldsEnd") {
+    return "";
   } else {
-    const _h_0 = _a_0["head"];
-    const _t_0 = _a_0["tail"];
-    return $descend_field$(_t_0, ($terms_tail$(_p_0)), _ord_0, _index_0, run_loop($descend$(1, _h_0, run_loop($terms_at$(_p_0, 0)))));
+    const _name_0 = _fields_0["name"];
+    const _marshal_0 = _fields_0["marshal"];
+    const _rest_0 = _fields_0["rest"];
+    return $jd_host_marshal_tail_done$(_name_0, ($String$eq$(_marshal_0, _self_0)), run_loop($jd_host_marshal_rows_tail$(_rest_0, _self_0)));
   }
 }
 
-function $sp_len$(_s_0) {
-  return $sk_width$(_s_0, 0);
+function $jd_host_marshal_rows_text$(_fields_0, _tail_0) {
+  if (_fields_0.$ === "JDHostFieldsEnd") {
+    const _error_0 = _fields_0["error"];
+    return _error_0;
+  } else {
+    const _name_0 = _fields_0["name"];
+    const _marshal_0 = _fields_0["marshal"];
+    const _rest_0 = _fields_0["rest"];
+    const _x_2 = run_loop(run_tail((($String$eq$(_name_0, _tail_0))) ? ((_x_0) => {
+  return "";
+}) : ((_x_1) => {
+  return $jd_host_marshal_field$(_name_0, _marshal_0);
+}), {$: "Unit"}));
+    const _x_3 = ($jd_host_marshal_rows_text$(_rest_0, _tail_0));
+    return (_x_2 + _x_3);
+  }
 }
 
-function $sp_live_error$(_e_0, _ctx_0, _head_0, _message_0, _expected_0) {
-  return $dg_trace$(_e_0, _ctx_0, _head_0, ($atom$("Absent")), ($dg_bad_detail$(($cw$(_e_0)), _message_0, ($dg_text$(_expected_0)), _head_0)));
-}
-
-function $sp_live_memo$(_e_0, _ctx_0, _head_0, _sp_0, _d_0, _xs_0, _key_0, _memo_0) {
-  return run_tail((($Bool$not$(($String$eq$(($sp_mname$(_memo_0)), ""))))) ? ((_x_0) => {
-  return run_tail((($Bool$and$(($sp_active$(_memo_0)), ($Bool$not$(($String$eq$(($sp_mname$(_memo_0)), ($cn$(_e_0))))))))) ? ((_x_1) => {
-  return $sp_live_error$(_e_0, _ctx_0, _head_0, "nondecreasing cross-instance template recursion", "a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)");
-}) : ((_x_2) => {
-  return $sp_live_ref$(($cw$(_e_0)), _head_0, ($sp_mname$(_memo_0)), ($dx$(_d_0)));
-}), {$: "Unit"});
+function $jd_host_marshal_field_rows_on$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
+  const _x_1 = ($qt$(_t_0));
+  return run_tail(((_x_1 === 0)) ? ((_x_2) => {
+  return $jd_host_marshal_field_rows$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), _out_0, _seen_0, _depth_0, _fuel_0);
 }) : ((_x_3) => {
-  const _x_4 = ($cd$(_e_0));
-  return run_tail(((_x_4 >= 64)) ? ((_x_5) => {
-  return $sp_live_error$(_e_0, _ctx_0, _head_0, "template instantiation exceeds 64 levels", "a template that stops instantiating itself (64 levels at most)");
-}) : ((_x_6) => {
-  const _x_7 = ($U32$show$(($sp_ordinal$(($kw_memo$(($cw$(_e_0)))), ($dn$(_d_0))))));
-  const _x_8 = ($dn$(_d_0));
-  const _x_9 = ("~" + _x_7);
-  return $sp_live_fresh$(_e_0, _ctx_0, _head_0, _d_0, _xs_0, _key_0, (_x_8 + _x_9), ($kw_mint_floor$(($cw$(_e_0)), {$: "Con", "head": ($cl$(_e_0)), "tail": ($norm_join$(_ctx_0, _sp_0))})), run_loop($norm_max$(($norm_max_term$(($dt$(_d_0)))), ($norm_max_term$(($dv$(_d_0)))))));
+  return {$: "JDHostFieldsCon", "name": ($nm$(_t_0)), "marshal": run_loop($jd_host_marshal$(_book_0, run_loop($kid$(_t_0, 0)), _out_0, _seen_0, _depth_0, _fuel_0)), "rest": run_loop($jd_host_marshal_field_rows$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), _out_0, _seen_0, _depth_0, _fuel_0))};
 }), {$: "Unit"});
+}) : ((_x_4) => {
+  return {$: "JDHostFieldsEnd", "error": ""};
 }), {$: "Unit"});
 }
 
-function $sp_find$(_ms_0, _name_0, _key_0) {
+function $env_tele_check_after$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, _bindings_0, _count_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return $tele_check_done$(_r_0, run_loop($env_tele_check_loop$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, run_loop($kid$(_tel_0, 1)), _rest_0, _dem_0, {$: "Con", "head": {$: "KTelescopeBinding", "id": ($ix$(_tel_0)), "value": _h_0}, "tail": _bindings_0}, ((_count_0 + 1) >>> 0))));
+}) : ((_x_1) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $ki_tele_legacy$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return $tele_check_done$(_r_0, run_loop($tele_check_legacy$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, run_loop($subst$(run_loop($kid$(_tel_0, 1)), ($ix$(_tel_0)), _h_0)), _rest_0, _dem_0)));
+}) : ((_x_1) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $descend_sub$(_a_0, _ps_0, _bad_0, _index_0) {
+  if (_ps_0.$ === "Nil") {
+    return 2;
+  } else {
+    const _h_0 = _ps_0["head"];
+    const _t_0 = _ps_0["tail"];
+    return run_tail(((_index_0 === _bad_0)) ? ((_x_0) => {
+  return $descend_sub$(_a_0, _t_0, _bad_0, ((_index_0 + 1) >>> 0));
+}) : ((_x_1) => {
+  const _x_2 = run_loop($descend$(1, _a_0, _h_0));
+  if (((_x_2 === 2))) {
+const _x_3 = {$: "Unit"};
+return {$: "$JMP", f: $descend_sub$, x: [_a_0, _t_0, _bad_0, ((_index_0 + 1) >>> 0)]};
+} else {
+const _x_4 = {$: "Unit"};
+return 0;
+}
+}), {$: "Unit"});
+  }
+}
+
+function $descend_field$(_a_0, _p_0, _ord_0, _index_0, _field_0) {
+  return run_tail(((_field_0 === 2)) ? ((_x_0) => {
+  return {$: "KDescent", "order": 2, "bad": _index_0};
+}) : ((_x_1) => {
+  return $descend_fields$(_a_0, _p_0, run_loop(run_tail(((_field_0 === 1)) ? ((_x_2) => {
+  return _ord_0;
+}) : ((_x_3) => {
+  return _field_0;
+}), {$: "Unit"})), ((_index_0 + 1) >>> 0));
+}), {$: "Unit"});
+}
+
+function $sk_width$($0, $1) {
+  for (;;) {
+    {
+      const _s_0 = $0;
+      const _n_0 = $1;
+      if (_s_0 === "") {
+        return _n_0;
+      } else {
+        const _c_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(0, 2) : _s_0[0]);
+        const _rest_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(2) : _s_0.slice(1));
+        const _x_0 = run_loop($dg_units$(_c_0));
+        $0 = _rest_0;
+        $1 = ((_n_0 + _x_0) >>> 0);
+        continue;
+      }
+    }
+  }
+}
+
+function $sp_mname$(_m_0) {
+  const _name_0 = _m_0["name"];
+  return _name_0;
+}
+
+function $sp_active$(_m_0) {
+  const _active_0 = _m_0["active"];
+  return _active_0;
+}
+
+function $sp_live_ref$(_world_0, _head_0, _name_0, _consumed_0) {
+  return {$: "KChecking", "term": {$: "KTerm", "tag": "Ref", "name": _name_0, "id": ($ix$(_head_0)), "quant": ($qt$(_head_0)), "kids": ($ks$(_head_0)), "removed": ($rm$(_head_0)), "originBegin": ($kb$(_head_0)), "originEnd": ($ke$(_head_0))}, "typ": ($dt$(run_loop($lookup$(($kw_book$(_world_0)), _name_0)))), "uses": {$: "Nil"}, "error": "", "world": _world_0, "consumed": _consumed_0};
+}
+
+function $sp_live_fresh$(_e_0, _ctx_0, _head_0, _d_0, _xs_0, _key_0, _name_0, _bound_0, _width_0) {
+  const _x_0 = ((4294967293 - _width_0) >>> 0);
+  return run_tail((($Bool$and$((_width_0 < 4294967294), (_bound_0 <= _x_0)))) ? ((_x_1) => {
+  const _x_2 = ((_bound_0 + _width_0) >>> 0);
+  return $sp_live_body$(_e_0, _head_0, _d_0, _key_0, _name_0, run_loop($tele_fill$(($cb$(_e_0)), run_loop($sp_shift$(($dt$(_d_0)), ((_bound_0 + 1) >>> 0))), _xs_0)), ($sp_apply_template$(run_loop($sp_shift$(($dv$(_d_0)), ((_bound_0 + 1) >>> 0))), _xs_0)), ((_x_2 + 2) >>> 0));
+}) : ((_x_3) => {
+  return $sp_live_error$(_e_0, _ctx_0, _head_0, "fresh binder space exhausted", "a representable fresh binder identity");
+}), {$: "Unit"});
+}
+
+function $sp_ordinal$(_ms_0, _name_0) {
   if (_ms_0.$ === "Nil") {
-    return {$: "KSpecMemo", "template": "", "key": "", "name": "", "active": false};
+    return 0;
   } else {
     const _h_0 = _ms_0["head"];
     const _rest_0 = _ms_0["tail"];
-    if ((($Bool$and$(($String$eq$(($sp_mtemplate$(_h_0)), _name_0)), ($String$eq$(($sp_mkey$(_h_0)), _key_0)))))) {
-const _x_0 = {$: "Unit"};
-return _h_0;
-} else {
-const _x_1 = {$: "Unit"};
-return {$: "$JMP", f: $sp_find$, x: [_rest_0, _name_0, _key_0]};
-}
+    const _x_2 = run_loop(run_tail((($String$eq$(($sp_mtemplate$(_h_0)), _name_0))) ? ((_x_0) => {
+  return 1;
+}) : ((_x_1) => {
+  return 0;
+}), {$: "Unit"}));
+    const _x_3 = ($sp_ordinal$(_rest_0, _name_0));
+    return ((_x_2 + _x_3) >>> 0);
   }
+}
+
+function $kw_mint_floor$(_world_0, _roots_0) {
+  return $kw_floor_fresh$(_world_0, ($kw_fresh$(_world_0)), _roots_0);
+}
+
+function $sp_mtemplate$(_m_0) {
+  const _template_0 = _m_0["template"];
+  return _template_0;
+}
+
+function $sp_mkey$(_m_0) {
+  const _key_0 = _m_0["key"];
+  return _key_0;
 }
 
 function $f_context_type_name$(_name_0, _input_0) {
@@ -39253,184 +39919,106 @@ function $jd_ordered_arg_join$(_prefix_0, _value_0, _rest_0) {
   return {$: "JDOrderedArgs", "prefix": (_prefix_0 + _more_0), "values": {$: "Con", "head": _value_0, "tail": _values_0}, "next": _next_0};
 }
 
-function $jd_host_marshal_tail_on$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0, _self_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
-  const _x_1 = ($qt$(_t_0));
-  return $jd_host_marshal_tail_done$(($nm$(_t_0)), run_loop(run_tail(((_x_1 === 0)) ? ((_x_2) => {
-  return false;
-}) : ((_x_3) => {
-  return $String$eq$(run_loop($jd_host_marshal$(_book_0, run_loop($kid$(_t_0, 0)), _out_0, _seen_0, _depth_0, _fuel_0)), _self_0);
-}), {$: "Unit"})), run_loop($jd_host_marshal_tail$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), _out_0, _seen_0, _depth_0, _fuel_0, _self_0)));
-}) : ((_x_4) => {
-  return "";
-}), {$: "Unit"});
-}
-
-function $jd_host_marshal_fields_on$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0, _tail_0) {
-  return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
-  const _x_1 = ($qt$(_t_0));
-  const _x_2 = (_x_1 === 0);
-  const _x_3 = ($String$eq$(($nm$(_t_0)), _tail_0));
-  const _x_6 = run_loop(run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
-  return "";
-}) : ((_x_5) => {
-  return $jd_host_marshal_field$(($nm$(_t_0)), run_loop($jd_host_marshal$(_book_0, run_loop($kid$(_t_0, 0)), _out_0, _seen_0, _depth_0, _fuel_0)));
-}), {$: "Unit"}));
-  const _x_7 = run_loop($jd_host_marshal_fields$(_book_0, run_loop($j_app_type$(_t_0, ($atom$("Absent")))), _out_0, _seen_0, _depth_0, _fuel_0, _tail_0));
-  return (_x_6 + _x_7);
-}) : ((_x_8) => {
-  return "";
-}), {$: "Unit"});
-}
-
-function $jd_word_unanns$(_ts_0) {
-  if (_ts_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _t_0 = _ts_0["head"];
-    const _rest_0 = _ts_0["tail"];
-    return {$: "Con", "head": run_loop($jd_word_unann$(_t_0)), "tail": ($jd_word_unanns$(_rest_0))};
-  }
-}
-
-function $jd_word_cover_args$(_t_0, _fields_0, _word_0) {
-  return run_tail(((_fields_0 === 1)) ? ((_x_0) => {
-  return $core_apply$(run_loop($j_strip$(_t_0)), _word_0);
+function $jd_word_unann$(_t_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Ann"))) ? ((_x_0) => {
+  return $jd_word_unann$(run_loop($kid$(_t_0, 0)));
 }) : ((_x_1) => {
-  return $core_apply$(run_loop($j_strip$(run_loop($core_apply$(run_loop($j_strip$(_t_0)), run_loop($kid$(_word_0, 0)))))), run_loop($kid$(_word_0, 1)));
+  return $k_rebuild$(_t_0, ($nm$(_t_0)), ($ix$(_t_0)), ($qt$(_t_0)), ($jd_word_unanns$(($ks$(_t_0)))), ($rm$(_t_0)), ($kb$(_t_0)), ($ke$(_t_0)));
 }), {$: "Unit"});
 }
 
-function $jd_word_prefix$(_prefix_0, _tail_0) {
-  if (_prefix_0.$ === "Nil") {
-    return _tail_0;
-  } else {
-    const _bit_0 = _prefix_0["head"];
-    const _rest_0 = _prefix_0["tail"];
-    return $kt$("Ctr", "WCon", 0, 0, {$: "Con", "head": _bit_0, "tail": {$: "Con", "head": ($jd_word_prefix$(_rest_0, _tail_0)), "tail": {$: "Nil"}}});
-  }
+function $jd_word_cover_apply$(_cover_0, _word_0) {
+  const _term_0 = _cover_0["term"];
+  const _fields_0 = _cover_0["fields"];
+  const _prefix_0 = _cover_0["prefix"];
+  return $jd_word_cover_args$(_term_0, _fields_0, ($jd_word_prefix$(_prefix_0, _word_0)));
 }
 
-function $env_tele_check_after$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, _bindings_0, _count_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $tele_check_done$(_r_0, run_loop($env_tele_check_loop$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, run_loop($kid$(_tel_0, 1)), _rest_0, _dem_0, {$: "Con", "head": {$: "KTelescopeBinding", "id": ($ix$(_tel_0)), "value": _h_0}, "tail": _bindings_0}, ((_count_0 + 1) >>> 0))));
+function $jd_host_marshal_tail_done$(_name_0, _same_0, _rest_0) {
+  return run_tail((($Bool$not$(($String$eq$(_rest_0, ""))))) ? ((_x_0) => {
+  return _rest_0;
 }) : ((_x_1) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $ki_tele_legacy$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _dem_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $tele_check_done$(_r_0, run_loop($tele_check_legacy$(($ke_world$(_e_0, ($rw$(_r_0)))), _ctx_0, run_loop($subst$(run_loop($kid$(_tel_0, 1)), ($ix$(_tel_0)), _h_0)), _rest_0, _dem_0)));
-}) : ((_x_1) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $descend_sub$(_a_0, _ps_0, _bad_0, _index_0) {
-  if (_ps_0.$ === "Nil") {
-    return 2;
-  } else {
-    const _h_0 = _ps_0["head"];
-    const _t_0 = _ps_0["tail"];
-    return run_tail(((_index_0 === _bad_0)) ? ((_x_0) => {
-  return $descend_sub$(_a_0, _t_0, _bad_0, ((_index_0 + 1) >>> 0));
-}) : ((_x_1) => {
-  const _x_2 = run_loop($descend$(1, _a_0, _h_0));
-  if (((_x_2 === 2))) {
-const _x_3 = {$: "Unit"};
-return {$: "$JMP", f: $descend_sub$, x: [_a_0, _t_0, _bad_0, ((_index_0 + 1) >>> 0)]};
+  if ((_same_0)) {
+const _x_2 = {$: "Unit"};
+return _name_0;
 } else {
-const _x_4 = {$: "Unit"};
-return 0;
+const _x_3 = {$: "Unit"};
+return "";
 }
 }), {$: "Unit"});
-  }
 }
 
-function $descend_field$(_a_0, _p_0, _ord_0, _index_0, _field_0) {
-  return run_tail(((_field_0 === 2)) ? ((_x_0) => {
-  return {$: "KDescent", "order": 2, "bad": _index_0};
+function $jd_host_marshal_field$(_name_0, _marshal_0) {
+  return run_tail((($String$eq$(_marshal_0, ""))) ? ((_x_0) => {
+  return "";
 }) : ((_x_1) => {
-  return $descend_fields$(_a_0, _p_0, run_loop(run_tail(((_field_0 === 1)) ? ((_x_2) => {
-  return _ord_0;
-}) : ((_x_3) => {
-  return _field_0;
-}), {$: "Unit"})), ((_index_0 + 1) >>> 0));
+  const _x_2 = ($j_quote$(_name_0));
+  const _x_3 = (_x_2 + "])");
+  const _x_4 = ("(v[" + _x_3);
+  const _x_5 = (_marshal_0 + _x_4);
+  const _x_6 = run_loop($jd_literal_field_key$(_name_0, false));
+  const _x_7 = (":" + _x_5);
+  const _x_8 = (_x_6 + _x_7);
+  return ("," + _x_8);
 }), {$: "Unit"});
 }
 
-function $sk_width$($0, $1) {
+function $sp_live_body$(_e_0, _head_0, _d_0, _key_0, _name_0, _ty_0, _body_0, _next_0) {
+  const _x_0 = ($da$(_d_0));
+  const _x_1 = ($dx$(_d_0));
+  const _inst_0 = {$: "KDef", "name": _name_0, "kind": "Def", "arity": ((_x_0 - _x_1) >>> 0), "templates": 0, "typ": _ty_0, "value": _body_0, "ctors": {$: "Nil"}, "native": false, "unsafe": ($du$(_d_0))};
+  const _world_0 = {$: "KWorld", "book": run_loop($book_put$(run_loop($kw_bound_book$(($cb$(_e_0)), ((_next_0 - 1) >>> 0))), ($declared$(_inst_0)))), "memo": {$: "Con", "head": {$: "KSpecMemo", "template": ($dn$(_d_0)), "key": _key_0, "name": _name_0, "active": true}, "tail": ($kw_memo$(($cw$(_e_0))))}, "fresh": {$: "KFreshKnown", "next": _next_0}, "checked": ($kw_checked$(($cw$(_e_0))))};
+  const _x_2 = ($cd$(_e_0));
+  return $sp_live_done$(_head_0, _inst_0, ($dx$(_d_0)), run_loop($check_definition_body$(_world_0, _inst_0, ((_x_2 + 1) >>> 0))));
+}
+
+function $sp_shift$(_t_0, _offset_0) {
+  return run_tail((($core_literal$(_t_0))) ? ((_x_0) => {
+  return _t_0;
+}) : ((_x_1) => {
+  const _x_2 = ($String$eq$(($tg$(_t_0)), "Var"));
+  const _x_3 = ($String$eq$(($tg$(_t_0)), "All"));
+  const _x_4 = (_x_2 || _x_3);
+  const _x_5 = ($String$eq$(($tg$(_t_0)), "Lam"));
+  const _x_6 = (_x_4 || _x_5);
+  const _x_7 = ($String$eq$(($tg$(_t_0)), "Bind"));
+  const _x_8 = (_x_6 || _x_7);
+  const _x_9 = ($String$eq$(($tg$(_t_0)), "Sub"));
+  return $k_rebuild$(_t_0, ($nm$(_t_0)), run_loop(run_tail(((_x_8 || _x_9)) ? ((_x_10) => {
+  const _x_11 = ($ix$(_t_0));
+  return ((_x_11 + _offset_0) >>> 0);
+}) : ((_x_12) => {
+  return $ix$(_t_0);
+}), {$: "Unit"})), ($qt$(_t_0)), ($sp_shifts$(($ks$(_t_0)), _offset_0)), ($rm$(_t_0)), ($kb$(_t_0)), ($ke$(_t_0)));
+}), {$: "Unit"});
+}
+
+function $sp_apply_template$($0, $1) {
   for (;;) {
     {
-      const _s_0 = $0;
-      const _n_0 = $1;
-      if (_s_0 === "") {
-        return _n_0;
+      const _body_0 = $0;
+      const _xs_0 = $1;
+      if (_xs_0.$ === "Nil") {
+        return _body_0;
       } else {
-        const _c_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(0, 2) : _s_0[0]);
-        const _rest_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(2) : _s_0.slice(1));
-        const _x_0 = run_loop($dg_units$(_c_0));
-        $0 = _rest_0;
-        $1 = ((_n_0 + _x_0) >>> 0);
+        const _h_0 = _xs_0["head"];
+        const _rest_0 = _xs_0["tail"];
+        $0 = run_loop($kapply$(_body_0, _h_0));
+        $1 = _rest_0;
         continue;
       }
     }
   }
 }
 
-function $sp_mname$(_m_0) {
-  const _name_0 = _m_0["name"];
-  return _name_0;
-}
-
-function $sp_active$(_m_0) {
-  const _active_0 = _m_0["active"];
-  return _active_0;
-}
-
-function $sp_live_ref$(_world_0, _head_0, _name_0, _consumed_0) {
-  return {$: "KChecking", "term": {$: "KTerm", "tag": "Ref", "name": _name_0, "id": ($ix$(_head_0)), "quant": ($qt$(_head_0)), "kids": ($ks$(_head_0)), "removed": ($rm$(_head_0)), "originBegin": ($kb$(_head_0)), "originEnd": ($ke$(_head_0))}, "typ": ($dt$(run_loop($lookup$(($kw_book$(_world_0)), _name_0)))), "uses": {$: "Nil"}, "error": "", "world": _world_0, "consumed": _consumed_0};
-}
-
-function $sp_live_fresh$(_e_0, _ctx_0, _head_0, _d_0, _xs_0, _key_0, _name_0, _bound_0, _width_0) {
-  const _x_0 = ((4294967293 - _width_0) >>> 0);
-  return run_tail((($Bool$and$((_width_0 < 4294967294), (_bound_0 <= _x_0)))) ? ((_x_1) => {
-  const _x_2 = ((_bound_0 + _width_0) >>> 0);
-  return $sp_live_body$(_e_0, _head_0, _d_0, _key_0, _name_0, run_loop($tele_fill$(($cb$(_e_0)), run_loop($sp_shift$(($dt$(_d_0)), ((_bound_0 + 1) >>> 0))), _xs_0)), ($sp_apply_template$(run_loop($sp_shift$(($dv$(_d_0)), ((_bound_0 + 1) >>> 0))), _xs_0)), ((_x_2 + 2) >>> 0));
-}) : ((_x_3) => {
-  return $sp_live_error$(_e_0, _ctx_0, _head_0, "fresh binder space exhausted", "a representable fresh binder identity");
-}), {$: "Unit"});
-}
-
-function $sp_ordinal$(_ms_0, _name_0) {
-  if (_ms_0.$ === "Nil") {
-    return 0;
+function $kw_floor_fresh$(_world_0, _fresh_0, _roots_0) {
+  if (_fresh_0.$ === "KFreshKnown") {
+    const _next_0 = _fresh_0["next"];
+    return $norm_max_walk$(_roots_0, ((_next_0 - 1) >>> 0));
   } else {
-    const _h_0 = _ms_0["head"];
-    const _rest_0 = _ms_0["tail"];
-    const _x_2 = run_loop(run_tail((($String$eq$(($sp_mtemplate$(_h_0)), _name_0))) ? ((_x_0) => {
-  return 1;
-}) : ((_x_1) => {
-  return 0;
-}), {$: "Unit"}));
-    const _x_3 = ($sp_ordinal$(_rest_0, _name_0));
-    return ((_x_2 + _x_3) >>> 0);
+    const _saved_0 = _fresh_0["roots"];
+    return $norm_max_walk$(_roots_0, ($norm_max_walk$(_saved_0, run_loop($norm_book_bound$(($kw_book$(_world_0)))))));
   }
-}
-
-function $kw_mint_floor$(_world_0, _roots_0) {
-  return $kw_floor_fresh$(_world_0, ($kw_fresh$(_world_0)), _roots_0);
-}
-
-function $sp_mtemplate$(_m_0) {
-  const _template_0 = _m_0["template"];
-  return _template_0;
-}
-
-function $sp_mkey$(_m_0) {
-  const _key_0 = _m_0["key"];
-  return _key_0;
 }
 
 function $f_context_resolve$(_term_0, _scope_0) {
@@ -40656,94 +41244,60 @@ function $jd_ordered_unknown_done$(_prefix_0, _callee_0, _tail_0, _arg_0) {
 }), {$: "Unit"})), "next": _next_0};
 }
 
-function $jd_host_marshal_tail_done$(_name_0, _same_0, _rest_0) {
-  return run_tail((($Bool$not$(($String$eq$(_rest_0, ""))))) ? ((_x_0) => {
-  return _rest_0;
-}) : ((_x_1) => {
-  if ((_same_0)) {
-const _x_2 = {$: "Unit"};
-return _name_0;
-} else {
-const _x_3 = {$: "Unit"};
-return "";
-}
-}), {$: "Unit"});
-}
-
-function $jd_host_marshal_field$(_name_0, _marshal_0) {
-  return run_tail((($String$eq$(_marshal_0, ""))) ? ((_x_0) => {
-  return "";
-}) : ((_x_1) => {
-  const _x_2 = ($j_quote$(_name_0));
-  const _x_3 = (_x_2 + "])");
-  const _x_4 = ("(v[" + _x_3);
-  const _x_5 = (_marshal_0 + _x_4);
-  const _x_6 = run_loop($jd_literal_field_key$(_name_0, false));
-  const _x_7 = (":" + _x_5);
-  const _x_8 = (_x_6 + _x_7);
-  return ("," + _x_8);
-}), {$: "Unit"});
-}
-
-function $core_apply$(_f_0, _x_0) {
-  return $core_apply_span$(_f_0, _x_0, 0, 0);
-}
-
-function $sp_live_body$(_e_0, _head_0, _d_0, _key_0, _name_0, _ty_0, _body_0, _next_0) {
-  const _x_0 = ($da$(_d_0));
-  const _x_1 = ($dx$(_d_0));
-  const _inst_0 = {$: "KDef", "name": _name_0, "kind": "Def", "arity": ((_x_0 - _x_1) >>> 0), "templates": 0, "typ": _ty_0, "value": _body_0, "ctors": {$: "Nil"}, "native": false, "unsafe": ($du$(_d_0))};
-  const _world_0 = {$: "KWorld", "book": run_loop($book_put$(run_loop($kw_bound_book$(($cb$(_e_0)), ((_next_0 - 1) >>> 0))), ($declared$(_inst_0)))), "memo": {$: "Con", "head": {$: "KSpecMemo", "template": ($dn$(_d_0)), "key": _key_0, "name": _name_0, "active": true}, "tail": ($kw_memo$(($cw$(_e_0))))}, "fresh": {$: "KFreshKnown", "next": _next_0}, "checked": ($kw_checked$(($cw$(_e_0))))};
-  const _x_2 = ($cd$(_e_0));
-  return $sp_live_done$(_head_0, _inst_0, ($dx$(_d_0)), run_loop($check_definition_body$(_world_0, _inst_0, ((_x_2 + 1) >>> 0))));
-}
-
-function $sp_shift$(_t_0, _offset_0) {
-  return run_tail((($core_literal$(_t_0))) ? ((_x_0) => {
-  return _t_0;
-}) : ((_x_1) => {
-  const _x_2 = ($String$eq$(($tg$(_t_0)), "Var"));
-  const _x_3 = ($String$eq$(($tg$(_t_0)), "All"));
-  const _x_4 = (_x_2 || _x_3);
-  const _x_5 = ($String$eq$(($tg$(_t_0)), "Lam"));
-  const _x_6 = (_x_4 || _x_5);
-  const _x_7 = ($String$eq$(($tg$(_t_0)), "Bind"));
-  const _x_8 = (_x_6 || _x_7);
-  const _x_9 = ($String$eq$(($tg$(_t_0)), "Sub"));
-  return $k_rebuild$(_t_0, ($nm$(_t_0)), run_loop(run_tail(((_x_8 || _x_9)) ? ((_x_10) => {
-  const _x_11 = ($ix$(_t_0));
-  return ((_x_11 + _offset_0) >>> 0);
-}) : ((_x_12) => {
-  return $ix$(_t_0);
-}), {$: "Unit"})), ($qt$(_t_0)), ($sp_shifts$(($ks$(_t_0)), _offset_0)), ($rm$(_t_0)), ($kb$(_t_0)), ($ke$(_t_0)));
-}), {$: "Unit"});
-}
-
-function $sp_apply_template$($0, $1) {
-  for (;;) {
-    {
-      const _body_0 = $0;
-      const _xs_0 = $1;
-      if (_xs_0.$ === "Nil") {
-        return _body_0;
-      } else {
-        const _h_0 = _xs_0["head"];
-        const _rest_0 = _xs_0["tail"];
-        $0 = run_loop($kapply$(_body_0, _h_0));
-        $1 = _rest_0;
-        continue;
-      }
-    }
+function $jd_word_unanns$(_ts_0) {
+  if (_ts_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _t_0 = _ts_0["head"];
+    const _rest_0 = _ts_0["tail"];
+    return {$: "Con", "head": run_loop($jd_word_unann$(_t_0)), "tail": ($jd_word_unanns$(_rest_0))};
   }
 }
 
-function $kw_floor_fresh$(_world_0, _fresh_0, _roots_0) {
-  if (_fresh_0.$ === "KFreshKnown") {
-    const _next_0 = _fresh_0["next"];
-    return $norm_max_walk$(_roots_0, ((_next_0 - 1) >>> 0));
+function $jd_word_cover_args$(_t_0, _fields_0, _word_0) {
+  return run_tail(((_fields_0 === 1)) ? ((_x_0) => {
+  return $core_apply$(run_loop($j_strip$(_t_0)), _word_0);
+}) : ((_x_1) => {
+  return $core_apply$(run_loop($j_strip$(run_loop($core_apply$(run_loop($j_strip$(_t_0)), run_loop($kid$(_word_0, 0)))))), run_loop($kid$(_word_0, 1)));
+}), {$: "Unit"});
+}
+
+function $jd_word_prefix$(_prefix_0, _tail_0) {
+  if (_prefix_0.$ === "Nil") {
+    return _tail_0;
   } else {
-    const _saved_0 = _fresh_0["roots"];
-    return $norm_max_walk$(_roots_0, ($norm_max_walk$(_saved_0, run_loop($norm_book_bound$(($kw_book$(_world_0)))))));
+    const _bit_0 = _prefix_0["head"];
+    const _rest_0 = _prefix_0["tail"];
+    return $kt$("Ctr", "WCon", 0, 0, {$: "Con", "head": _bit_0, "tail": {$: "Con", "head": ($jd_word_prefix$(_rest_0, _tail_0)), "tail": {$: "Nil"}}});
+  }
+}
+
+function $jd_literal_field_key$(_name_0, _last_0) {
+  const _quoted_0 = ($j_quote$(_name_0));
+  const _x_0 = ($String$eq$(_name_0, "__proto__"));
+  return run_tail(((_last_0 || _x_0)) ? ((_x_1) => {
+  const _x_2 = (_quoted_0 + "]");
+  return ("[" + _x_2);
+}) : ((_x_3) => {
+  return _quoted_0;
+}), {$: "Unit"});
+}
+
+function $sp_live_done$(_head_0, _inst_0, _consumed_0, _r_0) {
+  return run_tail((($good$(_r_0))) ? ((_x_0) => {
+  return $sp_live_ref$({$: "KWorld", "book": run_loop($book_put$(($kw_book$(($rw$(_r_0)))), _inst_0)), "memo": ($sp_done_memo$(($kw_memo$(($rw$(_r_0)))), ($dn$(_inst_0)))), "fresh": ($kw_fresh$(($rw$(_r_0)))), "checked": {$: "Con", "head": {$: "KDef", "name": ($dn$(_inst_0)), "kind": ($dk$(_inst_0)), "arity": ($da$(_inst_0)), "templates": ($dx$(_inst_0)), "typ": ($dt$(_inst_0)), "value": ($ct$(_r_0)), "ctors": ($dc$(_inst_0)), "native": ($db$(_inst_0)), "unsafe": ($du$(_inst_0))}, "tail": ($kw_checked$(($rw$(_r_0))))}}, _head_0, ($dn$(_inst_0)), _consumed_0);
+}) : ((_x_1) => {
+  return _r_0;
+}), {$: "Unit"});
+}
+
+function $sp_shifts$(_ts_0, _offset_0) {
+  if (_ts_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _ts_0["head"];
+    const _rest_0 = _ts_0["tail"];
+    return {$: "Con", "head": run_loop($sp_shift$(_h_0, _offset_0)), "tail": ($sp_shifts$(_rest_0, _offset_0))};
   }
 }
 
@@ -42043,32 +42597,21 @@ function $jd_ordered_eta_arg$(_args_0, _value_0) {
   return {$: "JDOrderedArgs", "prefix": _prefix_0, "values": ($List$append$(_values_0, {$: "Con", "head": _value_0, "tail": {$: "Nil"}})), "next": _next_0};
 }
 
-function $jd_literal_field_key$(_name_0, _last_0) {
-  const _quoted_0 = ($j_quote$(_name_0));
-  const _x_0 = ($String$eq$(_name_0, "__proto__"));
-  return run_tail(((_last_0 || _x_0)) ? ((_x_1) => {
-  const _x_2 = (_quoted_0 + "]");
-  return ("[" + _x_2);
-}) : ((_x_3) => {
-  return _quoted_0;
-}), {$: "Unit"});
+function $core_apply$(_f_0, _x_0) {
+  return $core_apply_span$(_f_0, _x_0, 0, 0);
 }
 
-function $sp_live_done$(_head_0, _inst_0, _consumed_0, _r_0) {
-  return run_tail((($good$(_r_0))) ? ((_x_0) => {
-  return $sp_live_ref$({$: "KWorld", "book": run_loop($book_put$(($kw_book$(($rw$(_r_0)))), _inst_0)), "memo": ($sp_done_memo$(($kw_memo$(($rw$(_r_0)))), ($dn$(_inst_0)))), "fresh": ($kw_fresh$(($rw$(_r_0)))), "checked": {$: "Con", "head": {$: "KDef", "name": ($dn$(_inst_0)), "kind": ($dk$(_inst_0)), "arity": ($da$(_inst_0)), "templates": ($dx$(_inst_0)), "typ": ($dt$(_inst_0)), "value": ($ct$(_r_0)), "ctors": ($dc$(_inst_0)), "native": ($db$(_inst_0)), "unsafe": ($du$(_inst_0))}, "tail": ($kw_checked$(($rw$(_r_0))))}}, _head_0, ($dn$(_inst_0)), _consumed_0);
-}) : ((_x_1) => {
-  return _r_0;
-}), {$: "Unit"});
-}
-
-function $sp_shifts$(_ts_0, _offset_0) {
-  if (_ts_0.$ === "Nil") {
+function $sp_done_memo$(_ms_0, _name_0) {
+  if (_ms_0.$ === "Nil") {
     return {$: "Nil"};
   } else {
-    const _h_0 = _ts_0["head"];
-    const _rest_0 = _ts_0["tail"];
-    return {$: "Con", "head": run_loop($sp_shift$(_h_0, _offset_0)), "tail": ($sp_shifts$(_rest_0, _offset_0))};
+    const _h_0 = _ms_0["head"];
+    const _rest_0 = _ms_0["tail"];
+    return {$: "Con", "head": run_loop(run_tail((($String$eq$(($sp_mname$(_h_0)), _name_0))) ? ((_x_0) => {
+  return {$: "KSpecMemo", "template": ($sp_mtemplate$(_h_0)), "key": ($sp_mkey$(_h_0)), "name": ($sp_mname$(_h_0)), "active": false};
+}) : ((_x_1) => {
+  return _h_0;
+}), {$: "Unit"})), "tail": ($sp_done_memo$(_rest_0, _name_0))};
   }
 }
 
@@ -42972,20 +43515,6 @@ function $jd_ordered_field_head$(_book_0, _env_0, _rest_0, _tel_0, _name_0, _hea
   const _value_0 = _head_0["value"];
   const _next_0 = _head_0["next"];
   return $jd_ordered_field_join$(_prefix_0, _value_0, _name_0, run_loop($jd_ordered_fields$(_book_0, _env_0, _rest_0, _tel_0, _next_0)));
-}
-
-function $sp_done_memo$(_ms_0, _name_0) {
-  if (_ms_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _ms_0["head"];
-    const _rest_0 = _ms_0["tail"];
-    return {$: "Con", "head": run_loop(run_tail((($String$eq$(($sp_mname$(_h_0)), _name_0))) ? ((_x_0) => {
-  return {$: "KSpecMemo", "template": ($sp_mtemplate$(_h_0)), "key": ($sp_mkey$(_h_0)), "name": ($sp_mname$(_h_0)), "active": false};
-}) : ((_x_1) => {
-  return _h_0;
-}), {$: "Unit"})), "tail": ($sp_done_memo$(_rest_0, _name_0))};
-  }
 }
 
 function $f_leading_quants$(_ty_0) {
@@ -46732,6 +47261,8 @@ export default {
   "base_prefix_prepare": run_lib((a0) => { const r = (run_loop($base_prefix_prepare$((a0)))); (a0); return r; }, 1),
   "check_program_diagnostic_seed": run_lib((a0, a1, a2, a3) => { const r = (run_loop($check_program_diagnostic_seed$((a0), (a1), (a2), (a3)))); (a0); (a1); (a2); (a3); return r; }, 4),
   "check_program_diagnostic_prefix": run_lib((a0, a1, a2, a3) => { const r = (run_loop($check_program_diagnostic_prefix$((a0), (a1), (a2), (a3)))); (a0); (a1); (a2); (a3); return r; }, 4),
+  "base_prefix_world_prepare": run_lib((a0, a1) => { const r = (run_loop($base_prefix_world_prepare$((a0), (a1)))); (a0); (a1); return r; }, 2),
+  "check_program_diagnostic_world": run_lib((a0, a1, a2) => { const r = (run_loop($check_program_diagnostic_world$((a0), (a1), (a2)))); (a0); (a1); (a2); return r; }, 3),
   "f_load_graph": run_lib((a0, a1) => { const r = (run_loop($f_load_graph$((a0), (a1)))); (a0); (a1); return r; }, 2),
   "f_load_graph_trace": run_lib((a0, a1) => { const r = (run_loop($f_load_graph_trace$((a0), (a1)))); (a0); (a1); return r; }, 2),
   "f_source_completed": run_lib((a0, a1, a2, a3) => { const r = (run_loop($f_source_completed$((a0), (a1), (a2), (a3)))); (a0); (a1); (a2); (a3); return r; }, 4),
@@ -46753,6 +47284,8 @@ export default {
   "f_prefix_complete_seed": run_lib((a0, a1, a2, a3, a4, a5) => { const r = (run_loop($f_prefix_complete_seed$((a0), (a1), (a2), (a3), (a4), (a5)))); (a0); (a1); (a2); (a3); (a4); (a5); return r; }, 6),
   "f_prefix_complete_source": run_lib((a0, a1, a2, a3, a4, a5) => { const r = (run_loop($f_prefix_complete_source$((a0), (a1), (a2), (a3), (a4), (a5)))); (a0); (a1); (a2); (a3); (a4); (a5); return r; }, 6),
   "f_prefix_graph_trace": run_lib((a0, a1, a2) => { const r = (run_loop($f_prefix_graph_trace$((a0), (a1), (a2)))); (a0); (a1); (a2); return r; }, 3),
+  "f_ready_prefix_prepare": run_lib((a0) => { const r = (run_loop($f_ready_prefix_prepare$((a0)))); (a0); return r; }, 1),
+  "f_prefix_complete_ready_seed": run_lib((a0, a1, a2, a3, a4, a5, a6) => { const r = (run_loop($f_prefix_complete_ready_seed$((a0), (a1), (a2), (a3), (a4), (a5), (a6)))); (a0); (a1); (a2); (a3); (a4); (a5); (a6); return r; }, 7),
   "driver_report": run_lib((a0, a1) => { const r = (run_loop($driver_report$((a0), (a1)))); (a0); (a1); return r; }, 2),
   "driver_bad_names": run_lib((a0) => { const r = (run_loop($driver_bad_names$((a0)))); (a0); return r; }, 1),
   "compiler_check_result_abi": run_lib(() => { const r = (run_loop($compiler_check_result_abi$()));  return r; }, 0),
@@ -46784,6 +47317,10 @@ export default {
   "jd_reach_selected": run_lib((a0, a1, a2) => { const r = (run_loop($jd_reach_selected$((a0), (a1), (a2)))); (a0); (a1); (a2); return r; }, 3),
   "jd_reach_defs": run_lib((a0) => { const r = (run_loop($jd_reach_defs$((a0)))); (a0); return r; }, 1),
   "jd_reach_error": run_lib((a0) => { const r = (run_loop($jd_reach_error$((a0)))); (a0); return r; }, 1),
+  "jd_plan_selected": run_lib((a0, a1, a2) => { const r = (run_loop($jd_plan_selected$((a0), (a1), (a2)))); (a0); (a1); (a2); return r; }, 3),
+  "jd_plan_defs": run_lib((a0) => { const r = (run_loop($jd_plan_defs$((a0)))); (a0); return r; }, 1),
+  "jd_plan_error": run_lib((a0) => { const r = (run_loop($jd_plan_error$((a0)))); (a0); return r; }, 1),
+  "jd_plan_library": run_lib((a0) => { const r = (run_loop($jd_plan_library$((a0)))); (a0); return r; }, 1),
   "j_foreign_paths": run_lib((a0) => { const r = (run_loop($j_foreign_paths$((a0)))); (a0); return r; }, 1),
   "j_foreign_error": run_lib((a0) => { const r = (run_loop($j_foreign_error$((a0)))); (a0); return r; }, 1),
 };

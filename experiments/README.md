@@ -5,12 +5,17 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active implementation: Phase63 ready worlds and lower-once plans
+## Completed implementation: Phase63 ready worlds and lower-once plans
 
 [Design](../design/phase63/ready-world-and-lowering-plan.md) ·
 [Report](../implementation/phase63/README.md) · [Hypotheses](phase63/).
-The user authorized implementation after Phase62. No new speed result or
-selected release exists yet; Phase61 state08 remains installed.
+State09 is installed and verified as checked B1. Its genuine-B2 balanced
+207-worker comparison improves compilation **2.05505× → 1.63275× TS** and combined
+import/first compilation **1.40665× → 1.15092×**. All 23 source medians improve
+versus the previous compiler; compilation parity remains unfinished. Read the
+[final State09 report](../implementation/phase63/state09-results.md) for exact
+clocks, selected mechanisms, correctness/release gates and rejected experiments.
+The following Phase61 section is historical; its installed identity is superseded.
 
 ## Completed investigation: Phase62 remaining compiler costs
 

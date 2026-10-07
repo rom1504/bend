@@ -1,8 +1,22 @@
 # Phase63: ready worlds and a reusable lowering plan
 
-Work started2026-10-07 at20:04:24UTC from commit5cb1afc. The user authorized
-implementation toward TypeScript compilation parity. State05 has measured
-prototype gains; no Phase63 release is selected yet. Phase61 state08 remains installed.
+State09 is **installed and verified**. Genuine B2 compilation improves
+**2.05505× → 1.63275× TypeScript** (20.55% less time), and host/API import plus
+first compilation improves **1.40665× → 1.15092×** (18.18% less time), in the
+same balanced 207-worker comparison. All 23 sources improve versus the previous
+compiler and all complete emitted modules match their qualified byte oracle.
+Compilation parity remains unfinished.
+
+Read the [final report and diagram](state09-results.md),
+[qualification index](evidence/state09-qualification.json) and
+[compiler guide](../../docs/self_hosted/compiler-request-pipeline.md).
+Checked-B1 and genuine-B2 semantic gates, own-source checking, exact B2/B3
+reproduction and installed legacy42/default24 checks pass. The package is
+checked B1; the headline measures genuine B2. There is no new generated-program
+speed claim. The historical checkpoints below preserve what was known at each
+step and do not supersede the final result.
+
+Work started October 7, 2026 at 20:04:24 UTC from commit `5cb1afc`.
 
 [Design](../../design/phase63/ready-world-and-lowering-plan.md) ·
 [World experiment](../../experiments/phase63/P63-001-ready-semantic-world.md) ·
@@ -13,7 +27,7 @@ Six agents own source/data work; root alone executes guarded serial CPU3 targets
 Root reviews and freezes integration states, preserves failures, and reports
 separate correctness, timing and promotion decisions. Current architecture notes:
 [Base world](base-world.md), [frontend](frontend.md),
-[backend plan](backend-plan.md). These are prototype descriptions, not results.
+[backend plan](backend-plan.md). The final report distinguishes selected mechanisms from rejected prototypes.
 
 ## Early discriminating evidence
 

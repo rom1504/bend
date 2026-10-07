@@ -3807,3 +3807,47 @@ is claimed at registration.
 
 **Updated frontier:** execute fast correctness and clean latency screens, then
 qualify the best genuineB2 on all23 sources. Parity remains the objective.
+
+
+### Phase63 State09 selected and installed — 2026-10-07
+
+The [final report](../implementation/phase63/state09-results.md) records a
+207-worker balanced comparison on23 compilation sources. Genuine B2/TS improves
+2.05505×→1.63275× for compilation (20.55% less time) and1.40665×→1.15092× for
+host/API import plus first compilation (18.18% less). Every source improves over
+the previous compiler; all complete emitted modules equal the qualified oracle.
+Compilation-only parity remains unfinished. No new generated-program timing
+campaign or speedup is claimed.
+
+Selected changes retain a ready Base world/parser indexes, validated shared
+transport with fixed constructor decoding, one owned library lowering plan,
+shared host field conversion and already-computed arity facts. State09 carries
+actual completed suffixes and removes four obsolete host traversals. Actual
+named-layout images make the proposed positional-ABI shortcut inapplicable.
+Typed call-spine reuse was correct on focused controls but reverted for no
+useful request gain; warm-only generic decoder results were misleading. All
+failed source/control/permission/metadata attempts retain their original status.
+
+The [qualification join](../implementation/phase63/evidence/state09-qualification.json)
+reverifies3061 inputs: strict36/export94, full checked matrix, real B2 build,
+fresh own-source acceptance with expected unsafe-trust refusal, exact B2/B3,
+B2 semantic96/34/18/2, raw23/point45 equality, balanced207, release42/24 and five
+helper-integrity checks. A reviewed packaging-only delta includes the new graph
+helper with checked provenance. State09 is installed as equality-derived checked
+B1; the measured image is genuine B2. All110 inherited unrelated files and all
+seven previous release artifacts are preserved.
+
+**Updated frontier:** Phase63 implementation complete. Profile the new residual
+cost before selecting further owned signature/layout reuse or frontend scan
+removal. Another38.75% reduction in compilation time is needed for parity on
+this catalog; startup-inclusive proximity is a different metric. Use the final
+report and evidence capsule, not intermediate checkpoints, as current authority.
+
+
+### Phase63 evidence closed — 2026-10-07
+
+The [capsule](../selfhost/tools/performance/phase63/artifacts/README.md) preserves
+16,691 files,521,756,245 uncompressed bytes and a78,204,174-byte archive, SHA256
+`8dc20dcc3961cc479a343a275ae7d0d9b3eaca4401f10336da72aae9d7c63c22`.
+Every member was reopened and byte-verified; original input inventory/hashes
+remain unchanged. All raw writers are closed. No failed receipt was relabelled.

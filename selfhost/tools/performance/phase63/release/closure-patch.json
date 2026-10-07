@@ -1,0 +1,32 @@
+{
+  "kind": "phase63-release-packaging-closure-patch",
+  "productionSourceChanged": false,
+  "compilerRebuildRequired": false,
+  "before": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state09/snapshot/tools/development/release.mjs",
+    "sha256": "dd8abbac72531b71daf6a14060db97ec7ddacbf9a0ac2b720d13e8ec88c5baa2"
+  },
+  "after": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/release/release.proposed.mjs",
+    "sha256": "3cf17eed7d12521149e43c0e08004b19197bf96b6293d134cb2753a888b7d139"
+  },
+  "edits": [
+    {
+      "old": "const hostNames=['typed-driver','compiler-abi','native-build','node-resource-args','assemble'];",
+      "new": "const hostNames=['typed-driver','compiler-abi','native-build','node-resource-args','assemble'];\n// Phase63 adds a static driver dependency; old releases have neither this\n// import nor its checked provenance and retain their historical inventory.\nfunction graphHelperInput(bootstrap,root=project){\n const inputs=(bootstrap.provenance?.inputs??[]).filter(x=>x.role==='host-tool'&&path.basename(x.file)==='base-cache-graph.mjs');\n const driver=fs.readFileSync(local('tools/typed-driver.mjs',root),'utf8');\n const required=/from\\s+['\"]\\.\\/base-cache-graph\\.mjs['\"]/.test(driver);\n if(!required&&!inputs.length)return null;\n assert.equal(inputs.length,1,'Missing or duplicate checked graph-helper provenance');\n return inputs[0];\n}"
+    },
+    {
+      "old": " if(checked){\n  assert.equal(api.sha256,parent.sha256,'Checked default differs from checked API');",
+      "new": " const graphInput=graphHelperInput(bootstrap,root);\n if(graphInput)assert.equal(manifest.checkout.find(x=>x.path==='tools/base-cache-graph.mjs')?.sha256,graphInput.sha256,'Unbound checked graph helper');\n if(checked){\n  assert.equal(api.sha256,parent.sha256,'Checked default differs from checked API');"
+    },
+    {
+      "old": " const bootstrap=read(attempt.bootstrapReport.file),checkout=[];",
+      "new": " const bootstrap=read(attempt.bootstrapReport.file),checkout=[];\n const graphInput=graphHelperInput(bootstrap);\n if(graphInput)assert.equal(identity(local('tools/base-cache-graph.mjs')).sha256,graphInput.sha256,'Graph helper differs from checked provenance');"
+    },
+    {
+      "old": " for(const name of [...hostNames,...(derived?[]:['stage0-library'])])",
+      "new": " for(const name of [...hostNames,...(graphInput?['base-cache-graph']:[]),...(derived?[]:['stage0-library'])])"
+    }
+  ],
+  "scope": "Exact host-packaging-only successor. No compiler/API/source/driver/cache semantics change. Graph helper is conditional on checked host provenance or static driver import, preserving old manifests; new inventories bind helper provenance and current snapshot identity."
+}

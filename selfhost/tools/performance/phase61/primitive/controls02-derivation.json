@@ -1,0 +1,14 @@
+{
+  "kind": "phase61-primitive-controls-successor",
+  "parent": {
+    "file": "selfhost/tools/performance/phase61/primitive/controls01.mjs",
+    "sha256": "036a41127383092655b29526537a0cc390e2d7ce7238a3fd92fae9d28894ce2f"
+  },
+  "successor": {
+    "file": "selfhost/tools/performance/phase61/primitive/controls02.mjs",
+    "sha256": "4a52cd15e1164300e6c63e5b01de68ca6e7766f9f3689d297198d5aebc5219f9"
+  },
+  "preservedFailure": "selfhost/build/phase61/primitive-controls01/report.json",
+  "reason": "Candidate actual dead-code elimination omits unused canonical table/find helpers. Candidate private probe now exposes only real reachable selector; baseline actual table and exact pinned source rows remain independent oracle. All100 selections/630 admission and emission obligations retained.",
+  "executed": false
+}

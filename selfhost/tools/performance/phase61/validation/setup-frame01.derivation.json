@@ -1,0 +1,21 @@
+{
+  "kind": "phase61-framed-cache-actual-root-setup",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/methods01/bootstrap/setup.mjs",
+    "sha256": "c1047d091037c0783f9f163c5bcc21ec912366dfb2a6895570495f73eeaa4478"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/setup-frame01.mjs",
+    "sha256": "dbbe5f2d4902436671f3d13e538020f721f48d15cc3de152e2a03d6681f3c202"
+  },
+  "edits": [
+    {
+      "old": "  assert.deepEqual(config.roots,emission.roots);assert.equal(emission.roots.length,77);assert.equal(new Set(emission.roots).size,77);",
+      "new": "  assert.deepEqual(config.roots,emission.roots);assert.deepEqual(emission.roots,bootstrap.exports);\n  assert.equal(new Set(emission.roots).size,emission.roots.length);assert.ok(emission.roots.length>0);\n  assert.equal(reference.kind,'phase61-checked-bootstrap-export-reference');\n  assert.deepEqual(reference.attempt,binding.attempt);assert.deepEqual(pin(reference.bootstrap),identity(attempt.bootstrapReport.file));\n  const previousRoots=read(reference.historical).roots;\n  const added=['base_prefix_prepare','check_program_diagnostic_seed','f_fresh_prefix_prepare','f_graph_trace_from_prefix'];\n  assert.deepEqual(reference.addedRoots,[...added].sort());\n  assert.deepEqual(emission.roots.filter(x=>!added.includes(x)),previousRoots);\n  assert.deepEqual([...emission.roots].sort(),[...previousRoots,...added].sort());\n  assert.equal(config.driver.sha256,'1f6c4c1ccf57bd53a03b35d4c5242d6e71c17709088301d7f00a736a19bb2ae3');"
+    },
+    {
+      "old": "      const c=JSON.parse(fs.readFileSync(item.file,'utf8'));",
+      "new": "      const framed=item.file.endsWith('-frame1.json');\n      assert.ok(!framed||typeof D.decodeBaseCacheFrame==='function');\n      const c=framed?D.decodeBaseCacheFrame(fs.readFileSync(item.file)):JSON.parse(fs.readFileSync(item.file,'utf8'));\n      if(framed)assert.ok([4,6].includes(c.version));"
+    }
+  ]
+}

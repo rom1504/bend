@@ -1,0 +1,16 @@
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -98,11 +98,13 @@
+   }
+   if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source','nc_foreign_scope');
+   if(files.includes('src/check/prefix.bend'))exports.push('check_from_exact_prefix','exact_prefix');
++  if(files.includes('src/check/prefix-state.bend'))exports.push('base_prefix_prepare','check_program_diagnostic_seed');
+   if(files.includes('src/load/graph.bend'))exports.push('f_load_graph','f_load_graph_trace');
+   if(files.includes('src/load/modules.bend')){exports.push('f_source_completed','f_source_located');if(fs.readFileSync(path.join(project,'src/load/modules.bend'),'utf8').includes('def compiler_load_abi('))exports.push('compiler_load_abi','f_source_header','f_complete_source','f_complete_seed','f_import_namespace_at','f_graph_trace');}
+   if(files.includes('src/load/imports.bend')&&fs.readFileSync(path.join(project,'src/load/imports.bend'),'utf8').includes('def f_import_failure('))exports.push('f_import_failure');
+   if(files.includes('src/core/index.bend'))exports.push('book_context','book_cached');
+   if(files.includes('src/load/seed.bend'))exports.push('f_load_graph_seed','f_load_graph_seed_trace');
++  if(files.includes('src/load/prefix.bend'))exports.push('f_fresh_prefix_prepare','f_graph_trace_from_prefix');
+   if(files.includes('src/driver/report.bend'))exports.push('driver_report','driver_bad_names');
+   if(files.includes('src/diagnostic/produce.bend'))exports.push('compiler_check_result_abi','check_book_diagnostic','check_book_diagnostic_from_exact_prefix','diagnostic_render','diagnostic_result_locate');
+   if(files.includes('src/driver/api.bend')&&fs.readFileSync(path.join(project,'src/driver/api.bend'),'utf8').includes('def check_program_diagnostic('))exports.push('check_program_diagnostic');

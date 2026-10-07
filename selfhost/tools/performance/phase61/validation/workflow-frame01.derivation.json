@@ -1,0 +1,42 @@
+{
+  "kind": "phase61-private-workflow-cache-frame-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+    "sha256": "1158d3e7fb28ebcf37caba0d32f34cbcb762d0987bff472c385a375bbeb793ff"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/workflow-frame01.mjs",
+    "sha256": "988e24c291c3094a65e988e76fc9fc5a04a8d38ad9e2b0219d02e03beb1f491c"
+  },
+  "edits": [
+    {
+      "old": "from '../conformance/inventory.mjs'",
+      "new": "from \"file:///home/ai/bend2/build/publish/bend/selfhost/tools/conformance/inventory.mjs\""
+    },
+    {
+      "old": "from './process.mjs'",
+      "new": "from \"file:///home/ai/bend2/build/publish/bend/selfhost/tools/development/process.mjs\""
+    },
+    {
+      "old": "const project=path.resolve(import.meta.dirname,'../..');",
+      "new": "const project=\"/home/ai/bend2/build/publish/bend/selfhost\";"
+    },
+    {
+      "old": "path.join(import.meta.dirname,'process.mjs'),path.join(import.meta.dirname,'../conformance/inventory.mjs')",
+      "new": "\"/home/ai/bend2/build/publish/bend/selfhost/tools/development/process.mjs\",\"/home/ai/bend2/build/publish/bend/selfhost/tools/conformance/inventory.mjs\""
+    },
+    {
+      "old": "export function validatedCache(directory, api, base) {",
+      "new": "export async function validatedCache(directory, api, base, driver) {"
+    },
+    {
+      "old": "  const file=path.join(directory,`base-${apiSha}-${baseSha}-${digest(canonical)}.json`);\n  const c=json(file);",
+      "new": "  const stem=path.join(directory,`base-${apiSha}-${baseSha}-${digest(canonical)}`);\n  const framed=fs.existsSync(stem+'-frame1.json'),file=stem+(framed?'-frame1.json':'.json');\n  let c;\n  if(framed) {\n    const before=identity(driver),D=await import(pathToFileURL(driver));\n    if(typeof D.decodeBaseCacheFrame!=='function')throw Error('Selected driver lacks Base cache frame decoder');\n    c=D.decodeBaseCacheFrame(fs.readFileSync(file));verifyIdentity(before);\n    if(![4,6].includes(c.version))throw Error('Unexpected framed Base cache version');\n  } else c=json(file);"
+    },
+    {
+      "old": "report.cache=validatedCache(path.join(m.snapshot.root,'build/typed/cache'),m.api.file,m.base.file);",
+      "new": "report.cache=await validatedCache(path.join(m.snapshot.root,'build/typed/cache'),m.api.file,m.base.file,path.join(m.snapshot.root,'tools/typed-driver.mjs'));"
+    }
+  ],
+  "scope": "Only static path relocation and selected frozen driver decoding of framed v4/v6 caches. Legacy fallback and exact cache identity/span/canonical book checks remain. No target execution."
+}

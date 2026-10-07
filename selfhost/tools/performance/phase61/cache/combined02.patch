@@ -1,0 +1,97 @@
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -205,7 +205,7 @@
+   const fields={Nil:[],Con:['head','tail'],FSource:['name','path','text'],FCompletedSource:['name','path','text','parsed'],FLocatedSource:['source','begin','end'],FHeader:['imports','error','body','line','offset'],FCompletion:['graph','parsed'],FGraph:['book','error','done'],FResult:['book','error','imports'],FLoadTrace:['result','done','sources'],
+     KTerm:spanAbi===3?['tag','name','id','quant','kids','removed','originBegin','originEnd']:['tag','name','id','quant','kids','removed'],KDef:['name','kind','arity','templates','typ','value','ctors','native','unsafe'],
+     KIndexLeaf:['hash','bucket'],KIndexNode:['hash','mask','left','right'],
+-    KBasePrefixState:['bound','delta','stamp','patches','ready'],
++    KBasePrefixState:['bound','delta','stamp','patches','ready'],FFreshPrefixState:['next','ready'],
+     ...(termAbi===1?{KLiteral:['kind','number','text','originBegin','originEnd'],KLambda:['name','id','quant','kids','removed','originBegin','originEnd','quantityPresent']}:{}),
+     KSpecialized:['book','error'],NC_Result:['source','error'],KF_Source:['parts','error'],
+     DText:['text'],DTerm:['term'],DNoSpan:[],DSpan:['source','begin','end'],
+@@ -281,13 +281,17 @@
+   validateSpanBook(c.book,[range],termAbi);return true;
+ }
+ 
+-export function discoverSources(api,input,{seed=null}={}) {
++// Only ordinary inspection grants this private entry permission; raw public seed
++// objects do not select the new state-bearing loader API.
++const FRESH_PREFIX_PERMISSION={};
++export function discoverSources(api,input,{seed=null,freshPrefixPermission=null}={}) {
+   const sources=[],seen=new Map(),physical=new Map(),foreign=new Map(),active=new Set();
+   requireLoaderApi(api);
+   const located=api.compiler_span_abi?.()===SPAN_ABI;
+   const baseCanonical=located?fs.realpathSync(basePath):null;
+   const baseText=located?fs.readFileSync(baseCanonical,'utf8'):null;
+   const baseRange=located?interval(1,baseText):null;
++  let usedSeed=false;
+   let next=baseRange?.end??0,root=null,completed={$:'FGraph',book:list([]),error:'',done:list([])};
+   const wrap=(source,range)=>located?api.f_source_located(source,range.begin,range.end):source;
+   const visit=(name,file,edge=null)=>{
+@@ -304,6 +308,7 @@
+     const source=fs.readFileSync(absolute,'utf8'),prior=physical.get(absolute);
+     trace('parse '+absolute);
+     const seeded=name==='Base'&&seed&&seed.sourcePath===absolute&&seed.sourceText===source;
++    if(seeded)usedSeed=true;
+     if(prior&&prior.source!==source)throw Object.assign(Error('Source alias bytes changed'),{phase:'load'});
+     if(located&&absolute===baseCanonical&&source!==baseText)throw Object.assign(Error('Base source bytes changed'),{phase:'load'});
+     const range=located?(prior?.range??(absolute===baseCanonical?baseRange:interval(next,source))):null;
+@@ -348,7 +353,8 @@
+   visit(main,path.resolve(input));
+   const supplied=list(sources);
+   return {main,sources:supplied,files:[...physical.keys()],foreign:[...foreign.values()],hasBase:seen.has('Base'),
+-    loadTrace:api.f_graph_trace(completed,supplied)};
++    loadTrace:freshPrefixPermission===FRESH_PREFIX_PERMISSION&&usedSeed&&seed?.freshPrefixState&&typeof api.f_graph_trace_from_prefix==='function'?
++      api.f_graph_trace_from_prefix(completed,supplied,seed.book,seed.freshPrefixState):api.f_graph_trace(completed,supplied)};
+ }
+ 
+ function baseCacheInfo(api) {
+@@ -400,6 +406,14 @@
+   }catch{return false;}
+ }
+ 
++function admitFreshPrefixState(cached) {
++  const state=cached.freshPrefixState;
++  return cached.freshPrefixStateVersion===1&&cached.freshPrefixStateProducer==='f_fresh_prefix_prepare'&&
++    state!==null&&typeof state==='object'&&state.$==='FFreshPrefixState'&&state.ready===true&&
++    Number.isSafeInteger(state.next)&&state.next>=1&&state.next<=U32_MAX&&
++    cached.freshPrefixStateSha256===crypto.createHash('sha256').update(JSON.stringify(state)).digest('hex');
++}
++
+ function readBaseCache(info,memo=null) {
+   try {
+     const previous=memo?.entry;
+@@ -416,9 +430,11 @@
+     if(cached.version!==info.version||cached.compilerSha256!==info.compilerSha256||cached.baseSha256!==info.baseSha256||cached.validatedBy!=='check_book')return null;
+     if(info.version===2&&(cached.sourcePath!==info.sourcePath||cached.bookSha256!==crypto.createHash('sha256').update(JSON.stringify(cached.book)).digest('hex')))return null;
+     if(!admitCheckedPrefixState(cached,info))delete cached.checkedPrefixState;
++    if(!admitFreshPrefixState(cached))delete cached.freshPrefixState;
+     if(memo) {
+       freezeBaseBook(cached.book);
+       if(cached.checkedPrefixState)freezeBaseBook(cached.checkedPrefixState);
++      if(cached.freshPrefixState)freezeBaseBook(cached.freshPrefixState);
+       Object.freeze(cached);
+       memo.entry={key,digest,cached};
+     }
+@@ -449,6 +465,12 @@
+       checkedPrefixStateSha256:crypto.createHash('sha256').update(JSON.stringify(state)).digest('hex')};
+     if(admitCheckedPrefixState(prepared,info))Object.assign(cached,prepared);
+   }
++  if(range&&typeof api.f_fresh_prefix_prepare==='function'&&typeof api.f_graph_trace_from_prefix==='function') {
++    const state=api.f_fresh_prefix_prepare(loaded.book);
++    const prepared={...cached,freshPrefixStateVersion:1,freshPrefixStateProducer:'f_fresh_prefix_prepare',freshPrefixState:state,
++      freshPrefixStateSha256:crypto.createHash('sha256').update(JSON.stringify(state)).digest('hex')};
++    if(admitFreshPrefixState(prepared))Object.assign(cached,prepared);
++  }
+   fs.mkdirSync(directory,{recursive:true});
+   const staged=file+'.tmp-'+process.pid;
+   try {fs.writeFileSync(staged,range?encodeBaseCacheFrame(cached,bookJson):JSON.stringify(cached));fs.renameSync(staged,file);} finally {fs.rmSync(staged,{force:true});}
+@@ -544,7 +566,7 @@
+       throw Error('Compiler API changed during persistent inspection');
+     }
+     const seed=info?readBaseCache(info,memo):null;
+-    const graph=discoverSources(api,input,{seed});
++    const graph=discoverSources(api,input,{seed,freshPrefixPermission:FRESH_PREFIX_PERMISSION});
+     phase='parse';
+     trace('load and elaborate graph');
+     // Traces belong to this request and retain the exact parsed/source snapshots.

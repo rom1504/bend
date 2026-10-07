@@ -1,0 +1,142 @@
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -204,6 +204,8 @@
+   // runtime uses positional fields. This is an ABI conversion, not elaboration.
+   const fields={Nil:[],Con:['head','tail'],FSource:['name','path','text'],FCompletedSource:['name','path','text','parsed'],FLocatedSource:['source','begin','end'],FHeader:['imports','error','body','line','offset'],FCompletion:['graph','parsed'],FGraph:['book','error','done'],FResult:['book','error','imports'],FLoadTrace:['result','done','sources'],
+     KTerm:spanAbi===3?['tag','name','id','quant','kids','removed','originBegin','originEnd']:['tag','name','id','quant','kids','removed'],KDef:['name','kind','arity','templates','typ','value','ctors','native','unsafe'],
++    KIndexLeaf:['hash','bucket'],KIndexNode:['hash','mask','left','right'],
++    KBasePrefixState:['bound','delta','stamp','patches','ready'],
+     ...(termAbi===1?{KLiteral:['kind','number','text','originBegin','originEnd'],KLambda:['name','id','quant','kids','removed','originBegin','originEnd','quantityPresent']}:{}),
+     KSpecialized:['book','error'],NC_Result:['source','error'],KF_Source:['parts','error'],
+     DText:['text'],DTerm:['term'],DNoSpan:[],DSpan:['source','begin','end'],
+@@ -247,6 +249,35 @@
+   if(c.version!==(termAbi===1?TERM_CACHE:SPAN_CACHE)||(c.termAbi??0)!==termAbi||c.spanAbi!==SPAN_ABI||c.compilerSha256!==compilerSha256||c.baseSha256!==baseSha256||
+     c.sourcePath!==sourcePath||c.sourceBegin!==range.begin||c.sourceEnd!==range.end||c.validatedBy!=='check_book'||
+     c.bookSha256!==crypto.createHash('sha256').update(JSON.stringify(c.book)).digest('hex'))throw Error('Invalid source-aware Base cache');
++  validateSpanBook(c.book,[range],termAbi);return true;
++}
++
++const FORMAT='bend-base-cache-frame-1';
++const digest=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
++function encodeBaseCacheFrame(cached,bookJson=JSON.stringify(cached.book)) {
++  if(typeof bookJson!=='string')throw Error('Invalid source-aware Base cache');
++  const payload=Buffer.from(bookJson,'utf8');
++  if(cached.bookSha256!==digest(payload))throw Error('Invalid source-aware Base cache');
++  const {book,...metadata}=cached;
++  return Buffer.concat([Buffer.from(JSON.stringify({...metadata,format:FORMAT})+'\n'),payload]);
++}
++export function decodeBaseCacheFrame(bytes) {
++  const cut=bytes.indexOf(10);
++  if(cut<0)throw new SyntaxError('Malformed Base cache frame');
++  const header=JSON.parse(bytes.subarray(0,cut).toString('utf8'));
++  if(header===null||typeof header!=='object'||Array.isArray(header)||header.format!==FORMAT||Object.hasOwn(header,'book'))throw Error('Invalid source-aware Base cache');
++  const payload=bytes.subarray(cut+1);
++  if(typeof header.bookSha256!=='string'||header.bookSha256!==digest(payload))throw Error('Invalid source-aware Base cache');
++  const {format,...cached}=header;
++  return {...cached,book:JSON.parse(payload.toString('utf8'))};
++}
++
++// Only decodeBaseCacheFrame supplies this JSON-owned cache object. Its exact
++// payload digest was checked before parsing; public validateSpanCache is unchanged.
++function validateSpanCacheFrame(c,{compilerSha256,baseSha256,sourcePath,sourceText,termAbi=0}) {
++  const range=interval(1,sourceText);
++  if(c.version!==(termAbi===1?TERM_CACHE:SPAN_CACHE)||(c.termAbi??0)!==termAbi||c.spanAbi!==SPAN_ABI||c.compilerSha256!==compilerSha256||c.baseSha256!==baseSha256||
++    c.sourcePath!==sourcePath||c.sourceBegin!==range.begin||c.sourceEnd!==range.end||c.validatedBy!=='check_book')throw Error('Invalid source-aware Base cache');
+   validateSpanBook(c.book,[range],termAbi);return true;
+ }
+ 
+@@ -327,7 +358,7 @@
+   const version=termAbi===1?TERM_CACHE:api.compiler_span_abi?.()===SPAN_ABI?SPAN_CACHE:api.f_load_graph_seed?2:1;
+   const directory=path.join(project,'build/typed/cache');
+   const location=crypto.createHash('sha256').update(sourcePath).digest('hex');
+-  const file=path.join(directory,`base-${compilerSha256}-${baseSha256}${version>=2?'-'+location:''}.json`);
++  const file=path.join(directory,`base-${compilerSha256}-${baseSha256}${version>=2?'-'+location:''}${version>=SPAN_CACHE?'-frame1':''}.json`);
+   return {version,termAbi,compilerSha256,baseSha256,sourcePath,sourceText,directory,file};
+ }
+ // Only persistent inspectors own this bounded memo. Re-read and hash the exact
+@@ -342,6 +373,33 @@
+   }
+   return book;
+ }
++// Identity-bound trusted-local preparation state. This is not a cryptographic
++// certificate for hostile cache files or a new permission on the public checker.
++function checkedPrefixStateShape(state) {
++  if(state===null||typeof state!=='object'||state.$!=='KBasePrefixState'||typeof state.ready!=='boolean')return false;
++  for(const key of ['bound','delta','stamp'])if(!Number.isSafeInteger(state[key])||state[key]<0||state[key]>U32_MAX)return false;
++  if(state.bound>1048576||state.stamp>state.delta)return false;
++  const pending=[state.patches];let count=0;
++  while(pending.length){let xs=pending.pop();while(xs?.$==='Con'){
++    if(++count>65536)return false;
++    const d=xs.head;
++    if(d===null||typeof d!=='object'||d.$!=='KDef'||typeof d.name!=='string'||typeof d.kind!=='string'||typeof d.native!=='boolean'||typeof d.unsafe!=='boolean'||
++      !Number.isSafeInteger(d.arity)||d.arity<0||d.arity>U32_MAX||!Number.isSafeInteger(d.templates)||d.templates<0||d.templates>U32_MAX||
++      d.typ===null||typeof d.typ!=='object'||d.value===null||typeof d.value!=='object')return false;
++    pending.push(d.ctors);xs=xs.tail;
++  }if(xs?.$!=='Nil')return false;}
++  return true;
++}
++function admitCheckedPrefixState(cached,info) {
++  try {
++    if(cached.checkedPrefixStateVersion!==1||cached.checkedPrefixStateProducer!=='base_prefix_prepare'||
++      !checkedPrefixStateShape(cached.checkedPrefixState)||!cached.checkedPrefixState.ready||
++      cached.checkedPrefixStateSha256!==crypto.createHash('sha256').update(JSON.stringify(cached.checkedPrefixState)).digest('hex'))return false;
++    validateSpanBook(cached.checkedPrefixState.patches,[interval(1,info.sourceText)],info.termAbi);
++    return true;
++  }catch{return false;}
++}
++
+ function readBaseCache(info,memo=null) {
+   try {
+     const previous=memo?.entry;
+@@ -353,12 +411,14 @@
+       memo.entry=previous;
+       return {...previous.cached,sourcePath:info.sourcePath,sourceText:info.sourceText};
+     }
+-    const cached=JSON.parse(bytes.toString('utf8'));
+-    if(info.version>=SPAN_CACHE)validateSpanCache(cached,info);
++    const cached=info.version>=SPAN_CACHE?decodeBaseCacheFrame(bytes):JSON.parse(bytes.toString('utf8'));
++    if(info.version>=SPAN_CACHE)validateSpanCacheFrame(cached,info);
+     if(cached.version!==info.version||cached.compilerSha256!==info.compilerSha256||cached.baseSha256!==info.baseSha256||cached.validatedBy!=='check_book')return null;
+     if(info.version===2&&(cached.sourcePath!==info.sourcePath||cached.bookSha256!==crypto.createHash('sha256').update(JSON.stringify(cached.book)).digest('hex')))return null;
++    if(!admitCheckedPrefixState(cached,info))delete cached.checkedPrefixState;
+     if(memo) {
+       freezeBaseBook(cached.book);
++      if(cached.checkedPrefixState)freezeBaseBook(cached.checkedPrefixState);
+       Object.freeze(cached);
+       memo.entry={key,digest,cached};
+     }
+@@ -378,13 +438,20 @@
+   const error=api.check_book(loaded.book);
+   if(error)throw Object.assign(Error(error),{phase:'check'});
+   const {version,compilerSha256,baseSha256,sourcePath,directory,file}=info;
++  const bookJson=JSON.stringify(loaded.book);
+   const cached={version,...(info.termAbi?{termAbi:info.termAbi}:{}),compilerSha256,baseSha256,sourcePath,validatedBy:'check_book',generated:new Date().toISOString(),
+-    bookSha256:crypto.createHash('sha256').update(JSON.stringify(loaded.book)).digest('hex'),book:loaded.book,
++    bookSha256:crypto.createHash('sha256').update(bookJson).digest('hex'),book:loaded.book,
+     ...(range?{spanAbi:SPAN_ABI,sourceBegin:range.begin,sourceEnd:range.end}:{})};
+-  if(range)validateSpanCache(cached,info);
++  if(range)validateSpanCacheFrame(cached,info);
++  if(range&&typeof api.base_prefix_prepare==='function'&&typeof api.check_program_diagnostic_seed==='function') {
++    const state=api.base_prefix_prepare(loaded.book);
++    const prepared={...cached,checkedPrefixStateVersion:1,checkedPrefixStateProducer:'base_prefix_prepare',checkedPrefixState:state,
++      checkedPrefixStateSha256:crypto.createHash('sha256').update(JSON.stringify(state)).digest('hex')};
++    if(admitCheckedPrefixState(prepared,info))Object.assign(cached,prepared);
++  }
+   fs.mkdirSync(directory,{recursive:true});
+   const staged=file+'.tmp-'+process.pid;
+-  try {fs.writeFileSync(staged,JSON.stringify(cached));fs.renameSync(staged,file);} finally {fs.rmSync(staged,{force:true});}
++  try {fs.writeFileSync(staged,range?encodeBaseCacheFrame(cached,bookJson):JSON.stringify(cached));fs.renameSync(staged,file);} finally {fs.rmSync(staged,{force:true});}
+   return {...cached,sourceText:info.sourceText};
+ }
+ 
+@@ -490,7 +557,9 @@
+     const checkAbi=typeof api.compiler_check_result_abi==='function'?api.compiler_check_result_abi():0;
+     if(![0,1,2].includes(checkAbi))throw Error(`Unsupported compiler checker-result ABI: ${checkAbi}`);
+     if(checkAbi===2&&typeof api.check_program_diagnostic!=='function')throw Error('Compiler checker-result ABI 2 requires check_program_diagnostic');
+-    const checkedResult=checkAbi===2?api.check_program_diagnostic(loaded.book,cached?cached.book:list([]),list([])):checkAbi===1?
++    const checkedResult=checkAbi===2?(cached?.checkedPrefixState&&typeof api.check_program_diagnostic_seed==='function'?
++      api.check_program_diagnostic_seed(loaded.book,cached.book,list([]),cached.checkedPrefixState):
++      api.check_program_diagnostic(loaded.book,cached?cached.book:list([]),list([]))):checkAbi===1?
+       (cached?api.check_book_diagnostic_from_exact_prefix(loaded.book,cached.book,list([])):api.check_book_diagnostic(loaded.book,list([]))):null;
+     const diagnostic=checkedResult?checkedResult.error:(cached?api.check_from_exact_prefix(loaded.book,cached.book):api.check_book(loaded.book));
+     if(diagnostic) {

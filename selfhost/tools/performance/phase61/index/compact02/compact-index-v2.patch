@@ -1,0 +1,192 @@
+--- a/selfhost/src/core/term.bend
++++ b/selfhost/src/core/term.bend
+@@ -22,6 +22,8 @@
+ 
+ type KDef is Data:
+   KDef{+name: String, +kind: String, +arity: U32, +templates: U32, +typ: KTerm, +value: KTerm, +ctors: List<&2, KDef>, +native: Bool, +unsafe: Bool}
++  KIndexLeaf{+hash: U32, +bucket: List<&2,KDef>}
++  KIndexNode{+hash: U32, +mask: U32, +left: KDef, +right: KDef}
+ 
+ @unsafe
+ def kt(
+@@ -178,6 +180,8 @@
+   match d:
+     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
+       name
++    case KIndexLeaf{hash, bucket}: ""
++    case KIndexNode{hash, mask, left, right}: ""
+ 
+ @unsafe
+ def dk(
+@@ -186,6 +190,8 @@
+   match d:
+     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
+       kind
++    case KIndexLeaf{hash, bucket}: "IndexLeaf"
++    case KIndexNode{hash, mask, left, right}: "IndexNode"
+ 
+ @unsafe
+ def da(
+@@ -194,6 +200,8 @@
+   match d:
+     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
+       arity
++    case KIndexLeaf{hash, bucket}: hash
++    case KIndexNode{hash, mask, left, right}: hash
+ 
+ @unsafe
+ def dx(
+@@ -202,6 +210,8 @@
+   match d:
+     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
+       templates
++    case KIndexLeaf{hash, bucket}: 0
++    case KIndexNode{hash, mask, left, right}: mask
+ 
+ @unsafe
+ def dt(
+@@ -210,6 +220,8 @@
+   match d:
+     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
+       typ
++    case KIndexLeaf{hash, bucket}: atom("Absent")
++    case KIndexNode{hash, mask, left, right}: atom("Absent")
+ 
+ @unsafe
+ def dv(
+@@ -218,6 +230,8 @@
+   match d:
+     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
+       value
++    case KIndexLeaf{hash, bucket}: atom("Absent")
++    case KIndexNode{hash, mask, left, right}: atom("Absent")
+ 
+ @unsafe
+ def dc(
+@@ -226,6 +240,8 @@
+   match d:
+     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
+       ctors
++    case KIndexLeaf{hash, bucket}: bucket
++    case KIndexNode{hash, mask, left, right}: Con{left, Con{right, Nil{}}}
+ 
+ @unsafe
+ def db(
+@@ -234,6 +250,8 @@
+   match d:
+     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
+       native
++    case KIndexLeaf{hash, bucket}: True{}
++    case KIndexNode{hash, mask, left, right}: True{}
+ 
+ @unsafe
+ def du(
+@@ -242,6 +260,8 @@
+   match d:
+     case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
+       unsafe
++    case KIndexLeaf{hash, bucket}: False{}
++    case KIndexNode{hash, mask, left, right}: False{}
+ 
+ @unsafe
+ def missing() -> KDef:
+--- a/selfhost/src/core/index.bend
++++ b/selfhost/src/core/index.bend
+@@ -38,7 +38,14 @@
+   +tree: KDef,
+   +right: Bool,
+ ) -> KDef:
+-  index_child_list(dc(tree), right)
++  match tree:
++    case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:
++      index_child_list(ctors, right)
++    case KIndexLeaf{hash, bucket}: index_child_list(bucket, right)
++    case KIndexNode{hash, mask, left, next}:
++      match right:
++        case False{}: left
++        case True{}: next
+ 
+ @unsafe
+ def index_child_list(ds, right):
+@@ -67,7 +74,16 @@
+   +hash: U32,
+   +bits: U32,
+ ) -> KDef:
+-  index_find_absent(tree, name, hash, bits, String.eq(dk(tree), "Absent"))
++  match tree:
++    case KDef{label, kind, arity, templates, typ, value, ctors, native, unsafe}:
++      index_find_absent(tree, name, hash, bits, String.eq(kind, "Absent"))
++    case KIndexLeaf{stored, bucket}:
++      kc(KDef, U32.is_eq(stored, hash), u => index_bucket(bucket, name), u => missing())
++    case KIndexNode{stored, mask, left, right}:
++      kc(KDef, U32.is_eq(mask, 0),
++        u => index_find_hash(tree, name, U32.is_eq(stored, hash)),
++        u => kc(KDef, U32.is_eq(U32.and(hash, mask), 0),
++          v => index_find(left, name, hash, bits), v => index_find(right, name, hash, bits)))
+ 
+ @unsafe
+ def index_find_absent(
+@@ -138,8 +154,15 @@
+   +tree: KDef,
+   +hash: U32,
+ ) -> KDef:
+-  kc(KDef, U32.is_eq(dx(tree), 0), u => tree,
+-    u => index_tip(index_child(tree, Bool.not(U32.is_eq(U32.and(hash, dx(tree)), 0))), hash))
++  match tree:
++    case KDef{label, kind, arity, templates, typ, value, ctors, native, unsafe}:
++      kc(KDef, U32.is_eq(templates, 0), u => tree,
++        u => index_tip(index_child(tree, Bool.not(U32.is_eq(U32.and(hash, templates), 0))), hash))
++    case KIndexLeaf{stored, bucket}: tree
++    case KIndexNode{stored, mask, left, right}:
++      kc(KDef, U32.is_eq(mask, 0), u => tree,
++        u => kc(KDef, U32.is_eq(U32.and(hash, mask), 0),
++          v => index_tip(left, hash), v => index_tip(right, hash)))
+ 
+ # U32 subtraction wraps: x & (0 - x) isolates its lowest set bit, or 0.
+ @unsafe
+@@ -154,7 +177,7 @@
+   +hash: U32,
+   +ds: List<&2, KDef>,
+ ) -> KDef:
+-  KDef{"", "IndexLeaf", hash, 0, atom("Absent"), atom("Absent"), Con{d, index_remove(ds, dn(d))}, True{}, False{}}
++  KIndexLeaf{hash, Con{d, index_remove(ds, dn(d))}}
+ 
+ @unsafe
+ def index_node(
+@@ -163,7 +186,7 @@
+   +left: KDef,
+   +right: KDef,
+ ) -> KDef:
+-  KDef{"", "IndexNode", hash, mask, atom("Absent"), atom("Absent"), Con{left, Con{right, Nil{}}}, True{}, False{}}
++  KIndexNode{hash, mask, left, right}
+ 
+ @unsafe
+ def index_join(
+@@ -178,6 +201,27 @@
+ 
+ @unsafe
+ def index_insert(
++  +tree: KDef,
++  +d: KDef,
++  +hash: U32,
++  +mask: U32,
++) -> KDef:
++  match tree:
++    case KDef{label, kind, arity, templates, typ, value, ctors, native, unsafe}:
++      index_insert_legacy(tree, d, hash, mask)
++    case KIndexLeaf{stored, bucket}:
++      kc(KDef, Bool.not(U32.is_eq(mask, 0)),
++        u => index_join(tree, d, hash, mask), u => index_leaf(d, hash, bucket))
++    case KIndexNode{stored, split, left, right}:
++      kc(KDef, U32.is_eq(split, 0), u => index_insert_legacy(tree, d, hash, mask),
++      u => kc(KDef, Bool.not(U32.is_eq(mask, 0)) && U32.is_lt(mask, split),
++        u => index_join(tree, d, hash, mask),
++        u => kc(KDef, U32.is_eq(U32.and(hash, split), 0),
++          u => index_node(stored, split, index_insert(left, d, hash, mask), right),
++          u => index_node(stored, split, left, index_insert(right, d, hash, mask)))))
++
++@unsafe
++def index_insert_legacy(
+   +tree: KDef,
+   +d: KDef,
+   +hash: U32,

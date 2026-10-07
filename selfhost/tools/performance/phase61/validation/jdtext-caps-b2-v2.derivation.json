@@ -1,0 +1,50 @@
+{
+  "kind": "phase61-bounded-scanner-differential-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/jdtext-caps-b2.mjs",
+    "sha256": "76c23f54378a367a86a8956d15bf912e959d04d04f0e64f4eeae130ec78f8574"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/jdtext-caps-b2-v2.mjs",
+    "sha256": "88303310900e47568da42a966bad4dcb3321deb03b9e27bf1f867840756ea8c5"
+  },
+  "edits": [
+    {
+      "old": "kind:'phase61-genuine-b2-jdtext-cap-controls'",
+      "new": "kind:'phase61-genuine-b2-jdtext-cap-controls-v2'"
+    },
+    {
+      "old": "roles:{},bounds:[],progress:[]",
+      "new": "roles:{},bounds:[],smallScannerDifferential:[],progress:[]"
+    },
+    {
+      "old": "scope:'Five full 2097152-codepoint boundaries on actual genuine B2 private helpers. Both images require authentic checked-source emission and eight-driver admission through frozen setup. Independent expected results plus actual old scanner differential. Append-only lexical diagnostics; no checked B2 sidecar, frontend/whole-source qualification, speed claim or surrogate-half composition claim.'",
+      "new": "scope:'Five full 2097152-codepoint candidate boundaries with independent expected results; original scanner differential is limited to short inputs and explicit remaining-fuel boundaries. Both genuine B2 images require authentic checked-source emission and eight-driver admission. No full-size old scanner completion is claimed: predecessor timed out before first baseline case. Append-only lexical diagnostics, no checked B2 sidecar, frontend/whole-source qualification, speed or surrogate-half composition claim.'"
+    },
+    {
+      "old": " pin(new URL('./jdtext-controls.mjs',import.meta.url)",
+      "new": " pin(new URL('./jdtext-caps-b2.mjs',import.meta.url),{sha256:'76c23f54378a367a86a8956d15bf912e959d04d04f0e64f4eeae130ec78f8574'});\n pin(new URL('./jdtext-controls.mjs',import.meta.url)"
+    },
+    {
+      "old": "phase61CapOld=(names,text)=>${symbol('jd_reach_refs')}(names,text,false,2097152,",
+      "new": "phase61CapOld=(names,text,fuel=2097152)=>${symbol('jd_reach_refs')}(names,text,false,fuel,"
+    },
+    {
+      "old": " const cap=2097152,ending='\\n/*JD_REF:'+symbol('a')+'*/',t=apis.candidate.phase61Cap;",
+      "new": " const cap=2097152,ending='\\n/*JD_REF:'+symbol('a')+'*/',t=apis.candidate.phase61Cap;\n // Remaining-fuel boundaries exercise the exact old state transition without a quadratic 2MiB old scan.\n const small=[];\n for(const fuel of [32,257])for(const [name,n,marker,expected]of [\n   ['raw-below',fuel-1,'',[]],['raw-exact',fuel,'',[]],['raw-above',fuel+1,'',null],\n   ['marker-ending-exact',fuel,ending,['a']],['marker-crossing',fuel+1,ending,null]])\n   small.push({name:name+'-'+fuel,text:'x'.repeat(n-marker.length)+marker,fuel,expected});\n small.push({name:'empty-zero',text:'',fuel:0,expected:[]},{name:'nonempty-zero',text:'x',fuel:0,expected:null});\n for(const c of small) {\n   mark('small-scanner-differential',{name:c.name,fuel:c.fuel});\n   const observed={};for(const role of ['baseline','candidate']) {\n     observed[role]=decode(apis[role].phase61CapOld(tables[role],c.text,c.fuel));\n     assert.deepEqual(observed[role],c.expected,c.name+': '+role);\n   }\n   report.smallScannerDifferential.push({...c,observed,pass:true});save();\n }"
+    },
+    {
+      "old": "  const text='x'.repeat(n-marker.length)+marker;mark('baseline-old-scan',{name,codepoints:n});\n  const baseline=decode(apis.baseline.phase61CapOld(tables.baseline,text));assert.deepEqual(baseline,expected,name+': original scanner');\n",
+      "new": "  const text='x'.repeat(n-marker.length)+marker;\n"
+    },
+    {
+      "old": "expected,baseline,actual,pass:true",
+      "new": "expected,actual,baselineFullSizeExecuted:false,pass:true"
+    },
+    {
+      "old": "report.counts={rawCapCases:5,concatenationExcessCases:1}",
+      "new": "report.counts={rawCapCases:5,concatenationExcessCases:1,smallScannerDifferentials:12}"
+    }
+  ],
+  "scope": "Full candidate bounds preserved; old full-size timeout preserved, replaced only with explicitly bounded old-scanner comparisons, not a full old-size equivalence claim."
+}

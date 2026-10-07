@@ -1,0 +1,37 @@
+{
+  "kind": "phase61-private-compact-index-source-proposal",
+  "complete": true,
+  "applied": false,
+  "targetExecuted": false,
+  "changes": [
+    {
+      "destination": "selfhost/src/core/term.bend",
+      "before": {
+        "file": "selfhost/tools/performance/phase61/index/compact01/before/term.bend",
+        "sha256": "e9ab994bc3ba4fd5a281e25836911bbc29cafcf2ab0c0284dc9bc097e891fa46"
+      },
+      "after": {
+        "file": "selfhost/tools/performance/phase61/index/compact01/after/term.bend",
+        "sha256": "5e80c433f3dc11d1f52de8a6df5ad2362a0f391bbd3d520ee4193fc9eb87ea2c"
+      },
+      "physicalDelta": 20
+    },
+    {
+      "destination": "selfhost/src/core/index.bend",
+      "before": {
+        "file": "selfhost/tools/performance/phase61/index/compact01/before/index.bend",
+        "sha256": "ea4d61856831a6e37e2bed54984aa4d890661c144457db41e0008bde47108e79"
+      },
+      "after": {
+        "file": "selfhost/tools/performance/phase61/index/compact01/after/index.bend",
+        "sha256": "0c54776a582e09d66cafb18eff0c4301370539e1337811a3f612dbeb8070f2cd"
+      },
+      "physicalDelta": 7
+    }
+  ],
+  "patch": {
+    "file": "selfhost/tools/performance/phase61/index/compact01/compact-index-v1.patch",
+    "sha256": "57a4bb644748085db190b3178caa1d878c93ce729574299c78462b19ab12c145"
+  },
+  "scope": "Private node representation only. BookCache sentinel metadata and all public book/index signatures retained. Legacy KDef nodes accepted. New node dc/dt/dv accessors materialize value-equivalent observer views; placeholder/list-cell identity is deliberately not preserved. Index child traversal accesses typed fields directly."
+}

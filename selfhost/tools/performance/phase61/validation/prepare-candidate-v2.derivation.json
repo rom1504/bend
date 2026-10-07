@@ -1,0 +1,42 @@
+{
+  "kind": "phase61-batch-bootstrap-plan-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/bootstrap/prepare-candidate.py",
+    "sha256": "b494389a40a0492be9cbded64cd5f8ce0289b807e49cf7e1c67da3c90821bbde"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/prepare-candidate-v2.py",
+    "sha256": "d258f311f7144302c7290fec18cb22354027cea25e454cc4fe84ff722f0da43e"
+  },
+  "edits": [
+    {
+      "old": "ROOT = Path(__file__).resolve().parents[5]",
+      "new": "ROOT = Path(__file__).resolve().parents[5]\nPARENT = ROOT / 'selfhost/tools/performance/phase58/bootstrap/prepare-candidate.py'\nPARENT_SHA = 'b494389a40a0492be9cbded64cd5f8ce0289b807e49cf7e1c67da3c90821bbde'"
+    },
+    {
+      "old": "selfhost/build/phase58",
+      "new": "selfhost/build/phase61"
+    },
+    {
+      "old": "Phase58 candidate own-source generation",
+      "new": "Phase61 candidate own-source generation"
+    },
+    {
+      "old": "    for name in ['jd_library_selected', 'jd_selected_context', 'jd_library_context']:\n        assert definition(original_core, name) == definition(current_core, name), name\n",
+      "new": "    # The split helper calls the actual candidate's exposed selectedContext.\n    # Only this exact batch substitution is admitted; tiny unsplit equality is retained.\n    batch_context = ('def jd_selected_context(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> List<&2,KDef>:\\n'\n                     '  book_put_many(book, defs)')\n    library_seams = []\n    for name in ['jd_library_selected', 'jd_selected_context', 'jd_library_context']:\n        previous = definition(original_core, name)\n        current = definition(current_core, name)\n        exact = previous == current\n        batch = name == 'jd_selected_context' and current == batch_context\n        assert exact or batch, name\n        library_seams.append(dict(name=name, historicalBody=previous, selectedBody=current,\n                                  unchanged=exact, exactBatchContext=batch and not exact))\n"
+    },
+    {
+      "old": "    inputs = [identity(__file__), identity(attempt_directory/'attempt.json')",
+      "new": "    assert identity(PARENT)['sha256'] == PARENT_SHA\n    inputs = [identity(__file__), identity(PARENT), identity(attempt_directory/'attempt.json')"
+    },
+    {
+      "old": "'rootsReference':identity(HISTORY/'full77.json'),'commands':commands,",
+      "new": "'rootsReference':identity(HISTORY/'full77.json'),'commands':commands,'librarySeams':library_seams,"
+    },
+    {
+      "old": "'scope':'Same split/driver algorithms. Only import relocation and the whole-core identity pin differ; exact library decomposition was compared before deriving.'",
+      "new": "'scope':'Same split/driver algorithms. The two library decomposition bodies remain exact; selected context is either historical or the exact reviewed book_put_many call. The helper calls that actual selected function. Tiny split/unsplit byte equality remains mandatory; inherited checking is not a fresh self-check.'"
+    }
+  ],
+  "scope": "Exact two-line selected-context substitution only; all target algorithms and equality/oracle gates unchanged. Failed methods01 plan retained; root uses fresh bootstrap output."
+}

@@ -1,0 +1,38 @@
+{
+  "kind": "phase61-private-compact-index-source-proposal",
+  "complete": true,
+  "applied": false,
+  "targetExecuted": false,
+  "parentProposal": "selfhost/tools/performance/phase61/index/compact01/identity-v1.json",
+  "changes": [
+    {
+      "destination": "selfhost/src/core/term.bend",
+      "before": {
+        "file": "selfhost/tools/performance/phase61/index/compact02/before/term.bend",
+        "sha256": "e9ab994bc3ba4fd5a281e25836911bbc29cafcf2ab0c0284dc9bc097e891fa46"
+      },
+      "after": {
+        "file": "selfhost/tools/performance/phase61/index/compact02/after/term.bend",
+        "sha256": "5e80c433f3dc11d1f52de8a6df5ad2362a0f391bbd3d520ee4193fc9eb87ea2c"
+      },
+      "physicalDelta": 20
+    },
+    {
+      "destination": "selfhost/src/core/index.bend",
+      "before": {
+        "file": "selfhost/tools/performance/phase61/index/compact02/before/index.bend",
+        "sha256": "ea4d61856831a6e37e2bed54984aa4d890661c144457db41e0008bde47108e79"
+      },
+      "after": {
+        "file": "selfhost/tools/performance/phase61/index/compact02/after/index.bend",
+        "sha256": "51ce95941f955ed1c65f01ee88af31e35180c94d30ada97f359c6aa71dd47edb"
+      },
+      "physicalDelta": 44
+    }
+  ],
+  "patch": {
+    "file": "selfhost/tools/performance/phase61/index/compact02/compact-index-v2.patch",
+    "sha256": "e6c269ed5dc13a567b73bbb8a28d028f6be8a1d7fdfd97d71e17599856552830"
+  },
+  "scope": "Adds direct typed find/tip/insertion branches to compact01 representation. Legacy KDef algorithms and virtual observer accessors retained; no full-tree conversion on lookups or updates."
+}

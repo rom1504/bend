@@ -1,0 +1,25 @@
+{
+  "kind": "phase61-fused-environment-source-proposal",
+  "productionApplied": false,
+  "module": {
+    "file": "selfhost/src/check/env-substitution.bend",
+    "sha256": "2bb46c21059512d1394e47da3287b2d00a8a42d658bdbce2724a0e061f77ee5c",
+    "bytes": 2220
+  },
+  "before": {
+    "file": "selfhost/tools/performance/phase61/telescope/fused/env-telescope-before.bend",
+    "sha256": "73d8cd042edc71e9bd2d42824da1afa2081c61f940282519536465b6c58700aa",
+    "bytes": 5764
+  },
+  "after": {
+    "file": "selfhost/tools/performance/phase61/telescope/fused/env-telescope-after.bend",
+    "sha256": "c8f641d1dfe167d9708bef3c28c5320aeb605881d0775758f5cf0b0eced82fb7",
+    "bytes": 5673
+  },
+  "patch": {
+    "file": "selfhost/tools/performance/phase61/telescope/fused/materializer.patch",
+    "sha256": "7c6323becdc217234c4f300a25419b7124a5febf26e4d1c75625dac332af650a",
+    "bytes": 416
+  },
+  "scope": "Only existing env_tele_safe-admitted materialization; guard/cursor/checker and public term shape unchanged."
+}

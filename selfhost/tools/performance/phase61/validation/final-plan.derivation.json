@@ -1,0 +1,38 @@
+{
+  "kind": "phase61-final-plan-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/final-orchestration-v2.py",
+    "sha256": "f4a45b4f345c37e00be47b360071dd3006ffdb22fb5f75ee61d610c9550ffbf5"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/final-plan.py",
+    "sha256": "219af6925e5fe967b8fdeb15b72ba9763d9cd42dbe8931f4048ed89f504d7678"
+  },
+  "edits": [
+    {
+      "old": "HERE=Path(__file__).resolve().parent;TOOLS=HERE.parents[1];ROOT=HERE.parents[4];RAW=ROOT/'selfhost/build/phase58'",
+      "new": "ROOT=Path(__file__).resolve().parents[5];TOOLS=ROOT/'selfhost/tools/performance';RAW=ROOT/'selfhost/build/phase61'\nBOOTSTRAP_PRODUCER=TOOLS/'phase61/validation/prepare-candidate-v2.py'\nBOOTSTRAP_SHA='d258f311f7144302c7290fec18cb22354027cea25e454cc4fe84ff722f0da43e'"
+    },
+    {
+      "old": "s=sub.add_parser('plan');s.add_argument('--attempt'",
+      "new": "s=sub.add_parser('plan');s.add_argument('--methods',type=Path,required=True);s.add_argument('--attempt'"
+    },
+    {
+      "old": "attempt=a.attempt.resolve(strict=True);m=read(attempt/'attempt.json')",
+      "new": "methods=a.methods.resolve(strict=True);assert methods.parent==RAW.resolve();HERE=methods/'qualification'\nmethod=read(methods/'methods.json');assert method['kind']=='phase61-frozen-validation-methods'and method['complete']is True\nfor row in method['rows']:assert pin(row['output']['file'])==row['output']\nassert pin(BOOTSTRAP_PRODUCER)['sha256']==BOOTSTRAP_SHA\nattempt=a.attempt.resolve(strict=True);m=read(attempt/'attempt.json')"
+    },
+    {
+      "old": "bootstrap/'prepare-candidate.py',bootstrap/'reproduce.mjs'",
+      "new": "BOOTSTRAP_PRODUCER,bootstrap/'reproduce.mjs'"
+    },
+    {
+      "old": "py(bootstrap/'prepare-candidate.py','plan',attempt,out/'bootstrap')",
+      "new": "py(BOOTSTRAP_PRODUCER,'plan',attempt,out/'bootstrap')"
+    },
+    {
+      "old": "'Focused fields/lookup/scalar/choices pass first.",
+      "new": "'Selected mechanism-focused controls pass first."
+    }
+  ],
+  "scope": "Reuse exact methods directory with explicit identity checks; select separately reviewed batch-aware bootstrap producer. Existing stage commands/oracles and separate installation admission retained."
+}

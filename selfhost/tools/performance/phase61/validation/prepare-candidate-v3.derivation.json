@@ -1,0 +1,50 @@
+{
+  "kind": "phase61-bootstrap-actual-exports-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/prepare-candidate-v2.py",
+    "sha256": "d258f311f7144302c7290fec18cb22354027cea25e454cc4fe84ff722f0da43e"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/prepare-candidate-v3.py",
+    "sha256": "de4f2632bb5a5614c4e2d5649b7970f017ca13555d3a4a7097accd8892b06cb3"
+  },
+  "edits": [
+    {
+      "old": "PARENT = ROOT / 'selfhost/tools/performance/phase58/bootstrap/prepare-candidate.py'\nPARENT_SHA = 'b494389a40a0492be9cbded64cd5f8ce0289b807e49cf7e1c67da3c90821bbde'",
+      "new": "PARENT = Path(__file__).with_name('prepare-candidate-v2.py')\nPARENT_SHA = 'd258f311f7144302c7290fec18cb22354027cea25e454cc4fe84ff722f0da43e'\nSELECTED_DRIVER = ROOT / 'selfhost/tools/performance/phase61/cache/typed-driver-combined02.mjs'\nSELECTED_DRIVER_SHA = '1f6c4c1ccf57bd53a03b35d4c5242d6e71c17709088301d7f00a736a19bb2ae3'\nADDED_ROOTS = {'base_prefix_prepare','check_program_diagnostic_seed','f_fresh_prefix_prepare','f_graph_trace_from_prefix'}"
+    },
+    {
+      "old": "    config = copy.deepcopy(before)\n",
+      "new": "    selected_driver = identity(SELECTED_DRIVER)\n    assert selected_driver['sha256'] == SELECTED_DRIVER_SHA\n    roots = boot['exports']\n    assert isinstance(roots, list) and len(roots) == len(set(roots)) and all(isinstance(x,str) for x in roots)\n    assert set(roots) == set(before['roots']) | ADDED_ROOTS, 'Unexpected checked bootstrap export set'\n    assert [x for x in roots if x not in ADDED_ROOTS] == before['roots'], 'Historical export order changed'\n    inputs.append(selected_driver)\n    roots_reference = {'kind':'phase61-checked-bootstrap-export-reference','roots':roots,\n                       'bootstrap':identity(attempt['bootstrapReport']['file']), 'attempt':identity(attempt_directory/'attempt.json'),\n                       'historical':identity(HISTORY/'full77.json'),'addedRoots':sorted(ADDED_ROOTS)}\n    write(out/'roots-reference.json', roots_reference)\n    config = copy.deepcopy(before)\n    config['roots'] = list(roots)\n"
+    },
+    {
+      "old": "    assert config['driver']['sha256'] == before['driver']['sha256'], 'Ordinary driver changed'",
+      "new": "    assert config['driver']['sha256'] == selected_driver['sha256'], 'Not the reviewed combined driver'"
+    },
+    {
+      "old": "    assert len(config['roots']) == len(set(config['roots'])) == 77\n    write(out/'full77.json', config)",
+      "new": "    assert config['roots'] == boot['exports']\n    write(out/'full-roots.json', config)"
+    },
+    {
+      "old": "out/'full77.json'",
+      "new": "out/'full-roots.json'"
+    },
+    {
+      "old": "['tiny.json','full77.json','driver.json']",
+      "new": "['tiny.json','full-roots.json','driver.json']"
+    },
+    {
+      "old": "'rootsReference':identity(HISTORY/'full77.json')",
+      "new": "'rootsReference':identity(out/'roots-reference.json')"
+    },
+    {
+      "old": "    assert e['config']==p['configs'][1]",
+      "new": "    assert e['config']==p['configs'][1]\n    reference = read(p['rootsReference']); assert reference['kind']=='phase61-checked-bootstrap-export-reference'\n    assert reference['attempt']==p['attempt'] and e['roots']==reference['roots']\n    assert read(reference['bootstrap']['file'])['exports']==reference['roots']\n    assert identity(reference['bootstrap']['file'])==reference['bootstrap']"
+    },
+    {
+      "old": "reference = read(p['rootsReference']);",
+      "new": "reference = read(p['rootsReference']['file']);"
+    }
+  ],
+  "scope": "Actual checked bootstrap exports plus exactly four reviewed optional Base/loader entries; selected combined driver identity; inherited split algorithms and tiny/eight-driver gates unchanged."
+}

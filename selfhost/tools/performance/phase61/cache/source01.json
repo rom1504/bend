@@ -1,0 +1,20 @@
+{
+  "kind": "phase61-cache-frame-proposal",
+  "status": "unexecuted/private-only",
+  "baseline": {
+    "file": "selfhost/tools/performance/phase61/cache/typed-driver-baseline.mjs",
+    "sha256": "eb4bb871371fb2fb61fa1c077d093a817a1f6ae35205ebb2beecfb6e064fc417",
+    "bytes": 53800
+  },
+  "candidate": {
+    "file": "selfhost/tools/performance/phase61/cache/typed-driver-frame01.mjs",
+    "sha256": "e135bdede29eb4e237a41b21c199b5e7c07ea10b35b71b40433ba73f94f942de",
+    "bytes": 55834
+  },
+  "helper": {
+    "file": "selfhost/tools/performance/phase61/cache/base-cache-frame.mjs",
+    "sha256": "cc4ff445016e03c09e621c4d7fef838b9c6adde541bcc6f8327c98301c3602ab",
+    "bytes": 1309
+  },
+  "placement": "Framing helpers are inline private functions in typed-driver-frame01.mjs. No new production host dependency or snapshot helper-list change. Standalone helper remains a data-only controller oracle."
+}

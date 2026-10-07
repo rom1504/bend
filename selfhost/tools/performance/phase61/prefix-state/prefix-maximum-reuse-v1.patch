@@ -1,0 +1,31 @@
+--- a/selfhost/src/check/prefix-state.bend
++++ b/selfhost/src/check/prefix-state.bend
+@@ -182,9 +182,13 @@
+ 
+ @unsafe
+ def base_prefix_admitted_final(+state: KBasePrefixState, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +bound: U32, +final: List<&2,KDef>) -> Bool:
++  base_prefix_admitted_bound(state, prefix, suffix, bound, final, norm_max_book(prefix))
++
++@unsafe
++def base_prefix_admitted_bound(+state: KBasePrefixState, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +bound: U32, +final: List<&2,KDef>, +prefix_bound: U32) -> Bool:
+   match state:
+     case KBasePrefixState{base_bound, delta, stamp, patches, ready}:
+-      ready && U32.is_eq(base_bound, norm_max_book(prefix)) && U32.is_ge(bound, base_bound) && U32.is_le(delta, 1048576) && U32.is_le(stamp, delta) && U32.is_le(bound, 1048576) && base_prefix_names(suffix) && prefix_state_disjoint(prefix, book_context(suffix)) && base_prefix_ctor_disjoint(suffix, final)
++      ready && U32.is_eq(base_bound, prefix_bound) && U32.is_ge(bound, base_bound) && U32.is_le(delta, 1048576) && U32.is_le(stamp, delta) && U32.is_le(bound, 1048576) && base_prefix_names(suffix) && prefix_state_disjoint(prefix, book_context(suffix)) && base_prefix_ctor_disjoint(suffix, final)
+ 
+ @unsafe
+ def base_prefix_resume_saved(+state: KBasePrefixState, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +bound: U32, +final: List<&2,KDef>) -> DChecking:
+@@ -198,9 +202,11 @@
+ 
+ @unsafe
+ def base_prefix_resume(+state: KBasePrefixState, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>) -> DChecking:
+-  +bound = norm_max_book(prefix_state_join(prefix, suffix))
++  +prefix_bound = norm_max_book(prefix)
++  +suffix_bound = norm_max_book(suffix)
++  +bound = norm_max(prefix_bound, suffix_bound)
+   +final = base_prefix_final(prefix)
+-  kc(DChecking, base_prefix_admitted_final(state, prefix, suffix, bound, final),
++  kc(DChecking, base_prefix_admitted_bound(state, prefix, suffix, bound, final, prefix_bound),
+     u => base_prefix_resume_saved(state, prefix, suffix, bound, final),
+     u => dg_check_world(prefix_state_join(prefix, suffix)))
+ 

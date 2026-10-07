@@ -360,7 +360,9 @@ def subst(
 def subst_node(t, id0, v):
   match t:
     case KTerm{tag, name, n, q, kids, removed, originBegin, originEnd}:
-      core_rebuild(KTerm{tag, name, n, q, subst_terms(kids, id0, v), removed, originBegin, originEnd})
+      kc(KTerm, List.is_empty(&2, KTerm, kids) && Bool.not(String.eq(tag, "App")),
+        u => t,
+        u => core_rebuild(KTerm{tag, name, n, q, subst_terms(kids, id0, v), removed, originBegin, originEnd}))
     case KLambda{name, id, quant, kids, removed, begin, end, present}:
       core_rebuild(KLambda{name, id, quant, subst_terms(kids, id0, v), removed, begin, end, present})
     case KLiteral{kind, number, text, literalBegin, literalEnd}:

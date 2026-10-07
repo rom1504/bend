@@ -84,16 +84,6 @@ def jd_arity(+book: List<&2,KDef>, +d: KDef) -> U32:
   kc(U32, String.eq(tg(j_strip(dv(d))), "Foreign"), u => jd_domains(book, dt(d)), u =>
     U32.add(da(d), U32.min(jd_raise(book, dv(d), da(d)), U32.sub(jd_domains(book, dt(d)), da(d)))))
 
-# Private emitter query: d is a definition of the completed call context.
-# Call analysis retains the arity it already needed; other inputs stay raw.
-@unsafe
-def jd_emitted_arity(+book: List<&2,KDef>, +d: KDef) -> U32:
-  jd_emitted_arity_on(book, d, kid(dv(jd_calls_fact(book, dn(d))), 0))
-
-@unsafe
-def jd_emitted_arity_on(+book: List<&2,KDef>, +d: KDef, +fact: KTerm) -> U32:
-  kc(U32, String.eq(tg(fact), "JDArity"), u => ix(fact), u => jd_arity(book, d))
-
 # Pinned fun_of/def_raise: open common lambda prefixes beyond declared formals,
 # including prefixes shared by every matcher arm, capped by the type telescope.
 @unsafe

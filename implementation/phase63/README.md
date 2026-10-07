@@ -148,3 +148,28 @@ Exact-identity query hooks are diagnostic only. Initial Map arity caching has
 The original Numeric baseline prepared the cache and is invalid for timing
 comparison. A successor requires a preexisting, unchanged frame. Production
 compiler algorithms remain Bend; no JavaScript memo hook is selected.
+
+## State09 integration candidate
+
+The first combined arity/suffix/cleanup source (State08) fails bootstrap inference
+at an unannotated local `Con`; the failed6.84s receipt is retained. State09 adds the
+missing `List<&2,KTerm>` annotation and passes strict checked36 in57.77s. It reuses
+arity already computed by call analysis, carries actual completed source fragments
+instead of rediscovering them through Base, and removes four unused legacy host
+traversals. Net Bend change versus State06 is11 fewer lines.
+
+Current focused gates pass: exact94-root admission;558 emitted arity queries equal
+the original raw query, including484 fact hits and74 fallbacks; complete modules
+with fact reuse disabled remain identical. The16-source frontend differential,
+producer/order/public-seed controls and six real backend-context fixtures also
+pass. The latter retain45 expected runtime observations across old pruned,
+canonical and saved-plan emission. Raw public arity queries remain unchanged;
+private loader carriers require the existing authenticated producer invariant.
+
+A direct two-role/two-round checked-B1 comparison uses State06 and State09 in
+alternating order, with independent prepared projects. Numeric mean386.48→388.90ms
+is effectively flat in this small sample; Map1500.73→1449.30ms is3.43% lower;
+Lexer726.21→723.07ms is also close. All12 raw modules match. State09 therefore
+proceeds to genuine-B2 confirmation and final qualification; it is not installed.
+Raw: `state06-vs09-b1/confirm/report.json`. Its checked semantic matrix uses the
+required child-process permission; composition18 and overapplication2 now pass.

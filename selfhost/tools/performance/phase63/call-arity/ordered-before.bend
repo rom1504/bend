@@ -67,11 +67,11 @@ def jd_ordered_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty:
     u => jd_choice_ordered(book, env, xs, next), u =>
   kc(JDOrdered, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
     (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u =>
-      kc(JDOrdered, U32.is_eq(terms_len(xs), jd_emitted_arity(book, d)),
+      kc(JDOrdered, U32.is_eq(terms_len(xs), jd_arity(book, d)),
         v => jd_ordered_call(book, jd_owner(env), dn(d), tail, jd_ordered_args(book, env, xs, dt(d), next)),
-        v => kc(JDOrdered, U32.is_lt(terms_len(xs), jd_emitted_arity(book, d)),
+        v => kc(JDOrdered, U32.is_lt(terms_len(xs), jd_arity(book, d)),
           w => jd_ordered_eta(book, jd_owner(env), dn(d), jd_ordered_after(book, xs, dt(d)),
-            U32.sub(jd_emitted_arity(book, d), terms_len(xs)), terms_len(env), tail,
+            U32.sub(jd_arity(book, d), terms_len(xs)), terms_len(env), tail,
             jd_ordered_args(book, env, xs, dt(d), next)),
           w => jd_ordered_unknown(book, env, t, tail, next, wnf(book, j_type(book, env, kid(t, 0)))))),
     u => jd_ordered_leaf(book, env, t, ty, tail, next)))

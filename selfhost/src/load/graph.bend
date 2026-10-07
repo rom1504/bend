@@ -198,10 +198,14 @@ def f_graph_finish(s, ns, book, imports, g, sources, fallback):
       f_graph_finish_alias(s, ns, f_graph_fill_defs(book, imports, prior), imports, prior, f_choose(String, String.is_empty(err) && String.is_empty(fallback), u => f_graph_fresh_names(book, index_build(List.reverse(&2,KDef,prior))), u => err), done, sources, fallback)
 
 @unsafe
-def f_graph_finish_indexed(+source: FSource, +ns: String, +book: List<&2,KDef>, +imports: List<&2,KTerm>, +graph: FGraph, +sources: List<&2,FSource>, +fallback: String, +names: KDef) -> FGraph:
-  match graph:
-    case FGraph{prior, error, done}:
-      f_graph_finish_alias(source, ns, f_graph_fill_defs(book, imports, prior), imports, prior, kc(String, String.is_empty(error) && String.is_empty(fallback), u => f_graph_fresh_names(book, names), u => error), done, sources, fallback)
+def f_graph_finish_indexed(+source: FSource, +ns: String, +imports: List<&2,KTerm>, +graph: FGraph, +sources: List<&2,FSource>, +names: KDef, +parsed: FResult) -> FIndexedCompletion:
+  match graph parsed:
+    case FGraph{prior, error, done} FResult{book, fallback, parsedImports}:
+      +filled = f_graph_fill_defs(book, imports, prior)
+      +selected = kc(String, String.is_empty(error) && String.is_empty(fallback), u => f_graph_fresh_names(book, names), u => error)
+      +loaded: List<&2,KTerm> = Con{kt("Loaded", f_source_path(source), f_graph_count_defs(filled, 0), 0, Con{ref(ns), imports}), done}
+      +fragment = f_path_defs(f_context_modules(filled, ns), f_path_dir(f_source_path(source)), f_eq(f_source_name(source), "Base"))
+      FIndexedCompletion{f_graph_finish_module(source, prior, selected, loaded, fragment, sources, fallback), parsed, fragment}
 
 @unsafe
 def f_graph_finish_alias(s, ns, book, imports, prior, err, done, sources, fallback):

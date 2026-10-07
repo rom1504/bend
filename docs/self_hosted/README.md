@@ -11,7 +11,9 @@ all 3,192 unsafe declarations retain the expected proof-trust refusal.
 private loader provenance, dependent-term cursors, persistent books and structured
 emission metadata. It also documents the separately tracked
 [Phase63 candidate](../../implementation/phase63/README.md): ready worlds, shared
-graph transport, a library lowering plan and shared host-field analysis. The
+graph transport, a library lowering plan, retained arity facts and shared
+host-field analysis. State09 also carries actual completed suffix fragments;
+its final qualification remains separate from installed Phase61. The
 Phase61 balanced compiler campaign passes all 207 workers across
 23 sources, three roles and three rounds. Equal-source median B2/TypeScript
 geometric means improve **2.476542× → 1.433877×** for import + API load + first

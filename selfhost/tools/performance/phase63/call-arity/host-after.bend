@@ -160,13 +160,39 @@ def jd_host_marshal_rows_text(+fields: JDHostFields, +tail: String) -> String:
 
 # Like pinned js_marshal: choose the last directly self-recursive field as the
 # iterative spine, converting other fields left-to-right before following it.
+@unsafe
+def jd_host_marshal_tail(+book: List<&2,KDef>, +tel: KTerm, +out: Bool,
+  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32, +self: String) -> String:
+  kc(String, U32.is_gt(fuel, 0), u =>
+    jd_host_marshal_tail_on(book, wnf(book, tel), out, seen, depth, U32.sub(fuel, 1), self),
+    u => "")
 
+@unsafe
+def jd_host_marshal_tail_on(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
+  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32, +self: String) -> String:
+  kc(String, String.eq(tg(t), "All"), u =>
+    jd_host_marshal_tail_done(nm(t), kc(Bool, U32.is_eq(qt(t), 0), u => False{},
+      u => String.eq(jd_host_marshal(book, kid(t, 0), out, seen, depth, fuel), self)),
+      jd_host_marshal_tail(book, j_app_type(t, atom("Absent")), out, seen, depth, fuel, self)), u => "")
 
 @unsafe
 def jd_host_marshal_tail_done(+name: String, +same: Bool, +rest: String) -> String:
   kc(String, Bool.not(String.eq(rest, "")), u => rest, u => kc(String, same, u => name, u => ""))
 
+@unsafe
+def jd_host_marshal_fields(+book: List<&2,KDef>, +tel: KTerm, +out: Bool,
+  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32, +tail: String) -> String:
+  kc(String, U32.is_gt(fuel, 0), u =>
+    jd_host_marshal_fields_on(book, wnf(book, tel), out, seen, depth, U32.sub(fuel, 1), tail),
+    u => ",[\"$unsupported\"]:" ++ jd_host_error("host field telescope depth") ++ "()")
 
+@unsafe
+def jd_host_marshal_fields_on(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
+  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32, +tail: String) -> String:
+  kc(String, String.eq(tg(t), "All"), u =>
+    kc(String, U32.is_eq(qt(t), 0) || String.eq(nm(t), tail), u => "", u =>
+      jd_host_marshal_field(nm(t), jd_host_marshal(book, kid(t, 0), out, seen, depth, fuel))) ++
+    jd_host_marshal_fields(book, j_app_type(t, atom("Absent")), out, seen, depth, fuel, tail), u => "")
 
 @unsafe
 def jd_host_marshal_field(+name: String, +marshal: String) -> String:

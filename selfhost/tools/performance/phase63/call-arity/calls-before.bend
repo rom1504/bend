@@ -176,27 +176,18 @@ def jd_calls_rows(+book: List<&2,KDef>, +defs: List<&2,KDef>, +left: U32) -> May
       kc(Maybe<&2,List<&2,KDef>>, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
         (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u =>
         kc(Maybe<&2,List<&2,KDef>>, U32.is_gt(left, 0), v =>
-          kc(Maybe<&2,List<&2,KDef>>, jd_native_known(book, d) || String.eq(tg(j_strip(dv(d))), "Foreign"),
-            w => jd_calls_row_done(dn(d), atom("Absent"), JDCallScan{Nil{}, False{}, 8192, True{}},
-              jd_calls_rows(book, rest, U32.sub(left, 1))),
-            w => jd_calls_row_arity(book, d, rest, U32.sub(left, 1), jd_arity(book, d))), v => None{}),
+          jd_calls_row_done(dn(d), kc(JDCallScan, jd_native_known(book, d) || String.eq(tg(j_strip(dv(d))), "Foreign"),
+            w => JDCallScan{Nil{}, False{}, 8192, True{}},
+            w => jd_calls_body(book, Nil{}, dv(d), dt(d), jd_live_arity(book, dt(d), jd_arity(book, d)), JDCallScan{Nil{}, False{}, 8192, True{}})),
+            jd_calls_rows(book, rest, U32.sub(left, 1))), v => None{}),
         u => jd_calls_rows(book, rest, left))
 
-# Compute no additional arity: retain the exact value needed by this body scan.
 @unsafe
-def jd_calls_row_arity(+book: List<&2,KDef>, +d: KDef, +rest: List<&2,KDef>,
-  +left: U32, +arity: U32) -> Maybe<&2,List<&2,KDef>>:
-  jd_calls_row_done(dn(d), kt("JDArity", "", arity, 0, Nil{}),
-    jd_calls_body(book, Nil{}, dv(d), dt(d), jd_live_arity(book, dt(d), arity),
-      JDCallScan{Nil{}, False{}, 8192, True{}}), jd_calls_rows(book, rest, left))
-
-@unsafe
-def jd_calls_row_done(+name: String, +arity: KTerm, +s: JDCallScan,
-  +more: Maybe<&2,List<&2,KDef>>) -> Maybe<&2,List<&2,KDef>>:
+def jd_calls_row_done(+name: String, +s: JDCallScan, +more: Maybe<&2,List<&2,KDef>>) -> Maybe<&2,List<&2,KDef>>:
   match s:
     case JDCallScan{edges, unknown, fuel, valid}:
       kc(Maybe<&2,List<&2,KDef>>, valid, u => jd_calls_row_cons(
-        KDef{name, "JDCall", kc(U32, unknown, v => 1, v => 0), 0, arity, kt("JDCall", name, 0, 0, edges), Nil{}, False{}, False{}}, more),
+        KDef{name, "JDCall", kc(U32, unknown, v => 1, v => 0), 0, atom("Absent"), kt("JDCall", name, 0, 0, edges), Nil{}, False{}, False{}}, more),
         u => None{})
 
 @unsafe
@@ -298,19 +289,19 @@ def jd_calls_groups(+rows: List<&2,KDef>, +labels: KDef, +groups: KDef,
   match rows:
     case Nil{}: JDCallGroups{groups, keys}
     case Con{row, rest}: jd_calls_group_row(rest, labels, groups, keys, dn(row),
-      nm(dv(jd_calls_get(labels, dn(row)))), dt(row))
+      nm(dv(jd_calls_get(labels, dn(row)))))
 
 @unsafe
 def jd_calls_group_row(+rest: List<&2,KDef>, +labels: KDef, +groups: KDef,
-  +keys: List<&2,KTerm>, +name: String, +key: String, +arity: KTerm) -> JDCallGroups:
-  jd_calls_group_old(rest, labels, groups, keys, name, key, arity, jd_calls_get(groups, key))
+  +keys: List<&2,KTerm>, +name: String, +key: String) -> JDCallGroups:
+  jd_calls_group_old(rest, labels, groups, keys, name, key, jd_calls_get(groups, key))
 
 @unsafe
 def jd_calls_group_old(+rest: List<&2,KDef>, +labels: KDef, +groups: KDef,
-  +keys: List<&2,KTerm>, +name: String, +key: String, +arity: KTerm, +old: KDef) -> JDCallGroups:
+  +keys: List<&2,KTerm>, +name: String, +key: String, +old: KDef) -> JDCallGroups:
   jd_calls_groups(rest, labels, jd_calls_put(groups,
     KDef{key, "JDGroup", 0, 0, atom("Absent"),
-      kt("JDGroup", name, 0, 0, Con{kt("JDMember", name, 0, 0, [arity]), ks(dv(old))}), Nil{}, False{}, False{}}),
+      kt("JDGroup", name, 0, 0, Con{ref(name), ks(dv(old))}), Nil{}, False{}, False{}}),
     kc(List<&2,KTerm>, String.eq(dk(old), "Absent"), u => Con{ref(key), keys}, u => keys))
 
 @unsafe
@@ -321,7 +312,7 @@ def jd_calls_fact_members(+members: List<&2,KTerm>, +leader: String, +at: U32,
     case Con{member, rest}: jd_calls_fact_members(rest, leader, U32.inc(at), bounces,
       jd_calls_put(facts, KDef{nm(member), "JDCall", 0, 0, kt("JDComponent", leader, at, 0, Nil{}),
         kt("JDCall", nm(member), kc(U32, String.eq(dk(jd_calls_get(bounces, nm(member))), "JDMark"),
-          u => 1, u => 0), 0, ks(member)), Nil{}, False{}, False{}}))
+          u => 1, u => 0), 0, Nil{}), Nil{}, False{}, False{}}))
 
 @unsafe
 def jd_calls_install(+book: List<&2,KDef>, +keys: List<&2,KTerm>, +groups: KDef,

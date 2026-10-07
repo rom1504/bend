@@ -184,3 +184,43 @@ checks, separate genuine-B2 self-reproduction and own-source checks, and the
 existing guarded latency protocol. Reuse an existing qualification when the
 consumed implementation and artifacts are identical; do not claim a fresh result
 from a historical receipt or skip a changed semantic boundary.
+
+## State09 suffix-carry review
+
+The ready frontend now carries the exact completed fragment in private
+`FIndexedCompletion`. The initial seed establishes
+`graph.book = prefix ++ suffix`, with an empty suffix and `count = length(prefix)`.
+Each indexed completion uses the very same `fragment` both in
+`f_graph_finish_module` (which appends it to the prior graph) and in the ready
+carrier (which appends it to the prior suffix). Consequently the invariant is
+preserved without rediscovering the fragment by dropping the Base prefix twice.
+The old `matched && appended` checks were necessarily true on this admitted path.
+A nonempty completion error still downgrades to the ordinary, non-ready carrier.
+
+This is a producer-invariant argument, not permission inferred from a Boolean.
+The host still creates the carrier locally, grants the path only to its own API,
+threads native completion results without modifying them, and never accepts a
+caller-provided carrier through `discoverSources`. The count/state equality at
+seed creation is only one part of that private producer contract.
+
+Manually fabricated or modified `FReadyPrefixGraph` values are outside that
+contract. For example, an inconsistent count or an invented suffix can yield a
+different `ready` flag or reconstructed trace now that the old drop operations no
+longer incidentally reject or repair that inconsistency. Those drops never proved
+that the supplied prefix, names, constructor index or freshening state belonged
+to the graph, so the previous implementation also did not make arbitrary ready
+carriers safe. Exporting the native functions for driver plumbing does not turn
+these internal values into validated public snapshots.
+
+Public raw entry points (`discoverSources` with supplied API/seed,
+`f_graph_trace`, and `f_graph_trace_from_prefix`) retain their existing permission
+or structural validation. The documented preservation claim covers those entry
+points and correctly produced private carriers; it does not claim equivalent
+behavior for forged internal ready carriers. Frontend controls test the actual
+producer chain and public forged-seed refusal separately.
+
+The indexed graph finisher also retains the original operation order and values:
+fill imported declarations, select the existing fresh-name error, record the
+post-fill declaration count, apply namespace/path transformations, then call the
+same whole-graph error renderer. The explicit `List<&2,KTerm>` annotation on the
+`loaded` local only resolves its source type; it changes no runtime operation.

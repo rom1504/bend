@@ -145,15 +145,17 @@ reusing emission across different pruned contexts. No such cache was selected.
 
 ## Phase63 candidate: ready world and one lowering plan
 
-This section describes State06's candidate mechanisms. Later experiments and
-their live source changes are not included here. The phase report is the
-authority for selected source, complete gates and measured gains.
+This section describes State09's candidate mechanisms. Its final qualification
+and B2 comparison are pending; Phase61 remains installed. Rejected experiments
+are not included here. The phase report is the authority for selected source,
+complete gates and measured gains.
 
 | Boundary | Retained value | Request work |
 |---|---|---|
 | Parser | `FReadyPrefixState`: name and constructor indexes, event count | Extend indexes with new source events and validate the actual suffix. |
 | Checker | `KBasePreparedWorld`: raw world/index, checked output, event history and original prefix state | Install suffix headers, rebase fresh counters and check suffix events. |
 | Library backend | `JDPlan`: one annotation context, call/SCC facts, reached definitions and rendered bodies | Discover dependencies while lowering each reached definition once; emit saved bodies in source order. |
+| Call analysis | Arity already computed during the body scan, retained in the existing call-fact index | Reuse it for definitions of that immutable emission context; other inputs use the original query. |
 | Export wrappers | `JDHostFields`: field names and their converters | Select the final self-recursive field and produce field output from the same plan. |
 
 **Ready frontend and checker.** Preparation derives the parser indexes from the
@@ -168,6 +170,16 @@ for new modules. The loader maintains latest-event name lookup and first
 depth-first constructor lookup, checks the suffix against the saved Base scope,
 and freshens that suffix from the separately admitted counter. Old/raw carriers
 keep whole-graph validation and freshening.
+
+State09 also carries the actual newly completed module fragment through
+`FIndexedCompletion`. The ready carrier appends that fragment to its existing
+suffix and updates its indexes, avoiding two walks over the Base event spine to
+rediscover the same boundary. Its private invariant is
+`graph.book = prefix ++ suffix`: the prefix is the admitted seed and the suffix
+consists of actual successful completion fragments in order. It is established
+by the loader, not inferred from a caller's event count. Errors retain the whole
+graph and select the original fallback. Raw carriers still rediscover their
+suffix through the existing checked path.
 
 The checker extends the saved immutable index with suffix headers and retains
 the historical declaration-list order. It reuses the prefix maximum, checked
@@ -196,7 +208,7 @@ Invalid optional state drops the accelerators. Invalid mandatory bytes fail
 admission; an absent newer cache may fall back to frame2/frame1. Public object
 validation and caller-supplied API paths retain their prior behavior.
 
-State06's B1 and B2 use **named-layout APIs**. Their measured requests do not
+The measured Phase63 B1 and B2 images use **named-layout APIs**. Their requests do not
 perform positional ABI encoding. The proposed owned-ABI adapter optimization is
 therefore not part of this candidate. Frame3 is data transport, and its decoder
 does not implement parsing, checking, lowering or compiler analysis in JavaScript.
@@ -220,6 +232,15 @@ SCC member retention and unknown-reference failures remain. The driver selects
 this plan for direct JavaScript **library mode** when its APIs exist. Program
 mode, older images, legacy JavaScript and native C retain their existing paths.
 
+State09 retains the arity that call analysis already computes for each ordinary
+body. A `JDArity` marker travels through component construction into the existing
+call-fact index; it requires neither a second index nor another body scan.
+`jd_emitted_arity` consumes that fact only for definitions belonging to the
+completed immutable emission context. Native/foreign rows without a saved fact
+and contexts without call analysis use the original `jd_arity` computation.
+The raw query remains unchanged for arbitrary public books and definitions;
+the private fact is not a name-only cache valid after changing a context.
+
 **One field conversion plan.** In
 [`host.bend`](../../selfhost/src/back/js/direct/host.bend), each constructor's
 live field converter is computed once. The same immutable `JDHostFields` supplies
@@ -228,6 +249,10 @@ last directly self-recursive field remains the iterative continuation. Field
 conversion order, marshalling depth/fuel and the exhausted-telescope refusal
 fragment are preserved. This reduces compiler work while retaining emitted
 wrapper behavior. It does not eliminate required host value conversion.
+State09 removes the four unused legacy tail/field traversal helpers, retaining
+the shared tail-selection helper used by the field plan. Together with the
+suffix handoff and arity facts, State09 has 11 fewer Bend source lines than
+State06; this small source reduction is separate from performance qualification.
 
 ## Host transport and evidence boundaries
 

@@ -176,26 +176,20 @@ def f_prefix_complete_source(+source: FSource, +ns: String, +header: FHeader, +s
       f_prefix_source_completed(prefix, count, ready, f_complete_source(source, ns, header, sources, graph, root))
     case FReadyPrefixGraph{graph, prefix, suffix, count, ready, names, ctors, baseNames}:
       kc(FPrefixCompletion, ready,
-        u => f_prefix_ready_source_completed(prefix, count, baseNames, names, ctors, f_graph_count_defs(suffix, count), f_complete_source_indexed(source, ns, header, sources, graph, root, names, ctors)),
+        u => f_prefix_ready_source_completed(prefix, suffix, count, baseNames, names, ctors, f_complete_source_indexed(source, ns, header, sources, graph, root, names, ctors)),
         u => f_prefix_source_completed(prefix, count, False{}, f_complete_source(source, ns, header, sources, graph, root)))
 
-# Only the appended fragment extends these persistent indexes. No old term or
-# constructor tree is revisited, and the original completion still selects errors.
+# Carry the actual completed fragment instead of walking the Base spine twice
+# to rediscover it. Prior suffix cells and all prior term trees stay unchanged.
 @unsafe
-def f_prefix_ready_source_completed(+prefix: List<&2,KDef>, +count: U32, +baseNames: KDef, +names: KDef, +ctors: KDef, +priorCount: U32, +completion: FCompletion) -> FPrefixCompletion:
+def f_prefix_ready_source_completed(+prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +count: U32, +baseNames: KDef, +names: KDef, +ctors: KDef, +completion: FIndexedCompletion) -> FPrefixCompletion:
   match completion:
-    case FCompletion{graph, parsed}:
+    case FIndexedCompletion{graph, parsed, fragment}:
       match graph:
         case FGraph{book, error, done}:
           kc(FPrefixCompletion, String.is_empty(error),
-            u => f_prefix_ready_source_tail(graph, parsed, prefix, count, baseNames, names, ctors, f_prefix_drop(book, count), f_prefix_drop(book, priorCount)),
+            u => FPrefixCompletion{FReadyPrefixGraph{graph, prefix, norm_defs_join(suffix, fragment), count, True{}, f_prefix_names_extend(fragment, names), f_prefix_ctors_extend(fragment, ctors), baseNames}, parsed},
             u => FPrefixCompletion{FPrefixGraph{graph, prefix, Nil{}, count, False{}}, parsed})
-
-@unsafe
-def f_prefix_ready_source_tail(+graph: FGraph, +parsed: FResult, +prefix: List<&2,KDef>, +count: U32, +baseNames: KDef, +names: KDef, +ctors: KDef, +all: FFreshPrefixTail, +added: FFreshPrefixTail) -> FPrefixCompletion:
-  match all added:
-    case FFreshPrefixTail{suffix, matched} FFreshPrefixTail{fragment, appended}:
-      FPrefixCompletion{FReadyPrefixGraph{graph, prefix, suffix, count, matched && appended, f_prefix_names_extend(fragment, names), f_prefix_ctors_extend(fragment, ctors), baseNames}, parsed}
 
 @unsafe
 def f_prefix_names_extend(+defs: List<&2,KDef>, +names: KDef) -> KDef:

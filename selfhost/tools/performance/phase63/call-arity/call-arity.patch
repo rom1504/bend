@@ -1,0 +1,180 @@
+--- a/selfhost/src/back/js/direct/model.bend
++++ b/selfhost/src/back/js/direct/model.bend
+@@ -83,6 +83,16 @@
+ def jd_arity(+book: List<&2,KDef>, +d: KDef) -> U32:
+   kc(U32, String.eq(tg(j_strip(dv(d))), "Foreign"), u => jd_domains(book, dt(d)), u =>
+     U32.add(da(d), U32.min(jd_raise(book, dv(d), da(d)), U32.sub(jd_domains(book, dt(d)), da(d)))))
++
++# Private emitter query: d is a definition of the completed call context.
++# Call analysis retains the arity it already needed; other inputs stay raw.
++@unsafe
++def jd_emitted_arity(+book: List<&2,KDef>, +d: KDef) -> U32:
++  jd_emitted_arity_on(book, d, kid(dv(jd_calls_fact(book, dn(d))), 0))
++
++@unsafe
++def jd_emitted_arity_on(+book: List<&2,KDef>, +d: KDef, +fact: KTerm) -> U32:
++  kc(U32, String.eq(tg(fact), "JDArity"), u => ix(fact), u => jd_arity(book, d))
+ 
+ # Pinned fun_of/def_raise: open common lambda prefixes beyond declared formals,
+ # including prefixes shared by every matcher arm, capped by the type telescope.
+--- a/selfhost/src/back/js/direct/calls.bend
++++ b/selfhost/src/back/js/direct/calls.bend
+@@ -176,18 +176,27 @@
+       kc(Maybe<&2,List<&2,KDef>>, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
+         (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u =>
+         kc(Maybe<&2,List<&2,KDef>>, U32.is_gt(left, 0), v =>
+-          jd_calls_row_done(dn(d), kc(JDCallScan, jd_native_known(book, d) || String.eq(tg(j_strip(dv(d))), "Foreign"),
+-            w => JDCallScan{Nil{}, False{}, 8192, True{}},
+-            w => jd_calls_body(book, Nil{}, dv(d), dt(d), jd_live_arity(book, dt(d), jd_arity(book, d)), JDCallScan{Nil{}, False{}, 8192, True{}})),
+-            jd_calls_rows(book, rest, U32.sub(left, 1))), v => None{}),
++          kc(Maybe<&2,List<&2,KDef>>, jd_native_known(book, d) || String.eq(tg(j_strip(dv(d))), "Foreign"),
++            w => jd_calls_row_done(dn(d), atom("Absent"), JDCallScan{Nil{}, False{}, 8192, True{}},
++              jd_calls_rows(book, rest, U32.sub(left, 1))),
++            w => jd_calls_row_arity(book, d, rest, U32.sub(left, 1), jd_arity(book, d))), v => None{}),
+         u => jd_calls_rows(book, rest, left))
+ 
+-@unsafe
+-def jd_calls_row_done(+name: String, +s: JDCallScan, +more: Maybe<&2,List<&2,KDef>>) -> Maybe<&2,List<&2,KDef>>:
++# Compute no additional arity: retain the exact value needed by this body scan.
++@unsafe
++def jd_calls_row_arity(+book: List<&2,KDef>, +d: KDef, +rest: List<&2,KDef>,
++  +left: U32, +arity: U32) -> Maybe<&2,List<&2,KDef>>:
++  jd_calls_row_done(dn(d), kt("JDArity", "", arity, 0, Nil{}),
++    jd_calls_body(book, Nil{}, dv(d), dt(d), jd_live_arity(book, dt(d), arity),
++      JDCallScan{Nil{}, False{}, 8192, True{}}), jd_calls_rows(book, rest, left))
++
++@unsafe
++def jd_calls_row_done(+name: String, +arity: KTerm, +s: JDCallScan,
++  +more: Maybe<&2,List<&2,KDef>>) -> Maybe<&2,List<&2,KDef>>:
+   match s:
+     case JDCallScan{edges, unknown, fuel, valid}:
+       kc(Maybe<&2,List<&2,KDef>>, valid, u => jd_calls_row_cons(
+-        KDef{name, "JDCall", kc(U32, unknown, v => 1, v => 0), 0, atom("Absent"), kt("JDCall", name, 0, 0, edges), Nil{}, False{}, False{}}, more),
++        KDef{name, "JDCall", kc(U32, unknown, v => 1, v => 0), 0, arity, kt("JDCall", name, 0, 0, edges), Nil{}, False{}, False{}}, more),
+         u => None{})
+ 
+ @unsafe
+@@ -289,19 +298,19 @@
+   match rows:
+     case Nil{}: JDCallGroups{groups, keys}
+     case Con{row, rest}: jd_calls_group_row(rest, labels, groups, keys, dn(row),
+-      nm(dv(jd_calls_get(labels, dn(row)))))
++      nm(dv(jd_calls_get(labels, dn(row)))), dt(row))
+ 
+ @unsafe
+ def jd_calls_group_row(+rest: List<&2,KDef>, +labels: KDef, +groups: KDef,
+-  +keys: List<&2,KTerm>, +name: String, +key: String) -> JDCallGroups:
+-  jd_calls_group_old(rest, labels, groups, keys, name, key, jd_calls_get(groups, key))
++  +keys: List<&2,KTerm>, +name: String, +key: String, +arity: KTerm) -> JDCallGroups:
++  jd_calls_group_old(rest, labels, groups, keys, name, key, arity, jd_calls_get(groups, key))
+ 
+ @unsafe
+ def jd_calls_group_old(+rest: List<&2,KDef>, +labels: KDef, +groups: KDef,
+-  +keys: List<&2,KTerm>, +name: String, +key: String, +old: KDef) -> JDCallGroups:
++  +keys: List<&2,KTerm>, +name: String, +key: String, +arity: KTerm, +old: KDef) -> JDCallGroups:
+   jd_calls_groups(rest, labels, jd_calls_put(groups,
+     KDef{key, "JDGroup", 0, 0, atom("Absent"),
+-      kt("JDGroup", name, 0, 0, Con{ref(name), ks(dv(old))}), Nil{}, False{}, False{}}),
++      kt("JDGroup", name, 0, 0, Con{kt("JDMember", name, 0, 0, [arity]), ks(dv(old))}), Nil{}, False{}, False{}}),
+     kc(List<&2,KTerm>, String.eq(dk(old), "Absent"), u => Con{ref(key), keys}, u => keys))
+ 
+ @unsafe
+@@ -312,7 +321,7 @@
+     case Con{member, rest}: jd_calls_fact_members(rest, leader, U32.inc(at), bounces,
+       jd_calls_put(facts, KDef{nm(member), "JDCall", 0, 0, kt("JDComponent", leader, at, 0, Nil{}),
+         kt("JDCall", nm(member), kc(U32, String.eq(dk(jd_calls_get(bounces, nm(member))), "JDMark"),
+-          u => 1, u => 0), 0, Nil{}), Nil{}, False{}, False{}}))
++          u => 1, u => 0), 0, ks(member)), Nil{}, False{}, False{}}))
+ 
+ @unsafe
+ def jd_calls_install(+book: List<&2,KDef>, +keys: List<&2,KTerm>, +groups: KDef,
+--- a/selfhost/src/back/js/direct/core.bend
++++ b/selfhost/src/back/js/direct/core.bend
+@@ -47,7 +47,7 @@
+   kc(String, String.eq(dk(d), "ADT"), u => "null", u =>
+   kc(String, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
+     (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u =>
+-    jd_named_args(book, env, d, tail, jd_arguments(book, env, xs, dt(d), jd_arity(book, d))),
++    jd_named_args(book, env, d, tail, jd_arguments(book, env, xs, dt(d), jd_emitted_arity(book, d))),
+     u => jd_fail("unknown direct definition: " ++ dn(d))))
+ 
+ @unsafe
+@@ -219,7 +219,7 @@
+ @unsafe
+ def jd_doc_return(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +spine: KTerm) -> JDText:
+   kc(JDText, jd_choice_call(book, spine), u => jd_doc_choice_body(book, env, ks(spine)), u => kc(JDText, String.eq(tg(spine), "Call") && Bool.not(String.eq(jd_owner(env), "")) &&
+-    jd_same_component(book, nm(spine), jd_owner(env)), u => jd_doc_return_self(book, env, t, ty, spine, jd_arguments(book, env, ks(spine), dt(lookup(book, nm(spine))), jd_arity(book, lookup(book, nm(spine))))), u => jd_doc_return_regular(book, env, t, ty, spine)))
++    jd_same_component(book, nm(spine), jd_owner(env)), u => jd_doc_return_self(book, env, t, ty, spine, jd_arguments(book, env, ks(spine), dt(lookup(book, nm(spine))), jd_emitted_arity(book, lookup(book, nm(spine))))), u => jd_doc_return_regular(book, env, t, ty, spine)))
+ 
+ @unsafe
+ def jd_doc_return_self(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +spine: KTerm, +r: JDArgs) -> JDText:
+@@ -250,7 +250,7 @@
+ @unsafe
+ def jd_doc_definition(+book: List<&2,KDef>, +d: KDef) -> JDText:
+   kc(JDText, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
+-    (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u => kc(JDText, String.eq(tg(j_strip(dv(d))), "Foreign"), u => jd_text_raw(jd_foreign_def(book, d)), u => jd_doc_definition_params(book, d, jd_params(book, dt(d), jd_arity(book, d), 0))), u => jd_text_literal("", 0))
++    (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u => kc(JDText, String.eq(tg(j_strip(dv(d))), "Foreign"), u => jd_text_raw(jd_foreign_def(book, d)), u => jd_doc_definition_params(book, d, jd_params(book, dt(d), jd_emitted_arity(book, d), 0))), u => jd_text_literal("", 0))
+ 
+ @unsafe
+ def jd_doc_definition_params(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String>) -> JDText:
+@@ -288,7 +288,7 @@
+ def jd_component_width(+book: List<&2,KDef>, +members: List<&2,String>) -> U32:
+   match members:
+     case Nil{}: 0
+-    case Con{name, rest}: U32.max(jd_live_arity(book, dt(lookup(book, name)), jd_arity(book, lookup(book, name))),
++    case Con{name, rest}: U32.max(jd_live_arity(book, dt(lookup(book, name)), jd_emitted_arity(book, lookup(book, name))),
+       jd_component_width(book, rest))
+ 
+ @unsafe
+@@ -299,7 +299,7 @@
+ 
+ @unsafe
+ def jd_doc_component_case(+book: List<&2,KDef>, +d: KDef) -> JDText:
+-  jd_doc_body(book, [kt("$JD.Owner", dn(d), 4294967295, 0, Nil{})], dv(d), dt(d), jd_params(book, dt(d), jd_arity(book, d), 0))
++  jd_doc_body(book, [kt("$JD.Owner", dn(d), 4294967295, 0, Nil{})], dv(d), dt(d), jd_params(book, dt(d), jd_emitted_arity(book, d), 0))
+ 
+ @unsafe
+ def jd_definitions(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:
+--- a/selfhost/src/back/js/direct/ordered.bend
++++ b/selfhost/src/back/js/direct/ordered.bend
+@@ -67,11 +67,11 @@
+     u => jd_choice_ordered(book, env, xs, next), u =>
+   kc(JDOrdered, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
+     (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u =>
+-      kc(JDOrdered, U32.is_eq(terms_len(xs), jd_arity(book, d)),
++      kc(JDOrdered, U32.is_eq(terms_len(xs), jd_emitted_arity(book, d)),
+         v => jd_ordered_call(book, jd_owner(env), dn(d), tail, jd_ordered_args(book, env, xs, dt(d), next)),
+-        v => kc(JDOrdered, U32.is_lt(terms_len(xs), jd_arity(book, d)),
++        v => kc(JDOrdered, U32.is_lt(terms_len(xs), jd_emitted_arity(book, d)),
+           w => jd_ordered_eta(book, jd_owner(env), dn(d), jd_ordered_after(book, xs, dt(d)),
+-            U32.sub(jd_arity(book, d), terms_len(xs)), terms_len(env), tail,
++            U32.sub(jd_emitted_arity(book, d), terms_len(xs)), terms_len(env), tail,
+             jd_ordered_args(book, env, xs, dt(d), next)),
+           w => jd_ordered_unknown(book, env, t, tail, next, wnf(book, j_type(book, env, kid(t, 0)))))),
+     u => jd_ordered_leaf(book, env, t, ty, tail, next)))
+--- a/selfhost/src/back/js/direct/host.bend
++++ b/selfhost/src/back/js/direct/host.bend
+@@ -202,7 +202,7 @@
+ # Core owns arity raising and live formal names; use jd_arity consistently.
+ @unsafe
+ def jd_host(+book: List<&2,KDef>, +d: KDef) -> String:
+-  +arity = jd_arity(book, d)
++  +arity = jd_emitted_arity(book, d)
+   +live = jd_live_arity(book, dt(d), arity)
+   +marshal = Bool.not(U32.is_eq(jd_host_nat_known(book, dt(d)), 0))
+   "(" ++ jd_host_names(live, 0) ++ ")=>{const r=" ++
+@@ -280,7 +280,7 @@
+ @unsafe
+ def jd_foreign_def(+book: List<&2,KDef>, +d: KDef) -> String:
+   kc(String, j_io_type(book, jd_host_result(j_io_shadow(book), dt(d), da(d))), u =>
+-    jd_foreign_ready(book, d, jd_arity(book, d), jd_live_arity(book, dt(d), jd_arity(book, d))),
++    jd_foreign_ready(book, d, jd_emitted_arity(book, d), jd_live_arity(book, dt(d), jd_emitted_arity(book, d))),
+     u => jd_fail("foreign result is not IO"))
+ 
+ @unsafe
+@@ -372,4 +372,4 @@
+     kc(String, U32.is_eq(status, 2),
+       u => j_quote(dn(d)) ++ ":" ++ jd_host_error("host result telescope budget") ++ ",\n", u =>
+       j_quote(dn(d)) ++ ":run_lib(" ++ jd_host(book, d) ++ "," ++
+-        U32.show(jd_live_arity(book, dt(d), jd_arity(book, d))) ++ "),\n"))
++        U32.show(jd_live_arity(book, dt(d), jd_emitted_arity(book, d))) ++ "),\n"))

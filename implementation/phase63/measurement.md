@@ -277,3 +277,57 @@ helpers matched the selected State06 snapshot byte-for-byte. Snapshot staging
 supplies the compiler image and driver; maintained8 additionally checks current
 host/manifest equality and reads the maintained live test scripts. No retry
 target was executed by the measurement agent.
+
+## State06: balanced 23-source compilation result
+
+The [compact broad evidence](evidence/state06-broad3.json) records **207/207
+passing workers**: 23 independent source modules × three roles × three fresh
+processes. Role order rotates across rounds so every role occupies each order
+position once per source. Both Bend roles are genuine B2 images. Every emitted
+module passes the full qualified raw-byte oracle; the timing run performs no
+fresh generated-program runtime executions.
+
+| Equal-source geometric mean | State08 B2 / TS | State06 B2 / TS | State06 / State08 |
+|---|---:|---:|---:|
+| Compilation, first request | 2.07151× | **1.67547×** | **0.80881×** |
+| Host import + API + first request | 1.41480× | **1.17557×** | **0.83091×** |
+
+These use each source/role's median of three observations, then give every
+source equal weight. State06 reduces compilation time by **19.12%** and the
+combined first-use clock by **16.91%** against the same-campaign old baseline.
+All 23 source medians improve: compilation ratios span 0.75161–0.85552×,
+combined ratios 0.79106–0.87129×. No source regresses against the baseline on
+either median clock. Three samples are enough for this screening/confirmation
+method, but do not establish statistical significance.
+
+The remaining compilation gap to TS spans **1.13086×** for Numeric to
+**2.04147×** for Lexer. The six largest ratios are:
+
+| Source | State06 compilation | TS compilation | Ratio |
+|---|---:|---:|---:|
+| Lexer | 786.25 ms | 385.14 ms | 2.041× |
+| Active raytrace | 1,045.61 ms | 527.06 ms | 1.984× |
+| Mandelbrot grid | 803.81 ms | 405.37 ms | 1.983× |
+| MapSet | 1,240.61 ms | 637.18 ms | 1.947× |
+| Symbolic regression | 716.51 ms | 368.11 ms | 1.946× |
+| Raytrace | 1,037.54 ms | 534.93 ms | 1.940× |
+
+Including host/API import changes the range to **0.78721–1.48916× TS** and
+puts five sources below TS: local fold, scalar region, closures, expression,
+and Numeric. This reflects a useful first-use advantage on those sources;
+compilation itself remains slower than TS on every source. The evidence file
+contains the full 23-source, six-clock matrix. Its 45 associated runtime points
+are not counted as 45 independent compilation programs.
+
+The broad campaign takes **264.991 seconds**, with **228.455 seconds** inside
+its serial worker interval union. Peak observed tree RSS is 181,800,960 bytes.
+Existing cache preparation is reused; this does not make cache creation free.
+Final semantic, self-hosting and release qualification remain separate gates.
+
+The [interim phase time account](evidence/time-account-interim02.json) cuts off
+at **21:18:39.947 UTC**, not at phase completion. Since 20:04:24, elapsed time
+is 74m15.947s. The union of 360 closed guard receipts, including 11 failures,
+is **19m52.415s (26.76%)**; nested/reused intervals are counted once. Remaining
+54m23.531s is unclassified wall time, not measured waiting or idle time.
+No open worker was present at that cutoff. The data-only helper can produce
+a fresh account at the final selected-state cutoff.

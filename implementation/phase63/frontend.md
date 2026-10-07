@@ -75,3 +75,25 @@ snapshot. The public-seed controls assert that adding prepared metadata to raw
 caller objects does not select private carrier APIs. Separate host controls must
 cover identity and cache replacement. No target was executed by this source
 owner; root owns candidate checks, controller execution and measurement.
+
+## State09: carry the completed suffix fragment
+
+The ready carrier now consumes the `fragment` already returned by
+`FIndexedCompletion`, appending it to the existing suffix and extending the
+name/constructor indexes directly. It no longer walks the Base event spine to
+locate that newly completed fragment twice. This removes four Bend lines while
+retaining the ordinary carrier's checked suffix-discovery fallback.
+
+The private invariant is `graph.book = prefix ++ suffix`. Leading admitted Base
+injection establishes the prefix, and successful contextual completion appends
+the actual qualified/path-resolved fragment to both the graph and suffix.
+Prior terms remain immutable. A completion error retains the complete graph and
+returns a non-ready ordinary carrier. A forged carrier with matching counts is
+outside this private producer/consumer contract; raw public inputs cannot obtain
+the private permission from their fields alone.
+
+Root reports that the frozen State09 candidate passes strict checked36 and the
+[v3 frontend controller](../../selfhost/tools/performance/phase63/frontend-controls-v3.mjs),
+including all 16 sources and producer/order controls. Final qualification and
+B2 comparison remain pending in the [phase report](README.md). This source change
+does not by itself claim installation or a particular speed improvement.

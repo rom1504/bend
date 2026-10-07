@@ -47,7 +47,7 @@ def jd_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +d: KDef, +xs: List<&2,
   kc(String, String.eq(dk(d), "ADT"), u => "null", u =>
   kc(String, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
     (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u =>
-    jd_named_args(book, env, d, tail, jd_arguments(book, env, xs, dt(d), jd_emitted_arity(book, d))),
+    jd_named_args(book, env, d, tail, jd_arguments(book, env, xs, dt(d), jd_arity(book, d))),
     u => jd_fail("unknown direct definition: " ++ dn(d))))
 
 @unsafe
@@ -219,7 +219,7 @@ def jd_doc_let_bindings(+xs: List<&2,KTerm>, +at: U32, +body: JDText) -> JDText:
 @unsafe
 def jd_doc_return(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +spine: KTerm) -> JDText:
   kc(JDText, jd_choice_call(book, spine), u => jd_doc_choice_body(book, env, ks(spine)), u => kc(JDText, String.eq(tg(spine), "Call") && Bool.not(String.eq(jd_owner(env), "")) &&
-    jd_same_component(book, nm(spine), jd_owner(env)), u => jd_doc_return_self(book, env, t, ty, spine, jd_arguments(book, env, ks(spine), dt(lookup(book, nm(spine))), jd_emitted_arity(book, lookup(book, nm(spine))))), u => jd_doc_return_regular(book, env, t, ty, spine)))
+    jd_same_component(book, nm(spine), jd_owner(env)), u => jd_doc_return_self(book, env, t, ty, spine, jd_arguments(book, env, ks(spine), dt(lookup(book, nm(spine))), jd_arity(book, lookup(book, nm(spine))))), u => jd_doc_return_regular(book, env, t, ty, spine)))
 
 @unsafe
 def jd_doc_return_self(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +spine: KTerm, +r: JDArgs) -> JDText:
@@ -250,7 +250,7 @@ def jd_doc_self_stores(+values: List<&2,String>, +at: U32) -> JDText:
 @unsafe
 def jd_doc_definition(+book: List<&2,KDef>, +d: KDef) -> JDText:
   kc(JDText, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
-    (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u => kc(JDText, String.eq(tg(j_strip(dv(d))), "Foreign"), u => jd_text_raw(jd_foreign_def(book, d)), u => jd_doc_definition_params(book, d, jd_params(book, dt(d), jd_emitted_arity(book, d), 0))), u => jd_text_literal("", 0))
+    (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u => kc(JDText, String.eq(tg(j_strip(dv(d))), "Foreign"), u => jd_text_raw(jd_foreign_def(book, d)), u => jd_doc_definition_params(book, d, jd_params(book, dt(d), jd_arity(book, d), 0))), u => jd_text_literal("", 0))
 
 @unsafe
 def jd_doc_definition_params(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String>) -> JDText:
@@ -288,7 +288,7 @@ def jd_doc_component_refs(+members: List<&2,String>) -> JDText:
 def jd_component_width(+book: List<&2,KDef>, +members: List<&2,String>) -> U32:
   match members:
     case Nil{}: 0
-    case Con{name, rest}: U32.max(jd_live_arity(book, dt(lookup(book, name)), jd_emitted_arity(book, lookup(book, name))),
+    case Con{name, rest}: U32.max(jd_live_arity(book, dt(lookup(book, name)), jd_arity(book, lookup(book, name))),
       jd_component_width(book, rest))
 
 @unsafe
@@ -299,7 +299,7 @@ def jd_doc_component_cases(+book: List<&2,KDef>, +members: List<&2,String>, +at:
 
 @unsafe
 def jd_doc_component_case(+book: List<&2,KDef>, +d: KDef) -> JDText:
-  jd_doc_body(book, [kt("$JD.Owner", dn(d), 4294967295, 0, Nil{})], dv(d), dt(d), jd_params(book, dt(d), jd_emitted_arity(book, d), 0))
+  jd_doc_body(book, [kt("$JD.Owner", dn(d), 4294967295, 0, Nil{})], dv(d), dt(d), jd_params(book, dt(d), jd_arity(book, d), 0))
 
 @unsafe
 def jd_definitions(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:

@@ -146,6 +146,10 @@ type FHeader is Data:
 type FCompletion is Data:
   FCompletion{+graph: FGraph, +parsed: FResult}
 
+# The private ready loader retains the fragment it has just completed.
+type FIndexedCompletion is Data:
+  FIndexedCompletion{+graph: FGraph, +parsed: FResult, +fragment: List<&2,KDef>}
+
 @unsafe
 def compiler_load_abi() -> U32:
   2
@@ -243,22 +247,16 @@ def f_complete_parsed(+source: FSource, +ns: String, +aliases: List<&2,KTerm>, +
 # Private admitted-prefix path: the scope indexes describe the exact prior
 # graph book. Contextual parsing and completion of the new source are unchanged.
 @unsafe
-def f_complete_source_indexed(+source: FSource, +ns: String, +header: FHeader, +sources: List<&2,FSource>, +graph: FGraph, +root: String, +names: KDef, +ctors: KDef) -> FCompletion:
+def f_complete_source_indexed(+source: FSource, +ns: String, +header: FHeader, +sources: List<&2,FSource>, +graph: FGraph, +root: String, +names: KDef, +ctors: KDef) -> FIndexedCompletion:
   match graph:
     case FGraph{book, error, done}:
-      kc(FCompletion, String.is_empty(error),
+      kc(FIndexedCompletion, String.is_empty(error),
         u => f_complete_aliases_indexed(source, ns, header, graph, f_graph_aliases(f_header_imports(header), source, sources, root), book, sources, names, ctors),
-        u => FCompletion{graph, FResult{Nil{}, error, Nil{}}})
+        u => FIndexedCompletion{graph, FResult{Nil{}, error, Nil{}}, Nil{}})
 
 @unsafe
-def f_complete_aliases_indexed(+source: FSource, +ns: String, +header: FHeader, +graph: FGraph, +aliases: List<&2,KTerm>, +prior: List<&2,KDef>, +sources: List<&2,FSource>, +names: KDef, +ctors: KDef) -> FCompletion:
-  f_complete_parsed_indexed(source, ns, graph, aliases, sources, names, f_source_body_indexed(source, header, FParseScope{prior, names, ctors, ns, aliases}, 0))
-
-@unsafe
-def f_complete_parsed_indexed(+source: FSource, +ns: String, +graph: FGraph, +aliases: List<&2,KTerm>, +sources: List<&2,FSource>, +names: KDef, +parsed: FResult) -> FCompletion:
-  match parsed:
-    case FResult{book, error, imports}:
-      FCompletion{f_graph_finish_indexed(source, ns, book, aliases, graph, sources, error, names), FResult{book, error, imports}}
+def f_complete_aliases_indexed(+source: FSource, +ns: String, +header: FHeader, +graph: FGraph, +aliases: List<&2,KTerm>, +prior: List<&2,KDef>, +sources: List<&2,FSource>, +names: KDef, +ctors: KDef) -> FIndexedCompletion:
+  f_graph_finish_indexed(source, ns, aliases, graph, sources, names, f_source_body_indexed(source, header, FParseScope{prior, names, ctors, ns, aliases}, 0))
 
 @unsafe
 def f_source_body_indexed(+source: FSource, +header: FHeader, +scope: FParseScope, +start: U32) -> FResult:

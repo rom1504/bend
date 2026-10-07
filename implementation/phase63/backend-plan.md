@@ -122,3 +122,80 @@ host-type analysis. The public standalone legacy API keeps its original behavior
 Programs still use the old direct path until their separate entry/readback
 contract is integrated and qualified. No expected numerical gain is promoted
 from the source change alone.
+
+## State09: retain arity in existing call facts
+
+Ordinary body scanning already computes `jd_arity`. State09 keeps that exact
+value in a `JDArity` marker on the call-analysis row, carries it through SCC
+group construction and stores it inside the existing per-definition call fact.
+It adds no new index, body scan or generic cache framework.
+
+Private emitter consumers use `jd_emitted_arity` only for a definition of their
+completed immutable call context. Native/foreign rows without a recorded value
+and absent call facts fall back to `jd_arity`. The original raw query remains
+unchanged for arbitrary caller-supplied books/definitions. There is no claim
+that a name-only arity fact survives mutation of a context or definition.
+
+The source adds 19 Bend lines for these retained facts. State09 also removes the
+four unreachable old host tail/field traversal helpers and carries frontend
+suffix fragments directly, yielding 11 fewer Bend lines than State06 overall.
+The live `jd_host_marshal_tail_done` helper remains shared by the field plan.
+
+Root reports strict checked36, 558 exact arity queries, full-module equality
+and fallback controls passing. A direct balanced B1 comparison is approximately flat for
+Numeric and Lexer and about 3.4% faster for MapSet. These are State06/State09 B1
+observations, not a broad B2 or installed-release claim. Final qualification and
+the B2 comparison remain pending in the [phase report](README.md).
+
+## Follow-up: reuse completed queries rather than add another pass
+
+After plan reuse, the Map CPU profile still attributed substantial inclusive
+work to host conversion and arity/type queries. The host field candidate in
+[backend-host](../../selfhost/tools/performance/phase63/backend-host/README.md)
+computes constructor field converters once, preserving their original fuel,
+order and last-self-tail selection. The State06 owner applied that patch only
+after checking its source contract and exact output controls.
+
+A second candidate reused checked application-spine annotations to avoid
+reconstructing dependent argument telescopes. Its exact query/module controller
+passed, but the first whole-request screen did not show a useful gain. The
+candidate stays recorded under
+[typed-spine](../../selfhost/tools/performance/phase63/typed-spine/README.md);
+source simplification and net request time take precedence over removed query
+counts. The production base used for the next arity candidate has reverted that
+49-line experiment.
+
+The next diagnostic instruments the genuine State06 B2 with exact-identity
+WeakMaps, independently for arity and weak-head normalization. This is an
+opportunity experiment, not a host-language production compiler optimization.
+On the first Map screen, arity made 756 queries with 523 hits and 233 misses over
+three exact book identities. It avoided 8,075 WNF wrapper entries. Single-run
+request times were 1,443 ms baseline, 1,331 ms arity, 1,379 ms WNF and 1,332 ms
+both. These observations suggest arity reuse is worth a small prototype; they
+do not establish stable speed gains.
+
+The first Numeric baseline was invalid for performance comparison: it created
+the Base cache and took 3.62 seconds, while later workers read that cache. The
+original receipt remains unchanged and must not support a speed claim. The
+[v2 controller](../../selfhost/tools/performance/phase63/backend-host/memo-query-v2.md)
+requires the exact preferred frame to exist before the request, pins its bytes
+before/after, records actual reads and forbids cache writes during measurement.
+All memo variants use the same supplied-API driver lane, which is itself distinct
+from ordinary owned-API request latency.
+
+The resulting production candidate is deliberately narrower than that identity
+memo: [call-arity](../../selfhost/tools/performance/phase63/call-arity/README.md)
+retains arity at the exact point where the existing call-body scan already
+computes it. A tagged private fact passes through the existing SCC grouping
+into the existing per-name fact index. Emitter and host consumers reuse it;
+call analysis itself remains raw, and native/foreign/missing entries fall back.
+This adds 19 lines, with no new index, prepass, type or mutable state. The public
+`jd_arity(book,d)` stays unchanged because arbitrary same-name definitions cannot
+safely share a cached answer.
+
+Independent source review found no change to demand, call-row evaluation order,
+budgets, component leaders/widths or bounce fields. Internal metadata gains an
+explicit arity child; complete emitted modules remain the equality oracle.
+At the time this sub-report was written, the root was preparing State08 and
+its exact-query/module controller. No production speed gain is claimed for this
+unmeasured candidate here.

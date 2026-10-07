@@ -160,13 +160,39 @@ def jd_host_marshal_rows_text(+fields: JDHostFields, +tail: String) -> String:
 
 # Like pinned js_marshal: choose the last directly self-recursive field as the
 # iterative spine, converting other fields left-to-right before following it.
+@unsafe
+def jd_host_marshal_tail(+book: List<&2,KDef>, +tel: KTerm, +out: Bool,
+  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32, +self: String) -> String:
+  kc(String, U32.is_gt(fuel, 0), u =>
+    jd_host_marshal_tail_on(book, wnf(book, tel), out, seen, depth, U32.sub(fuel, 1), self),
+    u => "")
 
+@unsafe
+def jd_host_marshal_tail_on(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
+  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32, +self: String) -> String:
+  kc(String, String.eq(tg(t), "All"), u =>
+    jd_host_marshal_tail_done(nm(t), kc(Bool, U32.is_eq(qt(t), 0), u => False{},
+      u => String.eq(jd_host_marshal(book, kid(t, 0), out, seen, depth, fuel), self)),
+      jd_host_marshal_tail(book, j_app_type(t, atom("Absent")), out, seen, depth, fuel, self)), u => "")
 
 @unsafe
 def jd_host_marshal_tail_done(+name: String, +same: Bool, +rest: String) -> String:
   kc(String, Bool.not(String.eq(rest, "")), u => rest, u => kc(String, same, u => name, u => ""))
 
+@unsafe
+def jd_host_marshal_fields(+book: List<&2,KDef>, +tel: KTerm, +out: Bool,
+  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32, +tail: String) -> String:
+  kc(String, U32.is_gt(fuel, 0), u =>
+    jd_host_marshal_fields_on(book, wnf(book, tel), out, seen, depth, U32.sub(fuel, 1), tail),
+    u => ",[\"$unsupported\"]:" ++ jd_host_error("host field telescope depth") ++ "()")
 
+@unsafe
+def jd_host_marshal_fields_on(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
+  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32, +tail: String) -> String:
+  kc(String, String.eq(tg(t), "All"), u =>
+    kc(String, U32.is_eq(qt(t), 0) || String.eq(nm(t), tail), u => "", u =>
+      jd_host_marshal_field(nm(t), jd_host_marshal(book, kid(t, 0), out, seen, depth, fuel))) ++
+    jd_host_marshal_fields(book, j_app_type(t, atom("Absent")), out, seen, depth, fuel, tail), u => "")
 
 @unsafe
 def jd_host_marshal_field(+name: String, +marshal: String) -> String:
@@ -176,7 +202,7 @@ def jd_host_marshal_field(+name: String, +marshal: String) -> String:
 # Core owns arity raising and live formal names; use jd_arity consistently.
 @unsafe
 def jd_host(+book: List<&2,KDef>, +d: KDef) -> String:
-  +arity = jd_emitted_arity(book, d)
+  +arity = jd_arity(book, d)
   +live = jd_live_arity(book, dt(d), arity)
   +marshal = Bool.not(U32.is_eq(jd_host_nat_known(book, dt(d)), 0))
   "(" ++ jd_host_names(live, 0) ++ ")=>{const r=" ++
@@ -254,7 +280,7 @@ def jd_host_exports(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:
 @unsafe
 def jd_foreign_def(+book: List<&2,KDef>, +d: KDef) -> String:
   kc(String, j_io_type(book, jd_host_result(j_io_shadow(book), dt(d), da(d))), u =>
-    jd_foreign_ready(book, d, jd_emitted_arity(book, d), jd_live_arity(book, dt(d), jd_emitted_arity(book, d))),
+    jd_foreign_ready(book, d, jd_arity(book, d), jd_live_arity(book, dt(d), jd_arity(book, d))),
     u => jd_fail("foreign result is not IO"))
 
 @unsafe
@@ -346,4 +372,4 @@ def jd_host_export(+book: List<&2,KDef>, +d: KDef, +status: U32) -> String:
     kc(String, U32.is_eq(status, 2),
       u => j_quote(dn(d)) ++ ":" ++ jd_host_error("host result telescope budget") ++ ",\n", u =>
       j_quote(dn(d)) ++ ":run_lib(" ++ jd_host(book, d) ++ "," ++
-        U32.show(jd_live_arity(book, dt(d), jd_emitted_arity(book, d))) ++ "),\n"))
+        U32.show(jd_live_arity(book, dt(d), jd_arity(book, d))) ++ "),\n"))

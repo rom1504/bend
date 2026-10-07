@@ -1,0 +1,822 @@
+{
+  "kind": "phase63-balanced-b2-broad-summary",
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/analyze-broad.py",
+    "sha256": "d5563d0553ad3b5a9934862ab001336c6d5653b95c243e2e1f9d8ba519a7644e"
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state06-b2-latency/broad/report.json",
+    "sha256": "ca9a7e30041c7e865258555073dbf11b23c0907bd0e3ec2c343a74a316dde2be"
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state06-b2-latency/broad/plan.json",
+    "sha256": "ace4cca109538ad64defd16a9334265a624bb9e9916a1c788c80d788b56abcad"
+  },
+  "binding": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/state06-b2-latency/bindings.json",
+    "sha256": "17b6106b294ae9be763417c37b7d5044ee025eab8d4b238ea295437c83fa0051"
+  },
+  "roles": {
+    "baseline": {
+      "kind": "direct",
+      "attempt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/checked-state08/attempt.json",
+        "sha256": "bf671a4e092f238879756b4c076f39733825b4390e6593795e8beea4c8561f13"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/final-state08/bootstrap/full/report.json",
+        "sha256": "56eb860d154fcf1bdec1e6ecab43262a073b3bdfeaa2dd9fa6781901aee52b74"
+      },
+      "admission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/cache/carrier-admission01.json",
+        "sha256": "70521592c7494a806e78c1f40ae66a6e7d54ed5cd38dad41be91028d9431fba4"
+      },
+      "rootsReference": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase61/final-state08/bootstrap/roots-reference.json",
+        "sha256": "25e946bc6f3fbbefaf7228d8dcf516203fa571ad1a72c61178dfd1560d8fb208"
+      }
+    },
+    "candidate": {
+      "kind": "direct",
+      "attempt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/checked-state06/attempt.json",
+        "sha256": "bee330ecb90f900033f321269bfcdc1bd763fe6d5e8dbc0b7e4358ae259bf764"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/final-state06/bootstrap/full/report.json",
+        "sha256": "c66edab73611a3829f856986f409fca9200de8ebfd81d35b73fa4070d719c4e9"
+      },
+      "admission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/exports06/admission.json",
+        "sha256": "fc2761e05af737536c069e82b551930061eb6905eeb6bb5745dc64d052fcbe54"
+      },
+      "rootsReference": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/exports06-reference/roots-reference.json",
+        "sha256": "3ab619a8c9a03312199f8f71b25ab080bddea644cba265d18f86e91acbbab82d"
+      }
+    }
+  },
+  "pass_": true,
+  "sourceCount": 23,
+  "rounds": 3,
+  "workers": 207,
+  "roleOrders": [
+    [
+      [
+        "baseline",
+        "candidate",
+        "typescript"
+      ],
+      [
+        "candidate",
+        "typescript",
+        "baseline"
+      ],
+      [
+        "typescript",
+        "baseline",
+        "candidate"
+      ]
+    ]
+  ],
+  "clocks": "Source load/check/library emission in firstRequestMs; importApiAndFirstMs additionally includes host/API import. Prepared caches; fresh process per sample.",
+  "weighting": "Median of three samples per role/source, then equal-source geometric mean of ratios. Forty-five runtime points are not forty-five independent compilation sources.",
+  "coverage": {
+    "compileInputIds": [
+      "mandelbrot",
+      "editdist",
+      "tree-bitonic",
+      "lexer",
+      "symreg",
+      "test-morning-program",
+      "test-evening-program",
+      "test-rle-roundtrip",
+      "test-map-set-ops",
+      "raytrace",
+      "local-row",
+      "local-fold",
+      "scalar-region",
+      "mandelbrot-grid",
+      "raytrace-active",
+      "closures",
+      "list-pipeline",
+      "bst",
+      "unicode-text",
+      "expression",
+      "map-churn",
+      "numeric-recurrence",
+      "record-aggregation"
+    ],
+    "pointIds": [
+      "mandelbrot",
+      "editdist",
+      "tree-bitonic",
+      "lexer",
+      "symreg",
+      "test-morning-program",
+      "test-evening-program",
+      "test-rle-roundtrip",
+      "test-map-set-ops",
+      "raytrace",
+      "local-pair",
+      "local-fold",
+      "scalar-region-0",
+      "scalar-region-8192",
+      "complete-generic-row32",
+      "variation-editdist-0-17",
+      "variation-editdist-3-123",
+      "variation-lexer-6-17",
+      "variation-lexer-10-123",
+      "variation-tree-bitonic-6-17",
+      "variation-tree-bitonic-9-123",
+      "variation-symreg-4-17",
+      "variation-symreg-7-123",
+      "variation-local-fold-128-0",
+      "variation-local-fold-8192-123",
+      "variation-mandelbrot-grid-4-7",
+      "variation-mandelbrot-grid-5-31",
+      "variation-ray-active-64-2440",
+      "variation-ray-active-256-2240",
+      "coverage-closures-64",
+      "coverage-closures-256",
+      "coverage-list-pipeline-128",
+      "coverage-list-pipeline-512",
+      "coverage-bst-32",
+      "coverage-bst-64",
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "coverage-expression-32",
+      "coverage-expression-128",
+      "coverage-map-churn-32",
+      "coverage-map-churn-128",
+      "coverage-numeric-recurrence-256",
+      "coverage-numeric-recurrence-1024",
+      "coverage-record-aggregation-64",
+      "coverage-record-aggregation-256"
+    ],
+    "oracleFreshness": "catalog or image-bound separately qualified outputs",
+    "freshRuntimeExecutions": 0
+  },
+  "summary": {
+    "firstRequestMs": {
+      "candidate/typescript": {
+        "geometricMean": 1.6754678082802272,
+        "min": {
+          "source": "numeric-recurrence",
+          "ratio": 1.1308635246820053
+        },
+        "max": {
+          "source": "lexer",
+          "ratio": 2.0414674636056183
+        },
+        "belowOne": 0,
+        "atOrAboveOne": [
+          {
+            "source": "mandelbrot",
+            "ratio": 1.8720180816131906
+          },
+          {
+            "source": "editdist",
+            "ratio": 1.8562246354006569
+          },
+          {
+            "source": "tree-bitonic",
+            "ratio": 1.749551834124722
+          },
+          {
+            "source": "lexer",
+            "ratio": 2.0414674636056183
+          },
+          {
+            "source": "symreg",
+            "ratio": 1.9464680621039767
+          },
+          {
+            "source": "test-morning-program",
+            "ratio": 1.582206925525373
+          },
+          {
+            "source": "test-evening-program",
+            "ratio": 1.6403763195901404
+          },
+          {
+            "source": "test-rle-roundtrip",
+            "ratio": 1.6590004050382203
+          },
+          {
+            "source": "test-map-set-ops",
+            "ratio": 1.947056228388046
+          },
+          {
+            "source": "raytrace",
+            "ratio": 1.939568375704723
+          },
+          {
+            "source": "local-row",
+            "ratio": 1.9020019427844628
+          },
+          {
+            "source": "local-fold",
+            "ratio": 1.2255466401395347
+          },
+          {
+            "source": "scalar-region",
+            "ratio": 1.336590347649658
+          },
+          {
+            "source": "mandelbrot-grid",
+            "ratio": 1.9829345681079955
+          },
+          {
+            "source": "raytrace-active",
+            "ratio": 1.983879184304531
+          },
+          {
+            "source": "closures",
+            "ratio": 1.3798620417169079
+          },
+          {
+            "source": "list-pipeline",
+            "ratio": 1.6311146980136597
+          },
+          {
+            "source": "bst",
+            "ratio": 1.7152402079828521
+          },
+          {
+            "source": "unicode-text",
+            "ratio": 1.9071701100391427
+          },
+          {
+            "source": "expression",
+            "ratio": 1.398157123892466
+          },
+          {
+            "source": "map-churn",
+            "ratio": 1.607545912953078
+          },
+          {
+            "source": "numeric-recurrence",
+            "ratio": 1.1308635246820053
+          },
+          {
+            "source": "record-aggregation",
+            "ratio": 1.58638722230566
+          }
+        ]
+      },
+      "baseline/typescript": {
+        "geometricMean": 2.071514892951337,
+        "min": {
+          "source": "numeric-recurrence",
+          "ratio": 1.477963392228364
+        },
+        "max": {
+          "source": "test-map-set-ops",
+          "ratio": 2.4693076706550197
+        },
+        "belowOne": 0,
+        "atOrAboveOne": [
+          {
+            "source": "mandelbrot",
+            "ratio": 2.2263409475238496
+          },
+          {
+            "source": "editdist",
+            "ratio": 2.246814234030893
+          },
+          {
+            "source": "tree-bitonic",
+            "ratio": 2.201029659505276
+          },
+          {
+            "source": "lexer",
+            "ratio": 2.396727061069462
+          },
+          {
+            "source": "symreg",
+            "ratio": 2.3147950117299607
+          },
+          {
+            "source": "test-morning-program",
+            "ratio": 1.9670949880480408
+          },
+          {
+            "source": "test-evening-program",
+            "ratio": 2.019972702134934
+          },
+          {
+            "source": "test-rle-roundtrip",
+            "ratio": 2.0616984303049932
+          },
+          {
+            "source": "test-map-set-ops",
+            "ratio": 2.4693076706550197
+          },
+          {
+            "source": "raytrace",
+            "ratio": 2.2730109014716753
+          },
+          {
+            "source": "local-row",
+            "ratio": 2.2232161773046237
+          },
+          {
+            "source": "local-fold",
+            "ratio": 1.6305704832030732
+          },
+          {
+            "source": "scalar-region",
+            "ratio": 1.7311710126881061
+          },
+          {
+            "source": "mandelbrot-grid",
+            "ratio": 2.358718448643398
+          },
+          {
+            "source": "raytrace-active",
+            "ratio": 2.3403386549598055
+          },
+          {
+            "source": "closures",
+            "ratio": 1.7226154275908638
+          },
+          {
+            "source": "list-pipeline",
+            "ratio": 2.0089543101607763
+          },
+          {
+            "source": "bst",
+            "ratio": 2.1322642123746562
+          },
+          {
+            "source": "unicode-text",
+            "ratio": 2.3370969502920302
+          },
+          {
+            "source": "expression",
+            "ratio": 1.8334436979241842
+          },
+          {
+            "source": "map-churn",
+            "ratio": 2.0168422094567964
+          },
+          {
+            "source": "numeric-recurrence",
+            "ratio": 1.477963392228364
+          },
+          {
+            "source": "record-aggregation",
+            "ratio": 2.0523029174938077
+          }
+        ]
+      },
+      "candidate/baseline": {
+        "geometricMean": 0.8088128229158652,
+        "min": {
+          "source": "local-fold",
+          "ratio": 0.7516060500077775
+        },
+        "max": {
+          "source": "local-row",
+          "ratio": 0.8555182182465073
+        },
+        "belowOne": 23,
+        "atOrAboveOne": []
+      }
+    },
+    "importApiAndFirstMs": {
+      "candidate/typescript": {
+        "geometricMean": 1.1755655848034585,
+        "min": {
+          "source": "numeric-recurrence",
+          "ratio": 0.7872145215232935
+        },
+        "max": {
+          "source": "test-map-set-ops",
+          "ratio": 1.4891635670607049
+        },
+        "belowOne": 5,
+        "atOrAboveOne": [
+          {
+            "source": "mandelbrot",
+            "ratio": 1.2789711733162463
+          },
+          {
+            "source": "editdist",
+            "ratio": 1.2403268061830903
+          },
+          {
+            "source": "tree-bitonic",
+            "ratio": 1.1624411629455444
+          },
+          {
+            "source": "lexer",
+            "ratio": 1.3667341507494808
+          },
+          {
+            "source": "symreg",
+            "ratio": 1.2972885678737462
+          },
+          {
+            "source": "test-morning-program",
+            "ratio": 1.1805274595981312
+          },
+          {
+            "source": "test-evening-program",
+            "ratio": 1.2811826077129524
+          },
+          {
+            "source": "test-rle-roundtrip",
+            "ratio": 1.1311758322512961
+          },
+          {
+            "source": "test-map-set-ops",
+            "ratio": 1.4891635670607049
+          },
+          {
+            "source": "raytrace",
+            "ratio": 1.4231912577376002
+          },
+          {
+            "source": "local-row",
+            "ratio": 1.2815757067962419
+          },
+          {
+            "source": "mandelbrot-grid",
+            "ratio": 1.3442027617528738
+          },
+          {
+            "source": "raytrace-active",
+            "ratio": 1.4498526155930334
+          },
+          {
+            "source": "list-pipeline",
+            "ratio": 1.2102678841115517
+          },
+          {
+            "source": "bst",
+            "ratio": 1.1461108140306413
+          },
+          {
+            "source": "unicode-text",
+            "ratio": 1.2994456069989369
+          },
+          {
+            "source": "map-churn",
+            "ratio": 1.1923083018215668
+          },
+          {
+            "source": "record-aggregation",
+            "ratio": 1.1851986956510592
+          }
+        ]
+      },
+      "baseline/typescript": {
+        "geometricMean": 1.4147977166286423,
+        "min": {
+          "source": "numeric-recurrence",
+          "ratio": 0.9747983931227252
+        },
+        "max": {
+          "source": "test-map-set-ops",
+          "ratio": 1.8587023038726744
+        },
+        "belowOne": 1,
+        "atOrAboveOne": [
+          {
+            "source": "mandelbrot",
+            "ratio": 1.4927471092891624
+          },
+          {
+            "source": "editdist",
+            "ratio": 1.4671229731922215
+          },
+          {
+            "source": "tree-bitonic",
+            "ratio": 1.4173012967467655
+          },
+          {
+            "source": "lexer",
+            "ratio": 1.573459712415134
+          },
+          {
+            "source": "symreg",
+            "ratio": 1.507438566951303
+          },
+          {
+            "source": "test-morning-program",
+            "ratio": 1.4379661023876462
+          },
+          {
+            "source": "test-evening-program",
+            "ratio": 1.5512918702380674
+          },
+          {
+            "source": "test-rle-roundtrip",
+            "ratio": 1.3597043454960278
+          },
+          {
+            "source": "test-map-set-ops",
+            "ratio": 1.8587023038726744
+          },
+          {
+            "source": "raytrace",
+            "ratio": 1.646296042504016
+          },
+          {
+            "source": "local-row",
+            "ratio": 1.4708942739066213
+          },
+          {
+            "source": "local-fold",
+            "ratio": 1.0739018180941213
+          },
+          {
+            "source": "scalar-region",
+            "ratio": 1.1427266964340612
+          },
+          {
+            "source": "mandelbrot-grid",
+            "ratio": 1.5686858110062853
+          },
+          {
+            "source": "raytrace-active",
+            "ratio": 1.686308796394079
+          },
+          {
+            "source": "closures",
+            "ratio": 1.1240390964501126
+          },
+          {
+            "source": "list-pipeline",
+            "ratio": 1.4605279908931776
+          },
+          {
+            "source": "bst",
+            "ratio": 1.3846041399347833
+          },
+          {
+            "source": "unicode-text",
+            "ratio": 1.5560912460442198
+          },
+          {
+            "source": "expression",
+            "ratio": 1.1896694842815099
+          },
+          {
+            "source": "map-churn",
+            "ratio": 1.4611145591875345
+          },
+          {
+            "source": "record-aggregation",
+            "ratio": 1.495259528297743
+          }
+        ]
+      },
+      "candidate/baseline": {
+        "geometricMean": 0.8309071826923384,
+        "min": {
+          "source": "local-fold",
+          "ratio": 0.7910608722964454
+        },
+        "max": {
+          "source": "local-row",
+          "ratio": 0.8712901596879843
+        },
+        "belowOne": 23,
+        "atOrAboveOne": []
+      }
+    }
+  },
+  "matrixColumns": [
+    "source",
+    "firstRequestMs:baseline",
+    "firstRequestMs:candidate",
+    "firstRequestMs:typescript",
+    "importApiAndFirstMs:baseline",
+    "importApiAndFirstMs:candidate",
+    "importApiAndFirstMs:typescript"
+  ],
+  "matrix": [
+    [
+      "mandelbrot",
+      906.824984,
+      762.5035009999999,
+      407.31631200000004,
+      1002.377191,
+      858.827007,
+      671.49833
+    ],
+    [
+      "editdist",
+      839.6637529999998,
+      693.695331,
+      373.71302899999995,
+      935.8106559999999,
+      791.1477520000001,
+      637.8542719999999
+    ],
+    [
+      "tree-bitonic",
+      774.523569,
+      615.652372,
+      351.89147299999996,
+      869.4129829999999,
+      713.074518,
+      613.428482
+    ],
+    [
+      "lexer",
+      923.0746550000001,
+      786.250093,
+      385.139664,
+      1017.5123360000001,
+      883.828704,
+      646.671998
+    ],
+    [
+      "symreg",
+      852.098039,
+      716.513389,
+      368.109502,
+      947.3346899999999,
+      815.268025,
+      628.4399980000001
+    ],
+    [
+      "test-morning-program",
+      1124.8531939999998,
+      904.7608400000001,
+      571.834711,
+      1220.1439289999998,
+      1001.7019250000001,
+      848.5206479999999
+    ],
+    [
+      "test-evening-program",
+      1330.342631,
+      1080.3425940000002,
+      658.5943609999999,
+      1426.067841,
+      1177.762451,
+      919.2775829999999
+    ],
+    [
+      "test-rle-roundtrip",
+      818.2541570000001,
+      658.429942,
+      396.88353300000006,
+      920.9220710000001,
+      766.140664,
+      677.2958210000002
+    ],
+    [
+      "test-map-set-ops",
+      1573.380757,
+      1240.61527,
+      637.174855,
+      1668.8846079999998,
+      1337.084562,
+      897.876225
+    ],
+    [
+      "raytrace",
+      1215.909177,
+      1037.5396729999998,
+      534.93328,
+      1311.832209,
+      1134.0537079999997,
+      796.838585
+    ],
+    [
+      "local-row",
+      847.8225110000001,
+      725.327604,
+      381.34955999999994,
+      943.669122,
+      822.20962,
+      641.5614899999999
+    ],
+    [
+      "local-fold",
+      549.7831610000001,
+      413.22035,
+      337.17227600000007,
+      644.920913,
+      510.1717,
+      600.539921
+    ],
+    [
+      "scalar-region",
+      599.427952,
+      462.80212,
+      346.25577000000004,
+      695.9316940000001,
+      561.217032,
+      609.0097450000001
+    ],
+    [
+      "mandelbrot-grid",
+      956.1408260000001,
+      803.811365,
+      405.364543,
+      1051.0336790000001,
+      900.628006,
+      670.009043
+    ],
+    [
+      "raytrace-active",
+      1233.4872599999999,
+      1045.613503,
+      527.05503,
+      1328.232243,
+      1141.985973,
+      787.656594
+    ],
+    [
+      "closures",
+      570.588125,
+      457.05668399999996,
+      331.233609,
+      665.418539,
+      554.188674,
+      591.988785
+    ],
+    [
+      "list-pipeline",
+      1040.1342799999998,
+      844.508162,
+      517.749097,
+      1137.01891,
+      942.191782,
+      778.4985409999999
+    ],
+    [
+      "bst",
+      759.384035,
+      610.865212,
+      356.13974599999995,
+      854.7782960000001,
+      707.545659,
+      617.3448940000001
+    ],
+    [
+      "unicode-text",
+      925.1329310000001,
+      754.94766,
+      395.8470490000001,
+      1020.4461010000001,
+      852.1442470000001,
+      655.7752340000002
+    ],
+    [
+      "expression",
+      609.538742,
+      464.82525499999997,
+      332.45566399999996,
+      705.317245,
+      562.37682,
+      592.8682329999999
+    ],
+    [
+      "map-churn",
+      1075.3345120000001,
+      857.1070119999999,
+      533.177314,
+      1170.3771070000003,
+      955.058816,
+      801.016662
+    ],
+    [
+      "numeric-recurrence",
+      477.32943900000004,
+      365.228567,
+      322.964318,
+      573.358693,
+      463.02527,
+      588.18182
+    ],
+    [
+      "record-aggregation",
+      1076.330105,
+      831.9806550000001,
+      524.449922,
+      1172.084496,
+      929.0380630000001,
+      783.86693
+    ]
+  ],
+  "timing": {
+    "campaignWallSeconds": 264.9905870510265,
+    "measurementStageSeconds": 264.55952690402046,
+    "closedWorkerWallSeconds": 228.45554155495483,
+    "targetIntervalUnionSeconds": 228.45479536056519,
+    "firstWorkerStart": 1791407521.0725617,
+    "lastWorkerFinish": 1791407785.4282663,
+    "maxTreeRssBytes": 181800960
+  },
+  "limitations": "Every emitted module passes its full qualified raw-byte oracle. No fresh generated-program runtime execution; final semantic/self-host/release gates remain separate. Ratios describe this frozen 23-source catalog and machine, not all possible Bend programs. Three samples do not establish statistical significance."
+}

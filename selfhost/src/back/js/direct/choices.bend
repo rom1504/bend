@@ -66,10 +66,6 @@ def jd_doc_choice_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,
     j_type(book, env, terms_at(xs, 1)), False{}, 0))
 
 @unsafe
-def jd_choice_done(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +condition: JDOrdered) -> String:
-  jd_text_render(jd_doc_choice_done(book, env, xs, condition))
-
-@unsafe
 def jd_doc_choice_done(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +condition: JDOrdered) -> JDText:
   match condition:
     case JDOrdered{prefix, value, next}: jd_text_many([jd_text_raw("{" ++ prefix), jd_doc_choice_branches(book, env, xs, value), jd_text_literal("}", 1)])
@@ -93,10 +89,6 @@ def jd_choice_branches(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,
 @unsafe
 def jd_doc_choice_branches(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +value: String) -> JDText:
   jd_text_many([jd_text_raw("/* direct literal choice */if(" ++ value ++ "){"), jd_doc_choice_arm(book, env, terms_at(xs, 2)), jd_text_literal("}else{", 6), jd_doc_choice_arm(book, env, terms_at(xs, 3)), jd_text_literal("}", 1)])
-
-@unsafe
-def jd_choice_arm(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> String:
-  jd_text_render(jd_doc_choice_arm(book, env, t))
 
 @unsafe
 def jd_doc_choice_arm(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> JDText:

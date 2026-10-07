@@ -178,15 +178,18 @@ def base_prefix_prepare(+prefix: List<&2,KDef>) -> KBasePrefixState:
 
 @unsafe
 def base_prefix_admitted(+state: KBasePrefixState, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +bound: U32) -> Bool:
-  match state:
-    case KBasePrefixState{base_bound, delta, stamp, patches, ready}:
-      ready && U32.is_eq(base_bound, norm_max_book(prefix)) && U32.is_ge(bound, base_bound) && U32.is_le(delta, 1048576) && U32.is_le(stamp, delta) && U32.is_le(bound, 1048576) && base_prefix_names(suffix) && prefix_state_disjoint(prefix, book_context(suffix)) && base_prefix_ctor_disjoint(suffix, base_prefix_final(prefix))
+  base_prefix_admitted_final(state, prefix, suffix, bound, base_prefix_final(prefix))
 
 @unsafe
-def base_prefix_resume_saved(+state: KBasePrefixState, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +bound: U32) -> DChecking:
+def base_prefix_admitted_final(+state: KBasePrefixState, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +bound: U32, +final: List<&2,KDef>) -> Bool:
   match state:
     case KBasePrefixState{base_bound, delta, stamp, patches, ready}:
-      +final = base_prefix_final(prefix)
+      ready && U32.is_eq(base_bound, norm_max_book(prefix)) && U32.is_ge(bound, base_bound) && U32.is_le(delta, 1048576) && U32.is_le(stamp, delta) && U32.is_le(bound, 1048576) && base_prefix_names(suffix) && prefix_state_disjoint(prefix, book_context(suffix)) && base_prefix_ctor_disjoint(suffix, final)
+
+@unsafe
+def base_prefix_resume_saved(+state: KBasePrefixState, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +bound: U32, +final: List<&2,KDef>) -> DChecking:
+  match state:
+    case KBasePrefixState{base_bound, delta, stamp, patches, ready}:
       +ordered = base_prefix_patch(final, book_context(patches))
       +seed = book_cached(Nil{}, bound)
       +declared = check_declarations(prefix_state_join(prefix, suffix), seed)
@@ -196,8 +199,9 @@ def base_prefix_resume_saved(+state: KBasePrefixState, +prefix: List<&2,KDef>, +
 @unsafe
 def base_prefix_resume(+state: KBasePrefixState, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>) -> DChecking:
   +bound = norm_max_book(prefix_state_join(prefix, suffix))
-  kc(DChecking, base_prefix_admitted(state, prefix, suffix, bound),
-    u => base_prefix_resume_saved(state, prefix, suffix, bound),
+  +final = base_prefix_final(prefix)
+  kc(DChecking, base_prefix_admitted_final(state, prefix, suffix, bound, final),
+    u => base_prefix_resume_saved(state, prefix, suffix, bound, final),
     u => dg_check_world(prefix_state_join(prefix, suffix)))
 
 type KBasePrefixTail is Data:
@@ -224,8 +228,33 @@ def base_prefix_check_tail(+state: KBasePrefixState, +book: List<&2,KDef>, +pref
 def base_prefix_check(+state: KBasePrefixState, +book: List<&2,KDef>, +prefix: List<&2,KDef>) -> DChecking:
   base_prefix_check_tail(state, book, prefix, base_prefix_split(book, prefix))
 
+# PRIVATE driver-only consumer of the native loader's provenance carrier.
+# Its actual suffix was produced by f_prefix_graph_trace, not supplied as an
+# independent argument. Raw public state/book checks above retain exact split.
+@unsafe
+def base_prefix_check_load(+state: KBasePrefixState, +load: FPrefixLoad) -> DChecking:
+  match load:
+    case FPrefixLoad{trace, prefix, suffix, ready}:
+      match trace:
+        case FLoadTrace{result, done, sources}:
+          match result:
+            case FResult{book, error, imports}:
+              kc(DChecking, ready && String.is_empty(error),
+                u => base_prefix_resume(state, prefix, suffix),
+                u => dg_check_world(book))
+
 # Optional driver bridge. Only its private authenticated seed path calls this;
 # the original check_program_diagnostic method remains the complete checker.
 @unsafe
 def check_program_diagnostic_seed(+book: List<&2,KDef>, +validated: List<&2,KDef>, +origins: List<&2,DOrigin>, +state: KBasePrefixState) -> DResult:
   driver_program_checked(book, origins, base_prefix_check(state, book, validated))
+
+@unsafe
+def check_program_diagnostic_prefix(+load: FPrefixLoad, +validated: List<&2,KDef>, +origins: List<&2,DOrigin>, +state: KBasePrefixState) -> DResult:
+  match load:
+    case FPrefixLoad{trace, prefix, suffix, ready}:
+      match trace:
+        case FLoadTrace{result, done, sources}:
+          match result:
+            case FResult{book, error, imports}:
+              driver_program_checked(book, origins, base_prefix_check_load(state, load))

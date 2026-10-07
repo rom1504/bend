@@ -93,3 +93,101 @@ def f_graph_trace_from_prefix(+graph: FGraph, +sources: List<&2,FSource>, +prefi
     case FGraph{book, error, done}:
       FLoadTrace{fpe_graph_result(graph, sources,
         f_fresh_prefix_result(f_graph_fresh_result(f_validate_result(FResult{book, error, Nil{}})), prefix, state)), done, sources}
+
+# PRIVATE ordinary-driver provenance path. A carrier is created only by the
+# actual leading Base injection and advanced only by native completion below.
+# The driver never accepts a caller-created carrier or grants this path to raw
+# public seed/API objects. Existing graph/prefix APIs keep structural checks.
+type FPrefixGraph is Data:
+  FPrefixGraph{+graph: FGraph, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +count: U32, +ready: Bool}
+
+type FPrefixCompletion is Data:
+  FPrefixCompletion{+carrier: FPrefixGraph, +parsed: FResult}
+
+type FPrefixLoad is Data:
+  FPrefixLoad{+trace: FLoadTrace, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +ready: Bool}
+
+@unsafe
+def f_prefix_graph_empty() -> FPrefixGraph:
+  FPrefixGraph{FGraph{Nil{}, "", Nil{}}, Nil{}, Nil{}, 0, False{}}
+
+@unsafe
+def f_prefix_complete_seed(+source: FSource, +ns: String, +carrier: FPrefixGraph, +path: String, +text: String, +book: List<&2,KDef>) -> FPrefixCompletion:
+  match carrier:
+    case FPrefixGraph{graph, prefix, suffix, count, ready}:
+      f_prefix_seed_completed(graph, ns, ready, book, f_complete_seed(source, graph, path, text, book))
+
+@unsafe
+def f_prefix_seed_completed(+prior: FGraph, +ns: String, +prior_ready: Bool, +prefix: List<&2,KDef>, +completion: FCompletion) -> FPrefixCompletion:
+  match prior completion:
+    case FGraph{book, error, done} FCompletion{graph, parsed}:
+      f_prefix_seed_graph(graph, parsed, prefix, Bool.not(prior_ready) && List.is_empty(&2, KDef, book) && List.is_empty(&2, KTerm, done) && String.is_empty(error) && String.is_empty(ns))
+
+@unsafe
+def f_prefix_seed_graph(+graph: FGraph, +parsed: FResult, +prefix: List<&2,KDef>, +eligible: Bool) -> FPrefixCompletion:
+  match graph parsed:
+    case FGraph{book, error, done} FResult{definitions, parse_error, imports}:
+      FPrefixCompletion{FPrefixGraph{graph, prefix, Nil{}, f_graph_count_defs(prefix, 0), eligible && String.is_empty(error) && String.is_empty(parse_error)}, parsed}
+
+# Native completion qualifies/fills/paths only its new fragment; prior KDefs
+# remain untouched in norm_defs_join(prior,new). Drop only the certified number
+# of top-level event cells to retain the actual suffix, without inspecting terms.
+@unsafe
+def f_prefix_drop(+book: List<&2,KDef>, +count: U32) -> FFreshPrefixTail:
+  kc(FFreshPrefixTail, U32.is_eq(count, 0), u => FFreshPrefixTail{book, True{}}, u => f_prefix_drop_next(book, count))
+
+@unsafe
+def f_prefix_drop_next(+book: List<&2,KDef>, +count: U32) -> FFreshPrefixTail:
+  match book:
+    case Nil{}: FFreshPrefixTail{Nil{}, False{}}
+    case Con{d, rest}: f_prefix_drop(rest, U32.sub(count, 1))
+
+@unsafe
+def f_prefix_complete_source(+source: FSource, +ns: String, +header: FHeader, +sources: List<&2,FSource>, +carrier: FPrefixGraph, +root: String) -> FPrefixCompletion:
+  match carrier:
+    case FPrefixGraph{graph, prefix, suffix, count, ready}:
+      f_prefix_source_completed(prefix, count, ready, f_complete_source(source, ns, header, sources, graph, root))
+
+@unsafe
+def f_prefix_source_completed(+prefix: List<&2,KDef>, +count: U32, +ready: Bool, +completion: FCompletion) -> FPrefixCompletion:
+  match completion:
+    case FCompletion{graph, parsed}:
+      match graph:
+        case FGraph{book, error, done}:
+          kc(FPrefixCompletion, ready && String.is_empty(error),
+            u => f_prefix_source_tail(graph, parsed, prefix, count, f_prefix_drop(book, count)),
+            u => FPrefixCompletion{FPrefixGraph{graph, prefix, Nil{}, count, False{}}, parsed})
+
+@unsafe
+def f_prefix_source_tail(+graph: FGraph, +parsed: FResult, +prefix: List<&2,KDef>, +count: U32, +tail: FFreshPrefixTail) -> FPrefixCompletion:
+  match tail:
+    case FFreshPrefixTail{suffix, matched}: FPrefixCompletion{FPrefixGraph{graph, prefix, suffix, count, matched}, parsed}
+
+@unsafe
+def f_prefix_graph_trace(+carrier: FPrefixGraph, +sources: List<&2,FSource>, +state: FFreshPrefixState) -> FPrefixLoad:
+  match carrier:
+    case FPrefixGraph{graph, prefix, suffix, count, ready}:
+      match graph state:
+        case FGraph{book, error, done} FFreshPrefixState{next, fresh_ready}:
+          f_prefix_trace_validated(graph, sources, prefix, suffix, next, ready && fresh_ready,
+            f_graph_fresh_result(f_validate_result(FResult{book, error, Nil{}})))
+
+@unsafe
+def f_prefix_trace_validated(+graph: FGraph, +sources: List<&2,FSource>, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +next: U32, +ready: Bool, +validated: FResult) -> FPrefixLoad:
+  match validated:
+    case FResult{book, error, imports}:
+      kc(FPrefixLoad, ready && String.is_empty(error),
+        u => f_prefix_trace_fresh(graph, sources, prefix, imports, f_fresh_defs(suffix, next)),
+        u => f_prefix_trace_fallback(graph, sources, validated))
+
+@unsafe
+def f_prefix_trace_fresh(+graph: FGraph, +sources: List<&2,FSource>, +prefix: List<&2,KDef>, +imports: List<&2,KTerm>, +fresh: FFreshDefs) -> FPrefixLoad:
+  match graph fresh:
+    case FGraph{book, error, done} FFreshDefs{suffix, next}:
+      FPrefixLoad{FLoadTrace{fpe_graph_result(graph, sources, FResult{norm_defs_join(prefix, suffix), "", imports}), done, sources}, prefix, suffix, True{}}
+
+@unsafe
+def f_prefix_trace_fallback(+graph: FGraph, +sources: List<&2,FSource>, +validated: FResult) -> FPrefixLoad:
+  match graph:
+    case FGraph{book, error, done}:
+      FPrefixLoad{FLoadTrace{fpe_graph_result(graph, sources, f_fresh_result(validated)), done, sources}, Nil{}, Nil{}, False{}}

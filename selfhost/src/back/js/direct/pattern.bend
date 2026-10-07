@@ -3,16 +3,8 @@
 # blocks and lexical environment depth give every matcher a hygienic temporary.
 
 @unsafe
-def jd_match(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> String:
-  jd_text_render(jd_doc_match(book, env, t, ty, args))
-
-@unsafe
 def jd_doc_match(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> JDText:
   kc(JDText, String.eq(tg(t), "Efq"), u => jd_text_literal("throw \"bend: runtime fail-stop\";", 32), u => jd_doc_match_args(book, env, t, wnf(book, ty), args))
-
-@unsafe
-def jd_match_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> String:
-  jd_text_render(jd_doc_match_args(book, env, t, ty, args))
 
 @unsafe
 def jd_doc_match_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> JDText:
@@ -21,32 +13,16 @@ def jd_doc_match_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty
     case Con{arg, rest}: kc(JDText, String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)), u => jd_doc_match_type(book, env, t, ty, wnf(book, kid(ty, 0)), arg, rest), u => jd_text_raw("return " ++ jd_fail("matcher needs a live function telescope") ++ ";"))
 
 @unsafe
-def jd_match_type(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +arg: String, +rest: List<&2,String>) -> String:
-  jd_text_render(jd_doc_match_type(book, env, t, ty, domain, arg, rest))
-
-@unsafe
 def jd_doc_match_type(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +arg: String, +rest: List<&2,String>) -> JDText:
   kc(JDText, String.eq(tg(domain), "ADT"), u => kc(JDText, jd_native_layout(book, domain) && String.eq(nm(domain), "Nat"), v => jd_doc_nat_start(book, env, t, ty, arg, rest), v => jd_doc_match_ctor(book, env, t, ty, domain, arg, rest, j_layout_ctor(book, domain, nm(t)))), u => jd_text_raw("return " ++ jd_fail("matcher needs a checked datatype") ++ ";"))
-
-@unsafe
-def jd_match_ctor(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +arg: String, +rest: List<&2,String>, +ctor: KDef) -> String:
-  jd_text_render(jd_doc_match_ctor(book, env, t, ty, domain, arg, rest, ctor))
 
 @unsafe
 def jd_doc_match_ctor(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +arg: String, +rest: List<&2,String>, +ctor: KDef) -> JDText:
   kc(JDText, String.eq(dk(ctor), "Ctr"), u => jd_doc_match_emit(book, env, t, ty, domain, arg, rest, j_specialize(book, dt(ctor), ks(domain))), u => jd_text_raw("return " ++ jd_fail("missing match constructor telescope") ++ ";"))
 
 @unsafe
-def jd_match_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +arg: String, +rest: List<&2,String>, +tel: KTerm) -> String:
-  jd_text_render(jd_doc_match_emit(book, env, t, ty, domain, arg, rest, tel))
-
-@unsafe
 def jd_doc_match_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +arg: String, +rest: List<&2,String>, +tel: KTerm) -> JDText:
   jd_doc_match_emit_at(book, Con{kt("$JD.MatchScope", "", 4294967294, 0, Nil{}), env}, t, ty, domain, arg, rest, tel, "$match" ++ U32.show(terms_len(env)))
-
-@unsafe
-def jd_match_emit_at(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +arg: String, +rest: List<&2,String>, +tel: KTerm, +value: String) -> String:
-  jd_text_render(jd_doc_match_emit_at(book, env, t, ty, domain, arg, rest, tel, value))
 
 @unsafe
 def jd_doc_match_emit_at(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +arg: String, +rest: List<&2,String>, +tel: KTerm, +value: String) -> JDText:
@@ -107,10 +83,6 @@ type JDWordCover is Data:
 # A predecessor subtraction is a demanded arm view, never an intermediate test.
 # This mirrors mat_nats, including the final unconditional fallback row.
 @unsafe
-def jd_nat_start(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>) -> String:
-  jd_text_render(jd_doc_nat_start(book, env, t, ty, arg, rest))
-
-@unsafe
 def jd_doc_nat_start(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>) -> JDText:
   +value = "$match" ++ U32.show(terms_len(env))
   jd_text_many([jd_text_raw("{const " ++ value ++ "=" ++ arg ++ ";"), jd_doc_nat_emit(book, Con{kt("$JD.MatchScope", "", 4294967294, 0, Nil{}), env}, rest, value, jd_nat_rows(book, j_strip(t), ty, 0)), jd_text_literal("}", 1)])
@@ -140,10 +112,6 @@ def jd_nat_next(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm, +level: U32) -> Lis
     u => jd_nat_rows(book, t, ty, level), u => [JDWordRow{t, ty, 0, level, 1}])
 
 @unsafe
-def jd_nat_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,String>, +value: String, +rows: List<&2,JDWordRow>) -> String:
-  jd_text_render(jd_doc_nat_emit(book, env, rest, value, rows))
-
-@unsafe
 def jd_doc_nat_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,String>, +value: String, +rows: List<&2,JDWordRow>) -> JDText:
   match rows:
     case Nil{}: jd_text_literal("throw \"bend: runtime fail-stop\";", 32)
@@ -156,18 +124,10 @@ def jd_nat_row_test(+value: String, +row: JDWordRow) -> String:
     case JDWordRow{term, typ, depth, number, fields}: value ++ "===" ++ U32.show(number)
 
 @unsafe
-def jd_nat_row_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,String>, +value: String, +row: JDWordRow) -> String:
-  jd_text_render(jd_doc_nat_row_body(book, env, rest, value, row))
-
-@unsafe
 def jd_doc_nat_row_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,String>, +value: String, +row: JDWordRow) -> JDText:
   match row:
     case JDWordRow{term, typ, depth, number, fields}: jd_doc_body(book, env, term, typ, List.append(&2,String,
         kc(List<&2,String>, U32.is_eq(fields, 0), u => Nil{}, u => ["(" ++ value ++ "-" ++ U32.show(number) ++ ")"]), rest))
-
-@unsafe
-def jd_word_start(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: List<&2,String>, +value: String, +float: Bool) -> String:
-  jd_text_render(jd_doc_word_start(book, env, t, ty, rest, value, float))
 
 @unsafe
 def jd_doc_word_start(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: List<&2,String>, +value: String, +float: Bool) -> JDText:
@@ -256,10 +216,6 @@ def jd_word_unanns(+ts: List<&2,KTerm>) -> List<&2,KTerm>:
     case Con{t, rest}: Con{jd_word_unann(t), jd_word_unanns(rest)}
 
 @unsafe
-def jd_word_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,String>, +bits: String, +rows: List<&2,JDWordRow>, +scalar: Bool) -> String:
-  jd_text_render(jd_doc_word_emit(book, env, rest, bits, rows, scalar))
-
-@unsafe
 def jd_doc_word_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,String>, +bits: String, +rows: List<&2,JDWordRow>, +scalar: Bool) -> JDText:
   match rows:
     case Nil{}: jd_text_literal("throw \"bend: runtime fail-stop\";", 32)
@@ -277,10 +233,6 @@ def jd_word_row_test(+bits: String, +row: JDWordRow) -> String:
 # retain their original demanded conversions. A surviving Word use still gets
 # its original held object; facts do not change the public Word representation.
 @unsafe
-def jd_word_row_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,String>, +bits: String, +row: JDWordRow, +scalar: Bool) -> String:
-  jd_text_render(jd_doc_word_row_body(book, env, rest, bits, row, scalar))
-
-@unsafe
 def jd_doc_word_row_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,String>, +bits: String, +row: JDWordRow, +scalar: Bool) -> JDText:
   match row:
     case JDWordRow{term, typ, depth, value, fields}: kc(JDText, scalar && Bool.not(U32.is_eq(fields, 1) && U32.is_eq(depth, 0)), u => jd_doc_word_bound_row(book, env, term, typ, rest, bits, depth, fields, jd_doc_word_bind(book, env, term, typ, rest, bits, depth, fields)), u => jd_doc_body(book, env, term, typ, jd_word_field_values(bits, depth, fields, rest)))
@@ -293,35 +245,19 @@ def jd_word_field_values(+bits: String, +depth: U32, +fields: U32, +rest: List<&
         v => [jd_word_view(bits, depth) ++ "[\"head\"]", jd_word_view(bits, U32.inc(depth))])), rest)
 
 @unsafe
-def jd_word_bind(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: List<&2,String>, +bits: String, +depth: U32, +fields: U32) -> String:
-  jd_text_render(jd_doc_word_bind(book, env, t, ty, rest, bits, depth, fields))
-
-@unsafe
 def jd_doc_word_bind(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: List<&2,String>, +bits: String, +depth: U32, +fields: U32) -> JDText:
   kc(JDText, U32.is_eq(fields, 0), u => jd_doc_body(book, env, t, ty, rest), u => kc(JDText, String.eq(tg(t), "Ann"), v => jd_doc_word_bind(book, env, kid(t, 0), kid(t, 1), rest, bits, depth, fields), v => jd_doc_word_bind_type(book, env, t, wnf(book, ty), rest, bits, depth, fields)))
 # Any surviving ordinary use (including one inside a closure) refuses the
 # entire row optimization. This prevents an escaped/mutated Word tail from
 # being read through stale scalar provenance; the old row then emits unchanged.
 @unsafe
-def jd_word_bound_row(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: List<&2,String>, +bits: String, +depth: U32, +fields: U32, +body: String) -> String:
-  jd_text_render(jd_doc_word_bound_row(book, env, t, ty, rest, bits, depth, fields, jd_text_raw(body)))
-
-@unsafe
 def jd_doc_word_bound_row(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: List<&2,String>, +bits: String, +depth: U32, +fields: U32, +body: JDText) -> JDText:
   kc(JDText, jd_text_empty(body), u => jd_doc_body(book, env, t, ty, jd_word_field_values(bits, depth, fields, rest)), u => body)
-
-@unsafe
-def jd_word_bind_type(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: List<&2,String>, +bits: String, +depth: U32, +fields: U32) -> String:
-  jd_text_render(jd_doc_word_bind_type(book, env, t, ty, rest, bits, depth, fields))
 
 @unsafe
 def jd_doc_word_bind_type(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: List<&2,String>, +bits: String, +depth: U32, +fields: U32) -> JDText:
   kc(JDText, String.eq(tg(t), "Lam") && String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)), u => jd_doc_word_bind_used(ix(t), jd_doc_word_bind(book, Con{kt("$JD.U32Fragment", "", ix(t), 0,
           [kid(ty, 0), kt(kc(String, U32.is_eq(fields, 2), v => "Bit", v => "Tail"), bits, depth, 0, Nil{})]), env}, kid(t, 0), j_app_type(ty, var(nm(t), ix(t))), rest, bits, kc(U32, U32.is_eq(fields, 2), v => U32.inc(depth), v => depth), U32.sub(fields, 1))), u => jd_text_literal("", 0))
-
-@unsafe
-def jd_word_bind_used(+id: U32, +body: String) -> String:
-  jd_text_render(jd_doc_word_bind_used(id, jd_text_raw(body)))
 
 @unsafe
 def jd_doc_word_bind_used(+id: U32, +body: JDText) -> JDText:

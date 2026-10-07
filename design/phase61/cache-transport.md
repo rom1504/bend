@@ -1,6 +1,8 @@
 # Phase61 — cache payload bytes instead of repeated tree serialization
 
-Status: isolated driver draft; no maintained driver edits, targets or timing claims.
+Status: frame01 design retained below; reviewed segmented frame2/combined04 is now
+applied to source after host controls. Actual source qualification/throughput and
+release selection remain pending. No standalone transport speedup is claimed.
 The target is cold Base-cache transport, not permission to reuse checked compiler
 state or skip checking. Root owns application and measurement.
 
@@ -54,3 +56,16 @@ exclude that one-time work from reader timing but report it separately. Stop if
 cold read savings are below the proposed 50 ms usefulness criterion, request output
 or diagnostic order differs, or total first-request/peak-memory cost regresses.
 Do not infer savings from fewer source traversals. No new compiler release is implied.
+
+## Bounded follow-on: segment hashes and private JSON traversal
+
+State04 identifies188ms Numeric cache reading (decode65ms, span validation77ms,
+state admission22ms; inclusive attribution overlaps). Frame2 separates optional
+state bytes from the header, avoiding a2.2MB state reserialization at admission.
+Its private JSON-tree walker retains checks while eliminating Object.values and
+WeakSet allocations. Public caller-object validator behavior is unchanged.
+
+The exact current implementation, corrected harness lineage and focused56/57-group
+host results are in [the implementation report](../../implementation/phase61/cache-transport.md).
+This follow-on is a concrete falsifiable transport/host-allocation hypothesis,
+not permission to infer a checked state or move compiler algorithms into JS.

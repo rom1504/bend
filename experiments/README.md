@@ -5,23 +5,22 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Newest campaign: Phase60 broad compiler survey
+## Newest campaign: Phase61 architectural compiler speed
 
-[Design](../design/phase60/broad-compiler-survey.md) · [Three hypotheses](phase60/) ·
-[Current frontier](STEERING.md) · [Clean results](../implementation/phase60/measurements.md).
-The audited 23 compiler inputs map to 45 runtime points; fresh compiler outputs
-match qualified raw bytes, while runtime observations are inherited, not rerun.
-Clean combined-first equal-source B2/TS GM is 2.4613. Stage/CPU evidence and the
-[Base recheck audit](../implementation/phase60/common-frontend.md) identify common
-checking work without quantifying Base alone. All target campaigns, [diagnostic classification](../implementation/phase60/diagnostics.md)
-and [tested fast screens](../implementation/phase60/fast-loop.md) pass. The
-[ranked conclusions](../implementation/phase60/bottlenecks.md) preserve common
-frontend and source-dependent String/reference/index/substitution work, without
-predicted savings or relaxed cache proofs. Original reader failure/unknown mass
-remain intact. Raw writers closed 05:42:28 UTC; [archive/publication verification](../selfhost/tools/performance/phase60/artifacts/raw/publication.json)
-passes with reopened members and stable raw inputs. Measurement only: installed Phase58
-last01/compiler/runtime/driver unchanged; no optimization, release or PR comment.
-Closed [Phase59](../implementation/phase59/README.md) remains separate evidence.
+[Four registered hypotheses](phase61/) · [Research map](../implementation/phase61/research-map.md) ·
+[Current frontier](STEERING.md).
+The user authorizes major compiler-speed improvements implemented in Bend while
+maintaining correctness. New Phase61 experiments may change compiler source;
+Phase60's information-only scope remains historical and does not restrict this
+new authorization. No Phase61 outcome or promotion is established at registration.
+Installed Phase58 last01 and all closed evidence stay unchanged until a qualified
+root-admitted promotion.
+
+[Completed Phase60 survey](../implementation/phase60/README.md) measured the
+23-source compiler gap and registered contrasting short loops. Its shared-work
+and allocation evidence motivates complete frontend-state reuse, compact owned
+contexts and structured code/reference transport, without promised savings or
+permission to omit checking. Preserve its unknown samples, failures and archive.
 
 This adapts the research method in `rom1504/math` at commit
 [`e2795031b5a35300d5c82613125c3bf9f3bd2b16`](https://github.com/rom1504/math/commit/e2795031b5a35300d5c82613125c3bf9f3bd2b16),

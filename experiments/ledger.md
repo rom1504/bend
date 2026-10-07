@@ -3410,3 +3410,34 @@ pass reopened/member verification with stable input bytes: 2,286 members,
 463,038,119 raw bytes and 18,788,706 gzip bytes; one unsplit archive, SHA256
 `a02e1bed02335b8bb35451cd129f2c85fe23484ca0f4f68da2daaa30a0b9ef6b`.
 No further raw writes; installed last01 remains unchanged.
+
+
+## Phase61 — architectural compiler speed — 2026-10-07
+
+Explicit user authorization now permits ambitious compiler-source improvements
+implemented in Bend with maintained correctness; Phase60's information-only scope
+remains an unchanged historical result. Installed Phase58 last01, closed 58–60 and
+103 unrelated files remain protected until qualified promotion. Root owns source,
+target scheduling and architectural design; no goals or PR comments.
+
+Registered before Phase61 outcomes: [P61-001 shared checked frontend state](phase61/P61-001-shared-frontend-state.md),
+[P61-002 compact owned contexts](phase61/P61-002-compact-owned-contexts.md),
+[P61-003 structured emission](phase61/P61-003-structured-emission.md), and
+[P61-004 fast iteration](phase61/P61-004-fast-iteration.md).
+The [research map](../implementation/phase61/research-map.md) links each to prior
+proof boundaries and rejected/qualified attempts. Registration changes documents
+only; correctness unchecked, new measurements not run, decision investigate.
+
+Phase60's 2.461× combined-first equal-source B2/TS gap, common check/completion,
+index/substitution and contrasting String/ref families motivate tests, not savings.
+A parsed Base cache lacks checked world/output/memo/fresh/provenance resume state;
+both measured pipelines recheck Base. Substitution can reduce Apps without a
+variable replacement. Structured refs must preserve emission demand/FFI/order and
+bounded refusals. These are explicit falsifiers, not restrictions inferred from
+old information-only authorization.
+
+**Updated frontier:** test complete shared-state reuse and structured/compact
+work in isolated reviewed source candidates. Use the prior measured rejection/
+confirmation subset plus held-out Lexer/Evening, then all 23 and applicable source,
+B2/fixed-point/native/legacy gates for the selected candidate. No new result,
+installation or speedup is claimed by this pre-outcome entry.

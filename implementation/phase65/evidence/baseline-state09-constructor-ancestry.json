@@ -1,0 +1,662 @@
+{
+  "kind": "phase65-constructor-exists-ancestry",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/analysis/constructor-ancestry.py",
+    "sha256": "c1572e90ee668dced5b895764ed1201eafdfaebbc7242d91dc81bf25b4067565"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/analysis/target-ancestry.py",
+      "sha256": "d53d33bbd8647b1b67994da43e0182dce279bc720685f969fa2cc1cb25bd2961"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/analysis/profiles-v2.py",
+      "sha256": "4fb715bddc5262f6c7b53d869840f46d225cd3eed2b9ae3b53cdb0ee00bb3679"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase65/evidence/baseline-state09-cpu.json",
+      "sha256": "dd919e86cbc05a8ccad116de0a4812f123a73466bcec703e42c22b8836a34cc6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase65/evidence/baseline-state09-allocation.json",
+      "sha256": "63dc783924ce730944e319cb73858a5d3093c3d85e77fb4deaa15fb967a41983"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/src/check/prefix-state.bend",
+      "sha256": "e3d23adaabb0ddc866adc3546a56d6362df2d6f55d91c73aef71c73cbd628a63"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/src/check/kernel.bend",
+      "sha256": "61a0f6d41b311986c352f8ea76d99849001fce9ec68769f6f12a80fdbf20f785"
+    }
+  ],
+  "rows": [
+    {
+      "mode": "cpu",
+      "case": "numeric-recurrence",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/numeric-recurrence-0-baseline-profile/profile.cpuprofile",
+        "sha256": "0e787e4e0a61a13db587b2f0e75f41dadd0fc9d11bca1c1ad8a106c1b0c4e109",
+        "bytes": 859523
+      },
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/numeric-recurrence-0-baseline.result.json",
+        "sha256": "5a54982e4cd1e36005c56b28a7cf8ff25d1a241095658a79d3354c893b6a2030"
+      },
+      "totalProfileSamples": 259,
+      "weightUnit": "microseconds",
+      "constructorExistsInclusiveSamples": 4,
+      "constructorExistsSelfSamples": 0,
+      "inclusiveSamplePercent": 1.5444015444015444,
+      "nearestExactNonConstructorAncestors": [
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 3,
+          "weight": 3568
+        },
+        {
+          "name": "[no exact generated ancestor]",
+          "samples": 1,
+          "weight": 1062
+        }
+      ],
+      "disjointNearestStages": [
+        {
+          "name": "book-context-world",
+          "samples": 2,
+          "weight": 2190
+        },
+        {
+          "name": "other-generated-image",
+          "samples": 1,
+          "weight": 1062
+        },
+        {
+          "name": "checker",
+          "samples": 1,
+          "weight": 1378
+        }
+      ],
+      "overlappingAncestorUnions": [
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 3,
+          "weight": 3568
+        },
+        {
+          "name": "base_prefix_world_admitted",
+          "samples": 3,
+          "weight": 3568
+        },
+        {
+          "name": "book_context_world",
+          "samples": 2,
+          "weight": 2190
+        },
+        {
+          "name": "check_program_diagnostic_world",
+          "samples": 1,
+          "weight": 1378
+        }
+      ],
+      "totalProfileWeight": 378286,
+      "constructorExistsInclusiveWeight": 4630,
+      "constructorExistsSelfWeight": 0,
+      "inclusiveWeightPercent": 1.2239416737600652,
+      "weightedStatus": "admitted"
+    },
+    {
+      "mode": "cpu",
+      "case": "lexer",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/lexer-0-baseline-profile/profile.cpuprofile",
+        "sha256": "7bccb8281041a530c81ac85f293013c1d1f3c7cb5e98362a9897bcb5ac2ee507",
+        "bytes": 1800415
+      },
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/lexer-0-baseline.result.json",
+        "sha256": "ba5462fc3b57c5d6293af2b258c7e593aaffdbddc13d9f90cdbf2d8e8483642d"
+      },
+      "totalProfileSamples": 493,
+      "weightUnit": "microseconds",
+      "constructorExistsInclusiveSamples": 13,
+      "constructorExistsSelfSamples": 5,
+      "inclusiveSamplePercent": 2.636916835699797,
+      "nearestExactNonConstructorAncestors": [
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 10,
+          "weight": 11300
+        },
+        {
+          "name": "[no exact generated ancestor]",
+          "samples": 2,
+          "weight": 2290
+        },
+        {
+          "name": "event_error",
+          "samples": 1,
+          "weight": 571
+        }
+      ],
+      "disjointNearestStages": [
+        {
+          "name": "checker",
+          "samples": 9,
+          "weight": 10041
+        },
+        {
+          "name": "other-generated-image",
+          "samples": 2,
+          "weight": 2290
+        },
+        {
+          "name": "book-context-world",
+          "samples": 2,
+          "weight": 1830
+        }
+      ],
+      "overlappingAncestorUnions": [
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 10,
+          "weight": 11300
+        },
+        {
+          "name": "base_prefix_world_admitted",
+          "samples": 10,
+          "weight": 11300
+        },
+        {
+          "name": "check_program_diagnostic_world",
+          "samples": 9,
+          "weight": 10041
+        },
+        {
+          "name": "book_context_world",
+          "samples": 2,
+          "weight": 1830
+        },
+        {
+          "name": "constructor_names",
+          "samples": 1,
+          "weight": 571
+        }
+      ],
+      "totalProfileWeight": 758732,
+      "constructorExistsInclusiveWeight": 14161,
+      "constructorExistsSelfWeight": 5375,
+      "inclusiveWeightPercent": 1.8664034204435822,
+      "weightedStatus": "admitted"
+    },
+    {
+      "mode": "cpu",
+      "case": "test-map-set-ops",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/test-map-set-ops-0-baseline-profile/profile.cpuprofile",
+        "sha256": "38f9af23131a7ed1ce46d08b7afe99899700383c4c662627838a01e764ac286a",
+        "bytes": 3437677
+      },
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/test-map-set-ops-0-baseline.result.json",
+        "sha256": "9e737f09fae048834f72be61d1eb12ceb4848e2b8daa032b360c286eba8b3a43"
+      },
+      "totalProfileSamples": 800,
+      "weightUnit": "microseconds",
+      "constructorExistsInclusiveSamples": 14,
+      "constructorExistsSelfSamples": 6,
+      "inclusiveSamplePercent": 1.75,
+      "nearestExactNonConstructorAncestors": [
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 8,
+          "weight": 13709
+        },
+        {
+          "name": "[no exact generated ancestor]",
+          "samples": 6,
+          "weight": 10305
+        }
+      ],
+      "disjointNearestStages": [
+        {
+          "name": "checker",
+          "samples": 8,
+          "weight": 13709
+        },
+        {
+          "name": "other-generated-image",
+          "samples": 6,
+          "weight": 10305
+        }
+      ],
+      "overlappingAncestorUnions": [
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 8,
+          "weight": 13709
+        },
+        {
+          "name": "base_prefix_world_admitted",
+          "samples": 8,
+          "weight": 13709
+        },
+        {
+          "name": "check_program_diagnostic_world",
+          "samples": 8,
+          "weight": 13709
+        }
+      ],
+      "totalProfileWeight": 1212943,
+      "constructorExistsInclusiveWeight": 24014,
+      "constructorExistsSelfWeight": 10272,
+      "inclusiveWeightPercent": 1.9798127364599984,
+      "weightedStatus": "admitted"
+    },
+    {
+      "mode": "cpu",
+      "case": "raytrace-active",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/raytrace-active-0-baseline-profile/profile.cpuprofile",
+        "sha256": "831c8dd7bebee4071a7dfdbcd2d7637c5e0ceaf00ddcbed3a68b501f0899926a",
+        "bytes": 3261477
+      },
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/raytrace-active-0-baseline.result.json",
+        "sha256": "cdb9451c8acb79c1890983fd049a175e58e8fc766e5af8128feba61f5a1aca6d"
+      },
+      "totalProfileSamples": 673,
+      "weightUnit": "microseconds",
+      "constructorExistsInclusiveSamples": 14,
+      "constructorExistsSelfSamples": 7,
+      "inclusiveSamplePercent": 2.0802377414561666,
+      "nearestExactNonConstructorAncestors": [
+        {
+          "name": "[no exact generated ancestor]",
+          "samples": 7,
+          "weight": 8807
+        },
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 6,
+          "weight": 9995
+        },
+        {
+          "name": "event_error",
+          "samples": 1,
+          "weight": 453
+        }
+      ],
+      "disjointNearestStages": [
+        {
+          "name": "other-generated-image",
+          "samples": 7,
+          "weight": 8807
+        },
+        {
+          "name": "checker",
+          "samples": 6,
+          "weight": 9378
+        },
+        {
+          "name": "book-context-world",
+          "samples": 1,
+          "weight": 1070
+        }
+      ],
+      "overlappingAncestorUnions": [
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 6,
+          "weight": 9995
+        },
+        {
+          "name": "base_prefix_world_admitted",
+          "samples": 6,
+          "weight": 9995
+        },
+        {
+          "name": "check_program_diagnostic_world",
+          "samples": 6,
+          "weight": 9378
+        },
+        {
+          "name": "constructor_names",
+          "samples": 1,
+          "weight": 453
+        },
+        {
+          "name": "book_context_world",
+          "samples": 1,
+          "weight": 1070
+        }
+      ],
+      "totalProfileWeight": 1047637,
+      "constructorExistsInclusiveWeight": 19255,
+      "constructorExistsSelfWeight": 9455,
+      "inclusiveWeightPercent": 1.8379457770200938,
+      "weightedStatus": "admitted"
+    },
+    {
+      "mode": "allocation",
+      "case": "numeric-recurrence",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/numeric-recurrence-0-baseline-profile/profile.heapprofile",
+        "sha256": "20c0aa0c93510ea4df522e30ed823cabbb24516e3fc60c515bd796b0339b1537"
+      },
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/numeric-recurrence-0-baseline.result.json",
+        "sha256": "e848cb872b519ea40f68762f0bfb4a3dfe73887b95547ba7cb0cd565c7fe5e4a"
+      },
+      "totalProfileSamples": 147,
+      "weightUnit": "sampled-allocation-bytes",
+      "constructorExistsInclusiveSamples": 17,
+      "constructorExistsSelfSamples": 0,
+      "inclusiveSamplePercent": 11.564625850340136,
+      "nearestExactNonConstructorAncestors": [
+        {
+          "name": "[no exact generated ancestor]",
+          "samples": 14,
+          "weight": 1835736
+        },
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 3,
+          "weight": 393376
+        }
+      ],
+      "disjointNearestStages": [
+        {
+          "name": "other-generated-image",
+          "samples": 14,
+          "weight": 1835736
+        },
+        {
+          "name": "book-context-world",
+          "samples": 2,
+          "weight": 262272
+        },
+        {
+          "name": "checker",
+          "samples": 1,
+          "weight": 131104
+        }
+      ],
+      "overlappingAncestorUnions": [
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 3,
+          "weight": 393376
+        },
+        {
+          "name": "base_prefix_world_admitted",
+          "samples": 3,
+          "weight": 393376
+        },
+        {
+          "name": "book_context_world",
+          "samples": 2,
+          "weight": 262272
+        },
+        {
+          "name": "check_program_diagnostic_world",
+          "samples": 1,
+          "weight": 131104
+        }
+      ],
+      "totalProfileWeight": 21890976,
+      "constructorExistsInclusiveWeight": 2229112,
+      "constructorExistsSelfWeight": 0,
+      "inclusiveWeightPercent": 10.18278947453051,
+      "treeSelfBytes": 21933096,
+      "accountingMismatchNodes": 7
+    },
+    {
+      "mode": "allocation",
+      "case": "lexer",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/lexer-0-baseline-profile/profile.heapprofile",
+        "sha256": "555d772e86ca0f2f8f156be739c73021c8e2e4ac18bc646729fd40c678fea276"
+      },
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/lexer-0-baseline.result.json",
+        "sha256": "46c79709c672bce24f879f72d0caa119a664236ad39914741bdef8716c0c5855"
+      },
+      "totalProfileSamples": 510,
+      "weightUnit": "sampled-allocation-bytes",
+      "constructorExistsInclusiveSamples": 199,
+      "constructorExistsSelfSamples": 153,
+      "inclusiveSamplePercent": 39.01960784313726,
+      "nearestExactNonConstructorAncestors": [
+        {
+          "name": "[no exact generated ancestor]",
+          "samples": 147,
+          "weight": 19293208
+        },
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 46,
+          "weight": 6036320
+        },
+        {
+          "name": "event_error",
+          "samples": 6,
+          "weight": 787632
+        }
+      ],
+      "disjointNearestStages": [
+        {
+          "name": "other-generated-image",
+          "samples": 150,
+          "weight": 19686896
+        },
+        {
+          "name": "checker",
+          "samples": 31,
+          "weight": 4067368
+        },
+        {
+          "name": "book-context-world",
+          "samples": 18,
+          "weight": 2362896
+        }
+      ],
+      "overlappingAncestorUnions": [
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 46,
+          "weight": 6036320
+        },
+        {
+          "name": "base_prefix_world_admitted",
+          "samples": 45,
+          "weight": 5905048
+        },
+        {
+          "name": "check_program_diagnostic_world",
+          "samples": 31,
+          "weight": 4067368
+        },
+        {
+          "name": "book_context_world",
+          "samples": 18,
+          "weight": 2362896
+        },
+        {
+          "name": "constructor_names",
+          "samples": 7,
+          "weight": 918904
+        }
+      ],
+      "totalProfileWeight": 69416536,
+      "constructorExistsInclusiveWeight": 26117160,
+      "constructorExistsSelfWeight": 20084616,
+      "inclusiveWeightPercent": 37.623830725290006,
+      "treeSelfBytes": 69601472,
+      "accountingMismatchNodes": 14
+    },
+    {
+      "mode": "allocation",
+      "case": "test-map-set-ops",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/test-map-set-ops-0-baseline-profile/profile.heapprofile",
+        "sha256": "7778410f72320aac8c5b208c2d610d323f4d7f5291be807da8db9068d44a0b69"
+      },
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/test-map-set-ops-0-baseline.result.json",
+        "sha256": "8f3418897bf2deac79e1ad72cb80b3fcc470f9e7fe621948c9e18e08e075d015"
+      },
+      "totalProfileSamples": 1145,
+      "weightUnit": "sampled-allocation-bytes",
+      "constructorExistsInclusiveSamples": 196,
+      "constructorExistsSelfSamples": 162,
+      "inclusiveSamplePercent": 17.117903930131003,
+      "nearestExactNonConstructorAncestors": [
+        {
+          "name": "[no exact generated ancestor]",
+          "samples": 143,
+          "weight": 18775400
+        },
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 53,
+          "weight": 6957944
+        }
+      ],
+      "disjointNearestStages": [
+        {
+          "name": "other-generated-image",
+          "samples": 145,
+          "weight": 19038056
+        },
+        {
+          "name": "book-context-world",
+          "samples": 31,
+          "weight": 4071168
+        },
+        {
+          "name": "checker",
+          "samples": 20,
+          "weight": 2624120
+        }
+      ],
+      "overlappingAncestorUnions": [
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 53,
+          "weight": 6957944
+        },
+        {
+          "name": "base_prefix_world_admitted",
+          "samples": 52,
+          "weight": 6826616
+        },
+        {
+          "name": "book_context_world",
+          "samples": 31,
+          "weight": 4071168
+        },
+        {
+          "name": "check_program_diagnostic_world",
+          "samples": 20,
+          "weight": 2624120
+        }
+      ],
+      "totalProfileWeight": 152904912,
+      "constructorExistsInclusiveWeight": 25733344,
+      "constructorExistsSelfWeight": 21275136,
+      "inclusiveWeightPercent": 16.829638540323675,
+      "treeSelfBytes": 152900792,
+      "accountingMismatchNodes": 10
+    },
+    {
+      "mode": "allocation",
+      "case": "raytrace-active",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/raytrace-active-0-baseline-profile/profile.heapprofile",
+        "sha256": "db1ca8169f4320250faee2938a466a3a99e2e26d214c8b0bc09dfe08f4b8237b"
+      },
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/raytrace-active-0-baseline.result.json",
+        "sha256": "bd36787b7eb66482b23964ca1c75dbf3d4fdab1c40c81a1f69c341de331bd2e5"
+      },
+      "totalProfileSamples": 755,
+      "weightUnit": "sampled-allocation-bytes",
+      "constructorExistsInclusiveSamples": 142,
+      "constructorExistsSelfSamples": 76,
+      "inclusiveSamplePercent": 18.807947019867548,
+      "nearestExactNonConstructorAncestors": [
+        {
+          "name": "[no exact generated ancestor]",
+          "samples": 99,
+          "weight": 12989936
+        },
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 42,
+          "weight": 5510184
+        },
+        {
+          "name": "event_error",
+          "samples": 1,
+          "weight": 131272
+        }
+      ],
+      "disjointNearestStages": [
+        {
+          "name": "other-generated-image",
+          "samples": 103,
+          "weight": 13514840
+        },
+        {
+          "name": "checker",
+          "samples": 21,
+          "weight": 2753656
+        },
+        {
+          "name": "book-context-world",
+          "samples": 18,
+          "weight": 2362896
+        }
+      ],
+      "overlappingAncestorUnions": [
+        {
+          "name": "base_prefix_ctor_disjoint",
+          "samples": 42,
+          "weight": 5510184
+        },
+        {
+          "name": "base_prefix_world_admitted",
+          "samples": 40,
+          "weight": 5247824
+        },
+        {
+          "name": "check_program_diagnostic_world",
+          "samples": 21,
+          "weight": 2753656
+        },
+        {
+          "name": "book_context_world",
+          "samples": 18,
+          "weight": 2362896
+        },
+        {
+          "name": "constructor_names",
+          "samples": 1,
+          "weight": 131272
+        }
+      ],
+      "totalProfileWeight": 101961600,
+      "constructorExistsInclusiveWeight": 18631392,
+      "constructorExistsSelfWeight": 9976672,
+      "inclusiveWeightPercent": 18.272949816401468,
+      "treeSelfBytes": 102142592,
+      "accountingMismatchNodes": 16
+    }
+  ],
+  "scope": "Exact non-SCC constructor_exists frame and exact API URL only. Each matching sample counted once. Disjoint stage partition uses nearest named boundary; ancestor unions overlap and must not be summed. Caller table skips constructor_* and unnamed/shared SCC frames, so is nearest exact generated ancestor rather than necessarily direct caller. CPU weights only admitted; allocation uses samples[].size, never tree selfSize. Profiles do not measure call counts or prove equal runtime arguments; source evidence establishes repeated call structure separately."
+}

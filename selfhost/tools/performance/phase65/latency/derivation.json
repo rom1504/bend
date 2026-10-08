@@ -1,0 +1,132 @@
+{
+  "kind": "phase65-latency-tools-derivation",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "derivations": [
+    {
+      "parent": {
+        "file": "selfhost/tools/performance/phase64/latency/make-bindings-v2.py",
+        "sha256": "1ce1b72d7336a57a1b7cfeadf99a3832ed7002de08a07bab3ac3e8825afffbb6"
+      },
+      "successor": {
+        "file": "selfhost/tools/performance/phase65/latency/make-bindings.py",
+        "sha256": "79f31b819d1b6735cda100506d0bffaf22b5d55d2065504df0f4e10502b09d23"
+      },
+      "edits": [
+        {
+          "old": "RAW = ROOT / 'selfhost/build/phase64'",
+          "new": "RAW = ROOT / 'selfhost/build/phase65'",
+          "count": 1
+        },
+        {
+          "old": "SOURCE_BINDING = ROOT / 'selfhost/build/phase63/state09-b2-latency/bindings.json'",
+          "new": "SOURCE_BINDING = ROOT / 'selfhost/build/phase64/state09-b2-latency/bindings.json'",
+          "count": 1
+        },
+        {
+          "old": "4a208bffcf47b5d19f8ff18be1fc01b2faf988b37d38e7f5db9e6bd42d79905f",
+          "new": "a2f8b021c20becc730cf91e8e7fd6db98f2bba8b743adec89154ff9c6217bd6f",
+          "count": 1
+        },
+        {
+          "old": "e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003",
+          "new": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e",
+          "count": 1
+        },
+        {
+          "old": "('baseline-three', 'numeric-recurrence,lexer,test-map-set-ops', len(role_list), 90, 0)",
+          "new": "('baseline-four', 'numeric-recurrence,lexer,test-map-set-ops,raytrace-active', len(role_list), 120, 0)",
+          "count": 1
+        },
+        {
+          "old": "'--cases', 'numeric-recurrence,lexer,test-map-set-ops',",
+          "new": "'--cases', 'numeric-recurrence,lexer,test-map-set-ops,raytrace-active',",
+          "count": 1
+        },
+        {
+          "old": "kind='phase64-fast-loop-recipe'",
+          "new": "kind='phase65-fast-loop-recipe'",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "selfhost/tools/performance/phase64/latency/analysis/clean.py",
+        "sha256": "f3b603b2bfd6217b862b2a9b7343738b7af2b87a847cb3ad7a4ed84e5c0f5e94"
+      },
+      "successor": {
+        "file": "selfhost/tools/performance/phase65/latency/analysis/clean.py",
+        "sha256": "6ee1cb89943e671d87a970a004449cfceeef8c4a60eeb884c918050c88b8e7c0"
+      },
+      "edits": [
+        {
+          "old": "Phase64",
+          "new": "Phase65",
+          "count": 1
+        },
+        {
+          "old": "phase64",
+          "new": "phase65",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "selfhost/tools/performance/phase64/latency/analysis/cpu.py",
+        "sha256": "007336a585c0d93978906dfb6bed938ce2c0e35553179bce5ca8b96bddc2105b"
+      },
+      "successor": {
+        "file": "selfhost/tools/performance/phase65/latency/analysis/cpu.py",
+        "sha256": "937bd3b6ec980a7e626af485b219c8cf5f34c52e9fb8075578d206c4b2122146"
+      },
+      "edits": [
+        {
+          "old": "phase64",
+          "new": "phase65",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "selfhost/tools/performance/phase64/latency/analysis/allocations.py",
+        "sha256": "f826c2be6d7f897411429a6446103adc164b8ba8c7b0e778c5bca24f7646b513"
+      },
+      "successor": {
+        "file": "selfhost/tools/performance/phase65/latency/analysis/allocations.py",
+        "sha256": "f0ab61792756203355616e3dfe772c57866aa88875f403799222701b538fe568"
+      },
+      "edits": [
+        {
+          "old": "phase64",
+          "new": "phase65",
+          "count": 1
+        },
+        {
+          "old": "e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003",
+          "new": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e",
+          "count": 1
+        },
+        {
+          "old": "0ebe491e727721857ce981ff5a2167a52d1e040f5674915a3349fea33bed8ed5",
+          "new": "41ddb951470b9e80dd6650af7b99cb29ee05994d1bd96a5873e7b817e98a7d4e",
+          "count": 1
+        },
+        {
+          "old": "['numeric-recurrence', 'lexer', 'test-map-set-ops']",
+          "new": "['numeric-recurrence', 'lexer', 'test-map-set-ops', 'raytrace-active']",
+          "count": 1
+        },
+        {
+          "old": "len(report['rows']) == 6",
+          "new": "len(report['rows']) == 8",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "scope": "Selected immutable Phase64 State09 actual B1/B2 identities, Phase65 writable boundary and baseline four-case coverage. Frozen comparison, oracle, sampling and analysis semantics unchanged."
+}

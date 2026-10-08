@@ -1,0 +1,370 @@
+{
+  "kind": "phase65-constructor-captured-depth",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/analysis/constructor-depth.py",
+    "sha256": "6998a35826ff1c4e0bab9c978ef0545b905d0b6b233a9cd7a799adb54f63c607"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/analysis/target-ancestry.py",
+      "sha256": "d53d33bbd8647b1b67994da43e0182dce279bc720685f969fa2cc1cb25bd2961"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/analysis/profiles-v2.py",
+      "sha256": "4fb715bddc5262f6c7b53d869840f46d225cd3eed2b9ae3b53cdb0ee00bb3679"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase65/evidence/baseline-state09-cpu.json",
+      "sha256": "dd919e86cbc05a8ccad116de0a4812f123a73466bcec703e42c22b8836a34cc6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase65/evidence/baseline-state09-allocation.json",
+      "sha256": "63dc783924ce730944e319cb73858a5d3093c3d85e77fb4deaa15fb967a41983"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/src/check/prefix-state.bend",
+      "sha256": "e3d23adaabb0ddc866adc3546a56d6362df2d6f55d91c73aef71c73cbd628a63"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/src/check/kernel.bend",
+      "sha256": "61a0f6d41b311986c352f8ea76d99849001fce9ec68769f6f12a80fdbf20f785"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+      "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+    }
+  ],
+  "rows": [
+    {
+      "case": "numeric-recurrence",
+      "mode": "cpu",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/numeric-recurrence-0-baseline-profile/profile.cpuprofile",
+        "sha256": "0e787e4e0a61a13db587b2f0e75f41dadd0fc9d11bca1c1ad8a106c1b0c4e109",
+        "bytes": 859523
+      },
+      "missingExactNonConstructorCaller": [
+        {
+          "stackFrames": 256,
+          "constructorExistsFrames": 252,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 1,
+          "weight": 1062
+        }
+      ],
+      "weightUnit": "admitted-microseconds"
+    },
+    {
+      "case": "lexer",
+      "mode": "cpu",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/lexer-0-baseline-profile/profile.cpuprofile",
+        "sha256": "7bccb8281041a530c81ac85f293013c1d1f3c7cb5e98362a9897bcb5ac2ee507",
+        "bytes": 1800415
+      },
+      "missingExactNonConstructorCaller": [
+        {
+          "stackFrames": 257,
+          "constructorExistsFrames": 256,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 2,
+          "weight": 2290
+        }
+      ],
+      "weightUnit": "admitted-microseconds"
+    },
+    {
+      "case": "test-map-set-ops",
+      "mode": "cpu",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/test-map-set-ops-0-baseline-profile/profile.cpuprofile",
+        "sha256": "38f9af23131a7ed1ce46d08b7afe99899700383c4c662627838a01e764ac286a",
+        "bytes": 3437677
+      },
+      "missingExactNonConstructorCaller": [
+        {
+          "stackFrames": 257,
+          "constructorExistsFrames": 256,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 3,
+          "weight": 4249
+        },
+        {
+          "stackFrames": 257,
+          "constructorExistsFrames": 255,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 1,
+          "weight": 2127
+        },
+        {
+          "stackFrames": 255,
+          "constructorExistsFrames": 254,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 1,
+          "weight": 1820
+        },
+        {
+          "stackFrames": 256,
+          "constructorExistsFrames": 254,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 1,
+          "weight": 2109
+        }
+      ],
+      "weightUnit": "admitted-microseconds"
+    },
+    {
+      "case": "raytrace-active",
+      "mode": "cpu",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/raytrace-active-0-baseline-profile/profile.cpuprofile",
+        "sha256": "831c8dd7bebee4071a7dfdbcd2d7637c5e0ceaf00ddcbed3a68b501f0899926a",
+        "bytes": 3261477
+      },
+      "missingExactNonConstructorCaller": [
+        {
+          "stackFrames": 257,
+          "constructorExistsFrames": 256,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 3,
+          "weight": 3909
+        },
+        {
+          "stackFrames": 255,
+          "constructorExistsFrames": 253,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 2,
+          "weight": 3213
+        },
+        {
+          "stackFrames": 255,
+          "constructorExistsFrames": 254,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 1,
+          "weight": 1304
+        },
+        {
+          "stackFrames": 257,
+          "constructorExistsFrames": 253,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 1,
+          "weight": 381
+        }
+      ],
+      "weightUnit": "admitted-microseconds"
+    },
+    {
+      "case": "numeric-recurrence",
+      "mode": "allocation",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/numeric-recurrence-0-baseline-profile/profile.heapprofile",
+        "sha256": "20c0aa0c93510ea4df522e30ed823cabbb24516e3fc60c515bd796b0339b1537"
+      },
+      "missingExactNonConstructorCaller": [
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 125,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 8,
+          "weight": 1048936
+        },
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 124,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 4,
+          "weight": 524480
+        },
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 126,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 1,
+          "weight": 131160
+        },
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 127,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 1,
+          "weight": 131160
+        }
+      ],
+      "weightUnit": "sampled-allocation-bytes"
+    },
+    {
+      "case": "lexer",
+      "mode": "allocation",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/lexer-0-baseline-profile/profile.heapprofile",
+        "sha256": "555d772e86ca0f2f8f156be739c73021c8e2e4ac18bc646729fd40c678fea276"
+      },
+      "missingExactNonConstructorCaller": [
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 128,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 117,
+          "weight": 15358824
+        },
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 127,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 13,
+          "weight": 1704632
+        },
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 126,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 12,
+          "weight": 1573992
+        },
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 125,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 4,
+          "weight": 524488
+        },
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 127,
+          "oldestNonRootFrame": "$jd$constructor_95_names",
+          "rootFrame": "(root)",
+          "samples": 1,
+          "weight": 131272
+        }
+      ],
+      "weightUnit": "sampled-allocation-bytes"
+    },
+    {
+      "case": "test-map-set-ops",
+      "mode": "allocation",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/test-map-set-ops-0-baseline-profile/profile.heapprofile",
+        "sha256": "7778410f72320aac8c5b208c2d610d323f4d7f5291be807da8db9068d44a0b69"
+      },
+      "missingExactNonConstructorCaller": [
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 128,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 121,
+          "weight": 15890688
+        },
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 126,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 19,
+          "weight": 2491328
+        },
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 125,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 3,
+          "weight": 393384
+        }
+      ],
+      "weightUnit": "sampled-allocation-bytes"
+    },
+    {
+      "case": "raytrace-active",
+      "mode": "allocation",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/raytrace-active-0-baseline-profile/profile.heapprofile",
+        "sha256": "db1ca8169f4320250faee2938a466a3a99e2e26d214c8b0bc09dfe08f4b8237b"
+      },
+      "missingExactNonConstructorCaller": [
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 128,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 55,
+          "weight": 7219960
+        },
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 126,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 21,
+          "weight": 2754256
+        },
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 125,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 17,
+          "weight": 2229016
+        },
+        {
+          "stackFrames": 129,
+          "constructorExistsFrames": 127,
+          "oldestNonRootFrame": "$jd$constructor_95_exists",
+          "rootFrame": "(root)",
+          "samples": 6,
+          "weight": 786704
+        }
+      ],
+      "weightUnit": "sampled-allocation-bytes"
+    }
+  ],
+  "sourceFindings": [
+    {
+      "file": "src/check/prefix-state.bend",
+      "line": 135,
+      "finding": "Each suffix definition and its nested definitions queries constructor_exists against the same context argument."
+    },
+    {
+      "file": "src/check/prefix-state.bend",
+      "line": 343,
+      "finding": "Prepared world admission calls base_prefix_ctor_disjoint(suffix,final)."
+    },
+    {
+      "file": "src/check/prefix-state.bend",
+      "line": 429,
+      "finding": "Backend book context construction repeats prepared world admission."
+    },
+    {
+      "file": "src/check/kernel.bend",
+      "line": 981,
+      "finding": "constructor_exists recursively scans definitions and performs lookup over each definition constructor list."
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+      "line": 7315,
+      "finding": "Selected B2 computes recursive constructor_exists into $ord1 before Bool.or: strict recursive evaluation, not a JavaScript short-circuit exit."
+    }
+  ],
+  "scope": "Observed captured-depth census only. A 129-frame stack whose oldest non-root frame is still recursive constructor_exists is consistent with profiler depth truncation; no unseen caller is assigned. Counts are samples, not function invocations. No summation with inclusive ancestor unions and no direct speed-gain claim."
+}

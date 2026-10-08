@@ -1,0 +1,133 @@
+{
+  "kind": "phase65-checked-build-method-derivation",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "factoryInvoked": false,
+  "baselineHead": "49431ba",
+  "baselineAttempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/attempt.json",
+    "sha256": "a2038c2223a20aa7b03130bc70727671dff5482f11f9fb0613069ccfa530868b"
+  },
+  "baselineBootstrap": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/api.mjs.bootstrap.json",
+    "sha256": "66c001f3149e3e29300d3c24d88299dadffcb3fc7eecc645986c2667d6a6eea9"
+  },
+  "baselineRoots": 95,
+  "baselineStrictSelection": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/tests/frontend/phase2-rules/cases.json",
+    "sha256": "06daedd83a91e0601d2673ec233d6b4f80ce6487340f4d51f1cb9cef532fd9d6"
+  },
+  "baselineStrictCases": 36,
+  "parentDerivation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/build/derivation.json",
+    "sha256": "fe0d599b932cc1e00b5b23e7ba5a502abea4260e826b8162d3ebaa58b7e377e8"
+  },
+  "rows": [
+    {
+      "relative": "make-build.py",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/build/make-build.py",
+        "sha256": "ed87d6a282d7dd417ed742f52ac7cd78d3ce9c0274624401ce9db8bf39f2b945"
+      },
+      "edits": [
+        {
+          "old": "RAW = PROJECT/'build/phase64'",
+          "new": "RAW = PROJECT/'build/phase65'",
+          "count": 1
+        },
+        {
+          "old": "kind='phase64-checked-build-recipe'",
+          "new": "kind='phase65-checked-build-recipe'",
+          "count": 1
+        }
+      ],
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/build/make-build.py",
+        "sha256": "cd3c43dbc0c656d739e0cc1d4e2b2d9838d78389ef9c7ea8bab1ea7ef8e4e927"
+      }
+    },
+    {
+      "relative": "export-admission.py",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/build/export-admission.py",
+        "sha256": "ea372cd61a9252dad7397cca1059ee514a70ec678195c04ede9be3018cc47202"
+      },
+      "edits": [
+        {
+          "old": "RAW = ROOT/'selfhost/build/phase64'",
+          "new": "RAW = ROOT/'selfhost/build/phase65'",
+          "count": 1
+        },
+        {
+          "old": "OLD_ATTEMPT = PROJECT/'build/phase63/checked-state09/attempt.json'",
+          "new": "OLD_ATTEMPT = PROJECT/'build/phase64/checked-state09/attempt.json'",
+          "count": 1
+        },
+        {
+          "old": "    'jd_plan_selected','jd_plan_defs','jd_plan_error','jd_plan_library']",
+          "new": "    'jd_plan_selected','jd_plan_defs','jd_plan_error','jd_plan_library','book_context_world']",
+          "count": 1
+        },
+        {
+          "old": "phase64Added",
+          "new": "phase65Added",
+          "count": 5
+        },
+        {
+          "old": "==94",
+          "new": "==95",
+          "count": 3
+        },
+        {
+          "old": "expectedRoots=94+",
+          "new": "expectedRoots=95+",
+          "count": 1
+        },
+        {
+          "old": "baseline94",
+          "new": "baseline95",
+          "count": 1
+        },
+        {
+          "old": "tofile='Phase64 exports'",
+          "new": "tofile='Phase65 exports'",
+          "count": 1
+        }
+      ],
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/build/export-admission.py",
+        "sha256": "f0386c90c12ab64c405f01d458606da341367b79fb819872137daa4d3d0c70f8"
+      }
+    },
+    {
+      "relative": "validate-exports.mjs",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/build/validate-exports.mjs",
+        "sha256": "97e5c6e34f52c75cd9c851d86511573265e6c0a8dc16ee39fb6b33b2dffb5413"
+      },
+      "edits": [
+        {
+          "old": "kind:'phase64-checked-export-validation'",
+          "new": "kind:'phase65-checked-export-validation'",
+          "count": 1
+        },
+        {
+          "old": "phase64AddedRoots",
+          "new": "phase65AddedRoots",
+          "count": 2
+        },
+        {
+          "old": ",94",
+          "new": ",95",
+          "count": 3
+        }
+      ],
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/build/validate-exports.mjs",
+        "sha256": "4909ee66e50f50e6162db0d6c00f1ca8853ed06e86ace73679592d20f02d3cf4"
+      }
+    }
+  ],
+  "scope": "Phase65 writable boundary and baseline lineage successor only. Preserve Phase64 State09 95 exports including book_context_world and exact original order; supplementary roots require explicit source-backed root admission. Keep strict-exact equality build and default36 selection unchanged. No current source input, candidate API or helper frozen until root explicitly invokes the factories."
+}

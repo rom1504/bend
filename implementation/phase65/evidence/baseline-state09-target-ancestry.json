@@ -1,0 +1,2336 @@
+{
+  "kind": "phase65-target-function-ancestry",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/analysis/target-ancestry.py",
+    "sha256": "d53d33bbd8647b1b67994da43e0182dce279bc720685f969fa2cc1cb25bd2961"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase65/evidence/baseline-state09-cpu.json",
+      "sha256": "dd919e86cbc05a8ccad116de0a4812f123a73466bcec703e42c22b8836a34cc6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase65/evidence/baseline-state09-allocation.json",
+      "sha256": "63dc783924ce730944e319cb73858a5d3093c3d85e77fb4deaa15fb967a41983"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase62/analysis/profiles-v2.py",
+      "sha256": "4fb715bddc5262f6c7b53d869840f46d225cd3eed2b9ae3b53cdb0ee00bb3679"
+    }
+  ],
+  "rows": [
+    {
+      "mode": "cpu",
+      "case": "numeric-recurrence",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/numeric-recurrence-0-baseline.result.json",
+        "sha256": "5a54982e4cd1e36005c56b28a7cf8ff25d1a241095658a79d3354c893b6a2030"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/numeric-recurrence-0-baseline-profile/profile.cpuprofile",
+        "sha256": "0e787e4e0a61a13db587b2f0e75f41dadd0fc9d11bca1c1ad8a106c1b0c4e109",
+        "bytes": 859523
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+      },
+      "sampleEvents": 259,
+      "absentTreeSamples": 0,
+      "weightUnit": "microseconds",
+      "targets": [
+        {
+          "name": "subst_node",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "subst_terms",
+          "inclusiveSamples": 1,
+          "selfSamples": 0,
+          "inclusivePercent": 0.3861003861003861,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "subst",
+              "samples": 1,
+              "weight": 1275
+            }
+          ],
+          "inclusiveWeight": 1275,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.33704657322766374
+        },
+        {
+          "name": "core_apply_span",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "core_beta",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_calls_named",
+          "inclusiveSamples": 1,
+          "selfSamples": 0,
+          "inclusivePercent": 0.3861003861003861,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_body",
+              "samples": 1,
+              "weight": 1077
+            }
+          ],
+          "inclusiveWeight": 1077,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.2847052230323089
+        },
+        {
+          "name": "jd_arity",
+          "inclusiveSamples": 4,
+          "selfSamples": 0,
+          "inclusivePercent": 1.5444015444015444,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_emitted_arity_on",
+              "samples": 2,
+              "weight": 1588
+            },
+            {
+              "name": "jd_calls_rows",
+              "samples": 1,
+              "weight": 204
+            },
+            {
+              "name": "jd_calls_named",
+              "samples": 1,
+              "weight": 1077
+            }
+          ],
+          "inclusiveWeight": 2869,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.7584208773256214
+        },
+        {
+          "name": "jd_live_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_raw_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_calls_row_arity",
+          "inclusiveSamples": 4,
+          "selfSamples": 0,
+          "inclusivePercent": 1.5444015444015444,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_rows",
+              "samples": 4,
+              "weight": 4299
+            }
+          ],
+          "inclusiveWeight": 4299,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 1.1364417398476285
+        },
+        {
+          "name": "jd_text_scan",
+          "inclusiveSamples": 4,
+          "selfSamples": 3,
+          "inclusivePercent": 1.5444015444015444,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_text_raw",
+              "samples": 4,
+              "weight": 5184
+            }
+          ],
+          "inclusiveWeight": 5184,
+          "selfWeight": 3595,
+          "inclusiveWeightPercent": 1.3703917142056539
+        },
+        {
+          "name": "jd_text_marker",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_ordered_bindings",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "String.contains",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        }
+      ],
+      "sharedWorkerAncestorUnions": [
+        {
+          "functionName": "$jd$jd_95_ordered_95_args$scc",
+          "samples": 5,
+          "weight": 4214
+        },
+        {
+          "functionName": "$jd$jd_95_ordered_95_expr$scc",
+          "samples": 5,
+          "weight": 4214
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_body$scc",
+          "samples": 3,
+          "weight": 3259
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_word_95_rows$scc",
+          "samples": 2,
+          "weight": 2182
+        },
+        {
+          "functionName": "$jd$subst$scc",
+          "samples": 1,
+          "weight": 1275
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_finish$scc",
+          "samples": 1,
+          "weight": 1043
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_groups$scc",
+          "samples": 1,
+          "weight": 1048
+        },
+        {
+          "functionName": "$jd$jd_95_text_95_scan$scc",
+          "samples": 1,
+          "weight": 1589
+        }
+      ],
+      "totalWeight": 378286,
+      "weightedStatus": "admitted"
+    },
+    {
+      "mode": "cpu",
+      "case": "lexer",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/lexer-0-baseline.result.json",
+        "sha256": "ba5462fc3b57c5d6293af2b258c7e593aaffdbddc13d9f90cdbf2d8e8483642d"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/lexer-0-baseline-profile/profile.cpuprofile",
+        "sha256": "7bccb8281041a530c81ac85f293013c1d1f3c7cb5e98362a9897bcb5ac2ee507",
+        "bytes": 1800415
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+      },
+      "sampleEvents": 493,
+      "absentTreeSamples": 0,
+      "weightUnit": "microseconds",
+      "targets": [
+        {
+          "name": "subst_node",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "subst_terms",
+          "inclusiveSamples": 5,
+          "selfSamples": 2,
+          "inclusivePercent": 1.0141987829614605,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "subst",
+              "samples": 5,
+              "weight": 6021
+            }
+          ],
+          "inclusiveWeight": 6021,
+          "selfWeight": 1766,
+          "inclusiveWeightPercent": 0.7935608357101058
+        },
+        {
+          "name": "core_apply_span",
+          "inclusiveSamples": 3,
+          "selfSamples": 0,
+          "inclusivePercent": 0.6085192697768763,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "core_beta",
+              "samples": 1,
+              "weight": 1055
+            },
+            {
+              "name": "check",
+              "samples": 1,
+              "weight": 1094
+            },
+            {
+              "name": "infer",
+              "samples": 1,
+              "weight": 1038
+            }
+          ],
+          "inclusiveWeight": 3187,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.42004291370338936
+        },
+        {
+          "name": "core_beta",
+          "inclusiveSamples": 2,
+          "selfSamples": 1,
+          "inclusivePercent": 0.4056795131845842,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "check",
+              "samples": 1,
+              "weight": 1055
+            },
+            {
+              "name": "annotate",
+              "samples": 1,
+              "weight": 2673
+            }
+          ],
+          "inclusiveWeight": 3728,
+          "selfWeight": 2673,
+          "inclusiveWeightPercent": 0.4913460879467322
+        },
+        {
+          "name": "jd_calls_named",
+          "inclusiveSamples": 5,
+          "selfSamples": 0,
+          "inclusivePercent": 1.0141987829614605,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_body",
+              "samples": 5,
+              "weight": 16579
+            }
+          ],
+          "inclusiveWeight": 16579,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 2.1850930236236246
+        },
+        {
+          "name": "jd_arity",
+          "inclusiveSamples": 11,
+          "selfSamples": 0,
+          "inclusivePercent": 2.231237322515213,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_rows",
+              "samples": 6,
+              "weight": 4508
+            },
+            {
+              "name": "jd_calls_named",
+              "samples": 5,
+              "weight": 16579
+            }
+          ],
+          "inclusiveWeight": 21087,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 2.7792422093703704
+        },
+        {
+          "name": "jd_live_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_raw_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_calls_row_arity",
+          "inclusiveSamples": 15,
+          "selfSamples": 0,
+          "inclusivePercent": 3.0425963488843815,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_rows",
+              "samples": 15,
+              "weight": 26886
+            }
+          ],
+          "inclusiveWeight": 26886,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 3.5435437018604725
+        },
+        {
+          "name": "jd_text_scan",
+          "inclusiveSamples": 10,
+          "selfSamples": 5,
+          "inclusivePercent": 2.028397565922921,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_text_raw",
+              "samples": 10,
+              "weight": 33426
+            }
+          ],
+          "inclusiveWeight": 33426,
+          "selfWeight": 16166,
+          "inclusiveWeightPercent": 4.405508137260587
+        },
+        {
+          "name": "jd_text_marker",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_ordered_bindings",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "String.contains",
+          "inclusiveSamples": 2,
+          "selfSamples": 1,
+          "inclusivePercent": 0.4056795131845842,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "f_implicit_operator",
+              "samples": 1,
+              "weight": 1070
+            },
+            {
+              "name": "f_context_name_resolved",
+              "samples": 1,
+              "weight": 1035
+            }
+          ],
+          "inclusiveWeight": 2105,
+          "selfWeight": 1035,
+          "inclusiveWeightPercent": 0.2774365652167037
+        }
+      ],
+      "sharedWorkerAncestorUnions": [
+        {
+          "functionName": "$jd$jd_95_ordered_95_expr$scc",
+          "samples": 15,
+          "weight": 29854
+        },
+        {
+          "functionName": "$jd$subst$scc",
+          "samples": 10,
+          "weight": 10862
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_body$scc",
+          "samples": 9,
+          "weight": 20116
+        },
+        {
+          "functionName": "$jd$jd_95_ordered_95_args$scc",
+          "samples": 8,
+          "weight": 15809
+        },
+        {
+          "functionName": "$jd$jd_95_text_95_scan$scc",
+          "samples": 5,
+          "weight": 17260
+        },
+        {
+          "functionName": "$jd$String_46_contains_46_if$scc",
+          "samples": 1,
+          "weight": 1070
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_word_95_rows$scc",
+          "samples": 1,
+          "weight": 1074
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_groups$scc",
+          "samples": 1,
+          "weight": 1112
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_install$scc",
+          "samples": 1,
+          "weight": 1020
+        }
+      ],
+      "totalWeight": 758732,
+      "weightedStatus": "admitted"
+    },
+    {
+      "mode": "cpu",
+      "case": "test-map-set-ops",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/test-map-set-ops-0-baseline.result.json",
+        "sha256": "9e737f09fae048834f72be61d1eb12ceb4848e2b8daa032b360c286eba8b3a43"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/test-map-set-ops-0-baseline-profile/profile.cpuprofile",
+        "sha256": "38f9af23131a7ed1ce46d08b7afe99899700383c4c662627838a01e764ac286a",
+        "bytes": 3437677
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+      },
+      "sampleEvents": 800,
+      "absentTreeSamples": 0,
+      "weightUnit": "microseconds",
+      "targets": [
+        {
+          "name": "subst_node",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "subst_terms",
+          "inclusiveSamples": 41,
+          "selfSamples": 9,
+          "inclusivePercent": 5.125,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "subst",
+              "samples": 39,
+              "weight": 61981
+            },
+            {
+              "name": "j_app_type",
+              "samples": 2,
+              "weight": 1989
+            }
+          ],
+          "inclusiveWeight": 63970,
+          "selfWeight": 10282,
+          "inclusiveWeightPercent": 5.273949394159494
+        },
+        {
+          "name": "core_apply_span",
+          "inclusiveSamples": 1,
+          "selfSamples": 0,
+          "inclusivePercent": 0.125,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "infer",
+              "samples": 1,
+              "weight": 1066
+            }
+          ],
+          "inclusiveWeight": 1066,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.08788541588516526
+        },
+        {
+          "name": "core_beta",
+          "inclusiveSamples": 3,
+          "selfSamples": 1,
+          "inclusivePercent": 0.375,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "infer",
+              "samples": 1,
+              "weight": 297
+            },
+            {
+              "name": "check",
+              "samples": 1,
+              "weight": 1050
+            },
+            {
+              "name": "annotate",
+              "samples": 1,
+              "weight": 1057
+            }
+          ],
+          "inclusiveWeight": 2404,
+          "selfWeight": 1050,
+          "inclusiveWeightPercent": 0.1981956283188905
+        },
+        {
+          "name": "jd_calls_named",
+          "inclusiveSamples": 17,
+          "selfSamples": 0,
+          "inclusivePercent": 2.125,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_body",
+              "samples": 17,
+              "weight": 27583
+            }
+          ],
+          "inclusiveWeight": 27583,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 2.2740557470548906
+        },
+        {
+          "name": "jd_arity",
+          "inclusiveSamples": 16,
+          "selfSamples": 0,
+          "inclusivePercent": 2.0,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_named",
+              "samples": 8,
+              "weight": 17088
+            },
+            {
+              "name": "jd_calls_rows",
+              "samples": 4,
+              "weight": 16914
+            },
+            {
+              "name": "jd_emitted_arity_on",
+              "samples": 4,
+              "weight": 6839
+            }
+          ],
+          "inclusiveWeight": 40841,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 3.367099690587274
+        },
+        {
+          "name": "jd_live_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_raw_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_calls_row_arity",
+          "inclusiveSamples": 49,
+          "selfSamples": 1,
+          "inclusivePercent": 6.125,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_rows",
+              "samples": 49,
+              "weight": 85967
+            }
+          ],
+          "inclusiveWeight": 85967,
+          "selfWeight": 304,
+          "inclusiveWeightPercent": 7.087472370919326
+        },
+        {
+          "name": "jd_text_scan",
+          "inclusiveSamples": 11,
+          "selfSamples": 3,
+          "inclusivePercent": 1.375,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_text_raw",
+              "samples": 11,
+              "weight": 32281
+            }
+          ],
+          "inclusiveWeight": 32281,
+          "selfWeight": 15458,
+          "inclusiveWeightPercent": 2.661378152147298
+        },
+        {
+          "name": "jd_text_marker",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_ordered_bindings",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "String.contains",
+          "inclusiveSamples": 2,
+          "selfSamples": 2,
+          "inclusivePercent": 0.25,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_native_layout_name",
+              "samples": 2,
+              "weight": 9132
+            }
+          ],
+          "inclusiveWeight": 9132,
+          "selfWeight": 9132,
+          "inclusiveWeightPercent": 0.7528795664759185
+        }
+      ],
+      "sharedWorkerAncestorUnions": [
+        {
+          "functionName": "$jd$jd_95_ordered_95_expr$scc",
+          "samples": 56,
+          "weight": 74037
+        },
+        {
+          "functionName": "$jd$subst$scc",
+          "samples": 46,
+          "weight": 67188
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_body$scc",
+          "samples": 41,
+          "weight": 65278
+        },
+        {
+          "functionName": "$jd$jd_95_ordered_95_args$scc",
+          "samples": 31,
+          "weight": 35758
+        },
+        {
+          "functionName": "$jd$jd_95_text_95_scan$scc",
+          "samples": 14,
+          "weight": 23203
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_saturated$scc",
+          "samples": 8,
+          "weight": 9239
+        },
+        {
+          "functionName": "$jd$env_95_subst_95_binding$scc",
+          "samples": 3,
+          "weight": 12969
+        },
+        {
+          "functionName": "$jd$String_46_contains_46_if$scc",
+          "samples": 2,
+          "weight": 1544
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_word_95_rows$scc",
+          "samples": 2,
+          "weight": 3660
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_reverse$scc",
+          "samples": 2,
+          "weight": 1033
+        }
+      ],
+      "totalWeight": 1212943,
+      "weightedStatus": "admitted"
+    },
+    {
+      "mode": "cpu",
+      "case": "raytrace-active",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/raytrace-active-0-baseline.result.json",
+        "sha256": "cdb9451c8acb79c1890983fd049a175e58e8fc766e5af8128feba61f5a1aca6d"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/raytrace-active-0-baseline-profile/profile.cpuprofile",
+        "sha256": "831c8dd7bebee4071a7dfdbcd2d7637c5e0ceaf00ddcbed3a68b501f0899926a",
+        "bytes": 3261477
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+      },
+      "sampleEvents": 673,
+      "absentTreeSamples": 0,
+      "weightUnit": "microseconds",
+      "targets": [
+        {
+          "name": "subst_node",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "subst_terms",
+          "inclusiveSamples": 13,
+          "selfSamples": 3,
+          "inclusivePercent": 1.9316493313521546,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "subst",
+              "samples": 13,
+              "weight": 15566
+            }
+          ],
+          "inclusiveWeight": 15566,
+          "selfWeight": 2788,
+          "inclusiveWeightPercent": 1.4858199929937563
+        },
+        {
+          "name": "core_apply_span",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "core_beta",
+          "inclusiveSamples": 3,
+          "selfSamples": 3,
+          "inclusivePercent": 0.4457652303120357,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "check",
+              "samples": 1,
+              "weight": 1059
+            },
+            {
+              "name": "infer",
+              "samples": 1,
+              "weight": 2654
+            },
+            {
+              "name": "ka_app_spine_root",
+              "samples": 1,
+              "weight": 1915
+            }
+          ],
+          "inclusiveWeight": 5628,
+          "selfWeight": 5628,
+          "inclusiveWeightPercent": 0.5372089760098202
+        },
+        {
+          "name": "jd_calls_named",
+          "inclusiveSamples": 6,
+          "selfSamples": 0,
+          "inclusivePercent": 0.8915304606240714,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_body",
+              "samples": 6,
+              "weight": 4347
+            }
+          ],
+          "inclusiveWeight": 4347,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.4149337986344507
+        },
+        {
+          "name": "jd_arity",
+          "inclusiveSamples": 8,
+          "selfSamples": 0,
+          "inclusivePercent": 1.188707280832095,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_named",
+              "samples": 4,
+              "weight": 2959
+            },
+            {
+              "name": "jd_calls_rows",
+              "samples": 2,
+              "weight": 2177
+            },
+            {
+              "name": "jd_emitted_arity_on",
+              "samples": 2,
+              "weight": 2336
+            }
+          ],
+          "inclusiveWeight": 7472,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.7132241415681195
+        },
+        {
+          "name": "jd_live_arity",
+          "inclusiveSamples": 3,
+          "selfSamples": 0,
+          "inclusivePercent": 0.4457652303120357,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_live_arity_head",
+              "samples": 2,
+              "weight": 2683
+            },
+            {
+              "name": "jd_host_export",
+              "samples": 1,
+              "weight": 1029
+            }
+          ],
+          "inclusiveWeight": 3712,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.35432120095032915
+        },
+        {
+          "name": "rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_raw_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_calls_row_arity",
+          "inclusiveSamples": 14,
+          "selfSamples": 1,
+          "inclusivePercent": 2.0802377414561666,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_rows",
+              "samples": 14,
+              "weight": 14317
+            }
+          ],
+          "inclusiveWeight": 14317,
+          "selfWeight": 362,
+          "inclusiveWeightPercent": 1.3665993087300277
+        },
+        {
+          "name": "jd_text_scan",
+          "inclusiveSamples": 10,
+          "selfSamples": 1,
+          "inclusivePercent": 1.485884101040119,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_text_raw",
+              "samples": 10,
+              "weight": 31181
+            }
+          ],
+          "inclusiveWeight": 31181,
+          "selfWeight": 11239,
+          "inclusiveWeightPercent": 2.9763171785647127
+        },
+        {
+          "name": "jd_text_marker",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_ordered_bindings",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "String.contains",
+          "inclusiveSamples": 2,
+          "selfSamples": 1,
+          "inclusivePercent": 0.2971768202080238,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "f_context_name_resolved",
+              "samples": 1,
+              "weight": 1086
+            },
+            {
+              "name": "base_prefix_names",
+              "samples": 1,
+              "weight": 7657
+            }
+          ],
+          "inclusiveWeight": 8743,
+          "selfWeight": 7657,
+          "inclusiveWeightPercent": 0.8345447898461013
+        }
+      ],
+      "sharedWorkerAncestorUnions": [
+        {
+          "functionName": "$jd$jd_95_ordered_95_expr$scc",
+          "samples": 35,
+          "weight": 57892
+        },
+        {
+          "functionName": "$jd$jd_95_ordered_95_args$scc",
+          "samples": 24,
+          "weight": 34471
+        },
+        {
+          "functionName": "$jd$subst$scc",
+          "samples": 19,
+          "weight": 20399
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_body$scc",
+          "samples": 12,
+          "weight": 12873
+        },
+        {
+          "functionName": "$jd$jd_95_text_95_scan$scc",
+          "samples": 11,
+          "weight": 21929
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_word_95_rows$scc",
+          "samples": 7,
+          "weight": 8282
+        },
+        {
+          "functionName": "$jd$String_46_contains_46_if$scc",
+          "samples": 4,
+          "weight": 8481
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_saturated$scc",
+          "samples": 2,
+          "weight": 1388
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_reverse$scc",
+          "samples": 1,
+          "weight": 894
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_finish$scc",
+          "samples": 1,
+          "weight": 1172
+        }
+      ],
+      "totalWeight": 1047637,
+      "weightedStatus": "admitted"
+    },
+    {
+      "mode": "allocation",
+      "case": "numeric-recurrence",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/numeric-recurrence-0-baseline.result.json",
+        "sha256": "e848cb872b519ea40f68762f0bfb4a3dfe73887b95547ba7cb0cd565c7fe5e4a"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/numeric-recurrence-0-baseline-profile/profile.heapprofile",
+        "sha256": "20c0aa0c93510ea4df522e30ed823cabbb24516e3fc60c515bd796b0339b1537"
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+      },
+      "sampleEvents": 147,
+      "absentTreeSamples": 0,
+      "weightUnit": "sampled-allocation-bytes",
+      "targets": [
+        {
+          "name": "subst_node",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "subst_terms",
+          "inclusiveSamples": 3,
+          "selfSamples": 1,
+          "inclusivePercent": 2.0408163265306123,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "subst",
+              "samples": 3,
+              "weight": 393360
+            }
+          ],
+          "inclusiveWeight": 393360,
+          "selfWeight": 131104,
+          "inclusiveWeightPercent": 1.796904806802584
+        },
+        {
+          "name": "core_apply_span",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "core_beta",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_calls_named",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_arity",
+          "inclusiveSamples": 1,
+          "selfSamples": 0,
+          "inclusivePercent": 0.6802721088435374,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_emitted_arity_on",
+              "samples": 1,
+              "weight": 131088
+            }
+          ],
+          "inclusiveWeight": 131088,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.5988220899789941
+        },
+        {
+          "name": "jd_live_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_raw_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_calls_row_arity",
+          "inclusiveSamples": 1,
+          "selfSamples": 0,
+          "inclusivePercent": 0.6802721088435374,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_rows",
+              "samples": 1,
+              "weight": 131136
+            }
+          ],
+          "inclusiveWeight": 131136,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.5990413584117948
+        },
+        {
+          "name": "jd_text_scan",
+          "inclusiveSamples": 1,
+          "selfSamples": 0,
+          "inclusivePercent": 0.6802721088435374,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_text_raw",
+              "samples": 1,
+              "weight": 131088
+            }
+          ],
+          "inclusiveWeight": 131088,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.5988220899789941
+        },
+        {
+          "name": "jd_text_marker",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_ordered_bindings",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "String.contains",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        }
+      ],
+      "sharedWorkerAncestorUnions": [
+        {
+          "functionName": "$jd$subst$scc",
+          "samples": 3,
+          "weight": 393360
+        },
+        {
+          "functionName": "$jd$jd_95_ordered_95_expr$scc",
+          "samples": 3,
+          "weight": 393432
+        },
+        {
+          "functionName": "$jd$jd_95_ordered_95_args$scc",
+          "samples": 2,
+          "weight": 262224
+        },
+        {
+          "functionName": "$jd$jd_95_text_95_scan$scc",
+          "samples": 1,
+          "weight": 131088
+        }
+      ],
+      "totalWeight": 21890976,
+      "treeSelfBytes": 21933096,
+      "accountingMismatchNodes": 7
+    },
+    {
+      "mode": "allocation",
+      "case": "lexer",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/lexer-0-baseline.result.json",
+        "sha256": "46c79709c672bce24f879f72d0caa119a664236ad39914741bdef8716c0c5855"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/lexer-0-baseline-profile/profile.heapprofile",
+        "sha256": "555d772e86ca0f2f8f156be739c73021c8e2e4ac18bc646729fd40c678fea276"
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+      },
+      "sampleEvents": 510,
+      "absentTreeSamples": 0,
+      "weightUnit": "sampled-allocation-bytes",
+      "targets": [
+        {
+          "name": "subst_node",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "subst_terms",
+          "inclusiveSamples": 13,
+          "selfSamples": 3,
+          "inclusivePercent": 2.549019607843137,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "subst",
+              "samples": 12,
+              "weight": 1573728
+            },
+            {
+              "name": "j_app_type",
+              "samples": 1,
+              "weight": 131104
+            }
+          ],
+          "inclusiveWeight": 1704832,
+          "selfWeight": 393296,
+          "inclusiveWeightPercent": 2.455945079137916
+        },
+        {
+          "name": "core_apply_span",
+          "inclusiveSamples": 1,
+          "selfSamples": 0,
+          "inclusivePercent": 0.19607843137254902,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "core_beta",
+              "samples": 1,
+              "weight": 131104
+            }
+          ],
+          "inclusiveWeight": 131104,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.18886566163428264
+        },
+        {
+          "name": "core_beta",
+          "inclusiveSamples": 1,
+          "selfSamples": 0,
+          "inclusivePercent": 0.19607843137254902,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "annotate",
+              "samples": 1,
+              "weight": 131104
+            }
+          ],
+          "inclusiveWeight": 131104,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.18886566163428264
+        },
+        {
+          "name": "jd_calls_named",
+          "inclusiveSamples": 1,
+          "selfSamples": 0,
+          "inclusivePercent": 0.19607843137254902,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_body",
+              "samples": 1,
+              "weight": 131088
+            }
+          ],
+          "inclusiveWeight": 131088,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.18884261237120792
+        },
+        {
+          "name": "jd_arity",
+          "inclusiveSamples": 1,
+          "selfSamples": 0,
+          "inclusivePercent": 0.19607843137254902,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_named",
+              "samples": 1,
+              "weight": 131088
+            }
+          ],
+          "inclusiveWeight": 131088,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.18884261237120792
+        },
+        {
+          "name": "jd_live_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_raw_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_calls_row_arity",
+          "inclusiveSamples": 2,
+          "selfSamples": 0,
+          "inclusivePercent": 0.39215686274509803,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_rows",
+              "samples": 2,
+              "weight": 262184
+            }
+          ],
+          "inclusiveWeight": 262184,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.3776967493739532
+        },
+        {
+          "name": "jd_text_scan",
+          "inclusiveSamples": 8,
+          "selfSamples": 0,
+          "inclusivePercent": 1.5686274509803921,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_text_raw",
+              "samples": 8,
+              "weight": 1058184
+            }
+          ],
+          "inclusiveWeight": 1058184,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 1.5243975873414368
+        },
+        {
+          "name": "jd_text_marker",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_ordered_bindings",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "String.contains",
+          "inclusiveSamples": 4,
+          "selfSamples": 0,
+          "inclusivePercent": 0.7843137254901961,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_is_view",
+              "samples": 2,
+              "weight": 262184
+            },
+            {
+              "name": "j_layout_array_name",
+              "samples": 1,
+              "weight": 131088
+            },
+            {
+              "name": "f_context_name_resolved",
+              "samples": 1,
+              "weight": 131088
+            }
+          ],
+          "inclusiveWeight": 524360,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.7553819741163691
+        }
+      ],
+      "sharedWorkerAncestorUnions": [
+        {
+          "functionName": "$jd$subst$scc",
+          "samples": 21,
+          "weight": 2754000
+        },
+        {
+          "functionName": "$jd$jd_95_ordered_95_expr$scc",
+          "samples": 16,
+          "weight": 2101016
+        },
+        {
+          "functionName": "$jd$jd_95_text_95_scan$scc",
+          "samples": 8,
+          "weight": 1058184
+        },
+        {
+          "functionName": "$jd$jd_95_ordered_95_args$scc",
+          "samples": 7,
+          "weight": 917832
+        },
+        {
+          "functionName": "$jd$String_46_contains_46_if$scc",
+          "samples": 5,
+          "weight": 655448
+        },
+        {
+          "functionName": "$jd$jd_95_text_95_refs_95_work$scc",
+          "samples": 4,
+          "weight": 524400
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_body$scc",
+          "samples": 2,
+          "weight": 262184
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_groups$scc",
+          "samples": 1,
+          "weight": 131104
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_install$scc",
+          "samples": 1,
+          "weight": 131160
+        },
+        {
+          "functionName": "$jd$jd_95_text_95_prefix$scc",
+          "samples": 1,
+          "weight": 131104
+        }
+      ],
+      "totalWeight": 69416536,
+      "treeSelfBytes": 69601472,
+      "accountingMismatchNodes": 14
+    },
+    {
+      "mode": "allocation",
+      "case": "test-map-set-ops",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/test-map-set-ops-0-baseline.result.json",
+        "sha256": "8f3418897bf2deac79e1ad72cb80b3fcc470f9e7fe621948c9e18e08e075d015"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/test-map-set-ops-0-baseline-profile/profile.heapprofile",
+        "sha256": "7778410f72320aac8c5b208c2d610d323f4d7f5291be807da8db9068d44a0b69"
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+      },
+      "sampleEvents": 1145,
+      "absentTreeSamples": 0,
+      "weightUnit": "sampled-allocation-bytes",
+      "targets": [
+        {
+          "name": "subst_node",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "subst_terms",
+          "inclusiveSamples": 214,
+          "selfSamples": 73,
+          "inclusivePercent": 18.689956331877728,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "j_app_type",
+              "samples": 64,
+              "weight": 8393776
+            },
+            {
+              "name": "j_specialize",
+              "samples": 61,
+              "weight": 7999920
+            },
+            {
+              "name": "subst",
+              "samples": 60,
+              "weight": 7869568
+            },
+            {
+              "name": "env_tele_fill_eager",
+              "samples": 13,
+              "weight": 1705648
+            },
+            {
+              "name": "jd_calls_saturated",
+              "samples": 8,
+              "weight": 1049104
+            }
+          ],
+          "inclusiveWeight": 28067568,
+          "selfWeight": 9569872,
+          "inclusiveWeightPercent": 18.356223899465046
+        },
+        {
+          "name": "core_apply_span",
+          "inclusiveSamples": 7,
+          "selfSamples": 0,
+          "inclusivePercent": 0.611353711790393,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "core_beta",
+              "samples": 3,
+              "weight": 393376
+            },
+            {
+              "name": "annotate",
+              "samples": 2,
+              "weight": 262656
+            },
+            {
+              "name": "ka_app_spine_root",
+              "samples": 1,
+              "weight": 131328
+            },
+            {
+              "name": "infer",
+              "samples": 1,
+              "weight": 131136
+            }
+          ],
+          "inclusiveWeight": 918496,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.6006975106201952
+        },
+        {
+          "name": "core_beta",
+          "inclusiveSamples": 3,
+          "selfSamples": 0,
+          "inclusivePercent": 0.26200873362445415,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "infer",
+              "samples": 3,
+              "weight": 393376
+            }
+          ],
+          "inclusiveWeight": 393376,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.2572683865120043
+        },
+        {
+          "name": "jd_calls_named",
+          "inclusiveSamples": 25,
+          "selfSamples": 0,
+          "inclusivePercent": 2.183406113537118,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_body",
+              "samples": 25,
+              "weight": 3278640
+            }
+          ],
+          "inclusiveWeight": 3278640,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 2.1442345815548425
+        },
+        {
+          "name": "jd_arity",
+          "inclusiveSamples": 13,
+          "selfSamples": 0,
+          "inclusivePercent": 1.1353711790393013,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_named",
+              "samples": 10,
+              "weight": 1311312
+            },
+            {
+              "name": "jd_calls_rows",
+              "samples": 3,
+              "weight": 393344
+            }
+          ],
+          "inclusiveWeight": 1704656,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 1.114847114918061
+        },
+        {
+          "name": "jd_live_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_raw_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_calls_row_arity",
+          "inclusiveSamples": 70,
+          "selfSamples": 0,
+          "inclusivePercent": 6.11353711790393,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_rows",
+              "samples": 70,
+              "weight": 9180872
+            }
+          ],
+          "inclusiveWeight": 9180872,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 6.004301549187642
+        },
+        {
+          "name": "jd_text_scan",
+          "inclusiveSamples": 5,
+          "selfSamples": 0,
+          "inclusivePercent": 0.4366812227074236,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_text_raw",
+              "samples": 5,
+              "weight": 655504
+            }
+          ],
+          "inclusiveWeight": 655504,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.4287004200362118
+        },
+        {
+          "name": "jd_text_marker",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_ordered_bindings",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "String.contains",
+          "inclusiveSamples": 16,
+          "selfSamples": 0,
+          "inclusivePercent": 1.3973799126637554,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_is_view",
+              "samples": 9,
+              "weight": 1179920
+            },
+            {
+              "name": "jd_native_layout_name",
+              "samples": 4,
+              "weight": 524352
+            },
+            {
+              "name": "base_prefix_names",
+              "samples": 2,
+              "weight": 262176
+            },
+            {
+              "name": "j_layout_array_name",
+              "samples": 1,
+              "weight": 131088
+            }
+          ],
+          "inclusiveWeight": 2097536,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 1.3717911168216754
+        }
+      ],
+      "sharedWorkerAncestorUnions": [
+        {
+          "functionName": "$jd$subst$scc",
+          "samples": 278,
+          "weight": 36463392
+        },
+        {
+          "functionName": "$jd$jd_95_ordered_95_expr$scc",
+          "samples": 130,
+          "weight": 17046528
+        },
+        {
+          "functionName": "$jd$jd_95_ordered_95_args$scc",
+          "samples": 86,
+          "weight": 11277224
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_body$scc",
+          "samples": 66,
+          "weight": 8656328
+        },
+        {
+          "functionName": "$jd$jd_95_text_95_scan$scc",
+          "samples": 33,
+          "weight": 4326400
+        },
+        {
+          "functionName": "$jd$String_46_contains_46_if$scc",
+          "samples": 18,
+          "weight": 2359712
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_saturated$scc",
+          "samples": 15,
+          "weight": 1967328
+        },
+        {
+          "functionName": "$jd$env_95_subst_95_binding$scc",
+          "samples": 10,
+          "weight": 1311120
+        },
+        {
+          "functionName": "$jd$jd_95_text_95_refs_95_work$scc",
+          "samples": 6,
+          "weight": 786808
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_groups$scc",
+          "samples": 5,
+          "weight": 655808
+        }
+      ],
+      "totalWeight": 152904912,
+      "treeSelfBytes": 152900792,
+      "accountingMismatchNodes": 10
+    },
+    {
+      "mode": "allocation",
+      "case": "raytrace-active",
+      "role": "baseline",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/raytrace-active-0-baseline.result.json",
+        "sha256": "bd36787b7eb66482b23964ca1c75dbf3d4fdab1c40c81a1f69c341de331bd2e5"
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/raytrace-active-0-baseline-profile/profile.heapprofile",
+        "sha256": "db1ca8169f4320250faee2938a466a3a99e2e26d214c8b0bc09dfe08f4b8237b"
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+      },
+      "sampleEvents": 755,
+      "absentTreeSamples": 0,
+      "weightUnit": "sampled-allocation-bytes",
+      "targets": [
+        {
+          "name": "subst_node",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "subst_terms",
+          "inclusiveSamples": 67,
+          "selfSamples": 14,
+          "inclusivePercent": 8.874172185430464,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "subst",
+              "samples": 38,
+              "weight": 4983200
+            },
+            {
+              "name": "ka_let_head",
+              "samples": 15,
+              "weight": 1966928
+            },
+            {
+              "name": "j_app_type",
+              "samples": 13,
+              "weight": 1704976
+            },
+            {
+              "name": "infer_app_type",
+              "samples": 1,
+              "weight": 131104
+            }
+          ],
+          "inclusiveWeight": 8786208,
+          "selfWeight": 1835344,
+          "inclusiveWeightPercent": 8.61717352415027
+        },
+        {
+          "name": "core_apply_span",
+          "inclusiveSamples": 6,
+          "selfSamples": 0,
+          "inclusivePercent": 0.7947019867549668,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "core_beta",
+              "samples": 6,
+              "weight": 786640
+            }
+          ],
+          "inclusiveWeight": 786640,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.7715061356432226
+        },
+        {
+          "name": "core_beta",
+          "inclusiveSamples": 6,
+          "selfSamples": 0,
+          "inclusivePercent": 0.7947019867549668,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "check",
+              "samples": 3,
+              "weight": 393328
+            },
+            {
+              "name": "infer",
+              "samples": 2,
+              "weight": 262208
+            },
+            {
+              "name": "annotate",
+              "samples": 1,
+              "weight": 131104
+            }
+          ],
+          "inclusiveWeight": 786640,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.7715061356432226
+        },
+        {
+          "name": "jd_calls_named",
+          "inclusiveSamples": 1,
+          "selfSamples": 0,
+          "inclusivePercent": 0.13245033112582782,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_body",
+              "samples": 1,
+              "weight": 131104
+            }
+          ],
+          "inclusiveWeight": 131104,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.12858174057684463
+        },
+        {
+          "name": "jd_arity",
+          "inclusiveSamples": 2,
+          "selfSamples": 0,
+          "inclusivePercent": 0.26490066225165565,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_emitted_arity_on",
+              "samples": 2,
+              "weight": 262368
+            }
+          ],
+          "inclusiveWeight": 262368,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.2573204029752377
+        },
+        {
+          "name": "jd_live_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_rawarity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_raw_arity",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_calls_row_arity",
+          "inclusiveSamples": 8,
+          "selfSamples": 0,
+          "inclusivePercent": 1.0596026490066226,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_calls_rows",
+              "samples": 8,
+              "weight": 1049144
+            }
+          ],
+          "inclusiveWeight": 1049144,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 1.0289599221667765
+        },
+        {
+          "name": "jd_text_scan",
+          "inclusiveSamples": 8,
+          "selfSamples": 0,
+          "inclusivePercent": 1.0596026490066226,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "jd_text_raw",
+              "samples": 8,
+              "weight": 1048840
+            }
+          ],
+          "inclusiveWeight": 1048840,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 1.0286617707058343
+        },
+        {
+          "name": "jd_text_marker",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "jd_ordered_bindings",
+          "inclusiveSamples": 0,
+          "selfSamples": 0,
+          "inclusivePercent": 0.0,
+          "nearestExactGeneratedAncestors": [],
+          "inclusiveWeight": 0,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.0
+        },
+        {
+          "name": "String.contains",
+          "inclusiveSamples": 4,
+          "selfSamples": 0,
+          "inclusivePercent": 0.5298013245033113,
+          "nearestExactGeneratedAncestors": [
+            {
+              "name": "f_context_name_resolved",
+              "samples": 2,
+              "weight": 262176
+            },
+            {
+              "name": "jd_is_view",
+              "samples": 1,
+              "weight": 131088
+            },
+            {
+              "name": "base_prefix_names",
+              "samples": 1,
+              "weight": 131088
+            }
+          ],
+          "inclusiveWeight": 524352,
+          "selfWeight": 0,
+          "inclusiveWeightPercent": 0.5142641935787591
+        }
+      ],
+      "sharedWorkerAncestorUnions": [
+        {
+          "functionName": "$jd$subst$scc",
+          "samples": 83,
+          "weight": 10884656
+        },
+        {
+          "functionName": "$jd$jd_95_ordered_95_expr$scc",
+          "samples": 37,
+          "weight": 4851392
+        },
+        {
+          "functionName": "$jd$jd_95_ordered_95_args$scc",
+          "samples": 25,
+          "weight": 3278128
+        },
+        {
+          "functionName": "$jd$jd_95_text_95_scan$scc",
+          "samples": 16,
+          "weight": 2097608
+        },
+        {
+          "functionName": "$jd$String_46_contains_46_if$scc",
+          "samples": 7,
+          "weight": 917632
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_body$scc",
+          "samples": 5,
+          "weight": 655688
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_word_95_rows$scc",
+          "samples": 3,
+          "weight": 393488
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_groups$scc",
+          "samples": 2,
+          "weight": 262272
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_install$scc",
+          "samples": 1,
+          "weight": 131160
+        },
+        {
+          "functionName": "$jd$jd_95_calls_95_saturated$scc",
+          "samples": 1,
+          "weight": 131104
+        }
+      ],
+      "totalWeight": 101961600,
+      "treeSelfBytes": 102142592,
+      "accountingMismatchNodes": 16
+    }
+  ],
+  "scope": "Raw profiles remain unchanged. CPU sample counts always retained; weighted view only where prior reviewed accounting admits timeDeltas. Allocation uses samples[].size exclusively and retains tree-self mismatch metadata. Exact API URL plus decoded non-SCC names identify wrappers. Inclusive target unions overlap. Nearest exact generated ancestor skips anonymous/shared-worker/recursive frames and is not an asserted direct caller. String.contains additionally skips every String.* ancestor. Shared SCC labels name dispatchers, never attribute cost to one member; absent exact names mean unobserved names, not zero execution. First windows include import/API load and instrumentation overhead; no clean-speed or removable-cost claim."
+}

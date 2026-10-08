@@ -1,0 +1,111 @@
+{
+  "kind": "phase65-stage-factory-successor",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "factoryInvoked": false,
+  "derivations": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/stages/make-method.py",
+        "sha256": "9f983b4d2a4f0f82678064e9701b9d09c85a631b9d93bb3145e341cd24c30744"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/stages/make-method.py",
+        "sha256": "3aa098b0edcef79aa7b07ad66b682ed950386acab84c6c29419b56c5442717ca"
+      },
+      "edits": [
+        {
+          "old": "selfhost/build/phase64",
+          "new": "selfhost/build/phase65",
+          "count": 1
+        },
+        {
+          "old": "Phase64 diagnostic successor",
+          "new": "Phase65 diagnostic successor",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/stages/derive-driver.py",
+        "sha256": "0cca07ba1f3b9df473215fac79a89dc6ef95b4ee5a2c21268e68c035380fdabb"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/stages/derive-driver.py",
+        "sha256": "5a590ee5909dfae73ef11116c26d11d6df8ca53576f01de7f297d5ec206599b3"
+      },
+      "edits": [
+        {
+          "old": "selfhost/build/phase64",
+          "new": "selfhost/build/phase65",
+          "count": 1
+        },
+        {
+          "old": " (\"      const graph=decodeBaseGraph(preparedBytes,{...options,base:book,rootKinds:['checked','fresh','world','frontend']});\",'driver.graph-prepared-decode'),\n",
+          "new": " (\"      const graph=decodeBaseGraph(preparedBytes,{...options,base:book,rootKinds:['checked','fresh','world','frontend']});\",'driver.graph-prepared-decode'),\n (\"  const book=decode(bookBytes,{...options,rootKinds:['defs']});\",'driver.graph-book-decode'),\n (\"      const graph=decode(preparedBytes,{...options,base:book,rootKinds:['checked','fresh','world','frontend']});\",'driver.graph-prepared-decode'),\n",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/stages/clock.mjs",
+        "sha256": "e2cc301aa024c65aa126477b44e570c8ef0f0f0724f8d057e0e2e95f5ab3d125"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/stages/clock.mjs",
+        "sha256": "e2cc301aa024c65aa126477b44e570c8ef0f0f0724f8d057e0e2e95f5ab3d125"
+      },
+      "edits": []
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/stages/summarize.py",
+        "sha256": "2954c0565a68039295183f6b3683881f9fcc786330fd5b5c1b7b3ca24f28e1a7"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/stages/summarize.py",
+        "sha256": "d1c8a547f5cf99f60e804cca217a359fe69f184534e8aaa00f0fe2af9023268b"
+      },
+      "edits": [
+        {
+          "old": "        'api.jd-plan-selected','api.jd-plan-library','api.jd-reach-selected','api.jd-library-selected']",
+          "new": "        'api.jd-plan-selected','api.jd-plan-library','api.jd-reach-selected','api.jd-library-selected',\n        'api.book-context-world','api.book-context']",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "readinessCheck": {
+    "selectedDriver": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/tools/typed-driver.mjs",
+      "sha256": "a7d91a18408778c8c12f07759782aa0901d97e0e124692883bb46e4ea7c05d45"
+    },
+    "requiredFunctionHeaders": 16,
+    "optionalFunctionHeaders": [
+      {
+        "name": "driver.cache-graph-decode",
+        "matched": true
+      },
+      {
+        "name": "driver.world-admission",
+        "matched": true
+      },
+      {
+        "name": "driver.frontend-state-admission",
+        "matched": true
+      }
+    ],
+    "frame4DecodeAliasStatementsMatched": 2,
+    "clockBytesUnchanged": true,
+    "cases": [
+      "numeric-recurrence",
+      "lexer",
+      "test-map-set-ops",
+      "raytrace-active"
+    ]
+  },
+  "scope": "Only Phase65 writable boundaries/scope, two optional frame4 decode-alias statement clocks, and book-context/world active-call reporting. Parent schemas, selected driver decoding, private imported API wrappers, full raw byte oracles and exact insertion inverse remain unchanged. Frame4 helper is staged/pinned by the parent preparation; no helper implementation or compiler source changed. No candidate or current live source freeze."
+}

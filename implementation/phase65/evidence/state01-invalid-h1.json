@@ -1,0 +1,59 @@
+{
+  "kind": "phase65-invalid-h1-experiment",
+  "complete": true,
+  "experimentValid": false,
+  "diagnosticOnly": true,
+  "productionQualified": false,
+  "targetScreenExecuted": false,
+  "created": "2026-10-08T01:02:21.048608+00:00",
+  "recipe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state01-b1-latency/recipe.json",
+    "sha256": "512aabf378520c079677dc8eac73547c71be3d0c7b0bd1c29ab0b3c8207d3474"
+  },
+  "previousScope": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state01-b1-latency/diagnostic-use.json",
+    "sha256": "6676cfa022e706b213d8ba3b36e86741b0e38d03e60f1678d7dbd68ea44f1893"
+  },
+  "actual": {
+    "baseline": {
+      "attempt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/attempt.json",
+        "sha256": "a2038c2223a20aa7b03130bc70727671dff5482f11f9fb0613069ccfa530868b"
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/equality/api.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/equality/api.mjs",
+        "sha256": "a2f8b021c20becc730cf91e8e7fd6db98f2bba8b743adec89154ff9c6217bd6f"
+      },
+      "bootstrap": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/api.mjs.bootstrap.json",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/api.mjs.bootstrap.json",
+        "sha256": "66c001f3149e3e29300d3c24d88299dadffcb3fc7eecc645986c2667d6a6eea9"
+      },
+      "sourceSha256": "41ddb951470b9e80dd6650af7b99cb29ee05994d1bd96a5873e7b817e98a7d4e",
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/build/typed/snapshots/f159ede87e531685c2ecc45ae3eb62d958321d71a94ccf00b12125dfcad4cf31/compiler.bend"
+    },
+    "candidate": {
+      "attempt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state01/attempt.json",
+        "sha256": "2a52069865b4959e0586d5c7f0bb8bcf4752ddc469ef878ec40c83bb2a5f82ea"
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state01/equality/api.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state01/equality/api.mjs",
+        "sha256": "a2f8b021c20becc730cf91e8e7fd6db98f2bba8b743adec89154ff9c6217bd6f"
+      },
+      "bootstrap": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state01/api.mjs.bootstrap.json",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state01/api.mjs.bootstrap.json",
+        "sha256": "a96a2de57da96ebb238b0f4bca79beee3accf45b20a2788642c6b265de546950"
+      },
+      "sourceSha256": "41ddb951470b9e80dd6650af7b99cb29ee05994d1bd96a5873e7b817e98a7d4e",
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state01/snapshot/build/typed/snapshots/f159ede87e531685c2ecc45ae3eb62d958321d71a94ccf00b12125dfcad4cf31/compiler.bend"
+    }
+  },
+  "apiBytesIdentical": true,
+  "assembledSourceShaIdentical": true,
+  "reason": "Root confirmed the H1 patch was restored before executing workflow: make-build records inputs, but workflow copies the actual snapshot when executed. State01 built the unchanged baseline, so no H1 change is represented. The source/API identity gate caught this before preparation or timing.",
+  "disposition": "Retain this successful unchanged compiler build and its original recipes as failed H1 experiment evidence. Never claim an H1 speed result or run this H1 screen. A fresh State02 must keep the patch present throughout snapshot/build execution."
+}

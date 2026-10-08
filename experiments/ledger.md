@@ -3912,3 +3912,14 @@ at the start; 110 inherited files and seven installed artifacts were verified.
 All new raw evidence is under Phase65; prior raw trees remain closed. Root
 serializes bounded targets while agents prepare source, tools, data and review.
 No new result or promotion is claimed at registration.
+
+### Phase65 first discriminators — 2026-10-08
+
+The [fresh four-source survey](../implementation/phase65/measurement.md)
+passes clean16, CPU8, allocation8 and stage8 full-output checks. Selected
+compilation is 1.45808× TS, separately from the inherited broad result.
+Term-reuse and Base-product censuses identify structural opportunities; their
+instrumented counters are not clean latency gains. The first H1 build used
+restored baseline source; exact API/source identity rejected it as an H1
+experiment before timing. Fresh State02 contains the intended diagnostic
+producer and passes focused/export and differential controls. No promotion yet.

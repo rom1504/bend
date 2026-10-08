@@ -5,6 +5,17 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Active implementation: Phase66 upstream and five metrics
+
+[Design](../design/phase66/upstream-and-five-metrics.md) ·
+[Report](../implementation/phase66/README.md) ·
+[Experiment](phase66/P66-001-upstream-migration.md).
+The authorized migration freezes upstream `059266225b77c8ca256ac6b25ee5c21449bab151`
+and independently tracks generated-program execution, checked-B1 compilation,
+genuine-B2 compilation, conformance and maintained-code complexity. Phase65 is
+the preserved installed baseline; no new qualification or performance result is
+claimed at registration. Read [STEERING](STEERING.md) for ownership and gates.
+
 ## Completed implementation: Phase65 reusable backend products
 
 [Design](../design/phase65/reusable-backend-products.md) ·

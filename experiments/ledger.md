@@ -4002,3 +4002,17 @@ Keep earlier pending checkpoints, rejected experiments, method failures and
 closed raw evidence intact. The next work should target demonstrated repeated
 whole-request work in the newly selected image and retain the short comparison
 loop before broad qualification. No upstream migration or PR comment was made.
+
+### Phase66 upstream migration authorized — 2026-10-08
+
+The user authorized the [upstream migration](../design/phase66/upstream-and-five-metrics.md)
+with five separate metrics: compiled-program speed, B1 compilation speed,
+B2 compilation speed, conformance and simplicity. Target `0592662` is 95 commits
+past `0187512`; it has an isolated checkout. Phase65 State10 (`ef7c657`) remains
+installed. Root preserved seven installed files, 299 current source/tool files
+and the 110 inherited protected files before any production edit.
+
+All new raw evidence belongs to Phase66. The old TypeScript, B1 and B2 baseline
+must remain distinct from the new reference; changed Base, names, effects and
+bootstrap contracts require new qualification. [Live report](../implementation/phase66/README.md).
+No performance or conformance result is claimed at registration.

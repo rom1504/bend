@@ -2,17 +2,32 @@
 
 Started October 7, 2026 at 22:49:46 UTC from `fd01066`.
 The user authorized the [proposal](../../design/phase64/typed-facts-and-compact-state.md).
-State09 remains the installed and comparison baseline. No Phase64 performance
-gain, correctness result or release selection is claimed at registration.
+
+**Measured result: 12.47% less compilation time**, from 1.64387× to **1.43894×
+TypeScript**, using genuine B2 images in the same balanced 207-worker campaign.
+Including imports, the ratio improves from 1.18920× to **1.06173×**. Every one
+of the 23 sources improves. Complete emitted modules and runtime bytes remain
+unchanged; this is a compiler-speed result, not a new program-speed claim.
+
+The selected Phase64 State09 passes full checked/B2 semantic gates, fresh
+own-source type acceptance and exact B2/B3 reproduction. It is **installed and
+verified**, including legacy42/default24 and five helper-integrity controls.
+Read the [final report](state09-results.md), [chart](compilation-ratios.svg),
+[performance receipt](evidence/state09-b2-broad.json),
+[compiler qualification](evidence/state09-qualification.json),
+[release receipt](evidence/state09-release.json) and [size audit](size.md).
 
 Root serializes guarded CPU3 targets; independent agents own Base facts, backend
 facts, cache/representation probes, measurement tools and semantic review.
 The baseline campaign records and verifies all 110 inherited unrelated files
 and seven installed artifacts before any production edit.
 
-Results will distinguish diagnostic evidence, clean compiler time, correctness,
+Results distinguish diagnostic evidence, clean compiler time, correctness,
 generated-program execution and promotion. Closed Phase63 raw evidence remains
 unchanged; fresh outputs live under `selfhost/build/phase64/`.
+
+The checkpoints below preserve what was known at each intermediate stage. Their
+pending statements and local B1 estimates are superseded by the final report.
 
 ## First checkpoint: isolate work before changing representation
 

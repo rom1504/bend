@@ -1,0 +1,73 @@
+{
+  "kind": "phase64-release-join-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/join-release.py",
+    "sha256": "dab9674ce59199123cfb22b1973b73c901cb2fe97172e629b5b027fc15320362",
+    "bytes": 10983
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/join-release-qualification.py",
+    "sha256": "6d878908a3d840ddd22d172c859bc7ac722b3f0bdc7c62bc325cce71053289c2",
+    "bytes": 13634
+  },
+  "edits": [
+    {
+      "old": "raw = project/'build/phase63'",
+      "new": "raw = project/'build/phase64'"
+    },
+    {
+      "old": "release = raw/'release-state09'",
+      "new": "release = raw/'final-state09/release'"
+    },
+    {
+      "old": "plan_file = raw/'release-state09-plan.json'",
+      "new": "plan_file = raw/'final-state09/release-plan.json'"
+    },
+    {
+      "old": "commands_file = raw/'release-state09-commands.json'",
+      "new": "commands_file = raw/'final-state09/release-commands.json'"
+    },
+    {
+      "old": "execution_file = raw/'release-state09-execution/report.json'",
+      "new": "execution_file = raw/'final-state09/release-stage-execution/report.json'"
+    },
+    {
+      "old": "    closure = plan['packagerClosure']\n    graph_sha = verify(closure['graphSnapshot'])['sha256']\n    assert verify(closure['graphCurrent'])['sha256'] == checkout['tools/base-cache-graph.mjs']['sha256'] == graph_sha\n    assert verify(closure['currentRelease'])['sha256'] == verify(closure['after'])['sha256']",
+      "new": "    graph_sha = pin(Path(attempt['snapshot']['root'])/'tools/base-cache-graph.mjs')['sha256']\n    assert pin(project/'tools/base-cache-graph.mjs')['sha256'] == checkout['tools/base-cache-graph.mjs']['sha256'] == graph_sha"
+    },
+    {
+      "old": "    assert verify(helper['packager'])['sha256'] == closure['after']['sha256']\n    assert verify(helper['patch'])['sha256'] == verify(closure['patch'])['sha256']",
+      "new": "    patch = load(verify(helper['patch'])['file'])\n    assert verify(helper['packager'])['sha256'] == verify(patch['after'])['sha256']"
+    },
+    {
+      "old": "    pre_file = raw/'preinstall-preservation.json'\n    pre = load(pre_file)\n    assert pre['pass'] is True and all(row['pass'] is True for row in pre['checks'])\n    assert {(row['baseline'], row['count']) for row in pre['checks']} == {\n        ('implementation/phase63/evidence/inherited-files.json', 110),\n        ('selfhost/build/phase63/installed-before.json', 7)}\n",
+      "new": "    pre_file = raw/'release-admission.json'\n    pre = load(pre_file)\n    assert pre['complete'] and pre['pass']\n    qualified = load(verify(pre['qualification'])['file'])\n    assert qualified['complete'] and qualified['pass_'] and qualified['selectedB1']['sha256'] == api_sha\n    assert qualified['source']['sha256'] == source_sha\n    for item in pre['preservation']: verify(item)\n    assert {x['verifiedFiles'] for x in pre['preservation']} == {7, 110}\n"
+    },
+    {
+      "old": "        verify(dict(row, file=str(history/previous_path)))",
+      "new": "        verify(dict(row, file=str(history/previous_path)))\n        verify(dict(row, file=str(raw/'previous-installed'/previous_path)))"
+    },
+    {
+      "old": "    inherited_file = root/'implementation/phase63/evidence/inherited-files.json'",
+      "new": "    preserved = load(raw/'previous-installed-preservation.json')\n    assert preserved['pass'] and len(preserved['files']) == 7\n    assert [x['original'] for x in preserved['files']] == before['files']\n    for row in preserved['files']: verify(dict(file=row['copy'], sha256=row['sha256']))\n    inherited_file = raw/'inherited-before.json'"
+    },
+    {
+      "old": "        helper5=pin(helper_file), preservedPriorFiles=7, priorApiSha256=previous_api,",
+      "new": "        helper5=pin(helper_file), currentInstalledFiles=[installed_id]+[verify(x, project) for x in installed['files']],\n        preservedPriorFiles=7, priorApiSha256=previous_api, priorHistory=str(history),\n        priorRawCopies=pin(raw/'previous-installed-preservation.json'),"
+    },
+    {
+      "old": "        inheritedFiles=110, preinstallPreservation=pin(pre_file),",
+      "new": "        inheritedFiles=110, rootReleaseAdmission=pin(pre_file),"
+    },
+    {
+      "old": "        'seven previous release files and 110 inherited files verified.",
+      "new": "        'seven previous release files in both history and raw copies, and 110 inherited files verified."
+    },
+    {
+      "old": "'closed historical-tree/archive preservation claim is made by this join.')\n",
+      "new": "'closed historical-tree/archive preservation claim is made by this join.')\n\n\ndef main():\n    import argparse, hashlib, importlib.util, json\n    parser = argparse.ArgumentParser(description='Read-only completed Phase64 release join; no targets or installation.')\n    parser.add_argument('--out', type=Path, required=True)\n    args = parser.parse_args(); assert not args.out.exists()\n    root = Path(__file__).resolve().parents[5]\n    readers = root/'selfhost/tools/performance/phase63/latency/join-final.py'\n    assert hashlib.sha256(readers.read_bytes()).hexdigest() == 'fea5078e72aa4c3626366590f3584f16c846b3776fbd1e7125aad784e9598602'\n    spec = importlib.util.spec_from_file_location('release_receipt_readers', readers)\n    module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)\n    pin, read = module.pin, module.read\n    derivation_file = Path(__file__).with_suffix('.derivation.json')\n    derivation = read(derivation_file)\n    rebuilt = Path(pin(derivation['parent'])['file']).read_text()\n    for change in derivation['edits']:\n        assert rebuilt.count(change['old']) == 1\n        rebuilt = rebuilt.replace(change['old'], change['new'])\n    assert rebuilt == Path(__file__).read_text()\n    assert pin(derivation['output'])['file'] == str(Path(__file__).resolve())\n    result = collect(root, pin, read)\n    assert len(result['currentInstalledFiles']) == 7\n    result.update(kind='phase64-state09-release-qualification', producer=pin(__file__),\n        successorDerivation=pin(derivation_file), receiptReaders=pin(readers), dataOnly=True, targetExecuted=False)\n    for item in list(module.INPUTS.values()): pin(item)\n    result['verifiedInputCount'] = len(module.INPUTS)\n    result['verifiedInputIndexSha256'] = hashlib.sha256(json.dumps(sorted(module.INPUTS.values(),key=lambda x:x['file']),sort_keys=True).encode()).hexdigest()\n    args.out.parent.mkdir(parents=True, exist_ok=True)\n    with args.out.open('x') as stream: stream.write(json.dumps(result, indent=2)+'\\n')\n    print(json.dumps(dict(output=pin(args.out), complete=True, passed=True, verifiedInputs=result['verifiedInputCount'])))\n\n\nif __name__ == '__main__': main()\n"
+    }
+  ],
+  "reason": "Reuse all established release5, legacy42/default24, helper5, installed closure predicates. Bind Phase64 paths and root admission, and verify both prior-install preservation locations.",
+  "targetExecuted": false
+}

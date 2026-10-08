@@ -1,0 +1,63 @@
+{
+  "kind": "phase64-qualification-frame4-factory-update",
+  "complete": true,
+  "targetsExecuted": false,
+  "factoryInvoked": false,
+  "before": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/qualification/make-method.py",
+    "sha256": "8dbeda2614e33c38cce4c46bf1eef78fdf0cca9ed568eedfe95bb6ff1281b04f"
+  },
+  "after": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/qualification/make-method.py",
+    "sha256": "7237e4754a245b2a2b8b91e270fdcdd09ddbd0ef7451263655263d947eb8b55d"
+  },
+  "edits": [
+    {
+      "old": "        if relative == 'qualification/final-plan.py':\n",
+      "new": "        if relative in {'bootstrap/setup.mjs', 'qualification/checked-image.mjs'}:\n            # Frame4 keeps semantic versions 4/6; the selected driver owns decoding.\n            assert text.count(r'/-frame[123]\\.json$/') == 1\n            change(r'/-frame[123]\\.json$/', r'/-frame[1234]\\.json$/')\n        if relative == 'qualification/final-plan.py':\n"
+    },
+    {
+      "old": "        'Four semantic controller bodies remain unchanged. Graph-helper/frame3 admission and JDPlan '\n        'reproduction are inherited. No candidate source/API is bound, target run or release admitted. '\n",
+      "new": "        'Four semantic controller bodies remain unchanged. Graph-helper admission and JDPlan '\n        'reproduction are inherited; the two framed-cache filename gates also recognize frame4, '\n        'using the selected driver decoder with unchanged semantic version checks [4,6]. '\n        'No candidate source/API is bound, target run or release admitted. '\n"
+    }
+  ],
+  "intendedOutputEdits": [
+    {
+      "relative": "bootstrap/setup.mjs",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/qualification-method01/bootstrap/setup.mjs",
+        "sha256": "05e952b968e74620bf814b4c74d81a0f2748cc4443562cb65eadeba3586182b1"
+      },
+      "old": "/-frame[123]\\.json$/",
+      "new": "/-frame[1234]\\.json$/",
+      "occurrences": 1,
+      "selectedDriverDecoderUnchanged": true,
+      "semanticVersions": [
+        4,
+        6
+      ]
+    },
+    {
+      "relative": "qualification/checked-image.mjs",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase63/qualification-method01/qualification/checked-image.mjs",
+        "sha256": "ceece34e5863ade11950eaddc30e4e3e1e8c7594b1a92d5b460c916e313da10d"
+      },
+      "old": "/-frame[123]\\.json$/",
+      "new": "/-frame[1234]\\.json$/",
+      "occurrences": 1,
+      "selectedDriverDecoderUnchanged": true,
+      "semanticVersions": [
+        4,
+        6
+      ]
+    }
+  ],
+  "preserved": [
+    "All Phase63 consumed methods and parents remain byte-identical.",
+    "Graph-helper snapshot copying and input pinning unchanged.",
+    "Cache semantic versions [4,6] and ABI/source/compiler/Base checks unchanged.",
+    "Optional canonicalPath/bytes validation correction and normalized identity unchanged.",
+    "No candidate plan, source freeze or method package generated."
+  ]
+}

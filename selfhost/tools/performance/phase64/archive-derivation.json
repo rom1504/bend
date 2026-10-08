@@ -1,0 +1,23 @@
+{
+  "kind": "phase64-archive-derivation",
+  "parent": {
+    "file": "selfhost/tools/performance/phase63/archive.py",
+    "sha256": "fe672775f0fceb69108069895b8c47e50948ddbc3cd8fdbb52e682c63be03ece"
+  },
+  "successor": {
+    "file": "selfhost/tools/performance/phase64/archive.py",
+    "sha256": "64af9e95bc33ba1840ebc7ddd4e5499287cf434773554e733ae683f2b57aea85"
+  },
+  "transformations": [
+    "Phase63 writable raw/output boundary and labels become Phase64",
+    "Historical prerequisite scope extends through closed Phase63"
+  ],
+  "unchanged": [
+    "Explicit writers-closed.json prerequisite",
+    "Fresh output directory only",
+    "Every regular file is inventoried, hashed, archived and reopened",
+    "All extracted member bytes and final input hashes must match",
+    "No writes inside the closed raw tree"
+  ],
+  "executed": false
+}

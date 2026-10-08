@@ -1,92 +1,91 @@
-# Current frontier: Phase64 implementation authorized
+# Current frontier: Phase64 State09 installed
 
-The user authorized [Phase64](../design/phase64/typed-facts-and-compact-state.md):
-measure the selected State09 image, prototype remaining Base summaries and
-shared typed facts separately, then choose indexed state or compact representation
-from measured cost. [Live report](../implementation/phase64/README.md).
-No Phase64 result or promotion is claimed yet. State09 is installed and
-verified as equality-derived checked B1; its separate genuine B2/B3 images pass
-their gates. The compiler algorithms remain Bend. No upstream update or PR
-comment was made.
+[Final report](../implementation/phase64/state09-results.md) ·
+[Compiler qualification](../implementation/phase64/evidence/state09-qualification.json) ·
+[Release](../implementation/phase64/evidence/state09-release.json) ·
+[Design](../design/phase64/typed-facts-and-compact-state.md) ·
+[Prepared Base architecture](../docs/self_hosted/prepared-base-artifacts.md).
 
-[Final results](../implementation/phase63/state09-results.md) ·
-[Qualification](../implementation/phase63/evidence/state09-qualification.json) ·
-[Design](../design/phase63/ready-world-and-lowering-plan.md) ·
-[Architecture](../docs/self_hosted/compiler-request-pipeline.md).
+Phase64 State09 is installed and verified as equality-derived checked B1. The
+compiler algorithms remain Bend. Its separately generated B2 and B3 pass
+self-hosting and exact reproduction. No upstream update or PR comment was made.
 
 ## Measured result
 
-The balanced 23-source, three-role, three-round campaign passes207/207 workers.
-Equal-source geometric means of median times:
+The balanced 23-source, three-role, three-round campaign passes 207/207 workers.
+Equal-source geometric means of per-role/source median times:
 
-| Clock | Previous B2 / TS | State09 B2 / TS | Time reduction |
+| Clock | Phase63 B2 / TS | Phase64 B2 / TS | Time reduction |
 | --- | ---: | ---: | ---: |
-| Compilation alone | 2.05505× | 1.63275× | 20.55% |
-| Host/API import plus first compilation | 1.40665× | 1.15092× | 18.18% |
+| Compilation alone | 1.64387× | 1.43894× | 12.47% |
+| Host/API import plus first compilation | 1.18920× | 1.06173× | 10.72% |
 
-Every source improves over the previous compiler on both clocks. Compilation
-remains slower than TS on every source. These are fresh processes with prepared
-persistent Base caches, not OS-cold runs, installed-B1 CLI timings or generated
-program timings. Raw modules match the qualified historical artifacts exactly.
-The old Phase61 headline and intermediate State06 campaign stay separate.
+All 23 sources improve under both clocks. Every candidate sample is faster than
+every baseline sample for its source, a descriptive result rather than a
+confidence interval. Two sources are below TS compilation time, one essentially
+at parity. The aggregate compilation-only gap still requires about 30.5% less
+time to reach parity, or 65.3% to reach 0.5× TS.
 
-## Selected mechanisms and boundaries
+These are genuine B2 fresh processes with a prepared persistent Base cache.
+Preparation/output verification are outside timing; this is not OS-cold storage,
+installed B1 CLI timing or generated-program execution. The tested complete
+modules and runtimes remain byte-identical. The earlier Phase63 headline
+1.63275× is a different campaign; use the same-campaign baseline above.
 
-- Retain an authenticated Base checker world and parser indexes; extend only
-  with the actual source suffix. Public/fallback checking remains.
-- Transport shared immutable state through a validated frame3 DAG using fixed
-  constructor decode paths. Mandatory corruption fails; invalid optional state
-  falls back. Smaller bytes or warm-only throughput are insufficient evidence.
-- Keep one annotated library lowering context and save each retained definition's
-  lowered output once, preserving demand, references, SCC/source order and bounds.
-- Compute host field conversions once and carry arity already computed by call
-  analysis. No new general mutable query cache or eager fact prepass.
-- Carry completed source fragments directly and remove four unused host helpers.
+## Selected changes and complexity
 
-State09 has28,115 physical Bend lines across114 modules: +362 versus Phase61,
-−11 versus State06. The stronger reuse contracts add five data types; do not
-claim this is a reduction in overall conceptual complexity.
+- Retain original Base TODO count and exact checked-output maximum ID, with
+  actual successful request/world coupling and full public fallbacks.
+- Share one host-instantiated telescope; avoid rendering discarded tail-admission
+  arguments; prefilter native owned-name candidates and use exact classifiers.
+- Load an indexed frame4 artifact with full eager validation, typed references,
+  exact identity admission, old-format fallback and explicit migration.
 
-Strict36/export94, full checked semantic suites, B2 construction/driver checks,
-fresh own-source type acceptance, exact B2/B3 equality, B2 source96/numeric34/
-composition18/overapplication2, raw23/point45 equality, legacy42/default24 and
-five helper-integrity controls pass. The expected unsafe proof-trust refusal
-remains. These finite, overlapping suites are not full-language soundness proofs.
-Metadata and permission failures remain failed; explicit successful successors
-close the selected gates.
+Physical Bend source grows 28,115 → 28,279 lines (+0.58%) across the same 114
+modules: +19 definitions and one type. The host helper adds 129 lines and driver
+13. This is a measured performance tradeoff, not a simplification claim.
 
-## Authorized Phase64 sequence
+Strict36/export95, full checked and B2 source96/numeric34/composition18/
+overapplication2, direct26/maintained8/native3/runtime45, fresh own-source type
+acceptance, exact B2/B3 reproduction, raw23/point45 equality, legacy42/default24
+and five helper-integrity controls pass. Expected unsafe proof-trust refusal
+remains. These finite overlapping suites are not a full-language soundness proof.
 
-1. Profile the selected image on Numeric, Lexer and Map, then confirm attribution
-   across all23. Earlier profiles no longer assign the current residual gap.
-2. Retain more typed signature/layout facts at their original demand point in
-   the immutable owning plan. Require exact local oracles and request-level gain.
-3. Count remaining header/completion/provenance scans and test a carried source
-   view. Lexer has the worst current ratio; that alone is not causal evidence.
-4. Separate fixed validated admission from source-proportional work. Persistent
-   sessions may change a distinct metric and must not replace the fresh-request
-   parity target.
+## Negative evidence and next discriminator
 
-Parity requires another38.75% reduction in measured compilation time. General
-WNF memoization had less diagnostic benefit than arity reuse; checked call-spine
-reuse was reverted for no useful request gain; owned positional-ABI work was
-inapplicable because the actual images use named layout. Do not relaunch these
-without a new discriminating hypothesis and measured cost budget.
+Child-type avoidance removed many queries but regressed whole-request time; it
+was rolled back. Compact annotations were deferred after a small measured
+allocation share. Neither lazy materialization nor a semantic arena was shipped.
+Small local 1–3% B1 gains remain provisional: identical-image A/A showed 3.82%
+apparent difference. Do not multiply those gains or assign each an independent
+share of the final bundle result.
 
-## Identity and evidence
+The next useful investigation is a fresh selected-B2 stage/allocation survey,
+then a local intervention that eliminates a whole repeated backend/completion
+traversal. Retain facts at their exact demand point and immutable owner. Require
+an exact oracle and complete-request gain before extending to a broader typed
+plan. Earlier memoization, typed-spine and binary-decoder rejections remain
+relevant; a new hypothesis must explain why its discriminator differs.
 
-Source `0ebe491e727721857ce981ff5a2167a52d1e040f5674915a3349fea33bed8ed5`.
-Checked B1 `4a208bffcf47b5d19f8ff18be1fc01b2faf988b37d38e7f5db9e6bd42d79905f`.
-B2/B3 `e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003`.
-Upstream `018751270e800bc222a93dad7f257083ee53a5f7`; Node24.18.0.
+## Identity, evidence and iteration
 
-[Evidence restoration](../selfhost/tools/performance/phase63/artifacts/README.md)
-retains failures and rejected attempts. The previous seven installed files are
-preserved under release-history/97f412af…; all110 inherited unrelated files are
-unchanged. Historical Phase58–62 inputs retain their existing capsules.
+Source `41ddb951470b9e80dd6650af7b99cb29ee05994d1bd96a5873e7b817e98a7d4e`.
+Checked B1 `a2f8b021c20becc730cf91e8e7fd6db98f2bba8b743adec89154ff9c6217bd6f`.
+B2/B3 `b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e`.
+Upstream `018751270e800bc222a93dad7f257083ee53a5f7`; Node 24.18.0.
+Source commit `4e5fe70`.
 
-Root alone executed serial CPU3 targets under one process-tree guard: 1GiB Node
-heap, 2GiB RSS ceiling and 4GiB available-memory floor. Independent agents handled
-source, tooling, analysis and review on CPU0. Future target work should keep
-that memory discipline and use short checked-B1 controls/screens before broad
-B2/reproduction/release qualification. Stage only explicitly owned paths.
+The previous seven installed artifacts remain under release-history/4a208bff…
+and in the Phase64 capsule. All 110 inherited files, 16,691 closed Phase63 files
+and the prior published archive were verified unchanged. Failed/rejected runs
+remain in the closed Phase64 raw tree and published evidence capsule.
+
+Through final qualification, 75m13.5s elapsed; 36m22.6s (48.36%) was inside closed
+supervised target intervals. Remaining time is unclassified work, not measured
+waiting. Archival/publication follows that cutoff. The final broad confirmation
+itself took 3m38.5s after preparation.
+
+Keep compiler targets serial on CPU3 with one guard: 1 GiB heap, 2 GiB tree RSS
+and 4 GiB available-memory floor. Agents handle independent source/review/data
+work on CPU0. Use focused checked-B1 controls/screens before full B2 and release
+qualification. Stage only owned files; do not reopen closed raw evidence.

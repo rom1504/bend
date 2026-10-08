@@ -119,3 +119,75 @@ Do not infer that a good isolated decode time justifies lazy objects or a new
 production format. The next gate after this eager falsifier is a fresh real
 compiler request with exact module bytes, unchanged state admission and fallback,
 and all format overhead included.
+
+## Pre-consumption prototype refinement
+
+The cache owner reports root-authorized refinements before prototype v1 was
+consumed. This note retains the original review and adds the successor identities:
+
+- Codec: `d2bb79352902e1f2030e32a09b4d136c2e3c99b8bb0ff837377d72461bf93452`.
+- Probe: `0fa2941df4102e0d6e6a377975ce458995b1a4d3b3f8f3120e8f6e654cba2922`.
+
+Readback confirms explicit negative-zero numeric-field refusal and a corresponding
+control. The manifest now records the baseline graph helper, controller and Node
+identities; workers verify those recorded file bytes before decoder timing and
+check the imported helper path. The writer's valid-optional-input restriction is
+now documented. The original review findings should not be read as an assertion
+that this later prototype still lacks these refinements. Actual execution and
+isolated timing remain owned and reported by the cache/measurement lane.
+
+## Shared production-helper and strict-controller source review
+
+Reviewed, without target execution:
+
+| Input | SHA-256 |
+| --- | --- |
+| Isolated `arena-helper-v1.mjs` | `a9c1a88e9c880d87488b15bd74e3ed81d3049103ead97653e630ad33699866f2` |
+| `arena-controls-v1.mjs` | `20f38359c9580722962278a172fc792069a7676e269ba0228eb8723533a8c051` |
+
+The new helper extracts existing graph-record construction into a shared function;
+the JSON encoder serializes the same record/root arrays. The JSON decoder is
+retained. Arena field counts and string/Boolean roles now derive from that schema.
+The current world has eight payload fields, with `checkedBound` after `todos`;
+legacy six/seven-field worlds remain decoded without inventing absent fields.
+The binary constructor mapping preserves this field order. No mechanical transfer
+or canonical-input schema defect was found.
+
+The strict controller covers all twelve constructors, maximum unsigned values,
+ordinary versus literal Unicode, malformed offsets/fields/ranges, both padding
+areas, wrong reference families, historical world fields, unused malformed
+records and actual cross-segment roots/sharing. It also compares old/new JSON
+encoder bytes. This addresses substantially more of the earlier coverage list;
+passing execution is still a separate gate.
+
+One new **claim-scope edge** results from sharing the record interner:
+`baseGraphRecords` interns using `JSON.stringify(row)` before arena scalar
+validation. If an otherwise equal positive-zero record precedes a negative-zero
+record, their keys are equal and the second record can reuse the first, evading
+the advertised negative-zero rejection. The single-negative-zero control does
+not cover this. Add both `[term(id:0), term(id:-0)]` and the reversed order;
+either validate original numeric fields before interning in the arena path, or
+explicitly state that scalar validation applies to canonical interned records.
+This does not affect authentic compiler-produced U32 values and does not block
+the cheap canonical-cache experiment. It prevents describing the current writer
+as refusing every noncanonical raw object.
+
+The helper and controller remain unchanged by this reviewer. Production
+metadata/capability admission, mandatory/optional frame fallback and real compiler
+requests remain the parent and host owner's integration gates.
+
+## Arena v2 closes the pre-intern scalar gap
+
+Read the exact v1→v2 diffs, without executing targets:
+
+- Helper `b58b927ac611f4ead292d4f736cfd427e955b81c1f0efa2f55d1e784755a0119`.
+- Controller `99359fa6a8bf1d8e62eadd199a42968650ce9b6bd4687fc77621b9be3b1a09ef`.
+
+`baseGraphRecords` now optionally validates each original unsigned field on its
+first visit, before constructing or interning its record key. Only the arena
+encoder enables this option; the legacy JSON encoder retains its previous
+accepted domain. Distinct positive/negative-zero records therefore cannot bypass
+validation by merging. The controller adds both root orders while preserving its
+previous controls. The source-level gap identified above is closed; executed
+control results remain a separate parent-owned gate. No further source issue was
+found in this bounded correction.

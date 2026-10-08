@@ -16,16 +16,26 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 `selfhost/bootstrap`. Ordinary compilation runs Bend code without a TypeScript
 fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
 
-[Phase63 State09](implementation/phase63/state09-results.md) is installed and verified.
+[Phase64 State09](implementation/phase64/state09-results.md) is installed and verified.
 Direct JavaScript remains the default; `--legacy-js` and native C remain available.
-Across **23 sources and three balanced rounds**, genuine B2 startup plus first
-compilation improves from **1.407× to 1.151× TypeScript's time**—18.2% less time.
-Compilation alone improves from **2.055× to 1.633×**—20.5% less time. All 23
-sources improve against the previous compiler; compilation parity remains
-unfinished. These are fresh processes
-with a prepared Base cache; preparation and output verification are outside the
-clocks. The [results and diagrams](implementation/phase63/state09-results.md)
-keep compiler latency separate from generated-program execution speed.
+The **Phase64 State09** release passes a balanced genuine-B2 comparison across
+**23 sources, three roles and three rounds: 207 exact outputs**. In this same
+campaign, compilation improves from **1.644× to 1.439× TypeScript's time**—12.47%
+less time—and host/API import plus first compilation from **1.189× to 1.062×**—
+10.72% less time. All 23 sources improve on both clocks; aggregate compilation
+parity remains unfinished. These fresh processes use prepared Base caches;
+preparation and full output verification are outside the clocks. This measures
+compiler latency, not generated-program speed or the installed checked-B1 CLI.
+
+The installed package is equality-derived checked B1; the timed compiler is its
+separately qualified genuine B2. The release retains original-Base completion
+facts, an exact checked-output bound and host signatures, avoids discarded argument rendering,
+and adds indexed cache transport. Read the
+[Phase64 results](implementation/phase64/state09-results.md),
+[release verification](implementation/phase64/evidence/state09-release.json) and
+[architecture/fallback contracts](docs/self_hosted/prepared-base-artifacts.md).
+The [previous Phase63 campaign](implementation/phase63/state09-results.md)
+retains its separate historical numbers.
 
 The [Phase62 investigation](implementation/phase62/README.md) profiles the
 preceding Phase61 compiler across all 23 sources. It located compilation
@@ -34,23 +44,25 @@ B1/B2 comparisons, repeated requests, operation counts and scaling experiments.
 
 The [request pipeline guide](docs/self_hosted/compiler-request-pipeline.md)
 explains retained Base worlds/parser indexes, shared validated cache transport,
-one library lowering plan and reused type facts. All 23 benchmark JavaScript
-modules retain their qualified bytes; 45 behavior checks and the native,
-legacy and default CLI gates pass. The runtimes and native compiler modules
-retain their prior bytes.
+one library lowering plan and reused type facts. All 23 benchmark modules retain
+their qualified bytes. Checked and B2 semantic suites, native3, runtime45,
+legacy42 and default24 including relocation pass, as do five helper-integrity
+controls and release verification before and after CLI testing. The runtimes
+and native compiler modules retain their prior bytes.
 
-The direct B2 freshly type-checks its complete source in **11.87 seconds** and
-emits a **byte-identical B3 in 30.10 seconds**. Its 3,235 unsafe source definitions
-still cause the expected proof-trust refusal: type acceptance and self-reproduction
-do not establish mathematical proof validity. The packaged compiler remains the
-checked B1; the separately qualified B2/B3 image is **4,029,799 bytes**. The B2
-timings above are not measurements of the installed B1 CLI. Historical
+The genuine B2 freshly type-checks its complete source in **11.90 seconds** and
+emits a **byte-identical B3 in 33.42 seconds**. These are diagnostic gate durations,
+not clean performance comparisons. Its 3,254 unsafe definitions retain the
+expected proof-trust refusal: type acceptance and self-reproduction do not
+establish mathematical proof validity. SHA-256 prefixes distinguish packaged
+checked B1 (`a2f8b021…`) from measured B2/B3 (`b09fe54a…`, **4,040,799 bytes**).
+The B2 timings above do not measure the installed B1 CLI. Historical
 [Phase58 results](implementation/phase58/README.md) retain their original scope.
 
 From `selfhost/`, verify with `npm run verify:release`, then use
 `node cli.mjs FILE --run`. See the
 [compiler guide](docs/BEND-IN-BEND.md), [image workflow](docs/self_hosted/compiler-image-generation.md),
-[qualification and compiler latency](implementation/phase63/state09-results.md),
+[qualification and compiler latency](implementation/phase64/state09-results.md),
 [architecture](docs/self_hosted/backend-boundaries.md),
 [experiment ledger](experiments/ledger.md) and [current strategy](experiments/STEERING.md).
 

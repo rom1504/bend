@@ -7,9 +7,13 @@ exact `{file, sha256}` pairs. The four semantic controllers retain their origina
 bytes and all value oracles. The failure-dependent Phase63 resume tool is not used.
 
 Changes are limited to the Phase64 output boundary, final-plan factory/producer
-bindings and that provenance correction. Every generated file records its parent,
-exact replacements and output hash. Frame3 decoding, optional snapshot graph-helper
-copying, actual admitted roots and JDPlan B2/B3 reproduction remain unchanged.
+bindings, that provenance correction, and recognizing frame4 cache filenames in
+`bootstrap/setup.mjs` and `qualification/checked-image.mjs`. Both cache readers use
+the selected driver decoder and retain semantic version checks `[4,6]`; no binary
+format is reimplemented here. Every generated file records its parent, exact
+replacements and output hash. Optional snapshot graph-helper copying, actual
+admitted roots and JDPlan B2/B3 reproduction remain unchanged. `frame4-update.json`
+records the exact update from the prior uninvoked Phase64 factory.
 `derivation.json` and `factory.patch` record this factory's source provenance.
 
 After root reviews the factory, materialize a fresh method package on CPU0:

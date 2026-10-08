@@ -5,19 +5,25 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active implementation: Phase64 retained typed facts
+## Completed implementation: Phase64 retained facts and indexed state
 
 [Design](../design/phase64/typed-facts-and-compact-state.md) ·
 [Report](../implementation/phase64/README.md) · [Experiment](phase64/P64-001-residual-costs-and-typed-facts.md).
-The user authorized a fresh State09 cost survey, independent Base-fact and typed
-backend prototypes, then an evidence-selected representation improvement.
-State09 remains installed; no Phase64 speed or promotion result exists yet.
+Phase64 State09 is installed and verified. Its balanced genuine-B2 comparison
+improves compilation **1.64387× → 1.43894× TS** (12.47% less time), and imports
+plus first compilation **1.18920× → 1.06173×** (10.72%). All 23 sources improve;
+207 output checks, full compiler/runtime/reproduction and installed CLI gates
+pass. Generated programs remain byte-identical. Source grows 0.58%; child-type
+avoidance was rejected and compact semantic representation deferred. Read the
+[final report](../implementation/phase64/state09-results.md) for methods,
+limitations and the remaining 30.5% reduction needed for compilation parity.
 
 ## Completed implementation: Phase63 ready worlds and lower-once plans
 
 [Design](../design/phase63/ready-world-and-lowering-plan.md) ·
 [Report](../implementation/phase63/README.md) · [Hypotheses](phase63/).
-State09 is installed and verified as checked B1. Its genuine-B2 balanced
+Phase63 State09 was installed and verified as checked B1, and is now superseded
+by Phase64. Its genuine-B2 balanced
 207-worker comparison improves compilation **2.05505× → 1.63275× TS** and combined
 import/first compilation **1.40665× → 1.15092×**. All 23 source medians improve
 versus the previous compiler; compilation parity remains unfinished. Read the

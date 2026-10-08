@@ -1,0 +1,49 @@
+{
+  "kind": "phase64-qualification-join-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/join-final-qualification.py",
+    "sha256": "738bc82b3caa3a24d90127fefebfec14597254c62fd42629b42e7ca34f6597e2",
+    "bytes": 16388
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/join-final-qualification-v2.py",
+    "sha256": "ebf2a9463d5e753ce0f12b50505c89bfedb8f7f61d9e87e61178375018c10be3",
+    "bytes": 21601
+  },
+  "edits": [
+    {
+      "old": "def required_receipts():",
+      "new": "def historical_context(path, selected_snapshot):\n    \"\"\"Resolve one recorded State08 workflow identity to its exact retained snapshot.\"\"\"\n    record = read(path)\n    assert record['complete'] and record['pass'] and not record.get('changedInputs') and not record.get('error')\n    old_attempt_file = RAW/'checked-state08/attempt.json'\n    old_attempt = read(old_attempt_file)\n    logical = str(ROOT/'selfhost/tools/development/workflow.mjs')\n    expected_sha = '54d4e745908cfd6119e8c548927c78f8380a4b0c5704c9d65b5b24a12b8a36a1'\n    retained = Path(old_attempt['snapshot']['root'])/'tools/development/workflow.mjs'\n    source = next(x for x in old_attempt['snapshot']['sources'] if x['original']['file'] == logical)\n    assert source['original']['sha256'] == source['frozen']['sha256'] == expected_sha\n    assert Path(source['frozen']['file']) == retained\n    retained_pin = pin(source['frozen'])\n    current = pin(logical)\n    assert current['sha256'] == pin(selected_snapshot/'tools/development/workflow.mjs')['sha256']\n    relocations = []\n    for item in record['inputs']:\n        if not isinstance(item, dict) or not item.get('sha256') or not (item.get('file') or item.get('path')):\n            continue\n        if item.get('file') == logical and item['sha256'] == expected_sha:\n            assert item['bytes'] == retained_pin['bytes']\n            relocations.append(dict(logical=item, retained=retained_pin, current=current, snapshotAttempt=pin(old_attempt_file),\n                reason='State08 control recorded the pre-frame4 workflow; exact frozen bytes remain in its checked snapshot.'))\n        else:\n            pin(item)\n    assert len(relocations) == 1\n    return record, relocations\n\n\ndef required_receipts():"
+    },
+    {
+      "old": "    context = passed(context_file)",
+      "new": "    context, historical_relocations = historical_context(context_file, Path(attempt['snapshot']['root']))"
+    },
+    {
+      "old": "    assert arena['pass'] and all(x['pass'] for x in arena['controls'])",
+      "new": "    assert arena['pass'] and len(arena['controls']) == 79 and all(x['pass'] for x in arena['controls'])"
+    },
+    {
+      "old": "    for row in broad['rows']:\n        observation = row['observation']\n        assert row['success'] and observation['complete'] and observation['pass']\n        assert pin(observation['output'])['sha256'] == pin(observation['expected'])['sha256']\n        if row['role'] == 'candidate': assert observation['image']['api']['sha256'] == image['b2']['sha256']",
+      "new": "    config = read(broad['config']); audit(config); pin(config['node'])\n    assert config['roles'] == ['baseline', 'candidate', 'typescript'] and config['rounds'] == 3\n    cases = {x['id']: x for x in config['cases']}\n    assert len(cases) == len(config['cases']) == 23\n    assert set(cases) == set(broad['coverage']['compileInputIds']) == set(broad['statistics'])\n    keys = [(x['case'], x['role'], x['sample']) for x in broad['rows']]\n    assert len(set(keys)) == len(keys)\n    assert set(keys) == {(case, role, sample) for case in cases for role in config['roles'] for sample in range(3)}\n    preparations = {}\n    for row in broad['preparations']:\n        prepared = passed(row['result'])\n        assert row['success'] and prepared == row['observation']\n        role = prepared['role']; assert role not in preparations\n        assert prepared['stage'] == 'prepare'\n        for pair in prepared.get('copies', []): pin(pair['before']); pin(pair['after'])\n        if role != 'typescript':\n            for value in prepared['image'].values():\n                if isinstance(value, dict) and value.get('sha256'): pin(value)\n        preparations[role] = (pin(row['result']), prepared)\n    assert set(preparations) == set(config['roles'])\n    for row in broad['rows']:\n        observation = row['observation']\n        assert row['success'] and observation['complete'] and observation['pass']\n        assert read(row['result']) == observation\n        request = read(observation['request'])\n        assert request == dict(row['request'], config=broad['config'])\n        assert request['case'] == row['case'] and request['sample'] == row['sample'] == observation['sample']\n        assert request['role'] == row['role'] == observation['role']\n        assert observation['config'] == broad['config'] and observation['stage'] == 'sample'\n        assert row['execution']['complete'] and row['execution']['returncode'] == 0\n        assert row['execution']['command'][-2:] == [observation['request']['file'], row['result']['file']]\n        assert row['execution']['command'][3] == config['node']['file']\n        case = cases[row['case']]; role = row['role']\n        assert observation['source'] == case['source'] and observation['expected'] == case['references'][role]\n        pin(observation['source'])\n        for item in case['files'] + case['emissionInputs']: pin(item)\n        prep_pin, prepared = preparations[role]\n        assert pin(observation['preparation']) == prep_pin and request['preparation'] == observation['preparation']\n        if role != 'typescript': assert observation['image'] == prepared['image']\n        if role == 'candidate':\n            assert observation['image']['api']['sha256'] == image['b2']['sha256']\n            assert observation['image']['checkedGenerator']['sha256'] == pin(attempt_file)['sha256']\n            assert observation['image']['driver']['sha256'] == arena['driver']['sha256']\n            assert observation['image']['runtime']['sha256'] == attempt['runtime']['sha256']\n            assert observation['image']['base']['sha256'] == attempt['base']['sha256']\n        assert pin(observation['output'])['sha256'] == pin(observation['expected'])['sha256']"
+    },
+    {
+      "old": "        performance=summary['aggregate'], release=dict(",
+      "new": "        historicalRelocations=historical_relocations, performance=summary['aggregate'], release=dict("
+    },
+    {
+      "old": "    pin(__file__); pin(PARENT)\n",
+      "new": "    pin(__file__); pin(PARENT)\n    derivation_file = Path(__file__).with_suffix('.derivation.json')\n    derivation = read(derivation_file)\n    assert pin(derivation['output'])['file'] == str(Path(__file__).resolve())\n    rebuilt = Path(pin(derivation['parent'])['file']).read_text()\n    for change in derivation['edits']:\n        assert rebuilt.count(change['old']) == 1\n        rebuilt = rebuilt.replace(change['old'], change['new'])\n    assert rebuilt == Path(__file__).read_text()\n"
+    },
+    {
+      "old": "                      producer=pin(__file__), inheritedReceiptReaders=pin(PARENT),",
+      "new": "                      producer=pin(__file__), inheritedReceiptReaders=pin(PARENT), successorDerivation=pin(derivation_file),"
+    },
+    {
+      "old": "        dataOnly=True, targetExecuted=False, producer=pin(__file__), inheritedReceiptReaders=pin(PARENT),",
+      "new": "        dataOnly=True, targetExecuted=False, producer=pin(__file__), inheritedReceiptReaders=pin(PARENT), successorDerivation=pin(derivation_file),"
+    }
+  ],
+  "reason": "One exact State08 workflow relocation to its retained snapshot, plus stronger arena count and balanced worker/result/image provenance binding. Existing pass and semantic predicates retained.",
+  "targetExecuted": false
+}

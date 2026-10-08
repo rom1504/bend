@@ -75,6 +75,10 @@ def main():
         for old, new in [('inside Phase63', 'inside Phase64'), ('stay in Phase63', 'stay in Phase64')]:
             if old in text:
                 change(old, new)
+        if relative in {'bootstrap/setup.mjs', 'qualification/checked-image.mjs'}:
+            # Frame4 keeps semantic versions 4/6; the selected driver owns decoding.
+            assert text.count(r'/-frame[123]\.json$/') == 1
+            change(r'/-frame[123]\.json$/', r'/-frame[1234]\.json$/')
         if relative == 'qualification/final-plan.py':
             change("BOOTSTRAP_PRODUCER=TOOLS/'phase63/latency/prepare-bootstrap.py'",
                    "BOOTSTRAP_PRODUCER=TOOLS/'phase64/latency/prepare-bootstrap.py'")
@@ -110,8 +114,10 @@ def main():
         baseline=parent['baseline'], inputs=inputs, rows=rows,
         scope='Phase64 writable boundaries and exact producer/factory bindings. Corrected optional '
         'canonicalPath/bytes validation precedes normalized file+sha256 identities from the first run. '
-        'Four semantic controller bodies remain unchanged. Graph-helper/frame3 admission and JDPlan '
-        'reproduction are inherited. No candidate source/API is bound, target run or release admitted. '
+        'Four semantic controller bodies remain unchanged. Graph-helper admission and JDPlan '
+        'reproduction are inherited; the two framed-cache filename gates also recognize frame4, '
+        'using the selected driver decoder with unchanged semantic version checks [4,6]. '
+        'No candidate source/API is bound, target run or release admitted. '
         'The preserved release-preparation command is not invoked by this factory.')
     for file in [out/'methods.json', out/'qualification/b2-methods-derivation.json']:
         with file.open('x') as stream:

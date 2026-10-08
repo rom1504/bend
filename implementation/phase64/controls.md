@@ -229,12 +229,17 @@ cached input, load errors, readiness/admission failures, hash-collision replay
 and a short assembled list retain generic context construction. Host selection
 must require the actual successful owned world-check route from that request.
 
-The unconsumed `prefix-world-context-v4.mjs` controller is an exact recorded
-successor of passed TODO-v3. It retains every earlier assertion and adds full
+The checked-context controller derives from passed TODO-v3. It retains every
+earlier assertion and adds full
 context/index equality, the exact producer bound, actual maximum-query inputs,
 dependent/nested specialization instances and explicit refusal cases. Its
-derivation replay was verified without executing the compiler. Actual API
-preflight and guarded target execution remain pending.
+derivation replay was verified without executing the compiler. Independent
+review caught one controller issue before consumption: `book_context(Nil)`
+directly uses bound zero, so empty fallback has no full maximum scan. The frozen
+v4 remains preserved; v5, SHA256 `2768cdee…`, corrects only this expectation and
+adds its own derivation pin. All 23 required function declarations were verified
+against actual checked State08 API `a2f8b021…`. Guarded target execution remains
+separate.
 
 The associated host delta, SHA256 `458caf63…`, passed read-only review. Its
 `usedPreparedWorld` flag records the actual selected owned ABI-two checker
@@ -249,6 +254,60 @@ host TODO controls. It retains their old corruption, identity and persistence
 cases, adds version-two and missing-bound refusals and six invalid bound scalars,
 and binds the imported graph helper alongside the driver and frame. Its derivation
 was replayed on CPU0; target execution is pending an actual new prepared frame.
+
+## Arena transport rollout review
+
+The isolated arena helper shares the existing constructor schema and graph
+interning. Read-only review found no blocker in its field counts, bounds,
+backward typed references, root null handling, UTF16 offsets or named-object
+materialization. Mandatory and optional segments remain independently validated;
+optional failure cannot mutate the decoded mandatory graph. The wrapper retains
+source/API/range/producer admission and records the same graph ownership.
+
+The host rollout controller is a recorded successor in `cache-arena-v4.mjs`.
+It preserves the JSON-frame controls through the actual legacy writer and adds
+arena root equivalence/coupling, binary mutations with recomputed digests,
+version refusal, memo replacement and filename precedence through frames
+four, three, two and one. A present corrupt newest file must not fall through.
+Raw field-domain and Unicode controls are independently owned by the codec
+reviewer. No execution result is claimed here.
+
+Tooling review found two required rollout changes: development cache validation
+must discover frame four before older files, and a fresh latency-method successor
+must recognize its framed filename instead of attempting plain JSON parsing.
+The existing one-file preparation invariant remains appropriate for fresh
+measurement projects. Folding the arena into the existing graph helper keeps
+its snapshot and release dependency binding; historical tools remain immutable.
+
+The root subsequently reported that the frame4 host rollout passed and the
+separate raw-domain successor passed 87 cases. Explicit `prepareBase()` migration
+remains a distinct integration boundary. Its focused controller,
+`cache-prepare-migration-v1.mjs`, copies the checked snapshot's small staging
+closure and exact API into a fresh project. It starts with only a same-API valid
+frame3, compiles through the real owned driver, invokes actual preparation and
+requires a new frame4 alongside byte-identical frame3. A second compilation must
+produce the identical complete module, and a further preparation must make no
+fact-producing calls or rewrite either frame.
+
+Forwarding wrappers observe the unchanged named API in that private process;
+ordinary `inspect` receives no injected API argument. They require the world
+and context entries to share the same load, prepared state and actual successful
+checker result. The returned context also matches public `book_context` exactly.
+The migration correctly reuses the previously checked Base and prefix state
+while rebuilding the world fact once. No production/compiler-image bytes or
+consumed latency project are changed. Source review and execution remain distinct.
+The codec owner independently reviewed the complete controller against the
+frozen driver and found no source blocker. Controller SHA256 is
+`947de2ec2a90e0bcf5ceedbd8d531f1bc9b5182d6298f5164f0881688fac9ddc`.
+
+The root-owned [migration receipt](../../selfhost/build/phase64/arena-migration-state09/report.json)
+subsequently completed all four steps successfully. Both compilations invoked
+the actual world and matching context entry once and produced the same 14,917
+byte module, SHA256 `2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3`.
+Explicit preparation created frame4, retained frame3 bytes, rebuilt the world
+fact once and reused the prior checked Base/state. A second preparation made
+zero fact-producing calls and changed neither file. This closes the measured
+version's migration gate; it is not a runtime-performance claim.
 
 ## Isolated representation reviews
 
@@ -267,3 +326,56 @@ canonicalize hand-written JSON `-0` to `0`, whereas authentic JSON serialization
 already produces `0`; and the probe's driver pin needs frozen dependency
 provenance to bind its imported baseline graph helper. The codec probe does not
 establish production identity/admission/invalidation integration.
+
+## Final evidence join
+
+The final data-only join is prepared in
+`selfhost/tools/performance/phase64/controls/join-final-qualification-v2.py`.
+It retains the established semantic oracles and distinguishes successful B2
+source type checking from the expected refusal to certify explicitly unsafe
+proofs. Its output is compiler qualification before release; installation and
+release gates remain separate. Until the final receipts close, the recorded
+qualification plan is explicitly incomplete and does not assert a pass.
+
+Data-only preflight found one historical dependency whose live path changed
+after the State08 context controls: `tools/development/workflow.mjs` gained
+frame4 discovery in State09. The exact earlier SHA256
+`54d4e745908cfd6119e8c548927c78f8380a4b0c5704c9d65b5b24a12b8a36a1`
+remains in State08's frozen snapshot and is linked by that attempt's original
+and frozen source identities. V2 records this single approved relocation and
+the current State09 identity separately. It neither changes the old receipt
+nor ignores a hash mismatch. The first joiner and pending plan remain intact;
+the successor verifies its exact recorded derivation before use.
+
+The same preflight checked the already closed strict/export, context/TODO,
+arena-domain, host-rollout, actual migration and broad measurement receipts.
+The broad join additionally checks all 207 distinct case/role/sample keys,
+each on-disk worker result against its embedded observation, and the bound
+request, preparation, image, source and complete emitted module. These checks
+are evidence validation, not new compiler or program executions.
+
+After the root closed all selected targets, the v2 join completed successfully
+and wrote [the final pre-release compiler qualification](evidence/state09-qualification.json),
+SHA256 `513aaff62139ac6f3bb89e35e23c2421e92a5586711212316e89e32430d57c9c`.
+It verified 3,645 input identities. Checked B1 and genuine B2 each passed the
+18 composition, two overapplication, 96 source and 34 numeric observations;
+the maintained suites, direct census, native pairs and program smoke gates
+also passed. Genuine B2 reproduced identical B3 bytes and all 23 complete
+benchmark modules covering 45 points. Source type acceptance succeeded while
+the expected unsafe proof-trust refusal remained explicit. The context, cache
+domain, host rollout, actual preparation migration and balanced 207-worker
+compilation gates all passed. Installation and release remain separate gates;
+this join makes no new generated-program timing or full-language conformance
+claim.
+
+The root then installed the qualified version and completed all five release
+jobs, including the 42 legacy and 24 default CLI observations. Five helper
+integrity controls passed. The separate
+[release evidence join](evidence/state09-release.json), SHA256
+`3ce5055e060b5bd5471f39722832f00ec3e849c86e122c6add4565d49a32dad2`,
+verified 389 identities and all seven current installed files against the
+selected source, API and runtimes. It also rehashed the prior seven files in
+both `dist/release-history/4a208bff…` and the raw `previous-installed` copy, plus
+all 110 protected inherited files. This join replays a recorded successor of
+the established release predicates. The earlier compiler-qualification receipt
+remains unchanged; broader closed-tree preservation has its own evidence.

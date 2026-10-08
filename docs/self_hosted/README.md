@@ -1,36 +1,49 @@
 # Self-hosted compiler: current architecture and development
 
-**Phase63 State09** combines a prepared Base world and parser indexes, shared
-validated graph transport, one library lowering plan, retained arity facts and
-shared host-field analysis. It also carries actual completed source fragments
-instead of rediscovering them through Base. The
-[compiler-request guide](compiler-request-pipeline.md) explains these mechanisms,
-their source/host boundaries and their fallback contracts.
+**Phase64 State09 is installed and verified.** The release extends the
+prepared-world/lowering-plan architecture with original Base TODO counts, an
+exact checked-output bound, retained host signatures, omitted discarded argument
+rendering and indexed frame4 transport. The
+[request pipeline](compiler-request-pipeline.md#phase64-state09-retained-facts-and-indexed-transport)
+and [prepared Base guide](prepared-base-artifacts.md) explain the boundaries.
 
-The [State09 results](../../implementation/phase63/state09-results.md) pass all
-**207 workers across 23 sources, three roles and three rotated rounds**. Genuine
-B2 compilation becomes faster than the Phase61 baseline in the same campaign:
+The [Phase64 State09 comparison](../../implementation/phase64/state09-results.md)
+passes **207 exact-output workers across 23 sources, three roles and three
+rotated rounds**. Genuine-B2 ratios in the same campaign are:
 
-| Clock | Phase61 B2 / TypeScript | State09 B2 / TypeScript |
-| --- | ---: | ---: |
-| Compilation alone | 2.05505× | **1.63275×** |
-| Host/API import plus first compilation | 1.40665× | **1.15092×** |
+| Clock | Phase63 State09 / TypeScript | Phase64 State09 / TypeScript | Time reduction |
+| --- | ---: | ---: | ---: |
+| Compilation alone | 1.64387× | **1.43894×** | 12.47% |
+| Host/API import plus first compilation | 1.18920× | **1.06173×** | 10.72% |
 
-These are equal-source geometric means of per-source three-run median ratios.
-Each sample uses a fresh process with a prepared persistent Base cache;
-preparation and full output verification are outside the clocks. They do not
-measure cold OS caches or the installed checked-B1 CLI. Compilation-only parity
-remains unfinished. All emitted modules pass their qualified byte oracle; this
-is not a new generated-program runtime measurement or speedup claim.
+All 23 sources improve on both clocks. These are equal-source geometric means
+of per-source three-run median ratios, using fresh processes with prepared
+persistent Base caches. Preparation and full output verification are outside the
+clocks. They do not measure cold OS caches, the installed checked-B1 CLI or
+compiled-program execution. Aggregate compilation parity remains unfinished.
+The [previous campaign](../../implementation/phase63/state09-results.md) retains
+its own ratios; its measurements are not combined with this comparison.
 
-**State09 is installed and verified as an equality-derived checked-B1 release.**
-Legacy42, default24 including relocation, and five helper-integrity controls pass. The
-[final qualification index](../../selfhost/build/phase63/final-state09/qualification.json)
-separates source checks, genuine B2/B3 reproduction, output/behavior checks and
-installation. Failed predecessor receipts remain preserved separately. The
-[Phase61 results](../../implementation/phase61/state08-results.md) retain the
-previous release's identities and completed gates; its historical benchmark
-ratios remain separate from the fresh comparison above.
+The compiler has **28,279 physical / 23,199 code lines across 114 Bend modules**:
+164 more physical lines, 19 more definitions and one more type than Phase63.
+This is not a reduction in source complexity. Runtime and host-tool accounting
+remain separate from the compiler's Bend modules.
+
+The packaged compiler is equality-derived checked B1 (`a2f8b021…`); the measured
+genuine B2 (`b09fe54a…`) is separately qualified. Full checked suites and the B2
+source96/numeric34/composition18/overapplication2 matrix pass, with native3 and
+runtime45 controls. B2 freshly type-checks all 3,254 unsafe definitions in
+11.90 seconds and reproduces an identical **4,040,799-byte B3** in 33.42 seconds.
+These are diagnostic gate durations. Expected unsafe proof-trust refusal remains;
+type acceptance and a fixed point do not establish mathematical proof validity.
+
+Install, verification before and after CLI testing, legacy42, default24 including
+relocation, and five helper-integrity controls pass. The
+[qualification index](../../implementation/phase64/evidence/state09-qualification.json),
+[release receipt](../../implementation/phase64/evidence/state09-release.json) and
+[final results](../../implementation/phase64/state09-results.md) retain their
+separate evidence. [Phase63](../../implementation/phase63/state09-results.md) and
+[Phase61](../../implementation/phase61/state08-results.md) are historical releases.
 
 The [allocation guide](compiler-allocation.md) describes six retained Phase58
 changes and their fallback boundaries. Historical
@@ -61,7 +74,8 @@ The survey changes documentation only; it does not qualify a new compiler.
 | [Direct JavaScript backend](../../selfhost/docs/direct-javascript.md) | Current callable/data interface, ordered prefix/value lowering, 4,096-definition analysis bound and qualification limits. |
 | [Architecture](architecture.md) | Dated Phase45 source organization, representations, pipeline and complexity; use backend boundaries for the current backend split. |
 | [Optimization inventory](optimization-inventory.md) | Existing transformations, where they live, how generally they apply, and missing analyses. |
-| [Compiler requests](compiler-request-pipeline.md) | Phase63 State09 ready world, graph transport and lowering plan, with the retained Phase61 foundation; source/host boundaries, measured request costs and fallbacks. |
+| [Compiler requests](compiler-request-pipeline.md) | Phase64 retained facts and frame4 transport, with the Phase63 lowering plan and Phase61 foundation; source/host boundaries, measured request costs and fallbacks. |
+| [Prepared Base artifacts](prepared-base-artifacts.md) | Phase64 State09: original TODO and checked-output facts, frame4 layout, complete validation, identity coupling, fallback and timing boundaries. |
 | [Compiler allocation](compiler-allocation.md) | Six retained Phase58 changes: final-live-field record syntax, constructor queries, scalar residuals, literal choices, distinct dependency edges and shared recursive dispatch; proof and fallback boundaries. |
 | [Private array regions](private-array-regions.md) | Phase47 closed-array representation, ordered operations, host guards and research limits; separate from release qualification. |
 | [Phase48 representations](phase48-representations.md) | RNFA04 mechanisms, composition controls and original-path mutation contracts; the phase report records release status. |
@@ -81,7 +95,7 @@ the architecture; it does not replace those operational references.
 
 - The compiler is written in Bend. The host shell provides files/processes and
   ABI adaptation; ordinary compilation has no TypeScript fallback.
-- This release is a checked B1 derivative, not a newly established self-emitted
+- This historical Phase45 release is a checked B1 derivative, not a newly established self-emitted
   fixed point. Its upstream target remains
   `018751270e800bc222a93dad7f257083ee53a5f7`.
 - The manifest-listed Bend source graph has 23,007 physical lines, 18,983 code

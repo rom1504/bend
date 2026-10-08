@@ -1,23 +1,33 @@
 # Compiler requests: prepared state and structured emission
 
-**Phase63 State09** is installed and verified. Its balanced campaign
-passes **207 workers across 23 sources and three rotated rounds**. Equal-source
-geometric means of median genuine-B2/TypeScript times improve **2.05505× →
-1.63275× for compilation alone**, and **1.40665× → 1.15092× for host/API import
-plus first compilation**. Both comparisons use fresh processes and prepared
-persistent Base caches. Preparation and full output verification are outside
-the clocks; these are not cold OS-cache or installed checked-B1 CLI measurements.
-Every emitted module passes its qualified raw-byte oracle. There is no new
-generated-program speed claim, and compilation-only parity remains unfinished.
+**Phase64 State09 is installed and verified.**
+Its balanced genuine-B2 campaign passes **207 exact-output workers across 23
+sources, three roles and three rotated rounds**. Compared with Phase63 State09
+in the same campaign, equal-source geometric means improve **1.64387× → 1.43894×
+TypeScript for compilation alone** (12.47% less time), and **1.18920× → 1.06173×
+for host/API import plus first compilation** (10.72% less time). Every source
+improves on both clocks. Aggregate compilation parity remains unfinished.
 
-The [State09 results](../../implementation/phase63/state09-results.md) and
-[final qualification index](../../selfhost/build/phase63/final-state09/qualification.json)
-record correctness, self-host reproduction, measurement and release separately.
-The installed package is equality-derived checked B1; legacy42, default24
-including relocation, and five cache-helper integrity controls pass. Phase61's
-[historical release results](../../implementation/phase61/state08-results.md)
-remain unchanged. Source mechanisms for State09 are described
-[below](#phase63-state09-ready-world-and-one-lowering-plan).
+These are fresh processes with prepared persistent Base caches. Preparation and
+full output verification are outside the clocks; the measurements do not cover
+cold OS caches, the installed checked-B1 CLI or generated-program execution.
+The [Phase64 results](../../implementation/phase64/state09-results.md) bind the
+completed comparison and qualification separately.
+
+The installed package is equality-derived checked B1 (`a2f8b021…`); the measured
+genuine B2 is `b09fe54a…`. Full checked and B2 semantic gates, native3 and runtime45
+pass. The B2/B3 fixed point is **4,040,799 bytes**. Fresh own-source type acceptance
+passes; the 3,254 unsafe definitions retain the expected proof-trust refusal.
+Self-check and fixed-point gate durations are 11.90 and 33.42 seconds respectively,
+separate from the clean compiler comparison.
+
+[Release verification](../../implementation/phase64/evidence/state09-release.json)
+records successful installation, verification before/after CLI testing, legacy42,
+default24 including relocation and five helper-integrity controls. The
+[qualification index](../../implementation/phase64/evidence/state09-qualification.json)
+binds the preceding compiler gates. The
+[Phase63 report](../../implementation/phase63/state09-results.md) retains the
+historical release and its earlier campaign ratios.
 
 The compiler owns parsing, checking, specialization and emission in Bend. The
 host owns files, cache transport, identity checks and processes. There is no
@@ -25,6 +35,9 @@ TypeScript compilation fallback, program-name selector or new general pass
 framework. Public core values, quantities, source spans and diagnostic results
 remain the contracts. The [backend boundaries](backend-boundaries.md) describe
 the existing direct JavaScript, legacy JavaScript and native C separation.
+
+The [Phase64 State09 mechanisms](#phase64-state09-retained-facts-and-indexed-transport) extend
+the Phase61–63 foundations described below.
 
 ## Where Phase61 reuses work
 
@@ -153,8 +166,8 @@ emission, as described below.
 
 ## Phase63 State09: ready world and one lowering plan
 
-This section describes the State09 source measured in the completed B2 campaign.
-The installed package passes its separate release gates; the
+This historical section describes the Phase63 State09 source measured in its
+completed B2 campaign. That release passed its separate gates; the
 [results report](../../implementation/phase63/state09-results.md) and
 [qualification index](../../selfhost/build/phase63/final-state09/qualification.json)
 are the authority for completed gates and release status. Rejected experiments
@@ -224,7 +237,7 @@ validation and caller-supplied API paths retain their prior behavior.
 
 The measured Phase63 B1 and B2 images use **named-layout APIs**. Their requests do not
 perform positional ABI encoding. The proposed owned-ABI adapter optimization is
-therefore not part of this candidate. Frame3 is data transport, and its decoder
+therefore not part of that Phase63 release. Frame3 is data transport, and its decoder
 does not implement parsing, checking, lowering or compiler analysis in JavaScript.
 The persistent inspector still supports parse/check modes only.
 
@@ -268,15 +281,72 @@ the shared tail-selection helper used by the field plan. Together with the
 suffix handoff and arity facts, State09 has 11 fewer Bend source lines than
 State06; this small source reduction is separate from performance qualification.
 
+## Phase64 State09: retained facts and indexed transport
+
+These mechanisms are selected in the installed Phase64 State09 release. The
+[Phase64 results](../../implementation/phase64/state09-results.md) keep local
+experiments, completed compiler measurements and release gates separate.
+The changes below preserve the existing Bend parser/checker and lowering plan;
+they retain facts at existing demand points or remove work whose result was
+unused. They do not introduce a general memo table or a replacement compiler IR.
+
+| Boundary | Additional retained work or removal | Contract |
+| --- | --- | --- |
+| Successful checker completion | `KBasePreparedWorld.todos`, counted from final original Base events | Add the actual suffix count only after successful checking and admitted name/constructor separation. |
+| Checked-output context | `KBasePreparedWorld.checkedBound`, the exact maximum in saved checked output | Combine with the actual assembled suffix maximum; preserve the full ordered context/index and ordinary public fallback. |
+| Export signatures | `JDHostSignature`: final result plus instantiated telescope heads | Reuse only within that definition, context and arity; preserve result/input/copyback conversion order. |
+| Recursive tail admission | `jd_argument_shape`: remaining actuals/type and missing formals | Omit expression strings discarded by admission; the selected ordered emitter still renders the arguments. |
+| Small name queries | Exact native-layout and Array-operation equality classifiers | Keep tag/native ownership checks and the original substring fallback for delimiter-bearing names. |
+| Owned-name policy | Filter native declarations before fixed-order ownership queries | Keep original order and full-book foreign/constructor collision checks. |
+| Prepared transport | Frame4 indexed constructor/string tables | Fully validate and materialize the same ADTs; preserve shared roots and optional capability fallback. |
+
+The [prepared Base artifact guide](prepared-base-artifacts.md) explains the
+version-three world fields, actual checker-result coupling, frame4 tables,
+frame3 compatibility and source/API invalidation. In particular, the raw prefix
+maximum is not substituted for the exact checked-output maximum: checking may
+introduce identifiers. The context optimization still constructs the complete
+index; it avoids only rescanning the immutable checked prefix's terms.
+
+In [`host.bend`](../../selfhost/src/back/js/direct/host.bend),
+`jd_host_signature` retains the heads already normalized by the existing result
+walk, after the same dependent `Absent` substitutions. Arguments and copybacks
+reuse those heads rather than traversing the telescope independently. Terminal
+normalization, erased argument indexing, malformed-telescope behavior and
+marshalling refusal bounds remain. The raw host queries remain available; this
+is not reuse across annotation books or export contexts.
+
+In [`core.bend`](../../selfhost/src/back/js/direct/core.bend),
+`jd_argument_shape` follows the same telescope normalization/substitution as the
+old argument query but omits values that `jd_doc_return_self` never consumes.
+The actual transfer or regular emitter preserves argument order, demand, effects
+and emitted text. This differs from the rejected child-type prototype: that
+prototype's extra annotation guards passed local comparisons but regressed its
+clean screen, and it is not part of the selected source.
+
+The name classifiers in
+[`constructors.bend`](../../selfhost/src/back/js/direct/constructors.bend) and
+[`validate.bend`](../../selfhost/src/back/js/validate.bend) preserve the old
+substring behavior for names containing `|`; a plain set would change that raw
+input contract. The policy filter in
+[`api.bend`](../../selfhost/src/driver/api.bend) removes native declarations only
+from owned-name checks, where they cannot violate the rule. Foreign-definition
+and constructor collision checks still receive the full original book.
+
+Compact annotation nodes, lazy Base-body materialization and general dense-ID
+migration are not selected. Existing annotation representation and eager ADT
+materialization remain. Local codec or B1 experiment results must not be used as
+a replacement for the completed genuine-B2 comparison and release gates.
+
 ## Host transport and evidence boundaries
 
 Frame2 records separately hashed book/checker/freshening JSON segments. Admission
 can reuse the verified raw segment digest rather than serialize the parsed state
 again. Only newly `JSON.parse`-owned trees use the narrower span walker; generic
 public object validation retains its alias/cycle/getter treatment. Required
-identity, shape, span, freezing and invalidation checks remain. The binary-codec
+identity, shape, span, freezing and invalidation checks remain. The earlier Phase61 binary-codec
 alternative passed value checks but was rejected because its required validation
-made it slower in the recorded diagnostic.
+made it slower in the recorded diagnostic. That rejected implementation is
+distinct from the selected Phase64 indexed-table transport described above.
 
 Compiler measurements distinguish host import, API load and first compilation.
 Genuine B2 runs in fresh processes using prepared persistent Base caches;
@@ -285,9 +355,9 @@ not imply cold operating-system/page caches or installed checked-B1 CLI timing. 
 not a generated-program speed result. Likewise, checked B1, an emitted B2, fresh
 own-source type acceptance, unsafe proof-trust refusal, B2/B3 byte equality and
 installation are distinct gates. The
-[State09 results matrix](../../implementation/phase63/state09-results.md) and
-[qualification index](../../selfhost/build/phase63/final-state09/qualification.json)
+[Phase64 results matrix](../../implementation/phase64/state09-results.md) and
+[qualification index](../../implementation/phase64/evidence/state09-qualification.json)
 record which actually passed. The historical
 [Phase61 source footprint](../../implementation/phase61/source-footprint.md)
 keeps Bend modules, runtime support, host helpers and research/tests separate;
-its counts are not a new State09 census.
+its counts are not a new Phase64 census.

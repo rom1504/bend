@@ -1,0 +1,313 @@
+{
+  "kind": "phase64-state04-staging-audit",
+  "complete": true,
+  "pass": true,
+  "scope": "Read-only artifact and recorded clean-worker audit; no compiler or benchmark target executed. Left is State04 candidate staging; right is the same State04 B1 reused as State05 baseline.",
+  "preparationReceipts": [
+    {
+      "file": "selfhost/build/phase64/state04-vs03-b1-latency/preparation/prepare-candidate.result.json",
+      "sha256": "4e8b7faaffe8dfd998dc4c8c9b7b7d5cc49fd58c19c633179df052769e3bbf8e",
+      "bytes": 137510
+    },
+    {
+      "file": "selfhost/build/phase64/state05-vs04-b1-latency/preparation/prepare-baseline.result.json",
+      "sha256": "25e307d8ed555f97762abd02b7976ad68bca6e8251803142f4805fb04979e326",
+      "bytes": 137393
+    }
+  ],
+  "campaignReports": [
+    {
+      "file": "selfhost/build/phase64/state04-vs03-b1-latency/baseline-three/report.json",
+      "sha256": "6cf276199b68a0039d3512f380ec25b7c2bbb55cae2e044749ca1ce1e979882b",
+      "bytes": 533209
+    },
+    {
+      "file": "selfhost/build/phase64/state05-vs04-b1-latency/baseline-three/report.json",
+      "sha256": "3e637686d2a4dffea3705969185246acd02424ed17f951eb45aaea5371e4587b",
+      "bytes": 533157
+    }
+  ],
+  "copiedFiles": {
+    "countPerSide": 108,
+    "sameRelativePathsAndSha256": true,
+    "allBeforeAndAfterFilesRehashed": true,
+    "relativeManifestSha256": "d7df515bec9d39661350e8c2ccd0a8cdf27e738a23edb3f742fcfda5ea648d44",
+    "manifestEncoding": "JSON object relative POSIX path -> SHA256; sorted keys; separators comma/colon; UTF-8; no newline",
+    "exactPathMapping": {
+      "leftRoot": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state04-vs03-b1-latency/preparation/prepare-candidate/stage/project",
+      "rightRoot": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state05-vs04-b1-latency/preparation/prepare-baseline/stage/project",
+      "rule": "Each of the 108 copied after.file paths differs only by replacing leftRoot with rightRoot. The relative names and contents hashes are equal."
+    }
+  },
+  "criticalInputs": {
+    "api": {
+      "sha256": "e316e9e1a10034d715a49866c7ca1d55299523e4df001f0c8b54ebdba8e1b703",
+      "bytes": 1965361,
+      "leftPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state04-vs03-b1-latency/preparation/prepare-candidate/stage/project/dist/api.mjs",
+      "rightPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state05-vs04-b1-latency/preparation/prepare-baseline/stage/project/dist/api.mjs",
+      "samePhysicalPath": false
+    },
+    "driver": {
+      "sha256": "fc8abb378ecaa8ee01405885da995dab2021a0b624ef6cbeed0aa5169c8735ac",
+      "bytes": 72878,
+      "leftPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state04-vs03-b1-latency/preparation/prepare-candidate/stage/project/tools/typed-driver.mjs",
+      "rightPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state05-vs04-b1-latency/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+      "samePhysicalPath": false
+    },
+    "source": {
+      "sha256": "2a7bf1f29eb35dafe57c2476d06042e91a13169459a03c6e3d582acb9954547c",
+      "bytes": 1423676,
+      "leftPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state04/snapshot/build/typed/snapshots/fb04f7d6fe9966f4ff8c35cae83bcf41d1a565082f5216fbecd121e6e409b4ff/compiler.bend",
+      "rightPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state04/snapshot/build/typed/snapshots/fb04f7d6fe9966f4ff8c35cae83bcf41d1a565082f5216fbecd121e6e409b4ff/compiler.bend",
+      "samePhysicalPath": true
+    },
+    "runtime": {
+      "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46",
+      "bytes": 57500,
+      "leftPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state04-vs03-b1-latency/preparation/prepare-candidate/stage/project/src/runtime.mjs",
+      "rightPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state05-vs04-b1-latency/preparation/prepare-baseline/stage/project/src/runtime.mjs",
+      "samePhysicalPath": false
+    },
+    "directRuntime": {
+      "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23",
+      "bytes": 13212,
+      "leftPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state04-vs03-b1-latency/preparation/prepare-candidate/stage/project/src/runtime/js/direct.mjs",
+      "rightPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state05-vs04-b1-latency/preparation/prepare-baseline/stage/project/src/runtime/js/direct.mjs",
+      "samePhysicalPath": false
+    },
+    "base": {
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "bytes": 71530,
+      "leftPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "rightPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "samePhysicalPath": true
+    },
+    "checkedGenerator": {
+      "sha256": "e0188b8bc8ea69a05336ba74734dd07a8ee854339370b19c020dd4254c468db6",
+      "bytes": 300469,
+      "leftPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state04/attempt.json",
+      "rightPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state04/attempt.json",
+      "samePhysicalPath": true
+    },
+    "graphHelper": {
+      "sha256": "9c5bbc6af8642107e26ac83237b4b7bad632070573e22caf432e4b549f8daf63",
+      "bytes": 9008,
+      "leftPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state04-vs03-b1-latency/preparation/prepare-candidate/stage/project/tools/base-cache-graph.mjs",
+      "rightPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state05-vs04-b1-latency/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+      "samePhysicalPath": false
+    }
+  },
+  "cache": {
+    "left": {
+      "file": "selfhost/build/phase64/state04-vs03-b1-latency/preparation/prepare-candidate/stage/project/build/typed/cache/base-e316e9e1a10034d715a49866c7ca1d55299523e4df001f0c8b54ebdba8e1b703-c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661-c04628cbf4595eb7fcc0fafe90e6e555f95b4b4691a19005149f3206f3d3f7db-frame3.json",
+      "sha256": "f428a40e8b39a2843c3a850500f52f324ed8ebbf59e55d0c6e96541a6c25596b",
+      "bytes": 1198875
+    },
+    "right": {
+      "file": "selfhost/build/phase64/state05-vs04-b1-latency/preparation/prepare-baseline/stage/project/build/typed/cache/base-e316e9e1a10034d715a49866c7ca1d55299523e4df001f0c8b54ebdba8e1b703-c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661-c04628cbf4595eb7fcc0fafe90e6e555f95b4b4691a19005149f3206f3d3f7db-frame3.json",
+      "sha256": "2485947ff42239958d6f0cbe6b06309e73b7ad9637e4f1131622ce6cfe39e084",
+      "bytes": 1198875
+    },
+    "sameRelativeFilename": true,
+    "headerDiff": {
+      "generated": {
+        "left": "2026-10-07T23:13:25.029Z",
+        "right": "2026-10-07T23:16:26.915Z"
+      }
+    },
+    "allOtherHeaderFieldsEqual": true,
+    "commonHeader": {
+      "version": 6,
+      "termAbi": 1,
+      "compilerSha256": "e316e9e1a10034d715a49866c7ca1d55299523e4df001f0c8b54ebdba8e1b703",
+      "baseSha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "sourcePath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "validatedBy": "check_book",
+      "bookSha256": "a5a7d46487fb7ac09a5978be2b688cdd0bc66dd57471882b174763246d8f215b",
+      "spanAbi": 3,
+      "sourceBegin": 1,
+      "sourceEnd": 71532,
+      "checkedPrefixStateVersion": 1,
+      "checkedPrefixStateProducer": "base_prefix_prepare",
+      "checkedPrefixStateSha256": "e49b6cd8e0cecc96ba4b024333cfe825ee3b75d500ad21662f2b7f36e7e35a80",
+      "freshPrefixStateVersion": 1,
+      "freshPrefixStateProducer": "f_fresh_prefix_prepare",
+      "freshPrefixStateSha256": "e49b6cd8e0cecc96ba4b024333cfe825ee3b75d500ad21662f2b7f36e7e35a80",
+      "preparedWorldVersion": 2,
+      "preparedWorldProducer": "base_prefix_world_prepare",
+      "frontendReadyStateVersion": 1,
+      "frontendReadyStateProducer": "f_ready_prefix_prepare",
+      "format": "bend-base-cache-frame-3",
+      "segments": [
+        917613,
+        280034
+      ],
+      "bookGraphSha256": "a9902732684c633dc753917ce09c197735b1ed5b2db3927c218a5b9d25f9994e",
+      "preparedGraphSha256": "e49b6cd8e0cecc96ba4b024333cfe825ee3b75d500ad21662f2b7f36e7e35a80"
+    },
+    "segments": [
+      {
+        "name": "bookGraph",
+        "bytes": 917613,
+        "sha256": "a9902732684c633dc753917ce09c197735b1ed5b2db3927c218a5b9d25f9994e",
+        "headerDigestVerifiedBoth": true,
+        "exactBytesEqual": true
+      },
+      {
+        "name": "preparedGraph",
+        "bytes": 280034,
+        "sha256": "e49b6cd8e0cecc96ba4b024333cfe825ee3b75d500ad21662f2b7f36e7e35a80",
+        "headerDigestVerifiedBoth": true,
+        "exactBytesEqual": true
+      }
+    ]
+  },
+  "mapWorkers": {
+    "case": "test-map-set-ops",
+    "samplesPerSide": 4,
+    "allPass": true,
+    "allCleanUninstrumented": true,
+    "node": "v24.18.0",
+    "execArgv": [
+      "--stack-size=4096",
+      "--max-old-space-size=1024"
+    ],
+    "affinity": "Cpus_allowed_list:\t3",
+    "commonSource": {
+      "file": "selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+      "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+      "bytes": 5266
+    },
+    "commonOracleAndOutput": {
+      "file": "selfhost/build/phase58/final-last01/b2-program-equality/modules/test-map-set-ops.mjs",
+      "sha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd",
+      "bytes": 132866
+    },
+    "observationExceptPhysicalRuntimePathEqual": true,
+    "samples": [
+      {
+        "sample": 0,
+        "leftWorker": {
+          "file": "selfhost/build/phase64/state04-vs03-b1-latency/baseline-three/test-map-set-ops-0-candidate.result.json",
+          "sha256": "59325bb0260a64cab714aa140396f2baf8e07db610be517291867f1018456b74",
+          "bytes": 5267
+        },
+        "rightWorker": {
+          "file": "selfhost/build/phase64/state05-vs04-b1-latency/baseline-three/test-map-set-ops-0-baseline.result.json",
+          "sha256": "4566c504f5431ca0ef4b0b6c9f2543685bc69c62b05c8829fa7fa9f9b14a0a60",
+          "bytes": 5258
+        },
+        "leftOutputPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state04-vs03-b1-latency/baseline-three/test-map-set-ops-0-candidate.mjs",
+        "rightOutputPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state05-vs04-b1-latency/baseline-three/test-map-set-ops-0-baseline.mjs",
+        "sameSourceAndOracle": true,
+        "exactOutputEqualsOtherAndOracle": true
+      },
+      {
+        "sample": 1,
+        "leftWorker": {
+          "file": "selfhost/build/phase64/state04-vs03-b1-latency/baseline-three/test-map-set-ops-1-candidate.result.json",
+          "sha256": "9f97fd4df0f8587efbf818fd07338941c9c39697efb28712e3c19071d9bfddfd",
+          "bytes": 5290
+        },
+        "rightWorker": {
+          "file": "selfhost/build/phase64/state05-vs04-b1-latency/baseline-three/test-map-set-ops-1-baseline.result.json",
+          "sha256": "f17bfebfb00586c0ce442d01db57617211167b26f08e8b395526f4106508c485",
+          "bytes": 5259
+        },
+        "leftOutputPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state04-vs03-b1-latency/baseline-three/test-map-set-ops-1-candidate.mjs",
+        "rightOutputPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state05-vs04-b1-latency/baseline-three/test-map-set-ops-1-baseline.mjs",
+        "sameSourceAndOracle": true,
+        "exactOutputEqualsOtherAndOracle": true
+      },
+      {
+        "sample": 2,
+        "leftWorker": {
+          "file": "selfhost/build/phase64/state04-vs03-b1-latency/baseline-three/test-map-set-ops-2-candidate.result.json",
+          "sha256": "5706d991cb4cc2ce8001c2003b8addf3d8bf6a415e8e2e76546c0877bb003fd6",
+          "bytes": 5270
+        },
+        "rightWorker": {
+          "file": "selfhost/build/phase64/state05-vs04-b1-latency/baseline-three/test-map-set-ops-2-baseline.result.json",
+          "sha256": "9603516dd6b2b32cbc5347a288eba45d9d39e5771d993d77c70eed5f1bac8c42",
+          "bytes": 5275
+        },
+        "leftOutputPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state04-vs03-b1-latency/baseline-three/test-map-set-ops-2-candidate.mjs",
+        "rightOutputPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state05-vs04-b1-latency/baseline-three/test-map-set-ops-2-baseline.mjs",
+        "sameSourceAndOracle": true,
+        "exactOutputEqualsOtherAndOracle": true
+      },
+      {
+        "sample": 3,
+        "leftWorker": {
+          "file": "selfhost/build/phase64/state04-vs03-b1-latency/baseline-three/test-map-set-ops-3-candidate.result.json",
+          "sha256": "0b67ed7450cbf964ae676a717d9057d1674265b610ea92a1af2c7caffb27bc24",
+          "bytes": 5284
+        },
+        "rightWorker": {
+          "file": "selfhost/build/phase64/state05-vs04-b1-latency/baseline-three/test-map-set-ops-3-baseline.result.json",
+          "sha256": "3d1371d33702153bc1809c54f341a40073daab918ab3481f597fc16619129c82",
+          "bytes": 5259
+        },
+        "leftOutputPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state04-vs03-b1-latency/baseline-three/test-map-set-ops-3-candidate.mjs",
+        "rightOutputPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/state05-vs04-b1-latency/baseline-three/test-map-set-ops-3-baseline.mjs",
+        "sameSourceAndOracle": true,
+        "exactOutputEqualsOtherAndOracle": true
+      }
+    ]
+  },
+  "sourceReasoning": {
+    "driver": {
+      "file": "selfhost/build/phase64/checked-state04/snapshot/tools/typed-driver.mjs",
+      "sha256": "fc8abb378ecaa8ee01405885da995dab2021a0b624ef6cbeed0aa5169c8735ac",
+      "bytes": 72878
+    },
+    "graphHelper": {
+      "file": "selfhost/build/phase64/state04-vs03-b1-latency/preparation/prepare-candidate/stage/project/tools/base-cache-graph.mjs",
+      "sha256": "9c5bbc6af8642107e26ac83237b4b7bad632070573e22caf432e4b549f8daf63",
+      "bytes": 9008
+    },
+    "generatedOccurrences": [
+      {
+        "line": 3,
+        "text": "// specialization and JS emission execute the generated Bend API."
+      },
+      {
+        "line": 150,
+        "text": "const report={stage:'upstream-bootstrap',revision,generated:new Date().toISOString(),apiPath,apiSha256:hash(apiPath),baseSha256:hash(bundledBasePath),"
+      },
+      {
+        "line": 577,
+        "text": "const cached={version,...(info.termAbi?{termAbi:info.termAbi}:{}),compilerSha256,baseSha256,sourcePath,validatedBy:'check_book',generated:new Date().toISOString(),"
+      },
+      {
+        "line": 894,
+        "text": "if(args[0]==='--prepare-base') {const result=await prepareBase();console.log('Base checked by generated Bend API: '+result.baseSha256);return;}"
+      }
+    ],
+    "helperGeneratedOccurrences": [],
+    "admissionFunctions": [
+      {
+        "name": "validateSpanCacheFrame",
+        "line": 363
+      },
+      {
+        "name": "admitPreparedWorld",
+        "line": 515
+      },
+      {
+        "name": "admitFrontendReadyState",
+        "line": 521
+      },
+      {
+        "name": "readBaseCache",
+        "line": 527
+      }
+    ],
+    "finding": "The generated timestamp is written as metadata and is not tested by cache/span/prepared-world/frontend admission. The reader does hash the complete cache bytes for optional in-process memo identity (lines 535-539), so whole-file hashes differ; the decoded payload segments and all admission-relevant header fields are equal. This is source reasoning, not a record of branches taken."
+  },
+  "limitations": [
+    "Historical clean workers did not instrument optional path calls: do not infer observed prepared-world/frontend-ready admission or use from these artifacts.",
+    "This audit establishes byte identities and physical path/timestamp differences; it does not establish a timing cause. Independent A/A timing work is outside this evidence.",
+    "Checked B1 images are not production-qualified B2 images; both receipts explicitly set productionQualified=false."
+  ]
+}

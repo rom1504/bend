@@ -1,12 +1,51 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
-[Phase61 results](../implementation/phase61/state08-results.md),
+[Phase64 results](../implementation/phase64/state09-results.md),
 [backend boundaries](../docs/self_hosted/backend-boundaries.md) and
 [direct JavaScript guide](docs/direct-javascript.md).
-**Phase61 state08 is installed and verified.** Direct JavaScript is the default;
+**Phase64 State09 is installed and verified.** Direct JavaScript is the default;
 `--legacy-js` and native targets retain their contracts. Ordinary compilation
 runs Bend code without a TypeScript fallback.
+
+Its [pipeline changes](../docs/self_hosted/compiler-request-pipeline.md#phase64-state09-retained-facts-and-indexed-transport)
+and [prepared Base artifacts](../docs/self_hosted/prepared-base-artifacts.md)
+retain original TODO counts, exact checked-output bounds and host signatures,
+avoid discarded argument rendering, and transport validated graphs in indexed
+frame4 tables. Compiler algorithms remain Bend. See the
+[Phase64 results](../implementation/phase64/state09-results.md) and
+[release verification](../implementation/phase64/evidence/state09-release.json).
+
+The [Phase64 genuine-B2 comparison](../implementation/phase64/state09-results.md)
+passes **207 exact outputs across 23 sources and three balanced rounds**.
+Compilation improves **1.64387× → 1.43894× TypeScript** (12.47% less time), and
+host/API import plus first compilation **1.18920× → 1.06173×** (10.72% less time),
+versus Phase63 measured in the same campaign. All 23 sources improve on both
+clocks. These fresh processes use prepared Base caches; preparation and full
+output verification are outside timing. This is not installed-B1 CLI timing or
+a generated-program execution result.
+
+Compiler source has **28,279 physical / 23,199 code lines in 114 Bend modules**:
++164 physical lines, +19 definitions and one additional type over Phase63.
+Host tools and runtime sources are counted separately.
+
+The installed equality-derived checked B1 is `a2f8b021…`; the separately measured
+and qualified genuine B2 is `b09fe54a…`. Full checked/B2 source96, numeric34,
+composition18 and overapplication2 gates pass, along with native3 and runtime45.
+The genuine B2 accepts its own source in **11.90 seconds** and emits the identical
+**4,040,799-byte B3 in 33.42 seconds**. These are diagnostic gate durations, not
+the clean speed comparison. All 3,254 definitions are unsafe, so proof trust is
+expectedly refused despite successful type acceptance and self-reproduction.
+Install, release verification before/after CLI tests, legacy42, default24 including
+relocation, and five helper-integrity controls pass. The
+[qualification index](../implementation/phase64/evidence/state09-qualification.json)
+records the distinct compiler gates.
+
+## Historical Phase61 snapshot
+
+The figures below retain their original Phase61 scope. Current installed-release
+measurements and qualification are in the
+[Phase64 State09 report](../implementation/phase64/state09-results.md).
 
 The genuine direct B2 freshly type-checks its complete source in **11.397 seconds
 of check-request time** (**17.248 internal / 17.385 supervised seconds**) and emits a
@@ -24,7 +63,7 @@ See the [image workflow](../docs/self_hosted/compiler-image-generation.md).
 modules: +1,193 physical / +976 code lines relative to Phase58. All 17 native
 modules and both runtimes retain exact bytes; the typed driver and maintained
 workflow changed. The [compiler-request guide](../docs/self_hosted/compiler-request-pipeline.md)
-describes the current mechanisms. The six changes in the
+describes the retained mechanisms and current Phase64 implementation. The six changes in the
 [allocation guide](../docs/self_hosted/compiler-allocation.md) remain Phase58 history.
 
 The [Phase61 results](../implementation/phase61/state08-results.md) separate
@@ -49,8 +88,9 @@ node cli.mjs tests/conformance/typed-smoke/base-u32.bend --legacy-js --run
 
 The [benchmark recipes](tools/performance/phase53/PLAN.md) cover checked acquisition,
 fast screens and serial full-corpus validation. Use fresh attempts and the
-[Phase61 results matrix](../implementation/phase61/state08-results.md) for the
-selected image. Historical [Phase56 recipes](tools/performance/phase56/README.md)
+[Phase64 results](../implementation/phase64/state09-results.md) for the
+installed image; the [Phase61 results matrix](../implementation/phase61/state08-results.md)
+retains its historical image bindings. Historical [Phase56 recipes](tools/performance/phase56/README.md)
 require fresh identity bindings before replay. CPU/allocation/V8
 [diagnostics](tools/performance/programs/DIAGNOSTICS.md) remain separate from clean
 timing. The pin remains `018751270e800bc222a93dad7f257083ee53a5f7`, after Bend 2.0.34.

@@ -155,6 +155,9 @@ different campaigns are not combined into a claimed cumulative speedup.
 | [State04 / State03](evidence/state04-vs03-b1-three.json) | Avoid constructing discarded child types | +3.75% | −3.06% | +6.58% | 1.02344 | 24/24 |
 | [State05 / State04](evidence/state05-vs04-b1-three.json) | Name-membership rejection guards | −1.25% | −1.73% | −2.07% | 0.98320 | 24/24 |
 | [State06 / State03](evidence/state06-vs03-b1-three.json) | Membership guards after removing State04 | −0.56% | −1.40% | −2.71% | 0.98439 | 24/24 |
+| [State07 / State06](evidence/state07-vs06-b1-three.json) | Skip discarded argument values in tail selection | −5.80% | −1.79% | +0.06% | 0.97460 | 24/24 |
+| [State08 / State07](evidence/state08-vs07-b1-three.json) | Reuse the prepared bound for context construction | −1.63% | −1.68% | +0.14% | 0.98944 | 24/24 |
+| [State09 / State08](evidence/state09-vs08-b1-three.json) | Indexed frame4 cache decoding | −17.59% | −6.44% | −1.35% | 0.91281 | 24/24 |
 
 For State03, Numeric's source medians are 389.88 → 374.26 ms, with overlapping
 sample ranges. Lexer changes 705.61 → 700.23 ms and Map 1449.64 → 1437.90 ms.
@@ -188,3 +191,138 @@ is larger than several incremental point estimates. We do not know its cause
 from these receipts. It strengthens the need for paired same-campaign comparisons
 and a direct final B2 comparison, and argues against multiplying small successive
 ratios into an asserted cumulative improvement.
+
+The [State04 staging audit](evidence/state04-staging-audit.json) rehashed both
+108-file prepared projects. API, driver, cache helper, source, runtimes and Base
+are identical. The book segment (917,613 bytes) and prepared segment (280,034
+bytes) are byte-identical and match their header digests. The only header
+difference is the generation timestamp; source inspection shows that admission
+does not test that field. All four Map source/oracle/output joins on each side
+also match. Physical module paths differ, as recorded. These facts rule out
+different recorded compiler/cache/source contents; historical clean workers did
+not instrument optional API paths, so the audit does not invent such observations
+or establish the cause of the timing shift.
+
+The [fresh same-State04 A/A comparison](evidence/state04-aa-b1-map.json) then
+passed all 12 complete output checks over six balanced Map rounds. Its identical
+images nevertheless measured medians of **1422.94 and 1477.31 ms**, an apparent
+3.82% difference; combined imports plus compilation differed by 3.66%. Most
+candidate-role second-position samples were about 1490 ms, while first-position
+samples were 1414–1466 ms. Both positions were represented equally. Within this
+run, several slower samples also had lower peak RSS, while API import times
+stayed close to 52 ms; that correlation is not proof of a GC cause and does not
+explain the earlier cross-campaign shift.
+
+This A/A result places the 1–3% B1 point estimates within demonstrated local
+variability. They are useful screening signals and retain their exact output
+checks, but are **not established isolated speedups**. State07's Numeric
+improvement is larger, while its Map result is essentially unchanged. Final
+selection must use a direct genuine-B2 comparison against the frozen baseline,
+with broader repeated coverage, rather than a product of these small B1 ratios.
+
+State09 provides the clearest B1 result: it has **the identical compiler API
+bytes as State08**, while replacing the staged cache encoding/decoding path with
+frame4. Compilation medians change 368.16 → 303.39 ms for Numeric, 665.47 →
+622.62 ms for Lexer and 1431.76 → 1412.43 ms for Map. The equal-source ratio is
+0.91281, and imports plus compilation gives 0.92456. Numeric's 17.59% reduction
+is substantially larger than the observed A/A difference; Map's 1.35% change
+remains within that variability. The 24 complete output checks all pass. Root
+selected State09 for genuine B2 generation and full qualification; those later
+results are not inferred from this checked-B1 screen.
+
+## Selected genuine B2: final 23-source comparison
+
+The [completed direct B2 campaign](evidence/state09-b2-broad.json) compares
+Phase63 State09 B2, Phase64 State09 B2 and pinned TypeScript in one balanced
+campaign. All **207/207** fresh workers reproduce their complete role-qualified
+output modules: 23 sources, three roles and three rounds. Each source has equal
+weight in the geometric mean of its within-source median ratios.
+
+| Clock | Previous B2 / TS | Selected B2 / TS | Selected / previous B2 | Sources improved |
+| --- | ---: | ---: | ---: | ---: |
+| Compilation after imports | 1.64387× | **1.43894×** | 0.87534× (−12.47%) | 23/23 |
+| Host import + API import + compilation | 1.18920× | **1.06173×** | 0.89281× (−10.72%) | 23/23 |
+
+The [source-by-source plot](compilation-ratios.svg) shows both clocks. On all
+23 sources, the slowest of the three candidate samples is faster than the
+fastest of the three baseline samples, for both clocks. This is a descriptive
+property of the saved sample ranges, not a confidence interval.
+
+Compilation reductions range from **3.74% to 20.95%**, while combined reductions
+range from 3.49% to 16.45%. Candidate compilation relative to TypeScript ranges
+from 0.87374× to 1.86289×. Numeric recurrence is faster than TypeScript in this
+campaign; local-fold is essentially at parity (0.99856×). The other 21 sources
+remain slower. Five sources are below TypeScript on the combined clock.
+
+| Source | Previous B2 | Selected B2 | TypeScript | Selected B2 / TS |
+| --- | ---: | ---: | ---: | ---: |
+| Numeric recurrence | 330.07 ms | 260.93 ms | 298.64 ms | 0.874× |
+| Lexer | 694.14 ms | 580.86 ms | 351.34 ms | 1.653× |
+| Map/set operations | 1096.65 ms | 1034.93 ms | 581.38 ms | 1.780× |
+| Local fold | 379.72 ms | 309.87 ms | 310.32 ms | 0.999× |
+| Active raytrace | 936.83 ms | 901.75 ms | 484.06 ms | 1.863× |
+
+This directly measured bundle result replaces any attempt to compound the small
+B1 screens. It is stronger evidence of a broad gain: every source improves, and
+the aggregate change exceeds the earlier A/A discrepancy. It does not establish
+a precise independent contribution for each retained change or turn the
+three-round sample into a confidence interval. The largest remaining relative
+deficits occur on larger compilation workloads rather than Numeric's small
+fixed-cost case.
+
+The campaign completed in **218.52 seconds** (3 minutes 38.5 seconds), excluding
+persistent-cache preparation. Maximum worker process-tree RSS was **166.18 MiB**.
+Every measured request starts a new process with an already prepared persistent
+Base cache; this is neither a cache rebuild nor a long-running warm compiler.
+Compilation excludes host/API imports; the combined clock adds those two actual
+imports, not shell launch or process shutdown. These results measure compiler
+latency, **not generated-program execution speed**. Full emitted-output equality
+preserves the tested artifacts; fresh semantic, generated-program and release
+qualification are separate gates.
+
+Both measured images are genuine Bend-emitted B2 artifacts. The selected image
+is `b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e`;
+the baseline is `e838cbab6e6543d1785da0474c50c1c33ab91e6806d2e6796cfcbeabf5b98003`.
+Method02 admits frame4 cache filenames while retaining the selected frozen
+driver's decoder as the authoritative validator, along with all timing and
+output checks. The compact evidence pins the original campaign, config, method
+and actual image lineage, and retains every sample used in the medians.
+
+## Time accounting, interim
+
+The [closed-guard account](evidence/time-account-interim01.json) covers the
+campaign start at 22:49:46 UTC through 23:37:10 UTC on 2026-10-07. The cutoff is
+an intermediate observation, not phase completion. Of 47 minutes 24.6 seconds
+elapsed, the union of 294 closed target guard intervals occupied 20 minutes
+27.8 seconds, or 43.16%. Two receipts failed. Nested guards and reused receipts
+are not double-counted.
+
+The remaining 26 minutes 56.8 seconds is unclassified time, including source
+implementation, tool preparation, analysis, review and activity not represented
+by these guards. It is not a measurement of waiting, idle time or CPU utilization.
+Data analysis used CPU0 while root alone ran guarded targets on CPU3. The phase
+used short three-source B1 screens to avoid generating a genuine B2 and running
+a broad campaign for every proposal, and an A/A falsifier to expose the limits of small
+timing deltas before final selection.
+
+## Final target accounting and preservation
+
+After all selected compiler, semantic, release and helper-integrity targets
+closed, the [final guard account](evidence/time-account-final.json) records the
+interval from 2026-10-07 22:49:46 UTC through 2026-10-08 00:04:59 UTC:
+**75 minutes 13.5 seconds**. The union of 669 closed guard receipts occupies
+**36 minutes 22.6 seconds (48.36%)**. Two failed receipts remain recorded; there
+are no unfinished, later-finished or unreadable guard receipts at this cutoff.
+The remaining **38 minutes 50.9 seconds** is unclassified implementation,
+analysis, review and other unobserved work. It is not measured waiting or CPU
+utilization. Documentation, evidence archival and Git publication after this
+cutoff are outside this time account.
+
+The [preservation verification](evidence/closed-evidence-preservation.json)
+rehashed all **16,691** files in closed Phase63 against its published archive
+manifest: 521,756,245 bytes, with no missing, additional, changed or symbolic-link
+entries. The published 78,204,174-byte archive also retains its recorded hash.
+All **110** inherited protected files match the Phase64 baseline, covering
+58,178,385 bytes. The verification made no changes to Phase63 or protected files;
+its compact raw receipt and tracked copy are byte-identical. Final Phase64 raw
+closure and archival remain root's separate publication step.

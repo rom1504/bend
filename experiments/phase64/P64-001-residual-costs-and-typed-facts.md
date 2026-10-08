@@ -1,7 +1,8 @@
 # P64-001: residual costs, retained Base facts and typed backend facts
 
 Registered before Phase64 target execution on October 7, 2026.
-Status: investigate; no result or selected source change yet.
+Status: complete; Phase64 State09 installed and verified. Compiler source is
+frozen at `4e5fe70`. [Final report](../../implementation/phase64/state09-results.md).
 
 The [design](../../design/phase64/typed-facts-and-compact-state.md) defines the
 baseline, independent H1/H2 prototypes, conditional representation follow-ups,
@@ -17,3 +18,29 @@ microbenchmark; worse clean request time or excessive memory/complexity cost.
 Correctness, measured benefit and promotion are separate decisions. Failed,
 invalid and rejected attempts remain available with original statuses. Detailed
 H1/H2/H3/H4 evidence records will be split as actual prototypes are frozen.
+
+## Result and disposition
+
+The final balanced genuine-B2 comparison passes 207/207 workers across 23
+independent sources. Compilation improves 1.64387× → 1.43894× TypeScript
+(12.47% less time); imports plus compilation improve 1.18920× → 1.06173×
+(10.72%). All 23 sources improve, and complete generated modules remain exact.
+
+- **H1 retained:** original-prefix TODO count and exact checked Base bound;
+  a one-time native-definition filter reduces repeated owned-name work.
+- **H2 partly retained:** host telescope heads, exact name classifiers and
+  shape-only tail admission. Small isolated B1 estimates are below/near observed
+  noise; the full bundle is measured separately. Broader typed-plan work remains
+  unproved. Child-type avoidance passed correctness but regressed time and was
+  removed.
+- **H3 retained as eager indexed transport:** frame4 removes intermediate JSON
+  record work while preserving complete validation. Real migration, fallback,
+  corruption and provenance controls pass. It is not lazy materialization.
+- **H4 deferred after investigation:** compact annotations' measured producer
+  allocation share was only 0.8–4.1%; no semantic arena or compact core was shipped.
+
+The [size audit](../../implementation/phase64/size.md) records +164 physical Bend
+lines (+0.58%), +19 definitions and one type, plus host serialization complexity.
+Full checked/B2, native/runtime, reproduction and installed release gates pass.
+Unsafe mathematical-proof refusal remains expected. Registration and failed
+controller receipts remain available; no rejected candidate is called passing.

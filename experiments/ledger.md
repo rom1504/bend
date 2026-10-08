@@ -3862,3 +3862,44 @@ fact experiments. Indexed Base loading or compact representation follow only
 when measurements justify them. Root retains serial guarded target execution;
 agents own disjoint source/data/review work. Baseline110 inherited files and
 seven installed artifacts were rehashed. No Phase64 result or promotion yet.
+
+### Phase64 State09 installed and evidence closed — 2026-10-08
+
+The [final report](../implementation/phase64/state09-results.md) records a
+balanced 207-worker genuine-B2 comparison: compilation **1.64387× → 1.43894× TS**
+(12.47% less time), imports plus first compilation **1.18920× → 1.06173×**
+(10.72%). All 23 sources improve, and complete generated modules remain exact.
+The installed package is equality-derived checked B1; measured B2 is distinct.
+
+The strongest local discriminator was frame4: the same compiler API with an
+indexed eager decoder reduced reconstruction cost. Original Base TODO and
+checked-bound facts, retained host telescope heads, exact name classifiers,
+policy filtering and discarded-argument elimination join the selected bundle.
+An annotated-child type shortcut regressed time despite fewer queries and was
+rolled back. Compact annotations were deferred after allocation evidence.
+Small B1 estimates remain provisional after a 3.82% identical-image A/A effect.
+
+[Compiler qualification](../implementation/phase64/evidence/state09-qualification.json)
+verifies 3,645 identities; [release qualification](../implementation/phase64/evidence/state09-release.json)
+verifies 389. Strict36/export95, full checked/B2 matrices, native/runtime checks,
+fresh own-source type acceptance, exact B2/B3, raw23/point45 equality,
+legacy42/default24 and helper5 pass. Expected unsafe proof-trust refusal remains.
+The exact historical workflow relocation is explicit; old receipts are unchanged.
+
+The source grows 164 physical Bend lines (+0.58%), 19 definitions and one type;
+host serialization adds a format compatibility obligation. All 110 inherited
+files, all 16,691 closed Phase63 files and its archive were verified unchanged.
+The prior seven installed artifacts are retained twice.
+
+The [closed capsule](../selfhost/tools/performance/phase64/artifacts/README.md)
+contains **15,922 files**, 503,536,103 uncompressed bytes and an 82,603,477-byte
+archive, SHA256 `62785f6e59c5c7a1984d948bcf2cd0acbc2962da37a2d1a6b0ee160dc8f4a357`.
+Every member was reopened and checked, followed by the unchanged input inventory.
+Through final qualification, 75m13.5s elapsed and 36m22.6s occupied guarded
+targets; the remainder is unclassified work, not measured waiting.
+
+**Updated frontier:** compilation parity still needs about 30.5% less time.
+Profile the selected B2 again before expanding typed-fact sharing or removing
+another whole repeated traversal. Reuse the short loop; do not equate reduced
+work counters, warm throughput or an import-inclusive ratio with fresh
+compilation parity. No upstream migration or PR comment was made.

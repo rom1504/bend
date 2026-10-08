@@ -170,3 +170,85 @@ execution; there is one v1 controller and no rewritten run evidence.
 
 No Node/compiler targets were launched by this agent. Static data inspection
 used CPU0. All target execution and selection remain root-owned.
+
+## Eager discriminator result and isolated integration
+
+Root ran the preserved prototype in four balanced fresh-process role pairs.
+All 18 preparation controls and all eight workers passed. The complete local
+codec clock was:
+
+| Representation | Four first-decode samples, ms | Median, ms |
+| --- | --- | ---: |
+| Existing frame3 | 128.894, 129.616, 129.981, 123.221 | 129.255 |
+| Indexed arena prototype | 91.972, 71.057, 57.081, 71.271 | 71.164 |
+
+This saves **58.091 ms (44.94%) in the measured codec scope**. It is not a
+whole-compiler speed result. The indexed samples have substantial variation;
+the complete request screen remains necessary. Artifact sizes are 1,198,875
+versus 1,160,392 bytes, only a 3.21% reduction. The mechanism is avoiding JSON
+record arrays and repeated string materialization, not a large disk-byte saving.
+The prototype writer took 165.545 ms outside the measured request clock.
+Raw evidence is retained under
+`selfhost/build/phase64/indexed-eager01/{manifest,0-frame3,0-indexed,...}.json`.
+
+The result justifies a production integration candidate, not promotion.
+[`arena-integration-v1.json`](../../selfhost/tools/performance/phase64/cache-artifact/arena-integration-v1.json)
+pins three **unapplied** patches against the exact State08 checked-bound source:
+
+- Fold `encodeBaseArena` and `decodeBaseArena` into the existing
+  `base-cache-graph.mjs`. The constructor schema and exact structural interning
+  are shared with the unchanged JSON encoding. There is no new production
+  import, snapshot dependency or generic storage framework.
+- Keep the old frame2/frame3 writer behavior for compatibility. Explicit Base
+  preparation uses the new frame4 writer for the existing prepared-world API.
+  The envelope retains the two independent graph digests and all identity,
+  producer and version metadata. The decoder validates every record eagerly.
+- Select filenames in order frame4, frame3, frame2, frame1 only when the newer
+  file is absent. A corrupt present frame4 does not fall through to stale
+  bytes. Explicit preparation upgrades a fallback-only cache to frame4.
+  The workflow cache selector recognizes the same order.
+
+World record sizes from the original six fields through TODO and checked-bound
+facts remain readable. Actual permission to consume a fact still requires the
+matching producer/version and exact Base/state root binding in the driver.
+Invalid optional arenas drop every optional accelerator; the mandatory Base
+book remains available to the existing fallback checker. Invalid mandatory
+arenas refuse the cache. Neither a digest nor a valid record schema proves the
+semantic contents of a prepared world; the trusted local producer contract is
+unchanged.
+
+The strict successor
+[`arena-controls-v1.mjs`](../../selfhost/tools/performance/phase64/cache-artifact/arena-controls-v1.mjs)
+is prepared for root execution. It checks actual graph values and bijective
+sharing, unchanged JSON writer bytes, every constructor and unsigned endpoint,
+old world layouts, reference/root subtypes, malformed lengths and offsets,
+nonzero padding, scalar Unicode versus ordinary code-unit strings, and invalid
+unused records in both segments. A separate driver controller covers metadata,
+root admission, fallback and persistent-cache invalidation. No pass is claimed
+for these successor controls until their recorded execution.
+
+The active latency setup also requires a fresh method version accepting the
+frame4 filename; its semantic cache versions remain 4/6. Its one-cache-file
+assertion should run in a fresh preparation directory. Historical frame3
+controllers and their consumed source remain unchanged. The shared helper's
+existing bootstrap/snapshot/release provenance binding covers the new codec.
+
+Root subsequently ran the production domain controller against the State08
+frame: **85/85 controls passed**, recorded in
+`selfhost/build/phase64/arena-domain01/report.json`. The checked-context and
+world-version-three gates also passed independently. These passes establish
+more than the earlier standalone prototype, but still do not measure full
+request speed or authorize a semantic claim about arbitrary prepared facts.
+
+Independent review then identified an encoder-domain edge outside the genuine
+producer frames: JSON-based structural interning could merge a `-0` field into
+an earlier equivalent `0` record before the arena writer rejected `-0`.
+The consumed v1 helper/controller and their successful result remain unchanged.
+[`arena-integration-v2.json`](../../selfhost/tools/performance/phase64/cache-artifact/arena-integration-v2.json)
+selects a small isolated successor: the shared record builder optionally checks
+original unsigned fields **before** interning, and only the arena writer enables
+that check. Legacy JSON encoding retains its prior behavior and bytes.
+[`arena-controls-v2.mjs`](../../selfhost/tools/performance/phase64/cache-artifact/arena-controls-v2.mjs)
+retains the 85 controls and adds both `[0, -0]` and `[-0, 0]` root orderings.
+The reviewed driver/workflow patches are unchanged. v2 remains an unapplied
+candidate pending root execution and integration.

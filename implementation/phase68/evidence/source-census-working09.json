@@ -1,0 +1,2161 @@
+{
+  "kind": "phase68-frozen-module-census",
+  "version": 1,
+  "complete": true,
+  "scope": "Manifest compiler Bend modules only; no targets executed or release qualified.",
+  "method": "UTF-8 splitlines; code excludes blank and full-line # comments; def/law/type count anchored declarations. Same counting rules as Phase66.",
+  "exclusions": "Assembled compiler, fixture modules, proposals, tests, docs, host tooling, runtime C/JS and generated images.",
+  "producer": {
+    "file": "implementation/phase68/source-census.py",
+    "sha256": "7917c5f9a7a825ec6eaec170555c0f478ff79b4eb9bee01c87ff8a7bb36f8647"
+  },
+  "baseline": {
+    "attempt": {
+      "file": "selfhost/build/phase67/scalars-build01/attempt.json",
+      "sha256": "ad2e82cd5629450e7a7bf3c6d128c37b28a8072d62cdc4d2ad1534b05d92712f"
+    },
+    "manifest": {
+      "file": "selfhost/build/phase67/scalars-build01/snapshot/src/compiler.json",
+      "sha256": "e7bb9f5c489220bb5270f7aa687407ef550d2452b5570eae283bdf7d9b89fb5e"
+    },
+    "apiSha256": "c76f111391e337ec76645fe27b45608f52c0a3ae5256691241a11db0360c1fb3",
+    "excludedSnapshotBend": [
+      "src/back/native/fixtures/override_add.bend",
+      "src/compiler.bend"
+    ],
+    "modules": {
+      "src/core/term.bend": {
+        "sha256": "d75234683496e33fcb59cd3598979245700733236d9326025d298f9c33ef33d3",
+        "physicalLines": 679,
+        "codeLines": 571,
+        "definitions": 73,
+        "laws": 10,
+        "types": 2,
+        "utf8Bytes": 19671
+      },
+      "src/core/index.bend": {
+        "sha256": "51ce95941f955ed1c65f01ee88af31e35180c94d30ada97f359c6aa71dd47edb",
+        "physicalLines": 495,
+        "codeLines": 421,
+        "definitions": 43,
+        "laws": 9,
+        "types": 0,
+        "utf8Bytes": 14879
+      },
+      "src/core/normalize.bend": {
+        "sha256": "4845ff63f3c228abc9a432410ddc8b7e20bfce27e54d6d49412b06608f7ce702",
+        "physicalLines": 719,
+        "codeLines": 618,
+        "definitions": 55,
+        "laws": 32,
+        "types": 3,
+        "utf8Bytes": 22263
+      },
+      "src/core/graph.bend": {
+        "sha256": "85625049b316ede08eeffd7ff509483183624f1197c582c9d1bb2cd8bebf4802",
+        "physicalLines": 485,
+        "codeLines": 415,
+        "definitions": 37,
+        "laws": 22,
+        "types": 5,
+        "utf8Bytes": 14746
+      },
+      "src/core/reach.bend": {
+        "sha256": "086092c688e6cb774da94333826f51b1fdeddc8e85aeaac5be6b15c143b0df27",
+        "physicalLines": 254,
+        "codeLines": 203,
+        "definitions": 27,
+        "laws": 13,
+        "types": 1,
+        "utf8Bytes": 9901
+      },
+      "src/core/pretty.bend": {
+        "sha256": "51552ee1dcb7fb5921f3028778f0cfdf1886405d64e9468795c2ee5c0b34c097",
+        "physicalLines": 553,
+        "codeLines": 470,
+        "definitions": 56,
+        "laws": 23,
+        "types": 2,
+        "utf8Bytes": 17063
+      },
+      "src/check/quantity.bend": {
+        "sha256": "b4a8ca1f8dff10f4f64397ea53bbbe272bb32400e993b1077d284ec1d8a70b4d",
+        "physicalLines": 177,
+        "codeLines": 152,
+        "definitions": 16,
+        "laws": 7,
+        "types": 1,
+        "utf8Bytes": 4069
+      },
+      "src/check/kernel.bend": {
+        "sha256": "bbeebc44d278044349a9cb7a35fe5956251e32098dcb0722d96542dee23148e1",
+        "physicalLines": 1423,
+        "codeLines": 1196,
+        "definitions": 157,
+        "laws": 60,
+        "types": 4,
+        "utf8Bytes": 49206
+      },
+      "src/check/env-telescope.bend": {
+        "sha256": "c8f641d1dfe167d9708bef3c28c5320aeb605881d0775758f5cf0b0eced82fb7",
+        "physicalLines": 135,
+        "codeLines": 111,
+        "definitions": 15,
+        "laws": 4,
+        "types": 1,
+        "utf8Bytes": 5673
+      },
+      "src/check/env-substitution.bend": {
+        "sha256": "2bb46c21059512d1394e47da3287b2d00a8a42d658bdbce2724a0e061f77ee5c",
+        "physicalLines": 65,
+        "codeLines": 51,
+        "definitions": 7,
+        "laws": 3,
+        "types": 0,
+        "utf8Bytes": 2220
+      },
+      "src/check/specialize.bend": {
+        "sha256": "76e0f9249ae15cc0734a8e9d2e75677794e2eb5464c7756a19daff8b8217e7ee",
+        "physicalLines": 383,
+        "codeLines": 321,
+        "definitions": 53,
+        "laws": 5,
+        "types": 3,
+        "utf8Bytes": 16212
+      },
+      "src/check/prefix.bend": {
+        "sha256": "ceabf77fb49b58910d83fa896899061643c4c105f29e70bd87d3f73be873783d",
+        "physicalLines": 142,
+        "codeLines": 121,
+        "definitions": 12,
+        "laws": 7,
+        "types": 0,
+        "utf8Bytes": 3037
+      },
+      "src/check/prefix-state.bend": {
+        "sha256": "e3d23adaabb0ddc866adc3546a56d6362df2d6f55d91c73aef71c73cbd628a63",
+        "physicalLines": 455,
+        "codeLines": 351,
+        "definitions": 58,
+        "laws": 4,
+        "types": 3,
+        "utf8Bytes": 24106
+      },
+      "src/check/annotate.bend": {
+        "sha256": "1912e5d177514733e706297fbb53e730c1f7a9edc91ffb06d2b1de7e2547648c",
+        "physicalLines": 389,
+        "codeLines": 323,
+        "definitions": 32,
+        "laws": 26,
+        "types": 1,
+        "utf8Bytes": 10866
+      },
+      "src/check/base-products.bend": {
+        "sha256": "d27c23edc0b62a9c80391e533bc56045b481439f520f8412cafc1fddca5f1225",
+        "physicalLines": 117,
+        "codeLines": 85,
+        "definitions": 15,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 6125
+      },
+      "src/front/lexer.bend": {
+        "sha256": "aa9d726b6b284deba84dbccc77a01a8143dd89dab70cf487e1ddc8d589380440",
+        "physicalLines": 397,
+        "codeLines": 329,
+        "definitions": 47,
+        "laws": 9,
+        "types": 4,
+        "utf8Bytes": 13265
+      },
+      "src/front/contextual.bend": {
+        "sha256": "9de169c5f44d7da1f5982a0cbbb2af5e491222ebc954dba9be7442046dd44117",
+        "physicalLines": 555,
+        "codeLines": 467,
+        "definitions": 83,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 29415
+      },
+      "src/front/parser.bend": {
+        "sha256": "89eab388bfd64e4ec9965b1147f5be2a5dc88761b61d13824599e13c46138095",
+        "physicalLines": 775,
+        "codeLines": 630,
+        "definitions": 88,
+        "laws": 37,
+        "types": 1,
+        "utf8Bytes": 34444
+      },
+      "src/front/declarations.bend": {
+        "sha256": "d8aa310be182a4d074ed2382890fc15424f62b02f4b3b6854328fef4c8f33530",
+        "physicalLines": 741,
+        "codeLines": 631,
+        "definitions": 65,
+        "laws": 33,
+        "types": 3,
+        "utf8Bytes": 31642
+      },
+      "src/front/flatten.bend": {
+        "sha256": "d3ba8687f7dcd303dee847a90e3fa92b9a234d97cdcd3893de8242c6d2aa69cf",
+        "physicalLines": 189,
+        "codeLines": 158,
+        "definitions": 15,
+        "laws": 12,
+        "types": 2,
+        "utf8Bytes": 6450
+      },
+      "src/front/elaborate.bend": {
+        "sha256": "8537f483259d48fa1d710915d6e8e09916faa540560379ee550a7077f391dc1e",
+        "physicalLines": 242,
+        "codeLines": 202,
+        "definitions": 26,
+        "laws": 11,
+        "types": 0,
+        "utf8Bytes": 7941
+      },
+      "src/front/sugar.bend": {
+        "sha256": "d3e3cf5addf0498e8401b9988678eb6ac8ff81571a014b18a1b6fed0a76fb22a",
+        "physicalLines": 301,
+        "codeLines": 253,
+        "definitions": 41,
+        "laws": 4,
+        "types": 0,
+        "utf8Bytes": 14142
+      },
+      "src/front/unicode.bend": {
+        "sha256": "bfd4407aa83614ae8398c9ce451f729cbcba457f2ef64774fea99f1824b5dd96",
+        "physicalLines": 99,
+        "codeLines": 77,
+        "definitions": 13,
+        "laws": 6,
+        "types": 1,
+        "utf8Bytes": 4481
+      },
+      "src/front/literals_arrays.bend": {
+        "sha256": "e2527aa4c3321d01faf88942b85d9df48b2032f96cab677f5f306166f30d3190",
+        "physicalLines": 270,
+        "codeLines": 216,
+        "definitions": 38,
+        "laws": 13,
+        "types": 0,
+        "utf8Bytes": 11998
+      },
+      "src/front/parallel.bend": {
+        "sha256": "b7c38f74d9f339f21fa00c5194078a0bfc41a948d1adaa907d00df64045c2f1c",
+        "physicalLines": 106,
+        "codeLines": 87,
+        "definitions": 10,
+        "laws": 8,
+        "types": 0,
+        "utf8Bytes": 3238
+      },
+      "src/front/fresh_work.bend": {
+        "sha256": "043d3b737cef4b932b7de8ef161dc88ba867ba6a8056e3662edfdcf4a2d797ed",
+        "physicalLines": 208,
+        "codeLines": 194,
+        "definitions": 15,
+        "laws": 12,
+        "types": 2,
+        "utf8Bytes": 7736
+      },
+      "src/front/freshen.bend": {
+        "sha256": "d0fed135fe878987770786ef0c50dd09efe2cce390beb7a911bcfc8468d5607d",
+        "physicalLines": 57,
+        "codeLines": 46,
+        "definitions": 5,
+        "laws": 3,
+        "types": 2,
+        "utf8Bytes": 1285
+      },
+      "src/load/paths.bend": {
+        "sha256": "a9fc17a8af04c1958d1f11e8c1c5b7c2d3eb925dd9075e6c77de4bdb3521f2a2",
+        "physicalLines": 84,
+        "codeLines": 69,
+        "definitions": 9,
+        "laws": 4,
+        "types": 0,
+        "utf8Bytes": 2186
+      },
+      "src/front/families.bend": {
+        "sha256": "22b6e9b1ca132ed2d6f2cf91507e221f09cdda1aeab5931e8cf099e934bc9d2f",
+        "physicalLines": 106,
+        "codeLines": 84,
+        "definitions": 11,
+        "laws": 6,
+        "types": 0,
+        "utf8Bytes": 3849
+      },
+      "src/front/validate.bend": {
+        "sha256": "40f4d11334d6e8a08c97dc4bc001dd8260a9cf7fb154125ac7ee04c6f659c766",
+        "physicalLines": 233,
+        "codeLines": 188,
+        "definitions": 25,
+        "laws": 12,
+        "types": 0,
+        "utf8Bytes": 11139
+      },
+      "src/load/imports.bend": {
+        "sha256": "b878da5169a4a39d35a236ff5128dc42735fea0707195cf621ae651c1f13e9b1",
+        "physicalLines": 79,
+        "codeLines": 59,
+        "definitions": 11,
+        "laws": 1,
+        "types": 0,
+        "utf8Bytes": 4211
+      },
+      "src/load/graph.bend": {
+        "sha256": "06f9f815b7e7e0f335907237845543bd09ff42886aea942065a9ba8ecdb05189",
+        "physicalLines": 472,
+        "codeLines": 397,
+        "definitions": 51,
+        "laws": 28,
+        "types": 1,
+        "utf8Bytes": 17785
+      },
+      "src/load/seed.bend": {
+        "sha256": "43826db4855dc47b098adc7221e4ddf1489801d8e3947d750917b212f12418fe",
+        "physicalLines": 156,
+        "codeLines": 127,
+        "definitions": 13,
+        "laws": 8,
+        "types": 1,
+        "utf8Bytes": 5051
+      },
+      "src/load/modules.bend": {
+        "sha256": "6492e3678b077eacd97baabc8434ea19c1ac9697f452fc316fd91c4445710fd1",
+        "physicalLines": 283,
+        "codeLines": 228,
+        "definitions": 34,
+        "laws": 5,
+        "types": 5,
+        "utf8Bytes": 11704
+      },
+      "src/load/prefix.bend": {
+        "sha256": "6d98e35c38cb9e6491e6cb34b60517a86efe6f48992cb8bae9d54aabfe041096",
+        "physicalLines": 267,
+        "codeLines": 210,
+        "definitions": 32,
+        "laws": 1,
+        "types": 6,
+        "utf8Bytes": 14895
+      },
+      "src/diagnostic/model.bend": {
+        "sha256": "3c699ec70ef36700520658555bc5df025880691c44633cabb9e5719b60fc9c1c",
+        "physicalLines": 19,
+        "codeLines": 12,
+        "definitions": 0,
+        "laws": 0,
+        "types": 5,
+        "utf8Bytes": 754
+      },
+      "src/diagnostic/render.bend": {
+        "sha256": "695f41ace13e08756273c317659a419deee5fc79d413bd58e8711f124370276c",
+        "physicalLines": 248,
+        "codeLines": 212,
+        "definitions": 27,
+        "laws": 5,
+        "types": 0,
+        "utf8Bytes": 7804
+      },
+      "src/diagnostic/trace.bend": {
+        "sha256": "57410b6f4b2fde9ba3591c1e27e88deda48ef89e16f8418cdc7b0a918184f4fe",
+        "physicalLines": 135,
+        "codeLines": 110,
+        "definitions": 16,
+        "laws": 6,
+        "types": 0,
+        "utf8Bytes": 6829
+      },
+      "src/diagnostic/produce.bend": {
+        "sha256": "b659c86c82fd6f8656a517cebda9d2706a01ebc56b32ae2ec1137bd32d66a21b",
+        "physicalLines": 210,
+        "codeLines": 168,
+        "definitions": 26,
+        "laws": 8,
+        "types": 1,
+        "utf8Bytes": 8123
+      },
+      "src/diagnostic/frontend.bend": {
+        "sha256": "fdd07e6e3df5f999f2d162a4d3186cd8ae13102c8351710edab5291a2f80489f",
+        "physicalLines": 249,
+        "codeLines": 216,
+        "definitions": 24,
+        "laws": 16,
+        "types": 2,
+        "utf8Bytes": 10910
+      },
+      "src/back/common/literals.bend": {
+        "sha256": "73b871898b57ccf4a76bac726aa68fb98db27938be43e8da6e52e155c9dde9de",
+        "physicalLines": 53,
+        "codeLines": 39,
+        "definitions": 6,
+        "laws": 5,
+        "types": 0,
+        "utf8Bytes": 1639
+      },
+      "src/back/common/queries.bend": {
+        "sha256": "e62d1b368c8c3b4a69eb0eedca263e3ac4ac3059746c257039e16999993038a8",
+        "physicalLines": 226,
+        "codeLines": 182,
+        "definitions": 21,
+        "laws": 17,
+        "types": 0,
+        "utf8Bytes": 6045
+      },
+      "src/back/common/native-facts.bend": {
+        "sha256": "b384c95b2e672192cfde8f129330c8e87285864a73c6a644399997402add54b2",
+        "physicalLines": 18,
+        "codeLines": 14,
+        "definitions": 2,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 691
+      },
+      "src/back/js/shared-text.bend": {
+        "sha256": "a7cdf64830b06b56df426e5b6420aaae885f1dc35cee469a7e3015e69e710434",
+        "physicalLines": 75,
+        "codeLines": 63,
+        "definitions": 7,
+        "laws": 3,
+        "types": 0,
+        "utf8Bytes": 1693
+      },
+      "src/back/js/foreign.bend": {
+        "sha256": "fed2f2c55c21801d54b0c62b1641f5948b8b28e7f49e47ae4141043a8aba6273",
+        "physicalLines": 158,
+        "codeLines": 130,
+        "definitions": 16,
+        "laws": 9,
+        "types": 0,
+        "utf8Bytes": 5875
+      },
+      "src/back/js/literals.bend": {
+        "sha256": "60dc5022af6c009c234f21178ec84cc818370eecbb9ba3e29f47fe2c1a9f593b",
+        "physicalLines": 144,
+        "codeLines": 115,
+        "definitions": 14,
+        "laws": 11,
+        "types": 0,
+        "utf8Bytes": 4290
+      },
+      "src/back/js/private-float.bend": {
+        "sha256": "09c796b417c26169655219a57f3328ef2c78abeb4a75cdeb1a31c0fea47a14f4",
+        "physicalLines": 18,
+        "codeLines": 11,
+        "definitions": 2,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 1084
+      },
+      "src/back/js/validate.bend": {
+        "sha256": "9830f6caa8e54fbe662c211ace890e9fcc78cfe496f67b5dd59a472a91c16fd6",
+        "physicalLines": 338,
+        "codeLines": 273,
+        "definitions": 30,
+        "laws": 21,
+        "types": 0,
+        "utf8Bytes": 12709
+      },
+      "src/back/js/choice.bend": {
+        "sha256": "8f179693bd9ace5df1ada65fe10a08c9f2a47ad4c0d0c86d1f85a296596eca88",
+        "physicalLines": 49,
+        "codeLines": 39,
+        "definitions": 5,
+        "laws": 4,
+        "types": 0,
+        "utf8Bytes": 1998
+      },
+      "src/back/js/projection.bend": {
+        "sha256": "8ab432623d6ad4cbecfc10c506b54c755a0dc6e308511bbc9486b2ea3dc4bdc7",
+        "physicalLines": 69,
+        "codeLines": 56,
+        "definitions": 7,
+        "laws": 4,
+        "types": 0,
+        "utf8Bytes": 2831
+      },
+      "src/back/js/u32.bend": {
+        "sha256": "22ff6f105e640578e829f0369dd5f21aec2266224c018901f0e65dddd89a3bfc",
+        "physicalLines": 95,
+        "codeLines": 76,
+        "definitions": 13,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 4271
+      },
+      "src/back/js/primitive.bend": {
+        "sha256": "8423b802b28b031b5aceb7e96056fa4b67dafe18635450730bfa93c3926954b9",
+        "physicalLines": 103,
+        "codeLines": 85,
+        "definitions": 13,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 6636
+      },
+      "src/back/js/array-effects.bend": {
+        "sha256": "e74844cc241cc3185363ccea6c477a3fcd6c58012a59244aaad805c6c1b41abd",
+        "physicalLines": 135,
+        "codeLines": 109,
+        "definitions": 18,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 7989
+      },
+      "src/back/js/array-effect-guards.bend": {
+        "sha256": "c024d8969c275d66d00a8483b0e7d35e882e5af50d5d14bc985fadd9870c7580",
+        "physicalLines": 11,
+        "codeLines": 8,
+        "definitions": 2,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 583
+      },
+      "src/back/js/local.bend": {
+        "sha256": "388c8d90a67817fdd02eed50ae96767f72bbbdcca004d687413a9ece1e41e19b",
+        "physicalLines": 131,
+        "codeLines": 101,
+        "definitions": 20,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 6603
+      },
+      "src/back/js/jpure.bend": {
+        "sha256": "b2dff40d2dd7f11f6c69641a8117f9c06ceb03fa02d86dfd136c39d33ed0f782",
+        "physicalLines": 1524,
+        "codeLines": 1216,
+        "definitions": 196,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 86642
+      },
+      "src/back/js/region.bend": {
+        "sha256": "bc129162b65a4cacb85d0b43d2300a01e389413a03520a7159108507b3db990f",
+        "physicalLines": 1265,
+        "codeLines": 1032,
+        "definitions": 155,
+        "laws": 0,
+        "types": 3,
+        "utf8Bytes": 76508
+      },
+      "src/back/js/array-view.bend": {
+        "sha256": "f5d0e58c301604bb496847fe0e114b06e9c8b455b55ef47a7636a79f91f495a0",
+        "physicalLines": 241,
+        "codeLines": 184,
+        "definitions": 28,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 14430
+      },
+      "src/back/js/array-literals.bend": {
+        "sha256": "b687c9f66939c6072ed94cefdf5ef449b9ecdfc241446146fb727e91d4c7b91c",
+        "physicalLines": 183,
+        "codeLines": 144,
+        "definitions": 20,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 10203
+      },
+      "src/back/js/array-result.bend": {
+        "sha256": "1eb531ca87139383c976699d43166b1aa736d2e8cb83a87ea177ce55c7bb3582",
+        "physicalLines": 62,
+        "codeLines": 51,
+        "definitions": 6,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 4088
+      },
+      "src/back/js/fold.bend": {
+        "sha256": "d714084b17562a0bb8902be412aa1e3c9887e341217e3e057ed79d51cc794a1b",
+        "physicalLines": 324,
+        "codeLines": 264,
+        "definitions": 42,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 17763
+      },
+      "src/back/js/producer.bend": {
+        "sha256": "87b0fb778444018aaabeabb03214be1a9c1885b472407bf54cbd1705cd11fd23",
+        "physicalLines": 281,
+        "codeLines": 236,
+        "definitions": 34,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 17879
+      },
+      "src/back/js/finite.bend": {
+        "sha256": "27d9986f2e7f0cf80742c9670e31a40fc2869c366d11283c2378dac42a241e98",
+        "physicalLines": 355,
+        "codeLines": 287,
+        "definitions": 40,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 20390
+      },
+      "src/back/js/worker.bend": {
+        "sha256": "575c0e37d255895e8d8ec98ff613b5dd109389f903dbdbac7ee5c03b2a41106f",
+        "physicalLines": 357,
+        "codeLines": 298,
+        "definitions": 50,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 23050
+      },
+      "src/back/js/tree.bend": {
+        "sha256": "a91086de26138367d8dd4f029cb2463f2c48448f4fbc743345098b469e0b29b0",
+        "physicalLines": 1172,
+        "codeLines": 937,
+        "definitions": 137,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 74252
+      },
+      "src/back/js/ir/model.bend": {
+        "sha256": "f4692e678d3fe6ad623263f7ef0992cb806991d33135f02199641c4d2ed04d66",
+        "physicalLines": 57,
+        "codeLines": 27,
+        "definitions": 2,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 3068
+      },
+      "src/back/js/ir/projection.bend": {
+        "sha256": "786a74f636c1ad4d54b8c71911bc78c8c52cf4d2529f8fe23e4a05628fccafbd",
+        "physicalLines": 52,
+        "codeLines": 40,
+        "definitions": 5,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 2459
+      },
+      "src/back/js/ir/lower.bend": {
+        "sha256": "5dbace8b0dfc734eb35b6d2220c211466ba808864ae21cf5bd330f514278f09f",
+        "physicalLines": 157,
+        "codeLines": 116,
+        "definitions": 19,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 9282
+      },
+      "src/back/js/ir/control.bend": {
+        "sha256": "a93ab4254b50f1772f04540a3c07c29124ec86c8eb79e3cd616c6f4f10ad7bba",
+        "physicalLines": 22,
+        "codeLines": 17,
+        "definitions": 2,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 1395
+      },
+      "src/back/js/ir/facts.bend": {
+        "sha256": "f42d5b954c8103e736719e0aad7a1b18b1af394fb392cab6163d13c369685495",
+        "physicalLines": 76,
+        "codeLines": 57,
+        "definitions": 8,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 3166
+      },
+      "src/back/js/ir/constants.bend": {
+        "sha256": "7bac0373e5edb9e3020f215d03b9603e871a3116ef7819793cf49baf5f04fecf",
+        "physicalLines": 32,
+        "codeLines": 25,
+        "definitions": 4,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 1769
+      },
+      "src/back/js/ir/simplify.bend": {
+        "sha256": "bc8942bf74f5d2fc540f9016287bc2f48ad3c3b615bffbca723ccd941d10c6a7",
+        "physicalLines": 65,
+        "codeLines": 51,
+        "definitions": 6,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 3482
+      },
+      "src/back/js/ir/emit.bend": {
+        "sha256": "94c31a188a6faa98f447374c63273a64dffe8af7dc95bd854ea520c410157008",
+        "physicalLines": 81,
+        "codeLines": 69,
+        "definitions": 8,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 3943
+      },
+      "src/back/js/ir/statement.bend": {
+        "sha256": "4f8f8f2a081871e57c101fc17bbc1a7892aa74cde85e70c9f7026e4662703f7b",
+        "physicalLines": 34,
+        "codeLines": 24,
+        "definitions": 3,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 1723
+      },
+      "src/back/js/ir/worker-model.bend": {
+        "sha256": "e6ce61741d94f3d3e2e07072644350d5365a7a85f7ce33f64eeec22281257ee1",
+        "physicalLines": 75,
+        "codeLines": 56,
+        "definitions": 7,
+        "laws": 0,
+        "types": 8,
+        "utf8Bytes": 2428
+      },
+      "src/back/js/ir/worker-lower.bend": {
+        "sha256": "d6c0d221f5d436a9e7a17227bb6deac0e264d8e859df7acb32e4b825ef6e7a9d",
+        "physicalLines": 217,
+        "codeLines": 179,
+        "definitions": 27,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 12118
+      },
+      "src/back/js/ir/worker-simplify.bend": {
+        "sha256": "67c3f7a0e1a4d2f3702cd5565320b3762d7c56f50ec6d09aff3399ea0050906a",
+        "physicalLines": 25,
+        "codeLines": 17,
+        "definitions": 2,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 1458
+      },
+      "src/back/js/ir/worker-graph.bend": {
+        "sha256": "38499e61e5d8f4c13bf9d06f2fadd56cd2b8f1319e311117822e24c409f84ce3",
+        "physicalLines": 166,
+        "codeLines": 138,
+        "definitions": 25,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 6721
+      },
+      "src/back/js/ir/worker-nat.bend": {
+        "sha256": "8c44dd26512b96dcf6416ffbe33e2646c1db7cae79e1b57db33d4ce43a952936",
+        "physicalLines": 132,
+        "codeLines": 111,
+        "definitions": 16,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 6434
+      },
+      "src/back/js/ir/native-values.bend": {
+        "sha256": "9fb4835dddffb59aec3cb0ed4ced58867182abcb5b88fa675f2d07f4c4e38372",
+        "physicalLines": 17,
+        "codeLines": 11,
+        "definitions": 2,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 1034
+      },
+      "src/back/js/ir/worker-emit.bend": {
+        "sha256": "6d4d2de819c61037db8b2a52182136aa2df7de3ab5c9bc307cf5fb952f1c517b",
+        "physicalLines": 374,
+        "codeLines": 312,
+        "definitions": 44,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 21035
+      },
+      "src/back/js/emit.bend": {
+        "sha256": "5909e51aa48e0bd5c03be773931549906c52492c9274aa77b4db3efbdac9b8fd",
+        "physicalLines": 715,
+        "codeLines": 586,
+        "definitions": 66,
+        "laws": 42,
+        "types": 0,
+        "utf8Bytes": 27770
+      },
+      "src/back/js/direct/transport.bend": {
+        "sha256": "979d8abc08096fdbf3fa97388f1e1e3f1b2e8a532cb5950789a5fadf7f231bc6",
+        "physicalLines": 211,
+        "codeLines": 171,
+        "definitions": 27,
+        "laws": 0,
+        "types": 3,
+        "utf8Bytes": 9457
+      },
+      "src/back/js/direct/model.bend": {
+        "sha256": "755fe8e8c99bf1e2a045e66cceb38377dfa5bf0a693a263142ff8f4ed705b4be",
+        "physicalLines": 189,
+        "codeLines": 144,
+        "definitions": 33,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 7550
+      },
+      "src/back/js/direct/primitive.bend": {
+        "sha256": "fbf129b0ffab37d2d93e0dc7847eb2c3b74bf368aa996af5b7fe92a9e949552e",
+        "physicalLines": 453,
+        "codeLines": 410,
+        "definitions": 26,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 22828
+      },
+      "src/back/js/direct/constructors.bend": {
+        "sha256": "4e61313181c3c80315247106dacd15e381ca3a39f33d540954bc010fca5d2aaa",
+        "physicalLines": 299,
+        "codeLines": 243,
+        "definitions": 39,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 15139
+      },
+      "src/back/js/direct/pattern.bend": {
+        "sha256": "3ea403a532940402ce77bf4a6cf2508764dc3cf682d27f8f8e7d72531b3192a5",
+        "physicalLines": 272,
+        "codeLines": 213,
+        "definitions": 41,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 17589
+      },
+      "src/back/js/direct/host.bend": {
+        "sha256": "b6d27efec9c7d4099d251c5bbdf3c3ad081d1c171750d5eccba6ff9d985976f3",
+        "physicalLines": 381,
+        "codeLines": 307,
+        "definitions": 50,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 19466
+      },
+      "src/back/js/direct/host-native.bend": {
+        "sha256": "79008fbcbf15bab398e5f2a6bd63fa0b8fe444d62e2cf5d89f8c7469f81d5303",
+        "physicalLines": 61,
+        "codeLines": 48,
+        "definitions": 6,
+        "laws": 1,
+        "types": 0,
+        "utf8Bytes": 3088
+      },
+      "src/back/js/direct/calls.bend": {
+        "sha256": "d0a76d45d4cc1da4e586f64a264c473ec4b363303d2d11b19bdcb6cbc2b77e26",
+        "physicalLines": 456,
+        "codeLines": 361,
+        "definitions": 63,
+        "laws": 0,
+        "types": 3,
+        "utf8Bytes": 23328
+      },
+      "src/back/js/direct/ordered.bend": {
+        "sha256": "27377dca71ed875bee03e081d8aea531d97879983375d47e6704e58a1cc0d5be",
+        "physicalLines": 212,
+        "codeLines": 168,
+        "definitions": 28,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 11902
+      },
+      "src/back/js/direct/ordered-values.bend": {
+        "sha256": "0ad7b612ecd417fc97149362e25ae5fece8e8e1c8464a42bf5911ed29a42a524",
+        "physicalLines": 145,
+        "codeLines": 117,
+        "definitions": 19,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 8324
+      },
+      "src/back/js/direct/choices.bend": {
+        "sha256": "8611b61731cb29e645b865c1d47c3d24a45d819fa523e4cb7874a39c2688105b",
+        "physicalLines": 102,
+        "codeLines": 76,
+        "definitions": 17,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 5538
+      },
+      "src/back/js/direct/core.bend": {
+        "sha256": "64843b27c7a30738a7b189e51ad5a538f2dd4da6103f26becbf7d5ceb60e76f7",
+        "physicalLines": 345,
+        "codeLines": 275,
+        "definitions": 56,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 21290
+      },
+      "src/back/js/direct/program.bend": {
+        "sha256": "5927929b1244982e15fa5fae8636b4ef68ffd6febc524e879aba9cbb04f83c12",
+        "physicalLines": 175,
+        "codeLines": 142,
+        "definitions": 27,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 9333
+      },
+      "src/back/js/direct/reach.bend": {
+        "sha256": "2a36a775a13169845f230555fe4d1373174d7e87e31600457c1ca574fa3ca538",
+        "physicalLines": 206,
+        "codeLines": 163,
+        "definitions": 25,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 10547
+      },
+      "src/back/native/ir.bend": {
+        "sha256": "dada548b975e325d96735f94b4e65e56d0d47b8e22851bc6815bed7063e0339b",
+        "physicalLines": 25,
+        "codeLines": 17,
+        "definitions": 0,
+        "laws": 0,
+        "types": 7,
+        "utf8Bytes": 929
+      },
+      "src/back/native/text.bend": {
+        "sha256": "31c1ff5973df46d17ad395070fbefa1d2dc58398b3d12af80c62ed6c5548ff9d",
+        "physicalLines": 101,
+        "codeLines": 83,
+        "definitions": 18,
+        "laws": 1,
+        "types": 0,
+        "utf8Bytes": 2533
+      },
+      "src/back/native/identity.bend": {
+        "sha256": "8d1c0ad2d35cb5072615ad6e23b99ec7db3c956679c1894d847869608be0e16a",
+        "physicalLines": 89,
+        "codeLines": 74,
+        "definitions": 7,
+        "laws": 5,
+        "types": 0,
+        "utf8Bytes": 2476
+      },
+      "src/back/native/layout.bend": {
+        "sha256": "35981acafb07efcf3983baef35fffe573f8dc79707ea3077d9a15d360f05390b",
+        "physicalLines": 7,
+        "codeLines": 6,
+        "definitions": 1,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 135
+      },
+      "src/back/native/intrinsic.bend": {
+        "sha256": "5b921ebfecb307eddae880edee86ce459751684ecf74543f54c60e2a6f252195",
+        "physicalLines": 29,
+        "codeLines": 24,
+        "definitions": 5,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 4912
+      },
+      "src/back/native/tables.bend": {
+        "sha256": "6b8f36fa9063f35105889d8977aa2345fb01eeceb117e6f641151430d084bbaa",
+        "physicalLines": 221,
+        "codeLines": 184,
+        "definitions": 37,
+        "laws": 1,
+        "types": 0,
+        "utf8Bytes": 8602
+      },
+      "src/back/native/emit.bend": {
+        "sha256": "862af7916a7b26d6801726b48d422f154bb8a34c4c140cccc534c5d0ff21b46a",
+        "physicalLines": 111,
+        "codeLines": 93,
+        "definitions": 19,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 5084
+      },
+      "src/back/native/erase.bend": {
+        "sha256": "8f536cdfbca91b26bf426b3c8c5f42106fc0e18af7bfd2550ba73e7dab5530ec",
+        "physicalLines": 83,
+        "codeLines": 69,
+        "definitions": 9,
+        "laws": 3,
+        "types": 0,
+        "utf8Bytes": 3528
+      },
+      "src/back/native/bridge.bend": {
+        "sha256": "3344ccbfb1c4fa73980becefb33441ba09139d610fbd40c5383a41188c77c049",
+        "physicalLines": 476,
+        "codeLines": 392,
+        "definitions": 67,
+        "laws": 6,
+        "types": 3,
+        "utf8Bytes": 24865
+      },
+      "src/back/native/direct.bend": {
+        "sha256": "1574e2bbd423e3fb8b5952faf6ff5f03fa6733ba1082723c979b2b297238334d",
+        "physicalLines": 114,
+        "codeLines": 91,
+        "definitions": 18,
+        "laws": 1,
+        "types": 0,
+        "utf8Bytes": 5860
+      },
+      "src/back/native/pattern.bend": {
+        "sha256": "279c5967793f8922309b8d45746240db5c45f390ab8724c3b6f87e01ae17c7c4",
+        "physicalLines": 141,
+        "codeLines": 134,
+        "definitions": 13,
+        "laws": 9,
+        "types": 2,
+        "utf8Bytes": 5324
+      },
+      "src/back/native/show.bend": {
+        "sha256": "14088ccd96a957c1bcde8ebab0dbfe54eac7d3ab752ef1e7faace2bf5e76b3ee",
+        "physicalLines": 152,
+        "codeLines": 127,
+        "definitions": 19,
+        "laws": 3,
+        "types": 2,
+        "utf8Bytes": 6733
+      },
+      "src/back/native/parallel.bend": {
+        "sha256": "85326099c65dbd478574e480e13492f1d3973625c3c9aa50e286f7f4a38ff722",
+        "physicalLines": 94,
+        "codeLines": 79,
+        "definitions": 12,
+        "laws": 1,
+        "types": 0,
+        "utf8Bytes": 5003
+      },
+      "src/back/native/array.bend": {
+        "sha256": "c00f0592299047df582ac0435e1a0423ea62fb48f7c87dda83bf18161b263bd7",
+        "physicalLines": 44,
+        "codeLines": 37,
+        "definitions": 4,
+        "laws": 2,
+        "types": 0,
+        "utf8Bytes": 2813
+      },
+      "src/back/native/validate.bend": {
+        "sha256": "ffe530312c7c65cde4a79322873b3f6f5dfdd027b4ea16396e79c4aefd876ce6",
+        "physicalLines": 62,
+        "codeLines": 51,
+        "definitions": 11,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 2877
+      },
+      "src/back/native/foreign.bend": {
+        "sha256": "acbc686946260ad3fc8326eac2950cba3240044e0e62b16637964266904101f8",
+        "physicalLines": 83,
+        "codeLines": 68,
+        "definitions": 12,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 4393
+      },
+      "src/back/native/book.bend": {
+        "sha256": "eaf8e504887f8c3bc640c87e3058c119c350626cbeb3145f147b991bdec4d409",
+        "physicalLines": 316,
+        "codeLines": 259,
+        "definitions": 42,
+        "laws": 9,
+        "types": 2,
+        "utf8Bytes": 14304
+      },
+      "src/driver/report.bend": {
+        "sha256": "2626d596e94122f373f075d2cc2fe59e59fc3944d8b939b547db6aad2124e556",
+        "physicalLines": 100,
+        "codeLines": 84,
+        "definitions": 9,
+        "laws": 6,
+        "types": 0,
+        "utf8Bytes": 2603
+      },
+      "src/driver/api.bend": {
+        "sha256": "6640d00fadd82cc33f3ba038e86abb633253a92eefbd08fd9ab7f9ebbff7429c",
+        "physicalLines": 145,
+        "codeLines": 113,
+        "definitions": 17,
+        "laws": 5,
+        "types": 0,
+        "utf8Bytes": 5122
+      }
+    },
+    "totals": {
+      "modules": 115,
+      "physicalLines": 28536,
+      "codeLines": 23388,
+      "definitions": 3288,
+      "laws": 642,
+      "types": 119,
+      "utf8Bytes": 1304216
+    }
+  },
+  "candidate": {
+    "attempt": {
+      "file": "selfhost/build/phase68/inline-build09/attempt.json",
+      "sha256": "44c3778ee1cd1dd68916e7ebb230479a982072f34f572465ce6900a0bc300ee5"
+    },
+    "manifest": {
+      "file": "selfhost/build/phase68/inline-build09/snapshot/src/compiler.json",
+      "sha256": "19c14481dcb236a943a66cdd5039cebc438ae6a0da4d9853d1033f31748d1e22"
+    },
+    "apiSha256": "8894d8616b5543d42c9ef6317015bb979d620a537bbd5aed9e82f57dfe5a27d5",
+    "excludedSnapshotBend": [
+      "src/back/native/fixtures/override_add.bend",
+      "src/compiler.bend"
+    ],
+    "modules": {
+      "src/core/term.bend": {
+        "sha256": "d75234683496e33fcb59cd3598979245700733236d9326025d298f9c33ef33d3",
+        "physicalLines": 679,
+        "codeLines": 571,
+        "definitions": 73,
+        "laws": 10,
+        "types": 2,
+        "utf8Bytes": 19671
+      },
+      "src/core/index.bend": {
+        "sha256": "51ce95941f955ed1c65f01ee88af31e35180c94d30ada97f359c6aa71dd47edb",
+        "physicalLines": 495,
+        "codeLines": 421,
+        "definitions": 43,
+        "laws": 9,
+        "types": 0,
+        "utf8Bytes": 14879
+      },
+      "src/core/normalize.bend": {
+        "sha256": "4845ff63f3c228abc9a432410ddc8b7e20bfce27e54d6d49412b06608f7ce702",
+        "physicalLines": 719,
+        "codeLines": 618,
+        "definitions": 55,
+        "laws": 32,
+        "types": 3,
+        "utf8Bytes": 22263
+      },
+      "src/core/graph.bend": {
+        "sha256": "85625049b316ede08eeffd7ff509483183624f1197c582c9d1bb2cd8bebf4802",
+        "physicalLines": 485,
+        "codeLines": 415,
+        "definitions": 37,
+        "laws": 22,
+        "types": 5,
+        "utf8Bytes": 14746
+      },
+      "src/core/reach.bend": {
+        "sha256": "086092c688e6cb774da94333826f51b1fdeddc8e85aeaac5be6b15c143b0df27",
+        "physicalLines": 254,
+        "codeLines": 203,
+        "definitions": 27,
+        "laws": 13,
+        "types": 1,
+        "utf8Bytes": 9901
+      },
+      "src/core/pretty.bend": {
+        "sha256": "51552ee1dcb7fb5921f3028778f0cfdf1886405d64e9468795c2ee5c0b34c097",
+        "physicalLines": 553,
+        "codeLines": 470,
+        "definitions": 56,
+        "laws": 23,
+        "types": 2,
+        "utf8Bytes": 17063
+      },
+      "src/check/quantity.bend": {
+        "sha256": "b4a8ca1f8dff10f4f64397ea53bbbe272bb32400e993b1077d284ec1d8a70b4d",
+        "physicalLines": 177,
+        "codeLines": 152,
+        "definitions": 16,
+        "laws": 7,
+        "types": 1,
+        "utf8Bytes": 4069
+      },
+      "src/check/kernel.bend": {
+        "sha256": "bbeebc44d278044349a9cb7a35fe5956251e32098dcb0722d96542dee23148e1",
+        "physicalLines": 1423,
+        "codeLines": 1196,
+        "definitions": 157,
+        "laws": 60,
+        "types": 4,
+        "utf8Bytes": 49206
+      },
+      "src/check/env-telescope.bend": {
+        "sha256": "c8f641d1dfe167d9708bef3c28c5320aeb605881d0775758f5cf0b0eced82fb7",
+        "physicalLines": 135,
+        "codeLines": 111,
+        "definitions": 15,
+        "laws": 4,
+        "types": 1,
+        "utf8Bytes": 5673
+      },
+      "src/check/env-substitution.bend": {
+        "sha256": "2bb46c21059512d1394e47da3287b2d00a8a42d658bdbce2724a0e061f77ee5c",
+        "physicalLines": 65,
+        "codeLines": 51,
+        "definitions": 7,
+        "laws": 3,
+        "types": 0,
+        "utf8Bytes": 2220
+      },
+      "src/check/specialize.bend": {
+        "sha256": "76e0f9249ae15cc0734a8e9d2e75677794e2eb5464c7756a19daff8b8217e7ee",
+        "physicalLines": 383,
+        "codeLines": 321,
+        "definitions": 53,
+        "laws": 5,
+        "types": 3,
+        "utf8Bytes": 16212
+      },
+      "src/check/prefix.bend": {
+        "sha256": "ceabf77fb49b58910d83fa896899061643c4c105f29e70bd87d3f73be873783d",
+        "physicalLines": 142,
+        "codeLines": 121,
+        "definitions": 12,
+        "laws": 7,
+        "types": 0,
+        "utf8Bytes": 3037
+      },
+      "src/check/prefix-state.bend": {
+        "sha256": "e3d23adaabb0ddc866adc3546a56d6362df2d6f55d91c73aef71c73cbd628a63",
+        "physicalLines": 455,
+        "codeLines": 351,
+        "definitions": 58,
+        "laws": 4,
+        "types": 3,
+        "utf8Bytes": 24106
+      },
+      "src/check/annotate.bend": {
+        "sha256": "1912e5d177514733e706297fbb53e730c1f7a9edc91ffb06d2b1de7e2547648c",
+        "physicalLines": 389,
+        "codeLines": 323,
+        "definitions": 32,
+        "laws": 26,
+        "types": 1,
+        "utf8Bytes": 10866
+      },
+      "src/check/base-products.bend": {
+        "sha256": "d27c23edc0b62a9c80391e533bc56045b481439f520f8412cafc1fddca5f1225",
+        "physicalLines": 117,
+        "codeLines": 85,
+        "definitions": 15,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 6125
+      },
+      "src/front/lexer.bend": {
+        "sha256": "aa9d726b6b284deba84dbccc77a01a8143dd89dab70cf487e1ddc8d589380440",
+        "physicalLines": 397,
+        "codeLines": 329,
+        "definitions": 47,
+        "laws": 9,
+        "types": 4,
+        "utf8Bytes": 13265
+      },
+      "src/front/contextual.bend": {
+        "sha256": "9de169c5f44d7da1f5982a0cbbb2af5e491222ebc954dba9be7442046dd44117",
+        "physicalLines": 555,
+        "codeLines": 467,
+        "definitions": 83,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 29415
+      },
+      "src/front/parser.bend": {
+        "sha256": "89eab388bfd64e4ec9965b1147f5be2a5dc88761b61d13824599e13c46138095",
+        "physicalLines": 775,
+        "codeLines": 630,
+        "definitions": 88,
+        "laws": 37,
+        "types": 1,
+        "utf8Bytes": 34444
+      },
+      "src/front/declarations.bend": {
+        "sha256": "d8aa310be182a4d074ed2382890fc15424f62b02f4b3b6854328fef4c8f33530",
+        "physicalLines": 741,
+        "codeLines": 631,
+        "definitions": 65,
+        "laws": 33,
+        "types": 3,
+        "utf8Bytes": 31642
+      },
+      "src/front/flatten.bend": {
+        "sha256": "d3ba8687f7dcd303dee847a90e3fa92b9a234d97cdcd3893de8242c6d2aa69cf",
+        "physicalLines": 189,
+        "codeLines": 158,
+        "definitions": 15,
+        "laws": 12,
+        "types": 2,
+        "utf8Bytes": 6450
+      },
+      "src/front/elaborate.bend": {
+        "sha256": "8537f483259d48fa1d710915d6e8e09916faa540560379ee550a7077f391dc1e",
+        "physicalLines": 242,
+        "codeLines": 202,
+        "definitions": 26,
+        "laws": 11,
+        "types": 0,
+        "utf8Bytes": 7941
+      },
+      "src/front/sugar.bend": {
+        "sha256": "d3e3cf5addf0498e8401b9988678eb6ac8ff81571a014b18a1b6fed0a76fb22a",
+        "physicalLines": 301,
+        "codeLines": 253,
+        "definitions": 41,
+        "laws": 4,
+        "types": 0,
+        "utf8Bytes": 14142
+      },
+      "src/front/unicode.bend": {
+        "sha256": "bfd4407aa83614ae8398c9ce451f729cbcba457f2ef64774fea99f1824b5dd96",
+        "physicalLines": 99,
+        "codeLines": 77,
+        "definitions": 13,
+        "laws": 6,
+        "types": 1,
+        "utf8Bytes": 4481
+      },
+      "src/front/literals_arrays.bend": {
+        "sha256": "e2527aa4c3321d01faf88942b85d9df48b2032f96cab677f5f306166f30d3190",
+        "physicalLines": 270,
+        "codeLines": 216,
+        "definitions": 38,
+        "laws": 13,
+        "types": 0,
+        "utf8Bytes": 11998
+      },
+      "src/front/parallel.bend": {
+        "sha256": "b7c38f74d9f339f21fa00c5194078a0bfc41a948d1adaa907d00df64045c2f1c",
+        "physicalLines": 106,
+        "codeLines": 87,
+        "definitions": 10,
+        "laws": 8,
+        "types": 0,
+        "utf8Bytes": 3238
+      },
+      "src/front/fresh_work.bend": {
+        "sha256": "043d3b737cef4b932b7de8ef161dc88ba867ba6a8056e3662edfdcf4a2d797ed",
+        "physicalLines": 208,
+        "codeLines": 194,
+        "definitions": 15,
+        "laws": 12,
+        "types": 2,
+        "utf8Bytes": 7736
+      },
+      "src/front/freshen.bend": {
+        "sha256": "d0fed135fe878987770786ef0c50dd09efe2cce390beb7a911bcfc8468d5607d",
+        "physicalLines": 57,
+        "codeLines": 46,
+        "definitions": 5,
+        "laws": 3,
+        "types": 2,
+        "utf8Bytes": 1285
+      },
+      "src/load/paths.bend": {
+        "sha256": "a9fc17a8af04c1958d1f11e8c1c5b7c2d3eb925dd9075e6c77de4bdb3521f2a2",
+        "physicalLines": 84,
+        "codeLines": 69,
+        "definitions": 9,
+        "laws": 4,
+        "types": 0,
+        "utf8Bytes": 2186
+      },
+      "src/front/families.bend": {
+        "sha256": "22b6e9b1ca132ed2d6f2cf91507e221f09cdda1aeab5931e8cf099e934bc9d2f",
+        "physicalLines": 106,
+        "codeLines": 84,
+        "definitions": 11,
+        "laws": 6,
+        "types": 0,
+        "utf8Bytes": 3849
+      },
+      "src/front/validate.bend": {
+        "sha256": "40f4d11334d6e8a08c97dc4bc001dd8260a9cf7fb154125ac7ee04c6f659c766",
+        "physicalLines": 233,
+        "codeLines": 188,
+        "definitions": 25,
+        "laws": 12,
+        "types": 0,
+        "utf8Bytes": 11139
+      },
+      "src/load/imports.bend": {
+        "sha256": "b878da5169a4a39d35a236ff5128dc42735fea0707195cf621ae651c1f13e9b1",
+        "physicalLines": 79,
+        "codeLines": 59,
+        "definitions": 11,
+        "laws": 1,
+        "types": 0,
+        "utf8Bytes": 4211
+      },
+      "src/load/graph.bend": {
+        "sha256": "06f9f815b7e7e0f335907237845543bd09ff42886aea942065a9ba8ecdb05189",
+        "physicalLines": 472,
+        "codeLines": 397,
+        "definitions": 51,
+        "laws": 28,
+        "types": 1,
+        "utf8Bytes": 17785
+      },
+      "src/load/seed.bend": {
+        "sha256": "43826db4855dc47b098adc7221e4ddf1489801d8e3947d750917b212f12418fe",
+        "physicalLines": 156,
+        "codeLines": 127,
+        "definitions": 13,
+        "laws": 8,
+        "types": 1,
+        "utf8Bytes": 5051
+      },
+      "src/load/modules.bend": {
+        "sha256": "6492e3678b077eacd97baabc8434ea19c1ac9697f452fc316fd91c4445710fd1",
+        "physicalLines": 283,
+        "codeLines": 228,
+        "definitions": 34,
+        "laws": 5,
+        "types": 5,
+        "utf8Bytes": 11704
+      },
+      "src/load/prefix.bend": {
+        "sha256": "6d98e35c38cb9e6491e6cb34b60517a86efe6f48992cb8bae9d54aabfe041096",
+        "physicalLines": 267,
+        "codeLines": 210,
+        "definitions": 32,
+        "laws": 1,
+        "types": 6,
+        "utf8Bytes": 14895
+      },
+      "src/diagnostic/model.bend": {
+        "sha256": "3c699ec70ef36700520658555bc5df025880691c44633cabb9e5719b60fc9c1c",
+        "physicalLines": 19,
+        "codeLines": 12,
+        "definitions": 0,
+        "laws": 0,
+        "types": 5,
+        "utf8Bytes": 754
+      },
+      "src/diagnostic/render.bend": {
+        "sha256": "695f41ace13e08756273c317659a419deee5fc79d413bd58e8711f124370276c",
+        "physicalLines": 248,
+        "codeLines": 212,
+        "definitions": 27,
+        "laws": 5,
+        "types": 0,
+        "utf8Bytes": 7804
+      },
+      "src/diagnostic/trace.bend": {
+        "sha256": "57410b6f4b2fde9ba3591c1e27e88deda48ef89e16f8418cdc7b0a918184f4fe",
+        "physicalLines": 135,
+        "codeLines": 110,
+        "definitions": 16,
+        "laws": 6,
+        "types": 0,
+        "utf8Bytes": 6829
+      },
+      "src/diagnostic/produce.bend": {
+        "sha256": "b659c86c82fd6f8656a517cebda9d2706a01ebc56b32ae2ec1137bd32d66a21b",
+        "physicalLines": 210,
+        "codeLines": 168,
+        "definitions": 26,
+        "laws": 8,
+        "types": 1,
+        "utf8Bytes": 8123
+      },
+      "src/diagnostic/frontend.bend": {
+        "sha256": "fdd07e6e3df5f999f2d162a4d3186cd8ae13102c8351710edab5291a2f80489f",
+        "physicalLines": 249,
+        "codeLines": 216,
+        "definitions": 24,
+        "laws": 16,
+        "types": 2,
+        "utf8Bytes": 10910
+      },
+      "src/back/common/literals.bend": {
+        "sha256": "73b871898b57ccf4a76bac726aa68fb98db27938be43e8da6e52e155c9dde9de",
+        "physicalLines": 53,
+        "codeLines": 39,
+        "definitions": 6,
+        "laws": 5,
+        "types": 0,
+        "utf8Bytes": 1639
+      },
+      "src/back/common/queries.bend": {
+        "sha256": "e62d1b368c8c3b4a69eb0eedca263e3ac4ac3059746c257039e16999993038a8",
+        "physicalLines": 226,
+        "codeLines": 182,
+        "definitions": 21,
+        "laws": 17,
+        "types": 0,
+        "utf8Bytes": 6045
+      },
+      "src/back/common/arity.bend": {
+        "sha256": "2a51448a89e6ab31e7791f47c93bb9303f0f55c6b16016ddeecf09c57971580e",
+        "physicalLines": 70,
+        "codeLines": 49,
+        "definitions": 11,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 3219
+      },
+      "src/back/common/native-facts.bend": {
+        "sha256": "b384c95b2e672192cfde8f129330c8e87285864a73c6a644399997402add54b2",
+        "physicalLines": 18,
+        "codeLines": 14,
+        "definitions": 2,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 691
+      },
+      "src/back/js/shared-text.bend": {
+        "sha256": "a7cdf64830b06b56df426e5b6420aaae885f1dc35cee469a7e3015e69e710434",
+        "physicalLines": 75,
+        "codeLines": 63,
+        "definitions": 7,
+        "laws": 3,
+        "types": 0,
+        "utf8Bytes": 1693
+      },
+      "src/back/js/foreign.bend": {
+        "sha256": "fed2f2c55c21801d54b0c62b1641f5948b8b28e7f49e47ae4141043a8aba6273",
+        "physicalLines": 158,
+        "codeLines": 130,
+        "definitions": 16,
+        "laws": 9,
+        "types": 0,
+        "utf8Bytes": 5875
+      },
+      "src/back/js/literals.bend": {
+        "sha256": "60dc5022af6c009c234f21178ec84cc818370eecbb9ba3e29f47fe2c1a9f593b",
+        "physicalLines": 144,
+        "codeLines": 115,
+        "definitions": 14,
+        "laws": 11,
+        "types": 0,
+        "utf8Bytes": 4290
+      },
+      "src/back/js/private-float.bend": {
+        "sha256": "09c796b417c26169655219a57f3328ef2c78abeb4a75cdeb1a31c0fea47a14f4",
+        "physicalLines": 18,
+        "codeLines": 11,
+        "definitions": 2,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 1084
+      },
+      "src/back/js/validate.bend": {
+        "sha256": "9830f6caa8e54fbe662c211ace890e9fcc78cfe496f67b5dd59a472a91c16fd6",
+        "physicalLines": 338,
+        "codeLines": 273,
+        "definitions": 30,
+        "laws": 21,
+        "types": 0,
+        "utf8Bytes": 12709
+      },
+      "src/back/js/choice.bend": {
+        "sha256": "8f179693bd9ace5df1ada65fe10a08c9f2a47ad4c0d0c86d1f85a296596eca88",
+        "physicalLines": 49,
+        "codeLines": 39,
+        "definitions": 5,
+        "laws": 4,
+        "types": 0,
+        "utf8Bytes": 1998
+      },
+      "src/back/js/projection.bend": {
+        "sha256": "8ab432623d6ad4cbecfc10c506b54c755a0dc6e308511bbc9486b2ea3dc4bdc7",
+        "physicalLines": 69,
+        "codeLines": 56,
+        "definitions": 7,
+        "laws": 4,
+        "types": 0,
+        "utf8Bytes": 2831
+      },
+      "src/back/js/u32.bend": {
+        "sha256": "22ff6f105e640578e829f0369dd5f21aec2266224c018901f0e65dddd89a3bfc",
+        "physicalLines": 95,
+        "codeLines": 76,
+        "definitions": 13,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 4271
+      },
+      "src/back/js/primitive.bend": {
+        "sha256": "8423b802b28b031b5aceb7e96056fa4b67dafe18635450730bfa93c3926954b9",
+        "physicalLines": 103,
+        "codeLines": 85,
+        "definitions": 13,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 6636
+      },
+      "src/back/js/array-effects.bend": {
+        "sha256": "e74844cc241cc3185363ccea6c477a3fcd6c58012a59244aaad805c6c1b41abd",
+        "physicalLines": 135,
+        "codeLines": 109,
+        "definitions": 18,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 7989
+      },
+      "src/back/js/array-effect-guards.bend": {
+        "sha256": "c024d8969c275d66d00a8483b0e7d35e882e5af50d5d14bc985fadd9870c7580",
+        "physicalLines": 11,
+        "codeLines": 8,
+        "definitions": 2,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 583
+      },
+      "src/back/js/local.bend": {
+        "sha256": "388c8d90a67817fdd02eed50ae96767f72bbbdcca004d687413a9ece1e41e19b",
+        "physicalLines": 131,
+        "codeLines": 101,
+        "definitions": 20,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 6603
+      },
+      "src/back/js/jpure.bend": {
+        "sha256": "b2dff40d2dd7f11f6c69641a8117f9c06ceb03fa02d86dfd136c39d33ed0f782",
+        "physicalLines": 1524,
+        "codeLines": 1216,
+        "definitions": 196,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 86642
+      },
+      "src/back/js/region.bend": {
+        "sha256": "bc129162b65a4cacb85d0b43d2300a01e389413a03520a7159108507b3db990f",
+        "physicalLines": 1265,
+        "codeLines": 1032,
+        "definitions": 155,
+        "laws": 0,
+        "types": 3,
+        "utf8Bytes": 76508
+      },
+      "src/back/js/array-view.bend": {
+        "sha256": "f5d0e58c301604bb496847fe0e114b06e9c8b455b55ef47a7636a79f91f495a0",
+        "physicalLines": 241,
+        "codeLines": 184,
+        "definitions": 28,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 14430
+      },
+      "src/back/js/array-literals.bend": {
+        "sha256": "b687c9f66939c6072ed94cefdf5ef449b9ecdfc241446146fb727e91d4c7b91c",
+        "physicalLines": 183,
+        "codeLines": 144,
+        "definitions": 20,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 10203
+      },
+      "src/back/js/array-result.bend": {
+        "sha256": "1eb531ca87139383c976699d43166b1aa736d2e8cb83a87ea177ce55c7bb3582",
+        "physicalLines": 62,
+        "codeLines": 51,
+        "definitions": 6,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 4088
+      },
+      "src/back/js/fold.bend": {
+        "sha256": "d714084b17562a0bb8902be412aa1e3c9887e341217e3e057ed79d51cc794a1b",
+        "physicalLines": 324,
+        "codeLines": 264,
+        "definitions": 42,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 17763
+      },
+      "src/back/js/producer.bend": {
+        "sha256": "87b0fb778444018aaabeabb03214be1a9c1885b472407bf54cbd1705cd11fd23",
+        "physicalLines": 281,
+        "codeLines": 236,
+        "definitions": 34,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 17879
+      },
+      "src/back/js/finite.bend": {
+        "sha256": "27d9986f2e7f0cf80742c9670e31a40fc2869c366d11283c2378dac42a241e98",
+        "physicalLines": 355,
+        "codeLines": 287,
+        "definitions": 40,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 20390
+      },
+      "src/back/js/worker.bend": {
+        "sha256": "575c0e37d255895e8d8ec98ff613b5dd109389f903dbdbac7ee5c03b2a41106f",
+        "physicalLines": 357,
+        "codeLines": 298,
+        "definitions": 50,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 23050
+      },
+      "src/back/js/tree.bend": {
+        "sha256": "a91086de26138367d8dd4f029cb2463f2c48448f4fbc743345098b469e0b29b0",
+        "physicalLines": 1172,
+        "codeLines": 937,
+        "definitions": 137,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 74252
+      },
+      "src/back/js/ir/model.bend": {
+        "sha256": "f4692e678d3fe6ad623263f7ef0992cb806991d33135f02199641c4d2ed04d66",
+        "physicalLines": 57,
+        "codeLines": 27,
+        "definitions": 2,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 3068
+      },
+      "src/back/js/ir/projection.bend": {
+        "sha256": "786a74f636c1ad4d54b8c71911bc78c8c52cf4d2529f8fe23e4a05628fccafbd",
+        "physicalLines": 52,
+        "codeLines": 40,
+        "definitions": 5,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 2459
+      },
+      "src/back/js/ir/lower.bend": {
+        "sha256": "5dbace8b0dfc734eb35b6d2220c211466ba808864ae21cf5bd330f514278f09f",
+        "physicalLines": 157,
+        "codeLines": 116,
+        "definitions": 19,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 9282
+      },
+      "src/back/js/ir/control.bend": {
+        "sha256": "a93ab4254b50f1772f04540a3c07c29124ec86c8eb79e3cd616c6f4f10ad7bba",
+        "physicalLines": 22,
+        "codeLines": 17,
+        "definitions": 2,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 1395
+      },
+      "src/back/js/ir/facts.bend": {
+        "sha256": "f42d5b954c8103e736719e0aad7a1b18b1af394fb392cab6163d13c369685495",
+        "physicalLines": 76,
+        "codeLines": 57,
+        "definitions": 8,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 3166
+      },
+      "src/back/js/ir/constants.bend": {
+        "sha256": "7bac0373e5edb9e3020f215d03b9603e871a3116ef7819793cf49baf5f04fecf",
+        "physicalLines": 32,
+        "codeLines": 25,
+        "definitions": 4,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 1769
+      },
+      "src/back/js/ir/simplify.bend": {
+        "sha256": "bc8942bf74f5d2fc540f9016287bc2f48ad3c3b615bffbca723ccd941d10c6a7",
+        "physicalLines": 65,
+        "codeLines": 51,
+        "definitions": 6,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 3482
+      },
+      "src/back/js/ir/emit.bend": {
+        "sha256": "94c31a188a6faa98f447374c63273a64dffe8af7dc95bd854ea520c410157008",
+        "physicalLines": 81,
+        "codeLines": 69,
+        "definitions": 8,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 3943
+      },
+      "src/back/js/ir/statement.bend": {
+        "sha256": "4f8f8f2a081871e57c101fc17bbc1a7892aa74cde85e70c9f7026e4662703f7b",
+        "physicalLines": 34,
+        "codeLines": 24,
+        "definitions": 3,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 1723
+      },
+      "src/back/js/ir/worker-model.bend": {
+        "sha256": "e6ce61741d94f3d3e2e07072644350d5365a7a85f7ce33f64eeec22281257ee1",
+        "physicalLines": 75,
+        "codeLines": 56,
+        "definitions": 7,
+        "laws": 0,
+        "types": 8,
+        "utf8Bytes": 2428
+      },
+      "src/back/js/ir/worker-lower.bend": {
+        "sha256": "d6c0d221f5d436a9e7a17227bb6deac0e264d8e859df7acb32e4b825ef6e7a9d",
+        "physicalLines": 217,
+        "codeLines": 179,
+        "definitions": 27,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 12118
+      },
+      "src/back/js/ir/worker-simplify.bend": {
+        "sha256": "67c3f7a0e1a4d2f3702cd5565320b3762d7c56f50ec6d09aff3399ea0050906a",
+        "physicalLines": 25,
+        "codeLines": 17,
+        "definitions": 2,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 1458
+      },
+      "src/back/js/ir/worker-graph.bend": {
+        "sha256": "38499e61e5d8f4c13bf9d06f2fadd56cd2b8f1319e311117822e24c409f84ce3",
+        "physicalLines": 166,
+        "codeLines": 138,
+        "definitions": 25,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 6721
+      },
+      "src/back/js/ir/worker-nat.bend": {
+        "sha256": "8c44dd26512b96dcf6416ffbe33e2646c1db7cae79e1b57db33d4ce43a952936",
+        "physicalLines": 132,
+        "codeLines": 111,
+        "definitions": 16,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 6434
+      },
+      "src/back/js/ir/native-values.bend": {
+        "sha256": "9fb4835dddffb59aec3cb0ed4ced58867182abcb5b88fa675f2d07f4c4e38372",
+        "physicalLines": 17,
+        "codeLines": 11,
+        "definitions": 2,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 1034
+      },
+      "src/back/js/ir/worker-emit.bend": {
+        "sha256": "6d4d2de819c61037db8b2a52182136aa2df7de3ab5c9bc307cf5fb952f1c517b",
+        "physicalLines": 374,
+        "codeLines": 312,
+        "definitions": 44,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 21035
+      },
+      "src/back/js/emit.bend": {
+        "sha256": "5909e51aa48e0bd5c03be773931549906c52492c9274aa77b4db3efbdac9b8fd",
+        "physicalLines": 715,
+        "codeLines": 586,
+        "definitions": 66,
+        "laws": 42,
+        "types": 0,
+        "utf8Bytes": 27770
+      },
+      "src/back/js/direct/transport.bend": {
+        "sha256": "979d8abc08096fdbf3fa97388f1e1e3f1b2e8a532cb5950789a5fadf7f231bc6",
+        "physicalLines": 211,
+        "codeLines": 171,
+        "definitions": 27,
+        "laws": 0,
+        "types": 3,
+        "utf8Bytes": 9457
+      },
+      "src/back/js/direct/model.bend": {
+        "sha256": "6b7be0df3c366f05b081d08affbaa17458ab1129a87f99321b3bb416b139b10f",
+        "physicalLines": 124,
+        "codeLines": 96,
+        "definitions": 22,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 4583
+      },
+      "src/back/js/direct/primitive.bend": {
+        "sha256": "fbf129b0ffab37d2d93e0dc7847eb2c3b74bf368aa996af5b7fe92a9e949552e",
+        "physicalLines": 453,
+        "codeLines": 410,
+        "definitions": 26,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 22828
+      },
+      "src/back/js/direct/constructors.bend": {
+        "sha256": "4e61313181c3c80315247106dacd15e381ca3a39f33d540954bc010fca5d2aaa",
+        "physicalLines": 299,
+        "codeLines": 243,
+        "definitions": 39,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 15139
+      },
+      "src/back/js/direct/pattern.bend": {
+        "sha256": "3ea403a532940402ce77bf4a6cf2508764dc3cf682d27f8f8e7d72531b3192a5",
+        "physicalLines": 272,
+        "codeLines": 213,
+        "definitions": 41,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 17589
+      },
+      "src/back/js/direct/host.bend": {
+        "sha256": "b6d27efec9c7d4099d251c5bbdf3c3ad081d1c171750d5eccba6ff9d985976f3",
+        "physicalLines": 381,
+        "codeLines": 307,
+        "definitions": 50,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 19466
+      },
+      "src/back/js/direct/host-native.bend": {
+        "sha256": "79008fbcbf15bab398e5f2a6bd63fa0b8fe444d62e2cf5d89f8c7469f81d5303",
+        "physicalLines": 61,
+        "codeLines": 48,
+        "definitions": 6,
+        "laws": 1,
+        "types": 0,
+        "utf8Bytes": 3088
+      },
+      "src/back/js/direct/calls.bend": {
+        "sha256": "d0a76d45d4cc1da4e586f64a264c473ec4b363303d2d11b19bdcb6cbc2b77e26",
+        "physicalLines": 456,
+        "codeLines": 361,
+        "definitions": 63,
+        "laws": 0,
+        "types": 3,
+        "utf8Bytes": 23328
+      },
+      "src/back/js/direct/ordered.bend": {
+        "sha256": "27377dca71ed875bee03e081d8aea531d97879983375d47e6704e58a1cc0d5be",
+        "physicalLines": 212,
+        "codeLines": 168,
+        "definitions": 28,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 11902
+      },
+      "src/back/js/direct/ordered-values.bend": {
+        "sha256": "0ad7b612ecd417fc97149362e25ae5fece8e8e1c8464a42bf5911ed29a42a524",
+        "physicalLines": 145,
+        "codeLines": 117,
+        "definitions": 19,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 8324
+      },
+      "src/back/js/direct/choices.bend": {
+        "sha256": "8611b61731cb29e645b865c1d47c3d24a45d819fa523e4cb7874a39c2688105b",
+        "physicalLines": 102,
+        "codeLines": 76,
+        "definitions": 17,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 5538
+      },
+      "src/back/js/direct/core.bend": {
+        "sha256": "64843b27c7a30738a7b189e51ad5a538f2dd4da6103f26becbf7d5ceb60e76f7",
+        "physicalLines": 345,
+        "codeLines": 275,
+        "definitions": 56,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 21290
+      },
+      "src/back/js/direct/program.bend": {
+        "sha256": "5927929b1244982e15fa5fae8636b4ef68ffd6febc524e879aba9cbb04f83c12",
+        "physicalLines": 175,
+        "codeLines": 142,
+        "definitions": 27,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 9333
+      },
+      "src/back/js/direct/reach.bend": {
+        "sha256": "2a36a775a13169845f230555fe4d1373174d7e87e31600457c1ca574fa3ca538",
+        "physicalLines": 206,
+        "codeLines": 163,
+        "definitions": 25,
+        "laws": 0,
+        "types": 2,
+        "utf8Bytes": 10547
+      },
+      "src/back/native/ir.bend": {
+        "sha256": "dada548b975e325d96735f94b4e65e56d0d47b8e22851bc6815bed7063e0339b",
+        "physicalLines": 25,
+        "codeLines": 17,
+        "definitions": 0,
+        "laws": 0,
+        "types": 7,
+        "utf8Bytes": 929
+      },
+      "src/back/native/text.bend": {
+        "sha256": "31c1ff5973df46d17ad395070fbefa1d2dc58398b3d12af80c62ed6c5548ff9d",
+        "physicalLines": 101,
+        "codeLines": 83,
+        "definitions": 18,
+        "laws": 1,
+        "types": 0,
+        "utf8Bytes": 2533
+      },
+      "src/back/native/identity.bend": {
+        "sha256": "8d1c0ad2d35cb5072615ad6e23b99ec7db3c956679c1894d847869608be0e16a",
+        "physicalLines": 89,
+        "codeLines": 74,
+        "definitions": 7,
+        "laws": 5,
+        "types": 0,
+        "utf8Bytes": 2476
+      },
+      "src/back/native/layout.bend": {
+        "sha256": "35981acafb07efcf3983baef35fffe573f8dc79707ea3077d9a15d360f05390b",
+        "physicalLines": 7,
+        "codeLines": 6,
+        "definitions": 1,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 135
+      },
+      "src/back/native/intrinsic.bend": {
+        "sha256": "c0cc7b0093df2d2a9cb7b85acd9633916d96a20cf4bf82b0abf192369d6aa212",
+        "physicalLines": 92,
+        "codeLines": 87,
+        "definitions": 4,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 7264
+      },
+      "src/back/native/tables.bend": {
+        "sha256": "6b8f36fa9063f35105889d8977aa2345fb01eeceb117e6f641151430d084bbaa",
+        "physicalLines": 221,
+        "codeLines": 184,
+        "definitions": 37,
+        "laws": 1,
+        "types": 0,
+        "utf8Bytes": 8602
+      },
+      "src/back/native/emit.bend": {
+        "sha256": "862af7916a7b26d6801726b48d422f154bb8a34c4c140cccc534c5d0ff21b46a",
+        "physicalLines": 111,
+        "codeLines": 93,
+        "definitions": 19,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 5084
+      },
+      "src/back/native/erase.bend": {
+        "sha256": "8f536cdfbca91b26bf426b3c8c5f42106fc0e18af7bfd2550ba73e7dab5530ec",
+        "physicalLines": 83,
+        "codeLines": 69,
+        "definitions": 9,
+        "laws": 3,
+        "types": 0,
+        "utf8Bytes": 3528
+      },
+      "src/back/native/bridge.bend": {
+        "sha256": "1fc205f3cacb8163e628f02ab7e2f65a3c6033d4196a53c948ba6a386243eecc",
+        "physicalLines": 592,
+        "codeLines": 482,
+        "definitions": 87,
+        "laws": 6,
+        "types": 4,
+        "utf8Bytes": 31190
+      },
+      "src/back/native/direct.bend": {
+        "sha256": "408aebc6967b9c5b37346d801b0f606f834dc99ea7af2a6b26763a34fd203ac7",
+        "physicalLines": 202,
+        "codeLines": 157,
+        "definitions": 31,
+        "laws": 1,
+        "types": 0,
+        "utf8Bytes": 10535
+      },
+      "src/back/native/flat.bend": {
+        "sha256": "824f7f70095e37c41b79788813e529cc9e3a63f6f1d8110b74d0e302cd796441",
+        "physicalLines": 223,
+        "codeLines": 182,
+        "definitions": 34,
+        "laws": 1,
+        "types": 2,
+        "utf8Bytes": 12976
+      },
+      "src/back/native/pattern.bend": {
+        "sha256": "279c5967793f8922309b8d45746240db5c45f390ab8724c3b6f87e01ae17c7c4",
+        "physicalLines": 141,
+        "codeLines": 134,
+        "definitions": 13,
+        "laws": 9,
+        "types": 2,
+        "utf8Bytes": 5324
+      },
+      "src/back/native/show.bend": {
+        "sha256": "14088ccd96a957c1bcde8ebab0dbfe54eac7d3ab752ef1e7faace2bf5e76b3ee",
+        "physicalLines": 152,
+        "codeLines": 127,
+        "definitions": 19,
+        "laws": 3,
+        "types": 2,
+        "utf8Bytes": 6733
+      },
+      "src/back/native/parallel.bend": {
+        "sha256": "85326099c65dbd478574e480e13492f1d3973625c3c9aa50e286f7f4a38ff722",
+        "physicalLines": 94,
+        "codeLines": 79,
+        "definitions": 12,
+        "laws": 1,
+        "types": 0,
+        "utf8Bytes": 5003
+      },
+      "src/back/native/array.bend": {
+        "sha256": "a75ea34452a2d5554453eca27bcc90e2a00f93eeaa867097e855b74fbea1cdd5",
+        "physicalLines": 53,
+        "codeLines": 44,
+        "definitions": 6,
+        "laws": 2,
+        "types": 0,
+        "utf8Bytes": 3069
+      },
+      "src/back/native/validate.bend": {
+        "sha256": "ffe530312c7c65cde4a79322873b3f6f5dfdd027b4ea16396e79c4aefd876ce6",
+        "physicalLines": 62,
+        "codeLines": 51,
+        "definitions": 11,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 2877
+      },
+      "src/back/native/foreign.bend": {
+        "sha256": "acbc686946260ad3fc8326eac2950cba3240044e0e62b16637964266904101f8",
+        "physicalLines": 83,
+        "codeLines": 68,
+        "definitions": 12,
+        "laws": 0,
+        "types": 0,
+        "utf8Bytes": 4393
+      },
+      "src/back/native/book.bend": {
+        "sha256": "09664a2c0a21a979c3f493feccbeed02c358cadd7262f7257017efc57427aa97",
+        "physicalLines": 316,
+        "codeLines": 259,
+        "definitions": 42,
+        "laws": 9,
+        "types": 2,
+        "utf8Bytes": 14344
+      },
+      "src/driver/report.bend": {
+        "sha256": "2626d596e94122f373f075d2cc2fe59e59fc3944d8b939b547db6aad2124e556",
+        "physicalLines": 100,
+        "codeLines": 84,
+        "definitions": 9,
+        "laws": 6,
+        "types": 0,
+        "utf8Bytes": 2603
+      },
+      "src/driver/api.bend": {
+        "sha256": "6640d00fadd82cc33f3ba038e86abb633253a92eefbd08fd9ab7f9ebbff7429c",
+        "physicalLines": 145,
+        "codeLines": 113,
+        "definitions": 17,
+        "laws": 5,
+        "types": 0,
+        "utf8Bytes": 5122
+      }
+    },
+    "totals": {
+      "modules": 117,
+      "physicalLines": 29040,
+      "codeLines": 23797,
+      "definitions": 3356,
+      "laws": 643,
+      "types": 121,
+      "utf8Bytes": 1331092
+    }
+  },
+  "delta": {
+    "modules": 2,
+    "physicalLines": 504,
+    "codeLines": 409,
+    "definitions": 68,
+    "laws": 1,
+    "types": 2,
+    "utf8Bytes": 26876
+  }
+}

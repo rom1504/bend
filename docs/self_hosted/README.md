@@ -81,6 +81,7 @@ The survey changes documentation only; it does not qualify a new compiler.
 | --- | --- |
 | [Backend boundaries](backend-boundaries.md) | Shared checked core and facts, backend-local representations, retained native contracts, and the incremental runtime-IR proposal. |
 | [Direct JavaScript backend](../../selfhost/docs/direct-javascript.md) | Current callable/data interface, ordered prefix/value lowering, 4,096-definition analysis bound and qualification limits. |
+| [Native value lowering](native-value-lowering.md) | Phase68 working09 shared arity, local values, ordinary C workers, admission and fallback; separate from the installed Phase67 release. |
 | [Architecture](architecture.md) | Dated Phase45 source organization, representations, pipeline and complexity; use backend boundaries for the current backend split. |
 | [Optimization inventory](optimization-inventory.md) | Existing transformations, where they live, how generally they apply, and missing analyses. |
 | [Compiler requests](compiler-request-pipeline.md) | Phase64 retained facts and frame4 transport, with the Phase63 lowering plan and Phase61 foundation; source/host boundaries, measured request costs and fallbacks. |

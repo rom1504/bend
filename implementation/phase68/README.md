@@ -180,3 +180,59 @@ are not substituted for clean timings.
 
 Current source checkpoints remain developmental. Installed Phase67 files and
 all historical raw evidence remain unchanged. No PR comments were posted.
+
+
+## Working09: occurrence summaries and bounded worker inlining
+
+Occurrence summaries pass the strict checked08 build, 2,345 actual-image
+membership checks, and 210 ordered environment/partition and sharing cases.
+All three complete C files equal checked06/07 byte for byte. The B1 acquisition
+screen gives an 08/07 request ratio of 0.727177; this is diagnostic, not a
+position-balanced final compilation result. The first control attempt failed
+because its diagnostic export expected a function eliminated as unreachable;
+the versioned successor reads the actual compiled partition result and passes.
+The original failed source and receipt remain preserved.
+
+A separate all-worker inline diagnostic passes two independent output oracles
+and twelve alternating, resolved runtime intervals. Numeric median is unchanged
+(127 ms); array falls 174→123 ms. Machine-code inspection confirms the private
+calls disappear. Working09 adopts an explicit inline hint only for admitted
+worker bodies at most 4,096 characters long, with a GCC/Clang guard and ordinary
+INLINE fallback. This is a local size cutoff, not a transitive expansion bound.
+Its three-family screen passes: numeric 125/127 ms, array 116/117 ms, lexer
+140/141 ms on the same plan02. Broader final selection is still pending.
+
+Actual working09 B2 construction and eight driver observations pass. All 15
+native compilation jobs pass, including complete-C equality for every actual
+B1/B2 request. Single-sample request times for numeric/array/lexer are
+B1 2,285/2,432/2,988 ms; B2 1,415/1,442/1,954 ms; TS 707/724/862 ms.
+The new B2 ratio is approximately 2.00/1.99/2.27× TS. These measurements contain
+all intervening compiler changes and do not isolate the occurrence rewrite.
+Profiles confirm the old occurrence-list hotspot disappeared; summary/index
+construction and rendering are now visible targets.
+
+The source census is [recorded separately](simplicity-working09.md): working09
+adds 504 physical Bend lines (1.77%) over Phase67. Generated C and native
+execution have decreased substantially; compiler source has not become smaller.
+The [native architecture guide](../../docs/self_hosted/native-value-lowering.md)
+explains the shared arity analysis and common lowering destinations.
+
+The raw07 checkpoint control initially instrumented only the preserved device
+fallback return, missing the active host worker. A versioned instrumentation
+successor retains the original behavior oracle and all ten rows pass. This was
+a stale diagnostic marker; no production error-checkpoint fix was needed.
+Product source review separately found real ownership/demand risks before
+execution. The corrected proposal requires appropriate use on every branch and
+uses bounded syntactic layout analysis without global normalization. It remains
+unselected until a checked build, active-path witnesses and native controls pass.
+
+## Guarded scalar payload packing discriminator
+
+A C-only diagnostic packs fitting, ordinary encoded one-field constructors and
+retains the exact old box otherwise. Base/IO constructors remain unchanged.
+Two output oracles and all twelve alternating timing intervals pass. Tree
+median falls 210→161 ms (23.3%); lexer 168→159 ms (5.4%). This is evidence for the
+mechanism, not a qualified compiler implementation. A small general source
+proposal additionally disables packing in books with user foreign definitions
+to preserve their representation boundary. No runtime implementation changes
+are required by that proposal.

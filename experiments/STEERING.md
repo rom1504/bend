@@ -1,4 +1,27 @@
-# Current frontier: Phase66 upstream migration
+# Current frontier: Phase67 native speed and proof pilot
+
+The user authorized the [Phase67 design](../design/phase67/native-speed-and-proof.md).
+[Report](../implementation/phase67/README.md) · [Native experiment](phase67/P67-001-native-transport.md)
+· [Bounded compilation review](phase67/P67-002-compilation-side-probe.md)
+· [Proof pilot](phase67/P67-003-proof-pilot.md).
+
+Primary work: fresh native/C comparison, then a small general continuation
+contraction. Root alone executes serial CPU3 targets under the existing 2 GiB
+tree RSS / 4 GiB memory-floor guard. Source reviewers own separate lanes.
+Baseline is installed Phase66 at `2035010`; upstream remains `059266225b77c8ca256ac6b25ee5c21449bab151`.
+Fresh raw belongs only under `selfhost/build/phase67`; all older raw and archives
+are immutable. Preserve the 110 inherited files and seven installed baseline
+copies. No PR comments. Native performance must not be confused with the
+existing JavaScript execution or B1/B2 compilation metrics.
+
+The bounded compilation source review found no sufficiently promising small
+patch and is deferred. Native baseline and proof validation are in progress;
+no new speedup or promotion is claimed. Review found and fixed diagnostic-order
+and nonsequential cancellation issues before any production candidate execution.
+
+---
+
+# Previous closed frontier: Phase66 upstream migration
 
 The user authorized updating to upstream while protecting five metrics:
 compiled-program execution speed, B1 compilation speed, B2 compilation speed,

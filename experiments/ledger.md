@@ -4075,3 +4075,17 @@ release-target account; later commit/push time is not included.
 Preserve attempts04/05, failed06, every failed output and the captured Bun
 runtime; leave the original P66-001 registration and earlier checkpoints intact.
 No new PR comment was posted.
+
+
+### Phase67 registered — 2026-10-08
+
+Start `2035010` at 09:01:10 UTC; upstream pin unchanged. The user authorized
+[design](../design/phase67/native-speed-and-proof.md), execution and reporting.
+[P67-001](phase67/P67-001-native-transport.md) compares native code with common
+Clang flags and independent oracles before removing unnecessary continuations.
+[P67-002](phase67/P67-002-compilation-side-probe.md) bounds a compilation-side
+investigation; source review recommends deferral. [P67-003](phase67/P67-003-proof-pilot.md)
+connects a restricted immediate-value semantic model to actual lowering, without
+claiming a proof of ownership, emitted C or the whole compiler.
+Fresh raw only in Phase67; old raw remains closed. No result or promotion at
+registration. [Report](../implementation/phase67/README.md).

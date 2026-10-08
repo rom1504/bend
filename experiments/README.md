@@ -5,6 +5,14 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Active implementation: Phase67 native speed and proof pilot
+
+[Design](../design/phase67/native-speed-and-proof.md) ·
+[Report](../implementation/phase67/README.md).
+Fresh native comparison and general value-transport contraction, a bounded
+compilation-speed review, and a small independently checked proof model.
+Phase66 remains installed until a surviving candidate passes integration.
+
 ## Completed implementation: Phase66 upstream and five metrics
 
 [Design](../design/phase66/upstream-and-five-metrics.md) ·

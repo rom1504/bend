@@ -1,35 +1,182 @@
 {
   "schema": 2,
-  "evidence_head": "6eecaefe3292774de5408994d21e31fc16c08dc5",
-  "evidence_head_commit_date": "2026-10-06T11:31:04Z",
-  "latest_phase": 58,
-  "latest_commit": "6eecaefe3292774de5408994d21e31fc16c08dc5",
-  "latest_commit_date": "2026-10-06T11:31:04Z",
-  "average": 2.944015614006829,
-  "latest_average": 2.944015614006829,
+  "evidence_head": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+  "evidence_head_commit_date": "2026-10-08T08:50:21Z",
+  "latest_phase": 66,
+  "latest_commit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+  "latest_commit_date": "2026-10-08T08:50:21Z",
+  "average": 1.4020653827400071,
+  "latest_average": 1.4020653827400071,
   "unit": "B1 first-process compilation time / TypeScript time",
   "baseline": 1,
   "lower_is_better": true,
-  "aggregation": "Equal-source geometric mean of Evening and lexer B1/TypeScript ratios. Each ratio divides three-sample medians of import + API load + first checked direct-library request. Historical observations declare their own cohort and timing boundary.",
-  "formula": "exp(mean(log(median(B1 import + API load + first request ms) / median(same-campaign TypeScript import + API load + first request ms))))",
+  "aggregation": "Equal-source geometric mean of Bend/TypeScript ratios of per-source median first-compilation times; three independent fresh processes per role/source.",
+  "formula": "exp(mean(log(median(Bend firstRequestMs) / median(TypeScript firstRequestMs))))",
   "cohort": [
     {
-      "id": "test-evening-program",
-      "name": "Evening",
-      "path": "selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
-      "source_hash": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
-      "source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend"
+      "id": "mandelbrot",
+      "name": "Historical Mandelbrot",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+      "source_hash": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend"
+    },
+    {
+      "id": "editdist",
+      "name": "Edit distance",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+      "source_hash": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/editdist.bend"
+    },
+    {
+      "id": "tree-bitonic",
+      "name": "Bitonic tree sort",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+      "source_hash": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend"
     },
     {
       "id": "lexer",
       "name": "Lexer",
       "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
       "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
-      "source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend"
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend"
+    },
+    {
+      "id": "symreg",
+      "name": "Symbolic regression",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+      "source_hash": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/symreg.bend"
+    },
+    {
+      "id": "test-morning-program",
+      "name": "Morning",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend",
+      "source_hash": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend"
+    },
+    {
+      "id": "test-evening-program",
+      "name": "Evening",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+      "source_hash": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend"
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "name": "RLE roundtrip",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+      "source_hash": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend"
+    },
+    {
+      "id": "test-map-set-ops",
+      "name": "Map/set operations",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+      "source_hash": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend"
+    },
+    {
+      "id": "raytrace",
+      "name": "Historical raytrace",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend",
+      "source_hash": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend"
+    },
+    {
+      "id": "local-row",
+      "name": "Local record",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+      "source_hash": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend"
+    },
+    {
+      "id": "local-fold",
+      "name": "Local fold",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+      "source_hash": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend"
+    },
+    {
+      "id": "scalar-region",
+      "name": "Scalar region",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+      "source_hash": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend"
+    },
+    {
+      "id": "mandelbrot-grid",
+      "name": "Mandelbrot grid",
+      "path": "selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend",
+      "source_hash": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend"
+    },
+    {
+      "id": "raytrace-active",
+      "name": "Active raytrace",
+      "path": "selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+      "source_hash": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend"
+    },
+    {
+      "id": "closures",
+      "name": "Known closures",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+      "source_hash": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/closures.bend"
+    },
+    {
+      "id": "list-pipeline",
+      "name": "List pipeline",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+      "source_hash": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend"
+    },
+    {
+      "id": "bst",
+      "name": "Binary search tree",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+      "source_hash": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/bst.bend"
+    },
+    {
+      "id": "unicode-text",
+      "name": "Unicode text",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+      "source_hash": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend"
+    },
+    {
+      "id": "expression",
+      "name": "Expression evaluation",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+      "source_hash": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/expression.bend"
+    },
+    {
+      "id": "map-churn",
+      "name": "Map churn",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+      "source_hash": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend"
+    },
+    {
+      "id": "numeric-recurrence",
+      "name": "Numeric recurrence",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+      "source_hash": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend"
+    },
+    {
+      "id": "record-aggregation",
+      "name": "Record aggregation",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend",
+      "source_hash": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend"
     }
   ],
-  "cohort_size": 2,
-  "measurement_boundary": "First ordinary checked direct-library request in a fresh worker, including host import and actual compiler API loading plus source loading, checking and emission. Private API-specific Base disk caches are primed before measurement. Excludes process startup, preparation, provenance checks, output validation and output saving. This is first-request latency, not a pristine cold CLI invocation or warmed steady-state throughput.",
+  "cohort_size": 23,
+  "measurement_boundary": "First ordinary checked direct-library compilation in a fresh process, with prepared Base data. Source loading, checking, backend work and emission are included. Compiler imports/API loading, preparation, process launch, provenance checks and output validation are excluded from this primary clock; including_imports reports imports plus API load plus first compilation separately.",
   "history": [
     {
       "phase": 42,
@@ -181,7 +328,8 @@
       "compiler_phase": 42,
       "compiler_commit": "714c5f5dbdc9a434e7272c21b6216c3a70f5a33c",
       "compiler_commit_date": "2026-10-03T23:30:39Z",
-      "compiler_stage": "B1"
+      "compiler_stage": "B1",
+      "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7"
     },
     {
       "phase": 43,
@@ -349,7 +497,8 @@
       "compiler_phase": 43,
       "compiler_commit": "69d8c70e47c6cd1c89ea1af44f46aa5a47fe58c2",
       "compiler_commit_date": "2026-10-04T04:51:32Z",
-      "compiler_stage": "B1"
+      "compiler_stage": "B1",
+      "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7"
     },
     {
       "phase": 44,
@@ -518,7 +667,8 @@
       "compiler_phase": 44,
       "compiler_commit": "8f57b1be8093a54b9e6ad665245e167470270ba4",
       "compiler_commit_date": "2026-10-04T09:05:57Z",
-      "compiler_stage": "B1"
+      "compiler_stage": "B1",
+      "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7"
     },
     {
       "phase": 45,
@@ -687,7 +837,8 @@
       "compiler_phase": 45,
       "compiler_commit": "ab74ece868c7c27a65aaf9378009b6eff8a9354a",
       "compiler_commit_date": "2026-10-04T19:21:20Z",
-      "compiler_stage": "B1"
+      "compiler_stage": "B1",
+      "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7"
     },
     {
       "phase": 47,
@@ -835,7 +986,8 @@
       "compiler_phase": 47,
       "compiler_commit": "ee54723f87db81cce64b9f762fdd116805068c8a",
       "compiler_commit_date": "2026-10-05T01:36:56Z",
-      "compiler_stage": "B1"
+      "compiler_stage": "B1",
+      "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7"
     },
     {
       "phase": 48,
@@ -946,7 +1098,8 @@
       "compiler_phase": 48,
       "compiler_commit": "2d6e5d81b49bca8c3c9155414df6f2a987ffa7ed",
       "compiler_commit_date": "2026-10-05T05:16:52Z",
-      "compiler_stage": "B1"
+      "compiler_stage": "B1",
+      "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7"
     },
     {
       "phase": 56,
@@ -1056,7 +1209,8 @@
       "compiler_source_sha256": "5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244",
       "connectToPrevious": false,
       "candidate": "checked-string01",
-      "note": "New direct-output and import-inclusive timing series. API loading occurs lazily within the request. Do not join to P48 request-only legacy timing."
+      "note": "New direct-output and import-inclusive timing series. API loading occurs lazily within the request. Do not join to P48 request-only legacy timing.",
+      "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7"
     },
     {
       "phase": 57,
@@ -1171,7 +1325,8 @@
       "remeasurement": true,
       "note": "A new measurement of the exact Phase56 B1 compiler, not a new installed image or source regression. API load is timed explicitly; its sum with import and first request matches this series' scope.",
       "first_measurement_publication_commit": "098806de674e83ae68868586fec6df0a54f0d99d",
-      "first_measurement_publication_date": "2026-10-06T06:45:41Z"
+      "first_measurement_publication_date": "2026-10-06T06:45:41Z",
+      "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7"
     },
     {
       "phase": 58,
@@ -1268,7 +1423,8 @@
       "connectToPrevious": true,
       "candidate": "checked-string01",
       "remeasurement": true,
-      "note": "Phase56 B1 freshly remeasured in the final Phase58 B1 campaign, using the same TypeScript observations as selected last01. This is not a Phase58 compiler."
+      "note": "Phase56 B1 freshly remeasured in the final Phase58 B1 campaign, using the same TypeScript observations as selected last01. This is not a Phase58 compiler.",
+      "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7"
     },
     {
       "phase": 58,
@@ -1373,92 +1529,3080 @@
       "connectToPrevious": true,
       "candidate": "checked-last01",
       "same_run_baseline_observation_id": "p58-string01-fresh-baseline",
-      "note": "Final installed checked-derived B1 last01. Evening first-process time improves 0.76%; lexer regresses 1.59%. Use its own B1 TypeScript campaign, not B2's denominator."
+      "note": "Final installed checked-derived B1 last01. Evening first-process time improves 0.76%; lexer regresses 1.59%. Use its own B1 TypeScript campaign, not B2's denominator.",
+      "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7"
+    },
+    {
+      "phase": 61,
+      "compiler_phase": 61,
+      "measurement_phase": 62,
+      "observationId": "p62-p61-b1-firstRequestMs",
+      "label": "P61 B1 / P62 measurement",
+      "commit": "5cb1afcfddb514e2565b4e2a4230cff6cbd1910b",
+      "commit_date": "2026-10-07T19:48:45Z",
+      "title": "Measure remaining compiler costs and document parity experiments",
+      "compiler_commit": "18ed443a348f70020f76bfc035d21877a90816f3",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase62/evidence/generations-clean36.json",
+      "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "compiler_api_sha256": "97f412afb692cc9f187144e418fb153f35f62fb6ff5eda698e28ebc3eaf260c8",
+      "compiler_source_sha256": "268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e",
+      "cohortSize": 4,
+      "cohortIds": [
+        "numeric-recurrence",
+        "test-map-set-ops",
+        "lexer",
+        "raytrace-active"
+      ],
+      "cohortKey": "p62-4-source-firstRequestMs",
+      "protocolGroup": "prepared-4-source-compile-only-ts0187512",
+      "connectToPrevious": false,
+      "rounds": 3,
+      "campaign_workers": 36,
+      "fresh_processes_per_source_role": 3,
+      "measurement_boundary": "Source loading, checking and first library compilation after host/API imports",
+      "programs": [
+        {
+          "id": "numeric-recurrence",
+          "name": "Numeric recurrence",
+          "bend_ms": 544.867903,
+          "typescript_ms": 325.92796,
+          "ratio": 1.6717433600971208,
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "bend_samples_ms": [
+            548.9095830000001,
+            543.4368920000001,
+            544.867903
+          ],
+          "typescript_samples_ms": [
+            325.92796,
+            323.67765599999996,
+            326.92493699999994
+          ],
+          "source_hash": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "including_imports": {
+            "bend_ms": 600.059121,
+            "typescript_ms": 589.292779,
+            "ratio": 1.0182699370901336
+          },
+          "including_imports_ratio": 1.0182699370901336
+        },
+        {
+          "id": "test-map-set-ops",
+          "name": "Map/set operations",
+          "bend_ms": 2230.707875,
+          "typescript_ms": 643.539385,
+          "ratio": 3.466311350936198,
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+          "bend_samples_ms": [
+            2239.774794,
+            2230.707875,
+            2225.591835
+          ],
+          "typescript_samples_ms": [
+            639.344253,
+            643.539385,
+            650.66722
+          ],
+          "source_hash": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+          "including_imports": {
+            "bend_ms": 2285.725749,
+            "typescript_ms": 907.7804110000001,
+            "ratio": 2.517928037775206
+          },
+          "including_imports_ratio": 2.517928037775206
+        },
+        {
+          "id": "lexer",
+          "name": "Lexer",
+          "bend_ms": 939.2154029999999,
+          "typescript_ms": 392.843504,
+          "ratio": 2.3908131188036648,
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "bend_samples_ms": [
+            939.2154029999999,
+            956.0819779999999,
+            938.3833339999999
+          ],
+          "typescript_samples_ms": [
+            392.843504,
+            393.838705,
+            383.21399599999995
+          ],
+          "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "including_imports": {
+            "bend_ms": 994.7572309999999,
+            "typescript_ms": 659.691151,
+            "ratio": 1.5079135584766998
+          },
+          "including_imports_ratio": 1.5079135584766998
+        },
+        {
+          "id": "raytrace-active",
+          "name": "Active raytrace",
+          "bend_ms": 1352.9683949999999,
+          "typescript_ms": 568.5495990000001,
+          "ratio": 2.379684019441195,
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+          "bend_samples_ms": [
+            1352.9683949999999,
+            1393.126283,
+            1350.5207870000002
+          ],
+          "typescript_samples_ms": [
+            573.9247780000001,
+            561.922102,
+            568.5495990000001
+          ],
+          "source_hash": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+          "path": "selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+          "including_imports": {
+            "bend_ms": 1408.4971839999998,
+            "typescript_ms": 842.019256,
+            "ratio": 1.6727612509612249
+          },
+          "including_imports_ratio": 1.6727612509612249
+        }
+      ],
+      "ratio": 2.396213580268238,
+      "note": "Fresh Phase62 measurement of the already shipped Phase61 checked B1; 4 sources, three fresh-process medians per role/source. Prepared Base cache, identity checks and output validation outside clocks. Different cohort from previous observations; do not connect as one unchanged benchmark series.",
+      "boundary": "first_checked_library_request_only",
+      "measurement_boundary_key": "prepared-first-request-only",
+      "measurement_boundary_label": "Compilation only \u00b7 prepared fresh process",
+      "compiler_stage": "B1",
+      "stage": "B1",
+      "including_imports_average": 1.594700610285122,
+      "cohortName": "4 diagnostic sources \u00b7 compiler unchanged",
+      "backend": "direct-js"
+    },
+    {
+      "phase": 63,
+      "compiler_phase": 63,
+      "measurement_phase": 64,
+      "observationId": "p64-p63-b1-firstRequestMs",
+      "label": "P63 B1 / P64 measurement",
+      "commit": "49431ba4887a5e5dbfd0fff11df09041cb22e408",
+      "commit_date": "2026-10-08T00:10:06Z",
+      "title": "selfhost: release Phase64 State09 with 12.47% lower compiler latency",
+      "compiler_commit": "fd01066d341ea67dd90c8e5a0ad2eb75cda3d3df",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase64/evidence/state01-b1-three.json",
+      "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "compiler_api_sha256": "4a208bffcf47b5d19f8ff18be1fc01b2faf988b37d38e7f5db9e6bd42d79905f",
+      "compiler_source_sha256": "0ebe491e727721857ce981ff5a2167a52d1e040f5674915a3349fea33bed8ed5",
+      "cohortSize": 3,
+      "cohortIds": [
+        "numeric-recurrence",
+        "lexer",
+        "test-map-set-ops"
+      ],
+      "cohortKey": "p64-3-source-firstRequestMs",
+      "protocolGroup": "prepared-3-source-compile-only-ts0187512",
+      "connectToPrevious": false,
+      "rounds": 3,
+      "campaign_workers": 27,
+      "fresh_processes_per_source_role": 3,
+      "measurement_boundary": "Source loading, checking and first library compilation after host/API imports",
+      "programs": [
+        {
+          "id": "numeric-recurrence",
+          "name": "Numeric recurrence",
+          "bend_ms": 384.154171,
+          "typescript_ms": 328.31298300000003,
+          "ratio": 1.1700852262671562,
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "bend_samples_ms": [
+            384.154171,
+            377.02938099999994,
+            386.528604
+          ],
+          "typescript_samples_ms": [
+            324.50551700000005,
+            333.23601099999996,
+            328.31298300000003
+          ],
+          "including_imports": {
+            "bend_ms": 441.484298,
+            "typescript_ms": 596.077983,
+            "ratio": 0.7406485570529787
+          },
+          "including_imports_ratio": 0.7406485570529787,
+          "source_hash": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend"
+        },
+        {
+          "id": "lexer",
+          "name": "Lexer",
+          "bend_ms": 727.7154190000001,
+          "typescript_ms": 387.71576999999996,
+          "ratio": 1.87693015169334,
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "bend_samples_ms": [
+            755.5865630000001,
+            716.386358,
+            727.7154190000001
+          ],
+          "typescript_samples_ms": [
+            385.698445,
+            395.598756,
+            387.71576999999996
+          ],
+          "including_imports": {
+            "bend_ms": 785.0775210000002,
+            "typescript_ms": 655.7229219999999,
+            "ratio": 1.1972702107247675
+          },
+          "including_imports_ratio": 1.1972702107247675,
+          "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend"
+        },
+        {
+          "id": "test-map-set-ops",
+          "name": "Map/set operations",
+          "bend_ms": 1475.184845,
+          "typescript_ms": 636.7627229999999,
+          "ratio": 2.316694730573919,
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+          "bend_samples_ms": [
+            1478.6542220000001,
+            1459.4458869999999,
+            1475.184845
+          ],
+          "typescript_samples_ms": [
+            645.7911549999999,
+            636.7627229999999,
+            635.975048
+          ],
+          "including_imports": {
+            "bend_ms": 1535.481191,
+            "typescript_ms": 910.9412399999999,
+            "ratio": 1.6855985035873449
+          },
+          "including_imports_ratio": 1.6855985035873449,
+          "source_hash": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend"
+        }
+      ],
+      "ratio": 1.7199327754413332,
+      "note": "Fresh Phase64 measurement of the already shipped Phase63 checked B1; 3 sources, three fresh-process medians per role/source. Prepared Base cache, identity checks and output validation outside clocks. Different cohort from previous observations; do not connect as one unchanged benchmark series.",
+      "boundary": "first_checked_library_request_only",
+      "measurement_boundary_key": "prepared-first-request-only",
+      "measurement_boundary_label": "Compilation only \u00b7 prepared fresh process",
+      "compiler_stage": "B1",
+      "stage": "B1",
+      "including_imports_average": 1.1433683469652256,
+      "cohortName": "3 diagnostic sources \u00b7 compiler unchanged",
+      "backend": "direct-js"
+    },
+    {
+      "phase": 65,
+      "measurement_phase": 66,
+      "report_phase": 66,
+      "compiler_phase": 65,
+      "label": "P65 baseline \u00b7 P66 measurement",
+      "observationId": "p66-b1-baseline-compile-only",
+      "commit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+      "commit_date": "2026-10-08T08:50:21Z",
+      "commit_url": "https://github.com/rom1504/bend/commit/2035010d3d7045bbd0364c141e1da0007476cbc1",
+      "compiler_commit": "ef7c6575a5bd7a4e67f3adf9dc37aaba4215a590",
+      "compiler_source_commit": "9583c590d646b7cdf710beeb27bd4becbf0db0e9",
+      "date_semantics": "Publication commit date. Baseline compiler identity is separate from measurement publication.",
+      "ratio": 1.3946680973570893,
+      "including_imports_average": 0.9756082832513389,
+      "programs": [
+        {
+          "id": "mandelbrot",
+          "name": "Historical Mandelbrot",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+          "source_hash": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+          "bend_ms": 578.724664,
+          "typescript_ms": 371.44153,
+          "ratio": 1.558050506630209,
+          "including_imports": {
+            "bend_ms": 626.793723,
+            "typescript_ms": 583.794587,
+            "ratio": 1.0736545643921842,
+            "samples_ms": [
+              691.786134,
+              623.8570669999999,
+              626.793723
+            ],
+            "typescript_samples_ms": [
+              585.2672150000001,
+              581.240401,
+              583.794587
+            ]
+          },
+          "including_imports_ratio": 1.0736545643921842,
+          "measurement_samples_ms": [
+            638.320197,
+            576.12213,
+            578.724664
+          ],
+          "typescript_measurement_samples_ms": [
+            373.139931,
+            370.425477,
+            371.44153
+          ]
+        },
+        {
+          "id": "editdist",
+          "name": "Edit distance",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+          "source_hash": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+          "bend_ms": 548.3116650000001,
+          "typescript_ms": 387.73590399999995,
+          "ratio": 1.4141369404882353,
+          "including_imports": {
+            "bend_ms": 603.1493990000001,
+            "typescript_ms": 618.201205,
+            "ratio": 0.9756522538645006,
+            "samples_ms": [
+              563.030209,
+              603.1493990000001,
+              606.576268
+            ],
+            "typescript_samples_ms": [
+              561.1867990000001,
+              618.201205,
+              626.9829990000001
+            ]
+          },
+          "including_imports_ratio": 0.9756522538645006,
+          "measurement_samples_ms": [
+            513.323885,
+            548.3116650000001,
+            553.732888
+          ],
+          "typescript_measurement_samples_ms": [
+            348.41480000000007,
+            387.73590399999995,
+            391.76144500000004
+          ]
+        },
+        {
+          "id": "tree-bitonic",
+          "name": "Bitonic tree sort",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+          "source_hash": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+          "bend_ms": 424.19989799999996,
+          "typescript_ms": 330.66447800000003,
+          "ratio": 1.2828710860197083,
+          "including_imports": {
+            "bend_ms": 471.7544029999999,
+            "typescript_ms": 544.6589610000001,
+            "ratio": 0.866146408633126,
+            "samples_ms": [
+              515.97846,
+              471.7544029999999,
+              469.88335399999994
+            ],
+            "typescript_samples_ms": [
+              593.126203,
+              544.39256,
+              544.6589610000001
+            ]
+          },
+          "including_imports_ratio": 0.866146408633126,
+          "measurement_samples_ms": [
+            461.708702,
+            424.19989799999996,
+            422.11661499999997
+          ],
+          "typescript_measurement_samples_ms": [
+            359.736858,
+            330.66447800000003,
+            330.424231
+          ]
+        },
+        {
+          "id": "lexer",
+          "name": "Lexer",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "bend_ms": 530.8612899999999,
+          "typescript_ms": 356.247892,
+          "ratio": 1.490145771866069,
+          "including_imports": {
+            "bend_ms": 579.014295,
+            "typescript_ms": 570.5627300000001,
+            "ratio": 1.014812683260962,
+            "samples_ms": [
+              579.014295,
+              582.685878,
+              576.1441110000001
+            ],
+            "typescript_samples_ms": [
+              571.78964,
+              566.8096280000001,
+              570.5627300000001
+            ]
+          },
+          "including_imports_ratio": 1.014812683260962,
+          "measurement_samples_ms": [
+            530.8612899999999,
+            535.077186,
+            528.976971
+          ],
+          "typescript_measurement_samples_ms": [
+            356.247892,
+            354.70065000000005,
+            356.56521000000004
+          ]
+        },
+        {
+          "id": "symreg",
+          "name": "Symbolic regression",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+          "source_hash": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+          "bend_ms": 500.25452399999995,
+          "typescript_ms": 345.05678499999993,
+          "ratio": 1.44977448856715,
+          "including_imports": {
+            "bend_ms": 548.6298019999999,
+            "typescript_ms": 565.212295,
+            "ratio": 0.9706614786219395,
+            "samples_ms": [
+              550.171815,
+              548.6298019999999,
+              545.100307
+            ],
+            "typescript_samples_ms": [
+              556.9670659999999,
+              565.212295,
+              593.249051
+            ]
+          },
+          "including_imports_ratio": 0.9706614786219395,
+          "measurement_samples_ms": [
+            501.526588,
+            500.25452399999995,
+            496.93865900000003
+          ],
+          "typescript_measurement_samples_ms": [
+            345.05678499999993,
+            345.05162,
+            377.23421199999996
+          ]
+        },
+        {
+          "id": "test-morning-program",
+          "name": "Morning",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend",
+          "source_hash": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend",
+          "bend_ms": 778.4845,
+          "typescript_ms": 461.99115,
+          "ratio": 1.6850636640983274,
+          "including_imports": {
+            "bend_ms": 826.64916,
+            "typescript_ms": 674.772063,
+            "ratio": 1.2250791123816873,
+            "samples_ms": [
+              840.8978669999999,
+              826.64916,
+              823.0552389999999
+            ],
+            "typescript_samples_ms": [
+              684.47191,
+              674.277245,
+              674.772063
+            ]
+          },
+          "including_imports_ratio": 1.2250791123816873,
+          "measurement_samples_ms": [
+            791.3952439999999,
+            778.4845,
+            775.037078
+          ],
+          "typescript_measurement_samples_ms": [
+            463.33942199999996,
+            461.99115,
+            461.466119
+          ]
+        },
+        {
+          "id": "test-evening-program",
+          "name": "Evening",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+          "source_hash": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+          "bend_ms": 1025.126104,
+          "typescript_ms": 557.88834,
+          "ratio": 1.8375112553884887,
+          "including_imports": {
+            "bend_ms": 1072.691712,
+            "typescript_ms": 770.316463,
+            "ratio": 1.3925338007478103,
+            "samples_ms": [
+              1083.4820969999998,
+              1068.656408,
+              1072.691712
+            ],
+            "typescript_samples_ms": [
+              764.8200659999999,
+              799.248966,
+              770.316463
+            ]
+          },
+          "including_imports_ratio": 1.3925338007478103,
+          "measurement_samples_ms": [
+            1035.5162559999999,
+            1020.1998030000001,
+            1025.126104
+          ],
+          "typescript_measurement_samples_ms": [
+            550.8141719999999,
+            584.57682,
+            557.88834
+          ]
+        },
+        {
+          "id": "test-rle-roundtrip",
+          "name": "RLE roundtrip",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+          "source_hash": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+          "bend_ms": 422.605089,
+          "typescript_ms": 330.460719,
+          "ratio": 1.2788360755215813,
+          "including_imports": {
+            "bend_ms": 470.212691,
+            "typescript_ms": 544.938249,
+            "ratio": 0.8628733473249003,
+            "samples_ms": [
+              474.91253099999994,
+              469.17316500000004,
+              470.212691
+            ],
+            "typescript_samples_ms": [
+              544.938249,
+              541.285249,
+              547.691769
+            ]
+          },
+          "including_imports_ratio": 0.8628733473249003,
+          "measurement_samples_ms": [
+            426.90429699999993,
+            421.715469,
+            422.605089
+          ],
+          "typescript_measurement_samples_ms": [
+            330.233419,
+            330.460719,
+            331.724743
+          ]
+        },
+        {
+          "id": "test-map-set-ops",
+          "name": "Map/set operations",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+          "source_hash": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+          "bend_ms": 1164.354138,
+          "typescript_ms": 519.4339049999999,
+          "ratio": 2.2415828593245184,
+          "including_imports": {
+            "bend_ms": 1212.110936,
+            "typescript_ms": 735.8152689999998,
+            "ratio": 1.6473033206382135,
+            "samples_ms": [
+              1206.689876,
+              1231.5049440000003,
+              1212.110936
+            ],
+            "typescript_samples_ms": [
+              737.046208,
+              724.946892,
+              735.8152689999998
+            ]
+          },
+          "including_imports_ratio": 1.6473033206382135,
+          "measurement_samples_ms": [
+            1158.993154,
+            1182.3627760000002,
+            1164.354138
+          ],
+          "typescript_measurement_samples_ms": [
+            520.796192,
+            511.14878200000004,
+            519.4339049999999
+          ]
+        },
+        {
+          "id": "raytrace",
+          "name": "Historical raytrace",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend",
+          "source_hash": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend",
+          "bend_ms": 811.8967829999999,
+          "typescript_ms": 460.318686,
+          "ratio": 1.7637710735905252,
+          "including_imports": {
+            "bend_ms": 859.7615109999999,
+            "typescript_ms": 673.635789,
+            "ratio": 1.2763002278669013,
+            "samples_ms": [
+              859.7615109999999,
+              939.974907,
+              855.137138
+            ],
+            "typescript_samples_ms": [
+              668.126698,
+              673.635789,
+              740.413337
+            ]
+          },
+          "including_imports_ratio": 1.2763002278669013,
+          "measurement_samples_ms": [
+            811.8967829999999,
+            887.331087,
+            808.061056
+          ],
+          "typescript_measurement_samples_ms": [
+            453.06193300000007,
+            460.318686,
+            508.084227
+          ]
+        },
+        {
+          "id": "local-row",
+          "name": "Local record",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "source_hash": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "bend_ms": 524.293653,
+          "typescript_ms": 353.133773,
+          "ratio": 1.4846885035830315,
+          "including_imports": {
+            "bend_ms": 572.268237,
+            "typescript_ms": 568.937126,
+            "ratio": 1.0058549721010823,
+            "samples_ms": [
+              581.517963,
+              568.3080500000001,
+              572.268237
+            ],
+            "typescript_samples_ms": [
+              568.937126,
+              572.1611809999999,
+              562.202103
+            ]
+          },
+          "including_imports_ratio": 1.0058549721010823,
+          "measurement_samples_ms": [
+            532.747029,
+            520.6822090000001,
+            524.293653
+          ],
+          "typescript_measurement_samples_ms": [
+            353.133773,
+            357.94054199999994,
+            349.70239399999997
+          ]
+        },
+        {
+          "id": "local-fold",
+          "name": "Local fold",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+          "source_hash": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+          "bend_ms": 288.88870299999996,
+          "typescript_ms": 322.091811,
+          "ratio": 0.8969141503569613,
+          "including_imports": {
+            "bend_ms": 336.224294,
+            "typescript_ms": 546.251972,
+            "ratio": 0.6155113596551006,
+            "samples_ms": [
+              337.632504,
+              336.224294,
+              335.199497
+            ],
+            "typescript_samples_ms": [
+              546.251972,
+              551.032522,
+              533.502777
+            ]
+          },
+          "including_imports_ratio": 0.6155113596551006,
+          "measurement_samples_ms": [
+            289.061888,
+            288.88870299999996,
+            287.692174
+          ],
+          "typescript_measurement_samples_ms": [
+            332.010062,
+            322.091811,
+            318.011045
+          ]
+        },
+        {
+          "id": "scalar-region",
+          "name": "Scalar region",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+          "source_hash": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+          "bend_ms": 312.13402499999995,
+          "typescript_ms": 322.7857670000001,
+          "ratio": 0.9670005833931329,
+          "including_imports": {
+            "bend_ms": 359.48426599999993,
+            "typescript_ms": 534.823007,
+            "ratio": 0.6721555753864566,
+            "samples_ms": [
+              359.325863,
+              362.53084099999995,
+              359.48426599999993
+            ],
+            "typescript_samples_ms": [
+              534.483131,
+              537.4909930000001,
+              534.823007
+            ]
+          },
+          "including_imports_ratio": 0.6721555753864566,
+          "measurement_samples_ms": [
+            311.452899,
+            314.67184299999997,
+            312.13402499999995
+          ],
+          "typescript_measurement_samples_ms": [
+            323.312026,
+            322.7857670000001,
+            322.346182
+          ]
+        },
+        {
+          "id": "mandelbrot-grid",
+          "name": "Mandelbrot grid",
+          "path": "selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend",
+          "source_hash": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend",
+          "bend_ms": 619.996526,
+          "typescript_ms": 373.821616,
+          "ratio": 1.6585357814086386,
+          "including_imports": {
+            "bend_ms": 666.97984,
+            "typescript_ms": 587.676107,
+            "ratio": 1.1349446269048333,
+            "samples_ms": [
+              666.97984,
+              666.1612580000001,
+              667.81452
+            ],
+            "typescript_samples_ms": [
+              585.20174,
+              590.060124,
+              587.676107
+            ]
+          },
+          "including_imports_ratio": 1.1349446269048333,
+          "measurement_samples_ms": [
+            620.067938,
+            618.421861,
+            619.996526
+          ],
+          "typescript_measurement_samples_ms": [
+            372.010945,
+            374.198515,
+            373.821616
+          ]
+        },
+        {
+          "id": "raytrace-active",
+          "name": "Active raytrace",
+          "path": "selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+          "source_hash": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+          "bend_ms": 826.637635,
+          "typescript_ms": 455.459459,
+          "ratio": 1.8149532711757779,
+          "including_imports": {
+            "bend_ms": 874.128365,
+            "typescript_ms": 670.556068,
+            "ratio": 1.303587286305789,
+            "samples_ms": [
+              874.128365,
+              877.910982,
+              873.6049419999998
+            ],
+            "typescript_samples_ms": [
+              668.2162979999999,
+              670.669466,
+              670.556068
+            ]
+          },
+          "including_imports_ratio": 1.303587286305789,
+          "measurement_samples_ms": [
+            826.637635,
+            830.139043,
+            825.8875229999999
+          ],
+          "typescript_measurement_samples_ms": [
+            455.459459,
+            454.433326,
+            460.109383
+          ]
+        },
+        {
+          "id": "closures",
+          "name": "Known closures",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "source_hash": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "bend_ms": 293.11970199999996,
+          "typescript_ms": 312.3096110000001,
+          "ratio": 0.9385548560655723,
+          "including_imports": {
+            "bend_ms": 341.10738299999997,
+            "typescript_ms": 525.478854,
+            "ratio": 0.6491362695253194,
+            "samples_ms": [
+              340.74451999999997,
+              341.10738299999997,
+              345.596084
+            ],
+            "typescript_samples_ms": [
+              524.014984,
+              525.478854,
+              527.6785430000001
+            ]
+          },
+          "including_imports_ratio": 0.6491362695253194,
+          "measurement_samples_ms": [
+            293.11970199999996,
+            292.809423,
+            296.858158
+          ],
+          "typescript_measurement_samples_ms": [
+            313.530917,
+            311.858354,
+            312.3096110000001
+          ]
+        },
+        {
+          "id": "list-pipeline",
+          "name": "List pipeline",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+          "source_hash": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+          "bend_ms": 744.751311,
+          "typescript_ms": 442.895959,
+          "ratio": 1.6815491220140033,
+          "including_imports": {
+            "bend_ms": 792.99517,
+            "typescript_ms": 659.02651,
+            "ratio": 1.2032826570208837,
+            "samples_ms": [
+              799.494226,
+              777.0391300000001,
+              792.99517
+            ],
+            "typescript_samples_ms": [
+              653.4997369999999,
+              659.02651,
+              659.446933
+            ]
+          },
+          "including_imports_ratio": 1.2032826570208837,
+          "measurement_samples_ms": [
+            751.515312,
+            728.9938950000001,
+            744.751311
+          ],
+          "typescript_measurement_samples_ms": [
+            441.35304799999994,
+            442.895959,
+            446.144843
+          ]
+        },
+        {
+          "id": "bst",
+          "name": "Binary search tree",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+          "source_hash": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+          "bend_ms": 412.343077,
+          "typescript_ms": 333.613123,
+          "ratio": 1.2359917778174452,
+          "including_imports": {
+            "bend_ms": 460.27243799999997,
+            "typescript_ms": 545.095489,
+            "ratio": 0.8443886388500271,
+            "samples_ms": [
+              460.27243799999997,
+              459.038641,
+              461.257332
+            ],
+            "typescript_samples_ms": [
+              546.626361,
+              544.4406349999999,
+              545.095489
+            ]
+          },
+          "including_imports_ratio": 0.8443886388500271,
+          "measurement_samples_ms": [
+            412.464524,
+            412.020037,
+            412.343077
+          ],
+          "typescript_measurement_samples_ms": [
+            333.613123,
+            332.18917999999996,
+            333.751986
+          ]
+        },
+        {
+          "id": "unicode-text",
+          "name": "Unicode text",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+          "source_hash": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+          "bend_ms": 567.639257,
+          "typescript_ms": 350.11462,
+          "ratio": 1.6212954974573757,
+          "including_imports": {
+            "bend_ms": 615.2408310000001,
+            "typescript_ms": 564.0614,
+            "ratio": 1.0907337942287842,
+            "samples_ms": [
+              616.139108,
+              612.7030639999999,
+              615.2408310000001
+            ],
+            "typescript_samples_ms": [
+              563.9549480000001,
+              567.3961429999999,
+              564.0614
+            ]
+          },
+          "including_imports_ratio": 1.0907337942287842,
+          "measurement_samples_ms": [
+            568.195491,
+            565.10925,
+            567.639257
+          ],
+          "typescript_measurement_samples_ms": [
+            350.11462,
+            351.027031,
+            349.58241200000003
+          ]
+        },
+        {
+          "id": "expression",
+          "name": "Expression evaluation",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+          "source_hash": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+          "bend_ms": 300.34599399999996,
+          "typescript_ms": 314.606001,
+          "ratio": 0.9546734424814738,
+          "including_imports": {
+            "bend_ms": 347.94269199999997,
+            "typescript_ms": 527.307035,
+            "ratio": 0.6598483784689122,
+            "samples_ms": [
+              345.86429499999997,
+              347.94269199999997,
+              355.234078
+            ],
+            "typescript_samples_ms": [
+              527.307035,
+              524.476511,
+              553.5139350000001
+            ]
+          },
+          "including_imports_ratio": 0.6598483784689122,
+          "measurement_samples_ms": [
+            298.158854,
+            300.34599399999996,
+            307.028861
+          ],
+          "typescript_measurement_samples_ms": [
+            314.606001,
+            312.832613,
+            340.61259100000007
+          ]
+        },
+        {
+          "id": "map-churn",
+          "name": "Map churn",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "source_hash": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "bend_ms": 706.031957,
+          "typescript_ms": 450.83917,
+          "ratio": 1.5660395191482586,
+          "including_imports": {
+            "bend_ms": 754.229686,
+            "typescript_ms": 666.725087,
+            "ratio": 1.131245397400203,
+            "samples_ms": [
+              754.229686,
+              757.7925570000001,
+              753.011029
+            ],
+            "typescript_samples_ms": [
+              665.439625,
+              666.725087,
+              669.543547
+            ]
+          },
+          "including_imports_ratio": 1.131245397400203,
+          "measurement_samples_ms": [
+            706.031957,
+            709.6658140000001,
+            704.974123
+          ],
+          "typescript_measurement_samples_ms": [
+            450.83917,
+            452.07191900000004,
+            446.656987
+          ]
+        },
+        {
+          "id": "numeric-recurrence",
+          "name": "Numeric recurrence",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "source_hash": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "bend_ms": 237.59409099999996,
+          "typescript_ms": 309.6430859999999,
+          "ratio": 0.7673159897392317,
+          "including_imports": {
+            "bend_ms": 286.40473199999997,
+            "typescript_ms": 524.310618,
+            "ratio": 0.5462501085568325,
+            "samples_ms": [
+              283.567927,
+              287.32160500000003,
+              286.40473199999997
+            ],
+            "typescript_samples_ms": [
+              522.241178,
+              524.310618,
+              538.653929
+            ]
+          },
+          "including_imports_ratio": 0.5462501085568325,
+          "measurement_samples_ms": [
+            235.8046,
+            238.75464600000004,
+            237.59409099999996
+          ],
+          "typescript_measurement_samples_ms": [
+            308.02577099999996,
+            309.6430859999999,
+            323.43692899999996
+          ]
+        },
+        {
+          "id": "record-aggregation",
+          "name": "Record aggregation",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend",
+          "source_hash": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend",
+          "bend_ms": 709.132607,
+          "typescript_ms": 453.33891000000006,
+          "ratio": 1.5642438611766194,
+          "including_imports": {
+            "bend_ms": 757.201562,
+            "typescript_ms": 667.4775920000001,
+            "ratio": 1.1344224451507878,
+            "samples_ms": [
+              757.201562,
+              756.62996,
+              777.219935
+            ],
+            "typescript_samples_ms": [
+              658.832726,
+              679.4600760000001,
+              667.4775920000001
+            ]
+          },
+          "including_imports_ratio": 1.1344224451507878,
+          "measurement_samples_ms": [
+            709.132607,
+            708.598869,
+            729.48289
+          ],
+          "typescript_measurement_samples_ms": [
+            444.48308,
+            463.672739,
+            453.33891000000006
+          ]
+        }
+      ],
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/b1-07-broad.json",
+      "data_source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/b1-07-broad.json",
+      "cohortKey": "b1-23-source-compile-only-ts0592662",
+      "cohortSize": 23,
+      "cohortIds": [
+        "mandelbrot",
+        "editdist",
+        "tree-bitonic",
+        "lexer",
+        "symreg",
+        "test-morning-program",
+        "test-evening-program",
+        "test-rle-roundtrip",
+        "test-map-set-ops",
+        "raytrace",
+        "local-row",
+        "local-fold",
+        "scalar-region",
+        "mandelbrot-grid",
+        "raytrace-active",
+        "closures",
+        "list-pipeline",
+        "bst",
+        "unicode-text",
+        "expression",
+        "map-churn",
+        "numeric-recurrence",
+        "record-aggregation"
+      ],
+      "cohortName": "23 benchmark sources \u00b7 prepared first compilation",
+      "protocolGroup": "prepared-23-source-compile-only-ts0592662",
+      "typescript_commit": "059266225b77c8ca256ac6b25ee5c21449bab151",
+      "boundary": "first_checked_library_request_only",
+      "measurement_boundary_key": "prepared-first-request-only",
+      "measurement_boundary_label": "Compilation only \u00b7 prepared fresh process",
+      "stage": "B1",
+      "compiler_stage": "B1",
+      "backend": "direct-js",
+      "samples_per_program_per_role": 3,
+      "successful_workers": 207,
+      "connectToPrevious": false,
+      "note": "Fresh B1 ordinary library compilation, 23 sources and three rotated rounds per role. Preparation and compiler imports/API loading excluded from primary clock; including_imports retains the separate combined clock. New TypeScript reference 0592662 replaces 0187512; do not connect this point to old-reference ratios. Small paired changes are descriptive, not established speed gains/regressions.",
+      "api_sha256": "3a7fedb77003aecc797cd9a9ac4c6d1bd15bd21dd1230806b6719565eca10f72",
+      "compiler_source_sha256": "310c9d077fcb0a4ba8ed42fec3882b1ef761709a65b2f1429aa501a158403e4c"
+    },
+    {
+      "phase": 66,
+      "measurement_phase": 66,
+      "report_phase": 66,
+      "compiler_phase": 66,
+      "label": "P66",
+      "observationId": "p66-b1-candidate-compile-only",
+      "commit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+      "commit_date": "2026-10-08T08:50:21Z",
+      "commit_url": "https://github.com/rom1504/bend/commit/2035010d3d7045bbd0364c141e1da0007476cbc1",
+      "compiler_commit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+      "compiler_source_commit": "f9667c2b1449683a4e6fa87f71e9adea616e9638",
+      "date_semantics": "Publication commit date. Baseline compiler identity is separate from measurement publication.",
+      "ratio": 1.4020653827400071,
+      "including_imports_average": 0.9826337903883621,
+      "programs": [
+        {
+          "id": "mandelbrot",
+          "name": "Historical Mandelbrot",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+          "source_hash": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+          "bend_ms": 581.4320720000001,
+          "typescript_ms": 371.44153,
+          "ratio": 1.5653394277155817,
+          "including_imports": {
+            "bend_ms": 630.081626,
+            "typescript_ms": 583.794587,
+            "ratio": 1.079286516234862,
+            "samples_ms": [
+              630.081626,
+              627.902317,
+              633.336403
+            ],
+            "typescript_samples_ms": [
+              585.2672150000001,
+              581.240401,
+              583.794587
+            ],
+            "baseline_ms": 626.793723
+          },
+          "including_imports_ratio": 1.079286516234862,
+          "measurement_samples_ms": [
+            581.4320720000001,
+            578.809519,
+            584.391679
+          ],
+          "typescript_measurement_samples_ms": [
+            373.139931,
+            370.425477,
+            371.44153
+          ],
+          "baseline_ms": 578.724664,
+          "baseline_ratio": 1.558050506630209,
+          "change_percent": 0.46782315812967656
+        },
+        {
+          "id": "editdist",
+          "name": "Edit distance",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+          "source_hash": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+          "bend_ms": 509.59789700000005,
+          "typescript_ms": 387.73590399999995,
+          "ratio": 1.3142912269481242,
+          "including_imports": {
+            "bend_ms": 558.530706,
+            "typescript_ms": 618.201205,
+            "ratio": 0.903477219847865,
+            "samples_ms": [
+              557.008217,
+              558.530706,
+              608.6539389999999
+            ],
+            "typescript_samples_ms": [
+              561.1867990000001,
+              618.201205,
+              626.9829990000001
+            ],
+            "baseline_ms": 603.1493990000001
+          },
+          "including_imports_ratio": 0.903477219847865,
+          "measurement_samples_ms": [
+            508.189626,
+            509.59789700000005,
+            555.1747459999999
+          ],
+          "typescript_measurement_samples_ms": [
+            348.41480000000007,
+            387.73590399999995,
+            391.76144500000004
+          ],
+          "baseline_ms": 548.3116650000001,
+          "baseline_ratio": 1.4141369404882353,
+          "change_percent": -7.060540650726443
+        },
+        {
+          "id": "tree-bitonic",
+          "name": "Bitonic tree sort",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+          "source_hash": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+          "bend_ms": 436.895615,
+          "typescript_ms": 330.66447800000003,
+          "ratio": 1.321265645594989,
+          "including_imports": {
+            "bend_ms": 491.396156,
+            "typescript_ms": 544.6589610000001,
+            "ratio": 0.9022088888389738,
+            "samples_ms": [
+              522.3245099999999,
+              491.396156,
+              474.63397899999995
+            ],
+            "typescript_samples_ms": [
+              593.126203,
+              544.39256,
+              544.6589610000001
+            ],
+            "baseline_ms": 471.7544029999999
+          },
+          "including_imports_ratio": 0.9022088888389738,
+          "measurement_samples_ms": [
+            468.818179,
+            436.895615,
+            425.857717
+          ],
+          "typescript_measurement_samples_ms": [
+            359.736858,
+            330.66447800000003,
+            330.424231
+          ],
+          "baseline_ms": 424.19989799999996,
+          "baseline_ratio": 1.2828710860197083,
+          "change_percent": 2.9928618700422405
+        },
+        {
+          "id": "lexer",
+          "name": "Lexer",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "bend_ms": 538.89426,
+          "typescript_ms": 356.247892,
+          "ratio": 1.5126945930110938,
+          "including_imports": {
+            "bend_ms": 588.084394,
+            "typescript_ms": 570.5627300000001,
+            "ratio": 1.0307094436399655,
+            "samples_ms": [
+              598.611794,
+              588.084394,
+              587.4227470000001
+            ],
+            "typescript_samples_ms": [
+              571.78964,
+              566.8096280000001,
+              570.5627300000001
+            ],
+            "baseline_ms": 579.014295
+          },
+          "including_imports_ratio": 1.0307094436399655,
+          "measurement_samples_ms": [
+            550.091626,
+            538.601504,
+            538.89426
+          ],
+          "typescript_measurement_samples_ms": [
+            356.247892,
+            354.70065000000005,
+            356.56521000000004
+          ],
+          "baseline_ms": 530.8612899999999,
+          "baseline_ratio": 1.490145771866069,
+          "change_percent": 1.5131956598304797
+        },
+        {
+          "id": "symreg",
+          "name": "Symbolic regression",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+          "source_hash": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+          "bend_ms": 512.6418990000001,
+          "typescript_ms": 345.05678499999993,
+          "ratio": 1.4856740144959044,
+          "including_imports": {
+            "bend_ms": 562.8983750000001,
+            "typescript_ms": 565.212295,
+            "ratio": 0.9959061046256965,
+            "samples_ms": [
+              562.8983750000001,
+              564.0916950000001,
+              553.7491120000001
+            ],
+            "typescript_samples_ms": [
+              556.9670659999999,
+              565.212295,
+              593.249051
+            ],
+            "baseline_ms": 548.6298019999999
+          },
+          "including_imports_ratio": 0.9959061046256965,
+          "measurement_samples_ms": [
+            514.0096920000001,
+            512.6418990000001,
+            504.61457500000006
+          ],
+          "typescript_measurement_samples_ms": [
+            345.05678499999993,
+            345.05162,
+            377.23421199999996
+          ],
+          "baseline_ms": 500.25452399999995,
+          "baseline_ratio": 1.44977448856715,
+          "change_percent": 2.476214487967354
+        },
+        {
+          "id": "test-morning-program",
+          "name": "Morning",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend",
+          "source_hash": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend",
+          "bend_ms": 783.673193,
+          "typescript_ms": 461.99115,
+          "ratio": 1.6962948164699692,
+          "including_imports": {
+            "bend_ms": 832.3609349999999,
+            "typescript_ms": 674.772063,
+            "ratio": 1.2335438596840662,
+            "samples_ms": [
+              917.6429959999999,
+              831.125453,
+              832.3609349999999
+            ],
+            "typescript_samples_ms": [
+              684.47191,
+              674.277245,
+              674.772063
+            ],
+            "baseline_ms": 826.64916
+          },
+          "including_imports_ratio": 1.2335438596840662,
+          "measurement_samples_ms": [
+            863.5285399999999,
+            782.403332,
+            783.673193
+          ],
+          "typescript_measurement_samples_ms": [
+            463.33942199999996,
+            461.99115,
+            461.466119
+          ],
+          "baseline_ms": 778.4845,
+          "baseline_ratio": 1.6850636640983274,
+          "change_percent": 0.6665120500151112
+        },
+        {
+          "id": "test-evening-program",
+          "name": "Evening",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+          "source_hash": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+          "bend_ms": 1031.840158,
+          "typescript_ms": 557.88834,
+          "ratio": 1.8495460184738761,
+          "including_imports": {
+            "bend_ms": 1082.016605,
+            "typescript_ms": 770.316463,
+            "ratio": 1.404639076238982,
+            "samples_ms": [
+              1066.985703,
+              1097.373537,
+              1082.016605
+            ],
+            "typescript_samples_ms": [
+              764.8200659999999,
+              799.248966,
+              770.316463
+            ],
+            "baseline_ms": 1072.691712
+          },
+          "including_imports_ratio": 1.404639076238982,
+          "measurement_samples_ms": [
+            1018.193321,
+            1048.791702,
+            1031.840158
+          ],
+          "typescript_measurement_samples_ms": [
+            550.8141719999999,
+            584.57682,
+            557.88834
+          ],
+          "baseline_ms": 1025.126104,
+          "baseline_ratio": 1.8375112553884887,
+          "change_percent": 0.6549490812693293
+        },
+        {
+          "id": "test-rle-roundtrip",
+          "name": "RLE roundtrip",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+          "source_hash": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+          "bend_ms": 423.573079,
+          "typescript_ms": 330.460719,
+          "ratio": 1.2817652890236555,
+          "including_imports": {
+            "bend_ms": 473.387781,
+            "typescript_ms": 544.938249,
+            "ratio": 0.8686998607066027,
+            "samples_ms": [
+              473.387781,
+              473.44395899999995,
+              471.24980700000003
+            ],
+            "typescript_samples_ms": [
+              544.938249,
+              541.285249,
+              547.691769
+            ],
+            "baseline_ms": 470.212691
+          },
+          "including_imports_ratio": 0.8686998607066027,
+          "measurement_samples_ms": [
+            423.573079,
+            424.43596699999995,
+            422.300836
+          ],
+          "typescript_measurement_samples_ms": [
+            330.233419,
+            330.460719,
+            331.724743
+          ],
+          "baseline_ms": 422.605089,
+          "baseline_ratio": 1.2788360755215813,
+          "change_percent": 0.22905308648566436
+        },
+        {
+          "id": "test-map-set-ops",
+          "name": "Map/set operations",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+          "source_hash": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+          "bend_ms": 1173.27322,
+          "typescript_ms": 519.4339049999999,
+          "ratio": 2.2587536329574025,
+          "including_imports": {
+            "bend_ms": 1222.54418,
+            "typescript_ms": 735.8152689999998,
+            "ratio": 1.661482482772453,
+            "samples_ms": [
+              1215.3650959999998,
+              1227.838747,
+              1222.54418
+            ],
+            "typescript_samples_ms": [
+              737.046208,
+              724.946892,
+              735.8152689999998
+            ],
+            "baseline_ms": 1212.110936
+          },
+          "including_imports_ratio": 1.661482482772453,
+          "measurement_samples_ms": [
+            1166.5209519999999,
+            1178.351775,
+            1173.27322
+          ],
+          "typescript_measurement_samples_ms": [
+            520.796192,
+            511.14878200000004,
+            519.4339049999999
+          ],
+          "baseline_ms": 1164.354138,
+          "baseline_ratio": 2.2415828593245184,
+          "change_percent": 0.7660111051196461
+        },
+        {
+          "id": "raytrace",
+          "name": "Historical raytrace",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend",
+          "source_hash": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend",
+          "bend_ms": 822.1090680000001,
+          "typescript_ms": 460.318686,
+          "ratio": 1.7859563233111941,
+          "including_imports": {
+            "bend_ms": 870.9006790000001,
+            "typescript_ms": 673.635789,
+            "ratio": 1.292836118895696,
+            "samples_ms": [
+              870.739247,
+              870.9006790000001,
+              914.2124150000002
+            ],
+            "typescript_samples_ms": [
+              668.126698,
+              673.635789,
+              740.413337
+            ],
+            "baseline_ms": 859.7615109999999
+          },
+          "including_imports_ratio": 1.292836118895696,
+          "measurement_samples_ms": [
+            821.773964,
+            822.1090680000001,
+            865.0783720000002
+          ],
+          "typescript_measurement_samples_ms": [
+            453.06193300000007,
+            460.318686,
+            508.084227
+          ],
+          "baseline_ms": 811.8967829999999,
+          "baseline_ratio": 1.7637710735905252,
+          "change_percent": 1.2578304550321384
+        },
+        {
+          "id": "local-row",
+          "name": "Local record",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "source_hash": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "bend_ms": 527.8423150000001,
+          "typescript_ms": 353.133773,
+          "ratio": 1.4947375622438697,
+          "including_imports": {
+            "bend_ms": 577.1693600000001,
+            "typescript_ms": 568.937126,
+            "ratio": 1.0144694969334802,
+            "samples_ms": [
+              577.1693600000001,
+              577.596146,
+              573.0447550000001
+            ],
+            "typescript_samples_ms": [
+              568.937126,
+              572.1611809999999,
+              562.202103
+            ],
+            "baseline_ms": 572.268237
+          },
+          "including_imports_ratio": 1.0144694969334802,
+          "measurement_samples_ms": [
+            527.8423150000001,
+            528.311512,
+            524.1468110000001
+          ],
+          "typescript_measurement_samples_ms": [
+            353.133773,
+            357.94054199999994,
+            349.70239399999997
+          ],
+          "baseline_ms": 524.293653,
+          "baseline_ratio": 1.4846885035830315,
+          "change_percent": 0.6768462634813011
+        },
+        {
+          "id": "local-fold",
+          "name": "Local fold",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+          "source_hash": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+          "bend_ms": 289.452793,
+          "typescript_ms": 322.091811,
+          "ratio": 0.8986654833022127,
+          "including_imports": {
+            "bend_ms": 338.35565899999995,
+            "typescript_ms": 546.251972,
+            "ratio": 0.6194131579263203,
+            "samples_ms": [
+              338.942223,
+              336.78551500000003,
+              338.35565899999995
+            ],
+            "typescript_samples_ms": [
+              546.251972,
+              551.032522,
+              533.502777
+            ],
+            "baseline_ms": 336.224294
+          },
+          "including_imports_ratio": 0.6194131579263203,
+          "measurement_samples_ms": [
+            290.01491599999997,
+            287.87449000000004,
+            289.452793
+          ],
+          "typescript_measurement_samples_ms": [
+            332.010062,
+            322.091811,
+            318.011045
+          ],
+          "baseline_ms": 288.88870299999996,
+          "baseline_ratio": 0.8969141503569613,
+          "change_percent": 0.19526204872055697
+        },
+        {
+          "id": "scalar-region",
+          "name": "Scalar region",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+          "source_hash": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+          "bend_ms": 311.643106,
+          "typescript_ms": 322.7857670000001,
+          "ratio": 0.9654797015879573,
+          "including_imports": {
+            "bend_ms": 360.75735,
+            "typescript_ms": 534.823007,
+            "ratio": 0.6745359591458263,
+            "samples_ms": [
+              360.75735,
+              362.587623,
+              360.215105
+            ],
+            "typescript_samples_ms": [
+              534.483131,
+              537.4909930000001,
+              534.823007
+            ],
+            "baseline_ms": 359.48426599999993
+          },
+          "including_imports_ratio": 0.6745359591458263,
+          "measurement_samples_ms": [
+            311.643106,
+            312.729598,
+            311.229228
+          ],
+          "typescript_measurement_samples_ms": [
+            323.312026,
+            322.7857670000001,
+            322.346182
+          ],
+          "baseline_ms": 312.13402499999995,
+          "baseline_ratio": 0.9670005833931329,
+          "change_percent": -0.1572782717295773
+        },
+        {
+          "id": "mandelbrot-grid",
+          "name": "Mandelbrot grid",
+          "path": "selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend",
+          "source_hash": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend",
+          "bend_ms": 619.261574,
+          "typescript_ms": 373.821616,
+          "ratio": 1.6565697313769034,
+          "including_imports": {
+            "bend_ms": 668.018665,
+            "typescript_ms": 587.676107,
+            "ratio": 1.136712309796185,
+            "samples_ms": [
+              668.018665,
+              666.845225,
+              670.235584
+            ],
+            "typescript_samples_ms": [
+              585.20174,
+              590.060124,
+              587.676107
+            ],
+            "baseline_ms": 666.97984
+          },
+          "including_imports_ratio": 1.136712309796185,
+          "measurement_samples_ms": [
+            619.261574,
+            617.528078,
+            621.464739
+          ],
+          "typescript_measurement_samples_ms": [
+            372.010945,
+            374.198515,
+            373.821616
+          ],
+          "baseline_ms": 619.996526,
+          "baseline_ratio": 1.6585357814086386,
+          "change_percent": -0.11854130937501983
+        },
+        {
+          "id": "raytrace-active",
+          "name": "Active raytrace",
+          "path": "selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+          "source_hash": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+          "bend_ms": 840.770917,
+          "typescript_ms": 455.459459,
+          "ratio": 1.8459840944921513,
+          "including_imports": {
+            "bend_ms": 890.1291030000001,
+            "typescript_ms": 670.556068,
+            "ratio": 1.327449180580676,
+            "samples_ms": [
+              889.3930759999998,
+              890.1291030000001,
+              890.755541
+            ],
+            "typescript_samples_ms": [
+              668.2162979999999,
+              670.669466,
+              670.556068
+            ],
+            "baseline_ms": 874.128365
+          },
+          "including_imports_ratio": 1.327449180580676,
+          "measurement_samples_ms": [
+            840.3960369999999,
+            840.770917,
+            841.3619799999999
+          ],
+          "typescript_measurement_samples_ms": [
+            455.459459,
+            454.433326,
+            460.109383
+          ],
+          "baseline_ms": 826.637635,
+          "baseline_ratio": 1.8149532711757779,
+          "change_percent": 1.7097312536465958
+        },
+        {
+          "id": "closures",
+          "name": "Known closures",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "source_hash": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "bend_ms": 294.499044,
+          "typescript_ms": 312.3096110000001,
+          "ratio": 0.9429714412471282,
+          "including_imports": {
+            "bend_ms": 343.151789,
+            "typescript_ms": 525.478854,
+            "ratio": 0.6530268276028478,
+            "samples_ms": [
+              342.7678890000001,
+              344.950015,
+              343.151789
+            ],
+            "typescript_samples_ms": [
+              524.014984,
+              525.478854,
+              527.6785430000001
+            ],
+            "baseline_ms": 341.10738299999997
+          },
+          "including_imports_ratio": 0.6530268276028478,
+          "measurement_samples_ms": [
+            292.905412,
+            296.473262,
+            294.499044
+          ],
+          "typescript_measurement_samples_ms": [
+            313.530917,
+            311.858354,
+            312.3096110000001
+          ],
+          "baseline_ms": 293.11970199999996,
+          "baseline_ratio": 0.9385548560655723,
+          "change_percent": 0.4705729401976777
+        },
+        {
+          "id": "list-pipeline",
+          "name": "List pipeline",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+          "source_hash": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+          "bend_ms": 743.062886,
+          "typescript_ms": 442.895959,
+          "ratio": 1.677736883573598,
+          "including_imports": {
+            "bend_ms": 791.736167,
+            "typescript_ms": 659.02651,
+            "ratio": 1.2013722589095848,
+            "samples_ms": [
+              791.736167,
+              789.3585049999999,
+              792.610393
+            ],
+            "typescript_samples_ms": [
+              653.4997369999999,
+              659.02651,
+              659.446933
+            ],
+            "baseline_ms": 792.99517
+          },
+          "including_imports_ratio": 1.2013722589095848,
+          "measurement_samples_ms": [
+            743.062886,
+            740.420768,
+            743.570823
+          ],
+          "typescript_measurement_samples_ms": [
+            441.35304799999994,
+            442.895959,
+            446.144843
+          ],
+          "baseline_ms": 744.751311,
+          "baseline_ratio": 1.6815491220140033,
+          "change_percent": -0.22670990638913313
+        },
+        {
+          "id": "bst",
+          "name": "Binary search tree",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+          "source_hash": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+          "bend_ms": 413.526153,
+          "typescript_ms": 333.613123,
+          "ratio": 1.2395380292039653,
+          "including_imports": {
+            "bend_ms": 462.451543,
+            "typescript_ms": 545.095489,
+            "ratio": 0.8483862962219451,
+            "samples_ms": [
+              462.470338,
+              460.97062100000005,
+              462.451543
+            ],
+            "typescript_samples_ms": [
+              546.626361,
+              544.4406349999999,
+              545.095489
+            ],
+            "baseline_ms": 460.27243799999997
+          },
+          "including_imports_ratio": 0.8483862962219451,
+          "measurement_samples_ms": [
+            413.526153,
+            412.09670600000004,
+            413.68907799999994
+          ],
+          "typescript_measurement_samples_ms": [
+            333.613123,
+            332.18917999999996,
+            333.751986
+          ],
+          "baseline_ms": 412.343077,
+          "baseline_ratio": 1.2359917778174452,
+          "change_percent": 0.2869154512323835
+        },
+        {
+          "id": "unicode-text",
+          "name": "Unicode text",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+          "source_hash": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+          "bend_ms": 574.945098,
+          "typescript_ms": 350.11462,
+          "ratio": 1.6421624952422724,
+          "including_imports": {
+            "bend_ms": 624.2974770000001,
+            "typescript_ms": 564.0614,
+            "ratio": 1.1067899292523828,
+            "samples_ms": [
+              624.2974770000001,
+              618.772892,
+              636.192325
+            ],
+            "typescript_samples_ms": [
+              563.9549480000001,
+              567.3961429999999,
+              564.0614
+            ],
+            "baseline_ms": 615.2408310000001
+          },
+          "including_imports_ratio": 1.1067899292523828,
+          "measurement_samples_ms": [
+            574.945098,
+            569.922835,
+            587.57143
+          ],
+          "typescript_measurement_samples_ms": [
+            350.11462,
+            351.027031,
+            349.58241200000003
+          ],
+          "baseline_ms": 567.639257,
+          "baseline_ratio": 1.6212954974573757,
+          "change_percent": 1.2870570366488865
+        },
+        {
+          "id": "expression",
+          "name": "Expression evaluation",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+          "source_hash": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+          "bend_ms": 299.66536600000006,
+          "typescript_ms": 314.606001,
+          "ratio": 0.9525100126745518,
+          "including_imports": {
+            "bend_ms": 348.9562030000001,
+            "typescript_ms": 527.307035,
+            "ratio": 0.6617704294424974,
+            "samples_ms": [
+              345.437491,
+              348.9562030000001,
+              349.476169
+            ],
+            "typescript_samples_ms": [
+              527.307035,
+              524.476511,
+              553.5139350000001
+            ],
+            "baseline_ms": 347.94269199999997
+          },
+          "including_imports_ratio": 0.6617704294424974,
+          "measurement_samples_ms": [
+            296.66559900000004,
+            299.66536600000006,
+            300.325052
+          ],
+          "typescript_measurement_samples_ms": [
+            314.606001,
+            312.832613,
+            340.61259100000007
+          ],
+          "baseline_ms": 300.34599399999996,
+          "baseline_ratio": 0.9546734424814738,
+          "change_percent": -0.22661464231146233
+        },
+        {
+          "id": "map-churn",
+          "name": "Map churn",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "source_hash": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "bend_ms": 722.2427,
+          "typescript_ms": 450.83917,
+          "ratio": 1.6019963394041383,
+          "including_imports": {
+            "bend_ms": 771.255979,
+            "typescript_ms": 666.725087,
+            "ratio": 1.1567825990624527,
+            "samples_ms": [
+              771.126663,
+              772.486868,
+              771.255979
+            ],
+            "typescript_samples_ms": [
+              665.439625,
+              666.725087,
+              669.543547
+            ],
+            "baseline_ms": 754.229686
+          },
+          "including_imports_ratio": 1.1567825990624527,
+          "measurement_samples_ms": [
+            722.058438,
+            722.876552,
+            722.2427
+          ],
+          "typescript_measurement_samples_ms": [
+            450.83917,
+            452.07191900000004,
+            446.656987
+          ],
+          "baseline_ms": 706.031957,
+          "baseline_ratio": 1.5660395191482586,
+          "change_percent": 2.2960353053820715
+        },
+        {
+          "id": "numeric-recurrence",
+          "name": "Numeric recurrence",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "source_hash": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "bend_ms": 239.66104800000002,
+          "typescript_ms": 309.6430859999999,
+          "ratio": 0.7739912784618097,
+          "including_imports": {
+            "bend_ms": 288.855463,
+            "typescript_ms": 524.310618,
+            "ratio": 0.5509243053323021,
+            "samples_ms": [
+              287.503846,
+              288.855463,
+              288.99351
+            ],
+            "typescript_samples_ms": [
+              522.241178,
+              524.310618,
+              538.653929
+            ],
+            "baseline_ms": 286.40473199999997
+          },
+          "including_imports_ratio": 0.5509243053323021,
+          "measurement_samples_ms": [
+            238.62933400000003,
+            239.72252200000003,
+            239.66104800000002
+          ],
+          "typescript_measurement_samples_ms": [
+            308.02577099999996,
+            309.6430859999999,
+            323.43692899999996
+          ],
+          "baseline_ms": 237.59409099999996,
+          "baseline_ratio": 0.7673159897392317,
+          "change_percent": 0.8699530326282678
+        },
+        {
+          "id": "record-aggregation",
+          "name": "Record aggregation",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend",
+          "source_hash": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend",
+          "bend_ms": 720.284457,
+          "typescript_ms": 453.33891000000006,
+          "ratio": 1.5888432276858826,
+          "including_imports": {
+            "bend_ms": 768.9358649999999,
+            "typescript_ms": 667.4775920000001,
+            "ratio": 1.1520025154642193,
+            "samples_ms": [
+              768.9358649999999,
+              774.425774,
+              766.599883
+            ],
+            "typescript_samples_ms": [
+              658.832726,
+              679.4600760000001,
+              667.4775920000001
+            ],
+            "baseline_ms": 757.201562
+          },
+          "including_imports_ratio": 1.1520025154642193,
+          "measurement_samples_ms": [
+            720.284457,
+            725.1874710000001,
+            717.59826
+          ],
+          "typescript_measurement_samples_ms": [
+            444.48308,
+            463.672739,
+            453.33891000000006
+          ],
+          "baseline_ms": 709.132607,
+          "baseline_ratio": 1.5642438611766194,
+          "change_percent": 1.5726043182780813
+        }
+      ],
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/b1-07-broad.json",
+      "data_source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/b1-07-broad.json",
+      "cohortKey": "b1-23-source-compile-only-ts0592662",
+      "cohortSize": 23,
+      "cohortIds": [
+        "mandelbrot",
+        "editdist",
+        "tree-bitonic",
+        "lexer",
+        "symreg",
+        "test-morning-program",
+        "test-evening-program",
+        "test-rle-roundtrip",
+        "test-map-set-ops",
+        "raytrace",
+        "local-row",
+        "local-fold",
+        "scalar-region",
+        "mandelbrot-grid",
+        "raytrace-active",
+        "closures",
+        "list-pipeline",
+        "bst",
+        "unicode-text",
+        "expression",
+        "map-churn",
+        "numeric-recurrence",
+        "record-aggregation"
+      ],
+      "cohortName": "23 benchmark sources \u00b7 prepared first compilation",
+      "protocolGroup": "prepared-23-source-compile-only-ts0592662",
+      "typescript_commit": "059266225b77c8ca256ac6b25ee5c21449bab151",
+      "boundary": "first_checked_library_request_only",
+      "measurement_boundary_key": "prepared-first-request-only",
+      "measurement_boundary_label": "Compilation only \u00b7 prepared fresh process",
+      "stage": "B1",
+      "compiler_stage": "B1",
+      "backend": "direct-js",
+      "samples_per_program_per_role": 3,
+      "successful_workers": 207,
+      "connectToPrevious": true,
+      "note": "Fresh B1 ordinary library compilation, 23 sources and three rotated rounds per role. Preparation and compiler imports/API loading excluded from primary clock; including_imports retains the separate combined clock. New TypeScript reference 0592662 replaces 0187512; do not connect this point to old-reference ratios. Small paired changes are descriptive, not established speed gains/regressions.",
+      "same_run_baseline_phase": 65,
+      "same_run_baseline_ratio": 1.3946680973570893,
+      "same_run_change_percent": 0.530397547411865,
+      "api_sha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
+      "compiler_source_sha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e"
     }
   ],
   "programs": [
     {
-      "id": "test-evening-program",
-      "name": "Evening",
-      "path": "selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
-      "source_hash": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
-      "source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
-      "bend_ms": 2573.1434010000003,
-      "typescript_ms": 833.384346,
-      "ratio": 3.087583074184597,
-      "baseline_ms": 2592.930215,
-      "baseline_ratio": 3.1113257975690365,
-      "change_percent": -0.7631063067387478,
+      "id": "mandelbrot",
+      "name": "Historical Mandelbrot",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+      "source_hash": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+      "bend_ms": 581.4320720000001,
+      "typescript_ms": 371.44153,
+      "ratio": 1.5653394277155817,
+      "including_imports": {
+        "bend_ms": 630.081626,
+        "typescript_ms": 583.794587,
+        "ratio": 1.079286516234862,
+        "samples_ms": [
+          630.081626,
+          627.902317,
+          633.336403
+        ],
+        "typescript_samples_ms": [
+          585.2672150000001,
+          581.240401,
+          583.794587
+        ],
+        "baseline_ms": 626.793723
+      },
+      "including_imports_ratio": 1.079286516234862,
       "measurement_samples_ms": [
-        2578.7793,
-        2569.402475,
-        2573.1434010000003
+        581.4320720000001,
+        578.809519,
+        584.391679
       ],
       "typescript_measurement_samples_ms": [
-        828.463818,
-        835.4497780000002,
-        833.384346
+        373.139931,
+        370.425477,
+        371.44153
       ],
-      "baseline_measurement_samples_ms": [
-        2586.408899,
-        2592.930215,
-        2598.837876
+      "baseline_ms": 578.724664,
+      "baseline_ratio": 1.558050506630209,
+      "change_percent": 0.46782315812967656
+    },
+    {
+      "id": "editdist",
+      "name": "Edit distance",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+      "source_hash": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+      "bend_ms": 509.59789700000005,
+      "typescript_ms": 387.73590399999995,
+      "ratio": 1.3142912269481242,
+      "including_imports": {
+        "bend_ms": 558.530706,
+        "typescript_ms": 618.201205,
+        "ratio": 0.903477219847865,
+        "samples_ms": [
+          557.008217,
+          558.530706,
+          608.6539389999999
+        ],
+        "typescript_samples_ms": [
+          561.1867990000001,
+          618.201205,
+          626.9829990000001
+        ],
+        "baseline_ms": 603.1493990000001
+      },
+      "including_imports_ratio": 0.903477219847865,
+      "measurement_samples_ms": [
+        508.189626,
+        509.59789700000005,
+        555.1747459999999
       ],
-      "measurement_min_ms": 2569.402475,
-      "measurement_max_ms": 2578.7793,
-      "typescript_measurement_min_ms": 828.463818,
-      "typescript_measurement_max_ms": 835.4497780000002,
-      "measurement_boundary": "first_import_api_load_and_request"
+      "typescript_measurement_samples_ms": [
+        348.41480000000007,
+        387.73590399999995,
+        391.76144500000004
+      ],
+      "baseline_ms": 548.3116650000001,
+      "baseline_ratio": 1.4141369404882353,
+      "change_percent": -7.060540650726443
+    },
+    {
+      "id": "tree-bitonic",
+      "name": "Bitonic tree sort",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+      "source_hash": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+      "bend_ms": 436.895615,
+      "typescript_ms": 330.66447800000003,
+      "ratio": 1.321265645594989,
+      "including_imports": {
+        "bend_ms": 491.396156,
+        "typescript_ms": 544.6589610000001,
+        "ratio": 0.9022088888389738,
+        "samples_ms": [
+          522.3245099999999,
+          491.396156,
+          474.63397899999995
+        ],
+        "typescript_samples_ms": [
+          593.126203,
+          544.39256,
+          544.6589610000001
+        ],
+        "baseline_ms": 471.7544029999999
+      },
+      "including_imports_ratio": 0.9022088888389738,
+      "measurement_samples_ms": [
+        468.818179,
+        436.895615,
+        425.857717
+      ],
+      "typescript_measurement_samples_ms": [
+        359.736858,
+        330.66447800000003,
+        330.424231
+      ],
+      "baseline_ms": 424.19989799999996,
+      "baseline_ratio": 1.2828710860197083,
+      "change_percent": 2.9928618700422405
     },
     {
       "id": "lexer",
       "name": "Lexer",
       "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
       "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
-      "source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
-      "bend_ms": 1664.402379,
-      "typescript_ms": 592.9209030000001,
-      "ratio": 2.8071238011320374,
-      "baseline_ms": 1638.4275249999998,
-      "baseline_ratio": 2.7633155058458105,
-      "change_percent": 1.5853526386527372,
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+      "bend_ms": 538.89426,
+      "typescript_ms": 356.247892,
+      "ratio": 1.5126945930110938,
+      "including_imports": {
+        "bend_ms": 588.084394,
+        "typescript_ms": 570.5627300000001,
+        "ratio": 1.0307094436399655,
+        "samples_ms": [
+          598.611794,
+          588.084394,
+          587.4227470000001
+        ],
+        "typescript_samples_ms": [
+          571.78964,
+          566.8096280000001,
+          570.5627300000001
+        ],
+        "baseline_ms": 579.014295
+      },
+      "including_imports_ratio": 1.0307094436399655,
       "measurement_samples_ms": [
-        1649.2820960000001,
-        1801.1187760000003,
-        1664.402379
+        550.091626,
+        538.601504,
+        538.89426
       ],
       "typescript_measurement_samples_ms": [
-        627.604057,
-        592.9209030000001,
-        589.146897
+        356.247892,
+        354.70065000000005,
+        356.56521000000004
       ],
-      "baseline_measurement_samples_ms": [
-        1638.4275249999998,
-        1744.5400040000002,
-        1627.3048660000002
+      "baseline_ms": 530.8612899999999,
+      "baseline_ratio": 1.490145771866069,
+      "change_percent": 1.5131956598304797
+    },
+    {
+      "id": "symreg",
+      "name": "Symbolic regression",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+      "source_hash": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+      "bend_ms": 512.6418990000001,
+      "typescript_ms": 345.05678499999993,
+      "ratio": 1.4856740144959044,
+      "including_imports": {
+        "bend_ms": 562.8983750000001,
+        "typescript_ms": 565.212295,
+        "ratio": 0.9959061046256965,
+        "samples_ms": [
+          562.8983750000001,
+          564.0916950000001,
+          553.7491120000001
+        ],
+        "typescript_samples_ms": [
+          556.9670659999999,
+          565.212295,
+          593.249051
+        ],
+        "baseline_ms": 548.6298019999999
+      },
+      "including_imports_ratio": 0.9959061046256965,
+      "measurement_samples_ms": [
+        514.0096920000001,
+        512.6418990000001,
+        504.61457500000006
       ],
-      "measurement_min_ms": 1649.2820960000001,
-      "measurement_max_ms": 1801.1187760000003,
-      "typescript_measurement_min_ms": 589.146897,
-      "typescript_measurement_max_ms": 627.604057,
-      "measurement_boundary": "first_import_api_load_and_request"
+      "typescript_measurement_samples_ms": [
+        345.05678499999993,
+        345.05162,
+        377.23421199999996
+      ],
+      "baseline_ms": 500.25452399999995,
+      "baseline_ratio": 1.44977448856715,
+      "change_percent": 2.476214487967354
+    },
+    {
+      "id": "test-morning-program",
+      "name": "Morning",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend",
+      "source_hash": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend",
+      "bend_ms": 783.673193,
+      "typescript_ms": 461.99115,
+      "ratio": 1.6962948164699692,
+      "including_imports": {
+        "bend_ms": 832.3609349999999,
+        "typescript_ms": 674.772063,
+        "ratio": 1.2335438596840662,
+        "samples_ms": [
+          917.6429959999999,
+          831.125453,
+          832.3609349999999
+        ],
+        "typescript_samples_ms": [
+          684.47191,
+          674.277245,
+          674.772063
+        ],
+        "baseline_ms": 826.64916
+      },
+      "including_imports_ratio": 1.2335438596840662,
+      "measurement_samples_ms": [
+        863.5285399999999,
+        782.403332,
+        783.673193
+      ],
+      "typescript_measurement_samples_ms": [
+        463.33942199999996,
+        461.99115,
+        461.466119
+      ],
+      "baseline_ms": 778.4845,
+      "baseline_ratio": 1.6850636640983274,
+      "change_percent": 0.6665120500151112
+    },
+    {
+      "id": "test-evening-program",
+      "name": "Evening",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+      "source_hash": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+      "bend_ms": 1031.840158,
+      "typescript_ms": 557.88834,
+      "ratio": 1.8495460184738761,
+      "including_imports": {
+        "bend_ms": 1082.016605,
+        "typescript_ms": 770.316463,
+        "ratio": 1.404639076238982,
+        "samples_ms": [
+          1066.985703,
+          1097.373537,
+          1082.016605
+        ],
+        "typescript_samples_ms": [
+          764.8200659999999,
+          799.248966,
+          770.316463
+        ],
+        "baseline_ms": 1072.691712
+      },
+      "including_imports_ratio": 1.404639076238982,
+      "measurement_samples_ms": [
+        1018.193321,
+        1048.791702,
+        1031.840158
+      ],
+      "typescript_measurement_samples_ms": [
+        550.8141719999999,
+        584.57682,
+        557.88834
+      ],
+      "baseline_ms": 1025.126104,
+      "baseline_ratio": 1.8375112553884887,
+      "change_percent": 0.6549490812693293
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "name": "RLE roundtrip",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+      "source_hash": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+      "bend_ms": 423.573079,
+      "typescript_ms": 330.460719,
+      "ratio": 1.2817652890236555,
+      "including_imports": {
+        "bend_ms": 473.387781,
+        "typescript_ms": 544.938249,
+        "ratio": 0.8686998607066027,
+        "samples_ms": [
+          473.387781,
+          473.44395899999995,
+          471.24980700000003
+        ],
+        "typescript_samples_ms": [
+          544.938249,
+          541.285249,
+          547.691769
+        ],
+        "baseline_ms": 470.212691
+      },
+      "including_imports_ratio": 0.8686998607066027,
+      "measurement_samples_ms": [
+        423.573079,
+        424.43596699999995,
+        422.300836
+      ],
+      "typescript_measurement_samples_ms": [
+        330.233419,
+        330.460719,
+        331.724743
+      ],
+      "baseline_ms": 422.605089,
+      "baseline_ratio": 1.2788360755215813,
+      "change_percent": 0.22905308648566436
+    },
+    {
+      "id": "test-map-set-ops",
+      "name": "Map/set operations",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+      "source_hash": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+      "bend_ms": 1173.27322,
+      "typescript_ms": 519.4339049999999,
+      "ratio": 2.2587536329574025,
+      "including_imports": {
+        "bend_ms": 1222.54418,
+        "typescript_ms": 735.8152689999998,
+        "ratio": 1.661482482772453,
+        "samples_ms": [
+          1215.3650959999998,
+          1227.838747,
+          1222.54418
+        ],
+        "typescript_samples_ms": [
+          737.046208,
+          724.946892,
+          735.8152689999998
+        ],
+        "baseline_ms": 1212.110936
+      },
+      "including_imports_ratio": 1.661482482772453,
+      "measurement_samples_ms": [
+        1166.5209519999999,
+        1178.351775,
+        1173.27322
+      ],
+      "typescript_measurement_samples_ms": [
+        520.796192,
+        511.14878200000004,
+        519.4339049999999
+      ],
+      "baseline_ms": 1164.354138,
+      "baseline_ratio": 2.2415828593245184,
+      "change_percent": 0.7660111051196461
+    },
+    {
+      "id": "raytrace",
+      "name": "Historical raytrace",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend",
+      "source_hash": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend",
+      "bend_ms": 822.1090680000001,
+      "typescript_ms": 460.318686,
+      "ratio": 1.7859563233111941,
+      "including_imports": {
+        "bend_ms": 870.9006790000001,
+        "typescript_ms": 673.635789,
+        "ratio": 1.292836118895696,
+        "samples_ms": [
+          870.739247,
+          870.9006790000001,
+          914.2124150000002
+        ],
+        "typescript_samples_ms": [
+          668.126698,
+          673.635789,
+          740.413337
+        ],
+        "baseline_ms": 859.7615109999999
+      },
+      "including_imports_ratio": 1.292836118895696,
+      "measurement_samples_ms": [
+        821.773964,
+        822.1090680000001,
+        865.0783720000002
+      ],
+      "typescript_measurement_samples_ms": [
+        453.06193300000007,
+        460.318686,
+        508.084227
+      ],
+      "baseline_ms": 811.8967829999999,
+      "baseline_ratio": 1.7637710735905252,
+      "change_percent": 1.2578304550321384
+    },
+    {
+      "id": "local-row",
+      "name": "Local record",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+      "source_hash": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+      "bend_ms": 527.8423150000001,
+      "typescript_ms": 353.133773,
+      "ratio": 1.4947375622438697,
+      "including_imports": {
+        "bend_ms": 577.1693600000001,
+        "typescript_ms": 568.937126,
+        "ratio": 1.0144694969334802,
+        "samples_ms": [
+          577.1693600000001,
+          577.596146,
+          573.0447550000001
+        ],
+        "typescript_samples_ms": [
+          568.937126,
+          572.1611809999999,
+          562.202103
+        ],
+        "baseline_ms": 572.268237
+      },
+      "including_imports_ratio": 1.0144694969334802,
+      "measurement_samples_ms": [
+        527.8423150000001,
+        528.311512,
+        524.1468110000001
+      ],
+      "typescript_measurement_samples_ms": [
+        353.133773,
+        357.94054199999994,
+        349.70239399999997
+      ],
+      "baseline_ms": 524.293653,
+      "baseline_ratio": 1.4846885035830315,
+      "change_percent": 0.6768462634813011
+    },
+    {
+      "id": "local-fold",
+      "name": "Local fold",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+      "source_hash": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+      "bend_ms": 289.452793,
+      "typescript_ms": 322.091811,
+      "ratio": 0.8986654833022127,
+      "including_imports": {
+        "bend_ms": 338.35565899999995,
+        "typescript_ms": 546.251972,
+        "ratio": 0.6194131579263203,
+        "samples_ms": [
+          338.942223,
+          336.78551500000003,
+          338.35565899999995
+        ],
+        "typescript_samples_ms": [
+          546.251972,
+          551.032522,
+          533.502777
+        ],
+        "baseline_ms": 336.224294
+      },
+      "including_imports_ratio": 0.6194131579263203,
+      "measurement_samples_ms": [
+        290.01491599999997,
+        287.87449000000004,
+        289.452793
+      ],
+      "typescript_measurement_samples_ms": [
+        332.010062,
+        322.091811,
+        318.011045
+      ],
+      "baseline_ms": 288.88870299999996,
+      "baseline_ratio": 0.8969141503569613,
+      "change_percent": 0.19526204872055697
+    },
+    {
+      "id": "scalar-region",
+      "name": "Scalar region",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+      "source_hash": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+      "bend_ms": 311.643106,
+      "typescript_ms": 322.7857670000001,
+      "ratio": 0.9654797015879573,
+      "including_imports": {
+        "bend_ms": 360.75735,
+        "typescript_ms": 534.823007,
+        "ratio": 0.6745359591458263,
+        "samples_ms": [
+          360.75735,
+          362.587623,
+          360.215105
+        ],
+        "typescript_samples_ms": [
+          534.483131,
+          537.4909930000001,
+          534.823007
+        ],
+        "baseline_ms": 359.48426599999993
+      },
+      "including_imports_ratio": 0.6745359591458263,
+      "measurement_samples_ms": [
+        311.643106,
+        312.729598,
+        311.229228
+      ],
+      "typescript_measurement_samples_ms": [
+        323.312026,
+        322.7857670000001,
+        322.346182
+      ],
+      "baseline_ms": 312.13402499999995,
+      "baseline_ratio": 0.9670005833931329,
+      "change_percent": -0.1572782717295773
+    },
+    {
+      "id": "mandelbrot-grid",
+      "name": "Mandelbrot grid",
+      "path": "selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend",
+      "source_hash": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend",
+      "bend_ms": 619.261574,
+      "typescript_ms": 373.821616,
+      "ratio": 1.6565697313769034,
+      "including_imports": {
+        "bend_ms": 668.018665,
+        "typescript_ms": 587.676107,
+        "ratio": 1.136712309796185,
+        "samples_ms": [
+          668.018665,
+          666.845225,
+          670.235584
+        ],
+        "typescript_samples_ms": [
+          585.20174,
+          590.060124,
+          587.676107
+        ],
+        "baseline_ms": 666.97984
+      },
+      "including_imports_ratio": 1.136712309796185,
+      "measurement_samples_ms": [
+        619.261574,
+        617.528078,
+        621.464739
+      ],
+      "typescript_measurement_samples_ms": [
+        372.010945,
+        374.198515,
+        373.821616
+      ],
+      "baseline_ms": 619.996526,
+      "baseline_ratio": 1.6585357814086386,
+      "change_percent": -0.11854130937501983
+    },
+    {
+      "id": "raytrace-active",
+      "name": "Active raytrace",
+      "path": "selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+      "source_hash": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+      "bend_ms": 840.770917,
+      "typescript_ms": 455.459459,
+      "ratio": 1.8459840944921513,
+      "including_imports": {
+        "bend_ms": 890.1291030000001,
+        "typescript_ms": 670.556068,
+        "ratio": 1.327449180580676,
+        "samples_ms": [
+          889.3930759999998,
+          890.1291030000001,
+          890.755541
+        ],
+        "typescript_samples_ms": [
+          668.2162979999999,
+          670.669466,
+          670.556068
+        ],
+        "baseline_ms": 874.128365
+      },
+      "including_imports_ratio": 1.327449180580676,
+      "measurement_samples_ms": [
+        840.3960369999999,
+        840.770917,
+        841.3619799999999
+      ],
+      "typescript_measurement_samples_ms": [
+        455.459459,
+        454.433326,
+        460.109383
+      ],
+      "baseline_ms": 826.637635,
+      "baseline_ratio": 1.8149532711757779,
+      "change_percent": 1.7097312536465958
+    },
+    {
+      "id": "closures",
+      "name": "Known closures",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+      "source_hash": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+      "bend_ms": 294.499044,
+      "typescript_ms": 312.3096110000001,
+      "ratio": 0.9429714412471282,
+      "including_imports": {
+        "bend_ms": 343.151789,
+        "typescript_ms": 525.478854,
+        "ratio": 0.6530268276028478,
+        "samples_ms": [
+          342.7678890000001,
+          344.950015,
+          343.151789
+        ],
+        "typescript_samples_ms": [
+          524.014984,
+          525.478854,
+          527.6785430000001
+        ],
+        "baseline_ms": 341.10738299999997
+      },
+      "including_imports_ratio": 0.6530268276028478,
+      "measurement_samples_ms": [
+        292.905412,
+        296.473262,
+        294.499044
+      ],
+      "typescript_measurement_samples_ms": [
+        313.530917,
+        311.858354,
+        312.3096110000001
+      ],
+      "baseline_ms": 293.11970199999996,
+      "baseline_ratio": 0.9385548560655723,
+      "change_percent": 0.4705729401976777
+    },
+    {
+      "id": "list-pipeline",
+      "name": "List pipeline",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+      "source_hash": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+      "bend_ms": 743.062886,
+      "typescript_ms": 442.895959,
+      "ratio": 1.677736883573598,
+      "including_imports": {
+        "bend_ms": 791.736167,
+        "typescript_ms": 659.02651,
+        "ratio": 1.2013722589095848,
+        "samples_ms": [
+          791.736167,
+          789.3585049999999,
+          792.610393
+        ],
+        "typescript_samples_ms": [
+          653.4997369999999,
+          659.02651,
+          659.446933
+        ],
+        "baseline_ms": 792.99517
+      },
+      "including_imports_ratio": 1.2013722589095848,
+      "measurement_samples_ms": [
+        743.062886,
+        740.420768,
+        743.570823
+      ],
+      "typescript_measurement_samples_ms": [
+        441.35304799999994,
+        442.895959,
+        446.144843
+      ],
+      "baseline_ms": 744.751311,
+      "baseline_ratio": 1.6815491220140033,
+      "change_percent": -0.22670990638913313
+    },
+    {
+      "id": "bst",
+      "name": "Binary search tree",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+      "source_hash": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+      "bend_ms": 413.526153,
+      "typescript_ms": 333.613123,
+      "ratio": 1.2395380292039653,
+      "including_imports": {
+        "bend_ms": 462.451543,
+        "typescript_ms": 545.095489,
+        "ratio": 0.8483862962219451,
+        "samples_ms": [
+          462.470338,
+          460.97062100000005,
+          462.451543
+        ],
+        "typescript_samples_ms": [
+          546.626361,
+          544.4406349999999,
+          545.095489
+        ],
+        "baseline_ms": 460.27243799999997
+      },
+      "including_imports_ratio": 0.8483862962219451,
+      "measurement_samples_ms": [
+        413.526153,
+        412.09670600000004,
+        413.68907799999994
+      ],
+      "typescript_measurement_samples_ms": [
+        333.613123,
+        332.18917999999996,
+        333.751986
+      ],
+      "baseline_ms": 412.343077,
+      "baseline_ratio": 1.2359917778174452,
+      "change_percent": 0.2869154512323835
+    },
+    {
+      "id": "unicode-text",
+      "name": "Unicode text",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+      "source_hash": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+      "bend_ms": 574.945098,
+      "typescript_ms": 350.11462,
+      "ratio": 1.6421624952422724,
+      "including_imports": {
+        "bend_ms": 624.2974770000001,
+        "typescript_ms": 564.0614,
+        "ratio": 1.1067899292523828,
+        "samples_ms": [
+          624.2974770000001,
+          618.772892,
+          636.192325
+        ],
+        "typescript_samples_ms": [
+          563.9549480000001,
+          567.3961429999999,
+          564.0614
+        ],
+        "baseline_ms": 615.2408310000001
+      },
+      "including_imports_ratio": 1.1067899292523828,
+      "measurement_samples_ms": [
+        574.945098,
+        569.922835,
+        587.57143
+      ],
+      "typescript_measurement_samples_ms": [
+        350.11462,
+        351.027031,
+        349.58241200000003
+      ],
+      "baseline_ms": 567.639257,
+      "baseline_ratio": 1.6212954974573757,
+      "change_percent": 1.2870570366488865
+    },
+    {
+      "id": "expression",
+      "name": "Expression evaluation",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+      "source_hash": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+      "bend_ms": 299.66536600000006,
+      "typescript_ms": 314.606001,
+      "ratio": 0.9525100126745518,
+      "including_imports": {
+        "bend_ms": 348.9562030000001,
+        "typescript_ms": 527.307035,
+        "ratio": 0.6617704294424974,
+        "samples_ms": [
+          345.437491,
+          348.9562030000001,
+          349.476169
+        ],
+        "typescript_samples_ms": [
+          527.307035,
+          524.476511,
+          553.5139350000001
+        ],
+        "baseline_ms": 347.94269199999997
+      },
+      "including_imports_ratio": 0.6617704294424974,
+      "measurement_samples_ms": [
+        296.66559900000004,
+        299.66536600000006,
+        300.325052
+      ],
+      "typescript_measurement_samples_ms": [
+        314.606001,
+        312.832613,
+        340.61259100000007
+      ],
+      "baseline_ms": 300.34599399999996,
+      "baseline_ratio": 0.9546734424814738,
+      "change_percent": -0.22661464231146233
+    },
+    {
+      "id": "map-churn",
+      "name": "Map churn",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+      "source_hash": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+      "bend_ms": 722.2427,
+      "typescript_ms": 450.83917,
+      "ratio": 1.6019963394041383,
+      "including_imports": {
+        "bend_ms": 771.255979,
+        "typescript_ms": 666.725087,
+        "ratio": 1.1567825990624527,
+        "samples_ms": [
+          771.126663,
+          772.486868,
+          771.255979
+        ],
+        "typescript_samples_ms": [
+          665.439625,
+          666.725087,
+          669.543547
+        ],
+        "baseline_ms": 754.229686
+      },
+      "including_imports_ratio": 1.1567825990624527,
+      "measurement_samples_ms": [
+        722.058438,
+        722.876552,
+        722.2427
+      ],
+      "typescript_measurement_samples_ms": [
+        450.83917,
+        452.07191900000004,
+        446.656987
+      ],
+      "baseline_ms": 706.031957,
+      "baseline_ratio": 1.5660395191482586,
+      "change_percent": 2.2960353053820715
+    },
+    {
+      "id": "numeric-recurrence",
+      "name": "Numeric recurrence",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+      "source_hash": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+      "bend_ms": 239.66104800000002,
+      "typescript_ms": 309.6430859999999,
+      "ratio": 0.7739912784618097,
+      "including_imports": {
+        "bend_ms": 288.855463,
+        "typescript_ms": 524.310618,
+        "ratio": 0.5509243053323021,
+        "samples_ms": [
+          287.503846,
+          288.855463,
+          288.99351
+        ],
+        "typescript_samples_ms": [
+          522.241178,
+          524.310618,
+          538.653929
+        ],
+        "baseline_ms": 286.40473199999997
+      },
+      "including_imports_ratio": 0.5509243053323021,
+      "measurement_samples_ms": [
+        238.62933400000003,
+        239.72252200000003,
+        239.66104800000002
+      ],
+      "typescript_measurement_samples_ms": [
+        308.02577099999996,
+        309.6430859999999,
+        323.43692899999996
+      ],
+      "baseline_ms": 237.59409099999996,
+      "baseline_ratio": 0.7673159897392317,
+      "change_percent": 0.8699530326282678
+    },
+    {
+      "id": "record-aggregation",
+      "name": "Record aggregation",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend",
+      "source_hash": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend",
+      "bend_ms": 720.284457,
+      "typescript_ms": 453.33891000000006,
+      "ratio": 1.5888432276858826,
+      "including_imports": {
+        "bend_ms": 768.9358649999999,
+        "typescript_ms": 667.4775920000001,
+        "ratio": 1.1520025154642193,
+        "samples_ms": [
+          768.9358649999999,
+          774.425774,
+          766.599883
+        ],
+        "typescript_samples_ms": [
+          658.832726,
+          679.4600760000001,
+          667.4775920000001
+        ],
+        "baseline_ms": 757.201562
+      },
+      "including_imports_ratio": 1.1520025154642193,
+      "measurement_samples_ms": [
+        720.284457,
+        725.1874710000001,
+        717.59826
+      ],
+      "typescript_measurement_samples_ms": [
+        444.48308,
+        463.672739,
+        453.33891000000006
+      ],
+      "baseline_ms": 709.132607,
+      "baseline_ratio": 1.5642438611766194,
+      "change_percent": 1.5726043182780813
     }
   ],
-  "same_run_change_percent": 0.4042570840222748,
-  "same_run_baseline_average": 2.9321621408374745,
-  "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7",
-  "protocol": "Pinned Node 24.18.0 on CPU3, three rotated fresh-process rounds per role/input. Private API-specific Base caches primed outside measurement. One first and three later checked-library requests per process in P57/P58; P56 records one first request. Each request uses fresh source syntax and must match its role's prepared module bytes. B1 and B2 are separate campaigns with separate TypeScript samples; 1GiB Node heap, 2GiB process-tree RSS ceiling, 4GiB available-memory floor.",
+  "same_run_change_percent": 0.530397547411865,
+  "same_run_baseline_average": 1.3946680973570893,
+  "typescript_commit": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "protocol": "Pinned Node 24.18.0 on CPU3, three rotated rounds across 23 sources and three roles (207 successful exact-output workers). Prepared API-specific Base data outside clocks. First ordinary checked direct-library request only; no later-request or steady-state claim. 1 GiB Node heap and 2 GiB process-tree RSS guard.",
   "limitations": [
-    "Current headline measures installed B1. The larger Phase58 B2 gains belong to a different, self-emitted compiler image that is not installed.",
-    "Current first-process timing includes host import and API load. Historical P42\u201348 legacy request timing excluded host import and used a different output backend; the history is disconnected at that boundary.",
-    "P42\u201345, P47 and P48 also used different program cohorts. Do not interpret differences between disconnected averages as measured compiler improvements or regressions.",
-    "P57 and the P58 fresh baseline remeasure the exact Phase56 string01 B1 compiler. They are measurement observations, not new compiler releases.",
-    "Each B1 comparison uses its own campaign's TypeScript samples. B2's TypeScript samples must not be pooled into the B1 denominator.",
-    "Selected last01 B1 changes first-process time by -0.76% for Evening and +1.59% for lexer; the geometric aggregate is +0.40%. Three samples per cell do not establish significance.",
-    "Later-request sequences still warm up. Their aggregate (+0.50% time) is not a steady-state throughput estimate and is separate from the first-process headline.",
-    "API-specific Base disk caches are primed before measured workers. Preparation, provenance checks and inter-request output saving are outside the clocks but can affect process state.",
-    "Earlier Phase58 shared01 compiler measurements are not selected last01 results. B1 allocation was not remeasured for the final compiler.",
-    "Two selected sources do not estimate typical arbitrary-application compiler throughput. Earlier P8\u201324 check-only compiler-source observations remain a separate history."
+    "Phase66 switches TypeScript reference from 0187512 to 0592662 and changes Base/runtime contracts. Old and new reference series must remain disconnected.",
+    "Headline now measures compilation only across 23 sources; the older two-source first-window metric includes imports/API loading. They are different clocks and cohorts.",
+    "Prepared persistent Base data excludes preparation cost. Fresh processes do not mean an OS-cold filesystem, installed CLI latency, or steady-state throughput.",
+    "B1 and B2 have separate fresh campaigns and separate TypeScript samples. The installed compiler is B1; B2 is independently qualified.",
+    "The +0.530% B1 and \u22120.230% B2 paired changes are small descriptive campaign differences, not established optimization gains or regressions."
   ],
   "source_refs": [
     {
@@ -1520,21 +4664,29 @@
     {
       "title": "Installed B1 versus independently qualified B2",
       "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/b2-installation-followup.md"
+    },
+    {
+      "title": "Phase66 final07 B1 exact 23-source timing evidence",
+      "url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/b1-07-broad.json"
+    },
+    {
+      "title": "Phase66 clocks, methods and complete measurements",
+      "url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/measurement.md"
     }
   ],
   "latest_release_summary": {
-    "phase": 58,
+    "phase": 66,
     "compilerStage": "B1",
-    "scope": "Installed checked-derived last01 B1 source. B2 is independently qualified and remains uninstalled.",
-    "source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/README.md",
-    "physical_bend_lines": 26560,
-    "code_bend_lines": 21823,
-    "definitions": 3055,
-    "types": 101,
-    "modules": 108,
-    "previous_phase_physical_lines": 26246
+    "scope": "Installed equality-derived checked final07 B1; genuine B2 independently qualified and uninstalled.",
+    "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/README.md",
+    "physical_bend_lines": 28490,
+    "code_bend_lines": 23353,
+    "definitions": 3282,
+    "types": 119,
+    "modules": 115,
+    "previous_phase_physical_lines": 28396
   },
-  "cohort_key": "direct-evening-lexer-first-process-b1",
+  "cohort_key": "b1-23-source-compile-only-ts0592662",
   "cohorts": [
     {
       "key": "legacy-pair-lexer-map-closures",
@@ -1646,29 +4798,260 @@
           "source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend"
         }
       ]
+    },
+    {
+      "key": "p62-4-source-firstRequestMs",
+      "name": "4 diagnostic sources \u00b7 compiler unchanged",
+      "size": 4,
+      "programs": [
+        {
+          "id": "numeric-recurrence",
+          "name": "Numeric recurrence",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "source_hash": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend"
+        },
+        {
+          "id": "test-map-set-ops",
+          "name": "Map/set operations",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+          "source_hash": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend"
+        },
+        {
+          "id": "lexer",
+          "name": "Lexer",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend"
+        },
+        {
+          "id": "raytrace-active",
+          "name": "Active raytrace",
+          "path": "selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+          "source_hash": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend"
+        }
+      ]
+    },
+    {
+      "key": "p64-3-source-firstRequestMs",
+      "name": "3 diagnostic sources \u00b7 compiler unchanged",
+      "size": 3,
+      "programs": [
+        {
+          "id": "numeric-recurrence",
+          "name": "Numeric recurrence",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "source_hash": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend"
+        },
+        {
+          "id": "lexer",
+          "name": "Lexer",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend"
+        },
+        {
+          "id": "test-map-set-ops",
+          "name": "Map/set operations",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+          "source_hash": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend"
+        }
+      ]
+    },
+    {
+      "key": "b1-23-source-compile-only-ts0592662",
+      "name": "23 benchmark sources \u00b7 prepared first compilation",
+      "size": 23,
+      "programs": [
+        {
+          "id": "mandelbrot",
+          "name": "Historical Mandelbrot",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+          "source_hash": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend"
+        },
+        {
+          "id": "editdist",
+          "name": "Edit distance",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+          "source_hash": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/editdist.bend"
+        },
+        {
+          "id": "tree-bitonic",
+          "name": "Bitonic tree sort",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+          "source_hash": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend"
+        },
+        {
+          "id": "lexer",
+          "name": "Lexer",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend"
+        },
+        {
+          "id": "symreg",
+          "name": "Symbolic regression",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+          "source_hash": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/symreg.bend"
+        },
+        {
+          "id": "test-morning-program",
+          "name": "Morning",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend",
+          "source_hash": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend"
+        },
+        {
+          "id": "test-evening-program",
+          "name": "Evening",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+          "source_hash": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend"
+        },
+        {
+          "id": "test-rle-roundtrip",
+          "name": "RLE roundtrip",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+          "source_hash": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend"
+        },
+        {
+          "id": "test-map-set-ops",
+          "name": "Map/set operations",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+          "source_hash": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend"
+        },
+        {
+          "id": "raytrace",
+          "name": "Historical raytrace",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend",
+          "source_hash": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend"
+        },
+        {
+          "id": "local-row",
+          "name": "Local record",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "source_hash": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend"
+        },
+        {
+          "id": "local-fold",
+          "name": "Local fold",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+          "source_hash": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend"
+        },
+        {
+          "id": "scalar-region",
+          "name": "Scalar region",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+          "source_hash": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend"
+        },
+        {
+          "id": "mandelbrot-grid",
+          "name": "Mandelbrot grid",
+          "path": "selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend",
+          "source_hash": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend"
+        },
+        {
+          "id": "raytrace-active",
+          "name": "Active raytrace",
+          "path": "selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+          "source_hash": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend"
+        },
+        {
+          "id": "closures",
+          "name": "Known closures",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "source_hash": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/closures.bend"
+        },
+        {
+          "id": "list-pipeline",
+          "name": "List pipeline",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+          "source_hash": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend"
+        },
+        {
+          "id": "bst",
+          "name": "Binary search tree",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+          "source_hash": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/bst.bend"
+        },
+        {
+          "id": "unicode-text",
+          "name": "Unicode text",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+          "source_hash": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend"
+        },
+        {
+          "id": "expression",
+          "name": "Expression evaluation",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+          "source_hash": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/expression.bend"
+        },
+        {
+          "id": "map-churn",
+          "name": "Map churn",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "source_hash": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend"
+        },
+        {
+          "id": "numeric-recurrence",
+          "name": "Numeric recurrence",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "source_hash": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend"
+        },
+        {
+          "id": "record-aggregation",
+          "name": "Record aggregation",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend",
+          "source_hash": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+          "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend"
+        }
+      ]
     }
   ],
-  "same_run_baseline_phase": 56,
-  "installed_phase": 58,
-  "installed_commit": "6eecaefe3292774de5408994d21e31fc16c08dc5",
-  "installed_commit_date": "2026-10-06T11:31:04Z",
-  "latest_measurement_label": "Phase58 installed B1 \u00b7 import + API load + first request",
-  "latest_measurement_source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/final-measurements.md",
+  "same_run_baseline_phase": 65,
+  "installed_phase": 66,
+  "installed_commit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+  "installed_commit_date": "2026-10-08T08:50:21Z",
+  "latest_measurement_label": "Phase66 final07 B1 \u00b7 23-source compilation only",
+  "latest_measurement_source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/b1-07-broad.json",
   "current_default_backend": "direct-js",
   "current_default_comparison": {
-    "phase": 58,
-    "compiler": "checked-last01",
+    "phase": 66,
+    "compiler": "final07",
     "compilerStage": "B1",
     "backend": "direct-js",
     "status": "measured",
-    "ratio": 2.944015614006829,
-    "measurement_boundary": "first_import_api_load_and_request",
-    "cohortSize": 2,
-    "reason": "Fresh final last01 B1 comparison against Phase56 B1 and same-campaign TypeScript. This measures the installed compiler image; separately qualified B2 gains are not B1 gains.",
-    "source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/final-measurements.md",
-    "data_source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/figures-last01/comparison.json"
+    "ratio": 1.4020653827400071,
+    "including_imports_average": 0.9826337903883621,
+    "measurement_boundary": "prepared-first-request-only",
+    "cohortSize": 23,
+    "reason": "Fresh final07 installed B1 versus fresh Phase65 B1 and new-reference TypeScript.",
+    "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/b1-07-broad.json"
   },
-  "measurement_status": "Phase58 installed B1 is measured on two direct-library sources with import and API load included. Its same-window aggregate is effectively flat: 0.40% more time, with small mixed per-program changes.",
+  "measurement_status": "fresh_selected_phase66_final07",
   "previous_four_program_summary": {
     "phase": 45,
     "average": 8.50069562903474,
@@ -1808,14 +5191,70 @@
       "commit": "6eecaefe3292774de5408994d21e31fc16c08dc5",
       "commit_date": "2026-10-06T11:31:04Z",
       "source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/final-measurements.md"
+    },
+    {
+      "phase": 59,
+      "request_measurement_available": false,
+      "status": "no_new_comparable_B1_measurement",
+      "note": "Fresh observations retain their compiler generation, cohort, reference and clock; unchanged images are explicitly labeled.",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase59/README.md"
+    },
+    {
+      "phase": 60,
+      "request_measurement_available": false,
+      "status": "no_new_comparable_B1_measurement",
+      "note": "Fresh observations retain their compiler generation, cohort, reference and clock; unchanged images are explicitly labeled.",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase60/README.md"
+    },
+    {
+      "phase": 61,
+      "request_measurement_available": false,
+      "status": "no_new_comparable_B1_measurement",
+      "note": "Fresh observations retain their compiler generation, cohort, reference and clock; unchanged images are explicitly labeled.",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase61/README.md"
+    },
+    {
+      "phase": 62,
+      "request_measurement_available": true,
+      "status": "fresh_scoped_measurement",
+      "note": "Fresh observations retain their compiler generation, cohort, reference and clock; unchanged images are explicitly labeled.",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase62/README.md"
+    },
+    {
+      "phase": 63,
+      "request_measurement_available": false,
+      "status": "no_new_comparable_B1_measurement",
+      "note": "Fresh observations retain their compiler generation, cohort, reference and clock; unchanged images are explicitly labeled.",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase63/README.md"
+    },
+    {
+      "phase": 64,
+      "request_measurement_available": true,
+      "status": "fresh_scoped_measurement",
+      "note": "Fresh observations retain their compiler generation, cohort, reference and clock; unchanged images are explicitly labeled.",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase64/README.md"
+    },
+    {
+      "phase": 65,
+      "request_measurement_available": false,
+      "status": "no_new_comparable_B1_measurement",
+      "note": "Fresh observations retain their compiler generation, cohort, reference and clock; unchanged images are explicitly labeled.",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase65/README.md"
+    },
+    {
+      "phase": 66,
+      "request_measurement_available": true,
+      "status": "fresh_scoped_measurement",
+      "note": "Fresh observations retain their compiler generation, cohort, reference and clock; unchanged images are explicitly labeled.",
+      "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/README.md"
     }
   ],
   "compiler_stage": "B1",
   "compiler_stage_name": "First-stage compiler",
   "compiler_stage_description": "The installed checked bootstrap-derived compiler image. Its compiler implementation is written in Bend; its image descends from the pinned TypeScript bootstrap and reviewed derivation. The separately self-emitted B2 image is not installed.",
-  "compiler_api_sha256": "641381f638f1f4c1c8b349bef06502b42738c1c7feff0391f2e09b90f4ef282a",
-  "compiler_source_sha256": "85454aab7a6ef25d1e78970b1c24d68ac2a90a23a4b39b64a30de311c2fc5091",
-  "measurement_boundary_key": "first_import_api_load_and_request",
+  "compiler_api_sha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
+  "compiler_source_sha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e",
+  "measurement_boundary_key": "prepared-first-request-only",
   "measurement_boundaries": [
     {
       "key": "normal_checked_library_request",
@@ -1851,6 +5290,18 @@
       "steadyState": false,
       "phases": [
         58
+      ]
+    },
+    {
+      "key": "prepared-first-request-only",
+      "label": "Compilation only in a prepared fresh process",
+      "includesHostImport": false,
+      "includesApiLoad": false,
+      "primedBaseCache": true,
+      "phases": [
+        62,
+        64,
+        66
       ]
     }
   ],
@@ -1926,7 +5377,8 @@
     ],
     "source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/final-measurements.md",
     "data_source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/figures-last01/comparison.json",
-    "note": "Later sequences remain warming. These are observed windows, not steady-state throughput."
+    "note": "Later sequences remain warming. These are observed windows, not steady-state throughput.",
+    "current": false
   },
   "previous_phase48_summary": {
     "phase": 48,
@@ -1940,5 +5392,106 @@
     "average": 9.85602360602627,
     "cohortKey": "legacy-evening-lexer",
     "measurement_boundary": "Normal checked-library request with the legacy JavaScript backend, including parsing/loading, checking and library emission; Bend lazy API loading and normal Base-cache handling remain inside inspect. TypeScript book_load/book_valid/js_lib. Host import timed separately and excluded; disk Base-cache priming excluded. Excludes full process startup, validation harness, generated program execution and self-compilation."
+  },
+  "previous_phase58_summary": {
+    "latest_phase": 58,
+    "latest_average": 2.944015614006829,
+    "programs": [
+      {
+        "id": "test-evening-program",
+        "name": "Evening",
+        "path": "selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+        "source_hash": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+        "source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+        "bend_ms": 2573.1434010000003,
+        "typescript_ms": 833.384346,
+        "ratio": 3.087583074184597,
+        "baseline_ms": 2592.930215,
+        "baseline_ratio": 3.1113257975690365,
+        "change_percent": -0.7631063067387478,
+        "measurement_samples_ms": [
+          2578.7793,
+          2569.402475,
+          2573.1434010000003
+        ],
+        "typescript_measurement_samples_ms": [
+          828.463818,
+          835.4497780000002,
+          833.384346
+        ],
+        "baseline_measurement_samples_ms": [
+          2586.408899,
+          2592.930215,
+          2598.837876
+        ],
+        "measurement_min_ms": 2569.402475,
+        "measurement_max_ms": 2578.7793,
+        "typescript_measurement_min_ms": 828.463818,
+        "typescript_measurement_max_ms": 835.4497780000002,
+        "measurement_boundary": "first_import_api_load_and_request"
+      },
+      {
+        "id": "lexer",
+        "name": "Lexer",
+        "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+        "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+        "bend_ms": 1664.402379,
+        "typescript_ms": 592.9209030000001,
+        "ratio": 2.8071238011320374,
+        "baseline_ms": 1638.4275249999998,
+        "baseline_ratio": 2.7633155058458105,
+        "change_percent": 1.5853526386527372,
+        "measurement_samples_ms": [
+          1649.2820960000001,
+          1801.1187760000003,
+          1664.402379
+        ],
+        "typescript_measurement_samples_ms": [
+          627.604057,
+          592.9209030000001,
+          589.146897
+        ],
+        "baseline_measurement_samples_ms": [
+          1638.4275249999998,
+          1744.5400040000002,
+          1627.3048660000002
+        ],
+        "measurement_min_ms": 1649.2820960000001,
+        "measurement_max_ms": 1801.1187760000003,
+        "typescript_measurement_min_ms": 589.146897,
+        "typescript_measurement_max_ms": 627.604057,
+        "measurement_boundary": "first_import_api_load_and_request"
+      }
+    ],
+    "cohort": [
+      {
+        "id": "test-evening-program",
+        "name": "Evening",
+        "path": "selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+        "source_hash": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+        "source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend"
+      },
+      {
+        "id": "lexer",
+        "name": "Lexer",
+        "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+        "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "source_url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend"
+      }
+    ],
+    "measurement_boundary": "First ordinary checked direct-library request in a fresh worker, including host import and actual compiler API loading plus source loading, checking and emission. Private API-specific Base disk caches are primed before measurement. Excludes process startup, preparation, provenance checks, output validation and output saving. This is first-request latency, not a pristine cold CLI invocation or warmed steady-state throughput.",
+    "same_run_change_percent": 0.4042570840222748,
+    "same_run_baseline_average": 2.9321621408374745
+  },
+  "including_imports_average": 0.9826337903883621,
+  "same_run_speedup": 0.9947240082566894,
+  "compiler_source_commit": "f9667c2b1449683a4e6fa87f71e9adea616e9638",
+  "including_imports": {
+    "average": 0.9826337903883621,
+    "same_run_baseline_average": 0.9756082832513389,
+    "same_run_change_percent": 0.7201155686798577,
+    "measurement_boundary": "Host import + actual API loading + first checked-library compilation; prepared Base data outside the clock.",
+    "source_url": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/b1-07-broad.json"
   }
 }

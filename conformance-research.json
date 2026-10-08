@@ -1,15 +1,16 @@
 {
   "schemaVersion": 1,
   "evidenceThrough": {
-    "phase": 58,
-    "commit": "6eecaefe3292774de5408994d21e31fc16c08dc5",
-    "publishedAt": "2026-10-06T11:31:04Z",
-    "source": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/selfhost/CONFORMANCE.md",
-    "evidenceCommit": "6eecaefe3292774de5408994d21e31fc16c08dc5",
-    "frontendLastFreshPhase": 45,
-    "note": "Fresh selected checked B1 and direct B2 qualification remains separate from historical Phase45 broad frontend and Phase51 full backend acquisitions."
+    "phase": 66,
+    "commit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+    "publishedAt": "2026-10-08T08:50:21Z",
+    "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json",
+    "evidenceCommit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+    "frontendLastFreshPhase": 66,
+    "broaderFrontendLastFreshPhase": 45,
+    "note": "P66 renews the full frontend at a new upstream pin via an explicit final07 dependency reuse audit, and runs the full selected B1 primary-JavaScript inventory with scoped exact-module Bun reuse. Fresh B1/B2 independent semantics remain separate."
   },
-  "currentHeadObserved": "6eecaefe3292774de5408994d21e31fc16c08dc5",
+  "currentHeadObserved": "2035010d3d7045bbd0364c141e1da0007476cbc1",
   "metric": {
     "title": "Exact frontend agreement",
     "unit": "parse/check observations",
@@ -17,7 +18,7 @@
     "preferredPlot": "Remaining exact differences, with disconnected segments at upstream target changes.",
     "dateMeaning": "Commit publication time, not necessarily the exact test execution time.",
     "phaseSpacing": "Phase labels denote selected recorded milestones; intermediate phases are not interpolated measurements.",
-    "currentScope": "Main/broader frontend graph ends at Phase45, the last fresh complete acquisition. Current P58 B1 and B2 independent source semantics, B1 direct census, compatibility suites and installed interface checks are separate scopes."
+    "currentScope": "P66 final07 retains 3,174 exact main frontend observations at new upstream 0592662 through explicit dependency reuse plus fresh strict36. Broader196 remains historical P45. Fresh B1/B2 independent source controls and the B1 1,170-fixture JavaScript inventory are separate scopes."
   },
   "segments": [
     {
@@ -209,7 +210,7 @@
     },
     {
       "id": "0187512",
-      "label": "Current pinned target",
+      "label": "Previous pinned target",
       "target": "018751270e800bc222a93dad7f257083ee53a5f7",
       "targetUrl": "https://github.com/bendlang/bend/commit/018751270e800bc222a93dad7f257083ee53a5f7",
       "total": 3026,
@@ -285,6 +286,37 @@
             "observed": 497,
             "fail": 4
           }
+        }
+      ]
+    },
+    {
+      "id": "0592662",
+      "label": "Current pinned target",
+      "target": "059266225b77c8ca256ac6b25ee5c21449bab151",
+      "targetUrl": "https://github.com/bendlang/bend/commit/059266225b77c8ca256ac6b25ee5c21449bab151",
+      "total": 3174,
+      "fixtures": 1587,
+      "connectToPrevious": false,
+      "points": [
+        {
+          "phase": 66,
+          "label": "P66",
+          "commit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+          "commitUrl": "https://github.com/rom1504/bend/commit/2035010d3d7045bbd0364c141e1da0007476cbc1",
+          "date": "2026-10-08T08:50:21Z",
+          "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+          "total": 3174,
+          "exact": 3174,
+          "different": 0,
+          "exactPercent": 100.0,
+          "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json",
+          "sourcePath": "implementation/phase66/evidence/conformance-final07.json",
+          "rawOutcomes": {
+            "pass": 2665,
+            "observed": 505,
+            "fail": 4
+          },
+          "notes": "1,587 fixtures, two observations each. The selected03 full acquisition has 1,082 parse passes, 505 observed negative parses, 1,583 check passes and four shared later-stage failures. Final07 reuses these outcomes through exact frontend dependency closure: all 1,403 functions reachable from 51 conservative roots, all 99 API wrappers and generated runtime unchanged; fresh strict36 also passes. Backend changes are unreachable from this path. This is renewed new-reference qualification, not a second full execution of all rows."
         }
       ]
     }
@@ -524,6 +556,26 @@
         "observed": 497,
         "fail": 4
       }
+    },
+    {
+      "phase": 66,
+      "label": "P66",
+      "commit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+      "commitUrl": "https://github.com/rom1504/bend/commit/2035010d3d7045bbd0364c141e1da0007476cbc1",
+      "date": "2026-10-08T08:50:21Z",
+      "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+      "total": 3174,
+      "exact": 3174,
+      "different": 0,
+      "exactPercent": 100.0,
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json",
+      "sourcePath": "implementation/phase66/evidence/conformance-final07.json",
+      "rawOutcomes": {
+        "pass": 2665,
+        "observed": 505,
+        "fail": 4
+      },
+      "notes": "1,587 fixtures, two observations each. The selected03 full acquisition has 1,082 parse passes, 505 observed negative parses, 1,583 check passes and four shared later-stage failures. Final07 reuses these outcomes through exact frontend dependency closure: all 1,403 functions reachable from 51 conservative roots, all 99 API wrappers and generated runtime unchanged; fresh strict36 also passes. Backend changes are unreachable from this path. This is renewed new-reference qualification, not a second full execution of all rows."
     }
   ],
   "broaderSeries": [
@@ -672,28 +724,27 @@
     }
   ],
   "current": {
-    "mainExact": 3026,
-    "mainTotal": 3026,
+    "mainExact": 3174,
+    "mainTotal": 3174,
     "broaderExact": 196,
     "broaderTotal": 196,
     "cliPass": 66,
     "cliTotal": 66,
-    "installedApiSha256": "641381f638f1f4c1c8b349bef06502b42738c1c7feff0391f2e09b90f4ef282a",
+    "installedApiSha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
     "newFixedPoint": true,
-    "referenceAcquisition": "Complete main/broader frontend acquisitions remain historical Phase45 evidence. Fresh current B1 and B2 controls satisfy independent source oracles; pinned TypeScript retains its explicit NaN source-oracle defects.",
-    "phase": 58,
-    "candidate": "Phase58 last01",
-    "installedRuntimeSha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46",
+    "referenceAcquisition": "New TypeScript reference 0592662: complete frontend (3,174 observations) and primary JavaScript (1,170 fixtures). Selected B1 shares 1,118 exact primary JS observations with TypeScript, while independent golden pass counts differ. Scoped Bun evidence raises distinct golden passes to Bend 1,045 / TypeScript 1,044. Independent source and numeric controls retain known TypeScript NaN defects.",
+    "phase": 66,
+    "candidate": "Phase66 final07",
     "maintainedSuites": 8,
-    "source": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/validation.md",
-    "frontendLastFreshPhase": 45,
-    "frontendFresh": false,
-    "frontendSource": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md#phase45-installed-worker23-validation",
+    "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/compiler-qualification07.json",
+    "frontendLastFreshPhase": 66,
+    "frontendFresh": true,
+    "frontendSource": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json",
     "cliLegacyPass": 42,
     "cliLegacyTotal": 42,
     "cliDefaultPass": 24,
     "cliDefaultTotal": 24,
-    "installedDirectRuntimeSha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23",
+    "installedDirectRuntimeSha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575",
     "semanticPass": 96,
     "semanticTotal": 96,
     "semanticReferencePass": 95,
@@ -716,13 +767,12 @@
       "expectedRejection": 4,
       "notApplicable": 4
     },
-    "scopeNote": "Each of B1 and B2 independently passes the same finite source96/numeric34/composition18/overapplication2 controls. B1 strict36, census26, maintained8, native-three-source and 66 installed interface checks retain their own scopes. Counts overlap and are not unique-language-test totals. Candidate correctness remains distinct from TypeScript NaN failures; complete frontend3026/196 is historical P45 evidence.",
-    "semanticQualificationSha256": "bcc5381510a2d29ae39bcc5edd98d543ee8c1b002538ae4790ab70915d931130",
-    "installedImage": "checked-derived B1",
-    "installedSourceSha256": "85454aab7a6ef25d1e78970b1c24d68ac2a90a23a4b39b64a30de311c2fc5091",
-    "installedAttemptSha256": "e500b277beb16202d1e16aa5f24ebbd6964ca8ba3eaed41e7ff0b988cd266de1",
-    "installedAt": "2026-10-06T11:22:58.686Z",
-    "fixedPointScope": "Separate direct B2→B3 complete byte equality; installed compiler remains checked-derived B1. This is self-reproduction, not a mathematical correctness proof.",
+    "scopeNote": "Fresh B1 and B2 each pass 96 source, 34 numeric, 18 composition and two overapplication controls; these overlap and are separate from the selected B1 full JavaScript census. The 3,174 main frontend observations are current through audited selected07 reuse; the broader 196 remain P45. The 26-row direct census is historical P65; its 25 surviving IDs are included in the new 1,170-fixture inventory, while the deleted printer fixture is excluded. No counts are summed into a universal language/native/GPU total.",
+    "semanticQualificationSha256": "7b0f1e7c7b8efeb27b82718bf1834b1551dd79003721f4e87f56784ff599e153",
+    "installedImage": "profile7 equality-derived checked B1",
+    "installedSourceSha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e",
+    "installedAttemptSha256": "2d7c525444a8ea87c18fd3d321894052639b1683186613831296b912f3d2fbaa",
+    "fixedPointScope": "Separate actual B2\u2192B3 complete byte equality with fresh own-source type acceptance; the installed package remains profile7-derived checked B1. All 3,282 unsafe declarations retain expected proof-trust refusal. Self-reproduction is not a mathematical correctness proof.",
     "semanticCompilerImages": [
       "checkedB1",
       "directB2"
@@ -733,10 +783,24 @@
     "focusedFrontendExact": 36,
     "focusedFrontendTotal": 36,
     "focusedFrontendCompilerImage": "checkedB1",
-    "b1IntegrationJobsPass": 14,
-    "b1IntegrationJobsTotal": 14,
+    "b1IntegrationJobsPass": 11,
+    "b1IntegrationJobsTotal": 11,
     "nativeExactSources": 3,
-    "nativeQualificationScope": "Three selected sources have exact C bytes and passing native outputs; this is not broad native/GPU conformance."
+    "nativeQualificationScope": "Selected07 has fresh native execution on three sources. The 19 source, 16 native and seven mock controls retain attempt05 provenance through audited unchanged closures; 13 native methods remain explicitly unsupported. This is not broad native/GPU conformance.",
+    "frontendAcquisition": "Full selected03 acquisition; selected07 exact dependency reuse and fresh strict36",
+    "broaderFrontendLastFreshPhase": 45,
+    "broaderFrontendFresh": false,
+    "semanticLastFreshPhase": 66,
+    "directBackendLastFreshPhase": 65,
+    "directBackendFresh": false,
+    "directBackendSurvivingFixtures": 25,
+    "directBackendSource": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase65/evidence/state10-qualification.json",
+    "b2IntegrationJobsPass": 8,
+    "b2IntegrationJobsTotal": 8,
+    "helperIntegrityPass": 5,
+    "helperIntegrityTotal": 5,
+    "releaseJobsPass": 5,
+    "releaseJobsTotal": 5
   },
   "backendPilot": {
     "phase": 51,
@@ -747,7 +811,7 @@
       "notApplicable": 8,
       "sharedFailures": 4
     },
-    "scope": "Last renewed complete retained backend pilot: Phase51, 69 execution passes, eight not-applicable outcomes and four shared failures. Current Phase58 B1 direct JS census is a separate 26-row scope.",
+    "scope": "Historical mixed-backend pilot last renewed in Phase51: 69 execution passes, eight not-applicable outcomes and four shared failures across 81 outcomes. Current Phase66 primary JavaScript and selected native qualification are separate scopes.",
     "source": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/implementation/phase51/qualification.md",
     "historicalPhase24": {
       "total": 81,
@@ -760,14 +824,14 @@
       "checkBoundaryRows": 4,
       "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/backend-census.md#L16"
     },
-    "pending": "Broader native/GPU execution remains unestablished; Phase58 selected native and direct checks do not renew the entire 81-row inventory."
+    "pending": "Broader native/GPU execution remains unestablished; Phase66 primary JavaScript and selected native checks do not renew this historical 81-outcome inventory."
   },
   "findings": [
     {
       "id": "grammar-and-errors",
       "title": "Exact comparisons made progress measurable",
       "phase": 5,
-      "metric": "560 → 444 differences",
+      "metric": "560 \u2192 444 differences",
       "body": "The comparison records the entire parse or check result: whether the program is accepted, where an error occurs, its phase and its diagnostics. Grammar and source-origin repairs closed 116 differences while keeping every previous match and all 919 positive programs. That makes the graph useful for tracking both everyday usability and language behavior.",
       "sources": [
         "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase5/final-conformance.md"
@@ -788,7 +852,7 @@
       "id": "shared-diagnostics",
       "title": "Shared error rendering improved the developer experience",
       "phase": 15,
-      "metric": "603 → 459 differences",
+      "metric": "603 \u2192 459 differences",
       "body": "One diagnostic renderer restored source carets consistently, and missing-import handling retained the right error context. Together with malformed-binder handling, the release added 144 exact matches without losing an earlier match. These improvements make errors easier to locate and keep the Bend compiler familiar to users of the reference implementation.",
       "sources": [
         "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase15/exact-differences.md"
@@ -798,7 +862,7 @@
       "id": "authoritative-origins",
       "title": "Keeping source information early avoided guessing later",
       "phase": 16,
-      "metric": "459 → 2 differences",
+      "metric": "459 \u2192 2 differences",
       "body": "The compiler attached source origins when terms were created and carried them through later transformations. Parser and checker checkpoints also became explicit. This let the compiler select the same error at the same point as the reference, closing 457 differences with no lost matches. Compact literal representation kept this richer information affordable.",
       "sources": [
         "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase16/consolidation.md"
@@ -808,7 +872,7 @@
       "id": "contextual-frontend",
       "title": "One contextual frontend closed the remaining gaps",
       "phase": 22,
-      "metric": "2 → 0 main; 57 → 0 broader differences",
+      "metric": "2 \u2192 0 main; 57 \u2192 0 broader differences",
       "body": "Parsing now carries lexical scope, aliases, namespaces and fresh-name state when they are needed. A shared materializer performs semantic work at the correct early or deferred checkpoint. This replaces reconstruction paths that could choose the wrong error or scope. It closes the final main-suite differences and every remaining difference in the frozen broader selection.",
       "sources": [
         "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase22/contextual-conformance.md",
@@ -819,7 +883,7 @@
       "id": "broader-tests",
       "title": "Nearby examples turned a near-perfect score into stronger evidence",
       "phase": 22,
-      "metric": "128 → 196 exact broader observations",
+      "metric": "128 \u2192 196 exact broader observations",
       "body": "When the main corpus was already 99.93% exact, targeted neighboring examples still exposed scope, grouping and declaration-order gaps. Keeping that 196-observation selection separate made those weaknesses visible. Fixes raised it from 128 to 136, then 139, then 196 exact observations, improving behavior beyond the original headline score.",
       "sources": [
         "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase17/group-boundary.md",
@@ -843,7 +907,7 @@
       "id": "backend-discovery",
       "title": "Execution checks found bugs that frontend checks could not see",
       "phase": 24,
-      "metric": "78 → 81 exact pilot outcomes",
+      "metric": "78 \u2192 81 exact pilot outcomes",
       "body": "A separate execution pilot exposed foreign/constructor name collisions and distinct source names colliding in emitted C. A shared emission check and unambiguous native identifiers repaired those implementation defects. Keeping execution coverage separate let the project improve generated code even after frontend comparisons had reached zero differences.",
       "sources": [
         "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/backend-census.md"
@@ -876,7 +940,7 @@
       "id": "direct-independent-semantics",
       "title": "Independent source expectations exposed a bug shared comparisons could miss",
       "phase": 53,
-      "metric": "95 / 96 → 96 / 96 source scenarios",
+      "metric": "95 / 96 \u2192 96 / 96 source scenarios",
       "body": "Direct06 and pinned TypeScript both failed an unchanged signaling-NaN oracle, with different wrong results. Writing directly into fresh typed-array storage preserves the tested payloads on cold calls and raises the candidate to 96 passing source scenarios. The reference remains at 95, so reproducing its erroneous result is not counted as correctness. Separate composition controls retain callback order, demand, captures and genuine overapplication.",
       "sources": [
         "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/implementation/phase52/conformance.md",
@@ -887,7 +951,7 @@
       "id": "qualified-direct-self-reproduction",
       "title": "The direct compiler now reproduces itself with preserved source checks",
       "phase": 58,
-      "metric": "B2 → B3 byte equality; 96 / 96 source scenarios on both B1 and B2",
+      "metric": "B2 \u2192 B3 byte equality; 96 / 96 source scenarios on both B1 and B2",
       "body": "The separate direct B2 accepts the complete compiler source and emits a byte-identical B3. It independently passes the same source, numeric and callback controls as the installed checked B1, and its 23 raw source modules and 45 observed benchmark outputs match B1 byte for byte. The source still contains 3,055 unsafe declarations, so type acceptance and self-reproduction retain the proof-trust refusal. B2 remains separately qualified while checked B1 is installed.",
       "sources": [
         "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/validation.md",
@@ -897,41 +961,24 @@
   ],
   "boundaries": [
     {
-      "phase": 8,
-      "title": "New upstream target and corpus",
-      "description": "Target changes from 6018e28 to b2111cf. The suite adds 121 paths, removes one and changes 510 common files; the observation count grows from 2,756 to 2,996. The apparent jump from 444 to 734 differences is a new baseline, not a fixed-corpus regression.",
-      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase8/upstream_and_conformance.md"
+      "title": "Current frontend and JavaScript scopes",
+      "description": "P66 has 3,174 exact frontend outcomes at upstream 0592662, retained on final07 through explicit dependency reuse and fresh strict validation. The separate 1,170-fixture JS census gives 1,045 distinct golden passes via Node plus scoped Bun reuse, 123 exemptions, one shared Process.run failure and one graphics deferral. These are finite selected-B1 observations, not universal conformance.",
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json"
     },
     {
-      "phase": 23,
-      "title": "Another upstream update",
-      "description": "Target changes to 0187512, adding 15 direct fixtures and 30 parse/check observations. The new total is 3,026.",
-      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase23/frontend-validation.md"
-    },
-    {
-      "title": "Agreement and fixture passes are different measures",
-      "description": "The historical Phase45 main results are 2,525 passes, 497 observations and four shared failures. Those four fixtures expect later emission errors; both frontends accept them at the earlier check stage. Exact comparison does not turn those raw failures into fixture passes.",
-      "source": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md#phase45-installed-worker23-validation"
-    },
-    {
-      "title": "Separate scopes",
-      "description": "The broad frontend inventory remains historical Phase45 evidence and the full backend81 inventory remains Phase51 evidence. Current B1/B2 source semantics, numeric controls, B1 direct census, compatibility suites, native checks and release interfaces overlap. They are not a summed unique-test count or universal language/native/GPU qualification.",
-      "source": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/validation.md"
-    },
-    {
-      "title": "Artifact identity",
-      "description": "Phase58 last01 installs a checked-derived B1. Its separate direct B2 freshly accepts the source types and emits a byte-identical B3; all 3,055 unsafe declarations retain proof-trust refusal. This executed self-reproduction does not establish a mathematical proof and does not mean B2 was installed.",
-      "source": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/validation.md"
+      "title": "Separate stage qualification",
+      "description": "Separate actual B2\u2192B3 complete byte equality with fresh own-source type acceptance; the installed package remains profile7-derived checked B1. All 3,282 unsafe declarations retain expected proof-trust refusal. Self-reproduction is not a mathematical correctness proof.",
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/selfhosting07.json"
     },
     {
       "title": "Independent correctness and reference agreement",
-      "description": "The original NaN fixture expects 40. P53 candidate returns 40 and passes all 96 source scenarios; pinned TypeScript returns 1 and passes 95. Exact differential agreement is 95/96. The six numeric reference failures are repeated original/renamed NaN cases, not candidate failures.",
-      "source": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/implementation/phase53/qualification.md"
+      "description": "Both selected B1 and genuine B2 pass 96 source scenarios while TypeScript passes 95. The original NaN fixture expects 40; TypeScript returns 1. The six numeric reference failures are original/renamed NaN cases, not candidate failures.",
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/semantic-qualification07.json"
     },
     {
-      "title": "Historical full frontend acquisition",
-      "description": "The last fresh full 3,026-main / 196-broader frontend acquisition was Phase45. Later releases retain that historical evidence but do not claim a fresh complete rerun. Their new semantic and backend scopes are reported separately.",
-      "source": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/selfhost/CONFORMANCE.md"
+      "title": "Preserved historical scopes",
+      "description": "The broader 196 frontend inventory remains P45 and the historical backend inventory of 81 outcomes remains P51. The old direct census of 26 ends at P65; its 25 surviving IDs are included in P66 full JavaScript, and the deleted printer fixture is excluded. Numeric, source, CLI and native scopes overlap and are never summed.",
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/controls.md"
     }
   ],
   "sources": {
@@ -942,12 +989,12 @@
       "pr1207-review/chart-data.json"
     ],
     "historicalThrough": "5350b2fec8f6f8484c7a689e915b359d7ce86847",
-    "currentReadme": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/README.md",
-    "currentConformance": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/selfhost/CONFORMANCE.md",
-    "currentGates": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/selfhost/tools/performance/phase58/evidence/qualification-last01.json",
-    "sourceNote": "Phase58 renews independent semantic scopes separately on B1 and B2. Installed CLI/direct census/maintained/native integration gates belong checked B1; source checking and complete byte-identical B3 reproduction also qualify a separate uninstalled direct B2. Historical Phase45 frontend and Phase51 backend inventories are not relabeled as new acquisitions.",
-    "currentRelease": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/selfhost/dist/release.json",
-    "currentImageGuide": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/docs/self_hosted/compiler-image-generation.md"
+    "currentReadme": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/README.md",
+    "currentConformance": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json",
+    "currentGates": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/compiler-qualification07.json",
+    "sourceNote": "P66 renews new-reference main frontend and selected B1 full JavaScript qualification, while B1/B2 independent semantics, genuine B2 self-reproduction, native/Base and installed-release controls retain their separate image and execution boundaries.",
+    "currentRelease": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/dist/release.json",
+    "currentImageGuide": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/docs/self_hosted/compiler-image-generation.md"
   },
   "successorIssue": {
     "url": "https://github.com/rom1504/bend/issues/1",
@@ -955,7 +1002,7 @@
     "createdAt": "2026-10-04T00:29:17Z",
     "commentsAtRead": 0,
     "checkedOn": "2026-10-04",
-    "note": "Issue body links the original PR; current Phase58 values come from pinned repository reports. The issue was not re-read for this data update."
+    "note": "Issue body links the original PR; current Phase66 values come from pinned repository reports. The issue was not re-read for this data update."
   },
   "independentSemanticSeries": [
     {
@@ -1081,14 +1128,134 @@
       "passPercent": 100,
       "source": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/validation.md",
       "notes": "Fresh independent source-oracle qualification; pinned TypeScript retains the unchanged NaN failure (candidate40, reference1). Both checked B1 and direct B2 separately repeat and pass the same scope."
+    },
+    {
+      "phase": 61,
+      "label": "P61",
+      "candidate": "state08",
+      "compilerImage": "checkedB1",
+      "alsoQualifiedCompilerImages": [
+        "directB2"
+      ],
+      "commit": "18ed443a348f70020f76bfc035d21877a90816f3",
+      "commitUrl": "https://github.com/rom1504/bend/commit/18ed443a348f70020f76bfc035d21877a90816f3",
+      "date": "2026-10-07T16:47:48Z",
+      "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "fixtures": 29,
+      "pass": 96,
+      "total": 96,
+      "failed": 0,
+      "referencePass": 95,
+      "referenceTotal": 96,
+      "differentialExact": 95,
+      "differentialTotal": 96,
+      "passPercent": 100,
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase61/state08-results.md",
+      "notes": "Both selected checked B1 and genuine direct B2 independently pass source96/numeric34/composition18/overapplication2. TypeScript retains the NaN source fixture defect (40 expected, 1 observed) and six numeric NaN failures. Counts overlap; no total of unique language tests is inferred."
+    },
+    {
+      "phase": 63,
+      "label": "P63",
+      "candidate": "state09",
+      "compilerImage": "checkedB1",
+      "alsoQualifiedCompilerImages": [
+        "directB2"
+      ],
+      "commit": "fd01066d341ea67dd90c8e5a0ad2eb75cda3d3df",
+      "commitUrl": "https://github.com/rom1504/bend/commit/fd01066d341ea67dd90c8e5a0ad2eb75cda3d3df",
+      "date": "2026-10-07T21:51:45Z",
+      "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "fixtures": 29,
+      "pass": 96,
+      "total": 96,
+      "failed": 0,
+      "referencePass": 95,
+      "referenceTotal": 96,
+      "differentialExact": 95,
+      "differentialTotal": 96,
+      "passPercent": 100,
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase63/evidence/state09-qualification.json",
+      "notes": "Both selected checked B1 and genuine direct B2 independently pass source96/numeric34/composition18/overapplication2. TypeScript retains the NaN source fixture defect (40 expected, 1 observed) and six numeric NaN failures. Counts overlap; no total of unique language tests is inferred."
+    },
+    {
+      "phase": 64,
+      "label": "P64",
+      "candidate": "state09",
+      "compilerImage": "checkedB1",
+      "alsoQualifiedCompilerImages": [
+        "directB2"
+      ],
+      "commit": "49431ba4887a5e5dbfd0fff11df09041cb22e408",
+      "commitUrl": "https://github.com/rom1504/bend/commit/49431ba4887a5e5dbfd0fff11df09041cb22e408",
+      "date": "2026-10-08T00:10:06Z",
+      "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "fixtures": 29,
+      "pass": 96,
+      "total": 96,
+      "failed": 0,
+      "referencePass": 95,
+      "referenceTotal": 96,
+      "differentialExact": 95,
+      "differentialTotal": 96,
+      "passPercent": 100,
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase64/evidence/state09-qualification.json",
+      "notes": "Both selected checked B1 and genuine direct B2 independently pass source96/numeric34/composition18/overapplication2. TypeScript retains the NaN source fixture defect (40 expected, 1 observed) and six numeric NaN failures. Counts overlap; no total of unique language tests is inferred."
+    },
+    {
+      "phase": 65,
+      "label": "P65",
+      "candidate": "state10",
+      "compilerImage": "checkedB1",
+      "alsoQualifiedCompilerImages": [
+        "directB2"
+      ],
+      "commit": "ef7c6575a5bd7a4e67f3adf9dc37aaba4215a590",
+      "commitUrl": "https://github.com/rom1504/bend/commit/ef7c6575a5bd7a4e67f3adf9dc37aaba4215a590",
+      "date": "2026-10-08T04:48:07Z",
+      "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "fixtures": 29,
+      "pass": 96,
+      "total": 96,
+      "failed": 0,
+      "referencePass": 95,
+      "referenceTotal": 96,
+      "differentialExact": 95,
+      "differentialTotal": 96,
+      "passPercent": 100,
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase65/evidence/state10-qualification.json",
+      "notes": "Both selected checked B1 and genuine direct B2 independently pass source96/numeric34/composition18/overapplication2. TypeScript retains the NaN source fixture defect (40 expected, 1 observed) and six numeric NaN failures. Counts overlap; no total of unique language tests is inferred. State10 checked semantics are explicitly reused from byte-identical State09 compiler; genuine B2 acquisitions belong State10."
+    },
+    {
+      "phase": 66,
+      "label": "P66",
+      "candidate": "final07",
+      "compilerImage": "checkedB1",
+      "alsoQualifiedCompilerImages": [
+        "directB2"
+      ],
+      "commit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+      "commitUrl": "https://github.com/rom1504/bend/commit/2035010d3d7045bbd0364c141e1da0007476cbc1",
+      "date": "2026-10-08T08:50:21Z",
+      "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+      "fixtures": 29,
+      "pass": 96,
+      "total": 96,
+      "failed": 0,
+      "referencePass": 95,
+      "referenceTotal": 96,
+      "differentialExact": 95,
+      "differentialTotal": 96,
+      "passPercent": 100,
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/semantic-qualification07.json",
+      "notes": "Both selected checked B1 and genuine direct B2 independently pass source96/numeric34/composition18/overapplication2. TypeScript retains the NaN source fixture defect (40 expected, 1 observed) and six numeric NaN failures. Counts overlap; no total of unique language tests is inferred."
     }
   ],
   "independentSemanticMetric": {
     "title": "Independent direct JavaScript semantics",
     "unit": "source-oracle scenarios",
-    "description": "Same 96 source scenarios from 29 checked fixtures at selected release checkpoints. Candidate pass counts require independently expected values, errors and events with healthy execution. The P56 point is direct B2; current P58 repeats the suite on both checked B1 and direct B2. Pinned TypeScript/differential agreement is reported separately.",
+    "description": "Same 96 source scenarios from 29 checked fixtures at selected release checkpoints. Candidate passes require independently expected values, errors and events. P66 freshly qualifies both selected checked B1 and genuine B2; TypeScript/differential agreement remains separate. P65 checked results explicitly reuse the byte-identical State09 compiler; the genuine B2 acquisition belongs State10.",
     "preferredPlot": "Source-oracle pass count, separate from the historical parse/check agreement graph.",
-    "source": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/validation.md"
+    "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/semantic-qualification07.json"
   },
   "directBackendSeries": [
     {
@@ -1168,6 +1335,54 @@
       },
       "source": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/validation.md",
       "scope": "Fresh selected direct JavaScript census on checked B1. This 26-row subset does not renew the entire historical frontend or native/GPU inventory."
+    },
+    {
+      "phase": 63,
+      "label": "P63",
+      "date": "2026-10-07T21:51:45Z",
+      "commit": "fd01066d341ea67dd90c8e5a0ad2eb75cda3d3df",
+      "compilerImage": "checkedB1",
+      "exact": 26,
+      "total": 26,
+      "rawOutcomes": {
+        "runtimePass": 18,
+        "expectedRejection": 4,
+        "notApplicable": 4
+      },
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase63/evidence/state09-qualification.json",
+      "scope": "Selected checked B1 direct26 census passes. This subset does not renew the full native/GPU inventory."
+    },
+    {
+      "phase": 64,
+      "label": "P64",
+      "date": "2026-10-08T00:10:06Z",
+      "commit": "49431ba4887a5e5dbfd0fff11df09041cb22e408",
+      "compilerImage": "checkedB1",
+      "exact": 26,
+      "total": 26,
+      "rawOutcomes": {
+        "runtimePass": 18,
+        "expectedRejection": 4,
+        "notApplicable": 4
+      },
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase64/evidence/state09-qualification.json",
+      "scope": "Selected checked B1 direct26 census passes. This subset does not renew the full native/GPU inventory."
+    },
+    {
+      "phase": 65,
+      "label": "P65",
+      "date": "2026-10-08T04:48:07Z",
+      "commit": "ef7c6575a5bd7a4e67f3adf9dc37aaba4215a590",
+      "compilerImage": "checkedB1",
+      "exact": 26,
+      "total": 26,
+      "rawOutcomes": {
+        "runtimePass": 18,
+        "expectedRejection": 4,
+        "notApplicable": 4
+      },
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase65/evidence/state10-qualification.json",
+      "scope": "Selected checked B1 direct26 census passes. This subset does not renew the full native/GPU inventory."
     }
   ],
   "backendSeries": [
@@ -1314,33 +1529,97 @@
       "maintainedSuites": 8,
       "source": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/README.md",
       "notes": "42 legacy plus 24 ordinary/default/relocated interface checks; scopes overlap semantic inventories."
+    },
+    {
+      "phase": 61,
+      "candidate": "state08",
+      "date": "2026-10-07T16:47:48Z",
+      "commit": "18ed443a348f70020f76bfc035d21877a90816f3",
+      "compilerImage": "installed checkedB1",
+      "cliPass": 66,
+      "cliTotal": 66,
+      "maintainedSuites": 8,
+      "helperIntegrityPass": null,
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase61/README.md",
+      "notes": "42 legacy plus 24 ordinary/default/relocated interface checks. Compiler semantics and installed CLI scopes overlap; no summed unique-test count."
+    },
+    {
+      "phase": 63,
+      "candidate": "state09",
+      "date": "2026-10-07T21:51:45Z",
+      "commit": "fd01066d341ea67dd90c8e5a0ad2eb75cda3d3df",
+      "compilerImage": "installed checkedB1",
+      "cliPass": 66,
+      "cliTotal": 66,
+      "maintainedSuites": 8,
+      "helperIntegrityPass": null,
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase63/README.md",
+      "notes": "42 legacy plus 24 ordinary/default/relocated interface checks. Compiler semantics and installed CLI scopes overlap; no summed unique-test count."
+    },
+    {
+      "phase": 64,
+      "candidate": "state09",
+      "date": "2026-10-08T00:10:06Z",
+      "commit": "49431ba4887a5e5dbfd0fff11df09041cb22e408",
+      "compilerImage": "installed checkedB1",
+      "cliPass": 66,
+      "cliTotal": 66,
+      "maintainedSuites": 8,
+      "helperIntegrityPass": 5,
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase64/README.md",
+      "notes": "42 legacy plus 24 ordinary/default/relocated interface checks. Compiler semantics and installed CLI scopes overlap; no summed unique-test count."
+    },
+    {
+      "phase": 65,
+      "candidate": "state10",
+      "date": "2026-10-08T04:48:07Z",
+      "commit": "ef7c6575a5bd7a4e67f3adf9dc37aaba4215a590",
+      "compilerImage": "installed checkedB1",
+      "cliPass": 66,
+      "cliTotal": 66,
+      "maintainedSuites": 8,
+      "helperIntegrityPass": 5,
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase65/README.md",
+      "notes": "42 legacy plus 24 ordinary/default/relocated interface checks. Compiler semantics and installed CLI scopes overlap; no summed unique-test count."
+    },
+    {
+      "phase": 66,
+      "candidate": "final07",
+      "date": "2026-10-08T08:50:21Z",
+      "commit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+      "compilerImage": "installed checkedB1",
+      "cliPass": 66,
+      "cliTotal": 66,
+      "maintainedSuites": 8,
+      "helperIntegrityPass": 5,
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/installed-release07.json",
+      "notes": "42 legacy plus 24 ordinary/default/relocated interface checks. Compiler semantics and installed CLI scopes overlap; no summed unique-test count."
     }
   ],
   "selfReproduction": {
-    "phase": 58,
-    "candidate": "last01 direct B2",
+    "phase": 66,
+    "candidate": "final07 genuine B2",
     "installed": false,
-    "source": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/validation.md",
-    "compilerImageSha256": "a73daccf86a807092a334d5f3121745e0b91c3054164c25462f1658644b7b081",
-    "imageBytes": 3821470,
-    "sourceSha256": "85454aab7a6ef25d1e78970b1c24d68ac2a90a23a4b39b64a30de311c2fc5091",
+    "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/selfhosting07.json",
+    "compilerImageSha256": "0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f",
+    "sourceSha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e",
     "freshCheck": {
       "typeAccepted": true,
-      "internalSeconds": 11.711935606,
-      "overallSeconds": 17.415256713,
-      "unsafeDeclarations": 3055,
+      "internalSeconds": null,
+      "overallSeconds": null,
+      "unsafeDeclarations": 3282,
       "proofTrust": "failed",
       "kernelChecked": false,
-      "receiptSha256": "1fb0d3b07dd401b3ca5db913861c6c78c435c979c604f64823a1bec8c559e8e0",
-      "scope": "One fresh complete-source check accounts for all 3,055 explicit unsafe declarations and retains proof-trust refusal. This is type acceptance, not 3,055 independent proof tests or a kernel proof."
+      "receiptSha256": "8e10a8cffcea82f1311767cae05b2d50eea31fe20570542eb1de6d301e7b8ba3",
+      "scope": "Fresh actual B2 complete-source type acceptance with expected unsafe proof-trust refusal. Timings are not present in the published compact audit and are not inherited from older releases."
     },
     "reproduction": {
       "from": "B2",
       "to": "B3",
       "byteIdentical": true,
-      "qualificationSeconds": 39.199127062,
-      "receiptSha256": "b0c5ae71cf6c95055584a94af43a85f023b385e734f416ad93fdf616d147654a",
-      "timingScope": "Executed qualification including its identity/progress work; separate from clean 36.058-second self-emission performance measurement."
+      "qualificationSeconds": null,
+      "receiptSha256": "886bc2069948e842c37ac48e7002345d68b377858da05594daec468ba6930869",
+      "timingScope": "Current byte-identical qualification passes. No fresh clean self-emission timing is published in this compact receipt; P58 clean performance and older qualification durations remain separate historical evidence."
     },
     "semanticPass": 96,
     "semanticTotal": 96,
@@ -1354,9 +1633,201 @@
       "rawSourceModules": 23,
       "observedPoints": 45,
       "byteIdenticalToCheckedB1": true,
-      "scope": "Emission equality executes compilers and compares complete generated bytes; this equality gate does not itself execute the generated programs."
+      "scope": "Actual B2 modules equal selected B1 for all 23 sources / 45 points; this exact-byte mapping transfers separately executed program oracles. Byte equality itself is not an execution-speed sample."
     },
-    "installedB1ApiSha256": "641381f638f1f4c1c8b349bef06502b42738c1c7feff0391f2e09b90f4ef282a",
+    "installedB1ApiSha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
     "proofScope": "Byte-identical self-reproduction and source type acceptance do not establish compiler correctness or proof validity."
-  }
+  },
+  "previousRelease": {
+    "mainExact": 3026,
+    "mainTotal": 3026,
+    "broaderExact": 196,
+    "broaderTotal": 196,
+    "cliPass": 66,
+    "cliTotal": 66,
+    "installedApiSha256": "641381f638f1f4c1c8b349bef06502b42738c1c7feff0391f2e09b90f4ef282a",
+    "newFixedPoint": true,
+    "referenceAcquisition": "Complete main/broader frontend acquisitions remain historical Phase45 evidence. Fresh current B1 and B2 controls satisfy independent source oracles; pinned TypeScript retains its explicit NaN source-oracle defects.",
+    "phase": 58,
+    "candidate": "Phase58 last01",
+    "installedRuntimeSha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46",
+    "maintainedSuites": 8,
+    "source": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/validation.md",
+    "frontendLastFreshPhase": 45,
+    "frontendFresh": false,
+    "frontendSource": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md#phase45-installed-worker23-validation",
+    "cliLegacyPass": 42,
+    "cliLegacyTotal": 42,
+    "cliDefaultPass": 24,
+    "cliDefaultTotal": 24,
+    "installedDirectRuntimeSha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23",
+    "semanticPass": 96,
+    "semanticTotal": 96,
+    "semanticReferencePass": 95,
+    "semanticReferenceTotal": 96,
+    "semanticDifferentialExact": 95,
+    "semanticDifferentialTotal": 96,
+    "semanticFixtures": 29,
+    "numericPass": 34,
+    "numericTotal": 34,
+    "numericReferencePass": 28,
+    "numericReferenceTotal": 34,
+    "compositionPass": 18,
+    "compositionTotal": 18,
+    "overapplicationPass": 2,
+    "overapplicationTotal": 2,
+    "directBackendExact": 26,
+    "directBackendTotal": 26,
+    "directBackendRawOutcomes": {
+      "runtimePass": 18,
+      "expectedRejection": 4,
+      "notApplicable": 4
+    },
+    "scopeNote": "Each of B1 and B2 independently passes the same finite source96/numeric34/composition18/overapplication2 controls. B1 strict36, census26, maintained8, native-three-source and 66 installed interface checks retain their own scopes. Counts overlap and are not unique-language-test totals. Candidate correctness remains distinct from TypeScript NaN failures; complete frontend3026/196 is historical P45 evidence.",
+    "semanticQualificationSha256": "bcc5381510a2d29ae39bcc5edd98d543ee8c1b002538ae4790ab70915d931130",
+    "installedImage": "checked-derived B1",
+    "installedSourceSha256": "85454aab7a6ef25d1e78970b1c24d68ac2a90a23a4b39b64a30de311c2fc5091",
+    "installedAttemptSha256": "e500b277beb16202d1e16aa5f24ebbd6964ca8ba3eaed41e7ff0b988cd266de1",
+    "installedAt": "2026-10-06T11:22:58.686Z",
+    "fixedPointScope": "Separate direct B2\u2192B3 complete byte equality; installed compiler remains checked-derived B1. This is self-reproduction, not a mathematical correctness proof.",
+    "semanticCompilerImages": [
+      "checkedB1",
+      "directB2"
+    ],
+    "directBackendCompilerImage": "checkedB1",
+    "maintainedSuitesCompilerImage": "checkedB1",
+    "cliCompilerImage": "installed checkedB1",
+    "focusedFrontendExact": 36,
+    "focusedFrontendTotal": 36,
+    "focusedFrontendCompilerImage": "checkedB1",
+    "b1IntegrationJobsPass": 14,
+    "b1IntegrationJobsTotal": 14,
+    "nativeExactSources": 3,
+    "nativeQualificationScope": "Three selected sources have exact C bytes and passing native outputs; this is not broad native/GPU conformance."
+  },
+  "javascriptCensus": {
+    "phase": 66,
+    "candidate": "final07",
+    "commit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+    "date": "2026-10-08T08:50:21Z",
+    "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+    "compilerImage": "selected checked B1",
+    "compilerApiSha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
+    "eligibleFixtures": 1170,
+    "goldenPasses": 1045,
+    "referenceGoldenPasses": 1044,
+    "exempt": 123,
+    "sharedFailure": 1,
+    "deferred": 1,
+    "referencePassingCandidateFailures": 0,
+    "exactPrimaryObservationAgreements": 1118,
+    "primaryNode": {
+      "candidatePass": 991,
+      "candidateFail": 56,
+      "referencePass": 990,
+      "referenceFail": 6,
+      "referenceUnsupported": 51,
+      "exempt": 123,
+      "observations": 1170
+    },
+    "supplementalBunPasses": 54,
+    "supplementalBun": {
+      "pairedPasses": 54,
+      "sharedFailure": 1,
+      "deferred": 1,
+      "exactModuleAndRuntimeReuse": true,
+      "programsRerunForFinal07": false,
+      "release": "bun-v1.4.2"
+    },
+    "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json",
+    "scope": "Union of Node passes and separately qualified exact-module/runtime Bun outcomes, counted once per fixture ID. The remaining 123 unprintable-main exemptions, one shared Process.run golden failure and one graphics environment deferral are not passes. The full JS census belongs to selected checked B1; B2 has separate independent semantics and byte equality for all 23 modules / 45 observer points.",
+    "referenceOnlyFailure": 1,
+    "referenceOnlyFailureFixture": "compile/f32_table_nan_bits.bend"
+  },
+  "javascriptCensusSeries": [
+    {
+      "phase": 66,
+      "candidate": "final07",
+      "commit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+      "date": "2026-10-08T08:50:21Z",
+      "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+      "compilerImage": "selected checked B1",
+      "compilerApiSha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
+      "eligibleFixtures": 1170,
+      "goldenPasses": 1045,
+      "referenceGoldenPasses": 1044,
+      "exempt": 123,
+      "sharedFailure": 1,
+      "deferred": 1,
+      "referencePassingCandidateFailures": 0,
+      "exactPrimaryObservationAgreements": 1118,
+      "primaryNode": {
+        "candidatePass": 991,
+        "candidateFail": 56,
+        "referencePass": 990,
+        "referenceFail": 6,
+        "referenceUnsupported": 51,
+        "exempt": 123,
+        "observations": 1170
+      },
+      "supplementalBunPasses": 54,
+      "supplementalBun": {
+        "pairedPasses": 54,
+        "sharedFailure": 1,
+        "deferred": 1,
+        "exactModuleAndRuntimeReuse": true,
+        "programsRerunForFinal07": false,
+        "release": "bun-v1.4.2"
+      },
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json",
+      "scope": "Union of Node passes and separately qualified exact-module/runtime Bun outcomes, counted once per fixture ID. The remaining 123 unprintable-main exemptions, one shared Process.run golden failure and one graphics environment deferral are not passes. The full JS census belongs to selected checked B1; B2 has separate independent semantics and byte equality for all 23 modules / 45 observer points.",
+      "referenceOnlyFailure": 1,
+      "referenceOnlyFailureFixture": "compile/f32_table_nan_bits.bend"
+    }
+  ],
+  "selfReproductionHistory": [
+    {
+      "phase": 58,
+      "candidate": "last01 direct B2",
+      "installed": false,
+      "source": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/validation.md",
+      "compilerImageSha256": "a73daccf86a807092a334d5f3121745e0b91c3054164c25462f1658644b7b081",
+      "imageBytes": 3821470,
+      "sourceSha256": "85454aab7a6ef25d1e78970b1c24d68ac2a90a23a4b39b64a30de311c2fc5091",
+      "freshCheck": {
+        "typeAccepted": true,
+        "internalSeconds": 11.711935606,
+        "overallSeconds": 17.415256713,
+        "unsafeDeclarations": 3055,
+        "proofTrust": "failed",
+        "kernelChecked": false,
+        "receiptSha256": "1fb0d3b07dd401b3ca5db913861c6c78c435c979c604f64823a1bec8c559e8e0",
+        "scope": "One fresh complete-source check accounts for all 3,055 explicit unsafe declarations and retains proof-trust refusal. This is type acceptance, not 3,055 independent proof tests or a kernel proof."
+      },
+      "reproduction": {
+        "from": "B2",
+        "to": "B3",
+        "byteIdentical": true,
+        "qualificationSeconds": 39.199127062,
+        "receiptSha256": "b0c5ae71cf6c95055584a94af43a85f023b385e734f416ad93fdf616d147654a",
+        "timingScope": "Executed qualification including its identity/progress work; separate from clean 36.058-second self-emission performance measurement."
+      },
+      "semanticPass": 96,
+      "semanticTotal": 96,
+      "numericPass": 34,
+      "numericTotal": 34,
+      "compositionPass": 18,
+      "compositionTotal": 18,
+      "overapplicationPass": 2,
+      "overapplicationTotal": 2,
+      "programEmissionEquality": {
+        "rawSourceModules": 23,
+        "observedPoints": 45,
+        "byteIdenticalToCheckedB1": true,
+        "scope": "Emission equality executes compilers and compares complete generated bytes; this equality gate does not itself execute the generated programs."
+      },
+      "installedB1ApiSha256": "641381f638f1f4c1c8b349bef06502b42738c1c7feff0391f2e09b90f4ef282a",
+      "proofScope": "Byte-identical self-reproduction and source type acceptance do not establish compiler correctness or proof validity."
+    }
+  ]
 }

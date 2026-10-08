@@ -1,0 +1,478 @@
+{
+  "kind": "phase65-decoder-case-local-result-and-trace",
+  "hypothesis": "P65-007",
+  "complete": true,
+  "dataOnlyAnalysis": true,
+  "inputs": {
+    "cleanReport": {
+      "file": "selfhost/build/phase65/frame4-case-local01/execution/report.json",
+      "sha256": "a71f523f09e3aa1a9ccf13681fea8c6b112f4b62869467ac4aeae55caf07a3a5"
+    },
+    "trace": {
+      "file": "selfhost/build/phase65/frame4-case-local01/trace-guard/stdout.log",
+      "sha256": "dbb81bedd1a8961d7705cd1969f610d739a454505e475d54c2cf4203f909df70"
+    },
+    "probe": {
+      "file": "selfhost/tools/performance/phase65/latency/decoder/probe.mjs",
+      "sha256": "3f83781b31ddba121fa692ca214d092cd7087de0a3b2179caa51ab1c68948da8"
+    }
+  },
+  "correctness": {
+    "reportPass": true,
+    "controls": 87,
+    "freshWorkers": 8
+  },
+  "cleanSummary": {
+    "baseline": {
+      "first": {
+        "totalMs": 62.32940699999995,
+        "bookMs": 42.5557355,
+        "preparedMs": 10.894171999999969
+      },
+      "second": {
+        "totalMs": 69.54528299999998,
+        "bookMs": 38.689021000000025,
+        "preparedMs": 19.40753250000006
+      },
+      "third": {
+        "totalMs": 59.21268649999996,
+        "bookMs": 11.698675999999978,
+        "preparedMs": 42.620766499999945
+      },
+      "later": {
+        "totalMs": 26.19372599999997,
+        "bookMs": 11.764409,
+        "preparedMs": 2.9913645000000884
+      }
+    },
+    "candidate": {
+      "first": {
+        "totalMs": 65.28575000000001,
+        "bookMs": 40.09022799999997,
+        "preparedMs": 21.807143000000025
+      },
+      "second": {
+        "totalMs": 60.15378850000002,
+        "bookMs": 37.84913799999998,
+        "preparedMs": 19.66988249999997
+      },
+      "third": {
+        "totalMs": 35.75064100000003,
+        "bookMs": 3.5824099999999817,
+        "preparedMs": 28.72260799999998
+      },
+      "later": {
+        "totalMs": 24.56464900000003,
+        "bookMs": 4.711113500000067,
+        "preparedMs": 1.88806500000004
+      }
+    }
+  },
+  "candidateOverBaseline": {
+    "first": 1.0474309502094263,
+    "second": 0.8649585695121843,
+    "third": 0.6037665762724691,
+    "later": 0.9378065953656254
+  },
+  "decision": "Reject case-local field loads alone: fresh first decode regresses 4.74%. No live promotion.",
+  "traceByRole": {
+    "candidate": {
+      "sfi": "0x36abe4453589",
+      "firstLine": 19,
+      "bailouts": [
+        {
+          "line": 22,
+          "reason": "Insufficient type feedback for compare operation"
+        },
+        {
+          "line": 27,
+          "reason": "Insufficient type feedback for compare operation"
+        },
+        {
+          "line": 38,
+          "reason": "lost precision"
+        },
+        {
+          "line": 52,
+          "reason": "Insufficient type feedback for generic keyed access"
+        },
+        {
+          "line": 66,
+          "reason": "wrong call target"
+        },
+        {
+          "line": 71,
+          "reason": "Insufficient type feedback for object literal"
+        },
+        {
+          "line": 77,
+          "reason": "(unknown)"
+        },
+        {
+          "line": 85,
+          "reason": "(unknown)"
+        }
+      ],
+      "compilations": [
+        {
+          "line": 21,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            3.493,
+            0.02
+          ]
+        },
+        {
+          "line": 25,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            3.971,
+            0.018
+          ]
+        },
+        {
+          "line": 34,
+          "tier": "TURBOFAN_JS",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.009,
+            24.742,
+            0.078
+          ]
+        },
+        {
+          "line": 50,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            2.66,
+            0.025
+          ]
+        },
+        {
+          "line": 55,
+          "tier": "TURBOFAN_JS",
+          "osr": true,
+          "aborted": true,
+          "durationFieldsMs": [
+            0.004,
+            31.145,
+            0.058
+          ]
+        },
+        {
+          "line": 60,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            2.829,
+            0.029
+          ]
+        },
+        {
+          "line": 63,
+          "tier": "TURBOFAN_JS",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.005,
+            33.464,
+            0.13
+          ]
+        },
+        {
+          "line": 65,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            4.27,
+            0.03
+          ]
+        },
+        {
+          "line": 68,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            2.571,
+            0.033
+          ]
+        },
+        {
+          "line": 74,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            2.669,
+            0.036
+          ]
+        },
+        {
+          "line": 80,
+          "tier": "TURBOFAN_JS",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.009,
+            70.86,
+            0.161
+          ]
+        },
+        {
+          "line": 82,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            3.187,
+            0.044
+          ]
+        },
+        {
+          "line": 88,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            2.68,
+            0.033
+          ]
+        },
+        {
+          "line": 91,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            4.206,
+            0.069
+          ]
+        },
+        {
+          "line": 92,
+          "tier": "TURBOFAN_JS",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.006,
+            48.181,
+            0.172
+          ]
+        },
+        {
+          "line": 98,
+          "tier": "TURBOFAN_JS",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.008,
+            48.355,
+            0.136
+          ]
+        }
+      ],
+      "dependentCodeInvalidations": [
+        {
+          "line": 75,
+          "reason": "dependent allocation site tenuring changed"
+        },
+        {
+          "line": 76,
+          "reason": "dependent allocation site tenuring changed"
+        },
+        {
+          "line": 83,
+          "reason": "dependent allocation site tenuring changed"
+        },
+        {
+          "line": 84,
+          "reason": "dependent allocation site tenuring changed"
+        },
+        {
+          "line": 275,
+          "reason": "dependent allocation site tenuring changed"
+        }
+      ]
+    },
+    "baselineOracle": {
+      "sfi": "0x2e53da2efe81",
+      "firstLine": 107,
+      "bailouts": [
+        {
+          "line": 113,
+          "reason": "prepare for on stack replacement (OSR)"
+        },
+        {
+          "line": 114,
+          "reason": "Insufficient type feedback for compare operation"
+        },
+        {
+          "line": 117,
+          "reason": "Insufficient type feedback for compare operation"
+        },
+        {
+          "line": 128,
+          "reason": "prepare for on stack replacement (OSR)"
+        },
+        {
+          "line": 129,
+          "reason": "Insufficient type feedback for compare operation"
+        },
+        {
+          "line": 136,
+          "reason": "prepare for on stack replacement (OSR)"
+        },
+        {
+          "line": 137,
+          "reason": "out of bounds"
+        },
+        {
+          "line": 144,
+          "reason": "wrong call target"
+        }
+      ],
+      "compilations": [
+        {
+          "line": 109,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            2.269,
+            0.017
+          ]
+        },
+        {
+          "line": 111,
+          "tier": "TURBOFAN_JS",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.006,
+            10.944,
+            0.058
+          ]
+        },
+        {
+          "line": 116,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            2.422,
+            0.017
+          ]
+        },
+        {
+          "line": 124,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            2.422,
+            0.019
+          ]
+        },
+        {
+          "line": 126,
+          "tier": "TURBOFAN_JS",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.004,
+            13.049,
+            0.065
+          ]
+        },
+        {
+          "line": 131,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            2.581,
+            0.017
+          ]
+        },
+        {
+          "line": 134,
+          "tier": "TURBOFAN_JS",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.008,
+            13.518,
+            0.069
+          ]
+        },
+        {
+          "line": 140,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            2.578,
+            0.023
+          ]
+        },
+        {
+          "line": 155,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            2.161,
+            0.032
+          ]
+        }
+      ],
+      "dependentCodeInvalidations": [
+        {
+          "line": 149,
+          "reason": "dependent allocation site tenuring changed"
+        },
+        {
+          "line": 150,
+          "reason": "dependent allocation site tenuring changed"
+        },
+        {
+          "line": 151,
+          "reason": "dependent allocation site tenuring changed"
+        }
+      ]
+    }
+  },
+  "traceAttribution": "Candidate helper is imported and decoded seven times before importing baseline oracle; SFI roles separated. Compiler background durations must not be summed as request latency; trace clocks excluded from clean evidence.",
+  "limitations": [
+    "Microprobe excludes module import and file read; full compilation not measured.",
+    "All seven graphs retained until post-clock equality; later clocks include changing allocation/GC/tiering effects.",
+    "Fresh sample count four per role; later decodes are not independent fresh requests.",
+    "Baseline oracle is loaded after candidate timing; oracle traces are not a clean baseline comparison."
+  ]
+}

@@ -1,6 +1,6 @@
 # Phase65: ordered-body demand metadata
 
-**Status: ordered-bindings candidate rejected; separate closure candidate under test.** Source
+**Status: neither candidate admitted work on the four latency sources; no build retained.** Source
 inspection uses baseline `49431ba`; Phase64's closed evidence is untouched.
 No live compiler edit, compiler/Node target or Git operation was performed in
 this lane's preparation.
@@ -155,3 +155,29 @@ semantics and full modules against the old route, with optional cap controls
 required before retention. New nested-capture and erased-inner-lambda witnesses
 have source-level expected results 15 and 17, respectively; execution and
 checking remain distinct gates. No performance result is claimed yet.
+
+## P65-006 census outcome: no build justified
+
+The corrected genuine-B2 observer completed all four original compilations
+with byte-identical complete modules. Its actual SCC entry counter activated
+on every source, but no call selected the no-argument live-lambda arm.
+
+| Source | Actual live-lambda state entries | Eligible no-argument closures | Outer scans / rescanned code points |
+| --- | ---: | ---: | ---: |
+| Numeric recurrence | 7 | 0 | 0 / 0 |
+| Lexer | 106 | 0 | 0 / 0 |
+| Map/set operations | 520 | 0 | 0 / 0 |
+| Active raytrace | 165 | 0 | 0 / 0 |
+
+The [compact evidence](evidence/closure-output-opportunity.json) binds all
+closed reports, source and original-output hashes, actual original B2 and
+corrected observer; it also retains the failed predecessor's identity. The
+798 observed entries make this an activated negative census, unlike the first
+preflight failure. All 798 had supplied arguments, so this proposed boundary
+elimination has no demonstrated speed opportunity on the measured workloads.
+
+**Defer the one-line candidate without a compiler build.** Its patch, witnesses
+and reviewed controls remain available for a future source set that actually
+contains this nested-closure path; none has become a passing execution result.
+Do not infer speed, semantic qualification or universal dead code from this
+negative workload finding. No source complexity was added to the compiler.

@@ -1,6 +1,6 @@
 # Phase65: unchanged composite-term allocation
 
-Status: **State04 shallow guard rejected on timing; smaller leaf-only successor prepared**.
+Status: **State04 shallow guard rejected; State06 leaf-only controls pass but timing is mixed, so B2 investigation is deferred**.
 No production source, compiler image or installed artifact changed in this lane.
 Root owns execution and qualification. Phase64 raw evidence remains closed.
 
@@ -300,3 +300,67 @@ declaration; otherwise it reports an explicit skip, per-image presence and zero
 compared raw-helper rows. All 225 `subst`/`core_beta`/input/leaf-identity rows and
 40 inherited controls remain mandatory. No production export was added for the
 diagnostic, and the consumed v1 controller and failed raw run remain unchanged.
+
+## State06 result and whether to spend another B2 build
+
+The corrected controller now passes. Its
+[semantic summary](evidence/state06-leaf-controls02.json) binds complete raw report
+`bcd7ad5d766d68494cca017eec565205bcce6d4d38e06317a833590a2ba21ec6`
+and candidate B1 `63ecf30d…`. All 225 full substitutions and beta results, 40
+inherited controls on each image, input/replacement immutability and ordered
+replacements pass. **48 strict original-reference witnesses** cover refs,
+literals, nonmatching variables (including payloads/max IDs) and empty Lambdas.
+The raw `subst_node` comparison is explicitly skipped: baseline declaration
+present, candidate declaration absent, zero dynamic rows. Its source-body
+SHA256 is unchanged at `4b3f3e4cece19531a2d4dcc551229a9d5d84df0eebeb9b7835365354f4c55bc3`.
+
+The separate [eight-worker screen](evidence/state06-b1-screen.json) passes all
+output oracles but is slower in aggregate:
+
+| Source | Baseline B1, ms | Leaf-only B1, ms | Change |
+| --- | ---: | ---: | ---: |
+| Numeric recurrence | 275.02 | 295.04 | +7.28% |
+| Map operations | 1,285.80 | 1,252.37 | −2.60% |
+
+Equal-source compilation ratio is **1.02221**, and import-plus-first-request ratio
+is **1.01906**. Both Numeric candidate samples are slower than both baseline
+samples; both Map samples are faster. These separated two-round ranges establish
+the observed mixed screen, not general statistical confidence or a B2 result.
+
+There is a concrete reason B2 could behave differently. The observed State06 B1
+`$subst$` has three textual `run_tail` choice sites: Var selection, literal
+selection and empty-child selection. The non-Var paths add closure/Unit/tail
+machinery around the literal and leaf guards. The selected baseline genuine B2
+instead emits the corresponding substitution SCC choices as direct conditional
+control flow, with no `run_tail` in that SCC. Candidate B2 has **not** been built;
+its exact lowering and actual reference identity remain questions, not facts.
+This distinction means the B1 regression does not prove that leaf reuse is
+intrinsically bad in B2.
+
+It still does not make this the best immediate target. Leaf-only reuse removes
+node shells, while keeping `subst_terms` child-list reconstruction and all required
+composite/beta work. Numeric's original census has just 755 non-Var leaf entries,
+and its selected-B2 substitution CPU ancestry is about 1.3ms. Map has 54,862
+eligible non-Var leaf entries, while the 209,798 observed child-list cell rebuilds
+remain required by this slice. `subst_terms` is the largest named sampled
+substitution allocation site; those samples do not classify object kinds or
+separate inlined callees. Neither allocation-site counts nor B1 choice-site counts
+justify forecasting a broad or parity-sized gain. Numeric's observed roughly20ms
+B1 regression also cannot be explained from that B2 ancestry budget; the timing
+does not isolate the responsible startup, generated-code or V8 effect.
+
+**Recommendation: defer, with no standalone B2 run now.** Prioritize the clearer
+H6 host-decoder opportunity and H2 prepared-annotation work. Keep the three-line
+patch, exact controls and failed/mixed evidence available; do not incorporate it
+into a selected bundle merely because the source change is small. No additional
+patch or microtest was made for this review.
+
+A single genuine-B2 discriminator is defensible later if the higher-value lanes
+are blocked or an explicit investigation budget remains: emit exact State06 once,
+bind its bootstrap receipt, repeat the existing v2 reference-identity control with
+that image, then run one balanced fresh Numeric/Map screen. Stop on failed identity,
+no material aggregate improvement or a meaningful per-source regression. Only a
+clear survivor earns held-out coverage. Do not repeatedly retune guard forms or
+claim success from the old diagnostic's removed-allocation count. This is a
+bounded option for resolving a real generation-cost uncertainty, not authorization
+to displace the current higher-priority target queue.

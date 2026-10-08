@@ -13,15 +13,35 @@ measured **1.43893954× TS compilation** and **1.06172503× imports plus first
 compilation**. Reaching 1× needs 30.50% less compilation time; reaching 0.5×
 needs 65.25%. These are objectives, not forecasts.
 
-The previous detailed stage/allocation profiles precede the selected source.
-First obtain fresh clean, CPU, allocation and exclusive-stage observations on
-Numeric, Lexer, Map and Raytrace. Preserve the same source/output oracles, image
+The first fresh clean, CPU, allocation and exclusive-stage survey on Numeric,
+Lexer, Map and Raytrace is complete; its separate four-source compilation ratio
+is 1.45808× TS. The initial forecasts below remain conditional planning ranges,
+not measured or cumulative gains. Preserve the same source/output oracles, image
 generation, Node, preparation boundary and CPU. Never interpret sampled time as
 removable work or substitute warmed/persistent inspection for the primary metric.
 
 Phase64's raw tree is closed. All new raw outputs belong in
 `selfhost/build/phase65/`. Verify 110 inherited files and seven installed files
 before production edits; retain all unsuccessful candidates and failed methods.
+
+## Decision checkpoint
+
+Phase64 State09 remains installed; no Phase65 candidate has been promoted.
+[The live report](../../implementation/phase65/README.md) links the exact receipts.
+
+- Reject H1 normalized-head storage (State02), H5's prepared constructor index
+  (State03), and H3's broad shallow-substitution guard (State04) after their short
+  B1 screens. Correctness/work-count successes did not establish useful speed.
+- Keep Boolean membership (State05) and the three-line leaf successor (State06)
+  unpromoted: their screens are mixed. No genuine-B2 gain is established.
+- Defer both output candidates without builds: actual four-source censuses find
+  zero eligible ordered-let groups and zero eligible nested-closure arms.
+- Reject the first case-local decoder load patch. Its static-reader successor
+  passes exact controls and improves isolated first decode; complete-request
+  four-source confirmation is pending.
+- H2's bounded optional Base annotation candidate is ready as State08 with
+  strict36/export99; real semantic activation/fallback and net latency remain
+  pending. Build success is not feature or release qualification.
 
 ## H1: one resolved backend product
 
@@ -41,6 +61,12 @@ substitution, source origins, fuel/refusal boundaries and diagnostic ordering.
 
 Planning range: 8–20% whole compilation if the new attribution supports it.
 First discriminator 45–90 minutes; a qualified scoped implementation 3–6 hours.
+
+The first discriminator retained the WNF head already computed by annotation.
+Its 16 focused cases passed, but the B1 screen changed compilation by only
+−0.23%, below noise. Reject that candidate without a B2 build or costly public/
+private annotation redesign. Retaining a cheap head is not equivalent to
+removing a typed traversal; any successor must identify a larger concrete unit.
 
 ## H2: reusable closed Base backend information
 
@@ -62,6 +88,23 @@ stay in Bend; JS may transport facts but cannot invent their semantic validity.
 Planning range: 5–15% whole compilation, possibly 10–25% on Base-heavy inputs.
 First discriminator 45–90 minutes; annotation/call facts 2–4 hours, extending to
 closed component output 4–8 hours if justified. These gains overlap H1.
+
+The selected experiment is narrower than that initial range: a separate optional
+artifact of checked Base annotations with at least 64 body terms. It contains
+12 products (437,464 bytes plus 520 key bytes); seven qualify on Map in the
+initial census, none on Numeric/Lexer. The four Bend APIs own preparation,
+wanted selection, current prefix admission and retained-annotation consumption.
+The host transports validated products only on the actual successful owned-world
+route, binding API/Base/source/ABI and both parent graph identities. It reads
+keys before the heavy body, preserves current stops and ordinary fallbacks, and
+does not create the sidecar during normal inspection. World3 remains unchanged.
+
+State08 strict36/export99 is ready. Required next gates are actual cached-product
+activation, full annotation/module equality, no-hit unread-body behavior,
+malformed/stale/admission fallbacks, and a fresh-process net latency comparison
+that pins the optional sidecar. The warmed artifact discriminator does not
+predict fresh request savings. Retained call rows or final text remain later,
+separately proved extensions; singleton SCCs alone do not authorize text reuse.
 
 ## H3: avoid rebuilding unchanged composite terms
 
@@ -86,6 +129,27 @@ scans and simpler code to introducing another output IR.
 
 Planning range: 2–6%; 30–45 minute first discriminator and 1–3 hour scoped change.
 This can supplement a larger semantic-work gain, not independently close parity.
+
+## H6: stable static units for frame4 decoding
+
+The host may validate and materialize compiler data; it must not implement Bend
+compiler algorithms. The first patch merely moved unused field loads inside
+cases and regressed first decode (62.33 → 65.29 ms), so it is rejected despite
+later warm-call improvements.
+
+The successor splits the original twelve tag bodies into static functions,
+keeping schema, validation, object shapes and sharing unchanged. All 87 domain
+controls and eight fresh-process workers pass; first complete decode changes
+64.47 → 27.13 ms. This isolated clock excludes imports/file reading. A first
+same-image genuine-B2 request screen preserves all eight outputs: Numeric
+255.68 → 205.26 ms, while Map is noisy and essentially unchanged. Four-source
+confirmation is pending. No production or broad compiler-speed claim follows
+from the microbenchmark alone.
+
+If whole-request gains survive, integrate the helper separately from H2's
+semantic product cache so each effect remains attributable, then qualify the
+selected combination. Preserve the rejected load-only patch and avoid adding
+extra V8 profiling before the clean discriminator answers the useful question.
 
 ## Execution and rejection gates
 
@@ -143,10 +207,12 @@ materialization, which is not required for H2's first scoped experiment.
 
 ## Profile-driven discriminators
 
-The first fresh survey adds P65-005: cache exact immediate Base-constructor
-membership for the private owned-world admission path. This is a bounded scan
-elimination, with versioned transport and unchanged public fallback. The measured
-allocation share does not establish an equivalent CPU share. Separately test
-case-local frame4 decoder loads under unchanged eager validation; first-decode
-and warm clocks must remain separate. Neither discriminator authorizes a host
-implementation of semantic compiler algorithms.
+The first fresh survey added P65-005, a versioned private Base-constructor
+membership index with an unchanged public fallback. Its allocation opportunity
+did not translate into a sufficient whole-request screen signal; State03 is
+rejected and its staged host/B2 qualification remains unrun. The subsequent
+Boolean projection avoids missing-definition allocation without that index, but
+its mixed four-source B1 result is still unpromoted. Case-local frame4 loads
+were also rejected; the static-reader successor is tracked separately in H6.
+First-decode, warm-call and full-request clocks must remain distinct. No host
+experiment authorizes an implementation of semantic compiler algorithms in JS.

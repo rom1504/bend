@@ -196,3 +196,36 @@ presence without the factory's required source-text capability check. Version2
 changes exactly that declaration to the admitted conditional; all runtime code
 and the 78-line delta remain unchanged. The failed launch is not a compiler or
 semantic test failure and establishes no runtime result.
+
+Before consumption, independent source review of the new host controller found
+two setup errors: its relocated project lacked the manifest read at driver
+import, and it expected freezing from a no-memo cache read. Both were corrected
+before execution. The reviewed controller
+`controls/base-annotations-host-v1.mjs` has SHA
+`a029d33ccd6c412fc7f6e87e890cb1ae98b95114586de35d70525bec9587645c`.
+It uses actual admission/writer/reader functions and explicitly scopes its stub
+producer to transport checks, including read-offset evidence that a miss or
+refusal leaves the product body unread. Real semantic annotation and private
+inspection routing require the separate compiler controller.
+
+The measurement-method review caught another binding error before materializing
+the successor: decoded cache metadata intentionally omits the two graph digests.
+The corrected factory reads the actual frame header, verifies both segment
+digests over their bytes, and binds sidecar identity to those values. Every
+worker checks the sidecar's presence, inventory and hashes outside the measured
+clock, including programs whose keys do not request it. These are source-review
+results, not target pass or speed claims.
+
+Root subsequently ran the [host boundary controller](../../selfhost/build/phase65/base-annotations-host-state08-01/report.json):
+all 56 transport/admission checks passed. Actual State08 explicit preparation
+also published the expected sidecar: 438,959 total bytes, including a 437,464-byte
+product and 520-byte key arena. This establishes production of the bound
+artifact, not successful semantic reuse or a net request speed gain.
+
+The first owned semantic-control launch selected the raw bootstrap API instead
+of the checked attempt's qualified derived B1. Its ordinary Lexer path reported
+a stack error before entering world/context/annotation hooks. The failed
+receipt is preserved; that run does not establish an H2 defect or its precise
+stack cause. A separately reviewed successor binds the qualified API through
+the equality derivation and parent identities, preserving the earlier semantic
+assertions. Its runtime result is a separate gate.

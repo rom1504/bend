@@ -1,0 +1,40 @@
+{
+  "kind": "phase65-host-variants-explicit-case-selector",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "parent": {
+    "file": "selfhost/tools/performance/phase65/latency/host-variants.py",
+    "sha256": "dd5751825d7c2086cf1daa9b731c2c45913b2f83812e55a1e0fe14898161df95"
+  },
+  "successor": {
+    "file": "selfhost/tools/performance/phase65/latency/host-variants-v2.py",
+    "sha256": "fd318b70e1fee27f7b4a127e06ff153a6ae2ac6e7beb0a5c549faf29da30595b"
+  },
+  "worker": {
+    "file": "selfhost/tools/performance/phase65/latency/host-variant-worker.mjs",
+    "sha256": "52f30c27aa8fe9c5754a935d6b2cf289e35f191e3a18c6b192457095794e0aaf"
+  },
+  "patch": {
+    "file": "selfhost/tools/performance/phase65/latency/host-variants-v2.patch",
+    "sha256": "2ef8af05f50b901110928d8211ac0fd67eb79704baaa63991a813bacbc444d7e"
+  },
+  "edits": [
+    {
+      "before": "prep.add_argument('--role',default='baseline',help='Actual prepared genuine B2 role to copy')\n",
+      "after": "prep.add_argument('--role',default='baseline',help='Actual prepared genuine B2 role to copy')\nprep.add_argument('--cases',default='numeric-recurrence,test-map-set-ops',help='Comma-separated prepared case IDs, or all config cases; each requires a passing prepared full-output oracle')\n",
+      "count": 1
+    },
+    {
+      "before": "    cases=[]\n    for name in ['numeric-recurrence','test-map-set-ops']:\n",
+      "after": "    selected=[x['id'] for x in config['cases']] if a.cases=='all' else [x.strip() for x in a.cases.split(',')]\n    assert selected and all(selected) and len(set(selected))==len(selected), 'Empty or repeated case ID'\n    available={x['id'] for x in config['cases']}\n    assert set(selected)<=available, 'Selected case absent from prepared config'\n    cases=[]\n    for name in selected:\n",
+      "count": 1
+    }
+  ],
+  "defaultCases": [
+    "numeric-recurrence",
+    "test-map-set-ops"
+  ],
+  "scope": "PREP-only case selector; run timing/guard/worker code unchanged. all means cases from the admitted preparation config and requires each full-output prepared oracle. Only reviewed helper differs between private project roles; actual B2/API/driver/source/runtime/Base/cache unchanged. Diagnostic-only, never production qualification. No TypeScript compiler role is added.",
+  "newProjectMaterialized": false
+}

@@ -185,3 +185,129 @@ without an overall screen improvement. Correctness controls establish the
 implemented behavior, not that fewer allocations or shallow cases necessarily
 improve execution. No genuine-B2 effect has been measured, so this is a scoped
 B1 performance rejection rather than a universal claim about structural sharing.
+
+## State05: Boolean constructor projection, four-source B1 screen
+
+The [four-source screen](evidence/state05-b1-four.json) passes all 16 complete
+raw-module comparisons using two balanced rounds. It measures the generic
+Boolean constructor projection, not State03's retained world index. The actual
+candidate snapshot changes only `check/kernel.bend` and `core/term.bend`.
+
+| Source | Phase64 checked B1 | State05 checked B1 | Compilation change |
+| --- | ---: | ---: | ---: |
+| Numeric recurrence | 294.88 ms | 291.53 ms | −1.14% |
+| Lexer | 579.09 ms | 596.47 ms | +3.00% |
+| Map/set operations | 1309.68 ms | 1291.24 ms | −1.41% |
+| Active raytrace | 891.69 ms | 866.08 ms | −2.87% |
+
+The equal-source geometric mean is **0.99373** for compilation (−0.63%) and
+**0.99427** for imports plus compilation (−0.57%). Numeric's candidate samples
+span 280.27–302.80 ms; Lexer ranges overlap narrowly. The Map and raytrace
+candidate ranges fall below their baseline ranges, but this small two-round
+screen supplies no strong broad gain. It took 19.06 seconds and reached
+133.97 MiB maximum worker process-tree RSS. No genuine-B2 effect is inferred.
+
+## State06: tiny term-leaf substitution, mixed B1 evidence
+
+The [State06 screen](evidence/state06-b1-screen.json) passes all eight raw-module
+comparisons. Only the frozen `core/term.bend` differs from baseline; its hash
+is `37d7febe08c496e85dfd7fffc3477406d2c5c1500dc31c797b865f043a112c8b`.
+This is the small leaf candidate, not State04's larger shallow guards.
+
+Numeric changes **275.02 → 295.04 ms (+7.28%)**, with both candidate samples
+slower than both baseline samples. Map changes **1285.80 → 1252.37 ms (−2.60%)**,
+with both candidate samples faster than both baseline samples. The equal-source
+geometric mean is **1.02221** for compilation (+2.22%) and **1.01906** for imports
+plus compilation (+1.91%). The screen took 9.70 seconds.
+
+This is mixed evidence with a clear local Numeric regression in these samples.
+The checked-B1 and genuine-B2 cost models differ; deciding to test the simple
+leaf implementation in B2 would be a separate falsification experiment, not
+promotion based on this screen. No B2 result has been measured here.
+
+## Method02: optional Base annotation products are measured inputs
+
+State08 introduces a deferred Base annotation sidecar under
+`build/typed/base-products`, outside the existing mandatory cache directory.
+[The method successor](../../selfhost/tools/performance/phase65/latency/make-method-v2.py)
+requires the actual artifact for images exporting all four product APIs and
+records explicit directory absence for the historical baseline. The consumed
+method01 remains unchanged.
+
+Preparation checks the exact singleton pathname, bounded header, API/Base/source
+and ABI/span identities, keys and body digests, and both parent frame segment
+digests against the actual segment bytes. The decoded cache intentionally omits
+those parent digest fields, so the verifier reads the raw frame header rather
+than comparing undefined decoded properties. Each worker checks exact sidecar
+membership and byte hashes before and after execution, including no-hit sources.
+Preflight hashing remains outside the existing clocks; this is a fresh-process,
+prepared-artifact comparison, not an OS-cold I/O benchmark. The stage preparation
+must produce the actual sidecar; a silent missing-file fallback cannot pass the
+candidate preflight. Independent source review passed before method02 froze.
+
+## H6 static decoder: substantial Numeric improvement, unresolved Map variance
+
+The [whole-request helper counterfactual](evidence/host-static-tags-screen.json)
+passes all eight complete raw-module comparisons. Both roles use the same actual
+Phase64 genuine-B2 API, source, Base, driver, runtime and prepared frame bytes.
+Fresh private projects differ only in the reviewed graph helper. This avoids a
+compiler-image rebuild while testing whether the isolated decoder gain survives
+inside the actual ordinary compiler request. It is diagnostic evidence, not
+production or release qualification.
+
+Numeric improves **255.68 → 205.26 ms (−19.72%)**: the candidate samples are
+205.19 and 205.32 ms versus baseline 251.82 and 259.54 ms. Map changes
+**1019.83 → 1021.62 ms (+0.18%)**, but its candidate samples are 1087.27 and
+955.98 ms. That spread prevents a stable Map conclusion from this screen.
+The equal-source geometric means are **0.89677** for compilation (−10.32%) and
+**0.92241** for imports plus compilation (−7.76%). These are two-source ratios,
+not the final 23-source aggregate or comparisons against TypeScript.
+
+The campaign took 23.93 seconds; the maximum process RSS, including preflight
+identity checks and output verification, was 398.35 MiB. A frozen successor
+admits the four initial sources for a 16-worker, two-balanced-round confirmation.
+The helper-only copier currently supports this no-product baseline. H2's optional
+sidecars require method02's complete inventory for the selected production
+comparison; they must not be silently omitted from a helper-only clone.
+
+
+The [four-source confirmation](evidence/host-static-tags-four.json) passes all
+16 raw-module comparisons and strengthens the H6 result: Numeric 263.01 → 207.94
+ms (−20.94%), Lexer 611.30 → 562.93 ms (−7.91%), Map 1019.61 → 962.58 ms
+(−5.59%), and raytrace 876.92 → 803.01 ms (−8.43%). Every candidate compilation
+sample range falls below its baseline range. The equal-source geometric means
+are **0.89069** for compilation (−10.93%) and **0.91533** for imports plus
+compilation (−8.47%). This campaign took 47.83 seconds. It supports qualifying
+H6 in the selected compiler snapshot and then measuring all 23 sources against
+both genuine-B2 baseline and pinned TypeScript. It does not replace that final
+campaign.
+
+State08's [actual product preparation](evidence/state08-product-preparation.json)
+now passes: baseline sidecar absence and candidate presence are confirmed. The
+candidate file is 438,959 bytes, including a 437,464-byte product body. Explicit
+Base preparation takes 2.984 s in the baseline process and 3.712 s in the
+candidate process; these single observations are setup costs, not a balanced
+preparation benchmark. Both are outside ordinary request timings. Total guarded
+preparation wall time is 13.90 s, including identity/oracle work.
+
+## State08 H2: Map gain with actual prepared product
+
+The [balanced B1 screen](evidence/state08-b1-screen.json) passes all eight full
+raw-module comparisons. The required sidecar exists and its bytes remain pinned
+before and after every worker, including Numeric's no-hit requests.
+
+Map improves **1316.43 → 1243.22 ms (−5.56%)**: baseline samples are 1313.48 and
+1319.38 ms, versus candidate 1240.85 and 1245.60 ms. Numeric changes
+**295.22 → 305.35 ms (+3.43%)**, with candidate samples 291.31 and 319.40 ms;
+that split and overlapping ranges do not establish a stable no-hit direction.
+The equal-source geometric means are **0.98833** for compilation (−1.17%) and
+**0.98545** for imports plus compilation (−1.45%). The screen took 9.80 seconds
+and reached 136.75 MiB maximum worker process-tree RSS.
+
+The Map signal warrants finishing H2's focused semantic/transport controls and
+considering a combined genuine-B2 test with H6. The small two-source aggregate
+must not be read as a 23-source result, and H2's B1 ratio must not be multiplied
+by H6's separately measured B2 ratio to claim a combined gain. The integrated
+image needs its own direct comparison and no-hit coverage. Any failed controller
+parents remain failed; a metadata-corrected successor must qualify its actual
+checked/equality-derived API lineage explicitly.

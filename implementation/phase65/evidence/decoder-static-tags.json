@@ -1,0 +1,121 @@
+{
+  "kind": "phase65-static-tag-decoder-micro-analysis",
+  "hypothesis": "P65-007",
+  "complete": true,
+  "dataOnlyAnalysis": true,
+  "inputs": {
+    "report": {
+      "file": "selfhost/build/phase65/frame4-static-tags01/execution/report.json",
+      "sha256": "df566743d0be16dcddd904047fbef61186cfe12a19c0e1f6d130383b189a8ae3"
+    },
+    "manifest": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/frame4-static-tags01/manifest.json",
+      "sha256": "c3781176ca1a5c2b9a972ebaa896ad8c19c0971d374aeaf36b1ecfcc761e1671"
+    },
+    "controls": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/frame4-static-tags01/execution/controls.json",
+      "sha256": "de5c9bf11e6151ec8fe44107792029556ab3aeca22ade69a3eaea184887e40ca"
+    },
+    "controller": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/decoder/probe.mjs",
+      "sha256": "3f83781b31ddba121fa692ca214d092cd7087de0a3b2179caa51ab1c68948da8"
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/frame4-static-tags01/candidate-helper.mjs",
+      "sha256": "737d1958f3e035c04a266e770a4512e37464adc559deb3dc7263bc0bc509bd46"
+    },
+    "baseline": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/frame4-static-tags01/baseline-helper.mjs",
+      "sha256": "b58b927ac611f4ead292d4f736cfd427e955b81c1f0efa2f55d1e784755a0119"
+    },
+    "sameImageHostPlan": {
+      "file": "selfhost/build/phase65/host-static-tags01/plan.json",
+      "sha256": "e143bc4f5cda37b66f932bf35d9a40248117491b44740f5fd97ff937d9275569"
+    }
+  },
+  "correctness": {
+    "controls": 87,
+    "freshWorkers": 8,
+    "allPass": true,
+    "fullGraphEquality": true
+  },
+  "summary": {
+    "baseline": {
+      "first": {
+        "totalMs": 64.4678135,
+        "bookMs": 50.77353350000001,
+        "preparedMs": 10.459922000000006
+      },
+      "second": {
+        "totalMs": 73.35717249999999,
+        "bookMs": 37.76523199999997,
+        "preparedMs": 31.474115499999982
+      },
+      "third": {
+        "totalMs": 42.862882499999955,
+        "bookMs": 11.471717000000012,
+        "preparedMs": 31.837552000000017
+      },
+      "later": {
+        "totalMs": 25.981333500000005,
+        "bookMs": 6.692725999999993,
+        "preparedMs": 2.7220934999999713
+      }
+    },
+    "candidate": {
+      "first": {
+        "totalMs": 27.12542350000001,
+        "bookMs": 18.046219000000036,
+        "preparedMs": 5.690997500000009
+      },
+      "second": {
+        "totalMs": 13.728888499999982,
+        "bookMs": 8.2508665,
+        "preparedMs": 2.114122999999978
+      },
+      "third": {
+        "totalMs": 7.95711799999998,
+        "bookMs": 3.305414500000012,
+        "preparedMs": 1.265562999999986
+      },
+      "later": {
+        "totalMs": 9.082875999999942,
+        "bookMs": 4.461820500000044,
+        "preparedMs": 1.2914219999999546
+      }
+    }
+  },
+  "candidateOverBaseline": {
+    "first": 0.4207591668980678,
+    "second": 0.18715127685707875,
+    "third": 0.18564122466565305,
+    "later": 0.3495923717695221
+  },
+  "firstSamplesMs": {
+    "baseline": [
+      64.483117,
+      65.08892399999996,
+      63.28607999999997,
+      64.45251000000002
+    ],
+    "candidate": [
+      27.76386100000002,
+      27.213033999999993,
+      26.961983000000032,
+      27.03781300000003
+    ]
+  },
+  "sourceLines": {
+    "before": 285,
+    "after": 348,
+    "delta": 63
+  },
+  "decision": "Microprobe passes: prepare same-image ordinary-inspect A/B. No compiler-speed or production-qualification claim.",
+  "mechanismHypothesis": "Separate static tag readers preserve fixed literal shapes and checks while keeping rare tags and allocations outside the hot dispatch function. The first case-local candidate already reduced unused loads but regressed; the large successor gain is consistent with smaller/stabler JIT compilation units rather than load count alone. New candidate trace not yet run, so exact tiering mechanism remains unconfirmed.",
+  "limitations": [
+    "Four fresh samples per role, one fixed real Base artifact, excludes import and file read.",
+    "Later measurements share process state and retain previous graphs; do not treat them as independent fresh-request samples.",
+    "Additional call/state access costs or import/parse costs may alter whole-request effect.",
+    "Domain controls and complete graph equality passed; full compiler qualification remains separate."
+  ]
+}

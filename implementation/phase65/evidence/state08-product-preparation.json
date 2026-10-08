@@ -1,0 +1,84 @@
+{
+  "kind": "phase65-optional-product-preparation-summary",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "preparation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state08-b1-latency/preparation/report.json",
+    "sha256": "95744d4067084ff1fc8bb16ce562969c371c9d5988eed0ae80ada678ab82123b"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/latency-method02/derivation.json",
+    "sha256": "b94a251c003a773d1ad56e6f4a8137ea7cf49fb04af7f15ca6c546d674231044"
+  },
+  "roles": {
+    "baseline": {
+      "observation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state08-b1-latency/preparation/prepare-baseline.result.json",
+        "sha256": "5f6e4571233cb24ddb7a06abd7b60e4c906eeff0e9b1f44a08429b3046a20b20"
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state08-b1-latency/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "a2f8b021c20becc730cf91e8e7fd6db98f2bba8b743adec89154ff9c6217bd6f"
+      },
+      "baseProducts": {
+        "directory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state08-b1-latency/preparation/prepare-baseline/stage/project/build/typed/base-products",
+        "exists": false,
+        "declared": false,
+        "supported": false,
+        "files": [],
+        "headerBinding": null,
+        "scope": "Explicit preparation generated and decoder-validated optional products; this verifier binds exact metadata/digests and directory inventory. No-hit workers preserve the same dependency."
+      },
+      "basePrimeMs": 2983.9936019999996,
+      "workerElapsedMs": 6108.8466579999995,
+      "maxRssKiB": 590708
+    },
+    "candidate": {
+      "observation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state08-b1-latency/preparation/prepare-candidate.result.json",
+        "sha256": "aaec7ee6c671965b764cb6478e6a37054ac013589c3b10f4a196a2b0337117ec"
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state08-b1-latency/preparation/prepare-candidate/stage/project/dist/api.mjs",
+        "sha256": "3a7fedb77003aecc797cd9a9ac4c6d1bd15bd21dd1230806b6719565eca10f72"
+      },
+      "baseProducts": {
+        "directory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state08-b1-latency/preparation/prepare-candidate/stage/project/build/typed/base-products",
+        "exists": true,
+        "declared": true,
+        "supported": true,
+        "files": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state08-b1-latency/preparation/prepare-candidate/stage/project/build/typed/base-products/base-3a7fedb77003aecc797cd9a9ac4c6d1bd15bd21dd1230806b6719565eca10f72-c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661-c04628cbf4595eb7fcc0fafe90e6e555f95b4b4691a19005149f3206f3d3f7db-annotations64-v1.bin",
+            "sha256": "4b48edc7cb8cc6f308046a61fe14a8b89fc5e1325b345e0681eb11c22702bbf5"
+          }
+        ],
+        "headerBinding": {
+          "format": "bend-base-annotations-1",
+          "version": 1,
+          "producer": "base_annotation_prepare",
+          "minimumWork": 64,
+          "compilerSha256": "3a7fedb77003aecc797cd9a9ac4c6d1bd15bd21dd1230806b6719565eca10f72",
+          "baseSha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+          "sourcePath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "termAbi": 1,
+          "spanAbi": 3,
+          "sourceBegin": 1,
+          "sourceEnd": 71532,
+          "bookGraphSha256": "d9193a8eeeda303aeaee37a10bdc7cbd325a744466c12961a60ddc794029afef",
+          "preparedGraphSha256": "7bb27d3b4fbef51bd3ea305aa04edb4ad1065a4ec5208630f558419cd387cfce",
+          "productBytes": 437464,
+          "productSha256": "b42f82dc4039e6726527557cffa3ac49490116185f47d5f4137b472ca64e7bc6",
+          "keysSha256": "71c571f1fb172b7ac1dd1c95c0dfbea13a197e11e46d406ba2a6921dad05f536"
+        },
+        "scope": "Explicit preparation generated and decoder-validated optional products; this verifier binds exact metadata/digests and directory inventory. No-hit workers preserve the same dependency."
+      },
+      "basePrimeMs": 3711.8677500000003,
+      "workerElapsedMs": 6800.740368,
+      "maxRssKiB": 479220
+    }
+  },
+  "wallSeconds": 13.902622579946183,
+  "scope": "Single explicit preparation per role, not a balanced preparation-speed benchmark. Supporting candidate has required sidecar; baseline absence pinned. Request clocks exclude preparation. Semantic key-selection/hit controls are separate."
+}

@@ -79,6 +79,10 @@ many characters the old early-exit searches would have visited.
 
 ## P65-006: structured live-lambda returns
 
+**Deferred before build:** the corrected census observed 798 live-lambda state
+entries and zero eligible Nil arms across the four latency sources. Exact
+complete outputs passed. The reviewed controls below remain unexecuted.
+
 This separate hypothesis removes an existing render/rescan round trip, with
 zero added source lines, helpers or types. Its one-line `closure-candidate.patch`
 and receipt remain isolated until root integrates them. Registration:

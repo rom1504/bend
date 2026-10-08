@@ -50,3 +50,20 @@ remain distinct.
 
 Closed Phase64 remains untouched. Every derivative records parent and output
 hashes; once consumed, use a fresh successor for method changes.
+
+
+## Optional Base annotation product inputs
+
+`make-method-v2.py` derives a new method from frozen Phase65 method01 for images
+that export all four Base annotation product APIs. Pass the new method directory
+to `make-bindings.py --method`. Explicit `prepareBase` creates and validates the
+sidecar; the ordinary compiler request only reads it when applicable.
+
+The method preserves the mandatory exact-one frame cache rule and separately
+pins `build/typed/base-products` presence, exact file membership, byte hashes,
+header identities, and actual parent frame segment hashes. Supporting candidate
+images must produce one sidecar. Historical images must preserve directory
+absence. Every worker verifies these inputs before and after its timed work,
+including sources that only inspect the product header. Hashing is excluded from
+the original compilation/import clocks. This does not measure OS-cold storage.
+Consumed method01 and prior receipts remain immutable.

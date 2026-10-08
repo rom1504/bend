@@ -1,0 +1,109 @@
+{
+  "kind": "phase65-state06-leaf-controls02-summary",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetRunBy": "root",
+  "raw": {
+    "file": "selfhost/build/phase65/state06-leaf-controls02/report.json",
+    "sha256": "bcd7ad5d766d68494cca017eec565205bcce6d4d38e06317a833590a2ba21ec6",
+    "bytes": 64472
+  },
+  "candidateAttempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state06/attempt.json",
+    "sha256": "bf716df85e72746320c9e5191f786a1dd2da9df29698f436e134aa4cecbfc68a",
+    "bytes": 300469
+  },
+  "derivations": [
+    {
+      "role": "baseline",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/equality/api.mjs",
+        "sha256": "a2f8b021c20becc730cf91e8e7fd6db98f2bba8b743adec89154ff9c6217bd6f",
+        "bytes": 1970019
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state06-leaf-controls02/baseline-queries.mjs",
+        "sha256": "5a316480d7bfe316359bc375bd72e92e829c4e6d778c133c9d9db3ccabd1965c",
+        "bytes": 1970199
+      },
+      "appendOnly": true,
+      "suffixSha256": "3c662250db596c13f59dc114f1547ab797f85e377f0e61e8c6e52b43ed3ee9de",
+      "parserSha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c",
+      "generatedConvention": "TypeScript-emitted",
+      "optionalSourceHelpers": {
+        "subst_node": true
+      }
+    },
+    {
+      "role": "candidate",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state06/equality/api.mjs",
+        "sha256": "63ecf30d5c1eab61476595f3fe41d5b1f241704eb4e4362af6b5a83ba1b264f5",
+        "bytes": 1968497
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state06-leaf-controls02/candidate-queries.mjs",
+        "sha256": "c54a48eea16e7bf42f076baf3509bc2a20f3a70ba3a0d0bad96df4942c6a9cf3",
+        "bytes": 1968625
+      },
+      "appendOnly": true,
+      "suffixSha256": "0db7b50778dd144783210e36132c9a370a44c2b52694e3eb23a1073f44c46530",
+      "parserSha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c",
+      "generatedConvention": "TypeScript-emitted",
+      "optionalSourceHelpers": {
+        "subst_node": false
+      }
+    }
+  ],
+  "inheritedControlsPerImage": {
+    "baseline": 40,
+    "candidate": 40
+  },
+  "fullDifferentialRows": 225,
+  "actualOriginalReferenceWitnesses": 48,
+  "originalReferenceShapes": {
+    "ref": 9,
+    "literal": 9,
+    "var": 6,
+    "var-max": 6,
+    "var-payload": 9,
+    "lambda-empty": 9
+  },
+  "rawSubstNode": {
+    "status": "skipped",
+    "comparedRows": 0,
+    "declarationPresence": {
+      "baseline": true,
+      "candidate": false
+    },
+    "reason": "At least one selected image omits the unreachable subst_node declaration; exact source-body preservation is checked separately."
+  },
+  "substNodeSourceInvariant": {
+    "pass": true,
+    "beforeSha256": "4b3f3e4cece19531a2d4dcc551229a9d5d84df0eebeb9b7835365354f4c55bc3",
+    "afterSha256": "4b3f3e4cece19531a2d4dcc551229a9d5d84df0eebeb9b7835365354f4c55bc3"
+  },
+  "orderedReplacementPass": true,
+  "generatedCandidateB1Subst": {
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state06/equality/api.mjs",
+      "sha256": "63ecf30d5c1eab61476595f3fe41d5b1f241704eb4e4362af6b5a83ba1b264f5",
+      "bytes": 1968497
+    },
+    "sha256": "dc8a573465053e1d8c3bef3617d8d9626763d4298420ad3b04066c579a407d0b",
+    "textualRunTailOccurrences": 3,
+    "source": "function $subst$(_t_0, _id_0, _v_0) {\n  return run_tail((($String$eq$(($tg$(_t_0)), \"Var\"))) ? ((_x_0) => {\n  const _x_1 = ($ix$(_t_0));\n  if (((_x_1 === _id_0))) {\nconst _x_2 = {$: \"Unit\"};\nreturn _v_0;\n} else {\nconst _x_3 = {$: \"Unit\"};\nreturn _t_0;\n}\n}) : ((_x_4) => {\n  return run_tail((($core_literal$(_t_0))) ? ((_x_5) => {\n  return _t_0;\n}) : ((_x_6) => {\n  return run_tail((($Bool$and$(($List$is_empty$(($ks$(_t_0)))), ($Bool$not$(($String$eq$(($tg$(_t_0)), \"App\"))))))) ? ((_x_7) => {\n  return _t_0;\n}) : ((_x_8) => {\n  return $core_rebuild$(($k_with_children$(_t_0, ($subst_terms$(($ks$(_t_0)), _id_0, _v_0)))));\n}), {$: \"Unit\"});\n}), {$: \"Unit\"});\n}), {$: \"Unit\"});\n}\n"
+  },
+  "selectedBaselineB2SubstScc": {
+    "api": {
+      "file": "selfhost/build/phase64/bootstrap-state09/full/compiler.mjs",
+      "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e",
+      "bytes": 4040799
+    },
+    "sha256": "de9dca14e6ddf60d5492a20755c0eff2f4b1132a4d1fff7b42b950e5017aa779",
+    "textualRunTailOccurrences": 0,
+    "directLiteralChoiceMarkers": 5
+  },
+  "scope": "Checked-B1 exact controls and reference identity. Old selected-B2 code shape explains why B1/B2 cost may differ; it is not a generated candidate-B2 measurement or prediction."
+}

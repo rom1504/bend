@@ -1,0 +1,65 @@
+{
+  "kind": "phase65-independent-reviewed-focused-receipts-v2",
+  "scope": "Read-only observation of root-run closed focused receipts. No production qualification, timing, or semantic proof beyond each controller scope.",
+  "previous": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/reviewed-focused-receipts01.json",
+    "sha256": "04220ad76a1dc1eb288d596d0f25f60ce4250b06a8809a16f2f0f1f45cdc8294",
+    "bytes": 1786
+  },
+  "receipts": [
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state05-lookup-controls01/report.json",
+        "sha256": "0871a879f3e5ed727786f9bc40d4e20e3994eead0a5a757beced018a4c5ba4f9",
+        "bytes": 122510
+      },
+      "complete": true,
+      "pass": true,
+      "counts": {
+        "lookup": 29,
+        "constructor": 535,
+        "baseNames": 501
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state06-leaf-controls02/report.json",
+        "sha256": "bcd7ad5d766d68494cca017eec565205bcce6d4d38e06317a833590a2ba21ec6",
+        "bytes": 64472
+      },
+      "complete": true,
+      "pass": true,
+      "caseCount": 225,
+      "actualReferenceWitnesses": 48,
+      "rawSubstNode": {
+        "status": "skipped",
+        "comparedRows": 0,
+        "declarationPresence": {
+          "baseline": true,
+          "candidate": false
+        },
+        "reason": "At least one selected image omits the unreachable subst_node declaration; exact source-body preservation is checked separately."
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state04-shallow-controls01/report.json",
+        "sha256": "784996c13f32bf930dcdd6fcf372dcbd41b6bc3fb1f25fd6b69cab5d82376fc8",
+        "bytes": 55812
+      },
+      "complete": true,
+      "pass": true,
+      "caseCount": 225,
+      "actualReferenceWitnesses": 105
+    }
+  ],
+  "preservedPreflightFailure": {
+    "receipt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state06-leaf-controls01/report.json",
+      "sha256": "d60b58d7e7ca1419c8e1050f086b29c5bb55b806f211e0050931c1887317decd",
+      "bytes": 7155
+    },
+    "message": "subst_node",
+    "reason": "The optimized image pruned unchanged subst_node; the successor keeps mandatory subst/core_beta comparisons and pins the unchanged raw helper source body."
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "kind": "phase65-structured-closure-opportunity-summary",
+  "experiment": "P65-006",
+  "complete": true,
+  "pass": true,
+  "candidateDisposition": "Deferred before build: dispatcher observation activated but no Nil-arm admissions on the four measured sources.",
+  "controller": {
+    "file": "selfhost/tools/performance/phase65/output-metadata/closure-opportunity02.mjs",
+    "sha256": "967a734924ad12d400a37105816620088adfddff5b39f22ec9c9cb9e6b6f9d4b"
+  },
+  "baselineGenuineB2Sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e",
+  "sources": [
+    {
+      "case": "numeric-recurrence",
+      "report": {
+        "file": "selfhost/build/phase65/closure-opportunity-numeric-recurrence02/report.json",
+        "sha256": "edb38ce13465921500a6fc15a3fc1c2c9926149c2b951896408e4bdc70cb1612"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+        "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+        "bytes": 556
+      },
+      "outputSha256": "2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3",
+      "exactOriginalOutput": true,
+      "totals": {
+        "allLiveLambdaEntries": 7,
+        "eligibleClosures": 0,
+        "outerRawScans": 0,
+        "rescannedCodepoints": 0,
+        "nestedBodyCodepoints": 0
+      },
+      "opportunityObserved": false
+    },
+    {
+      "case": "lexer",
+      "report": {
+        "file": "selfhost/build/phase65/closure-opportunity-lexer02/report.json",
+        "sha256": "318e90e8625393385f06875d1590b73185598b8690e0cfa3dae4c0d00340463e"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+        "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "bytes": 7134
+      },
+      "outputSha256": "dcb0125d93015591a539320dd827b7d751d6985e69c44e51f7beefa43121e4a5",
+      "exactOriginalOutput": true,
+      "totals": {
+        "allLiveLambdaEntries": 106,
+        "eligibleClosures": 0,
+        "outerRawScans": 0,
+        "rescannedCodepoints": 0,
+        "nestedBodyCodepoints": 0
+      },
+      "opportunityObserved": false
+    },
+    {
+      "case": "test-map-set-ops",
+      "report": {
+        "file": "selfhost/build/phase65/closure-opportunity-test-map-set-ops02/report.json",
+        "sha256": "ad489c844b01a34623b1581d078854d81547c3d98bda934d2e1a785cdb999dc4"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+        "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+        "bytes": 5266
+      },
+      "outputSha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd",
+      "exactOriginalOutput": true,
+      "totals": {
+        "allLiveLambdaEntries": 520,
+        "eligibleClosures": 0,
+        "outerRawScans": 0,
+        "rescannedCodepoints": 0,
+        "nestedBodyCodepoints": 0
+      },
+      "opportunityObserved": false
+    },
+    {
+      "case": "raytrace-active",
+      "report": {
+        "file": "selfhost/build/phase65/closure-opportunity-raytrace-active02/report.json",
+        "sha256": "e48b40f863e5bcc21b2319ba8133ffd4a0fcc57c5fbdd32cb09c60141e2cf742"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+        "sha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+        "bytes": 14680
+      },
+      "outputSha256": "d0b070f1c63cc2a92f15911780ad00dbee9d9789b99af8ae42a3efd1fd2baf95",
+      "exactOriginalOutput": true,
+      "totals": {
+        "allLiveLambdaEntries": 165,
+        "eligibleClosures": 0,
+        "outerRawScans": 0,
+        "rescannedCodepoints": 0,
+        "nestedBodyCodepoints": 0
+      },
+      "opportunityObserved": false
+    }
+  ],
+  "failedPredecessor": {
+    "file": "selfhost/build/phase65/closure-opportunity-numeric-recurrence01/report.json",
+    "sha256": "a4defe1e6b299563fe3c8e8600251a4e50bafe14446618f6e82043965547bb10",
+    "complete": false,
+    "pass": false,
+    "reason": "Preflight expected raw call in named wrapper; actual generated raw call is in dispatcher state 2. No compilation/output observation from this failed attempt."
+  },
+  "scope": "Logical admissions and covered raw input span only. No candidate build, semantic control execution or clean performance measurement. Does not prove absence on arbitrary nested closure programs."
+}

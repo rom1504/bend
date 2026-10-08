@@ -109,3 +109,49 @@ for KLambda quantity-presence fields and pins the old oracle to the exact before
 source. Inherited consumed fixtures with tagged values remain unchanged and are
 explicitly treated as raw payload-preservation cases. This prevents a successful
 comparison on malformed flags from replacing authentic true/false coverage.
+
+
+## Additional focused controls and optional products
+
+The Boolean membership alternative keeps the original lookup as its oracle and
+preserves first-match Absent masking and BookCache termination at any list
+position. Its focused root receipt passed 29 raw lookup cases and 535 enclosing
+constructor queries, including 501 actual Base names. The ordinary missing-name
+cases also confirm that the Bool path avoids constructing `missing()` values.
+No cache schema changes are required by this alternative.
+
+The constant-size composite substitution candidate passed its focused value and
+identity controls but was rejected by the performance owner. Its smaller
+leaf-only successor passed 225 full substitution/beta cases plus the 40 inherited
+predicate controls. The first leaf controller stopped at a missing `subst_node`
+declaration: the optimization made this unchanged helper unreachable. That
+failed preflight remains preserved. The v2 controller explicitly records the
+raw-helper dynamic skip while verifying its exact unchanged source body and
+retaining all mandatory substitution/beta comparisons. These additional receipts
+are pinned in
+[`reviewed-focused-receipts02.json`](../../selfhost/tools/performance/phase65/controls/reviewed-focused-receipts02.json).
+
+Two independent H2 controllers are now source-reviewed and frozen, pending root
+execution. `controls/base-annotations-host-v1.mjs` exercises the real sidecar
+writer/reader against a real decoded frame4 graph, using a clearly labeled mock
+product. It checks header and parent-graph identity, corruption, reference
+subtypes, no-hit and refusal read order, deletion/replacement and optional
+fallback. It does not claim semantic annotation correctness.
+
+`base-products/annotation-controls-v1.mjs` separately uses the real owned API and
+Bend producer. It requires the independently counted 12 cached definitions and
+seven actual Map definition-object reuses, compares entire annotation graphs
+and complete modules, and checks request-specific stops, readiness, loader
+errors, full-hash collision refusal and the public injected-API fallback. Numeric
+and Lexer misses must never read the product body. The cloned helper/runtime
+closure is pinned against the checked snapshot. Performance provenance now also
+pins the separate products directory before and after every worker, including
+no-hit requests and explicit baseline absence.
+
+The two structured-output proposals were deferred before candidate builds after
+actual generated-B2 censuses found zero eligible sites in four representative
+requests. The first closure observer preflight incorrectly assumed a direct
+helper body; its preserved failure led to a successor instrumenting the actual
+SCC state. That activated the enclosing path but still found zero eligible Nil
+arms. Generated call structure must be inspected before accepting any wrapper
+counter as proof of opportunity.

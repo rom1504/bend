@@ -1,7 +1,8 @@
 # Phase65: immutable Base backend products
 
-Status: **both discriminators passed; isolated annotation source candidate
-reviewed and frozen for integration. No compiler change selected for release.**
+Status: **both discriminators passed; annotation candidate State08 passed its
+checked build. Focused activation controls and clean speed screening are next.
+No compiler change selected for release.**
 The input is installed Phase64 State09, baseline checkout `49431ba`, with genuine
 B2 image `b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e`.
 Closed Phase64 raw evidence remains unchanged. Root owns all target execution.
@@ -224,8 +225,10 @@ cache but does not justify subtracting the diagnostic times from clean latency.
 
 The [source patch](../../selfhost/tools/performance/phase65/base-products/annotation-source-v1.patch)
 adds one module, `src/check/base-products.bend`, and its manifest entry. Source
-review passed and `git apply --check` passed; checked compilation and runtime
-controls remain pending. The patch and its [metadata](../../selfhost/tools/performance/phase65/base-products/annotation-source-v1.json)
+review passed and `git apply --check` passed. Root's State08 integration of this
+source with host v2 passed 36 strict checked controls in 56.57 seconds, with
+320 frozen inputs reverified. Focused product activation controls remain pending.
+The patch and its [metadata](../../selfhost/tools/performance/phase65/base-products/annotation-source-v1.json)
 are frozen. Selected prepared world v3 is unchanged; the rejected constructor
 index experiment is not included.
 
@@ -255,3 +258,52 @@ unselected unsafe prefixes preserves demand. Public arbitrary-book annotation
 retains its original behavior. The first clean screen must establish the actual
 net gain, including key loading, hit admission, heavy materialization and any
 code-size effects; no production speedup is claimed yet.
+
+The owned-driver semantic controller
+[`annotation-controls-v2.mjs`](../../selfhost/tools/performance/phase65/base-products/annotation-controls-v2.mjs)
+copies only the driver/runtime dependency closure to a new project and loads
+the actual unchanged candidate API. It compares ordinary and retained annotation
+on the same owned route, then checks the public injected-API fallback. Complete
+annotations are compared iteratively, including every field; complete driver
+results and qualified module bytes must agree. Map must return seven actual
+cached definition objects. Numeric and Lexer must neither admit nor read the
+heavy product. Stop-first behavior and unready, loader-error and full-hash
+collision refusal have direct controls. The
+[State08 input](../../selfhost/tools/performance/phase65/base-products/annotation-controls-state08-input-v2.json)
+jointly binds the qualified derived B1 API, frozen host v2, assembled source and bootstrap
+receipt. These are correctness controls, not timing evidence.
+
+The first owned-control run is retained as a failure. Its input incorrectly
+selected raw bootstrap `attempt.checkedApi` (`aada8b04…`) instead of the qualified
+`attempt.api` equality/choice/tail derivative (`3a7fedb7…`) used by the checked
+and performance harnesses. Preparation produced the expected 12 keys and a
+valid 438,959-byte sidecar, but the ordinary Lexer request exceeded the call
+stack before world checking, context creation or product consumption. The
+exact stack leaf is not established by the caught API diagnostic. This run
+does not validate or falsify retained annotation execution.
+
+The [v2 derivation record](../../selfhost/tools/performance/phase65/base-products/annotation-controls-v2.derivation.json)
+preserves the failed run and original method/input hashes. Its successor
+explicitly checks the existing derived-image receipt and raw-parent relationship,
+records execution arguments and failed ordinary observations, and retains all
+semantic and IO assertions. No old evidence or compiler source was changed.
+
+## First clean B1 screen
+
+The [balanced two-source screen](evidence/state08-b1-screen.json) completed
+eight fresh-process workers with eight exact qualified module outputs. Both
+roles used their qualified B1 derivatives. The candidate sidecar was present,
+admitted and pinned; the baseline had no sidecar.
+
+| Source | Baseline median ms | Candidate median ms | Change |
+|---|---:|---:|---:|
+| Numeric | 295.22 | 305.35 | +3.43% |
+| Map | 1,316.43 | 1,243.22 | −5.56% |
+
+Map's two candidate samples, 1,240.85 and 1,245.60 ms, are both below its two
+baseline samples, 1,313.48 and 1,319.38 ms. Numeric's 291.31/319.40 ms candidate
+range overlaps the 290.80/299.64 ms baseline range; two samples do not establish
+a small-source regression. The equal-source geometric mean improves 1.17% for
+compilation and 1.45% for imports plus first compilation. This is a useful
+Map-specific signal for genuine B2 qualification, not broad parity evidence or
+a reason to multiply gains from independent candidate screens.

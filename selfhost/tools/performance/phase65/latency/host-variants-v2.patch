@@ -1,0 +1,24 @@
+--- selfhost/tools/performance/phase65/latency/host-variants.py
++++ selfhost/tools/performance/phase65/latency/host-variants-v2.py
+@@ -37,6 +37,7 @@
+ p=argparse.ArgumentParser(description=__doc__);sub=p.add_subparsers(dest='mode',required=True)
+ prep=sub.add_parser('prepare');prep.add_argument('preparation',type=Path);prep.add_argument('out',type=Path)
+ prep.add_argument('--role',default='baseline',help='Actual prepared genuine B2 role to copy')
++prep.add_argument('--cases',default='numeric-recurrence,test-map-set-ops',help='Comma-separated prepared case IDs, or all config cases; each requires a passing prepared full-output oracle')
+ prep.add_argument('--variant',action='append',required=True,help='LABEL=reviewed replacement base-cache-graph.mjs')
+ run=sub.add_parser('run');run.add_argument('plan',type=Path);run.add_argument('out',type=Path)
+ run.add_argument('--rounds',type=int,default=1);run.add_argument('--seconds',type=int,default=35)
+@@ -59,8 +60,12 @@
+         label,filename=value.split('=',1)
+         assert label.isidentifier() and label not in variants
+         variants[label]=pin(filename);inputs.append(variants[label])
++    selected=[x['id'] for x in config['cases']] if a.cases=='all' else [x.strip() for x in a.cases.split(',')]
++    assert selected and all(selected) and len(set(selected))==len(selected), 'Empty or repeated case ID'
++    available={x['id'] for x in config['cases']}
++    assert set(selected)<=available, 'Selected case absent from prepared config'
+     cases=[]
+-    for name in ['numeric-recurrence','test-map-set-ops']:
++    for name in selected:
+         case=next(x for x in config['cases'] if x['id']==name)
+         oracle=next(x for x in observation['outputs'] if x['id']==name)
+         assert oracle['oracle']['pass']

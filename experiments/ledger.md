@@ -3923,3 +3923,19 @@ instrumented counters are not clean latency gains. The first H1 build used
 restored baseline source; exact API/source identity rejected it as an H1
 experiment before timing. Fresh State02 contains the intended diagnostic
 producer and passes focused/export and differential controls. No promotion yet.
+
+### Phase65 bounded prototype decisions — 2026-10-08
+
+[Measurement record](../implementation/phase65/measurement.md): State02 H1
+changes two-source B1 compilation by −0.23%, State03 indexed constructor
+membership by −0.20%; both are below prior A/A variability. State04 shallow
+substitution is +0.20% overall and regresses Map4.24%; reject advancement.
+All completed screen modules remain exact. P65-004 has zero observed admissions
+on all four genuine-B2 sources, so its patch was not built. Retain these negative
+results separately from source correctness and broader untested hypotheses.
+
+The next small slices are leaf-only return hoisting, Boolean lookup projection
+(P65-008), closure JDText preservation (P65-006), and producer-bound deferred
+Base annotations (P65-002). First-decode transport remains under investigation.
+Phase64 is still installed. Failed preflights and their corrected successors
+remain separate; no compiler source or speed result is promoted at this cutoff.

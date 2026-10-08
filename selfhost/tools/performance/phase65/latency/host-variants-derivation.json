@@ -1,0 +1,57 @@
+{
+  "kind": "phase65-host-helper-variant-derivation",
+  "dataOnly": true,
+  "targetExecuted": false,
+  "derivations": [
+    {
+      "parent": {
+        "file": "selfhost/tools/performance/phase63/latency/host-variants.py",
+        "sha256": "cba4530733948264f174b62544b2e6eeecdf294e5aa1167a130f7530c8db2ca0"
+      },
+      "successor": {
+        "file": "selfhost/tools/performance/phase65/latency/host-variants.py",
+        "sha256": "dd5751825d7c2086cf1daa9b731c2c45913b2f83812e55a1e0fe14898161df95"
+      },
+      "edits": [
+        {
+          "old": "phase63",
+          "new": "phase65",
+          "count": 4
+        },
+        {
+          "old": "prep.add_argument('--variant',action='append',required=True",
+          "new": "prep.add_argument('--role',default='baseline',help='Actual prepared genuine B2 role to copy')\nprep.add_argument('--variant',action='append',required=True",
+          "count": 1
+        },
+        {
+          "old": "row['observation']['role']=='candidate'",
+          "new": "row['observation']['role']==a.role",
+          "count": 1
+        },
+        {
+          "old": "Actual State05 B2 API/source/Base/driver/runtime/cache bytes unchanged",
+          "new": "Actual selected B2 API/source/Base/driver/runtime/cache bytes unchanged",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "selfhost/tools/performance/phase63/latency/host-variant-worker.mjs",
+        "sha256": "a3e1676344402001f57b3f91387555351f78d7268503750b3ceb801243a4f687"
+      },
+      "successor": {
+        "file": "selfhost/tools/performance/phase65/latency/host-variant-worker.mjs",
+        "sha256": "52f30c27aa8fe9c5754a935d6b2cf289e35f191e3a18c6b192457095794e0aaf"
+      },
+      "edits": [
+        {
+          "old": "phase63",
+          "new": "phase65",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "scope": "Only phase boundary/kinds, actual prepared role parameter, and scope label. Actual API/source/Base/runtime/cache and ordinary private driver execution unchanged; exact before/after pins and full module oracles preserved. Diagnostic only, no production qualification."
+}

@@ -1,0 +1,160 @@
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -23,6 +23,7 @@
+ export const directRuntimePath=path.join(project,'src/runtime/js/direct.mjs');
+ const bundledBasePath=path.join(project,'dist/base.bend');
+ export const basePath=path.resolve(process.env.BEND_BASE||bundledBasePath);
++export const baseAnnotationDirectory=path.join(project,'build/typed/base-products');
+ const roots=['f_path_join','f_path_dir','check_book','annotate_book','j_program','j_library','j_expr','j_descriptor','j_io_type','j_modules','driver_has_main','driver_is_io','driver_interpret','driver_todos','driver_emit_owned'];
+ const list=values=>values.reduceRight((tail,head)=>({$: 'Con',head,tail}),{$:'Nil'});
+ function array(value) {
+@@ -103,6 +104,7 @@
+   if(files.includes('src/check/prefix-state.bend'))exports.push('base_prefix_prepare','check_program_diagnostic_seed','check_program_diagnostic_prefix');
+   if(files.includes('src/check/prefix-state.bend')&&fs.readFileSync(path.join(project,'src/check/prefix-state.bend'),'utf8').includes('def base_prefix_world_prepare('))exports.push('base_prefix_world_prepare','check_program_diagnostic_world');
+   if(files.includes('src/check/prefix-state.bend')&&fs.readFileSync(path.join(project,'src/check/prefix-state.bend'),'utf8').includes('def book_context_world('))exports.push('book_context_world');
++  if(files.includes('src/check/base-products.bend'))exports.push('base_annotation_prepare','base_annotation_wanted','base_annotation_allowed','annotate_selected_base');
+   if(files.includes('src/load/graph.bend'))exports.push('f_load_graph','f_load_graph_trace');
+   if(files.includes('src/load/modules.bend')){exports.push('f_source_completed','f_source_located');if(fs.readFileSync(path.join(project,'src/load/modules.bend'),'utf8').includes('def compiler_load_abi('))exports.push('compiler_load_abi','f_source_header','f_complete_source','f_complete_seed','f_import_namespace_at','f_graph_trace');}
+   if(files.includes('src/load/imports.bend')&&fs.readFileSync(path.join(project,'src/load/imports.bend'),'utf8').includes('def f_import_failure('))exports.push('f_import_failure');
+@@ -215,6 +217,7 @@
+     KIndexLeaf:['hash','bucket'],KIndexNode:['hash','mask','left','right'],
+     KBasePrefixState:['bound','delta','stamp','patches','ready'],FFreshPrefixState:['next','ready'],
+     KBasePreparedWorld:['state','prefix','final','book','checked','seen','todos','checkedBound'],FReadyPrefixState:['names','ctors','count','ready'],
++    KBaseAnnotationState:['keys','book'],
+     FReadyPrefixGraph:['graph','prefix','suffix','count','ready','names','ctors','baseNames'],
+     FPrefixGraph:['graph','prefix','suffix','count','ready'],FPrefixCompletion:['carrier','parsed'],FPrefixLoad:['trace','prefix','suffix','ready'],
+     ...(termAbi===1?{KLiteral:['kind','number','text','originBegin','originEnd'],KLambda:['name','id','quant','kids','removed','originBegin','originEnd','quantityPresent']}:{}),
+@@ -286,6 +289,7 @@
+ 
+ const FORMAT='bend-base-cache-frame-2',LEGACY_FORMAT='bend-base-cache-frame-1',GRAPH_FORMAT='bend-base-cache-frame-3',ARENA_FORMAT='bend-base-cache-frame-4';
+ const frameTrees=new WeakSet(),frameGraphs=new WeakSet(),frameStates=new WeakMap();
++const baseAnnotationFrames=new WeakMap();
+ const digest=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+ function encodeBaseCacheFrame(cached,bookJson=JSON.stringify(cached.book)) {
+   if(cached.preparedWorld||cached.frontendReadyState)return encodeBaseCacheGraphFrame(cached);
+@@ -326,7 +330,7 @@
+       const [checked,fresh,world,frontend]=graph.roots;
+       if(checked){cached.checkedPrefixState=checked;states.checked={value:checked,sha256:preparedGraphSha256};}
+       if(fresh){cached.freshPrefixState=fresh;states.fresh={value:fresh,sha256:preparedGraphSha256};}
+-      if(world)cached.preparedWorld=world;
++      if(world){cached.preparedWorld=world;if(header.format===ARENA_FORMAT)baseAnnotationFrames.set(world,{graph,bookGraphSha256,preparedGraphSha256});}
+       if(frontend)cached.frontendReadyState=frontend;
+     }catch { /* Optional preparation failure retains the full checker path. */ }
+   }
+@@ -564,7 +568,77 @@
+     return {...cached,sourcePath:info.sourcePath,sourceText:info.sourceText};
+   } catch(error) {if(error.code!=='ENOENT'&&!(error instanceof SyntaxError))throw error;return null;}
+ }
+-export async function prepareBase(api) {
++// Optional backend products share the exact admitted frame4 node numbering.
++// The key header is independent and bounded; ordinary inspection never creates
++// products or reads their body unless Bend selects and admits the current use.
++const BASE_ANNOTATIONS='bend-base-annotations-1',BASE_ANNOTATION_WORK=64;
++const baseAnnotationApis=api=>['base_annotation_prepare','base_annotation_wanted','base_annotation_allowed','annotate_selected_base'].every(name=>typeof api[name]==='function');
++const baseAnnotationFile=info=>path.join(baseAnnotationDirectory,path.basename(info.file).replace(/-frame4\.json$/,'-annotations64-v1.bin'));
++function readAnnotationBytes(fd,length,position) {
++  const bytes=Buffer.allocUnsafe(length);let at=0;
++  while(at<length){const count=fs.readSync(fd,bytes,at,length-at,position+at);if(!count)throw Error('Truncated Base annotation product');at+=count;}
++  return bytes;
++}
++function withBaseAnnotationFile(info,cached,consume) {
++  const binding=baseAnnotationFrames.get(cached?.preparedWorld);if(!binding)return null;
++  let fd;
++  try {
++    fd=fs.openSync(baseAnnotationFile(info),'r');const size=fs.fstatSync(fd).size;
++    if(size<36||size>128*1024*1024+65540)return null;
++    const length=readAnnotationBytes(fd,4,0).readUInt32LE(0);if(!length||length>65536||length+36>size)return null;
++    const header=JSON.parse(readAnnotationBytes(fd,length,4).toString('utf8'));
++    if(header===null||typeof header!=='object'||Array.isArray(header))return null;
++    const expected={format:BASE_ANNOTATIONS,version:1,producer:'base_annotation_prepare',minimumWork:BASE_ANNOTATION_WORK,
++      compilerSha256:info.compilerSha256,baseSha256:info.baseSha256,sourcePath:info.sourcePath,termAbi:info.termAbi,
++      spanAbi:cached.spanAbi,sourceBegin:cached.sourceBegin,sourceEnd:cached.sourceEnd,
++      bookGraphSha256:binding.bookGraphSha256,preparedGraphSha256:binding.preparedGraphSha256};
++    if(Object.entries(expected).some(([key,value])=>header[key]!==value)||!Number.isSafeInteger(header.productBytes)||header.productBytes<32||
++      header.productBytes>128*1024*1024||4+length+header.productBytes!==size||! /^[0-9a-f]{64}$/.test(header.productSha256??'')||
++      typeof header.keys!=='string'||header.keys.length>65536)return null;
++    const keyBytes=Buffer.from(header.keys,'base64');if(keyBytes.toString('base64')!==header.keys||digest(keyBytes)!==header.keysSha256)return null;
++    const options={range:{begin:cached.sourceBegin,end:cached.sourceEnd},termAbi:info.termAbi};
++    const keys=decodeBaseArena(keyBytes,{...options,rootKinds:['strings']}).roots[0];if(keys===null)return null;
++    return consume({fd,offset:4+length,header,keys,binding,options});
++  }catch{return null;}finally{if(fd!==undefined)fs.closeSync(fd);}
++}
++function decodeBaseAnnotationProduct({fd,offset,header,binding,options}) {
++  const bytes=readAnnotationBytes(fd,header.productBytes,offset);if(digest(bytes)!==header.productSha256)throw Error('Invalid Base annotation product');
++  const product=decodeBaseArena(bytes,{...options,base:binding.graph,rootKinds:['defs']}).roots[0];
++  if(product===null)throw Error('Missing Base annotation product');return product;
++}
++function readBaseAnnotations(api,info,cached,load,selected,stops) {
++  return withBaseAnnotationFile(info,cached,record=>{
++    if(!api.base_annotation_wanted(selected,stops,record.keys)||!api.base_annotation_allowed(load,cached.preparedWorld))return null;
++    return decodeBaseAnnotationProduct(record);
++  });
++}
++function prepareBaseAnnotations(api,cached,info) {
++  if(!baseAnnotationApis(api)||!baseAnnotationFrames.has(cached?.preparedWorld))return false;
++  if(withBaseAnnotationFile(info,cached,record=>{decodeBaseAnnotationProduct(record);return true;}))return true;
++  try {
++    const state=api.base_annotation_prepare(cached.preparedWorld,BASE_ANNOTATION_WORK);
++    if(state?.$!=='KBaseAnnotationState')return false;
++    const binding=baseAnnotationFrames.get(cached.preparedWorld),book=encodeBaseArena([cached.book]);
++    const prepared=encodeBaseArena([cached.checkedPrefixState??null,cached.freshPrefixState??null,cached.preparedWorld??null,cached.frontendReadyState??null],book);
++    if(digest(book.bytes)!==binding.bookGraphSha256||digest(prepared.bytes)!==binding.preparedGraphSha256)return false;
++    const keys=encodeBaseArena([state.keys]).bytes,product=encodeBaseArena([state.book],prepared).bytes;
++    const options={range:{begin:cached.sourceBegin,end:cached.sourceEnd},termAbi:info.termAbi};
++    if(decodeBaseArena(keys,{...options,rootKinds:['strings']}).roots[0]===null||
++      decodeBaseArena(product,{...options,base:binding.graph,rootKinds:['defs']}).roots[0]===null)return false;
++    const header={format:BASE_ANNOTATIONS,version:1,producer:'base_annotation_prepare',minimumWork:BASE_ANNOTATION_WORK,
++      compilerSha256:info.compilerSha256,baseSha256:info.baseSha256,sourcePath:info.sourcePath,termAbi:info.termAbi,
++      spanAbi:cached.spanAbi,sourceBegin:cached.sourceBegin,sourceEnd:cached.sourceEnd,
++      bookGraphSha256:binding.bookGraphSha256,preparedGraphSha256:binding.preparedGraphSha256,
++      keys:keys.toString('base64'),keysSha256:digest(keys),productBytes:product.length,productSha256:digest(product)};
++    const text=Buffer.from(JSON.stringify(header));if(text.length>65536)return false;
++    const length=Buffer.alloc(4);length.writeUInt32LE(text.length);
++    const file=baseAnnotationFile(info),staged=file+'.tmp-'+process.pid;fs.mkdirSync(baseAnnotationDirectory,{recursive:true});
++    try{fs.writeFileSync(staged,Buffer.concat([length,text,product]),{flag:'wx'});fs.renameSync(staged,file);}finally{fs.rmSync(staged,{force:true});}
++    return true;
++  }catch(error){trace('optional Base annotation preparation unavailable: '+error.message);return false;}
++}
++
++export async function prepareBase(api,{backendProducts=true}={}) {
+   api??=await loadApi();
+   requireLoaderApi(api);
+   const info=baseCacheInfo(api),prior=readBaseCache(info);
+@@ -572,7 +646,7 @@
+   const wantFrontend=typeof api.f_ready_prefix_prepare==='function'&&typeof api.f_prefix_complete_ready_seed==='function';
+   // Inspection accepts older frames; explicit preparation writes the selected
+   // transport when only an older filename exists. Corrupt present files refuse.
+-  if(prior&&fs.existsSync(info.file)&&(!wantWorld||prior.preparedWorld)&&(!wantFrontend||prior.frontendReadyState))return prior;
++  if(prior&&fs.existsSync(info.file)&&(!wantWorld||prior.preparedWorld)&&(!wantFrontend||prior.frontendReadyState)){if(backendProducts)prepareBaseAnnotations(api,prior,info);return prior;}
+   const raw={$:'FSource',name:'Base',path:info.sourcePath,text:info.sourceText};
+   const range=info.version>=SPAN_CACHE?interval(1,info.sourceText):null;
+   const source=range?api.f_source_located(raw,range.begin,range.end):raw;
+@@ -611,6 +685,7 @@
+   fs.mkdirSync(directory,{recursive:true});
+   const staged=file+'.tmp-'+process.pid;
+   try {fs.writeFileSync(staged,range?(file.endsWith('-frame4.json')?encodeBaseCacheArenaFrame(cached):encodeBaseCacheFrame(cached,bookJson)):JSON.stringify(cached));fs.renameSync(staged,file);} finally {fs.rmSync(staged,{force:true});}
++  if(backendProducts&&baseAnnotationApis(api)){const admitted=readBaseCache(info);if(admitted)prepareBaseAnnotations(api,admitted,info);}
+   return {...cached,sourceText:info.sourceText};
+ }
+ 
+@@ -713,7 +788,7 @@
+     if(mode==='parse') return {status:'ok',phase,exitCode:0,checked:false,files:graph.files};
+     phase='check';
+     trace('check book');
+-    const cached=graph.hasBase&&api.check_from_exact_prefix?(seed||await prepareBase(api)):null;
++    const cached=graph.hasBase&&api.check_from_exact_prefix?(seed||await prepareBase(api,{backendProducts:false})):null;
+     const checkAbi=typeof api.compiler_check_result_abi==='function'?api.compiler_check_result_abi():0;
+     if(![0,1,2].includes(checkAbi))throw Error(`Unsupported compiler checker-result ABI: ${checkAbi}`);
+     if(checkAbi===2&&typeof api.check_program_diagnostic!=='function')throw Error('Compiler checker-result ABI 2 requires check_program_diagnostic');
+@@ -799,7 +874,10 @@
+       const selected=api.reach_book(contextBook,list(['main']),stops);
+       layoutDefs=api.annotate_selected(contextBook,selected,stops);layoutStops=stops;
+       book=api.nc_annotated_context(contextBook,layoutDefs);
+-    } else book=selectedEmission?api.annotate_selected(contextBook,book,stops):api.annotate_book(book);
++    } else if(selectedEmission){
++      const products=usedPreparedWorld&&backend==='direct'&&baseAnnotationApis(api)?readBaseAnnotations(api,info,cached,graph.prefixLoad,book,stops):null;
++      book=products?api.annotate_selected_base(contextBook,book,stops,products):api.annotate_selected(contextBook,book,stops);
++    } else book=api.annotate_book(book);
+     if(backend==='direct') {
+       trace('prune direct runtime dependencies');
+       const planned=mode==='library'&&['jd_plan_selected','jd_plan_defs','jd_plan_error','jd_plan_library'].every(name=>typeof api[name]==='function');

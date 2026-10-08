@@ -1,0 +1,109 @@
+{
+  "kind": "phase65-state04-shallow-substitution-semantic-summary",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetRunBy": "root",
+  "raw": {
+    "file": "selfhost/build/phase65/state04-shallow-controls01/report.json",
+    "sha256": "784996c13f32bf930dcdd6fcf372dcbd41b6bc3fb1f25fd6b69cab5d82376fc8",
+    "bytes": 55812
+  },
+  "checkedValidation": {
+    "file": "selfhost/build/phase65/checked-state04/validation-001/report.json",
+    "sha256": "de0abdd73b83796cbb8b74cbc2820c88273635deaee20545d2888a1851f6fe95",
+    "bytes": 8949
+  },
+  "strictSelected": {
+    "pass": true,
+    "count": 36,
+    "exactDifferences": 0
+  },
+  "baselineAttempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/attempt.json",
+    "sha256": "a2038c2223a20aa7b03130bc70727671dff5482f11f9fb0613069ccfa530868b",
+    "bytes": 301199
+  },
+  "candidateAttempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state04/attempt.json",
+    "sha256": "8f19107f1af92c99743a25df7346aecc987d4676610dd301fac7b0451a5b39fe",
+    "bytes": 300469
+  },
+  "derivations": [
+    {
+      "role": "baseline",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/equality/api.mjs",
+        "sha256": "a2f8b021c20becc730cf91e8e7fd6db98f2bba8b743adec89154ff9c6217bd6f",
+        "bytes": 1970019
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state04-shallow-controls01/baseline-queries.mjs",
+        "sha256": "2493c8e9b8f24abf7ef59594e2e57248db369558df1a489b826f429ea76518cd",
+        "bytes": 1970199
+      },
+      "appendOnly": true,
+      "suffixSha256": "fcce742cd21985bedaf2e9ced5fc9df08215d76c0634483a2088b7236dc270b7",
+      "parserSha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c",
+      "generatedConvention": "TypeScript-emitted"
+    },
+    {
+      "role": "candidate",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state04/equality/api.mjs",
+        "sha256": "53a80b9fb81143a5b4b606fb63f6e15143ec88129dafb1641b119d39121b8e2a",
+        "bytes": 1972223
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/state04-shallow-controls01/candidate-queries.mjs",
+        "sha256": "31b5db5abd68d8b5cb6e43ac366bde0674ca0287f5d2e696877c15dab550a05d",
+        "bytes": 1972471
+      },
+      "appendOnly": true,
+      "suffixSha256": "2eb71d27337a531ca71aeb5fc98d4d8e123427df7141d0853913b11c5387ab10",
+      "parserSha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c",
+      "generatedConvention": "TypeScript-emitted"
+    }
+  ],
+  "inheritedControlsPerImage": {
+    "baseline": 40,
+    "candidate": 40
+  },
+  "fullDifferentialRows": 225,
+  "perRowProbes": [
+    "subst exact complete result",
+    "input/replacement immutability",
+    "Bend guard equals shallow predicate",
+    "subst_node exact complete result",
+    "core_beta exact complete result"
+  ],
+  "actualOriginalReferenceWitnesses": 105,
+  "originalReferenceShapes": {
+    "ref": 9,
+    "literal": 9,
+    "var": 6,
+    "var-max": 6,
+    "var-payload": 9,
+    "typ": 6,
+    "all": 6,
+    "adt": 3,
+    "annotation": 6,
+    "lambda-empty": 9,
+    "lambda-one": 6,
+    "lambda-two": 9,
+    "lambda-present": 9,
+    "app": 6,
+    "introduced-app": 6
+  },
+  "orderedReplacementPass": true,
+  "generatedSubstFunction": {
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state04/equality/api.mjs",
+      "sha256": "53a80b9fb81143a5b4b606fb63f6e15143ec88129dafb1641b119d39121b8e2a",
+      "bytes": 1972223
+    },
+    "sha256": "7a6abb87f0c47fc4e35c53c643fb5846629ee59abbb4ebf7df3988f36645b17f",
+    "source": "function $subst$(_t_0, _id_0, _v_0) {\n  return run_tail((($String$eq$(($tg$(_t_0)), \"Var\"))) ? ((_x_0) => {\n  const _x_1 = ($ix$(_t_0));\n  if (((_x_1 === _id_0))) {\nconst _x_2 = {$: \"Unit\"};\nreturn _v_0;\n} else {\nconst _x_3 = {$: \"Unit\"};\nreturn _t_0;\n}\n}) : ((_x_4) => {\n  if ((run_loop($core_subst_shallow$(_t_0, _id_0)))) {\nconst _x_5 = {$: \"Unit\"};\nreturn _t_0;\n} else {\nconst _x_6 = {$: \"Unit\"};\nreturn {$: \"$JMP\", f: $subst_node$, x: [_t_0, _id_0, _v_0]};\n}\n}), {$: \"Unit\"});\n}\n"
+  },
+  "scope": "Checked-B1 correctness and actual generated object identity only. Not B2 identity, whole-language conformance or speed. The mixed B1 screen does not justify promotion."
+}

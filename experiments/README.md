@@ -12,7 +12,10 @@ and emitted user programs separately.
 [Typed facts](phase65/P65-001-typed-backend-products.md) ·
 [Base products](phase65/P65-002-base-backend-products.md) ·
 [Term reuse](phase65/P65-003-composite-term-reuse.md) ·
-[Output metadata](phase65/P65-004-output-metadata.md).
+[Output metadata](phase65/P65-004-output-metadata.md) ·
+[Constructor index](phase65/P65-005-base-constructor-membership.md) ·
+[Closure structure](phase65/P65-006-structured-closure-return.md) ·
+[Boolean lookup](phase65/P65-008-boolean-lookup.md).
 Refresh the selected B2 cost attribution, then test independent scoped products
 and remove whole repeated traversals. Phase64 remains installed; no new gain or
 promotion is claimed at registration. Historical raw trees remain closed.

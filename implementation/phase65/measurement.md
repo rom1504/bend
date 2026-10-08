@@ -119,3 +119,69 @@ recipes remain intact, but **no performance preparation or screen was run** and
 no H1 correctness or speed claim follows. A fresh State02 must hold the patch
 throughout actual snapshot/build execution. This is an invalid experiment,
 not a compiler regression or a measured rejection of H1.
+
+## State02 H1: valid experiment, negligible whole-request change
+
+State02 captures different assembled source and B1 API bytes, avoiding State01's
+snapshot error. Its [balanced screen](evidence/state02-b1-screen.json) passes all
+eight complete raw-module comparisons: Numeric and Map, two checked-B1 roles,
+two balanced rounds. Public annotation-contract compatibility remains unadmitted,
+so this experiment is explicitly diagnostic and not production-qualified.
+
+| Source | Phase64 checked B1 | State02 checked B1 | Compilation change |
+| --- | ---: | ---: | ---: |
+| Numeric recurrence | 299.85 ms | 300.55 ms | +0.23% |
+| Map/set operations | 1312.13 ms | 1303.01 ms | −0.70% |
+
+The equal-source ratio is **0.99767** for compilation (−0.23%) and **0.99810**
+for imports plus compilation (−0.19%). Numeric sample ranges overlap. Map's two
+candidate samples are below its two baseline samples, but the small difference
+is below the previously observed 3.82% same-image A/A discrepancy. The screen
+took 9.80 seconds, with maximum worker process-tree RSS 134.78 MiB.
+
+Root declined to advance this H1 variant to genuine-B2
+construction: it shows no substantial whole-request benefit to justify that
+cost or a redesign preserving the public annotation contract. This does not
+prove that all retained-type-fact approaches fail; it rejects advancing this
+particular diagnostic on the evidence available. No B2 speed result is inferred
+from these B1 observations.
+
+## State03 H5: small Map direction, no broad screen benefit
+
+The [State03 screen](evidence/state03-b1-screen.json) passes all eight raw-module
+comparisons using the same balanced Numeric/Map B1 setup. Actual candidate
+source and API hashes both differ from the frozen baseline. Numeric changes
+298.52 → 300.73 ms (+0.74%); Map changes 1310.69 → 1295.93 ms (−1.13%). The
+geometric-mean ratios are **0.99803** for compilation (−0.20%) and **0.99792**
+for imports plus compilation (−0.21%). Numeric ranges overlap; Map's two samples
+separate, but its point estimate remains below the observed A/A discrepancy.
+
+This is below the planned 2% screen signal for advancement and does not justify
+a standalone B2 speed claim or confirmation campaign on present evidence. The
+screen took 9.74 seconds. Root rejected advancement of H5. Its separate 15
+focused semantic controls passed; the actual staged-driver/frame4 host92 recipe
+was prepared but explicitly left unrun after the performance rejection. No
+host92 or B2 qualification is claimed. Original recipes and receipts remain
+intact, including the unrun disposition; no B2 result is inferred.
+
+## State04 H3: Map regression after a valid shallow-substitution change
+
+State04's frozen `src/core/term.bend` matches the reviewed patch exactly
+(`2726a94c265792203431610006281b97369ecb7f2371b6eefbefb4594db0aed5`).
+Its assembled source and actual B1 API differ from baseline. All 265 focused
+controls pass, as do all eight [balanced screen](evidence/state04-b1-screen.json)
+raw-module comparisons.
+
+Numeric changes 298.59 → 287.60 ms (−3.68%), but the candidate's two samples are
+300.31 and 274.88 ms, so its apparent gain depends on one sample. Map changes
+1281.21 → 1335.51 ms (**+4.24%**); both candidate samples are slower than both
+baseline samples. The geometric mean is **1.00200** for compilation (+0.20%)
+and **1.00369** for combined imports plus compilation (+0.37%). The campaign
+took 10.14 seconds.
+
+The measurement recommendation is to stop this variant before heldout or B2
+work: it regresses the workload with the largest measured substitution cost,
+without an overall screen improvement. Correctness controls establish the
+implemented behavior, not that fewer allocations or shallow cases necessarily
+improve execution. No genuine-B2 effect has been measured, so this is a scoped
+B1 performance rejection rather than a universal claim about structural sharing.

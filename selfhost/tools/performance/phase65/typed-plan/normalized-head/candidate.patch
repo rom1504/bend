@@ -1,0 +1,16 @@
+--- a/selfhost/src/check/annotate.bend
++++ b/selfhost/src/check/annotate.bend
+@@ -166,7 +166,12 @@
+ 
+ @unsafe
+ def annotate(e, ctx, t, ty):
+-  ka_wrap(ka_node(e, ctx, core_beta(t), wnf(cb(e), ty)), ty)
++  ka_store_head(e, ctx, core_beta(t), wnf(cb(e), ty))
++
++# Phase65 diagnostic producer: retain the already demanded type head.
++@unsafe
++def ka_store_head(+e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +head: KTerm) -> KTerm:
++  ka_wrap(ka_node(e, ctx, t, head), head)
+ 
+ @unsafe
+ def ka_node(e, ctx, t, ty):

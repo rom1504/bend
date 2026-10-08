@@ -35,3 +35,19 @@ baseline source. Source/API identity comparison caught this before timing;
 State02 builds the actual diagnostic producer and passes strict36/export95 and
 16 same-image old/new-producer controls. It remains diagnostic-only: public
 annotation representation compatibility has not been established.
+
+## Prototype decisions
+
+Short exact-output screens reject normalized-head storage (State02), the extra
+prepared constructor index (State03), and the broad shallow-substitution guard
+(State04): their aggregate changes are within noise, and State04 regresses Map.
+The ordered-body metadata candidate has zero admissions on the selected four
+sources and was not built. These decisions do not reject the broader concepts.
+The first decoder field-load patch improves some repeated calls but regresses
+first decode, so it is not selected for the fresh compilation objective.
+
+Active successors test a three-line leaf-return change, Boolean membership
+without missing-definition allocation, retaining nested closure output structure,
+and a separate optional cache of expensive checked Base annotations. Each keeps
+its own source identities, controls and measurements. Phase64 remains installed;
+no Phase65 production speedup has been established yet.

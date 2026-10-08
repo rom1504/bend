@@ -1,0 +1,47 @@
+{
+  "kind": "phase65-focused-control-derivation",
+  "dataOnly": true,
+  "targetExecuted": false,
+  "rows": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/backend-context-v1.mjs",
+        "sha256": "1d9631f2aa5b7574c0f15af84c39858d66605cb75809d720d819070a5f862cd4"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/backend-context-v1.mjs",
+        "sha256": "b0a2142358ad4a6db4e8d5dcff23e8bc8c6fcbce382e0a5a9870a503f3197654"
+      },
+      "edits": [
+        {
+          "old": "selfhost/build/phase64",
+          "new": "selfhost/build/phase65",
+          "count": 1
+        },
+        {
+          "old": "kind:'phase64-real-source-backend-context-controls'",
+          "new": "kind:'phase65-real-source-backend-context-controls'",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "baselineDeclarationPreflight": {
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/equality/api.mjs",
+      "sha256": "a2f8b021c20becc730cf91e8e7fd6db98f2bba8b743adec89154ff9c6217bd6f"
+    },
+    "names": [
+      "run_loop",
+      "$jd_library_context$",
+      "$jd_calls_context$",
+      "$jd_selected_context$",
+      "$lookup$",
+      "$jd_calls_fact$",
+      "$jd_component$",
+      "$jd_may_bounce$"
+    ],
+    "pass_": true,
+    "scope": "Source regex presence only; target controller performs AST declaration validation on its actual API."
+  }
+}

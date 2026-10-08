@@ -1,0 +1,1268 @@
+{
+  "kind": "phase65-normalized-head-control-summary",
+  "raw": {
+    "file": "selfhost/build/phase65/state02-head-controls01/report.json",
+    "sha256": "552c48e9ef73d983554ba01ada5b745dc42842dbbb59c3c70058ed4b2e8aa6fd",
+    "bytes": 67556
+  },
+  "controller": {
+    "file": "selfhost/tools/performance/phase65/typed-plan/normalized-head/compare.mjs",
+    "sha256": "143e8d090610facfc62df5d58255c4af86e0847436af821cbc2c44e7673d7bbb",
+    "bytes": 10641
+  },
+  "candidate": {
+    "file": "selfhost/tools/performance/phase65/typed-plan/normalized-head/candidate.json",
+    "sha256": "1a35479bd1ce36c62df535e7855a6b1fda8deb55fa2d6ea0c0ae7dfabb198599",
+    "bytes": 1329
+  },
+  "complete": true,
+  "pass": true,
+  "counts": {
+    "cases": 16,
+    "modules": 13,
+    "runtimeObservations": 38,
+    "expectedRefusals": 3
+  },
+  "cases": [
+    {
+      "id": "alias-specialization",
+      "pass": true,
+      "observation": {
+        "status": "ok",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": null,
+        "exitCode": 0
+      },
+      "moduleEqual": true,
+      "planFactsEqual": true,
+      "runtimeObservations": 4,
+      "counts": {
+        "actual": {
+          "annotation": 22,
+          "storedHeads": 22,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 24,
+              "subst": 32
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 33,
+              "subst": 23
+            },
+            "jd_plan_selected": {
+              "wnf": 74,
+              "subst": 22
+            },
+            "j_layout_error": {
+              "wnf": 14,
+              "subst": 3,
+              "j_type": 3
+            },
+            "jd_plan_library": {
+              "wnf": 483,
+              "subst": 1385
+            }
+          }
+        },
+        "old": {
+          "annotation": 22,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 24,
+              "subst": 32
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 33,
+              "subst": 23
+            },
+            "jd_plan_selected": {
+              "wnf": 74,
+              "subst": 22
+            },
+            "j_layout_error": {
+              "wnf": 14,
+              "subst": 3,
+              "j_type": 3
+            },
+            "jd_plan_library": {
+              "wnf": 483,
+              "subst": 1385
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "dependent-family",
+      "pass": true,
+      "observation": {
+        "status": "ok",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": null,
+        "exitCode": 0
+      },
+      "moduleEqual": true,
+      "planFactsEqual": true,
+      "runtimeObservations": 2,
+      "counts": {
+        "actual": {
+          "annotation": 34,
+          "storedHeads": 34,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 70,
+              "subst": 402
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 65,
+              "subst": 289
+            },
+            "jd_plan_selected": {
+              "wnf": 140,
+              "subst": 448
+            },
+            "j_layout_error": {
+              "j_type": 7,
+              "wnf": 38,
+              "subst": 259
+            },
+            "jd_plan_library": {
+              "wnf": 518,
+              "subst": 1754
+            }
+          }
+        },
+        "old": {
+          "annotation": 34,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 70,
+              "subst": 402
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 65,
+              "subst": 289
+            },
+            "jd_plan_selected": {
+              "wnf": 140,
+              "subst": 448
+            },
+            "j_layout_error": {
+              "j_type": 7,
+              "wnf": 38,
+              "subst": 259
+            },
+            "jd_plan_library": {
+              "wnf": 518,
+              "subst": 1754
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "native-alias",
+      "pass": true,
+      "observation": {
+        "status": "ok",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": null,
+        "exitCode": 0
+      },
+      "moduleEqual": true,
+      "planFactsEqual": true,
+      "runtimeObservations": 6,
+      "counts": {
+        "actual": {
+          "annotation": 18,
+          "storedHeads": 18,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 12,
+              "subst": 11
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 26,
+              "subst": 14
+            },
+            "jd_plan_selected": {
+              "wnf": 89,
+              "subst": 24
+            },
+            "j_layout_error": {
+              "j_type": 5,
+              "wnf": 7,
+              "subst": 2
+            },
+            "jd_plan_library": {
+              "wnf": 483,
+              "subst": 1350
+            }
+          }
+        },
+        "old": {
+          "annotation": 18,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 12,
+              "subst": 11
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 26,
+              "subst": 14
+            },
+            "jd_plan_selected": {
+              "wnf": 89,
+              "subst": 24
+            },
+            "j_layout_error": {
+              "j_type": 5,
+              "wnf": 7,
+              "subst": 2
+            },
+            "jd_plan_library": {
+              "wnf": 483,
+              "subst": 1350
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "recursive-host-alias",
+      "pass": true,
+      "observation": {
+        "status": "ok",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": null,
+        "exitCode": 0
+      },
+      "moduleEqual": true,
+      "planFactsEqual": true,
+      "runtimeObservations": 6,
+      "counts": {
+        "actual": {
+          "annotation": 30,
+          "storedHeads": 30,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 47,
+              "subst": 52
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 46,
+              "subst": 28
+            },
+            "jd_plan_selected": {
+              "wnf": 112,
+              "subst": 219
+            },
+            "j_layout_error": {
+              "j_type": 6,
+              "wnf": 57,
+              "subst": 153
+            },
+            "jd_plan_library": {
+              "wnf": 839,
+              "subst": 2662
+            }
+          }
+        },
+        "old": {
+          "annotation": 30,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 47,
+              "subst": 52
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 46,
+              "subst": 28
+            },
+            "jd_plan_selected": {
+              "wnf": 112,
+              "subst": 225
+            },
+            "j_layout_error": {
+              "j_type": 6,
+              "wnf": 57,
+              "subst": 165
+            },
+            "jd_plan_library": {
+              "wnf": 839,
+              "subst": 2662
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "erased-demand",
+      "pass": true,
+      "observation": {
+        "status": "ok",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": null,
+        "exitCode": 0
+      },
+      "moduleEqual": true,
+      "planFactsEqual": true,
+      "runtimeObservations": 4,
+      "counts": {
+        "actual": {
+          "annotation": 26,
+          "storedHeads": 26,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 22,
+              "subst": 63
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 38,
+              "subst": 61
+            },
+            "jd_plan_selected": {
+              "wnf": 78,
+              "subst": 103,
+              "j_type": 2
+            },
+            "j_layout_error": {
+              "wnf": 10,
+              "subst": 16,
+              "j_type": 8
+            },
+            "jd_plan_library": {
+              "wnf": 488,
+              "subst": 1378
+            }
+          }
+        },
+        "old": {
+          "annotation": 26,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 22,
+              "subst": 63
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 38,
+              "subst": 61
+            },
+            "jd_plan_selected": {
+              "wnf": 78,
+              "subst": 103,
+              "j_type": 2
+            },
+            "j_layout_error": {
+              "wnf": 10,
+              "subst": 16,
+              "j_type": 8
+            },
+            "jd_plan_library": {
+              "wnf": 488,
+              "subst": 1378
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "scc-alias-v2",
+      "pass": true,
+      "observation": {
+        "status": "ok",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": null,
+        "exitCode": 0
+      },
+      "moduleEqual": true,
+      "planFactsEqual": true,
+      "runtimeObservations": 8,
+      "counts": {
+        "actual": {
+          "annotation": 38,
+          "storedHeads": 38,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 43,
+              "subst": 60
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 58,
+              "subst": 61
+            },
+            "jd_plan_selected": {
+              "wnf": 178,
+              "subst": 95
+            },
+            "j_layout_error": {
+              "wnf": 40,
+              "subst": 19,
+              "j_type": 11
+            },
+            "jd_plan_library": {
+              "wnf": 515,
+              "subst": 1369
+            }
+          }
+        },
+        "old": {
+          "annotation": 38,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 43,
+              "subst": 60
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 58,
+              "subst": 61
+            },
+            "jd_plan_selected": {
+              "wnf": 178,
+              "subst": 95
+            },
+            "j_layout_error": {
+              "wnf": 40,
+              "subst": 19,
+              "j_type": 11
+            },
+            "jd_plan_library": {
+              "wnf": 515,
+              "subst": 1369
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "numeric-recurrence",
+      "pass": true,
+      "observation": {
+        "status": "ok",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": null,
+        "exitCode": 0
+      },
+      "moduleEqual": true,
+      "planFactsEqual": true,
+      "runtimeObservations": 0,
+      "counts": {
+        "actual": {
+          "annotation": 48,
+          "storedHeads": 48,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 53,
+              "subst": 109
+            },
+            "jd_roots": {
+              "wnf": 2
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 83,
+              "subst": 101
+            },
+            "jd_plan_selected": {
+              "wnf": 300,
+              "subst": 120,
+              "j_type": 3
+            },
+            "j_layout_error": {
+              "wnf": 44,
+              "subst": 17,
+              "j_type": 29
+            },
+            "jd_plan_library": {
+              "wnf": 499,
+              "subst": 1368
+            }
+          }
+        },
+        "old": {
+          "annotation": 48,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 53,
+              "subst": 109
+            },
+            "jd_roots": {
+              "wnf": 2
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 83,
+              "subst": 101
+            },
+            "jd_plan_selected": {
+              "wnf": 300,
+              "subst": 120,
+              "j_type": 3
+            },
+            "j_layout_error": {
+              "wnf": 44,
+              "subst": 17,
+              "j_type": 29
+            },
+            "jd_plan_library": {
+              "wnf": 499,
+              "subst": 1368
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "test-map-set-ops",
+      "pass": true,
+      "observation": {
+        "status": "ok",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": null,
+        "exitCode": 0
+      },
+      "moduleEqual": true,
+      "planFactsEqual": true,
+      "runtimeObservations": 0,
+      "counts": {
+        "actual": {
+          "annotation": 3686,
+          "storedHeads": 3686,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 847,
+              "subst": 4724
+            },
+            "jd_roots": {
+              "wnf": 29
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 7373,
+              "subst": 47393
+            },
+            "jd_plan_selected": {
+              "wnf": 11938,
+              "subst": 100208,
+              "j_type": 9
+            },
+            "j_layout_error": {
+              "wnf": 7620,
+              "subst": 42164,
+              "j_type": 1237
+            },
+            "jd_plan_library": {
+              "wnf": 6886,
+              "subst": 29451
+            }
+          }
+        },
+        "old": {
+          "annotation": 3686,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 847,
+              "subst": 4724
+            },
+            "jd_roots": {
+              "wnf": 29
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 7373,
+              "subst": 47393
+            },
+            "jd_plan_selected": {
+              "wnf": 11938,
+              "subst": 102461,
+              "j_type": 9
+            },
+            "j_layout_error": {
+              "wnf": 7620,
+              "subst": 47096,
+              "j_type": 1237
+            },
+            "jd_plan_library": {
+              "wnf": 6886,
+              "subst": 29451
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "data-family-alias",
+      "pass": true,
+      "observation": {
+        "status": "ok",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": null,
+        "exitCode": 0
+      },
+      "moduleEqual": true,
+      "planFactsEqual": true,
+      "runtimeObservations": 2,
+      "counts": {
+        "actual": {
+          "annotation": 54,
+          "storedHeads": 54,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "subst": 972,
+              "wnf": 159
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 111,
+              "subst": 536
+            },
+            "jd_plan_selected": {
+              "wnf": 238,
+              "subst": 860
+            },
+            "j_layout_error": {
+              "j_type": 14,
+              "wnf": 76,
+              "subst": 502
+            },
+            "jd_plan_library": {
+              "wnf": 569,
+              "subst": 1976
+            }
+          }
+        },
+        "old": {
+          "annotation": 54,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "subst": 972,
+              "wnf": 159
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 111,
+              "subst": 536
+            },
+            "jd_plan_selected": {
+              "wnf": 238,
+              "subst": 860
+            },
+            "j_layout_error": {
+              "j_type": 14,
+              "wnf": 76,
+              "subst": 502
+            },
+            "jd_plan_library": {
+              "wnf": 569,
+              "subst": 1976
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "data-alias-whnf",
+      "pass": true,
+      "observation": {
+        "status": "ok",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": null,
+        "exitCode": 0
+      },
+      "moduleEqual": true,
+      "planFactsEqual": true,
+      "runtimeObservations": 2,
+      "counts": {
+        "actual": {
+          "annotation": 15,
+          "storedHeads": 15,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "subst": 23,
+              "wnf": 20
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 23,
+              "subst": 11
+            },
+            "jd_plan_selected": {
+              "wnf": 39,
+              "subst": 9
+            },
+            "j_layout_error": {
+              "j_type": 1,
+              "wnf": 11,
+              "subst": 2
+            },
+            "jd_plan_library": {
+              "wnf": 478,
+              "subst": 1353
+            }
+          }
+        },
+        "old": {
+          "annotation": 15,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "subst": 23,
+              "wnf": 20
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 23,
+              "subst": 11
+            },
+            "jd_plan_selected": {
+              "wnf": 39,
+              "subst": 9
+            },
+            "j_layout_error": {
+              "j_type": 1,
+              "wnf": 11,
+              "subst": 2
+            },
+            "jd_plan_library": {
+              "wnf": 478,
+              "subst": 1353
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "over-application",
+      "pass": true,
+      "observation": {
+        "status": "ok",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": null,
+        "exitCode": 0
+      },
+      "moduleEqual": true,
+      "planFactsEqual": true,
+      "runtimeObservations": 2,
+      "counts": {
+        "actual": {
+          "annotation": 17,
+          "storedHeads": 17,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "subst": 36,
+              "wnf": 15
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 25,
+              "subst": 20
+            },
+            "jd_plan_selected": {
+              "wnf": 70,
+              "subst": 38,
+              "j_type": 1
+            },
+            "j_layout_error": {
+              "j_type": 5,
+              "wnf": 8,
+              "subst": 5
+            },
+            "jd_plan_library": {
+              "wnf": 487,
+              "subst": 1356
+            }
+          }
+        },
+        "old": {
+          "annotation": 17,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "subst": 36,
+              "wnf": 15
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 25,
+              "subst": 20
+            },
+            "jd_plan_selected": {
+              "wnf": 70,
+              "subst": 38,
+              "j_type": 1
+            },
+            "j_layout_error": {
+              "j_type": 5,
+              "wnf": 8,
+              "subst": 5
+            },
+            "jd_plan_library": {
+              "wnf": 487,
+              "subst": 1356
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "erased-partial-closure",
+      "pass": true,
+      "observation": {
+        "status": "ok",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": null,
+        "exitCode": 0
+      },
+      "moduleEqual": true,
+      "planFactsEqual": true,
+      "runtimeObservations": 0,
+      "counts": {
+        "actual": {
+          "annotation": 19,
+          "storedHeads": 19,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "subst": 53,
+              "wnf": 24
+            },
+            "jd_roots": {
+              "wnf": 5
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 28,
+              "subst": 15
+            },
+            "jd_plan_selected": {
+              "wnf": 60,
+              "subst": 18,
+              "j_type": 3
+            },
+            "j_layout_error": {
+              "wnf": 15,
+              "subst": 6,
+              "j_type": 3
+            },
+            "jd_plan_library": {
+              "wnf": 499,
+              "subst": 1365
+            }
+          }
+        },
+        "old": {
+          "annotation": 19,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "subst": 53,
+              "wnf": 24
+            },
+            "jd_roots": {
+              "wnf": 5
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 28,
+              "subst": 15
+            },
+            "jd_plan_selected": {
+              "wnf": 60,
+              "subst": 18,
+              "j_type": 3
+            },
+            "j_layout_error": {
+              "wnf": 15,
+              "subst": 6,
+              "j_type": 3
+            },
+            "jd_plan_library": {
+              "wnf": 499,
+              "subst": 1365
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "rwt-binders",
+      "pass": true,
+      "observation": {
+        "status": "ok",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": null,
+        "exitCode": 0
+      },
+      "moduleEqual": true,
+      "planFactsEqual": true,
+      "runtimeObservations": 2,
+      "counts": {
+        "actual": {
+          "annotation": 353,
+          "storedHeads": 353,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 131,
+              "subst": 660
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 669,
+              "subst": 4754
+            },
+            "jd_plan_selected": {
+              "wnf": 777,
+              "subst": 4891,
+              "j_type": 12
+            },
+            "j_layout_error": {
+              "j_type": 33,
+              "wnf": 55,
+              "subst": 12
+            },
+            "jd_plan_library": {
+              "wnf": 505,
+              "subst": 1363
+            }
+          }
+        },
+        "old": {
+          "annotation": 353,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 131,
+              "subst": 660
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 669,
+              "subst": 4754
+            },
+            "jd_plan_selected": {
+              "wnf": 777,
+              "subst": 4921,
+              "j_type": 12
+            },
+            "j_layout_error": {
+              "j_type": 33,
+              "wnf": 55,
+              "subst": 12
+            },
+            "jd_plan_library": {
+              "wnf": 505,
+              "subst": 1363
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "open-array-refusal",
+      "pass": true,
+      "observation": {
+        "status": "error",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "Error: an open Array element type",
+        "exitCode": 1
+      },
+      "moduleEqual": false,
+      "planFactsEqual": true,
+      "runtimeObservations": 0,
+      "counts": {
+        "actual": {
+          "annotation": 30,
+          "storedHeads": 30,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 43,
+              "subst": 99
+            },
+            "jd_roots": {
+              "wnf": 3
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 54,
+              "subst": 62
+            },
+            "jd_plan_selected": {
+              "wnf": 97,
+              "subst": 101,
+              "j_type": 2
+            },
+            "j_layout_error": {
+              "wnf": 24,
+              "subst": 22,
+              "j_type": 8
+            }
+          }
+        },
+        "old": {
+          "annotation": 30,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 43,
+              "subst": 99
+            },
+            "jd_roots": {
+              "wnf": 3
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 54,
+              "subst": 62
+            },
+            "jd_plan_selected": {
+              "wnf": 97,
+              "subst": 101,
+              "j_type": 2
+            },
+            "j_layout_error": {
+              "wnf": 24,
+              "subst": 22,
+              "j_type": 8
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "definition-budget-0",
+      "pass": true,
+      "observation": {
+        "status": "error",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "Error: direct reachability tail-call analysis refused",
+        "exitCode": 1
+      },
+      "moduleEqual": false,
+      "planFactsEqual": true,
+      "runtimeObservations": 0,
+      "counts": {
+        "actual": {
+          "annotation": 30,
+          "storedHeads": 30,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 47,
+              "subst": 52
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 46,
+              "subst": 28
+            },
+            "jd_plan_selected": {
+              "wnf": 3
+            }
+          }
+        },
+        "old": {
+          "annotation": 30,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 47,
+              "subst": 52
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 46,
+              "subst": 28
+            },
+            "jd_plan_selected": {
+              "wnf": 3
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "definition-budget-1",
+      "pass": true,
+      "observation": {
+        "status": "error",
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "Error: direct reachability tail-call analysis refused",
+        "exitCode": 1
+      },
+      "moduleEqual": false,
+      "planFactsEqual": true,
+      "runtimeObservations": 0,
+      "counts": {
+        "actual": {
+          "annotation": 30,
+          "storedHeads": 30,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 47,
+              "subst": 52
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 46,
+              "subst": 28
+            },
+            "jd_plan_selected": {
+              "wnf": 6
+            }
+          }
+        },
+        "old": {
+          "annotation": 30,
+          "storedHeads": 0,
+          "queries": {
+            "check_program_diagnostic_seed": {
+              "wnf": 47,
+              "subst": 52
+            },
+            "jd_stops": {
+              "wnf": 253,
+              "subst": 195
+            },
+            "annotate_selected": {
+              "wnf": 46,
+              "subst": 28
+            },
+            "jd_plan_selected": {
+              "wnf": 6
+            }
+          }
+        }
+      }
+    }
+  ],
+  "timingClaim": false,
+  "limits": "Diagnostic named checked B1; exact enclosing outputs/refusals, not public annotation representation compatibility or whole-language proof."
+}

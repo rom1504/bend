@@ -1,0 +1,37 @@
+{
+  "kind": "phase65-base-annotation-source-candidate",
+  "version": 1,
+  "status": "isolated-unapplied-source-reviewed",
+  "source": {
+    "file": "selfhost/tools/performance/phase65/base-products/annotation-candidate.bend",
+    "sha256": "d27c23edc0b62a9c80391e533bc56045b481439f520f8412cafc1fddca5f1225",
+    "destination": "selfhost/src/check/base-products.bend"
+  },
+  "manifest": {
+    "file": "selfhost/src/compiler.json",
+    "beforeSha256": "f93bc23c8877c21e114a9cd2c1647e712ea8b0aa9a8b5e97b0677612d159b06b",
+    "afterSha256": "f96e6ad3112cb8180432b94b4c73fd512dc40eec912b35a7f3d6fa488b1f1c70"
+  },
+  "patch": {
+    "file": "selfhost/tools/performance/phase65/base-products/annotation-source-v1.patch",
+    "sha256": "5e7a3a90f67562f7884fc7fdf34bdbb4c7f3fa1f357ff654414cac2819e77479"
+  },
+  "worldVersion": 3,
+  "minimumWork": 64,
+  "exports": [
+    "base_annotation_prepare",
+    "base_annotation_wanted",
+    "base_annotation_allowed",
+    "annotate_selected_base"
+  ],
+  "transportFields": {
+    "KBaseAnnotationState": [
+      "keys",
+      "book"
+    ]
+  },
+  "privateProducer": "actual prepared world, exact checked list reversed inside Bend, ready+checked closure+implicit literal names",
+  "privateConsumer": "same successful owned world request, same admitted carrier/context, wanted before read, allowed and exact artifact/API/source identities, stops before lookup",
+  "validation": "source review PASS; compiler and runtime checks pending root execution",
+  "liveSourceChanged": false
+}

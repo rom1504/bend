@@ -1,0 +1,42 @@
+--- a/selfhost/src/back/js/direct/ordered-values.bend
++++ b/selfhost/src/back/js/direct/ordered-values.bend
+@@ -112,7 +112,7 @@
+   match body:
+     case JDOrdered{prefix, value, next}:
+       jd_ordered_let_render(prefix, value,
+-        jd_ordered_bindings(book, env, xs, prefix ++ value, slot, next))
++        jd_ordered_bindings_shared(book, env, xs, prefix ++ value, slot, next))
+ 
+ @unsafe
+ def jd_ordered_bindings(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +body: String, +slot: U32, +next: U32) -> JDOrderedBindings:
+@@ -143,3 +143,30 @@
+ def jd_ordered_let_render(+prefix: String, +value: String, +rhs: JDOrderedBindings) -> JDOrdered:
+   match rhs:
+     case JDOrderedBindings{more, bindings, next}: JDOrdered{more ++ prefix, value, next}
++
++# One complete body already owns all emitted demand markers. Two or more binders
++# share its existing JDText notes; one binder keeps the old early-exit scan.
++@unsafe
++def jd_ordered_bindings_shared(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +body: String, +slot: U32, +next: U32) -> JDOrderedBindings:
++  match xs:
++    case Con{x, Con{y, Con{z, rest}}}: jd_ordered_bindings_doc(book, env, xs, jd_text_raw(body), slot, next)
++    case _: jd_ordered_bindings(book, env, xs, body, slot, next)
++
++@unsafe
++def jd_ordered_bindings_doc(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +body: JDText, +slot: U32, +next: U32) -> JDOrderedBindings:
++  match xs:
++    case Nil{}: JDOrderedBindings{"", "", next}
++    case Con{x, Nil{}}: JDOrderedBindings{"", "", next}
++    case Con{x, rest}: kc(JDOrderedBindings, jd_text_used(body, ix(x)),
++      u => jd_ordered_binding_doc_head(book, env, rest, body, ix(x), slot,
++        kc(JDOrdered, U32.is_eq(qt(x), 0),
++          v => JDOrdered{"", "null", next},
++          v => jd_ordered_expr(book, env, kid(x, 0), j_type(book, env, kid(x, 0)), False{}, next))),
++      u => jd_ordered_bindings_doc(book, env, rest, body, U32.inc(slot), next))
++
++@unsafe
++def jd_ordered_binding_doc_head(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,KTerm>, +body: JDText, +id: U32, +slot: U32, +head: JDOrdered) -> JDOrderedBindings:
++  match head:
++    case JDOrdered{prefix, value, next}:
++      jd_ordered_binding_join(prefix, value, id, slot,
++        jd_ordered_bindings_doc(book, env, rest, body, U32.inc(slot), next))

@@ -1,0 +1,192 @@
+{
+  "kind": "phase65-h6-frame4-source-review",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/frame4-case-local01/manifest.json",
+    "sha256": "70070ddb3b6ed185003f8bc23a12298cb59f108e09b7acc12866e3c10b586f94"
+  },
+  "helper": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/tools/base-cache-graph.mjs",
+    "sha256": "b58b927ac611f4ead292d4f736cfd427e955b81c1f0efa2f55d1e784755a0119"
+  },
+  "frame": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/build/typed/cache/base-b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e-c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661-c04628cbf4595eb7fcc0fafe90e6e555f95b4b4691a19005149f3206f3d3f7db-frame4.json",
+    "sha256": "22d8b8b1647ed8326832d08ec00f254393a19dd7ffd7d0e3fa573d707656c8df"
+  },
+  "cpuEvidence": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase65/evidence/baseline-state09-cpu.json",
+    "sha256": "dd919e86cbc05a8ccad116de0a4812f123a73466bcec703e42c22b8836a34cc6"
+  },
+  "segments": [
+    {
+      "name": "book",
+      "bytes": 905484,
+      "baseNodes": 0,
+      "records": 35378,
+      "fields": 175165,
+      "unconditionalFieldLoads": 318402,
+      "unusedFieldLoads": 143237,
+      "outOfBoundsLoads": 16,
+      "crossRecordLoads": 143221,
+      "payloadOffsetMod4": 0,
+      "tagHistogram": {
+        "0": 1,
+        "2": 14691,
+        "1": 18003,
+        "5": 524,
+        "3": 2040,
+        "4": 119
+      }
+    },
+    {
+      "name": "prepared",
+      "bytes": 253672,
+      "baseNodes": 35378,
+      "records": 11379,
+      "fields": 49167,
+      "unconditionalFieldLoads": 102411,
+      "unusedFieldLoads": 53244,
+      "outOfBoundsLoads": 6,
+      "crossRecordLoads": 53238,
+      "payloadOffsetMod4": 0,
+      "tagHistogram": {
+        "2": 2798,
+        "1": 6188,
+        "5": 298,
+        "3": 1087,
+        "8": 1,
+        "9": 1,
+        "6": 503,
+        "7": 501,
+        "10": 1,
+        "11": 1
+      }
+    }
+  ],
+  "totalRecords": 46757,
+  "totalFields": 224332,
+  "totalUnconditionalLoads": 420813,
+  "unusedFieldLoads": 196481,
+  "outOfBoundsLoads": 22,
+  "cpu": [
+    {
+      "case": "numeric-recurrence",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/numeric-recurrence-0-baseline-profile/profile.cpuprofile",
+        "sha256": "0e787e4e0a61a13db587b2f0e75f41dadd0fc9d11bca1c1ad8a106c1b0c4e109",
+        "bytes": 859523
+      },
+      "totalSamples": 259,
+      "helperSelfSamples": 18,
+      "weightedStatus": "admitted",
+      "helperSelfMicroseconds": 47961,
+      "positionTicks": {
+        "242": 1,
+        "243": 1,
+        "276": 1,
+        "219": 4,
+        "240": 3,
+        "252": 2,
+        "235": 1,
+        "237": 1
+      }
+    },
+    {
+      "case": "lexer",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/lexer-0-baseline-profile/profile.cpuprofile",
+        "sha256": "7bccb8281041a530c81ac85f293013c1d1f3c7cb5e98362a9897bcb5ac2ee507",
+        "bytes": 1800415
+      },
+      "totalSamples": 493,
+      "helperSelfSamples": 20,
+      "weightedStatus": "admitted",
+      "helperSelfMicroseconds": 46930,
+      "positionTicks": {
+        "264": 1,
+        "241": 1,
+        "240": 3,
+        "252": 2,
+        "223": 1,
+        "249": 1,
+        "219": 5,
+        "232": 1,
+        "239": 1
+      }
+    },
+    {
+      "case": "test-map-set-ops",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/test-map-set-ops-0-baseline-profile/profile.cpuprofile",
+        "sha256": "38f9af23131a7ed1ce46d08b7afe99899700383c4c662627838a01e764ac286a",
+        "bytes": 3437677
+      },
+      "totalSamples": 800,
+      "helperSelfSamples": 19,
+      "weightedStatus": "admitted",
+      "helperSelfMicroseconds": 45757,
+      "positionTicks": {
+        "276": 2,
+        "242": 1,
+        "219": 6,
+        "240": 3,
+        "252": 1,
+        "248": 1,
+        "237": 1
+      }
+    },
+    {
+      "case": "raytrace-active",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/cpu/raytrace-active-0-baseline-profile/profile.cpuprofile",
+        "sha256": "831c8dd7bebee4071a7dfdbcd2d7637c5e0ceaf00ddcbed3a68b501f0899926a",
+        "bytes": 3261477
+      },
+      "totalSamples": 673,
+      "helperSelfSamples": 16,
+      "weightedStatus": "admitted",
+      "helperSelfMicroseconds": 43544,
+      "positionTicks": {
+        "264": 1,
+        "276": 1,
+        "237": 1,
+        "219": 5,
+        "240": 3,
+        "235": 1
+      }
+    }
+  ],
+  "aggregatePositionTicks": {
+    "242": 2,
+    "243": 1,
+    "276": 4,
+    "219": 20,
+    "240": 12,
+    "252": 5,
+    "235": 2,
+    "237": 3,
+    "264": 2,
+    "241": 1,
+    "223": 1,
+    "249": 1,
+    "232": 1,
+    "239": 1,
+    "248": 1
+  },
+  "findings": [
+    "46,757 records, not 47,757. 196,481 of420,813 source-level field loads are unused; only22 go beyond the typed-array extent. Most unused loads cross into later records.",
+    "Both actual payload offsets are4-byte aligned, so alignment Buffer.from copying is inactive for this frame.",
+    "ref/str/span closures are allocated once per decoder invocation (six across two segments), not per record.",
+    "Source-level load elimination is only a hypothesis: V8 may already eliminate some unused loads; CPU line ticks do not establish causation.",
+    "Case-local load candidate retains every validation and fixed literal object body; no semantic algorithm is implemented in JavaScript.",
+    "Do not replace fixed literal shapes with generic dynamic-property construction: cache owner reports an earlier cold/downstream regression.",
+    "Probe compares first3 and later decodes per fresh process to distinguish tier-up effects. Optional V8 traces are separate from untraced timing workers."
+  ],
+  "limits": [
+    "Profile function-entry/loop ticks are coarse evidence, not individual operation cost.",
+    "No target, optimization result, gain claim or production admission established by this review.",
+    "Proposal is bound to State09 world8-field helper. H5 constructor-index world9-field candidate requires explicit rebase and renewed validity controls."
+  ]
+}

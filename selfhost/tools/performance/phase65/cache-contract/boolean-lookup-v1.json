@@ -1,0 +1,21 @@
+{
+  "status": "isolated-unapplied-unexecuted",
+  "hypothesis": "P65-008",
+  "files": {
+    "selfhost/src/core/term.bend": {
+      "beforeSha256": "664cfe52e701723040f2679c3dcdaf2799730a0a7a47822686ab9d0db8c9e5f7",
+      "afterSha256": "229357bb92da2e6e797709939504d016f12aacb095f450eb6c9ff52581ee7d46",
+      "candidate": "selfhost/build/phase65/cache-contract/boolean-lookup-v1/term.bend",
+      "addedLines": 12
+    },
+    "selfhost/src/check/kernel.bend": {
+      "beforeSha256": "61a0f6d41b311986c352f8ea76d99849001fce9ec68769f6f12a80fdbf20f785",
+      "afterSha256": "0358146329785f70502df989a89ad4adff5f77230ab7eae9eabf54201f0ceba5",
+      "candidate": "selfhost/build/phase65/cache-contract/boolean-lookup-v1/kernel.bend",
+      "addedLines": 0
+    }
+  },
+  "patch": "selfhost/tools/performance/phase65/cache-contract/boolean-lookup-v1.patch",
+  "patchSha256": "fafd0ac72d1fbba9a2c55f9b80354c637739840700754e06a901dfb1e41907d7",
+  "scope": "Pure Boolean projection of lookup for constructor_exists only. Existing index_lookup fallback retained. Strict outer constructor recursion unchanged. No host/cache/schema/world version change."
+}

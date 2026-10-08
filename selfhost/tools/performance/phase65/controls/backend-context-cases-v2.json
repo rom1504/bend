@@ -1,0 +1,250 @@
+{
+  "kind": "phase63-real-source-backend-context-controls",
+  "cases": [
+    {
+      "id": "alias-specialization",
+      "file": "alias-specialization.bend",
+      "roots": [
+        "probe"
+      ],
+      "removedAliases": [
+        "Alias",
+        "Alias2"
+      ],
+      "points": [
+        {
+          "name": "probe",
+          "args": [
+            0
+          ],
+          "expected": 1
+        },
+        {
+          "name": "probe",
+          "args": [
+            41
+          ],
+          "expected": 42
+        }
+      ]
+    },
+    {
+      "id": "dependent-family",
+      "file": "dependent-family.bend",
+      "roots": [
+        "probe"
+      ],
+      "removedAliases": [
+        "Family",
+        "PartialFamily"
+      ],
+      "points": [
+        {
+          "name": "probe",
+          "args": [],
+          "expected": 37
+        }
+      ]
+    },
+    {
+      "id": "native-alias",
+      "file": "native-alias.bend",
+      "roots": [
+        "probe",
+        "scalar",
+        "real"
+      ],
+      "removedAliases": [
+        "Scalar",
+        "Real"
+      ],
+      "points": [
+        {
+          "name": "probe",
+          "args": [],
+          "expected": 42
+        },
+        {
+          "name": "scalar",
+          "args": [
+            5
+          ],
+          "expected": 14
+        },
+        {
+          "name": "real",
+          "args": [
+            1.25
+          ],
+          "expected": 1.75
+        }
+      ]
+    },
+    {
+      "id": "recursive-host-alias",
+      "file": "recursive-host-alias.bend",
+      "roots": [
+        "probe",
+        "identity_bag",
+        "total"
+      ],
+      "removedAliases": [
+        "Natural",
+        "Items"
+      ],
+      "points": [
+        {
+          "name": "probe",
+          "args": [],
+          "expected": {
+            "bigint": "12"
+          }
+        },
+        {
+          "name": "identity_bag",
+          "args": [
+            {
+              "$": "Bag",
+              "values": {
+                "$": "Con",
+                "head": {
+                  "bigint": "4"
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "bigint": "9"
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              }
+            }
+          ],
+          "expected": {
+            "$": "Bag",
+            "values": {
+              "$": "Con",
+              "head": {
+                "bigint": "4"
+              },
+              "tail": {
+                "$": "Con",
+                "head": {
+                  "bigint": "9"
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "total",
+          "args": [
+            {
+              "$": "Bag",
+              "values": {
+                "$": "Con",
+                "head": {
+                  "bigint": "4"
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "bigint": "9"
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              }
+            }
+          ],
+          "expected": {
+            "bigint": "13"
+          }
+        }
+      ]
+    },
+    {
+      "id": "scc-alias-v2",
+      "file": "scc-alias-v2.bend",
+      "roots": [
+        "probe"
+      ],
+      "removedAliases": [
+        "Counter"
+      ],
+      "points": [
+        {
+          "name": "probe",
+          "args": [
+            {
+              "bigint": "0"
+            }
+          ],
+          "expected": 0
+        },
+        {
+          "name": "probe",
+          "args": [
+            {
+              "bigint": "1"
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "name": "probe",
+          "args": [
+            {
+              "bigint": "2"
+            }
+          ],
+          "expected": 8
+        },
+        {
+          "name": "probe",
+          "args": [
+            {
+              "bigint": "5"
+            }
+          ],
+          "expected": 17
+        }
+      ]
+    },
+    {
+      "id": "erased-demand",
+      "file": "erased-demand.bend",
+      "roots": [
+        "probe"
+      ],
+      "removedAliases": [
+        "Alias"
+      ],
+      "removedValues": [
+        "unused_loop"
+      ],
+      "points": [
+        {
+          "name": "probe",
+          "args": [
+            3
+          ],
+          "expected": 4
+        },
+        {
+          "name": "probe",
+          "args": [
+            41
+          ],
+          "expected": 42
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/js/direct/core.bend
++++ b/selfhost/src/back/js/direct/core.bend
+@@ -177,7 +177,7 @@
+ @unsafe
+ def jd_doc_body_live_lambda(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> JDText:
+   match args:
+-    case Nil{}: jd_text_raw("return " ++ jd_expr(book, env, t, ty) ++ ";")
++    case Nil{}: jd_text_many([jd_text_literal("return jd_clo(($arg)=>{", 23), jd_doc_body(book, jd_without_owner(env), t, wnf(book, ty), ["$arg"]), jd_text_literal("});", 3)])
+     case Con{x, rest}: kc(JDText, jd_is_view(x), u => jd_doc_body(book, Con{jd_view_binding(ix(t), kid(ty, 0), x), env}, kid(t, 0), j_app_type(ty, var(nm(t), ix(t))), rest), u => jd_doc_body_bound(ix(t), x, jd_doc_body(book, jd_bind_env(env, ix(t), kid(ty, 0)), kid(t, 0), j_app_type(ty, var(nm(t), ix(t))), rest)))
+ 
+ @unsafe

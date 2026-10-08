@@ -1,0 +1,23 @@
+{
+  "kind": "phase65-state06-leaf-controls01-preflight-failure",
+  "raw": {
+    "file": "selfhost/build/phase65/state06-leaf-controls01/report.json",
+    "sha256": "d60b58d7e7ca1419c8e1050f086b29c5bb55b806f211e0050931c1887317decd"
+  },
+  "complete": false,
+  "pass": false,
+  "observedCases": 0,
+  "error": {
+    "name": "AssertionError",
+    "message": "subst_node",
+    "stack": "AssertionError [ERR_ASSERTION]: subst_node\n    at expose (file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/term-reuse/leaf-controls-v1.mjs:29:81)\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/term-reuse/leaf-controls-v1.mjs:34:68"
+  },
+  "candidateAttempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state06/attempt.json",
+    "sha256": "bf716df85e72746320c9e5191f786a1dd2da9df29698f436e134aa4cecbfc68a",
+    "bytes": 300469
+  },
+  "reason": "Controller required an unused subst_node lexical declaration that checked B1 correctly prunes after the leaf-only substitution call path changes. This is a controller preflight failure, not a passed semantic check or a discovered compiler semantic mismatch.",
+  "successor": "selfhost/tools/performance/phase65/term-reuse/leaf-controls-v2.mjs",
+  "productionChange": false
+}

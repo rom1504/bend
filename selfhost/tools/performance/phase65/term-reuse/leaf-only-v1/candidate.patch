@@ -1,0 +1,14 @@
+--- a/selfhost/src/core/term.bend
++++ b/selfhost/src/core/term.bend
+@@ -354,7 +354,10 @@
+   +id: U32,
+   +v: KTerm,
+ ) -> KTerm:
+-  kc(KTerm, String.eq(tg(t), "Var"), u => kc(KTerm, U32.is_eq(ix(t), id), u => v, u => t), u => subst_node(t, id, v))
++  kc(KTerm, String.eq(tg(t), "Var"), u => kc(KTerm, U32.is_eq(ix(t), id), u => v, u => t),
++    u => kc(KTerm, core_literal(t), u => t,
++      u => kc(KTerm, List.is_empty(&2, KTerm, ks(t)) && Bool.not(String.eq(tg(t), "App")), u => t,
++        u => core_rebuild(k_with_children(t, subst_terms(ks(t), id, v))))))
+ 
+ @unsafe
+ def subst_node(t, id0, v):

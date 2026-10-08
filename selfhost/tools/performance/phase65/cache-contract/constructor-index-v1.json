@@ -1,0 +1,29 @@
+{
+  "status": "isolated-unapplied-unexecuted",
+  "hypothesis": "P65-005",
+  "files": {
+    "selfhost/src/check/prefix-state.bend": {
+      "beforeSha256": "e3d23adaabb0ddc866adc3546a56d6362df2d6f55d91c73aef71c73cbd628a63",
+      "afterSha256": "54658da7ce76dafa335a587fbe126f98df5da9faa61a913536ede17f7823a673",
+      "candidate": "selfhost/build/phase65/cache-contract/constructor-index-v1/prefix-state.bend",
+      "addedLines": 27
+    },
+    "selfhost/tools/base-cache-graph.mjs": {
+      "beforeSha256": "b58b927ac611f4ead292d4f736cfd427e955b81c1f0efa2f55d1e784755a0119",
+      "afterSha256": "29c9c19113ffeec4f18ad5fceab53501f0110be4f514e813c1ffeaf5c72c06ef",
+      "candidate": "selfhost/build/phase65/cache-contract/constructor-index-v1/base-cache-graph.mjs",
+      "addedLines": 2
+    },
+    "selfhost/tools/typed-driver.mjs": {
+      "beforeSha256": "a7d91a18408778c8c12f07759782aa0901d97e0e124692883bb46e4ea7c05d45",
+      "afterSha256": "3ebf6f907effd5f4a9f0f7cb3325ea099f27b906832051435e5143fb77ff1ee2",
+      "candidate": "selfhost/build/phase65/cache-contract/constructor-index-v1/typed-driver.mjs",
+      "addedLines": 2
+    }
+  },
+  "patch": "selfhost/tools/performance/phase65/cache-contract/constructor-index-v1.patch",
+  "patchSha256": "8ed9695e3e0df08e7ca9806fb3e7397ef80a5da31156ae0d461542e05f50d62b",
+  "worldVersion": 4,
+  "field": "constructorIndex:KDef",
+  "scope": "Only private admitted prepared-world predicate; public constructor_exists and raw prefix predicates unchanged; oldworld6/7/8fielddecode retained without v4capability."
+}

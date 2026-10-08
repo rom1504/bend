@@ -140,3 +140,13 @@ materialization, which is not required for H2's first scoped experiment.
 - [Architecture research](../../research/compilers_architecture_and_techniques/README.md)
 - [Go export format](https://github.com/golang/go/blob/master/src/cmd/compile/README.md)
 - [LLVM module summaries](https://clang.llvm.org/docs/ThinLTO.html)
+
+## Profile-driven discriminators
+
+The first fresh survey adds P65-005: cache exact immediate Base-constructor
+membership for the private owned-world admission path. This is a bounded scan
+elimination, with versioned transport and unchanged public fallback. The measured
+allocation share does not establish an equivalent CPU share. Separately test
+case-local frame4 decoder loads under unchanged eager validation; first-decode
+and warm clocks must remain separate. Neither discriminator authorizes a host
+implementation of semantic compiler algorithms.

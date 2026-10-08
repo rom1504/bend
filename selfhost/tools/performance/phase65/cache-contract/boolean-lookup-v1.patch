@@ -1,0 +1,32 @@
+--- a/selfhost/src/core/term.bend
++++ b/selfhost/src/core/term.bend
+@@ -300,6 +300,18 @@
+     case True{}: d
+     case False{}: lookup(rest, name)
+ 
++# Boolean projection of lookup. Preserve its first match (including Absent)
++# and any BookCache boundary, without constructing missing definitions on lists.
++@unsafe
++def lookup_present(+book: List<&2,KDef>, +name: String) -> Bool:
++  match book:
++    case Nil{}: False{}
++    case Con{d, rest}:
++      kc(Bool, String.eq(dk(d), "BookCache"),
++        u => Bool.not(String.eq(dk(index_lookup(d, name)), "Absent")),
++        u => kc(Bool, String.eq(dn(d), name),
++          v => Bool.not(String.eq(dk(d), "Absent")), v => lookup_present(rest, name)))
++
+ @unsafe
+ def terms_len(
+   +ts: List<&2, KTerm>,
+--- a/selfhost/src/check/kernel.bend
++++ b/selfhost/src/check/kernel.bend
+@@ -978,7 +978,7 @@
+     case Nil{}:
+       False{}
+     case Con{h, rest}:
+-      Bool.not(String.eq(dk(h), "BookCache")) && Bool.not(String.eq(dk(lookup(dc(h), name)), "Absent")) || constructor_exists(rest, name)
++      Bool.not(String.eq(dk(h), "BookCache")) && lookup_present(dc(h), name) || constructor_exists(rest, name)
+ 
+ @unsafe
+ def constructor_names(done, ctrs, names):

@@ -1,0 +1,359 @@
+{
+  "kind": "phase65-normalized-head-real-source-controls",
+  "cases": [
+    {
+      "id": "alias-specialization",
+      "file": "../../../phase63/backend-context-controls/alias-specialization.bend",
+      "roots": [
+        "probe"
+      ],
+      "removedAliases": [
+        "Alias",
+        "Alias2"
+      ],
+      "points": [
+        {
+          "name": "probe",
+          "args": [
+            0
+          ],
+          "expected": 1
+        },
+        {
+          "name": "probe",
+          "args": [
+            41
+          ],
+          "expected": 42
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "dependent-family",
+      "file": "../../../phase63/backend-context-controls/dependent-family.bend",
+      "roots": [
+        "probe"
+      ],
+      "removedAliases": [
+        "Family",
+        "PartialFamily"
+      ],
+      "points": [
+        {
+          "name": "probe",
+          "args": [],
+          "expected": 37
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "native-alias",
+      "file": "../../../phase63/backend-context-controls/native-alias.bend",
+      "roots": [
+        "probe",
+        "scalar",
+        "real"
+      ],
+      "removedAliases": [
+        "Scalar",
+        "Real"
+      ],
+      "points": [
+        {
+          "name": "probe",
+          "args": [],
+          "expected": 42
+        },
+        {
+          "name": "scalar",
+          "args": [
+            5
+          ],
+          "expected": 14
+        },
+        {
+          "name": "real",
+          "args": [
+            1.25
+          ],
+          "expected": 1.75
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "recursive-host-alias",
+      "file": "../../../phase63/backend-context-controls/recursive-host-alias.bend",
+      "roots": [
+        "probe",
+        "identity_bag",
+        "total"
+      ],
+      "removedAliases": [
+        "Natural",
+        "Items"
+      ],
+      "points": [
+        {
+          "name": "probe",
+          "args": [],
+          "expected": {
+            "bigint": "12"
+          }
+        },
+        {
+          "name": "identity_bag",
+          "args": [
+            {
+              "$": "Bag",
+              "values": {
+                "$": "Con",
+                "head": {
+                  "bigint": "4"
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "bigint": "9"
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              }
+            }
+          ],
+          "expected": {
+            "$": "Bag",
+            "values": {
+              "$": "Con",
+              "head": {
+                "bigint": "4"
+              },
+              "tail": {
+                "$": "Con",
+                "head": {
+                  "bigint": "9"
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "total",
+          "args": [
+            {
+              "$": "Bag",
+              "values": {
+                "$": "Con",
+                "head": {
+                  "bigint": "4"
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "bigint": "9"
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              }
+            }
+          ],
+          "expected": {
+            "bigint": "13"
+          }
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "erased-demand",
+      "file": "../../../phase63/backend-context-controls/erased-demand.bend",
+      "roots": [
+        "probe"
+      ],
+      "removedAliases": [
+        "Alias"
+      ],
+      "removedValues": [
+        "unused_loop"
+      ],
+      "points": [
+        {
+          "name": "probe",
+          "args": [
+            3
+          ],
+          "expected": 4
+        },
+        {
+          "name": "probe",
+          "args": [
+            41
+          ],
+          "expected": 42
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "scc-alias-v2",
+      "file": "../../../phase63/backend-context-controls/scc-alias-v2.bend",
+      "roots": [
+        "probe"
+      ],
+      "removedAliases": [
+        "Counter"
+      ],
+      "points": [
+        {
+          "name": "probe",
+          "args": [
+            {
+              "bigint": "0"
+            }
+          ],
+          "expected": 0
+        },
+        {
+          "name": "probe",
+          "args": [
+            {
+              "bigint": "1"
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "name": "probe",
+          "args": [
+            {
+              "bigint": "2"
+            }
+          ],
+          "expected": 8
+        },
+        {
+          "name": "probe",
+          "args": [
+            {
+              "bigint": "5"
+            }
+          ],
+          "expected": 17
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "numeric-recurrence",
+      "file": "../../../phase37/fixtures-new/numeric-recurrence.bend",
+      "status": "ok"
+    },
+    {
+      "id": "test-map-set-ops",
+      "file": "../../../phase37/fixtures-historical/test-map-set-ops.bend",
+      "status": "ok"
+    },
+    {
+      "id": "data-family-alias",
+      "file": "../../../../../../tests/check/data_family_alias.bend",
+      "status": "ok",
+      "roots": [
+        "main.out"
+      ],
+      "points": [
+        {
+          "name": "main.out",
+          "args": [],
+          "expected": 37
+        }
+      ]
+    },
+    {
+      "id": "data-alias-whnf",
+      "file": "../../../../../../tests/check/data_alias_whnf_001.bend",
+      "status": "ok",
+      "roots": [
+        "main.out"
+      ],
+      "points": [
+        {
+          "name": "main.out",
+          "args": [],
+          "expected": 42
+        }
+      ]
+    },
+    {
+      "id": "over-application",
+      "file": "../../../../../../tests/compile/over_application.bend",
+      "status": "ok",
+      "roots": [
+        "main.out"
+      ],
+      "points": [
+        {
+          "name": "main.out",
+          "args": [],
+          "expected": 42
+        }
+      ]
+    },
+    {
+      "id": "erased-partial-closure",
+      "file": "../../../../../../tests/compile/erased_partial_closure.bend",
+      "status": "ok"
+    },
+    {
+      "id": "rwt-binders",
+      "file": "../../../../../../tests/reg/rwt_carb_binders.bend",
+      "status": "ok",
+      "roots": [
+        "main.out"
+      ],
+      "points": [
+        {
+          "name": "main.out",
+          "args": [],
+          "expected": 8879
+        }
+      ]
+    },
+    {
+      "id": "open-array-refusal",
+      "file": "../../../../../../tests/reg/array_open_element.bend",
+      "status": "error",
+      "diagnosticIncludes": "an open Array element type"
+    },
+    {
+      "id": "definition-budget-0",
+      "file": "../../../phase63/backend-context-controls/recursive-host-alias.bend",
+      "roots": [
+        "probe",
+        "total"
+      ],
+      "definitionBudget": 0,
+      "status": "error",
+      "diagnosticIncludes": "direct reachability"
+    },
+    {
+      "id": "definition-budget-1",
+      "file": "../../../phase63/backend-context-controls/recursive-host-alias.bend",
+      "roots": [
+        "probe",
+        "total"
+      ],
+      "definitionBudget": 1,
+      "status": "error",
+      "diagnosticIncludes": "direct reachability"
+    }
+  ]
+}

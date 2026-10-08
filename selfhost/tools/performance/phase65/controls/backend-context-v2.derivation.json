@@ -1,0 +1,58 @@
+{
+  "kind": "phase65-backend-context-v2-derivation",
+  "dataOnly": true,
+  "targetExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/backend-context-v1.mjs",
+    "sha256": "b0a2142358ad4a6db4e8d5dcff23e8bc8c6fcbce382e0a5a9870a503f3197654"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/backend-context-v2.mjs",
+    "sha256": "1daa078a9c2bbe8c246b565332ed7709c684d983c72cbc96444603527d21a25b"
+  },
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/backend-context-cases-v2.json",
+    "sha256": "152f1657dcf5c46b413b681519b4a8ad4bfe43b74c533c329403dfd91dc2013c"
+  },
+  "manifestParents": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/backend-context-controls/cases.json",
+      "sha256": "050284a65fdbff11f41f47cf26124ae4110fa1091a1c135e54dfaa96a04e8de1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/backend-context-controls/cases-v2.json",
+      "sha256": "6b0e96708aa05daa07e6ae188be56edf3b0515a46be0b8927d11f9ff3f7ee496"
+    }
+  ],
+  "edits": [
+    {
+      "before": "kind:'phase65-real-source-backend-context-controls'",
+      "after": "kind:'phase65-real-source-backend-context-controls-v2'",
+      "count": 1
+    },
+    {
+      "before": "pin(path.join(import.meta.dirname,'derivation.json'));",
+      "after": "pin(path.join(import.meta.dirname,'backend-context-v2.derivation.json'));",
+      "count": 1
+    },
+    {
+      "before": "pin(path.resolve(import.meta.dirname,'../../phase63/backend-context-controls/run.mjs'));",
+      "after": "pin(path.resolve(import.meta.dirname,'../../phase63/backend-context-controls/run.mjs'));pin(path.resolve(import.meta.dirname,'../../phase63/backend-context-controls/run-v2.mjs'));pin(path.resolve(import.meta.dirname,'../../phase63/backend-context-controls/cases.json'));pin(path.resolve(import.meta.dirname,'../../phase63/backend-context-controls/cases-v2.json'));",
+      "count": 1
+    },
+    {
+      "before": "const manifestFile=path.resolve(import.meta.dirname,'../../phase63/backend-context-controls/cases.json');",
+      "after": "const manifestFile=path.join(import.meta.dirname,'backend-context-cases-v2.json');",
+      "count": 1
+    }
+  ],
+  "manifestChange": "Replace only invalid original scc-alias case with maintained Phase63 scc-alias-v2; retain other five original cases and all full result/module/value assertions.",
+  "cases": [
+    "alias-specialization",
+    "dependent-family",
+    "native-alias",
+    "recursive-host-alias",
+    "scc-alias-v2",
+    "erased-demand"
+  ]
+}

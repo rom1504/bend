@@ -1,0 +1,20 @@
+{
+  "status": "isolated-unapplied-unexecuted",
+  "hypothesis": "P65-002",
+  "files": {
+    "selfhost/tools/typed-driver.mjs": {
+      "beforeSha256": "a7d91a18408778c8c12f07759782aa0901d97e0e124692883bb46e4ea7c05d45",
+      "afterSha256": "7929ad82feb64bf8a6e56ffee04f0339098cceb374b7e77074dfb0033539c7ff",
+      "candidate": "selfhost/build/phase65/cache-contract/base-annotations-v2/typed-driver.mjs",
+      "addedLines": 78
+    }
+  },
+  "patch": "selfhost/tools/performance/phase65/cache-contract/base-annotations-v2.patch",
+  "patchSha256": "3a19d345e719fc5a1252755ff09e1390410191705e8d72427dac47669d9db152",
+  "scope": "Separate deferred optional Base annotation artifact. Same frame4/world3 schema, algorithms in Bend, explicit preparation only. Private consumer requires successful owned prepared-world request, Bend wanted and allowed gates.",
+  "derivation": {
+    "parent": "selfhost/build/phase65/cache-contract/base-annotations-v1/typed-driver.mjs",
+    "parentSha256": "55ea99408987faf93b827d1df72e177e147c70aaf16a56b968466c89c92cd3a2",
+    "change": "Exact source-backed conditional export line required by export-admission.py; all runtime code unchanged."
+  }
+}

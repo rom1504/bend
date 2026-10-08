@@ -1,0 +1,212 @@
+{
+  "kind": "phase65-constructor-miss-leaf-census",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/cache-contract/constructor-misses.py",
+    "sha256": "7b6553374015861e0790f5536c69301c130acfdce6dc7d6a88f1a0ec3b73cff5"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase65/evidence/baseline-state09-allocation.json",
+      "sha256": "63dc783924ce730944e319cb73858a5d3093c3d85e77fb4deaa15fb967a41983"
+    }
+  ],
+  "rows": [
+    {
+      "case": "numeric-recurrence",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/numeric-recurrence-0-baseline-profile/profile.heapprofile",
+        "sha256": "20c0aa0c93510ea4df522e30ed823cabbb24516e3fc60c515bd796b0339b1537"
+      },
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/numeric-recurrence-0-baseline.result.json",
+        "sha256": "e848cb872b519ea40f68762f0bfb4a3dfe73887b95547ba7cb0cd565c7fe5e4a"
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+      },
+      "sampleBytes": 2229112,
+      "samples": 17,
+      "leaves": [
+        {
+          "functionName": "$jd$atom",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 745,
+          "columnNumber": 17,
+          "sampledBytes": 1311184,
+          "samples": 10,
+          "percent": 58.82091164553419
+        },
+        {
+          "functionName": "$jd$missing",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 831,
+          "columnNumber": 20,
+          "sampledBytes": 655608,
+          "samples": 5,
+          "percent": 29.41117359737869
+        },
+        {
+          "functionName": "$jd$lookup$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 834,
+          "columnNumber": 23,
+          "sampledBytes": 262320,
+          "samples": 2,
+          "percent": 11.767914757087127
+        }
+      ]
+    },
+    {
+      "case": "lexer",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/lexer-0-baseline-profile/profile.heapprofile",
+        "sha256": "555d772e86ca0f2f8f156be739c73021c8e2e4ac18bc646729fd40c678fea276"
+      },
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/lexer-0-baseline.result.json",
+        "sha256": "46c79709c672bce24f879f72d0caa119a664236ad39914741bdef8716c0c5855"
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+      },
+      "sampleBytes": 26117160,
+      "samples": 199,
+      "leaves": [
+        {
+          "functionName": "$jd$constructor_95_exists",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 7301,
+          "columnNumber": 34,
+          "sampledBytes": 20084616,
+          "samples": 153,
+          "percent": 76.90199087496497
+        },
+        {
+          "functionName": "$jd$lookup$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 834,
+          "columnNumber": 23,
+          "sampledBytes": 2884808,
+          "samples": 22,
+          "percent": 11.04564202233321
+        },
+        {
+          "functionName": "$jd$kt",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 739,
+          "columnNumber": 15,
+          "sampledBytes": 2623248,
+          "samples": 20,
+          "percent": 10.04415487748285
+        },
+        {
+          "functionName": "$jd$missing",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 831,
+          "columnNumber": 20,
+          "sampledBytes": 524488,
+          "samples": 4,
+          "percent": 2.008212225218975
+        }
+      ]
+    },
+    {
+      "case": "test-map-set-ops",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/test-map-set-ops-0-baseline-profile/profile.heapprofile",
+        "sha256": "7778410f72320aac8c5b208c2d610d323f4d7f5291be807da8db9068d44a0b69"
+      },
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/test-map-set-ops-0-baseline.result.json",
+        "sha256": "8f3418897bf2deac79e1ad72cb80b3fcc470f9e7fe621948c9e18e08e075d015"
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+      },
+      "sampleBytes": 25733344,
+      "samples": 196,
+      "leaves": [
+        {
+          "functionName": "$jd$constructor_95_exists",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 7301,
+          "columnNumber": 34,
+          "sampledBytes": 21275136,
+          "samples": 162,
+          "percent": 82.67536469414935
+        },
+        {
+          "functionName": "$jd$missing",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 831,
+          "columnNumber": 20,
+          "sampledBytes": 4458208,
+          "samples": 34,
+          "percent": 17.324635305850652
+        }
+      ]
+    },
+    {
+      "case": "raytrace-active",
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/raytrace-active-0-baseline-profile/profile.heapprofile",
+        "sha256": "db1ca8169f4320250faee2938a466a3a99e2e26d214c8b0bc09dfe08f4b8237b"
+      },
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/allocation/raytrace-active-0-baseline.result.json",
+        "sha256": "bd36787b7eb66482b23964ca1c75dbf3d4fdab1c40c81a1f69c341de331bd2e5"
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+      },
+      "sampleBytes": 18631392,
+      "samples": 142,
+      "leaves": [
+        {
+          "functionName": "$jd$constructor_95_exists",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 7301,
+          "columnNumber": 34,
+          "sampledBytes": 9976672,
+          "samples": 76,
+          "percent": 53.54764689616321
+        },
+        {
+          "functionName": "$jd$missing",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 831,
+          "columnNumber": 20,
+          "sampledBytes": 3933584,
+          "samples": 30,
+          "percent": 21.11266833954221
+        },
+        {
+          "functionName": "$jd$kt",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 739,
+          "columnNumber": 15,
+          "sampledBytes": 3672224,
+          "samples": 28,
+          "percent": 19.709874603035566
+        },
+        {
+          "functionName": "$jd$lookup$scc",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "lineNumber": 834,
+          "columnNumber": 23,
+          "sampledBytes": 1048912,
+          "samples": 8,
+          "percent": 5.6298101612590195
+        }
+      ]
+    }
+  ],
+  "scope": "Samples[].size under exact selected API constructor_exists ancestry only. Leaf attribution includes V8 inlining effects and is not an allocation count or proof of removable cost. Generated source must establish actual construction; clean request timing must establish gain. No target or old raw mutation."
+}

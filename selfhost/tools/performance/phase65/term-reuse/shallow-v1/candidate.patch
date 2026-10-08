@@ -1,0 +1,65 @@
+--- a/selfhost/src/core/term.bend
++++ b/selfhost/src/core/term.bend
+@@ -348,13 +348,19 @@
+   for +v: KTerm
+   KTerm
+ 
++law core_subst_shallow:
++  for +t: KTerm
++  for +id: U32
++  Bool
++
+ @unsafe
+ def subst(
+   +t: KTerm,
+   +id: U32,
+   +v: KTerm,
+ ) -> KTerm:
+-  kc(KTerm, String.eq(tg(t), "Var"), u => kc(KTerm, U32.is_eq(ix(t), id), u => v, u => t), u => subst_node(t, id, v))
++  kc(KTerm, String.eq(tg(t), "Var"), u => kc(KTerm, U32.is_eq(ix(t), id), u => v, u => t),
++    u => kc(KTerm, core_subst_shallow(t, id), u => t, u => subst_node(t, id, v)))
+ 
+ @unsafe
+ def subst_node(t, id0, v):
+@@ -479,6 +485,41 @@
+     case Con{h, tail}: False{}
+     case Nil{}:
+       Bool.not(String.eq(tg(f), "Lam"))
++
++# Constant-work substitution admission. This predicate visits at most the
++# parent and two leaf children; false falls back to ordinary substitution.
++# Return the original term in subst, outside all constructor match scopes.
++@unsafe
++def core_subst_leaf(+t: KTerm, +id: U32) -> Bool:
++  kc(Bool, String.eq(tg(t), "Var"), u => Bool.not(U32.is_eq(ix(t), id)),
++    u => core_literal(t) || (Bool.not(String.eq(tg(t), "App")) && List.is_empty(&2, KTerm, ks(t))))
++
++@unsafe
++def core_subst_shallow_app(+t: KTerm) -> Bool:
++  kc(Bool, String.eq(tg(t), "App"),
++    u => String.eq(nm(t), "") && U32.is_eq(ix(t), 0) && U32.is_eq(qt(t), 0) && core_subst_stable_app(ks(t), rm(t)),
++    u => True{})
++
++@unsafe
++def core_subst_shallow_tail(+t: KTerm, +id: U32, +rest: List<&2,KTerm>) -> Bool:
++  match rest:
++    case Nil{}: Bool.not(String.eq(tg(t), "App"))
++    case Con{x, tail}:
++      kc(Bool, List.is_empty(&2, KTerm, tail),
++        u => kc(Bool, core_subst_leaf(x, id), u => core_subst_shallow_app(t), u => False{}),
++        u => False{})
++
++@unsafe
++def core_subst_shallow_kids(+t: KTerm, +id: U32, +kids: List<&2,KTerm>) -> Bool:
++  match kids:
++    case Nil{}: Bool.not(String.eq(tg(t), "App"))
++    case Con{h, rest}:
++      kc(Bool, core_subst_leaf(h, id), u => core_subst_shallow_tail(t, id, rest), u => False{})
++
++@unsafe
++def core_subst_shallow(t, id):
++  kc(Bool, String.eq(tg(t), "Var"), u => Bool.not(U32.is_eq(ix(t), id)),
++    u => core_subst_shallow_kids(t, id, ks(t)))
+ 
+ @unsafe
+ def norm_join(

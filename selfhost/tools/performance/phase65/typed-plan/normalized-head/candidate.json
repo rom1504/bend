@@ -1,0 +1,27 @@
+{
+  "kind": "phase65-normalized-annotation-head-diagnostic",
+  "status": "unbuilt-unmeasured-private-scope-unproved",
+  "source": {
+    "file": "selfhost/src/check/annotate.bend",
+    "sha256": "1912e5d177514733e706297fbb53e730c1f7a9edc91ffb06d2b1de7e2547648c",
+    "bytes": 10866
+  },
+  "before": {
+    "file": "selfhost/tools/performance/phase65/typed-plan/normalized-head/annotate-before.bend",
+    "sha256": "1912e5d177514733e706297fbb53e730c1f7a9edc91ffb06d2b1de7e2547648c",
+    "bytes": 10866
+  },
+  "after": {
+    "file": "selfhost/tools/performance/phase65/typed-plan/normalized-head/annotate-after.bend",
+    "sha256": "43cbc73dddd17e003eb564dbc04f1051e898ca4e2621f9871b0a17ffa62ec35d",
+    "bytes": 11066
+  },
+  "patch": {
+    "file": "selfhost/tools/performance/phase65/typed-plan/normalized-head/candidate.patch",
+    "sha256": "be6af4e32eb7c0514ba8d880761bf41e496781b6661f74ea3ad7d3713e764c51",
+    "bytes": 509
+  },
+  "physicalLineDelta": 5,
+  "hypothesis": "Retain the WNF type already demanded by annotation, avoiding downstream repeated normalization with no per-consumer guards.",
+  "nonPromotionBoundary": "This diagnostic candidate changes public annotation products. Restrict experiments to owned checked direct-library requests. A private production entry or stronger proof is required before promotion."
+}

@@ -1,0 +1,212 @@
+--- a/selfhost/src/check/prefix-state.bend
++++ b/selfhost/src/check/prefix-state.bend
+@@ -133,6 +133,25 @@
+   match defs:
+     case Nil{}: True{}
+     case Con{d, rest}: kc(Bool, Bool.not(constructor_exists(context, dn(d))) && base_prefix_ctor_disjoint(dc(d), context), u => base_prefix_ctor_disjoint(rest, context), u => False{})
++
++# PRIVATE index for an admitted prefix: base_prefix_names has excluded Absent
++# and BookCache children. constructor_exists tests immediate children of each
++# outer definition, not the parser's recursive Ctr-only lookup. Store those
++# exact child names once; suffix traversal and exact hash-collision handling stay.
++@unsafe
++def base_prefix_constructor_index(+defs: List<&2,KDef>, +tree: KDef) -> KDef:
++  match defs:
++    case Nil{}: tree
++    case Con{d, rest}: kc(KDef, String.eq(dk(d), "BookCache"),
++      u => base_prefix_constructor_index(rest, tree),
++      u => index_set_many(base_prefix_constructor_index(rest, tree), dc(d)))
++
++@unsafe
++def base_prefix_ctor_index_disjoint(+defs: List<&2,KDef>, +tree: KDef) -> Bool:
++  match defs:
++    case Nil{}: True{}
++    case Con{d, rest}: kc(Bool, String.eq(dk(index_find(tree, dn(d), index_hash(dn(d), 2166136261), 32)), "Absent") && base_prefix_ctor_index_disjoint(dc(d), tree),
++      u => base_prefix_ctor_index_disjoint(rest, tree), u => False{})
+ 
+ @unsafe
+ def base_prefix_native(+prefix: List<&2,KDef>) -> Bool:
+@@ -269,7 +288,7 @@
+ # state; the driver binds this whole immutable record to that same Base seed.
+ # Raw books and old prefix-state exports retain their full admission paths.
+ type KBasePreparedWorld is Data:
+-  KBasePreparedWorld{+state: KBasePrefixState, +prefix: List<&2,KDef>, +final: List<&2,KDef>, +book: List<&2,KDef>, +checked: List<&2,KDef>, +seen: List<&2,KDef>, +todos: U32, +checkedBound: U32}
++  KBasePreparedWorld{+state: KBasePrefixState, +prefix: List<&2,KDef>, +final: List<&2,KDef>, +book: List<&2,KDef>, +checked: List<&2,KDef>, +seen: List<&2,KDef>, +todos: U32, +checkedBound: U32, +constructorIndex: KDef}
+ 
+ @unsafe
+ def base_prefix_world_prepare(+prefix: List<&2,KDef>, +state: KBasePrefixState) -> KBasePreparedWorld:
+@@ -277,11 +296,11 @@
+   +final = base_prefix_final(prefix)
+   kc(KBasePreparedWorld, base_prefix_admitted_bound(state, prefix, Nil{}, bound, final, bound),
+     u => base_prefix_world_saved(prefix, state, final, bound, rw(dg_checking_result(base_prefix_resume_saved(state, prefix, Nil{}, bound, final)))),
+-    u => KBasePreparedWorld{KBasePrefixState{bound, 0, 0, Nil{}, False{}}, prefix, final, Nil{}, Nil{}, Nil{}, 0, 0})
++    u => KBasePreparedWorld{KBasePrefixState{bound, 0, 0, Nil{}, False{}}, prefix, final, Nil{}, Nil{}, Nil{}, 0, 0, missing()})
+ 
+ @unsafe
+ def base_prefix_world_saved(+prefix: List<&2,KDef>, +state: KBasePrefixState, +final: List<&2,KDef>, +bound: U32, +world: KWorld) -> KBasePreparedWorld:
+-  KBasePreparedWorld{state, prefix, final, kw_book(world), kw_checked(world), base_prefix_seen(prefix, bound), driver_count_todos(final), norm_max_book(kw_checked(world))}
++  KBasePreparedWorld{state, prefix, final, kw_book(world), kw_checked(world), base_prefix_seen(prefix, bound), driver_count_todos(final), norm_max_book(kw_checked(world)), base_prefix_constructor_index(final, missing())}
+ 
+ # Sequential declaration installation puts suffix headers first in the list,
+ # but prefix event publication historically puts Base definitions first. Keep
+@@ -302,7 +321,7 @@
+ @unsafe
+ def base_prefix_resume_world(+prepared: KBasePreparedWorld, +suffix: List<&2,KDef>, +bound: U32) -> DChecking:
+   match prepared:
+-    case KBasePreparedWorld{state, prefix, final, book, checked, seen, todos, checkedBound}:
++    case KBasePreparedWorld{state, prefix, final, book, checked, seen, todos, checkedBound, constructorIndex}:
+       base_prefix_world_resume_state(state, book, checked, seen, suffix, bound)
+ 
+ @unsafe
+@@ -342,6 +361,14 @@
+     case KBasePrefixState{base_bound, delta, stamp, patches, ready}:
+       ready && U32.is_ge(bound, base_bound) && U32.is_le(delta, 1048576) && U32.is_le(stamp, delta) && U32.is_le(bound, 1048576) && base_prefix_names(suffix) && base_prefix_world_names_disjoint(suffix, saved) && base_prefix_ctor_disjoint(suffix, final)
+ 
++# Keep the original raw admission entry above. Only the version-four prepared
++# world owns this exact constructor index; all refusal and fallback guards remain.
++@unsafe
++def base_prefix_world_admitted_indexed(+state: KBasePrefixState, +suffix: List<&2,KDef>, +bound: U32, +constructors: KDef, +saved: List<&2,KDef>) -> Bool:
++  match state:
++    case KBasePrefixState{base_bound, delta, stamp, patches, ready}:
++      ready && U32.is_ge(bound, base_bound) && U32.is_le(delta, 1048576) && U32.is_le(stamp, delta) && U32.is_le(bound, 1048576) && base_prefix_names(suffix) && base_prefix_world_names_disjoint(suffix, saved) && base_prefix_ctor_index_disjoint(suffix, constructors)
++
+ # The driver must couple prepared and load through the same authenticated Base
+ # injection. In that private scope state.bound is the already proved maximum
+ # of load.prefix, and only newly freshened suffix terms need a maximum scan.
+@@ -371,16 +398,16 @@
+ @unsafe
+ def base_prefix_check_world_book(+prepared: KBasePreparedWorld, +book: List<&2,KDef>, +error: String, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +ready: Bool) -> DChecking:
+   match prepared:
+-    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound}:
++    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound, constructorIndex}:
+       +bound = norm_max(base_prefix_world_bound(state), norm_max_book(suffix))
+-      kc(DChecking, ready && String.is_empty(error) && base_prefix_world_admitted(state, suffix, bound, final, saved),
++      kc(DChecking, ready && String.is_empty(error) && base_prefix_world_admitted_indexed(state, suffix, bound, constructorIndex, saved),
+         u => base_prefix_world_check_admitted(prepared, prefix, suffix, bound),
+         u => dg_check_world(book))
+ 
+ @unsafe
+ def base_prefix_world_check_admitted(+prepared: KBasePreparedWorld, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +bound: U32) -> DChecking:
+   match prepared:
+-    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound}:
++    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound, constructorIndex}:
+       kc(DChecking, base_prefix_world_hash_disjoint(suffix, index_first(dc(index_first(saved)))),
+         u => base_prefix_resume_world(prepared, suffix, bound),
+         u => base_prefix_resume_saved(state, prefix, suffix, bound, final))
+@@ -391,9 +418,9 @@
+ @unsafe
+ def base_prefix_program_world_book(+prepared: KBasePreparedWorld, +book: List<&2,KDef>, +error: String, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +ready: Bool, +origins: List<&2,DOrigin>) -> DResult:
+   match prepared:
+-    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound}:
++    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound, constructorIndex}:
+       +bound = norm_max(base_prefix_world_bound(state), norm_max_book(suffix))
+-      kc(DResult, ready && String.is_empty(error) && base_prefix_world_admitted(state, suffix, bound, final, saved),
++      kc(DResult, ready && String.is_empty(error) && base_prefix_world_admitted_indexed(state, suffix, bound, constructorIndex, saved),
+         u => driver_program_checked_prefix(suffix, todos, origins, base_prefix_world_check_admitted(prepared, prefix, suffix, bound)),
+         u => driver_program_checked(book, origins, dg_check_world(book)))
+ 
+@@ -423,10 +450,10 @@
+ @unsafe
+ def base_prefix_context_world(+book: List<&2,KDef>, +error: String, +suffix: List<&2,KDef>, +ready: Bool, +prepared: KBasePreparedWorld) -> List<&2,KDef>:
+   match prepared:
+-    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound}:
++    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound, constructorIndex}:
+       +bound = norm_max(base_prefix_world_bound(state), norm_max_book(suffix))
+       kc(List<&2,KDef>, ready && String.is_empty(error) && Bool.not(String.eq(dk(index_first(book)), "BookCache")) &&
+-        base_prefix_world_admitted(state, suffix, bound, final, saved) &&
++        base_prefix_world_admitted_indexed(state, suffix, bound, constructorIndex, saved) &&
+         base_prefix_world_hash_disjoint(suffix, index_first(dc(index_first(saved)))),
+         u => base_prefix_context_tail(book, checkedBound, base_prefix_context_drop(book, checked)),
+         u => book_context(book))
+--- a/selfhost/tools/base-cache-graph.mjs
++++ b/selfhost/tools/base-cache-graph.mjs
+@@ -13,7 +13,7 @@
+   ['KIndexNode','def',[['hash','u'],['mask','u'],['left','def'],['right','def']]],
+   ['KBasePrefixState','checked',[['bound','u'],['delta','u'],['stamp','u'],['patches','defs'],['ready','b']]],
+   ['FFreshPrefixState','fresh',[['next','u'],['ready','b']]],
+-  ['KBasePreparedWorld','world',[['state','checked'],['prefix','defs'],['final','defs'],['book','defs'],['checked','defs'],['seen','defs'],['todos','u'],['checkedBound','u']]],
++  ['KBasePreparedWorld','world',[['state','checked'],['prefix','defs'],['final','defs'],['book','defs'],['checked','defs'],['seen','defs'],['todos','u'],['checkedBound','u'],['constructorIndex','def']]],
+   ['FReadyPrefixState','frontend',[['names','def'],['ctors','def'],['count','u'],['ready','b']]],
+ ];
+ const byTag=new Map(specs.map((s,i)=>[s[0],i]));
+@@ -142,12 +142,13 @@
+         if(r.length!==3||!u32(r[1])||typeof r[2]!=='boolean')fail();
+         node={$:'FFreshPrefixState',next:r[1],ready:r[2]};kind=FRESH;break;
+       case 10:
+-        if((r.length!==7&&r.length!==8&&r.length!==9)||(r.length>=8&&!u32(r[7]))||(r.length===9&&!u32(r[8])))fail();
++        if((r.length!==7&&r.length!==8&&r.length!==9&&r.length!==10)||(r.length>=8&&!u32(r[7]))||(r.length>=9&&!u32(r[8])))fail();
+         // Old optional worlds remain decodable; the host's version admission
+         // decides whether their missing fact can be consumed by this API.
+         node=r.length===7?{$:'KBasePreparedWorld',state:ref(r[1],CHECKED),prefix:ref(r[2],DEFS),final:ref(r[3],DEFS),book:ref(r[4],DEFS),checked:ref(r[5],DEFS),seen:ref(r[6],DEFS)}:
+           r.length===8?{$:'KBasePreparedWorld',state:ref(r[1],CHECKED),prefix:ref(r[2],DEFS),final:ref(r[3],DEFS),book:ref(r[4],DEFS),checked:ref(r[5],DEFS),seen:ref(r[6],DEFS),todos:r[7]}:
+-          {$:'KBasePreparedWorld',state:ref(r[1],CHECKED),prefix:ref(r[2],DEFS),final:ref(r[3],DEFS),book:ref(r[4],DEFS),checked:ref(r[5],DEFS),seen:ref(r[6],DEFS),todos:r[7],checkedBound:r[8]};kind=WORLD;break;
++          r.length===9?{$:'KBasePreparedWorld',state:ref(r[1],CHECKED),prefix:ref(r[2],DEFS),final:ref(r[3],DEFS),book:ref(r[4],DEFS),checked:ref(r[5],DEFS),seen:ref(r[6],DEFS),todos:r[7],checkedBound:r[8]}:
++          {$:'KBasePreparedWorld',state:ref(r[1],CHECKED),prefix:ref(r[2],DEFS),final:ref(r[3],DEFS),book:ref(r[4],DEFS),checked:ref(r[5],DEFS),seen:ref(r[6],DEFS),todos:r[7],checkedBound:r[8],constructorIndex:ref(r[9],DEF)};kind=WORLD;break;
+       case 11:
+         if(r.length!==5||!u32(r[3])||typeof r[4]!=='boolean')fail();
+         node={$:'FReadyPrefixState',names:ref(r[1],DEF),ctors:ref(r[2],DEF),count:r[3],ready:r[4]};kind=FRONTEND;break;
+@@ -187,7 +188,7 @@
+   for(const row of rows){
+     if(!Array.isArray(row)||!arenaU32(row[0])||row[0]>=arenaCounts.length)fail();
+     const tag=row[0],size=row.length-1;
+-    if(size!==arenaCounts[tag]&&!(tag===10&&(size===6||size===7)))fail();
++    if(size!==arenaCounts[tag]&&!(tag===10&&(size===6||size===7||size===8)))fail();
+     if(tag===1&&typeof row[1]!=='string'&&(!arenaU32(row[1])||row[1]>=baseCount+tags.length))fail();
+     tags.push(tag);
+     for(let j=0;j<size;j++){
+@@ -239,7 +240,7 @@
+   const span=(a,b)=>{if(!((a===0&&b===0)||(a>=range.begin&&b>=a&&b<range.end)))fail();};
+   for(let i=0;i<n;i++){
+     const tag=bytes[tagsAt+i],at=offsets[i],size=offsets[i+1]-at;
+-    if(tag>=arenaCounts.length||at>nf||offsets[i+1]>nf||(size!==arenaCounts[tag]&&!(tag===10&&(size===6||size===7))))fail();
++    if(tag>=arenaCounts.length||at>nf||offsets[i+1]>nf||(size!==arenaCounts[tag]&&!(tag===10&&(size===6||size===7||size===8))))fail();
+     const a=fields[at],b=fields[at+1],c=fields[at+2],d=fields[at+3],e=fields[at+4],f=fields[at+5],g=fields[at+6],h=fields[at+7],j=fields[at+8];
+     let node,kind;
+     switch(tag){
+@@ -269,7 +270,8 @@
+       case 10:
+         node=size===6?{$:'KBasePreparedWorld',state:ref(a,CHECKED),prefix:ref(b,DEFS),final:ref(c,DEFS),book:ref(d,DEFS),checked:ref(e,DEFS),seen:ref(f,DEFS)}:
+           size===7?{$:'KBasePreparedWorld',state:ref(a,CHECKED),prefix:ref(b,DEFS),final:ref(c,DEFS),book:ref(d,DEFS),checked:ref(e,DEFS),seen:ref(f,DEFS),todos:g}:
+-          {$:'KBasePreparedWorld',state:ref(a,CHECKED),prefix:ref(b,DEFS),final:ref(c,DEFS),book:ref(d,DEFS),checked:ref(e,DEFS),seen:ref(f,DEFS),todos:g,checkedBound:h};kind=WORLD;break;
++          size===8?{$:'KBasePreparedWorld',state:ref(a,CHECKED),prefix:ref(b,DEFS),final:ref(c,DEFS),book:ref(d,DEFS),checked:ref(e,DEFS),seen:ref(f,DEFS),todos:g,checkedBound:h}:
++          {$:'KBasePreparedWorld',state:ref(a,CHECKED),prefix:ref(b,DEFS),final:ref(c,DEFS),book:ref(d,DEFS),checked:ref(e,DEFS),seen:ref(f,DEFS),todos:g,checkedBound:h,constructorIndex:ref(j,DEF)};kind=WORLD;break;
+       case 11:
+         if(d>1)fail();node={$:'FReadyPrefixState',names:ref(a,DEF),ctors:ref(b,DEF),count:c,ready:d===1};kind=FRONTEND;break;
+     }
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -214,7 +214,7 @@
+     KTerm:spanAbi===3?['tag','name','id','quant','kids','removed','originBegin','originEnd']:['tag','name','id','quant','kids','removed'],KDef:['name','kind','arity','templates','typ','value','ctors','native','unsafe'],
+     KIndexLeaf:['hash','bucket'],KIndexNode:['hash','mask','left','right'],
+     KBasePrefixState:['bound','delta','stamp','patches','ready'],FFreshPrefixState:['next','ready'],
+-    KBasePreparedWorld:['state','prefix','final','book','checked','seen','todos','checkedBound'],FReadyPrefixState:['names','ctors','count','ready'],
++    KBasePreparedWorld:['state','prefix','final','book','checked','seen','todos','checkedBound','constructorIndex'],FReadyPrefixState:['names','ctors','count','ready'],
+     FReadyPrefixGraph:['graph','prefix','suffix','count','ready','names','ctors','baseNames'],
+     FPrefixGraph:['graph','prefix','suffix','count','ready'],FPrefixCompletion:['carrier','parsed'],FPrefixLoad:['trace','prefix','suffix','ready'],
+     ...(termAbi===1?{KLiteral:['kind','number','text','originBegin','originEnd'],KLambda:['name','id','quant','kids','removed','originBegin','originEnd','quantityPresent']}:{}),
+@@ -518,10 +518,11 @@
+ 
+ function admitPreparedWorld(cached) {
+   const world=cached.preparedWorld;
+-  return frameGraphs.has(cached)&&cached.preparedWorldVersion===3&&cached.preparedWorldProducer==='base_prefix_world_prepare'&&
++  return frameGraphs.has(cached)&&cached.preparedWorldVersion===4&&cached.preparedWorldProducer==='base_prefix_world_prepare'&&
+     cached.checkedPrefixState&&world?.$==='KBasePreparedWorld'&&world.prefix===cached.book&&world.state===cached.checkedPrefixState&&
+     Number.isSafeInteger(world.todos)&&world.todos>=0&&world.todos<=U32_MAX&&
+-    Number.isSafeInteger(world.checkedBound)&&world.checkedBound>=0&&world.checkedBound<=U32_MAX;
++    Number.isSafeInteger(world.checkedBound)&&world.checkedBound>=0&&world.checkedBound<=U32_MAX&&
++    ['KDef','KIndexLeaf','KIndexNode'].includes(world.constructorIndex?.$);
+ }
+ function admitFrontendReadyState(cached) {
+   const state=cached.frontendReadyState;
+@@ -601,8 +602,9 @@
+   if(range&&wantWorld&&cached.checkedPrefixState){
+     const world=api.base_prefix_world_prepare(loaded.book,cached.checkedPrefixState);
+     if(world?.$==='KBasePreparedWorld'&&world.state?.ready===true&&Number.isSafeInteger(world.todos)&&world.todos>=0&&world.todos<=U32_MAX&&
+-      Number.isSafeInteger(world.checkedBound)&&world.checkedBound>=0&&world.checkedBound<=U32_MAX)
+-      Object.assign(cached,{preparedWorldVersion:3,preparedWorldProducer:'base_prefix_world_prepare',preparedWorld:world});
++      Number.isSafeInteger(world.checkedBound)&&world.checkedBound>=0&&world.checkedBound<=U32_MAX&&
++      ['KDef','KIndexLeaf','KIndexNode'].includes(world.constructorIndex?.$))
++      Object.assign(cached,{preparedWorldVersion:4,preparedWorldProducer:'base_prefix_world_prepare',preparedWorld:world});
+   }
+   if(range&&wantFrontend){
+     const state=api.f_ready_prefix_prepare(loaded.book);

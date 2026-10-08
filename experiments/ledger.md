@@ -4106,3 +4106,14 @@ finite frontend/JS conformance; 13 native APIs remain unsupported. Proof model a
 by both Bend checkers; independent kernel blocked on Lean 4.34, no formal compiler proof.
 Release work 50m52s; guard occupancy 18m6s; peak 1.41 GiB. Raw closed/archived;
 previous seven release files and 110 inherited files preserved. No PR comment.
+
+
+### Phase68 registered — 2026-10-08
+
+[Design](../design/phase68/native-parity.md), [report](../implementation/phase68/README.md).
+Start `b6eb575` at 10:16:29 UTC; upstream unchanged. User authorizes focused
+profiling/research, native parity optimization, then B1/B2 C request speed and
+shared simplification. Seven installed files and110 inherited files preserved.
+P68-001 investigates before production edits; P68-002 tests typed matcher arity.
+Fresh raw Phase68 only, root serial guarded CPU3 targets, source agents CPU0.
+No new result or promotion at registration; no PR comments.

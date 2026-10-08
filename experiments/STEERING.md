@@ -1,3 +1,15 @@
+# Active frontier: Phase68 native parity work
+
+[Design](../design/phase68/native-parity.md) · [Report](../implementation/phase68/README.md).
+User authorizes profiling and compiler research, then strong general native
+optimizations followed by B1/B2 C request improvements and shared simplification.
+Baseline `b6eb575`, upstream `0592662`, installedB1 `c76f1113…`, B2 `cbffd1f8…`.
+Preserved seven installed files/110 inherited files; new raw onlyPhase68.
+No production selection yet. Root one guardedCPU3 target tree; source agentsCPU0.
+Old raw remains closed. No PR comments.
+
+---
+
 # Current frontier: Phase67 installed native improvement
 
 [Design](../design/phase67/native-speed-and-proof.md) ·

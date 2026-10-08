@@ -30,7 +30,7 @@ import * as Safe from "./safe.ts";
 // Constants
 // =========
 
-const VERSION = "2.0.34";
+const VERSION = "2.0.36";
 
 // the commands, one row each: [usage, what it does]; bend guide stays last
 const USAGE = [
@@ -40,7 +40,7 @@ const USAGE = [
   ["bend <file.bend> --verdict", "check it, then recheck it with the proven kernel"],
   ["bend <file.bend> --publish [<name>@<version>]", "publish the file and its imports; a name needs login"],
   ["bend link <name>@<version> 0x<hash>", "name a package already on the hub"],
-  ["bend login", "log in to Bender for --publish <name>@…"],
+  ["bend login", "log in to BendAI for --publish <name>@…"],
   ["bend <page.html> -o <dir>", "bundle a page that imports .bend files"],
   ["bend base [--types|<name>]", "print Base, its types, or a name and subnames"],
   ["bend update", "install the latest bend (curl | sh, shown first)"],
@@ -64,8 +64,12 @@ const GUIDE = path.join(Bend.BEND_DIR, "..", "guide");
 
 const ORIGIN = process.env.BEND_ORIGIN ?? "https://bend-lang.com";
 
-// the Bender key `bend login` wrote: {key, login}, mode 0600
-const BENDER = path.join(os.homedir(), ".bend", "bender.json");
+// the BendAI key `bend login` wrote: {key, login}, mode 0600
+const BENDAI = path.join(os.homedir(), ".bend", "bendai.json");
+
+// where bend 2.0.35 and before wrote that key, while BendAI was named
+// Bender; hub_check moves it to BENDAI
+const BENDAI_OLD = path.join(os.homedir(), ".bend", "bender.json");
 
 // the daily version check's cache: when it last asked, and the answer
 const CHECK = path.join(os.homedir(), ".bend", "check.json");
@@ -86,7 +90,7 @@ const MISMATCH = "Sorry - this is a mismatch between the TypeScript implementati
   + " Meanwhile, feel free to open an issue to report this bug.";
 
 // BendHub's terms; s18.4 makes MIT-0 the default license
-const TERMS = "https://bend-lang.com/bender/terms#s18";
+const TERMS = "https://bend-lang.com/bendai/terms#s18";
 
 // the hub's SPDX line rule (hubdb.ts)
 const SPDX_RE = /^\s*SPDX-License-Identifier:\s*([A-Za-z0-9.+\-() ]{1,80}?)\s*$/;
@@ -275,7 +279,7 @@ async function cli_file(args: string[]): Promise<void> {
     }
     return cli_bundle(file, outs[0]);
   }
-  if (publish && (outs.length !== 0 || only || checkup)) {
+  if (publish && (outs.length !== 0 || only || verdict || checkup)) {
     cli_fail("--publish takes no other option");
   }
   if ((only || verdict) && (outs.length !== 0 || checkup || (only && verdict))) {
@@ -371,6 +375,7 @@ function cli_emit(book: Bend.Book, out: string): void {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "bend-"));
     const c   = path.join(dir, path.basename(out) + ".c");
     fs.writeFileSync(c, Comp.compile_book(book));
+    Bun.gc(true);
     try {
       cli_build(out, c);
     } finally {
@@ -415,21 +420,23 @@ function cc_find(gpu: boolean): string {
 
 // cli_build builds the C file at `file` into the binary `bin`. A `!` program
 // builds with the GPU lane and writes its GPU program too (on Linux only with
-// CUDA at $CUDA_HOME, else at /usr/local/cuda, its libraries in lib64 or, as
-// nix lays them, lib; else the ! runs on the cores). On macOS a program with
-// a framework (#import: a window, audio) builds as Objective-C; on Linux it
-// links the X11 and ALSA libraries it includes.
+// CUDA at the first of $CUDA_HOME, $CUDA_PATH, /usr/local/cuda and /opt/cuda
+// (Arch's) that holds nvrtc.h, its libraries in lib64 or, as nix lays them,
+// lib; else the ! runs on the cores). On macOS a program with a framework
+// (#import: a window, audio) builds as Objective-C; on Linux it links the X11
+// (plus libdl, for dlopen before glibc 2.34) and ALSA libraries it includes.
 function cli_build(bin: string, file: string): void {
   const c     = fs.readFileSync(file, "utf8");
   const mac   = process.platform === "darwin";
-  const cuda  = process.env.CUDA_HOME || "/usr/local/cuda";
-  const bangs = !/^#define BANGS\s+0$/m.test(c)
-    && (mac || fs.existsSync(cuda + "/include/nvrtc.h"));
+  const cuda  = [process.env.CUDA_HOME, process.env.CUDA_PATH,
+    "/usr/local/cuda", "/opt/cuda"]
+    .find(d => d && fs.existsSync(d + "/include/nvrtc.h")) ?? "";
+  const bangs = !/^#define BANGS\s+0$/m.test(c) && (mac || cuda !== "");
   const cc    = cc_find(bangs);
   const objc  = mac && (bangs || /^#import /m.test(c))
     ? ["-x", "objective-c", "-fobjc-arc", "-fmodules"] : [];
-  const libs  = [["X11", "X11"], ["alsa", "asound"]].flatMap(([h, l]) =>
-    !mac && c.includes("#include <" + h + "/") ? ["-l" + l] : []);
+  const libs  = [["X11", "X11", "dl"], ["alsa", "asound"]].flatMap(([h, ...ls]) =>
+    !mac && c.includes("#include <" + h + "/") ? ls.map((l) => "-l" + l) : []);
   const cpu = [...objc, "-std=c11", "-O3", file, "-lpthread", "-lm",
     ...libs, "-o", path.resolve(bin)];
   const gpu = mac ? ["-DBEND_METAL=1", ...cpu]
@@ -561,8 +568,11 @@ function named_parts(named: string): [string, string] {
 async function hub_check(named: string): Promise<{ named: string; key: string; free: boolean }> {
   const [name, version] = named_parts(named);
   let key = "";
+  if (!fs.existsSync(BENDAI) && fs.existsSync(BENDAI_OLD)) {
+    fs.renameSync(BENDAI_OLD, BENDAI);
+  }
   try {
-    key = String((JSON.parse(fs.readFileSync(BENDER, "utf8")) as { key?: string }).key ?? "");
+    key = String((JSON.parse(fs.readFileSync(BENDAI, "utf8")) as { key?: string }).key ?? "");
   } catch {}
   if (key === "") {
     key = await cli_login();
@@ -606,14 +616,14 @@ async function hub_ask(route: string, key: string, body?: unknown): Promise<Reco
 
 // key_dead forgets a key the hub refused, so the next run logs in
 function key_dead(): never {
-  fs.rmSync(BENDER, { force: true });
+  fs.rmSync(BENDAI, { force: true });
   throw "Error: " + Bend.BEND_HUB + " does not know this login: run bend login";
 }
 
-// cli_login starts Bender's CLI login, opens its page and polls until the
+// cli_login starts BendAI's CLI login, opens its page and polls until the
 // browser authorized a key (SPEC.md 6.14 of bend-lang.com)
 async function cli_login(): Promise<string> {
-  const st = await fetch(ORIGIN + "/bender/cli/start", { method: "POST",
+  const st = await fetch(ORIGIN + "/bendai/cli/start", { method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ machine: os.hostname() }) }).then((r) => r.json()).catch(() => null) as
     { poll_secret?: string; verify_url?: string; expires_at?: string; interval_ms?: number } | null;
@@ -627,13 +637,13 @@ async function cli_login(): Promise<string> {
   const until = Date.parse(st.expires_at ?? "") || Date.now() + 600000;
   while (Date.now() < until) {
     await new Promise((r) => setTimeout(r, Math.max(1000, st.interval_ms ?? 2000)));
-    const got = await fetch(ORIGIN + "/bender/cli/poll", { method: "POST",
+    const got = await fetch(ORIGIN + "/bendai/cli/poll", { method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ poll_secret: st.poll_secret }) }).then((r) => r.json()).catch(() => null) as
       { status?: string; key?: string; login?: string } | null;
     if (got?.status === "authorized" && typeof got.key === "string") {
-      fs.mkdirSync(path.dirname(BENDER), { recursive: true });
-      fs.writeFileSync(BENDER, JSON.stringify({ key: got.key, login: got.login ?? "" }) + "\n", { mode: 0o600 });
+      fs.mkdirSync(path.dirname(BENDAI), { recursive: true });
+      fs.writeFileSync(BENDAI, JSON.stringify({ key: got.key, login: got.login ?? "" }) + "\n", { mode: 0o600 });
       cli_say(2, "logged in as " + String(got.login ?? "") + "\n");
       return got.key;
     }
@@ -717,7 +727,7 @@ function cli_verdict(book: Bend.Book, kernel: boolean): number {
   if (bad.length !== 0) {
     cli_say(2, FAIL + "\nError: " + String(bad.length) + " def" + (bad.length === 1
       ? " relies" : "s rely") + " on unsafe or foreign code:\n"
-      + bad.map((k) => "- " + k + "\n").join(""));
+      + bad.map((k) => "- " + Bend.name_key(k) + "\n").join(""));
     return 1;
   }
   if (kernel && !Safe.safe_check(book)) {
@@ -729,32 +739,35 @@ function cli_verdict(book: Bend.Book, kernel: boolean): number {
 }
 
 // book_promises lists the defs outside Base (laws and types too) that are
-// @unsafe or foreign, or whose type, body or constructor fields name a def
-// that relies on one: a foreign def is a promise like @unsafe is, as the
-// checker reads its type, never its code. If the book holds a promise, a
-// walk from the defs outside Base collects who names whom, then the
-// promises flood back along those edges.
+// @unsafe or foreign, or whose type, body, datatype kind, parameters or
+// constructor fields name a def that relies on one. A foreign def is a
+// promise like @unsafe is: the checker reads its type, never its code.
+// If the book holds a promise, a walk from the defs outside Base collects
+// who names whom, then the promises flood back along those edges.
 function book_promises(book: Bend.Book): string[] {
   const own  = [...new Set(book.order)].filter((k) => book.tlds[k].b !== true);
   const bad  = new Set(Object.keys(book.tlds).filter((k) => {
     const t = book.tlds[k] as Bend.Def;
     return t.u === true || (t.i !== undefined && t.b !== true);
   }));
+  if (bad.size === 0) {
+    return [];
+  }
   const uses: Record<string, string[]> = Object.create(null);
-  const seen = new Set<string>();
-  for (const q = bad.size === 0 ? [] : own.slice(); q.length > 0;) {
-    const k = q.pop() as string;
+  const reach = new Set(own);
+  for (const k of reach) {
     const t = book.tlds[k];
-    if (t !== undefined && !seen.has(k)) {
-      seen.add(k);
+    if (t !== undefined) {
       const rs = new Set<string>();
-      for (const c of t.$ === "ADT" ? t.c : [t]) {
+      for (const c of t.$ === "ADT" ? [t, ...t.c] : [t]) {
         term_refs(Bend.term_lower(c.T), rs);
       }
-      term_refs(t.$ === "Def" ? t.e : undefined, rs);
+      if (t.$ === "Def" && t.e !== undefined) {
+        term_refs(t.e, rs);
+      }
       for (const r of rs) {
         (uses[r] ??= []).push(k);
-        q.push(r);
+        reach.add(r);
       }
     }
   }
@@ -765,20 +778,24 @@ function book_promises(book: Bend.Book): string[] {
 }
 
 // term_refs adds to out the names a term (a span skipped) refers to.
-function term_refs(tm: unknown, out: Set<string>): void {
-  if (typeof tm === "object" && tm !== null) {
-    const { $, k } = tm as { $?: string; k?: string };
-    if (($ === "Ref" || $ === "ADT") && k !== undefined) {
-      out.add(k);
+function term_refs(t: object, out: Set<string>): void {
+  const seen = new Set([t]);
+  for (const todo = [t]; todo.length > 0;) {
+    const x = todo.pop() as Record<string, unknown>;
+    if ((x.$ === "Ref" || x.$ === "ADT") && typeof x.k === "string") {
+      out.add(x.k);
     }
-    for (const [f, v] of Object.entries(tm)) {
-      if (f !== "s") {
-        term_refs(v, out);
+    for (const f in x) {
+      const v = x[f];
+      if (f !== "s" && typeof v === "object" && v !== null && !seen.has(v)) {
+        seen.add(v);
+        todo.push(v);
       }
     }
   }
 }
 
+// cli_say writes text to fd, and drops it if the reader has left (EPIPE).
 function cli_say(fd: number, text: string): void {
   try {
     fs.writeSync(fd, text);
@@ -786,7 +803,6 @@ function cli_say(fd: number, text: string): void {
     if ((e as NodeJS.ErrnoException).code !== "EPIPE") {
       throw e;
     }
-    process.exit(0);
   }
 }
 
@@ -834,7 +850,7 @@ function book_seed(base: Bend.Book): Bend.Book {
   }
   Object.assign(book.ctrs, base.ctrs);
   for (const k of Object.keys(base.tmps)) {
-    book.tmps[k] = { ...base.tmps[k] };
+    book.tmps[k] = new Map(base.tmps[k]);
   }
   book.order.push(...base.order);
   return book;

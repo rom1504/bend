@@ -61,7 +61,7 @@ const SAID   = "Once a day, bend asks bend-lang.com";
 const MOVED  = "Bend's installer changed";
 const PATHS  = "/usr/bin:/bin";
 const TERMS  = "Publishing to BendHub: public and permanent, under"
-  + " https://bend-lang.com/bender/terms#s18\n";
+  + " https://bend-lang.com/bendai/terms#s18\n";
 
 // what the Caddy stand-in saw: "<method> <path> <user-agent>"
 const seen: string[] = [];
@@ -81,6 +81,13 @@ function run(bin: string, args: string[], env: Record<string, string> = {},
 function bend(args: string[], env: Record<string, string> = {}):
   Promise<lib.Exec> {
   return run(BIN, args, env);
+}
+
+// The reader has exited before bend starts: no race with its first write.
+function bend_closed(args: string[]): Promise<lib.Exec> {
+  return run("bash", ["-c",
+    'exec 3> >(true); wait "$!"; exec "$@" >&3 2>&3',
+    "--", BIN, ...args], { BEND_NO_TELEMETRY: "1" });
 }
 
 // the card without its colors
@@ -229,7 +236,7 @@ try {
   check("no shell rc is written", !fs.readdirSync(HOME).some((f) =>
     f !== ".bend"));
   check("the card names the version, the PATH line and the daily check",
-    plain(ins.out).includes("Bend \u2588  " + ver) && ins.out.includes("code bender")
+    plain(ins.out).includes("Bend \u2588  " + ver) && ins.out.includes("Bend developer")
     && ins.out.includes("export PATH=\"")
     && ins.out.includes(SAID));
   const again = await install({ PATH: path.dirname(BIN) + ":" + PATHS });
@@ -282,6 +289,33 @@ try {
   check("guide, base and a program run through the executable",
     guide.out.startsWith("# Bend") && base.out.startsWith("type Map")
     && sum5.code === 0 && sum5.out === "5n\n");
+  const bad_file = path.join(TMP, "bad.bend");
+  const sum_file = path.join(TMP, "sum.bend");
+  const unsafe_file = path.join(TMP, "unsafe.bend");
+  const checkup = path.join(TMP, "checkup.bend");
+  const good_checkup = path.join(TMP, "good_checkup.bend");
+  const verdict_tmp = path.join(TMP, "verdict-tmp");
+  fs.mkdirSync(verdict_tmp);
+  const no_lean = await bend([sum_file, "--verdict"],
+    { BENDTT: "", TMPDIR: verdict_tmp, BEND_NO_TELEMETRY: "1" });
+  check("a failed kernel build leaves no private BendTT input",
+    no_lean.code === 1 && no_lean.err.includes("--verdict needs Lean")
+    && fs.readdirSync(verdict_tmp).every((name) => !name.startsWith("bendtt-")));
+  fs.writeFileSync(unsafe_file,
+    "import Base\n@unsafe\ndef main() -> Nat:\n  0n\n");
+  fs.writeFileSync(checkup,
+    "import ./sum.bend as Good\nimport ./bad.bend as Bad\n");
+  fs.writeFileSync(good_checkup, "import ./sum.bend as Good\n");
+  for (const args of [[bad_file], [bad_file, "--check-only"],
+    [unsafe_file, "--verdict"], ["--unknown"], [checkup, "--checkup"]]) {
+    const got = await bend_closed(args);
+    check("a closed reader keeps failure: " + args.join(" "), got.code === 1);
+  }
+  for (const args of [[sum_file], [sum_file, "--check-only"],
+    ["--help"], [good_checkup, "--checkup"]]) {
+    const got = await bend_closed(args);
+    check("a closed reader keeps success: " + args.join(" "), got.code === 0);
+  }
   const two  = "import Base\ndef two() -> Nat:\n  2n\n";
   const use  = (at: string) => "import Base\nimport ./" + at
     + " as T\ndef main() -> Nat:\n  T.two\n";
@@ -296,6 +330,14 @@ try {
     && got.ok && await got.text() === lics["sub/LICENSE"]);
   check("the notice names the terms and the shallowest LICENSE's SPDX id",
     spdx.err.includes(TERMS + "License: MIT (LICENSE)\n"));
+  for (const flags of [["--verdict", "--publish"], ["--publish", "--verdict"]]) {
+    const count = seen.length;
+    const run = await bend([path.join(TMP, "sum.bend"), ...flags],
+      { BEND_HUB: ORIGIN, BEND_NO_TELEMETRY: "1" });
+    check(flags.join(" ") + " is refused before publishing: " + run.err,
+      run.code === 1 && run.out === "" && run.err === "bend: --publish"
+      + " takes no other option (see bend --help)\n" && seen.length === count);
+  }
   const ids: [string, string][] = [
     ["SPDX-License-Identifier: MIT\r\n", "MIT (LICENSE)"],
     ["SPDX-License-Identifier: (MIT  OR Apache-2.0)\n",
@@ -323,7 +365,7 @@ try {
     + " warns: " + none.err, none.code === 0
     && none.out.startsWith(pkg_hash(bare) + "\n")
     && none.err.includes(TERMS + "License: MIT-0, the default (no LICENSE"
-    + " file): https://bend-lang.com/bender/terms#s18.4\nwarning: no file is"
+    + " file): https://bend-lang.com/bendai/terms#s18.4\nwarning: no file is"
     + " named exactly LICENSE"));
   const bom  = { "lic_bom.bend": use("two.bend"), "two.bend": two,
     "LICENSE": "SPDX-License-Identifier: MIT\n" };

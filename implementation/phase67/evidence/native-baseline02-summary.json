@@ -1,0 +1,180 @@
+{
+  "kind": "phase67-native-summary-v1",
+  "complete": true,
+  "producer": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase67/benchmark/analyze.py",
+    "sha256": "e2e6208cac22129a85c81cc139ee0380defd9d64217097650adce23cec228122",
+    "bytes": 3691
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-baseline02/report.json",
+      "sha256": "37bb490f129ca26aafde0e7d7c236a665c8b9e64bb0376321b2a57428df3c5c1",
+      "bytes": 63882
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-timing03/report.json",
+      "sha256": "33b61f891bf8359620854dffb886ee9dab4cb06f4a91f6f2d496f44f501942ff",
+      "bytes": 63284
+    }
+  ],
+  "recipeSha256": "43c21dc7ddce0a1e1f629751f180cdeebbbe261646f52a4e9414a30eee65103e",
+  "rows": [
+    {
+      "case": "array",
+      "roles": {
+        "upstream": {
+          "runtimeMicrosecondsPerWorkload": 2.9052734375,
+          "samplesMicrosecondsPerWorkload": [
+            3.076171875,
+            2.734375
+          ],
+          "rounds": 2,
+          "minimumElapsedMs": 168,
+          "allTimingQualified": true,
+          "runtimeRelativeRange": 0.11764705882352941,
+          "emissionTimings": {
+            "initializeMs": 229.8389370000001,
+            "loadCheckMs": 295.47161000000006,
+            "emitMs": 415.610768,
+            "totalMs": 1826.7968919999998
+          },
+          "clangWallSeconds": 0.9048942849040031,
+          "sourceBytes": 118820,
+          "executableBytes": 54280,
+          "emissionPeakRssBytes": 430637056,
+          "clangPeakRssBytes": 146907136
+        },
+        "selfhost": {
+          "runtimeMicrosecondsPerWorkload": 356.15234375,
+          "samplesMicrosecondsPerWorkload": [
+            351.708984375,
+            360.595703125
+          ],
+          "rounds": 2,
+          "minimumElapsedMs": 21609,
+          "allTimingQualified": true,
+          "runtimeRelativeRange": 0.02495201535508637,
+          "emissionTimings": {
+            "initializeMs": 765.3206630000001,
+            "prepareBaseMs": 70.22713399999998,
+            "loadCheckEmitMs": 2030.025206,
+            "totalMs": 3967.7208430000005
+          },
+          "clangWallSeconds": 16.753559408942237,
+          "sourceBytes": 2013533,
+          "executableBytes": 1065184,
+          "emissionPeakRssBytes": 601681920,
+          "clangPeakRssBytes": 407113728
+        }
+      },
+      "selfhostOverUpstreamRuntime": 122.58823529411765,
+      "selfhostOverUpstreamClang": 18.514383048313274
+    },
+    {
+      "case": "closures",
+      "roles": {
+        "upstream": {
+          "runtimeMicrosecondsPerWorkload": 3.841145833333333,
+          "samplesMicrosecondsPerWorkload": [
+            3.841145833333333,
+            3.841145833333333
+          ],
+          "rounds": 2,
+          "minimumElapsedMs": 118,
+          "allTimingQualified": true,
+          "runtimeRelativeRange": 0.0,
+          "emissionTimings": {
+            "initializeMs": 241.69598299999984,
+            "loadCheckMs": 300.96981900000014,
+            "emitMs": 382.02374999999984,
+            "totalMs": 1802.7671179999998
+          },
+          "clangWallSeconds": 0.8832087200134993,
+          "sourceBytes": 125109,
+          "executableBytes": 56872,
+          "emissionPeakRssBytes": 429654016,
+          "clangPeakRssBytes": 147296256
+        },
+        "selfhost": {
+          "runtimeMicrosecondsPerWorkload": 12.01171875,
+          "samplesMicrosecondsPerWorkload": [
+            11.81640625,
+            12.20703125
+          ],
+          "rounds": 2,
+          "minimumElapsedMs": 363,
+          "allTimingQualified": true,
+          "runtimeRelativeRange": 0.032520325203252036,
+          "emissionTimings": {
+            "initializeMs": 743.376821,
+            "prepareBaseMs": 68.66767400000003,
+            "loadCheckEmitMs": 2077.2023910000003,
+            "totalMs": 3963.992482
+          },
+          "clangWallSeconds": 16.752659588004462,
+          "sourceBytes": 1957123,
+          "executableBytes": 1033504,
+          "emissionPeakRssBytes": 599547904,
+          "clangPeakRssBytes": 400404480
+        }
+      },
+      "selfhostOverUpstreamRuntime": 3.1271186440677967,
+      "selfhostOverUpstreamClang": 18.967950846033776
+    },
+    {
+      "case": "numeric",
+      "roles": {
+        "upstream": {
+          "runtimeMicrosecondsPerWorkload": 3.265122673434856,
+          "samplesMicrosecondsPerWorkload": [
+            3.27834179357022,
+            3.2519035532994924
+          ],
+          "rounds": 2,
+          "minimumElapsedMs": 123,
+          "allTimingQualified": true,
+          "runtimeRelativeRange": 0.008097165991902808,
+          "emissionTimings": {
+            "initializeMs": 229.27248199999985,
+            "loadCheckMs": 298.5318279999999,
+            "emitMs": 404.387289,
+            "totalMs": 1806.755604
+          },
+          "clangWallSeconds": 0.9459272519452497,
+          "sourceBytes": 117622,
+          "executableBytes": 53224,
+          "emissionPeakRssBytes": 426786816,
+          "clangPeakRssBytes": 145969152
+        },
+        "selfhost": {
+          "runtimeMicrosecondsPerWorkload": 50.77464043993231,
+          "samplesMicrosecondsPerWorkload": [
+            53.40524534686971,
+            48.14403553299492
+          ],
+          "rounds": 2,
+          "minimumElapsedMs": 1821,
+          "allTimingQualified": true,
+          "runtimeRelativeRange": 0.10361884925800582,
+          "emissionTimings": {
+            "initializeMs": 780.794986,
+            "prepareBaseMs": 76.90377600000011,
+            "loadCheckEmitMs": 2135.00725,
+            "totalMs": 4141.721786
+          },
+          "clangWallSeconds": 16.56089364294894,
+          "sourceBytes": 1975764,
+          "executableBytes": 1041216,
+          "emissionPeakRssBytes": 597811200,
+          "clangPeakRssBytes": 402628608
+        }
+      },
+      "selfhostOverUpstreamRuntime": 15.550607287449392,
+      "selfhostOverUpstreamClang": 17.50757641128568
+    }
+  ],
+  "allTimingQualified": true,
+  "scope": "Equal input wrappers, native CPU3 threads1/GPUoff. Six-family diagnostic maximum; finite conformance, not universal speed. C build is single acquisition, runtime medians exclude it.",
+  "geomeanSelfhostOverUpstreamRuntime": 18.132046967223424
+}

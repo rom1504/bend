@@ -1,0 +1,74 @@
+{
+  "kind": "phase67-bounded-compilation-opportunity-review",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "productionChanged": false,
+  "decision": "defer",
+  "producer": {
+    "file": "selfhost/tools/performance/phase67/latency/review.py",
+    "sha256": "af403793ce4a7c9a68cc72e63e41222675cc740b36b8bc90ff87e9477ae17ac9"
+  },
+  "inputs": [
+    {
+      "file": "implementation/phase66/evidence/b2-07-broad.json",
+      "sha256": "40eb691ebd4ab8ea884bac8a2dca75ef1b6809cfcfe0044f1a7a75f1ac24a6cf"
+    },
+    {
+      "file": "implementation/phase65/evidence/baseline-state09-target-ancestry.json",
+      "sha256": "e3c57ad4ef40f580b654cde504e7b30d5939e0c6a8056a4b4832725ceaa11ad9"
+    },
+    {
+      "file": "selfhost/build/phase66/bootstrap-b2-07/image-pins.json",
+      "sha256": "8339978a1d42443d158c21c5f7ff4ce15cb990ba2527f253a6f674bf5afe4eec"
+    },
+    {
+      "file": "implementation/phase65/base-products.md",
+      "sha256": "c8ba8dac16c5bea7a053bb17882b61397b92a2b75e4f4e5bfc1eb2c25cb13e6c"
+    },
+    {
+      "file": "implementation/phase65/measurement.md",
+      "sha256": "29bc190e5969d60d27a5e7e90aff1931bec52d3d7dc649d6e4ca0f527fb8e455"
+    },
+    {
+      "file": "selfhost/src/back/js/direct/calls.bend",
+      "sha256": "d0a76d45d4cc1da4e586f64a264c473ec4b363303d2d11b19bdcb6cbc2b77e26"
+    },
+    {
+      "file": "selfhost/src/back/js/direct/model.bend",
+      "sha256": "755fe8e8c99bf1e2a045e66cceb38377dfa5bf0a693a263142ff8f4ed705b4be"
+    },
+    {
+      "file": "selfhost/src/back/js/direct/host.bend",
+      "sha256": "b6d27efec9c7d4099d251c5bbdf3c3ad081d1c171750d5eccba6ff9d985976f3"
+    },
+    {
+      "file": "selfhost/src/back/js/direct/reach.bend",
+      "sha256": "2a36a775a13169845f230555fe4d1373174d7e87e31600457c1ca574fa3ca538"
+    }
+  ],
+  "actualB2": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-full-latency/preparation/prepare-candidate/stage/project/dist/api.mjs",
+    "sha256": "0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f"
+  },
+  "current": {
+    "sourceCount": 23,
+    "compilationRatioToTS": 1.3211002190225332,
+    "uniformTimeReductionForParity": 0.24305515539170186,
+    "mapCompilationMs": 947.075513,
+    "mapTSCompilationMs": 508.084757
+  },
+  "historicalProfileOnly": {
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/baseline-state09/preparation/prepare-baseline/stage/project/dist/api.mjs",
+      "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e"
+    },
+    "allAritySampledMicroseconds": 40841,
+    "namedCallAritySampledMicroseconds": 17088,
+    "allArityCountShare": 0.02,
+    "scope": "Phase65 baseline, before retained Base annotations and decoder improvement; not a current timing prediction."
+  },
+  "rejectedBeforeBuild": "Precompute arities before local tail-call analysis: only the repeated named-call portion is removable; the existing per-definition computation must remain, and a new pass/index adds cost.",
+  "nextAdmission": "Resume only after a current Numeric/Map diagnostic identifies >=5% plausible net affected-source saving; keep native primary and do not rebuild merely to try a previously rejected guard.",
+  "targetRuns": 0
+}

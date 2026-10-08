@@ -1,0 +1,39 @@
+{
+  "kind": "phase65-final-qualification-program-reference-retry-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/join-final-qualification-v3.py",
+    "sha256": "fb7ca763a178908539ac30db59e33c1546c6b30e4f00ed4f58b43b073ccfb008"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/join-final-qualification-v4.py",
+    "sha256": "8d4e47c928a506e3627c2ad9fc69e4a7ada96a88ab6ba5ccbc2a893be930825d"
+  },
+  "edits": [
+    {
+      "old": "              'b2-semantics-execution', 'b2-program-equality']]",
+      "new": "              'b2-semantics-execution', 'b2-program-equality02', 'b2-program-equality02-execution', 'checked-programs-execution']]",
+      "occurrences": 1
+    },
+    {
+      "old": "        record, plan = execution(FINAL/f'{name}-stage-execution/report.json', count)\n        if name == 'b2':",
+      "new": "        stage_file = FINAL/f'{name}-stage-execution/report.json'\n        if name == 'b2':\n            record = read(stage_file); assert record['complete'] is False and record['pass'] is False\n            assert 'returncode' not in record and len(record['steps']) == 5\n            plan = read(record['plan']); assert pin(record['plan'])['sha256'] == record['planSha256']\n            assert len(plan['commands']) == 5\n            for actual, expected in zip(record['steps'], plan['commands']):\n                assert actual['name'] == expected['name'] and actual['command'] == expected['command']\n            assert all(row['returncode'] == 0 for row in record['steps'][:4])\n            assert record['steps'][4]['name'] == 'b2-program-equality' and record['steps'][4]['returncode'] == 1\n            failed_equality = read(FINAL/'b2-program-equality/report.json')\n            assert failed_equality['complete'] is False and failed_equality['pass'] is False\n            assert failed_equality['emissions'] == [] and failed_equality['points'] == []\n            assert failed_equality['error']['name'] == 'AssertionError'\n        else:\n            record, plan = execution(stage_file, count)\n        if name == 'b2':",
+      "occurrences": 1
+    },
+    {
+      "old": "        gate(name+'Stage', FINAL/f'{name}-stage-execution/report.json', commands=count)\n    assert index['bootstrapReuse']['newEmission'] is False",
+      "new": "        if name == 'b2':\n            retry_file = FINAL/'b2-program-equality02-execution/report.json'\n            retry, retry_plan = execution(retry_file, 1)\n            expected_retry = json.loads(json.dumps(original_plan['commands'][4]))\n            expected_retry['command'] = [str(FINAL/'b2-program-equality02-supervisor') if x == str(FINAL/'b2-program-equality-supervisor')\n                else str(FINAL/'b2-program-equality02') if x == str(FINAL/'b2-program-equality') else x for x in expected_retry['command']]\n            assert retry_plan['commands'] == [expected_retry]\n            gate('b2StageResumed', retry_file, originalExecution=pin(stage_file), successfulPrefixCommands=4,\n                 successfulRetryCommands=1, originalPreflightFailurePreserved=True)\n        else:\n            gate(name+'Stage', stage_file, commands=count)\n    # Fresh selected-host program artifacts avoid relaxing the maintained equality oracle's driver identity.\n    programs_file = FINAL/'checked-programs-execution/report.json'\n    programs, programs_plan = execution(programs_file, 2)\n    complete_checked_plan = read(FINAL/'checked-plan.json'); audit(complete_checked_plan)\n    assert complete_checked_plan['attempt']['sha256'] == pin(attempt_file)['sha256']\n    assert len(complete_checked_plan['commands']) == 14\n    assert programs_plan['commands'] == complete_checked_plan['commands'][11:13]\n    assert [x['name'] for x in programs_plan['commands']] == ['program45-acquisition','program45-smoke']\n    fresh_program_manifest = read(FINAL/'checked/program45/manifest.json')\n    assert fresh_program_manifest['complete'] and len(fresh_program_manifest['cases']) == 45\n    fresh_smoke = passed(FINAL/'checked/program45-smoke/report.json','passed')\n    assert len(fresh_smoke['cases']) == 45 and all(x['passed'] and x['result']['pass'] for x in fresh_smoke['cases'])\n    for row in fresh_smoke['cases']: pin(row['result']['module'])\n    gate('selectedHostFreshProgram45', programs_file, commands=2, observations=45)\n    assert index['bootstrapReuse']['newEmission'] is False",
+      "occurrences": 1
+    },
+    {
+      "old": "    equality_file = FINAL/'b2-program-equality/report.json'",
+      "new": "    equality_file = FINAL/'b2-program-equality02/report.json'",
+      "occurrences": 1
+    },
+    {
+      "old": "    manifest = read(equality['reference'])",
+      "new": "    assert pin(equality['reference'])['file'] == str(FINAL/'checked/program45/manifest.json')\n    manifest = read(equality['reference'])",
+      "occurrences": 1
+    }
+  ],
+  "scope": "Preserves failed B2 driver-identity preflight; requires exact successful prefix4 plus fresh unchanged-oracle retry1, and fresh selected-host program45 acquisition/smoke. No target execution or failure rewrite."
+}

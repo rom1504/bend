@@ -1,8 +1,10 @@
 # Compiler requests: prepared state and structured emission
 
-**Phase64 State09 is installed and verified.**
-
-**Phase65 State10 is selected for integration; qualification is in progress.**
+**Phase65 State10 is installed and verified.** Its
+[compiler qualification](../../implementation/phase65/evidence/state10-qualification.json)
+and [release verification](../../implementation/phase65/evidence/state10-release.json)
+pass, including own-source acceptance, exact B2/B3 reproduction and installed
+CLI checks.
 Its static host decoder transports the same eagerly validated frame4 values.
 Its optional Base annotation artifact is produced, selected and admitted by Bend;
 only a wanted/admitted request loads the heavy product graph. Public fallback,
@@ -21,10 +23,12 @@ nonoverlapping baseline/candidate sample ranges. Four compile faster than TS,
 ten are faster including imports. These are genuine-B2 fresh prepared-cache
 requests, with preparation and output verification outside timing. Compilation-
 only parity still requires about **22.45% less time**; no generated-program speed
-gain is claimed. H2's incremental benefit over H6 alone remains under measurement.
-Release qualification and installation remain pending.
+gain is claimed. A separate [same-B2 sidecar ablation](../../implementation/phase65/evidence/base-annotations-incremental-b2.json)
+finds Map −5.13% and map-churn −3.15%, with H2 code and H6 unchanged;
+this does not establish H2's isolated contribution to the final broad mean.
+The installed package is checked B1; the measured genuine B2 is separately qualified.
 
-## Installed Phase64 results
+## Historical Phase64 results
 
 The completed Phase64 metrics and qualification below retain their original
 campaign and installed image. Its balanced genuine-B2 campaign passes **207 exact-output workers across 23
@@ -40,7 +44,7 @@ cold OS caches, the installed checked-B1 CLI or generated-program execution.
 The [Phase64 results](../../implementation/phase64/state09-results.md) bind the
 completed comparison and qualification separately.
 
-The installed package is equality-derived checked B1 (`a2f8b021…`); the measured
+That release installed equality-derived checked B1 (`a2f8b021…`); the measured
 genuine B2 is `b09fe54a…`. Full checked and B2 semantic gates, native3 and runtime45
 pass. The B2/B3 fixed point is **4,040,799 bytes**. Fresh own-source type acceptance
 passes; the 3,254 unsafe definitions retain the expected proof-trust refusal.
@@ -309,7 +313,7 @@ State06; this small source reduction is separate from performance qualification.
 
 ## Phase64 State09: retained facts and indexed transport
 
-These mechanisms are selected in the installed Phase64 State09 release. The
+These mechanisms were selected in Phase64 State09 and remain in Phase65. The
 [Phase64 results](../../implementation/phase64/state09-results.md) keep local
 experiments, completed compiler measurements and release gates separate.
 The changes below preserve the existing Bend parser/checker and lowering plan;

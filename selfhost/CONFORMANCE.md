@@ -1,12 +1,13 @@
 # Compiler validation
 
-## Phase65 selected candidate: qualification in progress
+## Current Phase65 qualification
 
 Phase65 State10 combines the H2 optional Base annotation products and H6 static
-frame4 decoder. It is selected for final integration; Phase64 State09 remains
-the installed, qualified release. The [live Phase65 report](../implementation/phase65/README.md)
-and [controls record](../implementation/phase65/controls.md) distinguish completed
-candidate tests from pending final-image and release gates. State10 additionally
+frame4 decoder. It is installed and verified. The
+[Phase65 report](../implementation/phase65/README.md),
+[compiler qualification](../implementation/phase65/evidence/state10-qualification.json)
+and [release verification](../implementation/phase65/evidence/state10-release.json)
+bind actual final images, host controls and installed checks. State10 additionally
 requires the exact qualified Base content hash before optional production or
 sidecar reading. Arbitrary/custom Base and future Base updates use ordinary
 annotation until their product preparation is independently qualified.
@@ -28,15 +29,19 @@ compilation and ten including imports. These are fresh prepared-cache genuine-B2
 compiler measurements, not generated-program execution or a universal conformance
 claim. Compilation-only parity still needs about 22.45% less time.
 
-The State09 owned B2 product route passes its focused controls. State10 preserves
-the Bend source/B1/B2 algorithms but adds a host permission boundary. Its final
-qualification and installation remain pending; earlier passes only transfer
-where the final evidence explicitly binds unchanged inputs. Compiler algorithms remain implemented in Bend, and expected unsafe
-proof-trust refusal remains distinct from type acceptance.
+State10 passes strict36/export99, full checked/B2 source96/numeric34/
+composition18/overapplication2, native3/runtime45, fresh own-source type acceptance,
+exact B2/B3 reproduction and raw23/point45 equality. Host79, frame-domain87,
+sidecar60 and actual owned/custom-Base controls pass. The qualification join
+verifies 4,171 input identities and explicitly binds any reused checked gates.
+Installation, verification before/after CLI testing, legacy42/default24 and
+helper5 all pass. Compiler algorithms remain implemented in Bend. The 3,269
+unsafe definitions retain expected proof-trust refusal; these overlapping finite
+suites and self-reproduction do not establish a mathematical soundness proof.
 
-## Current Phase64 qualification
+## Historical Phase64 qualification
 
-Phase64 State09 is installed and verified. Its
+Phase64 State09 was installed and verified at that checkpoint. Its
 [compiler qualification](../implementation/phase64/evidence/state09-qualification.json)
 and [release qualification](../implementation/phase64/evidence/state09-release.json)
 bind strict36/export95, full checked/B2 source96/numeric34/composition18/
@@ -44,7 +49,7 @@ overapplication2, native3/runtime45, fresh own-source type acceptance, exact
 B2/B3 reproduction, raw23/point45 equality and legacy42/default24/helper5.
 Expected unsafe proof-trust refusal remains; these overlapping finite suites
 are not a mathematical soundness proof or universal conformance claim.
-See [current results](../implementation/phase64/state09-results.md) for exact
+See [historical results](../implementation/phase64/state09-results.md) for exact
 images and separate compiler/program performance metrics.
 
 ## Historical Phase61 qualification

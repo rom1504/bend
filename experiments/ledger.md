@@ -3971,3 +3971,34 @@ pending.** Phase64 remains installed at this checkpoint. H2's incremental
 attribution over H6 alone remains separate. Do not infer release or universal
 conformance from these finite output/timing gates. No upstream migration or PR
 comment was made. Preserve earlier registration, failed attempts and raw phases.
+
+
+### Phase65 State10 installed and verified — 2026-10-08
+
+The [compiler qualification](../implementation/phase65/evidence/state10-qualification.json)
+passes and verifies 4,171 input identities. Strict36/export99, full checked/B2
+source96/numeric34/composition18/overapplication2, native3/runtime45, fresh
+own-source type acceptance, exact B2/B3 and raw23/point45 equality pass. Expected
+unsafe proof-trust refusal remains. Host79, frame87, sidecar60 and actual owned
+B2 product/custom-Base controls pass. Explicit reuse/resume joins preserve
+original failed preflights instead of rewriting them successful.
+
+[Release qualification](../implementation/phase65/evidence/state10-release.json)
+passes installation, verification before and after CLI testing, legacy42,
+default24 and helper5, checking 392 input identities. State10 replaces Phase64 as the installed checked-B1
+package; the measured genuine B2 remains a separate qualified image. Source
+commit `9583c59` was pushed before documentation closure.
+
+The final same-campaign compiler result remains **1.28945× TS compilation**
+(9.025% less time than the 1.41737× baseline) and **0.969256× including imports**
+(7.662% less time), with 207 exact outputs and all 23 medians improved. The
+separate same-image artifact-presence ablation supports incremental H2 value:
+Map −5.13%, map-churn −3.15%, and no-hit Numeric within overlapping ranges.
+These different campaigns do not assign the full bundle gain to H2 or H6 alone.
+Compilation parity needs another 22.45% reduction; no new generated-program
+execution-speed or universal conformance claim follows.
+
+Keep earlier pending checkpoints, rejected experiments, method failures and
+closed raw evidence intact. The next work should target demonstrated repeated
+whole-request work in the newly selected image and retain the short comparison
+loop before broad qualification. No upstream migration or PR comment was made.

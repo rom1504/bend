@@ -217,3 +217,21 @@ host60, exact helper domain87, actual B2 positive products and custom Base
 fallback controls, and its own 207-worker broad report. Previous State09 timing
 and semantic receipts remain separately attributed. Installation and release
 checks are still separate.
+
+The initial B2 manifest-only override subsequently hit the maintained oracle's
+stricter selected-driver equality preflight, before any program emission. Root
+preserved it and chose fresh selected-host program45 acquisition/smoke instead
+of adding an oracle exception. The final B2 equality retry uses the original
+State10 reference-manifest argument and changes only supervisor/output paths.
+The final join v4 requires the four successful original B2 commands, this exact
+fresh retry, and the fresh program45 two-command subset. The checked reuse proof
+continues to justify earlier compiler semantic/native gates; it does not claim
+the failed program-manifest substitution succeeded.
+
+
+The selected sequence completed. Compiler admission is recorded in
+[evidence/state10-qualification.json](evidence/state10-qualification.json), and
+installation/release qualification in
+[evidence/state10-release.json](evidence/state10-release.json). These separate
+receipts preserve the distinction between compiler evidence and root's release
+authorization. Both retry histories remain explicit.

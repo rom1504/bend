@@ -4,9 +4,27 @@ Authorized October 8, 2026 from `49431ba`. The compiler remains implemented in
 Bend. This phase targets compilation time while retaining the tested emitted
 programs' behavior and performance. No upstream migration or PR comment.
 
-## Baseline and success criterion
+## Final outcome
 
-Phase64 State09 is the installed equality-derived checked B1. Its separately
+Phase65 State10 is installed and verified as equality-derived checked B1.
+The separately measured genuine B2 takes **1.28945× TS compilation time**, down
+from the same-campaign baseline's 1.41737× (9.025% less time); imports plus
+compilation reach **0.969256× TS** (7.662% less time). All 207 exact outputs pass
+and all 23 source medians improve. Compilation parity needs another 22.45% time
+reduction. No generated-program execution-speed gain is claimed.
+
+H6 static transport readers and H2 optional Bend-owned annotations for the exact
+pinned Base are selected. Other candidate decisions remain recorded below.
+Full compiler, self-hosting, host and installed release gates pass; see the
+[final report](../../implementation/phase65/README.md),
+[compiler qualification](../../implementation/phase65/evidence/state10-qualification.json)
+and [release receipt](../../implementation/phase65/evidence/state10-release.json).
+The original baseline, conditional forecasts and implementation sequence below
+are historical planning records, not current status or cumulative gain claims.
+
+## Original baseline and success criterion
+
+At phase registration, Phase64 State09 was the installed equality-derived checked B1. Its separately
 qualified genuine B2 is `b09fe54a…`; the pinned reference remains
 `018751270e800bc222a93dad7f257083ee53a5f7`. The final balanced 23-source campaign
 measured **1.43893954× TS compilation** and **1.06172503× imports plus first
@@ -24,9 +42,10 @@ Phase64's raw tree is closed. All new raw outputs belong in
 `selfhost/build/phase65/`. Verify 110 inherited files and seven installed files
 before production edits; retain all unsuccessful candidates and failed methods.
 
-## Decision checkpoint
+## Historical decision checkpoint before State08 qualification
 
-Phase64 State09 remains installed; no Phase65 candidate has been promoted.
+At this checkpoint, Phase64 State09 remained installed and no Phase65 candidate
+had been promoted. The pending statements below retain that checkpoint's status.
 [The live report](../../implementation/phase65/README.md) links the exact receipts.
 
 - Reject H1 normalized-head storage (State02), H5's prepared constructor index

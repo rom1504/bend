@@ -5,9 +5,11 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-[Phase64 State09](../implementation/phase64/state09-results.md) is installed and
-verified. Phase65 State10 is selected for integration but is **not installed
-yet**; final semantic/self-hosting and release qualification are in progress. Its
+[Phase65 State10](../implementation/phase65/state10-results.md) is installed and
+verified. Its [compiler qualification](../implementation/phase65/evidence/state10-qualification.json)
+and [release verification](../implementation/phase65/evidence/state10-release.json)
+pass, including full checked/B2 semantics, own-source acceptance, exact B2/B3
+reproduction and installed CLI checks. Its
 [optional Base products and static transport readers](self_hosted/prepared-base-artifacts.md#phase65-selected-integration-candidate)
 keep compiler algorithms in Bend. Optional product preparation and reading now
 require the exact qualified Base content; custom or updated Base falls back to
@@ -19,8 +21,9 @@ measures **1.28945× TS compilation time**, down from the same-campaign baseline
 gives **0.969256× TS**, down from 1.04969× (7.662% less time); this different clock
 does not establish compilation-only parity. That target still requires about
 22.45% less compilation time. These are genuine-B2 fresh prepared-cache requests,
-not installed-CLI or generated-program execution measurements. Installation and
-final release qualification remain pending.
+not installed-CLI or generated-program execution measurements. The installed
+package is equality-derived checked B1; genuine B2 remains a distinct qualified
+measurement image.
 The [direct JavaScript backend](../selfhost/docs/direct-javascript.md) remains the
 default for emitted programs/libraries and `--run`. From `selfhost/`, use
 `node cli.mjs FILE --run` or `node cli.mjs FILE --library -o module.mjs`.
@@ -29,8 +32,7 @@ clients retain their explicit legacy interface; native C remains available.
 
 ## Historical release results: Phase61
 
-The following figures describe Phase61 state08, not the installed Phase64 release
-or the selected Phase65 candidate.
+The following figures describe Phase61 state08, not the installed Phase65 release.
 
 Genuine direct B2 freshly type-checks the complete source in **11.397 seconds of
 check-request time** (**17.248 internal / 17.385 supervised seconds**) and emits a

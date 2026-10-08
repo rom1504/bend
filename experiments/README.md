@@ -5,7 +5,7 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active implementation: Phase65 reusable backend products
+## Completed implementation: Phase65 reusable backend products
 
 [Design](../design/phase65/reusable-backend-products.md) ·
 [Report](../implementation/phase65/README.md) ·
@@ -20,8 +20,10 @@ State10 selects optional Bend-produced Base annotations and static JS transport
 readers. Its [final broad comparison](../implementation/phase65/evidence/state10-b2-broad.json)
 passes 207 exact outputs: compilation **1.41737× → 1.28945× TS (−9.025%)** and
 imports plus compilation **1.04969× → 0.969256× (−7.662%)**. All 23 sources improve;
-compilation-only parity still requires about 22.45% less time. Final release
-qualification/installation remain pending; Phase64 remains installed. Exact Base
+compilation-only parity still requires about 22.45% less time. State10 is
+installed and verified: [compiler qualification](../implementation/phase65/evidence/state10-qualification.json)
+and [release checks](../implementation/phase65/evidence/state10-release.json)
+pass, including self-reproduction, legacy42/default24 and helper5. Exact Base
 content permission preserves custom/future Base fallback. Historical raw trees,
 failed methods and rejected candidates remain preserved. The [size audit](../implementation/phase65/size.md)
 records +117 Bend lines and +146 host lines; no simplification or generated-
@@ -31,7 +33,7 @@ program speed gain is claimed. [Decoder experiment](phase65/P65-007-decoder-tier
 
 [Design](../design/phase64/typed-facts-and-compact-state.md) ·
 [Report](../implementation/phase64/README.md) · [Experiment](phase64/P64-001-residual-costs-and-typed-facts.md).
-Phase64 State09 is installed and verified. Its balanced genuine-B2 comparison
+Phase64 State09 was installed and verified and is now superseded by Phase65. Its balanced genuine-B2 comparison
 improves compilation **1.64387× → 1.43894× TS** (12.47% less time), and imports
 plus first compilation **1.18920× → 1.06173×** (10.72%). All 23 sources improve;
 207 output checks, full compiler/runtime/reproduction and installed CLI gates
@@ -78,7 +80,7 @@ The clocks use genuine B2 fresh processes with prepared persistent Base caches;
 preparation and post-return validation are excluded. They do not measure the
 installed checked-B1 CLI or claim cold operating-system caches. Earlier short
 confirmation, state06 and state04 campaigns remain separate. The
-[current results matrix](../implementation/phase61/state08-results.md) records
+[historical results matrix](../implementation/phase61/state08-results.md) records
 completed checked-B1 logical14, native3, smoke45, B2 own-source type acceptance,
 B2/B3 equality, the 96/34/18/2 B2 semantic matrix and 23/45 emission equality.
 Installed legacy42, default24 and final identity verification pass. Unsafe proof-trust refusal remains
@@ -86,8 +88,8 @@ expected; failed launch/receipt-validation attempts are preserved.
 
 State08 retains private leaf reuse and maximum-bound hoisting on state06.
 The backend cursor was reverted; cross-context caching is deferred without a
-general proof and binary transport was rejected. **Phase61 state08 is installed
-and verified as checked B1.** The daemon-interrupted release wrapper stays
+general proof and binary transport was rejected. **Phase61 state08 was installed
+and verified as checked B1 at that checkpoint.** The daemon-interrupted release wrapper stays
 incomplete; complete child receipts and the fresh two-step resume bind the
 release. Phase58 remains the frozen comparison baseline.
 

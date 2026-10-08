@@ -1,4 +1,4 @@
-# Current frontier: Phase65 State10 measurement complete, installation pending
+# Current frontier: Phase65 State10 installed and verified
 
 [Phase65 report](../implementation/phase65/README.md) ·
 [Measurement](../implementation/phase65/measurement.md) ·
@@ -28,10 +28,17 @@ Fresh processes use prepared caches; preparation and output checks are excluded.
 No installed-CLI, OS-cold or generated-program execution speed claim is made.
 State09's earlier broad result remains preserved under its own identities.
 
-**Installation and final release qualification remain pending. Phase64 State09
-is still installed.** Do not mark release/CLI gates passed before their actual
-receipts close. H2's incremental benefit over H6 alone remains a separate
-attribution question; do not assign the bundle gain to either component alone.
+**Phase65 State10 is installed and verified.** The
+[compiler qualification](../implementation/phase65/evidence/state10-qualification.json)
+verifies 4,171 input identities and passes full checked/B2 semantics, own-source
+acceptance and exact reproduction. [Release checks](../implementation/phase65/evidence/state10-release.json)
+pass install, verification before/after CLI tests, legacy42/default24 and helper5,
+with 392 verified inputs. Installed checked B1 is `3a7fedb7…`; the measured
+self-reproducing genuine B2 is `239f7970…`. Keep these image roles distinct.
+The [same-B2 sidecar ablation](../implementation/phase65/evidence/base-annotations-incremental-b2.json)
+shows Map −5.13% and map-churn −3.15% with H2 code and H6 unchanged.
+This three-source artifact-presence result does not assign the broad bundle
+gain to either component alone.
 
 The final source adds 117 physical Bend lines (+15 definitions, one type) in one
 new module; all 114 previous modules and runtimes are unchanged. Host changes add
@@ -47,9 +54,11 @@ method and negative receipt. Final compiler, host and release evidence must bind
 exact State10 inputs; prior gates transfer only through explicit identity reuse.
 
 Root alone runs bounded CPU3 targets; source/data/review work stays on CPU0.
-Historical raw trees remain closed. Complete final qualification and release
-before announcing installation; update this frontier from the resulting receipts.
-The previous steering snapshot below is retained as historical context.
+Historical raw trees remain closed. The next optimization must profile the actual
+selected B2 and remove demonstrated whole-request work; import-inclusive parity
+is already measured, but compilation alone needs a further 22.45% reduction.
+Keep the short activation/output screen before broad validation. The previous
+steering snapshot below is retained as historical context.
 
 # Historical frontier: Phase65 registration and Phase64 baseline
 

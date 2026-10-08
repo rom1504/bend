@@ -239,3 +239,57 @@ resumed commands, preserving the failed original execution. A fresh B2-plan
 successor changes exactly one reference-manifest argument and retains all five
 selected B2 commands. Final B2 qualification is still pending at this report
 update; focused passes do not admit installation.
+
+
+The final B2 stage then exposed an additional oracle boundary: program-byte
+equality requires the reference program manifest's driver hash to equal the
+selected driver, even when compiler/API bytes are identical. The initial
+one-argument reuse plan therefore stopped at this preflight before emitting any
+program; that failed receipt is preserved. We did not weaken the maintained
+oracle. Root instead acquires and runs only the 45 program points using the
+selected State10 host, then retries the original B2 equality command with fresh
+output paths. The final join retains the four already successful B2 commands
+and requires the exact one-command retry plus the fresh two-command program
+acquisition/smoke subset. Source, fixed-point and B2 semantic checks are not
+repeated. This corrects the integration plan without treating a failed stage as
+a passing one.
+
+
+## Final compiler qualification
+
+The selected State10 compiler join passed and reverified 4,171 input identities.
+[`evidence/state10-qualification.json`](evidence/state10-qualification.json) binds
+strict36/export99, the explicit checked-stage reuse proof, selected-host
+program45 acquisition/smoke, genuine B2 source type acceptance and expected
+unsafe proof-trust refusal, exact B2/B3 reproduction, B2 semantic controls, all
+23 complete program modules and 45 point artifacts, host79/domain87/products60,
+positive owned products and actual custom Base fallback. Both interrupted
+qualification executions remain failed historical receipts; the join records
+their successful prefixes and exact successful continuations separately.
+
+The same receipt binds all 207 selected broad observations to their actual
+requests, image/helper/driver/source identities, preparation and outputs. The
+selected sidecar is byte-identical to the artifact exercised by actual owned
+semantic controls, and its body and both parent graph segments are rehashed.
+Compilation geometric mean is 1.28945× the pinned TypeScript compiler; imports
+plus first compilation is 0.969256×. All 23 compilation source means improve
+against the same-campaign Phase64 baseline. These are finite suite results and
+compiler latency measurements, not full-language proof or newly measured
+generated-program runtime. Installation and release qualification are separate.
+
+
+## Installed release qualification
+
+The separate [State10 release receipt](evidence/state10-release.json) passes
+all five installation/verification jobs, legacy42, default24 and helper5. It
+reverifies 392 input identities, the exact seven installed files and selected
+source/API/runtime/helper lineage, both retained copies of all seven prior
+installed files, and the 110 protected inherited files. The prior files remain
+in their hash-named release-history directory and the Phase65 raw
+`previous-installed` copy. The compiler qualification receipt remains unchanged.
+
+No compiler or Node targets were run by this review lane. Root owns every
+target result. All reviewer raw writers are now closed; any later work in this
+lane is limited to tracked documentation unless root explicitly opens a new
+phase or output location. Historical failed attempts, unused controller
+successors and exact derivations remain retained.

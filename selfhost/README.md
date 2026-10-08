@@ -1,20 +1,22 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
-[Phase64 results](../implementation/phase64/state09-results.md),
+[Phase65 results](../implementation/phase65/state10-results.md),
 [backend boundaries](../docs/self_hosted/backend-boundaries.md) and
 [direct JavaScript guide](docs/direct-javascript.md).
-**Phase64 State09 is installed and verified.** Direct JavaScript is the default;
+**Phase65 State10 is installed and verified.** Direct JavaScript is the default;
 `--legacy-js` and native targets retain their contracts. Ordinary compilation
 runs Bend code without a TypeScript fallback.
 
-**Phase65 State10 is selected for integration, not installed yet.** It combines
+The current release combines
 static JavaScript readers for the validated frame4 transport with optional
 checked Base annotations produced and admitted by Bend. State10 adds exact
 pinned Base-content permission before product preparation or sidecar reading;
-custom and future Base versions retain ordinary annotation. Final State10
-broad measurement is complete; release qualification remains in progress. The Phase64 numbers below
-remain the installed-release results. Read the
+custom and future Base versions retain ordinary annotation. The
+[compiler qualification](../implementation/phase65/evidence/state10-qualification.json)
+and [release verification](../implementation/phase65/evidence/state10-release.json)
+pass, including own-source acceptance, exact B2/B3 reproduction and installed CLI
+checks. Read the
 [Phase65 report](../implementation/phase65/README.md) and
 [artifact guide](../docs/self_hosted/prepared-base-artifacts.md#phase65-selected-integration-candidate)
 for the selected mechanisms and current evidence.
@@ -29,8 +31,10 @@ compile faster than TS, ten are faster including imports. These are descriptive
 sample results, not confidence intervals. Compilation-only parity still needs
 about **22.45% less time**; the import-inclusive result is a different clock.
 Fresh processes use prepared caches and exclude preparation/output checks from
-timing. No generated-program speed gain is claimed. H2's incremental benefit
-over H6 alone remains under measurement.
+timing. No generated-program speed gain is claimed. A separate
+[same-B2 artifact ablation](../implementation/phase65/evidence/base-annotations-incremental-b2.json)
+finds Map −5.13% and map-churn −3.15% with H2 code and H6 unchanged;
+it does not attribute the full 23-source gain to H2.
 
 The [final source audit](../implementation/phase65/size.md) counts **28,396 physical
 Bend lines in 115 modules**: +117 lines, +15 definitions and one type. The driver
@@ -38,7 +42,7 @@ adds 83 lines and the static transport helper 63, counted separately. All 114
 pre-existing Bend modules and both runtimes remain byte-identical. This is a
 performance tradeoff with a small source increase, not a simplification claim.
 
-## Installed Phase64 baseline
+## Historical Phase64 baseline
 
 Its [pipeline changes](../docs/self_hosted/compiler-request-pipeline.md#phase64-state09-retained-facts-and-indexed-transport)
 and [prepared Base artifacts](../docs/self_hosted/prepared-base-artifacts.md)
@@ -61,7 +65,7 @@ Compiler source has **28,279 physical / 23,199 code lines in 114 Bend modules**:
 +164 physical lines, +19 definitions and one additional type over Phase63.
 Host tools and runtime sources are counted separately.
 
-The installed equality-derived checked B1 is `a2f8b021…`; the separately measured
+At that checkpoint, installed checked B1 was `a2f8b021…`; the separately measured
 and qualified genuine B2 is `b09fe54a…`. Full checked/B2 source96, numeric34,
 composition18 and overapplication2 gates pass, along with native3 and runtime45.
 The genuine B2 accepts its own source in **11.90 seconds** and emits the identical
@@ -77,7 +81,7 @@ records the distinct compiler gates.
 
 The figures below retain their original Phase61 scope. Current installed-release
 measurements and qualification are in the
-[Phase64 State09 report](../implementation/phase64/state09-results.md).
+[Phase65 State10 report](../implementation/phase65/state10-results.md).
 
 The genuine direct B2 freshly type-checks its complete source in **11.397 seconds
 of check-request time** (**17.248 internal / 17.385 supervised seconds**) and emits a
@@ -95,7 +99,7 @@ See the [image workflow](../docs/self_hosted/compiler-image-generation.md).
 modules: +1,193 physical / +976 code lines relative to Phase58. All 17 native
 modules and both runtimes retain exact bytes; the typed driver and maintained
 workflow changed. The [compiler-request guide](../docs/self_hosted/compiler-request-pipeline.md)
-describes the retained mechanisms and current Phase64 implementation. The six changes in the
+describes the retained mechanisms and current Phase65 implementation. The six changes in the
 [allocation guide](../docs/self_hosted/compiler-allocation.md) remain Phase58 history.
 
 The [Phase61 results](../implementation/phase61/state08-results.md) separate

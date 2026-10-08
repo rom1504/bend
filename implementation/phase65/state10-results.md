@@ -8,11 +8,16 @@ slightly faster overall on that separate clock, while compilation itself still
 has a **28.9% deficit**. This measures compiler latency, not generated-program
 execution.
 
+The headline uses the **genuine B2 benchmark image**. The installed release is
+the independently qualified **equality-derived B1** from the same selected Bend
+source. Its API artifact and generation are distinct; the B2 latency numbers
+must not be assigned to the installed B1 bundle.
+
 All **207/207 complete emitted modules match** their qualified oracles. These
 are measurements of the actual corrected State10 host and genuine B2 image;
-they do not reuse or relabel the earlier State09 samples. Final semantic,
-self-hosting and release qualification remain separate from this performance
-result and are being completed before promotion.
+they do not reuse or relabel the earlier State09 samples. The [compiler qualification join](evidence/state10-qualification.json) and the
+[installed-release join](evidence/state10-release.json) now both pass. Release,
+CLI and helper-integrity completion is backed by separate actual receipts.
 
 ![State10 compilation and import-inclusive ratios](state10-compilation-ratios.svg)
 
@@ -137,7 +142,56 @@ There are 99 validated exported roots. The baseline remains actual Phase64 B2
 `b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e`.
 These images have genuine emission receipts, not synthetic checked sidecars.
 
-Final semantic/self-hosting/release receipts and guarded phase accounting will
-be joined separately after the targets finish. The [external interruption](evidence/interruption.json)
-from approximately 01:56–03:59 UTC is kept separate from active work and
-validation; it must not be counted as two hours spent optimizing or waiting.
+The [compiler qualification join](evidence/state10-qualification.json) verifies
+4,171 input identities and passes the selected compiler gates. It binds strict36,
+99 exported roots, genuine emission, fresh B2 own-source type acceptance with
+the expected unsafe proof-trust refusal, and exact B2/B3 fixed-point bytes.
+The genuine-B2 semantic suites pass 96 source, 34 numeric, 18 composition and
+two overapplication observations. These suites overlap and are finite; their
+success is not full-language conformance or a mathematical proof of the compiler.
+
+Selected-host program checks pass all 45 observations. The separate B2 output
+gate checks 23 source modules and their 45-point mapping byte-for-byte; that gate
+does not execute the generated programs. Focused checks include arena87,
+actual-host79, optional-product-host60, actual B2 cached annotation reuse and
+custom-Base fallback. Reused checked-compiler gates are admitted only through
+explicit identical compiler-source/API proof and preserved successful resumes;
+original failed receipts remain failed.
+
+The [installed-release join](evidence/state10-release.json) passes all five
+release jobs, 42 legacy CLI checks, 24 default CLI checks and five helper
+integrity checks. It verifies 392 identities, the seven current release files,
+seven prior files retained in history and raw copies, and the 110 inherited
+protected files. The installed API is equality-derived B1
+`3a7fedb77003aecc797cd9a9ac4c6d1bd15bd21dd1230806b6719565eca10f72`;
+its separate genuine-B2 image supplies the performance headline above.
+
+The [preservation audit](evidence/closed-evidence-preservation.json) independently
+rehashes all **15,922 closed Phase64 files**, the published archive and all
+**110 protected inherited inputs**, with no changes or errors. The closed
+[Phase65 capsule](../../selfhost/tools/performance/phase65/artifacts/README.md)
+preserves 17,894 raw files in two archive parts totaling 99,065,307 bytes.
+Every archived member was reopened and hash-verified; the original inventory
+and protected predecessors were verified unchanged after publication.
+
+## Time accounting
+
+The [final guarded account](evidence/time-account-final.json) covers 00:49:17 to
+04:43:16.668 UTC: **3 h 53 min 59.7 s elapsed**. The [external interruption](evidence/interruption.json)
+is approximately **01:56–03:59 UTC (123 min)**. About 65.2 s of closed target
+intervals overlap those approximate boundaries, reflecting actual recorded
+process work rather than inventing total inactivity.
+
+Across 858 closed supervisor receipts, including four failed receipts preserved
+in the evidence, the union of target intervals is **39 min
+50.4 s**; nested supervisors/workers are not double-counted. Outside the
+approximate interruption, the elapsed window is **1 h 50 min 59.7 s**, with
+**38 min 45.2 s** of closed target occupancy (**34.9%**) and **72 min 14.5 s**
+uncovered by target guards. Uncovered time is unclassified source/tool work,
+analysis, review, coordination or waiting; it is not a measured idle-time or
+active-effort total. This measures occupied wall intervals, not CPU utilization.
+There are no open, late-finishing or unreadable target receipts at cutoff.
+
+Final report edits, raw sealing, archive publication and Git work after that
+cutoff are outside this account. The source and byte-identical raw account copy
+were written before closure; later archive time is not silently added to them.

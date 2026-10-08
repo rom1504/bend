@@ -1,16 +1,17 @@
 # Compiler architecture
 
-**Current overview:** Phase64 State09 is installed and verified. Read the
+**Current overview:** Phase65 State10 is installed and verified. Read the
 [request pipeline](../../docs/self_hosted/compiler-request-pipeline.md),
 [prepared Base artifacts](../../docs/self_hosted/prepared-base-artifacts.md) and
-[qualified results](../../implementation/phase64/state09-results.md) for the
+[qualified results](../../implementation/phase65/state10-results.md) for the
 current source, cached facts, lowering plan, self-reproduction and image roles.
 The sections below retain their dated architectural evidence.
 
-## Phase65 selected integration candidate
+## Phase65 installed integration
 
-Phase65 State10 is selected but not yet installed; final qualification is in
-progress. It adds two bounded mechanisms to the current request pipeline, with
+Phase65 State10 passes the [compiler qualification](../../implementation/phase65/evidence/state10-qualification.json)
+and [release verification](../../implementation/phase65/evidence/state10-release.json).
+It adds two bounded mechanisms to the request pipeline, with
 no new backend representation or TypeScript fallback:
 
 - The JavaScript frame4 decoder uses twelve static tag readers while preserving
@@ -41,8 +42,9 @@ measurements. The final [State10 broad comparison](../../implementation/phase65/
 passes 207 exact-output checks and measures compilation **1.41737× → 1.28945× TS**
 (9.025% less time against the same-campaign baseline). All 23 sources improve.
 Imports plus compilation reach 0.969256× TS; compilation alone remains above
-parity and needs about 22.45% further reduction. Release qualification remains
-pending, as does the attribution of H2's incremental benefit over H6 alone.
+parity and needs about 22.45% further reduction. The separate [same-B2 sidecar ablation](../../implementation/phase65/evidence/base-annotations-incremental-b2.json)
+shows Map −5.13% and map-churn −3.15% with H2 code retained and H6 unchanged;
+this is not attribution of the entire broad-suite gain.
 
 
 **Historical Phase55 overview:** Phase55 host02 was installed and verified. Direct JavaScript

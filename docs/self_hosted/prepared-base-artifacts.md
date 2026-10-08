@@ -1,11 +1,11 @@
 # Prepared Base artifacts
 
-**Phase64 State09 is installed and verified.** The first sections describe that
-release. [Phase65's selected integration candidate](#phase65-selected-integration-candidate)
-is documented separately below; final qualification and installation are pending. The [Phase64 results](../../implementation/phase64/state09-results.md),
-[qualification index](../../implementation/phase64/evidence/state09-qualification.json)
-and [release verification](../../implementation/phase64/evidence/state09-release.json)
-keep its genuine-B2 measurement and packaged checked-B1 release distinct. The
+**Phase65 State10 is installed and verified.** The first sections describe
+retained Phase64 mechanisms; the [Phase65 additions](#phase65-selected-integration-candidate)
+appear below. The [Phase65 results](../../implementation/phase65/state10-results.md),
+[compiler qualification](../../implementation/phase65/evidence/state10-qualification.json)
+and [release verification](../../implementation/phase65/evidence/state10-release.json)
+keep genuine-B2 measurement and packaged checked-B1 release distinct. The
 [request pipeline](compiler-request-pipeline.md) describes the surrounding compiler.
 
 ## Compiler work and host transport
@@ -109,15 +109,16 @@ with all 23 sources improving. Qualification and installation passed; the
 measured image is genuine B2 and the installed package is equality-derived
 checked B1. These results make no new generated-program execution-speed claim.
 
-## Phase65 selected integration candidate
+<a id="phase65-selected-integration-candidate"></a>
 
-**State10 combines H2 and H6 and is not installed yet.** Read the
-[Phase65 report](../../implementation/phase65/README.md) for current gate status.
-The following is the selected implementation contract, not a completed release
-or final performance claim. The compiler remains written in Bend. State10 keeps
-the selected Bend/B1/B2 algorithms unchanged and adds exact Base-content gates
-in the host, plus a whitespace-only decoder trim; measurements must still bind
-its final helper and driver bytes.
+## Phase65 installed integration
+
+**State10 combines H2 and H6 and is installed and verified.** The
+[Phase65 report](../../implementation/phase65/README.md) binds completed compiler,
+host, performance and release gates. The compiler remains written in Bend.
+Relative to intermediate State09, State10 keeps the selected Bend/B1/B2 algorithms
+unchanged and adds exact Base-content gates in the host plus a whitespace-only
+decoder trim. Final measurements bind its actual helper and driver bytes.
 
 ### Static transport readers
 
@@ -227,9 +228,12 @@ passes 207 exact-output checks over 23 sources. Compilation alone improves
 All sources improve; 21 have nonoverlapping sample ranges. These measure the
 selected H2+H6 bundle in fresh genuine-B2 processes with prepared artifacts,
 not the isolated decoder, installed CLI or generated-program execution.
-H2's incremental benefit over H6 alone remains under measurement.
+A separate [same-B2 sidecar ablation](../../implementation/phase65/evidence/base-annotations-incremental-b2.json)
+finds Map −5.13% and map-churn −3.15%, with H2 code and H6 unchanged.
+It tests artifact presence on three selected sources, not complete H2 removal
+or H2's isolated contribution to the final broad mean.
 
-The State09 owned B2 product route passes focused controls. Final State10
-qualification and release installation remain pending; evidence
-reuse must explicitly bind unchanged inputs and the new host permission gate.
+The final State10 actual-owned B2 product and custom-Base fallback controls pass,
+as do the complete compiler and release gates. Evidence reuse explicitly binds
+unchanged inputs and the new host permission gate.
 A sub-1× import-inclusive ratio does not establish compilation-only parity.

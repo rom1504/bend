@@ -408,3 +408,41 @@ The [new selected-version figure](state10-compilation-ratios.svg) is separate fr
 State09's preserved figure and samples. State10 has identical actual Bend source,
 B1 and B2 bytes to State09, but an independently checked and measured corrected
 host snapshot; cross-campaign variation is not attributed to the Base guard.
+
+
+The [selected compiler qualification join](evidence/state10-qualification.json)
+now passes with 4,171 verified input identities. It binds the final 207-worker
+summary to the actual corrected host, 99 roots, strict36, genuine B2, own-source
+acceptance with expected unsafe trust refusal, exact B2/B3 fixed point and the
+finite semantic/program/focused suites. Original failed parents remain failed;
+only explicit complete resumes and identical-compiler reuse contribute. Release,
+CLI/helper checks and final phase accounting are still pending at this point.
+
+## Final release and accounting closure
+
+The [release join](evidence/state10-release.json) passes five release jobs,
+legacy42, default24 and helper5, and preserves the previous seven release files.
+The installed artifact is **equality-derived B1**, API 3a7fedb7…, from the selected
+source. The reported 1.28945× TypeScript figure belongs to the distinct genuine
+B2 image 239f7970…, not the installed B1 bundle. Both generations and their roles
+remain explicit in the qualification receipts.
+
+The [closed evidence audit](evidence/closed-evidence-preservation.json) verifies
+all 15,922 Phase64 raw files (503,536,103 bytes), its published archive
+(82,603,477 bytes), and 110 inherited protected files (58,178,385 bytes), without
+any changed or missing input. The tracked and raw audit receipts are identical.
+
+The [final time account](evidence/time-account-final.json) spans 00:49:17–
+04:43:16.668 UTC (3 h 53 min 59.7 s), including the separately declared approximate
+123-minute external interruption. 858 closed supervisor receipts include four failed
+receipts; the complete interval union is 39 min 50.4 s. Measured guard intervals overlap
+the approximate interruption by 65.2 s. Excluding that interval gives an approximate
+1 h 50 min 59.7 s window: 38 min 45.2 s target occupancy (34.9%) and 72 min 14.5 s outside guards.
+The latter is unclassified, not proven waiting or idle time. No open, unreadable
+or late-finishing receipts remain. Source analysis, review and tooling are not
+mistaken for compiler execution. Later sealing, archive and Git work fall after
+this explicit cutoff.
+
+The identical raw time account is at
+`selfhost/build/phase65/final-state10/time-account-final.json`, with a separate
+copy receipt. Final raw writers in the measurement lane are now finished.

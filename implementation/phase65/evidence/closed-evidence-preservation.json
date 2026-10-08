@@ -1,0 +1,42 @@
+{
+  "kind": "phase65-closed-evidence-preservation",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "created": "2026-10-08T04:43:16.520978+00:00",
+  "producer": {
+    "file": "selfhost/tools/performance/phase65/latency/preserve-closed.py",
+    "bytes": 4100,
+    "sha256": "ee53a3337603b326a4e5dcc9481b52cba28aec1196753165c73c3846db312e0b"
+  },
+  "publishedManifest": {
+    "file": "selfhost/tools/performance/phase64/artifacts/manifest.json",
+    "bytes": 3751549,
+    "sha256": "d6b568b2b6396939e614d5c8157b4a1ee43ec9203b6d7317e14deba9b587bd3e"
+  },
+  "inheritedBaseline": {
+    "file": "selfhost/build/phase65/inherited-before.json",
+    "bytes": 20926,
+    "sha256": "728c335eaa4041f665548786c1651d19dec91a626e660269b8c99bb90eddedaa"
+  },
+  "closedPhase64": {
+    "expected": 15922,
+    "matched": 15922,
+    "bytesRead": 503536103,
+    "exactInventory": true,
+    "orderedManifestFilesSha256": "f45d3d9d127ada17652a9be43bcf99ded64a3672656f9f038a90e327d8e44162"
+  },
+  "inheritedProtected": {
+    "expected": 110,
+    "matched": 110,
+    "bytesRead": 58178385
+  },
+  "publishedArchive": {
+    "expected": 1,
+    "matched": 1,
+    "bytesRead": 82603477
+  },
+  "errors": [],
+  "scope": "Every closed Phase64 file is rehashed against its published artifact manifest; the published archive itself is rehashed, without extraction or modifications. Inherited protected files are rehashed against Phase65 inherited-before.json. No writes occur in Phase64 or any protected input.",
+  "pass": true
+}

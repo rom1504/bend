@@ -416,6 +416,41 @@ function $book_context_world$(_book_0, _load_0, _prepared_0) {
   return $base_prefix_context_world$(_book_0, _error_0, _suffix_0, _ready_0, _prepared_0);
 }
 
+function $base_annotation_prepare$(_prepared_0, _minimumWork_0) {
+  const _state_0 = _prepared_0["state"];
+  const _checked_0 = _prepared_0["checked"];
+  return $base_annotation_prepare_state$(_state_0, _checked_0, _minimumWork_0);
+}
+
+function $base_annotation_wanted$(_selected_0, _stops_0, _keys_0) {
+  if (_selected_0.$ === "Nil") {
+    return false;
+  } else {
+    const _d_0 = _selected_0["head"];
+    const _rest_0 = _selected_0["tail"];
+    if ((($Bool$and$(($Bool$not$(($has_name$(_stops_0, ($dn$(_d_0)))))), ($has_name$(_keys_0, ($dn$(_d_0)))))))) {
+const _x_0 = {$: "Unit"};
+return true;
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $base_annotation_wanted$, x: [_rest_0, _stops_0, _keys_0]};
+}
+  }
+}
+
+function $base_annotation_allowed$(_load_0, _prepared_0) {
+  const _t_0 = _load_0["trace"];
+  const _t_1 = _t_0["result"];
+  const _error_0 = _t_1["error"];
+  const _suffix_0 = _load_0["suffix"];
+  const _ready_0 = _load_0["ready"];
+  return $base_annotation_allowed_world$(_suffix_0, ($Bool$and$(_ready_0, ($String$is_empty$(_error_0)))), _prepared_0);
+}
+
+function $annotate_selected_base$(_book_0, _selected_0, _stops_0, _products_0) {
+  return $base_annotation_defs$(run_loop($book_context$(_book_0)), _selected_0, _stops_0, _products_0);
+}
+
 function $f_load_graph$(_main_0, _sources_0) {
   return $f_graph_result_at$(run_loop($f_graph_load$(_main_0, "", _sources_0, {$: "FGraph", "book": {$: "Nil"}, "error": "", "done": {$: "Nil"}}, {$: "Nil"})), _sources_0);
 }
@@ -1734,6 +1769,77 @@ function $base_prefix_context_world$(_book_0, _error_0, _suffix_0, _ready_0, _pr
 }), {$: "Unit"});
 }
 
+function $base_annotation_prepare_state$(_state_0, _checked_0, _minimumWork_0) {
+  const _ready_0 = _state_0["ready"];
+  return run_tail((_ready_0) ? ((_x_0) => {
+  return $base_annotation_prepare_closed$(($book_final_reverse$(_checked_0, {$: "Nil"})), _minimumWork_0);
+}) : ((_x_1) => {
+  return {$: "KBaseAnnotationState", "keys": {$: "Nil"}, "book": {$: "Nil"}};
+}), {$: "Unit"});
+}
+
+function $has_name$($0, $1, $2) {
+  let $pc = 0;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _ns_0 = $0;
+      const _name_0 = $1;
+      if (_ns_0.$ === "Nil") {
+        return false;
+      } else {
+        const _h_0 = _ns_0["head"];
+        const _t_0 = _ns_0["tail"];
+        $0 = _t_0;
+        $1 = _name_0;
+        $2 = ($String$eq$(_h_0, _name_0));
+        $pc = 1; continue;
+      }
+    }
+    case 1: {
+      const _rest_0 = $0;
+      const _name_0 = $1;
+      const _same_0 = $2;
+      if (_same_0) {
+        return true;
+      } else {
+        $0 = _rest_0;
+        $1 = _name_0;
+        $pc = 0; continue;
+      }
+    }
+  }
+}
+
+function $base_annotation_allowed_world$(_suffix_0, _ready_0, _prepared_0) {
+  const _state_0 = _prepared_0["state"];
+  const _final_0 = _prepared_0["final"];
+  const _saved_0 = _prepared_0["book"];
+  const _bound_0 = run_loop($norm_max$(($base_prefix_world_bound$(_state_0)), ($norm_max_book$(_suffix_0))));
+  return $Bool$and$(($Bool$and$(_ready_0, ($base_prefix_world_admitted$(_state_0, _suffix_0, _bound_0, _final_0, _saved_0)))), run_loop($base_prefix_world_hash_disjoint$(_suffix_0, ($index_first$(($dc$(($index_first$(_saved_0)))))))));
+}
+
+function $String$is_empty$(_s_0) {
+  if (_s_0 === "") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function $base_annotation_defs$(_book_0, _selected_0, _stops_0, _products_0) {
+  if (_selected_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _d_0 = _selected_0["head"];
+    const _rest_0 = _selected_0["tail"];
+    return {$: "Con", "head": run_loop(run_tail((($has_name$(_stops_0, ($dn$(_d_0))))) ? ((_x_0) => {
+  return _d_0;
+}) : ((_x_1) => {
+  return $base_annotation_def$(_book_0, _d_0, run_loop($lookup$(_products_0, ($dn$(_d_0)))));
+}), {$: "Unit"})), "tail": ($base_annotation_defs$(_book_0, _rest_0, _stops_0, _products_0))};
+  }
+}
+
 function $f_graph_result_at$(_graph_0, _sources_0) {
   return $fpe_graph_result$(_graph_0, _sources_0, ($f_graph_result$(_graph_0)));
 }
@@ -1760,14 +1866,6 @@ function $f_source_header_at$(_source_0, _start_0) {
     return $f_header_supplied$(_parsed_0);
   } else {
     return {$: "FHeader", "imports": {$: "Nil"}, "error": "nested source interval", "body": "", "line": 1, "offset": 0};
-  }
-}
-
-function $String$is_empty$(_s_0) {
-  if (_s_0 === "") {
-    return true;
-  } else {
-    return false;
   }
 }
 
@@ -3773,38 +3871,6 @@ function $String$take$(_s_0, _n_0) {
   }
 }
 
-function $has_name$($0, $1, $2) {
-  let $pc = 0;
-  for (;;) switch ($pc) {
-    case 0: {
-      const _ns_0 = $0;
-      const _name_0 = $1;
-      if (_ns_0.$ === "Nil") {
-        return false;
-      } else {
-        const _h_0 = _ns_0["head"];
-        const _t_0 = _ns_0["tail"];
-        $0 = _t_0;
-        $1 = _name_0;
-        $2 = ($String$eq$(_h_0, _name_0));
-        $pc = 1; continue;
-      }
-    }
-    case 1: {
-      const _rest_0 = $0;
-      const _name_0 = $1;
-      const _same_0 = $2;
-      if (_same_0) {
-        return true;
-      } else {
-        $0 = _rest_0;
-        $1 = _name_0;
-        $pc = 0; continue;
-      }
-    }
-  }
-}
-
 function $exact_def$(_a_0, _b_0) {
   const _x_0 = ($da$(_a_0));
   const _x_1 = ($da$(_b_0));
@@ -4163,6 +4229,57 @@ function $base_prefix_context_drop$($0, $1) {
       }
     }
   }
+}
+
+function $base_annotation_prepare_closed$(_checked_0, _minimumWork_0) {
+  const _context_0 = run_loop($book_context$(_checked_0));
+  return run_tail((($Bool$and$(run_loop($base_prefix_closed$(_checked_0, _context_0)), ($base_annotation_implicit$(_context_0, {$: "Con", "head": "Nat", "tail": {$: "Con", "head": "U32", "tail": {$: "Con", "head": "F32", "tail": {$: "Con", "head": "String", "tail": {$: "Con", "head": "Char", "tail": {$: "Con", "head": "Bool", "tail": {$: "Con", "head": "Word", "tail": {$: "Con", "head": "List", "tail": {$: "Nil"}}}}}}}}}))))) ? ((_x_0) => {
+  return $base_annotation_state$(run_loop($base_annotation_collect$(_context_0, _checked_0, run_loop($jd_stops$(_context_0)), _minimumWork_0)));
+}) : ((_x_1) => {
+  return {$: "KBaseAnnotationState", "keys": {$: "Nil"}, "book": {$: "Nil"}};
+}), {$: "Unit"});
+}
+
+function $has_name_next$($0, $1, $2) {
+  let $pc = 1;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _ns_0 = $0;
+      const _name_0 = $1;
+      if (_ns_0.$ === "Nil") {
+        return false;
+      } else {
+        const _h_0 = _ns_0["head"];
+        const _t_0 = _ns_0["tail"];
+        $0 = _t_0;
+        $1 = _name_0;
+        $2 = ($String$eq$(_h_0, _name_0));
+        $pc = 1; continue;
+      }
+    }
+    case 1: {
+      const _rest_0 = $0;
+      const _name_0 = $1;
+      const _same_0 = $2;
+      if (_same_0) {
+        return true;
+      } else {
+        $0 = _rest_0;
+        $1 = _name_0;
+        $pc = 0; continue;
+      }
+    }
+  }
+}
+
+function $base_annotation_def$(_book_0, _d_0, _product_0) {
+  if ((($String$eq$(($dk$(_product_0)), "Absent")))) {
+const _x_0 = {$: "Unit"};
+return {$: "$JMP", f: $ka_def$, x: [_book_0, _d_0]};
+} else {
+const _x_1 = {$: "Unit"};
+return _product_0;
+}
 }
 
 function $f_graph_result$(_g_0) {
@@ -6989,38 +7106,6 @@ function $String$split$fin$(_c_0, _r_0, _cut_0) {
   }
 }
 
-function $has_name_next$($0, $1, $2) {
-  let $pc = 1;
-  for (;;) switch ($pc) {
-    case 0: {
-      const _ns_0 = $0;
-      const _name_0 = $1;
-      if (_ns_0.$ === "Nil") {
-        return false;
-      } else {
-        const _h_0 = _ns_0["head"];
-        const _t_0 = _ns_0["tail"];
-        $0 = _t_0;
-        $1 = _name_0;
-        $2 = ($String$eq$(_h_0, _name_0));
-        $pc = 1; continue;
-      }
-    }
-    case 1: {
-      const _rest_0 = $0;
-      const _name_0 = $1;
-      const _same_0 = $2;
-      if (_same_0) {
-        return true;
-      } else {
-        $0 = _rest_0;
-        $1 = _name_0;
-        $pc = 0; continue;
-      }
-    }
-  }
-}
-
 function $exact_term$(_a_0, _b_0) {
   return run_tail((($core_literal$(_a_0))) ? ((_x_0) => {
   return $Bool$and$(($core_literal$(_b_0)), ($core_literal_same$(_a_0, _b_0)));
@@ -7315,6 +7400,37 @@ function $base_prefix_context_drop_head$($0, $1) {
         $pc = 0; continue;
       }
     }
+  }
+}
+
+function $base_annotation_implicit$(_book_0, _names_0) {
+  if (_names_0.$ === "Nil") {
+    return true;
+  } else {
+    const _name_0 = _names_0["head"];
+    const _rest_0 = _names_0["tail"];
+    return $Bool$and$(($Bool$not$(($String$eq$(($dk$(run_loop($lookup$(_book_0, _name_0)))), "Absent")))), ($base_annotation_implicit$(_book_0, _rest_0)));
+  }
+}
+
+function $base_annotation_state$(_defs_0) {
+  return {$: "KBaseAnnotationState", "keys": ($base_annotation_keys$(_defs_0)), "book": ($book_cached$(_defs_0, 0))};
+}
+
+function $base_annotation_collect$(_book_0, _defs_0, _stops_0, _minimumWork_0) {
+  if (_defs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _d_0 = _defs_0["head"];
+    const _rest_0 = _defs_0["tail"];
+    const _x_0 = ($dx$(_d_0));
+    const _x_1 = ($String$eq$(($tg$(($dv$(_d_0)))), "Absent"));
+    const _x_2 = ($String$eq$(($tg$(($dv$(_d_0)))), "Foreign"));
+    return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_0 === 0))), ($Bool$not$(($has_name$(_stops_0, ($dn$(_d_0)))))))), ($Bool$not$((_x_1 || _x_2))))), run_loop($base_annotation_large$({$: "Con", "head": ($dv$(_d_0)), "tail": {$: "Nil"}}, _minimumWork_0))))) ? ((_x_3) => {
+  return {$: "Con", "head": ($ka_def$(_book_0, _d_0)), "tail": run_loop($base_annotation_collect$(_book_0, _rest_0, _stops_0, _minimumWork_0))};
+}) : ((_x_4) => {
+  return $base_annotation_collect$(_book_0, _rest_0, _stops_0, _minimumWork_0);
+}), {$: "Unit"});
   }
 }
 
@@ -10806,6 +10922,26 @@ function $index_child$(_tree_0, _right_0) {
   }
 }
 
+function $base_annotation_keys$(_defs_0) {
+  if (_defs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _d_0 = _defs_0["head"];
+    const _rest_0 = _defs_0["tail"];
+    return {$: "Con", "head": ($dn$(_d_0)), "tail": ($base_annotation_keys$(_rest_0))};
+  }
+}
+
+function $base_annotation_large$(_terms_0, _left_0) {
+  if (((_left_0 === 0))) {
+const _x_0 = {$: "Unit"};
+return true;
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $base_annotation_large_more$, x: [_terms_0, _left_0]};
+}
+}
+
 function $f_header_space$(_source_0) {
   return run_tail((($Bool$and$(($Bool$not$(($String$is_empty$(_source_0)))), ($f_ascii_space$(($f_head$(_source_0))))))) ? ((_x_0) => {
   return $f_header_space$(($f_tail$(_source_0)));
@@ -14029,6 +14165,16 @@ function $index_child_list$(_ds_0, _right_0) {
     } else {
       return _h_0;
     }
+  }
+}
+
+function $base_annotation_large_more$(_terms_0, _left_0) {
+  if (_terms_0.$ === "Nil") {
+    return false;
+  } else {
+    const _term_0 = _terms_0["head"];
+    const _rest_0 = _terms_0["tail"];
+    return $base_annotation_large$(($norm_join$(($ks$(_term_0)), _rest_0)), ((_left_0 - 1) >>> 0));
   }
 }
 
@@ -47454,6 +47600,10 @@ export default {
   "base_prefix_world_prepare": run_lib((a0, a1) => { const r = (run_loop($base_prefix_world_prepare$((a0), (a1)))); (a0); (a1); return r; }, 2),
   "check_program_diagnostic_world": run_lib((a0, a1, a2) => { const r = (run_loop($check_program_diagnostic_world$((a0), (a1), (a2)))); (a0); (a1); (a2); return r; }, 3),
   "book_context_world": run_lib((a0, a1, a2) => { const r = (run_loop($book_context_world$((a0), (a1), (a2)))); (a0); (a1); (a2); return r; }, 3),
+  "base_annotation_prepare": run_lib((a0, a1) => { const r = (run_loop($base_annotation_prepare$((a0), (a1)))); (a0); (a1); return r; }, 2),
+  "base_annotation_wanted": run_lib((a0, a1, a2) => { const r = (run_loop($base_annotation_wanted$((a0), (a1), (a2)))); (a0); (a1); (a2); return r; }, 3),
+  "base_annotation_allowed": run_lib((a0, a1) => { const r = (run_loop($base_annotation_allowed$((a0), (a1)))); (a0); (a1); return r; }, 2),
+  "annotate_selected_base": run_lib((a0, a1, a2, a3) => { const r = (run_loop($annotate_selected_base$((a0), (a1), (a2), (a3)))); (a0); (a1); (a2); (a3); return r; }, 4),
   "f_load_graph": run_lib((a0, a1) => { const r = (run_loop($f_load_graph$((a0), (a1)))); (a0); (a1); return r; }, 2),
   "f_load_graph_trace": run_lib((a0, a1) => { const r = (run_loop($f_load_graph_trace$((a0), (a1)))); (a0); (a1); return r; }, 2),
   "f_source_completed": run_lib((a0, a1, a2, a3) => { const r = (run_loop($f_source_completed$((a0), (a1), (a2), (a3)))); (a0); (a1); (a2); (a3); return r; }, 4),

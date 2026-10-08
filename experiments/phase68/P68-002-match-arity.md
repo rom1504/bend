@@ -22,3 +22,10 @@ before/after, then compare common-work native timing. A faster incorrect output
 fails. Broad correctness/B2/JS qualification only for a selected candidate.
 
 Results and selection: pending. Production untouched at registration.
+
+First screen: checkedB1 `4fe50555…`, six-family exact outputs;0.363465× prior
+runtime on recalibrated shared plan, but1.612257×C bytes and1.512764×Clang time.
+Five valid fast semantic controls pass; invalid newfixture preserved forsuccessor.
+Saturated error-order witness agrees; partial witness confirms remaining
+upstream discrepancy. Not promoted. Follow-up P68-003 shares the full body and
+aligns named partial-call delay. Exact evidence in Phase68 report.

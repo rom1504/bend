@@ -166,7 +166,11 @@ mode must carry the ownership and error path.
   change the first diagnostic from old selfhost tags to upstream Nat overflow.
   Qualify this against upstream using runtime-dependent factors; distinguish
   inherited baseline divergence from a new regression. Partial applications
-  still demand their prefix match before later arguments are supplied.
+  retain the old selfhost demand in arity-v1 only. Upstream `call_eta`:707–715
+  instead eta-expands named partial calls and may defer the prefix match until
+  remaining arguments arrive; eta-adapter-v2 separately addresses that inherited
+  partial-call discrepancy. An explicit source match is the reliable staged
+  first-diagnostic control.
 - Full layouts must box recursion, Array, IO.OP, hidden dependent-family cycles,
   unknown types and excessive width. Escaping products/callbacks, duplicated
   fields, zero-field constructors and erased fields require explicit bridges.
@@ -174,3 +178,55 @@ mode must carry the ownership and error path.
   with verified tail self-recursion and retain scheduler fallback elsewhere.
 - No runtime gain has been measured in this audit. Source census and manually
   traced allocation counts guide the next guarded CPU3 experiment only.
+
+
+## Independent review of arity-v1 proposal
+
+Reviewed `selfhost/tools/performance/phase68/architecture/arity-v1.patch`,
+SHA256 `d8ff121003a169e46af4d4d22d1b49ccd4015ac7d38e2c2ddb5a670977f9af25`,
+and independently verified its two before/after source hashes against the
+proposal receipt and source copies. No source-level semantic blocker found
+for a checked full-compiler prototype. No target was run in this review.
+
+The query uses the annotated, pre-erasure KDef and then converts its full typed
+arity to live arity; the maximum with old leading-lambda arity retains existing
+raw-core leading-lambda controls with approximate types. Fresh entry IDs begin
+after `nc_fresh(base)` and advance the counter by arity. Matcher argument aliases
+correctly expose repetitions/captures to the existing retain operation. Hit arms
+apply constructor fields before residual arguments; miss arms apply the original
+scrutinee before residual arguments. Nat chain specialization runs only when
+there are exactly two NMatch children, so it cannot silently discard extras.
+Exact saturation, primitive/foreign branches and bang exclusion remain.
+
+One integration boundary remains: `native/tests.mjs` assembles core and native
+modules alone, whereas this prototype refers directly to JS arity helpers. A
+shared extraction or explicit manifest dependency is required before final
+standalone native qualification. The full compiler already contains these
+helpers, so this does not block the bounded B1 screen. First-diagnostic order
+still requires the upstream comparison described above.
+
+## Narrow follow-on: forwarding pair results
+
+A local `let pair = Array.get(...); match pair` rule alone does **not** remove
+this fixture's hot get Tuple: the getter is the final argument to `fold.step`,
+whose immediate match executes in another private worker. Likewise, the state
+Tuple crosses `fold.step` → `fold.cell` → `fold.loop`. Eliminating these boxes
+requires either bounded inlining that exposes each producer/consumer pair, or
+private worker specialization of product arguments and results.
+
+The existing scheduler supports multiple return words already: `N_Segment.result`,
+`ne_ret`'s word list, `nb_returns`, `nb_frame_results`, and frame-result tables.
+The missing piece is semantic lowering: `NC_Binding` and constructor/match/call
+lowering uniformly use one word per value. A two-word ABI must propagate both
+ownership and result count through intermediate tail-forwarding workers, and
+retain boxing adapters at ordinary closure/unknown-call boundaries. Treat this
+as a representation change, not a two-line array optimization.
+
+The cheaper independent candidate is allocating-value binding: extend the
+immediate-let path to an `N_Emitted` prefix plus word for constructors and known
+Array primitives. Bind/evaluate arguments once in order, emit the allocation or
+array operation prefix, and lower the let body with its resulting word directly.
+This removes their continuation frames while retaining the existing box ABI.
+Factor expression emission structurally rather than replacing `WL_RETN` strings.
+It should remove Array.get/set frame boundaries in the recurrence immediately;
+measure it separately and do not describe it as pair scalar replacement.

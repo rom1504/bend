@@ -1,0 +1,151 @@
+{
+  "kind": "phase65-annotation-ablation-exact-source-derivation",
+  "targetExecuted": false,
+  "entries": [
+    {
+      "parent": {
+        "file": "selfhost/tools/performance/phase65/latency/host-variants-v2.py",
+        "sha256": "fd318b70e1fee27f7b4a127e06ff153a6ae2ac6e7beb0a5c549faf29da30595b"
+      },
+      "output": {
+        "file": "selfhost/tools/performance/phase65/cache-contract/annotation-ablation.py",
+        "sha256": "36d5fc123ea2058dec61403a8e1f601689d20df5d2c06eea752ffc5a99a21dad"
+      },
+      "edits": [
+        {
+          "old": "\"\"\"Prepare or run isolated diagnostic helper variants of an already qualified B2 image.\"\"\"",
+          "new": "\"\"\"Same-image B2 H2 ablation: exact prepared sidecar present versus absent.\"\"\"",
+          "count": 1
+        },
+        {
+          "old": "prep.add_argument('--role',default='baseline',help='Actual prepared genuine B2 role to copy')\n",
+          "new": "",
+          "count": 1
+        },
+        {
+          "old": "prep.add_argument('--cases',default='numeric-recurrence,test-map-set-ops',",
+          "new": "prep.add_argument('--cases',default='numeric-recurrence,test-map-set-ops,map-churn',",
+          "count": 1
+        },
+        {
+          "old": "prep.add_argument('--variant',action='append',required=True,help='LABEL=reviewed replacement base-cache-graph.mjs')\n",
+          "new": "",
+          "count": 1
+        },
+        {
+          "old": "    receipt=read(a.preparation);assert receipt['complete'] and receipt['pass']\n    config=read(pin(receipt['config'])['file'])\n    row=next(row for row in receipt['preparations'] if row['observation']['role']==a.role)\n    assert row['success'];observation=read(pin(row['result'])['file']);assert observation==row['observation']\n",
+          "new": "    observation=read(a.preparation);assert observation['complete'] and observation['pass'] and observation['stage']=='prepare'\n    config=read(pin(observation['config'])['file'])\n",
+          "count": 1
+        },
+        {
+          "old": "identity(Path(__file__).with_name('host-variant-worker.mjs'))",
+          "new": "identity(Path(__file__).with_name('annotation-ablation-worker.mjs'))",
+          "count": 1
+        },
+        {
+          "old": "identity(a.preparation),pin(receipt['config']),pin(row['result']),pin(config['node']),",
+          "new": "identity(a.preparation),pin(observation['config']),pin(config['node']),\n        identity(Path(__file__).with_name('annotation-ablation.derivation.json')),",
+          "count": 1
+        },
+        {
+          "old": "    variants={'baseline':None}\n    for value in a.variant:\n        label,filename=value.split('=',1)\n        assert label.isidentifier() and label not in variants\n        variants[label]=pin(filename);inputs.append(variants[label])\n",
+          "new": "    products=observation['verification']['baseProducts']\n    assert products['supported'] and products['declared'] and products['exists'] and len(products['files'])==1\n    product=pin(products['files'][0]);assert Path(product['file']).parent==original/'build/typed/base-products'\n    assert products['headerBinding']['compilerSha256']==observation['image']['api']['sha256']\n    assert products['headerBinding']['baseSha256']==observation['image']['base']['sha256']\n    assert Path(product['file']).name.endswith('-annotations64-v1.bin')\n    inputs.append(product)\n    variants={'without_products':False,'with_products':True}\n",
+          "count": 1
+        },
+        {
+          "old": "    for label,replacement in variants.items():",
+          "new": "    for label,present in variants.items():",
+          "count": 1
+        },
+        {
+          "old": "            if replacement and str(relative)=='tools/base-cache-graph.mjs':\n                shutil.copyfile(replacement['file'],target)\n                changes.append(dict(relative=str(relative),before=item,after=identity(target),replacement=replacement))\n                diff=''.join(difflib.unified_diff(source.read_text().splitlines(True),target.read_text().splitlines(True),fromfile=str(source),tofile=str(target)))\n                (out/label/'helper.diff').write_text(diff)\n",
+          "new": "",
+          "count": 1
+        },
+        {
+          "old": "        assert len(changes)==(1 if replacement else 0)\n",
+          "new": "        product_dir=project/'build/typed/base-products';product_files=[]\n        assert not product_dir.exists()\n        if present:\n            product_dir.mkdir(parents=True);target=product_dir/Path(product['file']).name\n            shutil.copyfile(product['file'],target);assert identity(target)['sha256']==product['sha256']\n            product_files.append(identity(target));bound.extend(product_files)\n        changes.append(dict(kind='optional-product-presence',present=present,original=product))\n",
+          "count": 1
+        },
+        {
+          "old": "            cache=[identity(project/Path(x['file']).relative_to(original)) for x in observation['verification']['cacheFiles']])",
+          "new": "            cache=[identity(project/Path(x['file']).relative_to(original)) for x in observation['verification']['cacheFiles']],\n            products=dict(directory=str(product_dir),exists=present,files=product_files))",
+          "count": 1
+        },
+        {
+          "old": "    for item in inputs+copies:pin(item)\n    plan=",
+          "new": "    common=[{str(Path(x['file']).relative_to(Path(r['project']))):x['sha256'] for x in r['files'] if '/base-products/' not in x['file']} for r in roles.values()]\n    assert common[0]==common[1], 'Only product presence may differ'\n    for item in inputs+copies:pin(item)\n    plan=",
+          "count": 1
+        },
+        {
+          "old": "phase65-host-helper-counterfactual",
+          "new": "phase65-base-annotation-presence-ablation",
+          "count": 3
+        },
+        {
+          "old": "imageKind='genuine-b2-with-explicit-diagnostic-host-helper'",
+          "new": "imageKind='same-genuine-b2-and-helper-with-explicit-optional-product-presence'",
+          "count": 1
+        },
+        {
+          "old": "sourcePreparation=pin(row['result'])",
+          "new": "sourcePreparation=identity(a.preparation)",
+          "count": 1
+        },
+        {
+          "old": "        scope='Actual selected B2 API/source/Base/driver/runtime/cache bytes unchanged; only explicitly reviewed '\n              'base-cache-graph helper differs in fresh private project copies. No bootstrap sidecars or '\n              'production qualification. Fresh ordinary inspect per process; full raw output equality after clocks.')",
+          "new": "        productBinding=products['headerBinding'],\n        scope='Actual combined B2 API/source/Base/driver/runtime/helper/frame bytes identical in both clones. '\n              'Only exact optional annotation sidecar presence differs; no priming or compiler runs during cloning. '\n              'Full project and product inventory checked before/after each fresh ordinary request; all bytes pinned. '\n              'Diagnostic incremental H2 effect on H6 image, not separate compiler qualification. Raw output equality after clocks.')",
+          "count": 1
+        },
+        {
+          "old": "'--rounds','1','--seconds','35'",
+          "new": "'--rounds','2','--seconds','60'",
+          "count": 1
+        },
+        {
+          "old": "str(Path(__file__).with_name('host-variant-worker.mjs'))",
+          "new": "str(Path(__file__).with_name('annotation-ablation-worker.mjs'))",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "selfhost/tools/performance/phase65/latency/host-variant-worker.mjs",
+        "sha256": "52f30c27aa8fe9c5754a935d6b2cf289e35f191e3a18c6b192457095794e0aaf"
+      },
+      "output": {
+        "file": "selfhost/tools/performance/phase65/cache-contract/annotation-ablation-worker.mjs",
+        "sha256": "7124f2e7a1d906da044c0c4073505c3bb51193168e16a80cd4ad516cc0731de5"
+      },
+      "edits": [
+        {
+          "old": "// Root-run fresh-process host-helper diagnostic; no custom API or prepared object injection.",
+          "new": "// Root-run same-image optional-product presence ablation; no API injection or priming.",
+          "count": 1
+        },
+        {
+          "old": "phase65-host-helper-counterfactual-worker",
+          "new": "phase65-base-annotation-presence-ablation-worker",
+          "count": 1
+        },
+        {
+          "old": "  const expected=fs.readFileSync(item.expected.file);",
+          "new": "  function inventory(directory){const found=[];for(const name of fs.readdirSync(directory)){const file=path.join(directory,name),stat=fs.lstatSync(file);assert(!stat.isSymbolicLink());if(stat.isDirectory())found.push(...inventory(file));else{assert(stat.isFile());found.push(fs.realpathSync(file));}}return found.sort();}\n  function verifyInventory(){\n    assert.deepEqual(inventory(role.project),role.files.map(x=>fs.realpathSync(x.file)).sort(),'Cloned project membership changed');\n    assert.equal(role.products.directory,path.join(role.project,'build/typed/base-products'));\n    assert.equal(fs.existsSync(role.products.directory),role.products.exists,'Product directory presence changed');\n    assert.deepEqual(role.products.exists?fs.readdirSync(role.products.directory).sort():[],role.products.files.map(x=>path.basename(x.file)).sort(),'Product inventory changed');\n    for(const file of role.products.files)verify(file);\n  }\n  verifyInventory();report.products=role.products;\n  const expected=fs.readFileSync(item.expected.file);",
+          "count": 1
+        },
+        {
+          "old": "  assert.equal(D.apiPath,role.image.api.file);",
+          "new": "  assert.equal(D.baseAnnotationDirectory,role.products.directory);\n  assert.equal(D.apiPath,role.image.api.file);",
+          "count": 1
+        },
+        {
+          "old": "  assert.deepEqual(fs.readdirSync(path.join(role.project,'build/typed/cache')).sort(),role.cache.map(x=>path.basename(x.file)).sort());",
+          "new": "  verifyInventory();\n  assert.deepEqual(fs.readdirSync(path.join(role.project,'build/typed/cache')).sort(),role.cache.map(x=>path.basename(x.file)).sort());",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "scope": "Preserve frozen fresh-worker clocks, raw oracle and root resource guard. Change preparation to exact combined B2 result and copy sidecar only into present role; enforce full clone inventory. No production mutation."
+}

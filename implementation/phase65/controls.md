@@ -155,3 +155,87 @@ helper body; its preserved failure led to a successor instrumenting the actual
 SCC state. That activated the enclosing path but still found zero eligible Nil
 arms. Generated call structure must be inspected before accepting any wrapper
 counter as proof of opportunity.
+
+
+The root subsequently completed both H2 gates: host56 passed and owned v2
+passed all three sources, including seven Map cached-object reuses and 101,907
+compared graph pairs. Their exact receipts are pinned in
+[`reviewed-focused-receipts03.json`](../../selfhost/tools/performance/phase65/controls/reviewed-focused-receipts03.json).
+The first owned run bound raw `checkedApi` and failed before any world/product
+path. The preserved v2 successor explicitly binds the qualified derived-B1
+receipt, its actual output and checked parent. All semantic assertions remain.
+These B1 passes do not replace selected genuine-B2 owned-route controls.
+
+The selected State09 combined source has 3,269 unique definitions, all explicitly
+unsafe, and 99 admitted exports. The final self-check derives counts from the
+exact pinned assembly rather than retaining a historical count. The independent
+review of the Phase65 qualification factory verified its exact three-edit
+replay, every recorded source identity and Python syntax. The same seventeen
+methods and semantic oracles, corrected identity normalization, frame4 gate and
+strict image producer lineage remain. See
+[qualification-plan.md](qualification-plan.md) for the selected sequence.
+
+
+## Selected host correction and final qualification boundaries
+
+The genuine State09 B2 owned controller passed with the same seven Map reuses
+and 101,907 annotation pairs. Review corrected its generation contract before
+execution: the 99 requested roots must all be callable, while the actual B2
+default object has 3,239 reachable exports. Exact equality between these two
+different sets would incorrectly reject the valid image. Source/runtime/attempt,
+root admission and full emission lineage are all independently bound.
+
+Root's final semantic review found a missing permission boundary: explicit
+preparation could eagerly annotate unselected definitions from arbitrary custom
+Base content. Earlier controls and closure arguments assumed the pinned Base;
+ready checking alone does not prove identical annotation demand or termination.
+The checker accepts a TODO hole without normalizing its expected type, whereas
+annotation normalizes that type before dispatch. We confirmed this source
+distinction and did not run an intentionally divergent program.
+
+State10 fixes the boundary by requiring the exact pinned Base content hash
+before optional producer access or sidecar reading. Changed content keeps the
+existing generic route. The independently reviewed host controller preserves all
+56 transport cases and adds four content/path cases (60 total), including no
+API/property/IO demand for custom content. A separate real owned B2 control uses
+a harmless comment-only Base change, two actual preparations, an otherwise
+ready world, zero product calls/artifacts and complete Map module equality. Its
+copy sits alongside the selected relative foreign-effects providers; the first
+unconsumed draft placement was corrected before execution to avoid testing a
+missing dependency instead of the permission boundary. Positive pinned-Base
+consumption is checked in the separate standard owned controller.
+
+State09 checked qualification stopped after eleven successful commands because
+the parent launcher inherited CPU0-only affinity, causing program45 acquisition
+to refuse CPU3 at preflight. Root preserved that failed report and completed the
+exact final three commands in a fresh resume plan. State10's identical compiler
+source, B1, runtime, Base, Node and 99-root set permit an explicit data-only
+semantic reuse proof. This proof retains the failed stage as failed; it joins
+only the successful prefix and exact resumed suffix and revalidates the complete
+fourteen-command coverage. The selected host files differ and require fresh
+host controls and their own selected timing campaign.
+
+The first data-only reuse join found that maintained8 had pinned its then-live
+State09 driver path, whose bytes now correctly belong to State10. Root approved
+a narrowly scoped successor: only those exact recorded historical host
+identities may resolve to their byte-identical frozen State09 copies, while the
+new live hashes remain separately recorded. No old receipt is rewritten and no
+ordinary hash mismatch is ignored. The first join produced no passing output.
+
+
+The selected State10 focused gates have now closed: products host60, exact
+helper domain87 and host arena79 all pass. The genuine B2 standard owned route
+again reuses seven Map definitions with whole-graph/module equality. The actual
+comment-only custom Base control passes with two ready preparations, one owned
+world/context use, zero optional producer/wanted/allowed/consumer calls, no
+sidecar, and exact 132,866-byte Map output. These are pinned in
+[`reviewed-focused-receipts04.json`](../../selfhost/tools/performance/phase65/controls/reviewed-focused-receipts04.json).
+
+The data-only checked reuse proof also passed: 315 frozen source files, 313
+identical and only the two reviewed host differences. Only the recorded old live
+driver identity required historical relocation; the helper mapping was unused.
+The proof covers the eleven successful original commands plus the exact three
+resumed commands, preserving the failed original execution. A fresh B2-plan
+successor changes exactly one reference-manifest argument and retains all five
+selected B2 commands. Final B2 qualification is still pending at this report
+update; focused passes do not admit installation.

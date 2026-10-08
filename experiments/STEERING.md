@@ -1,4 +1,57 @@
-# Current frontier: Phase65 investigation authorized
+# Current frontier: Phase65 State10 measurement complete, installation pending
+
+[Phase65 report](../implementation/phase65/README.md) ·
+[Measurement](../implementation/phase65/measurement.md) ·
+[Final broad receipt](../implementation/phase65/evidence/state10-b2-broad.json) ·
+[Artifact contract](../docs/self_hosted/prepared-base-artifacts.md#phase65-selected-integration-candidate) ·
+[Size audit](../implementation/phase65/size.md).
+
+State10 selects optional checked Base annotation products plus static frame4
+transport readers. Compiler algorithms remain Bend. The host gates optional
+preparation and sidecar reads on the exact qualified Base content before all
+existing source/API/ABI/parent-graph admission; custom and future Base versions
+use ordinary request-demanded annotation until independently qualified.
+
+The final balanced 23-source/three-role/three-round campaign passes 207/207
+exact-output workers. Equal-source geometric means of per-role/source medians:
+
+| Clock | Same-campaign Phase64 B2 / TS | Selected State10 B2 / TS | Time reduction |
+| --- | ---: | ---: | ---: |
+| Compilation alone | 1.41737× | 1.28945× | 9.025% |
+| Host/API imports plus compilation | 1.04969× | 0.969256× | 7.662% |
+
+All 23 sources improve; 21 have nonoverlapping baseline/candidate sample ranges.
+Four compile faster than TS, ten are faster including imports. These are finite
+sample descriptions, not confidence intervals. Compilation-only parity still
+needs about **22.45% less time**; do not substitute the sub-1× combined clock.
+Fresh processes use prepared caches; preparation and output checks are excluded.
+No installed-CLI, OS-cold or generated-program execution speed claim is made.
+State09's earlier broad result remains preserved under its own identities.
+
+**Installation and final release qualification remain pending. Phase64 State09
+is still installed.** Do not mark release/CLI gates passed before their actual
+receipts close. H2's incremental benefit over H6 alone remains a separate
+attribution question; do not assign the bundle gain to either component alone.
+
+The final source adds 117 physical Bend lines (+15 definitions, one type) in one
+new module; all 114 previous modules and runtimes are unchanged. Host changes add
+83 driver and 63 decoder lines. The extra artifact lifecycle is an explicit
+complexity cost, not a simplification claim.
+
+Reject normalized-head storage, the prepared constructor index and the broad
+shallow-substitution guard. Boolean/leaf screens were mixed and are not selected.
+Both output-metadata opportunities had zero observed admissions and were not
+built. The case-local decoder failed first-decode timing; its static-reader
+successor is a separately measured design. Preserve every failed/corrected
+method and negative receipt. Final compiler, host and release evidence must bind
+exact State10 inputs; prior gates transfer only through explicit identity reuse.
+
+Root alone runs bounded CPU3 targets; source/data/review work stays on CPU0.
+Historical raw trees remain closed. Complete final qualification and release
+before announcing installation; update this frontier from the resulting receipts.
+The previous steering snapshot below is retained as historical context.
+
+# Historical frontier: Phase65 registration and Phase64 baseline
 
 The user authorized [Phase65](../design/phase65/reusable-backend-products.md)
 from `49431ba`: refresh the selected B2 profiles, then test shared typed backend

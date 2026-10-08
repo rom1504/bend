@@ -3939,3 +3939,35 @@ The next small slices are leaf-only return hoisting, Boolean lookup projection
 Base annotations (P65-002). First-decode transport remains under investigation.
 Phase64 is still installed. Failed preflights and their corrected successors
 remain separate; no compiler source or speed result is promoted at this cutoff.
+
+### Phase65 State10 broad result, release pending — 2026-10-08
+
+The [final selected-host broad campaign](../implementation/phase65/evidence/state10-b2-broad.json)
+passes 207/207 exact-output workers over 23 sources and three balanced rounds.
+Same-campaign compilation improves **1.41737× → 1.28945× TS (9.025% less time)**;
+imports plus compilation improve **1.04969× → 0.969256× (7.662% less time)**.
+All sources improve, with 21 nonoverlapping sample ranges; four are below TS
+for compilation and ten including imports. These are descriptive fresh-process,
+prepared-cache observations. Compilation-only parity needs another 22.45% time
+reduction. No generated-program speed gain or installed-CLI timing is claimed.
+
+State10 keeps the selected Bend/B1/B2 algorithms, adds exact pinned Base-content
+permission before optional production or sidecar reads, and includes a
+whitespace-only decoder cleanup. Custom and future Base updates retain ordinary
+annotation until their preparation is independently qualified. The earlier
+State09 campaign is preserved separately, not retroactively relabeled State10.
+
+The selected mechanisms are Bend-owned retained Base annotations and static
+JavaScript frame4 transport readers. The [size audit](../implementation/phase65/size.md)
+records +117 Bend lines, 15 definitions and one type, plus 83 host-driver and
+63 decoder lines. All 114 prior Bend modules and runtimes remain exact. This is
+an explicit performance/complexity tradeoff. Normalized heads, prepared
+constructor indexing and broad shallow guards were rejected; Boolean/leaf
+screens were mixed, both output opportunities had zero admissions, and the
+load-only decoder predecessor failed first-decode timing.
+
+**Performance comparison complete; installation and final release qualification
+pending.** Phase64 remains installed at this checkpoint. H2's incremental
+attribution over H6 alone remains separate. Do not infer release or universal
+conformance from these finite output/timing gates. No upstream migration or PR
+comment was made. Preserve earlier registration, failed attempts and raw phases.

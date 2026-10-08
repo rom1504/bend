@@ -1,8 +1,10 @@
 # Phase65 selected integration qualification
 
 This is a plan, not a passing qualification receipt. Root owns all target runs.
-The selected candidate is either H6 static tag readers alone, or H6 plus H2
-prepared Base annotations. Rejected substitution, normalized-head, constructor
+Root selected State10: H6 static tag readers plus H2 prepared Base annotations,
+with an explicit pinned-Base-content permission guard on optional annotation
+production and consumption. State09 remains immutable intermediate evidence. The H6-only alternative
+below explains the narrower fallback if integration fails. Rejected substitution, normalized-head, constructor
 index and structured-output experiments are excluded unless separately selected.
 Closed Phase64 evidence remains immutable.
 
@@ -49,19 +51,21 @@ separate actual owned-driver controller is
 `selfhost/tools/performance/phase65/base-products/annotation-controls-v2.mjs`.
 It explicitly requires the qualified derived B1, compares whole annotations and
 modules, requires seven real Map definition-object reuses, and checks current
-stops, refusal and public fallback. Its v1 run selected the raw bootstrap API
-and failed before any candidate consumption; preserve that failed run. Do not
-count it as H2 semantic validation.
+stops, refusal and public fallback. Its v2 run passed in `base-annotations-owned-state08-02/report.json`, including
+seven Map reuses and 101,907 compared graph pairs. Its v1 run selected the raw
+bootstrap API and failed before any candidate consumption; preserve that failed
+run. Do not count it as H2 semantic validation.
 
 ## Root commands and order
 
-Run from the repository root. Set the selected state once; `state09` is the
-planned H6-only integration and `state10` the optional combined integration.
+Run from the repository root. Set the selected state once; `state10` is the
+selected combined integration. The State09 checked semantic gates transfer only
+through the explicit equality and resumed-command proof described below.
 Every output must be fresh. The commands below prepare data or invoke the
 existing guarded launchers; do not wrap the parent launchers in another guard.
 
 ```sh
-phase65_selected=state09
+phase65_selected=state10
 ```
 
 1. Freeze selected production inputs and run the checked build using the
@@ -71,8 +75,8 @@ phase65_selected=state09
    `attempt.api` / `equality/api.mjs` in semantic or timing work.
 
 ```sh
-taskset -c 0 python3 -B selfhost/tools/performance/phase65/latency/build/export-admission.py admit "selfhost/build/phase65/export-${phase65_selected}"
-# H2 alternative adds: --additions selfhost/build/phase65/export-additions-h2.json
+taskset -c 0 python3 -B selfhost/tools/performance/phase65/latency/build/export-admission.py admit "selfhost/build/phase65/export-${phase65_selected}" --additions selfhost/build/phase65/export-additions-h2.json
+# H6-only fallback omits --additions.
 taskset -c 0 python3 -B selfhost/tools/performance/phase65/latency/build/make-build.py "selfhost/build/phase65/build-${phase65_selected}" --attempt "selfhost/build/phase65/checked-${phase65_selected}"
 ```
 
@@ -105,7 +109,10 @@ taskset -c 0 python3 -B selfhost/build/phase65/qualification-method01/qualificat
 
 If no B2 was generated in step 2, omit `--bootstrap-pins`; the generated bootstrap
 stage will construct it. Never execute both paths for the same selected image.
-Root runs the three generated stage launch commands serially:
+For a newly changed compiler, root runs the three generated stage launch commands serially.
+For this selected State10 host-only correction, replace the checked-stage command
+with the data-only reuse join below, and use its B2-plan successor instead of the
+original B2 plan. Bootstrap and all remaining fresh B2 targets are unchanged:
 
 ```sh
 python3 -B selfhost/tools/performance/phase55/run-retention-plan.py "selfhost/build/phase65/final-${phase65_selected}-plans/checked.json" "selfhost/build/phase65/final-${phase65_selected}/checked-stage-execution"
@@ -160,3 +167,53 @@ remain separate root stages after compiler/host/performance admission. Preserve
 previous installed files and inherited/closed evidence inventories. Do not
 promote an experimental passing receipt or the factory's `executed:false` plan
 into a completed qualification.
+
+## Selected State10 correction and explicit reuse
+
+Review found that a ready checked Base is not sufficient permission to eagerly
+annotate every unselected unsafe definition in arbitrary custom Base content.
+The checker accepts TODO holes without normalizing their expected type, whereas
+annotation normalizes it. Earlier H2 controls covered the pinned Base and did
+not establish this general demand equivalence. State10 therefore permits the
+optional producer and reader only when Base content has the pinned SHA-256
+`c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661`.
+Other content follows the existing checked compilation path with no optional
+producer, key/body read, wanted/allowed check or product consumer. The permission
+is content-based; copying unchanged Base bytes to another path remains eligible.
+
+State10 also trims only blank lines from the selected host graph helper. Its
+exact helper bytes receive a fresh 87-case domain run. The host sidecar
+successor retains 56 controls and adds four custom-content/path controls, for
+60. A separate actual-owned B2 control appends one inert comment to a copied Base
+located alongside the copied relative effects providers. It requires two
+successful preparations, a ready world, no sidecar or annotation demand, an
+actual owned Map compilation and exact qualified module output. Positive pinned
+Base use is checked independently by the existing actual-owned B2 controller.
+
+State09 and State10 have identical Bend source, checked/qualified B1 bytes,
+requested 99 roots, runtime, Base and Node. Their frozen source sets differ only
+in the two reviewed host files. State10 nevertheless has a fresh checked build,
+new genuine B2 construction provenance and its own selected-host broad campaign.
+The closed State09 checked stage is reused through an explicit data-only receipt:
+its first eleven commands passed, command twelve stopped at CPU-affinity
+preflight, and a separate immutable resume plan completed the exact final three
+commands. The failed execution remains failed. The joined coverage must equal
+all fourteen original commands exactly, with all suite receipts and program
+artifacts reverified. Historical live-host inputs in maintained8 are resolved
+only to byte-identical frozen State09 files under exact recorded identity, with
+the current State10 host hashes recorded separately.
+
+The reuse tool is `controls/join-checked-reuse-v2.py` (successor of the preserved
+first join attempt). It writes `final-state10/checked-reuse.json`; its `b2-plan`
+mode changes exactly the final program-equality command's reference manifest to
+the already qualified State09 program45 manifest. All five B2 commands, their
+selected compiler lineage, fresh source check, fixed point and semantic gates
+remain intact. Root uses the fresh override plan, preserving the original plan
+and recording the one argument change. The final receipt validates this proof
+and does not falsely mark the original incomplete stage successful.
+
+Final State10 compiler admission also requires selected driver host79, products
+host60, exact helper domain87, actual B2 positive products and custom Base
+fallback controls, and its own 207-worker broad report. Previous State09 timing
+and semantic receipts remain separately attributed. Installation and release
+checks are still separate.

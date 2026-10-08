@@ -1,0 +1,51 @@
+{
+  "kind": "phase65-time-account-derivation",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "accountInvoked": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/account-time.py",
+    "sha256": "8d0603b7ac05d5b400006388fac37a01471417e6b77031edea36173d7f053d71"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/account-time.py",
+    "sha256": "337254246e17db7cf8d7c5e085a842200cbba01a7c37f191d7f61b229c9d890d"
+  },
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/account-time.patch",
+    "sha256": "825d8b56fa18997b4a681ec9d5dcb2c454986419f0a262983b2e8835829b3ec1"
+  },
+  "interruptionAtPreparation": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase65/evidence/interruption.json",
+    "sha256": "fdd156ad93e01f50bde97defdf71b244b6efbfa8ae6d008f93d918c59fb362ff"
+  },
+  "edits": [
+    {
+      "old": "Phase64",
+      "new": "Phase65",
+      "count": 1
+    },
+    {
+      "old": "selfhost/build/phase64",
+      "new": "selfhost/build/phase65",
+      "count": 1
+    },
+    {
+      "old": "phase64-closed-guard-time-account",
+      "new": "phase65-closed-guard-time-account",
+      "count": 1
+    },
+    {
+      "old": "occupied = sum(end - start for start, end in merged)\n",
+      "new": "occupied = sum(end - start for start, end in merged)\ninterruption_path = ROOT / 'implementation/phase65/evidence/interruption.json'\ninterruption_bytes = interruption_path.read_bytes()\ninterruption = json.loads(interruption_bytes)\nassert interruption['kind'] == 'phase65-external-interruption-note'\nassert interruption['boundariesExact'] is False\npause_start = stamp(interruption['approximateStartUtc'])\npause_finish = stamp(interruption['approximateResumeUtc'])\nassert pause_finish >= pause_start\nclipped_start, clipped_finish = max(begin, pause_start), min(cutoff, pause_finish)\nclipped_seconds = max(0.0, clipped_finish - clipped_start)\noverlap_seconds = sum(max(0.0, min(end, clipped_finish) - max(start, clipped_start))\n                      for start, end in merged) if clipped_seconds else 0.0\napproximate_interruption = dict(\n    input=dict(file=str(interruption_path), sha256=hashlib.sha256(interruption_bytes).hexdigest()),\n    boundariesExact=False, source=interruption['source'],\n    declaredStart=interruption['approximateStartUtc'],\n    declaredResume=interruption['approximateResumeUtc'],\n    declaredApproximateSeconds=pause_finish-pause_start,\n    clippedStart=utc(clipped_start) if clipped_seconds else None,\n    clippedFinish=utc(clipped_finish) if clipped_seconds else None,\n    clippedApproximateDowntimeSeconds=clipped_seconds,\n    measuredClosedGuardOverlapSeconds=overlap_seconds,\n    elapsedOutsideApproximateDowntimeSeconds=cutoff-begin-clipped_seconds,\n    closedGuardUnionOutsideApproximateDowntimeSeconds=occupied-overlap_seconds,\n    uncoveredOutsideApproximateDowntimeSeconds=cutoff-begin-occupied-clipped_seconds+overlap_seconds,\n    scope='Separately clips root-declared approximate external downtime to this accounting interval. '\n          'Guard overlap uses measured closed intervals within approximate boundaries; total elapsed '\n          'and occupied union above remain unchanged. Outside-downtime values are approximate and '\n          'unclassified, not precise active work, CPU time or waiting. No open-guard finish is inferred.')\n",
+      "count": 1
+    },
+    {
+      "old": "    uncoveredSeconds=cutoff-begin-occupied, intervals=closed, mergedIntervals=merged,\n",
+      "new": "    uncoveredSeconds=cutoff-begin-occupied, intervals=closed, mergedIntervals=merged,\n    approximateInterruption=approximate_interruption,\n",
+      "count": 1
+    }
+  ],
+  "scope": "Closed guard collection and nested interval union unchanged; separately pins and clips root-declared approximate external interruption. Original total elapsed/occupied/uncovered metrics retained; approximate outside-downtime values are not active-work, CPU or waiting estimates."
+}

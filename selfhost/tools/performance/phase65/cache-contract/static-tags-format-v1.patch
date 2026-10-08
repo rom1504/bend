@@ -1,0 +1,11 @@
+--- a/selfhost/tools/base-cache-graph.mjs
++++ b/selfhost/tools/base-cache-graph.mjs
+@@ -231,7 +231,7 @@
+   let node,kind;
+         if(a&0x80000000){kind=STRINGS;node={$:'Con',head:arenaReadString(ctx,a&0x7fffffff),tail:arenaReadRef(ctx,b,STRINGS)};}
+         else {if(a>=nodes.length)fail();if(kinds[a]===TERM)kind=TERMS;else if(kinds[a]===DEF)kind=DEFS;else fail();node={$:'Con',head:nodes[a],tail:arenaReadRef(ctx,b,kind)};}
+-        
++
+ 
+   ctx.kind=kind;return node;
+ }

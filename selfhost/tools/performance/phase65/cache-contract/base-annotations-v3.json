@@ -1,0 +1,38 @@
+{
+  "status": "isolated-unapplied-unexecuted",
+  "hypothesis": "P65-002",
+  "files": {
+    "selfhost/tools/typed-driver.mjs": {
+      "beforeSha256": "7929ad82feb64bf8a6e56ffee04f0339098cceb374b7e77074dfb0033539c7ff",
+      "afterSha256": "a11ceb95443776cceb627964e3bb3eafe04863100af5c18475a4028bcdc96581",
+      "candidate": "selfhost/build/phase65/cache-contract/base-annotations-v3/typed-driver.mjs",
+      "addedLines": 5
+    }
+  },
+  "patch": "selfhost/tools/performance/phase65/cache-contract/base-annotations-v3.patch",
+  "patchSha256": "e59ef6721f22a8b09197eae8905c5c2132a5e986e72117dd951875239262e8ba",
+  "scope": "Restrict optional Base annotation producer and consumer to the exact qualified standard Base content; all other Base content takes existing ordinary annotation. No source/image/codec/world change.",
+  "derivation": {
+    "parent": "selfhost/build/phase65/cache-contract/base-annotations-v2/typed-driver.mjs",
+    "parentSha256": "7929ad82feb64bf8a6e56ffee04f0339098cceb374b7e77074dfb0033539c7ff",
+    "edits": [
+      {
+        "before": "const BASE_ANNOTATIONS='bend-base-annotations-1',BASE_ANNOTATION_WORK=64;",
+        "after": "const BASE_ANNOTATIONS='bend-base-annotations-1',BASE_ANNOTATION_WORK=64;\n// Product normalization is qualified only for this exact standard Base content.\n// A changed or custom Base uses ordinary annotation until independently qualified.\nconst BASE_ANNOTATION_BASE_SHA256='c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661';"
+      },
+      {
+        "before": "function withBaseAnnotationFile(info,cached,consume) {\n  const binding=",
+        "after": "function withBaseAnnotationFile(info,cached,consume) {\n  if(info.baseSha256!==BASE_ANNOTATION_BASE_SHA256)return null;\n  const binding="
+      },
+      {
+        "before": "function prepareBaseAnnotations(api,cached,info) {\n  if(!baseAnnotationApis(api)",
+        "after": "function prepareBaseAnnotations(api,cached,info) {\n  if(info.baseSha256!==BASE_ANNOTATION_BASE_SHA256)return false;\n  if(!baseAnnotationApis(api)"
+      }
+    ]
+  },
+  "eligibility": {
+    "baseSha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "kind": "content-only; sourcePath remains separately admitted by unchanged frame and product metadata",
+    "customBase": "No optional producer, key/header/body read, wanted or allowed demand; existing mandatory Base checking and ordinary annotation remain in effect"
+  }
+}

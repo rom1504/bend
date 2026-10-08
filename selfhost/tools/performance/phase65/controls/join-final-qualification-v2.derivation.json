@@ -1,0 +1,142 @@
+{
+  "kind": "phase65-state10-qualification-join-derivation",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/join-final-qualification.py",
+    "sha256": "e3a73d19d1314724e4c46190c1a71d43262a82b22d7b8747c1b1dbe62d96bd49"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/join-final-qualification-v2.py",
+    "sha256": "eca185922ec10d78f2a28e4dfbb7709d08528f936a621c1484fb0e437ca29088"
+  },
+  "edits": [
+    {
+      "old": "state09",
+      "new": "state10",
+      "occurrences": 15
+    },
+    {
+      "old": "PLANS = RAW / 'final-state10-plans'",
+      "new": "PLANS = RAW / 'final-state10-plans'\nCHECKED_ORIGIN = RAW / 'final-state09'",
+      "occurrences": 1
+    },
+    {
+      "old": "             RAW/'frame4-static-tags01/execution/controls.json',\n             RAW/'base-annotations-host-state08-01/report.json',",
+      "new": "",
+      "occurrences": 1
+    },
+    {
+      "old": "    paths += [FINAL/f'{name}-stage-execution/report.json' for name in ['checked', 'bootstrap', 'b2']]",
+      "new": "    paths += [FINAL/f'{name}-stage-execution/report.json' for name in ['bootstrap', 'b2']]",
+      "occurrences": 1
+    },
+    {
+      "old": "    paths += [FINAL/x/'report.json' for x in ['checked-execution', 'self-check', 'fixed-point',\n              'b2-semantics-execution', 'b2-program-equality', 'checked/maintained8',\n              'checked/direct-census', 'checked/native3', 'checked/program45-smoke']]\n    paths += [FINAL/lane/(group+'-controls')/'report.json'\n              for lane in ['checked', 'b2-semantics']\n              for group in ['composition', 'overapplication', 'source', 'numeric']]\n",
+      "new": "    paths += [FINAL/x/'report.json' for x in ['self-check', 'fixed-point',\n              'b2-semantics-execution', 'b2-program-equality']]\n    paths += [CHECKED_ORIGIN/'checked'/x/'report.json' for x in ['maintained8','direct-census','native3','program45-smoke']]\n    paths += [(CHECKED_ORIGIN/'checked' if lane == 'checked' else FINAL/lane)/(group+'-controls')/'report.json'\n              for lane in ['checked', 'b2-semantics']\n              for group in ['composition', 'overapplication', 'source', 'numeric']]\n",
+      "occurrences": 1
+    },
+    {
+      "old": "    parser.add_argument('--owned-report'",
+      "new": "    parser.add_argument('--checked-reuse', type=Path, required=True)\n    parser.add_argument('--host-report', type=Path, required=True)\n    parser.add_argument('--domain-report', type=Path, required=True)\n    parser.add_argument('--owned-report'",
+      "occurrences": 1
+    },
+    {
+      "old": "required_receipts()+[args.owned_report,args.arena_report]",
+      "new": "required_receipts()+[args.checked_reuse,args.owned_report,args.arena_report,args.host_report,args.domain_report]",
+      "occurrences": 1
+    },
+    {
+      "old": "    bootstrap = read(attempt['bootstrapReport'])",
+      "new": "    reuse = passed(args.checked_reuse)\n    assert reuse['kind'] == 'phase65-checked-gates-reuse'\n    assert pin(reuse['newAttempt'])['sha256'] == pin(attempt_file)['sha256']\n    old_attempt = read(reuse['oldAttempt'])\n    for key in ['api','checkedApi','runtime','base','node']:\n        assert pin(old_attempt[key])['sha256'] == pin(attempt[key])['sha256']\n    CHECKED = Path(reuse['checkedOutput'])\n    assert CHECKED == CHECKED_ORIGIN/'checked'\n    assert pin(reuse['qualifiedManifest'])['file'] == str(CHECKED/'program45/manifest.json')\n    coverage = reuse['executionCoverage']\n    assert coverage['successfulPrefixCount'] == 11 and coverage['successfulSuffixCount'] == 3 and coverage['commandCount'] == 14\n    assert coverage['failedCommand'] == dict(index=11,name='program45-acquisition',returncode=2)\n    gate('checkedState09ReusedForIdenticalCompiler', args.checked_reuse,\n         successfulPrefixCommands=11,successfulResumeCommands=3,originalFailurePreserved=True)\n    bootstrap = read(attempt['bootstrapReport'])",
+      "occurrences": 1
+    },
+    {
+      "old": "for name, count in [('checked', 2), ('bootstrap', 1), ('b2', 5)]:",
+      "new": "for name, count in [('bootstrap', 1), ('b2', 5)]:",
+      "occurrences": 1
+    },
+    {
+      "old": "        assert pin(record['plan'])['sha256'] == pin(stages[name]['planIdentity'])['sha256']",
+      "new": "        if name == 'b2':\n            assert pin(plan['originalPlan'])['sha256'] == pin(stages[name]['planIdentity'])['sha256']\n            assert pin(plan['reuseReceipt'])['sha256'] == pin(args.checked_reuse)['sha256']\n            original_plan = read(plan['originalPlan']); commands = json.loads(json.dumps(original_plan['commands']))\n            change = plan['reuseManifestEdit']; assert change['commandIndex'] == 4\n            command = commands[4]['command']; pos = change['argumentIndex']\n            assert command[pos] == change['old'] == str(FINAL/'checked/program45/manifest.json')\n            assert change['new'] == pin(reuse['qualifiedManifest'])['file']\n            command[pos] = change['new']; assert commands == plan['commands']\n        else:\n            assert pin(record['plan'])['sha256'] == pin(stages[name]['planIdentity'])['sha256']",
+      "occurrences": 1
+    },
+    {
+      "old": "    execution(FINAL/'checked-execution/report.json', 14)",
+      "new": "    # The explicit reuse receipt proves the preserved failed-prefix + exact suffix coverage.",
+      "occurrences": 1
+    },
+    {
+      "old": "file = FINAL/lane/(group+'-controls')/'report.json'",
+      "new": "file = (CHECKED if lane == 'checked' else FINAL/lane)/(group+'-controls')/'report.json'",
+      "occurrences": 1
+    },
+    {
+      "old": "FINAL/'checked/maintained8/report.json'",
+      "new": "CHECKED/'maintained8/report.json'",
+      "occurrences": 1
+    },
+    {
+      "old": "FINAL/'checked/direct-census/report.json'",
+      "new": "CHECKED/'direct-census/report.json'",
+      "occurrences": 1
+    },
+    {
+      "old": "FINAL/'checked/native3/report.json'",
+      "new": "CHECKED/'native3/report.json'",
+      "occurrences": 1
+    },
+    {
+      "old": "FINAL/'checked/program45-smoke/report.json'",
+      "new": "CHECKED/'program45-smoke/report.json'",
+      "occurrences": 1
+    },
+    {
+      "old": "FINAL/'checked'/rel/'report.json'",
+      "new": "CHECKED/rel/'report.json'",
+      "occurrences": 1
+    },
+    {
+      "old": "domain_file = RAW/'frame4-static-tags01/execution/controls.json'",
+      "new": "domain_file = args.domain_report",
+      "occurrences": 1
+    },
+    {
+      "old": "host_file = RAW/'base-annotations-host-state08-01/report.json'",
+      "new": "host_file = args.host_report",
+      "occurrences": 1
+    },
+    {
+      "old": "host['count'] == len(host['controls']) == 56",
+      "new": "host['count'] == len(host['controls']) == 60",
+      "occurrences": 1
+    },
+    {
+      "old": "gate('annotationSidecarHost', host_file, controls=56,",
+      "new": "gate('annotationSidecarHost', host_file, controls=60,",
+      "occurrences": 1
+    },
+    {
+      "old": "actualExports=owned['actualExportCount']",
+      "new": "actualExports=generation['actualExportCount']",
+      "occurrences": 1
+    },
+    {
+      "old": "product = pin(products['files'][0]); raw = Path(product['file']).read_bytes()",
+      "new": "product = pin(products['files'][0]); raw = Path(product['file']).read_bytes()\n                assert product['sha256'] == pin(owned['preparation']['sidecar'])['sha256']",
+      "occurrences": 1
+    },
+    {
+      "old": "frame = Path(pin(cache[0])['file']).read_bytes(); frame_header = json.loads(frame[:frame.index(b'\\n')])",
+      "new": "frame = Path(pin(cache[0])['file']).read_bytes(); frame_cut = frame.index(b'\\n'); frame_header = json.loads(frame[:frame_cut])\n                assert frame_header['format'] == 'bend-base-cache-frame-4' and len(frame_header['segments']) == 2\n                book_bytes, prepared_bytes = frame_header['segments']; assert frame_cut+1+book_bytes+prepared_bytes == len(frame)\n                assert hashlib.sha256(frame[frame_cut+1:frame_cut+1+book_bytes]).hexdigest() == frame_header['bookGraphSha256']\n                assert hashlib.sha256(frame[frame_cut+1+book_bytes:]).hexdigest() == frame_header['preparedGraphSha256']",
+      "occurrences": 1
+    },
+    {
+      "old": "        preparations[role] = (pin(row['result']), prepared)",
+      "new": "        if role == 'candidate':\n            helper_copy = [x['after'] for x in prepared['copies'] if x['after']['file'].endswith('/tools/base-cache-graph.mjs')]\n            assert len(helper_copy) == 1 and pin(helper_copy[0])['sha256'] == arena['helper']['sha256']\n        preparations[role] = (pin(row['result']), prepared)",
+      "occurrences": 1
+    }
+  ],
+  "scope": "State10 host guard successor. Fresh strict99/bootstrap/B2/host60/arena79/domain87/owned/broad207 required. State09 checked semantics require explicit content-identical compiler reuse proof joining11 successful original commands with3 exact suffix commands. Old failures remain. Full program byte and trust/refusal gates unchanged."
+}

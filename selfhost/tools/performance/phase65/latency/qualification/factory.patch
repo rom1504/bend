@@ -1,0 +1,68 @@
+--- selfhost/tools/performance/phase64/latency/qualification/make-method.py
++++ selfhost/tools/performance/phase65/latency/qualification/make-method.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Derive final Phase64 qualification methods; bind no candidate and run no targets."""
++"""Derive final Phase65 qualification methods; bind no candidate and run no targets."""
+ import argparse
+ import ast
+ import hashlib
+@@ -7,14 +7,14 @@
+ from pathlib import Path
+ 
+ ROOT = Path(__file__).resolve().parents[6]
+-RAW = ROOT/'selfhost/build/phase64'
++RAW = ROOT/'selfhost/build/phase65'
+ PARENT = ROOT/'selfhost/build/phase63/qualification-method01/methods.json'
+ PARENT_SHA = '70e582d0c45da927b1e01424e4427446865eedd5b35f9f3aee42a4629ab957e6'
+ CORRECTION = ROOT/'selfhost/build/phase63/qualification-provenance-method02/derivation.json'
+ CORRECTION_SHA = 'e09ed6b80705461066eb1733d5b2e067189f33b15442c2ecfd870144a6495633'
+ CORRECTED_SHA = 'a346afcf8a44ec661acf1c675e802cccf541ef0b89148f9d6833f929cc4fcd54'
+ BOOTSTRAP = Path(__file__).resolve().parents[1]/'prepare-bootstrap.py'
+-BOOTSTRAP_SHA = 'f334bce3799ec89410a3ac29b42034b2a9f796c84ec7159de8906757291a36cf'
++BOOTSTRAP_SHA = '4d95c1f74e4e9a4ce1d7f76407b747345a9589ba701d39c2e5f46ee7ec987fdc'
+ 
+ 
+ def pin(value):
+@@ -71,8 +71,8 @@
+             edits.append(dict(old=old, new=new, occurrences=count))
+ 
+         if 'selfhost/build/phase63' in text:
+-            change('selfhost/build/phase63', 'selfhost/build/phase64')
+-        for old, new in [('inside Phase63', 'inside Phase64'), ('stay in Phase63', 'stay in Phase64')]:
++            change('selfhost/build/phase63', 'selfhost/build/phase65')
++        for old, new in [('inside Phase63', 'inside Phase65'), ('stay in Phase63', 'stay in Phase65')]:
+             if old in text:
+                 change(old, new)
+         if relative in {'bootstrap/setup.mjs', 'qualification/checked-image.mjs'}:
+@@ -81,7 +81,7 @@
+             change(r'/-frame[123]\.json$/', r'/-frame[1234]\.json$/')
+         if relative == 'qualification/final-plan.py':
+             change("BOOTSTRAP_PRODUCER=TOOLS/'phase63/latency/prepare-bootstrap.py'",
+-                   "BOOTSTRAP_PRODUCER=TOOLS/'phase64/latency/prepare-bootstrap.py'")
++                   "BOOTSTRAP_PRODUCER=TOOLS/'phase65/latency/prepare-bootstrap.py'")
+             change("BOOTSTRAP_SHA='85d412656f7abd44688e0799013b4c9284a5d2c4df6cc09e221abbab600b8ead'",
+                    'BOOTSTRAP_SHA='+repr(BOOTSTRAP_SHA))
+             change("FACTORY=Path('/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/latency/qualification/make-method.py')",
+@@ -89,7 +89,7 @@
+             change("FACTORY_SHA='2d0ac676c2eee36b658334ffd97fdb707fc18b2f928fde3ba5d00cd6f938dfe4'",
+                    'FACTORY_SHA='+repr(pin(__file__)['sha256']))
+             change("method['kind']=='phase63-final-qualification-methods'",
+-                   "method['kind']=='phase64-final-qualification-methods'")
++                   "method['kind']=='phase65-final-qualification-methods'")
+         replay = Path(source['file']).read_text()
+         for edit in edits:
+             assert replay.count(edit['old']) == edit['occurrences']
+@@ -109,10 +109,10 @@
+         with dest.open('x') as stream:
+             stream.write(row.pop('text'))
+         row['output'] = pin(dest)
+-    result = dict(kind='phase64-final-qualification-methods', complete=True, targetsExecuted=False,
++    result = dict(kind='phase65-final-qualification-methods', complete=True, targetsExecuted=False,
+         producer=pin(__file__), parent=pin(PARENT), provenanceCorrection=pin(CORRECTION),
+         baseline=parent['baseline'], inputs=inputs, rows=rows,
+-        scope='Phase64 writable boundaries and exact producer/factory bindings. Corrected optional '
++        scope='Phase65 writable boundaries and exact producer/factory bindings. Corrected optional '
+         'canonicalPath/bytes validation precedes normalized file+sha256 identities from the first run. '
+         'Four semantic controller bodies remain unchanged. Graph-helper admission and JDPlan '
+         'reproduction are inherited; the two framed-cache filename gates also recognize frame4, '

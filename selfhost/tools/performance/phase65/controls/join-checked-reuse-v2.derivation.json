@@ -1,0 +1,29 @@
+{
+  "kind": "phase65-checked-reuse-exact-historical-host-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/join-checked-reuse.py",
+    "sha256": "3a4be1fdae17dbbaa364c927f0c663f88e937f3c25974617ad0d2b422e8add9d"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/join-checked-reuse-v2.py",
+    "sha256": "4b444805aa4a9be099e5c513db86c4916b6f7dddec67ff1af30dcf026d717409"
+  },
+  "edits": [
+    {
+      "old": "def attempt(value):",
+      "new": "def install_checked_relocations(changed):\n    \"\"\"Retain exact historical host identities; never accept another mismatch.\"\"\"\n    global pin\n    original_pin = parent.pin\n    assert {x['relative'] for x in changed} == {'tools/typed-driver.mjs','tools/base-cache-graph.mjs'}\n    mappings = {}\n    for row in changed:\n        retained = original_pin(row['old']); selected = original_pin(row['new'])\n        logical = str((ROOT/'selfhost'/row['relative']).resolve(strict=True))\n        current = original_pin(logical)\n        assert current['sha256'] == selected['sha256'] and retained['sha256'] != current['sha256']\n        mappings[(logical,retained['sha256'])] = dict(logicalPath=logical,retained=retained,current=current,selected=selected,uses=0)\n    def relocated(value):\n        if isinstance(value,dict) and value.get('sha256'):\n            logical = str(Path(value.get('file') or value.get('path')).resolve(strict=True))\n            match = mappings.get((logical,value['sha256']))\n            if match is not None:\n                if 'canonicalPath' in value: assert value['canonicalPath'] == logical\n                if 'bytes' in value: assert value['bytes'] == match['retained']['bytes']\n                assert original_pin(logical) == match['current']\n                retained = original_pin(match['retained']); match['uses'] += 1\n                return retained\n        return original_pin(value)\n    parent.pin = pin = relocated\n    return list(mappings.values())\n\n\ndef attempt(value):",
+      "occurrences": 1
+    },
+    {
+      "old": "    plan = read(args.original_plan); audit(plan)\n    assert plan['kind'] == 'phase58-checked-qualification-plan'",
+      "new": "    relocations = install_checked_relocations(changed)\n    plan = read(args.original_plan); audit(plan)\n    assert plan['kind'] == 'phase58-checked-qualification-plan'",
+      "occurrences": 1
+    },
+    {
+      "old": "        frozenSources=dict(count=len(old_files), unchangedCount=len(old_files)-len(changed), changed=changed),",
+      "new": "        frozenSources=dict(count=len(old_files), unchangedCount=len(old_files)-len(changed), changed=changed),\n        historicalInputRelocations=relocations,",
+      "occurrences": 1
+    }
+  ],
+  "scope": "Root-approved exact original live host identity to frozen State09 bytes, with current selected State10 hash separately pinned. Failed first join wrote no receipt; original method retained."
+}

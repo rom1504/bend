@@ -216,6 +216,102 @@ export function encodeBaseArena(roots,base=null) {
   return {...graph,bytes:out,strings};
 }
 
+// Fixed transport readers keep rare-tag feedback outside the hot record loop.
+function arenaReadRef(ctx,i,mask){if(i>=ctx.nodes.length||!(ctx.kinds[i]&mask))fail();return ctx.nodes[i];}
+function arenaReadString(ctx,i){if(i>=ctx.strings.length)fail();return ctx.strings[i];}
+function arenaReadSpan(ctx,a,b){if(!((a===0&&b===0)||(a>=ctx.range.begin&&b>=a&&b<ctx.range.end)))fail();}
+function arenaReadNil(ctx,fields,at,size){
+  let node,kind;node={$:'Nil'};kind=EMPTY;
+
+  ctx.kind=kind;return node;
+}
+function arenaReadCon(ctx,fields,at,size){
+  const {nodes,kinds}=ctx;
+  const a=fields[at],b=fields[at+1];
+  let node,kind;
+        if(a&0x80000000){kind=STRINGS;node={$:'Con',head:arenaReadString(ctx,a&0x7fffffff),tail:arenaReadRef(ctx,b,STRINGS)};}
+        else {if(a>=nodes.length)fail();if(kinds[a]===TERM)kind=TERMS;else if(kinds[a]===DEF)kind=DEFS;else fail();node={$:'Con',head:nodes[a],tail:arenaReadRef(ctx,b,kind)};}
+
+
+  ctx.kind=kind;return node;
+}
+function arenaReadKTerm(ctx,fields,at,size){
+  const a=fields[at],b=fields[at+1],c=fields[at+2],d=fields[at+3],e=fields[at+4],f=fields[at+5],g=fields[at+6],h=fields[at+7];
+  let node,kind;
+        arenaReadSpan(ctx,g,h);node={$:'KTerm',tag:arenaReadString(ctx,a),name:arenaReadString(ctx,b),id:c,quant:d,kids:arenaReadRef(ctx,e,TERMS),removed:arenaReadRef(ctx,f,STRINGS),originBegin:g,originEnd:h};kind=TERM;
+
+  ctx.kind=kind;return node;
+}
+function arenaReadKLambda(ctx,fields,at,size){
+  const {termAbi}=ctx;
+  const a=fields[at],b=fields[at+1],c=fields[at+2],d=fields[at+3],e=fields[at+4],f=fields[at+5],g=fields[at+6],h=fields[at+7];
+  let node,kind;
+        if(termAbi!==1||h>1)fail();arenaReadSpan(ctx,f,g);node={$:'KLambda',name:arenaReadString(ctx,a),id:b,quant:c,kids:arenaReadRef(ctx,d,TERMS),removed:arenaReadRef(ctx,e,STRINGS),originBegin:f,originEnd:g,quantityPresent:h===1};kind=TERM;
+
+  ctx.kind=kind;return node;
+}
+function arenaReadKLiteral(ctx,fields,at,size){
+  const {termAbi}=ctx;
+  const a=fields[at],b=fields[at+1],c=fields[at+2],d=fields[at+3],e=fields[at+4];
+  let node,kind; {
+        if(termAbi!==1)fail();const literalKind=arenaReadString(ctx,a),literalText=arenaReadString(ctx,c);
+        if(literalKind==='String'){if(b!==0)fail();for(const ch of literalText){const cp=ch.codePointAt(0);if(cp>=0xd800&&cp<=0xdfff)fail();}}
+        else if((literalKind!=='Nat'&&literalKind!=='U32'&&literalKind!=='F32')||literalText!=='')fail();
+        arenaReadSpan(ctx,d,e);node={$:'KLiteral',kind:literalKind,number:b,text:literalText,originBegin:d,originEnd:e};kind=TERM;
+      }
+
+  ctx.kind=kind;return node;
+}
+function arenaReadKDef(ctx,fields,at,size){
+  const a=fields[at],b=fields[at+1],c=fields[at+2],d=fields[at+3],e=fields[at+4],f=fields[at+5],g=fields[at+6],h=fields[at+7],j=fields[at+8];
+  let node,kind;
+        if(h>1||j>1)fail();node={$:'KDef',name:arenaReadString(ctx,a),kind:arenaReadString(ctx,b),arity:c,templates:d,typ:arenaReadRef(ctx,e,TERM),value:arenaReadRef(ctx,f,TERM),ctors:arenaReadRef(ctx,g,DEFS),native:h===1,unsafe:j===1};kind=DEF;
+
+  ctx.kind=kind;return node;
+}
+function arenaReadKIndexLeaf(ctx,fields,at,size){
+  const a=fields[at],b=fields[at+1];
+  let node,kind;node={$:'KIndexLeaf',hash:a,bucket:arenaReadRef(ctx,b,DEFS)};kind=DEF;
+
+  ctx.kind=kind;return node;
+}
+function arenaReadKIndexNode(ctx,fields,at,size){
+  const a=fields[at],b=fields[at+1],c=fields[at+2],d=fields[at+3];
+  let node,kind;node={$:'KIndexNode',hash:a,mask:b,left:arenaReadRef(ctx,c,DEF),right:arenaReadRef(ctx,d,DEF)};kind=DEF;
+
+  ctx.kind=kind;return node;
+}
+function arenaReadKBasePrefixState(ctx,fields,at,size){
+  const a=fields[at],b=fields[at+1],c=fields[at+2],d=fields[at+3],e=fields[at+4];
+  let node,kind;
+        if(e>1)fail();node={$:'KBasePrefixState',bound:a,delta:b,stamp:c,patches:arenaReadRef(ctx,d,DEFS),ready:e===1};kind=CHECKED;
+
+  ctx.kind=kind;return node;
+}
+function arenaReadFFreshPrefixState(ctx,fields,at,size){
+  const a=fields[at],b=fields[at+1];
+  let node,kind;
+        if(b>1)fail();node={$:'FFreshPrefixState',next:a,ready:b===1};kind=FRESH;
+
+  ctx.kind=kind;return node;
+}
+function arenaReadKBasePreparedWorld(ctx,fields,at,size){
+  const a=fields[at],b=fields[at+1],c=fields[at+2],d=fields[at+3],e=fields[at+4],f=fields[at+5],g=size>=7?fields[at+6]:0,h=size>=8?fields[at+7]:0;
+  let node,kind;
+        node=size===6?{$:'KBasePreparedWorld',state:arenaReadRef(ctx,a,CHECKED),prefix:arenaReadRef(ctx,b,DEFS),final:arenaReadRef(ctx,c,DEFS),book:arenaReadRef(ctx,d,DEFS),checked:arenaReadRef(ctx,e,DEFS),seen:arenaReadRef(ctx,f,DEFS)}:
+          size===7?{$:'KBasePreparedWorld',state:arenaReadRef(ctx,a,CHECKED),prefix:arenaReadRef(ctx,b,DEFS),final:arenaReadRef(ctx,c,DEFS),book:arenaReadRef(ctx,d,DEFS),checked:arenaReadRef(ctx,e,DEFS),seen:arenaReadRef(ctx,f,DEFS),todos:g}:
+          {$:'KBasePreparedWorld',state:arenaReadRef(ctx,a,CHECKED),prefix:arenaReadRef(ctx,b,DEFS),final:arenaReadRef(ctx,c,DEFS),book:arenaReadRef(ctx,d,DEFS),checked:arenaReadRef(ctx,e,DEFS),seen:arenaReadRef(ctx,f,DEFS),todos:g,checkedBound:h};kind=WORLD;
+
+  ctx.kind=kind;return node;
+}
+function arenaReadFReadyPrefixState(ctx,fields,at,size){
+  const a=fields[at],b=fields[at+1],c=fields[at+2],d=fields[at+3];
+  let node,kind;
+        if(d>1)fail();node={$:'FReadyPrefixState',names:arenaReadRef(ctx,a,DEF),ctors:arenaReadRef(ctx,b,DEF),count:c,ready:d===1};kind=FRONTEND;
+  ctx.kind=kind;return node;
+}
+const arenaReaders=[arenaReadNil,arenaReadCon,arenaReadKTerm,arenaReadKLambda,arenaReadKLiteral,arenaReadKDef,arenaReadKIndexLeaf,arenaReadKIndexNode,arenaReadKBasePrefixState,arenaReadFFreshPrefixState,arenaReadKBasePreparedWorld,arenaReadFReadyPrefixState];
+
 export function decodeBaseArena(input,{base=null,range,termAbi=1,rootKinds}={}) {
   if(input.length<32||input.length>128*1024*1024||!Array.isArray(rootKinds)||!range||!arenaU32(range.begin)||!arenaU32(range.end)||range.begin===0||range.end<=range.begin)fail();
   const bytes=input.byteOffset%4?Buffer.from(input):input;
@@ -235,45 +331,12 @@ export function decodeBaseArena(input,{base=null,range,termAbi=1,rootKinds}={}) 
   for(let i=0;i<ns;i++){const a=stringOffsets[i],b=stringOffsets[i+1];if(b<a||b>units)fail();strings.push(text.slice(a,b));}
   const nodes=base?base.nodes.slice():[],kinds=base?base.kinds.slice():[];
   const ref=(i,mask)=>{if(i>=nodes.length||!(kinds[i]&mask))fail();return nodes[i];};
-  const str=i=>{if(i>=strings.length)fail();return strings[i];};
-  const span=(a,b)=>{if(!((a===0&&b===0)||(a>=range.begin&&b>=a&&b<range.end)))fail();};
+  const state={nodes,kinds,strings,range,termAbi,kind:0};
   for(let i=0;i<n;i++){
     const tag=bytes[tagsAt+i],at=offsets[i],size=offsets[i+1]-at;
     if(tag>=arenaCounts.length||at>nf||offsets[i+1]>nf||(size!==arenaCounts[tag]&&!(tag===10&&(size===6||size===7))))fail();
-    const a=fields[at],b=fields[at+1],c=fields[at+2],d=fields[at+3],e=fields[at+4],f=fields[at+5],g=fields[at+6],h=fields[at+7],j=fields[at+8];
-    let node,kind;
-    switch(tag){
-      case 0:node={$:'Nil'};kind=EMPTY;break;
-      case 1:
-        if(a&0x80000000){kind=STRINGS;node={$:'Con',head:str(a&0x7fffffff),tail:ref(b,STRINGS)};}
-        else {if(a>=nodes.length)fail();if(kinds[a]===TERM)kind=TERMS;else if(kinds[a]===DEF)kind=DEFS;else fail();node={$:'Con',head:nodes[a],tail:ref(b,kind)};}
-        break;
-      case 2:
-        span(g,h);node={$:'KTerm',tag:str(a),name:str(b),id:c,quant:d,kids:ref(e,TERMS),removed:ref(f,STRINGS),originBegin:g,originEnd:h};kind=TERM;break;
-      case 3:
-        if(termAbi!==1||h>1)fail();span(f,g);node={$:'KLambda',name:str(a),id:b,quant:c,kids:ref(d,TERMS),removed:ref(e,STRINGS),originBegin:f,originEnd:g,quantityPresent:h===1};kind=TERM;break;
-      case 4: {
-        if(termAbi!==1)fail();const literalKind=str(a),literalText=str(c);
-        if(literalKind==='String'){if(b!==0)fail();for(const ch of literalText){const cp=ch.codePointAt(0);if(cp>=0xd800&&cp<=0xdfff)fail();}}
-        else if((literalKind!=='Nat'&&literalKind!=='U32'&&literalKind!=='F32')||literalText!=='')fail();
-        span(d,e);node={$:'KLiteral',kind:literalKind,number:b,text:literalText,originBegin:d,originEnd:e};kind=TERM;break;
-      }
-      case 5:
-        if(h>1||j>1)fail();node={$:'KDef',name:str(a),kind:str(b),arity:c,templates:d,typ:ref(e,TERM),value:ref(f,TERM),ctors:ref(g,DEFS),native:h===1,unsafe:j===1};kind=DEF;break;
-      case 6:node={$:'KIndexLeaf',hash:a,bucket:ref(b,DEFS)};kind=DEF;break;
-      case 7:node={$:'KIndexNode',hash:a,mask:b,left:ref(c,DEF),right:ref(d,DEF)};kind=DEF;break;
-      case 8:
-        if(e>1)fail();node={$:'KBasePrefixState',bound:a,delta:b,stamp:c,patches:ref(d,DEFS),ready:e===1};kind=CHECKED;break;
-      case 9:
-        if(b>1)fail();node={$:'FFreshPrefixState',next:a,ready:b===1};kind=FRESH;break;
-      case 10:
-        node=size===6?{$:'KBasePreparedWorld',state:ref(a,CHECKED),prefix:ref(b,DEFS),final:ref(c,DEFS),book:ref(d,DEFS),checked:ref(e,DEFS),seen:ref(f,DEFS)}:
-          size===7?{$:'KBasePreparedWorld',state:ref(a,CHECKED),prefix:ref(b,DEFS),final:ref(c,DEFS),book:ref(d,DEFS),checked:ref(e,DEFS),seen:ref(f,DEFS),todos:g}:
-          {$:'KBasePreparedWorld',state:ref(a,CHECKED),prefix:ref(b,DEFS),final:ref(c,DEFS),book:ref(d,DEFS),checked:ref(e,DEFS),seen:ref(f,DEFS),todos:g,checkedBound:h};kind=WORLD;break;
-      case 11:
-        if(d>1)fail();node={$:'FReadyPrefixState',names:ref(a,DEF),ctors:ref(b,DEF),count:c,ready:d===1};kind=FRONTEND;break;
-    }
-    nodes.push(node);kinds.push(kind);
+    const node=arenaReaders[tag](state,fields,at,size);
+    nodes.push(node);kinds.push(state.kind);
   }
   const roots=Array.from(rootIds,(id,i)=>{
     if(id===0xffffffff)return null;

@@ -16,9 +16,16 @@ and emitted user programs separately.
 [Constructor index](phase65/P65-005-base-constructor-membership.md) ·
 [Closure structure](phase65/P65-006-structured-closure-return.md) ·
 [Boolean lookup](phase65/P65-008-boolean-lookup.md).
-Refresh the selected B2 cost attribution, then test independent scoped products
-and remove whole repeated traversals. Phase64 remains installed; no new gain or
-promotion is claimed at registration. Historical raw trees remain closed.
+State10 selects optional Bend-produced Base annotations and static JS transport
+readers. Its [final broad comparison](../implementation/phase65/evidence/state10-b2-broad.json)
+passes 207 exact outputs: compilation **1.41737× → 1.28945× TS (−9.025%)** and
+imports plus compilation **1.04969× → 0.969256× (−7.662%)**. All 23 sources improve;
+compilation-only parity still requires about 22.45% less time. Final release
+qualification/installation remain pending; Phase64 remains installed. Exact Base
+content permission preserves custom/future Base fallback. Historical raw trees,
+failed methods and rejected candidates remain preserved. The [size audit](../implementation/phase65/size.md)
+records +117 Bend lines and +146 host lines; no simplification or generated-
+program speed gain is claimed. [Decoder experiment](phase65/P65-007-decoder-tiering.md).
 
 ## Completed implementation: Phase64 retained facts and indexed state
 

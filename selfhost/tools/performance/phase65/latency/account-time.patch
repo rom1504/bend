@@ -1,0 +1,63 @@
+--- selfhost/tools/performance/phase64/latency/account-time.py
++++ selfhost/tools/performance/phase65/latency/account-time.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Data-only union of closed Phase64 guard receipts through an explicit UTC cutoff."""
++"""Data-only union of closed Phase65 guard receipts through an explicit UTC cutoff."""
+ import argparse
+ import datetime as dt
+ import hashlib
+@@ -8,7 +8,7 @@
+ from pathlib import Path
+ 
+ ROOT = Path(__file__).resolve().parents[5]
+-RAW = ROOT / 'selfhost/build/phase64'
++RAW = ROOT / 'selfhost/build/phase65'
+ 
+ 
+ def stamp(value):
+@@ -66,13 +66,43 @@
+     else:
+         merged[-1][1] = max(merged[-1][1], row['finish'])
+ occupied = sum(end - start for start, end in merged)
+-result = dict(kind='phase64-closed-guard-time-account', dataOnly=True, targetExecuted=False,
++interruption_path = ROOT / 'implementation/phase65/evidence/interruption.json'
++interruption_bytes = interruption_path.read_bytes()
++interruption = json.loads(interruption_bytes)
++assert interruption['kind'] == 'phase65-external-interruption-note'
++assert interruption['boundariesExact'] is False
++pause_start = stamp(interruption['approximateStartUtc'])
++pause_finish = stamp(interruption['approximateResumeUtc'])
++assert pause_finish >= pause_start
++clipped_start, clipped_finish = max(begin, pause_start), min(cutoff, pause_finish)
++clipped_seconds = max(0.0, clipped_finish - clipped_start)
++overlap_seconds = sum(max(0.0, min(end, clipped_finish) - max(start, clipped_start))
++                      for start, end in merged) if clipped_seconds else 0.0
++approximate_interruption = dict(
++    input=dict(file=str(interruption_path), sha256=hashlib.sha256(interruption_bytes).hexdigest()),
++    boundariesExact=False, source=interruption['source'],
++    declaredStart=interruption['approximateStartUtc'],
++    declaredResume=interruption['approximateResumeUtc'],
++    declaredApproximateSeconds=pause_finish-pause_start,
++    clippedStart=utc(clipped_start) if clipped_seconds else None,
++    clippedFinish=utc(clipped_finish) if clipped_seconds else None,
++    clippedApproximateDowntimeSeconds=clipped_seconds,
++    measuredClosedGuardOverlapSeconds=overlap_seconds,
++    elapsedOutsideApproximateDowntimeSeconds=cutoff-begin-clipped_seconds,
++    closedGuardUnionOutsideApproximateDowntimeSeconds=occupied-overlap_seconds,
++    uncoveredOutsideApproximateDowntimeSeconds=cutoff-begin-occupied-clipped_seconds+overlap_seconds,
++    scope='Separately clips root-declared approximate external downtime to this accounting interval. '
++          'Guard overlap uses measured closed intervals within approximate boundaries; total elapsed '
++          'and occupied union above remain unchanged. Outside-downtime values are approximate and '
++          'unclassified, not precise active work, CPU time or waiting. No open-guard finish is inferred.')
++result = dict(kind='phase65-closed-guard-time-account', dataOnly=True, targetExecuted=False,
+     producer=identity(Path(__file__)), campaign=identity(RAW / 'campaign.json'),
+     start=utc(begin), cutoff=utc(cutoff), cutoffMeaning='Explicit or invocation time; not a phase-completion claim',
+     elapsedSeconds=cutoff-begin, completedSupervisorReceipts=len(closed),
+     failedReceipts=sum(r['returncode'] != 0 or not r['complete'] for r in closed),
+     occupiedUnionSeconds=occupied, occupiedFraction=occupied/(cutoff-begin),
+     uncoveredSeconds=cutoff-begin-occupied, intervals=closed, mergedIntervals=merged,
++    approximateInterruption=approximate_interruption,
+     unfinishedBeforeCutoff=open_receipts, finishedAfterCutoff=late, unreadable=unreadable,
+     scope='Union of closed run.json/process.json guards, including ExecutionGuard workers and failures. '
+           'Reused or nested receipts are never double-counted. Open intervals have no invented finish. '

@@ -8,6 +8,38 @@ Use the [compiler guide](../docs/BEND-IN-BEND.md),
 `--legacy-js` and native targets retain their contracts. Ordinary compilation
 runs Bend code without a TypeScript fallback.
 
+**Phase65 State10 is selected for integration, not installed yet.** It combines
+static JavaScript readers for the validated frame4 transport with optional
+checked Base annotations produced and admitted by Bend. State10 adds exact
+pinned Base-content permission before product preparation or sidecar reading;
+custom and future Base versions retain ordinary annotation. Final State10
+broad measurement is complete; release qualification remains in progress. The Phase64 numbers below
+remain the installed-release results. Read the
+[Phase65 report](../implementation/phase65/README.md) and
+[artifact guide](../docs/self_hosted/prepared-base-artifacts.md#phase65-selected-integration-candidate)
+for the selected mechanisms and current evidence.
+
+The final [State10 broad genuine-B2 comparison](../implementation/phase65/evidence/state10-b2-broad.json)
+passes **207 exact-output checks over 23 sources and three balanced rounds**.
+**Compilation alone improves 1.41737× → 1.28945× TypeScript (9.025% less time)**
+against the baseline measured in that same campaign. Host/API imports plus
+compilation improve **1.04969× → 0.969256× (7.662% less time)**. All 23 sources
+improve; 21 have nonoverlapping baseline/candidate sample ranges. Four sources
+compile faster than TS, ten are faster including imports. These are descriptive
+sample results, not confidence intervals. Compilation-only parity still needs
+about **22.45% less time**; the import-inclusive result is a different clock.
+Fresh processes use prepared caches and exclude preparation/output checks from
+timing. No generated-program speed gain is claimed. H2's incremental benefit
+over H6 alone remains under measurement.
+
+The [final source audit](../implementation/phase65/size.md) counts **28,396 physical
+Bend lines in 115 modules**: +117 lines, +15 definitions and one type. The driver
+adds 83 lines and the static transport helper 63, counted separately. All 114
+pre-existing Bend modules and both runtimes remain byte-identical. This is a
+performance tradeoff with a small source increase, not a simplification claim.
+
+## Installed Phase64 baseline
+
 Its [pipeline changes](../docs/self_hosted/compiler-request-pipeline.md#phase64-state09-retained-facts-and-indexed-transport)
 and [prepared Base artifacts](../docs/self_hosted/prepared-base-artifacts.md)
 retain original TODO counts, exact checked-output bounds and host signatures,

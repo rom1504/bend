@@ -1,0 +1,1948 @@
+{
+  "kind": "phase65-frozen-state09-size-comparison",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/size.py",
+    "sha256": "1086b7ab75aa4fa1efa5aa374a3bebf065e3f33793b9fe9d1e14293de4ca60cf",
+    "bytes": 7957
+  },
+  "methodParent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/typed-plan/size.py",
+    "sha256": "df10c38b6c88fa69b1dab2c045ce0c8f46f3ebc9966bb24f3f7f2780363b1148",
+    "bytes": 8269
+  },
+  "method": {
+    "boundary": "Exactly each frozen src/compiler.json module list; exclude generated assembly, backups, fixtures, tools, docs, runtime and host source from Bend totals.",
+    "physicalLines": "UTF-8 decoded Python splitlines per module, same Phase64 rule.",
+    "codeLines": "Nonempty lines excluding lines whose first nonspace character is #.",
+    "declarations": "Line-start def/law/type followed by whitespace; textual proxies, not concept complexity.",
+    "verification": "Every manifest/module/host/runtime/image is checked against its frozen receipt SHA256; optional bytes/canonicalPath checked; all inputs rehashed after counting.",
+    "compactModuleTable": "Each unchanged row was independently checked in both snapshot roots; order and column schema are explicit."
+  },
+  "baseline": {
+    "phase": 64,
+    "snapshotRoot": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot",
+    "attempt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/attempt.json",
+      "sha256": "a2038c2223a20aa7b03130bc70727671dff5482f11f9fb0613069ccfa530868b",
+      "bytes": 301199
+    },
+    "manifest": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/src/compiler.json",
+      "sha256": "f93bc23c8877c21e114a9cd2c1647e712ea8b0aa9a8b5e97b0677612d159b06b",
+      "bytes": 3992
+    },
+    "metrics": {
+      "physicalLines": 28279,
+      "codeLines": 23199,
+      "definitions": 3254,
+      "laws": 642,
+      "types": 118,
+      "utf8Bytes": 1289580,
+      "modules": 114
+    },
+    "moduleOrder": [
+      "src/core/term.bend",
+      "src/core/index.bend",
+      "src/core/normalize.bend",
+      "src/core/graph.bend",
+      "src/core/reach.bend",
+      "src/core/pretty.bend",
+      "src/check/quantity.bend",
+      "src/check/kernel.bend",
+      "src/check/env-telescope.bend",
+      "src/check/env-substitution.bend",
+      "src/check/specialize.bend",
+      "src/check/prefix.bend",
+      "src/check/prefix-state.bend",
+      "src/check/annotate.bend",
+      "src/front/lexer.bend",
+      "src/front/contextual.bend",
+      "src/front/parser.bend",
+      "src/front/declarations.bend",
+      "src/front/flatten.bend",
+      "src/front/elaborate.bend",
+      "src/front/sugar.bend",
+      "src/front/unicode.bend",
+      "src/front/literals_arrays.bend",
+      "src/front/parallel.bend",
+      "src/front/fresh_work.bend",
+      "src/front/freshen.bend",
+      "src/load/paths.bend",
+      "src/front/families.bend",
+      "src/front/validate.bend",
+      "src/load/imports.bend",
+      "src/load/graph.bend",
+      "src/load/seed.bend",
+      "src/load/modules.bend",
+      "src/load/prefix.bend",
+      "src/diagnostic/model.bend",
+      "src/diagnostic/render.bend",
+      "src/diagnostic/trace.bend",
+      "src/diagnostic/produce.bend",
+      "src/diagnostic/frontend.bend",
+      "src/back/common/literals.bend",
+      "src/back/common/queries.bend",
+      "src/back/common/native-facts.bend",
+      "src/back/js/shared-text.bend",
+      "src/back/js/foreign.bend",
+      "src/back/js/literals.bend",
+      "src/back/js/private-float.bend",
+      "src/back/js/validate.bend",
+      "src/back/js/choice.bend",
+      "src/back/js/projection.bend",
+      "src/back/js/u32.bend",
+      "src/back/js/primitive.bend",
+      "src/back/js/array-effects.bend",
+      "src/back/js/array-effect-guards.bend",
+      "src/back/js/local.bend",
+      "src/back/js/jpure.bend",
+      "src/back/js/region.bend",
+      "src/back/js/array-view.bend",
+      "src/back/js/array-literals.bend",
+      "src/back/js/array-result.bend",
+      "src/back/js/fold.bend",
+      "src/back/js/producer.bend",
+      "src/back/js/finite.bend",
+      "src/back/js/worker.bend",
+      "src/back/js/tree.bend",
+      "src/back/js/ir/model.bend",
+      "src/back/js/ir/projection.bend",
+      "src/back/js/ir/lower.bend",
+      "src/back/js/ir/control.bend",
+      "src/back/js/ir/facts.bend",
+      "src/back/js/ir/constants.bend",
+      "src/back/js/ir/simplify.bend",
+      "src/back/js/ir/emit.bend",
+      "src/back/js/ir/statement.bend",
+      "src/back/js/ir/worker-model.bend",
+      "src/back/js/ir/worker-lower.bend",
+      "src/back/js/ir/worker-simplify.bend",
+      "src/back/js/ir/worker-graph.bend",
+      "src/back/js/ir/worker-nat.bend",
+      "src/back/js/ir/native-values.bend",
+      "src/back/js/ir/worker-emit.bend",
+      "src/back/js/emit.bend",
+      "src/back/js/direct/transport.bend",
+      "src/back/js/direct/model.bend",
+      "src/back/js/direct/primitive.bend",
+      "src/back/js/direct/constructors.bend",
+      "src/back/js/direct/pattern.bend",
+      "src/back/js/direct/host.bend",
+      "src/back/js/direct/host-native.bend",
+      "src/back/js/direct/calls.bend",
+      "src/back/js/direct/ordered.bend",
+      "src/back/js/direct/ordered-values.bend",
+      "src/back/js/direct/choices.bend",
+      "src/back/js/direct/core.bend",
+      "src/back/js/direct/program.bend",
+      "src/back/js/direct/reach.bend",
+      "src/back/native/ir.bend",
+      "src/back/native/text.bend",
+      "src/back/native/identity.bend",
+      "src/back/native/layout.bend",
+      "src/back/native/intrinsic.bend",
+      "src/back/native/tables.bend",
+      "src/back/native/emit.bend",
+      "src/back/native/erase.bend",
+      "src/back/native/bridge.bend",
+      "src/back/native/direct.bend",
+      "src/back/native/pattern.bend",
+      "src/back/native/show.bend",
+      "src/back/native/parallel.bend",
+      "src/back/native/array.bend",
+      "src/back/native/validate.bend",
+      "src/back/native/foreign.bend",
+      "src/back/native/book.bend",
+      "src/driver/report.bend",
+      "src/driver/api.bend"
+    ],
+    "hostSupport": {
+      "tools/typed-driver.mjs": {
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/tools/typed-driver.mjs",
+          "sha256": "a7d91a18408778c8c12f07759782aa0901d97e0e124692883bb46e4ea7c05d45",
+          "bytes": 74204
+        },
+        "metrics": {
+          "physicalLines": 996,
+          "utf8Bytes": 74204
+        }
+      },
+      "tools/base-cache-graph.mjs": {
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/tools/base-cache-graph.mjs",
+          "sha256": "b58b927ac611f4ead292d4f736cfd427e955b81c1f0efa2f55d1e784755a0119",
+          "bytes": 18106
+        },
+        "metrics": {
+          "physicalLines": 285,
+          "utf8Bytes": 18106
+        }
+      },
+      "tools/development/workflow.mjs": {
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/tools/development/workflow.mjs",
+          "sha256": "0ee41f57a99fc059fb67f98fa9c7030c470c044c7d3421fa6fea367fc2ac12b2",
+          "bytes": 18662
+        },
+        "metrics": {
+          "physicalLines": 200,
+          "utf8Bytes": 18662
+        }
+      },
+      "tools/development/release.mjs": {
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/tools/development/release.mjs",
+          "sha256": "3cf17eed7d12521149e43c0e08004b19197bf96b6293d134cb2753a888b7d139",
+          "bytes": 15799
+        },
+        "metrics": {
+          "physicalLines": 170,
+          "utf8Bytes": 15799
+        }
+      }
+    },
+    "runtimes": {
+      "src/runtime.mjs": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/src/runtime.mjs",
+        "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46",
+        "bytes": 57500
+      },
+      "src/runtime/js/direct.mjs": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/src/runtime/js/direct.mjs",
+        "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23",
+        "bytes": 13212
+      }
+    },
+    "assembledSource": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/build/typed/snapshots/f159ede87e531685c2ecc45ae3eb62d958321d71a94ccf00b12125dfcad4cf31/compiler.bend",
+      "sha256": "41ddb951470b9e80dd6650af7b99cb29ee05994d1bd96a5873e7b817e98a7d4e",
+      "bytes": 1426739
+    },
+    "images": {
+      "checkedB1Raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/api.mjs",
+        "sha256": "fb0794d8f78dd56abb6247429d15f813cb51f531fb9415cfed2e7e5e1ef3e807",
+        "bytes": 1943217
+      },
+      "checkedB1EqualityDerived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/equality/api.mjs",
+        "sha256": "a2f8b021c20becc730cf91e8e7fd6db98f2bba8b743adec89154ff9c6217bd6f",
+        "bytes": 1970019
+      },
+      "genuineB2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/bootstrap-state09/full/compiler.mjs",
+        "sha256": "b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e",
+        "bytes": 4040799
+      }
+    },
+    "b2Receipt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/bootstrap-state09/full/report.json",
+      "sha256": "291412c685835bdf02c843a754b57760f3b2d1363ef39a7571800157fe8983d0",
+      "bytes": 13480
+    },
+    "exports": [
+      "f_path_join",
+      "f_path_dir",
+      "check_book",
+      "annotate_book",
+      "j_program",
+      "j_library",
+      "j_expr",
+      "j_descriptor",
+      "j_io_type",
+      "j_modules",
+      "driver_has_main",
+      "driver_is_io",
+      "driver_interpret",
+      "driver_todos",
+      "driver_emit_owned",
+      "compiler_term_abi",
+      "compiler_span_abi",
+      "specialize_book",
+      "specialized_book",
+      "specialized_error",
+      "specialized_diagnostic",
+      "nc_compile",
+      "nc_foreign_paths",
+      "nc_annotation_stops",
+      "nc_annotated_context",
+      "nc_foreign_source",
+      "nc_foreign_scope",
+      "check_from_exact_prefix",
+      "exact_prefix",
+      "base_prefix_prepare",
+      "check_program_diagnostic_seed",
+      "check_program_diagnostic_prefix",
+      "base_prefix_world_prepare",
+      "check_program_diagnostic_world",
+      "book_context_world",
+      "f_load_graph",
+      "f_load_graph_trace",
+      "f_source_completed",
+      "f_source_located",
+      "compiler_load_abi",
+      "f_source_header",
+      "f_complete_source",
+      "f_complete_seed",
+      "f_import_namespace_at",
+      "f_graph_trace",
+      "f_import_failure",
+      "book_context",
+      "book_cached",
+      "f_load_graph_seed",
+      "f_load_graph_seed_trace",
+      "f_fresh_prefix_prepare",
+      "f_graph_trace_from_prefix",
+      "f_prefix_graph_empty",
+      "f_prefix_complete_seed",
+      "f_prefix_complete_source",
+      "f_prefix_graph_trace",
+      "f_ready_prefix_prepare",
+      "f_prefix_complete_ready_seed",
+      "driver_report",
+      "driver_bad_names",
+      "compiler_check_result_abi",
+      "check_book_diagnostic",
+      "check_book_diagnostic_from_exact_prefix",
+      "diagnostic_render",
+      "diagnostic_result_locate",
+      "check_program_diagnostic",
+      "f_load_origins_for",
+      "f_loaded_origins_for",
+      "diagnostic_render_loaded",
+      "j_compile_error",
+      "j_layout_error",
+      "reach_book",
+      "j_roots",
+      "j_stops",
+      "annotate_except",
+      "kf_source",
+      "annotate_selected",
+      "j_program_selected",
+      "j_library_selected",
+      "jd_library_selected",
+      "jd_stops",
+      "jd_program_selected",
+      "jd_modules",
+      "jd_roots",
+      "jd_foreign_paths",
+      "jd_foreign_error",
+      "jd_reach_selected",
+      "jd_reach_defs",
+      "jd_reach_error",
+      "jd_plan_selected",
+      "jd_plan_defs",
+      "jd_plan_error",
+      "jd_plan_library",
+      "j_foreign_paths",
+      "j_foreign_error"
+    ],
+    "excludedNonmanifestBackups": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase64/checked-state09/snapshot/src/back/js/validate.bend.orig",
+        "sha256": "df098471ed058f76a7f5e8cf6041e049a13e9315767c37bd40b6e2bb418defaa",
+        "bytes": 11737
+      }
+    ]
+  },
+  "candidate": {
+    "phase": 65,
+    "snapshotRoot": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state09/snapshot",
+    "attempt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state09/attempt.json",
+      "sha256": "7e6df3b254b20fa87558acc3e351117e1c8557d4be07fa1453ec4e4c5dbf21ee",
+      "bytes": 301726
+    },
+    "manifest": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state09/snapshot/src/compiler.json",
+      "sha256": "f96e6ad3112cb8180432b94b4c73fd512dc40eec912b35a7f3d6fa488b1f1c70",
+      "bytes": 4028
+    },
+    "metrics": {
+      "physicalLines": 28396,
+      "codeLines": 23284,
+      "definitions": 3269,
+      "laws": 642,
+      "types": 119,
+      "utf8Bytes": 1295705,
+      "modules": 115
+    },
+    "moduleOrder": [
+      "src/core/term.bend",
+      "src/core/index.bend",
+      "src/core/normalize.bend",
+      "src/core/graph.bend",
+      "src/core/reach.bend",
+      "src/core/pretty.bend",
+      "src/check/quantity.bend",
+      "src/check/kernel.bend",
+      "src/check/env-telescope.bend",
+      "src/check/env-substitution.bend",
+      "src/check/specialize.bend",
+      "src/check/prefix.bend",
+      "src/check/prefix-state.bend",
+      "src/check/annotate.bend",
+      "src/check/base-products.bend",
+      "src/front/lexer.bend",
+      "src/front/contextual.bend",
+      "src/front/parser.bend",
+      "src/front/declarations.bend",
+      "src/front/flatten.bend",
+      "src/front/elaborate.bend",
+      "src/front/sugar.bend",
+      "src/front/unicode.bend",
+      "src/front/literals_arrays.bend",
+      "src/front/parallel.bend",
+      "src/front/fresh_work.bend",
+      "src/front/freshen.bend",
+      "src/load/paths.bend",
+      "src/front/families.bend",
+      "src/front/validate.bend",
+      "src/load/imports.bend",
+      "src/load/graph.bend",
+      "src/load/seed.bend",
+      "src/load/modules.bend",
+      "src/load/prefix.bend",
+      "src/diagnostic/model.bend",
+      "src/diagnostic/render.bend",
+      "src/diagnostic/trace.bend",
+      "src/diagnostic/produce.bend",
+      "src/diagnostic/frontend.bend",
+      "src/back/common/literals.bend",
+      "src/back/common/queries.bend",
+      "src/back/common/native-facts.bend",
+      "src/back/js/shared-text.bend",
+      "src/back/js/foreign.bend",
+      "src/back/js/literals.bend",
+      "src/back/js/private-float.bend",
+      "src/back/js/validate.bend",
+      "src/back/js/choice.bend",
+      "src/back/js/projection.bend",
+      "src/back/js/u32.bend",
+      "src/back/js/primitive.bend",
+      "src/back/js/array-effects.bend",
+      "src/back/js/array-effect-guards.bend",
+      "src/back/js/local.bend",
+      "src/back/js/jpure.bend",
+      "src/back/js/region.bend",
+      "src/back/js/array-view.bend",
+      "src/back/js/array-literals.bend",
+      "src/back/js/array-result.bend",
+      "src/back/js/fold.bend",
+      "src/back/js/producer.bend",
+      "src/back/js/finite.bend",
+      "src/back/js/worker.bend",
+      "src/back/js/tree.bend",
+      "src/back/js/ir/model.bend",
+      "src/back/js/ir/projection.bend",
+      "src/back/js/ir/lower.bend",
+      "src/back/js/ir/control.bend",
+      "src/back/js/ir/facts.bend",
+      "src/back/js/ir/constants.bend",
+      "src/back/js/ir/simplify.bend",
+      "src/back/js/ir/emit.bend",
+      "src/back/js/ir/statement.bend",
+      "src/back/js/ir/worker-model.bend",
+      "src/back/js/ir/worker-lower.bend",
+      "src/back/js/ir/worker-simplify.bend",
+      "src/back/js/ir/worker-graph.bend",
+      "src/back/js/ir/worker-nat.bend",
+      "src/back/js/ir/native-values.bend",
+      "src/back/js/ir/worker-emit.bend",
+      "src/back/js/emit.bend",
+      "src/back/js/direct/transport.bend",
+      "src/back/js/direct/model.bend",
+      "src/back/js/direct/primitive.bend",
+      "src/back/js/direct/constructors.bend",
+      "src/back/js/direct/pattern.bend",
+      "src/back/js/direct/host.bend",
+      "src/back/js/direct/host-native.bend",
+      "src/back/js/direct/calls.bend",
+      "src/back/js/direct/ordered.bend",
+      "src/back/js/direct/ordered-values.bend",
+      "src/back/js/direct/choices.bend",
+      "src/back/js/direct/core.bend",
+      "src/back/js/direct/program.bend",
+      "src/back/js/direct/reach.bend",
+      "src/back/native/ir.bend",
+      "src/back/native/text.bend",
+      "src/back/native/identity.bend",
+      "src/back/native/layout.bend",
+      "src/back/native/intrinsic.bend",
+      "src/back/native/tables.bend",
+      "src/back/native/emit.bend",
+      "src/back/native/erase.bend",
+      "src/back/native/bridge.bend",
+      "src/back/native/direct.bend",
+      "src/back/native/pattern.bend",
+      "src/back/native/show.bend",
+      "src/back/native/parallel.bend",
+      "src/back/native/array.bend",
+      "src/back/native/validate.bend",
+      "src/back/native/foreign.bend",
+      "src/back/native/book.bend",
+      "src/driver/report.bend",
+      "src/driver/api.bend"
+    ],
+    "hostSupport": {
+      "tools/typed-driver.mjs": {
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state09/snapshot/tools/typed-driver.mjs",
+          "sha256": "7929ad82feb64bf8a6e56ffee04f0339098cceb374b7e77074dfb0033539c7ff",
+          "bytes": 81027
+        },
+        "metrics": {
+          "physicalLines": 1074,
+          "utf8Bytes": 81027
+        }
+      },
+      "tools/base-cache-graph.mjs": {
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state09/snapshot/tools/base-cache-graph.mjs",
+          "sha256": "737d1958f3e035c04a266e770a4512e37464adc559deb3dc7263bc0bc509bd46",
+          "bytes": 21093
+        },
+        "metrics": {
+          "physicalLines": 348,
+          "utf8Bytes": 21093
+        }
+      },
+      "tools/development/workflow.mjs": {
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state09/snapshot/tools/development/workflow.mjs",
+          "sha256": "0ee41f57a99fc059fb67f98fa9c7030c470c044c7d3421fa6fea367fc2ac12b2",
+          "bytes": 18662
+        },
+        "metrics": {
+          "physicalLines": 200,
+          "utf8Bytes": 18662
+        }
+      },
+      "tools/development/release.mjs": {
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state09/snapshot/tools/development/release.mjs",
+          "sha256": "3cf17eed7d12521149e43c0e08004b19197bf96b6293d134cb2753a888b7d139",
+          "bytes": 15799
+        },
+        "metrics": {
+          "physicalLines": 170,
+          "utf8Bytes": 15799
+        }
+      }
+    },
+    "runtimes": {
+      "src/runtime.mjs": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state09/snapshot/src/runtime.mjs",
+        "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46",
+        "bytes": 57500
+      },
+      "src/runtime/js/direct.mjs": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state09/snapshot/src/runtime/js/direct.mjs",
+        "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23",
+        "bytes": 13212
+      }
+    },
+    "assembledSource": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state09/snapshot/build/typed/snapshots/7ec178a124ba67bddb2b9d176d18e93b270f3ee4ce1900b835481063e48da5b4/compiler.bend",
+      "sha256": "310c9d077fcb0a4ba8ed42fec3882b1ef761709a65b2f1429aa501a158403e4c",
+      "bytes": 1433311
+    },
+    "images": {
+      "checkedB1Raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state09/api.mjs",
+        "sha256": "aada8b04873041e4ab40f178eb14283cfe27aac2dea69120d2f684b8dacf164a",
+        "bytes": 1949868
+      },
+      "checkedB1EqualityDerived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state09/equality/api.mjs",
+        "sha256": "3a7fedb77003aecc797cd9a9ac4c6d1bd15bd21dd1230806b6719565eca10f72",
+        "bytes": 1976779
+      },
+      "genuineB2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/bootstrap-state09/full/compiler.mjs",
+        "sha256": "239f79702c13339d1044e7fe497c4946299d36ce2d7b5eb7850d0d43514a8fae",
+        "bytes": 4054089
+      }
+    },
+    "b2Receipt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/bootstrap-state09/full/report.json",
+      "sha256": "6a000cb7ce8eb91729a224fc1fd1f80452920c90b382a725c5b877dd9cc1e246",
+      "bytes": 13601
+    },
+    "exports": [
+      "f_path_join",
+      "f_path_dir",
+      "check_book",
+      "annotate_book",
+      "j_program",
+      "j_library",
+      "j_expr",
+      "j_descriptor",
+      "j_io_type",
+      "j_modules",
+      "driver_has_main",
+      "driver_is_io",
+      "driver_interpret",
+      "driver_todos",
+      "driver_emit_owned",
+      "compiler_term_abi",
+      "compiler_span_abi",
+      "specialize_book",
+      "specialized_book",
+      "specialized_error",
+      "specialized_diagnostic",
+      "nc_compile",
+      "nc_foreign_paths",
+      "nc_annotation_stops",
+      "nc_annotated_context",
+      "nc_foreign_source",
+      "nc_foreign_scope",
+      "check_from_exact_prefix",
+      "exact_prefix",
+      "base_prefix_prepare",
+      "check_program_diagnostic_seed",
+      "check_program_diagnostic_prefix",
+      "base_prefix_world_prepare",
+      "check_program_diagnostic_world",
+      "book_context_world",
+      "base_annotation_prepare",
+      "base_annotation_wanted",
+      "base_annotation_allowed",
+      "annotate_selected_base",
+      "f_load_graph",
+      "f_load_graph_trace",
+      "f_source_completed",
+      "f_source_located",
+      "compiler_load_abi",
+      "f_source_header",
+      "f_complete_source",
+      "f_complete_seed",
+      "f_import_namespace_at",
+      "f_graph_trace",
+      "f_import_failure",
+      "book_context",
+      "book_cached",
+      "f_load_graph_seed",
+      "f_load_graph_seed_trace",
+      "f_fresh_prefix_prepare",
+      "f_graph_trace_from_prefix",
+      "f_prefix_graph_empty",
+      "f_prefix_complete_seed",
+      "f_prefix_complete_source",
+      "f_prefix_graph_trace",
+      "f_ready_prefix_prepare",
+      "f_prefix_complete_ready_seed",
+      "driver_report",
+      "driver_bad_names",
+      "compiler_check_result_abi",
+      "check_book_diagnostic",
+      "check_book_diagnostic_from_exact_prefix",
+      "diagnostic_render",
+      "diagnostic_result_locate",
+      "check_program_diagnostic",
+      "f_load_origins_for",
+      "f_loaded_origins_for",
+      "diagnostic_render_loaded",
+      "j_compile_error",
+      "j_layout_error",
+      "reach_book",
+      "j_roots",
+      "j_stops",
+      "annotate_except",
+      "kf_source",
+      "annotate_selected",
+      "j_program_selected",
+      "j_library_selected",
+      "jd_library_selected",
+      "jd_stops",
+      "jd_program_selected",
+      "jd_modules",
+      "jd_roots",
+      "jd_foreign_paths",
+      "jd_foreign_error",
+      "jd_reach_selected",
+      "jd_reach_defs",
+      "jd_reach_error",
+      "jd_plan_selected",
+      "jd_plan_defs",
+      "jd_plan_error",
+      "jd_plan_library",
+      "j_foreign_paths",
+      "j_foreign_error"
+    ],
+    "excludedNonmanifestBackups": []
+  },
+  "delta": {
+    "physicalLines": 117,
+    "codeLines": 85,
+    "definitions": 15,
+    "laws": 0,
+    "types": 1,
+    "utf8Bytes": 6125,
+    "modules": 1
+  },
+  "unchangedModuleColumns": [
+    "module",
+    "sha256",
+    "physicalLines",
+    "codeLines",
+    "definitions",
+    "laws",
+    "types",
+    "utf8Bytes"
+  ],
+  "unchangedModules": [
+    [
+      "src/back/common/literals.bend",
+      "73b871898b57ccf4a76bac726aa68fb98db27938be43e8da6e52e155c9dde9de",
+      53,
+      39,
+      6,
+      5,
+      0,
+      1639
+    ],
+    [
+      "src/back/common/native-facts.bend",
+      "b384c95b2e672192cfde8f129330c8e87285864a73c6a644399997402add54b2",
+      18,
+      14,
+      2,
+      0,
+      0,
+      691
+    ],
+    [
+      "src/back/common/queries.bend",
+      "e62d1b368c8c3b4a69eb0eedca263e3ac4ac3059746c257039e16999993038a8",
+      226,
+      182,
+      21,
+      17,
+      0,
+      6045
+    ],
+    [
+      "src/back/js/array-effect-guards.bend",
+      "c024d8969c275d66d00a8483b0e7d35e882e5af50d5d14bc985fadd9870c7580",
+      11,
+      8,
+      2,
+      0,
+      0,
+      583
+    ],
+    [
+      "src/back/js/array-effects.bend",
+      "e74844cc241cc3185363ccea6c477a3fcd6c58012a59244aaad805c6c1b41abd",
+      135,
+      109,
+      18,
+      0,
+      0,
+      7989
+    ],
+    [
+      "src/back/js/array-literals.bend",
+      "b687c9f66939c6072ed94cefdf5ef449b9ecdfc241446146fb727e91d4c7b91c",
+      183,
+      144,
+      20,
+      0,
+      0,
+      10203
+    ],
+    [
+      "src/back/js/array-result.bend",
+      "1eb531ca87139383c976699d43166b1aa736d2e8cb83a87ea177ce55c7bb3582",
+      62,
+      51,
+      6,
+      0,
+      0,
+      4088
+    ],
+    [
+      "src/back/js/array-view.bend",
+      "f5d0e58c301604bb496847fe0e114b06e9c8b455b55ef47a7636a79f91f495a0",
+      241,
+      184,
+      28,
+      0,
+      0,
+      14430
+    ],
+    [
+      "src/back/js/choice.bend",
+      "8f179693bd9ace5df1ada65fe10a08c9f2a47ad4c0d0c86d1f85a296596eca88",
+      49,
+      39,
+      5,
+      4,
+      0,
+      1998
+    ],
+    [
+      "src/back/js/direct/calls.bend",
+      "b61b730f4c87eb226d34fd3ec2e0a41524fe8ead26cfa2d181fcd783304c0e89",
+      446,
+      355,
+      62,
+      0,
+      3,
+      22814
+    ],
+    [
+      "src/back/js/direct/choices.bend",
+      "8611b61731cb29e645b865c1d47c3d24a45d819fa523e4cb7874a39c2688105b",
+      102,
+      76,
+      17,
+      0,
+      0,
+      5538
+    ],
+    [
+      "src/back/js/direct/constructors.bend",
+      "6ac71b1f0271ee5592cb28f938b8dbaccb7b02c389a724020ee72bb3b8853116",
+      299,
+      243,
+      39,
+      0,
+      1,
+      15129
+    ],
+    [
+      "src/back/js/direct/core.bend",
+      "d4ccacf2d2c8a3f2dbc9e3c8e2b27c0f1c7719292fdda514fede7cfe4d2589d1",
+      345,
+      275,
+      56,
+      0,
+      0,
+      21255
+    ],
+    [
+      "src/back/js/direct/host-native.bend",
+      "79008fbcbf15bab398e5f2a6bd63fa0b8fe444d62e2cf5d89f8c7469f81d5303",
+      61,
+      48,
+      6,
+      1,
+      0,
+      3088
+    ],
+    [
+      "src/back/js/direct/host.bend",
+      "6432002e0c5313946984d9ed77c8c5cdf55e8c7faa15f7ea806a88cebf92a550",
+      398,
+      320,
+      52,
+      0,
+      2,
+      20076
+    ],
+    [
+      "src/back/js/direct/model.bend",
+      "755fe8e8c99bf1e2a045e66cceb38377dfa5bf0a693a263142ff8f4ed705b4be",
+      189,
+      144,
+      33,
+      0,
+      1,
+      7550
+    ],
+    [
+      "src/back/js/direct/ordered-values.bend",
+      "85d59778824837c0435ddc5f476de85c12af90bea33a9a6e256ee072a9bdcebb",
+      145,
+      117,
+      19,
+      0,
+      2,
+      8314
+    ],
+    [
+      "src/back/js/direct/ordered.bend",
+      "27377dca71ed875bee03e081d8aea531d97879983375d47e6704e58a1cc0d5be",
+      212,
+      168,
+      28,
+      0,
+      2,
+      11902
+    ],
+    [
+      "src/back/js/direct/pattern.bend",
+      "9a0e69d7fed96c87ad15fbeb137d9bf731de61a2861be4bb8e84264efbf2e429",
+      272,
+      213,
+      41,
+      0,
+      2,
+      17537
+    ],
+    [
+      "src/back/js/direct/primitive.bend",
+      "fbf129b0ffab37d2d93e0dc7847eb2c3b74bf368aa996af5b7fe92a9e949552e",
+      453,
+      410,
+      26,
+      0,
+      1,
+      22828
+    ],
+    [
+      "src/back/js/direct/program.bend",
+      "a721a2e5fb7ee1278e18a65b784011bfa58bfe9bf218229e2436d1c8a025186c",
+      175,
+      142,
+      27,
+      0,
+      1,
+      9355
+    ],
+    [
+      "src/back/js/direct/reach.bend",
+      "2a36a775a13169845f230555fe4d1373174d7e87e31600457c1ca574fa3ca538",
+      206,
+      163,
+      25,
+      0,
+      2,
+      10547
+    ],
+    [
+      "src/back/js/direct/transport.bend",
+      "979d8abc08096fdbf3fa97388f1e1e3f1b2e8a532cb5950789a5fadf7f231bc6",
+      211,
+      171,
+      27,
+      0,
+      3,
+      9457
+    ],
+    [
+      "src/back/js/emit.bend",
+      "ad675d9eec71362a2c8fa929e2d4deb963104592aaf1b6c798d8320a0aa89abe",
+      715,
+      586,
+      66,
+      42,
+      0,
+      27753
+    ],
+    [
+      "src/back/js/finite.bend",
+      "27d9986f2e7f0cf80742c9670e31a40fc2869c366d11283c2378dac42a241e98",
+      355,
+      287,
+      40,
+      0,
+      0,
+      20390
+    ],
+    [
+      "src/back/js/fold.bend",
+      "d714084b17562a0bb8902be412aa1e3c9887e341217e3e057ed79d51cc794a1b",
+      324,
+      264,
+      42,
+      0,
+      0,
+      17763
+    ],
+    [
+      "src/back/js/foreign.bend",
+      "e362620b42362aff8f75ef8bba6c9a4dfb42252f9258e0d5635bcb46412efaf5",
+      158,
+      130,
+      16,
+      9,
+      0,
+      5538
+    ],
+    [
+      "src/back/js/ir/constants.bend",
+      "7bac0373e5edb9e3020f215d03b9603e871a3116ef7819793cf49baf5f04fecf",
+      32,
+      25,
+      4,
+      0,
+      0,
+      1769
+    ],
+    [
+      "src/back/js/ir/control.bend",
+      "a93ab4254b50f1772f04540a3c07c29124ec86c8eb79e3cd616c6f4f10ad7bba",
+      22,
+      17,
+      2,
+      0,
+      0,
+      1395
+    ],
+    [
+      "src/back/js/ir/emit.bend",
+      "94c31a188a6faa98f447374c63273a64dffe8af7dc95bd854ea520c410157008",
+      81,
+      69,
+      8,
+      0,
+      0,
+      3943
+    ],
+    [
+      "src/back/js/ir/facts.bend",
+      "f42d5b954c8103e736719e0aad7a1b18b1af394fb392cab6163d13c369685495",
+      76,
+      57,
+      8,
+      0,
+      1,
+      3166
+    ],
+    [
+      "src/back/js/ir/lower.bend",
+      "5dbace8b0dfc734eb35b6d2220c211466ba808864ae21cf5bd330f514278f09f",
+      157,
+      116,
+      19,
+      0,
+      0,
+      9282
+    ],
+    [
+      "src/back/js/ir/model.bend",
+      "f4692e678d3fe6ad623263f7ef0992cb806991d33135f02199641c4d2ed04d66",
+      57,
+      27,
+      2,
+      0,
+      2,
+      3068
+    ],
+    [
+      "src/back/js/ir/native-values.bend",
+      "9fb4835dddffb59aec3cb0ed4ced58867182abcb5b88fa675f2d07f4c4e38372",
+      17,
+      11,
+      2,
+      0,
+      0,
+      1034
+    ],
+    [
+      "src/back/js/ir/projection.bend",
+      "786a74f636c1ad4d54b8c71911bc78c8c52cf4d2529f8fe23e4a05628fccafbd",
+      52,
+      40,
+      5,
+      0,
+      1,
+      2459
+    ],
+    [
+      "src/back/js/ir/simplify.bend",
+      "bc8942bf74f5d2fc540f9016287bc2f48ad3c3b615bffbca723ccd941d10c6a7",
+      65,
+      51,
+      6,
+      0,
+      0,
+      3482
+    ],
+    [
+      "src/back/js/ir/statement.bend",
+      "4f8f8f2a081871e57c101fc17bbc1a7892aa74cde85e70c9f7026e4662703f7b",
+      34,
+      24,
+      3,
+      0,
+      0,
+      1723
+    ],
+    [
+      "src/back/js/ir/worker-emit.bend",
+      "6d4d2de819c61037db8b2a52182136aa2df7de3ab5c9bc307cf5fb952f1c517b",
+      374,
+      312,
+      44,
+      0,
+      1,
+      21035
+    ],
+    [
+      "src/back/js/ir/worker-graph.bend",
+      "38499e61e5d8f4c13bf9d06f2fadd56cd2b8f1319e311117822e24c409f84ce3",
+      166,
+      138,
+      25,
+      0,
+      1,
+      6721
+    ],
+    [
+      "src/back/js/ir/worker-lower.bend",
+      "d6c0d221f5d436a9e7a17227bb6deac0e264d8e859df7acb32e4b825ef6e7a9d",
+      217,
+      179,
+      27,
+      0,
+      0,
+      12118
+    ],
+    [
+      "src/back/js/ir/worker-model.bend",
+      "e6ce61741d94f3d3e2e07072644350d5365a7a85f7ce33f64eeec22281257ee1",
+      75,
+      56,
+      7,
+      0,
+      8,
+      2428
+    ],
+    [
+      "src/back/js/ir/worker-nat.bend",
+      "8c44dd26512b96dcf6416ffbe33e2646c1db7cae79e1b57db33d4ce43a952936",
+      132,
+      111,
+      16,
+      0,
+      0,
+      6434
+    ],
+    [
+      "src/back/js/ir/worker-simplify.bend",
+      "67c3f7a0e1a4d2f3702cd5565320b3762d7c56f50ec6d09aff3399ea0050906a",
+      25,
+      17,
+      2,
+      0,
+      0,
+      1458
+    ],
+    [
+      "src/back/js/jpure.bend",
+      "b2dff40d2dd7f11f6c69641a8117f9c06ceb03fa02d86dfd136c39d33ed0f782",
+      1524,
+      1216,
+      196,
+      0,
+      2,
+      86642
+    ],
+    [
+      "src/back/js/literals.bend",
+      "60dc5022af6c009c234f21178ec84cc818370eecbb9ba3e29f47fe2c1a9f593b",
+      144,
+      115,
+      14,
+      11,
+      0,
+      4290
+    ],
+    [
+      "src/back/js/local.bend",
+      "388c8d90a67817fdd02eed50ae96767f72bbbdcca004d687413a9ece1e41e19b",
+      131,
+      101,
+      20,
+      0,
+      0,
+      6603
+    ],
+    [
+      "src/back/js/primitive.bend",
+      "8423b802b28b031b5aceb7e96056fa4b67dafe18635450730bfa93c3926954b9",
+      103,
+      85,
+      13,
+      0,
+      0,
+      6636
+    ],
+    [
+      "src/back/js/private-float.bend",
+      "09c796b417c26169655219a57f3328ef2c78abeb4a75cdeb1a31c0fea47a14f4",
+      18,
+      11,
+      2,
+      0,
+      0,
+      1084
+    ],
+    [
+      "src/back/js/producer.bend",
+      "87b0fb778444018aaabeabb03214be1a9c1885b472407bf54cbd1705cd11fd23",
+      281,
+      236,
+      34,
+      0,
+      0,
+      17879
+    ],
+    [
+      "src/back/js/projection.bend",
+      "8ab432623d6ad4cbecfc10c506b54c755a0dc6e308511bbc9486b2ea3dc4bdc7",
+      69,
+      56,
+      7,
+      4,
+      0,
+      2831
+    ],
+    [
+      "src/back/js/region.bend",
+      "bc129162b65a4cacb85d0b43d2300a01e389413a03520a7159108507b3db990f",
+      1265,
+      1032,
+      155,
+      0,
+      3,
+      76508
+    ],
+    [
+      "src/back/js/shared-text.bend",
+      "a7cdf64830b06b56df426e5b6420aaae885f1dc35cee469a7e3015e69e710434",
+      75,
+      63,
+      7,
+      3,
+      0,
+      1693
+    ],
+    [
+      "src/back/js/tree.bend",
+      "a91086de26138367d8dd4f029cb2463f2c48448f4fbc743345098b469e0b29b0",
+      1172,
+      937,
+      137,
+      0,
+      0,
+      74252
+    ],
+    [
+      "src/back/js/u32.bend",
+      "22ff6f105e640578e829f0369dd5f21aec2266224c018901f0e65dddd89a3bfc",
+      95,
+      76,
+      13,
+      0,
+      0,
+      4271
+    ],
+    [
+      "src/back/js/validate.bend",
+      "fa882ac2c13bc6dc08156c50907a44eee3699dbb80be3939f338313cbb147454",
+      304,
+      248,
+      26,
+      21,
+      0,
+      11173
+    ],
+    [
+      "src/back/js/worker.bend",
+      "575c0e37d255895e8d8ec98ff613b5dd109389f903dbdbac7ee5c03b2a41106f",
+      357,
+      298,
+      50,
+      0,
+      0,
+      23050
+    ],
+    [
+      "src/back/native/array.bend",
+      "c00f0592299047df582ac0435e1a0423ea62fb48f7c87dda83bf18161b263bd7",
+      44,
+      37,
+      4,
+      2,
+      0,
+      2813
+    ],
+    [
+      "src/back/native/book.bend",
+      "180ee53af86a59df8efcc131d4f22b0ca6f5f9980dd222259f2941fbef1e11a2",
+      316,
+      259,
+      42,
+      9,
+      2,
+      14294
+    ],
+    [
+      "src/back/native/bridge.bend",
+      "4767f940940660635ec4c80978f8e4abb11c398b4b8f8bccabf05879c59f2a49",
+      456,
+      376,
+      65,
+      6,
+      3,
+      23327
+    ],
+    [
+      "src/back/native/direct.bend",
+      "75c5d560b8390263d18c991da8410191a0c5909b4ae0e8ebae193c0d9fd02de5",
+      88,
+      72,
+      14,
+      1,
+      0,
+      4200
+    ],
+    [
+      "src/back/native/emit.bend",
+      "862af7916a7b26d6801726b48d422f154bb8a34c4c140cccc534c5d0ff21b46a",
+      111,
+      93,
+      19,
+      0,
+      0,
+      5084
+    ],
+    [
+      "src/back/native/erase.bend",
+      "8f536cdfbca91b26bf426b3c8c5f42106fc0e18af7bfd2550ba73e7dab5530ec",
+      83,
+      69,
+      9,
+      3,
+      0,
+      3528
+    ],
+    [
+      "src/back/native/foreign.bend",
+      "ed7a06662072e73d45d10b1898599936b106dc22956a4fceea8d04ac22fb6d3c",
+      73,
+      60,
+      10,
+      0,
+      0,
+      4010
+    ],
+    [
+      "src/back/native/identity.bend",
+      "8d1c0ad2d35cb5072615ad6e23b99ec7db3c956679c1894d847869608be0e16a",
+      89,
+      74,
+      7,
+      5,
+      0,
+      2476
+    ],
+    [
+      "src/back/native/intrinsic.bend",
+      "5b921ebfecb307eddae880edee86ce459751684ecf74543f54c60e2a6f252195",
+      29,
+      24,
+      5,
+      0,
+      1,
+      4912
+    ],
+    [
+      "src/back/native/ir.bend",
+      "dada548b975e325d96735f94b4e65e56d0d47b8e22851bc6815bed7063e0339b",
+      25,
+      17,
+      0,
+      0,
+      7,
+      929
+    ],
+    [
+      "src/back/native/layout.bend",
+      "35981acafb07efcf3983baef35fffe573f8dc79707ea3077d9a15d360f05390b",
+      7,
+      6,
+      1,
+      0,
+      0,
+      135
+    ],
+    [
+      "src/back/native/parallel.bend",
+      "85326099c65dbd478574e480e13492f1d3973625c3c9aa50e286f7f4a38ff722",
+      94,
+      79,
+      12,
+      1,
+      0,
+      5003
+    ],
+    [
+      "src/back/native/pattern.bend",
+      "279c5967793f8922309b8d45746240db5c45f390ab8724c3b6f87e01ae17c7c4",
+      141,
+      134,
+      13,
+      9,
+      2,
+      5324
+    ],
+    [
+      "src/back/native/show.bend",
+      "b79f5ca545788b1c483b65bb6de6000ffacc2728b935553bede2d15d8e0d006d",
+      152,
+      127,
+      19,
+      3,
+      2,
+      6723
+    ],
+    [
+      "src/back/native/tables.bend",
+      "6b8f36fa9063f35105889d8977aa2345fb01eeceb117e6f641151430d084bbaa",
+      221,
+      184,
+      37,
+      1,
+      0,
+      8602
+    ],
+    [
+      "src/back/native/text.bend",
+      "31c1ff5973df46d17ad395070fbefa1d2dc58398b3d12af80c62ed6c5548ff9d",
+      101,
+      83,
+      18,
+      1,
+      0,
+      2533
+    ],
+    [
+      "src/back/native/validate.bend",
+      "d0c1e75c5dbda3d2e65ea227667191252c49f71b63f0765c358c2041a0f484bb",
+      62,
+      51,
+      11,
+      0,
+      0,
+      2859
+    ],
+    [
+      "src/check/annotate.bend",
+      "1912e5d177514733e706297fbb53e730c1f7a9edc91ffb06d2b1de7e2547648c",
+      389,
+      323,
+      32,
+      26,
+      1,
+      10866
+    ],
+    [
+      "src/check/env-substitution.bend",
+      "2bb46c21059512d1394e47da3287b2d00a8a42d658bdbce2724a0e061f77ee5c",
+      65,
+      51,
+      7,
+      3,
+      0,
+      2220
+    ],
+    [
+      "src/check/env-telescope.bend",
+      "c8f641d1dfe167d9708bef3c28c5320aeb605881d0775758f5cf0b0eced82fb7",
+      135,
+      111,
+      15,
+      4,
+      1,
+      5673
+    ],
+    [
+      "src/check/kernel.bend",
+      "61a0f6d41b311986c352f8ea76d99849001fce9ec68769f6f12a80fdbf20f785",
+      1423,
+      1196,
+      157,
+      60,
+      4,
+      49176
+    ],
+    [
+      "src/check/prefix-state.bend",
+      "e3d23adaabb0ddc866adc3546a56d6362df2d6f55d91c73aef71c73cbd628a63",
+      455,
+      351,
+      58,
+      4,
+      3,
+      24106
+    ],
+    [
+      "src/check/prefix.bend",
+      "ceabf77fb49b58910d83fa896899061643c4c105f29e70bd87d3f73be873783d",
+      142,
+      121,
+      12,
+      7,
+      0,
+      3037
+    ],
+    [
+      "src/check/quantity.bend",
+      "b4a8ca1f8dff10f4f64397ea53bbbe272bb32400e993b1077d284ec1d8a70b4d",
+      177,
+      152,
+      16,
+      7,
+      1,
+      4069
+    ],
+    [
+      "src/check/specialize.bend",
+      "76e0f9249ae15cc0734a8e9d2e75677794e2eb5464c7756a19daff8b8217e7ee",
+      383,
+      321,
+      53,
+      5,
+      3,
+      16212
+    ],
+    [
+      "src/core/graph.bend",
+      "85625049b316ede08eeffd7ff509483183624f1197c582c9d1bb2cd8bebf4802",
+      485,
+      415,
+      37,
+      22,
+      5,
+      14746
+    ],
+    [
+      "src/core/index.bend",
+      "51ce95941f955ed1c65f01ee88af31e35180c94d30ada97f359c6aa71dd47edb",
+      495,
+      421,
+      43,
+      9,
+      0,
+      14879
+    ],
+    [
+      "src/core/normalize.bend",
+      "4845ff63f3c228abc9a432410ddc8b7e20bfce27e54d6d49412b06608f7ce702",
+      719,
+      618,
+      55,
+      32,
+      3,
+      22263
+    ],
+    [
+      "src/core/pretty.bend",
+      "40b4e6ca55bf11009881b893c7959dd52cc64bbc6cb2dbb607e94dbab69fdedc",
+      548,
+      466,
+      55,
+      23,
+      2,
+      16800
+    ],
+    [
+      "src/core/reach.bend",
+      "086092c688e6cb774da94333826f51b1fdeddc8e85aeaac5be6b15c143b0df27",
+      254,
+      203,
+      27,
+      13,
+      1,
+      9901
+    ],
+    [
+      "src/core/term.bend",
+      "664cfe52e701723040f2679c3dcdaf2799730a0a7a47822686ab9d0db8c9e5f7",
+      672,
+      566,
+      72,
+      10,
+      2,
+      19407
+    ],
+    [
+      "src/diagnostic/frontend.bend",
+      "fdd07e6e3df5f999f2d162a4d3186cd8ae13102c8351710edab5291a2f80489f",
+      249,
+      216,
+      24,
+      16,
+      2,
+      10910
+    ],
+    [
+      "src/diagnostic/model.bend",
+      "3c699ec70ef36700520658555bc5df025880691c44633cabb9e5719b60fc9c1c",
+      19,
+      12,
+      0,
+      0,
+      5,
+      754
+    ],
+    [
+      "src/diagnostic/produce.bend",
+      "9518cb01c0c7636654bfa14dd332ac49756572ba975c7789c865e9cd8cf75c80",
+      210,
+      168,
+      26,
+      8,
+      1,
+      8073
+    ],
+    [
+      "src/diagnostic/render.bend",
+      "695f41ace13e08756273c317659a419deee5fc79d413bd58e8711f124370276c",
+      248,
+      212,
+      27,
+      5,
+      0,
+      7804
+    ],
+    [
+      "src/diagnostic/trace.bend",
+      "0e03e2827415d082d295976b57564c7b0bd872f7c81229e653d7e0ddda62b10f",
+      135,
+      110,
+      16,
+      6,
+      0,
+      6819
+    ],
+    [
+      "src/driver/api.bend",
+      "fc4cf72903a8ea6b9dacd8602bbdc96966ec9db1e86313289b2079d7567b8886",
+      145,
+      113,
+      17,
+      5,
+      0,
+      5094
+    ],
+    [
+      "src/driver/report.bend",
+      "15f0985da866b948252490ec2f1b90aed9d36fb24b93eab24826648cc36e6df8",
+      100,
+      84,
+      9,
+      6,
+      0,
+      2593
+    ],
+    [
+      "src/front/contextual.bend",
+      "18a1eabd78b224927ebe72c4aa7a295300cc641e20d03d2bc062fdcfd96f62f6",
+      555,
+      467,
+      83,
+      0,
+      0,
+      29385
+    ],
+    [
+      "src/front/declarations.bend",
+      "9e2c8da30605c1b8ab732df5f95533da55a3ea0e6c5a0941f1340586db9d36af",
+      741,
+      631,
+      65,
+      33,
+      3,
+      31635
+    ],
+    [
+      "src/front/elaborate.bend",
+      "8537f483259d48fa1d710915d6e8e09916faa540560379ee550a7077f391dc1e",
+      242,
+      202,
+      26,
+      11,
+      0,
+      7941
+    ],
+    [
+      "src/front/families.bend",
+      "22b6e9b1ca132ed2d6f2cf91507e221f09cdda1aeab5931e8cf099e934bc9d2f",
+      106,
+      84,
+      11,
+      6,
+      0,
+      3849
+    ],
+    [
+      "src/front/flatten.bend",
+      "d3ba8687f7dcd303dee847a90e3fa92b9a234d97cdcd3893de8242c6d2aa69cf",
+      189,
+      158,
+      15,
+      12,
+      2,
+      6450
+    ],
+    [
+      "src/front/fresh_work.bend",
+      "043d3b737cef4b932b7de8ef161dc88ba867ba6a8056e3662edfdcf4a2d797ed",
+      208,
+      194,
+      15,
+      12,
+      2,
+      7736
+    ],
+    [
+      "src/front/freshen.bend",
+      "d0fed135fe878987770786ef0c50dd09efe2cce390beb7a911bcfc8468d5607d",
+      57,
+      46,
+      5,
+      3,
+      2,
+      1285
+    ],
+    [
+      "src/front/lexer.bend",
+      "aa9d726b6b284deba84dbccc77a01a8143dd89dab70cf487e1ddc8d589380440",
+      397,
+      329,
+      47,
+      9,
+      4,
+      13265
+    ],
+    [
+      "src/front/literals_arrays.bend",
+      "7429e8a4e16e30f74fa19911993879e60a982a510f369769e7805d6a6ac34796",
+      270,
+      216,
+      38,
+      13,
+      0,
+      11903
+    ],
+    [
+      "src/front/parallel.bend",
+      "b7c38f74d9f339f21fa00c5194078a0bfc41a948d1adaa907d00df64045c2f1c",
+      106,
+      87,
+      10,
+      8,
+      0,
+      3238
+    ],
+    [
+      "src/front/parser.bend",
+      "c1790685aea7c71430873d65c2d91996778f443aee0098e54c656fe10177ba28",
+      730,
+      596,
+      82,
+      37,
+      1,
+      32003
+    ],
+    [
+      "src/front/sugar.bend",
+      "d3e3cf5addf0498e8401b9988678eb6ac8ff81571a014b18a1b6fed0a76fb22a",
+      301,
+      253,
+      41,
+      4,
+      0,
+      14142
+    ],
+    [
+      "src/front/unicode.bend",
+      "bfd4407aa83614ae8398c9ce451f729cbcba457f2ef64774fea99f1824b5dd96",
+      99,
+      77,
+      13,
+      6,
+      1,
+      4481
+    ],
+    [
+      "src/front/validate.bend",
+      "62d530ce7ebb6d2abf69f34d37b5b21eed8711c7bdee3bf868aa2c94d699ec5d",
+      233,
+      188,
+      25,
+      12,
+      0,
+      11354
+    ],
+    [
+      "src/load/graph.bend",
+      "06f9f815b7e7e0f335907237845543bd09ff42886aea942065a9ba8ecdb05189",
+      472,
+      397,
+      51,
+      28,
+      1,
+      17785
+    ],
+    [
+      "src/load/imports.bend",
+      "b878da5169a4a39d35a236ff5128dc42735fea0707195cf621ae651c1f13e9b1",
+      79,
+      59,
+      11,
+      1,
+      0,
+      4211
+    ],
+    [
+      "src/load/modules.bend",
+      "bcfa3f440069f44b9b115f7718fcef210cc5e782983dc61607d6eb4337afb070",
+      283,
+      228,
+      34,
+      5,
+      5,
+      11704
+    ],
+    [
+      "src/load/paths.bend",
+      "a9fc17a8af04c1958d1f11e8c1c5b7c2d3eb925dd9075e6c77de4bdb3521f2a2",
+      84,
+      69,
+      9,
+      4,
+      0,
+      2186
+    ],
+    [
+      "src/load/prefix.bend",
+      "6d98e35c38cb9e6491e6cb34b60517a86efe6f48992cb8bae9d54aabfe041096",
+      267,
+      210,
+      32,
+      1,
+      6,
+      14895
+    ],
+    [
+      "src/load/seed.bend",
+      "43826db4855dc47b098adc7221e4ddf1489801d8e3947d750917b212f12418fe",
+      156,
+      127,
+      13,
+      8,
+      1,
+      5051
+    ]
+  ],
+  "changedModules": [
+    {
+      "module": "src/check/base-products.bend",
+      "before": null,
+      "after": {
+        "sha256": "d27c23edc0b62a9c80391e533bc56045b481439f520f8412cafc1fddca5f1225",
+        "metrics": {
+          "physicalLines": 117,
+          "utf8Bytes": 6125,
+          "codeLines": 85,
+          "definitions": 15,
+          "laws": 0,
+          "types": 1
+        }
+      },
+      "delta": {
+        "physicalLines": 117,
+        "codeLines": 85,
+        "definitions": 15,
+        "laws": 0,
+        "types": 1,
+        "utf8Bytes": 6125
+      }
+    }
+  ],
+  "hostChanges": [
+    {
+      "file": "tools/typed-driver.mjs",
+      "before": {
+        "physicalLines": 996,
+        "utf8Bytes": 74204
+      },
+      "after": {
+        "physicalLines": 1074,
+        "utf8Bytes": 81027
+      },
+      "delta": {
+        "physicalLines": 78,
+        "utf8Bytes": 6823
+      }
+    },
+    {
+      "file": "tools/base-cache-graph.mjs",
+      "before": {
+        "physicalLines": 285,
+        "utf8Bytes": 18106
+      },
+      "after": {
+        "physicalLines": 348,
+        "utf8Bytes": 21093
+      },
+      "delta": {
+        "physicalLines": 63,
+        "utf8Bytes": 2987
+      }
+    },
+    {
+      "file": "tools/development/workflow.mjs",
+      "before": {
+        "physicalLines": 200,
+        "utf8Bytes": 18662
+      },
+      "after": {
+        "physicalLines": 200,
+        "utf8Bytes": 18662
+      },
+      "delta": {
+        "physicalLines": 0,
+        "utf8Bytes": 0
+      }
+    },
+    {
+      "file": "tools/development/release.mjs",
+      "before": {
+        "physicalLines": 170,
+        "utf8Bytes": 15799
+      },
+      "after": {
+        "physicalLines": 170,
+        "utf8Bytes": 15799
+      },
+      "delta": {
+        "physicalLines": 0,
+        "utf8Bytes": 0
+      }
+    }
+  ],
+  "imageByteDeltas": {
+    "checkedB1Raw": 6651,
+    "checkedB1EqualityDerived": 6760,
+    "genuineB2": 13290
+  },
+  "exportsAdded": [
+    "base_annotation_prepare",
+    "base_annotation_wanted",
+    "base_annotation_allowed",
+    "annotate_selected_base"
+  ],
+  "exportsRemoved": [],
+  "runtimeUnchanged": true,
+  "limitations": [
+    "These are reproducible source/image size proxies, not a speed, semantic concept-count, correctness, release or soundness claim.",
+    "Actual selected image export scopes differ; image bytes are not an equal-export microcomparison.",
+    "Repository-wide experiments/reports and nonmanifest backup files do not enter the compiler source denominator."
+  ],
+  "verifiedInputCount": 260,
+  "verifiedAllInputsUnchanged": true
+}

@@ -3,7 +3,9 @@
 - Owner: qualification/measurement lane; reviewer: cache-contract lane.
 - Scope: isolated transport helper, same selected State09 API and cache bytes.
 - Status: case-local loads rejected; static readers pass 87 controls and eight
-  microprobe workers, first decode 0.4208× baseline; whole-request test prepared.
+  microprobe workers, first decode 0.4208× baseline. Four-source whole-request
+  confirmation passes sixteen exact-output workers, compilation 0.89069× and
+  imports plus compilation 0.91533×. Selected snapshot qualification is separate.
 - Report: [decoder](../../implementation/phase65/decoder.md).
 
 The selected helper validates and materializes 46,757 records. Loading only a

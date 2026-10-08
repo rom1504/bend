@@ -1,7 +1,8 @@
 # Prepared Base artifacts
 
-**Phase64 State09 is installed and verified.** This describes the selected
-implementation. The [Phase64 results](../../implementation/phase64/state09-results.md),
+**Phase64 State09 is installed and verified.** The first sections describe that
+release. [Phase65's selected integration candidate](#phase65-selected-integration-candidate)
+is documented separately below; final qualification and installation are pending. The [Phase64 results](../../implementation/phase64/state09-results.md),
 [qualification index](../../implementation/phase64/evidence/state09-qualification.json)
 and [release verification](../../implementation/phase64/evidence/state09-release.json)
 keep its genuine-B2 measurement and packaged checked-B1 release distinct. The
@@ -107,3 +108,128 @@ import plus first compilation 1.18920× → 1.06173×. Those are distinct clocks
 with all 23 sources improving. Qualification and installation passed; the
 measured image is genuine B2 and the installed package is equality-derived
 checked B1. These results make no new generated-program execution-speed claim.
+
+## Phase65 selected integration candidate
+
+**State10 combines H2 and H6 and is not installed yet.** Read the
+[Phase65 report](../../implementation/phase65/README.md) for current gate status.
+The following is the selected implementation contract, not a completed release
+or final performance claim. The compiler remains written in Bend. State10 keeps
+the selected Bend/B1/B2 algorithms unchanged and adds exact Base-content gates
+in the host, plus a whitespace-only decoder trim; measurements must still bind
+its final helper and driver bytes.
+
+### Static transport readers
+
+The frame4 decoder splits its twelve existing constructor cases into static
+readers. A small loop checks record geometry, selects the reader and publishes
+the validated node/kind. One decode-state object serves the static readers;
+there is no per-record dispatch closure or tuple. The binary format, tag schema,
+field order, typed backward references, Unicode/span checks and roots are
+unchanged. All records in a loaded arena remain eagerly validated and fully
+materialized, including unused records.
+
+This change belongs to `tools/base-cache-graph.mjs`, the host transport layer.
+It does not move parsing, checking, annotation, layout or emission into JS. The
+[decoder investigation](../../implementation/phase65/decoder.md) separates
+isolated first-decode measurements from complete fresh compiler requests.
+
+### Optional Bend-produced annotations
+
+Preparation uses the actual ready checked Base world, preserving world version3.
+The new Bend module `src/check/base-products.bend` supplies four private APIs:
+
+| API | Responsibility |
+| --- | --- |
+| `base_annotation_prepare(world, minimumWork)` | Verify the closed checked Base and implicit literal dependencies, then retain eligible complete `ka_def` results. |
+| `base_annotation_wanted(selected, stops, keys)` | Decide whether actual selected non-stopped definitions could use an optional product. |
+| `base_annotation_allowed(load, world)` | Reestablish current prefix/suffix eligibility and reject relevant full-hash collisions. |
+| `annotate_selected_base(context, selected, stops, products)` | Preserve selected order and stops; use admitted complete products, or ordinary `ka_def` on misses. |
+
+The selected threshold is 64 syntactic body terms, counted by Bend. It names no
+program or Base function. Preparation returns `KBaseAnnotationState{keys,book}`;
+the envelope is not a new transport constructor. Existing string/definition graph
+records carry the keys and products. This producer is optional and scoped to the
+pinned Base whose complete preparation was observed to terminate. It does not
+license eagerly annotating arbitrary unselected unsafe user definitions.
+
+### Exact Base-content permission
+
+State10 permits optional annotation production and sidecar reading only when
+the actual Base bytes have SHA256
+`c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661`.
+This gate runs before calling the producer and before opening an optional
+sidecar. A matching cached filename, path, header or ready world cannot bypass
+it. All existing API/path/ABI/source-interval and graph-parent bindings still
+apply after this content permission.
+
+This restriction captures a real demand boundary: preparing products may
+normalize definitions the current program never selects. Termination was
+qualified for the exact pinned Base, not for arbitrary custom or future Base
+content. A changed Base therefore uses ordinary request-demanded annotation,
+without optional production or sidecar reads. Updating upstream does not
+silently extend permission; a new Base needs independent preparation/semantic
+qualification before its hash may be admitted. Custom Base compilation remains
+available through the ordinary path.
+
+Explicit `prepareBase()` produces a separate optional sidecar under
+`build/typed/base-products`. The basename ends in `-annotations64-v1.bin`. Normal
+inspection does not create it, including inspection's implicit ordinary Base
+preparation. Deleting this optional artifact restores ordinary annotation;
+regenerate it through explicit preparation, not by editing its header or graph.
+
+### Request admission and deferred body loading
+
+The exact Base-content permission above is required first. The driver must also
+be using its own API and the actual successful prepared-world check route for
+this request. A world object merely being present is not
+permission. Current carrier, context and selected definitions remain coupled.
+The optional read then proceeds in this order:
+
+1. Read a bounded header and small independent key arena; bind exact compiler
+   API, Base bytes/path/source interval, ABI and producer/threshold identity.
+2. Ask Bend's `base_annotation_wanted` using the actual selected definitions and
+   current stops. A miss leaves the heavy body unread.
+3. Ask Bend's `base_annotation_allowed` for current load/world eligibility.
+   Refusal also leaves the heavy body unread.
+4. Read, hash and fully validate the product arena against its declared length
+   and both actual parent Base/prepared graph digests, then invoke the admitted
+   Bend consumer. Product references may point only into that exact parent graph.
+
+The sidecar starts with a four-byte little-endian JSON-header length, capped at
+64 KiB, followed by the header and product bytes. The header binds its key arena
+and body digests as well as both parent segment digests. The host privately
+retains the validated parent graph needed to interpret references; its memory
+cost belongs in whole-request measurement.
+
+Missing, malformed, stale, source-incompatible or ineligible optional products
+fall back to ordinary annotation. Mandatory frame validation remains independent; corrupt data cannot grant a
+usable cached book. The optional reader has no cross-request result memo, so a
+replaced/deleted artifact cannot leave a previously granted product capability
+active in a persistent inspector. Injected public APIs do not acquire the private
+owned-route permission.
+
+### Measurement and qualification boundary
+
+Explicit preparation, key/body bytes, no-hit header work, admission, hashing,
+validation/materialization and retained-parent memory are separate costs. Fresh
+request timing must include all work the selected ordinary driver performs; it
+must pin the sidecar and directory inventory even for programs that miss it.
+A warmed decoder or instrumented saved-work estimate cannot substitute for that
+measurement.
+
+Focused semantic and transport controls, candidate screens and their failures
+are retained in the [Phase65 report](../../implementation/phase65/README.md).
+The final [State10 broad campaign](../../implementation/phase65/evidence/state10-b2-broad.json)
+passes 207 exact-output checks over 23 sources. Compilation alone improves
+**1.41737× → 1.28945× TS (9.025% less time)**; imports plus compilation improve
+**1.04969× → 0.969256× (7.662% less time)**, against the same-campaign baseline.
+All sources improve; 21 have nonoverlapping sample ranges. These measure the
+selected H2+H6 bundle in fresh genuine-B2 processes with prepared artifacts,
+not the isolated decoder, installed CLI or generated-program execution.
+H2's incremental benefit over H6 alone remains under measurement.
+
+The State09 owned B2 product route passes focused controls. Final State10
+qualification and release installation remain pending; evidence
+reuse must explicitly bind unchanged inputs and the new host permission gate.
+A sub-1× import-inclusive ratio does not establish compilation-only parity.

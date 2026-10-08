@@ -1,0 +1,73 @@
+{
+  "kind": "phase65-preserve-closed-derivation",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "toolInvoked": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/latency/preserve-closed.py",
+    "sha256": "e58d1a0270aab2fb29d96e578357aec2535f473c1176ca97df1922ca795a4570"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/preserve-closed.py",
+    "sha256": "ee53a3337603b326a4e5dcc9481b52cba28aec1196753165c73c3846db312e0b"
+  },
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/preserve-closed.patch",
+    "sha256": "d2bfa9a1a22ee315d30f590e61c7d08cdc6f3420653d44d17895f23353831ba8"
+  },
+  "publishedManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/artifacts/manifest.json",
+    "sha256": "d6b568b2b6396939e614d5c8157b4a1ee43ec9203b6d7317e14deba9b587bd3e"
+  },
+  "expectedClosedFiles": 15922,
+  "expectedInheritedFiles": 110,
+  "edits": [
+    {
+      "old": "phase64",
+      "new": "phase65",
+      "count": 2
+    },
+    {
+      "old": "Phase64",
+      "new": "Phase65",
+      "count": 1
+    },
+    {
+      "old": "phase63",
+      "new": "phase64",
+      "count": 2
+    },
+    {
+      "old": "Phase63",
+      "new": "Phase64",
+      "count": 8
+    },
+    {
+      "old": "final-state09",
+      "new": "final-state10",
+      "count": 1
+    },
+    {
+      "old": "== 16691",
+      "new": "== 15922",
+      "count": 1
+    },
+    {
+      "old": "assert not OUT.exists()",
+      "new": "TRACKED = ROOT / 'implementation/phase65/evidence/closed-evidence-preservation.json'\nassert not OUT.exists() and not TRACKED.exists()",
+      "count": 1
+    },
+    {
+      "old": "with OUT.open('x') as stream:\n    stream.write(json.dumps(result, indent=2)+'\\n')",
+      "new": "serialized = json.dumps(result, indent=2)+'\\n'\nfor destination in [OUT, TRACKED]:\n    destination.parent.mkdir(parents=True, exist_ok=True)\n    with destination.open('x') as stream:\n        stream.write(serialized)",
+      "count": 1
+    },
+    {
+      "old": "print(json.dumps(dict(output=pin(OUT), closedPhase64=",
+      "new": "print(json.dumps(dict(output=pin(OUT), trackedCopy=pin(TRACKED), closedPhase64=",
+      "count": 1
+    }
+  ],
+  "scope": "Exact parent successor: closedPhase64 against its single published archive, inherited Phase65 protected baseline, finalState10 output plus identical fresh tracked copy. No historical raw/protected/archive writes."
+}

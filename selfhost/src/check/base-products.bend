@@ -1,0 +1,117 @@
+# PRIVATE optional prepared-Base annotation product. Host identity admission
+# couples this producer, the checked Base and the same successful owned request.
+# Public annotate_selected retains its original arbitrary-book behavior.
+type KBaseAnnotationState is Data:
+  KBaseAnnotationState{+keys: List<&2,String>, +book: List<&2,KDef>}
+
+@unsafe
+def base_annotation_implicit(+book: List<&2,KDef>, +names: List<&2,String>) -> Bool:
+  match names:
+    case Nil{}: True{}
+    case Con{name, rest}: Bool.not(String.eq(dk(lookup(book, name)), "Absent")) && base_annotation_implicit(book, rest)
+
+# The producer receives the actual prepared world and reverses its exact checked
+# output in Bend, never deriving products from final raw declaration events.
+# Annotation can consult literal implementation types in addition to Ref/ADT.
+# This private optional preparation is allowed to evaluate the pinned Base;
+# it does not extend preparation permission to arbitrary unselected unsafe books.
+@unsafe
+def base_annotation_prepare(+prepared: KBasePreparedWorld, +minimumWork: U32) -> KBaseAnnotationState:
+  match prepared:
+    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound}:
+      base_annotation_prepare_state(state, checked, minimumWork)
+
+@unsafe
+def base_annotation_prepare_state(+state: KBasePrefixState, +checked: List<&2,KDef>, +minimumWork: U32) -> KBaseAnnotationState:
+  match state:
+    case KBasePrefixState{bound, delta, stamp, patches, ready}:
+      kc(KBaseAnnotationState, ready,
+        u => base_annotation_prepare_closed(book_final_reverse(checked, Nil{}), minimumWork),
+        u => KBaseAnnotationState{Nil{}, Nil{}})
+
+@unsafe
+def base_annotation_prepare_closed(+checked: List<&2,KDef>, +minimumWork: U32) -> KBaseAnnotationState:
+  +context = book_context(checked)
+  kc(KBaseAnnotationState, base_prefix_closed(checked, context) &&
+    base_annotation_implicit(context, ["Nat", "U32", "F32", "String", "Char", "Bool", "Word", "List"]),
+    u => base_annotation_state(base_annotation_collect(context, checked, jd_stops(context), minimumWork)),
+    u => KBaseAnnotationState{Nil{}, Nil{}})
+
+@unsafe
+def base_annotation_state(+defs: List<&2,KDef>) -> KBaseAnnotationState:
+  KBaseAnnotationState{base_annotation_keys(defs), book_cached(defs, 0)}
+
+@unsafe
+def base_annotation_keys(+defs: List<&2,KDef>) -> List<&2,String>:
+  match defs:
+    case Nil{}: Nil{}
+    case Con{d, rest}: Con{dn(d), base_annotation_keys(rest)}
+
+# Bounded syntactic work is a generic policy for the optional artifact. It is
+# computed once from Base bodies; no source/program names select the threshold.
+@unsafe
+def base_annotation_large(+terms: List<&2,KTerm>, +left: U32) -> Bool:
+  kc(Bool, U32.is_eq(left, 0), u => True{}, u => base_annotation_large_more(terms, left))
+
+@unsafe
+def base_annotation_large_more(+terms: List<&2,KTerm>, +left: U32) -> Bool:
+  match terms:
+    case Nil{}: False{}
+    case Con{term, rest}: base_annotation_large(norm_join(ks(term), rest), U32.sub(left, 1))
+
+@unsafe
+def base_annotation_collect(+book: List<&2,KDef>, +defs: List<&2,KDef>, +stops: List<&2,String>, +minimumWork: U32) -> List<&2,KDef>:
+  match defs:
+    case Nil{}: Nil{}
+    case Con{d, rest}:
+      kc(List<&2,KDef>, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
+        Bool.not(has_name(stops, dn(d))) && Bool.not(String.eq(tg(dv(d)), "Absent") || String.eq(tg(dv(d)), "Foreign")) &&
+        base_annotation_large([dv(d)], minimumWork),
+        u => Con{ka_def(book, d), base_annotation_collect(book, rest, stops, minimumWork)},
+        u => base_annotation_collect(book, rest, stops, minimumWork))
+
+# Host requests a separate product decode only when this Bend-owned decision
+# finds work in the actual selected definitions. Current stops always win.
+@unsafe
+def base_annotation_wanted(+selected: List<&2,KDef>, +stops: List<&2,String>, +keys: List<&2,String>) -> Bool:
+  match selected:
+    case Nil{}: False{}
+    case Con{d, rest}: kc(Bool, Bool.not(has_name(stops, dn(d))) && has_name(keys, dn(d)),
+      u => True{}, u => base_annotation_wanted(rest, stops, keys))
+
+# Same immutable context and selected list as ordinary annotate_selected. The
+# caller may invoke this only after base_annotation_allowed and optional artifact
+# identity/version admission, before either captured request value can change.
+@unsafe
+def annotate_selected_base(+book: List<&2,KDef>, +selected: List<&2,KDef>, +stops: List<&2,String>, +products: List<&2,KDef>) -> List<&2,KDef>:
+  base_annotation_defs(book_context(book), selected, stops, products)
+
+@unsafe
+def base_annotation_defs(+book: List<&2,KDef>, +selected: List<&2,KDef>, +stops: List<&2,String>, +products: List<&2,KDef>) -> List<&2,KDef>:
+  match selected:
+    case Nil{}: Nil{}
+    case Con{d, rest}: Con{kc(KDef, has_name(stops, dn(d)), u => d,
+      u => base_annotation_def(book, d, lookup(products, dn(d)))), base_annotation_defs(book, rest, stops, products)}
+
+@unsafe
+def base_annotation_def(+book: List<&2,KDef>, +d: KDef, +product: KDef) -> KDef:
+  kc(KDef, String.eq(dk(product), "Absent"), u => ka_def(book, d), u => product)
+
+# This bridge retains the selected world-version-three shape. It does not modify
+# that world or admit a product solely because a cached world exists.
+@unsafe
+def base_annotation_allowed(+load: FPrefixLoad, +prepared: KBasePreparedWorld) -> Bool:
+  match load:
+    case FPrefixLoad{trace, prefix, suffix, ready}:
+      match trace:
+        case FLoadTrace{result, done, sources}:
+          match result:
+            case FResult{book, error, imports}: base_annotation_allowed_world(suffix, ready && String.is_empty(error), prepared)
+
+@unsafe
+def base_annotation_allowed_world(+suffix: List<&2,KDef>, +ready: Bool, +prepared: KBasePreparedWorld) -> Bool:
+  match prepared:
+    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound}:
+      +bound = norm_max(base_prefix_world_bound(state), norm_max_book(suffix))
+      ready && base_prefix_world_admitted(state, suffix, bound, final, saved) &&
+        base_prefix_world_hash_disjoint(suffix, index_first(dc(index_first(saved))))

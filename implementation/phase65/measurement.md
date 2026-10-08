@@ -311,3 +311,100 @@ by H6's separately measured B2 ratio to claim a combined gain. The integrated
 image needs its own direct comparison and no-hit coverage. Any failed controller
 parents remain failed; a metadata-corrected successor must qualify its actual
 checked/equality-derived API lineage explicitly.
+
+
+The session was interrupted during the combined State09 qualification work and
+resumed at approximately 03:59 UTC. Root identified approximately 01:56–03:59 UTC as
+external downtime, with no active agent work. The [interruption note](evidence/interruption.json)
+keeps that roughly 123-minute interval separate from validation or optimization
+effort. Final process accounting must use actual guard timestamps independently
+of these approximate session boundaries.
+
+## Combined State09: genuine-B2 screen passes before broad measurement
+
+The integrated snapshot contains H6's static decoder and H2's deferred Base
+annotations. Its genuine B2 image is
+`239f79702c13339d1044e7fe497c4946299d36ce2d7b5eb7850d0d43514a8fae`,
+with 99 actual exports. Shared three-role preparation takes 14.57 s and requires
+a new sidecar keyed by that actual image; the historical baseline still has none.
+
+The [fast four-source comparison](evidence/state09-b2-four.json) then uses only
+the two genuine-B2 roles, two balanced rounds, and passes all 16 full-module
+comparisons in 18.62 s:
+
+| Source | Phase64 B2 | Integrated State09 B2 | Compilation change |
+| --- | ---: | ---: | ---: |
+| Numeric recurrence | 250.70 ms | 205.92 ms | −17.86% |
+| Lexer | 590.10 ms | 561.94 ms | −4.77% |
+| Map/set operations | 1052.42 ms | 952.23 ms | −9.52% |
+| Active raytrace | 878.61 ms | 849.47 ms | −3.32% |
+
+All candidate compilation sample ranges are below their baseline ranges. The
+equal-source geometric means are **0.90950** for compilation (−9.05%) and
+**0.93169** for imports plus compilation (−6.83%). Maximum worker process-tree
+RSS is 157.44 MiB. These controlled combined-image observations support running
+the final 23-source, three-role comparison. They do not isolate H2's incremental
+benefit by comparison with the earlier separate helper-only campaign.
+
+## Final 23-source compilation comparison
+
+The [State09 result](state09-results.md) and [207-worker matrix](evidence/state09-b2-broad.json)
+now establish the selected combined candidate's broad speed: **1.42592× →
+1.30976× TypeScript compilation**, or **1.05549× → 0.98124× including imports**,
+in the same balanced campaign. The candidate improves 22/23 source medians;
+`expression` changes +0.45% with overlapping ranges. All 207 full modules match,
+and 18/23 sources have completely separated improving sample ranges on both
+clocks. The campaign takes 213.18 s and reaches 161.20 MiB peak worker-tree RSS.
+The [standalone figure](compilation-ratios.svg) preserves the two clocks and
+shows each source rather than hiding residual variation in an aggregate.
+
+This validates the combined change's performance, not H2's incremental effect.
+A separate same-image ablation and final qualification/release gates remain
+distinct. Fresh Phase64 baseline 1.42592× differs from its historical 1.43894×;
+only the within-campaign comparison supports the measured 8.15% gain.
+
+## Promotion boundary: exact Base admission correction
+
+The broad State09 campaign used the exact pinned upstream Base throughout. A
+subsequent review identified that optional annotation products must explicitly
+require that Base hash on both the producer and consumer paths. A custom Base
+can otherwise introduce an unselected definition whose new eager annotation
+would not belong to the ordinary demand path. State10 is being prepared with
+that host admission correction and a whitespace-only helper cleanup. The Bend
+source and generated images are expected to remain identical, but their actual
+hashes and selected host snapshot must be verified.
+
+All State09 reports, samples and the SVG remain unchanged. They continue to
+establish performance for the exact measured State09/pinned-Base configuration;
+they do not become State10 measurements by relabeling. Fresh selected-host gates
+and a controlled screen are required, with any reused broad evidence explicitly
+bounded by the reviewed host delta and matching inputs.
+
+
+The cache owner's [same-image artifact ablation](evidence/base-annotations-incremental-b2.json)
+now supplies separate H2 attribution: all 12 complete-output workers pass, with
+Map 985.53 → 934.95 ms (−5.13%), map-churn 639.98 → 619.85 ms (−3.15%) and Numeric
+191.32 → 190.43 ms (−0.46%, overlapping ranges). Both roles retain the identical
+combined B2/H6 image and driver; only sidecar presence changes, and no priming
+occurs after copying. The three-source compilation geometric mean is −2.93%.
+It measures artifact value for that selected subset and exact pinned Base,
+not a full H2-code removal, broad 23-source estimate or custom-Base claim.
+
+## Final selected State10 campaign
+
+The corrected host now has its own [207-worker broad matrix](evidence/state10-b2-broad.json)
+and [selected-version report](state10-results.md). Every raw module matches.
+The same-campaign compilation geometric mean changes **1.41737× → 1.28945×
+TypeScript (−9.03%)**, while host/API imports plus compilation change
+**1.04969× → 0.96926× (−7.66%)**. All 23 source medians improve on both clocks;
+21 have separated improving ranges, with `editdist` and `unicode-text` overlapping.
+The candidate is faster than TypeScript on 4/23 compilation sources and 10/23
+import-inclusive sources. No internal compilation parity claim follows from
+the import-inclusive mean below one.
+
+Fresh shared preparation took 15.15 s, the initial four-source screen 19.26 s,
+and the final broad campaign 209.74 s. Broad peak worker-tree RSS was 169.34 MiB.
+The [new selected-version figure](state10-compilation-ratios.svg) is separate from
+State09's preserved figure and samples. State10 has identical actual Bend source,
+B1 and B2 bytes to State09, but an independently checked and measured corrected
+host snapshot; cross-campaign variation is not attributed to the Base guard.

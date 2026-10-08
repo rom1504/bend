@@ -1,7 +1,7 @@
 # Phase65: immutable Base backend products
 
 Status: **both discriminators passed; annotation candidate State08 passed its
-checked build. Focused activation controls and clean speed screening are next.
+checked build, owned-driver semantic controls and first clean B1 screen.
 No compiler change selected for release.**
 The input is installed Phase64 State09, baseline checkout `49431ba`, with genuine
 B2 image `b09fe54ad58d105d1c77ccb399f4076660d6109cf2a7f4b21e13933b89c22c2e`.
@@ -227,7 +227,8 @@ The [source patch](../../selfhost/tools/performance/phase65/base-products/annota
 adds one module, `src/check/base-products.bend`, and its manifest entry. Source
 review passed and `git apply --check` passed. Root's State08 integration of this
 source with host v2 passed 36 strict checked controls in 56.57 seconds, with
-320 frozen inputs reverified. Focused product activation controls remain pending.
+320 frozen inputs reverified. Focused product activation controls subsequently
+passed as described below.
 The patch and its [metadata](../../selfhost/tools/performance/phase65/base-products/annotation-source-v1.json)
 are frozen. Selected prepared world v3 is unchanged; the rejected constructor
 index experiment is not included.
@@ -288,6 +289,56 @@ explicitly checks the existing derived-image receipt and raw-parent relationship
 records execution arguments and failed ordinary observations, and retains all
 semantic and IO assertions. No old evidence or compiler source was changed.
 
+The corrected [owned-control run](evidence/base-annotation-owned-state08.json)
+passed in **9.334 seconds**. All three complete owned ordinary/cached/public
+observations match, as do the qualified modules. Map consumes the sidecar once,
+returns seven exact decoded cached definition objects, and compares 101,907
+distinct object pairs against ordinary annotation. Both Numeric and Lexer skip
+admission and product-body reading. Every explicit stop, unready, loader-error
+and collision-refusal control passes. The sidecar and all pinned inputs remain
+unchanged. These are checked B1 controls; genuine B2 needs its own image lineage
+binding and execution before release selection.
+
+The genuine B2 successor,
+[`annotation-controls-v3.mjs`](../../selfhost/tools/performance/phase65/base-products/annotation-controls-v3.mjs),
+retains those semantic assertions and verifies the completed selected-image
+emission, checked generator, source, runtime, tiny split/ordinary equality,
+eight driver observations and source-backed export admission. Its
+[State09 input](../../selfhost/tools/performance/phase65/base-products/annotation-controls-state09-b2-input-v3.json)
+binds the combined H2 driver and H6 helper. The 99 requested roots must be
+callable; the generated library also exports reachable internal functions, so
+99 is not an assertion about the total exported-property count. This successor
+has not supplied timing evidence.
+
+The [actual State09 B2 run](evidence/base-annotation-owned-state09-b2.json)
+passed in **8.615 seconds**, preserving all three complete observations and
+module oracles, seven Map object reuses, lazy misses and refusal controls. This
+qualifies the consumer against the genuine image, rather than inferring B2
+behavior from the B1 screen.
+
+## Custom Base preparation permission
+
+Final review identified a separate demand obligation: a checked, closed,
+`@unsafe` custom Base is not evidence that annotating all its unselected
+definitions terminates. Ready-world ownership establishes lookup stability; it
+does not grant permission to evaluate arbitrary previously unselected bodies.
+No deliberately divergent source was executed to investigate this gap.
+
+State10's host v3 restricts both optional product preparation and reading to the
+exact pinned Base content SHA256
+`c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661`.
+The content check precedes every optional producer or consumer demand. Different
+Base content follows ordinary annotation, even if its parsed world is ready.
+The Bend source and prepared-world schema are unchanged.
+
+The separate
+[`custom-base-controls-v1.mjs`](../../selfhost/tools/performance/phase65/base-products/custom-base-controls-v1.mjs)
+uses a private standard Base copy with one inert comment appended. It requires
+a ready world after both initial and repeated explicit preparation, zero
+annotation-product producer calls, no product artifact, and an owned Map
+compilation with the exact qualified module. It exercises the fallback without
+running a divergent example. Execution against final State10 remains pending.
+
 ## First clean B1 screen
 
 The [balanced two-source screen](evidence/state08-b1-screen.json) completed
@@ -307,3 +358,12 @@ a small-source regression. The equal-source geometric mean improves 1.17% for
 compilation and 1.45% for imports plus first compilation. This is a useful
 Map-specific signal for genuine B2 qualification, not broad parity evidence or
 a reason to multiply gains from independent candidate screens.
+
+The [incremental actual B2 ablation](evidence/base-annotations-incremental-b2.json)
+then held the State09 B2 image and H6 transport fixed while toggling only product
+presence. Twelve fresh-process workers gave Map **985.54 → 934.95 ms** (−5.13%),
+map-churn **639.99 → 619.85 ms** (−3.15%), and Numeric **191.32 → 190.43 ms**
+(−0.46%, within noise). Both hit cases improved in both rounds; the three-source
+compilation geometric mean improved **2.93%**. This isolates a useful additional
+H2 gain after H6. It does not estimate the broad combined improvement, which
+requires its own complete campaign.

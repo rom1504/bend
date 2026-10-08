@@ -1,0 +1,48 @@
+{
+  "kind": "phase65-final-qualification-join-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/join-final-qualification-v2.py",
+    "sha256": "eca185922ec10d78f2a28e4dfbb7709d08528f936a621c1484fb0e437ca29088"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/join-final-qualification-v3.py",
+    "sha256": "fb7ca763a178908539ac30db59e33c1546c6b30e4f00ed4f58b43b073ccfb008"
+  },
+  "edits": [
+    {
+      "old": "    parser.add_argument('--arena-report', type=Path, default=RAW/'final-state10-host/report.json')",
+      "new": "    parser.add_argument('--custom-base-report', type=Path, required=True, help='Actual selected B2 custom Base no-demand controls')\n    parser.add_argument('--arena-report', type=Path, default=RAW/'final-state10-host/report.json')",
+      "occurrences": 1
+    },
+    {
+      "old": "required_receipts()+[args.checked_reuse,args.owned_report,args.arena_report,args.host_report,args.domain_report]",
+      "new": "required_receipts()+[args.checked_reuse,args.owned_report,args.custom_base_report,args.arena_report,args.host_report,args.domain_report]",
+      "occurrences": 1
+    },
+    {
+      "old": "    broad_file = RAW/'state10-b2-latency/broad/report.json'; broad = passed(broad_file)",
+      "new": "    custom_file = args.custom_base_report; custom = passed(custom_file)\n    assert custom['kind'] == 'phase65-base-annotation-custom-base-owned-controls'\n    assert custom['inputsUnchanged'] and custom['optionalArtifactAbsent']\n    assert custom['generation'] == generation\n    assert pin(custom['config'])['sha256'] == pin(owned['config'])['sha256']\n    assert custom['customBase']['change'] == 'append one inert comment'\n    assert custom['customBase']['otherwiseReadyWorld'] and custom['customBase']['preparedTwice']\n    original_base = pin(custom['customBase']['original']); custom_base = pin(custom['customBase']['derived'])\n    assert original_base['sha256'] == attempt['base']['sha256']\n    assert custom_base['sha256'] != original_base['sha256']\n    assert Path(custom_base['file']).read_bytes() == Path(original_base['file']).read_bytes() + b'\\n# Phase65 custom Base content permission control.\\n'\n    assert custom['counts'] == dict(base_annotation_prepare=0,base_annotation_wanted=0,\n        base_annotation_allowed=0,annotate_selected_base=0,check_program_diagnostic_world=1,book_context_world=1)\n    assert custom['observation']['status'] == 'ok' and custom['observation']['checked']\n    assert custom['output']['qualifiedModuleExact']\n    assert custom['output']['sha256'] == hit['output']['sha256']\n    assert custom['output']['bytes'] == hit['output']['bytes']\n    gate('genuineB2CustomBaseFallback', custom_file, preparedTwice=True, readyWorld=True,\n         optionalProducerAndConsumerUndemanded=True, noOptionalArtifact=True, completeMapModuleEquality=True)\n\n    broad_file = RAW/'state10-b2-latency/broad/report.json'; broad = passed(broad_file)",
+      "occurrences": 1
+    },
+    {
+      "old": "def required_receipts():",
+      "new": "def install_checked_relocations(changed):\n    \"\"\"Retain exact historical host identities; never accept another mismatch.\"\"\"\n    global pin\n    original_pin = parent.pin\n    assert {x['relative'] for x in changed} == {'tools/typed-driver.mjs','tools/base-cache-graph.mjs'}\n    mappings = {}\n    for row in changed:\n        retained = original_pin(row['old']); selected = original_pin(row['new'])\n        logical = str((ROOT/'selfhost'/row['relative']).resolve(strict=True))\n        current = original_pin(logical)\n        assert current['sha256'] == selected['sha256'] and retained['sha256'] != current['sha256']\n        mappings[(logical,retained['sha256'])] = dict(logicalPath=logical,retained=retained,current=current,selected=selected,uses=0)\n    def relocated(value):\n        if isinstance(value,dict) and value.get('sha256'):\n            logical = str(Path(value.get('file') or value.get('path')).resolve(strict=True))\n            match = mappings.get((logical,value['sha256']))\n            if match is not None:\n                if 'canonicalPath' in value: assert value['canonicalPath'] == logical\n                if 'bytes' in value: assert value['bytes'] == match['retained']['bytes']\n                assert original_pin(logical) == match['current']\n                retained = original_pin(match['retained']); match['uses'] += 1\n                return retained\n        return original_pin(value)\n    parent.pin = pin = relocated\n    return list(mappings.values())\n\n\ndef required_receipts():",
+      "occurrences": 1
+    },
+    {
+      "old": "    CHECKED = Path(reuse['checkedOutput'])",
+      "new": "    assert pin(reuse['producer']) == pin(dict(file=str(ROOT/'selfhost/tools/performance/phase65/controls/join-checked-reuse-v2.py'),\n        sha256='4b444805aa4a9be099e5c513db86c4916b6f7dddec67ff1af30dcf026d717409'))\n    changed_hosts = reuse['frozenSources']['changed']\n    for row in changed_hosts:\n        assert pin(row['old']) == pin(Path(old_attempt['snapshot']['root'])/row['relative'])\n        assert pin(row['new']) == pin(Path(attempt['snapshot']['root'])/row['relative'])\n    relocations = install_checked_relocations(changed_hosts)\n    assert [{k:v for k,v in row.items() if k != 'uses'} for row in relocations] == [\n        {k:v for k,v in row.items() if k != 'uses'} for row in reuse['historicalInputRelocations']]\n    CHECKED = Path(reuse['checkedOutput'])",
+      "occurrences": 1
+    },
+    {
+      "old": "        source=image['source'], gates=gates, checkedSemantics=checked_semantics, b2Semantics=b2_semantics,",
+      "new": "        source=image['source'], gates=gates, checkedSemantics=checked_semantics, b2Semantics=b2_semantics,\n        historicalInputRelocations=relocations,",
+      "occurrences": 1
+    }
+  ],
+  "scope": "Unconsumed successor adds actual selected B2 custom Base demand-permission gate and reuses exact reviewed historical host relocation semantics from pinned checked-reuse-v2. No compiler or target execution.",
+  "relocationProducer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/join-checked-reuse-v2.py",
+    "sha256": "4b444805aa4a9be099e5c513db86c4916b6f7dddec67ff1af30dcf026d717409"
+  }
+}

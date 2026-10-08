@@ -1,0 +1,82 @@
+{
+  "kind": "phase65-final-qualification-join-derivation",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/join-final-qualification-v2.py",
+    "sha256": "ebf2a9463d5e753ce0f12b50505c89bfedb8f7f61d9e87e61178375018c10be3"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/join-final-qualification.py",
+    "sha256": "e3a73d19d1314724e4c46190c1a71d43262a82b22d7b8747c1b1dbe62d96bd49"
+  },
+  "edits": [
+    {
+      "old": "phase64",
+      "new": "phase65",
+      "occurrences": 5
+    },
+    {
+      "old": "Phase64",
+      "new": "Phase65",
+      "occurrences": 1
+    },
+    {
+      "old": "def historical_context(path, selected_snapshot):\n    \"\"\"Resolve one recorded State08 workflow identity to its exact retained snapshot.\"\"\"\n    record = read(path)\n    assert record['complete'] and record['pass'] and not record.get('changedInputs') and not record.get('error')\n    old_attempt_file = RAW/'checked-state08/attempt.json'\n    old_attempt = read(old_attempt_file)\n    logical = str(ROOT/'selfhost/tools/development/workflow.mjs')\n    expected_sha = '54d4e745908cfd6119e8c548927c78f8380a4b0c5704c9d65b5b24a12b8a36a1'\n    retained = Path(old_attempt['snapshot']['root'])/'tools/development/workflow.mjs'\n    source = next(x for x in old_attempt['snapshot']['sources'] if x['original']['file'] == logical)\n    assert source['original']['sha256'] == source['frozen']['sha256'] == expected_sha\n    assert Path(source['frozen']['file']) == retained\n    retained_pin = pin(source['frozen'])\n    current = pin(logical)\n    assert current['sha256'] == pin(selected_snapshot/'tools/development/workflow.mjs')['sha256']\n    relocations = []\n    for item in record['inputs']:\n        if not isinstance(item, dict) or not item.get('sha256') or not (item.get('file') or item.get('path')):\n            continue\n        if item.get('file') == logical and item['sha256'] == expected_sha:\n            assert item['bytes'] == retained_pin['bytes']\n            relocations.append(dict(logical=item, retained=retained_pin, current=current, snapshotAttempt=pin(old_attempt_file),\n                reason='State08 control recorded the pre-frame4 workflow; exact frozen bytes remain in its checked snapshot.'))\n        else:\n            pin(item)\n    assert len(relocations) == 1\n    return record, relocations\n\n\n",
+      "new": "",
+      "occurrences": 1
+    },
+    {
+      "old": "             RAW/'context-state08/report.json', RAW/'arena-host-state09/report.json',\n             RAW/'arena-domain02/report.json', RAW/'arena-migration-state09/report.json',",
+      "new": "             RAW/'frame4-static-tags01/execution/controls.json',\n             RAW/'base-annotations-host-state08-01/report.json',",
+      "occurrences": 1
+    },
+    {
+      "old": "    parser.add_argument('--plan-only'",
+      "new": "    parser.add_argument('--owned-report', type=Path, required=True, help='Selected genuine-B2 owned annotation controller report')\n    parser.add_argument('--arena-report', type=Path, default=RAW/'final-state09-host/report.json')\n    parser.add_argument('--plan-only'",
+      "occurrences": 1
+    },
+    {
+      "old": "receipts=[dict(file=str(p), present=p.is_file()) for p in required_receipts()]",
+      "new": "receipts=[dict(file=str(p), present=p.is_file()) for p in required_receipts()+[args.owned_report,args.arena_report]]",
+      "occurrences": 1
+    },
+    {
+      "old": "assert rebuilt.count(change['old']) == 1",
+      "new": "assert rebuilt.count(change['old']) == change['occurrences']",
+      "occurrences": 1
+    },
+    {
+      "old": "== 95\n    assert exports['api']",
+      "new": "== 99\n    assert exports['api']",
+      "occurrences": 1
+    },
+    {
+      "old": "gate('export95', export_file, roots=95)",
+      "new": "gate('export99', export_file, roots=99)",
+      "occurrences": 1
+    },
+    {
+      "old": "    context_file = RAW/'context-state08/report.json'\n    context, historical_relocations = historical_context(context_file, Path(attempt['snapshot']['root']))\n    assert context['roles']['candidate']['api']['sha256'] == attempt['api']['sha256']\n    assert len(context['todoControls']) == 9 and all(x['pass'] for x in context['todoControls'])\n    assert context['contextControls'] and all(x['pass'] for x in context['contextControls'])\n    assert any(x['optimized'] and x['syntheticDefinitions'] for x in context['contextControls'])\n    assert any(not x['optimized'] for x in context['contextControls'])\n    gate('exactCheckedContext', context_file, sameSelectedApi=True, contexts=len(context['contextControls']), todoCases=9)\n    snapshot = Path(attempt['snapshot']['root'])\n    arena_file = RAW/'arena-host-state09/report.json'; arena = read(arena_file)\n    assert arena['pass'] and len(arena['controls']) == 79 and all(x['pass'] for x in arena['controls'])\n    for key in ['driver', 'helper', 'controller', 'derivation', 'instrumented', 'cache', 'base']: pin(arena[key])\n    assert arena['driver']['sha256'] == pin(snapshot/'tools/typed-driver.mjs')['sha256']\n    assert arena['helper']['sha256'] == pin(snapshot/'tools/base-cache-graph.mjs')['sha256']\n    gate('arenaHostRollout', arena_file, controls=len(arena['controls']))\n    domain_file = RAW/'arena-domain02/report.json'; domain = read(domain_file); audit(domain)\n    assert domain['pass'] and len(domain['controls']) == 87 and all(x['pass'] for x in domain['controls'])\n    assert any(x['sha256'] == arena['helper']['sha256'] for x in domain['inputs'])\n    gate('arenaDomain', domain_file, controls=87)\n    migration_file = RAW/'arena-migration-state09/report.json'; migration = passed(migration_file)\n    assert migration['attempt']['sha256'] == pin(attempt_file)['sha256']\n    assert [x['label'] for x in migration['steps']] == ['compile-legacy-frame3', 'explicit-prepare-upgrades', 'compile-arena-frame4', 'selected-frame4-idempotent-prepare']\n    assert all(x['pass'] for x in migration['steps'])\n    before, upgrade, after, reuse = migration['steps']\n    assert before['outputSha256'] == after['outputSha256'] == pin(migration['program'])['sha256']\n    assert before['queries'] == after['queries'] == dict(world=1, context=1, prepareWorld=0, prepareState=0, checkBase=0)\n    assert upgrade['queries'] == dict(world=0, context=0, prepareWorld=1, prepareState=0, checkBase=0)\n    assert all(n == 0 for n in reuse['queries'].values()); pin(upgrade['frame3']); pin(upgrade['frame4'])\n    for pair in migration['copies']: pin(pair['before']); pin(pair['after'])\n    gate('actualPreparationMigration', migration_file, steps=4, ownedContext=True, completeModuleEquality=True)\n\n",
+      "new": "    # Same schema, new transport readers: retain raw domain and actual host gates.\n    snapshot = Path(attempt['snapshot']['root'])\n    arena_file = args.arena_report; arena = read(arena_file)\n    assert arena['pass'] and len(arena['controls']) == 79 and all(x['pass'] for x in arena['controls'])\n    for key in ['driver', 'helper', 'controller', 'derivation', 'instrumented', 'cache', 'base']: pin(arena[key])\n    assert arena['driver']['sha256'] == pin(snapshot/'tools/typed-driver.mjs')['sha256']\n    assert arena['helper']['sha256'] == pin(snapshot/'tools/base-cache-graph.mjs')['sha256']\n    gate('arenaHostAdmission', arena_file, controls=79)\n    domain_file = RAW/'frame4-static-tags01/execution/controls.json'; domain = read(domain_file); audit(domain)\n    assert domain['pass'] and len(domain['controls']) == 87 and all(x['pass'] for x in domain['controls'])\n    assert any(x['sha256'] == arena['helper']['sha256'] for x in domain['inputs'])\n    gate('arenaDomain', domain_file, controls=87)\n    host_file = RAW/'base-annotations-host-state08-01/report.json'; host = passed(host_file)\n    assert host['count'] == len(host['controls']) == 56 and all(x['pass'] for x in host['controls'])\n    assert pin(host['driver'])['sha256'] == arena['driver']['sha256']\n    gate('annotationSidecarHost', host_file, controls=56,\n         scope='Exact selected driver; H6 reader composition also requires arena87, actual host79 and selected B2 owned controls.')\n    owned_file = args.owned_report; owned = passed(owned_file)\n    assert owned['inputsUnchanged'] and owned['generation']['kind'] == 'genuine-B2'\n    generation = owned['generation']\n    assert pin(generation['imagePins'])['sha256'] == pin(index['bootstrapReuse']['imagePins'])['sha256']\n    assert generation['b2']['sha256'] == image['b2']['sha256']\n    assert generation['b1']['sha256'] == attempt['api']['sha256']\n    assert generation['attempt']['sha256'] == pin(attempt_file)['sha256']\n    assert generation['source']['sha256'] == image['source']['sha256']\n    assert generation['roots'] == exports['roots']\n    assert pin(generation['helper'])['sha256'] == arena['helper']['sha256']\n    config_owned = read(owned['config']); audit(dict(inputs=config_owned['provenance']))\n    for key in ['api','driver','runtime','base','node']: pin(config_owned['image'][key])\n    assert config_owned['image']['api']['sha256'] == image['b2']['sha256']\n    assert config_owned['image']['driver']['sha256'] == arena['driver']['sha256']\n    assert len(owned['preparation']['keys']) == 12 and owned['preparation']['producerReady']\n    pin(owned['preparation']['sidecar'])\n    rows = {row['id']:row for row in owned['cases']}\n    assert len(rows) == len(owned['cases']) == 3\n    assert set(rows) == {'lexer','test-map-set-ops','numeric-recurrence'}\n    for row in rows.values():\n        assert row['pass'] and row['cached']['world'] == row['cached']['context'] == 1\n        assert row['ordinary']['consumer'] == row['ordinary']['productReads'] == 0\n        assert row['publicInjected']['world'] == row['publicInjected']['consumer'] == row['publicInjected']['productReads'] == 0\n        case = next(x for x in config_owned['sources'] if x['id'] == row['id'])\n        assert pin(case['expectedOutput'])['sha256'] == row['output']['sha256']\n        assert pin(case)['sha256'] == pin(row['source'])['sha256']\n    hit = rows['test-map-set-ops']; live = hit['cached']\n    assert live['consumer'] == live['allowed'] == 1 and live['actualAllowed'] and live['annotationExact']\n    assert live['annotationReused'] == 7 and live['annotationComparedPairs'] > 0 and live['productReads'] > 0\n    assert hit['privateGuards'] == dict(stopFirstExact=True,stoppedObjectPreserved=True,stoppedWantedFalse=True,\n        actualAllowed=True,unreadyDeclined=True,loaderErrorDeclined=True,fullHashCollisionDeclined=True)\n    for name in ['lexer','numeric-recurrence']:\n        miss = rows[name]['cached']; assert miss['actualWanted'] is False\n        assert miss['consumer'] == miss['allowed'] == miss['productReads'] == 0\n    gate('genuineB2OwnedAnnotations', owned_file, sources=3, producerKeys=12, actualReusedDefinitions=7,\n         requestedRoots=99, actualExports=owned['actualExportCount'], completeAnnotationAndModuleEquality=True)\n\n",
+      "occurrences": 1
+    },
+    {
+      "old": "        preparations[role] = (pin(row['result']), prepared)",
+      "new": "        if role != 'typescript':\n            products = prepared['verification']['baseProducts']\n            directory = Path(products['directory'])\n            assert directory.exists() == products['exists']\n            if role == 'candidate':\n                assert products['supported'] and products['declared'] and products['exists']\n                assert len(products['files']) == 1\n                product = pin(products['files'][0]); raw = Path(product['file']).read_bytes()\n                assert sorted(str(x.resolve()) for x in directory.iterdir()) == [product['file']]\n                cut = 4 + int.from_bytes(raw[:4], 'little'); header = json.loads(raw[4:cut]); body = raw[cut:]\n                for key, value in products['headerBinding'].items(): assert header[key] == value\n                assert header['compilerSha256'] == image['b2']['sha256'] and header['baseSha256'] == attempt['base']['sha256']\n                assert header['productBytes'] == len(body) and header['productSha256'] == hashlib.sha256(body).hexdigest()\n                cache = prepared['verification']['cacheFiles']; assert len(cache) == 1\n                frame = Path(pin(cache[0])['file']).read_bytes(); frame_header = json.loads(frame[:frame.index(b'\\n')])\n                for key in ['bookGraphSha256','preparedGraphSha256','sourcePath','termAbi','spanAbi','sourceBegin','sourceEnd']:\n                    assert header[key] == frame_header[key]\n            else:\n                assert not products['supported'] and not products['declared'] and not products['exists']\n                assert products['files'] == [] and products['headerBinding'] is None\n        preparations[role] = (pin(row['result']), prepared)",
+      "occurrences": 1
+    },
+    {
+      "old": "        if role != 'typescript': assert observation['image'] == prepared['image']",
+      "new": "        if role != 'typescript':\n            assert observation['image'] == prepared['image']\n            assert observation['baseProducts'] == prepared['verification']['baseProducts']",
+      "occurrences": 1
+    },
+    {
+      "old": "        historicalRelocations=historical_relocations, performance=summary['aggregate'],",
+      "new": "        performance=summary['aggregate'],",
+      "occurrences": 1
+    }
+  ],
+  "scope": "Exact Phase64 v2 join successor: selected99 roots, new H6 domain and host plus H2 host/actual B2 owned gates replace Phase64 context/migration gates, products-aware broad bindings added. All inherited finite semantic/fixed-point/trust/refusal/full-byte and207 Cartesian worker assertions retained. No target or release admission."
+}

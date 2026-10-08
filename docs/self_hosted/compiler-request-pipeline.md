@@ -1,7 +1,33 @@
 # Compiler requests: prepared state and structured emission
 
 **Phase64 State09 is installed and verified.**
-Its balanced genuine-B2 campaign passes **207 exact-output workers across 23
+
+**Phase65 State10 is selected for integration; qualification is in progress.**
+Its static host decoder transports the same eagerly validated frame4 values.
+Its optional Base annotation artifact is produced, selected and admitted by Bend;
+only a wanted/admitted request loads the heavy product graph. Public fallback,
+current stops and exact source/API/parent-graph identity remain authoritative.
+State10 gates both product preparation and sidecar reads on exact qualified Base
+content; custom or updated Base uses ordinary annotation until qualified.
+See the [artifact contract](prepared-base-artifacts.md#phase65-selected-integration-candidate)
+and [Phase65 report](../../implementation/phase65/README.md).
+
+The final [State10 broad comparison](../../implementation/phase65/evidence/state10-b2-broad.json)
+passes **207 exact-output checks across 23 sources and three balanced rounds**.
+Compilation alone improves **1.41737× → 1.28945× TS (9.025% less time)**; imports
+plus compilation improve **1.04969× → 0.969256× (7.662% less time)**, using the
+baseline measured in that same campaign. All 23 sources improve; 21 have
+nonoverlapping baseline/candidate sample ranges. Four compile faster than TS,
+ten are faster including imports. These are genuine-B2 fresh prepared-cache
+requests, with preparation and output verification outside timing. Compilation-
+only parity still requires about **22.45% less time**; no generated-program speed
+gain is claimed. H2's incremental benefit over H6 alone remains under measurement.
+Release qualification and installation remain pending.
+
+## Installed Phase64 results
+
+The completed Phase64 metrics and qualification below retain their original
+campaign and installed image. Its balanced genuine-B2 campaign passes **207 exact-output workers across 23
 sources, three roles and three rotated rounds**. Compared with Phase63 State09
 in the same campaign, equal-source geometric means improve **1.64387× → 1.43894×
 TypeScript for compilation alone** (12.47% less time), and **1.18920× → 1.06173×

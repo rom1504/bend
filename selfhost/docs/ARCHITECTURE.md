@@ -7,6 +7,44 @@
 current source, cached facts, lowering plan, self-reproduction and image roles.
 The sections below retain their dated architectural evidence.
 
+## Phase65 selected integration candidate
+
+Phase65 State10 is selected but not yet installed; final qualification is in
+progress. It adds two bounded mechanisms to the current request pipeline, with
+no new backend representation or TypeScript fallback:
+
+- The JavaScript frame4 decoder uses twelve static tag readers while preserving
+  its schema, eager validation, object field order and complete materialization.
+  This is host transport of Bend values, not a compiler algorithm in JavaScript.
+- A separate optional artifact retains expensive checked Base annotations. Bend
+  produces them from the actual prepared world, decides whether the selected
+  request wants them, verifies current prefix eligibility and consumes admitted
+  products. Public ordinary annotation and unsupported requests retain their
+  existing behavior; current stops take priority over cached products.
+
+Before optional product preparation or any sidecar read, State10 requires the
+exact qualified Base content hash. Changed/custom Base and future Base updates
+use ordinary annotation until independently qualified. The host also validates
+the ordinary Base frame and exact owned request route. It reads the optional
+product's small header/key graph before asking Bend whether
+any selected definition qualifies. Only a wanted, admitted hit reads and fully
+validates the heavy product graph. Missing, stale or malformed optional data
+selects ordinary annotation; it cannot weaken mandatory Base validation. World3
+and the ordinary KDef/KTerm schema remain unchanged. Deferred product loading is
+separate from lazy node decoding: every loaded arena is still validated and
+materialized eagerly.
+
+The [prepared-artifact guide](../../docs/self_hosted/prepared-base-artifacts.md#phase65-selected-integration-candidate)
+documents producer/API identities, graph-parent binding and fallback. The
+[Phase65 report](../../implementation/phase65/README.md) records exact tests and
+measurements. The final [State10 broad comparison](../../implementation/phase65/evidence/state10-b2-broad.json)
+passes 207 exact-output checks and measures compilation **1.41737× → 1.28945× TS**
+(9.025% less time against the same-campaign baseline). All 23 sources improve.
+Imports plus compilation reach 0.969256× TS; compilation alone remains above
+parity and needs about 22.45% further reduction. Release qualification remains
+pending, as does the attribution of H2's incremental benefit over H6 alone.
+
+
 **Historical Phase55 overview:** Phase55 host02 was installed and verified. Direct JavaScript
 is the default for emitted programs, libraries and compiled runs; explicit legacy
 JavaScript and native targets remain available. The shared helper boundaries and

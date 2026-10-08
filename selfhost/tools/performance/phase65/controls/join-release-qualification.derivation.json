@@ -1,0 +1,39 @@
+{
+  "kind": "phase65-release-join-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase64/controls/join-release-qualification.py",
+    "sha256": "6d878908a3d840ddd22d172c859bc7ac722b3f0bdc7c62bc325cce71053289c2"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/join-release-qualification.py",
+    "sha256": "e84177914998524539ff777ae617444af389f051c61f406c828b17a24650c70b"
+  },
+  "edits": [
+    {
+      "old": "phase64",
+      "new": "phase65",
+      "occurrences": 2
+    },
+    {
+      "old": "Phase64",
+      "new": "Phase65",
+      "occurrences": 1
+    },
+    {
+      "old": "state09",
+      "new": "state10",
+      "occurrences": 8
+    },
+    {
+      "old": "State09",
+      "new": "State10",
+      "occurrences": 3
+    },
+    {
+      "old": "assert rebuilt.count(change['old']) == 1",
+      "new": "assert rebuilt.count(change['old']) == change['occurrences']",
+      "occurrences": 1
+    }
+  ],
+  "scope": "Exact State10 Phase65 path/kind successor of retained Phase64 release join. Same installed7, prior7, inherited110, legacy42/default24 and helper5 gates. No target run or passing claim until all release receipts close."
+}

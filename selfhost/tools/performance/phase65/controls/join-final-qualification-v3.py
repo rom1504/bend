@@ -1,0 +1,426 @@
+#!/usr/bin/env python3
+"""Join completed Phase65 compiler gates, without running targets or authorizing release."""
+import argparse
+import hashlib
+import importlib.util
+import json
+import sys
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+ROOT = Path(__file__).resolve().parents[5]
+RAW = ROOT / 'selfhost/build/phase65'
+FINAL = RAW / 'final-state10'
+PLANS = RAW / 'final-state10-plans'
+CHECKED_ORIGIN = RAW / 'final-state09'
+PARENT = ROOT / 'selfhost/tools/performance/phase63/latency/join-final.py'
+PARENT_SHA = 'fea5078e72aa4c3626366590f3584f16c846b3776fbd1e7125aad784e9598602'
+assert hashlib.sha256(PARENT.read_bytes()).hexdigest() == PARENT_SHA
+spec = importlib.util.spec_from_file_location('phase63_receipt_readers', PARENT)
+parent = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(parent)
+pin, read, passed, audit, execution = parent.pin, parent.read, parent.passed, parent.audit, parent.execution
+
+
+def install_checked_relocations(changed):
+    """Retain exact historical host identities; never accept another mismatch."""
+    global pin
+    original_pin = parent.pin
+    assert {x['relative'] for x in changed} == {'tools/typed-driver.mjs','tools/base-cache-graph.mjs'}
+    mappings = {}
+    for row in changed:
+        retained = original_pin(row['old']); selected = original_pin(row['new'])
+        logical = str((ROOT/'selfhost'/row['relative']).resolve(strict=True))
+        current = original_pin(logical)
+        assert current['sha256'] == selected['sha256'] and retained['sha256'] != current['sha256']
+        mappings[(logical,retained['sha256'])] = dict(logicalPath=logical,retained=retained,current=current,selected=selected,uses=0)
+    def relocated(value):
+        if isinstance(value,dict) and value.get('sha256'):
+            logical = str(Path(value.get('file') or value.get('path')).resolve(strict=True))
+            match = mappings.get((logical,value['sha256']))
+            if match is not None:
+                if 'canonicalPath' in value: assert value['canonicalPath'] == logical
+                if 'bytes' in value: assert value['bytes'] == match['retained']['bytes']
+                assert original_pin(logical) == match['current']
+                retained = original_pin(match['retained']); match['uses'] += 1
+                return retained
+        return original_pin(value)
+    parent.pin = pin = relocated
+    return list(mappings.values())
+
+
+def required_receipts():
+    paths = [RAW/'checked-state10/attempt.json', RAW/'checked-state10/validation-001/report.json',
+             RAW/'export-reference-state10/api-validation.json', PLANS/'index.json',
+             PLANS/'reused-bootstrap-image-pins.json', RAW/'bootstrap-state10/image-pins.json',
+
+             RAW/'state10-b2-latency/broad/report.json',
+             ROOT/'implementation/phase65/evidence/state10-b2-broad.json']
+    paths += [FINAL/f'{name}-stage-execution/report.json' for name in ['bootstrap', 'b2']]
+    paths += [FINAL/x/'report.json' for x in ['self-check', 'fixed-point',
+              'b2-semantics-execution', 'b2-program-equality']]
+    paths += [CHECKED_ORIGIN/'checked'/x/'report.json' for x in ['maintained8','direct-census','native3','program45-smoke']]
+    paths += [(CHECKED_ORIGIN/'checked' if lane == 'checked' else FINAL/lane)/(group+'-controls')/'report.json'
+              for lane in ['checked', 'b2-semantics']
+              for group in ['composition', 'overapplication', 'source', 'numeric']]
+    return paths
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--checked-reuse', type=Path, required=True)
+    parser.add_argument('--host-report', type=Path, required=True)
+    parser.add_argument('--domain-report', type=Path, required=True)
+    parser.add_argument('--owned-report', type=Path, required=True, help='Selected genuine-B2 owned annotation controller report')
+    parser.add_argument('--custom-base-report', type=Path, required=True, help='Actual selected B2 custom Base no-demand controls')
+    parser.add_argument('--arena-report', type=Path, default=RAW/'final-state10-host/report.json')
+    parser.add_argument('--plan-only', action='store_true', help='Record pending paths only; never mark qualification passing.')
+    args = parser.parse_args()
+    assert not args.out.exists()
+    pin(__file__); pin(PARENT)
+    derivation_file = Path(__file__).with_suffix('.derivation.json')
+    derivation = read(derivation_file)
+    assert pin(derivation['output'])['file'] == str(Path(__file__).resolve())
+    rebuilt = Path(pin(derivation['parent'])['file']).read_text()
+    for change in derivation['edits']:
+        assert rebuilt.count(change['old']) == change['occurrences']
+        rebuilt = rebuilt.replace(change['old'], change['new'])
+    assert rebuilt == Path(__file__).read_text()
+    if args.plan_only:
+        result = dict(kind='phase65-final-qualification-pending-plan', complete=False, pass_=False,
+                      status='pending-targets', dataOnly=True, targetExecuted=False,
+                      producer=pin(__file__), inheritedReceiptReaders=pin(PARENT), successorDerivation=pin(derivation_file),
+                      receipts=[dict(file=str(p), present=p.is_file()) for p in required_receipts()+[args.checked_reuse,args.owned_report,args.custom_base_report,args.arena_report,args.host_report,args.domain_report]],
+                      scope='Presence is not validation. No gate, installation or promotion is asserted.')
+        write(args.out, result)
+        return
+
+    gates = {}
+    def gate(name, path, **facts):
+        gates[name] = dict(report=pin(path), **facts)
+
+    attempt_file = RAW/'checked-state10/attempt.json'
+    attempt = read(attempt_file)
+    assert attempt['checked'] and attempt['config']['strictExact'] and attempt['artifactKind'] == 'derived-b1'
+    for key in ['api', 'checkedApi', 'runtime', 'base', 'bootstrapReport', 'derivationReport', 'node']:
+        pin(attempt[key])
+    for item in attempt['artifacts']: pin(item)
+    for item in attempt['snapshot']['sources']: pin(item['frozen'])
+    reuse = passed(args.checked_reuse)
+    assert reuse['kind'] == 'phase65-checked-gates-reuse'
+    assert pin(reuse['newAttempt'])['sha256'] == pin(attempt_file)['sha256']
+    old_attempt = read(reuse['oldAttempt'])
+    for key in ['api','checkedApi','runtime','base','node']:
+        assert pin(old_attempt[key])['sha256'] == pin(attempt[key])['sha256']
+    assert pin(reuse['producer']) == pin(dict(file=str(ROOT/'selfhost/tools/performance/phase65/controls/join-checked-reuse-v2.py'),
+        sha256='4b444805aa4a9be099e5c513db86c4916b6f7dddec67ff1af30dcf026d717409'))
+    changed_hosts = reuse['frozenSources']['changed']
+    for row in changed_hosts:
+        assert pin(row['old']) == pin(Path(old_attempt['snapshot']['root'])/row['relative'])
+        assert pin(row['new']) == pin(Path(attempt['snapshot']['root'])/row['relative'])
+    relocations = install_checked_relocations(changed_hosts)
+    assert [{k:v for k,v in row.items() if k != 'uses'} for row in relocations] == [
+        {k:v for k,v in row.items() if k != 'uses'} for row in reuse['historicalInputRelocations']]
+    CHECKED = Path(reuse['checkedOutput'])
+    assert CHECKED == CHECKED_ORIGIN/'checked'
+    assert pin(reuse['qualifiedManifest'])['file'] == str(CHECKED/'program45/manifest.json')
+    coverage = reuse['executionCoverage']
+    assert coverage['successfulPrefixCount'] == 11 and coverage['successfulSuffixCount'] == 3 and coverage['commandCount'] == 14
+    assert coverage['failedCommand'] == dict(index=11,name='program45-acquisition',returncode=2)
+    gate('checkedState09ReusedForIdenticalCompiler', args.checked_reuse,
+         successfulPrefixCommands=11,successfulResumeCommands=3,originalFailurePreserved=True)
+    bootstrap = read(attempt['bootstrapReport'])
+    assert bootstrap['provenance']['verifiedAfterBuild']
+    assert bootstrap['apiSha256'] == attempt['checkedApi']['sha256']
+    for item in bootstrap['provenance']['inputs']: pin(item)
+    assert pin(bootstrap['source'])['sha256'] == bootstrap['sourceSha256']
+    strict_file = RAW/'checked-state10/validation-001/report.json'
+    strict = passed(strict_file)
+    assert strict['strictExact'] and strict['attempt']['sha256'] == pin(attempt_file)['sha256']
+    assert strict['api']['sha256'] == attempt['api']['sha256']
+    assert strict['selected']['selectedComplete'] and strict['selected']['exactDifferences'] == strict['selected']['discrepancies'] == 0
+    assert all(strict['selected'][role]['statuses']['pass'] == 36 for role in ['candidate', 'reference'])
+    gate('strict36', strict_file, observations=36)
+    export_file = RAW/'export-reference-state10/api-validation.json'
+    exports = passed(export_file)
+    assert len(exports['roots']) == len(set(exports['roots'])) == 99
+    assert exports['api']['sha256'] == attempt['api']['sha256']
+    assert exports['attempt']['sha256'] == pin(attempt_file)['sha256']
+    assert exports['roots'] == bootstrap['exports']
+    gate('export99', export_file, roots=99)
+
+    index = read(PLANS/'index.json'); audit(index)
+    assert index['attempt']['sha256'] == pin(attempt_file)['sha256']
+    assert index['out'] == str(FINAL) and index['executed'] is False
+    stages = {row['name']: row for row in index['stages']}
+    for name, count in [('bootstrap', 1), ('b2', 5)]:
+        record, plan = execution(FINAL/f'{name}-stage-execution/report.json', count)
+        if name == 'b2':
+            assert pin(plan['originalPlan'])['sha256'] == pin(stages[name]['planIdentity'])['sha256']
+            assert pin(plan['reuseReceipt'])['sha256'] == pin(args.checked_reuse)['sha256']
+            original_plan = read(plan['originalPlan']); commands = json.loads(json.dumps(original_plan['commands']))
+            change = plan['reuseManifestEdit']; assert change['commandIndex'] == 4
+            command = commands[4]['command']; pos = change['argumentIndex']
+            assert command[pos] == change['old'] == str(FINAL/'checked/program45/manifest.json')
+            assert change['new'] == pin(reuse['qualifiedManifest'])['file']
+            command[pos] = change['new']; assert commands == plan['commands']
+        else:
+            assert pin(record['plan'])['sha256'] == pin(stages[name]['planIdentity'])['sha256']
+        assert plan['attempt']['sha256'] == pin(attempt_file)['sha256']; audit(plan)
+        gate(name+'Stage', FINAL/f'{name}-stage-execution/report.json', commands=count)
+    assert index['bootstrapReuse']['newEmission'] is False
+    # The explicit reuse receipt proves the preserved failed-prefix + exact suffix coverage.
+
+    def semantics(lane):
+        counts = {}
+        for group, expected, key in [('composition', 18, 'candidatePass'), ('overapplication', 2, 'candidatePass'),
+                                     ('source', 96, 'candidateSourcePass'), ('numeric', 34, 'candidatePass')]:
+            file = (CHECKED if lane == 'checked' else FINAL/lane)/(group+'-controls')/'report.json'
+            record = passed(file)
+            assert record['counts'][key] == record['counts']['total'] == len(record['observations']) == expected
+            assert all(row[key] and row['pass'] for row in record['observations'])
+            counts[group] = dict(report=pin(file), candidate=expected, counts=record['counts'])
+        return counts
+    checked_semantics = semantics('checked')
+    maintained = passed(CHECKED/'maintained8/report.json')
+    assert len(maintained['tests']) == 8 and all(x['pass'] for x in maintained['tests'])
+    assert maintained['api']['sha256'] == attempt['api']['sha256']
+    census = passed(CHECKED/'direct-census/report.json')
+    assert census['semanticAgreement'] == 26 and census['oraclePass'] and census['referenceOraclePass']
+    native = passed(CHECKED/'native3/report.json')
+    assert len(native['rows']) == 3 and all(x['pass'] and x['byteEqual'] for x in native['rows'])
+    smoke = passed(CHECKED/'program45-smoke/report.json', 'passed')
+    assert len(smoke['cases']) == 45 and all(x['passed'] and x['result']['pass'] for x in smoke['cases'])
+    for case in smoke['cases']: pin(case['result']['module'])
+    for name, rel, count in [('maintained8', 'maintained8', 8), ('direct26', 'direct-census', 26),
+                             ('native3', 'native3', 3), ('program45Smoke', 'program45-smoke', 45)]:
+        gate(name, CHECKED/rel/'report.json', observations=count)
+
+    pins_file = PLANS/'reused-bootstrap-image-pins.json'
+    image = read(pins_file)
+    origin = read(index['bootstrapReuse']['imagePins'])
+    assert image == origin, 'Rebound image pins must retain exact selected construction provenance'
+    for key in ['producer', 'plan', 'attempt', 'emission', 'comparison', 'source', 'b1', 'b2', 'runtime', 'rootsReference', 'admission']:
+        pin(image[key])
+    assert image['attempt']['sha256'] == pin(attempt_file)['sha256']
+    assert image['b1']['sha256'] == attempt['api']['sha256']
+    full = passed(image['emission']); tiny = passed(full['qualification']); comparison = passed(image['comparison'])
+    assert tiny['splitEqualsUnsplit'] and tiny['planEqualsCompatibility'] and comparison['observations'] == 8
+    assert image['b2']['sha256'] == full['module']['sha256']
+    assert image['roots'] == full['roots'] == exports['roots']
+    assert image['source']['sha256'] == bootstrap['sourceSha256']
+    gate('genuineBootstrap', pins_file, newEmission=False, driverObservations=8, tinyPlanEqualsSplitAndCompatibility=True)
+    own = passed(FINAL/'self-check/report.json')
+    assert own['image']['sha256'] == image['b2']['sha256']
+    assert own['freshSelfCheck'] and own['freshTypeCheck'] and own['expectedProofTrustFailure']
+    assert own['mathematicalProof'] is False and own['observation']['typeAccepted']
+    assert own['observation']['proofTrust'] == 'failed' and own['observation']['kernelChecked'] is False
+    assert own['observation']['status'] == 'error' and own['observation']['phase'] == 'verdict'
+    assert own['sourceTrustOracle']['definitions'] == own['sourceTrustOracle']['explicitlyUnsafe']
+    assert len(own['observation']['unsafeDefinitions']) == own['sourceTrustOracle']['definitions']
+    assert own['additionalUnsafeDeclarations'] == [] and own['cacheBefore'] == []
+    fixed = passed(FINAL/'fixed-point/report.json')
+    assert fixed['byteEquality'] and fixed['b2']['sha256'] == fixed['b3']['sha256'] == image['b2']['sha256']; pin(fixed['b3'])
+    gate('freshB2OwnSource', FINAL/'self-check/report.json', typeAccepted=True, expectedUnsafeTrustRefusal=True,
+         unsafeDefinitions=own['sourceTrustOracle']['definitions'], mathematicalProof=False)
+    gate('fixedPoint', FINAL/'fixed-point/report.json', exactB2B3Bytes=True)
+    execution(FINAL/'b2-semantics-execution/report.json', 8)
+    b2_semantics = semantics('b2-semantics')
+    equality_file = FINAL/'b2-program-equality/report.json'
+    equality = passed(equality_file)
+    assert equality['programsExecuted'] is False and equality['image']['api']['sha256'] == image['b2']['sha256']
+    assert equality['generator']['api']['sha256'] == attempt['api']['sha256']
+    assert equality['counts'] == dict(freshCheckedSources=23, rawByteEqualModules=23, pointByteEqual=45, uniquePointModules=24, observerModules=1)
+    assert len(equality['emissions']) == 23 and len(equality['points']) == 45
+    for row in equality['emissions'] + equality['points']:
+        assert row['byteEqual'] and pin(row['output'])['sha256'] == pin(row['reference'])['sha256']
+    assert len({row['source']['sha256'] for row in equality['emissions']}) == 23
+    manifest = read(equality['reference'])
+    assert manifest['complete'] and len(manifest['cases']) == 45
+    assert {x['id'] for x in manifest['cases']} == {x['id'] for x in equality['points']}
+    gate('b2RawProgramEquality', equality_file, **equality['counts'], programsExecuted=False)
+
+    # Same schema, new transport readers: retain raw domain and actual host gates.
+    snapshot = Path(attempt['snapshot']['root'])
+    arena_file = args.arena_report; arena = read(arena_file)
+    assert arena['pass'] and len(arena['controls']) == 79 and all(x['pass'] for x in arena['controls'])
+    for key in ['driver', 'helper', 'controller', 'derivation', 'instrumented', 'cache', 'base']: pin(arena[key])
+    assert arena['driver']['sha256'] == pin(snapshot/'tools/typed-driver.mjs')['sha256']
+    assert arena['helper']['sha256'] == pin(snapshot/'tools/base-cache-graph.mjs')['sha256']
+    gate('arenaHostAdmission', arena_file, controls=79)
+    domain_file = args.domain_report; domain = read(domain_file); audit(domain)
+    assert domain['pass'] and len(domain['controls']) == 87 and all(x['pass'] for x in domain['controls'])
+    assert any(x['sha256'] == arena['helper']['sha256'] for x in domain['inputs'])
+    gate('arenaDomain', domain_file, controls=87)
+    host_file = args.host_report; host = passed(host_file)
+    assert host['count'] == len(host['controls']) == 60 and all(x['pass'] for x in host['controls'])
+    assert pin(host['driver'])['sha256'] == arena['driver']['sha256']
+    gate('annotationSidecarHost', host_file, controls=60,
+         scope='Exact selected driver; H6 reader composition also requires arena87, actual host79 and selected B2 owned controls.')
+    owned_file = args.owned_report; owned = passed(owned_file)
+    assert owned['inputsUnchanged'] and owned['generation']['kind'] == 'genuine-B2'
+    generation = owned['generation']
+    assert pin(generation['imagePins'])['sha256'] == pin(index['bootstrapReuse']['imagePins'])['sha256']
+    assert generation['b2']['sha256'] == image['b2']['sha256']
+    assert generation['b1']['sha256'] == attempt['api']['sha256']
+    assert generation['attempt']['sha256'] == pin(attempt_file)['sha256']
+    assert generation['source']['sha256'] == image['source']['sha256']
+    assert generation['roots'] == exports['roots']
+    assert pin(generation['helper'])['sha256'] == arena['helper']['sha256']
+    config_owned = read(owned['config']); audit(dict(inputs=config_owned['provenance']))
+    for key in ['api','driver','runtime','base','node']: pin(config_owned['image'][key])
+    assert config_owned['image']['api']['sha256'] == image['b2']['sha256']
+    assert config_owned['image']['driver']['sha256'] == arena['driver']['sha256']
+    assert len(owned['preparation']['keys']) == 12 and owned['preparation']['producerReady']
+    pin(owned['preparation']['sidecar'])
+    rows = {row['id']:row for row in owned['cases']}
+    assert len(rows) == len(owned['cases']) == 3
+    assert set(rows) == {'lexer','test-map-set-ops','numeric-recurrence'}
+    for row in rows.values():
+        assert row['pass'] and row['cached']['world'] == row['cached']['context'] == 1
+        assert row['ordinary']['consumer'] == row['ordinary']['productReads'] == 0
+        assert row['publicInjected']['world'] == row['publicInjected']['consumer'] == row['publicInjected']['productReads'] == 0
+        case = next(x for x in config_owned['sources'] if x['id'] == row['id'])
+        assert pin(case['expectedOutput'])['sha256'] == row['output']['sha256']
+        assert pin(case)['sha256'] == pin(row['source'])['sha256']
+    hit = rows['test-map-set-ops']; live = hit['cached']
+    assert live['consumer'] == live['allowed'] == 1 and live['actualAllowed'] and live['annotationExact']
+    assert live['annotationReused'] == 7 and live['annotationComparedPairs'] > 0 and live['productReads'] > 0
+    assert hit['privateGuards'] == dict(stopFirstExact=True,stoppedObjectPreserved=True,stoppedWantedFalse=True,
+        actualAllowed=True,unreadyDeclined=True,loaderErrorDeclined=True,fullHashCollisionDeclined=True)
+    for name in ['lexer','numeric-recurrence']:
+        miss = rows[name]['cached']; assert miss['actualWanted'] is False
+        assert miss['consumer'] == miss['allowed'] == miss['productReads'] == 0
+    gate('genuineB2OwnedAnnotations', owned_file, sources=3, producerKeys=12, actualReusedDefinitions=7,
+         requestedRoots=99, actualExports=generation['actualExportCount'], completeAnnotationAndModuleEquality=True)
+
+    custom_file = args.custom_base_report; custom = passed(custom_file)
+    assert custom['kind'] == 'phase65-base-annotation-custom-base-owned-controls'
+    assert custom['inputsUnchanged'] and custom['optionalArtifactAbsent']
+    assert custom['generation'] == generation
+    assert pin(custom['config'])['sha256'] == pin(owned['config'])['sha256']
+    assert custom['customBase']['change'] == 'append one inert comment'
+    assert custom['customBase']['otherwiseReadyWorld'] and custom['customBase']['preparedTwice']
+    original_base = pin(custom['customBase']['original']); custom_base = pin(custom['customBase']['derived'])
+    assert original_base['sha256'] == attempt['base']['sha256']
+    assert custom_base['sha256'] != original_base['sha256']
+    assert Path(custom_base['file']).read_bytes() == Path(original_base['file']).read_bytes() + b'\n# Phase65 custom Base content permission control.\n'
+    assert custom['counts'] == dict(base_annotation_prepare=0,base_annotation_wanted=0,
+        base_annotation_allowed=0,annotate_selected_base=0,check_program_diagnostic_world=1,book_context_world=1)
+    assert custom['observation']['status'] == 'ok' and custom['observation']['checked']
+    assert custom['output']['qualifiedModuleExact']
+    assert custom['output']['sha256'] == hit['output']['sha256']
+    assert custom['output']['bytes'] == hit['output']['bytes']
+    gate('genuineB2CustomBaseFallback', custom_file, preparedTwice=True, readyWorld=True,
+         optionalProducerAndConsumerUndemanded=True, noOptionalArtifact=True, completeMapModuleEquality=True)
+
+    broad_file = RAW/'state10-b2-latency/broad/report.json'; broad = passed(broad_file)
+    assert broad['successfulWorkers'] == broad['expectedWorkers'] == len(broad['rows']) == 207
+    assert len(broad['statistics']) == len(broad['coverage']['compileInputIds']) == 23
+    assert broad['coverage']['freshRuntimeExecutions'] == 0
+    config = read(broad['config']); audit(config); pin(config['node'])
+    assert config['roles'] == ['baseline', 'candidate', 'typescript'] and config['rounds'] == 3
+    cases = {x['id']: x for x in config['cases']}
+    assert len(cases) == len(config['cases']) == 23
+    assert set(cases) == set(broad['coverage']['compileInputIds']) == set(broad['statistics'])
+    keys = [(x['case'], x['role'], x['sample']) for x in broad['rows']]
+    assert len(set(keys)) == len(keys)
+    assert set(keys) == {(case, role, sample) for case in cases for role in config['roles'] for sample in range(3)}
+    preparations = {}
+    for row in broad['preparations']:
+        prepared = passed(row['result'])
+        assert row['success'] and prepared == row['observation']
+        role = prepared['role']; assert role not in preparations
+        assert prepared['stage'] == 'prepare'
+        for pair in prepared.get('copies', []): pin(pair['before']); pin(pair['after'])
+        if role != 'typescript':
+            for value in prepared['image'].values():
+                if isinstance(value, dict) and value.get('sha256'): pin(value)
+        if role != 'typescript':
+            products = prepared['verification']['baseProducts']
+            directory = Path(products['directory'])
+            assert directory.exists() == products['exists']
+            if role == 'candidate':
+                assert products['supported'] and products['declared'] and products['exists']
+                assert len(products['files']) == 1
+                product = pin(products['files'][0]); raw = Path(product['file']).read_bytes()
+                assert product['sha256'] == pin(owned['preparation']['sidecar'])['sha256']
+                assert sorted(str(x.resolve()) for x in directory.iterdir()) == [product['file']]
+                cut = 4 + int.from_bytes(raw[:4], 'little'); header = json.loads(raw[4:cut]); body = raw[cut:]
+                for key, value in products['headerBinding'].items(): assert header[key] == value
+                assert header['compilerSha256'] == image['b2']['sha256'] and header['baseSha256'] == attempt['base']['sha256']
+                assert header['productBytes'] == len(body) and header['productSha256'] == hashlib.sha256(body).hexdigest()
+                cache = prepared['verification']['cacheFiles']; assert len(cache) == 1
+                frame = Path(pin(cache[0])['file']).read_bytes(); frame_cut = frame.index(b'\n'); frame_header = json.loads(frame[:frame_cut])
+                assert frame_header['format'] == 'bend-base-cache-frame-4' and len(frame_header['segments']) == 2
+                book_bytes, prepared_bytes = frame_header['segments']; assert frame_cut+1+book_bytes+prepared_bytes == len(frame)
+                assert hashlib.sha256(frame[frame_cut+1:frame_cut+1+book_bytes]).hexdigest() == frame_header['bookGraphSha256']
+                assert hashlib.sha256(frame[frame_cut+1+book_bytes:]).hexdigest() == frame_header['preparedGraphSha256']
+                for key in ['bookGraphSha256','preparedGraphSha256','sourcePath','termAbi','spanAbi','sourceBegin','sourceEnd']:
+                    assert header[key] == frame_header[key]
+            else:
+                assert not products['supported'] and not products['declared'] and not products['exists']
+                assert products['files'] == [] and products['headerBinding'] is None
+        if role == 'candidate':
+            helper_copy = [x['after'] for x in prepared['copies'] if x['after']['file'].endswith('/tools/base-cache-graph.mjs')]
+            assert len(helper_copy) == 1 and pin(helper_copy[0])['sha256'] == arena['helper']['sha256']
+        preparations[role] = (pin(row['result']), prepared)
+    assert set(preparations) == set(config['roles'])
+    for row in broad['rows']:
+        observation = row['observation']
+        assert row['success'] and observation['complete'] and observation['pass']
+        assert read(row['result']) == observation
+        request = read(observation['request'])
+        assert request == dict(row['request'], config=broad['config'])
+        assert request['case'] == row['case'] and request['sample'] == row['sample'] == observation['sample']
+        assert request['role'] == row['role'] == observation['role']
+        assert observation['config'] == broad['config'] and observation['stage'] == 'sample'
+        assert row['execution']['complete'] and row['execution']['returncode'] == 0
+        assert row['execution']['command'][-2:] == [observation['request']['file'], row['result']['file']]
+        assert row['execution']['command'][3] == config['node']['file']
+        case = cases[row['case']]; role = row['role']
+        assert observation['source'] == case['source'] and observation['expected'] == case['references'][role]
+        pin(observation['source'])
+        for item in case['files'] + case['emissionInputs']: pin(item)
+        prep_pin, prepared = preparations[role]
+        assert pin(observation['preparation']) == prep_pin and request['preparation'] == observation['preparation']
+        if role != 'typescript':
+            assert observation['image'] == prepared['image']
+            assert observation['baseProducts'] == prepared['verification']['baseProducts']
+        if role == 'candidate':
+            assert observation['image']['api']['sha256'] == image['b2']['sha256']
+            assert observation['image']['checkedGenerator']['sha256'] == pin(attempt_file)['sha256']
+            assert observation['image']['driver']['sha256'] == arena['driver']['sha256']
+            assert observation['image']['runtime']['sha256'] == attempt['runtime']['sha256']
+            assert observation['image']['base']['sha256'] == attempt['base']['sha256']
+        assert pin(observation['output'])['sha256'] == pin(observation['expected'])['sha256']
+    broad_summary_file = ROOT/'implementation/phase65/evidence/state10-b2-broad.json'
+    summary = passed(broad_summary_file)
+    assert summary['report']['sha256'] == pin(broad_file)['sha256']
+    assert summary['sourceCount'] == 23 and summary['rounds'] == 3
+    assert summary['roles'] == ['baseline', 'candidate', 'typescript']
+    assert summary['successfulWorkers'] == summary['exactRawOutputs'] == 207
+    for key in ['producer', 'config', 'method']: pin(summary[key])
+    gate('balancedBroadCompilation', broad_summary_file, workers=207, sources=23, rounds=3, freshProgramRuntimeExecutions=0)
+
+    for item in list(parent.INPUTS.values()): pin(item)
+    result = dict(kind='phase65-selected-state10-pre-release-qualification-join', complete=True, pass_=True,
+        dataOnly=True, targetExecuted=False, producer=pin(__file__), inheritedReceiptReaders=pin(PARENT), successorDerivation=pin(derivation_file),
+        attempt=pin(attempt_file), checkedApi=attempt['checkedApi'], selectedB1=attempt['api'], genuineB2=image['b2'],
+        source=image['source'], gates=gates, checkedSemantics=checked_semantics, b2Semantics=b2_semantics,
+        historicalInputRelocations=relocations,
+        performance=summary['aggregate'], release=dict(installedByThisJoin=False, admissionGranted=False, scope='Installation and release qualification are separate root-owned gates.'),
+        scope='Finite overlapping suites, not full-language conformance. Fresh B2 type acceptance and expected unsafe proof-trust refusal are distinct. Exact raw outputs do not assert newly measured generated-program speed. The balanced genuine-B2 compiler campaign has 23 sources and three rounds; no significance claim. This join neither executes targets nor authorizes installation.')
+    result['verifiedInputCount'] = len(parent.INPUTS)
+    result['verifiedInputIndexSha256'] = hashlib.sha256(json.dumps(sorted(parent.INPUTS.values(), key=lambda x: x['file']), sort_keys=True).encode()).hexdigest()
+    write(args.out, result)
+
+
+def write(file, result):
+    file.parent.mkdir(parents=True, exist_ok=True)
+    with file.open('x') as stream: stream.write(json.dumps(result, indent=2)+'\n')
+    print(json.dumps(dict(output=str(file), complete=result['complete'], pass_=result['pass_'], targetExecuted=False)))
+
+
+if __name__ == '__main__': main()

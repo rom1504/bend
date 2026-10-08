@@ -1,5 +1,39 @@
 # Compiler validation
 
+## Phase65 selected candidate: qualification in progress
+
+Phase65 State10 combines the H2 optional Base annotation products and H6 static
+frame4 decoder. It is selected for final integration; Phase64 State09 remains
+the installed, qualified release. The [live Phase65 report](../implementation/phase65/README.md)
+and [controls record](../implementation/phase65/controls.md) distinguish completed
+candidate tests from pending final-image and release gates. State10 additionally
+requires the exact qualified Base content hash before optional production or
+sidecar reading. Arbitrary/custom Base and future Base updates use ordinary
+annotation until their product preparation is independently qualified.
+
+The annotation contract requires equality of complete retained definitions and
+emitted modules, actual owned-route activation, current stops, full prefix/hash
+admission and ordinary fallback for missing or invalid optional artifacts. The
+transport contract requires exact graph values and sharing plus unchanged eager
+record/domain validation; a no-hit request must not read the heavy annotation
+body. These finite gates cannot replace full checked/B2 semantics, own-source
+acceptance, B2/B3 reproduction, broad output comparison or installed CLI checks.
+
+The final [State10 broad campaign](../implementation/phase65/evidence/state10-b2-broad.json)
+passes 207 exact-output checks: 23 sources, three roles and three balanced rounds.
+Compilation-only geometric means are **1.41737× → 1.28945× TS (9.025% less time)**;
+imports plus compilation are **1.04969× → 0.969256× (7.662% less time)**. All 23
+sources improve; 21 have nonoverlapping sample ranges. Four are below TS for
+compilation and ten including imports. These are fresh prepared-cache genuine-B2
+compiler measurements, not generated-program execution or a universal conformance
+claim. Compilation-only parity still needs about 22.45% less time.
+
+The State09 owned B2 product route passes its focused controls. State10 preserves
+the Bend source/B1/B2 algorithms but adds a host permission boundary. Its final
+qualification and installation remain pending; earlier passes only transfer
+where the final evidence explicitly binds unchanged inputs. Compiler algorithms remain implemented in Bend, and expected unsafe
+proof-trust refusal remains distinct from type acceptance.
+
 ## Current Phase64 qualification
 
 Phase64 State09 is installed and verified. Its

@@ -1,0 +1,639 @@
+{
+  "kind": "phase65-static-tag-decoder-v8-trace",
+  "complete": true,
+  "dataOnlyAnalysis": true,
+  "hypothesis": "P65-007",
+  "inputs": {
+    "trace": {
+      "file": "selfhost/build/phase65/frame4-static-tags01/trace-guard/stdout.log",
+      "sha256": "f1a61fa64978417f19a0d8427419a2409dd3087e318291aaee8248933ef55364"
+    },
+    "worker": {
+      "file": "selfhost/build/phase65/frame4-static-tags01/trace-worker.json",
+      "sha256": "ba3676e02a42178654524af1c4cae27386362dea44ad637e2a15d2edde0555b9"
+    },
+    "manifest": {
+      "file": "selfhost/build/phase65/frame4-static-tags01/manifest.json",
+      "sha256": "c3781176ca1a5c2b9a972ebaa896ad8c19c0971d374aeaf36b1ecfcc761e1671"
+    },
+    "priorCaseLocal": {
+      "file": "implementation/phase65/evidence/decoder-case-local.json",
+      "sha256": "25f87d3b98932c820bdbefc6a49ab2a842881f4f64eee286bbdbeff2114209c4"
+    },
+    "cleanMicro": {
+      "file": "implementation/phase65/evidence/decoder-static-tags.json",
+      "sha256": "53c385f08d02b16d69e0ee55c912cac5ce1d91bca7343c74045f8aeebe3e9899"
+    },
+    "wholeFour": {
+      "file": "implementation/phase65/evidence/host-static-tags-four.json",
+      "sha256": "e89a1aa59f2be07ce2d1e0badf4f7f225b3a41c54709693660825c2884324995"
+    }
+  },
+  "candidateDecoderSfi": "0x2dec75dd3c79",
+  "baselineOracleSfi": "0x72ad8cd68e9",
+  "functions": [
+    {
+      "name": "arenaReadRef",
+      "sfi": "0x2dec75dd3d09",
+      "firstLine": 10,
+      "compileEvents": [
+        {
+          "line": 12,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            0.123,
+            0.004
+          ]
+        }
+      ],
+      "bailouts": [],
+      "invalidations": [],
+      "role": "candidate",
+      "bailoutCounts": {}
+    },
+    {
+      "name": "arenaReadString",
+      "sfi": "0x2dec75dd3d51",
+      "firstLine": 13,
+      "compileEvents": [
+        {
+          "line": 15,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            0.07,
+            0.003
+          ]
+        }
+      ],
+      "bailouts": [],
+      "invalidations": [],
+      "role": "candidate",
+      "bailoutCounts": {}
+    },
+    {
+      "name": "arenaReadSpan",
+      "sfi": "0x2dec75dd3d99",
+      "firstLine": 16,
+      "compileEvents": [
+        {
+          "line": 18,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            0.091,
+            0.004
+          ]
+        }
+      ],
+      "bailouts": [],
+      "invalidations": [],
+      "role": "candidate",
+      "bailoutCounts": {}
+    },
+    {
+      "name": "arenaReadKTerm",
+      "sfi": "0x2dec75dd3e71",
+      "firstLine": 19,
+      "compileEvents": [
+        {
+          "line": 21,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            0.54,
+            0.009
+          ]
+        },
+        {
+          "line": 41,
+          "tier": "TURBOFAN_JS",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.004,
+            2.298,
+            0.022
+          ]
+        },
+        {
+          "line": 69,
+          "tier": "TURBOFAN_JS",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.008,
+            2.301,
+            0.047
+          ]
+        }
+      ],
+      "bailouts": [],
+      "invalidations": [
+        {
+          "line": 64,
+          "reason": "dependent allocation site tenuring changed"
+        },
+        {
+          "line": 65,
+          "reason": "dependent allocation site tenuring changed"
+        }
+      ],
+      "role": "candidate",
+      "bailoutCounts": {}
+    },
+    {
+      "name": "arenaReadCon",
+      "sfi": "0x2dec75dd3e29",
+      "firstLine": 22,
+      "compileEvents": [
+        {
+          "line": 24,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            0.287,
+            0.007
+          ]
+        },
+        {
+          "line": 37,
+          "tier": "TURBOFAN_JS",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.006,
+            1.404,
+            0.024
+          ]
+        },
+        {
+          "line": 72,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            0.338,
+            0.01
+          ]
+        },
+        {
+          "line": 81,
+          "tier": "TURBOFAN_JS",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.006,
+            1.419,
+            0.02
+          ]
+        }
+      ],
+      "bailouts": [],
+      "invalidations": [
+        {
+          "line": 62,
+          "reason": "dependent allocation site tenuring changed"
+        },
+        {
+          "line": 63,
+          "reason": "dependent allocation site tenuring changed"
+        }
+      ],
+      "role": "candidate",
+      "bailoutCounts": {}
+    },
+    {
+      "name": "decodeBaseArena",
+      "sfi": "0x2dec75dd3c79",
+      "firstLine": 25,
+      "compileEvents": [
+        {
+          "line": 27,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            0.592,
+            0.006
+          ]
+        },
+        {
+          "line": 29,
+          "tier": "TURBOFAN_JS",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.008,
+            2.287,
+            0.016
+          ]
+        }
+      ],
+      "bailouts": [
+        {
+          "line": 31,
+          "reason": "prepare for on stack replacement (OSR)"
+        },
+        {
+          "line": 43,
+          "reason": "Insufficient type feedback for generic named access"
+        },
+        {
+          "line": 47,
+          "reason": "Insufficient type feedback for generic named access"
+        },
+        {
+          "line": 48,
+          "reason": "Insufficient type feedback for generic named access"
+        },
+        {
+          "line": 55,
+          "reason": "Insufficient type feedback for generic named access"
+        },
+        {
+          "line": 56,
+          "reason": "Insufficient type feedback for generic named access"
+        },
+        {
+          "line": 57,
+          "reason": "Insufficient type feedback for generic named access"
+        },
+        {
+          "line": 83,
+          "reason": "Insufficient type feedback for generic named access"
+        },
+        {
+          "line": 90,
+          "reason": "Insufficient type feedback for generic named access"
+        },
+        {
+          "line": 94,
+          "reason": "Insufficient type feedback for generic named access"
+        },
+        {
+          "line": 95,
+          "reason": "Insufficient type feedback for generic named access"
+        },
+        {
+          "line": 96,
+          "reason": "Insufficient type feedback for generic named access"
+        },
+        {
+          "line": 97,
+          "reason": "Insufficient type feedback for generic named access"
+        },
+        {
+          "line": 102,
+          "reason": "Insufficient type feedback for generic named access"
+        },
+        {
+          "line": 103,
+          "reason": "Insufficient type feedback for generic named access"
+        }
+      ],
+      "invalidations": [],
+      "role": "candidate",
+      "bailoutCounts": {
+        "prepare for on stack replacement (OSR)": 1,
+        "Insufficient type feedback for generic named access": 14
+      }
+    },
+    {
+      "name": "arenaReadKLambda",
+      "sfi": "0x2dec75dd3eb9",
+      "firstLine": 32,
+      "compileEvents": [
+        {
+          "line": 34,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            0.608,
+            0.011
+          ]
+        },
+        {
+          "line": 78,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            0.58,
+            0.013
+          ]
+        },
+        {
+          "line": 100,
+          "tier": "TURBOFAN_JS",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.009,
+            2.281,
+            0.032
+          ]
+        }
+      ],
+      "bailouts": [],
+      "invalidations": [
+        {
+          "line": 60,
+          "reason": "dependent allocation site tenuring changed"
+        }
+      ],
+      "role": "candidate",
+      "bailoutCounts": {}
+    },
+    {
+      "name": "arenaReadKDef",
+      "sfi": "0x2dec75dd3f49",
+      "firstLine": 44,
+      "compileEvents": [
+        {
+          "line": 46,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            0.58,
+            0.03
+          ]
+        },
+        {
+          "line": 75,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            0.465,
+            0.008
+          ]
+        }
+      ],
+      "bailouts": [],
+      "invalidations": [
+        {
+          "line": 61,
+          "reason": "dependent allocation site tenuring changed"
+        }
+      ],
+      "role": "candidate",
+      "bailoutCounts": {}
+    },
+    {
+      "name": "arenaReadKIndexLeaf",
+      "sfi": "0x2dec75dd3f91",
+      "firstLine": 49,
+      "compileEvents": [
+        {
+          "line": 51,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            0.321,
+            0.009
+          ]
+        },
+        {
+          "line": 86,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            0.305,
+            0.006
+          ]
+        }
+      ],
+      "bailouts": [],
+      "invalidations": [
+        {
+          "line": 59,
+          "reason": "dependent allocation site tenuring changed"
+        }
+      ],
+      "role": "candidate",
+      "bailoutCounts": {}
+    },
+    {
+      "name": "arenaReadKIndexNode",
+      "sfi": "0x2dec75dd3fd9",
+      "firstLine": 52,
+      "compileEvents": [
+        {
+          "line": 54,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            0.252,
+            0.005
+          ]
+        },
+        {
+          "line": 89,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            0.276,
+            0.005
+          ]
+        }
+      ],
+      "bailouts": [],
+      "invalidations": [
+        {
+          "line": 58,
+          "reason": "dependent allocation site tenuring changed"
+        }
+      ],
+      "role": "candidate",
+      "bailoutCounts": {}
+    },
+    {
+      "name": "arenaReadKLiteral",
+      "sfi": "0x2dec75dd3f01",
+      "firstLine": 91,
+      "compileEvents": [
+        {
+          "line": 93,
+          "tier": "MAGLEV",
+          "osr": false,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            0.606,
+            0.012
+          ]
+        }
+      ],
+      "bailouts": [],
+      "invalidations": [
+        {
+          "line": 125,
+          "reason": "dependent allocation site tenuring changed"
+        }
+      ],
+      "role": "candidate",
+      "bailoutCounts": {}
+    },
+    {
+      "name": "decodeBaseArena",
+      "sfi": "0x72ad8cd68e9",
+      "firstLine": 113,
+      "compileEvents": [
+        {
+          "line": 115,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            2.869,
+            0.025
+          ]
+        },
+        {
+          "line": 117,
+          "tier": "TURBOFAN_JS",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.005,
+            11.722,
+            0.059
+          ]
+        },
+        {
+          "line": 122,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            3.077,
+            0.022
+          ]
+        },
+        {
+          "line": 128,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.001,
+            2.765,
+            0.025
+          ]
+        },
+        {
+          "line": 137,
+          "tier": "TURBOFAN_JS",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.012,
+            20.435,
+            0.066
+          ]
+        },
+        {
+          "line": 152,
+          "tier": "MAGLEV",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.0,
+            1.707,
+            0.02
+          ]
+        },
+        {
+          "line": 173,
+          "tier": "TURBOFAN_JS",
+          "osr": true,
+          "aborted": false,
+          "durationFieldsMs": [
+            0.004,
+            31.655,
+            0.083
+          ]
+        }
+      ],
+      "bailouts": [
+        {
+          "line": 119,
+          "reason": "prepare for on stack replacement (OSR)"
+        },
+        {
+          "line": 120,
+          "reason": "Insufficient type feedback for compare operation"
+        },
+        {
+          "line": 123,
+          "reason": "Insufficient type feedback for compare operation"
+        },
+        {
+          "line": 130,
+          "reason": "Insufficient type feedback for compare operation"
+        },
+        {
+          "line": 141,
+          "reason": "out of bounds"
+        },
+        {
+          "line": 154,
+          "reason": "Insufficient type feedback for compare operation"
+        }
+      ],
+      "invalidations": [
+        {
+          "line": 124,
+          "reason": "dependent allocation site tenuring changed"
+        },
+        {
+          "line": 222,
+          "reason": "dependent allocation site tenuring changed"
+        }
+      ],
+      "role": "baselineOracle",
+      "bailoutCounts": {
+        "prepare for on stack replacement (OSR)": 1,
+        "Insufficient type feedback for compare operation": 4,
+        "out of bounds": 1
+      }
+    }
+  ],
+  "conclusion": "The split candidate outer loop has one Maglev OSR compile (0.592ms middle field) and one TurboFan OSR compile (2.287ms) versus repeated large recompilation in prior case-local trace. Type reader compile middle fields are each <=2.301ms. Fourteen named-access deopts remain at the same bytecode offset1377; allocation-tenuring invalidations attach to individual readers, not the outer loop in this trace. This supports smaller compilation units rather than a deopt-free decoder.",
+  "limits": [
+    "Distinct SFIs separate candidate execution from baseline oracle imported after all seven timed decodes.",
+    "Trace compiler duration fields are background diagnostics, not additive wall latency; trace clocks are excluded from clean speed evidence.",
+    "Comparison with case-local uses separate traces; exact timing/GC scheduling differs.",
+    "Only one traced candidate process; does not prove sole causation or universal benefit."
+  ]
+}

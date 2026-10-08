@@ -1,0 +1,164 @@
+{
+  "kind": "phase65-base-annotation-owned-control-summary",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "raw": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/base-annotations-owned-state08-02/report.json",
+    "sha256": "0698884beac10bf7ec46120db456189276f8ae548587502f2c02413ade7c57cc"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/base-products/annotation-controls-v2.mjs",
+    "sha256": "6aef0f91bfe3d1ac3a4d9dbd92dd38f8bd25fa9e3578a12c65fe49aef2929756"
+  },
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/base-products/annotation-controls-state08-input-v2.json",
+    "sha256": "6d16e4f67f6152fbc23e3e5094f39a4902946ded3779f7458976331af91dd216",
+    "bytes": 17263
+  },
+  "generation": {
+    "kind": "derived-B1",
+    "receipt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state08/equality/api.mjs.derivation.json",
+      "sha256": "ad216ea2dac6e7b239f8d0848f961e295ead255a03369346556decb47b546ac6"
+    },
+    "parent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state08/api.mjs",
+      "sha256": "aada8b04873041e4ab40f178eb14283cfe27aac2dea69120d2f684b8dacf164a"
+    },
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state08/equality/api.mjs",
+      "sha256": "3a7fedb77003aecc797cd9a9ac4c6d1bd15bd21dd1230806b6719565eca10f72"
+    }
+  },
+  "sidecar": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/base-annotations-owned-state08-02/project/build/typed/base-products/base-3a7fedb77003aecc797cd9a9ac4c6d1bd15bd21dd1230806b6719565eca10f72-c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661-c04628cbf4595eb7fcc0fafe90e6e555f95b4b4691a19005149f3206f3d3f7db-annotations64-v1.bin",
+    "sha256": "4b48edc7cb8cc6f308046a61fe14a8b89fc5e1325b345e0681eb11c22702bbf5",
+    "bytes": 438959
+  },
+  "producerKeys": [
+    "IO.within",
+    "Word.add_comm.go",
+    "Nat.read.trim",
+    "Array.swap.go",
+    "Array.get.go",
+    "Map.put.go",
+    "Map.ins.go",
+    "Map.ins",
+    "Map.seek.go",
+    "Map.has.go",
+    "Map.get.go",
+    "Map.pop.go"
+  ],
+  "cases": [
+    {
+      "id": "lexer",
+      "pass": true,
+      "cached": {
+        "world": 1,
+        "context": 1,
+        "wanted": 1,
+        "allowed": 0,
+        "consumer": 0,
+        "sidecarOpens": 1,
+        "productReads": 0,
+        "annotationComparedPairs": 0,
+        "annotationReused": 0,
+        "actualWanted": false
+      },
+      "publicInjected": {
+        "world": 0,
+        "context": 0,
+        "wanted": 0,
+        "allowed": 0,
+        "consumer": 0,
+        "sidecarOpens": 0,
+        "productReads": 0,
+        "annotationComparedPairs": 0,
+        "annotationReused": 0
+      },
+      "privateGuards": null,
+      "output": {
+        "sha256": "dcb0125d93015591a539320dd827b7d751d6985e69c44e51f7beefa43121e4a5",
+        "bytes": 28426
+      }
+    },
+    {
+      "id": "test-map-set-ops",
+      "pass": true,
+      "cached": {
+        "world": 1,
+        "context": 1,
+        "wanted": 1,
+        "allowed": 1,
+        "consumer": 1,
+        "sidecarOpens": 1,
+        "productReads": 1,
+        "annotationComparedPairs": 101907,
+        "annotationReused": 7,
+        "actualWanted": true,
+        "actualAllowed": true,
+        "annotationExact": true
+      },
+      "publicInjected": {
+        "world": 0,
+        "context": 0,
+        "wanted": 0,
+        "allowed": 0,
+        "consumer": 0,
+        "sidecarOpens": 0,
+        "productReads": 0,
+        "annotationComparedPairs": 0,
+        "annotationReused": 0
+      },
+      "privateGuards": {
+        "stopFirstExact": true,
+        "stoppedObjectPreserved": true,
+        "stoppedWantedFalse": true,
+        "actualAllowed": true,
+        "unreadyDeclined": true,
+        "loaderErrorDeclined": true,
+        "fullHashCollisionDeclined": true
+      },
+      "output": {
+        "sha256": "f74c6e124909154375f07b0ba1c208adce0480f2c1f198ee0668296d051bf5cd",
+        "bytes": 132866
+      }
+    },
+    {
+      "id": "numeric-recurrence",
+      "pass": true,
+      "cached": {
+        "world": 1,
+        "context": 1,
+        "wanted": 1,
+        "allowed": 0,
+        "consumer": 0,
+        "sidecarOpens": 1,
+        "productReads": 0,
+        "annotationComparedPairs": 0,
+        "annotationReused": 0,
+        "actualWanted": false
+      },
+      "publicInjected": {
+        "world": 0,
+        "context": 0,
+        "wanted": 0,
+        "allowed": 0,
+        "consumer": 0,
+        "sidecarOpens": 0,
+        "productReads": 0,
+        "annotationComparedPairs": 0,
+        "annotationReused": 0
+      },
+      "privateGuards": null,
+      "output": {
+        "sha256": "2b64fe789325cd0b5343375e193901a092b8e296bd0352cbb28e44469ce5a8f3",
+        "bytes": 14917
+      }
+    }
+  ],
+  "inputsUnchanged": true,
+  "scope": "Owned checked-derived-B1 semantic controls. Entire owned ordinary/cached/public-injected observations match; qualified module bytes exact. Runtime IO spies measure activation only; no clean timing or genuine-B2 claim."
+}

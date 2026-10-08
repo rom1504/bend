@@ -1,0 +1,33 @@
+{
+  "kind": "phase65-base-annotation-host-pinned-content-controls",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/base-annotations-host-v1.mjs",
+    "sha256": "a029d33ccd6c412fc7f6e87e890cb1ae98b95114586de35d70525bec9587645c"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/base-annotations-host-v2.mjs",
+    "sha256": "3a79dd79c3da27ebaeb15c2ae7aa59d212d9b8d62850536f4f73f8a3d30812c1"
+  },
+  "edits": [
+    {
+      "old": "// node base-annotations-host-v1.mjs",
+      "new": "// node base-annotations-host-v2.mjs"
+    },
+    {
+      "old": "base-annotations-host-v1.derivation.json",
+      "new": "base-annotations-host-v2.derivation.json"
+    },
+    {
+      "old": "../cache-contract/base-annotations-v2.json",
+      "new": "../cache-contract/base-annotations-v3.json"
+    },
+    {
+      "old": " check('parent mandatory frame remains exact',()=>assert.deepEqual(fs.readFileSync(info.file),frameBytes));",
+      "new": " // Private host-boundary probes: custom source identity is rejected before any\n // optional API lookup, world access, filesystem open/read or producer demand.\n // The actual custom Base remains the ordinary checker's responsibility.\n const customText=info.sourceText+'\\n# phase65 custom Base demand guard\\n',customInfo={...info,baseSha256:hash(Buffer.from(customText)),sourceText:customText};\n assert.notEqual(customInfo.baseSha256,info.baseSha256);\n for(const presence of ['valid','corrupt','absent'])check('custom Base '+presence+' sidecar has zero optional demand',()=>{\n   if(presence==='absent')fs.rmSync(file,{force:true});else put(presence==='valid'?valid:corrupt);\n   const seen={api:0,world:0,open:0,read:0,consume:0},oldOpen=fs.openSync,oldRead=fs.readSync;\n   const forbiddenApi=new Proxy({}, {get(){seen.api++;throw Error('Custom Base accessed optional API');}});\n   const forbiddenWorld=new Proxy({}, {get(){seen.world++;throw Error('Custom Base accessed optional world');}});\n   fs.openSync=(...args)=>{seen.open++;return oldOpen(...args);};fs.readSync=(...args)=>{seen.read++;return oldRead(...args);};\n   try{\n     assert.equal(D.prepareBaseAnnotations(forbiddenApi,forbiddenWorld,customInfo),false);\n     assert.equal(D.readBaseAnnotations(forbiddenApi,customInfo,forbiddenWorld,load,selected,stops),null);\n     assert.equal(D.withBaseAnnotationFile(customInfo,forbiddenWorld,()=>{seen.consume++;throw Error('Custom Base consumed sidecar');}),null);\n   }finally{fs.openSync=oldOpen;fs.readSync=oldRead;}\n   assert.deepEqual(seen,{api:0,world:0,open:0,read:0,consume:0});return{observed:seen};\n });\n check('pinned Base bytes remain eligible at a different source path',()=>{\n   const relocated=path.join(scratch,'same-base-different-path.bend');fs.writeFileSync(relocated,info.sourceText,{flag:'wx'});assert.equal(pin(relocated).sha256,info.baseSha256);\n   const relocatedInfo={...info,sourcePath:fs.realpathSync(relocated)};put(pack({...meta,sourcePath:relocatedInfo.sourcePath}));\n   const x=apiFor();assert.deepEqual(D.readBaseAnnotations(x.api,relocatedInfo,cached,load,selected,stops),product);assert.deepEqual(x.events,['wanted','allowed']);\n   const y=apiFor({throwAt:'prepare'});assert.equal(D.prepareBaseAnnotations(y.api,cached,relocatedInfo),true);assert.deepEqual(y.events,[]);\n });\n check('parent mandatory frame remains exact',()=>assert.deepEqual(fs.readFileSync(info.file),frameBytes));"
+    }
+  ],
+  "scope": "All56 prior transport controls retained; three custom-content presence variants prove zero optional IO/API/world/producer demand, one positive copied-content/different-path control proves content eligibility. No compiler image imported and no claim about semantic checking of arbitrary custom Base."
+}

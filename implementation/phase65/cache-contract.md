@@ -229,3 +229,64 @@ receipt is preserved; that run does not establish an H2 defect or its precise
 stack cause. A separately reviewed successor binds the qualified API through
 the equality derivation and parent identities, preserving the earlier semantic
 assertions. Its runtime result is a separate gate.
+
+## Same-B2 incremental artifact ablation
+
+A separate [source-reviewed diagnostic](../../selfhost/tools/performance/phase65/cache-contract/annotation-ablation.derivation.json)
+compared the same actual combined State09 B2 image, H6 helper, driver, runtime,
+Base and mandatory frame with the exact prepared sidecar present or absent.
+Preparation copied immutable projects and did not prime either clone afterwards.
+Each worker verified full project membership and file hashes, including the
+explicit presence or absence of the product directory, before and after the
+request. The inherited clocks remained unchanged; complete emitted module
+bytes had to match the pinned oracle after timing. This is a fresh-process,
+warm-filesystem diagnostic, not an OS-cold benchmark or production qualification.
+
+Two balanced rounds over three sources passed all 12 fresh workers in 36.70 s.
+The [compact data-only analysis](evidence/base-annotations-incremental-b2.json)
+binds the complete raw receipts and records every sample:
+
+| Source | Sidecar absent, ms | Sidecar present, ms | First-request change |
+| --- | ---: | ---: | ---: |
+| Numeric recurrence | 191.316 | 190.427 | -0.46% |
+| Map set operations | 985.535 | 934.946 | -5.13% |
+| Map churn | 639.985 | 619.846 | -3.15% |
+
+The equal-case geometric mean improved 2.93% for the compilation request and
+3.40% for host import plus API loading plus the first request. Numeric has no
+product hit; its sub-percent request change is noise. Both hit cases improved
+in each round. Their median savings were 50.59 ms and 20.14 ms respectively.
+Map churn's source uses Base map update/delete operations, and its pinned output
+contains the retained put/pop/ins bodies; the diagnostic itself does not add
+hook counters to clean timings.
+
+This supports retaining the optional products as a modest incremental gain
+alongside H6. Both roles retain the H2 compiler code and driver branch, so the
+measurement does not equal comparison against complete H2 source removal.
+Three targeted cases are also insufficient to claim a broad compiler ratio or
+TypeScript parity. The approximately 439 KiB artifact and additional source
+complexity remain costs to consider against the measured benefit.
+
+## Exact standard-Base eligibility correction
+
+A later correctness review identified a demand gap for arbitrary custom Base
+content: preparing additional annotations may normalize a type that ordinary
+checking did not need to normalize. Successful old checking alone therefore
+cannot authorize this extra work for every custom Base.
+
+The isolated [host v3 patch](../../selfhost/tools/performance/phase65/cache-contract/base-annotations-v3.patch)
+adds five lines relative to v2: a documented exact standard-Base SHA-256 constant
+and early guards at optional file admission and product preparation. The
+qualified content hash is
+`c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661`.
+The guard tests content identity, not the source path. A changed or custom Base
+uses the ordinary annotation route before any optional file read, producer,
+wanted or allowed call. Existing mandatory checking and all path/API/frame
+identity rules remain in effect. Future Base updates disable products until
+independently qualified. The Bend source, compiler images and arena schema are
+unchanged; root owns applying and qualifying this correction.
+
+The accompanying [H6 formatting recipe](../../selfhost/tools/performance/phase65/cache-contract/static-tags-format-v1.json)
+removes two spaces from one otherwise empty line. Its recorded inverse restores
+the exact tested helper bytes; it changes no JavaScript token or field order.
+This isolated formatting derivative is not a new optimization result.

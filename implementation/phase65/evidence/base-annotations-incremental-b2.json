@@ -1,0 +1,143 @@
+{
+  "kind": "phase65-h2-incremental-ablation-summary",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/cache-contract/annotation-ablation-summary.py",
+    "sha256": "cc2c59b46bba650724a308f50fb2aaea2658ba8b87e48b83c6a27e35624175d3"
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/base-annotations-ablation01/screen/report.json",
+    "sha256": "0c1485d8d8acea5d602bcebf13fb45113c7069f449832d721daeca8188603030"
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/base-annotations-ablation01/plan.json",
+    "sha256": "af107b1ce92508c38ed21c577e1b3865a0e1d6ad07b214bdc004a3b50f2a85fe"
+  },
+  "workers": 12,
+  "rows": [
+    {
+      "case": "numeric-recurrence",
+      "clocks": {
+        "firstRequestMs": {
+          "samples": {
+            "without_products": [
+              189.70521299999996,
+              192.92625599999997
+            ],
+            "with_products": [
+              190.368698,
+              190.48551099999986
+            ]
+          },
+          "medians": {
+            "without_products": 191.31573449999996,
+            "with_products": 190.42710449999993
+          },
+          "withOverWithout": 0.9953551651027426
+        },
+        "importApiAndFirstMs": {
+          "samples": {
+            "without_products": [
+              291.680562,
+              304.49948399999994
+            ],
+            "with_products": [
+              290.7861479999999,
+              290.48276399999986
+            ]
+          },
+          "medians": {
+            "without_products": 298.090023,
+            "with_products": 290.6344559999999
+          },
+          "withOverWithout": 0.9749888744179804
+        }
+      }
+    },
+    {
+      "case": "test-map-set-ops",
+      "clocks": {
+        "firstRequestMs": {
+          "samples": {
+            "without_products": [
+              981.3838740000001,
+              989.6857009999999
+            ],
+            "with_products": [
+              933.7941339999998,
+              936.0983359999998
+            ]
+          },
+          "medians": {
+            "without_products": 985.5347875,
+            "with_products": 934.9462349999998
+          },
+          "withOverWithout": 0.9486689327037071
+        },
+        "importApiAndFirstMs": {
+          "samples": {
+            "without_products": [
+              1081.347227,
+              1091.780752
+            ],
+            "with_products": [
+              1033.1354179999998,
+              1035.9848289999998
+            ]
+          },
+          "medians": {
+            "without_products": 1086.5639895,
+            "with_products": 1034.5601235
+          },
+          "withOverWithout": 0.9521391593108746
+        }
+      }
+    },
+    {
+      "case": "map-churn",
+      "clocks": {
+        "firstRequestMs": {
+          "samples": {
+            "without_products": [
+              639.6577109999998,
+              640.311365
+            ],
+            "with_products": [
+              613.1881900000001,
+              626.5044499999999
+            ]
+          },
+          "medians": {
+            "without_products": 639.9845379999999,
+            "with_products": 619.84632
+          },
+          "withOverWithout": 0.9685332741585705
+        },
+        "importApiAndFirstMs": {
+          "samples": {
+            "without_products": [
+              740.9183480000002,
+              742.7076210000002
+            ],
+            "with_products": [
+              713.8443790000001,
+              726.6567660000001
+            ]
+          },
+          "medians": {
+            "without_products": 741.8129845000002,
+            "with_products": 720.2505725000001
+          },
+          "withOverWithout": 0.9709328193890625
+        }
+      }
+    }
+  ],
+  "geometricMean": {
+    "firstRequestMs": 0.9706643948721384,
+    "importApiAndFirstMs": 0.965968778148128
+  },
+  "scope": "Same actual combined B2/H6/API/driver/frame in both roles, optional sidecar presence alone differs. Equal-case geometric mean of role medians, fresh prepared requests with complete raw output equality. This measures incremental artifact value, retaining H2 code in both roles; not full H2-removal or TS parity."
+}

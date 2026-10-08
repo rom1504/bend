@@ -13421,33 +13421,39 @@ function $nc_lambda$(_book_0, _t_0, _env_0, _n_0) {
 function $nd_app$(_book_0, _t_0, _env_0, _n_0) {
   const _head_0 = run_loop($nd_head$(_t_0));
   const _args_0 = run_loop($nd_args$(_t_0, {$: "Nil"}));
-  return run_tail((($String$eq$(($tg$(_head_0)), "Lam"))) ? ((_x_0) => {
+  const _scalar_0 = run_loop($nd_scalar_call$(_book_0, _t_0));
+  return run_tail((($Bool$not$(($String$eq$(_scalar_0, ""))))) ? ((_x_0) => {
+  const _x_1 = ($terms_len$(_args_0));
+  return $nc_lower$(_book_0, ($nc_sequence$("NOp", _scalar_0, _args_0, {$: "Nil"}, _n_0)), _env_0, ((_n_0 + _x_1) >>> 0));
+}) : ((_x_2) => {
+  return run_tail((($String$eq$(($tg$(_head_0)), "Lam"))) ? ((_x_3) => {
   return $nc_lower$(_book_0, run_loop($nd_beta$(_head_0, _args_0)), _env_0, _n_0);
-}) : ((_x_1) => {
-  const _x_2 = ($terms_len$(_args_0));
-  return run_tail((($Bool$and$(($String$eq$(($tg$(_head_0)), "Mat")), (_x_2 === 1)))) ? ((_x_3) => {
-  return $nd_match$(_book_0, _head_0, run_loop($kid$(_t_0, 1)), _env_0, _n_0);
 }) : ((_x_4) => {
-  return run_tail((($String$eq$(($tg$(_head_0)), "Ref"))) ? ((_x_5) => {
-  const _x_6 = ($qt$(_head_0));
-  const _x_7 = ($terms_len$(_args_0));
-  const _x_8 = run_loop($nd_arity$(_book_0, ($nm$(_head_0))));
-  const _x_9 = ($terms_len$(_args_0));
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$not$((_x_6 === 3))), (_x_7 > 0))), (_x_8 === _x_9)))) ? ((_x_10) => {
-  const _x_11 = ($terms_len$(_args_0));
-  return $nc_lower$(_book_0, ($nc_sequence$("NCall", ($nd_name$(run_loop($nc_ref_name$(_book_0, ($nm$(_head_0)))))), _args_0, {$: "Nil"}, _n_0)), _env_0, ((_n_0 + _x_11) >>> 0));
-}) : ((_x_12) => {
+  const _x_5 = ($terms_len$(_args_0));
+  return run_tail((($Bool$and$(($String$eq$(($tg$(_head_0)), "Mat")), (_x_5 === 1)))) ? ((_x_6) => {
+  return $nd_match$(_book_0, _head_0, run_loop($kid$(_t_0, 1)), _env_0, _n_0);
+}) : ((_x_7) => {
+  return run_tail((($String$eq$(($tg$(_head_0)), "Ref"))) ? ((_x_8) => {
+  const _x_9 = ($qt$(_head_0));
+  const _x_10 = ($terms_len$(_args_0));
+  const _x_11 = run_loop($nd_arity$(_book_0, ($nm$(_head_0))));
+  const _x_12 = ($terms_len$(_args_0));
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$not$((_x_9 === 3))), (_x_10 > 0))), (_x_11 === _x_12)))) ? ((_x_13) => {
+  const _x_14 = ($terms_len$(_args_0));
+  return $nc_lower$(_book_0, ($nc_sequence$("NCall", ($nd_name$(run_loop($nc_ref_name$(_book_0, ($nm$(_head_0)))))), _args_0, {$: "Nil"}, _n_0)), _env_0, ((_n_0 + _x_14) >>> 0));
+}) : ((_x_15) => {
   return $nc_app_slow$(_book_0, _t_0, _env_0, _n_0);
 }), {$: "Unit"});
-}) : ((_x_13) => {
+}) : ((_x_16) => {
   return $nc_app_slow$(_book_0, _t_0, _env_0, _n_0);
+}), {$: "Unit"});
 }), {$: "Unit"});
 }), {$: "Unit"});
 }), {$: "Unit"});
 }
 
 function $nc_parallel$(_book_0, _xs_0, _env_0, _n_0) {
-  const _seq_0 = ($nc_lets$(_book_0, _xs_0, _env_0, _n_0));
+  const _seq_0 = run_loop($nc_lets$(_book_0, _xs_0, _env_0, _n_0));
   const _name_0 = ($nc_name$(($nc_fresh$(_seq_0))));
   const _body_0 = ($nc_last_term$(_xs_0));
   const _held_0 = run_loop($nc_live_env$(_env_0, _body_0));
@@ -17011,6 +17017,19 @@ function $nd_args$(_t_0, _acc_0) {
 }), {$: "Unit"});
 }
 
+function $nd_scalar_call$(_book_0, _t_0) {
+  const _head_0 = run_loop($nd_head$(_t_0));
+  const _name_0 = ($nc_primitive_name$(($nm$(_head_0))));
+  const _x_0 = ($qt$(_head_0));
+  const _x_1 = ($terms_len$(run_loop($nd_args$(_t_0, {$: "Nil"}))));
+  const _x_2 = run_loop($nc_primitive_arity$(_name_0));
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_t_0)), "App")), ($String$eq$(($tg$(_head_0)), "Ref")))), ($Bool$not$((_x_0 === 3))))), ($nc_native_def$(run_loop($lookup$(_book_0, ($nm$(_head_0)))))))), ($nd_scalar_known$(_name_0)))), (_x_1 === _x_2)))) ? ((_x_3) => {
+  return _name_0;
+}) : ((_x_4) => {
+  return "";
+}), {$: "Unit"});
+}
+
 function $nd_beta$(_head_0, _args_0) {
   if (_args_0.$ === "Nil") {
     return _head_0;
@@ -17111,17 +17130,21 @@ function $nc_parallel_task$(_book_0, _xs_0, _env_0, _name_0, _join_0, _seq_0, _t
 }
 
 function $nc_let$(_book_0, _value_0, _body_0, _env_0, _id_0, _n_0) {
-  const _next_0 = ($nc_name$(_n_0));
-  const _held_0 = run_loop($nc_live_env$(_env_0, _body_0));
-  const _newenv_0 = ($List$append$(_held_0, {$: "Con", "head": ($nc_binding$(_id_0)), "tail": {$: "Nil"}}));
-  const _rest_0 = ($nc_lower$(_book_0, _body_0, _newenv_0, ((_n_0 + 1) >>> 0)));
-  const _val_0 = ($nc_lower$(_book_0, _value_0, run_loop($nc_live_env$(_env_0, _value_0)), ($nc_fresh$(_rest_0))));
-  const _seg_0 = {$: "N_Segment", "name": _next_0, "params": ($nc_params$(_newenv_0)), "result": 1, "frame": {$: "N_Frame", "pop": ($nt_count$(_held_0)), "slots": ($nc_slots$(_held_0, 0))}, "body": ($nc_body$(_rest_0)), "refs": {$: "Nil"}, "host": false, "spin": false, "fork": false, "bang": false};
-  const _x_0 = ($nc_cut$(($nc_words$(_held_0)), _next_0, ($nc_fresh$(_val_0))));
-  const _x_1 = ($nc_body$(_val_0));
-  const _x_2 = ($nc_share_env$(_env_0, _value_0, _body_0));
-  const _x_3 = (_x_0 + _x_1);
-  return {$: "NC_Code", "body": (_x_2 + _x_3), "segments": {$: "Con", "head": _seg_0, "tail": ($nt_append$(($nc_segs$(_rest_0)), ($nc_segs$(_val_0))))}, "fresh": ($nc_fresh$(_val_0)), "error": run_loop($nc_first_error$(_rest_0, _val_0))};
+  const _scalar_0 = run_loop($nd_scalar_call$(_book_0, _value_0));
+  const _x_0 = ($String$eq$(($tg$(_value_0)), "Var"));
+  const _x_1 = ($String$eq$(($tg$(_value_0)), "NWord"));
+  const _x_2 = (_x_0 || _x_1);
+  const _x_3 = ($Bool$and$(($String$eq$(($tg$(_value_0)), "NOp")), ($nd_scalar_known$(($nm$(_value_0))))));
+  return run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
+  return $nc_let_atom$(_book_0, _value_0, _body_0, _env_0, _id_0, _n_0);
+}) : ((_x_5) => {
+  return run_tail((($String$eq$(_scalar_0, ""))) ? ((_x_6) => {
+  return $nc_let_cut$(_book_0, _value_0, _body_0, _env_0, _id_0, _n_0);
+}) : ((_x_7) => {
+  const _x_8 = ($terms_len$(run_loop($nd_args$(_value_0, {$: "Nil"}))));
+  return $nc_lower$(_book_0, ($nd_bind_scalar$(_scalar_0, run_loop($nd_args$(_value_0, {$: "Nil"})), {$: "Nil"}, _n_0, _id_0, _body_0)), _env_0, ((_n_0 + _x_8) >>> 0));
+}), {$: "Unit"});
+}), {$: "Unit"});
 }
 
 function $nc_mklet$(_id_0, _val_0, _body_0) {
@@ -20141,6 +20164,12 @@ function $ne_node$(_prefix_0, _alloc_0, _ws_0, _n_0, _seal_0) {
   return {$: "N_Emitted", "code": ("u64 " + _x_4), "value": _name_0, "fresh": ((_n_0 + 1) >>> 0)};
 }
 
+function $nd_scalar_known$(_name_0) {
+  const _x_0 = ($String$eq$(_name_0, "f32_show"));
+  const _x_1 = ($String$eq$(_name_0, "f32_read"));
+  return $Bool$and$(($Bool$not$(($String$eq$(run_loop($ni_find$(_name_0, ($ni_templates$()))), "")))), ($Bool$not$((_x_0 || _x_1))));
+}
+
 function $nd_reapply$($0, $1) {
   for (;;) {
     {
@@ -20234,42 +20263,54 @@ function $nc_children$(_book_0, _xs_0, _env_0, _joinname_0, _joinword_0, _idx_0,
   }
 }
 
-function $nc_slots$(_env_0, _i_0) {
-  if (_env_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _rest_0 = _env_0["tail"];
-    return {$: "Con", "head": ($U32$show$(_i_0)), "tail": ($nc_slots$(_rest_0, ((_i_0 + 1) >>> 0)))};
-  }
-}
-
-function $nc_share_env$(_env_0, _a_0, _b_0) {
-  if (_env_0.$ === "Nil") {
-    return "";
-  } else {
-    const _t_0 = _env_0["head"];
-    const _id_0 = _t_0["id"];
-    const _word_0 = _t_0["word"];
-    const _rest_0 = _env_0["tail"];
-    const _x_4 = run_loop(run_tail((($Bool$and$(run_loop($nc_occurs$(_a_0, _id_0)), run_loop($nc_occurs$(_b_0, _id_0))))) ? ((_x_0) => {
-  const _x_1 = (_word_0 + ");\n");
-  const _x_2 = (" = term_keep(e, " + _x_1);
-  return (_word_0 + _x_2);
+function $nc_let_atom$(_book_0, _value_0, _body_0, _env_0, _id_0, _n_0) {
+  const _word_0 = run_loop(run_tail((($String$eq$(($tg$(_value_0)), "Var"))) ? ((_x_0) => {
+  return $nc_word$(($ix$(_value_0)), _env_0);
+}) : ((_x_1) => {
+  return run_tail((($String$eq$(($tg$(_value_0)), "NOp"))) ? ((_x_2) => {
+  return $nd_scalar_word$(($nm$(_value_0)), ($nc_values$(($ks$(_value_0)), _env_0)));
 }) : ((_x_3) => {
-  return "";
+  const _x_4 = ($nm$(_value_0));
+  return (_x_4 + "ull");
+}), {$: "Unit"});
 }), {$: "Unit"}));
-    const _x_5 = ($nc_share_env$(_rest_0, _a_0, _b_0));
-    return (_x_4 + _x_5);
-  }
+  const _held_0 = run_loop($nc_live_env$(_env_0, _body_0));
+  const _rest_0 = ($nc_lower$(_book_0, _body_0, ($List$append$(_held_0, {$: "Con", "head": ($nc_binding$(_id_0)), "tail": {$: "Nil"}})), _n_0));
+  return run_tail((($String$eq$(_word_0, "NATIVE_UNBOUND_VARIABLE"))) ? ((_x_5) => {
+  return $nc_let_cut$(_book_0, _value_0, _body_0, _env_0, _id_0, _n_0);
+}) : ((_x_6) => {
+  const _x_7 = (_word_0 + ";\nif (!seq && err_seen(e.mem)) { return 0; }\n");
+  const _x_8 = ($U32$show$(_id_0));
+  const _x_9 = (" = " + _x_7);
+  const _x_10 = (_x_8 + _x_9);
+  const _x_11 = ($nc_share_env$(_env_0, _value_0, _body_0));
+  const _x_12 = ("Term v_" + _x_10);
+  return $nc_prepend$((_x_11 + _x_12), _rest_0);
+}), {$: "Unit"});
 }
 
-function $nc_cut$(_ws_0, _next_0, _n_0) {
-  const _x_0 = ($nc_cut_task$(_next_0, _ws_0, ($ne_task$(_next_0, 1, _ws_0, "WL_CONT", "WL_IDX", _n_0))));
-  const _x_1 = (_x_0 + "}\n");
-  const _x_2 = ($ne_frame$(_ws_0, _next_0));
-  const _x_3 = ("} else {\n" + _x_1);
-  const _x_4 = (_x_2 + _x_3);
-  return ("if (seq) {\n" + _x_4);
+function $nc_let_cut$(_book_0, _value_0, _body_0, _env_0, _id_0, _n_0) {
+  const _next_0 = ($nc_name$(_n_0));
+  const _held_0 = run_loop($nc_live_env$(_env_0, _body_0));
+  const _newenv_0 = ($List$append$(_held_0, {$: "Con", "head": ($nc_binding$(_id_0)), "tail": {$: "Nil"}}));
+  const _rest_0 = ($nc_lower$(_book_0, _body_0, _newenv_0, ((_n_0 + 1) >>> 0)));
+  const _val_0 = ($nc_lower$(_book_0, _value_0, run_loop($nc_live_env$(_env_0, _value_0)), ($nc_fresh$(_rest_0))));
+  const _seg_0 = {$: "N_Segment", "name": _next_0, "params": ($nc_params$(_newenv_0)), "result": 1, "frame": {$: "N_Frame", "pop": ($nt_count$(_held_0)), "slots": ($nc_slots$(_held_0, 0))}, "body": ($nc_body$(_rest_0)), "refs": {$: "Nil"}, "host": false, "spin": false, "fork": false, "bang": false};
+  const _x_0 = ($nc_cut$(($nc_words$(_held_0)), _next_0, ($nc_fresh$(_val_0))));
+  const _x_1 = ($nc_body$(_val_0));
+  const _x_2 = ($nc_share_env$(_env_0, _value_0, _body_0));
+  const _x_3 = (_x_0 + _x_1);
+  return {$: "NC_Code", "body": (_x_2 + _x_3), "segments": {$: "Con", "head": _seg_0, "tail": ($nt_append$(($nc_segs$(_rest_0)), ($nc_segs$(_val_0))))}, "fresh": ($nc_fresh$(_val_0)), "error": run_loop($nc_first_error$(_rest_0, _val_0))};
+}
+
+function $nd_bind_scalar$(_name_0, _args_0, _acc_0, _n_0, _id_0, _body_0) {
+  if (_args_0.$ === "Nil") {
+    return $nc_mklet$(_id_0, ($kt$("NOp", _name_0, 0, 0, ($List$reverse$(_acc_0)))), _body_0);
+  } else {
+    const _h_0 = _args_0["head"];
+    const _rest_0 = _args_0["tail"];
+    return $nc_mklet$(($nc_id$(_n_0)), _h_0, ($nd_bind_scalar$(_name_0, _rest_0, {$: "Con", "head": ($var$("", ($nc_id$(_n_0)))), "tail": _acc_0}, ((_n_0 + 1) >>> 0), _id_0, _body_0)));
+  }
 }
 
 function $ne_wrap_ctor$(_k_0, _x_0) {
@@ -23486,32 +23527,56 @@ function $nc_local_segments$($0, $1, $2, $3) {
   }
 }
 
-function $ne_frame$(_ws_0, _next_0) {
-  const _x_0 = ($nt_count$(_ws_0));
-  const _n_0 = ((_x_0 + 1) >>> 0);
-  const _x_1 = ($U32$show$(_n_0));
-  const _x_2 = (_x_1 + ");\n");
-  const _x_3 = ($ne_frame_stores$(($List$append$(_ws_0, {$: "Con", "head": ($nt_fid$(_next_0)), "tail": {$: "Nil"}})), 0));
-  const _x_4 = ("WL_PUSHN(" + _x_2);
-  const _x_5 = (_x_3 + _x_4);
-  const _x_6 = ($U32$show$(_n_0));
-  const _x_7 = (");\n" + _x_5);
-  const _x_8 = (_x_6 + _x_7);
-  return ("WL_ROOM(" + _x_8);
+function $nd_scalar_word$(_name_0, _words_0) {
+  const _expr_0 = ($ni_emit$(_name_0, _words_0));
+  const _x_0 = ($String$eq$(_name_0, "u32_cmp"));
+  const _x_1 = ($String$eq$(_name_0, "nat_cmp"));
+  return run_tail(((_x_0 || _x_1)) ? ((_x_2) => {
+  const _x_3 = (_expr_0 + ") == 1 ? CID_EQ : CID_GT, 0)");
+  const _x_4 = (") == 0 ? CID_LT : (" + _x_3);
+  const _x_5 = (_expr_0 + _x_4);
+  return ("term_pak((" + _x_5);
+}) : ((_x_6) => {
+  return _expr_0;
+}), {$: "Unit"});
 }
 
-function $nc_cut_task$(_next_0, _ws_0, _emitted_0) {
-  const _code_0 = _emitted_0["code"];
-  const _word_0 = _emitted_0["value"];
-  const _x_0 = ($U32$show$(($nt_count$(_ws_0))));
-  const _x_1 = (_x_0 + ";\n");
-  const _x_2 = (");\nWL_IDX = " + _x_1);
-  const _x_3 = (_word_0 + _x_2);
-  const _x_4 = ($nt_fid$(_next_0));
-  const _x_5 = (", " + _x_3);
-  const _x_6 = (_x_4 + _x_5);
-  const _x_7 = ("WL_CONT = term_tsk(" + _x_6);
-  return (_code_0 + _x_7);
+function $nc_share_env$(_env_0, _a_0, _b_0) {
+  if (_env_0.$ === "Nil") {
+    return "";
+  } else {
+    const _t_0 = _env_0["head"];
+    const _id_0 = _t_0["id"];
+    const _word_0 = _t_0["word"];
+    const _rest_0 = _env_0["tail"];
+    const _x_4 = run_loop(run_tail((($Bool$and$(run_loop($nc_occurs$(_a_0, _id_0)), run_loop($nc_occurs$(_b_0, _id_0))))) ? ((_x_0) => {
+  const _x_1 = (_word_0 + ");\n");
+  const _x_2 = (" = term_keep(e, " + _x_1);
+  return (_word_0 + _x_2);
+}) : ((_x_3) => {
+  return "";
+}), {$: "Unit"}));
+    const _x_5 = ($nc_share_env$(_rest_0, _a_0, _b_0));
+    return (_x_4 + _x_5);
+  }
+}
+
+function $nc_slots$(_env_0, _i_0) {
+  if (_env_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _rest_0 = _env_0["tail"];
+    return {$: "Con", "head": ($U32$show$(_i_0)), "tail": ($nc_slots$(_rest_0, ((_i_0 + 1) >>> 0)))};
+  }
+}
+
+function $nc_cut$(_ws_0, _next_0, _n_0) {
+  const _x_0 = ($nc_cut_task$(_next_0, _ws_0, ($ne_task$(_next_0, 1, _ws_0, "WL_CONT", "WL_IDX", _n_0))));
+  const _x_1 = (_x_0 + "}\n");
+  const _x_2 = ($ne_frame$(_ws_0, _next_0));
+  const _x_3 = ("} else {\n" + _x_1);
+  const _x_4 = (_x_2 + _x_3);
+  return ("if (seq) {\n" + _x_4);
 }
 
 function $np_level_mat$(_term_0, _zero_0, _successor_0, _hasZero_0, _hasSucc_0) {
@@ -26865,20 +26930,32 @@ function $nc_parallel_uses$(_xs_0, _id_0) {
   }
 }
 
-function $ne_frame_stores$(_ws_0, _i_0) {
-  if (_ws_0.$ === "Nil") {
-    return "";
-  } else {
-    const _h_0 = _ws_0["head"];
-    const _t_0 = _ws_0["tail"];
-    const _x_0 = ($ne_frame_stores$(_t_0, ((_i_0 + 1) >>> 0)));
-    const _x_1 = (";\n" + _x_0);
-    const _x_2 = (_h_0 + _x_1);
-    const _x_3 = ($U32$show$(_i_0));
-    const _x_4 = (") = " + _x_2);
-    const _x_5 = (_x_3 + _x_4);
-    return ("STK(" + _x_5);
-  }
+function $ne_frame$(_ws_0, _next_0) {
+  const _x_0 = ($nt_count$(_ws_0));
+  const _n_0 = ((_x_0 + 1) >>> 0);
+  const _x_1 = ($U32$show$(_n_0));
+  const _x_2 = (_x_1 + ");\n");
+  const _x_3 = ($ne_frame_stores$(($List$append$(_ws_0, {$: "Con", "head": ($nt_fid$(_next_0)), "tail": {$: "Nil"}})), 0));
+  const _x_4 = ("WL_PUSHN(" + _x_2);
+  const _x_5 = (_x_3 + _x_4);
+  const _x_6 = ($U32$show$(_n_0));
+  const _x_7 = (");\n" + _x_5);
+  const _x_8 = (_x_6 + _x_7);
+  return ("WL_ROOM(" + _x_8);
+}
+
+function $nc_cut_task$(_next_0, _ws_0, _emitted_0) {
+  const _code_0 = _emitted_0["code"];
+  const _word_0 = _emitted_0["value"];
+  const _x_0 = ($U32$show$(($nt_count$(_ws_0))));
+  const _x_1 = (_x_0 + ";\n");
+  const _x_2 = (");\nWL_IDX = " + _x_1);
+  const _x_3 = (_word_0 + _x_2);
+  const _x_4 = ($nt_fid$(_next_0));
+  const _x_5 = (", " + _x_3);
+  const _x_6 = (_x_4 + _x_5);
+  const _x_7 = ("WL_CONT = term_tsk(" + _x_6);
+  return (_code_0 + _x_7);
 }
 
 function $np_emit_done$(_book_0, _index_0, _last_0, _rest_0, _word_0, _env_0, _code_0) {
@@ -29527,6 +29604,22 @@ function $norm_min_right$(_a_0, _b_0) {
 }) : ((_x_7) => {
   return $kt$("Min", "", 0, 0, {$: "Con", "head": _a_0, "tail": {$: "Con", "head": _b_0, "tail": {$: "Nil"}}});
 }), {$: "Unit"});
+}
+
+function $ne_frame_stores$(_ws_0, _i_0) {
+  if (_ws_0.$ === "Nil") {
+    return "";
+  } else {
+    const _h_0 = _ws_0["head"];
+    const _t_0 = _ws_0["tail"];
+    const _x_0 = ($ne_frame_stores$(_t_0, ((_i_0 + 1) >>> 0)));
+    const _x_1 = (";\n" + _x_0);
+    const _x_2 = (_h_0 + _x_1);
+    const _x_3 = ($U32$show$(_i_0));
+    const _x_4 = (") = " + _x_2);
+    const _x_5 = (_x_3 + _x_4);
+    return ("STK(" + _x_5);
+  }
 }
 
 function $np_emit_join$(_index_0, _last_0, _word_0, _code_0, _tail_0) {

@@ -1,0 +1,41 @@
+{
+  "kind": "phase67-bend-only-fast-plan-v1",
+  "complete": true,
+  "producer": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase67/benchmark/fast-plan.py",
+    "sha256": "a94c28533fffa7286425014b1486fded365e0bca1038098be7d96136e83e7082",
+    "bytes": 2919
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-scalars-timing01/report.json",
+      "sha256": "462ad198429587b923e270254da8bbf9ae4a71f7080646fd6ca9d45a4ddbbf4d",
+      "bytes": 51723
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-heldout-scalars-timing01/report.json",
+      "sha256": "db938703da9f5e697e02c6d065b9a96e5ae9ed95c089288248b08f15f531a1c0",
+      "bytes": 51797
+    }
+  ],
+  "recipe": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-scalars01-recipe.json",
+    "sha256": "0287797f0f36ee09447c349e0a29db4dff20086d609c1d466e5fe0e64134b8e7",
+    "bytes": 40567
+  },
+  "baselineApi": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/scalars-build01/equality/api.mjs",
+    "sha256": "c76f111391e337ec76645fe27b45608f52c0a3ae5256691241a11db0360c1fb3",
+    "bytes": 1981751
+  },
+  "output": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-fast06-plan01.json",
+    "sha256": "131af3992d409ee7382354f231a7c9bda6e1b0ece1f933c45c691587a3286bd8",
+    "bytes": 2518
+  },
+  "cases": 6,
+  "targetMilliseconds": 200,
+  "predictedTwoRoundMeasuredAndWarmMilliseconds": 2824.225634873655,
+  "timingQualification": "All observed final intervals still must be>=100ms. Faster future candidates may require larger counts and old/new remeasurement. Predictions exclude process start, method hashing and independent oracle calculation.",
+  "comparison": "Same exact plan and observer for baseline/future candidate; two serial campaigns are not temporally paired. No compilation in runtime loop."
+}

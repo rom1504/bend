@@ -1,23 +1,28 @@
-# Current frontier: Phase67 native speed and proof pilot
+# Current frontier: Phase67 installed native improvement
 
-The user authorized the [Phase67 design](../design/phase67/native-speed-and-proof.md).
-[Report](../implementation/phase67/README.md) · [Native experiment](phase67/P67-001-native-transport.md)
-· [Bounded compilation review](phase67/P67-002-compilation-side-probe.md)
-· [Proof pilot](phase67/P67-003-proof-pilot.md).
+[Design](../design/phase67/native-speed-and-proof.md) ·
+[Report](../implementation/phase67/README.md) ·
+[Installed release](../implementation/phase67/evidence/installed-release01.json).
+Selected source checkpoint `204f671`: B1 `c76f1113…`, genuine B2 `cbffd1f8…`,
+source `e4a4105e…`; upstream remains `0592662`.
 
-Primary work: fresh native/C comparison, then a small general continuation
-contraction. Root alone executes serial CPU3 targets under the existing 2 GiB
-tree RSS / 4 GiB memory-floor guard. Source reviewers own separate lanes.
-Baseline is installed Phase66 at `2035010`; upstream remains `059266225b77c8ca256ac6b25ee5c21449bab151`.
-Fresh raw belongs only under `selfhost/build/phase67`; all older raw and archives
-are immutable. Preserve the 110 inherited files and seven installed baseline
-copies. No PR comments. Native performance must not be confused with the
-existing JavaScript execution or B1/B2 compilation metrics.
+All six native families improve: 33.3% less runtime, 18.4% less Clang time,
+20.0% smaller C. The limited-corpus gap remains 10.41× upstream C; arrays,
+closure/aggregate transport, flat layouts and borrowing are the next native
+opportunities. Use the verified seven-second Bend-only loop for new edits;
+keep slow TS-resolved qualification separate. No new work is authorized merely
+by this frontier note.
 
-The bounded compilation source review found no sufficiently promising small
-patch and is deferred. Native baseline and proof validation are in progress;
-no new speedup or promotion is claimed. Review found and fixed diagnostic-order
-and nonsequential cancellation issues before any production candidate execution.
+B1/B2 compilation screens show no regression. All 45 JS point modules are
+byte-identical and the unchanged non-native executable closure retains finite
+frontend/JS conformance evidence. B2 self-check/reproduction, native controls
+and installed-interface checks pass. Production costs +46 lines, no new module.
+The proof model typechecks, but independent checking is blocked on Lean4.34.
+
+Raw Phase67 and all older raw/archive evidence are closed. New authorized work
+must use a fresh phase directory, preserve the installed baseline and inherited
+110 files, and retain one guarded CPU3 target tree at a time. Source/data agents
+can work on CPU0. No PR comments without an explicit new request.
 
 ---
 

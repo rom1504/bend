@@ -4089,3 +4089,20 @@ connects a restricted immediate-value semantic model to actual lowering, without
 claiming a proof of ownership, emitted C or the whole compiler.
 Fresh raw only in Phase67; old raw remains closed. No result or promotion at
 registration. [Report](../implementation/phase67/README.md).
+
+
+### Phase67 selected and installed — 2026-10-08
+
+[Report](../implementation/phase67/README.md): B1 `c76f1113…`, genuine B2
+`cbffd1f8…`, source `e4a4105e…`, unchanged upstream `0592662`. All six native
+families improve: runtime −33.3%, Clang −18.4%, C bytes −20.0%; remaining native
+TS gap 10.41×. Verified Bend-only loop: 12 qualified observations in 7.00s recorded
+wall plus initial setup, with no C rebuild. Held-out trees/Map/lexer improve 21–32%.
+Production adds 46 lines in two existing modules. Strict36, raw 10, paired native 8,
+threads 1/4, B2 self-check/reproduction, JS23/45 equality and release 42/24/5 pass.
+B1/B2 Numeric/Map screens 0.95930×/0.99882× prior images protect against regression;
+full TS compilation ratios remain historical. Executable closure equality retains
+finite frontend/JS conformance; 13 native APIs remain unsupported. Proof model accepted
+by both Bend checkers; independent kernel blocked on Lean 4.34, no formal compiler proof.
+Release work 50m52s; guard occupancy 18m6s; peak 1.41 GiB. Raw closed/archived;
+previous seven release files and 110 inherited files preserved. No PR comment.

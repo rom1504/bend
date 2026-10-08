@@ -6,26 +6,28 @@ Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-Use the [Phase66 report](../implementation/phase66/README.md) for selected and
-installed images, five-metric results and qualified scope. The current direct/legacy
-effect differences are in the [direct guide](../selfhost/docs/direct-javascript.md).
-Optional products for the exact updated Base passed independent qualification
-before permission was enabled; custom or later Base bytes retain ordinary
-annotation. Old prepared data or benchmark ratios do not transfer by changing
-a pin. See the [Base qualification](../implementation/phase66/base-host.md).
+The [Phase67 report](../implementation/phase67/README.md) identifies the installed
+checked B1 `c76f1113…` and genuine B2 `cbffd1f8…`, with fresh self-check,
+reproduction, native controls and installed-interface verification. Its
+[native value lowering](self_hosted/native-value-lowering.md) improves six
+native families by 33.3% in execution time, with a seven-second recorded
+Bend-only runtime loop that excludes new compiler/C acquisition.
 
-Selected attempt07 closes the full frontend/JS comparison with no
-TypeScript-passing candidate failure and passes genuine B2 self-check/reproduction.
-The [conformance summary](../implementation/phase66/evidence/conformance-final07.json)
-keeps its 1,045 distinct golden passes, 123 exemptions, shared process failure
-and graphics deferral separate. **Attempt07 is installed and verified**: selected
-checked B1 `bb6c6e2a…`; independently emitted B2 `0067736c…` is separately qualified.
-The [installed receipt](../implementation/phase66/evidence/installed-release07.json)
-passes integrity checks, legacy42, default24 and helper5. Against the new reference,
-compilation takes 1.402× TS for B1 and 1.321× for B2; including imports/API loading
-gives 0.983× and 0.990×. Generated-program runtime is 1.049× over 45 equally weighted
-points, or 1.047× over 23 sources, with 669 exact samples. These clocks and the
-remaining workload gaps are separate in the [measurement report](../implementation/phase66/measurement.md).
+Frontend/JavaScript behavior retains Phase66's finite conformance evidence
+through exact executable-closure equality. All 45 benchmark point modules are
+byte-identical. The [last broad five-metric campaign](../implementation/phase66/README.md)
+remains historical: B1/B2 compilation 1.402× / 1.321× TS, import-inclusive
+0.983× / 0.990×, and generated JS runtime 1.049× equal-point / 1.047×
+equal-source. Phase67's two-source compilation screens show no regression and
+do not update those broad ratios. Native performance remains a separate clock.
+
+The [installed receipt](../implementation/phase67/evidence/installed-release01.json)
+passes integrity, legacy42/default24/helper5. Current direct/legacy effect
+limits and finite conformance exceptions are unchanged. Custom or later Base
+bytes retain ordinary annotation until independently qualified; see the
+[Base qualification](../implementation/phase66/base-host.md). The proof pilot's
+independent kernel check remains blocked on its toolchain, not established by
+self-reproduction or ordinary type acceptance.
 
 ## Historical release results: Phase65
 

@@ -1,0 +1,458 @@
+{
+  "kind": "phase67-immediate-let-proof-pilot",
+  "complete": true,
+  "independentlyProved": false,
+  "sourceTypechecked": true,
+  "status": "independent-validation-blocked",
+  "kernelAccepted": false,
+  "negativeControlRejected": false,
+  "selfhostTypechecked": true,
+  "proof": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase67/immediate-let.bend",
+    "bytes": 2568,
+    "sha256": "bf19656db55113adbde68559167a88d08f2ba4146460039b8e56268d0850061e"
+  },
+  "elaboration": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/immediate-let01.bendtt",
+    "bytes": 3147,
+    "sha256": "0e1b7e61e7b4acb849f455ff4f14f5c0498e730a02b087c923a1772974b0d589"
+  },
+  "elaboratedDefinitions": [
+    "NP_Words.arms",
+    "NP_Words",
+    "NP_Frame.arms",
+    "NP_Frame",
+    "NP_Sequence.arms",
+    "NP_Sequence",
+    "np_append",
+    "np_resume",
+    "np_local",
+    "np_contract",
+    "np_framed",
+    "np_straight",
+    "np_sequence_contract"
+  ],
+  "kernelSource": {
+    "file": "/home/ai/bend2/build/publish/bend/bend2/bendtt.lean",
+    "bytes": 172753,
+    "sha256": "83cdd36e66dcd2cabcc3d10556c9c874f8d823956feab88f8bb5a81473d51be3"
+  },
+  "elaborator": {
+    "file": "/home/ai/bend2/build/publish/bend/bend2/safe.ts",
+    "bytes": 65468,
+    "sha256": "bf495d64c03caa7a2558aaae5e172cd7743b9aa5470c4d33ad86634e23d81ffc"
+  },
+  "toolchainLabel": "local Lean4.32.0; upstream automatic launcher requests4.34.0",
+  "scope": "Semantic model of sequential transport of already computed words and finite composition. Not a proof of production emitter, C/runtime, lookup, ownership, scheduler/error polling or compiler soundness.",
+  "runs": {
+    "upstreamCheck": {
+      "complete": true,
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "BEND_NO_TELEMETRY=1",
+        "selfhost/build/phase66/bun-toolchain01/bun",
+        "bend2/main.ts",
+        "selfhost/proofs/phase67/immediate-let.bend",
+        "--check-only"
+      ],
+      "started": 1791450909.6082695,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 46075904,
+      "minimumAvailableBytes": 27996176384,
+      "returncode": 0,
+      "wallSeconds": 0.10434701200574636,
+      "finished": 1791450909.7126155,
+      "name": "proof-check03",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check03/process.json",
+        "bytes": 519,
+        "sha256": "941a2a25685c46c3350f7edfba6a88cf7c119754c7146d988cae2361fc62c14d"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check03/stdout.log",
+        "bytes": 58,
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check03/stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdoutText": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+      "stderrText": ""
+    },
+    "elaboration": {
+      "complete": true,
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "BEND_NO_TELEMETRY=1",
+        "selfhost/build/phase66/bun-toolchain01/bun",
+        "bend2/main.ts",
+        "selfhost/proofs/phase67/immediate-let.bend",
+        "-o",
+        "selfhost/build/phase67/immediate-let01.bendtt"
+      ],
+      "started": 1791450942.4003255,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 42446848,
+      "minimumAvailableBytes": 27991416832,
+      "returncode": 0,
+      "wallSeconds": 0.10481721500400454,
+      "finished": 1791450942.5051417,
+      "name": "proof-elaboration01",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-elaboration01/process.json",
+        "bytes": 562,
+        "sha256": "1eadbfdc632ed778788a6a7e8ac4292a02785a48db10a19a7edcc889e3fd9f52"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-elaboration01/stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-elaboration01/stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdoutText": "",
+      "stderrText": ""
+    },
+    "kernel": {
+      "complete": false,
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "LEAN_STACK_SIZE_KB=4096",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+        "-M1400",
+        "--run",
+        "bend2/bendtt.lean",
+        "selfhost/build/phase67/immediate-let01.bendtt"
+      ],
+      "started": 1791450961.2849007,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 1124728832,
+      "minimumAvailableBytes": 27226193920,
+      "returncode": 1,
+      "wallSeconds": 91.86669417691883,
+      "finished": 1791451053.1515942,
+      "name": "proof-kernel01",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-kernel01/process.json",
+        "bytes": 558,
+        "sha256": "5dcd6ef148997ee1786ea6fd88885a8935fe82eb86ff465b3cf94ee4c7010cb7"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-kernel01/stdout.log",
+        "bytes": 182,
+        "sha256": "45e5135b06ed3e6629ef8b1971cf0ee0317a8ff726c492386eefd795a3c45207"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-kernel01/stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdoutText": "bend2/bendtt.lean:3530:41: error(lean.unknownIdentifier): Unknown identifier `ite_eq_left`\nbend2/bendtt.lean:3537:39: error(lean.unknownIdentifier): Unknown identifier `ite_eq_left`\n",
+      "stderrText": ""
+    },
+    "negative": null,
+    "selfhost": {
+      "complete": true,
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "selfhost/cli.mjs",
+        "selfhost/proofs/phase67/immediate-let.bend",
+        "--check-only"
+      ],
+      "started": 1791451405.4407084,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 95784960,
+      "minimumAvailableBytes": 27953733632,
+      "returncode": 0,
+      "wallSeconds": 0.32905597798526287,
+      "finished": 1791451405.7697644,
+      "name": "proof-b1-check01",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-b1-check01/process.json",
+        "bytes": 545,
+        "sha256": "72741d61d8db3d9ad0866ea1e8d178af05f03a82193500c933049abb652d4e58"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-b1-check01/stdout.log",
+        "bytes": 58,
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-b1-check01/stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdoutText": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+      "stderrText": ""
+    }
+  },
+  "priorLauncherFailures": [
+    {
+      "complete": false,
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "--experimental-strip-types",
+        "bend2/main.ts",
+        "selfhost/proofs/phase67/immediate-let.bend",
+        "--check-only"
+      ],
+      "started": 1791450443.0167072,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 82579456,
+      "minimumAvailableBytes": 28044910592,
+      "returncode": 1,
+      "wallSeconds": 0.16540108190383762,
+      "finished": 1791450443.182107,
+      "name": "proof-check01",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check01/process.json",
+        "bytes": 576,
+        "sha256": "50db7509d724717d13f59b652c0364306914a4cdfb9fb63a35dbf21b16719f2e"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check01/stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check01/stderr.log",
+        "bytes": 1126,
+        "sha256": "4d133378d573effa20710f6d51bccdaa3a7b148b24aade21702384001d59da2b"
+      },
+      "stdoutText": "",
+      "stderrText": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nfile:///home/ai/bend2/build/publish/bend/bend2/main.ts:843\nclass Check_Fail {\n  constructor(readonly why: unknown) {}\n                       ^^^^^^^^^^^^\n}\n\nSyntaxError [ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX]: TypeScript parameter property is not supported in strip-only mode\n    at parseTypeScript (node:internal/modules/typescript:68:40)\n    at processTypeScriptCode (node:internal/modules/typescript:146:42)\n    at stripTypeScriptModuleTypes (node:internal/modules/typescript:209:22)\n    at ModuleLoader.<anonymous> (node:internal/modules/esm/translators:680:29)\n    at #translate (node:internal/modules/esm/loader:434:20)\n    at afterLoad (node:internal/modules/esm/loader:502:29)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:507:12)\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:560:36)\n    at afterResolve (node:internal/modules/esm/loader:607:52)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:613:12) {\n  code: 'ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX'\n}\n\nNode.js v24.18.0\n"
+    },
+    {
+      "complete": false,
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "--experimental-transform-types",
+        "bend2/main.ts",
+        "selfhost/proofs/phase67/immediate-let.bend",
+        "--check-only"
+      ],
+      "started": 1791450705.073486,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 113016832,
+      "minimumAvailableBytes": 27920965632,
+      "returncode": 1,
+      "wallSeconds": 0.5532512599602342,
+      "finished": 1791450705.6267369,
+      "name": "proof-check02",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check02/process.json",
+        "bytes": 580,
+        "sha256": "029cd0c17effd0cf3f260f7844ad6b49a76467fa9d49362ca644754e20411806"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check02/stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check02/stderr.log",
+        "bytes": 247,
+        "sha256": "c8859e64ac60358acd536fb3a6c6d3c620428f7bb4e389e354750952af4a3f4e"
+      },
+      "stdoutText": "",
+      "stderrText": "(node:2433115) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nbend runs on Bun: curl -fsSL https://bend-lang.com/install.sh | sh\n"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase67/immediate-let.bend",
+      "bytes": 2568,
+      "sha256": "bf19656db55113adbde68559167a88d08f2ba4146460039b8e56268d0850061e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/bend2/bendtt.lean",
+      "bytes": 172753,
+      "sha256": "83cdd36e66dcd2cabcc3d10556c9c874f8d823956feab88f8bb5a81473d51be3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/bend2/safe.ts",
+      "bytes": 65468,
+      "sha256": "bf495d64c03caa7a2558aaae5e172cd7743b9aa5470c4d33ad86634e23d81ffc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/bend2/bend.ts",
+      "bytes": 138101,
+      "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/bend2/main.ts",
+      "bytes": 35211,
+      "sha256": "407c0196a47e464640c6557cb06d230016270a40f28ea4250f00936ab79c2f8e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase67/README.md",
+      "bytes": 3539,
+      "sha256": "9461aac03a403b4828660b7415531eec08239282b09dc21401ae6d49ab8b6ae9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase67/proof/collect.py",
+      "bytes": 5140,
+      "sha256": "19843034cb8fbf8c9bb2a593b0a6155116f01d4ad6a0955cb96f3b2d2e7bb46f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/immediate-let01.bendtt",
+      "bytes": 3147,
+      "sha256": "0e1b7e61e7b4acb849f455ff4f14f5c0498e730a02b087c923a1772974b0d589"
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/lean/version.h",
+      "bytes": 400,
+      "sha256": "5798a16682fa702a1872b8af822bb302c25ad35009ce7421776b0829b58f449a"
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/lib/lean/libleanshared.so",
+      "bytes": 158400552,
+      "sha256": "52c37024db38569f7e8911cfbc6819a2d97d0a8c336e74c3da8590e2cc1e099b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check03/process.json",
+      "bytes": 519,
+      "sha256": "941a2a25685c46c3350f7edfba6a88cf7c119754c7146d988cae2361fc62c14d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check03/stdout.log",
+      "bytes": 58,
+      "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check03/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-elaboration01/process.json",
+      "bytes": 562,
+      "sha256": "1eadbfdc632ed778788a6a7e8ac4292a02785a48db10a19a7edcc889e3fd9f52"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-elaboration01/stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-elaboration01/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-kernel01/process.json",
+      "bytes": 558,
+      "sha256": "5dcd6ef148997ee1786ea6fd88885a8935fe82eb86ff465b3cf94ee4c7010cb7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-kernel01/stdout.log",
+      "bytes": 182,
+      "sha256": "45e5135b06ed3e6629ef8b1971cf0ee0317a8ff726c492386eefd795a3c45207"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-kernel01/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-b1-check01/process.json",
+      "bytes": 545,
+      "sha256": "72741d61d8db3d9ad0866ea1e8d178af05f03a82193500c933049abb652d4e58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-b1-check01/stdout.log",
+      "bytes": 58,
+      "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-b1-check01/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bun-toolchain01/bun",
+      "bytes": 79500640,
+      "sha256": "a83d263767d839e4d2649ca8e35d07159c7afc99afdc96d731ced29e056dda0c"
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+      "bytes": 9024,
+      "sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550"
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "bytes": 123655872,
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/cli.mjs",
+      "bytes": 238,
+      "sha256": "e9e57dff0070a9023263c5355d5ca66923e98a5cd0cc28c4d2ccefe1024b28e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check01/process.json",
+      "bytes": 576,
+      "sha256": "50db7509d724717d13f59b652c0364306914a4cdfb9fb63a35dbf21b16719f2e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check01/stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check01/stderr.log",
+      "bytes": 1126,
+      "sha256": "4d133378d573effa20710f6d51bccdaa3a7b148b24aade21702384001d59da2b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check02/process.json",
+      "bytes": 580,
+      "sha256": "029cd0c17effd0cf3f260f7844ad6b49a76467fa9d49362ca644754e20411806"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check02/stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/proof-check02/stderr.log",
+      "bytes": 247,
+      "sha256": "c8859e64ac60358acd536fb3a6c6d3c620428f7bb4e389e354750952af4a3f4e"
+    }
+  ]
+}

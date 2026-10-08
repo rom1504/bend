@@ -1,9 +1,29 @@
 # Compiler validation
 
+## Phase67 native lowering qualification
+
+[Current report](../implementation/phase67/README.md) and
+[qualification receipt](../implementation/phase67/evidence/final-qualification01.json).
+Selected B1 `c76f1113…` and genuine B2 `cbffd1f8…` pass strict36, raw-core
+controls, eight paired native fixtures, four fixtures at threads1/4, own-source
+checking and exact reproduction. All six native benchmark families pass their
+independent oracles. Physical GPU execution remains untested.
+
+All 1,403 frontend and 3,066 non-native executable functions are unchanged,
+allowing scoped reuse of the finite Phase66 frontend/JS results below. Fresh
+B1/B2 outputs agree on 23 sources and 45 points, also byte-identical to the
+previous release. Native output changed and uses fresh selected evidence;
+older unrerun native cases remain historical. Thirteen unsupported native APIs
+are unchanged. Installed integrity and legacy42/default24/helper5 pass.
+
+The separate proof model passes both Bend checkers; independent BendTT checking
+is blocked by the installed Lean version. This does not establish a compiler
+correctness theorem.
+
 ## Phase66 migration qualification
 
 The active target is `059266225b77c8ca256ac6b25ee5c21449bab151`. The
-[Phase66 report](../implementation/phase66/README.md) is the current gate index;
+[Phase66 report](../implementation/phase66/README.md) is the migration gate index;
 the historical results below retain their original source, image and reference
 identities. Full qualification requires checked B1, a genuine emitted B2,
 own-source acceptance, reproduction and installed-interface gates separately.

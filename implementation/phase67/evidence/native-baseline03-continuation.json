@@ -1,0 +1,31 @@
+{
+  "kind": "phase67-baseline-image-continuation-v1",
+  "complete": true,
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-baseline02-recipe.json",
+      "sha256": "43c21dc7ddce0a1e1f629751f180cdeebbbe261646f52a4e9414a30eee65103e",
+      "bytes": 40260
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-baseline03-recipe.json",
+      "sha256": "fe1f23c1b694a7e58188a85be7580931867369d30a911cc4fd544c90962046bf",
+      "bytes": 40563
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/dist/typed-api.mjs",
+      "sha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
+      "bytes": 1977285
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/equality/api.mjs",
+      "sha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
+      "bytes": 1977285
+    }
+  ],
+  "sharedInputs": 177,
+  "changedSharedInputs": [],
+  "reason": "Old installed-release verification correctly refused changed live compiler sources after candidate patch. This is not a failed compiler image. Use the exact frozen Phase66 B1 API with identical host/runtime/Base/method/toolchain bytes; no installation-validity claim for mixed live checkout.",
+  "preservedFailure": "native-heldout-baseline01/report.json",
+  "newOutput": "native-heldout-baseline02"
+}

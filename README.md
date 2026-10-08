@@ -16,25 +16,31 @@ This fork ships the Bend2 compiler in [`selfhost/`](selfhost/README.md), targeti
 upstream **`0592662` (Bend 2.0.36)**. Ordinary compilation runs Bend algorithms
 without a TypeScript fallback.
 
-**Phase66 attempt07 is installed and verified.** The installed package is checked
-B1 `bb6c6e2a…`; independently emitted B2 `0067736c…` checks its own source and
-reproduces B3 exactly. Direct JavaScript is the default; legacy JS and native C
-retain explicitly documented limits.
+**Phase67 is installed and verified.** Checked B1 is `c76f1113…`; genuine B2
+`cbffd1f8…` checks its own source and reproduces B3 exactly. Direct JavaScript
+is the default; legacy JS and native C retain documented limits.
 
-Across 23 sources, B1/B2 compilation takes **1.402× / 1.321× TypeScript's time**;
-including imports/API loading gives **0.983× / 0.990×**. These are fresh-process,
-prepared-cache compiler clocks. Generated programs average **1.049× TypeScript-generated runtime** when weighting the 45 points equally (**1.047×** across 23 sources), with all 669 samples correct.
+Six native diagnostic families run **1.50× faster**, with **20% smaller C** and
+**18% less Clang build time**. The remaining native gap is **10.41× upstream**
+on this limited corpus. A reusable execution-only loop checks all six families
+in **7 seconds**, plus initial setup/hashing; new C acquisition is separate.
 
-Frontend outcomes agree on all **3,174 observations**. Combined Node and scoped
-Bun evidence has **1,045 distinct golden passes**, with 123 unprintable-main
-exemptions, one shared process failure and one graphics deferral; there is no
-TypeScript-passing candidate JS failure. Thirteen native API gaps and legacy effect limits
-remain explicit. Type acceptance and self-reproduction do not establish proof
-validity. Maintained Bend source is **28,490 physical lines in 115 modules**
-(+0.331% versus the prior phase); host/runtime costs are counted separately.
+JavaScript outputs remain byte-identical across all 45 benchmark points.
+Phase66's last full campaign measured **1.049× upstream JS runtime** and
+**1.402× / 1.321× TypeScript compilation time** for B1/B2 (including imports:
+0.983× / 0.990×). Phase67's short B1/B2 screens show no regression; they do not
+replace those broad historical measurements.
 
-Read the [five-axis report](implementation/phase66/README.md),
-[installed-release evidence](implementation/phase66/evidence/installed-release07.json)
+The unchanged frontend/JS executable closure retains 3,174 exact frontend
+observations and 1,045 golden JS passes, with 123 exemptions, one shared process
+failure and one graphics deferral. Thirteen native API gaps remain. Maintained
+Bend source is **28,536 physical lines in 115 modules** (+46 lines this phase).
+The proof pilot is accepted by both Bend checkers; independent kernel checking
+is blocked by the available Lean version. It is not a proof of the compiler.
+
+Read the [Phase67 report](implementation/phase67/README.md),
+[native lowering and fast loop](docs/self_hosted/native-value-lowering.md),
+[installed-release evidence](implementation/phase67/evidence/installed-release01.json)
 and [compiler guide](docs/BEND-IN-BEND.md). From `selfhost/`, run
 `npm run verify:release`, then `node cli.mjs FILE --run`. The
 [conformance record](selfhost/CONFORMANCE.md), [architecture](selfhost/docs/ARCHITECTURE.md)

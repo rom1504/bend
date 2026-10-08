@@ -5,13 +5,17 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active implementation: Phase67 native speed and proof pilot
+## Completed implementation: Phase67 native speed and proof pilot
 
 [Design](../design/phase67/native-speed-and-proof.md) ·
 [Report](../implementation/phase67/README.md).
-Fresh native comparison and general value-transport contraction, a bounded
-compilation-speed review, and a small independently checked proof model.
-Phase66 remains installed until a surviving candidate passes integration.
+Selected B1 `c76f1113…` is installed; genuine B2 `cbffd1f8…` self-checks and
+reproduces exactly. Six native families improve by 33.3% in runtime, 18.4% in
+Clang time and 20.0% in C size, with a verified seven-second execution-only loop.
+JS outputs remain exact; bounded B1/B2 compilation screens show no regression.
+The compiler adds 46 lines in two modules. The proof pilot typechecks but its
+independent kernel validation remains blocked by the Lean version. Raw is sealed
+and archived; see the report for finite scope and remaining native gaps.
 
 ## Completed implementation: Phase66 upstream and five metrics
 

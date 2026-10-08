@@ -1,6 +1,6 @@
 # Fresh native baseline
 
-The installed Phase66 compiler still emits structurally expensive native code.
+The Phase66 compiler used as the baseline emitted structurally expensive native code.
 On three diagnostic families, its executable is **3.13×–122.59× slower** than
 current upstream-generated C. Its C also takes **16.56–16.75 seconds** to compile,
 versus **0.88–0.95 seconds** for upstream. These are fresh Phase67 measurements,

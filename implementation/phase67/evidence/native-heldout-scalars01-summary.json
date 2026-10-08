@@ -1,0 +1,107 @@
+{
+  "kind": "phase67-native-summary-v1",
+  "complete": true,
+  "producer": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase67/benchmark/analyze.py",
+    "sha256": "e2e6208cac22129a85c81cc139ee0380defd9d64217097650adce23cec228122",
+    "bytes": 3691
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-heldout-scalars01/report.json",
+      "sha256": "535feedcbeddbb7835078bfcb82ad0791b6be288a4d87f5b0c6c3143752e9147",
+      "bytes": 51842
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-heldout-scalars-timing01/report.json",
+      "sha256": "db938703da9f5e697e02c6d065b9a96e5ae9ed95c089288248b08f15f531a1c0",
+      "bytes": 51797
+    }
+  ],
+  "recipeSha256": "0287797f0f36ee09447c349e0a29db4dff20086d609c1d466e5fe0e64134b8e7",
+  "rows": [
+    {
+      "case": "lexer",
+      "roles": {
+        "selfhost": {
+          "runtimeMicrosecondsPerWorkload": 6816.576086956522,
+          "samplesMicrosecondsPerWorkload": [
+            6812.5,
+            6820.652173913044
+          ],
+          "rounds": 2,
+          "minimumElapsedMs": 2507,
+          "allTimingQualified": true,
+          "runtimeRelativeRange": 0.0011959338249950865,
+          "emissionTimings": {
+            "initializeMs": 17.217486000000008,
+            "prepareBaseMs": 81.31581700000004,
+            "loadCheckEmitMs": 2517.7331130000002,
+            "totalMs": 3693.2616620000003
+          },
+          "clangWallSeconds": 16.78865866304841,
+          "sourceBytes": 1977087,
+          "executableBytes": 1048384,
+          "emissionPeakRssBytes": 613105664,
+          "clangPeakRssBytes": 381472768
+        }
+      }
+    },
+    {
+      "case": "map",
+      "roles": {
+        "selfhost": {
+          "runtimeMicrosecondsPerWorkload": 2004.032258064516,
+          "samplesMicrosecondsPerWorkload": [
+            2014.1129032258066,
+            1993.9516129032259
+          ],
+          "rounds": 2,
+          "minimumElapsedMs": 989,
+          "allTimingQualified": true,
+          "runtimeRelativeRange": 0.01006036217303827,
+          "emissionTimings": {
+            "initializeMs": 17.05541800000003,
+            "prepareBaseMs": 81.275981,
+            "loadCheckEmitMs": 3048.4062510000003,
+            "totalMs": 4317.886764999999
+          },
+          "clangWallSeconds": 28.19096030294895,
+          "sourceBytes": 2886281,
+          "executableBytes": 1612048,
+          "emissionPeakRssBytes": 685637632,
+          "clangPeakRssBytes": 516493312
+        }
+      }
+    },
+    {
+      "case": "tree",
+      "roles": {
+        "selfhost": {
+          "runtimeMicrosecondsPerWorkload": 1469.6691176470588,
+          "samplesMicrosecondsPerWorkload": [
+            1472.4264705882354,
+            1466.9117647058822
+          ],
+          "rounds": 2,
+          "minimumElapsedMs": 1596,
+          "allTimingQualified": true,
+          "runtimeRelativeRange": 0.0037523452157599956,
+          "emissionTimings": {
+            "initializeMs": 17.38708399999996,
+            "prepareBaseMs": 82.0180489999999,
+            "loadCheckEmitMs": 2485.041763,
+            "totalMs": 3773.6624810000003
+          },
+          "clangWallSeconds": 17.210393638000824,
+          "sourceBytes": 1870349,
+          "executableBytes": 1003240,
+          "emissionPeakRssBytes": 603877376,
+          "clangPeakRssBytes": 373575680
+        }
+      }
+    }
+  ],
+  "allTimingQualified": true,
+  "scope": "Equal input wrappers, native CPU3 threads1/GPUoff. Six-family diagnostic maximum; finite conformance, not universal speed. C build is single acquisition, runtime medians exclude it."
+}

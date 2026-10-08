@@ -1,16 +1,21 @@
 # Compiler architecture
 
 **Current source target:** `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The [Phase66 report](../../implementation/phase66/README.md) identifies selected
-and installed images and closed qualification gates. Source architecture alone
-does not establish release readiness. The [selected07 installed receipt](../../implementation/phase66/evidence/installed-release07.json)
-closes actual release qualification; installed checked B1 and genuine B2 remain
-distinct artifacts. Read the
+The [Phase67 report](../../implementation/phase67/README.md) identifies the
+installed checked B1 and separately qualified genuine B2. Source architecture
+alone does not establish release readiness; see the
+[installed receipt](../../implementation/phase67/evidence/installed-release01.json).
+
+Phase67 removes native continuations for already computed atoms and inlines
+exactly saturated genuine Base scalar calls. It retains ownership, liveness,
+evaluation order, fallback and the scheduler ABI. The changes add 46 lines in
+existing `bridge.bend` and `direct.bend`; no frontend, JS, host or runtime
+algorithm changes. Read the [native lowering guide](../../docs/self_hosted/native-value-lowering.md)
+for the rule, proof-model limits and short performance loop. The earlier
 [request pipeline](../../docs/self_hosted/compiler-request-pipeline.md),
 [prepared Base artifacts](../../docs/self_hosted/prepared-base-artifacts.md) and
-[migration results](../../implementation/phase66/README.md) for the
-current source, cached facts, lowering plan, self-reproduction and image roles.
-The sections below retain their dated architectural evidence.
+[migration results](../../implementation/phase66/README.md) retain their dated
+scope and image identities.
 
 ## Phase66 boundary changes
 

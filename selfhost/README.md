@@ -1,23 +1,25 @@
 # Bend2 compiler port in Bend2
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The [Phase66 report](../implementation/phase66/README.md) records migration,
-the selected compiler images, installed status and five separate metrics.
-Use `npm run verify:release` to verify the installed package; a successful
-candidate build alone does not qualify or install that candidate.
+The [Phase67 report](../implementation/phase67/README.md) records the selected
+and installed compiler: checked B1 `c76f1113…`, genuine B2 `cbffd1f8…`.
+Both self-hosting gates and installed-interface checks pass. Use
+`npm run verify:release` to check the installed package.
 
-Selected attempt07 passes its complete frontend/JS comparison and genuine B2
-self-check/reproduction gates. The combined Node and scoped Bun evidence has
-1,045 distinct golden passes and no TypeScript-passing fixture that fails Bend;
-shared failures, exemptions and native limitations remain explicit in the
-[conformance record](CONFORMANCE.md). Attempt07 is installed and verified: selected
-checked B1 `bb6c6e2a…`; genuine B2 `0067736c…` remains a separate qualified image.
-The [release receipt](../implementation/phase66/evidence/installed-release07.json)
-binds integrity verification, legacy42, default24 and helper5. Compiler latency
-is 1.402× TypeScript for B1 and 1.321× for B2; emitted-program runtime is 1.049×
-across 45 equally weighted points (1.047× across 23 sources). See the
-[measurement report](../implementation/phase66/measurement.md) for distinct clocks.
-Prior release files and every failed migration attempt remain preserved.
+Six native diagnostic families run 1.50× faster, with 20% smaller C and 18%
+less Clang build time. The [native lowering guide](../docs/self_hosted/native-value-lowering.md)
+explains the general rules and seven-second execution-only loop. The native
+corpus still averages 10.41× upstream execution time; this is separate from
+JavaScript output speed and compiler latency.
+
+The unchanged frontend/JS executable closure retains Phase66's finite
+conformance results, and all 45 benchmark point modules are byte-identical.
+The last full campaign measured B1/B2 compilation 1.402×/1.321× TS and JS
+runtime 1.049× equal-point/1.047× equal-source. Phase67's short compilation
+screens show no regression; they do not update those broad ratios.
+See the [conformance record](CONFORMANCE.md),
+[release receipt](../implementation/phase67/evidence/installed-release01.json)
+and [measurement boundaries](../implementation/phase67/compilation-and-selfhosting.md).
 
 Phase66 changes namespace display, the Base/effect ABI and composite host
 marshalling. The new Base needs fresh prepared artifacts. Its exact-content
@@ -154,7 +156,7 @@ node cli.mjs tests/conformance/typed-smoke/base-u32.bend --legacy-js --run
 
 The [benchmark recipes](tools/performance/phase53/PLAN.md) cover checked acquisition,
 fast screens and serial full-corpus validation. Use fresh attempts and the
-[Phase66 report](../implementation/phase66/README.md) for current image status; the [Phase61 results matrix](../implementation/phase61/state08-results.md)
+[Phase67 report](../implementation/phase67/README.md) for current image status; the [Phase61 results matrix](../implementation/phase61/state08-results.md)
 retains its historical image bindings. Historical [Phase56 recipes](tools/performance/phase56/README.md)
 require fresh identity bindings before replay. CPU/allocation/V8
 [diagnostics](tools/performance/programs/DIAGNOSTICS.md) remain separate from clean

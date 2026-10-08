@@ -1,0 +1,58 @@
+{
+  "kind": "phase67-native-upstream-drift-check",
+  "complete": true,
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-timing03/report.json",
+      "sha256": "33b61f891bf8359620854dffb886ee9dab4cb06f4a91f6f2d496f44f501942ff",
+      "bytes": 63284
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-upstream-refresh01/report.json",
+      "sha256": "2de31faf559f8b1b9fcaf972935c2d7c8bc1e684831c0a3797b419fcf31f83b6",
+      "bytes": 52151
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-scalars-timing01/report.json",
+      "sha256": "462ad198429587b923e270254da8bbf9ae4a71f7080646fd6ca9d45a4ddbbf4d",
+      "bytes": 51723
+    }
+  ],
+  "plan": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-plan-screen03.json",
+    "sha256": "7c9e6460acc045914ad3ceefa23ef299362b9291613bea60beee425a2ca74d44",
+    "bytes": 1390
+  },
+  "recipe": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-baseline02-recipe.json",
+    "sha256": "43c21dc7ddce0a1e1f629751f180cdeebbbe261646f52a4e9414a30eee65103e",
+    "bytes": 40260
+  },
+  "rows": [
+    {
+      "case": "numeric",
+      "earlierUpstreamMicroseconds": 3.265122673434856,
+      "refreshedUpstreamMicroseconds": 3.1197123519458545,
+      "upstreamRefreshOverEarlier": 0.9554655870445344,
+      "selectedMicroseconds": 22.459285109983078,
+      "selectedOverRefreshedUpstream": 7.199152542372881
+    },
+    {
+      "case": "array",
+      "earlierUpstreamMicroseconds": 2.9052734375,
+      "refreshedUpstreamMicroseconds": 2.734375,
+      "upstreamRefreshOverEarlier": 0.9411764705882353,
+      "selectedMicroseconds": 232.38118489583331,
+      "selectedOverRefreshedUpstream": 84.98511904761904
+    },
+    {
+      "case": "closures",
+      "earlierUpstreamMicroseconds": 3.841145833333333,
+      "refreshedUpstreamMicroseconds": 3.857421875,
+      "upstreamRefreshOverEarlier": 1.0042372881355932,
+      "selectedMicroseconds": 9.47265625,
+      "selectedOverRefreshedUpstream": 2.4556962025316458
+    }
+  ],
+  "scope": "Same frozen TS executable bytes reexecuted in two later rounds, no redundant C build. Scalar candidate and reference epochs remain sequential, not paired/interleaved. Large gaps are robust; small deltas not resolved."
+}

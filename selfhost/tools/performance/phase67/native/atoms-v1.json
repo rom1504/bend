@@ -1,0 +1,16 @@
+{
+  "status": "unexecuted candidate",
+  "source": "selfhost/src/back/native/bridge.bend",
+  "beforeSha256": "4767f940940660635ec4c80978f8e4abb11c398b4b8f8bccabf05879c59f2a49",
+  "candidateSha256": "414dd8d254d19220f020f31b57457f0aa6e2430d20f21b0b0999f3e7fff4e21b",
+  "patchSha256": "68bbcd1f9b5ab3f8f1040351ed36f5f39113268de535a708d5a8a34207a1b359",
+  "physicalLineDelta": 17,
+  "rule": "Eliminate push/return transport for already evaluated Var and NWord let values; preserve original ownership sharing and body liveness/drop operations.",
+  "excluded": [
+    "Calls",
+    "Allocating constructors",
+    "Array operations",
+    "Parallel forks",
+    "Effects"
+  ]
+}

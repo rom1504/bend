@@ -1,0 +1,20 @@
+{
+  "status": "unexecuted candidate",
+  "includes": "atoms-v2",
+  "patchSha256": "a3ed61fb0c5716df0db002b538c895e3c58e6cdefe3b357c12fcf455be1c8087",
+  "files": [
+    {
+      "file": "selfhost/src/back/native/bridge.bend",
+      "beforeSha256": "4767f940940660635ec4c80978f8e4abb11c398b4b8f8bccabf05879c59f2a49",
+      "afterSha256": "ebd8019a93c4ad65de40a51c6949b908df4605df356f6f842cc226e40f558393",
+      "lineDelta": 20
+    },
+    {
+      "file": "selfhost/src/back/native/direct.bend",
+      "beforeSha256": "75c5d560b8390263d18c991da8410191a0c5909b4ae0e8ebae193c0d9fd02de5",
+      "afterSha256": "1574e2bbd423e3fb8b5952faf6ff5f03fa6733ba1082723c979b2b297238334d",
+      "lineDelta": 26
+    }
+  ],
+  "rule": "Inline exactly saturated, non-bang, actual Base scalar intrinsic calls, binding all arguments in original order; preserve intrinsic C expression and original ownership."
+}

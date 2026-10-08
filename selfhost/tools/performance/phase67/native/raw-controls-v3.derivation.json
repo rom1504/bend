@@ -1,0 +1,18 @@
+{
+  "parent": {
+    "file": "selfhost/tools/performance/phase67/native/raw-controls-v2.mjs",
+    "sha256": "1c50c53d8517d7537e5f8c3508d3bb8abad194af4f3edba2b167f07359181e79"
+  },
+  "output": {
+    "file": "selfhost/tools/performance/phase67/native/raw-controls-v3.mjs",
+    "sha256": "762ab39d48eed44770cdf6d1bec33dafcc99f24609adc9e9aa97fd6e2e65fbb1"
+  },
+  "edits": [
+    {
+      "old": "const parents=[baseADT('Nat',[baseCtor('Zero',0,nty),baseCtor('Succ',1,all(80,nty,nty))])];",
+      "new": "const lty=t('ADT','List',[t('ADT','U32')]);\nconst parents=[baseADT('List',[baseCtor('Nil',0,lty),baseCtor('Con',2,all(78,t('ADT','U32'),all(79,lty,lty)))]),baseADT('Nat',[baseCtor('Zero',0,nty),baseCtor('Succ',1,all(80,nty,nty))])];",
+      "occurrences": 1
+    }
+  ],
+  "rationale": "Retained native runtime always references byte-list Nil/Con IDs in its IO support. Bind actual List constructors using the existing maintained native/tests.mjs concrete List<U32> parent; no fabricated C IDs and no target semantics change. V2 Clang failure preserved."
+}

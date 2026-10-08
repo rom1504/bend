@@ -1,0 +1,21 @@
+{
+  "status": "unexecuted candidate",
+  "includes": "atoms-v3",
+  "patchSha256": "51c7e2d241888ab42504cb6c447b27b9e3755d52564042efb83e0f3b33db4f2d",
+  "files": [
+    {
+      "file": "selfhost/src/back/native/bridge.bend",
+      "beforeSha256": "4767f940940660635ec4c80978f8e4abb11c398b4b8f8bccabf05879c59f2a49",
+      "afterSha256": "3344ccbfb1c4fa73980becefb33441ba09139d610fbd40c5383a41188c77c049",
+      "lineDelta": 20
+    },
+    {
+      "file": "selfhost/src/back/native/direct.bend",
+      "beforeSha256": "75c5d560b8390263d18c991da8410191a0c5909b4ae0e8ebae193c0d9fd02de5",
+      "afterSha256": "1574e2bbd423e3fb8b5952faf6ff5f03fa6733ba1082723c979b2b297238334d",
+      "lineDelta": 26
+    }
+  ],
+  "rule": "Inline exactly saturated, non-bang, actual Base scalar intrinsic calls, binding all arguments in original order; preserve intrinsic C expression and original ownership.",
+  "revision": "Preserve nonsequential FID_EXIT error checkpoint; scalar v1 never executed."
+}

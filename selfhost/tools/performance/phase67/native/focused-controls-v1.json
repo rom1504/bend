@@ -1,0 +1,105 @@
+{
+  "status": "prospective, no results claimed",
+  "sourceControls": [
+    {
+      "source": "tests/reg/array_clone_boxed.bend",
+      "sha256": "54a4c9126e3de955580b6a6c3db967564446efc19bfb57b521a6ceba6445e9e3",
+      "purpose": "ownership: shared heap elements, aliases, dropped clone, mutation",
+      "golden": [
+        "ababababababababhelloworldabcdabzzdcleaf"
+      ]
+    },
+    {
+      "source": "tests/compile/shared_tree_copies.bend",
+      "sha256": "b4676d28fd53187ce4bdfdea7a42a30580e67334abeac7a5ebb99d6a971441a5",
+      "purpose": "ownership: recursive shared data",
+      "golden": [
+        "752"
+      ]
+    },
+    {
+      "source": "tests/compile/shared_pattern_reuse.bend",
+      "sha256": "d3de894f0e7a8c4333be3e10ae17a41b58d634e62789804fdef9985319225fb8",
+      "purpose": "pattern-produced aliases",
+      "golden": [
+        "987"
+      ]
+    },
+    {
+      "source": "tests/compile/bang_intrinsic_closure.bend",
+      "sha256": "b4e9b3ae9b9f080986a40d5d9e3e097cf5fa43f459b71112b75202d801b469d7",
+      "purpose": "bang boundary and partial intrinsic closure fallback",
+      "golden": [
+        "3"
+      ]
+    },
+    {
+      "source": "tests/base/u32_divmod_zero.bend",
+      "sha256": "5f57c932ae8b8d2afdf570f6e8a4fb9978a9bdb117d3528880dbb4af7b7c41d9",
+      "purpose": "scalar wrapping and zero division",
+      "golden": [
+        "6n"
+      ]
+    },
+    {
+      "source": "tests/base/nat_divmod_zero.bend",
+      "sha256": "d1723264b044ff7f9b38c402a96e9726e8ea25b7d9a6640e76803568a26d95ca",
+      "purpose": "Nat zero division and tuple result fallback",
+      "golden": [
+        "6n"
+      ]
+    },
+    {
+      "source": "tests/compile/float_compare.bend",
+      "sha256": "aaf507ce9e5283b5feb2231910c7943f57a93bae66923b26e481024bcfe1d9b1",
+      "purpose": "F32 comparisons, arithmetic and scalar conversion",
+      "golden": [
+        "1999985"
+      ]
+    },
+    {
+      "source": "tests/io/intrinsic_user_name.bend",
+      "sha256": "a978e3436b0d9e9643e7a4e99e55e0b3a3af6de1847ca27584a3e4c3af8226d6",
+      "purpose": "user effect with intrinsic-looking name must not inline",
+      "golden": [
+        "gt",
+        "13",
+        "H"
+      ]
+    },
+    {
+      "source": "tests/reg/intrinsic_arg_layout.bend",
+      "sha256": "c23958054ef2d813871ca9f5f5bccb94a77855f66ef85290e9a0857a41174da0",
+      "purpose": "primitive argument layout boundary",
+      "golden": [
+        "True",
+        "False",
+        "True",
+        "False",
+        "False",
+        "True",
+        "False",
+        "True"
+      ]
+    }
+  ],
+  "nativeUnitControls": [
+    "shared_box",
+    "drop_box",
+    "shared_tree",
+    "parallel",
+    "closure",
+    "array_get",
+    "array_clone",
+    "override_add",
+    "foreign intrinsic-name C effect dispatch",
+    "unbound variable diagnostic"
+  ],
+  "executionPolicy": "Root only: one CPU3 target tree, bounded heap/RSS; same emitted source with threads1 and4 for ownership controls. Reuse existing native harness; do not rebuild one compiler per fixture.",
+  "counterexamples": [
+    "Unbound value with earlier body error must retain original diagnostic via cut fallback.",
+    "Preposted nonseq runtime error must skip body as original FID_EXIT does.",
+    "Sequential path remains unchanged: no new unconditional error poll.",
+    "Array, foreign, partial and bang calls do not use scalar primitive inline path."
+  ]
+}

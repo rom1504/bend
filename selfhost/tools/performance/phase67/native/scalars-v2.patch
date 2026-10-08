@@ -1,0 +1,77 @@
+--- a/selfhost/src/back/native/bridge.bend
++++ b/selfhost/src/back/native/bridge.bend
+@@ -157,8 +157,28 @@
+ ) -> NC_Code:
+   nc_prepend(nc_drop_dead(env, t), nc_lower_live(book, t, nc_live_env(env, t), n))
+ 
++# Evaluated atoms do not need a continuation. Keep the same sharing and dead
++# value handling as the general cut, and bind the word before lowering the body.
++@unsafe
++def nc_let_atom(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:
++  +word = nt_choose(String, String.eq(tg(value), "Var"), u => nc_word(ix(value), env), u => nt_choose(String, String.eq(tg(value), "NOp"), u => nd_scalar_word(nm(value), nc_values(ks(value), env)), u => nm(value) ++ "ull"))
++  +held = nc_live_env(env, body)
++  +rest = nc_lower(book, body, List.append(&2, NC_Binding, held, [nc_binding(id)]), n)
++  nt_choose(NC_Code, String.eq(word, "NATIVE_UNBOUND_VARIABLE"),
++    u => nc_let_cut(book, value, body, env, id, n),
++    u => nc_prepend(nc_share_env(env, value, body) ++ "Term v_" ++ U32.show(id) ++ " = " ++ word ++ ";\nif (!seq && err_seen(e.mem)) { return 0; }\n", rest))
++
+ @unsafe
+ def nc_let(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:
++  +scalar = nd_scalar_call(book, value)
++  nt_choose(NC_Code, String.eq(tg(value), "Var") || String.eq(tg(value), "NWord") || (String.eq(tg(value), "NOp") && nd_scalar_known(nm(value))),
++    u => nc_let_atom(book, value, body, env, id, n),
++    u => nt_choose(NC_Code, String.eq(scalar, ""),
++      u => nc_let_cut(book, value, body, env, id, n),
++      u => nc_lower(book, nd_bind_scalar(scalar, nd_args(value, Nil{}), Nil{}, n, id, body), env, U32.add(n, terms_len(nd_args(value, Nil{}))))))
++
++@unsafe
++def nc_let_cut(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:
+   +next = nc_name(n)
+   +held = nc_live_env(env, body)
+   +newenv = List.append(&2, NC_Binding, held, [nc_binding(id)])
+--- a/selfhost/src/back/native/direct.bend
++++ b/selfhost/src/back/native/direct.bend
+@@ -1,3 +1,27 @@
++# Scalar built-ins use the same intrinsic C expression at their call site.
++# Base provenance, exact saturation and non-bang entry are required. String
++# read/show and arrays retain their allocating or consuming runtime boundaries.
++@unsafe
++def nd_scalar_known(+name: String) -> Bool:
++  Bool.not(String.eq(ni_find(name, ni_templates()), "")) && Bool.not(String.eq(name, "f32_show") || String.eq(name, "f32_read"))
++
++@unsafe
++def nd_scalar_call(+book: List<&2, KDef>, +t: KTerm) -> String:
++  +head = nd_head(t)
++  +name = nc_primitive_name(nm(head))
++  nt_choose(String, String.eq(tg(t), "App") && String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)) && nc_native_def(lookup(book, nm(head))) && nd_scalar_known(name) && U32.is_eq(terms_len(nd_args(t, Nil{})), nc_primitive_arity(name)), u => name, u => "")
++
++@unsafe
++def nd_bind_scalar(+name: String, args: List<&2, KTerm>, +acc: List<&2, KTerm>, +n: U32, +id: U32, +body: KTerm) -> KTerm:
++  match args:
++    case Nil{}: nc_mklet(id, kt("NOp", name, 0, 0, List.reverse(&2, KTerm, acc)), body)
++    case Con{+h, +rest}: nc_mklet(nc_id(n), h, nd_bind_scalar(name, rest, Con{var("", nc_id(n)), acc}, U32.inc(n), id, body))
++
++@unsafe
++def nd_scalar_word(+name: String, +words: List<&2, String>) -> String:
++  +expr = ni_emit(name, words)
++  nt_choose(String, String.eq(name, "u32_cmp") || String.eq(name, "nat_cmp"), u => "term_pak((" ++ expr ++ ") == 0 ? CID_LT : (" ++ expr ++ ") == 1 ? CID_EQ : CID_GT, 0)", u => expr)
++
+ # Saturated calls to a known leading lambda telescope use one register entry.
+ # Partial applications retain the ordinary closure entry and its ownership ABI.
+ law nd_app:
+@@ -62,12 +86,14 @@
+ def nd_app(book, t, env, n):
+   +head = nd_head(t)
+   +args = nd_args(t, Nil{})
++  +scalar = nd_scalar_call(book, t)
++  nt_choose(NC_Code, Bool.not(String.eq(scalar, "")), u => nc_lower(book, nc_sequence("NOp", scalar, args, Nil{}, n), env, U32.add(n, terms_len(args))), u =>
+   nt_choose(NC_Code, String.eq(tg(head), "Lam"), u => nc_lower(book, nd_beta(head, args), env, n), u =>
+     nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_eq(terms_len(args), 1), u => nd_match(book, head, kid(t, 1), env, n), u =>
+     nt_choose(NC_Code, String.eq(tg(head), "Ref"), u =>
+     nt_choose(NC_Code, Bool.not(U32.is_eq(qt(head), 3)) && U32.is_gt(terms_len(args), 0) && U32.is_eq(nd_arity(book, nm(head)), terms_len(args)),
+       u => nc_lower(book, nc_sequence("NCall", nd_name(nc_ref_name(book, nm(head))), args, Nil{}, n), env, U32.add(n, terms_len(args))),
+-      u => nc_app_slow(book, t, env, n)), u => nc_app_slow(book, t, env, n))))
++      u => nc_app_slow(book, t, env, n)), u => nc_app_slow(book, t, env, n)))))
+ 
+ @unsafe
+ def nd_body(+t: KTerm) -> KTerm:

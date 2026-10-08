@@ -1,0 +1,105 @@
+{
+  "kind": "phase67-native-ablation-comparison-v1",
+  "complete": true,
+  "producer": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase67/benchmark/compare.py",
+    "sha256": "02f1ec90da270a561c1e5effe67d2d9c3dc09bc63dd5bad672106d5b9fa028ac",
+    "bytes": 4651
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-baseline02/report.json",
+      "sha256": "37bb490f129ca26aafde0e7d7c236a665c8b9e64bb0376321b2a57428df3c5c1",
+      "bytes": 63882
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-timing03/report.json",
+      "sha256": "33b61f891bf8359620854dffb886ee9dab4cb06f4a91f6f2d496f44f501942ff",
+      "bytes": 63284
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-atoms01/report.json",
+      "sha256": "7aafcde388c057750775d773e2e1864bebf68f0bb334adc79930cd5252a7c4b1",
+      "bytes": 51476
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-atoms-timing01/report.json",
+      "sha256": "a9c8e1526bd96960178ae33dea5b2f89a6c538c98a9506b85c236a00bbbc4216",
+      "bytes": 51427
+    }
+  ],
+  "baselineRecipe": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-baseline02-recipe.json",
+    "sha256": "43c21dc7ddce0a1e1f629751f180cdeebbbe261646f52a4e9414a30eee65103e",
+    "bytes": 40260
+  },
+  "candidateRecipe": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-atoms01-recipe.json",
+    "sha256": "323f6129e1f04054c81c4c49ec3269362fec04a52dca233825c04fb334aa96cb",
+    "bytes": 40339
+  },
+  "plan": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-plan-screen03.json",
+    "sha256": "7c9e6460acc045914ad3ceefa23ef299362b9291613bea60beee425a2ca74d44",
+    "bytes": 1390
+  },
+  "sharedMethodInputs": 177,
+  "changedSharedInputs": [],
+  "rows": [
+    {
+      "case": "array",
+      "baselineMicroseconds": 356.15234375,
+      "candidateMicroseconds": 244.13248697916669,
+      "candidateOverBaselineRuntime": 0.6854720775066265,
+      "runtimeReductionPercent": 31.452792249337346,
+      "speedup": 1.4588486282876094,
+      "baselineRounds": 2,
+      "candidateRounds": 2,
+      "baselineClangSeconds": 16.753559408942237,
+      "candidateClangSeconds": 14.254219959955662,
+      "candidateOverBaselineClang": 0.8508174061416137,
+      "baselineCBytes": 2013533,
+      "candidateCBytes": 1705349,
+      "candidateOverBaselineCBytes": 0.846943655753345,
+      "candidateOverEarlierUpstreamRuntime": 84.03081232492998
+    },
+    {
+      "case": "closures",
+      "baselineMicroseconds": 12.01171875,
+      "candidateMicroseconds": 9.716796875,
+      "candidateOverBaselineRuntime": 0.8089430894308943,
+      "runtimeReductionPercent": 19.10569105691057,
+      "speedup": 1.236180904522613,
+      "baselineRounds": 2,
+      "candidateRounds": 2,
+      "baselineClangSeconds": 16.752659588004462,
+      "candidateClangSeconds": 13.986207916983403,
+      "candidateOverBaselineClang": 0.834864926581452,
+      "baselineCBytes": 1957123,
+      "candidateCBytes": 1666598,
+      "candidateOverBaselineCBytes": 0.8515550632229042,
+      "candidateOverEarlierUpstreamRuntime": 2.5296610169491527
+    },
+    {
+      "case": "numeric",
+      "baselineMicroseconds": 50.77464043993231,
+      "candidateMicroseconds": 37.21182318104907,
+      "candidateOverBaselineRuntime": 0.7328820619630305,
+      "runtimeReductionPercent": 26.71179380369695,
+      "speedup": 1.3644760213143872,
+      "baselineRounds": 2,
+      "candidateRounds": 2,
+      "baselineClangSeconds": 16.56089364294894,
+      "candidateClangSeconds": 14.006635066936724,
+      "candidateOverBaselineClang": 0.8457656554602817,
+      "baselineCBytes": 1975764,
+      "candidateCBytes": 1680991,
+      "candidateOverBaselineCBytes": 0.8508055617978666,
+      "candidateOverEarlierUpstreamRuntime": 11.396761133603238
+    }
+  ],
+  "geomeanCandidateOverBaselineRuntime": 0.7407084117005058,
+  "geomeanCandidateOverBaselineClang": 0.8437896798346958,
+  "geomeanCandidateOverBaselineCBytes": 0.8497656891297549,
+  "scope": "Separate sequential campaigns with exact same wrapper/plan/method/toolchain, not temporally interleaved baseline/candidate samples. Earlier TS projection is contextual; reacquire/reexecute TS for final paired confirmation. Runtime intervals all>=100ms; C builds single acquisition per product."
+}

@@ -1,0 +1,102 @@
+{
+  "kind": "phase67-native-ablation-comparison-v1",
+  "complete": true,
+  "producer": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase67/benchmark/compare.py",
+    "sha256": "02f1ec90da270a561c1e5effe67d2d9c3dc09bc63dd5bad672106d5b9fa028ac",
+    "bytes": 4651
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-atoms01/report.json",
+      "sha256": "7aafcde388c057750775d773e2e1864bebf68f0bb334adc79930cd5252a7c4b1",
+      "bytes": 51476
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-atoms-timing01/report.json",
+      "sha256": "a9c8e1526bd96960178ae33dea5b2f89a6c538c98a9506b85c236a00bbbc4216",
+      "bytes": 51427
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-scalars01/report.json",
+      "sha256": "c2821ee5b326faef1805914f75257f9f0f5072a631cc8bf6db11c72c527ebc8a",
+      "bytes": 51733
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-scalars-timing01/report.json",
+      "sha256": "462ad198429587b923e270254da8bbf9ae4a71f7080646fd6ca9d45a4ddbbf4d",
+      "bytes": 51723
+    }
+  ],
+  "baselineRecipe": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-atoms01-recipe.json",
+    "sha256": "323f6129e1f04054c81c4c49ec3269362fec04a52dca233825c04fb334aa96cb",
+    "bytes": 40339
+  },
+  "candidateRecipe": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-scalars01-recipe.json",
+    "sha256": "0287797f0f36ee09447c349e0a29db4dff20086d609c1d466e5fe0e64134b8e7",
+    "bytes": 40567
+  },
+  "plan": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-plan-screen03.json",
+    "sha256": "7c9e6460acc045914ad3ceefa23ef299362b9291613bea60beee425a2ca74d44",
+    "bytes": 1390
+  },
+  "sharedMethodInputs": 178,
+  "changedSharedInputs": [],
+  "rows": [
+    {
+      "case": "array",
+      "baselineMicroseconds": 244.13248697916669,
+      "candidateMicroseconds": 232.38118489583331,
+      "candidateOverBaselineRuntime": 0.9518650621687388,
+      "runtimeReductionPercent": 4.8134937831261215,
+      "speedup": 1.0505690772194014,
+      "baselineRounds": 2,
+      "candidateRounds": 2,
+      "baselineClangSeconds": 14.254219959955662,
+      "candidateClangSeconds": 14.128005890990607,
+      "candidateOverBaselineClang": 0.9911454945048114,
+      "baselineCBytes": 1705349,
+      "candidateCBytes": 1676027,
+      "candidateOverBaselineCBytes": 0.9828058655442375
+    },
+    {
+      "case": "closures",
+      "baselineMicroseconds": 9.716796875,
+      "candidateMicroseconds": 9.47265625,
+      "candidateOverBaselineRuntime": 0.9748743718592965,
+      "runtimeReductionPercent": 2.5125628140703515,
+      "speedup": 1.0257731958762886,
+      "baselineRounds": 2,
+      "candidateRounds": 2,
+      "baselineClangSeconds": 13.986207916983403,
+      "candidateClangSeconds": 14.404685891000554,
+      "candidateOverBaselineClang": 1.0299207602590401,
+      "baselineCBytes": 1666598,
+      "candidateCBytes": 1639805,
+      "candidateOverBaselineCBytes": 0.9839235376497512
+    },
+    {
+      "case": "numeric",
+      "baselineMicroseconds": 37.21182318104907,
+      "candidateMicroseconds": 22.459285109983078,
+      "candidateOverBaselineRuntime": 0.6035523978685612,
+      "runtimeReductionPercent": 39.64476021314388,
+      "speedup": 1.656856974690995,
+      "baselineRounds": 2,
+      "candidateRounds": 2,
+      "baselineClangSeconds": 14.006635066936724,
+      "candidateClangSeconds": 13.751778517034836,
+      "candidateOverBaselineClang": 0.9818045841357367,
+      "baselineCBytes": 1680991,
+      "candidateCBytes": 1645611,
+      "candidateOverBaselineCBytes": 0.9789528914788955
+    }
+  ],
+  "geomeanCandidateOverBaselineRuntime": 0.824289320649789,
+  "geomeanCandidateOverBaselineClang": 1.0007419216405462,
+  "geomeanCandidateOverBaselineCBytes": 0.9818917877649164,
+  "scope": "Separate sequential campaigns with exact same wrapper/plan/method/toolchain, not temporally interleaved baseline/candidate samples. Earlier TS projection is contextual; reacquire/reexecute TS for final paired confirmation. Runtime intervals all>=100ms; C builds single acquisition per product."
+}

@@ -161,21 +161,18 @@ def nc_lower(
 # value handling as the general cut, and bind the word before lowering the body.
 @unsafe
 def nc_let_atom(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:
-  +word = nt_choose(String, String.eq(tg(value), "Var"), u => nc_word(ix(value), env), u => nt_choose(String, String.eq(tg(value), "NOp"), u => nd_scalar_word(nm(value), nc_values(ks(value), env)), u => nm(value) ++ "ull"))
+  +word = nt_choose(String, String.eq(tg(value), "Var"), u => nc_word(ix(value), env), u => nm(value) ++ "ull")
   +held = nc_live_env(env, body)
   +rest = nc_lower(book, body, List.append(&2, NC_Binding, held, [nc_binding(id)]), n)
   nt_choose(NC_Code, String.eq(word, "NATIVE_UNBOUND_VARIABLE"),
-    u => nc_let_cut(book, value, body, env, id, n),
-    u => nc_prepend(nc_share_env(env, value, body) ++ "Term v_" ++ U32.show(id) ++ " = " ++ word ++ ";\nif (!seq && err_seen(e.mem)) { return 0; }\n", rest))
+    u => nc_fail("native unbound variable " ++ U32.show(ix(value)), n),
+    u => nc_prepend(nc_share_env(env, value, body) ++ "Term v_" ++ U32.show(id) ++ " = " ++ word ++ ";\n", rest))
 
 @unsafe
 def nc_let(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:
-  +scalar = nd_scalar_call(book, value)
-  nt_choose(NC_Code, String.eq(tg(value), "Var") || String.eq(tg(value), "NWord") || (String.eq(tg(value), "NOp") && nd_scalar_known(nm(value))),
+  nt_choose(NC_Code, String.eq(tg(value), "Var") || String.eq(tg(value), "NWord"),
     u => nc_let_atom(book, value, body, env, id, n),
-    u => nt_choose(NC_Code, String.eq(scalar, ""),
-      u => nc_let_cut(book, value, body, env, id, n),
-      u => nc_lower(book, nd_bind_scalar(scalar, nd_args(value, Nil{}), Nil{}, n, id, body), env, U32.add(n, terms_len(nd_args(value, Nil{}))))))
+    u => nc_let_cut(book, value, body, env, id, n))
 
 @unsafe
 def nc_let_cut(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:

@@ -166,7 +166,7 @@ def nc_let_atom(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&
   +rest = nc_lower(book, body, List.append(&2, NC_Binding, held, [nc_binding(id)]), n)
   nt_choose(NC_Code, String.eq(word, "NATIVE_UNBOUND_VARIABLE"),
     u => nc_let_cut(book, value, body, env, id, n),
-    u => nc_prepend(nc_share_env(env, value, body) ++ "Term v_" ++ U32.show(id) ++ " = " ++ word ++ ";\nif (!seq && err_seen(e.mem)) { return 0; }\n", rest))
+    u => nc_prepend(nc_share_env(env, value, body) ++ "Term v_" ++ U32.show(id) ++ " = " ++ word ++ ";\n", rest))
 
 @unsafe
 def nc_let(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:

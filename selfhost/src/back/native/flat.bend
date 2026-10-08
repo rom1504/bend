@@ -3,10 +3,10 @@
 # boxed word. Unsupported candidate bodies never enter the admitted closure.
 type NC_Target is Data:
   NC_Scheduler{}
-  NC_Destination{+word: String, +join: String, +owner: String, +params: List<&2, NC_Binding>, +tail: Bool}
+  NC_Destination{+words: List<&2, String>, +shape: KTerm, +join: String, +owner: String, +params: List<&2, NC_Binding>, +tail: Bool, +signatures: List<&2, KDef>}
 
 type NF_Worker is Data:
-  NF_Worker{+name: String, +params: List<&2, NC_Binding>, +code: NC_Code, +deps: List<&2, String>}
+  NF_Worker{+name: String, +params: List<&2, NC_Binding>, +code: NC_Code, +deps: List<&2, String>, +shape: KTerm}
 
 @unsafe
 def nf_scheduler(+target: NC_Target) -> Bool:
@@ -16,10 +16,7 @@ def nf_scheduler(+target: NC_Target) -> Bool:
 
 @unsafe
 def nf_return(+word: String, +n: U32, +target: NC_Target) -> NC_Code:
-  match target:
-    case NC_Scheduler{}: nc_return(word, n)
-    case NC_Destination{+dest, +join, owner, params, tail}:
-      NC_Code{dest ++ " = " ++ word ++ ";\n" ++ nt_choose(String, String.eq(join, ""), u => "return 1;\n", u => "goto " ++ join ++ ";\n"), Nil{}, n, ""}
+  nt_choose(NC_Code, nf_scheduler(target), u => nc_return(word, n), u => nq_transfer(atom("Absent"), [word], n, target))
 
 @unsafe
 def nf_emitted(emitted: N_Emitted, +target: NC_Target) -> NC_Code:
@@ -28,17 +25,17 @@ def nf_emitted(emitted: N_Emitted, +target: NC_Target) -> NC_Code:
 
 @unsafe
 def nf_local(+target: NC_Target, +word: String, +join: String) -> NC_Target:
-  match target:
-    case NC_Scheduler{}: NC_Scheduler{}
-    case NC_Destination{dest, label, owner, params, tail}: NC_Destination{word, join, owner, params, False{}}
+  nq_local(target, [word], atom("Absent"), join)
 
 @unsafe
-def nf_bind(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +target: NC_Target) -> NC_Code:
+def nf_bind_boxed(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +target: NC_Target) -> NC_Code:
   +join = "nf_join_" ++ U32.show(n)
   +word = "v_" ++ U32.show(id)
-  +rest = nc_lower_to(book, body, List.append(&2, NC_Binding, nc_live_env(env, body), [nc_binding(id)]), U32.inc(n), target)
-  +val = nc_lower_to(book, value, nc_live_env(env, value), nc_fresh(rest), nf_local(target, word, join))
-  NC_Code{nc_share_env(env, value, body) ++ "Term " ++ word ++ ";\n{\n" ++ nc_body(val) ++ "}\n" ++ join ++ ":;\nif (!seq && err_seen(e.mem)) { return 0; }\n" ++ nc_body(rest), nt_append(N_Segment, nc_segs(val), nc_segs(rest)), nc_fresh(val), nc_first_error(val, rest)}
+  +bodyUses = nc_uses(body)
+  +rest = nc_lower_partition(book, body, U32.inc(n), target, nc_partition_uses(List.append(&2, NC_Binding, nc_live_uses(env, bodyUses), [nc_binding(id)]), bodyUses))
+  +valueEnv = nc_live_env(env, value)
+  +val = nc_lower_live_to(book, value, valueEnv, nc_fresh(rest), nf_local(target, word, join))
+  NC_Code{nc_keep_uses(valueEnv, bodyUses) ++ "Term " ++ word ++ ";\n{\n" ++ nc_body(val) ++ "}\n" ++ join ++ ":;\nif (!seq && err_seen(e.mem)) { return 0; }\n" ++ nc_body(rest), nt_append(N_Segment, nc_segs(val), nc_segs(rest)), nc_fresh(val), nc_first_error(val, rest), List.append(&2, String, nc_calls(val), List.append(&2, String, nc_calls(rest), Nil{}))}
 
 @unsafe
 def nf_lets(+book: List<&2, KDef>, +xs: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
@@ -49,7 +46,7 @@ def nf_lets_local(+book: List<&2, KDef>, xs: List<&2, KTerm>, +env: List<&2, NC_
   match xs:
     case Nil{}: nc_fail("empty native let", n)
     case Con{h, Nil{}}: nc_lower_to(book, h, env, n, target)
-    case Con{+h, +rest}: nf_bind(book, kid(h, 0), kt("NSeqLet", "", 0, 0, rest), env, ix(h), n, target)
+    case Con{+h, +rest}: nq_bind_choose(book, kid(h, 0), kt("NSeqLet", "", 0, 0, rest), env, ix(h), n, target)
 
 @unsafe
 def nf_parallel(+book: List<&2, KDef>, +xs: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
@@ -99,39 +96,40 @@ def nf_self_temps(words: List<&2, String>, +i: U32) -> String:
 def nf_call_local(+book: List<&2, KDef>, +name: String, +words: List<&2, String>, +n: U32, +target: NC_Target) -> NC_Code:
   match target:
     case NC_Scheduler{}: nc_fail("flat worker: scheduler destination", n)
-    case NC_Destination{dest, join, +owner, +params, +tail}:
+    case NC_Destination{dests, shape, join, +owner, +params, +tail, signatures}:
       nt_choose(NC_Code, String.eq(name, owner),
         u => nt_choose(NC_Code, tail && U32.is_eq(nt_count(NC_Binding, params), nt_count(String, words)),
-          u => NC_Code{"{\n" ++ nf_self_temps(words, 0) ++ nf_self_moves(params, words, 0) ++ "goto nf_again;\n}\n", Nil{}, n, ""},
+          u => NC_Code{"{\n" ++ nf_self_temps(words, 0) ++ nf_self_moves(params, words, 0) ++ "goto nf_again;\n}\n", Nil{}, n, "", Nil{}},
           u => nc_fail("flat worker: non-tail self call", n)),
-        u => nc_prepend("Term nf_result_" ++ U32.show(n) ++ ";\nif (!" ++ nf_name(name) ++ "(e, seq, &nf_result_" ++ U32.show(n) ++ nf_arg_c(words) ++ ")) { return 0; }\n", nf_return("nf_result_" ++ U32.show(n), U32.inc(n), target)))
+        u => nq_call_result(name, words, n, target))
 
 @unsafe
 def nf_call(+book: List<&2, KDef>, +name: String, +words: List<&2, String>, +n: U32, +target: NC_Target) -> NC_Code:
   +d = lookup(book, name)
-  nt_choose(NC_Code, nc_native_def(d), u => nf_emitted(nc_intrinsic_value(nc_primitive_name(name), words, n), target), u =>
+  nt_choose(NC_Code, nc_native_def(d), u => nq_intrinsic(nc_primitive_name(name), words, n, target), u =>
     nt_choose(NC_Code, String.eq(dk(d), "Def") && Bool.not(nc_foreign(d)), u => nf_call_local(book, name, words, n, target), u => nc_fail("flat worker: foreign or absent call", n)))
 
 @unsafe
 def nf_ref(+book: List<&2, KDef>, +t: KTerm, +n: U32, +target: NC_Target) -> NC_Code:
-  nt_choose(NC_Code, nf_scheduler(target), u => NC_Code{ne_jump(Nil{}, nc_ref_name(book, nm(t))), Nil{}, n, ""}, u =>
-    nt_choose(NC_Code, U32.is_eq(nd_arity(book, nm(t)), 0) && Bool.not(U32.is_eq(qt(t), 3)), u => nf_call(book, nm(t), Nil{}, n, target), u => nc_fail("flat worker: unsaturated or bang reference", n)))
+  nt_choose(NC_Code, nf_scheduler(target), u => NC_Code{ne_jump(Nil{}, nc_ref_name(book, nm(t))), Nil{}, n, "", Nil{}}, u =>
+    nt_choose(NC_Code, U32.is_eq(nd_arity(book, nm(t)), 0) && Bool.not(U32.is_eq(qt(t), 3)), u => nq_call(book, kt("NFCall", nm(t), 0, 0, Nil{}), Nil{}, n, target), u => nc_fail("flat worker: unsaturated or bang reference", n)))
 
 @unsafe
-def nf_candidate(+book: List<&2, KDef>, +name: String) -> NF_Worker:
+def nf_candidate(+book: List<&2, KDef>, +name: String, +signatures: List<&2, KDef>) -> NF_Worker:
   +params = nd_entry_params(nd_arity(book, name), 0)
   +body = nc_compact(nc_definition(book, lookup(book, name), 0))
-  +code = nc_lower_to(book, nd_reapply(body, nd_entry_args(params)), params, nt_count(NC_Binding, params), NC_Destination{"*nf_out", "", name, params, True{}})
-  NF_Worker{name, params, code, nc_refs(body)}
+  +shape = atom("Absent")
+  +code = nc_lower_to(book, nd_reapply(body, nd_entry_args(params)), params, nt_count(NC_Binding, params), NC_Destination{nq_words("nf_out", nq_width(shape), 0), shape, "", name, params, True{}, signatures})
+  NF_Worker{name, params, code, nc_calls(code), shape}
 
 @unsafe
-def nf_candidates(+book: List<&2, KDef>, names: List<&2, String>, +bangs: List<&2, String>) -> List<&2, NF_Worker>:
+def nf_candidates(+book: List<&2, KDef>, names: List<&2, String>, +bangs: List<&2, String>, +signatures: List<&2, KDef>) -> List<&2, NF_Worker>:
   match names:
     case Nil{}: Nil{}
     case Con{+name, +rest}:
       +d = lookup(book, name)
       nt_choose(List<&2, NF_Worker>, String.eq(dk(d), "Def") && Bool.not(nc_native_def(d) || nc_foreign(d) || nb_contains(bangs, name)),
-        u => Con{nf_candidate(book, name), nf_candidates(book, rest, bangs)}, u => nf_candidates(book, rest, bangs))
+        u => Con{nf_candidate(book, name, signatures), nf_candidates(book, rest, bangs, signatures)}, u => nf_candidates(book, rest, bangs, signatures))
 
 @unsafe
 def nf_deps_ready(+book: List<&2, KDef>, deps: List<&2, String>, +owner: String, +ready: List<&2, String>) -> Bool:
@@ -146,7 +144,7 @@ def nf_deps_ready(+book: List<&2, KDef>, deps: List<&2, String>, +owner: String,
 def nf_admit_pass(+book: List<&2, KDef>, workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> List<&2, String>:
   match workers:
     case Nil{}: ready
-    case Con{NF_Worker{+name, params, +code, +deps}, rest}:
+    case Con{NF_Worker{+name, params, +code, +deps, shape}, rest}:
       nf_admit_pass(book, rest, nt_choose(List<&2, String>, nb_contains(ready, name), u => ready, u =>
         nt_choose(List<&2, String>, String.eq(nc_error(code), "") && List.is_empty(&2, N_Segment, nc_segs(code)),
           u => nt_choose(List<&2, String>, nf_deps_ready(book, deps, name, ready), u => Con{name, ready}, u => ready), u => ready)))
@@ -177,22 +175,22 @@ def nf_inline(+code: NC_Code) -> String:
 def nf_prototypes(workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> String:
   match workers:
     case Nil{}: ""
-    case Con{NF_Worker{+name, +params, code, deps}, +rest}:
+    case Con{NF_Worker{+name, +params, code, deps, +shape}, +rest}:
       nt_choose(String, nb_contains(ready, name), u => nf_inline(code) ++ " Term " ++ nf_name(name) ++ "(Env e, bool seq, Term* nf_out" ++ nf_param_c(params) ++ ");\n", u => "") ++ nf_prototypes(rest, ready)
 
 @unsafe
 def nf_bodies(workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> String:
   match workers:
     case Nil{}: ""
-    case Con{NF_Worker{+name, +params, +code, deps}, rest}:
+    case Con{NF_Worker{+name, +params, +code, deps, shape}, rest}:
       nt_choose(String, nb_contains(ready, name), u => nf_inline(code) ++ " Term " ++ nf_name(name) ++ "(Env e, bool seq, Term* nf_out" ++ nf_param_c(params) ++ ") {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\n" ++ nc_body(code) ++ "}\nreturn 0;\n}\n", u => "") ++ nf_bodies(rest, ready)
 
 @unsafe
 def nf_adapter_defs(workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> List<&2, KDef>:
   match workers:
     case Nil{}: Nil{}
-    case Con{NF_Worker{+name, +params, code, deps}, +rest}:
-      nt_choose(List<&2, KDef>, nb_contains(ready, name), u => Con{KDef{nt_choose(String, List.is_empty(&2, NC_Binding, params), v => name, v => nd_name(name)), "NFWorker", nt_count(NC_Binding, params), 0, atom("Absent"), kt("NFName", name, 0, 0, Nil{}), Nil{}, False{}, False{}}, nf_adapter_defs(rest, ready)}, u => nf_adapter_defs(rest, ready))
+    case Con{NF_Worker{+name, +params, code, deps, +shape}, +rest}:
+      nt_choose(List<&2, KDef>, nb_contains(ready, name), u => Con{KDef{nt_choose(String, List.is_empty(&2, NC_Binding, params), v => name, v => nd_name(name)), "NFWorker", nt_count(NC_Binding, params), 0, shape, kt("NFName", name, 0, 0, Nil{}), Nil{}, False{}, False{}}, nf_adapter_defs(rest, ready)}, u => nf_adapter_defs(rest, ready))
 
 @unsafe
 def nf_segment_args(params: List<&2, N_Param>) -> List<&2, String>:
@@ -207,7 +205,7 @@ def nf_wrap_segments(segments: List<&2, N_Segment>, +index: List<&2, KDef>) -> L
     case Con{N_Segment{+name, +params, result, frame, +body, refs, host, spin, fork, bang}, rest}:
       +d = lookup(index, name)
       +wrapped = nt_choose(String, String.eq(dk(d), "NFWorker") && U32.is_eq(da(d), nt_count(N_Param, params)),
-        u => "#if !DEVICE\n{\nTerm nf_result;\nif (!" ++ nf_name(nm(dv(d))) ++ "(e, seq, &nf_result" ++ nf_arg_c(nf_segment_args(params)) ++ ")) { return 0; }\n" ++ ne_ret(["nf_result"]) ++ "}\n#else\n" ++ body ++ "#endif\n", u => body)
+        u => nq_wrap_segment(d, params, body), u => body)
       Con{N_Segment{name, params, result, frame, wrapped, refs, host, spin, fork, bang}, nf_wrap_segments(rest, index)}
 
 @unsafe
@@ -220,4 +218,7 @@ def nf_finish_workers(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List
 
 @unsafe
 def nf_finish_show(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show) -> NC_Result:
-  nf_finish_workers(book, ss, cs, runtime, requests, pure, show, nf_candidates(book, nc_live_names(book, ["main"], Nil{}), nc_bangs_book(book)))
+  +names = nc_live_names(book, ["main"], Nil{})
+  +signatures = book_cached(nq_signatures(book, names), 0)
+  +bangs = nc_bangs_book(book)
+  nf_finish_workers(book, ss, cs, runtime, requests, pure, show, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates(book, names, bangs, signatures)))

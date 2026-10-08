@@ -1,0 +1,48 @@
+{
+  "kind": "phase68-call-error-order-controls",
+  "targetExecuted": false,
+  "status": "unexecuted source-supported upstream hypotheses; actual paired qualification required",
+  "sources": [
+    {
+      "id": "phase68/error-order-saturated.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v1/saturated.bend",
+      "sha256": "91b3d2bff40a4969471d481cefa43abe3810624ff688f1aeae23ec890aff7abd",
+      "bytes": 580,
+      "goldenLines": [
+        "bend: a Nat past the largest immediate 2^48-1",
+        "exit 1"
+      ]
+    },
+    {
+      "id": "phase68/error-order-staged.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v1/staged.bend",
+      "sha256": "fd1437f325080ff40d0f9e1a22e94236e1845ef86f47c9b0f625c6774f35b855",
+      "bytes": 706,
+      "goldenLines": [
+        "bend: runtime fail-stop",
+        "exit 1"
+      ]
+    },
+    {
+      "id": "phase68/error-order-partial.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v1/partial.bend",
+      "sha256": "67b757b2141734d5f1f3fbcfdb0e2ee8824f7d367bbc2272559d5acfbcd7e763",
+      "bytes": 654,
+      "goldenLines": [
+        "bend: a Nat past the largest immediate 2^48-1",
+        "exit 1"
+      ]
+    }
+  ],
+  "referenceSource": {
+    "file": "/home/ai/bend2/build/publish/bend/bend2/comp.ts",
+    "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c"
+  },
+  "basis": [
+    "def_raise includes IO.OP matches with common lambda tails",
+    "emit_args evaluates all supplied non-Var live arguments before raised body",
+    "call_eta eta-expands under-applied known functions",
+    "explicit source match retains its tag guard before selected branch"
+  ],
+  "interpretation": "Saturated/partial reference Nat refusal and explicit-stage tag refusal are independently distinguishable goldens; a result different from the expected reference observation stays failed. Candidate-only partial difference may be inherited oldnative behavior and must be reported separately. No SECRET effect may execute."
+}

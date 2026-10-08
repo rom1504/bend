@@ -1,0 +1,33 @@
+{
+  "kind": "phase68-failed-fixture-successor",
+  "targetExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v1/staged.bend",
+    "sha256": "fd1437f325080ff40d0f9e1a22e94236e1845ef86f47c9b0f625c6774f35b855",
+    "bytes": 706
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v2/staged.bend",
+    "sha256": "28bda0a151f551a2a8ddd8ee772c9a036773d84f900d9fa55fdbb9966dc711a0",
+    "bytes": 546
+  },
+  "failedObservation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/error-order-controls01/execution/selected/paired.json",
+    "sha256": "1251a285cdba0a023bd1a22efd50f9b0b0b3e44455c2628116cc3f2d7722a5b2",
+    "bytes": 12710
+  },
+  "goldenLines": [
+    "bend: runtime fail-stop",
+    "exit 1"
+  ],
+  "changes": [
+    "Use a matched function parameter in a full plain-value helper",
+    "Sequence the helper before an overflow argument through two lets whose values are both consumed"
+  ],
+  "sourceReview": "The prior local-let matcher was rejected by both parsers. This version uses only parameter matching, preserves expected early tag failure and never dispatches the constructed request. Actual paired execution required.",
+  "selection": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v2/selection.json",
+    "sha256": "b9c6bad0b6acdc21fece4497f735d638b49f4b4285c6761f101aa5ee20108166",
+    "bytes": 247
+  }
+}

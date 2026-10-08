@@ -1,0 +1,27 @@
+{
+  "predecessor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/occurrence-summary/prepare-c-equality.py",
+    "sha256": "9afdb2d1d56d3798362cef9fe0e707cbd1cab2124401a1f2acb47a0e0811c47f",
+    "bytes": 3473
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/occurrence-summary/prepare-c-equality-v2.py",
+    "sha256": "460cf7fbaf8182c3150af707453dc583a6467b429d1f8f2d01b7a73b3f5bf5c0",
+    "bytes": 3630
+  },
+  "edits": [
+    {
+      "before": "assert closed['complete'] and len(closed['records'])==3 and all(x['exactC'] for x in closed['records'])",
+      "after": "assert closed['complete'] and closed['passAll'] and len(closed['rows'])==3 and all(x['equal'] for x in closed['rows'])\nassert pin(closed['plan'])==pin(RAW/'admission-c07/plan.json')"
+    },
+    {
+      "before": "proof=next(x for x in closed['records'] if x['case']==case)",
+      "after": "proof=next(x for x in closed['rows'] if x['case']==case)"
+    },
+    {
+      "before": "    assert pin(proof['output'])['sha256']==baseline['sha256']",
+      "after": "    emitted=read(proof['emission']);assert emitted['complete']\n    assert pin(emitted['output'])['sha256']==baseline['sha256']==proof['sha256']"
+    }
+  ],
+  "reason": "Data-only predecessor stopped before outputs: closed07 summary schema has rows/equal, not records/exactC. Correct schema and strengthen underlying emission/output/plan joins; no target was run."
+}

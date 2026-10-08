@@ -1,0 +1,112 @@
+{
+  "kind": "phase68-native-correctness-catalog",
+  "targetExecuted": false,
+  "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "reference": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66",
+  "sets": {
+    "prefix-fast": [
+      "phase68/matcher-shared-residual-v3.bend",
+      "phase68/prefix-scratch.bend",
+      "reg/array_clone_boxed.bend",
+      "compile/array_swap_header.bend",
+      "phase68/callback-array-owner.bend",
+      "base/nat_divmod_zero.bend"
+    ]
+  },
+  "cases": [
+    {
+      "id": "phase68/matcher-shared-residual-v3.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/matcher-shared-residual-v3.bend",
+        "sha256": "77a348063a8ca9cb2169d9d4ffe7798d3e3bbf130be5e6e1c6056ac9fb1317f2",
+        "bytes": 656
+      },
+      "external": true,
+      "purpose": "same owned constructor used as matched scrutinee, residual argument, and captured partial closure; independent four copies of keep",
+      "goldenLines": [
+        "\"keepkeepkeepkeep\""
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "phase68/prefix-scratch.bend",
+      "external": true,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/value-prefix/prefix-scratch.bend",
+        "sha256": "53e642c88ebb56f74de488a52ffcbb6004029ef35e8c937c974eb485b95be7b7",
+        "bytes": 591
+      },
+      "goldenLines": [
+        "7071122"
+      ]
+    },
+    {
+      "id": "reg/array_clone_boxed.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/array_clone_boxed.bend",
+        "sha256": "54a4c9126e3de955580b6a6c3db967564446efc19bfb57b521a6ceba6445e9e3",
+        "bytes": 1641
+      },
+      "external": false,
+      "purpose": "array alias elements retained exactly once across swap and dropped clone",
+      "goldenLines": [
+        "ababababababababhelloworldabcdabzzdcleaf"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "compile/array_swap_header.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/array_swap_header.bend",
+        "sha256": "e16438d4138cbf1700473d0f1a1805194787c107b39af819c0dbdeed752d7f87",
+        "bytes": 969
+      },
+      "external": false,
+      "purpose": "tail argument permutation must stage old array handles before assignment",
+      "goldenLines": [
+        "2337"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "phase68/callback-array-owner.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/callback-array-owner.bend",
+        "sha256": "ef7e301d6a9003802eaeaf4f835b5c6855d3996d6ebf64aa19f66ca7acebd815",
+        "bytes": 545
+      },
+      "external": true,
+      "purpose": "stored closure captures affine array and consumes it once; independent29",
+      "goldenLines": [
+        "29"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "base/nat_divmod_zero.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/base/nat_divmod_zero.bend",
+        "sha256": "d1723264b044ff7f9b38c402a96e9726e8ea25b7d9a6640e76803568a26d95ca",
+        "bytes": 1424
+      },
+      "external": false,
+      "purpose": "aggregate result zero division fallback",
+      "goldenLines": [
+        "6n"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    }
+  ],
+  "predecessors": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/catalog-v2.json",
+      "sha256": "8f9296712a737ea32b57faf50a38454301503c55df4a144f9d3cd38f438cb056",
+      "bytes": 23122
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/matcher-shared-v3.json",
+      "sha256": "ea970ff1ac155cecf6c02a2df2ef2a64496e44ebf49391b80c7ddf174742ce2f",
+      "bytes": 1455
+    }
+  ]
+}

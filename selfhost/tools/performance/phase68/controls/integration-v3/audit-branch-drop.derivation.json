@@ -1,0 +1,45 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/flat-worker-v1/audit.py",
+    "sha256": "d64f9b5d130ac876f05ec93e6d4b3e361db8b62a9545d5bc80bbfbf90c833290",
+    "bytes": 5478
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/integration-v3/audit-branch-drop.py",
+    "sha256": "2dc373b79c7c0b370219b0f76ac9d3ed01674c0039790650db864d26db8c9a03",
+    "bytes": 4928
+  },
+  "edits": [
+    {
+      "before": "Join the retained eight-source gate with explicit flat-worker admission facts.",
+      "after": "Join the retained branch-drop golden with its boxed-entry admission fact.",
+      "count": 1
+    },
+    {
+      "before": "len(paired['rows']) == 8",
+      "after": "len(paired['rows']) == 1",
+      "count": 1
+    },
+    {
+      "before": "'phase68/flat-admission-v1.bend'",
+      "after": "'phase68/flat-product-branch-drop-v1.bend'",
+      "count": 1
+    },
+    {
+      "before": "row['result']['output']=='1101707\\n'",
+      "after": "row['result']['output']=='1831\\n'",
+      "count": 1
+    },
+    {
+      "before": "    for name in ['tail68','nontail68','mutual_a68','mutual_b68']:\n        assert re.search(r'^#define '+re.escape(fid(name))+r' \\d+$',code,re.M),name\n    symbol=worker('tail68'); heads=list(re.finditer(r'^INLINE Term '+re.escape(symbol)+r'\\([^\\n]*\\) \\{',code,re.M));assert len(heads)==1\n    start=heads[0].end()-1; depth=1; end=start+1\n    while depth:\n        assert end<len(code); depth += (code[end]=='{')-(code[end]=='}'); end+=1\n    body=code[start:end]; assert 'goto nf_again;' in body and 'nf_again:' in body\n    assert len(re.findall(r'\\b'+re.escape(symbol)+r'\\s*\\(',code))>=3, 'Require declaration, definition and an actual emitted call'\n    for name in ['nontail68','mutual_a68','mutual_b68']:\n        assert not re.search(r'\\b'+re.escape(worker(name))+r'\\b',code),name\n",
+      "after": "    original='drop_product_branch68'\n    assert re.search(r'^#define '+re.escape(fid(original))+r' \\d+$',code,re.M), 'Dropping definition must be retained'\n    forbidden=worker('$product.'+original)\n    assert not re.search(r'\\b'+re.escape(forbidden)+r'\\b',code), 'Dropping product entry must be absent, including declarations/calls'\n",
+      "count": 1
+    },
+    {
+      "before": "    result=dict(kind='phase68-flat-worker-controls',complete=True,targetExecuted=False,\n        inputs=inputs,sourceCount=8,independentGolden=1101707,\n        requiredWorker=dict(name='tail68',symbol=symbol,bodySha256=hashlib.sha256(body.encode()).hexdigest(),selfTailLoop=True),\n        forbiddenWorkers=['nontail68','mutual_a68','mutual_b68'],\n        scope='Eight exact paired fixture observations plus retained generated-C admission/fallback facts. This data-only join does not execute targets and does not prove general memory safety, device behavior, or full native conformance.')\n",
+      "after": "    result=dict(kind='phase68-product-branch-drop-controls',complete=True,targetExecuted=False,\n        inputs=inputs,sourceCount=1,independentGolden=1831,\n        boxedDefinition=dict(name=original,symbol=fid(original)),\n        forbiddenProductEntry=dict(name='$product.'+original,symbol=forbidden),\n        scope='One exact paired runtime observation plus retained-C exclusion of the dropping product entry. Does not prove general ownership or qualify another compiler image.')\n",
+      "count": 1
+    }
+  ],
+  "targetsExecuted": false
+}

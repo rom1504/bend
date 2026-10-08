@@ -90,3 +90,18 @@ checked Bend-to-C request, Clang and executable runtime. The three-family,
 single-sample native baseline is a discriminator, not a universal compilation
 score or the historical JavaScript library benchmark. All existing raw evidence,
 failed methods and earlier source proposals remain unchanged.
+
+## Templates05 observation
+
+Root's actual strict build passes. `templates-controls05` passes 69 catalog
+entries and 285 distinct names with all seven substitution vectors. The three
+`templates-c05` complete C outputs equal the qualified Prefix04 outputs. The
+single acquisition clocks show no B1 benefit (Numeric 2,344→2,436 ms, Array
+2,616→2,601 ms, Lexer 3,309→3,350 ms); no gain or promotion is claimed.
+
+[Source inspection](../../implementation/phase68/evidence/template-lowering-source01.json)
+finds per-call catalog literals in both old B1 and B2, so B1 did not explicitly
+hoist the table. New B1 instead contains 70 nested trampoline choices. An actual
+Templates05 B2 prototype is planned to inspect direct-choice lowering and
+request cost. Comparing it with Phase67 also includes other native changes;
+that comparison alone cannot isolate the template optimization's benefit.

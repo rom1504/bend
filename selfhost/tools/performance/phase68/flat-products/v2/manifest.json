@@ -1,0 +1,105 @@
+{
+  "kind": "phase68-flat-products-v2-source-candidate",
+  "experiment": "P68-007",
+  "executed": false,
+  "registrationCommit": "ee726e4",
+  "baseDescription": "root flat-workers v3 plus admission shortcircuit v1, occurrence summary v1, and small-inline v1",
+  "patchSha256": "692d89e94cec1057d5a53b172e4e024741925324966272910532cfadbb6ff7f3",
+  "lineDelta": 533,
+  "files": [
+    {
+      "path": "selfhost/src/back/native/flat.bend",
+      "baseSha256": "824f7f70095e37c41b79788813e529cc9e3a63f6f1d8110b74d0e302cd796441",
+      "candidateSha256": "fd510dcc0269e9d50b109b5071678d4a6eab3d9f3eed88174bdf72922dd8a0a9",
+      "baseLines": 223,
+      "candidateLines": 222,
+      "lineDelta": -1
+    },
+    {
+      "path": "selfhost/src/back/native/bridge.bend",
+      "baseSha256": "1fc205f3cacb8163e628f02ab7e2f65a3c6033d4196a53c948ba6a386243eecc",
+      "candidateSha256": "849e65edfd73c1b79bea95b158049b5e2083347e07a13d0caf042dba578e3627",
+      "baseLines": 592,
+      "candidateLines": 594,
+      "lineDelta": 2
+    },
+    {
+      "path": "selfhost/src/back/native/direct.bend",
+      "baseSha256": "408aebc6967b9c5b37346d801b0f606f834dc99ea7af2a6b26763a34fd203ac7",
+      "candidateSha256": "a860340dc21c179551e0d1b461520025682b2a5d891f1705192928edbcf337a6",
+      "baseLines": 202,
+      "candidateLines": 202,
+      "lineDelta": 0
+    },
+    {
+      "path": "selfhost/src/back/native/book.bend",
+      "baseSha256": "09664a2c0a21a979c3f493feccbeed02c358cadd7262f7257017efc57427aa97",
+      "candidateSha256": "54de235a0cdcd0caef4f94a12414204185b34ce8f3ddaab572de4058c2090a91",
+      "baseLines": 316,
+      "candidateLines": 316,
+      "lineDelta": 0
+    },
+    {
+      "path": "selfhost/src/back/native/pattern.bend",
+      "baseSha256": "279c5967793f8922309b8d45746240db5c45f390ab8724c3b6f87e01ae17c7c4",
+      "candidateSha256": "023ff194d3a1d0a85e73b991e01975b1da0427e99e863f5b17e3c3fd27cd63a1",
+      "baseLines": 141,
+      "candidateLines": 141,
+      "lineDelta": 0
+    },
+    {
+      "path": "selfhost/src/back/native/parallel.bend",
+      "baseSha256": "85326099c65dbd478574e480e13492f1d3973625c3c9aa50e286f7f4a38ff722",
+      "candidateSha256": "6f316a73036d51ed2273011b6c960f69b7f37dd310080a142c2d19c4c6035d61",
+      "baseLines": 94,
+      "candidateLines": 94,
+      "lineDelta": 0
+    },
+    {
+      "path": "selfhost/src/back/native/manifest.txt",
+      "baseSha256": "324428d4f4e6cb4ac8f51e3e44117ff74b83144b123e4cea1de1cfe5a1279189",
+      "candidateSha256": "9d83da04eb0853638f9e0bca5c66190293f045d4aa894d4c1ca612c06dfd9778",
+      "baseLines": 21,
+      "candidateLines": 23,
+      "lineDelta": 2
+    },
+    {
+      "path": "selfhost/src/compiler.json",
+      "baseSha256": "19c14481dcb236a943a66cdd5039cebc438ae6a0da4d9853d1033f31748d1e22",
+      "candidateSha256": "dea00c1da68941bf45c78a0e8e5a6089cf7142d512ae68ddea946d3daedee7a2",
+      "baseLines": 123,
+      "candidateLines": 125,
+      "lineDelta": 2
+    },
+    {
+      "path": "selfhost/src/back/native/product.bend",
+      "baseSha256": null,
+      "candidateSha256": "0625f0b9df2011fe2953a2cc8c70c3845e7e5fecd2ded350d21e67b283482a29",
+      "baseLines": 0,
+      "candidateLines": 429,
+      "lineDelta": 429
+    },
+    {
+      "path": "selfhost/src/back/native/product-layout.bend",
+      "baseSha256": null,
+      "candidateSha256": "efe70c3e7221fa31bf51531a654df0123839273b76cb79f333d92a98932dac42",
+      "baseLines": 0,
+      "candidateLines": 99,
+      "lineDelta": 99
+    }
+  ],
+  "controls": [
+    "flat-product-record-v1",
+    "flat-product-array-v1",
+    "prefix-scratch-v2",
+    "aggregate-tail-swap",
+    "raw-unused-mistyped-product",
+    "flat-product-branch-drop-v1"
+  ],
+  "notes": [
+    "Frozen v1 remains unchanged; v2 adds syntactic layout query and branch-drop barriers",
+    "No compiler, C compiler or target executed in this lane",
+    "Lexical, hash and patch checks are not a checked Bend build",
+    "Private variants may increase C code size; no timing or parity claim"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "exact-one-edit-derivative",
+  "predecessor": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v1/prepare-diagnostic.py",
+    "sha256": "fa00f3e52c3641506a8bf6ca762f1e3915069082cba217abe5dbb1a4d4afabc7",
+    "bytes": 5329
+  },
+  "successor": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v1/prepare-diagnostic-v2.py",
+    "sha256": "56d3faadf728fc0521f2238887992646252d513bdc02415ba2c6eac0df183f98",
+    "bytes": 5613
+  },
+  "changes": [
+    {
+      "before": "    spec.loader.exec_module(m)\n",
+      "after": "    # The frozen CLI is unconditional; load only its unchanged definitions.\n    method_source = METHOD.read_text()\n    marker = '\\nparser = argparse.ArgumentParser(description=__doc__)\\n'\n    assert method_source.count(marker) == 1\n    exec(compile(method_source.split(marker)[0], str(METHOD), 'exec'), m.__dict__)\n"
+    }
+  ],
+  "predecessorAttempt": {
+    "command": "taskset -c 0 python3 -B selfhost/tools/performance/phase68/constructor-packing/v1/prepare-diagnostic.py --out selfhost/build/phase68/packing-c-diagnostic01",
+    "exitCode": 2,
+    "reason": "Importing frozen saved-native-v2 ran its unconditional argument parser. No output directory or target was created."
+  }
+}

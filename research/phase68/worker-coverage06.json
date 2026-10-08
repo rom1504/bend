@@ -1,0 +1,167 @@
+{
+  "kind": "phase68-flat06-static-native-worker-coverage",
+  "dataOnly": true,
+  "targetsExecuted": false,
+  "scope": "Source syntax counts and worker identities, not dynamic hotness or runtime share.",
+  "rows": [
+    {
+      "case": "closures",
+      "selfhost": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-flat06-rest/closures-selfhost/program.c",
+        "sha256": "668bd71957c3c8e6489ffa66b517160aa8e747acd70c22892464ae9455664388",
+        "bytes": 962348
+      },
+      "upstream": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-baseline02/closures-upstream/program.c",
+        "sha256": "30cc71d2cd7033652cf7b1af569fd6dc20727edb44943c8e67b3b06d2049332b",
+        "bytes": 125109
+      },
+      "selfhostWorkers": [
+        "Char.cmp",
+        "String.cmp.rec",
+        "Pair.snd",
+        "Cmp.is_le",
+        "Cmp.is_eq",
+        "Nat.is_eq",
+        "Bool.and",
+        "Nat.read.trim",
+        "p46.parsed",
+        "Nat.show.put"
+      ],
+      "selfhostWorkerCount": 10,
+      "upstreamWorkerCount": 10,
+      "selfhostSchedulerSegments": 416,
+      "upstreamSchedulerSegments": 65
+    },
+    {
+      "case": "tree",
+      "selfhost": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-flat06-rest/tree-selfhost/program.c",
+        "sha256": "9d5bd1d3141af71817a1baa5df7b4aa18464769c36c2bfea89f84ce32c7b6afd",
+        "bytes": 1154674
+      },
+      "upstream": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-heldout-baseline02/tree-upstream/program.c",
+        "sha256": "a272ac6bdd3f85344310ba62bee61cff9ba8cc618fd113fd180f8499bdc2839d",
+        "bytes": 153342
+      },
+      "selfhostWorkers": [
+        "Char.cmp",
+        "String.cmp.rec",
+        "Pair.snd",
+        "Cmp.is_le",
+        "Cmp.is_eq",
+        "Nat.is_eq",
+        "Bool.and",
+        "Nat.read.trim",
+        "p46.parsed",
+        "Nat.show.put",
+        "../phase37/fixtures-historical/tree-bitonic:warp_zip",
+        "../phase37/fixtures-historical/tree-bitonic:warp_leaf.go",
+        "../phase37/fixtures-historical/tree-bitonic:warp_leaf",
+        "../phase37/fixtures-historical/tree-bitonic:prng",
+        "../phase37/fixtures-historical/tree-bitonic:key",
+        "../phase37/fixtures-historical/tree-bitonic:stat_join.go",
+        "../phase37/fixtures-historical/tree-bitonic:stat_join",
+        "../phase37/fixtures-historical/tree-bitonic:stat_out"
+      ],
+      "selfhostWorkerCount": 18,
+      "upstreamWorkerCount": 18,
+      "selfhostSchedulerSegments": 554,
+      "upstreamSchedulerSegments": 80
+    },
+    {
+      "case": "map",
+      "selfhost": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-flat06-rest/map-selfhost/program.c",
+        "sha256": "6cad8f95501bebe74cf8eba88f0723c493551ea2fa1ef4cba95dfd4166022ec8",
+        "bytes": 1728890
+      },
+      "upstream": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-heldout-baseline02/map-upstream/program.c",
+        "sha256": "2bc75f0e2636fba80aa3561089894436b02789faaaca45eb531d575a87702135",
+        "bytes": 320345
+      },
+      "selfhostWorkers": [
+        "Pair.snd",
+        "Cmp.is_le",
+        "Cmp.is_eq",
+        "Nat.is_eq",
+        "Bool.and",
+        "Nat.read.trim",
+        "p46.parsed",
+        "Nat.show.put",
+        "../phase37/fixtures-new/map-churn:p37.map.string",
+        "../phase37/fixtures-new/map-churn:p37.map.digest",
+        "Map.pop.lo",
+        "Map.pop.hi",
+        "Map.pop.leaf",
+        "Map.del.fin",
+        "Map.new",
+        "Map.lo",
+        "Map.hi",
+        "Char.cmp",
+        "String.cmp.rec",
+        "Map.ins.splice.bit",
+        "Map.bit.go.rec",
+        "Map.bit.u",
+        "Map.bit.chr",
+        "Map.bit.go.chr"
+      ],
+      "selfhostWorkerCount": 24,
+      "upstreamWorkerCount": 23,
+      "selfhostSchedulerSegments": 946,
+      "upstreamSchedulerSegments": 169
+    },
+    {
+      "case": "lexer",
+      "selfhost": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-flat06/lexer-selfhost/program.c",
+        "sha256": "69e656b72609a4c7f0924821abb1fadebdecfdc438d9fe5e2d2705e9ff80f3a4",
+        "bytes": 1274667
+      },
+      "upstream": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-heldout-baseline02/lexer-upstream/program.c",
+        "sha256": "809a39f4811bd72efb97399362728fa18ef05e0b346579a7816e7c01c7122169",
+        "bytes": 144943
+      },
+      "selfhostWorkers": [
+        "Char.cmp",
+        "String.cmp.rec",
+        "Pair.snd",
+        "Cmp.is_le",
+        "Cmp.is_eq",
+        "Nat.is_eq",
+        "Nat.read.trim",
+        "p46.parsed",
+        "Nat.show.put",
+        "../phase37/fixtures-historical/lexer:seed",
+        "../phase37/fixtures-historical/lexer:tpl",
+        "../phase37/fixtures-historical/lexer:salt",
+        "../phase37/fixtures-historical/lexer:slot.go",
+        "../phase37/fixtures-historical/lexer:slot",
+        "../phase37/fixtures-historical/lexer:op.pick",
+        "../phase37/fixtures-historical/lexer:op",
+        "../phase37/fixtures-historical/lexer:prng",
+        "Bool.and",
+        "../phase37/fixtures-historical/lexer:cls.go",
+        "../phase37/fixtures-historical/lexer:cls",
+        "../phase37/fixtures-historical/lexer:fnv",
+        "../phase37/fixtures-historical/lexer:step.at",
+        "../phase37/fixtures-historical/lexer:step",
+        "../phase37/fixtures-historical/lexer:mix",
+        "../phase37/fixtures-historical/lexer:flush",
+        "../phase37/fixtures-historical/lexer:lex"
+      ],
+      "selfhostWorkerCount": 26,
+      "upstreamWorkerCount": 25,
+      "selfhostSchedulerSegments": 599,
+      "upstreamSchedulerSegments": 69
+    }
+  ],
+  "countPatterns": {
+    "selfhostWorker": "^INLINE Term NF_(FID_[0-9_]+)\\([^\\n]+\\);",
+    "upstreamWorker": "^(?:INLINE|FAR) Term spin_\\d+\\([^\\n]+\\) \\{",
+    "scheduler": "^  WL_CASE\\("
+  }
+}

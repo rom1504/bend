@@ -1,0 +1,45 @@
+{
+  "kind": "phase68-selected-compilation-method-derivation",
+  "dataOnly": true,
+  "predecessor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/prepare-selected-v1.py",
+    "sha256": "41aeb63e8165eecd0b447dd2e691830c1063551fd3c69c7e219a2782286627c4",
+    "bytes": 9716
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/prepare-selected-v2.py",
+    "sha256": "72246f9579f8908a86e41345ab1af0c29da287fec5ba107d5939d3cfd7d852a2",
+    "bytes": 10476
+  },
+  "edits": [
+    {
+      "before": "\"\"\"Freeze explicitly selected B1/B2 and qualified C oracles; data-only successor.\"\"\"",
+      "after": "\"\"\"Freeze selected B1/B2 and explicitly owned prior exact-C oracles; data only.\"\"\""
+    },
+    {
+      "before": "    ap.add_argument('--image-pins', type=Path, required=True)",
+      "after": "    ap.add_argument('--image-pins', type=Path, required=True)\n    ap.add_argument('--oracle-attempt', type=Path,\n        help='Actual checked B1 that emitted acquired C; defaults to selected attempt. Fresh workers must reproduce complete C.')"
+    },
+    {
+      "before": "    b2_pin = pin(args.image_pins)",
+      "after": "    oracle_pin = pin(args.oracle_attempt or args.attempt)\n    oracle_attempt = read(oracle_pin['file'])\n    assert oracle_attempt['checked'] and oracle_attempt['artifactKind'] == 'derived-b1' and oracle_attempt['config']['strictExact']\n    oracle_api = verified(oracle_attempt['api'])\n    for key in ['checkedApi', 'derivationReport', 'bootstrapReport']:\n        verified(oracle_attempt[key])\n    b2_pin = pin(args.image_pins)"
+    },
+    {
+      "before": "assert Path(current_recipe['api']).resolve() == Path(attempt['api']['file']).resolve()",
+      "after": "assert Path(current_recipe['api']).resolve() == Path(oracle_api['file']).resolve()"
+    },
+    {
+      "before": "assert any(p['sha256'] == attempt['api']['sha256'] and Path(p['path']).resolve()==Path(attempt['api']['file']).resolve() for p in current_emit['compiler'])",
+      "after": "assert any(p['sha256'] == oracle_api['sha256'] and Path(p['path']).resolve()==Path(oracle_api['file']).resolve() for p in current_emit['compiler'])"
+    },
+    {
+      "before": "plan = dict(kind='phase68-native-compilation-plan', version=2, status='prepared-unexecuted',\n        predecessorMethod=pin(HERE/'prepare.py'),",
+      "after": "plan = dict(kind='phase68-native-compilation-plan', version=3, status='prepared-unexecuted',\n        predecessorMethod=pin(HERE/'prepare-selected-v1.py'), oracleAttempt=oracle_pin, oracleApi=oracle_api,"
+    },
+    {
+      "before": "Exact C matches earlier independently validated native acquisitions.",
+      "after": "Exact C must match independently validated native acquisitions from the separately identified oracleAttempt; fresh selected B1/B2 workers earn this complete-byte equality and no earlier producer is relabeled."
+    }
+  ],
+  "scope": "Retain actual producer identity for previously runtime-qualified identical C. Actual selected B1/B2 still produce and compare whole C each fresh request. No target executed."
+}

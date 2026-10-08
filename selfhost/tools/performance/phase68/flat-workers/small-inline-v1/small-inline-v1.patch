@@ -1,0 +1,39 @@
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -167,19 +167,25 @@
+ def nf_admit_next(book, workers, old, next, fuel):
+   nt_choose(List<&2, String>, U32.is_eq(nt_count(String, old), nt_count(String, next)), u => next, u => nf_admit(book, workers, next, fuel))
+ 
++# The explicit inline hint has a local source-size cutoff. Admission already
++# excludes C recursion cycles; this is not a transitive code-growth bound.
++@unsafe
++def nf_inline(+code: NC_Code) -> String:
++  nt_choose(String, Nat.is_le(String.length(nc_body(code)), 4096n), u => "NF_INLINE", u => "INLINE")
++
+ @unsafe
+ def nf_prototypes(workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> String:
+   match workers:
+     case Nil{}: ""
+     case Con{NF_Worker{+name, +params, code, deps}, +rest}:
+-      nt_choose(String, nb_contains(ready, name), u => "INLINE Term " ++ nf_name(name) ++ "(Env e, bool seq, Term* nf_out" ++ nf_param_c(params) ++ ");\n", u => "") ++ nf_prototypes(rest, ready)
++      nt_choose(String, nb_contains(ready, name), u => nf_inline(code) ++ " Term " ++ nf_name(name) ++ "(Env e, bool seq, Term* nf_out" ++ nf_param_c(params) ++ ");\n", u => "") ++ nf_prototypes(rest, ready)
+ 
+ @unsafe
+ def nf_bodies(workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> String:
+   match workers:
+     case Nil{}: ""
+     case Con{NF_Worker{+name, +params, +code, deps}, rest}:
+-      nt_choose(String, nb_contains(ready, name), u => "INLINE Term " ++ nf_name(name) ++ "(Env e, bool seq, Term* nf_out" ++ nf_param_c(params) ++ ") {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\n" ++ nc_body(code) ++ "}\nreturn 0;\n}\n", u => "") ++ nf_bodies(rest, ready)
++      nt_choose(String, nb_contains(ready, name), u => nf_inline(code) ++ " Term " ++ nf_name(name) ++ "(Env e, bool seq, Term* nf_out" ++ nf_param_c(params) ++ ") {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\n" ++ nc_body(code) ++ "}\nreturn 0;\n}\n", u => "") ++ nf_bodies(rest, ready)
+ 
+ @unsafe
+ def nf_adapter_defs(workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> List<&2, KDef>:
+@@ -206,7 +212,7 @@
+ 
+ @unsafe
+ def nf_finish_ready(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> NC_Result:
+-  nc_with_show(nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0)), cs, runtime, requests, pure, show, "#if !DEVICE\n" ++ nf_prototypes(workers, ready) ++ nf_bodies(workers, ready) ++ "#endif\n")
++  nc_with_show(nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0)), cs, runtime, requests, pure, show, "#if !DEVICE\n#if defined(__GNUC__) || defined(__clang__)\n#define NF_INLINE INLINE __attribute__((always_inline))\n#else\n#define NF_INLINE INLINE\n#endif\n" ++ nf_prototypes(workers, ready) ++ nf_bodies(workers, ready) ++ "#undef NF_INLINE\n#endif\n")
+ 
+ @unsafe
+ def nf_finish_workers(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>) -> NC_Result:

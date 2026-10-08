@@ -1,0 +1,32 @@
+{
+  "kind": "phase68-renderer-lines-source-proposal",
+  "status": "isolated-unselected-no-target",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/text.bend",
+    "sha256": "31c1ff5973df46d17ad395070fbefa1d2dc58398b3d12af80c62ed6c5548ff9d",
+    "bytes": 2533
+  },
+  "before": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/renderer-lines-proposal01/before.bend",
+    "sha256": "31c1ff5973df46d17ad395070fbefa1d2dc58398b3d12af80c62ed6c5548ff9d",
+    "bytes": 2533
+  },
+  "after": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/renderer-lines-proposal01/after.bend",
+    "sha256": "a8589b74dcf7dfaf745d97dc50fe6e050722a465b2d6d75af9d3aec218d763e7",
+    "bytes": 2337
+  },
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/renderer-lines/candidate-v1.patch",
+    "sha256": "fe9568c005e86296687b6194c7811933698fbb0e8b995d6635cdbfe84cf59a79",
+    "bytes": 519
+  },
+  "edits": [
+    {
+      "before": "@unsafe\ndef nt_lines_go(s: String, +acc: String) -> String:\n  match s:\n    case SNil{}: acc\n    case SCon{+h, t}:\n      nt_lines_go(t, acc ++ nt_choose(String, Char.is_eq(h, '\\n'), u => \"\\n    \", u => SCon{h, \"\"}))\n\n@unsafe\ndef nt_lines(s: String) -> String:\n  nt_lines_go(s, \"\")",
+      "after": "@unsafe\ndef nt_lines(s: String) -> String:\n  String.join(String.lines(s), \"\\n    \")"
+    }
+  ],
+  "lineDelta": -7,
+  "risk": "Existing actual B1 and B2 String.lines use non-tail recursive String.split, not a native split primitive; this rewrite is not recommended without bounded long-string falsification. Estimated speed ceiling from inclusive sample time is only 1-2 percent of request."
+}

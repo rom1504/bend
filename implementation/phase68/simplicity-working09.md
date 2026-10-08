@@ -3,8 +3,9 @@
 The [frozen module census](evidence/source-census-working09.json) compares the
 actual installed Phase67 source snapshot (`scalars-build01`, B1 `c76f1113…`)
 with Phase68 working09 (`inline-build09`, B1 `8894d861…`). It counts the Bend
-modules listed in each compiler manifest once. It excludes the assembled
-compiler, fixtures, proposals, tests, documentation, host tooling, native/JS
+modules listed in each compiler manifest once. It excludes the unused legacy
+`src/compiler.bend`, generated assembly, fixtures, proposals, tests,
+documentation, host tooling, native/JS
 runtimes and generated images. This is a development comparison, not release
 qualification or a complete repository-maintenance cost.
 

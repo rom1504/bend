@@ -1,0 +1,49 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/raw-controls-v4.mjs",
+    "sha256": "c65a2b00bb6260cb5ac007afc9156231c087d5e449329b2d4e63c1b63ac91e23",
+    "bytes": 7950
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/raw-controls-v5.mjs",
+    "sha256": "3dd809ed0390c20dea8ed2ab633b2d634c41036c2cd3783b821cd86f588cfd59",
+    "bytes": 8852
+  },
+  "edits": [
+    {
+      "before": "kind:'phase68-native-raw-controls-v4'",
+      "after": "kind:'phase68-native-raw-controls-v5'",
+      "count": 1
+    },
+    {
+      "before": " const books=[",
+      "after": " const rawProduct=t('ADT','RawProduct68');\n const rawProductDef={...baseADT('RawProduct68',[\n  {...baseCtor('RawProduct68',2,all(201,nty,all(202,nty,rawProduct))),native:false}\n ]),native:false};\n const books=[\n  // Public raw API: a type annotation is not permission to inspect an unused\n  // argument. A Nat immediate is deliberately supplied instead of a product.\n  ['unused-mistyped-product',[\n   def('main',app(ref('ignore_product68'),nat(0))),\n   def('ignore_product68',lam(200,nat(7)),all(200,rawProduct,nty)),rawProductDef\n  ],'7n'],",
+      "count": 1
+    },
+    {
+      "before": "   const worker='INLINE Term NF_FID_109_97_105_110_(Env e, bool seq, Term* nf_out) {';\n   if(got.source.includes(worker)) {",
+      "after": "   const workerSuffix=' Term NF_FID_109_97_105_110_(Env e, bool seq, Term* nf_out) {';\n   const workerHeads=['INLINE','NF_INLINE'].map(prefix=>prefix+workerSuffix).filter(head=>got.source.includes(head));\n   assert(workerHeads.length<=1);\n   const worker=workerHeads[0];\n   assert.equal(Boolean(worker),got.source.includes('NF_FID_109_97_105_110_('));\n   if(worker) {",
+      "count": 1
+    },
+    {
+      "before": "    markers.push('*nf_out = v_3;');\n    assert.equal(got.source.split(markers[1]).length,2);",
+      "after": "    const returns=['*nf_out = v_3;','nf_out[0] = v_3;'].filter(marker=>got.source.includes(marker));\n    assert.equal(returns.length,1);\n    markers.push(returns[0]);\n    assert.equal(got.source.split(markers[1]).length,2);",
+      "count": 1
+    }
+  ],
+  "preparer": {
+    "parent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/prepare-raw-v2.py",
+      "sha256": "d4d6e08274797eb6ce1ef60ca929656cdaa1b995417ac9ce5f16677fc2b68176",
+      "bytes": 3580
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/prepare-raw-v3.py",
+      "sha256": "240628a2f29611a38b70aa9a6ea4ea1ccab434d9bc53bd2086a736c2c6ea5dbd",
+      "bytes": 3577
+    }
+  },
+  "targetExecuted": false,
+  "expectedRows": 12,
+  "scope": "Retains all ten original raw observations and identical checkpoint oracle; recognizes either exact INLINE/NF_INLINE worker and boxed/vector-one return spelling. Adds two compiler roles for unused mismatched raw product argument, both expected7n. Does not establish checked-source or device semantics."
+}

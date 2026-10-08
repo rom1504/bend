@@ -1,0 +1,50 @@
+{
+  "kind": "phase68-native-correctness-catalog",
+  "targetExecuted": false,
+  "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "reference": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66",
+  "sets": {
+    "packing-boundary": [
+      "io/request_out_of_band.bend",
+      "run/nat_overflow.bend"
+    ]
+  },
+  "cases": [
+    {
+      "id": "io/request_out_of_band.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/request_out_of_band.bend",
+        "sha256": "61a2b7111a1c92ca9aa5648d02d61be92016ddec754a6a7bc1fe3c11c4b04772",
+        "bytes": 2022
+      },
+      "external": false,
+      "purpose": "requests cannot be decoded outside IO loop",
+      "goldenLines": [
+        "3",
+        "bend: runtime fail-stop",
+        "exit 1"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "run/nat_overflow.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/nat_overflow.bend",
+        "sha256": "8004dc6d43642ec742482ac2f15df4bf90e35e43e50ea67442341e311b1e1afa",
+        "bytes": 550
+      },
+      "external": false,
+      "purpose": "fail-stop preserved; cannot use unchecked direct arithmetic",
+      "goldenLines": [
+        "bend: a Nat past the largest immediate 2^48-1",
+        "exit 1"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    }
+  ],
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/integration-v3/catalog-v1.json",
+    "sha256": "bfd8cce9a3792404d176126c6bec175df5aeaac9433eb5c0459aff5963bb3ebf",
+    "bytes": 27884
+  }
+}

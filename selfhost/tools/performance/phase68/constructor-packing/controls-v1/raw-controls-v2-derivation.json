@@ -1,0 +1,35 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/controls-v1/raw-controls.mjs",
+    "sha256": "9e4c55e50624d23954fec9c69a78ab08b327d5eae96fbe98006826dbdf30f939",
+    "bytes": 8103
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/controls-v1/raw-controls-v2.mjs",
+    "sha256": "71b931919894ccdddfc5fa318b7fcab4203411c52bb78ba854c1ee849661c22f",
+    "bytes": 10350
+  },
+  "edits": [
+    {
+      "before": "kind:'phase68-packing-raw-controls-v1'",
+      "after": "kind:'phase68-packing-raw-controls-v2'",
+      "count": 1
+    },
+    {
+      "before": "Exact product10/packing11 raw-core API controls; four native programs at threads1/4 and compile-only permission probes.",
+      "after": "Exact product10/checked packing candidate raw-core API controls; four native programs and one explicit readback-layout diagnostic at threads1/4, plus compile-only permission probes.",
+      "count": 1
+    },
+    {
+      "before": "    row.pass=row.runs.every(x=>x.pass);save();assert(row.pass,JSON.stringify(row));\n",
+      "after": "    row.pass=row.runs.every(x=>x.pass);save();assert(row.pass,JSON.stringify(row));\n    if(name==='readback-boundaries'&&role==='candidate') {\n      // Explicit diagnostic derivative: observe the representation at readback.\n      // This checks both successful packing and preservation of wider payloads.\n      const cid='CID__CTOR_'+[...'PackingBox68'].map(c=>c.codePointAt(0)).join('_')+'_';\n      assert(got.source.includes('#define '+cid+' '));\n      const anchor='      Term t   = w[0];';assert.equal(got.source.split(anchor).length,2);\n      const witness=`\\n      if (term_aux(t) == ${cid}) {\\n        Term payload = term_tag(t) == TAG_PAK ? term_loc(t) : e.mem[term_peek(e, t)];\\n        bool packed = term_tag(t) == TAG_PAK;\\n        if (packed != ((payload & ~LOC_MASK) == 0)) err_fail(\"packing layout witness failed\");\\n        fprintf(stderr, \"P68_%s:%llu\\\\n\", packed ? \"PACKED\" : \"BOXED\", (unsigned long long)payload);\\n      }`;\n      const derivative=got.source.replace(anchor,anchor+witness);\n      const dc=stem+'-layout.c',binary=stem+'-layout';fs.writeFileSync(dc,derivative,{flag:'wx'});\n      const observed='P68_PACKED:0\\nP68_PACKED:1099511627775\\nP68_BOXED:1099511627776\\nP68_BOXED:281474976710655\\n';\n      const check={name:'packing-layout-witness',role,kind:'emitted-C-readback-layout-diagnostic',parent:pin(stem+'.c'),source:pin(dc),edits:[{before:anchor,after:anchor+witness,count:1}],expected,expectedStderr:observed,runs:[]};report.rows.push(check);save();\n      const cc=spawnSync(recipe.clang,[...recipe.clangArgs.filter(x=>x!=='-O3'),'-O1',dc,...recipe.linkArgs,'-o',binary],{encoding:'utf8',timeout:45000,maxBuffer:2**20});\n      check.compile={status:cc.status,stderr:cc.stderr,error:cc.error?.message};save();assert.equal(cc.status,0,cc.stderr||cc.error?.message);check.executable=pin(binary);\n      for(const threads of [1,4]) {\n        const run=spawnSync(binary,['--threads',String(threads),'--gpu','off'],{encoding:'utf8',timeout:10000,maxBuffer:2**20});\n        check.runs.push({threads,status:run.status,stdout:run.stdout,stderr:run.stderr,pass:run.status===0&&run.stdout.trimEnd()===expected&&run.stderr===observed});\n      }\n      check.pass=check.runs.every(x=>x.pass);save();assert(check.pass,JSON.stringify(check));\n    }\n",
+      "count": 1
+    },
+    {
+      "before": "report.complete=report.rows.length===16;",
+      "after": "report.complete=report.rows.length===17;",
+      "count": 1
+    }
+  ],
+  "targetsExecuted": false
+}

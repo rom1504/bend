@@ -1,0 +1,50 @@
+{
+  "kind": "phase68-flat-worker-source-proposal",
+  "executed": false,
+  "prerequisites": [
+    "arity-v1",
+    "shared-arity-v1",
+    "eta-adapter-v2",
+    "prefix-v2-affine-fix"
+  ],
+  "patchSha256": "78bfbf12d1a45e6ea79337319e762bc0c4436e5c6eea3c9e3e59f4f516459759",
+  "files": [
+    {
+      "path": "selfhost/src/back/native/bridge.bend",
+      "beforeSha256": "78c6daa78b22a2351ca93d6a3c89ca59fdf0b5fdbda03df609159aa0a5660831",
+      "afterSha256": "6b48e966b1fc0e9f7910ba617245b48a111f73d4bf8609849bc90b442e1554c2",
+      "lineDelta": 2
+    },
+    {
+      "path": "selfhost/src/back/native/direct.bend",
+      "beforeSha256": "a0a5351fa0c2dc910949e79d574727b59ebf16a7cb332bf5ceb8906ea8ab3558",
+      "afterSha256": "92ee3f34154eef0d1dddf65f71e0d739c5b39f94552e613dbdc1b6955aebb4fb",
+      "lineDelta": 2
+    },
+    {
+      "path": "selfhost/src/back/native/book.bend",
+      "beforeSha256": "38c9b318b5cd98d07f2aa801437e5a7321ea07cbd64eaee2c48e80fa99964194",
+      "afterSha256": "09664a2c0a21a979c3f493feccbeed02c358cadd7262f7257017efc57427aa97",
+      "lineDelta": 0
+    },
+    {
+      "path": "selfhost/src/back/native/flat.bend",
+      "beforeSha256": null,
+      "afterSha256": "9fbe66715dec93b77d5c9c49b696d76fc4db14a6430e4e32c9a573bbf5e05318",
+      "lineDelta": 212
+    },
+    {
+      "path": "selfhost/src/back/native/manifest.txt",
+      "beforeSha256": "4090bc7ab7c3654a80e9468a0f63b881c452c8fe5ed6727a41b68fe6c919afd0",
+      "afterSha256": "324428d4f4e6cb4ac8f51e3e44117ff74b83144b123e4cea1de1cfe5a1279189",
+      "lineDelta": 1
+    },
+    {
+      "path": "selfhost/src/compiler.json",
+      "beforeSha256": "e820ee57509066a768dbd202f21ad7e6245f6cff490c1de16a1790474571003e",
+      "afterSha256": "19c14481dcb236a943a66cdd5039cebc438ae6a0da4d9853d1033f31748d1e22",
+      "lineDelta": 1
+    }
+  ],
+  "notes": "Explicit common-lowerer destination; provisional code plus transitive admission; host-only wrappers. Source-review and root-owned checked execution pending."
+}

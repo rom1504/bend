@@ -1,0 +1,49 @@
+{
+  "kind": "phase68-occurrence-summary-proposal",
+  "status": "isolated-unselected-unexecuted",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/occurrence-summary/derive.py",
+    "sha256": "925d392419f7fc133a966c18f7801a32db9b1d6c8411d707bba0c29b25391a86",
+    "bytes": 6403
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/bridge.bend",
+    "sha256": "37fef376b69a8d26ca067af1603876d613051c1029fc3ece91a916d4c52be371",
+    "bytes": 28680
+  },
+  "before": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/occurrence-summary-proposal01/before.bend",
+    "sha256": "37fef376b69a8d26ca067af1603876d613051c1029fc3ece91a916d4c52be371",
+    "bytes": 28680
+  },
+  "after": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/occurrence-summary-proposal01/after.bend",
+    "sha256": "1fc205f3cacb8163e628f02ab7e2f65a3c6033d4196a53c948ba6a386243eecc",
+    "bytes": 31190
+  },
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/occurrence-summary/candidate-v1.patch",
+    "sha256": "49acbba3a1d3a7306dac28fa10d2a44133aabbbbcc0777d322d40594f9de7f9b",
+    "bytes": 5255
+  },
+  "edits": [
+    {
+      "before": "type NC_Code is Data:",
+      "after": "# Ordered output rows remain independent of the occurrence-ID set.\ntype NC_EnvPartition is Data:\n  NC_EnvPartition{+live: List<&2, NC_Binding>, +drop: String}\n\ntype NC_Code is Data:"
+    },
+    {
+      "before": "@unsafe\ndef nc_live_env(env: List<&2, NC_Binding>, +t: KTerm) -> List<&2, NC_Binding>:\n  match env:\n    case Nil{}: Nil{}\n    case Con{NC_Binding{+id, +word}, +rest}:\n      nt_choose(List<&2, NC_Binding>, nc_occurs(t, id), u => Con{NC_Binding{id, word}, nc_live_env(rest, t)}, u => nc_live_env(rest, t))",
+      "after": "# Full U32 IDs are explicit trie keys; the payload name is constant.\n# Var is a leaf, including malformed raw terms with Var children.\n@unsafe\ndef nc_uses_term(+t: KTerm, +uses: KDef, +mark: KDef) -> KDef:\n  nt_choose(KDef, String.eq(tg(t), \"Var\"),\n    u => index_set(uses, mark, ix(t), 32),\n    u => nc_uses_list(ks(t), uses, mark))\n\n@unsafe\ndef nc_uses_list(+ts: List<&2, KTerm>, +uses: KDef, +mark: KDef) -> KDef:\n  match ts:\n    case Nil{}: uses\n    case Con{h, rest}: nc_uses_list(rest, nc_uses_term(h, uses, mark), mark)\n\n@unsafe\ndef nc_uses(+t: KTerm) -> KDef:\n  nc_uses_term(t, missing(), KDef{\"$native.occurrence\", \"Occurrence\", 0, 0, atom(\"Absent\"), atom(\"Absent\"), Nil{}, False{}, False{}})\n\n@unsafe\ndef nc_uses_has(+uses: KDef, +id: U32) -> Bool:\n  String.eq(dn(index_find(uses, \"$native.occurrence\", id, 32)), \"$native.occurrence\")\n\n@unsafe\ndef nc_live_uses(env: List<&2, NC_Binding>, +uses: KDef) -> List<&2, NC_Binding>:\n  match env:\n    case Nil{}: Nil{}\n    case Con{NC_Binding{+id, +word}, +rest}:\n      nt_choose(List<&2, NC_Binding>, nc_uses_has(uses, id), u => Con{NC_Binding{id, word}, nc_live_uses(rest, uses)}, u => nc_live_uses(rest, uses))\n\n@unsafe\ndef nc_live_env(env: List<&2, NC_Binding>, +t: KTerm) -> List<&2, NC_Binding>:\n  match env:\n    case Nil{}: Nil{}\n    case Con{h, rest}: nc_live_uses(Con{h, rest}, nc_uses(t))\n\n@unsafe\ndef nc_partition_step(+id: U32, +word: String, +live: Bool, +more: NC_EnvPartition) -> NC_EnvPartition:\n  match more:\n    case NC_EnvPartition{+env, +drop}:\n      nt_choose(NC_EnvPartition, live,\n        u => NC_EnvPartition{Con{NC_Binding{id, word}, env}, drop},\n        u => NC_EnvPartition{env, \"term_sink(e, \" ++ word ++ \");\\n\" ++ drop})\n\n@unsafe\ndef nc_partition_uses(env: List<&2, NC_Binding>, +uses: KDef) -> NC_EnvPartition:\n  match env:\n    case Nil{}: NC_EnvPartition{Nil{}, \"\"}\n    case Con{NC_Binding{id, word}, rest}:\n      nc_partition_step(id, word, nc_uses_has(uses, id), nc_partition_uses(rest, uses))\n\n@unsafe\ndef nc_prepare_env(env: List<&2, NC_Binding>, +t: KTerm) -> NC_EnvPartition:\n  match env:\n    case Nil{}: NC_EnvPartition{Nil{}, \"\"}\n    case Con{h, rest}: nc_partition_uses(Con{h, rest}, nc_uses(t))"
+    },
+    {
+      "before": "@unsafe\ndef nc_drop_dead(env: List<&2, NC_Binding>, +t: KTerm) -> String:\n  match env:\n    case Nil{}: \"\"\n    case Con{NC_Binding{+id, +word}, rest}:\n      nt_choose(String, nc_occurs(t, id), u => \"\", u => \"term_sink(e, \" ++ word ++ \");\\n\") ++ nc_drop_dead(rest, t)\n\n@unsafe\ndef nc_share_env(env: List<&2, NC_Binding>, +a: KTerm, +b: KTerm) -> String:\n  match env:\n    case Nil{}: \"\"\n    case Con{NC_Binding{+id, +word}, rest}:\n      nt_choose(String, nc_occurs(a, id) && nc_occurs(b, id), u => word ++ \" = term_keep(e, \" ++ word ++ \");\\n\", u => \"\") ++ nc_share_env(rest, a, b)",
+      "after": "@unsafe\ndef nc_partition_drop(+parts: NC_EnvPartition) -> String:\n  match parts:\n    case NC_EnvPartition{live, drop}: drop\n\n@unsafe\ndef nc_drop_dead(env: List<&2, NC_Binding>, +t: KTerm) -> String:\n  nc_partition_drop(nc_prepare_env(env, t))\n\n@unsafe\ndef nc_keep_uses(env: List<&2, NC_Binding>, +uses: KDef) -> String:\n  match env:\n    case Nil{}: \"\"\n    case Con{NC_Binding{+id, +word}, rest}:\n      nt_choose(String, nc_uses_has(uses, id), u => word ++ \" = term_keep(e, \" ++ word ++ \");\\n\", u => \"\") ++ nc_keep_uses(rest, uses)\n\n@unsafe\ndef nc_share_used(env: List<&2, NC_Binding>, +b: KTerm) -> String:\n  match env:\n    case Nil{}: \"\"\n    case Con{h, rest}: nc_keep_uses(Con{h, rest}, nc_uses(b))\n\n@unsafe\ndef nc_share_env(env: List<&2, NC_Binding>, +a: KTerm, +b: KTerm) -> String:\n  nc_share_used(nc_live_env(env, a), b)"
+    },
+    {
+      "before": "  nc_prepend(nc_drop_dead(env, t), nc_lower_live_to(book, t, nc_live_env(env, t), n, target))",
+      "after": "  nc_lower_partition(book, t, n, target, nc_prepare_env(env, t))\n\n@unsafe\ndef nc_lower_partition(+book: List<&2, KDef>, +t: KTerm, +n: U32, +target: NC_Target, +parts: NC_EnvPartition) -> NC_Code:\n  match parts:\n    case NC_EnvPartition{live, drop}: nc_prepend(drop, nc_lower_live_to(book, t, live, n, target))"
+    }
+  ],
+  "lineDelta": 70,
+  "invariant": "Exact Var-as-leaf occurrence semantics and ordered duplicate-preserving environment decisions. Full U32 IDs reuse the existing compressed index. No NC_Code or public/cache ABI change."
+}

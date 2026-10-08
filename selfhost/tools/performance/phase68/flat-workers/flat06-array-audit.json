@@ -1,0 +1,93 @@
+{
+  "kind": "phase68-flat06-array-source-object-audit",
+  "targetExecuted": false,
+  "source": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-flat06/array-selfhost/program.c",
+    "sha256": "fb417bb191539a7e3633054bad8253a9ec829ae93a7b58e3c4a345cba2d3290e",
+    "bytes": 1000799
+  },
+  "executable": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-flat06/array-selfhost/program",
+    "sha256": "27d8c51049e7b5c4bf37bd1676994328cb96c02aa06836498cfa1ff0cd4961ed",
+    "bytes": 193208
+  },
+  "workers": [
+    {
+      "name": "../phase37/fixtures-historical/local-fold:fold.step",
+      "identifier": "NF_FID_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_58_102_111_108_100_46_115_116_101_112_",
+      "line": 14265,
+      "bytes": 2425,
+      "heapAlloc": 1,
+      "ctrTake": 1,
+      "rfcSeal": 3,
+      "termKeep": 2,
+      "errSeen": 10,
+      "workerCalls": 0,
+      "selfGoto": 0
+    },
+    {
+      "name": "../phase37/fixtures-historical/local-fold:fold.cell",
+      "identifier": "NF_FID_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_58_102_111_108_100_46_99_101_108_108_",
+      "line": 14364,
+      "bytes": 1879,
+      "heapAlloc": 1,
+      "ctrTake": 1,
+      "rfcSeal": 2,
+      "termKeep": 1,
+      "errSeen": 5,
+      "workerCalls": 1,
+      "selfGoto": 0
+    },
+    {
+      "name": "../phase37/fixtures-historical/local-fold:fold.loop",
+      "identifier": "NF_FID_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_58_102_111_108_100_46_108_111_111_112_",
+      "line": 14426,
+      "bytes": 2706,
+      "heapAlloc": 0,
+      "ctrTake": 0,
+      "rfcSeal": 0,
+      "termKeep": 1,
+      "errSeen": 12,
+      "workerCalls": 1,
+      "selfGoto": 1
+    }
+  ],
+  "objectSymbols": [
+    {
+      "name": "../phase37/fixtures-historical/local-fold:fold.step",
+      "symbol": "NF_FID_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_58_102_111_108_100_46_115_116_101_112_",
+      "machineBytes": 1006,
+      "workerCallInstructions": [],
+      "stackAdjustInstructions": [
+        "1890a:\t48 83 ec 18          \tsub    $0x18,%rsp",
+        "18b8e:\t48 83 c4 18          \tadd    $0x18,%rsp"
+      ]
+    },
+    {
+      "name": "../phase37/fixtures-historical/local-fold:fold.cell",
+      "symbol": "NF_FID_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_58_102_111_108_100_46_99_101_108_108_",
+      "machineBytes": 979,
+      "workerCallInstructions": [
+        "1879f:\te8 5c 01 00 00       \tcallq  18900 <NF_FID_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_58_102_111_108_100_46_115_116_101_112_>"
+      ],
+      "stackAdjustInstructions": [
+        "1852a:\t48 83 ec 18          \tsub    $0x18,%rsp",
+        "187bf:\t48 83 c4 18          \tadd    $0x18,%rsp"
+      ]
+    },
+    {
+      "name": "../phase37/fixtures-historical/local-fold:bench",
+      "symbol": "NF_FID_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_58_98_101_110_99_104_",
+      "machineBytes": 1041,
+      "workerCallInstructions": [
+        "18141:\te8 da 03 00 00       \tcallq  18520 <NF_FID_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_58_102_111_108_100_46_99_101_108_108_>",
+        "18163:\te8 e8 01 00 00       \tcallq  18350 <NF_FID_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_58_102_111_108_100_46_102_105_110_105_115_104_>"
+      ],
+      "stackAdjustInstructions": [
+        "17dda:\t48 83 ec 18          \tsub    $0x18,%rsp",
+        "1817e:\t48 83 c4 18          \tadd    $0x18,%rsp"
+      ]
+    }
+  ],
+  "interpretation": "Hot workers admitted. Positive steady iteration retains two Tuple allocations/takes, five seal sites and 27 explicit let error checkpoints. Clang leaves cell and step out of line; loop is incorporated into bench. This shows remaining work, not a measured attribution of elapsed time. Read-only nm/objdump pinned CPU0."
+}

@@ -100,3 +100,79 @@ confidence in size; it is not a performance forecast or promotion decision.
 | Attempt | Correctness | Measurement | Interpretation |
 | --- | --- | --- | --- |
 | Prospective registration | Design constraints only; no target run | None | Isolated implementation authorized by root |
+
+## V1 source refinement, before application
+
+The isolated implementation keeps scalar-output boxed workers and adds private
+`$product.` variants. A variant's product parameters consist of already evaluated
+field words; it is selected only when each corresponding actual is a matching
+known bundle. It never eagerly unboxes a public boxed argument. Local constructor
+flow uses a catalogue built from validated signature descriptors and requires
+the exact emitted native constructor identity and live field count. This is a
+storage-shape certificate for an actual constructor, not an inference about an
+arbitrary typed variable. Nested fields remain opaque words.
+
+The first version duplicates a source body for the boxed and product entries;
+that generated-code cost must be reported. Local virtual bundles use fresh
+ordinary scalar bindings. Repeated sequential uses and opaque escapes repack;
+mutually exclusive matcher branches can retain the bundle. A boxed caller may
+enter the private product loop once it has a known constructor/result bundle.
+This covers the initial constructor state as well as primitive result pairs;
+result-only transport would leave state boxes at each recurrence.
+
+`NC_Code` carries explicit emitted worker-call dependencies so readiness checks
+follow the selected boxed/product graph. Source references alone do not describe
+that graph. Self-tail edges use staged parameter moves and a local goto;
+unsupported variant cycles remain unadmitted. This is metadata only for ordinary
+scheduler paths. New bundle internal nodes are gated to private worker lowering.
+
+The source snapshot preserves both the initial worker-v3 base and a subsequent
+integration base containing the parent's short-circuit admission and occurrence
+summary changes. The source-only composer, relative integration patch and hash
+manifest are under `selfhost/tools/performance/phase68/flat-products/v1/`.
+Native/correctness reviewers checked the fixed-shell query and flow contract;
+source review found and corrected fresh-ID and affine-capture issues. No target
+result is claimed by this addendum. Independent ordinary-record and owned-Array
+controls are supplied by the correctness lane.
+
+## V2 safety refinement, before application
+
+The v1 source is preserved. V2 rebases onto the parent's occurrence-summary and
+small-inline source, with exact integration hashes. Its layout query now uses
+bounded syntax reduction, direct ADT declaration lookup, nonreducing substitution
+and structural equality. It does not unfold global aliases, normalize fields or
+call conversion. Unknown shapes decline, preserving the raw API's lack of a
+checked-book capability.
+
+Local virtual bindings require min=max one use across branches. Private product
+parameters must similarly reach exactly one source use on every inspected prefix
+path after bounded symbolic beta. Zero-use and repeated-use paths keep boxed
+ownership, rather than distributing a parent's drop or sharing into its fields.
+Only runtime-unconditional guards and exact native Zero/Succ or False/True
+complements exclude miss paths; general ADT exhaustiveness is never assumed.
+Successful virtual matching uses the original held-bindings-then-fields order.
+
+The relative v2 patch adds 533 net source lines and preserves the parent worker,
+occurrence and inline behavior outside the product extension. Native and
+correctness peers reviewed the bounded query and demand/drop changes. Require
+the branch-drop fixture's private-entry exclusion as well as output, native
+exhaustive-positive and unknown-tag-negative controls, and the unchanged raw
+controls. Source checks are not target qualification; no gain or parity claim is
+made before the parent's build and measurements.
+
+## V3 bounded alias successor, before application
+
+The actual products10 source audit found zero private product workers in the
+numeric, array and lexer outputs. The parent's correctness controls passed, but
+this does not establish the registered structural effect. Saved products10 C and
+the failed strong array receipt remain unchanged. The actual signature diagnostic
+showed Pair applications declined by v2's refusal to read global aliases.
+
+V3 reads general aliases with a 64-transition syntax machine, visited-name cycle
+refusal and a 4096-node substitution-growth bound. It invokes no global normalizer,
+conversion or term computation. Final ADT equality keeps nominal identity and
+exact structural arguments while excluding irrelevant outer parser metadata,
+consistent with core ADT equality. There is no Pair or workload exception.
+All flow, ownership and branch-demand gates remain unchanged. The isolated helper
+patch is under `flat-products/v3/`; its effect still requires a new checked build,
+raw controls and a passing reachable-product graph discriminator.

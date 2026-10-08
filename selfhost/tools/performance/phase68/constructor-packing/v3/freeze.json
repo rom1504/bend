@@ -1,0 +1,29 @@
+{
+  "kind": "phase68-packing-source-proposal-freeze-v1",
+  "productionApplied": false,
+  "targetsExecutedByOwner": false,
+  "manifest": {
+    "path": "selfhost/tools/performance/phase68/constructor-packing/v3/manifest.json",
+    "sha256": "9bbf0cd9b646140cd50dc23a75cc4e9b65120835a96e52d5b0f30337b5f1194a",
+    "bytes": 2728
+  },
+  "patch": {
+    "path": "selfhost/tools/performance/phase68/constructor-packing/v3/candidate.patch",
+    "sha256": "63c8c8fbd700b52bc8155f10cc0524b35ff1f95ef6ff9d15a3f3b9026d9710c1",
+    "bytes": 3308
+  },
+  "independentReviewer": "/root/p63_correctness",
+  "sourceReview": "PASS",
+  "reviewScope": "Exact manifest pins and sole v2-to-v3 guard correction; field evaluation/payload/ownership, Base/IO exclusion, explicit/Absent foreign fence and undefined-macro boxed fallback.",
+  "integrationBase": "Frozen products-v2 candidate/book.bend; emitter unchanged baseline",
+  "requires": [
+    "Checked compiler source build",
+    "Focused packed/boxed/foreign/raw boundary controls",
+    "Selected final qualification"
+  ],
+  "diagnosticEvidence": {
+    "path": "implementation/phase68/evidence/packing-c-diagnostic01.json",
+    "sha256": "af742505be1a61d94dd7cfbeed2d170374e1b90a7bb0516887b1261b7a15b90c",
+    "bytes": 5488
+  }
+}

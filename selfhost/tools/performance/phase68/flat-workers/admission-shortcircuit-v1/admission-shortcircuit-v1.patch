@@ -1,0 +1,24 @@
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -137,14 +137,19 @@
+ def nf_deps_ready(+book: List<&2, KDef>, deps: List<&2, String>, +owner: String, +ready: List<&2, String>) -> Bool:
+   match deps:
+     case Nil{}: True{}
+-    case Con{+name, rest}: (String.eq(name, owner) || nc_native_def(lookup(book, name)) || nb_contains(ready, name)) && nf_deps_ready(book, rest, owner, ready)
++    case Con{+name, rest}:
++      +ok = nt_choose(Bool, String.eq(name, owner), u => True{}, u =>
++        nt_choose(Bool, nb_contains(ready, name), u => True{}, u => nc_native_def(lookup(book, name))))
++      nt_choose(Bool, ok, u => nf_deps_ready(book, rest, owner, ready), u => False{})
+ 
+ @unsafe
+ def nf_admit_pass(+book: List<&2, KDef>, workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> List<&2, String>:
+   match workers:
+     case Nil{}: ready
+     case Con{NF_Worker{+name, params, +code, +deps}, rest}:
+-      nf_admit_pass(book, rest, nt_choose(List<&2, String>, Bool.not(nb_contains(ready, name)) && String.eq(nc_error(code), "") && List.is_empty(&2, N_Segment, nc_segs(code)) && nf_deps_ready(book, deps, name, ready), u => Con{name, ready}, u => ready))
++      nf_admit_pass(book, rest, nt_choose(List<&2, String>, nb_contains(ready, name), u => ready, u =>
++        nt_choose(List<&2, String>, String.eq(nc_error(code), "") && List.is_empty(&2, N_Segment, nc_segs(code)),
++          u => nt_choose(List<&2, String>, nf_deps_ready(book, deps, name, ready), u => Con{name, ready}, u => ready), u => ready)))
+ 
+ law nf_admit_next:
+   for +book: List<&2, KDef>

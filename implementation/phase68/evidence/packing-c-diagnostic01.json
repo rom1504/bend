@@ -1,0 +1,159 @@
+{
+  "kind": "phase68-packing-c-diagnostic-portable-evidence-v1",
+  "complete": true,
+  "dataOnlyCollector": true,
+  "targetsExecutedBy": "root",
+  "experiment": "P68-011",
+  "scope": "Source-derived C diagnostic of encoded ordinary one-field packing; no checked compiler or broad/raw/foreign/GPU qualification.",
+  "report": {
+    "path": "selfhost/build/phase68/packing-c-diagnostic01/execution.json",
+    "sha256": "54edc15a80c55b0f181e9290f11ec350b4196c0427259f939531112d8e956afe",
+    "bytes": 27142
+  },
+  "plan": {
+    "path": "selfhost/build/phase68/packing-c-diagnostic01/plan.json",
+    "sha256": "040494be97849b2de736ec7f908d005982d44b4cb15d044d03e7bd0e98570cb6",
+    "bytes": 96736
+  },
+  "runner": {
+    "path": "selfhost/tools/performance/phase68/constructor-packing/v1/run-plan.py",
+    "sha256": "d1d210bcbc8b0670b228a0b404bb33b9f8f04fd38901308480a3f6b36f7012e7",
+    "bytes": 6737
+  },
+  "method": {
+    "path": "selfhost/tools/performance/phase68/benchmark/saved-native-v2.py",
+    "sha256": "83c586f20c37965a536c32d8c129a6cf481e66e634ab437a6b4a944016510cd2",
+    "bytes": 18121
+  },
+  "acquisitions": [
+    {
+      "path": "selfhost/build/phase68/native-flat06/report.json",
+      "sha256": "a97f106f10939a48bdaee86602d50c29be842aeda13fa5157518c15d96717462",
+      "bytes": 51860
+    },
+    {
+      "path": "selfhost/build/phase68/native-flat06-rest/report.json",
+      "sha256": "d50f6beec5cbecd417b54a46eb2217668fa51461252b6b6027161b215270bdd6",
+      "bytes": 51911
+    }
+  ],
+  "recipe": {
+    "path": "selfhost/build/phase68/native-flat06-recipe.json",
+    "sha256": "5cebfb21265667d182c3b50424a4ea3d7182a09ba280b41ce35f07fbcf7699f3",
+    "bytes": 40787
+  },
+  "fixedPlan": {
+    "path": "selfhost/build/phase68/native-plan02.json",
+    "sha256": "caa85c6dbaf6f325e6466d92913ff0c3adceb20339354d8b5b46d7fa565b5cdf",
+    "bytes": 1095
+  },
+  "smokePasses": 2,
+  "measurementPasses": 12,
+  "measurementSelected": 12,
+  "allTimingQualified": true,
+  "roundsPerRoleAndCase": 3,
+  "minimumClockMs": 100,
+  "resourcePolicy": {
+    "cpu": 3,
+    "treeRssMiB": 2048,
+    "availableMiB": 4096,
+    "serial": true
+  },
+  "rows": [
+    {
+      "case": "tree",
+      "sitesChanged": 21,
+      "baselineSamplesMs": [
+        210,
+        213,
+        209
+      ],
+      "candidateSamplesMs": [
+        165,
+        161,
+        160
+      ],
+      "baselineMedianMs": 210,
+      "candidateMedianMs": 161,
+      "candidateOverBaseline": 0.7666666666666667,
+      "runtimeReductionPercent": 23.33333333333333,
+      "baselineC": {
+        "path": "selfhost/build/phase68/native-flat06-rest/tree-selfhost/program.c",
+        "sha256": "9d5bd1d3141af71817a1baa5df7b4aa18464769c36c2bfea89f84ce32c7b6afd",
+        "bytes": 1154674
+      },
+      "candidateC": {
+        "path": "selfhost/build/phase68/packing-c-diagnostic01/tree/program.c",
+        "sha256": "5839408d013e3059a868f004bfffbcf0cc0c448fd87661a16a46029c67714321",
+        "bytes": 1163004
+      },
+      "baselineExecutable": {
+        "path": "selfhost/build/phase68/native-flat06-rest/tree-selfhost/program",
+        "sha256": "a228a03416bb812b08fb79fa0114170fc648b72d71d46afc8cd8bc3a10d37e4f",
+        "bytes": 329704
+      },
+      "candidateExecutable": {
+        "path": "selfhost/build/phase68/packing-c-diagnostic01/tree/program",
+        "sha256": "55c9a83c7e66da6b214aab5476414a45aa8af4283d4d4ff9a188292482f65a87",
+        "bytes": 330472
+      },
+      "baselineOriginalClangSeconds": 7.6154666459187865,
+      "candidateClangSeconds": 7.595834297011606,
+      "expected": [
+        971629740,
+        3126976053,
+        3126976053
+      ]
+    },
+    {
+      "case": "lexer",
+      "sitesChanged": 12,
+      "baselineSamplesMs": [
+        169,
+        168,
+        167
+      ],
+      "candidateSamplesMs": [
+        163,
+        159,
+        156
+      ],
+      "baselineMedianMs": 168,
+      "candidateMedianMs": 159,
+      "candidateOverBaseline": 0.9464285714285714,
+      "runtimeReductionPercent": 5.35714285714286,
+      "baselineC": {
+        "path": "selfhost/build/phase68/native-flat06/lexer-selfhost/program.c",
+        "sha256": "69e656b72609a4c7f0924821abb1fadebdecfdc438d9fe5e2d2705e9ff80f3a4",
+        "bytes": 1274667
+      },
+      "candidateC": {
+        "path": "selfhost/build/phase68/packing-c-diagnostic01/lexer/program.c",
+        "sha256": "95e6574b7c6d98ec7c458fbeae150042eb4f1fd51e6ad57499f63f8be314c231",
+        "bytes": 1279055
+      },
+      "baselineExecutable": {
+        "path": "selfhost/build/phase68/native-flat06/lexer-selfhost/program",
+        "sha256": "d29cb8b2e262471777dadd1b76677c875ecde640657d09c1c41653714339a58a",
+        "bytes": 346448
+      },
+      "candidateExecutable": {
+        "path": "selfhost/build/phase68/packing-c-diagnostic01/lexer/program",
+        "sha256": "78baafded9ed045e87a3a935077fa5e3d1c49e8a17f5543ea9c339431eab920b",
+        "bytes": 346304
+      },
+      "baselineOriginalClangSeconds": 7.8591357809491456,
+      "candidateClangSeconds": 7.840796852018684,
+      "expected": [
+        1822208108,
+        2884729927,
+        2884729927
+      ]
+    }
+  ],
+  "limitations": [
+    "Two cases with three alternating rounds; evidence does not establish six-family or compiler latency impact.",
+    "Baseline build clocks are original acquisitions; candidate clocks are one fresh build each, not a paired compile campaign.",
+    "Guard branch and foreign permission source proposal still require checked compiler/control qualification."
+  ]
+}

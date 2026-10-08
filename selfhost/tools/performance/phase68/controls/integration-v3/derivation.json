@@ -1,0 +1,42 @@
+{
+  "kind": "phase68-corrected-integration37-retained-control-factory",
+  "targetsExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/flat-worker-v1/prepare.py",
+    "sha256": "36e0148a336e062c264af4adf21baa30f66d5bfd8b490357e85e6a6d4daf2886",
+    "bytes": 6925
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/integration-v3/prepare.py",
+    "sha256": "99ac7b50a5b3bc20aef715e9d306087311f025fb673a59b3b15d53468feea53b",
+    "bytes": 6959
+  },
+  "edits": [
+    {
+      "before": "choices=[\"flat-worker-fast\"]",
+      "after": "choices=[\"product-branch-drop\", \"product-fast\", \"integration\"]",
+      "count": 1
+    }
+  ],
+  "catalogParent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/integration-v2/catalog-v1.json",
+    "sha256": "7cc689e71ed6c30ed8ab90eff17ed945a644172e9f1c4ecc8fed0da14d831aa7",
+    "bytes": 27110
+  },
+  "catalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/integration-v3/catalog-v1.json",
+    "sha256": "bfd8cce9a3792404d176126c6bec175df5aeaac9433eb5c0459aff5963bb3ebf",
+    "bytes": 27884
+  },
+  "fixture": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/flat-product-branch-drop-v1.bend",
+    "sha256": "49cbee22709a83eff215c898bbe9ef4fbb79b8bbfbb72cab10096afb96b37fc1",
+    "bytes": 1055
+  },
+  "referenceSmoke": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/reference-product-drop-smoke04/execution/report.json",
+    "sha256": "83edff5463d0b3fb11a7ffbc75aeb631dc8cb55c5d4f58b1cb4b83ac0060833c",
+    "bytes": 4149
+  },
+  "scope": "Exact reviewed retained-artifact factory; only allowed selection names change. Appends the already reference-checked branch-drop source to the corrected final36, with a one-source fast selection."
+}

@@ -1,0 +1,88 @@
+--- a/selfhost/src/back/native/product-layout.bend
++++ b/selfhost/src/back/native/product-layout.bend
+@@ -1,6 +1,6 @@
+ # A private product shell has one fixed constructor and live one-word fields.
+-# Query original syntax before erasure. Never unfold a global definition,
+-# normalize an opaque field, or invoke conversion. Unknown layouts stay boxed.
++# Query original syntax before erasure. Transparent aliases use a bounded
++# syntax machine, never the global normalizer or conversion. Unknown stays boxed.
+ @unsafe
+ def nq_layout(+book: List<&2, KDef>, +ty: KTerm) -> KTerm:
+   nq_layout_head(book, nq_layout_type(book, ty))
+@@ -38,7 +38,7 @@
+ @unsafe
+ def nq_layout_field_head(+book: List<&2, KDef>, +head: KTerm, +owner: KTerm, +left: U32, +seen: List<&2, U32>) -> Bool:
+   nt_choose(Bool, U32.is_eq(left, 0),
+-    u => String.eq(tg(head), "ADT") && String.eq(nm(head), nm(owner)) && List.is_empty(&2, String, rm(head)) && Bool.not(nq_layout_dep(head, seen)) && norm_exact(head, owner),
++    u => String.eq(tg(head), "ADT") && String.eq(nm(head), nm(owner)) && List.is_empty(&2, String, rm(head)) && Bool.not(nq_layout_dep(head, seen)) && norm_exact_lists(ks(head), ks(owner)),
+     u => String.eq(tg(head), "All") && Bool.not(U32.is_eq(qt(head), 0)) && nq_layout_leaf(nq_layout_type(book, kid(head, 0)), owner, seen) && nq_layout_fields(book, kid(head, 1), owner, U32.sub(left, 1), Con{ix(head), seen}))
+ 
+ # A directly recursive outer shell remains boxed. Nested records/arrays stay
+@@ -60,17 +60,53 @@
+   nt_choose(KTerm, String.eq(tg(head), "Lam") && Bool.not(nc_occurs(kid(head, 0), ix(head))),
+     u => nq_layout_reduce(kid(head, 0), fuel), u => atom("Absent"))
+ 
+-# A direct reference to a nullary ADT is a declaration lookup, not an unfolding
+-# of its value. All other references remain opaque, including unsafe aliases.
++# Resolve finite syntax aliases as a head/argument machine. Each transition
++# spends fuel; revisiting a definition fails. No matcher, primitive or effect is
++# evaluated. Substitution growth is checked before constructing the new syntax.
+ @unsafe
+ def nq_layout_type(+book: List<&2, KDef>, +ty: KTerm) -> KTerm:
+-  nq_layout_type_head(book, nq_layout_reduce(ty, 64))
++  nq_layout_eval(book, ty, Nil{}, Nil{}, 64)
+ 
+ @unsafe
+-def nq_layout_type_head(+book: List<&2, KDef>, +head: KTerm) -> KTerm:
+-  +owner = lookup(book, nm(head))
+-  nt_choose(KTerm, String.eq(tg(head), "Ref") && String.eq(dk(owner), "ADT") && U32.is_eq(da(owner), 0),
+-    u => kt("ADT", nm(head), 0, 0, Nil{}), u => head)
++def nq_layout_eval(+book: List<&2, KDef>, +t: KTerm, +args: List<&2, KTerm>, +seen: List<&2, String>, +fuel: U32) -> KTerm:
++  nt_choose(KTerm, U32.is_eq(fuel, 0), u => atom("Absent"), u =>
++    nt_choose(KTerm, String.eq(tg(t), "Ann"), v => nq_layout_eval(book, kid(t, 0), args, seen, U32.sub(fuel, 1)), v =>
++    nt_choose(KTerm, String.eq(tg(t), "App"), v => nq_layout_eval(book, kid(t, 0), Con{kid(t, 1), args}, seen, U32.sub(fuel, 1)), v =>
++    nt_choose(KTerm, String.eq(tg(t), "Ref"), v => nq_layout_ref(book, t, args, seen, U32.sub(fuel, 1)), v => nq_layout_apply(book, t, args, seen, U32.sub(fuel, 1))))))
++
++@unsafe
++def nq_layout_ref(+book: List<&2, KDef>, +t: KTerm, +args: List<&2, KTerm>, +seen: List<&2, String>, +fuel: U32) -> KTerm:
++  +d = lookup(book, nm(t))
++  nt_choose(KTerm, String.eq(dk(d), "ADT") && U32.is_eq(da(d), terms_len(args)),
++    u => kt("ADT", nm(t), 0, 0, args), u =>
++    nt_choose(KTerm, String.eq(dk(d), "Def") && Bool.not(nb_contains(seen, nm(t))),
++      v => nq_layout_eval(book, dv(d), args, Con{nm(t), seen}, fuel), v => atom("Absent")))
++
++@unsafe
++def nq_layout_apply(+book: List<&2, KDef>, +head: KTerm, args: List<&2, KTerm>, +seen: List<&2, String>, +fuel: U32) -> KTerm:
++  match args:
++    case Nil{}: head
++    case Con{+arg, +rest}:
++      nt_choose(KTerm, String.eq(tg(head), "Lam") && nq_layout_subst_small(kid(head, 0), arg),
++        u => nq_layout_eval(book, nq_layout_subst(kid(head, 0), ix(head), arg), rest, seen, fuel), u => atom("Absent"))
++
++# For positive syntax sizes B and A, substituting a subtree of size A into a
++# body of size B yields at most B*A nodes. The limit bounds expansion before it
++# happens; an unsafe alias cycle therefore cannot grow until memory exhaustion.
++@unsafe
++def nq_layout_subst_small(+body: KTerm, +arg: KTerm) -> Bool:
++  U32.is_le(U32.mul(nq_layout_size([body], 4097), nq_layout_size([arg], 4097)), 4096)
++
++@unsafe
++def nq_layout_size(ts: List<&2, KTerm>, +left: U32) -> U32:
++  U32.sub(4097, nq_layout_remaining(ts, left))
++
++@unsafe
++def nq_layout_remaining(ts: List<&2, KTerm>, +left: U32) -> U32:
++  match ts:
++    case Nil{}: left
++    case Con{+h, +rest}:
++      nt_choose(U32, U32.is_eq(left, 0), u => 0, u => nq_layout_remaining(List.append(&2, KTerm, ks(h), rest), U32.sub(left, 1)))
+ 
+ # Ordinary subst invokes core_rebuild, which can beta-reduce applications.
+ # This substitution only rebuilds syntax and never evaluates a substituted term.
+@@ -95,5 +131,5 @@
+ 
+ @unsafe
+ def nq_layout_specialize_head(+head: KTerm, +arg: KTerm, +rest: List<&2, KTerm>, +fuel: U32) -> KTerm:
+-  nt_choose(KTerm, String.eq(tg(head), "All"),
++  nt_choose(KTerm, String.eq(tg(head), "All") && nq_layout_subst_small(kid(head, 1), arg),
+     u => nq_layout_specialize(nq_layout_subst(kid(head, 1), ix(head), arg), rest, fuel), u => atom("Absent"))

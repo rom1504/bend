@@ -1,0 +1,43 @@
+{
+  "kind": "exact-text-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/occurrence-reuse/controls-v1.mjs",
+    "sha256": "b54254efa0293bd712fdbc1c2987e7a0d9afbfcf7a617305f567db7ee394db5b",
+    "bytes": 6829
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/occurrence-reuse/controls-v2.mjs",
+    "sha256": "3abcc1b552a13b598e458b186d93022d6e9c7b0c9797eaaea59af650f0e38aae",
+    "bytes": 8658
+  },
+  "edits": [
+    {
+      "before": "// Root-only checked-B1 controls. Append exports and observation; no algorithm rewrite.",
+      "after": "// Root-only Products10 checked-B1 controls. Preserve product target/call metadata; no algorithm rewrite."
+    },
+    {
+      "before": "kind:'phase68-local-occurrence-reuse-controls'",
+      "after": "kind:'phase68-local-occurrence-reuse-controls-v2'"
+    },
+    {
+      "before": "const proposal=read(proposalArg);pin(proposal.patch);const apis={},inventories={};",
+      "after": "const proposal=read(proposalArg);assert.equal(proposal.version,2);pin(proposal.patch);pin(proposal.parent);pin(proposal.producer);for(const p of proposal.inputs)pin(p);assert.deepEqual(pin(baselineArg),pin(proposal.baselineAttempt));const apis={},inventories={};"
+    },
+    {
+      "before": "bind:['nf_bind',7]",
+      "after": "bind:['nf_bind_boxed',7]"
+    },
+    {
+      "before": "const target={$:'NC_Destination',word:'result',join:'done',owner:'owner',params:nil(),tail:false};",
+      "after": "const target={$:'NC_Destination',words:list(['result']),shape:term('Absent'),join:'done',owner:'owner',params:nil(),tail:false,signatures:nil()};"
+    },
+    {
+      "before": "  assert(bodyReduced>0&&valueReduced>0);",
+      "after": "  // Product-era metadata is part of whole-result equality, including nonempty call edges.\n  const callee={$:'KDef',name:'callee',kind:'Def',arity:0,templates:0,typ:term('Typ'),value:word(),ctors:nil(),native:false,unsafe:false};\n  const callBook=list([callee]),call=()=>term('NFCall',0,[],'callee');\n  const productRows=[\n    {name:'call-value',value:call(),body:variable(3),env:nil(),target},\n    {name:'call-body',value:word(),body:call(),env:nil(),target},\n    {name:'two-calls',value:call(),body:call(),env:nil(),target},\n    {name:'bundle-result',value:word(),body:term('NQBundle',0,[variable(1),variable(2)],'Tuple'),env:list([binding(1,'one'),binding(2,'two')]),target:{...target,words:list(['pair0','pair1']),shape:term('NQShape',2,[],'Tuple')}}\n  ];\n  for(const row of productRows){\n    const before=JSON.stringify(row),observations={};\n    for(const [role,api] of Object.entries(apis))observations[role]=api.bind(callBook,row.value,row.body,row.env,3,9,row.target);\n    assert.deepEqual(observations.candidate,observations.baseline,row.name);\n    assert.equal(observations.candidate.error,'');\n    if(row.name==='bundle-result'){\n      assert(observations.candidate.body.includes('pair0 = one;')&&observations.candidate.body.includes('pair1 = two;'));\n    }else{\n      assert.equal(observations.candidate.calls.$,'Con');\n      assert.equal(observations.candidate.calls.head,'callee');\n    }\n    assert.equal(JSON.stringify(row),before);\n    report.rows.push({productCase:row.name,calls:observations.candidate.calls,pass:true});\n  }\n  assert(bodyReduced>0&&valueReduced>0);"
+    },
+    {
+      "before": "fullLoweringPairs:total,bodyReduced,valueReduced,sourceFiles:2",
+      "after": "fullLoweringPairs:total,productPairs:productRows.length,bodyReduced,valueReduced,sourceFiles:2"
+    }
+  ]
+}

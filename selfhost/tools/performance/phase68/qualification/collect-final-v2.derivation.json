@@ -1,0 +1,34 @@
+{
+  "kind": "phase68-js-route-qualification-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/qualification/collect-final.py",
+    "sha256": "a0ec99febaa4622218b0d594b6aeb4a3be8e2277e3ea6168cf6fcf1f5272fd63"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/qualification/collect-final-v2.py",
+    "sha256": "3fb47e0f1990f6c1488156e2462eeec547d02a013e4d1309601b2676693bd6b7"
+  },
+  "targetExecuted": false,
+  "edits": [
+    {
+      "before": "assert closure['kind'] == 'phase68-nonnative-executable-closure'",
+      "after": "assert closure['kind'] == 'phase68-js-frontend-driver-closure'\nassert pin(methods['closureMethod']) in [pin(item) for item in closure['inputs']]",
+      "count": 1
+    },
+    {
+      "before": "assert closure['changedInputs'] == changed and len(closure['nonNativeRoots']) == 98\nassert closure['excludedPublicRoot'] == 'nc_compile' and not closure['targetExecuted']",
+      "after": "assert closure['changedInputs'] == changed and closure['driverRoots']\nassert set(closure['frontend']['roots']) <= set(closure['driverRoots'])\nassert closure['nativeGuardedArms'] and not closure['targetExecuted']",
+      "count": 1
+    },
+    {
+      "before": "strict36=pin(validation_file), unchangedJs=pin(closure_file), imagePins=pin(pins_file),",
+      "after": "strict36=pin(validation_file), unchangedJs=pin(closure_file),\n    unchangedJsScope=dict(driverRoots=closure['driverRoots'], excludedPublicRoots=closure['excludedPublicRoots'],\n        stronger98RootGate=closure['stronger98RootGate']), imagePins=pin(pins_file),",
+      "count": 1
+    },
+    {
+      "before": "exact non-native reachable closure",
+      "after": "exact JS/frontend driver-route reachable closure",
+      "count": 1
+    }
+  ]
+}

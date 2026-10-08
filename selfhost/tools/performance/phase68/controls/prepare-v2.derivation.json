@@ -1,0 +1,35 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/prepare.py",
+    "sha256": "9f1c1fce346f18a5d4cad194631a5516ee433c325b124cf13ea71fc2792c1f19",
+    "bytes": 5642
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/prepare-v2.py",
+    "sha256": "84a74ac69736cbd2d865a46b48bc5d4173bb8f7be3db7003a4d9f04600b65ae4",
+    "bytes": 5672
+  },
+  "edits": [
+    {
+      "before": "choices=[\"arity-fast\", \"flat-fast\", \"ownership\", \"boundary\", \"integration\"]",
+      "after": "choices=[\"arity-fast\", \"flat-fast\", \"ownership\", \"boundary\", \"integration\", \"eta-fast\", \"shared-only\"]",
+      "count": 1
+    },
+    {
+      "before": "\"catalog-v1.json\"",
+      "after": "\"catalog-v2.json\"",
+      "count": 1
+    },
+    {
+      "before": "(args.set + \"-selection.json\")",
+      "after": "(args.set + \"-v3-selection.json\")",
+      "count": 1
+    }
+  ],
+  "catalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/catalog-v2.json",
+    "sha256": "8f9296712a737ea32b57faf50a38454301503c55df4a144f9d3cd38f438cb056",
+    "bytes": 23122
+  },
+  "targetExecuted": false
+}

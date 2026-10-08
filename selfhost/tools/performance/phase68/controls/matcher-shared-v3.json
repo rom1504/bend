@@ -1,0 +1,29 @@
+{
+  "kind": "phase68-fixture-display-oracle-successor",
+  "targetExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/matcher-shared-residual-v2.bend",
+    "sha256": "2ce4d339ee1ff2e584acc1df3931e6ef1c3f06c2ff4cc62efb100e9b50cce0bd",
+    "bytes": 654
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/matcher-shared-residual-v3.bend",
+    "sha256": "77a348063a8ca9cb2169d9d4ffe7798d3e3bbf130be5e6e1c6056ac9fb1317f2",
+    "bytes": 656
+  },
+  "failedObservation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/eta-controls02/execution/selected/paired.json",
+    "sha256": "7ef54d1e23e080b23f3ef0f416b5f6dd80930af44fd83292facbc1383656100d",
+    "bytes": 16483
+  },
+  "independentDisplayBasis": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/show/string_unicode.bend",
+    "sha256": "7ff5a2331d30623f4df2a317d793a749b3f88740de88d990170927fd1a0758c7",
+    "bytes": 314
+  },
+  "goldenLines": [
+    "\"keepkeepkeepkeep\""
+  ],
+  "semanticSourceUnchanged": true,
+  "reason": "Pure String results are printed as quoted strings; IO print payloads are unquoted. Both observed content and independent fourfold concatenation are unchanged. Only the fixture golden is repaired; the prior failure remains failed and fresh execution is required."
+}

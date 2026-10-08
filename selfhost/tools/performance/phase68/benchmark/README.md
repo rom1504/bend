@@ -66,3 +66,13 @@ must still use the same frozen plan. No other added or removed input is admitted
 V2 accepts the pinned, consumed V1 timing receipts; V1 and failed comparison
 attempts remain unchanged. The exact source transformation is recorded in
 `saved-native-v2.derivation.json`.
+
+`compare-union.py` joins disjoint case campaigns without inventing a new timing
+producer. Supply `--candidate-timings` with the original receipt paths and the
+usual baseline/candidate attempts, inventory flags and a fresh output directory.
+It requires identical candidate recipe, API continuity, method inputs and fixed
+plan; each declared case must have exactly the requested selfhost rounds
+(defaults: six families, two rounds). It records `union.json`, invokes the
+unchanged pinned V2 comparator separately for each original receipt, and joins
+the resulting comparison rows in `report.json`. Geometric means are recomputed
+over the complete disjoint union. All work runs on CPU0 and executes no target.

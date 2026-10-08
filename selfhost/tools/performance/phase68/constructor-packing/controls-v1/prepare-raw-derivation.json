@@ -1,0 +1,63 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/prepare-raw-v3.py",
+    "sha256": "240628a2f29611a38b70aa9a6ea4ea1ccab434d9bc53bd2086a736c2c6ea5dbd",
+    "bytes": 3577
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/controls-v1/prepare-raw.py",
+    "sha256": "fbfc36672b317b1bd9ca4977d501c5fde992f6cefd837f95fa53a368789acd96",
+    "bytes": 4036
+  },
+  "edits": [
+    {
+      "before": "\"\"\"Bind unchanged Phase67 raw diagnostics to two checked Phase68 images.\"\"\"",
+      "after": "\"\"\"Bind focused packing controls to product10 and the checked packing candidate.\"\"\"",
+      "count": 1
+    },
+    {
+      "before": "ROOT = Path(__file__).resolve().parents[5]",
+      "after": "ROOT = Path(__file__).resolve().parents[6]",
+      "count": 1
+    },
+    {
+      "before": "    before, selected = attempts\n",
+      "after": "    before, selected = attempts\n    assert before['api']['sha256'] == 'c0f4eace0bd934219ac699f03b113f5ea8abbd02b94203bb8ca21b9fe21d1801'\n    for folder in [a.baseline, a.candidate]:\n        validation = pin(folder / 'validation-001/report.json'); inputs.append(validation)\n        verdict = json.loads(Path(validation['file']).read_text())\n        assert verdict['complete'] and verdict['pass'] and verdict['strictExact']\n",
+      "count": 1
+    },
+    {
+      "before": "ROOT / 'selfhost/tools/performance/phase68/controls/raw-controls-v5.mjs'",
+      "after": "ROOT / 'selfhost/tools/performance/phase68/constructor-packing/controls-v1/raw-controls.mjs'",
+      "count": 1
+    },
+    {
+      "before": "'--seconds','180'",
+      "after": "'--seconds','240'",
+      "count": 1
+    },
+    {
+      "before": "kind='phase68-raw-native-control-plan'",
+      "after": "kind='phase68-packing-raw-control-plan-v1'",
+      "count": 1
+    },
+    {
+      "before": "scope='Phase67 raw diagnostics, original shared-error oracle, and unused raw product argument demand control on two exact checked images. Native runs at threads1 and4; mocked error is CPU only, not device conformance.'",
+      "after": "scope='Exact product10 versus checked packing candidate: four programs with eight native builds and sixteen threads1/4 observations, plus eight paired permission-source probes. Existing raw error/checkpoint controls stay separate; no timing or GPU claim.'",
+      "count": 1
+    }
+  ],
+  "controller": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/controls-v1/raw-controls.mjs",
+    "sha256": "9e4c55e50624d23954fec9c69a78ab08b327d5eae96fbe98006826dbdf30f939",
+    "bytes": 8103
+  },
+  "targetsExecuted": false,
+  "preFreezeControllerCorrection": {
+    "prior": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/controls-v1/raw-controls.mjs",
+      "sha256": "22093820e9eebd1c0c92744caa8ff342b0b6e3051a61bb5e84226ef931cd93d6",
+      "bytes": 8092
+    },
+    "reason": "Pointer shared value now holds >40bit boxed child and returns doubled payload; small child dropped. Strengthens nested-pointer observation before any consumption."
+  }
+}

@@ -117,3 +117,85 @@ The correctness review lane independently accepted the final controller,
 SHA256 `8cffef36ebeb8418942aaa4d5a07a27239aa2a980ed22515060445db9963c7cd`.
 Comparison summaries apply to their observed selfhost rows and reported round
 counts; they do not imply a broader case set.
+
+The consumed V1 stays frozen. The subsequent
+[V2 comparator](../../selfhost/tools/performance/phase68/benchmark/saved-native-v2.py)
+(`83c586f2…10cd2`) admits only the explicitly registered, candidate-added
+Phase67 `fast-plan.py`, SHA256 `a94c2853…e7082`, 2,919 bytes. This calibration
+producer is outside acquisition and runtime commands; their exact unchanged
+controller pins and absence of an import/reference are recorded. Both timing
+receipts still consume the same frozen plan. No arbitrary extra input is
+ignored. The correctness lane replayed all five exact source edits and accepted
+this admission. A CPU0 comparison of the saved baseline-fast02 and eta-fast02
+receipts passed; it executed no target.
+
+## Selected-image qualification successors
+
+The [Phase68 qualification methods](../../selfhost/tools/performance/phase68/qualification/README.md)
+preserve the Phase67 methods and raw evidence. The source-only non-native
+admission (`faddc52c…ade60`) uses the original complete generated-function
+dependency scanner. All 98 non-`nc_compile` roots, runtime and export wrappers
+must remain exact. A module path does not exempt changed code from that actual
+closure check. Every source declaration moving modules must retain its exact
+annotation, signature and body; other host/runtime/provider files remain exact.
+Assembler and native fixture module lists are structurally checked and all
+changed source identities are recorded.
+
+The existing eta02 snapshot passed this CPU0 source/data check against selected
+Phase67 scalars: 1,403 frontend functions and 3,066 non-native functions remain
+exact (`qualification-eta-source-review01.json`, `247ab5c6…a026`). The
+correctness lane independently replayed the derivation and accepted the method.
+This transfers finite non-native semantic observations only, not native output,
+B2 behavior or timing.
+
+The final-method factory requires an actual checked selected attempt. It emits
+five exact output-boundary relocations of the consumed Phase67 gate files and
+seven ordered commands for closure, genuine B2 construction, fresh own-source
+checking, reproduction and JS23/45 emission equality. The eta02 data-only
+preflight wrote `qualification-method-preflight01/methods.json`
+(`4ae01795…c833`); none of its targets ran in this lane. The final receipt join
+binds the actual selected B1/B2 identities and separate native-request summary;
+native runtime/control selection and installation remain separate gates.
+
+The compilation lane's parameterized `prepare-selected-v1.py` also passed an
+independent nine-edit replay, AST review and all preflight input pins. It keeps
+the actual acquisition producer attached to each C oracle. Reusing an older
+producer after a byte-preserving compiler change needs a separate explicit
+oracle-producer join and fresh complete-C equality; it must never relabel old
+acquisitions.
+
+Templates05 demonstrates why the historical 98-root transfer is stronger than
+a JS/frontend-route transfer: native public `nc_annotation_stops` reaches the
+changed intrinsic selector. The strong gate fails and remains preserved.
+The versioned route gate (`b96bb043…e03fa`) derives roots from the entire exact
+unchanged driver after excluding only its two source-hash-pinned native-guarded
+arms. An independent source review verified both guards and that the native
+emission arm returns before the JavaScript path; all remaining API references
+and function-value aliases stay roots, and all five dynamic references are
+presence checks. This is a narrower, explicit claim, not an exception to exact
+reachable-function equality.
+
+The Templates05 route report (`1867c189…1eec7`) passes all 85 actual driver roots,
+2,988 generated functions and the 1,403-function frontend closure. It records
+the six native-only references and eight unused public roots excluded from
+transfer, and reports the stronger 98-root gate as false. The V2 factory and
+collector have exact two-/four-edit derivations selecting and binding this
+scope; both also passed peer source review. Native/raw controls, actual B2 and
+timing remain independent gates.
+
+## Flat06 split-campaign comparison
+
+The data-only `compare-union.py` records the original two Flat06 timing receipts
+as a disjoint union and runs unchanged, pinned `saved-native-v2.py` against each
+member separately. It never synthesizes a measurement receipt or substitutes a
+producer identity. Identical compiler/recipe/method/fixed-plan inputs and the
+complete six-case, selfhost, two-round matrix are required. The consumed methods
+and acquisitions remain unchanged.
+
+`native-flat06-comparison-union01/report.json` (`9477fc58…1dfd7`) joins twelve
+exact, qualifying intervals. Candidate/baseline geometric ratios are runtime
+0.303410618, original Clang build time 0.362138187 and C size 0.606548009. The
+runtime case ratios are Numeric 0.140924, Array 0.247475, Closures 0.819473,
+Tree 0.439830, Map 0.268217 and Lexer 0.231399. These compare separate sequential
+campaigns; the original one-build Clang clocks remain distinct from saved-binary
+runtime timing. No target ran in the comparison lane.

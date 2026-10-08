@@ -1,0 +1,306 @@
+{
+  "kind": "phase68-native-occurrence-and-text-stack-census",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/occurrence-reuse/profile-census.py",
+    "sha256": "a897224d54a5884b56d8eed47dc12ed88ed440cdb0232d7f8d618cd3cc7b3411",
+    "bytes": 4173
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/plan.json",
+    "sha256": "8df3c5a72d1f3777eeb014c2aa0c7c7a0ccaa6751ff4d3f2142d17206046675c",
+    "bytes": 141900
+  },
+  "source": {
+    "bridge.bend": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/inline-build09/snapshot/src/back/native/bridge.bend",
+      "sha256": "1fc205f3cacb8163e628f02ab7e2f65a3c6033d4196a53c948ba6a386243eecc",
+      "bytes": 31190
+    },
+    "flat.bend": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/inline-build09/snapshot/src/back/native/flat.bend",
+      "sha256": "824f7f70095e37c41b79788813e529cc9e3a63f6f1d8110b74d0e302cd796441",
+      "bytes": 12976
+    },
+    "text.bend": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/inline-build09/snapshot/src/back/native/text.bend",
+      "sha256": "31c1ff5973df46d17ad395070fbefa1d2dc58398b3d12af80c62ed6c5548ff9d",
+      "bytes": 2533
+    }
+  },
+  "groups": {
+    "uses": [
+      "nc_uses",
+      "nc_uses_list",
+      "nc_uses_term"
+    ],
+    "lines": [
+      "nt_lines",
+      "nt_lines_go"
+    ],
+    "replace": [
+      "nt_replace",
+      "nt_replace_go",
+      "nt_replace_step$scc"
+    ]
+  },
+  "observations": [
+    {
+      "job": {
+        "name": "profile-numeric-b2",
+        "action": "request",
+        "role": "b2",
+        "case": "numeric",
+        "profile": true
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-numeric-b2/report.json",
+        "sha256": "7639b9cbe5a9783769ec1a72539effb91d0754cf7b07d26171ad53aee8eedeb7",
+        "bytes": 72671
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-numeric-b2/request.cpuprofile",
+        "sha256": "5a4366a80d1d6721f2edabad7944373544912fa8fb2259fd504d3f5e5d9e4b92",
+        "bytes": 17608899
+      },
+      "sampledMs": {
+        "replace": 157.88,
+        "uses": 151.74,
+        "lines": 26.479
+      },
+      "sampleCounts": {
+        "replace": 112,
+        "uses": 125,
+        "lines": 20
+      },
+      "usesNearestOuterNativeCallerMs": {
+        "nc_lower": 60.556,
+        "nc_lower_to": 35.121,
+        "nc_live_env": 17.742,
+        "nc_share_env": 16.135,
+        "nc_prepare_env": 10.854,
+        "nc_let_emitted": 5.895,
+        "nc_share_used": 2.105,
+        "nc_lower_ctor_to": 1.18,
+        "nc_let_atom": 1.094,
+        "nf_bind": 1.058
+      }
+    },
+    {
+      "job": {
+        "name": "profile-array-b2",
+        "action": "request",
+        "role": "b2",
+        "case": "array",
+        "profile": true
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-array-b2/report.json",
+        "sha256": "08af8517f1102d64e8eb9a72a5b377a0752b6d9a0bd6b8b89779ada888c6784e",
+        "bytes": 72622
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-array-b2/request.cpuprofile",
+        "sha256": "8af1a2c4e20a7bdaf70bf51fa491537f9f73436250217ddec21f772bf4b3888f",
+        "bytes": 18516038
+      },
+      "sampledMs": {
+        "replace": 142.767,
+        "uses": 173.665,
+        "lines": 27.497
+      },
+      "sampleCounts": {
+        "replace": 115,
+        "uses": 144,
+        "lines": 21
+      },
+      "usesNearestOuterNativeCallerMs": {
+        "nc_lower": 58.724,
+        "nc_live_env": 42.522,
+        "nc_lower_to": 30.662,
+        "nc_share_env": 18.355,
+        "nc_prepare_env": 8.118,
+        "nc_let_emitted": 7.586,
+        "nc_share_used": 6.609,
+        "nc_lower_ctor_to": 1.089
+      }
+    },
+    {
+      "job": {
+        "name": "profile-lexer-b2",
+        "action": "request",
+        "role": "b2",
+        "case": "lexer",
+        "profile": true
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-lexer-b2/report.json",
+        "sha256": "0292e3ed85de04ec458e003bcc93e70a5b51a4416cad5ddc88d3aee9d375e8fe",
+        "bytes": 72658
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-lexer-b2/request.cpuprofile",
+        "sha256": "13dc787b091ff5143e86a248a22b14e9010c20e91f17cc787fbc1f4595f066b1",
+        "bytes": 20086445
+      },
+      "sampledMs": {
+        "replace": 176.838,
+        "uses": 179.726,
+        "lines": 19.021
+      },
+      "sampleCounts": {
+        "replace": 147,
+        "uses": 149,
+        "lines": 13
+      },
+      "usesNearestOuterNativeCallerMs": {
+        "nc_lower": 60.291,
+        "nc_lower_to": 46.731,
+        "nc_prepare_env": 17.975,
+        "nc_live_env": 17.076,
+        "nc_let_atom": 15.45,
+        "nc_share_env": 13.245,
+        "nf_bind": 3.63,
+        "nc_let_emitted": 3.23,
+        "nc_share_used": 1.26,
+        "nc_lower_ctor_to": 0.838
+      }
+    },
+    {
+      "job": {
+        "name": "profile-numeric-b1",
+        "action": "request",
+        "role": "b1",
+        "case": "numeric",
+        "profile": true
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-numeric-b1/report.json",
+        "sha256": "3e8893c267953df5e8b948edece59c0c4f75150270973587f3c7ccfb969676bd",
+        "bytes": 72625
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-numeric-b1/request.cpuprofile",
+        "sha256": "cee70ec68fba03a9bde542cb61985b0ee503d36d98370351198fd8b692cdd67f",
+        "bytes": 34066614
+      },
+      "sampledMs": {
+        "replace": 19.996,
+        "uses": 550.661,
+        "lines": 45.586
+      },
+      "sampleCounts": {
+        "replace": 18,
+        "uses": 440,
+        "lines": 38
+      },
+      "usesNearestOuterNativeCallerMs": {
+        "nc_lower": 216.505,
+        "nc_lower_to": 103.044,
+        "nc_live_env": 85.717,
+        "nc_share_env": 77.315,
+        "nc_prepare_env": 36.355,
+        "nc_let_emitted": 22.302,
+        "nf_bind": 5.59,
+        "nc_let_atom": 2.078,
+        "nc_share_used": 1.755
+      }
+    }
+  ],
+  "scope": "Per-group inclusive sample union includes descendants and counts each sample once. Groups/callers are sampled attribution, not invocation counts or clean wall time. Missing/inlined frames can hide ownership. Actual helper controls separately observe invocation counts on finite constructed inputs.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/occurrence-reuse/profile-census.py",
+      "sha256": "a897224d54a5884b56d8eed47dc12ed88ed440cdb0232d7f8d618cd3cc7b3411",
+      "bytes": 4173
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/plan.json",
+      "sha256": "8df3c5a72d1f3777eeb014c2aa0c7c7a0ccaa6751ff4d3f2142d17206046675c",
+      "bytes": 141900
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/inline-build09/attempt.json",
+      "sha256": "44c3778ee1cd1dd68916e7ebb230479a982072f34f572465ce6900a0bc300ee5",
+      "bytes": 301841
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/inline-build09/snapshot/src/back/native/bridge.bend",
+      "sha256": "1fc205f3cacb8163e628f02ab7e2f65a3c6033d4196a53c948ba6a386243eecc",
+      "bytes": 31190
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/inline-build09/snapshot/src/back/native/flat.bend",
+      "sha256": "824f7f70095e37c41b79788813e529cc9e3a63f6f1d8110b74d0e302cd796441",
+      "bytes": 12976
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/inline-build09/snapshot/src/back/native/text.bend",
+      "sha256": "31c1ff5973df46d17ad395070fbefa1d2dc58398b3d12af80c62ed6c5548ff9d",
+      "bytes": 2533
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-numeric-b2/report.json",
+      "sha256": "7639b9cbe5a9783769ec1a72539effb91d0754cf7b07d26171ad53aee8eedeb7",
+      "bytes": 72671
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-numeric-b2-guard/process.json",
+      "sha256": "f50aa5562bd6ea77bc40ac571528cb8b287b58e19a6cba8591e18d3e625b6e04",
+      "bytes": 800
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-numeric-b2/request.cpuprofile",
+      "sha256": "5a4366a80d1d6721f2edabad7944373544912fa8fb2259fd504d3f5e5d9e4b92",
+      "bytes": 17608899
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-array-b2/report.json",
+      "sha256": "08af8517f1102d64e8eb9a72a5b377a0752b6d9a0bd6b8b89779ada888c6784e",
+      "bytes": 72622
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-array-b2-guard/process.json",
+      "sha256": "2f6617c43fc5ff57667c4737cfb937e669826de0021ae57c29ee2ce48c34ea6e",
+      "bytes": 795
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-array-b2/request.cpuprofile",
+      "sha256": "8af1a2c4e20a7bdaf70bf51fa491537f9f73436250217ddec21f772bf4b3888f",
+      "bytes": 18516038
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-lexer-b2/report.json",
+      "sha256": "0292e3ed85de04ec458e003bcc93e70a5b51a4416cad5ddc88d3aee9d375e8fe",
+      "bytes": 72658
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-lexer-b2-guard/process.json",
+      "sha256": "c418c83948b39fd140b3fe0e196866dc71bcb1cf149a9518c14095eab25eb8ea",
+      "bytes": 795
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-lexer-b2/request.cpuprofile",
+      "sha256": "13dc787b091ff5143e86a248a22b14e9010c20e91f17cc787fbc1f4595f066b1",
+      "bytes": 20086445
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-numeric-b1/report.json",
+      "sha256": "3e8893c267953df5e8b948edece59c0c4f75150270973587f3c7ccfb969676bd",
+      "bytes": 72625
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-numeric-b1-guard/process.json",
+      "sha256": "3dd9d34cc64e7a290fda8c374017f8321356010f64058e59df3be7be83164468",
+      "bytes": 799
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-compilation-inline09-01/runs/profile-numeric-b1/request.cpuprofile",
+      "sha256": "cee70ec68fba03a9bde542cb61985b0ee503d36d98370351198fd8b692cdd67f",
+      "bytes": 34066614
+    }
+  ],
+  "pass": true
+}

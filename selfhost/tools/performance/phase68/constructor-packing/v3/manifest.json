@@ -1,0 +1,58 @@
+{
+  "kind": "phase68-one-field-packing-source-only-proposal-v3",
+  "targetsExecuted": false,
+  "productionApplied": false,
+  "baseline": {
+    "emit.bend": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/emit.bend",
+      "sha256": "862af7916a7b26d6801726b48d422f154bb8a34c4c140cccc534c5d0ff21b46a",
+      "bytes": 5084
+    },
+    "book.bend": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/flat-products/v2/candidate/book.bend",
+      "sha256": "54de235a0cdcd0caef4f94a12414204185b34ce8f3ddaab572de4058c2090a91",
+      "bytes": 14358
+    }
+  },
+  "candidate": {
+    "emit.bend": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v3/candidate/emit.bend",
+      "sha256": "bfe3a0a65f4f35d46cb01cb45ab9fdc3aa9e73a6c5b3375a48c3ab4d7bd5a72c",
+      "bytes": 5880
+    },
+    "book.bend": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v3/candidate/book.bend",
+      "sha256": "42f3ed4ccd74ba55bb52a62fb2dae4d66be6391e0d9ab8838fb144c6b9c17455",
+      "bytes": 14909
+    }
+  },
+  "patch": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v3/candidate.patch",
+    "sha256": "63c8c8fbd700b52bc8155f10cc0524b35ff1f95ef6ff9d15a3f3b9026d9710c1",
+    "bytes": 3308
+  },
+  "changes": {
+    "emit": "Exact one-field non-Base encoded constructors gain an evaluated-once low40 guard; all other paths unchanged.",
+    "book": "Whole-book recursive non-Base Foreign or absent Def scan chooses constant C permission, before final program emission."
+  },
+  "boundaries": [
+    "Foreign C hidden outside declared book definitions is outside this provenance fence.",
+    "Base and IO constructor encodings unchanged.",
+    "Low-level emitters without the permission macro retain boxing (undefined #if evaluates false).",
+    "All original packed=true callers retain their original contract."
+  ],
+  "lineDelta": {
+    "emit.bend": 12,
+    "book.bend": 9
+  },
+  "predecessor": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v2/manifest.json",
+    "sha256": "6b6f0c43709d4ad1bdd77509a77e2b6c55b1fb59dcbcc2140b58b3c834eed3e8",
+    "bytes": 2466
+  },
+  "derivation": {
+    "before": "(Bool.not(db(d)) && String.eq(tg(nc_unann(dv(d))), \"Foreign\"))",
+    "after": "(Bool.not(db(d)) && (String.eq(tg(nc_unann(dv(d))), \"Foreign\") || (String.eq(dk(d), \"Def\") && nc_foreign(d))))",
+    "reason": "Treat non-Base absent Def laws as foreign, preserving ordinary ADT/Ctr absent metadata; retain conservative Foreign catch regardless of raw definition kind."
+  }
+}

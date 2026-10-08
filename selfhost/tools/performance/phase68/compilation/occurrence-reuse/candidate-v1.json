@@ -1,0 +1,102 @@
+{
+  "kind": "phase68-native-local-occurrence-reuse",
+  "status": "isolated-unselected-no-target",
+  "files": [
+    {
+      "path": "selfhost/src/back/native/bridge.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/bridge.bend",
+        "sha256": "1fc205f3cacb8163e628f02ab7e2f65a3c6033d4196a53c948ba6a386243eecc",
+        "bytes": 31190
+      },
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/occurrence-reuse-proposal01/bridge-before.bend",
+        "sha256": "1fc205f3cacb8163e628f02ab7e2f65a3c6033d4196a53c948ba6a386243eecc",
+        "bytes": 31190
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/occurrence-reuse-proposal01/bridge-after.bend",
+        "sha256": "6bd13e5db879c18a9bcf3183b146ef1a616d440874e2522dfcdc5f324025db8f",
+        "bytes": 31541
+      },
+      "edits": [
+        {
+          "before": "  +held = nc_live_env(env, body)",
+          "after": "  +bodyUses = nc_uses(body)\n  +held = nc_live_uses(env, bodyUses)",
+          "count": 2
+        },
+        {
+          "before": "  +rest = nc_lower(book, body, List.append(&2, NC_Binding, held, [nc_binding(id)]), n)",
+          "after": "  +rest = nc_lower_partition(book, body, n, NC_Scheduler{}, nc_partition_uses(List.append(&2, NC_Binding, held, [nc_binding(id)]), bodyUses))",
+          "count": 1
+        },
+        {
+          "before": "u => nc_prepend(nc_share_env(env, value, body) ++ \"Term v_\"",
+          "after": "u => nc_prepend(nc_keep_uses(nc_live_env(env, value), bodyUses) ++ \"Term v_\"",
+          "count": 1
+        },
+        {
+          "before": "      +rest = nc_lower(book, body, List.append(&2, NC_Binding, nc_live_env(env, body), [nc_binding(id)]), n)",
+          "after": "      +bodyUses = nc_uses(body)\n      +rest = nc_lower_partition(book, body, n, NC_Scheduler{}, nc_partition_uses(List.append(&2, NC_Binding, nc_live_uses(env, bodyUses), [nc_binding(id)]), bodyUses))",
+          "count": 1
+        },
+        {
+          "before": "      nc_prepend(nc_share_env(env, value, body) ++ \"Term v_\"",
+          "after": "      nc_prepend(nc_keep_uses(nc_live_env(env, value), bodyUses) ++ \"Term v_\"",
+          "count": 1
+        },
+        {
+          "before": "  +rest = nc_lower(book, body, newenv, U32.inc(n))\n  +val = nc_lower(book, value, nc_live_env(env, value), nc_fresh(rest))",
+          "after": "  +rest = nc_lower_partition(book, body, U32.inc(n), NC_Scheduler{}, nc_partition_uses(newenv, bodyUses))\n  +valueEnv = nc_live_env(env, value)\n  +val = nc_lower_live_to(book, value, valueEnv, nc_fresh(rest), NC_Scheduler{})",
+          "count": 1
+        },
+        {
+          "before": "  NC_Code{nc_share_env(env, value, body) ++ nc_cut",
+          "after": "  NC_Code{nc_keep_uses(valueEnv, bodyUses) ++ nc_cut",
+          "count": 1
+        }
+      ],
+      "lineDelta": 4
+    },
+    {
+      "path": "selfhost/src/back/native/flat.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/flat.bend",
+        "sha256": "824f7f70095e37c41b79788813e529cc9e3a63f6f1d8110b74d0e302cd796441",
+        "bytes": 12976
+      },
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/occurrence-reuse-proposal01/flat-before.bend",
+        "sha256": "824f7f70095e37c41b79788813e529cc9e3a63f6f1d8110b74d0e302cd796441",
+        "bytes": 12976
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/occurrence-reuse-proposal01/flat-after.bend",
+        "sha256": "7eea12eefb6a8ee2367c72d1f07689d19bb638125f09889295d697be2168c718",
+        "bytes": 13075
+      },
+      "edits": [
+        {
+          "before": "  +rest = nc_lower_to(book, body, List.append(&2, NC_Binding, nc_live_env(env, body), [nc_binding(id)]), U32.inc(n), target)\n  +val = nc_lower_to(book, value, nc_live_env(env, value), nc_fresh(rest), nf_local(target, word, join))",
+          "after": "  +bodyUses = nc_uses(body)\n  +rest = nc_lower_partition(book, body, U32.inc(n), target, nc_partition_uses(List.append(&2, NC_Binding, nc_live_uses(env, bodyUses), [nc_binding(id)]), bodyUses))\n  +valueEnv = nc_live_env(env, value)\n  +val = nc_lower_live_to(book, value, valueEnv, nc_fresh(rest), nf_local(target, word, join))",
+          "count": 1
+        },
+        {
+          "before": "  NC_Code{nc_share_env(env, value, body) ++ \"Term \"",
+          "after": "  NC_Code{nc_keep_uses(valueEnv, bodyUses) ++ \"Term \"",
+          "count": 1
+        }
+      ],
+      "lineDelta": 2
+    }
+  ],
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/occurrence-reuse/candidate-v1.patch",
+    "sha256": "e97b9e3f733113354e1781b7ca50d618cebeabb29657262e997c2c3c89002630",
+    "bytes": 5383
+  },
+  "lineDelta": 6,
+  "newTypes": 0,
+  "newFunctions": 0,
+  "invariant": "The exact same body occurrence index drives held-env, body lower partition and sharing. New binding still receives an ordered partition/drop; value lower bypasses preparation only after nc_live_env has proved every row live. No fresh-id/output/error-order changes."
+}

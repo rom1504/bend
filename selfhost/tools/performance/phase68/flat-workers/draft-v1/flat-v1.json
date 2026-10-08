@@ -1,0 +1,48 @@
+{
+  "kind": "phase68-flat-worker-source-proposal",
+  "executed": false,
+  "prerequisites": [
+    "arity-v1",
+    "prefix-v1"
+  ],
+  "patchSha256": "acf53b9002e7e8ebbab29627f5bc6519c39e08392bf1e0d0f639b09afdbd88e9",
+  "files": [
+    {
+      "path": "selfhost/src/back/native/bridge.bend",
+      "beforeSha256": "bd99ccc961dcade7c769192592491fd2b28bebcf7a4b729fc1473d12fc018e3b",
+      "afterSha256": "b3d51acdf088c8f7800480bbb5b4bd7b828358d142b8d89b608a042b1daaabe9",
+      "lineDelta": 2
+    },
+    {
+      "path": "selfhost/src/back/native/direct.bend",
+      "beforeSha256": "8bb6d746d329a6d70c730f78ab061f859ab4ed4cde5714f283f548780e52b941",
+      "afterSha256": "21a33183f17bb090463c3b7543321f75f1a1c9ca7e3ac04b2f024dc2a0271d69",
+      "lineDelta": 2
+    },
+    {
+      "path": "selfhost/src/back/native/book.bend",
+      "beforeSha256": "eaf8e504887f8c3bc640c87e3058c119c350626cbeb3145f147b991bdec4d409",
+      "afterSha256": "29403c7bbecb4102b733b452e3377bbb93dd810ac5e284d2b9f21b35f51b5ab9",
+      "lineDelta": 0
+    },
+    {
+      "path": "selfhost/src/back/native/flat.bend",
+      "beforeSha256": null,
+      "afterSha256": "9fbe66715dec93b77d5c9c49b696d76fc4db14a6430e4e32c9a573bbf5e05318",
+      "lineDelta": 212
+    },
+    {
+      "path": "selfhost/src/back/native/manifest.txt",
+      "beforeSha256": "6b80b0ecbaa914e3fd6763be9f30434c4224920afd31e6b6a500c5070a358f33",
+      "afterSha256": "bbe19c76aa650a27d415b684114d3337ac620ed6325b9c5f9f80d0846f3e06a4",
+      "lineDelta": 1
+    },
+    {
+      "path": "selfhost/src/compiler.json",
+      "beforeSha256": "e7bb9f5c489220bb5270f7aa687407ef550d2452b5570eae283bdf7d9b89fb5e",
+      "afterSha256": "47494813ec1eb6f6734f35c723315399f003aaed68a451b46afdd0393db6162e",
+      "lineDelta": 1
+    }
+  ],
+  "notes": "Explicit common-lowerer destination; provisional code plus transitive admission; host-only wrappers. Source-review and root-owned checked execution pending."
+}

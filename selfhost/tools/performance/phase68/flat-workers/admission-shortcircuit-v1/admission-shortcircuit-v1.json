@@ -1,0 +1,13 @@
+{
+  "kind": "phase68-flat-admission-shortcircuit-source-proposal",
+  "executed": false,
+  "beforeSha256": "9fbe66715dec93b77d5c9c49b696d76fc4db14a6430e4e32c9a573bbf5e05318",
+  "afterSha256": "f134ab236a3dda79d7d0baf980b4e2b9cf722384ce8d827f8d08cdcd03e28de8",
+  "patchSha256": "7a2dd830855f8493206d5b93b43d27f87dcda087e889bc088e0e1909c26697cc",
+  "changedDefinitions": [
+    "nf_deps_ready",
+    "nf_admit_pass"
+  ],
+  "lineDelta": 5,
+  "claim": "Same pure admission predicate, traversal and result ordering; avoids dependency analysis for ready or rejected bodies and after first unavailable dependency. Exact compiler/source-output equality remains root-owned qualification."
+}

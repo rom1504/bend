@@ -1,0 +1,154 @@
+{
+  "kind": "phase68-native-correctness-catalog",
+  "targetExecuted": false,
+  "reference": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66",
+  "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "sets": {
+    "flat-worker-fast": [
+      "phase68/aggregate-tail-swap.bend",
+      "phase68/callback-array-owner-v2.bend",
+      "compile/array_swap_header.bend",
+      "compile/closure_partial_app.bend",
+      "compile/bang_intrinsic_closure.bend",
+      "run/fork_shared_flat.bend",
+      "run/nat_overflow.bend",
+      "phase68/flat-admission-v1.bend"
+    ]
+  },
+  "cases": [
+    {
+      "id": "phase68/aggregate-tail-swap.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/aggregate-tail-swap.bend",
+        "sha256": "63f61f2abb63ee23189e3ff4a8211597b7985905323a46754d622675ebeda903",
+        "bytes": 747
+      },
+      "external": true,
+      "purpose": "flat record returned through partial callback; tail argument permutation and shared projected result; independent1007006",
+      "goldenLines": [
+        "1007006"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "phase68/callback-array-owner-v2.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/callback-array-owner-v2.bend",
+        "sha256": "ebc91e8911f027c3f5cd2b910cc57778c95d3339135a05824bf114dade9a1ed5",
+        "bytes": 632
+      },
+      "external": true,
+      "purpose": "stored closure captures affine array and consumes it once; independent29",
+      "goldenLines": [
+        "29"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "compile/array_swap_header.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/array_swap_header.bend",
+        "sha256": "e16438d4138cbf1700473d0f1a1805194787c107b39af819c0dbdeed752d7f87",
+        "bytes": 969
+      },
+      "external": false,
+      "purpose": "tail argument permutation must stage old array handles before assignment",
+      "goldenLines": [
+        "2337"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "compile/closure_partial_app.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/closure_partial_app.bend",
+        "sha256": "a5db1896b19521ea737bd80b3d76304ba9bcd75ac7ce67c5cf6da4011f529d94",
+        "bytes": 510
+      },
+      "external": false,
+      "purpose": "capturing partial closure passed to matching definition",
+      "goldenLines": [
+        "17"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "compile/bang_intrinsic_closure.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/bang_intrinsic_closure.bend",
+        "sha256": "b4e9b3ae9b9f080986a40d5d9e3e097cf5fa43f459b71112b75202d801b469d7",
+        "bytes": 649
+      },
+      "external": false,
+      "purpose": "bang/partial intrinsic retains fallback",
+      "goldenLines": [
+        "3"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "run/fork_shared_flat.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/fork_shared_flat.bend",
+        "sha256": "660e4064a8c56d844edd24f14caf9395f9081701883e1b7aabdeb7094ff6a684",
+        "bytes": 1404
+      },
+      "external": false,
+      "purpose": "boxed family result crosses sharing and actual scheduler path",
+      "goldenLines": [
+        "18",
+        "18432"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "run/nat_overflow.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/nat_overflow.bend",
+        "sha256": "8004dc6d43642ec742482ac2f15df4bf90e35e43e50ea67442341e311b1e1afa",
+        "bytes": 550
+      },
+      "external": false,
+      "purpose": "fail-stop preserved; cannot use unchecked direct arithmetic",
+      "goldenLines": [
+        "bend: a Nat past the largest immediate 2^48-1",
+        "exit 1"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "phase68/flat-admission-v1.bend",
+      "external": true,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/flat-admission-v1.bend",
+        "sha256": "d32c5ed12d0521d677e28e1cf09ecf8b2bd0f68b5bcdd24ecab95db832904db3",
+        "bytes": 854
+      },
+      "goldenLines": [
+        "1101707"
+      ]
+    }
+  ],
+  "predecessor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/catalog-v2.json",
+    "sha256": "8f9296712a737ea32b57faf50a38454301503c55df4a144f9d3cd38f438cb056",
+    "bytes": 23122
+  },
+  "mechanism": {
+    "requiredWorker": [
+      "tail68"
+    ],
+    "forbiddenWorkers": [
+      "nontail68",
+      "mutual_a68",
+      "mutual_b68"
+    ],
+    "tailLabel": "nf_again",
+    "pureGolden": 1101707
+  },
+  "fixtureRepair": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/parameter-pair-repairs-v1.json",
+    "sha256": "b6379dd5d53d28ec4f92bf6f22fa6fbcea3fc877e36b5d00058e66a2397cea1f",
+    "bytes": 2409
+  }
+}

@@ -1,0 +1,57 @@
+--- a/selfhost/src/back/native/emit.bend
++++ b/selfhost/src/back/native/emit.bend
+@@ -14,6 +14,16 @@
+   match x:
+     case N_Emitted{+code, +value, +n}: N_Emitted{code, "term_ctr(" ++ nt_cid(k) ++ ", " ++ value ++ ")", n}
+ 
++# A fitting payload is a trivial tag-zero word; every other value keeps its box.
++@unsafe
++def ne_single(+k: String, +h: String, +n: U32, +hot: Bool) -> N_Emitted:
++  +word = nt_local("pf", n)
++  +value = nt_local("pk", n)
++  +boxed = ne_wrap_ctor(k, ne_node("nd", "heap_alloc(e, cls_fit(1))", [word], n, hot))
++  match boxed:
++    case N_Emitted{+code, +box, +next}:
++      N_Emitted{"Term " ++ word ++ " = " ++ h ++ ";\nTerm " ++ value ++ ";\n#if NATIVE_PACK_CTORS\nif ((" ++ word ++ " & ~LOC_MASK) == 0) {\n" ++ value ++ " = term_pak(" ++ nt_cid(k) ++ ", " ++ word ++ ");\n} else\n#endif\n{\n" ++ code ++ value ++ " = " ++ box ++ ";\n}\n", value, next}
++
+ @unsafe
+ def ne_constructor(+k: String, +ws: List<&2, String>, +packed: Bool, +n: U32, +hot: Bool) -> N_Emitted:
+   match ws:
+@@ -21,7 +31,9 @@
+     case Con{+h, +t}:
+       nt_choose(N_Emitted, packed,
+         u => N_Emitted{"", "term_pak(" ++ nt_cid(k) ++ ", " ++ h ++ ")", n},
+-        u => ne_wrap_ctor(k, ne_node("nd", "heap_alloc(e, cls_fit(" ++ U32.show(nt_count(String, ws)) ++ "))", ws, n, hot)))
++        u => nt_choose(N_Emitted, String.starts_with(k, "$ctor.") && U32.is_eq(nt_count(String, t), 0),
++          u => ne_single(k, h, n, hot),
++          u => ne_wrap_ctor(k, ne_node("nd", "heap_alloc(e, cls_fit(" ++ U32.show(nt_count(String, ws)) ++ "))", ws, n, hot))))
+ 
+ @unsafe
+ def ne_closure_wrap(+k: String, +x: N_Emitted) -> N_Emitted:
+--- a/selfhost/src/back/native/book.bend
++++ b/selfhost/src/back/native/book.bend
+@@ -201,6 +201,15 @@
+   match d:
+     case NC_Show{+src, +err}: nt_choose(NC_Result, String.eq(nv_first(err, nv_program(ss, cs)), ""), u => NC_Result{ne_program(runtime, N_Program{ss, cs, Nil{}, requests, nc_helpers() ++ workers, src, pure}), ""}, u => NC_Result{"", nv_first(err, nv_program(ss, cs))})
+ 
++# Include index/constructor children: raw cached books may carry definitions there.
++# A foreign program retains its previous ordinary-constructor representation.
++@unsafe
++def nc_pack_foreign(ds: List<&2, KDef>) -> Bool:
++  match ds:
++    case Nil{}: False{}
++    case Con{d, rest}:
++      (Bool.not(db(d)) && (String.eq(tg(nc_unann(dv(d))), "Foreign") || (String.eq(dk(d), "Def") && nc_foreign(d)))) || nc_pack_foreign(dc(d)) || nc_pack_foreign(rest)
++
+ @unsafe
+ def nc_finish(+book: List<&2, KDef>, +runtime: String, +requests: String, compiled: NC_Book) -> NC_Result:
+   match compiled:
+@@ -209,7 +218,7 @@
+       +pure = Bool.not(nc_is_io(book, ty))
+       +cs = nc_add_ctors(nc_default_ctors(), nc_constructors(book, book))
+       nt_choose(NC_Result, Bool.not(String.eq(error, "")), u => NC_Result{"", error}, u =>
+-        nf_finish_show(book, ss, cs, runtime, requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show("0"), ""})))
++        nf_finish_show(book, ss, cs, "#define NATIVE_PACK_CTORS " ++ nt_choose(String, nc_pack_foreign(book), u => "0", u => "1") ++ "\n" ++ runtime, requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show("0"), ""})))
+ 
+ law nc_bangs_term:
+   for +t: KTerm

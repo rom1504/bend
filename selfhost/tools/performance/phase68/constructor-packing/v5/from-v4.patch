@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/native/book.bend
++++ b/selfhost/src/back/native/book.bend
+@@ -207,7 +207,7 @@
+ def nc_pack_foreign(ds: List<&2, KDef>) -> Bool:
+   match ds:
+     case Nil{}: False{}
+-    case Con{d, rest}:
++    case Con{+d, rest}:
+       (Bool.not(db(d)) && (String.eq(tg(nc_unann(dv(d))), "Foreign") || (String.eq(dk(d), "Def") && nc_foreign(d)))) || nc_pack_foreign(dc(d)) || nc_pack_foreign(rest)
+ 
+ @unsafe

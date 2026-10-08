@@ -1,0 +1,25 @@
+--- a/selfhost/src/back/native/emit.bend
++++ b/selfhost/src/back/native/emit.bend
+@@ -14,15 +14,18 @@
+   match x:
+     case N_Emitted{+code, +value, +n}: N_Emitted{code, "term_ctr(" ++ nt_cid(k) ++ ", " ++ value ++ ")", n}
+ 
++@unsafe
++def ne_single_result(+prefix: String, +value: String, +boxed: N_Emitted) -> N_Emitted:
++  match boxed:
++    case N_Emitted{+code, +box, +next}:
++      N_Emitted{prefix ++ code ++ value ++ " = " ++ box ++ ";\n}\n", value, next}
++
+ # A fitting payload is a trivial tag-zero word; every other value keeps its box.
+ @unsafe
+ def ne_single(+k: String, +h: String, +n: U32, +hot: Bool) -> N_Emitted:
+   +word = nt_local("pf", n)
+   +value = nt_local("pk", n)
+-  +boxed = ne_wrap_ctor(k, ne_node("nd", "heap_alloc(e, cls_fit(1))", [word], n, hot))
+-  match boxed:
+-    case N_Emitted{+code, +box, +next}:
+-      N_Emitted{"Term " ++ word ++ " = " ++ h ++ ";\nTerm " ++ value ++ ";\n#if NATIVE_PACK_CTORS\nif ((" ++ word ++ " & ~LOC_MASK) == 0) {\n" ++ value ++ " = term_pak(" ++ nt_cid(k) ++ ", " ++ word ++ ");\n} else\n#endif\n{\n" ++ code ++ value ++ " = " ++ box ++ ";\n}\n", value, next}
++  ne_single_result("Term " ++ word ++ " = " ++ h ++ ";\nTerm " ++ value ++ ";\n#if NATIVE_PACK_CTORS\nif ((" ++ word ++ " & ~LOC_MASK) == 0) {\n" ++ value ++ " = term_pak(" ++ nt_cid(k) ++ ", " ++ word ++ ");\n} else\n#endif\n{\n", value, ne_wrap_ctor(k, ne_node("nd", "heap_alloc(e, cls_fit(1))", [word], n, hot)))
+ 
+ @unsafe
+ def ne_constructor(+k: String, +ws: List<&2, String>, +packed: Bool, +n: U32, +hot: Bool) -> N_Emitted:

@@ -1,0 +1,64 @@
+{
+  "kind": "phase68-one-field-packing-source-only-proposal-v5",
+  "targetsExecuted": false,
+  "productionApplied": false,
+  "baseline": {
+    "emit.bend": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/emit.bend",
+      "sha256": "862af7916a7b26d6801726b48d422f154bb8a34c4c140cccc534c5d0ff21b46a",
+      "bytes": 5084
+    },
+    "book.bend": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/flat-products/v2/candidate/book.bend",
+      "sha256": "54de235a0cdcd0caef4f94a12414204185b34ce8f3ddaab572de4058c2090a91",
+      "bytes": 14358
+    }
+  },
+  "candidate": {
+    "emit.bend": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v5/candidate/emit.bend",
+      "sha256": "760306029ec0d2239f0ab0d06677c01f046b5235ea90d0a70af04581c965f4b4",
+      "bytes": 6000
+    },
+    "book.bend": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v5/candidate/book.bend",
+      "sha256": "6973f46e3f30dd46dc2743910bf9d66da3cd5995fb29da36c92fc1066fe1fbb6",
+      "bytes": 14910
+    }
+  },
+  "patch": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v5/candidate.patch",
+    "sha256": "f19fa2e4b98c2c5b808bc6abfb00db6ea0b7873e6ebddf7be9acdf4e4f94274c",
+    "bytes": 3473
+  },
+  "changes": {
+    "emit": "Exact one-field non-Base encoded constructors gain an evaluated-once low40 guard; all other paths unchanged.",
+    "book": "Whole-book recursive non-Base Foreign or absent Def scan chooses constant C permission, before final program emission."
+  },
+  "boundaries": [
+    "Foreign C hidden outside declared book definitions is outside this provenance fence.",
+    "Base and IO constructor encodings unchanged.",
+    "Low-level emitters without the permission macro retain boxing (undefined #if evaluates false).",
+    "All original packed=true callers retain their original contract."
+  ],
+  "lineDelta": {
+    "emit.bend": 15,
+    "book.bend": 9
+  },
+  "predecessor": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v4/manifest.json",
+    "sha256": "7abeb969162d822b4d1b1654017865d835542549de195003fb1e29dc90c84317",
+    "bytes": 4328
+  },
+  "derivation": {
+    "before": "def nc_pack_foreign(ds: List<&2, KDef>) -> Bool:\n  match ds:\n    case Nil{}: False{}\n    case Con{d, rest}:\n      (Bool.not(db(d)) && (String.eq(tg(nc_unann(dv(d))), \"Foreign\") || (String.eq(dk(d), \"Def\") && nc_foreign(d)))) || nc_pack_foreign(dc(d)) || nc_pack_foreign(rest)",
+    "after": "def nc_pack_foreign(ds: List<&2, KDef>) -> Bool:\n  match ds:\n    case Nil{}: False{}\n    case Con{+d, rest}:\n      (Bool.not(db(d)) && (String.eq(tg(nc_unann(dv(d))), \"Foreign\") || (String.eq(dk(d), \"Def\") && nc_foreign(d)))) || nc_pack_foreign(dc(d)) || nc_pack_foreign(rest)",
+    "count": 1,
+    "reason": "Preserved build13 rejected repeated consumption of d. Mark the pattern-bound KDef shared (+d), as existing native book scanners do. No generated C policy/representation change."
+  },
+  "deltaPatch": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v5/from-v4.patch",
+    "sha256": "664c375d9923fc401ac381e53b57a438d62f796dc0f18883079d82a7a98abb47",
+    "bytes": 419
+  }
+}

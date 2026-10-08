@@ -1,0 +1,66 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/raw-controls-v5.mjs",
+    "sha256": "3dd809ed0390c20dea8ed2ab633b2d634c41036c2cd3783b821cd86f588cfd59",
+    "bytes": 8852
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/raw-controls-v6.mjs",
+    "sha256": "f12d93502b7127455f7b71fb9d37e66ee86436ecc8580a59a208b384d7f8fe81",
+    "bytes": 10039
+  },
+  "edits": [
+    {
+      "parentLine": 16,
+      "before": "const report={kind:'phase68-native-raw-controls-v5',complete:false,pass:false,inputs,rows:[]};\n",
+      "after": "const report={kind:'phase68-native-raw-controls-v6',complete:false,pass:false,inputs,rows:[]};\n"
+    },
+    {
+      "parentLine": 70,
+      "before": "   const workerSuffix=' Term NF_FID_109_97_105_110_(Env e, bool seq, Term* nf_out) {';\n   const workerHeads=['INLINE','NF_INLINE'].map(prefix=>prefix+workerSuffix).filter(head=>got.source.includes(head));\n   assert(workerHeads.length<=1);\n   const worker=workerHeads[0];\n   assert.equal(Boolean(worker),got.source.includes('NF_FID_109_97_105_110_('));\n   if(worker) {\n    assert.equal(got.source.split(worker).length,2);\n    const workerHead=worker+'\\nu32 nf_poll = 0;\\nnf_again:;\\nif (err_spun(e.mem, &nf_poll)) { return 0; }';\n    assert.equal(got.source.split(workerHead).length,2);\n",
+      "after": "   const returns=[{name:'scheduler',marker:markers[0],offset:got.source.indexOf(markers[0])}];\n   assert(returns[0].offset>at);\n   // Match entire declaration lines: INLINE is a suffix of NF_INLINE.\n   // Scope return markers separately when both boxed and product workers exist.\n   const fid=name=>'NF_FID_'+[...name].map(c=>c.codePointAt(0)+'_').join('');\n   const names=[fid('main'),fid('$product.main')];\n   const workerHeads=[...got.source.matchAll(/^(?:INLINE|NF_INLINE) Term (NF_FID_[0-9_]+)\\(Env e, bool seq, Term\\* nf_out\\) \\{$/gm)]].filter(m=>names.includes(m[1]));\n   assert(workerHeads.length<=2);\n   assert.equal(new Set(workerHeads.map(m=>m[1])).size,workerHeads.length);\n   for(const name of names)assert.equal(workerHeads.some(m=>m[1]===name),got.source.includes(name+'('));\n   const bodyEnd=(source,open)=>{\n    let depth=1,i=open+1,state='';\n    for(;i<source.length;i++) {\n     const c=source[i],next=source.slice(i,i+2);\n     if(state==='\"'||state===\"'\") {if(c==='\\\\'){i++;continue;}if(c===state)state='';continue;}\n     if(state==='//'){if(c==='\\n')state='';continue;}\n     if(state==='/*'){if(next==='*/'){state='';i++;}continue;}\n     if(c==='\"'||c===\"'\"){state=c;continue;}\n     if(next==='//'||next==='/*'){state=next;i++;continue;}\n     if(c==='{')depth++;else if(c==='}'&&--depth===0)return i+1;\n    }\n    assert.fail('Unclosed native worker body');\n   };\n   for(const worker of workerHeads) {\n    const head=worker[0],open=worker.index+head.length-1,end=bodyEnd(got.source,open);\n    const body=got.source.slice(open+1,end-1);\n    assert(body.startsWith('\\nu32 nf_poll = 0;\\nnf_again:;\\nif (err_spun(e.mem, &nf_poll)) { return 0; }'));\n"
+    },
+    {
+      "parentLine": 80,
+      "before": "    const returns=['*nf_out = v_3;','nf_out[0] = v_3;'].filter(marker=>got.source.includes(marker));\n    assert.equal(returns.length,1);\n    markers.push(returns[0]);\n    assert.equal(got.source.split(markers[1]).length,2);\n    // The original marker is in DEVICE fallback; this is the selected host return.\n    assert(got.source.indexOf(markers[1])>got.source.indexOf(worker));\n    assert(got.source.indexOf(markers[1])<start);\n",
+      "after": "    const sites=[...body.matchAll(/^(?:\\*nf_out|nf_out\\[0\\]) = v_3;$/gm)];\n    assert.equal(sites.length,1,worker[1]);\n    const marker=sites[0][0],offset=open+1+sites[0].index;\n    assert(offset<start&&end<start);\n    markers.push(marker);returns.push({name:worker[1],marker,offset,head,start:worker.index,end});\n"
+    },
+    {
+      "parentLine": 92,
+      "before": "   let diagnostic=got.source.slice(0,at)+inject+got.source.slice(at);\n   for(const marker of markers) diagnostic=diagnostic.replace(marker,'fputs(\"P67_BODY_REACHED\\\\n\", stderr);\\n'+marker);\n",
+      "after": "   const insertions=[{offset:at,text:inject},...returns.map(site=>({offset:site.offset,text:'fputs(\"P67_BODY_REACHED\\\\n\", stderr);\\n'}))];\n   assert.equal(new Set(insertions.map(x=>x.offset)).size,insertions.length);\n   let diagnostic=got.source;\n   for(const change of insertions.sort((a,b)=>b.offset-a.offset))diagnostic=diagnostic.slice(0,change.offset)+change.text+diagnostic.slice(change.offset);\n"
+    },
+    {
+      "parentLine": 97,
+      "before": "   const control={name:'shared-error-checkpoint',role,kind:'emitted-C-mocked-shared-error-diagnostic',scope:'Mocks shared error observation on CPU; no GPU execution or device conformance claim.',parent:pin(stem+'.c'),source:pin(dc),edits:[{at,insert:inject},{markers,insert:'P67_BODY_REACHED before both exact scheduler and selected NF host return sites; one compiled path executes'},{old:seen,new:mock}],compile:{status:build.status,stderr:build.stderr},runs:[]};report.rows.push(control);save();assert.equal(build.status,0,build.stderr);\n",
+      "after": "   const control={name:'shared-error-checkpoint',role,kind:'emitted-C-mocked-shared-error-diagnostic',scope:'Mocks shared error observation on CPU; no GPU execution or device conformance claim.',parent:pin(stem+'.c'),source:pin(dc),edits:[{at,insert:inject},{markers,returns,insert:'P67_BODY_REACHED before each exact scoped scheduler/ordinary/product return site; one selected return executes'},{old:seen,new:mock}],compile:{status:build.status,stderr:build.stderr},runs:[]};report.rows.push(control);save();assert.equal(build.status,0,build.stderr);\n"
+    }
+  ],
+  "preparer": {
+    "parent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/prepare-raw-v3.py",
+      "sha256": "240628a2f29611a38b70aa9a6ea4ea1ccab434d9bc53bd2086a736c2c6ea5dbd",
+      "bytes": 3577
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/prepare-raw-v4.py",
+      "sha256": "e511df76e9c76301494ca0fc59633469f59f85b046dc607baba77f1d0984a4d4",
+      "bytes": 3577
+    },
+    "edits": [
+      {
+        "before": "raw-controls-v5.mjs",
+        "after": "raw-controls-v6.mjs",
+        "count": 1
+      }
+    ]
+  },
+  "targetExecuted": false,
+  "expectedRows": 12,
+  "failedAttempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/products-raw10/execution/report.json",
+    "sha256": "53626dbc60ce7743c65ed7e002d980a84ee3b84a600f9dcfdc55604eab48edce",
+    "bytes": 4237
+  },
+  "scope": "Exact original twelve observations/checkpoint oracles, flags and recipes. Fix INLINE substring preflight and instrument scoped ordinary/product worker return sites plus scheduler fallback. No production change."
+}

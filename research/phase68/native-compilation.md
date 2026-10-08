@@ -240,3 +240,68 @@ later marker inside an earlier payload. Two defensible implementation routes are
 
 Neither route is implemented or selected here. First reprofile after the much
 smaller template change: reduced GC may change the apparent rendering budget.
+
+## Templates05: correctness passes; B1 has no measured gain
+
+The strict Templates05 build passed all 69 catalog entries / 285 distinct names,
+including membership and seven substitution vectors. Numeric, Array and Lexer
+also reproduce the qualified Prefix04 complete C exactly. The acquisition
+request clocks do **not** show a gain: Numeric 2,344→2,436 ms, Array 2,616→2,601 ms,
+Lexer 3,309→3,350 ms. These separate single observations are a rejection of any
+current speed claim, not a precise regression estimate.
+
+The [generated-source comparison](../../implementation/phase68/evidence/template-lowering-source01.json)
+rules out the suggested explanation that old B1 hoisted a shared table: both old
+B1 and B2 contain 69 `Con`, 69 `ni_Op` and one `Nil` literal inside the called
+function. Neither explicitly shares the table. Actual V8 allocation elimination
+would still require runtime evidence.
+
+The control flow does differ. Old B1 lookup takes trampoline/closure steps;
+old B2 lookup uses a direct loop. New B1's 10,383-byte selector contains 70 nested
+`run_tail` choices. Removing the catalog can therefore trade its cost for
+closure/trampoline work and a larger generated function. This is a plausible
+explanation, not a proven causal result. B2's existing literal-choice lowering
+suggests a cheaper direct chain, which must be checked in the actual new B2.
+
+The minimal Templates05 B2 plan is staged through the existing reviewed
+tiny/full/source/direct-comparison sequence. It constructs genuine image
+lineage without running the final self-check, fixed-point or JS23 gates; those
+remain required for promotion. Native workers can then use the explicit
+`--oracle-attempt` method to compare both selected images with Prefix04's
+runtime-qualified C, retaining the original oracle producer instead of
+rebuilding identical executables.
+
+The actual Templates05 B2 now confirms the expected code shape: its
+[`ni_template`](../../implementation/phase68/evidence/template-lowering-source02.json)
+has 70 direct literal branches, zero trampoline calls, and no eager catalog.
+Its full emission and eight driver comparisons pass. The frozen native request
+plan `native-compilation-templates05-01` binds B2 `58d3bbe2…` separately from
+Prefix04's qualified C producer. The first clean screen is still pending at
+this observation; this code-shape result alone establishes no speed gain.
+
+## Inline09: remaining compilation work
+
+All fifteen actual Inline09 request observations now pass complete C equality.
+One clean observation per role gives B1 2,285/2,432/2,988 ms and B2
+1,415/1,442/1,954 ms for Numeric/Array/Lexer; the same-plan TypeScript requests
+are 707/724/862 ms. The B2 ratios are 2.003×/1.990×/2.265×. This is a screen,
+not a balanced final result. Intervening native changes also prevent assigning
+the difference from Templates05 to occurrence summaries alone.
+
+The [full-stack census](../../implementation/phase68/evidence/native-request-hotspots09.json)
+shows 551 ms B1 Numeric and 152/174/180 ms B2 in occurrence collection including
+its index work. The nearest visible native callers include `nc_lower`,
+`nc_lower_to`, `nc_live_env` and `nc_share_env`; these are sampled attribution,
+not exact invocation counts. Four existing let functions visibly collect the
+same body up to three times. [P68-012](../../experiments/phase68/P68-012-local-occurrence-reuse.md)
+therefore tries local summary reuse, adding six lines and no new type/function.
+
+Renderer measurements need a narrower interpretation than the total text-module
+budget. `nt_lines` inclusive sampled time is only 46 ms B1 Numeric and
+26/27/19 ms B2. `nt_replace` is 20 ms B1 and 158/143/177 ms B2. Replacing
+`nt_lines` with `String.join(String.lines(s), "\n    ")` is extensionally exact
+and seven lines shorter, but both actual compiler images implement String.lines
+through non-tail-recursive String.split. It is not a native JavaScript split
+operation. This source-only alternative is retained under `renderer-lines`,
+but introduces a large-body stack-risk hypothesis for a small speed ceiling.
+The occurrence reuse is the stronger shared B1/B2 experiment.

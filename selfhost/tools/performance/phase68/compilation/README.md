@@ -71,3 +71,11 @@ inferred from mutable checkout paths, and Phase67 C is not reused for changed C.
 `demand-templates/` contains P68-006's isolated lazy-selector source proposal
 and exhaustive diagnostic controller. The source review passed, but no
 candidate performance or target-equivalence result is implied by that review.
+
+`prepare-selected-v2.py` adds an explicit `--oracle-attempt` for qualified C
+emitted by an earlier actual checked B1. Its default is the selected attempt.
+The plan retains `oracleAttempt` and `oracleApi` separately and verifies the
+acquisition recipe/receipt against that producer. Every fresh selected B1/B2
+worker still emits and compares the entire C file before inheriting the finite
+runtime observation. This avoids recompiling identical C merely because the
+compiler implementation changed. The v1 method and its preflight are preserved.

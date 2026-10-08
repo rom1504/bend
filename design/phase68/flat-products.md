@@ -337,3 +337,54 @@ scope. The correctness owner required flow-proven transport or splitting at the
 original matcher boundary because annotations are not an authenticated
 checked-book contract. This note incorporates both constraints. No prototype
 module is claimed compiled or integrated.
+
+## Isolated implementation refinement
+
+Root subsequently authorized [P68-007](../../experiments/phase68/P68-007-flat-products.md),
+committed its registration before implementation, and requested a runnable
+source proposal. The isolated files are under
+[`flat-products/`](../../selfhost/tools/performance/phase68/flat-products/).
+V1 is preserved as an unexecuted source snapshot; v2 incorporates the parent's
+occurrence-summary and small-inline worker changes plus review refinements.
+
+The implementation uses cached signature shapes and a constructor catalogue
+derived from those validated descriptors. An actual erased constructor with the
+exact native identity and live field count is a valid fixed-shell producer;
+its field types are never reconstructed. This permits an initial literal record
+to enter a private product loop, not merely a product already returned by one.
+Fields use the existing scalar `NC_Binding` environment, with internal bundle
+nodes recording that their evaluation has already occurred.
+
+The ordinary boxed workers remain, alongside private `$product.` variants.
+Those variants receive field vectors only from matching proved bundles. This
+initial version can duplicate body text; output size is an explicit cost to
+measure. `NC_Code.calls` records the emitted boxed/product call graph so the
+existing readiness algorithm sees actual selected variants and rejects cycles.
+Scheduler effect metadata retains the original source-reference policy.
+
+Review required two further restrictions. Local virtual bindings require a
+single use on every matcher path; a zero-use branch retains materialization and
+the original shell drop. Private product parameters also undergo a conservative
+source-demand check through leading lambdas and matcher-raised residual
+arguments, requiring exactly one whole-product use on every inspected path.
+Only exact runtime-native complementary guards or literal-true guards eliminate
+miss paths; general ADT exhaustiveness is not assumed. At successful direct product matching, the field environment is
+ordered after other held values just as in the original take-and-bind path.
+These rules avoid assuming arbitrary field-by-field drops equal parent drops.
+
+The v2 layout query uses bounded syntactic reduction, with
+no global reference unfolding or general conversion for newly inspected
+constructor field types. Unknown aliases decline. Existing arity queries already
+normalize the source function telescope, but that does not authorize extra
+normalization inside a previously unused constructor definition in a raw book.
+The source proposal, exact relative patch and baseline/candidate hashes are in
+[`flat-products/v2/`](../../selfhost/tools/performance/phase68/flat-products/v2/).
+It adds 533 net source lines, within the registered implementation estimate.
+
+An independent source review is recorded in
+[product-source-review.md](../../research/phase68/product-source-review.md).
+Source checks and reviews are distinct from the parent's checked builds,
+controls, counter evidence, and measurements. Another conservative coverage cost
+remains: a selected product variant that later fails admission can prevent a
+boxed dependant from using its otherwise valid worker; it then retains scheduler
+fallback. Track worker coverage alongside runtime before broadening this choice.

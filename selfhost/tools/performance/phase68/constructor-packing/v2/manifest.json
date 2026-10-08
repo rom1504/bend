@@ -1,0 +1,54 @@
+{
+  "kind": "phase68-one-field-packing-source-only-proposal-v2",
+  "targetsExecuted": false,
+  "productionApplied": false,
+  "baseline": {
+    "emit.bend": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/emit.bend",
+      "sha256": "862af7916a7b26d6801726b48d422f154bb8a34c4c140cccc534c5d0ff21b46a",
+      "bytes": 5084
+    },
+    "book.bend": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/flat-products/v2/candidate/book.bend",
+      "sha256": "54de235a0cdcd0caef4f94a12414204185b34ce8f3ddaab572de4058c2090a91",
+      "bytes": 14358
+    }
+  },
+  "candidate": {
+    "emit.bend": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v2/candidate/emit.bend",
+      "sha256": "bfe3a0a65f4f35d46cb01cb45ab9fdc3aa9e73a6c5b3375a48c3ab4d7bd5a72c",
+      "bytes": 5880
+    },
+    "book.bend": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v2/candidate/book.bend",
+      "sha256": "e169a1a65aed1214933f516a4a52d8bd9c2c3044bedf3e5a0f5f6a757236b99c",
+      "bytes": 14861
+    }
+  },
+  "patch": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v2/candidate.patch",
+    "sha256": "5153c3eac7b4ed9fe582a7bddd129584e2ce03f282dfef19916935f85626e366",
+    "bytes": 3260
+  },
+  "changes": {
+    "emit": "Exact one-field non-Base encoded constructors gain an evaluated-once low40 guard; all other paths unchanged.",
+    "book": "Whole-book recursive non-Base foreign scan chooses constant C permission, before final program emission."
+  },
+  "boundaries": [
+    "Foreign C hidden outside declared book definitions is outside this provenance fence.",
+    "Base and IO constructor encodings unchanged.",
+    "Low-level emitters without the permission macro retain boxing (undefined #if evaluates false).",
+    "All original packed=true callers retain their original contract."
+  ],
+  "lineDelta": {
+    "emit.bend": 12,
+    "book.bend": 9
+  },
+  "predecessor": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/constructor-packing/v1/manifest.json",
+    "sha256": "0c83cc515b964681998e41be3a9a24033c1412cfd3f6c7ed6e4b062e3f1ec890",
+    "bytes": 2090
+  },
+  "derivation": "Only generated permission branch changed to #if NATIVE_PACK_CTORS, default false when lower-level emitter has no final-book permission macro."
+}

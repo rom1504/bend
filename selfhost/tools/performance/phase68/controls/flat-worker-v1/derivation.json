@@ -1,0 +1,40 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/prepare.py",
+    "sha256": "9f1c1fce346f18a5d4cad194631a5516ee433c325b124cf13ea71fc2792c1f19",
+    "bytes": 5642
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/flat-worker-v1/prepare.py",
+    "sha256": "36e0148a336e062c264af4adf21baa30f66d5bfd8b490357e85e6a6d4daf2886",
+    "bytes": 6925
+  },
+  "edits": [
+    {
+      "before": "parents[5]",
+      "after": "parents[6]",
+      "count": 1
+    },
+    {
+      "before": "choices=[\"arity-fast\", \"flat-fast\", \"ownership\", \"boundary\", \"integration\"]",
+      "after": "choices=[\"flat-worker-fast\"]",
+      "count": 1
+    },
+    {
+      "before": "    write(frozen_selection, selection)\n    command =",
+      "after": "    write(frozen_selection, selection)\n    original_workflow = pin(workflow)\n    source = workflow.read_text()\n    replacements = []\n    for specifier in ['../conformance/inventory.mjs', './process.mjs', '../typed-driver.mjs']:\n        old = \"from '\" + specifier + \"';\"\n        new = 'from ' + json.dumps((workflow.parent / specifier).resolve().as_uri()) + ';'\n        assert source.count(old) == 1\n        source = source.replace(old, new)\n        replacements.append(dict(before=old, after=new, count=1))\n    for old, new in [('import.meta.dirname', json.dumps(str(workflow.parent))), (\"retain:'failed'\", \"retain:'all'\")]:\n        count = source.count(old)\n        assert count > 0 and (old != \"retain:'failed'\" or count == 1)\n        source = source.replace(old, new)\n        replacements.append(dict(before=old, after=new, count=count))\n    workflow = output / 'workflow-retained.mjs'\n    workflow.write_text(source)\n    derivative = dict(parent=original_workflow, candidate=pin(workflow), edits=replacements,\n        scope='Exact maintained workflow with source-relative dependencies pinned to the same checked snapshot; only selected artifact retention changes failed to all. Oracles, guards, phases and compiler calls unchanged.')\n    write(output / 'workflow-derivation.json', derivative)\n    inputs += [pin(workflow), pin(output / 'workflow-derivation.json')]\n    command =",
+      "count": 1
+    }
+  ],
+  "catalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/flat-worker-v1/catalog-v1.json",
+    "sha256": "15941e0ec3c590457b7696f5cb49b1c55952414bbeb269b053d9416d579699e3",
+    "bytes": 5842
+  },
+  "selection": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/flat-worker-v1/flat-worker-fast-selection.json",
+    "sha256": "e1ee1e133101404d52fe1178738344845f2cad48d6857e421d15044742168f11",
+    "bytes": 1218
+  },
+  "targetExecuted": false
+}

@@ -1,0 +1,48 @@
+{
+  "kind": "phase68-native-correctness-catalog",
+  "targetExecuted": false,
+  "reference": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66",
+  "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "sets": {
+    "prefix-retry": [
+      "phase68/callback-array-owner-v2.bend",
+      "phase68/prefix-scratch-v2.bend"
+    ]
+  },
+  "cases": [
+    {
+      "id": "phase68/callback-array-owner-v2.bend",
+      "external": true,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/callback-array-owner-v2.bend",
+        "sha256": "ebc91e8911f027c3f5cd2b910cc57778c95d3339135a05824bf114dade9a1ed5",
+        "bytes": 632
+      },
+      "goldenLines": [
+        "29"
+      ]
+    },
+    {
+      "id": "phase68/prefix-scratch-v2.bend",
+      "external": true,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/prefix-scratch-v2.bend",
+        "sha256": "8d69617c49df1f08f89480151ccc0b51fe462c3971edd9e098c211426914b37f",
+        "bytes": 1365
+      },
+      "goldenLines": [
+        "7071122"
+      ]
+    }
+  ],
+  "repairs": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/parameter-pair-repairs-v1.json",
+    "sha256": "b6379dd5d53d28ec4f92bf6f22fa6fbcea3fc877e36b5d00058e66a2397cea1f",
+    "bytes": 2409
+  },
+  "referenceFrontendSmoke": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/reference-fixtures-smoke01/execution/report.json",
+    "sha256": "44d2ca74a7bd15b694265d33c62cfcc51f2d71de39b52134625f9c3561ff1b45",
+    "bytes": 7854
+  }
+}

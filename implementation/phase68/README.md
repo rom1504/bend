@@ -236,3 +236,37 @@ mechanism, not a qualified compiler implementation. A small general source
 proposal additionally disables packing in books with user foreign definitions
 to preserve their representation boundary. No runtime implementation changes
 are required by that proposal.
+
+## Product transport: a useful failed mechanism check
+
+Checked10 passes strict checking, six paired product controls, 18 actual-image
+demand decisions, and the branch-discard fixture (`1831`) with its private
+product entry absent. Its raw controls eventually pass all twelve observations.
+The intervening failures are preserved: the first instrumenter counted `INLINE`
+inside `NF_INLINE` twice; its successor contained an extra JavaScript bracket.
+The final successor passes the actual Node syntax parser before execution.
+
+These correctness results do **not** establish successful scalar replacement.
+The active-C audit finds zero product workers in numeric, array and lexer.
+Array timings are 125/124 ms against working09's 116/117 ms; there is no gain
+to credit. Actual compiler introspection identifies a conservative query stopping
+at the `Pair` alias used by `A & B`. The prototype remains unselected while the
+general bounded alias query is investigated. This is why active-path inspection
+belongs in the fast loop alongside output checks.
+
+## Reusing occurrence summaries within a lowering operation
+
+Checked11 adds six lines, no functions or types. Four existing lowering functions
+reuse the same body summary for liveness, sharing and ordered drops. The value
+path skips a second partition only after its environment was filtered to live
+bindings. Product substitution paths remain unchanged.
+
+The actual10/11 helper comparison passes 3,520 complete lowering-result pairs and
+four product metadata cases, including emitted calls. Instrumentation observes
+fewer body scans in 2,640 cases and fewer value scans in 1,680. Numeric, array and
+lexer complete C outputs are byte-identical. Their B1 request screen changes
+2,142/2,447/3,087 to 2,023/2,339/2,892 ms, approximately 5–6% less time. This is
+a single-sample mechanism screen; final balanced B1/B2 timings remain pending.
+
+The installed compiler is still Phase67. These source checkpoints and focused
+controls do not substitute for final release qualification.

@@ -1,0 +1,29 @@
+{
+  "kind": "phase68-occurrence-control-successor",
+  "predecessor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/occurrence-summary/controls.mjs",
+    "sha256": "f426c39628f5b364a5a8b0837edf39e065c4c4c4039c90a339f0ad56a95f2060",
+    "bytes": 7698
+  },
+  "failedReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/uses-controls08/report.json",
+    "sha256": "7c40ef70a47d1ee4a5bdcd88e5ad4160418d2656765496cca0baed0648bef5db",
+    "bytes": 163132
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/occurrence-summary/controls-v2.mjs",
+    "sha256": "8ac67f46168da682e797869a13559be0a3069257b83d689735bcf2f9fb6f5a17",
+    "bytes": 8365
+  },
+  "edits": [
+    {
+      "before": "    if(role==='candidate')Object.assign(functions,{uses:['nc_uses',1],has:['nc_uses_has',2],partition:['nc_prepare_env',2]});",
+      "after": "    if(role==='candidate'){\n      delete functions.drop;\n      Object.assign(functions,{uses:['nc_uses',1],has:['nc_uses_has',2],partition:['nc_prepare_env',2]});\n      const bend=fs.readFileSync(bridge.frozen.file,'utf8');\n      assert(bend.includes('def nc_drop_dead(env: List<&2, NC_Binding>, +t: KTerm) -> String:\\n  nc_partition_drop(nc_prepare_env(env, t))'));\n      assert(bend.includes('def nc_partition_drop(+parts: NC_EnvPartition) -> String:\\n  match parts:\\n    case NC_EnvPartition{live, drop}: drop'));\n    }"
+    },
+    {
+      "before": "    const append=",
+      "after": "    // The candidate's unused drop wrapper is removed by reachability. Project\n    // the actual compiled partition field exactly as its verified Bend body does.\n    if(role==='candidate')wrappers.push('drop:run_lib((env,t)=>run_loop($nc_prepare_env$(env,t)).drop,2)');\n    const append="
+    }
+  ],
+  "scope": "Restore exact consumed preflight-failure method bytes at original path; retain reviewed correction as immutable v2. No helper cases ran in failed v1."
+}

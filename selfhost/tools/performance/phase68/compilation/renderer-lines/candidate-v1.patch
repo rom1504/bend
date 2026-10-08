@@ -1,0 +1,19 @@
+--- a/selfhost/src/back/native/text.bend
++++ b/selfhost/src/back/native/text.bend
+@@ -86,15 +86,8 @@
+   nt_replace_go(s, key, value, "")
+ 
+ @unsafe
+-def nt_lines_go(s: String, +acc: String) -> String:
+-  match s:
+-    case SNil{}: acc
+-    case SCon{+h, t}:
+-      nt_lines_go(t, acc ++ nt_choose(String, Char.is_eq(h, '\n'), u => "\n    ", u => SCon{h, ""}))
+-
+-@unsafe
+ def nt_lines(s: String) -> String:
+-  nt_lines_go(s, "")
++  String.join(String.lines(s), "\n    ")
+ 
+ @unsafe
+ def nt_indent(s: String) -> String:

@@ -1,0 +1,84 @@
+{
+  "kind": "phase68-final-method-factory-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase67/latency/prepare-final-methods.py",
+    "sha256": "25b001467166618d840fa554dd285b7e27d28d43f1a5aacbd5ab23c7a6f15d7d"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/qualification/prepare-final-methods.py",
+    "sha256": "31c1a3736fd03eb2651f443ead51f76dfcf6c971de1f11fc19d18a8c5f44a55b"
+  },
+  "targetExecuted": false,
+  "edits": [
+    {
+      "before": "Relocate existing final-gate methods into Phase67; data only, no targets.",
+      "after": "Derive selected final-gate methods into Phase68; data only, no targets.",
+      "count": 1
+    },
+    {
+      "before": "RAW = ROOT / 'selfhost/build/phase67'\nOLD = ROOT / 'selfhost/build/phase66'",
+      "after": "RAW = ROOT / 'selfhost/build/phase68'\nOLD = ROOT / 'selfhost/build/phase67'\nHISTORICAL = ROOT / 'selfhost/build/phase66'",
+      "count": 1
+    },
+    {
+      "before": "p.add_argument('--out', type=Path, required=True)",
+      "after": "p.add_argument('--out', type=Path, required=True)\np.add_argument('--baseline-attempt', type=Path, default=OLD/'scalars-build01')\np.add_argument('--baseline-js-manifest', type=Path, default=OLD/'scalars-build01-qualification/b1-programs/manifest.json')",
+      "count": 1
+    },
+    {
+      "before": "assert attempt.is_relative_to(RAW)\nout.mkdir(parents=True)\nrows = []",
+      "after": "assert attempt.is_relative_to(RAW)\nassert attempt.exists(), 'Select an actual completed checked B1 before preparing final gates'\nselected = json.loads((attempt/'attempt.json').read_text())\nbaseline = json.loads((a.baseline_attempt/'attempt.json').read_text())\nfor record in (selected, baseline):\n    assert record['checked'] and record['config']['strictExact']\n    assert pin(record['api']['file'])['sha256'] == record['api']['sha256']\nassert pin(selected['node']['file'])['sha256'] == selected['node']['sha256']\nassert selected['node']['file'] == NODE\nsource_maps = []\nfor record in (baseline,selected):\n    sources = {}\n    for row in record['snapshot']['sources']:\n        actual = pin(row['frozen']['file'])\n        assert actual['sha256'] == row['frozen']['sha256']\n        sources[str(Path(actual['file']).relative_to(record['snapshot']['root']))] = actual\n    source_maps.append(sources)\nchanged_inputs = [dict(path=k,baseline=source_maps[0].get(k),candidate=source_maps[1].get(k))\n    for k in sorted(source_maps[0].keys() | source_maps[1].keys())\n    if source_maps[0].get(k,{}).get('sha256') != source_maps[1].get(k,{}).get('sha256')]\nparent_index = OLD/'qualification-method01/methods.json'\nparent_methods = json.loads(parent_index.read_text())\nassert parent_methods['complete'] and parent_methods['dataOnly'] and not parent_methods['targetsExecuted']\nparent_pins = {row['output']['file']: row['output'] for row in parent_methods['methods']}\n\ndef inherited(file):\n    assert pin(file) == parent_pins[str(file)]\n    return file.read_text()\n\nout.mkdir(parents=True)\nrows = []",
+      "count": 1
+    },
+    {
+      "before": "before = parent.read_text()\n    after = before.replace('selfhost/build/phase66', 'selfhost/build/phase67')\n    after = after.replace('inside Phase66', 'inside Phase67')",
+      "after": "before = inherited(parent)\n    after = before.replace('selfhost/build/phase67', 'selfhost/build/phase68')\n    after = after.replace('inside Phase67', 'inside Phase68')",
+      "count": 1
+    },
+    {
+      "before": "replacements=[dict(old='selfhost/build/phase66', new='selfhost/build/phase67', count=before.count('selfhost/build/phase66')),\n                                   dict(old='inside Phase66', new='inside Phase67', count=before.count('inside Phase66'))]",
+      "after": "replacements=[dict(old='selfhost/build/phase67', new='selfhost/build/phase68', count=before.count('selfhost/build/phase67')),\n                                   dict(old='inside Phase67', new='inside Phase68', count=before.count('inside Phase67'))]",
+      "count": 1
+    },
+    {
+      "before": "parent = TOOLS / 'phase66/bootstrap/prepare-bootstrap.py'\nbefore = parent.read_text()\nedits = [('ROOT = Path(__file__).resolve().parents[5]', 'ROOT = Path(' + repr(str(ROOT)) + ')'),\n         (\"ROOT / 'selfhost/build/phase66'\", \"ROOT / 'selfhost/build/phase67'\")]",
+      "after": "parent = OLD / 'qualification-method01/bootstrap/prepare-bootstrap.py'\nbefore = inherited(parent)\nedits = [(\"ROOT / 'selfhost/build/phase67'\", \"ROOT / 'selfhost/build/phase68'\")]",
+      "count": 1
+    },
+    {
+      "before": "kind='phase67-bootstrap-path-only-derivation'",
+      "after": "kind='phase68-bootstrap-path-only-derivation'",
+      "count": 1
+    },
+    {
+      "before": "    dict(name='checked-build', command=guarded('checked-build', ROOT/'selfhost/tools/development/workflow.mjs',\n        ['run', out/'development.json', attempt])),",
+      "after": "    dict(name='unchanged-js-closure', dataOnly=True, command=['taskset', '-c', '0', 'python3', '-B',\n        str(TOOLS/'phase68/qualification/unchanged-js.py'), '--baseline', str(a.baseline_attempt.resolve()),\n        '--candidate', str(attempt), '--out', str(qualification/'unchanged-js.json')]),",
+      "count": 1
+    },
+    {
+      "before": "str(OLD/'export-admission06/admission.json')",
+      "after": "str(HISTORICAL/'export-admission06/admission.json')",
+      "count": 1
+    },
+    {
+      "before": "str(OLD/'head-ts-inputs/catalog.json')",
+      "after": "str(HISTORICAL/'head-ts-inputs/catalog.json')",
+      "count": 1
+    },
+    {
+      "before": "kind='phase67-reused-final-methods'",
+      "after": "kind='phase68-reused-final-methods'",
+      "count": 1
+    },
+    {
+      "before": "producer=pin(__file__), attempt=str(attempt), bootstrap=str(bootstrap),",
+      "after": "producer=pin(__file__), parentMethods=pin(parent_index), selectedAttempt=pin(attempt/'attempt.json'),\n              baselineAttempt=pin(a.baseline_attempt/'attempt.json'), baselineJsManifest=pin(a.baseline_js_manifest),\n              changedInputs=changed_inputs, attempt=str(attempt), bootstrap=str(bootstrap),",
+      "count": 1
+    },
+    {
+      "before": "Only output-boundary relocation. Actual checked source/API, bootstrap, B2 setup, unsafe verdict and fixed-point checks remain unchanged.",
+      "after": "Gate methods have only output-boundary relocation; actual selected attempt and all changed snapshot inputs are explicitly recorded. Existing actual checked source/API, bootstrap, B2 setup, unsafe verdict and fixed-point checks remain unchanged.",
+      "count": 1
+    }
+  ]
+}

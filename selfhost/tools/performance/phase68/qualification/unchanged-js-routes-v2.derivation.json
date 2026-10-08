@@ -1,0 +1,54 @@
+{
+  "kind": "phase68-js-route-closure-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/qualification/unchanged-js.py",
+    "sha256": "faddc52c9f93c678d92fcf65e1f55aabc7d3b449320fd2bbe22d6fb7645ade60"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/qualification/unchanged-js-routes-v2.py",
+    "sha256": "b96bb043e723f60ab384a22c2dd82db43c277d3a0fc8e5fccd9806d5d7ae03fa"
+  },
+  "targetExecuted": false,
+  "edits": [
+    {
+      "before": "Require exact non-native executable B1 closure before reusing JS/frontend gates.",
+      "after": "Require exact actual JS/frontend driver-route closure; native roots qualify separately.",
+      "count": 1
+    },
+    {
+      "before": "PARENT = ROOT / 'selfhost/tools/performance/phase67/latency/unchanged-js.py'",
+      "after": "PARENT = ROOT / 'selfhost/tools/performance/phase68/qualification/unchanged-js.py'",
+      "count": 1
+    },
+    {
+      "before": "roots = sorted(set(before['exports']) - {'nc_compile'})\nassert len(roots) == 98 and before['exports'] == after['exports']",
+      "after": "assert before['exports'] == after['exports']\n# This exact unchanged driver has two native-only guarded arms. Their source\n# bytes and the whole driver are admitted explicitly, rather than excluding\n# functions merely because their source module or public name looks native.\nassert hashlib.sha256(driver.encode()).hexdigest() == 'e093483d5103a8e833b6ca710246b1ec3c579b7fac5060c8e42f626c5e25ec85'\nregions = [\n    (\"    if(mode==='native'&&api.nc_annotation_stops\", '    } else if(selectedEmission){',\n     '692f261d91c6a49a955d87fe1e38b8db61e8752db43c805a976c0f5cc41bbf57'),\n    (\"    if(mode==='native') {\", \"    trace('emit '+mode);\",\n     '4188e8c2020aefdc68ad83c2530d9e6ded1c6c420556ecd45acf2fe8e073b8b5')]\nroute_source, excluded_arms = driver, []\nfor begin, end, expected in regions:\n    assert driver.count(begin) == driver.count(end) == 1\n    first, last = driver.index(begin), driver.index(end, driver.index(begin))\n    arm = driver[first:last]\n    assert hashlib.sha256(arm.encode()).hexdigest() == expected\n    assert route_source.count(arm) == 1\n    route_source = route_source.replace(arm, '')\n    excluded_arms.append(dict(begin=begin, end=end, sha256=expected,\n        sourceBytes=len(arm.encode()), reason=\"Guard requires mode==='native'; JS/frontend requests cannot enter this arm.\"))\ndynamic = [line for line in route_source.splitlines() if 'api[' in line]\nassert len(dynamic) == 5 and all(\"typeof api[name]==='function'\" in line or \"typeof api[name]!=='function'\" in line for line in dynamic)\nrefs = set(re.findall(r'\\bapi\\.([A-Za-z_]\\w*)', route_source))\nall_refs = set(re.findall(r'\\bapi\\.([A-Za-z_]\\w*)', driver))\nassert refs - before['exports'].keys() == {'bend', 'mjs'}\nroots = sorted(refs & before['exports'].keys())\nassert set(frontend['roots']) <= set(roots)\nstrong_roots = sorted(set(before['exports']) - {'nc_compile'})\nstrong_left, strong_right = C.closure(before, strong_roots), C.closure(after, strong_roots)\nstrong_differences = sorted(name for name in strong_left | strong_right\n    if before['functions'].get(name,{}).get('source') != after['functions'].get(name,{}).get('source'))\nstrong_passed = strong_left == strong_right and not strong_differences",
+      "count": 1
+    },
+    {
+      "before": "kind='phase68-nonnative-executable-closure'",
+      "after": "kind='phase68-js-frontend-driver-closure'",
+      "count": 1
+    },
+    {
+      "before": "nonNativeRoots=roots, unchangedNonNativeFunctions=len(left),\n              excludedPublicRoot='nc_compile', inputs=list(inputs.values()),",
+      "after": "driverRoots=roots, unchangedDriverFunctions=len(left),\n              excludedPublicRoots=sorted(set(before['exports'])-set(roots)),\n              nativeOnlyDriverReferences=sorted((all_refs-refs)&before['exports'].keys()),\n              nativeGuardedArms=excluded_arms, dynamicDriverReferences=dynamic,\n              stronger98RootGate=dict(passed=strong_passed, changedFunctions=strong_differences,\n                  scope='Reported separately; native-only roots may change and are not transferred by this route-specific gate.'),\n              inputs=list(inputs.values()),",
+      "count": 1
+    },
+    {
+      "before": "Exact B1 runtime/public wrappers and every generated dependency of all98 non-nc_compile public roots.",
+      "after": "Exact B1 runtime/public wrappers and every generated dependency of each actual API reference on the unchanged JS/frontend driver routes; only the two exact native-guarded arms are excluded.",
+      "count": 1
+    },
+    {
+      "before": "Supports retaining finite frontend/JS semantic observations; does not transfer compiler timing, actualB2 behavior or changed native code.",
+      "after": "Supports retaining finite frontend/JS driver-route semantic observations only. Does not transfer excluded public-API controls, native-root behavior, compiler timing, actualB2 behavior or changed native code.",
+      "count": 1
+    },
+    {
+      "before": "nonNativeFunctions=len(left)",
+      "after": "driverFunctions=len(left), stronger98RootGatePassed=strong_passed",
+      "count": 1
+    }
+  ]
+}

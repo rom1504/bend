@@ -1,0 +1,70 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase67/native/raw-controls-v3.mjs",
+    "sha256": "762ab39d48eed44770cdf6d1bec33dafcc99f24609adc9e9aa97fd6e2e65fbb1",
+    "bytes": 7065
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/raw-controls-v4.mjs",
+    "sha256": "c65a2b00bb6260cb5ac007afc9156231c087d5e449329b2d4e63c1b63ac91e23",
+    "bytes": 7950
+  },
+  "edits": [
+    {
+      "before": "kind:'phase67-native-raw-controls'",
+      "after": "kind:'phase68-native-raw-controls-v4'",
+      "count": 1
+    },
+    {
+      "before": "   const marker='r0 = v_3;';assert.equal(got.source.split(marker).length,2);",
+      "after": "   const markers=['r0 = v_3;'];\n   assert.equal(got.source.split(markers[0]).length,2);\n   const worker='INLINE Term NF_FID_109_97_105_110_(Env e, bool seq, Term* nf_out) {';\n   if(got.source.includes(worker)) {\n    assert.equal(got.source.split(worker).length,2);\n    const workerHead=worker+'\\nu32 nf_poll = 0;\\nnf_again:;\\nif (err_spun(e.mem, &nf_poll)) { return 0; }';\n    assert.equal(got.source.split(workerHead).length,2);\n    assert.equal(got.source.split('#define err_spun(H, n) ((++*(n) & 4095) == 0 && err_seen(H))').length,2);\n    markers.push('*nf_out = v_3;');\n    assert.equal(got.source.split(markers[1]).length,2);\n    // The original marker is in DEVICE fallback; this is the selected host return.\n    assert(got.source.indexOf(markers[1])>got.source.indexOf(worker));\n    assert(got.source.indexOf(markers[1])<start);\n   }",
+      "count": 1
+    },
+    {
+      "before": "   diagnostic=diagnostic.replace(marker,'fputs(\"P67_BODY_REACHED\\\\n\", stderr);\\n'+marker).replace(seen,mock);",
+      "after": "   for(const marker of markers) diagnostic=diagnostic.replace(marker,'fputs(\"P67_BODY_REACHED\\\\n\", stderr);\\n'+marker);\n   diagnostic=diagnostic.replace(seen,mock);",
+      "count": 1
+    },
+    {
+      "before": "{marker,insert:'P67_BODY_REACHED on stderr before body return'}",
+      "after": "{markers,insert:'P67_BODY_REACHED before both exact scheduler and selected NF host return sites; one compiled path executes'}",
+      "count": 1
+    }
+  ],
+  "preparer": {
+    "parent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/prepare-raw.py",
+      "sha256": "1b7037e6c751d8e9304b793c21421992411f234f7efe7b3b2fd6e07d09988734",
+      "bytes": 3580
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/prepare-raw-v2.py",
+      "sha256": "d4d6e08274797eb6ce1ef60ca929656cdaa1b995417ac9ce5f16677fc2b68176",
+      "bytes": 3580
+    },
+    "edits": [
+      {
+        "before": "ROOT / 'selfhost/tools/performance/phase67/native/raw-controls-v3.mjs'",
+        "after": "ROOT / 'selfhost/tools/performance/phase68/controls/raw-controls-v4.mjs'",
+        "count": 1
+      },
+      {
+        "before": "Unchanged Phase67 raw diagnostic, primitive override/partial application, and mocked shared-error controls",
+        "after": "Phase67 raw diagnostics and original shared-error oracle with exact selected-host return instrumentation",
+        "count": 1
+      }
+    ]
+  },
+  "failedReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/worker-raw07/execution/report.json",
+    "sha256": "8243a191365e8650d8393fe59f99136ef807888e2ca3d0b79f2d632565fcfd27",
+    "bytes": 8358
+  },
+  "diagnosticSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/worker-raw07/execution/atom-chain-candidate-cancel.c",
+    "sha256": "ed1c5e7b2740eaab8350b916669807144126d737c65eb54ccd1d0056201fd83f",
+    "bytes": 85433
+  },
+  "targetExecuted": false,
+  "scope": "Instrument both selected NF host return and retained DEVICE scheduler return. Original semantic oracle, compile-error cases, source programs, compiler/Clang invocations and one/four-thread runs unchanged. Exact NF polling preflight proves zero-initialized counter cannot observe the mocked flag on first entry."
+}

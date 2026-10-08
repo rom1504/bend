@@ -1,0 +1,24 @@
+{
+  "kind": "phase68-js-route-qualification-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/qualification/prepare-final-methods.py",
+    "sha256": "31c1a3736fd03eb2651f443ead51f76dfcf6c971de1f11fc19d18a8c5f44a55b"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/qualification/prepare-final-methods-v2.py",
+    "sha256": "8e6c0cc5d247f7c8265f8b684af0c60896236e4594e162c3a1e8980645d3e99f"
+  },
+  "targetExecuted": false,
+  "edits": [
+    {
+      "before": "str(TOOLS/'phase68/qualification/unchanged-js.py')",
+      "after": "str(TOOLS/'phase68/qualification/unchanged-js-routes-v2.py')",
+      "count": 1
+    },
+    {
+      "before": "producer=pin(__file__), parentMethods=",
+      "after": "producer=pin(__file__), closureMethod=pin(TOOLS/'phase68/qualification/unchanged-js-routes-v2.py'), parentMethods=",
+      "count": 1
+    }
+  ]
+}

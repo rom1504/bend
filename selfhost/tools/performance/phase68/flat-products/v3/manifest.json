@@ -1,0 +1,27 @@
+{
+  "kind": "phase68-flat-products-v3-bounded-alias-source-candidate",
+  "experiment": "P68-007",
+  "executed": false,
+  "reason": "Actual products10 source audit and signature diagnostic found Pair alias applications rejected by v2; nullary ADT outer parser quantity also differed.",
+  "patchSha256": "fbb27d6e2cfcac598970a1d3632be9d02a573d0ab99e67f689adf79b50608e6c",
+  "files": [
+    {
+      "path": "selfhost/src/back/native/product-layout.bend",
+      "baseSha256": "efe70c3e7221fa31bf51531a654df0123839273b76cb79f333d92a98932dac42",
+      "candidateSha256": "cb6cbae52b41128538c3f422be71d7ccc1f863930dc118508cbdcb8dfe7904c4",
+      "baseLines": 99,
+      "candidateLines": 135,
+      "lineDelta": 36
+    }
+  ],
+  "sourceChecks": {
+    "lexicalDelimiters": "pass",
+    "noGlobalNormalization": "pass",
+    "whitespace": "pass",
+    "liveBase": "pass"
+  },
+  "reviews": {
+    "native": "source PASS for helper cb6cbae52b41128538c3f422be71d7ccc1f863930dc118508cbdcb8dfe7904c4; no checked execution in this lane",
+    "correctness": "pending"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "kind": "phase68-parameter-only-pair-fixture-successors",
+  "targetExecuted": false,
+  "failedObservation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/prefix-controls04/execution/selected/paired.json",
+    "sha256": "eaaf40ad2b474a40d541ceb098d4902ad6d82c425682176c85b53869ec916bdd",
+    "bytes": 16858
+  },
+  "independentSyntaxBasis": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/array_swap_header.bend",
+      "sha256": "e16438d4138cbf1700473d0f1a1805194787c107b39af819c0dbdeed752d7f87",
+      "bytes": 969
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+      "bytes": 75064
+    }
+  ],
+  "repairs": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/callback-array-owner.bend",
+        "sha256": "ef7e301d6a9003802eaeaf4f835b5c6855d3996d6ebf64aa19f66ca7acebd815",
+        "bytes": 545
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/callback-array-owner-v2.bend",
+        "sha256": "ebc91e8911f027c3f5cd2b910cc57778c95d3339135a05824bf114dade9a1ed5",
+        "bytes": 632
+      },
+      "goldenLines": [
+        "29"
+      ],
+      "change": "Move each tuple destructure to a function parameter; calculated tuple expressions are passed to helper functions. Expected arithmetic and ownership outcome unchanged."
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/value-prefix/prefix-scratch.bend",
+        "sha256": "53e642c88ebb56f74de488a52ffcbb6004029ef35e8c937c974eb485b95be7b7",
+        "bytes": 591
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/prefix-scratch-v2.bend",
+        "sha256": "8d69617c49df1f08f89480151ccc0b51fe462c3971edd9e098c211426914b37f",
+        "bytes": 1365
+      },
+      "goldenLines": [
+        "7071122"
+      ],
+      "change": "Move each tuple destructure to a function parameter; calculated tuple expressions are passed to helper functions. Expected arithmetic and ownership outcome unchanged."
+    }
+  ]
+}

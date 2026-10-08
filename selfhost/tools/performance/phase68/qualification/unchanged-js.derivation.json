@@ -1,0 +1,89 @@
+{
+  "kind": "phase68-nonnative-closure-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase67/latency/unchanged-js.py",
+    "sha256": "da252b55342e17870fa67e929d896a41d8a1b1e1e33c2ad1c4b3c5b0ae869558"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/qualification/unchanged-js.py",
+    "sha256": "faddc52c9f93c678d92fcf65e1f55aabc7d3b449320fd2bbe22d6fb7645ade60"
+  },
+  "targetExecuted": false,
+  "edits": [
+    {
+      "before": "import json\n",
+      "after": "import json\nimport re\nimport sys\n\nsys.dont_write_bytecode = True\n",
+      "count": 1
+    },
+    {
+      "before": "RAW = ROOT / 'selfhost/build/phase67'",
+      "after": "RAW = ROOT / 'selfhost/build/phase68'\nPARENT = ROOT / 'selfhost/tools/performance/phase67/latency/unchanged-js.py'",
+      "count": 1
+    },
+    {
+      "before": "assert old_sources.keys() == new_sources.keys()\nchanged = [key for key in old_sources if old_sources[key]['sha256'] != new_sources[key]['sha256']]\nassert changed and set(changed) <= {'src/back/native/bridge.bend', 'src/back/native/direct.bend'}, changed",
+      "after": "# Only assembler module membership may change in compiler configuration. All\n# host/runtime/provider and non-module source artifacts remain byte-identical.\nconfigs = [read(sources['src/compiler.json']) for sources in (old_sources, new_sources)]\nassert {k:v for k,v in configs[0].items() if k != 'modules'} == {k:v for k,v in configs[1].items() if k != 'modules'}\nmodules = [set(config['modules']) for config in configs]\nassert all(len(config['modules']) == len(mods) for config,mods in zip(configs,modules))\nmodule_paths = modules[0] | modules[1]\nassert all(p.startswith('src/') and p.endswith('.bend') for p in module_paths)\nassert all(mods <= sources.keys() for mods,sources in zip(modules,(old_sources,new_sources)))\nchanged = sorted(k for k in old_sources.keys() | new_sources.keys()\n    if old_sources.get(k,{}).get('sha256') != new_sources.get(k,{}).get('sha256'))\nassert changed and set(changed) <= module_paths | {'src/compiler.json'}, changed\n\n\ndef declarations(sources, config):\n    result = {}\n    for module in config['modules']:\n        lines = Path(sources[module]['file']).read_text().splitlines(keepends=True)\n        index = 0\n        while index < len(lines):\n            line = lines[index]\n            if not line.strip() or line.startswith('#'):\n                index += 1\n                continue\n            if line.startswith('import '):\n                # The assembled compiler admits only the historical Base import.\n                assert line.strip() == 'import Base', (module, line)\n                index += 1\n                continue\n            start = index\n            if line.strip() == '@unsafe':\n                index += 1\n                line = lines[index]\n            match = re.match(r'^(def|law|type) ([^\\s(<:]+)', line)\n            assert match, (module, index + 1, line)\n            key = match[1], match[2]\n            assert key not in result, (module, key)\n            index += 1\n            # Column-zero ')' is a multiline signature continuation. Top-level\n            # annotations, imports, declarations and comments delimit blocks.\n            while index < len(lines) and not re.match(r'^(?:@|#|(?:def|law|type|import)\\s)', lines[index]):\n                assert not lines[index].strip() or lines[index][0].isspace() or lines[index].startswith(')'), (module, index + 1)\n                index += 1\n            end = index\n            while end > start and not lines[end-1].strip():\n                end -= 1\n            result[key] = dict(module=module, source=''.join(lines[start:end]))\n    return result\n\n\nold_declarations, new_declarations = [declarations(sources,config)\n    for sources,config in zip((old_sources,new_sources),configs)]\nmoved = []\nfor key in sorted(old_declarations.keys() & new_declarations.keys()):\n    before_declaration, after_declaration = old_declarations[key], new_declarations[key]\n    if before_declaration['module'] != after_declaration['module']:\n        assert before_declaration['source'] == after_declaration['source'], ('Changed moved declaration', key)\n        moved.append(dict(kind=key[0], name=key[1], before=before_declaration['module'],\n            after=after_declaration['module'], sha256=hashlib.sha256(before_declaration['source'].encode()).hexdigest(),\n            exactSignatureBodyAndAnnotation=True))",
+      "count": 1
+    },
+    {
+      "before": "'phase67_js_closure'",
+      "after": "'phase68_js_closure'",
+      "count": 1
+    },
+    {
+      "before": "pin(scanner)\npin(__file__)",
+      "after": "changed_generated = sorted(name for name in before['functions'].keys() | after['functions'].keys()\n    if before['functions'].get(name,{}).get('source') != after['functions'].get(name,{}).get('source'))\nassert not set(changed_generated) & left\npin(scanner)\nparent = pin(PARENT)\npin(__file__)",
+      "count": 1
+    },
+    {
+      "before": "kind='phase67-nonnative-executable-closure'",
+      "after": "kind='phase68-nonnative-executable-closure'",
+      "count": 1
+    },
+    {
+      "before": "targetExecuted=False, changedSourceFiles=changed, baseline=",
+      "after": "targetExecuted=False, predecessorMethod=parent, changedSourceFiles=changed,\n              changedInputs=[dict(path=k, baseline=old_sources.get(k), candidate=new_sources.get(k)) for k in changed],\n              movedDeclarations=moved, changedUnreachableFunctions=changed_generated,\n              moduleInventory=dict(baseline=configs[0]['modules'], candidate=configs[1]['modules']), baseline=",
+      "count": 1
+    },
+    {
+      "before": "Snapshot host, Base, runtime/providers and all non-native source files are unchanged.",
+      "after": "Snapshot host, Base, runtime/providers and all non-module source files are unchanged. Every moved source declaration preserves its exact signature, body and annotation; compiler configuration differs only in module membership. Changed generated functions are excluded by the complete actual reachable closure, without a native-module allowlist.",
+      "count": 1
+    },
+    {
+      "before": "assert changed and set(changed) <= module_paths | {'src/compiler.json'}, changed",
+      "after": "native_manifest = 'src/back/native/manifest.txt'\nassert changed and set(changed) <= module_paths | {'src/compiler.json', native_manifest}, changed\nnative_manifests = []\nfor sources,mods in zip((old_sources,new_sources),modules):\n    rows = Path(sources[native_manifest]['file']).read_text().splitlines()\n    assert rows and len(rows) == len(set(rows)) and all(row and row == row.strip() for row in rows)\n    snapshot_root = Path(sources['src/compiler.json']['file']).parents[1]\n    resolved = [str((snapshot_root/'src/back/native'/row).resolve().relative_to(snapshot_root)) for row in rows]\n    assert set(resolved) <= mods, 'Native fixture manifest must reference exact assembler modules'\n    native_manifests.append(resolved)",
+      "count": 1
+    },
+    {
+      "before": "moduleInventory=dict(baseline=configs[0]['modules'], candidate=configs[1]['modules']), baseline=",
+      "after": "moduleInventory=dict(baseline=configs[0]['modules'], candidate=configs[1]['modules']),\n              nativeFixtureModules=dict(baseline=native_manifests[0], candidate=native_manifests[1]), baseline=",
+      "count": 1
+    },
+    {
+      "before": "all non-module source files are unchanged",
+      "after": "all non-module source files except the structurally checked native fixture module list are unchanged",
+      "count": 1
+    },
+    {
+      "before": "annotations, imports, declarations and comments delimit blocks.",
+      "after": "annotations, imports and declarations delimit blocks. Internal comments\n            # remain exact; only trailing inter-declaration comments are excluded.",
+      "count": 1
+    },
+    {
+      "before": "r'^(?:@|#|(?:def|law|type|import)\\s)'",
+      "after": "r'^(?:@|(?:def|law|type|import)\\s)'",
+      "count": 1
+    },
+    {
+      "before": "or lines[index].startswith(')'),",
+      "after": "or lines[index].startswith((')', '#')),",
+      "count": 1
+    },
+    {
+      "before": "while end > start and not lines[end-1].strip():",
+      "after": "while end > start and (not lines[end-1].strip() or lines[end-1].startswith('#')):",
+      "count": 1
+    }
+  ]
+}

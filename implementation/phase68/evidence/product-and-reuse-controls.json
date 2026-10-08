@@ -1,0 +1,2921 @@
+{
+  "kind": "phase68-products10-reuse11-checkpoint",
+  "version": 1,
+  "complete": true,
+  "dataOnly": true,
+  "targetExecutedByCollector": false,
+  "releasePromotion": false,
+  "scope": "Source/report inspection only. Finite native controls and exact-output reuse; product activation not established. Installed Phase67 is a separate release. Raw failed attempts preserved.",
+  "products10": {
+    "apiSha256": "c0f4eace0bd934219ac699f03b113f5ea8abbd02b94203bb8ca21b9fe21d1801",
+    "strictPass": true,
+    "pairedNativeCases": [
+      {
+        "id": "phase68/aggregate-tail-swap.bend",
+        "output": "1007006",
+        "exactAgreement": true
+      },
+      {
+        "id": "phase68/callback-array-owner-v2.bend",
+        "output": "29",
+        "exactAgreement": true
+      },
+      {
+        "id": "phase68/flat-product-array-v1.bend",
+        "output": "2917",
+        "exactAgreement": true
+      },
+      {
+        "id": "phase68/flat-product-record-v1.bend",
+        "output": "1131",
+        "exactAgreement": true
+      },
+      {
+        "id": "phase68/matcher-shared-residual-v3.bend",
+        "output": "\"keepkeepkeepkeep\"",
+        "exactAgreement": true
+      },
+      {
+        "id": "phase68/prefix-scratch-v2.bend",
+        "output": "7071122",
+        "exactAgreement": true
+      }
+    ],
+    "branchDrop": [
+      {
+        "id": "phase68/flat-product-branch-drop-v1.bend",
+        "output": "1831",
+        "exactAgreement": true
+      }
+    ],
+    "forbiddenPrivateEntry": {
+      "name": "$product.drop_product_branch68",
+      "symbol": "NF_FID_36_112_114_111_100_117_99_116_46_100_114_111_112_95_112_114_111_100_117_99_116_95_98_114_97_110_99_104_54_56_"
+    },
+    "demandDecisions": 18,
+    "flowAudits": [
+      {
+        "case": "numeric",
+        "ordinaryWorkers": 14,
+        "reachableProductWorkers": 0,
+        "definedProductWorkers": 0,
+        "source": {
+          "file": "selfhost/build/phase68/native-products10/numeric-selfhost/program.c",
+          "sha256": "10f7755731e11ca7d473a67344793b66b6439e8f42b52533d8e60f460efbdbd6",
+          "bytes": 981207
+        }
+      },
+      {
+        "case": "array",
+        "ordinaryWorkers": 17,
+        "reachableProductWorkers": 0,
+        "definedProductWorkers": 0,
+        "source": {
+          "file": "selfhost/build/phase68/native-products10/array-selfhost/program.c",
+          "sha256": "9ccca54208121f14ff10e8145d2569f56e1941ebcd26f7e44182a5aa7a866cde",
+          "bytes": 1001443
+        }
+      },
+      {
+        "case": "lexer",
+        "ordinaryWorkers": 26,
+        "reachableProductWorkers": 0,
+        "definedProductWorkers": 0,
+        "source": {
+          "file": "selfhost/build/phase68/native-products10/lexer-selfhost/program.c",
+          "sha256": "fa4e29032e0f03316ba021219a88ac1b8e3916e8132f00dc5a2c95615a67dca2",
+          "bytes": 1275404
+        }
+      }
+    ],
+    "aliasObservation": {
+      "callee": "../phase37/fixtures-historical/local-fold:fold.loop",
+      "signature": "Absent",
+      "rejectedHead": "Pair",
+      "interpretation": "Conservative layout query does not expose this applied Pair alias; this explains an activation barrier, not a semantic counterexample."
+    },
+    "arrayRuntimeScreenMs": {
+      "working09": [
+        116,
+        117
+      ],
+      "products10": [
+        125,
+        124
+      ]
+    }
+  },
+  "rawAttempts": [
+    {
+      "directory": "products-raw10",
+      "controller": "v5",
+      "complete": false,
+      "reason": "Duplicate INLINE/NF_INLINE substring match; five partial report rows."
+    },
+    {
+      "directory": "products-raw10-v2",
+      "controller": "v6",
+      "complete": false,
+      "reason": "JavaScript syntax error before target controller initialized; no execution report."
+    },
+    {
+      "directory": "products-raw10-v3",
+      "controller": "v7",
+      "complete": true,
+      "passedRows": 12,
+      "baselineApiSha256": "8894d8616b5543d42c9ef6317015bb979d620a537bbd5aed9e82f57dfe5a27d5",
+      "candidateApiSha256": "c0f4eace0bd934219ac699f03b113f5ea8abbd02b94203bb8ca21b9fe21d1801",
+      "scope": "Two paired compile errors, eight native rows at threads1/4 and two mocked CPU error-checkpoint rows."
+    }
+  ],
+  "reuse11": {
+    "apiSha256": "3612aaaecc320183758e2236ff3ffff030ca00311e9915c70f0603541850d738",
+    "strictPass": true,
+    "loweringPairs": 3520,
+    "productMetadataPairs": 4,
+    "collectorCalls": {
+      "baseline": {
+        "body": 7360,
+        "value": 4640,
+        "total": 15544
+      },
+      "candidate": {
+        "body": 3880,
+        "value": 2640,
+        "total": 9350
+      }
+    },
+    "helperWallSeconds": 2.533742411993444,
+    "completeCEqualCases": [
+      "numeric",
+      "array",
+      "lexer"
+    ],
+    "sourceLineDelta": 6,
+    "newFunctions": 0,
+    "newTypes": 0,
+    "scope": "No genuine B2, broad conformance or balanced performance claim."
+  },
+  "inputs": [
+    {
+      "file": "selfhost/build/phase68/products-build10/validation-001/report.json",
+      "sha256": "b2e4fdd6d58bcedf84189bbb783d8f6d81f12f5de366e00a76b6c97a1cdf9173",
+      "bytes": 8972
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/attempt.json",
+      "sha256": "514e5c0f1809213134720cb3f35d2faebcc1dd1246615dd777fd91c24a647307",
+      "bytes": 306207
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/equality/api.mjs",
+      "sha256": "c0f4eace0bd934219ac699f03b113f5ea8abbd02b94203bb8ca21b9fe21d1801",
+      "bytes": 2063952
+    },
+    {
+      "file": "selfhost/build/phase68/products-controls10/execution/report.json",
+      "sha256": "8d0e061e755b8fac685bf4640831aade2b224c35b3129ecbc83ef8fe7e31bb55",
+      "bytes": 8934
+    },
+    {
+      "file": "selfhost/build/phase68/products-controls10/execution/selected/paired.json",
+      "sha256": "4630f736b46f888e306c9a331cec1f6dfd4e7d42bc4183e616b588f65c0ecef9",
+      "bytes": 12561
+    },
+    {
+      "file": "selfhost/build/phase68/product-branch-drop10/execution/report.json",
+      "sha256": "269253564652615059c846e1d238aca42aa51e4212d069d736d7e66364386467",
+      "bytes": 8956
+    },
+    {
+      "file": "selfhost/build/phase68/product-branch-drop10/execution/selected/paired.json",
+      "sha256": "de548dd5f9082f0613d07406ff382301e8374dcb334631b3580ec70ec66f948b",
+      "bytes": 7780
+    },
+    {
+      "file": "selfhost/build/phase68/product-branch-drop10/admission.json",
+      "sha256": "eef4bc7332d00b9e0c52c793e3418d614108bfe3b5fd823da44a9b8092593c47",
+      "bytes": 124700
+    },
+    {
+      "file": "selfhost/build/phase68/product-branch-drop10/plan.json",
+      "sha256": "74b7ae3beb00db0f9f37151d98bace2652e35e0bef6713866730c01866991fae",
+      "bytes": 124465
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/controls/integration-v3/audit-branch-drop.py",
+      "sha256": "2dc373b79c7c0b370219b0f76ac9d3ed01674c0039790650db864d26db8c9a03",
+      "bytes": 4928
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/controls/integration-v3/prepare.py",
+      "sha256": "99ac7b50a5b3bc20aef715e9d306087311f025fb673a59b3b15d53468feea53b",
+      "bytes": 6959
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/api.mjs",
+      "sha256": "23bfd7f92ae8faae3f03dbee009154343efae775f396c20e428d045fb1cb24a3",
+      "bytes": 2044556
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+      "bytes": 75064
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime.mjs",
+      "sha256": "913b6a850c60377dbb13ef98db2811b6c8383ee9fa6a6fc16fcad9c68f8afc54",
+      "bytes": 61250
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/common/arity.bend",
+      "sha256": "2a51448a89e6ab31e7791f47c93bb9303f0f55c6b16016ddeecf09c57971580e",
+      "bytes": 3219
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/common/literals.bend",
+      "sha256": "73b871898b57ccf4a76bac726aa68fb98db27938be43e8da6e52e155c9dde9de",
+      "bytes": 1639
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/common/native-facts.bend",
+      "sha256": "b384c95b2e672192cfde8f129330c8e87285864a73c6a644399997402add54b2",
+      "bytes": 691
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/common/queries.bend",
+      "sha256": "e62d1b368c8c3b4a69eb0eedca263e3ac4ac3059746c257039e16999993038a8",
+      "bytes": 6045
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/array-effect-guards.bend",
+      "sha256": "c024d8969c275d66d00a8483b0e7d35e882e5af50d5d14bc985fadd9870c7580",
+      "bytes": 583
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/array-effects.bend",
+      "sha256": "e74844cc241cc3185363ccea6c477a3fcd6c58012a59244aaad805c6c1b41abd",
+      "bytes": 7989
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/array-literals.bend",
+      "sha256": "b687c9f66939c6072ed94cefdf5ef449b9ecdfc241446146fb727e91d4c7b91c",
+      "bytes": 10203
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/array-result.bend",
+      "sha256": "1eb531ca87139383c976699d43166b1aa736d2e8cb83a87ea177ce55c7bb3582",
+      "bytes": 4088
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/array-view.bend",
+      "sha256": "f5d0e58c301604bb496847fe0e114b06e9c8b455b55ef47a7636a79f91f495a0",
+      "bytes": 14430
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/benchmark-build-parser.mjs",
+      "sha256": "8c4c285c66e8f92163b9b26d2d116d64bfa3238540f2cf8ddddd24d06e7511bf",
+      "bytes": 1624
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/benchmark-parser.mjs",
+      "sha256": "f53eb33edebb061e4fee9740c47c796bd217066b1adec2410aba9636b4cdbccb",
+      "bytes": 2190
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/choice.bend",
+      "sha256": "8f179693bd9ace5df1ada65fe10a08c9f2a47ad4c0d0c86d1f85a296596eca88",
+      "bytes": 1998
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/calls.bend",
+      "sha256": "d0a76d45d4cc1da4e586f64a264c473ec4b363303d2d11b19bdcb6cbc2b77e26",
+      "bytes": 23328
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/choices.bend",
+      "sha256": "8611b61731cb29e645b865c1d47c3d24a45d819fa523e4cb7874a39c2688105b",
+      "bytes": 5538
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/constructors.bend",
+      "sha256": "4e61313181c3c80315247106dacd15e381ca3a39f33d540954bc010fca5d2aaa",
+      "bytes": 15139
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/core.bend",
+      "sha256": "64843b27c7a30738a7b189e51ad5a538f2dd4da6103f26becbf7d5ceb60e76f7",
+      "bytes": 21290
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/host-native.bend",
+      "sha256": "79008fbcbf15bab398e5f2a6bd63fa0b8fe444d62e2cf5d89f8c7469f81d5303",
+      "bytes": 3088
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/host.bend",
+      "sha256": "b6d27efec9c7d4099d251c5bbdf3c3ad081d1c171750d5eccba6ff9d985976f3",
+      "bytes": 19466
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/model.bend",
+      "sha256": "6b7be0df3c366f05b081d08affbaa17458ab1129a87f99321b3bb416b139b10f",
+      "bytes": 4583
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/ordered-values.bend",
+      "sha256": "0ad7b612ecd417fc97149362e25ae5fece8e8e1c8464a42bf5911ed29a42a524",
+      "bytes": 8324
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/ordered.bend",
+      "sha256": "27377dca71ed875bee03e081d8aea531d97879983375d47e6704e58a1cc0d5be",
+      "bytes": 11902
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/pattern.bend",
+      "sha256": "3ea403a532940402ce77bf4a6cf2508764dc3cf682d27f8f8e7d72531b3192a5",
+      "bytes": 17589
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/primitive.bend",
+      "sha256": "fbf129b0ffab37d2d93e0dc7847eb2c3b74bf368aa996af5b7fe92a9e949552e",
+      "bytes": 22828
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/program.bend",
+      "sha256": "5927929b1244982e15fa5fae8636b4ef68ffd6febc524e879aba9cbb04f83c12",
+      "bytes": 9333
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/reach.bend",
+      "sha256": "2a36a775a13169845f230555fe4d1373174d7e87e31600457c1ca574fa3ca538",
+      "bytes": 10547
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/direct/transport.bend",
+      "sha256": "979d8abc08096fdbf3fa97388f1e1e3f1b2e8a532cb5950789a5fadf7f231bc6",
+      "bytes": 9457
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/emit.bend",
+      "sha256": "5909e51aa48e0bd5c03be773931549906c52492c9274aa77b4db3efbdac9b8fd",
+      "bytes": 27770
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/experiments/allocation-performance.json",
+      "sha256": "74bc44755908cfcfec076a5aef4a007fe9d840095e10e4345fc0fe3cb7d71374",
+      "bytes": 4868
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/experiments/constructor-provenance.json",
+      "sha256": "247396a86c58b5c58305896f7e4be9122d930fdca8bd6aaf0b927da8a99eff11",
+      "bytes": 4116
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/experiments/deep-closures-report.json",
+      "sha256": "2e2db323f64ab6a31ad36f2c1b57019ebb4557d173b1e60f07804080f33401a8",
+      "bytes": 1272
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/experiments/deep-closures.patch",
+      "sha256": "1824a23a67d4114e79bb7c4074983a94cff8a46ca7c21d8415fceec0f90811ba",
+      "bytes": 7733
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/experiments/full-js-summary.json",
+      "sha256": "be70707873221a8b40531d9da4aeed354210ef10e09a5eab7b39c8684f1d3ba7",
+      "bytes": 815
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/experiments/leading-lambda-cache.patch",
+      "sha256": "225af951d9f5d479c23f5a27fe9e085450ada7930b7211cf468ad8f299de3679",
+      "bytes": 1485
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/experiments/lexical-benchmark.json",
+      "sha256": "662459ab0252971ec8f639bf12bd10e615132dc9a81709f3c470efd24a28f377",
+      "bytes": 1522
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/experiments/lexical.patch",
+      "sha256": "e8f9dc190a8e413dcbea167e7b85d3bc318e0e263e9c384df0cc31bc0a5af6b5",
+      "bytes": 9204
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/experiments/README.md",
+      "sha256": "23d422e1031753179859b172741acb2a3b3b34ae03b5cccb04a705b9f0ed3575",
+      "bytes": 1362
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/experiments/runtime-fast.patch",
+      "sha256": "c376c9b9cd54c03e375382a0385c60ff03ce57d6aef849c9b6b707708972b9cf",
+      "bytes": 1753
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/experiments/runtime-hosts.json",
+      "sha256": "7b0b718b42ee54ac20d152fd5f54da09a46d76850073a46236180a824525458b",
+      "bytes": 4640
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/finite.bend",
+      "sha256": "27d9986f2e7f0cf80742c9670e31a40fc2869c366d11283c2378dac42a241e98",
+      "bytes": 20390
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/fold.bend",
+      "sha256": "d714084b17562a0bb8902be412aa1e3c9887e341217e3e057ed79d51cc794a1b",
+      "bytes": 17763
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/foreign.bend",
+      "sha256": "fed2f2c55c21801d54b0c62b1641f5948b8b28e7f49e47ae4141043a8aba6273",
+      "bytes": 5875
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/constants.bend",
+      "sha256": "7bac0373e5edb9e3020f215d03b9603e871a3116ef7819793cf49baf5f04fecf",
+      "bytes": 1769
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/control.bend",
+      "sha256": "a93ab4254b50f1772f04540a3c07c29124ec86c8eb79e3cd616c6f4f10ad7bba",
+      "bytes": 1395
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/emit.bend",
+      "sha256": "94c31a188a6faa98f447374c63273a64dffe8af7dc95bd854ea520c410157008",
+      "bytes": 3943
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/facts.bend",
+      "sha256": "f42d5b954c8103e736719e0aad7a1b18b1af394fb392cab6163d13c369685495",
+      "bytes": 3166
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/lower.bend",
+      "sha256": "5dbace8b0dfc734eb35b6d2220c211466ba808864ae21cf5bd330f514278f09f",
+      "bytes": 9282
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/model.bend",
+      "sha256": "f4692e678d3fe6ad623263f7ef0992cb806991d33135f02199641c4d2ed04d66",
+      "bytes": 3068
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/native-values.bend",
+      "sha256": "9fb4835dddffb59aec3cb0ed4ced58867182abcb5b88fa675f2d07f4c4e38372",
+      "bytes": 1034
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/projection.bend",
+      "sha256": "786a74f636c1ad4d54b8c71911bc78c8c52cf4d2529f8fe23e4a05628fccafbd",
+      "bytes": 2459
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/simplify.bend",
+      "sha256": "bc8942bf74f5d2fc540f9016287bc2f48ad3c3b615bffbca723ccd941d10c6a7",
+      "bytes": 3482
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/statement.bend",
+      "sha256": "4f8f8f2a081871e57c101fc17bbc1a7892aa74cde85e70c9f7026e4662703f7b",
+      "bytes": 1723
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/test.mjs",
+      "sha256": "43a585971b7459051f88a1fa8418e258bd04a7d9f3762fb104384a506e17afec",
+      "bytes": 14814
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/worker-emit.bend",
+      "sha256": "6d4d2de819c61037db8b2a52182136aa2df7de3ab5c9bc307cf5fb952f1c517b",
+      "bytes": 21035
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/worker-graph.bend",
+      "sha256": "38499e61e5d8f4c13bf9d06f2fadd56cd2b8f1319e311117822e24c409f84ce3",
+      "bytes": 6721
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/worker-lower.bend",
+      "sha256": "d6c0d221f5d436a9e7a17227bb6deac0e264d8e859df7acb32e4b825ef6e7a9d",
+      "bytes": 12118
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/worker-model.bend",
+      "sha256": "e6ce61741d94f3d3e2e07072644350d5365a7a85f7ce33f64eeec22281257ee1",
+      "bytes": 2428
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/worker-nat.bend",
+      "sha256": "8c44dd26512b96dcf6416ffbe33e2646c1db7cae79e1b57db33d4ce43a952936",
+      "bytes": 6434
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/ir/worker-simplify.bend",
+      "sha256": "67c3f7a0e1a4d2f3702cd5565320b3762d7c56f50ec6d09aff3399ea0050906a",
+      "bytes": 1458
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/jpure.bend",
+      "sha256": "b2dff40d2dd7f11f6c69641a8117f9c06ceb03fa02d86dfd136c39d33ed0f782",
+      "bytes": 86642
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/literals.bend",
+      "sha256": "60dc5022af6c009c234f21178ec84cc818370eecbb9ba3e29f47fe2c1a9f593b",
+      "bytes": 4290
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/local.bend",
+      "sha256": "388c8d90a67817fdd02eed50ae96767f72bbbdcca004d687413a9ece1e41e19b",
+      "bytes": 6603
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/primitive.bend",
+      "sha256": "8423b802b28b031b5aceb7e96056fa4b67dafe18635450730bfa93c3926954b9",
+      "bytes": 6636
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/private-float.bend",
+      "sha256": "09c796b417c26169655219a57f3328ef2c78abeb4a75cdeb1a31c0fea47a14f4",
+      "bytes": 1084
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/producer.bend",
+      "sha256": "87b0fb778444018aaabeabb03214be1a9c1885b472407bf54cbd1705cd11fd23",
+      "bytes": 17879
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/projection.bend",
+      "sha256": "8ab432623d6ad4cbecfc10c506b54c755a0dc6e308511bbc9486b2ea3dc4bdc7",
+      "bytes": 2831
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/README.md",
+      "sha256": "4dd613b9088aa318af5f9447e1d1d2620625ad3689ac6443bc2684846894f9ea",
+      "bytes": 13054
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/region.bend",
+      "sha256": "bc129162b65a4cacb85d0b43d2300a01e389413a03520a7159108507b3db990f",
+      "bytes": 76508
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/shared-text.bend",
+      "sha256": "a7cdf64830b06b56df426e5b6420aaae885f1dc35cee469a7e3015e69e710434",
+      "bytes": 1693
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/survey.mjs",
+      "sha256": "3a428111c0cd236a1382103e5f0e7cc9eb5d1a28f8a75cd74b2c1cb2b3156a24",
+      "bytes": 2193
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/test-arm.mjs",
+      "sha256": "6fd15b932738169fee1c357052cf4d294f45f64ee48693065a98206253072077",
+      "bytes": 20201
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/test-choice.mjs",
+      "sha256": "a678492dfd2a24b684470d0a3f05518951a6c4287dbe6787506a96056fa0cacd",
+      "bytes": 4148
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/test-foreign.mjs",
+      "sha256": "9eef0426b565d4b827d488e9e2f48e39a1e46fca4bf999e472f55327977f65cc",
+      "bytes": 4531
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/test-global-initializers.mjs",
+      "sha256": "9c7609e7ef63c1eae585786252e4057338cae57e6439bb58fa0dd90e23c07d25",
+      "bytes": 3337
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/test-layout.mjs",
+      "sha256": "da8581e621afa20a5562686646236d0b1d82afcf2462661fd01af163e79f7067",
+      "bytes": 2976
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/test-projection.mjs",
+      "sha256": "40a3b4fb806dccb1b8a367eadad9f5cdae99dca0bb55bd391f4c4aa32c7d6400",
+      "bytes": 3542
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/test-provenance.mjs",
+      "sha256": "086e5b83237e3f9081d94b99a3826dae142518fc28ad0877d76e25a2700bf3f7",
+      "bytes": 1668
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/test-string-eq.mjs",
+      "sha256": "e3300bb78770907b2aeba25bc6f04405d772a0897be658e8a0d9a4b068623839",
+      "bytes": 1766
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/test-string-primitives.mjs",
+      "sha256": "1e3dd2f63233456f68f8754299b5a57ce4327923e5eb0a7da8306a6d40df49ce",
+      "bytes": 2721
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/test-u32.mjs",
+      "sha256": "b3f944ff0838538dcd9e64a41d49a83b19203454888abfbce7f809731555c046",
+      "bytes": 9114
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/test-validation.mjs",
+      "sha256": "d6a99b64a880c8f329759878bf23d47df9fcd0071be77605ee6a6f7ecaa4ee55",
+      "bytes": 2142
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/test.mjs",
+      "sha256": "129cce560b5c7a4795d62d1aceb5ac3a0b8faef1166c0215d82823a548485b06",
+      "bytes": 5257
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/tree.bend",
+      "sha256": "a91086de26138367d8dd4f029cb2463f2c48448f4fbc743345098b469e0b29b0",
+      "bytes": 74252
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/u32.bend",
+      "sha256": "22ff6f105e640578e829f0369dd5f21aec2266224c018901f0e65dddd89a3bfc",
+      "bytes": 4271
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/validate.bend",
+      "sha256": "9830f6caa8e54fbe662c211ace890e9fcc78cfe496f67b5dd59a472a91c16fd6",
+      "bytes": 12709
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/js/worker.bend",
+      "sha256": "575c0e37d255895e8d8ec98ff613b5dd109389f903dbdbac7ee5c03b2a41106f",
+      "bytes": 23050
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/array.bend",
+      "sha256": "a75ea34452a2d5554453eca27bcc90e2a00f93eeaa867097e855b74fbea1cdd5",
+      "bytes": 3069
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/book.bend",
+      "sha256": "54de235a0cdcd0caef4f94a12414204185b34ce8f3ddaab572de4058c2090a91",
+      "bytes": 14358
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/bridge.bend",
+      "sha256": "849e65edfd73c1b79bea95b158049b5e2083347e07a13d0caf042dba578e3627",
+      "bytes": 31720
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/direct.bend",
+      "sha256": "a860340dc21c179551e0d1b461520025682b2a5d891f1705192928edbcf337a6",
+      "bytes": 10757
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/emit.bend",
+      "sha256": "862af7916a7b26d6801726b48d422f154bb8a34c4c140cccc534c5d0ff21b46a",
+      "bytes": 5084
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/erase.bend",
+      "sha256": "8f536cdfbca91b26bf426b3c8c5f42106fc0e18af7bfd2550ba73e7dab5530ec",
+      "bytes": 3528
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/fixtures/override_add.bend",
+      "sha256": "a3b434fd37f3f349d08eded47348b7c0f536c30bc66d65d7acd560d29a634e22",
+      "bytes": 221
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/fixtures.mjs",
+      "sha256": "54c0f615bdbd6d2b8976a157012b6c38c597d578820787937e331f91c3772d31",
+      "bytes": 5112
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/flat.bend",
+      "sha256": "fd510dcc0269e9d50b109b5071678d4a6eab3d9f3eed88174bdf72922dd8a0a9",
+      "bytes": 12938
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/foreign.bend",
+      "sha256": "acbc686946260ad3fc8326eac2950cba3240044e0e62b16637964266904101f8",
+      "bytes": 4393
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/identity.bend",
+      "sha256": "8d1c0ad2d35cb5072615ad6e23b99ec7db3c956679c1894d847869608be0e16a",
+      "bytes": 2476
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/intrinsic.bend",
+      "sha256": "c0cc7b0093df2d2a9cb7b85acd9633916d96a20cf4bf82b0abf192369d6aa212",
+      "bytes": 7264
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/ir.bend",
+      "sha256": "dada548b975e325d96735f94b4e65e56d0d47b8e22851bc6815bed7063e0339b",
+      "bytes": 929
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/layout.bend",
+      "sha256": "35981acafb07efcf3983baef35fffe573f8dc79707ea3077d9a15d360f05390b",
+      "bytes": 135
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/manifest.txt",
+      "sha256": "9d83da04eb0853638f9e0bca5c66190293f045d4aa894d4c1ca612c06dfd9778",
+      "bytes": 312
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/parallel.bend",
+      "sha256": "6f316a73036d51ed2273011b6c960f69b7f37dd310080a142c2d19c4c6035d61",
+      "bytes": 5239
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/pattern.bend",
+      "sha256": "023ff194d3a1d0a85e73b991e01975b1da0427e99e863f5b17e3c3fd27cd63a1",
+      "bytes": 5461
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/product-layout.bend",
+      "sha256": "efe70c3e7221fa31bf51531a654df0123839273b76cb79f333d92a98932dac42",
+      "bytes": 5626
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/product.bend",
+      "sha256": "0625f0b9df2011fe2953a2cc8c70c3845e7e5fecd2ded350d21e67b283482a29",
+      "bytes": 25000
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/README.md",
+      "sha256": "715e13e19f9d7b4d08a5c142eb1c87b6a71b9977245bd4ff59209816de36d9e4",
+      "bytes": 4349
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/show.bend",
+      "sha256": "14088ccd96a957c1bcde8ebab0dbfe54eac7d3ab752ef1e7faace2bf5e76b3ee",
+      "bytes": 6733
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/tables.bend",
+      "sha256": "6b8f36fa9063f35105889d8977aa2345fb01eeceb117e6f641151430d084bbaa",
+      "bytes": 8602
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/tests.mjs",
+      "sha256": "a37ca0de6f344e2f5a45ab27cb2ecc6c64879b648169a02b745bb405fa2650f6",
+      "bytes": 11299
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/text.bend",
+      "sha256": "31c1ff5973df46d17ad395070fbefa1d2dc58398b3d12af80c62ed6c5548ff9d",
+      "bytes": 2533
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/back/native/validate.bend",
+      "sha256": "ffe530312c7c65cde4a79322873b3f6f5dfdd027b4ea16396e79c4aefd876ce6",
+      "bytes": 2877
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/check/annotate.bend",
+      "sha256": "1912e5d177514733e706297fbb53e730c1f7a9edc91ffb06d2b1de7e2547648c",
+      "bytes": 10866
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/check/base-products.bend",
+      "sha256": "d27c23edc0b62a9c80391e533bc56045b481439f520f8412cafc1fddca5f1225",
+      "bytes": 6125
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/check/env-substitution.bend",
+      "sha256": "2bb46c21059512d1394e47da3287b2d00a8a42d658bdbce2724a0e061f77ee5c",
+      "bytes": 2220
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/check/env-telescope.bend",
+      "sha256": "c8f641d1dfe167d9708bef3c28c5320aeb605881d0775758f5cf0b0eced82fb7",
+      "bytes": 5673
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/check/kernel.bend",
+      "sha256": "bbeebc44d278044349a9cb7a35fe5956251e32098dcb0722d96542dee23148e1",
+      "bytes": 49206
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/check/prefix-state.bend",
+      "sha256": "e3d23adaabb0ddc866adc3546a56d6362df2d6f55d91c73aef71c73cbd628a63",
+      "bytes": 24106
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/check/prefix.bend",
+      "sha256": "ceabf77fb49b58910d83fa896899061643c4c105f29e70bd87d3f73be873783d",
+      "bytes": 3037
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/check/quantity.bend",
+      "sha256": "b4a8ca1f8dff10f4f64397ea53bbbe272bb32400e993b1077d284ec1d8a70b4d",
+      "bytes": 4069
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/check/specialize.bend",
+      "sha256": "76e0f9249ae15cc0734a8e9d2e75677794e2eb5464c7756a19daff8b8217e7ee",
+      "bytes": 16212
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/compiler.bend",
+      "sha256": "a7f64505c53a6af2cd4beeb363cb650971487254f758612a446cf44c2903733d",
+      "bytes": 40040
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/compiler.json",
+      "sha256": "dea00c1da68941bf45c78a0e8e5a6089cf7142d512ae68ddea946d3daedee7a2",
+      "bytes": 4174
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/core/graph.bend",
+      "sha256": "85625049b316ede08eeffd7ff509483183624f1197c582c9d1bb2cd8bebf4802",
+      "bytes": 14746
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/core/index.bend",
+      "sha256": "51ce95941f955ed1c65f01ee88af31e35180c94d30ada97f359c6aa71dd47edb",
+      "bytes": 14879
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/core/normalize.bend",
+      "sha256": "4845ff63f3c228abc9a432410ddc8b7e20bfce27e54d6d49412b06608f7ce702",
+      "bytes": 22263
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/core/pretty.bend",
+      "sha256": "51552ee1dcb7fb5921f3028778f0cfdf1886405d64e9468795c2ee5c0b34c097",
+      "bytes": 17063
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/core/reach.bend",
+      "sha256": "086092c688e6cb774da94333826f51b1fdeddc8e85aeaac5be6b15c143b0df27",
+      "bytes": 9901
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/core/term.bend",
+      "sha256": "d75234683496e33fcb59cd3598979245700733236d9326025d298f9c33ef33d3",
+      "bytes": 19671
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/diagnostic/frontend.bend",
+      "sha256": "fdd07e6e3df5f999f2d162a4d3186cd8ae13102c8351710edab5291a2f80489f",
+      "bytes": 10910
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/diagnostic/kernel-instrumentation.patch",
+      "sha256": "273a3e1d126ad4591aafd2a2f5d20c41fcac5fae69b17fdabe75b5686cafd698",
+      "bytes": 7844
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/diagnostic/model.bend",
+      "sha256": "3c699ec70ef36700520658555bc5df025880691c44633cabb9e5719b60fc9c1c",
+      "bytes": 754
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/diagnostic/produce.bend",
+      "sha256": "b659c86c82fd6f8656a517cebda9d2706a01ebc56b32ae2ec1137bd32d66a21b",
+      "bytes": 8123
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/diagnostic/README.md",
+      "sha256": "c911467a770fdb3835c812f2bbacaaed7cbb4767da8cc49bcc00169010a0d7f1",
+      "bytes": 5260
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/diagnostic/render.bend",
+      "sha256": "695f41ace13e08756273c317659a419deee5fc79d413bd58e8711f124370276c",
+      "bytes": 7804
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/diagnostic/trace.bend",
+      "sha256": "57410b6f4b2fde9ba3591c1e27e88deda48ef89e16f8418cdc7b0a918184f4fe",
+      "bytes": 6829
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/driver/api.bend",
+      "sha256": "6640d00fadd82cc33f3ba038e86abb633253a92eefbd08fd9ab7f9ebbff7429c",
+      "bytes": 5122
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/driver/report.bend",
+      "sha256": "2626d596e94122f373f075d2cc2fe59e59fc3944d8b939b547db6aad2124e556",
+      "bytes": 2603
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/contextual.bend",
+      "sha256": "9de169c5f44d7da1f5982a0cbbb2af5e491222ebc954dba9be7442046dd44117",
+      "bytes": 29415
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/declarations.bend",
+      "sha256": "d8aa310be182a4d074ed2382890fc15424f62b02f4b3b6854328fef4c8f33530",
+      "bytes": 31642
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/elaborate.bend",
+      "sha256": "8537f483259d48fa1d710915d6e8e09916faa540560379ee550a7077f391dc1e",
+      "bytes": 7941
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/families.bend",
+      "sha256": "22b6e9b1ca132ed2d6f2cf91507e221f09cdda1aeab5931e8cf099e934bc9d2f",
+      "bytes": 3849
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/flatten.bend",
+      "sha256": "d3ba8687f7dcd303dee847a90e3fa92b9a234d97cdcd3893de8242c6d2aa69cf",
+      "bytes": 6450
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/fresh_work.bend",
+      "sha256": "043d3b737cef4b932b7de8ef161dc88ba867ba6a8056e3662edfdcf4a2d797ed",
+      "bytes": 7736
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/freshen.bend",
+      "sha256": "d0fed135fe878987770786ef0c50dd09efe2cce390beb7a911bcfc8468d5607d",
+      "bytes": 1285
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/lexer.bend",
+      "sha256": "aa9d726b6b284deba84dbccc77a01a8143dd89dab70cf487e1ddc8d589380440",
+      "bytes": 13265
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/literals_arrays.bend",
+      "sha256": "e2527aa4c3321d01faf88942b85d9df48b2032f96cab677f5f306166f30d3190",
+      "bytes": 11998
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/parallel.bend",
+      "sha256": "b7c38f74d9f339f21fa00c5194078a0bfc41a948d1adaa907d00df64045c2f1c",
+      "bytes": 3238
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/parser.bend",
+      "sha256": "89eab388bfd64e4ec9965b1147f5be2a5dc88761b61d13824599e13c46138095",
+      "bytes": 34444
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/sugar.bend",
+      "sha256": "d3e3cf5addf0498e8401b9988678eb6ac8ff81571a014b18a1b6fed0a76fb22a",
+      "bytes": 14142
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/unicode.bend",
+      "sha256": "bfd4407aa83614ae8398c9ce451f729cbcba457f2ef64774fea99f1824b5dd96",
+      "bytes": 4481
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/front/validate.bend",
+      "sha256": "40f4d11334d6e8a08c97dc4bc001dd8260a9cf7fb154125ac7ee04c6f659c766",
+      "bytes": 11139
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/load/graph.bend",
+      "sha256": "06f9f815b7e7e0f335907237845543bd09ff42886aea942065a9ba8ecdb05189",
+      "bytes": 17785
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/load/imports.bend",
+      "sha256": "b878da5169a4a39d35a236ff5128dc42735fea0707195cf621ae651c1f13e9b1",
+      "bytes": 4211
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/load/modules.bend",
+      "sha256": "6492e3678b077eacd97baabc8434ea19c1ac9697f452fc316fd91c4445710fd1",
+      "bytes": 11704
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/load/paths.bend",
+      "sha256": "a9fc17a8af04c1958d1f11e8c1c5b7c2d3eb925dd9075e6c77de4bdb3521f2a2",
+      "bytes": 2186
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/load/prefix.bend",
+      "sha256": "6d98e35c38cb9e6491e6cb34b60517a86efe6f48992cb8bae9d54aabfe041096",
+      "bytes": 14895
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/load/seed.bend",
+      "sha256": "43826db4855dc47b098adc7221e4ddf1489801d8e3947d750917b212f12418fe",
+      "bytes": 5051
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/base.mjs",
+      "sha256": "1cf66725fbe281a07b502c903cf44fa69abaeca961dd61ed63b3ea1ab97372c0",
+      "bytes": 16406
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/build.mjs",
+      "sha256": "4be85d590521e9453f0e7eb46f7b7d9d35bfd803510089c23db192c09d2b2a12",
+      "bytes": 474
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/core.mjs",
+      "sha256": "7cefc0acd4b36908697663708c004337b3bf7da1a8a8404b3cae120010104398",
+      "bytes": 22971
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/direct.mjs",
+      "sha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575",
+      "bytes": 13862
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effects.mjs",
+      "sha256": "20b25d65fa422604bca85304db1bd824b9ed0a0f6cf0b13f6444be935876d312",
+      "bytes": 14341
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/args.js",
+      "sha256": "ed1a7e7b73ae7fe58ac6d428d2762b66f223f4c70a165570fc5d68dc874ddc0b",
+      "bytes": 221
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/audio_close.js",
+      "sha256": "c700e2fc0eda1f9a67afd317184999d9283912817aaec00637af41b135b84c62",
+      "bytes": 118
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/audio_open.js",
+      "sha256": "6f531ac205dab98dd366111cdcc5eed69fb9058350ca715f3419065cd979b088",
+      "bytes": 266
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/audio_write.js",
+      "sha256": "377d3e938ce3cc9f083c662b69d34e3a0cf391c92ddaf3fca8a4b28c78662da7",
+      "bytes": 439
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/chan.js",
+      "sha256": "007ff7505af9effc20fccfa3d26eaf89a382d6295839b27df119a1704a3f86d7",
+      "bytes": 3645
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/file_close.js",
+      "sha256": "2b83f900113776ab875fa3afd29f31000a191fe48645abe78b1d7b34cb12a7fe",
+      "bytes": 192
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/file_open.js",
+      "sha256": "dd549f5f05eb896aef9a3a02ffecf2ee902e653f5463be72781edab1cd1180ae",
+      "bytes": 462
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/file_read.js",
+      "sha256": "7aa8a95a0b02f3c8db1167da5a936958a90c64e7df3e327ba5c66766d5e57da7",
+      "bytes": 783
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/file_size.js",
+      "sha256": "508a931334016f725f0446d9c63f91d7e9de79b9fb347d0e148777dba834ef0b",
+      "bytes": 734
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/file_write.js",
+      "sha256": "4fe307538beb1047add7646f52df6e382a1da5d8999d8fe96969bd5055bc9b59",
+      "bytes": 655
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/get_env.js",
+      "sha256": "2fab2162d5ff9842d1b84bfdc56466a606eeb0b81b04dd29f091652ff715ded6",
+      "bytes": 223
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35",
+      "bytes": 11344
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/listener_close.js",
+      "sha256": "1b87fb43c373b1a8a54b5afaf0cf8e3ec2f8d39bdfde131e49527caa19ac0cb8",
+      "bytes": 164
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/manifest.json",
+      "sha256": "9d0ee345ec98cb177d258e5e9c080b09b67ae396fd975df332081332e10f69e4",
+      "bytes": 7485
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/now.js",
+      "sha256": "b2c45fdcfeba0f155be5631b25708341c09d3c80929d8467afd5977473b087bf",
+      "bytes": 113
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/print_err.js",
+      "sha256": "a7a00612edfe98af1a351e8f7b912af4ee33f4bb888c36f119f7712d72a9394e",
+      "bytes": 131
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/print.js",
+      "sha256": "814ceba4efbaa291b7b6a9ff29aa20e3a23c06eb4fa165c69ee0bd22878adaa9",
+      "bytes": 138
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/process_run.js",
+      "sha256": "6ebe3b9875ef62ee189209096fb422508e79d34e58913457aefe52a052631e42",
+      "bytes": 1148
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/random_u32.js",
+      "sha256": "ab0b37cb6055ad08573d1263aa380c339c3fe7417530cfa63264629dce7744c2",
+      "bytes": 581
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/README.md",
+      "sha256": "fbcffbc71f6ed64fc8bbd22ec439369fe751521a035409f8b7aa13d76b31fa9a",
+      "bytes": 1571
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/sleep.js",
+      "sha256": "6711ccd804dcaede381da9ff0283b4640feb440e1d413381101f22bfed65a934",
+      "bytes": 214
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/socket_close.js",
+      "sha256": "dc4bf1fa95692c91528d4eb855506dde8dfc9164a90de2c43cd1bd6916e0c380",
+      "bytes": 150
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/spawn.js",
+      "sha256": "8a14c7a7a5ff80b049f0659f9e58d43bf0f3b1a6724d35a199c3f864b3242e4b",
+      "bytes": 160
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/tcp_accept.js",
+      "sha256": "26406cce42c497994e597a7a032629fab65f43ec14f06ee69aace2b353afe28d",
+      "bytes": 1413
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/tcp_connect.js",
+      "sha256": "a20819822e4ce18c8878b94e6ee70466833415eb9ebc2b6a39b65cabfcc553c9",
+      "bytes": 1122
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/tcp_listen.js",
+      "sha256": "0da4cfafaa24ba5e17d9fda5e6a5b207b2b36031b2c888944f67b85842d76399",
+      "bytes": 671
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/tcp_recv.js",
+      "sha256": "e8c54490445cb71a4328c07be8c40a49cee3e643cbf74f42dc73d31ab95890d7",
+      "bytes": 1680
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/tcp_send.js",
+      "sha256": "ea68cc521fa9b5603c3fccebbf19ecebcd26bf1a8af644ff1f13cd14ba9fe733",
+      "bytes": 1976
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/thread_count.js",
+      "sha256": "f4ef6d8ded95fe3114e50b7d2b6eb873e693419b85150f681b4a54a5043c2de9",
+      "bytes": 137
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/udp_bind.js",
+      "sha256": "e3afae5bf246184e76703efbcf41cb35bf5289e746cc40dc0300eef98753dfb5",
+      "bytes": 502
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/udp_recv_from.js",
+      "sha256": "d6f88b08f578f088b4ff257a7e544e4fbbf46f375aee3881ba4d44e25ed890d8",
+      "bytes": 2094
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/udp_send_to.js",
+      "sha256": "40c835c4d73eb15d089a41b425968d04931d02820cb901aadb8eb3dd4905f247",
+      "bytes": 2168
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/window_close.js",
+      "sha256": "be4ef11e9ac57c59aa4aee847f15ece18034ca9fe1c4a68c6e0b0d7bbd7c3590",
+      "bytes": 124
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/window_frame.js",
+      "sha256": "78baa53aa46e02165c0c94da68d1f6362386ebcfb97dbb36fffb82792a03d34f",
+      "bytes": 153
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/window_grab.js",
+      "sha256": "55cfc1925114f2d1f177137fad24d6252fe28707d26a1aae18a98ad97060a668",
+      "bytes": 115
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/window_open.js",
+      "sha256": "cd716864b8dfb27ca955c8aa58643c7d693ce76eb56472bd8255ff7ac0656e8d",
+      "bytes": 344
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/window_set_title.js",
+      "sha256": "eee0bf26b7f381f8800364e22e8c735e47dd6db3f58e23ff3dda8478a8411513",
+      "bytes": 133
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/effs/write.js",
+      "sha256": "e3495066a5d8c53fe1c46cfd2bb32577e3bd7dcae9797808801599073504dacb",
+      "bytes": 131
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/foreign.mjs",
+      "sha256": "ad406115010d01b969b18d2446fd8f4073c53118abc95aac4ba6fd9a928be9bb",
+      "bytes": 4926
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/readback.mjs",
+      "sha256": "8796c35456a80c90adffb0aa54f3b03fb780a3afb3476c8ced63dc6a0fdf707f",
+      "bytes": 2540
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/README.md",
+      "sha256": "860b9d43ac1982b2b66b332b50f438a77d4ee95880e79144f89949dc58004afa",
+      "bytes": 2261
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/test-apply.mjs",
+      "sha256": "ca8e877deb0db259f9c22bb5dc17bb774a413c1018796d08f63800ca834c82c1",
+      "bytes": 1930
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/test-phase8.mjs",
+      "sha256": "e6992665eeb60357ae27351b9bd5dc76c07b83619090e0bfcf2f9d1b45b1b0a5",
+      "bytes": 5798
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/js/test.mjs",
+      "sha256": "abbb1a4a34b8c0a9764966dd47e56bbeddf06d5e19bc626eb91fa3f94a80a440",
+      "bytes": 3660
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/args.c",
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0",
+      "bytes": 351
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/audio_close.c",
+      "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5",
+      "bytes": 5368
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/audio_open.c",
+      "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41",
+      "bytes": 5606
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/audio_write.c",
+      "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4",
+      "bytes": 5898
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/audio.c",
+      "sha256": "049ac826d50def604c18cd4211d67573c4e27f4bc2600ce6c22e0dbe60c3783f",
+      "bytes": 6832
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/chan_close.c",
+      "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a",
+      "bytes": 306
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/chan_new.c",
+      "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2",
+      "bytes": 203
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/chan_recv.c",
+      "sha256": "d0de18c78d78d5a3f4890cd2423a332d3d03a7b2f85e82202561fa67b4d57b3c",
+      "bytes": 743
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/chan_send.c",
+      "sha256": "1fc9e4857c440771e66ff83b61e6012727af51e62416ad818f5122e237784afc",
+      "bytes": 673
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/chan.c",
+      "sha256": "31257d7f71c560863d66b96ee9296cea07dd997f147a1ccd1433cc0130993696",
+      "bytes": 2108
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/file_close.c",
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3",
+      "bytes": 243
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/file_open.c",
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7",
+      "bytes": 1113
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/file_read_at.c",
+      "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c",
+      "bytes": 1009
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/file_read_bytes.c",
+      "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d",
+      "bytes": 987
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/file_read.c",
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678",
+      "bytes": 2130
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/file_size.c",
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8",
+      "bytes": 771
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/file_write_bytes.c",
+      "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097",
+      "bytes": 1320
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/file_write.c",
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2",
+      "bytes": 1423
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/get_env.c",
+      "sha256": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3",
+      "bytes": 646
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/listener_close.c",
+      "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec",
+      "bytes": 267
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/now.c",
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9",
+      "bytes": 198
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/print_err.c",
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6",
+      "bytes": 236
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/print.c",
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26",
+      "bytes": 397
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/process_run.c",
+      "sha256": "c12e5a182de9fdc5ef83d65f9f7c2c5746865d1049e5f3700438f8ac317b17c3",
+      "bytes": 9149
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/random_u32.c",
+      "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d",
+      "bytes": 741
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/sleep.c",
+      "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd",
+      "bytes": 206
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/socket_close.c",
+      "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e",
+      "bytes": 255
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/spawn.c",
+      "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3",
+      "bytes": 218
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/tcp_accept.c",
+      "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8",
+      "bytes": 909
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/tcp_connect.c",
+      "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58",
+      "bytes": 1294
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/tcp_listen.c",
+      "sha256": "6212a0bc400e960e8b486f85a091cd4964f92b0546475481271c0f369a234d8c",
+      "bytes": 1013
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/tcp_poll.c",
+      "sha256": "feb6fa3f7c04b3143c71593e2c17088394d11474bd87ca791fb71fbf9f9a8f82",
+      "bytes": 1386
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/tcp_recv.c",
+      "sha256": "8378e28f0723dbeb2635b9909b01f8dc63dcac30161f79b8b743bd8037e45b40",
+      "bytes": 1979
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/tcp_send.c",
+      "sha256": "85c1c9ff20d28c33968299c738b19ff752c768c72a53e071533a6960c0329a5a",
+      "bytes": 2216
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/thread_count.c",
+      "sha256": "39515c611a2b42687fb670179f3d9032af1878727356754959061125d40fa7e7",
+      "bytes": 481
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/udp_bind.c",
+      "sha256": "b30150927ffde3162d62012b67d43d95c79754f9539279628d2ad5bc9c040408",
+      "bytes": 882
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/udp_poll.c",
+      "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71",
+      "bytes": 913
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/udp_recv_from.c",
+      "sha256": "4fc0f4e4ddeaef51bc4434b64e9cfcf3888b1470e534fe6ba27f80e48d2b8aef",
+      "bytes": 1324
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/udp_send_to.c",
+      "sha256": "71f92e41fb4cadee6714a0e066c22225d015f9e708cb58393b539cc6ee011721",
+      "bytes": 1440
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/window_close.c",
+      "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d",
+      "bytes": 916
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/window_frame.c",
+      "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4",
+      "bytes": 11055
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/window_open.c",
+      "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d",
+      "bytes": 6927
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/window_set_title.c",
+      "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5",
+      "bytes": 1141
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/window.c",
+      "sha256": "7bda00a55917f11ff1fa532b1406ec5c1a8a7eef6f6ba2a933dd958256e0a409",
+      "bytes": 23879
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/effs/write.c",
+      "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac",
+      "bytes": 370
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35",
+      "bytes": 11344
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/ORIGIN.md",
+      "sha256": "cc7d2b0e50253e3ccc3f88ed5c92134b3faba5a8c6eb86ae7aa9c7b5e7dd7073",
+      "bytes": 843
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/src/runtime/native/runtime.c",
+      "sha256": "8729e2aada3f64f6450502519c3ffd5e10a67827a79c7cb2c1dddfe6719b94ac",
+      "bytes": 82017
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/adapters/native-graph.mjs",
+      "sha256": "51cf3338d8d32fcae3ff2b5d8dbdf7f30317859ca65f1f0cf1084c8ceb0fb7b5",
+      "bytes": 5387
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/adapters/pipeline.mjs",
+      "sha256": "468491f6d6f8f176cddf77f771012cfe65125650abd9d9257ff5fc79216a8d3e",
+      "bytes": 2322
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/adapters/prototype.mjs",
+      "sha256": "b7c75e09bc85f04d12a4288922a97654a9a41fa2fcac0cd2f988d289eff6c6a5",
+      "bytes": 1978
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/adapters/typed.mjs",
+      "sha256": "0ad9c892b45c2fb2a111817e6bea2f232c20f1197f495801a2fb4499498ba3d2",
+      "bytes": 3265
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/adapters/upstream.mjs",
+      "sha256": "ac2055525bfb8d868e3c21e8b9d6b09f3b9f9e43c9deca92e0317fa03b524376",
+      "bytes": 8219
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/bootstrap-variant.mjs",
+      "sha256": "013a631d640dbd54f74e45a2cd6afd9710de1630092b8026f8b8520a754354f8",
+      "bytes": 2700
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/compare-artifacts.mjs",
+      "sha256": "8a96dd74c912cc5f2eeaef094540097e74578ed2a359bdd5e0fc341ade0a9849",
+      "bytes": 5377
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/freeze-adapter.mjs",
+      "sha256": "0c3dd0403406da48291cf85e7767156e8abb90b133c348d3b5c745ee238b4e11",
+      "bytes": 1553
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/inventory.mjs",
+      "sha256": "91a1bd7be11e6e66a68c94251814286c9d0173d94a38b445240123bc558bc308",
+      "bytes": 6459
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/judge.mjs",
+      "sha256": "af05b8926bc14fdedf764f2187029363b1f01db2baf5f89787083e3a41395fbb",
+      "bytes": 6345
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/merge-reports.mjs",
+      "sha256": "43dc310a1a85d1884569b9b29ed5d0d6039b1d96862f47742442c5cdb57bd6f5",
+      "bytes": 4271
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/persistent-probe.mjs",
+      "sha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225",
+      "bytes": 12847
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/persistent-worker.mjs",
+      "sha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d",
+      "bytes": 6311
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/replay.mjs",
+      "sha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94",
+      "bytes": 3571
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/report.mjs",
+      "sha256": "255fe2ce4acfbf4979d5bd97c6c5eab1c7815c4d86ce48a136f1773131eedf44",
+      "bytes": 6893
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/run-probe.mjs",
+      "sha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c",
+      "bytes": 4068
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/run.mjs",
+      "sha256": "6f55b4e6f9821c150408e01ec3ea9a428abe62e3f81d6abad9bdd583e9559364",
+      "bytes": 13015
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/selection.mjs",
+      "sha256": "ecdb5a8c451554c3d2dce4ca5e7725e299fa9b63c042e2cf2f7f9c440b2baa7d",
+      "bytes": 4474
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/selfhost.mjs",
+      "sha256": "1ba5fe283c2be0c4b69e47780a3a6104f28b187d364f839196e262e3e5f9698f",
+      "bytes": 9674
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/semantic-summary.mjs",
+      "sha256": "b0ab2acdc50ed48700e89fcdf840d4538b73c1ad5ae3970b79ea877db2ace47e",
+      "bytes": 4777
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/target.mjs",
+      "sha256": "e2ac5403100458239cc65cbc5da77605fbfb108a54d6ae337190dd467e0e0f50",
+      "bytes": 10610
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/typed-report.mjs",
+      "sha256": "c1d2ca257e5bc167697b84526365a89c725d8525887f1bc58e84950a640c2567",
+      "bytes": 8555
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/verify-seed.mjs",
+      "sha256": "d5036d7caab7f9405b317408e4957254ccaf5d3c23d4b0428b9087b92cc263ae",
+      "bytes": 5676
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/conformance/worker.mjs",
+      "sha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+      "bytes": 613
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/typed-driver.mjs",
+      "sha256": "e093483d5103a8e833b6ca710246b1ec3c579b7fac5060c8e42f626c5e25ec85",
+      "bytes": 81423
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/stage0-library.mjs",
+      "sha256": "ec3506de1558fa1e56cef54345053ffaf7bfcc92b8632eaf96e217c15b8a59c1",
+      "bytes": 4172
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+      "bytes": 3317
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+      "bytes": 4264
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/base-cache-graph.mjs",
+      "sha256": "e1a755e758435da768b77f59e2ea2e7b3b966998ba1b6a6fdd5f1a154cffca62",
+      "bytes": 21085
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/native-build.mjs",
+      "sha256": "a76f2c027459f7ffdb9fc16dc450ee33e0f39c74568df4c74d03309e662c9117",
+      "bytes": 4027
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758",
+      "bytes": 685
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/development/equality.mjs",
+      "sha256": "fcc80fd4da249e74f2cfd296c7e88f3c5f795a627e498c26bf5deb4ac8397eb5",
+      "bytes": 31254
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/development/equality.test.mjs",
+      "sha256": "bec05fd9da87ebd2bc3640bb4292b70ed5fd32bef94222ad2ab820375b03c615",
+      "bytes": 17679
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/development/process.mjs",
+      "sha256": "fe6afbc8964f695e3b7bfe8c636b6da6295fd7265fcdebbf58839f3eafce4989",
+      "bytes": 3013
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/development/release.mjs",
+      "sha256": "8df92ed0d28546c1ccc0e69a6fc7e7f74fc4a1c03a4d2c9e11bb60a31130251c",
+      "bytes": 15908
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tools/development/workflow.mjs",
+      "sha256": "4249a59916fcd36ef411d4864a5050489df2fc78deee7ebe0d98684ff80f46f1",
+      "bytes": 18662
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/cases.json",
+      "sha256": "06daedd83a91e0601d2673ec233d6b4f80ce6487340f4d51f1cb9cef532fd9d6",
+      "bytes": 4882
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/import-after-decorator.bend",
+      "sha256": "bdd2c2bc69553d0be990e689f624bde0f077ef81b2e146e4f0d07c16d3551280",
+      "bytes": 43
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/import-after-foreign.bend",
+      "sha256": "bc277ab2983d26123b30f74b54ec7ebb9cab5e5554696c86450b29aef71bbcc2",
+      "bytes": 90
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/import-after-law.bend",
+      "sha256": "b72b619379747e1009145d9106d5c7e54f60abe2b611be6778d44d147802a842",
+      "bytes": 82
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/import-after-type.bend",
+      "sha256": "3ae3c5aa9a0517ea10968b2dd69341260f2e3da04dd6070c0d7a3ad5fc39be80",
+      "bytes": 72
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/import-late-existing.bend",
+      "sha256": "870dfa8d35ceea10fe849dd4a6066860b26acea86d456d6cf72661a938cd7a77",
+      "bytes": 73
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/import-leading-repeated.bend",
+      "sha256": "5f7f073543a0ee23f6a0920df913483a2ed0a35fbef5fd387dd65720cc3550ac",
+      "bytes": 93
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/import-leading.bend",
+      "sha256": "4a3a4e459750cec9a619cb3fe294d7d4f62adde78b3b278e408821283fa3086c",
+      "bytes": 109
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/law-fill-changed-type.bend",
+      "sha256": "c719b4e236725a698a2092eeab3915ab3d0da56a236e6666407386e3523d348f",
+      "bytes": 52
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/law-fill-plain.bend",
+      "sha256": "40b70a9a39dfcf734b37fa7494d09826cef22c01e2ff7deea37bf8426516eaa2",
+      "bytes": 44
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/law-fill-same-type.bend",
+      "sha256": "8fadb0c13d1a05420ebb32ab5817aa886c7cbec9778ed9361e1c2d53c99d5855",
+      "bytes": 51
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/law-template-after-erased.bend",
+      "sha256": "c3843c1538a7a98376bb4936e8201a5c9296f5b30f5802bbd8e02796e36892c1",
+      "bytes": 136
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/law-template-late.bend",
+      "sha256": "c173e8f11d2165d854bc92d2272898fb68b661f7e293b844695ee7de92360ee1",
+      "bytes": 113
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/law-template-leading.bend",
+      "sha256": "c2ef204c77987824e50370f57f1332df6c352c372d2b375f7e1e32f55ff086ff",
+      "bytes": 125
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/leading-unsafe-definition.bend",
+      "sha256": "122726c03542cbeb5a89c8416bc413e2d133564ed37ffe4562974c5f61dde6fb",
+      "bytes": 43
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/local-binder.bend",
+      "sha256": "851b83d46b20d760c68393bb2328217182417482c10fc593131d69d21daeab72",
+      "bytes": 51
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/local-call-pattern.bend",
+      "sha256": "4ba62de772333ae470894293d71a45c567ab1f07c1f993ff335d9ab1a563115f",
+      "bytes": 80
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/local-constructor-braces-required.bend",
+      "sha256": "881e307e4e3fad2c6ae669be412f238733d50803863ed0e218a3eef7bc2a2f12",
+      "bytes": 77
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/local-constructor-field-count.bend",
+      "sha256": "a359dd1c2e9f90639253064a65f5ba30ae72c8ce5bc560ee28d5b0e9040e7484",
+      "bytes": 117
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/local-constructor-nested.bend",
+      "sha256": "4079feafc7e1381e53286fb50dada25103f074151655c233318f147264e9c219",
+      "bytes": 182
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/local-constructor.bend",
+      "sha256": "3a3489939f779fe0075a2eae76baa54fb4993a043eebe212da745af5f174944b",
+      "bytes": 126
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/new-typed-definition.bend",
+      "sha256": "b72769b7d7875aae09f79b29fd9dd995493baeb595bd4dd1b2cc2b6e21575b8d",
+      "bytes": 35
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/phase15-dotted_path.bend",
+      "sha256": "53d55ab7e742550d379646277993632d8438af3a548278eb60684bfe97df5a53",
+      "bytes": 344
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/phase15-hub_head_local.bend",
+      "sha256": "495cc9a428f6b59e55b178f2412896685a07b1f529d0b92eda7b137372171e03",
+      "bytes": 310
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/phase15-hub_head_path.bend",
+      "sha256": "a5653b0cd3e3fb6d6a901aa471250e718999b678a7dcad1bdc0c0b8b13a456cc",
+      "bytes": 355
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/phase15-tilde_path.bend",
+      "sha256": "90aff6bc6a4b19904e43c9e7ef6e1e4ec0a8f1cea49ce5063c0d1bb60af67f16",
+      "bytes": 348
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/snapshot/tests/frontend/phase2-rules/README.md",
+      "sha256": "a842270210e0d0bc06204e07ee836f3f291e4b5902be3561f4b31a5c2666a93a",
+      "bytes": 1928
+    },
+    {
+      "file": "selfhost/build/phase68/native-products10-recipe.json",
+      "sha256": "3503f7abe6afd2845bfff40d388ec3f383f9aa8dee68460870d8e373b64530fd",
+      "bytes": 40795
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+      "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def",
+      "bytes": 119320
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/ld.lld",
+      "sha256": "d32d5121d96810b624306e48faacc75e41f7302ad0e4865be63c3bbf8f4cd810",
+      "bytes": 6001368
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__float_float.h",
+      "sha256": "bde8d423099e3bba501018bdde141cf2edea549ba528733d43dc534694181935",
+      "bytes": 5890
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__float_header_macro.h",
+      "sha256": "7ee2302b023d41fd787a326059980800594c6e2cbac134b3167947d0025a72d7",
+      "bytes": 449
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__float_infinity_nan.h",
+      "sha256": "544272ca97c2ba51fd362d5f35c8d7287e57001e9a8f29d51896b82be253ef72",
+      "bytes": 613
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stdarg___gnuc_va_list.h",
+      "sha256": "feca975bfdfb254d17458a8e3d51f8ad6d9bdc9fd6287727f0f8b2fb81fcb0b0",
+      "bytes": 467
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stdarg___va_copy.h",
+      "sha256": "f0a8d3c963338173f2d57b2cbc209dde38c90536107b15eb0cf78166d4caee1f",
+      "bytes": 445
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stdarg_header_macro.h",
+      "sha256": "7b3fbcc442af2508f36bb2dc98d9ad2b8a1f5c0f5333394fb2159c8bd5ecd5b8",
+      "bytes": 417
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stdarg_va_arg.h",
+      "sha256": "274c75a1db86f649439aa3bcc1dead4170725e6f803925c3fc38a2e93307afdc",
+      "bytes": 771
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stdarg_va_copy.h",
+      "sha256": "bb195f56cb08d4cee6a60bd9f62f34466e8ac4f89f6fed043b044cb2f7ead010",
+      "bytes": 451
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stdarg_va_list.h",
+      "sha256": "81c3055f7033e26e7f53705653bc9d69b5202f25c2692e03b3a4f77ff44a7d76",
+      "bytes": 448
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stddef_header_macro.h",
+      "sha256": "4cf46e8fbb809df048eecbbd63686fa741da27afa8db4245bd1f61c1fb1611dc",
+      "bytes": 417
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stddef_max_align_t.h",
+      "sha256": "3c1e4de47f4f06b35e2c5890d670052e84f716760505ff51b022fc8b21a9400f",
+      "bytes": 857
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stddef_null.h",
+      "sha256": "b1d71b08563ab3d2c22a1e4f8ddf4d9a1111c89e9404b859a45c307e8ebc6c69",
+      "bytes": 875
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stddef_nullptr_t.h",
+      "sha256": "898b4465c5d3040d27e760e82983a751b1b0cae23ba280b18a1b81451841f9eb",
+      "bytes": 958
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stddef_offsetof.h",
+      "sha256": "e5f0f4ff8ff5fc6a1cc8b535f5065f1728eadd2bf1e1401f021f803ec7b4222f",
+      "bytes": 708
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stddef_ptrdiff_t.h",
+      "sha256": "b4178a57f3711b7013cba747a72a2f178c29fa9364e77d75b2159754072ced43",
+      "bytes": 717
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stddef_rsize_t.h",
+      "sha256": "132339d4f07e852bf2d879bc91c4ccdfcf08c581c7c97f6f3794510e0bdda7bd",
+      "bytes": 710
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stddef_size_t.h",
+      "sha256": "d86ddc0238da09b385846ebef814ffc50a44e40cf85d4e3793f485952b7e73ad",
+      "bytes": 708
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stddef_unreachable.h",
+      "sha256": "bba07c327f8168f37b266a19aed625e0fa633a25cabef4f54f21faf3df5522b8",
+      "bytes": 735
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stddef_wchar_t.h",
+      "sha256": "1900d4998aef3698b06399ed686db0c21e26509b08638a25734fb97ae89b1001",
+      "bytes": 853
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/__stddef_wint_t.h",
+      "sha256": "f2ededa38c5454397242aceaefa65b42b292a1b3cc258e7ca6e216f146e51f0d",
+      "bytes": 443
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/float.h",
+      "sha256": "0242ed0a0c17fb6c24ef6953c51d02d28eadb067dfa41d7ef59fe230caee3a10",
+      "bytes": 1416
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/limits.h",
+      "sha256": "6b59cc1b6f86c901bf41ce942b8434530e852eb16e79e6e9287f89441f71efca",
+      "bytes": 3794
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/stdalign.h",
+      "sha256": "0375392ce44c0bce9d2dda696b0b2e7129e2e58233e002f532d010c9ac02d27b",
+      "bytes": 756
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/stdarg.h",
+      "sha256": "ce6e43d79dc89b50208ecf259b1ffd519f5a78cd3a2c7fcaac6386f376b89fef",
+      "bytes": 2497
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/stdatomic.h",
+      "sha256": "728b690f127fc85faa32b9031e3a0019da92f77db92ca91b749571e45617a9ea",
+      "bytes": 8662
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/stdbool.h",
+      "sha256": "48655faf4ebd4ca0af26a1ee8e3e16f8dc68385c9cd550ffb3629320681305b3",
+      "bytes": 1172
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/stdckdint.h",
+      "sha256": "808854b229028d66012bef0eb5f7cccb2d9a228edcdc5eb2bc710bc7cea4b25a",
+      "bytes": 1666
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/stdcountof.h",
+      "sha256": "f042faf9ae255233e0dbaa5db23e42eaea2d213bd5d19b8d4af642bbfb0bf689",
+      "bytes": 473
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/stddef.h",
+      "sha256": "b3e62a046ddf28d09eedebe6eb9461cb7060e47cad2c69964b222c4eea10347e",
+      "bytes": 5053
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/stddefer.h",
+      "sha256": "1370dad5543b648efb2c2070b9e66739488fcd36f284632b9ee3f32ac44cafaa",
+      "bytes": 610
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/stdint.h",
+      "sha256": "f43783466c93f77a6464274ebf18f9e4cc46f0d90770ddee2993c6cf39f7514f",
+      "bytes": 27519
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang/stdnoreturn.h",
+      "sha256": "53912b2e9a149a73fe58d88d6c41e69f49020eab7884c81ebf0b4f3607e96847",
+      "bytes": 1316
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/lib/libLLVM.so.22.1",
+      "sha256": "5145af96bc961289f6dff7efc0dc7f75cbc4b91634aa3b5d517749dce5f3f300",
+      "bytes": 77258216
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/lib/libc++.so.1.0",
+      "sha256": "0ec88ab403524f6c3bc3d9029772b97d9af08837267a2973bf6b24fa79119704",
+      "bytes": 1337744
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/lib/libc++abi.so.1.0",
+      "sha256": "3cb42a1a34f48dd20da4aa7559e634ca2eaeab6b019869fd060f90128ae3cb8b",
+      "bytes": 408152
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/lib/libclang-cpp.so.22.1",
+      "sha256": "e11640dbbd29d2abebcdb62f8e90e8a965d7276df914e3cdcfd5263f427208eb",
+      "bytes": 65075176
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/lib/libunwind.so.1.0",
+      "sha256": "c54929622b0991b21088050bf3f23d6756d3d2e082acd293b0e788ddc901da72",
+      "bytes": 69928
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+      "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49",
+      "bytes": 138101
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+      "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c",
+      "bytes": 185124
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/args.c",
+      "sha256": "84e12702f78e7cce5d350a3ccc6cfbda66f812496c39f025afe02bdf090880cf",
+      "bytes": 351
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/audio.c",
+      "sha256": "befb8d5514c945a1ea59c164e601b76c082db9f328487658ecfc56a5b943788e",
+      "bytes": 6668
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/chan.c",
+      "sha256": "f20345b3475168e52d431dabc8c8b9347d73b51b5318aae7890b78c94762f4e6",
+      "bytes": 7198
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/file_close.c",
+      "sha256": "033da9beb0b484fbc8784044193bf69004f858f6ad86e0c31b4beb89df1349ca",
+      "bytes": 242
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/file_open.c",
+      "sha256": "2f5923e325a22eb384edb3fbb023f04ca842d5acd22654983608b575fa7617fa",
+      "bytes": 1066
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/file_read.c",
+      "sha256": "ab577225fa98a034c09d7eb6326b74808756dc6203b0e2599a459876382f090d",
+      "bytes": 1913
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/file_size.c",
+      "sha256": "ed0d74fd6b9f14ea471bfe5dd80ecbb2c5abb6a8406519fb2c7e1a1acf3dd5af",
+      "bytes": 719
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/file_write.c",
+      "sha256": "9da28a35294cbde6a97729be825a31f9cab0b8c9d421a02a4613e688df451214",
+      "bytes": 1242
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/get_env.c",
+      "sha256": "508a4aaca91e37b2a0a97770f172100fdbaf4a676aba54623b1cd5d1634805ce",
+      "bytes": 397
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/listener_close.c",
+      "sha256": "11f6bac6342a37e97b9656e96bdca7d052ed0a7a0cab3b05ea87657020cfb7a2",
+      "bytes": 266
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/now.c",
+      "sha256": "fc4c1d87a4fb2ace7d5b6c57b434cc3d953a15bdf213020912df6c17aa2352d6",
+      "bytes": 196
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/print.c",
+      "sha256": "2693b48e0ad8bba77c2babb1cfe00b4adfd63e68b0688229d7efd3a261af3c46",
+      "bytes": 322
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/print_err.c",
+      "sha256": "f84aa11c8d0d6af6fa2fee28411f95714d6744ad97156990e43e55c292c9c6fb",
+      "bytes": 235
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/process_run.c",
+      "sha256": "0193d77baa986f01d55c74ae9df8142c1b198528bb2ed8e0a3853f7bbcde8cfe",
+      "bytes": 8716
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/random_u32.c",
+      "sha256": "75429b2b42e00562177fe33a5e18d2730478847f58c4038b048e78131e1b8c0a",
+      "bytes": 703
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/sleep.c",
+      "sha256": "1dde3701026517d5272d2ff5344d3a8643bec264dbad9f266fdae1c4aaf7601c",
+      "bytes": 381
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/socket_close.c",
+      "sha256": "abea115d2928d4942a9d89898d2022c0f1b19c52db48d0b060c2356d261bfa77",
+      "bytes": 254
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/spawn.c",
+      "sha256": "05e11ae3f1461d9c72440af3b1786c076b418d2faff45639ac25ba464ee73cd5",
+      "bytes": 217
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/tcp_accept.c",
+      "sha256": "bf7ca1685ed388ce97827ea8379881fbdf5359c7c663ad03eeb8da34bd8584ef",
+      "bytes": 1409
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/tcp_connect.c",
+      "sha256": "8d17c097138709d71e9d9e1fbc4255007c5e80c93ee384c4a3510b6ac8d10da3",
+      "bytes": 1292
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/tcp_listen.c",
+      "sha256": "efc7528de96abd9f62f299833c1ac7b0e86528292c746b114d2684b5bac52899",
+      "bytes": 875
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/tcp_recv.c",
+      "sha256": "249c8789cd2f541ad00068882de16a00870c2f81a8168b0ac7a59db1e3cb0c6f",
+      "bytes": 2508
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/tcp_send.c",
+      "sha256": "ed724ef8ce712b113eaac478164802509b41fac4e92435e3df0837d6a8c75632",
+      "bytes": 3042
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/thread_count.c",
+      "sha256": "d4889ed7757dccce03729c9568b88188128f2c1576166a3dc184a8707ed44568",
+      "bytes": 343
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/udp_bind.c",
+      "sha256": "a1be1bc5c03d430fc6eb43982651073e144872956fadaee98c3700be59352ee3",
+      "bytes": 744
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/udp_recv_from.c",
+      "sha256": "607085b34605af6c888e1de5c3f5cd8f689f221c71a3ef9e2c50f9ac880b1bae",
+      "bytes": 3005
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/udp_send_to.c",
+      "sha256": "b3a87e56958d8071a368da2edb4748e9496b3eed58b93d6cb4f8af398dd1011a",
+      "bytes": 3484
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/window.c",
+      "sha256": "34e917a9f89ab17583dcf1f46de36bd16e99f6149aeee4485e703f6bb8087857",
+      "bytes": 24917
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/effs/write.c",
+      "sha256": "8807a5f655db452c1d846354560c26fe1e94289e5dc0be231d0b71ecc876d02f",
+      "bytes": 295
+    },
+    {
+      "file": "selfhost/dist/base.bend",
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+      "bytes": 75064
+    },
+    {
+      "file": "selfhost/src/compiler.json",
+      "sha256": "dea00c1da68941bf45c78a0e8e5a6089cf7142d512ae68ddea946d3daedee7a2",
+      "bytes": 4174
+    },
+    {
+      "file": "selfhost/src/runtime/js/direct.mjs",
+      "sha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575",
+      "bytes": 13862
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/args.c",
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0",
+      "bytes": 351
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/audio.c",
+      "sha256": "049ac826d50def604c18cd4211d67573c4e27f4bc2600ce6c22e0dbe60c3783f",
+      "bytes": 6832
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/audio_close.c",
+      "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5",
+      "bytes": 5368
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/audio_open.c",
+      "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41",
+      "bytes": 5606
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/audio_write.c",
+      "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4",
+      "bytes": 5898
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/chan.c",
+      "sha256": "31257d7f71c560863d66b96ee9296cea07dd997f147a1ccd1433cc0130993696",
+      "bytes": 2108
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/chan_close.c",
+      "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a",
+      "bytes": 306
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/chan_new.c",
+      "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2",
+      "bytes": 203
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/chan_recv.c",
+      "sha256": "d0de18c78d78d5a3f4890cd2423a332d3d03a7b2f85e82202561fa67b4d57b3c",
+      "bytes": 743
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/chan_send.c",
+      "sha256": "1fc9e4857c440771e66ff83b61e6012727af51e62416ad818f5122e237784afc",
+      "bytes": 673
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/file_close.c",
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3",
+      "bytes": 243
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/file_open.c",
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7",
+      "bytes": 1113
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/file_read.c",
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678",
+      "bytes": 2130
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/file_read_at.c",
+      "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c",
+      "bytes": 1009
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/file_read_bytes.c",
+      "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d",
+      "bytes": 987
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/file_size.c",
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8",
+      "bytes": 771
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/file_write.c",
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2",
+      "bytes": 1423
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/file_write_bytes.c",
+      "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097",
+      "bytes": 1320
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/get_env.c",
+      "sha256": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3",
+      "bytes": 646
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/listener_close.c",
+      "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec",
+      "bytes": 267
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/now.c",
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9",
+      "bytes": 198
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/print.c",
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26",
+      "bytes": 397
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/print_err.c",
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6",
+      "bytes": 236
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/process_run.c",
+      "sha256": "c12e5a182de9fdc5ef83d65f9f7c2c5746865d1049e5f3700438f8ac317b17c3",
+      "bytes": 9149
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/random_u32.c",
+      "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d",
+      "bytes": 741
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/sleep.c",
+      "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd",
+      "bytes": 206
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/socket_close.c",
+      "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e",
+      "bytes": 255
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/spawn.c",
+      "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3",
+      "bytes": 218
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/tcp_accept.c",
+      "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8",
+      "bytes": 909
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/tcp_connect.c",
+      "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58",
+      "bytes": 1294
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/tcp_listen.c",
+      "sha256": "6212a0bc400e960e8b486f85a091cd4964f92b0546475481271c0f369a234d8c",
+      "bytes": 1013
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/tcp_poll.c",
+      "sha256": "feb6fa3f7c04b3143c71593e2c17088394d11474bd87ca791fb71fbf9f9a8f82",
+      "bytes": 1386
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/tcp_recv.c",
+      "sha256": "8378e28f0723dbeb2635b9909b01f8dc63dcac30161f79b8b743bd8037e45b40",
+      "bytes": 1979
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/tcp_send.c",
+      "sha256": "85c1c9ff20d28c33968299c738b19ff752c768c72a53e071533a6960c0329a5a",
+      "bytes": 2216
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/thread_count.c",
+      "sha256": "39515c611a2b42687fb670179f3d9032af1878727356754959061125d40fa7e7",
+      "bytes": 481
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/udp_bind.c",
+      "sha256": "b30150927ffde3162d62012b67d43d95c79754f9539279628d2ad5bc9c040408",
+      "bytes": 882
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/udp_poll.c",
+      "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71",
+      "bytes": 913
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/udp_recv_from.c",
+      "sha256": "4fc0f4e4ddeaef51bc4434b64e9cfcf3888b1470e534fe6ba27f80e48d2b8aef",
+      "bytes": 1324
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/udp_send_to.c",
+      "sha256": "71f92e41fb4cadee6714a0e066c22225d015f9e708cb58393b539cc6ee011721",
+      "bytes": 1440
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/window.c",
+      "sha256": "7bda00a55917f11ff1fa532b1406ec5c1a8a7eef6f6ba2a933dd958256e0a409",
+      "bytes": 23879
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/window_close.c",
+      "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d",
+      "bytes": 916
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/window_frame.c",
+      "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4",
+      "bytes": 11055
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/window_open.c",
+      "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d",
+      "bytes": 6927
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/window_set_title.c",
+      "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5",
+      "bytes": 1141
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/write.c",
+      "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac",
+      "bytes": 370
+    },
+    {
+      "file": "selfhost/src/runtime/native/runtime.c",
+      "sha256": "8729e2aada3f64f6450502519c3ffd5e10a67827a79c7cb2c1dddfe6719b94ac",
+      "bytes": 82017
+    },
+    {
+      "file": "selfhost/src/runtime.mjs",
+      "sha256": "913b6a850c60377dbb13ef98db2811b6c8383ee9fa6a6fc16fcad9c68f8afc54",
+      "bytes": 61250
+    },
+    {
+      "file": "selfhost/tools/assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+      "bytes": 3317
+    },
+    {
+      "file": "selfhost/tools/base-cache-graph.mjs",
+      "sha256": "e1a755e758435da768b77f59e2ea2e7b3b966998ba1b6a6fdd5f1a154cffca62",
+      "bytes": 21085
+    },
+    {
+      "file": "selfhost/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+      "bytes": 4264
+    },
+    {
+      "file": "selfhost/tools/conformance/bootstrap-variant.mjs",
+      "sha256": "013a631d640dbd54f74e45a2cd6afd9710de1630092b8026f8b8520a754354f8",
+      "bytes": 2700
+    },
+    {
+      "file": "selfhost/tools/conformance/compare-artifacts.mjs",
+      "sha256": "8a96dd74c912cc5f2eeaef094540097e74578ed2a359bdd5e0fc341ade0a9849",
+      "bytes": 5377
+    },
+    {
+      "file": "selfhost/tools/conformance/freeze-adapter.mjs",
+      "sha256": "0c3dd0403406da48291cf85e7767156e8abb90b133c348d3b5c745ee238b4e11",
+      "bytes": 1553
+    },
+    {
+      "file": "selfhost/tools/conformance/inventory.mjs",
+      "sha256": "91a1bd7be11e6e66a68c94251814286c9d0173d94a38b445240123bc558bc308",
+      "bytes": 6459
+    },
+    {
+      "file": "selfhost/tools/conformance/judge.mjs",
+      "sha256": "af05b8926bc14fdedf764f2187029363b1f01db2baf5f89787083e3a41395fbb",
+      "bytes": 6345
+    },
+    {
+      "file": "selfhost/tools/conformance/merge-reports.mjs",
+      "sha256": "43dc310a1a85d1884569b9b29ed5d0d6039b1d96862f47742442c5cdb57bd6f5",
+      "bytes": 4271
+    },
+    {
+      "file": "selfhost/tools/conformance/persistent-probe.mjs",
+      "sha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225",
+      "bytes": 12847
+    },
+    {
+      "file": "selfhost/tools/conformance/persistent-worker.mjs",
+      "sha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d",
+      "bytes": 6311
+    },
+    {
+      "file": "selfhost/tools/conformance/replay.mjs",
+      "sha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94",
+      "bytes": 3571
+    },
+    {
+      "file": "selfhost/tools/conformance/report.mjs",
+      "sha256": "255fe2ce4acfbf4979d5bd97c6c5eab1c7815c4d86ce48a136f1773131eedf44",
+      "bytes": 6893
+    },
+    {
+      "file": "selfhost/tools/conformance/run-probe.mjs",
+      "sha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c",
+      "bytes": 4068
+    },
+    {
+      "file": "selfhost/tools/conformance/run.mjs",
+      "sha256": "6f55b4e6f9821c150408e01ec3ea9a428abe62e3f81d6abad9bdd583e9559364",
+      "bytes": 13015
+    },
+    {
+      "file": "selfhost/tools/conformance/selection.mjs",
+      "sha256": "ecdb5a8c451554c3d2dce4ca5e7725e299fa9b63c042e2cf2f7f9c440b2baa7d",
+      "bytes": 4474
+    },
+    {
+      "file": "selfhost/tools/conformance/selfhost.mjs",
+      "sha256": "1ba5fe283c2be0c4b69e47780a3a6104f28b187d364f839196e262e3e5f9698f",
+      "bytes": 9674
+    },
+    {
+      "file": "selfhost/tools/conformance/semantic-summary.mjs",
+      "sha256": "b0ab2acdc50ed48700e89fcdf840d4538b73c1ad5ae3970b79ea877db2ace47e",
+      "bytes": 4777
+    },
+    {
+      "file": "selfhost/tools/conformance/target.mjs",
+      "sha256": "e2ac5403100458239cc65cbc5da77605fbfb108a54d6ae337190dd467e0e0f50",
+      "bytes": 10610
+    },
+    {
+      "file": "selfhost/tools/conformance/typed-report.mjs",
+      "sha256": "c1d2ca257e5bc167697b84526365a89c725d8525887f1bc58e84950a640c2567",
+      "bytes": 8555
+    },
+    {
+      "file": "selfhost/tools/conformance/verify-seed.mjs",
+      "sha256": "d5036d7caab7f9405b317408e4957254ccaf5d3c23d4b0428b9087b92cc263ae",
+      "bytes": 5676
+    },
+    {
+      "file": "selfhost/tools/conformance/worker.mjs",
+      "sha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+      "bytes": 613
+    },
+    {
+      "file": "selfhost/tools/development/equality.mjs",
+      "sha256": "fcc80fd4da249e74f2cfd296c7e88f3c5f795a627e498c26bf5deb4ac8397eb5",
+      "bytes": 31254
+    },
+    {
+      "file": "selfhost/tools/development/equality.test.mjs",
+      "sha256": "bec05fd9da87ebd2bc3640bb4292b70ed5fd32bef94222ad2ab820375b03c615",
+      "bytes": 17679
+    },
+    {
+      "file": "selfhost/tools/development/process.mjs",
+      "sha256": "fe6afbc8964f695e3b7bfe8c636b6da6295fd7265fcdebbf58839f3eafce4989",
+      "bytes": 3013
+    },
+    {
+      "file": "selfhost/tools/development/release.mjs",
+      "sha256": "8df92ed0d28546c1ccc0e69a6fc7e7f74fc4a1c03a4d2c9e11bb60a31130251c",
+      "bytes": 15908
+    },
+    {
+      "file": "selfhost/tools/development/workflow.mjs",
+      "sha256": "4249a59916fcd36ef411d4864a5050489df2fc78deee7ebe0d98684ff80f46f1",
+      "bytes": 18662
+    },
+    {
+      "file": "selfhost/tools/native-build.mjs",
+      "sha256": "a76f2c027459f7ffdb9fc16dc450ee33e0f39c74568df4c74d03309e662c9117",
+      "bytes": 4027
+    },
+    {
+      "file": "selfhost/tools/node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758",
+      "bytes": 685
+    },
+    {
+      "file": "selfhost/tools/performance/phase37/algorithm-oracles.py",
+      "sha256": "94c85f803475a1352465374e7c295dc1ff26f583d101e3fdc2e0ff58bcbb6a27",
+      "bytes": 6565
+    },
+    {
+      "file": "selfhost/tools/performance/phase37/coverage-catalog.py",
+      "sha256": "8d645939ce6541f43fa542f04efacb5b2eb2c4ee1832f60d08bc0e5d6b1030af",
+      "bytes": 12286
+    },
+    {
+      "file": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+      "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+      "bytes": 7134
+    },
+    {
+      "file": "selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+      "sha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "bytes": 768
+    },
+    {
+      "file": "selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+      "sha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+      "bytes": 4633
+    },
+    {
+      "file": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+      "sha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+      "bytes": 1392
+    },
+    {
+      "file": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+      "sha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+      "bytes": 1703
+    },
+    {
+      "file": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+      "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+      "bytes": 556
+    },
+    {
+      "file": "selfhost/tools/performance/phase37/fixtures-new/oracles.py",
+      "sha256": "b590c3b96b2a623e85ab3b4d23ae9e04940f9dfa2d378d8cf873796d22e310b2",
+      "bytes": 10100
+    },
+    {
+      "file": "selfhost/tools/performance/phase46/array-batch.bend",
+      "sha256": "cd989b0fc20dfab2e51cc4f790f699d740c4cff6a1c2b683cb8952b3073a3d10",
+      "bytes": 1934
+    },
+    {
+      "file": "selfhost/tools/performance/phase46/cases.json",
+      "sha256": "d8956572be0cd98a690407c322470e01eb2d8c61d87a0975d43e3f0d1a85d4cf",
+      "bytes": 1925
+    },
+    {
+      "file": "selfhost/tools/performance/phase46/closures-batch.bend",
+      "sha256": "ee3fbda1fa851d6d781977e538512cc868455e2cab091193e8ee90bdccb2a461",
+      "bytes": 1925
+    },
+    {
+      "file": "selfhost/tools/performance/phase46/execute.py",
+      "sha256": "5e24c95228ea620468db7814ce5ece921d969f3466ccf1a66e51c532234114b2",
+      "bytes": 817
+    },
+    {
+      "file": "selfhost/tools/performance/phase46/lexer-batch.bend",
+      "sha256": "e3b661ec47669617618635dc4c69a19bf837e018bd2100b251babe695307206c",
+      "bytes": 1921
+    },
+    {
+      "file": "selfhost/tools/performance/phase46/make-batch.py",
+      "sha256": "071bd7684a0b90ac0df85d825cfad7a652a6761a0169244f2767753bda6f1150",
+      "bytes": 3419
+    },
+    {
+      "file": "selfhost/tools/performance/phase46/map-batch.bend",
+      "sha256": "9e4ae9cda2f58a92d630e2946843d02149b30696ad88b45c2e09db91538ccf28",
+      "bytes": 1926
+    },
+    {
+      "file": "selfhost/tools/performance/phase46/numeric-batch.bend",
+      "sha256": "33da0ca9134f709c22b3e8dd577c8715c9a81cfa3f7fc29d0e303a23aed9316c",
+      "bytes": 1937
+    },
+    {
+      "file": "selfhost/tools/performance/phase46/oracle.py",
+      "sha256": "d7ad109d37b5beb210dfd4942f6d5baa6a2e14a02abb57ac18db656a16d9d2ad",
+      "bytes": 4273
+    },
+    {
+      "file": "selfhost/tools/performance/phase46/tree-batch.bend",
+      "sha256": "2abe55fb145b2ac73e770ed263d469cb2a6f2fac95edac228d69d161fe4c3a55",
+      "bytes": 1928
+    },
+    {
+      "file": "selfhost/tools/performance/phase67/benchmark/analyze.py",
+      "sha256": "e2e6208cac22129a85c81cc139ee0380defd9d64217097650adce23cec228122",
+      "bytes": 3691
+    },
+    {
+      "file": "selfhost/tools/performance/phase67/benchmark/compare.py",
+      "sha256": "02f1ec90da270a561c1e5effe67d2d9c3dc09bc63dd5bad672106d5b9fa028ac",
+      "bytes": 4651
+    },
+    {
+      "file": "selfhost/tools/performance/phase67/benchmark/emit.mjs",
+      "sha256": "8fabddd82219104ba30d22a79ef0ea72c7e2e8ac0ee6587f0b2314bca37d789e",
+      "bytes": 4950
+    },
+    {
+      "file": "selfhost/tools/performance/phase67/benchmark/fast-plan.py",
+      "sha256": "a94c28533fffa7286425014b1486fded365e0bca1038098be7d96136e83e7082",
+      "bytes": 2919
+    },
+    {
+      "file": "selfhost/tools/performance/phase67/benchmark/freeze.py",
+      "sha256": "520fb8019ee74dd60c265f090a69b9ead6d88644676873969a8ff03823f01ed7",
+      "bytes": 3883
+    },
+    {
+      "file": "selfhost/tools/performance/phase67/benchmark/run.py",
+      "sha256": "1c5003a5329b0deb24460b3b5e07d29a146eafbe79fadb8b75c1e6109799c188",
+      "bytes": 6963
+    },
+    {
+      "file": "selfhost/tools/performance/phase67/benchmark/shape.py",
+      "sha256": "dbcde495609341062f835c7cb30be8646068bcf260c7e60987fa01a2df3e7c92",
+      "bytes": 2630
+    },
+    {
+      "file": "selfhost/tools/performance/programs/support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    {
+      "file": "selfhost/tools/typed-driver.mjs",
+      "sha256": "e093483d5103a8e833b6ca710246b1ec3c579b7fac5060c8e42f626c5e25ec85",
+      "bytes": 81423
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-ld.bfd",
+      "sha256": "a65e1f0b0030ee1e322775b7f5bf6bf65ebf25a00a72409b459d2e3913e776ce",
+      "bytes": 1737864
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/controls/fixtures/flat-product-branch-drop-v1.bend",
+      "sha256": "49cbee22709a83eff215c898bbe9ef4fbb79b8bbfbb72cab10096afb96b37fc1",
+      "bytes": 1055
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/controls/integration-v3/catalog-v1.json",
+      "sha256": "bfd8cce9a3792404d176126c6bec175df5aeaac9433eb5c0459aff5963bb3ebf",
+      "bytes": 27884
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/controls/integration-v3/product-branch-drop-selection.json",
+      "sha256": "84a51d050ebe8d949fe4eacde09a4d83dae79d0c31b712ba6589a15aee8abf6e",
+      "bytes": 268
+    },
+    {
+      "file": "selfhost/tools/performance/phase32/bounded-run.py",
+      "sha256": "860b59bce0b8c38e2e548368b14c51825bd62d8da1da200e2049737f1e0e383d",
+      "bytes": 4339
+    },
+    {
+      "file": "selfhost/build/phase68/product-branch-drop10/workflow-retained.mjs",
+      "sha256": "6efd36fc481130f7524fb0dcbd00b273fc9e350681208fba6903ec247fc58cf1",
+      "bytes": 19200
+    },
+    {
+      "file": "selfhost/build/phase68/product-branch-drop10/workflow-derivation.json",
+      "sha256": "6af3048391c3f9937e873815ebd9390b48204efd6cd40a76f326f2e1d4a0a763",
+      "bytes": 1690
+    },
+    {
+      "file": "selfhost/build/phase68/product-branch-drop10/execution/selected/candidate.json",
+      "sha256": "846400565cb7be26cc1871d9f84b9264a44f68481f2ec37bd3264653be99b56d",
+      "bytes": 2023913
+    },
+    {
+      "file": "selfhost/build/phase68/product-branch-drop10/execution/selected/candidate.json.artifacts/0/request.json",
+      "sha256": "0a8c95e3cc9e48b33305d43ce73d2a3f9f807ad2c3eec1a81d6b02888510f386",
+      "bytes": 1528
+    },
+    {
+      "file": "selfhost/build/phase68/product-branch-drop10/execution/selected/candidate.json.artifacts/0/flat-product-branch-drop-v1.c",
+      "sha256": "519d8e0a9e575c003d87141adf42114ff13cac1c8a721ddc4516bc4f03df8d38",
+      "bytes": 126564
+    },
+    {
+      "file": "selfhost/build/phase68/products-demand10/report.json",
+      "sha256": "320ddc79e06597600475c9e781ec44499e41df3425356198a73c59431c3016e3",
+      "bytes": 84643
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/controls/product-demand-v1.mjs",
+      "sha256": "06f5150f9efebd87141d4c4c58afb3b423cfaddf9c08fc15fcea1d9c79c5134f",
+      "bytes": 4877
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/api.mjs.bootstrap.json",
+      "sha256": "430ee21eda08cf272f227760f819bc41c0ca9f0483abf99bfd72cbdc98552e94",
+      "bytes": 94024
+    },
+    {
+      "file": "selfhost/build/phase68/products-build10/equality/api.mjs.derivation.json",
+      "sha256": "0c573e9f47435eb6115ca5a47fa94741be6e90641abb69a37cdd334a3bf623f0",
+      "bytes": 79523
+    },
+    {
+      "file": "selfhost/build/phase68/products-demand10/observed.mjs",
+      "sha256": "2e82319bdf9832c584035b55c037e1d2128040b8827fe0247f21881e8a65409f",
+      "bytes": 2064026
+    },
+    {
+      "file": "selfhost/build/phase68/native-products10/report.json",
+      "sha256": "36d38d52fe2404cadae4fa83b5ad1a08084c494a62d47ced3f7f4813c6edb5e0",
+      "bytes": 51954
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/flat-products/numeric10-source-audit.json",
+      "sha256": "df64a990f3a65ebf9a384632ecbe6389ab980e016dc5f7cedb8a57c482bfac0c",
+      "bytes": 111169
+    },
+    {
+      "file": "selfhost/build/phase68/native-products10/numeric-selfhost/program.c",
+      "sha256": "10f7755731e11ca7d473a67344793b66b6439e8f42b52533d8e60f460efbdbd6",
+      "bytes": 981207
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/flat-products/array10-source-audit.json",
+      "sha256": "e4fd6eebf59fd8d33da0d36d04c9b98bff37d982d1326acf32b55ea706384613",
+      "bytes": 119461
+    },
+    {
+      "file": "selfhost/build/phase68/native-products10/array-selfhost/program.c",
+      "sha256": "9ccca54208121f14ff10e8145d2569f56e1941ebcd26f7e44182a5aa7a866cde",
+      "bytes": 1001443
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/flat-products/lexer10-source-audit.json",
+      "sha256": "cb5f897d91817b2e4f131d15d44f274a1608641d3402cb0ea178680d504a6570",
+      "bytes": 178877
+    },
+    {
+      "file": "selfhost/build/phase68/native-products10/lexer-selfhost/program.c",
+      "sha256": "fa4e29032e0f03316ba021219a88ac1b8e3916e8132f00dc5a2c95615a67dca2",
+      "bytes": 1275404
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/flat-products/audit-emitted-products.py",
+      "sha256": "d81f27b5236f004cb848884d370f039821968472faa7e03c1e2d4c86f00ddd13",
+      "bytes": 9144
+    },
+    {
+      "file": "selfhost/build/phase68/product-signatures10-01/report.json",
+      "sha256": "77e3a7ed7c94cee1fdf7b418018032c69cc1a292f741f7fe843399c9dc44a0fa",
+      "bytes": 482320
+    },
+    {
+      "file": "selfhost/build/phase68/products-raw10/execution/report.json",
+      "sha256": "53626dbc60ce7743c65ed7e002d980a84ee3b84a600f9dcfdc55604eab48edce",
+      "bytes": 4237
+    },
+    {
+      "file": "selfhost/build/phase68/products-raw10-v2/supervisor/run.json",
+      "sha256": "003dd82d4f661c83587d9b29e2b465d8315ff7ffab433e7a32465b38c79546e0",
+      "bytes": 1984
+    },
+    {
+      "file": "selfhost/build/phase68/products-raw10-v2/supervisor/stderr.log",
+      "sha256": "e76632b5612c944e57d96cb86c71424353e7bd1255f1413ebade999bdb3874f0",
+      "bytes": 1157
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/controls/raw-controls-v5.mjs",
+      "sha256": "3dd809ed0390c20dea8ed2ab633b2d634c41036c2cd3783b821cd86f588cfd59",
+      "bytes": 8852
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/controls/raw-controls-v6.mjs",
+      "sha256": "f12d93502b7127455f7b71fb9d37e66ee86436ecc8580a59a208b384d7f8fe81",
+      "bytes": 10039
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/controls/raw-controls-v7.mjs",
+      "sha256": "786cf2662381f82f8c3f8bec1474e87b91f39b66b4b2b0a225f7fd5c9aab7ab4",
+      "bytes": 10038
+    },
+    {
+      "file": "selfhost/build/phase68/products-raw10-v3/execution/report.json",
+      "sha256": "326cff26bc8cdefdf53fe1424429d18e2de0a58feede8770dbf0e75420393997",
+      "bytes": 12683
+    },
+    {
+      "file": "selfhost/build/phase68/products-raw10-v3/plan.json",
+      "sha256": "10cd7959c406265f7d9026c75f8d3b778b8a767fbeeb1eded53ea2b1ac6c02f9",
+      "bytes": 202742
+    },
+    {
+      "file": "selfhost/build/phase68/products-raw10-v3/supervisor/run.json",
+      "sha256": "c263d53c5819e06f2af3af8546e957b04b420687121fa94216c00e76bd477719",
+      "bytes": 1986
+    },
+    {
+      "file": "selfhost/build/phase68/inline-build09/equality/api.mjs",
+      "sha256": "8894d8616b5543d42c9ef6317015bb979d620a537bbd5aed9e82f57dfe5a27d5",
+      "bytes": 2015730
+    },
+    {
+      "file": "implementation/phase68/evidence/occurrence-reuse11.json",
+      "sha256": "69bbacd8b69c9139f93a4815a3fc6123e1e3a7c88d4274b13a34662a2781b6d4",
+      "bytes": 252861
+    },
+    {
+      "file": "selfhost/build/phase68/reuse-build11/attempt.json",
+      "sha256": "ddef24889dd769a4fc690d3bc58937dfae21d3cc7e0d12a15212d5850e2580f7",
+      "bytes": 303480
+    },
+    {
+      "file": "selfhost/build/phase68/reuse-build11/equality/api.mjs",
+      "sha256": "3612aaaecc320183758e2236ff3ffff030ca00311e9915c70f0603541850d738",
+      "bytes": 2064632
+    },
+    {
+      "file": "selfhost/build/phase68/reuse-build11/validation-001/report.json",
+      "sha256": "790880a0391557e3da44618c49e6221f03d5cf35d5aa0255ddad144dc57ddf52",
+      "bytes": 8894
+    },
+    {
+      "file": "selfhost/build/phase68/reuse-controls11/report.json",
+      "sha256": "a51e972bccdfa21ba03cbfd72d55773d49d1468ae778fef3031d9c41f6eb0326",
+      "bytes": 1273134
+    },
+    {
+      "file": "selfhost/build/phase68/reuse-c11/plan.json",
+      "sha256": "975f9f4a8415a57978970507b39a3f1c3e0d2e762d6d05dcad2b2ce5ab50bca9",
+      "bytes": 208729
+    },
+    {
+      "file": "selfhost/build/phase68/reuse-c11/report.json",
+      "sha256": "564d2c5bd1418a5ae82be7607b504df0d07ab6ddc58aa8f1c48954193f340099",
+      "bytes": 310
+    },
+    {
+      "file": "selfhost/build/phase68/native-inline-fast09/report.json",
+      "sha256": "94dfbd6d67a9af931a786ef306732e409318b72ff624db9e6e525e4262fd3077",
+      "bytes": 52855
+    },
+    {
+      "file": "selfhost/build/phase68/native-products-fast10/report.json",
+      "sha256": "5f04ee06bbd7f1e8769564baa1fdbd3cdda1e82d4d17f9050ee4643c16c7b891",
+      "bytes": 52894
+    }
+  ]
+}

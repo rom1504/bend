@@ -1,0 +1,164 @@
+{
+  "kind": "phase68-native-correctness-catalog",
+  "targetExecuted": false,
+  "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "reference": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66",
+  "sets": {
+    "eta-fast": [
+      "phase68/match-arity-packet.bend",
+      "compile/erasure_match_arm.bend",
+      "compile/erased_partial_closure.bend",
+      "compile/over_application.bend",
+      "compile/match_absurd_tail.bend",
+      "phase68/matcher-shared-residual-v2.bend",
+      "phase68/error-order-saturated.bend",
+      "phase68/error-order-partial.bend",
+      "phase68/error-order-staged-v2.bend"
+    ]
+  },
+  "cases": [
+    {
+      "id": "phase68/match-arity-packet.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/match-arity-packet.bend",
+        "sha256": "c09c80b019278591caf94ec4bc6e06c634e56ce4a17d7b3dbcedbc9abd7ee976",
+        "bytes": 838
+      },
+      "external": true,
+      "purpose": "common matcher suffix lambda, unequal syntactic arm, partial callback escape; independent arithmetic12290711",
+      "goldenLines": [
+        "12290711"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "compile/erasure_match_arm.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/erasure_match_arm.bend",
+        "sha256": "0a2edf53eb72a46d92d3660a3fba08cb6f0ab5f865fea069bae3c8b8ee8aa377",
+        "bytes": 726
+      },
+      "external": false,
+      "purpose": "source constructor fields versus live emitted fields",
+      "goldenLines": [
+        "11"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "compile/erased_partial_closure.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/erased_partial_closure.bend",
+        "sha256": "6cd012e49a9622ccf1026e9333cae84318f4f84bd7997580a384cb9d5c3ba114",
+        "bytes": 565
+      },
+      "external": false,
+      "purpose": "erased remaining parameter in opaque closure",
+      "goldenLines": [
+        "3"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "compile/over_application.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/over_application.bend",
+        "sha256": "cf14db87224d84b118a5797c72c24c4418a2ae85268a5fc322883f0f14efde96",
+        "bytes": 544
+      },
+      "external": false,
+      "purpose": "remaining arguments dynamically apply returned value",
+      "goldenLines": [
+        "42"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "compile/match_absurd_tail.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/match_absurd_tail.bend",
+        "sha256": "7d07583390c764a300b26e48892176dafa275c6f0ddfc53802a377e67c9165a2",
+        "bytes": 765
+      },
+      "external": false,
+      "purpose": "unreachable partial match closure must compile without being evaluated",
+      "goldenLines": [
+        "ok"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "phase68/matcher-shared-residual-v2.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/matcher-shared-residual-v2.bend",
+        "sha256": "2ce4d339ee1ff2e584acc1df3931e6ef1c3f06c2ff4cc62efb100e9b50cce0bd",
+        "bytes": 654
+      },
+      "external": true,
+      "purpose": "same owned constructor used as matched scrutinee, residual argument, and captured partial closure; independent four copies of keep",
+      "goldenLines": [
+        "keepkeepkeepkeep"
+      ],
+      "status": "unexecuted Phase68 proposal; inherited fixtures retain their earlier scope only"
+    },
+    {
+      "id": "phase68/error-order-saturated.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v1/saturated.bend",
+        "sha256": "91b3d2bff40a4969471d481cefa43abe3810624ff688f1aeae23ec890aff7abd",
+        "bytes": 580
+      },
+      "external": true,
+      "goldenLines": [
+        "bend: a Nat past the largest immediate 2^48-1",
+        "exit 1"
+      ],
+      "scope": "Competing failure order; request construction never dispatches SECRET. Actual upstream and candidate output must independently match the golden."
+    },
+    {
+      "id": "phase68/error-order-partial.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v1/partial.bend",
+        "sha256": "67b757b2141734d5f1f3fbcfdb0e2ee8824f7d367bbc2272559d5acfbcd7e763",
+        "bytes": 654
+      },
+      "external": true,
+      "goldenLines": [
+        "bend: a Nat past the largest immediate 2^48-1",
+        "exit 1"
+      ],
+      "scope": "Competing failure order; request construction never dispatches SECRET. Actual upstream and candidate output must independently match the golden."
+    },
+    {
+      "id": "phase68/error-order-staged-v2.bend",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v2/staged.bend",
+        "sha256": "28bda0a151f551a2a8ddd8ee772c9a036773d84f900d9fa55fdbb9966dc711a0",
+        "bytes": 546
+      },
+      "external": true,
+      "goldenLines": [
+        "bend: runtime fail-stop",
+        "exit 1"
+      ],
+      "scope": "Competing failure order; request construction never dispatches SECRET. Actual upstream and candidate output must independently match the golden."
+    }
+  ],
+  "predecessor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/catalog-v1.json",
+    "sha256": "94b0a4ba13b211168703f5c92949f02595ce0a008f1051fdb6e535e7153984b1",
+    "bytes": 19887
+  },
+  "repairs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/matcher-shared-v2.json",
+      "sha256": "bb1248cd3f3bdcf148c421373dee62f5a74cd576846d8a39d868ea87cc4f513d",
+      "bytes": 2030
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v2/manifest.json",
+      "sha256": "a58c304176f57aeea654fd13b68a294c7f430c95a2eee32e064909d9021e6010",
+      "bytes": 1554
+    }
+  ]
+}

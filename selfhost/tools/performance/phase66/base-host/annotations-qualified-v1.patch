@@ -1,0 +1,11 @@
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -574,7 +574,7 @@
+ const BASE_ANNOTATIONS='bend-base-annotations-1',BASE_ANNOTATION_WORK=64;
+ // Product normalization is qualified only for this exact standard Base content.
+ // A changed or custom Base uses ordinary annotation until independently qualified.
+-const BASE_ANNOTATION_BASE_SHA256='c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661';
++const BASE_ANNOTATION_BASE_SHA256='99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf';
+ const baseAnnotationApis=api=>['base_annotation_prepare','base_annotation_wanted','base_annotation_allowed','annotate_selected_base'].every(name=>typeof api[name]==='function');
+ const baseAnnotationFile=info=>path.join(baseAnnotationDirectory,path.basename(info.file).replace(/-frame4\.json$/,'-annotations64-v1.bin'));
+ function readAnnotationBytes(fd,length,position) {

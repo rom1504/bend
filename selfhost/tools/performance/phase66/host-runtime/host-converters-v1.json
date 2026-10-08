@@ -1,0 +1,82 @@
+{
+  "status": "isolated-unapplied-unexecuted",
+  "files": [
+    {
+      "path": "selfhost/src/back/js/direct/host.bend",
+      "beforeSha256": "6432002e0c5313946984d9ed77c8c5cdf55e8c7faa15f7ea806a88cebf92a550",
+      "afterSha256": "7f6cd856faef9aeba1b7cd1894d8820de49f7038fcb854ac2cfa3009d207f44f",
+      "candidate": "selfhost/tools/performance/phase66/host-runtime/candidate-v1/selfhost/src/back/js/direct/host.bend",
+      "beforeLines": 398,
+      "afterLines": 389
+    }
+  ],
+  "patch": "selfhost/tools/performance/phase66/host-runtime/host-converters-v1.patch",
+  "patchSha256": "f5ac7407d31ef62e55fd2b0e21cc892a9f042553bc564c9e7320346f94a3fab5",
+  "edits": [
+    {
+      "before": "@unsafe\ndef jd_host_marshal_on(+book: List<&2,KDef>, +t: KTerm, +out: Bool,\n  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> String:\n  kc(String, String.eq(tg(t), \"All\"), u =>\n    jd_host_marshal_fun(book, t, out, seen, depth, fuel), u =>\n    kc(String, String.eq(tg(t), \"ADT\"), u =>\n      kc(String, String.eq(nm(t), \"Nat\") && db(lookup(book, nm(t))),\n        u => kc(String, out, u => \"BigInt\", u => \"nat_host\"), u =>\n      kc(String, String.eq(nm(t), \"Array\") && db(lookup(book, nm(t))),\n        u => \"((a)=>(a.forEach((x,i)=>a[i]=\" ++\n          jd_host_marshal(book, kid(t, 0), out, seen, depth, fuel) ++ \"(x)),a))\", u =>\n        jd_host_marshal_status(book, t, out, seen, depth, fuel, jd_host_nat_known(book, t)))), u => \"\"))\n\n",
+      "after": "@unsafe\ndef jd_host_marshal_on(+book: List<&2,KDef>, +t: KTerm, +out: Bool,\n  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> String:\n  kc(String, String.eq(tg(t), \"All\"), u =>\n    jd_host_marshal_fun(book, t, out, seen, depth, fuel), u =>\n    kc(String, String.eq(tg(t), \"ADT\"), u =>\n      kc(String, String.eq(nm(t), \"Nat\") && db(lookup(book, nm(t))),\n        u => kc(String, out, u => \"BigInt\", u => \"nat_host\"), u =>\n        jd_host_marshal_status(book, t, out, seen, depth, fuel, jd_host_nat_known(book, t))), u => \"\"))\n\n"
+    },
+    {
+      "before": "@unsafe\ndef jd_host_marshal_named(+book: List<&2,KDef>, +t: KTerm, +out: Bool,\n  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> String:\n  +key = jd_host_marshal_key(t, out)\n  +found = jd_host_marshal_find(seen, key)\n  kc(String, Bool.not(String.eq(found, \"\")), u => found, u =>\n    \"(function $dm\" ++ U32.show(depth) ++ \"(v){const top=[v];for(let at=top,key=0;;){switch(v.$){\" ++\n      jd_host_marshal_ctors(book, dc(lookup(book, nm(t))), ks(t), out,\n        Con{kt(\"JDMarshal\", key, depth, 0, Nil{}), seen}, U32.inc(depth), fuel, \"$dm\" ++ U32.show(depth)) ++\n      \"default:throw \" ++ j_quote(\"bend: \" ++ nm(t) ++ \" has no tag \") ++ \"+v?.$+\" ++\n        j_quote(\" (its tags: \" ++ jd_host_ctor_tags(dc(lookup(book, nm(t)))) ++\n          \"); a tag names its constructor as the loading file sees it, which a later version will make the same everywhere (#1105)\") ++ \";}}})\")\n\n",
+      "after": "# Every ADT or Array converter shares one explicit work stack. Its owner\n# drains pending (converter, object, field) triples; Nat and function parts\n# convert immediately. Named lexical references close recursive type graphs.\n@unsafe\ndef jd_host_marshal_named(+book: List<&2,KDef>, +t: KTerm, +out: Bool,\n  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> String:\n  +key = jd_host_marshal_key(t, out)\n  +found = jd_host_marshal_find(seen, key)\n  kc(String, Bool.not(String.eq(found, \"\")), u => found, u =>\n    \"(function $dm\" ++ U32.show(depth) ++ \"(v,q){const own=q===undefined;if(own)q=[];let r;\" ++\n      jd_host_marshal_body(book, t, out,\n        Con{kt(\"JDMarshal\", key, depth, 0, Nil{}), seen}, U32.inc(depth), fuel) ++\n      \"if(own)while(q.length){const i=q.pop(),a=q.pop();a[i]=q.pop()(a[i],q);}return r;})\")\n\n@unsafe\ndef jd_host_marshal_body(+book: List<&2,KDef>, +t: KTerm, +out: Bool,\n  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> String:\n  kc(String, String.eq(nm(t), \"Array\") && db(lookup(book, nm(t))), u =>\n    \"r=v;v.forEach((x,i)=>{\" ++\n      jd_host_marshal_put(jd_host_marshal(book, kid(t, 0), out, seen, depth, fuel), \"v\", \"i\") ++ \"});\", u =>\n    \"switch(v.$){\" ++ jd_host_marshal_ctors(book, dc(lookup(book, nm(t))), ks(t), out, seen, depth, fuel) ++\n      \"default:throw \" ++ j_quote(\"bend: \" ++ name_key(nm(t)) ++ \" has no tag \") ++ \"+v?.$+\" ++\n        j_quote(\" (its tags: \" ++ jd_host_ctor_tags(dc(lookup(book, nm(t)))) ++\n          \"); a tag names its constructor as the loading file sees it, which a later version will make the same everywhere (#1105)\") ++ \";}\")\n\n# Composite expressions and lexical recursive references accept the shared q.\n# Function wrappers and scalar conversions deliberately stay immediate.\n@unsafe\ndef jd_host_marshal_put(+marshal: String, +object: String, +field: String) -> String:\n  kc(String, String.eq(marshal, \"\"), u => \"\", u =>\n    kc(String, String.starts_with(marshal, \"$dm\") || String.starts_with(marshal, \"(function $dm\"), u =>\n      \"q.push(\" ++ marshal ++ \",\" ++ object ++ \",\" ++ field ++ \");\", u =>\n      object ++ \"[\" ++ field ++ \"]=\" ++ marshal ++ \"(\" ++ object ++ \"[\" ++ field ++ \"]);\") )\n\n"
+    },
+    {
+      "before": "  +out: Bool, +seen: List<&2,KTerm>, +depth: U32, +fuel: U32, +self: String) -> String:\n  match ctors:\n    case Nil{}: \"\"\n    case Con{c, rest}:\n      jd_host_marshal_arm(book, c, j_specialize(book, dt(c), args), out, seen, depth, fuel, self) ++\n      jd_host_marshal_ctors(book, rest, args, out, seen, depth, fuel, self)",
+      "after": "  +out: Bool, +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> String:\n  match ctors:\n    case Nil{}: \"\"\n    case Con{c, rest}:\n      jd_host_marshal_arm(book, c, j_specialize(book, dt(c), args), out, seen, depth, fuel) ++\n      jd_host_marshal_ctors(book, rest, args, out, seen, depth, fuel)"
+    },
+    {
+      "before": "# One constructor field plan supplies both tail selection and field output.\n# The end retains the original field-telescope refusal fragment, including when\n# the exhausted telescope might otherwise have ended. Conversion depth/fuel is\n# identical to the old independent tail and field traversals.",
+      "after": "# One constructor field plan supplies the copy decision and queued field work.\n# An exhausted telescope keeps its explicit refusal; it cannot silently omit\n# an unconverted field. Type-planning depth/fuel remains bounded."
+    },
+    {
+      "before": "@unsafe\ndef jd_host_marshal_arm(+book: List<&2,KDef>, +c: KDef, +tel: KTerm, +out: Bool,\n  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32, +self: String) -> String:\n  jd_host_marshal_arm_fields(c, jd_host_marshal_field_rows(book, tel, out, seen, depth, fuel), self)\n\n@unsafe\ndef jd_host_marshal_arm_fields(+c: KDef, +fields: JDHostFields, +self: String) -> String:\n  +tail = jd_host_marshal_rows_tail(fields, self)\n  +copy = jd_host_marshal_rows_text(fields, tail)\n  \"case \" ++ j_quote(dn(c)) ++ \":\" ++\n    kc(String, String.eq(copy ++ tail, \"\"), u => \"at[key]=v;return top[0];\", u =>\n      \"at=at[key]={...v\" ++ copy ++ \"};\" ++ kc(String, String.eq(tail, \"\"),\n        u => \"return top[0];\", u => \"key=\" ++ j_quote(tail) ++ \";v=v[key];continue;\"))\n\n",
+      "after": "@unsafe\ndef jd_host_marshal_arm(+book: List<&2,KDef>, +c: KDef, +tel: KTerm, +out: Bool,\n  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> String:\n  jd_host_marshal_arm_fields(c, jd_host_marshal_field_rows(book, tel, out, seen, depth, fuel))\n\n@unsafe\ndef jd_host_marshal_arm_fields(+c: KDef, +fields: JDHostFields) -> String:\n  +work = jd_host_marshal_rows_text(fields)\n  \"case \" ++ j_quote(name_key(dn(c))) ++ \":r=\" ++\n    kc(String, String.eq(work, \"\"), u => \"v;\", u => \"{...v};\") ++ work ++ \"break;\"\n\n"
+    },
+    {
+      "before": "    u => JDHostFieldsEnd{\",[\\\"$unsupported\\\"]:\" ++ jd_host_error(\"host field telescope depth\") ++ \"()\"})",
+      "after": "    u => JDHostFieldsEnd{jd_host_error(\"host field telescope depth\") ++ \"();\"})"
+    },
+    {
+      "before": "@unsafe\ndef jd_host_marshal_rows_tail(+fields: JDHostFields, +self: String) -> String:\n  match fields:\n    case JDHostFieldsEnd{error}: \"\"\n    case JDHostFieldsCon{name, marshal, rest}:\n      jd_host_marshal_tail_done(name, String.eq(marshal, self), jd_host_marshal_rows_tail(rest, self))\n\n@unsafe\ndef jd_host_marshal_rows_text(+fields: JDHostFields, +tail: String) -> String:\n  match fields:\n    case JDHostFieldsEnd{error}: error\n    case JDHostFieldsCon{name, marshal, rest}:\n      kc(String, String.eq(name, tail), u => \"\", u => jd_host_marshal_field(name, marshal)) ++\n        jd_host_marshal_rows_text(rest, tail)\n\n# Like pinned js_marshal: choose the last directly self-recursive field as the\n# iterative spine, converting other fields left-to-right before following it.\n\n\n@unsafe\ndef jd_host_marshal_tail_done(+name: String, +same: Bool, +rest: String) -> String:\n  kc(String, Bool.not(String.eq(rest, \"\")), u => rest, u => kc(String, same, u => name, u => \"\"))\n\n\n\n@unsafe\ndef jd_host_marshal_field(+name: String, +marshal: String) -> String:\n  kc(String, String.eq(marshal, \"\"), u => \"\", u =>\n    \",\" ++ jd_literal_field_key(name, False{}) ++ \":\" ++ marshal ++ \"(v[\" ++ j_quote(name) ++ \"])\")\n\n",
+      "after": "@unsafe\ndef jd_host_marshal_rows_text(+fields: JDHostFields) -> String:\n  match fields:\n    case JDHostFieldsEnd{error}: error\n    case JDHostFieldsCon{name, marshal, rest}:\n      jd_host_marshal_put(marshal, \"r\", j_quote(name)) ++ jd_host_marshal_rows_text(rest)\n\n"
+    },
+    {
+      "before": "# The full IO telescope includes its erased result type and final live kont.\n# Evaluate registry run/need before marshalling arguments, like pinned js_def.",
+      "after": "# The full IO telescope includes its erased result type and final live kont.\n# The runtime resolves the displayed effect tag when the request is executed."
+    },
+    {
+      "before": "    \"function \" ++ jd_name(dn(d)) ++ \"(\" ++ jd_host_names(live, 0) ++ \"){return {$:\\\"$FFI\\\",run:$0eff[\" ++\n      j_quote(dn(d)) ++ \"].run,need:$0eff[\" ++ j_quote(dn(d)) ++ \"].need,args:[\" ++",
+      "after": "    \"function \" ++ jd_name(dn(d)) ++ \"(\" ++ jd_host_names(live, 0) ++ \"){return {$:\" ++\n      j_quote(name_key(dn(d))) ++ \",args:[\" ++"
+    },
+    {
+      "before": "      u => \"no JavaScript effect source for \" ++ dn(d), u => jd_foreign_error(rest))",
+      "after": "      u => \"no JavaScript effect source for \" ++ name_key(dn(d)), u => jd_foreign_error(rest))"
+    },
+    {
+      "before": "# Both CID and FID expand to quoted names, exactly as pinned c_ids(js=true).",
+      "after": "# Both CID and FID expand to quoted display names, as c_ids(js=true)."
+    },
+    {
+      "before": "    case Con{part, rest}: kc(String, String.eq(tg(part), \"Text\"), u => nm(part), u => j_quote(nm(part))) ++ jd_source_parts(rest)",
+      "after": "    case Con{part, rest}: kc(String, String.eq(tg(part), \"Text\"), u => nm(part), u => j_quote(name_key(nm(part)))) ++ jd_source_parts(rest)"
+    },
+    {
+      "before": "      \"if (!(\" ++ j_quote(dn(d)) ++ \" in $0eff)) throw new Error(\" ++\n        j_quote(\"bend: no effect registers \" ++ dn(d)) ++ \");\\n\", u => \"\")",
+      "after": "      \"if (!(\" ++ j_quote(name_key(dn(d))) ++ \" in $0eff)) throw new Error(\" ++\n        j_quote(\"bend: no effect registers \" ++ name_key(dn(d))) ++ \");\\n\", u => \"\")"
+    },
+    {
+      "before": "      dn(c) ++\n        kc(String, List.is_empty(&2,KDef, rest),",
+      "after": "      name_key(dn(c)) ++\n        kc(String, List.is_empty(&2,KDef, rest),"
+    },
+    {
+      "before": "      u => j_quote(dn(d)) ++ \":\" ++ jd_host_error(\"host result telescope budget\") ++ \",\\n\", u =>\n      j_quote(dn(d)) ++ \":run_lib(\"",
+      "after": "      u => j_quote(name_key(dn(d))) ++ \":\" ++ jd_host_error(\"host result telescope budget\") ++ \",\\n\", u =>\n      j_quote(name_key(dn(d))) ++ \":run_lib(\""
+    }
+  ],
+  "dependencies": [
+    "frontend core name_key replaces only first colon with dot",
+    "current upstream runtime effect-request and shared queue semantics"
+  ],
+  "scope": "Composite ADT/Array explicit shared work stack; lexical named conversion references retained; scalar/function conversion immediate; ADT copies and Array mutation retained. New request-tag effect ABI; public names projected with name_key. No target run."
+}

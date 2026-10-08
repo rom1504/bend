@@ -1,0 +1,42 @@
+{
+  "kind": "phase66-base-host-candidate",
+  "version": 1,
+  "status": "isolated-unexecuted",
+  "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "reference": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66",
+  "base": {
+    "upstreamPath": "bend2/base.bend",
+    "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+    "bytes": 75064
+  },
+  "providers": 35,
+  "removed": [
+    "tcp_poll.js",
+    "udp_poll.js"
+  ],
+  "h2Permission": "unchanged old standard Base; new Base disabled pending explicit qualification",
+  "files": [
+    {
+      "path": "selfhost/tools/typed-driver.mjs",
+      "beforeSha256": "a11ceb95443776cceb627964e3bb3eafe04863100af5c18475a4028bcdc96581",
+      "afterSha256": "fd4715ef638e0aa7fed720e8e134d76e6940a674dd2fa3fe06eaee82ba5b1332",
+      "candidate": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-host/candidate-v1/selfhost/tools/typed-driver.mjs"
+    },
+    {
+      "path": "selfhost/src/runtime/js/effs/manifest.json",
+      "beforeSha256": "0c509cc90e56d95fe8fdb54f50dd4bd7f68a2d910acf04a93689364b126aad3c",
+      "afterSha256": "9d0ee345ec98cb177d258e5e9c080b09b67ae396fd975df332081332e10f69e4",
+      "candidate": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-host/candidate-v1/selfhost/src/runtime/js/effs/manifest.json"
+    },
+    {
+      "path": "selfhost/src/runtime/js/effs/README.md",
+      "beforeSha256": "9f4de68348084afbe787f3b4b70e290ee7dd434eff21a58dd0edc25f385154b7",
+      "afterSha256": "fbcffbc71f6ed64fc8bbd22ec439369fe751521a035409f8b7aa13d76b31fa9a",
+      "candidate": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-host/candidate-v1/selfhost/src/runtime/js/effs/README.md"
+    }
+  ],
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/base-host-v1.patch",
+    "sha256": "19aa08e3b54590d706ac5e0184d0b0148b54f89d429dd69ec928f6cfc4c8933d"
+  }
+}

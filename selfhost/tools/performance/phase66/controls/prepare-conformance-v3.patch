@@ -1,0 +1,87 @@
+--- /home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/controls/prepare-conformance-v2.py
++++ selfhost/tools/performance/phase66/controls/prepare-conformance-v3.py
+@@ -19,9 +19,13 @@
+     ap.add_argument('--attempt',type=Path,required=True)
+     ap.add_argument('--out',type=Path,required=True)
+     ap.add_argument('--roles',default='typescript-old,typescript-new,bend-unchanged-new-base')
+-    ap.add_argument('--scope',choices=['screen25','delta','full-frontend','full-js'],default='screen25')
++    ap.add_argument('--scope',choices=['screen25','delta','full-frontend','full-js','selected'],default='screen25')
++    ap.add_argument('--selection',type=Path)
++    ap.add_argument('--js-backend',choices=['direct','legacy'],default='direct')
+     ap.add_argument('--node',type=Path,default=Path('/home/ai/.nvm/versions/node/v24.18.0/bin/node'))
+     a=ap.parse_args(); a.out=a.out.resolve()
++    assert (a.scope=='selected') == bool(a.selection)
++    custom_selection=json.loads(a.selection.read_text()) if a.selection else None
+     assert a.out.is_relative_to(RAW) and not a.out.exists()
+     f=a.attempt/'attempt.json' if a.attempt.is_dir() else a.attempt
+     at=json.loads(f.read_text()); assert at['checked']
+@@ -70,15 +74,28 @@
+         # Upstream changed only display spelling here; preserve raw graph/trust propagation.
+         adapter_change=None
+         if is_ts and not old:
+-            old_adapter=pin(adapter); text=adapter.read_text()
+-            needle="list.map(key=>'- '+key+'\\n').join('')"
++            old_adapter=pin(adapter); text=adapter.read_text(); edits=[]
++            for old_text,new_text in [("list.map(key=>'- '+key+'\\n').join('')","list.map(key=>'- '+B.name_key(key)+'\\n').join('')"),
++                ("term.$==='ADT'?term.c:[term]","term.$==='ADT'?[term,...term.c]:[term]")]:
++                if old_text in text:
++                    assert text.count(old_text)==1; text=text.replace(old_text,new_text); edits.append(dict(before=old_text,after=new_text))
++                else: assert text.count(new_text)==1
++            adapter.write_text(text)
++            adapter_change=dict(before=old_adapter,after=pin(adapter),edits=edits,reason='0592662 main.ts: displayed name_key plus ADT own kind dependencies; raw graph keys unchanged')
++        backend_change=None
++        if not is_ts and a.js_backend=='direct' and a.scope in ['screen25','full-js','selected']:
++            old_adapter=pin(adapter); text=adapter.read_text(); needle='backend:lane,combinedOutput:true'
+             assert text.count(needle)==1
+-            text=text.replace(needle,"list.map(key=>'- '+B.name_key(key)+'\\n').join('')")
++            text=text.replace(needle,"backend:lane==='js'?'direct':lane,combinedOutput:true")
+             adapter.write_text(text)
+-            adapter_change=dict(before=old_adapter,after=pin(adapter),reason='0592662 main.ts declaration verdict displays name_key; raw keys and trust propagation unchanged')
++            backend_change=dict(before=old_adapter,after=pin(adapter),reason='Explicit primary direct JS lane; ordinary owned driver, unchanged output oracle')
+         environment={'BEND_UPSTREAM':str(tree),'BEND_BASE':str(base),'BEND_TYPED_API':str(api),
+             'BEND_TYPED_RUNTIME':str(project/'src/runtime.mjs'),'BEND_TYPED_TRACE':'','NODE_OPTIONS':'','NODE_PATH':''}
+         lanes=['frontend','js'] if a.scope=='screen25' else ['js'] if a.scope=='full-js' else ['frontend']
++        if custom_selection is not None:
++            wanted={x for row in custom_selection['cases'] for x in row['lanes']}
++            assert wanted and wanted <= {'parse','check','js'}
++            lanes=(["frontend"] if wanted & {'parse','check'} else [])+(["js"] if 'js' in wanted else [])
+         for lane in lanes:
+             dest=a.out/role/lane; dest.mkdir()
+             command=[str(a.node),'--stack-size=4096','--max-old-space-size=1024',str(project/'tools/conformance/run.mjs'),
+@@ -87,9 +104,11 @@
+                 '--recycle-after','64','--rss-limit-mb','1536','--stack-kb','4096','--heap-mb','1024',
+                 '--lanes','parse,check' if lane=='frontend' else 'js','--retain','all','--selected-exit','1']
+             expected=None
+-            if a.scope in {'screen25','delta','full-js'}:
+-                name={'screen25':'screen25.json','delta':'delta-frontend.json','full-js':'full-js-applicable.json'}[a.scope]
+-                selection=json.loads((inv/name).read_text())
++            if a.scope in {'screen25','delta','full-js','selected'}:
++                if custom_selection is not None: selection=custom_selection
++                else:
++                    name={'screen25':'screen25.json','delta':'delta-frontend.json','full-js':'full-js-applicable.json'}[a.scope]
++                    selection=json.loads((inv/name).read_text())
+                 cases=[]
+                 for row in selection['cases']:
+                     ls=[x for x in row['lanes'] if (x in ['parse','check'])==(lane=='frontend')]
+@@ -98,7 +117,7 @@
+                 selected=dest/'selection.json';selected.write_text(json.dumps(dict(cases=cases),indent=2)+'\n')
+                 expected=sum(len(x['lanes']) for x in cases);command+=['--selection',str(selected)]
+             else: expected=(1513 if old else 1587)*2
+-            seconds=180 if a.scope=='screen25' else 600 if a.scope=='delta' else 1800
++            seconds=180 if a.scope in ['screen25','selected'] else 600 if a.scope=='delta' else 1800
+             guard=['python3','-B',str(ROOT/'selfhost/tools/performance/phase32/bounded-run.py'),'--seconds',str(seconds),
+                 '--rss-mib','2048','--available-mib','4096',str(dest/'supervisor'),'--','taskset','-c','3',
+                 'env',*[key+'='+value for key,value in environment.items()],*command]
+@@ -106,10 +125,10 @@
+                 report=str(dest/'report.json'),expectedExitCodes=[0,1],
+                 interpretation='Exit1 may mean completed observed conformance failures. Never convert it into passing conformance; require finished/stable inputs and inspect every row. Crashes/timeouts are separate.'))
+         images.append(dict(role=role,attempt=pin(f),compilerImage=pin(api),defaultCompilerImage=pin(default_api),upstream=revision,base=pin(base),bundledBase=pin(bundled_base),
+-            harnessManifestBefore=before,harnessManifestAfter=pin(manifest),adapterDisplayChange=adapter_change,copies=copies,
++            harnessManifestBefore=before,harnessManifestAfter=pin(manifest),adapterDisplayChange=adapter_change,adapterBackendChange=backend_change,copies=copies,
+             scope='Private tool/project copy; original compiler image preserved. New Base and reference/harness pin are explicit independent axes.'))
+     result=dict(kind='phase66-conformance-observation-recipe',executed=False,producer=pin(Path(__file__)),node=pin(a.node),
+-        scope=a.scope,roles=roles,images=images,commands=commands,
++        scope=a.scope,roles=roles,jsBackend=a.js_backend,selection=pin(a.selection) if a.selection else None,images=images,commands=commands,
+         policy='Root executes serial CPU3 guarded jobs individually. Do not feed expected failures to a stop-on-nonzero launcher without preserving and interpreting their reports. Frontend uses one persistent worker; JS execution is isolated. No Lean kernel/GPU targets or new performance claim.')
+     out=a.out/'recipe.json';out.write_text(json.dumps(result,indent=2)+'\n')
+     print(json.dumps(dict(recipe=pin(out),commands=len(commands),targetExecuted=False)))

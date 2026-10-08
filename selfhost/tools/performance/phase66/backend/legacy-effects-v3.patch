@@ -1,0 +1,278 @@
+--- a/selfhost/src/back/js/foreign.bend
++++ b/selfhost/src/back/js/foreign.bend
+@@ -147,7 +147,7 @@
+ 
+ @unsafe
+ def j_builtin_effect(name):
+-  String.contains("|IO.print|IO.write|IO.print_err|IO.get_env|IO.args|IO.random_u32|IO.spawn|IO.sleep|IO.now|IO.thread_count|Process.run|Chan.new|Chan.send|Chan.recv|Chan.close|File.open|File.read|File.read_bytes|File.read_at|File.size|File.write|File.write_bytes|File.close|TCP.listen|TCP.accept|TCP.connect|TCP.send|TCP.recv|TCP.send_bytes|TCP.recv_bytes|TCP.poll|UDP.bind|UDP.send_to|UDP.recv_from|UDP.poll|Socket.close|Listener.close|Window.open|Window.frame|Window.set_title|Window.grab|Window.close|Audio.open|Audio.write|Audio.close|", "|" ++ name ++ "|")
++  String.contains("|IO.print|IO.write|IO.print_err|IO.get_env|IO.args|IO.random_u32|IO.spawn|IO.sleep|IO.now|IO.thread_count|Process.run|Chan.new|Chan.send|Chan.recv|Chan.try_send|Chan.try_recv|Chan.close|File.open|File.read|File.read_bytes|File.read_at|File.size|File.write|File.write_bytes|File.close|TCP.listen|TCP.accept|TCP.try_accept|TCP.connect|TCP.send|TCP.try_send|TCP.recv|TCP.try_recv|TCP.send_bytes|TCP.try_send_bytes|TCP.recv_bytes|TCP.try_recv_bytes|UDP.bind|UDP.send_to|UDP.try_send_to|UDP.send_bytes_to|UDP.try_send_bytes_to|UDP.recv_from|UDP.try_recv_from|UDP.recv_bytes_from|UDP.try_recv_bytes_from|Socket.close|Listener.close|Window.open|Window.frame|Window.set_title|Window.grab|Window.close|Audio.open|Audio.write|Audio.close|", "|" ++ name ++ "|")
+ 
+ # The shared scanner resolves foreign identifiers before either backend emits.
+ @unsafe
+--- a/selfhost/src/runtime.mjs
++++ b/selfhost/src/runtime.mjs
+@@ -382,7 +382,7 @@
+   }
+   return i===a.length?(j===b.length?0:-1):1;
+ }
+-for(const k of ['Type','Data','Quant','Unit','Bool','Cmp','Nat','U32','F32','Char','String','List','Maybe','Result','Token','Node','Parsed','Scanned','File','IO','Array','Pair','Kind','Empty','Chan','Socket','Listener','Window','Audio','App','Image','Event','Exists','Or'])G[k]={typeName:k};
++for(const k of ['Type','Data','Quant','Unit','Bool','Cmp','Nat','U32','F32','Char','String','List','Maybe','Result','Poll','Token','Node','Parsed','Scanned','File','IO','Array','Pair','Kind','Empty','Chan','Socket','Listener','Window','Audio','App','Image','Event','Exists','Or'])G[k]={typeName:k};
+ 
+ native('Bool.not',1,x=>!x);native('Bool.and',2,(a,b)=>a&&b);native('Bool.or',2,(a,b)=>a||b);native('Bool.xor',2,(a,b)=>a!==b);
+ native('Bool.pick',4,(_,c,a,b)=>c?a:b);native('Bool.to_u32',1,b=>b?1:0);native('Bool.show',1,b=>b?'True':'False');
+@@ -540,11 +540,44 @@
+ effect('IO.now',0,()=>BigInt(Date.now()));effect('IO.sleep',1,ms=>new Promise(r=>setTimeout(()=>r(unit),ms)));
+ effect('IO.random_u32',0,()=>result(()=>randomBytes(4).readUInt32LE()));
+ effect('IO.spawn',2,(_t,m)=>spawnIO(m));
++const pollReady=x=>ctor('Ready',[x]),pollWait=x=>ctor('Wait',[x]);
++const channelAnswer=(ms,x)=>ms===undefined?x:pollReady(x);
+ function channel(room){return {room,values:[],senders:[],receivers:[],closed:false}}
+-function channelSend(c,v){if(c.closed)return false;if(c.receivers.length){c.receivers.shift()(some(v));return true}if(c.values.length<c.room){c.values.push(v);return true}return new Promise(resolve=>{pendingChannels++;c.senders.push({v,resolve:x=>{pendingChannels--;resolve(x)}})})}
+-function channelRecv(c){if(c.values.length){const v=c.values.shift();if(c.senders.length){const s=c.senders.shift();c.values.push(s.v);s.resolve(true)}return some(v)}if(c.senders.length){const s=c.senders.shift();s.resolve(true);return some(s.v)}if(c.closed)return none();return new Promise(resolve=>{pendingChannels++;c.receivers.push(x=>{pendingChannels--;resolve(x)})})}
+-function channelClose(c){c.closed=true;for(const r of c.receivers.splice(0))r(none());for(const s of c.senders.splice(0))s.resolve(false);return unit}
++function channelPark(queue,item,ms,rest){
++  return new Promise(resolve=>{
++    let timer,settled=false;
++    const at=ms===undefined?undefined:performance.now()+ms;
++    const row={item,at,finish:value=>{if(settled)return;settled=true;clearTimeout(timer);
++      const i=queue.indexOf(row);if(i>=0)queue.splice(i,1);pendingChannels--;resolve(value)}};
++    pendingChannels++;queue.push(row);
++    row.wake=value=>row.finish(channelAnswer(ms,value));
++    row.expire=()=>row.finish(pollWait(rest));
++    const arm=()=>{const left=at-performance.now();if(left<=0)row.expire();else timer=setTimeout(arm,Math.min(left,2147483647))};
++    if(ms!==undefined)arm();
++  });
++}
++// A busy task may outlive a timer; expire rows before another operation can
++// match them, not only when Node eventually delivers that timer callback.
++function channelExpire(c){const now=performance.now();for(const row of [...c.senders,...c.receivers])if(row.at!==undefined&&row.at<=now)row.expire()}
++function channelSend(c,v,ms){
++  channelExpire(c);
++  if(c.closed)return channelAnswer(ms,ctor('Fail',[v]));
++  if(c.receivers.length){c.receivers[0].wake(some(v));return channelAnswer(ms,done(unit))}
++  if(c.values.length<c.room){c.values.push(v);return channelAnswer(ms,done(unit))}
++  if(ms===0)return pollWait(v);
++  return channelPark(c.senders,v,ms,v);
++}
++function channelRecv(c,ms){
++  channelExpire(c);
++  if(c.values.length){const v=c.values.shift();if(c.senders.length){const s=c.senders[0];c.values.push(s.item);s.wake(done(unit))}return channelAnswer(ms,some(v))}
++  if(c.senders.length){const s=c.senders[0],v=s.item;s.wake(done(unit));return channelAnswer(ms,some(v))}
++  if(c.closed)return channelAnswer(ms,none());
++  if(ms===0)return pollWait(unit);
++  return channelPark(c.receivers,undefined,ms,unit);
++}
++function channelClose(c){channelExpire(c);c.closed=true;for(const r of [...c.receivers])r.wake(none());for(const s of [...c.senders])s.wake(ctor('Fail',[s.item]));return unit}
+ effect('Chan.new',2,(_t,room)=>channel(room));effect('Chan.send',3,(_t,c,v)=>channelSend(c,v));effect('Chan.recv',2,(_t,c)=>channelRecv(c));effect('Chan.close',2,(_t,c)=>channelClose(c));
++effect('Chan.try_send',4,(_t,c,v,ms)=>channelSend(c,v,ms));effect('Chan.try_recv',3,(_t,c,ms)=>channelRecv(c,ms));
+ effect('IO.fork',2,(_t,m)=>{const c=channel(1);spawnIO(bind(m,v=>({io:async()=>channelSend(c,v)})));return c});
+ effect('IO.join',2,async(_t,c)=>{const r=await channelRecv(c);channelClose(c);if(r.$==='None')halt(1,'IO.join: the channel was closed');return r.a[0]});
+ effect('File.open',2,(p,m)=>p.includes('\0')?fail(process.platform==='darwin'?92:84):!['r','w','a'].includes(m)?fail(22):result(()=>fs.openSync(p,m,0o644)));
+@@ -556,21 +589,61 @@
+ effect('File.write_bytes',2,(f,x)=>{const a=unlist(x);return a.some(n=>n>255)?[f,fail(22)]:fileWrite(f,Buffer.from(a))});
+ effect('File.close',1,f=>{try{fs.closeSync(f)}catch{}return unit});
+ // Node streams supply portable readiness notification; handles retain unread bytes.
+-function socketState(socket,udp=false){const s={socket,udp,queue:[],waiters:[],closed:false,error:null};const wake=()=>{for(const f of s.waiters.splice(0))f()};s.wake=wake;socket.on('error',e=>{s.error=e;wake()});socket.on('close',()=>{s.closed=true;wake()});if(udp)socket.on('message',(b,r)=>{s.queue.push([b,r]);wake()});else{socket.on('data',b=>{s.queue.push(b);wake()});socket.on('end',()=>{s.closed=true;wake()})}return s}
+-function ready(s,ms){if(s.queue.length||s.error||s.closed)return Promise.resolve(true);return new Promise(resolve=>{let timer;const wake=()=>{clearTimeout(timer);const i=s.waiters.indexOf(wake);if(i>=0)s.waiters.splice(i,1);resolve(s.queue.length>0||s.error!==null||s.closed)};s.waiters.push(wake);if(ms!==undefined)timer=setTimeout(wake,ms)})}
++function socketState(socket,udp=false){const s={socket,udp,queue:[],waiters:[],closed:false,error:null};const wake=()=>{for(const f of s.waiters.splice(0))f()};s.wake=wake;socket.on('error',e=>{s.error=e;wake()});socket.on('close',()=>{s.closed=true;wake()});if(udp)socket.on('message',(b,r)=>{s.queue.push([b,r]);wake()});else{socket.on('data',b=>{s.queue.push(b);wake()});socket.on('end',()=>{s.ended=true;wake()})}return s}
++function ready(s,ms){if(s.queue.length||s.error||s.closed||s.ended)return Promise.resolve(true);if(ms===0)return Promise.resolve(false);return new Promise(resolve=>{let timer;const at=ms===undefined?undefined:performance.now()+ms;const wake=()=>{clearTimeout(timer);const i=s.waiters.indexOf(wake);if(i>=0)s.waiters.splice(i,1);resolve(s.queue.length>0||s.error!==null||s.closed||!!s.ended)};const arm=()=>{const left=at-performance.now();if(left<=0)wake();else timer=setTimeout(arm,Math.min(left,2147483647))};s.waiters.push(wake);if(ms!==undefined)arm()})}
+ const addressValid=(host,port)=>net.isIPv4(host)&&Number.isInteger(port)&&port<=65535;
+-effect('TCP.listen',2,(host,port)=>!addressValid(host,port)?fail(22):new Promise(resolve=>{const server=net.createServer();const s={server,queue:[],waiters:[],error:null,closed:false};server.on('connection',c=>{s.queue.push(socketState(c));for(const f of s.waiters.splice(0))f()});server.on('error',e=>{s.error=e;for(const f of s.waiters.splice(0))f()});server.once('error',e=>resolve(fail(e)));server.listen(port,host,()=>resolve(done(s)))}));
+-effect('TCP.accept',1,async s=>{await ready(s);return [s,s.queue.length?done(s.queue.shift()):fail(s.error??9)]});
+-effect('TCP.connect',2,(host,port)=>!addressValid(host,port)?fail(22):new Promise(resolve=>{const socket=net.createConnection({host,port});const s=socketState(socket);socket.once('connect',()=>resolve(done(s)));socket.once('error',e=>resolve(fail(e)))}));
+-effect('TCP.send',2,(s,data)=>new Promise(resolve=>{if(s.closed)return resolve([s,fail(32)]);s.socket.write(data,e=>resolve([s,e?fail(e):done(unit)]))}));
+-async function tcpRead(s,max,ms,bytes=false){if(max===0)return [s,fail(22)];const got=await ready(s,ms);if(!got)return [s,done(none())];if(s.error)return [s,fail(s.error)];let b=s.queue.shift()??Buffer.alloc(0);if(b.length>max){s.queue.unshift(b.subarray(max));b=b.subarray(0,max)}const value=bytes?list([...b]):b.toString('utf8');return [s,done(ms===undefined?value:some(value))]}
+-effect('TCP.send_bytes',2,(s,data)=>{const bytes=unlist(data);return bytes.some(n=>n>255)?[s,fail(22)]:new Promise(resolve=>{if(s.closed)return resolve([s,fail(32)]);s.socket.write(Buffer.from(bytes),e=>resolve([s,e?fail(e):done(unit)]))})});
+-effect('TCP.recv_bytes',2,(s,max)=>tcpRead(s,max,undefined,true));
+-effect('TCP.recv',2,(s,max)=>tcpRead(s,max));effect('TCP.poll',3,(s,max,ms)=>tcpRead(s,max,ms));
++effect('TCP.listen',2,(host,port)=>!addressValid(host,port)?fail(22):new Promise(resolve=>{const server=net.createServer({allowHalfOpen:true});const s={server,queue:[],waiters:[],error:null,closed:false};server.on('connection',c=>{s.queue.push(socketState(c));for(const f of s.waiters.splice(0))f()});server.on('error',e=>{s.error=e;for(const f of s.waiters.splice(0))f()});server.once('error',e=>resolve(fail(e)));server.listen(port,host,()=>resolve(done(s)))}));
++async function tcpAccept(s,ms){const got=await ready(s,ms);return [s,got?channelAnswer(ms,s.queue.length?done(s.queue.shift()):fail(s.error??9)):pollWait(unit)]}
++effect('TCP.accept',1,s=>tcpAccept(s));effect('TCP.try_accept',2,(s,ms)=>tcpAccept(s,ms));
++effect('TCP.connect',2,(host,port)=>!addressValid(host,port)?fail(22):new Promise(resolve=>{const socket=net.createConnection({host,port,allowHalfOpen:true});const s=socketState(socket);socket.once('connect',()=>resolve(done(s)));socket.once('error',e=>resolve(fail(e)))}));
++// Node can report an asynchronous stream failure after an unknown prefix was
++// accepted by the kernel. Do not invent the new ABI's exact unsent suffix.
++const sendFailure=(error,rest)=>ctor('Fail',[[fail(error).a[0],rest]]);
++function tcpSend(s,data,bytes=false){
++  const values=bytes?unlist(data):null;
++  if(bytes&&values.some(n=>n>255))return [s,sendFailure(22,data)];
++  if(s.closed||s.socket.destroyed)return [s,sendFailure(32,data)];
++  return new Promise((resolve,reject)=>{
++    try{s.socket.write(bytes?Buffer.from(values):data,error=>{
++      if(error){reject(Error('legacy Node cannot recover the exact unsent suffix after a TCP write error; use the direct backend'));return}
++      resolve([s,done(unit)]);
++    })}catch(error){reject(error)}
++  });
++}
++async function tcpRead(s,max,ms,bytes=false){
++  if(max===0)return [s,channelAnswer(ms,fail(22))];
++  const got=await ready(s,ms);if(!got)return [s,pollWait(unit)];
++  if(s.error)return [s,channelAnswer(ms,fail(s.error))];
++  if(!s.queue.length)return [s,channelAnswer(ms,done(none()))];
++  let b=s.queue.shift();if(b.length>max){s.queue.unshift(b.subarray(max));b=b.subarray(0,max)}
++  return [s,channelAnswer(ms,done(some(bytes?list([...b]):b.toString('utf8'))))];
++}
++effect('TCP.send',2,(s,data)=>tcpSend(s,data));effect('TCP.send_bytes',2,(s,data)=>tcpSend(s,data,true));
++effect('TCP.recv',2,(s,max)=>tcpRead(s,max));effect('TCP.recv_bytes',2,(s,max)=>tcpRead(s,max,undefined,true));
++effect('TCP.try_recv',3,(s,max,ms)=>tcpRead(s,max,ms));effect('TCP.try_recv_bytes',3,(s,max,ms)=>tcpRead(s,max,ms,true));
++// A queued Node write cannot be cancelled at a deadline. Returning Wait with
++// those bytes would let the caller send a duplicate; refuse before sending any.
++const noTimedSend=name=>bad('legacy Node cannot cancel queued writes for '+name+'; use the direct backend');
++effect('TCP.try_send',3,()=>noTimedSend('TCP.try_send'));effect('TCP.try_send_bytes',3,()=>noTimedSend('TCP.try_send_bytes'));
+ effect('UDP.bind',2,(host,port)=>!addressValid(host,port)?fail(22):new Promise(resolve=>{const socket=dgram.createSocket('udp4');const s=socketState(socket,true);socket.once('error',e=>resolve(fail(e)));socket.bind(port,host,()=>resolve(done(s)))}));
+-effect('UDP.send_to',4,(s,host,port,data)=>!addressValid(host,port)?[s,fail(22)]:new Promise(resolve=>s.socket.send(Buffer.from(data),port,host,e=>resolve([s,e?fail(e):done(unit)]))));
+-async function udpRead(s,max,poll){if(!poll)await ready(s);if(s.error)return [s,fail(s.error)];if(!s.queue.length)return [s,poll?done(none()):fail(9)];const [b,r]=s.queue.shift(),v=[r.address,[r.port,b.subarray(0,max).toString('utf8')]];return [s,done(poll?some(v):v)]}
+-effect('UDP.recv_from',2,(s,max)=>udpRead(s,max,false));effect('UDP.poll',2,(s,max)=>udpRead(s,max,true));
++function udpSend(s,host,port,data,bytes=false){
++  const values=bytes?unlist(data):null;
++  if(!addressValid(host,port)||bytes&&values.some(n=>n>255))return [s,sendFailure(22,data)];
++  if(s.closed)return [s,sendFailure(9,data)];
++  return new Promise(resolve=>{try{s.socket.send(bytes?Buffer.from(values):Buffer.from(data),port,host,error=>resolve([s,error?sendFailure(error,data):done(unit)]))}catch(error){resolve([s,sendFailure(error,data)])}});
++}
++async function udpRead(s,max,ms,bytes=false){
++  if(max===0)return [s,channelAnswer(ms,fail(22))];
++  const got=await ready(s,ms);if(!got)return [s,pollWait(unit)];
++  if(s.error)return [s,channelAnswer(ms,fail(s.error))];
++  if(!s.queue.length)return [s,channelAnswer(ms,fail(9))];
++  const [b,r]=s.queue.shift(),part=b.subarray(0,max),v=[r.address,[r.port,bytes?list([...part]):part.toString('utf8')]];
++  return [s,channelAnswer(ms,done(v))];
++}
++effect('UDP.send_to',4,(s,h,p,d)=>udpSend(s,h,p,d));effect('UDP.send_bytes_to',4,(s,h,p,d)=>udpSend(s,h,p,d,true));
++effect('UDP.recv_from',2,(s,max)=>udpRead(s,max));effect('UDP.recv_bytes_from',2,(s,max)=>udpRead(s,max,undefined,true));
++effect('UDP.try_recv_from',3,(s,max,ms)=>udpRead(s,max,ms));effect('UDP.try_recv_bytes_from',3,(s,max,ms)=>udpRead(s,max,ms,true));
++effect('UDP.try_send_to',5,()=>noTimedSend('UDP.try_send_to'));effect('UDP.try_send_bytes_to',5,()=>noTimedSend('UDP.try_send_bytes_to'));
+ effect('Socket.close',1,s=>{s.closed=true;s.udp?s.socket.close():s.socket.destroy();s.wake();return unit});
+ effect('Listener.close',1,s=>{s.closed=true;s.server.close();for(const f of s.waiters.splice(0))f();return unit});
+ effect('Window.open',3,()=>ctor('Fail',[[process.platform==='darwin'?45:95,'Window.open: no display (build a native binary with bend <file> -o <out> and run it from a desktop session)']]));
+--- a/selfhost/src/runtime/js/core.mjs
++++ b/selfhost/src/runtime/js/core.mjs
+@@ -381,4 +381,4 @@
+   }
+   return i===a.length?(j===b.length?0:-1):1;
+ }
+-for(const k of ['Type','Data','Quant','Unit','Bool','Cmp','Nat','U32','F32','Char','String','List','Maybe','Result','Token','Node','Parsed','Scanned','File','IO','Array','Pair','Kind','Empty','Chan','Socket','Listener','Window','Audio','App','Image','Event','Exists','Or'])G[k]={typeName:k};
++for(const k of ['Type','Data','Quant','Unit','Bool','Cmp','Nat','U32','F32','Char','String','List','Maybe','Result','Poll','Token','Node','Parsed','Scanned','File','IO','Array','Pair','Kind','Empty','Chan','Socket','Listener','Window','Audio','App','Image','Event','Exists','Or'])G[k]={typeName:k};
+--- a/selfhost/src/runtime/js/effects.mjs
++++ b/selfhost/src/runtime/js/effects.mjs
+@@ -37,11 +37,44 @@
+ effect('IO.now',0,()=>BigInt(Date.now()));effect('IO.sleep',1,ms=>new Promise(r=>setTimeout(()=>r(unit),ms)));
+ effect('IO.random_u32',0,()=>result(()=>randomBytes(4).readUInt32LE()));
+ effect('IO.spawn',2,(_t,m)=>spawnIO(m));
++const pollReady=x=>ctor('Ready',[x]),pollWait=x=>ctor('Wait',[x]);
++const channelAnswer=(ms,x)=>ms===undefined?x:pollReady(x);
+ function channel(room){return {room,values:[],senders:[],receivers:[],closed:false}}
+-function channelSend(c,v){if(c.closed)return false;if(c.receivers.length){c.receivers.shift()(some(v));return true}if(c.values.length<c.room){c.values.push(v);return true}return new Promise(resolve=>{pendingChannels++;c.senders.push({v,resolve:x=>{pendingChannels--;resolve(x)}})})}
+-function channelRecv(c){if(c.values.length){const v=c.values.shift();if(c.senders.length){const s=c.senders.shift();c.values.push(s.v);s.resolve(true)}return some(v)}if(c.senders.length){const s=c.senders.shift();s.resolve(true);return some(s.v)}if(c.closed)return none();return new Promise(resolve=>{pendingChannels++;c.receivers.push(x=>{pendingChannels--;resolve(x)})})}
+-function channelClose(c){c.closed=true;for(const r of c.receivers.splice(0))r(none());for(const s of c.senders.splice(0))s.resolve(false);return unit}
++function channelPark(queue,item,ms,rest){
++  return new Promise(resolve=>{
++    let timer,settled=false;
++    const at=ms===undefined?undefined:performance.now()+ms;
++    const row={item,at,finish:value=>{if(settled)return;settled=true;clearTimeout(timer);
++      const i=queue.indexOf(row);if(i>=0)queue.splice(i,1);pendingChannels--;resolve(value)}};
++    pendingChannels++;queue.push(row);
++    row.wake=value=>row.finish(channelAnswer(ms,value));
++    row.expire=()=>row.finish(pollWait(rest));
++    const arm=()=>{const left=at-performance.now();if(left<=0)row.expire();else timer=setTimeout(arm,Math.min(left,2147483647))};
++    if(ms!==undefined)arm();
++  });
++}
++// A busy task may outlive a timer; expire rows before another operation can
++// match them, not only when Node eventually delivers that timer callback.
++function channelExpire(c){const now=performance.now();for(const row of [...c.senders,...c.receivers])if(row.at!==undefined&&row.at<=now)row.expire()}
++function channelSend(c,v,ms){
++  channelExpire(c);
++  if(c.closed)return channelAnswer(ms,ctor('Fail',[v]));
++  if(c.receivers.length){c.receivers[0].wake(some(v));return channelAnswer(ms,done(unit))}
++  if(c.values.length<c.room){c.values.push(v);return channelAnswer(ms,done(unit))}
++  if(ms===0)return pollWait(v);
++  return channelPark(c.senders,v,ms,v);
++}
++function channelRecv(c,ms){
++  channelExpire(c);
++  if(c.values.length){const v=c.values.shift();if(c.senders.length){const s=c.senders[0];c.values.push(s.item);s.wake(done(unit))}return channelAnswer(ms,some(v))}
++  if(c.senders.length){const s=c.senders[0],v=s.item;s.wake(done(unit));return channelAnswer(ms,some(v))}
++  if(c.closed)return channelAnswer(ms,none());
++  if(ms===0)return pollWait(unit);
++  return channelPark(c.receivers,undefined,ms,unit);
++}
++function channelClose(c){channelExpire(c);c.closed=true;for(const r of [...c.receivers])r.wake(none());for(const s of [...c.senders])s.wake(ctor('Fail',[s.item]));return unit}
+ effect('Chan.new',2,(_t,room)=>channel(room));effect('Chan.send',3,(_t,c,v)=>channelSend(c,v));effect('Chan.recv',2,(_t,c)=>channelRecv(c));effect('Chan.close',2,(_t,c)=>channelClose(c));
++effect('Chan.try_send',4,(_t,c,v,ms)=>channelSend(c,v,ms));effect('Chan.try_recv',3,(_t,c,ms)=>channelRecv(c,ms));
+ effect('IO.fork',2,(_t,m)=>{const c=channel(1);spawnIO(bind(m,v=>({io:async()=>channelSend(c,v)})));return c});
+ effect('IO.join',2,async(_t,c)=>{const r=await channelRecv(c);channelClose(c);if(r.$==='None')halt(1,'IO.join: the channel was closed');return r.a[0]});
+ effect('File.open',2,(p,m)=>p.includes('\0')?fail(process.platform==='darwin'?92:84):!['r','w','a'].includes(m)?fail(22):result(()=>fs.openSync(p,m,0o644)));
+@@ -53,21 +86,61 @@
+ effect('File.write_bytes',2,(f,x)=>{const a=unlist(x);return a.some(n=>n>255)?[f,fail(22)]:fileWrite(f,Buffer.from(a))});
+ effect('File.close',1,f=>{try{fs.closeSync(f)}catch{}return unit});
+ // Node streams supply portable readiness notification; handles retain unread bytes.
+-function socketState(socket,udp=false){const s={socket,udp,queue:[],waiters:[],closed:false,error:null};const wake=()=>{for(const f of s.waiters.splice(0))f()};s.wake=wake;socket.on('error',e=>{s.error=e;wake()});socket.on('close',()=>{s.closed=true;wake()});if(udp)socket.on('message',(b,r)=>{s.queue.push([b,r]);wake()});else{socket.on('data',b=>{s.queue.push(b);wake()});socket.on('end',()=>{s.closed=true;wake()})}return s}
+-function ready(s,ms){if(s.queue.length||s.error||s.closed)return Promise.resolve(true);return new Promise(resolve=>{let timer;const wake=()=>{clearTimeout(timer);const i=s.waiters.indexOf(wake);if(i>=0)s.waiters.splice(i,1);resolve(s.queue.length>0||s.error!==null||s.closed)};s.waiters.push(wake);if(ms!==undefined)timer=setTimeout(wake,ms)})}
++function socketState(socket,udp=false){const s={socket,udp,queue:[],waiters:[],closed:false,error:null};const wake=()=>{for(const f of s.waiters.splice(0))f()};s.wake=wake;socket.on('error',e=>{s.error=e;wake()});socket.on('close',()=>{s.closed=true;wake()});if(udp)socket.on('message',(b,r)=>{s.queue.push([b,r]);wake()});else{socket.on('data',b=>{s.queue.push(b);wake()});socket.on('end',()=>{s.ended=true;wake()})}return s}
++function ready(s,ms){if(s.queue.length||s.error||s.closed||s.ended)return Promise.resolve(true);if(ms===0)return Promise.resolve(false);return new Promise(resolve=>{let timer;const at=ms===undefined?undefined:performance.now()+ms;const wake=()=>{clearTimeout(timer);const i=s.waiters.indexOf(wake);if(i>=0)s.waiters.splice(i,1);resolve(s.queue.length>0||s.error!==null||s.closed||!!s.ended)};const arm=()=>{const left=at-performance.now();if(left<=0)wake();else timer=setTimeout(arm,Math.min(left,2147483647))};s.waiters.push(wake);if(ms!==undefined)arm()})}
+ const addressValid=(host,port)=>net.isIPv4(host)&&Number.isInteger(port)&&port<=65535;
+-effect('TCP.listen',2,(host,port)=>!addressValid(host,port)?fail(22):new Promise(resolve=>{const server=net.createServer();const s={server,queue:[],waiters:[],error:null,closed:false};server.on('connection',c=>{s.queue.push(socketState(c));for(const f of s.waiters.splice(0))f()});server.on('error',e=>{s.error=e;for(const f of s.waiters.splice(0))f()});server.once('error',e=>resolve(fail(e)));server.listen(port,host,()=>resolve(done(s)))}));
+-effect('TCP.accept',1,async s=>{await ready(s);return [s,s.queue.length?done(s.queue.shift()):fail(s.error??9)]});
+-effect('TCP.connect',2,(host,port)=>!addressValid(host,port)?fail(22):new Promise(resolve=>{const socket=net.createConnection({host,port});const s=socketState(socket);socket.once('connect',()=>resolve(done(s)));socket.once('error',e=>resolve(fail(e)))}));
+-effect('TCP.send',2,(s,data)=>new Promise(resolve=>{if(s.closed)return resolve([s,fail(32)]);s.socket.write(data,e=>resolve([s,e?fail(e):done(unit)]))}));
+-async function tcpRead(s,max,ms,bytes=false){if(max===0)return [s,fail(22)];const got=await ready(s,ms);if(!got)return [s,done(none())];if(s.error)return [s,fail(s.error)];let b=s.queue.shift()??Buffer.alloc(0);if(b.length>max){s.queue.unshift(b.subarray(max));b=b.subarray(0,max)}const value=bytes?list([...b]):b.toString('utf8');return [s,done(ms===undefined?value:some(value))]}
+-effect('TCP.send_bytes',2,(s,data)=>{const bytes=unlist(data);return bytes.some(n=>n>255)?[s,fail(22)]:new Promise(resolve=>{if(s.closed)return resolve([s,fail(32)]);s.socket.write(Buffer.from(bytes),e=>resolve([s,e?fail(e):done(unit)]))})});
+-effect('TCP.recv_bytes',2,(s,max)=>tcpRead(s,max,undefined,true));
+-effect('TCP.recv',2,(s,max)=>tcpRead(s,max));effect('TCP.poll',3,(s,max,ms)=>tcpRead(s,max,ms));
++effect('TCP.listen',2,(host,port)=>!addressValid(host,port)?fail(22):new Promise(resolve=>{const server=net.createServer({allowHalfOpen:true});const s={server,queue:[],waiters:[],error:null,closed:false};server.on('connection',c=>{s.queue.push(socketState(c));for(const f of s.waiters.splice(0))f()});server.on('error',e=>{s.error=e;for(const f of s.waiters.splice(0))f()});server.once('error',e=>resolve(fail(e)));server.listen(port,host,()=>resolve(done(s)))}));
++async function tcpAccept(s,ms){const got=await ready(s,ms);return [s,got?channelAnswer(ms,s.queue.length?done(s.queue.shift()):fail(s.error??9)):pollWait(unit)]}
++effect('TCP.accept',1,s=>tcpAccept(s));effect('TCP.try_accept',2,(s,ms)=>tcpAccept(s,ms));
++effect('TCP.connect',2,(host,port)=>!addressValid(host,port)?fail(22):new Promise(resolve=>{const socket=net.createConnection({host,port,allowHalfOpen:true});const s=socketState(socket);socket.once('connect',()=>resolve(done(s)));socket.once('error',e=>resolve(fail(e)))}));
++// Node can report an asynchronous stream failure after an unknown prefix was
++// accepted by the kernel. Do not invent the new ABI's exact unsent suffix.
++const sendFailure=(error,rest)=>ctor('Fail',[[fail(error).a[0],rest]]);
++function tcpSend(s,data,bytes=false){
++  const values=bytes?unlist(data):null;
++  if(bytes&&values.some(n=>n>255))return [s,sendFailure(22,data)];
++  if(s.closed||s.socket.destroyed)return [s,sendFailure(32,data)];
++  return new Promise((resolve,reject)=>{
++    try{s.socket.write(bytes?Buffer.from(values):data,error=>{
++      if(error){reject(Error('legacy Node cannot recover the exact unsent suffix after a TCP write error; use the direct backend'));return}
++      resolve([s,done(unit)]);
++    })}catch(error){reject(error)}
++  });
++}
++async function tcpRead(s,max,ms,bytes=false){
++  if(max===0)return [s,channelAnswer(ms,fail(22))];
++  const got=await ready(s,ms);if(!got)return [s,pollWait(unit)];
++  if(s.error)return [s,channelAnswer(ms,fail(s.error))];
++  if(!s.queue.length)return [s,channelAnswer(ms,done(none()))];
++  let b=s.queue.shift();if(b.length>max){s.queue.unshift(b.subarray(max));b=b.subarray(0,max)}
++  return [s,channelAnswer(ms,done(some(bytes?list([...b]):b.toString('utf8'))))];
++}
++effect('TCP.send',2,(s,data)=>tcpSend(s,data));effect('TCP.send_bytes',2,(s,data)=>tcpSend(s,data,true));
++effect('TCP.recv',2,(s,max)=>tcpRead(s,max));effect('TCP.recv_bytes',2,(s,max)=>tcpRead(s,max,undefined,true));
++effect('TCP.try_recv',3,(s,max,ms)=>tcpRead(s,max,ms));effect('TCP.try_recv_bytes',3,(s,max,ms)=>tcpRead(s,max,ms,true));
++// A queued Node write cannot be cancelled at a deadline. Returning Wait with
++// those bytes would let the caller send a duplicate; refuse before sending any.
++const noTimedSend=name=>bad('legacy Node cannot cancel queued writes for '+name+'; use the direct backend');
++effect('TCP.try_send',3,()=>noTimedSend('TCP.try_send'));effect('TCP.try_send_bytes',3,()=>noTimedSend('TCP.try_send_bytes'));
+ effect('UDP.bind',2,(host,port)=>!addressValid(host,port)?fail(22):new Promise(resolve=>{const socket=dgram.createSocket('udp4');const s=socketState(socket,true);socket.once('error',e=>resolve(fail(e)));socket.bind(port,host,()=>resolve(done(s)))}));
+-effect('UDP.send_to',4,(s,host,port,data)=>!addressValid(host,port)?[s,fail(22)]:new Promise(resolve=>s.socket.send(Buffer.from(data),port,host,e=>resolve([s,e?fail(e):done(unit)]))));
+-async function udpRead(s,max,poll){if(!poll)await ready(s);if(s.error)return [s,fail(s.error)];if(!s.queue.length)return [s,poll?done(none()):fail(9)];const [b,r]=s.queue.shift(),v=[r.address,[r.port,b.subarray(0,max).toString('utf8')]];return [s,done(poll?some(v):v)]}
+-effect('UDP.recv_from',2,(s,max)=>udpRead(s,max,false));effect('UDP.poll',2,(s,max)=>udpRead(s,max,true));
++function udpSend(s,host,port,data,bytes=false){
++  const values=bytes?unlist(data):null;
++  if(!addressValid(host,port)||bytes&&values.some(n=>n>255))return [s,sendFailure(22,data)];
++  if(s.closed)return [s,sendFailure(9,data)];
++  return new Promise(resolve=>{try{s.socket.send(bytes?Buffer.from(values):Buffer.from(data),port,host,error=>resolve([s,error?sendFailure(error,data):done(unit)]))}catch(error){resolve([s,sendFailure(error,data)])}});
++}
++async function udpRead(s,max,ms,bytes=false){
++  if(max===0)return [s,channelAnswer(ms,fail(22))];
++  const got=await ready(s,ms);if(!got)return [s,pollWait(unit)];
++  if(s.error)return [s,channelAnswer(ms,fail(s.error))];
++  if(!s.queue.length)return [s,channelAnswer(ms,fail(9))];
++  const [b,r]=s.queue.shift(),part=b.subarray(0,max),v=[r.address,[r.port,bytes?list([...part]):part.toString('utf8')]];
++  return [s,channelAnswer(ms,done(v))];
++}
++effect('UDP.send_to',4,(s,h,p,d)=>udpSend(s,h,p,d));effect('UDP.send_bytes_to',4,(s,h,p,d)=>udpSend(s,h,p,d,true));
++effect('UDP.recv_from',2,(s,max)=>udpRead(s,max));effect('UDP.recv_bytes_from',2,(s,max)=>udpRead(s,max,undefined,true));
++effect('UDP.try_recv_from',3,(s,max,ms)=>udpRead(s,max,ms));effect('UDP.try_recv_bytes_from',3,(s,max,ms)=>udpRead(s,max,ms,true));
++effect('UDP.try_send_to',5,()=>noTimedSend('UDP.try_send_to'));effect('UDP.try_send_bytes_to',5,()=>noTimedSend('UDP.try_send_bytes_to'));
+ effect('Socket.close',1,s=>{s.closed=true;s.udp?s.socket.close():s.socket.destroy();s.wake();return unit});
+ effect('Listener.close',1,s=>{s.closed=true;s.server.close();for(const f of s.waiters.splice(0))f();return unit});
+ effect('Window.open',3,()=>ctor('Fail',[[process.platform==='darwin'?45:95,'Window.open: no display (build a native binary with bend <file> -o <out> and run it from a desktop session)']]));

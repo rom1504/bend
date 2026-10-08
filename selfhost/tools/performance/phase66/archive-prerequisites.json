@@ -1,0 +1,1249 @@
+{
+  "kind": "phase66-known-external-archive-prerequisites",
+  "version": 1,
+  "created": "2026-10-08T06:43:06.340167+00:00",
+  "status": "metadata-inventory-only",
+  "dataOnly": true,
+  "targetExecuted": false,
+  "archiveBytesHashed": false,
+  "archivesOpenedOrExtracted": false,
+  "historicalRawTreesScanned": false,
+  "sourceScope": "Known outside-Phase66 references observed in consumed/planned campaign receipts and exact existing capsule metadata. This is not an exhaustive dependency discovery or full transitive replay proof.",
+  "phase66Inputs": [
+    {
+      "file": "selfhost/build/phase66/campaign.json",
+      "bytes": 813,
+      "sha256": "730abf0e25cca53852f9b8303f96660ffed127c6038acd79a4c45d32db42d870"
+    },
+    {
+      "file": "selfhost/build/phase66/upstream-delta.json",
+      "bytes": 22804,
+      "sha256": "27b122c90592060afe5ec93497ee75bc4bff9615a23dc7801d50f303d571103e"
+    },
+    {
+      "file": "selfhost/build/phase66/checked-b1-04/attempt.json",
+      "bytes": 298472,
+      "sha256": "bbec9b728120e3a1b3bac4ffffcdc02ca736c9edfd813fedbfb6105a09751657"
+    },
+    {
+      "file": "selfhost/build/phase66/backend-native-controls04-clang01-recipe/recipe.json",
+      "bytes": 11670,
+      "sha256": "c9ee8b4fe2358198fee3cd6e5c5a163a7b525ddc17b41c26d7b45c863586c150"
+    }
+  ],
+  "capsules": [
+    {
+      "id": "phase65",
+      "metadata": [
+        {
+          "file": "selfhost/tools/performance/phase65/artifacts/manifest.json",
+          "bytes": 4188117,
+          "sha256": "4cacfe621cc5eec7ee5b1da3287da8bee3bc62c7d5f4a1183a1a456fca485cf2"
+        }
+      ],
+      "manifestSchema": "files-list-repository-relative",
+      "memberPathRoot": "repository-root",
+      "archiveKind": "one-gzip-tar-stream",
+      "transportKind": "ordered-parts",
+      "transport": [
+        {
+          "file": "selfhost/tools/performance/phase65/artifacts/raw-campaign.tar.gz.part001",
+          "bytes": 67108864,
+          "sha256": "ef74fa491324bcf348bb28c85cd20d23423e7f81aed76b88082f465a7c83de88"
+        },
+        {
+          "file": "selfhost/tools/performance/phase65/artifacts/raw-campaign.tar.gz.part002",
+          "bytes": 31956443,
+          "sha256": "1e42b1a17ff41f31b2bc78cde2f2c71f215edafa066c0f1b8c6fc3661cf2b732"
+        }
+      ],
+      "logicalArchive": {
+        "bytes": 99065307,
+        "sha256": "387db6665829b2d454843b13fe8c3206a438f44d9d45e42e1f49a60f5d1ce0df"
+      },
+      "manifestMemberCount": 17894,
+      "knownRequiredPrefixes": [
+        {
+          "prefix": "selfhost/build/phase65/checked-state10",
+          "manifestMemberCount": 489,
+          "orderedIdentitiesSha256": "f690ec26d2ad5383a86f8a1371de48a0d1247ca26d0033c368f39886c58f072f",
+          "digestEncoding": "SHA256 of UTF-8 JSON, keys sorted, separators comma/colon, rows sorted by file"
+        },
+        {
+          "prefix": "selfhost/build/phase65/bootstrap-state10",
+          "manifestMemberCount": 264,
+          "orderedIdentitiesSha256": "f78be9881c0e1db15d1b1d724d8502b1aab57e2a1eba8b99e3ddf2c5ba364050",
+          "digestEncoding": "SHA256 of UTF-8 JSON, keys sorted, separators comma/colon, rows sorted by file"
+        },
+        {
+          "prefix": "selfhost/build/phase65/export-reference-state10",
+          "manifestMemberCount": 8,
+          "orderedIdentitiesSha256": "2283a03b85f5163cf43f79efafdd34357167a14dda5fe6bc588abf0ae8ff3858",
+          "digestEncoding": "SHA256 of UTF-8 JSON, keys sorted, separators comma/colon, rows sorted by file"
+        },
+        {
+          "prefix": "selfhost/build/phase65/export-state10",
+          "manifestMemberCount": 5,
+          "orderedIdentitiesSha256": "ce1b282210e86f5b56717c67b7df66a49099531e16aca39888359eb927b3a4f9",
+          "digestEncoding": "SHA256 of UTF-8 JSON, keys sorted, separators comma/colon, rows sorted by file"
+        },
+        {
+          "prefix": "selfhost/build/phase65/final-state10",
+          "manifestMemberCount": 3127,
+          "orderedIdentitiesSha256": "3d3cb58dbb5e75009c5bdcc869648491aa31050676a342bf575a113d36d48a49",
+          "digestEncoding": "SHA256 of UTF-8 JSON, keys sorted, separators comma/colon, rows sorted by file"
+        },
+        {
+          "prefix": "selfhost/build/phase65/latency-method02",
+          "manifestMemberCount": 5,
+          "orderedIdentitiesSha256": "254882134f19657446c130477b40e3000d802ec1aef32d2a3a60c971192e41ca",
+          "digestEncoding": "SHA256 of UTF-8 JSON, keys sorted, separators comma/colon, rows sorted by file"
+        },
+        {
+          "prefix": "selfhost/build/phase65/state10-b2-latency",
+          "manifestMemberCount": 1583,
+          "orderedIdentitiesSha256": "17c944da0b11399168708c2a14fae5409e5d8b4be7f4856a6c6866c63ebefcaf",
+          "digestEncoding": "SHA256 of UTF-8 JSON, keys sorted, separators comma/colon, rows sorted by file"
+        }
+      ],
+      "knownRequiredMembers": [
+        {
+          "file": "selfhost/build/phase65/checked-state10/equality/api.mjs",
+          "bytes": 1976779,
+          "sha256": "3a7fedb77003aecc797cd9a9ac4c6d1bd15bd21dd1230806b6719565eca10f72"
+        }
+      ],
+      "archiveBytesRehashedByThisInventory": false
+    },
+    {
+      "id": "phase63",
+      "metadata": [
+        {
+          "file": "selfhost/tools/performance/phase63/artifacts/manifest.json",
+          "bytes": 3888250,
+          "sha256": "8a213a879320b6a86d4dc692c0f2a7e41a14176e5186a830fa279703b393b4c6"
+        }
+      ],
+      "manifestSchema": "files-list-repository-relative",
+      "memberPathRoot": "repository-root",
+      "archiveKind": "one-gzip-tar-stream",
+      "transportKind": "single-file",
+      "transport": [
+        {
+          "file": "selfhost/tools/performance/phase63/artifacts/raw-campaign.tar.gz",
+          "bytes": 78204174,
+          "sha256": "8dc20dcc3961cc479a343a275ae7d0d9b3eaca4401f10336da72aae9d7c63c22"
+        }
+      ],
+      "logicalArchive": {
+        "bytes": 78204174,
+        "sha256": "8dc20dcc3961cc479a343a275ae7d0d9b3eaca4401f10336da72aae9d7c63c22"
+      },
+      "manifestMemberCount": 16691,
+      "knownRequiredPrefixes": [
+        {
+          "prefix": "selfhost/build/phase63/checked-state09",
+          "manifestMemberCount": 486,
+          "orderedIdentitiesSha256": "0986eb1cd41eb12e4ed57566e4b3b138d34826c620a20d88c49bebd52ff2d9e4",
+          "digestEncoding": "SHA256 of UTF-8 JSON, keys sorted, separators comma/colon, rows sorted by file"
+        }
+      ],
+      "knownRequiredMembers": [],
+      "archiveBytesRehashedByThisInventory": false
+    },
+    {
+      "id": "phase58",
+      "metadata": [
+        {
+          "file": "selfhost/tools/performance/phase58/artifacts/raw/archive.json",
+          "bytes": 6095577,
+          "sha256": "bb893b0ab759ac641622febfdf6fcb2fcec96478dc8f12cb1bc57670ab98c5d5"
+        },
+        {
+          "file": "selfhost/tools/performance/phase58/artifacts/raw/transport.json",
+          "bytes": 902,
+          "sha256": "d727422043e9c7cdedb70b3addc4088dab63e5594b1a660a139aa4aefcacbdaf"
+        }
+      ],
+      "manifestSchema": "files-map-relative-to-recorded-rawRoot",
+      "memberPathRoot": "selfhost/build/phase58",
+      "recordedRawRoot": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58",
+      "archiveKind": "one-gzip-tar-stream",
+      "transportKind": "ordered-parts",
+      "transport": [
+        {
+          "file": "selfhost/tools/performance/phase58/artifacts/raw/raw-campaign.tar.gz.part-000",
+          "bytes": 50331648,
+          "sha256": "1e4fa0cae3a095355905e5a56fdebf08d5d4572a8b58d3143d2daff9e354405b"
+        },
+        {
+          "file": "selfhost/tools/performance/phase58/artifacts/raw/raw-campaign.tar.gz.part-001",
+          "bytes": 50331648,
+          "sha256": "ea5af03e07e6e81c1d89d6f7288b43ee90ebe2ef4c9c9edc6cd6a57afd5e0f07"
+        },
+        {
+          "file": "selfhost/tools/performance/phase58/artifacts/raw/raw-campaign.tar.gz.part-002",
+          "bytes": 11548636,
+          "sha256": "fa5a09b494065bfb069f62370f168b700ccd07035d79dbd1109b60713211c613"
+        }
+      ],
+      "logicalArchive": {
+        "bytes": 112211932,
+        "sha256": "f8328b53c8d11d5a177c9bb034cff8d719ee25df1bbc8d0ef453fcd84e643144"
+      },
+      "manifestMemberCount": 30169,
+      "knownRequiredPrefixes": [
+        {
+          "prefix": "selfhost/build/phase58/final-last01",
+          "manifestMemberCount": 5106,
+          "orderedIdentitiesSha256": "5a9b4906b2e0b661a41c5499b300ff59897d59dcfa3599db4c4e8cc269e8fb6e",
+          "digestEncoding": "SHA256 of UTF-8 JSON, keys sorted, separators comma/colon, rows sorted by file"
+        },
+        {
+          "prefix": "selfhost/build/phase58/final-performance-last01",
+          "manifestMemberCount": 3539,
+          "orderedIdentitiesSha256": "496bf0e5a1883f3452e55411a3c73b1e75dfcf89c3870adcef86608ccbeeb29a",
+          "digestEncoding": "SHA256 of UTF-8 JSON, keys sorted, separators comma/colon, rows sorted by file"
+        }
+      ],
+      "knownRequiredMembers": [
+        {
+          "file": "selfhost/build/phase58/final-last01/b2-program-equality/report.json",
+          "bytes": 239995,
+          "sha256": "58db19652c388e84e027f3d70dd354e1c94dd3300327b7f6f68a127adf3a89aa"
+        }
+      ],
+      "archiveBytesRehashedByThisInventory": false,
+      "note": "Archive member names are relative to rawRoot; transport path is relative to this metadata directory. Any local joined gzip is not a required published input."
+    },
+    {
+      "id": "phase55",
+      "metadata": [
+        {
+          "file": "selfhost/tools/performance/phase55/artifacts/raw/archive.json",
+          "bytes": 921584,
+          "sha256": "568f9e84b5561bc71f7ede181686ba84d4c045d8f8bcb0df72bb26f9057387ca"
+        }
+      ],
+      "manifestSchema": "files-map-relative-to-recorded-rawRoot",
+      "memberPathRoot": "selfhost/build/phase55",
+      "recordedRawRoot": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55",
+      "archiveKind": "one-gzip-tar-stream",
+      "transportKind": "single-file",
+      "transport": [
+        {
+          "file": "selfhost/tools/performance/phase55/artifacts/raw/raw-campaign.tar.gz",
+          "bytes": 19440320,
+          "sha256": "62921379e2f3247af0b9043dea76c043d7910cd6ef8cfd99c17061266de1cb7c"
+        }
+      ],
+      "logicalArchive": {
+        "bytes": 19440320,
+        "sha256": "62921379e2f3247af0b9043dea76c043d7910cd6ef8cfd99c17061266de1cb7c"
+      },
+      "manifestMemberCount": 4791,
+      "knownRequiredPrefixes": [
+        {
+          "prefix": "selfhost/build/phase55/bootstrap-own-host02-plan01",
+          "manifestMemberCount": 4,
+          "orderedIdentitiesSha256": "e1a9d5b24113b739a188c344d28a59aa014cfe41f2a0a801acdf940188b1263b",
+          "digestEncoding": "SHA256 of UTF-8 JSON, keys sorted, separators comma/colon, rows sorted by file"
+        },
+        {
+          "prefix": "selfhost/build/phase55/checked-host02",
+          "manifestMemberCount": 471,
+          "orderedIdentitiesSha256": "7b173fa36bbc3f1db930f074fecf43f448bbc72af96868b2459b7ca5f1cc79de",
+          "digestEncoding": "SHA256 of UTF-8 JSON, keys sorted, separators comma/colon, rows sorted by file"
+        }
+      ],
+      "knownRequiredMembers": [
+        {
+          "file": "selfhost/build/phase55/bootstrap-own-host02-plan01/full77.json",
+          "bytes": 4330,
+          "sha256": "cabd21be8e7ab930221e72edab9fc39e72ec76b17a1b8b38889a7716b1b46077"
+        },
+        {
+          "file": "selfhost/build/phase55/bootstrap-own-host02-plan01/driver.json",
+          "bytes": 6987,
+          "sha256": "b260d36e46c2ba2f336e980d9cb40e5088b0bc9cce0a220e8e4e9ae50f11222b"
+        },
+        {
+          "file": "selfhost/build/phase55/checked-host02/snapshot/src/back/js/direct/core.bend",
+          "bytes": 18357,
+          "sha256": "2bb2e2d60fa08e73532446dfc93eec2e4ac78b32350e7d305a99e2e53dd69fc9"
+        }
+      ],
+      "archiveBytesRehashedByThisInventory": false,
+      "note": "Archive member names are relative to rawRoot; transport path is relative to this metadata directory. Any local joined gzip is not a required published input."
+    },
+    {
+      "id": "phase45",
+      "metadata": [
+        {
+          "file": "selfhost/tools/performance/phase45/evidence/raw/archive.json",
+          "bytes": 10430438,
+          "sha256": "452a95d925cc177f690f0e432401b60041deb6a9e6bb9cf03a6dd196dfe332be"
+        },
+        {
+          "file": "selfhost/tools/performance/phase45/evidence/raw/parts.json",
+          "bytes": 1701,
+          "sha256": "2801f7f76e77ce188fdd10491711765dd17a8ad9755290e7d8351c794c73f016"
+        }
+      ],
+      "manifestSchema": "files-map-relative-to-recorded-rawRoot",
+      "memberPathRoot": "selfhost/build/phase45",
+      "recordedRawRoot": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45",
+      "archiveKind": "one-gzip-tar-stream",
+      "transportKind": "ordered-parts",
+      "transport": [
+        {
+          "file": "selfhost/tools/performance/phase45/evidence/raw/raw-campaign.tar.gz.part-000",
+          "bytes": 41943040,
+          "sha256": "fbc1d1f75def768ab7357b45876cf3e912f83f7a0fcff7c9d7b2f765de6f52fb"
+        },
+        {
+          "file": "selfhost/tools/performance/phase45/evidence/raw/raw-campaign.tar.gz.part-001",
+          "bytes": 41943040,
+          "sha256": "7629777f047e8ba5401f7688b76aa26981e1f9a22335e05223d04893ee7cf45d"
+        },
+        {
+          "file": "selfhost/tools/performance/phase45/evidence/raw/raw-campaign.tar.gz.part-002",
+          "bytes": 41943040,
+          "sha256": "8c4018d05ea1059185bb99debb04ee6e1d2b14b8819b06695dc1bc34ee63943c"
+        },
+        {
+          "file": "selfhost/tools/performance/phase45/evidence/raw/raw-campaign.tar.gz.part-003",
+          "bytes": 41943040,
+          "sha256": "446c23163a161993f26f3f7521ed76ce54ebbcbeaf448b485339771d8ddc2ec8"
+        },
+        {
+          "file": "selfhost/tools/performance/phase45/evidence/raw/raw-campaign.tar.gz.part-004",
+          "bytes": 6185683,
+          "sha256": "3649df688eb7ac6c26cb2fb452d75ea6d8fe715ca1bdc71a99c730b9988eaece"
+        }
+      ],
+      "logicalArchive": {
+        "bytes": 173957843,
+        "sha256": "3ab22dcd35b5b1158f35d518c46914185a5df6affb7cb8b83ff253541df3c703"
+      },
+      "manifestMemberCount": 55014,
+      "knownRequiredPrefixes": [],
+      "knownRequiredMembers": [
+        {
+          "file": "selfhost/build/phase45/qualification23/backend/pilot.json",
+          "bytes": 456011,
+          "sha256": "419cd9398e953c4c77d5487f5a764dad9e4bf9ec7666579431ed58be9f67046c"
+        }
+      ],
+      "archiveBytesRehashedByThisInventory": false,
+      "note": "Archive member names are relative to rawRoot; transport path is relative to this metadata directory. Any local joined gzip is not a required published input."
+    },
+    {
+      "id": "phase22",
+      "metadata": [
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/manifest.json",
+          "bytes": 2580389,
+          "sha256": "5073b24f8561feb2c67cb8d3c38813fa89e8b9d4bf2eb1bcac469ae84e01eeca"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/inventory.json",
+          "bytes": 7450568,
+          "sha256": "624ec44ab13ed5ac33c5787d20993e7de67a082cbc4940e7766f8f18ef889a99"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/preservation.json",
+          "bytes": 21136,
+          "sha256": "1edec525a8bc8fb4c23e0ae11f2cf0f74f0643302dc4af990a754f74e97039f1"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/recovery-final-01.json",
+          "bytes": 7471,
+          "sha256": "06258c20df50511e7f7942fa7b61e5ef10591ccce85462a488ea9d2aba7d1749"
+        },
+        {
+          "file": "selfhost/tools/performance/phase22/context-recover-v3.py",
+          "bytes": 13908,
+          "sha256": "fb22d600e947cad290c470a79daf6b759166138cef7e0c02363409f152ab5f07"
+        }
+      ],
+      "manifestSchema": "archives-member-path-lists-plus-inventory.members-typed-list",
+      "memberPathRoot": "repository-root",
+      "archiveKind": "independent-xz-tar-archives",
+      "transportKind": "independent-archives-do-not-concatenate",
+      "transport": [
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-01.tar.xz",
+          "bytes": 637984,
+          "sha256": "57d7b7de1f43be1675fe9d86ecabbf5713c815f11940a6c63064c777405af98d"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-02.tar.xz",
+          "bytes": 786516,
+          "sha256": "8fa8bd60cd2f07b2d38930657338e57d13e95c035cc9107756a89269ff9cf32e"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-03.tar.xz",
+          "bytes": 904456,
+          "sha256": "70ab6a524c240419917db1eafb6f0b2b24ea2ffafc073e5ac1869341669057c6"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-04.tar.xz",
+          "bytes": 860204,
+          "sha256": "bfa54182ecd597454856499f59ce7a51ff59a753d18be8190f268591860c5aaf"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-05.tar.xz",
+          "bytes": 861224,
+          "sha256": "3e0bab1c25044af326b1c6e8e0a34147a45d3e211d554465fdf1e0f1589577b9"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-06.tar.xz",
+          "bytes": 788552,
+          "sha256": "280f39c950915b60692f8353466fcf408bfedf62390caccfe742891cea49b855"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-07.tar.xz",
+          "bytes": 786208,
+          "sha256": "4beab4b4304e7937752fea812f54abcf3842081f92db46d2439efe374b043f6a"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-08.tar.xz",
+          "bytes": 776024,
+          "sha256": "174a19b0ba80bd7ba991a57b7ee0a4f40fc7ea5829b0ae17fc0dd145f417b945"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-09.tar.xz",
+          "bytes": 726200,
+          "sha256": "b8eb485c71b99b46b01b7e237f9b9158bada3ed2708d27c6f525046bd7d19b60"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-10.tar.xz",
+          "bytes": 495556,
+          "sha256": "9a69cdf7f44c52068de1efbf3d1d9212b1ee5d8f1fa9cf68714ec37d10fdb93f"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-11.tar.xz",
+          "bytes": 243344,
+          "sha256": "7a1dbd24f950b69c3e5d02646215dc1ba06528936c28e4b40add6be171aee554"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-12.tar.xz",
+          "bytes": 237016,
+          "sha256": "fac5668521d10f8971f114a1e2ff38b39c36bfce4f47da18f6b9d6c10e9a6f7d"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-13.tar.xz",
+          "bytes": 761468,
+          "sha256": "5f07f825cc254e9a5d059dcbe37e1a2f4c4ebd7791e0e036d6dee03c3009ed41"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-14.tar.xz",
+          "bytes": 761692,
+          "sha256": "694637f7dbf2006cd9fa5fc563dabd2b9ff28c105cc64917939bcfbc02ed5829"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-15.tar.xz",
+          "bytes": 538592,
+          "sha256": "7cf12f894780c39c7fbcc929ed6dfc1be77720c89afd5fc745e64b83a8f0d4a2"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-16.tar.xz",
+          "bytes": 224828,
+          "sha256": "2929ecbee63bb370fe7b3c323f5c39510b7df9038caff45cdc6e57aedc43ad06"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-17.tar.xz",
+          "bytes": 238276,
+          "sha256": "2e7157a49419bbc510ca5ad4a59dff95db88e6dae9bed900448c50849f50dd64"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-18.tar.xz",
+          "bytes": 242340,
+          "sha256": "627fe03406bd36d4dd14a3b386706452a5df7b1939651092e2437b92f26a3e85"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-19.tar.xz",
+          "bytes": 233692,
+          "sha256": "75951ff7897f1c71cf0c91bd58c6ff651e49606f22a44f1a8dcf9fc31182466c"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-20.tar.xz",
+          "bytes": 224936,
+          "sha256": "9c3a6a0d62a18dda0ec6f6eaa24cb874c8b7a749ec7fdf05bb2a1a448a6b277d"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-21.tar.xz",
+          "bytes": 294468,
+          "sha256": "98f0b01d4ca80365c703e4c5003de61e347c84739a2f0de31461a09a9768cc25"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-22.tar.xz",
+          "bytes": 218292,
+          "sha256": "b4068aea8dfff77c6302283aff0a4854b9d67bc7bd4153c29f301c04bf68b0bb"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-23.tar.xz",
+          "bytes": 838316,
+          "sha256": "94513c72def5e4829f88fca3d8effb3465e4242be5f90843b4fda75be46cc5e7"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-24.tar.xz",
+          "bytes": 1242072,
+          "sha256": "beddd0fbd9ba01c86b80f9623f42194d14428f86b5ed741d76a062fd88f88321"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-25.tar.xz",
+          "bytes": 909808,
+          "sha256": "e87644e49961c2ab31b0597c27a39f6a68c97fa61093ac898bf8daa85d5d2aa7"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-26.tar.xz",
+          "bytes": 1123372,
+          "sha256": "e8320d2b9fe0969b0b3625f1ad700a7301effacfbc8a1a2b86234de4cff9aff5"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-27.tar.xz",
+          "bytes": 929876,
+          "sha256": "bad62b4e7483f2a5f1e4007b3d7e8ceaa6cb1c6181e3fd6f64a0c6d3763ba3a7"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-28.tar.xz",
+          "bytes": 519248,
+          "sha256": "cce00dc8c93f4180f02809b9f0d766d87b6872f61c2b4c8ba80edb8e47b45993"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-29.tar.xz",
+          "bytes": 387648,
+          "sha256": "c8952980d3810c085d1697a154bf8e18a2f4b5cd02f473064b1e1e0192ce194e"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-30.tar.xz",
+          "bytes": 304004,
+          "sha256": "450b3108ff5b485f528d3b128d0d41fa7fed9cd14230c9358596079a2c86f7ac"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-31.tar.xz",
+          "bytes": 633000,
+          "sha256": "6abc3865aad0a48c542e579364ddcb9a26fda64498c2fc88b0cc114e35808dc5"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-32.tar.xz",
+          "bytes": 1078508,
+          "sha256": "521555707928f356498179d82d72fc5aaa7da8477e9efb9d0714ec4121825b22"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-33.tar.xz",
+          "bytes": 1405372,
+          "sha256": "ccfc16b13cbe63faf9eea58ab0ee52226b2a8f3c3224ea5fd84628f6e22dc05f"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-34.tar.xz",
+          "bytes": 331304,
+          "sha256": "a7b39a0677c657092483778cba821ae5467789b368ecd3125d5e9bae3b3098da"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/experiments-35.tar.xz",
+          "bytes": 961712,
+          "sha256": "37d00606b6b5bbc60b7436bbb104b997a396d5a739947e94a130de46f85824a2"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/capsule-01/final-01.tar.xz",
+          "bytes": 1141352,
+          "sha256": "67e3d153113edb269d242262c99dbb9c985fb90ac454c5f1abadada47c651cd7"
+        }
+      ],
+      "manifestMemberCount": 24804,
+      "knownRequiredPrefixes": [],
+      "knownRequiredMembers": [
+        {
+          "file": "selfhost/build/phase22/context-build-16/api.mjs",
+          "bytes": 917527,
+          "sha256": "9cf01096f395817470ef0515e0ee98da85a53eb1b05823c88c9f2d5531e6072a",
+          "type": "file",
+          "mode": 420,
+          "archive": "implementation/phase22/context-evidence/capsule-01/experiments-08.tar.xz"
+        }
+      ],
+      "historicalCaptureRecoveryPending": true,
+      "recoveryClosedBy": [
+        {
+          "file": "implementation/phase22/context-evidence/preservation.json",
+          "bytes": 21136,
+          "sha256": "1edec525a8bc8fb4c23e0ae11f2cf0f74f0643302dc4af990a754f74e97039f1"
+        },
+        {
+          "file": "implementation/phase22/context-evidence/recovery-final-01.json",
+          "bytes": 7471,
+          "sha256": "06258c20df50511e7f7942fa7b61e5ef10591ccce85462a488ea9d2aba7d1749"
+        }
+      ],
+      "declaredTransitivePrerequisites": [
+        {
+          "path": "implementation/phase16/compact-evidence/preservation.json",
+          "sha256": "38ad3de96a5666b733091b26d9e51bb403b696a8f0c7fac19efd3d8d4de77762",
+          "scope": "Prior frozen capsule dependency; follow its original manifest/receipt and declared prerequisite chain.",
+          "metadataIdentity": {
+            "file": "implementation/phase16/compact-evidence/preservation.json",
+            "bytes": 8114,
+            "sha256": "38ad3de96a5666b733091b26d9e51bb403b696a8f0c7fac19efd3d8d4de77762"
+          }
+        },
+        {
+          "path": "implementation/phase17/evidence/preservation.json",
+          "sha256": "e77af70e357abbb45718d1981909006186d221e48b6871137df126ea64fd537d",
+          "scope": "Prior frozen capsule dependency; follow its original manifest/receipt and declared prerequisite chain.",
+          "metadataIdentity": {
+            "file": "implementation/phase17/evidence/preservation.json",
+            "bytes": 6366,
+            "sha256": "e77af70e357abbb45718d1981909006186d221e48b6871137df126ea64fd537d"
+          }
+        },
+        {
+          "path": "implementation/phase18/evidence/preservation.json",
+          "sha256": "ce77611f75699b2d09637da3a083594e8d95a77c78d77c595a0f9fead852ad84",
+          "scope": "Prior frozen capsule dependency; follow its original manifest/receipt and declared prerequisite chain.",
+          "metadataIdentity": {
+            "file": "implementation/phase18/evidence/preservation.json",
+            "bytes": 7657,
+            "sha256": "ce77611f75699b2d09637da3a083594e8d95a77c78d77c595a0f9fead852ad84"
+          }
+        },
+        {
+          "path": "implementation/phase19/context-evidence/preservation.json",
+          "sha256": "cf630a509047609e6b9ea61eda4ce7a4ed5c913a61e171a2c2178013334e5e82",
+          "scope": "Prior frozen capsule dependency; follow its original manifest/receipt and declared prerequisite chain.",
+          "metadataIdentity": {
+            "file": "implementation/phase19/context-evidence/preservation.json",
+            "bytes": 11112,
+            "sha256": "cf630a509047609e6b9ea61eda4ce7a4ed5c913a61e171a2c2178013334e5e82"
+          }
+        },
+        {
+          "path": "implementation/phase19/instance-evidence/preservation.json",
+          "sha256": "af435757f2a8fbbc52d4a83b59263a9013be1057f499dd8568bcd4a9967361dc",
+          "scope": "Prior frozen capsule dependency; follow its original manifest/receipt and declared prerequisite chain.",
+          "metadataIdentity": {
+            "file": "implementation/phase19/instance-evidence/preservation.json",
+            "bytes": 7851,
+            "sha256": "af435757f2a8fbbc52d4a83b59263a9013be1057f499dd8568bcd4a9967361dc"
+          }
+        },
+        {
+          "path": "implementation/phase19/prefix-evidence/preservation.json",
+          "sha256": "bcde6955e56a479f5d984cc72f0b09aaef7ea1cbaceb79c5bbbb7292233fabf9",
+          "scope": "Prior frozen capsule dependency; follow its original manifest/receipt and declared prerequisite chain.",
+          "metadataIdentity": {
+            "file": "implementation/phase19/prefix-evidence/preservation.json",
+            "bytes": 6203,
+            "sha256": "bcde6955e56a479f5d984cc72f0b09aaef7ea1cbaceb79c5bbbb7292233fabf9"
+          }
+        },
+        {
+          "path": "implementation/phase20/declaration-evidence/preservation.json",
+          "sha256": "0b3c89991bd261d066afdd7878f98dbc8a55dd8be7165a0768e7b02f2afc7bbd",
+          "scope": "Prior frozen capsule dependency; follow its original manifest/receipt and declared prerequisite chain.",
+          "metadataIdentity": {
+            "file": "implementation/phase20/declaration-evidence/preservation.json",
+            "bytes": 8945,
+            "sha256": "0b3c89991bd261d066afdd7878f98dbc8a55dd8be7165a0768e7b02f2afc7bbd"
+          }
+        },
+        {
+          "path": "implementation/phase21/group-evidence/preservation.json",
+          "sha256": "797b0757ad0c875b9225039fa04dfaf1b7d65ad0f65e964dce76ef1badc35cb9",
+          "scope": "Prior frozen capsule dependency; follow its original manifest/receipt and declared prerequisite chain.",
+          "metadataIdentity": {
+            "file": "implementation/phase21/group-evidence/preservation.json",
+            "bytes": 10252,
+            "sha256": "797b0757ad0c875b9225039fa04dfaf1b7d65ad0f65e964dce76ef1badc35cb9"
+          }
+        },
+        {
+          "kind": "committed-source",
+          "commit": "a784e0e1a0de1ee085cc188ca0f1f19038679bdb"
+        },
+        {
+          "kind": "pinned-upstream",
+          "path": "selfhost/.bootstrap/upstream-phase8",
+          "commit": "b2111cf43244e65f76ddc278ee695e669f720cbf"
+        },
+        {
+          "kind": "recorded-toolchain",
+          "scope": "Node/Clang and header/library toolchain external, never home configuration."
+        }
+      ],
+      "archiveBytesRehashedByThisInventory": false,
+      "note": "The exact materialized API member suffices for this known replay input; full source reconstruction uses the separate original recoverer, baseline Git commit, patch and declared prior capsules. Preserve file/link/mode semantics and cross-part links; no complete transitive restoration claim."
+    }
+  ],
+  "externalToolsAndCheckouts": {
+    "node": {
+      "recordedIdentity": {
+        "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "canonicalPath": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+        "version": "v24.18.0"
+      },
+      "evidence": {
+        "file": "selfhost/build/phase66/checked-b1-04/attempt.json",
+        "bytes": 298472,
+        "sha256": "bbec9b728120e3a1b3bac4ffffcdc02ca736c9edfd813fedbfb6105a09751657"
+      },
+      "binaryRehashed": false,
+      "scope": "Recorded Node24.18.0; executable/system dependencies remain external, and recipes retain flags and CPU/resource settings."
+    },
+    "upstreamCheckouts": [
+      {
+        "role": "old",
+        "recordedCheckout": "selfhost/.bootstrap/upstream-phase23",
+        "repository": "https://github.com/bendlang/bend.git",
+        "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+        "sourceIdentityReceipt": {
+          "file": "selfhost/build/phase66/upstream-delta.json",
+          "bytes": 22804,
+          "sha256": "27b122c90592060afe5ec93497ee75bc4bff9615a23dc7801d50f303d571103e"
+        },
+        "recordedCoreFileIdentities": [
+          {
+            "file": "selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+            "bytes": 137347,
+            "sha256": "de2b39db2fcbd2f9115053e85e34d791693e1297bfeb6874da1013ff7b44b7dd"
+          },
+          {
+            "file": "selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+            "bytes": 185444,
+            "sha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee"
+          },
+          {
+            "file": "selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+            "bytes": 71530,
+            "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+          },
+          {
+            "file": "selfhost/.bootstrap/upstream-phase23/bend2/main.ts",
+            "bytes": 34525,
+            "sha256": "f835f0727beb447f116daffdc9aa7c4df319b7c044fd6188add517395b86fa86"
+          },
+          {
+            "file": "selfhost/.bootstrap/upstream-phase23/bend2/safe.ts",
+            "bytes": 58263,
+            "sha256": "be4284a7a6677099c518b29583b996912336d1d48d7d9135b3026428448c8b37"
+          },
+          {
+            "file": "selfhost/.bootstrap/upstream-phase23/bend2/bendtt.lean",
+            "bytes": 165581,
+            "sha256": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce"
+          }
+        ],
+        "scope": "Checkout includes tests and adjacent foreign assets, runtime headers and effect providers; these six recorded files are an identity summary, not the complete transitive fixture/import closure. Use each consumed recipe for its full pinned closure. No Git or current-checkout integrity verification was performed for this inventory."
+      },
+      {
+        "role": "new",
+        "recordedCheckout": "selfhost/.bootstrap/upstream-phase66",
+        "repository": "https://github.com/bendlang/bend.git",
+        "commit": "059266225b77c8ca256ac6b25ee5c21449bab151",
+        "sourceIdentityReceipt": {
+          "file": "selfhost/build/phase66/upstream-delta.json",
+          "bytes": 22804,
+          "sha256": "27b122c90592060afe5ec93497ee75bc4bff9615a23dc7801d50f303d571103e"
+        },
+        "recordedCoreFileIdentities": [
+          {
+            "file": "selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+            "bytes": 138101,
+            "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49"
+          },
+          {
+            "file": "selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+            "bytes": 185124,
+            "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c"
+          },
+          {
+            "file": "selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+            "bytes": 75064,
+            "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+          },
+          {
+            "file": "selfhost/.bootstrap/upstream-phase66/bend2/main.ts",
+            "bytes": 35211,
+            "sha256": "407c0196a47e464640c6557cb06d230016270a40f28ea4250f00936ab79c2f8e"
+          },
+          {
+            "file": "selfhost/.bootstrap/upstream-phase66/bend2/safe.ts",
+            "bytes": 65468,
+            "sha256": "bf495d64c03caa7a2558aaae5e172cd7743b9aa5470c4d33ad86634e23d81ffc"
+          },
+          {
+            "file": "selfhost/.bootstrap/upstream-phase66/bend2/bendtt.lean",
+            "bytes": 172753,
+            "sha256": "83cdd36e66dcd2cabcc3d10556c9c874f8d823956feab88f8bb5a81473d51be3"
+          }
+        ],
+        "scope": "Checkout includes tests and adjacent foreign assets, runtime headers and effect providers; these six recorded files are an identity summary, not the complete transitive fixture/import closure. Use each consumed recipe for its full pinned closure. No Git or current-checkout integrity verification was performed for this inventory."
+      }
+    ],
+    "clang": {
+      "evidence": {
+        "file": "selfhost/build/phase66/backend-native-controls04-clang01-recipe/recipe.json",
+        "bytes": 11670,
+        "sha256": "c9ee8b4fe2358198fee3cd6e5c5a163a7b525ddc17b41c26d7b45c863586c150"
+      },
+      "recordedCompiler": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin/clang",
+        "sha256": "8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2",
+        "bytes": 145096
+      },
+      "recordedSharedLibraries": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu/libLLVM-16.so.1",
+          "sha256": "7070cb907913823b3272d6f7919958d7b06a4e2965c47a2f131b7a943fe1676f",
+          "bytes": 123191584
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/libclang-cpp.so.16",
+          "sha256": "cfe49cc15c7557bdeb70c7b08ccb5d28ca32b2ee53e21d191d092a56d5508db8",
+          "bytes": 63000208
+        }
+      ],
+      "environmentOverlay": {
+        "CC": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+        "CPATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include",
+        "LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+        "LD_LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu"
+      },
+      "provenanceMetadata": [
+        {
+          "file": "selfhost/build/phase1/clang/download.log",
+          "bytes": 667,
+          "sha256": "48cb088a5175826b4a68e58af8d94282f270221502bfd5812805363d5dde5317"
+        },
+        {
+          "file": "selfhost/build/phase1/clang/audio-download.log",
+          "bytes": 219,
+          "sha256": "b427758995b6cbf4bb1d3440f6ae5a548161fc822b1064082a147df1071e4b30"
+        }
+      ],
+      "recordedPackages": "Debian clang/libclang/libllvm16/llvm-linker-tools 1:16.0.6-15~deb11u2; libasound2[-dev] 1.2.4-1.1",
+      "binaryLibrariesAndSysrootArchived": false,
+      "binaryLibrariesRehashed": false,
+      "scope": "External toolchain. Include/link directory contents and system link/runtime dependencies are not fully enumerated by the three recorded file hashes. No Phase1 toolchain capsule identified."
+    }
+  },
+  "inputMetadata": [
+    {
+      "file": "selfhost/tools/performance/phase65/artifacts/manifest.json",
+      "bytes": 4188117,
+      "sha256": "4cacfe621cc5eec7ee5b1da3287da8bee3bc62c7d5f4a1183a1a456fca485cf2"
+    },
+    {
+      "file": "selfhost/tools/performance/phase63/artifacts/manifest.json",
+      "bytes": 3888250,
+      "sha256": "8a213a879320b6a86d4dc692c0f2a7e41a14176e5186a830fa279703b393b4c6"
+    },
+    {
+      "file": "selfhost/tools/performance/phase58/artifacts/raw/archive.json",
+      "bytes": 6095577,
+      "sha256": "bb893b0ab759ac641622febfdf6fcb2fcec96478dc8f12cb1bc57670ab98c5d5"
+    },
+    {
+      "file": "selfhost/tools/performance/phase58/artifacts/raw/transport.json",
+      "bytes": 902,
+      "sha256": "d727422043e9c7cdedb70b3addc4088dab63e5594b1a660a139aa4aefcacbdaf"
+    },
+    {
+      "file": "selfhost/tools/performance/phase55/artifacts/raw/archive.json",
+      "bytes": 921584,
+      "sha256": "568f9e84b5561bc71f7ede181686ba84d4c045d8f8bcb0df72bb26f9057387ca"
+    },
+    {
+      "file": "selfhost/tools/performance/phase45/evidence/raw/archive.json",
+      "bytes": 10430438,
+      "sha256": "452a95d925cc177f690f0e432401b60041deb6a9e6bb9cf03a6dd196dfe332be"
+    },
+    {
+      "file": "selfhost/tools/performance/phase45/evidence/raw/parts.json",
+      "bytes": 1701,
+      "sha256": "2801f7f76e77ce188fdd10491711765dd17a8ad9755290e7d8351c794c73f016"
+    },
+    {
+      "file": "implementation/phase22/context-evidence/capsule-01/manifest.json",
+      "bytes": 2580389,
+      "sha256": "5073b24f8561feb2c67cb8d3c38813fa89e8b9d4bf2eb1bcac469ae84e01eeca"
+    },
+    {
+      "file": "implementation/phase22/context-evidence/capsule-01/inventory.json",
+      "bytes": 7450568,
+      "sha256": "624ec44ab13ed5ac33c5787d20993e7de67a082cbc4940e7766f8f18ef889a99"
+    },
+    {
+      "file": "implementation/phase22/context-evidence/preservation.json",
+      "bytes": 21136,
+      "sha256": "1edec525a8bc8fb4c23e0ae11f2cf0f74f0643302dc4af990a754f74e97039f1"
+    },
+    {
+      "file": "implementation/phase22/context-evidence/recovery-final-01.json",
+      "bytes": 7471,
+      "sha256": "06258c20df50511e7f7942fa7b61e5ef10591ccce85462a488ea9d2aba7d1749"
+    },
+    {
+      "file": "implementation/phase16/compact-evidence/preservation.json",
+      "bytes": 8114,
+      "sha256": "38ad3de96a5666b733091b26d9e51bb403b696a8f0c7fac19efd3d8d4de77762"
+    },
+    {
+      "file": "implementation/phase17/evidence/preservation.json",
+      "bytes": 6366,
+      "sha256": "e77af70e357abbb45718d1981909006186d221e48b6871137df126ea64fd537d"
+    },
+    {
+      "file": "implementation/phase18/evidence/preservation.json",
+      "bytes": 7657,
+      "sha256": "ce77611f75699b2d09637da3a083594e8d95a77c78d77c595a0f9fead852ad84"
+    },
+    {
+      "file": "implementation/phase19/context-evidence/preservation.json",
+      "bytes": 11112,
+      "sha256": "cf630a509047609e6b9ea61eda4ce7a4ed5c913a61e171a2c2178013334e5e82"
+    },
+    {
+      "file": "implementation/phase19/instance-evidence/preservation.json",
+      "bytes": 7851,
+      "sha256": "af435757f2a8fbbc52d4a83b59263a9013be1057f499dd8568bcd4a9967361dc"
+    },
+    {
+      "file": "implementation/phase19/prefix-evidence/preservation.json",
+      "bytes": 6203,
+      "sha256": "bcde6955e56a479f5d984cc72f0b09aaef7ea1cbaceb79c5bbbb7292233fabf9"
+    },
+    {
+      "file": "implementation/phase20/declaration-evidence/preservation.json",
+      "bytes": 8945,
+      "sha256": "0b3c89991bd261d066afdd7878f98dbc8a55dd8be7165a0768e7b02f2afc7bbd"
+    },
+    {
+      "file": "implementation/phase21/group-evidence/preservation.json",
+      "bytes": 10252,
+      "sha256": "797b0757ad0c875b9225039fa04dfaf1b7d65ad0f65e964dce76ef1badc35cb9"
+    },
+    {
+      "file": "selfhost/tools/performance/phase22/context-recover-v3.py",
+      "bytes": 13908,
+      "sha256": "fb22d600e947cad290c470a79daf6b759166138cef7e0c02363409f152ab5f07"
+    },
+    {
+      "file": "selfhost/build/phase66/campaign.json",
+      "bytes": 813,
+      "sha256": "730abf0e25cca53852f9b8303f96660ffed127c6038acd79a4c45d32db42d870"
+    },
+    {
+      "file": "selfhost/build/phase66/upstream-delta.json",
+      "bytes": 22804,
+      "sha256": "27b122c90592060afe5ec93497ee75bc4bff9615a23dc7801d50f303d571103e"
+    },
+    {
+      "file": "selfhost/build/phase66/checked-b1-04/attempt.json",
+      "bytes": 298472,
+      "sha256": "bbec9b728120e3a1b3bac4ffffcdc02ca736c9edfd813fedbfb6105a09751657"
+    },
+    {
+      "file": "selfhost/build/phase66/backend-native-controls04-clang01-recipe/recipe.json",
+      "bytes": 11670,
+      "sha256": "c9ee8b4fe2358198fee3cd6e5c5a163a7b525ddc17b41c26d7b45c863586c150"
+    },
+    {
+      "file": "selfhost/build/phase1/clang/download.log",
+      "bytes": 667,
+      "sha256": "48cb088a5175826b4a68e58af8d94282f270221502bfd5812805363d5dde5317"
+    },
+    {
+      "file": "selfhost/build/phase1/clang/audio-download.log",
+      "bytes": 219,
+      "sha256": "b427758995b6cbf4bb1d3440f6ae5a548161fc822b1064082a147df1071e4b30"
+    },
+    {
+      "file": "selfhost/build/phase66/bun-toolchain01/acquisition.json",
+      "bytes": 682,
+      "sha256": "b01e91edb441ca5e2b867a7fef7eec101b9f83d0f471e3e8cd89588241c55a9c"
+    },
+    {
+      "file": "selfhost/build/phase66/bun-toolchain01/release.json",
+      "bytes": 60750,
+      "sha256": "f108d06f2999418516714774c9de41b6d02d40045b522b198f05147caa6826de"
+    },
+    {
+      "file": "selfhost/build/phase66/checked-b1-07/attempt.json",
+      "bytes": 298472,
+      "sha256": "2d7c525444a8ea87c18fd3d321894052639b1683186613831296b912f3d2fbaa"
+    },
+    {
+      "file": "selfhost/build/phase66/checked-b1-07/api.mjs.bootstrap.json",
+      "bytes": 90372,
+      "sha256": "0911823cf56daa2263f6a86d62d98f8f68e422b65ff4a7118183488b3bcd259e"
+    },
+    {
+      "file": "selfhost/build/phase66/bootstrap-b2-07/full/report.json",
+      "bytes": 13536,
+      "sha256": "6de52a80dc413259eb6d32f6ca988cff2b1d74718eb2c2473f6df142ca9191c4"
+    },
+    {
+      "file": "selfhost/build/phase66/bootstrap-b2-07/image-pins.json",
+      "bytes": 4901,
+      "sha256": "8339978a1d42443d158c21c5f7ff4ce15cb990ba2527f253a6f674bf5afe4eec"
+    },
+    {
+      "file": "selfhost/build/phase66/selfhosting07/self-check/report.json",
+      "bytes": 292185,
+      "sha256": "8e10a8cffcea82f1311767cae05b2d50eea31fe20570542eb1de6d301e7b8ba3"
+    },
+    {
+      "file": "selfhost/build/phase66/selfhosting07/fixed-point/report.json",
+      "bytes": 150371,
+      "sha256": "886bc2069948e842c37ac48e7002345d68b377858da05594daec468ba6930869"
+    },
+    {
+      "file": "selfhost/build/phase66/b2-07-program-equality/report.json",
+      "bytes": 235167,
+      "sha256": "5f3c61071f2611dc08a33bfd0121837f761c17056f010bc4bd629f542fcb9e0e"
+    },
+    {
+      "file": "selfhost/build/phase66/conformance-final07-frontend-reuse.json",
+      "bytes": 725720,
+      "sha256": "b53b2dc8308ca7d838ce2bf0ed187608f9c867f3a4852aa52d832f500a97c347"
+    },
+    {
+      "file": "implementation/phase66/evidence/simplicity-final07.json",
+      "bytes": 281124,
+      "sha256": "09909c38259d4d991aed5d5ce1b5123016221ff12bf1b53fb4d499e0e75c8825"
+    },
+    {
+      "file": "implementation/phase66/evidence/source-freeze-final07.json",
+      "bytes": 151139,
+      "sha256": "e6400dd7a4959dc2e9f494e7f1233066deeadf032c3a6f54a389de68332c2b01"
+    },
+    {
+      "file": "implementation/phase66/evidence/conformance-final07.json",
+      "bytes": 5554,
+      "sha256": "31d3ffe988aaae4fde29bebc00c8b9bdcc5d11bf10714bea2455667d045b2e2d"
+    },
+    {
+      "file": "selfhost/build/phase66/conformance-lanes07.json",
+      "bytes": 2117715,
+      "sha256": "e1a91ac309ac69f8d5c3ac6261ad9265edb8bf013e635cbc5e228d602727db06"
+    },
+    {
+      "file": "implementation/phase66/evidence/b1-07-broad.json",
+      "bytes": 89756,
+      "sha256": "d89a06126cc3786d7baf69bb75669b73cc4780b18f0d073c750229587c994e35"
+    },
+    {
+      "file": "implementation/phase66/evidence/b2-07-broad.json",
+      "bytes": 89946,
+      "sha256": "40eb691ebd4ab8ea884bac8a2dca75ef1b6809cfcfe0044f1a7a75f1ac24a6cf"
+    },
+    {
+      "file": "implementation/phase66/evidence/base-host07.json",
+      "bytes": 31244,
+      "sha256": "371bf09cee40ac6d41697e0b64cbb816f65db724e7727f3ab23a0feb4bdcbf16"
+    },
+    {
+      "file": "implementation/phase66/evidence/selected-performance07.json",
+      "bytes": 268251,
+      "sha256": "6d66e4dc6fda8adb0fd925da977f8705c6f076c14bcf52397b2126942275aec3"
+    },
+    {
+      "file": "implementation/phase66/evidence/native-backend07.json",
+      "bytes": 1558502,
+      "sha256": "a1425d8ca6c4f1728814bab0de86032b25362713b180d723116e1800c384b5d3"
+    },
+    {
+      "file": "implementation/phase66/evidence/compiler-qualification07.json",
+      "bytes": 95080,
+      "sha256": "ad874f80568eca65b91b0d093376d0d24ea7b2a2d83a37f457616e03e6fa3826"
+    },
+    {
+      "file": "implementation/phase66/evidence/installed-release07.json",
+      "bytes": 8053,
+      "sha256": "8399e6c2263f9593500e12e514cd6241fd4c85b5a68157bd18c9a569ea24a00c"
+    },
+    {
+      "file": "implementation/phase66/evidence/closed-evidence-preservation.json",
+      "bytes": 92270,
+      "sha256": "642d4c0cd4e920891bfe2f9e1e8b3cd6e32c830324d5ea831ccee143a42e717b"
+    },
+    {
+      "file": "implementation/phase66/evidence/time-account-final.json",
+      "bytes": 1446768,
+      "sha256": "019a238860749cbbcc20045174c374e44648b790bea25da513d00e1b87a97815"
+    },
+    {
+      "file": "implementation/phase66/evidence/time-account-final-review.json",
+      "bytes": 2431,
+      "sha256": "5a9ca3f75dbf480f0a4728f8317b65b96c7da1094f01f5b846799115904ecda0"
+    }
+  ],
+  "verificationRequirements": [
+    "Verify every metadata identity before using these mappings; pin archive transports against their original manifests.",
+    "For one-stream gzip transports: verify each ordered part size/hash, total bytes and concatenated hash before opening the stream; preserve original member path root.",
+    "For independent XZ archives: verify each archive separately and map members through the original typed inventory; use original recovery semantics for symlinks, modes and source reconstruction.",
+    "Check each known required member against its original manifest identity. Prefix summaries are selectors into unchanged manifests, not a claim every prefix member was consumed.",
+    "Rebind historical absolute paths explicitly in a fresh isolated checkout; never overwrite existing closed raw roots or relabel receipts.",
+    "Record any unmet external tool/fixture/header/provider prerequisite; do not infer tool availability from archive integrity.",
+    "All Phase66 raw files, including malformed JSON and failed outputs, belong in its raw inventory without parsing or success filtering."
+  ],
+  "metadataInputsUnchanged": true,
+  "updated": "2026-10-08T08:40:33.902558+00:00",
+  "capturedToolchains": {
+    "bun": {
+      "release": "bun-v1.4.2",
+      "acquisition": {
+        "file": "selfhost/build/phase66/bun-toolchain01/acquisition.json",
+        "bytes": 682,
+        "sha256": "b01e91edb441ca5e2b867a7fef7eec101b9f83d0f471e3e8cd89588241c55a9c"
+      },
+      "officialReleaseMetadata": {
+        "file": "selfhost/build/phase66/bun-toolchain01/release.json",
+        "bytes": 60750,
+        "sha256": "f108d06f2999418516714774c9de41b6d02d40045b522b198f05147caa6826de"
+      },
+      "recordedZip": {
+        "file": "selfhost/build/phase66/bun-toolchain01/bun-linux-x64.zip",
+        "bytes": 36646985,
+        "sha256": "36368faef7527875d5ffa52e53cd48021741f2a83eb6208a8dd64068d422a913",
+        "publishedDigest": "sha256:36368faef7527875d5ffa52e53cd48021741f2a83eb6208a8dd64068d422a913"
+      },
+      "recordedBinary": {
+        "file": "selfhost/build/phase66/bun-toolchain01/bun",
+        "bytes": 79500640,
+        "sha256": "a83d263767d839e4d2649ca8e35d07159c7afc99afdc96d731ced29e056dda0c",
+        "mode": 493
+      },
+      "externalBinaryPrerequisite": false,
+      "binaryRehashedByThisInventory": false,
+      "executionQualifiedByThisInventory": false,
+      "scope": "Official Bun1.4.2 release metadata, acquisition receipt, verified zip and executable were captured under Phase66 raw. The archive will preserve their exact bytes and executable mode. Runtime/FFI qualification is a separate focused emitted-artifact replay after full Node evidence; acquisition alone is not execution evidence. Operating-system/FFI facilities still need their separately recorded dependencies."
+    }
+  },
+  "selectedCampaignState": {
+    "attempt": "checked-b1-07",
+    "sourceCommitPrefix": "f9667c2",
+    "selectedB1Sha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
+    "rawB1Sha256": "ee717187f0e69884bc3932c0d1a1ab1602cf138873e9b5eaf02bd658378f1fa6",
+    "sourceSha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e",
+    "actualB2Sha256": "0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f",
+    "metadata": [
+      {
+        "file": "selfhost/build/phase66/checked-b1-07/attempt.json",
+        "bytes": 298472,
+        "sha256": "2d7c525444a8ea87c18fd3d321894052639b1683186613831296b912f3d2fbaa"
+      },
+      {
+        "file": "selfhost/build/phase66/checked-b1-07/api.mjs.bootstrap.json",
+        "bytes": 90372,
+        "sha256": "0911823cf56daa2263f6a86d62d98f8f68e422b65ff4a7118183488b3bcd259e"
+      },
+      {
+        "file": "selfhost/build/phase66/bootstrap-b2-07/full/report.json",
+        "bytes": 13536,
+        "sha256": "6de52a80dc413259eb6d32f6ca988cff2b1d74718eb2c2473f6df142ca9191c4"
+      },
+      {
+        "file": "selfhost/build/phase66/bootstrap-b2-07/image-pins.json",
+        "bytes": 4901,
+        "sha256": "8339978a1d42443d158c21c5f7ff4ce15cb990ba2527f253a6f674bf5afe4eec"
+      },
+      {
+        "file": "selfhost/build/phase66/selfhosting07/self-check/report.json",
+        "bytes": 292185,
+        "sha256": "8e10a8cffcea82f1311767cae05b2d50eea31fe20570542eb1de6d301e7b8ba3"
+      },
+      {
+        "file": "selfhost/build/phase66/selfhosting07/fixed-point/report.json",
+        "bytes": 150371,
+        "sha256": "886bc2069948e842c37ac48e7002345d68b377858da05594daec468ba6930869"
+      },
+      {
+        "file": "selfhost/build/phase66/b2-07-program-equality/report.json",
+        "bytes": 235167,
+        "sha256": "5f3c61071f2611dc08a33bfd0121837f761c17056f010bc4bd629f542fcb9e0e"
+      },
+      {
+        "file": "selfhost/build/phase66/conformance-final07-frontend-reuse.json",
+        "bytes": 725720,
+        "sha256": "b53b2dc8308ca7d838ce2bf0ed187608f9c867f3a4852aa52d832f500a97c347"
+      },
+      {
+        "file": "implementation/phase66/evidence/simplicity-final07.json",
+        "bytes": 281124,
+        "sha256": "09909c38259d4d991aed5d5ce1b5123016221ff12bf1b53fb4d499e0e75c8825"
+      },
+      {
+        "file": "implementation/phase66/evidence/source-freeze-final07.json",
+        "bytes": 151139,
+        "sha256": "e6400dd7a4959dc2e9f494e7f1233066deeadf032c3a6f54a389de68332c2b01"
+      },
+      {
+        "file": "implementation/phase66/evidence/conformance-final07.json",
+        "bytes": 5554,
+        "sha256": "31d3ffe988aaae4fde29bebc00c8b9bdcc5d11bf10714bea2455667d045b2e2d"
+      },
+      {
+        "file": "selfhost/build/phase66/conformance-lanes07.json",
+        "bytes": 2117715,
+        "sha256": "e1a91ac309ac69f8d5c3ac6261ad9265edb8bf013e635cbc5e228d602727db06"
+      },
+      {
+        "file": "implementation/phase66/evidence/b1-07-broad.json",
+        "bytes": 89756,
+        "sha256": "d89a06126cc3786d7baf69bb75669b73cc4780b18f0d073c750229587c994e35"
+      },
+      {
+        "file": "implementation/phase66/evidence/b2-07-broad.json",
+        "bytes": 89946,
+        "sha256": "40eb691ebd4ab8ea884bac8a2dca75ef1b6809cfcfe0044f1a7a75f1ac24a6cf"
+      },
+      {
+        "file": "implementation/phase66/evidence/base-host07.json",
+        "bytes": 31244,
+        "sha256": "371bf09cee40ac6d41697e0b64cbb816f65db724e7727f3ab23a0feb4bdcbf16"
+      },
+      {
+        "file": "implementation/phase66/evidence/selected-performance07.json",
+        "bytes": 268251,
+        "sha256": "6d66e4dc6fda8adb0fd925da977f8705c6f076c14bcf52397b2126942275aec3"
+      },
+      {
+        "file": "implementation/phase66/evidence/native-backend07.json",
+        "bytes": 1558502,
+        "sha256": "a1425d8ca6c4f1728814bab0de86032b25362713b180d723116e1800c384b5d3"
+      },
+      {
+        "file": "implementation/phase66/evidence/compiler-qualification07.json",
+        "bytes": 95080,
+        "sha256": "ad874f80568eca65b91b0d093376d0d24ea7b2a2d83a37f457616e03e6fa3826"
+      },
+      {
+        "file": "implementation/phase66/evidence/installed-release07.json",
+        "bytes": 8053,
+        "sha256": "8399e6c2263f9593500e12e514cd6241fd4c85b5a68157bd18c9a569ea24a00c"
+      },
+      {
+        "file": "implementation/phase66/evidence/closed-evidence-preservation.json",
+        "bytes": 92270,
+        "sha256": "642d4c0cd4e920891bfe2f9e1e8b3cd6e32c830324d5ea831ccee143a42e717b"
+      },
+      {
+        "file": "implementation/phase66/evidence/time-account-final.json",
+        "bytes": 1446768,
+        "sha256": "019a238860749cbbcc20045174c374e44648b790bea25da513d00e1b87a97815"
+      },
+      {
+        "file": "implementation/phase66/evidence/time-account-final-review.json",
+        "bytes": 2431,
+        "sha256": "5a9ca3f75dbf480f0a4728f8317b65b96c7da1094f01f5b846799115904ecda0"
+      }
+    ],
+    "scope": "Frozen final07 selected source and installed checked B1; separately qualified genuine B2. Compiler, semantic, primary/supplemental JS, native, H2, all three performance clocks, simplicity, installed release and preservation receipts are closed. Every failed attempt and original output remains in the whole raw inventory.",
+    "sourceCommit": "f9667c2b1449683a4e6fa87f71e9adea616e9638"
+  }
+}

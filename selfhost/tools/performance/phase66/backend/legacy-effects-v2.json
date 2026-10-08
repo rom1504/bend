@@ -1,0 +1,50 @@
+{
+  "kind": "phase66-legacy-effects-candidate",
+  "version": 2,
+  "status": "isolated-unexecuted",
+  "requires": "backend-v1",
+  "patchSha256": "08284403698e1ee2ba15cc471972af328dc2197fba7a54012b4e45a206719728",
+  "files": [
+    {
+      "path": "selfhost/src/back/js/foreign.bend",
+      "beforeSha256": "4564268ed41d6fff6d6025068d8aa23f46985bd9932c5c959eb998017a4c07ab",
+      "afterSha256": "fed2f2c55c21801d54b0c62b1641f5948b8b28e7f49e47ae4141043a8aba6273",
+      "beforeBytes": 5668,
+      "afterBytes": 5875,
+      "candidate": "selfhost/tools/performance/phase66/backend/legacy-effects-candidate-v2/selfhost/src/back/js/foreign.bend"
+    },
+    {
+      "path": "selfhost/src/runtime.mjs",
+      "beforeSha256": "d208b2a32c371922a77448890bc0307b6fcbc1344163925e3c5162f533f5d206",
+      "afterSha256": "8d14b2f3b661a898ed24beb43c4ac4f8638828a551a8312b0b44209e04a18e31",
+      "beforeBytes": 57604,
+      "afterBytes": 61188,
+      "candidate": "selfhost/tools/performance/phase66/backend/legacy-effects-candidate-v2/selfhost/src/runtime.mjs"
+    },
+    {
+      "path": "selfhost/src/runtime/js/core.mjs",
+      "beforeSha256": "1d1fab4241de3903466c982b5ecfce4155c93d05804113a8ca39d3ee54524357",
+      "afterSha256": "7cefc0acd4b36908697663708c004337b3bf7da1a8a8404b3cae120010104398",
+      "beforeBytes": 22964,
+      "afterBytes": 22971,
+      "candidate": "selfhost/tools/performance/phase66/backend/legacy-effects-candidate-v2/selfhost/src/runtime/js/core.mjs"
+    },
+    {
+      "path": "selfhost/src/runtime/js/effects.mjs",
+      "beforeSha256": "5f4951e6d34157769d59267d5803454bad9567859231fb06aad9edc292ca409e",
+      "afterSha256": "d87e780b11cd8596d63155b98630289cc4d1496a94b94e4748405d101b144484",
+      "beforeBytes": 10725,
+      "afterBytes": 14302,
+      "candidate": "selfhost/tools/performance/phase66/backend/legacy-effects-candidate-v2/selfhost/src/runtime/js/effects.mjs"
+    }
+  ],
+  "unsupportedNewOperations": [
+    "TCP.try_send",
+    "TCP.try_send_bytes",
+    "UDP.try_send_to",
+    "UDP.try_send_bytes_to"
+  ],
+  "remainingLimitation": "An asynchronous TCP write error cannot reveal the exact unsent suffix in Node. Refuse that ambiguous failure instead of fabricating a payload; normal blocking sends and preflight failures retain support.",
+  "supersedes": "legacy-effects-v1 is unselected; v2 is a full replacement patch against backend-v1",
+  "timerContract": "Absolute channel deadlines checked before every matching/close operation; all long Node timers rearm in <=2^31-1ms chunks."
+}

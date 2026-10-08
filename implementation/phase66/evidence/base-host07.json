@@ -1,0 +1,795 @@
+{
+  "kind": "phase66-final07-base-host-admission-audit",
+  "version": 1,
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/audit-final07.py",
+    "sha256": "55efeaa8e4fd6ab11e6203f1580ee7af69f3f01a507b53673ca045ceb1225093",
+    "bytes": 10568
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/final07-controls-plan.json",
+    "sha256": "d71b04c13656cff295074160eadaa6fef87529c89a9a8f29b62052ed0a2c93b0",
+    "bytes": 6518
+  },
+  "attempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/attempt.json",
+    "sha256": "2d7c525444a8ea87c18fd3d321894052639b1683186613831296b912f3d2fbaa",
+    "bytes": 298472
+  },
+  "selectedB1": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/equality/api.mjs",
+    "sha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
+    "bytes": 1977285
+  },
+  "selectedB2": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/full/compiler.mjs",
+    "sha256": "0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f",
+    "bytes": 4069154
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/build/typed/snapshots/8d05ba60101784af71db76dca7e77d3e10e9041ad8bc057f9969a6cfb1951ca6/compiler.bend",
+    "sha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e",
+    "bytes": 1439123
+  },
+  "imagePins": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/image-pins.json",
+    "sha256": "8339978a1d42443d158c21c5f7ff4ce15cb990ba2527f253a6f674bf5afe4eec",
+    "bytes": 4901
+  },
+  "base": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+    "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+    "bytes": 75064
+  },
+  "driver": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/tools/typed-driver.mjs",
+    "sha256": "e093483d5103a8e833b6ca710246b1ec3c579b7fac5060c8e42f626c5e25ec85",
+    "bytes": 81423
+  },
+  "reports": [
+    {
+      "name": "owned-checked07",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-checked07-01/report.json",
+        "sha256": "833ced97cb1e18a4f3a1f4a6b5acbb710819b1a96d1a6d3354f4f7d45ed5ed6f",
+        "bytes": 145836
+      },
+      "method": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-v4.mjs",
+        "sha256": "8381a45c79e3745e78a19c33dec1795cac97ff532d77204b4e575fad80651b1e",
+        "bytes": 18428
+      },
+      "config": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-checked07-input-v4.json",
+        "sha256": "a80f0233c83d0f14d08cd96b9f9be6f01d242d661fc0112c7c0520edaf31fc6e",
+        "bytes": 3595
+      },
+      "supervisor": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-checked07-01-exec/run.json",
+        "sha256": "31445419253f8f98ee3ed3f2b17bde0872735bf35300fe80f54e082fe6bcacf8",
+        "bytes": 1663
+      },
+      "wallSeconds": 11.757381164934486,
+      "reportInputPinsReverified": 505,
+      "complete": true,
+      "passed": true,
+      "preparation": {
+        "keys": [
+          "IO.within",
+          "Word.add_comm.go",
+          "Nat.read.trim",
+          "Array.swap.go",
+          "Array.get.go",
+          "Map.put.go",
+          "Map.ins.go",
+          "Map.ins",
+          "Map.seek.go",
+          "Map.has.go",
+          "Map.get.go",
+          "Map.pop.go"
+        ],
+        "checkedDefinitions": 475,
+        "allProductsExact": true,
+        "preparationPairs": 99261,
+        "sidecar": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-checked07-01/project/build/typed/base-products/base-bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6-99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf-92673856f81bb146473729c6b1e427023a37d5cbcf3fb32d7f6805bfbbee4396-annotations64-v1.bin",
+          "sha256": "363bd170b2b665375dcf236afc78b8be5755c28afbf196bd6982d6307e2ea1ec",
+          "bytes": 438959
+        },
+        "producerReady": true
+      },
+      "cases": [
+        {
+          "id": "lexer",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+            "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+            "bytes": 7134
+          },
+          "pass": true,
+          "ordinary": {
+            "world": 1,
+            "context": 1,
+            "wanted": 1,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 1,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0,
+            "actualWanted": false
+          },
+          "ordinaryObservation": {
+            "status": "ok",
+            "phase": "compile",
+            "checked": true
+          },
+          "cached": {
+            "world": 1,
+            "context": 1,
+            "wanted": 1,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 1,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0,
+            "actualWanted": false
+          },
+          "publicInjected": {
+            "world": 0,
+            "context": 0,
+            "wanted": 0,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 0,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0
+          },
+          "output": {
+            "sha256": "35b7e7c4d564bbbd641e9e26695f133a83d834747595da4275129ada5c0e5e7d",
+            "bytes": 29076
+          }
+        },
+        {
+          "id": "test-map-set-ops",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+            "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+            "bytes": 5266
+          },
+          "pass": true,
+          "ordinary": {
+            "world": 1,
+            "context": 1,
+            "wanted": 1,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 1,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0,
+            "actualWanted": true
+          },
+          "ordinaryObservation": {
+            "status": "ok",
+            "phase": "compile",
+            "checked": true
+          },
+          "cached": {
+            "world": 1,
+            "context": 1,
+            "wanted": 1,
+            "allowed": 1,
+            "consumer": 1,
+            "sidecarOpens": 1,
+            "productReads": 1,
+            "annotationComparedPairs": 101907,
+            "annotationReused": 7,
+            "actualWanted": true,
+            "actualAllowed": true,
+            "annotationExact": true
+          },
+          "privateGuards": {
+            "stopFirstExact": true,
+            "stoppedObjectPreserved": true,
+            "stoppedWantedFalse": true,
+            "actualAllowed": true,
+            "unreadyDeclined": true,
+            "loaderErrorDeclined": true,
+            "fullHashCollisionDeclined": true
+          },
+          "publicInjected": {
+            "world": 0,
+            "context": 0,
+            "wanted": 0,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 0,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0
+          },
+          "output": {
+            "sha256": "ae2b6b4a2f6f9f440b918c52d2200489c25ccf56f2477fda72ceebd12d9e9546",
+            "bytes": 137137
+          }
+        },
+        {
+          "id": "numeric-recurrence",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+            "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+            "bytes": 556
+          },
+          "pass": true,
+          "ordinary": {
+            "world": 1,
+            "context": 1,
+            "wanted": 1,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 1,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0,
+            "actualWanted": false
+          },
+          "ordinaryObservation": {
+            "status": "ok",
+            "phase": "compile",
+            "checked": true
+          },
+          "cached": {
+            "world": 1,
+            "context": 1,
+            "wanted": 1,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 1,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0,
+            "actualWanted": false
+          },
+          "publicInjected": {
+            "world": 0,
+            "context": 0,
+            "wanted": 0,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 0,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0
+          },
+          "output": {
+            "sha256": "35355f7cbf8bc1abd1eacd46854b21c4c7a438febe5f62bfee96cf76656eeb49",
+            "bytes": 15567
+          }
+        }
+      ],
+      "actualExportCount": 99
+    },
+    {
+      "name": "custom-checked07",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-checked07-01/report.json",
+        "sha256": "d032afe607d2a5c9dbf5e83c05378520181126a4f75bbaf8f6f8c1bb5299ad10",
+        "bytes": 141934
+      },
+      "method": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/custom-base-controls-v3.mjs",
+        "sha256": "07070f0990c28149b60434781b6da859608b2b509dd287331c3a3f64a9a6f8b5",
+        "bytes": 13335
+      },
+      "config": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-checked07-input-v4.json",
+        "sha256": "a80f0233c83d0f14d08cd96b9f9be6f01d242d661fc0112c7c0520edaf31fc6e",
+        "bytes": 3595
+      },
+      "supervisor": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-checked07-01-exec/run.json",
+        "sha256": "e336195eaed5f38457c0b529666943a8b10723f557860ed2858c0256e8e7ac72",
+        "bytes": 1664
+      },
+      "wallSeconds": 10.752044798922725,
+      "reportInputPinsReverified": 504,
+      "complete": true,
+      "passed": true,
+      "customBase": {
+        "original": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+          "bytes": 75064
+        },
+        "derived": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-checked07-01/project/src/runtime/js/custom-base.bend",
+          "sha256": "2ca768ee04222af38eff35c129061f345009be47fbce4c1f1e63853d5efe690e",
+          "bytes": 75115
+        },
+        "change": "append one inert comment",
+        "otherwiseReadyWorld": true,
+        "preparedTwice": true
+      },
+      "optionalCounts": {
+        "base_annotation_prepare": 0,
+        "base_annotation_wanted": 0,
+        "base_annotation_allowed": 0,
+        "annotate_selected_base": 0,
+        "check_program_diagnostic_world": 1,
+        "book_context_world": 1
+      },
+      "optionalArtifactAbsent": true,
+      "output": {
+        "sha256": "ae2b6b4a2f6f9f440b918c52d2200489c25ccf56f2477fda72ceebd12d9e9546",
+        "bytes": 137137,
+        "sameImageOrdinaryModuleExact": true
+      }
+    },
+    {
+      "name": "owned-b2-07",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-b2-07-01/report.json",
+        "sha256": "cca085e1fe2f0f577f0981310509060422bd472d26955f8291be23ce918059bc",
+        "bytes": 88522
+      },
+      "method": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-b2-v1.mjs",
+        "sha256": "63878a29905128cbcafeea0477bb30078a3081dafc9b1f5b1ae78821ca88f36f",
+        "bytes": 19356
+      },
+      "config": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-b2-07-input-v1.json",
+        "sha256": "dbcac2a192ab0ef1045c6455bd65b49b271a412e6588ac7bdf517d83d1caa80a",
+        "bytes": 2833
+      },
+      "supervisor": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-b2-07-01-exec/run.json",
+        "sha256": "aef2f453d78a7e242c2f22b8dc547ecefd5b0bb2d6bd9d93107b6005381c5ea2",
+        "bytes": 1649
+      },
+      "wallSeconds": 10.250248583033681,
+      "reportInputPinsReverified": 279,
+      "complete": true,
+      "passed": true,
+      "preparation": {
+        "keys": [
+          "IO.within",
+          "Word.add_comm.go",
+          "Nat.read.trim",
+          "Array.swap.go",
+          "Array.get.go",
+          "Map.put.go",
+          "Map.ins.go",
+          "Map.ins",
+          "Map.seek.go",
+          "Map.has.go",
+          "Map.get.go",
+          "Map.pop.go"
+        ],
+        "checkedDefinitions": 475,
+        "allProductsExact": true,
+        "preparationPairs": 99261,
+        "sidecar": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-b2-07-01/project/build/typed/base-products/base-0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f-99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf-92673856f81bb146473729c6b1e427023a37d5cbcf3fb32d7f6805bfbbee4396-annotations64-v1.bin",
+          "sha256": "d8f77781065b6b0456b7f140b7134976424992b603ff1579b2a32a27daa6c45e",
+          "bytes": 438959
+        },
+        "producerReady": true
+      },
+      "cases": [
+        {
+          "id": "lexer",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+            "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+            "bytes": 7134
+          },
+          "pass": true,
+          "ordinary": {
+            "world": 1,
+            "context": 1,
+            "wanted": 1,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 1,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0,
+            "actualWanted": false
+          },
+          "ordinaryObservation": {
+            "status": "ok",
+            "phase": "compile",
+            "checked": true
+          },
+          "cached": {
+            "world": 1,
+            "context": 1,
+            "wanted": 1,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 1,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0,
+            "actualWanted": false
+          },
+          "publicInjected": {
+            "world": 0,
+            "context": 0,
+            "wanted": 0,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 0,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0
+          },
+          "output": {
+            "sha256": "35b7e7c4d564bbbd641e9e26695f133a83d834747595da4275129ada5c0e5e7d",
+            "bytes": 29076
+          }
+        },
+        {
+          "id": "test-map-set-ops",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+            "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+            "bytes": 5266
+          },
+          "pass": true,
+          "ordinary": {
+            "world": 1,
+            "context": 1,
+            "wanted": 1,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 1,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0,
+            "actualWanted": true
+          },
+          "ordinaryObservation": {
+            "status": "ok",
+            "phase": "compile",
+            "checked": true
+          },
+          "cached": {
+            "world": 1,
+            "context": 1,
+            "wanted": 1,
+            "allowed": 1,
+            "consumer": 1,
+            "sidecarOpens": 1,
+            "productReads": 1,
+            "annotationComparedPairs": 101907,
+            "annotationReused": 7,
+            "actualWanted": true,
+            "actualAllowed": true,
+            "annotationExact": true
+          },
+          "privateGuards": {
+            "stopFirstExact": true,
+            "stoppedObjectPreserved": true,
+            "stoppedWantedFalse": true,
+            "actualAllowed": true,
+            "unreadyDeclined": true,
+            "loaderErrorDeclined": true,
+            "fullHashCollisionDeclined": true
+          },
+          "publicInjected": {
+            "world": 0,
+            "context": 0,
+            "wanted": 0,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 0,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0
+          },
+          "output": {
+            "sha256": "ae2b6b4a2f6f9f440b918c52d2200489c25ccf56f2477fda72ceebd12d9e9546",
+            "bytes": 137137
+          }
+        },
+        {
+          "id": "numeric-recurrence",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+            "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+            "bytes": 556
+          },
+          "pass": true,
+          "ordinary": {
+            "world": 1,
+            "context": 1,
+            "wanted": 1,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 1,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0,
+            "actualWanted": false
+          },
+          "ordinaryObservation": {
+            "status": "ok",
+            "phase": "compile",
+            "checked": true
+          },
+          "cached": {
+            "world": 1,
+            "context": 1,
+            "wanted": 1,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 1,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0,
+            "actualWanted": false
+          },
+          "publicInjected": {
+            "world": 0,
+            "context": 0,
+            "wanted": 0,
+            "allowed": 0,
+            "consumer": 0,
+            "sidecarOpens": 0,
+            "productReads": 0,
+            "annotationComparedPairs": 0,
+            "annotationReused": 0
+          },
+          "output": {
+            "sha256": "35355f7cbf8bc1abd1eacd46854b21c4c7a438febe5f62bfee96cf76656eeb49",
+            "bytes": 15567
+          }
+        }
+      ],
+      "actualExportCount": 3252
+    },
+    {
+      "name": "custom-b2-07",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-b2-07-01/report.json",
+        "sha256": "b7dc4ab9c357ed945f73bc5826ffdfe469618b9a63ab3236e686019801931bd7",
+        "bytes": 84593
+      },
+      "method": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/custom-base-controls-b2-v1.mjs",
+        "sha256": "656e4d90de1ab4779d30c50331ce4a70cec26abcd3b4d66b72d5c70dacf039cd",
+        "bytes": 14207
+      },
+      "config": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-b2-07-input-v1.json",
+        "sha256": "dbcac2a192ab0ef1045c6455bd65b49b271a412e6588ac7bdf517d83d1caa80a",
+        "bytes": 2833
+      },
+      "supervisor": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-b2-07-01-exec/run.json",
+        "sha256": "edeaecbfe4a3d1fcdc58da04d252648438e1676f68a6a2fd8827359c7f6d749d",
+        "bytes": 1651
+      },
+      "wallSeconds": 9.245050327037461,
+      "reportInputPinsReverified": 278,
+      "complete": true,
+      "passed": true,
+      "customBase": {
+        "original": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+          "bytes": 75064
+        },
+        "derived": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-b2-07-01/project/src/runtime/js/custom-base.bend",
+          "sha256": "2ca768ee04222af38eff35c129061f345009be47fbce4c1f1e63853d5efe690e",
+          "bytes": 75115
+        },
+        "change": "append one inert comment",
+        "otherwiseReadyWorld": true,
+        "preparedTwice": true
+      },
+      "optionalCounts": {
+        "base_annotation_prepare": 0,
+        "base_annotation_wanted": 0,
+        "base_annotation_allowed": 0,
+        "annotate_selected_base": 0,
+        "check_program_diagnostic_world": 1,
+        "book_context_world": 1
+      },
+      "optionalArtifactAbsent": true,
+      "output": {
+        "sha256": "ae2b6b4a2f6f9f440b918c52d2200489c25ccf56f2477fda72ceebd12d9e9546",
+        "bytes": 137137,
+        "sameImageOrdinaryModuleExact": true
+      }
+    }
+  ],
+  "semanticEquality": {
+    "allProducts": true,
+    "ownedOrdinaryPublicResults": true,
+    "b1B2SelectedModules": true,
+    "stoppedObjectPreserved": true,
+    "readinessErrorCollisionRefusal": true,
+    "customBaseOrdinaryModule": true
+  },
+  "demand": {
+    "noHitProductBodyReads": 0,
+    "customOptionalCalls": 0,
+    "customArtifactAbsent": true
+  },
+  "allInputsUnchanged": true,
+  "transitiveInputPinsReverified": 735,
+  "scope": "Four actual final07 B1/B2 owned and comment-only custom Base controls. Pins and reviewed target assertions reaudited; no target rerun, benchmark, native qualification or universal annotation proof. Complete transitive input inventories remain in the four pinned raw reports.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/audit-final07.py",
+      "sha256": "55efeaa8e4fd6ab11e6203f1580ee7af69f3f01a507b53673ca045ceb1225093",
+      "bytes": 10568
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/final07-controls-plan.json",
+      "sha256": "d71b04c13656cff295074160eadaa6fef87529c89a9a8f29b62052ed0a2c93b0",
+      "bytes": 6518
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/attempt.json",
+      "sha256": "2d7c525444a8ea87c18fd3d321894052639b1683186613831296b912f3d2fbaa",
+      "bytes": 298472
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/equality/api.mjs",
+      "sha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
+      "bytes": 1977285
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/image-pins.json",
+      "sha256": "8339978a1d42443d158c21c5f7ff4ce15cb990ba2527f253a6f674bf5afe4eec",
+      "bytes": 4901
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/full/compiler.mjs",
+      "sha256": "0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f",
+      "bytes": 4069154
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/build/typed/snapshots/8d05ba60101784af71db76dca7e77d3e10e9041ad8bc057f9969a6cfb1951ca6/compiler.bend",
+      "sha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e",
+      "bytes": 1439123
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-v4.mjs",
+      "sha256": "8381a45c79e3745e78a19c33dec1795cac97ff532d77204b4e575fad80651b1e",
+      "bytes": 18428
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-checked07-input-v4.json",
+      "sha256": "a80f0233c83d0f14d08cd96b9f9be6f01d242d661fc0112c7c0520edaf31fc6e",
+      "bytes": 3595
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-checked07-01/report.json",
+      "sha256": "833ced97cb1e18a4f3a1f4a6b5acbb710819b1a96d1a6d3354f4f7d45ed5ed6f",
+      "bytes": 145836
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-checked07-01-exec/run.json",
+      "sha256": "31445419253f8f98ee3ed3f2b17bde0872735bf35300fe80f54e082fe6bcacf8",
+      "bytes": 1663
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+      "bytes": 75064
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/tools/typed-driver.mjs",
+      "sha256": "e093483d5103a8e833b6ca710246b1ec3c579b7fac5060c8e42f626c5e25ec85",
+      "bytes": 81423
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/api.mjs",
+      "sha256": "ee717187f0e69884bc3932c0d1a1ab1602cf138873e9b5eaf02bd658378f1fa6",
+      "bytes": 1957889
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/equality/api.mjs.derivation.json",
+      "sha256": "69180a51adb710ddd24a29e40210a5b90b78113c27cd8c8f60b1c1a663d6fa89",
+      "bytes": 76551
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/api.mjs.bootstrap.json",
+      "sha256": "0911823cf56daa2263f6a86d62d98f8f68e422b65ff4a7118183488b3bcd259e",
+      "bytes": 90372
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-checked07-01/project/build/typed/base-products/base-bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6-99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf-92673856f81bb146473729c6b1e427023a37d5cbcf3fb32d7f6805bfbbee4396-annotations64-v1.bin",
+      "sha256": "363bd170b2b665375dcf236afc78b8be5755c28afbf196bd6982d6307e2ea1ec",
+      "bytes": 438959
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/custom-base-controls-v3.mjs",
+      "sha256": "07070f0990c28149b60434781b6da859608b2b509dd287331c3a3f64a9a6f8b5",
+      "bytes": 13335
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-checked07-01/report.json",
+      "sha256": "d032afe607d2a5c9dbf5e83c05378520181126a4f75bbaf8f6f8c1bb5299ad10",
+      "bytes": 141934
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-checked07-01-exec/run.json",
+      "sha256": "e336195eaed5f38457c0b529666943a8b10723f557860ed2858c0256e8e7ac72",
+      "bytes": 1664
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-checked07-01/project/src/runtime/js/custom-base.bend",
+      "sha256": "2ca768ee04222af38eff35c129061f345009be47fbce4c1f1e63853d5efe690e",
+      "bytes": 75115
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-checked07-01/standard-map.mjs",
+      "sha256": "ae2b6b4a2f6f9f440b918c52d2200489c25ccf56f2477fda72ceebd12d9e9546",
+      "bytes": 137137
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-b2-v1.mjs",
+      "sha256": "63878a29905128cbcafeea0477bb30078a3081dafc9b1f5b1ae78821ca88f36f",
+      "bytes": 19356
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-b2-07-input-v1.json",
+      "sha256": "dbcac2a192ab0ef1045c6455bd65b49b271a412e6588ac7bdf517d83d1caa80a",
+      "bytes": 2833
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-b2-07-01/report.json",
+      "sha256": "cca085e1fe2f0f577f0981310509060422bd472d26955f8291be23ce918059bc",
+      "bytes": 88522
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-b2-07-01-exec/run.json",
+      "sha256": "aef2f453d78a7e242c2f22b8dc547ecefd5b0bb2d6bd9d93107b6005381c5ea2",
+      "bytes": 1649
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-b2-07-01/project/build/typed/base-products/base-0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f-99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf-92673856f81bb146473729c6b1e427023a37d5cbcf3fb32d7f6805bfbbee4396-annotations64-v1.bin",
+      "sha256": "d8f77781065b6b0456b7f140b7134976424992b603ff1579b2a32a27daa6c45e",
+      "bytes": 438959
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/custom-base-controls-b2-v1.mjs",
+      "sha256": "656e4d90de1ab4779d30c50331ce4a70cec26abcd3b4d66b72d5c70dacf039cd",
+      "bytes": 14207
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-b2-07-01/report.json",
+      "sha256": "b7dc4ab9c357ed945f73bc5826ffdfe469618b9a63ab3236e686019801931bd7",
+      "bytes": 84593
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-b2-07-01-exec/run.json",
+      "sha256": "edeaecbfe4a3d1fcdc58da04d252648438e1676f68a6a2fd8827359c7f6d749d",
+      "bytes": 1651
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-b2-07-01/project/src/runtime/js/custom-base.bend",
+      "sha256": "2ca768ee04222af38eff35c129061f345009be47fbce4c1f1e63853d5efe690e",
+      "bytes": 75115
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-b2-07-01/standard-map.mjs",
+      "sha256": "ae2b6b4a2f6f9f440b918c52d2200489c25ccf56f2477fda72ceebd12d9e9546",
+      "bytes": 137137
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,68 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/join-bend-oracles.py",
+    "sha256": "3cbf537f32aeb72149eb20cf30deefee401e2a1acd4b9252d540312fc0216a53"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/join-bend-oracles-v2.py",
+    "sha256": "aaa8b90f412ac29049d467b15e1b6d71a4ef47b7b12269f5c9b4918617747df3"
+  },
+  "edits": [
+    {
+      "old": "p.add_argument('--attempt', type=Path, required=True)",
+      "new": "p.add_argument('--cases', default='all', help='Exact compiler-source IDs; every original point for each selected source is mandatory')\np.add_argument('--attempt', type=Path, required=True)",
+      "count": 1
+    },
+    {
+      "old": "original = read(original_id)",
+      "new": "original = read(original_id)\ncase_names = [c['id'] for c in catalog['compileInputs']] if a.cases == 'all' else a.cases.split(',')\nassert case_names and len(set(case_names)) == len(case_names)\nassert set(case_names) <= {c['id'] for c in catalog['compileInputs']}\ncompile_cases = [c for c in catalog['compileInputs'] if c['id'] in case_names]\npoint_names = {key for c in compile_cases for key in c['pointIds']}\nselected_points = [c for c in original['cases'] if c['id'] in point_names]\nassert len(selected_points) == len(point_names)",
+      "count": 1
+    },
+    {
+      "old": "len(prep['sources']) == 23",
+      "new": "len(prep['sources']) == len(compile_cases)",
+      "count": 1
+    },
+    {
+      "old": "len(smoke['cases']) == len(manifest['cases']) == 45",
+      "new": "len(smoke['cases']) == len(manifest['cases']) == len(selected_points)",
+      "count": 1
+    },
+    {
+      "old": "{x['id'] for x in original['cases']}",
+      "new": "point_names",
+      "count": 1
+    },
+    {
+      "old": "assert len(raw) == 23",
+      "new": "assert len(raw) == len(compile_cases)",
+      "count": 1
+    },
+    {
+      "old": "for case in original['cases']:",
+      "new": "for case in selected_points:",
+      "count": 1
+    },
+    {
+      "old": "         for c in catalog['compileInputs']]",
+      "new": "         for c in compile_cases]",
+      "count": 1
+    },
+    {
+      "old": "assert len(cases) == 23",
+      "new": "assert len(cases) == len(compile_cases)",
+      "count": 1
+    },
+    {
+      "old": "scope='All original23sources/45point values; fresh checked HEAD Bend image modules and exact original observer. '",
+      "new": "counts=dict(sources=len(compile_cases), points=len(selected_points)), selectedCompileInputs=case_names,\n    scope='Every selected source and all its original point values; fresh checked HEAD Bend image modules and exact original observer. '",
+      "count": 1
+    },
+    {
+      "old": "sources=23, points=45",
+      "new": "sources=len(compile_cases), points=len(selected_points)",
+      "count": 1
+    }
+  ],
+  "scope": "Explicit subset admission for fast four-source experiments. All original points of every selected compiler source required; no unqualified source silently omitted from a requested timing campaign."
+}

@@ -1,0 +1,138 @@
+{
+  "kind": "phase66-fresh-head-semantic-reference-audit",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/qualification/audit-references.py",
+    "sha256": "cd64684ed1323784cc7f0cfabed622fe7f3472428a2f1ed97c92ccd0e63c42cf"
+  },
+  "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "groups": [
+    {
+      "name": "source",
+      "acquisition": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-semantic-source/manifest.json",
+        "sha256": "38f1769f48628bf11b3732b54131536c5ae2aa440af085ff17e683c93f36f8ed"
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-semantic-source-controls/report.json",
+        "sha256": "5b648db33c81dc4439939acdcd152c9daca97e566cfa8bdcc7ef77e583d45380"
+      },
+      "passVerdict": false,
+      "observations": 96,
+      "oraclePass": 95,
+      "oracleFail": 1
+    },
+    {
+      "name": "numeric",
+      "acquisition": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-semantic-numeric/manifest.json",
+        "sha256": "3a39c3eaf6b31168e2423f8ddabed21300aad9252167627b66bfb6475adbd138"
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-semantic-numeric-controls/report.json",
+        "sha256": "3bd0fa9c429882bc6763fca7249955768a3044245662c13da1842d0137e1929b"
+      },
+      "passVerdict": false,
+      "observations": 34,
+      "oraclePass": 28,
+      "oracleFail": 6
+    },
+    {
+      "name": "composition",
+      "acquisition": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-semantic-composition/manifest.json",
+        "sha256": "b6919a34828c31296d239cd3a393ef24e7725b1deac3db299ed54c71b1496478"
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-semantic-composition-controls/report.json",
+        "sha256": "401f2c9e642892512be3984e72ec08b6acb5be9ef6807ce56d6421b461aa55b8"
+      },
+      "passVerdict": true,
+      "observations": 18,
+      "oraclePass": 18,
+      "oracleFail": 0
+    },
+    {
+      "name": "overapplication",
+      "acquisition": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-semantic-overapplication/manifest.json",
+        "sha256": "291ec268de9c0c68e750b254bea27fac1377fff674cd4342b940454f6f1f3f9e"
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-semantic-overapplication-controls/report.json",
+        "sha256": "51a10487a3f465ae172bf7e37157861b451a2634d0cbf9be62e3b3b30812cb99"
+      },
+      "passVerdict": true,
+      "observations": 2,
+      "oraclePass": 2,
+      "oracleFail": 0
+    }
+  ],
+  "verifiedInputFiles": 241,
+  "sourceFailure": {
+    "fixture": "f32_table_nan_bits",
+    "test": "nan-table-bits",
+    "expected": 40,
+    "actual": 1,
+    "classification": "Independent source-value oracle failure; process completed without signal or infrastructure error."
+  },
+  "numericFailures": [
+    {
+      "id": "original-cold-0",
+      "expectedEveryCall": 40,
+      "actual": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "original-cold-1",
+      "expectedEveryCall": 40,
+      "actual": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "original-cold-2",
+      "expectedEveryCall": 40,
+      "actual": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "renamed-cold-0",
+      "expectedEveryCall": 40,
+      "actual": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "renamed-cold-1",
+      "expectedEveryCall": 40,
+      "actual": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "renamed-cold-2",
+      "expectedEveryCall": 40,
+      "actual": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "scope": "Freshly measured new-pin TypeScript failures remain failures. No historical count or emitted artifact is relabelled, no candidate has run in this audit, and no failed source golden is rewritten. Candidate source96/numeric34 remain mandatory; source/numeric counts overlap."
+}

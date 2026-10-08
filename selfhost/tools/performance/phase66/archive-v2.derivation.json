@@ -1,0 +1,26 @@
+{
+  "kind": "phase66-archive-v2-exact-source-derivation",
+  "parent": {
+    "file": "selfhost/tools/performance/phase66/archive.py",
+    "bytes": 15852,
+    "sha256": "10d1517065d22c481b00e9c38d7e027e1ed51a4004c156bc6a140a353f021d38"
+  },
+  "child": {
+    "file": "selfhost/tools/performance/phase66/archive-v2.py",
+    "bytes": 15921,
+    "sha256": "2541339a0b11be10fc3081194bba93fd6770849b9c7b944232802ee0cea1127a"
+  },
+  "unifiedDiff": "--- selfhost/tools/performance/phase66/archive.py\n+++ selfhost/tools/performance/phase66/archive-v2.py\n@@ -244,7 +244,7 @@\n     repo_file(OUT)\n     assert not OUT.exists(), 'Never replace an existing or failed publication tree'\n \n-    derivation_file = TOOLS / 'archive-derivation.json'\n+    derivation_file = TOOLS / 'archive-v2.derivation.json'\n     derivation = read(derivation_file)\n     parent = ROOT / derivation['parent']['file']\n     producer = Path(__file__).resolve()\n@@ -254,7 +254,7 @@\n                     producer.read_text().splitlines(keepends=True),\n                     fromfile=derivation['parent']['file'], tofile=derivation['child']['file']))\n     assert diff == derivation['unifiedDiff'], 'Archive successor derivation differs'\n-    template = TOOLS / 'artifacts-README.template.md'\n+    template = TOOLS / 'artifacts-README-v2.template.md'\n     control_files = [closure_file, derivation_file, parent, producer, template,\n                      RAW / 'inherited-before.json', RAW / 'installed-before.json',\n                      RAW / 'baseline-source.json', TOOLS / 'archive-prerequisites.json',\n@@ -296,8 +296,9 @@\n     assert preserved() == preserved_before, 'Protected predecessor changed during publication'\n     assert [identity(p) for p in control_files] == controls_before, 'Publication inputs changed'\n     report = dict(kind='phase66-reopened-evidence-archive', complete=True,\n-                  created=datetime.now(timezone.utc).isoformat(), entries=before,\n+                  created=datetime.now(timezone.utc).isoformat(),\n                   files=[e for e in before if e['type'] == 'file'],\n+                  directories=[e for e in before if e['type'] == 'directory'],\n                   fileCount=sum(e['type'] == 'file' for e in before), entryCount=len(before),\n                   uncompressedBytes=sum(x.get('bytes', 0) for x in before),\n                   archive=archive, producer=identity(producer),\n",
+  "parentTemplate": {
+    "file": "selfhost/tools/performance/phase66/artifacts-README.template.md",
+    "bytes": 8897,
+    "sha256": "af5d14b609515a7ad28d0e4705cbf3192a795c915d00d342d5212e5bdbc94c01"
+  },
+  "childTemplate": {
+    "file": "selfhost/tools/performance/phase66/artifacts-README-v2.template.md",
+    "bytes": 9122,
+    "sha256": "63805328b607a1975e2c093d112aebb44891079a33c9aaccd99422257ffd0d3b"
+  },
+  "templateDiff": "--- selfhost/tools/performance/phase66/artifacts-README.template.md\n+++ selfhost/tools/performance/phase66/artifacts-README-v2.template.md\n@@ -11,12 +11,13 @@\n - Complete gzip-tar stream: **{{ARCHIVE_BYTES}} bytes**.\n - Stream SHA256: `{{ARCHIVE_SHA256}}`.\n - Ordered parts: **{{PART_COUNT}}**, each at most **50 MiB**.\n-- Source: `selfhost/build/phase66`; producer: [`../archive.py`](../archive.py).\n+- Source: `selfhost/build/phase66`; producer: [`../archive-v2.py`](../archive-v2.py).\n \n {{PART_LINKS}}\n \n-The [derivation receipt](../archive-derivation.json) binds the exact Phase65\n-predecessor, Phase66 producer and textual changes. Parts form one gzip stream;\n+The [derivation receipt](../archive-v2.derivation.json) binds the exact Phase65\n+predecessor, Phase66 producer and textual changes. Files and directories each\n+appear once in the manifest; their component-sorted union is the exact archive order. Parts form one gzip stream;\n do not extract individual parts. The manifest records both each part's hash and\n the concatenated stream's hash. No large joined archive needs to be tracked.\n \n@@ -46,7 +47,9 @@\n assert not raw.exists(), 'Restore into an isolated checkout; never overwrite a campaign'\n manifest = json.loads((root / 'selfhost/tools/performance/phase66/artifacts/manifest.json').read_text())\n assert manifest['complete'] and manifest['pass'] and manifest['reopenedAllMembers']\n-archive = manifest['archive']; parts = archive['parts']; expected = manifest['entries']\n+archive = manifest['archive']; parts = archive['parts']\n+expected = sorted(manifest['files'] + manifest['directories'],\n+                  key=lambda entry: PurePosixPath(entry['file']).parts)\n assert parts and len({p['file'] for p in parts}) == len(parts)\n assert archive['maxPartBytes'] == 50 * 1024 * 1024\n with tempfile.TemporaryFile(mode='w+b') as joined:\n",
+  "scope": "No inventory, archive bytes, split, or verification algorithm changes. Store each regular-file/directory record once instead of duplicating files in entries+files. Restore merges files+directories with the identical Path-component order. This avoids an estimated69MB duplicate manifest; publication parts remain capped50MiB. No seal/archive run."
+}

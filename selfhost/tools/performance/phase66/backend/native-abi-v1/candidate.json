@@ -1,0 +1,83 @@
+{
+  "kind": "phase66-native-foreign-abi-candidate",
+  "version": 1,
+  "targetExecuted": false,
+  "production": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c",
+  "before": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-abi-v1/before.c",
+    "sha256": "cbfb8933d007c10a0173f280888d6c94d5d77543548b25808596cd2d21f764f0",
+    "bytes": 78893
+  },
+  "after": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-abi-v1/after.c",
+    "sha256": "6691943ab6fe36b221b8bfba4931e4033816da8237ff8ff9f8516909abd8ed22",
+    "bytes": 79787
+  },
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-abi-v1/candidate.patch",
+    "sha256": "587306a4e254b20d3a7e05d9c5b90391efbd03c644f04baa95fb481d37b6af12",
+    "bytes": 1058
+  },
+  "shim": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-abi-v1/shim.c",
+    "sha256": "3a9b7feeb17366b7b7eeb4d726a6153a946d27067e9a280b19010bb7b95c39ab",
+    "bytes": 894
+  },
+  "failedReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/backend-native-controls04-clang01-recipe/bend-direct/observations/report.json",
+    "sha256": "f11002c0a08281c93a23d72913941c654d9103e10362f7e2f08a4ca8671e503d",
+    "bytes": 2051211
+  },
+  "replays": [
+    {
+      "id": "io/marshal_array_depth.bend",
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/backend-native-controls04-clang01-recipe/bend-direct/observations/report.json.artifacts/12/marshal_array_depth.c",
+        "sha256": "acf1a88a18bf76600d1750ff6d0b01f5b73e5ddf869ad88fd7ed6fde63b475d8",
+        "bytes": 186058
+      },
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-abi-v1/marshal_array_depth-patched.c",
+        "sha256": "73c0d94337e3a4bed040be216ef5d261a315ceead7eaf1bb0ac396c82c95a6e0",
+        "bytes": 186952
+      },
+      "request": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/backend-native-controls04-clang01-recipe/bend-direct/observations/report.json.artifacts/12/request.json",
+        "sha256": "5a5cf94d977fa6769da7c05a343a747652b30107372306ada4b78e235240b426",
+        "bytes": 1844
+      },
+      "expected": "ok\n",
+      "sourceDifference": "Insert exact runtime shim immediately before Requests; every other byte unchanged."
+    },
+    {
+      "id": "io/marshal_imported_nullary.bend",
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/backend-native-controls04-clang01-recipe/bend-direct/observations/report.json.artifacts/5/marshal_imported_nullary.c",
+        "sha256": "190b493b71c8bcc508d36366517d6784d7c5db39eed509c43236baef37473d90",
+        "bytes": 140622
+      },
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-abi-v1/marshal_imported_nullary-patched.c",
+        "sha256": "81c6bba6f4883da52a1f9fc3cd2661ce6f9bfe53fbc3d386479389b1f441b203",
+        "bytes": 141516
+      },
+      "request": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/backend-native-controls04-clang01-recipe/bend-direct/observations/report.json.artifacts/5/request.json",
+        "sha256": "345e70f16c2403cbce80c074917ee7aa2eb65e6b49d89a3b0bd13e26e635bc34",
+        "bytes": 1781
+      },
+      "expected": "off\non\n",
+      "sourceDifference": "Insert exact runtime shim immediately before Requests; every other byte unchanged."
+    }
+  ],
+  "contract": [
+    "No Bend algorithm or checked image change. Host-only C11 compatibility at foreign-source boundary.",
+    "Both Env and Corpus term_peek use unchanged redirect/acquire semantics; each input evaluated once.",
+    "blk_loc respects retained shared-block representation rather than upstream BLK_SHR assumption.",
+    "Two-argument io_eff defaults to immediate dispatch need=0; existing three-argument calls retain exact need. No new scheduler or general provider migration."
+  ],
+  "classification": {
+    "io_eff": "Missing current-upstream C ABI migration: old imported-nullary fixture used explicit third argument0; current fixture removes it.",
+    "memoryHelpers": "Old upstream already exposed Corpus term_peek/blk_loc; new deep Array fixture exposes retained selfhost helper gap."
+  }
+}

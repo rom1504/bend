@@ -1,0 +1,28 @@
+{
+  "kind": "phase66-printability-identity-fix",
+  "version": 1,
+  "status": "isolated-unexecuted",
+  "files": [
+    {
+      "path": "selfhost/src/back/js/validate.bend",
+      "beforeSha256": "0ecf789f69ef9de0e82bc07f0c43f476a06a676a7473caa120118524e3f51b02",
+      "afterSha256": "bdd9a545ad56a332723809ab48e9b9b6d6eef3ccf07f0c6628e38bb5ff4ed28a",
+      "candidate": "selfhost/tools/performance/phase66/backend/printable-key-candidate-v1/selfhost/src/back/js/validate.bend"
+    }
+  ],
+  "patchSha256": "1ba5df4bee1d0b21d8b46567ae53cc79cdd6050991693a8360a10043ee0c0206",
+  "sources": [
+    {
+      "path": "selfhost/tools/performance/phase66/backend/printable-key-controls-v1/child.bend",
+      "sha256": "9c1ef303351541291557b90d10834da5517a0864ec7c7766881e1de93bab84de",
+      "bytes": 92
+    },
+    {
+      "path": "selfhost/tools/performance/phase66/backend/printable-key-controls-v1/main.bend",
+      "sha256": "3b74f9fa7924ba7df7ac46204fe757e4e5283403ccc40832529d1b374a68ba4a",
+      "bytes": 385
+    }
+  ],
+  "contract": "Only recursion seen keys change from display text to raw structural term_key. Human diagnostic remains kp_show. Normalization and traversal order unchanged.",
+  "oracle": "Pinned upstream compile refuses unprintable nested function; direct/native shared preflight and legacy must refuse consistently. Private j_compile_error differential can expose old false-positive even if later direct descriptor rejects again."
+}

@@ -1,0 +1,48 @@
+{
+  "kind": "phase66-final-time-account-independent-review",
+  "version": 1,
+  "complete": true,
+  "reviewer": "/root/p63_cache_host",
+  "reviewedAt": "2026-10-08T08:35:31.282993+00:00",
+  "receipt": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase66/evidence/time-account-final.json",
+    "bytes": 1446768,
+    "sha256": "019a238860749cbbcc20045174c374e44648b790bea25da513d00e1b87a97815"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/account-time.py",
+    "bytes": 6680,
+    "sha256": "45b4d478483037cd177a7189bb97291f3289bd5e3c808579d6e01d97bab39f45"
+  },
+  "campaign": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/campaign.json",
+    "bytes": 813,
+    "sha256": "730abf0e25cca53852f9b8303f96660ffed127c6038acd79a4c45d32db42d870"
+  },
+  "earlierMethodReview": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase66/evidence/time-account-method-review.json",
+    "bytes": 3522,
+    "sha256": "b7a20ef49ea81ac74275867404cb77183c77d67c45f324016de72f2e2e783449"
+  },
+  "dataOnly": true,
+  "targetExecuted": false,
+  "guardMetadataOnly": true,
+  "checks": [
+    "All2173 listed small guard receipts rehashed and parsed; start/finish/group/status/wall values match final accounting rows",
+    "Independent sorted-interval merge exactly reproduces merged occupancy and uncovered intervals",
+    "Independent group-count sweep reproduces every nonoverlapping top-level group total; nested same-group intervals count once",
+    "Final12607-second boundary,2173receipts,20nonzero/incomplete and zero open/late/unreadable agree; all referenced metadata rehashed again afterward"
+  ],
+  "summary": {
+    "closedReceipts": 2173,
+    "receiptAndMethodIdentitiesReverified": 2176,
+    "elapsedSeconds": 12607.0,
+    "occupiedUnionSeconds": 6631.6309542655945,
+    "uncoveredSeconds": 5975.3690457344055,
+    "occupiedFraction": 0.5260276794055362,
+    "nonzeroOrIncomplete": 20,
+    "mixedGroupOverlapSeconds": 0
+  },
+  "scope": "Independent reconstruction from listed small guard metadata only; no raw-tree scan or target executed. Root-declared target cutoff excludes archive and subsequent reporting/commit/push. Finalized accounting is not phase completion. Uncovered elapsed time remains unclassified, not measured waiting, idle time or model activity; wall occupancy is not CPU utilization.",
+  "pass": true
+}

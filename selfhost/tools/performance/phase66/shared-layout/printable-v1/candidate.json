@@ -1,0 +1,47 @@
+{
+  "kind": "phase66-shared-printability-candidate",
+  "complete": true,
+  "executed": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/js/validate.bend",
+    "sha256": "bdd9a545ad56a332723809ab48e9b9b6d6eef3ccf07f0c6628e38bb5ff4ed28a",
+    "bytes": 11456
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/shared-layout/printable-v1/validate.bend",
+    "sha256": "23fb56bfac9933c3e6b900d1a29b5aab5e72f3aedbfe65d7cf6acdcfffe8e812",
+    "bytes": 12574
+  },
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/shared-layout/printable-v1/candidate.patch",
+    "sha256": "2142cae6132971b7d643dc6bff23b2aae1f98a375c535925e12536b6d2600fe0",
+    "bytes": 4788
+  },
+  "edits": [
+    {
+      "old": "law j_printable:\n  for +book: List<&2, KDef>\n  for +ty: KTerm\n  for +seen: List<&2, String>\n  for +fuel: U32\n  Bool\n\n@unsafe\ndef j_printable(book, ty, seen, fuel):\n  j_printable_head(book, wnf(book, ty), seen, fuel)\n\nlaw j_printable_head:\n  for +book: List<&2, KDef>\n  for +ty: KTerm\n  for +seen: List<&2, String>\n  for +fuel: U32\n  Bool\n\n@unsafe\ndef j_printable_head(book, ty, seen, fuel):\n  kc(Bool, String.eq(tg(ty), \"Eql\"), u => True{}, u => kc(Bool, String.eq(tg(ty), \"ADT\") && Bool.not(String.eq(nm(ty), \"IO.OP\")) && String.eq(dk(lookup(book, nm(ty))), \"ADT\"), u => j_printable_adt(book, ty, seen, fuel), u => False{}))\n\nlaw j_printable_adt:\n  for +book: List<&2, KDef>\n  for +ty: KTerm\n  for +seen: List<&2, String>\n  for +fuel: U32\n  Bool\n\n@unsafe\ndef j_printable_adt(book, ty, seen, fuel):\n  kc(Bool, String.contains(\"|U32|F32|Nat|Char|String|\", \"|\" ++ nm(ty) ++ \"|\") || has_name(seen, term_key(ty)), u => True{}, u => kc(Bool, String.eq(nm(ty), \"Array\"), u => j_printable(book, kid(ty, 0), seen, fuel), u => j_printable_ctors(book, dc(lookup(book, nm(ty))), ks(ty), Con{term_key(ty), seen}, fuel)))\n\nlaw j_printable_ctors:\n  for +book: List<&2, KDef>\n  for +ctors: List<&2, KDef>\n  for +params: List<&2, KTerm>\n  for +seen: List<&2, String>\n  for +fuel: U32\n  Bool\n\n@unsafe\ndef j_printable_ctors(book, ctors, params, seen, fuel):\n  match ctors:\n    case Nil{}:\n      True{}\n    case Con{d, rest}:\n      j_printable_fields(book, j_specialize(book, dt(d), params), seen, fuel) && j_printable_ctors(book, rest, params, seen, fuel)\n\nlaw j_printable_fields:\n  for +book: List<&2, KDef>\n  for +ty: KTerm\n  for +seen: List<&2, String>\n  for +fuel: U32\n  Bool\n\n@unsafe\ndef j_printable_fields(book, ty, seen, fuel):\n  kc(Bool, String.eq(tg(ty), \"All\"), u => Bool.not(U32.is_eq(qt(ty), 0)) && j_printable(book, kid(ty, 0), seen, fuel) && j_printable_fields(book, kid(ty, 1), seen, fuel), u => True{})\n\n",
+      "new": "# Printability is a graph predicate. Thread successful visits across fields and\n# constructor siblings so a shared child type is checked once per request.\n# Insert each ADT before descending, retaining the original recursive-type rule.\nlaw j_printable:\n  for +book: List<&2, KDef>\n  for +ty: KTerm\n  for +seen: List<&2, String>\n  for +fuel: U32\n  Bool\n\n@unsafe\ndef j_printable(book, ty, seen, fuel):\n  +done = j_printable_head(book, wnf(book, ty), seen, fuel)\n  match done:\n    case None{}: False{}\n    case Some{visited}: True{}\n\nlaw j_printable_head:\n  for +book: List<&2, KDef>\n  for +ty: KTerm\n  for +seen: List<&2, String>\n  for +fuel: U32\n  Maybe<List<&2, String>>\n\n@unsafe\ndef j_printable_head(book, ty, seen, fuel):\n  kc(Maybe<List<&2, String>>, String.eq(tg(ty), \"Eql\"), u => Some{seen}, u => kc(Maybe<List<&2, String>>, String.eq(tg(ty), \"ADT\") && Bool.not(String.eq(nm(ty), \"IO.OP\")) && String.eq(dk(lookup(book, nm(ty))), \"ADT\"), u => j_printable_adt(book, ty, seen, fuel), u => None{}))\n\nlaw j_printable_adt:\n  for +book: List<&2, KDef>\n  for +ty: KTerm\n  for +seen: List<&2, String>\n  for +fuel: U32\n  Maybe<List<&2, String>>\n\n@unsafe\ndef j_printable_adt(book, ty, seen, fuel):\n  kc(Maybe<List<&2, String>>, String.contains(\"|U32|F32|Nat|Char|String|\", \"|\" ++ nm(ty) ++ \"|\") || has_name(seen, term_key(ty)), u => Some{seen}, u => kc(Maybe<List<&2, String>>, String.eq(nm(ty), \"Array\"), u => j_printable_head(book, wnf(book, kid(ty, 0)), seen, fuel), u => j_printable_ctors(book, dc(lookup(book, nm(ty))), ks(ty), Con{term_key(ty), seen}, fuel)))\n\nlaw j_printable_ctors:\n  for +book: List<&2, KDef>\n  for +ctors: List<&2, KDef>\n  for +params: List<&2, KTerm>\n  for +seen: List<&2, String>\n  for +fuel: U32\n  Maybe<List<&2, String>>\n\n@unsafe\ndef j_printable_ctors(book, ctors, params, seen, fuel):\n  match ctors:\n    case Nil{}:\n      Some{seen}\n    case Con{d, rest}:\n      j_printable_ctors_more(book, rest, params, fuel,\n        j_printable_fields(book, j_specialize(book, dt(d), params), seen, fuel))\n\n@unsafe\ndef j_printable_ctors_more(+book: List<&2,KDef>, +ctors: List<&2,KDef>,\n  +params: List<&2,KTerm>, +fuel: U32, +done: Maybe<List<&2,String>>) -> Maybe<List<&2,String>>:\n  match done:\n    case None{}: None{}\n    case Some{seen}: j_printable_ctors(book, ctors, params, seen, fuel)\n\nlaw j_printable_fields:\n  for +book: List<&2, KDef>\n  for +ty: KTerm\n  for +seen: List<&2, String>\n  for +fuel: U32\n  Maybe<List<&2, String>>\n\n@unsafe\ndef j_printable_fields(book, ty, seen, fuel):\n  kc(Maybe<List<&2, String>>, String.eq(tg(ty), \"All\"), u =>\n    kc(Maybe<List<&2, String>>, U32.is_eq(qt(ty), 0), u => None{}, u =>\n      j_printable_fields_more(book, kid(ty, 1), fuel,\n        j_printable_head(book, wnf(book, kid(ty, 0)), seen, fuel))), u => Some{seen})\n\n@unsafe\ndef j_printable_fields_more(+book: List<&2,KDef>, +ty: KTerm,\n  +fuel: U32, +done: Maybe<List<&2,String>>) -> Maybe<List<&2,String>>:\n  match done:\n    case None{}: None{}\n    case Some{seen}: j_printable_fields(book, ty, seen, fuel)\n\n",
+      "occurrences": 1
+    }
+  ],
+  "scope": "Only j_printable internal successful visited state; public Bool boundary unchanged. Exact normalized term keys, unchanged constructors/field order and rejection rules; no persistent cache, budget or source-language admission change intended.",
+  "sourceLinesBefore": 311,
+  "sourceLinesAfter": 335,
+  "upstream": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+    "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c",
+    "bytes": 185124
+  },
+  "fixtures": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/const_shared_layout.bend",
+      "sha256": "dcf85012c8d707c9499b56b3179016bfde5398329ffadf08fd281c1c446ad479",
+      "bytes": 1091
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/show_shared_layout.bend",
+      "sha256": "23e65179efdd28ebeaae048efe819b29ffd26549cc8be42d85ab1eeb842bd06e",
+      "bytes": 500
+    }
+  ]
+}

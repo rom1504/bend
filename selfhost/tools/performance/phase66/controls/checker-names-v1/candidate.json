@@ -1,0 +1,74 @@
+{
+  "kind": "phase66-checker-display-names",
+  "status": "isolated-unapplied-unexecuted",
+  "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "files": [
+    {
+      "path": "selfhost/src/check/kernel.bend",
+      "beforeSha256": "61a0f6d41b311986c352f8ea76d99849001fce9ec68769f6f12a80fdbf20f785",
+      "afterSha256": "bbeebc44d278044349a9cb7a35fe5956251e32098dcb0722d96542dee23148e1",
+      "candidate": "selfhost/tools/performance/phase66/controls/checker-names-v1/selfhost/src/check/kernel.bend",
+      "edits": [
+        {
+          "old": "\"a constructor of \" ++ nm(a) ++ \" (missing, or already matched)\"",
+          "new": "\"a constructor of \" ++ name_key(nm(a)) ++ \" (missing, or already matched)\"",
+          "occurrences": 1
+        },
+        {
+          "old": "\"a kind (type \" ++ dn(d) ++ \"<..> is Kind(g))\"",
+          "new": "\"a kind (type \" ++ name_key(dn(d)) ++ \"<..> is Kind(g))\"",
+          "occurrences": 1
+        },
+        {
+          "old": "\"a telescope tipped at \" ++ dn(d) ++ \" applied to its own parameters\"",
+          "new": "\"a telescope tipped at \" ++ name_key(dn(d)) ++ \" applied to its own parameters\"",
+          "occurrences": 1
+        }
+      ]
+    },
+    {
+      "path": "selfhost/src/diagnostic/produce.bend",
+      "beforeSha256": "9518cb01c0c7636654bfa14dd332ac49756572ba975c7789c865e9cd8cf75c80",
+      "afterSha256": "b659c86c82fd6f8656a517cebda9d2706a01ebc56b32ae2ec1137bd32d66a21b",
+      "candidate": "selfhost/tools/performance/phase66/controls/checker-names-v1/selfhost/src/diagnostic/produce.bend",
+      "edits": [
+        {
+          "old": "case Con{d, rest}: dn(d) ++ kc(String, defs_empty(rest)",
+          "new": "case Con{d, rest}: name_key(dn(d)) ++ kc(String, defs_empty(rest)",
+          "occurrences": 1
+        },
+        {
+          "old": "dg_text(nm(t) ++ \" with \"",
+          "new": "dg_text(name_key(nm(t)) ++ \" with \"",
+          "occurrences": 2
+        },
+        {
+          "old": "dg_text(\"a declared constructor (\" ++ nm(ty) ++ \" declares \"",
+          "new": "dg_text(\"a declared constructor (\" ++ name_key(nm(ty)) ++ \" declares \"",
+          "occurrences": 1
+        },
+        {
+          "old": "dg_text(\"a declared datatype (unknown: \" ++ nm(t) ++ \")\")",
+          "new": "dg_text(\"a declared datatype (unknown: \" ++ name_key(nm(t)) ++ \")\")",
+          "occurrences": 1
+        }
+      ]
+    },
+    {
+      "path": "selfhost/src/diagnostic/trace.bend",
+      "beforeSha256": "0e03e2827415d082d295976b57564c7b0bd872f7c81229e653d7e0ddda62b10f",
+      "afterSha256": "57410b6f4b2fde9ba3591c1e27e88deda48ef89e16f8418cdc7b0a918184f4fe",
+      "candidate": "selfhost/tools/performance/phase66/controls/checker-names-v1/selfhost/src/diagnostic/trace.bend",
+      "edits": [
+        {
+          "old": "dg_text(\"a family instance (write \" ++ nm(t) ++ \"<..>)\")",
+          "new": "dg_text(\"a family instance (write \" ++ name_key(nm(t)) ++ \"<..>)\")",
+          "occurrences": 1
+        }
+      ]
+    }
+  ],
+  "patchSha256": "0fcede1754092084cde09a7d9e12df31a9c8b5c100159caa714cd851b18822df",
+  "dependency": "Frontend name_key(String)->String from candidate-v1 core/term.bend",
+  "scope": "Only user-facing diagnostic text changes; all lookup, family identity, erasure and checker branches retain raw keys and original order."
+}

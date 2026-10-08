@@ -1,0 +1,21 @@
+{
+  "kind": "phase66-controller-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-v2.mjs",
+    "sha256": "6fed4917a0631cb1c2c3455314a5632ef59f4de72a04dee6c6a7dc8c08a24bdf"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-v3.mjs",
+    "sha256": "b83d7be888e3ca833e916c902c2e365c3e03af5590ea420603a4247997d9b2d4"
+  },
+  "operations": [
+    {
+      "before": "// all compiler work uses the unchanged checked API. Writes only a fresh project.",
+      "after": "// Compiler work uses the checked API or its explicitly replayed profile7 derivative.\n// Writes only a fresh project."
+    },
+    {
+      "before": "const bodySize=term=>{const stack=[term];let n=0;while(stack.length){const t=stack.pop();assert(++n<1000000);stack.push(...array(t.kids));}return n;};",
+      "after": "const bodySize=term=>{const stack=[term];let n=0;while(stack.length){const t=stack.pop();assert(++n<1000000);if(t.$==='KLiteral')continue;assert(t.$==='KTerm'||t.$==='KLambda','Unknown term in independent census');stack.push(...array(t.kids));}return n;};"
+    }
+  ]
+}

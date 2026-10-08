@@ -1,0 +1,42 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/qualification/make-core-method.py",
+    "sha256": "c81946ad63614b9f27ce87ce37552da62e42f5c9c6d4fe15ce876266e7e86a4a"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/qualification/make-method.py",
+    "sha256": "9cf3a9f7902414145223aa4ce7447ad7eab87812b21d65462007aef9d861f566"
+  },
+  "edits": [
+    {
+      "old": "\"\"\"Derive source-bound self-check/fixed-point/native methods; execute no target.\"\"\"",
+      "new": "\"\"\"Derive final B1/B2 qualification methods without running any target.\"\"\"",
+      "count": 1
+    },
+    {
+      "old": "'qualification/native3.mjs'}",
+      "new": "'qualification/native3.mjs', 'qualification/acquire.mjs',\n         'qualification/image-provenance.mjs', 'qualification/source-controls.mjs',\n         'qualification/numeric-controls.mjs', 'qualification/composition-controls.mjs',\n         'qualification/overapplication-controls.mjs', 'qualification/benchmark-equality.mjs',\n         'qualification/checked-source-controls.mjs', 'qualification/checked-numeric-controls.mjs',\n         'qualification/checked-composition-controls.mjs', 'qualification/checked-overapplication-controls.mjs'}",
+      "count": 1
+    },
+    {
+      "old": "rows = []\nfor original in parent['rows']:",
+      "new": "rows = []\noriginals = list(parent['rows'])\nfor name, file in [('source','semantic-source-v1.mjs'), ('numeric','semantic-runtime-v2.mjs'),\n                   ('composition','semantic-composition-v3.mjs'), ('overapplication','semantic-overapplication-v1.mjs')]:\n    originals.append(dict(relative='qualification/checked-'+name+'-controls.mjs',\n                          output=pin(ROOT/'selfhost/tools/performance/phase53'/file)))\nfor original in originals:",
+      "count": 1
+    },
+    {
+      "old": "    if 'inside Phase65' in text:\n        change('inside Phase65', 'inside Phase66')",
+      "new": "    if 'inside Phase65' in text:\n        change('inside Phase65', 'inside Phase66')\n    if 'Caches must stay in Phase65' in text:\n        change('Caches must stay in Phase65', 'Caches must stay in Phase66')\n    if relative.startswith('qualification/checked-') and relative.endswith('-controls.mjs'):\n        change('import.meta.dirname', json.dumps(str(ROOT/'selfhost/tools/performance/phase53')))\n    if relative in ['qualification/source-controls.mjs', 'qualification/checked-source-controls.mjs']:\n        change('assert.equal(defect.pinnedUpstream,catalog.upstreamCommit);',\n               \"assert.equal(defect.pinnedUpstream,'018751270e800bc222a93dad7f257083ee53a5f7');assert.equal(catalog.upstreamCommit,'059266225b77c8ca256ac6b25ee5c21449bab151');\")\n        change('Exact frozen TS signaling-NaN table defect remains failed and different;',\n               'Fresh new-pin TS observation reproduces the exact historical signaling-NaN table failure; it remains failed and different;')\n        change('Only the exact frozen signaling-NaN table fixture may record TS1 defect',\n               'Only a fresh observed failure matching the exact frozen signaling-NaN fixture may record TS1 defect')",
+      "count": 1
+    },
+    {
+      "old": "kind='phase66-core-qualification-methods'",
+      "new": "kind='phase66-final-qualification-methods'",
+      "count": 1
+    },
+    {
+      "old": "scope='Fresh B2 own-source",
+      "new": "scope='B1/B2 semantic controllers retain exact independent oracles and use fresh new-pin TS acquisition, never historical emitted programs. The historical NaN exception is admitted only if the same exact failure is observed afresh; no reference pass count is assumed. Fresh B2 own-source",
+      "count": 1
+    }
+  ]
+}

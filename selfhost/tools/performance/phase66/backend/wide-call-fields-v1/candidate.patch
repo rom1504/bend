@@ -1,0 +1,41 @@
+--- a/selfhost/src/back/js/direct/calls.bend
++++ b/selfhost/src/back/js/direct/calls.bend
+@@ -82,22 +82,26 @@
+     u => jd_calls_word_rows(book, env, U32.sub(args, 1), s,
+       jd_word_rows(book, j_strip(kid(t, 0)), j_arm_tel(book, tel, kid(ty, 1)), 0, 0,
+         JDWordCover{atom("Absent"), 0, Nil{}})),
+-    u => jd_calls_match_arm(book, env, kid(t, 0), j_arm_tel(book, tel, kid(ty, 1)),
+-      U32.sub(args, 1), jd_calls_fields(tel, 64), s))
++    u => jd_calls_match_fields(book, env, kid(t, 0), j_arm_tel(book, tel, kid(ty, 1)),
++      U32.sub(args, 1), tel, s))
+   kc(JDCallScan, U32.is_eq(j_constructor_count(book, domain), 1) ||
+     (jd_native_layout(book, domain) && String.eq(jd_match_test(nm(domain), nm(t), "x"), "")),
+     u => arm, u => jd_calls_body(book, env, kid(t, 1), ty, args, arm))
+ 
+-@unsafe
+-def jd_calls_match_arm(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: U32, +fields: U32, +s: JDCallScan) -> JDCallScan:
+-  kc(JDCallScan, U32.is_lt(fields, 65),
+-    u => jd_calls_body(book, env, t, ty, U32.add(rest, fields), s), u => jd_calls_bad(s))
+-
+-@unsafe
+-def jd_calls_fields(+tel: KTerm, +fuel: U32) -> U32:
+-  kc(U32, String.eq(tg(tel), "All"), u => kc(U32, U32.is_gt(fuel, 0), v =>
+-    U32.add(kc(U32, U32.is_eq(qt(tel), 0), w => 0, w => 1), jd_calls_fields(kid(tel, 1), U32.sub(fuel, 1))),
+-    v => 65536), u => 0)
++# Count live constructor fields with the same finite work budget as the body
++# scan. Wide records do not need a separate arbitrary arity ceiling. Erased
++# telescope slots still consume work; no partial graph survives exhaustion.
++@unsafe
++def jd_calls_match_fields(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm,
++  +ty: KTerm, +args: U32, +tel: KTerm, +s: JDCallScan) -> JDCallScan:
++  match s:
++    case JDCallScan{edges, unknown, fuel, valid}:
++      kc(JDCallScan, String.eq(tg(tel), "All"), u =>
++        kc(JDCallScan, valid && U32.is_gt(fuel, 0), v =>
++          jd_calls_match_fields(book, env, t, ty,
++            U32.add(args, kc(U32, U32.is_eq(qt(tel), 0), w => 0, w => 1)), kid(tel, 1),
++            JDCallScan{edges, unknown, U32.sub(fuel, 1), valid}), v => jd_calls_bad(s)),
++        u => jd_calls_body(book, env, t, ty, args, s))
+ 
+ # Consume exactly the rows emitted by the numeric matcher. Rewalking the
+ # source bit tree would retain discarded inherited defaults and could invent

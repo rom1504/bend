@@ -1,0 +1,63 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/join-head-oracles.py",
+    "sha256": "bc4dae617dfef79ff31b09aa41227a738174b84298d6f4d2646b02aff90bc4c9"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/join-bend-oracles.py",
+    "sha256": "3cbf537f32aeb72149eb20cf30deefee401e2a1acd4b9252d540312fc0216a53"
+  },
+  "edits": [
+    {
+      "old": "Bind HEAD TypeScript checked emissions to all original 45 point observations.",
+      "new": "Bind an actual checked HEAD Bend image to all original 45 point observations.",
+      "count": 1
+    },
+    {
+      "old": "p.add_argument('--acquisition', type=Path, required=True)",
+      "new": "p.add_argument('--attempt', type=Path, required=True)\np.add_argument('--acquisition', type=Path, required=True)",
+      "count": 1
+    },
+    {
+      "old": "assert set(manifest['roles']) == {'typescript'}\ncompiler = manifest['roles']['typescript']['compiler']\nassert compiler['kind'] == 'checked-pinned-typescript' and compiler['upstreamCommit'] == PIN\nassert compiler['backend'] == 'upstream' and compiler['callingContract'] == 'upstream-compatible-direct-v1'\ncompiler_inputs = [identity(x) for x in compiler['sources']]\nassert len(compiler_inputs) == 3",
+      "new": "assert set(manifest['roles']) == {'candidate'}\ncompiler = manifest['roles']['candidate']['compiler']\nassert compiler['kind'] == 'checked-development-attempt' and compiler['upstreamCommit'] == PIN\nassert compiler['backend'] == 'direct' and compiler['callingContract'] == 'upstream-compatible-direct-v1'\nattempt_id = identity(a.attempt/'attempt.json' if a.attempt.is_dir() else a.attempt)\nattempt = read(attempt_id); assert attempt['checked'] is True\nboot = read(attempt['bootstrapReport']); assert boot['revision'] == PIN\nsource = identity(boot['source']); assert source['sha256'] == boot['sourceSha256'] == compiler['sourceSha256']\ncompiler_inputs = [identity(compiler[k]) for k in ['api','runtime','base','driver','directRuntime']]\nfor key in ['api','runtime','base']: assert identity(compiler[key])['sha256'] == identity(attempt[key])['sha256']\nfrozen = {row['frozen']['file']:row['frozen']['sha256'] for row in attempt['snapshot']['sources']}\nfor key in ['driver','directRuntime']: assert frozen[compiler[key]['file']] == compiler[key]['sha256']\nimage = {key:identity(compiler[key]) for key in ['api','runtime','base','driver','directRuntime']}\nimage['source'] = source",
+      "count": 1
+    },
+    {
+      "old": "prep['backend'] == 'upstream'",
+      "new": "prep['backend'] == 'direct'",
+      "count": 1
+    },
+    {
+      "old": "smoke['role'] == 'typescript'",
+      "new": "smoke['role'] == 'candidate'",
+      "count": 1
+    },
+    {
+      "old": "    assert emission['compiler'] == compiler and emission['input']['sha256'] == x['source']['sha256']",
+      "new": "    assert emission['compiler'] == compiler and emission['input']['sha256'] == x['source']['sha256']\n    assert identity(emission['attempt']) == attempt_id\n    assert emission['backend'] == 'direct' and emission['callingContract'] == 'upstream-compatible-direct-v1'",
+      "count": 1
+    },
+    {
+      "old": "row['modules']['typescript']",
+      "new": "row['modules']['candidate']",
+      "count": 1
+    },
+    {
+      "old": "kind='phase66-typescript-output-oracles'",
+      "new": "kind='phase61-qualified-compiler-output-oracles'",
+      "count": 1
+    },
+    {
+      "old": "sourceCatalog=catalog_id, originalRuntimeCatalog=original_id,",
+      "new": "catalog=catalog_id, originalRuntimeCatalog=original_id, backend='direct', image=image, attempt=attempt_id,",
+      "count": 1
+    },
+    {
+      "old": "fresh checked HEAD TypeScript modules",
+      "new": "fresh checked HEAD Bend image modules",
+      "count": 1
+    }
+  ],
+  "scope": "Same original45point/full23module qualification join; binds actual checked Bend attempt API/source/Base/host/runtime instead of TypeScript. No generated fake metadata or target executions."
+}

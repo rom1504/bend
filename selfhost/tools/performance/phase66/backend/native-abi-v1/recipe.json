@@ -1,0 +1,59 @@
+{
+  "kind": "phase66-native-abi-replay-recipe",
+  "targetExecuted": false,
+  "controller": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-abi-v1/replay.py",
+    "sha256": "af58e4078160b5537b132bf889df068842c19cd55346c8a9ceea4504071beced",
+    "bytes": 3195
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-abi-v1/candidate.json",
+    "sha256": "52f3cf9227d2eec171da1c4230384405cfaf83da9f62d0a14f4d49330e19e903",
+    "bytes": 4479
+  },
+  "toolchainRecipe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/backend-native-controls04-clang01-recipe/recipe.json",
+    "sha256": "c9ee8b4fe2358198fee3cd6e5c5a163a7b525ddc17b41c26d7b45c863586c150",
+    "bytes": 11670
+  },
+  "commands": [
+    {
+      "name": "native-abi-replay",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "120",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/native-abi-replay01-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "CC=/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+        "CPATH=/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include",
+        "LIBRARY_PATH=/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+        "LD_LIBRARY_PATH=/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-abi-v1/replay.py",
+        "--manifest",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-abi-v1/candidate.json",
+        "--toolchain",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/backend-native-controls04-clang01-recipe/recipe.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/native-abi-replay01"
+      ],
+      "expectedExitCodes": [
+        0,
+        1
+      ],
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/native-abi-replay01/report.json"
+    }
+  ]
+}

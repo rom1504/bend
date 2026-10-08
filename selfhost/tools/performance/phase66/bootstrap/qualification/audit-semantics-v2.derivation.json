@@ -1,0 +1,76 @@
+{
+  "kind": "phase66-semantic-audit-explicit-selection-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/qualification/audit-semantics.py",
+    "sha256": "99871c55413416665f361ec633b7c8797cd513012d5498389696246e518da81b",
+    "bytes": 6728
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/qualification/audit-semantics-v2.py",
+    "sha256": "b181a88299a93c0bc760615b7ee8341fced8024172bb0b3112ce898e33bc9f19",
+    "bytes": 8266
+  },
+  "edits": [
+    {
+      "old": "Join closed final04 semantic gates",
+      "new": "Join closed explicitly selected semantic gates",
+      "occurrences": 1
+    },
+    {
+      "old": "p.add_argument('--out', type=Path, required=True)",
+      "new": "p.add_argument('--out', type=Path, required=True)\np.add_argument('--attempt', type=Path, required=True)\np.add_argument('--image-pins', type=Path, required=True)\np.add_argument('--checked-plan', type=Path, required=True)\np.add_argument('--checked-execution', type=Path, required=True)\np.add_argument('--b2-plan', type=Path, required=True)\np.add_argument('--b2-execution', type=Path, required=True)",
+      "occurrences": 1
+    },
+    {
+      "old": "attempt_pin = pin(RAW / 'checked-b1-04/attempt.json')",
+      "new": "attempt_pin = pin(a.attempt)",
+      "occurrences": 1
+    },
+    {
+      "old": "image_pins = pin(RAW / 'bootstrap-b2-04b/image-pins.json')",
+      "new": "image_pins = pin(a.image_pins)",
+      "occurrences": 1
+    },
+    {
+      "old": "for role, plan_name, execution_name, jobs in [\n    ('checked', 'checked-js-plan.json', 'checked-js-execution', 10),\n    ('b2', 'b2-plan.json', 'b2-execution', 8),\n]:\n    plan_pin = pin(RAW / 'qualification04' / plan_name)",
+      "new": "directories = {}\nfor role, plan_file, execution_file in [\n    ('checked', a.checked_plan, a.checked_execution),\n    ('b2', a.b2_plan, a.b2_execution),\n]:\n    plan_pin = pin(plan_file)",
+      "occurrences": 1
+    },
+    {
+      "old": "    execution_pin = pin(RAW / 'qualification04' / execution_name / 'report.json')",
+      "new": "    directory = Path(plan['out']).resolve(strict=True)\n    assert directory.is_relative_to(RAW) and plan['stage'] == role\n    directories[role] = directory\n    expected = (['acquire-source', 'join-source', 'source-controls', 'acquire-numeric', 'numeric-controls',\n        'acquire-composition', 'composition-controls', 'acquire-overapplication', 'overapplication-controls', 'maintained8']\n        if role == 'checked' else ['acquire-source', 'source-controls', 'acquire-numeric', 'numeric-controls',\n        'acquire-composition', 'composition-controls', 'acquire-overapplication', 'overapplication-controls'])\n    names = [row['name'] for row in plan['commands']]\n    assert names == expected or (role == 'checked' and names == expected + ['native3'])\n    jobs = len(names)\n    if role == 'b2': assert pin(plan['imagePins']) == image_pins\n    execution_pin = pin(execution_file)",
+      "occurrences": 1
+    },
+    {
+      "old": "        directory = RAW / 'qualification04' / role\n",
+      "new": "",
+      "occurrences": 1
+    },
+    {
+      "old": "maintained_pin = pin(RAW / 'qualification04/checked/maintained8/report.json')",
+      "new": "maintained_pin = pin(directories['checked'] / 'maintained8/report.json')",
+      "occurrences": 1
+    },
+    {
+      "old": "kind='phase66-final04-semantic-qualification-audit'",
+      "new": "kind='phase66-selected-semantic-qualification-audit'",
+      "occurrences": 1
+    },
+    {
+      "old": "Native qualification, final05 unchanged-JS closure reuse, full frontend/backend corpus, selfhosting, program equality, timing and release are separate mandatory receipts.",
+      "new": "Native qualification (even when its execution is included in the checked plan), full frontend/backend corpus, selfhosting, program equality, timing and release remain separate mandatory receipts; no image reuse is inferred.",
+      "occurrences": 1
+    },
+    {
+      "old": "pin(__file__)\nresult =",
+      "new": "pin(__file__)\nderivation_file = Path(__file__).with_suffix('.derivation.json')\nderivation = read(derivation_file)\nrebuilt = Path(pin(derivation['parent'])['file']).read_text()\nfor change in derivation['edits']:\n    assert rebuilt.count(change['old']) == change['occurrences']\n    rebuilt = rebuilt.replace(change['old'], change['new'])\nassert rebuilt == Path(__file__).read_text()\nassert pin(derivation['output'])['file'] == str(Path(__file__).resolve())\nresult =",
+      "occurrences": 1
+    },
+    {
+      "old": "producer=pin(__file__), attempt=attempt_pin,",
+      "new": "producer=pin(__file__), derivation=pin(derivation_file), attempt=attempt_pin,",
+      "occurrences": 1
+    }
+  ],
+  "scope": "Explicit actual attempt/image/plans/executions and output directories replace04 paths; unchanged semantic candidate/reference oracles. Supports original semantic10 checked projection or full11 including native execution without granting native qualification."
+}

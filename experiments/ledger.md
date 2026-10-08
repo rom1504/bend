@@ -4016,3 +4016,62 @@ All new raw evidence belongs to Phase66. The old TypeScript, B1 and B2 baseline
 must remain distinct from the new reference; changed Base, names, effects and
 bootstrap contracts require new qualification. [Live report](../implementation/phase66/README.md).
 No performance or conformance result is claimed at registration.
+
+
+### Phase66 final07 installed and five metrics qualified — 2026-10-08
+
+The [final report](../implementation/phase66/README.md) closes migration from
+upstream `018751270e800bc222a93dad7f257083ee53a5f7` to
+`059266225b77c8ca256ac6b25ee5c21449bab151` (95 commits). Source freeze `f9667c2`
+selects profile7 checked B1 `bb6c6e2a…`, assembled source `1b29d5c4…` and genuine
+B2 `0067736c…`. All 3,174 frontend observations agree with the new reference.
+Across 1,170 JS-eligible fixtures, the Node/Bun union yields 1,045 distinct
+Bend golden passes, 123 exemptions, one shared Process.run failure and one
+graphics deferral. No TypeScript-passing candidate JS failure remains in this
+corpus; these outcomes do not imply all fixtures pass or universal conformance.
+
+The [performance join](../implementation/phase66/evidence/selected-performance07.json)
+binds separate final B1/B2 campaigns, each with 207/207 exact-output workers on
+23 sources. Compilation ratios are **1.402065× / 1.321100× new TS** for B1/B2;
+including imports/API loading gives **0.982634× / 0.990389×**. Paired old/new
+compilation changes are +0.53% / −0.23%, indicating retained speed through the
+update, not a substantial new optimization. The independently executed runtime
+campaign passes **669/669 samples, 45 points/23 sources**: **1.049282× new TS**
+with equal-point weighting and **1.046987×** with equal-source weighting.
+Updated/old Bend output is 1.000377× / 1.003712× respectively. Runtime excludes
+compilation, imports, first call and warmup. Exact B1/B2 emitted-module equality
+transfers these finite execution observations, not compiler timing. Renderer
+source gaps remain 1.337×–1.619×; every other measured source is at most 1.090×.
+
+The [compiler qualification](../implementation/phase66/evidence/compiler-qualification07.json)
+verifies 11,601 inputs, with fresh B2 own-source acceptance/reproduction and
+selected Base/native admission. Native3 executes final07; older native controls
+retain attempt05 provenance through exact closure-based admission. Thirteen
+native methods remain unsupported. The separate
+[installed-release receipt](../implementation/phase66/evidence/installed-release07.json)
+verifies 594 inputs and installs the selected checked B1 after five release
+jobs, legacy42/default24/helper5, preserving seven prior release files in both
+history and raw copies and verifying 110 inherited files.
+
+The [source census](../implementation/phase66/evidence/simplicity-final07.json)
+records 28,490 physical / 23,353 code Bend lines in 115 modules: +94 physical
+(+0.331%), +69 code and +13 definitions versus Phase65; 642 laws and 119 types
+are unchanged. All 313 frozen/live source pairs match. This is a small migration
+cost, not a reduction in concepts. The
+[time account](../implementation/phase66/evidence/time-account-final.json)
+closes release-target work after 3 h 30 min 7 s at 08:32:27 UTC, with 110.53
+minutes of recorded target-tree occupancy. Uncovered elapsed time is
+unclassified, and later reporting/archive/commit/push work is excluded.
+
+Final compiler and installation qualification is complete. Root sealed the raw
+tree and the [archive](../selfhost/tools/performance/phase66/artifacts/README.md)
+passed at 08:46:39 UTC: 119,393 files, 22,049 directories, 1,159,498,010
+uncompressed bytes and 241,587,423 compressed bytes in five parts at most 50 MiB.
+Every member was reopened and verified; all 17,894 prior Phase65 raw files, both
+old archive parts, 110 inherited files, seven prior installed copies and 299
+baseline copies also pass preservation. The 14 min 12 s after target closure
+through archive completion is separate publication work, outside the 3 h 30 min
+release-target account; later commit/push time is not included.
+Preserve attempts04/05, failed06, every failed output and the captured Bun
+runtime; leave the original P66-001 registration and earlier checkpoints intact.
+No new PR comment was posted.

@@ -1,0 +1,217 @@
+{
+  "kind": "phase66-legacy-source-catalog",
+  "version": 1,
+  "status": "catalog-only-unexecuted",
+  "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "backend": "legacy-js",
+  "cases": [
+    {
+      "path": "tests/io/chan_close_send.bend",
+      "sha256": "4ee8a8df7e4cc1d52725fbd11b45394055b040b4b60adb925c0b5c778e95ae9e",
+      "bytes": 736,
+      "expected": [
+        "DoneFail2"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/chan_pipe.bend",
+      "sha256": "a4dfb7ff48122e7bc2b87095ac820c9ae75764d4368bb6bd70c8016cdb61d147",
+      "bytes": 1384,
+      "expected": [
+        "4",
+        "3",
+        "2",
+        "1",
+        "0",
+        "end"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/chan_proof_send.bend",
+      "sha256": "1958bea984a63a79b7db2285d26b9eb54146820090a02d2eda6b4c4886a9be16",
+      "bytes": 1121,
+      "expected": [
+        "ok"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/chan_rendezvous.bend",
+      "sha256": "5da68fceefa3ea562684c4eecbf682840ff5502fa0bb8730ac9d840ef5bca4ba",
+      "bytes": 1103,
+      "expected": [
+        "m0",
+        "s0",
+        "s1",
+        "m1",
+        "m2",
+        "s2"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/chan_try.bend",
+      "sha256": "00b07d1eb87cc32d99f4e8347690764f466541f583af05e414899fdb447b7683",
+      "bytes": 3021,
+      "expected": [
+        "sent",
+        "full, kept 2",
+        "got 1",
+        "nothing",
+        "nothing",
+        "sent",
+        "got 7",
+        "ended",
+        "closed, kept 9",
+        "got 5",
+        "sent"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/chan_try_late.bend",
+      "sha256": "ca1748573e473546296f3bb524c600d6944ae767cef1cd4495f22ffc48703d0c",
+      "bytes": 2030,
+      "expected": [
+        "B: 767263360",
+        "A: wait",
+        "A: then got 7",
+        "S: sent"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/channel_fork_join.bend",
+      "sha256": "5f1e56a192d49c04859209328325d61afe715440351a11cd500db672b2309141",
+      "bytes": 1183,
+      "expected": [
+        "1122"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/channel_send_recv.bend",
+      "sha256": "d54253c0eb698b6f59473f449f08e819e7ca2c3dc7f0fc112c2db06d3bc6e84a",
+      "bytes": 871,
+      "expected": [
+        "SOME PROOFS FAIL",
+        "Error:",
+        "- message  : a declared datatype (unknown: Sender)",
+        "Location: main",
+        "12 |   do IO<U32>:",
+        "13>|     c : Sender<U32> & Receiver<U32> <- Chan.new(U32, 8)",
+        "   |         ^^^^^^^^^^",
+        "14 |     s : Result<U32, Sender<U32>> <- Chan.send(U32, c, 42)",
+        "exit 1"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/tcp_loopback.bend",
+      "sha256": "e3b7776e936c7a18dc9634e9fa128bfdd2a6e0131d917b3d5584f9cff05829df",
+      "bytes": 2967,
+      "expected": [
+        "bend-tcp"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/tcp_short_recv.bend",
+      "sha256": "3510d5a5576b12bac547d7ab9f4cbd996ec230ac688ea29c3e432cbbba7ab97a",
+      "bytes": 3750,
+      "expected": [
+        "abc",
+        "def",
+        "ended"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/tcp_spawn.bend",
+      "sha256": "72a8c7481e47f6e7d01394c221f4b63acf4a8cf0d1732bd326c66090e41a63aa",
+      "bytes": 4072,
+      "expected": [
+        "echo:one",
+        "echo:two",
+        "echo:three"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/tcp_send_slow_peer.bend",
+      "sha256": "a264d4fd2774f3bc1fb549b5c1a2383e9ee741a2c8c341633635128b73d847a7",
+      "bytes": 3928,
+      "expected": [
+        "loop alive",
+        "canary fast"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/tcp_try_recv.bend",
+      "sha256": "73611e6d029f25aeebe62c3ab153adba38a2f26c768d7c740b79173624f72474",
+      "bytes": 4715,
+      "expected": [
+        "none",
+        "timeout",
+        "waited",
+        "bend-poll"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/udp_bytes.bend",
+      "sha256": "f9eb16666fdaa00a3ab16b75f44a136f8ce30b6905741271e3257aa2b40a4303",
+      "bytes": 6838,
+      "expected": [
+        "0 255 195 161 128",
+        "195 161",
+        "empty",
+        "1 2",
+        "22, kept 1 256",
+        "22, kept 7 8",
+        "wait",
+        "ready sent",
+        "ready 9 200 0",
+        "ready 22, kept 300",
+        "wait",
+        "recv failed 22"
+      ],
+      "legacyExpectation": "explicit-refusal-of-new-operation",
+      "refusedFunctions": [
+        "UDP.try_send_bytes_to"
+      ]
+    },
+    {
+      "path": "tests/io/udp_recv_max_zero.bend",
+      "sha256": "cbb95c2f0427ab65b8585ff5bf16f38b97e76c0e7adf60937ac1add3cd3217b2",
+      "bytes": 3426,
+      "expected": [
+        "try_recv_from: 22 Invalid argument",
+        "recv_from: 22 Invalid argument",
+        "queued: 22 Invalid argument",
+        "then recv_from 64: got hello"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    },
+    {
+      "path": "tests/io/udp_try_recv_from.bend",
+      "sha256": "de8e675d9d5d23566a4572cbecd2b8ac2a7dee794c9ed7f879ad56c71594cf9f",
+      "bytes": 3420,
+      "expected": [
+        "wait",
+        "bend-poll"
+      ],
+      "legacyExpectation": "match-upstream-output"
+    }
+  ],
+  "declaredUnsupportedNewFunctions": [
+    "TCP.try_send",
+    "TCP.try_send_bytes",
+    "UDP.try_send_to",
+    "UDP.try_send_bytes_to"
+  ],
+  "note": "Sources are additional qualification beyond runtime controls. They require the actual migrated checked compiler, namespace loader, Base, and emission. Direct/native status must be recorded separately."
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "phase66-profile7-source-proposal",
+  "version": 1,
+  "productionApplied": false,
+  "targetExecuted": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/equality.mjs",
+    "sha256": "db2999aa879e0bc6c6359d37c19e7589c60d34b2b143d0ed6ecbc23eabfec951"
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/profile7/equality.mjs",
+    "sha256": "fcc80fd4da249e74f2cfd296c7e88f3c5f795a627e498c26bf5deb4ac8397eb5"
+  },
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/profile7/profile7.patch",
+    "sha256": "8e42f5e0e60969b901f715b223b63b6372034817179a1c863f356bc96c57f143"
+  },
+  "edits": [
+    {
+      "old": "const profiles=Object.freeze([upstreamGraphProfile,legacyProfile,currentTailProfile,currentChoiceProfile,currentFastProfile,currentProfile]);",
+      "new": "// Version7 reviews the Phase66 unary closure trampoline. Keep the same proven\n// primitive String guard and literal choices; do not run the historical\n// array-argument leaf-tail rewrite against this unary message protocol.\nconst upstreamUnaryProfile=Object.freeze({...upstreamGraphProfile,\n  version:7,pin:'059266225b77c8ca256ac6b25ee5c21449bab151',\n  runtimeHash:'581d3d70546797f44babf7be009b856696dd0ecf6e050ca3380bec22cdd7d8b4',\n  bodyHashes:Object.freeze({...upstreamGraphProfile.bodyHashes,\n    run_loop:'6699dae5e25915e22e46d0b837caa536dbbd3c7e5758cbade7067037ae438269'}),\n  upstreamHashes:Object.freeze({\n    'bend.ts':'1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49',\n    'comp.ts':'2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c',\n    'base.bend':'99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf'}),\n  recipeHashes:Object.freeze({\n    'stage0-library.mjs':'ec3506de1558fa1e56cef54345053ffaf7bfcc92b8632eaf96e217c15b8a59c1',\n    'assemble.mjs':recipeHashes['assemble.mjs']})\n});\nconst profiles=Object.freeze([upstreamUnaryProfile,upstreamGraphProfile,legacyProfile,currentTailProfile,currentChoiceProfile,currentFastProfile,currentProfile]);",
+      "count": 1
+    },
+    {
+      "old": "function transformChoices(source,native=false){\n const marker=prefixEnd,runtime=currentProfile.runtimeHash,",
+      "new": "function transformChoices(source,native=false,runtime=currentProfile.runtimeHash){\n const marker=prefixEnd,",
+      "count": 1
+    },
+    {
+      "old": "const choice=transformChoices(equalitySource,profile.version>=5);",
+      "new": "const choice=transformChoices(equalitySource,profile.version>=5,profile.runtimeHash);",
+      "count": 1
+    },
+    {
+      "old": "    if(profile.version>=5){\n      const tail=transformTailChoices(choice.source);",
+      "new": "    if(profile.version>=5&&profile.version!==7){\n      const tail=transformTailChoices(choice.source);",
+      "count": 1
+    }
+  ],
+  "actualCheckedApi": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-02/api.mjs",
+    "sha256": "abccec43b566aca2a544b2f2023fe6fbc0f2eb86684061a2b9373643f36671ab"
+  },
+  "sourceInspection": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase66/evidence/bootstrap-inspection02.json",
+    "sha256": "09f989395b9b94f27a38d85dc926de9f763ebc6064c8b17d771b6b2227dde022"
+  },
+  "scope": "Distinct profile7 with exact new upstream/runtime/recipe guards; equality+literal choices only, no array-argument tail rewrite. Historical profiles1-6 must replay unchanged. This proposal is not a qualified derived image."
+}

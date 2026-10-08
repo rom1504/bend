@@ -1,0 +1,25 @@
+{
+  "kind": "phase66-paired-bun-replay-method",
+  "version": 1,
+  "controller": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/controls/bun-replay-v1.mjs",
+    "sha256": "78d3c90f64aae7070da355eafd72b00030ec669368430d98750b9824ea3785b6"
+  },
+  "targetExecuted": false,
+  "compilerExecuted": false,
+  "selection": "Union of closed1170 Node role results whose checked runtime output exactly reports unavailable bun:ffi, plus explicitly authorized base/read_bounds, io/file_open_mode, io/stderr_failure, io/process_run and io/process_run_parallel. No NaN.",
+  "runtime": "Official Bun1.4.2 a83d263767d839e4d2649ca8e35d07159c7afc99afdc96d731ced29e056dda0c and acquisition/zip metadata pinned",
+  "command": [
+    "node",
+    "--stack-size=4096",
+    "--max-old-space-size=1024",
+    "selfhost/tools/performance/phase66/controls/bun-replay-v1.mjs",
+    "TS_REPORT",
+    "BEND_REPORT",
+    "ACQUISITION",
+    "EXPLICIT_BUN_BINARY",
+    "FRESH_PHASE66_OUT"
+  ],
+  "guard": "Root outer sole CPU3/process-tree RSS2048MiB guard; each Bun action timeout10s and combined retained output1MiB; no Node flags passed to Bun",
+  "outcomes": "Full JSON retained even failures. Graphics/window/audio deferred and absent/unverified counterpart module reported no-paired-replay. Those are not passes; process exit1 is expected when any remains. Node reports/artifacts preserved."
+}

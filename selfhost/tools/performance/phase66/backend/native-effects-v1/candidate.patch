@@ -1,0 +1,358 @@
+--- selfhost/src/runtime/native/runtime.c
++++ selfhost/src/runtime/native/runtime.c
+@@ -2448,10 +2448,13 @@
+   return term_ctr(cid, l);
+ }
+ 
++static Term io_err(Env e, u32 code, const char* text) {
++  const char* s = text != NULL ? text : strerror((int)code);
++  return io_tup(e, code, io_str(e, s, strlen(s)));
++}
++
+ static Term io_fail(Env e, u32 code, const char* text) {
+-  const char* s = text != NULL ? text : strerror((int)code);
+-  Term t = io_tup(e, code, io_str(e, s, strlen(s)));
+-  return io_box(e, CID_FAIL, t);
++  return io_box(e, CID_FAIL, io_err(e, code, text));
+ }
+ 
+ static lock           io_gate = PTHREAD_MUTEX_INITIALIZER;
+@@ -2758,6 +2761,53 @@
+ 
+ #endif
+ 
++// Current Base additions not yet implemented by this retained scheduler.
++// Refuse on actual dispatch, before consuming any payload.
++static const char* io_unavailable(u32 cid) {
++  switch (cid) {
++#ifdef CID_CHAN_TRY_SEND
++    case CID_CHAN_TRY_SEND: return "native Chan.try_send is not implemented by the retained IO runtime";
++#endif
++#ifdef CID_CHAN_TRY_RECV
++    case CID_CHAN_TRY_RECV: return "native Chan.try_recv is not implemented by the retained IO runtime";
++#endif
++#ifdef CID_TCP_TRY_ACCEPT
++    case CID_TCP_TRY_ACCEPT: return "native TCP.try_accept is not implemented by the retained IO runtime";
++#endif
++#ifdef CID_TCP_TRY_SEND
++    case CID_TCP_TRY_SEND: return "native TCP.try_send is not implemented by the retained IO runtime";
++#endif
++#ifdef CID_TCP_TRY_SEND_BYTES
++    case CID_TCP_TRY_SEND_BYTES: return "native TCP.try_send_bytes is not implemented by the retained IO runtime";
++#endif
++#ifdef CID_TCP_TRY_RECV
++    case CID_TCP_TRY_RECV: return "native TCP.try_recv is not implemented by the retained IO runtime";
++#endif
++#ifdef CID_TCP_TRY_RECV_BYTES
++    case CID_TCP_TRY_RECV_BYTES: return "native TCP.try_recv_bytes is not implemented by the retained IO runtime";
++#endif
++#ifdef CID_UDP_TRY_SEND_TO
++    case CID_UDP_TRY_SEND_TO: return "native UDP.try_send_to is not implemented by the retained IO runtime";
++#endif
++#ifdef CID_UDP_TRY_SEND_BYTES_TO
++    case CID_UDP_TRY_SEND_BYTES_TO: return "native UDP.try_send_bytes_to is not implemented by the retained IO runtime";
++#endif
++#ifdef CID_UDP_TRY_RECV_FROM
++    case CID_UDP_TRY_RECV_FROM: return "native UDP.try_recv_from is not implemented by the retained IO runtime";
++#endif
++#ifdef CID_UDP_TRY_RECV_BYTES_FROM
++    case CID_UDP_TRY_RECV_BYTES_FROM: return "native UDP.try_recv_bytes_from is not implemented by the retained IO runtime";
++#endif
++#ifdef CID_UDP_SEND_BYTES_TO
++    case CID_UDP_SEND_BYTES_TO: return "native UDP.send_bytes_to is not implemented by the retained IO runtime";
++#endif
++#ifdef CID_UDP_RECV_BYTES_FROM
++    case CID_UDP_RECV_BYTES_FROM: return "native UDP.recv_bytes_from is not implemented by the retained IO runtime";
++#endif
++    default: return "an alien request";
++  }
++}
++
+ // The continuation applied to the item is the next request.
+ static int io_step(Env e, IoAct* a) {
+   // Yield only after a completed effect: the activation owns its next item.
+@@ -2780,7 +2830,7 @@
+       return (int)(u32)e.mem[at];
+     }
+     if (io_eff_rows[c].run == NULL) {
+-      err_fail("an alien request");
++      err_fail(io_unavailable(c));
+     }
+     u32 need = io_eff_rows[c].ask;
+     u32 word = (u32)(need & IO_READ ? io_hand_v(e.mem[at]) : e.mem[at]);
+@@ -2866,7 +2916,7 @@
+ static u32      chan_idle = ~0u;
+ 
+ #define chan_some(e, v) io_box(e, CID_SOME, v)
+-#define chan_bool(b)    term_pak((b) ? CID_TRUE : CID_FALSE, 0)
++#define chan_done(e)    io_done(e, term_pak(CID_UNIT, 0))
+ 
+ static Term chan_open(u32 room) {
+   u32 i = chan_idle;
+@@ -2921,12 +2971,12 @@
+   return item;
+ }
+ 
+-static Term chan_take(ChanRow* row) {
++static Term chan_take(Env e, ChanRow* row) {
+   Term v = row->ring[row->head];
+   row->head = (row->head + 1) % row->room;
+   row->size -= 1;
+   if (row->wait.head != NULL) {
+-    Term item = chan_wake(row, chan_bool(true));
++    Term item = chan_wake(row, chan_done(e));
+     row->ring[(row->head + row->size) % row->room] = item;
+     row->size += 1;
+   }
+@@ -2943,9 +2993,10 @@
+ static void chan_shut(Env e, ChanRow* row) {
+   row->shut = 1;
+   while (row->wait.head != NULL) {
+-    bool rcv = row->wait.head->item == TERM_HOLE;
+-    Term x = rcv ? term_pak(CID_NONE, 0) : chan_bool(false);
+-    term_sink(e, chan_wake(row, x));
++    Term item = row->wait.head->item;
++    Term x = item == TERM_HOLE ? term_pak(CID_NONE, 0)
++      : io_box(e, CID_FAIL, item);
++    chan_wake(row, x);
+   }
+   if (row->size == 0) {
+     chan_free(row);
+--- selfhost/src/runtime/native/effs/chan.c
++++ selfhost/src/runtime/native/effs/chan.c
+@@ -1,3 +1,4 @@
++// Phase66: current Base blocking result ABI on the retained IoAct scheduler.
+ // Grouped channel effects for the retained IoQue/IoAct runtime.
+ // The old separate source files remain available for historical artifacts.
+ 
+@@ -22,17 +23,16 @@
+ Term chan_send_run(Env e, Term* f, IoWork* w) {
+   ChanRow* row = chan_at(f[0]);
+   if (row == NULL || row->shut) {
+-    term_drop(e, f[1]);
+-    return chan_bool(false);
++    return io_box(e, CID_FAIL, f[1]);
+   }
+   if (row->wait.head != NULL && row->wait.head->item == TERM_HOLE) {
+     chan_wake(row, chan_some(e, f[1]));
+-    return chan_bool(true);
++    return chan_done(e);
+   }
+   if (row->size < row->room) {
+     row->ring[(row->head + row->size) % row->room] = f[1];
+     row->size += 1;
+-    return chan_bool(true);
++    return chan_done(e);
+   }
+   return chan_park(row, w, f[1]);
+ }
+@@ -53,14 +53,14 @@
+     return term_pak(CID_NONE, 0);
+   }
+   if (row->size > 0) {
+-    Term v = chan_take(row);
++    Term v = chan_take(e, row);
+     if (row->shut && row->size == 0) {
+       chan_free(row);
+     }
+     return chan_some(e, v);
+   }
+   if (row->wait.head != NULL && row->wait.head->item != TERM_HOLE) {
+-    return chan_some(e, chan_wake(row, chan_bool(true)));
++    return chan_some(e, chan_wake(row, chan_done(e)));
+   }
+   if (row->shut) {
+     chan_free(row);
+--- selfhost/src/runtime/native/effs/chan_send.c
++++ selfhost/src/runtime/native/effs/chan_send.c
+@@ -1,20 +1,20 @@
++// Phase66: current Base blocking result ABI on the retained IoAct scheduler.
+ // Chan
+ // ====
+ 
+ Term chan_send_run(Env e, Term* f, IoWork* w) {
+   ChanRow* row = chan_at(f[0]);
+   if (row == NULL || row->shut) {
+-    term_drop(e, f[1]);
+-    return chan_bool(false);
++    return io_box(e, CID_FAIL, f[1]);
+   }
+   if (row->wait.head != NULL && row->wait.head->item == TERM_HOLE) {
+     chan_wake(row, chan_some(e, f[1]));
+-    return chan_bool(true);
++    return chan_done(e);
+   }
+   if (row->size < row->room) {
+     row->ring[(row->head + row->size) % row->room] = f[1];
+     row->size += 1;
+-    return chan_bool(true);
++    return chan_done(e);
+   }
+   return chan_park(row, w, f[1]);
+ }
+--- selfhost/src/runtime/native/effs/chan_recv.c
++++ selfhost/src/runtime/native/effs/chan_recv.c
+@@ -1,3 +1,4 @@
++// Phase66: current Base blocking result ABI on the retained IoAct scheduler.
+ // Chan
+ // ====
+ 
+@@ -7,14 +8,14 @@
+     return term_pak(CID_NONE, 0);
+   }
+   if (row->size > 0) {
+-    Term v = chan_take(row);
++    Term v = chan_take(e, row);
+     if (row->shut && row->size == 0) {
+       chan_free(row);
+     }
+     return chan_some(e, v);
+   }
+   if (row->wait.head != NULL && row->wait.head->item != TERM_HOLE) {
+-    return chan_some(e, chan_wake(row, chan_bool(true)));
++    return chan_some(e, chan_wake(row, chan_done(e)));
+   }
+   if (row->shut) {
+     chan_free(row);
+--- selfhost/src/runtime/native/effs/tcp_recv.c
++++ selfhost/src/runtime/native/effs/tcp_recv.c
+@@ -1,3 +1,4 @@
++// Phase66: current Base blocking result ABI on the retained IoAct scheduler.
+ // Adapted through upstream 018751270e800bc222a93dad7f257083ee53a5f7.
+ // Uses the retained selfhost runtime and its CID_* constructor ABI.
+ // TCP
+@@ -14,7 +15,8 @@
+     return io_wait_on(w, fd, POLLIN, 0, more);
+   }
+   Term r = w->code ? io_fail(e, w->code, NULL)
+-    : io_done(e, read(e, w->data, w->size));
++    : io_done(e, w->size == 0 ? term_pak(CID_NONE, 0)
++      : io_box(e, CID_SOME, read(e, w->data, w->size)));
+   free(w->data);
+   return io_tup(e, io_hand(w->hand), r);
+ }
+--- selfhost/src/runtime/native/effs/tcp_send.c
++++ selfhost/src/runtime/native/effs/tcp_send.c
+@@ -1,3 +1,4 @@
++// Phase66: current Base blocking result ABI on the retained IoAct scheduler.
+ // Adapted from upstream b2111cf43244e65f76ddc278ee695e669f720cbf.
+ // Uses the retained selfhost runtime and its CID_* constructor ABI.
+ // TCP
+@@ -5,19 +6,25 @@
+ 
+ // Sends what is left; a full socket (non-blocking, so EAGAIN) parks the
+ // computation until the socket is writable, and the loop resumes here.
+-static Term tcp_send_more(Env e, IoWork* w) {
++static Term tcp_send_with(Env e, IoWork* w, IoPack more,
++  Term (*make)(Env, const char*, u64)) {
+   int fd = (int)w->hand;
+   while (w->code == 0 && (u64)w->made < w->size) {
+     ssize_t n = send(fd, w->data + w->made, w->size - (u64)w->made, 0);
+     if (n < 0 && errno == EAGAIN) {
+-      return io_wait_on(w, fd, POLLOUT, 0, tcp_send_more);
++      return io_wait_on(w, fd, POLLOUT, 0, more);
+     }
+     w->made += io_sys_end(w, n);
+   }
+-  Term r = w->code != 0 ? io_fail(e, w->code, NULL)
++  Term r = w->code != 0 ? io_box(e, CID_FAIL, io_tup(e,
++      io_err(e, w->code, NULL), make(e, w->data + w->made, w->size - (u64)w->made)))
+     : io_done(e, term_pak(CID_UNIT, 0));
+   free(w->data);
+   return io_tup(e, io_hand(w->hand), r);
++}
++
++static Term tcp_send_more(Env e, IoWork* w) {
++  return tcp_send_with(e, w, tcp_send_more, io_str);
+ }
+ 
+ #ifdef CID_TCP_SEND
+@@ -38,13 +45,25 @@
+ 
+ #ifdef CID_TCP_SEND_BYTES
+ 
+-// A value past 255 fails with EINVAL before any byte is sent.
++static Term tcp_send_bytes_more(Env e, IoWork* w) {
++  return tcp_send_with(e, w, tcp_send_bytes_more, io_list);
++}
++
++// Validate before consuming: failure must return the exact original list.
+ Term tcp_send_bytes_run(Env e, Term* f, IoWork* w) {
+   w->hand = (intptr_t)io_hand_v(f[0]);
++  for (Term s = f[1]; term_aux(s) == CID_CON;) {
++    Loc at = term_peek(e, s);
++    if (e.mem[at] > 255) {
++      return io_tup(e, f[0], io_box(e, CID_FAIL,
++        io_tup(e, io_err(e, EINVAL, NULL), f[1])));
++    }
++    s = e.mem[at + 1];
++  }
+   w->data = io_cbuf(e, f[1], &w->size, CID_CON);
+   w->made = 0;
+-  w->code = w->data == NULL ? EINVAL : 0;
+-  return tcp_send_more(e, w);
++  w->code = 0;
++  return tcp_send_bytes_more(e, w);
+ }
+ 
+ static void __attribute__((constructor)) tcp_send_bytes_use(void) {
+--- selfhost/src/runtime/native/effs/udp_send_to.c
++++ selfhost/src/runtime/native/effs/udp_send_to.c
+@@ -1,3 +1,4 @@
++// Phase66: current Base blocking result ABI on the retained IoAct scheduler.
+ // UDP
+ // ===
+ 
+@@ -15,7 +16,8 @@
+   if (w->code == EAGAIN) {
+     return io_wait_on(w, fd, POLLOUT, 0, udp_send_to_more);
+   }
+-  Term r = w->code != 0 ? io_fail(e, w->code, NULL)
++  Term r = w->code != 0 ? io_box(e, CID_FAIL, io_tup(e,
++      io_err(e, w->code, NULL), io_str(e, w->data, w->size)))
+     : io_done(e, term_pak(CID_UNIT, 0));
+   free(w->text);
+   free(w->data);
+@@ -29,9 +31,11 @@
+   w->made = (intptr_t)f[2];
+   w->data = io_cstr(e, f[3], &w->size);
+   if (io_nul(w->text, hn)) {
++    Term r = io_box(e, CID_FAIL, io_tup(e, io_err(e, EINVAL, NULL),
++      io_str(e, w->data, w->size)));
+     free(w->text);
+     free(w->data);
+-    return io_tup(e, io_hand(w->hand), io_fail(e, EINVAL, NULL));
++    return io_tup(e, io_hand(w->hand), r);
+   }
+   return udp_send_to_more(e, w);
+ }
+--- selfhost/src/runtime/native/effs/udp_recv_from.c
++++ selfhost/src/runtime/native/effs/udp_recv_from.c
+@@ -1,8 +1,9 @@
++// Phase66: current Base blocking result ABI on the retained IoAct scheduler.
+ // UDP
+ // ===
+ 
+-// The loop parked the request until the socket was readable; a recv that
+-// still finds no datagram (the socket is non-blocking) parks again.
++// A zero max refuses immediately; a non-blocking recv with no datagram
++// parks until readable, preserving an empty datagram as valid data.
+ static Term udp_recv_from_more(Env e, IoWork* w) {
+   struct sockaddr_in at = { 0 };
+   socklen_t alen = sizeof(at);
+@@ -23,11 +24,14 @@
+ 
+ Term udp_recv_from_run(Env e, Term* f, IoWork* w) {
+   w->hand = (intptr_t)io_hand_v(f[0]);
++  if (f[1] == 0) {
++    return io_tup(e, io_hand(w->hand), io_fail(e, EINVAL, NULL));
++  }
+   w->made = f[1] < INT32_MAX ? (intptr_t)f[1] : INT32_MAX;
+   w->data = io_mem(malloc((size_t)w->made + 1));
+   return udp_recv_from_more(e, w);
+ }
+ 
+ static void __attribute__((constructor)) udp_recv_from_use(void) {
+-  io_eff(CID_UDP_RECV_FROM, udp_recv_from_run, IO_READ);
++  io_eff(CID_UDP_RECV_FROM, udp_recv_from_run, 0);
+ }

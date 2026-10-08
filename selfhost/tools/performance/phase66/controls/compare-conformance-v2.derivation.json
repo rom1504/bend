@@ -1,0 +1,25 @@
+{
+  "kind": "phase66-conformance-summary-closure-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/controls/compare-conformance.py",
+    "sha256": "1e5501ad8d475fee222cf27cb34d28bf426de214d6d0df26c1e54a5494ffc80b"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/controls/compare-conformance-v2.py",
+    "sha256": "141d5e80d8ebc9ec1ee9d00c4ab7a91c16376148dabaa4a43d2f1594fb5e6f06"
+  },
+  "changes": [
+    {
+      "old": "        assert recipe['kind'] == 'phase66-conformance-observation-recipe'\n        for command in recipe['commands']:",
+      "new": "        assert recipe['kind'] == 'phase66-conformance-observation-recipe'\n        # Reverify the complete private executable closure, including helpers\n        # absent from the historical adapter's narrower artifacts collection.\n        expected = {recipe['node']['file']: recipe['node']}\n        for image in recipe['images']:\n            for row in image['copies']:\n                expected[row['copy']['file']] = row['copy']\n            for key in ['harnessManifestAfter', 'compilerImage', 'defaultCompilerImage', 'base', 'bundledBase', 'attempt']:\n                if image.get(key):\n                    item = image[key]; expected[item['file']] = item\n            for key in ['adapterDisplayChange', 'adapterBackendChange']:\n                if image.get(key):\n                    item = image[key]['after']; expected[item['file']] = item\n        for item in expected.values():\n            assert pin(item['file']) == item, 'Changed staged executable input: '+item['file']\n            inputs.append(item)\n        for command in recipe['commands']:",
+      "count": 1
+    },
+    {
+      "old": "r.get('result', {})",
+      "new": "(r.get('result') or {})",
+      "count": 3
+    }
+  ],
+  "targetExecuted": false,
+  "scope": "Exact counts/comparison unchanged; rehash complete staged helper/runtime/provider closure with only recorded manifest/adapter overrides, preserving all consumed earlier receipts."
+}

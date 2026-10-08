@@ -1,0 +1,3269 @@
+{
+  "kind": "phase66-clean-latency-summary",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/analysis/clean.py",
+    "sha256": "01b3ca031b4e8b330115be425920160fbc5f301c8c69b955641e43616c675545"
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-04-full-latency/broad/report.json",
+    "sha256": "9438737f10fb59dd7728b7c01dc381ae0212ac6d7500db31cc78ab98671c0970"
+  },
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-04-full-latency/broad/plan.json",
+    "sha256": "bc00a927f8023c88b1d57ed3e5293dd90ac4ad6470406ade0e8f82b3cfda73fa"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/latency-method05/derivation.json",
+    "sha256": "b10d933b189eda38e311bb9cd05e76ec4290938dca8c2d5bd72fc8ecb29137a5"
+  },
+  "successfulWorkers": 207,
+  "exactRawOutputs": 207,
+  "sourceCount": 23,
+  "rounds": 3,
+  "roles": [
+    "baseline",
+    "candidate",
+    "typescript_head"
+  ],
+  "images": {
+    "baseline": {
+      "kind": "checked",
+      "role": "baseline",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-04-full-latency/preparation/prepare-baseline/stage/project/dist/api.mjs",
+        "sha256": "3a7fedb77003aecc797cd9a9ac4c6d1bd15bd21dd1230806b6719565eca10f72"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state10/snapshot/build/typed/snapshots/7ec178a124ba67bddb2b9d176d18e93b270f3ee4ce1900b835481063e48da5b4/compiler.bend",
+        "sha256": "310c9d077fcb0a4ba8ed42fec3882b1ef761709a65b2f1429aa501a158403e4c"
+      },
+      "emission": null,
+      "checkedGenerator": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state10/attempt.json",
+        "sha256": "34490671b8b88cc87617a9943f9892c1b209b77ca61ee0b6b2e0a13ad62852bf"
+      },
+      "strictExact": true,
+      "diagnosticDerivation": null,
+      "productionQualified": false,
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-04-full-latency/preparation/prepare-baseline/stage/project/src/runtime.mjs",
+        "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+      },
+      "base": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      "directRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-04-full-latency/preparation/prepare-baseline/stage/project/src/runtime/js/direct.mjs",
+        "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+      },
+      "driver": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-04-full-latency/preparation/prepare-baseline/stage/project/tools/typed-driver.mjs",
+        "sha256": "a11ceb95443776cceb627964e3bb3eafe04863100af5c18475a4028bcdc96581"
+      }
+    },
+    "candidate": {
+      "kind": "checked",
+      "role": "candidate",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-04-full-latency/preparation/prepare-candidate/stage/project/dist/api.mjs",
+        "sha256": "1ed7deccc250732402fb3aebda4c0852adacdf983a8bcfe12b12658dfda23094"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-04/snapshot/build/typed/snapshots/795e8193d46818b03803b025883e8267364588685b49209c52cb0b6ca1fd518c/compiler.bend",
+        "sha256": "d4adb488ee9035f5a988b9aab81045b3784ac7246884b02179178b43b6ed9514"
+      },
+      "emission": null,
+      "checkedGenerator": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-04/attempt.json",
+        "sha256": "bbec9b728120e3a1b3bac4ffffcdc02ca736c9edfd813fedbfb6105a09751657"
+      },
+      "strictExact": true,
+      "diagnosticDerivation": null,
+      "productionQualified": false,
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-04-full-latency/preparation/prepare-candidate/stage/project/src/runtime.mjs",
+        "sha256": "913b6a850c60377dbb13ef98db2811b6c8383ee9fa6a6fc16fcad9c68f8afc54"
+      },
+      "base": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+        "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+      },
+      "directRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-04-full-latency/preparation/prepare-candidate/stage/project/src/runtime/js/direct.mjs",
+        "sha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575"
+      },
+      "driver": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-04-full-latency/preparation/prepare-candidate/stage/project/tools/typed-driver.mjs",
+        "sha256": "e093483d5103a8e833b6ca710246b1ec3c579b7fac5060c8e42f626c5e25ec85"
+      }
+    },
+    "typescript_head": null
+  },
+  "aggregate": {
+    "baseline/candidate": {
+      "firstRequestMs": {
+        "geometricMean": 0.9965195469148832,
+        "minimum": 0.903032408996637,
+        "maximum": 1.0677381709117224,
+        "belowOne": 11,
+        "sources": 23
+      },
+      "importApiAndFirstMs": {
+        "geometricMean": 0.994633623177744,
+        "minimum": 0.9101296805084375,
+        "maximum": 1.0676518107088313,
+        "belowOne": 14,
+        "sources": 23
+      }
+    },
+    "baseline/typescript_head": {
+      "firstRequestMs": {
+        "geometricMean": 1.391309080220347,
+        "minimum": 0.7656603156695558,
+        "maximum": 2.2405433104102084,
+        "belowOne": 5,
+        "sources": 23
+      },
+      "importApiAndFirstMs": {
+        "geometricMean": 0.9762569680537541,
+        "minimum": 0.5489112269551462,
+        "maximum": 1.6531223685274947,
+        "belowOne": 10,
+        "sources": 23
+      }
+    },
+    "candidate/baseline": {
+      "firstRequestMs": {
+        "geometricMean": 1.0034926089467004,
+        "minimum": 0.9365591932955979,
+        "maximum": 1.1073799678032643,
+        "belowOne": 12,
+        "sources": 23
+      },
+      "importApiAndFirstMs": {
+        "geometricMean": 1.0053953301971745,
+        "minimum": 0.9366349496809112,
+        "maximum": 1.098744521155883,
+        "belowOne": 9,
+        "sources": 23
+      }
+    },
+    "candidate/typescript_head": {
+      "firstRequestMs": {
+        "geometricMean": 1.3961683787615502,
+        "minimum": 0.7716770678099347,
+        "maximum": 2.264660541873208,
+        "belowOne": 5,
+        "sources": 23
+      },
+      "importApiAndFirstMs": {
+        "geometricMean": 0.9815241967536966,
+        "minimum": 0.5571631284214783,
+        "maximum": 1.671448551530026,
+        "belowOne": 10,
+        "sources": 23
+      }
+    },
+    "typescript_head/baseline": {
+      "firstRequestMs": {
+        "geometricMean": 0.7187475552460465,
+        "minimum": 0.44632031675250927,
+        "maximum": 1.3060622047853145,
+        "belowOne": 18,
+        "sources": 23
+      },
+      "importApiAndFirstMs": {
+        "geometricMean": 1.0243204737309886,
+        "minimum": 0.6049158967528471,
+        "maximum": 1.8217882070787272,
+        "belowOne": 13,
+        "sources": 23
+      }
+    },
+    "typescript_head/candidate": {
+      "firstRequestMs": {
+        "geometricMean": 0.7162459880999702,
+        "minimum": 0.44156728194365613,
+        "maximum": 1.2958788613973709,
+        "belowOne": 18,
+        "sources": 23
+      },
+      "importApiAndFirstMs": {
+        "geometricMean": 1.0188235840821964,
+        "minimum": 0.5982834464660075,
+        "maximum": 1.79480649201095,
+        "belowOne": 13,
+        "sources": 23
+      }
+    }
+  },
+  "sources": [
+    {
+      "case": "mandelbrot",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 591.37014,
+            "samples": [
+              629.987467,
+              591.37014,
+              581.498024
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.827668999999986,
+            "samples": [
+              4.827668999999986,
+              4.870781999999991,
+              4.823581999999988
+            ]
+          },
+          "apiLoadMs": {
+            "median": 49.227643,
+            "samples": [
+              49.227643,
+              42.549364,
+              49.300208
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 638.7902859999999,
+            "samples": [
+              684.042779,
+              638.7902859999999,
+              635.621814
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 581.466762,
+            "samples": [
+              631.300661,
+              579.6310100000001,
+              581.466762
+            ]
+          },
+          "hostImportMs": {
+            "median": 5.018112000000002,
+            "samples": [
+              7.654851999999977,
+              4.947466999999989,
+              5.018112000000002
+            ]
+          },
+          "apiLoadMs": {
+            "median": 44.19068999999999,
+            "samples": [
+              48.51535899999999,
+              44.082843,
+              44.19068999999999
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 630.675564,
+            "samples": [
+              687.470872,
+              628.66132,
+              630.675564
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 374.472791,
+            "samples": [
+              372.496989,
+              374.472791,
+              404.607348
+            ]
+          },
+          "hostImportMs": {
+            "median": 220.54729599999996,
+            "samples": [
+              212.84946100000002,
+              220.54729599999996,
+              236.75232499999998
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 595.0200869999999,
+            "samples": [
+              585.34645,
+              595.0200869999999,
+              641.3596729999999
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 1.01703171814316,
+          "importApiAndFirstMs": 1.0128667138275234
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.5792072327091984,
+          "importApiAndFirstMs": 1.073560876273409
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 0.9832535034656975,
+          "importApiAndFirstMs": 0.987296735442217
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.5527610442596884,
+          "importApiAndFirstMs": 1.0599231484432226
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.633229116032135,
+          "importApiAndFirstMs": 0.9314795482033988
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.6440140958564369,
+          "importApiAndFirstMs": 0.9434646289863228
+        }
+      }
+    },
+    {
+      "case": "editdist",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 503.413999,
+            "samples": [
+              527.528686,
+              503.413999,
+              502.22634199999993
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.8490480000000105,
+            "samples": [
+              4.88352900000001,
+              4.8490480000000105,
+              4.79280399999999
+            ]
+          },
+          "apiLoadMs": {
+            "median": 42.99657099999999,
+            "samples": [
+              42.99657099999999,
+              44.928717000000006,
+              42.38914799999998
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 553.191764,
+            "samples": [
+              575.408786,
+              553.191764,
+              549.4082939999998
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 507.11686100000003,
+            "samples": [
+              506.100335,
+              514.222538,
+              507.11686100000003
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.97454399999998,
+            "samples": [
+              4.950315999999987,
+              5.0252100000000155,
+              4.97454399999998
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.56317799999999,
+            "samples": [
+              43.56317799999999,
+              44.912012000000004,
+              43.422416
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 555.513821,
+            "samples": [
+              554.6138289999999,
+              564.15976,
+              555.513821
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 353.24414,
+            "samples": [
+              352.15942,
+              353.24414,
+              353.499907
+            ]
+          },
+          "hostImportMs": {
+            "median": 213.605877,
+            "samples": [
+              214.92134299999998,
+              213.605877,
+              212.441441
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 566.850017,
+            "samples": [
+              567.0807629999999,
+              566.850017,
+              565.9413480000001
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 0.9926982076819567,
+          "importApiAndFirstMs": 0.9958199833879561
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.4251163487099885,
+          "importApiAndFirstMs": 0.9759049967533123
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 1.0073555006562303,
+          "importApiAndFirstMs": 1.0041975624929946
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.4355987929481293,
+          "importApiAndFirstMs": 0.9800014189644102
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.701697093647966,
+          "importApiAndFirstMs": 1.0246899066270263
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.6965734471999739,
+          "importApiAndFirstMs": 1.0204066857951315
+        }
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 428.474732,
+            "samples": [
+              429.182002,
+              424.91487000000006,
+              428.474732
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.859499,
+            "samples": [
+              5.02701399999998,
+              4.818669,
+              4.859499
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.064054,
+            "samples": [
+              43.50157999999999,
+              43.064054,
+              42.531262999999996
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 475.865494,
+            "samples": [
+              477.710596,
+              472.79759300000006,
+              475.865494
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 433.94865400000003,
+            "samples": [
+              433.94865400000003,
+              425.930665,
+              455.24201800000003
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.944869000000011,
+            "samples": [
+              5.004592000000002,
+              4.922533000000016,
+              4.944869000000011
+            ]
+          },
+          "apiLoadMs": {
+            "median": 44.913227000000006,
+            "samples": [
+              46.923394,
+              44.051349000000016,
+              44.913227000000006
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 485.87664000000007,
+            "samples": [
+              485.87664000000007,
+              474.904547,
+              505.1001140000001
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 333.19172,
+            "samples": [
+              339.71491,
+              333.19172,
+              331.352188
+            ]
+          },
+          "hostImportMs": {
+            "median": 214.14467399999998,
+            "samples": [
+              217.947519,
+              214.14467399999998,
+              213.77708199999998
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 547.3363939999999,
+            "samples": [
+              557.662429,
+              547.3363939999999,
+              545.12927
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 0.9873857841255108,
+          "importApiAndFirstMs": 0.9793957042264884
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.2859705277189963,
+          "importApiAndFirstMs": 0.8694205231307898
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 1.01277536711313,
+          "importApiAndFirstMs": 1.0210377640871773
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.302399273307272,
+          "importApiAndFirstMs": 0.8877111869889656
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.7776227980696887,
+          "importApiAndFirstMs": 1.1501913900065213
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.7678136962259133,
+          "importApiAndFirstMs": 1.1264925064106803
+        }
+      }
+    },
+    {
+      "case": "lexer",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 533.069704,
+            "samples": [
+              583.818951,
+              527.768507,
+              533.069704
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.856939000000011,
+            "samples": [
+              4.856939000000011,
+              5.065298999999982,
+              4.800466999999998
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.85094699999999,
+            "samples": [
+              47.170162000000005,
+              43.85094699999999,
+              42.446256000000005
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 580.316427,
+            "samples": [
+              635.846052,
+              576.684753,
+              580.316427
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 535.0543379999999,
+            "samples": [
+              574.8131950000001,
+              533.014164,
+              535.0543379999999
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.938873999999998,
+            "samples": [
+              5.129222999999996,
+              4.906018000000017,
+              4.938873999999998
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.800657,
+            "samples": [
+              48.85095799999999,
+              43.57047,
+              43.800657
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 583.7938689999999,
+            "samples": [
+              628.7933760000001,
+              581.4906520000001,
+              583.7938689999999
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 353.78303800000003,
+            "samples": [
+              354.33046100000007,
+              353.78303800000003,
+              349.88188
+            ]
+          },
+          "hostImportMs": {
+            "median": 213.95372,
+            "samples": [
+              213.95372,
+              216.09704800000003,
+              212.274919
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 568.2841810000001,
+            "samples": [
+              568.2841810000001,
+              569.8800860000001,
+              562.1567990000001
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 0.996290780470226,
+          "importApiAndFirstMs": 0.9940433735524552
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.5067701012845052,
+          "importApiAndFirstMs": 1.0211729384738935
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 1.0037230290618804,
+          "importApiAndFirstMs": 1.0059923204620915
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.5123798501611596,
+          "importApiAndFirstMs": 1.0272921339684444
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.6636712522683526,
+          "importApiAndFirstMs": 0.9792660599628349
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.6612095498980892,
+          "importApiAndFirstMs": 0.9734329378508774
+        }
+      }
+    },
+    {
+      "case": "symreg",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 498.2148679999999,
+            "samples": [
+              494.831229,
+              500.321826,
+              498.2148679999999
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.8249390000000005,
+            "samples": [
+              4.823028999999991,
+              5.2981049999999925,
+              4.8249390000000005
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.37258499999999,
+            "samples": [
+              43.37258499999999,
+              45.51632000000001,
+              42.80271299999998
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 545.8425199999999,
+            "samples": [
+              543.026843,
+              551.136251,
+              545.8425199999999
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 503.41415099999995,
+            "samples": [
+              511.429029,
+              503.41415099999995,
+              502.42157100000003
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.956028000000003,
+            "samples": [
+              4.942813000000001,
+              4.979354999999998,
+              4.956028000000003
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.500686,
+            "samples": [
+              43.500686,
+              43.372265,
+              43.57378600000001
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 551.765771,
+            "samples": [
+              559.872528,
+              551.765771,
+              550.9513850000001
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 342.90765100000004,
+            "samples": [
+              342.90765100000004,
+              338.695427,
+              350.10780800000003
+            ]
+          },
+          "hostImportMs": {
+            "median": 212.36436999999998,
+            "samples": [
+              212.309528,
+              212.36436999999998,
+              212.733278
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 555.217179,
+            "samples": [
+              555.217179,
+              551.059797,
+              562.841086
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 0.9896719569966955,
+          "importApiAndFirstMs": 0.9892649176311445
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.452912661899165,
+          "importApiAndFirstMs": 0.9831153297221733
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 1.010435824649055,
+          "importApiAndFirstMs": 1.0108515749194475
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.4680750036691361,
+          "importApiAndFirstMs": 0.9937836793771109
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.68827261694647,
+          "importApiAndFirstMs": 1.017174658727576
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.68116410776065,
+          "importApiAndFirstMs": 1.006255204982623
+        }
+      }
+    },
+    {
+      "case": "test-morning-program",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 791.251816,
+            "samples": [
+              791.251816,
+              793.471996,
+              775.779391
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.800405000000012,
+            "samples": [
+              4.800405000000012,
+              4.797916999999984,
+              4.827967000000001
+            ]
+          },
+          "apiLoadMs": {
+            "median": 42.928649999999976,
+            "samples": [
+              42.928649999999976,
+              42.943228000000005,
+              42.766728
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 838.980871,
+            "samples": [
+              838.980871,
+              841.213141,
+              823.374086
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 785.92537,
+            "samples": [
+              785.92537,
+              782.556394,
+              787.474634
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.954059000000001,
+            "samples": [
+              5.298614999999984,
+              4.934449999999998,
+              4.954059000000001
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.78154599999999,
+            "samples": [
+              47.316383,
+              43.78154599999999,
+              43.753062
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 836.1817550000001,
+            "samples": [
+              838.5403680000001,
+              831.27239,
+              836.1817550000001
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 462.389034,
+            "samples": [
+              464.08295999999996,
+              462.389034,
+              462.31232
+            ]
+          },
+          "hostImportMs": {
+            "median": 213.07892999999999,
+            "samples": [
+              213.07892999999999,
+              211.18408900000003,
+              214.562596
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 676.874916,
+            "samples": [
+              677.16189,
+              673.573123,
+              676.874916
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 1.0067772923528349,
+          "importApiAndFirstMs": 1.003347497100077
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.71122530557245,
+          "importApiAndFirstMs": 1.2394917453256606
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 0.9932683301418168,
+          "importApiAndFirstMs": 0.996663671250736
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.6997059017623677,
+          "importApiAndFirstMs": 1.2353563933812552
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.5843765848620813,
+          "importApiAndFirstMs": 0.8067822990924903
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.5883370758218429,
+          "importApiAndFirstMs": 0.8094830004990959
+        }
+      }
+    },
+    {
+      "case": "test-evening-program",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 1038.199712,
+            "samples": [
+              1111.911736,
+              1019.321608,
+              1038.199712
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.947458000000012,
+            "samples": [
+              7.130261999999988,
+              4.852558999999985,
+              4.947458000000012
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.429338,
+            "samples": [
+              47.161348000000004,
+              43.274268000000006,
+              43.429338
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 1086.576508,
+            "samples": [
+              1166.203346,
+              1067.448435,
+              1086.576508
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 1115.376002,
+            "samples": [
+              1115.376002,
+              1042.154645,
+              1117.496868
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.92103800000001,
+            "samples": [
+              4.92103800000001,
+              4.920348999999987,
+              5.205075999999991
+            ]
+          },
+          "apiLoadMs": {
+            "median": 48.535690999999986,
+            "samples": [
+              48.535690999999986,
+              44.30452,
+              48.96482
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 1168.832731,
+            "samples": [
+              1168.832731,
+              1091.379514,
+              1171.666764
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 565.161722,
+            "samples": [
+              565.161722,
+              595.201159,
+              557.035932
+            ]
+          },
+          "hostImportMs": {
+            "median": 215.553998,
+            "samples": [
+              212.53439899999998,
+              218.383935,
+              215.553998
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 777.6961210000001,
+            "samples": [
+              777.6961210000001,
+              813.585094,
+              772.58993
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 0.9308069298051834,
+          "importApiAndFirstMs": 0.9296253254906498
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.836995804185054,
+          "importApiAndFirstMs": 1.3971736243236321
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 1.0743366513282175,
+          "importApiAndFirstMs": 1.07570219160306
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.973551920772157,
+          "importApiAndFirstMs": 1.5029427297349216
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.5443670571929421,
+          "importApiAndFirstMs": 0.7157306598055035
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.5067006291928451,
+          "importApiAndFirstMs": 0.6653613475853287
+        }
+      }
+    },
+    {
+      "case": "test-rle-roundtrip",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 468.287097,
+            "samples": [
+              485.52730899999995,
+              468.287097,
+              428.60791699999993
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.849794999999972,
+            "samples": [
+              4.81254899999999,
+              4.849794999999972,
+              5.007921999999979
+            ]
+          },
+          "apiLoadMs": {
+            "median": 47.21232599999999,
+            "samples": [
+              47.21232599999999,
+              50.02156400000001,
+              42.78041399999998
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 523.158456,
+            "samples": [
+              537.5521839999999,
+              523.158456,
+              476.3962529999999
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 462.65711999999996,
+            "samples": [
+              462.65711999999996,
+              492.16994300000005,
+              424.822177
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.9915340000000015,
+            "samples": [
+              4.9226170000000025,
+              5.054637999999983,
+              4.9915340000000015
+            ]
+          },
+          "apiLoadMs": {
+            "median": 47.96348499999999,
+            "samples": [
+              47.96348499999999,
+              48.35957500000001,
+              43.975989
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 515.543222,
+            "samples": [
+              515.543222,
+              545.584156,
+              473.78970000000004
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 367.682026,
+            "samples": [
+              367.682026,
+              374.03615199999996,
+              331.53142099999997
+            ]
+          },
+          "hostImportMs": {
+            "median": 219.37861400000003,
+            "samples": [
+              241.19133500000004,
+              219.37861400000003,
+              211.77811499999999
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 593.414766,
+            "samples": [
+              608.873361,
+              593.414766,
+              543.309536
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 1.0121687892753062,
+          "importApiAndFirstMs": 1.0147712813883139
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.2736197689467692,
+          "importApiAndFirstMs": 0.881606737773694
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 0.9879775098736063,
+          "importApiAndFirstMs": 0.9854437333227393
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.258307687849827,
+          "importApiAndFirstMs": 0.8687738349941903
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.7851636920075122,
+          "importApiAndFirstMs": 1.1342926013987624
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.794718183522173,
+          "importApiAndFirstMs": 1.1510475565907061
+        }
+      }
+    },
+    {
+      "case": "test-map-set-ops",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 1161.801183,
+            "samples": [
+              1161.801183,
+              1160.277987,
+              1162.355626
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.836047000000008,
+            "samples": [
+              4.836047000000008,
+              4.8695299999999975,
+              4.834481000000011
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.06136599999999,
+            "samples": [
+              43.06136599999999,
+              42.94256300000001,
+              43.452079
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 1209.698596,
+            "samples": [
+              1209.698596,
+              1208.09008,
+              1210.642186
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 1174.306823,
+            "samples": [
+              1170.727421,
+              1174.306823,
+              1186.752964
+            ]
+          },
+          "hostImportMs": {
+            "median": 5.095779999999991,
+            "samples": [
+              4.97246100000001,
+              5.226602999999983,
+              5.095779999999991
+            ]
+          },
+          "apiLoadMs": {
+            "median": 44.065563,
+            "samples": [
+              44.065563,
+              43.575646000000006,
+              45.706534999999974
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 1223.109072,
+            "samples": [
+              1219.765445,
+              1223.109072,
+              1237.555279
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 518.535472,
+            "samples": [
+              516.8700530000001,
+              518.535472,
+              527.360692
+            ]
+          },
+          "hostImportMs": {
+            "median": 213.23043900000002,
+            "samples": [
+              213.846312,
+              213.23043900000002,
+              211.96896400000003
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 731.7659110000001,
+            "samples": [
+              730.7163650000001,
+              731.7659110000001,
+              739.329656
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 0.9893506196548771,
+          "importApiAndFirstMs": 0.9890357480726788
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 2.2405433104102084,
+          "importApiAndFirstMs": 1.6531223685274947
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 1.0107640103857596,
+          "importApiAndFirstMs": 1.011085799425033
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 2.264660541873208,
+          "importApiAndFirstMs": 1.671448551530026
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.44632031675250927,
+          "importApiAndFirstMs": 0.6049158967528471
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.44156728194365613,
+          "importApiAndFirstMs": 0.5982834464660075
+        }
+      }
+    },
+    {
+      "case": "raytrace",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 810.6245839999999,
+            "samples": [
+              811.055135,
+              810.6245839999999,
+              809.555327
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.940428999999995,
+            "samples": [
+              4.940428999999995,
+              4.843099000000024,
+              5.508178000000015
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.02495000000002,
+            "samples": [
+              42.737672,
+              43.02495000000002,
+              43.073634
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 858.492633,
+            "samples": [
+              858.7332359999999,
+              858.492633,
+              858.137139
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 823.12593,
+            "samples": [
+              822.59603,
+              823.12593,
+              857.8759020000001
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.962376000000006,
+            "samples": [
+              4.962376000000006,
+              5.021738999999997,
+              4.948484000000008
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.834317,
+            "samples": [
+              43.980819,
+              43.834317,
+              43.662454
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 871.981986,
+            "samples": [
+              871.539225,
+              871.981986,
+              906.4868400000001
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 458.95691899999997,
+            "samples": [
+              478.25625899999994,
+              458.95691899999997,
+              452.99828899999994
+            ]
+          },
+          "hostImportMs": {
+            "median": 213.548205,
+            "samples": [
+              213.548205,
+              215.46821900000003,
+              211.36456099999998
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 674.4251380000001,
+            "samples": [
+              691.8044639999999,
+              674.4251380000001,
+              664.36285
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 0.9848123530745774,
+          "importApiAndFirstMs": 0.98453023890794
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.7662324075345293,
+          "importApiAndFirstMs": 1.2729250210717975
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 1.0154218688240526,
+          "importApiAndFirstMs": 1.0157128348939484
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.7934710120363173,
+          "importApiAndFirstMs": 1.2929262817602745
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.5661769061274855,
+          "importApiAndFirstMs": 0.7855922253441168
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.5575780111798931,
+          "importApiAndFirstMs": 0.7734393013022635
+        }
+      }
+    },
+    {
+      "case": "local-row",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 526.123797,
+            "samples": [
+              527.799137,
+              523.4231560000001,
+              526.123797
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.989394999999973,
+            "samples": [
+              4.989394999999973,
+              4.888276999999988,
+              5.357255000000009
+            ]
+          },
+          "apiLoadMs": {
+            "median": 42.84808700000002,
+            "samples": [
+              42.84808700000002,
+              43.15216800000002,
+              42.462151999999975
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 573.9432039999999,
+            "samples": [
+              575.636619,
+              571.463601,
+              573.9432039999999
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 526.1132660000001,
+            "samples": [
+              530.591275,
+              526.1132660000001,
+              525.5317789999999
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.9965310000000045,
+            "samples": [
+              4.926453000000009,
+              5.045744000000013,
+              4.9965310000000045
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.684320000000014,
+            "samples": [
+              44.113405,
+              43.684320000000014,
+              43.672117000000014
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 574.8433300000002,
+            "samples": [
+              579.631133,
+              574.8433300000002,
+              574.200427
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 355.84066799999994,
+            "samples": [
+              355.84066799999994,
+              352.153671,
+              357.88752999999997
+            ]
+          },
+          "hostImportMs": {
+            "median": 214.14766300000002,
+            "samples": [
+              212.31505800000002,
+              214.14766300000002,
+              215.13160799999997
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 568.155726,
+            "samples": [
+              568.155726,
+              566.301334,
+              573.0191379999999
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 1.0000200166022803,
+          "importApiAndFirstMs": 0.9984341368282028
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.4785375712030757,
+          "importApiAndFirstMs": 1.0101864290636402
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 0.999979983798376,
+          "importApiAndFirstMs": 1.0015683189446742
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.478507976496942,
+          "importApiAndFirstMs": 1.0117707235779934
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.6763439898157657,
+          "importApiAndFirstMs": 0.9899162879538165
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.6763575279244145,
+          "importApiAndFirstMs": 0.9883662144953475
+        }
+      }
+    },
+    {
+      "case": "local-fold",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 290.944571,
+            "samples": [
+              290.944571,
+              287.86647200000004,
+              295.10338
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.88380699999999,
+            "samples": [
+              4.957317999999987,
+              4.813786999999991,
+              4.88380699999999
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.544775000000016,
+            "samples": [
+              43.99427499999999,
+              43.544775000000016,
+              43.492496999999986
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 339.896164,
+            "samples": [
+              339.896164,
+              336.22503400000005,
+              343.479684
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 290.865953,
+            "samples": [
+              289.44273699999997,
+              290.865953,
+              311.61421999999993
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.934560000000005,
+            "samples": [
+              4.921865999999994,
+              4.934560000000005,
+              5.269195000000025
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.98665399999999,
+            "samples": [
+              44.10399100000001,
+              43.98665399999999,
+              43.67471800000001
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 339.78716699999995,
+            "samples": [
+              338.46859399999994,
+              339.78716699999995,
+              360.558133
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 319.52148000000005,
+            "samples": [
+              319.79049200000003,
+              319.52148000000005,
+              318.69875200000007
+            ]
+          },
+          "hostImportMs": {
+            "median": 214.63190199999997,
+            "samples": [
+              214.63190199999997,
+              213.011555,
+              220.098025
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 534.4223939999999,
+            "samples": [
+              534.4223939999999,
+              532.533035,
+              538.796777
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 1.0002702894552942,
+          "importApiAndFirstMs": 1.0003207802135743
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 0.9105634181464105,
+          "importApiAndFirstMs": 0.6360065891999279
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 0.9997297835813543,
+          "importApiAndFirstMs": 0.9996793226533734
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 0.9103173689606093,
+          "importApiAndFirstMs": 0.6358026362944663
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 1.098221145360365,
+          "importApiAndFirstMs": 1.572310754292596
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 1.0985179829555372,
+          "importApiAndFirstMs": 1.5728151204721632
+        }
+      }
+    },
+    {
+      "case": "scalar-region",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 317.55707700000005,
+            "samples": [
+              317.55707700000005,
+              345.09322,
+              312.11556799999994
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.861048000000011,
+            "samples": [
+              4.861048000000011,
+              4.835295000000002,
+              4.975369999999998
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.087654999999984,
+            "samples": [
+              43.087654999999984,
+              47.708786,
+              42.90474600000002
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 365.5057800000001,
+            "samples": [
+              365.5057800000001,
+              397.637301,
+              359.995684
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 314.113527,
+            "samples": [
+              310.103375,
+              343.395485,
+              314.113527
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.972155000000015,
+            "samples": [
+              4.972155000000015,
+              4.936906999999991,
+              5.053991999999994
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.902172999999976,
+            "samples": [
+              43.611796,
+              48.57886300000001,
+              43.902172999999976
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 363.0696919999999,
+            "samples": [
+              358.68732600000004,
+              396.911255,
+              363.0696919999999
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 353.91554199999996,
+            "samples": [
+              361.95768999999996,
+              353.91554199999996,
+              324.91712200000006
+            ]
+          },
+          "hostImportMs": {
+            "median": 232.03592199999997,
+            "samples": [
+              233.97443299999998,
+              232.03592199999997,
+              228.10627399999998
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 585.951464,
+            "samples": [
+              595.9321229999999,
+              585.951464,
+              553.023396
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 1.010962756150263,
+          "importApiAndFirstMs": 1.0067096980378085
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 0.8972679617443873,
+          "importApiAndFirstMs": 0.6237816653018894
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 0.9891561226330343,
+          "importApiAndFirstMs": 0.99333502195232
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 0.8875380980019238,
+          "importApiAndFirstMs": 0.619624174196107
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 1.1144942677501717,
+          "importApiAndFirstMs": 1.6031250285563197
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 1.1267121966383828,
+          "importApiAndFirstMs": 1.6138815134147857
+        }
+      }
+    },
+    {
+      "case": "mandelbrot-grid",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 621.370894,
+            "samples": [
+              621.370894,
+              619.149091,
+              628.181345
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.835368999999986,
+            "samples": [
+              4.814561000000026,
+              4.835368999999986,
+              4.9299159999999915
+            ]
+          },
+          "apiLoadMs": {
+            "median": 42.886945,
+            "samples": [
+              42.817025,
+              43.49688499999999,
+              42.886945
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 669.0024800000001,
+            "samples": [
+              669.0024800000001,
+              667.4813449999999,
+              675.998206
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 622.364685,
+            "samples": [
+              617.8584960000001,
+              622.364685,
+              679.0299620000001
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.974565000000013,
+            "samples": [
+              4.956107000000003,
+              4.974565000000013,
+              5.14876000000001
+            ]
+          },
+          "apiLoadMs": {
+            "median": 44.102373,
+            "samples": [
+              43.757014,
+              44.102373,
+              49.383331
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 671.441623,
+            "samples": [
+              666.5716170000001,
+              671.441623,
+              733.5620530000001
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 379.531373,
+            "samples": [
+              379.531373,
+              377.878661,
+              379.69181800000007
+            ]
+          },
+          "hostImportMs": {
+            "median": 214.97341600000004,
+            "samples": [
+              215.237905,
+              213.03182400000003,
+              214.97341600000004
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 594.665234,
+            "samples": [
+              594.769278,
+              590.9104850000001,
+              594.665234
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 0.9984032014927068,
+          "importApiAndFirstMs": 0.9963673044439785
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.6372056125120389,
+          "importApiAndFirstMs": 1.1250068807620928
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 1.0015993523507394,
+          "importApiAndFirstMs": 1.0036459401465896
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.6398240811570537,
+          "importApiAndFirstMs": 1.1291085885138528
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.6107968311113072,
+          "importApiAndFirstMs": 0.8888834522706104
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.6098215116431293,
+          "importApiAndFirstMs": 0.8856544093037259
+        }
+      }
+    },
+    {
+      "case": "raytrace-active",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 843.088676,
+            "samples": [
+              843.088676,
+              905.98983,
+              830.9534059999999
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.85162600000001,
+            "samples": [
+              4.810293999999999,
+              4.85162600000001,
+              4.873980999999986
+            ]
+          },
+          "apiLoadMs": {
+            "median": 42.651985000000025,
+            "samples": [
+              42.43442300000001,
+              49.42761900000002,
+              42.651985000000025
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 890.333393,
+            "samples": [
+              890.333393,
+              960.269075,
+              878.4793719999999
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 855.477523,
+            "samples": [
+              848.768177,
+              858.1303800000001,
+              855.477523
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.948350000000005,
+            "samples": [
+              4.996394000000009,
+              4.948350000000005,
+              4.933658000000008
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.81365699999998,
+            "samples": [
+              44.411595000000005,
+              43.81365699999998,
+              43.64218299999999
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 904.053364,
+            "samples": [
+              898.1761660000001,
+              906.8923870000001,
+              904.053364
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 500.17983,
+            "samples": [
+              500.17983,
+              536.233606,
+              495.98631500000005
+            ]
+          },
+          "hostImportMs": {
+            "median": 233.184259,
+            "samples": [
+              236.88289499999996,
+              233.184259,
+              230.86290499999998
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 737.062725,
+            "samples": [
+              737.062725,
+              769.417865,
+              726.8492200000001
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 0.9855182086414677,
+          "importApiAndFirstMs": 0.9848239367869882
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.6855711194911638,
+          "importApiAndFirstMs": 1.2079479300761005
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 1.0146945954235542,
+          "importApiAndFirstMs": 1.0154099252121391
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.710339905149714,
+          "importApiAndFirstMs": 1.2265623173387312
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.5932707249409195,
+          "importApiAndFirstMs": 0.8278502533937868
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.5846791020831998,
+          "importApiAndFirstMs": 0.8152867456173749
+        }
+      }
+    },
+    {
+      "case": "closures",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 299.048097,
+            "samples": [
+              299.048097,
+              302.0909,
+              297.333793
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.852090000000004,
+            "samples": [
+              4.852090000000004,
+              4.792564999999996,
+              4.870273999999995
+            ]
+          },
+          "apiLoadMs": {
+            "median": 42.768159,
+            "samples": [
+              42.850919000000005,
+              42.748199,
+              42.768159
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 346.751106,
+            "samples": [
+              346.751106,
+              349.631664,
+              344.972226
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 296.790703,
+            "samples": [
+              301.165388,
+              294.51207500000004,
+              296.790703
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.983907999999985,
+            "samples": [
+              5.06281899999999,
+              4.983292000000006,
+              4.983907999999985
+            ]
+          },
+          "apiLoadMs": {
+            "median": 44.569631999999984,
+            "samples": [
+              45.27349699999999,
+              43.730717,
+              44.569631999999984
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 346.344243,
+            "samples": [
+              351.501704,
+              343.226084,
+              346.344243
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 318.097576,
+            "samples": [
+              317.155676,
+              349.94488,
+              318.097576
+            ]
+          },
+          "hostImportMs": {
+            "median": 213.954109,
+            "samples": [
+              210.668771,
+              238.8259,
+              213.954109
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 532.051685,
+            "samples": [
+              527.824447,
+              588.7707800000001,
+              532.051685
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 1.0076060131843145,
+          "importApiAndFirstMs": 1.001174735853773
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 0.9401143534649254,
+          "importApiAndFirstMs": 0.6517244767301131
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 0.9924514015549813,
+          "importApiAndFirstMs": 0.9988266425313147
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 0.9330178077182204,
+          "importApiAndFirstMs": 0.6509597709478169
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 1.0637003852928715,
+          "importApiAndFirstMs": 1.5343907367378375
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 1.0717909044475695,
+          "importApiAndFirstMs": 1.5361932405499807
+        }
+      }
+    },
+    {
+      "case": "list-pipeline",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 798.012157,
+            "samples": [
+              802.68488,
+              765.489818,
+              798.012157
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.828926999999993,
+            "samples": [
+              4.825153,
+              4.828926999999993,
+              4.847671999999989
+            ]
+          },
+          "apiLoadMs": {
+            "median": 47.66701499999999,
+            "samples": [
+              47.66701499999999,
+              42.985164999999995,
+              48.252365
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 851.112194,
+            "samples": [
+              855.177048,
+              813.30391,
+              851.112194
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 747.385622,
+            "samples": [
+              744.396546,
+              747.385622,
+              816.5209169999999
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.998698000000019,
+            "samples": [
+              4.951344000000006,
+              4.998698000000019,
+              5.198466999999994
+            ]
+          },
+          "apiLoadMs": {
+            "median": 44.79710699999998,
+            "samples": [
+              43.970046999999994,
+              44.79710699999998,
+              50.802122000000026
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 797.181427,
+            "samples": [
+              793.3179369999999,
+              797.181427,
+              872.5215059999999
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 443.187008,
+            "samples": [
+              443.187008,
+              441.99079399999994,
+              455.329341
+            ]
+          },
+          "hostImportMs": {
+            "median": 213.562053,
+            "samples": [
+              213.562053,
+              211.068866,
+              214.49253999999996
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 656.749061,
+            "samples": [
+              656.749061,
+              653.0596599999999,
+              669.821881
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 1.0677381709117224,
+          "importApiAndFirstMs": 1.0676518107088313
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.800621729868038,
+          "importApiAndFirstMs": 1.2959473329189886
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 0.9365591932955979,
+          "importApiAndFirstMs": 0.9366349496809112
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.6863888347557336,
+          "importApiAndFirstMs": 1.2138295649576878
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.5553637298786164,
+          "importApiAndFirstMs": 0.7716362961661433
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.5929830531313057,
+          "importApiAndFirstMs": 0.8238388888104389
+        }
+      }
+    },
+    {
+      "case": "bst",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 429.566784,
+            "samples": [
+              425.86812699999996,
+              452.167406,
+              429.566784
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.846565999999996,
+            "samples": [
+              4.782744000000008,
+              4.846565999999996,
+              4.914798999999988
+            ]
+          },
+          "apiLoadMs": {
+            "median": 47.739138999999994,
+            "samples": [
+              47.739138999999994,
+              49.80006400000002,
+              43.866974
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 478.39000999999996,
+            "samples": [
+              478.39000999999996,
+              506.81403600000004,
+              478.34855699999997
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 419.236896,
+            "samples": [
+              413.683983,
+              423.94821,
+              419.236896
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.994533999999987,
+            "samples": [
+              5.158714000000003,
+              4.994533999999987,
+              4.942639000000014
+            ]
+          },
+          "apiLoadMs": {
+            "median": 44.335785999999985,
+            "samples": [
+              44.335785999999985,
+              44.20384999999999,
+              45.34755100000001
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 469.52708600000005,
+            "samples": [
+              463.178483,
+              473.146594,
+              469.52708600000005
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 343.89443,
+            "samples": [
+              343.89443,
+              330.17790599999995,
+              361.252316
+            ]
+          },
+          "hostImportMs": {
+            "median": 214.614692,
+            "samples": [
+              214.614692,
+              213.152617,
+              232.67738000000003
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 558.5091219999999,
+            "samples": [
+              558.5091219999999,
+              543.330523,
+              593.929696
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 1.0246397397236715,
+          "importApiAndFirstMs": 1.0188762784177268
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.2491239942443964,
+          "importApiAndFirstMs": 0.8565482481054266
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 0.9759527775778865,
+          "importApiAndFirstMs": 0.9814734341965045
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.2190860317220027,
+          "importApiAndFirstMs": 0.8406793506230327
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.8005610368608016,
+          "importApiAndFirstMs": 1.1674765574640658
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.8202866524419644,
+          "importApiAndFirstMs": 1.1895141700089265
+        }
+      }
+    },
+    {
+      "case": "unicode-text",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 573.341315,
+            "samples": [
+              573.341315,
+              579.122787,
+              567.4191969999999
+            ]
+          },
+          "hostImportMs": {
+            "median": 5.0908509999999865,
+            "samples": [
+              4.863404000000003,
+              5.722121999999985,
+              5.0908509999999865
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.742530000000016,
+            "samples": [
+              42.80962100000002,
+              45.98322300000001,
+              43.742530000000016
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 621.0143400000001,
+            "samples": [
+              621.0143400000001,
+              630.828132,
+              616.252578
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 573.1383390000001,
+            "samples": [
+              589.631564,
+              572.8134909999999,
+              573.1383390000001
+            ]
+          },
+          "hostImportMs": {
+            "median": 5.045365000000004,
+            "samples": [
+              4.979891000000009,
+              5.045365000000004,
+              5.107365999999985
+            ]
+          },
+          "apiLoadMs": {
+            "median": 44.09938600000001,
+            "samples": [
+              44.09938600000001,
+              45.693995,
+              43.96493000000001
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 623.5528509999999,
+            "samples": [
+              638.7108410000001,
+              623.5528509999999,
+              622.2106350000001
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 350.58314399999995,
+            "samples": [
+              350.58314399999995,
+              350.20813,
+              352.813624
+            ]
+          },
+          "hostImportMs": {
+            "median": 214.023786,
+            "samples": [
+              214.023786,
+              211.21290899999997,
+              214.042169
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 564.6069299999999,
+            "samples": [
+              564.6069299999999,
+              561.421039,
+              566.855793
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 1.000354148355097,
+          "importApiAndFirstMs": 0.9959289561487389
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.6353932720735715,
+          "importApiAndFirstMs": 1.099905628150898
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 0.9996459770215584,
+          "importApiAndFirstMs": 1.0040876849961304
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.6348143052764688,
+          "importApiAndFirstMs": 1.10440169588425
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.6114737152685393,
+          "importApiAndFirstMs": 0.9091689090464479
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.6116902676789868,
+          "importApiAndFirstMs": 0.9054676425495166
+        }
+      }
+    },
+    {
+      "case": "expression",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 299.586589,
+            "samples": [
+              300.767415,
+              299.586589,
+              299.376437
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.8770310000000165,
+            "samples": [
+              4.895285999999999,
+              4.8770310000000165,
+              4.853300000000019
+            ]
+          },
+          "apiLoadMs": {
+            "median": 42.89014300000002,
+            "samples": [
+              44.01665,
+              42.85514600000002,
+              42.89014300000002
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 347.31876600000004,
+            "samples": [
+              349.679351,
+              347.31876600000004,
+              347.1198800000001
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 299.334579,
+            "samples": [
+              299.334579,
+              297.690968,
+              323.31459199999995
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.989488999999992,
+            "samples": [
+              5.0233980000000145,
+              4.989488999999992,
+              4.954386999999997
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.77296900000002,
+            "samples": [
+              43.645555,
+              43.781184999999994,
+              43.77296900000002
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 348.00353200000006,
+            "samples": [
+              348.00353200000006,
+              346.461642,
+              372.04194799999993
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 315.100728,
+            "samples": [
+              312.22351499999996,
+              316.70858300000003,
+              315.100728
+            ]
+          },
+          "hostImportMs": {
+            "median": 212.49727599999997,
+            "samples": [
+              213.35269899999997,
+              211.442275,
+              212.49727599999997
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 527.598004,
+            "samples": [
+              525.5762139999999,
+              528.150858,
+              527.598004
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 1.0008419007280813,
+          "importApiAndFirstMs": 0.9980323015802034
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 0.9507645091826001,
+          "importApiAndFirstMs": 0.6583018953195283
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 0.9991588074725202,
+          "importApiAndFirstMs": 1.0019715778904963
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 0.9499647331820827,
+          "importApiAndFirstMs": 0.6595997887816121
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 1.051785158513888,
+          "importApiAndFirstMs": 1.5190598828742812
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 1.0526706572046258,
+          "importApiAndFirstMs": 1.5160708311431732
+        }
+      }
+    },
+    {
+      "case": "map-churn",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 752.8110330000001,
+            "samples": [
+              710.374432,
+              752.8110330000001,
+              786.6357830000001
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.857635000000016,
+            "samples": [
+              4.828878000000003,
+              4.857635000000016,
+              7.0722100000000125
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.778076,
+            "samples": [
+              42.889846000000006,
+              43.778076,
+              47.62618899999998
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 801.4467440000001,
+            "samples": [
+              758.0931559999999,
+              801.4467440000001,
+              841.334182
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 729.053536,
+            "samples": [
+              729.053536,
+              725.0474529999999,
+              793.2417820000001
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.973546999999996,
+            "samples": [
+              4.9304539999999974,
+              5.079329999999999,
+              4.973546999999996
+            ]
+          },
+          "apiLoadMs": {
+            "median": 43.691344000000015,
+            "samples": [
+              43.691344000000015,
+              43.567533999999995,
+              48.818972
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 777.675334,
+            "samples": [
+              777.675334,
+              773.694317,
+              847.034301
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 464.706991,
+            "samples": [
+              464.706991,
+              450.89732100000003,
+              493.42105699999996
+            ]
+          },
+          "hostImportMs": {
+            "median": 216.521807,
+            "samples": [
+              216.521807,
+              214.283476,
+              233.344926
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 681.228798,
+            "samples": [
+              681.228798,
+              665.180797,
+              726.765983
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 1.0325867660286612,
+          "importApiAndFirstMs": 1.0305672675481823
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.6199692442328677,
+          "importApiAndFirstMs": 1.1764722019282574
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 0.9684416195318964,
+          "importApiAndFirstMs": 0.9703393766610647
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.5688456384767406,
+          "importApiAndFirstMs": 1.1415773030781355
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.6172956700011595,
+          "importApiAndFirstMs": 0.8499988341084331
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.6374113395699929,
+          "importApiAndFirstMs": 0.8759809758862687
+        }
+      }
+    },
+    {
+      "case": "numeric-recurrence",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 259.18764799999997,
+            "samples": [
+              259.18764799999997,
+              258.127329,
+              259.825491
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.8390839999999855,
+            "samples": [
+              4.817649999999986,
+              4.8390839999999855,
+              7.010072000000008
+            ]
+          },
+          "apiLoadMs": {
+            "median": 48.434156,
+            "samples": [
+              49.23384900000002,
+              47.47708,
+              48.434156
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 313.239147,
+            "samples": [
+              313.239147,
+              310.443493,
+              315.269719
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 261.22441,
+            "samples": [
+              261.22441,
+              261.15121899999997,
+              276.89324999999997
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.957699000000019,
+            "samples": [
+              5.890217000000007,
+              4.952623999999986,
+              4.957699000000019
+            ]
+          },
+          "apiLoadMs": {
+            "median": 48.45847900000001,
+            "samples": [
+              50.833511999999985,
+              48.13837699999999,
+              48.45847900000001
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 317.94813899999997,
+            "samples": [
+              317.94813899999997,
+              314.24222,
+              330.309428
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 338.51519099999996,
+            "samples": [
+              338.51519099999996,
+              339.17071300000003,
+              334.56864399999995
+            ]
+          },
+          "hostImportMs": {
+            "median": 236.08674,
+            "samples": [
+              238.24864300000002,
+              229.16359999999997,
+              236.08674
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 570.6553839999999,
+            "samples": [
+              576.763834,
+              568.3343130000001,
+              570.6553839999999
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 0.9922030180870156,
+          "importApiAndFirstMs": 0.9851894336767922
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 0.7656603156695558,
+          "importApiAndFirstMs": 0.5489112269551462
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 1.00785825256611,
+          "importApiAndFirstMs": 1.0150332167773397
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 0.7716770678099347,
+          "importApiAndFirstMs": 0.5571631284214783
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 1.3060622047853145,
+          "importApiAndFirstMs": 1.8217882070787272
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 1.2958788613973709,
+          "importApiAndFirstMs": 1.79480649201095
+        }
+      }
+    },
+    {
+      "case": "record-aggregation",
+      "roles": {
+        "baseline": {
+          "firstRequestMs": {
+            "median": 711.98522,
+            "samples": [
+              772.96666,
+              711.98522,
+              709.199083
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.870902000000001,
+            "samples": [
+              6.461557999999997,
+              4.870902000000001,
+              4.846903999999995
+            ]
+          },
+          "apiLoadMs": {
+            "median": 49.111783,
+            "samples": [
+              49.364755,
+              49.111783,
+              43.11111600000001
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 765.967905,
+            "samples": [
+              828.7929730000001,
+              765.967905,
+              757.157103
+            ]
+          }
+        },
+        "candidate": {
+          "firstRequestMs": {
+            "median": 788.43817,
+            "samples": [
+              788.43817,
+              789.376367,
+              721.221133
+            ]
+          },
+          "hostImportMs": {
+            "median": 4.962426999999991,
+            "samples": [
+              4.94214199999999,
+              5.026026000000002,
+              4.962426999999991
+            ]
+          },
+          "apiLoadMs": {
+            "median": 48.22272699999999,
+            "samples": [
+              48.22272699999999,
+              48.645691,
+              43.55508800000001
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 841.603039,
+            "samples": [
+              841.603039,
+              843.048084,
+              769.738648
+            ]
+          }
+        },
+        "typescript_head": {
+          "firstRequestMs": {
+            "median": 488.37437,
+            "samples": [
+              488.37437,
+              491.403423,
+              449.67677900000007
+            ]
+          },
+          "hostImportMs": {
+            "median": 232.146368,
+            "samples": [
+              232.146368,
+              245.82244300000002,
+              211.985592
+            ]
+          },
+          "apiLoadMs": {
+            "median": 0,
+            "samples": [
+              0,
+              0,
+              0
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 720.5207379999999,
+            "samples": [
+              720.5207379999999,
+              737.225866,
+              661.6623710000001
+            ]
+          }
+        }
+      },
+      "ratios": {
+        "baseline/candidate": {
+          "firstRequestMs": 0.903032408996637,
+          "importApiAndFirstMs": 0.9101296805084375
+        },
+        "baseline/typescript_head": {
+          "firstRequestMs": 1.457867700960638,
+          "importApiAndFirstMs": 1.0630754461365692
+        },
+        "candidate/baseline": {
+          "firstRequestMs": 1.1073799678032643,
+          "importApiAndFirstMs": 1.098744521155883
+        },
+        "candidate/typescript_head": {
+          "firstRequestMs": 1.6144134877512102,
+          "importApiAndFirstMs": 1.1680483220179014
+        },
+        "typescript_head/baseline": {
+          "firstRequestMs": 0.6859332978850319,
+          "importApiAndFirstMs": 0.940667008756718
+        },
+        "typescript_head/candidate": {
+          "firstRequestMs": 0.6194199984001282,
+          "importApiAndFirstMs": 0.8561289641445793
+        }
+      }
+    }
+  ],
+  "wallSeconds": 216.21972819801886,
+  "peakTreeRssBytes": 161652736,
+  "scope": "Equal-source geometric mean of within-source median ratios; every sample uses a fresh process with prepared persistent cache. Compilation excludes imports; combined adds actual host/API imports. Full raw emitted modules match each role-qualified oracle, not necessarily the other role. This verifies compilation outputs, not fresh generated-program runtime or complete conformance."
+}

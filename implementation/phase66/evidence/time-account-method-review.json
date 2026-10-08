@@ -1,0 +1,140 @@
+{
+  "kind": "phase66-time-account-independent-method-review",
+  "version": 1,
+  "complete": true,
+  "reviewer": "/root/p63_cache_host",
+  "reviewedAt": "2026-10-08T08:13:38.959773+00:00",
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/account-time.py",
+    "sha256": "45b4d478483037cd177a7189bb97291f3289bd5e3c808579d6e01d97bab39f45",
+    "bytes": 6680
+  },
+  "provisionalReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase66/evidence/time-account-interim01.json",
+    "sha256": "a2946c519b1f228a942f4a7df1a5bdcd9510a5cb4452affaea2466ceefae218a",
+    "bytes": 1068695
+  },
+  "dataOnly": true,
+  "targetExecuted": false,
+  "checks": [
+    "Read-only source review of interval grouping, closed/open/late classification and exclusive output creation",
+    "AST-extracted partition executed on tiny synthetic intervals only; no guard scan or target executed by reviewer",
+    "Nested and duplicated same-group occupancy counted once; mixed-group overlap assigned its own nonoverlapping label",
+    "Adjacent intervals merged, zero-duration interval adds no occupancy, empty rows leave the full interval uncovered",
+    "Provisional receipt remains incomplete with one explicitly excluded crossing interval, zero unreadable/open receipts"
+  ],
+  "syntheticCases": [
+    {
+      "name": "nested-overlap",
+      "boundary": [
+        0,
+        10
+      ],
+      "rows": [
+        [
+          1,
+          6,
+          "a"
+        ],
+        [
+          3,
+          8,
+          "b"
+        ],
+        [
+          4,
+          5,
+          "a"
+        ]
+      ],
+      "merged": [
+        [
+          1,
+          8
+        ]
+      ],
+      "uncovered": [
+        [
+          0,
+          1
+        ],
+        [
+          8,
+          10
+        ]
+      ],
+      "groupSeconds": {
+        "a": 2,
+        "overlap: a + b": 3,
+        "b": 2
+      }
+    },
+    {
+      "name": "adjacent-and-zero-duration",
+      "boundary": [
+        0,
+        5
+      ],
+      "rows": [
+        [
+          1,
+          2,
+          "a"
+        ],
+        [
+          2,
+          4,
+          "a"
+        ],
+        [
+          2,
+          2,
+          "b"
+        ]
+      ],
+      "merged": [
+        [
+          1,
+          4
+        ]
+      ],
+      "uncovered": [
+        [
+          0,
+          1
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "groupSeconds": {
+        "a": 3
+      }
+    },
+    {
+      "name": "empty",
+      "boundary": [
+        0,
+        10
+      ],
+      "rows": [],
+      "merged": [],
+      "uncovered": [
+        [
+          0,
+          10
+        ]
+      ],
+      "groupSeconds": {}
+    }
+  ],
+  "caveats": [
+    "The final accounting cutoff is declared by root after targets close; complete means the accounting receipt is finalized, not the entire phase or release has completed.",
+    "Open and cutoff-crossing intervals have no invented finish or occupancy; their elapsed spans remain unclassified.",
+    "Uncovered elapsed time is not measured waiting, idle time or model work; receipt occupancy is wall time, not CPU utilization.",
+    "partition reads the by_time map built by main for the same rows; source was tested with this explicit dependency and left unchanged."
+  ],
+  "scope": "Independent source and tiny synthetic data review of frozen method, plus pinned provisional metadata. This does not assert final target closure or execute compiler/runtime benchmarks.",
+  "pass": true
+}

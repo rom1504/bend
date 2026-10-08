@@ -1,0 +1,230 @@
+{
+  "kind": "phase66-final04-semantic-qualification-audit",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/qualification/audit-semantics.py",
+    "sha256": "99871c55413416665f361ec633b7c8797cd513012d5498389696246e518da81b"
+  },
+  "attempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-04/attempt.json",
+    "sha256": "bbec9b728120e3a1b3bac4ffffcdc02ca736c9edfd813fedbfb6105a09751657"
+  },
+  "selectedB1": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-04/equality/api.mjs",
+    "sha256": "1ed7deccc250732402fb3aebda4c0852adacdf983a8bcfe12b12658dfda23094"
+  },
+  "selectedB2": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-04b/full/compiler.mjs",
+    "sha256": "9ded6e94994de3cb4bbdd9f83144c004998c0494bab78e52aa9a7b0e82496944"
+  },
+  "imagePins": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-04b/image-pins.json",
+    "sha256": "ddfe223da74e844beb70ee2207e1cc0921d671a142aadac2f3d7953887e2d4db"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-04/snapshot/build/typed/snapshots/795e8193d46818b03803b025883e8267364588685b49209c52cb0b6ca1fd518c/compiler.bend",
+    "sha256": "d4adb488ee9035f5a988b9aab81045b3784ac7246884b02179178b43b6ed9514"
+  },
+  "referenceAudit": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase66/evidence/reference-oracles.json",
+    "sha256": "ed845209b24a89c0f50975a603ca1b5b9e58b6db2ab61040e7e5310abf5b7932"
+  },
+  "executions": [
+    {
+      "role": "checked",
+      "plan": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/checked-js-plan.json",
+        "sha256": "f25b9af4bdd22c38f4ff39fa906dce3654ff4d164077eea6cbc2406eb9c52c19"
+      },
+      "execution": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/checked-js-execution/report.json",
+        "sha256": "01e01e80942e154f413da2842adbd877acc4378da1e9528c8ea21e0bea1ba8bf"
+      },
+      "jobs": 10
+    },
+    {
+      "role": "b2",
+      "plan": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/b2-plan.json",
+        "sha256": "f5f78d701b735e6ba1fedb156b064bd5b46c42a7e1f2be19bbc93f0e452660c9"
+      },
+      "execution": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/b2-execution/report.json",
+        "sha256": "79b3585dec6767f2bf50bf94c89116d3a8b48418c49763574e7c70e4a48bb2cb"
+      },
+      "jobs": 8
+    }
+  ],
+  "groups": [
+    {
+      "role": "checked",
+      "name": "source",
+      "acquisition": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/checked/source-acquisition/manifest.json",
+        "sha256": "6c24ea760a7fff418e88541c4374e9587f2ea8a25a0e9ade2aa560ecc82d3148"
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/checked/source-controls/report.json",
+        "sha256": "cfbaa95156c5f49bc9a96f65e3ce124bb549db7a74332abdd95b1e591ef3a11e"
+      },
+      "counts": {
+        "candidateSourcePass": 96,
+        "referenceSourcePass": 95,
+        "differentialAgreement": 95,
+        "knownReferenceDefects": 1,
+        "total": 96
+      }
+    },
+    {
+      "role": "checked",
+      "name": "numeric",
+      "acquisition": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/checked/numeric-acquisition/manifest.json",
+        "sha256": "cd18d9b06bdbb324a79c1263b40ed2938d60460c0a4158a7522c6a6cfa20d97b"
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/checked/numeric-controls/report.json",
+        "sha256": "7c7f4946d796e21d08f90494d2d108a1c799a6c5d893bef8c20f8af8afc706df"
+      },
+      "counts": {
+        "candidatePass": 34,
+        "referencePass": 28,
+        "referenceFailures": [
+          "original-cold-0",
+          "original-cold-1",
+          "original-cold-2",
+          "renamed-cold-0",
+          "renamed-cold-1",
+          "renamed-cold-2"
+        ],
+        "total": 34
+      }
+    },
+    {
+      "role": "checked",
+      "name": "composition",
+      "acquisition": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/checked/composition-acquisition/manifest.json",
+        "sha256": "0973ad1aace7067311a0679d87182939b7280860c6f02887d2283f694925f88f"
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/checked/composition-controls/report.json",
+        "sha256": "f226cd955cc6c6cb446212149ed947d75f56011c4dcaa4045e469cb1e61cc630"
+      },
+      "counts": {
+        "candidatePass": 18,
+        "referencePass": 18,
+        "referenceFailures": [],
+        "total": 18
+      }
+    },
+    {
+      "role": "checked",
+      "name": "overapplication",
+      "acquisition": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/checked/overapplication-acquisition/manifest.json",
+        "sha256": "484b2003d8fb9eabd64628df9f51603c0a36c7c9a4732d167290fcbc15c421ef"
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/checked/overapplication-controls/report.json",
+        "sha256": "6b85c169c97176584b5a619c47503a7c979dad9c65ad9a19d16e70295af8fb34"
+      },
+      "counts": {
+        "candidatePass": 2,
+        "referencePass": 2,
+        "referenceFailures": [],
+        "total": 2
+      }
+    },
+    {
+      "role": "b2",
+      "name": "source",
+      "acquisition": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/b2/source-acquisition/manifest.json",
+        "sha256": "39addf577113a486544da53b665ea2dbaba09e9c9aa006a5cda6d7be5eaacd14"
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/b2/source-controls/report.json",
+        "sha256": "5492cd2dcefb4551ef32ccf9b4d2e26f4e350166f99978bcef31784e255172cd"
+      },
+      "counts": {
+        "candidateSourcePass": 96,
+        "referenceSourcePass": 95,
+        "differentialAgreement": 95,
+        "knownReferenceDefects": 1,
+        "total": 96
+      }
+    },
+    {
+      "role": "b2",
+      "name": "numeric",
+      "acquisition": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/b2/numeric-acquisition/manifest.json",
+        "sha256": "5f0b0460d354ffffdb661638defc96008343aae9b032521aa8f3799158cd95b7"
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/b2/numeric-controls/report.json",
+        "sha256": "3d64b3a09fd484a0fb74548bea773f442575ec425c4c50aac11da9baea2bba72"
+      },
+      "counts": {
+        "candidatePass": 34,
+        "referencePass": 28,
+        "referenceFailures": [
+          "original-cold-0",
+          "original-cold-1",
+          "original-cold-2",
+          "renamed-cold-0",
+          "renamed-cold-1",
+          "renamed-cold-2"
+        ],
+        "total": 34
+      }
+    },
+    {
+      "role": "b2",
+      "name": "composition",
+      "acquisition": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/b2/composition-acquisition/manifest.json",
+        "sha256": "6b62264d1915b4b4849eff693daf7297d324498c3ecaf0293c665254a4e9a378"
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/b2/composition-controls/report.json",
+        "sha256": "e0460c37b0466fa63eb984099b266d3c28e951bede23f128255d76a5153966ef"
+      },
+      "counts": {
+        "candidatePass": 18,
+        "referencePass": 18,
+        "referenceFailures": [],
+        "total": 18
+      }
+    },
+    {
+      "role": "b2",
+      "name": "overapplication",
+      "acquisition": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/b2/overapplication-acquisition/manifest.json",
+        "sha256": "121874d99d45d66ba4e816dd57d00df66076f57978a4cf55c7acf393ef6d0a0c"
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/b2/overapplication-controls/report.json",
+        "sha256": "10af6a407698ce8543c3244abb5e80fd372835a04cf4f1013b964c7f30c715d0"
+      },
+      "counts": {
+        "candidatePass": 2,
+        "referencePass": 2,
+        "referenceFailures": [],
+        "total": 2
+      }
+    }
+  ],
+  "maintained8": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification04/checked/maintained8/report.json",
+    "sha256": "8c86d110191bcdb7331871d9e09ba32dc569c398d97dbda73e7b0e884d6b2464"
+  },
+  "verifiedInputFiles": 1800,
+  "inputIndexSha256": "2fbf8054a5a9a85bc0b235c538d992feda86af1ef7b1870fead9dd128bf88114",
+  "scope": "Both actual checked B1 and genuine emitted B2 satisfy all source96/numeric34/composition18/overapplication2 candidate oracles; maintained8 also passes. Fresh TypeScript failures remain explicit at95/28/18/2. Counts overlap. Native qualification, final05 unchanged-JS closure reuse, full frontend/backend corpus, selfhosting, program equality, timing and release are separate mandatory receipts."
+}

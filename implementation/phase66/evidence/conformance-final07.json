@@ -1,0 +1,144 @@
+{
+  "kind": "phase66-selected07-conformance-summary",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "summaryVerified": true,
+  "producer": {
+    "file": "selfhost/tools/performance/phase66/controls/summarize-conformance-v1.py",
+    "bytes": 4164,
+    "sha256": "db0043fd37547f647c2893fd71c32370cfe7b3c39576d1572a20594e40f0c37f"
+  },
+  "sourceJoin": {
+    "file": "selfhost/build/phase66/conformance-lanes07.json",
+    "bytes": 2117715,
+    "sha256": "e1a91ac309ac69f8d5c3ac6261ad9265edb8bf013e635cbc5e228d602727db06"
+  },
+  "selectedAttempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/attempt.json",
+    "sha256": "2d7c525444a8ea87c18fd3d321894052639b1683186613831296b912f3d2fbaa",
+    "bytes": 298472
+  },
+  "selectedApi": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/equality/api.mjs",
+    "sha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
+    "bytes": 1977285
+  },
+  "frontend": {
+    "fixtures": 1587,
+    "exactObservations": 3174,
+    "reuse": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-final07-frontend-reuse.json",
+      "sha256": "b53b2dc8308ca7d838ce2bf0ed187608f9c867f3a4852aa52d832f500a97c347",
+      "bytes": 725720
+    }
+  },
+  "primaryNode": {
+    "typescript-new-js": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-new-ts-js01/typescript-new/js/report.json",
+        "sha256": "0fad6fc0fe3a8ededdd26780a0031629a59deffacb85e099870adede2b3e364f",
+        "bytes": 3524280
+      },
+      "observations": 1170,
+      "statuses": {
+        "pass": 990,
+        "fail": 6,
+        "not-applicable": 123,
+        "unsupported": 51
+      },
+      "allFixtureOraclesPass": false
+    },
+    "bend-candidate-new-base-js": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-final07-direct-js01/bend-candidate-new-base/js/report.json",
+        "sha256": "ef8021a99ee78f629cd7cd361b27df7f540adeed9362237ea6fc0bc4d637b4ea",
+        "bytes": 3955653
+      },
+      "observations": 1170,
+      "statuses": {
+        "pass": 991,
+        "fail": 56,
+        "not-applicable": 123
+      },
+      "allFixtureOraclesPass": false
+    }
+  },
+  "supplementalBun": {
+    "reuse": {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase66/evidence/bun-reuse-final07-v1.json",
+      "sha256": "e3de52479eb720dd262b0807c0b9d2c87a58212225715191a86146b1de9be1f8",
+      "bytes": 1408632
+    },
+    "summary": {
+      "pass": 54,
+      "deferred-environment": 1,
+      "fail": 1
+    },
+    "priorRuntime": {
+      "acquisition": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bun-toolchain01/acquisition.json",
+        "sha256": "b01e91edb441ca5e2b867a7fef7eec101b9f83d0f471e3e8cd89588241c55a9c",
+        "bytes": 682
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bun-toolchain01/bun",
+        "sha256": "a83d263767d839e4d2649ca8e35d07159c7afc99afdc96d731ced29e056dda0c",
+        "bytes": 79500640
+      },
+      "release": "bun-v1.4.2",
+      "versionExecuted": false
+    },
+    "unchangedEmittedModules": true,
+    "programsRerun": false
+  },
+  "mixedRuntimeCoverage": {
+    "eligibleFixtures": 1170,
+    "distinctGoldenPasses": {
+      "typescript-new-js": 1044,
+      "bend-candidate-new-base-js": 1045
+    },
+    "remaining": {
+      "unprintableMainNotApplicable": 123,
+      "sharedProcessRunGoldenFailure": 1,
+      "graphicsEnvironmentDeferral": 1
+    },
+    "scope": "Union of unchanged Node fixture passes and separately admitted exact-module Bun passes. Does not rewrite Node statuses or count graphics deferral/shared failure/unprintable exemptions as executable passes."
+  },
+  "exactPrimaryObservationAgreements": 1118,
+  "referencePassingCandidateFailures": [],
+  "noUnexplainedCandidateOnlyGaps": true,
+  "candidatePassingReferenceFailures": [
+    {
+      "reference": {
+        "id": "compile/f32_table_nan_bits.bend",
+        "status": "fail",
+        "reason": "Output/exit mismatch.",
+        "phase": "runtime",
+        "typeAccepted": true,
+        "proofTrust": "not-assessed",
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "1\n"
+      },
+      "candidate": {
+        "id": "compile/f32_table_nan_bits.bend",
+        "status": "pass",
+        "reason": null,
+        "phase": "runtime",
+        "typeAccepted": true,
+        "proofTrust": "not-assessed",
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "40\n"
+      }
+    }
+  ],
+  "priorGapsPreserved": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-lanes05.json",
+    "sha256": "ad9188fa2a9b1eb76ec98d6a49559c7610d6767f888b9b19a228d1b6f9c094e8",
+    "bytes": 1403450
+  },
+  "sourceScope": "Finite selected07 evidence: full3174 frontend observations, fresh1170 Node JS probes, and exact-byte transfer of54paired Bun passes/one shared failure/one graphics deferral. No reference-passing candidate-only gap remains. This is not an all1170-pass claim, mathematical proof, universal language conformance or native/legacy/GPU qualification.",
+  "summaryScope": "Counts and exact join identity only. Full observations and outputs remain in the raw join and its pinned reports. No new input-closure qualification, target run, native/legacy/GPU result, universal conformance or all-fixture-pass claim is made by this summary."
+}

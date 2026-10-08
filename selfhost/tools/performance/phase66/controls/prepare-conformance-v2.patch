@@ -1,0 +1,31 @@
+--- selfhost/tools/performance/phase66/controls/prepare-conformance.py
++++ selfhost/tools/performance/phase66/controls/prepare-conformance-v2.py
+@@ -59,7 +59,12 @@
+         manifest.write_text(json.dumps(config,indent=2)+'\n')
+         api=project/'dist/conformance-api.mjs'; api.parent.mkdir(parents=True,exist_ok=True)
+         api.write_bytes(Path(at['api']['file']).read_bytes()); assert pin(api)['sha256']==at['api']['sha256']
++        # Publish both conventional and explicit API names with identical bytes.
++        default_api=project/'dist/typed-api.mjs'; default_api.write_bytes(api.read_bytes())
++        assert pin(default_api)['sha256']==at['api']['sha256']
+         base=tree/'bend2/base.bend'
++        bundled_base=project/'dist/base.bend'; bundled_base.write_bytes(base.read_bytes())
++        assert pin(bundled_base)['sha256']==pin(base)['sha256']
+         is_ts=role.startswith('typescript')
+         adapter=project/'tools/conformance/adapters'/('upstream.mjs' if is_ts else 'typed.mjs')
+         # Upstream changed only display spelling here; preserve raw graph/trust propagation.
+@@ -95,12 +100,12 @@
+             else: expected=(1513 if old else 1587)*2
+             seconds=180 if a.scope=='screen25' else 600 if a.scope=='delta' else 1800
+             guard=['python3','-B',str(ROOT/'selfhost/tools/performance/phase32/bounded-run.py'),'--seconds',str(seconds),
+-                '--rss-mib','2048','--available-mib','4096',str(dest/'supervisor'),'--','taskset','-c','3',*command]
+-            guard=['env',*[key+'='+value for key,value in environment.items()],*guard]
++                '--rss-mib','2048','--available-mib','4096',str(dest/'supervisor'),'--','taskset','-c','3',
++                'env',*[key+'='+value for key,value in environment.items()],*command]
+             commands.append(dict(name=role+'-'+lane,command=guard,environment=environment,expectedObservations=expected,
+                 report=str(dest/'report.json'),expectedExitCodes=[0,1],
+                 interpretation='Exit1 may mean completed observed conformance failures. Never convert it into passing conformance; require finished/stable inputs and inspect every row. Crashes/timeouts are separate.'))
+-        images.append(dict(role=role,attempt=pin(f),compilerImage=pin(api),upstream=revision,base=pin(base),
++        images.append(dict(role=role,attempt=pin(f),compilerImage=pin(api),defaultCompilerImage=pin(default_api),upstream=revision,base=pin(base),bundledBase=pin(bundled_base),
+             harnessManifestBefore=before,harnessManifestAfter=pin(manifest),adapterDisplayChange=adapter_change,copies=copies,
+             scope='Private tool/project copy; original compiler image preserved. New Base and reference/harness pin are explicit independent axes.'))
+     result=dict(kind='phase66-conformance-observation-recipe',executed=False,producer=pin(Path(__file__)),node=pin(a.node),

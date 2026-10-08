@@ -1,0 +1,670 @@
+{
+  "kind": "phase66-checked-b1-source-inspection",
+  "version": 1,
+  "complete": true,
+  "targetExecuted": false,
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-02/api.mjs",
+    "sha256": "abccec43b566aca2a544b2f2023fe6fbc0f2eb86684061a2b9373643f36671ab",
+    "bytes": 1954796
+  },
+  "bootstrap": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-02/api.mjs.bootstrap.json",
+    "sha256": "8dfe825e40200f73e27c320f68dc3e32b624b6ec52165d6490bffab30fffcb97",
+    "bytes": 90372
+  },
+  "attempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-02/attempt.json",
+    "sha256": "3830ffb3f278e76c61b3e14aa717649d85d921aeeb734b6da1a7e34e157570dd",
+    "bytes": 297434
+  },
+  "historicalCheckedApi": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state10/api.mjs",
+    "sha256": "aada8b04873041e4ab40f178eb14283cfe27aac2dea69120d2f684b8dacf164a",
+    "bytes": 1949868
+  },
+  "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "scope": "Read-only actual emitted-source census; no execution, equivalence, correctness, or performance qualification implied. Bootstrap succeeded; focused validation has a separately reported harness closure failure.",
+  "runtime": {
+    "sha256": "581d3d70546797f44babf7be009b856696dd0ecf6e050ca3380bec22cdd7d8b4",
+    "bytes": 3656
+  },
+  "lines": 46990,
+  "generatedFunctions": 3312,
+  "exports": [
+    {
+      "name": "f_path_join",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_path_dir",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "check_book",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "annotate_book",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_program",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_library",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_expr",
+      "arity": 5,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_descriptor",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_io_type",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_modules",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "driver_has_main",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "driver_is_io",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "driver_interpret",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "driver_todos",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "driver_emit_owned",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "compiler_term_abi",
+      "arity": 0,
+      "identityMarshalling": true
+    },
+    {
+      "name": "compiler_span_abi",
+      "arity": 0,
+      "identityMarshalling": true
+    },
+    {
+      "name": "specialize_book",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "specialized_book",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "specialized_error",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "specialized_diagnostic",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "nc_compile",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "nc_foreign_paths",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "nc_annotation_stops",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "nc_annotated_context",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "nc_foreign_source",
+      "arity": 5,
+      "identityMarshalling": true
+    },
+    {
+      "name": "nc_foreign_scope",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "check_from_exact_prefix",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "exact_prefix",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "base_prefix_prepare",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "check_program_diagnostic_seed",
+      "arity": 4,
+      "identityMarshalling": true
+    },
+    {
+      "name": "check_program_diagnostic_prefix",
+      "arity": 4,
+      "identityMarshalling": true
+    },
+    {
+      "name": "base_prefix_world_prepare",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "check_program_diagnostic_world",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "book_context_world",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "base_annotation_prepare",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "base_annotation_wanted",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "base_annotation_allowed",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "annotate_selected_base",
+      "arity": 4,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_load_graph",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_load_graph_trace",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_source_completed",
+      "arity": 4,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_source_located",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "compiler_load_abi",
+      "arity": 0,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_source_header",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_complete_source",
+      "arity": 6,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_complete_seed",
+      "arity": 5,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_import_namespace_at",
+      "arity": 4,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_graph_trace",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_import_failure",
+      "arity": 4,
+      "identityMarshalling": true
+    },
+    {
+      "name": "book_context",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "book_cached",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_load_graph_seed",
+      "arity": 5,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_load_graph_seed_trace",
+      "arity": 5,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_fresh_prefix_prepare",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_graph_trace_from_prefix",
+      "arity": 4,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_prefix_graph_empty",
+      "arity": 0,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_prefix_complete_seed",
+      "arity": 6,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_prefix_complete_source",
+      "arity": 6,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_prefix_graph_trace",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_ready_prefix_prepare",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_prefix_complete_ready_seed",
+      "arity": 7,
+      "identityMarshalling": true
+    },
+    {
+      "name": "driver_report",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "driver_bad_names",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "compiler_check_result_abi",
+      "arity": 0,
+      "identityMarshalling": true
+    },
+    {
+      "name": "check_book_diagnostic",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "check_book_diagnostic_from_exact_prefix",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "diagnostic_render",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "diagnostic_result_locate",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "check_program_diagnostic",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_load_origins_for",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "f_loaded_origins_for",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "diagnostic_render_loaded",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_compile_error",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_layout_error",
+      "arity": 4,
+      "identityMarshalling": true
+    },
+    {
+      "name": "reach_book",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_roots",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_stops",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "annotate_except",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "kf_source",
+      "arity": 4,
+      "identityMarshalling": true
+    },
+    {
+      "name": "annotate_selected",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_program_selected",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_library_selected",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_library_selected",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_stops",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_program_selected",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_modules",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_roots",
+      "arity": 2,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_foreign_paths",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_foreign_error",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_reach_selected",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_reach_defs",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_reach_error",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_plan_selected",
+      "arity": 3,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_plan_defs",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_plan_error",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "jd_plan_library",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_foreign_paths",
+      "arity": 1,
+      "identityMarshalling": true
+    },
+    {
+      "name": "j_foreign_error",
+      "arity": 1,
+      "identityMarshalling": true
+    }
+  ],
+  "bodies": [
+    {
+      "name": "run_loop",
+      "sha256": "6699dae5e25915e22e46d0b837caa536dbbd3c7e5758cbade7067037ae438269",
+      "bytes": 124,
+      "historicalSha256": "b1f937dcb68edc1033b01d5a6055938ec2e34103bacd41b68c36f2ea66bd1c8f",
+      "exactHistoricalBody": false,
+      "body": "function run_loop(r) {\n  while (r !== null && typeof r === \"object\" && r.$ === \"$JMP\") {\n    r = r.f(r.x);\n  }\n  return r;\n}"
+    },
+    {
+      "name": "run_tail",
+      "sha256": "a1796267325ff93e0436714616dfba3a605b6c7f40b1e54c156ca6754d5ec9b5",
+      "bytes": 79,
+      "historicalSha256": "72aa8e5b23785a67a6b6a2fb3ad46a94bf9b77764c4c3b8296033031eed62ff6",
+      "exactHistoricalBody": false,
+      "body": "function run_tail(f, x) {\n  return {$: \"$JMP\", f: f.j?.f === f ? f.j : f, x};\n}"
+    },
+    {
+      "name": "run_clo",
+      "sha256": "23d2a048610410013d7c84561a9111e39fe7a5380568c0fb021d9485ef1a05e6",
+      "bytes": 92,
+      "historicalSha256": "23d2a048610410013d7c84561a9111e39fe7a5380568c0fb021d9485ef1a05e6",
+      "exactHistoricalBody": true,
+      "body": "function run_clo(j) {\n  const f = (x) => run_loop(j(x));\n  f.j = j;\n  j.f = f;\n  return f;\n}"
+    },
+    {
+      "name": "run_lib",
+      "sha256": "c1cbbf9ec05ef6f9a72bf0950a221e1c4e58c496ad8e44ddd8f16dd849d51822",
+      "bytes": 122,
+      "historicalSha256": "c1cbbf9ec05ef6f9a72bf0950a221e1c4e58c496ad8e44ddd8f16dd849d51822",
+      "exactHistoricalBody": true,
+      "body": null
+    },
+    {
+      "name": "char_new",
+      "sha256": "7a9fbfa94b70aae2289d3de7c044ae5ac902151b5a4648d9f5f60444d2573081",
+      "bytes": 193,
+      "historicalSha256": "7a9fbfa94b70aae2289d3de7c044ae5ac902151b5a4648d9f5f60444d2573081",
+      "exactHistoricalBody": true,
+      "body": null
+    },
+    {
+      "name": "cmp_new",
+      "sha256": "8fac78c9271fde4683b81923d57f2f58107f0ed4e8cf69efb8294c381d575e2c",
+      "bytes": 82,
+      "historicalSha256": "8fac78c9271fde4683b81923d57f2f58107f0ed4e8cf69efb8294c381d575e2c",
+      "exactHistoricalBody": true,
+      "body": null
+    },
+    {
+      "name": "$String$eq$",
+      "sha256": "9879c7a2170260e74e4db58931ccf0dfac67a5d8246d6614372e6f95d22a695b",
+      "bytes": 88,
+      "historicalSha256": "9879c7a2170260e74e4db58931ccf0dfac67a5d8246d6614372e6f95d22a695b",
+      "exactHistoricalBody": true,
+      "body": null
+    },
+    {
+      "name": "$String$order$",
+      "sha256": "604c605abc07f9e0008c07e610bf673521f30c7af03a71b3c518781494e4245c",
+      "bytes": 88,
+      "historicalSha256": "604c605abc07f9e0008c07e610bf673521f30c7af03a71b3c518781494e4245c",
+      "exactHistoricalBody": true,
+      "body": null
+    },
+    {
+      "name": "$Pair$snd$",
+      "sha256": "376b59c9bd7ac22c3ef43aee1f1ce49e7382247a8448522bdbc4da7dfd48af47",
+      "bytes": 72,
+      "historicalSha256": "376b59c9bd7ac22c3ef43aee1f1ce49e7382247a8448522bdbc4da7dfd48af47",
+      "exactHistoricalBody": true,
+      "body": null
+    },
+    {
+      "name": "$String$cmp$",
+      "sha256": "3b9cc1202ef9b17b946b18ba7b8f599c6c76e1c8fdb8cde809f40bdce21246cb",
+      "bytes": 1001,
+      "historicalSha256": "3b9cc1202ef9b17b946b18ba7b8f599c6c76e1c8fdb8cde809f40bdce21246cb",
+      "exactHistoricalBody": true,
+      "body": null
+    },
+    {
+      "name": "$String$cmp$fin$",
+      "sha256": "11504d8a211c258eddd5f88ac1d2967c593b447eca5c94c6c50b1b1dd7eed231",
+      "bytes": 543,
+      "historicalSha256": "11504d8a211c258eddd5f88ac1d2967c593b447eca5c94c6c50b1b1dd7eed231",
+      "exactHistoricalBody": true,
+      "body": null
+    },
+    {
+      "name": "$String$cmp$rec$",
+      "sha256": "b36b6180e994b0edfe4ea7686690e7cd69d8f8462221ce07342d47e78f453aa0",
+      "bytes": 279,
+      "historicalSha256": "b36b6180e994b0edfe4ea7686690e7cd69d8f8462221ce07342d47e78f453aa0",
+      "exactHistoricalBody": true,
+      "body": null
+    },
+    {
+      "name": "$Char$cmp$",
+      "sha256": "a4e9dd89bbabd5fde4d39e3de2642955203ac11782e78809cc11d9d7a2b7053a",
+      "bytes": 205,
+      "historicalSha256": "a4e9dd89bbabd5fde4d39e3de2642955203ac11782e78809cc11d9d7a2b7053a",
+      "exactHistoricalBody": true,
+      "body": null
+    },
+    {
+      "name": "$Cmp$is_eq$",
+      "sha256": "a5beb3094febc3f38ee02c0ea51ce09cafefe1c8a897a25dbb603b21f58bbf0c",
+      "bytes": 105,
+      "historicalSha256": "a5beb3094febc3f38ee02c0ea51ce09cafefe1c8a897a25dbb603b21f58bbf0c",
+      "exactHistoricalBody": true,
+      "body": null
+    },
+    {
+      "name": "$kc$",
+      "sha256": "aa06d94d00588b5f7695a5477c5f6b58013b338ba1704f593d2bee37c4dc079c",
+      "bytes": 150,
+      "historicalSha256": "aa06d94d00588b5f7695a5477c5f6b58013b338ba1704f593d2bee37c4dc079c",
+      "exactHistoricalBody": true,
+      "body": null
+    },
+    {
+      "name": "$f_choose$",
+      "sha256": "48013e56ef914b008bb4f97ccc01b46dab2185acb1b2416e968998167fad3c78",
+      "bytes": 156,
+      "historicalSha256": "48013e56ef914b008bb4f97ccc01b46dab2185acb1b2416e968998167fad3c78",
+      "exactHistoricalBody": true,
+      "body": null
+    },
+    {
+      "name": "$nt_choose$",
+      "sha256": "b9ce6db260eb104f50c785603ed2a2cc45f7f5d89ebe30d8f0193b0445532343",
+      "bytes": 157,
+      "historicalSha256": "b9ce6db260eb104f50c785603ed2a2cc45f7f5d89ebe30d8f0193b0445532343",
+      "exactHistoricalBody": true,
+      "body": null
+    }
+  ],
+  "exportCount": 99
+}

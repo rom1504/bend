@@ -1,0 +1,36 @@
+--- selfhost/tools/performance/phase66/controls/compare-conformance.py
++++ selfhost/tools/performance/phase66/controls/compare-conformance-v2.py
+@@ -32,6 +32,21 @@
+         inputs.append(pin(recipe_file))
+         recipe = json.loads(recipe_file.read_text())
+         assert recipe['kind'] == 'phase66-conformance-observation-recipe'
++        # Reverify the complete private executable closure, including helpers
++        # absent from the historical adapter's narrower artifacts collection.
++        expected = {recipe['node']['file']: recipe['node']}
++        for image in recipe['images']:
++            for row in image['copies']:
++                expected[row['copy']['file']] = row['copy']
++            for key in ['harnessManifestAfter', 'compilerImage', 'defaultCompilerImage', 'base', 'bundledBase', 'attempt']:
++                if image.get(key):
++                    item = image[key]; expected[item['file']] = item
++            for key in ['adapterDisplayChange', 'adapterBackendChange']:
++                if image.get(key):
++                    item = image[key]['after']; expected[item['file']] = item
++        for item in expected.values():
++            assert pin(item['file']) == item, 'Changed staged executable input: '+item['file']
++            inputs.append(item)
+         for command in recipe['commands']:
+             report_file = Path(command['report'])
+             if not report_file.exists():
+@@ -57,9 +72,9 @@
+             for lane in sorted({r['lane'] for r in report['results']}):
+                 exact[lane] = dict(collections.Counter(r['status'] for r in report['results'] if r['lane'] == lane))
+             checked = [r for r in report['results'] if r['lane'] == 'check']
+-            accepted = lambda r: r.get('result', {}).get('checked') is True and (r['result'].get('typeAccepted') is True or r['result'].get('typeAccepted') is None and r['result'].get('status') == 'ok')
++            accepted = lambda r: (r.get('result') or {}).get('checked') is True and (r['result'].get('typeAccepted') is True or r['result'].get('typeAccepted') is None and r['result'].get('status') == 'ok')
+             failures = [dict(id=r['id'], lane=r['lane'], status=r['status'], reason=r.get('reason'),
+-                phase=r.get('result', {}).get('phase'), diagnostic=r.get('result', {}).get('diagnostic'))
++                phase=(r.get('result') or {}).get('phase'), diagnostic=(r.get('result') or {}).get('diagnostic'))
+                 for r in report['results'] if r['status'] not in ['pass', 'not-applicable', 'observed']]
+             runs.append(dict(name=key, report=pin(report_file), observationsClosed=True,
+                 rows=len(actual), exactLanes=exact, selectedComplete=report['selectedComplete'],

@@ -1,0 +1,39 @@
+{
+  "kind": "phase66-runtime-budget-method",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/run.py",
+    "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/runtime/run.py",
+    "sha256": "bba497d258d55d479581c4ad8d1499ddc7e1bcb76717b0863ac3f91c8751c9cc"
+  },
+  "edits": [
+    {
+      "old": "from support import ExecutionGuard, identity, save",
+      "new": "sys.dont_write_bytecode = True\nsys.path.insert(0, '/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs')\nfrom support import ExecutionGuard, identity, save",
+      "count": 1
+    },
+    {
+      "old": "HERE = Path(__file__).resolve().parent",
+      "new": "HERE = Path('/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs')",
+      "count": 1
+    },
+    {
+      "old": "bundle.get('kind') == 'bend-program-bundle'",
+      "new": "bundle.get('kind') in ['bend-program-bundle', 'phase66-mixed-target-program-bundle']",
+      "count": 1
+    },
+    {
+      "old": "    require(bundle['upstreamCommit'] == catalog['upstreamCommit'], 'Upstream identity differs')",
+      "new": "    if bundle['kind'] == 'phase66-mixed-target-program-bundle':\n        require(bundle['sourceCorpusUpstreamCommit'] == catalog['upstreamCommit'], 'Source corpus pin differs')\n        require(set(bundle['compilerTargets']) == set(bundle['roles']), 'Missing per-role target')\n        for role, metadata in bundle['roles'].items():\n            target = bundle['compilerTargets'][role]\n            require(target in ['018751270e800bc222a93dad7f257083ee53a5f7', '059266225b77c8ca256ac6b25ee5c21449bab151'], 'Unadmitted compiler target')\n            require(metadata['compiler']['upstreamCommit'] == target, 'Role compiler target differs')\n        require(bundle.get('provenance') is not None, 'Explicit cross-target provenance required')\n    else:\n        require(bundle['upstreamCommit'] == catalog['upstreamCommit'], 'Upstream identity differs')",
+      "count": 1
+    },
+    {
+      "old": "    require(args.diagnostics or args.diagnostic_budget is None, '--diagnostic-budget requires --diagnostics')",
+      "new": "    require(args.diagnostics is None and args.diagnostic_budget is None, 'Phase66 cross-target diagnostics require a separate qualified adapter; use ordinary timing here')",
+      "count": 1
+    }
+  ],
+  "scope": "Preserve all budgets, clocks, expected values, rotation, rays, drift, guard and exact module checks. Explicit mixed-target bundle admission replaces single compiler-target equality; unchanged original corpus still required. No diagnostics accepted by this successor."
+}

@@ -1,0 +1,22 @@
+--- a/selfhost/tools/conformance/run.mjs
++++ b/selfhost/tools/conformance/run.mjs
+@@ -11,7 +11,7 @@
+ import {judge} from './judge.mjs';
+ 
+ const project=path.resolve(import.meta.dirname,'../..');
+-const options={upstream:process.env.BEND_UPSTREAM||path.join(project,'.bootstrap/upstream-phase23'),
++const options={upstream:process.env.BEND_UPSTREAM||path.join(project,'.bootstrap/upstream-phase66'),
+   adapter:path.join(import.meta.dirname,'adapters/prototype.mjs'),output:path.join(project,'tests/conformance/latest.json'),
+   jobs:8,timeout:5000,'worker-mode':'isolated','recycle-after':'64','rss-limit-mb':'1024',lanes:'parse,check,interpreter,js,native,metal,cuda',filter:'',gpu:'','stack-kb':0,'heap-mb':0,selection:'',rerun:'',retain:'none','selected-exit':'0'};
+ for(let i=2;i<process.argv.length;i++) {
+--- a/selfhost/tools/conformance/adapters/upstream.mjs
++++ b/selfhost/tools/conformance/adapters/upstream.mjs
+@@ -6,7 +6,7 @@
+ import {pathToFileURL} from 'node:url';
+ import {buildNative} from '../../native-build.mjs';
+ import {nodeResourceArgs} from '../../node-resource-args.mjs';
+-const root=path.resolve(process.env.BEND_UPSTREAM||path.join(import.meta.dirname,'../../../.bootstrap/upstream-phase23'));
++const root=path.resolve(process.env.BEND_UPSTREAM||path.join(import.meta.dirname,'../../../.bootstrap/upstream-phase66'));
+ export const name='pinned-typescript-reference';
+ export const capabilities={parse:true,check:true,interpreter:true,js:true,native:true,metal:false,cuda:false,modules:true,foreign:true,dependentTypes:true,affine:true,termination:true,proofs:true,proofKernel:false,checkOracle:'validation-plus-declaration-verdict'};
+ export const artifacts=Object.fromEntries(['bend.ts','comp.ts','base.bend','main.ts','safe.ts','bendtt.lean'].map(file=>[file,path.join(root,'bend2',file)]));

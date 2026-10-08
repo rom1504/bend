@@ -1,14 +1,45 @@
 # Bend2 compiler port in Bend2
 
+The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
+The [Phase66 report](../implementation/phase66/README.md) records migration,
+the selected compiler images, installed status and five separate metrics.
+Use `npm run verify:release` to verify the installed package; a successful
+candidate build alone does not qualify or install that candidate.
+
+Selected attempt07 passes its complete frontend/JS comparison and genuine B2
+self-check/reproduction gates. The combined Node and scoped Bun evidence has
+1,045 distinct golden passes and no TypeScript-passing fixture that fails Bend;
+shared failures, exemptions and native limitations remain explicit in the
+[conformance record](CONFORMANCE.md). Attempt07 is installed and verified: selected
+checked B1 `bb6c6e2a…`; genuine B2 `0067736c…` remains a separate qualified image.
+The [release receipt](../implementation/phase66/evidence/installed-release07.json)
+binds integrity verification, legacy42, default24 and helper5. Compiler latency
+is 1.402× TypeScript for B1 and 1.321× for B2; emitted-program runtime is 1.049×
+across 45 equally weighted points (1.047× across 23 sources). See the
+[measurement report](../implementation/phase66/measurement.md) for distinct clocks.
+Prior release files and every failed migration attempt remain preserved.
+
+Phase66 changes namespace display, the Base/effect ABI and composite host
+marshalling. The new Base needs fresh prepared artifacts. Its exact-content
+optional annotation permission passed actual owned/product and custom-Base
+fallback controls before being enabled; see the
+[Base contract](../implementation/phase66/base-host.md). The
+[direct JavaScript guide](docs/direct-javascript.md) distinguishes direct
+providers from the narrower legacy Node effect support. Native CPU retains its
+own scheduler; see the [native effects guide](docs/native-effects.md) for updated
+blocking operations and thirteen explicitly unsupported new APIs.
+
+## Historical Phase65 installed baseline
+
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
 [Phase65 results](../implementation/phase65/state10-results.md),
 [backend boundaries](../docs/self_hosted/backend-boundaries.md) and
 [direct JavaScript guide](docs/direct-javascript.md).
-**Phase65 State10 is installed and verified.** Direct JavaScript is the default;
+**Phase65 State10 was installed and verified at that checkpoint.** Direct JavaScript is the default;
 `--legacy-js` and native targets retain their contracts. Ordinary compilation
 runs Bend code without a TypeScript fallback.
 
-The current release combines
+That release combines
 static JavaScript readers for the validated frame4 transport with optional
 checked Base annotations produced and admitted by Bend. State10 adds exact
 pinned Base-content permission before product preparation or sidecar reading;
@@ -79,9 +110,8 @@ records the distinct compiler gates.
 
 ## Historical Phase61 snapshot
 
-The figures below retain their original Phase61 scope. Current installed-release
-measurements and qualification are in the
-[Phase65 State10 report](../implementation/phase65/state10-results.md).
+The figures below retain their original Phase61 scope. Current migration and installed-image
+qualification are in the [Phase66 report](../implementation/phase66/README.md).
 
 The genuine direct B2 freshly type-checks its complete source in **11.397 seconds
 of check-request time** (**17.248 internal / 17.385 supervised seconds**) and emits a
@@ -124,12 +154,11 @@ node cli.mjs tests/conformance/typed-smoke/base-u32.bend --legacy-js --run
 
 The [benchmark recipes](tools/performance/phase53/PLAN.md) cover checked acquisition,
 fast screens and serial full-corpus validation. Use fresh attempts and the
-[Phase64 results](../implementation/phase64/state09-results.md) for the
-installed image; the [Phase61 results matrix](../implementation/phase61/state08-results.md)
+[Phase66 report](../implementation/phase66/README.md) for current image status; the [Phase61 results matrix](../implementation/phase61/state08-results.md)
 retains its historical image bindings. Historical [Phase56 recipes](tools/performance/phase56/README.md)
 require fresh identity bindings before replay. CPU/allocation/V8
 [diagnostics](tools/performance/programs/DIAGNOSTICS.md) remain separate from clean
-timing. The pin remains `018751270e800bc222a93dad7f257083ee53a5f7`, after Bend 2.0.34.
+timing. The active pin is `059266225b77c8ca256ac6b25ee5c21449bab151`; dated campaigns retain their original pins.
 
 The [architecture survey](../docs/self_hosted/README.md),
 [compiler research](../research/compilers_architecture_and_techniques/README.md),

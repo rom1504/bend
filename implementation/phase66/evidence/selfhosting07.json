@@ -1,0 +1,2769 @@
+{
+  "kind": "phase66-selected-selfhosting-program-audit",
+  "complete": true,
+  "pass": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/qualification/audit-selfhosting.py",
+    "sha256": "3b447365ac6c6225e66bd0b69817dc8c8344ea9d3b7bc4de600debb74c164074"
+  },
+  "attempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/attempt.json",
+    "sha256": "2d7c525444a8ea87c18fd3d321894052639b1683186613831296b912f3d2fbaa"
+  },
+  "selectedB1": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/equality/api.mjs",
+    "sha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6"
+  },
+  "selectedB2": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/full/compiler.mjs",
+    "sha256": "0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/build/typed/snapshots/8d05ba60101784af71db76dca7e77d3e10e9041ad8bc057f9969a6cfb1951ca6/compiler.bend",
+    "sha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e"
+  },
+  "imagePins": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/image-pins.json",
+    "sha256": "8339978a1d42443d158c21c5f7ff4ce15cb990ba2527f253a6f674bf5afe4eec"
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/selfhosting07-plan.json",
+    "sha256": "402e7099a2319e3550f5af602aa4f5176b5290512db8ec2fff0ad3477696937a"
+  },
+  "execution": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/selfhosting07-execution/report.json",
+    "sha256": "4cdde3fbff1092309eb46b24248f6beb67704cd6df150733df9ccf23a3b7181d"
+  },
+  "selfCheck": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/selfhosting07/self-check/report.json",
+    "sha256": "8e10a8cffcea82f1311767cae05b2d50eea31fe20570542eb1de6d301e7b8ba3"
+  },
+  "fixedPoint": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/selfhosting07/fixed-point/report.json",
+    "sha256": "886bc2069948e842c37ac48e7002345d68b377858da05594daec468ba6930869"
+  },
+  "programEquality": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/report.json",
+    "sha256": "5f3c61071f2611dc08a33bfd0121837f761c17056f010bc4bd629f542fcb9e0e"
+  },
+  "b1Oracles": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-oracles.json",
+    "sha256": "5f24a2723368210bbd801cfe44aba4d19fb61379172365def08f77666e45c28e"
+  },
+  "b2Oracles": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-full-oracles.json",
+    "sha256": "0102d332db43538032d7900b1b23f598a8898bf3bd2f266ac975ad71c1e9c9d1"
+  },
+  "exports": 99,
+  "driverObservations": 8,
+  "unsafeDefinitions": 3282,
+  "mathematicalProof": false,
+  "rawModules": 23,
+  "programPoints": 45,
+  "observerModules": 1,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/image-pins.json",
+      "sha256": "8339978a1d42443d158c21c5f7ff4ce15cb990ba2527f253a6f674bf5afe4eec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/prepare-bootstrap.py",
+      "sha256": "ac3a0be6991ed85e5603bf8b5de96cc480b539f1a2f76d38577ea27a82ad7a3d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/plan.json",
+      "sha256": "002d92b977e34d9b6d80e1c25c2e063cfd568724a914f23ea95e28413a1fd0ea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/attempt.json",
+      "sha256": "2d7c525444a8ea87c18fd3d321894052639b1683186613831296b912f3d2fbaa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/full/report.json",
+      "sha256": "6de52a80dc413259eb6d32f6ca988cff2b1d74718eb2c2473f6df142ca9191c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-comparison.json",
+      "sha256": "826283197dce827917aaccaa539054cb6169bab5a8ab1ee1575fe2d0d5e4ed42"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/build/typed/snapshots/8d05ba60101784af71db76dca7e77d3e10e9041ad8bc057f9969a6cfb1951ca6/compiler.bend",
+      "sha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/equality/api.mjs",
+      "sha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/full/compiler.mjs",
+      "sha256": "0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/direct.mjs",
+      "sha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/roots-reference.json",
+      "sha256": "ce5bce28a9b3b2875507fc6c6d7f54d7636c95aea37149cab2e6906967c1c0d4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/export-admission06/admission.json",
+      "sha256": "d1a9d1bde6862f081af6a9d7a156ab2d689de3485e97a7da791bd74edcf03a23"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/full-roots.json",
+      "sha256": "8f4a5c11f35bb45a880a09c858a5a4f4870cdb7a0178d9ba3c0df5cf3c02f724"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/tools/emit-split.mjs",
+      "sha256": "9f273524677b97deec908d4787204bda88a1c948777ff9c8dd1d44169f9ffa8a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/api.mjs.bootstrap.json",
+      "sha256": "0911823cf56daa2263f6a86d62d98f8f68e422b65ff4a7118183488b3bcd259e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime.mjs",
+      "sha256": "913b6a850c60377dbb13ef98db2811b6c8383ee9fa6a6fc16fcad9c68f8afc54"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/tools/expose-stages.mjs",
+      "sha256": "450def3851819de299a6932d517976b21f2c466aa68d4a8813f632e004e2587a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase54/bootstrap/adapter.mjs",
+      "sha256": "a2f135e4eb2deff002eaf898a7dd0856bbbc980360837e22cb4f19c2dee9462b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+      "sha256": "4249a59916fcd36ef411d4864a5050489df2fc78deee7ebe0d98684ff80f46f1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/back/js/direct/core.bend",
+      "sha256": "64843b27c7a30738a7b189e51ad5a538f2dd4da6103f26becbf7d5ceb60e76f7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/tiny/report.json",
+      "sha256": "7761c0cbb90cfb1c9103c1724baee67283faf4d8964c22b2b89d34b4f611493e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/back/js/direct/reach.bend",
+      "sha256": "2a36a775a13169845f230555fe4d1373174d7e87e31600457c1ca574fa3ca538"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/full/api-stages.mjs",
+      "sha256": "c0e31eaf2bcadce8179bba16ef5bc7cee2a8b3a2c385d3e2537a1ccb54661838"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/full/api-stages.json",
+      "sha256": "08d7d18f9c1e87f6509491e3941bc1fdca98e8211f7799ce6d5fccb51e8036db"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/tools/typed-driver.mjs",
+      "sha256": "e093483d5103a8e833b6ca710246b1ec3c579b7fac5060c8e42f626c5e25ec85"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/tools/base-cache-graph.mjs",
+      "sha256": "e1a755e758435da768b77f59e2ea2e7b3b966998ba1b6a6fdd5f1a154cffca62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/tiny.json",
+      "sha256": "4063c56da6c7c538451cbfe4cdaea2c6c9d104b1167870b329754d31c5b436fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/tiny/api-stages.mjs",
+      "sha256": "c0e31eaf2bcadce8179bba16ef5bc7cee2a8b3a2c385d3e2537a1ccb54661838"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/tiny/api-stages.json",
+      "sha256": "2ba69a9adfe44a152aabd2f07c34ef3fcde7275edd029cfa3673409d877d9f69"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/report.json",
+      "sha256": "d8a6c2864f4737340777d24caa356778a65f2035f1ca0e257763d2de661a5b7c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver.json",
+      "sha256": "554c042695108e0c2c9adc6c1e1d3c7d3de0b5514c3038eaa7fbd7b7651c28b2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/tools/driver-probe.mjs",
+      "sha256": "2e102baf92212d8d75e49767c2dbe47cbd29d97acd674a664eef91d3257b7367"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/full/progress.jsonl",
+      "sha256": "47d8dcd0542085b45e642882af016aff756bea10eeb556d7627a72c615acd2b3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/tools/assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/tools/node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/tools/native-build.mjs",
+      "sha256": "a76f2c027459f7ffdb9fc16dc450ee33e0f39c74568df4c74d03309e662c9117"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/compiler.json",
+      "sha256": "e7bb9f5c489220bb5270f7aa687407ef550d2452b5570eae283bdf7d9b89fb5e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/base.mjs",
+      "sha256": "1cf66725fbe281a07b502c903cf44fa69abaeca961dd61ed63b3ea1ab97372c0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/build.mjs",
+      "sha256": "4be85d590521e9453f0e7eb46f7b7d9d35bfd803510089c23db192c09d2b2a12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/core.mjs",
+      "sha256": "7cefc0acd4b36908697663708c004337b3bf7da1a8a8404b3cae120010104398"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effects.mjs",
+      "sha256": "20b25d65fa422604bca85304db1bd824b9ed0a0f6cf0b13f6444be935876d312"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/args.js",
+      "sha256": "ed1a7e7b73ae7fe58ac6d428d2762b66f223f4c70a165570fc5d68dc874ddc0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/audio_close.js",
+      "sha256": "c700e2fc0eda1f9a67afd317184999d9283912817aaec00637af41b135b84c62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/audio_open.js",
+      "sha256": "6f531ac205dab98dd366111cdcc5eed69fb9058350ca715f3419065cd979b088"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/audio_write.js",
+      "sha256": "377d3e938ce3cc9f083c662b69d34e3a0cf391c92ddaf3fca8a4b28c78662da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/chan.js",
+      "sha256": "007ff7505af9effc20fccfa3d26eaf89a382d6295839b27df119a1704a3f86d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/file_close.js",
+      "sha256": "2b83f900113776ab875fa3afd29f31000a191fe48645abe78b1d7b34cb12a7fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/file_open.js",
+      "sha256": "dd549f5f05eb896aef9a3a02ffecf2ee902e653f5463be72781edab1cd1180ae"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/file_read.js",
+      "sha256": "7aa8a95a0b02f3c8db1167da5a936958a90c64e7df3e327ba5c66766d5e57da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/file_size.js",
+      "sha256": "508a931334016f725f0446d9c63f91d7e9de79b9fb347d0e148777dba834ef0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/file_write.js",
+      "sha256": "4fe307538beb1047add7646f52df6e382a1da5d8999d8fe96969bd5055bc9b59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/get_env.js",
+      "sha256": "2fab2162d5ff9842d1b84bfdc56466a606eeb0b81b04dd29f091652ff715ded6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/listener_close.js",
+      "sha256": "1b87fb43c373b1a8a54b5afaf0cf8e3ec2f8d39bdfde131e49527caa19ac0cb8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/manifest.json",
+      "sha256": "9d0ee345ec98cb177d258e5e9c080b09b67ae396fd975df332081332e10f69e4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/now.js",
+      "sha256": "b2c45fdcfeba0f155be5631b25708341c09d3c80929d8467afd5977473b087bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/print_err.js",
+      "sha256": "a7a00612edfe98af1a351e8f7b912af4ee33f4bb888c36f119f7712d72a9394e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/print.js",
+      "sha256": "814ceba4efbaa291b7b6a9ff29aa20e3a23c06eb4fa165c69ee0bd22878adaa9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/process_run.js",
+      "sha256": "6ebe3b9875ef62ee189209096fb422508e79d34e58913457aefe52a052631e42"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/random_u32.js",
+      "sha256": "ab0b37cb6055ad08573d1263aa380c339c3fe7417530cfa63264629dce7744c2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/README.md",
+      "sha256": "fbcffbc71f6ed64fc8bbd22ec439369fe751521a035409f8b7aa13d76b31fa9a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/sleep.js",
+      "sha256": "6711ccd804dcaede381da9ff0283b4640feb440e1d413381101f22bfed65a934"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/socket_close.js",
+      "sha256": "dc4bf1fa95692c91528d4eb855506dde8dfc9164a90de2c43cd1bd6916e0c380"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/spawn.js",
+      "sha256": "8a14c7a7a5ff80b049f0659f9e58d43bf0f3b1a6724d35a199c3f864b3242e4b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/tcp_accept.js",
+      "sha256": "26406cce42c497994e597a7a032629fab65f43ec14f06ee69aace2b353afe28d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/tcp_connect.js",
+      "sha256": "a20819822e4ce18c8878b94e6ee70466833415eb9ebc2b6a39b65cabfcc553c9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/tcp_listen.js",
+      "sha256": "0da4cfafaa24ba5e17d9fda5e6a5b207b2b36031b2c888944f67b85842d76399"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/tcp_recv.js",
+      "sha256": "e8c54490445cb71a4328c07be8c40a49cee3e643cbf74f42dc73d31ab95890d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/tcp_send.js",
+      "sha256": "ea68cc521fa9b5603c3fccebbf19ecebcd26bf1a8af644ff1f13cd14ba9fe733"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/thread_count.js",
+      "sha256": "f4ef6d8ded95fe3114e50b7d2b6eb873e693419b85150f681b4a54a5043c2de9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/udp_bind.js",
+      "sha256": "e3afae5bf246184e76703efbcf41cb35bf5289e746cc40dc0300eef98753dfb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/udp_recv_from.js",
+      "sha256": "d6f88b08f578f088b4ff257a7e544e4fbbf46f375aee3881ba4d44e25ed890d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/udp_send_to.js",
+      "sha256": "40c835c4d73eb15d089a41b425968d04931d02820cb901aadb8eb3dd4905f247"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/window_close.js",
+      "sha256": "be4ef11e9ac57c59aa4aee847f15ece18034ca9fe1c4a68c6e0b0d7bbd7c3590"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/window_frame.js",
+      "sha256": "78baa53aa46e02165c0c94da68d1f6362386ebcfb97dbb36fffb82792a03d34f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/window_grab.js",
+      "sha256": "55cfc1925114f2d1f177137fad24d6252fe28707d26a1aae18a98ad97060a668"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/window_open.js",
+      "sha256": "cd716864b8dfb27ca955c8aa58643c7d693ce76eb56472bd8255ff7ac0656e8d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/window_set_title.js",
+      "sha256": "eee0bf26b7f381f8800364e22e8c735e47dd6db3f58e23ff3dda8478a8411513"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/effs/write.js",
+      "sha256": "e3495066a5d8c53fe1c46cfd2bb32577e3bd7dcae9797808801599073504dacb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/foreign.mjs",
+      "sha256": "ad406115010d01b969b18d2446fd8f4073c53118abc95aac4ba6fd9a928be9bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/readback.mjs",
+      "sha256": "8796c35456a80c90adffb0aa54f3b03fb780a3afb3476c8ced63dc6a0fdf707f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/README.md",
+      "sha256": "860b9d43ac1982b2b66b332b50f438a77d4ee95880e79144f89949dc58004afa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/test-apply.mjs",
+      "sha256": "ca8e877deb0db259f9c22bb5dc17bb774a413c1018796d08f63800ca834c82c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/test-phase8.mjs",
+      "sha256": "e6992665eeb60357ae27351b9bd5dc76c07b83619090e0bfcf2f9d1b45b1b0a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/js/test.mjs",
+      "sha256": "abbb1a4a34b8c0a9764966dd47e56bbeddf06d5e19bc626eb91fa3f94a80a440"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/args.c",
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/audio_close.c",
+      "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/audio_open.c",
+      "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/audio_write.c",
+      "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/audio.c",
+      "sha256": "049ac826d50def604c18cd4211d67573c4e27f4bc2600ce6c22e0dbe60c3783f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/chan_close.c",
+      "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/chan_new.c",
+      "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/chan_recv.c",
+      "sha256": "d0de18c78d78d5a3f4890cd2423a332d3d03a7b2f85e82202561fa67b4d57b3c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/chan_send.c",
+      "sha256": "1fc9e4857c440771e66ff83b61e6012727af51e62416ad818f5122e237784afc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/chan.c",
+      "sha256": "31257d7f71c560863d66b96ee9296cea07dd997f147a1ccd1433cc0130993696"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/file_close.c",
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/file_open.c",
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/file_read_at.c",
+      "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/file_read_bytes.c",
+      "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/file_read.c",
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/file_size.c",
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/file_write_bytes.c",
+      "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/file_write.c",
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/get_env.c",
+      "sha256": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/listener_close.c",
+      "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/now.c",
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/print_err.c",
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/print.c",
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/process_run.c",
+      "sha256": "c12e5a182de9fdc5ef83d65f9f7c2c5746865d1049e5f3700438f8ac317b17c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/random_u32.c",
+      "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/sleep.c",
+      "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/socket_close.c",
+      "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/spawn.c",
+      "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/tcp_accept.c",
+      "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/tcp_connect.c",
+      "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/tcp_listen.c",
+      "sha256": "6212a0bc400e960e8b486f85a091cd4964f92b0546475481271c0f369a234d8c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/tcp_poll.c",
+      "sha256": "feb6fa3f7c04b3143c71593e2c17088394d11474bd87ca791fb71fbf9f9a8f82"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/tcp_recv.c",
+      "sha256": "8378e28f0723dbeb2635b9909b01f8dc63dcac30161f79b8b743bd8037e45b40"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/tcp_send.c",
+      "sha256": "85c1c9ff20d28c33968299c738b19ff752c768c72a53e071533a6960c0329a5a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/thread_count.c",
+      "sha256": "39515c611a2b42687fb670179f3d9032af1878727356754959061125d40fa7e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/udp_bind.c",
+      "sha256": "b30150927ffde3162d62012b67d43d95c79754f9539279628d2ad5bc9c040408"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/udp_poll.c",
+      "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/udp_recv_from.c",
+      "sha256": "4fc0f4e4ddeaef51bc4434b64e9cfcf3888b1470e534fe6ba27f80e48d2b8aef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/udp_send_to.c",
+      "sha256": "71f92e41fb4cadee6714a0e066c22225d015f9e708cb58393b539cc6ee011721"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/window_close.c",
+      "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/window_frame.c",
+      "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/window_open.c",
+      "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/window_set_title.c",
+      "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/window.c",
+      "sha256": "7bda00a55917f11ff1fa532b1406ec5c1a8a7eef6f6ba2a933dd958256e0a409"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/effs/write.c",
+      "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/ORIGIN.md",
+      "sha256": "cc7d2b0e50253e3ccc3f88ed5c92134b3faba5a8c6eb86ae7aa9c7b5e7dd7073"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/snapshot/src/runtime/native/runtime.c",
+      "sha256": "8729e2aada3f64f6450502519c3ffd5e10a67827a79c7cb2c1dddfe6719b94ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/base-u32.bend",
+      "sha256": "5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/frontend/phase5-imported-freshness/earlier-parse-error.bend",
+      "sha256": "3cde9859504c71d581b9488b848af9db3b76fafa1468752ce3111e4b4bdf7dc9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/bad-type.bend",
+      "sha256": "51d521f86978792ac5402a922777990733761e67a8a0b4fc6b537e843bdb55c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/direct.mjs",
+      "sha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/runtime.c",
+      "sha256": "8729e2aada3f64f6450502519c3ffd5e10a67827a79c7cb2c1dddfe6719b94ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/report.json",
+      "sha256": "ad90db2d70dcad64ee0fed8a5156a4a9c3f21c0057552451f65fa9eba58d3878"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/direct.mjs",
+      "sha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/runtime.c",
+      "sha256": "8729e2aada3f64f6450502519c3ffd5e10a67827a79c7cb2c1dddfe6719b94ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/selfhosting07-plan.json",
+      "sha256": "402e7099a2319e3550f5af602aa4f5176b5290512db8ec2fff0ad3477696937a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/selfhosting07-execution/report.json",
+      "sha256": "4cdde3fbff1092309eb46b24248f6beb67704cd6df150733df9ccf23a3b7181d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/methods.json",
+      "sha256": "3c74b9507749513ffca8818d1e9e812528aa0550b43607b90911dc14bcae20f4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/qualification/make-method.py",
+      "sha256": "9cf3a9f7902414145223aa4ce7447ad7eab87812b21d65462007aef9d861f566"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/qualification-method01/bootstrap/setup.mjs",
+      "sha256": "cbfaceb11a839195d27b084c458ffdce8b83e3f3dff3b8625aead097502ecc35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/bootstrap/setup.mjs",
+      "sha256": "3fcbe9a74ff708279ed95b3b960915fa73978ddbf9061e888a1b26e9cafcbd9e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/qualification-method01/bootstrap/reproduce.mjs",
+      "sha256": "ef7bd43561cadb7bd9bc6f49d6b768c204e5fcdc20ba3d3177b6551c9addc989"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/bootstrap/reproduce.mjs",
+      "sha256": "d25ce60f4bce0c73cf4af8da34843dd652360b79ff22081e291dd3b9c5f1ff2b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/qualification-method01/qualification/checked-image.mjs",
+      "sha256": "1a927340a9fd49054e80b8bd9a4f14db26b567123478f9bca655d8f6b3f93768"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/checked-image.mjs",
+      "sha256": "c449dfb8c2b2df99266a2422523c62c96f21a5f488867c14f0cfad09e732c571"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/qualification-method01/qualification/native3.mjs",
+      "sha256": "58636c2a4ab1e518674214ef39f8afda1b5f6331fd9ec7cc3467e1be1b50a3ab"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/native3.mjs",
+      "sha256": "3aabc274e5aae0938d5ba8d8b80e2471f1fa40df3e6911a0a1477093ad9d3a29"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/qualification-method01/qualification/self-check.mjs",
+      "sha256": "a81461530cb6e1283f9b1fb81d0a0e5e902868dde5c5f170368d0cd0cb4ade8d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/self-check.mjs",
+      "sha256": "a81461530cb6e1283f9b1fb81d0a0e5e902868dde5c5f170368d0cd0cb4ade8d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/qualification-method01/qualification/acquire.mjs",
+      "sha256": "94fc8f9873a20089b35e46c6e3bd03129b63ac7af6132aca3a082dcc6f90a7cc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/acquire.mjs",
+      "sha256": "94fc8f9873a20089b35e46c6e3bd03129b63ac7af6132aca3a082dcc6f90a7cc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/qualification-method01/qualification/image-provenance.mjs",
+      "sha256": "26491489722f9224caf5d9724b751cdec64604f7cd70a7d22f5a3a24c55b636b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/image-provenance.mjs",
+      "sha256": "56f9d7115884df7e16be5d2c4ac3e067d003b48fd49602d8fabe55cc4f2b7912"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/qualification-method01/qualification/composition-controls.mjs",
+      "sha256": "20fa1005377f3a4d9d6ccc1eb0e5f6f58c2bc7ec26669f9363880dc0eadace1a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/composition-controls.mjs",
+      "sha256": "20fa1005377f3a4d9d6ccc1eb0e5f6f58c2bc7ec26669f9363880dc0eadace1a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/qualification-method01/qualification/overapplication-controls.mjs",
+      "sha256": "de58b0d11951eff8bb55b5e9178775dad6b79f4786799b375df066c991ec1ecf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/overapplication-controls.mjs",
+      "sha256": "de58b0d11951eff8bb55b5e9178775dad6b79f4786799b375df066c991ec1ecf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/qualification-method01/qualification/numeric-controls.mjs",
+      "sha256": "ee8ade65b9cf7a5f122a898e551a42b520c36b6e210ee692671e3fec5be9fcd9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/numeric-controls.mjs",
+      "sha256": "ee8ade65b9cf7a5f122a898e551a42b520c36b6e210ee692671e3fec5be9fcd9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/qualification-method01/qualification/source-controls.mjs",
+      "sha256": "b5edc4f7ab5618199df67e8725c2697edc4a31a1ac3ddea349e6317e83b5af1a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/source-controls.mjs",
+      "sha256": "e2984caaf53d5b169552a458a49361b3929aee4666abfcddda738c606b79d0c9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/qualification-method01/qualification/benchmark-equality.mjs",
+      "sha256": "8d2a2ccf475a07fc94095b30a0c9746581aaca11962dcc897e2b3ef9094283a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/benchmark-equality.mjs",
+      "sha256": "8d2a2ccf475a07fc94095b30a0c9746581aaca11962dcc897e2b3ef9094283a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-source-v1.mjs",
+      "sha256": "e4d13b112787ee5b217a9821c5ef2e47e01cd797c18dce0c7ab8834a58379c98"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/checked-source-controls.mjs",
+      "sha256": "ca60938a8a887a6ced40fe56ed3cab92597553c703307c49a54ca065cab62173"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-runtime-v2.mjs",
+      "sha256": "77dfb7094d437d304f65c2de99da0e15600d9161d0b8b528156aca7ca76336a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/checked-numeric-controls.mjs",
+      "sha256": "f83247b1dc3fef6fa6dc0f90e1e7c92a030f5b81aabdf62933a073afd33cba80"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-composition-v3.mjs",
+      "sha256": "f715c8afccabb197e8922bdc2a0dcb847e2735e3751acc6c58f29efdd1201a1a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/checked-composition-controls.mjs",
+      "sha256": "da1d70a59e507d691778fd3e5f1812e2094c43429dc0ea25c53c214efa5e0a61"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-overapplication-v1.mjs",
+      "sha256": "acece432d04089e6e8861b5a1897a5e906f7eb86b1b105d80e18c71d80b86dca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/qualification-method01/qualification/checked-overapplication-controls.mjs",
+      "sha256": "ed779466de0964bd87720fd6ba66378d17c9d52a3f504007940b5ab9517e8a40"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/equality/api.mjs.derivation.json",
+      "sha256": "69180a51adb710ddd24a29e40210a5b90b78113c27cd8c8f60b1c1a663d6fa89"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/export-admission06/typed-driver.mjs",
+      "sha256": "e093483d5103a8e833b6ca710246b1ec3c579b7fac5060c8e42f626c5e25ec85"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-07/validation-001/report.json",
+      "sha256": "0168d6d0bd24f90492fe65a08884d2ab2f918f2ad1f96899900556be3cc037b1"
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+      "sha256": "860b59bce0b8c38e2e548368b14c51825bd62d8da1da200e2049737f1e0e383d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/qualification/prepare-selfhosting.py",
+      "sha256": "44c67a5a4b4581f4292b85589ceff9d0aff3cf98f8df3d12dc56b82fd7f92390"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/selfhosting07/self-check/report.json",
+      "sha256": "8e10a8cffcea82f1311767cae05b2d50eea31fe20570542eb1de6d301e7b8ba3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/derivation.json",
+      "sha256": "b78a63ddf0faf6dd659dad5460199c62561a42dec2e893573f1a1f83534d7d74"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase61/validation/prepare-candidate-v4.py",
+      "sha256": "ccd302ef74f60696d9e9a474235d83b00e7363b983408847cf65a60a92dcb144"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-own-host02-plan01/full77.json",
+      "sha256": "cabd21be8e7ab930221e72edab9fc39e72ec76b17a1b8b38889a7716b1b46077"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-own-host02-plan01/driver.json",
+      "sha256": "b260d36e46c2ba2f336e980d9cb40e5088b0bc9cce0a220e8e4e9ae50f11222b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-host02/snapshot/src/back/js/direct/core.bend",
+      "sha256": "2bb2e2d60fa08e73532446dfc93eec2e4ac78b32350e7d305a99e2e53dd69fc9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/bootstrap/expose-stages.mjs",
+      "sha256": "e8a5456f383035d4b88a79c6f0264beef0e3dd7e8766fe29c049964e386bbd31"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/bootstrap/emit-split.mjs",
+      "sha256": "e2b66ec96c55019fc64a7cbfe8e15dff156ec55a148d1695894e2246a2c3e561"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/bootstrap/driver-probe.mjs",
+      "sha256": "ca3cb77dc7ec6a3f107b7e2a13658df04845d736390f07132e34d0f99f05f079"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/bootstrap/compare-driver.mjs",
+      "sha256": "338f378d28b4b7ef7cb85b1d9c5a84fa5097ca254c42fce49defea046eb150d4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/tools/compare-driver.mjs",
+      "sha256": "0cc1946c29119dbee60d315b64abbaa2464d2af8b18e87cf75e956c5acb4efd3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/tiny/compiler.mjs",
+      "sha256": "a471cf4f64f2615b7e19ad627428dac155f79eaa96fde99c938d3ba3789ebfa9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/tiny/progress.jsonl",
+      "sha256": "b131a4220d3fb9aca66661ced6f9509dd5362e1f89efb809b91330cd58c4b279"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/tools/typed-driver.mjs",
+      "sha256": "e093483d5103a8e833b6ca710246b1ec3c579b7fac5060c8e42f626c5e25ec85"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/tools/base-cache-graph.mjs",
+      "sha256": "e1a755e758435da768b77f59e2ea2e7b3b966998ba1b6a6fdd5f1a154cffca62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/tools/assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/tools/node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/tools/native-build.mjs",
+      "sha256": "a76f2c027459f7ffdb9fc16dc450ee33e0f39c74568df4c74d03309e662c9117"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/compiler.json",
+      "sha256": "e7bb9f5c489220bb5270f7aa687407ef550d2452b5570eae283bdf7d9b89fb5e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime.mjs",
+      "sha256": "913b6a850c60377dbb13ef98db2811b6c8383ee9fa6a6fc16fcad9c68f8afc54"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/base.mjs",
+      "sha256": "1cf66725fbe281a07b502c903cf44fa69abaeca961dd61ed63b3ea1ab97372c0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/build.mjs",
+      "sha256": "4be85d590521e9453f0e7eb46f7b7d9d35bfd803510089c23db192c09d2b2a12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/core.mjs",
+      "sha256": "7cefc0acd4b36908697663708c004337b3bf7da1a8a8404b3cae120010104398"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effects.mjs",
+      "sha256": "20b25d65fa422604bca85304db1bd824b9ed0a0f6cf0b13f6444be935876d312"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/args.js",
+      "sha256": "ed1a7e7b73ae7fe58ac6d428d2762b66f223f4c70a165570fc5d68dc874ddc0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/audio_close.js",
+      "sha256": "c700e2fc0eda1f9a67afd317184999d9283912817aaec00637af41b135b84c62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/audio_open.js",
+      "sha256": "6f531ac205dab98dd366111cdcc5eed69fb9058350ca715f3419065cd979b088"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/audio_write.js",
+      "sha256": "377d3e938ce3cc9f083c662b69d34e3a0cf391c92ddaf3fca8a4b28c78662da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/chan.js",
+      "sha256": "007ff7505af9effc20fccfa3d26eaf89a382d6295839b27df119a1704a3f86d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/file_close.js",
+      "sha256": "2b83f900113776ab875fa3afd29f31000a191fe48645abe78b1d7b34cb12a7fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/file_open.js",
+      "sha256": "dd549f5f05eb896aef9a3a02ffecf2ee902e653f5463be72781edab1cd1180ae"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/file_read.js",
+      "sha256": "7aa8a95a0b02f3c8db1167da5a936958a90c64e7df3e327ba5c66766d5e57da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/file_size.js",
+      "sha256": "508a931334016f725f0446d9c63f91d7e9de79b9fb347d0e148777dba834ef0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/file_write.js",
+      "sha256": "4fe307538beb1047add7646f52df6e382a1da5d8999d8fe96969bd5055bc9b59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/get_env.js",
+      "sha256": "2fab2162d5ff9842d1b84bfdc56466a606eeb0b81b04dd29f091652ff715ded6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/listener_close.js",
+      "sha256": "1b87fb43c373b1a8a54b5afaf0cf8e3ec2f8d39bdfde131e49527caa19ac0cb8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/manifest.json",
+      "sha256": "9d0ee345ec98cb177d258e5e9c080b09b67ae396fd975df332081332e10f69e4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/now.js",
+      "sha256": "b2c45fdcfeba0f155be5631b25708341c09d3c80929d8467afd5977473b087bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/print_err.js",
+      "sha256": "a7a00612edfe98af1a351e8f7b912af4ee33f4bb888c36f119f7712d72a9394e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/print.js",
+      "sha256": "814ceba4efbaa291b7b6a9ff29aa20e3a23c06eb4fa165c69ee0bd22878adaa9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/process_run.js",
+      "sha256": "6ebe3b9875ef62ee189209096fb422508e79d34e58913457aefe52a052631e42"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/random_u32.js",
+      "sha256": "ab0b37cb6055ad08573d1263aa380c339c3fe7417530cfa63264629dce7744c2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/README.md",
+      "sha256": "fbcffbc71f6ed64fc8bbd22ec439369fe751521a035409f8b7aa13d76b31fa9a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/sleep.js",
+      "sha256": "6711ccd804dcaede381da9ff0283b4640feb440e1d413381101f22bfed65a934"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/socket_close.js",
+      "sha256": "dc4bf1fa95692c91528d4eb855506dde8dfc9164a90de2c43cd1bd6916e0c380"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/spawn.js",
+      "sha256": "8a14c7a7a5ff80b049f0659f9e58d43bf0f3b1a6724d35a199c3f864b3242e4b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/tcp_accept.js",
+      "sha256": "26406cce42c497994e597a7a032629fab65f43ec14f06ee69aace2b353afe28d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/tcp_connect.js",
+      "sha256": "a20819822e4ce18c8878b94e6ee70466833415eb9ebc2b6a39b65cabfcc553c9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/tcp_listen.js",
+      "sha256": "0da4cfafaa24ba5e17d9fda5e6a5b207b2b36031b2c888944f67b85842d76399"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/tcp_recv.js",
+      "sha256": "e8c54490445cb71a4328c07be8c40a49cee3e643cbf74f42dc73d31ab95890d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/tcp_send.js",
+      "sha256": "ea68cc521fa9b5603c3fccebbf19ecebcd26bf1a8af644ff1f13cd14ba9fe733"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/thread_count.js",
+      "sha256": "f4ef6d8ded95fe3114e50b7d2b6eb873e693419b85150f681b4a54a5043c2de9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/udp_bind.js",
+      "sha256": "e3afae5bf246184e76703efbcf41cb35bf5289e746cc40dc0300eef98753dfb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/udp_recv_from.js",
+      "sha256": "d6f88b08f578f088b4ff257a7e544e4fbbf46f375aee3881ba4d44e25ed890d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/udp_send_to.js",
+      "sha256": "40c835c4d73eb15d089a41b425968d04931d02820cb901aadb8eb3dd4905f247"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/window_close.js",
+      "sha256": "be4ef11e9ac57c59aa4aee847f15ece18034ca9fe1c4a68c6e0b0d7bbd7c3590"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/window_frame.js",
+      "sha256": "78baa53aa46e02165c0c94da68d1f6362386ebcfb97dbb36fffb82792a03d34f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/window_grab.js",
+      "sha256": "55cfc1925114f2d1f177137fad24d6252fe28707d26a1aae18a98ad97060a668"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/window_open.js",
+      "sha256": "cd716864b8dfb27ca955c8aa58643c7d693ce76eb56472bd8255ff7ac0656e8d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/window_set_title.js",
+      "sha256": "eee0bf26b7f381f8800364e22e8c735e47dd6db3f58e23ff3dda8478a8411513"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/effs/write.js",
+      "sha256": "e3495066a5d8c53fe1c46cfd2bb32577e3bd7dcae9797808801599073504dacb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/foreign.mjs",
+      "sha256": "ad406115010d01b969b18d2446fd8f4073c53118abc95aac4ba6fd9a928be9bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/readback.mjs",
+      "sha256": "8796c35456a80c90adffb0aa54f3b03fb780a3afb3476c8ced63dc6a0fdf707f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/README.md",
+      "sha256": "860b9d43ac1982b2b66b332b50f438a77d4ee95880e79144f89949dc58004afa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/test-apply.mjs",
+      "sha256": "ca8e877deb0db259f9c22bb5dc17bb774a413c1018796d08f63800ca834c82c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/test-phase8.mjs",
+      "sha256": "e6992665eeb60357ae27351b9bd5dc76c07b83619090e0bfcf2f9d1b45b1b0a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/js/test.mjs",
+      "sha256": "abbb1a4a34b8c0a9764966dd47e56bbeddf06d5e19bc626eb91fa3f94a80a440"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/args.c",
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/audio_close.c",
+      "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/audio_open.c",
+      "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/audio_write.c",
+      "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/audio.c",
+      "sha256": "049ac826d50def604c18cd4211d67573c4e27f4bc2600ce6c22e0dbe60c3783f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/chan_close.c",
+      "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/chan_new.c",
+      "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/chan_recv.c",
+      "sha256": "d0de18c78d78d5a3f4890cd2423a332d3d03a7b2f85e82202561fa67b4d57b3c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/chan_send.c",
+      "sha256": "1fc9e4857c440771e66ff83b61e6012727af51e62416ad818f5122e237784afc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/chan.c",
+      "sha256": "31257d7f71c560863d66b96ee9296cea07dd997f147a1ccd1433cc0130993696"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/file_close.c",
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/file_open.c",
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/file_read_at.c",
+      "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/file_read_bytes.c",
+      "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/file_read.c",
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/file_size.c",
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/file_write_bytes.c",
+      "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/file_write.c",
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/get_env.c",
+      "sha256": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/listener_close.c",
+      "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/now.c",
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/print_err.c",
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/print.c",
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/process_run.c",
+      "sha256": "c12e5a182de9fdc5ef83d65f9f7c2c5746865d1049e5f3700438f8ac317b17c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/random_u32.c",
+      "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/sleep.c",
+      "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/socket_close.c",
+      "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/spawn.c",
+      "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/tcp_accept.c",
+      "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/tcp_connect.c",
+      "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/tcp_listen.c",
+      "sha256": "6212a0bc400e960e8b486f85a091cd4964f92b0546475481271c0f369a234d8c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/tcp_poll.c",
+      "sha256": "feb6fa3f7c04b3143c71593e2c17088394d11474bd87ca791fb71fbf9f9a8f82"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/tcp_recv.c",
+      "sha256": "8378e28f0723dbeb2635b9909b01f8dc63dcac30161f79b8b743bd8037e45b40"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/tcp_send.c",
+      "sha256": "85c1c9ff20d28c33968299c738b19ff752c768c72a53e071533a6960c0329a5a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/thread_count.c",
+      "sha256": "39515c611a2b42687fb670179f3d9032af1878727356754959061125d40fa7e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/udp_bind.c",
+      "sha256": "b30150927ffde3162d62012b67d43d95c79754f9539279628d2ad5bc9c040408"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/udp_poll.c",
+      "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/udp_recv_from.c",
+      "sha256": "4fc0f4e4ddeaef51bc4434b64e9cfcf3888b1470e534fe6ba27f80e48d2b8aef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/udp_send_to.c",
+      "sha256": "71f92e41fb4cadee6714a0e066c22225d015f9e708cb58393b539cc6ee011721"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/window_close.c",
+      "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/window_frame.c",
+      "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/window_open.c",
+      "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/window_set_title.c",
+      "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/window.c",
+      "sha256": "7bda00a55917f11ff1fa532b1406ec5c1a8a7eef6f6ba2a933dd958256e0a409"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/effs/write.c",
+      "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/project/src/runtime/native/ORIGIN.md",
+      "sha256": "cc7d2b0e50253e3ccc3f88ed5c92134b3faba5a8c6eb86ae7aa9c7b5e7dd7073"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/javascript.mjs",
+      "sha256": "a81a2c46a0d46da06db5f3c62c58b4d51fa807074452295329ad837fac4d74a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/native-c.c",
+      "sha256": "573220330f01c891f5c8fcce854b7855b52f7aa81c4cf5d3255ff5f9f7828ffe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-source/progress.jsonl",
+      "sha256": "d2414626f4462efa07e228e05e542eb3eb0087cb3176980e1df69ca6aac5e6e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/tools/typed-driver.mjs",
+      "sha256": "e093483d5103a8e833b6ca710246b1ec3c579b7fac5060c8e42f626c5e25ec85"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/tools/base-cache-graph.mjs",
+      "sha256": "e1a755e758435da768b77f59e2ea2e7b3b966998ba1b6a6fdd5f1a154cffca62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/tools/assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/tools/node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/tools/native-build.mjs",
+      "sha256": "a76f2c027459f7ffdb9fc16dc450ee33e0f39c74568df4c74d03309e662c9117"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/compiler.json",
+      "sha256": "e7bb9f5c489220bb5270f7aa687407ef550d2452b5570eae283bdf7d9b89fb5e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime.mjs",
+      "sha256": "913b6a850c60377dbb13ef98db2811b6c8383ee9fa6a6fc16fcad9c68f8afc54"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/base.mjs",
+      "sha256": "1cf66725fbe281a07b502c903cf44fa69abaeca961dd61ed63b3ea1ab97372c0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/build.mjs",
+      "sha256": "4be85d590521e9453f0e7eb46f7b7d9d35bfd803510089c23db192c09d2b2a12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/core.mjs",
+      "sha256": "7cefc0acd4b36908697663708c004337b3bf7da1a8a8404b3cae120010104398"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effects.mjs",
+      "sha256": "20b25d65fa422604bca85304db1bd824b9ed0a0f6cf0b13f6444be935876d312"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/args.js",
+      "sha256": "ed1a7e7b73ae7fe58ac6d428d2762b66f223f4c70a165570fc5d68dc874ddc0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/audio_close.js",
+      "sha256": "c700e2fc0eda1f9a67afd317184999d9283912817aaec00637af41b135b84c62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/audio_open.js",
+      "sha256": "6f531ac205dab98dd366111cdcc5eed69fb9058350ca715f3419065cd979b088"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/audio_write.js",
+      "sha256": "377d3e938ce3cc9f083c662b69d34e3a0cf391c92ddaf3fca8a4b28c78662da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/chan.js",
+      "sha256": "007ff7505af9effc20fccfa3d26eaf89a382d6295839b27df119a1704a3f86d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/file_close.js",
+      "sha256": "2b83f900113776ab875fa3afd29f31000a191fe48645abe78b1d7b34cb12a7fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/file_open.js",
+      "sha256": "dd549f5f05eb896aef9a3a02ffecf2ee902e653f5463be72781edab1cd1180ae"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/file_read.js",
+      "sha256": "7aa8a95a0b02f3c8db1167da5a936958a90c64e7df3e327ba5c66766d5e57da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/file_size.js",
+      "sha256": "508a931334016f725f0446d9c63f91d7e9de79b9fb347d0e148777dba834ef0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/file_write.js",
+      "sha256": "4fe307538beb1047add7646f52df6e382a1da5d8999d8fe96969bd5055bc9b59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/get_env.js",
+      "sha256": "2fab2162d5ff9842d1b84bfdc56466a606eeb0b81b04dd29f091652ff715ded6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/listener_close.js",
+      "sha256": "1b87fb43c373b1a8a54b5afaf0cf8e3ec2f8d39bdfde131e49527caa19ac0cb8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/manifest.json",
+      "sha256": "9d0ee345ec98cb177d258e5e9c080b09b67ae396fd975df332081332e10f69e4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/now.js",
+      "sha256": "b2c45fdcfeba0f155be5631b25708341c09d3c80929d8467afd5977473b087bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/print_err.js",
+      "sha256": "a7a00612edfe98af1a351e8f7b912af4ee33f4bb888c36f119f7712d72a9394e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/print.js",
+      "sha256": "814ceba4efbaa291b7b6a9ff29aa20e3a23c06eb4fa165c69ee0bd22878adaa9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/process_run.js",
+      "sha256": "6ebe3b9875ef62ee189209096fb422508e79d34e58913457aefe52a052631e42"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/random_u32.js",
+      "sha256": "ab0b37cb6055ad08573d1263aa380c339c3fe7417530cfa63264629dce7744c2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/README.md",
+      "sha256": "fbcffbc71f6ed64fc8bbd22ec439369fe751521a035409f8b7aa13d76b31fa9a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/sleep.js",
+      "sha256": "6711ccd804dcaede381da9ff0283b4640feb440e1d413381101f22bfed65a934"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/socket_close.js",
+      "sha256": "dc4bf1fa95692c91528d4eb855506dde8dfc9164a90de2c43cd1bd6916e0c380"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/spawn.js",
+      "sha256": "8a14c7a7a5ff80b049f0659f9e58d43bf0f3b1a6724d35a199c3f864b3242e4b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/tcp_accept.js",
+      "sha256": "26406cce42c497994e597a7a032629fab65f43ec14f06ee69aace2b353afe28d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/tcp_connect.js",
+      "sha256": "a20819822e4ce18c8878b94e6ee70466833415eb9ebc2b6a39b65cabfcc553c9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/tcp_listen.js",
+      "sha256": "0da4cfafaa24ba5e17d9fda5e6a5b207b2b36031b2c888944f67b85842d76399"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/tcp_recv.js",
+      "sha256": "e8c54490445cb71a4328c07be8c40a49cee3e643cbf74f42dc73d31ab95890d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/tcp_send.js",
+      "sha256": "ea68cc521fa9b5603c3fccebbf19ecebcd26bf1a8af644ff1f13cd14ba9fe733"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/thread_count.js",
+      "sha256": "f4ef6d8ded95fe3114e50b7d2b6eb873e693419b85150f681b4a54a5043c2de9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/udp_bind.js",
+      "sha256": "e3afae5bf246184e76703efbcf41cb35bf5289e746cc40dc0300eef98753dfb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/udp_recv_from.js",
+      "sha256": "d6f88b08f578f088b4ff257a7e544e4fbbf46f375aee3881ba4d44e25ed890d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/udp_send_to.js",
+      "sha256": "40c835c4d73eb15d089a41b425968d04931d02820cb901aadb8eb3dd4905f247"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/window_close.js",
+      "sha256": "be4ef11e9ac57c59aa4aee847f15ece18034ca9fe1c4a68c6e0b0d7bbd7c3590"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/window_frame.js",
+      "sha256": "78baa53aa46e02165c0c94da68d1f6362386ebcfb97dbb36fffb82792a03d34f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/window_grab.js",
+      "sha256": "55cfc1925114f2d1f177137fad24d6252fe28707d26a1aae18a98ad97060a668"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/window_open.js",
+      "sha256": "cd716864b8dfb27ca955c8aa58643c7d693ce76eb56472bd8255ff7ac0656e8d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/window_set_title.js",
+      "sha256": "eee0bf26b7f381f8800364e22e8c735e47dd6db3f58e23ff3dda8478a8411513"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/effs/write.js",
+      "sha256": "e3495066a5d8c53fe1c46cfd2bb32577e3bd7dcae9797808801599073504dacb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/foreign.mjs",
+      "sha256": "ad406115010d01b969b18d2446fd8f4073c53118abc95aac4ba6fd9a928be9bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/readback.mjs",
+      "sha256": "8796c35456a80c90adffb0aa54f3b03fb780a3afb3476c8ced63dc6a0fdf707f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/README.md",
+      "sha256": "860b9d43ac1982b2b66b332b50f438a77d4ee95880e79144f89949dc58004afa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/test-apply.mjs",
+      "sha256": "ca8e877deb0db259f9c22bb5dc17bb774a413c1018796d08f63800ca834c82c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/test-phase8.mjs",
+      "sha256": "e6992665eeb60357ae27351b9bd5dc76c07b83619090e0bfcf2f9d1b45b1b0a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/js/test.mjs",
+      "sha256": "abbb1a4a34b8c0a9764966dd47e56bbeddf06d5e19bc626eb91fa3f94a80a440"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/args.c",
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/audio_close.c",
+      "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/audio_open.c",
+      "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/audio_write.c",
+      "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/audio.c",
+      "sha256": "049ac826d50def604c18cd4211d67573c4e27f4bc2600ce6c22e0dbe60c3783f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/chan_close.c",
+      "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/chan_new.c",
+      "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/chan_recv.c",
+      "sha256": "d0de18c78d78d5a3f4890cd2423a332d3d03a7b2f85e82202561fa67b4d57b3c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/chan_send.c",
+      "sha256": "1fc9e4857c440771e66ff83b61e6012727af51e62416ad818f5122e237784afc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/chan.c",
+      "sha256": "31257d7f71c560863d66b96ee9296cea07dd997f147a1ccd1433cc0130993696"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/file_close.c",
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/file_open.c",
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/file_read_at.c",
+      "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/file_read_bytes.c",
+      "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/file_read.c",
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/file_size.c",
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/file_write_bytes.c",
+      "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/file_write.c",
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/get_env.c",
+      "sha256": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/listener_close.c",
+      "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/now.c",
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/print_err.c",
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/print.c",
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/process_run.c",
+      "sha256": "c12e5a182de9fdc5ef83d65f9f7c2c5746865d1049e5f3700438f8ac317b17c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/random_u32.c",
+      "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/sleep.c",
+      "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/socket_close.c",
+      "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/spawn.c",
+      "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/tcp_accept.c",
+      "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/tcp_connect.c",
+      "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/tcp_listen.c",
+      "sha256": "6212a0bc400e960e8b486f85a091cd4964f92b0546475481271c0f369a234d8c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/tcp_poll.c",
+      "sha256": "feb6fa3f7c04b3143c71593e2c17088394d11474bd87ca791fb71fbf9f9a8f82"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/tcp_recv.c",
+      "sha256": "8378e28f0723dbeb2635b9909b01f8dc63dcac30161f79b8b743bd8037e45b40"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/tcp_send.c",
+      "sha256": "85c1c9ff20d28c33968299c738b19ff752c768c72a53e071533a6960c0329a5a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/thread_count.c",
+      "sha256": "39515c611a2b42687fb670179f3d9032af1878727356754959061125d40fa7e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/udp_bind.c",
+      "sha256": "b30150927ffde3162d62012b67d43d95c79754f9539279628d2ad5bc9c040408"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/udp_poll.c",
+      "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/udp_recv_from.c",
+      "sha256": "4fc0f4e4ddeaef51bc4434b64e9cfcf3888b1470e534fe6ba27f80e48d2b8aef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/udp_send_to.c",
+      "sha256": "71f92e41fb4cadee6714a0e066c22225d015f9e708cb58393b539cc6ee011721"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/window_close.c",
+      "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/window_frame.c",
+      "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/window_open.c",
+      "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/window_set_title.c",
+      "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/window.c",
+      "sha256": "7bda00a55917f11ff1fa532b1406ec5c1a8a7eef6f6ba2a933dd958256e0a409"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/effs/write.c",
+      "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/project/src/runtime/native/ORIGIN.md",
+      "sha256": "cc7d2b0e50253e3ccc3f88ed5c92134b3faba5a8c6eb86ae7aa9c7b5e7dd7073"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/javascript.mjs",
+      "sha256": "a81a2c46a0d46da06db5f3c62c58b4d51fa807074452295329ad837fac4d74a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/native-c.c",
+      "sha256": "573220330f01c891f5c8fcce854b7855b52f7aa81c4cf5d3255ff5f9f7828ffe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bootstrap-b2-07/driver-direct/progress.jsonl",
+      "sha256": "0f4b62a8557d83dd08c036c6bd47f4b434130d7a88c8500d57e323a64623be95"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/process.mjs",
+      "sha256": "fe6afbc8964f695e3b7bfe8c636b6da6295fd7265fcdebbf58839f3eafce4989"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/conformance/inventory.mjs",
+      "sha256": "91a1bd7be11e6e66a68c94251814286c9d0173d94a38b445240123bc558bc308"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/selfhosting07/fixed-point/report.json",
+      "sha256": "886bc2069948e842c37ac48e7002345d68b377858da05594daec468ba6930869"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/selfhosting07/self-check/image/project/dist/api.mjs",
+      "sha256": "0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/selfhosting07/fixed-point/compiler.mjs",
+      "sha256": "0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/report.json",
+      "sha256": "5f3c61071f2611dc08a33bfd0121837f761c17056f010bc4bd629f542fcb9e0e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/tools/typed-driver.mjs",
+      "sha256": "e093483d5103a8e833b6ca710246b1ec3c579b7fac5060c8e42f626c5e25ec85"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/tools/assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/tools/node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/tools/native-build.mjs",
+      "sha256": "a76f2c027459f7ffdb9fc16dc450ee33e0f39c74568df4c74d03309e662c9117"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/tools/base-cache-graph.mjs",
+      "sha256": "e1a755e758435da768b77f59e2ea2e7b3b966998ba1b6a6fdd5f1a154cffca62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/compiler.json",
+      "sha256": "e7bb9f5c489220bb5270f7aa687407ef550d2452b5570eae283bdf7d9b89fb5e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime.mjs",
+      "sha256": "913b6a850c60377dbb13ef98db2811b6c8383ee9fa6a6fc16fcad9c68f8afc54"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/base.mjs",
+      "sha256": "1cf66725fbe281a07b502c903cf44fa69abaeca961dd61ed63b3ea1ab97372c0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/build.mjs",
+      "sha256": "4be85d590521e9453f0e7eb46f7b7d9d35bfd803510089c23db192c09d2b2a12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/core.mjs",
+      "sha256": "7cefc0acd4b36908697663708c004337b3bf7da1a8a8404b3cae120010104398"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/direct.mjs",
+      "sha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effects.mjs",
+      "sha256": "20b25d65fa422604bca85304db1bd824b9ed0a0f6cf0b13f6444be935876d312"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/args.js",
+      "sha256": "ed1a7e7b73ae7fe58ac6d428d2762b66f223f4c70a165570fc5d68dc874ddc0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/audio_close.js",
+      "sha256": "c700e2fc0eda1f9a67afd317184999d9283912817aaec00637af41b135b84c62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/audio_open.js",
+      "sha256": "6f531ac205dab98dd366111cdcc5eed69fb9058350ca715f3419065cd979b088"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/audio_write.js",
+      "sha256": "377d3e938ce3cc9f083c662b69d34e3a0cf391c92ddaf3fca8a4b28c78662da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/chan.js",
+      "sha256": "007ff7505af9effc20fccfa3d26eaf89a382d6295839b27df119a1704a3f86d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/file_close.js",
+      "sha256": "2b83f900113776ab875fa3afd29f31000a191fe48645abe78b1d7b34cb12a7fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/file_open.js",
+      "sha256": "dd549f5f05eb896aef9a3a02ffecf2ee902e653f5463be72781edab1cd1180ae"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/file_read.js",
+      "sha256": "7aa8a95a0b02f3c8db1167da5a936958a90c64e7df3e327ba5c66766d5e57da7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/file_size.js",
+      "sha256": "508a931334016f725f0446d9c63f91d7e9de79b9fb347d0e148777dba834ef0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/file_write.js",
+      "sha256": "4fe307538beb1047add7646f52df6e382a1da5d8999d8fe96969bd5055bc9b59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/get_env.js",
+      "sha256": "2fab2162d5ff9842d1b84bfdc56466a606eeb0b81b04dd29f091652ff715ded6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/listener_close.js",
+      "sha256": "1b87fb43c373b1a8a54b5afaf0cf8e3ec2f8d39bdfde131e49527caa19ac0cb8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/manifest.json",
+      "sha256": "9d0ee345ec98cb177d258e5e9c080b09b67ae396fd975df332081332e10f69e4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/now.js",
+      "sha256": "b2c45fdcfeba0f155be5631b25708341c09d3c80929d8467afd5977473b087bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/print_err.js",
+      "sha256": "a7a00612edfe98af1a351e8f7b912af4ee33f4bb888c36f119f7712d72a9394e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/print.js",
+      "sha256": "814ceba4efbaa291b7b6a9ff29aa20e3a23c06eb4fa165c69ee0bd22878adaa9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/process_run.js",
+      "sha256": "6ebe3b9875ef62ee189209096fb422508e79d34e58913457aefe52a052631e42"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/random_u32.js",
+      "sha256": "ab0b37cb6055ad08573d1263aa380c339c3fe7417530cfa63264629dce7744c2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/README.md",
+      "sha256": "fbcffbc71f6ed64fc8bbd22ec439369fe751521a035409f8b7aa13d76b31fa9a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/sleep.js",
+      "sha256": "6711ccd804dcaede381da9ff0283b4640feb440e1d413381101f22bfed65a934"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/socket_close.js",
+      "sha256": "dc4bf1fa95692c91528d4eb855506dde8dfc9164a90de2c43cd1bd6916e0c380"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/spawn.js",
+      "sha256": "8a14c7a7a5ff80b049f0659f9e58d43bf0f3b1a6724d35a199c3f864b3242e4b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/tcp_accept.js",
+      "sha256": "26406cce42c497994e597a7a032629fab65f43ec14f06ee69aace2b353afe28d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/tcp_connect.js",
+      "sha256": "a20819822e4ce18c8878b94e6ee70466833415eb9ebc2b6a39b65cabfcc553c9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/tcp_listen.js",
+      "sha256": "0da4cfafaa24ba5e17d9fda5e6a5b207b2b36031b2c888944f67b85842d76399"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/tcp_recv.js",
+      "sha256": "e8c54490445cb71a4328c07be8c40a49cee3e643cbf74f42dc73d31ab95890d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/tcp_send.js",
+      "sha256": "ea68cc521fa9b5603c3fccebbf19ecebcd26bf1a8af644ff1f13cd14ba9fe733"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/thread_count.js",
+      "sha256": "f4ef6d8ded95fe3114e50b7d2b6eb873e693419b85150f681b4a54a5043c2de9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/udp_bind.js",
+      "sha256": "e3afae5bf246184e76703efbcf41cb35bf5289e746cc40dc0300eef98753dfb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/udp_recv_from.js",
+      "sha256": "d6f88b08f578f088b4ff257a7e544e4fbbf46f375aee3881ba4d44e25ed890d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/udp_send_to.js",
+      "sha256": "40c835c4d73eb15d089a41b425968d04931d02820cb901aadb8eb3dd4905f247"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/window_close.js",
+      "sha256": "be4ef11e9ac57c59aa4aee847f15ece18034ca9fe1c4a68c6e0b0d7bbd7c3590"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/window_frame.js",
+      "sha256": "78baa53aa46e02165c0c94da68d1f6362386ebcfb97dbb36fffb82792a03d34f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/window_grab.js",
+      "sha256": "55cfc1925114f2d1f177137fad24d6252fe28707d26a1aae18a98ad97060a668"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/window_open.js",
+      "sha256": "cd716864b8dfb27ca955c8aa58643c7d693ce76eb56472bd8255ff7ac0656e8d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/window_set_title.js",
+      "sha256": "eee0bf26b7f381f8800364e22e8c735e47dd6db3f58e23ff3dda8478a8411513"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/effs/write.js",
+      "sha256": "e3495066a5d8c53fe1c46cfd2bb32577e3bd7dcae9797808801599073504dacb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/foreign.mjs",
+      "sha256": "ad406115010d01b969b18d2446fd8f4073c53118abc95aac4ba6fd9a928be9bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/readback.mjs",
+      "sha256": "8796c35456a80c90adffb0aa54f3b03fb780a3afb3476c8ced63dc6a0fdf707f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/README.md",
+      "sha256": "860b9d43ac1982b2b66b332b50f438a77d4ee95880e79144f89949dc58004afa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/test-apply.mjs",
+      "sha256": "ca8e877deb0db259f9c22bb5dc17bb774a413c1018796d08f63800ca834c82c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/test-phase8.mjs",
+      "sha256": "e6992665eeb60357ae27351b9bd5dc76c07b83619090e0bfcf2f9d1b45b1b0a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/js/test.mjs",
+      "sha256": "abbb1a4a34b8c0a9764966dd47e56bbeddf06d5e19bc626eb91fa3f94a80a440"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/args.c",
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/audio_close.c",
+      "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/audio_open.c",
+      "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/audio_write.c",
+      "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/audio.c",
+      "sha256": "049ac826d50def604c18cd4211d67573c4e27f4bc2600ce6c22e0dbe60c3783f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/chan_close.c",
+      "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/chan_new.c",
+      "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/chan_recv.c",
+      "sha256": "d0de18c78d78d5a3f4890cd2423a332d3d03a7b2f85e82202561fa67b4d57b3c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/chan_send.c",
+      "sha256": "1fc9e4857c440771e66ff83b61e6012727af51e62416ad818f5122e237784afc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/chan.c",
+      "sha256": "31257d7f71c560863d66b96ee9296cea07dd997f147a1ccd1433cc0130993696"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/file_close.c",
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/file_open.c",
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/file_read_at.c",
+      "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/file_read_bytes.c",
+      "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/file_read.c",
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/file_size.c",
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/file_write_bytes.c",
+      "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/file_write.c",
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/get_env.c",
+      "sha256": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/listener_close.c",
+      "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/now.c",
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/print_err.c",
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/print.c",
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/process_run.c",
+      "sha256": "c12e5a182de9fdc5ef83d65f9f7c2c5746865d1049e5f3700438f8ac317b17c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/random_u32.c",
+      "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/sleep.c",
+      "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/socket_close.c",
+      "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/spawn.c",
+      "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/tcp_accept.c",
+      "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/tcp_connect.c",
+      "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/tcp_listen.c",
+      "sha256": "6212a0bc400e960e8b486f85a091cd4964f92b0546475481271c0f369a234d8c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/tcp_poll.c",
+      "sha256": "feb6fa3f7c04b3143c71593e2c17088394d11474bd87ca791fb71fbf9f9a8f82"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/tcp_recv.c",
+      "sha256": "8378e28f0723dbeb2635b9909b01f8dc63dcac30161f79b8b743bd8037e45b40"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/tcp_send.c",
+      "sha256": "85c1c9ff20d28c33968299c738b19ff752c768c72a53e071533a6960c0329a5a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/thread_count.c",
+      "sha256": "39515c611a2b42687fb670179f3d9032af1878727356754959061125d40fa7e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/udp_bind.c",
+      "sha256": "b30150927ffde3162d62012b67d43d95c79754f9539279628d2ad5bc9c040408"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/udp_poll.c",
+      "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/udp_recv_from.c",
+      "sha256": "4fc0f4e4ddeaef51bc4434b64e9cfcf3888b1470e534fe6ba27f80e48d2b8aef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/udp_send_to.c",
+      "sha256": "71f92e41fb4cadee6714a0e066c22225d015f9e708cb58393b539cc6ee011721"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/window_close.c",
+      "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/window_frame.c",
+      "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/window_open.c",
+      "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/window_set_title.c",
+      "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/window.c",
+      "sha256": "7bda00a55917f11ff1fa532b1406ec5c1a8a7eef6f6ba2a933dd958256e0a409"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/effs/write.c",
+      "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/LICENSE",
+      "sha256": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/ORIGIN.md",
+      "sha256": "cc7d2b0e50253e3ccc3f88ed5c92134b3faba5a8c6eb86ae7aa9c7b5e7dd7073"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/src/runtime/native/runtime.c",
+      "sha256": "8729e2aada3f64f6450502519c3ffd5e10a67827a79c7cb2c1dddfe6719b94ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/dist/api.mjs",
+      "sha256": "0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/manifest.json",
+      "sha256": "acb8c1e48963ccaa56208b735f2c391b26fd470468ab707b4cba9882a282ff51"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/preparation.json",
+      "sha256": "899e7e6675831eb31f8a07554c20b6709d7099e7de29362183753a7b499052e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/catalog.json",
+      "sha256": "d183b7d6a1acee6671c680530d944a1588dce211f65de55eba02397cc18338fd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/local-row.mjs.json",
+      "sha256": "67663ccf873b09b589b60a25d5361116558b4d8f03322939413d713b2661426c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-historical/local-row.bend",
+      "sha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/local-row.mjs",
+      "sha256": "241042e1ff0487627b392a7f830de4e483dbe5d5d520def43c5e250b01a3990a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/local-row.mjs",
+      "sha256": "241042e1ff0487627b392a7f830de4e483dbe5d5d520def43c5e250b01a3990a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/local-fold.mjs.json",
+      "sha256": "77f00bcc9aed0e222e8b08aa86d472656aa163c0aa0fcca905801a9884d610d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-historical/local-fold.bend",
+      "sha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/local-fold.mjs",
+      "sha256": "43ffa45a73b8974c0e10c9c2a9809a6af46e41ac5306618473f34a52b5ac384a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/local-fold.mjs",
+      "sha256": "43ffa45a73b8974c0e10c9c2a9809a6af46e41ac5306618473f34a52b5ac384a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/scalar-region.mjs.json",
+      "sha256": "23c6571a8aa3a83a206164eec605611318f4b4c543ebfee21c4c6cee105574d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-historical/scalar-region.bend",
+      "sha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/scalar-region.mjs",
+      "sha256": "4814944bb4367589cfa93a0e0532ac05fbdb2c50f7895c9dc3d483436cff346e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/scalar-region.mjs",
+      "sha256": "4814944bb4367589cfa93a0e0532ac05fbdb2c50f7895c9dc3d483436cff346e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/mandelbrot.mjs.json",
+      "sha256": "632d74f0c5d49b4520c8f4bc1909a710ac12302988edbae6af41159629d67bb2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-historical/mandelbrot.bend",
+      "sha256": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/mandelbrot.mjs",
+      "sha256": "09bb6c4c346020bd8c3b738f3a6ccdd2388d4b53eff9414dcc548f987b50284e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/mandelbrot.mjs",
+      "sha256": "09bb6c4c346020bd8c3b738f3a6ccdd2388d4b53eff9414dcc548f987b50284e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/editdist.mjs.json",
+      "sha256": "662de8d0b10d9a66abd29b7122a570044ffb9731173e8e2349d70a832f74f1b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-historical/editdist.bend",
+      "sha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/editdist.mjs",
+      "sha256": "3e7e824f81c3c7c621a29ecb8ab67f398eb302a4aea1bb28cabaf2990346a590"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/editdist.mjs",
+      "sha256": "3e7e824f81c3c7c621a29ecb8ab67f398eb302a4aea1bb28cabaf2990346a590"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/tree-bitonic.mjs.json",
+      "sha256": "b009a8dbe4b9e3c9977ee9b81c53a245add7112150fa2908225da7890cd7b9b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-historical/tree-bitonic.bend",
+      "sha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/tree-bitonic.mjs",
+      "sha256": "504963bfe1629c94469bd2abd255cad427d499e51837b9eaa1c388a315effb2e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/tree-bitonic.mjs",
+      "sha256": "504963bfe1629c94469bd2abd255cad427d499e51837b9eaa1c388a315effb2e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/lexer.mjs.json",
+      "sha256": "b3295f4e703f56226a16e33bdc3ba419d074053770f9a679bf8dbf12e1e45af8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-historical/lexer.bend",
+      "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/lexer.mjs",
+      "sha256": "35b7e7c4d564bbbd641e9e26695f133a83d834747595da4275129ada5c0e5e7d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/lexer.mjs",
+      "sha256": "35b7e7c4d564bbbd641e9e26695f133a83d834747595da4275129ada5c0e5e7d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/symreg.mjs.json",
+      "sha256": "05aa8ad255b1f0a712deb8fa20372b89b286522eac0ab15eaa60aefc552aedee"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-historical/symreg.bend",
+      "sha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/symreg.mjs",
+      "sha256": "538ef96dd411b843f7a577867a7f22fe67aedc2b697d739e28305faf4d5c5b45"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/symreg.mjs",
+      "sha256": "538ef96dd411b843f7a577867a7f22fe67aedc2b697d739e28305faf4d5c5b45"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/test-morning-program.mjs.json",
+      "sha256": "ff133c289ffd9258cd8aa956bd18776ad90bd54eadc98840f0bfc76a5d6c10e6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-historical/test-morning-program.bend",
+      "sha256": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/test-morning-program.mjs",
+      "sha256": "650a7778740f8767dda94c3da69fe497761fc8bc20b82e7ebb55bb8ed02db564"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/test-morning-program.mjs",
+      "sha256": "650a7778740f8767dda94c3da69fe497761fc8bc20b82e7ebb55bb8ed02db564"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/test-evening-program.mjs.json",
+      "sha256": "478ea4768ec346e01125240aec698bdea495a4e8f2e24f500189a3af5c7bb4a9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-historical/test-evening-program.bend",
+      "sha256": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/test-evening-program.mjs",
+      "sha256": "21ee4cdeed284e4f7bd4267df058e8259baa4339b333bc2db3fe298a96cb9ed2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/test-evening-program.mjs",
+      "sha256": "21ee4cdeed284e4f7bd4267df058e8259baa4339b333bc2db3fe298a96cb9ed2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/test-rle-roundtrip.mjs.json",
+      "sha256": "54479aa4601275abda4aad99327b0e4527d689132c0f4c0450a23bd7ee1f2548"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-historical/test-rle-roundtrip.bend",
+      "sha256": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/test-rle-roundtrip.mjs",
+      "sha256": "2638ab16b952a0cbd43365f0c328a03144698744dc521442239375231c6c812c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/test-rle-roundtrip.mjs",
+      "sha256": "2638ab16b952a0cbd43365f0c328a03144698744dc521442239375231c6c812c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/test-map-set-ops.mjs.json",
+      "sha256": "807b12d4e5b2cb3f761d065de4c8ceae0a955939b0825ab93d775f42485516fa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-historical/test-map-set-ops.bend",
+      "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/test-map-set-ops.mjs",
+      "sha256": "ae2b6b4a2f6f9f440b918c52d2200489c25ccf56f2477fda72ceebd12d9e9546"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/test-map-set-ops.mjs",
+      "sha256": "ae2b6b4a2f6f9f440b918c52d2200489c25ccf56f2477fda72ceebd12d9e9546"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/raytrace.mjs.json",
+      "sha256": "1d070313a050bfabe9a4cca671837dffb18dac10d68e3d92f5b2773dfd5b4656"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-historical/raytrace.bend",
+      "sha256": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/raytrace.mjs",
+      "sha256": "c30bce0269f3ccd69cc42b243fd02e7de238fc865fe5c932ba9ea32945ff85cb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/raytrace.mjs",
+      "sha256": "c30bce0269f3ccd69cc42b243fd02e7de238fc865fe5c932ba9ea32945ff85cb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/mandelbrot-grid.mjs.json",
+      "sha256": "7bb9011315534400f242ef8bb7ce480be2e195401fc6aecd15180df50305e418"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-variants/mandelbrot-grid.bend",
+      "sha256": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/mandelbrot-grid.mjs",
+      "sha256": "2df1123ea30f2112f75f89bbdba4ccacaf3b22a60b867fc854ebb35b37608c71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/mandelbrot-grid.mjs",
+      "sha256": "2df1123ea30f2112f75f89bbdba4ccacaf3b22a60b867fc854ebb35b37608c71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/raytrace-active.mjs.json",
+      "sha256": "fd441293b8267940c6a210c5325ad9d198584f45cfb0f998c120a7d990157b8b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-variants/raytrace-active.bend",
+      "sha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/raytrace-active.mjs",
+      "sha256": "ba31ea7b8f34a6780ab38323807add19c0d28571653c012886560d722f5c36a7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/raytrace-active.mjs",
+      "sha256": "ba31ea7b8f34a6780ab38323807add19c0d28571653c012886560d722f5c36a7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/closures.mjs.json",
+      "sha256": "41bf5949e6149aba7038c836ca46cfc9b225220aaa227e4199babb55064c1efc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-new/closures.bend",
+      "sha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/closures.mjs",
+      "sha256": "9cccf2afa484e96d50a50d59de2d9f302aa02869a033d497e713c9380a203888"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/closures.mjs",
+      "sha256": "9cccf2afa484e96d50a50d59de2d9f302aa02869a033d497e713c9380a203888"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/list-pipeline.mjs.json",
+      "sha256": "c14b23cee46cd2d04d02d5041f7dfa1a52d78f5a7b2582d4b1b48c5be6734d72"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-new/list-pipeline.bend",
+      "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/list-pipeline.mjs",
+      "sha256": "6af0f7ecd81e199af7257f3856256417ae700bef098709eb1c3d1809b1fb9bd0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/list-pipeline.mjs",
+      "sha256": "6af0f7ecd81e199af7257f3856256417ae700bef098709eb1c3d1809b1fb9bd0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/unicode-text.mjs.json",
+      "sha256": "380713f0be745217ff3943c8c4e8651d48c25981109d1f825d42370c746806d5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-new/unicode-text.bend",
+      "sha256": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/unicode-text.mjs",
+      "sha256": "5c5c615a00251adf2a0fabb04d98fba8387e5e703645d34fe59b288e467057ba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/unicode-text.mjs",
+      "sha256": "5c5c615a00251adf2a0fabb04d98fba8387e5e703645d34fe59b288e467057ba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/map-churn.mjs.json",
+      "sha256": "fdc70864199b5fec38c0912c558a0fd216d480d347c9ec6e9f75c7918c66bf8b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-new/map-churn.bend",
+      "sha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/map-churn.mjs",
+      "sha256": "4dde611a4d7fee1e068677e9d4bc47206be718796fb1131cbae8d06a2c746b62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/map-churn.mjs",
+      "sha256": "4dde611a4d7fee1e068677e9d4bc47206be718796fb1131cbae8d06a2c746b62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/numeric-recurrence.mjs.json",
+      "sha256": "64af876f790165643fd389789ee60f27cede56aa9396f8c2f96aaa9e0e87dd9f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-new/numeric-recurrence.bend",
+      "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/numeric-recurrence.mjs",
+      "sha256": "35355f7cbf8bc1abd1eacd46854b21c4c7a438febe5f62bfee96cf76656eeb49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/numeric-recurrence.mjs",
+      "sha256": "35355f7cbf8bc1abd1eacd46854b21c4c7a438febe5f62bfee96cf76656eeb49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/bst.mjs.json",
+      "sha256": "6da4f3f516ae3ae0e811c094335258769d894460c22770ba488d14c1b2c4e554"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-new/bst.bend",
+      "sha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/bst.mjs",
+      "sha256": "7ea3711cd8f50a8aff3ac872dd211b13a675422bd35dcfb3d50627255be796ec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/bst.mjs",
+      "sha256": "7ea3711cd8f50a8aff3ac872dd211b13a675422bd35dcfb3d50627255be796ec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/expression.mjs.json",
+      "sha256": "c19ec5ded7124d3e21208f2063f54208b5e695988b61dd120e23cdd8c1e715f2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-new/expression.bend",
+      "sha256": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/expression.mjs",
+      "sha256": "e1a8ed3dc8311ad8b53c5900d3999834ea7dd914d59fe113c58c47a8119a45cc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/expression.mjs",
+      "sha256": "e1a8ed3dc8311ad8b53c5900d3999834ea7dd914d59fe113c58c47a8119a45cc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/record-aggregation.mjs.json",
+      "sha256": "65278c24e34b580bb9bbacb9ca41437b849a64eb013d98da72afe9dc4ac31a1b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/head-ts-inputs/fixtures-new/record-aggregation.bend",
+      "sha256": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/record-aggregation.mjs",
+      "sha256": "59d3721976cf472fd483107ddb789dd36281164557a3d99884d3654ddcc23119"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/record-aggregation.mjs",
+      "sha256": "59d3721976cf472fd483107ddb789dd36281164557a3d99884d3654ddcc23119"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/modules/local-row-observed.mjs",
+      "sha256": "c4638300e853b95ee0ceaad7a0def8b018e58162092a0c7c8211433f6dbf42d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/modules/local-row-observed.mjs",
+      "sha256": "c4638300e853b95ee0ceaad7a0def8b018e58162092a0c7c8211433f6dbf42d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-oracles.json",
+      "sha256": "5f24a2723368210bbd801cfe44aba4d19fb61379172365def08f77666e45c28e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase60/catalog.json",
+      "sha256": "d5903c18804afa14b9ca4fc51196d1d419148989a9496e768822f6637004c9ba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/catalog.json",
+      "sha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/consumed/verifier-workflow.mjs",
+      "sha256": "4249a59916fcd36ef411d4864a5050489df2fc78deee7ebe0d98684ff80f46f1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-acquisition/consumed/verifier-release.mjs",
+      "sha256": "8df92ed0d28546c1ccc0e69a6fc7e7f74fc4a1c03a4d2c9e11bb60a31130251c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/report.json",
+      "sha256": "87f82526432250334d032ed189a2d81de1ab75e923c714c8c59249e871a47ff8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/mandelbrot.result.json",
+      "sha256": "1ace9fec31529c5d09f34d8587d60633ada41457c038cd37861905201d1d14e5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/editdist.result.json",
+      "sha256": "80202854cb5bfdc0094d568b664a717d450b6044888dded29819527f0d6cb3d9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/tree-bitonic.result.json",
+      "sha256": "0524634ff0ac5447b856c787da2824bfbc8f7c15e839cdbc524196bf5651544b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/lexer.result.json",
+      "sha256": "74244e86491f46ec5b5d4dacb9e32ae8fb0cdc01663de037ce79100812bdf881"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/symreg.result.json",
+      "sha256": "6eda394c4eeb0db7f2a4b772770d17cb9938481eacc91ce51256aacae5cbd968"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/test-morning-program.result.json",
+      "sha256": "b7ce0ccc2397960f30ba4665739aa9d3d34d1aab0b75577b17a7fa4c66905154"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/test-evening-program.result.json",
+      "sha256": "925d69f9efcb8ba82e0b97abe3f085e63b3ceb67d288e3781db968c5d7d1d89e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/test-rle-roundtrip.result.json",
+      "sha256": "7a418a3b7c3a2a8e544896d43f25cc883d1d28e4fdb82a8bc62dc517b986698f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/test-map-set-ops.result.json",
+      "sha256": "df93adb2ed0fcb8d1c3680551eb80bbdce00779b21cc64e64cf7c391b91d2c6a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/raytrace.result.json",
+      "sha256": "5a857b426949aba957dab1f7ec8182b3441a1723217cc1fad1aa07ffa6a328cd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/local-pair.result.json",
+      "sha256": "7d4675c2479708e943f64e86e86de98f415b6b102e3f168c6114b9b522268fb4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/local-fold.result.json",
+      "sha256": "a088500b8a905f91c11861c794624bbf1726b256607c49be3a4edfe79424d3a2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/scalar-region-0.result.json",
+      "sha256": "ea1d008ccc4a6bf1ab7ccfd9f8980861e005b40ba1d56ead8672dbda6a539b27"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/scalar-region-8192.result.json",
+      "sha256": "8e6feaf838e275e086e8df423c15ee7dd45ff607eba2989e7627a55fc5e4a4b3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/complete-generic-row32.result.json",
+      "sha256": "2c0c1ee861dab3d928ce8f392c178958708f79d1a0ffbac293678decf94edd76"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-editdist-0-17.result.json",
+      "sha256": "d5e79c912d118708d6cb558ca0cc9b36a43ec70a7fac610c706f551d94d6f818"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-editdist-3-123.result.json",
+      "sha256": "b892f00ae0a905becb37b20ab3090bb7cce6186ef7721b0f6b4e1542e283a0af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-lexer-6-17.result.json",
+      "sha256": "d8943dc31c8a60b0bb58e1988c6aff01cd13e60567ea3c49a98a40dfc1a02ec7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-lexer-10-123.result.json",
+      "sha256": "950aaf0824ae6b01d48b4d9cc0d0fece219d416948fed44823adb8b4299a1f0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-tree-bitonic-6-17.result.json",
+      "sha256": "f5d21c716677dd9e6516930bd565b18930f06e385a1d9da9cc91931f41c660c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-tree-bitonic-9-123.result.json",
+      "sha256": "e20aaa8ded87bdf38f0ddbb4694c7be48df872bff44114506203480ea8ab3338"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-symreg-4-17.result.json",
+      "sha256": "6e3f1e089c6b6f4a7cb08a0dab98d755c55a8cded2cd9591242b55b730474671"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-symreg-7-123.result.json",
+      "sha256": "f624e8e77dee1bc9674577aa6cd80f4e57cb0b265e5222bdb636b28c9309fabc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-local-fold-128-0.result.json",
+      "sha256": "14dfda52277199ed81d254e7cb212ed3e6201c584ebb57130a6c1b890971f6d0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-local-fold-8192-123.result.json",
+      "sha256": "9f888aad78e606a8dd3a106c5bf970bd33adc34cd43f5ab762eafc21c4224896"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-mandelbrot-grid-4-7.result.json",
+      "sha256": "8bd555e64bf2641bf48dbe6d7dc5919e0ab885eaa76168a8f3cadb4cc1cb4ee5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-mandelbrot-grid-5-31.result.json",
+      "sha256": "d6743ed9a26ded96663038dd66c4ffcc81e591bdc16b14bc87581d7bf64ef039"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-ray-active-64-2440.result.json",
+      "sha256": "652bfdd626e818f7ed45df09347ebbd2eab9fbfdfa88a59442252fb362241887"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/variation-ray-active-256-2240.result.json",
+      "sha256": "910b8f2294b41038ee3b762fffa8d9c51143b59e69ebe33e263cb8a73bedd8d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-closures-64.result.json",
+      "sha256": "28c5845c99fd1f59d70959d82c1236f60010b08126ea5028cfa16ca62ca4b781"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-closures-256.result.json",
+      "sha256": "b77a2024c9137312e9632e94442183176e3ad984d690e7e83db5b0b5f2da8525"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-list-pipeline-128.result.json",
+      "sha256": "90bc091b0e3f47fd751a0cbca828e7f82e74bcd0d2bd75795d4c506f93c5322c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-list-pipeline-512.result.json",
+      "sha256": "5a558fff2e58826dbca89b19ad08a21153c40965462adb64e123fb314752bf21"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-bst-32.result.json",
+      "sha256": "caed1986fd82f42eaf4a84cb02293eff0845fb5599ee7457434ffe2a14e97415"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-bst-64.result.json",
+      "sha256": "50870dafb5834c737f243d7ec34f76460490c7f24c85f623f4e02be5bbdcc8c5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-unicode-text-16.result.json",
+      "sha256": "f2b2bb2cb4014209c9d9bc06531617e6d4bdc87e5eb02188b3b0aca27d7ab74c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-unicode-text-64.result.json",
+      "sha256": "9f97419a5a65ea7f8dc2bc254264124e0cc1a5d0141d2df340b996555a8c917e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-expression-32.result.json",
+      "sha256": "0b19432238a916a9c4c9e2b8a5aeed477d0ff01c40dee04905dd07a3a270695d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-expression-128.result.json",
+      "sha256": "016a795daefc166d50856cfefaea02172db206ef2a34dc0e8fac10542fe50043"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-map-churn-32.result.json",
+      "sha256": "5070799e0f77762ae04f211584f38c64d9fbecef9602954686b08a369a7d0bec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-map-churn-128.result.json",
+      "sha256": "68abaf184960d235c99935e59a71d8139c5809ce06773bee193a6edce9bd1aec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-numeric-recurrence-256.result.json",
+      "sha256": "0d18a0311ed2f49eb4d3070ae566c929d717f182e274cb59e448d67e3f918708"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-numeric-recurrence-1024.result.json",
+      "sha256": "5e3a5e9414138dbd0863825fff6d0be0ff11a48d328e0a2e5ad75e183624858e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-record-aggregation-64.result.json",
+      "sha256": "c49d881d94ff4faa99d1d1b5cea78f9287d7ad263c7cc45bdb89be79b22ea1fd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b1-07-full-smoke/coverage-record-aggregation-256.result.json",
+      "sha256": "98d48dc60f094fa67dee9e5ed5426529969a726157065e5f38c2041bc7474d7b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/join-bend-oracles-v2.py",
+      "sha256": "aaa8b90f412ac29049d467b15e1b6d71a4ef47b7b12269f5c9b4918617747df3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-full-oracles.json",
+      "sha256": "0102d332db43538032d7900b1b23f598a8898bf3bd2f266ac975ad71c1e9c9d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/b2-07-program-equality/image/project/build/typed/cache/base-0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f-99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf-92673856f81bb146473729c6b1e427023a37d5cbcf3fb32d7f6805bfbbee4396-frame4.json",
+      "sha256": "439ab8ba7c3dc15e674f2a661fe8c72169abe2884dd9ebe30bc9bf4c9040a0d0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/join-b2-oracles.py",
+      "sha256": "9653dabd4d120faf8851024566f100d80375214a353d45d1248641b6e3e82301"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/qualification/audit-selfhosting.py",
+      "sha256": "3b447365ac6c6225e66bd0b69817dc8c8344ea9d3b7bc4de600debb74c164074"
+    }
+  ],
+  "scope": "Actual selected B2 emission, tiny/driver checks, fresh own-source type acceptance with expected unsafe proof-trust refusal, exact B2/B3 bytes, and full emitted-module equality transferring the actual B1 program oracles. No new program runtime or clean compiler timing claim."
+}

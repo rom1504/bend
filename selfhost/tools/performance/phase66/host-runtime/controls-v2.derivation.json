@@ -1,0 +1,55 @@
+{
+  "kind": "phase66-host-runtime-control-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/host-runtime/controls-v1.mjs",
+    "sha256": "525318f77807808890c94654d7bb8b3b3cc82fe76ef5e1e84b0158094507044b"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/host-runtime/controls-v2.mjs",
+    "sha256": "096f2968f2033217951888cc63260ef587919c1309762b5303be31ce8945df37"
+  },
+  "operations": [
+    {
+      "before": "const [attemptArg,outArg]=process.argv.slice(2);",
+      "after": "const [attemptArg,outArg,derivationArg]=process.argv.slice(2);",
+      "count": 1
+    },
+    {
+      "before": "assert(attemptArg&&outArg,'Usage: controls-v1.mjs CHECKED_ATTEMPT FRESH_OUT');",
+      "after": "assert(attemptArg&&outArg&&derivationArg,'Usage: controls-v2.mjs CHECKED_ATTEMPT FRESH_OUT PROFILE7_DERIVATION');",
+      "count": 1
+    },
+    {
+      "before": "  report.image={api:m.api,base:m.base,artifactKind:m.artifactKind};",
+      "after": "  report.derivation=pin(derivationArg);\n  const derivation=JSON.parse(fs.readFileSync(derivationArg,'utf8'));\n  assert.equal(derivation.kind,'bend-derived-b1-equality');assert.equal(derivation.version,1);assert.equal(derivation.complete,true);assert.equal(derivation.newBootstrap,false);\n  assert.equal(derivation.transform.version,7);assert(derivation.transform.choices.sites>0);assert.equal(derivation.transform.tailChoices,undefined);\n  const same=(a,b)=>{assert.equal(pin(a.file,a).file,pin(b.file,b).file);assert.equal(a.sha256,b.sha256);};\n  same(derivation.original.api,m.checkedApi);same(derivation.original.bootstrapReport,m.bootstrapReport);\n  pin(derivation.toolSnapshot.file,derivation.toolSnapshot);assert.equal(derivation.toolSnapshot.sha256,'fcc80fd4da249e74f2cfd296c7e88f3c5f795a627e498c26bf5deb4ac8397eb5');\n  const equalityVerifier=await import(pathToFileURL(derivation.toolSnapshot.file));\n  const replay=equalityVerifier.verifyEqualityDerivation(derivationArg);same(replay.metadata.output,derivation.output);\n  const selectedApi=derivation.output;pin(selectedApi.file,selectedApi);\n  report.image={api:selectedApi,checkedParent:m.checkedApi,base:m.base,artifactKind:'equality-derived-B1-profile7',verifier:derivation.toolSnapshot};",
+      "count": 1
+    },
+    {
+      "before": "BEND_TYPED_API:m.api.file",
+      "after": "BEND_TYPED_API:selectedApi.file",
+      "count": 1
+    },
+    {
+      "before": "originalModule=await import(pathToFileURL(m.api.file))",
+      "after": "originalModule=await import(pathToFileURL(selectedApi.file))",
+      "count": 1
+    },
+    {
+      "before": "const original=fs.readFileSync(m.api.file,'utf8')",
+      "after": "const original=fs.readFileSync(selectedApi.file,'utf8')",
+      "count": 1
+    },
+    {
+      "before": "parent:m.api,suffixSha256:hash(suffix)",
+      "after": "parent:selectedApi,suffixSha256:hash(suffix)",
+      "count": 1
+    },
+    {
+      "before": "  await verifyAttempt(path.resolve(attemptArg));\n  report.inputsUnchanged=true;",
+      "after": "  await verifyAttempt(path.resolve(attemptArg));\n  equalityVerifier.verifyEqualityDerivation(derivationArg);\n  report.inputsUnchanged=true;",
+      "count": 1
+    }
+  ],
+  "targetExecuted": false,
+  "scope": "All16 original assertions retained. Exact checked parent and source/runtime hashes unchanged; separately admitted profile7 equality+literal-choice derivative verified by exact frozen helper replay before import and after execution."
+}

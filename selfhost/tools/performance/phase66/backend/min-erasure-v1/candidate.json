@@ -1,0 +1,59 @@
+{
+  "kind": "phase66-direct-min-erasure-candidate",
+  "targetExecuted": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/js/direct/core.bend",
+    "sha256": "badf6ebe617c095cfc384d4232faa7e58aaadde04a25cb6847b69981a9430660",
+    "bytes": 21265
+  },
+  "before": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/min-erasure-v1/before.bend",
+    "sha256": "badf6ebe617c095cfc384d4232faa7e58aaadde04a25cb6847b69981a9430660",
+    "bytes": 21265
+  },
+  "after": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/min-erasure-v1/after.bend",
+    "sha256": "64843b27c7a30738a7b189e51ad5a538f2dd4da6103f26becbf7d5ceb60e76f7",
+    "bytes": 21290
+  },
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/min-erasure-v1/candidate.patch",
+    "sha256": "6d0558408213283fe25e6482e564e3b69598d29b0c92451fffc0361d0fed69e0",
+    "bytes": 765
+  },
+  "upstreamCompiler": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+    "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c",
+    "bytes": 185124
+  },
+  "sources": [
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/meet_at_run_time.bend",
+        "sha256": "d57a24eff811fe887f03dcc7f3d0b0785910e402a55ad7d1c7c10c256dd87728",
+        "bytes": 1003
+      },
+      "typescriptArtifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-new-ts-js01/typescript-new/js/report.json.artifacts/153/meet_at_run_time.cjs",
+        "sha256": "50dfe76e558a5f6706e68b0f74f39d55cd305619b5d7244d84494230799b847e",
+        "bytes": 12976
+      },
+      "expected": "3n\n"
+    },
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/meet_uses_in_arms.bend",
+        "sha256": "3a3d5f68abf1e5f21503df0f7d587b66b5f4f77a3fcd97b1dbd05e0fbbb08b93",
+        "bytes": 429
+      },
+      "typescriptArtifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-new-ts-js01/typescript-new/js/report.json.artifacts/154/meet_uses_in_arms.cjs",
+        "sha256": "32e6782af05de4d40d2a9f317aa7d129c593eb9d1da2e9cdaa56ed54eda8c64e",
+        "bytes": 12879
+      },
+      "expected": "1n\n"
+    }
+  ],
+  "contract": "Checked quantity meet has no observable runtime value/eliminator. Match upstream js_expr default null: add only known Min tag to existing erased expression set, preserving live argument position and not evaluating its children. Unknown expression rejection remains. No runtime Math.min is introduced.",
+  "validation": "Fresh checked build and actual source main execution of both fixtures. First fixture also checks9closed quantity conversion laws; second checksbranch usage. Public library/direct expression controls may compare null result, positionalarity and unchangednonMin code."
+}

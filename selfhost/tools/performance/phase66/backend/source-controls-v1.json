@@ -1,0 +1,163 @@
+{
+  "kind": "phase66-backend-source-controls",
+  "version": 1,
+  "status": "catalog-only-unexecuted",
+  "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "scope": "Actual pinned upstream source fixtures; resolve imports in the pinned checkout. Full source checking and backend execution are root-owned. Each source needs JS direct and native where supported; legacy namespace/readback subset separately.",
+  "cases": [
+    {
+      "path": "tests/import/js_names_apart.bend",
+      "sha256": "94822a0cabfcc22407a5722316fd1a84e0d2ce6221c2e364f2de89efa17442a8",
+      "bytes": 412,
+      "expected": [
+        "22"
+      ]
+    },
+    {
+      "path": "tests/compile/import_name_sanitize.bend",
+      "sha256": "651d694e23764f8ea61556004555526ffa34b2c93c625208d0cd328338d87a37",
+      "bytes": 591,
+      "expected": [
+        "50n"
+      ]
+    },
+    {
+      "path": "tests/import/base_family_file.bend",
+      "sha256": "4c710c22d8117277280c334fdc62f712dfd1a8800153dc14ec4ca01355ded58e",
+      "bytes": 314,
+      "expected": [
+        "1n"
+      ]
+    },
+    {
+      "path": "tests/import/alias_twice.bend",
+      "sha256": "a5fba1d84efd2ec1417925d11e3a00f7fcd8bec934e432a89c60ce84d85b805f",
+      "bytes": 453,
+      "expected": [
+        "SOME PROOFS FAIL",
+        "Error:",
+        "- expected : a fresh alias (M names an earlier import)",
+        "- observed : 'import ./tmpl_chain_lib.bend as M'",
+        "Location:",
+        "4 | import ./alias_lib.bend as M",
+        "5>| import ./tmpl_chain_lib.bend as M",
+        "  |        ^",
+        "6 |",
+        "exit 1"
+      ]
+    },
+    {
+      "path": "tests/import/alias_file_name.bend",
+      "sha256": "815da0d15302b5279d17d94a27f6514e721244de98a8b02e7a537c6baf2386bf",
+      "bytes": 264,
+      "expected": [
+        "2n"
+      ]
+    },
+    {
+      "path": "tests/io/marshal_imported_nullary.bend",
+      "sha256": "fa1cb2b853308389e6858d3ecd0c607cad74586f0522e2ec4c1e1116452e3c35",
+      "bytes": 530,
+      "expected": [
+        "off",
+        "on"
+      ]
+    },
+    {
+      "path": "tests/io/marshal_imported_nullary_type.bend",
+      "sha256": "e97b455ef80582b689d321df0f24c2fbf8df81ead92e2be079f3d488a4a7fa15",
+      "bytes": 950,
+      "expected": [
+        "SOME PROOFS FAIL",
+        "Error: 2 defs rely on unsafe or foreign code:",
+        "- tag.off",
+        "- tag.on",
+        "exit 1"
+      ]
+    },
+    {
+      "path": "tests/compile/array_equality.bend",
+      "sha256": "552b9da8a5b5196e790b9be849f3d0a0cde68f5da77cbf1082397ca07965b073",
+      "bytes": 1067,
+      "expected": [
+        "204"
+      ]
+    },
+    {
+      "path": "tests/compile/array_equality_print.bend",
+      "sha256": "1d825e428ea364f872265c56879d072183bc28447432aae1e58fc6fbc7f392b5",
+      "bytes": 108,
+      "expected": [
+        "[{==}, {==}]"
+      ]
+    },
+    {
+      "path": "tests/compile/word_boxed_default.bend",
+      "sha256": "c1e9f2682e5de089df2285dbfa1d22f7639029fff6648ed4c9a12d64b181b9cb",
+      "bytes": 216,
+      "expected": [
+        "42"
+      ]
+    },
+    {
+      "path": "tests/compile/f32_word_boxed_default.bend",
+      "sha256": "51f7298c3d5f68679f1682a8ffc4d8efa36f42b2d260dc2bc08a342ed5a959bb",
+      "bytes": 216,
+      "expected": [
+        "42"
+      ]
+    },
+    {
+      "path": "tests/compile/word_boxed_sequence.bend",
+      "sha256": "7a040de56ae834879cc0836434631f32cb1712f3ea84198d3dbedf87a3857699",
+      "bytes": 312,
+      "expected": [
+        "84"
+      ]
+    },
+    {
+      "path": "tests/io/marshal_array_depth.bend",
+      "sha256": "e5ab61ed11d1c6f462ccd5945bf763ff2272c0ea4f79021461f5b1abd3419e13",
+      "bytes": 1117,
+      "expected": [
+        "ok"
+      ]
+    },
+    {
+      "path": "tests/io/effect_helper_collision.bend",
+      "sha256": "e748653c69dfc59c9de90e2f4c77818b7a8462c0e0f52ecac008c60be9fea3ca",
+      "bytes": 377,
+      "expected": [
+        "11 22"
+      ]
+    },
+    {
+      "path": "tests/io/effect_helper_collision_reverse.bend",
+      "sha256": "e3e1f4de7a006c4ac64c67beeb8769c146f5b9a9eae783780eda90a25817a832",
+      "bytes": 370,
+      "expected": [
+        "11 22"
+      ]
+    },
+    {
+      "path": "tests/io/request_out_of_band.bend",
+      "sha256": "61a2b7111a1c92ca9aa5648d02d61be92016ddec754a6a7bc1fe3c11c4b04772",
+      "bytes": 2022,
+      "expected": [
+        "3",
+        "bend: runtime fail-stop",
+        "exit 1"
+      ]
+    },
+    {
+      "path": "tests/io/request_wildcard.bend",
+      "sha256": "734d78bf220080bf677f7cc624e5b5c34c15d3e286b5e8991262fff06ffe0371",
+      "bytes": 1157,
+      "expected": [
+        "other",
+        "bend: runtime fail-stop",
+        "exit 1"
+      ]
+    }
+  ]
+}

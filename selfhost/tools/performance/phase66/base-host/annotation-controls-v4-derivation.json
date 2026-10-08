@@ -1,0 +1,21 @@
+{
+  "kind": "phase66-controller-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-v3.mjs",
+    "sha256": "b83d7be888e3ca833e916c902c2e365c3e03af5590ea420603a4247997d9b2d4"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-v4.mjs",
+    "sha256": "8381a45c79e3745e78a19c33dec1795cac97ff532d77204b4e575fad80651b1e"
+  },
+  "operations": [
+    {
+      "before": "assert.equal(attempt.artifactKind,'checked-b1');",
+      "after": "assert(['checked-b1','derived-b1'].includes(attempt.artifactKind));"
+    },
+    {
+      "before": "same(attempt.api,attempt.checkedApi);",
+      "after": "if(attempt.artifactKind==='derived-b1'){assert(config.derivation);same(attempt.api,config.image.api);same(attempt.derivationReport,config.derivation);}else same(attempt.api,attempt.checkedApi);"
+    }
+  ]
+}

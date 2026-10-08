@@ -1,0 +1,57 @@
+{
+  "kind": "phase66-controller-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/base-products/annotation-controls-v2.mjs",
+    "sha256": "6aef0f91bfe3d1ac3a4d9dbd92dd38f8bd25fa9e3578a12c65fe49aef2929756"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-v1.mjs",
+    "sha256": "b393f95d94b6b5265b95dc13ff55510212e029183d673aa823e9ea778974c3c3"
+  },
+  "operations": [
+    {
+      "before": "// Root-run semantic controls. CONFIG uses census-input01's pinned image/source shape.\n// The candidate API and driver must include H2. Writes only a fresh Phase65 project.",
+      "after": "// Root-run Phase66 checked-B1 H2 qualification. Exact isolated host transforms;\n// all compiler work uses the unchanged checked API. Writes only a fresh project."
+    },
+    {
+      "before": "'selfhost/build/phase65'",
+      "after": "'selfhost/build/phase66'"
+    },
+    {
+      "before": "kind:'phase65-base-annotation-owned-controls'",
+      "after": "kind:'phase66-base-annotation-owned-controls'"
+    },
+    {
+      "before": "if(expected?.sha256)assert.equal(p.sha256,expected.sha256,file);if(inputs.has(file))",
+      "after": "if(expected?.sha256)assert.equal(p.sha256,expected.sha256,file);if(expected?.canonicalPath!==undefined)assert.equal(file,expected.canonicalPath);if(expected?.bytes!==undefined)assert.equal(p.bytes,expected.bytes);if(inputs.has(file))"
+    },
+    {
+      "before": "  assert(config.derivation&&config.checkedParent,'Use the qualified derived B1, not the raw bootstrap');pin(config.derivation.file,config.derivation);pin(config.checkedParent.file,config.checkedParent);\n  const derivation=JSON.parse(fs.readFileSync(config.derivation.file,'utf8'));assert(derivation.complete&&derivation.kind==='bend-derived-b1-equality');assert.equal(derivation.output.sha256,config.image.api.sha256);assert.equal(fs.realpathSync(derivation.output.file),fs.realpathSync(config.image.api.file));assert.equal(derivation.original.api.sha256,config.checkedParent.sha256);report.generation={kind:'derived-B1',receipt:config.derivation,parent:config.checkedParent,api:config.image.api};",
+      "after": "  assert(config.checkedAttempt,'Actual checked B1 receipt required');pin(config.checkedAttempt.file,config.checkedAttempt);\n  const read=file=>JSON.parse(fs.readFileSync(file,'utf8')),same=(a,b)=>{const x=pin(a.file,a),y=pin(b.file,b);assert.equal(x.file,y.file);assert.equal(x.sha256,y.sha256);};\n  const attempt=read(config.checkedAttempt.file);assert.equal(attempt.kind,'bend-development-attempt');assert.equal(attempt.version,1);assert.equal(attempt.checked,true);assert.equal(attempt.artifactKind,'checked-b1');\n  same(attempt.api,config.image.api);same(attempt.checkedApi,config.image.api);same(attempt.base,config.image.base);same(attempt.runtime,config.image.runtime);same(attempt.node,config.image.node);\n  pin(attempt.bootstrapReport.file,attempt.bootstrapReport);const boot=read(attempt.bootstrapReport.file);\n  assert.equal(boot.stage,'upstream-bootstrap');assert.equal(boot.revision,'059266225b77c8ca256ac6b25ee5c21449bab151');assert.equal(boot.provenance.upstream.revision,boot.revision);assert.equal(boot.provenance.upstream.trackedSourcesClean,true);assert.equal(boot.provenance.verifiedAfterBuild,true);\n  same({file:boot.apiPath,sha256:boot.apiSha256},config.image.api);assert.equal(boot.baseSha256,config.image.base.sha256);pin(boot.source,{sha256:boot.sourceSha256});\n  for(const row of boot.provenance.inputs)pin(row.file,row);\n  assert(boot.provenance.inputs.some(row=>row.role==='assembled-source'&&row.sha256===boot.sourceSha256));\n  const driverSource=boot.provenance.inputs.find(row=>row.role==='host-tool'&&path.basename(row.file)==='typed-driver.mjs');assert(driverSource);same(driverSource,config.image.driver);\n  assert.equal(fs.realpathSync(path.dirname(config.image.driver.file)),fs.realpathSync(path.join(attempt.snapshot.root,'tools')));\n  for(const row of attempt.snapshot.sources)pin(row.frozen.file,row.frozen);\n  const compilerManifest=read(path.join(attempt.snapshot.root,'src/compiler.json'));assert.equal(compilerManifest.upstream,boot.revision);assert.deepEqual(compilerManifest.modules,boot.modules.map(row=>row.file));\n  for(const row of boot.modules){const frozen=attempt.snapshot.sources.find(item=>path.relative(attempt.snapshot.root,item.frozen.file)===row.file);assert(frozen);assert.equal(frozen.frozen.sha256,row.sha256);}\n  assert.equal(boot.exports.length,99);assert.equal(new Set(boot.exports).size,99);\n  let transformed=fs.readFileSync(config.image.driver.file,'utf8');\n  for(const item of config.hostTransforms){pin(item.file,item);const transform=read(item.file);assert.equal(hash(transformed),transform.beforeSha256);for(const op of transform.operations){assert.equal(transformed.split(op.before).length,2);transformed=transformed.replace(op.before,op.after);}assert.equal(hash(transformed),transform.afterSha256);pin(transform.candidate,{sha256:transform.afterSha256});}\n  pin(config.driverCandidate.file,config.driverCandidate);assert.equal(transformed,fs.readFileSync(config.driverCandidate.file,'utf8'));\n  assert(transformed.includes(\"const BASE_ANNOTATION_BASE_SHA256='\"+config.image.base.sha256+\"';\"));\n  report.generation={kind:'checked-B1',attempt:config.checkedAttempt,bootstrap:attempt.bootstrapReport,source:{file:boot.source,sha256:boot.sourceSha256},api:config.image.api,hostTransforms:config.hostTransforms,candidate:config.driverCandidate,requestedExports:boot.exports};"
+    },
+    {
+      "before": "  copy('src/compiler.json');copyTree('src/runtime/js');",
+      "after": "  copy('src/compiler.json');copyTree('src/runtime/js');\n  const clonedDriver=path.join(project,'tools/typed-driver.mjs');inputs.delete(fs.realpathSync(clonedDriver));fs.writeFileSync(clonedDriver,transformed);pin(clonedDriver,config.driverCandidate);"
+    },
+    {
+      "before": "assert.equal(D.project,project);",
+      "after": "assert.equal(D.project,project);for(const name of boot.exports)assert.equal(typeof api[name],'function',name);report.generation.actualExports=Object.keys(api).length;"
+    },
+    {
+      "before": "  const keys=array(produced.keys),oracleFile=path.join(root,'selfhost/build/phase65/base-annotation-artifact01/report.json');pin(oracleFile);\n  const oracle=JSON.parse(fs.readFileSync(oracleFile,'utf8'));assert(oracle.complete&&oracle.pass);assert.equal(oracle.frame.sha256,'22d8b8b1647ed8326832d08ec00f254393a19dd7ffd7d0e3fa573d707656c8df');\n  assert.deepEqual(keys,oracle.rows.find(row=>row.minimumWork===64).names,'Producer keys differ from independent syntax census');assert.equal(keys.length,12);",
+      "after": "  const keys=array(produced.keys),list=values=>values.reduceRight((tail,head)=>({$:'Con',head,tail}),{$:'Nil'});\n  for(const name of ['book_context','jd_stops'])assert.equal(typeof api[name],'function',name);\n  const checked=array(producerWorld.checked).reverse(),context=api.book_context(list(checked)),stops=api.jd_stops(context),stopNames=new Set(array(stops));\n  // Independent full occurrence count; no borrowed Phase65 product/name oracle.\n  const bodySize=term=>{const stack=[term];let n=0;while(stack.length){const t=stack.pop();assert(++n<1000000);stack.push(...array(t.kids));}return n;};\n  const eligible=checked.filter(d=>d.kind==='Def'&&d.templates===0&&!stopNames.has(d.name)&&!['Absent','Foreign'].includes(d.value.tag)&&bodySize(d.value)>=64);\n  assert.deepEqual(keys,eligible.map(d=>d.name));assert(keys.length>0);\n  const products=array(produced.book).filter(d=>d.kind!=='BookCache'),expectedProducts=original.annotate_selected(context,list(eligible),stops);\n  assert.deepEqual(products.map(d=>d.name),keys);const preparationPairs=equalGraph(list(products),expectedProducts);"
+    },
+    {
+      "before": "report.preparation={keys,sidecar:",
+      "after": "report.preparation={keys,checkedDefinitions:checked.length,allProductsExact:true,preparationPairs,sidecar:"
+    },
+    {
+      "before": "assert.equal(counts.annotationReused,7);",
+      "after": "assert(counts.annotationReused>0);"
+    },
+    {
+      "before": "counts.annotationExact=true;return actual;",
+      "after": "assert.equal(counts.annotationReused,array(selected).filter(d=>byName.has(d.name)&&!stopSet.has(d.name)).length);counts.annotationExact=true;return actual;"
+    }
+  ]
+}

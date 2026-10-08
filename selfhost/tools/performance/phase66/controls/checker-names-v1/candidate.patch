@@ -1,0 +1,65 @@
+--- a/selfhost/src/check/kernel.bend
++++ b/selfhost/src/check/kernel.bend
+@@ -838,7 +838,7 @@
+ 
+ @unsafe
+ def check_mat_ctr(e, ctx, t, dem, ty, a, ctr):
+-  kc(KChecking, String.eq(dk(ctr), "Absent"), u => dg_bad_detail(cw(e), "unknown or duplicate match constructor", dg_text("a constructor of " ++ nm(a) ++ " (missing, or already matched)"), t),
++  kc(KChecking, String.eq(dk(ctr), "Absent"), u => dg_bad_detail(cw(e), "unknown or duplicate match constructor", dg_text("a constructor of " ++ name_key(nm(a)) ++ " (missing, or already matched)"), t),
+    u => check_mat_filled(e, ctx, t, dem, ty, a, ctr, tele_fill(cb(e), dt(ctr), ks(a))))
+ 
+ # A non-case fallback past the final constructor is unreachable. The checker
+@@ -1047,7 +1047,7 @@
+ 
+ @unsafe
+ def check_adt_kind_head(+e: KEnv, +d: KDef, +tel: KTerm, +ctx: List<&2, KTerm>) -> KChecking:
+-  kc(KChecking, String.eq(tg(tel), "All"), u => check_adt_kind(e, d, kid(tel, 1), ctx_bind(ctx, ix(tel), qt(tel), nm(tel), kid(tel, 0))), u => kc(KChecking, String.eq(tg(tel), "Typ"), u => check_ctors(e, d, dc(d), dt(d)), u => dg_trace(e, ctx, tel, atom("Absent"), dg_bad_detail(cw(e), "datatype declaration must return a kind", dg_text("a kind (type " ++ dn(d) ++ "<..> is Kind(g))"), tel))))
++  kc(KChecking, String.eq(tg(tel), "All"), u => check_adt_kind(e, d, kid(tel, 1), ctx_bind(ctx, ix(tel), qt(tel), nm(tel), kid(tel, 0))), u => kc(KChecking, String.eq(tg(tel), "Typ"), u => check_ctors(e, d, dc(d), dt(d)), u => dg_trace(e, ctx, tel, atom("Absent"), dg_bad_detail(cw(e), "datatype declaration must return a kind", dg_text("a kind (type " ++ name_key(dn(d)) ++ "<..> is Kind(g))"), tel))))
+ 
+ @unsafe
+ def check_ctors(e, d, ctrs, kind):
+@@ -1063,7 +1063,7 @@
+ 
+ @unsafe
+ def check_ctor_tel(e, d, tel, kind, params, fields, ctx, args):
+-  kc(KChecking, U32.is_eq(U32.add(params, fields), 0), u => kc(KChecking, compare(cb(e), tel, kt("ADT", dn(d), 0, 0, args), False{}), u => bad(cw(e), ""), u => dg_trace(e, ctx, tel, atom("Absent"), dg_bad_detail(cw(e), "constructor result must apply family to its parameters", dg_text("a telescope tipped at " ++ dn(d) ++ " applied to its own parameters"), tel))), u => check_ctor_head(e, d, wnf(cb(e), tel), kind, params, fields, ctx, args))
++  kc(KChecking, U32.is_eq(U32.add(params, fields), 0), u => kc(KChecking, compare(cb(e), tel, kt("ADT", dn(d), 0, 0, args), False{}), u => bad(cw(e), ""), u => dg_trace(e, ctx, tel, atom("Absent"), dg_bad_detail(cw(e), "constructor result must apply family to its parameters", dg_text("a telescope tipped at " ++ name_key(dn(d)) ++ " applied to its own parameters"), tel))), u => check_ctor_head(e, d, wnf(cb(e), tel), kind, params, fields, ctx, args))
+ 
+ @unsafe
+ def check_ctor_head(e, d, tel, kind, params, fields, ctx, args):
+--- a/selfhost/src/diagnostic/produce.bend
++++ b/selfhost/src/diagnostic/produce.bend
+@@ -179,11 +179,11 @@
+ def dg_constructor_names(ds):
+   match ds:
+     case Nil{}: ""
+-    case Con{d, rest}: dn(d) ++ kc(String, defs_empty(rest), u => "", u => ", " ++ dg_constructor_names(rest))
++    case Con{d, rest}: name_key(dn(d)) ++ kc(String, defs_empty(rest), u => "", u => ", " ++ dg_constructor_names(rest))
+ 
+ @unsafe
+ def dg_ctor_error(e, t, ty, ctr):
+-  kc(KChecking, Bool.not(String.eq(dk(ctr), "Absent")) && Bool.not(has_name(rm(ty), nm(t))), u => dg_bad_detail(cw(e), "constructor does not belong to goal or field count differs", dg_text(nm(t) ++ " with " ++ U32.show(da(ctr)) ++ kc(String, U32.is_eq(da(ctr), 1), u => " field", u => " fields")), t), u => kc(KChecking, String.eq(dg_family(cb(e), nm(t)), ""), u => dg_bad_detail(cw(e), "constructor does not belong to goal or field count differs", dg_text("a declared constructor (" ++ nm(ty) ++ " declares " ++ dg_constructor_names(dc(lookup(cb(e), nm(ty)))) ++ ")"), t), u => dg_bad_detail(cw(e), "constructor does not belong to goal or field count differs", ty, ref(dg_family(cb(e), nm(t))))))
++  kc(KChecking, Bool.not(String.eq(dk(ctr), "Absent")) && Bool.not(has_name(rm(ty), nm(t))), u => dg_bad_detail(cw(e), "constructor does not belong to goal or field count differs", dg_text(name_key(nm(t)) ++ " with " ++ U32.show(da(ctr)) ++ kc(String, U32.is_eq(da(ctr), 1), u => " field", u => " fields")), t), u => kc(KChecking, String.eq(dg_family(cb(e), nm(t)), ""), u => dg_bad_detail(cw(e), "constructor does not belong to goal or field count differs", dg_text("a declared constructor (" ++ name_key(nm(ty)) ++ " declares " ++ dg_constructor_names(dc(lookup(cb(e), nm(ty)))) ++ ")"), t), u => dg_bad_detail(cw(e), "constructor does not belong to goal or field count differs", ty, ref(dg_family(cb(e), nm(t))))))
+ 
+ 
+ # Source-only prefix caches cannot restore live memo/output state. Recheck
+@@ -195,7 +195,7 @@
+ # The checker verdict stays unchanged; only rejection metadata differs.
+ @unsafe
+ def dg_adt_error(world, t, d):
+-  kc(KChecking, String.eq(dk(d), "ADT"), u => dg_bad_detail(world, "unknown family or wrong parameter count", dg_text(nm(t) ++ " with " ++ U32.show(da(d)) ++ kc(String, U32.is_eq(da(d), 1), u => " parameter", u => " parameters")), t), u => dg_bad_message(world, "unknown family or wrong parameter count", dg_text("a declared datatype (unknown: " ++ nm(t) ++ ")")))
++  kc(KChecking, String.eq(dk(d), "ADT"), u => dg_bad_detail(world, "unknown family or wrong parameter count", dg_text(name_key(nm(t)) ++ " with " ++ U32.show(da(d)) ++ kc(String, U32.is_eq(da(d), 1), u => " parameter", u => " parameters")), t), u => dg_bad_message(world, "unknown family or wrong parameter count", dg_text("a declared datatype (unknown: " ++ name_key(nm(t)) ++ ")")))
+ 
+ # Compatibility projections and explicit capability for hosts using one verdict.
+ law dg_result_error:
+--- a/selfhost/src/diagnostic/trace.bend
++++ b/selfhost/src/diagnostic/trace.bend
+@@ -84,7 +84,7 @@
+    u => kc(KTerm, String.eq(code, "unbound variable"), u => dg_pair(dg_text("a bound variable"), kc(KTerm, String.eq(tg(t), "FUnboundVar"), u => dg_text(nm(t) ++ kc(String, kp_bound(dg_scope(ctx, Nil{}), nm(t)), u => "^-1", u => "")), u => t)),
+    u => kc(KTerm, String.eq(code, "nondecreasing self-call"), u => dg_pair(dg_text("a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)"), t),
+    u => kc(KTerm, String.eq(code, "live use of an unfilled law"), u => dg_pair(dg_text("a filled definition (an unfilled law is a dead claim: live code cannot use it)"), t),
+-   u => kc(KTerm, String.eq(code, "a family requires angle-bracket parameters"), u => dg_pair(dg_text("a family instance (write " ++ nm(t) ++ "<..>)"), t),
++   u => kc(KTerm, String.eq(code, "a family requires angle-bracket parameters"), u => dg_pair(dg_text("a family instance (write " ++ name_key(nm(t)) ++ "<..>)"), t),
+    u => kc(KTerm, String.eq(code, "unresolved hole"), u => dg_pair(ty, t),
+    u => kc(KTerm, String.eq(code, "cannot infer: annotation required"), u => dg_pair(dg_text(kc(String, (String.eq(tg(t), "Ctr") || core_literal(t)) && String.eq(dg_family(cb(e), nm(kc(KTerm, core_literal(t), u => core_literal_step(t), u => t))), ""), u => "a declared constructor", u => "an annotated term (cannot infer)")), t),
+    u => kc(KTerm, String.eq(code, "lambda requires a function type") || String.eq(code, "matcher requires a function type") || String.eq(code, "reflexivity requires equality goal"), u => dg_pair(ty, dg_text("non-inferrable term")),

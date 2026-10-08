@@ -1,0 +1,50 @@
+{
+  "kind": "phase66-native-blocking-mocked-syscall-controls",
+  "targetExecuted": false,
+  "originalGeneratedC": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/backend-native-controls04-clang01-recipe/bend-direct/observations/report.json.artifacts/5/marshal_imported_nullary.c",
+    "sha256": "190b493b71c8bcc508d36366517d6784d7c5db39eed509c43236baef37473d90",
+    "bytes": 140622
+  },
+  "originalRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-abi-v1/before.c",
+    "sha256": "cbfb8933d007c10a0173f280888d6c94d5d77543548b25808596cd2d21f764f0",
+    "bytes": 78893
+  },
+  "candidateRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/after/runtime.c",
+    "sha256": "8729e2aada3f64f6450502519c3ffd5e10a67827a79c7cb2c1dddfe6719b94ac",
+    "bytes": 82017
+  },
+  "candidateProvider": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/after/effs/tcp_send.c",
+    "sha256": "85c1c9ff20d28c33968299c738b19ff752c768c72a53e071533a6960c0329a5a",
+    "bytes": 2216
+  },
+  "mockSyscall": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/mocked-send-controls.c",
+    "sha256": "e5b9a6bb9c69fb1b017b0a8e3948c54e5078cbc048a2af2f5df1f08500b23fd0",
+    "bytes": 489
+  },
+  "controlMain": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/mocked-send-main.c",
+    "sha256": "e8bd2fde935140e350e191009f1e6c6ac1c8237ef55fa2fad5efaaa142f96c72",
+    "bytes": 3053
+  },
+  "derivedC": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/mocked-send-program.c",
+    "sha256": "a30c239dd28cd881a5691174864e938e26abd67ec9b4a285fbb0a4a146f66cfe",
+    "bytes": 149519
+  },
+  "insertionProof": "Original entire generated C exactly reconstructed from frozen runtime plus four compiler-produced insertions. Replace runtime with candidate, preserve all four insertions, rename original main, insert exact provider under mock send + new control main.",
+  "expected": "native blocking ABI controls 7 passed\n",
+  "cases": [
+    "partial string EPIPE returns exact unsent suffix",
+    "partial binary EPIPE retains byte255 and exact unsent suffix",
+    "invalid bytes returns original list allocation without any syscall",
+    "partial UTF8 byte failure reconstructs suffix by same io_str replacement semantics as upstream",
+    "immediate send failure returns full payload",
+    "successful partial writes return DoneUnit",
+    "empty bytes sends no syscall and returns DoneUnit"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "phase66-conformance-staging-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/controls/prepare-conformance.py",
+    "sha256": "86e3ef869db6f2f159b6b82dd709ea868683347e0d54704fe1d69b1536b72cec"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/controls/prepare-conformance-v2.py",
+    "sha256": "b81eb9441455e5f5b1982ead359c838d88d5d509cc72ab68ff4caca6e4c74a05"
+  },
+  "changes": [
+    {
+      "old": "        base=tree/'bend2/base.bend'\n",
+      "new": "        # Publish both conventional and explicit API names with identical bytes.\n        default_api=project/'dist/typed-api.mjs'; default_api.write_bytes(api.read_bytes())\n        assert pin(default_api)['sha256']==at['api']['sha256']\n        base=tree/'bend2/base.bend'\n        bundled_base=project/'dist/base.bend'; bundled_base.write_bytes(base.read_bytes())\n        assert pin(bundled_base)['sha256']==pin(base)['sha256']\n",
+      "count": 1
+    },
+    {
+      "old": "'--rss-mib','2048','--available-mib','4096',str(dest/'supervisor'),'--','taskset','-c','3',*command]\n            guard=['env',*[key+'='+value for key,value in environment.items()],*guard]",
+      "new": "'--rss-mib','2048','--available-mib','4096',str(dest/'supervisor'),'--','taskset','-c','3',\n                'env',*[key+'='+value for key,value in environment.items()],*command]",
+      "count": 1
+    },
+    {
+      "old": "compilerImage=pin(api),upstream=revision,base=pin(base),",
+      "new": "compilerImage=pin(api),defaultCompilerImage=pin(default_api),upstream=revision,base=pin(base),bundledBase=pin(bundled_base),",
+      "count": 1
+    }
+  ],
+  "reason": "Phase32 bounded-run intentionally removes BEND_* before spawning; environment must be set inside its guarded command. Preserve failed old-full01 and old recipes. Conventional API/Base files additionally present, same qualified bytes.",
+  "targetExecuted": false
+}

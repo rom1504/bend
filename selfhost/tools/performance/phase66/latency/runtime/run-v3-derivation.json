@@ -1,0 +1,29 @@
+{
+  "kind": "phase66-selected-runtime-admission",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/runtime/run-v2.py",
+    "sha256": "2efa4cae3fa5d7590ad13f40353f52f50a84245c2e614650a788209666963ba9"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/runtime/run-v3.py",
+    "sha256": "17e0862ab083c5e491fef14fbfb5ef98fbd4971e80d4616ae7ba7bf16163137d"
+  },
+  "edits": [
+    {
+      "old": "['bend-program-bundle', 'phase66-mixed-target-program-bundle']",
+      "new": "['bend-program-bundle', 'phase66-mixed-target-program-bundle', 'phase66-selected-target-program-bundle']",
+      "count": 1
+    },
+    {
+      "old": "if bundle['kind'] == 'phase66-mixed-target-program-bundle':",
+      "new": "if bundle['kind'] in ['phase66-mixed-target-program-bundle', 'phase66-selected-target-program-bundle']:",
+      "count": 1
+    },
+    {
+      "old": "        require(set(bundle['provenance']) == {'oldB1','oldB2Equality','headAdmission'}, 'Unexpected lineage inventory')",
+      "new": "        lineage = {'oldB1','oldB2Equality','headAdmission'}\n        if bundle['kind'] == 'phase66-selected-target-program-bundle':\n            require(set(bundle['roles']) == {'candidate'}, 'Selected bundle requires actual candidate role')\n            require(bundle['compilerTargets']['candidate'] == '059266225b77c8ca256ac6b25ee5c21449bab151', 'Selected compiler target differs')\n            lineage.add('candidateAdmission')\n        require(set(bundle['provenance']) == lineage, 'Unexpected lineage inventory')",
+      "count": 1
+    }
+  ],
+  "scope": "Add exact selected-candidate provenance kind with full23/45 own-output admission; retain old mixed-target admission and every timing/worker clock unchanged."
+}

@@ -1,0 +1,384 @@
+// Runtime support for generated programs. No Bend parser, checker, emitter,
+// source loading or compiler delegation is implemented here.
+import fs from 'node:fs';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);
+import {getSystemErrorMap} from 'node:util';
+import {randomBytes} from 'node:crypto';
+import net from 'node:net';
+import dgram from 'node:dgram';
+import {spawn} from 'node:child_process';
+import {constants as hostConstants} from 'node:os';
+const G=Object.create(null), constructors=Object.create(null), showSchemas=Object.create(null), constructorOwn=Object.create(null), constructorNative=Object.create(null);
+const nameDisplay=k=>k.replace(':','.');
+const scope=p=>Object.create(p);
+// Error construction can invoke mutable host hooks. Suspend the proof before
+// those hooks can reenter; only exception unwinding follows this restoration.
+const bad=m=>{const previous=regionProof;regionProof=null;
+  try{throw Error(m)}finally{regionProof=previous}};
+const fn=(arity,code,env=null,bound=[])=>({arity,code,env,bound});
+const jump=(f,args)=>({bounce:true,f,args});
+const build=(name,fields)=>({build:true,name,fields});
+// Only apply's exact-saturation branch may grant an eager callback entry.
+// Consume permission before reading any argument: a getter can reenter code
+// with the same vector, but cannot reuse this token or forge one with extra args.
+const exactCodes=new WeakSet(), exactPrototype=Function.prototype;
+const exactCall=Function.prototype.call;
+// Private entry bookkeeping must not observe mutable host reflection before
+// the body guard. These standard initialization intrinsics are never exported.
+const exactApply=Reflect.apply,exactHas=WeakSet.prototype.has.bind(exactCodes);
+const exactGetPrototype=Object.getPrototypeOf,exactDescriptor=Object.getOwnPropertyDescriptor;
+const exactOwn=Object.hasOwn;
+let exactEntry=null,hasExactCodes=false;
+function enterExact(code,inner,a){
+  const entry=exactEntry;
+  const entered=entry!==null&&entry.code===code&&entry.args===a&&!entry.used;
+  if(entered)entry.used=true;
+  return inner(a,entered);
+}
+function exactCode(inner,arrow=false,nullary=false){
+  const code=arrow?(0,(a)=>enterExact(code,inner,a)):nullary?
+    (0,function(){return enterExact(code,inner,arguments.length===0?undefined:arguments[0])}):
+    (0,function(a){return enterExact(code,inner,a)});
+  exactCodes.add(code);
+  hasExactCodes=true;
+  return code;
+}
+function invokeExact(f,all){
+  const code=f.code;
+  if(!hasExactCodes||!exactHas(code)||exactGetPrototype(code)!==exactPrototype||
+      exactDescriptor(code,'call'))return code.call(f.env,all);
+  const callProperty=exactDescriptor(exactPrototype,'call');
+  if(!callProperty||!exactOwn(callProperty,'value')||callProperty.value!==exactCall)
+    return code.call(f.env,all);
+  // Resolve .call before env, as the original invocation does. Environment
+  // getters may reenter; permission is installed only after they have returned.
+  const invoke=code.call,env=f.env,previous=exactEntry;
+  exactEntry={code,args:all,used:false};
+  try{return exactApply(code,env,[all]);}
+  finally{exactEntry=previous;}
+}
+function force(x){
+  let pending;
+  for(;;){
+    if(x?.bounce){x=apply(x.f,x.args);continue}
+    if(x?.build){
+      if(!x.fields.length){x=ctor(x.name,[]);continue}
+      (pending??=[]).push({node:x,values:[]});x=x.fields[0]();continue;
+    }
+    if(!pending?.length)return x;
+    const frame=pending[pending.length-1];frame.values.push(x);
+    if(frame.values.length<frame.node.fields.length)x=frame.node.fields[frame.values.length]();
+    else{pending.pop();x=ctor(frame.node.name,frame.values)}
+  }
+}
+function applyIO(f,args){
+  return apply(fn(2,a=>Object.hasOwn(f,'pureValue')?call(a[1],[f.pureValue]):{request:true,action:f,k:a[1]}),args);
+}
+function apply(f,args,owned=false){
+  if(f===null)return null;
+  if(f?.io&&args.length===0)return f;
+  if(f?.io)return applyIO(f,args);
+  if(f?.typeName)return {typeName:f.typeName,typeArgs:[...(f.typeArgs||[]),...args]};
+  if(!f?.code){if(!args.length)return f;bad('attempt to call non-function '+String(f));}
+  const all=f.bound.length?f.bound.concat(args):owned?args:args.slice();
+  if(all.length===f.arity)return invokeExact(f,all);
+  if(all.length<f.arity)return fn(f.arity,f.code,f.env,all);
+  let r=f.code.call(f.env,all.slice(0,f.arity));
+  if(all.length>f.arity)r=jump(force(r),all.slice(f.arity));
+  return r;
+}
+const call=(f,args)=>force(apply(f,args));
+// Only emitted non-tail calls pass a fresh, unshared literal argument vector.
+// Public calls, matcher field vectors and reusable tail messages still copy.
+const callOwned=(f,args)=>force(apply(f,args,true));
+// Scalar regions capture only newly constructed compiler wrappers. Snapshots
+// stay private; replacement/accessor metadata is inspected without invoking it.
+const scalarSnapshots=Object.create(null), scalarObjectPrototype=Object.prototype;
+let scalarNatAddSnapshot=null;
+const scalarFunctionPrototype=Function.prototype, scalarFunctionCall=Function.prototype.call;
+const scalarPrimitivePrototypes=[Boolean.prototype,Number.prototype,BigInt.prototype];
+// Conversion for a proved private countdown must not call a replaced global.
+const regionCounterNumber=Number;
+function scalarCapture(name,f,stringFamily=false){
+  const a=Object.getOwnPropertyDescriptor(f,'arity'),c=Object.getOwnPropertyDescriptor(f,'code');
+  const e=Object.getOwnPropertyDescriptor(f,'env'),b=Object.getOwnPropertyDescriptor(f,'bound');
+  if(a&&c&&e&&b&&[a,c,e,b].every(d=>Object.hasOwn(d,'value'))&&
+      Number.isInteger(a.value)&&a.value>=0&&typeof c.value==='function'&&e.value===null&&
+      Array.isArray(b.value)&&Object.getOwnPropertyDescriptor(b.value,'length').value===0){
+    scalarSnapshots[name]={original:f,arity:a.value,code:c.value,bound:b.value,stringFamily};
+  }else delete scalarSnapshots[name];
+  return f;
+}
+// Private entry proof. Installed only inside a completely guarded, synchronous,
+// scalar-input region whose entire residual source graph was proved pure.
+let regionProof=null;
+function regionProofCovers(names){
+  const proof=regionProof;if(proof===null)return false;
+  for(let i=0;i<names.length;i++)if(proof[names[i]]!==true)return false;
+  return true;
+}
+function regionProofOpen(names){
+  const previous=regionProof;
+  if(previous===null){
+    const proof={__proto__:null};
+    for(let i=0;i<names.length;i++)proof[names[i]]=true;
+    regionProof=proof;
+  }
+  return previous;
+}
+function regionProofClose(previous){regionProof=previous;}
+
+// Exact closed-U32 callback capability; public String-family snapshots stay guarded.
+const callbackU32Guard={__proto__:null};
+// Contextual roots pass this only after fresh host/String checks and cached scalar inputs.
+// It reuses permission within that entry; it never caches permission across calls.
+const stringHostChecked={__proto__:null};
+function scalarGuard(names,capability=null){
+  if(regionProofCovers(names))return true;
+  let needsString=false;if(capability!==callbackU32Guard&&capability!==stringHostChecked)for(let i=0;i<names.length;i++)if(scalarSnapshots[names[i]]?.stringFamily){needsString=true;break;}
+  if(needsString&&!stringHostGuard())return false;
+  // Generic forcing/matching observes these hooks even on primitive values.
+  if(Object.getPrototypeOf(scalarObjectPrototype)!==null||
+      Object.getPrototypeOf(scalarFunctionPrototype)!==scalarObjectPrototype)return false;
+  for(const p of [scalarObjectPrototype,...scalarPrimitivePrototypes]){
+    if(p!==scalarObjectPrototype&&Object.getPrototypeOf(p)!==scalarObjectPrototype)return false;
+    for(const k of ['request','bounce','build','code'])if(Object.getOwnPropertyDescriptor(p,k))return false;
+  }
+  for(const k of ['io','typeName'])if(Object.getOwnPropertyDescriptor(scalarObjectPrototype,k))return false;
+  const invoke=Object.getOwnPropertyDescriptor(scalarFunctionPrototype,'call');
+  if(!invoke||!Object.hasOwn(invoke,'value')||invoke.value!==scalarFunctionCall)return false;
+  for(const name of names){
+    const s=name==='Nat.add'?scalarNatAddSnapshot:scalarSnapshots[name],g=Object.getOwnPropertyDescriptor(G,name);
+    if(!s||!g||!Object.hasOwn(g,'value')||g.value!==s.original)return false;
+    const f=s.original;
+    if(Object.getPrototypeOf(f)!==scalarObjectPrototype||
+        Object.getPrototypeOf(s.code)!==scalarFunctionPrototype||
+        Object.getOwnPropertyDescriptor(s.code,'call'))return false;
+    for(const k of ['io','typeName'])if(Object.getOwnPropertyDescriptor(f,k))return false;
+    const a=Object.getOwnPropertyDescriptor(f,'arity'),c=Object.getOwnPropertyDescriptor(f,'code');
+    const e=Object.getOwnPropertyDescriptor(f,'env'),b=Object.getOwnPropertyDescriptor(f,'bound');
+    if(!a||!c||!e||!b||![a,c,e,b].every(d=>Object.hasOwn(d,'value'))||
+        a.value!==s.arity||c.value!==s.code||e.value!==null||b.value!==s.bound||
+        Object.getOwnPropertyDescriptor(s.bound,'length').value!==0)return false;
+  }
+  return true;
+}
+// Local arrays may alias, but their standard prototype must not run marker
+// callbacks while forcing tuple results inside an admitted private region.
+const localArrayPrototype=Array.prototype;
+function localGuard(names,capability=null){
+  if(regionProofCovers(names))return true;
+  if(Object.getPrototypeOf(localArrayPrototype)!==scalarObjectPrototype)return false;
+  for(const k of ['request','bounce','build','code'])if(Object.getOwnPropertyDescriptor(localArrayPrototype,k))return false;
+  return scalarGuard(names,capability);
+}
+// New floating regions may skip generic dispatch between native operations.
+// Snapshot standard host intrinsics once; reject changed/getter hooks before
+// input validation or the existing descriptor guard can call them.
+const regionGetDescriptor=Object.getOwnPropertyDescriptor,regionGetPrototype=Object.getPrototypeOf,regionOwn=Object.hasOwn;
+const regionGetNames=Object.getOwnPropertyNames;
+const regionPrototypeNames=[regionGetNames(Array.prototype),regionGetNames(Object.prototype)];
+const regionNumericHooks=[[globalThis,'Object',Object],[globalThis,'Reflect',Reflect],[globalThis,'WeakSet',WeakSet],
+  [globalThis,'Math',Math],[globalThis,'Number',Number],[globalThis,'BigInt',BigInt],[globalThis,'Array',Array],
+  [Object,'getOwnPropertyDescriptor',regionGetDescriptor],[Object,'getPrototypeOf',regionGetPrototype],[Object,'hasOwn',regionOwn],
+  [Reflect,'apply',Reflect.apply],[WeakSet.prototype,'has',WeakSet.prototype.has],[WeakSet.prototype,'add',WeakSet.prototype.add],
+  [Number,'isNaN',Number.isNaN],[Number,'isInteger',Number.isInteger],[Number,'isFinite',Number.isFinite]];
+for(const key of ['fround','sqrt','exp','log','log2','log10','sin','cos','tan','asin','acos','atan','sinh','cosh','tanh','floor','ceil','trunc','abs','imul'])
+  regionNumericHooks.push([Math,key,Math[key]]);
+const regionIteratorPrototype=Object.getPrototypeOf([][Symbol.iterator]());
+const regionIteratorParent=Object.getPrototypeOf(regionIteratorPrototype);
+const regionProtocolPairs=[[Array.prototype,Symbol.iterator],[Array.prototype,'concat'],[Array.prototype,'slice'],[Array.prototype,'every'],
+  [Array.prototype,'push'],[Array.prototype,'pop'],[Array.prototype,'includes'],
+  [Array.prototype,'constructor'],[Array.prototype,Symbol.isConcatSpreadable],[Object.prototype,Symbol.isConcatSpreadable],[Array,Symbol.species],
+  [regionIteratorPrototype,'next'],[regionIteratorPrototype,'return'],[regionIteratorParent,'return'],[Object.prototype,'return']];
+const regionProtocolDescriptors=[];
+for(let i=0;i<regionProtocolPairs.length;i++)regionProtocolDescriptors[i]=Object.getOwnPropertyDescriptor(regionProtocolPairs[i][0],regionProtocolPairs[i][1]);
+// F32 literals use the shared DataView. A prior generic hook may retain that
+// instance, so verify its own methods/prototype as well as the host methods.
+const regionDataViewPrototype=DataView.prototype;
+const regionDataViewKeys=['setUint32','getFloat32','setFloat32','getUint32'];
+for(const key of regionDataViewKeys)regionNumericHooks.push([regionDataViewPrototype,key,regionDataViewPrototype[key]]);
+// Full total-U32 fusion needs integer hooks; all current descriptors are still
+// checked afresh at each entry. This private set contains immutable dependencies.
+const regionU32FusionHooks=[];
+for(let i=0;i<regionNumericHooks.length;i++){
+  const p=regionNumericHooks[i];
+  if(p[0]===regionDataViewPrototype||(p[0]===Math&&p[1]!=='imul')||
+      (p[0]===Number&&(p[1]==='isNaN'||p[1]==='isFinite')))continue;
+  regionU32FusionHooks[regionU32FusionHooks.length]=p;
+}
+function regionHostGuard(u32Fusion=false){
+  if(regionProof!==null)return true;
+  if(!u32Fusion){
+    if(regionGetPrototype(floatView)!==regionDataViewPrototype)return false;
+    for(let i=0;i<regionDataViewKeys.length;i++)if(regionGetDescriptor(floatView,regionDataViewKeys[i]))return false;
+  }
+  const hooks=u32Fusion?regionU32FusionHooks:regionNumericHooks;
+  for(let i=0;i<hooks.length;i++){
+    const p=hooks[i],d=regionGetDescriptor(p[0],p[1]);
+    if(!d||!regionOwn(d,'value')||d.value!==p[2])return false;
+  }
+  if(regionGetPrototype(localArrayPrototype)!==scalarObjectPrototype||regionGetPrototype(regionIteratorPrototype)!==regionIteratorParent||
+      regionGetPrototype(regionIteratorParent)!==scalarObjectPrototype)return false;
+  // An inherited numeric setter could run while a proved pure residual builds
+  // a value. Reject added/deleted prototype keys before entering that region.
+  for(let i=0;i<2;i++){
+    const names=regionGetNames(i===0?localArrayPrototype:scalarObjectPrototype),old=regionPrototypeNames[i];
+    if(names.length!==old.length)return false;
+    for(let j=0;j<names.length;j++)if(names[j]!==old[j])return false;
+  }
+  for(let i=0;i<regionProtocolPairs.length;i++){
+    const p=regionProtocolPairs[i],old=regionProtocolDescriptors[i],d=regionGetDescriptor(p[0],p[1]);
+    if(!old){if(d)return false;continue;}
+    if(!d||d.enumerable!==old.enumerable||d.configurable!==old.configurable)return false;
+    const value=regionOwn(old,'value');if(value!==regionOwn(d,'value'))return false;
+    if(value){if(d.value!==old.value||d.writable!==old.writable)return false;}
+    else if(d.get!==old.get||d.set!==old.set)return false;
+  }
+  return true;
+}
+
+// A closed raw-array region needs a fresh proof even inside another region.
+// Existing region guards omit these allocation hooks. Inspect descriptors with
+// captured reflection, before ordinary input/dependency checks can run hooks.
+const arrayViewFill=regionGetDescriptor(localArrayPrototype,'fill').value;
+const arrayViewSafeInteger=regionGetDescriptor(regionCounterNumber,'isSafeInteger').value;
+const arrayViewFloor=regionGetDescriptor(Math,'floor').value;
+function arrayViewHostGuard(integerOnly=false){
+  if(regionProof!==null||!regionHostGuard(integerOnly)||regionGetPrototype(scalarObjectPrototype)!==null)return false;
+  if(integerOnly){const floor=regionGetDescriptor(Math,'floor');if(!floor||!regionOwn(floor,'value')||floor.value!==arrayViewFloor)return false;}
+  const fill=regionGetDescriptor(localArrayPrototype,'fill');
+  const safe=regionGetDescriptor(regionCounterNumber,'isSafeInteger');
+  return !!fill&&regionOwn(fill,'value')&&fill.value===arrayViewFill&&
+    !!safe&&regionOwn(safe,'value')&&safe.value===arrayViewSafeInteger;
+}
+
+// Standard host initialization is the established runtime premise.
+const stringHostOwnKeys=Reflect.ownKeys;
+const stringHostConstructor=String,stringHostPrototype=String.prototype;
+const stringHostGlobal=regionGetDescriptor(globalThis,'String');
+const stringHostRows=[stringHostConstructor,stringHostPrototype].map(object=>({object,parent:regionGetPrototype(object),keys:stringHostOwnKeys(object),descriptors:Object.getOwnPropertyDescriptors(object)}));
+function stringHostDescriptor(a,b){if(!a||!b)return a===b;if(a.configurable!==b.configurable||a.enumerable!==b.enumerable)return false;
+ const av=regionOwn(a,'value'),bv=regionOwn(b,'value');return av===bv&&(av?a.value===b.value&&a.writable===b.writable:a.get===b.get&&a.set===b.set);}
+function stringHostGuard(){if(!stringHostDescriptor(regionGetDescriptor(globalThis,'String'),stringHostGlobal))return false;
+ for(let i=0;i<stringHostRows.length;i++){const row=stringHostRows[i];if(regionGetPrototype(row.object)!==row.parent)return false;const keys=stringHostOwnKeys(row.object);if(keys.length!==row.keys.length)return false;
+  for(let k=0;k<keys.length;k++)if(keys[k]!==row.keys[k]||!stringHostDescriptor(regionGetDescriptor(row.object,keys[k]),row.descriptors[keys[k]]))return false;}
+ return true;}
+
+const native=(name,n,f)=>{
+  const value=fn(n,a=>f(...a));
+  // The factory owns these fresh fields; snapshot without calling host hooks.
+  if(name==='Nat.add')scalarNatAddSnapshot={original:value,arity:n,code:value.code,bound:value.bound};
+  return G[name]=scalarCapture(name,value);
+};
+function get(v,k){if(k in v){const x=v[k];return x?.code&&x.arity===0?call(x,[]):x;}bad('unbound name: '+k)}
+function ctor(k,a){
+  if(constructorNative[k]===false)return {$:k,a};
+  switch(k){
+    case 'True': return true; case 'False': return false;
+    case 'Zero': return 0n; case 'Succ':return checkedNat(a[0]+1n);
+    case 'SNil':return '';case 'SCon':return (typeof a[0]==='string'?a[0]:String.fromCodePoint(a[0]))+a[1];
+    case 'Chr':return checkedChar(a[0]);case 'U32':return unword(a[0]);case 'F32':return bitsFloat(unword(a[0]));
+    case 'Tuple':return a.length===2?a:[a[0],ctor('Tuple',a.slice(1))];
+    default:return {$:k,a};
+  }
+}
+const list=a=>a.reduceRight((t,h)=>ctor('Con',[h,t]),ctor('Nil',[]));
+function unlist(x){const a=[];while(x?.$==='Con'){a.push(x.a[0]);x=x.a[1]}if(x?.$!=='Nil')bad('expected List');return a}
+function fields(k,x){
+  if(constructorNative[k]===false)return x?.$===k?x.a:null;
+  if(x?.request)bad('runtime fail-stop');
+  if(k==='True')return x?[]:null;
+  if(k==='False')return !x?[]:null;
+  if(k==='SNil')return x===''?[]:null;
+  if(k==='SCon')return typeof x==='string'&&x.length?[x.codePointAt(0),x.slice(x.codePointAt(0)>65535?2:1)]:null;
+  if(k==='U32')return typeof x==='number'?[word(x)]:null;
+  if(k==='F32')return typeof x==='number'?[word(floatBits(x))]:null;
+  if(k==='ALeaf'){const a=arraydata(x);return a.length===1?[a[0]]:null}
+  if(k==='ANode'){const a=arraydata(x);return a.length>1?[{array:a.slice(0,a.length/2)},{array:a.slice(a.length/2)}]:null}
+  if(k==='Chr')return typeof x==='number'?[x]:typeof x==='string'?[x.codePointAt(0)]:null;
+  if(k==='Zero')return x===0n?[]:null;
+  if(k==='Succ')return typeof x==='bigint'&&x!==0n?[x-1n]:null;
+  if(k==='Tuple')return Array.isArray(x)?x:null;
+  return x?.$===k?x.a:null;
+}
+function project(k,x){
+  if(constructorNative[k]===false)return x?.a??(constructors[k]??[]).map(name=>x[name]);
+  if(x?.request)bad('runtime fail-stop');
+  if(['True','False','Zero','SNil'].includes(k))return [];
+  if(k==='Succ')return [x-1n];
+  if(k==='Chr')return [typeof x==='string'?x.codePointAt(0):x];
+  if(k==='U32')return [word(x)];
+  if(k==='F32')return [word(floatBits(x))];
+  if(k==='SCon')return [x.codePointAt(0),x.slice(x.codePointAt(0)>65535?2:1)];
+  if(k==='ALeaf')return [arraydata(x)[0]];
+  if(k==='ANode'){const a=arraydata(x);return [{array:a.slice(0,a.length/2)},{array:a.slice(a.length/2)}]}
+  if(k==='Tuple')return [x[0],x[1]];
+  if(x?.a)return x.a;
+  return (constructors[k]??[]).map(name=>x[name]);
+}
+function matcher1(name,arm){return fn(1,([x])=>{const a=project(name,x);return a.length?jump(arm(),a):arm()})}
+function literal(s){
+  if(s==='null')return null;
+  if(s[0]==='"')return decodeString(s.slice(1,-1));
+  if(s[0]==="'"){
+    const inner=s.slice(1,-1);
+    const escapes={'\\0':0,'\\n':10,'\\r':13,'\\t':9,"\\'":39,'\\\\':92,'\\"':34};
+    return inner in escapes?escapes[inner]:decodeString(inner).codePointAt(0);
+  }
+  if(s.endsWith('n'))return checkedNat(BigInt(s.slice(0,-1)));
+  return /[.eE]/.test(s)&&!/^0[xX]/.test(s)?Math.fround(Number(s)):Number(s);
+}
+function matchpat(v,p,x){
+  const [tag,s,kids]=p;
+  if(tag==='var'){if(s!=='_')v[s]=x;return true}
+  if(tag==='ann')return matchpat(v,kids[0],x);
+  if(tag==='lit')return x===literal(s);
+  if(tag==='list')return matchpat(v,kids.reduceRight((t,h)=>['ctor','Con',[h,t]],['ctor','Nil',[]]),x);
+  if(tag==='op'&&s==='+'){
+    const n=literal(kids[0][1]);return typeof x===typeof n&&x>=n&&matchpat(v,kids[1],x-n);
+  }
+  if(tag==='op'&&s==='<>')return matchpat(v,['ctor','Con',kids],x);
+  if(tag==='ctor'){
+    if(s==='Tuple'&&kids.length>2)return matchpat(v,['ctor','Tuple',[kids[0],['ctor','Tuple',kids.slice(1)]]],x);
+    const a=fields(s,x);return a!==null&&a.length===kids.length&&kids.every((k,i)=>matchpat(v,k,a[i]));
+  }
+  bad('unsupported pattern: '+JSON.stringify(p));
+}
+function matchpats(v,ps,xs){return ps.length===xs.length&&ps.every((p,i)=>matchpat(v,p,xs[i]))}
+function bindpat(v,p,x){if(!matchpat(v,p,x))bad('destructuring pattern mismatch')}
+function op(k,ns,a,b){
+  if(k==='++')return a+b;if(k==='<>')return ctor('Con',[a,b]);
+  if(k==='&&')return a&&b;if(k==='||')return a||b;
+  if(k==='->'||k==='&'||k==='|')return null;
+  const method={'+':'add','-':'sub','*':'mul','/':'div','%':'mod','.&.':'and','.|.':'or','.^.':'xor','<<':'shln','>>':'shrn','<':'is_lt','>':'is_gt','<=':'is_le','>=':'is_ge','==':'is_eq','!=':'is_ne'}[k];
+  return call(get(G,ns+'.'+method),[a,b]);
+}
+const pure=x=>({pureValue:x,io:()=>x});
+const bind=(m,k)=>{const action={ioBind:true,m,k};action.io=()=>runAction(action);return action};
+const effect=(k,n,f)=>native(k,n,(...args)=>({io:()=>f(...args)}));
+const done=x=>ctor('Done',[x]);
+const fail=e=>{const code=typeof e==='number'?e:Math.abs(e?.errno??5);const row=getSystemErrorMap().get(-code);const raw=row?.[1]??'Input/output error';return ctor('Fail',[[code,raw[0].toUpperCase()+raw.slice(1)]]);};
+const result=f=>{try{return done(f())}catch(e){return fail(e)}};
+const unit=ctor('Unit',[]);
+function checkedChar(n){if(n>0x10ffff||(n>=0xd800&&n<=0xdfff))bad(n+' is not a Unicode scalar value');return n}
+// Compare UTF-16 strings without allocating code-point arrays. A malformed
+// code unit is decoded only when it is reached: an earlier mismatch or an
+// already exhausted operand determines the order without touching its suffix.
+function textCodePoint(s,at){
+  // Base's Char.cmp rebuilds Chr in left-to-right order. Reuse the same scalar
+  // check (including its diagnostic), only for the demanded pair of heads.
+  const point=checkedChar(s.codePointAt(at));
+  return [point,point>0xffff?2:1];
+}
+function compareText(a,b){
+  let i=0,j=0;
+  while(i<a.length&&j<b.length){
+    const [x,xi]=textCodePoint(a,i),[y,yj]=textCodePoint(b,j);
+    if(x!==y)return x<y?-1:1;
+    i+=xi;j+=yj;
+  }
+  return i===a.length?(j===b.length?0:-1):1;
+}
+for(const k of ['Type','Data','Quant','Unit','Bool','Cmp','Nat','U32','F32','Char','String','List','Maybe','Result','Token','Node','Parsed','Scanned','File','IO','Array','Pair','Kind','Empty','Chan','Socket','Listener','Window','Audio','App','Image','Event','Exists','Or'])G[k]={typeName:k};

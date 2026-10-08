@@ -1,0 +1,524 @@
+{
+  "kind": "phase66-paired-bun-runtime-audit",
+  "complete": true,
+  "auditPass": true,
+  "replayPass": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/controls/audit-bun-replay-v1.py",
+    "sha256": "364537b1a41e49006e30aaa078b7a86596301e3c12d4b5a8deb8829699d6eec5",
+    "bytes": 6244
+  },
+  "raw": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bun-replay01/report.json",
+    "sha256": "353d38bcd41b730faee0eb5cbf56fbdeb2956491988b84f2ca51171b5359172a",
+    "bytes": 1492696
+  },
+  "recipe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bun-replay01-recipe.json",
+    "sha256": "494d1948e386f62212fc1777e4406e22a24028cd6a1f78cc402994f2adae0b1d",
+    "bytes": 6431
+  },
+  "supervisor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bun-replay01-exec/process.json",
+    "sha256": "abab30424c5b2614321a36eac245ce8499504a730a29973e1f66fad68572e79f",
+    "bytes": 1066
+  },
+  "runtime": {
+    "acquisition": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bun-toolchain01/acquisition.json",
+      "sha256": "b01e91edb441ca5e2b867a7fef7eec101b9f83d0f471e3e8cd89588241c55a9c",
+      "bytes": 682
+    },
+    "binary": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bun-toolchain01/bun",
+      "sha256": "a83d263767d839e4d2649ca8e35d07159c7afc99afdc96d731ced29e056dda0c",
+      "bytes": 79500640
+    },
+    "release": "bun-v1.4.2",
+    "versionExecuted": false
+  },
+  "judge": {
+    "judge": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-final04-direct-js01/bend-candidate-new-base/project/tools/conformance/judge.mjs",
+      "sha256": "af05b8926bc14fdedf764f2187029363b1f01db2baf5f89787083e3a41395fbb",
+      "bytes": 6345
+    },
+    "inventory": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-final04-direct-js01/bend-candidate-new-base/project/tools/conformance/inventory.mjs",
+      "sha256": "91a1bd7be11e6e66a68c94251814286c9d0173d94a38b445240123bc558bc308",
+      "bytes": 6459
+    },
+    "manifest": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-final04-direct-js01/bend-candidate-new-base/project/src/compiler.json",
+      "sha256": "e7bb9f5c489220bb5270f7aa687407ef550d2452b5570eae283bdf7d9b89fb5e",
+      "bytes": 4028
+    }
+  },
+  "nodeReports": {
+    "typescript": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-new-ts-js01/typescript-new/js/report.json",
+      "sha256": "0fad6fc0fe3a8ededdd26780a0031629a59deffacb85e099870adede2b3e364f",
+      "bytes": 3524280
+    },
+    "bend": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-final04-direct-js01/bend-candidate-new-base/js/report.json",
+      "sha256": "451466de7aef93ff0171d93a3fdb058e32d0ee894482a49255352da8d0304c4f",
+      "bytes": 3953205
+    }
+  },
+  "identitiesRehashed": 3254,
+  "originalArtifactDirectoriesRechecked": 112,
+  "summary": {
+    "selected": 56,
+    "executedPairs": 55,
+    "actions": 110,
+    "pairedPass": 54,
+    "sharedFailure": 1,
+    "deferred": 1,
+    "identicalOutputPairs": 55,
+    "candidateOnlyRuntimeDifferences": 0
+  },
+  "resources": {
+    "wallSeconds": 19.485516543034464,
+    "peakTreeRssBytes": 315965440,
+    "minimumAvailableBytes": 28056526848,
+    "returncode": 1,
+    "resourceStop": false
+  },
+  "sharedFailure": {
+    "id": "io/process_run.bend",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/process_run.bend",
+      "sha256": "d0b3507755805ebd59b6f799c10feed8f4c2350970beccfd497fc6f528493cc3",
+      "bytes": 4862
+    },
+    "provider": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/effs/process_run.js",
+      "sha256": "6ebe3b9875ef62ee189209096fb422508e79d34e58913457aefe52a052631e42",
+      "bytes": 1148
+    },
+    "upstreamProvider": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/process_run.js",
+      "sha256": "6ebe3b9875ef62ee189209096fb422508e79d34e58913457aefe52a052631e42",
+      "bytes": 1148
+    },
+    "matchedChecks": 14,
+    "totalChecks": 16,
+    "differences": [
+      {
+        "expected": "inherited pipe: True",
+        "actual": "inherited pipe: unexpected failure"
+      },
+      {
+        "expected": "descendant output: True",
+        "actual": "descendant output: unexpected failure"
+      }
+    ],
+    "outputs": {
+      "typescript": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bun-replay01/019-io_process_run.bend/typescript/combined-output.txt",
+        "sha256": "e192ca277f6e8e28886dad3c0a27a351610c9143b69307fb734b16fd4c61d4d1",
+        "bytes": 321
+      },
+      "bend": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/bun-replay01/019-io_process_run.bend/bend/combined-output.txt",
+        "sha256": "e192ca277f6e8e28886dad3c0a27a351610c9143b69307fb734b16fd4c61d4d1",
+        "bytes": 321
+      }
+    },
+    "interpretation": "Both generated programs fail the same background-descendant cases in the unchanged upstream Bun.spawnSync provider. Actual provider error codes are hidden by this fixture; timeout versus maxBuffer versus another failure is not established."
+  },
+  "cases": [
+    {
+      "id": "base/read_bounds.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "f160206717d3b3b43b6eb44059cbd76b973773c108324ade90e28a77bc4245ce"
+    },
+    {
+      "id": "gfx/app_linear.bend",
+      "status": "deferred-environment",
+      "actions": 0
+    },
+    {
+      "id": "io/chan_try.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "b7cc769f7bbdd36e7f0d8feadab46e77b1ed409f0f1edb83c95a51a12a311007"
+    },
+    {
+      "id": "io/chan_try_late.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "ac0aaf4e7efe3bf7f8fc16947009db9d120ce146c0b031434f8280888068bdad"
+    },
+    {
+      "id": "io/codec_seal_shared.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "47599a6358218b4bb5f27ea130ca7ca139ab1d34a529c8108a2a8133406b275f"
+    },
+    {
+      "id": "io/fail_keeps_handle.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "bdb9a24093e2880966ac654479d30e2c347886bbdec7d4aba30cf1db14c3c3a1"
+    },
+    {
+      "id": "io/fiber_fork_join.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "65968943a426fad3cd56b9100d8c84d25c15763d9d11012b37dca895f6ff804e"
+    },
+    {
+      "id": "io/fifo_eof.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "714abcfa48d46f8895d35da78c58f1ea96c0825f14487b0fd71712993bc9128f"
+    },
+    {
+      "id": "io/file_binary.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "7506aa011bd3dc16b8ea2e2ca66f4ce718901c490b645d85f80d96073e7ca6c5"
+    },
+    {
+      "id": "io/file_open_mode.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "4f7a89c68b119876d6ad87ba9313f94408350f7c62ca85f04dc2cfde51092eeb"
+    },
+    {
+      "id": "io/file_roundtrip.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "6788ce6a5f0d20ffb4e465324a685eed778f85f9be91f14cd72facc0297e46b3"
+    },
+    {
+      "id": "io/file_size_no_ffi.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "ec9225148d18954d5234ffa0ea4e039acc41c963765ef3f4f5069d302893baf1"
+    },
+    {
+      "id": "io/fork_join.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "c71548530468409a6d4650625735e3e64760b172bdffc48fc45450a46db353e3"
+    },
+    {
+      "id": "io/http_fetch_eof.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "55454f392722f9d4cc4b87c8356a9f9a44372b9cd3e209da2f42c38916952c58"
+    },
+    {
+      "id": "io/http_fetch_limit.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "6d29303eaabdb5217fe651509414f8a727fe55ed572fb3589c065efb67c1e8df"
+    },
+    {
+      "id": "io/now.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+    },
+    {
+      "id": "io/nul_bytes.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "b9a8eb6106af97500441d815d1d8b187b0bee3705f082b2c26050a7a89e6b809"
+    },
+    {
+      "id": "io/path_utf8.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "e603be944af5aa2d6b117e2875dc521c6811747404081200c4b19e64b5673773"
+    },
+    {
+      "id": "io/port_bound.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "7e523cc391b5921ec5e0ef3119984ca575fd529f26442b79845f4557661cc790"
+    },
+    {
+      "id": "io/process_run.bend",
+      "status": "fail",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "e192ca277f6e8e28886dad3c0a27a351610c9143b69307fb734b16fd4c61d4d1"
+    },
+    {
+      "id": "io/process_run_parallel.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "a9ac0c3ac83c40e1b4c3416066d63d324ee9f8c144641dfeed72d140b6557245"
+    },
+    {
+      "id": "io/read_bytes.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "3e8991a1977d1e6dfe99969c07f0e0cad4cbac56ab6e326add6726ad77c9a507"
+    },
+    {
+      "id": "io/read_leading_bom.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "a9ac0c3ac83c40e1b4c3416066d63d324ee9f8c144641dfeed72d140b6557245"
+    },
+    {
+      "id": "io/select_eintr.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "de62d2808268a21c5432f9430b0c8f44807588b55dfd59a5594076000008cccc"
+    },
+    {
+      "id": "io/server_bind_host.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "8441373588cbfd42d0ba1eca06ccde0aa016318276c2b6766835e7553887d7b8"
+    },
+    {
+      "id": "io/sleep_order.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "cf2c7f63055d2e84af6e3f01ac1bb7fce598d20cf213fab2b56b8e8047b46ced"
+    },
+    {
+      "id": "io/sleep_timer.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "ace645072e41c557f39dbc9b892237fd3497bdd685a0a8c066ce7cf9eb12a736"
+    },
+    {
+      "id": "io/spawn_outlives_main.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "8425a4d496c8ce3ecbeaa08436d5afb64dfe6fa6fc98f3843b0e488f34141e50"
+    },
+    {
+      "id": "io/spawn_sleep.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "a85174aaa5b963da2f04b59ec936e38901bddc08174399334fc9af3b9c0b2d2b"
+    },
+    {
+      "id": "io/stderr_failure.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "050b5833700c63f8c888033651e6559c6fa2b5671336568464cdd3b52efc1efd"
+    },
+    {
+      "id": "io/tcp_backlog_timer.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "0460f68dad22e2a5facb504fda067ece03b18996903d1e0f6d7eceb1fcc5b496"
+    },
+    {
+      "id": "io/tcp_bytes.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "0cd751e884c4b3f3fdeee0a31c12102ac66f07fb80c48e7892b2759d9d114296"
+    },
+    {
+      "id": "io/tcp_connect_black_hole.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "9239d379e02b8662cb28318a88f9d1f6035ce4e7ba4c9f513233bdccbbf11b49"
+    },
+    {
+      "id": "io/tcp_listen_backlog.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "2d87c77751f5c40b737ff49466932cac0e70d0d501bd52b099111b0b7e0066bd"
+    },
+    {
+      "id": "io/tcp_listen_close.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "55cba4bb35813b49ebc44b95a00002da823de6184c0fd3c9667a9aa06345bfe3"
+    },
+    {
+      "id": "io/tcp_loopback.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "ccfe8ac7d1ba60f81df063dc0caf4eee3fc7947922c50c23088ec9bee6206b10"
+    },
+    {
+      "id": "io/tcp_recv_max_zero.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "7c8d12d16cc02c9f1e4c6617ab085264913689b8b09f4073c08e6054bb588913"
+    },
+    {
+      "id": "io/tcp_send_slow_peer.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "52f194814aebe29fcb21ef0d3e6c6bea997839804d5e1d490c17340174352d5e"
+    },
+    {
+      "id": "io/tcp_short_recv.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "39fddf2d35a497688291782005ad79da0e0f715db9677c8936d2b1322840b2b3"
+    },
+    {
+      "id": "io/tcp_spawn.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "15df41390e0f221185c4f3b98c32a7a80066fdb123c960e977cc28dc526a8dbb"
+    },
+    {
+      "id": "io/tcp_try.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "2ec76124573e6800836a4239802621fdaf8d75d5da6868dda978ee07bd834626"
+    },
+    {
+      "id": "io/tcp_try_bytes.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "3137d2ba8c129f4458db6c38a70a5e82ca55d20df1a78565f50266927987b10c"
+    },
+    {
+      "id": "io/tcp_try_recv.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "f95844b202393c557484adadc6a0e0c5db9a9fd8e3666de8ad065ee50e7246d2"
+    },
+    {
+      "id": "io/udp_backlog_timer.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "0460f68dad22e2a5facb504fda067ece03b18996903d1e0f6d7eceb1fcc5b496"
+    },
+    {
+      "id": "io/udp_bad_address.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "0c33e91aa5ca017ae7f498588afbe9c50242125ff7ee587e9dae1f21d64eff8f"
+    },
+    {
+      "id": "io/udp_bytes.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "f6dcb5b2c74e8cef95f7bf858d23efe445e6b6ae73ade65a723ecb0e49c48729"
+    },
+    {
+      "id": "io/udp_loopback.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "a5eb3a8303a5969c40c3faff3f64a0566edfb24397027cf845fa605814c83932"
+    },
+    {
+      "id": "io/udp_recv_max_zero.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "37ff43baacefd07649e0cc8d5ff2403b3f1b6ff2c0c09ea581ef8d5b764e4758"
+    },
+    {
+      "id": "io/udp_recv_park.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "a28e7769b110d5e30ce29fde8b5a5c388e384b2f241068fd8d3deec88a9feb7b"
+    },
+    {
+      "id": "io/udp_send_recv.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "f475492498798f7b3ef9a56c8aac324568c893c16c3ce5f47b51382d5a3d7046"
+    },
+    {
+      "id": "io/udp_truncate.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "5840b230be6e4b30d87b912e823ed965e002a53fb813fa303f53e370aa5a2675"
+    },
+    {
+      "id": "io/udp_try.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "4f06ac57fb86f23863a6ef62d357d74c55014171d8cf72e71874a2da088db28f"
+    },
+    {
+      "id": "io/udp_try_recv_from.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "7b9831e5bbd244058b39c8b23233d3aa5e3df4e815b05921ebc8cf196e832a53"
+    },
+    {
+      "id": "io/within.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "2e01d9994185ddff793d5bc27a71d0604d66891b8eaf2d0475ff5dd85868f165"
+    },
+    {
+      "id": "io/within_busy.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "4f241a57c8d2e557015373323cc939f7f880a20b7dc272f0dbe7ebce121f18b4"
+    },
+    {
+      "id": "io/write_nul_bytes.bend",
+      "status": "pass",
+      "actions": 2,
+      "identicalOutput": true,
+      "outputSha256": "3661291e28107bb940142d346bdb3a86da68415ae7fe451374d403c6037b9fa5"
+    }
+  ],
+  "scope": "Finite Bun replay of retained State04 Bend and pinned upstream TS emitted programs, not a new compile or a rewrite of Node observations. Deferred gfx is not passed. Complete audit does not turn the shared oracle failure into conformance success."
+}

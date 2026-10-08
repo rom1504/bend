@@ -1,0 +1,905 @@
+--- a/selfhost/src/runtime/js/direct.mjs
++++ b/selfhost/src/runtime/js/direct.mjs
+@@ -1,11 +1,13 @@
+ // Direct JavaScript backend runtime. Generated output embeds this fragment.
+ // Ported from bend2/comp.ts NATIVE.JS, RUNTIME and RUNTIME_MAIN, and
+ // bend2/bend.ts f32_round at fixed upstream commit
+-// 018751270e800bc222a93dad7f257083ee53a5f7. The reference files stay unchanged.
++// 059266225b77c8ca256ac6b25ee5c21449bab151. The reference files stay unchanged.
+ // No TypeScript compiler/runtime dependency is used by ordinary compilation.
+ // Number is the internal Nat representation; nat_host handles typed host input.
+ // Node foreign IO requires the host emitter to provide an ESM require binding.
+ // Bun/system calls remain lazy, exactly as in the pinned upstream runtime.
++// Retained local differences: NaN-payload-safe f32_bits and the compatible
++// array payload shared by unary run_tail and variadic jd_tail below.
+ 
+ function word_to_u32(w) {
+   let x = 0;
+@@ -78,7 +80,7 @@
+ }
+ 
+ function f32_read(s) {
+-  const re = /^\s*[+-]?((\d+\.?\d*|\.\d+)(e[+-]?\d+)?|inf(inity)?|nan)$/i;
++  const re = /^[\t\n\v\f\r ]*[+-]?((\d+\.?\d*|\.\d+)(e[+-]?\d+)?|inf(inity)?|nan)$/i;
+   const v = f32_round(s.replace(/inf\w*/i, "Infinity"));
+   return re.test(s) ? {$: "Some", value: v} : {$: "None"};
+ }
+@@ -108,6 +110,7 @@
+   }
+   return String.fromCodePoint(code);
+ }
++
+ // Array
+ // =====
+ 
+@@ -163,13 +166,15 @@
+ 
+ const $0eff = Object.create(null);
+ 
+-function io_eff(k, run, need) {
++function io_eff(k, run) {
++  if (arguments.length > 2) {
++    throw new Error("bend: " + k + " takes no need: an effect that waits parks itself");
++  }
+   if (k in $0eff) {
+     throw new Error("bend: two effects register " + k);
+   }
+-  $0eff[k] = { run, need };
+-}
+-
++  $0eff[k] = run;
++}
+ // Cli
+ // ===
+ 
+@@ -198,38 +203,37 @@
+ // show_val prints a pure main's value as term_show does (see show_main);
+ // chain is the bracket it continues, or 0. show_chr escapes as char_show.
+ 
+-function show_chr(c, q) {
++function show_chr(s, q) {
++  const c = s.codePointAt(0);
+   const k = { 10: "n", 9: "t", 13: "r", 0: "0", 92: "\\" }[c]
+-    ?? (c === q.codePointAt(0) ? q : null);
++    ?? (s === q ? q : null);
+   return k !== null ? "\\" + k : c < 32 || c === 127
+-    || (c >= 0xD800 && c <= 0xDFFF) || c > 0x10FFFF
+-    ? "\\u{" + c.toString(16) + "}" : String.fromCodePoint(c);
+-}
+-
+-function show_val(D, N, d, v, chain) {
++    || (c >= 0xD800 && c <= 0xDFFF) ? "\\u{" + c.toString(16) + "}" : s;
++}
++
++function show_val(D, d, v, chain) {
+   if (D[d] === 7) {
+     const fs = Object.values(typeof v === "boolean"
+       ? { $: v ? "True" : "False" } : v);
+     let a = d + 3;
+-    for (; N[D[a]] !== fs[0]; a += 4 + 2 * D[a + 2]) {}
++    for (; D[a + 1] !== fs[0]; a += 4 + 2 * D[a + 2]) {}
+     const o = "{[("[D[a + 3]];
+     let s = o === "{" ? fs[0] + "{" : chain === o ? "" : o;
+     for (const [j, f] of fs.slice(1).entries()) {
+       if (o === "[" ? j === 0 && chain === o : j > 0) {
+         s += ", ";
+       }
+-      s += show_val(D, N, D[a + 5 + 2 * j], f, j === 1 && o !== "{" ? o : 0);
++      s += show_val(D, D[a + 5 + 2 * j], f, j === 1 && o !== "{" ? o : 0);
+     }
+     return o === "{" || chain !== o ? s + "}])"[D[a + 3]] : s;
+   }
+   return D[d] === 0 ? String(v)
+     : D[d] === 1 ? f32_show(v).replace(/^-?\d+(?=e|$)/, "$&.0")
+     : D[d] === 2 ? v + "n"
+-    : D[d] === 3 ? "'" + show_chr(v.codePointAt(0), "'") + "'"
+-    : D[d] === 4 ? "\"" + [...v].map((c) =>
+-      show_chr(c.codePointAt(0), "\"")).join("") + "\""
++    : D[d] === 3 ? "'" + show_chr(v, "'") + "'"
++    : D[d] === 4 ? "\"" + [...v].map((c) => show_chr(c, "\"")).join("") + "\""
+     : D[d] === 5 ? "{==}"
+-    : "[" + v.map((x) => show_val(D, N, D[d + 1], x, 0)).join(", ") + "]";
++    : "[" + v.map((x) => show_val(D, D[d + 1], x, 0)).join(", ") + "]";
+ }
+ 
+ // Io
+@@ -238,14 +242,15 @@
+ // Apple arm64 passes variadic fcntl flags on the stack, so io_sys
+ // binds fcntl there with the flags as the ninth fixed argument. A
+ // parked effect waits for fd (a write when out) or until at
+-// (performance.now()), either one undefined when unused; io_wake
+-// resumes k with the value of more, and undefined parks it again. The
+-// waits stay in deadline order, as io_park does in C.
++// (performance.now()), either one undefined when unused; once due, io_wait
++// calls more at once, as C calls pack, and resumes k with its value, while
++// undefined parks it again. The waits stay in deadline order, as io_park
++// does in C.
+ 
+ function io_exit(main, show) {
+   try {
+     if (show !== null) {
+-      io_out(1, io_bytes(show_val(...show, 0, run_loop(main()), 0) + "\n"));
++      io_out(1, io_bytes(show_val(show, 0, run_loop(main()), 0) + "\n"));
+       process.exit(0);
+     }
+     process.exit(io_run(main));
+@@ -307,13 +312,34 @@
+   return globalThis.BEND_SYS;
+ }
+ 
+-function io_fail(code) {
+-  return { $: "Fail",
+-    error: io_tup(code >>> 0, String(io_sys().strerror(code))) };
++// strerror needs bun:ffi; a host without it (node) gets the bare errno.
++function io_strerror(code) {
++  try {
++    return String(io_sys().strerror(code));
++  } catch (_) {
++    return "errno " + code;
++  }
++}
++
++function io_fail(code, ...rest) {
++  const err = io_tup(code >>> 0, io_strerror(code));
++  return { $: "Fail", error: io_tup(err, ...rest) };
+ }
+ 
+ function io_done(value) {
+   return { $: "Done", value };
++}
++
++function io_until(ms) {
++  return performance.now() + Number(ms);
++}
++
++function io_late(at) {
++  return at !== undefined && performance.now() >= at;
++}
++
++function io_ready(at, r) {
++  return at === undefined ? r : { $: "Ready", value: r };
+ }
+ 
+ function io_tup(...xs) {
+@@ -364,9 +390,9 @@
+   io.live += fresh ? 1 : 0;
+ }
+ 
+-function io_wait(io) {
++function io_wait(io, block) {
+   const soon = io.waits[0]?.at ?? Infinity;
+-  const ms = soon === Infinity ? -1
++  const ms = !block ? 0 : soon === Infinity ? -1
+     : Math.max(0, Math.ceil(soon - performance.now()));
+   const fds = io.waits.filter((w) => w.fd !== undefined);
+   const top = fds.reduce((m, w) => Math.max(m, w.fd), 0);
+@@ -387,19 +413,16 @@
+     set.fill(0);
+   }
+   const now = performance.now();
+-  io.waits = io.waits.filter((w) => {
+-    const ready = w.at <= now || w.fd !== undefined
+-      && set[at(w)] & 1 << (w.fd & 7);
+-    if (ready) {
+-      io_push(io_wake, w, false);
+-    }
+-    return !ready;
+-  });
+-}
+-
+-function io_wake(w) {
+-  const x = w.more();
+-  return x === undefined ? undefined : w.k(x);
++  const due = (w) => w.at <= now || w.fd !== undefined
++    && set[at(w)] & 1 << (w.fd & 7);
++  const todo = io.waits;
++  io.waits = todo.filter((w) => !due(w));
++  for (const w of todo.filter(due)) {
++    const x = w.more();
++    if (x !== undefined) {
++      io_push(w.k, x, false);
++    }
++  }
+ }
+ 
+ function io_park_on(fd, out, k, more, at) {
+@@ -413,7 +436,8 @@
+   globalThis.BEND_IO = io;
+   try {
+     io_push(run_loop(m()), (x) => ({ $: "Emit", value: x }), true);
+-    for (;;) {
++    let look = 0;
++    for (let n = 0;; n += 1) {
+       if (io.runs.length === 0) {
+         if (io.live === 0) {
+           return 0;
+@@ -422,8 +446,15 @@
+           io_errs("bend: deadlock: every computation waits on a channel");
+           return 1;
+         }
+-        io_wait(io);
++        io_wait(io, true);
+         continue;
++      }
++      if ((n & 63) === 0 && io.waits.length > 0) {
++        const now = performance.now();
++        if (now >= look || io.waits[0].at <= now) {
++          look = now + 10;
++          io_wait(io, false);
++        }
+       }
+       const s = io.runs.shift();
+       let op = s.fun(s.arg);
+@@ -436,29 +467,19 @@
+           io_errs(op.message);
+           return op.code;
+         }
+-        const need = op.need?.() ?? {};
+-        if (need.time || need.read) {
+-          const more = () => op.run(...op.args, op.kont);
+-          io_park_on(need.read ? op.args[0] : undefined, false, op.kont, more,
+-            need.read ? undefined : performance.now() + Number(op.args[0]));
+-          break;
+-        }
+-        const x = op.run(...op.args, op.kont);
++        const run = $0eff[op.$];
++        if (run === undefined) {
++          throw "bend: no effect registers " + op.$;
++        }
++        const x = run(...op.args, op.kont);
+         if (x === undefined) {
+           break;
+         }
+         op = op.kont(x);
+       }
+     }
+-  } catch (req) {
+-    if (req instanceof RangeError) {
+-      throw "bend: memory fault (machine stack overflow?)";
+-    }
+-    if (req?.$ !== "$FFI") {
+-      throw req;
+-    }
+-    io_errs("bend: runtime fail-stop");
+-    return 1;
++  } catch (e) {
++    throw e instanceof RangeError ? "bend: memory fault (machine stack overflow?)" : e;
+   }
+ }
+ 
+--- a/selfhost/src/runtime/js/effs/chan.js
++++ b/selfhost/src/runtime/js/effs/chan.js
+@@ -1,14 +1,28 @@
+ // Chan
+ // ====
+ 
+-// Chan.new, send, recv and close share this file.
++// Chan.new, send, recv, close and the try_ twins share this file.
+ 
+ // A parked receiver holds CHAN_RECV: the C lane parks TERM_HOLE, and a
+ // program can make neither. A sent value may be null (an erased proof).
+ const CHAN_RECV = Symbol();
+ 
++function chan_done() {
++  return { $: CID(Done), value: { $: CID(Unit) } };
++}
++
++function chan_wait(item) {
++  return { $: CID(Wait), rest: item === CHAN_RECV ? { $: CID(Unit) } : item };
++}
++
++// Wakes the first waiter with x, as Ready{x} if try_ (cutting its timer).
+ function chan_wake(row, x) {
+   const w = row.wait.shift();
++  if (w.late !== undefined) {
++    const ws = globalThis.BEND_IO.waits;
++    ws.splice(ws.findIndex((t) => t.more === w.late), 1);
++    x = { $: CID(Ready), value: x };
++  }
+   io_push(w.cont, x, false);
+   return w.item;
+ }
+@@ -16,7 +30,7 @@
+ function chan_take(row) {
+   const v = row.ring.shift();
+   if (row.wait.length > 0) {
+-    row.ring.push(chan_wake(row, true));
++    row.ring.push(chan_wake(row, chan_done()));
+   }
+   return v;
+ }
+@@ -25,8 +39,66 @@
+ function chan_shut(row) {
+   row.shut = true;
+   while (row.wait.length > 0) {
+-    chan_wake(row, row.wait[0].item === CHAN_RECV ? { $: CID(None) } : false);
++    const item = row.wait[0].item;
++    chan_wake(row, item === CHAN_RECV ? { $: CID(None) }
++      : { $: CID(Fail), error: item });
+   }
++}
++
++// Parks k on row with item; with ms, a timer too, whose late answers Wait:
++// the first of the two to come cuts the other.
++function chan_park(row, k, item, ms) {
++  const w = { cont: k, item: item };
++  if (ms !== undefined) {
++    w.late = () => {
++      row.wait.splice(row.wait.indexOf(w), 1);
++      return chan_wait(item);
++    };
++    io_park_on(undefined, false, k, w.late, io_until(ms));
++  }
++  row.wait.push(w);
++  return undefined;
++}
++
++// Sends without waiting: Done{}, Fail{v} if closed, undefined if it would.
++function chan_put(row, value) {
++  if (row.shut) {
++    return { $: CID(Fail), error: value };
++  }
++  if (row.wait.length > 0 && row.wait[0].item === CHAN_RECV) {
++    chan_wake(row, { $: CID(Some), value: value });
++    return chan_done();
++  }
++  if (row.ring.length < row.room) {
++    row.ring.push(value);
++    return chan_done();
++  }
++  return undefined;
++}
++
++// Receives without waiting: Some{v}, None{} at the end, undefined if not.
++function chan_get(row) {
++  if (row.ring.length > 0) {
++    return { $: CID(Some), value: chan_take(row) };
++  }
++  if (row.wait.length > 0 && row.wait[0].item !== CHAN_RECV) {
++    return { $: CID(Some), value: chan_wake(row, chan_done()) };
++  }
++  if (row.shut) {
++    return { $: CID(None) };
++  }
++  return undefined;
++}
++
++// Ready{x} now, Wait{rest} now if ms is 0, else parks until a wake or ms.
++function chan_try(row, x, item, ms, k) {
++  if (x !== undefined) {
++    return { $: CID(Ready), value: x };
++  }
++  if (Number(ms) === 0) {
++    return chan_wait(item);
++  }
++  return chan_park(row, k, item, Number(ms));
+ }
+ 
+ function chan_new(room) {
+@@ -34,33 +106,21 @@
+ }
+ 
+ function chan_send(row, value, k) {
+-  if (row.shut) {
+-    return false;
+-  }
+-  if (row.wait.length > 0 && row.wait[0].item === CHAN_RECV) {
+-    chan_wake(row, { $: CID(Some), value: value });
+-    return true;
+-  }
+-  if (row.ring.length < row.room) {
+-    row.ring.push(value);
+-    return true;
+-  }
+-  row.wait.push({ cont: k, item: value });
+-  return;
++  const x = chan_put(row, value);
++  return x !== undefined ? x : chan_park(row, k, value);
+ }
+ 
+ function chan_recv(row, k) {
+-  if (row.ring.length > 0) {
+-    return { $: CID(Some), value: chan_take(row) };
+-  }
+-  if (row.wait.length > 0 && row.wait[0].item !== CHAN_RECV) {
+-    return { $: CID(Some), value: chan_wake(row, true) };
+-  }
+-  if (row.shut) {
+-    return { $: CID(None) };
+-  }
+-  row.wait.push({ cont: k, item: CHAN_RECV });
+-  return;
++  const x = chan_get(row);
++  return x !== undefined ? x : chan_park(row, k, CHAN_RECV);
++}
++
++function chan_try_send(row, value, ms, k) {
++  return chan_try(row, chan_put(row, value), value, ms, k);
++}
++
++function chan_try_recv(row, ms, k) {
++  return chan_try(row, chan_get(row), CHAN_RECV, ms, k);
+ }
+ 
+ function chan_close(row) {
+@@ -73,4 +133,6 @@
+ io_eff(CID(Chan.new), chan_new);
+ io_eff(CID(Chan.send), chan_send);
+ io_eff(CID(Chan.recv), chan_recv);
++io_eff(CID(Chan.try_send), chan_try_send);
++io_eff(CID(Chan.try_recv), chan_try_recv);
+ io_eff(CID(Chan.close), chan_close);
+--- a/selfhost/src/runtime/js/effs/file_size.js
++++ b/selfhost/src/runtime/js/effs/file_size.js
+@@ -5,7 +5,12 @@
+   const fs = require("fs");
+   try {
+     const size = fs.fstatSync(file).size;
+-    const over = io_sys().mac ? 84 : 75;
++    // the EOVERFLOW errno, 84 on mac and 75 elsewhere. io_sys().mac reads
++    // the same platform, but io_sys() binds libc through bun:ffi, and on a
++    // host without it that ask threw where the size was already read, so
++    // the catch answered Fail on a good file. Nothing above this line
++    // touches the FFI table, and nothing below it should either.
++    const over = process.platform === "darwin" ? 84 : 75;
+     return io_tup(file, size > 4294967295 ? io_fail(over) : io_done(size));
+   } catch (e) {
+     return io_tup(file, io_fail(Math.abs(e.errno ?? 5)));
+--- a/selfhost/src/runtime/js/effs/random_u32.js
++++ b/selfhost/src/runtime/js/effs/random_u32.js
+@@ -1,8 +1,18 @@
+ // IO
+ // ==
+ 
++// WebCrypto answers Fail by throwing, and a host without it throws a
++// ReferenceError on the name, so the declared Result is what a program
++// that handles Fail already expects here. The C lane gets the errno out
++// of getrandom; WebCrypto carries no errno on any host, so EIO stands in
++// and io_fail(5) says what process_run.js already says when Bun throws
++// without one.
+ function io_random_u32() {
+-  return io_done(crypto.getRandomValues(new Uint32Array(1))[0]);
++  try {
++    return io_done(crypto.getRandomValues(new Uint32Array(1))[0]);
++  } catch (_) {
++    return io_fail(5);
++  }
+ }
+ 
+ io_eff(CID(IO.random_u32), io_random_u32);
+--- a/selfhost/src/runtime/js/effs/sleep.js
++++ b/selfhost/src/runtime/js/effs/sleep.js
+@@ -1,12 +1,10 @@
+ // IO
+ // ==
+ 
+-function io_sleep(ms) {
+-  return { $: CID(Unit) };
++// Parks until ms milliseconds from now.
++function io_sleep(ms, k) {
++  io_park_on(undefined, false, k, () => ({ $: CID(Unit) }),
++    performance.now() + Number(ms));
+ }
+ 
+-function io_sleep_need() {
+-  return { time: true };
+-}
+-
+-io_eff(CID(IO.sleep), io_sleep, io_sleep_need);
++io_eff(CID(IO.sleep), io_sleep);
+--- a/selfhost/src/runtime/js/effs/tcp_accept.js
++++ b/selfhost/src/runtime/js/effs/tcp_accept.js
+@@ -1,34 +1,45 @@
+ // TCP
+ // ===
+ 
+-// The loop parked the request until the listener was readable; an accept
+-// that still finds no connection (the listener is non-blocking) parks
+-// again. The accepted socket is non-blocking for life.
+-function tcp_accept(listener, k) {
++// The request parks until the listener is readable, so a backlog never
++// keeps the loop from its timers; an accept that still finds no connection
++// (the listener is non-blocking) parks again. The accepted socket is
++// non-blocking for life.
++function tcp_accept_with(listener, k, at) {
+   const sys = io_sys();
+   const lfd = listener;
+   const go = () => {
+     const fd = sys.accept(lfd, null, null);
+     if (fd < 0) {
+       const code = sys.errno();
+-      if (code === (sys.mac ? 35 : 11)) {
+-        io_park_on(lfd, false, k, go);
+-        return undefined;
++      if (code !== (sys.mac ? 35 : 11)) {
++        return io_tup(listener, io_ready(at, io_fail(code)));
+       }
+-      return io_tup(listener, io_fail(code));
++      if (io_late(at)) {
++        return io_tup(listener, { $: CID(Wait), rest: { $: CID(Unit) } });
++      }
++      io_park_on(lfd, false, k, go, at);
++      return undefined;
+     }
+     if (sys.fcntl(fd, 4, sys.fcntl(fd, 3, 0) | (sys.mac ? 4 : 0x800)) < 0) {
+       const code = sys.errno();
+       sys.close(fd);
+-      return io_tup(listener, io_fail(code));
++      return io_tup(listener, io_ready(at, io_fail(code)));
+     }
+-    return io_tup(listener, io_done(fd));
++    return io_tup(listener, io_ready(at, io_done(fd)));
+   };
+-  return go();
++  io_park_on(lfd, false, k, go, at);
++  return undefined;
+ }
+ 
+-function tcp_accept_need() {
+-  return { read: true };
++function tcp_accept(listener, k) {
++  return tcp_accept_with(listener, k);
+ }
+ 
+-io_eff(CID(TCP.accept), tcp_accept, tcp_accept_need);
++// try_ passes a deadline at: past it, an accept that would wait answers Wait{}.
++function tcp_try_accept(listener, ms, k) {
++  return tcp_accept_with(listener, k, io_until(ms));
++}
++
++io_eff(CID(TCP.accept), tcp_accept);
++io_eff(CID(TCP.try_accept), tcp_try_accept);
+--- a/selfhost/src/runtime/js/effs/tcp_recv.js
++++ b/selfhost/src/runtime/js/effs/tcp_recv.js
+@@ -4,9 +4,9 @@
+ // A recv that finds nothing (the socket is non-blocking) parks until the
+ // socket is readable. What it finds, read makes a String (io_text) or a
+ // List of bytes (io_list).
+-function tcp_recv_with(socket, max, k, read) {
++function tcp_recv_with(socket, max, k, read, at) {
+   if (Number(max) === 0) {
+-    return io_tup(socket, io_fail(22));
++    return io_tup(socket, io_ready(at, io_fail(22)));
+   }
+   const sys = io_sys();
+   const fd = socket;
+@@ -16,13 +16,18 @@
+     const n = Number(sys.recv(fd, sys.ptr(b), Number(max), 0));
+     if (n < 0) {
+       const code = sys.errno();
+-      if (code === again) {
+-        io_park_on(fd, false, k, go);
+-        return undefined;
++      if (code !== again) {
++        return io_tup(socket, io_ready(at, io_fail(code)));
+       }
+-      return io_tup(socket, io_fail(code));
++      if (io_late(at)) {
++        return io_tup(socket, { $: CID(Wait), rest: { $: CID(Unit) } });
++      }
++      io_park_on(fd, false, k, go, at);
++      return undefined;
+     }
+-    return io_tup(socket, io_done(read(b, n)));
++    const got = n === 0 ? { $: CID(None) }
++      : { $: CID(Some), value: read(b, n) };
++    return io_tup(socket, io_ready(at, io_done(got)));
+   };
+   return go();
+ }
+@@ -35,5 +40,16 @@
+   return tcp_recv_with(socket, max, k, io_list);
+ }
+ 
++// The try_ twins pass a deadline at: past it, a recv that would wait is Wait{}.
++function tcp_try_recv(socket, max, ms, k) {
++  return tcp_recv_with(socket, max, k, io_text, io_until(ms));
++}
++
++function tcp_try_recv_bytes(socket, max, ms, k) {
++  return tcp_recv_with(socket, max, k, io_list, io_until(ms));
++}
++
+ io_eff(CID(TCP.recv), tcp_recv);
+ io_eff(CID(TCP.recv_bytes), tcp_recv_bytes);
++io_eff(CID(TCP.try_recv), tcp_try_recv);
++io_eff(CID(TCP.try_recv_bytes), tcp_try_recv_bytes);
+--- a/selfhost/src/runtime/js/effs/tcp_send.js
++++ b/selfhost/src/runtime/js/effs/tcp_send.js
+@@ -3,38 +3,61 @@
+ 
+ // Sends what is left; a full socket (non-blocking, so EAGAIN) parks the
+ // computation until the socket is writable, and the loop resumes here.
+-function tcp_send_with(socket, b, k) {
++function tcp_send_with(socket, b, k, make, at) {
+   const sys = io_sys();
+   const fd = socket;
+   const again = sys.mac ? 35 : 11;
+-  const go = (at) => {
+-    while (at < b.length) {
+-      const part = b.subarray(at);
++  const go = (off) => {
++    while (off < b.length) {
++      const part = b.subarray(off);
+       const n = Number(sys.send(fd, sys.ptr(part), part.length, 0));
+       if (n < 0) {
+         const code = sys.errno();
+-        if (code === again) {
+-          io_park_on(fd, true, k, () => go(at));
+-          return undefined;
++        if (code !== again) {
++          const fail = io_fail(code, make(part, part.length));
++          return io_tup(socket, io_ready(at, fail));
+         }
+-        return io_tup(socket, io_fail(code));
++        if (io_late(at)) {
++          const rest = make(part, part.length);
++          return io_tup(socket, { $: CID(Wait), rest: rest });
++        }
++        io_park_on(fd, true, k, () => go(off), at);
++        return undefined;
+       }
+-      at += n;
++      off += n;
+     }
+-    return io_tup(socket, io_done({ $: CID(Unit) }));
++    return io_tup(socket, io_ready(at, io_done({ $: CID(Unit) })));
+   };
+   return go(0);
+ }
+ 
+-function tcp_send(socket, data, k) {
+-  return tcp_send_with(socket, io_bytes(data), k);
++// A value past 255 fails with EINVAL before any byte is sent, list kept.
++function tcp_send_bytes_with(socket, data, k, at) {
++  const b = io_unlist(data);
++  if (b !== null) {
++    return tcp_send_with(socket, b, k, io_list, at);
++  }
++  return io_tup(socket, io_ready(at, io_fail(22, data)));
+ }
+ 
+-// A value past 255 fails with EINVAL before any byte is sent.
++function tcp_send(socket, data, k) {
++  return tcp_send_with(socket, io_bytes(data), k, io_text);
++}
++
+ function tcp_send_bytes(socket, data, k) {
+-  const b = io_unlist(data);
+-  return b === null ? io_tup(socket, io_fail(22)) : tcp_send_with(socket, b, k);
++  return tcp_send_bytes_with(socket, data, k);
++}
++
++// The try_ twins pass a deadline at: past it, a waiting send is Wait{rest}.
++function tcp_try_send(socket, data, ms, k) {
++  return tcp_send_with(socket, io_bytes(data), k, io_text, io_until(ms));
++}
++
++function tcp_try_send_bytes(socket, data, ms, k) {
++  return tcp_send_bytes_with(socket, data, k, io_until(ms));
+ }
+ 
+ io_eff(CID(TCP.send), tcp_send);
+ io_eff(CID(TCP.send_bytes), tcp_send_bytes);
++io_eff(CID(TCP.try_send), tcp_try_send);
++io_eff(CID(TCP.try_send_bytes), tcp_try_send_bytes);
+--- a/selfhost/src/runtime/js/effs/udp_recv_from.js
++++ b/selfhost/src/runtime/js/effs/udp_recv_from.js
+@@ -1,12 +1,17 @@
+ // UDP
+ // ===
+ 
+-// The loop parked the request until the socket was readable; a recv that
+-// still finds no datagram (the socket is non-blocking) parks again.
+-function udp_recv_from(socket, max, k) {
++// The request parks until the socket is readable, so a backlog never keeps
++// the loop from its timers; a recv that still finds no datagram (the socket
++// is non-blocking) parks again. The datagram, read makes a String (io_text)
++// or a List of bytes (io_list).
++function udp_recv_from_with(socket, max, k, read, at) {
++  if (Number(max) === 0) {
++    return io_tup(socket, io_ready(at, io_fail(22)));
++  }
+   const sys = io_sys();
+   const fd = socket;
+-  const b = new Uint8Array(Math.max(Number(max), 1));
++  const b = new Uint8Array(Number(max));
+   const peer = new Uint8Array(16);
+   const len = new Uint32Array([16]);
+   const go = () => {
+@@ -15,21 +20,43 @@
+     const n = Number(got);
+     if (n < 0) {
+       const code = sys.errno();
+-      if (code === (sys.mac ? 35 : 11)) {
+-        io_park_on(fd, false, k, go);
+-        return undefined;
++      if (code !== (sys.mac ? 35 : 11)) {
++        return io_tup(socket, io_ready(at, io_fail(code)));
+       }
+-      return io_tup(socket, io_fail(code));
++      if (io_late(at)) {
++        return io_tup(socket, { $: CID(Wait), rest: { $: CID(Unit) } });
++      }
++      io_park_on(fd, false, k, go, at);
++      return undefined;
+     }
+     const host = peer[4] + "." + peer[5] + "." + peer[6] + "." + peer[7];
+     const port = (peer[2] << 8) | peer[3];
+-    return io_tup(socket, io_done(io_tup(host, port, io_text(b, n))));
++    const dgram = io_tup(host, port, read(b, n));
++    return io_tup(socket, io_ready(at, io_done(dgram)));
+   };
+-  return go();
++  io_park_on(fd, false, k, go, at);
++  return undefined;
+ }
+ 
+-function udp_recv_from_need() {
+-  return { read: true };
++function udp_recv_from(socket, max, k) {
++  return udp_recv_from_with(socket, max, k, io_text);
+ }
+ 
+-io_eff(CID(UDP.recv_from), udp_recv_from, udp_recv_from_need);
++function udp_recv_bytes_from(socket, max, k) {
++  return udp_recv_from_with(socket, max, k, io_list);
++}
++
++// The try_ twins pass a deadline at: past it, a recv that would wait
++// answers Wait{}.
++function udp_try_recv_from(socket, max, ms, k) {
++  return udp_recv_from_with(socket, max, k, io_text, io_until(ms));
++}
++
++function udp_try_recv_bytes_from(socket, max, ms, k) {
++  return udp_recv_from_with(socket, max, k, io_list, io_until(ms));
++}
++
++io_eff(CID(UDP.recv_from), udp_recv_from);
++io_eff(CID(UDP.recv_bytes_from), udp_recv_bytes_from);
++io_eff(CID(UDP.try_recv_from), udp_try_recv_from);
++io_eff(CID(UDP.try_recv_bytes_from), udp_try_recv_bytes_from);
+--- a/selfhost/src/runtime/js/effs/udp_send_to.js
++++ b/selfhost/src/runtime/js/effs/udp_send_to.js
+@@ -2,28 +2,63 @@
+ // ===
+ 
+ // A datagram goes whole or not at all; a full send buffer (non-blocking,
+-// so EAGAIN) parks the computation until the socket is writable.
+-function udp_send_to(socket, host, port, data, k) {
++// so EAGAIN) parks the computation until the socket is writable. b is the
++// datagram's bytes, data the value a failed or late send hands back.
++function udp_send_to_with(socket, host, port, data, b, k, at) {
++  const fail = (code) => io_tup(socket, io_ready(at, io_fail(code, data)));
+   const sys = io_sys();
+   const fd = socket;
+-  const at = io_addr(host, Number(port));
+-  if (at === null) {
+-    return io_tup(socket, io_fail(22));
++  const to = io_addr(host, Number(port));
++  if (to === null) {
++    return fail(22);
+   }
+-  const b = io_bytes(data);
+   const go = () => {
+-    const sent = sys.sendto(fd, b.length ? sys.ptr(b) : null, b.length, 0, sys.ptr(at), 16);
++    const sent = sys.sendto(fd, b.length ? sys.ptr(b) : null, b.length, 0, sys.ptr(to), 16);
+     if (Number(sent) < 0) {
+       const code = sys.errno();
+-      if (code === (sys.mac ? 35 : 11)) {
+-        io_park_on(fd, true, k, go);
+-        return undefined;
++      if (code !== (sys.mac ? 35 : 11)) {
++        return fail(code);
+       }
+-      return io_tup(socket, io_fail(code));
++      if (io_late(at)) {
++        return io_tup(socket, { $: CID(Wait), rest: data });
++      }
++      io_park_on(fd, true, k, go, at);
++      return undefined;
+     }
+-    return io_tup(socket, io_done({ $: CID(Unit) }));
++    return io_tup(socket, io_ready(at, io_done({ $: CID(Unit) })));
+   };
+   return go();
+ }
+ 
++// A value past 255 fails with EINVAL before the datagram is sent, list kept.
++function udp_send_bytes_to_with(socket, host, port, data, k, at) {
++  const b = io_unlist(data);
++  if (b !== null) {
++    return udp_send_to_with(socket, host, port, data, b, k, at);
++  }
++  return io_tup(socket, io_ready(at, io_fail(22, data)));
++}
++
++function udp_send_to(socket, host, port, data, k) {
++  return udp_send_to_with(socket, host, port, data, io_bytes(data), k);
++}
++
++function udp_send_bytes_to(socket, host, port, data, k) {
++  return udp_send_bytes_to_with(socket, host, port, data, k);
++}
++
++// The try_ twins pass a deadline at: past it, a send that would wait is
++// Wait{data}.
++function udp_try_send_to(socket, host, port, data, ms, k) {
++  return udp_send_to_with(socket, host, port, data, io_bytes(data), k,
++    io_until(ms));
++}
++
++function udp_try_send_bytes_to(socket, host, port, data, ms, k) {
++  return udp_send_bytes_to_with(socket, host, port, data, k, io_until(ms));
++}
++
+ io_eff(CID(UDP.send_to), udp_send_to);
++io_eff(CID(UDP.send_bytes_to), udp_send_bytes_to);
++io_eff(CID(UDP.try_send_to), udp_try_send_to);
++io_eff(CID(UDP.try_send_bytes_to), udp_try_send_bytes_to);
+--- a/selfhost/src/runtime/js/effs/udp_poll.js
++++ /dev/null
+@@ -1,25 +0,0 @@
+-// UDP
+-// ===
+-
+-function udp_poll(socket, max) {
+-  const sys = io_sys();
+-  const fd = socket;
+-  const b = new Uint8Array(Math.max(Number(max), 1));
+-  const peer = new Uint8Array(16);
+-  const len = new Uint32Array([16]);
+-  const got = sys.recvfrom(fd, sys.ptr(b), Number(max), 0, sys.ptr(peer),
+-    sys.ptr(len));
+-  const n = Number(got);
+-  if (n < 0 && sys.errno() === (sys.mac ? 35 : 11)) {
+-    return io_tup(socket, io_done({ $: CID(None) }));
+-  }
+-  if (n < 0) {
+-    return io_tup(socket, io_fail(sys.errno()));
+-  }
+-  const host = peer[4] + "." + peer[5] + "." + peer[6] + "." + peer[7];
+-  const port = (peer[2] << 8) | peer[3];
+-  return io_tup(socket, io_done({ $: CID(Some),
+-    value: io_tup(host, port, io_text(b, n)) }));
+-}
+-
+-io_eff(CID(UDP.poll), udp_poll);
+--- a/selfhost/src/runtime/js/effs/tcp_poll.js
++++ /dev/null
+@@ -1,34 +0,0 @@
+-// TCP
+-// ===
+-
+-// TCP.poll(sock, max, ms) is recv with a deadline: a recv that finds
+-// nothing parks on the socket and on the clock, whichever fires first;
+-// past the deadline it answers None{}, else Some{data} ("" is the peer's
+-// close, as TCP.recv answers it).
+-function tcp_poll(socket, max, ms, k) {
+-  if (Number(max) === 0) {
+-    return io_tup(socket, io_fail(22));
+-  }
+-  const sys = io_sys();
+-  const fd = socket;
+-  const b = new Uint8Array(Number(max));
+-  const at = performance.now() + Number(ms);
+-  const go = () => {
+-    const n = Number(sys.recv(fd, sys.ptr(b), Number(max), 0));
+-    if (n >= 0) {
+-      return io_tup(socket, io_done({ $: CID(Some), value: io_text(b, n) }));
+-    }
+-    const code = sys.errno();
+-    if (code !== (sys.mac ? 35 : 11)) {
+-      return io_tup(socket, io_fail(code));
+-    }
+-    if (performance.now() >= at) {
+-      return io_tup(socket, io_done({ $: CID(None) }));
+-    }
+-    io_park_on(fd, false, k, go, at);
+-    return undefined;
+-  };
+-  return go();
+-}
+-
+-io_eff(CID(TCP.poll), tcp_poll);

@@ -5,16 +5,35 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active implementation: Phase66 upstream and five metrics
+## Completed implementation: Phase66 upstream and five metrics
 
 [Design](../design/phase66/upstream-and-five-metrics.md) ·
 [Report](../implementation/phase66/README.md) ·
 [Experiment](phase66/P66-001-upstream-migration.md).
-The authorized migration freezes upstream `059266225b77c8ca256ac6b25ee5c21449bab151`
-and independently tracks generated-program execution, checked-B1 compilation,
-genuine-B2 compilation, conformance and maintained-code complexity. Phase65 is
-the preserved installed baseline; no new qualification or performance result is
-claimed at registration. Read [STEERING](STEERING.md) for ownership and gates.
+The migration targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
+Selected final07 (`f9667c2`) closes all 3,174 frontend comparisons and has no
+TypeScript-passing candidate JS failure. Its scoped Node/Bun union has 1,045
+distinct golden passes, 123 exemptions, one shared Process.run failure and one
+graphics deferral. Genuine B2 checks its own source and reproduces B3 exactly.
+
+Closed 23-source compilation ratios versus new TypeScript are **1.402065× B1**
+and **1.321100× B2**; including imports/API loading gives **0.982634×** and
+**0.990389×**. All 669 runtime samples over 45 points pass; generated programs
+are **1.049282× new TS** with equal-point weighting and **1.046987×** with
+equal-source weighting. Speed is essentially retained versus the paired old
+Bend outputs. Maintained Bend source is 28,490 physical lines (+0.331% versus
+Phase65), with 115 modules; this is not a simplification claim.
+
+Final07 is [installed and verified](../implementation/phase66/evidence/installed-release07.json),
+with five release jobs, legacy42/default24/helper5 and selected native/Base
+admission complete. The prior Phase65 release remains a preserved historical
+baseline. Root sealed the raw tree and the [complete archive](../selfhost/tools/performance/phase66/artifacts/README.md)
+passes verification of every member: 119,393 files in five parts, each at most
+50 MiB. Prior raw/archive preservation also passes.
+Read [STEERING](STEERING.md) for remaining work and the
+[report](../implementation/phase66/README.md) for exact receipts and finite
+coverage limits. The original experiment registration remains prospective and
+unchanged.
 
 ## Completed implementation: Phase65 reusable backend products
 
@@ -31,8 +50,8 @@ State10 selects optional Bend-produced Base annotations and static JS transport
 readers. Its [final broad comparison](../implementation/phase65/evidence/state10-b2-broad.json)
 passes 207 exact outputs: compilation **1.41737× → 1.28945× TS (−9.025%)** and
 imports plus compilation **1.04969× → 0.969256× (−7.662%)**. All 23 sources improve;
-compilation-only parity still requires about 22.45% less time. State10 is
-installed and verified: [compiler qualification](../implementation/phase65/evidence/state10-qualification.json)
+compilation-only parity required about 22.45% less time at that checkpoint.
+State10 was installed and verified and is now superseded by Phase66: [compiler qualification](../implementation/phase65/evidence/state10-qualification.json)
 and [release checks](../implementation/phase65/evidence/state10-release.json)
 pass, including self-reproduction, legacy42/default24 and helper5. Exact Base
 content permission preserves custom/future Base fallback. Historical raw trees,

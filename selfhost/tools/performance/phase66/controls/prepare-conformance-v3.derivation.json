@@ -1,0 +1,65 @@
+{
+  "kind": "phase66-conformance-reference-and-backend-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/controls/prepare-conformance-v2.py",
+    "sha256": "b81eb9441455e5f5b1982ead359c838d88d5d509cc72ab68ff4caca6e4c74a05"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/controls/prepare-conformance-v3.py",
+    "sha256": "43a2537e2d9d1de3f34390e0cd00e678b468567f233ad5a06dd1e2063734a421"
+  },
+  "changes": [
+    {
+      "old": "choices=['screen25','delta','full-frontend','full-js']",
+      "new": "choices=['screen25','delta','full-frontend','full-js','selected']",
+      "count": 1
+    },
+    {
+      "old": "    ap.add_argument('--node',",
+      "new": "    ap.add_argument('--selection',type=Path)\n    ap.add_argument('--js-backend',choices=['direct','legacy'],default='direct')\n    ap.add_argument('--node',",
+      "count": 1
+    },
+    {
+      "old": "    a=ap.parse_args(); a.out=a.out.resolve()",
+      "new": "    a=ap.parse_args(); a.out=a.out.resolve()\n    assert (a.scope=='selected') == bool(a.selection)\n    custom_selection=json.loads(a.selection.read_text()) if a.selection else None",
+      "count": 1
+    },
+    {
+      "old": "        adapter_change=None\n        if is_ts and not old:\n            old_adapter=pin(adapter); text=adapter.read_text()\n            needle=\"list.map(key=>'- '+key+'\\\\n').join('')\"\n            assert text.count(needle)==1\n            text=text.replace(needle,\"list.map(key=>'- '+B.name_key(key)+'\\\\n').join('')\")\n            adapter.write_text(text)\n            adapter_change=dict(before=old_adapter,after=pin(adapter),reason='0592662 main.ts declaration verdict displays name_key; raw keys and trust propagation unchanged')",
+      "new": "        adapter_change=None\n        if is_ts and not old:\n            old_adapter=pin(adapter); text=adapter.read_text(); edits=[]\n            for old_text,new_text in [(\"list.map(key=>'- '+key+'\\\\n').join('')\",\"list.map(key=>'- '+B.name_key(key)+'\\\\n').join('')\"),\n                (\"term.$==='ADT'?term.c:[term]\",\"term.$==='ADT'?[term,...term.c]:[term]\")]:\n                if old_text in text:\n                    assert text.count(old_text)==1; text=text.replace(old_text,new_text); edits.append(dict(before=old_text,after=new_text))\n                else: assert text.count(new_text)==1\n            adapter.write_text(text)\n            adapter_change=dict(before=old_adapter,after=pin(adapter),edits=edits,reason='0592662 main.ts: displayed name_key plus ADT own kind dependencies; raw graph keys unchanged')\n        backend_change=None\n        if not is_ts and a.js_backend=='direct' and a.scope in ['screen25','full-js','selected']:\n            old_adapter=pin(adapter); text=adapter.read_text(); needle='backend:lane,combinedOutput:true'\n            assert text.count(needle)==1\n            text=text.replace(needle,\"backend:lane==='js'?'direct':lane,combinedOutput:true\")\n            adapter.write_text(text)\n            backend_change=dict(before=old_adapter,after=pin(adapter),reason='Explicit primary direct JS lane; ordinary owned driver, unchanged output oracle')",
+      "count": 1
+    },
+    {
+      "old": "        for lane in lanes:",
+      "new": "        if custom_selection is not None:\n            wanted={x for row in custom_selection['cases'] for x in row['lanes']}\n            assert wanted and wanted <= {'parse','check','js'}\n            lanes=([\"frontend\"] if wanted & {'parse','check'} else [])+([\"js\"] if 'js' in wanted else [])\n        for lane in lanes:",
+      "count": 1
+    },
+    {
+      "old": "if a.scope in {'screen25','delta','full-js'}:",
+      "new": "if a.scope in {'screen25','delta','full-js','selected'}:",
+      "count": 1
+    },
+    {
+      "old": "                name={'screen25':'screen25.json','delta':'delta-frontend.json','full-js':'full-js-applicable.json'}[a.scope]\n                selection=json.loads((inv/name).read_text())",
+      "new": "                if custom_selection is not None: selection=custom_selection\n                else:\n                    name={'screen25':'screen25.json','delta':'delta-frontend.json','full-js':'full-js-applicable.json'}[a.scope]\n                    selection=json.loads((inv/name).read_text())",
+      "count": 1
+    },
+    {
+      "old": "harnessManifestBefore=before,harnessManifestAfter=pin(manifest),adapterDisplayChange=adapter_change,copies=copies,",
+      "new": "harnessManifestBefore=before,harnessManifestAfter=pin(manifest),adapterDisplayChange=adapter_change,adapterBackendChange=backend_change,copies=copies,",
+      "count": 1
+    },
+    {
+      "old": "scope=a.scope,roles=roles,images=images,commands=commands,",
+      "new": "scope=a.scope,roles=roles,jsBackend=a.js_backend,selection=pin(a.selection) if a.selection else None,images=images,commands=commands,",
+      "count": 1
+    },
+    {
+      "old": "seconds=180 if a.scope=='screen25' else 600 if a.scope=='delta' else 1800",
+      "new": "seconds=180 if a.scope in ['screen25','selected'] else 600 if a.scope=='delta' else 1800",
+      "count": 1
+    }
+  ],
+  "targetExecuted": false,
+  "scope": "OldTS unchanged. NewTS matches real main.ts ADT own-kind trust traversal and display. JS backend selection explicit; selected scope permits focused maintained or external fixture lists."
+}

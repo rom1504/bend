@@ -1,0 +1,83 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-runtime-v2.mjs",
+    "sha256": "77dfb7094d437d304f65c2de99da0e15600d9161d0b8b528156aca7ca76336a3"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/semantics/numeric-reference.mjs",
+    "sha256": "98a7fe8348bb708afa548d0475642f3125216eea6d8eecee7c76527a63d5b7d1"
+  },
+  "edits": [
+    {
+      "old": "const [standardFile,directFile,referenceFile,outArg]=process.argv.slice(2);",
+      "new": "const [standardFile,referenceFile,outArg]=process.argv.slice(2);",
+      "count": 1
+    },
+    {
+      "old": "assert(standardFile&&directFile&&referenceFile&&outArg);",
+      "new": "assert(standardFile&&referenceFile&&outArg);",
+      "count": 1
+    },
+    {
+      "old": "kind:'phase53-independent-cold-numeric-and-order-controls'",
+      "new": "kind:'phase66-independent-typescript-numeric-reference',candidateExecuted:false",
+      "count": 1
+    },
+    {
+      "old": "scope:'Candidate must satisfy every independent first/repeated numeric oracle. Reference numeric source failures remain explicit, including fixed signaling/quiet NaN payload probes; reference finite/signedzero/subnormal/arithmetic and every ordered-event case must pass. No source golden rewritten or cold result discarded.'",
+      "new": "scope:'Fresh HEAD TypeScript only. All original34 independent numeric/order oracles are measured, including first/repeated NaN payloads. Oracle failures remain explicit; no previous defect count is assumed and no candidate qualification occurs.'",
+      "count": 1
+    },
+    {
+      "old": "path.join(import.meta.dirname,",
+      "new": "path.join(\"/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53\",",
+      "count": 5
+    },
+    {
+      "old": " const standard=read(standardFile),direct=read(directFile),reference=read(referenceFile);\n assert(standard.complete&&direct.complete&&direct.passed&&reference.complete&&reference.passed);\n const attemptFile=verify(standard.roles.direct.attempt,path.dirname(path.resolve(standardFile))),attempt=read(attemptFile);\n assert(attempt.checked);assert.deepEqual(direct.roles.direct.attempt,standard.roles.direct.attempt);\n const snapshot=fs.realpathSync(attempt.snapshot.root);const frozenSources=new Map(attempt.snapshot.sources.map(row=>[fs.realpathSync(row.frozen.file),row.frozen.sha256]));\n const catalogFile=verify(direct.catalog,path.dirname(path.resolve(directFile))),catalog=read(catalogFile);\n assert.deepEqual(direct.catalog,reference.catalog);assert.equal(catalog.cases.length,2);\n const standardCatalogFile=verify(standard.catalog,path.dirname(path.resolve(standardFile))),standardCatalog=read(standardCatalogFile);\n",
+      "new": " const standard=read(standardFile),reference=read(referenceFile);\n assert(standard.complete&&standard.passed&&reference.complete&&reference.passed);\n assert.deepEqual(Object.keys(standard.roles),['typescript']);assert.deepEqual(Object.keys(reference.roles),['typescript']);\n const catalogFile=verify(reference.catalog,path.dirname(path.resolve(referenceFile))),catalog=read(catalogFile);\n assert.equal(catalog.upstreamCommit,'059266225b77c8ca256ac6b25ee5c21449bab151');assert.equal(catalog.cases.length,2);\n const standardCatalogFile=verify(standard.catalog,path.dirname(path.resolve(standardFile))),standardCatalog=read(standardCatalogFile);\n assert.equal(standardCatalog.upstreamCommit,catalog.upstreamCommit);\n",
+      "count": 1
+    },
+    {
+      "old": "  if(role==='direct'){\n   assert.equal(receipt.compiler.kind,'checked-development-attempt');assert.equal(receipt.compiler.backend,'direct');assert.equal(receipt.compiler.callingContract,'upstream-compatible-direct-v1');assert.equal(receipt.observation.exitCode,0);\n   assert.equal(verify(receipt.attempt,path.dirname(receiptFile)),attemptFile);\n   for(const key of ['api','runtime','base'])assert.equal(receipt.compiler[key].sha256,attempt[key].sha256);\n   assert.equal(fs.realpathSync(receipt.compiler.driver.file),path.join(snapshot,'tools/typed-driver.mjs'));\n   assert.equal(fs.realpathSync(receipt.compiler.directRuntime.file),path.join(snapshot,'src/runtime/js/direct.mjs'));\n   for(const key of ['driver','directRuntime'])assert.equal(receipt.compiler[key].sha256,frozenSources.get(fs.realpathSync(receipt.compiler[key].file)));\n   for(const key of ['api','runtime','base','driver','directRuntime'])verify(receipt.compiler[key],path.dirname(receiptFile));\n   assert(receipt.emissionInputs.length>=3);for(const row of receipt.emissionInputs)verify(row,path.dirname(receiptFile));\n  }else{assert.equal(receipt.compiler.kind,'checked-pinned-typescript');for(const row of receipt.compiler.sources)verify(row,path.dirname(receiptFile));}\n",
+      "new": "  assert.equal(role,'typescript');assert.equal(receipt.compiler.kind,'checked-pinned-typescript');for(const row of receipt.compiler.sources)verify(row,path.dirname(receiptFile));\n",
+      "count": 1
+    },
+    {
+      "old": "const modules={direct:{},typescript:{}};",
+      "new": "const modules={typescript:{}};",
+      "count": 1
+    },
+    {
+      "old": "for(const role of ['direct','typescript'])",
+      "new": "for(const role of ['typescript'])",
+      "count": 1
+    },
+    {
+      "old": "const group=role==='direct'?direct:reference;",
+      "new": "const group=reference;",
+      "count": 1
+    },
+    {
+      "old": "for(const role of ['typescript','direct'])",
+      "new": "for(const role of ['typescript'])",
+      "count": 1
+    },
+    {
+      "old": "  row.candidatePass=row.roles.direct.oraclePass;\n  row.referencePass=row.roles.typescript.oraclePass;\n  if(!numeric){row.differentialAgreement=JSON.stringify(row.roles.direct.observation)===JSON.stringify(row.roles.typescript.observation);}\n  // Numeric reference payload failures are reported, not silently declared agreements.\n  row.pass=row.candidatePass&&row.roles.typescript.healthy&&(!referenceRequired||row.referencePass)&&(!numeric?row.differentialAgreement:true);\n",
+      "new": "  row.referencePass=row.roles.typescript.oraclePass;\n  row.pass=row.referencePass;\n",
+      "count": 1
+    },
+    {
+      "old": "report.counts={candidatePass:report.observations.filter(r=>r.candidatePass).length,referencePass:",
+      "new": "report.counts={referencePass:",
+      "count": 1
+    },
+    {
+      "old": "report.pass=report.observations.every(row=>row.pass);if(!report.pass)process.exitCode=1;",
+      "new": "assert.equal(report.observations.length,34);report.healthy=report.observations.every(row=>row.roles.typescript.healthy);report.pass=report.observations.every(row=>row.pass);if(!report.pass)process.exitCode=1;",
+      "count": 1
+    }
+  ],
+  "scope": "Reference-only projection of unchanged34 source-first numeric/event plan; all independent worker oracles retained, every original cold/repeated probe rerun, no historical failure waiver."
+}

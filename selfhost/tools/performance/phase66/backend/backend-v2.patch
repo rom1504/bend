@@ -1,0 +1,15 @@
+--- a/selfhost/src/back/native/foreign.bend
++++ b/selfhost/src/back/native/foreign.bend
+@@ -28,7 +28,11 @@
+ 
+ @unsafe
+ def nc_foreign_namespace_name(+name: String, +source: String) -> String:
+-  match String.split(name, ':'):
++  nc_foreign_namespace_parts(name, source, String.split(name, ':'))
++
++@unsafe
++def nc_foreign_namespace_parts(+name: String, +source: String, +parts: List<&2,String>) -> String:
++  match parts:
+     case Con{prefix, Con{local, rest}}: prefix ++ ":"
+     case other: nc_source_namespace(String.split(name, '.'), "", source)
+ 

@@ -1,0 +1,29 @@
+{
+  "kind": "phase66-short-shared-layout-diagnostic",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/shared-layout/run.py",
+    "sha256": "d1434685123821cf6ab778aa5f590756f07852f512be0b89673901055f7e528d"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/shared-layout/run-v2.py",
+    "sha256": "5677a44a801ac5022a418f9fc793049d60031bb1ab9f04d9e67e5fb9cea7ae50"
+  },
+  "edits": [
+    {
+      "old": "assert m['kind']=='phase66-shared-layout-diagnostic-plan' and m['complete']",
+      "new": "assert m['kind']=='phase66-shared-layout-diagnostic-plan' and m['complete']\nassert 1<=len(m['cases'])<=2 and 1<=m['resources']['perCaseSeconds']<=60 and 1<=m['resources']['totalSeconds']<=180",
+      "occurrences": 1
+    },
+    {
+      "old": "min(started+180,time.monotonic()+60)",
+      "new": "min(started+m['resources']['totalSeconds'],time.monotonic()+m['resources']['perCaseSeconds'])",
+      "occurrences": 1
+    },
+    {
+      "old": "complete=len(rows)==2",
+      "new": "complete=len(rows)==len(m['cases'])",
+      "occurrences": 1
+    }
+  ],
+  "scope": "Only explicit bounded case/total time and one-case selection support; same actual compiler/worker/tracing."
+}

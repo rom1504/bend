@@ -1,0 +1,100 @@
+--- a/selfhost/src/back/js/validate.bend
++++ b/selfhost/src/back/js/validate.bend
+@@ -17,6 +17,9 @@
+ def j_main_error(book, main):
+   kc(String, Bool.not(String.eq(dk(main), "Def")) || String.eq(tg(j_strip(dv(main))), "Absent"), u => "no main to run", u => kc(String, j_io_type(book, dt(main)), u => kc(String, String.eq(tg(j_strip(dv(main))), "Foreign"), u => "main must be a filled def: a foreign main cannot anchor IO", u => ""), u => kc(String, j_printable(book, dt(main), Nil{}, 0), u => "", u => "main's type " ++ kp_show(dt(main)) ++ " cannot be printed (a function, a Type, an erased or dependent field)")))
+ 
++# Printability is a graph predicate. Thread successful visits across fields and
++# constructor siblings so a shared child type is checked once per request.
++# Insert each ADT before descending, retaining the original recursive-type rule.
+ law j_printable:
+   for +book: List<&2, KDef>
+   for +ty: KTerm
+@@ -26,29 +29,32 @@
+ 
+ @unsafe
+ def j_printable(book, ty, seen, fuel):
+-  j_printable_head(book, wnf(book, ty), seen, fuel)
++  +done = j_printable_head(book, wnf(book, ty), seen, fuel)
++  match done:
++    case None{}: False{}
++    case Some{visited}: True{}
+ 
+ law j_printable_head:
+   for +book: List<&2, KDef>
+   for +ty: KTerm
+   for +seen: List<&2, String>
+   for +fuel: U32
+-  Bool
++  Maybe<List<&2, String>>
+ 
+ @unsafe
+ def j_printable_head(book, ty, seen, fuel):
+-  kc(Bool, String.eq(tg(ty), "Eql"), u => True{}, u => kc(Bool, String.eq(tg(ty), "ADT") && Bool.not(String.eq(nm(ty), "IO.OP")) && String.eq(dk(lookup(book, nm(ty))), "ADT"), u => j_printable_adt(book, ty, seen, fuel), u => False{}))
++  kc(Maybe<List<&2, String>>, String.eq(tg(ty), "Eql"), u => Some{seen}, u => kc(Maybe<List<&2, String>>, String.eq(tg(ty), "ADT") && Bool.not(String.eq(nm(ty), "IO.OP")) && String.eq(dk(lookup(book, nm(ty))), "ADT"), u => j_printable_adt(book, ty, seen, fuel), u => None{}))
+ 
+ law j_printable_adt:
+   for +book: List<&2, KDef>
+   for +ty: KTerm
+   for +seen: List<&2, String>
+   for +fuel: U32
+-  Bool
++  Maybe<List<&2, String>>
+ 
+ @unsafe
+ def j_printable_adt(book, ty, seen, fuel):
+-  kc(Bool, String.contains("|U32|F32|Nat|Char|String|", "|" ++ nm(ty) ++ "|") || has_name(seen, term_key(ty)), u => True{}, u => kc(Bool, String.eq(nm(ty), "Array"), u => j_printable(book, kid(ty, 0), seen, fuel), u => j_printable_ctors(book, dc(lookup(book, nm(ty))), ks(ty), Con{term_key(ty), seen}, fuel)))
++  kc(Maybe<List<&2, String>>, String.contains("|U32|F32|Nat|Char|String|", "|" ++ nm(ty) ++ "|") || has_name(seen, term_key(ty)), u => Some{seen}, u => kc(Maybe<List<&2, String>>, String.eq(nm(ty), "Array"), u => j_printable_head(book, wnf(book, kid(ty, 0)), seen, fuel), u => j_printable_ctors(book, dc(lookup(book, nm(ty))), ks(ty), Con{term_key(ty), seen}, fuel)))
+ 
+ law j_printable_ctors:
+   for +book: List<&2, KDef>
+@@ -56,26 +62,44 @@
+   for +params: List<&2, KTerm>
+   for +seen: List<&2, String>
+   for +fuel: U32
+-  Bool
++  Maybe<List<&2, String>>
+ 
+ @unsafe
+ def j_printable_ctors(book, ctors, params, seen, fuel):
+   match ctors:
+     case Nil{}:
+-      True{}
++      Some{seen}
+     case Con{d, rest}:
+-      j_printable_fields(book, j_specialize(book, dt(d), params), seen, fuel) && j_printable_ctors(book, rest, params, seen, fuel)
++      j_printable_ctors_more(book, rest, params, fuel,
++        j_printable_fields(book, j_specialize(book, dt(d), params), seen, fuel))
++
++@unsafe
++def j_printable_ctors_more(+book: List<&2,KDef>, +ctors: List<&2,KDef>,
++  +params: List<&2,KTerm>, +fuel: U32, +done: Maybe<List<&2,String>>) -> Maybe<List<&2,String>>:
++  match done:
++    case None{}: None{}
++    case Some{seen}: j_printable_ctors(book, ctors, params, seen, fuel)
+ 
+ law j_printable_fields:
+   for +book: List<&2, KDef>
+   for +ty: KTerm
+   for +seen: List<&2, String>
+   for +fuel: U32
+-  Bool
++  Maybe<List<&2, String>>
+ 
+ @unsafe
+ def j_printable_fields(book, ty, seen, fuel):
+-  kc(Bool, String.eq(tg(ty), "All"), u => Bool.not(U32.is_eq(qt(ty), 0)) && j_printable(book, kid(ty, 0), seen, fuel) && j_printable_fields(book, kid(ty, 1), seen, fuel), u => True{})
++  kc(Maybe<List<&2, String>>, String.eq(tg(ty), "All"), u =>
++    kc(Maybe<List<&2, String>>, U32.is_eq(qt(ty), 0), u => None{}, u =>
++      j_printable_fields_more(book, kid(ty, 1), fuel,
++        j_printable_head(book, wnf(book, kid(ty, 0)), seen, fuel))), u => Some{seen})
++
++@unsafe
++def j_printable_fields_more(+book: List<&2,KDef>, +ty: KTerm,
++  +fuel: U32, +done: Maybe<List<&2,String>>) -> Maybe<List<&2,String>>:
++  match done:
++    case None{}: None{}
++    case Some{seen}: j_printable_fields(book, ty, seen, fuel)
+ 
+ # Layout validation follows executable references, not type dependencies or
+ # erased expressions. An Array representation is needed at elimination,

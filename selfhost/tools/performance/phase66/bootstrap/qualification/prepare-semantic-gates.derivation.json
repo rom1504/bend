@@ -1,0 +1,68 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/qualification/prepare-gates.py",
+    "sha256": "1315e9a83fd7f7fabf1550fc828bd5a4e1b1b9ddc3bd911faea02f4c32921f65"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/qualification/prepare-semantic-gates.py",
+    "sha256": "12668dbc5482229c88517e3463e9351da4b01b215d7b085c0a53d3d194e7757c"
+  },
+  "edits": [
+    {
+      "old": "\"\"\"Prepare final new-upstream B1 or genuine-B2 gates; never run a target.\"\"\"",
+      "new": "\"\"\"Prepare remaining semantic/native gates; external selfhosting/program gates stay separate.\"\"\"",
+      "count": 1
+    },
+    {
+      "old": "p.add_argument('--program-manifest', type=Path)\n",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "catalog_path = RAW / 'head-ts-inputs/catalog.json'\ncatalog = read(catalog_path)\nassert catalog['upstreamCommit'] == PIN and len(catalog['sets']['full']) == 45\nassert pin(catalog_path)['sha256'] == 'd183b7d6a1acee6671c680530d944a1588dce211f65de55eba02397cc18338fd'\n",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "    assert a.image_pins and a.program_manifest",
+      "new": "    assert a.image_pins",
+      "count": 1
+    },
+    {
+      "old": "    bounded('self-check', here / 'self-check.mjs', [a.image_pins, out / 'self-check'],\n            300, dict(freshTypeCheck=True, mathematicalProof=False))\n    bounded('fixed-point', methods / 'bootstrap/reproduce.mjs',\n            [a.image_pins, out / 'fixed-point'], 300, dict(b2EqualsB3=True))\n",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "    assert a.image_pins is None and a.program_manifest is None",
+      "new": "    assert a.image_pins is None",
+      "count": 1
+    },
+    {
+      "old": "    acquisition = TOOLS / 'phase53/acquire.py'\n    smoke = TOOLS / 'phase52/smoke.py'\n    for script in [maintained, acquisition, smoke]:\n        pin(script)\n",
+      "new": "    pin(maintained)\n",
+      "count": 1
+    },
+    {
+      "old": "    command('program45-acquisition', ['python3', '-B', acquisition, '--attempt', attempt_path,\n            '--catalog', catalog_path, '--set', 'full', '--role', 'candidate', '--backend',\n            'direct', '--cpu', 3, '--heap-mib', 1024, '--rss-mib', 2048,\n            '--available-mib', 4096, '--node', node, '--out', out / 'program45'],\n            guard='Internal sole ExecutionGuard.', expected=dict(sources=23, points=45))\n    command('program45-smoke', ['python3', '-B', smoke, '--manifest', out / 'program45/manifest.json',\n            '--catalog', catalog_path, '--out', out / 'program45-smoke', '--node', node],\n            guard='Internal sole ExecutionGuard.', expected=dict(passed=True, points=45))\n",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "else:\n    manifest = read(a.program_manifest)\n    assert manifest['complete'] and manifest['upstreamCommit'] == PIN\n    assert manifest['roles']['candidate']['compiler']['api']['sha256'] == attempt['api']['sha256']\n    bounded('b2-program-equality', here / 'benchmark-equality.mjs',\n            [a.image_pins, a.program_manifest, out / 'b2-program-equality'], 240,\n            dict(rawByteEqualModules=23, pointByteEqual=45))\n",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "kind='phase66-final-qualification-launch-plan'",
+      "new": "kind='phase66-remaining-semantic-qualification-plan'",
+      "count": 1
+    },
+    {
+      "old": "scope='Fresh new-pin semantic references and unchanged independent candidate oracles. Counts overlap. Checked B1 and genuine emitted B2 are distinct. B2 own-source type acceptance retains the expected unsafe proof-trust refusal; fixed-point equality is a separate complete-byte check. Compiler latency, full new frontend/backend corpus, generated-program timing and release installation are separately admitted gates. No target or installation has run through this planner.'",
+      "new": "scope='Only remaining semantic gates: nine checked-B1 acquisition/join/controller jobs plus maintained8/native3, or eight genuine-B2 acquisition/controller jobs. Fresh new-pin references and unchanged independent candidate oracles; counts overlap. Actual selfhosting04 fresh self-check/fixedpoint and b1-04-full acquisition/smoke plus b2-04-program-equality are separate mandatory gates, not repeated here or admitted by this plan. Final consolidation must bind their complete receipts to this exact attempt/source/API/runtime/host. Full conformance, compiler latency, generated-program timing and release installation are separate. No target or installation has run through this planner.'",
+      "count": 1
+    }
+  ],
+  "scope": "Projection of the independently reviewed full planner. Omitted selfhosting/program targets remain separately mandatory; no semantic oracle or selected-image guard changes."
+}

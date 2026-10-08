@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/js/validate.bend
++++ b/selfhost/src/back/js/validate.bend
+@@ -48,7 +48,7 @@
+ 
+ @unsafe
+ def j_printable_adt(book, ty, seen, fuel):
+-  kc(Bool, String.contains("|U32|F32|Nat|Char|String|", "|" ++ nm(ty) ++ "|") || has_name(seen, kp_show(ty)), u => True{}, u => kc(Bool, String.eq(nm(ty), "Array"), u => j_printable(book, kid(ty, 0), seen, fuel), u => j_printable_ctors(book, dc(lookup(book, nm(ty))), ks(ty), Con{kp_show(ty), seen}, fuel)))
++  kc(Bool, String.contains("|U32|F32|Nat|Char|String|", "|" ++ nm(ty) ++ "|") || has_name(seen, term_key(ty)), u => True{}, u => kc(Bool, String.eq(nm(ty), "Array"), u => j_printable(book, kid(ty, 0), seen, fuel), u => j_printable_ctors(book, dc(lookup(book, nm(ty))), ks(ty), Con{term_key(ty), seen}, fuel)))
+ 
+ law j_printable_ctors:
+   for +book: List<&2, KDef>

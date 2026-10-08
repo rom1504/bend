@@ -1,0 +1,11 @@
+--- selfhost/src/back/js/direct/core.bend
++++ selfhost/src/back/js/direct/core.bend
+@@ -16,7 +16,7 @@
+     u => jd_closure(book, jd_without_owner(env), t, wnf(book, ty)), u =>
+   kc(String, String.eq(tag, "Let"),
+     u => "(()=>{" ++ jd_body(book, jd_expression_env(env), t, ty, Nil{}) ++ "})()", u =>
+-  kc(String, String.eq(tag, "Typ") || String.eq(tag, "ADT") || String.eq(tag, "All") || String.eq(tag, "Qua") || String.eq(tag, "Rfl"),
++  kc(String, String.eq(tag, "Typ") || String.eq(tag, "ADT") || String.eq(tag, "All") || String.eq(tag, "Qua") || String.eq(tag, "Min") || String.eq(tag, "Rfl"),
+     u => "null", u => jd_fail("unsupported direct expression: " ++ tag)))))))))
+ 
+ # An erased lambda is absent at runtime, including when it is the only prefix.

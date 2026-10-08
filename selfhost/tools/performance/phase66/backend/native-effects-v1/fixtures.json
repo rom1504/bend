@@ -1,0 +1,47 @@
+{
+  "kind": "phase66-native-effects-focused-fixtures",
+  "cases": [
+    {
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/fixtures/tcp-recv-zero.bend",
+        "sha256": "a6d4d1a51c69235a40716cbbd25ec45c4824ef211fe16c02789d6afef8a117c1",
+        "bytes": 4587
+      },
+      "upstream": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/tcp_recv_max_zero.bend",
+        "sha256": "a4a40f54cef3a9977949945a4c33590e6223a55fadb5c688b02bce5b4e92ff1d",
+        "bytes": 4700
+      },
+      "operation": "Remove try_ invocation, continue on unchanged handle, preserve all ordinary receive/queue oracles."
+    },
+    {
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/fixtures/udp-recv-zero.bend",
+        "sha256": "4be86324c8b5c82e0e6265873c626afed2ce8a1eaa731f11a328fd47bbe5023b",
+        "bytes": 3297
+      },
+      "upstream": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/udp_recv_max_zero.bend",
+        "sha256": "cbb95c2f0427ab65b8585ff5bf16f38b97e76c0e7adf60937ac1add3cd3217b2",
+        "bytes": 3426
+      },
+      "operation": "Remove try_ invocation, continue on unchanged handle, preserve all ordinary receive/queue oracles."
+    },
+    {
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/fixtures/chan-close-parked-empty.bend",
+        "sha256": "c7f0f83234ebdf76169338bd748a2307dbc898db45e347e6a7805aba2c1efecf",
+        "bytes": 808
+      },
+      "operation": "Independent real source: zero-capacity parked sender returns exact nested affine payload on close; IO.join waits for its result."
+    },
+    {
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/fixtures/chan-close-parked-full.bend",
+        "sha256": "bf732a530b0b396ad2a5de8c986d2b90205bc71c9a0cde6d034bf7dc67d856a2",
+        "bytes": 892
+      },
+      "operation": "Independent real source: full buffered channel retains one queued payload and returns second parked payload exactly on close."
+    }
+  ]
+}

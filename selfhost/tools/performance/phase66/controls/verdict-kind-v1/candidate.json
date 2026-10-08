@@ -1,0 +1,16 @@
+{
+  "kind": "phase66-upstream-verdict-kind-parity",
+  "file": "selfhost/tools/conformance/adapters/upstream.mjs",
+  "beforeSha256": "203258edfdf01cd9e22d4fc10a125cdec49c43861f20dd7601dd28e5c20f2bbb",
+  "afterSha256": "f21e19a439d7f8695fc94d8d032c165dccfdfcc8366e09822582c29da44733a9",
+  "patchSha256": "036e61a89c377d409c6c621f601f4ac9fd2143b5cdd6c0d3aedf006bd56dcc87",
+  "old": "term.$==='ADT'?term.c:[term]",
+  "new": "term.$==='ADT'?[term,...term.c]:[term]",
+  "count": 1,
+  "reference": "059266225b77c8ca256ac6b25ee5c21449bab151 bend2/main.ts book_promises",
+  "witnesses": [
+    "tests/check/unsafe_kind.bend",
+    "tests/check/unsafe_kind_def.bend"
+  ],
+  "scope": "Match actual new upstream declaration verdict ADT kind dependency traversal. Raw graph keys and proof-kernel scope unchanged."
+}

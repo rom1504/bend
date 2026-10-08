@@ -1,0 +1,51 @@
+{
+  "kind": "phase66-release-helper-exact-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/release/helper-integrity.mjs",
+    "sha256": "5868af16bf63a49dc2139faafb8bf249dc17ba6245cf829523e42f36896bf5db",
+    "bytes": 4196
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/release/helper-integrity-v1.mjs",
+    "sha256": "5a6b721edc3605b91893b9798862f74386aa4751c3f27ebd54c412f32b50057e",
+    "bytes": 6234
+  },
+  "edits": [
+    {
+      "old": "const [projectArg,patchArg,outArg]=process.argv.slice(2);\nassert(projectArg&&patchArg&&outArg,'Usage: helper-integrity.mjs SELFHOST PATCH_JSON FRESH_OUT');\nconst project=fs.realpathSync(projectArg),out=path.resolve(outArg),patchFile=fs.realpathSync(patchArg);",
+      "new": "const [projectArg,attemptArg,outArg]=process.argv.slice(2);\nassert(projectArg&&attemptArg&&outArg,'Usage: helper-integrity-v1.mjs SELFHOST CHECKED_ATTEMPT_JSON FRESH_OUT');\nconst project=fs.realpathSync(projectArg),out=path.resolve(outArg),attemptFile=fs.realpathSync(attemptArg);",
+      "occurrences": 1
+    },
+    {
+      "old": "const patch=read(patchFile),releaseTool=path.join(project,'tools/development/release.mjs');\nassert.equal(identity(releaseTool).sha256,patch.after.sha256,'Reviewed packaging patch is not installed');",
+      "new": "const attempt=read(attemptFile),releaseTool=path.join(project,'tools/development/release.mjs');\nconst verify=item=>{const got=identity(item.file);assert.equal(got.sha256,item.sha256);return got;};\nassert.equal(attempt.checked,true);assert.equal(attempt.artifactKind,'derived-b1');assert.equal(attempt.config.strictExact,true);\nconst validationFile=path.join(path.dirname(attemptFile),'validation-001/report.json'),validation=read(validationFile);\nassert.equal(validation.complete,true);assert.equal(validation.pass,true);assert.equal(validation.strictExact,true);\nassert.deepEqual(verify(validation.attempt),identity(attemptFile));\nassert.equal(verify(validation.api).sha256,verify(attempt.api).sha256);\nassert.equal(validation.selected.selectedComplete,true);assert.equal(validation.selected.exactDifferences,0);assert.equal(validation.selected.discrepancies,0);\nfor(const role of ['candidate','reference'])assert.equal(validation.selected[role].statuses.pass,36);\nconst frozenTool=path.join(attempt.snapshot.root,'tools/development/release.mjs');\nconst sources=attempt.snapshot.sources.filter(row=>fs.realpathSync(row.frozen.file)===fs.realpathSync(frozenTool));\nassert.equal(sources.length,1);\nconst expectedTool=verify(sources[0].frozen);\nassert.equal(identity(releaseTool).sha256,expectedTool.sha256,'Selected checked packager is not installed');",
+      "occurrences": 1
+    },
+    {
+      "old": "kind:'phase63-release-graph-helper-integrity'",
+      "new": "kind:'phase66-release-graph-helper-integrity'",
+      "occurrences": 1
+    },
+    {
+      "old": "patch:identity(patchFile),packager:identity(releaseTool),checks:[]",
+      "new": "attempt:identity(attemptFile),validation:identity(validationFile),frozenPackager:expectedTool,packager:identity(releaseTool),checks:[]",
+      "occurrences": 1
+    },
+    {
+      "old": " const manifest=verifyRelease(project),before=identity(manifestFile);",
+      "new": " const manifest=verifyRelease(project),before=identity(manifestFile);\n const api=manifest.files.find(row=>row.path==='dist/typed-api.mjs');assert(api);\n assert.equal(api.sha256,attempt.api.sha256);\n assert.equal(identity(path.join(project,'dist/typed-api.mjs')).sha256,attempt.api.sha256);\n const checkedApi=manifest.files.find(row=>row.path==='dist/release-lineage/checked-api.mjs');assert(checkedApi);\n assert.equal(checkedApi.sha256,verify(attempt.checkedApi).sha256);\n const checkedBootstrap=manifest.files.find(row=>row.path==='dist/release-lineage/checked-bootstrap.json');assert(checkedBootstrap);\n assert.equal(checkedBootstrap.sha256,verify(attempt.bootstrapReport).sha256);",
+      "occurrences": 1
+    },
+    {
+      "old": "// Phase63 integrity negative control",
+      "new": "// Phase66 integrity negative control",
+      "occurrences": 1
+    },
+    {
+      "old": "assert.equal(identity(releaseTool).sha256,patch.after.sha256);",
+      "new": "assert.equal(identity(releaseTool).sha256,expectedTool.sha256);\n assert.deepEqual(identity(attemptFile),report.attempt);assert.deepEqual(identity(validationFile),report.validation);\n assert.deepEqual(identity(frozenTool),report.frozenPackager);",
+      "occurrences": 1
+    }
+  ],
+  "scope": "Same five positive/negative packaging checks; selected strict checked attempt and its frozen packager replace a historical patch identity. No compiler or real installation mutation."
+}

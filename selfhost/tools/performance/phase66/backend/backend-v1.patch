@@ -1,0 +1,358 @@
+--- a/selfhost/src/back/js/direct/constructors.bend
++++ b/selfhost/src/back/js/direct/constructors.bend
+@@ -41,7 +41,7 @@
+       v => kc(String, String.eq(nm(ty), "Char"),
+         w => jd_ctor_char(book, env, t, ty, tel, j_u32(kid(t, 0))),
+         w => jd_ctor_native(nm(ty), nm(t), jd_ctor_values(book, env, ks(t), tel))))),
+-    u => "({$:" ++ j_quote(nm(t)) ++ jd_ctor_fields(book, env, ks(t), tel) ++ "})")
++    u => "({$:" ++ j_quote(name_key(nm(t))) ++ jd_ctor_fields(book, env, ks(t), tel) ++ "})")
+ 
+ # Only the body emitter creates these entries for compiler-generated bare
+ # native views. Retain the original scalar alongside the textual view so inverse
+--- a/selfhost/src/back/js/direct/core.bend
++++ b/selfhost/src/back/js/direct/core.bend
+@@ -48,7 +48,7 @@
+   kc(String, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
+     (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u =>
+     jd_named_args(book, env, d, tail, jd_arguments(book, env, xs, dt(d), jd_emitted_arity(book, d))),
+-    u => jd_fail("unknown direct definition: " ++ dn(d))))
++    u => jd_fail("unknown direct definition: " ++ name_key(dn(d)))))
+ 
+ @unsafe
+ def jd_arguments(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +ty: KTerm, +left: U32) -> JDArgs:
+--- a/selfhost/src/back/js/direct/ordered-values.bend
++++ b/selfhost/src/back/js/direct/ordered-values.bend
+@@ -77,7 +77,7 @@
+ def jd_ordered_ctor_done(+ty: KTerm, +t: KTerm, +native: Bool, +fields: JDOrderedFields) -> JDOrdered:
+   match fields:
+     case JDOrderedFields{prefix, values, named, next}:
+-      JDOrdered{prefix, kc(String, native, u => jd_ctor_native(nm(ty), nm(t), values), u => "({$:" ++ j_quote(nm(t)) ++ named ++ "})"), next}
++      JDOrdered{prefix, kc(String, native, u => jd_ctor_native(nm(ty), nm(t), values), u => "({$:" ++ j_quote(name_key(nm(t))) ++ named ++ "})"), next}
+ 
+ # Pinned js_open holds demanded parallel RHSs, but leaves the final body value
+ # pending. Binder-ID aliases retain lexical captures without an IIFE or
+--- a/selfhost/src/back/js/direct/pattern.bend
++++ b/selfhost/src/back/js/direct/pattern.bend
+@@ -27,10 +27,10 @@
+ @unsafe
+ def jd_doc_match_emit_at(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +arg: String, +rest: List<&2,String>, +tel: KTerm, +value: String) -> JDText:
+   +native = jd_native_layout(book, domain)
+-  +condition = kc(String, native, u => jd_match_test(nm(domain), nm(t), value), u => value ++ ".$===" ++ j_quote(nm(t)))
++  +condition = kc(String, native, u => jd_match_test(nm(domain), nm(t), value), u => value ++ ".$===" ++ j_quote(name_key(nm(t))))
+   +fields = kc(List<&2,String>, native, u => jd_match_views(nm(domain), nm(t), value), u => jd_match_fields(tel, value))
+   +arm: JDText = kc(JDText, native && (String.eq(nm(domain), "U32") || String.eq(nm(domain), "F32")) && j_u32_native_book(book), u => jd_doc_word_start(book, env, kid(t, 0), j_arm_tel(book, tel, kid(ty, 1)), rest, value, String.eq(nm(domain), "F32")), u => jd_doc_body(book, env, kid(t, 0), j_arm_tel(book, tel, kid(ty, 1)), List.append(&2,String, fields, rest)))
+-  jd_text_many([jd_text_raw("{const " ++ value ++ "=" ++ arg ++ ";" ++ kc(String, String.eq(nm(domain), "IO.OP"), u => "if(" ++ value ++ ".$===\"$FFI\")throw " ++ value ++ ";", u => "")), kc(JDText, U32.is_eq(j_constructor_count(book, domain), 1) || String.eq(condition, ""), u => arm, u => jd_text_many([jd_text_raw("if(" ++ condition ++ "){"), arm, jd_text_literal("}else{", 6), jd_doc_body(book, env, kid(t, 1), ty, Con{value, rest}), jd_text_literal("}", 1)])), jd_text_literal("}", 1)])
++  jd_text_many([jd_text_raw("{const " ++ value ++ "=" ++ arg ++ ";" ++ kc(String, String.eq(nm(domain), "IO.OP"), u => "if(" ++ value ++ ".$!==\"Emit\"&&" ++ value ++ ".$!==\"Halt\")throw \"bend: runtime fail-stop\";", u => "")), kc(JDText, U32.is_eq(j_constructor_count(book, domain), 1) || String.eq(condition, ""), u => arm, u => jd_text_many([jd_text_raw("if(" ++ condition ++ "){"), arm, jd_text_literal("}else{", 6), jd_doc_body(book, env, kid(t, 1), ty, Con{value, rest}), jd_text_literal("}", 1)])), jd_text_literal("}", 1)])
+ 
+ @unsafe
+ def jd_match_fields(+tel: KTerm, +value: String) -> List<&2,String>:
+--- a/selfhost/src/back/js/direct/program.bend
++++ b/selfhost/src/back/js/direct/program.bend
+@@ -75,13 +75,13 @@
+     case Nil{}: JDShowDesc{Nil{}, types, names, ""}
+     case Con{c, rest}: jd_show_arm(book, c, rest, args, names,
+       jd_show_fields(book, j_specialize(book, dt(c), args), da(c), types,
+-        List.append(&2,String, names, [j_quote(dn(c))])))
++        List.append(&2,String, names, [j_quote(name_key(dn(c)))])))
+ 
+ @unsafe
+ def jd_show_arm(+book: List<&2,KDef>, +c: KDef, +rest: List<&2,KDef>, +args: List<&2,KTerm>,
+   +oldNames: List<&2,String>, +d: JDShowDesc) -> JDShowDesc:
+   jd_show_join(JDShowDesc{List.append(&2,String,
+-    [U32.show(jd_string_len(oldNames)), "0", U32.show(da(c)),
++    [U32.show(jd_string_len(oldNames)), j_quote(name_key(dn(c))), U32.show(da(c)),
+       kc(String, String.eq(dn(c), "Tuple"), u => "2", u =>
+         kc(String, String.eq(dn(c), "Con") || String.eq(dn(c), "Nil"), u => "1", u => "0"))], jd_show_cells(d)),
+     jd_show_types(d), jd_show_names(d), jd_show_error(d)},
+@@ -127,8 +127,8 @@
+ def jd_show_nodes(+book: List<&2,KDef>, +types: List<&2,KTerm>, +names: List<&2,String>,
+   +i: U32, +offset: U32, +defs: String, +cells: List<&2,String>) -> String:
+   kc(String, U32.is_eq(i, terms_len(types)), u => defs ++
+-    "const $jdShowD=[" ++ jd_join(cells) ++ "];const $jdShowN=[" ++ jd_join(names) ++ "];\n" ++
+-    "cli(process.argv.slice(1));io_exit(" ++ jd_name("main") ++ ",[$jdShowD,$jdShowN]);\n", u =>
++    "const $jdShowD=[" ++ jd_join(cells) ++ "];\n" ++
++    "cli(process.argv.slice(1));io_exit(" ++ jd_name("main") ++ ",$jdShowD);\n", u =>
+     kc(String, U32.is_lt(i, 4096), u => jd_show_step(book, i, offset, defs, cells,
+       jd_show_node(book, terms_at(types, i), types, names)), u => jd_fail("readback type graph budget")))
+ 
+--- a/selfhost/src/back/js/emit.bend
++++ b/selfhost/src/back/js/emit.bend
+@@ -516,7 +516,7 @@
+ 
+ @unsafe
+ def j_library_context(book, defs):
+-  j_ctor_metadata(defs) ++ j_schemas(book, defs) ++ j_defs(book, defs) ++ "\nexport {G,call,list,ctor};\nexport default Object.fromEntries(Object.keys(G).map(k=>[k,(...args)=>call(get(G,k),args)]));\n"
++  j_ctor_metadata(defs) ++ j_schemas(book, defs) ++ j_defs(book, defs) ++ "\nexport {G,call,list,ctor};\nexport default Object.fromEntries(Object.keys(G).map(k=>[k.replace(':','.'),(...args)=>call(get(G,k),args)]));\n"
+ 
+ law j_desc_kind:
+   for +book: List<&2, KDef>
+--- a/selfhost/src/back/js/foreign.bend
++++ b/selfhost/src/back/js/foreign.bend
+@@ -17,14 +17,14 @@
+     case SNil{}:
+       ""
+     case SCon{h, rest}:
+-      kc(String, Char.is_eq(h, '.') || Char.is_eq(h, '/'), u => "_", u => Char.show(h)) ++ j_foreign_chars(rest)
++      kc(String, Char.is_eq(h, '.') || Char.is_eq(h, '/') || Char.is_eq(h, ':'), u => "_", u => Char.show(h)) ++ j_foreign_chars(rest)
+ 
+ @unsafe
+ def j_foreign_def(
+   +book: List<&2, KDef>,
+   +d: KDef,
+ ) -> String:
+-  kc(String, j_builtin_effect(dn(d)), u => "if(!Object.hasOwn(G," ++ j_quote(dn(d)) ++ "))", u => "") ++ "G[" ++ j_quote(dn(d)) ++ "]=fn(" ++ U32.show(da(d)) ++ ",function(a){const v=scope(null);return {io:()=>foreignCall(" ++ j_quote(j_foreign_path(ks(dv(d)))) ++ "," ++ j_quote(dn(d)) ++ ",a,[" ++ j_foreign_args(book, dt(d), da(d)) ++ "]," ++ j_descriptor(book, j_io_result(book, j_foreign_return(book, dt(d), da(d))), 64) ++ ")};});\n"
++  kc(String, j_builtin_effect(dn(d)), u => "if(!Object.hasOwn(G," ++ j_quote(dn(d)) ++ "))", u => "") ++ "G[" ++ j_quote(dn(d)) ++ "]=fn(" ++ U32.show(da(d)) ++ ",function(a){const v=scope(null);return {io:()=>foreignCall(" ++ j_quote(j_foreign_path(ks(dv(d)))) ++ "," ++ j_quote(name_key(dn(d))) ++ ",a,[" ++ j_foreign_args(book, dt(d), da(d)) ++ "]," ++ j_descriptor(book, j_io_result(book, j_foreign_return(book, dt(d), da(d))), 64) ++ ")};});\n"
+ 
+ law j_foreign_args:
+   for +book: List<&2, KDef>
+@@ -86,7 +86,7 @@
+ 
+ @unsafe
+ def j_module_export(name, implementation):
+-  j_quote(name) ++ ":typeof " ++ implementation ++ "===\"function\"?" ++ implementation ++ ":undefined,"
++  j_quote(name_key(name)) ++ ":typeof " ++ implementation ++ "===\"function\"?" ++ implementation ++ ":undefined,"
+ 
+ @unsafe
+ def j_ctor_metadata(
+@@ -109,7 +109,7 @@
+     case Nil{}:
+       ""
+     case Con{d, rest}:
+-      "constructorNative[" ++ j_quote(dn(d)) ++ "]=" ++ kc(String, db(d), u => "true", u => "false") ++ ";constructorOwn[" ++ j_quote(dn(d)) ++ "]=" ++ j_quote(kc(String, String.eq(nm(dv(d)), ""), u => dn(d), u => nm(dv(d)))) ++ ";constructors[" ++ j_quote(dn(d)) ++ "]=[" ++ j_field_keys(dt(d), params) ++ "];\n" ++ j_ctor_keys(rest, params)
++      "constructorNative[" ++ j_quote(dn(d)) ++ "]=" ++ kc(String, db(d), u => "true", u => "false") ++ ";constructorOwn[" ++ j_quote(dn(d)) ++ "]=" ++ j_quote(kc(String, String.contains(dn(d), ":"), u => name_key(dn(d)), u => kc(String, String.eq(nm(dv(d)), ""), v => dn(d), v => nm(dv(d))))) ++ ";constructors[" ++ j_quote(dn(d)) ++ "]=[" ++ j_field_keys(dt(d), params) ++ "];\n" ++ j_ctor_keys(rest, params)
+ 
+ law j_field_keys:
+   for +ty: KTerm
+@@ -139,7 +139,7 @@
+     case Nil{}:
+       ""
+     case Con{d, rest}:
+-      kc(String, String.eq(tg(j_strip(dv(d))), "Foreign") && Bool.not(j_builtin_effect(dn(d))) && String.eq(j_foreign_path(ks(j_strip(dv(d)))), ""), u => "a foreign def without a .js import: " ++ dn(d), u => j_foreign_error(rest))
++      kc(String, String.eq(tg(j_strip(dv(d))), "Foreign") && Bool.not(j_builtin_effect(dn(d))) && String.eq(j_foreign_path(ks(j_strip(dv(d)))), ""), u => "a foreign def without a .js import: " ++ name_key(dn(d)), u => j_foreign_error(rest))
+ 
+ law j_builtin_effect:
+   for +name: String
+@@ -155,4 +155,4 @@
+   match parts:
+     case Nil{}: ""
+     case Con{part, rest}:
+-      kc(String, String.eq(tg(part), "Text"), u => nm(part), u => j_quote(nm(part))) ++ j_source_parts(rest)
++      kc(String, String.eq(tg(part), "Text"), u => nm(part), u => j_quote(name_key(nm(part)))) ++ j_source_parts(rest)
+--- a/selfhost/src/back/js/validate.bend
++++ b/selfhost/src/back/js/validate.bend
+@@ -140,7 +140,7 @@
+ 
+ @unsafe
+ def j_layout_open_head(book, ty):
+-  kc(Bool, String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Array"), u => Bool.not(String.eq(tg(wnf(book, kid(ty, 0))), "ADT")), u => False{})
++  kc(Bool, String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Array"), u => j_layout_element_open(book, kid(ty, 0)), u => False{})
+ 
+ law j_layout_term:
+   for +book: List<&2, KDef>
+@@ -247,7 +247,14 @@
+ 
+ @unsafe
+ def j_layout_intrinsic(book, f, element):
+-  kc(Bool, j_layout_array_intrinsic(book, f), u => Bool.not(String.eq(tg(wnf(book, j_strip(element))), "ADT")), u => False{})
++  kc(Bool, j_layout_array_intrinsic(book, f), u => j_layout_element_open(book, j_strip(element)), u => False{})
++
++# An equality has no live layout, even when its two sides remain open.
++# Keep normalization inside the original demanded Array branch.
++@unsafe
++def j_layout_element_open(+book: List<&2,KDef>, +element: KTerm) -> Bool:
++  +tag = tg(wnf(book, element))
++  Bool.not(String.eq(tag, "ADT") || String.eq(tag, "Eql"))
+ 
+ law j_layout_fields:
+   for +book: List<&2, KDef>
+--- a/selfhost/src/back/native/book.bend
++++ b/selfhost/src/back/native/book.bend
+@@ -129,7 +129,7 @@
+   +calls = nc_mapped_refs(book, refs)
+   +forked = nc_term_fork(body)
+   +code = nc_mark_code(nd_extend(book, body, nc_lower(book, body, Nil{}, U32.add(n, 1024)), name), nb_contains(bangs, name), forked, calls)
+-  nt_choose(NC_Book, String.eq(dk(d), "Absent"), u => NC_Book{Nil{}, n, "native definition not found: " ++ name}, u =>
++  nt_choose(NC_Book, String.eq(dk(d), "Absent"), u => NC_Book{Nil{}, n, "native definition not found: " ++ name_key(name)}, u =>
+     nc_append_book(code, nc_ref_name(book, name), calls, forked, nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, nc_fresh(code), bangs)))
+ 
+ @unsafe
+--- a/selfhost/src/back/native/foreign.bend
++++ b/selfhost/src/back/native/foreign.bend
+@@ -23,8 +23,14 @@
+     case Nil{}: ""
+     case Con{+d, +rest}:
+       nt_choose(String, nc_foreign_has(ks(nc_unann(dv(d))), path),
+-        u => nt_choose(String, String.eq(nm(nc_unann(dv(d))), ""), u => nc_source_namespace(String.split(dn(d), '.'), "", source), u => String.take(dn(d), Nat.sub(String.length(dn(d)), String.length(nm(nc_unann(dv(d))))))),
++        u => nt_choose(String, String.eq(nm(nc_unann(dv(d))), ""), u => nc_foreign_namespace_name(dn(d), source), u => String.take(dn(d), Nat.sub(String.length(dn(d)), String.length(nm(nc_unann(dv(d))))))),
+         u => nc_foreign_namespace(rest, path, source))
++
++@unsafe
++def nc_foreign_namespace_name(+name: String, +source: String) -> String:
++  match String.split(name, ':'):
++    case Con{prefix, Con{local, rest}}: prefix ++ ":"
++    case other: nc_source_namespace(String.split(name, '.'), "", source)
+ 
+ @unsafe
+ def nc_foreign_aliases(cs: List<&2, N_Constructor>, +ns: String, +open: Bool) -> String:
+--- a/selfhost/src/back/native/show.bend
++++ b/selfhost/src/back/native/show.bend
+@@ -140,7 +140,7 @@
+ def nc_show_names(cs: List<&2, N_Constructor>) -> List<&2, String>:
+   match cs:
+     case Nil{}: Nil{}
+-    case Con{N_Constructor{k, a, h}, rest}: Con{"\"" ++ nc_quote_chars(nc_ctor_display(k)) ++ "\"", nc_show_names(rest)}
++    case Con{N_Constructor{k, a, h}, rest}: Con{"\"" ++ nc_quote_chars(name_key(nc_ctor_display(k))) ++ "\"", nc_show_names(rest)}
+ 
+ @unsafe
+ def nc_show_finish(cs: List<&2, N_Constructor>, d: NC_Show) -> NC_Show:
+--- a/selfhost/src/back/native/validate.bend
++++ b/selfhost/src/back/native/validate.bend
+@@ -4,8 +4,8 @@
+   match book:
+     case Nil{}: ""
+     case Con{+d, +rest}:
+-      nt_choose(String, Bool.not(db(d)) && nb_contains(["IO", "Sigma", "String", "Word.Con", "IO.OP", "Result", "Maybe", "Bool", "Unit", "Nat", "U32", "F32", "Char", "Array"], dn(d)),
+-        u => dn(d) ++ " is a name the compiler encodes itself: name yours apart",
++      nt_choose(String, Bool.not(db(d)) && nb_contains(["IO", "Sigma", "String", "Word.Con", "IO.OP", "Result", "Poll", "Maybe", "Bool", "Unit", "Nat", "U32", "F32", "Char", "Array"], dn(d)),
++        u => name_key(dn(d)) ++ " is a name the compiler encodes itself: name yours apart",
+         u => nv_owned(rest))
+ 
+ @unsafe
+--- a/selfhost/src/driver/api.bend
++++ b/selfhost/src/driver/api.bend
+@@ -76,7 +76,7 @@
+ def driver_emit_owned(
+   +book: List<&2,KDef>,
+ ) -> String:
+-  +error = driver_owned_names(driver_owned_candidates(book), ["IO", "Sigma", "String", "Word.Con", "IO.OP", "Result", "Maybe", "Bool", "Unit", "Nat", "U32", "F32", "Char", "Array"])
++  +error = driver_owned_names(driver_owned_candidates(book), ["IO", "Sigma", "String", "Word.Con", "IO.OP", "Result", "Poll", "Maybe", "Bool", "Unit", "Nat", "U32", "F32", "Char", "Array"])
+   kc(String, String.eq(error, ""), u => driver_foreign_names(book, book), u => error)
+ 
+ # Native definitions cannot violate the owned-name rule. Filter once instead
+@@ -96,7 +96,7 @@
+     case Con{d, rest}:
+       kc(String, kc(Bool, String.eq(dk(d), "Def") && String.eq(tg(j_strip(dv(d))), "Foreign"),
+         u => Bool.not(String.eq(dk(j_find_ctor(book, dn(d))), "Absent")), u => False{}),
+-        u => dn(d) ++ " names both a constructor and a foreign def: name one apart",
++        u => name_key(dn(d)) ++ " names both a constructor and a foreign def: name one apart",
+         u => driver_foreign_names(book, rest))
+ 
+ @unsafe
+@@ -105,7 +105,7 @@
+     case Nil{}: ""
+     case Con{name, rest}:
+       kc(String, driver_owned_name(book, name),
+-        u => name ++ " is a name the compiler encodes itself: name yours apart",
++        u => name_key(name) ++ " is a name the compiler encodes itself: name yours apart",
+         u => driver_owned_names(book, rest))
+ 
+ @unsafe
+--- a/selfhost/src/runtime.mjs
++++ b/selfhost/src/runtime.mjs
+@@ -11,6 +11,7 @@
+ import {spawn} from 'node:child_process';
+ import {constants as hostConstants} from 'node:os';
+ const G=Object.create(null), constructors=Object.create(null), showSchemas=Object.create(null), constructorOwn=Object.create(null), constructorNative=Object.create(null);
++const nameDisplay=k=>k.replace(':','.');
+ const scope=p=>Object.create(p);
+ // Error construction can invoke mutable host hooks. Suspend the proof before
+ // those hooks can reenter; only exception unwinding follows this restoration.
+@@ -613,12 +614,12 @@
+   if(tag==='Char')return "'"+showChar(typeof x==='string'?x.codePointAt(0):x,"'")+"'";
+   if(tag==='F32')return floatShow(x).replace(/^-?\d+(?=e|$)/,'$&.0');
+   if(x?.proof)return '{==}';
+-  if(x?.typeName)return x.typeName+(x.typeArgs?.length?'<'+x.typeArgs.map(t=>show(t)).join(', ')+'>':'');
++  if(x?.typeName)return nameDisplay(x.typeName)+(x.typeArgs?.length?'<'+x.typeArgs.map(t=>show(t)).join(', ')+'>':'');
+   if(x===null)return 'Type';if(typeof x==='bigint')return x+'n';if(typeof x==='number')return String(x);if(typeof x==='boolean')return x?'True{}':'False{}';if(typeof x==='string')return '"'+Array.from(x,c=>showChar(c.codePointAt(0),'"')).join('')+'"';
+   if(Array.isArray(x)){const left=show(x[0],d?.[1]),right=show(x[1],d?.[2],true);return (chain?'':'(')+left+', '+right+(chain?'':')')}
+   if(x?.array||tag==='Array')return '['+arraydata(x).map(v=>show(v,d?.[1])).join(', ')+']';
+   if(x?.$==='Con'||x?.$==='Nil')return '['+unlist(x).map(v=>show(v,tag==='ADT'?d[1]?.Con?.[0]:d?.[1])).join(', ')+']';
+-  if(x?.$){const ds=tag==='ADT'?d[1]?.[x.$]:null;return (constructorOwn[x.$]??x.$)+'{'+x.a.flatMap((v,i)=>ds?.[i]?.[0]==='Erased'?[]:[show(v,ds?.[i])]).join(', ')+'}'}
++  if(x?.$){const ds=tag==='ADT'?d[1]?.[x.$]:null;return nameDisplay(constructorOwn[x.$]??x.$)+'{'+x.a.flatMap((v,i)=>ds?.[i]?.[0]==='Erased'?[]:[show(v,ds?.[i])]).join(', ')+'}'}
+   return '<function>';
+ }
+ async function runmain(descriptor=null,isIO=false){
+@@ -667,7 +668,7 @@
+     if(!outgoing&&desc?.[0]==='ADT'&&d?.[1]!=='Nat'&&foreignHasNat(d)){
+       const tags=Object.keys(desc[1]);
+       if(!tags.some(k=>k===x?.$||constructorOwn[k]===x?.$))
+-        bad((d?.[0]==='Named'?d[1]:'datatype')+' has no tag '+String(x?.$)+' (its tags: '+tags.map(k=>constructorOwn[k]??k).join(', ')+'); a tag names its constructor as the loading file sees it, which a later version will make the same everywhere (#1105)');
++        bad((d?.[0]==='Named'?nameDisplay(d[1]):'datatype')+' has no tag '+String(x?.$)+' (its tags: '+tags.map(k=>nameDisplay(constructorOwn[k]??k)).join(', ')+'); a tag names its constructor as the loading file sees it, which a later version will make the same everywhere (#1105)');
+     }
+     if(outgoing&&x!==null&&typeof x==='object'&&foreignOrigins.has(x)){parent[key]=foreignOrigins.get(x);continue}
+     if(outgoing&&(x===null||x?.proof||x?.typeName)||d?.[0]==='Erased'){parent[key]=null;continue}
+@@ -695,7 +696,7 @@
+     const ds=d?.[0]==='List'&&tag==='Con'?[d[1],d]:desc?.[0]==='ADT'?desc[1]?.[tag]:null;
+     const keys=constructors[tag]??({Con:['head','tail'],Some:['value'],Done:['value'],Fail:['error']}[x.$])??(outgoing?x.a.map((_,i)=>String(i)):Object.keys(x).filter(k=>k!=='$'));
+     if(outgoing){
+-      const node={$:constructorOwn[tag]??tag};parent[key]=node;
++      const node={$:nameDisplay(constructorOwn[tag]??tag)};parent[key]=node;
+       for(let i=keys.length-1;i>=0;i--)if(ds?.[i]?.[0]!=='Erased')work.push([node,keys[i],x.a[i],ds?.[i]]);
+     }else{
+       const node={$:tag,a:[]};parent[key]=node;
+--- a/selfhost/src/runtime/js/core.mjs
++++ b/selfhost/src/runtime/js/core.mjs
+@@ -10,6 +10,7 @@
+ import {spawn} from 'node:child_process';
+ import {constants as hostConstants} from 'node:os';
+ const G=Object.create(null), constructors=Object.create(null), showSchemas=Object.create(null), constructorOwn=Object.create(null), constructorNative=Object.create(null);
++const nameDisplay=k=>k.replace(':','.');
+ const scope=p=>Object.create(p);
+ // Error construction can invoke mutable host hooks. Suspend the proof before
+ // those hooks can reenter; only exception unwinding follows this restoration.
+--- a/selfhost/src/runtime/js/foreign.mjs
++++ b/selfhost/src/runtime/js/foreign.mjs
+@@ -29,7 +29,7 @@
+     if(!outgoing&&desc?.[0]==='ADT'&&d?.[1]!=='Nat'&&foreignHasNat(d)){
+       const tags=Object.keys(desc[1]);
+       if(!tags.some(k=>k===x?.$||constructorOwn[k]===x?.$))
+-        bad((d?.[0]==='Named'?d[1]:'datatype')+' has no tag '+String(x?.$)+' (its tags: '+tags.map(k=>constructorOwn[k]??k).join(', ')+'); a tag names its constructor as the loading file sees it, which a later version will make the same everywhere (#1105)');
++        bad((d?.[0]==='Named'?nameDisplay(d[1]):'datatype')+' has no tag '+String(x?.$)+' (its tags: '+tags.map(k=>nameDisplay(constructorOwn[k]??k)).join(', ')+'); a tag names its constructor as the loading file sees it, which a later version will make the same everywhere (#1105)');
+     }
+     if(outgoing&&x!==null&&typeof x==='object'&&foreignOrigins.has(x)){parent[key]=foreignOrigins.get(x);continue}
+     if(outgoing&&(x===null||x?.proof||x?.typeName)||d?.[0]==='Erased'){parent[key]=null;continue}
+@@ -57,7 +57,7 @@
+     const ds=d?.[0]==='List'&&tag==='Con'?[d[1],d]:desc?.[0]==='ADT'?desc[1]?.[tag]:null;
+     const keys=constructors[tag]??({Con:['head','tail'],Some:['value'],Done:['value'],Fail:['error']}[x.$])??(outgoing?x.a.map((_,i)=>String(i)):Object.keys(x).filter(k=>k!=='$'));
+     if(outgoing){
+-      const node={$:constructorOwn[tag]??tag};parent[key]=node;
++      const node={$:nameDisplay(constructorOwn[tag]??tag)};parent[key]=node;
+       for(let i=keys.length-1;i>=0;i--)if(ds?.[i]?.[0]!=='Erased')work.push([node,keys[i],x.a[i],ds?.[i]]);
+     }else{
+       const node={$:tag,a:[]};parent[key]=node;
+--- a/selfhost/src/runtime/js/readback.mjs
++++ b/selfhost/src/runtime/js/readback.mjs
+@@ -9,12 +9,12 @@
+   if(tag==='Char')return "'"+showChar(typeof x==='string'?x.codePointAt(0):x,"'")+"'";
+   if(tag==='F32')return floatShow(x).replace(/^-?\d+(?=e|$)/,'$&.0');
+   if(x?.proof)return '{==}';
+-  if(x?.typeName)return x.typeName+(x.typeArgs?.length?'<'+x.typeArgs.map(t=>show(t)).join(', ')+'>':'');
++  if(x?.typeName)return nameDisplay(x.typeName)+(x.typeArgs?.length?'<'+x.typeArgs.map(t=>show(t)).join(', ')+'>':'');
+   if(x===null)return 'Type';if(typeof x==='bigint')return x+'n';if(typeof x==='number')return String(x);if(typeof x==='boolean')return x?'True{}':'False{}';if(typeof x==='string')return '"'+Array.from(x,c=>showChar(c.codePointAt(0),'"')).join('')+'"';
+   if(Array.isArray(x)){const left=show(x[0],d?.[1]),right=show(x[1],d?.[2],true);return (chain?'':'(')+left+', '+right+(chain?'':')')}
+   if(x?.array||tag==='Array')return '['+arraydata(x).map(v=>show(v,d?.[1])).join(', ')+']';
+   if(x?.$==='Con'||x?.$==='Nil')return '['+unlist(x).map(v=>show(v,tag==='ADT'?d[1]?.Con?.[0]:d?.[1])).join(', ')+']';
+-  if(x?.$){const ds=tag==='ADT'?d[1]?.[x.$]:null;return (constructorOwn[x.$]??x.$)+'{'+x.a.flatMap((v,i)=>ds?.[i]?.[0]==='Erased'?[]:[show(v,ds?.[i])]).join(', ')+'}'}
++  if(x?.$){const ds=tag==='ADT'?d[1]?.[x.$]:null;return nameDisplay(constructorOwn[x.$]??x.$)+'{'+x.a.flatMap((v,i)=>ds?.[i]?.[0]==='Erased'?[]:[show(v,ds?.[i])]).join(', ')+'}'}
+   return '<function>';
+ }
+ async function runmain(descriptor=null,isIO=false){
+--- a/selfhost/tools/private-compiler/calls.mjs
++++ b/selfhost/tools/private-compiler/calls.mjs
+@@ -61,8 +61,14 @@
+ export function transformPrivateCalls(source,{exports=[],mode='combined'}={}) {
+   if(!['control','calls','scalars','combined'].includes(mode))throw Error('Unknown private mode');
+   if(source.includes('privateImageMarker'))throw Error('Already private');
+-  const ending='export {G,call,list,ctor};\nexport default Object.fromEntries(Object.keys(G).map(k=>[k,(...args)=>call(get(G,k),args)]));';
+-  if(source.split(ending).length!==2)throw Error('Expected exact self-emitted public ABI');
++  // Keep historical images replayable; accept exactly one complete known ABI.
++  const endings=[
++    "export {G,call,list,ctor};\nexport default Object.fromEntries(Object.keys(G).map(k=>[k,(...args)=>call(get(G,k),args)]));",
++    "export {G,call,list,ctor};\nexport default Object.fromEntries(Object.keys(G).map(k=>[k.replace(':','.'),(...args)=>call(get(G,k),args)]));",
++  ];
++  const counts=endings.map(ending=>source.split(ending).length-1);
++  if(counts.reduce((a,b)=>a+b,0)!==1)throw Error('Expected exact self-emitted public ABI');
++  const ending=endings[counts.indexOf(1)];
+   if(!exports.length||exports.some(x=>typeof x!=='string')||new Set(exports).size!==exports.length)throw Error('Explicit unique host export list required');
+   const workers=new Map(), lines=source.split('\n');
+   const stats={mode,workers:0,calls:0,tails:0,scalarCalls:0,scalarTails:0,byName:{},skippedDefinitions:0,scopedDefinitions:[],contract:'private inspect worker only; no public G/function objects'};

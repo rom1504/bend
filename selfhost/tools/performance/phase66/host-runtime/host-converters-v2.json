@@ -1,0 +1,30 @@
+{
+  "status": "isolated-unapplied-unexecuted",
+  "files": [
+    {
+      "path": "selfhost/src/back/js/direct/host.bend",
+      "beforeSha256": "6432002e0c5313946984d9ed77c8c5cdf55e8c7faa15f7ea806a88cebf92a550",
+      "afterSha256": "b6d27efec9c7d4099d251c5bbdf3c3ad081d1c171750d5eccba6ff9d985976f3",
+      "candidate": "selfhost/tools/performance/phase66/host-runtime/candidate-v2/selfhost/src/back/js/direct/host.bend",
+      "beforeLines": 398,
+      "afterLines": 381
+    }
+  ],
+  "patch": "selfhost/tools/performance/phase66/host-runtime/host-converters-v2.patch",
+  "patchSha256": "0805460e17b6b045fdd9a946e124f8ea5d90ac0f4458af731a2f2238da02a7fb",
+  "derivation": {
+    "parent": "selfhost/tools/performance/phase66/host-runtime/candidate-v1/selfhost/src/back/js/direct/host.bend",
+    "parentSha256": "7f6cd856faef9aeba1b7cd1894d8820de49f7038fcb854ac2cfa3009d207f44f",
+    "edits": [
+      {
+        "before": "  jd_module_sources(sources) ++ jd_module_checks(defs)",
+        "after": "  jd_module_sources(sources)"
+      },
+      {
+        "before": "@unsafe\ndef jd_module_checks(+defs: List<&2,KDef>) -> String:\n  match defs:\n    case Nil{}: \"\"\n    case Con{d, rest}: kc(String, String.eq(tg(j_strip(dv(d))), \"Foreign\"), u =>\n      \"if (!(\" ++ j_quote(name_key(dn(d))) ++ \" in $0eff)) throw new Error(\" ++\n        j_quote(\"bend: no effect registers \" ++ name_key(dn(d))) ++ \");\\n\", u => \"\") ++ jd_module_checks(rest)\n\n",
+        "after": ""
+      }
+    ]
+  },
+  "scope": "Composite ADT/Array explicit shared work stack; lexical named conversion references retained; scalar/function conversion immediate; ADT copies and Array mutation retained. New request-tag effect ABI; public names projected with name_key. No target run. Corrected review blocker: no eager missing-effect registration guard; current upstream refuses only when the request executes. Duplicate io_eff registration remains runtime admission."
+}

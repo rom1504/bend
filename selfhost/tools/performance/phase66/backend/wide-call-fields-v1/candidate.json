@@ -1,0 +1,43 @@
+{
+  "kind": "phase66-bounded-wide-call-fields",
+  "targetExecuted": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/js/direct/calls.bend",
+    "sha256": "b61b730f4c87eb226d34fd3ec2e0a41524fe8ead26cfa2d181fcd783304c0e89",
+    "bytes": 22814
+  },
+  "before": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/wide-call-fields-v1/before.bend",
+    "sha256": "b61b730f4c87eb226d34fd3ec2e0a41524fe8ead26cfa2d181fcd783304c0e89",
+    "bytes": 22814
+  },
+  "after": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/wide-call-fields-v1/after.bend",
+    "sha256": "34f2f595ab4fd3158d8ed96832de0b205aeaacd08904129007d5cd85592b97ba",
+    "bytes": 23081
+  },
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/wide-call-fields-v1/candidate.patch",
+    "sha256": "4778281db14bda895547d957a7d38d6d0e32de3bd8b8fbb31af8e086b51132c6",
+    "bytes": 2382
+  },
+  "sources": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/arity_wall.bend",
+      "sha256": "0191256ffd78d7458b358c762cdd362a0d66266f26fdb2e8872a732e819d4890",
+      "bytes": 5441
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/wide_record_drop.bend",
+      "sha256": "a724bd2b10af19f50cafee9698b4d08e65f9bf4181ff82389fdaeb1f591ab6be",
+      "bytes": 10281
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/wide_record_stale.bend",
+      "sha256": "2294a72170046d6541bbdf4de210994e742ca2d8dbb5fd17855c7242eaada6ed",
+      "bytes": 10167
+    }
+  ],
+  "contract": "Replace separate64-slot refusal with one linear telescope walk charged to the existing8192 per-definition tail-analysis budget. Each All, erased or live, consumes one unit; live slots increment pending args. Then unchanged body scan consumes remaining budget. Failure refuses entiregraph. No global budget increase, no unknown partial facts. Erased/live accounting and downstream tail/SCC behavior retained. Old private count/arm helpers removed because they have no production consumers. Historical raw-control methods referring to them need explicit successors.",
+  "budgetBoundaryChange": "Inputs at old combined field/body work boundary may now refuse earlier because field work is charged. This is a deliberately tighter aggregate work cap, not unchangedrawprivatefuel output."
+}

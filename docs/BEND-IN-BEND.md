@@ -5,8 +5,32 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-[Phase65 State10](../implementation/phase65/state10-results.md) is installed and
-verified. Its [compiler qualification](../implementation/phase65/evidence/state10-qualification.json)
+The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
+Use the [Phase66 report](../implementation/phase66/README.md) for selected and
+installed images, five-metric results and qualified scope. The current direct/legacy
+effect differences are in the [direct guide](../selfhost/docs/direct-javascript.md).
+Optional products for the exact updated Base passed independent qualification
+before permission was enabled; custom or later Base bytes retain ordinary
+annotation. Old prepared data or benchmark ratios do not transfer by changing
+a pin. See the [Base qualification](../implementation/phase66/base-host.md).
+
+Selected attempt07 closes the full frontend/JS comparison with no
+TypeScript-passing candidate failure and passes genuine B2 self-check/reproduction.
+The [conformance summary](../implementation/phase66/evidence/conformance-final07.json)
+keeps its 1,045 distinct golden passes, 123 exemptions, shared process failure
+and graphics deferral separate. **Attempt07 is installed and verified**: selected
+checked B1 `bb6c6e2a…`; independently emitted B2 `0067736c…` is separately qualified.
+The [installed receipt](../implementation/phase66/evidence/installed-release07.json)
+passes integrity checks, legacy42, default24 and helper5. Against the new reference,
+compilation takes 1.402× TS for B1 and 1.321× for B2; including imports/API loading
+gives 0.983× and 0.990×. Generated-program runtime is 1.049× over 45 equally weighted
+points, or 1.047× over 23 sources, with 669 exact samples. These clocks and the
+remaining workload gaps are separate in the [measurement report](../implementation/phase66/measurement.md).
+
+## Historical release results: Phase65
+
+[Phase65 State10](../implementation/phase65/state10-results.md) was installed and
+verified at that checkpoint. Its [compiler qualification](../implementation/phase65/evidence/state10-qualification.json)
 and [release verification](../implementation/phase65/evidence/state10-release.json)
 pass, including full checked/B2 semantics, own-source acceptance, exact B2/B3
 reproduction and installed CLI checks. Its
@@ -21,7 +45,7 @@ measures **1.28945× TS compilation time**, down from the same-campaign baseline
 gives **0.969256× TS**, down from 1.04969× (7.662% less time); this different clock
 does not establish compilation-only parity. That target still requires about
 22.45% less compilation time. These are genuine-B2 fresh prepared-cache requests,
-not installed-CLI or generated-program execution measurements. The installed
+not installed-CLI or generated-program execution measurements. The Phase65
 package is equality-derived checked B1; genuine B2 remains a distinct qualified
 measurement image.
 The [direct JavaScript backend](../selfhost/docs/direct-javascript.md) remains the
@@ -32,90 +56,36 @@ clients retain their explicit legacy interface; native C remains available.
 
 ## Historical release results: Phase61
 
-The following figures describe Phase61 state08, not the installed Phase65 release.
+[Phase61 state08 results](../implementation/phase61/state08-results.md) retain
+its checked-B1 qualification, genuine-B2 source check, exact B2/B3 reproduction
+and 207-worker compiler comparison. Its timings, image identities and unsafe
+definition counts apply to that checkpoint; they establish no current runtime
+speed or kernel proof. [Source accounting](../implementation/phase61/source-footprint.md)
+keeps its separate Bend/host totals.
 
-Genuine direct B2 freshly type-checks the complete source in **11.397 seconds of
-check-request time** (**17.248 internal / 17.385 supervised seconds**) and emits a
-**byte-identical B3 in 34.386 internal / 34.568 supervised seconds**. Both images
-are **3,978,248 bytes**, with **86 explicit roots**. The expected proof-trust
-refusal accounts for 3,192 unsafe definitions. These correctness durations are
-not controlled speed comparisons; type acceptance and reproduction are not a
-kernel proof. The installed package remains checked B1; the
-[image guide](self_hosted/compiler-image-generation.md) separates these roles.
-
-The [results matrix](../implementation/phase61/state08-results.md) records the
-selected B1 broad matrix, B2's 96 source / 34 numeric / 18 composition / two
-overapplication observations and passing installed interfaces. Counts overlap.
-B1 and B2 emit identical raw modules for all 23 benchmark sources and their
-45-point observer mapping. The balanced compiler campaign passes **207 workers**
-(23 sources × three roles × three rounds). Equal-source geometric means of
-per-source medians improve **2.476542× → 1.433877× B2/TS** for import/load plus
-first compilation and **3.816429× → 2.071828×** for compilation alone. These are
-genuine B2 requests in fresh processes with prepared persistent Base caches;
-OS caches are not claimed cold, and installed-B1 CLI latency is not measured.
-No new 669-sample runtime campaign or generated-program speed gain is claimed;
-historical [Phase58 runtime evidence](../implementation/phase58/program-performance.md)
-transfers only to byte-identical artifacts.
-
-[Source accounting](../implementation/phase61/source-footprint.md) records
-27,753 physical / 22,799 code lines, 3,192 definitions, 112 types and 114 modules.
-The [compiler-request guide](self_hosted/compiler-request-pipeline.md) explains
-current mechanisms; the six changes in the
-[allocation guide](self_hosted/compiler-allocation.md) retain their Phase58 scope.
-Native modules and runtimes retain exact bytes; the typed driver and maintained
-workflow changed. [Backend boundaries](self_hosted/backend-boundaries.md)
-explains their separation.
+The [image guide](self_hosted/compiler-image-generation.md) separates image roles;
+the [request pipeline](self_hosted/compiler-request-pipeline.md) and
+[allocation guide](self_hosted/compiler-allocation.md) explain retained mechanisms
+and their qualification boundaries.
 
 ## Historical release results: Phase56
 
-[String01](../implementation/phase56/README.md) established a 250.72-second direct
-emission fixed point and a 29.681-second fresh type check with 3,012 unsafe
-definitions. It removed seven unused helpers and added canonical String.eq
-lowering: net −40 physical lines. Its 44/45 unchanged program points and 15.9%
-map/set timing reduction remain dated evidence. Those results do not supply a
-current whole-corpus ratio or a controlled compiler speedup against Phase58.
+[Phase56 string01](../implementation/phase56/README.md) records its direct-emission
+fixed point, fresh type check, unused-helper removal and native String.eq lowering.
+Its source reduction and map/set timings retain their original image and scope.
 
 ## Historical release results: Phase53
 
-[Phase53](../implementation/phase53/README.md) made the
-[direct JavaScript backend](../selfhost/docs/direct-javascript.md) the workspace
-default for emitted programs/libraries and `--run`. From `selfhost/`, use
-`node cli.mjs FILE --run` or
-`node cli.mjs FILE --library -o module.mjs`. Select `--legacy-js` when a client
-requires mutable function descriptors and the `G` table. Compiler bootstrap
-continues to use its explicit legacy interface; no TypeScript fallback is added.
-
-Ordered02 was installed at the Phase53 checkpoint. Release integrity verification and all 42
-legacy plus 24 default ordinary/relocated CLI checks pass. The [release manifest](../selfhost/dist/release.json),
-[conformance record](../selfhost/CONFORMANCE.md) and
-[benchmark recipes](../selfhost/tools/performance/phase53/PLAN.md) separate these
-obligations. Its selected API is
-`3e3fb8c3bc4c445567696ce62bd95979e36746ddde5bb9e0aad3038fc362c9b9`;
-the corrected direct runtime is
-`c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23`.
-
-The [full 45-point / 23-source comparison](../implementation/phase53/results.md)
-passes all 669 fresh samples and improves execution time **1.129× → 1.070×
-TypeScript**, a **5.6% speedup**. Equal-source weighting gives 1.078× TypeScript.
-All 12 regressions and six timing flags remain visible; none regresses more than
-3.4%. Ordered prefixes/pending values remove primitive wrappers while preserving
-upstream evaluation order. Its separate causal eight-point screen gains 1.068×.
-These are generated-program measurements, not compiler-throughput timing.
-
-At that checkpoint, the original independent semantic suite passed **96/96**, plus 34 numeric,
-18 composition and two genuine overapplication controls. The corrected NaN
-fixture returns its original expected 40; pinned TypeScript still returns 1.
-The maintained JS census has 18 runtime passes, four expected compilation
-rejections and four N/A; all eight compatibility suites pass. Counts overlap.
-Analysis bounds and host-hook limits remain explicit. This is a checked B1
-derivative, not a newly established self-emitted fixed point. Native IO.args,
-broader native/GPU conformance and independent proof validity remain open.
-The pin is unchanged at `018751270e800bc222a93dad7f257083ee53a5f7`.
-
-[Source accounting](../implementation/phase53/complexity.md) records **26,151
-physical / 21,523 code Bend lines, 3,004 definitions, 99 types and 103 modules**.
-The change adds 361 physical / 288 code lines; all other 100 Phase52 modules remain
-identical. Runtimes, tools, experiments and generated images are separate counts.
+[Phase53 ordered02](../implementation/phase53/README.md) made direct JavaScript the
+default and introduced ordered prefix/value lowering. Its
+[generated-program comparison](../implementation/phase53/results.md),
+[source accounting](../implementation/phase53/complexity.md) and
+[benchmark recipes](../selfhost/tools/performance/phase53/PLAN.md) retain the
+original 45-point/23-source results, semantic controls, regressions and image
+identities. Those execution timings do not measure current compiler latency.
+For current interfaces and limitations, use the
+[direct JavaScript guide](../selfhost/docs/direct-javascript.md) and
+[conformance record](../selfhost/CONFORMANCE.md).
 
 ## Historical release results: Phase52
 
@@ -431,8 +401,8 @@ checkout, prepare it once from `selfhost/`:
 
 ```sh
 mkdir -p .bootstrap
-git clone https://github.com/bendlang/bend.git .bootstrap/upstream-phase23
-git -C .bootstrap/upstream-phase23 checkout --detach 018751270e800bc222a93dad7f257083ee53a5f7
+git clone https://github.com/bendlang/bend.git .bootstrap/upstream-phase66
+git -C .bootstrap/upstream-phase66 checkout --detach 059266225b77c8ca256ac6b25ee5c21449bab151
 ```
 
 Then build and verify from `selfhost/`:
@@ -454,7 +424,7 @@ npm run build -- /absolute/release-config.json /absolute/new-attempt
 Config fields and selection semantics are documented in the
 [maintained workflow guide](PHASE5_DEVELOPMENT.md). Broad conformance and checked
 self-reproduction are release/integration gates, not every small edit's build.
-The [Phase61 results](../implementation/phase61/state08-results.md) record current
+The [Phase66 report](../implementation/phase66/README.md) records current
 qualification and installation status. The historical [Phase32 release report](../implementation/phase32/release-03.md)
 retains its own evidence, limits and ordinary/relocated CLI closure.
 
@@ -467,24 +437,21 @@ The workflow's `validate` command reuses that frozen compiler for fixture-only
 changes; run a new build when compiler source changes. The development workflow
 defaults to `checked`; release builds default to `equality`. Set `"profile":
 "checked"` explicitly to build an unchanged upstream-emitted API. The equality
-profile recognizes the reviewed current and historical contracts and rejects
-unknown runtime, dependency or public-ABI changes. Version5 includes native
-literal choices and a restricted branch transformation: one-return branches with
-call-free terminal arguments become scoped blocks, with generated tail calls
-using the existing trampoline message. Other branches keep their closure
-boundary. Runtime bytes and public forcing wrappers stay unchanged; private
-unforced message identity is outside this contract. Version6 recognizes the new Base dependency chain with the same transformation
-contract. Historical versions1–5 retain exact byte replay. The normalizer seed change and broader branch
-transformation failed stack controls and are excluded.
+profile is a separately identified checked-image derivative. It must match the
+actual upstream runtime, dependency bodies and export ABI; see the selected
+profile and its controls in [the workflow guide](PHASE5_DEVELOPMENT.md).
+The new unary deferred-call protocol uses profile7 native String equality
+and literal choices without the historical array-tail branch rewrite. Historical profiles and their original evidence remain
+replayable; an old profile number is not a migration qualification.
 
 The [release manifest](../selfhost/dist/release.json) gives the installed artifact
 identities. Keep experiments isolated by selecting a frozen attempt explicitly:
 
 ```sh
-# From selfhost/, after creating build/dev/attempt-01 with the maintained workflow.
-BEND_TYPED_API="$PWD/build/dev/attempt-01/api.mjs" \
+# From selfhost/, using the equality profile in the workflow guide's example.
+BEND_TYPED_API="$PWD/build/dev/attempt-01/equality/api.mjs" \
 BEND_TYPED_RUNTIME="$PWD/build/dev/attempt-01/snapshot/src/runtime.mjs" \
-BEND_BASE="$PWD/.bootstrap/upstream-phase23/bend2/base.bend" \
+BEND_BASE="$PWD/.bootstrap/upstream-phase66/bend2/base.bend" \
   node build/dev/attempt-01/snapshot/tools/typed-driver.mjs \
   tests/conformance/typed-smoke/base-u32.bend --check-only
 ```
@@ -535,7 +502,7 @@ BEND_TYPED_API="$PWD/build/candidate-api.mjs" \
 
 This writes a checked API plus the assembled source and provenance in
 `build/typed/`. Keep source, API, runtime and host snapshots immutable during
-validation. The current direct-image chain has a separate fresh source check and
+validation. The historical Phase61 direct-image chain has a separate fresh source check and
 exact B2→B3 reproduction, recorded in the
 [Phase61 results](../implementation/phase61/state08-results.md).
 The historical [Phase56 direct-image recipes](../selfhost/tools/performance/phase56/README.md)
@@ -704,18 +671,18 @@ full-source fixed point is not relabeled as B02's.
 
 ## Current release boundary
 
-Use the [Phase61 results](../implementation/phase61/state08-results.md) and
-[current conformance record](../selfhost/CONFORMANCE.md) for installed state08's
-identities and qualification. The installed checked B1 API is
-`97f412afb692cc9f187144e418fb153f35f62fb6ff5eda698e28ebc3eaf260c8`, bound to complete
-source `268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e`.
-The separately qualified genuine B2 freshly checks that source and reproduces
-B3 exactly at `23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477`.
-Release admission, installation, all 42 legacy and 24 default interface checks,
-the final two-command CLI resume and post-check integrity verification pass.
-Historical reproduction results remain bound to their original artifacts, and
-original failed receipts remain preserved. All 3,192 definitions are unsafe;
-proof trust is refused and no kernel proof is established.
+Use the [Phase66 report](../implementation/phase66/README.md),
+[current conformance record](../selfhost/CONFORMANCE.md) and installed
+`dist/release.json` for current image identities and qualification. Run
+`npm run verify:release` from `selfhost/` to check the installed closure.
+
+### Historical Phase61 release boundary
+
+The [Phase61 result matrix](../implementation/phase61/state08-results.md) retains
+state08's checked-B1/B2 identities, exact reproduction, installed-interface gates
+and unsafe-definition proof-trust refusal. These results and their preserved
+failed receipts remain tied to those historical artifacts; neither type acceptance
+nor byte reproduction establishes kernel proof validity.
 
 The [backend boundary guide](self_hosted/backend-boundaries.md) explains what
 remains shared, what belongs to legacy/direct JS or native C, and the proposed

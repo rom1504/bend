@@ -1,0 +1,14 @@
+--- a/selfhost/src/back/js/validate.bend
++++ b/selfhost/src/back/js/validate.bend
+@@ -29,7 +29,10 @@
+ 
+ @unsafe
+ def j_printable(book, ty, seen, fuel):
+-  +done = j_printable_head(book, wnf(book, ty), seen, fuel)
++  j_printable_done(j_printable_head(book, wnf(book, ty), seen, fuel))
++
++@unsafe
++def j_printable_done(+done: Maybe<&2,List<&2,String>>) -> Bool:
+   match done:
+     case None{}: False{}
+     case Some{visited}: True{}

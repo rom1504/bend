@@ -1,9 +1,58 @@
 # Compiler validation
 
-## Current Phase65 qualification
+## Phase66 migration qualification
+
+The active target is `059266225b77c8ca256ac6b25ee5c21449bab151`. The
+[Phase66 report](../implementation/phase66/README.md) is the current gate index;
+the historical results below retain their original source, image and reference
+identities. Full qualification requires checked B1, a genuine emitted B2,
+own-source acceptance, reproduction and installed-interface gates separately.
+
+The new reference inventory has 1,587 fixtures (83 added, 38 modified, 9 removed
+versus the old 1,513), including 1,170 JS-eligible fixtures. Static eligibility
+does not imply a passing execution. Parse, check, declaration trust, backend
+execution, explicit unsupported operations and timeouts retain separate outcomes.
+See the [inventory and controls](../implementation/phase66/controls.md).
+
+The [selected07 summary](../implementation/phase66/evidence/conformance-final07.json)
+closes all 3,174 frontend comparisons and the 1,170-fixture Node JS census.
+Node gives Bend 991 golden passes, 56 failures and 123 exemptions; the
+reference has 990 passes, six failures, 51 unsupported cases and 123 exemptions. Scoped Bun
+replay, admitted through exact unchanged emitted bytes/runtime, adds 54 paired
+passes. The distinct union is **1,045 Bend / 1,044 TypeScript golden passes**.
+The remaining 125 fixture IDs are 123 unprintable-main exemptions, one shared
+`Process.run` golden failure and one graphics environment deferral. There is
+no reference-passing candidate-only failure, timeout or crash. These counts
+are not an all-1,170-pass claim or native/legacy/GPU qualification.
+
+The migrated legacy Node runtime passed 34 focused controls: runtime-unit,
+mocked-network and three real loopback cases remain separately classified in
+[the backend report](../implementation/phase66/backend.md). This does not replace
+Bend-source emission controls or the full backend inventory. Four timed sends
+(`TCP.try_send`, `TCP.try_send_bytes`, `UDP.try_send_to`,
+`UDP.try_send_bytes_to`) explicitly refuse before sending; asynchronous TCP
+write errors also refuse when the exact unsent suffix is unknowable.
+
+The native blocking migration passed 19/19 actual-source controls against both
+the reference and the explicit candidate native overlay. Its scope and final
+snapshot admission are separate from the earlier native smoke tests. The
+[selected-07 native receipt](../implementation/phase66/evidence/native-backend07.json)
+binds the retained native16/native3 and mocked-syscall evidence to final07, with
+fresh native3 output and collision diagnostics. Thirteen
+new native Base methods remain explicitly unsupported; the
+[native effects guide](docs/native-effects.md) lists every method and distinguishes
+these gaps from the repaired ordinary blocking ABI.
+
+Selected07 is installed: the [compiler admission](../implementation/phase66/evidence/compiler-qualification07.json)
+and [installed release](../implementation/phase66/evidence/installed-release07.json)
+pass, including legacy42/default24/helper5 and integrity verification before and
+after CLI checks. Compiler latency, emitted-program runtime and source complexity
+are separate from conformance. Old TypeScript ratios below are not new-reference results.
+
+## Historical Phase65 qualification
 
 Phase65 State10 combines the H2 optional Base annotation products and H6 static
-frame4 decoder. It is installed and verified. The
+frame4 decoder. It was installed and verified at that checkpoint. The
 [Phase65 report](../implementation/phase65/README.md),
 [compiler qualification](../implementation/phase65/evidence/state10-qualification.json)
 and [release verification](../implementation/phase65/evidence/state10-release.json)
@@ -903,7 +952,7 @@ separately scoped evidence for the unchanged numeric recognizer.
 
 ## Historical frontend and broader release evidence
 
-The current compiler targets upstream
+The compiler at that historical checkpoint targets upstream
 `018751270e800bc222a93dad7f257083ee53a5f7`, after Bend2 **2.0.34**. The
 [Phase23 report](../implementation/phase23/upstream-graph-conversion.md) records
 checked compiler identities, the updated Base and guarded version6 profile,

@@ -1,0 +1,67 @@
+--- a/selfhost/tools/stage0-library.mjs
++++ b/selfhost/tools/stage0-library.mjs
+@@ -2,9 +2,20 @@
+ import fs from 'node:fs';
+ import path from 'node:path';
+ import {pathToFileURL} from 'node:url';
+-const upstream=process.env.BEND_UPSTREAM||path.resolve(import.meta.dirname,'../.bootstrap/upstream-phase23');
++const upstream=process.env.BEND_UPSTREAM||path.resolve(import.meta.dirname,'../.bootstrap/upstream-phase66');
+ const B=await import(pathToFileURL(path.join(upstream,'bend2/bend.ts')));
+ const C=await import(pathToFileURL(path.join(upstream,'bend2/comp.ts')));
++// Keep canonical Base IO opaque while normalizing the candidate export type.
++// This is the 0592662 compiler's private io_base query, expressed only through
++// public language operations. It rejects every IO-headed type, not merely main
++// or exactly-one-argument IO, and does not classify similarly named user types.
++function bootstrapIoBase(book,type){
++  const io=book.tlds.IO;
++  if(io?.$!=='Def'||!io.b)return null;
++  const tlds=Object.assign(Object.create(book.tlds),{IO:{...io,v:null}});
++  const [head,args]=B.term_unapply(B.term_wnf({...book,tlds},type));
++  return head.$==='Ref'&&head.k==='IO'?args:null;
++}
+ // Upstream err_show strongly normalizes terms and their entire context. A
+ // compiler-source mistake can make formatting evaluate recursive compiler code.
+ // Bootstrap errors use bounded structural heads; never traverse cyclic books.
+@@ -42,7 +53,7 @@
+   const roots=process.argv.slice(4);
+   const eligible=name=>{
+     const d=book.tlds[name];
+-    return d?.$==='Def'&&d.v!==null&&d.b!==true&&d.i===undefined&&d.x===0&&C.io_base(book,d.T)===null;
++    return d?.$==='Def'&&d.v!==null&&d.b!==true&&d.i===undefined&&d.x===0&&bootstrapIoBase(book,d.T)===null;
+   };
+   const names=roots.length?roots:[...new Set(book.order)].filter(eligible);
+   if(new Set(names).size!==names.length)throw Error('Duplicate requested API exports');
+--- a/selfhost/tools/development/workflow.mjs
++++ b/selfhost/tools/development/workflow.mjs
+@@ -33,7 +33,7 @@
+   const known=new Set(['project','upstream','selection','profile','fullFrontend','strictExact','jobs','cpu','timeoutMs','phaseTimeoutMs','fullTimeoutMs','heapMb','recycleAfter']);
+   for(const key of Object.keys(value))if(!known.has(key))throw Error('Unknown configuration key: '+key);
+   const resolve=file=>fs.realpathSync(path.resolve(directory,file));
+-  const root=resolve(value.project??project),upstream=resolve(value.upstream??path.join(root,'.bootstrap/upstream-phase23'));
++  const root=resolve(value.project??project),upstream=resolve(value.upstream??path.join(root,'.bootstrap/upstream-phase66'));
+   const profile=value.profile??'checked';if(!['checked','equality'].includes(profile))throw Error('Unknown development profile');
+   if(value.fullFrontend!==undefined&&typeof value.fullFrontend!=='boolean')throw Error('fullFrontend must be boolean');
+   if(value.strictExact!==undefined&&typeof value.strictExact!=='boolean')throw Error('strictExact must be boolean');
+--- a/selfhost/tools/verify.mjs
++++ b/selfhost/tools/verify.mjs
+@@ -9,7 +9,7 @@
+ import {nodeResourceArgs} from './node-resource-args.mjs';
+ const root=path.resolve(import.meta.dirname,'..');
+ const manifest=JSON.parse(fs.readFileSync(path.join(root,'src/compiler.json'),'utf8'));
+-const upstream=process.env.BEND_UPSTREAM||path.join(root,'.bootstrap/upstream-phase23');
++const upstream=process.env.BEND_UPSTREAM||path.join(root,'.bootstrap/upstream-phase66');
+ const dir=process.env.BEND_COMPONENT_DIR?path.resolve(process.env.BEND_COMPONENT_DIR):path.join(root,'build/verify');
+ if(process.env.BEND_COMPONENT_DIR&&fs.existsSync(dir))throw Error('Use a fresh BEND_COMPONENT_DIR to preserve component evidence');
+ const source=path.join(dir,'compiler.bend'),api=path.join(dir,'api.mjs');
+--- a/selfhost/tools/development/release.mjs
++++ b/selfhost/tools/development/release.mjs
+@@ -52,7 +52,8 @@
+   assert.equal(effects.revision,bootstrap.revision,'Effect source pin differs');
+   assert.equal(effects.base.sha256,files['dist/base.bend'].sha256,'Vendored effect Base differs');
+   assert.ok(manifest.checkout.some(x=>x.path==='src/runtime/js/effs/manifest.json'),'Unbound JS effect manifest');
+-  assert.equal(effects.files.length,37);assert.equal(new Set(effects.files.map(x=>x.path)).size,37);
++  const effectCount=bootstrap.revision==='059266225b77c8ca256ac6b25ee5c21449bab151'?35:37;
++  assert.equal(effects.files.length,effectCount);assert.equal(new Set(effects.files.map(x=>x.path)).size,effectCount);
+   for(const item of effects.files){
+    assert.ok(/^[a-z0-9_]+\.js$/.test(item.path),'Invalid vendored effect name');
+    const entry=manifest.checkout.find(x=>x.path==='src/runtime/js/effs/'+item.path);

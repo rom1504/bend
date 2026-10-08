@@ -1,0 +1,19 @@
+{
+  "kind": "phase66-runtime-lineage-admission",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/runtime/run.py",
+    "sha256": "bba497d258d55d479581c4ad8d1499ddc7e1bcb76717b0863ac3f91c8751c9cc"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/latency/runtime/run-v2.py",
+    "sha256": "2efa4cae3fa5d7590ad13f40353f52f50a84245c2e614650a788209666963ba9"
+  },
+  "scope": "Peer-review fix: pin and rehash all three explicit provenance receipts before/after execution; timing unchanged.",
+  "edits": [
+    {
+      "old": "        require(bundle.get('provenance') is not None, 'Explicit cross-target provenance required')",
+      "new": "        require(bundle.get('provenance') is not None, 'Explicit cross-target provenance required')\n        require(set(bundle['provenance']) == {'oldB1','oldB2Equality','headAdmission'}, 'Unexpected lineage inventory')\n        for receipt in bundle['provenance'].values():\n            actual = identity(receipt['file'])\n            require(actual['sha256'] == receipt['sha256'], 'Changed mixed-target lineage receipt')\n            inputs.append(actual)",
+      "count": 1
+    }
+  ]
+}

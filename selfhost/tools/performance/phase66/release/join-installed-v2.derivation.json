@@ -1,0 +1,76 @@
+{
+  "kind": "phase66-installed-release-explicit-selection-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/release/join-installed.py",
+    "sha256": "40c391bd29b6673e9649483e7eec8e1e3a6f7a4abdb39d1763e948c97c8227d2",
+    "bytes": 14171
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/release/join-installed-v2.py",
+    "sha256": "e546a492c9bc1827b3c27cb449c24478f62de50c22afb76509c5ae05e25c1c0a",
+    "bytes": 15424
+  },
+  "edits": [
+    {
+      "old": "final05",
+      "new": "selected",
+      "occurrences": 4
+    },
+    {
+      "old": "def collect(root, pin, read):",
+      "new": "def collect(root, pin, read, config):",
+      "occurrences": 1
+    },
+    {
+      "old": "    release = raw/'release05'",
+      "new": "    for name in ['attempt', 'plan', 'commands', 'execution', 'helper', 'admission']:\n        assert Path(config[name]).resolve(strict=True).is_relative_to(raw)\n    attempt_file = Path(config['attempt']).resolve(strict=True)",
+      "occurrences": 1
+    },
+    {
+      "old": "    plan_file = raw/'release05-plan.json'\n    commands_file = raw/'release05-commands.json'\n    execution_file = raw/'release05-execution/report.json'\n    helper_file = raw/'release-helper05/report.json'",
+      "new": "    plan_file = Path(config['plan']).resolve(strict=True)\n    commands_file = Path(config['commands']).resolve(strict=True)\n    execution_file = Path(config['execution']).resolve(strict=True)\n    helper_file = Path(config['helper']).resolve(strict=True)",
+      "occurrences": 1
+    },
+    {
+      "old": "    assert Path(plan['output']) == release",
+      "new": "    release = Path(plan['output']).resolve(strict=True)\n    assert release.is_relative_to(raw)",
+      "occurrences": 1
+    },
+    {
+      "old": "    assert Path(plan['attempt']['file']) == raw/'checked-b1-05/attempt.json'",
+      "new": "    assert Path(plan['attempt']['file']) == attempt_file\n    assert verify(commands['attempt'])['sha256'] == pin(attempt_file)['sha256']",
+      "occurrences": 1
+    },
+    {
+      "old": "    assert helper['kind'] == 'phase63-release-graph-helper-integrity'",
+      "new": "    assert helper['kind'] == 'phase66-release-graph-helper-integrity'\n    assert verify(helper['attempt'])['sha256'] == pin(attempt_file)['sha256']\n    validation = load(verify(helper['validation'])['file'])\n    assert validation['complete'] and validation['pass'] and validation['strictExact']\n    assert verify(validation['attempt'])['sha256'] == pin(attempt_file)['sha256']\n    assert verify(validation['api'])['sha256'] == api_sha\n    assert validation['selected']['selectedComplete']\n    assert validation['selected']['exactDifferences'] == validation['selected']['discrepancies'] == 0\n    assert all(validation['selected'][role]['statuses']['pass'] == 36 for role in ['candidate', 'reference'])",
+      "occurrences": 1
+    },
+    {
+      "old": "    verify(helper['producer'])",
+      "new": "    assert verify(helper['frozenPackager'])['sha256'] == verify(helper['packager'])['sha256']\n    verify(helper['producer'])",
+      "occurrences": 1
+    },
+    {
+      "old": "    pre_file = raw/'release-admission.json'",
+      "new": "    pre_file = Path(config['admission']).resolve(strict=True)",
+      "occurrences": 1
+    },
+    {
+      "old": "attempt=pin(raw/'checked-b1-05/attempt.json')",
+      "new": "attempt=pin(attempt_file)",
+      "occurrences": 1
+    },
+    {
+      "old": "    parser.add_argument('--out', type=Path, required=True)",
+      "new": "    parser.add_argument('--out', type=Path, required=True)\n    for name in ['attempt', 'plan', 'commands', 'execution', 'helper', 'admission']:\n        parser.add_argument('--'+name, type=Path, required=True)",
+      "occurrences": 1
+    },
+    {
+      "old": "    result = collect(root, pin, read)",
+      "new": "    result = collect(root, pin, read, vars(args))",
+      "occurrences": 1
+    }
+  ],
+  "scope": "Explicit selected attempt and root release paths replace unconsumed05 paths. Same five process/legacy42/default24/current7/history7/inherited110 gates; now bind generic selected-attempt helper5 and its strict36 validation. No installer/target invoked."
+}

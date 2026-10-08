@@ -1,0 +1,41 @@
+{
+  "kind": "phase66-shared-printability-syntax-successor",
+  "complete": true,
+  "executed": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/js/validate.bend",
+    "sha256": "0e1b256bf3c0727a0e665e7c0afe7e5b74a861e1687d9b2fbfb9a7ba917eeebf",
+    "bytes": 12626
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/shared-layout/printable-v3/validate.bend",
+    "sha256": "9830f6caa8e54fbe662c211ace890e9fcc78cfe496f67b5dd59a472a91c16fd6",
+    "bytes": 12709
+  },
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/shared-layout/printable-v3/candidate.patch",
+    "sha256": "5a0f92527e0b77ecb1b7731817b64dfe37dec3ac64277f3b9494f9d0bc87d9b0",
+    "bytes": 433
+  },
+  "priorCandidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/shared-layout/printable-v2/candidate.json",
+    "sha256": "1369ac2645f7a8c1fa9dfcd407aafd002d345434811f717b68c3ea825b1adcbc",
+    "bytes": 7428
+  },
+  "baselineSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/js/validate.bend",
+    "sha256": "bdd9a545ad56a332723809ab48e9b9b6d6eef3ccf07f0c6628e38bb5ff4ed28a",
+    "bytes": 11456
+  },
+  "edits": [
+    {
+      "old": "def j_printable(book, ty, seen, fuel):\n  +done = j_printable_head(book, wnf(book, ty), seen, fuel)\n  match done:\n",
+      "new": "def j_printable(book, ty, seen, fuel):\n  j_printable_done(j_printable_head(book, wnf(book, ty), seen, fuel))\n\n@unsafe\ndef j_printable_done(+done: Maybe<&2,List<&2,String>>) -> Bool:\n  match done:\n",
+      "occurrences": 1
+    }
+  ],
+  "scope": "Identical v2 Maybe result is matched in a helper parameter, satisfying new compiler match syntax. No Boolean, graph or state change.",
+  "failedAttempt": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/checked-b1-06",
+  "sourceLinesBefore": 335,
+  "sourceLinesAfter": 338
+}

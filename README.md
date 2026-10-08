@@ -12,59 +12,33 @@ That's Bend - and nothing else.
 
 ## Compiler written in Bend
 
-This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
-`selfhost/bootstrap`. Ordinary compilation runs Bend code without a TypeScript
-fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
+This fork ships the Bend2 compiler in [`selfhost/`](selfhost/README.md), targeting
+upstream **`0592662` (Bend 2.0.36)**. Ordinary compilation runs Bend algorithms
+without a TypeScript fallback.
 
-[Phase64 State09](implementation/phase64/state09-results.md) is installed and verified.
-Direct JavaScript remains the default; `--legacy-js` and native C remain available.
-The **Phase64 State09** release passes a balanced genuine-B2 comparison across
-**23 sources, three roles and three rounds: 207 exact outputs**. In this same
-campaign, compilation improves from **1.644× to 1.439× TypeScript's time**—12.47%
-less time—and host/API import plus first compilation from **1.189× to 1.062×**—
-10.72% less time. All 23 sources improve on both clocks; aggregate compilation
-parity remains unfinished. These fresh processes use prepared Base caches;
-preparation and full output verification are outside the clocks. This measures
-compiler latency, not generated-program speed or the installed checked-B1 CLI.
+**Phase66 attempt07 is installed and verified.** The installed package is checked
+B1 `bb6c6e2a…`; independently emitted B2 `0067736c…` checks its own source and
+reproduces B3 exactly. Direct JavaScript is the default; legacy JS and native C
+retain explicitly documented limits.
 
-The installed package is equality-derived checked B1; the timed compiler is its
-separately qualified genuine B2. The release retains original-Base completion
-facts, an exact checked-output bound and host signatures, avoids discarded argument rendering,
-and adds indexed cache transport. Read the
-[Phase64 results](implementation/phase64/state09-results.md),
-[release verification](implementation/phase64/evidence/state09-release.json) and
-[architecture/fallback contracts](docs/self_hosted/prepared-base-artifacts.md).
-The [previous Phase63 campaign](implementation/phase63/state09-results.md)
-retains its separate historical numbers.
+Across 23 sources, B1/B2 compilation takes **1.402× / 1.321× TypeScript's time**;
+including imports/API loading gives **0.983× / 0.990×**. These are fresh-process,
+prepared-cache compiler clocks. Generated programs average **1.049× TypeScript-generated runtime** when weighting the 45 points equally (**1.047×** across 23 sources), with all 669 samples correct.
 
-The [Phase62 investigation](implementation/phase62/README.md) profiles the
-preceding Phase61 compiler across all 23 sources. It located compilation
-costs in prepared-state/source loading and backend work, and records same-source
-B1/B2 comparisons, repeated requests, operation counts and scaling experiments.
+Frontend outcomes agree on all **3,174 observations**. Combined Node and scoped
+Bun evidence has **1,045 distinct golden passes**, with 123 unprintable-main
+exemptions, one shared process failure and one graphics deferral; there is no
+TypeScript-passing candidate JS failure. Thirteen native API gaps and legacy effect limits
+remain explicit. Type acceptance and self-reproduction do not establish proof
+validity. Maintained Bend source is **28,490 physical lines in 115 modules**
+(+0.331% versus the prior phase); host/runtime costs are counted separately.
 
-The [request pipeline guide](docs/self_hosted/compiler-request-pipeline.md)
-explains retained Base worlds/parser indexes, shared validated cache transport,
-one library lowering plan and reused type facts. All 23 benchmark modules retain
-their qualified bytes. Checked and B2 semantic suites, native3, runtime45,
-legacy42 and default24 including relocation pass, as do five helper-integrity
-controls and release verification before and after CLI testing. The runtimes
-and native compiler modules retain their prior bytes.
-
-The genuine B2 freshly type-checks its complete source in **11.90 seconds** and
-emits a **byte-identical B3 in 33.42 seconds**. These are diagnostic gate durations,
-not clean performance comparisons. Its 3,254 unsafe definitions retain the
-expected proof-trust refusal: type acceptance and self-reproduction do not
-establish mathematical proof validity. SHA-256 prefixes distinguish packaged
-checked B1 (`a2f8b021…`) from measured B2/B3 (`b09fe54a…`, **4,040,799 bytes**).
-The B2 timings above do not measure the installed B1 CLI. Historical
-[Phase58 results](implementation/phase58/README.md) retain their original scope.
-
-From `selfhost/`, verify with `npm run verify:release`, then use
-`node cli.mjs FILE --run`. See the
-[compiler guide](docs/BEND-IN-BEND.md), [image workflow](docs/self_hosted/compiler-image-generation.md),
-[qualification and compiler latency](implementation/phase64/state09-results.md),
-[architecture](docs/self_hosted/backend-boundaries.md),
-[experiment ledger](experiments/ledger.md) and [current strategy](experiments/STEERING.md).
+Read the [five-axis report](implementation/phase66/README.md),
+[installed-release evidence](implementation/phase66/evidence/installed-release07.json)
+and [compiler guide](docs/BEND-IN-BEND.md). From `selfhost/`, run
+`npm run verify:release`, then `node cli.mjs FILE --run`. The
+[conformance record](selfhost/CONFORMANCE.md), [architecture](selfhost/docs/ARCHITECTURE.md)
+and [experiment frontier](experiments/STEERING.md) document scope and next work.
 
 ## Bend runs FAST
 

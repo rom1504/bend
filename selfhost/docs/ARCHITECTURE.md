@@ -1,15 +1,60 @@
 # Compiler architecture
 
-**Current overview:** Phase65 State10 is installed and verified. Read the
+**Current source target:** `059266225b77c8ca256ac6b25ee5c21449bab151`.
+The [Phase66 report](../../implementation/phase66/README.md) identifies selected
+and installed images and closed qualification gates. Source architecture alone
+does not establish release readiness. The [selected07 installed receipt](../../implementation/phase66/evidence/installed-release07.json)
+closes actual release qualification; installed checked B1 and genuine B2 remain
+distinct artifacts. Read the
 [request pipeline](../../docs/self_hosted/compiler-request-pipeline.md),
 [prepared Base artifacts](../../docs/self_hosted/prepared-base-artifacts.md) and
-[qualified results](../../implementation/phase65/state10-results.md) for the
+[migration results](../../implementation/phase66/README.md) for the
 current source, cached facts, lowering plan, self-reproduction and image roles.
 The sections below retain their dated architectural evidence.
 
-## Phase65 installed integration
+## Phase66 boundary changes
 
-Phase65 State10 passes the [compiler qualification](../../implementation/phase65/evidence/state10-qualification.json)
+Internal book keys, term identities and native function/constructor IDs retain
+raw `namespace:name` spelling. External export/effect names, constructor tags
+and diagnostics use `name_key`, replacing only the first colon with a dot.
+Display text is not a unique structural identity or lookup key.
+
+Final07 shares successful printability visits across constructor fields/siblings
+while retaining recursive-type checks. Direct call analysis inspects constructor
+telescopes using its existing remaining body budget rather than an unrelated
+64-field ceiling; incomplete analysis still refuses. The already erased-expression
+path handles quantity-meet (`Min`) terms without runtime arithmetic or a new pass.
+These three bounded changes add 37 physical Bend lines after the initial migration;
+see the [final source census](../../implementation/phase66/simplicity.md).
+
+Direct host converters share a LIFO work queue for composite ADT/Array values.
+Arrays are updated in place; ADTs with converted fields are copied; unchanged
+ADTs retain identity. Immediate scalar/function conversion order and bounded
+type planning remain explicit contracts. Pure-main display embeds constructor
+names in its mixed numeric/string descriptor.
+
+Direct IO requests carry an effect tag, arguments and continuation. Missing
+registrations fail when the request executes; IO.OP matching rejects requests
+as runtime fail-stop. The exact new Base maps to 35 vendored JS providers.
+Legacy Node effects use their separate runtime and explicitly refuse four timed
+sends and ambiguous TCP write failures. The [host report](../../implementation/phase66/host-runtime.md)
+and [backend report](../../implementation/phase66/backend.md) bind the distinct
+candidate and execution scopes. Native CPU preserves its existing scheduler;
+its compatibility layer accepts the current foreign-C helper forms and updates
+ordinary channel/network result ownership. Thirteen new Base effects remain
+explicit runtime refusals; see the [native effects guide](native-effects.md).
+Normal compilation still runs Bend algorithms.
+
+The new Base's optional annotation permission was enabled only after fresh
+checked-image producer, complete-product, owned-route and custom-Base controls.
+It admits exactly `99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf`;
+custom or later Base bytes use ordinary annotation. This changes an existing
+permission, not the frame4/world3 formats or the product algorithm. See the
+[Base qualification](../../implementation/phase66/base-host.md).
+
+## Historical Phase65 installed integration
+
+Phase65 State10 passed the [compiler qualification](../../implementation/phase65/evidence/state10-qualification.json)
 and [release verification](../../implementation/phase65/evidence/state10-release.json).
 It adds two bounded mechanisms to the request pipeline, with
 no new backend representation or TypeScript fallback:
@@ -70,7 +115,7 @@ The typed compiler uses a first-order representation shared by the frontend,
 checker, normalizer and emitters. The original single-file compiler remains
 available as a historical regression baseline.
 
-The compiler targets upstream
+At the historical Phase48 checkpoint, the compiler targeted upstream
 `018751270e800bc222a93dad7f257083ee53a5f7`, after Bend2 2.0.34. The installed
 compiler is Phase48 RNFA04, a checked B1 derivative. Release verification,
 42 ordinary/relocated CLI checks and portable replay pass. The
@@ -825,8 +870,19 @@ and cannot turn a selected pass into a whole-suite conformance claim.
 
 ## Validation processes
 
-The development `equality` profile is a compatibility name for an explicit
-checked-B1 derivative. Version6 binds the new Base equality dependency chain,
+The development `checked` profile preserves the upstream-produced checked API.
+An `equality` image is a separately identified derivative and is admitted only
+by a profile matching its exact runtime, Base dependency bodies and export ABI.
+The new upstream uses unary deferred closure calls. The historical array-tail
+rewrite cannot be reused by merely refreshing hashes. Use the actual selected
+profile and controls recorded in [the maintained workflow](../../docs/PHASE5_DEVELOPMENT.md)
+and [Phase66 bootstrap report](../../implementation/phase66/bootstrap.md).
+Raw checked, selected derivative and genuine self-emitted images remain distinct.
+Phase66 profile7 retains reviewed native String equality and literal choices,
+and disables the historical array-tail branch rewrite for the new unary
+closure protocol. Its focused profile controls do not replace full conformance.
+
+The historical version6 profile binds its old Base equality dependency chain,
 including guarded `String.order` and `Pair.snd` bodies. Runtime identity and the
 `String.eq` body jointly distinguish old and new profiles; unknown bodies are
 refused. It retains version5 native string equality and literal-choice lowering,

@@ -1,21 +1,12 @@
 # Direct JavaScript output
 
-**Checked Phase55 host02 is installed and verified; direct JavaScript remains
-the default.** Ordinary compilation, library output and `--run` use callable
-direct output. `--legacy-js` retains the descriptor compatibility interface.
-The [Phase55 report](../../implementation/phase55/README.md) records final semantic
-gates, release integrity, 42 legacy + 24 default ordinary/relocated checks and
-exact retention of all 45 benchmark point modules. The dated
-[Phase53 1.069599× TypeScript result](../../implementation/phase53/results.md)
-is retained by byte identity; Phase55 makes no new generated-program speed claim.
-
-Full direct compiler-image generation passes for the fixed graph02 subject and
-host02's own source; both pass eight exact ordinary-driver probes. This does not
-establish B2→B3 self-reproduction or a fresh full-source self-check. Bootstrap and
-private-image clients keep explicit legacy selection. The retained direct
-4,096-definition budget and [Phase54 scaling](../../implementation/phase54/scaling.md)
-are separate historical evidence. See [source accounting](../../implementation/phase55/architecture.md)
-and [backend boundaries](../../docs/self_hosted/backend-boundaries.md).
+Direct JavaScript is the default for emitted programs, callable libraries and
+`--run`. `--legacy-js` retains the mutable descriptor interface. The active
+reference is `059266225b77c8ca256ac6b25ee5c21449bab151`; current image identities,
+qualification and measurements are in the [Phase66 report](../../implementation/phase66/README.md).
+Historical [Phase55 results](../../implementation/phase55/README.md) and
+[Phase53 timings](../../implementation/phase53/results.md) apply only to their
+recorded images and emitted bytes. They are not current speed or coverage claims.
 
 ## Choose the JavaScript contract
 
@@ -58,7 +49,7 @@ their explicit legacy contract. See the
 [parity contract](../../implementation/phase52/parity-contract.md).
 
 The reference is Bend's TypeScript-written compiler at fixed commit
-[`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/rom1504/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7).
+[`059266225b77c8ca256ac6b25ee5c21449bab151`](https://github.com/bendlang/bend/tree/059266225b77c8ca256ac6b25ee5c21449bab151).
 “Upstream-compatible” names that JavaScript interface, not Microsoft's TypeScript
 compiler or an unverified latest release. It remains a scoped qualification goal;
 the recorded controls do not establish blanket language or host equivalence.
@@ -83,11 +74,12 @@ console.log(bend['demo.add'](20, 22)); // 42
 console.log(bend['demo.add'](20)(22)); // 42
 ```
 
-Export names are resolved source names in the loading book. Wrappers accept live
+Export names use `name_key`: the first internal namespace colon becomes a dot.
+Internal book lookups retain their raw names. Wrappers accept live
 arguments and omit erased type arguments. Partial application follows pinned
 `run_lib`; source function results are native callable closures. Ordinary filled,
 nonnative, nontemplate definitions are exported, excluding Foreign definitions
-and definitions whose original whole type is `IO<A>`. A function with type
+and definitions whose original whole type normalizes to an IO-headed type. A function with type
 `U32 -> IO<Unit>` remains callable. See [ABI.md](../tools/performance/phase52/ABI.md)
 for typed conversions and the precise export predicate.
 
@@ -116,13 +108,16 @@ The same command prints `hello` through the direct CPS scheduler. Emitting an
 filled definition, and a build needs Base. Pure printing uses a Bend-built type
 schema and the pinned display helper; an unprintable main type fails explicitly.
 
-Foreign JavaScript sources register typed `$FFI` operations with arguments and a
-continuation. Registry reads, argument evaluation, conversions, mutations,
-failures, and callback order remain observable parts of this contract. Missing
-sources, invalid source identifiers, and missing registrations fail explicitly;
-there is no delegation to legacy execution or the TypeScript implementation.
+Foreign JavaScript sources register an effect tag with its run function.
+Requests carry `{ $: effectName, args, kont }`; there is no `$FFI` wrapper or
+registration-time `need` callback. Missing registration fails when a request
+executes, after any earlier IO output; duplicate registration is refused.
+Argument evaluation, conversion, mutation and callback order remain observable.
+Missing sources and invalid source identifiers fail explicitly, with no legacy
+or TypeScript fallback. Matching an IO.OP request as an ordinary Emit/Halt value
+fails at runtime.
 
-The 37 pinned Base JS effect sources are
+The 35 pinned Base JS effect sources are
 [vendored byte-for-byte](../src/runtime/js/effs/README.md). Mapping requires exact
 pinned Base content and listed filenames beside that Base. Custom Base providers
 and user effect paths retain their original resolution. Generated modules provide
@@ -130,6 +125,28 @@ an ESM `createRequire` binding when needed. Some syscall/polling paths still nee
 the pinned Bun FFI facilities or a suitable `globalThis.BEND_SYS` provider;
 successful Node printing does not establish every system/asynchronous effect.
 Foreign source code must be trusted by the caller.
+
+For providers that require Bun, emit the program with Node and run its module
+with Bun (the Phase66 replay used Bun 1.4.2):
+
+```sh
+node cli.mjs example.bend -o example.mjs
+bun example.mjs
+```
+
+The [Bun replay report](../../implementation/phase66/bun-replay.md) records the
+shared process failure and unavailable graphics case separately.
+
+Legacy Node effects are a separate compatibility implementation. Channels return
+the new Result/Maybe shapes and `try_` operations wrap results in Poll. TCP
+receive returns `Done{Some{data}}` or `Done{None{}}` at peer EOF; UDP returns a
+datagram, including empty payloads. Legacy timed sends `TCP.try_send`,
+`TCP.try_send_bytes`, `UDP.try_send_to` and `UDP.try_send_bytes_to` refuse before
+host writes because queued Node writes cannot be cancelled safely. Asynchronous
+TCP write errors refuse when Node cannot recover the exact unsent suffix.
+Use the [backend report](../../implementation/phase66/backend.md) for the
+34-control scope and remaining source-level coverage; direct and legacy effect
+coverage are not interchangeable.
 
 ## Native values and compiler bounds
 
@@ -140,18 +157,21 @@ nonnegative integer Number/BigInt inputs through `2^53`. Invalid host inputs use
 a deferred throwing value, so conversion acceptance does not promise arithmetic
 will succeed. These are distinct bounds, not arbitrary-precision Nat arithmetic.
 
-Constructors use resolved tags and named fields. Unit is `{$: 'Unit'}`; tuples
+Constructors use displayed `name_key` tags and named fields. Unit is `{$: 'Unit'}`; tuples
 use `{$: 'Tuple', fst, snd}`. Arrays use native JS storage. Nat-containing arrays
 are converted in place at typed boundaries; recursive records and function
 arguments/results receive typed conversion when needed. Aliasing, mutation, and
-error timing matter alongside complete final values. Some non-tail recursion and
-branching host conversions still consume native JS stack space.
+error timing matter alongside complete final values. Composite ADT/Array value
+conversion uses one shared LIFO work queue instead of recursive composite calls.
+Converted ADTs are copied and unchanged ADTs retain identity; scalar and function
+work follows the pinned order. Type planning still has the explicit bounds below.
+See [converter qualification](../../implementation/phase66/host-runtime.md).
 
 Supported primitives require the checked native declaration; same-spelled user
 functions do not acquire primitive behavior. Operations without a direct template
 can retain their checked source implementation. Tail-call analysis and lexical
 SCC dispatch support the admitted recursive call graph without a mutable global
-callee registry. Installed Phase55 host02 retains the following bounds; these
+callee registry. The retained analysis limits are the following; these
 supersede Phase53's historical 512-definition limit:
 
 - At most 4,096 conservatively eligible runtime definitions before exact emitted
@@ -258,10 +278,11 @@ verified exact restoration. The direct preparation wrapper also passed a fresh
 installed complete-row oracle. See the
 [Phase53 routing/release method](../tools/performance/phase53/routing.md) and
 [historical Phase53 report](../../implementation/phase53/README.md).
-Current host02 identities and fresh qualification are in the
-[Phase55 report](../../implementation/phase55/README.md).
+Current image identities and qualification are in the
+[Phase66 report](../../implementation/phase66/README.md).
 
-This is a checked B1 release, not a new self-emitted fixed point. Generated-program
+Installed checked B1 and separately qualified genuine B2/B3 have distinct
+lineages; consult the current report for completed gates. Generated-program
 runtime measurements do not measure compiler throughput or request latency. The
 unchanged 45-point/23-source catalog is a regression corpus, not an untouched
 holdout or universal speed/parity evidence. Phase52's

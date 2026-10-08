@@ -1,0 +1,219 @@
+--- a/selfhost/src/core/term.bend
++++ b/selfhost/src/core/term.bend
+@@ -13,6 +13,13 @@
+     case False{}:
+       no(Unit{})
+ 
++# Module identity uses ns:name; only external output replaces its first colon.
++@unsafe
++def name_key(+name: String) -> String:
++  match name:
++    case SNil{}: ""
++    case SCon{c, rest}: kc(String, Char.is_eq(c, ':'), u => "." ++ rest, u => SCon{c, name_key(rest)})
++
+ # First-order trusted core. Binder identifiers are globally unique.
+ # Quantities: 0 erased, 1 affine, 2 unrestricted. No function-valued fields.
+ type KTerm is Data:
+--- a/selfhost/src/load/modules.bend
++++ b/selfhost/src/load/modules.bend
+@@ -36,7 +36,7 @@
+   +name: String,
+   +ns: String,
+ ) -> String:
+-  f_choose(String, String.is_empty(ns), u => name, u => ns ++ "." ++ name)
++  f_choose(String, String.is_empty(ns), u => name, u => ns ++ ":" ++ name)
+ 
+ @unsafe
+ def f_prefix(
+@@ -58,7 +58,7 @@
+     case Nil{}:
+       name
+     case Con{+im, rest}:
+-      f_choose(String, U32.is_gt(terms_len(ks(im)), 0) && f_prefix(name, nm(kid(im, 0)) ++ "."), u => nm(im) ++ "." ++ f_drop_prefix(name, nm(kid(im, 0)) ++ "."), u => f_alias(name, rest))
++      f_choose(String, U32.is_gt(terms_len(ks(im)), 0) && f_prefix(name, nm(kid(im, 0)) ++ "."), u => nm(im) ++ ":" ++ f_drop_prefix(name, nm(kid(im, 0)) ++ "."), u => f_alias(name, rest))
+ 
+ @unsafe
+ def f_declared(
+--- a/selfhost/src/core/pretty.bend
++++ b/selfhost/src/core/pretty.bend
+@@ -173,19 +173,24 @@
+ 
+ # File context is separate from lexical binders and never changes their depth.
+ @unsafe
+-def kp_alias_name(+aliases: List<&2,KTerm>, +name: String) -> String:
++def kp_alias_name(+aliases: List<&2,KTerm>, +ns: String, +local: String, +name: String) -> String:
+   match aliases:
+-    case Nil{}: name
++    case Nil{}: name_key(name)
+     case Con{im, rest}:
+-      kc(String, Bool.not(List.is_empty(&2,KTerm,ks(im))) && String.starts_with(name, nm(im) ++ "."), u => nm(kid(im, 0)) ++ String.drop(name, String.length(nm(im))), u => kp_alias_name(rest, name))
++      kc(String, Bool.not(List.is_empty(&2,KTerm,ks(im))) && String.eq(ns, nm(im)), u => nm(kid(im, 0)) ++ "." ++ local, u => kp_alias_name(rest, ns, local, name))
++
++@unsafe
++def kp_file_name(+ns: String, +aliases: List<&2,KTerm>, +name: String, +parts: List<&2,String>) -> String:
++  match parts:
++    case Con{owner, Con{local, rest}}: kc(String, String.eq(ns, owner), u => local, u => kp_alias_name(aliases, owner, local, name))
++    case _: kc(String, String.is_empty(ns), u => name, u => kp_alias_name(aliases, "", name, name))
+ 
+ @unsafe
+ def kp_name(+env: List<&2,KPName>, +name: String) -> String:
+   match env:
+-    case Nil{}: name
++    case Nil{}: name_key(name)
+     case Con{KPName{n, id, depth}, rest}: kp_name(rest, name)
+-    case Con{KPFile{ns, aliases}, rest}:
+-      kc(String, Bool.not(String.is_empty(ns)) && String.starts_with(name, ns ++ "."), u => String.drop(name, String.length(ns ++ ".")), u => kp_alias_name(aliases, name))
++    case Con{KPFile{ns, aliases}, rest}: kp_file_name(ns, aliases, name, String.split(name, ':'))
+ 
+ @unsafe
+ def kp_show(
+--- a/selfhost/src/front/declarations.bend
++++ b/selfhost/src/front/declarations.bend
+@@ -520,7 +520,7 @@
+ def f_statement_existing(+p: FParsed, +begin: U32, +column: U32) -> FParsed:
+   match p:
+     case FParsed{+n, +ts}:
+-      f_choose(FParsed, f_eq(f_tx(ts), "="), u => f_let_value(n, f_expr(f_tl(ts), 0)), u => f_choose(FParsed, f_eq(f_tx(ts), ":"), u => f_typed_let_try(n, ts, f_expr(f_tl(ts), 0), begin), u => f_context_statement_more(n, ts, column)))
++      f_choose(FParsed, f_eq(f_tx(ts), "="), u => f_let_value(n, f_expr(f_tl(ts), 0)), u => f_choose(FParsed, f_eq(f_tx(ts), ":"), u => f_typed_let_try(n, ts, f_expr(f_tl(ts), 0), begin), u => f_context_statement_more(n, ts, column, begin)))
+ 
+ @unsafe
+ def f_let_ann(
+--- a/selfhost/src/front/contextual.bend
++++ b/selfhost/src/front/contextual.bend
+@@ -399,7 +399,7 @@
+ def f_context_templates(+head: KTerm, +input: FInput, +count: U32, +left: U32, +acc: List<&2,KTerm>) -> FParsed:
+   f_choose(FParsed, U32.is_gt(count, 0) && f_eq(f_tx(input), "~"),
+     u => f_choose(FParsed, U32.is_eq(left, 0),
+-      u => fpe_error(input, "too many template arguments", "a term (" ++ nm(head) ++ " takes " ++ U32.show(count) ++ " ~)"),
++      u => fpe_error(input, "too many template arguments", "a term (" ++ name_key(nm(head)) ++ " takes " ++ U32.show(count) ++ " ~)"),
+       u => f_context_template_next(head, count, U32.sub(left, 1), acc, f_expr(f_tl(input), 0))),
+     u => f_args(input, ")", acc))
+ 
+@@ -528,9 +528,9 @@
+         u => fpe_error(f_space(input), "+ requires a binder or quantified datatype", "a quantified datatype after + (+D<..> sets D's leading quantities to &2)"))))
+ 
+ @unsafe
+-def f_context_statement_more(+term: KTerm, +input: FInput, +column: U32) -> FParsed:
++def f_context_statement_more(+term: KTerm, +input: FInput, +column: U32, +begin: U32) -> FParsed:
+   f_choose(FParsed, f_binding_head(input), u => f_statement_more(FParsed{term, input}),
+-    u => f_context_write_more(term, input, column, f_context_write(term)))
++    u => f_context_write_more(term, input, column, f_context_write(term, begin)))
+ 
+ @unsafe
+ def f_context_write_more(+term: KTerm, +input: FInput, +column: U32, +binder: KTerm) -> FParsed:
+--- a/selfhost/src/front/literals_arrays.bend
++++ b/selfhost/src/front/literals_arrays.bend
+@@ -211,15 +211,15 @@
+ def f_context_namespace_resolved(+origin: KTerm, +resolved: KTerm) -> KTerm:
+   f_choose(KTerm, f_context_stop(resolved), u => resolved, u => k_with_span(resolved, kb(origin), ke(origin)))
+ 
+-# A written Array.set call and index-write sugar have the same body rule.
+-@unsafe
+-def f_context_write(+term: KTerm) -> KTerm:
++# Only index-write syntax starts at its array binder; an explicit call does not.
++@unsafe
++def f_context_write(+term: KTerm, +begin: U32) -> KTerm:
+   f_choose(KTerm, f_eq(tg(term), "App") && f_eq(tg(kid(term, 0)), "App") && f_eq(tg(kid(kid(term, 0), 0)), "App") && f_eq(tg(kid(kid(kid(term, 0), 0), 0)), "App") && f_eq(tg(kid(kid(kid(kid(term, 0), 0), 0), 0)), "Ref") && f_eq(nm(kid(kid(kid(kid(term, 0), 0), 0), 0)), "Array.set"),
+-    u => f_context_write_var(kid(kid(kid(term, 0), 0), 1)), u => atom("Absent"))
+-
+-@unsafe
+-def f_context_write_var(+term: KTerm) -> KTerm:
+-  f_choose(KTerm, f_eq(tg(term), "Var") || f_eq(tg(term), "FName"), u => term, u => atom("Absent"))
++    u => f_context_write_var(kid(kid(kid(term, 0), 0), 1), begin), u => atom("Absent"))
++
++@unsafe
++def f_context_write_var(+term: KTerm, +begin: U32) -> KTerm:
++  f_choose(KTerm, (f_eq(tg(term), "Var") || f_eq(tg(term), "FName")) && U32.is_gt(begin, 0) && U32.is_eq(kb(term), begin), u => term, u => atom("Absent"))
+ 
+ @unsafe
+ def f_context_namespace_let(+term: KTerm, +body: KTerm) -> KTerm:
+--- a/selfhost/src/front/validate.bend
++++ b/selfhost/src/front/validate.bend
+@@ -68,8 +68,8 @@
+ 
+ @unsafe
+ def f_valid_ctor_head(+p: KTerm, +ctr: KDef) -> Maybe<&2,KTerm>:
+-  f_choose(Maybe<&2,KTerm>, f_eq(dk(ctr), "Missing"), u => Some{fpe_message_at(p, "unknown constructor pattern: " ++ nm(p), "a declared constructor (unknown: " ++ nm(p) ++ ")")},
+-    u => f_choose(Maybe<&2,KTerm>, U32.is_eq(da(ctr), terms_len(ks(p))), u => None{}, u => Some{fpe_message_at(p, "constructor pattern field count differs: " ++ nm(p), "a " ++ nm(p) ++ " pattern with " ++ U32.show(da(ctr)) ++ f_choose(String, U32.is_eq(da(ctr), 1), u => " field", u => " fields"))}))
++  f_choose(Maybe<&2,KTerm>, f_eq(dk(ctr), "Missing"), u => Some{fpe_message_at(p, "unknown constructor pattern: " ++ nm(p), "a declared constructor (unknown: " ++ name_key(nm(p)) ++ ")")},
++    u => f_choose(Maybe<&2,KTerm>, U32.is_eq(da(ctr), terms_len(ks(p))), u => None{}, u => Some{fpe_message_at(p, "constructor pattern field count differs: " ++ nm(p), "a " ++ name_key(nm(p)) ++ " pattern with " ++ U32.show(da(ctr)) ++ f_choose(String, U32.is_eq(da(ctr), 1), u => " field", u => " fields"))}))
+ 
+ @unsafe
+ def f_lambda_valid(a, body, cursor):
+@@ -217,15 +217,15 @@
+ def f_match_error(+head: KTerm, +origin: KTerm) -> KTerm:
+   +legacy : String = "match requires an unconsumed parameter or constructor field"
+   f_choose(KTerm, f_eq(tg(head), "Var") || f_eq(tg(head), "Ref"),
+-    u => fpe_message_at(head, legacy, "a match on a parameter or field (this name is a def or a consumed binder: give the value its own def)"),
++    u => fpe_match_at(head, head, legacy, 0),
+     u => f_choose(KTerm, f_eq(tg(head), "Ctr") || f_eq(tg(head), "Literal") || core_literal(head),
+-      u => fpe_message_at(origin, legacy, "an undestructed scrutinee (this value is already a constructor: bind its fields directly; if an outer match destructed it, fold the pattern into the outer case)"),
++      u => fpe_match_at(head, origin, legacy, 1),
+       u => fpe_message_at(f_choose(KTerm, U32.is_gt(kb(head), 0), u => head, u => origin), legacy, "a parameter or field scrutinee (a match cannot scrutinize a computed value: give it its own def)")))
+ 
+ @unsafe
+ def f_valid_var_pattern(+p: KTerm, +constructor: KDef) -> Maybe<&2,KTerm>:
+   f_choose(Maybe<&2,KTerm>, Bool.not(f_valid_name(nm(p))), u => Some{kt("Error", "reserved pattern binder: " ++ nm(p), 0, 0, Nil{})},
+-    u => f_choose(Maybe<&2,KTerm>, f_eq(dk(constructor), "Missing"), u => None{}, u => Some{fpe_message_at(p, "a constructor pattern requires braces: " ++ nm(p), "a braced constructor pattern (" ++ nm(p) ++ " is a constructor: write " ++ nm(p) ++ "{}, or rename the binder)")}))
++    u => f_choose(Maybe<&2,KTerm>, f_eq(dk(constructor), "Missing"), u => None{}, u => Some{fpe_message_at(p, "a constructor pattern requires braces: " ++ nm(p), "a braced constructor pattern (" ++ name_key(nm(p)) ++ " is a constructor: write " ++ name_key(nm(p)) ++ "{}, or rename the binder)")}))
+ 
+ @unsafe
+ def f_computed_pattern_error(+pattern: KTerm, +observed: KTerm) -> KTerm:
+--- a/selfhost/src/front/parser.bend
++++ b/selfhost/src/front/parser.bend
+@@ -674,6 +674,12 @@
+ 
+ @unsafe
+ def fpe_origin_render(+source: String, +start: U32, +error: KTerm) -> String:
++  f_choose(String, f_eq(tg(kid(error, 0)), "ParseMatch"),
++    u => fpe_origin_render(source, start, fpe_match_resolved(source, start, error)),
++    u => fpe_origin_plain(source, start, error))
++
++@unsafe
++def fpe_origin_plain(+source: String, +start: U32, +error: KTerm) -> String:
+   f_choose(String, U32.is_eq(kb(error), 0), u => fpe_render(source, error),
+     u => f_choose(String, U32.is_gt(start, 0) && U32.is_ge(kb(error), start) && U32.is_ge(ke(error), kb(error)) && U32.is_le(U32.sub(ke(error), start), dg_width(source)),
+     u => f_choose(String, f_eq(tg(kid(error, 0)), "ParseMessage"),
+@@ -728,3 +734,42 @@
+ def fpe_point_message(+source: String, +begin: U32, +end: U32, +error: KTerm, +observed: String) -> String:
+   f_choose(String, f_eq(tg(kid(error, 1)), "ParseObservedPoint") && String.is_empty(observed),
+     u => nm(error), u => fpe_message(source, begin, end, error, observed))
++
++
++# Match diagnostics need the original spelling, including parentheses and the
++# use-site name of a constructor introduced by an earlier pattern substitution.
++# Keep this rejection-only payload until the existing source owner is available.
++@unsafe
++def fpe_match_at(+head: KTerm, +origin: KTerm, +legacy: String, +mode: U32) -> KTerm:
++  kt_span("Error", legacy, 0, 0, [kt_span("ParseMatch", nm(head), mode, 0, Nil{}, kb(head), ke(head))], kb(origin), ke(origin))
++
++@unsafe
++def fpe_match_resolved(+source: String, +start: U32, +error: KTerm) -> KTerm:
++  +head = kid(error, 0)
++  +text = f_choose(String, U32.is_gt(start, 0) && U32.is_ge(kb(head), start) && U32.is_ge(ke(head), kb(head)) && U32.is_le(U32.sub(ke(head), start), dg_width(source)),
++    u => fpe_source_slice(source, U32.sub(kb(head), start), U32.sub(ke(head), start)), u => nm(head))
++  k_with_children(error, [kt("ParseMessage", fpe_match_message(text, ix(head)), 0, 0, Nil{})])
++
++@unsafe
++def fpe_match_message(+text: String, +mode: U32) -> String:
++  "'" ++ text ++ "' can't be matched" ++ f_choose(String, U32.is_eq(mode, 0),
++    u => " in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)",
++    u => f_choose(String, (f_ascii_alpha(f_head(text)) || Char.is_eq(f_head(text), '_')) && fpe_name_text(text),
++      u => " here (match it in the same match as the pattern that introduced it)",
++      u => " (this value is already a constructor: bind its fields directly)"))
++
++@unsafe
++def fpe_name_text(+text: String) -> Bool:
++  match text:
++    case SNil{}: True{}
++    case SCon{c, rest}: f_ident(c) && fpe_name_text(rest)
++
++# Authentic parser spans are UTF16 scalar boundaries, not String character counts.
++@unsafe
++def fpe_source_slice(+source: String, +begin: U32, +end: U32) -> String:
++  match source:
++    case SNil{}: ""
++    case SCon{c, rest}:
++      f_choose(String, U32.is_ge(begin, dg_units(c)),
++        u => fpe_source_slice(rest, U32.sub(begin, dg_units(c)), U32.sub(end, dg_units(c))),
++        u => f_choose(String, U32.is_ge(end, dg_units(c)), u => SCon{c, fpe_source_slice(rest, 0, U32.sub(end, dg_units(c)))}, u => ""))

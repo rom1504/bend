@@ -1,0 +1,21 @@
+{
+  "kind": "phase66-legacy-array-boundary-fix",
+  "version": 1,
+  "status": "isolated-unexecuted",
+  "files": [
+    {
+      "path": "selfhost/src/runtime/js/foreign.mjs",
+      "beforeSha256": "0cb75519091f17c1739e23fd2693909249585073aa6145602078cfdcdc8543be",
+      "afterSha256": "ad406115010d01b969b18d2446fd8f4073c53118abc95aac4ba6fd9a928be9bb",
+      "candidate": "selfhost/tools/performance/phase66/backend/legacy-array-candidate-v1/selfhost/src/runtime/js/foreign.mjs"
+    },
+    {
+      "path": "selfhost/src/runtime.mjs",
+      "beforeSha256": "6cd3ff8159f489516bf5b3cf120efefaac7bd754d81b768d4c3a5ef80f6e502f",
+      "afterSha256": "913b6a850c60377dbb13ef98db2811b6c8383ee9fa6a6fc16fcad9c68f8afc54",
+      "candidate": "selfhost/tools/performance/phase66/backend/legacy-array-candidate-v1/selfhost/src/runtime.mjs"
+    }
+  ],
+  "patchSha256": "efcb8228272bc5474450218680c0d2cda24ef76aa9aed7f00076881e53da28e7",
+  "reason": "A checked Array descriptor requires host array layout even before an explicit ALeaf/ANode constructor has an arraydata cache. Reuse existing normalization under that exact type guard; generic same-named user constructors remain generic."
+}

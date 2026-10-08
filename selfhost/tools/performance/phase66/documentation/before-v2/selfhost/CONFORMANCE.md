@@ -1,0 +1,1171 @@
+# Compiler validation
+
+## Current Phase65 qualification
+
+Phase65 State10 combines the H2 optional Base annotation products and H6 static
+frame4 decoder. It is installed and verified. The
+[Phase65 report](../implementation/phase65/README.md),
+[compiler qualification](../implementation/phase65/evidence/state10-qualification.json)
+and [release verification](../implementation/phase65/evidence/state10-release.json)
+bind actual final images, host controls and installed checks. State10 additionally
+requires the exact qualified Base content hash before optional production or
+sidecar reading. Arbitrary/custom Base and future Base updates use ordinary
+annotation until their product preparation is independently qualified.
+
+The annotation contract requires equality of complete retained definitions and
+emitted modules, actual owned-route activation, current stops, full prefix/hash
+admission and ordinary fallback for missing or invalid optional artifacts. The
+transport contract requires exact graph values and sharing plus unchanged eager
+record/domain validation; a no-hit request must not read the heavy annotation
+body. These finite gates cannot replace full checked/B2 semantics, own-source
+acceptance, B2/B3 reproduction, broad output comparison or installed CLI checks.
+
+The final [State10 broad campaign](../implementation/phase65/evidence/state10-b2-broad.json)
+passes 207 exact-output checks: 23 sources, three roles and three balanced rounds.
+Compilation-only geometric means are **1.41737× → 1.28945× TS (9.025% less time)**;
+imports plus compilation are **1.04969× → 0.969256× (7.662% less time)**. All 23
+sources improve; 21 have nonoverlapping sample ranges. Four are below TS for
+compilation and ten including imports. These are fresh prepared-cache genuine-B2
+compiler measurements, not generated-program execution or a universal conformance
+claim. Compilation-only parity still needs about 22.45% less time.
+
+State10 passes strict36/export99, full checked/B2 source96/numeric34/
+composition18/overapplication2, native3/runtime45, fresh own-source type acceptance,
+exact B2/B3 reproduction and raw23/point45 equality. Host79, frame-domain87,
+sidecar60 and actual owned/custom-Base controls pass. The qualification join
+verifies 4,171 input identities and explicitly binds any reused checked gates.
+Installation, verification before/after CLI testing, legacy42/default24 and
+helper5 all pass. Compiler algorithms remain implemented in Bend. The 3,269
+unsafe definitions retain expected proof-trust refusal; these overlapping finite
+suites and self-reproduction do not establish a mathematical soundness proof.
+
+## Historical Phase64 qualification
+
+Phase64 State09 was installed and verified at that checkpoint. Its
+[compiler qualification](../implementation/phase64/evidence/state09-qualification.json)
+and [release qualification](../implementation/phase64/evidence/state09-release.json)
+bind strict36/export95, full checked/B2 source96/numeric34/composition18/
+overapplication2, native3/runtime45, fresh own-source type acceptance, exact
+B2/B3 reproduction, raw23/point45 equality and legacy42/default24/helper5.
+Expected unsafe proof-trust refusal remains; these overlapping finite suites
+are not a mathematical soundness proof or universal conformance claim.
+See [historical results](../implementation/phase64/state09-results.md) for exact
+images and separate compiler/program performance metrics.
+
+## Historical Phase61 qualification
+
+**Phase61 state08 was installed and verified at that checkpoint.** The
+[results matrix](../implementation/phase61/state08-results.md) binds the installed
+checked B1, genuine emitted B2/B3, complete source, driver and runtimes separately.
+
+- Checked B1 passes 36 strict paired probes and its final 14-step matrix,
+  including maintained suites, direct census, three retained native C outputs
+  and the 45-point generated-program correctness smoke.
+- Genuine B2 passes eight ordinary-driver observations and its final semantic
+  matrix: 96 source, 34 numeric, 18 composition and two overapplication
+  observations. Known pinned TypeScript NaN failures remain explicit; scopes overlap.
+- B2 freshly checks its complete source with an empty private Base cache in
+  11.397 seconds of check-request time, 17.248 internal / 17.385 supervised seconds.
+  All 3,192 unsafe declarations are accounted for; proof trust is refused.
+- B2 emits byte-identical B3 in 34.386 internal / 34.568 supervised seconds.
+  Both are 3,978,248 bytes with 86 explicit roots, SHA256
+  `23bd6a48b9ed48b58bdc81245c3e40978735f8386c3eb6029b92701511986477`.
+- B2 matches selected B1 on all 23 freshly emitted raw benchmark modules and
+  their 45-point observer mapping.
+- Release admission, installation and integrity verification pass. Healthy
+  installed/relocated checks pass all 42 legacy and 24 default cases; the final
+  two-command CLI resume and post-check integrity verification also pass.
+
+The installed checked B1 API is
+`97f412afb692cc9f187144e418fb153f35f62fb6ff5eda698e28ebc3eaf260c8`;
+its complete source is
+`268b3cf2e1f1c2810c372925ccd1ad7eb91225853d432ca9517f05f2ecefd42e`.
+B2/B3 are separately qualified images. These overlapping gates are not a unique
+whole-language test total or a kernel proof. Native IO.args, GPU coverage and
+legacy-client migration remain separate frontiers. Original failed receipts
+remain failed and preserved in the results matrix.
+
+The balanced compiler campaign passes 207 fresh workers: 23 sources × three
+roles × three rounds. Equal-source geometric means of per-source medians improve
+from 2.476542× to 1.433877× B2/TS for import/load plus first compilation, and
+3.816429× to 2.071828× for compilation alone. These measure genuine B2 with
+prepared persistent Base caches, not cold OS caches or installed-B1 CLI latency.
+The correctness durations above are separate from these controlled measurements.
+Historical [Phase58 runtime evidence](../implementation/phase58/program-performance.md)
+transfers only to identical artifacts; no new
+669-sample runtime campaign or generated-program speed claim is made. See the
+[image workflow](../docs/self_hosted/compiler-image-generation.md).
+
+## Historical Phase58 qualification
+
+Selected last01 was installed and verified at that checkpoint. The [Phase58 report](../implementation/phase58/README.md)
+and [qualification record](../implementation/phase58/validation.md) bind checked
+B1, genuine emitted B2/B3, source, driver and runtimes separately.
+
+- Selected B1 passes its strict 36-case source gate and the final 14-job broad
+  semantic, maintained, census, native and program-value matrix.
+- Selected B2 passes the eight-job semantic stage: 96 source, 34 numeric,
+  18 composition and two overapplication observations. Known pinned TypeScript
+  NaN failures remain explicit; the scopes overlap.
+- B2 freshly type-checks the complete source in 11.712 seconds. All 3,055 expected
+  unsafe declarations are accounted for; proof trust is refused.
+- B2 emits a byte-identical B3 in 39.199 seconds. Both are 3,821,470 bytes,
+  SHA256 `a73daccf86a807092a334d5f3121745e0b91c3054164c25462f1658644b7b081`.
+- B2 freshly checks all 23 benchmark sources and matches selected B1 on all
+  23 raw modules and 45 observed points, including the unchanged row observer.
+- Release installation, integrity verification and the 42 legacy + 24 default
+  ordinary/relocated interface checks pass.
+
+The installed B1 API is
+`641381f638f1f4c1c8b349bef06502b42738c1c7feff0391f2e09b90f4ef282a`;
+its source is `85454aab7a6ef25d1e78970b1c24d68ac2a90a23a4b39b64a30de311c2fc5091`.
+B2/B3 remain separately qualified images, not the package artifact. These gates
+are not a unique whole-language test total or a kernel proof. Native IO.args,
+GPU coverage and legacy-client migration remain separate frontiers. Timings of
+compiler requests and compiled programs are recorded separately in the phase
+report. See the [image workflow](../docs/self_hosted/compiler-image-generation.md).
+
+## Historical Phase56 qualification
+
+Selected string01 was installed and verified at its checkpoint. The [Phase56 report](../implementation/phase56/README.md)
+and [conformance detail](../implementation/phase56/conformance.md) bind the checked
+B1, emitted direct B2, source and runtime identities separately.
+
+- B2 freshly type-checks its complete source and emits a byte-identical B3 in
+  250.72 seconds. All 3,012 expected unsafe declarations are accounted for;
+  proof trust is refused and no kernel proof is claimed.
+- B2 passes 96 source, 34 numeric, 18 composition and two overapplication
+  observations; known pinned TypeScript failures remain visible.
+- Native String.eq passes 484 UTF-16 pairs, eight callback/order/partial/throw
+  controls and the native-name/refusal checks.
+- Selected B1 passes all eight maintained legacy suites and 36 strict focused
+  gates. The installed package passes 42 legacy + 24 default/relocated checks,
+  integrity verification and tamper/restoration controls.
+- B2 checks all 23 benchmark sources and matches B1 bytes on all 45 final points.
+  Relative to host02, 44 points remain identical; only map/set changes, taking
+  15.9% less time in five fresh paired rounds.
+
+Scopes overlap; these counts are not a unique whole-language/native/GPU test total.
+The package remains checked B1; independently qualified direct B2 does not replace
+its artifact kind. Native IO.args, GPU coverage and proof validity remain separate
+frontiers. No new full runtime aggregate is claimed. See
+[source accounting](../implementation/phase56/architecture.md) and
+[image workflow](../docs/self_hosted/compiler-image-generation.md).
+
+## Historical Phase55 qualification
+
+Host02 was installed and verified at its checkpoint. Full direct image generation
+passed for the fixed Phase54 source and host02's own source, with eight exact
+ordinary-driver probes each. At that point B2→B3 reproduction and fresh full-source
+self-checking were not qualified. All 45 runtime modules were byte-identical to
+Phase53, retaining its dated evidence. The [Phase55 report](../implementation/phase55/README.md)
+preserves those identities, timings and release checks.
+
+## Historical Phase54 qualification
+
+Selected graph02 was installed and verified at the Phase54 checkpoint. The [Phase54 report](../implementation/phase54/README.md)
+and [qualification record](../implementation/phase54/qualification.md) bind the
+new checked image, fresh semantic gates, exact emitted-byte comparisons and
+ordinary/relocated release checks. Shared helper bodies move unchanged; direct
+call-graph analysis now shares SCC facts and admits up to 4,096 definitions.
+
+| Gate | Result |
+| --- | --- |
+| Original independent source controls | **96/96** candidate; the retained TS/differential result is 95/96 because of its unchanged NaN source failure |
+| Numeric/cold controls | **34/34** candidate; retained TS result 28/34 includes six healthy NaN-source failures |
+| Composed getter/throw order | **18/18** candidate |
+| Genuine overapplication | **2/2** candidate |
+| Direct JS census | **26/26 agreement**: 18 runtime passes, four expected rejections, four N/A |
+| Maintained compatibility suites | **8/8**, with explicit legacy selection |
+| Graph facts and resource boundaries | **15** graph cases and **10** budget/refusal cases pass; these scopes overlap |
+| Checked source scaling | Passes through **3,004** definitions; production definition budget **4,096** |
+| Benchmark output retention | All **45** complete point modules byte-identical to Phase53 |
+| Representative native retention | **Three** complete C outputs retained, fresh CPU executions match their source goldens |
+| Installed/relocated interface | **42 legacy + 24 default checks**, plus release integrity |
+
+The 45-point timing result **1.069599× TypeScript** belongs to Phase53's dated
+669-sample campaign. Byte-identical output retains that evidence; Phase54 did
+not collect a new 669-sample benchmark or measure a new generated-program gain.
+The scopes above are not a unique language-test total or full native/GPU coverage.
+
+API: `d7d0396cda189918299ddeb0105e9d682f6a22bffa70004ab6d0ebeac20f4857`.
+Source: `32cddcf1a970a9726a9785b30269cdd8a0047f917f769a964995fa6a0633de84`.
+Direct runtime remains
+`c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23`.
+The legacy runtime and upstream pin are unchanged. This is a checked B1
+release. Full direct compiler-image emission and a new self-emitted fixed point
+remain **unqualified**; the 3,004-definition source test is not a compiler image.
+See [architecture/accounting](../implementation/phase54/architecture.md) and
+[bootstrap investigation](../implementation/phase54/bootstrap.md).
+
+## Historical Phase53 qualification
+
+Selected ordered02 passes the [independent semantic qualification](../implementation/phase53/qualification.md)
+and [exact selected-image receipt](tools/performance/phase53/semantic-qualified-ordered02-v1.json).
+Ordered02 was installed at that checkpoint. Its release integrity and all 42
+legacy plus 24 default ordinary/relocated interface checks passed. The new installed direct-acquisition
+entry point also passes the complete four-array row oracle.
+
+| Gate | Result |
+| --- | --- |
+| Original independent source controls | **96/96** candidate; 95/96 pinned TS and differential agreement |
+| Numeric/cold controls | **34/34** candidate; 28/34 TS, with six healthy reference NaN-source failures retained |
+| Composed getter/throw order | **18/18** both roles |
+| Genuine overapplication | **2/2** both roles |
+| Direct JS census | **26/26 agreement**: 18 runtime passes, four expected rejections, four N/A |
+| Maintained compatibility suites | **8/8**, with explicit legacy selection in choice/provenance tests |
+| Full execution benchmark | **45/45 outputs and 669/669 samples**, 1.069599× TS time |
+| Installed/relocated interface | **42 legacy + 24 default checks**, integrity and tamper/restoration |
+
+The fixed NaN fixture still expects40. Candidate 40 is required; reference 1 is a
+separately identified compiler defect, not an accepted candidate value. Expanded
+callback controls also exposed and fixed a previous direct-emitter ordering gap.
+Failed assumptions, original controller versions and the legacy-test routing
+failure remain preserved. Counts overlap and must not be added as unique tests.
+
+API: `3e3fb8c3bc4c445567696ce62bd95979e36746ddde5bb9e0aad3038fc362c9b9`.
+Source: `1b54ede1643a131c1bb7c7b995900da7947b6f21aac71141f50a0f5c8d15899d`.
+Direct runtime: `c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23`.
+The unchanged legacy runtime and upstream pin remain as below. This is a checked
+B1 derivative, not a new self-emitted fixed point. Native/GPU/proof coverage,
+arbitrary host-hook identity and compiler-throughput parity remain separate.
+
+## Historical Phase52 validation
+
+Selected direct06 was installed at its checkpoint. Integrity verification and all **42 legacy plus
+18 direct ordinary/relocated CLI checks pass**. Failed sandbox/controller attempts
+and their exact successful successors are preserved. [Report](../implementation/phase52/README.md),
+[semantic details](../implementation/phase52/conformance.md), and
+[direct interface](docs/direct-javascript.md) distinguish the new opt-in backend
+from retained default compatibility mode.
+
+- All 29 independent direct fixtures check successfully; **95/96** runtime
+  scenarios pass. `f32_table_nan_bits.bend` expects40, while pinned TypeScript
+  returns 1 and direct returns39. This failure is unwaived; no full-conformance
+  claim follows from the other controls.
+- The maintained direct JS census agrees on all26 rows: **18 runtime passes,
+  four expected compilation rejections and four N/A**. These are distinct from
+  the broader historical native/frontend inventories.
+- All eight maintained compatibility suites pass. All eight freshly emitted
+  default-JS core modules are byte-identical to Phase51. The initial20s screen
+  exhausted its budget and remains failed; its separate300-preset successor
+  passes all8 cases and120 fresh samples.
+- The direct performance corpus passes all45 output checks and669 fresh timing
+  samples. Equal-point time is1.123799× TypeScript; speed is separate from
+  semantic qualification.
+
+API: `472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a`.
+Direct runtime: `417d2d47f98116d4eae889ff53132d9255c8a0ffaf047dd497b877f2df0c188a`.
+Compatibility runtime remains `3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46`.
+This is a checked B1 derivative. New fixed-point, full native/GPU/proof validity,
+exact NaN payloads and arbitrary global-hook parity remain unestablished.
+The original92 modules and upstream pin remain unchanged. Counts above overlap
+and must not be added as distinct language tests.
+
+## Historical Phase51 validation
+
+Phase51 was installed at its checkpoint. The checked B1 strict gate, release verification, all 42
+ordinary/relocated CLI checks and the 27-sample portable replay pass. The
+[phase report](../implementation/phase51/README.md) and
+[selected evidence](tools/performance/phase51/evidence/selected-qualification.json)
+bind API `c15718cbf3e744e47c0795d7d78db6351a61c21983f53ec9c722272782dba061`
+and runtime `3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46`.
+
+Actual checked output passes 33 String-boundary and 27 application observations,
+retained exact-entry/nullary/array controls and all eight maintained suites.
+The [qualification report](../implementation/phase51/qualification.md) records
+81 historical backend outcomes: 69 execution passes, eight N/A, four shared failures.
+Sixty outcomes are reused from the first run; 21 native outcomes come from a
+targeted retry after the sandbox refused Clang. Failed receipts remain unchanged.
+These overlapping inventories do not add up to unique new language tests.
+
+All 669 full benchmark samples pass; fresh execution time improves 3.008× → 2.928×
+TypeScript by equal point. Performance is separate from semantic qualification.
+The large frontend inventory below remains historical. No new self-hosted fixed
+point, full native/GPU conformance or independent proof validity is established.
+The upstream pin is unchanged.
+
+## Historical Phase48 RNFA04 validation
+
+RNFA04 (`checked-combined-rnfa04`) was installed at the Phase48 checkpoint. The checked B1 build, release
+verification and all 42 ordinary/relocated CLI checks pass. Portable replay also
+passes all 27 samples across three cases.
+API SHA256: `6f9d111aa68c19f3ce45b80785621d57c4d10efb12d50164f5cb0597bc952100`.
+Runtime SHA256: `880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b`.
+The upstream pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+
+The [selected semantic receipt](tools/performance/phase48/evidence/semantic-qualification.json)
+joins all 28 planned gates against this exact compiler image and reconciled
+source. All focused controls and all eight maintained suites pass. The renewed
+backend census agrees on all 81 retained outcomes: **69 execution passes,
+eight unavailable/not-applicable outcomes and four shared check failures**.
+Agreement does not convert shared failures into passes. The earlier count
+control is explicitly reused from an execution on the same selected image.
+
+Focused coverage includes complete composite results and aliases, native String
+concatenation, finite F32 literals, typed array effects and literal storage,
+zero/one-trip entry refusal, relocated U32/Nat count arguments, and retained
+view/tree/integer boundaries. Controls exercise demand and error order, helper
+and host mutation, public fallback, reentry and activation. These inventories
+overlap; their counts are not additional unique language tests. The
+[phase report](../implementation/phase48/README.md) and
+[installed-release receipt](tools/performance/phase48/evidence/installed-release.json)
+record the selected mechanisms and release identities. Higher-order and private
+aggregate-transport prototypes remain excluded.
+
+All 669 fresh generated-program samples pass their oracles across the unchanged
+45-point, 23-source corpus. Equal-point execution time is **2.6789× pinned
+TypeScript**, versus 2.9024× for the fresh array06 baseline: a 1.0834× speedup.
+This is separate performance evidence, not broader conformance or typical-program
+parity. The [complete results](../implementation/phase48/results.md) retain every
+point and regression. All 18 [compiler requests](../implementation/phase48/compiler-cost-final.md)
+pass output checks, while median request time increases 3.27% for Evening and
+4.41% for lexer; emitted-program gains do not establish faster compilation.
+
+The full 3,026-main / 196-broader frontend inventory remains historical
+unchanged-frontend evidence from worker23, not a fresh RNFA04 execution. Native
+IO.args remains a known gap. Full native/GPU conformance, universal host
+equivalence and independent proof validity remain unestablished; `--verdict`
+is unsupported. RNFA04 is a checked B1 derivative, not a new self-emitted fixed
+point.
+
+## Historical Phase47 array06 validation
+
+At its release, array06 passed the checked B1 build and focused strict gate with
+zero exact differences. Installation, release verification and all 42 CLI
+checks passed. All 45 runtime points and 669 fresh role samples passed their oracles.
+API SHA256: `28f9eb983b2ba3603a9af703d832d4a301efe32182b468e090db6b728a47d12f`.
+Runtime SHA256: `880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b`.
+The upstream pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+
+Fresh independent controls cover private Array storage and its composition with
+existing recursive trees:
+
+- V2: 24 scalar oracles and 39 host/public boundaries.
+- V3: 77 scalar oracles, 56 public-state/alias observations and seven demand/order
+  boundaries, with activation and public-escape refusal witnesses.
+- V4: 159 scalar oracles and 11 boundaries, plus exact private-tree/leaf counters
+  at depths zero through four. The original zero branch remains unchanged.
+- V5: 153 scalar oracles and 46 boundary comparisons, with guard-mode witnesses
+  for integer division and unused direct/aliased F32 inputs. Integer paths retain
+  Math.floor; changed hooks preserve the original fallback observations.
+
+All eight maintained suites pass: IR, backend, global initializers, choice, arm,
+primitive guards, provenance and foreign calls. They include 37 IR checks,
+1,129 primitive guards, 25 related observations and ten provenance constructors.
+These groups overlap; their counts must not be added as unique language tests.
+The [phase report](../implementation/phase47/README.md) and
+[control record](../implementation/phase47/control-plan.md) retain exact scope.
+
+The full 3,026-main / 196-broader frontend inventory and 81-backend inventory
+below were last run on worker23. They are historical evidence, not fresh array06
+observations. This phase changes JS lowering and does not establish broader
+native/GPU conformance, independent proof validity or a new self-emitted fixed
+point. The Phase46 native IO.args mismatch remains unresolved. The separate
+worker-cleanup and proof-memo experiments are not installed compiler changes.
+
+## Phase46 native diagnostic boundary
+
+The [four-way backend investigation](../implementation/phase46/README.md) changes
+no installed compiler. It adds24 exact one-shot and24 final batch-wrapper
+observations,72 checked timing samples and72 checked cold observations on six
+sources. These overlap and are not additional unique language-test counts.
+
+It reproduces a native IO.args mismatch: the retained selfhost C runtime omits
+the executable name, while pinned upstream and both JS products include it.
+The common performance wrapper reads the final two arguments to avoid that
+difference; this does not repair or qualify the native API. Failed wrapper
+observations are retained. Native help-option differences are a separate static,
+unexecuted observation. Broad native/GPU conformance remains unestablished.
+
+## Historical Phase45 worker23 validation
+
+At its release, worker23 passed release verification and all 42 CLI checks.
+API SHA256: `e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c`.
+Runtime SHA256: `4f057842e476d01be5cfa06ad7984fea55ad2537b2fe6e861965a782e8b94c26`.
+The pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+This is a checked B1 derivative, not a new self-emitted fixed point. Worker22
+shares the API hash but has a different runtime; selected-image receipts bind
+both hashes and the exact checked attempt.
+
+Fresh selected observations agree exactly on 3,026 main and 196 broader frontend
+inputs with zero result or extra-field differences. Main outcomes remain
+2,525 pass / 497 observed / four shared failures; broader remains 195 pass / one
+observed. All 81 retained backend observations agree: 69 execution passes, eight
+unavailable or not-applicable outcomes and four shared check failures. Verified
+pinned TypeScript reference observations are reused; agreement does not turn
+shared failures into passes.
+
+The eight maintained suites and fresh Phase44 composition fixture pass. The
+selected Phase45 mechanism queue freshly acquires seven fixture families and
+runs twelve controls, including five separate 50,000-depth worker roots at the
+default 984KiB Node stack. Coverage includes cyclic/acyclic calls, bounded fallback,
+tail transfer, Number-Nat arithmetic/overflow, mutable public descriptors,
+immutable results, actual records and used/unused primitive guards. Separate
+fresh nullary controls cover six value oracles, 39 boundaries, six activation
+observations and nine metadata bundles; Unit controls cover 27 oracles, four
+activation observations, ten boundaries and two public ABI bundles. Six exact-entry
+host-hook observations agree with ordinary source invocation. Their scopes
+intentionally overlap and must not be summed as unique language tests.
+
+The [Phase45 report](../implementation/phase45/README.md) and
+[selected qualification](tools/performance/phase45/evidence/selected-qualification.json)
+record standard gates; [fresh mechanisms](tools/performance/phase45/evidence/selected-mechanisms.json)
+and separate focused receipts retain their own scopes. A preserved failed
+Number-Nat probe remains counter-evidence and receives no qualification credit.
+Historical Phase44/43 owner campaigns below are not relabeled as fresh Phase45 checks.
+Generated execution, compiler cost and CLI installation remain separate evidence.
+Full backend/GPU execution, universal host equivalence and independent proof
+validity remain unestablished; `--verdict` is unsupported.
+
+## Historical Phase44 installed checked04 validation
+
+**Phase44 checked04 was installed; release verification and all 42 CLI checks passed.** Its API SHA256 is
+`0d3325425139c59ac81c4f1bca19fa09e9f977062aa3b202c0ef1c8c7b56b0ea`.
+The upstream pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+This is a checked B1 derivative, not a new self-emitted fixed point.
+
+Fresh candidate observations agree exactly on 3,026 main and 196 broader frontend
+inputs, with zero result or extra-field differences. Main outcomes remain
+2,525 pass / 497 observed / four shared failures; broader remains 195 pass / one
+observed. Backend qualification agrees on all 81 retained observations: 69
+execution passes, eight unavailable or not-applicable cases and four shared check
+failures. Only verified pinned TypeScript reference observations are reused.
+Agreement does not convert shared failures into passes.
+
+All eight maintained suites pass: IR contracts, basic emission, global
+initializers, choices, matcher arms, primitive guards, constructor provenance and
+foreign boundaries. These include 37 IR controls with transformation activation,
+1,129 primitive admission assertions, 25 primitive order/ABI observations and ten
+user constructors with primitive names. A freshly compiled independent composition
+fixture passes 35 scalar oracles, four mixed-feature points, eleven public boundary
+observations and 26 higher-order observations. These scopes overlap and are not
+summed into a unique-test total.
+
+The [Phase44 report](../implementation/phase44/README.md) records exact selected
+artifacts, source changes, experiment failures and remaining compatibility nodes.
+Phase43's 34-owner and composite postinstall campaigns below are historical
+qualification; they are not relabeled as freshly run Phase44 gates. Generated
+program timing and compiler cost remain separate from conformance. Full backend/
+GPU execution, universal host equivalence and independent proof validity remain
+unestablished; `--verdict` is unsupported.
+
+## Historical Phase43 installed checked14 validation
+
+**Phase43 checked14 was installed and verified.** All 42 ordinary/relocated CLI
+checks, 15 postinstallation integration gates and 227 canonical source bindings
+pass. The selected API SHA256 is
+`222902e565253ae20c628301a9191c6d71e47b211f1dc463da4e8eb1b51c86eb`;
+upstream remains pinned to `018751270e800bc222a93dad7f257083ee53a5f7`.
+This is a checked B1 derivative, not a new self-emitted fixed point.
+
+Fresh frontend observations agree exactly on 3,026 main and 196 broader inputs,
+with zero result or extra-field differences. Main outcomes remain 2,525 pass /
+497 observed / four shared failures; broader outcomes remain 195 pass / one
+observed. Selected backend renewal retains 69 execution passes, eight unavailable
+or not-applicable outcomes and four shared failures in 81 rows. Agreement does
+not convert the shared failures into passes or establish full backend/GPU support.
+
+All 34 selected mechanism owners pass, alongside inherited owner closures and
+154 untimed expanded application observations. Exact selected-image controls
+cover ordinary activation, values, aliases, partial application, hostile host
+mutation, callback/error order, fallback and deep execution. Their scopes overlap;
+these counts must not be added into a unique-test total. See the
+[Phase43 integration report](../implementation/phase43/integration.md) and
+[portable evidence index](tools/performance/phase43/evidence/selected-release.json).
+
+The 45-point/669-sample generated-program comparison is separate performance
+evidence, not additional language conformance. Compiler-cost and source-growth
+regressions are explicitly accepted in the [release report](../implementation/phase43/README.md).
+Historical qualifications below retain their original identities and scopes.
+
+
+## Historical Phase40 installed06 validation
+
+**Phase40 checked06 was installed; release verification and all 42 ordinary and
+relocated CLI checks pass.** The [release record](../implementation/phase40/release-06.md)
+and [final audit](../implementation/phase40/final-conformance/gates.md) close
+15 postinstallation groups and verify 227 canonical source files. API SHA256:
+`630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a`.
+The pin remains `018751270e800bc222a93dad7f257083ee53a5f7`. This is a checked
+B1 derivative, not a new self-emitted fixed point.
+
+Fresh candidate frontend results exactly match 3,026 main + 196 broader retained
+reference observations. Main outcomes remain 2,525 pass / 497 observed / 4 shared
+failures; broader remains 195 pass / 1 observed. Backend outcomes remain 69 pass /
+8 not applicable / 4 shared failures across 81 selected rows. Reference reuse is
+verified explicitly; agreement does not turn shared failures into passes.
+
+Fresh selected-image gates pass 36 focused probes, 56,205 primitive checks,
+3,759 worker checks, 144 nested checks, 1,129 primitive guards, 15 upstream JS
+probes, 23 libraries / 127 points, 40 worker guards / two witnesses, 22 compiler
+components and complete 42-byte HVM output. Separately, 154 expanded application
+observations pass. Fifteen Phase35, seven Phase36, three Phase37 and four Phase39
+owner groups close, with supplemental structural-tail controls and new Phase40
+List, Nat/data, mixed-frame ordering and scalar-island precedence owners.
+The [integration record](../implementation/phase40/integration.md) gives exact
+receipts and overlapping scopes rather than an inflated unique-test total.
+
+New actual-output controls retain complete values, aliases, mutation/reentry,
+argument/error order, fallback refusal and deep 30,000-level behavior. Historical
+diagnostic assumptions were corrected with versioned tools; their original
+failures remain preserved. All 45 benchmark points have selected execution
+evidence: 42 retained rotations with exact final-byte equality plus three fresh
+ray rotations. These repeated measurements are not additional independent
+language-conformance tests. [Performance](../implementation/phase40/performance-admission.md),
+[compiler cost](../implementation/phase40/compiler-cost.md) and release validation
+remain separate decisions.
+
+Full backend/GPU, universal host equivalence and independent proof validity
+remain unestablished; `--verdict` is unsupported. The previous
+[Phase39 release](../implementation/phase39/release-05.md) and older evidence below
+retain their original source/API and test scopes.
+
+## Historical Phase37 installed03 validation
+
+**Phase37 checked03 was installed; release verification and all 42 ordinary/
+relocated CLI checks pass.** The
+[Phase37 release record](../implementation/phase37/release-03.md) and
+[final gate closure](../implementation/phase37/final-conformance/gates.md) close
+all 15 postinstallation audit groups, with 227 canonical files matching the
+checked snapshot. The installed API SHA256 is
+`ea5db4a2857ffddce8263406041f56acc9b613754660d7a20c6b7c58682c86a1`;
+the pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+The image is a checked B1 derivative, not a new self-emitted fixed point.
+
+The [new owner closure](../implementation/phase37/optimizer/final-scope-owner-report.md)
+passes on fresh actual checked03 emissions, verifying 710 file identities and
+15 pinned Git provenance blobs:
+
+| New owner group | Passed observations |
+| --- | ---: |
+| Exact private F32-to-U32 conversion | 44 oracle rows / 57 boundaries / seven admission records |
+| Shared DataView guard | 22 prototype/instance observations |
+| Finite private selectors | 154 oracle rows / nine admission records / 76 boundaries |
+
+Finite controls observe all five intended selectors, complete tree aliases and
+two 30,000-step self/mutual tail cycles. Each cycle has one outer proof owner,
+a terminal selector entry and an inactive proof after completion. Native and
+DataView controls retain mutation callbacks, errors, argument order and reentry.
+Rejected fixture/control versions and a failed provenance audit remain preserved;
+their successful successors are separately bound.
+
+The expanded untimed gate also passes **154 executions**: 45 catalog points plus
+32 small application controls, each run by checked03 and pinned TypeScript.
+All 45 final performance points pass their frozen output checks in 669 samples;
+those repeated timings are not 669 independent language-conformance tests.
+The [phase report](../implementation/phase37/README.md) and
+[execution table](../implementation/phase37/execution/report.md) retain coverage
+limitations, performance tradeoffs and the unchanged fifteen-point catalog.
+
+Fresh execution agrees exactly with the pinned TypeScript reference on **3,026
+main + 196 broader frontend observations**, with no behavioral or additional-field
+differences. Main raw outcomes remain **2,525 pass / 497 observed / 4 shared
+failures**; broader remains **195 pass / 1 observed**. The reference acquisition
+is reused with identity verification, not presented as a new TypeScript run.
+The backend pilot retains **69 pass / 8 not applicable / 4 shared failures**
+across 81 selected rows; exact agreement does not turn shared failures into passes.
+
+All fifteen inherited Phase35 owner groups pass freshly on the installed API.
+The seven Phase36 owner groups also pass on fresh actual checked emissions:
+ray/column public behavior, scoped proof lifetime, Error reentry, native-array
+refusal, producer fixtures, independent complete-tree/alias checks and producer
+selectors. Their separate
+[successor audit](../implementation/phase37/inherited-owner-audit-repair.md)
+closes all seven groups, verifying 678 file identities and 15 pinned Git blobs.
+It preserves the first closer's path-namespace failure and all original semantic
+assertions. The three new Phase37 groups retain the independent closure above;
+these overlapping counts must not be summed as unique language tests.
+
+Fresh inherited gates also pass 36 focused probes, 56,205 primitive checks,
+3,759 worker checks, 144 nested checks, 1,129 primitive guards, 15 upstream JS
+probes, 23 libraries/127 points, 40 worker guards/two witnesses, 22 compiler
+components and complete 42-byte HVM output. The installed/relocated CLI gate
+includes JavaScript and native CPU execution, with no upstream checkout supplied
+to the relocated image. Historical outcomes below retain their original artifacts.
+
+Full backend/GPU, universal host equivalence and independent proof validity
+remain unestablished; `--verdict` is unsupported. Correctness,
+[performance admission](../implementation/phase37/performance-admission.md),
+[compiler cost](../implementation/phase37/compiler-cost.md) and installed-release
+validation retain separate evidence.
+
+## Historical Phase36 installed03 validation
+
+**Phase36 checked03 was installed, release verification passed, and all 42
+ordinary/relocated CLI checks passed.** Its final postinstall audit closes all **15 groups**,
+following all 38 preinstall steps, with **226 canonical files** matching the
+checked snapshot. Its API SHA256 is
+`93e55ad7ee456eebb5fa3dd9606c2cf262ea386c6f66bfd891ffe187d8f50a75`;
+the upstream pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+The [release report](../implementation/phase36/release-03.md) and
+[final audit](../implementation/phase36/final-conformance/gates.md) bind these
+results to the installed compiler. The selected image remains a checked B1
+derivative, not a new self-emitted fixed point. See the
+[Phase36 report](../implementation/phase36/README.md) for the separate performance
+admission and preserved experiment outcomes.
+
+Fresh candidate execution agrees exactly with the retained pinned TypeScript
+reference on **3,026 main and 196 broader frontend observations**, with zero
+behavioral or additional-field differences. Main raw outcomes remain **2,525
+pass / 497 observed / 4 shared failures**; broader remains **195 pass / 1
+observed**. Reference acquisition is reused with identity verification, not
+presented as a new TypeScript run. Exact agreement does not relabel shared
+failures as fixture passes.
+
+The fresh backend pilot preserves all **81 historical outcomes: 69 pass, 8 not
+applicable and 4 shared failures**. Its scope is selected JavaScript/native CPU
+coverage. Full backend/GPU coverage and the optional 811-case JS expansion remain
+separate, uncompleted scopes.
+
+The final API passes **seven new Phase36 owner groups**, independently bound to
+actual checked emissions by the
+[owner closure](../implementation/phase36/owner-closure-protocol.md):
+
+| Owner group | Passed observations |
+|---|---:|
+| Actual ray/column public behavior | 57 oracle rows / 200 boundaries |
+| Scoped proof entry and cleanup | 10 observations |
+| Native Succ overflow and Error callback reentry | 16 oracle rows / 4 boundaries |
+| Native-array proof refusal and callback reentry | 16 oracle rows / 4 boundaries |
+| Producer fixture admission | 175 oracle rows / 5 admission witnesses |
+| Independent producer review | 108 trees / 36 aliases / 9 entries / 27 boundaries / 3 structural checks |
+| Producer-context Nat/Bool selectors | 243 oracle rows / 10 admission witnesses / 6 boundaries |
+
+These results are recorded in `selfhost/build/phase36/owner-close03/report.json`,
+with [guard identities](../implementation/phase36/guard-actual-summary.json) and
+[producer evidence](../implementation/phase36/producer-checked03-evidence.json).
+Whole-root purity is required before scoped proof reuse; the actual native-array
+fixture retains its earlier private tree while refusing proof sharing. Error
+callbacks see inactive proof and observe mutations during reentry. Producer
+admission and selector controls execute the compiler's emitted workers, with
+separate refusal and public-boundary observations.
+
+**The 15 inherited Phase35 owner groups are a separate gate**, freshly executed
+on checked03: pair/fold state and ordered native events, argument/read order,
+lexical scope, aliases/nested loops, counter admission and hooks, finite Nat/F32
+and branch regions, independent purity, ray/column traversal and recursive folds.
+The 14-group preinstall audit includes this inherited gate; the seven new
+Phase36 groups retain their own explicit closure. Their counts overlap and must
+not be summed as unique conformance tests.
+
+Fresh inherited gates also pass **36 focused exact probes, 56,205 primitive
+checks, 3,759 worker checks, 144 nested checks, 1,129 primitive guards, 15 selected
+upstream JS probes, 23 libraries/127 points, 40 worker guards/two witnesses,
+22 compiler components and complete 42-byte HVM output**. The 42 installed/
+relocated CLI checks include generated JavaScript and native CPU execution with
+Clang16; the relocated compiler runs without an upstream checkout. Phase36
+acquisition and parser failures remain preserved beside explicit successful
+successors. The historical audit-repair failures described below belong to
+Phase35: Phase36's preinstall audit passed on its first use of the corrected
+inherited auditor, retaining strict final candidate identity and behavioral
+assertions.
+
+These finite gates do not establish universal JavaScript-host equivalence:
+host controls retain their standard-at-import and named post-import mutation
+scope. They also establish no full backend/GPU, new H image, fixed point or
+independent proof-kernel result. `--verdict` remains unsupported. Correctness,
+performance admission and installed release validation retain separate evidence.
+
+## Historical Phase35 installed09 validation
+
+**Checked09 is installed, release verification passes, and all 42 ordinary/
+relocated CLI checks pass.** API SHA256 is
+`467bc7dec2751a94cb677c5eb2da22a8fb69ee3522c6e164cb2bfcc147a78d82`.
+The [release report](../implementation/phase35/release-09.md),
+[installation receipt](../implementation/phase35/release-installation.json) and
+[final audit](../implementation/phase35/final-conformance/gates.md) close all
+14 preinstall groups plus installed CLI, with **225 canonical files** matching
+the checked attempt. The selected API is a checked B1 derivative; it is not a
+new self-emitted fixed point.
+
+Fresh candidate execution agrees exactly with the frozen pinned TypeScript
+reference on **3,026 main and 196 broader frontend observations**, with zero
+behavioral or additional-field differences and healthy serial workers. Main
+outcomes remain **2,525 pass / 497 observed / 4 shared failures**; broader remains
+**195 pass / 1 observed**. Reference acquisition was reused with identity checks,
+not described as a fresh TypeScript run. Shared failures remain failures.
+
+The fresh backend pilot preserves all **81 historical rows: 69 pass, 8 not
+applicable, 4 shared failures**. No native retry was needed in this phase's
+approved execution context. This is selected JavaScript/native CPU coverage,
+not full backend or GPU coverage. The optional 811-case JS expansion remains deferred.
+
+Checked09 passes 36 focused exact probes and **15 new owner groups**: complete
+pair/fold state, 328,966 ordered native events, argument/read order, lexical scope,
+public vectors/aliases, nested loops, Number counter admission/refusal and hooks,
+finite Nat/F32/branch controls, partial regions and independent purity graphs,
+actual ray/column traversal, and recursive folds. Fold controls include 675 small
+comparisons, two deep points (up to 50,000 nodes), 57 boundaries, 24 recognizer
+cases and actual optimization witnesses. Counts overlap and must not be summed
+as unique tests. Host controls have their documented standard-initialization and
+named post-import-mutation scope, not universal JavaScript-host equivalence.
+
+Fresh inherited gates pass **56,205 primitive checks, 3,759 worker checks, 144
+nested checks, 1,129 primitive guards, 15 selected upstream JS probes, 23
+libraries/127 points, 40 worker guards/two witnesses, 22 compiler components and
+complete 42-byte HVM output**. Ordinary/relocated CLI checks include JS and native
+CPU execution using Clang16; relocation supplies no upstream checkout.
+
+The initial owner acquisition stopped on sandbox `spawnSync git` EPERM. Its
+separate approved-context retry preserves the failed tree and all prior passes.
+The first provenance audit then found a historical installed runtime path being
+treated as a live input. The [narrow repair](../implementation/phase35/provenance-audit-repair.md)
+verifies the exact portable reference against its frozen Phase32 snapshot/archive;
+all final candidate and source-identity checks remain strict. Both original
+failures remain recorded. The final audit closes on the selected installed API.
+
+No full backend/GPU, new H image, fixed-point or independent proof-kernel claim
+follows from these finite gates. `--verdict` remains unsupported. Historical
+results below retain their original artifact scopes.
+
+## Historical Phase32 installed03 validation
+
+The installed API is
+`8be506d811f627fe6346a5eaba07050c36db70e2704608adcfd781b85a3a7f92`.
+Its [release report](../implementation/phase32/release-03.md) records the completed
+gates and [admission decision](../design/phase32/admission.md).
+**Checked03 is installed and passes release verification and all 42 ordinary/
+relocated CLI checks.** All 14 pre-install gate groups pass
+and 223 canonical source identities match the checked attempt in the
+[gate closure](../implementation/phase32/final-conformance/gates.md).
+
+Fresh candidate observations agree exactly with the frozen pinned TypeScript
+results on **3,026 main and 196 broader frontend observations**. Reference input
+and artifact identities are rechecked; this reuses the retained reference
+acquisition rather than claiming a new TypeScript execution. Both gates pass
+exact-result and worker-health checks with no behavioral or additional-field
+differences. Raw main outcomes remain **2,525 pass / 497 observed / 4 shared
+failures**; broader outcomes remain **195 pass / 1 observed**. The four main
+failures expect errors at a later emission stage and are not relabeled as passes.
+The broader campaign interrupted by a server restart remains preserved; the
+successful retry uses a separate output directory and the same selected API.
+
+Candidate03 also passes 36 strict focused observations and six added control
+groups: complete pair state with **328,966 ordered native events**, independent
+fold oracles, actual typed-read evaluation order, nested lexical scopes, public
+boxed records and aliases, and compiled layout predicates. The
+[independent local review](../implementation/phase32/review-vector03.md) and
+[exact control identities](../implementation/phase32/review-local-gates.json)
+bind these results to the actual checked output. Counts overlap and are not a
+sum of unique conformance tests. The driver and runtime are unchanged.
+
+The candidate's backend pilot preserves all **81 historical outcomes: 69 pass,
+8 not applicable and 4 shared failures**. It combines 60 unaffected observations
+from the original candidate run with 21 native rows retried in the approved
+Clang execution context. The original campaign's 17 paired EPERM failures remain
+preserved and are not relabeled as successful executions. This is selected CPU
+and JavaScript coverage; broader platform validation remains separate.
+
+Fresh inherited gates pass 56,205 primitive executions, 3,759 worker executions,
+144 nested-Nat checks and 1,129 primitive guards with their separate ordered/
+effect observations. The selected 15 upstream JS probes, 23 libraries/127 points,
+40 worker admission guards with two execution witnesses, 22 compiler components
+and complete 42-byte HVM output also pass. These finite scopes overlap; the
+complete gate record keeps each count and identity separate.
+
+The [installed/relocated CLI receipt](../implementation/phase32/release-cli.json)
+includes generated JavaScript and native CPU execution, using the approved
+native execution context and retained external Clang16 toolchain. The relocated
+copy runs without an upstream checkout. The
+[installation record](../implementation/phase32/release-installation.json) binds
+the selected source, checked parent, installed API and verification receipts;
+it does not manufacture a new bootstrap or fixed-point proof.
+
+No full backend, GPU/device, new H image, self-emitted fixed point or independent
+proof-kernel claim follows from these gates. The optional 811 additional JS cases
+remain deferred. Historical results below keep their original artifact scopes.
+
+## Historical Phase31 checked07 validation
+
+The Phase31 API is
+`d8f609c99b3acef932f90040d0c6152c96605493bef926e46f25559ac125029b`.
+The [release report](../implementation/phase31/release-07.md) records final
+admission and installed status.
+
+Fresh candidate observations agree exactly with pinned TypeScript on **3,026
+main and196 broader frontend observations**, with zero behavioral or additional
+field differences. Main raw outcomes remain2,525 pass /497 observed /4 shared
+failures; broader outcomes remain195 pass /1 observed. Shared failures are not
+rewritten as passes. The unchanged comparison gate uses an independently audited
+60→65→66 module migration; only `src/back/js/local.bend` is added relative to17.
+All other manifest fields and prior module ordering remain exact.
+
+Independent final07 controls cover complete physical arrays and328,966 ordered
+native operations, nested records/Sigma, empty records, aliases, public raw and
+partial entries, descriptor mutation and prototype markers. A distinct one-array
+fold and negative delayed-write witnesses also pass. The final runtime is
+byte-identical to the55-case runtime control acquisition; its reuse is explicitly
+bound by [the independent review](../implementation/phase31/actual-local-data-review.md),
+not described as a fresh execution. These finite scopes overlap and are not a
+sum of unique conformance tests.
+
+Fresh final07 passes the15 selected upstream JS cases,23 libraries/127 points,
+primitive/worker/nested/refusal controls,40+2 additional worker checks,22 compiler
+components and full HVM output. The backend pilot preserves81 historical outcomes
+(69 pass /8 not applicable /4 shared failures), combining60 unaffected original
+rows and21 native retries in the approved Clang execution context. The original
+17 paired EPERM failures remain recorded. Release verification and all 42 ordinary/
+relocated CLI checks pass. See [final conformance](../implementation/phase31/final-conformance.md)
+and the release report for exact scopes. No new H, full backend, GPU, fixed-point or independent
+proof-kernel claim follows. The optional811 additional JS cases remain deferred.
+
+## Historical Phase30 checked17 validation
+
+The historical checked17 API is
+`33545640e25beffb61639b27f4815aaeb345fda14758e1d63418cd1d0ccc0637`.
+Its [report](../implementation/phase30/generated-program-performance.md) and
+[release manifest](dist/release.json) bind the selected checked artifact.
+Release verification and all [42 ordinary/relocated CLI checks](../implementation/phase30/release-cli.json)
+pass, including generated JavaScript and native CPU execution. The relocated
+copy uses the retained external Clang16 toolchain.
+
+[Frontend renewal](../implementation/phase30/frontend-renewal.md) on16 agrees exactly
+with pinned TypeScript on **3,026 main observations and 196 broader observations**.
+The main raw outcomes remain **2,525 pass / 497 observed / 4 fail** on both sides;
+the broader set is **195 pass / 1 observed**. The four shared failures expect
+later emission errors. No fixture verdict was changed to make agreement pass.
+An independently audited module-layout migration admits the five added JS modules
+relative to the historical frontend reference, with all other input metadata,
+fixture paths, expected results and behavioral fields unchanged. The original
+strict manifest-comparison failure remains preserved.
+The [independent17 audit](../implementation/phase30/registration-flag-actual-review.md)
+proves identical frontend source/API/Base/host inputs. These3026+196 observations
+are reused under that audit, not described as a new17 full frontend run.
+
+Fresh [checked17 gates](../implementation/phase30/release-17.md) pass
+36 focused observations, 15 selected upstream JS executions, 23 libraries with
+127 points, all ten selected original library outputs, 22 compiler component
+observations and the complete HVM output. The primitive/worker suites again pass
+56,205 primitive executions, 3,759 worker executions, 144 nested-Nat observations,
+1,129 primitive guards and 40 worker guards, with their separate ordered/effect
+witnesses. New region, tree, terminal-record, exact-entry, public-callback and
+full-array controls are linked from the report. These overlapping scopes are
+not a sum of distinct conformance tests.
+
+The [checked17 backend pilot](../implementation/phase30/backend-pilot-renewal-17.md)
+matches all81 historical observations:69 paired fixture passes, eight expected
+compile refusals and four shared check failures. Its28 interpreter and26 JS rows
+are freshly acquired on17; four check and23 native observations are explicitly
+reused from16 after the unchanged-input audit. The earlier native renewal passes
+in an approved execution environment outside the sandbox; both preceding shared
+Clang EPERM receipts remain. This is selected native CPU validation, not full
+backend or GPU coverage. An additional811-case JavaScript campaign is designed
+but unexecuted.
+
+[Checked17 self-emission](../implementation/phase30/registration-checked-integration.md)
+produces a new H module exactly matching the independently tested flag variant.
+Fresh17 preparation checks Base under the actual H hash and matches a small
+positive compilation/output against the genuine parent, executing result8.
+The earlier positive/negative functional gate retains its frozen16 runtime-input
+scope; it is not relabelled as a freshly run17 negative test. H is not installed.
+This is not full H conformance, an H-to-H fixed point or independent proof validation.
+
+## Historical Phase29 validation
+
+The [Phase29 release](../implementation/phase29/generated-program-fast-loop.md)
+adds guarded native scalar inlining and a private Nat countdown loop. Fresh gates
+pass36 strict focused observations, 15 checked upstream JS fixtures, 23 libraries
+with 127 scalar points, all ten original Phase28 libraries plus the HVM program,
+and22 actual compiler component observations. Exact complete results are checked.
+
+The [independent semantic review](../implementation/phase29/semantic-review.md)
+records 56,205 primitive scalar/ABI executions, 1,129 primitive guards and 25
+order/error observations; 3,759 worker scalar executions and 14 descriptor/effect
+transcripts; 40 worker guards, two let witnesses and 144 nested-Nat regression
+observations. Counts overlap and include multiple emitters. These finite scopes
+do not renew the entire frontend inventory or establish full backend conformance.
+
+Attempt03 passed the smaller gates but overflowed during symbolic-regression and
+ray-tracing emission because an eager Boolean guard still entered recursive
+recognition. Attempt04 uses explicit branching and bounded counts. Both original
+programs now compile/run, and the new small test reproduces the failure on03 and
+passes on04. Source, failing receipts and corrected controls remain preserved.
+The runtime, native backend, Base and pinned upstream target are unchanged.
+
+## Historical Phase27 validation
+
+The [Phase27 release](../implementation/phase27/constructor-arm-prebinding.md)
+adds selected constructor-arm prebinding through a shared JS runtime helper.
+Fresh gates:36 strict focused observations, 15 pinned upstream JS fixtures exact,
+23 libraries / 127 scalar points,72 detailed descriptor/effect/ownership observations,
+and22 real compiler membership oracles. The previous numeric suite passes2816
+scalar checks and four expected refusals per emitter, plus468 supplement checks
+per emitter. The runtime argument-ownership test also passes.
+
+The initial inline variant passed the same scoped semantics but was rejected for
+a20% short-window substitution regression. The shared version corrects that
+measured regression; all attempts are retained. These overlapping finite scopes
+do not renew every historical suite below or establish full backend conformance.
+The frontend, native backend, Base and upstream pin are unchanged. Previous
+[Phase26 guard results](../implementation/phase26/direct-u32-decisions.md) remain
+separately scoped evidence for the unchanged numeric recognizer.
+
+## Historical frontend and broader release evidence
+
+The current compiler targets upstream
+`018751270e800bc222a93dad7f257083ee53a5f7`, after Bend2 **2.0.34**. The
+[Phase23 report](../implementation/phase23/upstream-graph-conversion.md) records
+checked compiler identities, the updated Base and guarded version6 profile,
+retained failures and release decisions. The [release manifest](dist/release.json)
+identifies the installed artifact; `npm run verify:release` checks its integrity
+and lineage, without rerunning conformance or proving a self-hosted fixed point.
+
+The new inventory contains **1,513 fixtures** and **3,026 parse/check observations**.
+The final installed candidate03 agrees exactly with the new TypeScript reference
+on **3,026/3,026** main observations and **196/196** retained broader parser
+observations. This includes all15 added upstream fixtures and both depth32
+shared-equality regressions. Final candidate acquisitions use explicitly verified
+fresh-reference checkpoint results, with zero behavioral differences, worker
+failures/timeouts or changed input identities. The
+[frontend validation report](../implementation/phase23/frontend-validation.md)
+retains both initial and final compiler gates and their exact artifact identities.
+
+Raw main verdicts remain **2,525 pass /497 observed /4 fail** on both sides:
+parse1,016 pass/497 observed and check1,509 pass/4 fail. The four failures expect
+later emission errors; both frontends accept them at the earlier check stage.
+Exact reference agreement therefore coexists with the original failed fixture
+verdicts. No oracle or raw report is rewritten.
+
+Final candidate03 also retains **226 paired history observations and two fresh
+6,000-character string checks**, with complete result equality apart from
+independently validated host provenance. There is no diagnostic exception.
+The unchanged baseline114 observations were reused with verified input hashes;
+candidate03 supplied114 fresh observations. Original53/60-request order,4MiB
+stack,4GiB heap and generation1 are preserved, with no worker failure, timeout
+or recycling. The [history report](../implementation/phase23/history-controls.md)
+keeps earlier stack failures and the original acquisition boundaries explicit.
+
+Graph conversion now preserves sharing through the existing graph evaluator;
+native and JavaScript array atomics use the existing uniform array representation.
+Backend execution, aliasing/ownership controls and installed/relocated CLI checks
+have their own gates in the Phase23 report. Frontend agreement does not establish
+all backend behavior, independent proof-kernel validity or universal language
+equivalence. Independent `--verdict`, GPU/device execution, hub/package fetching
+and broader platform coverage remain unsupported or unvalidated as recorded below.
+Concurrent ordinary structural array reads against writes are not claimed safe.
+
+## Phase22 historical frontend agreement
+
+Phase22 targeted upstream `b2111cf43244e65f76ddc278ee695e669f720cbf`, Bend2
+2.0.32 era. The [Phase22 release report](../implementation/phase22/contextual-conformance.md)
+binds the final checked artifact, controls, exact vectors, timing and preserved
+failures. That release used the guarded version5 derivative, genuine checked B1, source,
+Base, runtime and host.
+`npm run verify:release` checks integrity and lineage after relocation; it does
+not rerun conformance or establish a new self-hosted fixed point. Independent
+proof-kernel validation and `--verdict` remain unsupported.
+
+The full inventory has **1,498 fixtures**: 1,001 positive expectations,
+482 validation negatives, 11 declaration-only trust refusals and four
+later-emission errors. Eleven additional Bend files supply imports without
+independent oracles. The final run completes all **2,996 parse/check observations**.
+All 1,001 positives accept types; all 482 validation negatives reject, with no
+observed invalid acceptance, timeout or unresolved observation. All 11 trust
+cases type-check and reach the intended refusal, exactly matching TypeScript.
+
+Phase22 reaches **2,996/2,996 exact complete results** on this corpus, closing
+the final two do-block first-diagnostic differences with zero lost matches.
+Phase16 had reduced459 differences to2; subsequent releases retained those two
+until the contextual frontend put semantic decisions at their actual parsing
+checkpoints. All measured primitive status, phase, type/trust, unsafe-list,
+exit and output axes agree. This is full agreement on the tested frontend
+corpus, not proof of universal language equivalence.
+
+Strict check results are **1,494 passes /4 failures**. Those four fixtures expect
+later-emission errors and both frontends accept them at this earlier stage.
+The parse lane retains1,001 passes and497 observed negatives. Exact reference
+comparison and original fixture verdicts are separate; no oracle was weakened.
+
+Fresh final-artifact gates also establish broader parser196/196 exact (+57,
+zero lost), independent public176/176, check/interpreter/JS/native36/36, and
+integration198/198. The marked114 selection is an audited exact subset of the
+fresh196, closing its43 historical differences. Header12, normalization12,
+completion17, constructor-index42 and actual checkup4 controls pass their stated
+contracts. Original226 paired history requests plus two fresh long-string checks
+pass with exactly one prospectively pinned diagnostic correction; all other
+complete results and the original resource/order boundaries are preserved.
+The unchanged standalone frontend test rebuilds26 modules without the checker
+or diagnostic tracing dependencies. Suites overlap and must not be summed as
+unique programs. See the Phase22 report for exact source/API/host identities.
+
+The sections below retain artifact-specific historical results and failures.
+Where Phase22 supersedes a frontier, the current result is stated explicitly.
+Independent proof-kernel validation, GPU execution and broader platform/device
+coverage remain outside the demonstrated result.
+
+The earlier Phase19 prefix release fixes a separate public-prefix error outside that inventory.
+The Phase17 compiler accepts a changed `{0n == 1n : Nat}` proof when reusing a
+validated `{0n == 0n : Nat}` prefix, despite rejecting the changed book in a full
+check. The corrected compiler detects the changed literal and rejects in both
+paths. All twelve identity controls pass; five failed on Phase17. This does not
+establish a bypass of the host's separately hashed Base cache. The
+[independent prefix report](../implementation/phase19/instance-boundary.md)
+retains the original failure and pinned oracle. Maintained 36, the complete
+2,996-result comparison and all 42 installed/relocated CLI checks were rerun on
+the corrected API; other named controls below retain their stated prior scope.
+
+The Phase19 live-checker image additionally passed all22 saved chronology observations
+(two previous differences), all6 let-closure observations (three previous strict
+differences), memo8, parsed instances29, canonical keys61, world/freshness/demand40,
+and recursion4. Independent final-image boundary104 passes its stated contracts;
+its runtime-reference projection is not full checked-term equivalence. Actual
+backend41 and literal JS/native20 executions, helper16/authentic replay5, original
+paired histories226 and installed/relocatedCLI42 were rerun on that Phase19 API.
+
+The frozen older public18 comparison retains six intentional differences:
+instances are checked earlier, checked output uses completion order, and failure
+results retain the actual failing world. Its overall report remains failed.
+All nine stable four-field/projection-demand rows pass. The independently pinned
+boundary104 suite validates the new behavior. See the
+[live-checker implementation](../implementation/phase19/instance-live-checking.md)
+and [independent review](../implementation/phase19/instance-independent-review.md).
+
+Phase20 also reruns the maintained36 with zero strict differences, decorator24,
+constructor50, first-element54 and expanded whitespace44, all exact. Original
+supplied39 and ordered-host43 now have zero strict differences. Three new accepted
+constructor programs pass check/interpreter/JS/native comparisons (12observations),
+and all 42 installed/relocated CLI checks pass. These suites overlap; do not add
+their counts as distinct programs. A rejected intermediate constructor candidate's
+semicolon false acceptances remain documented in the independent review.
+
+Phase16's broader controls recorded the following gaps outside that inventory.
+The contextual39 / host43 selections now have the Phase20 results above. The198-observation
+integration selection was rerun for Phase19 and now has **198 exact matches**,
+closing its same-body live-instance difference. Its immutable runner retains
+`pass:false` for14 inherited negative parse `observed` labels; exact result
+comparison is a separate axis. Other selections below retain their stated scope:
+
+- Historically, the separate196-observation group selection on Phase21 had139exact
+  and57remaining differences, three newly exact and none lost from Phase20.
+  Only local-pattern parse/check and local-callee check change. The raw runner
+  still fails selected completion with three inherited failed verdicts; the
+  separate acquisition/no-regression audit preserves this raw failure.
+- Phase21's independent68 improves44→60exact with16gains and no primitive or
+  exact-match regressions. Typed-RHS4 adds two exact/two unchanged diagnostics.
+  Complete-graph172 and positive annotation-coordinate30 gates pass; inherited
+  grouped-constructor false acceptances stay visible. Program12 has exact healthy
+  observations, including nine successful actual executions, but the original
+  output-oracle verdicts remain failed because their comments omitted Nat's `n`.
+  Maintained36 is strict exact and installed/relocatedCLI42 passes.
+- Historically, the 114-observation marked-pattern selection had **71 exact
+  matches and43 known differences**; Phase22 closes all43 as described above. Its raw oracle report is `pass:false`, including the
+  known do-block check failure. A separate audit establishes 114 unchanged
+  candidate outcomes and zero regressions against its accepted predecessor;
+  it does not establish full selected conformance. Six direct demand controls pass.
+- The historical Phase16 supplied-source39 and ordered-host43 controls each
+  retained one wording difference for `@unsafe` followed by an import; Phase20
+  closes that gap as recorded above. Historical namespace eight,
+  term/cache 39 and whole-program host ten controls pass without exceptions.
+
+On the historical Phase17 API, the maintained 36 cases pass their selected contract
+with two inherited exact differences. All **41 paired backend rows** match the
+pin. The direct frontend-lookup probes pass **23 paired / 46 independent expected
+outcomes**, including lazy demand, exact access order and a 100,000-definition
+miss. Each probe preserves the entire production API prefix and adds one named
+internal wrapper with a distinct identity. The supplied-source 39 and host 43
+controls rerun on this API with the same known wording gap.
+
+Phase16's additional **20 literal JS/native executions**, **176 literal
+observations**, **29 instance controls**, **two specialization growth controls**,
+**61 canonical-key controls**, namespace 8, term/cache 39 and program-host 10 remain
+artifact-specific historical evidence. They were not all rerun for Phase17's
+single lookup-worker change. All 2,996 complete compiler result objects are
+unchanged, but that does not manufacture new execution evidence for these other
+selections. See the [Phase16 gate report](../implementation/phase16/checker-compact-final-gates.md).
+
+The Phase17 standalone 25-module loader rebuilds without checker or diagnostic
+tracing dependencies. All 16 unchanged derivation groups and five authentic
+version1–5 byte replays pass, as do all **42 installed/relocated CLI checks**.
+[Phase17 validation](../implementation/phase17/find-demand-gates.md) records the
+exact images, complete-vector comparison and gate boundaries.
+
+Fresh long strings and the original 53/60-request histories preserve all
+**226 paired complete results**, with original ordering and 4 MiB stack / 4 GiB
+heap limits. The Phase16 and Phase17 APIs run under the same byte-identical compatible
+host; original historical inputs and host differences remain explicit. The old 21-case prefix can
+overflow even Phase11, so the maintained selection keeps the string first.
+Finite histories do not establish general stack safety.
+
+New independent Phase17 research keeps additional failures visible. The
+[group-boundary trial](../implementation/phase17/group-boundary.md) retains
+128/196 exact observations, including eight existing semantic mismatches in
+four grouped-comma/zero-head-match witnesses. The
+[instance-order investigation](../implementation/phase17/instance-chronology.md)
+has 20/22 exact observations and 8 exact memo/name controls, with two distinct
+error-order gaps. The retained Phase19 checker matches all22 instance
+observations and memo8; Phase20 separately closes the eight zero-head observations.
+The original contextual parser prototype remains an isolated historical artifact;
+Phase22 integrates a separately validated contextual implementation and closes
+its measured frontend gaps. These selections overlap and must not be summed.
+
+Other limits include hub/package fetching, independent proof-kernel validation,
+backend/platform coverage and source Nat payloads restricted to U32 size (wider
+runtime values have a separate representation). Native Process requires a libc
+symbol unavailable on this host, also blocking upstream. GPU execution and
+interactive devices are unvalidated. These control sets overlap and must not be
+summed into a count of unique conformance programs. Earlier span/control counts
+refer to their historical compiler images, not automatically to this release.
+
+## Historical evidence
+
+The following sections describe their recorded old-pin artifacts.
+
+The supplied baseline compiler results are in [the compatibility matrix](docs/COMPATIBILITY-MATRIX.md).
+Phase 1 changes have separate artifact-specific evidence in the
+[implementation report](../implementation/phase1/report.md).
+Phase 2 adds [exact paired checks and retained replay](../docs/PHASE2_DEVELOPMENT.md),
+with revision-specific results in its [implementation report](../implementation/phase2/report.md).
+Phase 3 adds [persistent frontend workers](../docs/PHASE3_DEVELOPMENT.md),
+with artifact-specific validation and remaining gates in its
+[implementation report](../implementation/phase3/report.md).
+Phase 4 separates genuine checked B1, derived development images, native and
+self-emitted artifacts in its [report](../implementation/phase4/report.md).
+Phase 5 adds the [maintained checked workflow](../docs/PHASE5_DEVELOPMENT.md),
+with source-specific repairs, controlled timings and remaining failures in its
+[report](../implementation/phase5/report.md).
+Its [final-source checked self-reproduction](../implementation/phase5/final-selfhost.md)
+has actual equal stage2/stage3 bytes and matching current/frozen source modules;
+this is separate from the supplied distribution's historical proof below.
+Selected acceptance/phase checks, exact diagnostics, full-corpus coverage and
+self-emission are distinct verdicts; none substitutes for the others.
+The complete pinned corpus contains 1,378 fixtures across 24 namespaces; all 919
+positive fixtures parsed and passed checking in the recorded full run. Exact
+execution results, diagnostic differences, timeouts and hardware gates are
+reported separately, with artifact hashes.
+
+- [Component verification](dist/component-report.json) checks the assembled Bend source and compiler subsystems.
+- [Negative-test audit](docs/NEGATIVE-COMPATIBILITY.md) separates presentation differences, different rejection rules/phases, and unproven intended-rule coverage.
+- [Compiler ABI validation](docs/COMPILER-ABI.md) covers the lazy host adapter used by self-emitted compiler libraries. It is separate from the recorded full-corpus run, whose compiler, runtime and host hashes remain explicit.
+- [Typed fixed-point verification](dist/selfhost/seed-verification/report.json) records direct checked seed self-emission and byte comparison. [Earlier failed attempts](dist/selfhost/release/report.json) remain separate evidence.
+- [Conformance protocol](tools/conformance/README.md) explains reproducible runs and verdicts.
+- [Original prototype baseline](docs/PROTOTYPE-BASELINE.md) and [earlier subset survey](docs/PROTOTYPE-SURVEY.md) are historical evidence for the unchecked compiler.
+
+The typed compiler independently passed its complete checked self-rebuild on
+2026-09-21: seed and output bytes match exactly. The recorded comparison uses
+the same source and Base path layout; relocated checkouts need a local seed.
+Passing positive programs does not establish full diagnostic or proof-checker equivalence.
+
+
+## Phase24 execution inventory
+
+The active pin has999 positive main programs:999 eligible interpreter lanes,
+833 JavaScript lanes and812 native lanes (2,644 total). These are a coverage
+inventory, not2,644 newly passed observations. The bounded current-image pilot
+and its uncovered rows are recorded in the [Phase24 backend report](../implementation/phase24/backend-census.md).
+
+That pilot found two additional emission gaps despite exact frontend agreement:
+constructor/foreign-name collisions were incorrectly accepted, and native
+function-name normalization rejected distinct import names. Phase24 adds the
+shared emission check and injective function identifiers. The four fixtures with
+later-emission errors still retain their matching raw frontend oracle failures;
+the execution tests validate the actual refusal boundary separately.
+
+[Environment results](../implementation/phase24/backend-environment.md) acquire
+the two previously blocked TCP comparisons using unchanged upstream emissions
+under Bun1.2.22 and unchanged candidate emissions under Node24. This is a supported
+host comparison, not Node support for upstream's bun:ffi or general Bun support
+for our runtime. Matching Clang16 TSan runs eight saved emitted-program executions
+without sanitizer diagnostics, including a two-core shared atomic witness; these
+are finite controls on Phase23 emissions, not a universal race-safety guarantee.
+Independent kernel, GPU/device and complete execution-corpus coverage remain open.

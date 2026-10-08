@@ -1,0 +1,33 @@
+--- a/selfhost/tools/conformance/freeze-adapter.mjs
++++ b/selfhost/tools/conformance/freeze-adapter.mjs
+@@ -5,7 +5,7 @@
+ import path from 'node:path';
+ import crypto from 'node:crypto';
+ const project=path.resolve(import.meta.dirname,'../..');
+-const files=['tools/typed-driver.mjs','tools/compiler-abi.mjs','tools/node-resource-args.mjs','tools/native-build.mjs','tools/assemble.mjs','tools/conformance/adapters/typed.mjs'];
++const files=['tools/typed-driver.mjs','tools/base-cache-graph.mjs','tools/compiler-abi.mjs','tools/node-resource-args.mjs','tools/native-build.mjs','tools/assemble.mjs','tools/conformance/adapters/typed.mjs'];
+ const inputs=files.map(file=>({file,source:fs.readFileSync(path.join(project,file),'utf8')}));
+ const digest=crypto.createHash('sha256');
+ for(const input of inputs)digest.update(input.file+'\0'+input.source+'\0');
+--- a/selfhost/tools/conformance/adapters/upstream.mjs
++++ b/selfhost/tools/conformance/adapters/upstream.mjs
+@@ -18,7 +18,7 @@
+   const refs=(term,out)=>{if(term&&typeof term==='object'){if((term.$==='Ref'||term.$==='ADT')&&term.k!==undefined)out.add(term.k);for(const [key,value] of Object.entries(term))if(key!=='s')refs(value,out)}};
+   for(const queue=bad.size?own.slice():[];queue.length;){const key=queue.pop(),term=book.tlds[key];if(term&&!seen.has(key)){seen.add(key);const names=new Set();for(const constructor of term.$==='ADT'?term.c:[term])refs(B.term_lower(constructor.T),names);refs(term.$==='Def'?term.e:undefined,names);for(const target of names){(uses[target]??=[]).push(key);queue.push(target)}}}
+   for(const key of bad)uses[key]?.forEach(name=>bad.add(name));const list=own.filter(key=>bad.has(key));
+-  const text=list.length?`SOME PROOFS FAIL\nError: ${list.length} def${list.length===1?' relies':'s rely'} on unsafe or foreign code:\n`+list.map(key=>'- '+key+'\n').join(''):'ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n';
++  const text=list.length?`SOME PROOFS FAIL\nError: ${list.length} def${list.length===1?' relies':'s rely'} on unsafe or foreign code:\n`+list.map(key=>'- '+B.name_key(key)+'\n').join(''):'ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n';
+   return {text,proofTrust:list.length?'failed':'passed',unsafeDefinitions:list,kernelChecked:false};
+ }
+ const format=(B,error)=>error instanceof RangeError?'Error: the machine stack overflowed (a deep recursion, or a literal too large to expand)':error?.$==='Err'?B.err_show(error):String(error);
+--- a/selfhost/src/driver/report.bend
++++ b/selfhost/src/driver/report.bend
+@@ -79,7 +79,7 @@
+ def dr_lines(names):
+   match names:
+     case Nil{}: ""
+-    case Con{+name, +rest}: "- " ++ name ++ "\n" ++ dr_lines(rest)
++    case Con{+name, +rest}: "- " ++ name_key(name) ++ "\n" ++ dr_lines(rest)
+ 
+ @unsafe
+ def driver_bad_names(

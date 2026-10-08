@@ -1,0 +1,767 @@
+{
+  "cases": [
+    {
+      "id": "newdelta/parse/array_set_call_row.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/parse/array_set_call_row.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "Array.set statement/source-start distinction",
+      "fixture": {
+        "id": "parse/array_set_call_row.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/parse/array_set_call_row.bend",
+          "sha256": "5b4b9e4c754a5668efefedc04bb7433effc1af69503a1222cf09103720fa3843",
+          "bytes": 502
+        },
+        "hasOracle": true,
+        "expected": "([1, 1], [9, 1])",
+        "namespace": "parse",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "05e5372d2b6f96e7f5ee7109a5c83e92052dae490cdc93f1b7c8722a718f161d"
+      }
+    },
+    {
+      "id": "newdelta/parse/let_in_argument.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/parse/let_in_argument.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "let in an argument, moved from printer",
+      "fixture": {
+        "id": "parse/let_in_argument.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/parse/let_in_argument.bend",
+          "sha256": "7948b5f126773bc2c079ebc0c288f90b66f551fb216702edc7cac14a24eed6f9",
+          "bytes": 691
+        },
+        "hasOracle": true,
+        "expected": "n => Nat.add(n, 2n)",
+        "namespace": "parse",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "b3d35f111c3ac276d3460e346fb0905a4c9f4943d98607ad9b9af0ed9aa7dd7a"
+      }
+    },
+    {
+      "id": "newdelta/flatten/order_ban_004.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/order_ban_004.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "late/consumed scrutinee diagnostic",
+      "fixture": {
+        "id": "flatten/order_ban_004.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/order_ban_004.bend",
+          "sha256": "a17d98ab07b9df5a891ce1ad1f0b142c100fdc29126ebd017f2a6dc0644be29a",
+          "bytes": 828
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 't' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n14 |     case Some{v}:\n15>|       match t:\n   |             ^\n16 |         case TStr{}:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "98f6b1b0c8a31614b12ba345c8da89e8aaee08abf61b2f81913f1dfbb36aa9da"
+      }
+    },
+    {
+      "id": "newdelta/flatten/consumed_column_error_002.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/consumed_column_error_002.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "introduced constructor scrutinee diagnostic",
+      "fixture": {
+        "id": "flatten/consumed_column_error_002.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/consumed_column_error_002.bend",
+          "sha256": "9211b95b4010e19057dab71de6eb35f0a194ce333d1b5139411fe72b0a8001d2",
+          "bytes": 750
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'W' can't be matched here (match it in the same match as the pattern that introduced it)\nLocation:\n 9 |     case 0n, Con{h, W}:\n10>|       match W:\n   |       ^^^^^^^^\n11 |         case Nil{}:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "744a5915aebf24f14ee07b9be5c7ab4e6935136ef68085aeb4abab3b90ebe158"
+      }
+    },
+    {
+      "id": "newdelta/flatten/ctor_scrutinee_error.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/ctor_scrutinee_error.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "literal constructor scrutinee diagnostic",
+      "fixture": {
+        "id": "flatten/ctor_scrutinee_error.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/ctor_scrutinee_error.bend",
+          "sha256": "1111fb74ec3b50075c759bc873caccc11babd4e81f5d8af13671988aac0e3a6d",
+          "bytes": 487
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'Con{1, Nil{}}' can't be matched (this value is already a constructor: bind its fields directly)\nLocation:\n5 | def main() -> U32:\n6>|   match Con{1, Nil{}}:\n  |   ^^^^^^^^^^^^^^^^^^^^\n7 |     case Con{h, t}:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "e9a2aec208a36c4e0af265c8deb388ee3bab7b2ec01adc11085ffb43cf39e77e"
+      }
+    },
+    {
+      "id": "newdelta/import/base_family_file.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/import/base_family_file.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "imported Word versus Base.Word identity",
+      "fixture": {
+        "id": "import/base_family_file.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/import/base_family_file.bend",
+          "sha256": "4c710c22d8117277280c334fdc62f712dfd1a8800153dc14ec4ca01355ded58e",
+          "bytes": 314
+        },
+        "hasOracle": true,
+        "expected": "1n",
+        "namespace": "import",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "0c54057c2e1e483f6da8f7e4a2ef4f63c2baa8064a4fb9190d8ec768c0568052"
+      }
+    },
+    {
+      "id": "newdelta/check/kind_terms.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/kind_terms.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "kind-valued terms and dependent application",
+      "fixture": {
+        "id": "check/kind_terms.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/kind_terms.bend",
+          "sha256": "339070791efaefc1b4ab3606ba563c6c3ac01b7fa219d14f7f4d63b4a20cf84f",
+          "bytes": 2695
+        },
+        "hasOracle": true,
+        "expected": "26n",
+        "namespace": "check",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "2090fd96ac557e5306d7af1438e25bb2a38022c6b57dfe3b5a0bce040271e988"
+      }
+    },
+    {
+      "id": "newdelta/check/convoy_dependent.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/convoy_dependent.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "dependent convoy cases",
+      "fixture": {
+        "id": "check/convoy_dependent.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/convoy_dependent.bend",
+          "sha256": "a55f18eae54e685115ab16a9afc7ead7cab181b815f1f23700546d17ded37f73",
+          "bytes": 5178
+        },
+        "hasOracle": true,
+        "expected": "45n",
+        "namespace": "check",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "2354315e5062ca4ec90c06259d0d1d42099c66c73cff0d58a3c2b4b9165ff372"
+      }
+    },
+    {
+      "id": "newdelta/check/unsafe_kind.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/unsafe_kind.bend",
+      "lanes": [
+        "parse",
+        "check"
+      ],
+      "reason": "unsafe dependency trust is distinct from type acceptance",
+      "fixture": {
+        "id": "check/unsafe_kind.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/unsafe_kind.bend",
+          "sha256": "85d6e5b91efa157ac9797e4e97a289349096d0a7fe9cdf5b1a9fb618470896f5",
+          "bytes": 590
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError: 4 defs rely on unsafe or foreign code:\n- D\n- use\n- Zero\n- P\nexit 1",
+        "namespace": "check",
+        "main": false,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "0fdc96fed72d0d5caccb9e4d94ac6518b0cb756616e1a62d6d52e4103a7bc27b"
+      }
+    },
+    {
+      "id": "newdelta/check/meet_uses_in_arms.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/meet_uses_in_arms.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "affine meet across arms",
+      "fixture": {
+        "id": "check/meet_uses_in_arms.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/meet_uses_in_arms.bend",
+          "sha256": "3a3d5f68abf1e5f21503df0f7d587b66b5f4f77a3fcd97b1dbd05e0fbbb08b93",
+          "bytes": 429
+        },
+        "hasOracle": true,
+        "expected": "1n",
+        "namespace": "check",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "8a762426e6f99daa4e8243111c01964c0e4c08aecaad4dd8c0f3f37952b86ea6"
+      }
+    },
+    {
+      "id": "newdelta/proof/refined_proof_copy.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/proof/refined_proof_copy.bend",
+      "lanes": [
+        "parse",
+        "check"
+      ],
+      "reason": "ordinary checker proof terms, no Lean claim",
+      "fixture": {
+        "id": "proof/refined_proof_copy.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/proof/refined_proof_copy.bend",
+          "sha256": "04178bcd8e1129c44cf8f3f725c94f37edba625f2172f384d76eca14da33c4e8",
+          "bytes": 2368
+        },
+        "hasOracle": true,
+        "expected": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+        "namespace": "proof",
+        "main": false,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "0dc514739a2705cc1d6155d4cf12e600e911efdc7b0e969631b9603c09a8bdb9"
+      }
+    },
+    {
+      "id": "newdelta/reg/wnf_memo_bound_key.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/wnf_memo_bound_key.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "normalization memo binder key",
+      "fixture": {
+        "id": "reg/wnf_memo_bound_key.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/wnf_memo_bound_key.bend",
+          "sha256": "7c128313c47d6c6fbf45beb7c6cecae5cf348b67ea7f59c0bc10cb95bdf23e37",
+          "bytes": 1197
+        },
+        "hasOracle": true,
+        "expected": "100\n100000\n100\n7",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "12fed3686b7b48263a9bb017e7266f1a3540da7cb3214a40d0fb5744260ef6c0"
+      }
+    },
+    {
+      "id": "newdelta/reg/rwt_type_share.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/rwt_type_share.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "rewrite and shared type representation",
+      "fixture": {
+        "id": "reg/rwt_type_share.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/rwt_type_share.bend",
+          "sha256": "6447013694726b3330f73f0b5df13c84e82b9a4b9cced80fc63b2232d3a772a8",
+          "bytes": 2573
+        },
+        "hasOracle": true,
+        "expected": "(18, 14, 18, 18, 218, 6)",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "2809be060cfa071c76f107954f2633a948e918764aa37b568953a3f1be2cb13b"
+      }
+    },
+    {
+      "id": "newdelta/reg/u32_literal_word_field.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/u32_literal_word_field.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "literal versus boxed Word field",
+      "fixture": {
+        "id": "reg/u32_literal_word_field.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/u32_literal_word_field.bend",
+          "sha256": "ddaca72c4c890142ea5596a678dd958e866cb94a8a5976883abdefc7e702036e",
+          "bytes": 1940
+        },
+        "hasOracle": true,
+        "expected": "5\n6\n7\n8\n10",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "e4dc17068010dd2eb69e5991071891520d794c5a273cb11bdf8f28d904e040e8"
+      }
+    },
+    {
+      "id": "newdelta/compile/array_equality.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/array_equality.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "proof-valued array equality",
+      "fixture": {
+        "id": "compile/array_equality.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/array_equality.bend",
+          "sha256": "552b9da8a5b5196e790b9be849f3d0a0cde68f5da77cbf1082397ca07965b073",
+          "bytes": 1067
+        },
+        "hasOracle": true,
+        "expected": "204",
+        "namespace": "compile",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "cb64d1fed99c38edbe1019df7c9b469aedc981f5d3cf2a14c3fd705306c9482d"
+      }
+    },
+    {
+      "id": "newdelta/compile/vector_boxed_default.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/vector_boxed_default.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "generic boxed vector layout",
+      "fixture": {
+        "id": "compile/vector_boxed_default.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/vector_boxed_default.bend",
+          "sha256": "a1706b5a95d751d9dfdc192f8d22468fc3300d86b96aa141e99f1d056dd7d442",
+          "bytes": 456
+        },
+        "hasOracle": true,
+        "expected": "42",
+        "namespace": "compile",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": true,
+        "runtimeClass": "pure",
+        "bodySha256": "9fd12699a0f3d109e897c36a1f18aa272ed7360560c3ab179eb88381519df494"
+      }
+    },
+    {
+      "id": "newdelta/run/list_rebox_generic_sum.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/list_rebox_generic_sum.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "generic ADT/list reboxing",
+      "fixture": {
+        "id": "run/list_rebox_generic_sum.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/list_rebox_generic_sum.bend",
+          "sha256": "978e18c2f3a9fc709f7a3339e9f515e5386b681730cc6b4c95b57fea8ea653c3",
+          "bytes": 982
+        },
+        "hasOracle": true,
+        "expected": "1",
+        "namespace": "run",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "b4a76096a506fdf6206d123682a1668a8d871142fd90292fdd640f3cc5f4f1cf"
+      }
+    },
+    {
+      "id": "newdelta/run/f32_read_whitespace.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/f32_read_whitespace.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "changed Base float parsing",
+      "fixture": {
+        "id": "run/f32_read_whitespace.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/f32_read_whitespace.bend",
+          "sha256": "b434e0652e2c59ec4decd88f33af2aa0bff9a9da247b7c92a24e7ea77f557c1d",
+          "bytes": 1812
+        },
+        "hasOracle": true,
+        "expected": "1 1 1 1 1 1 1\nnone none none none none none none none none none none none none\nnone none none none none none\n-125 0.5 inf nan\nnone none none none\nnone none none none none",
+        "namespace": "run",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "ac2bf9558f68611f161c31789d12d0c4e97232ebe976527a52adcb610bfe9377"
+      }
+    },
+    {
+      "id": "newdelta/io/marshal_array_depth.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/marshal_array_depth.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "deep arrays and recursive host conversion",
+      "fixture": {
+        "id": "io/marshal_array_depth.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/marshal_array_depth.bend",
+          "sha256": "e5ab61ed11d1c6f462ccd5945bf763ff2272c0ea4f79021461f5b1abd3419e13",
+          "bytes": 1117
+        },
+        "hasOracle": true,
+        "expected": "ok",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./marshal_array_depth.js",
+          "./marshal_array_depth.c"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "3dc2fb1d8f66db32adb59004f471c3eb9c8bf1403417c688b841aae20f50a8b2"
+      }
+    },
+    {
+      "id": "newdelta/io/foreign_runtime_apply.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/foreign_runtime_apply.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "foreign runtime callback application",
+      "fixture": {
+        "id": "io/foreign_runtime_apply.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/foreign_runtime_apply.bend",
+          "sha256": "282719d8ea2e0343af518f138374c01ec24d0e67fcc59826972ca0cfb4ab7ace",
+          "bytes": 401
+        },
+        "hasOracle": true,
+        "expected": "42",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./foreign_runtime_apply.c",
+          "./foreign_runtime_apply.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "8577aade80b916fee2444fe4bd8d604b56e3bae6c037018fe421ae6150bd2ebc"
+      }
+    },
+    {
+      "id": "newdelta/io/foreign_runtime_apply_tail.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/foreign_runtime_apply_tail.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "foreign runtime tail application",
+      "fixture": {
+        "id": "io/foreign_runtime_apply_tail.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/foreign_runtime_apply_tail.bend",
+          "sha256": "92eb4f6cf22ffc8e72036ecad0ff991dc754586e784d50528d013b3e2b2ffd8f",
+          "bytes": 343
+        },
+        "hasOracle": true,
+        "expected": "",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./foreign_runtime_apply.c",
+          "./foreign_runtime_apply.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "96b4916abfb6bdf35601ff67f52a73e42d033e03256f15fd5368681baa440bb8"
+      }
+    },
+    {
+      "id": "newdelta/io/effect_helper_collision.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/effect_helper_collision.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "foreign helper scope collision",
+      "fixture": {
+        "id": "io/effect_helper_collision.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/effect_helper_collision.bend",
+          "sha256": "e748653c69dfc59c9de90e2f4c77818b7a8462c0e0f52ecac008c60be9fea3ca",
+          "bytes": 377
+        },
+        "hasOracle": true,
+        "expected": "11 22",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./effect_helper_worker.js",
+          "./effect_helper_name.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "d1fccb33d7342937107a42e440be71fdc88369a383bae3cb5758b883d807b18e"
+      }
+    },
+    {
+      "id": "newdelta/io/effect_unregistered.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/effect_unregistered.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "unregistered effect failure",
+      "fixture": {
+        "id": "io/effect_unregistered.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/effect_unregistered.bend",
+          "sha256": "e4357a3e01376bc11e7cf70ad4c90fbe5769cbaddc90d85c1e0c384b1efeef5c",
+          "bytes": 352
+        },
+        "hasOracle": true,
+        "expected": "before\nbend: no effect registers unregistered\nexit 1",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./effect_unregistered.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "5d693df400757e80b567acc78feb79d6527ebfbfb610452c5b3af80fc4fba43f"
+      }
+    },
+    {
+      "id": "newdelta/io/cid_capture.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/cid_capture.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "constructor IDs across modules",
+      "fixture": {
+        "id": "io/cid_capture.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/cid_capture.bend",
+          "sha256": "85b8a60111643dcbcab4bab817a3699ac20f387c713c9e55b33bc57e3109bb62",
+          "bytes": 765
+        },
+        "hasOracle": true,
+        "expected": "None\n6",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "9ac9d913503a0aa39b69d31d2ac502364b1564631e52e4f8b64164bcae9f216c"
+      }
+    },
+    {
+      "id": "newdelta/io/request_wildcard.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/request_wildcard.bend",
+      "lanes": [
+        "parse",
+        "check",
+        "js"
+      ],
+      "reason": "IO request wildcard fail-stop",
+      "fixture": {
+        "id": "io/request_wildcard.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/request_wildcard.bend",
+          "sha256": "734d78bf220080bf677f7cc624e5b5c34c15d3e286b5e8991262fff06ffe0371",
+          "bytes": 1157
+        },
+        "hasOracle": true,
+        "expected": "other\nbend: runtime fail-stop\nexit 1",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "107b17740be4a3b68786379c6823aeb8b8195c844b78c98274296743914f9a9d"
+      }
+    }
+  ],
+  "scope": "These are named first discriminators, not total conformance. Old TS may reject new fixtures; all outcomes remain observations."
+}

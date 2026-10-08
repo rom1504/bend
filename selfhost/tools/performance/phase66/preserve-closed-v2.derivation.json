@@ -1,0 +1,25 @@
+{
+  "kind": "phase66-preservation-v2-exact-source-derivation",
+  "parent": {
+    "file": "selfhost/tools/performance/phase66/preserve-closed.py",
+    "bytes": 4381,
+    "sha256": "515d96d5d2d60ebd77e15423550c8e5cfdfab68c1011594d51963de2c4f535b7"
+  },
+  "child": {
+    "file": "selfhost/tools/performance/phase66/preserve-closed-v2.py",
+    "bytes": 4387,
+    "sha256": "2e65817db934bcf15bff019a9bbb2479637c007f1f515bb712f6e289f8e19ed9"
+  },
+  "archiveVerifier": {
+    "file": "selfhost/tools/performance/phase66/archive.py",
+    "bytes": 15852,
+    "sha256": "10d1517065d22c481b00e9c38d7e027e1ed51a4004c156bc6a140a353f021d38"
+  },
+  "failedAttempt": {
+    "file": "selfhost/build/phase66/preservation-failed01/failure.json",
+    "bytes": 1559,
+    "sha256": "57dd2c1f256b2a3b37448b4b751977cba32d1540638c336d840a814390f594dc"
+  },
+  "unifiedDiff": "--- selfhost/tools/performance/phase66/preserve-closed.py\n+++ selfhost/tools/performance/phase66/preserve-closed-v2.py\n@@ -48,7 +48,7 @@\n     assert manifest['reopenedAllMembers'] is True\n     assert len(manifest['files']) == manifest['fileCount'] == 17894\n     closed = ROOT / 'selfhost/build/phase65'\n-    expected = sorted(manifest['files'], key=lambda row: row['file'])\n+    expected = sorted(manifest['files'], key=lambda row: Path(row['file']))\n     assert all(path(row['file']).is_relative_to(closed) for row in expected)\n     before = closed_inventory(closed)\n     assert before == expected, 'Closed Phase65 inventory or bytes differ'\n",
+  "scope": "Only expected ordering changes to the same Path-component order used by observed inventory. All counts, byte hashes, streamed archive/member checks and unchanged-input checks remain. Failed predecessor and trace are preserved."
+}

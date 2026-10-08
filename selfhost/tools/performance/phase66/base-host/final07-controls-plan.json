@@ -1,0 +1,141 @@
+{
+  "kind": "phase66-final07-annotation-controls-recipes",
+  "version": 1,
+  "status": "prepared-unexecuted",
+  "scope": "Same reviewed methods, actual final07 checked/profile7 and genuine B2 images; fresh isolated projects only",
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "jobs": [
+    {
+      "name": "owned-checked07",
+      "method": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-v4.mjs",
+        "sha256": "8381a45c79e3745e78a19c33dec1795cac97ff532d77204b4e575fad80651b1e"
+      },
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-checked07-input-v4.json",
+        "sha256": "a80f0233c83d0f14d08cd96b9f9be6f01d242d661fc0112c7c0520edaf31fc6e"
+      },
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-checked07-01/report.json",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "90",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-checked07-01-exec",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-v4.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-checked07-input-v4.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-checked07-01"
+      ]
+    },
+    {
+      "name": "custom-checked07",
+      "method": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/custom-base-controls-v3.mjs",
+        "sha256": "07070f0990c28149b60434781b6da859608b2b509dd287331c3a3f64a9a6f8b5"
+      },
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-checked07-input-v4.json",
+        "sha256": "a80f0233c83d0f14d08cd96b9f9be6f01d242d661fc0112c7c0520edaf31fc6e"
+      },
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-checked07-01/report.json",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "90",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-checked07-01-exec",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/custom-base-controls-v3.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-checked07-input-v4.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-checked07-01"
+      ]
+    },
+    {
+      "name": "owned-b2-07",
+      "method": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-b2-v1.mjs",
+        "sha256": "63878a29905128cbcafeea0477bb30078a3081dafc9b1f5b1ae78821ca88f36f"
+      },
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-b2-07-input-v1.json",
+        "sha256": "dbcac2a192ab0ef1045c6455bd65b49b271a412e6588ac7bdf517d83d1caa80a"
+      },
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-b2-07-01/report.json",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "90",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-b2-07-01-exec",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-b2-v1.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-b2-07-input-v1.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-owned-b2-07-01"
+      ]
+    },
+    {
+      "name": "custom-b2-07",
+      "method": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/custom-base-controls-b2-v1.mjs",
+        "sha256": "656e4d90de1ab4779d30c50331ce4a70cec26abcd3b4d66b72d5c70dacf039cd"
+      },
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-b2-07-input-v1.json",
+        "sha256": "dbcac2a192ab0ef1045c6455bd65b49b271a412e6588ac7bdf517d83d1caa80a"
+      },
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-b2-07-01/report.json",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "90",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-b2-07-01-exec",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/custom-base-controls-b2-v1.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/base-host/annotation-controls-b2-07-input-v1.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/base-annotations-custom-b2-07-01"
+      ]
+    }
+  ]
+}

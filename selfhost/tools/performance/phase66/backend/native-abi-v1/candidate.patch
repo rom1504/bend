@@ -1,0 +1,28 @@
+--- selfhost/src/runtime/native/runtime.c
++++ selfhost/src/runtime/native/runtime.c
+@@ -2952,6 +2952,25 @@
+   }
+ }
+ 
++// Foreign C ABI: current helpers coexist with the retained runtime's API.
++// This section is host-only; device code and prior runtime calls keep their
++// original Env-based helper. Only mem is read by term_peek/rfc_view.
++INLINE Loc term_peek_corpus(Corpus H, Term t) {
++  Env e = { H, NULL };
++  return term_peek(e, t);
++}
++#define term_peek(H, t) _Generic((H), Env: term_peek, default: term_peek_corpus)((H), (t))
++// This runtime permits shared blocks, so always follow its redirect cell.
++#define blk_loc(H, t) term_peek((H), (t))
++
++// New foreign sources register immediate effects with two arguments; the
++// third argument is retained for existing vendored readiness/timer effects.
++static void io_eff_default(u32 cid, Effect run) {
++  io_eff(cid, run, 0);
++}
++#define BEND_IO_EFF_PICK(_1, _2, _3, F, ...) F
++#define io_eff(...) BEND_IO_EFF_PICK(__VA_ARGS__, io_eff, io_eff_default, 0)(__VA_ARGS__)
++
+ // Requests
+ // ========
+ 

@@ -1,0 +1,175 @@
+{
+  "kind": "phase66-native-blocking-effects-candidate",
+  "version": 1,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/prepare-native-effects-v1.py",
+    "sha256": "54c2214e1f1752353d4a09863f0bc415827415f09b6098e61ddb2256cb2f196b",
+    "bytes": 8043
+  },
+  "prerequisite": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-abi-v1/candidate.json",
+    "sha256": "52f3cf9227d2eec171da1c4230384405cfaf83da9f62d0a14f4d49330e19e903",
+    "bytes": 4479
+  },
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/candidate.patch",
+    "sha256": "a8bfa4e6edd330b8bf0e78ca97b6e7ed9f3228d2c48740458ced48d61dd21db4",
+    "bytes": 12684
+  },
+  "files": [
+    {
+      "relative": "selfhost/src/runtime/native/runtime.c",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/before/runtime.c",
+        "sha256": "6691943ab6fe36b221b8bfba4931e4033816da8237ff8ff9f8516909abd8ed22",
+        "bytes": 79787
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/after/runtime.c",
+        "sha256": "8729e2aada3f64f6450502519c3ffd5e10a67827a79c7cb2c1dddfe6719b94ac",
+        "bytes": 82017
+      },
+      "liveSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c",
+        "sha256": "cbfb8933d007c10a0173f280888d6c94d5d77543548b25808596cd2d21f764f0",
+        "bytes": 78893
+      },
+      "physicalLineDelta": 51
+    },
+    {
+      "relative": "selfhost/src/runtime/native/effs/chan.c",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/before/effs/chan.c",
+        "sha256": "0c29532170ec3e400c9419b1e94474b769f7b8df262a7010b3b0f64f592683ac",
+        "bytes": 2051
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/after/effs/chan.c",
+        "sha256": "31257d7f71c560863d66b96ee9296cea07dd997f147a1ccd1433cc0130993696",
+        "bytes": 2108
+      },
+      "liveSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan.c",
+        "sha256": "0c29532170ec3e400c9419b1e94474b769f7b8df262a7010b3b0f64f592683ac",
+        "bytes": 2051
+      },
+      "physicalLineDelta": 0
+    },
+    {
+      "relative": "selfhost/src/runtime/native/effs/chan_send.c",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/before/effs/chan_send.c",
+        "sha256": "f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4",
+        "bytes": 616
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/after/effs/chan_send.c",
+        "sha256": "1fc9e4857c440771e66ff83b61e6012727af51e62416ad818f5122e237784afc",
+        "bytes": 673
+      },
+      "liveSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_send.c",
+        "sha256": "f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4",
+        "bytes": 616
+      },
+      "physicalLineDelta": 0
+    },
+    {
+      "relative": "selfhost/src/runtime/native/effs/chan_recv.c",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/before/effs/chan_recv.c",
+        "sha256": "7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1",
+        "bytes": 665
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/after/effs/chan_recv.c",
+        "sha256": "d0de18c78d78d5a3f4890cd2423a332d3d03a7b2f85e82202561fa67b4d57b3c",
+        "bytes": 743
+      },
+      "liveSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_recv.c",
+        "sha256": "7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1",
+        "bytes": 665
+      },
+      "physicalLineDelta": 1
+    },
+    {
+      "relative": "selfhost/src/runtime/native/effs/tcp_recv.c",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/before/effs/tcp_recv.c",
+        "sha256": "de6cfd9490f867c26056d1897e8d37ff657189788943f36151749101c7c9f0f6",
+        "bytes": 1835
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/after/effs/tcp_recv.c",
+        "sha256": "8378e28f0723dbeb2635b9909b01f8dc63dcac30161f79b8b743bd8037e45b40",
+        "bytes": 1979
+      },
+      "liveSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_recv.c",
+        "sha256": "de6cfd9490f867c26056d1897e8d37ff657189788943f36151749101c7c9f0f6",
+        "bytes": 1835
+      },
+      "physicalLineDelta": 2
+    },
+    {
+      "relative": "selfhost/src/runtime/native/effs/tcp_send.c",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/before/effs/tcp_send.c",
+        "sha256": "503c8cdc1f885420057c46e6d9ed4ede6953805a13f8894e069f1b944f630c81",
+        "bytes": 1558
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/after/effs/tcp_send.c",
+        "sha256": "85c1c9ff20d28c33968299c738b19ff752c768c72a53e071533a6960c0329a5a",
+        "bytes": 2216
+      },
+      "liveSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_send.c",
+        "sha256": "503c8cdc1f885420057c46e6d9ed4ede6953805a13f8894e069f1b944f630c81",
+        "bytes": 1558
+      },
+      "physicalLineDelta": 19
+    },
+    {
+      "relative": "selfhost/src/runtime/native/effs/udp_send_to.c",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/before/effs/udp_send_to.c",
+        "sha256": "8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f",
+        "bytes": 1214
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/after/effs/udp_send_to.c",
+        "sha256": "71f92e41fb4cadee6714a0e066c22225d015f9e708cb58393b539cc6ee011721",
+        "bytes": 1440
+      },
+      "liveSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_send_to.c",
+        "sha256": "8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f",
+        "bytes": 1214
+      },
+      "physicalLineDelta": 4
+    },
+    {
+      "relative": "selfhost/src/runtime/native/effs/udp_recv_from.c",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/before/effs/udp_recv_from.c",
+        "sha256": "140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65",
+        "bytes": 1165
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/backend/native-effects-v1/after/effs/udp_recv_from.c",
+        "sha256": "4fc0f4e4ddeaef51bc4434b64e9cfcf3888b1470e534fe6ba27f80e48d2b8aef",
+        "bytes": 1324
+      },
+      "liveSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_recv_from.c",
+        "sha256": "140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65",
+        "bytes": 1165
+      },
+      "physicalLineDelta": 4
+    }
+  ],
+  "scope": "Current Base ordinary blocking API ABI. No scheduler rewrite, Bend code, B1 image, or direct/legacy JS changes. New11 try_ and2 UDP byte methods get explicit refusal only when actually dispatched; no support claim."
+}

@@ -1,0 +1,183 @@
+{
+  "kind": "phase66-bootstrap-method-derivation",
+  "version": 1,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "factoryInvoked": false,
+  "baselineAttempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase65/checked-state10/attempt.json",
+    "sha256": "34490671b8b88cc87617a9943f9892c1b209b77ca61ee0b6b2e0a13ad62852bf"
+  },
+  "baselineRoots": 99,
+  "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "rows": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/build/make-build.py",
+        "sha256": "cd3c43dbc0c656d739e0cc1d4e2b2d9838d78389ef9c7ea8bab1ea7ef8e4e927"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/build/make-build.py",
+        "sha256": "e06c202e438d7b7d321d1daf4964dfbffb6008bed98aafdd4b12b489c028b872"
+      },
+      "edits": [
+        {
+          "old": "build/phase65",
+          "new": "build/phase66",
+          "count": 1
+        },
+        {
+          "old": "phase65-checked-build-recipe",
+          "new": "phase66-checked-build-recipe",
+          "count": 1
+        },
+        {
+          "old": "upstream-phase23",
+          "new": "upstream-phase66",
+          "count": 2
+        },
+        {
+          "old": "profile='equality'",
+          "new": "profile='checked'",
+          "count": 1
+        },
+        {
+          "old": "files += [Path(__file__),",
+          "new": "manifest = json.loads((PROJECT/'src/compiler.json').read_text())\nassert manifest['upstream'] == '059266225b77c8ca256ac6b25ee5c21449bab151'\nfiles += [PROJECT/'.bootstrap/upstream-phase66/bend2/bend.ts', PROJECT/'.bootstrap/upstream-phase66/bend2/comp.ts']\nfiles += [Path(__file__),",
+          "count": 1
+        }
+      ],
+      "unifiedDiff": "--- selfhost/tools/performance/phase65/latency/build/make-build.py\n+++ selfhost/tools/performance/phase66/bootstrap/build/make-build.py\n@@ -8,7 +8,7 @@\n \n ROOT = Path(__file__).resolve().parents[6]\n PROJECT = ROOT/'selfhost'\n-RAW = PROJECT/'build/phase65'\n+RAW = PROJECT/'build/phase66'\n NODE = Path('/home/ai/.nvm/versions/node/v24.18.0/bin/node')\n \n \n@@ -45,13 +45,16 @@\n         'compiler-abi','native-build','node-resource-args']] +\n     [p for p in walk(PROJECT/'tools/development') if p.suffix == '.mjs'] +\n     walk(PROJECT/'tests/frontend/phase2-rules'))\n-config = dict(project=str(PROJECT), upstream=str(PROJECT/'.bootstrap/upstream-phase23'),\n-    profile='equality', jobs=1, cpu='3', heapMb=1024, strictExact=True)\n+config = dict(project=str(PROJECT), upstream=str(PROJECT/'.bootstrap/upstream-phase66'),\n+    profile='checked', jobs=1, cpu='3', heapMb=1024, strictExact=True)\n if a.selection:\n     config['selection'] = str(a.selection.resolve(strict=True))\n     files += [a.selection]\n guard = PROJECT/'tools/performance/phase32/bounded-run.py'\n-files += [Path(__file__), Path(__file__).with_name('derivation.json'), NODE, guard, PROJECT/'.bootstrap/upstream-phase23/bend2/base.bend']\n+manifest = json.loads((PROJECT/'src/compiler.json').read_text())\n+assert manifest['upstream'] == '059266225b77c8ca256ac6b25ee5c21449bab151'\n+files += [PROJECT/'.bootstrap/upstream-phase66/bend2/bend.ts', PROJECT/'.bootstrap/upstream-phase66/bend2/comp.ts']\n+files += [Path(__file__), Path(__file__).with_name('derivation.json'), NODE, guard, PROJECT/'.bootstrap/upstream-phase66/bend2/base.bend']\n inputs = [identity(file) for file in sorted(set(files))]\n for item in inputs:\n     assert identity(item['file']) == item\n@@ -61,7 +64,7 @@\n     str(out/'execution'), '--', 'taskset', '-c', '3', str(NODE), '--stack-size=4096',\n     '--max-old-space-size=1024', str(PROJECT/'tools/development/workflow.mjs'), 'run',\n     str(out/'development.json'), str(attempt)]\n-report = dict(kind='phase65-checked-build-recipe', complete=True, **{'pass':True}, dataOnly=True,\n+report = dict(kind='phase66-checked-build-recipe', complete=True, **{'pass':True}, dataOnly=True,\n     targetExecuted=False, producer=identity(__file__), inputs=inputs,\n     config=identity(out/'development.json'), attempt=str(attempt), command=command,\n     scope='Root-requested source freeze, prior to workflow snapshot. Root runs only with editors paused. '\n"
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/build/export-admission.py",
+        "sha256": "f0386c90c12ab64c405f01d458606da341367b79fb819872137daa4d3d0c70f8"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/build/export-admission.py",
+        "sha256": "a0d3d17637e64944cb53bd5f41b003a0f1461ed06cea38bbd7cb49d80a3676fe"
+      },
+      "edits": [
+        {
+          "old": "build/phase65",
+          "new": "build/phase66",
+          "count": 1
+        },
+        {
+          "old": "build/phase64/checked-state09/attempt.json",
+          "new": "build/phase65/checked-state10/attempt.json",
+          "count": 1
+        },
+        {
+          "old": "'jd_plan_selected','jd_plan_defs','jd_plan_error','jd_plan_library','book_context_world']",
+          "new": "'jd_plan_selected','jd_plan_defs','jd_plan_error','jd_plan_library','book_context_world',\n    'base_annotation_prepare','base_annotation_wanted','base_annotation_allowed','annotate_selected_base']",
+          "count": 1
+        },
+        {
+          "old": "phase65Added",
+          "new": "phase66Added",
+          "count": 5
+        },
+        {
+          "old": "==95",
+          "new": "==99",
+          "count": 3
+        },
+        {
+          "old": "expectedRoots=95+",
+          "new": "expectedRoots=99+",
+          "count": 1
+        },
+        {
+          "old": "baseline95",
+          "new": "baseline99",
+          "count": 1
+        },
+        {
+          "old": "tofile='Phase65 exports'",
+          "new": "tofile='Phase66 exports'",
+          "count": 1
+        },
+        {
+          "old": "fromfile='State09 exports'",
+          "new": "fromfile='State10 exports'",
+          "count": 1
+        },
+        {
+          "old": "    assert boot['stage']=='upstream-bootstrap'",
+          "new": "    assert boot['revision']=='059266225b77c8ca256ac6b25ee5c21449bab151'\n    assert boot['baseSha256']=='99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf'\n    assert boot['stage']=='upstream-bootstrap'",
+          "count": 1
+        }
+      ],
+      "unifiedDiff": "--- selfhost/tools/performance/phase65/latency/build/export-admission.py\n+++ selfhost/tools/performance/phase66/bootstrap/build/export-admission.py\n@@ -9,14 +9,15 @@\n from pathlib import Path\n \n ROOT = Path(__file__).resolve().parents[6]\n-RAW = ROOT/'selfhost/build/phase65'\n+RAW = ROOT/'selfhost/build/phase66'\n PROJECT = ROOT/'selfhost'\n-OLD_ATTEMPT = PROJECT/'build/phase64/checked-state09/attempt.json'\n+OLD_ATTEMPT = PROJECT/'build/phase65/checked-state10/attempt.json'\n HISTORY = PROJECT/'build/phase55/bootstrap-own-host02-plan01/full77.json'\n BASE_ADDED = ['base_prefix_prepare','check_program_diagnostic_seed','f_fresh_prefix_prepare','f_graph_trace_from_prefix']\n OLD_ADDED = ['f_prefix_graph_empty','f_prefix_complete_seed','f_prefix_complete_source','f_prefix_graph_trace','check_program_diagnostic_prefix',\n     'base_prefix_world_prepare','check_program_diagnostic_world','f_ready_prefix_prepare','f_prefix_complete_ready_seed',\n-    'jd_plan_selected','jd_plan_defs','jd_plan_error','jd_plan_library','book_context_world']\n+    'jd_plan_selected','jd_plan_defs','jd_plan_error','jd_plan_library','book_context_world',\n+    'base_annotation_prepare','base_annotation_wanted','base_annotation_allowed','annotate_selected_base']\n # Supplementary exports require an explicit root-selected additions file.\n \n \n@@ -46,14 +47,14 @@\n ad=s.add_parser('admit');ad.add_argument('out',type=Path);ad.add_argument('--additions',type=Path)\n rf=s.add_parser('reference');rf.add_argument('admission',type=Path);rf.add_argument('attempt',type=Path);rf.add_argument('out',type=Path)\n a=p.parse_args();out=a.out.resolve()\n-GROUPS=(read(a.additions) if a.additions else {}) if a.mode=='admit' else read(a.admission)['phase65AddedGroups']\n+GROUPS=(read(a.additions) if a.additions else {}) if a.mode=='admit' else read(a.admission)['phase66AddedGroups']\n assert isinstance(GROUPS,dict)\n assert all(isinstance(module,str) and isinstance(names,list) and names and all(isinstance(name,str) and name for name in names) for module,names in GROUPS.items())\n NEW=[name for names in GROUPS.values() for name in names]\n assert len(NEW)==len(set(NEW))\n assert out.is_relative_to(RAW.resolve()) and not out.exists()\n old=read(OLD_ATTEMPT);old_boot=read(old['bootstrapReport']);old_roots=old_boot['exports']\n-assert len(old_roots)==95 and len(set(old_roots))==95\n+assert len(old_roots)==99 and len(set(old_roots))==99\n assert not(set(NEW)&set(old_roots))\n historical=read(HISTORY)['roots']\n assert [name for name in old_roots if name not in BASE_ADDED+OLD_ADDED]==historical\n@@ -86,22 +87,22 @@\n         source_rows.append(dict(original=before,frozen=after,exports=names))\n     selected_driver=out/'typed-driver.mjs';selected_driver.write_bytes(driver.read_bytes())\n     assert identity(selected_driver)['sha256']==driver_id['sha256'] and identity(driver)==driver_id\n-    (out/'driver-export.diff').write_text(''.join(difflib.unified_diff(old_block.splitlines(True),new_block.splitlines(True),fromfile='State09 exports',tofile='Phase65 exports')))\n+    (out/'driver-export.diff').write_text(''.join(difflib.unified_diff(old_block.splitlines(True),new_block.splitlines(True),fromfile='State10 exports',tofile='Phase66 exports')))\n     (out/'driver-full.diff').write_text(''.join(difflib.unified_diff(old_text.splitlines(True),new_text.splitlines(True),fromfile=str(old_driver),tofile=str(driver))))\n     admission=dict(kind='phase61-bootstrap-export-admission',version=1,driver=identity(selected_driver),\n-        addedRoots=OLD_ADDED+NEW,phase65AddedRoots=NEW,phase65AddedGroups=GROUPS,previousAttempt=identity(OLD_ATTEMPT),\n+        addedRoots=OLD_ADDED+NEW,phase66AddedRoots=NEW,phase66AddedGroups=GROUPS,previousAttempt=identity(OLD_ATTEMPT),\n         previousBootstrap=identity(old['bootstrapReport']),historical=identity(HISTORY),sourceDefinitions=source_rows,\n         driverOriginal=driver_id,driverPrevious=identity(old_driver),manifest=identity(PROJECT/'src/compiler.json'),\n         exportDiff=identity(out/'driver-export.diff'),fullDriverDiff=identity(out/'driver-full.diff'),\n         producer=identity(__file__),derivation=identity(Path(__file__).with_name('derivation.json')),\n-        additions=identity(a.additions) if a.additions else None,scope='Explicit source-backed additions only; baseline95 membership and order preserved. '\n+        additions=identity(a.additions) if a.additions else None,scope='Explicit source-backed additions only; baseline99 membership and order preserved. '\n         'No checked API or semantic permission is established until actual checked attempt and API validation join.')\n     save(out/'admission.json',admission)\n-    print(json.dumps(dict(admission=identity(out/'admission.json'),newRoots=NEW,expectedRoots=95+len(NEW))))\n+    print(json.dumps(dict(admission=identity(out/'admission.json'),newRoots=NEW,expectedRoots=99+len(NEW))))\n else:\n     admission_id=identity(a.admission);admission=read(admission_id)\n     assert admission['kind']=='phase61-bootstrap-export-admission' and admission['version']==1\n-    assert admission['phase65AddedRoots']==NEW and admission['addedRoots']==OLD_ADDED+NEW\n+    assert admission['phase66AddedRoots']==NEW and admission['addedRoots']==OLD_ADDED+NEW\n     assert identity(admission['previousAttempt'])['sha256']==identity(OLD_ATTEMPT)['sha256']\n     assert identity(admission['previousBootstrap'])['sha256']==identity(old['bootstrapReport'])['sha256']\n     if admission['additions'] is not None: assert read(admission['additions'])==GROUPS\n@@ -111,10 +112,12 @@\n     assert attempt['config']['strictExact'] is True\n     for key in ['api','checkedApi','runtime','base','bootstrapReport']: identity(attempt[key])\n     boot_id=identity(attempt['bootstrapReport']);boot=read(boot_id)\n+    assert boot['revision']=='059266225b77c8ca256ac6b25ee5c21449bab151'\n+    assert boot['baseSha256']=='99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf'\n     assert boot['stage']=='upstream-bootstrap' and boot['provenance']['verifiedAfterBuild'] is True\n     assert identity(boot['source'])['sha256']==boot['sourceSha256']\n     assert boot['apiSha256']==identity(attempt['checkedApi'])['sha256']\n-    roots=boot['exports'];assert len(roots)==len(set(roots))==95+len(NEW)\n+    roots=boot['exports'];assert len(roots)==len(set(roots))==99+len(NEW)\n     assert [name for name in roots if name not in NEW]==old_roots\n     assert set(roots)==set(old_roots+NEW)\n     snapshot=Path(attempt['snapshot']['root'])\n@@ -126,7 +129,7 @@\n     out.mkdir(parents=True)\n     reference=dict(kind='phase61-checked-bootstrap-export-reference',roots=roots,bootstrap=boot_id,\n         attempt=attempt_id,historical=identity(HISTORY),addedRoots=sorted(BASE_ADDED+OLD_ADDED+NEW),\n-        admission=admission_id,baseAddedRoots=sorted(BASE_ADDED),phase65AddedRoots=NEW,\n+        admission=admission_id,baseAddedRoots=sorted(BASE_ADDED),phase66AddedRoots=NEW,\n         previousBootstrap=identity(old['bootstrapReport']),producer=identity(__file__),\n         derivation=identity(Path(__file__).with_name('derivation.json')),\n         scope='Genuine checked bootstrap export/source join; exact API function validation is a separate root-only command.')\n"
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/build/validate-exports.mjs",
+        "sha256": "4909ee66e50f50e6162db0d6c00f1ca8853ed06e86ace73679592d20f02d3cf4"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/build/validate-exports.mjs",
+        "sha256": "9e25dbaf6c25ac663c9c54b75bf8f44bd965ad98d72a0eee404b91ca95fef216"
+      },
+      "edits": [
+        {
+          "old": "phase65-checked-export-validation",
+          "new": "phase66-checked-export-validation",
+          "count": 1
+        },
+        {
+          "old": "phase65AddedRoots",
+          "new": "phase66AddedRoots",
+          "count": 2
+        },
+        {
+          "old": ",95",
+          "new": ",99",
+          "count": 3
+        },
+        {
+          "old": "  assert.deepEqual(reference.roots,boot.exports);",
+          "new": "  assert.equal(boot.revision,'059266225b77c8ca256ac6b25ee5c21449bab151');\n  assert.equal(boot.baseSha256,'99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf');\n  assert.deepEqual(reference.roots,boot.exports);",
+          "count": 1
+        }
+      ],
+      "unifiedDiff": "--- selfhost/tools/performance/phase65/latency/build/validate-exports.mjs\n+++ selfhost/tools/performance/phase66/bootstrap/build/validate-exports.mjs\n@@ -11,19 +11,21 @@\n const inputs=[];\n const pin=value=>{const id=identity(typeof value==='string'?value:value.file);if(typeof value!=='string')assert.equal(id.sha256,value.sha256);inputs.push(id);return id;};\n const read=value=>JSON.parse(fs.readFileSync(pin(value).file,'utf8'));\n-const result={kind:'phase65-checked-export-validation',complete:false,pass:false,inputs};\n+const result={kind:'phase66-checked-export-validation',complete:false,pass:false,inputs};\n try {\n   const reference=read(referenceFile);assert.equal(reference.kind,'phase61-checked-bootstrap-export-reference');\n   const attempt=await verifyAttempt(path.dirname(pin(reference.attempt).file));\n   const boot=read(reference.bootstrap),admission=read(reference.admission);\n+  assert.equal(boot.revision,'059266225b77c8ca256ac6b25ee5c21449bab151');\n+  assert.equal(boot.baseSha256,'99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf');\n   assert.deepEqual(reference.roots,boot.exports);\n-  const previous=read(reference.previousBootstrap),added=reference.phase65AddedRoots;\n-  assert.equal(previous.exports.length,95);assert.equal(new Set(previous.exports).size,95);\n-  assert.deepEqual(added,admission.phase65AddedRoots);assert.equal(new Set(added).size,added.length);\n+  const previous=read(reference.previousBootstrap),added=reference.phase66AddedRoots;\n+  assert.equal(previous.exports.length,99);assert.equal(new Set(previous.exports).size,99);\n+  assert.deepEqual(added,admission.phase66AddedRoots);assert.equal(new Set(added).size,added.length);\n   assert(added.every(name=>!previous.exports.includes(name)));\n   assert.deepEqual(reference.roots.filter(name=>!added.includes(name)),previous.exports);\n   assert.deepEqual([...reference.roots].sort(),[...previous.exports,...added].sort());\n-  assert.equal(reference.roots.length,95+added.length);\n+  assert.equal(reference.roots.length,99+added.length);\n   pin(reference.derivation);pin(import.meta.filename);\n   assert.equal(pin(path.join(attempt.snapshot.root,'tools/typed-driver.mjs')).sha256,pin(admission.driver).sha256);\n   for(const key of Object.keys(process.env))if(key.startsWith('BEND_'))delete process.env[key];\n"
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/latency/prepare-bootstrap.py",
+        "sha256": "4d95c1f74e4e9a4ce1d7f76407b747345a9589ba701d39c2e5f46ee7ec987fdc"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/bootstrap/prepare-bootstrap.py",
+        "sha256": "ac3a0be6991ed85e5603bf8b5de96cc480b539f1a2f76d38577ea27a82ad7a3d"
+      },
+      "edits": [
+        {
+          "old": "selfhost/build/phase65",
+          "new": "selfhost/build/phase66",
+          "count": 1
+        },
+        {
+          "old": "Phase65 candidate own-source",
+          "new": "Phase66 candidate own-source",
+          "count": 1
+        },
+        {
+          "old": "    boot = read(attempt['bootstrapReport']['file'])",
+          "new": "    boot = read(attempt['bootstrapReport']['file'])\n    assert boot['revision'] == '059266225b77c8ca256ac6b25ee5c21449bab151'\n    assert boot['baseSha256'] == '99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf'\n    assert boot['stage'] == 'upstream-bootstrap' and boot['provenance']['verifiedAfterBuild'] is True",
+          "count": 1
+        },
+        {
+          "old": "inputs = [identity(__file__), identity(PARENT),",
+          "new": "inputs = [identity(__file__), identity(Path(__file__).with_name('derivation.json')), identity(PARENT),",
+          "count": 1
+        }
+      ],
+      "unifiedDiff": "--- selfhost/tools/performance/phase65/latency/prepare-bootstrap.py\n+++ selfhost/tools/performance/phase66/bootstrap/prepare-bootstrap.py\n@@ -33,7 +33,7 @@\n \n def fresh(file):\n     file = Path(file).resolve()\n-    assert file.is_relative_to(ROOT / 'selfhost/build/phase65') and not file.exists()\n+    assert file.is_relative_to(ROOT / 'selfhost/build/phase66') and not file.exists()\n     return file\n \n def definition(text, name):\n@@ -50,6 +50,9 @@\n     attempt = read(attempt_directory / 'attempt.json')\n     assert attempt['kind'] == 'bend-development-attempt' and attempt['checked'] is True\n     boot = read(attempt['bootstrapReport']['file'])\n+    assert boot['revision'] == '059266225b77c8ca256ac6b25ee5c21449bab151'\n+    assert boot['baseSha256'] == '99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf'\n+    assert boot['stage'] == 'upstream-bootstrap' and boot['provenance']['verifiedAfterBuild'] is True\n     source = identity(boot['source'])\n     assert source['sha256'] == boot['sourceSha256']\n     before = read(HISTORY / 'full77.json')\n@@ -87,7 +90,7 @@\n     plan_seams.append(dict(name='jd_plan_library', selectedBody=actual_library))\n     out = fresh(output); out.mkdir(parents=True); (out / 'tools').mkdir()\n     assert identity(PARENT)['sha256'] == PARENT_SHA\n-    inputs = [identity(__file__), identity(PARENT), identity(attempt_directory/'attempt.json'), identity(attempt['bootstrapReport']['file']),\n+    inputs = [identity(__file__), identity(Path(__file__).with_name('derivation.json')), identity(PARENT), identity(attempt_directory/'attempt.json'), identity(attempt['bootstrapReport']['file']),\n               source, identity(HISTORY/'full77.json'), identity(HISTORY/'driver.json'), identity(before['core']['file']), core, reach]\n     derivations = []\n     for name, expected in PARENTS.items():\n@@ -160,7 +163,7 @@\n     assert config['driver']['sha256'] == selected_driver['sha256'], 'Not the reviewed combined driver'\n     config['exactInputs'] = [identity(attempt_directory/'attempt.json'), identity(attempt['bootstrapReport']['file']),\n                              source, identity(attempt['base']['file'])]\n-    config['scope'] = 'Phase65 candidate own-source generation using recorded Phase55 diagnostic-tool derivatives; inherited checking, not fresh self-check.'\n+    config['scope'] = 'Phase66 candidate own-source generation using recorded Phase55 diagnostic-tool derivatives; inherited checking, not fresh self-check.'\n     assert config['roots'] == boot['exports']\n     write(out/'full-roots.json', config)\n     tiny = copy.deepcopy(config); tiny.update(roots=config['qualificationRoots'], compareUnsplit=True)\n"
+    }
+  ],
+  "scope": "Exact source derivation only. New upstream reference, checked B1 without old derivative, old99-root membership/order retained, new Base/source identity required. B2 decomposition and append-only generated helper qualification remain unchanged until actual new B1 proves them."
+}

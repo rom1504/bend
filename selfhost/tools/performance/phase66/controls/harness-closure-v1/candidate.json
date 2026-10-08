@@ -1,0 +1,31 @@
+{
+  "kind": "phase66-harness-closure-and-verdict-display",
+  "files": [
+    {
+      "file": "selfhost/tools/conformance/freeze-adapter.mjs",
+      "beforeSha256": "3b9b806bf8e7f2b5e001e27193bb121c10893abf9de0f23cc630ef73a4a0ffe8",
+      "afterSha256": "0c3dd0403406da48291cf85e7767156e8abb90b133c348d3b5c745ee238b4e11",
+      "old": "'tools/typed-driver.mjs','tools/compiler-abi.mjs'",
+      "new": "'tools/typed-driver.mjs','tools/base-cache-graph.mjs','tools/compiler-abi.mjs'",
+      "count": 1
+    },
+    {
+      "file": "selfhost/tools/conformance/adapters/upstream.mjs",
+      "beforeSha256": "da556bcef52ee52bee06afc68d42599c4789a016efd1fc63f6ece5ece0aa2cde",
+      "afterSha256": "203258edfdf01cd9e22d4fc10a125cdec49c43861f20dd7601dd28e5c20f2bbb",
+      "old": "list.map(key=>'- '+key+'\\n').join('')",
+      "new": "list.map(key=>'- '+B.name_key(key)+'\\n').join('')",
+      "count": 1
+    },
+    {
+      "file": "selfhost/src/driver/report.bend",
+      "beforeSha256": "15f0985da866b948252490ec2f1b90aed9d36fb24b93eab24826648cc36e6df8",
+      "afterSha256": "2626d596e94122f373f075d2cc2fe59e59fc3944d8b939b547db6aad2124e556",
+      "old": "case Con{+name, +rest}: \"- \" ++ name ++ \"\\n\" ++ dr_lines(rest)",
+      "new": "case Con{+name, +rest}: \"- \" ++ name_key(name) ++ \"\\n\" ++ dr_lines(rest)",
+      "count": 1
+    }
+  ],
+  "patchSha256": "a7f708a26c5014824b114c691d1b1f6c9ad8dca8c842015bdf72058ea7c5c8e4",
+  "scope": "One missing actual import added to frozen host closure; new upstream name_key applied only to displayed declaration verdict names. Raw metadata/keys and trust algorithm unchanged."
+}

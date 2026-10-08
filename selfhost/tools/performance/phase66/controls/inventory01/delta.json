@@ -1,0 +1,4246 @@
+{
+  "kind": "phase66-upstream-conformance-delta",
+  "dataOnly": true,
+  "targetExecuted": false,
+  "oldRevision": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "newRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/controls/inventory-delta.py",
+    "sha256": "455bee0a17b62d9b69658f3f65c3235419e9a7206dae410d78dc04d10b09322a",
+    "bytes": 7787
+  },
+  "oldRoot": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+  "newRoot": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66",
+  "upstreamSources": {
+    "old": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+        "sha256": "de2b39db2fcbd2f9115053e85e34d791693e1297bfeb6874da1013ff7b44b7dd",
+        "bytes": 137347
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+        "sha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee",
+        "bytes": 185444
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+        "bytes": 71530
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/main.ts",
+        "sha256": "f835f0727beb447f116daffdc9aa7c4df319b7c044fd6188add517395b86fa86",
+        "bytes": 34525
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/safe.ts",
+        "sha256": "be4284a7a6677099c518b29583b996912336d1d48d7d9135b3026428448c8b37",
+        "bytes": 58263
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bendtt.lean",
+        "sha256": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce",
+        "bytes": 165581
+      }
+    ],
+    "new": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+        "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49",
+        "bytes": 138101
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+        "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c",
+        "bytes": 185124
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+        "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+        "bytes": 75064
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/main.ts",
+        "sha256": "407c0196a47e464640c6557cb06d230016270a40f28ea4250f00936ab79c2f8e",
+        "bytes": 35211
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/safe.ts",
+        "sha256": "bf495d64c03caa7a2558aaae5e172cd7743b9aa5470c4d33ad86634e23d81ffc",
+        "bytes": 65468
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bendtt.lean",
+        "sha256": "83cdd36e66dcd2cabcc3d10556c9c874f8d823956feab88f8bb5a81473d51be3",
+        "bytes": 172753
+      }
+    ]
+  },
+  "counts": {
+    "added": 83,
+    "modified": 38,
+    "deleted": 9
+  },
+  "oldGateFixtures": 1513,
+  "newGateFixtures": 1587,
+  "unchangedGateFixtures": 1466,
+  "oracleOnlyModifications": 11,
+  "delta": [
+    {
+      "id": "check/convoy_dependent.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/convoy_dependent.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/convoy_dependent.bend",
+          "sha256": "a55f18eae54e685115ab16a9afc7ead7cab181b815f1f23700546d17ded37f73",
+          "bytes": 5178
+        },
+        "hasOracle": true,
+        "expected": "45n",
+        "namespace": "check",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "2354315e5062ca4ec90c06259d0d1d42099c66c73cff0d58a3c2b4b9165ff372"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/kind_domain_self_call.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/kind_domain_self_call.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/kind_domain_self_call.bend",
+          "sha256": "945b2e923f12269c0cff1192d98cd7df1471ba54baf24cef2fba5b790387cffc",
+          "bytes": 502
+        },
+        "hasOracle": true,
+        "expected": "0n",
+        "namespace": "check",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "1ebbf202941c80354f9349e5adf6507f64ee4267bff554b187ed0e6e766b15c2"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/kind_generic_none.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/kind_generic_none.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/kind_generic_none.bend",
+          "sha256": "c687d3a2ed637b8163c733711cdf1e7e9aa946979d75597332fdb94280b0168e",
+          "bytes": 638
+        },
+        "hasOracle": true,
+        "expected": "0n",
+        "namespace": "check",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "de2ab458ae355443538dff8eac7799d23746db4379496fbe59674abb8947230a"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/kind_none_is_type.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/kind_none_is_type.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/kind_none_is_type.bend",
+          "sha256": "870ff525f188a9f188fb707f68e87f851dc559c53adea2a84d62845b5d0d6f6e",
+          "bytes": 476
+        },
+        "hasOracle": true,
+        "expected": "0n",
+        "namespace": "check",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "1c68ea8036836acaf5c36702446be99b85331fc219e7b5c34b387ceed07d5144"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/kind_rewrite_goal.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/kind_rewrite_goal.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/kind_rewrite_goal.bend",
+          "sha256": "9520106f8901fccf10f943cfc564df3ae1243d363f383f37b51877eaf2f4e4bb",
+          "bytes": 475
+        },
+        "hasOracle": true,
+        "expected": "0n",
+        "namespace": "check",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "bd7a244b1400a8e8fb4a4178bb4fe44c0264fc99c912aeb0560b6873813ad6c0"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/kind_self_call_eta.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/kind_self_call_eta.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/kind_self_call_eta.bend",
+          "sha256": "9df7c8589c490eabef7caf9f65f10fbb08b67d2b20eabd48ec2ce2000926248c",
+          "bytes": 528
+        },
+        "hasOracle": true,
+        "expected": "0n",
+        "namespace": "check",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "80a50b518fc16fc00be22136315d2e314579f624ec9fcb74faebc4a0e05d46a9"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/kind_terms.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/kind_terms.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/kind_terms.bend",
+          "sha256": "339070791efaefc1b4ab3606ba563c6c3ac01b7fa219d14f7f4d63b4a20cf84f",
+          "bytes": 2695
+        },
+        "hasOracle": true,
+        "expected": "26n",
+        "namespace": "check",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "2090fd96ac557e5306d7af1438e25bb2a38022c6b57dfe3b5a0bce040271e988"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/let_put_depth.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/let_put_depth.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/let_put_depth.bend",
+          "sha256": "e32fd793c5a526c69bdef92014daf3efff5a374b8fc5865c2c207aa7e0d2f5d4",
+          "bytes": 954
+        },
+        "hasOracle": true,
+        "expected": "9n",
+        "namespace": "check",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "3a80ed534b6f1d54c35b78caeef09701e90a76728c713a169c568fdde4c548be"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/meet_at_run_time.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/meet_at_run_time.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/meet_at_run_time.bend",
+          "sha256": "d57a24eff811fe887f03dcc7f3d0b0785910e402a55ad7d1c7c10c256dd87728",
+          "bytes": 1003
+        },
+        "hasOracle": true,
+        "expected": "3n",
+        "namespace": "check",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "f7e093a7992d7b11259804fac274b8704f1c486b751a9d79aa268b1e12ac9dd3"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/meet_uses_in_arms.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/meet_uses_in_arms.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/meet_uses_in_arms.bend",
+          "sha256": "3a3d5f68abf1e5f21503df0f7d587b66b5f4f77a3fcd97b1dbd05e0fbbb08b93",
+          "bytes": 429
+        },
+        "hasOracle": true,
+        "expected": "1n",
+        "namespace": "check",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "8a762426e6f99daa4e8243111c01964c0e4c08aecaad4dd8c0f3f37952b86ea6"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/safe_box_word_def.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/safe_box_word_def.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/safe_box_word_def.bend",
+          "sha256": "2b70349213bcb5123f3b432bb7b0c15f52e284dd0273a0c0d43845e155af746f",
+          "bytes": 181
+        },
+        "hasOracle": true,
+        "expected": "7",
+        "namespace": "check",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "6364ee0a61d145d13dff93858feb140842b027f98a361841a5860af232d70aa8"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/safe_no_unit_model.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/safe_no_unit_model.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/safe_no_unit_model.bend",
+          "sha256": "c8718e91076c953148197aa75454682bf43c9c2fd449b49657a14ee54f93a89c",
+          "bytes": 105
+        },
+        "hasOracle": true,
+        "expected": "Mk{}",
+        "namespace": "check",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "15fed5555c7aff4ad0d2050dcf8d1f2b3aec869d2aa4ef550fd4cbc53df8fc93"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/safe_parameterized_box_word.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/safe_parameterized_box_word.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/safe_parameterized_box_word.bend",
+          "sha256": "b5195049b883c03551d833621109a98622f54020147ecf3be371340446b84d98",
+          "bytes": 235
+        },
+        "hasOracle": true,
+        "expected": "7",
+        "namespace": "check",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "0a2f9f6037ae34f149463818db9ab4d5660382f850fbebaf53319861d4f44924"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/safe_parameterized_unit.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/safe_parameterized_unit.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/safe_parameterized_unit.bend",
+          "sha256": "3776216ed69dc4659d3a5b60c8f658c4b4fb03b18ad9dfae546b37ff665e579b",
+          "bytes": 139
+        },
+        "hasOracle": true,
+        "expected": "Mk{}",
+        "namespace": "check",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "45248a853c5fd4a7862f33ee2603b634ca29d859b2b04f9f45d6ed863a631068"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/safe_unit_model.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/safe_unit_model.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/safe_unit_model.bend",
+          "sha256": "4437baefe8823aae3e5fc41ee14c3cb6f339b6cfc86807caa1c1d1fb6fbfab23",
+          "bytes": 129
+        },
+        "hasOracle": true,
+        "expected": "Mk{}",
+        "namespace": "check",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "7e20b73a3672e35d7932d5b1026d832b9a8694258b4340e8adddfa2eed54fbb4"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/unsafe_kind.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/unsafe_kind.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/unsafe_kind.bend",
+          "sha256": "85d6e5b91efa157ac9797e4e97a289349096d0a7fe9cdf5b1a9fb618470896f5",
+          "bytes": 590
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError: 4 defs rely on unsafe or foreign code:\n- D\n- use\n- Zero\n- P\nexit 1",
+        "namespace": "check",
+        "main": false,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "0fdc96fed72d0d5caccb9e4d94ac6518b0cb756616e1a62d6d52e4103a7bc27b"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "check/unsafe_kind_def.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "check/unsafe_kind_def.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/check/unsafe_kind_def.bend",
+          "sha256": "719231e9502c1bbf7ce019a423af3aa54249bb89f1ed447a6bdecaa9788676a7",
+          "bytes": 481
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError: 3 defs rely on unsafe or foreign code:\n- qv\n- D\n- use\nexit 1",
+        "namespace": "check",
+        "main": false,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "82f67b11f0dc1cfe5e64a1950c1b2c4c148f4ad92680af05e56c5f93b2844599"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "compile/array_equality.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "compile/array_equality.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/array_equality.bend",
+          "sha256": "552b9da8a5b5196e790b9be849f3d0a0cde68f5da77cbf1082397ca07965b073",
+          "bytes": 1067
+        },
+        "hasOracle": true,
+        "expected": "204",
+        "namespace": "compile",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "cb64d1fed99c38edbe1019df7c9b469aedc981f5d3cf2a14c3fd705306c9482d"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "compile/array_equality_print.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "compile/array_equality_print.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/array_equality_print.bend",
+          "sha256": "1d825e428ea364f872265c56879d072183bc28447432aae1e58fc6fbc7f392b5",
+          "bytes": 108
+        },
+        "hasOracle": true,
+        "expected": "[{==}, {==}]",
+        "namespace": "compile",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "d76c22665143fb6826687c00d0e228c3cf5cd417d775b5b81c6ae62b779d2682"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "compile/f32_word_boxed_default.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "compile/f32_word_boxed_default.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/f32_word_boxed_default.bend",
+          "sha256": "51f7298c3d5f68679f1682a8ffc4d8efa36f42b2d260dc2bc08a342ed5a959bb",
+          "bytes": 216
+        },
+        "hasOracle": true,
+        "expected": "42",
+        "namespace": "compile",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": true,
+        "runtimeClass": "pure",
+        "bodySha256": "697f37767c07dc42b1c68f7c6adc0d5be0ec70a62c88e692fb14b7871b1a884e"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "compile/fork_erased_last.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "compile/fork_erased_last.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/fork_erased_last.bend",
+          "sha256": "aeb9168ba538585fb1b55c59877dc4cdc0495a45c84207c2471b17f3ba7ffd5b",
+          "bytes": 797
+        },
+        "hasOracle": true,
+        "expected": "4592",
+        "namespace": "compile",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "b671427c41e4198f57e3c2e04085393d079dea31e82c3cd326677bd6c82524ad"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "compile/vector_boxed_default.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "compile/vector_boxed_default.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/vector_boxed_default.bend",
+          "sha256": "a1706b5a95d751d9dfdc192f8d22468fc3300d86b96aa141e99f1d056dd7d442",
+          "bytes": 456
+        },
+        "hasOracle": true,
+        "expected": "42",
+        "namespace": "compile",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": true,
+        "runtimeClass": "pure",
+        "bodySha256": "9fd12699a0f3d109e897c36a1f18aa272ed7360560c3ab179eb88381519df494"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "compile/word_boxed_default.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "compile/word_boxed_default.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/word_boxed_default.bend",
+          "sha256": "c1e9f2682e5de089df2285dbfa1d22f7639029fff6648ed4c9a12d64b181b9cb",
+          "bytes": 216
+        },
+        "hasOracle": true,
+        "expected": "42",
+        "namespace": "compile",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": true,
+        "runtimeClass": "pure",
+        "bodySha256": "2972d859214c18f4d31de9921dc77e00a87daa3aba25c37d61ab64b3eb046440"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "compile/word_boxed_sequence.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "compile/word_boxed_sequence.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/word_boxed_sequence.bend",
+          "sha256": "7a040de56ae834879cc0836434631f32cb1712f3ea84198d3dbedf87a3857699",
+          "bytes": 312
+        },
+        "hasOracle": true,
+        "expected": "84",
+        "namespace": "compile",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": true,
+        "runtimeClass": "pure",
+        "bodySha256": "586dfbf0f899ad7f9c02bdcab6c68a604efd3157175b10cb67c128df075a0352"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "comptime/dead_arm_shared.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "comptime/dead_arm_shared.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/comptime/dead_arm_shared.bend",
+          "sha256": "356b971e580c7bbbbf691832af35ed8360586633adc2ab2ccbc6b4d45a287b2d",
+          "bytes": 409
+        },
+        "hasOracle": true,
+        "expected": "0n",
+        "namespace": "comptime",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "85430ec3cc3ca86e2d19bf7310f9eca4e8db020853bd71b74c0c8f96c1056a47"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "flatten/consumed_column_error_001.bend",
+      "change": "modified",
+      "old": {
+        "id": "flatten/consumed_column_error_001.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/flatten/consumed_column_error_001.bend",
+          "sha256": "57926614cdc6cc46073bd74923b4ab30791715a42949fa36026bdddd4b0b3ef3",
+          "bytes": 892
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : an undestructed scrutinee (this value is already a constructor: bind its fields directly; if an outer match destructed it, fold the pattern into the outer case)\nLocation:\n18 |     case Sw3{p}:\n19>|       match a:\n   |       ^^^^^^^^\n20 |         case Zw3{}:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "9230b6c69172e6ac7bb1778dd58874bf5c5a6994fac9caed673b7f4abc02ef6f"
+      },
+      "new": {
+        "id": "flatten/consumed_column_error_001.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/consumed_column_error_001.bend",
+          "sha256": "9289aced3ee60f12070efcdd33d6b60e72579cc18cc23c09d66dffab020b6fef",
+          "bytes": 820
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'a' can't be matched here (match it in the same match as the pattern that introduced it)\nLocation:\n18 |     case Sw3{p}:\n19>|       match a:\n   |       ^^^^^^^^\n20 |         case Zw3{}:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "9230b6c69172e6ac7bb1778dd58874bf5c5a6994fac9caed673b7f4abc02ef6f"
+      },
+      "oracleOnly": true
+    },
+    {
+      "id": "flatten/consumed_column_error_002.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "flatten/consumed_column_error_002.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/consumed_column_error_002.bend",
+          "sha256": "9211b95b4010e19057dab71de6eb35f0a194ce333d1b5139411fe72b0a8001d2",
+          "bytes": 750
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'W' can't be matched here (match it in the same match as the pattern that introduced it)\nLocation:\n 9 |     case 0n, Con{h, W}:\n10>|       match W:\n   |       ^^^^^^^^\n11 |         case Nil{}:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "744a5915aebf24f14ee07b9be5c7ab4e6935136ef68085aeb4abab3b90ebe158"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "flatten/ctor_scrutinee_error.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "flatten/ctor_scrutinee_error.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/ctor_scrutinee_error.bend",
+          "sha256": "1111fb74ec3b50075c759bc873caccc11babd4e81f5d8af13671988aac0e3a6d",
+          "bytes": 487
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'Con{1, Nil{}}' can't be matched (this value is already a constructor: bind its fields directly)\nLocation:\n5 | def main() -> U32:\n6>|   match Con{1, Nil{}}:\n  |   ^^^^^^^^^^^^^^^^^^^^\n7 |     case Con{h, t}:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "e9a2aec208a36c4e0af265c8deb388ee3bab7b2ec01adc11085ffb43cf39e77e"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "flatten/dead_residue_elision_003.bend",
+      "change": "modified",
+      "old": {
+        "id": "flatten/dead_residue_elision_003.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/flatten/dead_residue_elision_003.bend",
+          "sha256": "2258f56c72d41fdd5f2ff67190381b3c9ed6e1734cad91a6ad2c54b6d89bc377",
+          "bytes": 749
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : a match on a parameter or field (this name is a def or a consumed binder: give the value its own def)\nLocation:\n24 |     case T{}:\n25>|       match x:\n   |             ^\n26 |         case Z{}:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "df42baf0965a29de7caaf5fef4b63fe47f7b3944e294ea38c6d1b89410b83ebf"
+      },
+      "new": {
+        "id": "flatten/dead_residue_elision_003.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/dead_residue_elision_003.bend",
+          "sha256": "ea62eb126bc84eec468a1f072e22dec877964692071ecc9b917a2ab0c6552a31",
+          "bytes": 800
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'x' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n24 |     case T{}:\n25>|       match x:\n   |             ^\n26 |         case Z{}:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "df42baf0965a29de7caaf5fef4b63fe47f7b3944e294ea38c6d1b89410b83ebf"
+      },
+      "oracleOnly": true
+    },
+    {
+      "id": "flatten/dup_guard_000.bend",
+      "change": "modified",
+      "old": {
+        "id": "flatten/dup_guard_000.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/flatten/dup_guard_000.bend",
+          "sha256": "dc180123855eae545b9774d48d7ccfdb18500d4110db36f146f8c79387f519f2",
+          "bytes": 621
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : a match on a parameter or field (this name is a def or a consumed binder: give the value its own def)\nLocation:\n13 | def main(a):\n14>|   match a, a:\n   |            ^\n15 |     case Z{}, x:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "f0b2f2edc99bc69486099f91adc1f90d31e9c4b7e7a2cb14613c8cb4ace35739"
+      },
+      "new": {
+        "id": "flatten/dup_guard_000.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/dup_guard_000.bend",
+          "sha256": "742c2c8db57cf830a57893b05e3af1c493b92072b20ddcda93fd83133e0dbcd7",
+          "bytes": 672
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'a' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n13 | def main(a):\n14>|   match a, a:\n   |            ^\n15 |     case Z{}, x:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "f0b2f2edc99bc69486099f91adc1f90d31e9c4b7e7a2cb14613c8cb4ace35739"
+      },
+      "oracleOnly": true
+    },
+    {
+      "id": "flatten/dup_guard_001.bend",
+      "change": "modified",
+      "old": {
+        "id": "flatten/dup_guard_001.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/flatten/dup_guard_001.bend",
+          "sha256": "d28b6a6955a8907d8a98cf077f4491d99a82c43f36fd9219c54fb08b34af0799",
+          "bytes": 571
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : a match on a parameter or field (this name is a def or a consumed binder: give the value its own def)\nLocation:\n15 | def main(a):\n16>|   match a, a:\n   |            ^\n17 |     case Z{}, x:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "3506f3f8b8099d830e0fb24630161770d6c4011a575fa4edcefa0e0863896ebd"
+      },
+      "new": {
+        "id": "flatten/dup_guard_001.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/dup_guard_001.bend",
+          "sha256": "83f1d85aa4d2ff0555d4798e970d5962c7a0fd61fc08b3fd2a477fe7d78daaba",
+          "bytes": 622
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'a' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n15 | def main(a):\n16>|   match a, a:\n   |            ^\n17 |     case Z{}, x:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "3506f3f8b8099d830e0fb24630161770d6c4011a575fa4edcefa0e0863896ebd"
+      },
+      "oracleOnly": true
+    },
+    {
+      "id": "flatten/error_window_substituted_scrutinee.bend",
+      "change": "modified",
+      "old": {
+        "id": "flatten/error_window_substituted_scrutinee.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/flatten/error_window_substituted_scrutinee.bend",
+          "sha256": "079aac57611645217cc459623d6a5b6ea9f3304fefd73f51324918810917a2e9",
+          "bytes": 746
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : a match on a parameter or field (this name is a def or a consumed binder: give the value its own def)\nLocation:\n11 |     case y, 1n+q:\n12>|       match y:\n   |             ^\n13 |         case 0n:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "f71843ce07b24967e4f6e67e4b39c10d7e7aab8daadba2f2b749185d0525586a"
+      },
+      "new": {
+        "id": "flatten/error_window_substituted_scrutinee.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/error_window_substituted_scrutinee.bend",
+          "sha256": "9867ce8bd555c60b820ba7a146c0c7a7c50a640e8f669be2372c86ed6bf5e04d",
+          "bytes": 797
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'y' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n11 |     case y, 1n+q:\n12>|       match y:\n   |             ^\n13 |         case 0n:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "f71843ce07b24967e4f6e67e4b39c10d7e7aab8daadba2f2b749185d0525586a"
+      },
+      "oracleOnly": true
+    },
+    {
+      "id": "flatten/order_ban_000.bend",
+      "change": "modified",
+      "old": {
+        "id": "flatten/order_ban_000.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/flatten/order_ban_000.bend",
+          "sha256": "3450e747721c880c1beaee10757c386026d779c5e31cd94cf05217eb2e047258",
+          "bytes": 632
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : a match on a parameter or field (this name is a def or a consumed binder: give the value its own def)\nLocation:\n14 | def f(a, b):\n15>|   match b, a:\n   |            ^\n16 |     case Zy{}, y:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "2eb782a3955bfb2b479655785ddf855d4404c7637f084f11b0f2baef54ca260c"
+      },
+      "new": {
+        "id": "flatten/order_ban_000.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/order_ban_000.bend",
+          "sha256": "de685b4bec0e2b4a70b6743bcfa2a2def8b73bb5a7ed75d2afe161c53ec97080",
+          "bytes": 683
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'a' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n14 | def f(a, b):\n15>|   match b, a:\n   |            ^\n16 |     case Zy{}, y:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "2eb782a3955bfb2b479655785ddf855d4404c7637f084f11b0f2baef54ca260c"
+      },
+      "oracleOnly": true
+    },
+    {
+      "id": "flatten/order_ban_001.bend",
+      "change": "modified",
+      "old": {
+        "id": "flatten/order_ban_001.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/flatten/order_ban_001.bend",
+          "sha256": "1191c5d7ec8456f31260bfd0583e557d05faefaee128792e14a212d22bd9dd37",
+          "bytes": 761
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : a match on a parameter or field (this name is a def or a consumed binder: give the value its own def)\nLocation:\n18 |     case Pp2{a, b}:\n19>|       match b, a:\n   |                ^\n20 |         case Zy2{}, y:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "45ac97e11ae6c951c3bdbec9ddaa360fda93c515f84feaccc380d6a60f779b20"
+      },
+      "new": {
+        "id": "flatten/order_ban_001.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/order_ban_001.bend",
+          "sha256": "55faca4d435d81d7445de946c8a4aea947c221cc3d15ca6047b00c4be77bfd6d",
+          "bytes": 812
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'a' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n18 |     case Pp2{a, b}:\n19>|       match b, a:\n   |                ^\n20 |         case Zy2{}, y:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "45ac97e11ae6c951c3bdbec9ddaa360fda93c515f84feaccc380d6a60f779b20"
+      },
+      "oracleOnly": true
+    },
+    {
+      "id": "flatten/order_ban_002.bend",
+      "change": "modified",
+      "old": {
+        "id": "flatten/order_ban_002.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/flatten/order_ban_002.bend",
+          "sha256": "db0e340157b2f1a41f4134090448d6dce57df54b06fa9168bf273291bdd628fe",
+          "bytes": 656
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : a match on a parameter or field (this name is a def or a consumed binder: give the value its own def)\nLocation:\n15 |   z = Zw{}\n16>|   Sw{p} = y\n   |           ^\n17 |   p\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "642b5f651aa84f3c8d5a9aa5e10a4b2c30c659b4d3e447121b9a9db0678f3307"
+      },
+      "new": {
+        "id": "flatten/order_ban_002.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/order_ban_002.bend",
+          "sha256": "cfc1434a2a721e679e013d442dee25bdd155f24d1471f8493a0a267c48c405c3",
+          "bytes": 707
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'y' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n15 |   z = Zw{}\n16>|   Sw{p} = y\n   |           ^\n17 |   p\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "642b5f651aa84f3c8d5a9aa5e10a4b2c30c659b4d3e447121b9a9db0678f3307"
+      },
+      "oracleOnly": true
+    },
+    {
+      "id": "flatten/order_ban_003.bend",
+      "change": "modified",
+      "old": {
+        "id": "flatten/order_ban_003.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/flatten/order_ban_003.bend",
+          "sha256": "a8a16c603c781fac1a1b85eebb03abfe1afa32f17baa001bf8c2d423eab9b793",
+          "bytes": 758
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : a match on a parameter or field (this name is a def or a consumed binder: give the value its own def)\nLocation:\n18 |       t = Zb{}\n19>|       match p:\n   |             ^\n20 |         case Zb{}:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "526cf5b986c26dcf1c0a9a20d46613ffa18a81b5130cfb90e276689bbf35be0c"
+      },
+      "new": {
+        "id": "flatten/order_ban_003.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/order_ban_003.bend",
+          "sha256": "aaa3657ca27a2f2053424020588a21cc039ba6772646ebada7e41db8d80b93d4",
+          "bytes": 809
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'p' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n18 |       t = Zb{}\n19>|       match p:\n   |             ^\n20 |         case Zb{}:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "526cf5b986c26dcf1c0a9a20d46613ffa18a81b5130cfb90e276689bbf35be0c"
+      },
+      "oracleOnly": true
+    },
+    {
+      "id": "flatten/order_ban_004.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "flatten/order_ban_004.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/order_ban_004.bend",
+          "sha256": "a17d98ab07b9df5a891ce1ad1f0b142c100fdc29126ebd017f2a6dc0644be29a",
+          "bytes": 828
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 't' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n14 |     case Some{v}:\n15>|       match t:\n   |             ^\n16 |         case TStr{}:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "98f6b1b0c8a31614b12ba345c8da89e8aaee08abf61b2f81913f1dfbb36aa9da"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "flatten/order_ban_005.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "flatten/order_ban_005.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/order_ban_005.bend",
+          "sha256": "8934400bbac1d3a7d72666460920d8995191a96a5e7131d24d35aedde96041c7",
+          "bytes": 730
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 't' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n 9 | def f(t: Ty, mv: Maybe<&2, U32>) -> String:\n10>|   match mv t:\n   |            ^\n11 |     case None{} _:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "a57be137c62e55ad6f8157c0c4851e0f1f0220ec08a62fc25bab603b541bc5c4"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "flatten/order_ban_006.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "flatten/order_ban_006.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/flatten/order_ban_006.bend",
+          "sha256": "65b99e6c3dc339c897f6f1bca31ea9ab29de1286967402a11826d4b2b1ebb01f",
+          "bytes": 768
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'a' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n18 |       t = Zw{}\n19>|       match a:\n   |             ^\n20 |         case Zw{}:\nexit 1",
+        "namespace": "flatten",
+        "main": true,
+        "base": false,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "09f4e931d1e8a1cea3f9498d9989eeaaba881350af2d00e4a7725ae5b2c6de17"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "halt/column_order_search.bend",
+      "change": "modified",
+      "old": {
+        "id": "halt/column_order_search.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/halt/column_order_search.bend",
+          "sha256": "14d97183da8f75ea10b64dec6655ee4cf90a51f05a53c60e5529084afc703dca",
+          "bytes": 798
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : a match on a parameter or field (this name is a def or a consumed binder: give the value its own def)\nLocation:\n16 |     case Succ{p}:\n17>|       match n:\n   |             ^\n18 |         case Zero{}:\nexit 1",
+        "namespace": "halt",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "9e46b04d16b19cedd716cc499d0666923bece7d2324719dc61bef2ef885def2c"
+      },
+      "new": {
+        "id": "halt/column_order_search.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/halt/column_order_search.bend",
+          "sha256": "96b45eeefe792f36786baf1da3c33a1f4beebf058170c2b0c88b0eec29cb42b4",
+          "bytes": 849
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'n' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n16 |     case Succ{p}:\n17>|       match n:\n   |             ^\n18 |         case Zero{}:\nexit 1",
+        "namespace": "halt",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "9e46b04d16b19cedd716cc499d0666923bece7d2324719dc61bef2ef885def2c"
+      },
+      "oracleOnly": true
+    },
+    {
+      "id": "import/Word.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "import/Word.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/import/Word.bend",
+          "sha256": "3208ee6f39deaf1aecd22e20e4a98624e581de4005e9b7a5f49eea9a8c6d85f1",
+          "bytes": 353
+        },
+        "hasOracle": true,
+        "expected": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+        "namespace": "import",
+        "main": false,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "04eada08f23f662a332ab2b42283810f505619133557d013d50be59dd6a3fb6c"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "import/base_family_file.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "import/base_family_file.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/import/base_family_file.bend",
+          "sha256": "4c710c22d8117277280c334fdc62f712dfd1a8800153dc14ec4ca01355ded58e",
+          "bytes": 314
+        },
+        "hasOracle": true,
+        "expected": "1n",
+        "namespace": "import",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "0c54057c2e1e483f6da8f7e4a2ef4f63c2baa8064a4fb9190d8ec768c0568052"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/chan_close_send.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/chan_close_send.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/chan_close_send.bend",
+          "sha256": "ad840c522a95b8732e78f8a03f01abfde8369c92d50c27270872b18a5adc0664",
+          "bytes": 682
+        },
+        "hasOracle": true,
+        "expected": "TrueFalse",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "5f143df5c9ad02ee831cb8fab1302e073e86ba26bc5db5b7afb96196721dce34"
+      },
+      "new": {
+        "id": "io/chan_close_send.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/chan_close_send.bend",
+          "sha256": "4ee8a8df7e4cc1d52725fbd11b45394055b040b4b60adb925c0b5c778e95ae9e",
+          "bytes": 736
+        },
+        "hasOracle": true,
+        "expected": "DoneFail2",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "c24ad277c1f329c2d5fb035962360491a44e0b2ca6386e1dbe23c56d8062a49b"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/chan_pipe.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/chan_pipe.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/chan_pipe.bend",
+          "sha256": "a06c8009a30fb27dd3b13de145e308a0d8200699424f1bdff2430b0545c1095f",
+          "bytes": 1363
+        },
+        "hasOracle": true,
+        "expected": "4\n3\n2\n1\n0\nend",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "c7d4e00e0e970f51320bbc83ff0dbb44169054ee52df99a4976cbfa95ddcd8ce"
+      },
+      "new": {
+        "id": "io/chan_pipe.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/chan_pipe.bend",
+          "sha256": "a4dfb7ff48122e7bc2b87095ac820c9ae75764d4368bb6bd70c8016cdb61d147",
+          "bytes": 1384
+        },
+        "hasOracle": true,
+        "expected": "4\n3\n2\n1\n0\nend",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "511bce782b4b06160b0ef9b2813e9657a43b518f84faddc85a84ee1304cede15"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/chan_proof_send.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/chan_proof_send.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/chan_proof_send.bend",
+          "sha256": "3f6ba1b17d2b69818ae51cdb7b754aaf38a503e38662a007c21d533247683e04",
+          "bytes": 1067
+        },
+        "hasOracle": true,
+        "expected": "ok",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "d65ceba09425cf02da8e1902ab70427b1ac2538c4dfa12fd691e1a1061f7ae3e"
+      },
+      "new": {
+        "id": "io/chan_proof_send.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/chan_proof_send.bend",
+          "sha256": "1958bea984a63a79b7db2285d26b9eb54146820090a02d2eda6b4c4886a9be16",
+          "bytes": 1121
+        },
+        "hasOracle": true,
+        "expected": "ok",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "4f0cb4a74ee63262e9fb9d1f9710237146b54602f52b3c5b330a8414271e2c0e"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/chan_rendezvous.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/chan_rendezvous.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/chan_rendezvous.bend",
+          "sha256": "72e50d8ba799e7eb6c16d186071186a3a80ac755c964361cba56495ee2a8c163",
+          "bytes": 1061
+        },
+        "hasOracle": true,
+        "expected": "m0\ns0\ns1\nm1\nm2\ns2",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "d3d347e8e8e44eecd0a04e7357a920ce238caef001b7648bfe0555e423933879"
+      },
+      "new": {
+        "id": "io/chan_rendezvous.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/chan_rendezvous.bend",
+          "sha256": "5da68fceefa3ea562684c4eecbf682840ff5502fa0bb8730ac9d840ef5bca4ba",
+          "bytes": 1103
+        },
+        "hasOracle": true,
+        "expected": "m0\ns0\ns1\nm1\nm2\ns2",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "470ff7e296dd4e364a0c5ea19b01ca0648fd9f62810a6feb34809df2bf8a2d65"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/chan_try.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/chan_try.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/chan_try.bend",
+          "sha256": "00b07d1eb87cc32d99f4e8347690764f466541f583af05e414899fdb447b7683",
+          "bytes": 3021
+        },
+        "hasOracle": true,
+        "expected": "sent\nfull, kept 2\ngot 1\nnothing\nnothing\nsent\ngot 7\nended\nclosed, kept 9\ngot 5\nsent",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "21e1f79f48eebb669144fe18bfb6234c18062ddca30f4bc981ba7dc90f31c322"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/chan_try_deadlock.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/chan_try_deadlock.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/chan_try_deadlock.bend",
+          "sha256": "8f46b1e9b98aea6b506b4ee570c941775037bd04045a099ba70cb070224761a7",
+          "bytes": 1067
+        },
+        "hasOracle": true,
+        "expected": "got 1\nbend: deadlock: every computation waits on a channel\nexit 1",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "58d8ec7326f1b992401013e244cb35ff7447096b20d2730c38db2871c1048abb"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/chan_try_late.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/chan_try_late.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/chan_try_late.bend",
+          "sha256": "ca1748573e473546296f3bb524c600d6944ae767cef1cd4495f22ffc48703d0c",
+          "bytes": 2030
+        },
+        "hasOracle": true,
+        "expected": "B: 767263360\nA: wait\nA: then got 7\nS: sent",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "7c9a236e29dba81b16f568c10ee70294107dfe050808ae95acd424c8b614b6b9"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/channel_fork_join.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/channel_fork_join.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/channel_fork_join.bend",
+          "sha256": "c0a3a78d313d18686d981ad6a4b11be71390be49cef51623643aafd4a51e5600",
+          "bytes": 1141
+        },
+        "hasOracle": true,
+        "expected": "1122",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "d9347e0cb584e0b1b78e66d4d43ecd506175a59d238e189e370c4f00f67ae48c"
+      },
+      "new": {
+        "id": "io/channel_fork_join.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/channel_fork_join.bend",
+          "sha256": "5f1e56a192d49c04859209328325d61afe715440351a11cd500db672b2309141",
+          "bytes": 1183
+        },
+        "hasOracle": true,
+        "expected": "1122",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "6f14fcc8cd7683303767955be9f59ea97ab14fdebf2072384cf78451f6bbb65b"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/cid_capture.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/cid_capture.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/cid_capture.bend",
+          "sha256": "85b8a60111643dcbcab4bab817a3699ac20f387c713c9e55b33bc57e3109bb62",
+          "bytes": 765
+        },
+        "hasOracle": true,
+        "expected": "None\n6",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "9ac9d913503a0aa39b69d31d2ac502364b1564631e52e4f8b64164bcae9f216c"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/cid_capture_lib.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/cid_capture_lib.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/cid_capture_lib.bend",
+          "sha256": "fa42d6261ead3c66ed30410da18c9f2fba3650bde65b10668aca01c9b24ced01",
+          "bytes": 294
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError: 2 defs rely on unsafe or foreign code:\n- peek\n- list\nexit 1",
+        "namespace": "io",
+        "main": false,
+        "base": true,
+        "foreign": [
+          "./cid_capture_lib.js",
+          "./cid_capture_lib.c",
+          "./cid_capture_lib.js",
+          "./cid_capture_lib.c"
+        ],
+        "negative": true,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "90c0a8dc2b0f7c7841859a5b5722ae45c28c40ead50a06ab985c230d711ffba0"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/effect_helper_collision.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/effect_helper_collision.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/effect_helper_collision.bend",
+          "sha256": "e748653c69dfc59c9de90e2f4c77818b7a8462c0e0f52ecac008c60be9fea3ca",
+          "bytes": 377
+        },
+        "hasOracle": true,
+        "expected": "11 22",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./effect_helper_worker.js",
+          "./effect_helper_name.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "d1fccb33d7342937107a42e440be71fdc88369a383bae3cb5758b883d807b18e"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/effect_helper_collision_reverse.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/effect_helper_collision_reverse.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/effect_helper_collision_reverse.bend",
+          "sha256": "e3e1f4de7a006c4ac64c67beeb8769c146f5b9a9eae783780eda90a25817a832",
+          "bytes": 370
+        },
+        "hasOracle": true,
+        "expected": "11 22",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./effect_helper_worker.js",
+          "./effect_helper_name.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "deb44bf6406854a49e95993141a3fbe1468051c0868ceee87a79a0f313e5a8ab"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/effect_need_collision.bend",
+      "change": "deleted",
+      "old": {
+        "id": "io/effect_need_collision.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/effect_need_collision.bend",
+          "sha256": "7bd69bd9e611c6dd88ccfbd8c40021a2000e32b1d78fb89fad907ee5914cbee1",
+          "bytes": 366
+        },
+        "hasOracle": true,
+        "expected": "11 22",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./effect_need_worker.js",
+          "./effect_need_name.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "3c35b7fc7614306f3e9b8317dbf99bbe7da57624be9017497bb0929b3a1ee081"
+      },
+      "new": null,
+      "oracleOnly": false
+    },
+    {
+      "id": "io/effect_need_collision_reverse.bend",
+      "change": "deleted",
+      "old": {
+        "id": "io/effect_need_collision_reverse.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/effect_need_collision_reverse.bend",
+          "sha256": "aad9529cd66d558e3fddc629131ec3e50d556ab08cd338df4af7a43126c7e1dc",
+          "bytes": 364
+        },
+        "hasOracle": true,
+        "expected": "11 22",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./effect_need_worker.js",
+          "./effect_need_name.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "43097c27ae098b36644858ab0c8064e615d0ab45c76573008d5722fb3ec835fc"
+      },
+      "new": null,
+      "oracleOnly": false
+    },
+    {
+      "id": "io/effect_table_empty.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/effect_table_empty.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/effect_table_empty.bend",
+          "sha256": "fd77c31dac3adabef1a450ba14811453a0ecfd58ae3610d84cc4e1ff4cacad00",
+          "bytes": 65
+        },
+        "hasOracle": true,
+        "expected": "",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "25a6d39f5cfc6128d5e3e97ad000ad15442004f88f27455bd7c5c64d2a9178ca"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/effect_table_size.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/effect_table_size.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/effect_table_size.bend",
+          "sha256": "e5e94966b98f095c9b9dc3c82897579f0cef09dda608d4db5b476620138bb8f8",
+          "bytes": 654
+        },
+        "hasOracle": true,
+        "expected": "True",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "4932d847b075524e301bace953c7f93428ef95ed9d7c278c01db122bd682d252"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/effect_undefined_word.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/effect_undefined_word.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/effect_undefined_word.bend",
+          "sha256": "983b5fdf9d8013df1b450c8012345516eb557fe30e48f26c62f43d6dd590ffc7",
+          "bytes": 709
+        },
+        "hasOracle": true,
+        "expected": "18",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./effect_undefined_word.c",
+          "./effect_undefined_word.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "60d01dba3b680d1b8c6c472e372ee1bccac661b7c7962be21e9257ad60ace548"
+      },
+      "new": {
+        "id": "io/effect_undefined_word.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/effect_undefined_word.bend",
+          "sha256": "38313914149cfc8b19a1d859f16b68640acecce8b41f7f1d68bd4ad0a0934f27",
+          "bytes": 652
+        },
+        "hasOracle": true,
+        "expected": "18",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./effect_undefined_word.c",
+          "./effect_undefined_word.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "992eda4e4b9c647acbb2443fb13eb64a4262bf1b55fd5f86676d8df589d90198"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/effect_unregistered.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/effect_unregistered.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/effect_unregistered.bend",
+          "sha256": "e4357a3e01376bc11e7cf70ad4c90fbe5769cbaddc90d85c1e0c384b1efeef5c",
+          "bytes": 352
+        },
+        "hasOracle": true,
+        "expected": "before\nbend: no effect registers unregistered\nexit 1",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./effect_unregistered.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "5d693df400757e80b567acc78feb79d6527ebfbfb610452c5b3af80fc4fba43f"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/file_size_no_ffi.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/file_size_no_ffi.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/file_size_no_ffi.bend",
+          "sha256": "1a4d049a8b3479202ffbf2e5c19215e3dd6884dd80a59dc7b0e3b24efa673cdc",
+          "bytes": 1787
+        },
+        "hasOracle": true,
+        "expected": "size 5",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./file_size_no_ffi.js",
+          "./file_size_no_ffi.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "a4a4349ddc0072fe0de768bcaa09675366e2cce77b6aa30956cf5b3702aea036"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/foreign_runtime_apply.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/foreign_runtime_apply.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/foreign_runtime_apply.bend",
+          "sha256": "282719d8ea2e0343af518f138374c01ec24d0e67fcc59826972ca0cfb4ab7ace",
+          "bytes": 401
+        },
+        "hasOracle": true,
+        "expected": "42",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./foreign_runtime_apply.c",
+          "./foreign_runtime_apply.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "8577aade80b916fee2444fe4bd8d604b56e3bae6c037018fe421ae6150bd2ebc"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/foreign_runtime_apply_tail.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/foreign_runtime_apply_tail.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/foreign_runtime_apply_tail.bend",
+          "sha256": "92eb4f6cf22ffc8e72036ecad0ff991dc754586e784d50528d013b3e2b2ffd8f",
+          "bytes": 343
+        },
+        "hasOracle": true,
+        "expected": "",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./foreign_runtime_apply.c",
+          "./foreign_runtime_apply.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "96b4916abfb6bdf35601ff67f52a73e42d033e03256f15fd5368681baa440bb8"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/help_flood.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/help_flood.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/help_flood.bend",
+          "sha256": "089e46979cea94decabd0f3b2294d8df11a2d46ee6de75aefce7e66adce93405",
+          "bytes": 1552
+        },
+        "hasOracle": true,
+        "expected": "20000",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./help_flood.c",
+          "./help_flood.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "e7ef0a659e060106206623383e8d2e3f4dff204cb030ed4c2530851b7a2b35bf"
+      },
+      "new": {
+        "id": "io/help_flood.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/help_flood.bend",
+          "sha256": "6f099fb1977688338f52ffbb4e77ec4fd500aa8bcedfa3aa8301f0e380ebaf31",
+          "bytes": 1573
+        },
+        "hasOracle": true,
+        "expected": "20000",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./help_flood.c",
+          "./help_flood.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "ca77bae6e1257956e0985e7c6a3c3e1bf8305b8dbe3f1875974fc8848fb249e0"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/http_fetch_eof.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/http_fetch_eof.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/http_fetch_eof.bend",
+          "sha256": "1ecdf98f66d04eb03dfbb31ff0cc5fc80cfc22ea779faa66b9b466c9752f6811",
+          "bytes": 8032
+        },
+        "hasOracle": true,
+        "expected": "A\u00e9BC\n65516\n\u00e9\nempty:True\nmalformed:True",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "b2e6cbfc187322f4356c948ef8e7ce7c5814916ea42569b4b76cf65ad3ba7b0f"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/http_fetch_limit.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/http_fetch_limit.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/http_fetch_limit.bend",
+          "sha256": "fcee52bdcffc24aca5700715586bf84f9589cf172a735bad24202303e39da48a",
+          "bytes": 235
+        },
+        "hasOracle": true,
+        "expected": "HTTP response exceeds 65536 bytes\nexit 1",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "c057782e58c1f171bb49f72aff64c24c73b832264ad75c24776c7952a870bcfc"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/marshal_array_depth.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/marshal_array_depth.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/marshal_array_depth.bend",
+          "sha256": "e5ab61ed11d1c6f462ccd5945bf763ff2272c0ea4f79021461f5b1abd3419e13",
+          "bytes": 1117
+        },
+        "hasOracle": true,
+        "expected": "ok",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./marshal_array_depth.js",
+          "./marshal_array_depth.c"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "3dc2fb1d8f66db32adb59004f471c3eb9c8bf1403417c688b841aae20f50a8b2"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/nat_host_chan.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/nat_host_chan.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/nat_host_chan.bend",
+          "sha256": "8dc6d0c15cdceec7c1b9a8624db89dd075919f37dcefacec21d869de701783e6",
+          "bytes": 603
+        },
+        "hasOracle": true,
+        "expected": "281474976710655",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "01f7e200db90ce50428244b26c97f43788ae1b95b4a650bbbf254750595fe607"
+      },
+      "new": {
+        "id": "io/nat_host_chan.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/nat_host_chan.bend",
+          "sha256": "c41b4de34a4e2351d05c6d4c356ec191244e5b7dc02d9c329f80e0ba49b7d9a0",
+          "bytes": 624
+        },
+        "hasOracle": true,
+        "expected": "281474976710655",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "e7ece461d0ad4c84e7bdeaa72d83d13643d58470d84e31211530616dd6e8cf54"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/port_bound.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/port_bound.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/port_bound.bend",
+          "sha256": "e66b7b95793ef90718b5e696a3a43dc4f4f72ef37f63b8f608081c47fedfbf3f",
+          "bytes": 2309
+        },
+        "hasOracle": true,
+        "expected": "Invalid argument\nInvalid argument\nInvalid argument\nInvalid argument\nsent",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "47374e6675cfff5d7efea8cafa48789f8cbe11c71a688d36f4db3fdf6b9e7675"
+      },
+      "new": {
+        "id": "io/port_bound.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/port_bound.bend",
+          "sha256": "a5ed943d3d34d31e5badffb88a93daba6b4e1986820001ba71dac44bbd31b127",
+          "bytes": 2315
+        },
+        "hasOracle": true,
+        "expected": "Invalid argument\nInvalid argument\nInvalid argument\nInvalid argument\nsent",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "a2f4affacad851dd614d9e7fe41a032ce3db03eb65a351926dd4b18553b77920"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/random_u32_js_fail.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/random_u32_js_fail.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/random_u32_js_fail.bend",
+          "sha256": "ed4896905f565a9ed497d13df204443de2bcff3fe99455afdb050f11dcb8cac6",
+          "bytes": 851
+        },
+        "hasOracle": true,
+        "expected": "fail 5",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [
+          "./random_u32_js_fail.js"
+        ],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "foreign",
+        "bodySha256": "36415cee673983ef0df27d3934cd69804bb06f1a3c81423d6bbaabe64d1ee042"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/request_out_of_band.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/request_out_of_band.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/request_out_of_band.bend",
+          "sha256": "6bd9fa70be812911e71eab45b6a005cca4baa83b8764057fbfb79da1a333b115",
+          "bytes": 2064
+        },
+        "hasOracle": true,
+        "expected": "3\nbend: runtime fail-stop\nexit 1",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "f315f624a6b54329c84e8d0b174bd4d1e72232491f008b12fb1e89dde6b5d782"
+      },
+      "new": {
+        "id": "io/request_out_of_band.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/request_out_of_band.bend",
+          "sha256": "61a2b7111a1c92ca9aa5648d02d61be92016ddec754a6a7bc1fe3c11c4b04772",
+          "bytes": 2022
+        },
+        "hasOracle": true,
+        "expected": "3\nbend: runtime fail-stop\nexit 1",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "9e498dd3eef1d89e55803448bfa9843ee7949d12bf6b214105fb2978298edd92"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/request_wildcard.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/request_wildcard.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/request_wildcard.bend",
+          "sha256": "734d78bf220080bf677f7cc624e5b5c34c15d3e286b5e8991262fff06ffe0371",
+          "bytes": 1157
+        },
+        "hasOracle": true,
+        "expected": "other\nbend: runtime fail-stop\nexit 1",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "107b17740be4a3b68786379c6823aeb8b8195c844b78c98274296743914f9a9d"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/tcp_backlog_timer.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/tcp_backlog_timer.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/tcp_backlog_timer.bend",
+          "sha256": "7e902624ad66b414de9dba6af1ccce0930d9f1fd8a0b7b35b522a48f24e4c0e4",
+          "bytes": 2550
+        },
+        "hasOracle": true,
+        "expected": "tick\ndrained",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "27d18d446401860fe0b055f22b06391f8fea1f9e9ca119fb7c77ec29c4918171"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/tcp_bytes.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/tcp_bytes.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/tcp_bytes.bend",
+          "sha256": "4a8d08bea202cc20467bc3f5fe64b41884a2516af22e3ee1b96b1e085300c8de",
+          "bytes": 2923
+        },
+        "hasOracle": true,
+        "expected": "79 195\n161 255 0\n22",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "974070379f4ba6ff894fa44cb7f14ba05c88c0af90901cc83bd76937b4212339"
+      },
+      "new": {
+        "id": "io/tcp_bytes.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/tcp_bytes.bend",
+          "sha256": "c16d344dcbf2d0b05717f8a2e7fbcc2206b4140140cdbe66b80cf66089ea6ce6",
+          "bytes": 3389
+        },
+        "hasOracle": true,
+        "expected": "79 195\n161 255 0\n22, kept 1 256",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "fd8dd7a548e6e797df2492626d1a67cf683441f84af98ec4b84c5e762bc5fd5e"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/tcp_loopback.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/tcp_loopback.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/tcp_loopback.bend",
+          "sha256": "3b5da94aa15d3d77c0cb10f5cbd44c4783da13bf2eff836e9c29fd62e2dec090",
+          "bytes": 2752
+        },
+        "hasOracle": true,
+        "expected": "bend-tcp",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "f2d5ea91471b6967c89df6022d3424873afb84f32287e26f1c89d86c80f6922d"
+      },
+      "new": {
+        "id": "io/tcp_loopback.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/tcp_loopback.bend",
+          "sha256": "e3b7776e936c7a18dc9634e9fa128bfdd2a6e0131d917b3d5584f9cff05829df",
+          "bytes": 2967
+        },
+        "hasOracle": true,
+        "expected": "bend-tcp",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "9fba570d416dead0c99f35c3aaad45be448a8eb0d4a9a02532a2836937b27ad5"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/tcp_poll.bend",
+      "change": "deleted",
+      "old": {
+        "id": "io/tcp_poll.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/tcp_poll.bend",
+          "sha256": "06a959c38235c1a6aa60e14ebd932723ef662e87d8bd577200cf425af05f2e46",
+          "bytes": 4297
+        },
+        "hasOracle": true,
+        "expected": "none\ntimeout\nwaited\nbend-poll",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "13af0b990751453a7fcec01f10bdad8456a4ef812843c9fea1fafb4e79035a48"
+      },
+      "new": null,
+      "oracleOnly": false
+    },
+    {
+      "id": "io/tcp_recv_max_zero.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/tcp_recv_max_zero.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/tcp_recv_max_zero.bend",
+          "sha256": "5cf7cf40a034acdd8189ee31df1cdc9f80f26cd14e3c32d9012877de86e892b9",
+          "bytes": 4481
+        },
+        "hasOracle": true,
+        "expected": "poll: 22 Invalid argument\nrecv: 22 Invalid argument\nrecv_bytes: 22 Invalid argument\nthen recv 64: done: hello",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "b1e00ce03ebc8b3f70e64f585a589da04eab49a0923b957464a91dba8da63d96"
+      },
+      "new": {
+        "id": "io/tcp_recv_max_zero.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/tcp_recv_max_zero.bend",
+          "sha256": "a4a40f54cef3a9977949945a4c33590e6223a55fadb5c688b02bce5b4e92ff1d",
+          "bytes": 4700
+        },
+        "hasOracle": true,
+        "expected": "try_recv: 22 Invalid argument\nrecv: 22 Invalid argument\nrecv_bytes: 22 Invalid argument\nthen recv 64: done: hello",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "5500cc183624289e1c0b1470735a2cc6f536e58351fc2480913bd55245df7cc6"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/tcp_send_slow_peer.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/tcp_send_slow_peer.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/tcp_send_slow_peer.bend",
+          "sha256": "7e196f1914f2eb11aee983eb38261d77f8b3dfc0166302c17be2ca6a7fb5bf54",
+          "bytes": 3910
+        },
+        "hasOracle": true,
+        "expected": "loop alive\ncanary fast",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "d3c4ab4c02c76c8ec4cd5abec6b318d73803e8c9365d51d99f0e189405756597"
+      },
+      "new": {
+        "id": "io/tcp_send_slow_peer.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/tcp_send_slow_peer.bend",
+          "sha256": "a264d4fd2774f3bc1fb549b5c1a2383e9ee741a2c8c341633635128b73d847a7",
+          "bytes": 3928
+        },
+        "hasOracle": true,
+        "expected": "loop alive\ncanary fast",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "f1233692d8eca9efa8d01ee3b5939d472c5030d829df048821bdb1e3d25a8786"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/tcp_short_recv.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/tcp_short_recv.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/tcp_short_recv.bend",
+          "sha256": "5fa954b7c83b0252de834938375b5d4c8d1f501fae199e0b3a02388a649a2453",
+          "bytes": 3416
+        },
+        "hasOracle": true,
+        "expected": "abc\ndef\nend:",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "98d3f1ea372bab0cadafef6d930b37474161a9e843218f8109a5f83d160086e9"
+      },
+      "new": {
+        "id": "io/tcp_short_recv.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/tcp_short_recv.bend",
+          "sha256": "3510d5a5576b12bac547d7ab9f4cbd996ec230ac688ea29c3e432cbbba7ab97a",
+          "bytes": 3750
+        },
+        "hasOracle": true,
+        "expected": "abc\ndef\nended",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "3d0e8f09de2a474cee678b3e88b9fd71f37b79cc152a3b1a07aacf09985e715c"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/tcp_spawn.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/tcp_spawn.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/tcp_spawn.bend",
+          "sha256": "12c2683ae4473a548199edaf547e46f67c1ae14cd1ee7f1592473a61195ae4c1",
+          "bytes": 3756
+        },
+        "hasOracle": true,
+        "expected": "echo:one\necho:two\necho:three",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "eaa50fa88f43be948c3ea684a588f545304fa300b40a29780908ccfef77a6bd7"
+      },
+      "new": {
+        "id": "io/tcp_spawn.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/tcp_spawn.bend",
+          "sha256": "72a8c7481e47f6e7d01394c221f4b63acf4a8cf0d1732bd326c66090e41a63aa",
+          "bytes": 4072
+        },
+        "hasOracle": true,
+        "expected": "echo:one\necho:two\necho:three",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "f97d03f3b111e0e304337c429d2fb4233128a0e5daca9c1d90e17dc169a73437"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/tcp_try.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/tcp_try.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/tcp_try.bend",
+          "sha256": "bac1d9355bf184c0eabe6dc7e6f147d44c01073d74ff161ccb3ed6d0a925e7d0",
+          "bytes": 6286
+        },
+        "hasOracle": true,
+        "expected": "accept: wait\naccept: ready\ntry_recv: wait\nrecv: late\nrecv: ended\nsend: wait, rest kept",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "a982b1681dce04a2ae5192351a817e5032d6ff73399e8c0ea3fcb9aa50b817cb"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/tcp_try_bytes.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/tcp_try_bytes.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/tcp_try_bytes.bend",
+          "sha256": "6267f172cee1bc95e1fac2086ce9b317e2d30c5adfb8445c917cd425e5947837",
+          "bytes": 5143
+        },
+        "hasOracle": true,
+        "expected": "try_recv_bytes: wait\ntry_recv_bytes: 1 2 3\ntry_send_bytes: 22, kept 1 256\ntry_send_bytes: wait, rest kept",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "0d9dc2f8f3dfd87a1065c1b139b894212329e3f4324d7d6e75e01351aed4b843"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/tcp_try_recv.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/tcp_try_recv.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/tcp_try_recv.bend",
+          "sha256": "73611e6d029f25aeebe62c3ab153adba38a2f26c768d7c740b79173624f72474",
+          "bytes": 4715
+        },
+        "hasOracle": true,
+        "expected": "none\ntimeout\nwaited\nbend-poll",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "1b98649f94416b1513ec79fd7575b305d643316a844f18c32c59e58f0dc7e05d"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/udp_backlog_timer.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/udp_backlog_timer.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/udp_backlog_timer.bend",
+          "sha256": "6e8da185fb9f4b2d0b89ae550868977552aea05e49fa65dbdca870bc4e55a303",
+          "bytes": 2873
+        },
+        "hasOracle": true,
+        "expected": "tick\ndrained",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "a47392ad12d44c861acf096d9ff6f3aaac57608166c12de71e78c875ff20856b"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/udp_bad_address.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/udp_bad_address.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/udp_bad_address.bend",
+          "sha256": "11c12f01588f7bd4343cb39f49a0ba58b45e9145c168e5b8dc4ded672249a26d",
+          "bytes": 1751
+        },
+        "hasOracle": true,
+        "expected": "Invalid argument\nInvalid argument\nInvalid argument\nInvalid argument\nInvalid argument\nsent",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "21f9efd40c2ee9f893c2274bffb8c293f159740f9605de2a77be6ed891079ed9"
+      },
+      "new": {
+        "id": "io/udp_bad_address.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/udp_bad_address.bend",
+          "sha256": "53041e699913d9d6efc98a781eded3a4ba88b240337256637c442ff90d593991",
+          "bytes": 2031
+        },
+        "hasOracle": true,
+        "expected": "Invalid argument, kept x\nInvalid argument, kept x\nInvalid argument, kept x\nInvalid argument, kept x\nInvalid argument, kept x\nInvalid argument, kept x\nsent",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "ccaede07ecf5af1d92421a44a2d257e1d2d274461e96a4b17fe0e992f0704fbf"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/udp_bytes.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/udp_bytes.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/udp_bytes.bend",
+          "sha256": "f9eb16666fdaa00a3ab16b75f44a136f8ce30b6905741271e3257aa2b40a4303",
+          "bytes": 6838
+        },
+        "hasOracle": true,
+        "expected": "0 255 195 161 128\n195 161\nempty\n1 2\n22, kept 1 256\n22, kept 7 8\nwait\nready sent\nready 9 200 0\nready 22, kept 300\nwait\nrecv failed 22",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "495a796d634318e91b301b4938da227131325b083abcadca7a494ff678fb6718"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/udp_loopback.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/udp_loopback.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/udp_loopback.bend",
+          "sha256": "b355304082e8d27b6d1c949a8432eb49b7503d49f00d0ef6dc45ee4ae5524a33",
+          "bytes": 2363
+        },
+        "hasOracle": true,
+        "expected": "bend-udp",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "104a6fc6169ca883bb988e45f12fd8a7dfbe933c26262041490554aa0c079441"
+      },
+      "new": {
+        "id": "io/udp_loopback.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/udp_loopback.bend",
+          "sha256": "e0c9560098258f478a55409d2a8aba26e17bdee3d4fe086b1abb48763456d87b",
+          "bytes": 2468
+        },
+        "hasOracle": true,
+        "expected": "bend-udp",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "5c3a8e2accb9f078458dc668ed63077fe1a126eb0ed0e075fc33b3fab964e380"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/udp_poll.bend",
+      "change": "deleted",
+      "old": {
+        "id": "io/udp_poll.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/udp_poll.bend",
+          "sha256": "d3fe1c33eb2c2bad3dd16dd453c4166a26f6e80ce339a147fa4849b1b38f68f6",
+          "bytes": 3585
+        },
+        "hasOracle": true,
+        "expected": "none\nbend-poll",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "417459b87197edd7ecc1a3ead080a87fc70daae39754f6d8581eebb14cccef81"
+      },
+      "new": null,
+      "oracleOnly": false
+    },
+    {
+      "id": "io/udp_recv_max_zero.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/udp_recv_max_zero.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/udp_recv_max_zero.bend",
+          "sha256": "cbb95c2f0427ab65b8585ff5bf16f38b97e76c0e7adf60937ac1add3cd3217b2",
+          "bytes": 3426
+        },
+        "hasOracle": true,
+        "expected": "try_recv_from: 22 Invalid argument\nrecv_from: 22 Invalid argument\nqueued: 22 Invalid argument\nthen recv_from 64: got hello",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "b88d42f17b0ea683059907be6bad1eadc730858cbe2eabb8a4afcc7136abc6a8"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/udp_recv_park.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/udp_recv_park.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/udp_recv_park.bend",
+          "sha256": "b0bd1f590efb5cb17f30a0275ec201f9c4ca602f472460d499ac5ad7044197a6",
+          "bytes": 2660
+        },
+        "hasOracle": true,
+        "expected": "tick\ntick\ntick\nbend-park",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "9b3c030e8a5f0876bbad1dbfc66fe0ebfc78e0cf9b663bc1e8a8213744e26fbf"
+      },
+      "new": {
+        "id": "io/udp_recv_park.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/udp_recv_park.bend",
+          "sha256": "af6d532f1c9aba4742deabd87a7eb4b7cdf190f8bd887fd050bceb5af58949d8",
+          "bytes": 2765
+        },
+        "hasOracle": true,
+        "expected": "tick\ntick\ntick\nbend-park",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "4b661de4c6f343fe29652f245a58e5a9e9bd6f9127dc52688253157457a8a120"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/udp_send_recv.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/udp_send_recv.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/udp_send_recv.bend",
+          "sha256": "4400bd1b9fe0fd05a8765ec04141b5d1c094a1eb719cd19f1b4f0b0072cce425",
+          "bytes": 3572
+        },
+        "hasOracle": true,
+        "expected": "bend-udp-pong\n-pong",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "5de2d8be1f54e0521ec35aeb272192bc4b6711b8955b69c0c5571e6b6ca594e6"
+      },
+      "new": {
+        "id": "io/udp_send_recv.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/udp_send_recv.bend",
+          "sha256": "edd3b33bf072b1e090e3f8556a8614d8378d58cb52ea960412983aab93ef32e9",
+          "bytes": 3686
+        },
+        "hasOracle": true,
+        "expected": "bend-udp-pong\n-pong",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "3f8657d38b84892ea65cadcaf1486ee30e1b4e76e70f2bf05b81022bbd67ae2d"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/udp_truncate.bend",
+      "change": "modified",
+      "old": {
+        "id": "io/udp_truncate.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/udp_truncate.bend",
+          "sha256": "6aba71bb8eebe8d246cd7b95043509abde08ba1b48f19aa6c19f66645d0a173d",
+          "bytes": 3701
+        },
+        "hasOracle": true,
+        "expected": "012\ntail-intact",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "d6cbf85a8928a55f02448f309e8ecda4c2272b0103135dcc8a341c49157cfb7e"
+      },
+      "new": {
+        "id": "io/udp_truncate.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/udp_truncate.bend",
+          "sha256": "ef252657de6e8d6accaf759d087db18753886c120020322385829848bbfb4ee4",
+          "bytes": 3815
+        },
+        "hasOracle": true,
+        "expected": "012\ntail-intact",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "b543f9810cad850a5be2f2fbe8f50bd14b95d6291a11ff9f601ff00b33c57060"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/udp_try.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/udp_try.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/udp_try.bend",
+          "sha256": "f3ebdfac59e2a5b0617296b1508751f84286af29849b2299c3fb6dd1bf58565c",
+          "bytes": 4718
+        },
+        "hasOracle": true,
+        "expected": "wait\nready late\nwait\nready sent\nready now\nInvalid argument, kept back\nready Invalid argument, kept again",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "e948eb9dfbd94d673be287c6aa4ff3487ce89a860df395b018be00500a7120a6"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/udp_try_recv_from.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/udp_try_recv_from.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/udp_try_recv_from.bend",
+          "sha256": "de8e675d9d5d23566a4572cbecd2b8ac2a7dee794c9ed7f879ad56c71594cf9f",
+          "bytes": 3420
+        },
+        "hasOracle": true,
+        "expected": "wait\nbend-poll",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "network",
+        "bodySha256": "9679b570f730952b83a11ab4abb92b01d603139d4951da16a7bd616b3a5a22f0"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "io/within_busy.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "io/within_busy.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/within_busy.bend",
+          "sha256": "b9f65a0add3821835c78f4a8d9b6ceb11b3ffdb36cc1887aed7fce5f2ce033ea",
+          "bytes": 1548
+        },
+        "hasOracle": true,
+        "expected": "deadline\npipeline done",
+        "namespace": "io",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "scheduler",
+        "bodySha256": "3dbd4281103bb66e8e543da6b1cbd1aa97449faf635f6c25c577f7d00cf89957"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "parse/array_set_call_row.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "parse/array_set_call_row.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/parse/array_set_call_row.bend",
+          "sha256": "5b4b9e4c754a5668efefedc04bb7433effc1af69503a1222cf09103720fa3843",
+          "bytes": 502
+        },
+        "hasOracle": true,
+        "expected": "([1, 1], [9, 1])",
+        "namespace": "parse",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "05e5372d2b6f96e7f5ee7109a5c83e92052dae490cdc93f1b7c8722a718f161d"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "parse/let_in_argument.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "parse/let_in_argument.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/parse/let_in_argument.bend",
+          "sha256": "7948b5f126773bc2c079ebc0c288f90b66f551fb216702edc7cac14a24eed6f9",
+          "bytes": 691
+        },
+        "hasOracle": true,
+        "expected": "n => Nat.add(n, 2n)",
+        "namespace": "parse",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "b3d35f111c3ac276d3460e346fb0905a4c9f4943d98607ad9b9af0ed9aa7dd7a"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "printer/let_in_argument_arg.bend",
+      "change": "deleted",
+      "old": {
+        "id": "printer/let_in_argument_arg.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/printer/let_in_argument_arg.bend",
+          "sha256": "8b59fda141b1cd92748383c686c282e6474ce788257e4698a24c69742c233c7e",
+          "bytes": 741
+        },
+        "hasOracle": true,
+        "expected": "n => Nat.add(n, 2n)",
+        "namespace": "printer",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "6cfecbc525c7a81a5c93feb5b7eb8c49e1693b8cd7b3eb3983151bfa52996217"
+      },
+      "new": null,
+      "oracleOnly": false
+    },
+    {
+      "id": "printer/let_in_argument_bod.bend",
+      "change": "deleted",
+      "old": {
+        "id": "printer/let_in_argument_bod.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/printer/let_in_argument_bod.bend",
+          "sha256": "98c339b06493df94d5649cb3e54359e06014a8dbc798467d9d08e4943c71f1d8",
+          "bytes": 745
+        },
+        "hasOracle": true,
+        "expected": "n => m => Nat.add(n, m)",
+        "namespace": "printer",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "c0aab75458480f5a85ab1f3dafabbca753665c07575f2dfb409ade3fb7304d7f"
+      },
+      "new": null,
+      "oracleOnly": false
+    },
+    {
+      "id": "printer/let_in_argument_fld.bend",
+      "change": "deleted",
+      "old": {
+        "id": "printer/let_in_argument_fld.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/printer/let_in_argument_fld.bend",
+          "sha256": "32934c762c2f1ab5db266c345094857be9ac83c350beb6d4e175d95fc46ee5be",
+          "bytes": 735
+        },
+        "hasOracle": true,
+        "expected": "n => MkBox{n}",
+        "namespace": "printer",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "0242d49e22ce7754863e10aaa16ddf69515b22c9df1825938c2bc339b19a5230"
+      },
+      "new": null,
+      "oracleOnly": false
+    },
+    {
+      "id": "printer/let_in_argument_knd.bend",
+      "change": "deleted",
+      "old": {
+        "id": "printer/let_in_argument_knd.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/printer/let_in_argument_knd.bend",
+          "sha256": "e6b879b1ab1714711545915dc9a06bbf706be5d54ae325a6f44199c431e0bf6a",
+          "bytes": 734
+        },
+        "hasOracle": true,
+        "expected": "q => Kind(q)",
+        "namespace": "printer",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "4ef8c9475dcaa43eaa39bd6b9395136cb1dd3f9ce997d69ab8dd2d8c497e752d"
+      },
+      "new": null,
+      "oracleOnly": false
+    },
+    {
+      "id": "printer/let_in_argument_typ.bend",
+      "change": "deleted",
+      "old": {
+        "id": "printer/let_in_argument_typ.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/printer/let_in_argument_typ.bend",
+          "sha256": "d7f4c1b9ddd979964d22216632657bfbb092f4ca53a269e3172f8b904ef2c2e8",
+          "bytes": 733
+        },
+        "hasOracle": true,
+        "expected": "A => Box<A>",
+        "namespace": "printer",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "024d5d64a4845a5f6a09a051b1b73aacabba1ec71dd45c940eecc7b661516241"
+      },
+      "new": null,
+      "oracleOnly": false
+    },
+    {
+      "id": "printer/offload_bang_g.bend",
+      "change": "modified",
+      "old": {
+        "id": "printer/offload_bang_g.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/printer/offload_bang_g.bend",
+          "sha256": "f72b17474c557a39d6f0f5d67498749e567560587aeee80e672ae2a1242d0549",
+          "bytes": 337
+        },
+        "hasOracle": true,
+        "expected": "n => n",
+        "namespace": "printer",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": true,
+        "runtimeClass": "pure",
+        "bodySha256": "aa80ed85c2e05558c9211be8225e013fa0f2ac51813df9fbe3a6d8c41502c4ca"
+      },
+      "new": {
+        "id": "printer/offload_bang_g.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/printer/offload_bang_g.bend",
+          "sha256": "5b88ca3b1d371b49e1fe557ff584a360b8b78ddb1103ed61fbeb6ca5ac56063e",
+          "bytes": 465
+        },
+        "hasOracle": true,
+        "expected": "n => f!(n)",
+        "namespace": "printer",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": true,
+        "runtimeClass": "pure",
+        "bodySha256": "71b7f92905420308103c7d8a5ff933e646fb4682f51d5d36c0397ac8a58a76bb"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "printer/offload_bang_h.bend",
+      "change": "modified",
+      "old": {
+        "id": "printer/offload_bang_h.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/printer/offload_bang_h.bend",
+          "sha256": "78f71b6ffed274d81889c437a267909bcc8259e5f50fd8ff24e971cdd84a97ba",
+          "bytes": 349
+        },
+        "hasOracle": true,
+        "expected": "n => Nat.add(n, n)",
+        "namespace": "printer",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": true,
+        "runtimeClass": "pure",
+        "bodySha256": "0ccf4f522a5f1c8d987204b614888926bbab7b3fb782a382daeb2a6920ae5a36"
+      },
+      "new": {
+        "id": "printer/offload_bang_h.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/printer/offload_bang_h.bend",
+          "sha256": "0ced30c63fb3e41de42b0965fd3d4aed5a13630e3e6fcc09bf17e9c29495e906",
+          "bytes": 480
+        },
+        "hasOracle": true,
+        "expected": "n => Nat.add(f!(n), f(n))",
+        "namespace": "printer",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": true,
+        "runtimeClass": "pure",
+        "bodySha256": "7bef2e53f53d2bd0f4147c2a1248f0ba2e65cb18a1de6b3d784e712236ad4f6d"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "proof/dead_fallback_type.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "proof/dead_fallback_type.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/proof/dead_fallback_type.bend",
+          "sha256": "2935f66216638b700220e8b3b8c09ec2ea0c680fbf1810c644744c15c95ae7bb",
+          "bytes": 577
+        },
+        "hasOracle": true,
+        "expected": "3n",
+        "namespace": "proof",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "4027aceb6a1908066a8a5b2287fda8331d9c65ef7e8002055bf40563199ce827"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "proof/empty_efq.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "proof/empty_efq.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/proof/empty_efq.bend",
+          "sha256": "4f4ec21d9cbe3d4a3f36be47f4f481cf0c89b36b1449c5a62a36b44227b8199c",
+          "bytes": 469
+        },
+        "hasOracle": true,
+        "expected": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+        "namespace": "proof",
+        "main": false,
+        "base": false,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "bfe9d49fbceb0d5308107fb5567269f2fce138ad19b155891859f8765c696c73"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "proof/group_dead_forward.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "proof/group_dead_forward.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/proof/group_dead_forward.bend",
+          "sha256": "7f8255d43c98e3870ee3496d01487813549e2d023b5e895df72adab2741c01f4",
+          "bytes": 652
+        },
+        "hasOracle": true,
+        "expected": "5n",
+        "namespace": "proof",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "f5edf7fc211ebabb1571fa5337ca2479477fbd9bcfe59045db6416c74ef9bb09"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "proof/lam_copy_eta.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "proof/lam_copy_eta.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/proof/lam_copy_eta.bend",
+          "sha256": "a6e6234a358ef96b15b2ff92095e32b216f3f90ca71e87f01123f91fdf277ed1",
+          "bytes": 781
+        },
+        "hasOracle": true,
+        "expected": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+        "namespace": "proof",
+        "main": false,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "a79cbb3560599dedad227664f89e005cb97abb81334e05c1642640aaa27d48dd"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "proof/model_false.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "proof/model_false.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/proof/model_false.bend",
+          "sha256": "3f098485e64f59835ff3aac4013001c56ba92c2f8e2fc9b3b74f1793c3136825",
+          "bytes": 241
+        },
+        "hasOracle": true,
+        "expected": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+        "namespace": "proof",
+        "main": false,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "e9f529f48dfbc79adf605ebe151a9fb0aff006cbcaf525b4331e86add66b5e55"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "proof/model_lambdas.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "proof/model_lambdas.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/proof/model_lambdas.bend",
+          "sha256": "6696b75477c3a8a52e3a00b0d32737a6a44749e5424ba7589b089e895e5f4a92",
+          "bytes": 242
+        },
+        "hasOracle": true,
+        "expected": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+        "namespace": "proof",
+        "main": false,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "a5c22a09e8d9a3e4070ab7a69c12ba703f816511bc5a05fc57447410ff15b423"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "proof/model_no_base.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "proof/model_no_base.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/proof/model_no_base.bend",
+          "sha256": "bb60af041b3497f48c6759a04166da4630da381582870124444b6a58803e6d6c",
+          "bytes": 341
+        },
+        "hasOracle": true,
+        "expected": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+        "namespace": "proof",
+        "main": false,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "28fbfc8725e5f1c5cf223c04407e5b792c5e2c99b68bdad588bd53fed17b61c5"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "proof/model_order.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "proof/model_order.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/proof/model_order.bend",
+          "sha256": "5b416dbf2a6f070815853ec799a554d53e9f698a9683aa32597bddd5be5b547f",
+          "bytes": 927
+        },
+        "hasOracle": true,
+        "expected": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+        "namespace": "proof",
+        "main": false,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "8a6bf70526efc189c3273d6b5192aad4d2d174939f521ff01fef4653ab4cd552"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "proof/model_search.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "proof/model_search.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/proof/model_search.bend",
+          "sha256": "9af14268adbd27318ac623fffe1e7286773dfdb3eff941e5d76aa2536e52d229",
+          "bytes": 615
+        },
+        "hasOracle": true,
+        "expected": "7n",
+        "namespace": "proof",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "0e2cd108aaacb625b776cd10458c38afd76833a35a82f0fd619a1e434f60c22e"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "proof/refined_proof_copy.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "proof/refined_proof_copy.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/proof/refined_proof_copy.bend",
+          "sha256": "04178bcd8e1129c44cf8f3f725c94f37edba625f2172f384d76eca14da33c4e8",
+          "bytes": 2368
+        },
+        "hasOracle": true,
+        "expected": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+        "namespace": "proof",
+        "main": false,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": false,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "0dc514739a2705cc1d6155d4cf12e600e911efdc7b0e969631b9603c09a8bdb9"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "reg/const_shared_layout.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "reg/const_shared_layout.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/const_shared_layout.bend",
+          "sha256": "dcf85012c8d707c9499b56b3179016bfde5398329ffadf08fd281c1c446ad479",
+          "bytes": 1091
+        },
+        "hasOracle": true,
+        "expected": "ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{ChooseLeft{42}}}}}}}}}}}}}}}}}}}}}}}}",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "a5169f1fd9ef3eb88ad60266efc21d8a68cbf370bf263e0c1bab3d653be48f4f"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "reg/fork_spin_hold.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "reg/fork_spin_hold.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/fork_spin_hold.bend",
+          "sha256": "afd3dd080e6964dc8a8895730ea6da6121e7dd4c06f0ed8f070f42d1e63540f9",
+          "bytes": 1308
+        },
+        "hasOracle": true,
+        "expected": "12 5",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "e8056b2454c12c654e315179085311438f390a8f9856b80a737abdb964045232"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "reg/framed_cell_capture.bend",
+      "change": "modified",
+      "old": {
+        "id": "reg/framed_cell_capture.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/reg/framed_cell_capture.bend",
+          "sha256": "85747dfefdf5335853e1f72957881492a01447c69e4eaad25e021177823756fe",
+          "bytes": 725
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : a match on a parameter or field (this name is a def or a consumed binder: give the value its own def)\nLocation:\n17 | def frame(b):\n18>|   match a : Bool = b, c : Bool = a:\n   |         ^\n19 |     case x, y:\nexit 1",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "ce4b3442fa9eb9891ba35aa112efb02a4a237d948ee82c91db6e86d2e3544cf8"
+      },
+      "new": {
+        "id": "reg/framed_cell_capture.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/framed_cell_capture.bend",
+          "sha256": "2b373a1556370132f9db971b88ffa9595a3a00fea770219c486c89ad67ac88c6",
+          "bytes": 776
+        },
+        "hasOracle": true,
+        "expected": "SOME PROOFS FAIL\nError:\n- message  : 'a' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n17 | def frame(b):\n18>|   match a : Bool = b, c : Bool = a:\n   |         ^\n19 |     case x, y:\nexit 1",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": true,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "ce4b3442fa9eb9891ba35aa112efb02a4a237d948ee82c91db6e86d2e3544cf8"
+      },
+      "oracleOnly": true
+    },
+    {
+      "id": "reg/intr_chain_deep.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "reg/intr_chain_deep.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/intr_chain_deep.bend",
+          "sha256": "db07c6451ccf5c5c0f88854dc84f053d3f41bf8a9e07c8495eeb38a26fb7f6a1",
+          "bytes": 3482
+        },
+        "hasOracle": true,
+        "expected": "1068265242\n377849760",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "6deebf9ef3b8b5192ed33f91f8c9c5d72397fdbe4b9fc65b5d31becd02f07b7e"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "reg/native_erased_layout.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "reg/native_erased_layout.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/native_erased_layout.bend",
+          "sha256": "b3b9b2b55e05a2f8b31c558f639cbdcecfca7b8621d24ab698ad6969328e7606",
+          "bytes": 526
+        },
+        "hasOracle": true,
+        "expected": "7",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "f3f0854cc6be58b916fe45a0e22a0ac3a426e75963720a46dcd3a975e9f349e3"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "reg/rwt_type_share.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "reg/rwt_type_share.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/rwt_type_share.bend",
+          "sha256": "6447013694726b3330f73f0b5df13c84e82b9a4b9cced80fc63b2232d3a772a8",
+          "bytes": 2573
+        },
+        "hasOracle": true,
+        "expected": "(18, 14, 18, 18, 218, 6)",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "2809be060cfa071c76f107954f2633a948e918764aa37b568953a3f1be2cb13b"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "reg/show_shared_layout.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "reg/show_shared_layout.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/show_shared_layout.bend",
+          "sha256": "23e65179efdd28ebeaae048efe819b29ffd26549cc8be42d85ab1eeb842bd06e",
+          "bytes": 500
+        },
+        "hasOracle": true,
+        "expected": "Final{42}",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "18707f30e645c017fa1d0cd8fb063b4091902acece6240c0705bc5785ac276d5"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "reg/spin_lent_sink.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "reg/spin_lent_sink.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/spin_lent_sink.bend",
+          "sha256": "da20f0013035dd035a00145dc98d8a31357d733c6760a546d063ffa6617c5345",
+          "bytes": 1745
+        },
+        "hasOracle": true,
+        "expected": "4000010 2000000 4",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "b360580edfff8034536bb3c621054076c5283597c848f864b12599f4f97df71f"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "reg/u32_literal_word_field.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "reg/u32_literal_word_field.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/u32_literal_word_field.bend",
+          "sha256": "ddaca72c4c890142ea5596a678dd958e866cb94a8a5976883abdefc7e702036e",
+          "bytes": 1940
+        },
+        "hasOracle": true,
+        "expected": "5\n6\n7\n8\n10",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "e4dc17068010dd2eb69e5991071891520d794c5a273cb11bdf8f28d904e040e8"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "reg/wnf_memo_bound_key.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "reg/wnf_memo_bound_key.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/wnf_memo_bound_key.bend",
+          "sha256": "7c128313c47d6c6fbf45beb7c6cecae5cf348b67ea7f59c0bc10cb95bdf23e37",
+          "bytes": 1197
+        },
+        "hasOracle": true,
+        "expected": "100\n100000\n100\n7",
+        "namespace": "reg",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "12fed3686b7b48263a9bb017e7266f1a3540da7cb3214a40d0fb5744260ef6c0"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "run/f32_read_whitespace.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "run/f32_read_whitespace.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/f32_read_whitespace.bend",
+          "sha256": "b434e0652e2c59ec4decd88f33af2aa0bff9a9da247b7c92a24e7ea77f557c1d",
+          "bytes": 1812
+        },
+        "hasOracle": true,
+        "expected": "1 1 1 1 1 1 1\nnone none none none none none none none none none none none none\nnone none none none none none\n-125 0.5 inf nan\nnone none none none\nnone none none none none",
+        "namespace": "run",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "ac2bf9558f68611f161c31789d12d0c4e97232ebe976527a52adcb610bfe9377"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "run/if_elif_desugar.bend",
+      "change": "modified",
+      "old": {
+        "id": "run/if_elif_desugar.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/run/if_elif_desugar.bend",
+          "sha256": "bb74574f92c14eb05c44e774d506b323c8541ac1666f25744d7b8708f05d3be4",
+          "bytes": 1424
+        },
+        "hasOracle": true,
+        "expected": "66",
+        "namespace": "run",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "3b7f6ff38ef9510d50061abc187b17472b714c5de44919925dc00527fd81d5a9"
+      },
+      "new": {
+        "id": "run/if_elif_desugar.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/if_elif_desugar.bend",
+          "sha256": "f1dd60fba9e717bfef0b4be6051ef3061d97919d5d9ddad62fb7e1e21d552ed6",
+          "bytes": 1441
+        },
+        "hasOracle": true,
+        "expected": "66",
+        "namespace": "run",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "9354881af62e99fd7e119d3938537e0b2312c8d48a8cec1df7724e6b923c637a"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "run/list_map_fold_ops.bend",
+      "change": "modified",
+      "old": {
+        "id": "run/list_map_fold_ops.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/run/list_map_fold_ops.bend",
+          "sha256": "ddd1d5eb538c5fd8ca5b91c27af5625d86dc39dbb640845077a0656064a60eda",
+          "bytes": 2909
+        },
+        "hasOracle": true,
+        "expected": "1111111",
+        "namespace": "run",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "821cd76c2a72f926174852f91849cbc848099577cf005f5477a0a21bcd192047"
+      },
+      "new": {
+        "id": "run/list_map_fold_ops.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/list_map_fold_ops.bend",
+          "sha256": "8be67f14479cf6c3572f7079bb463f5e10236fbbf8d6e7691aefe1243d1b4dd1",
+          "bytes": 3050
+        },
+        "hasOracle": true,
+        "expected": "1111111",
+        "namespace": "run",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "ebb60929d9cea9d57d3f9f2781f610f0a21f608bed4e3222287a66b75f09fcbe"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "run/list_rebox_generic_sum.bend",
+      "change": "added",
+      "old": null,
+      "new": {
+        "id": "run/list_rebox_generic_sum.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/list_rebox_generic_sum.bend",
+          "sha256": "978e18c2f3a9fc709f7a3339e9f515e5386b681730cc6b4c95b57fea8ea653c3",
+          "bytes": 982
+        },
+        "hasOracle": true,
+        "expected": "1",
+        "namespace": "run",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "b4a76096a506fdf6206d123682a1668a8d871142fd90292fdd640f3cc5f4f1cf"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "run/word_bitwise_literals.bend",
+      "change": "modified",
+      "old": {
+        "id": "run/word_bitwise_literals.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/run/word_bitwise_literals.bend",
+          "sha256": "4b62e90509e470ef39daca3784419205ffe83751a3f9b30930f10a6384fb8684",
+          "bytes": 1342
+        },
+        "hasOracle": true,
+        "expected": "11",
+        "namespace": "run",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "4337e2bace0e80582234676f4b62af565244b087f7b786d760450f51cf85f715"
+      },
+      "new": {
+        "id": "run/word_bitwise_literals.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/word_bitwise_literals.bend",
+          "sha256": "b13f8dd1a7ea3736bbbfb7bc7f03beb26787864f517796ddfd3bdc894a30b925",
+          "bytes": 1485
+        },
+        "hasOracle": true,
+        "expected": "11",
+        "namespace": "run",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "8b3c73f2f158373f2d0ed014cfbdd4419fe2db613cc35eab11bba49918a58727"
+      },
+      "oracleOnly": false
+    },
+    {
+      "id": "stats/match_call_flat.bend",
+      "change": "modified",
+      "old": {
+        "id": "stats/match_call_flat.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/stats/match_call_flat.bend",
+          "sha256": "bc2f8c73ade7d410a4b56df37cf8b3a1f8b466aa3cfd7811b963bd686e2d7b07",
+          "bytes": 2189
+        },
+        "hasOracle": true,
+        "expected": "1n",
+        "namespace": "stats",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "71bf122bf21dae7b2d3c77353732a08c36b5fff33e04ed4251d1ea7afc111ca5"
+      },
+      "new": {
+        "id": "stats/match_call_flat.bend",
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/stats/match_call_flat.bend",
+          "sha256": "8d36b3a4b21531ba366d36795aaffc4412474c663a530fe2c3966018bb16a511",
+          "bytes": 2310
+        },
+        "hasOracle": true,
+        "expected": "999999999 []",
+        "namespace": "stats",
+        "main": true,
+        "base": true,
+        "foreign": [],
+        "negative": false,
+        "jsEligible": true,
+        "proofLane": "ordinary validation/declaration trust only; Lean kernel not executed",
+        "gpuMarker": false,
+        "runtimeClass": "pure",
+        "bodySha256": "625c20cf97f30f1f57d8f1617c99024cd00439e09c6b160620814857260816da"
+      },
+      "oracleOnly": false
+    }
+  ],
+  "runtimeEligible": 1170,
+  "runtimeClasses": {
+    "pure": 1071,
+    "network": 36,
+    "scheduler": 24,
+    "foreign": 39
+  },
+  "scope": "File-tree comparison only. Revision constants identify root-attested immutable checkouts, not a new Git verification by this producer. Nested support modules are not independent gate fixtures."
+}

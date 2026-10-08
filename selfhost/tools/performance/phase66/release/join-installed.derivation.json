@@ -1,0 +1,108 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase65/controls/join-release-qualification.py",
+    "sha256": "e84177914998524539ff777ae617444af389f051c61f406c828b17a24650c70b"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase66/release/join-installed.py",
+    "sha256": "40c391bd29b6673e9649483e7eec8e1e3a6f7a4abdb39d1763e948c97c8227d2"
+  },
+  "edits": [
+    {
+      "old": "State10",
+      "new": "final05",
+      "occurrences": 3
+    },
+    {
+      "old": "phase65",
+      "new": "phase66",
+      "occurrences": 2
+    },
+    {
+      "old": "release = raw/'final-state10/release'",
+      "new": "release = raw/'release05'",
+      "occurrences": 1
+    },
+    {
+      "old": "final-state10/release-plan.json",
+      "new": "release05-plan.json",
+      "occurrences": 1
+    },
+    {
+      "old": "final-state10/release-commands.json",
+      "new": "release05-commands.json",
+      "occurrences": 1
+    },
+    {
+      "old": "final-state10/release-stage-execution/report.json",
+      "new": "release05-execution/report.json",
+      "occurrences": 1
+    },
+    {
+      "old": "release-state10-helper-integrity/report.json",
+      "new": "release-helper05/report.json",
+      "occurrences": 1
+    },
+    {
+      "old": "checked-state10/attempt.json",
+      "new": "checked-b1-05/attempt.json",
+      "occurrences": 2
+    },
+    {
+      "old": "plan['kind'] == 'phase53-default-release-qualification-plan'",
+      "new": "plan['kind'] == 'phase66-default-release-qualification-plan'",
+      "occurrences": 1
+    },
+    {
+      "old": "commands['kind'] == 'phase58-root-release-launch-plan'",
+      "new": "commands['kind'] == 'phase66-root-release-launch-plan'",
+      "occurrences": 1
+    },
+    {
+      "old": "    assert checkout['src/runtime/js/direct.mjs']['sha256'] == runtime_sha\n",
+      "new": "    assert checkout['src/runtime/js/direct.mjs']['sha256'] == runtime_sha\n    frozen = {str(Path(row['frozen']['file']).relative_to(attempt['snapshot']['root'])): row['frozen']\n        for row in attempt['snapshot']['sources']}\n    for relative, item in checkout.items():\n        if relative in frozen:\n            assert item['sha256'] == verify(frozen[relative])['sha256'], relative\n    native = [relative for relative in frozen if relative.startswith('src/runtime/native/')]\n    assert native and all(relative in checkout for relative in native)\n",
+      "occurrences": 1
+    },
+    {
+      "old": "    patch = load(verify(helper['patch'])['file'])\n    assert verify(helper['packager'])['sha256'] == verify(patch['after'])['sha256']\n",
+      "new": "    assert verify(helper['packager'])['sha256'] == pin(Path(attempt['snapshot']['root'])/'tools/development/release.mjs')['sha256']\n",
+      "occurrences": 1
+    },
+    {
+      "old": "qualified['pass_']",
+      "new": "qualified['pass']",
+      "occurrences": 1
+    },
+    {
+      "old": "    previous_api = next(row['sha256'] for row in before['files'] if Path(row['file']) == project/'dist/typed-api.mjs')\n",
+      "new": "    prior_absolute = lambda row: (root/row['file']).resolve()\n    previous_api = next(row['sha256'] for row in before['files'] if prior_absolute(row) == project/'dist/typed-api.mjs')\n",
+      "occurrences": 1
+    },
+    {
+      "old": "previous_path = Path(row['file']).relative_to(project/'dist')",
+      "new": "previous_path = prior_absolute(row).relative_to(project/'dist')",
+      "occurrences": 1
+    },
+    {
+      "old": "verify(dict(file=row['copy'], sha256=row['sha256']))",
+      "new": "verify(dict(file=str((root/row['copy']).resolve()), sha256=row['sha256']))",
+      "occurrences": 1
+    },
+    {
+      "old": "kind='phase66-state10-release-qualification'",
+      "new": "kind='phase66-final05-release-qualification'",
+      "occurrences": 1
+    },
+    {
+      "old": "directRuntimeSha256=runtime_sha, graphHelperSha256=graph_sha, plan=pin(plan_file),",
+      "new": "directRuntimeSha256=runtime_sha, graphHelperSha256=graph_sha, frozenNativeFiles=len(native), plan=pin(plan_file),",
+      "occurrences": 1
+    },
+    {
+      "old": "Phase65",
+      "new": "Phase66",
+      "occurrences": 1
+    }
+  ],
+  "scope": "Exact successor of the historical read-only release join. New-pin release05 and actual05 metadata; all installed checkout files represented in snapshot must match it, every native runtime file included. Current helper packager is bound directly to selected frozen release tool. Historical seven-file root-relative baseline paths normalized; protected110 preserved."
+}

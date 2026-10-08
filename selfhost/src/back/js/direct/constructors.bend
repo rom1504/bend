@@ -41,7 +41,7 @@ def jd_ctor_inverse_done(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, 
       v => kc(String, String.eq(nm(ty), "Char"),
         w => jd_ctor_char(book, env, t, ty, tel, j_u32(kid(t, 0))),
         w => jd_ctor_native(nm(ty), nm(t), jd_ctor_values(book, env, ks(t), tel))))),
-    u => "({$:" ++ j_quote(nm(t)) ++ jd_ctor_fields(book, env, ks(t), tel) ++ "})")
+    u => "({$:" ++ j_quote(name_key(nm(t))) ++ jd_ctor_fields(book, env, ks(t), tel) ++ "})")
 
 # Only the body emitter creates these entries for compiler-generated bare
 # native views. Retain the original scalar alongside the textual view so inverse

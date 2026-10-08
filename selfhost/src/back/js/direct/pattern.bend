@@ -27,10 +27,10 @@ def jd_doc_match_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty
 @unsafe
 def jd_doc_match_emit_at(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +arg: String, +rest: List<&2,String>, +tel: KTerm, +value: String) -> JDText:
   +native = jd_native_layout(book, domain)
-  +condition = kc(String, native, u => jd_match_test(nm(domain), nm(t), value), u => value ++ ".$===" ++ j_quote(nm(t)))
+  +condition = kc(String, native, u => jd_match_test(nm(domain), nm(t), value), u => value ++ ".$===" ++ j_quote(name_key(nm(t))))
   +fields = kc(List<&2,String>, native, u => jd_match_views(nm(domain), nm(t), value), u => jd_match_fields(tel, value))
   +arm: JDText = kc(JDText, native && (String.eq(nm(domain), "U32") || String.eq(nm(domain), "F32")) && j_u32_native_book(book), u => jd_doc_word_start(book, env, kid(t, 0), j_arm_tel(book, tel, kid(ty, 1)), rest, value, String.eq(nm(domain), "F32")), u => jd_doc_body(book, env, kid(t, 0), j_arm_tel(book, tel, kid(ty, 1)), List.append(&2,String, fields, rest)))
-  jd_text_many([jd_text_raw("{const " ++ value ++ "=" ++ arg ++ ";" ++ kc(String, String.eq(nm(domain), "IO.OP"), u => "if(" ++ value ++ ".$===\"$FFI\")throw " ++ value ++ ";", u => "")), kc(JDText, U32.is_eq(j_constructor_count(book, domain), 1) || String.eq(condition, ""), u => arm, u => jd_text_many([jd_text_raw("if(" ++ condition ++ "){"), arm, jd_text_literal("}else{", 6), jd_doc_body(book, env, kid(t, 1), ty, Con{value, rest}), jd_text_literal("}", 1)])), jd_text_literal("}", 1)])
+  jd_text_many([jd_text_raw("{const " ++ value ++ "=" ++ arg ++ ";" ++ kc(String, String.eq(nm(domain), "IO.OP"), u => "if(" ++ value ++ ".$!==\"Emit\"&&" ++ value ++ ".$!==\"Halt\")throw \"bend: runtime fail-stop\";", u => "")), kc(JDText, U32.is_eq(j_constructor_count(book, domain), 1) || String.eq(condition, ""), u => arm, u => jd_text_many([jd_text_raw("if(" ++ condition ++ "){"), arm, jd_text_literal("}else{", 6), jd_doc_body(book, env, kid(t, 1), ty, Con{value, rest}), jd_text_literal("}", 1)])), jd_text_literal("}", 1)])
 
 @unsafe
 def jd_match_fields(+tel: KTerm, +value: String) -> List<&2,String>:

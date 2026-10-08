@@ -179,11 +179,11 @@ def dg_quant_error(world, message, name, allowed, used):
 def dg_constructor_names(ds):
   match ds:
     case Nil{}: ""
-    case Con{d, rest}: dn(d) ++ kc(String, defs_empty(rest), u => "", u => ", " ++ dg_constructor_names(rest))
+    case Con{d, rest}: name_key(dn(d)) ++ kc(String, defs_empty(rest), u => "", u => ", " ++ dg_constructor_names(rest))
 
 @unsafe
 def dg_ctor_error(e, t, ty, ctr):
-  kc(KChecking, Bool.not(String.eq(dk(ctr), "Absent")) && Bool.not(has_name(rm(ty), nm(t))), u => dg_bad_detail(cw(e), "constructor does not belong to goal or field count differs", dg_text(nm(t) ++ " with " ++ U32.show(da(ctr)) ++ kc(String, U32.is_eq(da(ctr), 1), u => " field", u => " fields")), t), u => kc(KChecking, String.eq(dg_family(cb(e), nm(t)), ""), u => dg_bad_detail(cw(e), "constructor does not belong to goal or field count differs", dg_text("a declared constructor (" ++ nm(ty) ++ " declares " ++ dg_constructor_names(dc(lookup(cb(e), nm(ty)))) ++ ")"), t), u => dg_bad_detail(cw(e), "constructor does not belong to goal or field count differs", ty, ref(dg_family(cb(e), nm(t))))))
+  kc(KChecking, Bool.not(String.eq(dk(ctr), "Absent")) && Bool.not(has_name(rm(ty), nm(t))), u => dg_bad_detail(cw(e), "constructor does not belong to goal or field count differs", dg_text(name_key(nm(t)) ++ " with " ++ U32.show(da(ctr)) ++ kc(String, U32.is_eq(da(ctr), 1), u => " field", u => " fields")), t), u => kc(KChecking, String.eq(dg_family(cb(e), nm(t)), ""), u => dg_bad_detail(cw(e), "constructor does not belong to goal or field count differs", dg_text("a declared constructor (" ++ name_key(nm(ty)) ++ " declares " ++ dg_constructor_names(dc(lookup(cb(e), nm(ty)))) ++ ")"), t), u => dg_bad_detail(cw(e), "constructor does not belong to goal or field count differs", ty, ref(dg_family(cb(e), nm(t))))))
 
 
 # Source-only prefix caches cannot restore live memo/output state. Recheck
@@ -195,7 +195,7 @@ def check_book_diagnostic_from_exact_prefix(+book: List<&2,KDef>, +validated: Li
 # The checker verdict stays unchanged; only rejection metadata differs.
 @unsafe
 def dg_adt_error(world, t, d):
-  kc(KChecking, String.eq(dk(d), "ADT"), u => dg_bad_detail(world, "unknown family or wrong parameter count", dg_text(nm(t) ++ " with " ++ U32.show(da(d)) ++ kc(String, U32.is_eq(da(d), 1), u => " parameter", u => " parameters")), t), u => dg_bad_message(world, "unknown family or wrong parameter count", dg_text("a declared datatype (unknown: " ++ nm(t) ++ ")")))
+  kc(KChecking, String.eq(dk(d), "ADT"), u => dg_bad_detail(world, "unknown family or wrong parameter count", dg_text(name_key(nm(t)) ++ " with " ++ U32.show(da(d)) ++ kc(String, U32.is_eq(da(d), 1), u => " parameter", u => " parameters")), t), u => dg_bad_message(world, "unknown family or wrong parameter count", dg_text("a declared datatype (unknown: " ++ name_key(nm(t)) ++ ")")))
 
 # Compatibility projections and explicit capability for hosts using one verdict.
 law dg_result_error:

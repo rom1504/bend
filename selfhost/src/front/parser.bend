@@ -674,6 +674,12 @@ def fpe_expected_at(+term: KTerm, +legacy: String, +expected: String, +observed:
 
 @unsafe
 def fpe_origin_render(+source: String, +start: U32, +error: KTerm) -> String:
+  f_choose(String, f_eq(tg(kid(error, 0)), "ParseMatch"),
+    u => fpe_origin_render(source, start, fpe_match_resolved(source, start, error)),
+    u => fpe_origin_plain(source, start, error))
+
+@unsafe
+def fpe_origin_plain(+source: String, +start: U32, +error: KTerm) -> String:
   f_choose(String, U32.is_eq(kb(error), 0), u => fpe_render(source, error),
     u => f_choose(String, U32.is_gt(start, 0) && U32.is_ge(kb(error), start) && U32.is_ge(ke(error), kb(error)) && U32.is_le(U32.sub(ke(error), start), dg_width(source)),
     u => f_choose(String, f_eq(tg(kid(error, 0)), "ParseMessage"),
@@ -728,3 +734,42 @@ def fpe_snippet(+source: String, +begin: U32, +end: U32, +error: KTerm) -> Strin
 def fpe_point_message(+source: String, +begin: U32, +end: U32, +error: KTerm, +observed: String) -> String:
   f_choose(String, f_eq(tg(kid(error, 1)), "ParseObservedPoint") && String.is_empty(observed),
     u => nm(error), u => fpe_message(source, begin, end, error, observed))
+
+
+# Match diagnostics need the original spelling, including parentheses and the
+# use-site name of a constructor introduced by an earlier pattern substitution.
+# Keep this rejection-only payload until the existing source owner is available.
+@unsafe
+def fpe_match_at(+head: KTerm, +origin: KTerm, +legacy: String, +mode: U32) -> KTerm:
+  kt_span("Error", legacy, 0, 0, [kt_span("ParseMatch", nm(head), mode, 0, Nil{}, kb(head), ke(head))], kb(origin), ke(origin))
+
+@unsafe
+def fpe_match_resolved(+source: String, +start: U32, +error: KTerm) -> KTerm:
+  +head = kid(error, 0)
+  +text = f_choose(String, U32.is_gt(start, 0) && U32.is_ge(kb(head), start) && U32.is_ge(ke(head), kb(head)) && U32.is_le(U32.sub(ke(head), start), dg_width(source)),
+    u => fpe_source_slice(source, U32.sub(kb(head), start), U32.sub(ke(head), start)), u => nm(head))
+  k_with_children(error, [kt("ParseMessage", fpe_match_message(text, ix(head)), 0, 0, Nil{})])
+
+@unsafe
+def fpe_match_message(+text: String, +mode: U32) -> String:
+  "'" ++ text ++ "' can't be matched" ++ f_choose(String, U32.is_eq(mode, 0),
+    u => " in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)",
+    u => f_choose(String, (f_ascii_alpha(f_head(text)) || Char.is_eq(f_head(text), '_')) && fpe_name_text(text),
+      u => " here (match it in the same match as the pattern that introduced it)",
+      u => " (this value is already a constructor: bind its fields directly)"))
+
+@unsafe
+def fpe_name_text(+text: String) -> Bool:
+  match text:
+    case SNil{}: True{}
+    case SCon{c, rest}: f_ident(c) && fpe_name_text(rest)
+
+# Authentic parser spans are UTF16 scalar boundaries, not String character counts.
+@unsafe
+def fpe_source_slice(+source: String, +begin: U32, +end: U32) -> String:
+  match source:
+    case SNil{}: ""
+    case SCon{c, rest}:
+      f_choose(String, U32.is_ge(begin, dg_units(c)),
+        u => fpe_source_slice(rest, U32.sub(begin, dg_units(c)), U32.sub(end, dg_units(c))),
+        u => f_choose(String, U32.is_ge(end, dg_units(c)), u => SCon{c, fpe_source_slice(rest, 0, U32.sub(end, dg_units(c)))}, u => ""))

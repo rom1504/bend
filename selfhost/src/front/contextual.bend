@@ -399,7 +399,7 @@ def f_context_call_input(+head: KTerm, +input: FInput, +min: U32) -> FParsed:
 def f_context_templates(+head: KTerm, +input: FInput, +count: U32, +left: U32, +acc: List<&2,KTerm>) -> FParsed:
   f_choose(FParsed, U32.is_gt(count, 0) && f_eq(f_tx(input), "~"),
     u => f_choose(FParsed, U32.is_eq(left, 0),
-      u => fpe_error(input, "too many template arguments", "a term (" ++ nm(head) ++ " takes " ++ U32.show(count) ++ " ~)"),
+      u => fpe_error(input, "too many template arguments", "a term (" ++ name_key(nm(head)) ++ " takes " ++ U32.show(count) ++ " ~)"),
       u => f_context_template_next(head, count, U32.sub(left, 1), acc, f_expr(f_tl(input), 0))),
     u => f_args(input, ")", acc))
 
@@ -528,9 +528,9 @@ def f_context_mark_known(+term: KTerm, +syntax: KTerm, +resolved: KTerm, +defini
         u => fpe_error(f_space(input), "+ requires a binder or quantified datatype", "a quantified datatype after + (+D<..> sets D's leading quantities to &2)"))))
 
 @unsafe
-def f_context_statement_more(+term: KTerm, +input: FInput, +column: U32) -> FParsed:
+def f_context_statement_more(+term: KTerm, +input: FInput, +column: U32, +begin: U32) -> FParsed:
   f_choose(FParsed, f_binding_head(input), u => f_statement_more(FParsed{term, input}),
-    u => f_context_write_more(term, input, column, f_context_write(term)))
+    u => f_context_write_more(term, input, column, f_context_write(term, begin)))
 
 @unsafe
 def f_context_write_more(+term: KTerm, +input: FInput, +column: U32, +binder: KTerm) -> FParsed:

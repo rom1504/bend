@@ -10,6 +10,7 @@ import dgram from 'node:dgram';
 import {spawn} from 'node:child_process';
 import {constants as hostConstants} from 'node:os';
 const G=Object.create(null), constructors=Object.create(null), showSchemas=Object.create(null), constructorOwn=Object.create(null), constructorNative=Object.create(null);
+const nameDisplay=k=>k.replace(':','.');
 const scope=p=>Object.create(p);
 // Error construction can invoke mutable host hooks. Suspend the proof before
 // those hooks can reenter; only exception unwinding follows this restoration.
@@ -380,4 +381,4 @@ function compareText(a,b){
   }
   return i===a.length?(j===b.length?0:-1):1;
 }
-for(const k of ['Type','Data','Quant','Unit','Bool','Cmp','Nat','U32','F32','Char','String','List','Maybe','Result','Token','Node','Parsed','Scanned','File','IO','Array','Pair','Kind','Empty','Chan','Socket','Listener','Window','Audio','App','Image','Event','Exists','Or'])G[k]={typeName:k};
+for(const k of ['Type','Data','Quant','Unit','Bool','Cmp','Nat','U32','F32','Char','String','List','Maybe','Result','Poll','Token','Node','Parsed','Scanned','File','IO','Array','Pair','Kind','Empty','Chan','Socket','Listener','Window','Audio','App','Image','Event','Exists','Or'])G[k]={typeName:k};

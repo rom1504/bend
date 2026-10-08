@@ -48,7 +48,7 @@ def jd_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +d: KDef, +xs: List<&2,
   kc(String, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
     (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u =>
     jd_named_args(book, env, d, tail, jd_arguments(book, env, xs, dt(d), jd_emitted_arity(book, d))),
-    u => jd_fail("unknown direct definition: " ++ dn(d))))
+    u => jd_fail("unknown direct definition: " ++ name_key(dn(d)))))
 
 @unsafe
 def jd_arguments(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +ty: KTerm, +left: U32) -> JDArgs:

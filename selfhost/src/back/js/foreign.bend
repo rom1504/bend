@@ -17,14 +17,14 @@ def j_foreign_chars(name):
     case SNil{}:
       ""
     case SCon{h, rest}:
-      kc(String, Char.is_eq(h, '.') || Char.is_eq(h, '/'), u => "_", u => Char.show(h)) ++ j_foreign_chars(rest)
+      kc(String, Char.is_eq(h, '.') || Char.is_eq(h, '/') || Char.is_eq(h, ':'), u => "_", u => Char.show(h)) ++ j_foreign_chars(rest)
 
 @unsafe
 def j_foreign_def(
   +book: List<&2, KDef>,
   +d: KDef,
 ) -> String:
-  kc(String, j_builtin_effect(dn(d)), u => "if(!Object.hasOwn(G," ++ j_quote(dn(d)) ++ "))", u => "") ++ "G[" ++ j_quote(dn(d)) ++ "]=fn(" ++ U32.show(da(d)) ++ ",function(a){const v=scope(null);return {io:()=>foreignCall(" ++ j_quote(j_foreign_path(ks(dv(d)))) ++ "," ++ j_quote(dn(d)) ++ ",a,[" ++ j_foreign_args(book, dt(d), da(d)) ++ "]," ++ j_descriptor(book, j_io_result(book, j_foreign_return(book, dt(d), da(d))), 64) ++ ")};});\n"
+  kc(String, j_builtin_effect(dn(d)), u => "if(!Object.hasOwn(G," ++ j_quote(dn(d)) ++ "))", u => "") ++ "G[" ++ j_quote(dn(d)) ++ "]=fn(" ++ U32.show(da(d)) ++ ",function(a){const v=scope(null);return {io:()=>foreignCall(" ++ j_quote(j_foreign_path(ks(dv(d)))) ++ "," ++ j_quote(name_key(dn(d))) ++ ",a,[" ++ j_foreign_args(book, dt(d), da(d)) ++ "]," ++ j_descriptor(book, j_io_result(book, j_foreign_return(book, dt(d), da(d))), 64) ++ ")};});\n"
 
 law j_foreign_args:
   for +book: List<&2, KDef>
@@ -86,7 +86,7 @@ law j_module_export:
 
 @unsafe
 def j_module_export(name, implementation):
-  j_quote(name) ++ ":typeof " ++ implementation ++ "===\"function\"?" ++ implementation ++ ":undefined,"
+  j_quote(name_key(name)) ++ ":typeof " ++ implementation ++ "===\"function\"?" ++ implementation ++ ":undefined,"
 
 @unsafe
 def j_ctor_metadata(
@@ -109,7 +109,7 @@ def j_ctor_keys(ctors, params):
     case Nil{}:
       ""
     case Con{d, rest}:
-      "constructorNative[" ++ j_quote(dn(d)) ++ "]=" ++ kc(String, db(d), u => "true", u => "false") ++ ";constructorOwn[" ++ j_quote(dn(d)) ++ "]=" ++ j_quote(kc(String, String.eq(nm(dv(d)), ""), u => dn(d), u => nm(dv(d)))) ++ ";constructors[" ++ j_quote(dn(d)) ++ "]=[" ++ j_field_keys(dt(d), params) ++ "];\n" ++ j_ctor_keys(rest, params)
+      "constructorNative[" ++ j_quote(dn(d)) ++ "]=" ++ kc(String, db(d), u => "true", u => "false") ++ ";constructorOwn[" ++ j_quote(dn(d)) ++ "]=" ++ j_quote(kc(String, String.contains(dn(d), ":"), u => name_key(dn(d)), u => kc(String, String.eq(nm(dv(d)), ""), v => dn(d), v => nm(dv(d))))) ++ ";constructors[" ++ j_quote(dn(d)) ++ "]=[" ++ j_field_keys(dt(d), params) ++ "];\n" ++ j_ctor_keys(rest, params)
 
 law j_field_keys:
   for +ty: KTerm
@@ -139,7 +139,7 @@ def j_foreign_error(
     case Nil{}:
       ""
     case Con{d, rest}:
-      kc(String, String.eq(tg(j_strip(dv(d))), "Foreign") && Bool.not(j_builtin_effect(dn(d))) && String.eq(j_foreign_path(ks(j_strip(dv(d)))), ""), u => "a foreign def without a .js import: " ++ dn(d), u => j_foreign_error(rest))
+      kc(String, String.eq(tg(j_strip(dv(d))), "Foreign") && Bool.not(j_builtin_effect(dn(d))) && String.eq(j_foreign_path(ks(j_strip(dv(d)))), ""), u => "a foreign def without a .js import: " ++ name_key(dn(d)), u => j_foreign_error(rest))
 
 law j_builtin_effect:
   for +name: String
@@ -147,7 +147,7 @@ law j_builtin_effect:
 
 @unsafe
 def j_builtin_effect(name):
-  String.contains("|IO.print|IO.write|IO.print_err|IO.get_env|IO.args|IO.random_u32|IO.spawn|IO.sleep|IO.now|IO.thread_count|Process.run|Chan.new|Chan.send|Chan.recv|Chan.close|File.open|File.read|File.read_bytes|File.read_at|File.size|File.write|File.write_bytes|File.close|TCP.listen|TCP.accept|TCP.connect|TCP.send|TCP.recv|TCP.send_bytes|TCP.recv_bytes|TCP.poll|UDP.bind|UDP.send_to|UDP.recv_from|UDP.poll|Socket.close|Listener.close|Window.open|Window.frame|Window.set_title|Window.grab|Window.close|Audio.open|Audio.write|Audio.close|", "|" ++ name ++ "|")
+  String.contains("|IO.print|IO.write|IO.print_err|IO.get_env|IO.args|IO.random_u32|IO.spawn|IO.sleep|IO.now|IO.thread_count|Process.run|Chan.new|Chan.send|Chan.recv|Chan.try_send|Chan.try_recv|Chan.close|File.open|File.read|File.read_bytes|File.read_at|File.size|File.write|File.write_bytes|File.close|TCP.listen|TCP.accept|TCP.try_accept|TCP.connect|TCP.send|TCP.try_send|TCP.recv|TCP.try_recv|TCP.send_bytes|TCP.try_send_bytes|TCP.recv_bytes|TCP.try_recv_bytes|UDP.bind|UDP.send_to|UDP.try_send_to|UDP.send_bytes_to|UDP.try_send_bytes_to|UDP.recv_from|UDP.try_recv_from|UDP.recv_bytes_from|UDP.try_recv_bytes_from|Socket.close|Listener.close|Window.open|Window.frame|Window.set_title|Window.grab|Window.close|Audio.open|Audio.write|Audio.close|", "|" ++ name ++ "|")
 
 # The shared scanner resolves foreign identifiers before either backend emits.
 @unsafe
@@ -155,4 +155,4 @@ def j_source_parts(+parts: List<&2,KTerm>) -> String:
   match parts:
     case Nil{}: ""
     case Con{part, rest}:
-      kc(String, String.eq(tg(part), "Text"), u => nm(part), u => j_quote(nm(part))) ++ j_source_parts(rest)
+      kc(String, String.eq(tg(part), "Text"), u => nm(part), u => j_quote(name_key(nm(part)))) ++ j_source_parts(rest)

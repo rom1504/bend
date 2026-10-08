@@ -48,7 +48,7 @@ law j_printable_adt:
 
 @unsafe
 def j_printable_adt(book, ty, seen, fuel):
-  kc(Bool, String.contains("|U32|F32|Nat|Char|String|", "|" ++ nm(ty) ++ "|") || has_name(seen, kp_show(ty)), u => True{}, u => kc(Bool, String.eq(nm(ty), "Array"), u => j_printable(book, kid(ty, 0), seen, fuel), u => j_printable_ctors(book, dc(lookup(book, nm(ty))), ks(ty), Con{kp_show(ty), seen}, fuel)))
+  kc(Bool, String.contains("|U32|F32|Nat|Char|String|", "|" ++ nm(ty) ++ "|") || has_name(seen, term_key(ty)), u => True{}, u => kc(Bool, String.eq(nm(ty), "Array"), u => j_printable(book, kid(ty, 0), seen, fuel), u => j_printable_ctors(book, dc(lookup(book, nm(ty))), ks(ty), Con{term_key(ty), seen}, fuel)))
 
 law j_printable_ctors:
   for +book: List<&2, KDef>
@@ -140,7 +140,7 @@ law j_layout_open_head:
 
 @unsafe
 def j_layout_open_head(book, ty):
-  kc(Bool, String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Array"), u => Bool.not(String.eq(tg(wnf(book, kid(ty, 0))), "ADT")), u => False{})
+  kc(Bool, String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Array"), u => j_layout_element_open(book, kid(ty, 0)), u => False{})
 
 law j_layout_term:
   for +book: List<&2, KDef>
@@ -247,7 +247,14 @@ law j_layout_intrinsic:
 
 @unsafe
 def j_layout_intrinsic(book, f, element):
-  kc(Bool, j_layout_array_intrinsic(book, f), u => Bool.not(String.eq(tg(wnf(book, j_strip(element))), "ADT")), u => False{})
+  kc(Bool, j_layout_array_intrinsic(book, f), u => j_layout_element_open(book, j_strip(element)), u => False{})
+
+# An equality has no live layout, even when its two sides remain open.
+# Keep normalization inside the original demanded Array branch.
+@unsafe
+def j_layout_element_open(+book: List<&2,KDef>, +element: KTerm) -> Bool:
+  +tag = tg(wnf(book, element))
+  Bool.not(String.eq(tag, "ADT") || String.eq(tag, "Eql"))
 
 law j_layout_fields:
   for +book: List<&2, KDef>

@@ -4,8 +4,8 @@ def nv_owned(book: List<&2, KDef>) -> String:
   match book:
     case Nil{}: ""
     case Con{+d, +rest}:
-      nt_choose(String, Bool.not(db(d)) && nb_contains(["IO", "Sigma", "String", "Word.Con", "IO.OP", "Result", "Maybe", "Bool", "Unit", "Nat", "U32", "F32", "Char", "Array"], dn(d)),
-        u => dn(d) ++ " is a name the compiler encodes itself: name yours apart",
+      nt_choose(String, Bool.not(db(d)) && nb_contains(["IO", "Sigma", "String", "Word.Con", "IO.OP", "Result", "Poll", "Maybe", "Bool", "Unit", "Nat", "U32", "F32", "Char", "Array"], dn(d)),
+        u => name_key(dn(d)) ++ " is a name the compiler encodes itself: name yours apart",
         u => nv_owned(rest))
 
 @unsafe

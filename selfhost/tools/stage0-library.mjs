@@ -2,9 +2,20 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
-const upstream=process.env.BEND_UPSTREAM||path.resolve(import.meta.dirname,'../.bootstrap/upstream-phase23');
+const upstream=process.env.BEND_UPSTREAM||path.resolve(import.meta.dirname,'../.bootstrap/upstream-phase66');
 const B=await import(pathToFileURL(path.join(upstream,'bend2/bend.ts')));
 const C=await import(pathToFileURL(path.join(upstream,'bend2/comp.ts')));
+// Keep canonical Base IO opaque while normalizing the candidate export type.
+// This is the 0592662 compiler's private io_base query, expressed only through
+// public language operations. It rejects every IO-headed type, not merely main
+// or exactly-one-argument IO, and does not classify similarly named user types.
+function bootstrapIoBase(book,type){
+  const io=book.tlds.IO;
+  if(io?.$!=='Def'||!io.b)return null;
+  const tlds=Object.assign(Object.create(book.tlds),{IO:{...io,v:null}});
+  const [head,args]=B.term_unapply(B.term_wnf({...book,tlds},type));
+  return head.$==='Ref'&&head.k==='IO'?args:null;
+}
 // Upstream err_show strongly normalizes terms and their entire context. A
 // compiler-source mistake can make formatting evaluate recursive compiler code.
 // Bootstrap errors use bounded structural heads; never traverse cyclic books.
@@ -42,7 +53,7 @@ try{
   const roots=process.argv.slice(4);
   const eligible=name=>{
     const d=book.tlds[name];
-    return d?.$==='Def'&&d.v!==null&&d.b!==true&&d.i===undefined&&d.x===0&&C.io_base(book,d.T)===null;
+    return d?.$==='Def'&&d.v!==null&&d.b!==true&&d.i===undefined&&d.x===0&&bootstrapIoBase(book,d.T)===null;
   };
   const names=roots.length?roots:[...new Set(book.order)].filter(eligible);
   if(new Set(names).size!==names.length)throw Error('Duplicate requested API exports');

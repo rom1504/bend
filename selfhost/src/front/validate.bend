@@ -68,8 +68,8 @@ def f_ctor_index_find(+name: String, +tree: KDef) -> KDef:
 
 @unsafe
 def f_valid_ctor_head(+p: KTerm, +ctr: KDef) -> Maybe<&2,KTerm>:
-  f_choose(Maybe<&2,KTerm>, f_eq(dk(ctr), "Missing"), u => Some{fpe_message_at(p, "unknown constructor pattern: " ++ nm(p), "a declared constructor (unknown: " ++ nm(p) ++ ")")},
-    u => f_choose(Maybe<&2,KTerm>, U32.is_eq(da(ctr), terms_len(ks(p))), u => None{}, u => Some{fpe_message_at(p, "constructor pattern field count differs: " ++ nm(p), "a " ++ nm(p) ++ " pattern with " ++ U32.show(da(ctr)) ++ f_choose(String, U32.is_eq(da(ctr), 1), u => " field", u => " fields"))}))
+  f_choose(Maybe<&2,KTerm>, f_eq(dk(ctr), "Missing"), u => Some{fpe_message_at(p, "unknown constructor pattern: " ++ nm(p), "a declared constructor (unknown: " ++ name_key(nm(p)) ++ ")")},
+    u => f_choose(Maybe<&2,KTerm>, U32.is_eq(da(ctr), terms_len(ks(p))), u => None{}, u => Some{fpe_message_at(p, "constructor pattern field count differs: " ++ nm(p), "a " ++ name_key(nm(p)) ++ " pattern with " ++ U32.show(da(ctr)) ++ f_choose(String, U32.is_eq(da(ctr), 1), u => " field", u => " fields"))}))
 
 @unsafe
 def f_lambda_valid(a, body, cursor):
@@ -217,15 +217,15 @@ def f_import_used(+name: String, +imports: List<&2,KTerm>) -> Bool:
 def f_match_error(+head: KTerm, +origin: KTerm) -> KTerm:
   +legacy : String = "match requires an unconsumed parameter or constructor field"
   f_choose(KTerm, f_eq(tg(head), "Var") || f_eq(tg(head), "Ref"),
-    u => fpe_message_at(head, legacy, "a match on a parameter or field (this name is a def or a consumed binder: give the value its own def)"),
+    u => fpe_match_at(head, head, legacy, 0),
     u => f_choose(KTerm, f_eq(tg(head), "Ctr") || f_eq(tg(head), "Literal") || core_literal(head),
-      u => fpe_message_at(origin, legacy, "an undestructed scrutinee (this value is already a constructor: bind its fields directly; if an outer match destructed it, fold the pattern into the outer case)"),
+      u => fpe_match_at(head, origin, legacy, 1),
       u => fpe_message_at(f_choose(KTerm, U32.is_gt(kb(head), 0), u => head, u => origin), legacy, "a parameter or field scrutinee (a match cannot scrutinize a computed value: give it its own def)")))
 
 @unsafe
 def f_valid_var_pattern(+p: KTerm, +constructor: KDef) -> Maybe<&2,KTerm>:
   f_choose(Maybe<&2,KTerm>, Bool.not(f_valid_name(nm(p))), u => Some{kt("Error", "reserved pattern binder: " ++ nm(p), 0, 0, Nil{})},
-    u => f_choose(Maybe<&2,KTerm>, f_eq(dk(constructor), "Missing"), u => None{}, u => Some{fpe_message_at(p, "a constructor pattern requires braces: " ++ nm(p), "a braced constructor pattern (" ++ nm(p) ++ " is a constructor: write " ++ nm(p) ++ "{}, or rename the binder)")}))
+    u => f_choose(Maybe<&2,KTerm>, f_eq(dk(constructor), "Missing"), u => None{}, u => Some{fpe_message_at(p, "a constructor pattern requires braces: " ++ nm(p), "a braced constructor pattern (" ++ name_key(nm(p)) ++ " is a constructor: write " ++ name_key(nm(p)) ++ "{}, or rename the binder)")}))
 
 @unsafe
 def f_computed_pattern_error(+pattern: KTerm, +observed: KTerm) -> KTerm:

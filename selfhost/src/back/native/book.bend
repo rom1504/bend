@@ -129,7 +129,7 @@ def nc_compile_def(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>
   +calls = nc_mapped_refs(book, refs)
   +forked = nc_term_fork(body)
   +code = nc_mark_code(nd_extend(book, body, nc_lower(book, body, Nil{}, U32.add(n, 1024)), name), nb_contains(bangs, name), forked, calls)
-  nt_choose(NC_Book, String.eq(dk(d), "Absent"), u => NC_Book{Nil{}, n, "native definition not found: " ++ name}, u =>
+  nt_choose(NC_Book, String.eq(dk(d), "Absent"), u => NC_Book{Nil{}, n, "native definition not found: " ++ name_key(name)}, u =>
     nc_append_book(code, nc_ref_name(book, name), calls, forked, nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, nc_fresh(code), bangs)))
 
 @unsafe

@@ -79,7 +79,7 @@ def dr_count(names):
 def dr_lines(names):
   match names:
     case Nil{}: ""
-    case Con{+name, +rest}: "- " ++ name ++ "\n" ++ dr_lines(rest)
+    case Con{+name, +rest}: "- " ++ name_key(name) ++ "\n" ++ dr_lines(rest)
 
 @unsafe
 def driver_bad_names(

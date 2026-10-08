@@ -211,15 +211,15 @@ def f_context_namespace_type(+term: KTerm, +ty: KTerm, +input: FInput, +cursor: 
 def f_context_namespace_resolved(+origin: KTerm, +resolved: KTerm) -> KTerm:
   f_choose(KTerm, f_context_stop(resolved), u => resolved, u => k_with_span(resolved, kb(origin), ke(origin)))
 
-# A written Array.set call and index-write sugar have the same body rule.
+# Only index-write syntax starts at its array binder; an explicit call does not.
 @unsafe
-def f_context_write(+term: KTerm) -> KTerm:
+def f_context_write(+term: KTerm, +begin: U32) -> KTerm:
   f_choose(KTerm, f_eq(tg(term), "App") && f_eq(tg(kid(term, 0)), "App") && f_eq(tg(kid(kid(term, 0), 0)), "App") && f_eq(tg(kid(kid(kid(term, 0), 0), 0)), "App") && f_eq(tg(kid(kid(kid(kid(term, 0), 0), 0), 0)), "Ref") && f_eq(nm(kid(kid(kid(kid(term, 0), 0), 0), 0)), "Array.set"),
-    u => f_context_write_var(kid(kid(kid(term, 0), 0), 1)), u => atom("Absent"))
+    u => f_context_write_var(kid(kid(kid(term, 0), 0), 1), begin), u => atom("Absent"))
 
 @unsafe
-def f_context_write_var(+term: KTerm) -> KTerm:
-  f_choose(KTerm, f_eq(tg(term), "Var") || f_eq(tg(term), "FName"), u => term, u => atom("Absent"))
+def f_context_write_var(+term: KTerm, +begin: U32) -> KTerm:
+  f_choose(KTerm, (f_eq(tg(term), "Var") || f_eq(tg(term), "FName")) && U32.is_gt(begin, 0) && U32.is_eq(kb(term), begin), u => term, u => atom("Absent"))
 
 @unsafe
 def f_context_namespace_let(+term: KTerm, +body: KTerm) -> KTerm:

@@ -75,13 +75,13 @@ def jd_show_arms(+book: List<&2,KDef>, +ctors: List<&2,KDef>, +args: List<&2,KTe
     case Nil{}: JDShowDesc{Nil{}, types, names, ""}
     case Con{c, rest}: jd_show_arm(book, c, rest, args, names,
       jd_show_fields(book, j_specialize(book, dt(c), args), da(c), types,
-        List.append(&2,String, names, [j_quote(dn(c))])))
+        List.append(&2,String, names, [j_quote(name_key(dn(c)))])))
 
 @unsafe
 def jd_show_arm(+book: List<&2,KDef>, +c: KDef, +rest: List<&2,KDef>, +args: List<&2,KTerm>,
   +oldNames: List<&2,String>, +d: JDShowDesc) -> JDShowDesc:
   jd_show_join(JDShowDesc{List.append(&2,String,
-    [U32.show(jd_string_len(oldNames)), "0", U32.show(da(c)),
+    [U32.show(jd_string_len(oldNames)), j_quote(name_key(dn(c))), U32.show(da(c)),
       kc(String, String.eq(dn(c), "Tuple"), u => "2", u =>
         kc(String, String.eq(dn(c), "Con") || String.eq(dn(c), "Nil"), u => "1", u => "0"))], jd_show_cells(d)),
     jd_show_types(d), jd_show_names(d), jd_show_error(d)},
@@ -127,8 +127,8 @@ def jd_show_node_kind(+book: List<&2,KDef>, +ty: KTerm, +types: List<&2,KTerm>, 
 def jd_show_nodes(+book: List<&2,KDef>, +types: List<&2,KTerm>, +names: List<&2,String>,
   +i: U32, +offset: U32, +defs: String, +cells: List<&2,String>) -> String:
   kc(String, U32.is_eq(i, terms_len(types)), u => defs ++
-    "const $jdShowD=[" ++ jd_join(cells) ++ "];const $jdShowN=[" ++ jd_join(names) ++ "];\n" ++
-    "cli(process.argv.slice(1));io_exit(" ++ jd_name("main") ++ ",[$jdShowD,$jdShowN]);\n", u =>
+    "const $jdShowD=[" ++ jd_join(cells) ++ "];\n" ++
+    "cli(process.argv.slice(1));io_exit(" ++ jd_name("main") ++ ",$jdShowD);\n", u =>
     kc(String, U32.is_lt(i, 4096), u => jd_show_step(book, i, offset, defs, cells,
       jd_show_node(book, terms_at(types, i), types, names)), u => jd_fail("readback type graph budget")))
 

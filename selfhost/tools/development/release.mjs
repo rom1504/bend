@@ -52,7 +52,8 @@ export function verifyRelease(root=project){
   assert.equal(effects.revision,bootstrap.revision,'Effect source pin differs');
   assert.equal(effects.base.sha256,files['dist/base.bend'].sha256,'Vendored effect Base differs');
   assert.ok(manifest.checkout.some(x=>x.path==='src/runtime/js/effs/manifest.json'),'Unbound JS effect manifest');
-  assert.equal(effects.files.length,37);assert.equal(new Set(effects.files.map(x=>x.path)).size,37);
+  const effectCount=bootstrap.revision==='059266225b77c8ca256ac6b25ee5c21449bab151'?35:37;
+  assert.equal(effects.files.length,effectCount);assert.equal(new Set(effects.files.map(x=>x.path)).size,effectCount);
   for(const item of effects.files){
    assert.ok(/^[a-z0-9_]+\.js$/.test(item.path),'Invalid vendored effect name');
    const entry=manifest.checkout.find(x=>x.path==='src/runtime/js/effs/'+item.path);

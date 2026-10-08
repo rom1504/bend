@@ -75,7 +75,7 @@ export function verifyBootstrapProvenance(provenance) {
   return true;
 }
 
-export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(project,'.bootstrap/upstream-phase23'),timeoutMs=120000,nativeSnapshot=process.env.BEND_TYPED_NATIVE_SNAPSHOT,nativeModules}={}) {
+export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(project,'.bootstrap/upstream-phase66'),timeoutMs=120000,nativeSnapshot=process.env.BEND_TYPED_NATIVE_SNAPSHOT,nativeModules}={}) {
   const provenance=captureBootstrapProvenance(upstream),revision=provenance.upstream.revision;
   const manifest=path.join(project,'src/compiler.json');
   if(!fs.existsSync(manifest))throw Error('Compiler module manifest is missing: '+manifest);
@@ -715,7 +715,7 @@ function directForeignResolver(paths) {
   if(manifest.kind!=='phase52-pinned-upstream-js-effects'||manifest.version!==1||
     !/^[0-9a-f]{64}$/.test(manifest.base?.sha256??''))throw Error('Invalid pinned JS effect manifest');
   const names=new Set(manifest.files.map(item=>item.path));
-  if(names.size!==37||manifest.files.length!==37||[...names].some(name=>! /^[a-z0-9_]+\.js$/.test(name)))
+  if(names.size!==35||manifest.files.length!==35||[...names].some(name=>! /^[a-z0-9_]+\.js$/.test(name)))
     throw Error('Invalid pinned JS effect inventory');
   const canonicalBase=fs.realpathSync(basePath),pinned=hash(canonicalBase)===manifest.base.sha256;
   return {inputs:[manifestPath],resolve:file=>{

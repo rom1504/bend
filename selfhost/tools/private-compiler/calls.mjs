@@ -61,8 +61,14 @@ function topLevelDefinitionLines(source) {
 export function transformPrivateCalls(source,{exports=[],mode='combined'}={}) {
   if(!['control','calls','scalars','combined'].includes(mode))throw Error('Unknown private mode');
   if(source.includes('privateImageMarker'))throw Error('Already private');
-  const ending='export {G,call,list,ctor};\nexport default Object.fromEntries(Object.keys(G).map(k=>[k,(...args)=>call(get(G,k),args)]));';
-  if(source.split(ending).length!==2)throw Error('Expected exact self-emitted public ABI');
+  // Keep historical images replayable; accept exactly one complete known ABI.
+  const endings=[
+    "export {G,call,list,ctor};\nexport default Object.fromEntries(Object.keys(G).map(k=>[k,(...args)=>call(get(G,k),args)]));",
+    "export {G,call,list,ctor};\nexport default Object.fromEntries(Object.keys(G).map(k=>[k.replace(':','.'),(...args)=>call(get(G,k),args)]));",
+  ];
+  const counts=endings.map(ending=>source.split(ending).length-1);
+  if(counts.reduce((a,b)=>a+b,0)!==1)throw Error('Expected exact self-emitted public ABI');
+  const ending=endings[counts.indexOf(1)];
   if(!exports.length||exports.some(x=>typeof x!=='string')||new Set(exports).size!==exports.length)throw Error('Explicit unique host export list required');
   const workers=new Map(), lines=source.split('\n');
   const stats={mode,workers:0,calls:0,tails:0,scalarCalls:0,scalarTails:0,byName:{},skippedDefinitions:0,scopedDefinitions:[],contract:'private inspect worker only; no public G/function objects'};

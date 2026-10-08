@@ -76,7 +76,7 @@ law driver_owned_name:
 def driver_emit_owned(
   +book: List<&2,KDef>,
 ) -> String:
-  +error = driver_owned_names(driver_owned_candidates(book), ["IO", "Sigma", "String", "Word.Con", "IO.OP", "Result", "Maybe", "Bool", "Unit", "Nat", "U32", "F32", "Char", "Array"])
+  +error = driver_owned_names(driver_owned_candidates(book), ["IO", "Sigma", "String", "Word.Con", "IO.OP", "Result", "Poll", "Maybe", "Bool", "Unit", "Nat", "U32", "F32", "Char", "Array"])
   kc(String, String.eq(error, ""), u => driver_foreign_names(book, book), u => error)
 
 # Native definitions cannot violate the owned-name rule. Filter once instead
@@ -96,7 +96,7 @@ def driver_foreign_names(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:
     case Con{d, rest}:
       kc(String, kc(Bool, String.eq(dk(d), "Def") && String.eq(tg(j_strip(dv(d))), "Foreign"),
         u => Bool.not(String.eq(dk(j_find_ctor(book, dn(d))), "Absent")), u => False{}),
-        u => dn(d) ++ " names both a constructor and a foreign def: name one apart",
+        u => name_key(dn(d)) ++ " names both a constructor and a foreign def: name one apart",
         u => driver_foreign_names(book, rest))
 
 @unsafe
@@ -105,7 +105,7 @@ def driver_owned_names(book, names):
     case Nil{}: ""
     case Con{name, rest}:
       kc(String, driver_owned_name(book, name),
-        u => name ++ " is a name the compiler encodes itself: name yours apart",
+        u => name_key(name) ++ " is a name the compiler encodes itself: name yours apart",
         u => driver_owned_names(book, rest))
 
 @unsafe

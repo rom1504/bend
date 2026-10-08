@@ -6,7 +6,7 @@ import {spawnSync} from 'node:child_process';
 import {pathToFileURL} from 'node:url';
 import {buildNative} from '../../native-build.mjs';
 import {nodeResourceArgs} from '../../node-resource-args.mjs';
-const root=path.resolve(process.env.BEND_UPSTREAM||path.join(import.meta.dirname,'../../../.bootstrap/upstream-phase23'));
+const root=path.resolve(process.env.BEND_UPSTREAM||path.join(import.meta.dirname,'../../../.bootstrap/upstream-phase66'));
 export const name='pinned-typescript-reference';
 export const capabilities={parse:true,check:true,interpreter:true,js:true,native:true,metal:false,cuda:false,modules:true,foreign:true,dependentTypes:true,affine:true,termination:true,proofs:true,proofKernel:false,checkOracle:'validation-plus-declaration-verdict'};
 export const artifacts=Object.fromEntries(['bend.ts','comp.ts','base.bend','main.ts','safe.ts','bendtt.lean'].map(file=>[file,path.join(root,'bend2',file)]));
@@ -16,9 +16,9 @@ artifacts.nativeBuild=path.resolve(import.meta.dirname,'../../native-build.mjs')
 export function declarationReport(B,book){
   const own=[...new Set(book.order)].filter(k=>book.tlds[k].b!==true),bad=new Set(Object.keys(book.tlds).filter(k=>{const t=book.tlds[k];return t.u===true||(t.i!==undefined&&t.b!==true)})),uses=Object.create(null),seen=new Set();
   const refs=(term,out)=>{if(term&&typeof term==='object'){if((term.$==='Ref'||term.$==='ADT')&&term.k!==undefined)out.add(term.k);for(const [key,value] of Object.entries(term))if(key!=='s')refs(value,out)}};
-  for(const queue=bad.size?own.slice():[];queue.length;){const key=queue.pop(),term=book.tlds[key];if(term&&!seen.has(key)){seen.add(key);const names=new Set();for(const constructor of term.$==='ADT'?term.c:[term])refs(B.term_lower(constructor.T),names);refs(term.$==='Def'?term.e:undefined,names);for(const target of names){(uses[target]??=[]).push(key);queue.push(target)}}}
+  for(const queue=bad.size?own.slice():[];queue.length;){const key=queue.pop(),term=book.tlds[key];if(term&&!seen.has(key)){seen.add(key);const names=new Set();for(const constructor of term.$==='ADT'?[term,...term.c]:[term])refs(B.term_lower(constructor.T),names);refs(term.$==='Def'?term.e:undefined,names);for(const target of names){(uses[target]??=[]).push(key);queue.push(target)}}}
   for(const key of bad)uses[key]?.forEach(name=>bad.add(name));const list=own.filter(key=>bad.has(key));
-  const text=list.length?`SOME PROOFS FAIL\nError: ${list.length} def${list.length===1?' relies':'s rely'} on unsafe or foreign code:\n`+list.map(key=>'- '+key+'\n').join(''):'ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n';
+  const text=list.length?`SOME PROOFS FAIL\nError: ${list.length} def${list.length===1?' relies':'s rely'} on unsafe or foreign code:\n`+list.map(key=>'- '+B.name_key(key)+'\n').join(''):'ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n';
   return {text,proofTrust:list.length?'failed':'passed',unsafeDefinitions:list,kernelChecked:false};
 }
 const format=(B,error)=>error instanceof RangeError?'Error: the machine stack overflowed (a deep recursion, or a literal too large to expand)':error?.$==='Err'?B.err_show(error):String(error);

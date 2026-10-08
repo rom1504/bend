@@ -53,10 +53,7 @@ def jd_host_marshal_on(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
     kc(String, String.eq(tg(t), "ADT"), u =>
       kc(String, String.eq(nm(t), "Nat") && db(lookup(book, nm(t))),
         u => kc(String, out, u => "BigInt", u => "nat_host"), u =>
-      kc(String, String.eq(nm(t), "Array") && db(lookup(book, nm(t))),
-        u => "((a)=>(a.forEach((x,i)=>a[i]=" ++
-          jd_host_marshal(book, kid(t, 0), out, seen, depth, fuel) ++ "(x)),a))", u =>
-        jd_host_marshal_status(book, t, out, seen, depth, fuel, jd_host_nat_known(book, t)))), u => ""))
+        jd_host_marshal_status(book, t, out, seen, depth, fuel, jd_host_nat_known(book, t))), u => ""))
 
 @unsafe
 def jd_host_marshal_fun(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
@@ -82,56 +79,73 @@ def jd_host_marshal_find(+seen: List<&2,KTerm>, +key: String) -> String:
       kc(String, String.eq(nm(t), key), u => "$dm" ++ U32.show(ix(t)),
         u => jd_host_marshal_find(rest, key))
 
+# Every ADT or Array converter shares one explicit work stack. Its owner
+# drains pending (converter, object, field) triples; Nat and function parts
+# convert immediately. Named lexical references close recursive type graphs.
 @unsafe
 def jd_host_marshal_named(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
   +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> String:
   +key = jd_host_marshal_key(t, out)
   +found = jd_host_marshal_find(seen, key)
   kc(String, Bool.not(String.eq(found, "")), u => found, u =>
-    "(function $dm" ++ U32.show(depth) ++ "(v){const top=[v];for(let at=top,key=0;;){switch(v.$){" ++
-      jd_host_marshal_ctors(book, dc(lookup(book, nm(t))), ks(t), out,
-        Con{kt("JDMarshal", key, depth, 0, Nil{}), seen}, U32.inc(depth), fuel, "$dm" ++ U32.show(depth)) ++
-      "default:throw " ++ j_quote("bend: " ++ nm(t) ++ " has no tag ") ++ "+v?.$+" ++
+    "(function $dm" ++ U32.show(depth) ++ "(v,q){const own=q===undefined;if(own)q=[];let r;" ++
+      jd_host_marshal_body(book, t, out,
+        Con{kt("JDMarshal", key, depth, 0, Nil{}), seen}, U32.inc(depth), fuel) ++
+      "if(own)while(q.length){const i=q.pop(),a=q.pop();a[i]=q.pop()(a[i],q);}return r;})")
+
+@unsafe
+def jd_host_marshal_body(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
+  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> String:
+  kc(String, String.eq(nm(t), "Array") && db(lookup(book, nm(t))), u =>
+    "r=v;v.forEach((x,i)=>{" ++
+      jd_host_marshal_put(jd_host_marshal(book, kid(t, 0), out, seen, depth, fuel), "v", "i") ++ "});", u =>
+    "switch(v.$){" ++ jd_host_marshal_ctors(book, dc(lookup(book, nm(t))), ks(t), out, seen, depth, fuel) ++
+      "default:throw " ++ j_quote("bend: " ++ name_key(nm(t)) ++ " has no tag ") ++ "+v?.$+" ++
         j_quote(" (its tags: " ++ jd_host_ctor_tags(dc(lookup(book, nm(t)))) ++
-          "); a tag names its constructor as the loading file sees it, which a later version will make the same everywhere (#1105)") ++ ";}}})")
+          "); a tag names its constructor as the loading file sees it, which a later version will make the same everywhere (#1105)") ++ ";}")
+
+# Composite expressions and lexical recursive references accept the shared q.
+# Function wrappers and scalar conversions deliberately stay immediate.
+@unsafe
+def jd_host_marshal_put(+marshal: String, +object: String, +field: String) -> String:
+  kc(String, String.eq(marshal, ""), u => "", u =>
+    kc(String, String.starts_with(marshal, "$dm") || String.starts_with(marshal, "(function $dm"), u =>
+      "q.push(" ++ marshal ++ "," ++ object ++ "," ++ field ++ ");", u =>
+      object ++ "[" ++ field ++ "]=" ++ marshal ++ "(" ++ object ++ "[" ++ field ++ "]);") )
 
 @unsafe
 def jd_host_marshal_ctors(+book: List<&2,KDef>, +ctors: List<&2,KDef>, +args: List<&2,KTerm>,
-  +out: Bool, +seen: List<&2,KTerm>, +depth: U32, +fuel: U32, +self: String) -> String:
+  +out: Bool, +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> String:
   match ctors:
     case Nil{}: ""
     case Con{c, rest}:
-      jd_host_marshal_arm(book, c, j_specialize(book, dt(c), args), out, seen, depth, fuel, self) ++
-      jd_host_marshal_ctors(book, rest, args, out, seen, depth, fuel, self)
+      jd_host_marshal_arm(book, c, j_specialize(book, dt(c), args), out, seen, depth, fuel) ++
+      jd_host_marshal_ctors(book, rest, args, out, seen, depth, fuel)
 
-# One constructor field plan supplies both tail selection and field output.
-# The end retains the original field-telescope refusal fragment, including when
-# the exhausted telescope might otherwise have ended. Conversion depth/fuel is
-# identical to the old independent tail and field traversals.
+# One constructor field plan supplies the copy decision and queued field work.
+# An exhausted telescope keeps its explicit refusal; it cannot silently omit
+# an unconverted field. Type-planning depth/fuel remains bounded.
 type JDHostFields is Data:
   JDHostFieldsEnd{+error: String}
   JDHostFieldsCon{+name: String, +marshal: String, +rest: JDHostFields}
 
 @unsafe
 def jd_host_marshal_arm(+book: List<&2,KDef>, +c: KDef, +tel: KTerm, +out: Bool,
-  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32, +self: String) -> String:
-  jd_host_marshal_arm_fields(c, jd_host_marshal_field_rows(book, tel, out, seen, depth, fuel), self)
+  +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> String:
+  jd_host_marshal_arm_fields(c, jd_host_marshal_field_rows(book, tel, out, seen, depth, fuel))
 
 @unsafe
-def jd_host_marshal_arm_fields(+c: KDef, +fields: JDHostFields, +self: String) -> String:
-  +tail = jd_host_marshal_rows_tail(fields, self)
-  +copy = jd_host_marshal_rows_text(fields, tail)
-  "case " ++ j_quote(dn(c)) ++ ":" ++
-    kc(String, String.eq(copy ++ tail, ""), u => "at[key]=v;return top[0];", u =>
-      "at=at[key]={...v" ++ copy ++ "};" ++ kc(String, String.eq(tail, ""),
-        u => "return top[0];", u => "key=" ++ j_quote(tail) ++ ";v=v[key];continue;"))
+def jd_host_marshal_arm_fields(+c: KDef, +fields: JDHostFields) -> String:
+  +work = jd_host_marshal_rows_text(fields)
+  "case " ++ j_quote(name_key(dn(c))) ++ ":r=" ++
+    kc(String, String.eq(work, ""), u => "v;", u => "{...v};") ++ work ++ "break;"
 
 @unsafe
 def jd_host_marshal_field_rows(+book: List<&2,KDef>, +tel: KTerm, +out: Bool,
   +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> JDHostFields:
   kc(JDHostFields, U32.is_gt(fuel, 0), u =>
     jd_host_marshal_field_rows_on(book, wnf(book, tel), out, seen, depth, U32.sub(fuel, 1)),
-    u => JDHostFieldsEnd{",[\"$unsupported\"]:" ++ jd_host_error("host field telescope depth") ++ "()"})
+    u => JDHostFieldsEnd{jd_host_error("host field telescope depth") ++ "();"})
 
 @unsafe
 def jd_host_marshal_field_rows_on(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
@@ -144,34 +158,11 @@ def jd_host_marshal_field_rows_on(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
     u => JDHostFieldsEnd{""})
 
 @unsafe
-def jd_host_marshal_rows_tail(+fields: JDHostFields, +self: String) -> String:
-  match fields:
-    case JDHostFieldsEnd{error}: ""
-    case JDHostFieldsCon{name, marshal, rest}:
-      jd_host_marshal_tail_done(name, String.eq(marshal, self), jd_host_marshal_rows_tail(rest, self))
-
-@unsafe
-def jd_host_marshal_rows_text(+fields: JDHostFields, +tail: String) -> String:
+def jd_host_marshal_rows_text(+fields: JDHostFields) -> String:
   match fields:
     case JDHostFieldsEnd{error}: error
     case JDHostFieldsCon{name, marshal, rest}:
-      kc(String, String.eq(name, tail), u => "", u => jd_host_marshal_field(name, marshal)) ++
-        jd_host_marshal_rows_text(rest, tail)
-
-# Like pinned js_marshal: choose the last directly self-recursive field as the
-# iterative spine, converting other fields left-to-right before following it.
-
-
-@unsafe
-def jd_host_marshal_tail_done(+name: String, +same: Bool, +rest: String) -> String:
-  kc(String, Bool.not(String.eq(rest, "")), u => rest, u => kc(String, same, u => name, u => ""))
-
-
-
-@unsafe
-def jd_host_marshal_field(+name: String, +marshal: String) -> String:
-  kc(String, String.eq(marshal, ""), u => "", u =>
-    "," ++ jd_literal_field_key(name, False{}) ++ ":" ++ marshal ++ "(v[" ++ j_quote(name) ++ "])")
+      jd_host_marshal_put(marshal, "r", j_quote(name)) ++ jd_host_marshal_rows_text(rest)
 
 # The host telescope substitutes Absent at each formal. Keep it separate from
 # the raw formal telescope used by live arity and internal parameter names.
@@ -299,7 +290,7 @@ def jd_host_exports(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:
         jd_host_exports(book, rest)
 
 # The full IO telescope includes its erased result type and final live kont.
-# Evaluate registry run/need before marshalling arguments, like pinned js_def.
+# The runtime resolves the displayed effect tag when the request is executed.
 @unsafe
 def jd_foreign_def(+book: List<&2,KDef>, +d: KDef) -> String:
   kc(String, j_io_type(book, jd_host_result(j_io_shadow(book), dt(d), da(d))), u =>
@@ -309,8 +300,8 @@ def jd_foreign_def(+book: List<&2,KDef>, +d: KDef) -> String:
 @unsafe
 def jd_foreign_ready(+book: List<&2,KDef>, +d: KDef, +arity: U32, +live: U32) -> String:
   kc(String, U32.is_gt(live, 0), u =>
-    "function " ++ jd_name(dn(d)) ++ "(" ++ jd_host_names(live, 0) ++ "){return {$:\"$FFI\",run:$0eff[" ++
-      j_quote(dn(d)) ++ "].run,need:$0eff[" ++ j_quote(dn(d)) ++ "].need,args:[" ++
+    "function " ++ jd_name(dn(d)) ++ "(" ++ jd_host_names(live, 0) ++ "){return {$:" ++
+      j_quote(name_key(dn(d))) ++ ",args:[" ++
       jd_foreign_values(book, dt(d), arity, 0, live, False{}) ++ "],kont:" ++
       jd_foreign_values(book, dt(d), arity, 0, live, True{}) ++ "};}\n",
     u => jd_fail("foreign continuation missing"))
@@ -346,13 +337,13 @@ def jd_foreign_error(+defs: List<&2,KDef>) -> String:
     case Nil{}: ""
     case Con{d, rest}: kc(String, String.eq(tg(j_strip(dv(d))), "Foreign"), u =>
       kc(String, String.eq(j_foreign_path(ks(j_strip(dv(d)))), ""),
-        u => "no JavaScript effect source for " ++ dn(d), u => jd_foreign_error(rest)), u => jd_foreign_error(rest))
+        u => "no JavaScript effect source for " ++ name_key(dn(d)), u => jd_foreign_error(rest)), u => jd_foreign_error(rest))
 
 # Sources are the shared scanner's namespace-resolved Source/Text/CID/FID rows.
-# Both CID and FID expand to quoted names, exactly as pinned c_ids(js=true).
+# Both CID and FID expand to quoted display names, as c_ids(js=true).
 @unsafe
 def jd_modules(+defs: List<&2,KDef>, +sources: List<&2,KTerm>) -> String:
-  jd_module_sources(sources) ++ jd_module_checks(defs)
+  jd_module_sources(sources)
 
 @unsafe
 def jd_module_sources(+sources: List<&2,KTerm>) -> String:
@@ -364,22 +355,14 @@ def jd_module_sources(+sources: List<&2,KTerm>) -> String:
 def jd_source_parts(+parts: List<&2,KTerm>) -> String:
   match parts:
     case Nil{}: ""
-    case Con{part, rest}: kc(String, String.eq(tg(part), "Text"), u => nm(part), u => j_quote(nm(part))) ++ jd_source_parts(rest)
-
-@unsafe
-def jd_module_checks(+defs: List<&2,KDef>) -> String:
-  match defs:
-    case Nil{}: ""
-    case Con{d, rest}: kc(String, String.eq(tg(j_strip(dv(d))), "Foreign"), u =>
-      "if (!(" ++ j_quote(dn(d)) ++ " in $0eff)) throw new Error(" ++
-        j_quote("bend: no effect registers " ++ dn(d)) ++ ");\n", u => "") ++ jd_module_checks(rest)
+    case Con{part, rest}: kc(String, String.eq(tg(part), "Text"), u => nm(part), u => j_quote(name_key(nm(part)))) ++ jd_source_parts(rest)
 
 @unsafe
 def jd_host_ctor_tags(+ctors: List<&2,KDef>) -> String:
   match ctors:
     case Nil{}: ""
     case Con{c, rest}:
-      dn(c) ++
+      name_key(dn(c)) ++
         kc(String, List.is_empty(&2,KDef, rest), u => "", u => ", ") ++ jd_host_ctor_tags(rest)
 
 @unsafe
@@ -393,6 +376,6 @@ def jd_host_marshal_status(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
 def jd_host_export(+book: List<&2,KDef>, +d: KDef, +status: U32) -> String:
   kc(String, U32.is_eq(status, 1), u => "", u =>
     kc(String, U32.is_eq(status, 2),
-      u => j_quote(dn(d)) ++ ":" ++ jd_host_error("host result telescope budget") ++ ",\n", u =>
-      j_quote(dn(d)) ++ ":run_lib(" ++ jd_host(book, d) ++ "," ++
+      u => j_quote(name_key(dn(d))) ++ ":" ++ jd_host_error("host result telescope budget") ++ ",\n", u =>
+      j_quote(name_key(dn(d))) ++ ":run_lib(" ++ jd_host(book, d) ++ "," ++
         U32.show(jd_live_arity(book, dt(d), jd_emitted_arity(book, d))) ++ "),\n"))

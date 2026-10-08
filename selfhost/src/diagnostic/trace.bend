@@ -84,7 +84,7 @@ def dg_reason(e, ctx, t, ty, code):
    u => kc(KTerm, String.eq(code, "unbound variable"), u => dg_pair(dg_text("a bound variable"), kc(KTerm, String.eq(tg(t), "FUnboundVar"), u => dg_text(nm(t) ++ kc(String, kp_bound(dg_scope(ctx, Nil{}), nm(t)), u => "^-1", u => "")), u => t)),
    u => kc(KTerm, String.eq(code, "nondecreasing self-call"), u => dg_pair(dg_text("a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)"), t),
    u => kc(KTerm, String.eq(code, "live use of an unfilled law"), u => dg_pair(dg_text("a filled definition (an unfilled law is a dead claim: live code cannot use it)"), t),
-   u => kc(KTerm, String.eq(code, "a family requires angle-bracket parameters"), u => dg_pair(dg_text("a family instance (write " ++ nm(t) ++ "<..>)"), t),
+   u => kc(KTerm, String.eq(code, "a family requires angle-bracket parameters"), u => dg_pair(dg_text("a family instance (write " ++ name_key(nm(t)) ++ "<..>)"), t),
    u => kc(KTerm, String.eq(code, "unresolved hole"), u => dg_pair(ty, t),
    u => kc(KTerm, String.eq(code, "cannot infer: annotation required"), u => dg_pair(dg_text(kc(String, (String.eq(tg(t), "Ctr") || core_literal(t)) && String.eq(dg_family(cb(e), nm(kc(KTerm, core_literal(t), u => core_literal_step(t), u => t))), ""), u => "a declared constructor", u => "an annotated term (cannot infer)")), t),
    u => kc(KTerm, String.eq(code, "lambda requires a function type") || String.eq(code, "matcher requires a function type") || String.eq(code, "reflexivity requires equality goal"), u => dg_pair(ty, dg_text("non-inferrable term")),

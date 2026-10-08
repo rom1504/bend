@@ -173,19 +173,24 @@ def kp_par(
 
 # File context is separate from lexical binders and never changes their depth.
 @unsafe
-def kp_alias_name(+aliases: List<&2,KTerm>, +name: String) -> String:
+def kp_alias_name(+aliases: List<&2,KTerm>, +ns: String, +local: String, +name: String) -> String:
   match aliases:
-    case Nil{}: name
+    case Nil{}: name_key(name)
     case Con{im, rest}:
-      kc(String, Bool.not(List.is_empty(&2,KTerm,ks(im))) && String.starts_with(name, nm(im) ++ "."), u => nm(kid(im, 0)) ++ String.drop(name, String.length(nm(im))), u => kp_alias_name(rest, name))
+      kc(String, Bool.not(List.is_empty(&2,KTerm,ks(im))) && String.eq(ns, nm(im)), u => nm(kid(im, 0)) ++ "." ++ local, u => kp_alias_name(rest, ns, local, name))
+
+@unsafe
+def kp_file_name(+ns: String, +aliases: List<&2,KTerm>, +name: String, +parts: List<&2,String>) -> String:
+  match parts:
+    case Con{owner, Con{local, rest}}: kc(String, String.eq(ns, owner), u => local, u => kp_alias_name(aliases, owner, local, name))
+    case _: kc(String, String.is_empty(ns), u => name, u => kp_alias_name(aliases, "", name, name))
 
 @unsafe
 def kp_name(+env: List<&2,KPName>, +name: String) -> String:
   match env:
-    case Nil{}: name
+    case Nil{}: name_key(name)
     case Con{KPName{n, id, depth}, rest}: kp_name(rest, name)
-    case Con{KPFile{ns, aliases}, rest}:
-      kc(String, Bool.not(String.is_empty(ns)) && String.starts_with(name, ns ++ "."), u => String.drop(name, String.length(ns ++ ".")), u => kp_alias_name(aliases, name))
+    case Con{KPFile{ns, aliases}, rest}: kp_file_name(ns, aliases, name, String.split(name, ':'))
 
 @unsafe
 def kp_show(

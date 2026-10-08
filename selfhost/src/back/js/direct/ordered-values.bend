@@ -77,7 +77,7 @@ def jd_ordered_field_join(+prefix: String, +value: String, +name: String, +rest:
 def jd_ordered_ctor_done(+ty: KTerm, +t: KTerm, +native: Bool, +fields: JDOrderedFields) -> JDOrdered:
   match fields:
     case JDOrderedFields{prefix, values, named, next}:
-      JDOrdered{prefix, kc(String, native, u => jd_ctor_native(nm(ty), nm(t), values), u => "({$:" ++ j_quote(nm(t)) ++ named ++ "})"), next}
+      JDOrdered{prefix, kc(String, native, u => jd_ctor_native(nm(ty), nm(t), values), u => "({$:" ++ j_quote(name_key(nm(t))) ++ named ++ "})"), next}
 
 # Pinned js_open holds demanded parallel RHSs, but leaves the final body value
 # pending. Binder-ID aliases retain lexical captures without an IIFE or

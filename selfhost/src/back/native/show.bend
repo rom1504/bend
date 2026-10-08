@@ -140,7 +140,7 @@ def nc_quote_chars(s: String) -> String:
 def nc_show_names(cs: List<&2, N_Constructor>) -> List<&2, String>:
   match cs:
     case Nil{}: Nil{}
-    case Con{N_Constructor{k, a, h}, rest}: Con{"\"" ++ nc_quote_chars(nc_ctor_display(k)) ++ "\"", nc_show_names(rest)}
+    case Con{N_Constructor{k, a, h}, rest}: Con{"\"" ++ nc_quote_chars(name_key(nc_ctor_display(k))) ++ "\"", nc_show_names(rest)}
 
 @unsafe
 def nc_show_finish(cs: List<&2, N_Constructor>, d: NC_Show) -> NC_Show:

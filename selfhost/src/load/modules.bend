@@ -36,7 +36,7 @@ def f_qual_name(
   +name: String,
   +ns: String,
 ) -> String:
-  f_choose(String, String.is_empty(ns), u => name, u => ns ++ "." ++ name)
+  f_choose(String, String.is_empty(ns), u => name, u => ns ++ ":" ++ name)
 
 @unsafe
 def f_prefix(
@@ -58,7 +58,7 @@ def f_alias(name, imports):
     case Nil{}:
       name
     case Con{+im, rest}:
-      f_choose(String, U32.is_gt(terms_len(ks(im)), 0) && f_prefix(name, nm(kid(im, 0)) ++ "."), u => nm(im) ++ "." ++ f_drop_prefix(name, nm(kid(im, 0)) ++ "."), u => f_alias(name, rest))
+      f_choose(String, U32.is_gt(terms_len(ks(im)), 0) && f_prefix(name, nm(kid(im, 0)) ++ "."), u => nm(im) ++ ":" ++ f_drop_prefix(name, nm(kid(im, 0)) ++ "."), u => f_alias(name, rest))
 
 @unsafe
 def f_declared(

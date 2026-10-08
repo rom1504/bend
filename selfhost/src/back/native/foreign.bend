@@ -23,8 +23,18 @@ def nc_foreign_namespace(ds: List<&2, KDef>, +path: String, +source: String) -> 
     case Nil{}: ""
     case Con{+d, +rest}:
       nt_choose(String, nc_foreign_has(ks(nc_unann(dv(d))), path),
-        u => nt_choose(String, String.eq(nm(nc_unann(dv(d))), ""), u => nc_source_namespace(String.split(dn(d), '.'), "", source), u => String.take(dn(d), Nat.sub(String.length(dn(d)), String.length(nm(nc_unann(dv(d))))))),
+        u => nt_choose(String, String.eq(nm(nc_unann(dv(d))), ""), u => nc_foreign_namespace_name(dn(d), source), u => String.take(dn(d), Nat.sub(String.length(dn(d)), String.length(nm(nc_unann(dv(d))))))),
         u => nc_foreign_namespace(rest, path, source))
+
+@unsafe
+def nc_foreign_namespace_name(+name: String, +source: String) -> String:
+  nc_foreign_namespace_parts(name, source, String.split(name, ':'))
+
+@unsafe
+def nc_foreign_namespace_parts(+name: String, +source: String, +parts: List<&2,String>) -> String:
+  match parts:
+    case Con{prefix, Con{local, rest}}: prefix ++ ":"
+    case other: nc_source_namespace(String.split(name, '.'), "", source)
 
 @unsafe
 def nc_foreign_aliases(cs: List<&2, N_Constructor>, +ns: String, +open: Bool) -> String:

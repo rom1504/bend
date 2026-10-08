@@ -520,7 +520,7 @@ def f_statement(p, begin, column):
 def f_statement_existing(+p: FParsed, +begin: U32, +column: U32) -> FParsed:
   match p:
     case FParsed{+n, +ts}:
-      f_choose(FParsed, f_eq(f_tx(ts), "="), u => f_let_value(n, f_expr(f_tl(ts), 0)), u => f_choose(FParsed, f_eq(f_tx(ts), ":"), u => f_typed_let_try(n, ts, f_expr(f_tl(ts), 0), begin), u => f_context_statement_more(n, ts, column)))
+      f_choose(FParsed, f_eq(f_tx(ts), "="), u => f_let_value(n, f_expr(f_tl(ts), 0)), u => f_choose(FParsed, f_eq(f_tx(ts), ":"), u => f_typed_let_try(n, ts, f_expr(f_tl(ts), 0), begin), u => f_context_statement_more(n, ts, column, begin)))
 
 @unsafe
 def f_let_ann(

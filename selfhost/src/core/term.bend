@@ -13,6 +13,13 @@ def kc(
     case False{}:
       no(Unit{})
 
+# Module identity uses ns:name; only external output replaces its first colon.
+@unsafe
+def name_key(+name: String) -> String:
+  match name:
+    case SNil{}: ""
+    case SCon{c, rest}: kc(String, Char.is_eq(c, ':'), u => "." ++ rest, u => SCon{c, name_key(rest)})
+
 # First-order trusted core. Binder identifiers are globally unique.
 # Quantities: 0 erased, 1 affine, 2 unrestricted. No function-valued fields.
 type KTerm is Data:

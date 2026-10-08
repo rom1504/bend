@@ -838,7 +838,7 @@ def check_mat_type(e, ctx, t, dem, ty, a):
 
 @unsafe
 def check_mat_ctr(e, ctx, t, dem, ty, a, ctr):
-  kc(KChecking, String.eq(dk(ctr), "Absent"), u => dg_bad_detail(cw(e), "unknown or duplicate match constructor", dg_text("a constructor of " ++ nm(a) ++ " (missing, or already matched)"), t),
+  kc(KChecking, String.eq(dk(ctr), "Absent"), u => dg_bad_detail(cw(e), "unknown or duplicate match constructor", dg_text("a constructor of " ++ name_key(nm(a)) ++ " (missing, or already matched)"), t),
    u => check_mat_filled(e, ctx, t, dem, ty, a, ctr, tele_fill(cb(e), dt(ctr), ks(a))))
 
 # A non-case fallback past the final constructor is unreachable. The checker
@@ -1047,7 +1047,7 @@ def check_adt_kind(+e: KEnv, +d: KDef, +tel: KTerm, +ctx: List<&2, KTerm>) -> KC
 
 @unsafe
 def check_adt_kind_head(+e: KEnv, +d: KDef, +tel: KTerm, +ctx: List<&2, KTerm>) -> KChecking:
-  kc(KChecking, String.eq(tg(tel), "All"), u => check_adt_kind(e, d, kid(tel, 1), ctx_bind(ctx, ix(tel), qt(tel), nm(tel), kid(tel, 0))), u => kc(KChecking, String.eq(tg(tel), "Typ"), u => check_ctors(e, d, dc(d), dt(d)), u => dg_trace(e, ctx, tel, atom("Absent"), dg_bad_detail(cw(e), "datatype declaration must return a kind", dg_text("a kind (type " ++ dn(d) ++ "<..> is Kind(g))"), tel))))
+  kc(KChecking, String.eq(tg(tel), "All"), u => check_adt_kind(e, d, kid(tel, 1), ctx_bind(ctx, ix(tel), qt(tel), nm(tel), kid(tel, 0))), u => kc(KChecking, String.eq(tg(tel), "Typ"), u => check_ctors(e, d, dc(d), dt(d)), u => dg_trace(e, ctx, tel, atom("Absent"), dg_bad_detail(cw(e), "datatype declaration must return a kind", dg_text("a kind (type " ++ name_key(dn(d)) ++ "<..> is Kind(g))"), tel))))
 
 @unsafe
 def check_ctors(e, d, ctrs, kind):
@@ -1063,7 +1063,7 @@ def check_ctors_next(e, d, rest, kind, err):
 
 @unsafe
 def check_ctor_tel(e, d, tel, kind, params, fields, ctx, args):
-  kc(KChecking, U32.is_eq(U32.add(params, fields), 0), u => kc(KChecking, compare(cb(e), tel, kt("ADT", dn(d), 0, 0, args), False{}), u => bad(cw(e), ""), u => dg_trace(e, ctx, tel, atom("Absent"), dg_bad_detail(cw(e), "constructor result must apply family to its parameters", dg_text("a telescope tipped at " ++ dn(d) ++ " applied to its own parameters"), tel))), u => check_ctor_head(e, d, wnf(cb(e), tel), kind, params, fields, ctx, args))
+  kc(KChecking, U32.is_eq(U32.add(params, fields), 0), u => kc(KChecking, compare(cb(e), tel, kt("ADT", dn(d), 0, 0, args), False{}), u => bad(cw(e), ""), u => dg_trace(e, ctx, tel, atom("Absent"), dg_bad_detail(cw(e), "constructor result must apply family to its parameters", dg_text("a telescope tipped at " ++ name_key(dn(d)) ++ " applied to its own parameters"), tel))), u => check_ctor_head(e, d, wnf(cb(e), tel), kind, params, fields, ctx, args))
 
 @unsafe
 def check_ctor_head(e, d, tel, kind, params, fields, ctx, args):

@@ -1,11 +1,13 @@
 // Direct JavaScript backend runtime. Generated output embeds this fragment.
 // Ported from bend2/comp.ts NATIVE.JS, RUNTIME and RUNTIME_MAIN, and
 // bend2/bend.ts f32_round at fixed upstream commit
-// 018751270e800bc222a93dad7f257083ee53a5f7. The reference files stay unchanged.
+// 059266225b77c8ca256ac6b25ee5c21449bab151. The reference files stay unchanged.
 // No TypeScript compiler/runtime dependency is used by ordinary compilation.
 // Number is the internal Nat representation; nat_host handles typed host input.
 // Node foreign IO requires the host emitter to provide an ESM require binding.
 // Bun/system calls remain lazy, exactly as in the pinned upstream runtime.
+// Retained local differences: NaN-payload-safe f32_bits and the compatible
+// array payload shared by unary run_tail and variadic jd_tail below.
 
 function word_to_u32(w) {
   let x = 0;
@@ -78,7 +80,7 @@ function f32_from_bits(u) {
 }
 
 function f32_read(s) {
-  const re = /^\s*[+-]?((\d+\.?\d*|\.\d+)(e[+-]?\d+)?|inf(inity)?|nan)$/i;
+  const re = /^[\t\n\v\f\r ]*[+-]?((\d+\.?\d*|\.\d+)(e[+-]?\d+)?|inf(inity)?|nan)$/i;
   const v = f32_round(s.replace(/inf\w*/i, "Infinity"));
   return re.test(s) ? {$: "Some", value: v} : {$: "None"};
 }
@@ -108,6 +110,7 @@ function char_new(code) {
   }
   return String.fromCodePoint(code);
 }
+
 // Array
 // =====
 
@@ -163,13 +166,15 @@ function run_lib(f, n) {
 
 const $0eff = Object.create(null);
 
-function io_eff(k, run, need) {
+function io_eff(k, run) {
+  if (arguments.length > 2) {
+    throw new Error("bend: " + k + " takes no need: an effect that waits parks itself");
+  }
   if (k in $0eff) {
     throw new Error("bend: two effects register " + k);
   }
-  $0eff[k] = { run, need };
+  $0eff[k] = run;
 }
-
 // Cli
 // ===
 
@@ -198,38 +203,37 @@ function cli(argv) {
 // show_val prints a pure main's value as term_show does (see show_main);
 // chain is the bracket it continues, or 0. show_chr escapes as char_show.
 
-function show_chr(c, q) {
+function show_chr(s, q) {
+  const c = s.codePointAt(0);
   const k = { 10: "n", 9: "t", 13: "r", 0: "0", 92: "\\" }[c]
-    ?? (c === q.codePointAt(0) ? q : null);
+    ?? (s === q ? q : null);
   return k !== null ? "\\" + k : c < 32 || c === 127
-    || (c >= 0xD800 && c <= 0xDFFF) || c > 0x10FFFF
-    ? "\\u{" + c.toString(16) + "}" : String.fromCodePoint(c);
+    || (c >= 0xD800 && c <= 0xDFFF) ? "\\u{" + c.toString(16) + "}" : s;
 }
 
-function show_val(D, N, d, v, chain) {
+function show_val(D, d, v, chain) {
   if (D[d] === 7) {
     const fs = Object.values(typeof v === "boolean"
       ? { $: v ? "True" : "False" } : v);
     let a = d + 3;
-    for (; N[D[a]] !== fs[0]; a += 4 + 2 * D[a + 2]) {}
+    for (; D[a + 1] !== fs[0]; a += 4 + 2 * D[a + 2]) {}
     const o = "{[("[D[a + 3]];
     let s = o === "{" ? fs[0] + "{" : chain === o ? "" : o;
     for (const [j, f] of fs.slice(1).entries()) {
       if (o === "[" ? j === 0 && chain === o : j > 0) {
         s += ", ";
       }
-      s += show_val(D, N, D[a + 5 + 2 * j], f, j === 1 && o !== "{" ? o : 0);
+      s += show_val(D, D[a + 5 + 2 * j], f, j === 1 && o !== "{" ? o : 0);
     }
     return o === "{" || chain !== o ? s + "}])"[D[a + 3]] : s;
   }
   return D[d] === 0 ? String(v)
     : D[d] === 1 ? f32_show(v).replace(/^-?\d+(?=e|$)/, "$&.0")
     : D[d] === 2 ? v + "n"
-    : D[d] === 3 ? "'" + show_chr(v.codePointAt(0), "'") + "'"
-    : D[d] === 4 ? "\"" + [...v].map((c) =>
-      show_chr(c.codePointAt(0), "\"")).join("") + "\""
+    : D[d] === 3 ? "'" + show_chr(v, "'") + "'"
+    : D[d] === 4 ? "\"" + [...v].map((c) => show_chr(c, "\"")).join("") + "\""
     : D[d] === 5 ? "{==}"
-    : "[" + v.map((x) => show_val(D, N, D[d + 1], x, 0)).join(", ") + "]";
+    : "[" + v.map((x) => show_val(D, D[d + 1], x, 0)).join(", ") + "]";
 }
 
 // Io
@@ -238,14 +242,15 @@ function show_val(D, N, d, v, chain) {
 // Apple arm64 passes variadic fcntl flags on the stack, so io_sys
 // binds fcntl there with the flags as the ninth fixed argument. A
 // parked effect waits for fd (a write when out) or until at
-// (performance.now()), either one undefined when unused; io_wake
-// resumes k with the value of more, and undefined parks it again. The
-// waits stay in deadline order, as io_park does in C.
+// (performance.now()), either one undefined when unused; once due, io_wait
+// calls more at once, as C calls pack, and resumes k with its value, while
+// undefined parks it again. The waits stay in deadline order, as io_park
+// does in C.
 
 function io_exit(main, show) {
   try {
     if (show !== null) {
-      io_out(1, io_bytes(show_val(...show, 0, run_loop(main()), 0) + "\n"));
+      io_out(1, io_bytes(show_val(show, 0, run_loop(main()), 0) + "\n"));
       process.exit(0);
     }
     process.exit(io_run(main));
@@ -307,13 +312,34 @@ function io_sys() {
   return globalThis.BEND_SYS;
 }
 
-function io_fail(code) {
-  return { $: "Fail",
-    error: io_tup(code >>> 0, String(io_sys().strerror(code))) };
+// strerror needs bun:ffi; a host without it (node) gets the bare errno.
+function io_strerror(code) {
+  try {
+    return String(io_sys().strerror(code));
+  } catch (_) {
+    return "errno " + code;
+  }
+}
+
+function io_fail(code, ...rest) {
+  const err = io_tup(code >>> 0, io_strerror(code));
+  return { $: "Fail", error: io_tup(err, ...rest) };
 }
 
 function io_done(value) {
   return { $: "Done", value };
+}
+
+function io_until(ms) {
+  return performance.now() + Number(ms);
+}
+
+function io_late(at) {
+  return at !== undefined && performance.now() >= at;
+}
+
+function io_ready(at, r) {
+  return at === undefined ? r : { $: "Ready", value: r };
 }
 
 function io_tup(...xs) {
@@ -364,9 +390,9 @@ function io_push(fun, arg, fresh) {
   io.live += fresh ? 1 : 0;
 }
 
-function io_wait(io) {
+function io_wait(io, block) {
   const soon = io.waits[0]?.at ?? Infinity;
-  const ms = soon === Infinity ? -1
+  const ms = !block ? 0 : soon === Infinity ? -1
     : Math.max(0, Math.ceil(soon - performance.now()));
   const fds = io.waits.filter((w) => w.fd !== undefined);
   const top = fds.reduce((m, w) => Math.max(m, w.fd), 0);
@@ -387,19 +413,16 @@ function io_wait(io) {
     set.fill(0);
   }
   const now = performance.now();
-  io.waits = io.waits.filter((w) => {
-    const ready = w.at <= now || w.fd !== undefined
-      && set[at(w)] & 1 << (w.fd & 7);
-    if (ready) {
-      io_push(io_wake, w, false);
+  const due = (w) => w.at <= now || w.fd !== undefined
+    && set[at(w)] & 1 << (w.fd & 7);
+  const todo = io.waits;
+  io.waits = todo.filter((w) => !due(w));
+  for (const w of todo.filter(due)) {
+    const x = w.more();
+    if (x !== undefined) {
+      io_push(w.k, x, false);
     }
-    return !ready;
-  });
-}
-
-function io_wake(w) {
-  const x = w.more();
-  return x === undefined ? undefined : w.k(x);
+  }
 }
 
 function io_park_on(fd, out, k, more, at) {
@@ -413,7 +436,8 @@ function io_run(m) {
   globalThis.BEND_IO = io;
   try {
     io_push(run_loop(m()), (x) => ({ $: "Emit", value: x }), true);
-    for (;;) {
+    let look = 0;
+    for (let n = 0;; n += 1) {
       if (io.runs.length === 0) {
         if (io.live === 0) {
           return 0;
@@ -422,8 +446,15 @@ function io_run(m) {
           io_errs("bend: deadlock: every computation waits on a channel");
           return 1;
         }
-        io_wait(io);
+        io_wait(io, true);
         continue;
+      }
+      if ((n & 63) === 0 && io.waits.length > 0) {
+        const now = performance.now();
+        if (now >= look || io.waits[0].at <= now) {
+          look = now + 10;
+          io_wait(io, false);
+        }
       }
       const s = io.runs.shift();
       let op = s.fun(s.arg);
@@ -436,29 +467,19 @@ function io_run(m) {
           io_errs(op.message);
           return op.code;
         }
-        const need = op.need?.() ?? {};
-        if (need.time || need.read) {
-          const more = () => op.run(...op.args, op.kont);
-          io_park_on(need.read ? op.args[0] : undefined, false, op.kont, more,
-            need.read ? undefined : performance.now() + Number(op.args[0]));
-          break;
+        const run = $0eff[op.$];
+        if (run === undefined) {
+          throw "bend: no effect registers " + op.$;
         }
-        const x = op.run(...op.args, op.kont);
+        const x = run(...op.args, op.kont);
         if (x === undefined) {
           break;
         }
         op = op.kont(x);
       }
     }
-  } catch (req) {
-    if (req instanceof RangeError) {
-      throw "bend: memory fault (machine stack overflow?)";
-    }
-    if (req?.$ !== "$FFI") {
-      throw req;
-    }
-    io_errs("bend: runtime fail-stop");
-    return 1;
+  } catch (e) {
+    throw e instanceof RangeError ? "bend: memory fault (machine stack overflow?)" : e;
   }
 }
 

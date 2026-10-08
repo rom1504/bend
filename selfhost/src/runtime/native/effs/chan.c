@@ -1,3 +1,4 @@
+// Phase66: current Base blocking result ABI on the retained IoAct scheduler.
 // Grouped channel effects for the retained IoQue/IoAct runtime.
 // The old separate source files remain available for historical artifacts.
 
@@ -22,17 +23,16 @@ static void __attribute__((constructor)) chan_new_use(void) {
 Term chan_send_run(Env e, Term* f, IoWork* w) {
   ChanRow* row = chan_at(f[0]);
   if (row == NULL || row->shut) {
-    term_drop(e, f[1]);
-    return chan_bool(false);
+    return io_box(e, CID_FAIL, f[1]);
   }
   if (row->wait.head != NULL && row->wait.head->item == TERM_HOLE) {
     chan_wake(row, chan_some(e, f[1]));
-    return chan_bool(true);
+    return chan_done(e);
   }
   if (row->size < row->room) {
     row->ring[(row->head + row->size) % row->room] = f[1];
     row->size += 1;
-    return chan_bool(true);
+    return chan_done(e);
   }
   return chan_park(row, w, f[1]);
 }
@@ -53,14 +53,14 @@ Term chan_recv_run(Env e, Term* f, IoWork* w) {
     return term_pak(CID_NONE, 0);
   }
   if (row->size > 0) {
-    Term v = chan_take(row);
+    Term v = chan_take(e, row);
     if (row->shut && row->size == 0) {
       chan_free(row);
     }
     return chan_some(e, v);
   }
   if (row->wait.head != NULL && row->wait.head->item != TERM_HOLE) {
-    return chan_some(e, chan_wake(row, chan_bool(true)));
+    return chan_some(e, chan_wake(row, chan_done(e)));
   }
   if (row->shut) {
     chan_free(row);

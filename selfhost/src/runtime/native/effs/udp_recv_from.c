@@ -1,8 +1,9 @@
+// Phase66: current Base blocking result ABI on the retained IoAct scheduler.
 // UDP
 // ===
 
-// The loop parked the request until the socket was readable; a recv that
-// still finds no datagram (the socket is non-blocking) parks again.
+// A zero max refuses immediately; a non-blocking recv with no datagram
+// parks until readable, preserving an empty datagram as valid data.
 static Term udp_recv_from_more(Env e, IoWork* w) {
   struct sockaddr_in at = { 0 };
   socklen_t alen = sizeof(at);
@@ -23,11 +24,14 @@ static Term udp_recv_from_more(Env e, IoWork* w) {
 
 Term udp_recv_from_run(Env e, Term* f, IoWork* w) {
   w->hand = (intptr_t)io_hand_v(f[0]);
+  if (f[1] == 0) {
+    return io_tup(e, io_hand(w->hand), io_fail(e, EINVAL, NULL));
+  }
   w->made = f[1] < INT32_MAX ? (intptr_t)f[1] : INT32_MAX;
   w->data = io_mem(malloc((size_t)w->made + 1));
   return udp_recv_from_more(e, w);
 }
 
 static void __attribute__((constructor)) udp_recv_from_use(void) {
-  io_eff(CID_UDP_RECV_FROM, udp_recv_from_run, IO_READ);
+  io_eff(CID_UDP_RECV_FROM, udp_recv_from_run, 0);
 }

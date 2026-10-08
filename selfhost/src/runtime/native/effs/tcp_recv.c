@@ -1,3 +1,4 @@
+// Phase66: current Base blocking result ABI on the retained IoAct scheduler.
 // Adapted through upstream 018751270e800bc222a93dad7f257083ee53a5f7.
 // Uses the retained selfhost runtime and its CID_* constructor ABI.
 // TCP
@@ -14,7 +15,8 @@ static Term tcp_recv_with(Env e, IoWork* w, IoPack more,
     return io_wait_on(w, fd, POLLIN, 0, more);
   }
   Term r = w->code ? io_fail(e, w->code, NULL)
-    : io_done(e, read(e, w->data, w->size));
+    : io_done(e, w->size == 0 ? term_pak(CID_NONE, 0)
+      : io_box(e, CID_SOME, read(e, w->data, w->size)));
   free(w->data);
   return io_tup(e, io_hand(w->hand), r);
 }

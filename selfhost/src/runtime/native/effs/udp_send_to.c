@@ -1,3 +1,4 @@
+// Phase66: current Base blocking result ABI on the retained IoAct scheduler.
 // UDP
 // ===
 
@@ -15,7 +16,8 @@ static Term udp_send_to_more(Env e, IoWork* w) {
   if (w->code == EAGAIN) {
     return io_wait_on(w, fd, POLLOUT, 0, udp_send_to_more);
   }
-  Term r = w->code != 0 ? io_fail(e, w->code, NULL)
+  Term r = w->code != 0 ? io_box(e, CID_FAIL, io_tup(e,
+      io_err(e, w->code, NULL), io_str(e, w->data, w->size)))
     : io_done(e, term_pak(CID_UNIT, 0));
   free(w->text);
   free(w->data);
@@ -29,9 +31,11 @@ Term udp_send_to_run(Env e, Term* f, IoWork* w) {
   w->made = (intptr_t)f[2];
   w->data = io_cstr(e, f[3], &w->size);
   if (io_nul(w->text, hn)) {
+    Term r = io_box(e, CID_FAIL, io_tup(e, io_err(e, EINVAL, NULL),
+      io_str(e, w->data, w->size)));
     free(w->text);
     free(w->data);
-    return io_tup(e, io_hand(w->hand), io_fail(e, EINVAL, NULL));
+    return io_tup(e, io_hand(w->hand), r);
   }
   return udp_send_to_more(e, w);
 }

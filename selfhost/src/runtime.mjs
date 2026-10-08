@@ -759,7 +759,7 @@ function foreignConvert(root,type,outgoing){
     if(!outgoing&&x.$==='Tuple'&&(d?.[0]==='Tuple'||d==null&&constructorNative.Tuple!==false)){
       const node=[];parent[key]=node;work.push([node,0,x.fst,d?.[1]],[node,1,x.snd,d?.[2]]);continue;
     }
-    if(outgoing&&x.array||!outgoing&&Array.isArray(x)){
+    if(outgoing&&(x.array||desc?.[0]==='Array')||!outgoing&&Array.isArray(x)){
       const values=outgoing?arraydata(x):x,node=[];parent[key]=outgoing?node:{array:node};
       for(let i=values.length-1;i>=0;i--)work.push([node,i,values[i],d?.[1]]);
       continue;

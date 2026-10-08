@@ -2448,10 +2448,13 @@ static Term io_box(Env e, u64 cid, Term v) {
   return term_ctr(cid, l);
 }
 
-static Term io_fail(Env e, u32 code, const char* text) {
+static Term io_err(Env e, u32 code, const char* text) {
   const char* s = text != NULL ? text : strerror((int)code);
-  Term t = io_tup(e, code, io_str(e, s, strlen(s)));
-  return io_box(e, CID_FAIL, t);
+  return io_tup(e, code, io_str(e, s, strlen(s)));
+}
+
+static Term io_fail(Env e, u32 code, const char* text) {
+  return io_box(e, CID_FAIL, io_err(e, code, text));
 }
 
 static lock           io_gate = PTHREAD_MUTEX_INITIALIZER;
@@ -2758,6 +2761,53 @@ static void show_val(Env e, u32 d, const Term* w, char chain) {
 
 #endif
 
+// Current Base additions not yet implemented by this retained scheduler.
+// Refuse on actual dispatch, before consuming any payload.
+static const char* io_unavailable(u32 cid) {
+  switch (cid) {
+#ifdef CID_CHAN_TRY_SEND
+    case CID_CHAN_TRY_SEND: return "native Chan.try_send is not implemented by the retained IO runtime";
+#endif
+#ifdef CID_CHAN_TRY_RECV
+    case CID_CHAN_TRY_RECV: return "native Chan.try_recv is not implemented by the retained IO runtime";
+#endif
+#ifdef CID_TCP_TRY_ACCEPT
+    case CID_TCP_TRY_ACCEPT: return "native TCP.try_accept is not implemented by the retained IO runtime";
+#endif
+#ifdef CID_TCP_TRY_SEND
+    case CID_TCP_TRY_SEND: return "native TCP.try_send is not implemented by the retained IO runtime";
+#endif
+#ifdef CID_TCP_TRY_SEND_BYTES
+    case CID_TCP_TRY_SEND_BYTES: return "native TCP.try_send_bytes is not implemented by the retained IO runtime";
+#endif
+#ifdef CID_TCP_TRY_RECV
+    case CID_TCP_TRY_RECV: return "native TCP.try_recv is not implemented by the retained IO runtime";
+#endif
+#ifdef CID_TCP_TRY_RECV_BYTES
+    case CID_TCP_TRY_RECV_BYTES: return "native TCP.try_recv_bytes is not implemented by the retained IO runtime";
+#endif
+#ifdef CID_UDP_TRY_SEND_TO
+    case CID_UDP_TRY_SEND_TO: return "native UDP.try_send_to is not implemented by the retained IO runtime";
+#endif
+#ifdef CID_UDP_TRY_SEND_BYTES_TO
+    case CID_UDP_TRY_SEND_BYTES_TO: return "native UDP.try_send_bytes_to is not implemented by the retained IO runtime";
+#endif
+#ifdef CID_UDP_TRY_RECV_FROM
+    case CID_UDP_TRY_RECV_FROM: return "native UDP.try_recv_from is not implemented by the retained IO runtime";
+#endif
+#ifdef CID_UDP_TRY_RECV_BYTES_FROM
+    case CID_UDP_TRY_RECV_BYTES_FROM: return "native UDP.try_recv_bytes_from is not implemented by the retained IO runtime";
+#endif
+#ifdef CID_UDP_SEND_BYTES_TO
+    case CID_UDP_SEND_BYTES_TO: return "native UDP.send_bytes_to is not implemented by the retained IO runtime";
+#endif
+#ifdef CID_UDP_RECV_BYTES_FROM
+    case CID_UDP_RECV_BYTES_FROM: return "native UDP.recv_bytes_from is not implemented by the retained IO runtime";
+#endif
+    default: return "an alien request";
+  }
+}
+
 // The continuation applied to the item is the next request.
 static int io_step(Env e, IoAct* a) {
   // Yield only after a completed effect: the activation owns its next item.
@@ -2780,7 +2830,7 @@ static int io_step(Env e, IoAct* a) {
       return (int)(u32)e.mem[at];
     }
     if (io_eff_rows[c].run == NULL) {
-      err_fail("an alien request");
+      err_fail(io_unavailable(c));
     }
     u32 need = io_eff_rows[c].ask;
     u32 word = (u32)(need & IO_READ ? io_hand_v(e.mem[at]) : e.mem[at]);
@@ -2866,7 +2916,7 @@ static u32      chan_len;
 static u32      chan_idle = ~0u;
 
 #define chan_some(e, v) io_box(e, CID_SOME, v)
-#define chan_bool(b)    term_pak((b) ? CID_TRUE : CID_FALSE, 0)
+#define chan_done(e)    io_done(e, term_pak(CID_UNIT, 0))
 
 static Term chan_open(u32 room) {
   u32 i = chan_idle;
@@ -2921,12 +2971,12 @@ static Term chan_wake(ChanRow* row, Term x) {
   return item;
 }
 
-static Term chan_take(ChanRow* row) {
+static Term chan_take(Env e, ChanRow* row) {
   Term v = row->ring[row->head];
   row->head = (row->head + 1) % row->room;
   row->size -= 1;
   if (row->wait.head != NULL) {
-    Term item = chan_wake(row, chan_bool(true));
+    Term item = chan_wake(row, chan_done(e));
     row->ring[(row->head + row->size) % row->room] = item;
     row->size += 1;
   }
@@ -2943,14 +2993,34 @@ static void chan_free(ChanRow* row) {
 static void chan_shut(Env e, ChanRow* row) {
   row->shut = 1;
   while (row->wait.head != NULL) {
-    bool rcv = row->wait.head->item == TERM_HOLE;
-    Term x = rcv ? term_pak(CID_NONE, 0) : chan_bool(false);
-    term_sink(e, chan_wake(row, x));
+    Term item = row->wait.head->item;
+    Term x = item == TERM_HOLE ? term_pak(CID_NONE, 0)
+      : io_box(e, CID_FAIL, item);
+    chan_wake(row, x);
   }
   if (row->size == 0) {
     chan_free(row);
   }
 }
+
+// Foreign C ABI: current helpers coexist with the retained runtime's API.
+// This section is host-only; device code and prior runtime calls keep their
+// original Env-based helper. Only mem is read by term_peek/rfc_view.
+INLINE Loc term_peek_corpus(Corpus H, Term t) {
+  Env e = { H, NULL };
+  return term_peek(e, t);
+}
+#define term_peek(H, t) _Generic((H), Env: term_peek, default: term_peek_corpus)((H), (t))
+// This runtime permits shared blocks, so always follow its redirect cell.
+#define blk_loc(H, t) term_peek((H), (t))
+
+// New foreign sources register immediate effects with two arguments; the
+// third argument is retained for existing vendored readiness/timer effects.
+static void io_eff_default(u32 cid, Effect run) {
+  io_eff(cid, run, 0);
+}
+#define BEND_IO_EFF_PICK(_1, _2, _3, F, ...) F
+#define io_eff(...) BEND_IO_EFF_PICK(__VA_ARGS__, io_eff, io_eff_default, 0)(__VA_ARGS__)
 
 // Requests
 // ========

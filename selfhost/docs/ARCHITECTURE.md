@@ -1,6 +1,13 @@
 # Compiler architecture
 
-**Current overview:** Phase55 host02 is installed and verified. Direct JavaScript
+**Current overview:** Phase64 State09 is installed and verified. Read the
+[request pipeline](../../docs/self_hosted/compiler-request-pipeline.md),
+[prepared Base artifacts](../../docs/self_hosted/prepared-base-artifacts.md) and
+[qualified results](../../implementation/phase64/state09-results.md) for the
+current source, cached facts, lowering plan, self-reproduction and image roles.
+The sections below retain their dated architectural evidence.
+
+**Historical Phase55 overview:** Phase55 host02 was installed and verified. Direct JavaScript
 is the default for emitted programs, libraries and compiled runs; explicit legacy
 JavaScript and native targets remain available. The shared helper boundaries and
 4,096-definition SCC analysis from Phase54 remain. Phase55 reuses checked matcher

@@ -1,8 +1,21 @@
 # Compiler validation
 
-## Current Phase61 qualification
+## Current Phase64 qualification
 
-**Phase61 state08 is installed and verified.** The
+Phase64 State09 is installed and verified. Its
+[compiler qualification](../implementation/phase64/evidence/state09-qualification.json)
+and [release qualification](../implementation/phase64/evidence/state09-release.json)
+bind strict36/export95, full checked/B2 source96/numeric34/composition18/
+overapplication2, native3/runtime45, fresh own-source type acceptance, exact
+B2/B3 reproduction, raw23/point45 equality and legacy42/default24/helper5.
+Expected unsafe proof-trust refusal remains; these overlapping finite suites
+are not a mathematical soundness proof or universal conformance claim.
+See [current results](../implementation/phase64/state09-results.md) for exact
+images and separate compiler/program performance metrics.
+
+## Historical Phase61 qualification
+
+**Phase61 state08 was installed and verified at that checkpoint.** The
 [results matrix](../implementation/phase61/state08-results.md) binds the installed
 checked B1, genuine emitted B2/B3, complete source, driver and runtimes separately.
 

@@ -1,4 +1,12 @@
-# Current frontier: Phase64 State09 installed
+# Current frontier: Phase65 investigation authorized
+
+The user authorized [Phase65](../design/phase65/reusable-backend-products.md)
+from `49431ba`: refresh the selected B2 profiles, then test shared typed backend
+facts and reusable closed Base products, with bounded term/output experiments
+in parallel. [Live report](../implementation/phase65/README.md). Root serializes
+all target executions. No Phase65 implementation or speed result is claimed yet.
+
+## Installed baseline: Phase64 State09
 
 [Final report](../implementation/phase64/state09-results.md) ·
 [Compiler qualification](../implementation/phase64/evidence/state09-qualification.json) ·

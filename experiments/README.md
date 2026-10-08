@@ -5,6 +5,18 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Active implementation: Phase65 reusable backend products
+
+[Design](../design/phase65/reusable-backend-products.md) ·
+[Report](../implementation/phase65/README.md) ·
+[Typed facts](phase65/P65-001-typed-backend-products.md) ·
+[Base products](phase65/P65-002-base-backend-products.md) ·
+[Term reuse](phase65/P65-003-composite-term-reuse.md) ·
+[Output metadata](phase65/P65-004-output-metadata.md).
+Refresh the selected B2 cost attribution, then test independent scoped products
+and remove whole repeated traversals. Phase64 remains installed; no new gain or
+promotion is claimed at registration. Historical raw trees remain closed.
+
 ## Completed implementation: Phase64 retained facts and indexed state
 
 [Design](../design/phase64/typed-facts-and-compact-state.md) ·

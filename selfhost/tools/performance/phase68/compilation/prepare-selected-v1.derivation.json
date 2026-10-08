@@ -1,0 +1,53 @@
+{
+  "kind": "phase68-selected-compilation-method-derivation",
+  "dataOnly": true,
+  "predecessor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/prepare.py",
+    "sha256": "5461936fd1d311eb7c1f0c5225faf52e2d9309a2c946925b1937de2ae7725763",
+    "bytes": 7970
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/prepare-selected-v1.py",
+    "sha256": "41aeb63e8165eecd0b447dd2e691830c1063551fd3c69c7e219a2782286627c4",
+    "bytes": 9716
+  },
+  "edits": [
+    {
+      "before": "\"\"\"Freeze actual Phase67 B1/B2 native-request inputs; source/data copying only.\"\"\"",
+      "after": "\"\"\"Freeze explicitly selected B1/B2 and qualified C oracles; data-only successor.\"\"\""
+    },
+    {
+      "before": "    ap.add_argument('--out', type=Path, required=True)",
+      "after": "    ap.add_argument('--out', type=Path, required=True)\n    ap.add_argument('--attempt', type=Path, required=True)\n    ap.add_argument('--image-pins', type=Path, required=True)\n    ap.add_argument('--acquired', type=Path, action='append', required=True,\n        help='Repeat for selected native acquisition reports, covering numeric/array/lexer exactly once')\n    ap.add_argument('--reference-acquired', type=Path, action='append', required=True,\n        help='Repeat for pinned TypeScript acquisition reports, covering numeric/array/lexer exactly once')"
+    },
+    {
+      "before": "    attempt_pin = pin(ROOT/'selfhost/build/phase67/scalars-build01/attempt.json')",
+      "after": "    attempt_pin = pin(args.attempt)"
+    },
+    {
+      "before": "    b2_pin = pin(ROOT/'selfhost/build/phase67/scalars-build01-b2/image-pins.json')",
+      "after": "    b2_pin = pin(args.image_pins)"
+    },
+    {
+      "before": "    for key in ['source', 'emission', 'comparison', 'plan', 'rootsReference', 'admission']:\n        verified(image[key])",
+      "after": "    for key in ['source', 'emission', 'comparison', 'plan', 'rootsReference', 'admission']:\n        verified(image[key])\n    emission, comparison = read(image['emission']['file']), read(image['comparison']['file'])\n    assert emission['complete'] and emission['pass'] and comparison['complete'] and comparison['pass']\n    assert verified(emission['module']) == verified(image['b2'])\n    assert verified(emission['subject']['attempt']) == verified(emission['generator']['attempt']) == attempt_pin\n    assert verified(emission['subject']['source']) == verified(image['source'])\n    assert verified(emission['generator']['api']) == verified(attempt['api'])"
+    },
+    {
+      "before": "    cases = {}\n    for case, baseline, reference in [('numeric','native-scalars01','native-baseline02'), ('array','native-scalars01','native-baseline02'), ('lexer','native-heldout-scalars01','native-heldout-baseline02')]:\n        current_report = read(ROOT/'selfhost/build/phase67'/baseline/'report.json')\n        reference_report = read(ROOT/'selfhost/build/phase67'/reference/'report.json')\n        current = next(x for x in current_report['records'] if x['case']==case and x['role']=='selfhost')\n        prior = next(x for x in reference_report['records'] if x['case']==case and x['role']=='upstream')",
+      "after": "    def acquisitions(paths, role):\n        selected = {}\n        for path in paths:\n            identity, report = pin(path), read(path)\n            assert report['complete']\n            for record in report['records']:\n                case = record['case']\n                if case not in ['numeric', 'array', 'lexer'] or record['role'] != role:\n                    continue\n                assert case not in selected, ('ambiguous acquired case', role, case)\n                assert record['correct']\n                for phase in ['emission', 'toolchain', 'process']:\n                    assert record[phase]['complete'] and record[phase]['returncode'] == 0\n                verified(record['executable'])\n                selected[case] = identity, report, record\n        assert set(selected) == {'numeric', 'array', 'lexer'}, ('missing acquired cases', role)\n        return selected\n    selected = acquisitions(args.acquired, 'selfhost')\n    references = acquisitions(args.reference_acquired, 'upstream')\n    cases = {}\n    for case in ['numeric', 'array', 'lexer']:\n        current_pin, current_report, current = selected[case]\n        reference_pin, reference_report, prior = references[case]"
+    },
+    {
+      "before": "        assert current_emit['complete'] and reference_emit['complete']",
+      "after": "        assert current_emit['complete'] and reference_emit['complete']\n        assert verified(current_emit['recipe']) == verified(current_report['recipe'])\n        assert verified(reference_emit['recipe']) == verified(reference_report['recipe'])\n        assert verified(current['source']) == verified(prior['source']) == source"
+    },
+    {
+      "before": "nativeOracleEvidence=verified(current['emissionReceipt']), acquisition=pin(ROOT/'selfhost/build/phase67'/baseline/'report.json'),\n            referenceAcquisition=pin(ROOT/'selfhost/build/phase67'/reference/'report.json'), expectedRuntime=current['expected'])",
+      "after": "nativeOracleEvidence=verified(current['emissionReceipt']), acquisition=current_pin,\n            referenceAcquisition=reference_pin, expectedRuntime=current['expected'])"
+    },
+    {
+      "before": "    plan = dict(kind='phase68-native-compilation-plan', version=1, status='prepared-unexecuted',",
+      "after": "    plan = dict(kind='phase68-native-compilation-plan', version=2, status='prepared-unexecuted',\n        predecessorMethod=pin(HERE/'prepare.py'),"
+    }
+  ],
+  "scope": "CLI-selected actual checked B1/genuine B2 and qualified native acquisition oracles; unchanged worker, runner, analyzer and clocks. No target executed."
+}

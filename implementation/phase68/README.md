@@ -105,3 +105,18 @@ New mechanisms remain under investigation: ordinary C workers/local joins
 intrinsic templates ([P68-006](../../experiments/phase68/P68-006-demand-templates.md)),
 and one-level product bundles ([P68-007](../../experiments/phase68/P68-007-flat-products.md)).
 The installed release is still Phase67; no Phase68 promotion yet.
+
+## Template correctness checkpoint
+
+The demand-template compiler (`templates-build05`) passes strict checked build.
+Actual old/new image controls cover all 69 catalog entries, 216 adverse unknown
+names, 570 membership checks, 570 complete-template checks and 3,990 substitution
+checks. All pass. Numeric, array and lexer C are byte-identical to `prefix-build04`,
+so these native products do not need rebuilding. B1's exploratory request clocks
+show no speed improvement; the B2 hypothesis remains unmeasured and must not be
+credited from source intuition. A genuine B2 prototype is prepared for that test.
+
+All nine repaired/new control sources now pass a separate reference frontend
+smoke (zero holes, no C compiler or execution). Native retries still determine
+their runtime qualification. Compiler-source commits are development checkpoints;
+installation waits for final selection and integration gates.

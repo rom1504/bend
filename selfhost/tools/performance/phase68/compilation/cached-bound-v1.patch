@@ -1,0 +1,61 @@
+--- a/selfhost/src/back/native/book.bend
++++ b/selfhost/src/back/native/book.bend
+@@ -235,12 +235,22 @@
+ 
+ @unsafe
+ def nc_compile(+book: List<&2, KDef>, runtime: String, requests: String) -> NC_Result:
++  nc_compile_bound(book, runtime, requests, False{})
++
++# PRIVATE: only the owned driver may supply a freshly nc_annotated_context-produced
++# book. A cache marker is a shape check, not a public authenticity certificate.
++@unsafe
++def nc_compile_prepared(+book: List<&2, KDef>, runtime: String, requests: String) -> NC_Result:
++  nc_compile_bound(book, runtime, requests, String.eq(dk(index_first(book)), "BookCache"))
++
++@unsafe
++def nc_compile_bound(+book: List<&2, KDef>, runtime: String, requests: String, +retained: Bool) -> NC_Result:
+   +main = lookup(book, "main")
+   +owned = nv_owned(book)
+   nt_choose(NC_Result, Bool.not(String.eq(owned, "")), u => NC_Result{"", owned}, u =>
+   nt_choose(NC_Result, Bool.not(String.eq(dk(main), "Def")) || String.eq(tg(nc_unann(dv(main))), "Absent"), u => NC_Result{"", "no main to run"}, u =>
+   nt_choose(NC_Result, nc_is_io(book, dt(main)) && String.eq(tg(nc_unann(dv(main))), "Foreign"), u => NC_Result{"", "main must be a filled def: a foreign main cannot anchor IO"}, u =>
+-  nt_choose(NC_Result, U32.is_ge(norm_max_book(book), 4000000000), u => NC_Result{"", "native source binder IDs overlap the compiler temporary range"}, u => nc_finish(book, runtime, requests, nc_compile_defs(book, ["main"], Nil{}, 0, nc_bangs_book(book)))))))
++  nt_choose(NC_Result, U32.is_ge(nt_choose(U32, retained, u => norm_book_bound(book), u => norm_max_book(book)), 4000000000), u => NC_Result{"", "native source binder IDs overlap the compiler temporary range"}, u => nc_finish(book, runtime, requests, nc_compile_defs(book, ["main"], Nil{}, 0, nc_bangs_book(book)))))))
+ 
+ @unsafe
+ def nc_live_names(+book: List<&2, KDef>, todo: List<&2, String>, +done: List<&2, String>) -> List<&2, String>:
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -97,6 +97,7 @@
+   }
+   if(files.includes('src/back/native/book.bend')) {
+     exports.push('nc_compile','nc_foreign_paths');
++    if(fs.readFileSync(path.join(project,'src/back/native/book.bend'),'utf8').includes('def nc_compile_prepared('))exports.push('nc_compile_prepared');
+     if(fs.readFileSync(path.join(project,'src/back/native/book.bend'),'utf8').includes('nc_annotation_stops('))exports.push('nc_annotation_stops','nc_annotated_context');
+   }
+   if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source','nc_foreign_scope');
+@@ -873,12 +874,13 @@
+       if(error)return {status:'error',phase,diagnostic:error.startsWith('Error:')?error:'Error: '+error,exitCode:1,checked:true};
+     }
+     trace('annotate book');
+-    let layoutDefs,layoutStops,directPlan;
++    let layoutDefs,layoutStops,directPlan,nativeContextOwned=false;
+     if(mode==='native'&&api.nc_annotation_stops&&api.nc_annotated_context&&api.reach_book&&api.annotate_selected) {
+       const stops=api.nc_annotation_stops(contextBook);
+       const selected=api.reach_book(contextBook,list(['main']),stops);
+       layoutDefs=api.annotate_selected(contextBook,selected,stops);layoutStops=stops;
+       book=api.nc_annotated_context(contextBook,layoutDefs);
++      nativeContextOwned=ownedApi;
+     } else if(selectedEmission){
+       const products=usedPreparedWorld&&backend==='direct'&&baseAnnotationApis(api)?readBaseAnnotations(api,info,cached,graph.prefixLoad,book,stops):null;
+       book=products?api.annotate_selected_base(contextBook,book,stops,products):api.annotate_selected(contextBook,book,stops);
+@@ -916,7 +918,8 @@
+         return api.nc_foreign_source?api.nc_foreign_source(book,foreignScope,file,source,parsed):source;
+       }).join('\n');
+       trace('emit native');
+-      const native=api.nc_compile(book,fs.readFileSync(path.join(project,'src/runtime/native/runtime.c'),'utf8'),requests);
++      const compileNative=nativeContextOwned&&typeof api.nc_compile_prepared==='function'?api.nc_compile_prepared:api.nc_compile;
++      const native=compileNative(book,fs.readFileSync(path.join(project,'src/runtime/native/runtime.c'),'utf8'),requests);
+       if(native.error)return {status:'error',phase,diagnostic:'Error: '+native.error,exitCode:1,checked:true};
+       return {status:'ok',phase,code:native.source,verdict,exitCode:0,checked:true,files:nativeInputs};
+     }

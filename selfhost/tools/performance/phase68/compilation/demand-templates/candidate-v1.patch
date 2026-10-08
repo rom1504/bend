@@ -1,0 +1,129 @@
+--- a/selfhost/src/back/native/intrinsic.bend
++++ b/selfhost/src/back/native/intrinsic.bend
+@@ -1,15 +1,78 @@
+-type ni_Op is Data:
+-  ni_Op{+name: String, +template: String}
+-
++# Select exactly one immutable template; unknown names have no template.
++# Empty primitive names are common identity misses and cannot match this catalog.
+ @unsafe
+-def ni_templates() -> List<&2, ni_Op>:
+-  Con{ni_Op{"u32_add", "U32_BIN($0, +, $1)"}, Con{ni_Op{"u32_sub", "U32_BIN($0, -, $1)"}, Con{ni_Op{"u32_and", "U32_BIN($0, &, $1)"}, Con{ni_Op{"u32_or", "U32_BIN($0, |, $1)"}, Con{ni_Op{"u32_xor", "U32_BIN($0, ^, $1)"}, Con{ni_Op{"u32_mul", "U32_BIN($0, *, $1)"}, Con{ni_Op{"u32_is_eq", "U32_BIN($0, ==, $1)"}, Con{ni_Op{"u32_is_ne", "U32_BIN($0, !=, $1)"}, Con{ni_Op{"u32_is_lt", "U32_BIN($0, <, $1)"}, Con{ni_Op{"u32_is_le", "U32_BIN($0, <=, $1)"}, Con{ni_Op{"u32_is_gt", "U32_BIN($0, >, $1)"}, Con{ni_Op{"u32_is_ge", "U32_BIN($0, >=, $1)"}, Con{ni_Op{"u32_inc", "U32_BIN($0, +, 1)"}, Con{ni_Op{"u32_shl", "U32_BIN($0, <<, 1)"}, Con{ni_Op{"u32_shr", "U32_BIN($0, >>, 1)"}, Con{ni_Op{"u32_shln", "($1 >= 32 ? 0 : U32_BIN($0, <<, $1))"}, Con{ni_Op{"u32_shrn", "($1 >= 32 ? 0 : U32_BIN($0, >>, $1))"}, Con{ni_Op{"u32_div", "((u32)($1) == 0 ? 0 : (u64)U32_QUO((u32)($0), (u32)($1)))"}, Con{ni_Op{"u32_mod", "((u32)($1) == 0 ? $0 : U32_BIN($0, -, U32_QUO((u32)($0), (u32)($1)) * $1))"}, Con{ni_Op{"u32_not", "((u64)~(u32)($0))"}, Con{ni_Op{"u32_is_zero", "U32_BIN($0, ==, 0)"}, Con{ni_Op{"u32_cmp", "(U32_BIN($0, >, $1) + U32_BIN($0, >=, $1))"}, Con{ni_Op{"u32_to_f32", "f32_rewrap((f32)(u32)($0))"}, Con{ni_Op{"u32_to_nat", "((u64)$0)"}, Con{ni_Op{"u32_from_nat", "((u64)(u32)($0))"}, Con{ni_Op{"f32_add", "f32_rewrap(f32_unbox($0) + f32_unbox($1))"}, Con{ni_Op{"f32_sub", "f32_rewrap(f32_unbox($0) - f32_unbox($1))"}, Con{ni_Op{"f32_mul", "f32_rewrap(f32_unbox($0) * f32_unbox($1))"}, Con{ni_Op{"f32_div", "f32_rewrap(f32_unbox($0) / f32_unbox($1))"}, Con{ni_Op{"f32_is_eq", "((u64)(f32_unbox($0) == f32_unbox($1)))"}, Con{ni_Op{"f32_is_ne", "((u64)(f32_unbox($0) != f32_unbox($1)))"}, Con{ni_Op{"f32_is_lt", "((u64)(f32_unbox($0) < f32_unbox($1)))"}, Con{ni_Op{"f32_is_le", "((u64)(f32_unbox($0) <= f32_unbox($1)))"}, Con{ni_Op{"f32_is_gt", "((u64)(f32_unbox($0) > f32_unbox($1)))"}, Con{ni_Op{"f32_is_ge", "((u64)(f32_unbox($0) >= f32_unbox($1)))"}, Con{ni_Op{"f32_sqrt", "f32_rewrap((f32)sqrt(f32_unbox($0)))"}, Con{ni_Op{"f32_exp", "f32_rewrap((f32)exp(f32_unbox($0)))"}, Con{ni_Op{"f32_log", "f32_rewrap((f32)log(f32_unbox($0)))"}, Con{ni_Op{"f32_log2", "f32_rewrap((f32)log2(f32_unbox($0)))"}, Con{ni_Op{"f32_log10", "f32_rewrap((f32)log10(f32_unbox($0)))"}, Con{ni_Op{"f32_sin", "f32_rewrap((f32)sin(f32_unbox($0)))"}, Con{ni_Op{"f32_cos", "f32_rewrap((f32)cos(f32_unbox($0)))"}, Con{ni_Op{"f32_tan", "f32_rewrap((f32)tan(f32_unbox($0)))"}, Con{ni_Op{"f32_asin", "f32_rewrap((f32)asin(f32_unbox($0)))"}, Con{ni_Op{"f32_acos", "f32_rewrap((f32)acos(f32_unbox($0)))"}, Con{ni_Op{"f32_atan", "f32_rewrap((f32)atan(f32_unbox($0)))"}, Con{ni_Op{"f32_sinh", "f32_rewrap((f32)sinh(f32_unbox($0)))"}, Con{ni_Op{"f32_cosh", "f32_rewrap((f32)cosh(f32_unbox($0)))"}, Con{ni_Op{"f32_tanh", "f32_rewrap((f32)tanh(f32_unbox($0)))"}, Con{ni_Op{"f32_floor", "f32_rewrap((f32)floor(f32_unbox($0)))"}, Con{ni_Op{"f32_ceil", "f32_rewrap((f32)ceil(f32_unbox($0)))"}, Con{ni_Op{"f32_trunc", "f32_rewrap((f32)trunc(f32_unbox($0)))"}, Con{ni_Op{"f32_abs", "f32_rewrap((f32)fabs(f32_unbox($0)))"}, Con{ni_Op{"f32_pow", "f32_rewrap((f32)pow(f32_unbox($0), f32_unbox($1)))"}, Con{ni_Op{"f32_atan2", "f32_rewrap((f32)atan2(f32_unbox($0), f32_unbox($1)))"}, Con{ni_Op{"f32_mod", "f32_rewrap((f32)fmod(f32_unbox($0), f32_unbox($1)))"}, Con{ni_Op{"f32_neg", "f32_rewrap(-f32_unbox($0))"}, Con{ni_Op{"f32_to_u32", "f32_to_u32($0)"}, Con{ni_Op{"f32_bits", "$0"}, Con{ni_Op{"f32_show", "f32_show(e, $0)"}, Con{ni_Op{"f32_read", "f32_read(e, $0)"}, Con{ni_Op{"nat_add", "nat_chk(e, $0 + $1)"}, Con{ni_Op{"nat_sub", "($0 < $1 ? 0 : $0 - $1)"}, Con{ni_Op{"nat_mul", "nat_mul(e, $0, $1)"}, Con{ni_Op{"nat_double", "nat_chk(e, $0 + $0)"}, Con{ni_Op{"nat_cmp", "(($0 > $1) + ($0 >= $1))"}, Con{ni_Op{"nat_is_lt", "($0 < $1)"}, Con{ni_Op{"bool_or", "(native_bool($0) | native_bool($1))"}, Con{ni_Op{"bool_xor", "(native_bool($0) ^ native_bool($1))"}, Nil{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+-
+-@unsafe
+-def ni_find(+k: String, ops: List<&2, ni_Op>) -> String:
+-  match ops:
+-    case Nil{}: ""
+-    case Con{ni_Op{n, +t}, +rest}: nt_choose(String, String.eq(k, n), u => t, u => ni_find(k, rest))
++def ni_template(+k: String) -> String:
++  nt_choose(String, String.is_empty(k), u => "", u =>
++    nt_choose(String, String.eq(k, "u32_add"), u => "U32_BIN($0, +, $1)", u =>
++    nt_choose(String, String.eq(k, "u32_sub"), u => "U32_BIN($0, -, $1)", u =>
++    nt_choose(String, String.eq(k, "u32_and"), u => "U32_BIN($0, &, $1)", u =>
++    nt_choose(String, String.eq(k, "u32_or"), u => "U32_BIN($0, |, $1)", u =>
++    nt_choose(String, String.eq(k, "u32_xor"), u => "U32_BIN($0, ^, $1)", u =>
++    nt_choose(String, String.eq(k, "u32_mul"), u => "U32_BIN($0, *, $1)", u =>
++    nt_choose(String, String.eq(k, "u32_is_eq"), u => "U32_BIN($0, ==, $1)", u =>
++    nt_choose(String, String.eq(k, "u32_is_ne"), u => "U32_BIN($0, !=, $1)", u =>
++    nt_choose(String, String.eq(k, "u32_is_lt"), u => "U32_BIN($0, <, $1)", u =>
++    nt_choose(String, String.eq(k, "u32_is_le"), u => "U32_BIN($0, <=, $1)", u =>
++    nt_choose(String, String.eq(k, "u32_is_gt"), u => "U32_BIN($0, >, $1)", u =>
++    nt_choose(String, String.eq(k, "u32_is_ge"), u => "U32_BIN($0, >=, $1)", u =>
++    nt_choose(String, String.eq(k, "u32_inc"), u => "U32_BIN($0, +, 1)", u =>
++    nt_choose(String, String.eq(k, "u32_shl"), u => "U32_BIN($0, <<, 1)", u =>
++    nt_choose(String, String.eq(k, "u32_shr"), u => "U32_BIN($0, >>, 1)", u =>
++    nt_choose(String, String.eq(k, "u32_shln"), u => "($1 >= 32 ? 0 : U32_BIN($0, <<, $1))", u =>
++    nt_choose(String, String.eq(k, "u32_shrn"), u => "($1 >= 32 ? 0 : U32_BIN($0, >>, $1))", u =>
++    nt_choose(String, String.eq(k, "u32_div"), u => "((u32)($1) == 0 ? 0 : (u64)U32_QUO((u32)($0), (u32)($1)))", u =>
++    nt_choose(String, String.eq(k, "u32_mod"), u => "((u32)($1) == 0 ? $0 : U32_BIN($0, -, U32_QUO((u32)($0), (u32)($1)) * $1))", u =>
++    nt_choose(String, String.eq(k, "u32_not"), u => "((u64)~(u32)($0))", u =>
++    nt_choose(String, String.eq(k, "u32_is_zero"), u => "U32_BIN($0, ==, 0)", u =>
++    nt_choose(String, String.eq(k, "u32_cmp"), u => "(U32_BIN($0, >, $1) + U32_BIN($0, >=, $1))", u =>
++    nt_choose(String, String.eq(k, "u32_to_f32"), u => "f32_rewrap((f32)(u32)($0))", u =>
++    nt_choose(String, String.eq(k, "u32_to_nat"), u => "((u64)$0)", u =>
++    nt_choose(String, String.eq(k, "u32_from_nat"), u => "((u64)(u32)($0))", u =>
++    nt_choose(String, String.eq(k, "f32_add"), u => "f32_rewrap(f32_unbox($0) + f32_unbox($1))", u =>
++    nt_choose(String, String.eq(k, "f32_sub"), u => "f32_rewrap(f32_unbox($0) - f32_unbox($1))", u =>
++    nt_choose(String, String.eq(k, "f32_mul"), u => "f32_rewrap(f32_unbox($0) * f32_unbox($1))", u =>
++    nt_choose(String, String.eq(k, "f32_div"), u => "f32_rewrap(f32_unbox($0) / f32_unbox($1))", u =>
++    nt_choose(String, String.eq(k, "f32_is_eq"), u => "((u64)(f32_unbox($0) == f32_unbox($1)))", u =>
++    nt_choose(String, String.eq(k, "f32_is_ne"), u => "((u64)(f32_unbox($0) != f32_unbox($1)))", u =>
++    nt_choose(String, String.eq(k, "f32_is_lt"), u => "((u64)(f32_unbox($0) < f32_unbox($1)))", u =>
++    nt_choose(String, String.eq(k, "f32_is_le"), u => "((u64)(f32_unbox($0) <= f32_unbox($1)))", u =>
++    nt_choose(String, String.eq(k, "f32_is_gt"), u => "((u64)(f32_unbox($0) > f32_unbox($1)))", u =>
++    nt_choose(String, String.eq(k, "f32_is_ge"), u => "((u64)(f32_unbox($0) >= f32_unbox($1)))", u =>
++    nt_choose(String, String.eq(k, "f32_sqrt"), u => "f32_rewrap((f32)sqrt(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_exp"), u => "f32_rewrap((f32)exp(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_log"), u => "f32_rewrap((f32)log(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_log2"), u => "f32_rewrap((f32)log2(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_log10"), u => "f32_rewrap((f32)log10(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_sin"), u => "f32_rewrap((f32)sin(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_cos"), u => "f32_rewrap((f32)cos(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_tan"), u => "f32_rewrap((f32)tan(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_asin"), u => "f32_rewrap((f32)asin(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_acos"), u => "f32_rewrap((f32)acos(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_atan"), u => "f32_rewrap((f32)atan(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_sinh"), u => "f32_rewrap((f32)sinh(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_cosh"), u => "f32_rewrap((f32)cosh(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_tanh"), u => "f32_rewrap((f32)tanh(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_floor"), u => "f32_rewrap((f32)floor(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_ceil"), u => "f32_rewrap((f32)ceil(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_trunc"), u => "f32_rewrap((f32)trunc(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_abs"), u => "f32_rewrap((f32)fabs(f32_unbox($0)))", u =>
++    nt_choose(String, String.eq(k, "f32_pow"), u => "f32_rewrap((f32)pow(f32_unbox($0), f32_unbox($1)))", u =>
++    nt_choose(String, String.eq(k, "f32_atan2"), u => "f32_rewrap((f32)atan2(f32_unbox($0), f32_unbox($1)))", u =>
++    nt_choose(String, String.eq(k, "f32_mod"), u => "f32_rewrap((f32)fmod(f32_unbox($0), f32_unbox($1)))", u =>
++    nt_choose(String, String.eq(k, "f32_neg"), u => "f32_rewrap(-f32_unbox($0))", u =>
++    nt_choose(String, String.eq(k, "f32_to_u32"), u => "f32_to_u32($0)", u =>
++    nt_choose(String, String.eq(k, "f32_bits"), u => "$0", u =>
++    nt_choose(String, String.eq(k, "f32_show"), u => "f32_show(e, $0)", u =>
++    nt_choose(String, String.eq(k, "f32_read"), u => "f32_read(e, $0)", u =>
++    nt_choose(String, String.eq(k, "nat_add"), u => "nat_chk(e, $0 + $1)", u =>
++    nt_choose(String, String.eq(k, "nat_sub"), u => "($0 < $1 ? 0 : $0 - $1)", u =>
++    nt_choose(String, String.eq(k, "nat_mul"), u => "nat_mul(e, $0, $1)", u =>
++    nt_choose(String, String.eq(k, "nat_double"), u => "nat_chk(e, $0 + $0)", u =>
++    nt_choose(String, String.eq(k, "nat_cmp"), u => "(($0 > $1) + ($0 >= $1))", u =>
++    nt_choose(String, String.eq(k, "nat_is_lt"), u => "($0 < $1)", u =>
++    nt_choose(String, String.eq(k, "bool_or"), u => "(native_bool($0) | native_bool($1))", u =>
++    nt_choose(String, String.eq(k, "bool_xor"), u => "(native_bool($0) ^ native_bool($1))", u =>
++      ""))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+ 
+ @unsafe
+ def ni_replace_all(+s: String, +key: String, +value: String) -> String:
+@@ -26,4 +89,4 @@
+ 
+ @unsafe
+ def ni_emit(k: String, xs: List<&2, String>) -> String:
+-  ni_fill(ni_find(k, ni_templates()), xs, 0)
++  ni_fill(ni_template(k), xs, 0)
+--- a/selfhost/src/back/native/direct.bend
++++ b/selfhost/src/back/native/direct.bend
+@@ -3,7 +3,7 @@
+ # read/show and arrays retain their allocating or consuming runtime boundaries.
+ @unsafe
+ def nd_scalar_known(+name: String) -> Bool:
+-  Bool.not(String.eq(ni_find(name, ni_templates()), "")) && Bool.not(String.eq(name, "f32_show") || String.eq(name, "f32_read"))
++  Bool.not(String.eq(ni_template(name), "")) && Bool.not(String.eq(name, "f32_show") || String.eq(name, "f32_read"))
+ 
+ @unsafe
+ def nd_scalar_call(+book: List<&2, KDef>, +t: KTerm) -> String:
+--- a/selfhost/src/back/native/bridge.bend
++++ b/selfhost/src/back/native/bridge.bend
+@@ -350,7 +350,7 @@
+ @unsafe
+ def nc_native_def(+d: KDef) -> Bool:
+   +prim = nc_primitive_name(dn(d))
+-  db(d) && Bool.not(String.eq(tg(nc_unann(dv(d))), "Foreign")) && (Bool.not(String.eq(ni_find(prim, ni_templates()), "")) || nc_array_known(prim) || String.eq(prim, "nat_divmod"))
++  db(d) && Bool.not(String.eq(tg(nc_unann(dv(d))), "Foreign")) && (Bool.not(String.eq(ni_template(prim), "")) || nc_array_known(prim) || String.eq(prim, "nat_divmod"))
+ 
+ @unsafe
+ def nc_ref_name(+book: List<&2, KDef>, +name: String) -> String:
+@@ -358,7 +358,7 @@
+ 
+ @unsafe
+ def nc_primitive_arity(+k: String) -> U32:
+-  +fmt = ni_find(k, ni_templates())
++  +fmt = ni_template(k)
+   nt_choose(U32, String.eq(k, "array_atomic_cas"), u => 4, u =>
+   nt_choose(U32, U32.is_ne(nc_atomic(k), 0) || String.eq(k, "array_set") || String.eq(k, "array_swap"), u => 3, u =>
+   nt_choose(U32, String.eq(k, "array_new") || String.eq(k, "array_get") || String.eq(k, "nat_divmod"), u => 2, u =>

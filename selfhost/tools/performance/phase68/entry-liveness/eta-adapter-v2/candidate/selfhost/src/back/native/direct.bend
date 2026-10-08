@@ -3,7 +3,7 @@
 # read/show and arrays retain their allocating or consuming runtime boundaries.
 @unsafe
 def nd_scalar_known(+name: String) -> Bool:
-  Bool.not(String.eq(ni_template(name), "")) && Bool.not(String.eq(name, "f32_show") || String.eq(name, "f32_read"))
+  Bool.not(String.eq(ni_find(name, ni_templates()), "")) && Bool.not(String.eq(name, "f32_show") || String.eq(name, "f32_read"))
 
 @unsafe
 def nd_scalar_call(+book: List<&2, KDef>, +t: KTerm) -> String:
@@ -13,20 +13,9 @@ def nd_scalar_call(+book: List<&2, KDef>, +t: KTerm) -> String:
 
 @unsafe
 def nd_bind_scalar(+name: String, args: List<&2, KTerm>, +acc: List<&2, KTerm>, +n: U32, +id: U32, +body: KTerm) -> KTerm:
-  nd_bind_value("NOp", name, args, acc, n, id, body)
-
-# The same ordered argument sequencing serves scalar and allocating results.
-@unsafe
-def nd_bind_value(+tag: String, +name: String, args: List<&2, KTerm>, +acc: List<&2, KTerm>, +n: U32, +id: U32, +body: KTerm) -> KTerm:
   match args:
-    case Nil{}: nc_mklet(id, kt(tag, name, 0, 0, List.reverse(&2, KTerm, acc)), body)
-    case Con{+h, +rest}: nc_mklet(nc_id(n), h, nd_bind_value(tag, name, rest, Con{var("", nc_id(n)), acc}, U32.inc(n), id, body))
-
-@unsafe
-def nd_prefix_call(+book: List<&2, KDef>, +t: KTerm) -> String:
-  +head = nd_head(t)
-  +name = nc_primitive_name(nm(head))
-  nt_choose(String, String.eq(tg(t), "App") && String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)) && nc_native_def(lookup(book, nm(head))) && (nc_array_known(name) || String.eq(name, "nat_divmod")) && U32.is_eq(terms_len(nd_args(t, Nil{})), nc_primitive_arity(name)), u => name, u => "")
+    case Nil{}: nc_mklet(id, kt("NOp", name, 0, 0, List.reverse(&2, KTerm, acc)), body)
+    case Con{+h, +rest}: nc_mklet(nc_id(n), h, nd_bind_scalar(name, rest, Con{var("", nc_id(n)), acc}, U32.inc(n), id, body))
 
 @unsafe
 def nd_scalar_word(+name: String, +words: List<&2, String>) -> String:

@@ -1,0 +1,102 @@
+--- a/selfhost/src/back/native/direct.bend
++++ b/selfhost/src/back/native/direct.bend
+@@ -57,7 +57,7 @@
+ def nd_arity(+book: List<&2, KDef>, +name: String) -> U32:
+   +d = lookup(book, name)
+   nt_choose(U32, nc_native_def(d), u => nc_primitive_arity(nc_primitive_name(name)), u =>
+-    nt_choose(U32, String.eq(tg(nc_unann(dv(d))), "Foreign"), u => nd_foreign_arity(book, dt(d), 0), u => nd_leading(dv(d), 0)))
++    nt_choose(U32, String.eq(tg(nc_unann(dv(d))), "Foreign"), u => nd_foreign_arity(book, dt(d), 0), u => U32.max(nd_leading(dv(d), 0), jd_live_arity(book, dt(d), jd_arity(book, d)))))
+ 
+ @unsafe
+ def nd_reapply(+head: KTerm, args: List<&2, KTerm>) -> KTerm:
+@@ -82,6 +82,31 @@
+     u => nc_lower(book, kt("NMatch", "", 0, 0, [head, arg]), env, n),
+     u => nc_lower(book, nc_mklet(nc_id(n), arg, kt("NMatch", "", 0, 0, [head, var("", nc_id(n))])), env, U32.inc(n)))
+ 
++# Remaining matcher arguments are already evaluated. Fresh aliases let the
++# ordinary sharing prelude retain a scrutinee also used by another argument or
++# by a captured branch before matching consumes its own reference.
++@unsafe
++def nd_match_vars(args: List<&2, KTerm>) -> Bool:
++  match args:
++    case Nil{}: True{}
++    case Con{h, rest}: String.eq(tg(h), "Var") && nd_match_vars(rest)
++
++@unsafe
++def nd_match_sequence(+head: KTerm, args: List<&2, KTerm>, +acc: List<&2, KTerm>, +n: U32) -> KTerm:
++  match args:
++    case Nil{}: kt("NMatch", "", 0, 0, Con{head, nt_reverse(KTerm, acc, Nil{})})
++    case Con{+h, +rest}: nc_mklet(nc_id(n), h, nd_match_sequence(head, rest, Con{var("", nc_id(n)), acc}, U32.inc(n)))
++
++@unsafe
++def nd_match_rest(+t: KTerm) -> List<&2, KTerm>:
++  nd_match_rest_list(ks(t))
++
++@unsafe
++def nd_match_rest_list(ts: List<&2, KTerm>) -> List<&2, KTerm>:
++  match ts:
++    case Con{head, Con{arg, rest}}: rest
++    case _: Nil{}
++
+ @unsafe
+ def nd_app(book, t, env, n):
+   +head = nd_head(t)
+@@ -90,10 +115,12 @@
+   nt_choose(NC_Code, Bool.not(String.eq(scalar, "")), u => nc_lower(book, nc_sequence("NOp", scalar, args, Nil{}, n), env, U32.add(n, terms_len(args))), u =>
+   nt_choose(NC_Code, String.eq(tg(head), "Lam"), u => nc_lower(book, nd_beta(head, args), env, n), u =>
+     nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_eq(terms_len(args), 1), u => nd_match(book, head, kid(t, 1), env, n), u =>
++    nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_gt(terms_len(args), 1) && nd_match_vars(args),
++      u => nc_lower(book, nd_match_sequence(head, args, Nil{}, n), env, U32.add(n, terms_len(args))), u =>
+     nt_choose(NC_Code, String.eq(tg(head), "Ref"), u =>
+     nt_choose(NC_Code, Bool.not(U32.is_eq(qt(head), 3)) && U32.is_gt(terms_len(args), 0) && U32.is_eq(nd_arity(book, nm(head)), terms_len(args)),
+       u => nc_lower(book, nc_sequence("NCall", nd_name(nc_ref_name(book, nm(head))), args, Nil{}, n), env, U32.add(n, terms_len(args))),
+-      u => nc_app_slow(book, t, env, n)), u => nc_app_slow(book, t, env, n)))))
++      u => nc_app_slow(book, t, env, n)), u => nc_app_slow(book, t, env, n))))))
+ 
+ @unsafe
+ def nd_body(+t: KTerm) -> KTerm:
+@@ -108,7 +135,19 @@
+   NC_Code{nc_body(base), nt_append(N_Segment, nc_segs(base), Con{N_Segment{nd_name(name), nc_params(params), 1, N_Direct{}, nc_body(body), Nil{}, False{}, False{}, False{}, False{}}, nc_segs(body)}), nc_fresh(body), nc_first_error(base, body)}
+ 
+ @unsafe
++def nd_entry_params(+left: U32, +n: U32) -> List<&2, NC_Binding>:
++  nt_choose(List<&2, NC_Binding>, U32.is_eq(left, 0), u => Nil{}, u =>
++    Con{nc_binding(nc_id(n)), nd_entry_params(U32.sub(left, 1), U32.inc(n))})
++
++@unsafe
++def nd_entry_args(params: List<&2, NC_Binding>) -> List<&2, KTerm>:
++  match params:
++    case Nil{}: Nil{}
++    case Con{NC_Binding{id, word}, rest}: Con{var("", id), nd_entry_args(rest)}
++
++@unsafe
+ def nd_extend(+book: List<&2, KDef>, +body: KTerm, +base: NC_Code, +name: String) -> NC_Code:
+-  +params = nd_bindings(body, Nil{})
+-  nt_choose(NC_Code, U32.is_eq(nt_count(NC_Binding, params), 0), u => base, u =>
+-    nd_join(base, nc_lower(book, nd_body(body), params, nc_fresh(base)), nc_ref_name(book, name), params))
++  +arity = nd_arity(book, name)
++  +params = nd_entry_params(arity, nc_fresh(base))
++  nt_choose(NC_Code, U32.is_eq(arity, 0), u => base, u =>
++    nd_join(base, nc_lower(book, nd_reapply(body, nd_entry_args(params)), params, U32.add(nc_fresh(base), arity)), nc_ref_name(book, name), params))
+--- a/selfhost/src/back/native/bridge.bend
++++ b/selfhost/src/back/native/bridge.bend
+@@ -322,7 +322,7 @@
+ 
+ @unsafe
+ def nc_match_apply(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32) -> NC_Code:
+-  nt_choose(NC_Code, np_can_match(kid(t, 0)), u => np_match_apply(book, t, env, n), u => nc_match_apply_slow(book, t, env, n))
++  nt_choose(NC_Code, U32.is_eq(terms_len(ks(t)), 2) && np_can_match(kid(t, 0)), u => np_match_apply(book, t, env, n), u => nc_match_apply_slow(book, t, env, n))
+ 
+ @unsafe
+ def nc_match_apply_slow(book, t, env, n):
+@@ -330,8 +330,8 @@
+   +arg = kid(t, 1)
+   +word = nc_word(ix(arg), env)
+   +count = nt_choose(U32, U32.is_eq(ix(mat), 0), u => nc_field_count(book, nm(mat)), u => U32.sub(ix(mat), 1))
+-  +hit = nc_lower(book, nc_field_apps(kid(mat, 0), count, 0, n), List.append(&2, NC_Binding, nc_remove_env(env, ix(arg)), nc_field_env(nm(mat), word, count, 0, n)), U32.add(n, count))
+-  +miss = nc_lower(book, app(kid(mat, 1), arg), env, nc_fresh(hit))
++  +hit = nc_lower(book, nd_reapply(nc_field_apps(kid(mat, 0), count, 0, n), nd_match_rest(t)), List.append(&2, NC_Binding, nc_remove_env(env, ix(arg)), nc_field_env(nm(mat), word, count, 0, n)), U32.add(n, count))
++  +miss = nc_lower(book, nd_reapply(app(kid(mat, 1), arg), nd_match_rest(t)), env, nc_fresh(hit))
+   +guard = nt_choose(String, String.eq(nm(mat), "Emit") || String.eq(nm(mat), "Halt"), u => "if (term_aux(" ++ word ++ ") != CID_EMIT && term_aux(" ++ word ++ ") != CID_HALT) { err_post(e.mem, ERR_TAGS); return 0; }\n", u => "")
+   NC_Code{guard ++ "if (" ++ nc_condition(nm(mat), word) ++ ") {\n" ++ nc_destructure(nm(mat), word, count, n) ++ nc_body(hit) ++ "} else {\n" ++ nc_body(miss) ++ "}\n", nt_append(N_Segment, nc_segs(hit), nc_segs(miss)), nc_fresh(miss), nc_first_error(hit, miss)}
+ 

@@ -1,0 +1,52 @@
+{
+  "kind": "phase68-shared-arity-extraction",
+  "executed": false,
+  "prerequisite": "arity-v1",
+  "patchSha256": "dbf171a2c33d952447686429fa0db4ffa1bbd48f1d63bd670b968da57754cd43",
+  "files": [
+    {
+      "path": "selfhost/src/back/js/direct/model.bend",
+      "beforeSha256": "755fe8e8c99bf1e2a045e66cceb38377dfa5bf0a693a263142ff8f4ed705b4be",
+      "afterSha256": "6b7be0df3c366f05b081d08affbaa17458ab1129a87f99321b3bb416b139b10f",
+      "physicalLineDelta": -65
+    },
+    {
+      "path": "selfhost/src/back/common/arity.bend",
+      "beforeSha256": null,
+      "afterSha256": "30de959fdb6deb42b1c59f2b2004c116839a83dd5d615d518d42fc9fb038d624",
+      "physicalLineDelta": 71
+    },
+    {
+      "path": "selfhost/src/compiler.json",
+      "beforeSha256": "e7bb9f5c489220bb5270f7aa687407ef550d2452b5570eae283bdf7d9b89fb5e",
+      "afterSha256": "e820ee57509066a768dbd202f21ad7e6245f6cff490c1de16a1790474571003e",
+      "physicalLineDelta": 1
+    },
+    {
+      "path": "selfhost/src/back/native/manifest.txt",
+      "beforeSha256": "6b80b0ecbaa914e3fd6763be9f30434c4224920afd31e6b6a500c5070a358f33",
+      "afterSha256": "4090bc7ab7c3654a80e9468a0f63b881c452c8fe5ed6727a41b68fe6c919afd0",
+      "physicalLineDelta": 3
+    }
+  ],
+  "movedFunctions": [
+    "jd_arity",
+    "jd_domains",
+    "jd_domains_head",
+    "jd_raise",
+    "jd_raise_typed",
+    "jd_raise_domain",
+    "jd_raise_match",
+    "jd_raise_head",
+    "jd_raise_arm",
+    "jd_live_arity",
+    "jd_live_arity_head"
+  ],
+  "bodyCopiesExact": true,
+  "nativeStandaloneDependencies": [
+    "src/back/common/literals.bend",
+    "src/back/common/queries.bend",
+    "src/back/common/arity.bend"
+  ],
+  "scope": "Mechanical extraction only; same JD symbols/function bodies. No whole JS emitter dependency remains in standalone native assembly; its existing manifest adds only already-shared pure query modules and arity. Main compiler lists the new shared module once."
+}

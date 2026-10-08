@@ -1,0 +1,287 @@
+{
+  "kind": "phase68-intrinsic-catalog-oracle",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/demand-templates-proposal01/before/intrinsic.bend",
+    "sha256": "5b921ebfecb307eddae880edee86ce459751684ecf74543f54c60e2a6f252195",
+    "bytes": 4912
+  },
+  "entries": [
+    {
+      "name": "u32_add",
+      "template": "U32_BIN($0, +, $1)"
+    },
+    {
+      "name": "u32_sub",
+      "template": "U32_BIN($0, -, $1)"
+    },
+    {
+      "name": "u32_and",
+      "template": "U32_BIN($0, &, $1)"
+    },
+    {
+      "name": "u32_or",
+      "template": "U32_BIN($0, |, $1)"
+    },
+    {
+      "name": "u32_xor",
+      "template": "U32_BIN($0, ^, $1)"
+    },
+    {
+      "name": "u32_mul",
+      "template": "U32_BIN($0, *, $1)"
+    },
+    {
+      "name": "u32_is_eq",
+      "template": "U32_BIN($0, ==, $1)"
+    },
+    {
+      "name": "u32_is_ne",
+      "template": "U32_BIN($0, !=, $1)"
+    },
+    {
+      "name": "u32_is_lt",
+      "template": "U32_BIN($0, <, $1)"
+    },
+    {
+      "name": "u32_is_le",
+      "template": "U32_BIN($0, <=, $1)"
+    },
+    {
+      "name": "u32_is_gt",
+      "template": "U32_BIN($0, >, $1)"
+    },
+    {
+      "name": "u32_is_ge",
+      "template": "U32_BIN($0, >=, $1)"
+    },
+    {
+      "name": "u32_inc",
+      "template": "U32_BIN($0, +, 1)"
+    },
+    {
+      "name": "u32_shl",
+      "template": "U32_BIN($0, <<, 1)"
+    },
+    {
+      "name": "u32_shr",
+      "template": "U32_BIN($0, >>, 1)"
+    },
+    {
+      "name": "u32_shln",
+      "template": "($1 >= 32 ? 0 : U32_BIN($0, <<, $1))"
+    },
+    {
+      "name": "u32_shrn",
+      "template": "($1 >= 32 ? 0 : U32_BIN($0, >>, $1))"
+    },
+    {
+      "name": "u32_div",
+      "template": "((u32)($1) == 0 ? 0 : (u64)U32_QUO((u32)($0), (u32)($1)))"
+    },
+    {
+      "name": "u32_mod",
+      "template": "((u32)($1) == 0 ? $0 : U32_BIN($0, -, U32_QUO((u32)($0), (u32)($1)) * $1))"
+    },
+    {
+      "name": "u32_not",
+      "template": "((u64)~(u32)($0))"
+    },
+    {
+      "name": "u32_is_zero",
+      "template": "U32_BIN($0, ==, 0)"
+    },
+    {
+      "name": "u32_cmp",
+      "template": "(U32_BIN($0, >, $1) + U32_BIN($0, >=, $1))"
+    },
+    {
+      "name": "u32_to_f32",
+      "template": "f32_rewrap((f32)(u32)($0))"
+    },
+    {
+      "name": "u32_to_nat",
+      "template": "((u64)$0)"
+    },
+    {
+      "name": "u32_from_nat",
+      "template": "((u64)(u32)($0))"
+    },
+    {
+      "name": "f32_add",
+      "template": "f32_rewrap(f32_unbox($0) + f32_unbox($1))"
+    },
+    {
+      "name": "f32_sub",
+      "template": "f32_rewrap(f32_unbox($0) - f32_unbox($1))"
+    },
+    {
+      "name": "f32_mul",
+      "template": "f32_rewrap(f32_unbox($0) * f32_unbox($1))"
+    },
+    {
+      "name": "f32_div",
+      "template": "f32_rewrap(f32_unbox($0) / f32_unbox($1))"
+    },
+    {
+      "name": "f32_is_eq",
+      "template": "((u64)(f32_unbox($0) == f32_unbox($1)))"
+    },
+    {
+      "name": "f32_is_ne",
+      "template": "((u64)(f32_unbox($0) != f32_unbox($1)))"
+    },
+    {
+      "name": "f32_is_lt",
+      "template": "((u64)(f32_unbox($0) < f32_unbox($1)))"
+    },
+    {
+      "name": "f32_is_le",
+      "template": "((u64)(f32_unbox($0) <= f32_unbox($1)))"
+    },
+    {
+      "name": "f32_is_gt",
+      "template": "((u64)(f32_unbox($0) > f32_unbox($1)))"
+    },
+    {
+      "name": "f32_is_ge",
+      "template": "((u64)(f32_unbox($0) >= f32_unbox($1)))"
+    },
+    {
+      "name": "f32_sqrt",
+      "template": "f32_rewrap((f32)sqrt(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_exp",
+      "template": "f32_rewrap((f32)exp(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_log",
+      "template": "f32_rewrap((f32)log(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_log2",
+      "template": "f32_rewrap((f32)log2(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_log10",
+      "template": "f32_rewrap((f32)log10(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_sin",
+      "template": "f32_rewrap((f32)sin(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_cos",
+      "template": "f32_rewrap((f32)cos(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_tan",
+      "template": "f32_rewrap((f32)tan(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_asin",
+      "template": "f32_rewrap((f32)asin(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_acos",
+      "template": "f32_rewrap((f32)acos(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_atan",
+      "template": "f32_rewrap((f32)atan(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_sinh",
+      "template": "f32_rewrap((f32)sinh(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_cosh",
+      "template": "f32_rewrap((f32)cosh(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_tanh",
+      "template": "f32_rewrap((f32)tanh(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_floor",
+      "template": "f32_rewrap((f32)floor(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_ceil",
+      "template": "f32_rewrap((f32)ceil(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_trunc",
+      "template": "f32_rewrap((f32)trunc(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_abs",
+      "template": "f32_rewrap((f32)fabs(f32_unbox($0)))"
+    },
+    {
+      "name": "f32_pow",
+      "template": "f32_rewrap((f32)pow(f32_unbox($0), f32_unbox($1)))"
+    },
+    {
+      "name": "f32_atan2",
+      "template": "f32_rewrap((f32)atan2(f32_unbox($0), f32_unbox($1)))"
+    },
+    {
+      "name": "f32_mod",
+      "template": "f32_rewrap((f32)fmod(f32_unbox($0), f32_unbox($1)))"
+    },
+    {
+      "name": "f32_neg",
+      "template": "f32_rewrap(-f32_unbox($0))"
+    },
+    {
+      "name": "f32_to_u32",
+      "template": "f32_to_u32($0)"
+    },
+    {
+      "name": "f32_bits",
+      "template": "$0"
+    },
+    {
+      "name": "f32_show",
+      "template": "f32_show(e, $0)"
+    },
+    {
+      "name": "f32_read",
+      "template": "f32_read(e, $0)"
+    },
+    {
+      "name": "nat_add",
+      "template": "nat_chk(e, $0 + $1)"
+    },
+    {
+      "name": "nat_sub",
+      "template": "($0 < $1 ? 0 : $0 - $1)"
+    },
+    {
+      "name": "nat_mul",
+      "template": "nat_mul(e, $0, $1)"
+    },
+    {
+      "name": "nat_double",
+      "template": "nat_chk(e, $0 + $0)"
+    },
+    {
+      "name": "nat_cmp",
+      "template": "(($0 > $1) + ($0 >= $1))"
+    },
+    {
+      "name": "nat_is_lt",
+      "template": "($0 < $1)"
+    },
+    {
+      "name": "bool_or",
+      "template": "(native_bool($0) | native_bool($1))"
+    },
+    {
+      "name": "bool_xor",
+      "template": "(native_bool($0) ^ native_bool($1))"
+    }
+  ],
+  "scope": "Historical test oracle derived exactly once; candidate production has one maintained template lookup, not a duplicated catalog."
+}

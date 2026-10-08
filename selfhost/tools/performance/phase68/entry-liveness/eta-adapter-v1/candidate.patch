@@ -1,0 +1,41 @@
+--- a/selfhost/src/back/native/direct.bend
++++ b/selfhost/src/back/native/direct.bend
+@@ -151,3 +151,27 @@
+   +params = nd_entry_params(arity, nc_fresh(base))
+   nt_choose(NC_Code, U32.is_eq(arity, 0), u => base, u =>
+     nd_join(base, nc_lower(book, nd_reapply(body, nd_entry_args(params)), params, U32.add(nc_fresh(base), arity)), nc_ref_name(book, name), params))
++
++# Named user-function values retain the curried ownership ABI. Their final
++# closure tail-calls the full direct worker so only one copy of the actual
++# body is lowered. Foreign, intrinsic and bang entries keep their old path.
++@unsafe
++def nd_eta_body(params: List<&2, NC_Binding>, +call: KTerm) -> KTerm:
++  match params:
++    case Nil{}: call
++    case Con{NC_Binding{id, word}, rest}: k_lam("", id, 1, [nd_eta_body(rest, call)], 0, 0, False{})
++
++@unsafe
++def nd_eta_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +arity: U32) -> NC_Code:
++  +params = nd_entry_params(arity, n)
++  +call = kt("NCall", nd_name(nc_ref_name(book, name)), 0, 0, nd_entry_args(params))
++  +base = nc_lower(book, nd_eta_body(params, call), Nil{}, U32.add(n, arity))
++  nd_extend(book, body, base, name)
++
++@unsafe
++def nd_compile_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +bang: Bool) -> NC_Code:
++  +d = lookup(book, name)
++  +arity = nd_arity(book, name)
++  nt_choose(NC_Code, U32.is_gt(arity, 0) && Bool.not(bang) && Bool.not(nc_native_def(d)) && Bool.not(nc_foreign(d)),
++    u => nd_eta_entry(book, body, name, n, arity),
++    u => nd_extend(book, body, nc_lower(book, body, Nil{}, n), name))
+--- a/selfhost/src/back/native/book.bend
++++ b/selfhost/src/back/native/book.bend
+@@ -128,7 +128,7 @@
+   +refs = nc_refs(body)
+   +calls = nc_mapped_refs(book, refs)
+   +forked = nc_term_fork(body)
+-  +code = nc_mark_code(nd_extend(book, body, nc_lower(book, body, Nil{}, U32.add(n, 1024)), name), nb_contains(bangs, name), forked, calls)
++  +code = nc_mark_code(nd_compile_entry(book, body, name, U32.add(n, 1024), nb_contains(bangs, name)), nb_contains(bangs, name), forked, calls)
+   nt_choose(NC_Book, String.eq(dk(d), "Absent"), u => NC_Book{Nil{}, n, "native definition not found: " ++ name_key(name)}, u =>
+     nc_append_book(code, nc_ref_name(book, name), calls, forked, nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, nc_fresh(code), bangs)))
+ 

@@ -3,7 +3,7 @@
 # read/show and arrays retain their allocating or consuming runtime boundaries.
 @unsafe
 def nd_scalar_known(+name: String) -> Bool:
-  Bool.not(String.eq(ni_template(name), "")) && Bool.not(String.eq(name, "f32_show") || String.eq(name, "f32_read"))
+  Bool.not(String.eq(ni_find(name, ni_templates()), "")) && Bool.not(String.eq(name, "f32_show") || String.eq(name, "f32_read"))
 
 @unsafe
 def nd_scalar_call(+book: List<&2, KDef>, +t: KTerm) -> String:
@@ -13,20 +13,9 @@ def nd_scalar_call(+book: List<&2, KDef>, +t: KTerm) -> String:
 
 @unsafe
 def nd_bind_scalar(+name: String, args: List<&2, KTerm>, +acc: List<&2, KTerm>, +n: U32, +id: U32, +body: KTerm) -> KTerm:
-  nd_bind_value("NOp", name, args, acc, n, id, body)
-
-# The same ordered argument sequencing serves scalar and allocating results.
-@unsafe
-def nd_bind_value(+tag: String, +name: String, args: List<&2, KTerm>, +acc: List<&2, KTerm>, +n: U32, +id: U32, +body: KTerm) -> KTerm:
   match args:
-    case Nil{}: nc_mklet(id, kt(tag, name, 0, 0, List.reverse(&2, KTerm, acc)), body)
-    case Con{+h, +rest}: nc_mklet(nc_id(n), h, nd_bind_value(tag, name, rest, Con{var("", nc_id(n)), acc}, U32.inc(n), id, body))
-
-@unsafe
-def nd_prefix_call(+book: List<&2, KDef>, +t: KTerm) -> String:
-  +head = nd_head(t)
-  +name = nc_primitive_name(nm(head))
-  nt_choose(String, String.eq(tg(t), "App") && String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)) && nc_native_def(lookup(book, nm(head))) && (nc_array_known(name) || String.eq(name, "nat_divmod")) && U32.is_eq(terms_len(nd_args(t, Nil{})), nc_primitive_arity(name)), u => name, u => "")
+    case Nil{}: nc_mklet(id, kt("NOp", name, 0, 0, List.reverse(&2, KTerm, acc)), body)
+    case Con{+h, +rest}: nc_mklet(nc_id(n), h, nd_bind_scalar(name, rest, Con{var("", nc_id(n)), acc}, U32.inc(n), id, body))
 
 @unsafe
 def nd_scalar_word(+name: String, +words: List<&2, String>) -> String:
@@ -157,44 +146,8 @@ def nd_entry_args(params: List<&2, NC_Binding>) -> List<&2, KTerm>:
     case Con{NC_Binding{id, word}, rest}: Con{var("", id), nd_entry_args(rest)}
 
 @unsafe
-def nd_extend_arity(+book: List<&2, KDef>, +body: KTerm, +base: NC_Code, +name: String, +arity: U32) -> NC_Code:
+def nd_extend(+book: List<&2, KDef>, +body: KTerm, +base: NC_Code, +name: String) -> NC_Code:
+  +arity = nd_arity(book, name)
   +params = nd_entry_params(arity, nc_fresh(base))
   nt_choose(NC_Code, U32.is_eq(arity, 0), u => base, u =>
     nd_join(base, nc_lower(book, nd_reapply(body, nd_entry_args(params)), params, U32.add(nc_fresh(base), arity)), nc_ref_name(book, name), params))
-
-@unsafe
-def nd_extend(+book: List<&2, KDef>, +body: KTerm, +base: NC_Code, +name: String) -> NC_Code:
-  nd_extend_arity(book, body, base, name, nd_arity(book, name))
-
-# Named user-function values retain the curried ownership ABI. Their final
-# closure tail-calls the full direct worker so only one copy of the actual
-# body is lowered. Foreign, intrinsic and bang entries keep their old path.
-@unsafe
-def nd_eta_body(params: List<&2, NC_Binding>, +call: KTerm) -> KTerm:
-  match params:
-    case Nil{}: call
-    case Con{NC_Binding{id, word}, rest}: k_lam("", id, 1, [nd_eta_body(rest, call)], 0, 0, False{})
-
-@unsafe
-def nd_eta_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +arity: U32) -> NC_Code:
-  +params = nd_entry_params(arity, n)
-  +call = kt("NCall", nd_name(nc_ref_name(book, name)), 0, 0, nd_entry_args(params))
-  +base = nc_lower(book, nd_eta_body(params, call), Nil{}, U32.add(n, arity))
-  nd_extend_arity(book, body, base, name, arity)
-
-# Typed arity is computed once. Keep the original path when only a malformed
-# raw definition's leading lambdas supply its positive arity.
-@unsafe
-def nd_user_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +d: KDef) -> NC_Code:
-  +typed = jd_live_arity(book, dt(d), jd_arity(book, d))
-  +arity = U32.max(nd_leading(dv(d), 0), typed)
-  nt_choose(NC_Code, U32.is_gt(typed, 0) && U32.is_eq(arity, typed),
-    u => nd_eta_entry(book, body, name, n, arity),
-    u => nd_extend_arity(book, body, nc_lower(book, body, Nil{}, n), name, arity))
-
-@unsafe
-def nd_compile_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +bang: Bool) -> NC_Code:
-  +d = lookup(book, name)
-  nt_choose(NC_Code, Bool.not(bang) && Bool.not(nc_native_def(d)) && Bool.not(nc_foreign(d)),
-    u => nd_user_entry(book, body, name, n, d),
-    u => nd_extend(book, body, nc_lower(book, body, Nil{}, n), name))

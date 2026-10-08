@@ -190,7 +190,7 @@ def nc_let_emitted(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: Lis
 def nc_prefix_vars(args: List<&2, KTerm>, +env: List<&2, NC_Binding>) -> Bool:
   match args:
     case Nil{}: True{}
-    case Con{+h, rest}: String.eq(tg(h), "Var") && Bool.not(String.eq(nc_word(ix(h), env), "NATIVE_UNBOUND_VARIABLE")) && nc_prefix_vars(rest, env)
+    case Con{h, rest}: String.eq(tg(h), "Var") && Bool.not(String.eq(nc_word(ix(h), env), "NATIVE_UNBOUND_VARIABLE")) && nc_prefix_vars(rest, env)
 
 @unsafe
 def nc_let_constructor(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, literal: NC_Literal) -> NC_Code:
@@ -390,7 +390,7 @@ law nc_array_known:
 @unsafe
 def nc_native_def(+d: KDef) -> Bool:
   +prim = nc_primitive_name(dn(d))
-  db(d) && Bool.not(String.eq(tg(nc_unann(dv(d))), "Foreign")) && (Bool.not(String.eq(ni_template(prim), "")) || nc_array_known(prim) || String.eq(prim, "nat_divmod"))
+  db(d) && Bool.not(String.eq(tg(nc_unann(dv(d))), "Foreign")) && (Bool.not(String.eq(ni_find(prim, ni_templates()), "")) || nc_array_known(prim) || String.eq(prim, "nat_divmod"))
 
 @unsafe
 def nc_ref_name(+book: List<&2, KDef>, +name: String) -> String:
@@ -398,7 +398,7 @@ def nc_ref_name(+book: List<&2, KDef>, +name: String) -> String:
 
 @unsafe
 def nc_primitive_arity(+k: String) -> U32:
-  +fmt = ni_template(k)
+  +fmt = ni_find(k, ni_templates())
   nt_choose(U32, String.eq(k, "array_atomic_cas"), u => 4, u =>
   nt_choose(U32, U32.is_ne(nc_atomic(k), 0) || String.eq(k, "array_set") || String.eq(k, "array_swap"), u => 3, u =>
   nt_choose(U32, String.eq(k, "array_new") || String.eq(k, "array_get") || String.eq(k, "nat_divmod"), u => 2, u =>

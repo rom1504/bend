@@ -174,44 +174,8 @@ def nc_let(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC
   nt_choose(NC_Code, String.eq(tg(value), "Var") || String.eq(tg(value), "NWord") || (String.eq(tg(value), "NOp") && nd_scalar_known(nm(value))),
     u => nc_let_atom(book, value, body, env, id, n),
     u => nt_choose(NC_Code, String.eq(scalar, ""),
-      u => nc_let_value(book, value, body, env, id, n),
+      u => nc_let_cut(book, value, body, env, id, n),
       u => nc_lower(book, nd_bind_scalar(scalar, nd_args(value, Nil{}), Nil{}, n, id, body), env, U32.add(n, terms_len(nd_args(value, Nil{}))))))
-
-# A local value producer owns its scratch C scope and evaluates exactly once.
-# Only the boxed word escapes; neither allocation nor ownership is erased.
-@unsafe
-def nc_let_emitted(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, emitted: N_Emitted) -> NC_Code:
-  match emitted:
-    case N_Emitted{code, word, n}:
-      +rest = nc_lower(book, body, List.append(&2, NC_Binding, nc_live_env(env, body), [nc_binding(id)]), n)
-      nc_prepend(nc_share_env(env, value, body) ++ "Term v_" ++ U32.show(id) ++ ";\n{\n" ++ code ++ "v_" ++ U32.show(id) ++ " = " ++ word ++ ";\n}\nif (!seq && err_seen(e.mem)) { return 0; }\n", rest)
-
-@unsafe
-def nc_prefix_vars(args: List<&2, KTerm>, +env: List<&2, NC_Binding>) -> Bool:
-  match args:
-    case Nil{}: True{}
-    case Con{+h, rest}: String.eq(tg(h), "Var") && Bool.not(String.eq(nc_word(ix(h), env), "NATIVE_UNBOUND_VARIABLE")) && nc_prefix_vars(rest, env)
-
-@unsafe
-def nc_let_constructor(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, literal: NC_Literal) -> NC_Code:
-  match literal:
-    case NC_Literal{valid, word}:
-      nt_choose(NC_Code, valid,
-        u => nc_let_atom(book, kt("NWord", U32.show(word), 0, 0, Nil{}), body, env, id, n),
-        u => nc_lower(book, nd_bind_value("NCtr", nm(value), ks(value), Nil{}, n, id, body), env, U32.add(n, terms_len(ks(value)))))
-
-@unsafe
-def nc_let_value(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:
-  +tag = tg(value)
-  nt_choose(NC_Code, String.eq(tag, "Ctr"), u => nc_let_constructor(book, value, body, env, id, n, nc_literal(value)), u =>
-  nt_choose(NC_Code, String.eq(tag, "NCtr") && nc_prefix_vars(ks(value), env), u => nc_let_emitted(book, value, body, env, id, nc_constructor_value(nm(value), nc_values(ks(value), env), n)), u =>
-  nt_choose(NC_Code, String.eq(tag, "NOp") && (nc_array_known(nm(value)) || String.eq(nm(value), "nat_divmod")) && nc_prefix_vars(ks(value), env), u => nc_let_emitted(book, value, body, env, id, nc_intrinsic_value(nm(value), nc_values(ks(value), env), n)), u =>
-    nc_let_prefix_call(book, value, body, env, id, n, nd_prefix_call(book, value)))))
-
-@unsafe
-def nc_let_prefix_call(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +name: String) -> NC_Code:
-  nt_choose(NC_Code, String.eq(name, ""), u => nc_let_cut(book, value, body, env, id, n), u =>
-    nc_lower(book, nd_bind_value("NOp", name, nd_args(value, Nil{}), Nil{}, n, id, body), env, U32.add(n, terms_len(nd_args(value, Nil{})))))
 
 @unsafe
 def nc_let_cut(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:
@@ -278,18 +242,14 @@ def nc_ctor_result(+x: N_Emitted) -> NC_Code:
 
 @unsafe
 def nc_constructor(+name: String, +ws: List<&2, String>, +n: U32) -> NC_Code:
-  nc_ctor_result(nc_constructor_value(name, ws, n))
-
-@unsafe
-def nc_constructor_value(+name: String, +ws: List<&2, String>, +n: U32) -> N_Emitted:
-  nt_choose(N_Emitted, String.eq(name, "Zero") || String.eq(name, "False"), u => N_Emitted{"", "0", n}, u =>
-  nt_choose(N_Emitted, String.eq(name, "True"), u => N_Emitted{"", "1", n}, u =>
-  nt_choose(N_Emitted, String.eq(name, "Succ"), u => N_Emitted{"", "nat_chk(e, " ++ nc_head(ws) ++ " + 1)", n}, u =>
-  nt_choose(N_Emitted, String.eq(name, "U32") || String.eq(name, "F32"), u => N_Emitted{"", "term_word(e, " ++ nc_head(ws) ++ ")", n}, u =>
-  nt_choose(N_Emitted, String.eq(name, "Chr"), u => N_Emitted{"", nc_head(ws), n}, u =>
-  nt_choose(N_Emitted, String.eq(name, "ALeaf"), u => N_Emitted{"Term init[1] = { " ++ nc_head(ws) ++ " };\n", "blk_new(e, 1, 0, 0, 1, init)", n}, u =>
-  nt_choose(N_Emitted, String.eq(name, "ANode"), u => N_Emitted{"", "blk_node(e, " ++ nc_head(ws) ++ ", " ++ nc_head(nc_tail(ws)) ++ ")", n}, u =>
-    ne_constructor(name, ws, False{}, n, True{}))))))))
+  nt_choose(NC_Code, String.eq(name, "Zero") || String.eq(name, "False"), u => nc_return("0", n), u =>
+  nt_choose(NC_Code, String.eq(name, "True"), u => nc_return("1", n), u =>
+  nt_choose(NC_Code, String.eq(name, "Succ"), u => nc_return("nat_chk(e, " ++ nc_head(ws) ++ " + 1)", n), u =>
+  nt_choose(NC_Code, String.eq(name, "U32") || String.eq(name, "F32"), u => nc_return("term_word(e, " ++ nc_head(ws) ++ ")", n), u =>
+  nt_choose(NC_Code, String.eq(name, "Chr"), u => nc_return(nc_head(ws), n), u =>
+  nt_choose(NC_Code, String.eq(name, "ALeaf"), u => NC_Code{"Term init[1] = { " ++ nc_head(ws) ++ " };\n" ++ ne_ret(["blk_new(e, 1, 0, 0, 1, init)"]), Nil{}, n, ""}, u =>
+  nt_choose(NC_Code, String.eq(name, "ANode"), u => nc_return("blk_node(e, " ++ nc_head(ws) ++ ", " ++ nc_head(nc_tail(ws)) ++ ")", n), u =>
+  nc_ctor_result(ne_constructor(name, ws, False{}, n, True{})))))))))
 
 @unsafe
 def nc_lets(+book: List<&2, KDef>, +xs: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32) -> NC_Code:
@@ -390,7 +350,7 @@ law nc_array_known:
 @unsafe
 def nc_native_def(+d: KDef) -> Bool:
   +prim = nc_primitive_name(dn(d))
-  db(d) && Bool.not(String.eq(tg(nc_unann(dv(d))), "Foreign")) && (Bool.not(String.eq(ni_template(prim), "")) || nc_array_known(prim) || String.eq(prim, "nat_divmod"))
+  db(d) && Bool.not(String.eq(tg(nc_unann(dv(d))), "Foreign")) && (Bool.not(String.eq(ni_find(prim, ni_templates()), "")) || nc_array_known(prim) || String.eq(prim, "nat_divmod"))
 
 @unsafe
 def nc_ref_name(+book: List<&2, KDef>, +name: String) -> String:
@@ -398,7 +358,7 @@ def nc_ref_name(+book: List<&2, KDef>, +name: String) -> String:
 
 @unsafe
 def nc_primitive_arity(+k: String) -> U32:
-  +fmt = ni_template(k)
+  +fmt = ni_find(k, ni_templates())
   nt_choose(U32, String.eq(k, "array_atomic_cas"), u => 4, u =>
   nt_choose(U32, U32.is_ne(nc_atomic(k), 0) || String.eq(k, "array_set") || String.eq(k, "array_swap"), u => 3, u =>
   nt_choose(U32, String.eq(k, "array_new") || String.eq(k, "array_get") || String.eq(k, "nat_divmod"), u => 2, u =>
@@ -418,14 +378,10 @@ def nc_primitive_body(+k: String) -> KTerm:
 
 @unsafe
 def nc_intrinsic(+k: String, +ws: List<&2, String>, +n: U32) -> NC_Code:
-  nc_ctor_result(nc_intrinsic_value(k, ws, n))
-
-@unsafe
-def nc_intrinsic_value(+k: String, +ws: List<&2, String>, +n: U32) -> N_Emitted:
-  nt_choose(N_Emitted, nc_array_known(k), u => nc_array_value(k, ws, n), u =>
-  nt_choose(N_Emitted, String.eq(k, "nat_divmod"), u => ne_constructor("Tuple", ["(" ++ nc_head(nc_tail(ws)) ++ " == 0 ? 0 : " ++ nc_head(ws) ++ " / " ++ nc_head(nc_tail(ws)) ++ ")", "(" ++ nc_head(nc_tail(ws)) ++ " == 0 ? " ++ nc_head(ws) ++ " : " ++ nc_head(ws) ++ " % " ++ nc_head(nc_tail(ws)) ++ ")"], False{}, n, True{}), u =>
-  nt_choose(N_Emitted, String.eq(k, "u32_cmp") || String.eq(k, "nat_cmp"), u => N_Emitted{"Term cmp = " ++ ni_emit(k, ws) ++ ";\n", "term_pak(cmp == 0 ? CID_LT : cmp == 1 ? CID_EQ : CID_GT, 0)", n}, u =>
-    N_Emitted{"", ni_emit(k, ws), n})))
+  nt_choose(NC_Code, nc_array_known(k), u => nc_array(k, ws, n), u =>
+  nt_choose(NC_Code, String.eq(k, "nat_divmod"), u => nc_ctor_result(ne_constructor("Tuple", ["(" ++ nc_head(nc_tail(ws)) ++ " == 0 ? 0 : " ++ nc_head(ws) ++ " / " ++ nc_head(nc_tail(ws)) ++ ")", "(" ++ nc_head(nc_tail(ws)) ++ " == 0 ? " ++ nc_head(ws) ++ " : " ++ nc_head(ws) ++ " % " ++ nc_head(nc_tail(ws)) ++ ")"], False{}, n, True{})), u =>
+  nt_choose(NC_Code, String.eq(k, "u32_cmp") || String.eq(k, "nat_cmp"), u => NC_Code{"Term cmp = " ++ ni_emit(k, ws) ++ ";\n" ++ ne_ret(["term_pak(cmp == 0 ? CID_LT : cmp == 1 ? CID_EQ : CID_GT, 0)"]), Nil{}, n, ""}, u =>
+    nc_return(ni_emit(k, ws), n))))
 
 @unsafe
 def nc_apply_code(+ws: List<&2, String>, +n: U32) -> NC_Code:

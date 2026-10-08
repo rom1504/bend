@@ -1,0 +1,80 @@
+{
+  "kind": "phase68-demand-selected-intrinsic-proposal",
+  "status": "isolated-unselected-unexecuted",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/demand-templates/derive.py",
+    "sha256": "ff31a9136c8ef7ac6ebb608d5661b1dd512b7cd10580735912d319c6828e9a01",
+    "bytes": 4284
+  },
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/demand-templates/candidate-v1.patch",
+    "sha256": "3a6894fa00a321b08240bb0907de938d4e92c32b3b8bb3700377482964259d3e",
+    "bytes": 13020
+  },
+  "catalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/demand-templates/catalog-v1.json",
+    "sha256": "64e7ddc362b3cbf93b475f41e1134ff95b887561035c2c587f5717524f197800",
+    "bytes": 6644
+  },
+  "files": [
+    {
+      "path": "selfhost/src/back/native/intrinsic.bend",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/demand-templates-proposal01/before/intrinsic.bend",
+        "sha256": "5b921ebfecb307eddae880edee86ce459751684ecf74543f54c60e2a6f252195",
+        "bytes": 4912
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/demand-templates-proposal01/after/intrinsic.bend",
+        "sha256": "c0cc7b0093df2d2a9cb7b85acd9633916d96a20cf4bf82b0abf192369d6aa212",
+        "bytes": 7264
+      },
+      "linesBefore": 29,
+      "linesAfter": 92
+    },
+    {
+      "path": "selfhost/src/back/native/direct.bend",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/demand-templates-proposal01/before/direct.bend",
+        "sha256": "b7f8ec65d30345af792bd98710b220041956c2b2fea1759b3d41360279aa7d6d",
+        "bytes": 9426
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/demand-templates-proposal01/after/direct.bend",
+        "sha256": "e04344024fdf9043d57f1660212b49a0844d2f6f23eff4b2d96911fe977d155b",
+        "bytes": 9414
+      },
+      "linesBefore": 189,
+      "linesAfter": 189
+    },
+    {
+      "path": "selfhost/src/back/native/bridge.bend",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/demand-templates-proposal01/before/bridge.bend",
+        "sha256": "d3d3ad02acc1853579e1186ef3c9975406f7869681f11299a58c9d9cb00a6832",
+        "bytes": 24959
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/demand-templates-proposal01/after/bridge.bend",
+        "sha256": "b23115117bd8254e0da573ee155f2aa6d6725b9e64b84b9c5a0f710b75be2564",
+        "bytes": 24935
+      },
+      "linesBefore": 476,
+      "linesAfter": 476
+    }
+  ],
+  "replacements": 4,
+  "templates": 69,
+  "removedTypes": [
+    "ni_Op"
+  ],
+  "removedDefinitions": [
+    "ni_templates",
+    "ni_find"
+  ],
+  "newDefinitions": [
+    "ni_template"
+  ],
+  "publicRequestedExportsChanged": false,
+  "invariant": "Each old catalog name occurs once, all69 names and templates are nonempty, ordered exact equality preserves lookup for every String. Empty-key refusal is exact. Template substitution remains unchanged. No host compiler algorithm or mutable cache."
+}

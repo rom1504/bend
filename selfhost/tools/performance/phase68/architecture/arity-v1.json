@@ -1,0 +1,20 @@
+{
+  "kind": "phase68-general-match-arity-proposal",
+  "executed": false,
+  "patchSha256": "d8ff121003a169e46af4d4d22d1b49ccd4015ac7d38e2c2ddb5a670977f9af25",
+  "files": [
+    {
+      "path": "selfhost/src/back/native/direct.bend",
+      "beforeSha256": "1574e2bbd423e3fb8b5952faf6ff5f03fa6733ba1082723c979b2b297238334d",
+      "afterSha256": "5a024007788c090d564a3257b55b3c0fcb99ba470b0975a187af6fa64b83e6af",
+      "lineDelta": 39
+    },
+    {
+      "path": "selfhost/src/back/native/bridge.bend",
+      "beforeSha256": "3344ccbfb1c4fa73980becefb33441ba09139d610fbd40c5383a41188c77c049",
+      "afterSha256": "d3d3ad02acc1853579e1186ef3c9975406f7869681f11299a58c9d9cb00a6832",
+      "lineDelta": 0
+    }
+  ],
+  "scope": "Use already maintained JD typed arity/erasure analysis on original KDef; full known calls bind args left-to-right once, matcher residual variables get fresh aliases, constructor fields precede residualargs. Preserve generic closure entry/partial and bang fallback. Prototype shares JD helpers directly; narrow common extraction required to retain standalone native assembler independence."
+}

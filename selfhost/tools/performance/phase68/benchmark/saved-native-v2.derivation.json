@@ -1,0 +1,42 @@
+{
+  "kind": "phase68-saved-native-comparison-derivation",
+  "targetExecuted": false,
+  "parent": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/benchmark/saved-native.py",
+    "bytes": 16356,
+    "sha256": "8cffef36ebeb8418942aaa4d5a07a27239aa2a980ed22515060445db9963c7cd"
+  },
+  "output": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/benchmark/saved-native-v2.py",
+    "bytes": 18121,
+    "sha256": "83c586f20c37965a536c32d8c129a6cf481e66e634ab437a6b4a944016510cd2"
+  },
+  "replacements": [
+    {
+      "before": "MANIFEST = ROOT /",
+      "after": "V1 = HERE / 'saved-native.py'\nV1_SHA256 = '8cffef36ebeb8418942aaa4d5a07a27239aa2a980ed22515060445db9963c7cd'\nCALIBRATOR = ROOT / 'selfhost/tools/performance/phase67/benchmark/fast-plan.py'\nCALIBRATOR_SHA256 = 'a94c28533fffa7286425014b1486fded365e0bca1038098be7d96136e83e7082'\nMANIFEST = ROOT /",
+      "count": 1
+    },
+    {
+      "before": "        assert timing['producer'] == pin(__file__) and timing['predecessorMethod'] == pin(PREVIOUS)",
+      "after": "        v1 = pin(V1)\n        assert v1['sha256'] == V1_SHA256\n        assert timing['producer'] in (v1, pin(__file__))\n        assert timing['predecessorMethod'] == pin(PREVIOUS)",
+      "count": 1
+    },
+    {
+      "before": "    assert (ia.keys() ^ ib.keys()) <= {ra['api'], rb['api']}, 'Only selected API paths may differ in the input inventory'",
+      "after": "    added_inputs = []\n    if args.allow_added_input:\n        assert args.allow_added_input == ['selfhost/tools/performance/phase67/benchmark/fast-plan.py']\n        calibration = pin(CALIBRATOR)\n        assert calibration['sha256'] == CALIBRATOR_SHA256 and calibration['bytes'] == 2919\n        assert str(CALIBRATOR) not in ia and ib.get(str(CALIBRATOR)) == calibration\n        dependencies = [PREVIOUS, PREVIOUS.parent / 'emit.mjs', OLD / 'execute.py',\n            OLD / 'oracle.py', HERE.parents[1] / 'programs/support.py']\n        for dependency in dependencies:\n            assert ia[str(dependency)] == ib[str(dependency)] == pin(dependency)\n            assert 'fast-plan' not in dependency.read_text()\n        added_inputs.append(dict(input=calibration, candidateOnly=True,\n            role='Pure data-only calibration-plan producer, outside acquisition and runtime executed commands.',\n            unchangedExecutedDependencies=[pin(p) for p in dependencies],\n            scope='Exact pinned source reviewed: no subprocess, compiler, native, or toolchain invocation; neither imported nor invoked by these acquisition/runtime controllers. Both campaigns consume the same already-frozen plan.'))\n    assert (ia.keys() ^ ib.keys()) <= {ra['api'], rb['api'], *(x['input']['path'] for x in added_inputs)}, 'Unregistered input inventory change'",
+      "count": 1
+    },
+    {
+      "before": "        registeredCompilerInputs=allowed, changedSharedInputs=",
+      "after": "        registeredCompilerInputs=allowed, registeredAddedInputs=added_inputs, changedSharedInputs=",
+      "count": 1
+    },
+    {
+      "before": "args = parser.parse_args()",
+      "after": "comparison.add_argument('--allow-added-input', action='append',\n    choices=['selfhost/tools/performance/phase67/benchmark/fast-plan.py'], default=[])\nargs = parser.parse_args()",
+      "count": 1
+    }
+  ],
+  "scope": "Exact candidate-only calibration producer inventory admission; inherited measurement, oracle, toolchain, snapshot continuity, and protocol checks retained. Consumed v1 method and receipts preserved."
+}

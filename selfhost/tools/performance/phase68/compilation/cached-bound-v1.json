@@ -1,0 +1,44 @@
+{
+  "kind": "phase68-native-private-bound-proposal",
+  "status": "isolated-unselected-unexecuted",
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/cached-bound-v1.patch",
+    "sha256": "d2ae3138a55c31d2d7cee32923da247070671fbff199ba90c7499c9c650a5a93",
+    "bytes": 4406
+  },
+  "files": [
+    {
+      "path": "selfhost/src/back/native/book.bend",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/scalars-build01/snapshot/src/back/native/book.bend",
+        "sha256": "eaf8e504887f8c3bc640c87e3058c119c350626cbeb3145f147b991bdec4d409",
+        "bytes": 14304
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/cached-bound-proposal01/selfhost/src/back/native/book.bend",
+        "sha256": "e8eca8ea541578676c2bb279703cdaec058a95d0bf98759102d5cb17c01b4baf",
+        "bytes": 14895
+      },
+      "lineDelta": 10
+    },
+    {
+      "path": "selfhost/tools/typed-driver.mjs",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/scalars-build01/snapshot/tools/typed-driver.mjs",
+        "sha256": "e093483d5103a8e833b6ca710246b1ec3c579b7fac5060c8e42f626c5e25ec85",
+        "bytes": 81423
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/cached-bound-proposal01/selfhost/tools/typed-driver.mjs",
+        "sha256": "a7af176c59e2c39559dcd2bfa28dc7d5d1aa881aba93c676ddec11da9e8321e7",
+        "bytes": 81764
+      },
+      "lineDelta": 3
+    }
+  ],
+  "publicContract": "nc_compile retains full exact norm_max_book after unchanged early error guards. Private export is selected only after actual owned nc_annotated_context. Marker alone grants no public permission.",
+  "persistentCacheSchemaChanged": false,
+  "additionalExports": [
+    "nc_compile_prepared"
+  ]
+}

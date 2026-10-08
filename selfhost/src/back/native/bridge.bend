@@ -95,11 +95,12 @@ law nc_occurs:
   for +id: U32
   Bool
 
-law nc_lower_live:
+law nc_lower_live_to:
   for +book: List<&2, KDef>
   for +t: KTerm
   for +env: List<&2, NC_Binding>
   for +n: U32
+  for +target: NC_Target
   NC_Code
 
 @unsafe
@@ -149,13 +150,12 @@ def nc_prepend(code: String, x: NC_Code) -> NC_Code:
     case NC_Code{body, segs, fresh, err}: NC_Code{code ++ body, segs, fresh, err}
 
 @unsafe
-def nc_lower(
-  +book: List<&2, KDef>,
-  +t: KTerm,
-  +env: List<&2, NC_Binding>,
-  +n: U32,
-) -> NC_Code:
-  nc_prepend(nc_drop_dead(env, t), nc_lower_live(book, t, nc_live_env(env, t), n))
+def nc_lower(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32) -> NC_Code:
+  nc_lower_to(book, t, env, n, NC_Scheduler{})
+
+@unsafe
+def nc_lower_to(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+  nc_prepend(nc_drop_dead(env, t), nc_lower_live_to(book, t, nc_live_env(env, t), n, target))
 
 # Evaluated atoms do not need a continuation. Keep the same sharing and dead
 # value handling as the general cut, and bind the word before lowering the body.
@@ -353,25 +353,26 @@ def nc_destructure(+name: String, +word: String, +count: U32, +n: U32) -> String
     u => "Term fields[" ++ U32.show(count) ++ "];\n" ++ nt_choose(String, U32.is_eq(count, 1), u => "if (term_tag(" ++ word ++ ") == TAG_PAK) { fields[0] = term_loc(" ++ word ++ "); } else {\n", u => "") ++ "spare_free(e, cls_fit(" ++ U32.show(count) ++ "), ctr_take(e, " ++ word ++ ", " ++ U32.show(count) ++ ", fields));\n" ++ nt_choose(String, U32.is_eq(count, 1), u => "}\n", u => ""),
     u => "") ++ nc_field_decls(name, word, count, 0, n, boxed) ++ nt_choose(String, String.eq(name, "ALeaf"), u => "blk_free(e, " ++ word ++ ");\n", u => "")
 
-law nc_match_apply_slow:
+law nc_match_apply_slow_to:
   for +book: List<&2, KDef>
   for +t: KTerm
   for +env: List<&2, NC_Binding>
   for +n: U32
+  for +target: NC_Target
   NC_Code
 
 @unsafe
-def nc_match_apply(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32) -> NC_Code:
-  nt_choose(NC_Code, U32.is_eq(terms_len(ks(t)), 2) && np_can_match(kid(t, 0)), u => np_match_apply(book, t, env, n), u => nc_match_apply_slow(book, t, env, n))
+def nc_match_apply_to(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+  nt_choose(NC_Code, nf_scheduler(target) && U32.is_eq(terms_len(ks(t)), 2) && np_can_match(kid(t, 0)), u => np_match_apply(book, t, env, n), u => nc_match_apply_slow_to(book, t, env, n, target))
 
 @unsafe
-def nc_match_apply_slow(book, t, env, n):
+def nc_match_apply_slow_to(book, t, env, n, target):
   +mat = kid(t, 0)
   +arg = kid(t, 1)
   +word = nc_word(ix(arg), env)
   +count = nt_choose(U32, U32.is_eq(ix(mat), 0), u => nc_field_count(book, nm(mat)), u => U32.sub(ix(mat), 1))
-  +hit = nc_lower(book, nd_reapply(nc_field_apps(kid(mat, 0), count, 0, n), nd_match_rest(t)), List.append(&2, NC_Binding, nc_remove_env(env, ix(arg)), nc_field_env(nm(mat), word, count, 0, n)), U32.add(n, count))
-  +miss = nc_lower(book, nd_reapply(app(kid(mat, 1), arg), nd_match_rest(t)), env, nc_fresh(hit))
+  +hit = nc_lower_to(book, nd_reapply(nc_field_apps(kid(mat, 0), count, 0, n), nd_match_rest(t)), List.append(&2, NC_Binding, nc_remove_env(env, ix(arg)), nc_field_env(nm(mat), word, count, 0, n)), U32.add(n, count), target)
+  +miss = nc_lower_to(book, nd_reapply(app(kid(mat, 1), arg), nd_match_rest(t)), env, nc_fresh(hit), target)
   +guard = nt_choose(String, String.eq(nm(mat), "Emit") || String.eq(nm(mat), "Halt"), u => "if (term_aux(" ++ word ++ ") != CID_EMIT && term_aux(" ++ word ++ ") != CID_HALT) { err_post(e.mem, ERR_TAGS); return 0; }\n", u => "")
   NC_Code{guard ++ "if (" ++ nc_condition(nm(mat), word) ++ ") {\n" ++ nc_destructure(nm(mat), word, count, n) ++ nc_body(hit) ++ "} else {\n" ++ nc_body(miss) ++ "}\n", nt_append(N_Segment, nc_segs(hit), nc_segs(miss)), nc_fresh(miss), nc_first_error(hit, miss)}
 
@@ -479,35 +480,36 @@ def nc_compact(t):
   nt_choose(KTerm, String.eq(tg(t), "Ctr"), u => nc_compact_ctor(t, nc_literal(t)), u => k_rebuild(t, nm(t), ix(t), qt(t), nc_compact_list(ks(t)), Nil{}, 0, 0)))
 
 @unsafe
-def nc_lower_ctor(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, lit: NC_Literal) -> NC_Code:
+def nc_lower_ctor_to(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, lit: NC_Literal, +target: NC_Target) -> NC_Code:
   match lit:
     case NC_Literal{+valid, +value}:
-      nt_choose(NC_Code, valid, u => nc_return(U32.show(value) ++ "ull", n), u => nc_lower(book, nc_sequence("NCtr", nm(t), ks(t), Nil{}, n), env, U32.add(n, terms_len(ks(t)))))
+      nt_choose(NC_Code, valid, u => nf_return(U32.show(value) ++ "ull", n, target), u => nc_lower_to(book, nc_sequence("NCtr", nm(t), ks(t), Nil{}, n), env, U32.add(n, terms_len(ks(t))), target))
 
 @unsafe
-def nc_lower_live(book, t, env, n):
+def nc_lower_live_to(book, t, env, n, target):
   +tag = tg(t)
-  nt_choose(NC_Code, String.eq(tag, "NWord"), u => nc_return(nm(t) ++ "ull", n), u =>
-  nt_choose(NC_Code, String.eq(tag, "Var"), u => nt_choose(NC_Code, String.eq(nc_word(ix(t), env), "NATIVE_UNBOUND_VARIABLE"), u => nc_fail("native unbound variable " ++ U32.show(ix(t)), n), u => nc_return(nc_word(ix(t), env), n)), u =>
-  nt_choose(NC_Code, String.eq(tag, "Ref"), u => NC_Code{ne_jump(Nil{}, nc_ref_name(book, nm(t))), Nil{}, n, ""}, u =>
-  nt_choose(NC_Code, String.eq(tag, "Ann") || String.eq(tag, "Loc") || String.eq(tag, "Src") || String.eq(tag, "Cut") || String.eq(tag, "Slf") || String.eq(tag, "Ins"), u => nc_lower(book, kid(t, 0), env, n), u =>
-  nt_choose(NC_Code, String.eq(tag, "Lam"), u => nc_lambda(book, t, env, n), u =>
-  nt_choose(NC_Code, String.eq(tag, "App"), u => nd_app(book, t, env, n), u =>
-  nt_choose(NC_Code, String.eq(tag, "Let"), u => nt_choose(NC_Code, U32.is_gt(terms_len(ks(t)), 2), u => nc_parallel(book, ks(t), env, n), u => nc_lets(book, ks(t), env, n)), u =>
-  nt_choose(NC_Code, String.eq(tag, "NSeqLet"), u => nc_lets(book, ks(t), env, n), u =>
-  nt_choose(NC_Code, String.eq(tag, "NNatAdd"), u => nc_lower(book, nc_sequence("NNatSum", nm(t), ks(t), Nil{}, n), env, U32.inc(n)), u =>
-  nt_choose(NC_Code, String.eq(tag, "NNatSum"), u => nc_return("nat_chk(e, nat_chk(e, " ++ nc_head(nc_values(ks(t), env)) ++ " + 1) + " ++ nm(t) ++ "ull)", n), u =>
-  nt_choose(NC_Code, String.eq(tag, "Ctr"), u => nc_lower_ctor(book, t, env, n, nc_literal(t)), u =>
-  nt_choose(NC_Code, String.eq(tag, "NCtr"), u => nc_constructor(nm(t), nc_values(ks(t), env), n), u =>
-  nt_choose(NC_Code, String.eq(tag, "NApply"), u => nc_apply_code(nc_values(ks(t), env), n), u =>
-  nt_choose(NC_Code, String.eq(tag, "NCall"), u => NC_Code{ne_jump(nc_values(ks(t), env), nm(t)), Nil{}, n, ""}, u =>
-  nt_choose(NC_Code, String.eq(tag, "Rfl") || String.eq(tag, "Typ") || String.eq(tag, "All") || String.eq(tag, "Qua") || String.eq(tag, "ADT") || String.eq(tag, "Eql"), u => nc_return("0", n), u =>
-  nt_choose(NC_Code, String.eq(tag, "Mat"), u => nc_match(book, t, env, n), u =>
-  nt_choose(NC_Code, String.eq(tag, "NMatch"), u => nc_match_apply(book, t, env, n), u =>
-  nt_choose(NC_Code, String.eq(tag, "NOp"), u => nc_intrinsic(nm(t), nc_values(ks(t), env), n), u =>
+  nt_choose(NC_Code, String.eq(tag, "NWord"), u => nf_return(nm(t) ++ "ull", n, target), u =>
+  nt_choose(NC_Code, String.eq(tag, "Var"), u => nt_choose(NC_Code, String.eq(nc_word(ix(t), env), "NATIVE_UNBOUND_VARIABLE"), u => nc_fail("native unbound variable " ++ U32.show(ix(t)), n), u => nf_return(nc_word(ix(t), env), n, target)), u =>
+  nt_choose(NC_Code, String.eq(tag, "Ref"), u => nf_ref(book, t, n, target), u =>
+  nt_choose(NC_Code, String.eq(tag, "Ann") || String.eq(tag, "Loc") || String.eq(tag, "Src") || String.eq(tag, "Cut") || String.eq(tag, "Slf") || String.eq(tag, "Ins"), u => nc_lower_to(book, kid(t, 0), env, n, target), u =>
+  nt_choose(NC_Code, String.eq(tag, "Lam"), u => nf_lambda(book, t, env, n, target), u =>
+  nt_choose(NC_Code, String.eq(tag, "App"), u => nd_app_to(book, t, env, n, target), u =>
+  nt_choose(NC_Code, String.eq(tag, "Let"), u => nt_choose(NC_Code, U32.is_gt(terms_len(ks(t)), 2), u => nf_parallel(book, ks(t), env, n, target), u => nf_lets(book, ks(t), env, n, target)), u =>
+  nt_choose(NC_Code, String.eq(tag, "NSeqLet"), u => nf_lets(book, ks(t), env, n, target), u =>
+  nt_choose(NC_Code, String.eq(tag, "NNatAdd"), u => nc_lower_to(book, nc_sequence("NNatSum", nm(t), ks(t), Nil{}, n), env, U32.inc(n), target), u =>
+  nt_choose(NC_Code, String.eq(tag, "NNatSum"), u => nf_return("nat_chk(e, nat_chk(e, " ++ nc_head(nc_values(ks(t), env)) ++ " + 1) + " ++ nm(t) ++ "ull)", n, target), u =>
+  nt_choose(NC_Code, String.eq(tag, "Ctr"), u => nc_lower_ctor_to(book, t, env, n, nc_literal(t), target), u =>
+  nt_choose(NC_Code, String.eq(tag, "NCtr"), u => nf_emitted(nc_constructor_value(nm(t), nc_values(ks(t), env), n), target), u =>
+  nt_choose(NC_Code, String.eq(tag, "NApply"), u => nt_choose(NC_Code, nf_scheduler(target), v => nc_apply_code(nc_values(ks(t), env), n), v => nc_fail("flat worker: dynamic application", n)), u =>
+  nt_choose(NC_Code, String.eq(tag, "NFCall"), u => nf_call(book, nm(t), nc_values(ks(t), env), n, target), u =>
+  nt_choose(NC_Code, String.eq(tag, "NCall"), u => nt_choose(NC_Code, nf_scheduler(target), v => NC_Code{ne_jump(nc_values(ks(t), env), nm(t)), Nil{}, n, ""}, v => nc_fail("flat worker: scheduler call node", n)), u =>
+  nt_choose(NC_Code, String.eq(tag, "Rfl") || String.eq(tag, "Typ") || String.eq(tag, "All") || String.eq(tag, "Qua") || String.eq(tag, "ADT") || String.eq(tag, "Eql"), u => nf_return("0", n, target), u =>
+  nt_choose(NC_Code, String.eq(tag, "Mat"), u => nf_match_value(book, t, env, n, target), u =>
+  nt_choose(NC_Code, String.eq(tag, "NMatch"), u => nc_match_apply_to(book, t, env, n, target), u =>
+  nt_choose(NC_Code, String.eq(tag, "NOp"), u => nf_emitted(nc_intrinsic_value(nm(t), nc_values(ks(t), env), n), target), u =>
   nt_choose(NC_Code, String.eq(tag, "Efq"), u => NC_Code{"err_post(e.mem, ERR_FIDS); return 0;\n", Nil{}, n, ""}, u =>
-  nt_choose(NC_Code, String.eq(tag, "Rwt"), u => nc_lower(book, kid(t, 2), env, n), u =>
-  nc_fail("native lowering does not support core node " ++ tag, n)))))))))))))))))))))
+  nt_choose(NC_Code, String.eq(tag, "Rwt"), u => nc_lower_to(book, kid(t, 2), env, n, target), u =>
+  nc_fail("native lowering does not support core node " ++ tag, n))))))))))))))))))))))
 
 # Typed erasure renames user-owned constructors; this pass sees native Succ only.
 # Keep the first checked increment: even a malformed foreign U64 tail retains

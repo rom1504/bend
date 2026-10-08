@@ -120,3 +120,63 @@ All nine repaired/new control sources now pass a separate reference frontend
 smoke (zero holes, no C compiler or execution). Native retries still determine
 their runtime qualification. Compiler-source commits are development checkpoints;
 installation waits for final selection and integration gates.
+
+
+## Ordinary C workers and current tradeoffs
+
+The ordinary-worker prototype (`flat-build06`) passes its strict checked build
+and eight paired native controls. Retained C inspection proves that the
+100,000-step tail-recursion witness enters an `NF_` worker and uses a local
+loop. Live non-tail and mutual-recursion witnesses retain scheduler entries;
+they do not silently acquire recursive C workers. The array program contains
+17 workers with maximum call-DAG depth six and no scheduler operations inside
+those workers. All six benchmark output oracles also pass.
+
+The three-family resolved screen against `prefix-build04` gives runtime ratios
+0.606796 (numeric), 1.055385 (array), and 0.882813 (lexer): geometric mean
+0.826877. These are two-round, sequential-campaign measurements on common fixed
+work; all six intervals exceed 100 ms. They are **not** a new upstream parity
+claim. C size grows 42.1% and Clang acquisition time 21.3% against the especially
+small prefix version. Compared with the original baseline, numeric C is still
+smaller and its Clang build falls from 13.75 seconds to 4.54 seconds.
+
+Source and disassembly explain why arrays need the next representation change:
+the hot loop still allocates and consumes two tuple shells per element, and
+Clang leaves two ordinary helper calls uninlined. P68-007 targets those shells;
+P68-008 separately tests general private-worker inlining without changing the
+production policy. The additional closure/tree/Map runtime screen has closed;
+its disjoint receipt join is pending.
+
+`admission-build07` passes strict checking after a five-line analysis cleanup.
+Worker admission now avoids traversing dependencies of already admitted or
+rejected candidates. All three complete-C equality checks against actual06 pass; no additional
+runtime gain is credited to this compiler-only change. The exploratory B1
+request clocks show no material improvement, so the change is retained for
+avoiding redundant analysis rather than a measured speed claim.
+
+## Actual B2 request findings
+
+The genuine `templates-build05-b2` image passes eight ordinary-driver comparison
+observations. It emits a direct branch chain for template lookup, with no eager
+69-entry catalog. All 15 native request jobs close successfully, including nine
+clean requests and four separate profiles; every output equals its qualified
+complete C oracle. This is a diagnostic B2 image, not release qualification.
+
+| C request | Baseline B1 ms | Templates05 B1 ms | Baseline B2 ms | Templates05 B2 ms | Current TS ms |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Numeric | 2,137 | 2,627 | 1,921 | 1,569 | 713 |
+| Array | 2,018 | 2,676 | 1,845 | 1,582 | 719 |
+| Lexer | 2,569 | 3,353 | 2,300 | 2,086 | 904 |
+
+These are one clean sample per role/case, with preparation and imports outside
+the request clock. The aggregate implementation improves B2 but regresses B1;
+it does not establish an isolated template speedup. The new profiles identify
+`nc_occurs_list` at 528–672 ms exclusive sampled time in B2 and repeated variable
+occurrence analysis at about 1.3 seconds inclusive in B1's numeric profile.
+The local-value optimization exposed repeated expression-tree walks per live
+binding. A pure Bend occurrence-summary change is now the priority, with full-C
+byte equality as its fast correctness discriminator. Instrumented profile clocks
+are not substituted for clean timings.
+
+Current source checkpoints remain developmental. Installed Phase67 files and
+all historical raw evidence remain unchanged. No PR comments were posted.

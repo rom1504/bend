@@ -35,11 +35,12 @@ def nd_scalar_word(+name: String, +words: List<&2, String>) -> String:
 
 # Saturated calls to a known leading lambda telescope use one register entry.
 # Partial applications retain the ordinary closure entry and its ownership ABI.
-law nd_app:
+law nd_app_to:
   for +book: List<&2, KDef>
   for +t: KTerm
   for +env: List<&2, NC_Binding>
   for +n: U32
+  for +target: NC_Target
   NC_Code
 
 @unsafe
@@ -88,10 +89,10 @@ def nd_beta(+head: KTerm, args: List<&2, KTerm>) -> KTerm:
         u => nd_reapply(head, Con{arg, rest}))
 
 @unsafe
-def nd_match(+book: List<&2, KDef>, +head: KTerm, +arg: KTerm, +env: List<&2, NC_Binding>, +n: U32) -> NC_Code:
+def nd_match_to(+book: List<&2, KDef>, +head: KTerm, +arg: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
   nt_choose(NC_Code, String.eq(tg(arg), "Var"),
-    u => nc_lower(book, kt("NMatch", "", 0, 0, [head, arg]), env, n),
-    u => nc_lower(book, nc_mklet(nc_id(n), arg, kt("NMatch", "", 0, 0, [head, var("", nc_id(n))])), env, U32.inc(n)))
+    u => nc_lower_to(book, kt("NMatch", "", 0, 0, [head, arg]), env, n, target),
+    u => nc_lower_to(book, nc_mklet(nc_id(n), arg, kt("NMatch", "", 0, 0, [head, var("", nc_id(n))])), env, U32.inc(n), target))
 
 # Remaining matcher arguments are already evaluated. Fresh aliases let the
 # ordinary sharing prelude retain a scrutinee also used by another argument or
@@ -119,19 +120,20 @@ def nd_match_rest_list(ts: List<&2, KTerm>) -> List<&2, KTerm>:
     case _: Nil{}
 
 @unsafe
-def nd_app(book, t, env, n):
+def nd_app_to(book, t, env, n, target):
   +head = nd_head(t)
   +args = nd_args(t, Nil{})
   +scalar = nd_scalar_call(book, t)
-  nt_choose(NC_Code, Bool.not(String.eq(scalar, "")), u => nc_lower(book, nc_sequence("NOp", scalar, args, Nil{}, n), env, U32.add(n, terms_len(args))), u =>
-  nt_choose(NC_Code, String.eq(tg(head), "Lam"), u => nc_lower(book, nd_beta(head, args), env, n), u =>
-    nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_eq(terms_len(args), 1), u => nd_match(book, head, kid(t, 1), env, n), u =>
+  nt_choose(NC_Code, Bool.not(String.eq(scalar, "")), u => nc_lower_to(book, nc_sequence("NOp", scalar, args, Nil{}, n), env, U32.add(n, terms_len(args)), target), u =>
+  nt_choose(NC_Code, String.eq(tg(head), "Efq") && Bool.not(nf_scheduler(target)), u => nc_lower_to(book, head, env, n, target), u =>
+  nt_choose(NC_Code, String.eq(tg(head), "Lam"), u => nc_lower_to(book, nd_beta(head, args), env, n, target), u =>
+    nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_eq(terms_len(args), 1), u => nd_match_to(book, head, kid(t, 1), env, n, target), u =>
     nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_gt(terms_len(args), 1) && nd_match_vars(args),
-      u => nc_lower(book, nd_match_sequence(head, args, Nil{}, n), env, U32.add(n, terms_len(args))), u =>
+      u => nc_lower_to(book, nd_match_sequence(head, args, Nil{}, n), env, U32.add(n, terms_len(args)), target), u =>
     nt_choose(NC_Code, String.eq(tg(head), "Ref"), u =>
     nt_choose(NC_Code, Bool.not(U32.is_eq(qt(head), 3)) && U32.is_gt(terms_len(args), 0) && U32.is_eq(nd_arity(book, nm(head)), terms_len(args)),
-      u => nc_lower(book, nc_sequence("NCall", nd_name(nc_ref_name(book, nm(head))), args, Nil{}, n), env, U32.add(n, terms_len(args))),
-      u => nc_app_slow(book, t, env, n)), u => nc_app_slow(book, t, env, n))))))
+      u => nc_lower_to(book, nc_sequence(nt_choose(String, nf_scheduler(target), v => "NCall", v => "NFCall"), nt_choose(String, nf_scheduler(target), v => nd_name(nc_ref_name(book, nm(head))), v => nm(head)), args, Nil{}, n), env, U32.add(n, terms_len(args)), target),
+      u => nf_slow_app(book, t, env, n, target)), u => nf_slow_app(book, t, env, n, target)))))))
 
 @unsafe
 def nd_body(+t: KTerm) -> KTerm:

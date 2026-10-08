@@ -197,9 +197,9 @@ def nc_helpers() -> String:
   "INLINE bool native_bool(Term t) { return t == 1 || (term_tag(t) == TAG_PAK && term_aux(t) == CID_TRUE); }\nINLINE Term native_word(Env e, u32 x) {\n  Term w = term_pak(CID_WNIL, 0);\n  for (u32 i = 32; i > 0; i--) {\n    Loc p = heap_alloc(e, 1);\n    e.mem[p] = (x >> (i - 1)) & 1;\n    e.mem[p + 1] = rfc_seal(e, w);\n    w = term_ctr(CID_WCON, p);\n  }\n  return w;\n}\n"
 
 @unsafe
-def nc_with_show(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, d: NC_Show) -> NC_Result:
+def nc_with_show(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, d: NC_Show, workers: String) -> NC_Result:
   match d:
-    case NC_Show{+src, +err}: nt_choose(NC_Result, String.eq(nv_first(err, nv_program(ss, cs)), ""), u => NC_Result{ne_program(runtime, N_Program{ss, cs, Nil{}, requests, nc_helpers(), src, pure}), ""}, u => NC_Result{"", nv_first(err, nv_program(ss, cs))})
+    case NC_Show{+src, +err}: nt_choose(NC_Result, String.eq(nv_first(err, nv_program(ss, cs)), ""), u => NC_Result{ne_program(runtime, N_Program{ss, cs, Nil{}, requests, nc_helpers() ++ workers, src, pure}), ""}, u => NC_Result{"", nv_first(err, nv_program(ss, cs))})
 
 @unsafe
 def nc_finish(+book: List<&2, KDef>, +runtime: String, +requests: String, compiled: NC_Book) -> NC_Result:
@@ -209,7 +209,7 @@ def nc_finish(+book: List<&2, KDef>, +runtime: String, +requests: String, compil
       +pure = Bool.not(nc_is_io(book, ty))
       +cs = nc_add_ctors(nc_default_ctors(), nc_constructors(book, book))
       nt_choose(NC_Result, Bool.not(String.eq(error, "")), u => NC_Result{"", error}, u =>
-        nc_with_show(ss, cs, runtime, requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show("0"), ""})))
+        nf_finish_show(book, ss, cs, runtime, requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show("0"), ""})))
 
 law nc_bangs_term:
   for +t: KTerm

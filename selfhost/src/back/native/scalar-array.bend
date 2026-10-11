@@ -78,9 +78,11 @@ def ns_unshared_terms(+book: List<&2, KDef>, +body: KTerm, ts: List<&2, KTerm>) 
     case Con{+t, +rest}:
       nt_choose(Bool, String.eq(tg(t), "Ann"),
         u => nt_choose(Bool, String.eq(tg(kid(t, 0)), "Var"),
-          v => (U32.is_le(nq_uses(body, ix(kid(t, 0))), 1) || ns_array_free(book, kid(t, 1))) && ns_unshared_terms(book, body, rest),
+          v => nt_choose(Bool, ns_array_free(book, kid(t, 1)), w => ns_unshared_terms(book, body, rest), w => nt_choose(Bool, U32.is_le(nq_uses(body, ix(kid(t, 0))), 1), x => ns_unshared_terms(book, body, rest), x => False{})),
           v => ns_unshared_terms(book, body, Con{kid(t, 0), rest})),
-        u => (Bool.not(String.eq(tg(t), "Var")) || U32.is_le(nq_uses(body, ix(t)), 1)) && ns_unshared_terms(book, body, nt_append(KTerm, ks(t), rest)))
+        u => nt_choose(Bool, String.eq(tg(t), "Var"),
+          v => nt_choose(Bool, U32.is_le(nq_uses(body, ix(t)), 1), w => ns_unshared_terms(book, body, nt_append(KTerm, ks(t), rest)), w => False{}),
+          v => ns_unshared_terms(book, body, nt_append(KTerm, ks(t), rest))))
 
 @unsafe
 def ns_unshared_definitions(+book: List<&2, KDef>, names: List<&2, String>) -> Bool:

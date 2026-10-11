@@ -192,7 +192,7 @@ def kf_name(source: String, +acc: String) -> String:
 
 @unsafe
 def kf_known(+book: List<&2, KDef>, +prefix: String, +name: String) -> Bool:
-  Bool.not(String.eq(dk(kr_resolve(book, name)), "Absent")) || (String.eq(prefix, "FID") && (String.eq(name, "EXIT") || String.eq(name, "ENTER")))
+  Bool.not(String.eq(dk(kr_resolve(book, name)), "Absent")) || (String.eq(prefix, "FID") && (String.eq(name, "EXIT") || String.eq(name, "ENTER") || String.eq(name, "Clo~apply")))
 
 @unsafe
 def kf_resolve(+book: List<&2, KDef>, +ns: String, +prefix: String, +name: String) -> String:

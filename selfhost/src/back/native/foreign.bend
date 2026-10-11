@@ -64,7 +64,7 @@ def nc_foreign_parts(+book: List<&2, KDef>, parts: List<&2, KTerm>) -> String:
     case Nil{}: ""
     case Con{+h, rest}:
       nt_choose(String, String.eq(tg(h), "Text"), u => nm(h),
-        u => nt_choose(String, String.eq(tg(h), "FID"), u => nt_fid(nc_ref_name(book, nm(h))),
+        u => nt_choose(String, String.eq(tg(h), "FID"), u => nt_choose(String, String.eq(nm(h), "Clo~apply"), v => "BEND_CLO_APPLY", v => nt_fid(nc_ref_name(book, nm(h)))),
           u => nt_cid(nt_choose(String, String.eq(dk(lookup(book, nm(h))), "Def"), u => nm(h), u => nc_ctor_identity(book, nm(h)))))) ++ nc_foreign_parts(book, rest)
 
 @unsafe

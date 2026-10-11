@@ -212,13 +212,38 @@ def nf_wrap_segments(segments: List<&2, N_Segment>, +index: List<&2, KDef>) -> L
 def nf_finish_ready(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> NC_Result:
   nc_with_show(nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0)), cs, runtime, requests, pure, show, "#if !DEVICE\n#if defined(__GNUC__) || defined(__clang__)\n#define NF_INLINE INLINE __attribute__((always_inline))\n#else\n#define NF_INLINE INLINE\n#endif\n" ++ nf_prototypes(workers, ready) ++ nf_bodies(workers, ready) ++ "#undef NF_INLINE\n#endif\n")
 
+# A failed optional product route must not poison the ordinary worker. Retain
+# admitted code and retry ordinary candidates against only admitted signatures.
+# Constructor shape facts remain available; no demand or stack rule is relaxed.
 @unsafe
-def nf_finish_workers(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>) -> NC_Result:
-  nf_finish_ready(ss, cs, runtime, requests, pure, show, workers, nf_admit(book, workers, Nil{}, nt_count(NF_Worker, workers)))
+def nf_ready_signatures(ds: List<&2, KDef>, +ready: List<&2, String>) -> List<&2, KDef>:
+  match ds:
+    case Nil{}: Nil{}
+    case Con{+d, +rest}:
+      nt_choose(List<&2, KDef>, String.eq(dk(d), "BookCache") || (String.eq(tg(dv(d)), "NQSig") && Bool.not(nb_contains(ready, nm(dv(d))))),
+        u => nf_ready_signatures(rest, ready), u => Con{d, nf_ready_signatures(rest, ready)})
+
+@unsafe
+def nf_retry(+book: List<&2, KDef>, workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>) -> List<&2, NF_Worker>:
+  match workers:
+    case Nil{}: Nil{}
+    case Con{NF_Worker{+name, params, +code, deps, shape}, rest}:
+      +old : NF_Worker = NF_Worker{name, params, code, deps, shape}
+      +retry = Bool.not(nb_contains(ready, name) || String.starts_with(name, "$product.")) && String.eq(nc_error(code), "")
+      Con{nt_choose(NF_Worker, retry, u => nf_candidate(book, name, signatures), u => old), nf_retry(book, rest, ready, signatures)}
+
+@unsafe
+def nf_finish_retry(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>) -> NC_Result:
+  +retried = nf_retry(book, workers, ready, book_cached(nf_ready_signatures(signatures, ready), 0))
+  nf_finish_ready(ss, cs, runtime, requests, pure, show, retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)))
+
+@unsafe
+def nf_finish_workers(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +signatures: List<&2, KDef>) -> NC_Result:
+  nf_finish_retry(book, ss, cs, runtime, requests, pure, show, workers, nf_admit(book, workers, Nil{}, nt_count(NF_Worker, workers)), signatures)
 
 @unsafe
 def nf_finish_show(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show) -> NC_Result:
   +names = nc_live_names(book, ["main"], Nil{})
   +signatures = book_cached(nq_signatures(book, names), 0)
   +bangs = nc_bangs_book(book)
-  nf_finish_workers(book, ss, cs, runtime, requests, pure, show, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates(book, names, bangs, signatures)))
+  nf_finish_workers(book, ss, cs, runtime, requests, pure, show, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates(book, names, bangs, signatures)), signatures)

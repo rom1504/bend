@@ -270,3 +270,11 @@ a single-sample mechanism screen; final balanced B1/B2 timings remain pending.
 
 The installed compiler is still Phase67. These source checkpoints and focused
 controls do not substitute for final release qualification.
+
+
+## Restart investigation: scalar arrays
+
+[October11 investigation and ranked opportunities](c-target-opportunities.md):
+C-only scalar-layout plus unshared-access diagnostic reaches188ms versus187ms
+upstream,5.44× faster than unchanged products15 in the same campaign. All
+finite output checks pass; this is not a promoted compiler or whole-suite parity.

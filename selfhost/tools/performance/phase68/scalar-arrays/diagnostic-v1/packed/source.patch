@@ -1,0 +1,30 @@
+--- products15/program.c
++++ packed/program.c
+@@ -14641,7 +14641,7 @@
+ nf_join_21:;
+ if (!seq && err_seen(e.mem)) { return 0; }
+ Term init[1] = { v_4294967276 };
+-v_4294967281 = blk_new(e, 1, v_4294967277, 0, 1, init);
++v_4294967281 = blk_new(e, 0, v_4294967277, 0, 1, init);
+ goto nf_join_16;
+ }
+ nf_join_16:;
+@@ -14806,8 +14806,7 @@
+ nf_join_15:;
+ if (!seq && err_seen(e.mem)) { return 0; }
+ u32 at = blk_at(v_4294967285, v_4294967284, 0);
+-term_sink(e, blk_read(e.mem, 1, term_peek(e, v_4294967285), at));
+-blk_write(e.mem, 1, term_peek(e, v_4294967285), at, rfc_seal(e, v_4294967283));
++blk_write(e.mem, 0, term_peek(e, v_4294967285), at, v_4294967283);
+ v_4294967289 = v_4294967285;
+ goto nf_join_8;
+ }
+@@ -14865,7 +14864,7 @@
+ if (!seq && err_seen(e.mem)) { return 0; }
+ u32 at = blk_at(v_4294967283, v_4294967282, 0);
+ v_4294967286 = v_4294967283;
+-v_4294967285 = blk_keep(e, term_peek(e, v_4294967283) + at);
++v_4294967285 = blk_read(e.mem, 0, term_peek(e, v_4294967283), at);
+ goto nq_join_9;
+ }
+ nq_join_9:;

@@ -1,0 +1,24 @@
+{
+  "kind": "phase68-scalar-array-source-peer-review-v1",
+  "status": "pass-for-saved-C-diagnostic",
+  "targetsExecuted": false,
+  "manifest": {
+    "path": "selfhost/tools/performance/phase68/scalar-arrays/diagnostic-v1/manifest.json",
+    "sha256": "eee6404a2cc20470b96fc36ffd184dfa64603f30a8bca4ec30c9002ea4e94f7f"
+  },
+  "verifiedPins": 9,
+  "variantsReplayed": 3,
+  "syntax": "Python AST parsed; no compiler or program execution.",
+  "reasoning": [
+    "The checked closed local-fold flow initializes with U32 and writes U32.add/xor results, so truncation to 32 bits loses no value and elements own no heap references.",
+    "Q loop/cell/step transfer the array linearly without keeping or sealing it; blk_new returns a direct location, so each edited hot peek equals term_loc.",
+    "The array is sealed only when boxed at final bench result before finish; edited peeks occur before that sealing.",
+    "TAG_BUF retains logical blk_cls=7 while blk_span uses physical class6; existing term_drop/blk_free handle both direct and final RFC-wrapped buffers correctly.",
+    "Generic boxed workers, scheduler paths, atomics and runtime helpers remain unchanged; unreachable mismatched paths are not claimed equivalent."
+  ],
+  "limitations": [
+    "Proof is for this exact closed benchmark flow; no general typed-array/raw ABI or multi-thread sharing admission follows.",
+    "Packed variant also removes element ownership operations; it does not isolate storage width from those operations.",
+    "Method execution still needs frozen actual API/runtime/toolchain/workload admission, independent output oracles and qualified timing."
+  ]
+}

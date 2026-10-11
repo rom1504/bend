@@ -1,0 +1,69 @@
+{
+  "kind": "phase68-scalar-array-two-axis-v1",
+  "complete": true,
+  "targetExecuted": false,
+  "baseline": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program.c",
+    "sha256": "19087b31006dd02e8fb51fd38e3b6df29b19885abb55700eaef06b0f3caf3826",
+    "bytes": 1012549
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program.c",
+      "sha256": "19087b31006dd02e8fb51fd38e3b6df29b19885abb55700eaef06b0f3caf3826",
+      "bytes": 1012549
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program.c.json",
+      "sha256": "d38641c663408040de6166746ae801a64316218cbe7bc088e0cd8a5100609a21",
+      "bytes": 16069
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-arrays/derive-v1.py",
+      "sha256": "77b313b420299ed46b0a1ea0bc331a6eed8b12d9a1c9eea5041bde24bbcd637b",
+      "bytes": 5648
+    }
+  ],
+  "variants": [
+    {
+      "name": "packed",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-arrays/diagnostic-v1/packed/program.c",
+        "sha256": "8f75961a6baf55123536a123a9890fb2a956eff7cdd2c3ef80970b6eb1918ca5",
+        "bytes": 1012476
+      },
+      "derivation": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-arrays/diagnostic-v1/packed/derivation.json",
+        "sha256": "29fd79edc142042f23f90c3cc4878a32843119bd666ae236dd398a2cb66160e8",
+        "bytes": 3136
+      }
+    },
+    {
+      "name": "unshared",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-arrays/diagnostic-v1/unshared/program.c",
+        "sha256": "8fc05e2805e269412e932d5246456dbd5ac8e96edc9d89e98a30cf8005efaa91",
+        "bytes": 1012537
+      },
+      "derivation": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-arrays/diagnostic-v1/unshared/derivation.json",
+        "sha256": "ee611c83477a0d320be68391eaf45dea022527dc3fb8b3bf160b144d24634bbe",
+        "bytes": 2717
+      }
+    },
+    {
+      "name": "combined",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-arrays/diagnostic-v1/combined/program.c",
+        "sha256": "54f3c108fbc9ba69237dabfe7bee7df252224dd7e8228a8ede3741bede4e86c9",
+        "bytes": 1012468
+      },
+      "derivation": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-arrays/diagnostic-v1/combined/derivation.json",
+        "sha256": "af97930f9b0c4a2050701bb505b6c42a9ec70061da302ccce65603043aa6a561",
+        "bytes": 3535
+      }
+    }
+  ],
+  "status": "Source derivation only. Root must compile, check independent oracles and measure."
+}

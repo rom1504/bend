@@ -1,0 +1,80 @@
+{
+  "kind": "read-only-source-and-disassembly-audit",
+  "executedGeneratedPrograms": false,
+  "cpu": "0",
+  "roles": {
+    "products15": {
+      "binary": {
+        "path": "selfhost/build/phase68/native-products15/array-selfhost/program",
+        "sha256": "65976597d89d20046f52520ef2a20a7454a8bf21d252df739d1613f32a9e8518",
+        "bytes": 196160
+      },
+      "generatedC": {
+        "path": "selfhost/build/phase68/native-products15/array-selfhost/program.c",
+        "sha256": "19087b31006dd02e8fb51fd38e3b6df29b19885abb55700eaef06b0f3caf3826",
+        "bytes": 1012549
+      },
+      "emissionReceipt": {
+        "path": "selfhost/build/phase68/native-products15/array-selfhost/program.c.json",
+        "sha256": "d38641c663408040de6166746ae801a64316218cbe7bc088e0cd8a5100609a21",
+        "bytes": 16069
+      },
+      "symbol": "NF_FID_112_52_54_46_108_111_111_112_",
+      "command": [
+        "objdump",
+        "-d",
+        "--no-show-raw-insn",
+        "--disassemble=NF_FID_112_52_54_46_108_111_111_112_",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program"
+      ],
+      "disassembly": {
+        "path": "selfhost/tools/performance/phase68/flat-products/array-after15/products15.asm",
+        "sha256": "336849232c808c1f9bcd2d1c1704cd6fda70792822d32da6cff9a6c5dc48163f",
+        "bytes": 15925
+      }
+    },
+    "upstream67": {
+      "binary": {
+        "path": "selfhost/build/phase67/native-baseline02/array-upstream/program",
+        "sha256": "482af063fabf2a528c5db910e2726821db6523dd6eadf83c18b8bb2efcd0ed1a",
+        "bytes": 54280
+      },
+      "generatedC": {
+        "path": "selfhost/build/phase67/native-baseline02/array-upstream/program.c",
+        "sha256": "73cd2c48edcd833c516b4738a46918f92d3083f97c7f598afe574c17a19a0f12",
+        "bytes": 118820
+      },
+      "emissionReceipt": {
+        "path": "selfhost/build/phase67/native-baseline02/array-upstream/program.c.json",
+        "sha256": "0d4c862702e6d8571b88193a2fe21d88c27c639a7dcd532287e0840d977e6e20",
+        "bytes": 10174
+      },
+      "symbol": "WL_FID_MAIN_C71",
+      "command": [
+        "objdump",
+        "-d",
+        "--no-show-raw-insn",
+        "--disassemble=WL_FID_MAIN_C71",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase67/native-baseline02/array-upstream/program"
+      ],
+      "disassembly": {
+        "path": "selfhost/tools/performance/phase68/flat-products/array-after15/upstream67.asm",
+        "sha256": "e47098d84172280335a5ed187b45fed435aecfbb6ea470d19e6f68b43c638607",
+        "bytes": 6637
+      }
+    }
+  },
+  "upstreamCompiler": {
+    "path": "selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+    "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c",
+    "bytes": 185124
+  },
+  "sourceOnlyAssertions": {
+    "products15ActiveProductLoop": true,
+    "products15TupleAllocationsPerHotRecurrence": 0,
+    "products15GenericArraySlotBytes": 8,
+    "upstreamArraySlotBytes": 4,
+    "upstreamBLK_SHR": 0
+  },
+  "qualification": "No timings or speed ratio measured by this audit."
+}

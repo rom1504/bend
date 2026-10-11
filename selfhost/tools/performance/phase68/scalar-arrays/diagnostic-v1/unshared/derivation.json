@@ -1,0 +1,63 @@
+{
+  "kind": "phase68-scalar-array-saved-c-v1",
+  "complete": true,
+  "diagnosticOnly": true,
+  "targetExecuted": false,
+  "variant": "unshared",
+  "axes": {
+    "packedU32": false,
+    "directUnsharedLocation": true
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program.c",
+      "sha256": "19087b31006dd02e8fb51fd38e3b6df29b19885abb55700eaef06b0f3caf3826",
+      "bytes": 1012549
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program.c.json",
+      "sha256": "d38641c663408040de6166746ae801a64316218cbe7bc088e0cd8a5100609a21",
+      "bytes": 16069
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-arrays/derive-v1.py",
+      "sha256": "77b313b420299ed46b0a1ea0bc331a6eed8b12d9a1c9eea5041bde24bbcd637b",
+      "bytes": 5648
+    }
+  ],
+  "parentEmission": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program.c",
+    "sha256": "19087b31006dd02e8fb51fd38e3b6df29b19885abb55700eaef06b0f3caf3826",
+    "bytes": 1012549
+  },
+  "sourceInput": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/array-batch.bend",
+    "sha256": "cd989b0fc20dfab2e51cc4f790f699d740c4cff6a1c2b683cb8952b3073a3d10",
+    "bytes": 1934
+  },
+  "output": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-arrays/diagnostic-v1/unshared/program.c",
+    "sha256": "8fc05e2805e269412e932d5246456dbd5ac8e96edc9d89e98a30cf8005efaa91",
+    "bytes": 1012537
+  },
+  "patch": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-arrays/diagnostic-v1/unshared/source.patch",
+    "sha256": "192c60376b41ef581c9e3fb6c94d3ad1e5c402130da91e1532d2117bd2b3d45d",
+    "bytes": 817
+  },
+  "replacements": [
+    {
+      "worker": "$product.../phase37/fixtures-historical/local-fold:fold.cell",
+      "before": "term_peek(e, v_4294967283)",
+      "after": "term_loc(v_4294967283)",
+      "count": 1
+    },
+    {
+      "worker": "$product.../phase37/fixtures-historical/local-fold:fold.step",
+      "before": "term_peek(e, v_4294967285)",
+      "after": "term_loc(v_4294967285)",
+      "count": 2
+    }
+  ],
+  "scope": "Only three selected host worker bodies may change. The actual closed array flow constructs U32 elements, writes U32 arithmetic, never shares the array, and finally drops it. Scheduler/raw/foreign entry equivalence is not claimed. No runtime helper, compiler image or worker ABI changes. Worker names identify intervention sites only, never production eligibility."
+}

@@ -4117,3 +4117,12 @@ shared simplification. Seven installed files and110 inherited files preserved.
 P68-001 investigates before production edits; P68-002 tests typed matcher arity.
 Fresh raw Phase68 only, root serial guarded CPU3 targets, source agents CPU0.
 No new result or promotion at registration; no PR comments.
+
+
+### Phase68 P68-016 measured — 2026-10-11
+
+[Report](../implementation/phase68/c-target-opportunities.md). Frozen four-arm
+scalar-array diagnostic passes16smokes/12qualified timings; combined gain5.43×.
+Fresh balanced comparison: unchanged1022ms, combined188ms, upstream187ms.
+General scalar layout and sharing facts are the highest-evidence next work.
+Investigation only: compiler/installed images unchanged; no whole-suite claim.

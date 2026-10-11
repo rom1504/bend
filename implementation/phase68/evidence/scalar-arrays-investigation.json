@@ -1,0 +1,331 @@
+{
+  "kind": "phase68-c-target-opportunities-investigation",
+  "date": "2026-10-11",
+  "productionCompilerChanged": false,
+  "pins": [
+    {
+      "path": "selfhost/build/phase68/scalar-array-diagnostic01/plan.json",
+      "sha256": "0a6bb48e3133f5403a24b2e7a10f1e51c51a0f8ff0d9a14262911634f65b2292",
+      "bytes": 75912
+    },
+    {
+      "path": "selfhost/build/phase68/scalar-array-diagnostic01/execution.json",
+      "sha256": "19d96a9a58c20fbe93c30348682061b8d07f0a7745d47c7aea51d7a1a64c61a6",
+      "bytes": 43634
+    },
+    {
+      "path": "selfhost/build/phase68/scalar-array-upstream01/plan.json",
+      "sha256": "196eb4b97feb1484a684bc61a6906c401f835bbad90871aa0538f6927ba65d61",
+      "bytes": 46083
+    },
+    {
+      "path": "selfhost/build/phase68/scalar-array-upstream01/report.json",
+      "sha256": "f6c8d88624d53e1dd5f4c2c0b33039ed1c6ab1afc30a49e8a3873d419297c858",
+      "bytes": 14777
+    },
+    {
+      "path": "selfhost/build/phase68/scalar-array-diagnostic01/combined.asm",
+      "sha256": "a4292ee8b8f0a491d7015e422c52f715babdaf3cae09a31dfe356c1c10b4710f",
+      "bytes": 1022670
+    }
+  ],
+  "baseline": {
+    "case": "array",
+    "role": "selfhost",
+    "source": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/array-batch.bend",
+      "sha256": "cd989b0fc20dfab2e51cc4f790f699d740c4cff6a1c2b683cb8952b3073a3d10",
+      "bytes": 1934
+    },
+    "expected": [
+      2339999928,
+      2166136261,
+      2390085031
+    ],
+    "correct": true,
+    "emission": {
+      "complete": true,
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase67/benchmark/emit.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15-recipe.json",
+        "selfhost",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/array-batch.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program.c"
+      ],
+      "started": 1791463782.8005223,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 556695552,
+      "minimumAvailableBytes": 27427553280,
+      "returncode": 0,
+      "wallSeconds": 4.492051057051867,
+      "finished": 1791463787.2925673
+    },
+    "emissionReceipt": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program.c.json",
+      "sha256": "d38641c663408040de6166746ae801a64316218cbe7bc088e0cd8a5100609a21",
+      "bytes": 16069
+    },
+    "nativeSource": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program.c",
+      "sha256": "19087b31006dd02e8fb51fd38e3b6df29b19885abb55700eaef06b0f3caf3826",
+      "bytes": 1012549
+    },
+    "emissionTimings": {
+      "initializeMs": 17.827809000000002,
+      "prepareBaseMs": 85.40234700000008,
+      "loadCheckEmitMs": 2468.15332,
+      "totalMs": 3555.96788
+    },
+    "toolchain": {
+      "complete": true,
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-isystem",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+        "-std=c11",
+        "-O3",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program"
+      ],
+      "started": 1791463787.3380888,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 189480960,
+      "minimumAvailableBytes": 27878596608,
+      "returncode": 0,
+      "wallSeconds": 4.645252802991308,
+      "finished": 1791463791.9833367
+    },
+    "executable": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program",
+      "sha256": "65976597d89d20046f52520ef2a20a7454a8bf21d252df739d1613f32a9e8518",
+      "bytes": 196160
+    },
+    "process": {
+      "complete": true,
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "1",
+        "0"
+      ],
+      "started": 1791463791.991186,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 516096,
+      "minimumAvailableBytes": 27943677952,
+      "returncode": 0,
+      "wallSeconds": 0.023774133063852787,
+      "finished": 1791463792.014951
+    },
+    "stdout": "2339999928\n2166136261\n2390085031\n0\n",
+    "stderr": "",
+    "elapsedMs": 0
+  },
+  "candidates": [
+    {
+      "role": "packed",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-array-diagnostic01/derived/packed/program.c",
+        "sha256": "8f75961a6baf55123536a123a9890fb2a956eff7cdd2c3ef80970b6eb1918ca5",
+        "bytes": 1012476
+      },
+      "executable": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-array-diagnostic01/derived/packed/program",
+        "sha256": "f207bc80f64305964359bb2236c0d65e64f225dc72444eb2d1084645b2e6c0ab",
+        "bytes": 194816
+      }
+    },
+    {
+      "role": "unshared",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-array-diagnostic01/derived/unshared/program.c",
+        "sha256": "8fc05e2805e269412e932d5246456dbd5ac8e96edc9d89e98a30cf8005efaa91",
+        "bytes": 1012537
+      },
+      "executable": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-array-diagnostic01/derived/unshared/program",
+        "sha256": "e5edff0a88d134a0fd52b045185edbcb6f93c9f0c37753eba0beca9593843fae",
+        "bytes": 195648
+      }
+    },
+    {
+      "role": "combined",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-array-diagnostic01/derived/combined/program.c",
+        "sha256": "54f3c108fbc9ba69237dabfe7bee7df252224dd7e8228a8ede3741bede4e86c9",
+        "bytes": 1012468
+      },
+      "executable": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-array-diagnostic01/derived/combined/program",
+        "sha256": "0103d6b54b052d88cd3ea493a9cd23be2db841dfbdcc06a8db8f440be77d171d",
+        "bytes": 194528
+      }
+    }
+  ],
+  "fourArm": {
+    "complete": true,
+    "allTimingQualified": true,
+    "smokesPassed": 16,
+    "repetitions": 61440,
+    "warmups": 7680,
+    "rows": [
+      {
+        "role": "baseline",
+        "samplesMs": [
+          1023,
+          917,
+          905
+        ],
+        "medianMs": 917,
+        "speedup": 1.0
+      },
+      {
+        "role": "packed",
+        "samplesMs": [
+          295,
+          271,
+          270
+        ],
+        "medianMs": 271,
+        "speedup": 3.3837638376383765
+      },
+      {
+        "role": "unshared",
+        "samplesMs": [
+          843,
+          765,
+          754
+        ],
+        "medianMs": 765,
+        "speedup": 1.1986928104575163
+      },
+      {
+        "role": "combined",
+        "samplesMs": [
+          169,
+          169,
+          169
+        ],
+        "medianMs": 169,
+        "speedup": 5.42603550295858
+      }
+    ],
+    "wallSeconds": 26.03324270248413
+  },
+  "upstreamComparison": {
+    "complete": true,
+    "samples": [
+      {
+        "role": "baseline",
+        "round": 0,
+        "elapsedMs": 1017,
+        "correct": true,
+        "qualified": true
+      },
+      {
+        "role": "combined",
+        "round": 0,
+        "elapsedMs": 185,
+        "correct": true,
+        "qualified": true
+      },
+      {
+        "role": "upstream",
+        "round": 0,
+        "elapsedMs": 187,
+        "correct": true,
+        "qualified": true
+      },
+      {
+        "role": "combined",
+        "round": 1,
+        "elapsedMs": 188,
+        "correct": true,
+        "qualified": true
+      },
+      {
+        "role": "upstream",
+        "round": 1,
+        "elapsedMs": 188,
+        "correct": true,
+        "qualified": true
+      },
+      {
+        "role": "baseline",
+        "round": 1,
+        "elapsedMs": 1022,
+        "correct": true,
+        "qualified": true
+      },
+      {
+        "role": "upstream",
+        "round": 2,
+        "elapsedMs": 184,
+        "correct": true,
+        "qualified": true
+      },
+      {
+        "role": "baseline",
+        "round": 2,
+        "elapsedMs": 1033,
+        "correct": true,
+        "qualified": true
+      },
+      {
+        "role": "combined",
+        "round": 2,
+        "elapsedMs": 190,
+        "correct": true,
+        "qualified": true
+      }
+    ],
+    "mediansMs": {
+      "baseline": 1022,
+      "combined": 188,
+      "upstream": 187
+    },
+    "combinedOverUpstream": 1.0053475935828877,
+    "speedup": 5.4361702127659575,
+    "wallSeconds": 6.419686555862427
+  },
+  "activeLoopAssembly": [
+    "   19410:\tmov    %esi,%edi",
+    "   19412:\tmov    %esi,%r9d",
+    "   19415:\tand    %edx,%r9d",
+    "   19418:\tadd    (%rax,%r9,4),%ecx",
+    "   1941c:\tmov    %ecx,%r10d",
+    "   1941f:\txor    %esi,%r10d",
+    "   19422:\tmov    %r10d,(%rax,%r9,4)",
+    "   19426:\tinc    %edi",
+    "   19428:\tmov    %edi,%r9d",
+    "   1942b:\tand    %edx,%r9d",
+    "   1942e:\tadd    (%rax,%r9,4),%ecx",
+    "   19432:\tadd    $0x2,%rsi",
+    "   19436:\txor    %ecx,%edi",
+    "   19438:\tmov    %edi,(%rax,%r9,4)",
+    "   1943c:\tcmp    $0x1000,%rsi",
+    "   19443:\tjne    19410 <NF_FID_112_52_54_46_108_111_111_112_+0x2b0>"
+  ],
+  "scope": "Closed-flow generated-C diagnostic. Not a production optimization, broad conformance result, multicore correctness proof, or six-family parity claim."
+}

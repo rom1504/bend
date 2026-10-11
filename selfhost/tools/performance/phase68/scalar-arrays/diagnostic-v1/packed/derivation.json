@@ -1,0 +1,69 @@
+{
+  "kind": "phase68-scalar-array-saved-c-v1",
+  "complete": true,
+  "diagnosticOnly": true,
+  "targetExecuted": false,
+  "variant": "packed",
+  "axes": {
+    "packedU32": true,
+    "directUnsharedLocation": false
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program.c",
+      "sha256": "19087b31006dd02e8fb51fd38e3b6df29b19885abb55700eaef06b0f3caf3826",
+      "bytes": 1012549
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program.c.json",
+      "sha256": "d38641c663408040de6166746ae801a64316218cbe7bc088e0cd8a5100609a21",
+      "bytes": 16069
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-arrays/derive-v1.py",
+      "sha256": "77b313b420299ed46b0a1ea0bc331a6eed8b12d9a1c9eea5041bde24bbcd637b",
+      "bytes": 5648
+    }
+  ],
+  "parentEmission": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-products15/array-selfhost/program.c",
+    "sha256": "19087b31006dd02e8fb51fd38e3b6df29b19885abb55700eaef06b0f3caf3826",
+    "bytes": 1012549
+  },
+  "sourceInput": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/array-batch.bend",
+    "sha256": "cd989b0fc20dfab2e51cc4f790f699d740c4cff6a1c2b683cb8952b3073a3d10",
+    "bytes": 1934
+  },
+  "output": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-arrays/diagnostic-v1/packed/program.c",
+    "sha256": "8f75961a6baf55123536a123a9890fb2a956eff7cdd2c3ef80970b6eb1918ca5",
+    "bytes": 1012476
+  },
+  "patch": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-arrays/diagnostic-v1/packed/source.patch",
+    "sha256": "d3fd1649c9c9157870cad0ed07de6cede33bbbfdae9793668a54ee568f1f9063",
+    "bytes": 1018
+  },
+  "replacements": [
+    {
+      "worker": "../phase37/fixtures-historical/local-fold:bench",
+      "before": "blk_new(e, 1, v_4294967277, 0, 1, init)",
+      "after": "blk_new(e, 0, v_4294967277, 0, 1, init)",
+      "count": 1
+    },
+    {
+      "worker": "$product.../phase37/fixtures-historical/local-fold:fold.cell",
+      "before": "blk_keep(e, term_peek(e, v_4294967283) + at)",
+      "after": "blk_read(e.mem, 0, term_peek(e, v_4294967283), at)",
+      "count": 1
+    },
+    {
+      "worker": "$product.../phase37/fixtures-historical/local-fold:fold.step",
+      "before": "term_sink(e, blk_read(e.mem, 1, term_peek(e, v_4294967285), at));\nblk_write(e.mem, 1, term_peek(e, v_4294967285), at, rfc_seal(e, v_4294967283));",
+      "after": "blk_write(e.mem, 0, term_peek(e, v_4294967285), at, v_4294967283);",
+      "count": 1
+    }
+  ],
+  "scope": "Only three selected host worker bodies may change. The actual closed array flow constructs U32 elements, writes U32 arithmetic, never shares the array, and finally drops it. Scheduler/raw/foreign entry equivalence is not claimed. No runtime helper, compiler image or worker ABI changes. Worker names identify intervention sites only, never production eligibility."
+}

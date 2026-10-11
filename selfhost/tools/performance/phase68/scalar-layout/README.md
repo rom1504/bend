@@ -38,3 +38,10 @@ Node heap1GiB/stack4MiB. No outer guard around controllers that own a guard.
 Source-only preparation and analysis run on CPU0. See the
 [report](../../../../../implementation/phase68/checked-scalar-arrays.md) for
 measured scope, identities and remaining gaps.
+
+For the new checked native entry, `profile-checked-entry.py --plan PLAN --out
+FRESH_DIR` derives the old request worker with only its observed/required native
+stage changed. It reuses the exact prepared cache and plan, runs the four profile
+jobs only, and retains a literal derivation receipt. `summarize-compilation.py
+--plan PLAN --profiles PROFILE_DIR --out NEW_JSON` joins those with all27 completed
+clean measurements without relabeling the old failed profiling plan complete.

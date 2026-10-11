@@ -4126,3 +4126,16 @@ scalar-array diagnostic passes16smokes/12qualified timings; combined gain5.43×.
 Fresh balanced comparison: unchanged1022ms, combined188ms, upstream187ms.
 General scalar layout and sharing facts are the highest-evidence next work.
 Investigation only: compiler/installed images unchanged; no whole-suite claim.
+
+### Phase68 P68-017 implemented / P68-018 rejected — 2026-10-11
+
+[Report](../implementation/phase68/checked-scalar-arrays.md), source checkpoint
+`9745ab6`. Compiler20 B1 `add9aa3f…`, genuine B2 `48131284…`: checked packed32
+arrays plus independent no-sharing analysis, raw/unknown fallback preserved.
+54 qualified runtime observations give1.7449× upstream and5.6816× installed
+speedup over six families; cumulative Phase68 gain, not all credited to arrays.
+Numeric/array parity. Narrow correctness and JS-route equality pass; integration
+36/37 exposes a reproduced pre-existing foreign callback ABI gap. B1/B2 C-request
+ratios3.7134×/2.3868× on three programs, not full-corpus compiler parity.
+P68-018's saved-C seal omission gave mixed tree/lexer results and was not selected.
++91 physical Bend lines, one module. Installed release unchanged; no PR comment.

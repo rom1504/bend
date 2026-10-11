@@ -38,8 +38,10 @@ recursive datatypes. `tables.bend` emits the shared host/device register ABI,
 function tables and scheduling metadata. `validate.bend` rejects ID collisions,
 overwide arities and overlapping source/temporary binder ranges.
 
-This implementation deliberately uses one runtime word per live value and boxed
-general constructors. The upstream flat-layout, borrow and static-data optimizations have not been reproduced. GPU execution has not been tested
+General values use one runtime word and boxed constructors. Specialized native
+workers can flatten selected product arguments/results, and checked scalar arrays
+use the policy below. Upstream borrow and static-data optimizations are not fully
+reproduced. GPU execution has not been tested
 on physical hardware in this workspace. Unprintable/dependent result types and
 unlowered core forms return explicit diagnostics.
 

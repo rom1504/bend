@@ -278,3 +278,17 @@ controls do not substitute for final release qualification.
 C-only scalar-layout plus unshared-access diagnostic reaches188ms versus187ms
 upstream,5.44× faster than unchanged products15 in the same campaign. All
 finite output checks pass; this is not a promoted compiler or whole-suite parity.
+
+## Checked scalar arrays: compiler20
+
+[Implementation and report](checked-scalar-arrays.md): actual Bend analysis now
+selects packed32 arrays and separately proves unshared access. Fresh six-family
+C runtime comparison is **5.68× faster than installed Phase67**, **1.74× upstream**;
+numeric and arrays reach parity. Fourteen array controls, two scalar round trips,
+eight admission checks,12 raw controls and one/four-thread tests pass. Broader
+integration is36/37, with a reproduced pre-existing foreign `Clo~apply` gap.
+JS/frontend routes remain byte-identical; genuine B2 generation and sampled
+C equality pass. Three-program C compilation ratios remain3.71× B1/2.39× B2.
+The source adds91 Bend lines over17. Installed Phase67 is unchanged; this is not
+a full-release promotion. Rejected constructor-sealing trial and failures are
+retained in the report and [evidence](evidence/checked-scalars20.json).

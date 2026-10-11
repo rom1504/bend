@@ -538,6 +538,1384 @@
     ],
     "selected": false
   },
-  "qualification": "focused gates pass; integration and compiler timing pending",
-  "scope": "Six families, three balanced repetitions; cumulative Phase68 gain versus installed Phase67. CPU3, threads1, GPU off. Not full-corpus parity."
+  "qualification": {
+    "checkedFrontend": {
+      "report": {
+        "path": "selfhost/build/phase68/scalar-build20/validation-001/report.json",
+        "sha256": "204ee9950990ffeddd9009209ec60abbaad0ee7d7ca81405ee0914339b7bbb15"
+      },
+      "complete": true,
+      "pass": true
+    },
+    "pairedArrays": {
+      "report": {
+        "path": "selfhost/build/phase68/scalar-controls20/report.json",
+        "sha256": "f1369c259aa549f6f3a8957d066d9d446a4735ba72826d5c394c7b0b637d86e2"
+      },
+      "complete": true,
+      "pass": true
+    },
+    "admission": {
+      "report": {
+        "path": "selfhost/build/phase68/scalar-admission20/report.json",
+        "sha256": "f0735ea2d75cbc793ea4b26be5fc07cc0edb40670beb40931c7dcda98cc610bb"
+      },
+      "complete": true,
+      "pass": true
+    },
+    "jsFrontendClosure": {
+      "report": {
+        "path": "selfhost/build/phase68/scalar-js-closure20/report.json",
+        "sha256": "1e7245d1b8db6b35df7f724fbbc28f344bbe65dbc6dca8a83d7e321efe6070b1"
+      },
+      "complete": true,
+      "pass": true
+    },
+    "roundtrips": {
+      "report": {
+        "path": "selfhost/build/phase68/scalar-roundtrip20-v2/report.json",
+        "sha256": "e2c709869fa89cfa7fd1c12c937ebd8764c71fe03de5f538c653033d86095f70"
+      },
+      "complete": true,
+      "pass": true
+    },
+    "rawNative": {
+      "report": {
+        "path": "selfhost/build/phase68/scalar-raw20/report.json",
+        "sha256": "5a734bc22aa895efd328b56ebdfd160909a166565f5345ba9a4615958a136f5a"
+      },
+      "complete": true,
+      "pass": true
+    },
+    "integration": {
+      "report": {
+        "path": "selfhost/build/phase68/scalar-integration20/execution/report.json",
+        "sha256": "adab432a2a419f1fddc599e2c7d6662550398c46ba31909aa7833fd0dd7157cd"
+      },
+      "complete": true,
+      "pass": false,
+      "passedCases": 36,
+      "totalCases": 37,
+      "knownFailure": "io/foreign_runtime_apply_tail.bend: FID(Clo~apply) names no constructor or def",
+      "baselineReproduction": {
+        "path": "selfhost/build/phase68/scalar-foreign-baseline17-supervisor/stdout.log",
+        "sha256": "214951473be7be8f94ccf4653ad9c2fcfc50dba32fcfe086bcc3ded654547747"
+      }
+    },
+    "threads": {
+      "report": {
+        "path": "selfhost/build/phase68/scalar-threads20/execution/report.json",
+        "sha256": "2c5a1018bdebec070e8c6de5dd1cb75ece93804bdd5f975f3b48bf16a29e3113"
+      },
+      "guard": {
+        "path": "selfhost/build/phase68/scalar-threads20/supervisor/run.json",
+        "sha256": "ce56902527f777b563e662f9569f7c01c28ce8d3bfa03f57f841462eefecf3e1"
+      },
+      "fixtures": 6,
+      "threads": [
+        1,
+        4
+      ],
+      "pass": true
+    }
+  },
+  "scope": "Six families, three balanced repetitions; cumulative Phase68 gain versus installed Phase67. CPU3, threads1, GPU off. Not full-corpus parity.",
+  "images": {
+    "b1": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-build20/equality/api.mjs",
+      "sha256": "add9aa3f170d80d6849d54e01ba7b36b381d03a1a23ca4796e1fc8c573a81cf0"
+    },
+    "b2": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-build20-b2/full/compiler.mjs",
+      "sha256": "48131284b78515af0b109c47bf484f192bba93ba99e1b5f1c284ca386d7cc917"
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-build20/snapshot/build/typed/snapshots/f1925f832ecb99eaded233928e5f0ca6b953c5a505054aecf403d30f0ce12d57/compiler.bend",
+      "sha256": "3c648301cc1e3b683abdde8d4690783d873667c00bc1b7fe52d5420a1492bee9"
+    },
+    "receipt": {
+      "path": "selfhost/build/phase68/scalar-build20-b2/image-pins.json",
+      "sha256": "7d53b01560942ca3d589b8775acbf716615d72c2ef767658d38bb3d109e05cba"
+    }
+  },
+  "compilation": {
+    "report": {
+      "path": "selfhost/build/phase68/scalar-compilation20-summary.json",
+      "sha256": "ae0006a6ed567cb2a86e27334f884aa9abe0b6966efca9a3bfeead76b6886cd6"
+    },
+    "rows": [
+      {
+        "case": "numeric",
+        "requestMediansMs": {
+          "b1": 2629.4377950000003,
+          "b2": 1679.2829949999998,
+          "typescript": 697.106677
+        },
+        "ratios": {
+          "b1": 3.7719302966882933,
+          "b2": 2.4089325929666856
+        }
+      },
+      {
+        "case": "array",
+        "requestMediansMs": {
+          "b1": 2655.330017,
+          "b2": 1687.8884999999998,
+          "typescript": 722.163335
+        },
+        "ratios": {
+          "b1": 3.6769105939170954,
+          "b2": 2.3372669563735187
+        }
+      },
+      {
+        "case": "lexer",
+        "requestMediansMs": {
+          "b1": 3270.2823040000003,
+          "b2": 2139.216618,
+          "typescript": 885.78691
+        },
+        "ratios": {
+          "b1": 3.691951492035483,
+          "b2": 2.415046546578567
+        }
+      }
+    ],
+    "requestGeomeans": {
+      "b1": 3.7133644176833784,
+      "b2": 2.3868190246036827
+    },
+    "observations": [
+      {
+        "job": {
+          "name": "clean-0-numeric-typescript",
+          "action": "request",
+          "role": "typescript",
+          "case": "numeric",
+          "profile": false,
+          "round": 0
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-0-numeric-typescript/report.json",
+          "sha256": "ece3d6bc521cb480e651c91c612aab7a30ae17042cae73aed3f34b929baf02f5",
+          "bytes": 65173
+        },
+        "timings": {
+          "importsMs": 223.42105100000003,
+          "loadCheckMs": 297.49975599999993,
+          "emitMs": 402.61778000000004,
+          "requestMs": 700.136205
+        },
+        "guardWallSeconds": 1.9202180620050058
+      },
+      {
+        "job": {
+          "name": "clean-0-numeric-b1",
+          "action": "request",
+          "role": "b1",
+          "case": "numeric",
+          "profile": false,
+          "round": 0
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-0-numeric-b1/report.json",
+          "sha256": "cebddffdfd54976402d19d85ded1eb73aa1ad2d73541fdd181b531d01c5d9622",
+          "bytes": 68576
+        },
+        "timings": {
+          "importsMs": 57.13058300000006,
+          "requestMs": 2594.9658569999997
+        },
+        "guardWallSeconds": 3.701963513973169
+      },
+      {
+        "job": {
+          "name": "clean-0-numeric-b2",
+          "action": "request",
+          "role": "b2",
+          "case": "numeric",
+          "profile": false,
+          "round": 0
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-0-numeric-b2/report.json",
+          "sha256": "765d375dbeba207ba59503ba5847c1568b236557d07632a0a0264d076b208e87",
+          "bytes": 68577
+        },
+        "timings": {
+          "importsMs": 105.08228799999995,
+          "requestMs": 1667.9797119999998
+        },
+        "guardWallSeconds": 2.8397418009117246
+      },
+      {
+        "job": {
+          "name": "clean-0-array-b1",
+          "action": "request",
+          "role": "b1",
+          "case": "array",
+          "profile": false,
+          "round": 0
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-0-array-b1/report.json",
+          "sha256": "2ff93a010d5242809f1ffb8e86f2ec005088c3a968b84e9f9cf05c7c5f7e4d61",
+          "bytes": 68551
+        },
+        "timings": {
+          "importsMs": 56.299627999999984,
+          "requestMs": 2655.330017
+        },
+        "guardWallSeconds": 3.758193350979127
+      },
+      {
+        "job": {
+          "name": "clean-0-array-b2",
+          "action": "request",
+          "role": "b2",
+          "case": "array",
+          "profile": false,
+          "round": 0
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-0-array-b2/report.json",
+          "sha256": "d9c5620fc9af26dccc1be02c4caa3cc9d64e6f5701d13fa06e344c1b5cd4a0a9",
+          "bytes": 68558
+        },
+        "timings": {
+          "importsMs": 105.81711099999995,
+          "requestMs": 1683.4713760000002
+        },
+        "guardWallSeconds": 2.817191359004937
+      },
+      {
+        "job": {
+          "name": "clean-0-array-typescript",
+          "action": "request",
+          "role": "typescript",
+          "case": "array",
+          "profile": false,
+          "round": 0
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-0-array-typescript/report.json",
+          "sha256": "2b9b4288780e28a0453829509947bba197b30a23472329a68337723605b4564b",
+          "bytes": 65147
+        },
+        "timings": {
+          "importsMs": 224.075698,
+          "loadCheckMs": 295.650618,
+          "emitMs": 427.98431000000005,
+          "requestMs": 723.653044
+        },
+        "guardWallSeconds": 2.001638852059841
+      },
+      {
+        "job": {
+          "name": "clean-0-lexer-b2",
+          "action": "request",
+          "role": "b2",
+          "case": "lexer",
+          "profile": false,
+          "round": 0
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-0-lexer-b2/report.json",
+          "sha256": "1e8fb7edd868ac8ef3591e5b00d6c4661349936b2a153b1710049925a0f4700c",
+          "bytes": 68547
+        },
+        "timings": {
+          "importsMs": 104.88809399999997,
+          "requestMs": 2161.347848
+        },
+        "guardWallSeconds": 3.337549900985323
+      },
+      {
+        "job": {
+          "name": "clean-0-lexer-typescript",
+          "action": "request",
+          "role": "typescript",
+          "case": "lexer",
+          "profile": false,
+          "round": 0
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-0-lexer-typescript/report.json",
+          "sha256": "8540448ad918fd447d65d7fd70170d18eb99221bd9b0a6172ed9d067d75fab09",
+          "bytes": 65169
+        },
+        "timings": {
+          "importsMs": 233.23000400000006,
+          "loadCheckMs": 313.73547600000006,
+          "emitMs": 572.0229769999999,
+          "requestMs": 885.78691
+        },
+        "guardWallSeconds": 2.145617541973479
+      },
+      {
+        "job": {
+          "name": "clean-0-lexer-b1",
+          "action": "request",
+          "role": "b1",
+          "case": "lexer",
+          "profile": false,
+          "round": 0
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-0-lexer-b1/report.json",
+          "sha256": "d65b65af8471249c3ec069abbca75be5f59e0a49f56cb23bbd446fa20eab03cb",
+          "bytes": 68553
+        },
+        "timings": {
+          "importsMs": 56.85248299999995,
+          "requestMs": 3270.2823040000003
+        },
+        "guardWallSeconds": 4.350972617045045
+      },
+      {
+        "job": {
+          "name": "clean-1-numeric-b1",
+          "action": "request",
+          "role": "b1",
+          "case": "numeric",
+          "profile": false,
+          "round": 1
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-1-numeric-b1/report.json",
+          "sha256": "cfcc516919c44c52e4691fbbd6092f56df6d7121393e24dd125fedb1cc5d5b11",
+          "bytes": 68569
+        },
+        "timings": {
+          "importsMs": 64.89844199999993,
+          "requestMs": 2860.199228
+        },
+        "guardWallSeconds": 4.084398042061366
+      },
+      {
+        "job": {
+          "name": "clean-1-numeric-b2",
+          "action": "request",
+          "role": "b2",
+          "case": "numeric",
+          "profile": false,
+          "round": 1
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-1-numeric-b2/report.json",
+          "sha256": "860ede4ec755bdf936a14405305f808e362de380968b3e997c5b82934690edce",
+          "bytes": 68562
+        },
+        "timings": {
+          "importsMs": 117.240678,
+          "requestMs": 1845.790571
+        },
+        "guardWallSeconds": 3.0808597159339115
+      },
+      {
+        "job": {
+          "name": "clean-1-numeric-typescript",
+          "action": "request",
+          "role": "typescript",
+          "case": "numeric",
+          "profile": false,
+          "round": 1
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-1-numeric-typescript/report.json",
+          "sha256": "bc57c06206ed1ab0efcbd2f3423bc6ca4f8f3ef24a9985358568f0a4da2dbfe4",
+          "bytes": 65171
+        },
+        "timings": {
+          "importsMs": 224.438713,
+          "loadCheckMs": 293.8492130000001,
+          "emitMs": 401.25497399999995,
+          "requestMs": 695.1226499999999
+        },
+        "guardWallSeconds": 1.9613807670539245
+      },
+      {
+        "job": {
+          "name": "clean-1-array-b2",
+          "action": "request",
+          "role": "b2",
+          "case": "array",
+          "profile": false,
+          "round": 1
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-1-array-b2/report.json",
+          "sha256": "3b28a697c6052771eb9a4fc6ab630c99c949f42a5cad929f6ba165116c8d5be1",
+          "bytes": 68551
+        },
+        "timings": {
+          "importsMs": 105.11974399999997,
+          "requestMs": 1693.613782
+        },
+        "guardWallSeconds": 2.8170516840182245
+      },
+      {
+        "job": {
+          "name": "clean-1-array-typescript",
+          "action": "request",
+          "role": "typescript",
+          "case": "array",
+          "profile": false,
+          "round": 1
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-1-array-typescript/report.json",
+          "sha256": "3052aed86586ddd9ee9788b9331ea423a219c731e4303447e140ccde693e73f1",
+          "bytes": 65170
+        },
+        "timings": {
+          "importsMs": 224.32011599999998,
+          "loadCheckMs": 297.73510899999997,
+          "emitMs": 402.49222699999996,
+          "requestMs": 700.2454459999999
+        },
+        "guardWallSeconds": 2.022276028059423
+      },
+      {
+        "job": {
+          "name": "clean-1-array-b1",
+          "action": "request",
+          "role": "b1",
+          "case": "array",
+          "profile": false,
+          "round": 1
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-1-array-b1/report.json",
+          "sha256": "7fb9f8bf7e9a8fbc07e93dd9edaa1fa48da7286ab0bdaeeff6bfbd9edcc5e6fc",
+          "bytes": 68551
+        },
+        "timings": {
+          "importsMs": 56.893020000000035,
+          "requestMs": 2653.591088
+        },
+        "guardWallSeconds": 3.737384309992194
+      },
+      {
+        "job": {
+          "name": "clean-1-lexer-typescript",
+          "action": "request",
+          "role": "typescript",
+          "case": "lexer",
+          "profile": false,
+          "round": 1
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-1-lexer-typescript/report.json",
+          "sha256": "fb1c9f8eca669496cdea7e5d6f308ba0ad228e30c972915f1a794a26d8f26ea0",
+          "bytes": 65154
+        },
+        "timings": {
+          "importsMs": 221.802657,
+          "loadCheckMs": 316.0897439999999,
+          "emitMs": 562.901646,
+          "requestMs": 879.023148
+        },
+        "guardWallSeconds": 2.144551614066586
+      },
+      {
+        "job": {
+          "name": "clean-1-lexer-b1",
+          "action": "request",
+          "role": "b1",
+          "case": "lexer",
+          "profile": false,
+          "round": 1
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-1-lexer-b1/report.json",
+          "sha256": "4ea7094b6b004b26edda384a651298c4db8a8d6b999ef24b6a86172ee557bffe",
+          "bytes": 68547
+        },
+        "timings": {
+          "importsMs": 56.960402000000045,
+          "requestMs": 3259.362017
+        },
+        "guardWallSeconds": 4.373029929935001
+      },
+      {
+        "job": {
+          "name": "clean-1-lexer-b2",
+          "action": "request",
+          "role": "b2",
+          "case": "lexer",
+          "profile": false,
+          "round": 1
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-1-lexer-b2/report.json",
+          "sha256": "bacc090576a48cede2d0a563e1f89140e8a05cb4da63f7c06d10b8e642e63c09",
+          "bytes": 68547
+        },
+        "timings": {
+          "importsMs": 105.10941899999995,
+          "requestMs": 2125.952741
+        },
+        "guardWallSeconds": 3.2677770029986277
+      },
+      {
+        "job": {
+          "name": "clean-2-numeric-b2",
+          "action": "request",
+          "role": "b2",
+          "case": "numeric",
+          "profile": false,
+          "round": 2
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-2-numeric-b2/report.json",
+          "sha256": "9db09943b802d71313070a6413b221dde3acab24d129278b822d3927adb3d684",
+          "bytes": 68569
+        },
+        "timings": {
+          "importsMs": 104.665864,
+          "requestMs": 1679.2829949999998
+        },
+        "guardWallSeconds": 2.796755146002397
+      },
+      {
+        "job": {
+          "name": "clean-2-numeric-typescript",
+          "action": "request",
+          "role": "typescript",
+          "case": "numeric",
+          "profile": false,
+          "round": 2
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-2-numeric-typescript/report.json",
+          "sha256": "003bca5be0bb4a554138cb36f5ab4eed6f0bba6a44c2faff27d619bd3f77c9a4",
+          "bytes": 65165
+        },
+        "timings": {
+          "importsMs": 223.304646,
+          "loadCheckMs": 298.12322599999993,
+          "emitMs": 398.96558900000014,
+          "requestMs": 697.106677
+        },
+        "guardWallSeconds": 1.9204854120034724
+      },
+      {
+        "job": {
+          "name": "clean-2-numeric-b1",
+          "action": "request",
+          "role": "b1",
+          "case": "numeric",
+          "profile": false,
+          "round": 2
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-2-numeric-b1/report.json",
+          "sha256": "2ffe292c83412c5d675c480c626e8813111031d7ba056a5c78cac03bf2026755",
+          "bytes": 68576
+        },
+        "timings": {
+          "importsMs": 56.46294799999998,
+          "requestMs": 2629.4377950000003
+        },
+        "guardWallSeconds": 3.718029074021615
+      },
+      {
+        "job": {
+          "name": "clean-2-array-typescript",
+          "action": "request",
+          "role": "typescript",
+          "case": "array",
+          "profile": false,
+          "round": 2
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-2-array-typescript/report.json",
+          "sha256": "c73678d6259ac17ec8adca3e29860b1a98e98b7460ca3a45d9ee118061062f72",
+          "bytes": 65155
+        },
+        "timings": {
+          "importsMs": 224.64460299999996,
+          "loadCheckMs": 299.33238800000004,
+          "emitMs": 422.812625,
+          "requestMs": 722.163335
+        },
+        "guardWallSeconds": 1.9805414769798517
+      },
+      {
+        "job": {
+          "name": "clean-2-array-b1",
+          "action": "request",
+          "role": "b1",
+          "case": "array",
+          "profile": false,
+          "round": 2
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-2-array-b1/report.json",
+          "sha256": "c4343b1e6521a2fa5313ec17728c5b20db90a91170a2b13ed0cba37987f0d18d",
+          "bytes": 68542
+        },
+        "timings": {
+          "importsMs": 58.386077,
+          "requestMs": 2769.731106
+        },
+        "guardWallSeconds": 3.8602823349647224
+      },
+      {
+        "job": {
+          "name": "clean-2-array-b2",
+          "action": "request",
+          "role": "b2",
+          "case": "array",
+          "profile": false,
+          "round": 2
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-2-array-b2/report.json",
+          "sha256": "258bf781e198768b4b9bc6768a94c3d9a206f00a2cf6c34c36c73aca2f37616d",
+          "bytes": 68557
+        },
+        "timings": {
+          "importsMs": 109.6595000000001,
+          "requestMs": 1687.8884999999998
+        },
+        "guardWallSeconds": 2.8181968689896166
+      },
+      {
+        "job": {
+          "name": "clean-2-lexer-b1",
+          "action": "request",
+          "role": "b1",
+          "case": "lexer",
+          "profile": false,
+          "round": 2
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-2-lexer-b1/report.json",
+          "sha256": "2aa622b26cf561bb15762ce58f174c2c1e9bc71205debc720116e8bc6fe8471b",
+          "bytes": 68553
+        },
+        "timings": {
+          "importsMs": 56.97320000000002,
+          "requestMs": 3277.3835599999998
+        },
+        "guardWallSeconds": 4.372200348996557
+      },
+      {
+        "job": {
+          "name": "clean-2-lexer-b2",
+          "action": "request",
+          "role": "b2",
+          "case": "lexer",
+          "profile": false,
+          "round": 2
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-2-lexer-b2/report.json",
+          "sha256": "a795199fe11c80a3bffd7f903726b32dcf25f47b4b2e886ffaf835944856c7b3",
+          "bytes": 68547
+        },
+        "timings": {
+          "importsMs": 105.15271499999994,
+          "requestMs": 2139.216618
+        },
+        "guardWallSeconds": 3.2661400930956006
+      },
+      {
+        "job": {
+          "name": "clean-2-lexer-typescript",
+          "action": "request",
+          "role": "typescript",
+          "case": "lexer",
+          "profile": false,
+          "round": 2
+        },
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20/runs/clean-2-lexer-typescript/report.json",
+          "sha256": "da00ee94bc7f35d530d41d4d2543678c2adecfd56424857c764eadcc1e2c95ec",
+          "bytes": 65169
+        },
+        "timings": {
+          "importsMs": 229.46344900000008,
+          "loadCheckMs": 328.0431329999999,
+          "emitMs": 644.766772,
+          "requestMs": 972.8333440000001
+        },
+        "guardWallSeconds": 2.2278349119005725
+      }
+    ],
+    "profiles": [
+      {
+        "job": {
+          "name": "profile-numeric-b2",
+          "action": "request",
+          "role": "b2",
+          "case": "numeric",
+          "profile": true
+        },
+        "stages": {
+          "f_source_header": {
+            "calls": 2,
+            "inclusiveMs": 11.3306859999999,
+            "exclusiveMs": 11.3306859999999
+          },
+          "f_prefix_complete_ready_seed": {
+            "calls": 1,
+            "inclusiveMs": 0.9120249999999714,
+            "exclusiveMs": 0.9120249999999714
+          },
+          "f_prefix_complete_source": {
+            "calls": 2,
+            "inclusiveMs": 131.57481500000017,
+            "exclusiveMs": 131.57481500000017
+          },
+          "f_source_completed": {
+            "calls": 2,
+            "inclusiveMs": 0.18650400000001355,
+            "exclusiveMs": 0.18650400000001355
+          },
+          "f_prefix_graph_trace": {
+            "calls": 1,
+            "inclusiveMs": 8.248752999999965,
+            "exclusiveMs": 8.248752999999965
+          },
+          "check_program_diagnostic_world": {
+            "calls": 1,
+            "inclusiveMs": 52.46942899999999,
+            "exclusiveMs": 52.46942899999999
+          },
+          "driver_report": {
+            "calls": 1,
+            "inclusiveMs": 96.91573899999992,
+            "exclusiveMs": 96.91573899999992
+          },
+          "driver_bad_names": {
+            "calls": 1,
+            "inclusiveMs": 49.42052100000012,
+            "exclusiveMs": 49.42052100000012
+          },
+          "driver_emit_owned": {
+            "calls": 1,
+            "inclusiveMs": 9.921405999999934,
+            "exclusiveMs": 9.921405999999934
+          },
+          "j_compile_error": {
+            "calls": 1,
+            "inclusiveMs": 0.5064230000000407,
+            "exclusiveMs": 0.5064230000000407
+          },
+          "nc_annotation_stops": {
+            "calls": 1,
+            "inclusiveMs": 10.169103000000177,
+            "exclusiveMs": 10.169103000000177
+          },
+          "reach_book": {
+            "calls": 1,
+            "inclusiveMs": 9.091726000000108,
+            "exclusiveMs": 9.091726000000108
+          },
+          "annotate_selected": {
+            "calls": 1,
+            "inclusiveMs": 79.39597900000012,
+            "exclusiveMs": 79.39597900000012
+          },
+          "nc_annotated_context": {
+            "calls": 1,
+            "inclusiveMs": 5.195424000000003,
+            "exclusiveMs": 5.195424000000003
+          },
+          "j_layout_error": {
+            "calls": 1,
+            "inclusiveMs": 77.54265600000008,
+            "exclusiveMs": 77.54265600000008
+          },
+          "nc_foreign_paths": {
+            "calls": 1,
+            "inclusiveMs": 49.89873200000011,
+            "exclusiveMs": 49.89873200000011
+          },
+          "nc_foreign_scope": {
+            "calls": 1,
+            "inclusiveMs": 14.214774000000034,
+            "exclusiveMs": 14.214774000000034
+          },
+          "kf_source": {
+            "calls": 3,
+            "inclusiveMs": 17.20936500000016,
+            "exclusiveMs": 17.20936500000016
+          },
+          "nc_foreign_source": {
+            "calls": 3,
+            "inclusiveMs": 0.3909849999997732,
+            "exclusiveMs": 0.3909849999997732
+          },
+          "nc_compile_checked": {
+            "calls": 1,
+            "inclusiveMs": 1137.8279040000002,
+            "exclusiveMs": 1137.8279040000002
+          }
+        },
+        "nearestSourceOwner": [
+          {
+            "name": "src/back/native/bridge.bend",
+            "sampledMs": 250.628
+          },
+          {
+            "name": "unattributed/host/runtime/GC",
+            "sampledMs": 239.633
+          },
+          {
+            "name": "src/core/term.bend",
+            "sampledMs": 230.255
+          },
+          {
+            "name": "src/back/native/product.bend",
+            "sampledMs": 198.474
+          },
+          {
+            "name": "src/core/index.bend",
+            "sampledMs": 189.71
+          },
+          {
+            "name": "src/core/normalize.bend",
+            "sampledMs": 116.866
+          },
+          {
+            "name": "src/back/native/emit.bend",
+            "sampledMs": 78.487
+          },
+          {
+            "name": "src/back/native/erase.bend",
+            "sampledMs": 65.941
+          },
+          {
+            "name": "src/core/reach.bend",
+            "sampledMs": 49.089
+          },
+          {
+            "name": "src/front/lexer.bend",
+            "sampledMs": 46.852
+          }
+        ],
+        "report": {
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20-profiles/profile-numeric-b2/report.json",
+          "sha256": "e6c793ec4542673edf191c702f169122d85e24dea9d304ff16edf204fdb2fbc2",
+          "bytes": 71686
+        }
+      },
+      {
+        "job": {
+          "name": "profile-array-b2",
+          "action": "request",
+          "role": "b2",
+          "case": "array",
+          "profile": true
+        },
+        "stages": {
+          "f_source_header": {
+            "calls": 2,
+            "inclusiveMs": 10.69223599999998,
+            "exclusiveMs": 10.69223599999998
+          },
+          "f_prefix_complete_ready_seed": {
+            "calls": 1,
+            "inclusiveMs": 0.9730239999998958,
+            "exclusiveMs": 0.9730239999998958
+          },
+          "f_prefix_complete_source": {
+            "calls": 2,
+            "inclusiveMs": 98.523506,
+            "exclusiveMs": 98.523506
+          },
+          "f_source_completed": {
+            "calls": 2,
+            "inclusiveMs": 0.13062300000001414,
+            "exclusiveMs": 0.13062300000001414
+          },
+          "f_prefix_graph_trace": {
+            "calls": 1,
+            "inclusiveMs": 7.604110999999989,
+            "exclusiveMs": 7.604110999999989
+          },
+          "check_program_diagnostic_world": {
+            "calls": 1,
+            "inclusiveMs": 71.41693099999998,
+            "exclusiveMs": 71.41693099999998
+          },
+          "driver_report": {
+            "calls": 1,
+            "inclusiveMs": 101.16698900000006,
+            "exclusiveMs": 101.16698900000006
+          },
+          "driver_bad_names": {
+            "calls": 1,
+            "inclusiveMs": 56.50071799999989,
+            "exclusiveMs": 56.50071799999989
+          },
+          "driver_emit_owned": {
+            "calls": 1,
+            "inclusiveMs": 9.750794999999925,
+            "exclusiveMs": 9.750794999999925
+          },
+          "j_compile_error": {
+            "calls": 1,
+            "inclusiveMs": 4.996342000000141,
+            "exclusiveMs": 4.996342000000141
+          },
+          "nc_annotation_stops": {
+            "calls": 1,
+            "inclusiveMs": 9.505133999999998,
+            "exclusiveMs": 9.505133999999998
+          },
+          "reach_book": {
+            "calls": 1,
+            "inclusiveMs": 5.264222000000018,
+            "exclusiveMs": 5.264222000000018
+          },
+          "annotate_selected": {
+            "calls": 1,
+            "inclusiveMs": 68.99233299999992,
+            "exclusiveMs": 68.99233299999992
+          },
+          "nc_annotated_context": {
+            "calls": 1,
+            "inclusiveMs": 5.223944000000074,
+            "exclusiveMs": 5.223944000000074
+          },
+          "j_layout_error": {
+            "calls": 1,
+            "inclusiveMs": 74.2405020000001,
+            "exclusiveMs": 74.2405020000001
+          },
+          "nc_foreign_paths": {
+            "calls": 1,
+            "inclusiveMs": 50.04314599999998,
+            "exclusiveMs": 50.04314599999998
+          },
+          "nc_foreign_scope": {
+            "calls": 1,
+            "inclusiveMs": 13.298158000000058,
+            "exclusiveMs": 13.298158000000058
+          },
+          "kf_source": {
+            "calls": 3,
+            "inclusiveMs": 17.240144999999984,
+            "exclusiveMs": 17.240144999999984
+          },
+          "nc_foreign_source": {
+            "calls": 3,
+            "inclusiveMs": 0.29062100000010105,
+            "exclusiveMs": 0.29062100000010105
+          },
+          "nc_compile_checked": {
+            "calls": 1,
+            "inclusiveMs": 1169.5147069999998,
+            "exclusiveMs": 1169.5147069999998
+          }
+        },
+        "nearestSourceOwner": [
+          {
+            "name": "src/back/native/bridge.bend",
+            "sampledMs": 256.516
+          },
+          {
+            "name": "unattributed/host/runtime/GC",
+            "sampledMs": 238.587
+          },
+          {
+            "name": "src/core/term.bend",
+            "sampledMs": 221.703
+          },
+          {
+            "name": "src/back/native/product.bend",
+            "sampledMs": 184.287
+          },
+          {
+            "name": "src/core/index.bend",
+            "sampledMs": 183.895
+          },
+          {
+            "name": "src/core/normalize.bend",
+            "sampledMs": 118.707
+          },
+          {
+            "name": "src/back/native/emit.bend",
+            "sampledMs": 95.956
+          },
+          {
+            "name": "src/back/native/erase.bend",
+            "sampledMs": 77.763
+          },
+          {
+            "name": "src/core/reach.bend",
+            "sampledMs": 54.945
+          },
+          {
+            "name": "src/back/native/text.bend",
+            "sampledMs": 52.864
+          }
+        ],
+        "report": {
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20-profiles/profile-array-b2/report.json",
+          "sha256": "69be33fa616f6b67dacf417d6276321cf4f599678454586b46dfb763496f93f2",
+          "bytes": 71658
+        }
+      },
+      {
+        "job": {
+          "name": "profile-lexer-b2",
+          "action": "request",
+          "role": "b2",
+          "case": "lexer",
+          "profile": true
+        },
+        "stages": {
+          "f_source_header": {
+            "calls": 2,
+            "inclusiveMs": 29.16102500000011,
+            "exclusiveMs": 29.16102500000011
+          },
+          "f_prefix_complete_ready_seed": {
+            "calls": 1,
+            "inclusiveMs": 0.9168250000000171,
+            "exclusiveMs": 0.9168250000000171
+          },
+          "f_prefix_complete_source": {
+            "calls": 2,
+            "inclusiveMs": 227.68258200000002,
+            "exclusiveMs": 227.68258200000002
+          },
+          "f_source_completed": {
+            "calls": 2,
+            "inclusiveMs": 0.15496600000005856,
+            "exclusiveMs": 0.15496600000005856
+          },
+          "f_prefix_graph_trace": {
+            "calls": 1,
+            "inclusiveMs": 16.244019999999978,
+            "exclusiveMs": 16.244019999999978
+          },
+          "check_program_diagnostic_world": {
+            "calls": 1,
+            "inclusiveMs": 115.8336700000001,
+            "exclusiveMs": 115.8336700000001
+          },
+          "driver_report": {
+            "calls": 1,
+            "inclusiveMs": 134.17237799999998,
+            "exclusiveMs": 134.17237799999998
+          },
+          "driver_bad_names": {
+            "calls": 1,
+            "inclusiveMs": 63.23275199999989,
+            "exclusiveMs": 63.23275199999989
+          },
+          "driver_emit_owned": {
+            "calls": 1,
+            "inclusiveMs": 10.174626999999873,
+            "exclusiveMs": 10.174626999999873
+          },
+          "j_compile_error": {
+            "calls": 1,
+            "inclusiveMs": 0.42261199999984456,
+            "exclusiveMs": 0.42261199999984456
+          },
+          "nc_annotation_stops": {
+            "calls": 1,
+            "inclusiveMs": 7.1357600000001185,
+            "exclusiveMs": 7.1357600000001185
+          },
+          "reach_book": {
+            "calls": 1,
+            "inclusiveMs": 7.5725629999999455,
+            "exclusiveMs": 7.5725629999999455
+          },
+          "annotate_selected": {
+            "calls": 1,
+            "inclusiveMs": 69.86844700000006,
+            "exclusiveMs": 69.86844700000006
+          },
+          "nc_annotated_context": {
+            "calls": 1,
+            "inclusiveMs": 9.201653000000078,
+            "exclusiveMs": 9.201653000000078
+          },
+          "j_layout_error": {
+            "calls": 1,
+            "inclusiveMs": 63.33950200000004,
+            "exclusiveMs": 63.33950200000004
+          },
+          "nc_foreign_paths": {
+            "calls": 1,
+            "inclusiveMs": 76.31016099999988,
+            "exclusiveMs": 76.31016099999988
+          },
+          "nc_foreign_scope": {
+            "calls": 1,
+            "inclusiveMs": 33.29041499999994,
+            "exclusiveMs": 33.29041499999994
+          },
+          "kf_source": {
+            "calls": 3,
+            "inclusiveMs": 17.16062899999997,
+            "exclusiveMs": 17.16062899999997
+          },
+          "nc_foreign_source": {
+            "calls": 3,
+            "inclusiveMs": 0.2842230000001109,
+            "exclusiveMs": 0.2842230000001109
+          },
+          "nc_compile_checked": {
+            "calls": 1,
+            "inclusiveMs": 1374.0208499999999,
+            "exclusiveMs": 1374.0208499999999
+          }
+        },
+        "nearestSourceOwner": [
+          {
+            "name": "unattributed/host/runtime/GC",
+            "sampledMs": 315.404
+          },
+          {
+            "name": "src/back/native/bridge.bend",
+            "sampledMs": 286.236
+          },
+          {
+            "name": "src/core/index.bend",
+            "sampledMs": 208.749
+          },
+          {
+            "name": "src/core/term.bend",
+            "sampledMs": 198.711
+          },
+          {
+            "name": "src/back/native/product.bend",
+            "sampledMs": 189.44
+          },
+          {
+            "name": "src/core/normalize.bend",
+            "sampledMs": 145.417
+          },
+          {
+            "name": "src/back/native/emit.bend",
+            "sampledMs": 138.125
+          },
+          {
+            "name": "src/core/reach.bend",
+            "sampledMs": 94.563
+          },
+          {
+            "name": "src/front/lexer.bend",
+            "sampledMs": 82.829
+          },
+          {
+            "name": "src/back/native/erase.bend",
+            "sampledMs": 66.307
+          }
+        ],
+        "report": {
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20-profiles/profile-lexer-b2/report.json",
+          "sha256": "5395c87941cb729c513115a3abca85adf8e4232f5484abd1b63343f43c2db35e",
+          "bytes": 71680
+        }
+      },
+      {
+        "job": {
+          "name": "profile-numeric-b1",
+          "action": "request",
+          "role": "b1",
+          "case": "numeric",
+          "profile": true
+        },
+        "stages": {
+          "f_source_header": {
+            "calls": 2,
+            "inclusiveMs": 18.64343000000008,
+            "exclusiveMs": 18.64343000000008
+          },
+          "f_prefix_complete_ready_seed": {
+            "calls": 1,
+            "inclusiveMs": 0.8749619999999823,
+            "exclusiveMs": 0.8749619999999823
+          },
+          "f_prefix_complete_source": {
+            "calls": 2,
+            "inclusiveMs": 111.00185199999999,
+            "exclusiveMs": 111.00185199999999
+          },
+          "f_source_completed": {
+            "calls": 2,
+            "inclusiveMs": 0.08713999999997668,
+            "exclusiveMs": 0.08713999999997668
+          },
+          "f_prefix_graph_trace": {
+            "calls": 1,
+            "inclusiveMs": 7.634220999999911,
+            "exclusiveMs": 7.634220999999911
+          },
+          "check_program_diagnostic_world": {
+            "calls": 1,
+            "inclusiveMs": 51.17959199999996,
+            "exclusiveMs": 51.17959199999996
+          },
+          "driver_report": {
+            "calls": 1,
+            "inclusiveMs": 85.6260400000001,
+            "exclusiveMs": 85.6260400000001
+          },
+          "driver_bad_names": {
+            "calls": 1,
+            "inclusiveMs": 45.826758999999925,
+            "exclusiveMs": 45.826758999999925
+          },
+          "driver_emit_owned": {
+            "calls": 1,
+            "inclusiveMs": 13.989084000000048,
+            "exclusiveMs": 13.989084000000048
+          },
+          "j_compile_error": {
+            "calls": 1,
+            "inclusiveMs": 4.59695899999997,
+            "exclusiveMs": 4.59695899999997
+          },
+          "nc_annotation_stops": {
+            "calls": 1,
+            "inclusiveMs": 49.855587000000014,
+            "exclusiveMs": 49.855587000000014
+          },
+          "reach_book": {
+            "calls": 1,
+            "inclusiveMs": 8.399863000000096,
+            "exclusiveMs": 8.399863000000096
+          },
+          "annotate_selected": {
+            "calls": 1,
+            "inclusiveMs": 101.91897500000005,
+            "exclusiveMs": 101.91897500000005
+          },
+          "nc_annotated_context": {
+            "calls": 1,
+            "inclusiveMs": 20.771195000000034,
+            "exclusiveMs": 20.771195000000034
+          },
+          "j_layout_error": {
+            "calls": 1,
+            "inclusiveMs": 116.90903800000001,
+            "exclusiveMs": 116.90903800000001
+          },
+          "nc_foreign_paths": {
+            "calls": 1,
+            "inclusiveMs": 53.799683000000186,
+            "exclusiveMs": 53.799683000000186
+          },
+          "nc_foreign_scope": {
+            "calls": 1,
+            "inclusiveMs": 38.08949899999993,
+            "exclusiveMs": 38.08949899999993
+          },
+          "kf_source": {
+            "calls": 3,
+            "inclusiveMs": 6.441000000000031,
+            "exclusiveMs": 6.441000000000031
+          },
+          "nc_foreign_source": {
+            "calls": 3,
+            "inclusiveMs": 0.670795999999882,
+            "exclusiveMs": 0.670795999999882
+          },
+          "nc_compile_checked": {
+            "calls": 1,
+            "inclusiveMs": 2098.2721579999998,
+            "exclusiveMs": 2098.2721579999998
+          }
+        },
+        "nearestSourceOwner": [
+          {
+            "name": "src/back/native/bridge.bend",
+            "sampledMs": 762.455
+          },
+          {
+            "name": "unattributed/host/runtime/GC",
+            "sampledMs": 451.36
+          },
+          {
+            "name": "src/back/native/product.bend",
+            "sampledMs": 305.954
+          },
+          {
+            "name": "src/core/term.bend",
+            "sampledMs": 158.12
+          },
+          {
+            "name": "src/back/native/erase.bend",
+            "sampledMs": 136.142
+          },
+          {
+            "name": "src/core/normalize.bend",
+            "sampledMs": 127.589
+          },
+          {
+            "name": "src/back/native/emit.bend",
+            "sampledMs": 104.589
+          },
+          {
+            "name": "src/core/index.bend",
+            "sampledMs": 103.713
+          },
+          {
+            "name": "src/back/native/direct.bend",
+            "sampledMs": 96.769
+          },
+          {
+            "name": "src/back/native/text.bend",
+            "sampledMs": 67.149
+          }
+        ],
+        "report": {
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/scalar-compilation20-profiles/profile-numeric-b1/report.json",
+          "sha256": "3e99d5f7275f711dd71bb4fffe4ebaca66592f74c46138f2009d1848ee32d8de",
+          "bytes": 71705
+        }
+      }
+    ],
+    "scope": "27 balanced clean C-emission requests plus 4 separately corrected profiles. Each request emits exact qualified C. Prepared Base; excludes imports and Clang. Not program runtime, full-corpus compilation, or a measured compiler17 regression comparison."
+  },
+  "simplicity": {
+    "baseline": "render-build17",
+    "candidate": "scalar-build20",
+    "modules": [
+      119,
+      120
+    ],
+    "physicalBendLines": [
+      29703,
+      29794
+    ],
+    "codeBendLines": [
+      24330,
+      24403
+    ],
+    "nativePhysicalBendLines": [
+      3310,
+      3401
+    ]
+  },
+  "usage": {
+    "elapsed_seconds": 1829.981511,
+    "tokens": {
+      "input_tokens": 12998864,
+      "cached_input_tokens": 12752640,
+      "output_tokens": 57812,
+      "reasoning_output_tokens": 20986,
+      "total_tokens": 13056676
+    },
+    "account_limit_changes": {
+      "primary": {
+        "percentage_points": 8.0,
+        "per_hour": 15.541944361997787
+      }
+    },
+    "scope": "Local telemetry interval beginning after initial investigation/design, ending before final report/commit; not whole-turn accounting, billing or exact quota attribution."
+  }
 }

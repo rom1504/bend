@@ -8,8 +8,10 @@ compiler modules. It does not invoke the upstream TypeScript native emitter.
 Public entries:
 
 - `nc_compile(book, runtime, requests) -> NC_Result{source, error}`.
+- `nc_compile_checked(book, runtime, requests, effects_safe) -> NC_Result`
+  additionally consumes the checked scalar-array preconditions below.
 - `nc_foreign_paths(book) -> List<String>` selects reachable C effects.
-- `nc_foreign_source(book, path, source) -> String` scopes source-local
+- `nc_foreign_source(book, scope, path, source, parsed) -> String` scopes source-local
   constructor macros to the linked program's qualified IDs.
 - `nc_annotation_stops(book) -> List<String>` supplies replaced intrinsic names
   for reachability and selective annotation.
@@ -110,3 +112,26 @@ See the [design](../../../../design/phase68/checked-scalar-arrays.md),
 [results](../../../../implementation/phase68/checked-scalar-arrays.md) and
 [fast-loop instructions](../../../tools/performance/phase68/scalar-layout/README.md).
 The installed release remains separately identified by `dist/release.json`.
+
+### Ordinary fallback and compilation cost
+
+`flat.bend` admits host workers through a dependency closure; tail self calls
+become local jumps and dependency cycles stay on the scheduler. Product workers
+are optional. If a product route fails its demand proof, dependency-blocked
+ordinary workers get one retry using only admitted product signatures. Already
+admitted bodies stay unchanged. This preserves the boxed ABI and original
+demand/ownership rules instead of guessing that raw constructor matches are
+exhaustive. Device segments retain their previous fallback bodies.
+
+The scalar-array admission walk uses explicit `nt_choose` branches. Bend Boolean
+operators evaluate their arguments, so an `or` expression alone does not avoid
+an expensive use-count scan. Non-variable nodes and proven array-free values
+skip that scan; unknown values still use the original saturated branch-aware
+count. No new cached analysis state is introduced.
+
+Foreign `FID(Clo~apply)` names the existing runtime closure dispatcher and is
+rendered as `BEND_CLO_APPLY`. Ordinary namespace resolution, unknown-ID errors
+and comment/string shields remain shared with JavaScript.
+
+See [native facts and fallback results](../../../../implementation/phase68/native-facts-and-calls.md)
+for separate runtime, B1/B2 compilation, conformance and size measurements.

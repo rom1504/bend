@@ -1,12 +1,19 @@
 # Active frontier: Phase68 native parity work
 
-[Design](../design/phase68/native-parity.md) · [Report](../implementation/phase68/README.md).
-User authorizes profiling and compiler research, then strong general native
-optimizations followed by B1/B2 C request improvements and shared simplification.
-Baseline `b6eb575`, upstream `0592662`, installedB1 `c76f1113…`, B2 `cbffd1f8…`.
-Preserved seven installed files/110 inherited files; new raw onlyPhase68.
-No production selection yet. Root one guardedCPU3 target tree; source agentsCPU0.
-Old raw remains closed. No PR comments.
+[Design](../design/phase68/native-facts-and-calls.md) ·
+[Current report](../implementation/phase68/native-facts-and-calls.md).
+Source candidate23 (`b2ec0a2`) fixes the foreign closure FID: selected native
+integration37/37, raw12 and query23 pass. Optional product failure retains an
+ordinary worker; eager ownership scans are avoided. Paired C requests improve
+8.3% B1 /5.4% B2 over20. Current three-source upstream ratios3.389×/2.284×;
+six-family C runtime1.724×, but only lexer C changes (about2–3% runtime gain).
+Other five emitted C files are exact: their timing movement is not a code gain.
+Compiler adds27 physical lines, no module. B2 generation/eight driver samples
+pass; full self-check/B3 and installed promotion remain separate gates.
+Installed Phase67 B1 `c76f1113…`, B2 `cbffd1f8…`; upstream `0592662` unchanged.
+Next runtime discriminators: allocations/retains and admitted direct calls from
+recursive scheduler bodies. Do not weaken raw demand/drop rules for speed.
+One guardedCPU3 tree, source/dataCPU0; old raw closed, no PR comments.
 
 ---
 

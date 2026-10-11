@@ -4139,3 +4139,19 @@ Numeric/array parity. Narrow correctness and JS-route equality pass; integration
 ratios3.7134×/2.3868× on three programs, not full-corpus compiler parity.
 P68-018's saved-C seal omission gave mixed tree/lexer results and was not selected.
 +91 physical Bend lines, one module. Installed release unchanged; no PR comment.
+
+### Phase68 P68-019–021 integrated — 2026-10-11
+
+[Report](../implementation/phase68/native-facts-and-calls.md), source `b2ec0a2`.
+Compiler23 fixes `FID(Clo~apply)` and passes37/37 selected native cases,12 raw
+controls and23 query controls. Explicit lazy branches avoid eager use-count
+scans; the intervening Boolean reorder in21 was a measured no-op. Optional
+product rejection now permits a single ordinary-worker retry without relaxing
+the product demand proof. Only lexer C changes; its runtime improves2–3%.
+The other five families retain exact C, so their timing changes are not gains.
+Current runtime geomean1.724× upstream. Forty-eight alternating20/23 requests
+show8.3% less B1 /5.4% less B2 compilation time; separate upstream-resolved
+ratios3.389×/2.284×. B2 generation/eight driver observations pass; installed
+promotion/full self-check/reproduction are separate. +27 physical/+21 code
+Bend lines,120 modules unchanged. Failed22 and unexecuted preflight plan remain
+preserved in the campaign capsule. No PR comment or installed-release change.

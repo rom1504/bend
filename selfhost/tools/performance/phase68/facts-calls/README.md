@@ -19,3 +19,17 @@ All target execution belongs to one guarded CPU3 lane. Source work uses CPU0.
 Use the existing checked development workflow, native acquisition factory,
 37-case integration selection and B1/B2 clean-request factory. Fresh output
 paths are mandatory; historical failures and snapshots remain untouched.
+
+`pair-compilation.py` prepares four alternating old/new rounds per image stage
+and source with fresh projects/caches. Execute its prepare/clean groups through
+the unchanged strict compilation runner. `summarize-compilation.py` joins the
+upstream-resolved clean requests with the separately corrected checked-entry
+profiles. `collect-report.py` closes the48 paired observations and qualifications.
+
+`query-controls.mjs` checks admission and foreign-ID boundaries;
+`verify-js.py` checks the non-native generated dependency closure. The original
+and successor worker-inspection methods have an explicit hash mapping in
+`inspection-methods.json`.
+
+The verified [evidence capsule](evidence/README.md) retains this closed campaign.
+`capsule.py` is data-only and must run after every campaign writer has stopped.

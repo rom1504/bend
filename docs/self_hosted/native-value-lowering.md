@@ -127,9 +127,12 @@ the independent kernel attempt is blocked by the available Lean version. It
 does not prove the production emitter, reference counting, generated C or the
 whole compiler.
 
-Product flattening remains prospective for this checkpoint. The separate
-product-v2 candidate requires its own qualification; ordinary C workers and
-local prefixes alone do not remove boxed aggregate results. Closure traffic,
-layouts and borrowing also remain opportunities. JavaScript program speed and
-B1/B2 compilation latency have separate evidence; native runtime speedups do
-not update those ratios.
+The later Phase68 source candidates add qualified product workers and
+[checked scalar arrays](../../implementation/phase68/checked-scalar-arrays.md).
+[Compiler23](../../implementation/phase68/native-facts-and-calls.md) retains an
+ordinary boxed worker when its optional product route fails, avoids eager
+whole-body scans in array admission, and fixes the runtime closure foreign ID.
+These source candidates and their receipts are separate from the installed
+Phase67 release. Closure traffic, layouts and borrowing remain opportunities.
+JavaScript program speed and B1/B2 compilation latency have separate evidence;
+native runtime speedups do not update those ratios.

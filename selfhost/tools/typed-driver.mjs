@@ -97,6 +97,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   }
   if(files.includes('src/back/native/book.bend')) {
     exports.push('nc_compile','nc_foreign_paths');
+    if(files.includes('src/back/native/scalar-array.bend'))exports.push('nc_compile_checked');
     if(fs.readFileSync(path.join(project,'src/back/native/book.bend'),'utf8').includes('nc_annotation_stops('))exports.push('nc_annotation_stops','nc_annotated_context');
   }
   if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source','nc_foreign_scope');
@@ -905,18 +906,28 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
       const paths=api.nc_foreign_paths?array(api.nc_foreign_paths(book)):graph.foreign.filter(f=>path.extname(f.path)==='.c').map(f=>f.path);
       const foreignScope=api.nc_foreign_scope?api.nc_foreign_scope(book):book;
       const nativeInputs=[...graph.files,path.join(project,'src/runtime/native/runtime.c')];
+      // Only these audited Base handlers are independent of Array representation.
+      const scalarEffects={
+        'args.c':'7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0',
+        'print.c':'709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26',
+        'now.c':'da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9',
+      };
+      let scalarEffectsSafe=hash(basePath)==='99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf';
       const requests=[...new Set(paths)].map(file=>{
         let resolved=path.resolve(file);
         if(path.dirname(resolved)===path.join(path.dirname(basePath),'effs'))resolved=path.join(project,'src/runtime/native/effs',path.basename(resolved));
         nativeInputs.push(resolved);
         const source=fs.readFileSync(resolved,'utf8');
+        scalarEffectsSafe&&=path.dirname(resolved)===path.join(project,'src/runtime/native/effs')
+          && scalarEffects[path.basename(resolved)]===crypto.createHash('sha256').update(source).digest('hex');
         const parsed=api.kf_source?api.kf_source(book,foreignScope,file,source):null;
         if(parsed?.error)throw Object.assign(Error(parsed.error),{phase:'compile'});
         trace('marshal native foreign source '+file);
         return api.nc_foreign_source?api.nc_foreign_source(book,foreignScope,file,source,parsed):source;
       }).join('\n');
       trace('emit native');
-      const native=api.nc_compile(book,fs.readFileSync(path.join(project,'src/runtime/native/runtime.c'),'utf8'),requests);
+      const nativeRuntime=fs.readFileSync(path.join(project,'src/runtime/native/runtime.c'),'utf8');
+      const native=api.nc_compile_checked?api.nc_compile_checked(book,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile(book,nativeRuntime,requests);
       if(native.error)return {status:'error',phase,diagnostic:'Error: '+native.error,exitCode:1,checked:true};
       return {status:'ok',phase,code:native.source,verdict,exitCode:0,checked:true,files:nativeInputs};
     }

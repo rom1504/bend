@@ -690,3 +690,13 @@ The [backend boundary guide](self_hosted/backend-boundaries.md) explains what
 remains shared, what belongs to legacy/direct JS or native C, and the proposed
 future native-IR seam. Native IO.args and actual GPU execution remain outside
 the demonstrated coverage. No LLVM or assembly backend was added.
+
+### Phase68 C-target source candidate
+
+The compiler written in Bend now proves when scalar arrays can use packed
+32-bit buffers and when unshared buffers can skip reference-count indirection.
+Both proofs run in Bend; the host only authenticates Base/effect inputs and
+selects the checked entry. Unknown cases retain the generic native path.
+See the [native backend contract](../selfhost/src/back/native/README.md) and
+[measured results and limitations](../implementation/phase68/checked-scalar-arrays.md).
+These source changes are not an installed-release promotion.

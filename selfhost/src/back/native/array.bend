@@ -1,5 +1,5 @@
-# Native arrays use one 64-bit slot per element. The layout-independent path
-# supports values, closures and nested arrays through the common word ABI.
+# Native arrays default to the uniform word ABI. A checked whole-program
+# certificate can select scalar slots; access helpers are shared by both paths.
 law nc_array:
   for +k: String
   for +ws: List<&2, String>
@@ -45,9 +45,9 @@ def nc_array_value(+k: String, +ws: List<&2, String>, +n: U32) -> N_Emitted:
   +i = nc_head(nc_tail(ws))
   +v = nc_head(nc_tail(nc_tail(ws)))
   nt_choose(N_Emitted, U32.is_ne(nc_atomic(k), 0), u => nc_array_pair("", a, "array_atomic(e, " ++ a ++ ", " ++ i ++ ", " ++ v ++ ", " ++ nt_choose(String, String.eq(k, "array_atomic_cas"), u => nc_head(nc_tail(nc_tail(nc_tail(ws)))), u => "0") ++ ", " ++ U32.show(nc_atomic(k)) ++ ")", n), u =>
-  nt_choose(N_Emitted, String.eq(k, "array_new"), u => N_Emitted{"Term init[1] = { " ++ i ++ " };\n", "blk_new(e, 1, " ++ a ++ ", 0, 1, init)", n}, u =>
+  nt_choose(N_Emitted, String.eq(k, "array_new"), u => N_Emitted{"Term init[1] = { " ++ i ++ " };\n", "blk_new(e, !NATIVE_SCALAR_ARRAYS, " ++ a ++ ", 0, 1, init)", n}, u =>
   nt_choose(N_Emitted, String.eq(k, "array_size"), u => nc_array_pair("", a, "(1ull << blk_cls(" ++ a ++ "))", n), u =>
   nt_choose(N_Emitted, String.eq(k, "array_clone"), u => nc_array_pair("", a, "blk_copy(e, " ++ a ++ ")", n), u =>
-  nt_choose(N_Emitted, String.eq(k, "array_get"), u => nc_array_pair("u32 at = blk_at(" ++ a ++ ", " ++ i ++ ", 0);\n", a, "blk_keep(e, term_peek(e, " ++ a ++ ") + at)", n), u =>
-  nt_choose(N_Emitted, String.eq(k, "array_swap"), u => nc_array_pair("u32 at = blk_at(" ++ a ++ ", " ++ i ++ ", 0);\nTerm old = blk_read(e.mem, 1, term_peek(e, " ++ a ++ "), at);\nblk_write(e.mem, 1, term_peek(e, " ++ a ++ "), at, rfc_seal(e, " ++ v ++ "));\n", a, "old", n), u =>
-    N_Emitted{"u32 at = blk_at(" ++ a ++ ", " ++ i ++ ", 0);\nterm_sink(e, blk_read(e.mem, 1, term_peek(e, " ++ a ++ "), at));\nblk_write(e.mem, 1, term_peek(e, " ++ a ++ "), at, rfc_seal(e, " ++ v ++ "));\n", a, n}))))))
+  nt_choose(N_Emitted, String.eq(k, "array_get"), u => nc_array_pair("", a, "native_array_get(e, " ++ a ++ ", " ++ i ++ ")", n), u =>
+  nt_choose(N_Emitted, String.eq(k, "array_swap"), u => nc_array_pair("Term old = native_array_swap(e, " ++ a ++ ", " ++ i ++ ", " ++ v ++ ");\n", a, "old", n), u =>
+    N_Emitted{"native_array_set(e, " ++ a ++ ", " ++ i ++ ", " ++ v ++ ");\n", a, n}))))))

@@ -73,8 +73,8 @@ def nq_array_pair(+name: String, +words: List<&2, String>, +n: U32, +target: NC_
     u => nq_transfer(shape, [a, "array_atomic(e, " ++ a ++ ", " ++ i ++ ", " ++ v ++ ", " ++ nt_choose(String, String.eq(name, "array_atomic_cas"), v => nc_head(nc_tail(nc_tail(nc_tail(words)))), v => "0") ++ ", " ++ U32.show(nc_atomic(name)) ++ ")"], n, target), u =>
   nt_choose(NC_Code, String.eq(name, "array_size"), u => nq_transfer(shape, [a, "(1ull << blk_cls(" ++ a ++ "))"], n, target), u =>
   nt_choose(NC_Code, String.eq(name, "array_clone"), u => nq_transfer(shape, [a, "blk_copy(e, " ++ a ++ ")"], n, target), u =>
-  nt_choose(NC_Code, String.eq(name, "array_get"), u => nc_prepend("u32 at = blk_at(" ++ a ++ ", " ++ i ++ ", 0);\n", nq_transfer(shape, [a, "blk_keep(e, term_peek(e, " ++ a ++ ") + at)"], n, target)), u =>
-    nc_prepend("u32 at = blk_at(" ++ a ++ ", " ++ i ++ ", 0);\nTerm old = blk_read(e.mem, 1, term_peek(e, " ++ a ++ "), at);\nblk_write(e.mem, 1, term_peek(e, " ++ a ++ "), at, rfc_seal(e, " ++ v ++ "));\n", nq_transfer(shape, [a, "old"], n, target))))))
+  nt_choose(NC_Code, String.eq(name, "array_get"), u => nq_transfer(shape, [a, "native_array_get(e, " ++ a ++ ", " ++ i ++ ")"], n, target), u =>
+    nc_prepend("Term old = native_array_swap(e, " ++ a ++ ", " ++ i ++ ", " ++ v ++ ");\n", nq_transfer(shape, [a, "old"], n, target))))))
 
 @unsafe
 def nq_signature(+target: NC_Target, +name: String) -> KTerm:

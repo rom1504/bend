@@ -116,11 +116,79 @@ def ne_segments(+ss: List<&2, N_Segment>) -> String:
 def ne_fill(+src: String, +mark: String, +text: String) -> String:
   nt_replace(src, mark, mark ++ "\n\n" ++ text)
 
+# Split only original runtime text. Suspicious input retains sequential fill.
+@unsafe
+def ne_template_marks() -> List<&2, String>:
+  ["// Tables\n// ======", "// Spins\n// =====", "// Segments\n// ========", "// Requests\n// ========"]
+
+@unsafe
+def ne_template_mark(+src: String, marks: List<&2, String>) -> String:
+  match marks:
+    case Nil{}: ""
+    case Con{+h, rest}: nt_choose(String, String.starts_with(src, h), u => h, u => ne_template_mark(src, rest))
+
+@unsafe
+def ne_template_scan(+src: String, +marks: List<&2, String>, +todo: List<&2, String>, +acc: String, +parts: List<&2, String>) -> Maybe<&2, List<&2, String>>:
+  match todo:
+    case Nil{}: Some{nt_reverse(String, Con{acc ++ src, parts}, Nil{})}
+    case Con{+want, +more}: ne_template_step(src, marks, want, more, acc, parts)
+
+@unsafe
+def ne_template_step(+src: String, +marks: List<&2, String>, +want: String, +more: List<&2, String>, +acc: String, +parts: List<&2, String>) -> Maybe<&2, List<&2, String>>:
+  match src:
+    case SNil{}: None{}
+    case SCon{+h, +rest}:
+      +mark = nt_choose(String, Char.is_eq(h, '/'), u => ne_template_mark(src, marks), u => "")
+      nt_choose(Maybe<&2, List<&2, String>>, String.eq(mark, ""),
+        u => ne_template_step(rest, marks, want, more, acc ++ SCon{h, ""}, parts),
+        u => ne_template_take(src, marks, want, more, acc, parts, mark))
+
+@unsafe
+def ne_template_take(+src: String, +marks: List<&2, String>, +want: String, +more: List<&2, String>, +acc: String, +parts: List<&2, String>, +mark: String) -> Maybe<&2, List<&2, String>>:
+  +rest = String.drop(src, String.length(mark))
+  nt_choose(Maybe<&2, List<&2, String>>, String.eq(mark, want) && String.starts_with(rest, "\n"),
+    u => ne_template_scan(rest, marks, more, "", Con{acc ++ mark, parts}), u => None{})
+
+@unsafe
+def ne_template_plain(src: String, +slash: Bool) -> Bool:
+  match src:
+    case SNil{}: True{}
+    case SCon{+h, rest}: nt_choose(Bool, slash && Char.is_eq(h, '/'), u => False{}, u => ne_template_plain(rest, Char.is_eq(h, '/')))
+
+@unsafe
+def ne_template_payloads(texts: List<&2, String>) -> Bool:
+  match texts:
+    case Nil{}: True{}
+    case Con{+h, +rest}: nt_choose(Bool, List.is_empty(&2, String, rest), u => True{}, u => nt_choose(Bool, ne_template_plain(h, False{}), v => ne_template_payloads(rest), v => False{}))
+
+@unsafe
+def ne_template_slow(src: String, marks: List<&2, String>, texts: List<&2, String>) -> String:
+  match marks, texts:
+    case Con{mark, more}, Con{text, rest}: ne_template_slow(ne_fill(src, mark, text), more, rest)
+    case _, _: src
+
+@unsafe
+def ne_template_join(parts: List<&2, String>, texts: List<&2, String>) -> String:
+  match parts, texts:
+    case Con{h, rest}, Con{text, more}: h ++ "\n\n" ++ text ++ ne_template_join(rest, more)
+    case Con{h, Nil{}}, Nil{}: h
+    case _, _: ""
+
+@unsafe
+def ne_template_finish(+src: String, +marks: List<&2, String>, +texts: List<&2, String>, parts: Maybe<&2, List<&2, String>>) -> String:
+  match parts:
+    case None{}: ne_template_slow(src, marks, texts)
+    case Some{+pieces}: nt_choose(String, ne_template_payloads(texts), u => ne_template_join(pieces, texts), u => ne_template_slow(src, marks, texts))
+
+@unsafe
+def ne_program_texts(+src: String, +texts: List<&2, String>) -> String:
+  +marks = ne_template_marks()
+  ne_template_finish(src, marks, texts, ne_template_scan(src, marks, marks, "", Nil{}))
+
 @unsafe
 def ne_program(+src: String, +p: N_Program) -> String:
   match p:
     case N_Program{+ss, +cs, +image, +requests, +decls, +show, +pure}:
-      a = ne_fill(src, "// Tables\n// ======", nb_emit(ss, cs, nt_count(String, image), pure) ++ show)
-      b = ne_fill(a, "// Spins\n// =====", "CONSTV u64 STAT_IMG[] = { " ++ nt_choose(String, U32.is_eq(nt_count(String, image), 0), u => "0", u => nt_join(image, ", ")) ++ " };\n" ++ decls)
-      c = ne_fill(b, "// Segments\n// ========", ne_segments(ss))
-      ne_fill(c, "// Requests\n// ========", requests)
+      ne_program_texts(src, [nb_emit(ss, cs, nt_count(String, image), pure) ++ show,
+        "CONSTV u64 STAT_IMG[] = { " ++ nt_choose(String, U32.is_eq(nt_count(String, image), 0), u => "0", u => nt_join(image, ", ")) ++ " };\n" ++ decls,
+        ne_segments(ss), requests])

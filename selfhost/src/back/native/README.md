@@ -80,3 +80,31 @@ Set `BEND_TYPED_API`, `BEND_UPSTREAM`, and `CC` as above. These runs record API,
 runtime, source and driver hashes with each report. Historical targeted evidence
 is preserved in `tests/conformance/native-fixes.json`; it explicitly distinguishes
 retained binary re-execution from a single-snapshot full compilation sweep.
+
+### Checked scalar-array policy (Phase68 source candidate)
+
+The checked driver now calls `nc_compile_checked` after checking, specialization,
+annotation and layout validation. `scalar-array.bend` computes two separate
+whole-program facts: all arrays have U32/F32/Char elements, and no array-containing
+value is duplicated. The first selects packed 32-bit buffers; the second permits
+direct buffer locations. A failed proof retains ordinary storage/access. This is
+not enabled by program names, timing fixtures or unchecked user annotations.
+
+The host authenticates the pinned Base and the audited args/print/now effect
+bytes. Changed/custom effects and Base versions decline these policies. The
+low-level `nc_compile` entry stays conservative; callers of `nc_compile_checked`
+must establish its documented checked-book and trusted-runtime preconditions.
+Unknown types, user aggregates, captured functions/IO and proof rewrites can
+prevent admission. This conservative analysis trades coverage for a small,
+reviewable correctness boundary. Sharing and element width are independent.
+
+Array access helpers in the C runtime serve both ordinary and product-result
+lowering. Clone, split, join, leaf matching, atomics and readback must agree on
+representation; a global layout decision prevents mixed-width joins. The source
+also contains guarded constructor packing and flat product results; the original
+one-word description above describes the generic fallback.
+
+See the [design](../../../../design/phase68/checked-scalar-arrays.md),
+[results](../../../../implementation/phase68/checked-scalar-arrays.md) and
+[fast-loop instructions](../../../tools/performance/phase68/scalar-layout/README.md).
+The installed release remains separately identified by `dist/release.json`.

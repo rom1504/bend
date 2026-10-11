@@ -361,7 +361,7 @@ def nc_constructor_value(+name: String, +ws: List<&2, String>, +n: U32) -> N_Emi
   nt_choose(N_Emitted, String.eq(name, "Succ"), u => N_Emitted{"", "nat_chk(e, " ++ nc_head(ws) ++ " + 1)", n}, u =>
   nt_choose(N_Emitted, String.eq(name, "U32") || String.eq(name, "F32"), u => N_Emitted{"", "term_word(e, " ++ nc_head(ws) ++ ")", n}, u =>
   nt_choose(N_Emitted, String.eq(name, "Chr"), u => N_Emitted{"", nc_head(ws), n}, u =>
-  nt_choose(N_Emitted, String.eq(name, "ALeaf"), u => N_Emitted{"Term init[1] = { " ++ nc_head(ws) ++ " };\n", "blk_new(e, 1, 0, 0, 1, init)", n}, u =>
+  nt_choose(N_Emitted, String.eq(name, "ALeaf"), u => N_Emitted{"Term init[1] = { " ++ nc_head(ws) ++ " };\n", "blk_new(e, !NATIVE_SCALAR_ARRAYS, 0, 0, 1, init)", n}, u =>
   nt_choose(N_Emitted, String.eq(name, "ANode"), u => N_Emitted{"", "blk_node(e, " ++ nc_head(ws) ++ ", " ++ nc_head(nc_tail(ws)) ++ ")", n}, u =>
     ne_constructor(name, ws, False{}, n, True{}))))))))
 

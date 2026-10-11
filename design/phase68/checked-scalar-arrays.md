@@ -57,3 +57,16 @@ implementation milestones and a report; push the authorized bootstrap branch.
 One fresh-context Ultra advisor reviewed the correctness seam; root implements
 and validates. Track usage with the existing local tool, avoiding redundant
 agent reviews and broad validation on every iteration.
+
+## Phase B candidate: conservative absence of sharing
+
+After packed-only selection, test a separate whole-program certificate: every
+source variable with more than one use in its erased definition must have an
+annotation proving it cannot contain an array. Permit only trusted Base scalar
+and array-free container types (recursively in their arguments); function/IO,
+unknown and user-defined types decline. Match alternatives use the existing
+maximum-use analysis. This intentionally sacrifices coverage. Packed elements
+exclude hidden arrays in Array.new's repeated seed, and trusted Base effects
+cannot create arrays. Any duplicated closure or array-containing aggregate
+refuses direct location access. Validate retained aliases and forked arrays
+explicitly; sharing permission is a separate macro and never granted by width.

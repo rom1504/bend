@@ -938,6 +938,13 @@ INLINE Term term_word(Env e, Term w) {
 // Blk
 // ===
 
+#ifndef NATIVE_SCALAR_ARRAYS
+#define NATIVE_SCALAR_ARRAYS 0
+#endif
+#ifndef NATIVE_UNSHARED_ARRAYS
+#define NATIVE_UNSHARED_ARRAYS 0
+#endif
+
 // A block owns one allocation in its physical class (an ARR of class
 // c 2^c Terms in 2^c words, a BUF 2^c u32 in 2^buf_wcls(c) words) and
 // blk_free returns it there. A match on ANode is blk_half twice: each
@@ -991,13 +998,16 @@ INLINE Term blk_keep(Env e, Loc at) {
 // A shared leaf gives its caller a retained element before dropping the handle.
 INLINE Term blk_leaf(Env e, Term a) {
   Loc at = term_peek(e, a);
+  if (term_tag(a) == TAG_BUF) return blk_read(e.mem, false, at, 0);
   return term_rfc(a) ? blk_keep(e, at) : e.mem[at];
 }
 
-// Uniform arrays keep U32/F32 payloads in the low half of each 64-bit slot.
+// Packed arrays use adjacent U32 slots; uniform arrays use each word's low half.
 // Existing a32 operations provide a single atomic update for every backend.
 INLINE u64 array_atomic(Env e, Term a, u32 i, u32 v, u32 x, u32 op) {
-  DEV u32* p = a32_at(e.mem, term_peek(e, a) + blk_at(a, i, 0));
+  Loc loc = term_peek(e, a);
+  u32 at = blk_at(a, i, 0);
+  DEV u32* p = a32_at(e.mem, loc) + (term_tag(a) == TAG_BUF ? at : 2 * at);
   u32 old = a32_load(p);
   for (;;) {
     u32 next = v;
@@ -1106,6 +1116,29 @@ INLINE Term blk_new(Env e, bool arr, Nat d, u32 lgs, u32 n, THR Term* v) {
     blk_write(H, arr, l, (u32)i, i % (1u << lgs) < n ? v[i % (1u << lgs)] : 0);
   }
   return term_blk(arr, c, l);
+}
+
+// The checked compiler may select one scalar layout for all reachable arrays.
+// Raw/unknown programs retain the uniform word ABI. Handle sharing is independent.
+INLINE Term native_array_get(Env e, Term a, u32 i) {
+  u32 at = blk_at(a, i, 0);
+  Loc loc = NATIVE_UNSHARED_ARRAYS ? term_loc(a) : term_peek(e, a);
+  return NATIVE_SCALAR_ARRAYS ? blk_read(e.mem, false, loc, at) : blk_keep(e, loc + at);
+}
+
+INLINE Term native_array_swap(Env e, Term a, u32 i, Term value) {
+  u32 at = blk_at(a, i, 0);
+  Loc loc = NATIVE_UNSHARED_ARRAYS ? term_loc(a) : term_peek(e, a);
+  Term old = blk_read(e.mem, !NATIVE_SCALAR_ARRAYS, loc, at);
+  blk_write(e.mem, !NATIVE_SCALAR_ARRAYS, loc, at, NATIVE_SCALAR_ARRAYS ? value : rfc_seal(e, value));
+  return old;
+}
+
+INLINE void native_array_set(Env e, Term a, u32 i, Term value) {
+  u32 at = blk_at(a, i, 0);
+  Loc loc = NATIVE_UNSHARED_ARRAYS ? term_loc(a) : term_peek(e, a);
+  if (!NATIVE_SCALAR_ARRAYS) term_sink(e, blk_read(e.mem, true, loc, at));
+  blk_write(e.mem, !NATIVE_SCALAR_ARRAYS, loc, at, NATIVE_SCALAR_ARRAYS ? value : rfc_seal(e, value));
 }
 
 // Ring

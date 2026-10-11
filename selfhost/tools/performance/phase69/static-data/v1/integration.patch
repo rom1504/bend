@@ -1,0 +1,340 @@
+--- a/selfhost/src/back/native/book.bend
++++ b/selfhost/src/back/native/book.bend
+@@ -68,6 +68,11 @@
+ 
+ @unsafe
+ def nc_definition(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
++  +fact = ns_body(book, dn(d))
++  nt_choose(KTerm, String.eq(dk(fact), "NativeStaticBody"), u => dv(fact), u => nc_definition_plain(book, d, n))
++
++@unsafe
++def nc_definition_plain(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
+   +prim = nc_primitive_name(dn(d))
+   nt_choose(KTerm, nc_native_def(d),
+     u => nc_primitive_body(prim),
+@@ -197,9 +202,9 @@
+   "INLINE bool native_bool(Term t) { return t == 1 || (term_tag(t) == TAG_PAK && term_aux(t) == CID_TRUE); }\nINLINE Term native_word(Env e, u32 x) {\n  Term w = term_pak(CID_WNIL, 0);\n  for (u32 i = 32; i > 0; i--) {\n    Loc p = heap_alloc(e, 1);\n    e.mem[p] = (x >> (i - 1)) & 1;\n    e.mem[p + 1] = rfc_seal(e, w);\n    w = term_ctr(CID_WCON, p);\n  }\n  return w;\n}\n"
+ 
+ @unsafe
+-def nc_with_show(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, d: NC_Show, workers: String) -> NC_Result:
++def nc_with_show(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, d: NC_Show, workers: String, +image: List<&2, String>) -> NC_Result:
+   match d:
+-    case NC_Show{+src, +err}: nt_choose(NC_Result, String.eq(nv_first(err, nv_program(ss, cs)), ""), u => NC_Result{ne_program(runtime, N_Program{ss, cs, Nil{}, requests, nc_helpers() ++ workers, src, pure}), ""}, u => NC_Result{"", nv_first(err, nv_program(ss, cs))})
++    case NC_Show{+src, +err}: nt_choose(NC_Result, String.eq(nv_first(err, nv_program(ss, cs)), ""), u => NC_Result{ne_program(runtime, N_Program{ss, cs, image, requests, nc_helpers() ++ workers, src, pure}), ""}, u => NC_Result{"", nv_first(err, nv_program(ss, cs))})
+ 
+ # Include index/constructor children: raw cached books may carry definitions there.
+ # A foreign program retains its previous ordinary-constructor representation.
+@@ -249,7 +254,7 @@
+   nt_choose(NC_Result, Bool.not(String.eq(owned, "")), u => NC_Result{"", owned}, u =>
+   nt_choose(NC_Result, Bool.not(String.eq(dk(main), "Def")) || String.eq(tg(nc_unann(dv(main))), "Absent"), u => NC_Result{"", "no main to run"}, u =>
+   nt_choose(NC_Result, nc_is_io(book, dt(main)) && String.eq(tg(nc_unann(dv(main))), "Foreign"), u => NC_Result{"", "main must be a filled def: a foreign main cannot anchor IO"}, u =>
+-  nt_choose(NC_Result, U32.is_ge(norm_max_book(book), 4000000000), u => NC_Result{"", "native source binder IDs overlap the compiler temporary range"}, u => nc_finish(book, runtime, requests, nc_compile_defs(book, ["main"], Nil{}, 0, nc_bangs_book(book)))))))
++  nt_choose(NC_Result, U32.is_ge(norm_max_book(book), 4000000000), u => NC_Result{"", "native source binder IDs overlap the compiler temporary range"}, u => ns_compile(book, runtime, requests)))))
+ 
+ @unsafe
+ def nc_live_names(+book: List<&2, KDef>, todo: List<&2, String>, +done: List<&2, String>) -> List<&2, String>:
+--- a/selfhost/src/back/native/bridge.bend
++++ b/selfhost/src/back/native/bridge.bend
+@@ -231,7 +231,7 @@
+ # value handling as the general cut, and bind the word before lowering the body.
+ @unsafe
+ def nc_let_atom(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:
+-  +word = nt_choose(String, String.eq(tg(value), "Var"), u => nc_word(ix(value), env), u => nt_choose(String, String.eq(tg(value), "NOp"), u => nd_scalar_word(nm(value), nc_values(ks(value), env)), u => nm(value) ++ "ull"))
++  +word = nt_choose(String, String.eq(tg(value), "Var"), u => nc_word(ix(value), env), u => nt_choose(String, String.eq(tg(value), "NOp"), u => nd_scalar_word(nm(value), nc_values(ks(value), env)), u => nt_choose(String, String.eq(tg(value), "NStatic"), v => ns_word(value), v => nm(value) ++ "ull")))
+   +bodyUses = nc_uses(body)
+   +held = nc_live_uses(env, bodyUses)
+   +rest = nc_lower_partition(book, body, n, NC_Scheduler{}, nc_partition_uses(List.append(&2, NC_Binding, held, [nc_binding(id)]), bodyUses))
+@@ -242,7 +242,7 @@
+ @unsafe
+ def nc_let(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:
+   +scalar = nd_scalar_call(book, value)
+-  nt_choose(NC_Code, String.eq(tg(value), "Var") || String.eq(tg(value), "NWord") || (String.eq(tg(value), "NOp") && nd_scalar_known(nm(value))),
++  nt_choose(NC_Code, String.eq(tg(value), "Var") || String.eq(tg(value), "NWord") || (String.eq(tg(value), "NStatic") && String.eq(dk(ns_context(book)), "NativeStaticContext")) || (String.eq(tg(value), "NOp") && nd_scalar_known(nm(value))),
+     u => nc_let_atom(book, value, body, env, id, n),
+     u => nt_choose(NC_Code, String.eq(scalar, ""),
+       u => nc_let_value(book, value, body, env, id, n),
+@@ -550,6 +550,10 @@
+ 
+ @unsafe
+ def nc_compact(t):
++  nt_choose(KTerm, String.eq(tg(t), "NStatic"), u => t, u => nc_compact_plain(t))
++
++@unsafe
++def nc_compact_plain(+t: KTerm) -> KTerm:
+   kc(KTerm, core_literal(t), u => kc(KTerm, String.eq(nm(t), "String"), u => nc_compact(core_literal_step(t)), u => kt("NWord", U32.show(kl_number(t)), 0, 0, Nil{})), u =>
+   nt_choose(KTerm, String.eq(tg(t), "Ctr"), u => nc_compact_ctor(t, nc_literal(t)), u => k_rebuild(t, nm(t), ix(t), qt(t), nc_compact_list(ks(t)), Nil{}, 0, 0)))
+ 
+@@ -564,7 +568,7 @@
+   +tag = tg(t)
+   nt_choose(NC_Code, String.eq(tag, "NQBundle") && Bool.not(nf_scheduler(target)), u => nq_bundle_return(t, env, n, target), u =>
+   nt_choose(NC_Code, String.eq(tag, "NQBox") && Bool.not(nf_scheduler(target)), u => nf_emitted(nc_constructor_value(nm(t), nc_values(ks(t), env), n), target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NWord"), u => nf_return(nm(t) ++ "ull", n, target), u =>
++  nt_choose(NC_Code, String.eq(tag, "NWord") || String.eq(tag, "NStatic"), u => nt_choose(NC_Code, String.eq(tag, "NStatic"), v => ns_return(book, t, n, target), v => nf_return(nm(t) ++ "ull", n, target)), u =>
+   nt_choose(NC_Code, String.eq(tag, "Var"), u => nt_choose(NC_Code, String.eq(nc_word(ix(t), env), "NATIVE_UNBOUND_VARIABLE"), u => nc_fail("native unbound variable " ++ U32.show(ix(t)), n), u => nf_return(nc_word(ix(t), env), n, target)), u =>
+   nt_choose(NC_Code, String.eq(tag, "Ref"), u => nf_ref(book, t, n, target), u =>
+   nt_choose(NC_Code, String.eq(tag, "Ann") || String.eq(tag, "Loc") || String.eq(tag, "Src") || String.eq(tag, "Cut") || String.eq(tag, "Slf") || String.eq(tag, "Ins"), u => nc_lower_to(book, kid(t, 0), env, n, target), u =>
+--- a/selfhost/src/back/native/product.bend
++++ b/selfhost/src/back/native/product.bend
+@@ -123,7 +123,7 @@
+ def nq_value_shape(+book: List<&2, KDef>, +value: KTerm, +target: NC_Target) -> KTerm:
+   +head = nd_head(value)
+   nt_choose(KTerm, String.eq(tg(value), "NQBundle"), u => kt("NQShape", nm(value), terms_len(ks(value)), 0, Nil{}), u =>
+-    nt_choose(KTerm, String.eq(tg(value), "Ctr") || String.eq(tg(value), "NCtr"), u => nq_ctor_shape(value, target), u =>
++    nt_choose(KTerm, String.eq(tg(value), "Ctr") || String.eq(tg(value), "NCtr") || String.eq(tg(value), "NStatic"), u => nq_ctor_shape(value, target), u =>
+     nt_choose(KTerm, String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)) && U32.is_eq(nd_arity(book, nm(head)), terms_len(nd_args(value, Nil{}))), u => nq_call_shape(book, nm(head), nd_args(value, Nil{}), target), u =>
+       nt_choose(KTerm, String.eq(tg(value), "NFCall"), u => nq_call_shape(book, nm(value), ks(value), target), u =>
+         nt_choose(KTerm, String.eq(tg(value), "NOp") && nq_pair_primitive(nm(value)), u => kt("NQShape", "Tuple", 2, 0, Nil{}), u => atom("Absent"))))))
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -209,8 +209,8 @@
+       Con{N_Segment{name, params, result, frame, wrapped, refs, host, spin, fork, bang}, nf_wrap_segments(rest, index)}
+ 
+ @unsafe
+-def nf_finish_ready(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> NC_Result:
+-  nc_with_show(nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0)), cs, runtime, requests, pure, show, "#if !DEVICE\n#if defined(__GNUC__) || defined(__clang__)\n#define NF_INLINE INLINE __attribute__((always_inline))\n#else\n#define NF_INLINE INLINE\n#endif\n" ++ nf_prototypes(workers, ready) ++ nf_bodies(workers, ready) ++ "#undef NF_INLINE\n#endif\n")
++def nf_finish_ready(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>) -> NC_Result:
++  nc_with_show(nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0)), cs, runtime, requests, pure, show, "#if !DEVICE\n#if defined(__GNUC__) || defined(__clang__)\n#define NF_INLINE INLINE __attribute__((always_inline))\n#else\n#define NF_INLINE INLINE\n#endif\n" ++ nf_prototypes(workers, ready) ++ nf_bodies(workers, ready) ++ "#undef NF_INLINE\n#endif\n", image)
+ 
+ # A failed optional product route must not poison the ordinary worker. Retain
+ # admitted code and retry ordinary candidates against only admitted signatures.
+@@ -235,7 +235,7 @@
+ @unsafe
+ def nf_finish_retry(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>) -> NC_Result:
+   +retried = nf_retry(book, workers, ready, book_cached(nf_ready_signatures(signatures, ready), 0))
+-  nf_finish_ready(ss, cs, runtime, requests, pure, show, retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)))
++  nf_finish_ready(ss, cs, runtime, requests, pure, show, retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)), ns_image(book))
+ 
+ @unsafe
+ def nf_finish_workers(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +signatures: List<&2, KDef>) -> NC_Result:
+--- a/selfhost/src/back/native/manifest.txt
++++ b/selfhost/src/back/native/manifest.txt
+@@ -21,4 +21,5 @@
+ show.bend
+ validate.bend
+ book.bend
++static.bend
+ foreign.bend
+--- /dev/null
++++ b/selfhost/src/back/native/static.bend
+@@ -0,0 +1,221 @@
++# Closed immutable constructor graphs share the existing runtime static image.
++# Facts live only in a fresh native request's BookCache payload; source lookup
++# and all original definitions stay exact. Arrays/effects/foreign stay dynamic.
++type NS_Image is Data:
++  NS_Image{+size: U32, +words: List<&2, String>, +index: KDef}
++
++type NS_Term is Data:
++  NS_Term{+term: KTerm, +image: NS_Image}
++
++type NS_Terms is Data:
++  NS_Terms{+terms: List<&2, KTerm>, +image: NS_Image}
++
++type NS_Defs is Data:
++  NS_Defs{+defs: List<&2, KDef>, +image: NS_Image}
++
++@unsafe
++def ns_source(+book: List<&2, KDef>) -> List<&2, KDef>:
++  match book:
++    case Nil{}: book_cached(Nil{}, 0)
++    case Con{+cache, +rest}:
++      nt_choose(List<&2, KDef>, String.eq(dk(cache), "BookCache"),
++        u => Con{KDef{dn(cache), dk(cache), da(cache), dx(cache), dt(cache), dv(cache), [index_first(dc(cache))], db(cache), du(cache)}, rest},
++        u => book_cached(Con{cache, rest}, norm_max_book(Con{cache, rest})))
++
++@unsafe
++def ns_context(+book: List<&2, KDef>) -> KDef:
++  match book:
++    case Con{cache, rest}:
++      nt_choose(KDef, String.eq(dk(cache), "BookCache"), u => ns_payload(dc(cache)), u => missing())
++    case _: missing()
++
++@unsafe
++def ns_payload(children: List<&2, KDef>) -> KDef:
++  match children:
++    case Con{source, Con{+facts, rest}}:
++      nt_choose(KDef, String.eq(dk(facts), "NativeStaticContext") && String.eq(dn(facts), "$native.static"), u => facts, u => missing())
++    case _: missing()
++
++@unsafe
++def ns_body(+book: List<&2, KDef>, +name: String) -> KDef:
++  index_find(index_first(dc(ns_context(book))), name, index_hash(name, 2166136261), 32)
++
++@unsafe
++def ns_image(+book: List<&2, KDef>) -> List<&2, String>:
++  ns_image_words(ks(dt(ns_context(book))))
++
++@unsafe
++def ns_image_words(ts: List<&2, KTerm>) -> List<&2, String>:
++  match ts:
++    case Nil{}: Nil{}
++    case Con{h, rest}: Con{nm(h), ns_image_words(rest)}
++
++@unsafe
++def ns_image_terms(ws: List<&2, String>) -> List<&2, KTerm>:
++  match ws:
++    case Nil{}: Nil{}
++    case Con{h, rest}: Con{kt("StaticWord", h, 0, 0, Nil{}), ns_image_terms(rest)}
++
++# Exclude constructors with special runtime treatment, including all IO nodes.
++# Scalar wrappers only become static after the existing literal pass proves
++# them. Exact constructor arity rejects malformed raw graphs.
++@unsafe
++def ns_ctor(+cs: List<&2, N_Constructor>, +name: String, +arity: U32) -> Bool:
++  nt_choose(Bool, nb_contains(["Zero", "Succ", "True", "False", "Chr", "U32", "F32", "ALeaf", "ANode", "Emit", "Halt", "Done", "Fail"], name),
++    u => False{}, u => ns_ctor_known(cs, name, arity))
++
++@unsafe
++def ns_ctor_known(cs: List<&2, N_Constructor>, +name: String, +arity: U32) -> Bool:
++  match cs:
++    case Nil{}: False{}
++    case Con{N_Constructor{key, count, hot}, rest}:
++      nt_choose(Bool, String.eq(key, name), u => U32.is_eq(count, arity), u => ns_ctor_known(rest, name, arity))
++
++@unsafe
++def ns_constant(+t: KTerm) -> Bool:
++  String.eq(tg(t), "NStatic") || (String.eq(tg(t), "NWord") && ns_canonical(nm(t), U32.read(nm(t))))
++
++@unsafe
++def ns_canonical(+text: String, parsed: Maybe<&2, U32>) -> Bool:
++  match parsed:
++    case None{}: False{}
++    case Some{value}: String.eq(text, U32.show(value))
++
++@unsafe
++def ns_constants(ts: List<&2, KTerm>) -> Bool:
++  match ts:
++    case Nil{}: True{}
++    case Con{h, rest}: ns_constant(h) && ns_constants(rest)
++
++@unsafe
++def ns_word(+t: KTerm) -> String:
++  nt_choose(String, String.eq(tg(t), "NWord"), u => nm(t) ++ "ull", u =>
++    nt_choose(String, U32.is_eq(qt(t), 1),
++      u => "term_pak(" ++ nt_cid(nm(t)) ++ ", " ++ nt_choose(String, List.is_empty(&2, KTerm, ks(t)), v => "0", v => ns_word(kid(t, 0))) ++ ")",
++      u => "term_ctr(" ++ nt_cid(nm(t)) ++ ", STAT_OFF + " ++ U32.show(ix(t)) ++ ")"))
++
++@unsafe
++def ns_words(ts: List<&2, KTerm>) -> List<&2, String>:
++  match ts:
++    case Nil{}: Nil{}
++    case Con{h, rest}: Con{ns_word(h), ns_words(rest)}
++
++# An immediate U32 payload is within LOC_MASK. Other one-field constructors
++# retain a box; no type annotation or raw width promise licenses packing.
++@unsafe
++def ns_packed(+t: KTerm) -> Bool:
++  List.is_empty(&2, KTerm, ks(t)) || (String.starts_with(nm(t), "$ctor.") && U32.is_eq(terms_len(ks(t)), 1) && String.eq(tg(kid(t, 0)), "NWord") && ns_constant(kid(t, 0)))
++
++@unsafe
++def ns_node(+t: KTerm, +image: NS_Image) -> NS_Term:
++  nt_choose(NS_Term, ns_packed(t), u => NS_Term{kt("NStatic", nm(t), 0, 1, ks(t)), image},
++    u => ns_intern(t, ns_words(ks(t)), image))
++
++@unsafe
++def ns_intern(+t: KTerm, +words: List<&2, String>, image: NS_Image) -> NS_Term:
++  match image:
++    case NS_Image{+size, +stored, +index}:
++      +key = nm(t) ++ "(" ++ nt_join(words, ",") ++ ")"
++      +hash = index_hash(key, 2166136261)
++      +old = index_find(index, key, hash, 32)
++      nt_choose(NS_Term, String.eq(dk(old), "NativeStaticNode"),
++        u => NS_Term{kt("NStatic", nm(t), da(old), 0, ks(t)), NS_Image{size, stored, index}},
++        u => nt_choose(NS_Term, U32.is_le(terms_len(ks(t)), U32.sub(65536, size)),
++          v => NS_Term{kt("NStatic", nm(t), size, 0, ks(t)), NS_Image{U32.add(size, terms_len(ks(t))), nt_reverse(String, words, stored), index_set(index, KDef{key, "NativeStaticNode", size, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, hash, 32)}},
++          v => NS_Term{t, NS_Image{size, stored, index}}))
++
++law ns_term:
++  for +cs: List<&2, N_Constructor>
++  for +t: KTerm
++  for +image: NS_Image
++  NS_Term
++
++@unsafe
++def ns_terms(+cs: List<&2, N_Constructor>, ts: List<&2, KTerm>, +image: NS_Image) -> NS_Terms:
++  match ts:
++    case Nil{}: NS_Terms{Nil{}, image}
++    case Con{h, rest}: ns_terms_step(cs, rest, ns_term(cs, h, image))
++
++@unsafe
++def ns_terms_step(+cs: List<&2, N_Constructor>, +rest: List<&2, KTerm>, first: NS_Term) -> NS_Terms:
++  match first:
++    case NS_Term{head, image}: ns_terms_cons(head, ns_terms(cs, rest, image))
++
++@unsafe
++def ns_terms_cons(head: KTerm, tail: NS_Terms) -> NS_Terms:
++  match tail:
++    case NS_Terms{rest, image}: NS_Terms{Con{head, rest}, image}
++
++@unsafe
++def ns_term(cs, t, image):
++  # Input cannot import a stale or forged image offset into this request.
++  nt_choose(NS_Term, String.eq(tg(t), "NStatic"), u => NS_Term{atom("NativeStaticInput"), image},
++    u => ns_rebuild(cs, t, ns_terms(cs, ks(t), image)))
++
++@unsafe
++def ns_rebuild(+cs: List<&2, N_Constructor>, +original: KTerm, children: NS_Terms) -> NS_Term:
++  match children:
++    case NS_Terms{+kids, image}:
++      +t = ns_scalar(k_rebuild(original, nm(original), ix(original), qt(original), kids, rm(original), kb(original), ke(original)))
++      nt_choose(NS_Term, String.eq(tg(t), "Ctr") && ns_ctor(cs, nm(t), terms_len(kids)) && ns_constants(kids),
++        u => ns_node(t, image), u => NS_Term{t, image})
++
++# Native Bool and Char constructors have immediate runtime representations.
++# Exact syntax/arity preserves malformed wrappers' original fallback.
++@unsafe
++def ns_scalar(+t: KTerm) -> KTerm:
++  nt_choose(KTerm, String.eq(tg(t), "Ctr") && List.is_empty(&2, KTerm, ks(t)) && (String.eq(nm(t), "True") || String.eq(nm(t), "False")),
++    u => kt("NWord", nt_choose(String, String.eq(nm(t), "True"), v => "1", v => "0"), 0, 0, Nil{}),
++    u => nt_choose(KTerm, String.eq(tg(t), "Ctr") && String.eq(nm(t), "Chr") && U32.is_eq(terms_len(ks(t)), 1) && String.eq(tg(kid(t, 0)), "NWord"), v => kid(t, 0), v => t))
++
++@unsafe
++def ns_defs(+book: List<&2, KDef>, +cs: List<&2, N_Constructor>, names: List<&2, String>, +image: NS_Image, +facts: List<&2, KDef>) -> NS_Defs:
++  match names:
++    case Nil{}: NS_Defs{facts, image}
++    case Con{+name, +rest}:
++      +d = lookup(book, name)
++      nt_choose(NS_Defs, String.eq(dk(d), "Def") && Bool.not(nc_native_def(d) || nc_foreign(d)),
++        u => ns_def_step(book, cs, rest, name, facts, ns_term(cs, nc_compact(nc_definition_plain(book, d, 0)), image)),
++        u => ns_defs(book, cs, rest, image, facts))
++
++@unsafe
++def ns_def_step(+book: List<&2, KDef>, +cs: List<&2, N_Constructor>, +rest: List<&2, String>, +name: String, +facts: List<&2, KDef>, transformed: NS_Term) -> NS_Defs:
++  match transformed:
++    case NS_Term{body, image}: ns_defs(book, cs, rest, image, Con{KDef{name, "NativeStaticBody", 0, 0, atom("Absent"), body, Nil{}, False{}, False{}}, facts})
++
++@unsafe
++def ns_attach(+book: List<&2, KDef>, built: NS_Defs) -> List<&2, KDef>:
++  match built:
++    case NS_Defs{facts, NS_Image{size, words, index}}:
++      match book:
++        case Con{cache, rest}:
++          Con{KDef{dn(cache), dk(cache), da(cache), dx(cache), dt(cache), dv(cache),
++            [index_first(dc(cache)), KDef{"$native.static", "NativeStaticContext", 0, 0, kt("NativeImage", "", size, 0, ns_image_terms(nt_reverse(String, words, Nil{}))), atom("Absent"), [index_build(facts)], False{}, False{}}], db(cache), du(cache)}, rest}
++        case _: book
++
++@unsafe
++def ns_prepare(+book: List<&2, KDef>, +names: List<&2, String>) -> List<&2, KDef>:
++  nt_choose(List<&2, KDef>, nc_pack_foreign(book), u => book,
++    u => ns_attach(book, ns_defs(book, nc_add_ctors(nc_default_ctors(), nc_constructors(book, book)), names, NS_Image{0, Nil{}, missing()}, Nil{})))
++
++# Retain product facts: a static fixed-shell result can still return its fields
++# directly. Only opaque destinations receive the immortal constructor word.
++@unsafe
++def ns_return(+book: List<&2, KDef>, +t: KTerm, +n: U32, +target: NC_Target) -> NC_Code:
++  nt_choose(NC_Code, String.eq(dk(ns_context(book)), "NativeStaticContext"), u => ns_return_known(t, n, target), u => nc_fail("native static word outside its request", n))
++
++@unsafe
++def ns_return_known(+t: KTerm, +n: U32, +target: NC_Target) -> NC_Code:
++  match target:
++    case NC_Scheduler{}: nc_return(ns_word(t), n)
++    case NC_Destination{dests, +shape, join, owner, params, tail, signatures}:
++      nt_choose(NC_Code, String.eq(tg(shape), "NQShape") && String.eq(nm(shape), nm(t)) && U32.is_eq(ix(shape), terms_len(ks(t))),
++        u => nq_transfer(shape, ns_words(ks(t)), n, target), u => nf_return(ns_word(t), n, target))
++
++# Called only after nc_compile validates main, source ownership and binder IDs.
++@unsafe
++def ns_compile(+book: List<&2, KDef>, +runtime: String, +requests: String) -> NC_Result:
++  +source = ns_source(book)
++  +names = nc_live_names(source, ["main"], Nil{})
++  +prepared = ns_prepare(source, names)
++  nc_finish(prepared, runtime, requests, nc_compile_defs(prepared, ["main"], Nil{}, 0, nc_bangs_names(prepared, names)))

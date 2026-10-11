@@ -1,0 +1,53 @@
+{
+  "kind": "phase69-custom-selection-method-derivation",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/derive-custom.py",
+    "sha256": "7569f80c2ebdf463804d250b45f0f1c03dd6dedad8da6023fdae955c888e2c6c",
+    "bytes": 5312
+  },
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase69/methods01/prepare-integration.py",
+    "sha256": "03e81d418678300c6c1145987829bb1589ea1c806be6caab89797eacfa28608b",
+    "bytes": 7001
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/prepare-custom.py",
+    "sha256": "8284c6133a2de0996fa6f8bf6f8ec6d09a92c89979a2b54d238e40bbb719b03e",
+    "bytes": 8136
+  },
+  "edits": [
+    {
+      "before": "    parser.add_argument(\"--set\", choices=[\"product-branch-drop\", \"product-fast\", \"integration\"], required=True)",
+      "after": "    parser.add_argument(\"--selection\", type=Path, action=\"append\", required=True)\n    parser.add_argument(\"--expected-cases\", type=int, required=True)",
+      "count": 1
+    },
+    {
+      "before": "    args = parser.parse_args()",
+      "after": "    args = parser.parse_args()\n    assert 0 < args.expected_cases <= 100\n    # Preserve the parent's existing short/integration deadline choices.\n    args.set = \"integration\" if args.expected_cases > 10 else \"custom\"",
+      "count": 1
+    },
+    {
+      "before": "    catalog_pin = pin(HERE / \"catalog-v1.json\")\n    catalog = json.loads(Path(catalog_pin[\"file\"]).read_text())\n    assert catalog[\"targetExecuted\"] is False\n    upstream = Path(attempt[\"config\"][\"upstream\"]).resolve(strict=True)\n    assert upstream == Path(catalog[\"reference\"]).resolve(strict=True)\n    assert pin(upstream / \"bend2/base.bend\")[\"sha256\"] == attempt[\"base\"][\"sha256\"]\n    wanted = catalog[\"sets\"][args.set]\n    cases = {row[\"id\"]: row for row in catalog[\"cases\"]}\n    assert len(wanted) == len(set(wanted))\n    selection_pin = pin(HERE / (args.set + \"-selection.json\"))\n    selection = json.loads(Path(selection_pin[\"file\"]).read_text())\n    assert [row[\"id\"] for row in selection[\"cases\"]] == wanted\n    for row in selection[\"cases\"]:\n        case = cases[row[\"id\"]]\n        source = pin(case[\"source\"])\n        assert row[\"lanes\"] == [\"native\"]\n        assert case[\"goldenLines\"] == [line[2:] for line in Path(source[\"file\"]).read_text().splitlines() if line.startswith(\"#|\")]\n        if case[\"external\"]:\n            assert Path(row[\"file\"]).resolve(strict=True) == Path(source[\"file\"])\n        else:\n            assert Path(source[\"file\"]) == upstream / \"tests\" / row[\"id\"]\n        inputs.append(source)\n    inputs += [catalog_pin, selection_pin]\n",
+      "after": "    upstream = Path(attempt[\"config\"][\"upstream\"]).resolve(strict=True)\n    assert upstream == (ROOT / \"selfhost/.bootstrap/upstream-phase66\").resolve(strict=True)\n    assert pin(upstream / \"bend2/base.bend\")[\"sha256\"] == attempt[\"base\"][\"sha256\"]\n    selections, cases, duplicate_ids, goldens = [], {}, [], []\n    for path in args.selection:\n        selection_pin = pin(path)\n        selected = json.loads(Path(selection_pin[\"file\"]).read_text())\n        assert set(selected) == {\"cases\"} and isinstance(selected[\"cases\"], list)\n        assert selected[\"cases\"], path\n        inputs.append(selection_pin)\n        selections.append(selection_pin)\n        for row in selected[\"cases\"]:\n            assert set(row) == {\"id\", \"file\", \"lanes\"}, row\n            assert isinstance(row[\"id\"], str) and row[\"id\"] and row[\"lanes\"] == [\"native\"]\n            file = Path(row[\"file\"])\n            assert file.is_absolute() and file.suffix == \".bend\", file\n            source = pin(file)\n            assert str(file) == source[\"file\"], \"Use canonical absolute fixture paths\"\n            golden = [line[2:] for line in file.read_text().splitlines() if line.startswith(\"#|\")]\n            assert golden, (row[\"id\"], \"Each selected source needs an explicit #| golden\")\n            if row[\"id\"] in cases:\n                assert cases[row[\"id\"]] == row, (row[\"id\"], \"Conflicting duplicate selection\")\n                duplicate_ids.append(dict(id=row[\"id\"], selection=selection_pin))\n                continue\n            cases[row[\"id\"]] = row\n            inputs.append(source)\n            goldens.append(dict(id=row[\"id\"], source=source, goldenLines=golden))\n    wanted = list(cases)\n    assert len(wanted) == args.expected_cases, (len(wanted), args.expected_cases)\n    selection = dict(cases=list(cases.values()))\n    inputs.append(pin(Path(__file__).with_suffix(\".derivation.json\")))\n",
+      "count": 1
+    },
+    {
+      "before": "        set=args.set, expectedCases=len(wanted), selection=pin(frozen_selection),",
+      "after": "        set=\"custom\", expectedCases=len(wanted), selection=pin(frozen_selection),\n        originalSelections=selections, identicalDuplicateIds=duplicate_ids, fixtureGoldens=goldens,",
+      "count": 1
+    },
+    {
+      "before": "kind=\"phase68-native-selected-control-plan\"",
+      "after": "kind=\"phase69-native-custom-control-plan\"",
+      "count": 1
+    },
+    {
+      "before": "\"Existing paired workflow and unchanged independent fixture goldens; no test framework or compiler changes. Outer orchestration unrestricted, target workers pinned by checked config CPU3/jobs1. No timing or all-native-conformance claim.\"",
+      "after": "\"Existing paired workflow and literal source #| goldens from explicit native selections. Identical duplicate IDs are listed and merged; conflicts and unexpected case counts refuse. Retained C, snapshot/recipe pins, CC environment and resource guard are unchanged. The inherited deadline is360s for up to10cases,900s above10. Outer orchestration unrestricted, target workers CPU3/jobs1. No target success, performance or all-native-conformance claim.\"",
+      "count": 1
+    }
+  ],
+  "dataOnly": true,
+  "targetsExecuted": false,
+  "scope": "Replace fixed catalog selection with explicit source-backed native selections and exact expected-case count. Preserve all downstream retained-workflow generation, snapshot/native recipe checking, command environment, per-worker affinity and parent guard limits."
+}

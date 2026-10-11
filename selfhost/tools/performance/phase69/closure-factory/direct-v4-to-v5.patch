@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/native/direct.bend
++++ b/selfhost/src/back/native/direct.bend
+@@ -154,7 +154,7 @@
+ def nd_comb_linear(params: List<&2, NC_Binding>, +body: KTerm) -> Bool:
+   match params:
+     case Nil{}: True{}
+-    case Con{NC_Binding{+id, word}, rest}:
++    case Con{NC_Binding{+id, word}, +rest}:
+       nt_choose(Bool, String.eq(nc_word(id, rest), "NATIVE_UNBOUND_VARIABLE") && U32.is_eq(nd_comb_uses(body, id), 1), u => nd_comb_linear(rest, body), u => False{})
+ 
+ # Refuse even malformed raw-ID collisions before using the ordinary substitution

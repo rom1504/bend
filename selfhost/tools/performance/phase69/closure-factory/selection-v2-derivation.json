@@ -1,0 +1,36 @@
+{
+  "kind": "phase69-closure-fixture-id-collision-correction",
+  "targetExecuted": false,
+  "parent": {
+    "file": "selfhost/tools/performance/phase69/closure-factory/selection-v1.json",
+    "sha256": "74d169b7385ea518905dc9836434066c10dc410ef1483a01704c56accbc9cd0d"
+  },
+  "successor": {
+    "file": "selfhost/tools/performance/phase69/closure-factory/selection-v2.json",
+    "sha256": "50892e13389a688a01ee029437aa3852f8469057a79b55eb9bf4500c439420bf"
+  },
+  "edits": [
+    {
+      "old": "compile/closure_partial_app.bend",
+      "new": "phase69/closure-factory/existing/compile/closure_partial_app.bend",
+      "file": "/home/ai/bend2/build/publish/bend/tests/compile/closure_partial_app.bend"
+    },
+    {
+      "old": "compile/erased_partial_closure.bend",
+      "new": "phase69/closure-factory/existing/compile/erased_partial_closure.bend",
+      "file": "/home/ai/bend2/build/publish/bend/tests/compile/erased_partial_closure.bend"
+    },
+    {
+      "old": "compile/over_application.bend",
+      "new": "phase69/closure-factory/existing/compile/over_application.bend",
+      "file": "/home/ai/bend2/build/publish/bend/tests/compile/over_application.bend"
+    },
+    {
+      "old": "compile/bang_intrinsic_closure.bend",
+      "new": "phase69/closure-factory/existing/compile/bang_intrinsic_closure.bend",
+      "file": "/home/ai/bend2/build/publish/bend/tests/compile/bang_intrinsic_closure.bend"
+    }
+  ],
+  "sourceBytesAndGoldensUnchanged": true,
+  "reason": "Inherited compile/* IDs resolve to pinned upstream inventory, while explicit files name live repository. Unique phase69 IDs avoid inventory collision without changing source or oracle."
+}

@@ -1,0 +1,126 @@
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -6,7 +6,7 @@
+   NC_Destination{+words: List<&2, String>, +shape: KTerm, +join: String, +owner: String, +params: List<&2, NC_Binding>, +tail: Bool, +signatures: List<&2, KDef>}
+ 
+ type NF_Worker is Data:
+-  NF_Worker{+name: String, +params: List<&2, NC_Binding>, +code: NC_Code, +deps: List<&2, String>, +shape: KTerm}
++  NF_Worker{+name: String, +params: List<&2, N_Param>, +code: NC_Code, +deps: List<&2, String>, +shape: KTerm}
+ 
+ @unsafe
+ def nf_scheduler(+target: NC_Target) -> Bool:
+@@ -69,10 +69,63 @@
+   "NF_" ++ nt_fid(name)
+ 
+ @unsafe
+-def nf_param_c(params: List<&2, NC_Binding>) -> String:
++def nf_param_c(params: List<&2, N_Param>) -> String:
+   match params:
+     case Nil{}: ""
+-    case Con{NC_Binding{id, word}, rest}: ", Term " ++ word ++ nf_param_c(rest)
++    case Con{N_Param{word, kind}, rest}: ", " ++ nf_param_type(kind) ++ " " ++ word ++ nf_param_c(rest)
++
++@unsafe
++def nf_param_type(kind: N_WordKind) -> String:
++  match kind:
++    case N_W32{}: "NF_SCALAR"
++    case _: "Term"
++
++# Private C argument facts come from the original telescope, before erasure.
++# The checked-entry macro enables narrowing; raw lowering keeps full Terms.
++@unsafe
++def nf_scalar_kind(+book: List<&2, KDef>, +ty: KTerm) -> N_WordKind:
++  +head = nq_layout_type(book, ty)
++  +owner = lookup(book, nm(head))
++  nt_choose(N_WordKind, String.eq(tg(head), "ADT") && String.eq(dk(owner), "ADT") && db(owner) && List.is_empty(&2, String, rm(head)) && List.is_empty(&2, KTerm, ks(head)) && nb_contains(["U32", "F32", "Char", "Bool"], nm(head)), u => N_W32{}, u => N_W64{})
++
++@unsafe
++def nf_opaque_kinds(+left: U32) -> List<&2, N_WordKind>:
++  nt_choose(List<&2, N_WordKind>, U32.is_eq(left, 0), u => Nil{}, u => Con{N_W64{}, nf_opaque_kinds(U32.sub(left, 1))})
++
++@unsafe
++def nf_kind_tele(+book: List<&2, KDef>, +ty: KTerm, +left: U32, +fuel: U32) -> List<&2, N_WordKind>:
++  nt_choose(List<&2, N_WordKind>, U32.is_eq(left, 0), u => Nil{}, u =>
++    nt_choose(List<&2, N_WordKind>, U32.is_eq(fuel, 0), v => nf_opaque_kinds(left), v => nf_kind_head(book, nq_layout_type(book, ty), left, U32.sub(fuel, 1))))
++
++@unsafe
++def nf_kind_head(+book: List<&2, KDef>, +head: KTerm, +left: U32, +fuel: U32) -> List<&2, N_WordKind>:
++  nt_choose(List<&2, N_WordKind>, String.eq(tg(head), "All"),
++    u => nt_choose(List<&2, N_WordKind>, U32.is_eq(qt(head), 0), v => nf_kind_tele(book, kid(head, 1), left, fuel), v => Con{nf_scalar_kind(book, kid(head, 0)), nf_kind_tele(book, kid(head, 1), U32.sub(left, 1), fuel)}),
++    u => nf_opaque_kinds(left))
++
++@unsafe
++def nf_worker_kinds(+book: List<&2, KDef>, +name: String, +arity: U32) -> List<&2, N_WordKind>:
++  +d = lookup(book, name)
++  nt_choose(List<&2, N_WordKind>, U32.is_eq(arity, jd_live_arity(book, dt(d), jd_arity(book, d))), u => nf_kind_tele(book, dt(d), arity, 256), u => nf_opaque_kinds(arity))
++
++@unsafe
++def nf_typed_params(+params: List<&2, NC_Binding>, +kinds: List<&2, N_WordKind>) -> List<&2, N_Param>:
++  nt_choose(List<&2, N_Param>, U32.is_eq(nt_count(NC_Binding, params), nt_count(N_WordKind, kinds)), u => nf_params_zip(params, kinds), u => nc_params(params))
++
++@unsafe
++def nf_params_zip(params: List<&2, NC_Binding>, kinds: List<&2, N_WordKind>) -> List<&2, N_Param>:
++  match params, kinds:
++    case Nil{}, _: Nil{}
++    case Con{NC_Binding{id, word}, rest}, Con{kind, more}: Con{N_Param{word, kind}, nf_params_zip(rest, more)}
++    case Con{NC_Binding{id, word}, rest}, Nil{}: Con{N_Param{word, N_W64{}}, nf_params_zip(rest, Nil{})}
++
++# A shell's fields remain opaque. Only nonflattened scalar arguments inherit
++# the original argument kind; expanding a product must not shift later slots.
++@unsafe
++def nf_expand_kinds(shapes: List<&2, KTerm>, kinds: List<&2, N_WordKind>) -> List<&2, N_WordKind>:
++  match shapes, kinds:
++    case Con{shape, rest}, Con{kind, more}: nt_append(N_WordKind, nt_choose(List<&2, N_WordKind>, String.eq(tg(shape), "NQShape"), u => nf_opaque_kinds(ix(shape)), u => [kind]), nf_expand_kinds(rest, more))
++    case _, _: Nil{}
+ 
+ @unsafe
+ def nf_arg_c(words: List<&2, String>) -> String:
+@@ -120,7 +173,7 @@
+   +body = nc_compact(nc_definition(book, lookup(book, name), 0))
+   +shape = atom("Absent")
+   +code = nc_lower_to(book, nd_reapply(body, nd_entry_args(params)), params, nt_count(NC_Binding, params), NC_Destination{nq_words("nf_out", nq_width(shape), 0), shape, "", name, params, True{}, signatures})
+-  NF_Worker{name, params, code, nc_calls(code), shape}
++  NF_Worker{name, nf_typed_params(params, nf_worker_kinds(book, name, nt_count(NC_Binding, params))), code, nc_calls(code), shape}
+ 
+ @unsafe
+ def nf_candidates(+book: List<&2, KDef>, names: List<&2, String>, +bangs: List<&2, String>, +signatures: List<&2, KDef>) -> List<&2, NF_Worker>:
+@@ -190,7 +243,7 @@
+   match workers:
+     case Nil{}: Nil{}
+     case Con{NF_Worker{+name, +params, code, deps, +shape}, +rest}:
+-      nt_choose(List<&2, KDef>, nb_contains(ready, name), u => Con{KDef{nt_choose(String, List.is_empty(&2, NC_Binding, params), v => name, v => nd_name(name)), "NFWorker", nt_count(NC_Binding, params), 0, shape, kt("NFName", name, 0, 0, Nil{}), Nil{}, False{}, False{}}, nf_adapter_defs(rest, ready)}, u => nf_adapter_defs(rest, ready))
++      nt_choose(List<&2, KDef>, nb_contains(ready, name), u => Con{KDef{nt_choose(String, List.is_empty(&2, N_Param, params), v => name, v => nd_name(name)), "NFWorker", nt_count(N_Param, params), 0, shape, kt("NFName", name, 0, 0, Nil{}), Nil{}, False{}, False{}}, nf_adapter_defs(rest, ready)}, u => nf_adapter_defs(rest, ready))
+ 
+ @unsafe
+ def nf_segment_args(params: List<&2, N_Param>) -> List<&2, String>:
+@@ -210,7 +263,7 @@
+ 
+ @unsafe
+ def nf_finish_ready(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>) -> NC_Result:
+-  nc_with_show(nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0)), cs, runtime, requests, pure, show, "#if !DEVICE\n#if defined(__GNUC__) || defined(__clang__)\n#define NF_INLINE INLINE __attribute__((always_inline))\n#else\n#define NF_INLINE INLINE\n#endif\n" ++ nf_prototypes(workers, ready) ++ nf_bodies(workers, ready) ++ "#undef NF_INLINE\n#endif\n", image)
++  nc_with_show(nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0)), cs, runtime, requests, pure, show, "#if !DEVICE\n#if NATIVE_TYPED_SCALARS\n#define NF_SCALAR u32\n#else\n#define NF_SCALAR Term\n#endif\n#if defined(__GNUC__) || defined(__clang__)\n#define NF_INLINE INLINE __attribute__((always_inline))\n#else\n#define NF_INLINE INLINE\n#endif\n" ++ nf_prototypes(workers, ready) ++ nf_bodies(workers, ready) ++ "#undef NF_INLINE\n#undef NF_SCALAR\n#endif\n", image)
+ 
+ # A failed optional product route must not poison the ordinary worker. Retain
+ # admitted code and retry ordinary candidates against only admitted signatures.
+--- a/selfhost/src/back/native/product.bend
++++ b/selfhost/src/back/native/product.bend
+@@ -372,7 +372,7 @@
+       +code = nt_choose(NC_Code, nq_entry_demand(body, ks(dv(info)), nd_entry_args(nd_entry_params(da(info), 0)), 0),
+         u => nc_lower_to(book, nd_reapply(body, args), params, fresh, NC_Destination{nq_words("nf_out", nq_width(shape), 0), shape, "", route, params, True{}, signatures}),
+         u => nc_fail("flat product: parameter may be dropped before matching", fresh))
+-      NF_Worker{route, params, code, nc_calls(code), shape}
++      NF_Worker{route, nf_typed_params(params, nf_expand_kinds(ks(dv(info)), nf_worker_kinds(book, name, da(info)))), code, nc_calls(code), shape}
+ 
+ # Every flattened parameter must reach exactly one source use per prefix path.
+ # All symbolic actuals below are already evaluated values, so beta substitution
+--- a/selfhost/src/back/native/scalar-array.bend
++++ b/selfhost/src/back/native/scalar-array.bend
+@@ -54,7 +54,7 @@
+   +names = nc_live_names(book, ["main"], Nil{})
+   +packed = effects_safe && ns_definitions(book, names)
+   +unshared = packed && ns_unshared_definitions(book, names)
+-  nc_compile(book, "#define NATIVE_COLD_USER_CTORS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n#define NATIVE_SCALAR_ARRAYS " ++ nt_choose(String, packed, u => "1", u => "0") ++ "\n#define NATIVE_UNSHARED_ARRAYS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n" ++ runtime, requests)
++  nc_compile(book, "#define NATIVE_TYPED_SCALARS " ++ nt_choose(String, packed, u => "1", u => "0") ++ "\n#define NATIVE_COLD_USER_CTORS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n#define NATIVE_SCALAR_ARRAYS " ++ nt_choose(String, packed, u => "1", u => "0") ++ "\n#define NATIVE_UNSHARED_ARRAYS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n" ++ runtime, requests)
+ 
+ # Conservative array-free values. Functions/IO can capture arrays, so decline.
+ # Container parameters are inspected recursively; an unknown type stays opaque.

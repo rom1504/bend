@@ -1,0 +1,38 @@
+{
+  "kind": "phase69-raw-runtime-list-abi-correction",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/add-raw-list-abi.py",
+    "sha256": "0680d708ac31b4d8da1765e1b671378005a15a2720bf35ee9ef4fab00d9aacfd",
+    "bytes": 3045
+  },
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/reachability/controls/raw-cases.mjs",
+    "sha256": "4db2fed8d8648558178799f84caef0931185d79d7175133bf760156db1ea81de",
+    "bytes": 2040
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/reachability/controls/raw-cases-v2.mjs",
+    "sha256": "eb976138e59b12fdee46b75a7ae6f10bc1524f903229740715b40bc4fd7ea167",
+    "bytes": 2942
+  },
+  "edits": [
+    {
+      "before": "export const rawCases = [",
+      "after": "// Match the existing raw12 runtime ABI, without moving an existing\n// declaration or changing a BookCache payload/source index. Constructor-table\n// discovery scans the physical declaration list; source lookup stays unchanged.\nconst runtimeListType69 = t('ADT', 'List', [t('ADT', 'U32')]);\nconst runtimeList69 = {...def('List', t('Absent'), t('Typ')),\n  kind: 'ADT', native: true,\n  ctors: list([\n    {...def('Nil', t('Absent'), runtimeListType69), kind: 'Ctr', arity: 0, native: true},\n    {...def('Con', t('Absent'), all(78, t('ADT', 'U32'),\n      all(79, runtimeListType69, runtimeListType69))), kind: 'Ctr', arity: 2, native: true},\n  ])};\nconst withRuntimeList69 = book => Array.isArray(book) ? [...book, runtimeList69]\n  : book.$ === 'Nil' ? list([runtimeList69])\n  : {$: 'Con', head: book.head, tail: withRuntimeList69(book.tail)};\n\nexport const rawCases = [",
+      "count": 1
+    },
+    {
+      "before": "];\n",
+      "after": "].map(test => ({...test, book: withRuntimeList69(test.book)}));\n",
+      "scope": "final module suffix only"
+    }
+  ],
+  "abiReference": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/raw-controls-v7.mjs",
+    "sha256": "786cf2662381f82f8c3f8bec1474e87b91f39b66b4b2b0a225f7fd5c9aab7ab4",
+    "bytes": 10038
+  },
+  "dataOnly": true,
+  "targetsExecuted": false,
+  "scope": "Append one native List ADT to each outer raw book, preserving existing declaration order and ordinal positions, term bytes, expectations and BookCache payloads/index. Existing physical constructor discovery supplies CID_NIL/CID_CON; this repairs invalid native fixture packaging, not a compiler change."
+}

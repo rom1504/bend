@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/native/direct.bend
++++ b/selfhost/src/back/native/direct.bend
+@@ -84,7 +84,7 @@
+     case Con{+arg, +rest}:
+       nt_choose(KTerm, String.eq(tg(head), "Lam"),
+         u => nt_choose(KTerm, String.eq(tg(arg), "Var"),
+-          u => nd_beta(subst(kid(head, 0), ix(head), arg), rest),
++          u => nd_beta(nq_layout_subst(kid(head, 0), ix(head), arg), rest),
+           u => nc_mklet(ix(head), arg, nd_beta(kid(head, 0), rest))),
+         u => nd_reapply(head, Con{arg, rest}))
+ 

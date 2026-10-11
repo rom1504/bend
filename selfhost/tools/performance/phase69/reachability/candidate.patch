@@ -1,0 +1,36 @@
+diff --git a/selfhost/src/back/native/book.bend b/selfhost/src/back/native/book.bend
+index feb21d7..588e712 100644
+--- a/selfhost/src/back/native/book.bend
++++ b/selfhost/src/back/native/book.bend
+@@ -236,11 +236,17 @@ def nc_bangs_terms(
+ def nc_bangs_term(t):
+   nt_choose(List<&2, String>, String.eq(tg(t), "Var"), u => Nil{}, u => nt_choose(List<&2, String>, String.eq(tg(t), "Ref") && U32.is_eq(qt(t), 3), u => [nm(t)], u => nt_choose(List<&2, String>, String.eq(tg(t), "Ann"), u => nc_bangs_term(kid(t, 0)), u => nc_bangs_terms(ks(t)))))
+ 
++# Bang metadata follows the same erased runtime closure as native emission.
++# Dead imported definitions must not change scheduling or worker admission.
+ @unsafe
+-def nc_bangs_book(book: List<&2, KDef>) -> List<&2, String>:
+-  match book:
++def nc_bangs_names(+book: List<&2, KDef>, names: List<&2, String>) -> List<&2, String>:
++  match names:
+     case Nil{}: Nil{}
+-    case Con{d, rest}: List.append(&2, String, nc_bangs_term(dv(d)), nc_bangs_book(rest))
++    case Con{name, rest}: List.append(&2, String, nc_bangs_term(nc_definition(book, lookup(book, name), 0)), nc_bangs_names(book, rest))
++
++@unsafe
++def nc_bangs_book(+book: List<&2, KDef>) -> List<&2, String>:
++  nc_bangs_names(book, nc_live_names(book, ["main"], Nil{}))
+ 
+ @unsafe
+ def nc_compile(+book: List<&2, KDef>, runtime: String, requests: String) -> NC_Result:
+diff --git a/selfhost/src/back/native/flat.bend b/selfhost/src/back/native/flat.bend
+index 1b5ba86..ac8b8ae 100644
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -245,5 +245,5 @@ def nf_finish_workers(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List
+ def nf_finish_show(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show) -> NC_Result:
+   +names = nc_live_names(book, ["main"], Nil{})
+   +signatures = book_cached(nq_signatures(book, names), 0)
+-  +bangs = nc_bangs_book(book)
++  +bangs = nc_bangs_names(book, names)
+   nf_finish_workers(book, ss, cs, runtime, requests, pure, show, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates(book, names, bangs, signatures)), signatures)

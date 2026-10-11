@@ -1,0 +1,153 @@
+{
+  "kind": "phase69-product-coverage-source-cross-check-v1",
+  "targetExecuted": false,
+  "producer": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/product-transport/product-coverage.py",
+    "bytes": 3358,
+    "sha256": "9b0264f9269bd61fd2cf529abbdb7db328c1e8bbd556f3e57d975262092dd5f9"
+  },
+  "receipt": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/parity-survey23-counts01/report.json",
+    "bytes": 1529453,
+    "sha256": "9711a8bb7ba2bcb7ae50688753e30525a5321187e6907848985574fe1601aa26"
+  },
+  "interpretation": "Call-site counts are structural; dynamic entries are frozen c23 17-minus-1 counter differences, not a new profile or timing.",
+  "records": [
+    {
+      "case": "tree",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-facts23-rest/tree-selfhost/program.c",
+        "sha256": "277d7adb6bf59b3d70fdd254b40142483ebd1e1878584c05a7487a73dea448e2",
+        "bytes": 1173400
+      },
+      "products": [
+        {
+          "name": "$product.../phase37/fixtures-historical/tree-bitonic:stat_out",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 16
+        },
+        {
+          "name": "$product.Nat.show.put",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 1
+        },
+        {
+          "name": "$product.../phase37/fixtures-historical/tree-bitonic:stat_join.go",
+          "sourceCallSites": 1,
+          "ordinaryDynamicEntries": 0
+        },
+        {
+          "name": "$product.Pair.snd",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 0
+        }
+      ],
+      "unusedProducts": 3,
+      "unusedOrdinaryDynamicEntries": 17
+    },
+    {
+      "case": "lexer",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-facts23-lexer/lexer-selfhost/program.c",
+        "sha256": "5a6a19f98a4ed6f4135333f0f9cce814a3626677b0242f99d17b489ec5bf3cd1",
+        "bytes": 1314022
+      },
+      "products": [
+        {
+          "name": "$product.Nat.show.put",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 1
+        },
+        {
+          "name": "$product.../phase37/fixtures-historical/lexer:step",
+          "sourceCallSites": 1,
+          "ordinaryDynamicEntries": 0
+        },
+        {
+          "name": "$product.../phase37/fixtures-historical/lexer:step.at",
+          "sourceCallSites": 2,
+          "ordinaryDynamicEntries": 0
+        },
+        {
+          "name": "$product.Pair.snd",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 0
+        }
+      ],
+      "unusedProducts": 2,
+      "unusedOrdinaryDynamicEntries": 1
+    },
+    {
+      "case": "map",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase68/native-facts23-rest/map-selfhost/program.c",
+        "sha256": "1a4d1a59191ce115af04765dc0373e82803dc4ba6116f7a99bbfbd6d4d09847b",
+        "bytes": 1750653
+      },
+      "products": [
+        {
+          "name": "$product.Map.bit.go.rec",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 164360
+        },
+        {
+          "name": "$product.Map.bit.chr",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 45152
+        },
+        {
+          "name": "$product.Map.bit.go.chr",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 45152
+        },
+        {
+          "name": "$product.Map.lo",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 9048
+        },
+        {
+          "name": "$product.Map.hi",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 7984
+        },
+        {
+          "name": "$product.Map.pop.lo",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 2848
+        },
+        {
+          "name": "$product.Map.ins.splice.bit",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 2040
+        },
+        {
+          "name": "$product.Map.pop.hi",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 1560
+        },
+        {
+          "name": "$product.Map.del.fin",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 520
+        },
+        {
+          "name": "$product.Map.pop.leaf",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 520
+        },
+        {
+          "name": "$product.Nat.show.put",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 1
+        },
+        {
+          "name": "$product.Pair.snd",
+          "sourceCallSites": 0,
+          "ordinaryDynamicEntries": 0
+        }
+      ],
+      "unusedProducts": 12,
+      "unusedOrdinaryDynamicEntries": 279185
+    }
+  ]
+}

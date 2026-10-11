@@ -1,0 +1,28 @@
+{
+  "kind": "phase69-raw-array-book-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/raw-controls-custom-v1.mjs",
+    "sha256": "17825e7b8066dc75d97aafa1d4ab6e7feb7c5d7893ebbdb055637fe478b03230",
+    "bytes": 15085
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/raw-controls-custom-v2.mjs",
+    "sha256": "9b679f257520fbcda5b72b79aae531a28004de86c229a2397eecb9c89a62c4f6",
+    "bytes": 15126
+  },
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/upgrade-raw-book-array.py",
+    "sha256": "2cfc845905d81b424c9a06904a36b0b1ac992200e282f62704dd1ee53eab077a",
+    "bytes": 1706
+  },
+  "edits": [
+    {
+      "before": "const got=api.nc_compile(test.book,runtime,'');",
+      "after": "const got=api.nc_compile(Array.isArray(test.book)?list(test.book):test.book,runtime,'');",
+      "count": 1
+    }
+  ],
+  "dataOnly": true,
+  "targetsExecuted": false,
+  "scope": "Normalize raw module JS-array books through the same existing Con/Nil helper. Prebuilt Con/Nil books and every behavioral oracle remain unchanged."
+}

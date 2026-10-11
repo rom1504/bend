@@ -68,6 +68,11 @@ def nc_foreign(+d: KDef) -> Bool:
 
 @unsafe
 def nc_definition(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
+  +fact = ns_body(book, dn(d))
+  nt_choose(KTerm, String.eq(dk(fact), "NativeStaticBody"), u => dv(fact), u => nc_definition_plain(book, d, n))
+
+@unsafe
+def nc_definition_plain(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
   +prim = nc_primitive_name(dn(d))
   nt_choose(KTerm, nc_native_def(d),
     u => nc_primitive_body(prim),
@@ -197,9 +202,9 @@ def nc_helpers() -> String:
   "INLINE bool native_bool(Term t) { return t == 1 || (term_tag(t) == TAG_PAK && term_aux(t) == CID_TRUE); }\nINLINE Term native_word(Env e, u32 x) {\n  Term w = term_pak(CID_WNIL, 0);\n  for (u32 i = 32; i > 0; i--) {\n    Loc p = heap_alloc(e, 1);\n    e.mem[p] = (x >> (i - 1)) & 1;\n    e.mem[p + 1] = rfc_seal(e, w);\n    w = term_ctr(CID_WCON, p);\n  }\n  return w;\n}\n"
 
 @unsafe
-def nc_with_show(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, d: NC_Show, workers: String) -> NC_Result:
+def nc_with_show(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, d: NC_Show, workers: String, +image: List<&2, String>) -> NC_Result:
   match d:
-    case NC_Show{+src, +err}: nt_choose(NC_Result, String.eq(nv_first(err, nv_program(ss, cs)), ""), u => NC_Result{ne_program(runtime, N_Program{ss, cs, Nil{}, requests, nc_helpers() ++ workers, src, pure}), ""}, u => NC_Result{"", nv_first(err, nv_program(ss, cs))})
+    case NC_Show{+src, +err}: nt_choose(NC_Result, String.eq(nv_first(err, nv_program(ss, cs)), ""), u => NC_Result{ne_program(runtime, N_Program{ss, cs, image, requests, nc_helpers() ++ workers, src, pure}), ""}, u => NC_Result{"", nv_first(err, nv_program(ss, cs))})
 
 # Include index/constructor children: raw cached books may carry definitions there.
 # A foreign program retains its previous ordinary-constructor representation.
@@ -236,11 +241,17 @@ def nc_bangs_terms(
 def nc_bangs_term(t):
   nt_choose(List<&2, String>, String.eq(tg(t), "Var"), u => Nil{}, u => nt_choose(List<&2, String>, String.eq(tg(t), "Ref") && U32.is_eq(qt(t), 3), u => [nm(t)], u => nt_choose(List<&2, String>, String.eq(tg(t), "Ann"), u => nc_bangs_term(kid(t, 0)), u => nc_bangs_terms(ks(t)))))
 
+# Bang metadata follows the same erased runtime closure as native emission.
+# Dead imported definitions must not change scheduling or worker admission.
 @unsafe
-def nc_bangs_book(book: List<&2, KDef>) -> List<&2, String>:
-  match book:
+def nc_bangs_names(+book: List<&2, KDef>, names: List<&2, String>) -> List<&2, String>:
+  match names:
     case Nil{}: Nil{}
-    case Con{d, rest}: List.append(&2, String, nc_bangs_term(dv(d)), nc_bangs_book(rest))
+    case Con{name, rest}: List.append(&2, String, nc_bangs_term(nc_definition(book, lookup(book, name), 0)), nc_bangs_names(book, rest))
+
+@unsafe
+def nc_bangs_book(+book: List<&2, KDef>) -> List<&2, String>:
+  nc_bangs_names(book, nc_live_names(book, ["main"], Nil{}))
 
 @unsafe
 def nc_compile(+book: List<&2, KDef>, runtime: String, requests: String) -> NC_Result:
@@ -249,7 +260,7 @@ def nc_compile(+book: List<&2, KDef>, runtime: String, requests: String) -> NC_R
   nt_choose(NC_Result, Bool.not(String.eq(owned, "")), u => NC_Result{"", owned}, u =>
   nt_choose(NC_Result, Bool.not(String.eq(dk(main), "Def")) || String.eq(tg(nc_unann(dv(main))), "Absent"), u => NC_Result{"", "no main to run"}, u =>
   nt_choose(NC_Result, nc_is_io(book, dt(main)) && String.eq(tg(nc_unann(dv(main))), "Foreign"), u => NC_Result{"", "main must be a filled def: a foreign main cannot anchor IO"}, u =>
-  nt_choose(NC_Result, U32.is_ge(norm_max_book(book), 4000000000), u => NC_Result{"", "native source binder IDs overlap the compiler temporary range"}, u => nc_finish(book, runtime, requests, nc_compile_defs(book, ["main"], Nil{}, 0, nc_bangs_book(book)))))))
+  nt_choose(NC_Result, U32.is_ge(norm_max_book(book), 4000000000), u => NC_Result{"", "native source binder IDs overlap the compiler temporary range"}, u => ns_compile(book, runtime, requests)))))
 
 @unsafe
 def nc_live_names(+book: List<&2, KDef>, todo: List<&2, String>, +done: List<&2, String>) -> List<&2, String>:

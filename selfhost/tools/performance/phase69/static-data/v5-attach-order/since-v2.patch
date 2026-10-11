@@ -1,0 +1,49 @@
+--- v2/static.bend
++++ v5/static.bend
+@@ -110,7 +110,11 @@
+ # retain a box; no type annotation or raw width promise licenses packing.
+ @unsafe
+ def ns_packed(+t: KTerm) -> Bool:
+-  match ks(t):
++  ns_packed_fields(t, ks(t))
++
++@unsafe
++def ns_packed_fields(+t: KTerm, fields: List<&2, KTerm>) -> Bool:
++  match fields:
+     case Nil{}: True{}
+     case Con{+h, Nil{}}:
+       nt_choose(Bool, String.starts_with(nm(t), "$ctor.") && String.eq(tg(h), "NWord"), u => ns_constant(h), u => False{})
+@@ -182,7 +186,11 @@
+ # Exact syntax/arity preserves malformed wrappers' original fallback.
+ @unsafe
+ def ns_static_scalar(+t: KTerm) -> KTerm:
+-  match ks(t):
++  ns_static_scalar_fields(t, ks(t))
++
++@unsafe
++def ns_static_scalar_fields(+t: KTerm, fields: List<&2, KTerm>) -> KTerm:
++  match fields:
+     case Nil{}:
+       nt_choose(KTerm, String.eq(nm(t), "True") || String.eq(nm(t), "False"),
+         u => kt("NWord", nt_choose(String, String.eq(nm(t), "True"), v => "1", v => "0"), 0, 0, Nil{}), u => t)
+@@ -211,11 +219,15 @@
+ def ns_attach(+book: List<&2, KDef>, built: NS_Defs) -> List<&2, KDef>:
+   match built:
+     case NS_Defs{facts, NS_Image{size, words, index}}:
+-      match book:
+-        case Con{cache, rest}:
+-          Con{KDef{dn(cache), dk(cache), da(cache), dx(cache), dt(cache), dv(cache),
+-            [index_first(dc(cache)), KDef{"$native.static", "NativeStaticContext", 0, 0, kt("NativeImage", "", size, 0, ns_image_terms(nt_reverse(String, words, Nil{}))), atom("Absent"), [index_build(facts)], False{}, False{}}], db(cache), du(cache)}, rest}
+-        case _: book
++      ns_attach_book(book, facts, size, words)
++
++@unsafe
++def ns_attach_book(+book: List<&2, KDef>, +facts: List<&2, KDef>, +size: U32, +words: List<&2, String>) -> List<&2, KDef>:
++  match book:
++    case Con{cache, rest}:
++      Con{KDef{dn(cache), dk(cache), da(cache), dx(cache), dt(cache), dv(cache),
++        [index_first(dc(cache)), KDef{"$native.static", "NativeStaticContext", 0, 0, kt("NativeImage", "", size, 0, ns_image_terms(nt_reverse(String, words, Nil{}))), atom("Absent"), [index_build(facts)], False{}, False{}}], db(cache), du(cache)}, rest}
++    case _: book
+ 
+ @unsafe
+ def ns_prepare(+book: List<&2, KDef>, +names: List<&2, String>) -> List<&2, KDef>:

@@ -1,0 +1,77 @@
+{
+  "base": "c84246e",
+  "requires": "root nc_bangs_names(book,names) helper",
+  "changes": [
+    {
+      "file": "selfhost/src/back/native/book.bend",
+      "old": "def nc_definition(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:\n  +prim =",
+      "new": "def nc_definition(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:\n  +fact = ns_body(book, dn(d))\n  nt_choose(KTerm, String.eq(dk(fact), \"NativeStaticBody\"), u => dv(fact), u => nc_definition_plain(book, d, n))\n\n@unsafe\ndef nc_definition_plain(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:\n  +prim ="
+    },
+    {
+      "file": "selfhost/src/back/native/book.bend",
+      "old": "d: NC_Show, workers: String) -> NC_Result:",
+      "new": "d: NC_Show, workers: String, +image: List<&2, String>) -> NC_Result:"
+    },
+    {
+      "file": "selfhost/src/back/native/book.bend",
+      "old": "N_Program{ss, cs, Nil{}, requests,",
+      "new": "N_Program{ss, cs, image, requests,"
+    },
+    {
+      "file": "selfhost/src/back/native/book.bend",
+      "old": "nc_finish(book, runtime, requests, nc_compile_defs(book, [\"main\"], Nil{}, 0, nc_bangs_book(book)))",
+      "new": "ns_compile(book, runtime, requests)"
+    },
+    {
+      "file": "selfhost/src/back/native/bridge.bend",
+      "old": "nt_choose(String, String.eq(tg(value), \"NOp\"), u => nd_scalar_word(nm(value), nc_values(ks(value), env)), u => nm(value) ++ \"ull\")",
+      "new": "nt_choose(String, String.eq(tg(value), \"NOp\"), u => nd_scalar_word(nm(value), nc_values(ks(value), env)), u => nt_choose(String, String.eq(tg(value), \"NStatic\"), v => ns_word(value), v => nm(value) ++ \"ull\"))"
+    },
+    {
+      "file": "selfhost/src/back/native/bridge.bend",
+      "old": "String.eq(tg(value), \"Var\") || String.eq(tg(value), \"NWord\") || (String.eq(tg(value), \"NOp\")",
+      "new": "String.eq(tg(value), \"Var\") || String.eq(tg(value), \"NWord\") || (String.eq(tg(value), \"NStatic\") && String.eq(dk(ns_context(book)), \"NativeStaticContext\")) || (String.eq(tg(value), \"NOp\")"
+    },
+    {
+      "file": "selfhost/src/back/native/bridge.bend",
+      "old": "def nc_compact(t):\n  kc(KTerm, core_literal(t),",
+      "new": "def nc_compact(t):\n  nt_choose(KTerm, String.eq(tg(t), \"NStatic\"), u => t, u => nc_compact_plain(t))\n\n@unsafe\ndef nc_compact_plain(+t: KTerm) -> KTerm:\n  kc(KTerm, core_literal(t),"
+    },
+    {
+      "file": "selfhost/src/back/native/bridge.bend",
+      "old": "nt_choose(NC_Code, String.eq(tag, \"NWord\"), u => nf_return(nm(t) ++ \"ull\", n, target), u =>",
+      "new": "nt_choose(NC_Code, String.eq(tag, \"NWord\") || String.eq(tag, \"NStatic\"), u => nt_choose(NC_Code, String.eq(tag, \"NStatic\"), v => ns_return(book, t, n, target), v => nf_return(nm(t) ++ \"ull\", n, target)), u =>"
+    },
+    {
+      "file": "selfhost/src/back/native/product.bend",
+      "old": "String.eq(tg(value), \"Ctr\") || String.eq(tg(value), \"NCtr\"), u => nq_ctor_shape(value, target)",
+      "new": "String.eq(tg(value), \"Ctr\") || String.eq(tg(value), \"NCtr\") || String.eq(tg(value), \"NStatic\"), u => nq_ctor_shape(value, target)"
+    },
+    {
+      "file": "selfhost/src/back/native/flat.bend",
+      "old": "def nf_finish_ready(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>)",
+      "new": "def nf_finish_ready(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>)"
+    },
+    {
+      "file": "selfhost/src/back/native/flat.bend",
+      "old": "++ \"#undef NF_INLINE\\n#endif\\n\")",
+      "new": "++ \"#undef NF_INLINE\\n#endif\\n\", image)"
+    },
+    {
+      "file": "selfhost/src/back/native/flat.bend",
+      "old": "nf_finish_ready(ss, cs, runtime, requests, pure, show, retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)))",
+      "new": "nf_finish_ready(ss, cs, runtime, requests, pure, show, retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)), ns_image(book))"
+    },
+    {
+      "file": "selfhost/src/back/native/manifest.txt",
+      "old": "book.bend\nforeign.bend",
+      "new": "book.bend\nstatic.bend\nforeign.bend"
+    }
+  ],
+  "newFiles": [
+    {
+      "source": "selfhost/tools/performance/phase69/static-data/static.bend",
+      "target": "selfhost/src/back/native/static.bend"
+    }
+  ]
+}

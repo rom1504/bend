@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/native/direct.bend
++++ b/selfhost/src/back/native/direct.bend
+@@ -174,7 +174,7 @@
+ def nd_comb_fill(+body: KTerm, args: List<&2, KTerm>) -> KTerm:
+   match args:
+     case Nil{}: body
+-    case Con{+h, rest}:
++    case Con{+h, +rest}:
+       nt_choose(KTerm, String.eq(tg(h), "Lam"),
+         u => nd_comb_fill(nq_layout_subst(kid(body, 0), ix(body), h), rest),
+         u => nc_mklet(ix(body), h, nd_comb_fill(kid(body, 0), rest)))

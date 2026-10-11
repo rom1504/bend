@@ -9,6 +9,17 @@ def ne_node(+prefix: String, +alloc: String, +ws: List<&2, String>, +n: U32, +se
   +name = nt_local(prefix, n)
   N_Emitted{"u64 " ++ name ++ " = " ++ alloc ++ ";\n" ++ ne_stores(name, ws, 0, seal), name, U32.inc(n)}
 
+# A checked no-sharing certificate permits cold non-Base parents. Raw emission
+# lacks the macro and keeps the ordinary sealed stores. Other node kinds remain
+# on ne_node; constructor identity comes from nc_ctor_identity provenance.
+@unsafe
+def ne_ctor_node(+k: String, +alloc: String, +ws: List<&2, String>, +n: U32, +hot: Bool) -> N_Emitted:
+  +name = nt_local("nd", n)
+  +stores = nt_choose(String, hot && String.starts_with(k, "$ctor."),
+    u => "#if NATIVE_COLD_USER_CTORS\n" ++ ne_stores(name, ws, 0, False{}) ++ "#else\n" ++ ne_stores(name, ws, 0, True{}) ++ "#endif\n",
+    u => ne_stores(name, ws, 0, hot))
+  N_Emitted{"u64 " ++ name ++ " = " ++ alloc ++ ";\n" ++ stores, name, U32.inc(n)}
+
 @unsafe
 def ne_wrap_ctor(+k: String, +x: N_Emitted) -> N_Emitted:
   match x:
@@ -25,7 +36,7 @@ def ne_single_result(+prefix: String, +value: String, +boxed: N_Emitted) -> N_Em
 def ne_single(+k: String, +h: String, +n: U32, +hot: Bool) -> N_Emitted:
   +word = nt_local("pf", n)
   +value = nt_local("pk", n)
-  ne_single_result("Term " ++ word ++ " = " ++ h ++ ";\nTerm " ++ value ++ ";\n#if NATIVE_PACK_CTORS\nif ((" ++ word ++ " & ~LOC_MASK) == 0) {\n" ++ value ++ " = term_pak(" ++ nt_cid(k) ++ ", " ++ word ++ ");\n} else\n#endif\n{\n", value, ne_wrap_ctor(k, ne_node("nd", "heap_alloc(e, cls_fit(1))", [word], n, hot)))
+  ne_single_result("Term " ++ word ++ " = " ++ h ++ ";\nTerm " ++ value ++ ";\n#if NATIVE_PACK_CTORS\nif ((" ++ word ++ " & ~LOC_MASK) == 0) {\n" ++ value ++ " = term_pak(" ++ nt_cid(k) ++ ", " ++ word ++ ");\n} else\n#endif\n{\n", value, ne_wrap_ctor(k, ne_ctor_node(k, "heap_alloc(e, cls_fit(1))", [word], n, hot)))
 
 @unsafe
 def ne_constructor(+k: String, +ws: List<&2, String>, +packed: Bool, +n: U32, +hot: Bool) -> N_Emitted:
@@ -36,7 +47,7 @@ def ne_constructor(+k: String, +ws: List<&2, String>, +packed: Bool, +n: U32, +h
         u => N_Emitted{"", "term_pak(" ++ nt_cid(k) ++ ", " ++ h ++ ")", n},
         u => nt_choose(N_Emitted, String.starts_with(k, "$ctor.") && U32.is_eq(nt_count(String, t), 0),
           u => ne_single(k, h, n, hot),
-          u => ne_wrap_ctor(k, ne_node("nd", "heap_alloc(e, cls_fit(" ++ U32.show(nt_count(String, ws)) ++ "))", ws, n, hot))))
+          u => ne_wrap_ctor(k, ne_ctor_node(k, "heap_alloc(e, cls_fit(" ++ U32.show(nt_count(String, ws)) ++ "))", ws, n, hot))))
 
 @unsafe
 def ne_closure_wrap(+k: String, +x: N_Emitted) -> N_Emitted:

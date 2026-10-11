@@ -1,0 +1,50 @@
+{
+  "kind": "phase69-custom-raw-derivation",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/derive-raw-custom.py",
+    "sha256": "dfac7f84decda8c3d8144327aef0aef22293ea1fb95c79707a7e14b1edf2c582",
+    "bytes": 4412
+  },
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/raw-controls-v7.mjs",
+    "sha256": "786cf2662381f82f8c3f8bec1474e87b91f39b66b4b2b0a225f7fd5c9aab7ab4",
+    "bytes": 10038
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/raw-controls-custom-v1.mjs",
+    "sha256": "17825e7b8066dc75d97aafa1d4ab6e7feb7c5d7893ebbdb055637fe478b03230",
+    "bytes": 15085
+  },
+  "dependencies": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/raw-extension-v1.js.txt",
+      "sha256": "3841bc925509c4559bae12bb691d53782569b410b06ea721591a9691a8d650cb",
+      "bytes": 4863
+    }
+  ],
+  "edits": [
+    {
+      "before": "const [recipeArg,baselineArg,candidateArg,outArg]=process.argv.slice(2);",
+      "after": "const [recipeArg,baselineArg,candidateArg,outArg,casesArg]=process.argv.slice(2);",
+      "count": 1
+    },
+    {
+      "before": "const root=path.resolve(import.meta.dirname,'../../../../..');",
+      "after": "const root=\"/home/ai/bend2/build/publish/bend\";",
+      "count": 1
+    },
+    {
+      "before": "const report={kind:'phase68-native-raw-controls-v6',complete:false,pass:false,inputs,rows:[]};",
+      "after": "const customPlan=JSON.parse(fs.readFileSync(casesArg,'utf8'));\nassert.equal(customPlan.kind,'phase69-custom-raw-cases');\ninputs.push(pin(casesArg),...customPlan.modules.map(x=>pin(x.file)));\nconst report={kind:'phase69-native-raw-custom-v1',complete:false,pass:false,inputs,rows:[]};",
+      "count": 1
+    },
+    {
+      "before": " inputs.forEach(x=>assert.deepEqual(pin(x.file),x));",
+      "after": " // Additive custom controls. The inherited twelve observations above remain\n // unchanged. Every role must satisfy an explicit oracle; there is no generic\n // permission to ignore a baseline failure.\n const declarations=[];\n for (const [moduleIndex,item] of customPlan.modules.entries()) {\n  assert.deepEqual(pin(item.file),{file:item.file,sha256:item.sha256});\n  const imported=await import(pathToFileURL(item.file));\n  const names=['rawCases','rawStaticCases'].filter(n=>Array.isArray(imported[n]));\n  assert.equal(names.length,1,'Expected exactly one raw-case array: '+item.file);\n  for (const test of imported[names[0]]) {\n   assert.match(test.name,/^[a-zA-Z0-9_-]+$/);\n   assert(test.book && typeof test.book==='object');\n   if (test.expectedByRole) {\n    assert.deepEqual(Object.keys(test.expectedByRole).sort(),['baseline','candidate']);\n    assert.equal(typeof test.behaviorChange,'string');assert(test.behaviorChange.length>0);\n   }\n   declarations.push({moduleIndex,module:pin(item.file),test});\n  }\n }\n assert.equal(declarations.length,customPlan.expectedAddedCases);\n assert.equal(new Set(declarations.map(d=>d.moduleIndex+':'+d.test.name)).size,declarations.length);\n report.customCases=declarations.length;\n report.intentionalBehaviorChanges=[];\n for (const {moduleIndex,module,test} of declarations) {\n  const name='custom-'+moduleIndex+'-'+test.name;\n  const row={name,caseName:test.name,module,kind:'custom-raw-core',results:{},pass:false};\n  if(test.expectedByRole) {\n   row.behaviorChange=test.behaviorChange;\n   report.intentionalBehaviorChanges.push({name,explanation:test.behaviorChange,expectedByRole:test.expectedByRole});\n  }\n  report.rows.push(row);save();\n  for (const [role,api] of Object.entries(apis)) {\n   const expected={...test,...(test.expectedByRole?.[role]??{})};\n   const got=api.nc_compile(test.book,runtime,'');\n   assert.equal(typeof got.error,'string');assert.equal(typeof got.source,'string');\n   const observation={error:got.error,sourceBytes:Buffer.byteLength(got.source),pass:false};\n   row.results[role]=observation;save();\n   if(expected.expectedCompileRejection || Object.hasOwn(expected,'expectedError')) {\n    observation.expected=expected.expectedCompileRejection ? {compileRejection:true} : {error:expected.expectedError};\n    observation.pass=got.source==='' && (expected.expectedCompileRejection ? got.error!=='' : got.error===expected.expectedError);\n    save();assert(observation.pass,JSON.stringify(row));continue;\n   }\n   assert.equal(got.error,'',name+' '+role);\n   assert(got.source.length>0);\n   const stem=path.join(out,name+'-'+role);\n   fs.writeFileSync(stem+'.c',got.source,{flag:'wx'});\n   observation.source=pin(stem+'.c');\n   if(role==='candidate' && Object.hasOwn(expected,'expectedCandidateBangs')) {\n    const values=[...got.source.matchAll(/^#define BANGS (\\d+)$/gm)];assert.equal(values.length,1);\n    observation.bangs=Number(values[0][1]);\n    assert(expected.expectedCandidateBangs==='positive' ? observation.bangs>0 : observation.bangs===expected.expectedCandidateBangs);\n   }\n   if(Object.hasOwn(expected,'expectedStaticWords')) {\n    const values=[...got.source.matchAll(/^#define STAT_LEN (\\d+)$/gm)];assert.equal(values.length,1);\n    observation.staticWords=Number(values[0][1]);assert.equal(observation.staticWords,expected.expectedStaticWords);\n   }\n   const cc=spawnSync(recipe.clang,[...recipe.clangArgs.filter(x=>x!=='-O3'),'-O1',stem+'.c',...recipe.linkArgs,'-o',stem],{encoding:'utf8',timeout:45000,maxBuffer:2**20});\n   observation.compile={status:cc.status,stderr:cc.stderr,error:cc.error?.message};save();\n   assert.equal(cc.status,0,cc.stderr||cc.error?.message);observation.executable=pin(stem);\n   const status=expected.expectedStatus??0,stderr=expected.expectedStderr??'';\n   const exactStdout=Object.hasOwn(expected,'expectedStdout');\n   assert(exactStdout || Object.hasOwn(expected,'expectedOutput'),'Missing independent runtime output oracle: '+name);\n   const stdout=exactStdout ? expected.expectedStdout : expected.expectedOutput;\n   assert.equal(typeof stdout,'string');assert.equal(typeof stderr,'string');\n   observation.expected={status,stdout,stderr,stdoutComparison:exactStdout?'exact':'trimEnd'};\n   observation.runs=[];\n   for (const threads of [1,4]) {\n    const r=spawnSync(stem,['--threads',String(threads),'--gpu','off'],{encoding:'utf8',timeout:10000,maxBuffer:2**20});\n    const pass=r.status===status && r.stderr===stderr && (exactStdout ? r.stdout===stdout : r.stdout.trimEnd()===stdout);\n    observation.runs.push({threads,status:r.status,signal:r.signal,stdout:r.stdout,stderr:r.stderr,error:r.error?.message,pass});save();\n   }\n   observation.pass=observation.runs.every(x=>x.pass);save();assert(observation.pass,JSON.stringify(row));\n  }\n  row.pass=Object.values(row.results).every(x=>x.pass);save();assert(row.pass,JSON.stringify(row));\n }\n\n inputs.forEach(x=>assert.deepEqual(pin(x.file),x));",
+      "count": 1
+    }
+  ],
+  "dataOnly": true,
+  "targetsExecuted": false,
+  "scope": "Unchanged inherited twelve observations plus explicit module-driven raw cases; both image roles, retained C, same O1/threads1,4/runtime recipe. Named error equality and nonempty/no-C rejection are separate. Explicit reviewed per-role expectations are recorded as behavior changes; no generic baseline-failure exemption."
+}

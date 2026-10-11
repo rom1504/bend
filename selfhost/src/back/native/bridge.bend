@@ -231,7 +231,7 @@ def nc_lower_partition(+book: List<&2, KDef>, +t: KTerm, +n: U32, +target: NC_Ta
 # value handling as the general cut, and bind the word before lowering the body.
 @unsafe
 def nc_let_atom(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:
-  +word = nt_choose(String, String.eq(tg(value), "Var"), u => nc_word(ix(value), env), u => nt_choose(String, String.eq(tg(value), "NOp"), u => nd_scalar_word(nm(value), nc_values(ks(value), env)), u => nm(value) ++ "ull"))
+  +word = nt_choose(String, String.eq(tg(value), "Var"), u => nc_word(ix(value), env), u => nt_choose(String, String.eq(tg(value), "NOp"), u => nd_scalar_word(nm(value), nc_values(ks(value), env)), u => nt_choose(String, String.eq(tg(value), "NStatic"), v => ns_word(value), v => nm(value) ++ "ull")))
   +bodyUses = nc_uses(body)
   +held = nc_live_uses(env, bodyUses)
   +rest = nc_lower_partition(book, body, n, NC_Scheduler{}, nc_partition_uses(List.append(&2, NC_Binding, held, [nc_binding(id)]), bodyUses))
@@ -242,7 +242,7 @@ def nc_let_atom(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&
 @unsafe
 def nc_let(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:
   +scalar = nd_scalar_call(book, value)
-  nt_choose(NC_Code, String.eq(tg(value), "Var") || String.eq(tg(value), "NWord") || (String.eq(tg(value), "NOp") && nd_scalar_known(nm(value))),
+  nt_choose(NC_Code, String.eq(tg(value), "Var") || String.eq(tg(value), "NWord") || (String.eq(tg(value), "NStatic") && String.eq(dk(ns_context(book)), "NativeStaticContext")) || (String.eq(tg(value), "NOp") && nd_scalar_known(nm(value))),
     u => nc_let_atom(book, value, body, env, id, n),
     u => nt_choose(NC_Code, String.eq(scalar, ""),
       u => nc_let_value(book, value, body, env, id, n),
@@ -550,6 +550,10 @@ def nc_compact_ctor(+t: KTerm, lit: NC_Literal) -> KTerm:
 
 @unsafe
 def nc_compact(t):
+  nt_choose(KTerm, String.eq(tg(t), "NStatic"), u => t, u => nc_compact_plain(t))
+
+@unsafe
+def nc_compact_plain(+t: KTerm) -> KTerm:
   kc(KTerm, core_literal(t), u => kc(KTerm, String.eq(nm(t), "String"), u => nc_compact(core_literal_step(t)), u => kt("NWord", U32.show(kl_number(t)), 0, 0, Nil{})), u =>
   nt_choose(KTerm, String.eq(tg(t), "Ctr"), u => nc_compact_ctor(t, nc_literal(t)), u => k_rebuild(t, nm(t), ix(t), qt(t), nc_compact_list(ks(t)), Nil{}, 0, 0)))
 
@@ -564,7 +568,7 @@ def nc_lower_live_to(book, t, env, n, target):
   +tag = tg(t)
   nt_choose(NC_Code, String.eq(tag, "NQBundle") && Bool.not(nf_scheduler(target)), u => nq_bundle_return(t, env, n, target), u =>
   nt_choose(NC_Code, String.eq(tag, "NQBox") && Bool.not(nf_scheduler(target)), u => nf_emitted(nc_constructor_value(nm(t), nc_values(ks(t), env), n), target), u =>
-  nt_choose(NC_Code, String.eq(tag, "NWord"), u => nf_return(nm(t) ++ "ull", n, target), u =>
+  nt_choose(NC_Code, String.eq(tag, "NWord") || String.eq(tag, "NStatic"), u => nt_choose(NC_Code, String.eq(tag, "NStatic"), v => ns_return(book, t, n, target), v => nf_return(nm(t) ++ "ull", n, target)), u =>
   nt_choose(NC_Code, String.eq(tag, "Var"), u => nt_choose(NC_Code, String.eq(nc_word(ix(t), env), "NATIVE_UNBOUND_VARIABLE"), u => nc_fail("native unbound variable " ++ U32.show(ix(t)), n), u => nf_return(nc_word(ix(t), env), n, target)), u =>
   nt_choose(NC_Code, String.eq(tag, "Ref"), u => nf_ref(book, t, n, target), u =>
   nt_choose(NC_Code, String.eq(tag, "Ann") || String.eq(tag, "Loc") || String.eq(tag, "Src") || String.eq(tag, "Cut") || String.eq(tag, "Slf") || String.eq(tag, "Ins"), u => nc_lower_to(book, kid(t, 0), env, n, target), u =>

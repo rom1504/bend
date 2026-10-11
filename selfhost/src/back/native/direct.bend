@@ -34,7 +34,7 @@ def nd_scalar_word(+name: String, +words: List<&2, String>) -> String:
   nt_choose(String, String.eq(name, "u32_cmp") || String.eq(name, "nat_cmp"), u => "term_pak((" ++ expr ++ ") == 0 ? CID_LT : (" ++ expr ++ ") == 1 ? CID_EQ : CID_GT, 0)", u => expr)
 
 # Saturated calls to a known leading lambda telescope use one register entry.
-# Partial applications retain the ordinary closure entry and its ownership ABI.
+# Partial applications keep the closure ABI; eligible named prefixes skip factories.
 law nd_app_to:
   for +book: List<&2, KDef>
   for +t: KTerm
@@ -84,7 +84,7 @@ def nd_beta(+head: KTerm, args: List<&2, KTerm>) -> KTerm:
     case Con{+arg, +rest}:
       nt_choose(KTerm, String.eq(tg(head), "Lam"),
         u => nt_choose(KTerm, String.eq(tg(arg), "Var"),
-          u => nd_beta(subst(kid(head, 0), ix(head), arg), rest),
+          u => nd_beta(nq_layout_subst(kid(head, 0), ix(head), arg), rest),
           u => nc_mklet(ix(head), arg, nd_beta(kid(head, 0), rest))),
         u => nd_reapply(head, Con{arg, rest}))
 
@@ -119,6 +119,108 @@ def nd_match_rest_list(ts: List<&2, KTerm>) -> List<&2, KTerm>:
     case Con{head, Con{arg, rest}}: rest
     case _: Nil{}
 
+# Known partial calls only skip a factory when the actual body starts with the
+# complete live lambda telescope. Type annotations alone never grant admission.
+# Gates are lazy: worker, bang, saturated and non-user paths do no partial scan.
+@unsafe
+def nd_partial_term(+name: String, args: List<&2, KTerm>, +acc: List<&2, KTerm>, +n: U32, +left: U32) -> KTerm:
+  match args:
+    case Nil{}:
+      +params = nd_entry_params(left, n)
+      nd_eta_body(params, kt("NCall", name, 0, 0, List.append(&2, KTerm, nt_reverse(KTerm, acc, Nil{}), nd_entry_args(params))))
+    case Con{+h, rest}:
+      nc_mklet(nc_id(n), h, nd_partial_term(name, rest, Con{var("", nc_id(n)), acc}, U32.inc(n), left))
+
+# A small linear combinator exposes literal captures to the existing beta rule.
+# Only its closed App/Var body is copied: <=8 parameters imply <=15 body nodes.
+@unsafe
+def nd_comb_literal(args: List<&2, KTerm>) -> Bool:
+  match args:
+    case Nil{}: False{}
+    case Con{+h, rest}: nt_choose(Bool, String.eq(tg(h), "Lam"), u => True{}, u => nd_comb_literal(rest))
+
+@unsafe
+def nd_comb_closed(+t: KTerm, +params: List<&2, NC_Binding>, +depth: U32) -> Bool:
+  nt_choose(Bool, String.eq(tg(t), "Var"), u => Bool.not(String.eq(nc_word(ix(t), params), "NATIVE_UNBOUND_VARIABLE")), u =>
+    nt_choose(Bool, String.eq(tg(t), "App") && U32.is_gt(depth, 0),
+      u => nd_comb_closed(kid(t, 0), params, U32.sub(depth, 1)) && nd_comb_closed(kid(t, 1), params, U32.sub(depth, 1)), u => False{}))
+
+@unsafe
+def nd_comb_uses(+t: KTerm, +id: U32) -> U32:
+  nt_choose(U32, String.eq(tg(t), "Var"), u => nt_bool(U32.is_eq(ix(t), id)), u =>
+    U32.add(nd_comb_uses(kid(t, 0), id), nd_comb_uses(kid(t, 1), id)))
+
+@unsafe
+def nd_comb_linear(params: List<&2, NC_Binding>, +body: KTerm) -> Bool:
+  match params:
+    case Nil{}: True{}
+    case Con{NC_Binding{+id, word}, +rest}:
+      nt_choose(Bool, String.eq(nc_word(id, rest), "NATIVE_UNBOUND_VARIABLE") && U32.is_eq(nd_comb_uses(body, id), 1), u => nd_comb_linear(rest, body), u => False{})
+
+# Refuse even malformed raw-ID collisions before using the ordinary substitution
+# helper. Syntax-only substitution leaves demand-preserving beta to lowering.
+@unsafe
+def nd_comb_fresh(+body: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +left: U32) -> Bool:
+  nt_choose(Bool, U32.is_eq(left, 0), u => True{}, u =>
+    nt_choose(Bool, Bool.not(nc_occurs(body, nc_id(n))) && Bool.not(nc_occurs_list(args, nc_id(n))) && String.eq(nc_word(nc_id(n), env), "NATIVE_UNBOUND_VARIABLE"),
+      u => nd_comb_fresh(body, args, env, U32.inc(n), U32.sub(left, 1)), u => False{}))
+
+@unsafe
+def nd_comb_rename(+t: KTerm, +n: U32, +left: U32) -> KTerm:
+  nt_choose(KTerm, U32.is_eq(left, 0), u => t, u =>
+    k_lam("", nc_id(n), 1, [nd_comb_rename(nq_layout_subst(kid(t, 0), ix(t), var("", nc_id(n))), U32.inc(n), U32.sub(left, 1))], 0, 0, False{}))
+
+@unsafe
+def nd_comb_fill(+body: KTerm, args: List<&2, KTerm>) -> KTerm:
+  match args:
+    case Nil{}: body
+    case Con{+h, +rest}:
+      nt_choose(KTerm, String.eq(tg(h), "Lam"),
+        u => nd_comb_fill(nq_layout_subst(kid(body, 0), ix(body), h), rest),
+        u => nc_mklet(ix(body), h, nd_comb_fill(kid(body, 0), rest)))
+
+@unsafe
+def nd_comb_try(+body: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +arity: U32) -> KTerm:
+  +params = nd_bindings(body, Nil{})
+  +value = nd_body(body)
+  nt_choose(KTerm, U32.is_eq(nt_count(NC_Binding, params), arity), u =>
+    nt_choose(KTerm, nd_comb_closed(value, params, 8), u =>
+      nt_choose(KTerm, nd_comb_linear(params, value), u =>
+        nt_choose(KTerm, nd_comb_fresh(body, args, env, n, arity),
+          u => nd_comb_fill(nd_comb_rename(body, n, arity), args), u => atom("Absent")),
+        u => atom("Absent")), u => atom("Absent")), u => atom("Absent"))
+
+@unsafe
+def nd_partial_selected(+book: List<&2, KDef>, +head: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +arity: U32, +d: KDef) -> KTerm:
+  +selected = nt_choose(KTerm, U32.is_lt(arity, 9),
+    u => nt_choose(KTerm, nd_comb_literal(args),
+      v => nd_comb_try(nc_erase(book, dv(d)), args, env, n, arity), v => atom("Absent")), u => atom("Absent"))
+  nt_choose(KTerm, String.eq(tg(selected), "Absent"),
+    u => nd_partial_term(nd_name(nc_ref_name(book, nm(head))), args, Nil{}, n, U32.sub(arity, terms_len(args))), u => selected)
+
+@unsafe
+def nd_partial_def(+book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +arity: U32, +d: KDef) -> NC_Code:
+  nt_choose(NC_Code, String.eq(dk(d), "Def") && Bool.not(nc_native_def(d)) && Bool.not(nc_foreign(d)),
+    u => nt_choose(NC_Code, U32.is_eq(nd_leading(dv(d), 0), arity),
+      v => nc_lower_to(book, nd_partial_selected(book, head, args, env, n, arity, d), env, U32.add(n, arity), target),
+      v => nf_slow_app(book, t, env, n, target)),
+    u => nf_slow_app(book, t, env, n, target))
+
+@unsafe
+def nd_ref_arity(+book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +count: U32, +arity: U32) -> NC_Code:
+  nt_choose(NC_Code, U32.is_eq(arity, count),
+    u => nc_lower_to(book, nc_sequence(nt_choose(String, nf_scheduler(target), v => "NCall", v => "NFCall"), nt_choose(String, nf_scheduler(target), v => nd_name(nc_ref_name(book, nm(head))), v => nm(head)), args, Nil{}, n), env, U32.add(n, count), target),
+    u => nt_choose(NC_Code, nf_scheduler(target) && U32.is_lt(count, arity),
+      v => nd_partial_def(book, t, head, args, env, n, target, arity, lookup(book, nm(head))),
+      v => nf_slow_app(book, t, env, n, target)))
+
+@unsafe
+def nd_ref_app(+book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+  +count = terms_len(args)
+  nt_choose(NC_Code, Bool.not(U32.is_eq(qt(head), 3)) && U32.is_gt(count, 0),
+    u => nd_ref_arity(book, t, head, args, env, n, target, count, nd_arity(book, nm(head))),
+    u => nf_slow_app(book, t, env, n, target))
+
 @unsafe
 def nd_app_to(book, t, env, n, target):
   +head = nd_head(t)
@@ -130,10 +232,7 @@ def nd_app_to(book, t, env, n, target):
     nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_eq(terms_len(args), 1), u => nd_match_to(book, head, kid(t, 1), env, n, target), u =>
     nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_gt(terms_len(args), 1) && (nd_match_vars(args) || (Bool.not(nf_scheduler(target)) && nq_match_args(args))),
       u => nc_lower_to(book, nd_match_sequence(head, args, Nil{}, n), env, U32.add(n, terms_len(args)), target), u =>
-    nt_choose(NC_Code, String.eq(tg(head), "Ref"), u =>
-    nt_choose(NC_Code, Bool.not(U32.is_eq(qt(head), 3)) && U32.is_gt(terms_len(args), 0) && U32.is_eq(nd_arity(book, nm(head)), terms_len(args)),
-      u => nc_lower_to(book, nc_sequence(nt_choose(String, nf_scheduler(target), v => "NCall", v => "NFCall"), nt_choose(String, nf_scheduler(target), v => nd_name(nc_ref_name(book, nm(head))), v => nm(head)), args, Nil{}, n), env, U32.add(n, terms_len(args)), target),
-      u => nf_slow_app(book, t, env, n, target)), u => nf_slow_app(book, t, env, n, target)))))))
+    nt_choose(NC_Code, String.eq(tg(head), "Ref"), u => nd_ref_app(book, t, head, args, env, n, target), u => nf_slow_app(book, t, env, n, target)))))))
 
 @unsafe
 def nd_body(+t: KTerm) -> KTerm:

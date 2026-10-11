@@ -1,0 +1,28 @@
+--- a/selfhost/src/back/native/static.bend
++++ b/selfhost/src/back/native/static.bend
+@@ -110,7 +110,11 @@
+ # retain a box; no type annotation or raw width promise licenses packing.
+ @unsafe
+ def ns_packed(+t: KTerm) -> Bool:
+-  match ks(t):
++  ns_packed_fields(t, ks(t))
++
++@unsafe
++def ns_packed_fields(+t: KTerm, fields: List<&2, KTerm>) -> Bool:
++  match fields:
+     case Nil{}: True{}
+     case Con{+h, Nil{}}:
+       nt_choose(Bool, String.starts_with(nm(t), "$ctor.") && String.eq(tg(h), "NWord"), u => ns_constant(h), u => False{})
+@@ -182,7 +186,11 @@
+ # Exact syntax/arity preserves malformed wrappers' original fallback.
+ @unsafe
+ def ns_static_scalar(+t: KTerm) -> KTerm:
+-  match ks(t):
++  ns_static_scalar_fields(t, ks(t))
++
++@unsafe
++def ns_static_scalar_fields(+t: KTerm, fields: List<&2, KTerm>) -> KTerm:
++  match fields:
+     case Nil{}:
+       nt_choose(KTerm, String.eq(nm(t), "True") || String.eq(nm(t), "False"),
+         u => kt("NWord", nt_choose(String, String.eq(nm(t), "True"), v => "1", v => "0"), 0, 0, Nil{}), u => t)

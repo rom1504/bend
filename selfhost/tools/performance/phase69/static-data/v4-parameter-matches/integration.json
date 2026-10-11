@@ -1,0 +1,16 @@
+{
+  "reason": "Bend matches require parameter or field scrutinees; the two computed ks(t) matches need helper parameters.",
+  "baseSha256": "25901b1c919609199dc90bd8a3758a737561731876e70541c829eb91af56d226",
+  "changes": [
+    {
+      "file": "selfhost/src/back/native/static.bend",
+      "old": "def ns_packed(+t: KTerm) -> Bool:\n  match ks(t):",
+      "new": "def ns_packed(+t: KTerm) -> Bool:\n  ns_packed_fields(t, ks(t))\n\n@unsafe\ndef ns_packed_fields(+t: KTerm, fields: List<&2, KTerm>) -> Bool:\n  match fields:"
+    },
+    {
+      "file": "selfhost/src/back/native/static.bend",
+      "old": "def ns_static_scalar(+t: KTerm) -> KTerm:\n  match ks(t):",
+      "new": "def ns_static_scalar(+t: KTerm) -> KTerm:\n  ns_static_scalar_fields(t, ks(t))\n\n@unsafe\ndef ns_static_scalar_fields(+t: KTerm, fields: List<&2, KTerm>) -> KTerm:\n  match fields:"
+    }
+  ]
+}

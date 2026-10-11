@@ -1,0 +1,11 @@
+{
+  "reason": "Full compiler assembly reads compiler.json, not native/manifest.txt; build03 snapshot omitted the complete static module.",
+  "baseSha256": "99157494226a77a92f69e48a1ae4daf605fdc5b38f30cd6a62ed5db7104128e9",
+  "changes": [
+    {
+      "file": "selfhost/src/compiler.json",
+      "old": "    \"src/back/native/book.bend\",\n",
+      "new": "    \"src/back/native/book.bend\",\n    \"src/back/native/static.bend\",\n"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+ // Additive custom controls. The inherited twelve observations above remain
+ // unchanged. Every role must satisfy an explicit oracle; there is no generic
+ // permission to ignore a baseline failure.
+ const declarations=[];
+ for (const [moduleIndex,item] of customPlan.modules.entries()) {
+  assert.deepEqual(pin(item.file),{file:item.file,sha256:item.sha256});
+  const imported=await import(pathToFileURL(item.file));
+  const names=['rawCases','rawStaticCases'].filter(n=>Array.isArray(imported[n]));
+  assert.equal(names.length,1,'Expected exactly one raw-case array: '+item.file);
+  for (const test of imported[names[0]]) {
+   assert.match(test.name,/^[a-zA-Z0-9_-]+$/);
+   assert(test.book && typeof test.book==='object');
+   if (test.expectedByRole) {
+    assert.deepEqual(Object.keys(test.expectedByRole).sort(),['baseline','candidate']);
+    assert.equal(typeof test.behaviorChange,'string');assert(test.behaviorChange.length>0);
+   }
+   declarations.push({moduleIndex,module:pin(item.file),test});
+  }
+ }
+ assert.equal(declarations.length,customPlan.expectedAddedCases);
+ assert.equal(new Set(declarations.map(d=>d.moduleIndex+':'+d.test.name)).size,declarations.length);
+ report.customCases=declarations.length;
+ report.intentionalBehaviorChanges=[];
+ for (const {moduleIndex,module,test} of declarations) {
+  const name='custom-'+moduleIndex+'-'+test.name;
+  const row={name,caseName:test.name,module,kind:'custom-raw-core',results:{},pass:false};
+  if(test.expectedByRole) {
+   row.behaviorChange=test.behaviorChange;
+   report.intentionalBehaviorChanges.push({name,explanation:test.behaviorChange,expectedByRole:test.expectedByRole});
+  }
+  report.rows.push(row);save();
+  for (const [role,api] of Object.entries(apis)) {
+   const expected={...test,...(test.expectedByRole?.[role]??{})};
+   const got=api.nc_compile(test.book,runtime,'');
+   assert.equal(typeof got.error,'string');assert.equal(typeof got.source,'string');
+   const observation={error:got.error,sourceBytes:Buffer.byteLength(got.source),pass:false};
+   row.results[role]=observation;save();
+   if(expected.expectedCompileRejection || Object.hasOwn(expected,'expectedError')) {
+    observation.expected=expected.expectedCompileRejection ? {compileRejection:true} : {error:expected.expectedError};
+    observation.pass=got.source==='' && (expected.expectedCompileRejection ? got.error!=='' : got.error===expected.expectedError);
+    save();assert(observation.pass,JSON.stringify(row));continue;
+   }
+   assert.equal(got.error,'',name+' '+role);
+   assert(got.source.length>0);
+   const stem=path.join(out,name+'-'+role);
+   fs.writeFileSync(stem+'.c',got.source,{flag:'wx'});
+   observation.source=pin(stem+'.c');
+   if(role==='candidate' && Object.hasOwn(expected,'expectedCandidateBangs')) {
+    const values=[...got.source.matchAll(/^#define BANGS (\d+)$/gm)];assert.equal(values.length,1);
+    observation.bangs=Number(values[0][1]);
+    assert(expected.expectedCandidateBangs==='positive' ? observation.bangs>0 : observation.bangs===expected.expectedCandidateBangs);
+   }
+   if(Object.hasOwn(expected,'expectedStaticWords')) {
+    const values=[...got.source.matchAll(/^#define STAT_LEN (\d+)$/gm)];assert.equal(values.length,1);
+    observation.staticWords=Number(values[0][1]);assert.equal(observation.staticWords,expected.expectedStaticWords);
+   }
+   const cc=spawnSync(recipe.clang,[...recipe.clangArgs.filter(x=>x!=='-O3'),'-O1',stem+'.c',...recipe.linkArgs,'-o',stem],{encoding:'utf8',timeout:45000,maxBuffer:2**20});
+   observation.compile={status:cc.status,stderr:cc.stderr,error:cc.error?.message};save();
+   assert.equal(cc.status,0,cc.stderr||cc.error?.message);observation.executable=pin(stem);
+   const status=expected.expectedStatus??0,stderr=expected.expectedStderr??'';
+   const exactStdout=Object.hasOwn(expected,'expectedStdout');
+   assert(exactStdout || Object.hasOwn(expected,'expectedOutput'),'Missing independent runtime output oracle: '+name);
+   const stdout=exactStdout ? expected.expectedStdout : expected.expectedOutput;
+   assert.equal(typeof stdout,'string');assert.equal(typeof stderr,'string');
+   observation.expected={status,stdout,stderr,stdoutComparison:exactStdout?'exact':'trimEnd'};
+   observation.runs=[];
+   for (const threads of [1,4]) {
+    const r=spawnSync(stem,['--threads',String(threads),'--gpu','off'],{encoding:'utf8',timeout:10000,maxBuffer:2**20});
+    const pass=r.status===status && r.stderr===stderr && (exactStdout ? r.stdout===stdout : r.stdout.trimEnd()===stdout);
+    observation.runs.push({threads,status:r.status,signal:r.signal,stdout:r.stdout,stderr:r.stderr,error:r.error?.message,pass});save();
+   }
+   observation.pass=observation.runs.every(x=>x.pass);save();assert(observation.pass,JSON.stringify(row));
+  }
+  row.pass=Object.values(row.results).every(x=>x.pass);save();assert(row.pass,JSON.stringify(row));
+ }

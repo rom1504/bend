@@ -123,7 +123,7 @@ def nq_min_uses_list(ts: List<&2, KTerm>, +id: U32) -> U32:
 def nq_value_shape(+book: List<&2, KDef>, +value: KTerm, +target: NC_Target) -> KTerm:
   +head = nd_head(value)
   nt_choose(KTerm, String.eq(tg(value), "NQBundle"), u => kt("NQShape", nm(value), terms_len(ks(value)), 0, Nil{}), u =>
-    nt_choose(KTerm, String.eq(tg(value), "Ctr") || String.eq(tg(value), "NCtr"), u => nq_ctor_shape(value, target), u =>
+    nt_choose(KTerm, String.eq(tg(value), "Ctr") || String.eq(tg(value), "NCtr") || String.eq(tg(value), "NStatic"), u => nq_ctor_shape(value, target), u =>
     nt_choose(KTerm, String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)) && U32.is_eq(nd_arity(book, nm(head)), terms_len(nd_args(value, Nil{}))), u => nq_call_shape(book, nm(head), nd_args(value, Nil{}), target), u =>
       nt_choose(KTerm, String.eq(tg(value), "NFCall"), u => nq_call_shape(book, nm(value), ks(value), target), u =>
         nt_choose(KTerm, String.eq(tg(value), "NOp") && nq_pair_primitive(nm(value)), u => kt("NQShape", "Tuple", 2, 0, Nil{}), u => atom("Absent"))))))

@@ -1,0 +1,60 @@
+{
+  "status": "prepared-not-applied-not-checked",
+  "producer": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/prepare-typed-patch.py",
+    "sha256": "e73f3731f70afad7a4ec2d08e457938fb294e7e05845859f8f2b6b33154d3961",
+    "bytes": 6515
+  },
+  "patch": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/typed-worker-candidate/source.patch",
+    "sha256": "83695388b3272e154889771da3eb81a436e583c113f44833fbd58e09bfd4cff9",
+    "bytes": 8497
+  },
+  "sources": [
+    {
+      "logical": "selfhost/src/back/native/flat.bend",
+      "before": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/typed-worker-candidate/flat.bend.before",
+        "sha256": "917dd540e2cb15364ca51a0d35cbfd487a7f4748940483dec5abe2cbd05a13a0",
+        "bytes": 14865
+      },
+      "after": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/typed-worker-candidate/flat.bend.after",
+        "sha256": "f2f364bff806909699c4e5abb62945ccab14649ddeb3c97c57121acd0361cd10",
+        "bytes": 17602
+      }
+    },
+    {
+      "logical": "selfhost/src/back/native/product.bend",
+      "before": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/typed-worker-candidate/product.bend.before",
+        "sha256": "e8c42c6112b1e7a6b854de62ceb1245f829855fb00d61625e83ad0079d887643",
+        "bytes": 24858
+      },
+      "after": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/typed-worker-candidate/product.bend.after",
+        "sha256": "3ba879931fd64c4c118c9ce50b1a35053cf9de50b902c88ccbf5b4ab727fddf6",
+        "bytes": 24965
+      }
+    },
+    {
+      "logical": "selfhost/src/back/native/scalar-array.bend",
+      "before": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/typed-worker-candidate/scalar-array.bend.before",
+        "sha256": "c20233f0dff54757c415c85d9ffd14ed8c18795507abe31a84d70f66fd2eda55",
+        "bytes": 5152
+      },
+      "after": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/typed-worker-candidate/scalar-array.bend.after",
+        "sha256": "67a4935b166aa530a1018a855e724a3c5027c36b1879df2dc5288f433e90ebf3",
+        "bytes": 5238
+      }
+    }
+  ],
+  "hypothesis": {
+    "path": "/home/ai/bend2/build/publish/bend/experiments/phase69/P69-008-typed-native-worker-parameters.md",
+    "sha256": "574daa5b253b574cd482a7bf37c7158266e5dd75b4cb6252ef98ac45cab86d1b",
+    "bytes": 2242
+  },
+  "scope": "Reviewable checked-only scalar parameter metadata proposal; source/data work, no compiler or native execution. Narrowing macro uses packed safe-effects/layout permission; raw falls back to Term."
+}

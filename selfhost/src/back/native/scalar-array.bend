@@ -54,7 +54,7 @@ def nc_compile_checked(+book: List<&2, KDef>, runtime: String, requests: String,
   +names = nc_live_names(book, ["main"], Nil{})
   +packed = effects_safe && ns_definitions(book, names)
   +unshared = packed && ns_unshared_definitions(book, names)
-  nc_compile(book, "#define NATIVE_SCALAR_ARRAYS " ++ nt_choose(String, packed, u => "1", u => "0") ++ "\n#define NATIVE_UNSHARED_ARRAYS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n" ++ runtime, requests)
+  nc_compile(book, "#define NATIVE_COLD_USER_CTORS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n#define NATIVE_SCALAR_ARRAYS " ++ nt_choose(String, packed, u => "1", u => "0") ++ "\n#define NATIVE_UNSHARED_ARRAYS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n" ++ runtime, requests)
 
 # Conservative array-free values. Functions/IO can capture arrays, so decline.
 # Container parameters are inspected recursively; an unknown type stays opaque.

@@ -1,0 +1,22 @@
+{
+  "kind": "phase69-known-linear-combinator-source-proposal-v4",
+  "productionEdited": false,
+  "targetExecuted": false,
+  "base": "direct-v2.bend",
+  "baseSha256": "d281fd6326b2beed7aae46513270ac992e56be9b2fa85bf5ba7bcf6e19fddbf1",
+  "candidateSha256": "65653b13059ffc8fbce0a2a87a4887e586cc4b1e4935e1218e625a339f064a2c",
+  "lineDelta": 67,
+  "patch": "direct-v2-to-v4.patch",
+  "correctnessPrerequisite": "beta-sequencing-prerequisite.patch",
+  "rejectedDraft": {
+    "patch": "direct-v2-to-v3.patch",
+    "reason": "Ordinary subst invokes core_rebuild and can discard demanded nonvalue arguments during compile-time beta"
+  },
+  "mechanismBudget": {
+    "maxArity": 8,
+    "maxResidualBodyNodes": 15,
+    "maxResidualBodyDepth": 8,
+    "perParameterUses": 1,
+    "distinctBinderIds": true
+  }
+}

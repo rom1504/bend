@@ -1,0 +1,65 @@
+{
+  "kind": "phase69-custom-raw-derivation",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/derive-raw-custom.py",
+    "sha256": "dfac7f84decda8c3d8144327aef0aef22293ea1fb95c79707a7e14b1edf2c582",
+    "bytes": 4412
+  },
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase69/methods01/prepare-raw.py",
+    "sha256": "66feb12fde9418c6461570f163d888fb2d0de549bc6ec3f47e3e74d46ec9dd1c",
+    "bytes": 3583
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/prepare-custom-raw.py",
+    "sha256": "2fb6f967774b8dcac10bd2afd5b9dcd037159513494642207ec59ea159f48a63",
+    "bytes": 4342
+  },
+  "dependencies": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/raw-controls-custom-v1.mjs",
+      "sha256": "17825e7b8066dc75d97aafa1d4ab6e7feb7c5d7893ebbdb055637fe478b03230",
+      "bytes": 15085
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/raw-controls-custom-v1.derivation.json",
+      "sha256": "412359d1a6a5591aaf4fa229199e278da5b70eb3ee9e353ca02cb055041fc46c",
+      "bytes": 7376
+    }
+  ],
+  "edits": [
+    {
+      "before": "    a = p.parse_args()",
+      "after": "    p.add_argument('--case-module', type=Path, action='append', required=True)\n    p.add_argument('--expected-added-cases', type=int, required=True)\n    a = p.parse_args()\n    assert 0 < a.expected_added_cases <= 100",
+      "count": 1
+    },
+    {
+      "before": "controller = ROOT / 'selfhost/tools/performance/phase68/controls/raw-controls-v7.mjs'",
+      "after": "controller = ROOT / 'selfhost/tools/performance/phase69/methods/raw-controls-custom-v1.mjs'",
+      "count": 1
+    },
+    {
+      "before": "    assert not out.exists(); out.mkdir(parents=True)",
+      "after": "    assert not out.exists(); out.mkdir(parents=True)\n    modules = [pin(path) for path in a.case_module]\n    assert len({x['file'] for x in modules}) == len(modules)\n    cases_file = out/'cases.json'\n    cases_file.write_text(json.dumps(dict(kind='phase69-custom-raw-cases', modules=modules,\n        expectedAddedCases=a.expected_added_cases), indent=2)+'\\n')\n    inputs += [*modules, pin(cases_file), pin(controller.with_suffix('.derivation.json')),\n               pin(Path(__file__).with_suffix('.derivation.json'))]",
+      "count": 1
+    },
+    {
+      "before": "str(out/'execution')]",
+      "after": "str(out/'execution'),str(cases_file)]",
+      "count": 1
+    },
+    {
+      "before": "kind='phase68-raw-native-control-plan'",
+      "after": "kind='phase69-custom-raw-native-control-plan'",
+      "count": 1
+    },
+    {
+      "before": "runtime=runtime,controller=pin(controller),command=command",
+      "after": "runtime=runtime,controller=pin(controller),customCases=pin(cases_file),expectedAddedCases=a.expected_added_cases,command=command",
+      "count": 1
+    }
+  ],
+  "dataOnly": true,
+  "targetsExecuted": false,
+  "scope": "Unchanged checked-image/runtime/native-recipe checking and180s/2GiB/4GiB guard, plus pinned custom modules and exact added-case count. Target execution remains root-only."
+}

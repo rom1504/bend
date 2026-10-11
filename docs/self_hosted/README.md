@@ -7,6 +7,8 @@ usage, the [direct guide](../../selfhost/docs/direct-javascript.md) for the
 new namespace/effect interfaces, and [prepared Base artifacts](prepared-base-artifacts.md)
 for new-Base invalidation and optional-product qualification.
 
+For agent cost controls, see [usage monitoring and budget checkpoints](agent-usage.md).
+
 ## Historical Phase64 installed baseline
 
 **Phase64 State09 was installed and verified at that checkpoint.** The release extends the

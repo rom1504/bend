@@ -1,5 +1,9 @@
 # Checked compiler development
 
+Agent token/limit telemetry is available through `python3 tools/development/usage.py`
+from `selfhost/`. See [usage monitoring](../../../docs/self_hosted/agent-usage.md)
+for snapshots, interval budgets and their limitations.
+
 From `selfhost/`, run Node 24:
 
 ```sh

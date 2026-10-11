@@ -4155,3 +4155,22 @@ ratios3.389×/2.284×. B2 generation/eight driver observations pass; installed
 promotion/full self-check/reproduction are separate. +27 physical/+21 code
 Bend lines,120 modules unchanged. Failed22 and unexecuted preflight plan remain
 preserved in the campaign capsule. No PR comment or installed-release change.
+
+
+### Phase68 P68-022–024 investigated — 2026-10-11
+
+[Report](../implementation/phase68/c23-parity-survey.md). No production edits or
+promotion. Forty native profiles, twelve exact-.text debug checks, eight paired
+allocation-site classifications and25 optimized symbols explain candidate23's
+remaining gap. Main-thread profiling exposed dead bang metadata; all-thread
+successor covers>99.999% of process CPU in16 observations. Mode-only saved-C
+controls reduce tree14.9% /lexer11.9% time. Separate five-arm lexer campaign:
+unchanged614ms, static552ms, mode540ms, combined480ms, upstream247ms; all25
+intervals qualified and6controls correct. Static-only counts remove473088
+allocations including233472 redirects, as predicted. Map products+redirects
+are98.32% of excess allocation calls; closure dispatch runs~2× despite nearly
+identical machine code. Rank small reachable-bang/static-image fixes, then
+shared typed transport, known closure and ownership/reuse experiments.
+Previous compiler23 six-family1.724× remains unchanged; no saved-C whole-suite
+claim. Lean/GHC/Flambda/Koka/LLVM research expanded; failures and exact methods
+preserved. Guarded process time7min29s, max treeRSS347.52MiB. No PR comment.

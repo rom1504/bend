@@ -1,19 +1,26 @@
-# Active frontier: Phase68 native parity work
+# Active frontier: Phase68 native parity investigation
 
-[Design](../design/phase68/native-facts-and-calls.md) ·
-[Current report](../implementation/phase68/native-facts-and-calls.md).
-Source candidate23 (`b2ec0a2`) fixes the foreign closure FID: selected native
-integration37/37, raw12 and query23 pass. Optional product failure retains an
-ordinary worker; eager ownership scans are avoided. Paired C requests improve
-8.3% B1 /5.4% B2 over20. Current three-source upstream ratios3.389×/2.284×;
-six-family C runtime1.724×, but only lexer C changes (about2–3% runtime gain).
-Other five emitted C files are exact: their timing movement is not a code gain.
-Compiler adds27 physical lines, no module. B2 generation/eight driver samples
-pass; full self-check/B3 and installed promotion remain separate gates.
-Installed Phase67 B1 `c76f1113…`, B2 `cbffd1f8…`; upstream `0592662` unchanged.
-Next runtime discriminators: allocations/retains and admitted direct calls from
-recursive scheduler bodies. Do not weaken raw demand/drop rules for speed.
-One guardedCPU3 tree, source/dataCPU0; old raw closed, no PR comments.
+[Design](../design/phase68/c23-parity-investigation.md) ·
+[Current report](../implementation/phase68/c23-parity-survey.md).
+Source candidate23 (`b2ec0a2`) and installed Phase67 remain unchanged.
+P68-022 adds40 profiles, allocation sites/categories and optimized assembly.
+Dead imported bangs select pool mode: P68-023 saved-C BANGS0 removes14.9%
+tree /11.9% lexer time. P68-024 static constructor data removes10.1% lexer time;
+combined with mode correction removes21.8% (614→480ms, upstream247ms in that
+same five-arm campaign). Counted static-only removes473088 allocations and
+233472 RFC redirects, exactly predicted. No new compiler promoted or whole-set
+ratio claimed; previous six-family compiler23 runtime remains1.724× upstream.
+Next: integrate reachable bang facts and immutable constructor images, then
+saved-C closure factory / typed loop-and-scheduler transport / tree reuse proofs.
+Map products+redirects explain98.32% of excess allocation calls, not time.
+Closure dispatch machine code nearly matches upstream but runs twice as often.
+Keep raw demand/drop/ownership semantics; no speculative weakening for speed.
+C-request B1/B2 ratios3.389×/2.284× remain previous three-source observations.
+Selected native37/37, raw12 and query23 belong to unchanged23; no fresh broad
+gate. B2 self-check/B3 and installed promotion remain separate qualification.
+Installed B1 `c76f1113…`, B2 `cbffd1f8…`; upstream `0592662` unchanged.
+New raw parity-survey23* closes with this report; preserve all earlier evidence.
+One guardedCPU3 target tree, source/dataCPU0, no PR comments.
 
 ---
 

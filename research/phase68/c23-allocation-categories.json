@@ -1,0 +1,5231 @@
+{
+  "schema": "phase68-c23-allocation-categories-v1",
+  "complete": true,
+  "method": "Signed17 minus1 runs (formatting/scheduling sites may decrease); all explicit term_ctr/term_clo consumers of an allocation variable in its lexical scope must agree on kind/constructor; runtime rfc_wrap/task_node classified by exact enclosing function; all else unknown.",
+  "inputs": [
+    {
+      "path": "selfhost/tools/performance/phase68/parity-survey/classify-allocations.py",
+      "sha256": "103b32b408c6b2863f6d8d8f6084548995df766fe4c043cb1f0f627743a61239",
+      "bytes": 5519
+    },
+    {
+      "path": "selfhost/build/phase68/parity-survey23-counts01/report.json",
+      "sha256": "9711a8bb7ba2bcb7ae50688753e30525a5321187e6907848985574fe1601aa26",
+      "bytes": 1529453
+    },
+    {
+      "path": "selfhost/build/phase68/native-facts23-rest/tree-selfhost/program.c",
+      "sha256": "277d7adb6bf59b3d70fdd254b40142483ebd1e1878584c05a7487a73dea448e2",
+      "bytes": 1173400
+    },
+    {
+      "path": "selfhost/build/phase67/native-heldout-baseline02/tree-upstream/program.c",
+      "sha256": "a272ac6bdd3f85344310ba62bee61cff9ba8cc618fd113fd180f8499bdc2839d",
+      "bytes": 153342
+    },
+    {
+      "path": "selfhost/build/phase68/native-facts23-lexer/lexer-selfhost/program.c",
+      "sha256": "5a6a19f98a4ed6f4135333f0f9cce814a3626677b0242f99d17b489ec5bf3cd1",
+      "bytes": 1314022
+    },
+    {
+      "path": "selfhost/build/phase67/native-heldout-baseline02/lexer-upstream/program.c",
+      "sha256": "809a39f4811bd72efb97399362728fa18ef05e0b346579a7816e7c01c7122169",
+      "bytes": 144943
+    },
+    {
+      "path": "selfhost/build/phase68/native-facts23-rest/closures-selfhost/program.c",
+      "sha256": "eef056e6069ed0c9364f40b5bf5715e2428958143f0b950849bec844d2dcb9ca",
+      "bytes": 966246
+    },
+    {
+      "path": "selfhost/build/phase67/native-baseline02/closures-upstream/program.c",
+      "sha256": "30cc71d2cd7033652cf7b1af569fd6dc20727edb44943c8e67b3b06d2049332b",
+      "bytes": 125109
+    },
+    {
+      "path": "selfhost/build/phase68/native-facts23-rest/map-selfhost/program.c",
+      "sha256": "1a4d1a59191ce115af04765dc0373e82803dc4ba6116f7a99bbfbd6d4d09847b",
+      "bytes": 1750653
+    },
+    {
+      "path": "selfhost/build/phase67/native-heldout-baseline02/map-upstream/program.c",
+      "sha256": "2bc75f0e2636fba80aa3561089894436b02789faaaca45eb531d575a87702135",
+      "bytes": 320345
+    }
+  ],
+  "records": [
+    {
+      "case": "tree",
+      "role": "selfhost",
+      "source": {
+        "path": "selfhost/build/phase68/native-facts23-rest/tree-selfhost/program.c",
+        "sha256": "277d7adb6bf59b3d70fdd254b40142483ebd1e1878584c05a7487a73dea448e2",
+        "bytes": 1173400
+      },
+      "total": 640908,
+      "categories": {
+        "rfc_redirect": 204801,
+        "task_node": 1976,
+        "product_tuple": 2,
+        "data_tree_map_node": 421856,
+        "product_stat": 12272,
+        "data_string": 1,
+        "unknown": 0
+      },
+      "constructors": {
+        "CID_TUPLE": 2,
+        "../phase37/fixtures-historical/tree-bitonic:Node": 421856,
+        "../phase37/fixtures-historical/tree-bitonic:St": 12272,
+        "CID_SCON": 1
+      },
+      "sites": [
+        {
+          "index": 0,
+          "sourceLine": 1485,
+          "text": "Loc r = heap_alloc(e, 0);",
+          "calls": 204801,
+          "owner": "rfc_wrap",
+          "category": "rfc_redirect",
+          "constructor": null,
+          "consumer": null
+        },
+        {
+          "index": 571,
+          "sourceLine": 14241,
+          "text": "u64 nd_24 = heap_alloc(e, cls_fit(2));",
+          "calls": 81904,
+          "owner": "NF_../phase37/fixtures-historical/tree-bitonic:warp_zip",
+          "category": "data_tree_map_node",
+          "constructor": "../phase37/fixtures-historical/tree-bitonic:Node",
+          "consumer": [
+            {
+              "line": 14244,
+              "text": "v_4294967285 = term_ctr(CID__CTOR_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_116_114_101_101_45_98_105_116_111_110_105_99_58_78_111_100_101_, nd_24);"
+            }
+          ]
+        },
+        {
+          "index": 572,
+          "sourceLine": 14265,
+          "text": "u64 nd_19 = heap_alloc(e, cls_fit(2));",
+          "calls": 81904,
+          "owner": "NF_../phase37/fixtures-historical/tree-bitonic:warp_zip",
+          "category": "data_tree_map_node",
+          "constructor": "../phase37/fixtures-historical/tree-bitonic:Node",
+          "consumer": [
+            {
+              "line": 14268,
+              "text": "v_4294967284 = term_ctr(CID__CTOR_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_116_114_101_101_45_98_105_116_111_110_105_99_58_78_111_100_101_, nd_19);"
+            }
+          ]
+        },
+        {
+          "index": 573,
+          "sourceLine": 14273,
+          "text": "u64 nd_14 = heap_alloc(e, cls_fit(2));",
+          "calls": 81904,
+          "owner": "NF_../phase37/fixtures-historical/tree-bitonic:warp_zip",
+          "category": "data_tree_map_node",
+          "constructor": "../phase37/fixtures-historical/tree-bitonic:Node",
+          "consumer": [
+            {
+              "line": 14276,
+              "text": "nf_out[0] = term_ctr(CID__CTOR_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_116_114_101_101_45_98_105_116_111_110_105_99_58_78_111_100_101_, nd_14);"
+            }
+          ]
+        },
+        {
+          "index": 582,
+          "sourceLine": 14524,
+          "text": "u64 nd_18 = heap_alloc(e, cls_fit(2));",
+          "calls": 64553,
+          "owner": "NF_../phase37/fixtures-historical/tree-bitonic:warp_leaf.go",
+          "category": "data_tree_map_node",
+          "constructor": "../phase37/fixtures-historical/tree-bitonic:Node",
+          "consumer": [
+            {
+              "line": 14527,
+              "text": "nf_out[0] = term_ctr(CID__CTOR_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_116_114_101_101_45_98_105_116_111_110_105_99_58_78_111_100_101_, nd_18);"
+            }
+          ]
+        },
+        {
+          "index": 579,
+          "sourceLine": 14465,
+          "text": "u64 nd_7 = heap_alloc(e, cls_fit(2));",
+          "calls": 64471,
+          "owner": "NF_../phase37/fixtures-historical/tree-bitonic:warp_leaf.go",
+          "category": "data_tree_map_node",
+          "constructor": "../phase37/fixtures-historical/tree-bitonic:Node",
+          "consumer": [
+            {
+              "line": 14468,
+              "text": "nf_out[0] = term_ctr(CID__CTOR_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_116_114_101_101_45_98_105_116_111_110_105_99_58_78_111_100_101_, nd_7);"
+            }
+          ]
+        },
+        {
+          "index": 635,
+          "sourceLine": 19727,
+          "text": "u64 nd_31326 = heap_alloc(e, cls_fit(2));",
+          "calls": 26624,
+          "owner": "$direct.../phase37/fixtures-historical/tree-bitonic:flow",
+          "category": "data_tree_map_node",
+          "constructor": "../phase37/fixtures-historical/tree-bitonic:Node",
+          "consumer": [
+            {
+              "line": 19730,
+              "text": "r0 = term_ctr(CID__CTOR_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_116_114_101_101_45_98_105_116_111_110_105_99_58_78_111_100_101_, nd_31326);"
+            }
+          ]
+        },
+        {
+          "index": 638,
+          "sourceLine": 19999,
+          "text": "u64 nd_31343 = heap_alloc(e, cls_fit(2));",
+          "calls": 20473,
+          "owner": "native_k_31340",
+          "category": "data_tree_map_node",
+          "constructor": "../phase37/fixtures-historical/tree-bitonic:Node",
+          "consumer": [
+            {
+              "line": 20002,
+              "text": "r0 = term_ctr(CID__CTOR_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_116_114_101_101_45_98_105_116_111_110_105_99_58_78_111_100_101_, nd_31343);"
+            }
+          ]
+        },
+        {
+          "index": 614,
+          "sourceLine": 17950,
+          "text": "u64 nd_18748 = heap_alloc(e, cls_fit(4));",
+          "calls": 6144,
+          "owner": "$direct.../phase37/fixtures-historical/tree-bitonic:scan",
+          "category": "product_stat",
+          "constructor": "../phase37/fixtures-historical/tree-bitonic:St",
+          "consumer": [
+            {
+              "line": 17955,
+              "text": "r0 = term_ctr(CID__CTOR_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_116_114_101_101_45_98_105_116_111_110_105_99_58_83_116_, nd_18748);"
+            }
+          ]
+        },
+        {
+          "index": 585,
+          "sourceLine": 15015,
+          "text": "u64 nd_29 = heap_alloc(e, cls_fit(4));",
+          "calls": 6128,
+          "owner": "NF_../phase37/fixtures-historical/tree-bitonic:stat_join",
+          "category": "product_stat",
+          "constructor": "../phase37/fixtures-historical/tree-bitonic:St",
+          "consumer": [
+            {
+              "line": 15020,
+              "text": "nf_out[0] = term_ctr(CID__CTOR_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_116_114_101_101_45_98_105_116_111_110_105_99_58_83_116_, nd_29);"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "sourceLine": 1931,
+          "text": "Loc loc = heap_alloc(e, cls_fit(ar + 2));",
+          "calls": 1976,
+          "owner": "task_node",
+          "category": "task_node",
+          "constructor": null,
+          "consumer": null
+        },
+        {
+          "index": 637,
+          "sourceLine": 19934,
+          "text": "u64 nd_31359 = heap_alloc(e, cls_fit(2));",
+          "calls": 23,
+          "owner": "native_k_31356",
+          "category": "data_tree_map_node",
+          "constructor": "../phase37/fixtures-historical/tree-bitonic:Node",
+          "consumer": [
+            {
+              "line": 19937,
+              "text": "r0 = term_ctr(CID__CTOR_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_116_114_101_101_45_98_105_116_111_110_105_99_58_78_111_100_101_, nd_31359);"
+            }
+          ]
+        },
+        {
+          "index": 570,
+          "sourceLine": 14184,
+          "text": "u64 nd_7 = heap_alloc(e, cls_fit(2));",
+          "calls": 1,
+          "owner": "NF_Nat.show.put",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 14187,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_7);"
+            }
+          ]
+        },
+        {
+          "index": 672,
+          "sourceLine": 22143,
+          "text": "u64 nd_45009 = heap_alloc(e, cls_fit(2));",
+          "calls": 1,
+          "owner": "$direct.Nat.show.fin",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 22146,
+              "text": "v_4294922290 = term_ctr(CID_SCON, nd_45009);"
+            }
+          ]
+        },
+        {
+          "index": 675,
+          "sourceLine": 22290,
+          "text": "u64 nd_46062 = heap_alloc(e, cls_fit(2));",
+          "calls": 1,
+          "owner": "$direct.Nat.show.go",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 22293,
+              "text": "v_4294921236 = term_ctr(CID_TUPLE, nd_46062);"
+            }
+          ]
+        },
+        {
+          "index": 1310,
+          "sourceLine": 37770,
+          "text": "Loc  l = heap_alloc(e, 1);",
+          "calls": 1,
+          "owner": "io_str",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 37771,
+              "text": "Term t = term_ctr(CID_SCON, l);"
+            }
+          ]
+        },
+        {
+          "index": 606,
+          "sourceLine": 17276,
+          "text": "u64 nd_9429 = heap_alloc(e, cls_fit(2));",
+          "calls": -1,
+          "owner": "$direct.U32.show.fin",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 17279,
+              "text": "v_4294957876 = term_ctr(CID_SCON, nd_9429);"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "tree",
+      "role": "upstream",
+      "source": {
+        "path": "selfhost/build/phase67/native-heldout-baseline02/tree-upstream/program.c",
+        "sha256": "a272ac6bdd3f85344310ba62bee61cff9ba8cc618fd113fd180f8499bdc2839d",
+        "bytes": 153342
+      },
+      "total": 231426,
+      "categories": {
+        "rfc_redirect": 1,
+        "data_tree_map_node": 231424,
+        "data_string": 1,
+        "unknown": 0
+      },
+      "constructors": {
+        "CID____PHASE37_FIXTURES_HISTORICAL_TREE_BITONIC_NODE": 231424,
+        "CID_SCON": 1
+      },
+      "sites": [
+        {
+          "index": 7,
+          "sourceLine": 1468,
+          "text": "u64 _nd_2 = heap_alloc(e, cls_fit(2));",
+          "calls": 81904,
+          "owner": "spin_10",
+          "category": "data_tree_map_node",
+          "constructor": "CID____PHASE37_FIXTURES_HISTORICAL_TREE_BITONIC_NODE",
+          "consumer": [
+            {
+              "line": 1471,
+              "text": "o[0] = term_ctr(CID____PHASE37_FIXTURES_HISTORICAL_TREE_BITONIC_NODE, _nd_2);"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "sourceLine": 1381,
+          "text": "u64 _nd_1 = heap_alloc(e, cls_fit(2));",
+          "calls": 64553,
+          "owner": "spin_5",
+          "category": "data_tree_map_node",
+          "constructor": "CID____PHASE37_FIXTURES_HISTORICAL_TREE_BITONIC_NODE",
+          "consumer": [
+            {
+              "line": 1384,
+              "text": "o[0] = term_ctr(CID____PHASE37_FIXTURES_HISTORICAL_TREE_BITONIC_NODE, _nd_1);"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "sourceLine": 1376,
+          "text": "u64 _nd_0 = heap_alloc(e, cls_fit(2));",
+          "calls": 64471,
+          "owner": "spin_5",
+          "category": "data_tree_map_node",
+          "constructor": "CID____PHASE37_FIXTURES_HISTORICAL_TREE_BITONIC_NODE",
+          "consumer": [
+            {
+              "line": 1379,
+              "text": "o[0] = term_ctr(CID____PHASE37_FIXTURES_HISTORICAL_TREE_BITONIC_NODE, _nd_0);"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "sourceLine": 2458,
+          "text": "u64 _nd_1 = heap_alloc(e, cls_fit(2));",
+          "calls": 20496,
+          "owner": "FID____PHASE37_FIXTURES_HISTORICAL_TREE_BITONIC_FLOW_J39",
+          "category": "data_tree_map_node",
+          "constructor": "CID____PHASE37_FIXTURES_HISTORICAL_TREE_BITONIC_NODE",
+          "consumer": [
+            {
+              "line": 2461,
+              "text": "r0 = term_ctr(CID____PHASE37_FIXTURES_HISTORICAL_TREE_BITONIC_NODE, _nd_1);"
+            }
+          ]
+        },
+        {
+          "index": 0,
+          "sourceLine": 876,
+          "text": "u64 r = heap_alloc(e, 0);",
+          "calls": 1,
+          "owner": "rfc_wrap",
+          "category": "rfc_redirect",
+          "constructor": null,
+          "consumer": null
+        },
+        {
+          "index": 20,
+          "sourceLine": 2591,
+          "text": "u64 _nd_1 = heap_alloc(e, cls_fit(2));",
+          "calls": 1,
+          "owner": "FID_NAT_SHOW_FIN",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 2596,
+              "text": "Term _acc_1 = term_ctr(CID_SCON, _nd_1);"
+            },
+            {
+              "line": 2602,
+              "text": "Term _acc_2 = term_ctr(CID_SCON, _nd_1);"
+            }
+          ]
+        },
+        {
+          "index": 41,
+          "sourceLine": 5049,
+          "text": "u64  l = heap_alloc(e, 1);",
+          "calls": 1,
+          "owner": "io_str",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 5050,
+              "text": "Term t = term_ctr(CID_SCON, l);"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "sourceLine": 2486,
+          "text": "u64 _nd_0 = heap_alloc(e, cls_fit(2));",
+          "calls": -1,
+          "owner": "FID_U32_SHOW_GO",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 2491,
+              "text": "r2 = term_ctr(CID_SCON, _nd_0);"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "lexer",
+      "role": "selfhost",
+      "source": {
+        "path": "selfhost/build/phase68/native-facts23-lexer/lexer-selfhost/program.c",
+        "sha256": "5a6a19f98a4ed6f4135333f0f9cce814a3626677b0242f99d17b489ec5bf3cd1",
+        "bytes": 1314022
+      },
+      "total": 1596879,
+      "categories": {
+        "rfc_redirect": 597839,
+        "task_node": 12258,
+        "product_tuple": 376655,
+        "data_string": 610127,
+        "unknown": 0
+      },
+      "constructors": {
+        "CID_TUPLE": 376655,
+        "CID_SCON": 610127
+      },
+      "sites": [
+        {
+          "index": 0,
+          "sourceLine": 1534,
+          "text": "Loc r = heap_alloc(e, 0);",
+          "calls": 597839,
+          "owner": "rfc_wrap",
+          "category": "rfc_redirect",
+          "constructor": null,
+          "consumer": null
+        },
+        {
+          "index": 630,
+          "sourceLine": 17524,
+          "text": "u64 nd_36 = heap_alloc(e, cls_fit(2));",
+          "calls": 370509,
+          "owner": "NF_../phase37/fixtures-historical/lexer:lex",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 17527,
+              "text": "v_4294967262 = term_ctr(CID_TUPLE, nd_36);"
+            }
+          ]
+        },
+        {
+          "index": 707,
+          "sourceLine": 24661,
+          "text": "u64 nd_34667 = heap_alloc(e, cls_fit(2));",
+          "calls": 165888,
+          "owner": "$direct.../phase37/fixtures-historical/lexer:expand",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 24664,
+              "text": "r0 = term_ctr(CID_SCON, nd_34667);"
+            }
+          ]
+        },
+        {
+          "index": 710,
+          "sourceLine": 24995,
+          "text": "u64 nd_35731 = heap_alloc(e, cls_fit(2));",
+          "calls": 110274,
+          "owner": "native_k_35730",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 24998,
+              "text": "r0 = term_ctr(CID_SCON, nd_35731);"
+            }
+          ]
+        },
+        {
+          "index": 716,
+          "sourceLine": 25464,
+          "text": "u64 nd_41948 = heap_alloc(e, cls_fit(2));",
+          "calls": 63627,
+          "owner": "native_k_41947",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 25467,
+              "text": "r0 = term_ctr(CID_SCON, nd_41948);"
+            }
+          ]
+        },
+        {
+          "index": 610,
+          "sourceLine": 15610,
+          "text": "u64 nd_6 = heap_alloc(e, cls_fit(2));",
+          "calls": 30720,
+          "owner": "NF_../phase37/fixtures-historical/lexer:op",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15613,
+              "text": "nf_out[0] = term_ctr(CID_SCON, nd_6);"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "sourceLine": 1980,
+          "text": "Loc loc = heap_alloc(e, cls_fit(ar + 2));",
+          "calls": 12258,
+          "owner": "task_node",
+          "category": "task_node",
+          "constructor": null,
+          "consumer": null
+        },
+        {
+          "index": 571,
+          "sourceLine": 14884,
+          "text": "u64 nd_194 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14887,
+              "text": "v_4294967109 = term_ctr(CID_SCON, nd_194);"
+            }
+          ]
+        },
+        {
+          "index": 572,
+          "sourceLine": 14892,
+          "text": "u64 nd_189 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14895,
+              "text": "v_4294967114 = term_ctr(CID_SCON, nd_189);"
+            }
+          ]
+        },
+        {
+          "index": 573,
+          "sourceLine": 14900,
+          "text": "u64 nd_184 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14903,
+              "text": "v_4294967119 = term_ctr(CID_SCON, nd_184);"
+            }
+          ]
+        },
+        {
+          "index": 574,
+          "sourceLine": 14908,
+          "text": "u64 nd_179 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14911,
+              "text": "v_4294967124 = term_ctr(CID_SCON, nd_179);"
+            }
+          ]
+        },
+        {
+          "index": 575,
+          "sourceLine": 14916,
+          "text": "u64 nd_174 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14919,
+              "text": "v_4294967129 = term_ctr(CID_SCON, nd_174);"
+            }
+          ]
+        },
+        {
+          "index": 576,
+          "sourceLine": 14924,
+          "text": "u64 nd_169 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14927,
+              "text": "v_4294967134 = term_ctr(CID_SCON, nd_169);"
+            }
+          ]
+        },
+        {
+          "index": 577,
+          "sourceLine": 14932,
+          "text": "u64 nd_164 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14935,
+              "text": "v_4294967139 = term_ctr(CID_SCON, nd_164);"
+            }
+          ]
+        },
+        {
+          "index": 578,
+          "sourceLine": 14940,
+          "text": "u64 nd_159 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14943,
+              "text": "v_4294967144 = term_ctr(CID_SCON, nd_159);"
+            }
+          ]
+        },
+        {
+          "index": 579,
+          "sourceLine": 14948,
+          "text": "u64 nd_154 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14951,
+              "text": "v_4294967149 = term_ctr(CID_SCON, nd_154);"
+            }
+          ]
+        },
+        {
+          "index": 580,
+          "sourceLine": 14956,
+          "text": "u64 nd_149 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14959,
+              "text": "v_4294967154 = term_ctr(CID_SCON, nd_149);"
+            }
+          ]
+        },
+        {
+          "index": 581,
+          "sourceLine": 14964,
+          "text": "u64 nd_144 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14967,
+              "text": "v_4294967159 = term_ctr(CID_SCON, nd_144);"
+            }
+          ]
+        },
+        {
+          "index": 582,
+          "sourceLine": 14972,
+          "text": "u64 nd_139 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14975,
+              "text": "v_4294967164 = term_ctr(CID_SCON, nd_139);"
+            }
+          ]
+        },
+        {
+          "index": 583,
+          "sourceLine": 14980,
+          "text": "u64 nd_134 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14983,
+              "text": "v_4294967169 = term_ctr(CID_SCON, nd_134);"
+            }
+          ]
+        },
+        {
+          "index": 584,
+          "sourceLine": 14988,
+          "text": "u64 nd_129 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14991,
+              "text": "v_4294967174 = term_ctr(CID_SCON, nd_129);"
+            }
+          ]
+        },
+        {
+          "index": 585,
+          "sourceLine": 14996,
+          "text": "u64 nd_124 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 14999,
+              "text": "v_4294967179 = term_ctr(CID_SCON, nd_124);"
+            }
+          ]
+        },
+        {
+          "index": 586,
+          "sourceLine": 15004,
+          "text": "u64 nd_119 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15007,
+              "text": "v_4294967184 = term_ctr(CID_SCON, nd_119);"
+            }
+          ]
+        },
+        {
+          "index": 587,
+          "sourceLine": 15012,
+          "text": "u64 nd_114 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15015,
+              "text": "v_4294967189 = term_ctr(CID_SCON, nd_114);"
+            }
+          ]
+        },
+        {
+          "index": 588,
+          "sourceLine": 15020,
+          "text": "u64 nd_109 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15023,
+              "text": "v_4294967194 = term_ctr(CID_SCON, nd_109);"
+            }
+          ]
+        },
+        {
+          "index": 589,
+          "sourceLine": 15028,
+          "text": "u64 nd_104 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15031,
+              "text": "v_4294967199 = term_ctr(CID_SCON, nd_104);"
+            }
+          ]
+        },
+        {
+          "index": 590,
+          "sourceLine": 15036,
+          "text": "u64 nd_99 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15039,
+              "text": "v_4294967204 = term_ctr(CID_SCON, nd_99);"
+            }
+          ]
+        },
+        {
+          "index": 591,
+          "sourceLine": 15044,
+          "text": "u64 nd_94 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15047,
+              "text": "v_4294967209 = term_ctr(CID_SCON, nd_94);"
+            }
+          ]
+        },
+        {
+          "index": 592,
+          "sourceLine": 15052,
+          "text": "u64 nd_89 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15055,
+              "text": "v_4294967214 = term_ctr(CID_SCON, nd_89);"
+            }
+          ]
+        },
+        {
+          "index": 593,
+          "sourceLine": 15060,
+          "text": "u64 nd_84 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15063,
+              "text": "v_4294967219 = term_ctr(CID_SCON, nd_84);"
+            }
+          ]
+        },
+        {
+          "index": 594,
+          "sourceLine": 15068,
+          "text": "u64 nd_79 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15071,
+              "text": "v_4294967224 = term_ctr(CID_SCON, nd_79);"
+            }
+          ]
+        },
+        {
+          "index": 595,
+          "sourceLine": 15076,
+          "text": "u64 nd_74 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15079,
+              "text": "v_4294967229 = term_ctr(CID_SCON, nd_74);"
+            }
+          ]
+        },
+        {
+          "index": 596,
+          "sourceLine": 15084,
+          "text": "u64 nd_69 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15087,
+              "text": "v_4294967234 = term_ctr(CID_SCON, nd_69);"
+            }
+          ]
+        },
+        {
+          "index": 597,
+          "sourceLine": 15092,
+          "text": "u64 nd_64 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15095,
+              "text": "v_4294967239 = term_ctr(CID_SCON, nd_64);"
+            }
+          ]
+        },
+        {
+          "index": 598,
+          "sourceLine": 15100,
+          "text": "u64 nd_59 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15103,
+              "text": "v_4294967244 = term_ctr(CID_SCON, nd_59);"
+            }
+          ]
+        },
+        {
+          "index": 599,
+          "sourceLine": 15108,
+          "text": "u64 nd_54 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15111,
+              "text": "v_4294967249 = term_ctr(CID_SCON, nd_54);"
+            }
+          ]
+        },
+        {
+          "index": 600,
+          "sourceLine": 15116,
+          "text": "u64 nd_49 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15119,
+              "text": "v_4294967254 = term_ctr(CID_SCON, nd_49);"
+            }
+          ]
+        },
+        {
+          "index": 601,
+          "sourceLine": 15124,
+          "text": "u64 nd_44 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15127,
+              "text": "v_4294967259 = term_ctr(CID_SCON, nd_44);"
+            }
+          ]
+        },
+        {
+          "index": 602,
+          "sourceLine": 15132,
+          "text": "u64 nd_39 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15135,
+              "text": "v_4294967264 = term_ctr(CID_SCON, nd_39);"
+            }
+          ]
+        },
+        {
+          "index": 603,
+          "sourceLine": 15140,
+          "text": "u64 nd_34 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15143,
+              "text": "v_4294967269 = term_ctr(CID_SCON, nd_34);"
+            }
+          ]
+        },
+        {
+          "index": 604,
+          "sourceLine": 15148,
+          "text": "u64 nd_29 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15151,
+              "text": "v_4294967274 = term_ctr(CID_SCON, nd_29);"
+            }
+          ]
+        },
+        {
+          "index": 605,
+          "sourceLine": 15156,
+          "text": "u64 nd_24 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15159,
+              "text": "v_4294967279 = term_ctr(CID_SCON, nd_24);"
+            }
+          ]
+        },
+        {
+          "index": 606,
+          "sourceLine": 15164,
+          "text": "u64 nd_19 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15167,
+              "text": "v_4294967284 = term_ctr(CID_SCON, nd_19);"
+            }
+          ]
+        },
+        {
+          "index": 607,
+          "sourceLine": 15172,
+          "text": "u64 nd_14 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15175,
+              "text": "v_4294967289 = term_ctr(CID_SCON, nd_14);"
+            }
+          ]
+        },
+        {
+          "index": 608,
+          "sourceLine": 15180,
+          "text": "u64 nd_9 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15183,
+              "text": "v_4294967294 = term_ctr(CID_SCON, nd_9);"
+            }
+          ]
+        },
+        {
+          "index": 609,
+          "sourceLine": 15188,
+          "text": "u64 nd_4 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "NF_../phase37/fixtures-historical/lexer:tpl",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15191,
+              "text": "nf_out[0] = term_ctr(CID_SCON, nd_4);"
+            }
+          ]
+        },
+        {
+          "index": 663,
+          "sourceLine": 21281,
+          "text": "u64 nd_16713 = heap_alloc(e, cls_fit(2));",
+          "calls": 6144,
+          "owner": "native_k_16710",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 21284,
+              "text": "v_4294950586 = term_ctr(CID_TUPLE, nd_16713);"
+            }
+          ]
+        },
+        {
+          "index": 570,
+          "sourceLine": 14191,
+          "text": "u64 nd_7 = heap_alloc(e, cls_fit(2));",
+          "calls": 1,
+          "owner": "NF_Nat.show.put",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 14194,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_7);"
+            }
+          ]
+        },
+        {
+          "index": 771,
+          "sourceLine": 27304,
+          "text": "u64 nd_56651 = heap_alloc(e, cls_fit(2));",
+          "calls": 1,
+          "owner": "$direct.Nat.show.fin",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 27307,
+              "text": "v_4294910648 = term_ctr(CID_SCON, nd_56651);"
+            }
+          ]
+        },
+        {
+          "index": 774,
+          "sourceLine": 27451,
+          "text": "u64 nd_57704 = heap_alloc(e, cls_fit(2));",
+          "calls": 1,
+          "owner": "$direct.Nat.show.go",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 27454,
+              "text": "v_4294909594 = term_ctr(CID_TUPLE, nd_57704);"
+            }
+          ]
+        },
+        {
+          "index": 1407,
+          "sourceLine": 42755,
+          "text": "Loc  l = heap_alloc(e, 1);",
+          "calls": 1,
+          "owner": "io_str",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 42756,
+              "text": "Term t = term_ctr(CID_SCON, l);"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "lexer",
+      "role": "upstream",
+      "source": {
+        "path": "selfhost/build/phase67/native-heldout-baseline02/lexer-upstream/program.c",
+        "sha256": "809a39f4811bd72efb97399362728fa18ef05e0b346579a7816e7c01c7122169",
+        "bytes": 144943
+      },
+      "total": 734878,
+      "categories": {
+        "rfc_redirect": 364367,
+        "data_string": 370511,
+        "unknown": 0
+      },
+      "constructors": {
+        "CID_SCON": 370511
+      },
+      "sites": [
+        {
+          "index": 0,
+          "sourceLine": 861,
+          "text": "u64 r = heap_alloc(e, 0);",
+          "calls": 364367,
+          "owner": "rfc_wrap",
+          "category": "rfc_redirect",
+          "constructor": null,
+          "consumer": null
+        },
+        {
+          "index": 16,
+          "sourceLine": 2502,
+          "text": "u64 _nd_0 = heap_alloc(e, cls_fit(2));",
+          "calls": 165888,
+          "owner": "FID____PHASE37_FIXTURES_HISTORICAL_LEXER_GEN_K41",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 2505,
+              "text": "r0 = term_ctr(CID_SCON, _nd_0);"
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "sourceLine": 2090,
+          "text": "u64 _nd_0 = heap_alloc(e, cls_fit(2));",
+          "calls": 110274,
+          "owner": "FID____PHASE37_FIXTURES_HISTORICAL_LEXER_IDENT_K10",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 2093,
+              "text": "r0 = term_ctr(CID_SCON, _nd_0);"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "sourceLine": 2032,
+          "text": "u64 _nd_0 = heap_alloc(e, cls_fit(2));",
+          "calls": 63627,
+          "owner": "FID____PHASE37_FIXTURES_HISTORICAL_LEXER_NUM_K8",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 2035,
+              "text": "r0 = term_ctr(CID_SCON, _nd_0);"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "sourceLine": 1403,
+          "text": "u64 _nd_0 = heap_alloc(e, cls_fit(2));",
+          "calls": 30720,
+          "owner": "spin_5",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 1406,
+              "text": "o[0] = term_ctr(CID_SCON, _nd_0);"
+            }
+          ]
+        },
+        {
+          "index": 20,
+          "sourceLine": 2716,
+          "text": "u64 _nd_1 = heap_alloc(e, cls_fit(2));",
+          "calls": 1,
+          "owner": "FID_NAT_SHOW_FIN",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 2721,
+              "text": "Term _acc_1 = term_ctr(CID_SCON, _nd_1);"
+            },
+            {
+              "line": 2727,
+              "text": "Term _acc_2 = term_ctr(CID_SCON, _nd_1);"
+            }
+          ]
+        },
+        {
+          "index": 41,
+          "sourceLine": 4966,
+          "text": "u64  l = heap_alloc(e, 1);",
+          "calls": 1,
+          "owner": "io_str",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 4967,
+              "text": "Term t = term_ctr(CID_SCON, l);"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "closures",
+      "role": "selfhost",
+      "source": {
+        "path": "selfhost/build/phase68/native-facts23-rest/closures-selfhost/program.c",
+        "sha256": "eef056e6069ed0c9364f40b5bf5715e2428958143f0b950849bec844d2dcb9ca",
+        "bytes": 966246
+      },
+      "total": 12318,
+      "categories": {
+        "rfc_redirect": 3,
+        "data_string": 3,
+        "closure_environment": 12312,
+        "unknown": 0
+      },
+      "constructors": {
+        "CID_SCON": 3,
+        "native_k_15623": 4104,
+        "native_k_17681": 4104,
+        "native_k_17682": 4104
+      },
+      "sites": [
+        {
+          "index": 596,
+          "sourceLine": 16330,
+          "text": "u64 cl_15626 = heap_alloc(e, cls_fit(1));",
+          "calls": 4104,
+          "owner": "native_k_15621",
+          "category": "closure_environment",
+          "constructor": "native_k_15623",
+          "consumer": [
+            {
+              "line": 16332,
+              "text": "r0 = term_clo(FID_110_97_116_105_118_101_95_107_95_49_53_54_50_51_, cl_15626);"
+            }
+          ]
+        },
+        {
+          "index": 597,
+          "sourceLine": 16411,
+          "text": "u64 cl_17684 = heap_alloc(e, cls_fit(1));",
+          "calls": 4104,
+          "owner": "native_k_17680",
+          "category": "closure_environment",
+          "constructor": "native_k_17681",
+          "consumer": [
+            {
+              "line": 16413,
+              "text": "r0 = term_clo(FID_110_97_116_105_118_101_95_107_95_49_55_54_56_49_, cl_17684);"
+            }
+          ]
+        },
+        {
+          "index": 598,
+          "sourceLine": 16423,
+          "text": "u64 cl_17683 = heap_alloc(e, cls_fit(2));",
+          "calls": 4104,
+          "owner": "native_k_17681",
+          "category": "closure_environment",
+          "constructor": "native_k_17682",
+          "consumer": [
+            {
+              "line": 16426,
+              "text": "r0 = term_clo(FID_110_97_116_105_118_101_95_107_95_49_55_54_56_50_, cl_17683);"
+            }
+          ]
+        },
+        {
+          "index": 0,
+          "sourceLine": 1339,
+          "text": "Loc r = heap_alloc(e, 0);",
+          "calls": 3,
+          "owner": "rfc_wrap",
+          "category": "rfc_redirect",
+          "constructor": null,
+          "consumer": null
+        },
+        {
+          "index": 591,
+          "sourceLine": 15919,
+          "text": "u64 nd_9429 = heap_alloc(e, cls_fit(2));",
+          "calls": 2,
+          "owner": "$direct.U32.show.fin",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15922,
+              "text": "v_4294957876 = term_ctr(CID_SCON, nd_9429);"
+            }
+          ]
+        },
+        {
+          "index": 1248,
+          "sourceLine": 32756,
+          "text": "Loc  l = heap_alloc(e, 1);",
+          "calls": 1,
+          "owner": "io_str",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 32757,
+              "text": "Term t = term_ctr(CID_SCON, l);"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "closures",
+      "role": "upstream",
+      "source": {
+        "path": "selfhost/build/phase67/native-baseline02/closures-upstream/program.c",
+        "sha256": "30cc71d2cd7033652cf7b1af569fd6dc20727edb44943c8e67b3b06d2049332b",
+        "bytes": 125109
+      },
+      "total": 8214,
+      "categories": {
+        "rfc_redirect": 3,
+        "data_string": 3,
+        "closure_environment": 8208,
+        "unknown": 0
+      },
+      "constructors": {
+        "CID_SCON": 3,
+        "FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C39": 4104,
+        "FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C40": 4104
+      },
+      "sites": [
+        {
+          "index": 17,
+          "sourceLine": 2162,
+          "text": "u64 _nd_0 = heap_alloc(e, cls_fit(2));",
+          "calls": 4104,
+          "owner": "FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_K38",
+          "category": "closure_environment",
+          "constructor": "FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C39",
+          "consumer": [
+            {
+              "line": 2165,
+              "text": "r0 = term_clo(FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C39, _nd_0);"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "sourceLine": 2177,
+          "text": "u64 _nd_1 = heap_alloc(e, cls_fit(1));",
+          "calls": 4104,
+          "owner": "FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C39",
+          "category": "closure_environment",
+          "constructor": "FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C40",
+          "consumer": [
+            {
+              "line": 2179,
+              "text": "Term _f_0 = term_clo(FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C40, _nd_1);"
+            }
+          ]
+        },
+        {
+          "index": 0,
+          "sourceLine": 846,
+          "text": "u64 r = heap_alloc(e, 0);",
+          "calls": 3,
+          "owner": "rfc_wrap",
+          "category": "rfc_redirect",
+          "constructor": null,
+          "consumer": null
+        },
+        {
+          "index": 13,
+          "sourceLine": 1908,
+          "text": "u64 _nd_0 = heap_alloc(e, cls_fit(2));",
+          "calls": 2,
+          "owner": "FID_U32_SHOW_GO",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 1913,
+              "text": "r2 = term_ctr(CID_SCON, _nd_0);"
+            }
+          ]
+        },
+        {
+          "index": 39,
+          "sourceLine": 4278,
+          "text": "u64  l = heap_alloc(e, 1);",
+          "calls": 1,
+          "owner": "io_str",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 4279,
+              "text": "Term t = term_ctr(CID_SCON, l);"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "map",
+      "role": "selfhost",
+      "source": {
+        "path": "selfhost/build/phase68/native-facts23-rest/map-selfhost/program.c",
+        "sha256": "1a4d1a59191ce115af04765dc0373e82803dc4ba6116f7a99bbfbd6d4d09847b",
+        "bytes": 1750653
+      },
+      "total": 1220422,
+      "categories": {
+        "rfc_redirect": 399130,
+        "product_tuple": 408322,
+        "data_tree_map_node": 138896,
+        "data_other_constructor": 4784,
+        "data_string": 269290,
+        "unknown": 0
+      },
+      "constructors": {
+        "CID_TUPLE": 408322,
+        "CID_MNODE": 118840,
+        "CID_SOME": 3248,
+        "CID_SCON": 269290,
+        "CID_MLEAF": 20056,
+        "CID_CON": 1536
+      },
+      "sites": [
+        {
+          "index": 0,
+          "sourceLine": 1872,
+          "text": "Loc r = heap_alloc(e, 0);",
+          "calls": 399130,
+          "owner": "rfc_wrap",
+          "category": "rfc_redirect",
+          "constructor": null,
+          "consumer": null
+        },
+        {
+          "index": 589,
+          "sourceLine": 15489,
+          "text": "u64 nd_13 = heap_alloc(e, cls_fit(2));",
+          "calls": 164360,
+          "owner": "NF_Map.bit.go.rec",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15492,
+              "text": "v_4294967291 = term_ctr(CID_SCON, nd_13);"
+            }
+          ]
+        },
+        {
+          "index": 590,
+          "sourceLine": 15504,
+          "text": "u64 nd_8 = heap_alloc(e, cls_fit(2));",
+          "calls": 164360,
+          "owner": "NF_Map.bit.go.rec",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 15507,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_8);"
+            }
+          ]
+        },
+        {
+          "index": 702,
+          "sourceLine": 22563,
+          "text": "u64 nd_23426 = heap_alloc(e, cls_fit(2));",
+          "calls": 45328,
+          "owner": "$direct.Map.bit",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 22566,
+              "text": "v_4294943872 = term_ctr(CID_TUPLE, nd_23426);"
+            }
+          ]
+        },
+        {
+          "index": 593,
+          "sourceLine": 15717,
+          "text": "u64 nd_13 = heap_alloc(e, cls_fit(2));",
+          "calls": 45152,
+          "owner": "NF_Map.bit.go.chr",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15720,
+              "text": "v_4294967291 = term_ctr(CID_SCON, nd_13);"
+            }
+          ]
+        },
+        {
+          "index": 594,
+          "sourceLine": 15732,
+          "text": "u64 nd_8 = heap_alloc(e, cls_fit(2));",
+          "calls": 45152,
+          "owner": "NF_Map.bit.go.chr",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 15735,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_8);"
+            }
+          ]
+        },
+        {
+          "index": 592,
+          "sourceLine": 15672,
+          "text": "u64 nd_19 = heap_alloc(e, cls_fit(2));",
+          "calls": 38648,
+          "owner": "NF_Map.bit.chr",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 15675,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_19);"
+            }
+          ]
+        },
+        {
+          "index": 579,
+          "sourceLine": 15193,
+          "text": "u64 nd_17 = heap_alloc(e, cls_fit(2));",
+          "calls": 16512,
+          "owner": "NF_Char.cmp",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 15196,
+              "text": "v_4294967282 = term_ctr(CID_TUPLE, nd_17);"
+            }
+          ]
+        },
+        {
+          "index": 580,
+          "sourceLine": 15201,
+          "text": "u64 nd_16 = heap_alloc(e, cls_fit(2));",
+          "calls": 16512,
+          "owner": "NF_Char.cmp",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 15204,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_16);"
+            }
+          ]
+        },
+        {
+          "index": 581,
+          "sourceLine": 15267,
+          "text": "u64 nd_34 = heap_alloc(e, cls_fit(2));",
+          "calls": 14664,
+          "owner": "NF_String.cmp.rec",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15270,
+              "text": "v_4294967274 = term_ctr(CID_SCON, nd_34);"
+            }
+          ]
+        },
+        {
+          "index": 582,
+          "sourceLine": 15291,
+          "text": "u64 nd_29 = heap_alloc(e, cls_fit(2));",
+          "calls": 14664,
+          "owner": "NF_String.cmp.rec",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 15294,
+              "text": "v_4294967273 = term_ctr(CID_SCON, nd_29);"
+            }
+          ]
+        },
+        {
+          "index": 583,
+          "sourceLine": 15314,
+          "text": "u64 nd_20 = heap_alloc(e, cls_fit(2));",
+          "calls": 14664,
+          "owner": "NF_String.cmp.rec",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 15317,
+              "text": "v_4294967279 = term_ctr(CID_TUPLE, nd_20);"
+            }
+          ]
+        },
+        {
+          "index": 584,
+          "sourceLine": 15322,
+          "text": "u64 nd_19 = heap_alloc(e, cls_fit(2));",
+          "calls": 14664,
+          "owner": "NF_String.cmp.rec",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 15325,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_19);"
+            }
+          ]
+        },
+        {
+          "index": 840,
+          "sourceLine": 30615,
+          "text": "u64 nd_45193 = heap_alloc(e, cls_fit(2));",
+          "calls": 10320,
+          "owner": "native_k_45190",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 30618,
+              "text": "r0 = term_ctr(CID_TUPLE, nd_45193);"
+            }
+          ]
+        },
+        {
+          "index": 964,
+          "sourceLine": 35598,
+          "text": "u64 nd_63437 = heap_alloc(e, cls_fit(2));",
+          "calls": 9792,
+          "owner": "native_k_63436",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 35601,
+              "text": "r0 = term_ctr(CID_SCON, nd_63437);"
+            }
+          ]
+        },
+        {
+          "index": 575,
+          "sourceLine": 15014,
+          "text": "u64 nd_16 = heap_alloc(e, cls_fit(3));",
+          "calls": 9048,
+          "owner": "NF_Map.lo",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 15018,
+              "text": "v_4294967290 = term_ctr(CID_MNODE, nd_16);"
+            }
+          ]
+        },
+        {
+          "index": 576,
+          "sourceLine": 15030,
+          "text": "u64 nd_9 = heap_alloc(e, cls_fit(2));",
+          "calls": 9048,
+          "owner": "NF_Map.lo",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 15033,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_9);"
+            }
+          ]
+        },
+        {
+          "index": 946,
+          "sourceLine": 34020,
+          "text": "u64 nd_59200 = heap_alloc(e, cls_fit(3));",
+          "calls": 8120,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 34024,
+              "text": "v_4294908100 = term_ctr(CID_MNODE, nd_59200);"
+            }
+          ]
+        },
+        {
+          "index": 947,
+          "sourceLine": 34049,
+          "text": "u64 nd_59207 = heap_alloc(e, cls_fit(3));",
+          "calls": 8120,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 34053,
+              "text": "v_4294908093 = term_ctr(CID_MNODE, nd_59207);"
+            }
+          ]
+        },
+        {
+          "index": 577,
+          "sourceLine": 15077,
+          "text": "u64 nd_16 = heap_alloc(e, cls_fit(3));",
+          "calls": 7984,
+          "owner": "NF_Map.hi",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 15081,
+              "text": "v_4294967290 = term_ctr(CID_MNODE, nd_16);"
+            }
+          ]
+        },
+        {
+          "index": 578,
+          "sourceLine": 15093,
+          "text": "u64 nd_9 = heap_alloc(e, cls_fit(2));",
+          "calls": 7984,
+          "owner": "NF_Map.hi",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 15096,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_9);"
+            }
+          ]
+        },
+        {
+          "index": 627,
+          "sourceLine": 18324,
+          "text": "u64 nd_9429 = heap_alloc(e, cls_fit(2));",
+          "calls": 6928,
+          "owner": "$direct.U32.show.fin",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 18327,
+              "text": "v_4294957876 = term_ctr(CID_SCON, nd_9429);"
+            }
+          ]
+        },
+        {
+          "index": 591,
+          "sourceLine": 15612,
+          "text": "u64 nd_11 = heap_alloc(e, cls_fit(2));",
+          "calls": 6504,
+          "owner": "NF_Map.bit.chr",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 15615,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_11);"
+            }
+          ]
+        },
+        {
+          "index": 812,
+          "sourceLine": 27362,
+          "text": "u64 nd_39895 = heap_alloc(e, cls_fit(3));",
+          "calls": 4680,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 27366,
+              "text": "v_4294927408 = term_ctr(CID_MNODE, nd_39895);"
+            }
+          ]
+        },
+        {
+          "index": 831,
+          "sourceLine": 29527,
+          "text": "u64 nd_39885 = heap_alloc(e, cls_fit(3));",
+          "calls": 4680,
+          "owner": "native_k_39881",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 29531,
+              "text": "v_4294927415 = term_ctr(CID_MNODE, nd_39885);"
+            }
+          ]
+        },
+        {
+          "index": 832,
+          "sourceLine": 29534,
+          "text": "u64 nd_39886 = heap_alloc(e, cls_fit(3));",
+          "calls": 4680,
+          "owner": "native_k_39881",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 29538,
+              "text": "r0 = term_ctr(CID_MNODE, nd_39886);"
+            }
+          ]
+        },
+        {
+          "index": 948,
+          "sourceLine": 34086,
+          "text": "u64 nd_59217 = heap_alloc(e, cls_fit(3));",
+          "calls": 4456,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 34090,
+              "text": "v_4294908083 = term_ctr(CID_MNODE, nd_59217);"
+            }
+          ]
+        },
+        {
+          "index": 949,
+          "sourceLine": 34115,
+          "text": "u64 nd_59224 = heap_alloc(e, cls_fit(3));",
+          "calls": 4456,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 34119,
+              "text": "v_4294908076 = term_ctr(CID_MNODE, nd_59224);"
+            }
+          ]
+        },
+        {
+          "index": 931,
+          "sourceLine": 33515,
+          "text": "u64 nd_59074 = heap_alloc(e, cls_fit(2));",
+          "calls": 3528,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 33518,
+              "text": "v_4294908225 = term_ctr(CID_MLEAF, nd_59074);"
+            }
+          ]
+        },
+        {
+          "index": 932,
+          "sourceLine": 33543,
+          "text": "u64 nd_59081 = heap_alloc(e, cls_fit(3));",
+          "calls": 3528,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 33547,
+              "text": "v_4294908219 = term_ctr(CID_MNODE, nd_59081);"
+            }
+          ]
+        },
+        {
+          "index": 960,
+          "sourceLine": 35439,
+          "text": "u64 nd_62392 = heap_alloc(e, cls_fit(2));",
+          "calls": 3264,
+          "owner": "$direct.../phase37/fixtures-new/map-churn:p37.map.key",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 35442,
+              "text": "v_4294904908 = term_ctr(CID_SCON, nd_62392);"
+            }
+          ]
+        },
+        {
+          "index": 961,
+          "sourceLine": 35447,
+          "text": "u64 nd_62393 = heap_alloc(e, cls_fit(2));",
+          "calls": 3264,
+          "owner": "$direct.../phase37/fixtures-new/map-churn:p37.map.key",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 35450,
+              "text": "v_4294904911 = term_ctr(CID_SCON, nd_62393);"
+            }
+          ]
+        },
+        {
+          "index": 962,
+          "sourceLine": 35455,
+          "text": "u64 nd_62394 = heap_alloc(e, cls_fit(2));",
+          "calls": 3264,
+          "owner": "$direct.../phase37/fixtures-new/map-churn:p37.map.key",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 35458,
+              "text": "v_4294904914 = term_ctr(CID_SCON, nd_62394);"
+            }
+          ]
+        },
+        {
+          "index": 816,
+          "sourceLine": 27497,
+          "text": "u64 nd_39928 = heap_alloc(e, cls_fit(3));",
+          "calls": 2872,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 27501,
+              "text": "v_4294927372 = term_ctr(CID_MNODE, nd_39928);"
+            }
+          ]
+        },
+        {
+          "index": 817,
+          "sourceLine": 27526,
+          "text": "u64 nd_39939 = heap_alloc(e, cls_fit(3));",
+          "calls": 2872,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 27530,
+              "text": "v_4294927364 = term_ctr(CID_MNODE, nd_39939);"
+            }
+          ]
+        },
+        {
+          "index": 833,
+          "sourceLine": 29599,
+          "text": "u64 nd_39930 = heap_alloc(e, cls_fit(3));",
+          "calls": 2872,
+          "owner": "native_k_39929",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 29603,
+              "text": "r0 = term_ctr(CID_MNODE, nd_39930);"
+            }
+          ]
+        },
+        {
+          "index": 690,
+          "sourceLine": 21316,
+          "text": "u64 nd_22341 = heap_alloc(e, cls_fit(3));",
+          "calls": 2832,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 21320,
+              "text": "v_4294944960 = term_ctr(CID_MNODE, nd_22341);"
+            }
+          ]
+        },
+        {
+          "index": 698,
+          "sourceLine": 22244,
+          "text": "u64 nd_22333 = heap_alloc(e, cls_fit(3));",
+          "calls": 2832,
+          "owner": "native_k_22329",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 22248,
+              "text": "v_4294944967 = term_ctr(CID_MNODE, nd_22333);"
+            }
+          ]
+        },
+        {
+          "index": 699,
+          "sourceLine": 22251,
+          "text": "u64 nd_22334 = heap_alloc(e, cls_fit(3));",
+          "calls": 2832,
+          "owner": "native_k_22329",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 22255,
+              "text": "r0 = term_ctr(CID_MNODE, nd_22334);"
+            }
+          ]
+        },
+        {
+          "index": 882,
+          "sourceLine": 32446,
+          "text": "u64 nd_57787 = heap_alloc(e, cls_fit(3));",
+          "calls": 2712,
+          "owner": "$direct.Map.seek",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 32450,
+              "text": "v_4294909513 = term_ctr(CID_MNODE, nd_57787);"
+            }
+          ]
+        },
+        {
+          "index": 790,
+          "sourceLine": 26308,
+          "text": "u64 nd_39606 = heap_alloc(e, cls_fit(2));",
+          "calls": 2568,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 26311,
+              "text": "v_4294927693 = term_ctr(CID_MLEAF, nd_39606);"
+            }
+          ]
+        },
+        {
+          "index": 791,
+          "sourceLine": 26336,
+          "text": "u64 nd_39617 = heap_alloc(e, cls_fit(3));",
+          "calls": 2568,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 26340,
+              "text": "v_4294927686 = term_ctr(CID_MNODE, nd_39617);"
+            }
+          ]
+        },
+        {
+          "index": 826,
+          "sourceLine": 28833,
+          "text": "u64 nd_39608 = heap_alloc(e, cls_fit(3));",
+          "calls": 2568,
+          "owner": "native_k_39607",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 28837,
+              "text": "r0 = term_ctr(CID_MNODE, nd_39608);"
+            }
+          ]
+        },
+        {
+          "index": 566,
+          "sourceLine": 14707,
+          "text": "u64 nd_25 = heap_alloc(e, cls_fit(3));",
+          "calls": 2336,
+          "owner": "NF_Map.pop.lo",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 14711,
+              "text": "v_4294967281 = term_ctr(CID_MNODE, nd_25);"
+            }
+          ]
+        },
+        {
+          "index": 567,
+          "sourceLine": 14723,
+          "text": "u64 nd_18 = heap_alloc(e, cls_fit(2));",
+          "calls": 2336,
+          "owner": "NF_Map.pop.lo",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 14726,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_18);"
+            }
+          ]
+        },
+        {
+          "index": 1001,
+          "sourceLine": 38137,
+          "text": "u64 nd_74176 = heap_alloc(e, cls_fit(3));",
+          "calls": 2264,
+          "owner": "$direct.Map.pop.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 38141,
+              "text": "v_4294893124 = term_ctr(CID_MNODE, nd_74176);"
+            }
+          ]
+        },
+        {
+          "index": 1002,
+          "sourceLine": 38166,
+          "text": "u64 nd_74183 = heap_alloc(e, cls_fit(3));",
+          "calls": 2264,
+          "owner": "$direct.Map.pop.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 38170,
+              "text": "v_4294893117 = term_ctr(CID_MNODE, nd_74183);"
+            }
+          ]
+        },
+        {
+          "index": 587,
+          "sourceLine": 15430,
+          "text": "u64 nd_29 = heap_alloc(e, cls_fit(2));",
+          "calls": 2040,
+          "owner": "NF_Map.ins.splice.bit",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 15433,
+              "text": "v_4294967275 = term_ctr(CID_MLEAF, nd_29);"
+            }
+          ]
+        },
+        {
+          "index": 588,
+          "sourceLine": 15438,
+          "text": "u64 nd_24 = heap_alloc(e, cls_fit(3));",
+          "calls": 2040,
+          "owner": "NF_Map.ins.splice.bit",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 15442,
+              "text": "nf_out[0] = term_ctr(CID_MNODE, nd_24);"
+            }
+          ]
+        },
+        {
+          "index": 729,
+          "sourceLine": 23843,
+          "text": "u64 nd_35939 = heap_alloc(e, cls_fit(3));",
+          "calls": 2024,
+          "owner": "$direct.Map.ins",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 23847,
+              "text": "v_4294931364 = term_ctr(CID_MNODE, nd_35939);"
+            }
+          ]
+        },
+        {
+          "index": 861,
+          "sourceLine": 31628,
+          "text": "u64 nd_53560 = heap_alloc(e, cls_fit(2));",
+          "calls": 1848,
+          "owner": "$direct.String.cmp.fin",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 31631,
+              "text": "v_4294913739 = term_ctr(CID_SCON, nd_53560);"
+            }
+          ]
+        },
+        {
+          "index": 862,
+          "sourceLine": 31640,
+          "text": "u64 nd_53563 = heap_alloc(e, cls_fit(2));",
+          "calls": 1848,
+          "owner": "$direct.String.cmp.fin",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 31643,
+              "text": "v_4294913738 = term_ctr(CID_SCON, nd_53563);"
+            }
+          ]
+        },
+        {
+          "index": 863,
+          "sourceLine": 31648,
+          "text": "u64 nd_53564 = heap_alloc(e, cls_fit(2));",
+          "calls": 1848,
+          "owner": "$direct.String.cmp.fin",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 31651,
+              "text": "v_4294913741 = term_ctr(CID_TUPLE, nd_53564);"
+            }
+          ]
+        },
+        {
+          "index": 864,
+          "sourceLine": 31659,
+          "text": "u64 nd_53565 = heap_alloc(e, cls_fit(2));",
+          "calls": 1848,
+          "owner": "$direct.String.cmp.fin",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 31662,
+              "text": "r0 = term_ctr(CID_TUPLE, nd_53565);"
+            }
+          ]
+        },
+        {
+          "index": 691,
+          "sourceLine": 21357,
+          "text": "u64 nd_22351 = heap_alloc(e, cls_fit(3));",
+          "calls": 1584,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 21361,
+              "text": "v_4294944949 = term_ctr(CID_MNODE, nd_22351);"
+            }
+          ]
+        },
+        {
+          "index": 692,
+          "sourceLine": 21386,
+          "text": "u64 nd_22360 = heap_alloc(e, cls_fit(3));",
+          "calls": 1584,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 21390,
+              "text": "v_4294944941 = term_ctr(CID_MNODE, nd_22360);"
+            }
+          ]
+        },
+        {
+          "index": 700,
+          "sourceLine": 22281,
+          "text": "u64 nd_22353 = heap_alloc(e, cls_fit(3));",
+          "calls": 1584,
+          "owner": "native_k_22352",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 22285,
+              "text": "r0 = term_ctr(CID_MNODE, nd_22353);"
+            }
+          ]
+        },
+        {
+          "index": 569,
+          "sourceLine": 14807,
+          "text": "u64 nd_25 = heap_alloc(e, cls_fit(3));",
+          "calls": 1552,
+          "owner": "NF_Map.pop.hi",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 14811,
+              "text": "v_4294967281 = term_ctr(CID_MNODE, nd_25);"
+            }
+          ]
+        },
+        {
+          "index": 570,
+          "sourceLine": 14823,
+          "text": "u64 nd_18 = heap_alloc(e, cls_fit(2));",
+          "calls": 1552,
+          "owner": "NF_Map.pop.hi",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 14826,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_18);"
+            }
+          ]
+        },
+        {
+          "index": 1019,
+          "sourceLine": 40304,
+          "text": "u64 nd_80530 = heap_alloc(e, cls_fit(2));",
+          "calls": 1536,
+          "owner": "$direct.Map.to_list.go",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 40307,
+              "text": "v_4294886769 = term_ctr(CID_TUPLE, nd_80530);"
+            }
+          ]
+        },
+        {
+          "index": 1020,
+          "sourceLine": 40312,
+          "text": "u64 nd_80531 = heap_alloc(e, cls_fit(2));",
+          "calls": 1536,
+          "owner": "$direct.Map.to_list.go",
+          "category": "data_other_constructor",
+          "constructor": "CID_CON",
+          "consumer": [
+            {
+              "line": 40315,
+              "text": "r0 = term_ctr(CID_CON, nd_80531);"
+            }
+          ]
+        },
+        {
+          "index": 913,
+          "sourceLine": 33272,
+          "text": "u64 nd_59008 = heap_alloc(e, cls_fit(2));",
+          "calls": 1224,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 33275,
+              "text": "v_4294908291 = term_ctr(CID_MLEAF, nd_59008);"
+            }
+          ]
+        },
+        {
+          "index": 914,
+          "sourceLine": 33284,
+          "text": "u64 nd_59011 = heap_alloc(e, cls_fit(2));",
+          "calls": 1224,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 33287,
+              "text": "v_4294908290 = term_ctr(CID_MLEAF, nd_59011);"
+            }
+          ]
+        },
+        {
+          "index": 915,
+          "sourceLine": 33292,
+          "text": "u64 nd_59012 = heap_alloc(e, cls_fit(3));",
+          "calls": 1224,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 33296,
+              "text": "v_4294908294 = term_ctr(CID_MNODE, nd_59012);"
+            }
+          ]
+        },
+        {
+          "index": 916,
+          "sourceLine": 33305,
+          "text": "u64 nd_59016 = heap_alloc(e, cls_fit(1));",
+          "calls": 1224,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_other_constructor",
+          "constructor": "CID_SOME",
+          "consumer": [
+            {
+              "line": 33307,
+              "text": "v_4294908281 = term_ctr(CID_SOME, nd_59016);"
+            }
+          ]
+        },
+        {
+          "index": 917,
+          "sourceLine": 33312,
+          "text": "u64 nd_59017 = heap_alloc(e, cls_fit(2));",
+          "calls": 1224,
+          "owner": "$direct.Map.seek.go",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 33315,
+              "text": "v_4294908293 = term_ctr(CID_TUPLE, nd_59017);"
+            }
+          ]
+        },
+        {
+          "index": 918,
+          "sourceLine": 33318,
+          "text": "u64 nd_59018 = heap_alloc(e, cls_fit(2));",
+          "calls": 1224,
+          "owner": "$direct.Map.seek.go",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 33321,
+              "text": "r0 = term_ctr(CID_TUPLE, nd_59018);"
+            }
+          ]
+        },
+        {
+          "index": 847,
+          "sourceLine": 31182,
+          "text": "u64 nd_52449 = heap_alloc(e, cls_fit(2));",
+          "calls": 1208,
+          "owner": "$direct.String.cmp",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 31185,
+              "text": "v_4294914850 = term_ctr(CID_TUPLE, nd_52449);"
+            }
+          ]
+        },
+        {
+          "index": 848,
+          "sourceLine": 31193,
+          "text": "u64 nd_52450 = heap_alloc(e, cls_fit(2));",
+          "calls": 1208,
+          "owner": "$direct.String.cmp",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 31196,
+              "text": "r0 = term_ctr(CID_TUPLE, nd_52450);"
+            }
+          ]
+        },
+        {
+          "index": 1003,
+          "sourceLine": 38203,
+          "text": "u64 nd_74193 = heap_alloc(e, cls_fit(3));",
+          "calls": 1096,
+          "owner": "$direct.Map.pop.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 38207,
+              "text": "v_4294893107 = term_ctr(CID_MNODE, nd_74193);"
+            }
+          ]
+        },
+        {
+          "index": 1004,
+          "sourceLine": 38232,
+          "text": "u64 nd_74200 = heap_alloc(e, cls_fit(3));",
+          "calls": 1096,
+          "owner": "$direct.Map.pop.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 38236,
+              "text": "v_4294893100 = term_ctr(CID_MNODE, nd_74200);"
+            }
+          ]
+        },
+        {
+          "index": 680,
+          "sourceLine": 20817,
+          "text": "u64 nd_22204 = heap_alloc(e, cls_fit(2));",
+          "calls": 960,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 20820,
+              "text": "v_4294945095 = term_ctr(CID_MLEAF, nd_22204);"
+            }
+          ]
+        },
+        {
+          "index": 681,
+          "sourceLine": 20845,
+          "text": "u64 nd_22213 = heap_alloc(e, cls_fit(3));",
+          "calls": 960,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 20849,
+              "text": "v_4294945088 = term_ctr(CID_MNODE, nd_22213);"
+            }
+          ]
+        },
+        {
+          "index": 694,
+          "sourceLine": 21911,
+          "text": "u64 nd_22206 = heap_alloc(e, cls_fit(3));",
+          "calls": 960,
+          "owner": "native_k_22205",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 21915,
+              "text": "r0 = term_ctr(CID_MNODE, nd_22206);"
+            }
+          ]
+        },
+        {
+          "index": 938,
+          "sourceLine": 33833,
+          "text": "u64 nd_59151 = heap_alloc(e, cls_fit(2));",
+          "calls": 928,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 33836,
+              "text": "v_4294908148 = term_ctr(CID_MLEAF, nd_59151);"
+            }
+          ]
+        },
+        {
+          "index": 939,
+          "sourceLine": 33861,
+          "text": "u64 nd_59158 = heap_alloc(e, cls_fit(3));",
+          "calls": 928,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 33865,
+              "text": "v_4294908142 = term_ctr(CID_MNODE, nd_59158);"
+            }
+          ]
+        },
+        {
+          "index": 807,
+          "sourceLine": 27113,
+          "text": "u64 nd_39823 = heap_alloc(e, cls_fit(3));",
+          "calls": 896,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 27117,
+              "text": "v_4294927477 = term_ctr(CID_MNODE, nd_39823);"
+            }
+          ]
+        },
+        {
+          "index": 808,
+          "sourceLine": 27145,
+          "text": "u64 nd_39832 = heap_alloc(e, cls_fit(2));",
+          "calls": 896,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 27148,
+              "text": "v_4294927466 = term_ctr(CID_MLEAF, nd_39832);"
+            }
+          ]
+        },
+        {
+          "index": 830,
+          "sourceLine": 29381,
+          "text": "u64 nd_39825 = heap_alloc(e, cls_fit(3));",
+          "calls": 896,
+          "owner": "native_k_39824",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 29385,
+              "text": "r0 = term_ctr(CID_MNODE, nd_39825);"
+            }
+          ]
+        },
+        {
+          "index": 940,
+          "sourceLine": 33898,
+          "text": "u64 nd_59170 = heap_alloc(e, cls_fit(3));",
+          "calls": 896,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 33902,
+              "text": "v_4294908130 = term_ctr(CID_MNODE, nd_59170);"
+            }
+          ]
+        },
+        {
+          "index": 941,
+          "sourceLine": 33912,
+          "text": "u64 nd_59173 = heap_alloc(e, cls_fit(2));",
+          "calls": 896,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 33915,
+              "text": "v_4294908129 = term_ctr(CID_MLEAF, nd_59173);"
+            }
+          ]
+        },
+        {
+          "index": 942,
+          "sourceLine": 33920,
+          "text": "u64 nd_59174 = heap_alloc(e, cls_fit(3));",
+          "calls": 896,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 33924,
+              "text": "v_4294908133 = term_ctr(CID_MNODE, nd_59174);"
+            }
+          ]
+        },
+        {
+          "index": 943,
+          "sourceLine": 33933,
+          "text": "u64 nd_59178 = heap_alloc(e, cls_fit(1));",
+          "calls": 896,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_other_constructor",
+          "constructor": "CID_SOME",
+          "consumer": [
+            {
+              "line": 33935,
+              "text": "v_4294908119 = term_ctr(CID_SOME, nd_59178);"
+            }
+          ]
+        },
+        {
+          "index": 944,
+          "sourceLine": 33940,
+          "text": "u64 nd_59179 = heap_alloc(e, cls_fit(2));",
+          "calls": 896,
+          "owner": "$direct.Map.seek.go",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 33943,
+              "text": "v_4294908132 = term_ctr(CID_TUPLE, nd_59179);"
+            }
+          ]
+        },
+        {
+          "index": 945,
+          "sourceLine": 33946,
+          "text": "u64 nd_59180 = heap_alloc(e, cls_fit(2));",
+          "calls": 896,
+          "owner": "$direct.Map.seek.go",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 33949,
+              "text": "r0 = term_ctr(CID_TUPLE, nd_59180);"
+            }
+          ]
+        },
+        {
+          "index": 803,
+          "sourceLine": 26982,
+          "text": "u64 nd_39791 = heap_alloc(e, cls_fit(3));",
+          "calls": 840,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 26986,
+              "text": "v_4294927512 = term_ctr(CID_MNODE, nd_39791);"
+            }
+          ]
+        },
+        {
+          "index": 828,
+          "sourceLine": 29310,
+          "text": "u64 nd_39781 = heap_alloc(e, cls_fit(2));",
+          "calls": 840,
+          "owner": "native_k_39778",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 29313,
+              "text": "v_4294927518 = term_ctr(CID_MLEAF, nd_39781);"
+            }
+          ]
+        },
+        {
+          "index": 829,
+          "sourceLine": 29316,
+          "text": "u64 nd_39782 = heap_alloc(e, cls_fit(3));",
+          "calls": 840,
+          "owner": "native_k_39778",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 29320,
+              "text": "r0 = term_ctr(CID_MNODE, nd_39782);"
+            }
+          ]
+        },
+        {
+          "index": 650,
+          "sourceLine": 19863,
+          "text": "u64 nd_20951 = heap_alloc(e, cls_fit(3));",
+          "calls": 688,
+          "owner": "$direct.Map.put",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 19867,
+              "text": "v_4294946350 = term_ctr(CID_MNODE, nd_20951);"
+            }
+          ]
+        },
+        {
+          "index": 571,
+          "sourceLine": 14886,
+          "text": "u64 nd_17 = heap_alloc(e, cls_fit(1));",
+          "calls": 520,
+          "owner": "NF_Map.pop.leaf",
+          "category": "data_other_constructor",
+          "constructor": "CID_SOME",
+          "consumer": [
+            {
+              "line": 14888,
+              "text": "v_4294967284 = term_ctr(CID_SOME, nd_17);"
+            }
+          ]
+        },
+        {
+          "index": 572,
+          "sourceLine": 14893,
+          "text": "u64 nd_14 = heap_alloc(e, cls_fit(2));",
+          "calls": 520,
+          "owner": "NF_Map.pop.leaf",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 14896,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_14);"
+            }
+          ]
+        },
+        {
+          "index": 974,
+          "sourceLine": 36561,
+          "text": "u64 nd_71784 = heap_alloc(e, cls_fit(3));",
+          "calls": 520,
+          "owner": "$direct.Map.pop",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 36565,
+              "text": "v_4294895516 = term_ctr(CID_MNODE, nd_71784);"
+            }
+          ]
+        },
+        {
+          "index": 565,
+          "sourceLine": 14678,
+          "text": "u64 nd_13 = heap_alloc(e, cls_fit(2));",
+          "calls": 512,
+          "owner": "NF_Map.pop.lo",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 14681,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_13);"
+            }
+          ]
+        },
+        {
+          "index": 919,
+          "sourceLine": 33333,
+          "text": "u64 nd_59026 = heap_alloc(e, cls_fit(2));",
+          "calls": 512,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 33336,
+              "text": "v_4294908273 = term_ctr(CID_MLEAF, nd_59026);"
+            }
+          ]
+        },
+        {
+          "index": 920,
+          "sourceLine": 33346,
+          "text": "u64 nd_59029 = heap_alloc(e, cls_fit(2));",
+          "calls": 512,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 33349,
+              "text": "v_4294908272 = term_ctr(CID_MLEAF, nd_59029);"
+            }
+          ]
+        },
+        {
+          "index": 921,
+          "sourceLine": 33354,
+          "text": "u64 nd_59030 = heap_alloc(e, cls_fit(3));",
+          "calls": 512,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 33358,
+              "text": "v_4294908276 = term_ctr(CID_MNODE, nd_59030);"
+            }
+          ]
+        },
+        {
+          "index": 922,
+          "sourceLine": 33367,
+          "text": "u64 nd_59034 = heap_alloc(e, cls_fit(1));",
+          "calls": 512,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_other_constructor",
+          "constructor": "CID_SOME",
+          "consumer": [
+            {
+              "line": 33369,
+              "text": "v_4294908263 = term_ctr(CID_SOME, nd_59034);"
+            }
+          ]
+        },
+        {
+          "index": 923,
+          "sourceLine": 33374,
+          "text": "u64 nd_59035 = heap_alloc(e, cls_fit(2));",
+          "calls": 512,
+          "owner": "$direct.Map.seek.go",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 33377,
+              "text": "v_4294908275 = term_ctr(CID_TUPLE, nd_59035);"
+            }
+          ]
+        },
+        {
+          "index": 924,
+          "sourceLine": 33380,
+          "text": "u64 nd_59036 = heap_alloc(e, cls_fit(2));",
+          "calls": 512,
+          "owner": "$direct.Map.seek.go",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 33383,
+              "text": "r0 = term_ctr(CID_TUPLE, nd_59036);"
+            }
+          ]
+        },
+        {
+          "index": 993,
+          "sourceLine": 37671,
+          "text": "u64 nd_74063 = heap_alloc(e, cls_fit(2));",
+          "calls": 456,
+          "owner": "$direct.Map.pop.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 37674,
+              "text": "v_4294893236 = term_ctr(CID_MLEAF, nd_74063);"
+            }
+          ]
+        },
+        {
+          "index": 994,
+          "sourceLine": 37699,
+          "text": "u64 nd_74070 = heap_alloc(e, cls_fit(3));",
+          "calls": 456,
+          "owner": "$direct.Map.pop.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 37703,
+              "text": "v_4294893230 = term_ctr(CID_MNODE, nd_74070);"
+            }
+          ]
+        },
+        {
+          "index": 990,
+          "sourceLine": 37466,
+          "text": "u64 nd_74013 = heap_alloc(e, cls_fit(2));",
+          "calls": 448,
+          "owner": "$direct.Map.pop.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 37469,
+              "text": "v_4294893286 = term_ctr(CID_MLEAF, nd_74013);"
+            }
+          ]
+        },
+        {
+          "index": 774,
+          "sourceLine": 25802,
+          "text": "u64 nd_39467 = heap_alloc(e, cls_fit(2));",
+          "calls": 416,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 25805,
+              "text": "v_4294927832 = term_ctr(CID_MLEAF, nd_39467);"
+            }
+          ]
+        },
+        {
+          "index": 775,
+          "sourceLine": 25814,
+          "text": "u64 nd_39470 = heap_alloc(e, cls_fit(2));",
+          "calls": 416,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 25817,
+              "text": "v_4294927831 = term_ctr(CID_MLEAF, nd_39470);"
+            }
+          ]
+        },
+        {
+          "index": 776,
+          "sourceLine": 25822,
+          "text": "u64 nd_39471 = heap_alloc(e, cls_fit(3));",
+          "calls": 416,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 25826,
+              "text": "v_4294927834 = term_ctr(CID_MNODE, nd_39471);"
+            }
+          ]
+        },
+        {
+          "index": 809,
+          "sourceLine": 27296,
+          "text": "u64 nd_39872 = heap_alloc(e, cls_fit(3));",
+          "calls": 408,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 27300,
+              "text": "v_4294927428 = term_ctr(CID_MNODE, nd_39872);"
+            }
+          ]
+        },
+        {
+          "index": 810,
+          "sourceLine": 27311,
+          "text": "u64 nd_39876 = heap_alloc(e, cls_fit(3));",
+          "calls": 408,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 27315,
+              "text": "v_4294927427 = term_ctr(CID_MNODE, nd_39876);"
+            }
+          ]
+        },
+        {
+          "index": 811,
+          "sourceLine": 27320,
+          "text": "u64 nd_39877 = heap_alloc(e, cls_fit(3));",
+          "calls": 408,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 27324,
+              "text": "v_4294927430 = term_ctr(CID_MNODE, nd_39877);"
+            }
+          ]
+        },
+        {
+          "index": 671,
+          "sourceLine": 20652,
+          "text": "u64 nd_22159 = heap_alloc(e, cls_fit(2));",
+          "calls": 304,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 20655,
+              "text": "v_4294945140 = term_ctr(CID_MLEAF, nd_22159);"
+            }
+          ]
+        },
+        {
+          "index": 672,
+          "sourceLine": 20664,
+          "text": "u64 nd_22162 = heap_alloc(e, cls_fit(2));",
+          "calls": 304,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 20667,
+              "text": "v_4294945139 = term_ctr(CID_MLEAF, nd_22162);"
+            }
+          ]
+        },
+        {
+          "index": 673,
+          "sourceLine": 20670,
+          "text": "u64 nd_22163 = heap_alloc(e, cls_fit(3));",
+          "calls": 304,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 20674,
+              "text": "r0 = term_ctr(CID_MNODE, nd_22163);"
+            }
+          ]
+        },
+        {
+          "index": 674,
+          "sourceLine": 20687,
+          "text": "u64 nd_22169 = heap_alloc(e, cls_fit(2));",
+          "calls": 304,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 20690,
+              "text": "v_4294945130 = term_ctr(CID_MLEAF, nd_22169);"
+            }
+          ]
+        },
+        {
+          "index": 675,
+          "sourceLine": 20699,
+          "text": "u64 nd_22172 = heap_alloc(e, cls_fit(2));",
+          "calls": 304,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 20702,
+              "text": "v_4294945129 = term_ctr(CID_MLEAF, nd_22172);"
+            }
+          ]
+        },
+        {
+          "index": 676,
+          "sourceLine": 20705,
+          "text": "u64 nd_22173 = heap_alloc(e, cls_fit(3));",
+          "calls": 304,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 20709,
+              "text": "r0 = term_ctr(CID_MNODE, nd_22173);"
+            }
+          ]
+        },
+        {
+          "index": 781,
+          "sourceLine": 25962,
+          "text": "u64 nd_39511 = heap_alloc(e, cls_fit(2));",
+          "calls": 208,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 25965,
+              "text": "v_4294927788 = term_ctr(CID_MLEAF, nd_39511);"
+            }
+          ]
+        },
+        {
+          "index": 782,
+          "sourceLine": 25993,
+          "text": "u64 nd_39520 = heap_alloc(e, cls_fit(2));",
+          "calls": 208,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 25996,
+              "text": "v_4294927778 = term_ctr(CID_MLEAF, nd_39520);"
+            }
+          ]
+        },
+        {
+          "index": 823,
+          "sourceLine": 28640,
+          "text": "u64 nd_39513 = heap_alloc(e, cls_fit(3));",
+          "calls": 208,
+          "owner": "native_k_39512",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 28644,
+              "text": "r0 = term_ctr(CID_MNODE, nd_39513);"
+            }
+          ]
+        },
+        {
+          "index": 852,
+          "sourceLine": 31271,
+          "text": "u64 nd_52475 = heap_alloc(e, cls_fit(2));",
+          "calls": 192,
+          "owner": "$direct.String.cmp",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 31274,
+              "text": "v_4294914824 = term_ctr(CID_SCON, nd_52475);"
+            }
+          ]
+        },
+        {
+          "index": 853,
+          "sourceLine": 31284,
+          "text": "u64 nd_52476 = heap_alloc(e, cls_fit(2));",
+          "calls": 192,
+          "owner": "$direct.String.cmp",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 31287,
+              "text": "v_4294914826 = term_ctr(CID_TUPLE, nd_52476);"
+            }
+          ]
+        },
+        {
+          "index": 854,
+          "sourceLine": 31295,
+          "text": "u64 nd_52477 = heap_alloc(e, cls_fit(2));",
+          "calls": 192,
+          "owner": "$direct.String.cmp",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 31298,
+              "text": "r0 = term_ctr(CID_TUPLE, nd_52477);"
+            }
+          ]
+        },
+        {
+          "index": 706,
+          "sourceLine": 22737,
+          "text": "u64 nd_25506 = heap_alloc(e, cls_fit(2));",
+          "calls": 176,
+          "owner": "$direct.Map.bit.go",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 22740,
+              "text": "r0 = term_ctr(CID_TUPLE, nd_25506);"
+            }
+          ]
+        },
+        {
+          "index": 777,
+          "sourceLine": 25865,
+          "text": "u64 nd_39486 = heap_alloc(e, cls_fit(2));",
+          "calls": 96,
+          "owner": "$direct.Map.ins.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 25868,
+              "text": "v_4294927812 = term_ctr(CID_MLEAF, nd_39486);"
+            }
+          ]
+        },
+        {
+          "index": 821,
+          "sourceLine": 28594,
+          "text": "u64 nd_39478 = heap_alloc(e, cls_fit(2));",
+          "calls": 96,
+          "owner": "native_k_39475",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 28597,
+              "text": "v_4294927821 = term_ctr(CID_MLEAF, nd_39478);"
+            }
+          ]
+        },
+        {
+          "index": 822,
+          "sourceLine": 28600,
+          "text": "u64 nd_39479 = heap_alloc(e, cls_fit(3));",
+          "calls": 96,
+          "owner": "native_k_39475",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 28604,
+              "text": "r0 = term_ctr(CID_MNODE, nd_39479);"
+            }
+          ]
+        },
+        {
+          "index": 686,
+          "sourceLine": 21159,
+          "text": "u64 nd_22297 = heap_alloc(e, cls_fit(3));",
+          "calls": 88,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 21163,
+              "text": "v_4294945004 = term_ctr(CID_MNODE, nd_22297);"
+            }
+          ]
+        },
+        {
+          "index": 696,
+          "sourceLine": 22150,
+          "text": "u64 nd_22289 = heap_alloc(e, cls_fit(2));",
+          "calls": 88,
+          "owner": "native_k_22286",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 22153,
+              "text": "v_4294945010 = term_ctr(CID_MLEAF, nd_22289);"
+            }
+          ]
+        },
+        {
+          "index": 697,
+          "sourceLine": 22156,
+          "text": "u64 nd_22290 = heap_alloc(e, cls_fit(3));",
+          "calls": 88,
+          "owner": "native_k_22286",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 22160,
+              "text": "r0 = term_ctr(CID_MNODE, nd_22290);"
+            }
+          ]
+        },
+        {
+          "index": 677,
+          "sourceLine": 20780,
+          "text": "u64 nd_22193 = heap_alloc(e, cls_fit(2));",
+          "calls": 80,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 20783,
+              "text": "v_4294945106 = term_ctr(CID_MLEAF, nd_22193);"
+            }
+          ]
+        },
+        {
+          "index": 678,
+          "sourceLine": 20794,
+          "text": "u64 nd_22197 = heap_alloc(e, cls_fit(3));",
+          "calls": 80,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 20798,
+              "text": "v_4294945105 = term_ctr(CID_MNODE, nd_22197);"
+            }
+          ]
+        },
+        {
+          "index": 679,
+          "sourceLine": 20801,
+          "text": "u64 nd_22198 = heap_alloc(e, cls_fit(3));",
+          "calls": 80,
+          "owner": "$direct.Map.put.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 20805,
+              "text": "r0 = term_ctr(CID_MNODE, nd_22198);"
+            }
+          ]
+        },
+        {
+          "index": 925,
+          "sourceLine": 33451,
+          "text": "u64 nd_59057 = heap_alloc(e, cls_fit(2));",
+          "calls": 80,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 33454,
+              "text": "v_4294908242 = term_ctr(CID_MLEAF, nd_59057);"
+            }
+          ]
+        },
+        {
+          "index": 926,
+          "sourceLine": 33465,
+          "text": "u64 nd_59061 = heap_alloc(e, cls_fit(3));",
+          "calls": 80,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 33469,
+              "text": "v_4294908241 = term_ctr(CID_MNODE, nd_59061);"
+            }
+          ]
+        },
+        {
+          "index": 927,
+          "sourceLine": 33474,
+          "text": "u64 nd_59062 = heap_alloc(e, cls_fit(3));",
+          "calls": 80,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 33478,
+              "text": "v_4294908245 = term_ctr(CID_MNODE, nd_59062);"
+            }
+          ]
+        },
+        {
+          "index": 928,
+          "sourceLine": 33487,
+          "text": "u64 nd_59066 = heap_alloc(e, cls_fit(1));",
+          "calls": 80,
+          "owner": "$direct.Map.seek.go",
+          "category": "data_other_constructor",
+          "constructor": "CID_SOME",
+          "consumer": [
+            {
+              "line": 33489,
+              "text": "v_4294908231 = term_ctr(CID_SOME, nd_59066);"
+            }
+          ]
+        },
+        {
+          "index": 929,
+          "sourceLine": 33494,
+          "text": "u64 nd_59067 = heap_alloc(e, cls_fit(2));",
+          "calls": 80,
+          "owner": "$direct.Map.seek.go",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 33497,
+              "text": "v_4294908244 = term_ctr(CID_TUPLE, nd_59067);"
+            }
+          ]
+        },
+        {
+          "index": 930,
+          "sourceLine": 33500,
+          "text": "u64 nd_59068 = heap_alloc(e, cls_fit(2));",
+          "calls": 80,
+          "owner": "$direct.Map.seek.go",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 33503,
+              "text": "r0 = term_ctr(CID_TUPLE, nd_59068);"
+            }
+          ]
+        },
+        {
+          "index": 998,
+          "sourceLine": 37963,
+          "text": "u64 nd_74133 = heap_alloc(e, cls_fit(2));",
+          "calls": 72,
+          "owner": "$direct.Map.pop.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 37966,
+              "text": "v_4294893166 = term_ctr(CID_MLEAF, nd_74133);"
+            }
+          ]
+        },
+        {
+          "index": 999,
+          "sourceLine": 37991,
+          "text": "u64 nd_74140 = heap_alloc(e, cls_fit(3));",
+          "calls": 72,
+          "owner": "$direct.Map.pop.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 37995,
+              "text": "v_4294893160 = term_ctr(CID_MNODE, nd_74140);"
+            }
+          ]
+        },
+        {
+          "index": 992,
+          "sourceLine": 37621,
+          "text": "u64 nd_74051 = heap_alloc(e, cls_fit(3));",
+          "calls": 64,
+          "owner": "$direct.Map.pop.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 37625,
+              "text": "v_4294893249 = term_ctr(CID_MNODE, nd_74051);"
+            }
+          ]
+        },
+        {
+          "index": 621,
+          "sourceLine": 17959,
+          "text": "u64 nd_7315 = heap_alloc(e, cls_fit(2));",
+          "calls": 48,
+          "owner": "$direct.U32.show.if",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 17962,
+              "text": "r0 = term_ctr(CID_SCON, nd_7315);"
+            }
+          ]
+        },
+        {
+          "index": 638,
+          "sourceLine": 19197,
+          "text": "u64 nd_17760 = heap_alloc(e, cls_fit(2));",
+          "calls": 16,
+          "owner": "$direct.Map.set.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 19200,
+              "text": "r0 = term_ctr(CID_MLEAF, nd_17760);"
+            }
+          ]
+        },
+        {
+          "index": 728,
+          "sourceLine": 23808,
+          "text": "u64 nd_35923 = heap_alloc(e, cls_fit(2));",
+          "calls": 16,
+          "owner": "$direct.Map.ins",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 23811,
+              "text": "v_4294931375 = term_ctr(CID_MLEAF, nd_35923);"
+            }
+          ]
+        },
+        {
+          "index": 876,
+          "sourceLine": 32368,
+          "text": "u64 nd_57760 = heap_alloc(e, cls_fit(2));",
+          "calls": 16,
+          "owner": "$direct.Map.seek",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 32371,
+              "text": "v_4294909538 = term_ctr(CID_TUPLE, nd_57760);"
+            }
+          ]
+        },
+        {
+          "index": 877,
+          "sourceLine": 32374,
+          "text": "u64 nd_57761 = heap_alloc(e, cls_fit(2));",
+          "calls": 16,
+          "owner": "$direct.Map.seek",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 32377,
+              "text": "r0 = term_ctr(CID_TUPLE, nd_57761);"
+            }
+          ]
+        },
+        {
+          "index": 878,
+          "sourceLine": 32396,
+          "text": "u64 nd_57770 = heap_alloc(e, cls_fit(2));",
+          "calls": 16,
+          "owner": "$direct.Map.seek",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 32399,
+              "text": "v_4294909529 = term_ctr(CID_MLEAF, nd_57770);"
+            }
+          ]
+        },
+        {
+          "index": 879,
+          "sourceLine": 32408,
+          "text": "u64 nd_57774 = heap_alloc(e, cls_fit(1));",
+          "calls": 16,
+          "owner": "$direct.Map.seek",
+          "category": "data_other_constructor",
+          "constructor": "CID_SOME",
+          "consumer": [
+            {
+              "line": 32410,
+              "text": "v_4294909523 = term_ctr(CID_SOME, nd_57774);"
+            }
+          ]
+        },
+        {
+          "index": 880,
+          "sourceLine": 32415,
+          "text": "u64 nd_57775 = heap_alloc(e, cls_fit(2));",
+          "calls": 16,
+          "owner": "$direct.Map.seek",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 32418,
+              "text": "v_4294909528 = term_ctr(CID_TUPLE, nd_57775);"
+            }
+          ]
+        },
+        {
+          "index": 881,
+          "sourceLine": 32421,
+          "text": "u64 nd_57776 = heap_alloc(e, cls_fit(2));",
+          "calls": 16,
+          "owner": "$direct.Map.seek",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 32424,
+              "text": "r0 = term_ctr(CID_TUPLE, nd_57776);"
+            }
+          ]
+        },
+        {
+          "index": 568,
+          "sourceLine": 14778,
+          "text": "u64 nd_13 = heap_alloc(e, cls_fit(2));",
+          "calls": 8,
+          "owner": "NF_Map.pop.hi",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 14781,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_13);"
+            }
+          ]
+        },
+        {
+          "index": 1000,
+          "sourceLine": 38028,
+          "text": "u64 nd_74150 = heap_alloc(e, cls_fit(3));",
+          "calls": 8,
+          "owner": "$direct.Map.pop.go",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 38032,
+              "text": "v_4294893150 = term_ctr(CID_MNODE, nd_74150);"
+            }
+          ]
+        },
+        {
+          "index": 564,
+          "sourceLine": 14349,
+          "text": "u64 nd_7 = heap_alloc(e, cls_fit(2));",
+          "calls": 1,
+          "owner": "NF_Nat.show.put",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 14352,
+              "text": "nf_out[0] = term_ctr(CID_TUPLE, nd_7);"
+            }
+          ]
+        },
+        {
+          "index": 1029,
+          "sourceLine": 40946,
+          "text": "u64 nd_86786 = heap_alloc(e, cls_fit(2));",
+          "calls": 1,
+          "owner": "$direct.Nat.show.fin",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 40949,
+              "text": "v_4294880513 = term_ctr(CID_SCON, nd_86786);"
+            }
+          ]
+        },
+        {
+          "index": 1032,
+          "sourceLine": 41093,
+          "text": "u64 nd_87839 = heap_alloc(e, cls_fit(2));",
+          "calls": 1,
+          "owner": "$direct.Nat.show.go",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 41096,
+              "text": "v_4294879459 = term_ctr(CID_TUPLE, nd_87839);"
+            }
+          ]
+        },
+        {
+          "index": 1632,
+          "sourceLine": 55226,
+          "text": "Loc  l = heap_alloc(e, 1);",
+          "calls": 1,
+          "owner": "io_str",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 55227,
+              "text": "Term t = term_ctr(CID_SCON, l);"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "map",
+      "role": "upstream",
+      "source": {
+        "path": "selfhost/build/phase67/native-heldout-baseline02/map-upstream/program.c",
+        "sha256": "2bc75f0e2636fba80aa3561089894436b02789faaaca45eb531d575a87702135",
+        "bytes": 320345
+      },
+      "total": 628604,
+      "categories": {
+        "rfc_redirect": 208562,
+        "data_tree_map_node": 124992,
+        "data_string": 259450,
+        "data_other_constructor": 18568,
+        "product_tuple": 17032,
+        "unknown": 0
+      },
+      "constructors": {
+        "CID_MLEAF": 12248,
+        "CID_MNODE": 112744,
+        "CID_SCON": 259450,
+        "CID_SOME": 17032,
+        "CID_TUPLE": 17032,
+        "CID_CON": 1536
+      },
+      "sites": [
+        {
+          "index": 0,
+          "sourceLine": 959,
+          "text": "u64 r = heap_alloc(e, 0);",
+          "calls": 208562,
+          "owner": "rfc_wrap",
+          "category": "rfc_redirect",
+          "constructor": null,
+          "consumer": null
+        },
+        {
+          "index": 8,
+          "sourceLine": 1467,
+          "text": "u64 _nd_1 = heap_alloc(e, cls_fit(2));",
+          "calls": 164360,
+          "owner": "spin_4",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 1470,
+              "text": "o[0] = term_ctr(CID_SCON, _nd_1);"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "sourceLine": 1451,
+          "text": "u64 _nd_0 = heap_alloc(e, cls_fit(2));",
+          "calls": 45152,
+          "owner": "spin_3",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 1454,
+              "text": "o[0] = term_ctr(CID_SCON, _nd_0);"
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "sourceLine": 1485,
+          "text": "u64 _nd_2 = heap_alloc(e, cls_fit(2));",
+          "calls": 14664,
+          "owner": "spin_5",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 1491,
+              "text": "o[0] = term_ctr(CID_SCON, _nd_2);"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "sourceLine": 1488,
+          "text": "u64 _nd_3 = heap_alloc(e, cls_fit(2));",
+          "calls": 14664,
+          "owner": "spin_5",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 1492,
+              "text": "o[1] = term_ctr(CID_SCON, _nd_3);"
+            }
+          ]
+        },
+        {
+          "index": 115,
+          "sourceLine": 7336,
+          "text": "u64 _nd_0 = heap_alloc(e, cls_fit(2));",
+          "calls": 9792,
+          "owner": "FID_STRING_APPEND_K130",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 7339,
+              "text": "r0 = term_ctr(CID_SCON, _nd_0);"
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "sourceLine": 1627,
+          "text": "u64 _nd_32 = heap_alloc(e, cls_fit(3));",
+          "calls": 9048,
+          "owner": "spin_12",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 1631,
+              "text": "o[0] = term_ctr(CID_MNODE, _nd_32);"
+            }
+          ]
+        },
+        {
+          "index": 106,
+          "sourceLine": 6859,
+          "text": "u64 _nd_42 = heap_alloc(e, cls_fit(3));",
+          "calls": 8120,
+          "owner": "FID_MAP_SEEK_GO_K109",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 6882,
+              "text": "e.mem[_t_19 + 0] = term_ctr(CID_MNODE, _nd_42);"
+            },
+            {
+              "line": 6887,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_42);"
+            }
+          ]
+        },
+        {
+          "index": 107,
+          "sourceLine": 6907,
+          "text": "u64 _nd_43 = heap_alloc(e, cls_fit(3));",
+          "calls": 8120,
+          "owner": "FID_MAP_SEEK_GO_K110",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 6923,
+              "text": "if (spin_12(e, _o_12, _f_70, term_ctr(CID_MNODE, _nd_43), _h_26, term_ctr(CID_TUPLE, _nd_45)) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 108,
+          "sourceLine": 6915,
+          "text": "u64 _nd_44 = heap_alloc(e, cls_fit(1));",
+          "calls": 8120,
+          "owner": "FID_MAP_SEEK_GO_K110",
+          "category": "data_other_constructor",
+          "constructor": "CID_SOME",
+          "consumer": [
+            {
+              "line": 6917,
+              "text": "_b_4 = term_ctr(CID_SOME, _nd_44);"
+            }
+          ]
+        },
+        {
+          "index": 109,
+          "sourceLine": 6919,
+          "text": "u64 _nd_45 = heap_alloc(e, cls_fit(2));",
+          "calls": 8120,
+          "owner": "FID_MAP_SEEK_GO_K110",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 6923,
+              "text": "if (spin_12(e, _o_12, _f_70, term_ctr(CID_MNODE, _nd_43), _h_26, term_ctr(CID_TUPLE, _nd_45)) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 14,
+          "sourceLine": 1609,
+          "text": "u64 _nd_11 = heap_alloc(e, cls_fit(3));",
+          "calls": 7984,
+          "owner": "spin_11",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 1613,
+              "text": "o[0] = term_ctr(CID_MNODE, _nd_11);"
+            }
+          ]
+        },
+        {
+          "index": 123,
+          "sourceLine": 7993,
+          "text": "u64 _nd_0 = heap_alloc(e, cls_fit(2));",
+          "calls": 6928,
+          "owner": "FID_U32_SHOW_GO",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 7998,
+              "text": "r2 = term_ctr(CID_SCON, _nd_0);"
+            }
+          ]
+        },
+        {
+          "index": 43,
+          "sourceLine": 3455,
+          "text": "u64 _nd_81 = heap_alloc(e, cls_fit(3));",
+          "calls": 4680,
+          "owner": "FID_MAP_INS_GO_K30",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3478,
+              "text": "e.mem[_t_49 + 0] = term_ctr(CID_MNODE, _nd_81);"
+            },
+            {
+              "line": 3486,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_81);"
+            }
+          ]
+        },
+        {
+          "index": 44,
+          "sourceLine": 3506,
+          "text": "u64 _nd_82 = heap_alloc(e, cls_fit(3));",
+          "calls": 4680,
+          "owner": "FID_MAP_INS_GO_K31",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3513,
+              "text": "e.mem[_nd_83 + 2] = term_ctr(CID_MNODE, _nd_82);"
+            }
+          ]
+        },
+        {
+          "index": 45,
+          "sourceLine": 3510,
+          "text": "u64 _nd_83 = heap_alloc(e, cls_fit(3));",
+          "calls": 4680,
+          "owner": "FID_MAP_INS_GO_K31",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3514,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_83);"
+            }
+          ]
+        },
+        {
+          "index": 110,
+          "sourceLine": 6964,
+          "text": "u64 _nd_46 = heap_alloc(e, cls_fit(3));",
+          "calls": 4456,
+          "owner": "FID_MAP_SEEK_GO_K111",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 6987,
+              "text": "e.mem[_t_23 + 0] = term_ctr(CID_MNODE, _nd_46);"
+            },
+            {
+              "line": 6992,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_46);"
+            }
+          ]
+        },
+        {
+          "index": 111,
+          "sourceLine": 7012,
+          "text": "u64 _nd_47 = heap_alloc(e, cls_fit(3));",
+          "calls": 4456,
+          "owner": "FID_MAP_SEEK_GO_K112",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 7028,
+              "text": "if (spin_11(e, _o_15, _f_84, term_ctr(CID_MNODE, _nd_47), _h_32, term_ctr(CID_TUPLE, _nd_49)) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 112,
+          "sourceLine": 7020,
+          "text": "u64 _nd_48 = heap_alloc(e, cls_fit(1));",
+          "calls": 4456,
+          "owner": "FID_MAP_SEEK_GO_K112",
+          "category": "data_other_constructor",
+          "constructor": "CID_SOME",
+          "consumer": [
+            {
+              "line": 7022,
+              "text": "_b_5 = term_ctr(CID_SOME, _nd_48);"
+            }
+          ]
+        },
+        {
+          "index": 113,
+          "sourceLine": 7024,
+          "text": "u64 _nd_49 = heap_alloc(e, cls_fit(2));",
+          "calls": 4456,
+          "owner": "FID_MAP_SEEK_GO_K112",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 7028,
+              "text": "if (spin_11(e, _o_15, _f_84, term_ctr(CID_MNODE, _nd_47), _h_32, term_ctr(CID_TUPLE, _nd_49)) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 95,
+          "sourceLine": 6569,
+          "text": "u64 _nd_25 = heap_alloc(e, cls_fit(3));",
+          "calls": 3528,
+          "owner": "FID_MAP_SEEK_GO_K103",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 6590,
+              "text": "e.mem[_t_7 + 0] = term_ctr(CID_MNODE, _nd_25);"
+            },
+            {
+              "line": 6595,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_25);"
+            }
+          ]
+        },
+        {
+          "index": 96,
+          "sourceLine": 6614,
+          "text": "u64 _nd_26 = heap_alloc(e, cls_fit(2));",
+          "calls": 3528,
+          "owner": "FID_MAP_SEEK_GO_K104",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 6629,
+              "text": "if (spin_11(e, _o_3, _f_29, term_ctr(CID_MLEAF, _nd_26), _h_8, term_ctr(CID_TUPLE, _nd_28)) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 97,
+          "sourceLine": 6621,
+          "text": "u64 _nd_27 = heap_alloc(e, cls_fit(1));",
+          "calls": 3528,
+          "owner": "FID_MAP_SEEK_GO_K104",
+          "category": "data_other_constructor",
+          "constructor": "CID_SOME",
+          "consumer": [
+            {
+              "line": 6623,
+              "text": "_b_1 = term_ctr(CID_SOME, _nd_27);"
+            }
+          ]
+        },
+        {
+          "index": 98,
+          "sourceLine": 6625,
+          "text": "u64 _nd_28 = heap_alloc(e, cls_fit(2));",
+          "calls": 3528,
+          "owner": "FID_MAP_SEEK_GO_K104",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 6629,
+              "text": "if (spin_11(e, _o_3, _f_29, term_ctr(CID_MLEAF, _nd_26), _h_8, term_ctr(CID_TUPLE, _nd_28)) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 46,
+          "sourceLine": 3535,
+          "text": "u64 _nd_87 = heap_alloc(e, cls_fit(3));",
+          "calls": 2872,
+          "owner": "FID_MAP_INS_GO_K32",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3558,
+              "text": "e.mem[_t_54 + 0] = term_ctr(CID_MNODE, _nd_87);"
+            },
+            {
+              "line": 3566,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_87);"
+            }
+          ]
+        },
+        {
+          "index": 47,
+          "sourceLine": 3586,
+          "text": "u64 _nd_88 = heap_alloc(e, cls_fit(3));",
+          "calls": 2872,
+          "owner": "FID_MAP_INS_GO_K33",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3592,
+              "text": "e.mem[_nd_89 + 1] = term_ctr(CID_MNODE, _nd_88);"
+            }
+          ]
+        },
+        {
+          "index": 48,
+          "sourceLine": 3590,
+          "text": "u64 _nd_89 = heap_alloc(e, cls_fit(3));",
+          "calls": 2872,
+          "owner": "FID_MAP_INS_GO_K33",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3594,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_89);"
+            }
+          ]
+        },
+        {
+          "index": 65,
+          "sourceLine": 4370,
+          "text": "u64 _nd_42 = heap_alloc(e, cls_fit(3));",
+          "calls": 2832,
+          "owner": "FID_MAP_PUT_GO_K45",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 4393,
+              "text": "e.mem[_t_19 + 0] = term_ctr(CID_MNODE, _nd_42);"
+            },
+            {
+              "line": 4399,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_42);"
+            }
+          ]
+        },
+        {
+          "index": 66,
+          "sourceLine": 4417,
+          "text": "u64 _nd_43 = heap_alloc(e, cls_fit(3));",
+          "calls": 2832,
+          "owner": "FID_MAP_PUT_GO_K46",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 4424,
+              "text": "e.mem[_nd_44 + 2] = term_ctr(CID_MNODE, _nd_43);"
+            }
+          ]
+        },
+        {
+          "index": 67,
+          "sourceLine": 4421,
+          "text": "u64 _nd_44 = heap_alloc(e, cls_fit(3));",
+          "calls": 2832,
+          "owner": "FID_MAP_PUT_GO_K46",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 4425,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_44);"
+            }
+          ]
+        },
+        {
+          "index": 116,
+          "sourceLine": 7413,
+          "text": "u64 _nd_1 = heap_alloc(e, cls_fit(3));",
+          "calls": 2712,
+          "owner": "FID_MAP_SEEK_K132",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 7419,
+              "text": "e.mem[_t_2 + 0] = term_ctr(CID_MNODE, _nd_1);"
+            },
+            {
+              "line": 7424,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_1);"
+            }
+          ]
+        },
+        {
+          "index": 33,
+          "sourceLine": 3217,
+          "text": "u64 _nd_54 = heap_alloc(e, cls_fit(3));",
+          "calls": 2568,
+          "owner": "FID_MAP_INS_GO_K23",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3238,
+              "text": "e.mem[_t_30 + 0] = term_ctr(CID_MNODE, _nd_54);"
+            },
+            {
+              "line": 3246,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_54);"
+            }
+          ]
+        },
+        {
+          "index": 34,
+          "sourceLine": 3265,
+          "text": "u64 _nd_55 = heap_alloc(e, cls_fit(2));",
+          "calls": 2568,
+          "owner": "FID_MAP_INS_GO_K24",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 3270,
+              "text": "e.mem[_nd_56 + 1] = term_ctr(CID_MLEAF, _nd_55);"
+            }
+          ]
+        },
+        {
+          "index": 35,
+          "sourceLine": 3268,
+          "text": "u64 _nd_56 = heap_alloc(e, cls_fit(3));",
+          "calls": 2568,
+          "owner": "FID_MAP_INS_GO_K24",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3272,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_56);"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "sourceLine": 1576,
+          "text": "u64 _nd_5 = heap_alloc(e, cls_fit(3));",
+          "calls": 2336,
+          "owner": "spin_9",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 1580,
+              "text": "o[0] = term_ctr(CID_MNODE, _nd_5);"
+            }
+          ]
+        },
+        {
+          "index": 82,
+          "sourceLine": 5736,
+          "text": "u64 _nd_17 = heap_alloc(e, cls_fit(3));",
+          "calls": 2264,
+          "owner": "FID_MAP_POP_GO_K92",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 5759,
+              "text": "e.mem[_t_31 + 0] = term_ctr(CID_MNODE, _nd_17);"
+            },
+            {
+              "line": 5764,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_17);"
+            }
+          ]
+        },
+        {
+          "index": 83,
+          "sourceLine": 5783,
+          "text": "u64 _nd_18 = heap_alloc(e, cls_fit(3));",
+          "calls": 2264,
+          "owner": "FID_MAP_POP_GO_K93",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 5788,
+              "text": "if (spin_9(e, _o_16, _f_80, term_ctr(CID_MNODE, _nd_18), _h_40, _h_41, _h_42) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "sourceLine": 1406,
+          "text": "u64 _nd_2 = heap_alloc(e, cls_fit(2));",
+          "calls": 2040,
+          "owner": "spin_1",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 1412,
+              "text": "e.mem[_nd_3 + 2] = term_ctr(CID_MLEAF, _nd_2);"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "sourceLine": 1409,
+          "text": "u64 _nd_3 = heap_alloc(e, cls_fit(3));",
+          "calls": 2040,
+          "owner": "spin_1",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 1413,
+              "text": "o[0] = term_ctr(CID_MNODE, _nd_3);"
+            }
+          ]
+        },
+        {
+          "index": 122,
+          "sourceLine": 7949,
+          "text": "u64 _nd_6 = heap_alloc(e, cls_fit(3));",
+          "calls": 2024,
+          "owner": "FID_MAP_SET_K157",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 7955,
+              "text": "e.mem[_t_12 + 0] = term_ctr(CID_MNODE, _nd_6);"
+            },
+            {
+              "line": 7963,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_6);"
+            }
+          ]
+        },
+        {
+          "index": 90,
+          "sourceLine": 5961,
+          "text": "u64 _nd_4 = _sp_1 >= HEAP_OFF ? _sp_1 : heap_alloc(e, cls_fit(2));",
+          "calls": 1848,
+          "owner": "FID_STRING_CMP",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 5967,
+              "text": "r0 = term_ctr(CID_SCON, _nd_4);"
+            }
+          ]
+        },
+        {
+          "index": 91,
+          "sourceLine": 5964,
+          "text": "u64 _nd_5 = _sp_2 >= HEAP_OFF ? _sp_2 : heap_alloc(e, cls_fit(2));",
+          "calls": 1848,
+          "owner": "FID_STRING_CMP",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 5968,
+              "text": "r1 = term_ctr(CID_SCON, _nd_5);"
+            }
+          ]
+        },
+        {
+          "index": 68,
+          "sourceLine": 4445,
+          "text": "u64 _nd_45 = heap_alloc(e, cls_fit(3));",
+          "calls": 1584,
+          "owner": "FID_MAP_PUT_GO_K47",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 4468,
+              "text": "e.mem[_t_23 + 0] = term_ctr(CID_MNODE, _nd_45);"
+            },
+            {
+              "line": 4474,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_45);"
+            }
+          ]
+        },
+        {
+          "index": 69,
+          "sourceLine": 4492,
+          "text": "u64 _nd_46 = heap_alloc(e, cls_fit(3));",
+          "calls": 1584,
+          "owner": "FID_MAP_PUT_GO_K48",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 4498,
+              "text": "e.mem[_nd_47 + 1] = term_ctr(CID_MNODE, _nd_46);"
+            }
+          ]
+        },
+        {
+          "index": 70,
+          "sourceLine": 4496,
+          "text": "u64 _nd_47 = heap_alloc(e, cls_fit(3));",
+          "calls": 1584,
+          "owner": "FID_MAP_PUT_GO_K48",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 4500,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_47);"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "sourceLine": 1550,
+          "text": "u64 _nd_2 = heap_alloc(e, cls_fit(3));",
+          "calls": 1552,
+          "owner": "spin_8",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 1554,
+              "text": "o[0] = term_ctr(CID_MNODE, _nd_2);"
+            }
+          ]
+        },
+        {
+          "index": 117,
+          "sourceLine": 7528,
+          "text": "u64 _nd_1 = heap_alloc(e, cls_fit(2));",
+          "calls": 1536,
+          "owner": "FID_MAP_TO_LIST_GO",
+          "category": "data_other_constructor",
+          "constructor": "CID_CON",
+          "consumer": [
+            {
+              "line": 7531,
+              "text": "r0 = term_ctr(CID_CON, _nd_1);"
+            }
+          ]
+        },
+        {
+          "index": 84,
+          "sourceLine": 5812,
+          "text": "u64 _nd_19 = heap_alloc(e, cls_fit(3));",
+          "calls": 1096,
+          "owner": "FID_MAP_POP_GO_K94",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 5835,
+              "text": "e.mem[_t_35 + 0] = term_ctr(CID_MNODE, _nd_19);"
+            },
+            {
+              "line": 5840,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_19);"
+            }
+          ]
+        },
+        {
+          "index": 85,
+          "sourceLine": 5859,
+          "text": "u64 _nd_20 = heap_alloc(e, cls_fit(3));",
+          "calls": 1096,
+          "owner": "FID_MAP_POP_GO_K95",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 5864,
+              "text": "if (spin_8(e, _o_17, _f_91, term_ctr(CID_MNODE, _nd_20), _h_45, _h_46, _h_47) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 57,
+          "sourceLine": 4170,
+          "text": "u64 _nd_28 = heap_alloc(e, cls_fit(3));",
+          "calls": 960,
+          "owner": "FID_MAP_PUT_GO_K39",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 4191,
+              "text": "e.mem[_t_7 + 0] = term_ctr(CID_MNODE, _nd_28);"
+            },
+            {
+              "line": 4197,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_28);"
+            }
+          ]
+        },
+        {
+          "index": 58,
+          "sourceLine": 4214,
+          "text": "u64 _nd_29 = heap_alloc(e, cls_fit(2));",
+          "calls": 960,
+          "owner": "FID_MAP_PUT_GO_K40",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 4219,
+              "text": "e.mem[_nd_30 + 1] = term_ctr(CID_MLEAF, _nd_29);"
+            }
+          ]
+        },
+        {
+          "index": 59,
+          "sourceLine": 4217,
+          "text": "u64 _nd_30 = heap_alloc(e, cls_fit(3));",
+          "calls": 960,
+          "owner": "FID_MAP_PUT_GO_K40",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 4221,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_30);"
+            }
+          ]
+        },
+        {
+          "index": 102,
+          "sourceLine": 6758,
+          "text": "u64 _nd_35 = heap_alloc(e, cls_fit(3));",
+          "calls": 928,
+          "owner": "FID_MAP_SEEK_GO_K107",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 6779,
+              "text": "e.mem[_t_15 + 0] = term_ctr(CID_MNODE, _nd_35);"
+            },
+            {
+              "line": 6784,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_35);"
+            }
+          ]
+        },
+        {
+          "index": 103,
+          "sourceLine": 6803,
+          "text": "u64 _nd_36 = heap_alloc(e, cls_fit(2));",
+          "calls": 928,
+          "owner": "FID_MAP_SEEK_GO_K108",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 6818,
+              "text": "if (spin_12(e, _o_9, _f_54, term_ctr(CID_MLEAF, _nd_36), _h_20, term_ctr(CID_TUPLE, _nd_38)) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 104,
+          "sourceLine": 6810,
+          "text": "u64 _nd_37 = heap_alloc(e, cls_fit(1));",
+          "calls": 928,
+          "owner": "FID_MAP_SEEK_GO_K108",
+          "category": "data_other_constructor",
+          "constructor": "CID_SOME",
+          "consumer": [
+            {
+              "line": 6812,
+              "text": "_b_3 = term_ctr(CID_SOME, _nd_37);"
+            }
+          ]
+        },
+        {
+          "index": 105,
+          "sourceLine": 6814,
+          "text": "u64 _nd_38 = heap_alloc(e, cls_fit(2));",
+          "calls": 928,
+          "owner": "FID_MAP_SEEK_GO_K108",
+          "category": "product_tuple",
+          "constructor": "CID_TUPLE",
+          "consumer": [
+            {
+              "line": 6818,
+              "text": "if (spin_12(e, _o_9, _f_54, term_ctr(CID_MLEAF, _nd_36), _h_20, term_ctr(CID_TUPLE, _nd_38)) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 41,
+          "sourceLine": 3426,
+          "text": "u64 _nd_76 = heap_alloc(e, cls_fit(3));",
+          "calls": 896,
+          "owner": "FID_MAP_INS_GO_K29",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3432,
+              "text": "e.mem[_nd_77 + 1] = term_ctr(CID_MNODE, _nd_76);"
+            }
+          ]
+        },
+        {
+          "index": 42,
+          "sourceLine": 3430,
+          "text": "u64 _nd_77 = heap_alloc(e, cls_fit(3));",
+          "calls": 896,
+          "owner": "FID_MAP_INS_GO_K29",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3434,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_77);"
+            }
+          ]
+        },
+        {
+          "index": 38,
+          "sourceLine": 3356,
+          "text": "u64 _nd_69 = heap_alloc(e, cls_fit(3));",
+          "calls": 840,
+          "owner": "FID_MAP_INS_GO_K27",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3377,
+              "text": "e.mem[_t_41 + 0] = term_ctr(CID_MNODE, _nd_69);"
+            },
+            {
+              "line": 3385,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_69);"
+            }
+          ]
+        },
+        {
+          "index": 39,
+          "sourceLine": 3404,
+          "text": "u64 _nd_70 = heap_alloc(e, cls_fit(2));",
+          "calls": 840,
+          "owner": "FID_MAP_INS_GO_K28",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 3410,
+              "text": "e.mem[_nd_71 + 2] = term_ctr(CID_MLEAF, _nd_70);"
+            }
+          ]
+        },
+        {
+          "index": 40,
+          "sourceLine": 3407,
+          "text": "u64 _nd_71 = heap_alloc(e, cls_fit(3));",
+          "calls": 840,
+          "owner": "FID_MAP_INS_GO_K28",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3411,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_71);"
+            }
+          ]
+        },
+        {
+          "index": 120,
+          "sourceLine": 7844,
+          "text": "u64 _nd_3 = heap_alloc(e, cls_fit(3));",
+          "calls": 688,
+          "owner": "FID_MAP_SET_K155",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 7850,
+              "text": "e.mem[_t_6 + 0] = term_ctr(CID_MNODE, _nd_3);"
+            },
+            {
+              "line": 7856,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_3);"
+            }
+          ]
+        },
+        {
+          "index": 114,
+          "sourceLine": 7274,
+          "text": "u64 _nd_0 = heap_alloc(e, cls_fit(3));",
+          "calls": 520,
+          "owner": "FID_MAP_POP_K127",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 7280,
+              "text": "e.mem[_t_4 + 0] = term_ctr(CID_MNODE, _nd_0);"
+            },
+            {
+              "line": 7285,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_0);"
+            }
+          ]
+        },
+        {
+          "index": 76,
+          "sourceLine": 5495,
+          "text": "u64 _nd_10 = heap_alloc(e, cls_fit(3));",
+          "calls": 456,
+          "owner": "FID_MAP_POP_GO_K85",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 5516,
+              "text": "e.mem[_t_17 + 0] = term_ctr(CID_MNODE, _nd_10);"
+            },
+            {
+              "line": 5521,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_10);"
+            }
+          ]
+        },
+        {
+          "index": 77,
+          "sourceLine": 5539,
+          "text": "u64 _nd_11 = heap_alloc(e, cls_fit(2));",
+          "calls": 456,
+          "owner": "FID_MAP_POP_GO_K86",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 5543,
+              "text": "if (spin_8(e, _o_11, _f_43, term_ctr(CID_MLEAF, _nd_11), _h_22, _h_23, _h_24) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 73,
+          "sourceLine": 5384,
+          "text": "u64 _nd_7 = heap_alloc(e, cls_fit(2));",
+          "calls": 448,
+          "owner": "FID_MAP_POP_GO_K82",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 5398,
+              "text": "if (spin_9(e, _o_6, _f_21, term_ctr(CID_MLEAF, _nd_7), _v_7, _v_8, _v_9) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 29,
+          "sourceLine": 3167,
+          "text": "u64 _nd_43 = heap_alloc(e, cls_fit(2));",
+          "calls": 208,
+          "owner": "FID_MAP_INS_GO_K21",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 3172,
+              "text": "e.mem[_nd_44 + 1] = term_ctr(CID_MLEAF, _nd_43);"
+            }
+          ]
+        },
+        {
+          "index": 30,
+          "sourceLine": 3170,
+          "text": "u64 _nd_44 = heap_alloc(e, cls_fit(3));",
+          "calls": 208,
+          "owner": "FID_MAP_INS_GO_K21",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3174,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_44);"
+            }
+          ]
+        },
+        {
+          "index": 87,
+          "sourceLine": 5906,
+          "text": "u64 _nd_1 = _sp_1 >= HEAP_OFF ? _sp_1 : heap_alloc(e, cls_fit(2));",
+          "calls": 192,
+          "owner": "FID_STRING_CMP",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 5909,
+              "text": "r0 = term_ctr(CID_SCON, _nd_1);"
+            }
+          ]
+        },
+        {
+          "index": 27,
+          "sourceLine": 3146,
+          "text": "u64 _nd_37 = heap_alloc(e, cls_fit(2));",
+          "calls": 96,
+          "owner": "FID_MAP_INS_GO_K20",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 3152,
+              "text": "e.mem[_nd_38 + 2] = term_ctr(CID_MLEAF, _nd_37);"
+            }
+          ]
+        },
+        {
+          "index": 28,
+          "sourceLine": 3149,
+          "text": "u64 _nd_38 = heap_alloc(e, cls_fit(3));",
+          "calls": 96,
+          "owner": "FID_MAP_INS_GO_K20",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 3153,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_38);"
+            }
+          ]
+        },
+        {
+          "index": 62,
+          "sourceLine": 4299,
+          "text": "u64 _nd_36 = heap_alloc(e, cls_fit(3));",
+          "calls": 88,
+          "owner": "FID_MAP_PUT_GO_K43",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 4320,
+              "text": "e.mem[_t_15 + 0] = term_ctr(CID_MNODE, _nd_36);"
+            },
+            {
+              "line": 4326,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_36);"
+            }
+          ]
+        },
+        {
+          "index": 63,
+          "sourceLine": 4343,
+          "text": "u64 _nd_37 = heap_alloc(e, cls_fit(2));",
+          "calls": 88,
+          "owner": "FID_MAP_PUT_GO_K44",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 4349,
+              "text": "e.mem[_nd_38 + 2] = term_ctr(CID_MLEAF, _nd_37);"
+            }
+          ]
+        },
+        {
+          "index": 64,
+          "sourceLine": 4346,
+          "text": "u64 _nd_38 = heap_alloc(e, cls_fit(3));",
+          "calls": 88,
+          "owner": "FID_MAP_PUT_GO_K44",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 4350,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_38);"
+            }
+          ]
+        },
+        {
+          "index": 79,
+          "sourceLine": 5626,
+          "text": "u64 _nd_14 = heap_alloc(e, cls_fit(3));",
+          "calls": 72,
+          "owner": "FID_MAP_POP_GO_K89",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 5647,
+              "text": "e.mem[_t_25 + 0] = term_ctr(CID_MNODE, _nd_14);"
+            },
+            {
+              "line": 5652,
+              "text": "r0 = term_ctr(CID_MNODE, _nd_14);"
+            }
+          ]
+        },
+        {
+          "index": 80,
+          "sourceLine": 5670,
+          "text": "u64 _nd_15 = heap_alloc(e, cls_fit(2));",
+          "calls": 72,
+          "owner": "FID_MAP_POP_GO_K90",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 5674,
+              "text": "if (spin_9(e, _o_13, _f_62, term_ctr(CID_MLEAF, _nd_15), _h_32, _h_33, _h_34) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 75,
+          "sourceLine": 5457,
+          "text": "u64 _nd_9 = heap_alloc(e, cls_fit(3));",
+          "calls": 64,
+          "owner": "FID_MAP_POP_GO_K84",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 5472,
+              "text": "if (spin_9(e, _o_10, _f_32, term_ctr(CID_MNODE, _nd_9), _v_13, _v_14, _v_15) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 118,
+          "sourceLine": 7705,
+          "text": "u64 _nd_0 = heap_alloc(e, cls_fit(2));",
+          "calls": 16,
+          "owner": "FID_MAP_SET_K153",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MLEAF",
+          "consumer": [
+            {
+              "line": 7708,
+              "text": "r0 = term_ctr(CID_MLEAF, _nd_0);"
+            }
+          ]
+        },
+        {
+          "index": 81,
+          "sourceLine": 5697,
+          "text": "u64 _nd_16 = heap_alloc(e, cls_fit(3));",
+          "calls": 8,
+          "owner": "FID_MAP_POP_GO_K91",
+          "category": "data_tree_map_node",
+          "constructor": "CID_MNODE",
+          "consumer": [
+            {
+              "line": 5712,
+              "text": "if (spin_8(e, _o_15, _f_65, term_ctr(CID_MNODE, _nd_16), _v_16, _v_17, _v_18) == 0) {"
+            }
+          ]
+        },
+        {
+          "index": 126,
+          "sourceLine": 8098,
+          "text": "u64 _nd_1 = heap_alloc(e, cls_fit(2));",
+          "calls": 1,
+          "owner": "FID_NAT_SHOW_FIN",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 8103,
+              "text": "Term _acc_1 = term_ctr(CID_SCON, _nd_1);"
+            },
+            {
+              "line": 8109,
+              "text": "Term _acc_2 = term_ctr(CID_SCON, _nd_1);"
+            }
+          ]
+        },
+        {
+          "index": 147,
+          "sourceLine": 10661,
+          "text": "u64  l = heap_alloc(e, 1);",
+          "calls": 1,
+          "owner": "io_str",
+          "category": "data_string",
+          "constructor": "CID_SCON",
+          "consumer": [
+            {
+              "line": 10662,
+              "text": "Term t = term_ctr(CID_SCON, l);"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

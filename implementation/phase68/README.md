@@ -1,6 +1,14 @@
 # Phase68 native parity investigation and optimization
 
 Status: investigation in progress; no new compiler promoted.
+
+**Latest:** [compiler23 native profile/code/upstream survey](c23-parity-survey.md).
+Forty profiles plus allocation-site and optimized-assembly analysis identify
+false parallelism, repeated immutable data, boxed product transport, closure
+stages and tree reconstruction. Saved-C mode correction removes 14.9% tree /
+11.9% lexer time; static data plus mode correction removes 21.8% lexer time in
+a separate five-arm campaign. These are diagnostic derivatives, not a changed
+compiler or a replacement for the previous six-family 1.724× ratio.
 [Design](../../design/phase68/native-parity.md).
 
 The Phase67 installed compiler and 110 inherited files are preserved. Baseline

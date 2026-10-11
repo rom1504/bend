@@ -1,0 +1,745 @@
+{
+  "schema": "phase68-c23-machine-code-v1",
+  "producer": {
+    "path": "selfhost/tools/performance/phase68/parity-survey/machine-code.py",
+    "sha256": "e4aef992b194a7181948a517d6ff42b1a5bd8bf7c8f704dd84618727f49441f0",
+    "bytes": 3020
+  },
+  "debug_report": {
+    "path": "selfhost/build/phase68/parity-survey23-debug01/report.json",
+    "sha256": "0f61ebecd96178069855b7ea5167dbdf0ba5ffddebfe5f0665ef5b79c6434dc4",
+    "bytes": 67971
+  },
+  "scope": "Static x86-64 disassembly from .text-identical debug binaries; instructions counts include all branches, never dynamic cost. objdump CPU0 only.",
+  "rows": [
+    {
+      "family": "closures",
+      "role": "selfhost",
+      "executable": {
+        "path": "selfhost/build/phase68/parity-survey23-debug01/closures-selfhost/program",
+        "sha256": "5444dab688523f9015ba42ae78d0310960459096a2f00acca25ddc34a05d0e22",
+        "bytes": 787000
+      },
+      "text_identical_to_qualified": true,
+      "text_sha256": "3feb68d36879a92b915f63e2a965bd2e3ab0a414037ce295a0286441f25cb447",
+      "symbols": [
+        {
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/closures-selfhost-rfc_wrap.asm",
+            "sha256": "e698cb709896f53a17e37d896202c9272260b437ebd360be64cb483a15be358a",
+            "bytes": 1549
+          },
+          "instruction_count": 44,
+          "calls": {
+            "heap_alloc_miss": 1,
+            "err_fail": 1
+          },
+          "conditional_jumps": 3,
+          "lock_instructions": []
+        },
+        {
+          "name": "term_keep",
+          "decoded": "term_keep",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/closures-selfhost-term_keep.asm",
+            "sha256": "0381d129509e908a7e497874da62d245ed674b65072654159525232b5affbf7c",
+            "bytes": 262
+          },
+          "instruction_count": 0,
+          "calls": {},
+          "conditional_jumps": 0,
+          "lock_instructions": []
+        },
+        {
+          "name": "term_drop",
+          "decoded": "term_drop",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/closures-selfhost-term_drop.asm",
+            "sha256": "d6f23974700dd762bfe71acfce58d80a27ab21b66deff676180c60f6a88bed16",
+            "bytes": 7984
+          },
+          "instruction_count": 238,
+          "calls": {
+            "heap_hand": 3,
+            "term_drop": 1
+          },
+          "conditional_jumps": 31,
+          "lock_instructions": [
+            {
+              "address": "0xa40d",
+              "mnemonic": "lock",
+              "operands": "xadd %ecx,(%r14,%rax,8)"
+            }
+          ]
+        },
+        {
+          "name": "WL_BEND_CLO_APPLY",
+          "decoded": "WL_BEND_CLO_APPLY",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/closures-selfhost-WL_BEND_CLO_APPLY.asm",
+            "sha256": "ecaba797d264a6b2abb91f5cb0b14eb55a007cbbe6b9dbbb83299be1d8abb67e",
+            "bytes": 2970
+          },
+          "instruction_count": 75,
+          "calls": {
+            "heap_hand": 1
+          },
+          "conditional_jumps": 9,
+          "lock_instructions": []
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_110_101_119_47_99_108_111_115_117_114_101_115_58_99_104_97_105_110_",
+          "decoded": "WL_FID[$direct.../phase37/fixtures-new/closures:chain]",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/closures-selfhost-WL_FID[direct..._phase37_fixtures-new_closures:chain].asm",
+            "sha256": "f0ddfdac1a8caf98fb076602f70ea9634be31969f9675928f8cecde0cf69161f",
+            "bytes": 5583
+          },
+          "instruction_count": 95,
+          "calls": {
+            "rfc_wrap": 1,
+            "heap_alloc_miss": 2,
+            "err_fail": 1
+          },
+          "conditional_jumps": 7,
+          "lock_instructions": [
+            {
+              "address": "0xdc73",
+              "mnemonic": "lock",
+              "operands": "xadd %edx,(%r12,%rax,8)"
+            }
+          ]
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_53_54_50_51_",
+          "decoded": "WL_FID[native_k_15623]",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/closures-selfhost-WL_FID[native_k_15623].asm",
+            "sha256": "0cb371e95f0b428501deb83fdc7014d0d9880f1e1e2410b3d24f8cfdd0b07dd4",
+            "bytes": 587
+          },
+          "instruction_count": 7,
+          "calls": {},
+          "conditional_jumps": 0,
+          "lock_instructions": []
+        }
+      ]
+    },
+    {
+      "family": "closures",
+      "role": "upstream",
+      "executable": {
+        "path": "selfhost/build/phase68/parity-survey23-debug01/closures-upstream/program",
+        "sha256": "a49f798fe6d55ffb2076d0b3dee3e753b34f54b019fa15c934b64e24a85662a5",
+        "bytes": 210376
+      },
+      "text_identical_to_qualified": true,
+      "text_sha256": "3dd9784652863dc133bc7b953033075cac6e5a95c4498edfb21ed4838a710d3b",
+      "symbols": [
+        {
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/closures-upstream-rfc_wrap.asm",
+            "sha256": "79ab1ce00d780cd5a3fbb6405f4eb0a0f8aaaa45531f98cdbcf371d2b33f9204",
+            "bytes": 1540
+          },
+          "instruction_count": 44,
+          "calls": {
+            "heap_alloc_miss": 1,
+            "err_fail": 1
+          },
+          "conditional_jumps": 3,
+          "lock_instructions": []
+        },
+        {
+          "name": "term_keep",
+          "decoded": "term_keep",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/closures-upstream-term_keep.asm",
+            "sha256": "42c73aea7fc5823efd451ea366ea5e220a76fe3d15781b928eb20a3e9fd15158",
+            "bytes": 262
+          },
+          "instruction_count": 0,
+          "calls": {},
+          "conditional_jumps": 0,
+          "lock_instructions": []
+        },
+        {
+          "name": "term_drop",
+          "decoded": "term_drop",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/closures-upstream-term_drop.asm",
+            "sha256": "7b9a2bcf762ea44c34587edfe580cb63e8058dff8cd8973fdfcef489cb150dbc",
+            "bytes": 7424
+          },
+          "instruction_count": 222,
+          "calls": {
+            "heap_hand": 3
+          },
+          "conditional_jumps": 31,
+          "lock_instructions": [
+            {
+              "address": "0x4ff9",
+              "mnemonic": "lock",
+              "operands": "xadd %r11d,(%rdi,%rcx,8)"
+            }
+          ]
+        },
+        {
+          "name": "WL_FID_CLO_APPLY",
+          "decoded": "WL_FID_CLO_APPLY",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/closures-upstream-WL_FID_CLO_APPLY.asm",
+            "sha256": "f62042fa320a02ac69fcbea04c3ae4d79980e80ae8fa554bcf014951f2a8891b",
+            "bytes": 2959
+          },
+          "instruction_count": 76,
+          "calls": {
+            "heap_hand": 1
+          },
+          "conditional_jumps": 9,
+          "lock_instructions": []
+        },
+        {
+          "name": "WL_FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN",
+          "decoded": "WL_FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/closures-upstream-WL_FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN.asm",
+            "sha256": "2922643b2332097f23d2f1de504007730a38ea7c81bd9d1e1f72d8ff2ca8704d",
+            "bytes": 3381
+          },
+          "instruction_count": 80,
+          "calls": {
+            "heap_alloc_miss": 2
+          },
+          "conditional_jumps": 7,
+          "lock_instructions": []
+        },
+        {
+          "name": "WL_FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C40",
+          "decoded": "WL_FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C40",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/closures-upstream-WL_FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C40.asm",
+            "sha256": "82c5445f0e39c0a5894374cd17ac89c2fb14e80f103f84c050f4d2a86bf250ba",
+            "bytes": 579
+          },
+          "instruction_count": 7,
+          "calls": {},
+          "conditional_jumps": 0,
+          "lock_instructions": []
+        }
+      ]
+    },
+    {
+      "family": "map",
+      "role": "selfhost",
+      "executable": {
+        "path": "selfhost/build/phase68/parity-survey23-debug01/map-selfhost/program",
+        "sha256": "ac14e9e5de4e60b78bc5932ae6d4a24f7f9bcebd6cb894159aaa746685ce78e3",
+        "bytes": 2068128
+      },
+      "text_identical_to_qualified": true,
+      "text_sha256": "e6d3843ff466049d97b4315cd78b7d394f49daeb5659d349dfd87b0f1c7bec4b",
+      "symbols": [
+        {
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/map-selfhost-rfc_wrap.asm",
+            "sha256": "c9b69fb4bba19262494a187fa6d27c0bdfe8c08d266422185724a203eb2c2734",
+            "bytes": 1544
+          },
+          "instruction_count": 44,
+          "calls": {
+            "heap_alloc_miss": 1,
+            "err_fail": 1
+          },
+          "conditional_jumps": 3,
+          "lock_instructions": []
+        },
+        {
+          "name": "term_keep",
+          "decoded": "term_keep",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/map-selfhost-term_keep.asm",
+            "sha256": "9961265f90789a9d32c9088826b7bea6e9cedc6d7e45e3e8f1a4d9f94dbc67d6",
+            "bytes": 1176
+          },
+          "instruction_count": 30,
+          "calls": {
+            "err_fail": 1,
+            "rfc_wrap": 1
+          },
+          "conditional_jumps": 3,
+          "lock_instructions": [
+            {
+              "address": "0x4afdd",
+              "mnemonic": "lock",
+              "operands": "xadd %ecx,(%rdi,%rax,8)"
+            }
+          ]
+        },
+        {
+          "name": "term_drop",
+          "decoded": "term_drop",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/map-selfhost-term_drop.asm",
+            "sha256": "b4c1861b737b4bcc6c598917f7c41196278820366d363fe47208a52e3ab0918d",
+            "bytes": 8021
+          },
+          "instruction_count": 238,
+          "calls": {
+            "heap_hand": 3,
+            "term_drop": 1
+          },
+          "conditional_jumps": 31,
+          "lock_instructions": [
+            {
+              "address": "0x11d7d",
+              "mnemonic": "lock",
+              "operands": "xadd %ecx,(%r14,%rax,8)"
+            }
+          ]
+        },
+        {
+          "name": "WL_BEND_CLO_APPLY",
+          "decoded": "WL_BEND_CLO_APPLY",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/map-selfhost-WL_BEND_CLO_APPLY.asm",
+            "sha256": "f24c5a3fbcf7aaaf22f41cfb571f3bf8e5f14a94bb720afe9dd471b9f142e13f",
+            "bytes": 3622
+          },
+          "instruction_count": 92,
+          "calls": {
+            "heap_hand": 1
+          },
+          "conditional_jumps": 11,
+          "lock_instructions": []
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+          "decoded": "WL_FID[$direct.Map.bit.go]",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/map-selfhost-WL_FID[direct.Map.bit.go].asm",
+            "sha256": "ddf88dca4130a02362bb16152782082741bae1febb9caebd0b1090932c21e896",
+            "bytes": 16896
+          },
+          "instruction_count": 403,
+          "calls": {
+            "heap_hand": 4,
+            "span_fade": 2,
+            "heap_alloc_miss": 4,
+            "term_drop": 2,
+            "err_fail": 2,
+            "task_node": 3
+          },
+          "conditional_jumps": 34,
+          "lock_instructions": []
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_46_114_101_99_",
+          "decoded": "WL_FID[$direct.Map.bit.go.rec]",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/map-selfhost-WL_FID[direct.Map.bit.go.rec].asm",
+            "sha256": "f50af1b2ff7ff98e10208c0aa0cc6caee05eba7b39c92ed2c704e1184a65e12c",
+            "bytes": 9032
+          },
+          "instruction_count": 203,
+          "calls": {
+            "heap_alloc_miss": 2,
+            "rfc_wrap": 4,
+            "heap_hand": 2,
+            "span_fade": 1,
+            "term_drop": 2,
+            "err_fail": 1
+          },
+          "conditional_jumps": 20,
+          "lock_instructions": []
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_46_99_104_114_",
+          "decoded": "WL_FID[$direct.Map.bit.go.chr]",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/map-selfhost-WL_FID[direct.Map.bit.go.chr].asm",
+            "sha256": "0eed04048fbf77045f9aceb6ec4630135bdf18dd25737b9f7984a7a00c0937c7",
+            "bytes": 8868
+          },
+          "instruction_count": 197,
+          "calls": {
+            "heap_alloc_miss": 2,
+            "rfc_wrap": 4,
+            "heap_hand": 2,
+            "span_fade": 1,
+            "term_drop": 2,
+            "err_fail": 1
+          },
+          "conditional_jumps": 20,
+          "lock_instructions": []
+        }
+      ]
+    },
+    {
+      "family": "map",
+      "role": "upstream",
+      "executable": {
+        "path": "selfhost/build/phase68/parity-survey23-debug01/map-upstream/program",
+        "sha256": "444f8143eb870ef6dcdeb01afc42e643378e53baa5b46f3c44ba54db141ee8bc",
+        "bytes": 573288
+      },
+      "text_identical_to_qualified": true,
+      "text_sha256": "957fceb96eebdc6da5ca051447c033f205c0fb287db65a55f7897b8a048788f8",
+      "symbols": [
+        {
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/map-upstream-rfc_wrap.asm",
+            "sha256": "cb079306c6ecef7a837fc7a98f4bdb477e2d22e952196c5fbbd2935d21f5fbb3",
+            "bytes": 1542
+          },
+          "instruction_count": 44,
+          "calls": {
+            "heap_alloc_miss": 1,
+            "err_fail": 1
+          },
+          "conditional_jumps": 3,
+          "lock_instructions": []
+        },
+        {
+          "name": "term_keep",
+          "decoded": "term_keep",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/map-upstream-term_keep.asm",
+            "sha256": "daa6550c6cf3f65a680ba0744b68d0228b8d5f0217f4f650abd9c077daa35c85",
+            "bytes": 1174
+          },
+          "instruction_count": 30,
+          "calls": {
+            "err_fail": 1,
+            "rfc_wrap": 1
+          },
+          "conditional_jumps": 3,
+          "lock_instructions": [
+            {
+              "address": "0x1ae2b",
+              "mnemonic": "lock",
+              "operands": "xadd %ecx,(%rdi,%rax,8)"
+            }
+          ]
+        },
+        {
+          "name": "term_drop",
+          "decoded": "term_drop",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/map-upstream-term_drop.asm",
+            "sha256": "f0d9dfa2b3e3679c9bd5dad800ced02b742fed10fa271b47207e893c45a57737",
+            "bytes": 7428
+          },
+          "instruction_count": 222,
+          "calls": {
+            "heap_hand": 3
+          },
+          "conditional_jumps": 31,
+          "lock_instructions": [
+            {
+              "address": "0x7009",
+              "mnemonic": "lock",
+              "operands": "xadd %r11d,(%rdi,%rcx,8)"
+            }
+          ]
+        },
+        {
+          "name": "WL_FID_CLO_APPLY",
+          "decoded": "WL_FID_CLO_APPLY",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/map-upstream-WL_FID_CLO_APPLY.asm",
+            "sha256": "9690063c04ae5a7d8d8524d540e39957d115c07256a92f754ad9c5e2ac132137",
+            "bytes": 3653
+          },
+          "instruction_count": 94,
+          "calls": {
+            "heap_hand": 1
+          },
+          "conditional_jumps": 11,
+          "lock_instructions": []
+        },
+        {
+          "name": "WL_FID_MAP_BIT_GO",
+          "decoded": "WL_FID_MAP_BIT_GO",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/map-upstream-WL_FID_MAP_BIT_GO.asm",
+            "sha256": "ce5198fafb0da4ad86704b30f0a551da855850343e71ceb6152176d9d1faa10f",
+            "bytes": 12349
+          },
+          "instruction_count": 351,
+          "calls": {
+            "heap_hand": 5,
+            "span_fade": 2,
+            "heap_alloc_miss": 3,
+            "rfc_wrap": 1
+          },
+          "conditional_jumps": 37,
+          "lock_instructions": []
+        },
+        {
+          "name": "WL_FID_MAP_BIT_GO_K51",
+          "decoded": "WL_FID_MAP_BIT_GO_K51",
+          "disassembly": {
+            "path": "selfhost/build/phase68/parity-survey23-assembly01/map-upstream-WL_FID_MAP_BIT_GO_K51.asm",
+            "sha256": "799cb49909948ec079c3462594de8e1d6a1060489d66135597326e04a042fe08",
+            "bytes": 1724
+          },
+          "instruction_count": 44,
+          "calls": {
+            "heap_alloc_miss": 1,
+            "rfc_wrap": 1
+          },
+          "conditional_jumps": 2,
+          "lock_instructions": []
+        }
+      ]
+    }
+  ],
+  "raw_report": {
+    "path": "selfhost/build/phase68/parity-survey23-assembly01/report.json",
+    "sha256": "0a0a2d9d49f550a19c8cf465b78353a1f40cfd5fc27da35a0083c0ef989ce2ec",
+    "bytes": 436745
+  },
+  "profile_inputs": [
+    {
+      "path": "selfhost/build/phase68/parity-survey23-samples03/closures-selfhost-1000/analysis.json",
+      "sha256": "46647fc537636b37ca47c58bd689508f88ded080340a1477dc1224d742e8bc26",
+      "bytes": 66519,
+      "top_leaf_functions": [
+        {
+          "name": "WL_BEND_CLO_APPLY",
+          "samples": 921,
+          "percent_all_samples": 71.50621118012423
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_110_101_119_47_99_108_111_115_117_114_101_115_58_99_111_109_112_111_115_101_",
+          "samples": 68,
+          "percent_all_samples": 5.279503105590062
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_53_54_50_49_",
+          "samples": 58,
+          "percent_all_samples": 4.503105590062112
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_110_101_119_47_99_108_111_115_117_114_101_115_58_99_104_97_105_110_",
+          "samples": 41,
+          "percent_all_samples": 3.1832298136645965
+        }
+      ],
+      "samples": 1288,
+      "overruns": 3864
+    },
+    {
+      "path": "selfhost/build/phase68/parity-survey23-samples03/closures-selfhost-1307/analysis.json",
+      "sha256": "b39e2d9fa0fc631fcce7d13308771353b01c9bf09af939922146f47530711faa",
+      "bytes": 60169,
+      "top_leaf_functions": [
+        {
+          "name": "WL_BEND_CLO_APPLY",
+          "samples": 923,
+          "percent_all_samples": 72.22222222222223
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_53_54_50_49_",
+          "samples": 78,
+          "percent_all_samples": 6.103286384976526
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_110_101_119_47_99_108_111_115_117_114_101_115_58_99_111_109_112_111_115_101_",
+          "samples": 68,
+          "percent_all_samples": 5.320813771517997
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_110_101_119_47_99_108_111_115_117_114_101_115_58_99_104_97_105_110_",
+          "samples": 38,
+          "percent_all_samples": 2.97339593114241
+        }
+      ],
+      "samples": 1278,
+      "overruns": 2631
+    },
+    {
+      "path": "selfhost/build/phase68/parity-survey23-samples03/closures-upstream-1000/analysis.json",
+      "sha256": "b76b347246045de9e7080221f27bdfadf811dedec0bb7c1d57d9e916f316a478",
+      "bytes": 40462,
+      "top_leaf_functions": [
+        {
+          "name": "WL_FID_CLO_APPLY",
+          "samples": 1131,
+          "percent_all_samples": 66.33431085043988
+        },
+        {
+          "name": "WL_FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C40",
+          "samples": 212,
+          "percent_all_samples": 12.434017595307918
+        },
+        {
+          "name": "WL_FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_K38",
+          "samples": 162,
+          "percent_all_samples": 9.501466275659824
+        },
+        {
+          "name": "WL_FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C39",
+          "samples": 146,
+          "percent_all_samples": 8.563049853372434
+        }
+      ],
+      "samples": 1705,
+      "overruns": 5112
+    },
+    {
+      "path": "selfhost/build/phase68/parity-survey23-samples03/closures-upstream-1307/analysis.json",
+      "sha256": "50262654d421d82eaed8f44c13d5690ef43f4363e0d09d15aaa939abe8fcabf5",
+      "bytes": 41174,
+      "top_leaf_functions": [
+        {
+          "name": "WL_FID_CLO_APPLY",
+          "samples": 1132,
+          "percent_all_samples": 61.723009814612865
+        },
+        {
+          "name": "WL_FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C40",
+          "samples": 276,
+          "percent_all_samples": 15.04907306434024
+        },
+        {
+          "name": "WL_FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_C39",
+          "samples": 210,
+          "percent_all_samples": 11.450381679389313
+        },
+        {
+          "name": "WL_FID____PHASE37_FIXTURES_NEW_CLOSURES_CHAIN_K38",
+          "samples": 147,
+          "percent_all_samples": 8.01526717557252
+        }
+      ],
+      "samples": 1834,
+      "overruns": 3777
+    },
+    {
+      "path": "selfhost/build/phase68/parity-survey23-samples03/map-selfhost-1000/analysis.json",
+      "sha256": "51872c24e9adb68f4bdf832de2053d07d80063ae5a77040865621b1644991569",
+      "bytes": 249029,
+      "top_leaf_functions": [
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_46_114_101_99_",
+          "samples": 105,
+          "percent_all_samples": 13.059701492537313
+        },
+        {
+          "name": "rfc_wrap",
+          "samples": 105,
+          "percent_all_samples": 13.059701492537313
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+          "samples": 78,
+          "percent_all_samples": 9.701492537313433
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_46_103_111_",
+          "samples": 58,
+          "percent_all_samples": 7.213930348258707
+        }
+      ],
+      "samples": 804,
+      "overruns": 2409
+    },
+    {
+      "path": "selfhost/build/phase68/parity-survey23-samples03/map-selfhost-1307/analysis.json",
+      "sha256": "b2e71785aeb30b68ca2493b8fa1b9a6296c1f1919d7a1ea1b1abf650eebb2209",
+      "bytes": 241960,
+      "top_leaf_functions": [
+        {
+          "name": "rfc_wrap",
+          "samples": 104,
+          "percent_all_samples": 13.506493506493506
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_46_114_101_99_",
+          "samples": 92,
+          "percent_all_samples": 11.948051948051948
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+          "samples": 87,
+          "percent_all_samples": 11.2987012987013
+        },
+        {
+          "name": "term_drop",
+          "samples": 53,
+          "percent_all_samples": 6.883116883116883
+        }
+      ],
+      "samples": 770,
+      "overruns": 1585
+    },
+    {
+      "path": "selfhost/build/phase68/parity-survey23-samples03/map-upstream-1000/analysis.json",
+      "sha256": "9e39130983c81e602733271bbb7f4ca4ed7c6fffc19c68b6af17f8f2948d6117",
+      "bytes": 161829,
+      "top_leaf_functions": [
+        {
+          "name": "WL_FID_MAP_BIT_GO",
+          "samples": 121,
+          "percent_all_samples": 17.04225352112676
+        },
+        {
+          "name": "rfc_wrap",
+          "samples": 116,
+          "percent_all_samples": 16.338028169014084
+        },
+        {
+          "name": "WL_FID_MAP_BIT_GO_K51",
+          "samples": 92,
+          "percent_all_samples": 12.95774647887324
+        },
+        {
+          "name": "term_drop",
+          "samples": 66,
+          "percent_all_samples": 9.295774647887324
+        }
+      ],
+      "samples": 710,
+      "overruns": 2128
+    },
+    {
+      "path": "selfhost/build/phase68/parity-survey23-samples03/map-upstream-1307/analysis.json",
+      "sha256": "ce5b163aa99baa512321d5c3c0b638fd14bbd5fe62434f9a13d6f4beaa72fa14",
+      "bytes": 156535,
+      "top_leaf_functions": [
+        {
+          "name": "WL_FID_MAP_BIT_GO",
+          "samples": 112,
+          "percent_all_samples": 17.391304347826086
+        },
+        {
+          "name": "WL_FID_MAP_BIT_GO_K51",
+          "samples": 104,
+          "percent_all_samples": 16.149068322981368
+        },
+        {
+          "name": "rfc_wrap",
+          "samples": 70,
+          "percent_all_samples": 10.869565217391305
+        },
+        {
+          "name": "term_drop",
+          "samples": 69,
+          "percent_all_samples": 10.714285714285714
+        }
+      ],
+      "samples": 644,
+      "overruns": 1327
+    }
+  ]
+}

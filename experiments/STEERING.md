@@ -1,53 +1,58 @@
-# Active frontier: Phase72 installed product transport
+# Active frontier: Phase73 native execution near aggregate parity
 
-[Design](../design/phase72/product-transport.md) ·
-[Report](../implementation/phase72/README.md) ·
-[Measurements](../implementation/phase72/measurements.json) ·
-[Qualification](../implementation/phase72/qualification.json).
+[Design](../design/phase73/native-parity.md) ·
+[Report](../implementation/phase73/README.md) ·
+[Measurements](../implementation/phase73/measurements.json) ·
+[Qualification](../implementation/phase73/qualification.json).
 
-Selected source1176262; installed checked B1`0ab62a7a…`, genuine B2/B3`bd39db0d…`,
-flattened source`2dfc191e…`; upstream0592662. The compiler remains Bend. One
-agent, no delegation; no PR comments without a new explicit request.
+Selected production source `a6ca26d`; installed checked B1 `c2705793…`, genuine
+B2/B3 `25d4ca2e…`, flattened source `cf12e529…`; upstream0592662. Compiler
+algorithms remain Bend. No subagents; no PR comments without explicit request.
 
-## Measured result
+## Result and tradeoff
 
-A saved-C BST falsifier established7.20% less time. The compiler implementation
-then joined existing typed product transport across calls and checked loop
-backedges. Final paired execution: Array.map22.2% less time,lexer13.8%,BST7.7%;
-other nine families within1%. Original-six mean1.08442× upstream,additional-six
-1.74312×. Optional twelve-family mean1.42979×→1.37488×,3.84% less time. All108
-intervals qualify, with independent16-input checksums. No universal parity claim.
+General constructor sharing, borrowed scalar observers and scalar facts retained
+through continuations reduce the fixed twelve-family C execution mean
+**1.36903×→1.05060× upstream**, **23.26% less time** against paired Phase72.
+Original/additional six means are1.00924×/1.09365×. Tape/list/BST speedups are
+3.36×/1.98×/1.64×. Tree,lexer,AST,Array.map still take1.37–1.53× upstream time.
+All216 final intervals qualify. This is near aggregate parity, not universal parity.
 
-Paired45-request C screen: B1 old/new3.48067×/3.47263× upstream; B2
-2.23883×/2.24608×. Changes−0.23%/+0.32% are not material speed gains/regressions.
-Bend prepared Base is outside requests; upstream Base checking is inside.
-Imports, Clang and generated-program execution remain distinct clocks.
+Compilation pays for the analysis: old/new B1 ratios3.35025×/3.59582×; B2
+2.16089×/2.29667×. Request time grows7.33%/6.28%. Forty-five clean requests
+validate exact C. Additional old/new B2 profiles show roughly71–85ms added native
+emission work; sharing/field functions appear in44–53ms inclusive CPU samples.
+Instrumented clocks and clean samples remain separate. Prepared Bend Base is
+outside requests, upstream Base checking inside; imports/Clang/execution separate.
 
-Candidate native100,raw31,frontend36,two new loop controls, exact2992 non-native
-functions, B2 driver8, own-source acceptance, exactB3 and installed42/24/5 pass.
-B2 emits all twelve timed C programs exactly. The reference retains seven known
-unused-demand failures; broader13native API gaps remain. No new full JS/GPU
-sweep or independent compiler proof. Seven old release files are preserved.
+Frontend36,candidate native100,raw31,twelve new controls,24 threaded executions,
+exact2992 non-native functions,B2 driver8,own-source acceptance,exactB3 and
+installed42/24/5 pass. B2 emits all twelve timed C files exactly. The reference
+retains the same seven failures; broader thirteen native API gaps remain.
+Seven old release files are preserved. Production adds273 physical/211 code
+lines and one module:31,730 physical/25,939 code in129 modules. No runtime rewrite.
 
-Production grows13physical/6code lines:31,457physical/25,728code,128modules.
-Existing product/worker mechanisms were extended; no new production module or
-runtime representation. Raw prefix-demand admission stays conservative; checked
-private entry accepts only known evaluated bundles and materializes at opaque,
-shared or dropped uses. The cold Array.map exit still boxes; its backedge does not.
+## Next discriminating experiments
 
-## Next useful experiment
+1. Recover compilation overhead with one occurrence index per prepared body
+   instead of repeated `nq_uses` scans, and reuse specialized field facts. Require
+   exact emitted C before retiming execution; use the three-source B2 fast loop.
+2. Target remaining runtime gaps. Candidate08 tree counters still show434k
+   allocations versus231k upstream: test general unique-node reuse or fusion in
+   retained C before implementing a Bend rule. Array.map already has allocation
+   parity in counters but remains1.53× slower; inspect keep/drop and segment/code
+   costs there. AST has equal allocations and excess generated/scheduler work.
+3. Validate any runtime mechanism on several families. Do not optimize the
+   already faster Tape/Map solely to make the aggregate score cross1.0×.
 
-1. Attribute remaining Tape~3×,list~2.16×,BST2× runtime costs with one bounded
-   saved-C falsifier before another production pass. Constructor storage reuse
-   and collection fusion remain hypotheses, not implemented gains.
-2. Compilation remains a separate deficit. Reuse native layout/Base planning
-   evidence if this becomes the priority; this runtime change did not solve it.
-3. Phase71 balanced compute-heavy parallelism matched upstream and scaled3.75×
-   on four cores. Allocation-heavy/imbalanced/GPU scaling remains unqualified;
-   do not infer a scheduler problem from sequential allocation costs.
+Do not repeat unrestricted non-tail C recursion (all three initial families got
+slower and deep-stack safety was absent), Nat narrowing (AST regression), or
+blanket inline-policy changes (conflicting family results) without a new reason.
+Field masks alone did little; they paid only when composed with capture kinds.
 
-Historical [Phase70](../implementation/phase70/README.md) and
-[Phase71](../implementation/phase71/README.md) remain frozen. Phase72 target
-writers are closed; future work needs fresh output paths. Preserve inherited
-unrelated changes. One guarded CPU3 target tree,2GiB RSS/4GiB available floor;
-Node1GiB heap/4MiB stack. Use fast scoped checks before another broad gate.
+Phase73 target writers close after sealing. Future work uses fresh phase/output
+paths; historical baselines are immutable. Preserve inherited unrelated changes.
+One guarded CPU3 tree,2GiB RSS/4GiB available floor,Node1GiB heap/4MiB stack.
+The phase used no agents and observed three account-quota percentage points;
+those account events are not exact task billing. Slow gates belong after a
+selected candidate demonstrates gains, not in every small iteration.

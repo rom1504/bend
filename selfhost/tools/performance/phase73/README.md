@@ -84,3 +84,20 @@ every file hash and executable mode. Private `usage-*` snapshots are excluded;
 only aggregate accounting belongs in the report. Historical baselines, upstream
 and toolchains remain pinned external dependencies. Absolute recorded paths need
 restoration/adaptation; this is not a hermetic environment.
+
+## Closing the selected campaign
+
+`summarize.py` reads only completed clean records and writes the report's runtime
+and compiler-request tables. `plot.py` creates the standalone SVG using
+Matplotlib. `qualification.py` independently verifies selected finite gates,
+unchanged candidate/reference native outcomes, B2 identities, release checks and
+old release retention. It intentionally does not relabel the seven reference
+failures as a passing paired test.
+
+The final compiler-cost profiles use `baseline-profile01` and
+`candidate-profile01`, each with its own new project and prepared cache. Run only
+`prepare-b2`, then the three `profile-*-b2` jobs with the unchanged Phase70 runner.
+Do not prepare the project already consumed by `paired-compilation`: that cache
+belongs to the paired plan. Profile summaries count `timeDeltas` by sampled frame
+and by the union of ancestor names sharing a prefix; prefix groups can overlap.
+The raw profiles and stage timings are diagnostics, never clean runtime samples.

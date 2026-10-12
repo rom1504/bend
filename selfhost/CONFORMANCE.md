@@ -1,5 +1,21 @@
 # Compiler validation
 
+## Phase73 ownership and scalar-fact qualification
+
+[Report](../implementation/phase73/README.md) ·
+[Qualification](../implementation/phase73/qualification.json).
+Installed B1 `c2705793…` passes frontend36, candidate native100, raw31,
+twelve new paired controls and24 one/four-thread executions. Six generated-code
+assertions exercise accepted and refused cold-root certificates. Reference93/100
+retains exactly the same seven failures as Phase72; the paired controller returns
+failure and is not relabeled passing. All2,992 frontend/JS functions, runtime and
+public wrappers remain exact. Genuine B2 `25d4ca2e…` checks its source, reproduces
+B3 exactly and emits all twelve timed C programs byte-identically to B1.
+All216 runtime intervals and45 clean compilation requests validate outputs.
+Installed integrity and legacy42/default24/helper5 pass. Thirteen native API gaps,
+finite frontend/JS exceptions, physical GPU deferral and the absence of an
+independent compiler proof remain unchanged.
+
 ## Phase72 product transport qualification
 
 [Report](../implementation/phase72/README.md). Candidate checked B1 `0ab62a7a…`

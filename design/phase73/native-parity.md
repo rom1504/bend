@@ -43,3 +43,34 @@ Track elapsed time and account-level quota observations separately from billing.
 Preserve failures and negative results, use fresh Phase73 paths, never modify
 closed historical evidence. Commit design, validated progress and final report;
 no PR comments. A disappointing measured result is reported rather than promoted.
+
+## Decisions after the falsifiers
+
+Unrestricted C recursion failed on all three initial families. Allocation counters
+instead identified thousands of avoidable reference-count wrappers per input
+cycle. The selected implementation therefore combines three general mechanisms:
+
+1. A bounded sharing analysis over the checked book proves which constructor
+   fields never need shared storage. Reuse prepared native bodies; retain full
+   instantiated types, transitive fields, provenance and conservative refusal.
+2. Extend existing observers to scalar results and guard every recursive root,
+   including at loop backedges. Admit unsealed children of shared roots only when
+   all reachable consumers obey borrowing, with no partial-call or worker bypass.
+3. Preserve the existing scalar word kinds in ownership bindings and continuation
+   parameters. One specialized telescope field mask serves constructor macros and
+   captured match fields. Remove the later reconstruction pass.
+
+These are type/ownership rules, never benchmark-name selectors. Raw, device and
+unknown-effect routes retain conservative behavior. Nat range narrowing and
+blanket inline-policy changes were rejected after conflicting measurements.
+Storage reuse and fusion remain future experiments, not shipped optimizations.
+
+Candidate14 is the selected consolidation. The final runtime campaign was
+increased to six rotated rounds per role/family after timing drift appeared in
+earlier screens: 216 independently checked intervals over twelve fixed families.
+Keep the original six and additional six scores visible alongside the optional
+equal-family total. Forty-five paired old/new B1/B2/TypeScript requests measure
+compilation independently. Fresh source acceptance, B3, twelve B2 C identities,
+raw/native/ownership controls and installed CLI checks determine release status.
+The [implementation report](../../implementation/phase73/README.md) records actual
+outcomes and remaining gaps.

@@ -1,0 +1,1282 @@
+{
+  "complete": true,
+  "records": [
+    {
+      "role": "baseline",
+      "case": "numeric",
+      "requestMs": 1762.783824,
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 10.666526999999974,
+          "exclusiveMs": 10.666526999999974
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.9679139999999506,
+          "exclusiveMs": 0.9679139999999506
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 122.62386500000002,
+          "exclusiveMs": 122.62386500000002
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.09605099999998856,
+          "exclusiveMs": 0.09605099999998856
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 7.380520999999931,
+          "exclusiveMs": 7.380520999999931
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 52.54397700000004,
+          "exclusiveMs": 52.54397700000004
+        },
+        "driver_report": {
+          "calls": 1,
+          "inclusiveMs": 96.63974200000007,
+          "exclusiveMs": 96.63974200000007
+        },
+        "driver_bad_names": {
+          "calls": 1,
+          "inclusiveMs": 49.43931599999996,
+          "exclusiveMs": 49.43931599999996
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 9.828475000000026,
+          "exclusiveMs": 9.828475000000026
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 0.5128449999999702,
+          "exclusiveMs": 0.5128449999999702
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 10.335675999999921,
+          "exclusiveMs": 10.335675999999921
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 9.16873499999997,
+          "exclusiveMs": 9.16873499999997
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 105.25764499999991,
+          "exclusiveMs": 105.25764499999991
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 5.075171999999839,
+          "exclusiveMs": 5.075171999999839
+        },
+        "j_layout_error": {
+          "calls": 1,
+          "inclusiveMs": 50.1302169999999,
+          "exclusiveMs": 50.1302169999999
+        },
+        "nc_foreign_paths": {
+          "calls": 1,
+          "inclusiveMs": 49.07917900000007,
+          "exclusiveMs": 49.07917900000007
+        },
+        "nc_foreign_scope": {
+          "calls": 1,
+          "inclusiveMs": 13.952305000000024,
+          "exclusiveMs": 13.952305000000024
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 17.54627100000016,
+          "exclusiveMs": 17.54627100000016
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.33008500000028107,
+          "exclusiveMs": 0.33008500000028107
+        },
+        "nc_compile_checked": {
+          "calls": 1,
+          "inclusiveMs": 1083.386982,
+          "exclusiveMs": 1083.386982
+        }
+      },
+      "inclusivePrefixSampleMs": {
+        "nc_erase": 142.096,
+        "nq_uses": 14.535,
+        "nc_uses": 156.143
+      },
+      "topSelfSampleMs": [
+        [
+          "(garbage collector)",
+          182.99200000000008
+        ],
+        [
+          "nc_uses_list",
+          60.25399999999999
+        ],
+        [
+          "index_find$scc",
+          42.791999999999994
+        ],
+        [
+          "",
+          40.572
+        ],
+        [
+          "norm_eval_node$scc",
+          36.44599999999999
+        ],
+        [
+          "missing",
+          31.455000000000002
+        ],
+        [
+          "nc_erase",
+          30.529
+        ],
+        [
+          "index_insert",
+          28.01
+        ],
+        [
+          "ne_template_scan$scc",
+          27.697
+        ],
+        [
+          "post",
+          25.914
+        ],
+        [
+          "book_final_scan$scc",
+          24.874000000000002
+        ],
+        [
+          "ne_template_plain",
+          24.620000000000005
+        ],
+        [
+          "digest",
+          24.107
+        ],
+        [
+          "wnf",
+          22.332
+        ],
+        [
+          "norm_eval",
+          21.965
+        ]
+      ],
+      "topNewInclusiveSampleMs": [],
+      "profile": {
+        "path": "selfhost/build/phase73/baseline-profile01/runs/profile-numeric-b2/request.cpuprofile",
+        "sha256": "1aa06bca7922c3573bcf902e9a4e6c6f0ff1009b271c64be7d3c7e50a9279ac5"
+      },
+      "scope": "One diagnostic profile per role/source; ancestry union per prefix, groups may overlap. Samples are not clean timing or a causal ablation."
+    },
+    {
+      "role": "baseline",
+      "case": "array",
+      "requestMs": 1766.3671140000001,
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 10.70689799999991,
+          "exclusiveMs": 10.70689799999991
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.9121780000000399,
+          "exclusiveMs": 0.9121780000000399
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 99.59737999999993,
+          "exclusiveMs": 99.59737999999993
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.18136500000002798,
+          "exclusiveMs": 0.18136500000002798
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 7.207129000000009,
+          "exclusiveMs": 7.207129000000009
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 72.12403899999993,
+          "exclusiveMs": 72.12403899999993
+        },
+        "driver_report": {
+          "calls": 1,
+          "inclusiveMs": 101.23404199999993,
+          "exclusiveMs": 101.23404199999993
+        },
+        "driver_bad_names": {
+          "calls": 1,
+          "inclusiveMs": 56.79154699999992,
+          "exclusiveMs": 56.79154699999992
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 9.816904000000022,
+          "exclusiveMs": 9.816904000000022
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 4.932221000000027,
+          "exclusiveMs": 4.932221000000027
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 9.23757999999998,
+          "exclusiveMs": 9.23757999999998
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 5.335688000000118,
+          "exclusiveMs": 5.335688000000118
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 90.98206200000004,
+          "exclusiveMs": 90.98206200000004
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 5.198065000000042,
+          "exclusiveMs": 5.198065000000042
+        },
+        "j_layout_error": {
+          "calls": 1,
+          "inclusiveMs": 50.621488,
+          "exclusiveMs": 50.621488
+        },
+        "nc_foreign_paths": {
+          "calls": 1,
+          "inclusiveMs": 47.38237000000004,
+          "exclusiveMs": 47.38237000000004
+        },
+        "nc_foreign_scope": {
+          "calls": 1,
+          "inclusiveMs": 17.242234999999937,
+          "exclusiveMs": 17.242234999999937
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 16.64709300000004,
+          "exclusiveMs": 16.64709300000004
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.2948509999998805,
+          "exclusiveMs": 0.2948509999998805
+        },
+        "nc_compile_checked": {
+          "calls": 1,
+          "inclusiveMs": 1090.9837819999998,
+          "exclusiveMs": 1090.9837819999998
+        }
+      },
+      "inclusivePrefixSampleMs": {
+        "nc_erase": 133.12200000000004,
+        "nq_uses": 15.979000000000001,
+        "nc_uses": 164.61799999999994
+      },
+      "topSelfSampleMs": [
+        [
+          "(garbage collector)",
+          185.682
+        ],
+        [
+          "nc_uses_list",
+          56.896999999999984
+        ],
+        [
+          "missing",
+          42.79499999999999
+        ],
+        [
+          "index_find$scc",
+          37.593999999999994
+        ],
+        [
+          "norm_eval_node$scc",
+          35.403999999999996
+        ],
+        [
+          "index_insert",
+          30.769999999999996
+        ],
+        [
+          "nc_erase",
+          28.905
+        ],
+        [
+          "ne_template_scan$scc",
+          27.198999999999998
+        ],
+        [
+          "post",
+          25.988
+        ],
+        [
+          "ne_template_plain",
+          25.294999999999995
+        ],
+        [
+          "book_final_scan$scc",
+          25.185
+        ],
+        [
+          "lookup$scc",
+          25.066000000000003
+        ],
+        [
+          "digest",
+          24.091
+        ],
+        [
+          "wnf",
+          23.377
+        ],
+        [
+          "",
+          21.884999999999998
+        ]
+      ],
+      "topNewInclusiveSampleMs": [],
+      "profile": {
+        "path": "selfhost/build/phase73/baseline-profile01/runs/profile-array-b2/request.cpuprofile",
+        "sha256": "becdabb3b3f0605266d658fa33b9d75aeef2bd5ed42e7e036a5ffd3d0d33c6a0"
+      },
+      "scope": "One diagnostic profile per role/source; ancestry union per prefix, groups may overlap. Samples are not clean timing or a causal ablation."
+    },
+    {
+      "role": "baseline",
+      "case": "lexer",
+      "requestMs": 2179.962665,
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 27.825950000000034,
+          "exclusiveMs": 27.825950000000034
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.914355999999998,
+          "exclusiveMs": 0.914355999999998
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 226.04166099999998,
+          "exclusiveMs": 226.04166099999998
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.13593200000002525,
+          "exclusiveMs": 0.13593200000002525
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 16.325845999999956,
+          "exclusiveMs": 16.325845999999956
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 139.70031399999993,
+          "exclusiveMs": 139.70031399999993
+        },
+        "driver_report": {
+          "calls": 1,
+          "inclusiveMs": 111.73576599999978,
+          "exclusiveMs": 111.73576599999978
+        },
+        "driver_bad_names": {
+          "calls": 1,
+          "inclusiveMs": 62.10231399999998,
+          "exclusiveMs": 62.10231399999998
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 10.12298799999985,
+          "exclusiveMs": 10.12298799999985
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 0.42741799999998875,
+          "exclusiveMs": 0.42741799999998875
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 7.251659999999902,
+          "exclusiveMs": 7.251659999999902
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 8.004322000000002,
+          "exclusiveMs": 8.004322000000002
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 72.39284500000008,
+          "exclusiveMs": 72.39284500000008
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 5.883061999999882,
+          "exclusiveMs": 5.883061999999882
+        },
+        "j_layout_error": {
+          "calls": 1,
+          "inclusiveMs": 57.132090999999946,
+          "exclusiveMs": 57.132090999999946
+        },
+        "nc_foreign_paths": {
+          "calls": 1,
+          "inclusiveMs": 96.22844400000008,
+          "exclusiveMs": 96.22844400000008
+        },
+        "nc_foreign_scope": {
+          "calls": 1,
+          "inclusiveMs": 32.60502599999995,
+          "exclusiveMs": 32.60502599999995
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 16.91768100000013,
+          "exclusiveMs": 16.91768100000013
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.29809800000020914,
+          "exclusiveMs": 0.29809800000020914
+        },
+        "nc_compile_checked": {
+          "calls": 1,
+          "inclusiveMs": 1205.5393339999998,
+          "exclusiveMs": 1205.5393339999998
+        }
+      },
+      "inclusivePrefixSampleMs": {
+        "nc_erase": 161.72299999999998,
+        "nq_uses": 17.594,
+        "nc_uses": 158.052
+      },
+      "topSelfSampleMs": [
+        [
+          "(garbage collector)",
+          202.9579999999999
+        ],
+        [
+          "nc_uses_list",
+          52.901
+        ],
+        [
+          "f_lex_scanned$scc",
+          48.747
+        ],
+        [
+          "ne_template_plain",
+          42.34299999999999
+        ],
+        [
+          "norm_eval_node$scc",
+          39.839999999999996
+        ],
+        [
+          "norm_eval",
+          37.257000000000005
+        ],
+        [
+          "wnf",
+          34.56099999999999
+        ],
+        [
+          "kr_parent",
+          33.291999999999994
+        ],
+        [
+          "",
+          30.772000000000002
+        ],
+        [
+          "nc_erase",
+          30.711999999999996
+        ],
+        [
+          "index_find$scc",
+          29.615999999999996
+        ],
+        [
+          "index_insert",
+          28.990000000000002
+        ],
+        [
+          "nc_erase_annotated$scc",
+          27.941
+        ],
+        [
+          "lookup$scc",
+          25.845
+        ],
+        [
+          "post",
+          25.654
+        ]
+      ],
+      "topNewInclusiveSampleMs": [],
+      "profile": {
+        "path": "selfhost/build/phase73/baseline-profile01/runs/profile-lexer-b2/request.cpuprofile",
+        "sha256": "c6ea4ba25bbc259fa119afdef03900f7977eed58bf2cfd4e2f38b7a8e395483d"
+      },
+      "scope": "One diagnostic profile per role/source; ancestry union per prefix, groups may overlap. Samples are not clean timing or a causal ablation."
+    },
+    {
+      "role": "candidate",
+      "case": "numeric",
+      "requestMs": 1845.7457749999999,
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 10.61697300000003,
+          "exclusiveMs": 10.61697300000003
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 1.1677670000000262,
+          "exclusiveMs": 1.1677670000000262
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 121.16022699999996,
+          "exclusiveMs": 121.16022699999996
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.10297900000000482,
+          "exclusiveMs": 0.10297900000000482
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 7.252475000000004,
+          "exclusiveMs": 7.252475000000004
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 52.201302000000055,
+          "exclusiveMs": 52.201302000000055
+        },
+        "driver_report": {
+          "calls": 1,
+          "inclusiveMs": 96.41370300000005,
+          "exclusiveMs": 96.41370300000005
+        },
+        "driver_bad_names": {
+          "calls": 1,
+          "inclusiveMs": 48.728387,
+          "exclusiveMs": 48.728387
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 10.093760999999859,
+          "exclusiveMs": 10.093760999999859
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 0.516018000000031,
+          "exclusiveMs": 0.516018000000031
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 10.329675999999836,
+          "exclusiveMs": 10.329675999999836
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 9.079431000000113,
+          "exclusiveMs": 9.079431000000113
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 105.69442900000013,
+          "exclusiveMs": 105.69442900000013
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 5.036246000000119,
+          "exclusiveMs": 5.036246000000119
+        },
+        "j_layout_error": {
+          "calls": 1,
+          "inclusiveMs": 49.809837000000016,
+          "exclusiveMs": 49.809837000000016
+        },
+        "nc_foreign_paths": {
+          "calls": 1,
+          "inclusiveMs": 49.68872699999997,
+          "exclusiveMs": 49.68872699999997
+        },
+        "nc_foreign_scope": {
+          "calls": 1,
+          "inclusiveMs": 15.826954999999998,
+          "exclusiveMs": 15.826954999999998
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 16.71892600000001,
+          "exclusiveMs": 16.71892600000001
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.3224410000000262,
+          "exclusiveMs": 0.3224410000000262
+        },
+        "nc_compile_checked": {
+          "calls": 1,
+          "inclusiveMs": 1167.6831919999997,
+          "exclusiveMs": 1167.6831919999997
+        }
+      },
+      "inclusivePrefixSampleMs": {
+        "nc_erase": 144.26700000000002,
+        "nh_": 43.943999999999996,
+        "nq_uses": 27.544,
+        "nc_uses": 166.58300000000006,
+        "nk_": 2.356
+      },
+      "topSelfSampleMs": [
+        [
+          "(garbage collector)",
+          214.5450000000001
+        ],
+        [
+          "nc_uses_list",
+          57.446999999999996
+        ],
+        [
+          "ne_template_plain",
+          34.737
+        ],
+        [
+          "norm_eval_node$scc",
+          32.219
+        ],
+        [
+          "nc_erase",
+          31.440000000000005
+        ],
+        [
+          "index_join",
+          28.597000000000005
+        ],
+        [
+          "index_insert",
+          26.727999999999994
+        ],
+        [
+          "missing",
+          26.13000000000001
+        ],
+        [
+          "post",
+          26.031
+        ],
+        [
+          "index_find$scc",
+          25.639000000000006
+        ],
+        [
+          "book_final_scan$scc",
+          24.009
+        ],
+        [
+          "digest",
+          23.325
+        ],
+        [
+          "",
+          22.575000000000003
+        ],
+        [
+          "index_leaf",
+          21.571999999999996
+        ],
+        [
+          "norm_eval",
+          21.465000000000003
+        ]
+      ],
+      "topNewInclusiveSampleMs": [
+        [
+          "nh_macros",
+          26.476999999999997
+        ],
+        [
+          "nh_terms",
+          26.476999999999997
+        ],
+        [
+          "nh_definitions",
+          26.476999999999997
+        ],
+        [
+          "nh_field_mask",
+          11.241
+        ],
+        [
+          "nh_field_mask_head",
+          11.166
+        ],
+        [
+          "nh_observer_macros",
+          4.12
+        ],
+        [
+          "nk_binding",
+          2.356
+        ],
+        [
+          "nh_type$scc",
+          2.1189999999999998
+        ],
+        [
+          "nh_adt_fields",
+          2.1189999999999998
+        ],
+        [
+          "nh_adt",
+          2.1189999999999998
+        ],
+        [
+          "nh_type",
+          2.1189999999999998
+        ],
+        [
+          "nh_observer_types",
+          1.055
+        ],
+        [
+          "nh_ctors",
+          1.051
+        ],
+        [
+          "nh_add",
+          1.051
+        ],
+        [
+          "nh_field_macros",
+          1.013
+        ]
+      ],
+      "profile": {
+        "path": "selfhost/build/phase73/candidate-profile01/runs/profile-numeric-b2/request.cpuprofile",
+        "sha256": "6012bc2b352c767a3005f3dc5f4c9777e1db88e9e648c3583e875648577f6786"
+      },
+      "scope": "One diagnostic profile per role/source; ancestry union per prefix, groups may overlap. Samples are not clean timing or a causal ablation."
+    },
+    {
+      "role": "candidate",
+      "case": "array",
+      "requestMs": 1841.806263,
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 10.429493999999977,
+          "exclusiveMs": 10.429493999999977
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.9542750000000524,
+          "exclusiveMs": 0.9542750000000524
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 99.37985400000002,
+          "exclusiveMs": 99.37985400000002
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.12767699999994875,
+          "exclusiveMs": 0.12767699999994875
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 7.077097999999978,
+          "exclusiveMs": 7.077097999999978
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 71.94766200000004,
+          "exclusiveMs": 71.94766200000004
+        },
+        "driver_report": {
+          "calls": 1,
+          "inclusiveMs": 101.07694200000003,
+          "exclusiveMs": 101.07694200000003
+        },
+        "driver_bad_names": {
+          "calls": 1,
+          "inclusiveMs": 56.25916800000016,
+          "exclusiveMs": 56.25916800000016
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 9.884427999999843,
+          "exclusiveMs": 9.884427999999843
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 5.117277999999942,
+          "exclusiveMs": 5.117277999999942
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 9.359093999999914,
+          "exclusiveMs": 9.359093999999914
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 5.274951999999985,
+          "exclusiveMs": 5.274951999999985
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 91.215461,
+          "exclusiveMs": 91.215461
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 5.285720999999967,
+          "exclusiveMs": 5.285720999999967
+        },
+        "j_layout_error": {
+          "calls": 1,
+          "inclusiveMs": 50.09550800000011,
+          "exclusiveMs": 50.09550800000011
+        },
+        "nc_foreign_paths": {
+          "calls": 1,
+          "inclusiveMs": 50.47394600000007,
+          "exclusiveMs": 50.47394600000007
+        },
+        "nc_foreign_scope": {
+          "calls": 1,
+          "inclusiveMs": 18.345058999999992,
+          "exclusiveMs": 18.345058999999992
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 17.563114999999698,
+          "exclusiveMs": 17.563114999999698
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.32560799999987466,
+          "exclusiveMs": 0.32560799999987466
+        },
+        "nc_compile_checked": {
+          "calls": 1,
+          "inclusiveMs": 1163.304998,
+          "exclusiveMs": 1163.304998
+        }
+      },
+      "inclusivePrefixSampleMs": {
+        "nc_erase": 149.27499999999995,
+        "nh_": 53.065999999999995,
+        "nq_uses": 25.808,
+        "nk_": 4.285,
+        "nc_uses": 158.90499999999997
+      },
+      "topSelfSampleMs": [
+        [
+          "(garbage collector)",
+          193.68999999999997
+        ],
+        [
+          "nc_uses_list",
+          57.775999999999996
+        ],
+        [
+          "missing",
+          49.028
+        ],
+        [
+          "norm_eval_node$scc",
+          39.283
+        ],
+        [
+          "nc_erase_annotated$scc",
+          31.627
+        ],
+        [
+          "nc_erase",
+          30.505000000000003
+        ],
+        [
+          "index_insert",
+          30.36
+        ],
+        [
+          "ne_template_scan$scc",
+          29.588
+        ],
+        [
+          "index_find$scc",
+          29.20799999999999
+        ],
+        [
+          "ne_template_plain",
+          27.941999999999993
+        ],
+        [
+          "book_final_scan$scc",
+          26.305999999999997
+        ],
+        [
+          "post",
+          26.166
+        ],
+        [
+          "lookup$scc",
+          25.7
+        ],
+        [
+          "digest",
+          23.937
+        ],
+        [
+          "index_join",
+          23.509999999999998
+        ]
+      ],
+      "topNewInclusiveSampleMs": [
+        [
+          "nh_macros",
+          27.113999999999997
+        ],
+        [
+          "nh_definitions",
+          27.113999999999997
+        ],
+        [
+          "nh_terms",
+          25.685000000000002
+        ],
+        [
+          "nh_observer_macros",
+          12.353
+        ],
+        [
+          "nh_field_mask",
+          10.462
+        ],
+        [
+          "nh_field_mask_head",
+          6.486999999999999
+        ],
+        [
+          "nk_binding",
+          4.285
+        ],
+        [
+          "nh_type",
+          2.8
+        ],
+        [
+          "nh_type$scc",
+          2.133
+        ],
+        [
+          "nh_adt_fields",
+          2.133
+        ],
+        [
+          "nh_adt",
+          2.133
+        ],
+        [
+          "nh_fields$scc",
+          1.074
+        ],
+        [
+          "nh_ctors",
+          1.074
+        ],
+        [
+          "nh_fields",
+          1.074
+        ],
+        [
+          "nk_value",
+          1.067
+        ],
+        [
+          "nh_field_type",
+          1.018
+        ]
+      ],
+      "profile": {
+        "path": "selfhost/build/phase73/candidate-profile01/runs/profile-array-b2/request.cpuprofile",
+        "sha256": "ddfc6db3bbf351693285d59a418f13b5b57600718c13552796ecd27bc6a72fe8"
+      },
+      "scope": "One diagnostic profile per role/source; ancestry union per prefix, groups may overlap. Samples are not clean timing or a causal ablation."
+    },
+    {
+      "role": "candidate",
+      "case": "lexer",
+      "requestMs": 2246.246075,
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 28.396078999999872,
+          "exclusiveMs": 28.396078999999872
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.9802460000000792,
+          "exclusiveMs": 0.9802460000000792
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 226.80681100000004,
+          "exclusiveMs": 226.80681100000004
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.16874399999994694,
+          "exclusiveMs": 0.16874399999994694
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 16.59459300000003,
+          "exclusiveMs": 16.59459300000003
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 137.9018299999999,
+          "exclusiveMs": 137.9018299999999
+        },
+        "driver_report": {
+          "calls": 1,
+          "inclusiveMs": 112.663229,
+          "exclusiveMs": 112.663229
+        },
+        "driver_bad_names": {
+          "calls": 1,
+          "inclusiveMs": 62.82601199999999,
+          "exclusiveMs": 62.82601199999999
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 9.927676999999903,
+          "exclusiveMs": 9.927676999999903
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 0.41319499999985965,
+          "exclusiveMs": 0.41319499999985965
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 7.228076999999985,
+          "exclusiveMs": 7.228076999999985
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 7.990293999999949,
+          "exclusiveMs": 7.990293999999949
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 71.04906699999992,
+          "exclusiveMs": 71.04906699999992
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 6.763402999999926,
+          "exclusiveMs": 6.763402999999926
+        },
+        "j_layout_error": {
+          "calls": 1,
+          "inclusiveMs": 55.90046099999995,
+          "exclusiveMs": 55.90046099999995
+        },
+        "nc_foreign_paths": {
+          "calls": 1,
+          "inclusiveMs": 84.8056039999999,
+          "exclusiveMs": 84.8056039999999
+        },
+        "nc_foreign_scope": {
+          "calls": 1,
+          "inclusiveMs": 34.45506399999999,
+          "exclusiveMs": 34.45506399999999
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 18.209564000000228,
+          "exclusiveMs": 18.209564000000228
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.29752799999982926,
+          "exclusiveMs": 0.29752799999982926
+        },
+        "nc_compile_checked": {
+          "calls": 1,
+          "inclusiveMs": 1281.57449,
+          "exclusiveMs": 1281.57449
+        }
+      },
+      "inclusivePrefixSampleMs": {
+        "nc_erase": 183.6730000000001,
+        "nh_": 48.24,
+        "nq_uses": 28.96900000000001,
+        "nc_uses": 142.70600000000002,
+        "nk_": 6.316999999999999
+      },
+      "topSelfSampleMs": [
+        [
+          "(garbage collector)",
+          215.76599999999993
+        ],
+        [
+          "nc_uses_list",
+          55.537
+        ],
+        [
+          "nc_erase_annotated$scc",
+          48.74899999999999
+        ],
+        [
+          "f_lex_scanned$scc",
+          46.467
+        ],
+        [
+          "index_find$scc",
+          43.432
+        ],
+        [
+          "ne_template_plain",
+          37.588
+        ],
+        [
+          "kr_parent",
+          36.95999999999999
+        ],
+        [
+          "norm_eval_node$scc",
+          33.948
+        ],
+        [
+          "nc_erase",
+          30.031000000000002
+        ],
+        [
+          "ne_template_scan$scc",
+          29.351
+        ],
+        [
+          "subst",
+          27.153000000000002
+        ],
+        [
+          "index_lookup",
+          26.633999999999997
+        ],
+        [
+          "",
+          26.538999999999998
+        ],
+        [
+          "post",
+          26.016
+        ],
+        [
+          "book_final_scan$scc",
+          25.618
+        ]
+      ],
+      "topNewInclusiveSampleMs": [
+        [
+          "nh_macros",
+          27.107000000000006
+        ],
+        [
+          "nh_definitions",
+          27.107000000000006
+        ],
+        [
+          "nh_terms",
+          24.989000000000008
+        ],
+        [
+          "nh_field_mask_head",
+          10.246
+        ],
+        [
+          "nh_observer_macros",
+          6.042
+        ],
+        [
+          "nh_field_mask",
+          5.632000000000001
+        ],
+        [
+          "nk_binding",
+          4.06
+        ],
+        [
+          "nh_field_type",
+          2.249
+        ],
+        [
+          "nh_field_test",
+          2.249
+        ],
+        [
+          "nh_field_macros",
+          2.115
+        ],
+        [
+          "nh_field_ctors",
+          1.2309999999999999
+        ],
+        [
+          "nk_kind",
+          1.218
+        ],
+        [
+          "nh_add",
+          1.061
+        ],
+        [
+          "nh_type$scc",
+          1.061
+        ],
+        [
+          "nh_adt_fields",
+          1.061
+        ],
+        [
+          "nh_adt",
+          1.061
+        ]
+      ],
+      "profile": {
+        "path": "selfhost/build/phase73/candidate-profile01/runs/profile-lexer-b2/request.cpuprofile",
+        "sha256": "db0aa19b89c71b0a0c806ca5e5119a4371f249f98ccd9ce0b28cfebeb9039e7e"
+      },
+      "scope": "One diagnostic profile per role/source; ancestry union per prefix, groups may overlap. Samples are not clean timing or a causal ablation."
+    }
+  ]
+}

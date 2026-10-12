@@ -5,6 +5,17 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed implementation: Phase73 native execution near aggregate parity
+
+[Design](../design/phase73/native-parity.md) ·
+[Report](../implementation/phase73/README.md) · [Current frontier](STEERING.md).
+Installed B1`c2705793…`,genuine B2/B3`25d4ca2e…`. General sharing certificates,
+borrowed roots and scalar capture facts move the twelve-family C execution mean
+1.36903×→1.05060× upstream (23.26% less time). Tape/list/BST improve3.36×/1.98×/1.64×.
+Compilation costs7.33%/6.28% more in B1/B2; four runtime families remain1.37–1.53×
+upstream. The report retains every metric, rejected experiment and qualification
+boundary. Source grows273 physical lines. No subagents or PR comments.
+
 ## Completed implementation: Phase72 product transport
 
 [Design](../design/phase72/product-transport.md) ·

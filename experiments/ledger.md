@@ -4251,3 +4251,22 @@ twelve B2 C identities and installed42/24/5 pass. Seven reference demand
 failures and13 native API gaps remain. No agents or PR comment. Prior release
 preserved; failed fixtures/noisy repeat retained. Next: bounded cost attribution
 for residual Tape/list/BST, not another large speculative recognizer.
+
+## Phase73 native execution near aggregate parity — 2026-10-12
+
+[Design](../design/phase73/native-parity.md) · [Report](../implementation/phase73/README.md).
+Promote compiler14 (`a6ca26d`,B1`c2705793…`,B2/B3`25d4ca2e…`). Sharing
+certificates, borrowed scalar roots and retained scalar capture facts reduce
+paired twelve-family C execution1.36903×→1.05060× upstream. Tape/list/BST improve
+3.36×/1.98×/1.64×; four families remain1.37–1.53×. Six rounds,216 correct intervals;
+all twelve B2 C outputs match B1. B1/B2 C requests cost7.33%/6.28% more, explicitly
+accepted for23.26% less generated-program time and profiled for follow-up.
+
+Reject unrestricted C recursion, Nat range masking and both blanket inline
+policies. Retain the initially ineffective field mask only as composed with
+capture facts. Reuse cached native bodies, remove the later scalar reconstruction
+pass. Production adds273 physical/211 code lines,one module. Native100/raw31,
+frontend36,new12,threads24,B2/B3 andinstalled42/24/5 pass; seven unchanged reference
+failures and thirteen API gaps remain. Evidence includes failed attempts, timing
+drift and compile-latency profiles. No subagents or PR comments. See
+[P73-012](phase73/P73-012-selected-release.md) for promotion boundaries.

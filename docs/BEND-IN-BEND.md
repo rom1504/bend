@@ -6,34 +6,35 @@ Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The [Phase72 report](../implementation/phase72/README.md) records installed **compiler02**, source
-`1176262`, checked B1 `0ab62a7a…` and genuine B2 `bd39db0d…`. Private product
-transport extends existing typed layouts and ownership lowering across calls
-and loop backedges. Raw demand checks and boxed scheduler/device interfaces
-remain. Production grows13 physical /6 code lines, with no new production module.
+The [Phase73 report](../implementation/phase73/README.md) records installed
+**compiler14**, production source `a6ca26d`, checked B1 `c2705793…` and genuine
+B2/B3 `25d4ca2e…`. General constructor-sharing certificates, borrowed scalar
+observers and retained scalar facts reduce native execution time substantially.
+The [ownership guide](self_hosted/NATIVE_OWNERSHIP_FACTS.md) documents admission and refusal rules.
 
-The twelve-family native campaign reduces Array.map time22%,lexer14%,BST8%;
-other cases remain within1%. Original-six/additional-six geometric means are
-1.08442×/1.74312× upstream. The optional equal-family twelve mean improves
-1.42979×→1.37488× against Phase70 measured alongside it. All108 final intervals
-pass independent checksums. B2 reproduces the complete C of all twelve timed
-B1 programs; generated-program speed is distinct from compilation speed.
+The fixed twelve-family C execution score improves **1.36903×→1.05060× upstream**
+against Phase72 measured alongside it: **23.26% less time**. Original/additional
+six means are **1.00924×/1.09365×**. Tape is3.36× faster than before, lists1.98×,
+BST1.64×; four families still take1.37–1.53× upstream time. All216 final intervals
+pass independent checksums. B2 emits all twelve timed C programs exactly.
+This is near aggregate parity on a finite single-worker corpus.
 
-A separate45-request paired C compilation screen finds no material change:
-B1/B2 are3.47263×/2.24608× upstream (0.23%less/0.32%more time than old).
-Imports, explicit Bend Base preparation, Clang and execution are outside that
-clock; TS Base checking remains inside. These are three-source C-request metrics.
-Historical Phase66 broad JS metrics remain1.049× runtime and1.402×/1.321×
-compilation, retained through exact frontend/JS executable-closure equality.
+There is a compiler-cost tradeoff: the separate45-request C screen is
+**3.59582× B1 /2.29667× B2 upstream**, taking7.33%/6.28% more time than Phase72.
+Imports, prepared Bend Base, Clang and execution are separate clocks; upstream
+checks Base inside its request. Historical broad JS metrics remain1.049× runtime
+and1.402×/1.321× compilation through exact identity of the2,992-function frontend/JS
+closure, runtime and wrappers; they were not remeasured here.
 
-Frontend36,native candidate100,raw31,two new loop controls and genuine B2
-self-check/B3 reproduction pass. Seven reference unused-demand disagreements,
-thirteen native API gaps and existing finite frontend/JS exceptions remain.
-Read the report for installed CLI qualification, source identities, measurements
-and preserved failures. Ordinary compilation still runs Bend without TypeScript
-fallback. The compiler is not independently kernel-proved.
+Frontend36,candidate native100,raw31,twelve new controls,24 threaded executions,
+B2 self-check/exactB3 and installed42/24/5 pass. The reference retains the same
+seven native failures; thirteen native API gaps and finite frontend/JS exceptions
+remain. Production is31,730 physical lines in129 Bend modules (+273 lines/one
+module). Ordinary compilation runs Bend without TypeScript fallback. This is not
+an independently kernel-checked compiler proof. The report preserves all results,
+failed hypotheses, latency profiles and release lineage.
 
-Previous installed results: [Phase70](../implementation/phase70/README.md).
+Previous installed result: [Phase72](../implementation/phase72/README.md).
 
 ## Historical release results: Phase65
 

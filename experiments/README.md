@@ -7,6 +7,10 @@ and emitted user programs separately.
 
 ## Completed implementation: Phase73 native execution near aggregate parity
 
+Latest follow-up: [Phase74 compilation-parity investigation](../implementation/phase74/README.md)
+identifies structural work amplification and ranks larger changes. It makes no
+production or release change.
+
 [Design](../design/phase73/native-parity.md) ·
 [Report](../implementation/phase73/README.md) · [Current frontier](STEERING.md).
 Installed B1`c2705793…`,genuine B2/B3`25d4ca2e…`. General sharing certificates,

@@ -1,0 +1,989 @@
+{
+  "scope": "Three-source diagnostic screen; no promotion, implementation or speedup claim.",
+  "cases": {
+    "numeric": {
+      "warm": {
+        "b1": {
+          "requestMs": [
+            2532.786204,
+            1743.2758940000003,
+            1745.541674,
+            1827.0634329999993,
+            1525.0553609999988,
+            1548.0987499999992
+          ],
+          "firstMs": 2532.786204,
+          "warmFiveMedianMs": 1743.2758940000003,
+          "lastThreeMedianMs": 1548.0987499999992
+        },
+        "b2": {
+          "requestMs": [
+            1839.206736,
+            1424.477895,
+            792.7189849999995,
+            653.8025050000006,
+            696.6927560000004,
+            633.5280590000002
+          ],
+          "firstMs": 1839.206736,
+          "warmFiveMedianMs": 696.6927560000004,
+          "lastThreeMedianMs": 653.8025050000006
+        },
+        "typescript": {
+          "requestMs": [
+            729.4372870000001,
+            521.8522859999998,
+            453.374315,
+            418.570193,
+            442.1443760000002,
+            323.43672400000014
+          ],
+          "firstMs": 729.4372870000001,
+          "warmFiveMedianMs": 442.1443760000002,
+          "lastThreeMedianMs": 418.570193
+        }
+      },
+      "compiledDefinitionNames": [
+        "../phase37/fixtures-new/numeric-recurrence:bench",
+        "../phase37/fixtures-new/numeric-recurrence:p37.numeric",
+        "Bool.and",
+        "Bool.or",
+        "Char.cmp",
+        "Cmp.is_eq",
+        "Cmp.is_le",
+        "F32.div",
+        "F32.mul",
+        "F32.sub",
+        "F32.to_u32",
+        "IO.args",
+        "IO.bind",
+        "IO.now",
+        "IO.print",
+        "Nat.add",
+        "Nat.cmp",
+        "Nat.divmod",
+        "Nat.is_eq",
+        "Nat.is_lt",
+        "Nat.mul",
+        "Nat.read",
+        "Nat.read.fits",
+        "Nat.read.gate",
+        "Nat.read.go",
+        "Nat.read.if",
+        "Nat.read.trim",
+        "Nat.show",
+        "Nat.show.fin",
+        "Nat.show.go",
+        "Nat.show.put",
+        "Nat.sub",
+        "Pair.snd",
+        "String.cmp",
+        "String.cmp.fin",
+        "String.cmp.rec",
+        "String.is_le",
+        "String.length",
+        "String.order",
+        "U32.add",
+        "U32.and",
+        "U32.cmp",
+        "U32.div",
+        "U32.from_nat",
+        "U32.inc",
+        "U32.is_lt",
+        "U32.is_zero",
+        "U32.mod",
+        "U32.mul",
+        "U32.show",
+        "U32.show.fin",
+        "U32.show.go",
+        "U32.show.if",
+        "U32.sub",
+        "U32.to_f32",
+        "U32.to_nat",
+        "U32.xor",
+        "main",
+        "p46.arguments",
+        "p46.batch",
+        "p46.loop",
+        "p46.number",
+        "p46.parsed",
+        "p46.run"
+      ],
+      "counterRows": {
+        "nc_live_names": {
+          "calls": 6,
+          "inclusiveMs": 162.81707700000015,
+          "exclusiveMs": 23.315667000000985,
+          "distinctArgumentTuples": 6,
+          "distinctFunctionNames": 0
+        },
+        "nc_definition": {
+          "calls": 512,
+          "inclusiveMs": 150.69535399999904,
+          "exclusiveMs": 22.82993499999884,
+          "distinctArgumentTuples": 192,
+          "distinctFunctionNames": 0
+        },
+        "nc_erase": {
+          "calls": 13161,
+          "inclusiveMs": 7545.063809000028,
+          "exclusiveMs": 197.02990400000158,
+          "distinctArgumentTuples": 4607,
+          "distinctFunctionNames": 0
+        },
+        "nq_uses": {
+          "calls": 188986,
+          "inclusiveMs": 12170.547247999953,
+          "exclusiveMs": 218.46823899999663,
+          "distinctArgumentTuples": 187853,
+          "distinctFunctionNames": 0
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 66.7963380000001,
+          "exclusiveMs": 28.083954999999378,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        },
+        "nc_compact_definition": {
+          "calls": 159,
+          "inclusiveMs": 1.297010000001137,
+          "exclusiveMs": 1.297010000001137,
+          "distinctArgumentTuples": 104,
+          "distinctFunctionNames": 0
+        },
+        "nc_compile_def": {
+          "calls": 64,
+          "inclusiveMs": 12002.057500000004,
+          "exclusiveMs": 16.01017700000034,
+          "distinctArgumentTuples": 64,
+          "distinctFunctionNames": 64
+        },
+        "nd_compile_entry": {
+          "calls": 64,
+          "inclusiveMs": 319.8627740000002,
+          "exclusiveMs": 203.1914959999831,
+          "distinctArgumentTuples": 64,
+          "distinctFunctionNames": 0
+        },
+        "nc_uses": {
+          "calls": 14939,
+          "inclusiveMs": 206.3721220000093,
+          "exclusiveMs": 206.3721220000093,
+          "distinctArgumentTuples": 14562,
+          "distinctFunctionNames": 0
+        },
+        "nc_finish": {
+          "calls": 1,
+          "inclusiveMs": 644.65814,
+          "exclusiveMs": 48.06735899999558,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        },
+        "nf_candidate": {
+          "calls": 54,
+          "inclusiveMs": 321.15198200000214,
+          "exclusiveMs": 229.07090600001038,
+          "distinctArgumentTuples": 54,
+          "distinctFunctionNames": 36
+        },
+        "nf_finish_ready": {
+          "calls": 1,
+          "inclusiveMs": 256.5748819999999,
+          "exclusiveMs": 20.672387999999955,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        },
+        "no_route": {
+          "calls": 1,
+          "inclusiveMs": 62.81163199999992,
+          "exclusiveMs": 57.23381700000027,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        },
+        "ne_program": {
+          "calls": 1,
+          "inclusiveMs": 167.702902,
+          "exclusiveMs": 167.702902,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        }
+      },
+      "lowering": {
+        "genericSegments": 416,
+        "finalSegments": 416,
+        "genericBodyBytes": 489317,
+        "candidateWorkers": 41,
+        "admittedBeforeObservers": 16,
+        "admittedAfterObservers": 18,
+        "declarationsBytes": 383569
+      },
+      "cShape": {
+        "b2": {
+          "bytes": 1153845,
+          "shortIdentifierBytes": 1044442,
+          "caseLabels": 420,
+          "lexicallyReachedCases": 219,
+          "lexicallyUnreachedCases": 201,
+          "caveat": "Both preprocessor branches retained; every private-worker FID is rooted. Text scan cannot establish dynamic/device reachability or authorize deletion."
+        },
+        "typescript": {
+          "bytes": 117622,
+          "shortIdentifierBytes": 113607,
+          "caseLabels": 51,
+          "lexicallyReachedCases": 50,
+          "lexicallyUnreachedCases": 1,
+          "caveat": "Both preprocessor branches retained; every private-worker FID is rooted. Text scan cannot establish dynamic/device reachability or authorize deletion."
+        }
+      },
+      "upstreamCleanStageMedianMs": {
+        "requestMs": 747.813006,
+        "loadCheckMs": 297.3883299999999,
+        "emitMs": 428.3950140000002
+      }
+    },
+    "array": {
+      "warm": {
+        "b1": {
+          "requestMs": [
+            2615.599518,
+            1815.8072180000004,
+            1668.6490679999997,
+            1659.9163229999995,
+            1450.34706,
+            1617.8839040000003
+          ],
+          "firstMs": 2615.599518,
+          "warmFiveMedianMs": 1659.9163229999995,
+          "lastThreeMedianMs": 1617.8839040000003
+        },
+        "b2": {
+          "requestMs": [
+            1695.3743590000001,
+            1345.018634,
+            842.3343860000004,
+            691.678062,
+            669.1117709999999,
+            674.9920840000004
+          ],
+          "firstMs": 1695.3743590000001,
+          "warmFiveMedianMs": 691.678062,
+          "lastThreeMedianMs": 674.9920840000004
+        },
+        "typescript": {
+          "requestMs": [
+            717.015777,
+            496.86195399999997,
+            449.42910000000006,
+            428.8996259999999,
+            398.6632770000001,
+            323.64536199999975
+          ],
+          "firstMs": 717.015777,
+          "warmFiveMedianMs": 428.8996259999999,
+          "lastThreeMedianMs": 398.6632770000001
+        }
+      },
+      "compiledDefinitionNames": [
+        "../phase37/fixtures-historical/local-fold:bench",
+        "../phase37/fixtures-historical/local-fold:fold.cell",
+        "../phase37/fixtures-historical/local-fold:fold.finish",
+        "../phase37/fixtures-historical/local-fold:fold.loop",
+        "../phase37/fixtures-historical/local-fold:fold.step",
+        "Array.get",
+        "Array.new",
+        "Array.set",
+        "Bool.and",
+        "Bool.or",
+        "Char.cmp",
+        "Cmp.is_eq",
+        "Cmp.is_le",
+        "IO.args",
+        "IO.bind",
+        "IO.now",
+        "IO.print",
+        "Nat.add",
+        "Nat.cmp",
+        "Nat.divmod",
+        "Nat.is_eq",
+        "Nat.is_lt",
+        "Nat.mul",
+        "Nat.read",
+        "Nat.read.fits",
+        "Nat.read.gate",
+        "Nat.read.go",
+        "Nat.read.if",
+        "Nat.read.trim",
+        "Nat.show",
+        "Nat.show.fin",
+        "Nat.show.go",
+        "Nat.show.put",
+        "Nat.sub",
+        "Pair.snd",
+        "String.cmp",
+        "String.cmp.fin",
+        "String.cmp.rec",
+        "String.is_le",
+        "String.length",
+        "String.order",
+        "U32.add",
+        "U32.and",
+        "U32.cmp",
+        "U32.div",
+        "U32.from_nat",
+        "U32.inc",
+        "U32.is_lt",
+        "U32.is_zero",
+        "U32.mod",
+        "U32.mul",
+        "U32.show",
+        "U32.show.fin",
+        "U32.show.go",
+        "U32.show.if",
+        "U32.sub",
+        "U32.to_nat",
+        "U32.xor",
+        "main",
+        "p46.arguments",
+        "p46.batch",
+        "p46.loop",
+        "p46.number",
+        "p46.parsed",
+        "p46.run"
+      ],
+      "counterRows": {
+        "nc_live_names": {
+          "calls": 6,
+          "inclusiveMs": 167.85122200000023,
+          "exclusiveMs": 20.02605800000424,
+          "distinctArgumentTuples": 6,
+          "distinctFunctionNames": 0
+        },
+        "nc_definition": {
+          "calls": 520,
+          "inclusiveMs": 149.94363799999473,
+          "exclusiveMs": 21.515379999993684,
+          "distinctArgumentTuples": 195,
+          "distinctFunctionNames": 0
+        },
+        "nc_erase": {
+          "calls": 13319,
+          "inclusiveMs": 7845.68609100003,
+          "exclusiveMs": 197.943667,
+          "distinctArgumentTuples": 4696,
+          "distinctFunctionNames": 0
+        },
+        "nq_uses": {
+          "calls": 189253,
+          "inclusiveMs": 13620.588259999768,
+          "exclusiveMs": 249.98330699999838,
+          "distinctArgumentTuples": 188142,
+          "distinctFunctionNames": 0
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 67.11670400000003,
+          "exclusiveMs": 32.54175700000087,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        },
+        "nc_compact_definition": {
+          "calls": 170,
+          "inclusiveMs": 1.322798000000148,
+          "exclusiveMs": 1.322798000000148,
+          "distinctArgumentTuples": 112,
+          "distinctFunctionNames": 0
+        },
+        "nc_compile_def": {
+          "calls": 65,
+          "inclusiveMs": 13086.639232000003,
+          "exclusiveMs": 9.485457000002043,
+          "distinctArgumentTuples": 65,
+          "distinctFunctionNames": 65
+        },
+        "nd_compile_entry": {
+          "calls": 65,
+          "inclusiveMs": 340.7224159999985,
+          "exclusiveMs": 216.53235100000984,
+          "distinctArgumentTuples": 65,
+          "distinctFunctionNames": 0
+        },
+        "nc_uses": {
+          "calls": 15166,
+          "inclusiveMs": 215.4382989999715,
+          "exclusiveMs": 215.4382989999715,
+          "distinctArgumentTuples": 14750,
+          "distinctFunctionNames": 0
+        },
+        "nc_finish": {
+          "calls": 1,
+          "inclusiveMs": 663.6465129999997,
+          "exclusiveMs": 63.087238999999954,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        },
+        "nf_candidate": {
+          "calls": 57,
+          "inclusiveMs": 318.86810799999967,
+          "exclusiveMs": 225.4959350000172,
+          "distinctArgumentTuples": 57,
+          "distinctFunctionNames": 39
+        },
+        "nf_finish_ready": {
+          "calls": 1,
+          "inclusiveMs": 271.38028799999984,
+          "exclusiveMs": 20.058356000000003,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        },
+        "no_route": {
+          "calls": 1,
+          "inclusiveMs": 72.25099899999987,
+          "exclusiveMs": 66.70659599999954,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        },
+        "ne_program": {
+          "calls": 1,
+          "inclusiveMs": 166.7384179999999,
+          "exclusiveMs": 166.7384179999999,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        }
+      },
+      "lowering": {
+        "genericSegments": 428,
+        "finalSegments": 428,
+        "genericBodyBytes": 497641,
+        "candidateWorkers": 48,
+        "admittedBeforeObservers": 23,
+        "admittedAfterObservers": 25,
+        "declarationsBytes": 398928
+      },
+      "cShape": {
+        "b2": {
+          "bytes": 1185447,
+          "shortIdentifierBytes": 1064839,
+          "caseLabels": 432,
+          "lexicallyReachedCases": 227,
+          "lexicallyUnreachedCases": 205,
+          "caveat": "Both preprocessor branches retained; every private-worker FID is rooted. Text scan cannot establish dynamic/device reachability or authorize deletion."
+        },
+        "typescript": {
+          "bytes": 118820,
+          "shortIdentifierBytes": 114805,
+          "caseLabels": 51,
+          "lexicallyReachedCases": 50,
+          "lexicallyUnreachedCases": 1,
+          "caveat": "Both preprocessor branches retained; every private-worker FID is rooted. Text scan cannot establish dynamic/device reachability or authorize deletion."
+        }
+      },
+      "upstreamCleanStageMedianMs": {
+        "requestMs": 712.2948839999999,
+        "loadCheckMs": 296.03092100000003,
+        "emitMs": 416.2449710000001
+      }
+    },
+    "lexer": {
+      "warm": {
+        "b1": {
+          "requestMs": [
+            3255.607095,
+            2202.4606089999997,
+            1989.8610270000008,
+            2141.5387680000003,
+            2132.9284470000002,
+            1860.4212160000006
+          ],
+          "firstMs": 3255.607095,
+          "warmFiveMedianMs": 2132.9284470000002,
+          "lastThreeMedianMs": 2132.9284470000002
+        },
+        "b2": {
+          "requestMs": [
+            2093.6077459999997,
+            1181.8342289999996,
+            903.9198439999996,
+            836.9044220000005,
+            852.663955,
+            842.1960280000003
+          ],
+          "firstMs": 2093.6077459999997,
+          "warmFiveMedianMs": 852.663955,
+          "lastThreeMedianMs": 842.1960280000003
+        },
+        "typescript": {
+          "requestMs": [
+            904.1841670000001,
+            583.6608410000001,
+            671.9396569999999,
+            547.3982300000002,
+            428.311154,
+            352.5903580000004
+          ],
+          "firstMs": 904.1841670000001,
+          "warmFiveMedianMs": 547.3982300000002,
+          "lastThreeMedianMs": 428.311154
+        }
+      },
+      "compiledDefinitionNames": [
+        "../phase37/fixtures-historical/lexer:batch",
+        "../phase37/fixtures-historical/lexer:bench",
+        "../phase37/fixtures-historical/lexer:cls",
+        "../phase37/fixtures-historical/lexer:cls.go",
+        "../phase37/fixtures-historical/lexer:expand",
+        "../phase37/fixtures-historical/lexer:flush",
+        "../phase37/fixtures-historical/lexer:fnv",
+        "../phase37/fixtures-historical/lexer:gen",
+        "../phase37/fixtures-historical/lexer:gen.at",
+        "../phase37/fixtures-historical/lexer:ident",
+        "../phase37/fixtures-historical/lexer:lex",
+        "../phase37/fixtures-historical/lexer:line",
+        "../phase37/fixtures-historical/lexer:mix",
+        "../phase37/fixtures-historical/lexer:num",
+        "../phase37/fixtures-historical/lexer:op",
+        "../phase37/fixtures-historical/lexer:op.pick",
+        "../phase37/fixtures-historical/lexer:prng",
+        "../phase37/fixtures-historical/lexer:salt",
+        "../phase37/fixtures-historical/lexer:seed",
+        "../phase37/fixtures-historical/lexer:slot",
+        "../phase37/fixtures-historical/lexer:slot.go",
+        "../phase37/fixtures-historical/lexer:step",
+        "../phase37/fixtures-historical/lexer:step.at",
+        "../phase37/fixtures-historical/lexer:tpl",
+        "Bool.and",
+        "Bool.or",
+        "Char.cmp",
+        "Cmp.is_eq",
+        "Cmp.is_le",
+        "IO.args",
+        "IO.bind",
+        "IO.now",
+        "IO.print",
+        "Nat.add",
+        "Nat.cmp",
+        "Nat.divmod",
+        "Nat.is_eq",
+        "Nat.is_lt",
+        "Nat.mul",
+        "Nat.read",
+        "Nat.read.fits",
+        "Nat.read.gate",
+        "Nat.read.go",
+        "Nat.read.if",
+        "Nat.read.trim",
+        "Nat.show",
+        "Nat.show.fin",
+        "Nat.show.go",
+        "Nat.show.put",
+        "Nat.sub",
+        "Pair.snd",
+        "String.cmp",
+        "String.cmp.fin",
+        "String.cmp.rec",
+        "String.is_le",
+        "String.length",
+        "String.order",
+        "U32.add",
+        "U32.and",
+        "U32.cmp",
+        "U32.div",
+        "U32.from_nat",
+        "U32.inc",
+        "U32.is_eq",
+        "U32.is_le",
+        "U32.is_lt",
+        "U32.is_ne",
+        "U32.is_zero",
+        "U32.mod",
+        "U32.mul",
+        "U32.shln",
+        "U32.show",
+        "U32.show.fin",
+        "U32.show.go",
+        "U32.show.if",
+        "U32.shrn",
+        "U32.sub",
+        "U32.to_nat",
+        "U32.xor",
+        "main",
+        "p46.arguments",
+        "p46.batch",
+        "p46.loop",
+        "p46.number",
+        "p46.parsed",
+        "p46.run"
+      ],
+      "counterRows": {
+        "nc_live_names": {
+          "calls": 6,
+          "inclusiveMs": 266.3305300000002,
+          "exclusiveMs": 20.16850899999713,
+          "distinctArgumentTuples": 6,
+          "distinctFunctionNames": 0
+        },
+        "nc_definition": {
+          "calls": 688,
+          "inclusiveMs": 247.98983200000043,
+          "exclusiveMs": 38.78034200000002,
+          "distinctArgumentTuples": 258,
+          "distinctFunctionNames": 0
+        },
+        "nc_erase": {
+          "calls": 17015,
+          "inclusiveMs": 6903.172429000038,
+          "exclusiveMs": 277.9258430000018,
+          "distinctArgumentTuples": 5927,
+          "distinctFunctionNames": 0
+        },
+        "nq_uses": {
+          "calls": 196466,
+          "inclusiveMs": 13077.469061000214,
+          "exclusiveMs": 228.9897270000033,
+          "distinctArgumentTuples": 193696,
+          "distinctFunctionNames": 0
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 80.95482199999992,
+          "exclusiveMs": 41.73042999999848,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        },
+        "nc_compact_definition": {
+          "calls": 234,
+          "inclusiveMs": 1.1989839999976084,
+          "exclusiveMs": 1.1989839999976084,
+          "distinctArgumentTuples": 151,
+          "distinctFunctionNames": 0
+        },
+        "nc_compile_def": {
+          "calls": 86,
+          "inclusiveMs": 19645.626733000005,
+          "exclusiveMs": 18.43423200000325,
+          "distinctArgumentTuples": 86,
+          "distinctFunctionNames": 86
+        },
+        "nd_compile_entry": {
+          "calls": 86,
+          "inclusiveMs": 375.9750089999993,
+          "exclusiveMs": 247.61753400000498,
+          "distinctArgumentTuples": 86,
+          "distinctFunctionNames": 0
+        },
+        "nc_uses": {
+          "calls": 18883,
+          "inclusiveMs": 270.9841700000038,
+          "exclusiveMs": 270.9841700000038,
+          "distinctArgumentTuples": 18274,
+          "distinctFunctionNames": 0
+        },
+        "nc_finish": {
+          "calls": 1,
+          "inclusiveMs": 778.2763330000002,
+          "exclusiveMs": 53.34157300000288,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        },
+        "nf_candidate": {
+          "calls": 82,
+          "inclusiveMs": 392.8786049999985,
+          "exclusiveMs": 250.73556399999234,
+          "distinctArgumentTuples": 82,
+          "distinctFunctionNames": 58
+        },
+        "nf_finish_ready": {
+          "calls": 1,
+          "inclusiveMs": 315.5865630000003,
+          "exclusiveMs": 25.526388000000225,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        },
+        "no_route": {
+          "calls": 1,
+          "inclusiveMs": 69.01910199999975,
+          "exclusiveMs": 64.04816000000119,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        },
+        "ne_program": {
+          "calls": 1,
+          "inclusiveMs": 213.78155400000014,
+          "exclusiveMs": 213.78155400000014,
+          "distinctArgumentTuples": 1,
+          "distinctFunctionNames": 0
+        }
+      },
+      "lowering": {
+        "genericSegments": 583,
+        "finalSegments": 583,
+        "genericBodyBytes": 612458,
+        "candidateWorkers": 66,
+        "admittedBeforeObservers": 31,
+        "admittedAfterObservers": 33,
+        "declarationsBytes": 480238
+      },
+      "cShape": {
+        "b2": {
+          "bytes": 1461280,
+          "shortIdentifierBytes": 1251470,
+          "caseLabels": 587,
+          "lexicallyReachedCases": 315,
+          "lexicallyUnreachedCases": 272,
+          "caveat": "Both preprocessor branches retained; every private-worker FID is rooted. Text scan cannot establish dynamic/device reachability or authorize deletion."
+        },
+        "typescript": {
+          "bytes": 144943,
+          "shortIdentifierBytes": 135732,
+          "caseLabels": 69,
+          "lexicallyReachedCases": 68,
+          "lexicallyUnreachedCases": 1,
+          "caveat": "Both preprocessor branches retained; every private-worker FID is rooted. Text scan cannot establish dynamic/device reachability or authorize deletion."
+        }
+      },
+      "upstreamCleanStageMedianMs": {
+        "requestMs": 899.1947039999999,
+        "loadCheckMs": 309.25647400000014,
+        "emitMs": 589.7996350000001
+      }
+    }
+  },
+  "inputs": [
+    {
+      "file": "selfhost/build/phase74/warm01/numeric-b1/report.json",
+      "sha256": "cf66e3cf6c03903069e70df2dd61991b93970906eceb01c51255ff6146ea7127"
+    },
+    {
+      "file": "selfhost/build/phase74/warm01/numeric-b2/report.json",
+      "sha256": "63fca6e7a237aa9ffaed3b9eabe0bbd0cf4de0c5af6f7280f8e978d465722dcb"
+    },
+    {
+      "file": "selfhost/build/phase74/warm01/numeric-typescript/report.json",
+      "sha256": "eccb1deb468e4b7e0af3faceb00fad1196bf5cb55bdf74d28e8f933e21cdc482"
+    },
+    {
+      "file": "selfhost/build/phase74/counts02/numeric-b2/report.json",
+      "sha256": "1f93cb72cfd3384b84d5b4a40291f67ecf6eec4ee799fd71c032d0c25c953e5d"
+    },
+    {
+      "file": "selfhost/build/phase73/compiler14-native06/numeric-selfhost/program.c",
+      "sha256": "140f029b175cba0ed22ae0489ae1526292be4e4f841af77722bef1d08476d8c6"
+    },
+    {
+      "file": "selfhost/build/phase67/native-baseline02/numeric-upstream/program.c",
+      "sha256": "95653988a02a529d73497a4e56dbbdb8a9a46188f8027a8e736aa60395d3b523"
+    },
+    {
+      "file": "selfhost/build/phase73/paired-compilation/runs/clean-0-numeric-typescript/report.json",
+      "sha256": "b65e37254bb79ffa4f5b14eece6eaa37482db917481861cee53a8b06132b0f34"
+    },
+    {
+      "file": "selfhost/build/phase73/paired-compilation/runs/clean-1-numeric-typescript/report.json",
+      "sha256": "15ed59a92c0d14141fcdc3fa2e7f7ed297c240d895c87f2a5c3a877ea02f0680"
+    },
+    {
+      "file": "selfhost/build/phase73/paired-compilation/runs/clean-2-numeric-typescript/report.json",
+      "sha256": "55c64ac6eb89766d5ddb762769835997991ec9b93788a8071651bb52e8f82029"
+    },
+    {
+      "file": "selfhost/build/phase74/warm01/array-b1/report.json",
+      "sha256": "1399f61ff9d130e41ac5ff134e0d518163faba66fedf52191c3f66117b2018ac"
+    },
+    {
+      "file": "selfhost/build/phase74/warm01/array-b2/report.json",
+      "sha256": "ab78a3a98e24cf55eae183cf5e84568053f133942596385639c14d8b317635e1"
+    },
+    {
+      "file": "selfhost/build/phase74/warm01/array-typescript/report.json",
+      "sha256": "22d2eb4f6a0d05e61beb662e4080c8b0dbc264fd252303f2d90056db6d63d893"
+    },
+    {
+      "file": "selfhost/build/phase74/counts02/array-b2/report.json",
+      "sha256": "8f6edb5620cabeb24fe6d40459f44c46e48df9052c012a8b72773baa1d7e24c2"
+    },
+    {
+      "file": "selfhost/build/phase73/compiler14-native06/array-selfhost/program.c",
+      "sha256": "e08dc456862fa19eb8457326e20f3360d43342391ce0e81d41a50a9d82fd4203"
+    },
+    {
+      "file": "selfhost/build/phase67/native-baseline02/array-upstream/program.c",
+      "sha256": "73cd2c48edcd833c516b4738a46918f92d3083f97c7f598afe574c17a19a0f12"
+    },
+    {
+      "file": "selfhost/build/phase73/paired-compilation/runs/clean-0-array-typescript/report.json",
+      "sha256": "9fb98a916fe53049244e9d93e940cda448c98154f81f1f506c2c07d09c2bdd53"
+    },
+    {
+      "file": "selfhost/build/phase73/paired-compilation/runs/clean-1-array-typescript/report.json",
+      "sha256": "6c0e753dbe57549f7e54f833e5ec8c44111babd475803d290fa298800f69aacb"
+    },
+    {
+      "file": "selfhost/build/phase73/paired-compilation/runs/clean-2-array-typescript/report.json",
+      "sha256": "122ecae7e24e7c31bfa3bb1043b57cc07bb19e13a6845be6e3c476737db8a484"
+    },
+    {
+      "file": "selfhost/build/phase74/warm01/lexer-b1/report.json",
+      "sha256": "1d822122db76e0587cb5e3b3ed0fc1a7755eea0574fe61ddd7e3c50356188d39"
+    },
+    {
+      "file": "selfhost/build/phase74/warm01/lexer-b2/report.json",
+      "sha256": "4c8660dac36970c4d876a0e47cfbeb02f992c3804cf2dcfdf003a3fb883e6bbd"
+    },
+    {
+      "file": "selfhost/build/phase74/warm01/lexer-typescript/report.json",
+      "sha256": "11c8eb216769558c2c2e6903a1d56843a63798c7d4e438183aff9cbc1efe5e28"
+    },
+    {
+      "file": "selfhost/build/phase74/counts02/lexer-b2/report.json",
+      "sha256": "a7eba0587e5f7a523922a971b82f0f10d00329314b3fdd3fa76de497e0ca3fed"
+    },
+    {
+      "file": "selfhost/build/phase73/compiler14-native06/lexer-selfhost/program.c",
+      "sha256": "bd9c0abe8f5442545ce2e00a62f4641389ff2cfc29308dfe364bdeebd24a8ec0"
+    },
+    {
+      "file": "selfhost/build/phase67/native-heldout-baseline02/lexer-upstream/program.c",
+      "sha256": "809a39f4811bd72efb97399362728fa18ef05e0b346579a7816e7c01c7122169"
+    },
+    {
+      "file": "selfhost/build/phase73/paired-compilation/runs/clean-0-lexer-typescript/report.json",
+      "sha256": "1f01cce3bc8b48bc931176ebb1f9b31370f1c6cec118150f8331f8b3ad6f813a"
+    },
+    {
+      "file": "selfhost/build/phase73/paired-compilation/runs/clean-1-lexer-typescript/report.json",
+      "sha256": "d29008c56ab5687ddf5dcafc0ca625407e8431cc3fcc8075de3e93af2135f6fb"
+    },
+    {
+      "file": "selfhost/build/phase73/paired-compilation/runs/clean-2-lexer-typescript/report.json",
+      "sha256": "c22165efa568c7d7700754543a2fb4e8897088e1bc7761a662f9590ea288632d"
+    },
+    {
+      "file": "selfhost/tools/performance/phase74/analyze.py",
+      "sha256": "8e8deb860d0fe33406ef33192d8421378231e2f4e4207f2a304dce23037167a9"
+    }
+  ],
+  "warmRatioGMs": {
+    "b1": {
+      "firstMs": 3.5728057047370694,
+      "warmFiveMedianMs": 3.9030293321615273,
+      "lastThreeMedianMs": 4.212398620923665
+    },
+    "b2": {
+      "firstMs": 2.3988658881928644,
+      "warmFiveMedianMs": 1.5818550293739546,
+      "lastThreeMedianMs": 1.7325063878718103
+    }
+  },
+  "commonDefinitionNames": [
+    "Bool.and",
+    "Bool.or",
+    "Char.cmp",
+    "Cmp.is_eq",
+    "Cmp.is_le",
+    "IO.args",
+    "IO.bind",
+    "IO.now",
+    "IO.print",
+    "Nat.add",
+    "Nat.cmp",
+    "Nat.divmod",
+    "Nat.is_eq",
+    "Nat.is_lt",
+    "Nat.mul",
+    "Nat.read",
+    "Nat.read.fits",
+    "Nat.read.gate",
+    "Nat.read.go",
+    "Nat.read.if",
+    "Nat.read.trim",
+    "Nat.show",
+    "Nat.show.fin",
+    "Nat.show.go",
+    "Nat.show.put",
+    "Nat.sub",
+    "Pair.snd",
+    "String.cmp",
+    "String.cmp.fin",
+    "String.cmp.rec",
+    "String.is_le",
+    "String.length",
+    "String.order",
+    "U32.add",
+    "U32.and",
+    "U32.cmp",
+    "U32.div",
+    "U32.from_nat",
+    "U32.inc",
+    "U32.is_lt",
+    "U32.is_zero",
+    "U32.mod",
+    "U32.mul",
+    "U32.show",
+    "U32.show.fin",
+    "U32.show.go",
+    "U32.show.if",
+    "U32.sub",
+    "U32.to_nat",
+    "U32.xor",
+    "main",
+    "p46.arguments",
+    "p46.batch",
+    "p46.loop",
+    "p46.number",
+    "p46.parsed",
+    "p46.run"
+  ],
+  "commonLibraryNamesExcludingHarness": [
+    "Bool.and",
+    "Bool.or",
+    "Char.cmp",
+    "Cmp.is_eq",
+    "Cmp.is_le",
+    "IO.args",
+    "IO.bind",
+    "IO.now",
+    "IO.print",
+    "Nat.add",
+    "Nat.cmp",
+    "Nat.divmod",
+    "Nat.is_eq",
+    "Nat.is_lt",
+    "Nat.mul",
+    "Nat.read",
+    "Nat.read.fits",
+    "Nat.read.gate",
+    "Nat.read.go",
+    "Nat.read.if",
+    "Nat.read.trim",
+    "Nat.show",
+    "Nat.show.fin",
+    "Nat.show.go",
+    "Nat.show.put",
+    "Nat.sub",
+    "Pair.snd",
+    "String.cmp",
+    "String.cmp.fin",
+    "String.cmp.rec",
+    "String.is_le",
+    "String.length",
+    "String.order",
+    "U32.add",
+    "U32.and",
+    "U32.cmp",
+    "U32.div",
+    "U32.from_nat",
+    "U32.inc",
+    "U32.is_lt",
+    "U32.is_zero",
+    "U32.mod",
+    "U32.mul",
+    "U32.show",
+    "U32.show.fin",
+    "U32.show.go",
+    "U32.show.if",
+    "U32.sub",
+    "U32.to_nat",
+    "U32.xor"
+  ],
+  "interpretation": "Name intersection is not semantic/body identity or time attribution. Warm measurements use only one process per role/case and are not steady-state evidence. Counter times are instrumented and recursive inclusive totals overlap."
+}

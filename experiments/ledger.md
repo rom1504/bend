@@ -4270,3 +4270,20 @@ frontend36,new12,threads24,B2/B3 andinstalled42/24/5 pass; seven unchanged refer
 failures and thirteen API gaps remain. Evidence includes failed attempts, timing
 drift and compile-latency profiles. No subagents or PR comments. See
 [P73-012](phase73/P73-012-selected-release.md) for promotion boundaries.
+
+## Phase74 compilation-parity investigation — 2026-10-12
+
+[Report](../implementation/phase74/README.md), [design](../design/phase74/compilation-parity-investigation.md).
+No production changes, agents or PR comments.54 first/warm requests and3
+counter-only B2 requests preserve complete qualified C bytes. B2 warm/TS ratios
+are1.58x over all five repeats and1.73x over the last three, one process per
+role/source; these do not establish cold parity or stable steady-state speed.
+Six reachability entry calls,54/57/82 ordinary candidate attempts for36/39/58
+names, and all416/428/583 generic segments surviving emission motivate planning
+routes before lowering.97% of occurrence-set arguments have distinct identity,
+weakening a simple memoization proposal. C is about10x upstream size; some is
+required device fallback. Lexical unreachability is diagnostic, not deletion
+proof. Prioritize one native plan/shared facts and reusable library products;
+proposed gains remain unmeasured. Original counter ABI-reader mistake was
+caught before requests, then fixed in a fresh derived image/project. Installed
+Phase73 and its sealed evidence remain unchanged.

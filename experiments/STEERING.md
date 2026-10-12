@@ -1,5 +1,13 @@
 # Active frontier: Phase73 native execution near aggregate parity
 
+**Latest investigation: [Phase74 compilation parity](../implementation/phase74/README.md).**
+Production remains Phase73. Counter-only exact-C diagnostics find six native
+reachability calls, repeated worker lowering and no final generic-segment
+pruning; an identity-only occurrence cache has few exact repeats. Next priority
+is a prepared native route plan with shared facts and reusable Base products.
+Warm B2 improves the edit loop but is a separate metric. See the report for
+conditional estimates, falsifiers and the unchanged release boundary.
+
 [Design](../design/phase73/native-parity.md) ·
 [Report](../implementation/phase73/README.md) ·
 [Measurements](../implementation/phase73/measurements.json) ·

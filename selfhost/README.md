@@ -1,43 +1,35 @@
 # Bend2 compiler port in Bend2
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The [Phase70 report](../implementation/phase70/README.md) records installed
-**compiler03**, source `d6d6049`, checked B1 `386ae358…` and separately qualified
-genuine B2 `d069204f…`. Fresh self-check, exact B2/B3 reproduction, installation,
-legacy42/default24/helper5 and verification before/after CLI checks pass. Use
-`npm run verify:release` to check the installed package against its manifest.
+The [Phase72 report](../implementation/phase72/README.md) records installed **compiler02**, source
+`1176262`, checked B1 `0ab62a7a…` and genuine B2 `bd39db0d…`. Private product
+transport extends existing typed layouts and ownership lowering across calls
+and loop backedges. Raw demand checks and boxed scheduler/device interfaces
+remain. Production grows13 physical /6 code lines, with no new production module.
 
-The [native runtime results](../implementation/phase70/native-runtime-results.md)
-measure **1.12124× upstream C time on the original six families** and
-**1.84036× on six additions**, improving 12.95% and 18.90% against Phase69
-measured in the same campaigns. An optional equal-weight twelve-family score
-is **1.43649×**. These finite, single-worker results measure programs emitted
-by compiler02. All 24 fresh compiler03 B1/B2 emissions match the complete C
-for those twelve programs, with the 56 pinned host/runtime/effect files unchanged,
-qualifying inheritance of the saved-program results. This is not a new
-compiler03 runtime timing campaign, compiler latency or universal parity. Do not
-compare historical Phase69's 1.033× directly with these new ratios: its saved baseline measures
-1.28809× in the current original-six campaign.
+The twelve-family native campaign reduces Array.map time22%,lexer14%,BST8%;
+other cases remain within1%. Original-six/additional-six geometric means are
+1.08442×/1.74312× upstream. The optional equal-family twelve mean improves
+1.42979×→1.37488× against Phase70 measured alongside it. All108 final intervals
+pass independent checksums. B2 reproduces the complete C of all twelve timed
+B1 programs; generated-program speed is distinct from compilation speed.
 
-The [observer guide](../docs/self_hosted/NATIVE_OBSERVERS.md) explains typed
-immutable-root borrowing, checked permission and fallbacks. Checked Bool arrays,
-lazy product demand and compact-body reuse are also selected. The occurrence
-shortcut failed its retention rule and was removed; the ordinary-ready observer
-skip was not shipped. The [source accounting](../implementation/phase70/simplicity-and-time.md)
-records the implementation cost as well as the measured gains.
+A separate45-request paired C compilation screen finds no material change:
+B1/B2 are3.47263×/2.24608× upstream (0.23%less/0.32%more time than old).
+Imports, explicit Bend Base preparation, Clang and execution are outside that
+clock; TS Base checking remains inside. These are three-source C-request metrics.
+Historical Phase66 broad JS metrics remain1.049× runtime and1.402×/1.321×
+compilation, retained through exact frontend/JS executable-closure equality.
 
-The unchanged frontend/JS executable closure retains Phase66's finite
-conformance results. The last broad campaign measured B1/B2 compilation
-1.402×/1.321× TS and JS runtime 1.049× equal-point/1.047× equal-source;
-these remain historical. The separate three-source C-emission screen measures
-B1 **3.41827×** and genuine B2 **2.16517×** upstream TS over three balanced
-rounds and 27 exact-C requests. Request clocks exclude imports, Base preparation,
-Clang and program execution. Bend uses prepared Base; TS checks Base within its
-request. Compilation parity remains unfinished: a paired Numeric screen takes
-6.54% more B1 time and 1.09% more B2 time than Phase69.
-See the [conformance record](CONFORMANCE.md),
-[compiler03 gate review](../implementation/phase70/compiler03-correctness.md)
-and [Phase70 measurement boundaries](../implementation/phase70/README.md).
+Frontend36,native candidate100,raw31,two new loop controls and genuine B2
+self-check/B3 reproduction pass. Seven reference unused-demand disagreements,
+thirteen native API gaps and existing finite frontend/JS exceptions remain.
+Read the report for installed CLI qualification, source identities, measurements
+and preserved failures. Ordinary compilation still runs Bend without TypeScript
+fallback. The compiler is not independently kernel-proved.
+
+Use the [compiler guide](../docs/BEND-IN-BEND.md) and run `npm run verify:release`
+to check the installed package.
 
 Phase66 changes namespace display, the Base/effect ABI and composite host
 marshalling. The new Base needs fresh prepared artifacts. Its exact-content

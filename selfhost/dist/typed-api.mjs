@@ -10224,7 +10224,7 @@ function $nf_finish_show$(_book_0, _ss_0, _cs_0, _runtime_0, _requests_0, _pure_
 }) : ((_x_1) => {
   return {$: "Nil"};
 }), {$: "Unit"}));
-  return $nf_finish_workers$(_book_0, _ss_0, _cs_0, _runtime_0, _requests_0, _pure_0, _show_0, ($List$append$(run_loop($nf_candidates$(_book_0, _names_0, _bangs_0, _signatures_0)), run_loop($nq_candidates$(_book_0, _names_0, _bangs_0, _signatures_0)))), _signatures_0, _observer_names_0, _observers_0);
+  return $nf_finish_workers$(_book_0, _ss_0, _cs_0, _runtime_0, _requests_0, _pure_0, _show_0, ($List$append$(run_loop($nf_candidates$(_book_0, _names_0, _bangs_0, _signatures_0)), run_loop($nq_candidates_mode$(_book_0, _names_0, _bangs_0, _signatures_0, _observers_0)))), _signatures_0, _observer_names_0, _observers_0);
 }
 
 function $nc_pack_foreign$(_ds_0) {
@@ -13060,7 +13060,7 @@ function $nf_candidates$(_book_0, _names_0, _bangs_0, _signatures_0) {
   }
 }
 
-function $nq_candidates$(_book_0, _names_0, _bangs_0, _signatures_0) {
+function $nq_candidates_mode$(_book_0, _names_0, _bangs_0, _signatures_0, _checked_0) {
   if (_names_0.$ === "Nil") {
     return {$: "Nil"};
   } else {
@@ -13068,9 +13068,9 @@ function $nq_candidates$(_book_0, _names_0, _bangs_0, _signatures_0) {
     const _rest_0 = _names_0["tail"];
     const _info_0 = run_loop($lookup$(_signatures_0, _name_0));
     return run_tail((($Bool$and$(($String$eq$(($tg$(($dv$(_info_0)))), "NQSig")), ($Bool$not$(($nb_contains$(_bangs_0, _name_0))))))) ? ((_x_0) => {
-  return {$: "Con", "head": ($nq_candidate$(_book_0, _name_0, _signatures_0, ($nq_entry$(($ks$(($dv$(_info_0)))), 0, ($da$(_info_0)))))), "tail": run_loop($nq_candidates$(_book_0, _rest_0, _bangs_0, _signatures_0))};
+  return {$: "Con", "head": ($nq_candidate_mode$(_book_0, _name_0, _signatures_0, ($nq_entry$(($ks$(($dv$(_info_0)))), 0, ($da$(_info_0)))), _checked_0)), "tail": run_loop($nq_candidates_mode$(_book_0, _rest_0, _bangs_0, _signatures_0, _checked_0))};
 }) : ((_x_1) => {
-  return $nq_candidates$(_book_0, _rest_0, _bangs_0, _signatures_0);
+  return $nq_candidates_mode$(_book_0, _rest_0, _bangs_0, _signatures_0, _checked_0);
 }), {$: "Unit"});
   }
 }
@@ -16185,7 +16185,7 @@ function $nf_candidate$(_book_0, _name_0, _signatures_0) {
   return {$: "NF_Worker", "name": _name_0, "params": run_loop($nf_typed_params$(_params_0, run_loop($nf_worker_kinds$(_book_0, _name_0, ($nt_count$(_params_0)))))), "code": _code_0, "deps": ($nc_calls$(_code_0)), "shape": _shape_0};
 }
 
-function $nq_candidate$(_book_0, _name_0, _signatures_0, _entry_0) {
+function $nq_candidate_mode$(_book_0, _name_0, _signatures_0, _entry_0, _checked_0) {
   const _params_0 = _entry_0["params"];
   const _args_0 = _entry_0["args"];
   const _fresh_0 = _entry_0["fresh"];
@@ -16193,9 +16193,13 @@ function $nq_candidate$(_book_0, _name_0, _signatures_0, _entry_0) {
   const _body_0 = run_loop($nc_compact_definition$(_book_0, run_loop($lookup$(_book_0, _name_0)), _fresh_0));
   const _route_0 = ($nm$(($dv$(_info_0))));
   const _shape_0 = ($dt$(_info_0));
-  const _code_0 = run_loop(run_tail((($nq_entry_demand$(_body_0, ($ks$(($dv$(_info_0)))), ($nd_entry_args$(run_loop($nd_entry_params$(($da$(_info_0)), 0)))), 0))) ? ((_x_0) => {
-  return $nc_lower_to$(_book_0, ($nd_reapply$(_body_0, _args_0)), _params_0, _fresh_0, {$: "NC_Destination", "words": run_loop($nq_words$("nf_out", run_loop($nq_width$(_shape_0)), 0)), "shape": _shape_0, "join": "", "owner": _route_0, "params": _params_0, "tail": true, "signatures": _signatures_0});
+  const _code_0 = run_loop(run_tail((run_loop(run_tail((_checked_0) ? ((_x_0) => {
+  return true;
 }) : ((_x_1) => {
+  return $nq_entry_demand$(_body_0, ($ks$(($dv$(_info_0)))), ($nd_entry_args$(run_loop($nd_entry_params$(($da$(_info_0)), 0)))), 0);
+}), {$: "Unit"}))) ? ((_x_2) => {
+  return $nc_lower_to$(_book_0, ($nd_reapply$(_body_0, _args_0)), _params_0, _fresh_0, {$: "NC_Destination", "words": run_loop($nq_words$("nf_out", run_loop($nq_width$(_shape_0)), 0)), "shape": _shape_0, "join": "", "owner": _route_0, "params": _params_0, "tail": true, "signatures": _signatures_0});
+}) : ((_x_3) => {
   return $nc_fail$("flat product: parameter may be dropped before matching", _fresh_0);
 }), {$: "Unit"}));
   return {$: "NF_Worker", "name": _route_0, "params": run_loop($nf_typed_params$(_params_0, ($nf_expand_kinds$(($ks$(($dv$(_info_0)))), run_loop($nf_worker_kinds$(_book_0, _name_0, ($da$(_info_0)))))))), "code": _code_0, "deps": ($nc_calls$(_code_0)), "shape": _shape_0};
@@ -42569,10 +42573,14 @@ function $nq_args_known$(_shapes_0, _args_0) {
       const _arg_0 = _args_0["head"];
       const _more_0 = _args_0["tail"];
       return $Bool$and$(run_loop(run_tail((($String$eq$(($tg$(_shape_0)), "NQShape"))) ? ((_x_0) => {
-  const _x_1 = ($ix$(_shape_0));
-  const _x_2 = ($terms_len$(($ks$(_arg_0))));
-  return $Bool$and$(($Bool$and$(($String$eq$(($tg$(_arg_0)), "NQBundle")), ($String$eq$(($nm$(_shape_0)), ($nm$(_arg_0)))))), (_x_1 === _x_2));
-}) : ((_x_3) => {
+  const _x_1 = ($String$eq$(($tg$(_arg_0)), "NQBundle"));
+  const _x_2 = ($String$eq$(($tg$(_arg_0)), "Ctr"));
+  const _x_3 = (_x_1 || _x_2);
+  const _x_4 = ($String$eq$(($tg$(_arg_0)), "NCtr"));
+  const _x_5 = ($ix$(_shape_0));
+  const _x_6 = ($terms_len$(($ks$(_arg_0))));
+  return $Bool$and$(($Bool$and$((_x_3 || _x_4), ($String$eq$(($nm$(_shape_0)), ($nm$(_arg_0)))))), (_x_5 === _x_6));
+}) : ((_x_7) => {
   return true;
 }), {$: "Unit"})), ($nq_args_known$(_rest_0, _more_0)));
     } else {

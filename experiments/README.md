@@ -5,6 +5,15 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed implementation: Phase72 product transport
+
+[Design](../design/phase72/product-transport.md) ·
+[Report](../implementation/phase72/README.md). Installed B1`0ab62a7a…`,genuine
+B2/B3`bd39db0d…`. Array.map22%,lexer14%,BST8% less runtime; other nine cases
+within1%. Optional twelve-family mean1.42979×→1.37488× upstream. Compiler
+request time is effectively unchanged; production adds13 lines in existing
+modules. Qualification and finite conformance limits are in the report.
+
 ## Completed implementation: Phase70 observers and broader native coverage
 
 [Design](../design/phase70/observers-and-compilation.md) ·

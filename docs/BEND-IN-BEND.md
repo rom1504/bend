@@ -6,52 +6,34 @@ Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The [Phase70 report](../implementation/phase70/README.md) records the installed
-**compiler03** source at `d6d6049`, checked B1 `386ae358…` and separately
-qualified genuine B2 `d069204f…`. It adds bounded
-[root-preserving native observers](self_hosted/NATIVE_OBSERVERS.md), checked
-Bool-array admission and two compiler-work reductions. The unsuccessful
-occurrence-insertion shortcut was removed; the ordinary-ready observer skip
-remains an unshipped experiment. Installation, verification before and after
-CLI checks, legacy42/default24/helper5, fresh self-check and exact B2/B3
-reproduction pass. [Phase69](../implementation/phase69/README.md) is the
-previous installed release.
+The [Phase72 report](../implementation/phase72/README.md) records installed **compiler02**, source
+`1176262`, checked B1 `0ab62a7a…` and genuine B2 `bd39db0d…`. Private product
+transport extends existing typed layouts and ownership lowering across calls
+and loop backedges. Raw demand checks and boxed scheduler/device interfaces
+remain. Production grows13 physical /6 code lines, with no new production module.
 
-The [native runtime campaign](../implementation/phase70/native-runtime-results.md)
-measures **1.12124× upstream C execution time on the original six families**
-and **1.84036× on six broader additions**: respectively 12.95% and 18.90% less
-than Phase69 measured alongside it. An optional equal-weight twelve-family
-summary is **1.43649×**. These are finite, single-worker generated-program
-results, not compiler latency or universal parity. The timed artifact is
-compiler02; all 24 fresh compiler03 B1/B2 emissions over those twelve programs
-match its complete C bytes, with 56 host/runtime/effect files unchanged. This
-qualifies inheritance of the saved-program results; it is not a newly timed
-compiler03 runtime campaign. Historical Phase69's 1.033× used different execution
-conditions and is not the denominator for a regression comparison.
+The twelve-family native campaign reduces Array.map time22%,lexer14%,BST8%;
+other cases remain within1%. Original-six/additional-six geometric means are
+1.08442×/1.74312× upstream. The optional equal-family twelve mean improves
+1.42979×→1.37488× against Phase70 measured alongside it. All108 final intervals
+pass independent checksums. B2 reproduces the complete C of all twelve timed
+B1 programs; generated-program speed is distinct from compilation speed.
 
-Frontend/JavaScript behavior retains Phase66's finite conformance evidence
-through exact executable-closure equality. The
-[last broad five-metric campaign](../implementation/phase66/README.md) remains
-historical: B1/B2 compilation 1.402× / 1.321× TS, import-inclusive
-0.983× / 0.990×, and generated JS runtime 1.049× equal-point / 1.047×
-equal-source. The separate Phase70 C-emission request screen measures B1
-**3.41827×** and genuine B2 **2.16517×** upstream TS across Numeric/Array/Lexer,
-three balanced rounds and 27 exact-C requests. These clocks exclude imports,
-explicit Base preparation, Clang and generated-program execution. Bend uses
-prepared Base; TS checks Base within its request. This is not a broad
-compilation-parity result. A separate paired Numeric screen takes 6.54% more
-B1 time and 1.09% more B2 time than Phase69; the phase does not establish a
-whole-version compiler-speed improvement.
+A separate45-request paired C compilation screen finds no material change:
+B1/B2 are3.47263×/2.24608× upstream (0.23%less/0.32%more time than old).
+Imports, explicit Bend Base preparation, Clang and execution are outside that
+clock; TS Base checking remains inside. These are three-source C-request metrics.
+Historical Phase66 broad JS metrics remain1.049× runtime and1.402×/1.321×
+compilation, retained through exact frontend/JS executable-closure equality.
 
-The [selected-source review](../implementation/phase70/compiler03-correctness.md)
-records compiler03 gates separately from compiler02 results and known upstream
-disagreements. Its [self-hosting and C-identity evidence](../implementation/phase70/evidence/compiler03-selfhosting-correctness.json)
-pins the cross-stage qualification. Current direct/legacy effect limits and
-finite conformance exceptions remain explicit. Custom or later Base bytes retain ordinary
-annotation until independently qualified; see the
-[Base qualification](../implementation/phase66/base-host.md). The proof pilot's
-independent kernel check remains blocked on its toolchain, not established by
-self-reproduction or ordinary type acceptance.
+Frontend36,native candidate100,raw31,two new loop controls and genuine B2
+self-check/B3 reproduction pass. Seven reference unused-demand disagreements,
+thirteen native API gaps and existing finite frontend/JS exceptions remain.
+Read the report for installed CLI qualification, source identities, measurements
+and preserved failures. Ordinary compilation still runs Bend without TypeScript
+fallback. The compiler is not independently kernel-proved.
+
+Previous installed results: [Phase70](../implementation/phase70/README.md).
 
 ## Historical release results: Phase65
 

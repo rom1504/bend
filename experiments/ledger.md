@@ -4235,3 +4235,19 @@ No generalization, compiler-speed, GPU or allocation-heavy scaling claim.
 One agent; decision reached in about12minutes. Local checkpoint quota events
 51→52%used are account observations, not exact billing. Installed Phase70
 retained. Next decision is a second-family saved-C falsifier before integration.
+
+
+### Phase72 product transport and installed release — 2026-10-12
+
+[Report](../implementation/phase72/README.md),source1176262; installed B1
+0ab62a7a…,genuine B2/B3bd39db0d…. Existing product paths now connect across
+constructor-argument calls and checked private loop backedges. +13physical/+6
+code lines,no new production module. Final108 runtime intervals: Array.map
+22.2%,lexer13.8%,BST7.7% less time; others within1%. Original/additional-six
+means1.08442×/1.74312× upstream; optional twelve1.42979×→1.37488×.
+Paired45 C requests: B1−0.23%,B2+0.32% versus old, effectively unchanged.
+Native100,raw31,frontend36,new loops2,JS2992exact,B2driver8,self-check,B3exact,
+twelve B2 C identities and installed42/24/5 pass. Seven reference demand
+failures and13 native API gaps remain. No agents or PR comment. Prior release
+preserved; failed fixtures/noisy repeat retained. Next: bounded cost attribution
+for residual Tape/list/BST, not another large speculative recognizer.

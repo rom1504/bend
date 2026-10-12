@@ -161,7 +161,7 @@ remaining individual gaps and reproducible fast loops. The
 [report](../../../../implementation/phase69/README.md) separate measured source
 candidates, conformance, B1/B2 latency and installed release status.
 
-### Phase70 installed root-preserving observers
+### Historical Phase70 root-preserving observers
 
 The optional checked CPU observer pass checks that a bounded immutable-list
 traversal returns its original roots, computes the scalar answer with borrowed
@@ -170,7 +170,7 @@ eligible scheduler entries after ordinary worker admission; existing private
 worker calls can bypass it. Explicit checked/effect permission, raw and device
 fallback, demand preservation and the analysis bounds are documented in
 [Native root-preserving observers](../../../../docs/self_hosted/NATIVE_OBSERVERS.md).
-Compiler03 is installed as checked B1 `386ae358…`; genuine B2 `d069204f…`
+Compiler03 was installed as checked B1 `386ae358…`; genuine B2 `d069204f…`
 passes fresh self-check and exact B3 reproduction. Checked Bool-array admission,
 lazy product demand and compact-body reuse are selected. The occurrence shortcut
 was removed after its performance gate failed; skipping observer planning for

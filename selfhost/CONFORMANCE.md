@@ -1,6 +1,18 @@
 # Compiler validation
 
-## Phase69 installed native qualification
+## Phase72 product transport qualification
+
+[Report](../implementation/phase72/README.md). Candidate checked B1 `0ab62a7a…`
+passes frontend36,native100,raw31 and two new scalar/array loop controls. The
+reference retains seven known failures; paired native comparison is not marked
+fully passing. The2,992 frontend/JS functions and runtime/public wrappers remain
+exact. Genuine B2 `bd39db0d…` checks its source, reproduces B3 exactly and emits
+all twelve native benchmark programs byte-identically to B1. All108 final
+runtime intervals and45 paired compilation requests validate their outputs.
+Thirteen native API gaps, existing frontend/JS exceptions and the absence of
+an independent compiler proof remain. See the report for installed CLI gates.
+
+## Historical Phase69 native qualification
 
 [Report](../implementation/phase69/README.md) ·
 [Exact evidence](../implementation/phase69/evidence/summary.json).

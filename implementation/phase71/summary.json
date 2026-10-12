@@ -1,0 +1,58 @@
+{
+  "sourceRelease": "b18a183",
+  "productionCompilerChanged": false,
+  "product": {
+    "report": {
+      "path": "selfhost/build/phase71/product01/report.json",
+      "sha256": "157f825fb0b552e31d3c262fc168818bd59ef88a6275d4d32bcaa650cf7f0954",
+      "bytes": 15894
+    },
+    "mediansMs": {
+      "original": {
+        "1": 735
+      },
+      "virtual": {
+        "1": 567
+      },
+      "upstream": {
+        "1": 302
+      }
+    },
+    "timeReduction": 0.22857142857142854,
+    "originalOverUpstream": 2.433774834437086,
+    "prototypeOverUpstream": 1.8774834437086092,
+    "qualified": 9
+  },
+  "parallel": {
+    "report": {
+      "path": "selfhost/build/phase71/parallel02/report.json",
+      "sha256": "33612ce488fc6c6aed0aa4554aae8b6fc6cfd33a9b3ceac457ecfbb9708468b5",
+      "bytes": 27690
+    },
+    "mediansMs": {
+      "selfhost": {
+        "1": 546.646227943711,
+        "2": 277.8447549790144,
+        "4": 145.67347697447985
+      },
+      "upstream": {
+        "1": 546.1238770512864,
+        "2": 277.08728599827737,
+        "4": 145.76163096353412
+      }
+    },
+    "selfhostSpeedup4": 3.752544658760884,
+    "upstreamSpeedup4": 3.746691591204223,
+    "qualified": 18
+  },
+  "shapes": {
+    "path": "selfhost/build/phase71/other-shapes-v2.json",
+    "sha256": "105d33e6c669509d3600459692c8b434bc556306e0fa599ad98d41903409306a",
+    "bytes": 3072
+  },
+  "limitations": [
+    "Saved-C prototype only; no production optimization or compiler-speed improvement.",
+    "Parallel result is one balanced numeric workload, no allocation-heavy or GPU claim.",
+    "Compiler acquisition clocks are single observations, not a performance campaign."
+  ]
+}

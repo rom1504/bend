@@ -1,3 +1,19 @@
+# Latest investigation: Phase71 bounded single-agent checkpoint
+
+[Report](../implementation/phase71/README.md). Installed Phase70 remains unchanged.
+A saved-C Array.map tuple-transport prototype reduces735→567ms (22.86%), versus
+upstream302ms; one workload, not a production optimization. Related BST
+return-to-argument reboxing exists but has no measured intervention yet.
+Balanced numerical fork-join matches upstream at1/2/4physicalcores and scales
+3.75×on four cores. No allocation-heavy/GPU scaling claim. No compiler-speed
+improvement; final source/release and five-metric baseline remain Phase70.
+Next: cheaply falsify product transport on BST before adding implementation.
+Use one main agent, no delegation unless newly authorized by the user. Root's
+bounded investigation used one active thread; quota telemetry is in the report.
+Phase71 targets/raw/methods are closed and archived; use fresh paths next.
+
+---
+
 # Active frontier: Phase70 installed observers and broader native coverage
 
 [Design](../design/phase70/observers-and-compilation.md) ·

@@ -4221,3 +4221,17 @@ native13scope gaps remain. Not full conformance or a mathematical proof.
 occupancy38m39s over2h06m12s target span, peak1.506GiB. Evidence capsule retains
 failed experiments and prior dependencies. General product/loop-state transport
 and shared native layout/Base planning are next opportunities. No PR comment.
+
+
+### Phase71 bounded native diagnosis — 2026-10-12
+
+[Report](../implementation/phase71/README.md). No production compiler changes.
+One saved-C product-transport prototype removes22.86%Array.map time (735→567ms,
+upstream302ms),9qualified intervals. Final checked B1's balanced parallel
+fixture matches upstream on1/2/4physicalcores (547/278/146ms),18qualified
+intervals and3.75×four-core speedup. Short calibration and fixture/diagnostic
+failures remain preserved. BST has a related reboxing boundary, unmeasured.
+No generalization, compiler-speed, GPU or allocation-heavy scaling claim.
+One agent; decision reached in about12minutes. Local checkpoint quota events
+51→52%used are account observations, not exact billing. Installed Phase70
+retained. Next decision is a second-family saved-C falsifier before integration.

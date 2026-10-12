@@ -46,3 +46,21 @@ show a credible large saving before architectural expansion; revise the approach
 when evidence contradicts the estimate. Parity is a target, never an assumed
 outcome. Publish design, measured decisions and comprehensive report, commit
 and push meaningful checkpoints.
+
+## Evidence-driven refinement: scalar decisions
+
+Per-definition attribution found a larger opportunity than generic occurrence
+memoization: a single ordinary character pattern expands to 1,421 erased nodes.
+The pinned upstream `mat_lits` algorithm retains known-bit rows and compares
+reconstructed defaults. Implement this in a separate Bend native pattern module,
+then retain successful rows during the existing private-tree preparation pass.
+Do not recognize source function or benchmark names. Require all 0–32 prefix
+depths, inherited/distinct defaults, alpha-equivalence capture controls, private
+input refusal, native U32/F32 and sharing tests, and twelve-family runtime timing.
+
+The smaller tree is shared by generic and worker lowering and occurrence queries.
+Unsupported shapes keep the old path. Reference source and original erased
+observer inputs stay intact. Classifiers must reject ordinary heads before
+constructing intrinsic metadata; a shared lazy admission removes duplication.
+These are cold algorithm changes, not precomputation outside the request clock.
+Do not add runtime alignment hints on an inconsistent short-run observation.

@@ -473,6 +473,14 @@ law nc_match_apply_slow_to:
 
 @unsafe
 def nc_match_apply_to(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+  nt_choose(NC_Code, String.eq(tg(kid(t, 0)), "NWPattern"),
+    u => nw_match(book, t, env, n, target, NW_Rows{True{}, ks(kid(t, 0))}),
+    u => nt_choose(NC_Code, nw_applicable(kid(t, 0)),
+      v => nw_match(book, t, env, n, target, nw_walk(kid(kid(t, 0), 0), 0, 0, NW_None{})),
+      v => nc_match_apply_original_to(book, t, env, n, target)))
+
+@unsafe
+def nc_match_apply_original_to(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
   nt_choose(NC_Code, nf_scheduler(target) && U32.is_eq(terms_len(ks(t)), 2) && np_can_match(kid(t, 0)), u => np_match_apply(book, t, env, n), u => nc_match_apply_slow_to(book, t, env, n, target))
 
 @unsafe
@@ -500,8 +508,18 @@ law nc_array_known:
 
 @unsafe
 def nc_native_def(+d: KDef) -> Bool:
-  +prim = nc_primitive_name(dn(d))
-  db(d) && Bool.not(String.eq(tg(nc_unann(dv(d))), "Foreign")) && (Bool.not(String.eq(ni_template(prim), "")) || nc_array_known(prim) || String.eq(prim, "nat_divmod"))
+  nt_choose(Bool, db(d), u => nc_native_marked(d), u => False{})
+
+# Ordinary definitions never require intrinsic-name construction or templates.
+# Explicit control flow matters: Boolean arguments are otherwise evaluated.
+@unsafe
+def nc_native_marked(+d: KDef) -> Bool:
+  nt_choose(Bool, String.eq(tg(nc_unann(dv(d))), "Foreign"), u => False{},
+    u => nc_native_primitive(nc_primitive_name(dn(d))))
+
+@unsafe
+def nc_native_primitive(+prim: String) -> Bool:
+  Bool.not(String.eq(ni_template(prim), "")) || nc_array_known(prim) || String.eq(prim, "nat_divmod")
 
 @unsafe
 def nc_ref_name(+book: List<&2, KDef>, +name: String) -> String:
@@ -620,7 +638,7 @@ def nc_lower_live_to(book, t, env, n, target):
   nt_choose(NC_Code, String.eq(tag, "NFCall"), u => nq_call(book, t, env, n, target), u =>
   nt_choose(NC_Code, String.eq(tag, "NCall"), u => nt_choose(NC_Code, nf_scheduler(target), v => NC_Code{ne_jump(nc_values(ks(t), env), nm(t)), Nil{}, n, "", Nil{}}, v => nc_fail("flat worker: scheduler call node", n)), u =>
   nt_choose(NC_Code, String.eq(tag, "Rfl") || String.eq(tag, "Typ") || String.eq(tag, "All") || String.eq(tag, "Qua") || String.eq(tag, "ADT") || String.eq(tag, "Eql"), u => nf_return("0", n, target), u =>
-  nt_choose(NC_Code, String.eq(tag, "Mat"), u => nf_match_value(book, t, env, n, target), u =>
+  nt_choose(NC_Code, (String.eq(tag, "Mat") || String.eq(tag, "NWPattern")), u => nf_match_value(book, t, env, n, target), u =>
   nt_choose(NC_Code, String.eq(tag, "NMatch"), u => nq_match(book, t, env, n, target), u =>
   nt_choose(NC_Code, String.eq(tag, "NOp"), u => nq_operation(book, t, env, n, target), u =>
   nt_choose(NC_Code, String.eq(tag, "Efq"), u => NC_Code{"err_post(e.mem, ERR_FIDS); return 0;\n", Nil{}, n, "", Nil{}}, u =>

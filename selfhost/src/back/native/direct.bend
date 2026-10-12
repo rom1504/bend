@@ -5,11 +5,27 @@
 def nd_scalar_known(+name: String) -> Bool:
   Bool.not(String.eq(ni_template(name), "")) && Bool.not(String.eq(name, "f32_show") || String.eq(name, "f32_read"))
 
+# Reject ordinary/non-call heads before building intrinsic names and templates.
+# Scalar and allocating call classifiers share the same provenance/arity gate.
+@unsafe
+def nd_native_call(+book: List<&2, KDef>, +t: KTerm) -> String:
+  nt_choose(String, String.eq(tg(t), "App"),
+    u => nd_native_head(book, t, nd_head(t)), u => "")
+
+@unsafe
+def nd_native_head(+book: List<&2, KDef>, +t: KTerm, +head: KTerm) -> String:
+  nt_choose(String, String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)),
+    u => nt_choose(String, nc_native_def(lookup(book, nm(head))),
+      v => nd_native_saturated(t, nc_primitive_name(nm(head))), v => ""), u => "")
+
+@unsafe
+def nd_native_saturated(+t: KTerm, +name: String) -> String:
+  nt_choose(String, U32.is_eq(terms_len(nd_args(t, Nil{})), nc_primitive_arity(name)), u => name, u => "")
+
 @unsafe
 def nd_scalar_call(+book: List<&2, KDef>, +t: KTerm) -> String:
-  +head = nd_head(t)
-  +name = nc_primitive_name(nm(head))
-  nt_choose(String, String.eq(tg(t), "App") && String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)) && nc_native_def(lookup(book, nm(head))) && nd_scalar_known(name) && U32.is_eq(terms_len(nd_args(t, Nil{})), nc_primitive_arity(name)), u => name, u => "")
+  +name = nd_native_call(book, t)
+  nt_choose(String, String.eq(name, ""), u => "", u => nt_choose(String, nd_scalar_known(name), v => name, v => ""))
 
 @unsafe
 def nd_bind_scalar(+name: String, args: List<&2, KTerm>, +acc: List<&2, KTerm>, +n: U32, +id: U32, +body: KTerm) -> KTerm:
@@ -24,9 +40,8 @@ def nd_bind_value(+tag: String, +name: String, args: List<&2, KTerm>, +acc: List
 
 @unsafe
 def nd_prefix_call(+book: List<&2, KDef>, +t: KTerm) -> String:
-  +head = nd_head(t)
-  +name = nc_primitive_name(nm(head))
-  nt_choose(String, String.eq(tg(t), "App") && String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)) && nc_native_def(lookup(book, nm(head))) && (nc_array_known(name) || String.eq(name, "nat_divmod")) && U32.is_eq(terms_len(nd_args(t, Nil{})), nc_primitive_arity(name)), u => name, u => "")
+  +name = nd_native_call(book, t)
+  nt_choose(String, String.eq(name, ""), u => "", u => nt_choose(String, nc_array_known(name) || String.eq(name, "nat_divmod"), v => name, v => ""))
 
 @unsafe
 def nd_scalar_word(+name: String, +words: List<&2, String>) -> String:
@@ -235,8 +250,8 @@ def nd_app_to(book, t, env, n, target):
   nt_choose(NC_Code, Bool.not(String.eq(scalar, "")), u => nc_lower_to(book, nc_sequence("NOp", scalar, args, Nil{}, n), env, U32.add(n, terms_len(args)), target), u =>
   nt_choose(NC_Code, String.eq(tg(head), "Efq") && Bool.not(nf_scheduler(target)), u => nc_lower_to(book, head, env, n, target), u =>
   nt_choose(NC_Code, String.eq(tg(head), "Lam"), u => nc_lower_to(book, nd_beta(head, args), env, n, target), u =>
-    nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_eq(terms_len(args), 1), u => nd_match_to(book, head, kid(t, 1), env, n, target), u =>
-    nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_gt(terms_len(args), 1) && (nd_match_vars(args) || (Bool.not(nf_scheduler(target)) && nq_match_args(args))),
+    nt_choose(NC_Code, (String.eq(tg(head), "Mat") || String.eq(tg(head), "NWPattern")) && U32.is_eq(terms_len(args), 1), u => nd_match_to(book, head, kid(t, 1), env, n, target), u =>
+    nt_choose(NC_Code, (String.eq(tg(head), "Mat") || String.eq(tg(head), "NWPattern")) && U32.is_gt(terms_len(args), 1) && (nd_match_vars(args) || (Bool.not(nf_scheduler(target)) && nq_match_args(args))),
       u => nc_lower_to(book, nd_match_sequence(head, args, Nil{}, n), env, U32.add(n, terms_len(args)), target), u =>
     nt_choose(NC_Code, String.eq(tg(head), "Ref"), u => nd_ref_app(book, t, head, args, env, n, target), u => nf_slow_app(book, t, env, n, target)))))))
 

@@ -1,0 +1,584 @@
+{
+  "kind": "phase70-observer-reference-analysis-v1",
+  "targetExecuted": false,
+  "scope": "Pure-data diagnostic specification; not production compiler admission or a host fallback.",
+  "capture": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/observer-core03/report.json",
+    "sha256": "e2b2d2f023afc4ab714fd195a74ce4db3dc8d1c24a509aa34229174a1588984a"
+  },
+  "rows": [
+    {
+      "name": "Map.bit.go",
+      "admitted": true,
+      "plan": {
+        "owner": "Map.bit.go",
+        "params": [
+          {
+            "id": 4000000003,
+            "kind": "BorrowRoot:String"
+          },
+          {
+            "id": 4000000004,
+            "kind": "Immediate:Nat"
+          },
+          {
+            "id": 4000000005,
+            "kind": "Immediate:Nat"
+          }
+        ],
+        "roots": [
+          0
+        ],
+        "resultId": 4000000006,
+        "resultKind": "Immediate:Bool",
+        "wrapper": {
+          "tag": "Ctr",
+          "name": "Tuple",
+          "id": 0,
+          "quant": 0,
+          "kids": [
+            {
+              "tag": "Var",
+              "name": "",
+              "id": 4000000003,
+              "quant": 0,
+              "kids": [],
+              "removed": []
+            },
+            {
+              "tag": "Var",
+              "name": "",
+              "id": 4000000006,
+              "quant": 0,
+              "kids": [],
+              "removed": []
+            }
+          ],
+          "removed": []
+        },
+        "layouts": [
+          {
+            "key": "Succ",
+            "ctor": "Succ",
+            "storage": "Succ",
+            "width": 1
+          },
+          {
+            "key": "Zero",
+            "ctor": "Zero",
+            "storage": "Nullary",
+            "width": 0
+          },
+          {
+            "key": "Chr",
+            "ctor": "Chr",
+            "storage": "Char",
+            "width": 1
+          },
+          {
+            "key": "SCon",
+            "ctor": "SCon",
+            "storage": "Boxed",
+            "width": 2
+          },
+          {
+            "key": "SNil",
+            "ctor": "SNil",
+            "storage": "Nullary",
+            "width": 0
+          }
+        ],
+        "body": {
+          "tag": "NO_Match",
+          "name": "SNil",
+          "id": 0,
+          "quant": 0,
+          "kids": [
+            {
+              "tag": "Var",
+              "name": "",
+              "id": 4000000003,
+              "quant": 0,
+              "kids": [],
+              "removed": []
+            },
+            {
+              "tag": "NO_Fields",
+              "name": "",
+              "id": 0,
+              "quant": 0,
+              "kids": [],
+              "removed": []
+            },
+            {
+              "tag": "NO_Return",
+              "name": "",
+              "id": 0,
+              "quant": 0,
+              "kids": [
+                {
+                  "tag": "Ctr",
+                  "name": "False",
+                  "id": 0,
+                  "quant": 0,
+                  "kids": [],
+                  "removed": []
+                }
+              ],
+              "removed": []
+            },
+            {
+              "tag": "NO_Match",
+              "name": "SCon",
+              "id": 0,
+              "quant": 0,
+              "kids": [
+                {
+                  "tag": "Var",
+                  "name": "",
+                  "id": 4000000003,
+                  "quant": 0,
+                  "kids": [],
+                  "removed": []
+                },
+                {
+                  "tag": "NO_Fields",
+                  "name": "",
+                  "id": 0,
+                  "quant": 0,
+                  "kids": [
+                    {
+                      "tag": "Var",
+                      "name": "",
+                      "id": 4000000007,
+                      "quant": 0,
+                      "kids": [],
+                      "removed": []
+                    },
+                    {
+                      "tag": "Var",
+                      "name": "",
+                      "id": 4000000008,
+                      "quant": 0,
+                      "kids": [],
+                      "removed": []
+                    }
+                  ],
+                  "removed": []
+                },
+                {
+                  "tag": "NO_Match",
+                  "name": "Zero",
+                  "id": 0,
+                  "quant": 0,
+                  "kids": [
+                    {
+                      "tag": "Var",
+                      "name": "",
+                      "id": 4000000004,
+                      "quant": 0,
+                      "kids": [],
+                      "removed": []
+                    },
+                    {
+                      "tag": "NO_Fields",
+                      "name": "",
+                      "id": 0,
+                      "quant": 0,
+                      "kids": [],
+                      "removed": []
+                    },
+                    {
+                      "tag": "NO_Match",
+                      "name": "Chr",
+                      "id": 0,
+                      "quant": 0,
+                      "kids": [
+                        {
+                          "tag": "Var",
+                          "name": "",
+                          "id": 4000000007,
+                          "quant": 0,
+                          "kids": [],
+                          "removed": []
+                        },
+                        {
+                          "tag": "NO_Fields",
+                          "name": "",
+                          "id": 0,
+                          "quant": 0,
+                          "kids": [
+                            {
+                              "tag": "Var",
+                              "name": "",
+                              "id": 4000000009,
+                              "quant": 0,
+                              "kids": [],
+                              "removed": []
+                            }
+                          ],
+                          "removed": []
+                        },
+                        {
+                          "tag": "NO_Match",
+                          "name": "Zero",
+                          "id": 0,
+                          "quant": 0,
+                          "kids": [
+                            {
+                              "tag": "Var",
+                              "name": "",
+                              "id": 4000000005,
+                              "quant": 0,
+                              "kids": [],
+                              "removed": []
+                            },
+                            {
+                              "tag": "NO_Fields",
+                              "name": "",
+                              "id": 0,
+                              "quant": 0,
+                              "kids": [],
+                              "removed": []
+                            },
+                            {
+                              "tag": "NO_Return",
+                              "name": "",
+                              "id": 0,
+                              "quant": 0,
+                              "kids": [
+                                {
+                                  "tag": "Ctr",
+                                  "name": "True",
+                                  "id": 0,
+                                  "quant": 0,
+                                  "kids": [],
+                                  "removed": []
+                                }
+                              ],
+                              "removed": []
+                            },
+                            {
+                              "tag": "NO_Match",
+                              "name": "Succ",
+                              "id": 0,
+                              "quant": 0,
+                              "kids": [
+                                {
+                                  "tag": "Var",
+                                  "name": "",
+                                  "id": 4000000005,
+                                  "quant": 0,
+                                  "kids": [],
+                                  "removed": []
+                                },
+                                {
+                                  "tag": "NO_Fields",
+                                  "name": "",
+                                  "id": 0,
+                                  "quant": 0,
+                                  "kids": [
+                                    {
+                                      "tag": "Var",
+                                      "name": "",
+                                      "id": 4000000010,
+                                      "quant": 0,
+                                      "kids": [],
+                                      "removed": []
+                                    }
+                                  ],
+                                  "removed": []
+                                },
+                                {
+                                  "tag": "NO_Let",
+                                  "name": "",
+                                  "id": 4000000011,
+                                  "quant": 0,
+                                  "kids": [
+                                    {
+                                      "tag": "NOp",
+                                      "name": "nat_sub",
+                                      "id": 0,
+                                      "quant": 0,
+                                      "kids": [
+                                        {
+                                          "tag": "NWord",
+                                          "name": "31",
+                                          "id": 0,
+                                          "quant": 0,
+                                          "kids": [],
+                                          "removed": []
+                                        },
+                                        {
+                                          "tag": "Var",
+                                          "name": "",
+                                          "id": 4000000010,
+                                          "quant": 0,
+                                          "kids": [],
+                                          "removed": []
+                                        }
+                                      ],
+                                      "removed": []
+                                    },
+                                    {
+                                      "tag": "NO_Let",
+                                      "name": "",
+                                      "id": 4000000012,
+                                      "quant": 0,
+                                      "kids": [
+                                        {
+                                          "tag": "NOp",
+                                          "name": "u32_shrn",
+                                          "id": 0,
+                                          "quant": 0,
+                                          "kids": [
+                                            {
+                                              "tag": "Var",
+                                              "name": "",
+                                              "id": 4000000009,
+                                              "quant": 0,
+                                              "kids": [],
+                                              "removed": []
+                                            },
+                                            {
+                                              "tag": "Var",
+                                              "name": "",
+                                              "id": 4000000011,
+                                              "quant": 0,
+                                              "kids": [],
+                                              "removed": []
+                                            }
+                                          ],
+                                          "removed": []
+                                        },
+                                        {
+                                          "tag": "NO_Let",
+                                          "name": "",
+                                          "id": 4000000013,
+                                          "quant": 0,
+                                          "kids": [
+                                            {
+                                              "tag": "NOp",
+                                              "name": "u32_and",
+                                              "id": 0,
+                                              "quant": 0,
+                                              "kids": [
+                                                {
+                                                  "tag": "Var",
+                                                  "name": "",
+                                                  "id": 4000000012,
+                                                  "quant": 0,
+                                                  "kids": [],
+                                                  "removed": []
+                                                },
+                                                {
+                                                  "tag": "NWord",
+                                                  "name": "1",
+                                                  "id": 0,
+                                                  "quant": 0,
+                                                  "kids": [],
+                                                  "removed": []
+                                                }
+                                              ],
+                                              "removed": []
+                                            },
+                                            {
+                                              "tag": "NO_Let",
+                                              "name": "",
+                                              "id": 4000000014,
+                                              "quant": 0,
+                                              "kids": [
+                                                {
+                                                  "tag": "NOp",
+                                                  "name": "u32_is_ne",
+                                                  "id": 0,
+                                                  "quant": 0,
+                                                  "kids": [
+                                                    {
+                                                      "tag": "Var",
+                                                      "name": "",
+                                                      "id": 4000000013,
+                                                      "quant": 0,
+                                                      "kids": [],
+                                                      "removed": []
+                                                    },
+                                                    {
+                                                      "tag": "NWord",
+                                                      "name": "0",
+                                                      "id": 0,
+                                                      "quant": 0,
+                                                      "kids": [],
+                                                      "removed": []
+                                                    }
+                                                  ],
+                                                  "removed": []
+                                                },
+                                                {
+                                                  "tag": "NO_Return",
+                                                  "name": "",
+                                                  "id": 0,
+                                                  "quant": 0,
+                                                  "kids": [
+                                                    {
+                                                      "tag": "Var",
+                                                      "name": "",
+                                                      "id": 4000000014,
+                                                      "quant": 0,
+                                                      "kids": [],
+                                                      "removed": []
+                                                    }
+                                                  ],
+                                                  "removed": []
+                                                }
+                                              ],
+                                              "removed": []
+                                            }
+                                          ],
+                                          "removed": []
+                                        }
+                                      ],
+                                      "removed": []
+                                    }
+                                  ],
+                                  "removed": []
+                                },
+                                {
+                                  "tag": "NO_Error",
+                                  "name": "ERR_FIDS",
+                                  "id": 0,
+                                  "quant": 0,
+                                  "kids": [],
+                                  "removed": []
+                                }
+                              ],
+                              "removed": []
+                            }
+                          ],
+                          "removed": []
+                        },
+                        {
+                          "tag": "NO_Error",
+                          "name": "ERR_FIDS",
+                          "id": 0,
+                          "quant": 0,
+                          "kids": [],
+                          "removed": []
+                        }
+                      ],
+                      "removed": []
+                    },
+                    {
+                      "tag": "NO_Match",
+                      "name": "Succ",
+                      "id": 0,
+                      "quant": 0,
+                      "kids": [
+                        {
+                          "tag": "Var",
+                          "name": "",
+                          "id": 4000000004,
+                          "quant": 0,
+                          "kids": [],
+                          "removed": []
+                        },
+                        {
+                          "tag": "NO_Fields",
+                          "name": "",
+                          "id": 0,
+                          "quant": 0,
+                          "kids": [
+                            {
+                              "tag": "Var",
+                              "name": "",
+                              "id": 4000000015,
+                              "quant": 0,
+                              "kids": [],
+                              "removed": []
+                            }
+                          ],
+                          "removed": []
+                        },
+                        {
+                          "tag": "NO_Loop",
+                          "name": "",
+                          "id": 0,
+                          "quant": 0,
+                          "kids": [
+                            {
+                              "tag": "Var",
+                              "name": "",
+                              "id": 4000000008,
+                              "quant": 0,
+                              "kids": [],
+                              "removed": []
+                            },
+                            {
+                              "tag": "Var",
+                              "name": "",
+                              "id": 4000000015,
+                              "quant": 0,
+                              "kids": [],
+                              "removed": []
+                            },
+                            {
+                              "tag": "Var",
+                              "name": "",
+                              "id": 4000000005,
+                              "quant": 0,
+                              "kids": [],
+                              "removed": []
+                            }
+                          ],
+                          "removed": []
+                        },
+                        {
+                          "tag": "NO_Error",
+                          "name": "ERR_FIDS",
+                          "id": 0,
+                          "quant": 0,
+                          "kids": [],
+                          "removed": []
+                        }
+                      ],
+                      "removed": []
+                    }
+                  ],
+                  "removed": []
+                },
+                {
+                  "tag": "NO_Error",
+                  "name": "ERR_FIDS",
+                  "id": 0,
+                  "quant": 0,
+                  "kids": [],
+                  "removed": []
+                }
+              ],
+              "removed": []
+            }
+          ],
+          "removed": []
+        },
+        "budget": {
+          "spent": 151,
+          "limit": 4096,
+          "maximumHelperDepth": 2
+        },
+        "proof": {
+          "successfulReturns": 4,
+          "tailTransitions": 1,
+          "helperExpansions": 5,
+          "binderStrategy": "Invocation-local lexical environment; globally fresh runtime field/computation origins."
+        }
+      }
+    },
+    {
+      "name": "String.cmp",
+      "admitted": false,
+      "reasons": [
+        "requires exactly one scalar result",
+        "requires exactly one scalar result"
+      ]
+    }
+  ]
+}

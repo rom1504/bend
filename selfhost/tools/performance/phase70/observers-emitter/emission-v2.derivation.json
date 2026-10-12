@@ -1,0 +1,20 @@
+{
+  "kind": "phase70-observer-emission-v2-source-repair",
+  "reason": "checked observer-emission01 requires explicit expected types for constructor-valued local bindings",
+  "sourceOnly": true,
+  "targetRuns": 0,
+  "changes": [
+    {
+      "source": "selfhost/tools/performance/phase70/observers-emitter/observer-adapter-v1.bend",
+      "successor": "selfhost/tools/performance/phase70/observers-emitter/observer-adapter-v2.bend",
+      "before": "  +env = Con{NC_Binding{resultId, \"no_scalar_result\"}, owned}",
+      "after": "  +env : List<&2, NC_Binding> = Con{NC_Binding{resultId, \"no_scalar_result\"}, owned}"
+    },
+    {
+      "source": "selfhost/tools/performance/phase70/observers-emitter/observer-integration-v1.bend",
+      "successor": "selfhost/tools/performance/phase70/observers-emitter/observer-integration-v2.bend",
+      "before": "  +old = NO_Route{workers, ready, Nil{}}",
+      "after": "  +old : NO_Route = NO_Route{workers, ready, Nil{}}"
+    }
+  ]
+}

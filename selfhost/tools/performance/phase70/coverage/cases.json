@@ -1,0 +1,106 @@
+[
+  {
+    "name": "list-pipeline",
+    "source": "selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+    "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+    "wrapper": "selfhost/tools/performance/phase70/coverage/list-pipeline-batch.bend",
+    "size": 128,
+    "seed": 17,
+    "expected": 1904,
+    "coverage": [
+      "list",
+      "filter-map-fold",
+      "constructor-churn",
+      "nonobserver"
+    ],
+    "dependencies": []
+  },
+  {
+    "name": "bst",
+    "source": "selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+    "sha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+    "wrapper": "selfhost/tools/performance/phase70/coverage/bst-batch.bend",
+    "size": 32,
+    "seed": 17,
+    "expected": 3646523026,
+    "coverage": [
+      "zipper",
+      "irregular-tree",
+      "ordered-fold",
+      "nonobserver",
+      "native-holdout"
+    ],
+    "dependencies": []
+  },
+  {
+    "name": "expression",
+    "source": "selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+    "sha256": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+    "wrapper": "selfhost/tools/performance/phase70/coverage/expression-batch.bend",
+    "size": 128,
+    "seed": 123,
+    "expected": 3393903617,
+    "coverage": [
+      "AST",
+      "sum-types",
+      "producer-consumer",
+      "nonobserver",
+      "native-holdout"
+    ],
+    "dependencies": []
+  },
+  {
+    "name": "array-map",
+    "source": "selfhost/tools/performance/phase70/coverage/fixtures/array-map.bend",
+    "sha256": "beb33b44876104ed006ed7f9a36923440638525f76837014d5efc7de7b3f09da",
+    "wrapper": "selfhost/tools/performance/phase70/coverage/array-map-batch.bend",
+    "size": 512,
+    "seed": 17,
+    "expected": 184,
+    "coverage": [
+      "Array.map",
+      "U32-Bool-U32",
+      "scalar-array",
+      "nonobserver"
+    ],
+    "dependencies": [
+      {
+        "path": "tests/run/array_map_loop.bend",
+        "sha256": "ed65c047a46d1dba2146d55959a0530109a205eef015f20cca9f75e580e29202"
+      }
+    ]
+  },
+  {
+    "name": "tape-observer",
+    "source": "selfhost/tools/performance/phase70/coverage/fixtures/tape-observer.bend",
+    "sha256": "2cc459c44f082380f5ad0ad58b434d1231077a3be710278022f4a342ec137d71",
+    "wrapper": "selfhost/tools/performance/phase70/coverage/tape-observer-batch.bend",
+    "size": 64,
+    "seed": 17,
+    "expected": 2893425665,
+    "coverage": [
+      "user-ADT",
+      "root-preserving-observer",
+      "shared-alias",
+      "root-post-use"
+    ],
+    "dependencies": []
+  },
+  {
+    "name": "string-order",
+    "source": "selfhost/tools/performance/phase70/coverage/fixtures/string-order.bend",
+    "sha256": "06525b998f1e923d6c6feae52e9a556fae619f8468f35b00b2adefe6d026c186",
+    "wrapper": "selfhost/tools/performance/phase70/coverage/string-order-batch.bend",
+    "size": 32,
+    "seed": 17,
+    "expected": 2557408942,
+    "coverage": [
+      "String.cmp",
+      "Unicode",
+      "prefix-order",
+      "early-late-exit",
+      "shared-and-static-roots"
+    ],
+    "dependencies": []
+  }
+]

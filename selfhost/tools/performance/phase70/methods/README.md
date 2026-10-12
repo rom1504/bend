@@ -198,3 +198,25 @@ reference root, pins its six reference artifacts, and changes only output and
 supervisor directories. Root executes the new plan's `command` under escalation.
 The first corrected plan is `observer-upstream-source-check01`; no target is run
 by the preparer, and the source checker still uses its existing isolated mode.
+
+## Observer native gates and JS protection
+
+`methods01/prepare-custom.py` accepts multiple selections and exact deduplication.
+For the first checked observer emitter, `observer-emission02-controls20` combines
+15 observer v4 fixtures, three demand v3 fixtures and two v4 boundary fixtures.
+`observer-emission02-controls71` reuses the complete prior native71 selection.
+`observer-emission02-raw31` uses the four frozen Phase69 raw modules plus the three
+new raw observer witnesses: twelve inherited result rows plus nineteen additions.
+Plans are bound to checked `observer-emission02` and its frozen C recipe. Root
+executes them serially after the focused gate justifies broader work.
+
+`verify-js-observers-v2.py BASELINE_API CANDIDATE_API ATTEMPT_JSON FRESH_OUT` runs
+only Python source analysis. It preserves the prior scanner's exact 100 public
+wrappers, runtime and full closure of all original non-`nc_` roots. There are **no
+additional excluded roots**. It separately pins and classifies the seven new
+native observer modules and requires all their generated helpers to remain
+outside the protected closure. The selected API has no additional public export.
+One unused private source helper, `no_schema_spec`, is explicitly recorded as
+omitted from the API; no unknown omission is accepted. The first overstrict
+classifier and its failed source-only output are retained. The v2 result for
+`observer-emission02` preserves all 2,992 protected function bodies exactly.

@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/native/scalar-array.bend
++++ b/selfhost/src/back/native/scalar-array.bend
+@@ -3,7 +3,7 @@
+ @unsafe
+ def ns_scalar(+book: List<&2, KDef>, +ty: KTerm) -> Bool:
+   +head = nq_layout_type(book, ty)
+-  String.eq(tg(head), "ADT") && db(lookup(book, nm(head))) && nb_contains(["U32", "F32", "Char"], nm(head))
++  String.eq(tg(head), "ADT") && db(lookup(book, nm(head))) && nb_contains(["U32", "F32", "Char", "Bool"], nm(head))
+ 
+ @unsafe
+ def ns_array_type(+book: List<&2, KDef>, +ty: KTerm) -> Bool:

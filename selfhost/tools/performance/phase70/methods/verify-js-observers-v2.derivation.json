@@ -1,0 +1,23 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/verify-js-observers.py",
+    "sha256": "ccb1e38ad4133d89602b427e82397bcacc0516ee225e3cb42d42b547087a35d4",
+    "bytes": 3550
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/verify-js-observers-v2.py",
+    "sha256": "b31bb860f2e389aad4ac7b7b0f0e62c973d2260c92c4e470869f18976a3cf5d1",
+    "bytes": 3765
+  },
+  "edits": [
+    {
+      "before": "    assert all(name in b['functions'] for name in generated)",
+      "after": "    omitted = [name for name in names if '$'+name+'$' not in b['functions']]\n    assert omitted == (['no_schema_spec'] if module == 'observer-layout.bend' else []), omitted"
+    },
+    {
+      "before": "definitions=names))",
+      "after": "definitions=names, emittedDefinitions=[name for name in names if name not in omitted], omittedPrivateDefinitions=omitted))"
+    }
+  ],
+  "reason": "Source-only classifier found one declared private helper no_schema_spec is omitted from the API by reachability. Record that exact allowed omission; closure/public-wrapper equality is unchanged. Earlier failed classifier output retained."
+}

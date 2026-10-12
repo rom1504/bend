@@ -1,0 +1,31 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/methods01/verify-js.py",
+    "sha256": "2341030c64c01e55da0b6ac7710de306fcd5023e7ff7064b143a063844d8800d",
+    "bytes": 1764
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/verify-js-observers.py",
+    "sha256": "ccb1e38ad4133d89602b427e82397bcacc0516ee225e3cb42d42b547087a35d4",
+    "bytes": 3550
+  },
+  "edits": [
+    {
+      "before": "import hashlib, importlib.util, json, sys",
+      "after": "import hashlib, importlib.util, json, re, sys"
+    },
+    {
+      "before": "old, new, out = map(Path, sys.argv[1:])",
+      "after": "old, new, attempt_file, out = map(Path, sys.argv[1:])"
+    },
+    {
+      "before": "result = dict(complete=True, unchangedFunctions=len(left), roots=roots, changed=changed,",
+      "after": "attempt = json.loads(attempt_file.read_text())\nassert attempt['checked'] and attempt['config']['strictExact']\nassert pin(new)['sha256'] == attempt['api']['sha256']\nsnapshot = Path(attempt['snapshot']['root'])\nfrozen = {str(Path(item['frozen']['file']).relative_to(snapshot)): item['frozen'] for item in attempt['snapshot']['sources']}\nmodules = {\n    'observer-emitter.bend': ('no_',),\n    'observer-adapter.bend': ('no_',),\n    'observer-layout.bend': ('no_', 'nol_'),\n    'observer-literals.bend': ('no_',),\n    'observer-analysis.bend': ('noa_',),\n    'observer-plan.bend': ('no_',),\n    'observer-integration.bend': ('no_',),\n}\nclassified = []\nfor module, prefixes in modules.items():\n    identity = frozen['src/back/native/'+module]\n    source_file = Path(identity['file'])\n    assert pin(source_file)['sha256'] == identity['sha256']\n    names = re.findall(r'^def\\s+([A-Za-z_]\\w*)', source_file.read_text(), re.M)\n    assert names and all(name.startswith(prefixes) for name in names)\n    generated = ['$'+name+'$' for name in names]\n    assert all(name in b['functions'] for name in generated)\n    assert not set(generated) & right, 'A newly classified native helper is reachable from a protected nonnative root'\n    classified.append(dict(module=module, source=pin(source_file), prefixes=list(prefixes), definitions=names))\n# The explicit classification documents ownership only. No new prefix or root\n# exclusion is introduced; the identical original 100 public wrappers and every\n# original non-nc_ root remain protected by the unchanged scanner above.\nresult = dict(complete=True, unchangedFunctions=len(left), roots=roots, changed=changed,\n    nativeObserverClassification=classified, checkedAttempt=pin(attempt_file),\n    unchangedPublicExports=len(a['exports']), additionalExcludedRoots=[],"
+    },
+    {
+      "before": "inputs=[pin(p) for p in [__file__, parent, scanner, old, new]])",
+      "after": "inputs=[pin(p) for p in [__file__, parent, scanner, old, new, attempt_file]] + [row['source'] for row in classified])"
+    }
+  ],
+  "scope": "Keep exact original 100-wrapper equality and original non-nc_ dependency closure. Add explicit seven-module source classification and require every new observer helper remains outside that protected closure; no added exclusion."
+}

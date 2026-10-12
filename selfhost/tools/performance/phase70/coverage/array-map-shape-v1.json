@@ -1,0 +1,129 @@
+{
+  "kind": "phase70-array-map-source-comparison",
+  "targetsExecuted": false,
+  "rows": [
+    {
+      "role": "selfhost",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/coverage-baseline01/array-map-selfhost/program.c",
+        "sha256": "9e46cf5fcffa89fea7760dee1d8978ca57c89c880286e535b0beb6e97e20352e",
+        "bytes": 1068151
+      },
+      "physicalLines": 35520,
+      "featureMacros": [
+        [
+          "NATIVE_PACK_CTORS",
+          "1"
+        ],
+        [
+          "NATIVE_TYPED_SCALARS",
+          "0"
+        ],
+        [
+          "NATIVE_COLD_USER_CTORS",
+          "0"
+        ],
+        [
+          "NATIVE_SCALAR_ARRAYS",
+          "0"
+        ],
+        [
+          "NATIVE_UNSHARED_ARRAYS",
+          "0"
+        ],
+        [
+          "NATIVE_SCALAR_ARRAYS",
+          "0"
+        ],
+        [
+          "NATIVE_UNSHARED_ARRAYS",
+          "0"
+        ]
+      ],
+      "loops": [
+        {
+          "bend": "Array.map.go~0",
+          "line": 14357,
+          "lines": 209,
+          "signature": "NF_INLINE Term NF_FID_65_114_114_97_121_46_109_97_112_46_103_111_126_48_(Env e, bool seq, Term* nf_out, Term v_4294967295, NF_SCALAR v_4294967294, Term v_4294967293, Term v_4294967292) {",
+          "counts": {
+            "heap_alloc": 1,
+            "ctr_take": 1,
+            "rfc_seal": 2,
+            "native_array_set": 1,
+            "native_array_get": 1,
+            "blk_read": 0,
+            "blk_write": 0,
+            "WL_AGAIN": 0
+          }
+        },
+        {
+          "bend": "Array.map.go~1",
+          "line": 15092,
+          "lines": 204,
+          "signature": "NF_INLINE Term NF_FID_65_114_114_97_121_46_109_97_112_46_103_111_126_49_(Env e, bool seq, Term* nf_out, Term v_4294967295, NF_SCALAR v_4294967294, Term v_4294967293, Term v_4294967292) {",
+          "counts": {
+            "heap_alloc": 1,
+            "ctr_take": 1,
+            "rfc_seal": 2,
+            "native_array_set": 1,
+            "native_array_get": 1,
+            "blk_read": 0,
+            "blk_write": 0,
+            "WL_AGAIN": 0
+          }
+        }
+      ]
+    },
+    {
+      "role": "upstream",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/coverage-baseline01/array-map-upstream/program.c",
+        "sha256": "312dbd2da2a1a3b8b4d58a1454f3f90861f82d155f8afe8dfb4f21d79eec1215",
+        "bytes": 130945
+      },
+      "physicalLines": 5108,
+      "featureMacros": [
+        [
+          "BLK_SHR",
+          "0"
+        ]
+      ],
+      "loops": [
+        {
+          "bend": "Array.map.go",
+          "line": 1368,
+          "lines": 35,
+          "signature": "INLINE Term spin_6(Env e, THR Term* o, Term r0, u32 r1, Term r2, Term r3, u32 r4) {",
+          "counts": {
+            "heap_alloc": 0,
+            "ctr_take": 0,
+            "rfc_seal": 0,
+            "native_array_set": 0,
+            "native_array_get": 0,
+            "blk_read": 2,
+            "blk_write": 1,
+            "WL_AGAIN": 1
+          }
+        },
+        {
+          "bend": "Array.map.go",
+          "line": 1406,
+          "lines": 41,
+          "signature": "INLINE Term spin_7(Env e, THR Term* o, Term r0, u32 r1, Term r2, Term r3, u32 r4) {",
+          "counts": {
+            "heap_alloc": 0,
+            "ctr_take": 0,
+            "rfc_seal": 0,
+            "native_array_set": 0,
+            "native_array_get": 0,
+            "blk_read": 2,
+            "blk_write": 1,
+            "WL_AGAIN": 1
+          }
+        }
+      ]
+    }
+  ],
+  "limits": "Lexical counts in selected C function bodies, not runtime counts, profiles or machine-code size. Both selected loops have static call sites in the corresponding checked benchmark output."
+}

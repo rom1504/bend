@@ -1,0 +1,31 @@
+{
+  "kind": "phase70-recursive-demand-source-controls-v2",
+  "reason": "Straight-line v1 native failures passed but generated ordinary private workers bypassed observer adapter. Require independently recorded adapter entry for recursive v2.",
+  "sourceOnly": true,
+  "executed": false,
+  "definition": "inspect",
+  "expectedAdmission": "admit",
+  "requiredResidualOperation": "nat_mul",
+  "requiredResidualTailLoop": true,
+  "requiredDynamicAdapterMarker": true,
+  "golden": [
+    "bend: a Nat past the largest immediate 2^48-1",
+    "exit 1"
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/observer-controls/hidden-scalar-error-recursive-v2.bend",
+      "sha256": "cfbb769fe128f751e010fb4d4eb891a1cf39b84f87b0adfc17a52aad766da0e1",
+      "bytes": 538
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/observer-controls/partial-factory-recursive-v2.bend",
+      "sha256": "3a93831e0b0a8b229f741520cdbcd0c6cbd67fc8c56a877994871856b64328ac",
+      "bytes": 614
+    }
+  ],
+  "supersedesDemandCoverageOnly": [
+    "v4/hidden-scalar-error.bend",
+    "partial-factory-demand-v1.bend"
+  ]
+}

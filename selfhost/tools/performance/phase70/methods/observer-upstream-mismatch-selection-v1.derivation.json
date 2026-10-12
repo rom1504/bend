@@ -1,0 +1,289 @@
+{
+  "kind": "phase70-upstream-native-oracle-mismatch-selection",
+  "sourceSelection": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/observer-emission02-controls20/selection.json",
+    "sha256": "1fcfcf8483f9bd504e2f5debd665aa0491618cbca76ffc46465fefe233829048",
+    "bytes": 5001
+  },
+  "workflow": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/observer-emission02-controls20/execution/report.json",
+    "sha256": "1502052567f87763514b979445e6740c95a98cda0bf458ee2782ad0e4f47381a",
+    "bytes": 9207
+  },
+  "reference": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/observer-emission02-controls20/execution/selected/reference.json",
+    "sha256": "f9a31cb7dceefa1def8e5a2e3f117e0ddb93857764bf5615364108dea5d2cb07",
+    "bytes": 2091969
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/observer-emission02-controls20/execution/selected/candidate.json",
+    "sha256": "b71e1bd57d18e51f1ccddc3e27da1336c837097203c9b21913409a98db3e2ce4",
+    "bytes": 2120537
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/observer-upstream-mismatch-selection-v1.json",
+    "sha256": "d63a64f55ad5cabf70bcee6504c30ac4c4bdf514b842a4f6b0f83a35fa1b0c01",
+    "bytes": 1304
+  },
+  "selectionRule": "All and only reference non-pass rows whose candidate row passes, exactly five; fixture bytes and literal oracles unchanged. Workflow finished, all20 rows present per role, input hashes unchanged; lower-level complete flags retain their original false values.",
+  "observations": [
+    {
+      "id": "phase70/observer-demand/partial-factory-demand-v1.bend",
+      "referenceStatus": "fail",
+      "referenceResult": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "output": "7080\n",
+        "stdout": "7080\n",
+        "stderr": "",
+        "exitCode": 0,
+        "executionArgs": [],
+        "executionMode": "native"
+      },
+      "candidateStatus": "pass",
+      "candidateResult": {
+        "status": "error",
+        "phase": "runtime",
+        "stdout": "bend: a Nat past the largest immediate 2^48-1\n",
+        "stderr": "",
+        "exitCode": 1,
+        "signal": null,
+        "checked": true,
+        "output": "bend: a Nat past the largest immediate 2^48-1\n",
+        "nativeBuild": {
+          "target": "cpu",
+          "compiler": {
+            "command": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+            "version": 22,
+            "apple": false
+          },
+          "bangs": 0
+        },
+        "typeAccepted": true,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "verdict": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+        "hostProvenance": {
+          "driverSha256": "8d4626afaea94f4285eb42e2aed89c6e915ff701f1cad1537c3d2c230ef67687",
+          "adapterSha256": "0ad9c892b45c2fb2a111817e6bea2f232c20f1197f495801a2fb4499498ba3d2"
+        }
+      }
+    },
+    {
+      "id": "phase70/observer-demand/successor-demand-refusal-v2.bend",
+      "referenceStatus": "fail",
+      "referenceResult": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "output": "7080\n",
+        "stdout": "7080\n",
+        "stderr": "",
+        "exitCode": 0,
+        "executionArgs": [],
+        "executionMode": "native"
+      },
+      "candidateStatus": "pass",
+      "candidateResult": {
+        "status": "error",
+        "phase": "runtime",
+        "stdout": "bend: a Nat past the largest immediate 2^48-1\n",
+        "stderr": "",
+        "exitCode": 1,
+        "signal": null,
+        "checked": true,
+        "output": "bend: a Nat past the largest immediate 2^48-1\n",
+        "nativeBuild": {
+          "target": "cpu",
+          "compiler": {
+            "command": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+            "version": 22,
+            "apple": false
+          },
+          "bangs": 0
+        },
+        "typeAccepted": true,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "verdict": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+        "hostProvenance": {
+          "driverSha256": "8d4626afaea94f4285eb42e2aed89c6e915ff701f1cad1537c3d2c230ef67687",
+          "adapterSha256": "0ad9c892b45c2fb2a111817e6bea2f232c20f1197f495801a2fb4499498ba3d2"
+        }
+      }
+    },
+    {
+      "id": "phase70/observer-demand/zeroarity-demand-v1.bend",
+      "referenceStatus": "fail",
+      "referenceResult": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "output": "7080\n",
+        "stdout": "7080\n",
+        "stderr": "",
+        "exitCode": 0,
+        "executionArgs": [],
+        "executionMode": "native"
+      },
+      "candidateStatus": "pass",
+      "candidateResult": {
+        "status": "error",
+        "phase": "runtime",
+        "stdout": "bend: a Nat past the largest immediate 2^48-1\n",
+        "stderr": "",
+        "exitCode": 1,
+        "signal": null,
+        "checked": true,
+        "output": "bend: a Nat past the largest immediate 2^48-1\n",
+        "nativeBuild": {
+          "target": "cpu",
+          "compiler": {
+            "command": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+            "version": 22,
+            "apple": false
+          },
+          "bangs": 0
+        },
+        "typeAccepted": true,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "verdict": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+        "hostProvenance": {
+          "driverSha256": "8d4626afaea94f4285eb42e2aed89c6e915ff701f1cad1537c3d2c230ef67687",
+          "adapterSha256": "0ad9c892b45c2fb2a111817e6bea2f232c20f1197f495801a2fb4499498ba3d2"
+        }
+      }
+    },
+    {
+      "id": "phase70/observer-v4/hidden-scalar-error.bend",
+      "referenceStatus": "fail",
+      "referenceResult": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "output": "7080\n",
+        "stdout": "7080\n",
+        "stderr": "",
+        "exitCode": 0,
+        "executionArgs": [],
+        "executionMode": "native"
+      },
+      "candidateStatus": "pass",
+      "candidateResult": {
+        "status": "error",
+        "phase": "runtime",
+        "stdout": "bend: a Nat past the largest immediate 2^48-1\n",
+        "stderr": "",
+        "exitCode": 1,
+        "signal": null,
+        "checked": true,
+        "output": "bend: a Nat past the largest immediate 2^48-1\n",
+        "nativeBuild": {
+          "target": "cpu",
+          "compiler": {
+            "command": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+            "version": 22,
+            "apple": false
+          },
+          "bangs": 0
+        },
+        "typeAccepted": true,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "verdict": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+        "hostProvenance": {
+          "driverSha256": "8d4626afaea94f4285eb42e2aed89c6e915ff701f1cad1537c3d2c230ef67687",
+          "adapterSha256": "0ad9c892b45c2fb2a111817e6bea2f232c20f1197f495801a2fb4499498ba3d2"
+        }
+      }
+    },
+    {
+      "id": "phase70/observer-v4/post-recursion-error-refusal.bend",
+      "referenceStatus": "fail",
+      "referenceResult": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "output": "7080\n",
+        "stdout": "7080\n",
+        "stderr": "",
+        "exitCode": 0,
+        "executionArgs": [],
+        "executionMode": "native"
+      },
+      "candidateStatus": "pass",
+      "candidateResult": {
+        "status": "error",
+        "phase": "runtime",
+        "stdout": "bend: a Nat past the largest immediate 2^48-1\n",
+        "stderr": "",
+        "exitCode": 1,
+        "signal": null,
+        "checked": true,
+        "output": "bend: a Nat past the largest immediate 2^48-1\n",
+        "nativeBuild": {
+          "target": "cpu",
+          "compiler": {
+            "command": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+            "version": 22,
+            "apple": false
+          },
+          "bangs": 0
+        },
+        "typeAccepted": true,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "verdict": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+        "hostProvenance": {
+          "driverSha256": "8d4626afaea94f4285eb42e2aed89c6e915ff701f1cad1537c3d2c230ef67687",
+          "adapterSha256": "0ad9c892b45c2fb2a111817e6bea2f232c20f1197f495801a2fb4499498ba3d2"
+        }
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/observer-controls/v4/hidden-scalar-error.bend",
+      "sha256": "f138ccbb53674b41265f374c84297c901dc6166093ba4f07085dc6fe26c774e2",
+      "bytes": 326
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/observer-controls/v4/post-recursion-error-refusal.bend",
+      "sha256": "3754030692446293ca70e9bef70177c269e8a7c6de86f18d63c40daaff139bbc",
+      "bytes": 602
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/observer-controls/zeroarity-demand-v1.bend",
+      "sha256": "ac3ecf96f5f5c5f54aaef26e5f354768acea81a9352dcda990b547aded6cef26",
+      "bytes": 361
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/observer-controls/partial-factory-demand-v1.bend",
+      "sha256": "74d8546b25094ec3e96831c2e660675622e0b29c68dceca555226f4c918a6cbc",
+      "bytes": 405
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/observer-controls/successor-demand-refusal-v2.bend",
+      "sha256": "53581492ae847a11dfc9fb9997ad97aed1a0b23268da5a42da08eb0c78fbc573",
+      "bytes": 388
+    }
+  ],
+  "scope": "Source/data only. This selection preserves a paired gate failure; it does not relabel five upstream mismatches as successful equivalence."
+}

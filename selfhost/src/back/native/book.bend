@@ -222,14 +222,14 @@ def nc_pack_foreign(ds: List<&2, KDef>) -> Bool:
       (Bool.not(db(d)) && (String.eq(tg(nc_unann(dv(d))), "Foreign") || (String.eq(dk(d), "Def") && nc_foreign(d)))) || nc_pack_foreign(dc(d)) || nc_pack_foreign(rest)
 
 @unsafe
-def nc_finish(+book: List<&2, KDef>, +runtime: String, +requests: String, compiled: NC_Book) -> NC_Result:
+def nc_finish(+book: List<&2, KDef>, +runtime: String, +requests: String, compiled: NC_Book, +observers: Bool) -> NC_Result:
   match compiled:
     case NC_Book{+ss, n, +error}:
       +ty = dt(lookup(book, "main"))
       +pure = Bool.not(nc_is_io(book, ty))
       +cs = nc_add_ctors(nc_default_ctors(), nc_constructors(book, book))
       nt_choose(NC_Result, Bool.not(String.eq(error, "")), u => NC_Result{"", error}, u =>
-        nf_finish_show(book, ss, cs, "#define NATIVE_PACK_CTORS " ++ nt_choose(String, nc_pack_foreign(book), u => "0", u => "1") ++ "\n" ++ runtime, requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show("0"), ""})))
+        nf_finish_show(book, ss, cs, "#define NATIVE_READONLY_OBSERVERS " ++ nt_choose(String, observers, v => "1", v => "0") ++ "\n#define NATIVE_PACK_CTORS " ++ nt_choose(String, nc_pack_foreign(book), u => "0", u => "1") ++ "\n" ++ runtime, requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show("0"), ""}), observers))
 
 law nc_bangs_term:
   for +t: KTerm
@@ -261,12 +261,16 @@ def nc_bangs_book(+book: List<&2, KDef>) -> List<&2, String>:
 
 @unsafe
 def nc_compile(+book: List<&2, KDef>, runtime: String, requests: String) -> NC_Result:
+  nc_compile_mode(book, runtime, requests, False{})
+
+@unsafe
+def nc_compile_mode(+book: List<&2, KDef>, runtime: String, requests: String, +observers: Bool) -> NC_Result:
   +main = lookup(book, "main")
   +owned = nv_owned(book)
   nt_choose(NC_Result, Bool.not(String.eq(owned, "")), u => NC_Result{"", owned}, u =>
   nt_choose(NC_Result, Bool.not(String.eq(dk(main), "Def")) || String.eq(tg(nc_unann(dv(main))), "Absent"), u => NC_Result{"", "no main to run"}, u =>
   nt_choose(NC_Result, nc_is_io(book, dt(main)) && String.eq(tg(nc_unann(dv(main))), "Foreign"), u => NC_Result{"", "main must be a filled def: a foreign main cannot anchor IO"}, u =>
-  nt_choose(NC_Result, U32.is_ge(norm_max_book(book), 4000000000), u => NC_Result{"", "native source binder IDs overlap the compiler temporary range"}, u => ns_compile(book, runtime, requests)))))
+  nt_choose(NC_Result, U32.is_ge(norm_max_book(book), 4000000000), u => NC_Result{"", "native source binder IDs overlap the compiler temporary range"}, u => ns_compile(book, runtime, requests, observers)))))
 
 @unsafe
 def nc_live_names(+book: List<&2, KDef>, todo: List<&2, String>, +done: List<&2, String>) -> List<&2, String>:

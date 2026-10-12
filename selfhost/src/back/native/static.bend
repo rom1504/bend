@@ -255,8 +255,8 @@ def ns_return_known(+t: KTerm, +n: U32, +target: NC_Target) -> NC_Code:
 
 # Called only after nc_compile validates main, source ownership and binder IDs.
 @unsafe
-def ns_compile(+book: List<&2, KDef>, +runtime: String, +requests: String) -> NC_Result:
+def ns_compile(+book: List<&2, KDef>, +runtime: String, +requests: String, +observers: Bool) -> NC_Result:
   +source = ns_source(book)
   +names = nc_live_names(source, ["main"], Nil{})
   +prepared = ns_prepare(source, names)
-  nc_finish(prepared, runtime, requests, nc_compile_defs(prepared, ["main"], Nil{}, 0, nc_bangs_names(prepared, names)))
+  nc_finish(prepared, runtime, requests, nc_compile_defs(prepared, ["main"], Nil{}, 0, nc_bangs_names(prepared, names)), observers)

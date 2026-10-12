@@ -1,0 +1,21 @@
+{
+  "parent": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/fixtures/tape-observer.bend",
+    "sha256": "2cc459c44f082380f5ad0ad58b434d1231077a3be710278022f4a342ec137d71",
+    "bytes": 1086
+  },
+  "output": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/fixtures/tape-observer-v2.bend",
+    "sha256": "2f41f3e89044f2475b63b69e25d906d099fdb77254e06f135abadf0632d4e121",
+    "bytes": 1169
+  },
+  "edits": [
+    {
+      "before": "def bench(size: U32, seed: U32) -> U32:\n  +root = build(U32.to_nat(size), seed)\n  (retained, sum) = total(root, 0)\n  U32.xor(sum, U32.add(hash(retained, 2166136261), hash(root, 2166136261)))\n",
+      "after": "def finish(original: Tape, result: Tape & U32) -> U32:\n  (retained, sum) = result\n  U32.xor(sum, U32.add(hash(retained, 2166136261), hash(original, 2166136261)))\n\ndef bench(size: U32, seed: U32) -> U32:\n  +root = build(U32.to_nat(size), seed)\n  finish(root, total(root, 0))\n",
+      "count": 1
+    }
+  ],
+  "targetsExecuted": false,
+  "reason": "Current Bend destructuring requires a parameter or field scrutinee; move tuple destructuring into finish parameter. Preserve root alias and mathematical result."
+}

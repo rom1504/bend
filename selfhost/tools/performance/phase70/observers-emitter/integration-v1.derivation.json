@@ -1,0 +1,131 @@
+{
+  "kind": "phase70-observer-integration-source-proposal-v1",
+  "status": "unparsed and untested; no production mutation or target execution",
+  "moduleCopies": [
+    {
+      "from": "selfhost/tools/performance/phase70/observers-emitter/observer-adapter-v1.bend",
+      "to": "selfhost/src/back/native/observer-adapter.bend"
+    },
+    {
+      "from": "selfhost/tools/performance/phase70/observers-emitter/observer-integration-v1.bend",
+      "to": "selfhost/src/back/native/observer-integration.bend"
+    }
+  ],
+  "changes": [
+    {
+      "file": "selfhost/src/back/native/book.bend",
+      "baseSha256": "8b30702990661439323dd6a9ef879e8fb1771c6c78de8281118cc482252ab2b7",
+      "changes": [
+        {
+          "line": 225,
+          "before": "def nc_finish(+book: List<&2, KDef>, +runtime: String, +requests: String, compiled: NC_Book) -> NC_Result:",
+          "after": "def nc_finish(+book: List<&2, KDef>, +runtime: String, +requests: String, compiled: NC_Book, +observers: Bool) -> NC_Result:"
+        },
+        {
+          "line": 232,
+          "before": "        nf_finish_show(book, ss, cs, \"#define NATIVE_PACK_CTORS \" ++ nt_choose(String, nc_pack_foreign(book), u => \"0\", u => \"1\") ++ \"\\n\" ++ runtime, requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show(\"0\"), \"\"})))",
+          "after": "        nf_finish_show(book, ss, cs, \"#define NATIVE_READONLY_OBSERVERS \" ++ nt_choose(String, observers, v => \"1\", v => \"0\") ++ \"\\n#define NATIVE_PACK_CTORS \" ++ nt_choose(String, nc_pack_foreign(book), u => \"0\", u => \"1\") ++ \"\\n\" ++ runtime, requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show(\"0\"), \"\"}), observers))"
+        },
+        {
+          "line": 263,
+          "before": "def nc_compile(+book: List<&2, KDef>, runtime: String, requests: String) -> NC_Result:",
+          "after": "def nc_compile(+book: List<&2, KDef>, runtime: String, requests: String) -> NC_Result:\n  nc_compile_mode(book, runtime, requests, False{})\n\n@unsafe\ndef nc_compile_mode(+book: List<&2, KDef>, runtime: String, requests: String, +observers: Bool) -> NC_Result:"
+        },
+        {
+          "line": 269,
+          "before": "  nt_choose(NC_Result, U32.is_ge(norm_max_book(book), 4000000000), u => NC_Result{\"\", \"native source binder IDs overlap the compiler temporary range\"}, u => ns_compile(book, runtime, requests)))))",
+          "after": "  nt_choose(NC_Result, U32.is_ge(norm_max_book(book), 4000000000), u => NC_Result{\"\", \"native source binder IDs overlap the compiler temporary range\"}, u => ns_compile(book, runtime, requests, observers)))))"
+        }
+      ]
+    },
+    {
+      "file": "selfhost/src/back/native/static.bend",
+      "baseSha256": "13669f4832252c79e22a9b9acf1a5ffdf2993d7ec243a43b0187101c0bb3b02d",
+      "changes": [
+        {
+          "line": 258,
+          "before": "def ns_compile(+book: List<&2, KDef>, +runtime: String, +requests: String) -> NC_Result:",
+          "after": "def ns_compile(+book: List<&2, KDef>, +runtime: String, +requests: String, +observers: Bool) -> NC_Result:"
+        },
+        {
+          "line": 262,
+          "before": "  nc_finish(prepared, runtime, requests, nc_compile_defs(prepared, [\"main\"], Nil{}, 0, nc_bangs_names(prepared, names)))",
+          "after": "  nc_finish(prepared, runtime, requests, nc_compile_defs(prepared, [\"main\"], Nil{}, 0, nc_bangs_names(prepared, names)), observers)"
+        }
+      ]
+    },
+    {
+      "file": "selfhost/src/back/native/scalar-array.bend",
+      "baseSha256": "67a4935b166aa530a1018a855e724a3c5027c36b1879df2dc5288f433e90ebf3",
+      "changes": [
+        {
+          "line": 57,
+          "before": "  nc_compile(book, \"#define NATIVE_TYPED_SCALARS \" ++ nt_choose(String, packed, u => \"1\", u => \"0\") ++ \"\\n#define NATIVE_COLD_USER_CTORS \" ++ nt_choose(String, unshared, u => \"1\", u => \"0\") ++ \"\\n#define NATIVE_SCALAR_ARRAYS \" ++ nt_choose(String, packed, u => \"1\", u => \"0\") ++ \"\\n#define NATIVE_UNSHARED_ARRAYS \" ++ nt_choose(String, unshared, u => \"1\", u => \"0\") ++ \"\\n\" ++ runtime, requests)",
+          "after": "  nc_compile_mode(book, \"#define NATIVE_TYPED_SCALARS \" ++ nt_choose(String, packed, u => \"1\", u => \"0\") ++ \"\\n#define NATIVE_COLD_USER_CTORS \" ++ nt_choose(String, unshared, u => \"1\", u => \"0\") ++ \"\\n#define NATIVE_SCALAR_ARRAYS \" ++ nt_choose(String, packed, u => \"1\", u => \"0\") ++ \"\\n#define NATIVE_UNSHARED_ARRAYS \" ++ nt_choose(String, unshared, u => \"1\", u => \"0\") ++ \"\\n\" ++ runtime, requests, packed)"
+        }
+      ]
+    },
+    {
+      "file": "selfhost/src/back/native/flat.bend",
+      "baseSha256": "df358d007b3f687c50c29f2169461c763a6c9b3184c6ef3abb74c30140045db6",
+      "changes": [
+        {
+          "line": 265,
+          "before": "def nf_finish_ready(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>) -> NC_Result:",
+          "after": "def nf_finish_ready(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:"
+        },
+        {
+          "line": 266,
+          "before": "  nc_with_show(nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0)), cs, runtime, requests, pure, show, \"#if !DEVICE\\n#if NATIVE_TYPED_SCALARS\\n#define NF_SCALAR u32\\n#else\\n#define NF_SCALAR Term\\n#endif\\n#if defined(__GNUC__) || defined(__clang__)\\n#define NF_INLINE INLINE __attribute__((always_inline))\\n#else\\n#define NF_INLINE INLINE\\n#endif\\n\" ++ nf_prototypes(workers, ready) ++ nf_bodies(workers, ready) ++ \"#undef NF_INLINE\\n#undef NF_SCALAR\\n#endif\\n\", image)",
+          "after": "  +ordinary = nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0))\n  +route = no_route(book, ordinary, observer_names, workers, ready, observers)\n  nc_with_show(no_wrap_routes(ordinary, no_route_entries(route), no_route_ready(route)), cs, runtime, requests, pure, show, \"#if !DEVICE\\n#if NATIVE_TYPED_SCALARS\\n#define NF_SCALAR u32\\n#else\\n#define NF_SCALAR Term\\n#endif\\n#if defined(__GNUC__) || defined(__clang__)\\n#define NF_INLINE INLINE __attribute__((always_inline))\\n#else\\n#define NF_INLINE INLINE\\n#endif\\n\" ++ nf_prototypes(no_route_workers(route), no_route_ready(route)) ++ nf_bodies(no_route_workers(route), no_route_ready(route)) ++ \"#undef NF_INLINE\\n#undef NF_SCALAR\\n#endif\\n\", image)"
+        },
+        {
+          "line": 289,
+          "before": "def nf_finish_retry(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>) -> NC_Result:",
+          "after": "def nf_finish_retry(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:"
+        },
+        {
+          "line": 291,
+          "before": "  nf_finish_ready(ss, cs, runtime, requests, pure, show, retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)), ns_image(book))",
+          "after": "  nf_finish_ready(book, ss, cs, runtime, requests, pure, show, retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)), ns_image(book), observer_names, observers)"
+        },
+        {
+          "line": 294,
+          "before": "def nf_finish_workers(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +signatures: List<&2, KDef>) -> NC_Result:",
+          "after": "def nf_finish_workers(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +signatures: List<&2, KDef>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:"
+        },
+        {
+          "line": 295,
+          "before": "  nf_finish_retry(book, ss, cs, runtime, requests, pure, show, workers, nf_admit(book, workers, Nil{}, nt_count(NF_Worker, workers)), signatures)",
+          "after": "  nf_finish_retry(book, ss, cs, runtime, requests, pure, show, workers, nf_admit(book, workers, Nil{}, nt_count(NF_Worker, workers)), signatures, observer_names, observers)"
+        },
+        {
+          "line": 298,
+          "before": "def nf_finish_show(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show) -> NC_Result:",
+          "after": "def nf_finish_show(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +observers: Bool) -> NC_Result:"
+        },
+        {
+          "line": 302,
+          "before": "  nf_finish_workers(book, ss, cs, runtime, requests, pure, show, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates(book, names, bangs, signatures)), signatures)",
+          "after": "  +observer_names = nt_choose(List<&2, String>, observers, u => no_candidate_names(book, names, bangs), u => Nil{})\n  nf_finish_workers(book, ss, cs, runtime, requests, pure, show, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates(book, names, bangs, signatures)), signatures, observer_names, observers)"
+        }
+      ]
+    },
+    {
+      "file": "selfhost/src/compiler.json",
+      "baseSha256": "9d3d564b4ac3e4c236793f75264e341333d5b374a65f9715e2de75b86bdae48b",
+      "changes": [
+        {
+          "line": 123,
+          "before": "    \"src/back/native/observer-emitter.bend\",",
+          "after": "    \"src/back/native/observer-emitter.bend\",\n    \"src/back/native/observer-adapter.bend\","
+        },
+        {
+          "line": 127,
+          "before": "    \"src/back/native/observer-plan.bend\",",
+          "after": "    \"src/back/native/observer-plan.bend\",\n    \"src/back/native/observer-integration.bend\","
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "kind": "phase70-independent-residual-mutation-obligations",
+  "status": "source specification; not executable until plan schema is wired",
+  "allExpected": "decline optional observer or reject malformed internal plan without altering ordinary fallback",
+  "cases": [
+    {
+      "id": "return-borrowed-root",
+      "mutation": "Replace an admitted NO_Return scalar atom with an in-scope BorrowRoot parameter Var.",
+      "reason": "A cursor cannot escape as the immediate result."
+    },
+    {
+      "id": "scalar-op-borrowed-input",
+      "mutation": "Replace one U32 arithmetic NOp operand with an in-scope BorrowRoot Var.",
+      "reason": "Names and operation arity do not prove immediate scalar arguments."
+    },
+    {
+      "id": "loop-root-into-nat",
+      "mutation": "Replace a Nat NO_Loop slot with an in-scope BorrowRoot Var.",
+      "reason": "Slot compatibility must be checked before any loop move."
+    },
+    {
+      "id": "loop-bool-into-nat",
+      "mutation": "Replace a Nat NO_Loop slot with a Bool-typed Var.",
+      "reason": "Equal machine representation of 0/1 does not erase source-kind obligations."
+    },
+    {
+      "id": "loop-wide-nat-into-char",
+      "mutation": "Replace a Char NO_Loop slot with a Nat-typed Var that may exceed 2^32-1.",
+      "reason": "Full-Term transport does not make a wide Nat canonical Char/U32."
+    },
+    {
+      "id": "loop-u32-into-bool",
+      "mutation": "Replace a Bool NO_Loop slot with a U32-typed Var that may equal 2.",
+      "reason": "Canonical Bool must not be inferred from an arbitrary scalar word."
+    },
+    {
+      "id": "wrong-root-descriptor",
+      "mutation": "Point a NO_Match at the descriptor of a distinct instantiated ADT with the same live field count.",
+      "reason": "Equal width is not constructor owner/provenance equality."
+    },
+    {
+      "id": "wrong-field-order",
+      "mutation": "Swap two equally typed field origin IDs in a reconstruction proof while leaving runtime matcher fields ordered.",
+      "reason": "Origins include the exact original field position, not just type."
+    },
+    {
+      "id": "missing-field",
+      "mutation": "Drop one NO_Fields binder while retaining descriptor width.",
+      "reason": "Borrowed field count must equal the proved concrete layout."
+    },
+    {
+      "id": "extra-field",
+      "mutation": "Add a fresh NO_Fields binder beyond the descriptor width.",
+      "reason": "The emitter must not read beyond actual constructor storage."
+    },
+    {
+      "id": "duplicate-field-binder",
+      "mutation": "Repeat one NO_Fields Var ID.",
+      "reason": "A field read cannot shadow another origin."
+    },
+    {
+      "id": "branch-origin-leak",
+      "mutation": "Use a hit-only field Var in the miss branch.",
+      "reason": "Origin/name environments are branch-local."
+    },
+    {
+      "id": "shadow-retained-param",
+      "mutation": "Give a NO_Let binder the ID of an original root parameter.",
+      "reason": "Fresh residual binders must not overwrite root/cursor provenance."
+    },
+    {
+      "id": "malformed-immediate-text",
+      "mutation": "Replace canonical NWord digits with negative or nonnumeric text.",
+      "reason": "Only checked immediate literal syntax may become emitted C."
+    },
+    {
+      "id": "unvalidated-helper-call",
+      "mutation": "Insert NFCall with an ordinary admitted worker that returns a boxed root.",
+      "reason": "Ordinary worker admission does not prove borrowed-call safety."
+    },
+    {
+      "id": "unknown-node",
+      "mutation": "Insert a source node outside the NO residual grammar.",
+      "reason": "Optional lowering must decline and preserve the previous entry."
+    },
+    {
+      "id": "foreign-plan-capability",
+      "mutation": "Attach a valid analyzed plan to a compilation with effects permission False.",
+      "reason": "Plan validity never grants the checked wholeprogram permission."
+    },
+    {
+      "id": "raw-plan-capability",
+      "mutation": "Supply generated-looking plan tags/metadata through public nc_compile.",
+      "reason": "Raw entry always uses the existing generic route; only unsupported source syntax may fail."
+    }
+  ]
+}

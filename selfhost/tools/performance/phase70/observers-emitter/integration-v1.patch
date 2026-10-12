@@ -1,0 +1,70 @@
+--- a/selfhost/src/back/native/book.bend
++++ b/selfhost/src/back/native/book.bend
+@@ -225,1 +225,1 @@
+-def nc_finish(+book: List<&2, KDef>, +runtime: String, +requests: String, compiled: NC_Book) -> NC_Result:
++def nc_finish(+book: List<&2, KDef>, +runtime: String, +requests: String, compiled: NC_Book, +observers: Bool) -> NC_Result:
+@@ -232,1 +232,1 @@
+-        nf_finish_show(book, ss, cs, "#define NATIVE_PACK_CTORS " ++ nt_choose(String, nc_pack_foreign(book), u => "0", u => "1") ++ "\n" ++ runtime, requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show("0"), ""})))
++        nf_finish_show(book, ss, cs, "#define NATIVE_READONLY_OBSERVERS " ++ nt_choose(String, observers, v => "1", v => "0") ++ "\n#define NATIVE_PACK_CTORS " ++ nt_choose(String, nc_pack_foreign(book), u => "0", u => "1") ++ "\n" ++ runtime, requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show("0"), ""}), observers))
+@@ -263,1 +263,5 @@
+-def nc_compile(+book: List<&2, KDef>, runtime: String, requests: String) -> NC_Result:
++def nc_compile(+book: List<&2, KDef>, runtime: String, requests: String) -> NC_Result:
++  nc_compile_mode(book, runtime, requests, False{})
++
++@unsafe
++def nc_compile_mode(+book: List<&2, KDef>, runtime: String, requests: String, +observers: Bool) -> NC_Result:
+@@ -269,1 +273,1 @@
+-  nt_choose(NC_Result, U32.is_ge(norm_max_book(book), 4000000000), u => NC_Result{"", "native source binder IDs overlap the compiler temporary range"}, u => ns_compile(book, runtime, requests)))))
++  nt_choose(NC_Result, U32.is_ge(norm_max_book(book), 4000000000), u => NC_Result{"", "native source binder IDs overlap the compiler temporary range"}, u => ns_compile(book, runtime, requests, observers)))))
+--- a/selfhost/src/back/native/static.bend
++++ b/selfhost/src/back/native/static.bend
+@@ -258,1 +258,1 @@
+-def ns_compile(+book: List<&2, KDef>, +runtime: String, +requests: String) -> NC_Result:
++def ns_compile(+book: List<&2, KDef>, +runtime: String, +requests: String, +observers: Bool) -> NC_Result:
+@@ -262,1 +262,1 @@
+-  nc_finish(prepared, runtime, requests, nc_compile_defs(prepared, ["main"], Nil{}, 0, nc_bangs_names(prepared, names)))
++  nc_finish(prepared, runtime, requests, nc_compile_defs(prepared, ["main"], Nil{}, 0, nc_bangs_names(prepared, names)), observers)
+--- a/selfhost/src/back/native/scalar-array.bend
++++ b/selfhost/src/back/native/scalar-array.bend
+@@ -57,1 +57,1 @@
+-  nc_compile(book, "#define NATIVE_TYPED_SCALARS " ++ nt_choose(String, packed, u => "1", u => "0") ++ "\n#define NATIVE_COLD_USER_CTORS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n#define NATIVE_SCALAR_ARRAYS " ++ nt_choose(String, packed, u => "1", u => "0") ++ "\n#define NATIVE_UNSHARED_ARRAYS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n" ++ runtime, requests)
++  nc_compile_mode(book, "#define NATIVE_TYPED_SCALARS " ++ nt_choose(String, packed, u => "1", u => "0") ++ "\n#define NATIVE_COLD_USER_CTORS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n#define NATIVE_SCALAR_ARRAYS " ++ nt_choose(String, packed, u => "1", u => "0") ++ "\n#define NATIVE_UNSHARED_ARRAYS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n" ++ runtime, requests, packed)
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -265,1 +265,1 @@
+-def nf_finish_ready(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>) -> NC_Result:
++def nf_finish_ready(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:
+@@ -266,1 +266,3 @@
+-  nc_with_show(nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0)), cs, runtime, requests, pure, show, "#if !DEVICE\n#if NATIVE_TYPED_SCALARS\n#define NF_SCALAR u32\n#else\n#define NF_SCALAR Term\n#endif\n#if defined(__GNUC__) || defined(__clang__)\n#define NF_INLINE INLINE __attribute__((always_inline))\n#else\n#define NF_INLINE INLINE\n#endif\n" ++ nf_prototypes(workers, ready) ++ nf_bodies(workers, ready) ++ "#undef NF_INLINE\n#undef NF_SCALAR\n#endif\n", image)
++  +ordinary = nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0))
++  +route = no_route(book, ordinary, observer_names, workers, ready, observers)
++  nc_with_show(no_wrap_routes(ordinary, no_route_entries(route), no_route_ready(route)), cs, runtime, requests, pure, show, "#if !DEVICE\n#if NATIVE_TYPED_SCALARS\n#define NF_SCALAR u32\n#else\n#define NF_SCALAR Term\n#endif\n#if defined(__GNUC__) || defined(__clang__)\n#define NF_INLINE INLINE __attribute__((always_inline))\n#else\n#define NF_INLINE INLINE\n#endif\n" ++ nf_prototypes(no_route_workers(route), no_route_ready(route)) ++ nf_bodies(no_route_workers(route), no_route_ready(route)) ++ "#undef NF_INLINE\n#undef NF_SCALAR\n#endif\n", image)
+@@ -289,1 +291,1 @@
+-def nf_finish_retry(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>) -> NC_Result:
++def nf_finish_retry(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:
+@@ -291,1 +293,1 @@
+-  nf_finish_ready(ss, cs, runtime, requests, pure, show, retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)), ns_image(book))
++  nf_finish_ready(book, ss, cs, runtime, requests, pure, show, retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)), ns_image(book), observer_names, observers)
+@@ -294,1 +296,1 @@
+-def nf_finish_workers(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +signatures: List<&2, KDef>) -> NC_Result:
++def nf_finish_workers(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +signatures: List<&2, KDef>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:
+@@ -295,1 +297,1 @@
+-  nf_finish_retry(book, ss, cs, runtime, requests, pure, show, workers, nf_admit(book, workers, Nil{}, nt_count(NF_Worker, workers)), signatures)
++  nf_finish_retry(book, ss, cs, runtime, requests, pure, show, workers, nf_admit(book, workers, Nil{}, nt_count(NF_Worker, workers)), signatures, observer_names, observers)
+@@ -298,1 +300,1 @@
+-def nf_finish_show(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show) -> NC_Result:
++def nf_finish_show(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +observers: Bool) -> NC_Result:
+@@ -302,1 +304,2 @@
+-  nf_finish_workers(book, ss, cs, runtime, requests, pure, show, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates(book, names, bangs, signatures)), signatures)
++  +observer_names = nt_choose(List<&2, String>, observers, u => no_candidate_names(book, names, bangs), u => Nil{})
++  nf_finish_workers(book, ss, cs, runtime, requests, pure, show, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates(book, names, bangs, signatures)), signatures, observer_names, observers)
+--- a/selfhost/src/compiler.json
++++ b/selfhost/src/compiler.json
+@@ -123,1 +123,2 @@
+-    "src/back/native/observer-emitter.bend",
++    "src/back/native/observer-emitter.bend",
++    "src/back/native/observer-adapter.bend",
+@@ -127,1 +128,2 @@
+-    "src/back/native/observer-plan.bend",
++    "src/back/native/observer-plan.bend",
++    "src/back/native/observer-integration.bend",

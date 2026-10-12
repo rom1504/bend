@@ -47,6 +47,10 @@ def ns_definitions(+book: List<&2, KDef>, names: List<&2, String>) -> Bool:
         u => db(d) && nb_contains(["IO.args", "IO.print", "IO.now"], dn(d)),
         u => ns_term(book, dv(d)))) && ns_definitions(book, rest)
 
+# The same certificate permits root-preserving observers: the current native
+# catalog and audited IO.args/print/now handlers expose no immutable-root
+# identity or mutation. Any foreign whitelist extension must preserve that
+# stronger property or split observer permission from scalar-array permission.
 # Preconditions: checked/specialized/annotated book, validated layouts, trusted
 # runtime and effect ABI. The host proves the narrow effect-source permission.
 @unsafe
@@ -54,7 +58,7 @@ def nc_compile_checked(+book: List<&2, KDef>, runtime: String, requests: String,
   +names = nc_live_names(book, ["main"], Nil{})
   +packed = effects_safe && ns_definitions(book, names)
   +unshared = packed && ns_unshared_definitions(book, names)
-  nc_compile(book, "#define NATIVE_TYPED_SCALARS " ++ nt_choose(String, packed, u => "1", u => "0") ++ "\n#define NATIVE_COLD_USER_CTORS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n#define NATIVE_SCALAR_ARRAYS " ++ nt_choose(String, packed, u => "1", u => "0") ++ "\n#define NATIVE_UNSHARED_ARRAYS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n" ++ runtime, requests)
+  nc_compile_mode(book, "#define NATIVE_TYPED_SCALARS " ++ nt_choose(String, packed, u => "1", u => "0") ++ "\n#define NATIVE_COLD_USER_CTORS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n#define NATIVE_SCALAR_ARRAYS " ++ nt_choose(String, packed, u => "1", u => "0") ++ "\n#define NATIVE_UNSHARED_ARRAYS " ++ nt_choose(String, unshared, u => "1", u => "0") ++ "\n" ++ runtime, requests, packed)
 
 # Conservative array-free values. Functions/IO can capture arrays, so decline.
 # Container parameters are inspected recursively; an unknown type stays opaque.

@@ -1,0 +1,180 @@
+{
+  "kind": "phase70-occurrence-insertion-profile",
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/compiler-work/profile-uses.py",
+    "sha256": "7c4d9bac47c7cbd4fecae515773dd84c874fc651deee7f3eb90ccd1050c44041",
+    "bytes": 3525
+  },
+  "summary": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/compiler69-profile02-summary.json",
+    "sha256": "c7e513c92bfc3655f47f0092cfa5c09d43622df9be0a358c8f2ce256429c877e",
+    "bytes": 172901
+  },
+  "scope": "Sampled stack unions, not calls or clean clocks. Per-function index rows overlap. Collector excludes membership-query-only samples; missing/trampolined frames can hide attribution.",
+  "rows": [
+    {
+      "job": "profile-numeric-b2",
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/compiler69-profile02/runs/profile-numeric-b2/request.cpuprofile",
+        "sha256": "797c234fa4b1c4fc89272f015f62b55255cf07af28f98fafef1ca71e05da4f17",
+        "bytes": 18002209
+      },
+      "collectorMs": 133.159,
+      "indexUnderCollectorMs": 80.9,
+      "indexFunctionMs": {
+        "index_set": 80.9,
+        "index_insert": 69.635,
+        "index_join": 33.804,
+        "index_leaf": 8.464,
+        "index_tip": 2.265,
+        "index_remove": 1.057
+      },
+      "nearestCallerPathsMs": {
+        "nc_let_atom > nc_let > nc_lets > nf_lets": 34.984,
+        "nf_bind_boxed > nq_bind_choose > nf_lets_local > nf_lets": 27.179,
+        "nc_lower > nc_lets > nf_lets > nc_lower_live_to": 23.988,
+        "nc_lower_to > nd_app_to > nc_lower_live_to > nc_lower_to": 14.168,
+        "nc_lower_to > nf_lets_local > nf_lets > nc_lower_live_to": 10.543,
+        "nc_lower_to > nc_match_apply_slow_to > nc_match_apply_to > nq_match": 4.476,
+        "nc_let_emitted > nc_let_value > nc_let > nc_lets": 4.444,
+        "nc_lower > nc_let_constructor > nc_let_value > nc_let": 4.145,
+        "nc_lower_to > nc_match_apply_slow_to > nc_match_apply_to > nq_match_local": 1.942,
+        "nc_live_env > nf_bind_boxed > nq_bind_choose > nf_lets_local": 1.207,
+        "nc_lower_to > nc_lower_ctor_to > nc_lower_live_to > nf_bind_boxed": 1.181,
+        "nc_live_env > nc_let_atom > nc_let > nc_lets": 1.137,
+        "nc_lower_to > nf_candidate > nf_retry > nf_retry": 1.121,
+        "nc_prepare_env > nc_let_constructor > nc_let_value > nc_let": 1.112,
+        "nc_prepare_env > nc_lower_to > nc_lower > nd_extend_arity": 0.993,
+        "nc_lower_to > nd_match_to > nd_app_to > nc_lower_live_to": 0.539
+      }
+    },
+    {
+      "job": "profile-array-b2",
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/compiler69-profile02/runs/profile-array-b2/request.cpuprofile",
+        "sha256": "43a30aaa0d292f7c6e4b36a6ea536cebf0bb2c2cef138ab5c8a3ca38d2777fa2",
+        "bytes": 17723257
+      },
+      "collectorMs": 120.708,
+      "indexUnderCollectorMs": 52.747,
+      "indexFunctionMs": {
+        "index_set": 52.747,
+        "index_insert": 45.541,
+        "index_join": 24.362,
+        "index_leaf": 10.63,
+        "index_remove": 4.412,
+        "index_tip": 0.994
+      },
+      "nearestCallerPathsMs": {
+        "nc_let_atom > nc_let > nc_lets > nf_lets": 30.592,
+        "nf_bind_boxed > nq_bind_choose > nf_lets_local > nf_lets": 21.635,
+        "nc_lower > nc_lets > nf_lets > nc_lower_live_to": 17.039,
+        "nc_lower_to > nd_app_to > nc_lower_live_to > nc_lower_to": 13.199,
+        "nc_lower_to > nf_lets_local > nf_lets > nc_lower_live_to": 12.377,
+        "nc_lower > nd_extend_arity > nd_eta_entry > nd_user_entry": 8.673,
+        "nc_live_env > nc_let_atom > nc_let > nc_lets": 3.447,
+        "nc_lower > nc_let_constructor > nc_let_value > nc_let": 3.347,
+        "nc_lower_to > nc_match_apply_slow_to > nc_match_apply_to > nq_match": 2.015,
+        "nc_lower_to > nf_candidate > nf_candidates > nf_candidates": 1.219,
+        "nc_prepare_env > nc_lower_to > nc_lower > nc_lets": 1.107,
+        "nc_prepare_env > nc_let_constructor > nc_let_value > nc_let": 1.101,
+        "nc_lower_to > nd_ref_arity > nd_ref_app > nd_app_to": 1.077,
+        "nc_prepare_env > nc_lower_to > nc_lower > nc_lambda": 1.044,
+        "nc_prepare_env > nc_lower_to > nc_lower > nd_extend_arity": 1.041,
+        "nc_lower_to > nc_match_apply_slow_to > nc_match_apply_to > nq_match_local": 0.918,
+        "nc_let_emitted > nc_let_value > nc_let > nc_lets": 0.877
+      }
+    },
+    {
+      "job": "profile-lexer-b2",
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/compiler69-profile02/runs/profile-lexer-b2/request.cpuprofile",
+        "sha256": "dd3f377eedf8a5d53144fd894bf47ef2a4aca638b079419d3cf34291cc5a0515",
+        "bytes": 19352708
+      },
+      "collectorMs": 135.031,
+      "indexUnderCollectorMs": 68.504,
+      "indexFunctionMs": {
+        "index_set": 68.504,
+        "index_insert": 55.283,
+        "index_join": 28.968,
+        "index_leaf": 10.623,
+        "index_tip": 3.748,
+        "index_node": 1.831
+      },
+      "nearestCallerPathsMs": {
+        "nc_lower > nc_lets > nf_lets > nc_lower_live_to": 33.315,
+        "nf_bind_boxed > nq_bind_choose > nf_lets_local > nf_lets": 25.886,
+        "nc_lower_to > nd_app_to > nc_lower_live_to > nc_lower_to": 17.61,
+        "nc_let_atom > nc_let > nc_lets > nf_lets": 17.512,
+        "nc_lower_to > nc_lower > nc_lets > nf_lets": 9.887,
+        "nc_lower > nc_let_constructor > nc_let_value > nc_let": 5.475,
+        "nc_lower_to > nf_lets_local > nf_lets > nc_lower_live_to": 5.349,
+        "nc_lower_to > nc_match_apply_slow_to > nc_match_apply_to > nq_match": 5.345,
+        "nc_lower_to > nc_match_apply_slow_to > nc_match_apply_to > nq_match_local": 4.229,
+        "nc_prepare_env > nc_lower_to > nd_app_to > nc_lower_live_to": 2.296,
+        "nc_let_emitted > nc_let_value > nc_let > nc_lets": 2.131,
+        "nc_lower > nd_extend_arity > nd_eta_entry > nd_user_entry": 1.991,
+        "nc_lower_to > nc_lower_ctor_to > nc_lower_live_to > nf_bind_boxed": 1.873,
+        "nc_lower_to > nf_candidate > nf_candidates > nf_candidates": 1.18,
+        "nc_lower_ctor_to > nc_lower_live_to > nf_bind_boxed > nq_bind_choose": 0.952
+      }
+    },
+    {
+      "job": "profile-numeric-b1",
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/compiler69-profile02/runs/profile-numeric-b1/request.cpuprofile",
+        "sha256": "9c1304583b99ee191a6d199d991c677c481de86e1a751ade7ba7443a4030f5e4",
+        "bytes": 30797532
+      },
+      "collectorMs": 343.348,
+      "indexUnderCollectorMs": 6.133,
+      "indexFunctionMs": {
+        "index_insert": 4.121,
+        "index_tip": 2.012
+      },
+      "nearestCallerPathsMs": {
+        "nc_lower > nc_lets > nc_lower_partition > nc_let_atom": 43.721,
+        "nc_let_atom > nc_lower > nc_lets > nc_lower_partition": 31.339,
+        "nc_lower_to > nf_lets_local > nc_lower_partition > nf_bind_boxed": 28.428,
+        "nf_bind_boxed > nc_lower_to > nf_lets_local > nc_lower_partition": 21.912,
+        "nc_lower > nc_lets > nc_lower > nc_lets": 21.346,
+        "nc_let_atom > nc_lower > nc_lower > nc_lets": 19.102,
+        "nc_let_emitted > nc_lower > nc_lets > nc_lower": 18.559,
+        "nf_bind_boxed > nc_lower_to > nc_lower_to > nc_match_apply_slow_to": 18.504,
+        "nc_lower_to > nc_lower_to > nc_match_apply_slow_to > nc_lower": 15.745,
+        "nc_lower > nc_lower > nc_lets > nc_lower_partition": 15.717,
+        "nc_lower_to > nc_match_apply_slow_to > nc_lower_to > nf_lets_local": 14.612,
+        "nc_lower_to > nc_match_apply_slow_to > nc_lower > nc_lets": 13.22,
+        "nc_lower > nc_lets > nc_lower_partition > nc_let_emitted": 11.785,
+        "nc_let_atom > nc_lower_to > nc_lower_to > nc_match_apply_slow_to": 11.65,
+        "nc_lower_to > nc_lower_to > nc_match_apply_slow_to > nc_lower_to": 7.101,
+        "nc_lower_to > nc_lower_to > nf_candidate > nf_finish_show": 6.07,
+        "nc_prepare_env > nc_lower > nc_lets > nc_let_atom": 4.001,
+        "nc_lower > nc_lower > nc_lets > nc_let_atom": 3.998,
+        "nc_lower_to > nf_lets_local > nf_bind_boxed > nc_lower_to": 3.303,
+        "nc_live_env > nf_bind_boxed > nc_lower_to > nf_lets_local": 3.171,
+        "nc_let_emitted > nc_lower > nc_lets > nc_lower_partition": 2.947,
+        "nc_lower > nc_lets > nc_let_atom > nc_lower": 2.37,
+        "nc_let_emitted > nc_lower > nc_lets > nc_let_atom": 2.311,
+        "nc_lower > nc_lets > nc_let_atom > nc_lower_partition": 2.281,
+        "nc_let_atom > nc_lower_partition > nc_lower > nc_lets": 2.21,
+        "nc_lower_to > nf_bind_boxed > nc_lower_to > nf_lets_local": 2.056,
+        "nc_lower_to > nc_lower_to > nq_bind > nc_lower_to": 1.939,
+        "nc_lower_to > nf_lets_local > nf_bind_boxed > nf_bind_boxed": 1.923,
+        "nc_lower_to > nc_match_apply_slow_to > nc_lower_to > nc_lower": 1.607,
+        "nc_prepare_env > nc_lower_to > nc_lower > nc_lets": 1.402,
+        "nc_lower_to > nq_bind > nc_lower_to > nc_lower_to": 1.318,
+        "nc_lower_to > nf_candidate > nf_finish_show": 1.306,
+        "nc_prepare_env > nc_lower_to > nc_match_apply_slow_to > nc_lower_partition": 1.171,
+        "nc_lower > nc_lets > nc_lower_partition > nc_let_cut": 1.083,
+        "nc_prepare_env > nc_lower_to > nf_candidate > nf_finish_show": 1.079,
+        "nc_lower_to > nc_lower_to > nf_lets_local > nf_bind_boxed": 1.064,
+        "nc_let_cut > nc_lower_partition > nc_lower_to > nc_lower_partition": 1.01,
+        "nc_lower > nc_lower_to > nc_lower_to > nc_lower_to": 0.987
+      }
+    }
+  ]
+}

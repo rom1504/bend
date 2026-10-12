@@ -1,0 +1,118 @@
+{
+  "kind": "phase70-bool-admission-v1",
+  "sourceOnly": true,
+  "targetsExecuted": false,
+  "oracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/oracle.py",
+    "bytes": 1468,
+    "sha256": "7424ee54a5781e51527b9f41dd211efd9b995e639b4540e97ec543fb54c3316b"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/clone.bend",
+      "bytes": 612,
+      "sha256": "8a8b33fe9b1741ec75c62fabd7e2225cb0216ad4ce2a017a453f435af66196cf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/common.bend",
+      "bytes": 280,
+      "sha256": "c36689d2fd0789d74ae7fd814dddcfb74be0362fd0482b93b35e237ee2e44ef7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/enum-refusal.bend",
+      "bytes": 357,
+      "sha256": "18252af436c907a0f4aff47ca96cdc05ef2477ff9410d67bdadaf8f83bba62c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/foreign-refusal.bend",
+      "bytes": 249,
+      "sha256": "ef37a299221061e069ba5d20f2c736e8193e4a4025c8aecfa350c81fc24a0451"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/foreign.c",
+      "bytes": 338,
+      "sha256": "d7927ceee7d6964d231d8dc522fa17a6abb8abc1055a8c322cbe7cf9e71e6279"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/foreign.js",
+      "bytes": 65,
+      "sha256": "1ab8412364f8e5587190ee96c4923ac60f4f7543602662f49aa50ce91ea78a22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/mixed.bend",
+      "bytes": 651,
+      "sha256": "114191485535afad7ed4f1e45f12d298bd234214ca3f99c1afb00fae48387645"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/oracle.py",
+      "bytes": 1468,
+      "sha256": "7424ee54a5781e51527b9f41dd211efd9b995e639b4540e97ec543fb54c3316b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/producers.bend",
+      "bytes": 1479,
+      "sha256": "0c21ea88c7e70d8fba75d35c835ca15e05b744b2223cd2c4db048a7141db3063"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/shared.bend",
+      "bytes": 663,
+      "sha256": "af48188b1b232c30b85310b7720c9816f39b2e476924c159d5109a336148692e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/update.bend",
+      "bytes": 453,
+      "sha256": "e321ac07cd4694c0360ad0cd15318ab9a5c6bc928e9f53dcc3820b1db22a62f5"
+    }
+  ],
+  "cases": [
+    {
+      "id": "update",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/update.bend",
+      "expectedStdout": "1\n10\n",
+      "candidateScalar": 1,
+      "candidateUnshared": null
+    },
+    {
+      "id": "clone",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/clone.bend",
+      "expectedStdout": "1\n413\n",
+      "candidateScalar": 1,
+      "candidateUnshared": null
+    },
+    {
+      "id": "shared",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/shared.bend",
+      "expectedStdout": "11\n133\n",
+      "candidateScalar": 1,
+      "candidateUnshared": 0
+    },
+    {
+      "id": "mixed",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/mixed.bend",
+      "expectedStdout": "3\n4294967295\n3217031168\n128578\n",
+      "candidateScalar": 1,
+      "candidateUnshared": null
+    },
+    {
+      "id": "producers",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/producers.bend",
+      "expectedStdout": "1\n0\n0\n1\n1\n1\n1\n0\n1\n1\n1\n1\n1\n0\n1\n",
+      "candidateScalar": 1,
+      "candidateUnshared": null
+    },
+    {
+      "id": "enum-refusal",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/enum-refusal.bend",
+      "expectedStdout": "11\n",
+      "candidateScalar": 0,
+      "candidateUnshared": 0
+    },
+    {
+      "id": "foreign-refusal",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/bool-admission-v1/foreign-refusal.bend",
+      "expectedStdout": "2\n",
+      "candidateScalar": 0,
+      "candidateUnshared": 0
+    }
+  ]
+}

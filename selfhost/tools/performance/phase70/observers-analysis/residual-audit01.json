@@ -1,0 +1,87 @@
+{
+  "kind": "phase70-independent-residual-data-audit-v1",
+  "scope": "Bend-produced plans, no target execution or source-semantic equivalence claim",
+  "inputs": [
+    {
+      "path": "selfhost/build/phase70/observer-query01/report.json",
+      "sha256": "3aba3c9a47a45122cf9476c06b46dceb09c0ae35b19b35754fa30a513096f9ef"
+    },
+    {
+      "path": "selfhost/build/phase70/observer-query02/report.json",
+      "sha256": "7d5fb7fc840856d9c2baf66243615962371c8880a8f18977f5f4cfbbcc9c505d"
+    },
+    {
+      "path": "selfhost/build/phase70/observer-query03/report.json",
+      "sha256": "55d4afcd4047de694e2e7f237bd345042da6c3e637bea61592a939dd7d60c7f3"
+    },
+    {
+      "path": "selfhost/build/phase70/observer-core03/report.json",
+      "sha256": "e2b2d2f023afc4ab714fd195a74ce4db3dc8d1c24a509aa34229174a1588984a"
+    },
+    {
+      "path": "selfhost/build/phase70/observer-core07/report.json",
+      "sha256": "ba58fff77910681d5b0be16464fc5915a3b6532a0e84000beb29e9bdb6964071"
+    }
+  ],
+  "results": [
+    {
+      "query": "selfhost/build/phase70/observer-query01/report.json",
+      "owner": "Map.bit.go",
+      "counts": {
+        "NO_Match": 7,
+        "NO_Return": 3,
+        "NO_Let": 4,
+        "NO_Error": 4,
+        "NO_Loop": 1
+      },
+      "uniqueIds": 13,
+      "remainingFuel": 3945,
+      "nextFreshCounter": 14,
+      "passed": true
+    },
+    {
+      "query": "selfhost/build/phase70/observer-query01/report.json",
+      "owner": "String.cmp",
+      "counts": {
+        "NO_Match": 11,
+        "NO_Return": 5,
+        "NO_Error": 6,
+        "NO_Let": 1,
+        "NO_Loop": 1
+      },
+      "uniqueIds": 12,
+      "remainingFuel": 3935,
+      "nextFreshCounter": 13,
+      "passed": true
+    },
+    {
+      "query": "selfhost/build/phase70/observer-query02/report.json",
+      "owner": "strand:compare",
+      "counts": {
+        "NO_Match": 16,
+        "NO_Return": 6,
+        "NO_Error": 8,
+        "NO_Let": 5,
+        "NO_Loop": 3
+      },
+      "uniqueIds": 14,
+      "remainingFuel": 3685,
+      "nextFreshCounter": 17,
+      "passed": true
+    },
+    {
+      "query": "selfhost/build/phase70/observer-query03/report.json",
+      "owner": "strand:probe",
+      "counts": {
+        "NO_Match": 4,
+        "NO_Return": 2,
+        "NO_Loop": 1,
+        "NO_Error": 2
+      },
+      "uniqueIds": 6,
+      "remainingFuel": 4044,
+      "nextFreshCounter": 7,
+      "passed": true
+    }
+  ]
+}

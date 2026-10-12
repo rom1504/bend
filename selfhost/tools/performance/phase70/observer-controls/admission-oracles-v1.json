@@ -1,0 +1,145 @@
+{
+  "kind": "phase70-independent-observer-admission-oracles",
+  "sourceOnly": true,
+  "executed": false,
+  "definitionNameScope": "Names before import namespace resolution; match exact loaded owner, not arbitrary suffix.",
+  "cases": [
+    {
+      "case": "one-root-static",
+      "definition": "strand.bend:probe",
+      "expectedAdmission": "admit",
+      "reason": "Static root; indexed observation returns exact root plus scalar.",
+      "golden": [
+        "7087"
+      ]
+    },
+    {
+      "case": "one-root-shared-dynamic",
+      "definition": "strand.bend:probe",
+      "expectedAdmission": "admit",
+      "reason": "Dynamic parent shared across two consuming calls.",
+      "golden": [
+        "1434"
+      ]
+    },
+    {
+      "case": "two-root-distinct",
+      "definition": "strand.bend:compare",
+      "expectedAdmission": "admit",
+      "reason": "Two unrelated roots and early unequal-head exit.",
+      "golden": [
+        "80951"
+      ]
+    },
+    {
+      "case": "two-root-alias",
+      "definition": "strand.bend:compare",
+      "expectedAdmission": "admit",
+      "reason": "Same dynamic root supplied with two owned references.",
+      "golden": [
+        "77880"
+      ]
+    },
+    {
+      "case": "two-root-shared-tail",
+      "definition": "strand.bend:compare",
+      "expectedAdmission": "admit",
+      "reason": "Different roots share a dynamic suffix.",
+      "golden": [
+        "80771"
+      ]
+    },
+    {
+      "case": "two-root-prefix",
+      "definition": "strand.bend:compare",
+      "expectedAdmission": "admit",
+      "reason": "Equal prefix ending at unequal lengths.",
+      "golden": [
+        "11181"
+      ]
+    },
+    {
+      "case": "two-root-unsigned",
+      "definition": "strand.bend:compare",
+      "expectedAdmission": "admit",
+      "reason": "Unsigned scalar ordering including UINT32_MAX.",
+      "golden": [
+        "4294967198"
+      ]
+    },
+    {
+      "case": "helper-twice",
+      "definition": "inspect",
+      "expectedAdmission": "admit",
+      "reason": "Two expansions of one matching helper need distinct binder identities.",
+      "golden": [
+        "80955"
+      ]
+    },
+    {
+      "case": "changed-field-refusal",
+      "definition": "inspect",
+      "expectedAdmission": "decline",
+      "reason": "One reconstructed scalar field changes.",
+      "golden": [
+        "9970"
+      ]
+    },
+    {
+      "case": "branch-origin-refusal",
+      "definition": "inspect",
+      "expectedAdmission": "decline",
+      "reason": "Root map differs across branches; no single fixed wrapper.",
+      "golden": [
+        "108583"
+      ]
+    },
+    {
+      "case": "root-multiplicity-refusal",
+      "definition": "inspect",
+      "expectedAdmission": "decline",
+      "reason": "One owning input would be returned twice.",
+      "golden": [
+        "77889"
+      ]
+    },
+    {
+      "case": "hidden-scalar-error",
+      "definition": "inspect",
+      "expectedAdmission": "preserve-or-decline",
+      "reason": "Unused demanded overflow must still fail; summary equality alone is insufficient.",
+      "golden": [
+        "bend: a Nat past the largest immediate 2^48-1",
+        "exit 1"
+      ]
+    },
+    {
+      "case": "post-recursion-error-refusal",
+      "definition": "inspect",
+      "expectedAdmission": "decline",
+      "reason": "Demanded operation after recursion prevents a self-tail residual.",
+      "golden": [
+        "bend: a Nat past the largest immediate 2^48-1",
+        "exit 1"
+      ]
+    },
+    {
+      "case": "discarded-result",
+      "definition": "strand.bend:probe",
+      "expectedAdmission": "admit",
+      "reason": "Adapter result root dropped while a shared input remains live.",
+      "golden": [
+        "715"
+      ]
+    },
+    {
+      "case": "reordered-fields-refusal",
+      "definition": "inspect",
+      "expectedAdmission": "decline",
+      "reason": "Equal-typed fields swap positions in one constructor.",
+      "golden": [
+        "7238"
+      ]
+    }
+  ]
+}

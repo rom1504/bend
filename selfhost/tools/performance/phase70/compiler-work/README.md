@@ -9,6 +9,12 @@ only. `compact-body-v1.patch` adds six lines and changes three consumers; its
 manifest pins exact baseline and proposed bytes. The complete proposed files
 are retained in `compact-body-v1/` for review.
 
+The next source-only proposal is [P70-006 occurrence insertion](../../../../../implementation/phase70/occurrence-set-proposal.md):
+`occurrence-set-v1.patch` adds ten lines to skip replacing an identical set entry.
+Source and the paired helper controller are independently reviewed; target results
+remain root-owned. `profile-uses.py` and `uses-profile-v2.json` retain a reproducible
+hash-verified census of the saved profiles. The earlier exploratory v1 is preserved.
+
 ## Restricted fixed-point argument
 
 Let C be `nc_compact`, and S be `ns_static_term` using this request's constructor

@@ -20,7 +20,12 @@ have correct native acquisitions from both compilers. These are input/correctnes
 gates, not a measured expansion of the six-family performance score. The two
 remaining benchmark families retain their heldout timing status.
 
-The observer's pure-data reference analysis proves the motivating Map shape.
-Its Bend analysis and emitter are still proposals; no generated-program speedup
-or observer production qualification is claimed. Initial fixture/harness failures
-and their corrected successors are retained. [Repeated-work audit](compiler-work-audit.md).
+The [checked Bend observer analysis](observer-analysis.md) recognizes Map,
+String comparison and two independent Strand traversals. Its
+[first emitted-C checkpoint](observer-emission.md) reduces Map execution from
+681 ms to 351 ms versus 391 ms upstream in a balanced three-round comparison.
+The candidate passes 20 focused native controls; five upstream error-demand
+differences also exist in the pre-observer compiler and remain explicit failures
+of the paired gate. Broader qualification and installation remain pending.
+Initial fixture/harness failures and their corrected successors are retained.
+[Repeated-work audit](compiler-work-audit.md).

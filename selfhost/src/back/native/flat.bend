@@ -263,7 +263,7 @@ def nf_wrap_segments(segments: List<&2, N_Segment>, +index: List<&2, KDef>) -> L
 
 @unsafe
 def nf_finish_ready(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:
-  +ordinary = nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0))
+  +ordinary = nf_wrap_segments(nt_choose(List<&2, N_Segment>, observers, u => nf_typed_segments(book, ss), u => ss), book_cached(nf_adapter_defs(workers, ready), 0))
   +route = no_route(book, ordinary, observer_names, workers, ready, observers)
   nc_with_show(no_wrap_routes(ordinary, no_route_entries(route), no_route_ready(route)), cs, runtime, requests, pure, show, "#if !DEVICE\n#if NATIVE_TYPED_SCALARS\n#define NF_SCALAR u32\n#else\n#define NF_SCALAR Term\n#endif\n#if defined(__GNUC__) || defined(__clang__)\n#define NF_INLINE INLINE __attribute__((always_inline))\n#else\n#define NF_INLINE INLINE\n#endif\n" ++ nf_prototypes(no_route_workers(route), no_route_ready(route)) ++ nf_bodies(no_route_workers(route), no_route_ready(route)) ++ "#undef NF_INLINE\n#undef NF_SCALAR\n#endif\n", image)
 
@@ -303,3 +303,20 @@ def nf_finish_show(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2
   +bangs = nc_bangs_names(book, names)
   +observer_names = nt_choose(List<&2, String>, observers, u => no_candidate_names(book, names, bangs), u => Nil{})
   nf_finish_workers(book, ss, cs, runtime, requests, pure, show, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates_mode(book, names, bangs, signatures, observers)), signatures, observer_names, observers)
+
+# Preserve checked scalar telescope facts at scheduler entries as well as
+# private workers. Continuations and dynamically applied closures remain opaque.
+@unsafe
+def nf_typed_segments(+book: List<&2, KDef>, ss: List<&2, N_Segment>) -> List<&2, N_Segment>:
+  match ss:
+    case Nil{}: Nil{}
+    case Con{N_Segment{+name, +params, result, +frame, body, refs, host, spin, fork, bang}, rest}:
+      +owner = nt_choose(String, String.starts_with(name, "$direct."), u => String.drop(name, 8n), u => name)
+      +typed = nt_choose(List<&2, N_Param>, no_direct_frame(frame), u => nf_segment_kinds(params, nf_worker_kinds(book, owner, nt_count(N_Param, params))), u => params)
+      Con{N_Segment{name, typed, result, frame, body, refs, host, spin, fork, bang}, nf_typed_segments(book, rest)}
+
+@unsafe
+def nf_segment_kinds(params: List<&2, N_Param>, kinds: List<&2, N_WordKind>) -> List<&2, N_Param>:
+  match params, kinds:
+    case Con{N_Param{word, old}, rest}, Con{kind, more}: Con{N_Param{word, kind}, nf_segment_kinds(rest, more)}
+    case _, _: params

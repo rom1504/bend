@@ -1,0 +1,77 @@
+[
+  {
+    "parent": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase72/methods/freeze.py",
+      "sha256": "d2bac33958f9e52f470573efea089f2a0dbb17f33c8b6dc4936067a6c174fe19",
+      "bytes": 4224
+    },
+    "derived": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase73/freeze.py",
+      "sha256": "64eeced971d3d335ce68b08bbe9f50fa9ea3684240cbf14c39caaad3b98fefef",
+      "bytes": 4224
+    },
+    "edits": [
+      "Output phase72 to73; baseline70 label to72"
+    ]
+  },
+  {
+    "parent": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase72/methods/run.py",
+      "sha256": "57e0647f51c4556c437b16bf41f2d16407d4fc6fe6174fc7c5973d90742848ee",
+      "bytes": 7203
+    },
+    "derived": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase73/run.py",
+      "sha256": "5f8fa44b1818900e3e66f5da285f3a5ea7ab27dc6c1bc44d5802ce717ed1da8c",
+      "bytes": 7203
+    },
+    "edits": [
+      "Output phase72 to73; baseline70 label to72"
+    ]
+  },
+  {
+    "parent": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase72/methods/emit.mjs",
+      "sha256": "63b2cad4f167e4efdaaecee235729ba93225ef171687d528b6c683893e39b3d5",
+      "bytes": 4978
+    },
+    "derived": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase73/emit.mjs",
+      "sha256": "63b2cad4f167e4efdaaecee235729ba93225ef171687d528b6c683893e39b3d5",
+      "bytes": 4978
+    },
+    "edits": [
+      "Output phase72 to73; baseline70 label to72"
+    ]
+  },
+  {
+    "parent": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase72/methods/compare.py",
+      "sha256": "cb2b3e1b43690395be086b1bf69fe1ddd3e5848f236a20da0040ddd1a5ada3d1",
+      "bytes": 5814
+    },
+    "derived": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase73/compare.py",
+      "sha256": "3b7f5b135135b4e65d75d09e88fa16fad98ccd1bbb37f72a259e45dbb60f6e58",
+      "bytes": 5814
+    },
+    "edits": [
+      "Output phase72 to73; baseline70 label to72"
+    ]
+  },
+  {
+    "parent": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/dist/typed-api.mjs",
+      "sha256": "0ab62a7a075d7a3574cbb2d797dee696955b70c79fdddb85623ec95d6b961e44",
+      "bytes": 2212095
+    },
+    "derived": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase73/unsafe-recursion-api.mjs",
+      "sha256": "f24fe006ba5d7ec9e8b4c6c5754d66bc3514c157ee2ec8e1fcf61b74f686fd73",
+      "bytes": 2212097
+    },
+    "before": "$nc_fail$(\"flat worker: non-tail self call\", _n_0)",
+    "after": "$nq_call_result$(_name_0, _words_0, _n_0, _target_0)",
+    "unsafeDiagnostic": true
+  }
+]

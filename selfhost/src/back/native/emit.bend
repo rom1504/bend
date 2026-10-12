@@ -18,7 +18,7 @@ def ne_ctor_node(+k: String, +alloc: String, +ws: List<&2, String>, +n: U32, +ho
   +stores = nt_choose(String, hot && String.starts_with(k, "$ctor."),
     u => "#if NATIVE_COLD_USER_CTORS\n" ++ ne_stores(name, ws, 0, False{}) ++ "#else\n" ++ ne_stores(name, ws, 0, True{}) ++ "#endif\n",
     u => ne_stores(name, ws, 0, hot))
-  N_Emitted{"u64 " ++ name ++ " = " ++ alloc ++ ";\n" ++ stores, name, U32.inc(n)}
+  N_Emitted{"u64 " ++ name ++ " = " ++ alloc ++ ";\n#if !DEVICE && NATIVE_COLD_CTORS && !NATIVE_HOT_" ++ nt_cid(k) ++ "\n" ++ ne_stores(name, ws, 0, False{}) ++ "#else\n" ++ stores ++ "#endif\n", name, U32.inc(n)}
 
 @unsafe
 def ne_wrap_ctor(+k: String, +x: N_Emitted) -> N_Emitted:

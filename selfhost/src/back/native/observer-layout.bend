@@ -223,7 +223,7 @@ def nol_wrap_constructor(+ctor: String, fields: NOL_Wrap) -> NOL_Wrap:
 def nol_finish(+book: List<&2, KDef>, +params: List<&2, KTerm>, +roots: List<&2, U32>, +specs: List<&2, NO_Spec>, +fresh: U32, result: NOL_Wrap) -> NO_Schema:
   match result:
     case NOL_Wrap{+wrapper, +remaining, +shells, +observation, +error}:
-      +reason = nt_choose(String, Bool.not(String.eq(error, "")), u => error, u => nt_choose(String, List.is_empty(&2, U32, remaining) && U32.is_gt(shells, 0) && Bool.not(String.eq(observation, "")), v => "", v => "result must contain every root once and one scalar"))
+      +reason = nt_choose(String, Bool.not(String.eq(error, "")), u => error, u => nt_choose(String, ((List.is_empty(&2, U32, remaining) && U32.is_gt(shells, 0)) || (String.eq(tg(wrapper), "Var") && U32.is_eq(ix(wrapper), nc_id(fresh)) && U32.is_eq(shells, 0))) && Bool.not(String.eq(observation, "")), v => "", v => "result must contain every root once and one scalar"))
       +ready = nt_choose(List<&2, NO_Spec>, String.eq(reason, ""), u => List.append(&2, NO_Spec, specs, nol_scalar_specs(book, book)), u => Nil{})
       NO_Schema{params, roots, wrapper, nc_id(fresh), observation, ready, U32.inc(fresh), reason}
 

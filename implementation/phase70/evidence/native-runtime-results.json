@@ -1,0 +1,3779 @@
+{
+  "kind": "phase70-compiler02-native-runtime-checkpoint",
+  "targetsExecutedBySummarizer": false,
+  "promoted": false,
+  "producer": {
+    "path": "implementation/phase70/evidence/summarize-native-runtime.py",
+    "bytes": 6552,
+    "sha256": "2f0d1ac3dd83fd7965885169712a6cd5e5a9362864b8d40140a9e18ba1904462"
+  },
+  "campaigns": {
+    "originalSix": {
+      "report": {
+        "path": "selfhost/build/phase70/compiler02-native06-comparison/report.json",
+        "bytes": 97190,
+        "sha256": "0e719e8e35c9979aaad94902027e656e6ab353ed54bb316b163a504ef6e4a291"
+      },
+      "plan": {
+        "path": "selfhost/build/phase70/compiler02-native06-comparison/plan.json",
+        "bytes": 58889,
+        "sha256": "e6b163bec1766146ef5a7e7126ea04222ae471a7aa146396db9c67d4000b2134"
+      },
+      "started": 1791770269.740345,
+      "finished": 1791770293.629812,
+      "qualifiedIntervals": 54,
+      "rows": [
+        {
+          "case": "numeric",
+          "mediansMs": {
+            "baseline69": 252,
+            "candidate": 251,
+            "upstream": 250
+          },
+          "candidateOverUpstream": 1.004,
+          "baselineOverUpstream": 1.008,
+          "candidateOverBaseline": 0.996031746031746,
+          "baselineOverCandidate": 1.00398406374502,
+          "timeReductionPercent": 0.3968253968253954
+        },
+        {
+          "case": "array",
+          "mediansMs": {
+            "baseline69": 191,
+            "candidate": 185,
+            "upstream": 174
+          },
+          "candidateOverUpstream": 1.0632183908045978,
+          "baselineOverUpstream": 1.0977011494252873,
+          "candidateOverBaseline": 0.9685863874345549,
+          "baselineOverCandidate": 1.0324324324324323,
+          "timeReductionPercent": 3.141361256544506
+        },
+        {
+          "case": "closures",
+          "mediansMs": {
+            "baseline69": 164,
+            "candidate": 158,
+            "upstream": 225
+          },
+          "candidateOverUpstream": 0.7022222222222222,
+          "baselineOverUpstream": 0.7288888888888889,
+          "candidateOverBaseline": 0.9634146341463414,
+          "baselineOverCandidate": 1.0379746835443038,
+          "timeReductionPercent": 3.658536585365857
+        },
+        {
+          "case": "tree",
+          "mediansMs": {
+            "baseline69": 338,
+            "candidate": 320,
+            "upstream": 194
+          },
+          "candidateOverUpstream": 1.6494845360824741,
+          "baselineOverUpstream": 1.7422680412371134,
+          "candidateOverBaseline": 0.9467455621301775,
+          "baselineOverCandidate": 1.05625,
+          "timeReductionPercent": 5.3254437869822535
+        },
+        {
+          "case": "map",
+          "mediansMs": {
+            "baseline69": 737,
+            "candidate": 373,
+            "upstream": 420
+          },
+          "candidateOverUpstream": 0.888095238095238,
+          "baselineOverUpstream": 1.7547619047619047,
+          "candidateOverBaseline": 0.5061058344640434,
+          "baselineOverCandidate": 1.9758713136729222,
+          "timeReductionPercent": 49.38941655359565
+        },
+        {
+          "case": "lexer",
+          "mediansMs": {
+            "baseline69": 389,
+            "candidate": 380,
+            "upstream": 210
+          },
+          "candidateOverUpstream": 1.8095238095238095,
+          "baselineOverUpstream": 1.8523809523809525,
+          "candidateOverBaseline": 0.9768637532133676,
+          "baselineOverCandidate": 1.0236842105263158,
+          "timeReductionPercent": 2.3136246786632397
+        }
+      ],
+      "observations": [
+        {
+          "case": "numeric",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 77504,
+          "warmups": 9680,
+          "expected": [
+            1376326140,
+            2812823196,
+            1220163141
+          ],
+          "actual": [
+            1376326140,
+            2812823196,
+            1220163141,
+            251
+          ],
+          "elapsedMs": 251,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.28406274993903935,
+          "userSeconds": 0.279181,
+          "systemSeconds": 0.003988
+        },
+        {
+          "case": "numeric",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 77504,
+          "warmups": 9680,
+          "expected": [
+            1376326140,
+            2812823196,
+            1220163141
+          ],
+          "actual": [
+            1376326140,
+            2812823196,
+            1220163141,
+            250
+          ],
+          "elapsedMs": 250,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.28366424003615975,
+          "userSeconds": 0.278814,
+          "systemSeconds": 0.0039829999999999996
+        },
+        {
+          "case": "numeric",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 77504,
+          "warmups": 9680,
+          "expected": [
+            1376326140,
+            2812823196,
+            1220163141
+          ],
+          "actual": [
+            1376326140,
+            2812823196,
+            1220163141,
+            250
+          ],
+          "elapsedMs": 250,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.28374052699655294,
+          "userSeconds": 0.282877,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "numeric",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 77504,
+          "warmups": 9680,
+          "expected": [
+            1376326140,
+            2812823196,
+            1220163141
+          ],
+          "actual": [
+            1376326140,
+            2812823196,
+            1220163141,
+            251
+          ],
+          "elapsedMs": 251,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.2845976530807093,
+          "userSeconds": 0.28367,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "numeric",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 77504,
+          "warmups": 9680,
+          "expected": [
+            1376326140,
+            2812823196,
+            1220163141
+          ],
+          "actual": [
+            1376326140,
+            2812823196,
+            1220163141,
+            250
+          ],
+          "elapsedMs": 250,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.28133934806101024,
+          "userSeconds": 0.27643,
+          "systemSeconds": 0.004006
+        },
+        {
+          "case": "numeric",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 77504,
+          "warmups": 9680,
+          "expected": [
+            1376326140,
+            2812823196,
+            1220163141
+          ],
+          "actual": [
+            1376326140,
+            2812823196,
+            1220163141,
+            252
+          ],
+          "elapsedMs": 252,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.28584028710611165,
+          "userSeconds": 0.28495699999999996,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "numeric",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 77504,
+          "warmups": 9680,
+          "expected": [
+            1376326140,
+            2812823196,
+            1220163141
+          ],
+          "actual": [
+            1376326140,
+            2812823196,
+            1220163141,
+            254
+          ],
+          "elapsedMs": 254,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.2859937930479646,
+          "userSeconds": 0.28109999999999996,
+          "systemSeconds": 0.003959
+        },
+        {
+          "case": "numeric",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 77504,
+          "warmups": 9680,
+          "expected": [
+            1376326140,
+            2812823196,
+            1220163141
+          ],
+          "actual": [
+            1376326140,
+            2812823196,
+            1220163141,
+            252
+          ],
+          "elapsedMs": 252,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.2866204909514636,
+          "userSeconds": 0.285701,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "numeric",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 77504,
+          "warmups": 9680,
+          "expected": [
+            1376326140,
+            2812823196,
+            1220163141
+          ],
+          "actual": [
+            1376326140,
+            2812823196,
+            1220163141,
+            255
+          ],
+          "elapsedMs": 255,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.28588293003849685,
+          "userSeconds": 0.28495899999999996,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            171
+          ],
+          "elapsedMs": 171,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19463168806396425,
+          "userSeconds": 0.193636,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            249
+          ],
+          "elapsedMs": 249,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.27799160697031766,
+          "userSeconds": 0.277004,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            172
+          ],
+          "elapsedMs": 172,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19609240302816033,
+          "userSeconds": 0.191222,
+          "systemSeconds": 0.0039829999999999996
+        },
+        {
+          "case": "array",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            172
+          ],
+          "elapsedMs": 172,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19731135095935315,
+          "userSeconds": 0.19632,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            207
+          ],
+          "elapsedMs": 207,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.2308483379893005,
+          "userSeconds": 0.22986399999999999,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            191
+          ],
+          "elapsedMs": 191,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.22725911007728428,
+          "userSeconds": 0.222013,
+          "systemSeconds": 0.003964
+        },
+        {
+          "case": "array",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            174
+          ],
+          "elapsedMs": 174,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19743611698504537,
+          "userSeconds": 0.19647199999999998,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            192
+          ],
+          "elapsedMs": 192,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.21659691992681473,
+          "userSeconds": 0.211671,
+          "systemSeconds": 0.003993
+        },
+        {
+          "case": "array",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            185
+          ],
+          "elapsedMs": 185,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.20888935506809503,
+          "userSeconds": 0.20796299999999998,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            259
+          ],
+          "elapsedMs": 259,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.29477636504452676,
+          "userSeconds": 0.29356899999999997,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            259
+          ],
+          "elapsedMs": 259,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.29477480601053685,
+          "userSeconds": 0.289581,
+          "systemSeconds": 0.003966
+        },
+        {
+          "case": "closures",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            388
+          ],
+          "elapsedMs": 388,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.44131255405955017,
+          "userSeconds": 0.440044,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            158
+          ],
+          "elapsedMs": 158,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.17883795604575425,
+          "userSeconds": 0.178029,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            224
+          ],
+          "elapsedMs": 224,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.25367857806850225,
+          "userSeconds": 0.25279,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            159
+          ],
+          "elapsedMs": 159,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.18242052604909986,
+          "userSeconds": 0.18154599999999999,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            225
+          ],
+          "elapsedMs": 225,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.2548327170079574,
+          "userSeconds": 0.254013,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            164
+          ],
+          "elapsedMs": 164,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.1867607799358666,
+          "userSeconds": 0.18198799999999998,
+          "systemSeconds": 0.0039559999999999994
+        },
+        {
+          "case": "closures",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            157
+          ],
+          "elapsedMs": 157,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.17838197003584355,
+          "userSeconds": 0.17751899999999998,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "tree",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 1280,
+          "warmups": 160,
+          "expected": [
+            971629740,
+            4290135645,
+            1404739973
+          ],
+          "actual": [
+            971629740,
+            4290135645,
+            1404739973,
+            332
+          ],
+          "elapsedMs": 332,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3759410009952262,
+          "userSeconds": 0.375135,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "tree",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 1280,
+          "warmups": 160,
+          "expected": [
+            971629740,
+            4290135645,
+            1404739973
+          ],
+          "actual": [
+            971629740,
+            4290135645,
+            1404739973,
+            318
+          ],
+          "elapsedMs": 318,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.36079898197203875,
+          "userSeconds": 0.35995299999999997,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "tree",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 1280,
+          "warmups": 160,
+          "expected": [
+            971629740,
+            4290135645,
+            1404739973
+          ],
+          "actual": [
+            971629740,
+            4290135645,
+            1404739973,
+            194
+          ],
+          "elapsedMs": 194,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.22090280195698142,
+          "userSeconds": 0.216057,
+          "systemSeconds": 0.004001
+        },
+        {
+          "case": "tree",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 1280,
+          "warmups": 160,
+          "expected": [
+            971629740,
+            4290135645,
+            1404739973
+          ],
+          "actual": [
+            971629740,
+            4290135645,
+            1404739973,
+            320
+          ],
+          "elapsedMs": 320,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3633445880841464,
+          "userSeconds": 0.36247799999999997,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "tree",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 1280,
+          "warmups": 160,
+          "expected": [
+            971629740,
+            4290135645,
+            1404739973
+          ],
+          "actual": [
+            971629740,
+            4290135645,
+            1404739973,
+            192
+          ],
+          "elapsedMs": 192,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.21807452605571598,
+          "userSeconds": 0.21323599999999998,
+          "systemSeconds": 0.003948
+        },
+        {
+          "case": "tree",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 1280,
+          "warmups": 160,
+          "expected": [
+            971629740,
+            4290135645,
+            1404739973
+          ],
+          "actual": [
+            971629740,
+            4290135645,
+            1404739973,
+            338
+          ],
+          "elapsedMs": 338,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3823632829589769,
+          "userSeconds": 0.38149099999999997,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "tree",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 1280,
+          "warmups": 160,
+          "expected": [
+            971629740,
+            4290135645,
+            1404739973
+          ],
+          "actual": [
+            971629740,
+            4290135645,
+            1404739973,
+            219
+          ],
+          "elapsedMs": 219,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.24890583893284202,
+          "userSeconds": 0.248045,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "tree",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 1280,
+          "warmups": 160,
+          "expected": [
+            971629740,
+            4290135645,
+            1404739973
+          ],
+          "actual": [
+            971629740,
+            4290135645,
+            1404739973,
+            363
+          ],
+          "elapsedMs": 363,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.41266184498090297,
+          "userSeconds": 0.411549,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "tree",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 1280,
+          "warmups": 160,
+          "expected": [
+            971629740,
+            4290135645,
+            1404739973
+          ],
+          "actual": [
+            971629740,
+            4290135645,
+            1404739973,
+            360
+          ],
+          "elapsedMs": 360,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.41047619993332773,
+          "userSeconds": 0.40923699999999996,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "map",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 1152,
+          "warmups": 144,
+          "expected": [
+            3714872484,
+            1479688133,
+            1809560261
+          ],
+          "actual": [
+            3714872484,
+            1479688133,
+            1809560261,
+            728
+          ],
+          "elapsedMs": 728,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.8326665429631248,
+          "userSeconds": 0.8318129999999999,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "map",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 1152,
+          "warmups": 144,
+          "expected": [
+            3714872484,
+            1479688133,
+            1809560261
+          ],
+          "actual": [
+            3714872484,
+            1479688133,
+            1809560261,
+            366
+          ],
+          "elapsedMs": 366,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.41339011292438954,
+          "userSeconds": 0.408531,
+          "systemSeconds": 0.004005
+        },
+        {
+          "case": "map",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 1152,
+          "warmups": 144,
+          "expected": [
+            3714872484,
+            1479688133,
+            1809560261
+          ],
+          "actual": [
+            3714872484,
+            1479688133,
+            1809560261,
+            420
+          ],
+          "elapsedMs": 420,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.4722346200142056,
+          "userSeconds": 0.467311,
+          "systemSeconds": 0.003994
+        },
+        {
+          "case": "map",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 1152,
+          "warmups": 144,
+          "expected": [
+            3714872484,
+            1479688133,
+            1809560261
+          ],
+          "actual": [
+            3714872484,
+            1479688133,
+            1809560261,
+            376
+          ],
+          "elapsedMs": 376,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.43103527801577,
+          "userSeconds": 0.42611499999999997,
+          "systemSeconds": 0.003981999999999999
+        },
+        {
+          "case": "map",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 1152,
+          "warmups": 144,
+          "expected": [
+            3714872484,
+            1479688133,
+            1809560261
+          ],
+          "actual": [
+            3714872484,
+            1479688133,
+            1809560261,
+            407
+          ],
+          "elapsedMs": 407,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.45902045106049627,
+          "userSeconds": 0.45813099999999995,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "map",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 1152,
+          "warmups": 144,
+          "expected": [
+            3714872484,
+            1479688133,
+            1809560261
+          ],
+          "actual": [
+            3714872484,
+            1479688133,
+            1809560261,
+            737
+          ],
+          "elapsedMs": 737,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.8259177879663184,
+          "userSeconds": 0.825046,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "map",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 1152,
+          "warmups": 144,
+          "expected": [
+            3714872484,
+            1479688133,
+            1809560261
+          ],
+          "actual": [
+            3714872484,
+            1479688133,
+            1809560261,
+            543
+          ],
+          "elapsedMs": 543,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.6331452179001644,
+          "userSeconds": 0.6319739999999999,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "map",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 1152,
+          "warmups": 144,
+          "expected": [
+            3714872484,
+            1479688133,
+            1809560261
+          ],
+          "actual": [
+            3714872484,
+            1479688133,
+            1809560261,
+            762
+          ],
+          "elapsedMs": 762,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.8622922110371292,
+          "userSeconds": 0.857433,
+          "systemSeconds": 0.003988
+        },
+        {
+          "case": "map",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 1152,
+          "warmups": 144,
+          "expected": [
+            3714872484,
+            1479688133,
+            1809560261
+          ],
+          "actual": [
+            3714872484,
+            1479688133,
+            1809560261,
+            373
+          ],
+          "elapsedMs": 373,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.42036042804829776,
+          "userSeconds": 0.41946999999999995,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "lexer",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 448,
+          "warmups": 48,
+          "expected": [
+            1822208108,
+            491371255,
+            959436309
+          ],
+          "actual": [
+            1822208108,
+            491371255,
+            959436309,
+            428
+          ],
+          "elapsedMs": 428,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.47592143795918673,
+          "userSeconds": 0.471001,
+          "systemSeconds": 0.003991
+        },
+        {
+          "case": "lexer",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 448,
+          "warmups": 48,
+          "expected": [
+            1822208108,
+            491371255,
+            959436309
+          ],
+          "actual": [
+            1822208108,
+            491371255,
+            959436309,
+            380
+          ],
+          "elapsedMs": 380,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.4233873850898817,
+          "userSeconds": 0.41844899999999996,
+          "systemSeconds": 0.003985
+        },
+        {
+          "case": "lexer",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 448,
+          "warmups": 48,
+          "expected": [
+            1822208108,
+            491371255,
+            959436309
+          ],
+          "actual": [
+            1822208108,
+            491371255,
+            959436309,
+            210
+          ],
+          "elapsedMs": 210,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.23503731295932084,
+          "userSeconds": 0.23007799999999998,
+          "systemSeconds": 0.003966
+        },
+        {
+          "case": "lexer",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 448,
+          "warmups": 48,
+          "expected": [
+            1822208108,
+            491371255,
+            959436309
+          ],
+          "actual": [
+            1822208108,
+            491371255,
+            959436309,
+            382
+          ],
+          "elapsedMs": 382,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.4264771189773455,
+          "userSeconds": 0.425531,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "lexer",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 448,
+          "warmups": 48,
+          "expected": [
+            1822208108,
+            491371255,
+            959436309
+          ],
+          "actual": [
+            1822208108,
+            491371255,
+            959436309,
+            209
+          ],
+          "elapsedMs": 209,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.23489825206343085,
+          "userSeconds": 0.233893,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "lexer",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 448,
+          "warmups": 48,
+          "expected": [
+            1822208108,
+            491371255,
+            959436309
+          ],
+          "actual": [
+            1822208108,
+            491371255,
+            959436309,
+            382
+          ],
+          "elapsedMs": 382,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.42531389906071126,
+          "userSeconds": 0.42435599999999996,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "lexer",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 448,
+          "warmups": 48,
+          "expected": [
+            1822208108,
+            491371255,
+            959436309
+          ],
+          "actual": [
+            1822208108,
+            491371255,
+            959436309,
+            240
+          ],
+          "elapsedMs": 240,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.26435191999189556,
+          "userSeconds": 0.263389,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "lexer",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 448,
+          "warmups": 48,
+          "expected": [
+            1822208108,
+            491371255,
+            959436309
+          ],
+          "actual": [
+            1822208108,
+            491371255,
+            959436309,
+            389
+          ],
+          "elapsedMs": 389,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.4504344559973106,
+          "userSeconds": 0.441212,
+          "systemSeconds": 0.007949
+        },
+        {
+          "case": "lexer",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 448,
+          "warmups": 48,
+          "expected": [
+            1822208108,
+            491371255,
+            959436309
+          ],
+          "actual": [
+            1822208108,
+            491371255,
+            959436309,
+            378
+          ],
+          "elapsedMs": 378,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.42919063300359994,
+          "userSeconds": 0.428338,
+          "systemSeconds": 0.0
+        }
+      ],
+      "geomeanCandidateOverUpstream": 1.1212448868706786,
+      "geomeanBaselineOverUpstream": 1.2880861460897506,
+      "geomeanCandidateOverBaseline": 0.8704735240530667,
+      "geomeanBaselineOverCandidate": 1.1488000178843314,
+      "geometricTimeReductionPercent": 12.952647594693333
+    },
+    "sixAdditions": {
+      "report": {
+        "path": "selfhost/build/phase70/compiler02-coverage-final-comparison01/report.json",
+        "bytes": 99904,
+        "sha256": "a1b962fc66c266dc304faacb711eb13e1fea44f01a8fdac342ccfe0b39dcd461"
+      },
+      "plan": {
+        "path": "selfhost/build/phase70/compiler02-coverage-final-comparison01/plan.json",
+        "bytes": 102477,
+        "sha256": "61e0a29a8d34cafa64a43b7d2c9495807a37e59b231bd779f8bbc88feb6c4ef5"
+      },
+      "started": 1791770672.5710065,
+      "finished": 1791770714.968556,
+      "qualifiedIntervals": 54,
+      "rows": [
+        {
+          "case": "list-pipeline",
+          "mediansMs": {
+            "baseline69": 644,
+            "candidate": 646,
+            "upstream": 301
+          },
+          "candidateOverUpstream": 2.1461794019933556,
+          "baselineOverUpstream": 2.13953488372093,
+          "candidateOverBaseline": 1.0031055900621118,
+          "baselineOverCandidate": 0.9969040247678018,
+          "timeReductionPercent": -0.31055900621117516
+        },
+        {
+          "case": "bst",
+          "mediansMs": {
+            "baseline69": 681,
+            "candidate": 693,
+            "upstream": 317
+          },
+          "candidateOverUpstream": 2.186119873817035,
+          "baselineOverUpstream": 2.1482649842271293,
+          "candidateOverBaseline": 1.0176211453744493,
+          "baselineOverCandidate": 0.9826839826839827,
+          "timeReductionPercent": -1.7621145374449254
+        },
+        {
+          "case": "expression",
+          "mediansMs": {
+            "baseline69": 564,
+            "candidate": 483,
+            "upstream": 344
+          },
+          "candidateOverUpstream": 1.4040697674418605,
+          "baselineOverUpstream": 1.6395348837209303,
+          "candidateOverBaseline": 0.8563829787234043,
+          "baselineOverCandidate": 1.1677018633540373,
+          "timeReductionPercent": 14.36170212765957
+        },
+        {
+          "case": "array-map",
+          "mediansMs": {
+            "baseline69": 1126,
+            "candidate": 817,
+            "upstream": 334
+          },
+          "candidateOverUpstream": 2.446107784431138,
+          "baselineOverUpstream": 3.37125748502994,
+          "candidateOverBaseline": 0.7255772646536413,
+          "baselineOverCandidate": 1.3782129742962057,
+          "timeReductionPercent": 27.442273534635873
+        },
+        {
+          "case": "tape-observer",
+          "mediansMs": {
+            "baseline69": 1169,
+            "candidate": 897,
+            "upstream": 302
+          },
+          "candidateOverUpstream": 2.9701986754966887,
+          "baselineOverUpstream": 3.870860927152318,
+          "candidateOverBaseline": 0.76732249786142,
+          "baselineOverCandidate": 1.3032329988851727,
+          "timeReductionPercent": 23.267750213857997
+        },
+        {
+          "case": "string-order",
+          "mediansMs": {
+            "baseline69": 472,
+            "candidate": 276,
+            "upstream": 340
+          },
+          "candidateOverUpstream": 0.8117647058823529,
+          "baselineOverUpstream": 1.388235294117647,
+          "candidateOverBaseline": 0.5847457627118644,
+          "baselineOverCandidate": 1.710144927536232,
+          "timeReductionPercent": 41.52542372881356
+        }
+      ],
+      "observations": [
+        {
+          "case": "list-pipeline",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 164576,
+          "warmups": 20560,
+          "expected": [
+            1904,
+            4160929125,
+            1995654085
+          ],
+          "actual": [
+            1904,
+            4160929125,
+            1995654085,
+            646
+          ],
+          "elapsedMs": 646,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.7293318109586835,
+          "userSeconds": 0.7204809999999999,
+          "systemSeconds": 0.007961
+        },
+        {
+          "case": "list-pipeline",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 164576,
+          "warmups": 20560,
+          "expected": [
+            1904,
+            4160929125,
+            1995654085
+          ],
+          "actual": [
+            1904,
+            4160929125,
+            1995654085,
+            646
+          ],
+          "elapsedMs": 646,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.7291278949705884,
+          "userSeconds": 0.728255,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "list-pipeline",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 164576,
+          "warmups": 20560,
+          "expected": [
+            1904,
+            4160929125,
+            1995654085
+          ],
+          "actual": [
+            1904,
+            4160929125,
+            1995654085,
+            301
+          ],
+          "elapsedMs": 301,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.34043967304751277,
+          "userSeconds": 0.339508,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "list-pipeline",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 164576,
+          "warmups": 20560,
+          "expected": [
+            1904,
+            4160929125,
+            1995654085
+          ],
+          "actual": [
+            1904,
+            4160929125,
+            1995654085,
+            656
+          ],
+          "elapsedMs": 656,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.7388415189925581,
+          "userSeconds": 0.737989,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "list-pipeline",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 164576,
+          "warmups": 20560,
+          "expected": [
+            1904,
+            4160929125,
+            1995654085
+          ],
+          "actual": [
+            1904,
+            4160929125,
+            1995654085,
+            304
+          ],
+          "elapsedMs": 304,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.346332196961157,
+          "userSeconds": 0.34519299999999997,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "list-pipeline",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 164576,
+          "warmups": 20560,
+          "expected": [
+            1904,
+            4160929125,
+            1995654085
+          ],
+          "actual": [
+            1904,
+            4160929125,
+            1995654085,
+            644
+          ],
+          "elapsedMs": 644,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.7267431900836527,
+          "userSeconds": 0.725874,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "list-pipeline",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 164576,
+          "warmups": 20560,
+          "expected": [
+            1904,
+            4160929125,
+            1995654085
+          ],
+          "actual": [
+            1904,
+            4160929125,
+            1995654085,
+            301
+          ],
+          "elapsedMs": 301,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3403682899661362,
+          "userSeconds": 0.339506,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "list-pipeline",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 164576,
+          "warmups": 20560,
+          "expected": [
+            1904,
+            4160929125,
+            1995654085
+          ],
+          "actual": [
+            1904,
+            4160929125,
+            1995654085,
+            643
+          ],
+          "elapsedMs": 643,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.7258989829570055,
+          "userSeconds": 0.725057,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "list-pipeline",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 164576,
+          "warmups": 20560,
+          "expected": [
+            1904,
+            4160929125,
+            1995654085
+          ],
+          "actual": [
+            1904,
+            4160929125,
+            1995654085,
+            644
+          ],
+          "elapsedMs": 644,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.7266848629806191,
+          "userSeconds": 0.7258319999999999,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "bst",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 122880,
+          "warmups": 15360,
+          "expected": [
+            3646523026,
+            2473840197,
+            3044227525
+          ],
+          "actual": [
+            3646523026,
+            2473840197,
+            3044227525,
+            681
+          ],
+          "elapsedMs": 681,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.7668938050046563,
+          "userSeconds": 0.76201,
+          "systemSeconds": 0.0039889999999999995
+        },
+        {
+          "case": "bst",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 122880,
+          "warmups": 15360,
+          "expected": [
+            3646523026,
+            2473840197,
+            3044227525
+          ],
+          "actual": [
+            3646523026,
+            2473840197,
+            3044227525,
+            693
+          ],
+          "elapsedMs": 693,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.7810153570026159,
+          "userSeconds": 0.7800659999999999,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "bst",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 122880,
+          "warmups": 15360,
+          "expected": [
+            3646523026,
+            2473840197,
+            3044227525
+          ],
+          "actual": [
+            3646523026,
+            2473840197,
+            3044227525,
+            318
+          ],
+          "elapsedMs": 318,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3609413979575038,
+          "userSeconds": 0.359968,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "bst",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 122880,
+          "warmups": 15360,
+          "expected": [
+            3646523026,
+            2473840197,
+            3044227525
+          ],
+          "actual": [
+            3646523026,
+            2473840197,
+            3044227525,
+            685
+          ],
+          "elapsedMs": 685,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.7731480370275676,
+          "userSeconds": 0.772288,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "bst",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 122880,
+          "warmups": 15360,
+          "expected": [
+            3646523026,
+            2473840197,
+            3044227525
+          ],
+          "actual": [
+            3646523026,
+            2473840197,
+            3044227525,
+            316
+          ],
+          "elapsedMs": 316,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.357850797008723,
+          "userSeconds": 0.35695099999999996,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "bst",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 122880,
+          "warmups": 15360,
+          "expected": [
+            3646523026,
+            2473840197,
+            3044227525
+          ],
+          "actual": [
+            3646523026,
+            2473840197,
+            3044227525,
+            670
+          ],
+          "elapsedMs": 670,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.7567956609418616,
+          "userSeconds": 0.751894,
+          "systemSeconds": 0.003999
+        },
+        {
+          "case": "bst",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 122880,
+          "warmups": 15360,
+          "expected": [
+            3646523026,
+            2473840197,
+            3044227525
+          ],
+          "actual": [
+            3646523026,
+            2473840197,
+            3044227525,
+            317
+          ],
+          "elapsedMs": 317,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3585951450513676,
+          "userSeconds": 0.357643,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "bst",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 122880,
+          "warmups": 15360,
+          "expected": [
+            3646523026,
+            2473840197,
+            3044227525
+          ],
+          "actual": [
+            3646523026,
+            2473840197,
+            3044227525,
+            683
+          ],
+          "elapsedMs": 683,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.7714984639314935,
+          "userSeconds": 0.7704519999999999,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "bst",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 122880,
+          "warmups": 15360,
+          "expected": [
+            3646523026,
+            2473840197,
+            3044227525
+          ],
+          "actual": [
+            3646523026,
+            2473840197,
+            3044227525,
+            764
+          ],
+          "elapsedMs": 764,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.8642953420057893,
+          "userSeconds": 0.863128,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "expression",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 111712,
+          "warmups": 13952,
+          "expected": [
+            3393903617,
+            933738021,
+            1886245773
+          ],
+          "actual": [
+            3393903617,
+            933738021,
+            1886245773,
+            564
+          ],
+          "elapsedMs": 564,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.6381127029890195,
+          "userSeconds": 0.6370319999999999,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "expression",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 111712,
+          "warmups": 13952,
+          "expected": [
+            3393903617,
+            933738021,
+            1886245773
+          ],
+          "actual": [
+            3393903617,
+            933738021,
+            1886245773,
+            490
+          ],
+          "elapsedMs": 490,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.5545723440591246,
+          "userSeconds": 0.553698,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "expression",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 111712,
+          "warmups": 13952,
+          "expected": [
+            3393903617,
+            933738021,
+            1886245773
+          ],
+          "actual": [
+            3393903617,
+            933738021,
+            1886245773,
+            343
+          ],
+          "elapsedMs": 343,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.38818126800470054,
+          "userSeconds": 0.387241,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "expression",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 111712,
+          "warmups": 13952,
+          "expected": [
+            3393903617,
+            933738021,
+            1886245773
+          ],
+          "actual": [
+            3393903617,
+            933738021,
+            1886245773,
+            481
+          ],
+          "elapsedMs": 481,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.5432708710432053,
+          "userSeconds": 0.542103,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "expression",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 111712,
+          "warmups": 13952,
+          "expected": [
+            3393903617,
+            933738021,
+            1886245773
+          ],
+          "actual": [
+            3393903617,
+            933738021,
+            1886245773,
+            344
+          ],
+          "elapsedMs": 344,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3890825309790671,
+          "userSeconds": 0.388152,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "expression",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 111712,
+          "warmups": 13952,
+          "expected": [
+            3393903617,
+            933738021,
+            1886245773
+          ],
+          "actual": [
+            3393903617,
+            933738021,
+            1886245773,
+            565
+          ],
+          "elapsedMs": 565,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.6354315240168944,
+          "userSeconds": 0.6305729999999999,
+          "systemSeconds": 0.00399
+        },
+        {
+          "case": "expression",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 111712,
+          "warmups": 13952,
+          "expected": [
+            3393903617,
+            933738021,
+            1886245773
+          ],
+          "actual": [
+            3393903617,
+            933738021,
+            1886245773,
+            345
+          ],
+          "elapsedMs": 345,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3895957199856639,
+          "userSeconds": 0.38473999999999997,
+          "systemSeconds": 0.003966
+        },
+        {
+          "case": "expression",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 111712,
+          "warmups": 13952,
+          "expected": [
+            3393903617,
+            933738021,
+            1886245773
+          ],
+          "actual": [
+            3393903617,
+            933738021,
+            1886245773,
+            562
+          ],
+          "elapsedMs": 562,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.635229930980131,
+          "userSeconds": 0.630361,
+          "systemSeconds": 0.0039889999999999995
+        },
+        {
+          "case": "expression",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 111712,
+          "warmups": 13952,
+          "expected": [
+            3393903617,
+            933738021,
+            1886245773
+          ],
+          "actual": [
+            3393903617,
+            933738021,
+            1886245773,
+            483
+          ],
+          "elapsedMs": 483,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.5483121670549735,
+          "userSeconds": 0.547406,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array-map",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 15360,
+          "warmups": 1920,
+          "expected": [
+            184,
+            1366772469,
+            1371612485
+          ],
+          "actual": [
+            184,
+            1366772469,
+            1371612485,
+            1126
+          ],
+          "elapsedMs": 1126,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 1.2667858279310167,
+          "userSeconds": 1.265956,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array-map",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 15360,
+          "warmups": 1920,
+          "expected": [
+            184,
+            1366772469,
+            1371612485
+          ],
+          "actual": [
+            184,
+            1366772469,
+            1371612485,
+            818
+          ],
+          "elapsedMs": 818,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.9217703520553187,
+          "userSeconds": 0.9208379999999999,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array-map",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 15360,
+          "warmups": 1920,
+          "expected": [
+            184,
+            1366772469,
+            1371612485
+          ],
+          "actual": [
+            184,
+            1366772469,
+            1371612485,
+            334
+          ],
+          "elapsedMs": 334,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3773775100708008,
+          "userSeconds": 0.37640999999999997,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array-map",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 15360,
+          "warmups": 1920,
+          "expected": [
+            184,
+            1366772469,
+            1371612485
+          ],
+          "actual": [
+            184,
+            1366772469,
+            1371612485,
+            817
+          ],
+          "elapsedMs": 817,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.9247885149670765,
+          "userSeconds": 0.923824,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array-map",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 15360,
+          "warmups": 1920,
+          "expected": [
+            184,
+            1366772469,
+            1371612485
+          ],
+          "actual": [
+            184,
+            1366772469,
+            1371612485,
+            332
+          ],
+          "elapsedMs": 332,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3762964829802513,
+          "userSeconds": 0.37138099999999996,
+          "systemSeconds": 0.003993
+        },
+        {
+          "case": "array-map",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 15360,
+          "warmups": 1920,
+          "expected": [
+            184,
+            1366772469,
+            1371612485
+          ],
+          "actual": [
+            184,
+            1366772469,
+            1371612485,
+            1128
+          ],
+          "elapsedMs": 1128,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 1.271068155998364,
+          "userSeconds": 1.270191,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array-map",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 15360,
+          "warmups": 1920,
+          "expected": [
+            184,
+            1366772469,
+            1371612485
+          ],
+          "actual": [
+            184,
+            1366772469,
+            1371612485,
+            335
+          ],
+          "elapsedMs": 335,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3790700149256736,
+          "userSeconds": 0.37412999999999996,
+          "systemSeconds": 0.00398
+        },
+        {
+          "case": "array-map",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 15360,
+          "warmups": 1920,
+          "expected": [
+            184,
+            1366772469,
+            1371612485
+          ],
+          "actual": [
+            184,
+            1366772469,
+            1371612485,
+            1124
+          ],
+          "elapsedMs": 1124,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 1.2694161540130153,
+          "userSeconds": 1.268567,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array-map",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 15360,
+          "warmups": 1920,
+          "expected": [
+            184,
+            1366772469,
+            1371612485
+          ],
+          "actual": [
+            184,
+            1366772469,
+            1371612485,
+            815
+          ],
+          "elapsedMs": 815,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.9214469019789249,
+          "userSeconds": 0.9165369999999999,
+          "systemSeconds": 0.0040019999999999995
+        },
+        {
+          "case": "tape-observer",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 371616,
+          "warmups": 46448,
+          "expected": [
+            2893425665,
+            3707401244,
+            20544641
+          ],
+          "actual": [
+            2893425665,
+            3707401244,
+            20544641,
+            1169
+          ],
+          "elapsedMs": 1169,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 1.3268162960885093,
+          "userSeconds": 1.321659,
+          "systemSeconds": 0.003992
+        },
+        {
+          "case": "tape-observer",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 371616,
+          "warmups": 46448,
+          "expected": [
+            2893425665,
+            3707401244,
+            20544641
+          ],
+          "actual": [
+            2893425665,
+            3707401244,
+            20544641,
+            897
+          ],
+          "elapsedMs": 897,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 1.0112438860815018,
+          "userSeconds": 1.010358,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "tape-observer",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 371616,
+          "warmups": 46448,
+          "expected": [
+            2893425665,
+            3707401244,
+            20544641
+          ],
+          "actual": [
+            2893425665,
+            3707401244,
+            20544641,
+            302
+          ],
+          "elapsedMs": 302,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.34099708194844425,
+          "userSeconds": 0.340082,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "tape-observer",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 371616,
+          "warmups": 46448,
+          "expected": [
+            2893425665,
+            3707401244,
+            20544641
+          ],
+          "actual": [
+            2893425665,
+            3707401244,
+            20544641,
+            895
+          ],
+          "elapsedMs": 895,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 1.0135805810568854,
+          "userSeconds": 1.008689,
+          "systemSeconds": 0.003986
+        },
+        {
+          "case": "tape-observer",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 371616,
+          "warmups": 46448,
+          "expected": [
+            2893425665,
+            3707401244,
+            20544641
+          ],
+          "actual": [
+            2893425665,
+            3707401244,
+            20544641,
+            306
+          ],
+          "elapsedMs": 306,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.34598672296851873,
+          "userSeconds": 0.345068,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "tape-observer",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 371616,
+          "warmups": 46448,
+          "expected": [
+            2893425665,
+            3707401244,
+            20544641
+          ],
+          "actual": [
+            2893425665,
+            3707401244,
+            20544641,
+            1154
+          ],
+          "elapsedMs": 1154,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 1.3013442810624838,
+          "userSeconds": 1.300398,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "tape-observer",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 371616,
+          "warmups": 46448,
+          "expected": [
+            2893425665,
+            3707401244,
+            20544641
+          ],
+          "actual": [
+            2893425665,
+            3707401244,
+            20544641,
+            297
+          ],
+          "elapsedMs": 297,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.33638305496424437,
+          "userSeconds": 0.33552299999999996,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "tape-observer",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 371616,
+          "warmups": 46448,
+          "expected": [
+            2893425665,
+            3707401244,
+            20544641
+          ],
+          "actual": [
+            2893425665,
+            3707401244,
+            20544641,
+            1172
+          ],
+          "elapsedMs": 1172,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 1.3258575689978898,
+          "userSeconds": 1.324831,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "tape-observer",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 371616,
+          "warmups": 46448,
+          "expected": [
+            2893425665,
+            3707401244,
+            20544641
+          ],
+          "actual": [
+            2893425665,
+            3707401244,
+            20544641,
+            984
+          ],
+          "elapsedMs": 984,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 1.1035528311040252,
+          "userSeconds": 1.098681,
+          "systemSeconds": 0.003994999999999999
+        },
+        {
+          "case": "string-order",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 42368,
+          "warmups": 5296,
+          "expected": [
+            2557408942,
+            3580689761,
+            3954302021
+          ],
+          "actual": [
+            2557408942,
+            3580689761,
+            3954302021,
+            514
+          ],
+          "elapsedMs": 514,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.5828796109417453,
+          "userSeconds": 0.581997,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "string-order",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 42368,
+          "warmups": 5296,
+          "expected": [
+            2557408942,
+            3580689761,
+            3954302021
+          ],
+          "actual": [
+            2557408942,
+            3580689761,
+            3954302021,
+            276
+          ],
+          "elapsedMs": 276,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3130811769515276,
+          "userSeconds": 0.312223,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "string-order",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 42368,
+          "warmups": 5296,
+          "expected": [
+            2557408942,
+            3580689761,
+            3954302021
+          ],
+          "actual": [
+            2557408942,
+            3580689761,
+            3954302021,
+            340
+          ],
+          "elapsedMs": 340,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3843086580745876,
+          "userSeconds": 0.383422,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "string-order",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 42368,
+          "warmups": 5296,
+          "expected": [
+            2557408942,
+            3580689761,
+            3954302021
+          ],
+          "actual": [
+            2557408942,
+            3580689761,
+            3954302021,
+            276
+          ],
+          "elapsedMs": 276,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3124323070514947,
+          "userSeconds": 0.311559,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "string-order",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 42368,
+          "warmups": 5296,
+          "expected": [
+            2557408942,
+            3580689761,
+            3954302021
+          ],
+          "actual": [
+            2557408942,
+            3580689761,
+            3954302021,
+            342
+          ],
+          "elapsedMs": 342,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3868255369598046,
+          "userSeconds": 0.38592299999999996,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "string-order",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 42368,
+          "warmups": 5296,
+          "expected": [
+            2557408942,
+            3580689761,
+            3954302021
+          ],
+          "actual": [
+            2557408942,
+            3580689761,
+            3954302021,
+            459
+          ],
+          "elapsedMs": 459,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.5180909739574417,
+          "userSeconds": 0.517255,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "string-order",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 42368,
+          "warmups": 5296,
+          "expected": [
+            2557408942,
+            3580689761,
+            3954302021
+          ],
+          "actual": [
+            2557408942,
+            3580689761,
+            3954302021,
+            340
+          ],
+          "elapsedMs": 340,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3845349340699613,
+          "userSeconds": 0.38369899999999996,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "string-order",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 42368,
+          "warmups": 5296,
+          "expected": [
+            2557408942,
+            3580689761,
+            3954302021
+          ],
+          "actual": [
+            2557408942,
+            3580689761,
+            3954302021,
+            472
+          ],
+          "elapsedMs": 472,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.531197204021737,
+          "userSeconds": 0.526341,
+          "systemSeconds": 0.003987
+        },
+        {
+          "case": "string-order",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 42368,
+          "warmups": 5296,
+          "expected": [
+            2557408942,
+            3580689761,
+            3954302021
+          ],
+          "actual": [
+            2557408942,
+            3580689761,
+            3954302021,
+            276
+          ],
+          "elapsedMs": 276,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.3127509809564799,
+          "userSeconds": 0.31185599999999997,
+          "systemSeconds": 0.0
+        }
+      ],
+      "geomeanCandidateOverUpstream": 1.840362278169311,
+      "geomeanBaselineOverUpstream": 2.2691597737664,
+      "geomeanCandidateOverBaseline": 0.8110324797070758,
+      "geomeanBaselineOverCandidate": 1.2329962424700602,
+      "geometricTimeReductionPercent": 18.89675202929242
+    },
+    "narrowStability": {
+      "report": {
+        "path": "selfhost/build/phase70/compiler02-native-stability02/report.json",
+        "bytes": 64506,
+        "sha256": "eaa4c42fc89d4a743fbf50c4c84d40ba9d05d33b04cc1c49fe0413dd73da5714"
+      },
+      "plan": {
+        "path": "selfhost/build/phase70/compiler02-native-stability02/plan.json",
+        "bytes": 58610,
+        "sha256": "877ed152f4924b3cb4c635cc7609627f88cd9f55ab0aa0c2e060fa35188b24d9"
+      },
+      "started": 1791770469.8041418,
+      "finished": 1791770480.6671443,
+      "qualifiedIntervals": 36,
+      "rows": [
+        {
+          "case": "array",
+          "mediansMs": {
+            "baseline69": 169.0,
+            "candidate": 169.5,
+            "upstream": 168.0
+          },
+          "candidateOverUpstream": 1.0089285714285714,
+          "baselineOverUpstream": 1.005952380952381,
+          "candidateOverBaseline": 1.0029585798816567,
+          "baselineOverCandidate": 0.9970501474926253,
+          "timeReductionPercent": -0.2958579881656709
+        },
+        {
+          "case": "closures",
+          "mediansMs": {
+            "baseline69": 161.5,
+            "candidate": 156.5,
+            "upstream": 223.0
+          },
+          "candidateOverUpstream": 0.7017937219730942,
+          "baselineOverUpstream": 0.7242152466367713,
+          "candidateOverBaseline": 0.9690402476780186,
+          "baselineOverCandidate": 1.0319488817891374,
+          "timeReductionPercent": 3.095975232198145
+        }
+      ],
+      "observations": [
+        {
+          "case": "array",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            171
+          ],
+          "elapsedMs": 171,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19452451495453715,
+          "userSeconds": 0.193621,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            189
+          ],
+          "elapsedMs": 189,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.21175563300494105,
+          "userSeconds": 0.210836,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            168
+          ],
+          "elapsedMs": 168,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19181573495734483,
+          "userSeconds": 0.19089799999999998,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            169
+          ],
+          "elapsedMs": 169,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.1917505729943514,
+          "userSeconds": 0.190849,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            169
+          ],
+          "elapsedMs": 169,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19236155098769814,
+          "userSeconds": 0.187517,
+          "systemSeconds": 0.0039889999999999995
+        },
+        {
+          "case": "array",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            169
+          ],
+          "elapsedMs": 169,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.1921817020047456,
+          "userSeconds": 0.191321,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            168
+          ],
+          "elapsedMs": 168,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19158320198766887,
+          "userSeconds": 0.190751,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            168
+          ],
+          "elapsedMs": 168,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19142642908263952,
+          "userSeconds": 0.19054,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            169
+          ],
+          "elapsedMs": 169,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19265403202734888,
+          "userSeconds": 0.19178499999999998,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "baseline69",
+          "round": 3,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            169
+          ],
+          "elapsedMs": 169,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19185279903467745,
+          "userSeconds": 0.190958,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "candidate",
+          "round": 3,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            169
+          ],
+          "elapsedMs": 169,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19176163990050554,
+          "userSeconds": 0.19087099999999999,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "upstream",
+          "round": 3,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            168
+          ],
+          "elapsedMs": 168,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19163182098418474,
+          "userSeconds": 0.190742,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "candidate",
+          "round": 4,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            170
+          ],
+          "elapsedMs": 170,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19349605101160705,
+          "userSeconds": 0.192629,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "upstream",
+          "round": 4,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            169
+          ],
+          "elapsedMs": 169,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.1925544060068205,
+          "userSeconds": 0.191682,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "baseline69",
+          "round": 4,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            169
+          ],
+          "elapsedMs": 169,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.1924203330418095,
+          "userSeconds": 0.19153799999999999,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "upstream",
+          "round": 5,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            168
+          ],
+          "elapsedMs": 168,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.1917427210137248,
+          "userSeconds": 0.190884,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "array",
+          "role": "baseline69",
+          "round": 5,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            170
+          ],
+          "elapsedMs": 170,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19391269597690552,
+          "userSeconds": 0.189077,
+          "systemSeconds": 0.003939
+        },
+        {
+          "case": "array",
+          "role": "candidate",
+          "round": 5,
+          "repetitions": 61440,
+          "warmups": 7680,
+          "expected": [
+            2339999928,
+            4123708869,
+            3616923077
+          ],
+          "actual": [
+            2339999928,
+            4123708869,
+            3616923077,
+            172
+          ],
+          "elapsedMs": 172,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19591902801766992,
+          "userSeconds": 0.195046,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "baseline69",
+          "round": 0,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            160
+          ],
+          "elapsedMs": 160,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.1816967100603506,
+          "userSeconds": 0.180834,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "candidate",
+          "round": 0,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            156
+          ],
+          "elapsedMs": 156,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.17830499401316047,
+          "userSeconds": 0.177448,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "upstream",
+          "round": 0,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            222
+          ],
+          "elapsedMs": 222,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.25230272801127285,
+          "userSeconds": 0.25141399999999997,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "candidate",
+          "round": 1,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            157
+          ],
+          "elapsedMs": 157,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.17880013689864427,
+          "userSeconds": 0.17399599999999998,
+          "systemSeconds": 0.003954
+        },
+        {
+          "case": "closures",
+          "role": "upstream",
+          "round": 1,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            221
+          ],
+          "elapsedMs": 221,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.2514990649651736,
+          "userSeconds": 0.24665499999999999,
+          "systemSeconds": 0.003978
+        },
+        {
+          "case": "closures",
+          "role": "baseline69",
+          "round": 1,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            160
+          ],
+          "elapsedMs": 160,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.18161562201566994,
+          "userSeconds": 0.18073,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "upstream",
+          "round": 2,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            223
+          ],
+          "elapsedMs": 223,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.25251152098644525,
+          "userSeconds": 0.251642,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "baseline69",
+          "round": 2,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            163
+          ],
+          "elapsedMs": 163,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.1851072919089347,
+          "userSeconds": 0.184217,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "candidate",
+          "round": 2,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            155
+          ],
+          "elapsedMs": 155,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.1760916339699179,
+          "userSeconds": 0.17521899999999999,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "baseline69",
+          "round": 3,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            160
+          ],
+          "elapsedMs": 160,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.18168588995467871,
+          "userSeconds": 0.180863,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "candidate",
+          "round": 3,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            159
+          ],
+          "elapsedMs": 159,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.18142784503288567,
+          "userSeconds": 0.176562,
+          "systemSeconds": 0.004012
+        },
+        {
+          "case": "closures",
+          "role": "upstream",
+          "round": 3,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            223
+          ],
+          "elapsedMs": 223,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.25343305291607976,
+          "userSeconds": 0.25254699999999997,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "candidate",
+          "round": 4,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            156
+          ],
+          "elapsedMs": 156,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.17804274801164865,
+          "userSeconds": 0.173254,
+          "systemSeconds": 0.0039369999999999995
+        },
+        {
+          "case": "closures",
+          "role": "upstream",
+          "round": 4,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            225
+          ],
+          "elapsedMs": 225,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.25458754505962133,
+          "userSeconds": 0.253723,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "baseline69",
+          "round": 4,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            174
+          ],
+          "elapsedMs": 174,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19939545402303338,
+          "userSeconds": 0.194536,
+          "systemSeconds": 0.00397
+        },
+        {
+          "case": "closures",
+          "role": "upstream",
+          "round": 5,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            241
+          ],
+          "elapsedMs": 241,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.275437219068408,
+          "userSeconds": 0.274564,
+          "systemSeconds": 0.0
+        },
+        {
+          "case": "closures",
+          "role": "baseline69",
+          "round": 5,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            174
+          ],
+          "elapsedMs": 174,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19671267794910818,
+          "userSeconds": 0.19178499999999998,
+          "systemSeconds": 0.003994999999999999
+        },
+        {
+          "case": "closures",
+          "role": "candidate",
+          "round": 5,
+          "repetitions": 57888,
+          "warmups": 7232,
+          "expected": [
+            33019,
+            889349253,
+            2770842789
+          ],
+          "actual": [
+            33019,
+            889349253,
+            2770842789,
+            169
+          ],
+          "elapsedMs": 169,
+          "correct": true,
+          "qualified": true,
+          "processSeconds": 0.19232320704031736,
+          "userSeconds": 0.187214,
+          "systemSeconds": 0.0039829999999999996
+        }
+      ],
+      "geomeanCandidateOverUpstream": 0.841462855596047,
+      "geomeanBaselineOverUpstream": 0.8535373756762359,
+      "geomeanCandidateOverBaseline": 0.9858535543676425,
+      "geomeanBaselineOverCandidate": 1.0143494391937669,
+      "geometricTimeReductionPercent": 1.4146445632357452
+    }
+  },
+  "optionalTwelveEqualFamilyWeights": {
+    "geomeanCandidateOverUpstream": 1.436487658974839,
+    "scope": "Explicit equal-family union of two distinct six-family campaigns; not a replacement for either primary denominator. Narrow stability observations are excluded."
+  },
+  "identities": [
+    {
+      "path": "selfhost/build/phase70/compiler02/equality/api.mjs",
+      "bytes": 2212323,
+      "sha256": "f326862f5163fce83e47642c9b8dcfdb6596683bafe36054b7fb6d5430376f2f"
+    },
+    {
+      "path": "selfhost/build/phase69/typed-build10/equality/api.mjs",
+      "bytes": 2119259,
+      "sha256": "674e7960c7e8957452ffb0bdc6cb1f69ddaf8c03814617277886d1551fe16553"
+    },
+    {
+      "path": "selfhost/build/phase70/compiler02-coverage-final-plan01/holdouts.json",
+      "bytes": 3471,
+      "sha256": "d06e7b9ed8b43f316cb5e62630d3efbfa8bac8895c7b551a00a9b1d7d53edca5"
+    },
+    {
+      "path": "selfhost/build/phase70/compiler02-coverage-final-plan01/queue.json",
+      "bytes": 10611,
+      "sha256": "bffa673d866d07c2c5e61a499ea4d0492e50d00ecd0c0058551a0dfa46906169"
+    },
+    {
+      "path": "selfhost/build/phase70/compiler02-coverage-recipe.json",
+      "bytes": 41534,
+      "sha256": "4d2c2fdc8e66e0cfabd44f2833890a06a7a48db044f0b10267c189c0448067db"
+    },
+    {
+      "path": "selfhost/build/phase70/compiler02-coverage-missing-five01/report.json",
+      "bytes": 61865,
+      "sha256": "0975b9e679de1b48df34bd2d43c190edcf02ffaf29e81835aa9e8253bac43d5d"
+    },
+    {
+      "path": "selfhost/build/phase70/compiler02-coverage-baseline-holdouts01/report.json",
+      "bytes": 57700,
+      "sha256": "9291bdcddf69bc775299b0d04ab2371e604fefcd1e7e6f68e4f9386aa6d4bd1f"
+    },
+    {
+      "path": "selfhost/tools/performance/phase70/coverage/cases-v2.json",
+      "bytes": 3100,
+      "sha256": "eee6e69997e64f4ef393ced1e6464e9026957928fc2fa4808f7ba0c098f01442"
+    },
+    {
+      "path": "selfhost/tools/performance/phase70/coverage/oracle-v2.py",
+      "bytes": 4838,
+      "sha256": "7091fdefeccf782342b2f11e0efbc4f960aa92c9edc91f48ffe10e076e2b016a"
+    },
+    {
+      "path": "selfhost/tools/performance/phase70/coverage/array-map-shape-v2.json",
+      "bytes": 8889,
+      "sha256": "ffd74d8b133d314800d94b326f20bf3fe694649de29b668ce91d60f81be836c1"
+    }
+  ],
+  "limits": "These are B1-emitted C program runtimes after Clang compilation, not B1/B2 compiler request time. Summary retains every interval including unfavorable samples. Three primary rounds per role and finite fixed workloads do not establish universal parity. Raw reports and plans remain authoritative; this portable summary pins them and carries their timing/correctness observations. No release installation or later compiler variant is measured by this checkpoint."
+}

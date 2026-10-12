@@ -7,6 +7,11 @@ another **31 net lines**. This is a complexity increase for broader optimization
 not a simplification or line-reduction result. The installed release remains
 Phase69, and Phase70 qualification is still running.
 
+The increase is concentrated in the native backend: its recursive Bend source
+directory grows **3,879 → 5,072 lines (+30.76%)**. The whole-compiler percentage
+therefore understates the local maintenance cost. All figures below retain the
+**compiler02 checkpoint**; they do not anticipate later compiler03 changes.
+
 The [machine-readable snapshot](evidence/source-and-time-checkpoint01.json)
 pins every registered module and records the guarded-process receipts used
 below. The [read-only census script](../../selfhost/tools/performance/phase70/accounting/source-and-time-v1.py)
@@ -43,6 +48,29 @@ The count excludes copied proposal versions, fixtures, experiment reports,
 generated compiler images/C, runtimes, host tools and the bundled Base library.
 Those remain real maintenance/storage costs, but mixing them into compiler
 source would obscure the implementation change.
+
+## Native backend size
+
+All **1,193 net added production lines** are in `selfhost/src/back/native/`.
+Two related counting boundaries make the local change explicit:
+
+| Native backend boundary | Phase69 | Compiler02 checkpoint | Net physical change |
+| --- | ---: | ---: | ---: |
+| Registered production Bend modules | 3,868 lines /22 modules | 5,061 lines /29 modules | +1,193 (+30.84%) |
+| Recursive directory, all `.bend` files | 3,879 lines /23 files | 5,072 lines /30 files | +1,193 (+30.76%) |
+
+The directory count includes the unchanged 11-line
+`fixtures/override_add.bend`, which is not a registered compiler module. Calling
+all 30 files production modules would therefore mix a fixture into the compiler
+census. Both boundaries show the same net implementation growth.
+
+The [separate local derivation](evidence/native-local-checkpoint02.json) reuses
+the frozen compiler02 module hashes/counts, records the checkpoint hash, and
+verifies that the extra fixture has identical Phase69 and working bytes. It
+does not modify the original accounting evidence. These local totals matter
+alongside the six added architectural concepts below: the observer pass is a
+substantial addition to this backend even though it adds only 3.94% to the whole
+compiler.
 
 ## Where the new source lives
 

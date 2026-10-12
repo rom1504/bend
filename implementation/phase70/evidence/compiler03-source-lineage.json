@@ -1,0 +1,115 @@
+{
+  "kind": "phase70-compiler03-independent-source-lineage",
+  "version": 1,
+  "reviewedAt": "2026-10-12T02:20:50.589215+00:00",
+  "mode": "Source/data only on CPU0; no compiler or native target executed by reviewer.",
+  "checkedAttempt": {
+    "file": "selfhost/build/phase70/compiler03/attempt.json",
+    "sha256": "eea6173a0a3e12b2807e09eb68f6975c3776cc7ae781f5c0a0558d15f03cc451",
+    "bytes": 312300
+  },
+  "candidateApi": {
+    "file": "selfhost/build/phase70/compiler03/equality/api.mjs",
+    "sha256": "386ae358ee8fe33c5af3f7fec16f956b59451ee6004da99a94146140d3e8a162",
+    "bytes": 2211717
+  },
+  "snapshotFileCount": 263,
+  "changedSnapshotFiles": [
+    {
+      "path": "back/native/README.md",
+      "before": {
+        "file": "selfhost/build/phase70/compiler02/snapshot/src/back/native/README.md",
+        "sha256": "976f057b9cbb8248f753084f55f1f60d5257a78b5d2f74d134e92233176d8a1d",
+        "bytes": 9197
+      },
+      "after": {
+        "file": "selfhost/build/phase70/compiler03/snapshot/src/back/native/README.md",
+        "sha256": "17b9210a4ac29584aae84d6e5bf5042571f6a14a74a5b3c2adb5c937255b720c",
+        "bytes": 9950
+      }
+    },
+    {
+      "path": "back/native/bridge.bend",
+      "before": {
+        "file": "selfhost/build/phase70/compiler02/snapshot/src/back/native/bridge.bend",
+        "sha256": "be6e2272248ad8921fdef3b140a444835c50a29769fbcd57e438e0dd62d37205",
+        "bytes": 33019
+      },
+      "after": {
+        "file": "selfhost/build/phase70/compiler03/snapshot/src/back/native/bridge.bend",
+        "sha256": "6a844d2f8abfb73f090a2afe18bb35771591cd9d58f0d041ce5d86c5afcc1d29",
+        "bytes": 32514
+      }
+    }
+  ],
+  "changedCodeFiles": [
+    "back/native/bridge.bend"
+  ],
+  "currentNonMarkdownFilesEqualCheckedSnapshot": 256,
+  "bridgeExactlyRestoredTo": {
+    "file": "selfhost/build/phase69/typed-build10/snapshot/src/back/native/bridge.bend",
+    "sha256": "6a844d2f8abfb73f090a2afe18bb35771591cd9d58f0d041ce5d86c5afcc1d29",
+    "bytes": 32514
+  },
+  "occurrenceHelpersAbsent": true,
+  "ordinaryReadySkipUnapplied": true,
+  "selectedExperiments": [
+    "P70-001 observers",
+    "P70-004 lazy product demand",
+    "P70-005 compact body reuse",
+    "P70-007 checked Bool arrays"
+  ],
+  "rejectedExperiments": [
+    "P70-006 occurrence insertion: removed in compiler03 after failed retention gate",
+    "P70-008 ordinary-ready observer skip: never integrated"
+  ],
+  "factorial": {
+    "plan": {
+      "file": "selfhost/build/phase70/compiler02-factorial01/plan.json",
+      "sha256": "747edf83b39f5a56ede3d717bcb62a587de06024a2866a3ee818aca1ca069070",
+      "bytes": 472906
+    },
+    "summary": {
+      "file": "selfhost/build/phase70/compiler02-factorial01-summary.json",
+      "sha256": "115c8381545f4e57e753e2f182b97c9332d9c32b2aa0dd642f2656416cf811c8",
+      "bytes": 48864
+    },
+    "observationsPinnedAndVerified": 40,
+    "preparations": 8,
+    "cleanRequests": 32,
+    "allExactC": true,
+    "b1": {
+      "numerator": "current",
+      "denominator": "occurrence-off",
+      "medianRatio": 0.9529400281722517,
+      "pairedRoundRatios": [
+        0.903632525936666,
+        1.001404435013093,
+        0.9923361663724143,
+        1.0048472615959447
+      ],
+      "geomeanPairedRatio": 0.9746306381668207,
+      "numeratorFasterRounds": 2
+    },
+    "b2": {
+      "numerator": "current",
+      "denominator": "occurrence-off",
+      "medianRatio": 1.0222012185904812,
+      "pairedRoundRatios": [
+        1.025466366547596,
+        1.0252529701600062,
+        1.0313663663637374,
+        1.0015252777728243
+      ],
+      "geomeanPairedRatio": 1.020838014498172,
+      "numeratorFasterRounds": 0
+    },
+    "claim": "B2 occurrence-off won 4/4 paired rounds. B1 was mixed; no B1 speedup claim."
+  },
+  "pending": [
+    "Compiler03 native100 and raw31",
+    "Compiler03 genuine B2 driver, self-check and B3 qualification",
+    "Compiler03 exact C mappings to all 12 validated compiler02 programs for both B1 and B2",
+    "Compiler03 final compilation latency, release installation and sealed evidence"
+  ]
+}

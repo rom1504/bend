@@ -1,6 +1,12 @@
 # Compiler02 correctness review
 
-The final Phase70 B1 candidate passes its strict checked build, 100 selected
+Historical checkpoint: compiler02 was superseded by
+[compiler03](compiler03-correctness.md), which removes the occurrence-insertion
+experiment after it failed the performance retention gate. Its helper controls
+and native results below remain compiler02 evidence; the helper does not ship
+in the selected successor. P70-008's ordinary-ready skip also remains unapplied.
+
+The compiler02 Phase70 B1 candidate passes its strict checked build, 100 selected
 native golden controls, 31 raw-API controls, focused occurrence and Bool controls,
 and unchanged-JS closure comparison. Upstream passes 93 of those native goldens;
 the other seven are exactly the known unused-demand differences. The paired
@@ -16,10 +22,10 @@ The [native/raw/driver follow-up](evidence/compiler02-native-raw-driver-correctn
 pins the completed broad results and exact seven upstream observations.
 This reviewer read source and retained data on CPU0; root executed all targets.
 
-## Final source changes
+## Source changes at the compiler02 checkpoint
 
-The current `bridge.bend` and `scalar-array.bend` exactly match the compiler02
-checked snapshot. Relative to the prior observer integration, they add ten
+The then-current `bridge.bend` and `scalar-array.bend` matched the compiler02
+checked snapshot. Relative to the prior observer integration, they added ten
 lines for occurrence insertion and add Bool to one existing allowlist. Neither
 change alters the native runtime or introduces a new IR or public API.
 

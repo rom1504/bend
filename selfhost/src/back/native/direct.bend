@@ -243,8 +243,8 @@ def nd_bindings(+t: KTerm, +acc: List<&2, NC_Binding>) -> List<&2, NC_Binding>:
   nt_choose(List<&2, NC_Binding>, String.eq(tg(t), "Lam"), u => nd_bindings(kid(t, 0), Con{nc_binding(ix(t)), acc}), u => nt_reverse(NC_Binding, acc, Nil{}))
 
 @unsafe
-def nd_join(+base: NC_Code, +body: NC_Code, name: String, params: List<&2, NC_Binding>) -> NC_Code:
-  NC_Code{nc_body(base), nt_append(N_Segment, nc_segs(base), Con{N_Segment{nd_name(name), nc_params(params), 1, N_Direct{}, nc_body(body), Nil{}, False{}, False{}, False{}, False{}}, nc_segs(body)}), nc_fresh(body), nc_first_error(base, body), List.append(&2, String, nc_calls(base), List.append(&2, String, nc_calls(body), Nil{}))}
+def nd_join(+base: NC_Code, +body: NC_Code, name: String, params: List<&2, NC_Binding>, host: Bool) -> NC_Code:
+  NC_Code{nc_body(base), nt_append(N_Segment, nc_segs(base), Con{N_Segment{nd_name(name), nc_params(params), 1, N_Direct{}, nc_body(body), Nil{}, host, False{}, False{}, False{}}, nc_segs(body)}), nc_fresh(body), nc_first_error(base, body), List.append(&2, String, nc_calls(base), List.append(&2, String, nc_calls(body), Nil{}))}
 
 @unsafe
 def nd_entry_params(+left: U32, +n: U32) -> List<&2, NC_Binding>:
@@ -261,7 +261,9 @@ def nd_entry_args(params: List<&2, NC_Binding>) -> List<&2, KTerm>:
 def nd_extend_arity(+book: List<&2, KDef>, +body: KTerm, +base: NC_Code, +name: String, +arity: U32) -> NC_Code:
   +params = nk_typed_bindings(nd_entry_params(arity, nc_fresh(base)), nf_worker_kinds(book, name, arity))
   nt_choose(NC_Code, U32.is_eq(arity, 0), u => base, u =>
-    nd_join(base, nc_lower(book, nd_reapply(body, nd_entry_args(params)), params, U32.add(nc_fresh(base), arity)), nc_ref_name(book, name), params))
+    nd_join(base, nt_choose(NC_Code, nf_host_selected(book, name, arity),
+      u => NC_Code{"", Nil{}, U32.add(nc_fresh(base), arity), "", Nil{}},
+      u => nc_lower(book, nd_reapply(body, nd_entry_args(params)), params, U32.add(nc_fresh(base), arity))), nc_ref_name(book, name), params, nf_host_selected(book, name, arity)))
 
 @unsafe
 def nd_extend(+book: List<&2, KDef>, +body: KTerm, +base: NC_Code, +name: String) -> NC_Code:

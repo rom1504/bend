@@ -278,28 +278,87 @@ def nf_ready_signatures(ds: List<&2, KDef>, +ready: List<&2, String>) -> List<&2
       nt_choose(List<&2, KDef>, String.eq(dk(d), "BookCache") || (String.eq(tg(dv(d)), "NQSig") && Bool.not(nb_contains(ready, nm(dv(d))))),
         u => nf_ready_signatures(rest, ready), u => Con{d, nf_ready_signatures(rest, ready)})
 
+# A retry only changes withdrawn product signatures. Constructor facts and all
+# other lowering inputs remain identical; avoid rebuilding unaffected workers.
 @unsafe
-def nf_retry(+book: List<&2, KDef>, workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>) -> List<&2, NF_Worker>:
+def nf_removed_signatures(ds: List<&2, KDef>, +ready: List<&2, String>) -> List<&2, String>:
+  match ds:
+    case Nil{}: Nil{}
+    case Con{+d, +rest}:
+      nt_choose(List<&2, String>, String.eq(tg(dv(d)), "NQSig") && Bool.not(nb_contains(ready, nm(dv(d)))),
+        u => Con{dn(d), nf_removed_signatures(rest, ready)}, u => nf_removed_signatures(rest, ready))
+
+@unsafe
+def nf_retry_refs(refs: List<&2, String>, +removed: List<&2, String>) -> Bool:
+  match refs:
+    case Nil{}: False{}
+    case Con{name, rest}: nb_contains(removed, name) || nf_retry_refs(rest, removed)
+
+@unsafe
+def nf_retry(+book: List<&2, KDef>, workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>, +removed: List<&2, String>) -> List<&2, NF_Worker>:
   match workers:
     case Nil{}: Nil{}
     case Con{NF_Worker{+name, params, +code, deps, shape}, rest}:
       +old : NF_Worker = NF_Worker{name, params, code, deps, shape}
       +retry = Bool.not(nb_contains(ready, name) || String.starts_with(name, "$product.")) && String.eq(nc_error(code), "")
-      Con{nt_choose(NF_Worker, retry, u => nf_candidate(book, name, signatures), u => old), nf_retry(book, rest, ready, signatures)}
+      Con{nt_choose(NF_Worker, retry && nf_retry_refs(nc_refs(nc_compact_definition(book, lookup(book, name), 0)), removed), u => nf_candidate(book, name, signatures), u => old), nf_retry(book, rest, ready, signatures, removed)}
+
+# Admission precedes scheduler lowering. The same workers and retry rules feed
+# the final renderer; the plan only allows proven redundant work to be skipped.
+type NF_Plan is Data:
+  NF_Plan{+workers: List<&2, NF_Worker>, +ready: List<&2, String>, +observers: List<&2, String>}
 
 @unsafe
-def nf_finish_retry(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:
-  +retried = nf_retry(book, workers, ready, book_cached(nf_ready_signatures(signatures, ready), 0))
-  nf_finish_ready(book, ss, cs, runtime, requests, pure, show, retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)), ns_image(book), observer_names, observers)
+def nf_plan_retry(+book: List<&2, KDef>, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>, +observers: List<&2, String>) -> NF_Plan:
+  +retried = nf_retry(book, workers, ready, book_cached(nf_ready_signatures(signatures, ready), 0), nf_removed_signatures(signatures, ready))
+  NF_Plan{retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)), observers}
 
 @unsafe
-def nf_finish_workers(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +signatures: List<&2, KDef>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:
-  nf_finish_retry(book, ss, cs, runtime, requests, pure, show, workers, nf_admit(book, workers, Nil{}, nt_count(NF_Worker, workers)), signatures, observer_names, observers)
+def nf_plan_workers(+book: List<&2, KDef>, +workers: List<&2, NF_Worker>, +signatures: List<&2, KDef>, +observers: List<&2, String>) -> NF_Plan:
+  nf_plan_retry(book, workers, nf_admit(book, workers, Nil{}, nt_count(NF_Worker, workers)), signatures, observers)
 
 @unsafe
-def nf_finish_show(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +observers: Bool) -> NC_Result:
-  +names = nc_live_names(book, ["main"], Nil{})
+def nf_plan(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +observers: Bool) -> NF_Plan:
   +signatures = book_cached(nq_signatures(book, names), 0)
-  +bangs = nc_bangs_names(book, names)
   +observer_names = nt_choose(List<&2, String>, observers, u => no_candidate_names(book, names, bangs), u => Nil{})
-  nf_finish_workers(book, ss, cs, runtime, requests, pure, show, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates_mode(book, names, bangs, signatures, observers)), signatures, observer_names, observers)
+  nf_plan_workers(book, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates_mode(book, names, bangs, signatures, observers)), signatures, observer_names)
+
+@unsafe
+def nf_finish_plan(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +observers: Bool, plan: NF_Plan) -> NC_Result:
+  match plan:
+    case NF_Plan{workers, ready, observer_names}: nf_finish_ready(book, ss, cs, runtime, requests, pure, show, workers, ready, ns_image(book), observer_names, observers)
+
+# Private request permission, attached only after ns_source clears caller facts.
+# No bang roots means the runtime cannot offload. Keep all device fallbacks for
+# any program with bangs, and keep raw API emission on its original lowering.
+@unsafe
+def nf_host_defs(workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> List<&2, KDef>:
+  match workers:
+    case Nil{}: Nil{}
+    case Con{NF_Worker{+name, +params, code, deps, shape}, +rest}:
+      +arity = nt_count(N_Param, params)
+      nt_choose(List<&2, KDef>, U32.is_gt(arity, 0) && Bool.not(String.starts_with(name, "$product.")) && nb_contains(ready, name),
+        u => Con{KDef{name, "NativeHostWorker", arity, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, nf_host_defs(rest, ready)}, u => nf_host_defs(rest, ready))
+
+@unsafe
+def nf_host_context(+book: List<&2, KDef>, +permission: Bool, plan: NF_Plan) -> List<&2, KDef>:
+  match plan:
+    case NF_Plan{workers, ready, observers}:
+      nt_choose(List<&2, KDef>, permission, u => nf_host_attach(book, index_build(nf_host_defs(workers, ready))), u => book)
+
+@unsafe
+def nf_host_attach(+book: List<&2, KDef>, +index: KDef) -> List<&2, KDef>:
+  match book:
+    case Nil{}: book
+    case Con{cache, rest}: Con{KDef{dn(cache), dk(cache), da(cache), dx(cache), dt(cache), dv(cache), [index_first(dc(cache)), ns_context(book), KDef{"$native.host.plan", "NativeHostPlan", 0, 0, atom("Absent"), atom("Absent"), [index], False{}, False{}}], db(cache), du(cache)}, rest}
+
+@unsafe
+def nf_host_payload(children: List<&2, KDef>) -> KDef:
+  match children:
+    case Con{source, Con{statics, Con{+plan, rest}}}: nt_choose(KDef, String.eq(dk(plan), "NativeHostPlan") && String.eq(dn(plan), "$native.host.plan"), u => index_first(dc(plan)), u => missing())
+    case _: missing()
+
+@unsafe
+def nf_host_selected(+book: List<&2, KDef>, +name: String, +arity: U32) -> Bool:
+  +d = index_find(nf_host_payload(dc(index_first(book))), name, index_hash(name, 2166136261), 32)
+  U32.is_gt(arity, 0) && String.eq(dk(d), "NativeHostWorker") && U32.is_eq(da(d), arity)

@@ -88,6 +88,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
     files.splice(at<0?files.length:at,0,...nativeModules);
   }
   const exports=[...roots];
+  if(fs.readFileSync(path.join(project,'src/driver/report.bend'),'utf8').includes('def driver_report_data('))exports.push('driver_report_data');
   if(fs.readFileSync(path.join(project,'src/core/term.bend'),'utf8').includes('def compiler_term_abi('))exports.push('compiler_term_abi');
   if(fs.readFileSync(path.join(project,'src/core/term.bend'),'utf8').includes('def compiler_span_abi('))exports.push('compiler_span_abi');
   if(fs.existsSync(path.join(project,'src/check/specialize.bend'))) {
@@ -98,6 +99,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   if(files.includes('src/back/native/book.bend')) {
     exports.push('nc_compile','nc_foreign_paths');
     if(files.includes('src/back/native/scalar-array.bend'))exports.push('nc_compile_checked');
+    if(files.includes('src/back/native/request.bend'))exports.push('nr_prepare','nr_compile');
     if(fs.readFileSync(path.join(project,'src/back/native/book.bend'),'utf8').includes('nc_annotation_stops('))exports.push('nc_annotation_stops','nc_annotated_context');
   }
   if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source','nc_foreign_scope');
@@ -834,8 +836,9 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
     }
     const needReport=mode==='check'||(mode==='interpreter'&&!api.driver_has_main(book))||withReport;
     if(needReport)trace('report declarations');
-    const verdict=needReport&&api.driver_report?api.driver_report(loaded.book,list([])):'ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n';
-    const unsafeDefinitions=needReport&&api.driver_bad_names?array(api.driver_bad_names(loaded.book)):[];
+    const reportData=needReport&&ownedApi&&typeof api.driver_report_data==='function'?api.driver_report_data(loaded.book):null;
+    const verdict=reportData?reportData.verdict:needReport&&api.driver_report?api.driver_report(loaded.book,list([])):'ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n';
+    const unsafeDefinitions=reportData?array(reportData.names):needReport&&api.driver_bad_names?array(api.driver_bad_names(loaded.book)):[];
     const trust={typeAccepted:true,proofTrust:needReport?(unsafeDefinitions.length?'failed':'passed'):'not-assessed',unsafeDefinitions,kernelChecked:false};
     if((proofOnly||!api.driver_has_main(book))&&['check','interpreter'].includes(mode)&&trust.proofTrust==='failed')
       return {status:'error',phase:'verdict',diagnostic:verdict,exitCode:1,checked:true,...trust};
@@ -859,7 +862,7 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
       const error=api.j_compile_error(book);
       if(error)return {status:'error',phase,diagnostic:error.startsWith('Error:')?error:'Error: '+error,exitCode:1,checked:true};
     }
-    const contextBook=mode!=='native'&&api.book_context?
+    const contextBook=api.book_context?
       (usedPreparedWorld&&typeof api.book_context_world==='function'?api.book_context_world(book,graph.prefixLoad,cached.preparedWorld):api.book_context(book)):book;
     const roots=backend==='direct'?api.jd_roots(contextBook,mode==='library'):api.j_roots?.(contextBook,mode==='library');
     const stops=mode!=='native'?(backend==='direct'?api.jd_stops?.(contextBook):api.j_stops?.(contextBook)):null;
@@ -903,8 +906,9 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
     if(mode==='native') {
       if(!api.nc_compile)return {status:'unsupported',phase,reason:'Native emitter was not bootstrapped.',checked:true};
       trace('collect native foreign paths');
-      const paths=api.nc_foreign_paths?array(api.nc_foreign_paths(book)):graph.foreign.filter(f=>path.extname(f.path)==='.c').map(f=>f.path);
-      const foreignScope=api.nc_foreign_scope?api.nc_foreign_scope(book):book;
+      const nativePlan=ownedApi&&typeof api.nr_prepare==='function'&&typeof api.nr_compile==='function'?api.nr_prepare(book):null;
+      const paths=nativePlan?array(nativePlan.paths):api.nc_foreign_paths?array(api.nc_foreign_paths(book)):graph.foreign.filter(f=>path.extname(f.path)==='.c').map(f=>f.path);
+      const foreignScope=nativePlan?nativePlan.scope:api.nc_foreign_scope?api.nc_foreign_scope(book):book;
       const nativeInputs=[...graph.files,path.join(project,'src/runtime/native/runtime.c')];
       // Only these audited Base handlers are independent of Array representation.
       const scalarEffects={
@@ -927,7 +931,7 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
       }).join('\n');
       trace('emit native');
       const nativeRuntime=fs.readFileSync(path.join(project,'src/runtime/native/runtime.c'),'utf8');
-      const native=api.nc_compile_checked?api.nc_compile_checked(book,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile(book,nativeRuntime,requests);
+      const native=nativePlan?api.nr_compile(nativePlan,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile_checked?api.nc_compile_checked(book,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile(book,nativeRuntime,requests);
       if(native.error)return {status:'error',phase,diagnostic:'Error: '+native.error,exitCode:1,checked:true};
       return {status:'ok',phase,code:native.source,verdict,exitCode:0,checked:true,files:nativeInputs};
     }

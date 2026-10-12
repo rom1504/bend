@@ -207,7 +207,7 @@ def ns_defs(+book: List<&2, KDef>, +cs: KDef, names: List<&2, String>, +image: N
       nt_choose(NS_Defs, String.eq(dk(d), "Def"),
         u => nt_choose(NS_Defs, nc_native_def(d) || nc_foreign(d),
           v => ns_defs(book, cs, rest, image, facts),
-          v => ns_def_step(book, cs, rest, name, facts, ns_static_term(cs, nc_compact(nc_definition_plain(book, d, 0)), image))),
+          v => ns_def_step(book, cs, rest, name, facts, ns_static_term(cs, nc_compact(nc_definition(book, d, 0)), image))),
         u => ns_defs(book, cs, rest, image, facts))
 
 @unsafe
@@ -258,5 +258,28 @@ def ns_return_known(+t: KTerm, +n: U32, +target: NC_Target) -> NC_Code:
 def ns_compile(+book: List<&2, KDef>, +runtime: String, +requests: String, +observers: Bool) -> NC_Result:
   +source = ns_source(book)
   +names = nc_live_names(source, ["main"], Nil{})
+  ns_compile_named(source, names, runtime, requests, observers)
+
+@unsafe
+def ns_compile_named(+source: List<&2, KDef>, +names: List<&2, String>, +runtime: String, +requests: String, +observers: Bool) -> NC_Result:
   +prepared = ns_prepare(source, names)
-  nc_finish(prepared, nh_macros(prepared, names, observers) ++ runtime, requests, nc_compile_defs(prepared, ["main"], Nil{}, 0, nc_bangs_names(prepared, names)), observers)
+  +bangs = nc_bangs_names(prepared, names)
+  nt_choose(NC_Result, observers && List.is_empty(&2, String, bangs),
+    u => ns_compile_planned(prepared, names, bangs, runtime, requests, observers),
+    u => ns_compile_fallback(prepared, names, bangs, nh_macros(prepared, names, observers) ++ runtime, requests, observers, nc_compile_defs(prepared, ["main"], Nil{}, 0, bangs)))
+
+@unsafe
+def ns_compile_planned(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +runtime: String, +requests: String, +observers: Bool) -> NC_Result:
+  +plan = nf_plan(book, names, bangs, observers)
+  +selected = nf_host_context(book, True{}, plan)
+  nc_finish(selected, nh_macros(selected, names, observers) ++ runtime, requests, nc_compile_defs(selected, ["main"], Nil{}, 0, bangs), observers, plan)
+
+# Preserve the original raw/bang error order: failed generic lowering never
+# asks optional worker planning to inspect an unsupported or malformed body.
+@unsafe
+def ns_compile_fallback(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +runtime: String, +requests: String, +observers: Bool, compiled: NC_Book) -> NC_Result:
+  match compiled:
+    case NC_Book{ss, fresh, +error}:
+      nt_choose(NC_Result, String.eq(error, ""),
+        u => nc_finish(book, runtime, requests, NC_Book{ss, fresh, error}, observers, nf_plan(book, names, bangs, observers)),
+        u => NC_Result{"", error})

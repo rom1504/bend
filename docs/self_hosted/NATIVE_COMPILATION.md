@@ -23,7 +23,7 @@ adds no telescope evaluation, preserving raw demand/error behavior.
 when the checked representation certificate permits it and the reachable program
 has no bang calls. Generic scheduler bodies and device fallbacks remain. An
 experiment omitting already-admitted host bodies reduced compilation time but
-caused repeatable generated-program regressions through changed native layout;
+caused repeatable generated-program regressions alongside changed native layout;
 that permission path was removed. Bang/raw paths retain their original error
 order: failed generic lowering returns before optional worker planning.
 

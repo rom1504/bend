@@ -4287,3 +4287,18 @@ proof. Prioritize one native plan/shared facts and reusable library products;
 proposed gains remain unmeasured. Original counter ABI-reader mistake was
 caught before requests, then fixed in a fresh derived image/project. Installed
 Phase73 and its sealed evidence remain unchanged.
+
+## Phase75 native compilation with exact generated programs — 2026-10-12
+
+[Design](../design/phase75/native-compilation-parity.md) · [Report](../implementation/phase75/README.md).
+Select/install compiler14, B1`7f05ac96…`, genuine B2/B3`0444d283…`.
+Interleaved45 requests: B1 3.55981×→2.91581× upstream, B2 2.33580×→1.92053×;
+18.09%/17.78% less time. All twelve C files and executables reproduce Phase73
+exactly; no new runtime-speed gain. All selected native/raw/selfhosting/installed
+gates pass, with seven reference failures/thirteen API gaps still explicit.
+Retain shared native/report/context facts, selective retries, constructor index
+and compact U32 sets. Reject body omission (~5% runtime regressions), all attempted
+layout repairs, and bitmap sets (no measured gain). +254physical/+201code lines,
+two modules. All failures/unused plans preserved in content-addressed evidence.
+No agents or PR comments. Parity remains unachieved; next major prototype must
+address duplicated native lowering/per-node work or validated library products.

@@ -10,3 +10,9 @@ Use the same differential set/raw-term controls, plus dense32-bit word boundarie
 then clean three-family timings before integration. No C/runtime modification.
 
 Compiler15 was rejected by the checked bootstrap: U32.shr/shl are unary, not variable-count shifts. Compiler16 uses existing shrn/shln with bounded Nat counts. No failed candidate is benchmarked.
+
+Compiler16 passed199,400 controls and checked36/B2driver8, but its first screen
+moves B1/B2 ratios2.910/1.879 to2.934/1.941. Array/lexer B2 are roughly unchanged;
+numeric is slower. This is insufficient evidence of a gain and adds code, so
+retain the simpler compiler14 set. Compiler16 and all unexecuted prepared plans
+remain evidence; none are called release qualification.

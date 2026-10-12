@@ -1,4 +1,37 @@
-# Active frontier: Phase73 native execution near aggregate parity
+# Active frontier: Phase75 faster native compilation, exact programs
+
+Installed selected compiler14: checked B1`7f05ac96…`, genuine B2/B3`0444d283…`.
+[Report](../implementation/phase75/README.md) and [qualification](../implementation/phase75/qualification.json).
+The interleaved45-request comparison gives B1 3.55981×→2.91581× TS and B2
+2.33580×→1.92053×,18.09%/17.78% less time. These are fresh checked JS-hosted
+Bend-to-C requests, excluding imports, explicit Bend Base, Clang and execution;
+TS checks Base within its request. No parity or native-executable compiler claim.
+All twelve generated C files and binaries are identical to Phase73, preserving
+its1.05060× twelve-family execution artifact set. JS closure2992 is unchanged.
+
+Retain single native request/report products, checked context/erasure/arity reuse,
+selective worker retry, constructor indexing and compact U32 occurrence sets.
+Native100/raw31/new14/threads28,166 report graphs,1,066 constructor comparisons,
+199,400 set controls,B2 own-source acceptance/B3 and installed42/24/5 pass.
+Seven reference failures and thirteen broader native API gaps remain unchanged.
+Source31,984 physical/26,140 code lines in131 modules (+254physical,+201code,+2).
+
+Do not reintroduce host-body omission as an accepted optimization: it reached
+1.683× B2 but regressed tree/Array.map about5%. Unchanged worker text/function
+sizes do not prove unchanged runtime cost. All tested layout variants failed to
+recover both; the path was removed. Bitmap occurrence leaves added code without
+a gain and were rejected. Exact compiler14 code/production artifacts are selected.
+
+Next larger experiments: typed native IR with retained per-node facts shared
+between lowerings, or reusable Base backend products with explicit dependency,
+static-image and temporary-ID relocation. Demand an exact-output fast prototype;
+do not promise their gain before measurement. A simple root-identity memo is
+still weak (97% unique root calls in Phase74). Warm service is a different metric.
+Use fresh phase/output paths after Phase75 sealing. One guarded target tree,
+CPU3,2GiB RSS/4GiB available floor,Node1GiB heap/4MiB stack. No PR comments
+without explicit request. Preserve inherited unrelated work and sealed history.
+
+## Historical Phase73/74 frontier
 
 **Latest investigation: [Phase74 compilation parity](../implementation/phase74/README.md).**
 Production remains Phase73. Counter-only exact-C diagnostics find six native

@@ -5,6 +5,18 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed implementation: Phase75 exact-output compilation improvements
+
+[Design](../design/phase75/native-compilation-parity.md) ·
+[Report](../implementation/phase75/README.md). Installed B1`7f05ac96…`, genuine
+B2/B3`0444d283…`. Interleaved45-request results: B1 3.55981×→2.91581× TS,
+B2 2.33580×→1.92053× (18.09%/17.78% less request time). All twelve generated
+C files and executables are identical to Phase73. Full selected qualification
+passes; seven reference failures/thirteen broader API gaps remain explicit.
+Reject faster host-body omission for runtime regressions and bitmap leaves
+for no demonstrated gain. +254 physical Bend lines/two modules; no agents or
+PR comments. Compilation parity remains unachieved. Read the active frontier.
+
 ## Completed implementation: Phase73 native execution near aggregate parity
 
 Latest follow-up: [Phase74 compilation-parity investigation](../implementation/phase74/README.md)

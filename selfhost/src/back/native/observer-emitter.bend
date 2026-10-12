@@ -1,4 +1,4 @@
-# Source-only proposal. Not installed, parsed, checked or executed.
+# Borrowed native traversal emission for closed, checked observer plans.
 # The analysis module supplies NO_Plan. A plan is a compiler
 # product, never permission obtained from a raw book marker.
 

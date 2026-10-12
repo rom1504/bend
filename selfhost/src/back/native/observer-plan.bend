@@ -1,4 +1,4 @@
-# Source-only query bridge. Never derive permission from user book markers.
+# Checked observer plan construction; no permission from user book markers.
 # The checked caller also excludes reachable bang owners before invoking this.
 type NO_Plan is Data:
   NO_Plan{+owner: String, +schema: NO_Schema, +analysis: NO_Analysis, +error: String}

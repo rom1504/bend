@@ -160,3 +160,15 @@ remaining individual gaps and reproducible fast loops. The
 [design](../../../../design/phase69/native-parity.md) and
 [report](../../../../implementation/phase69/README.md) separate measured source
 candidates, conformance, B1/B2 latency and installed release status.
+
+### Phase70 root-preserving observers (working source)
+
+The optional checked CPU observer pass checks that a bounded immutable-list
+traversal returns its original roots, computes the scalar answer with borrowed
+cursors, then uses ordinary owned lowering for the result wrapper. It hooks
+eligible scheduler entries after ordinary worker admission; existing private
+worker calls can bypass it. Explicit checked/effect permission, raw and device
+fallback, demand preservation and the analysis bounds are documented in
+[Native root-preserving observers](../../../../docs/self_hosted/NATIVE_OBSERVERS.md).
+That guide also separates the measured Map/String/Tape checkpoints and the
+working checked Bool-array change from the still-installed Phase69 release.

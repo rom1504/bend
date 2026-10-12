@@ -1,4 +1,4 @@
-# Source-only late integration proposal. Never install from a raw book marker.
+# Late checked observer routing; raw books cannot grant permission.
 # Existing ordinary/product workers finish retry and admission before this lane.
 type NO_Route is Data:
   NO_Route{+workers: List<&2, NF_Worker>, +ready: List<&2, String>, +entries: List<&2, KDef>}

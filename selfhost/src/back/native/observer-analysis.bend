@@ -1,4 +1,4 @@
-# Source-only proposal. Not installed or compiler-validated.
+# Bounded symbolic evaluation with typed values and scoped root origins.
 # KTerm virtual values are compiler-owned: OA atom, OC constructor,
 # OL/OM lexical closures, OR named partially-applied reference.
 # Runtime binders use nc_id(counter); source binder IDs only key lexical envs.

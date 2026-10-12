@@ -1,0 +1,19 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/prepare-compilation-v2.py",
+    "sha256": "9552d5f9bf87acdfeda658742df1113d55f3fb823de40a8e8847a9e1e10a3143",
+    "bytes": 10614
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/prepare-clean-compilation-v1.py",
+    "sha256": "536d487c57d43695605bf3d4b4e505067ee12e5c09a5d19d01316eeb899af94a",
+    "bytes": 10470
+  },
+  "edits": [
+    {
+      "before": "    jobs += [dict(name='profile-'+case+'-b2', action='request', role='b2', case=case, profile=True) for case in cases]\n    jobs += [dict(name='profile-numeric-b1', action='request', role='b1', case='numeric', profile=True)]\n",
+      "after": "    # Clean-only final qualification; diagnostics have separate retained plans.\n"
+    }
+  ],
+  "scope": "Only omit four optional profile jobs, so two preparations and27 clean requests can form a complete final plan. No worker/oracle/ordering/timing changes."
+}

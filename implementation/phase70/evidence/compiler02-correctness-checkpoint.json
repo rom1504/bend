@@ -1,0 +1,140 @@
+{
+  "kind": "phase70-compiler02-independent-correctness-checkpoint",
+  "observedUtc": "2026-10-12T01:51:17.073761+00:00",
+  "reviewLane": "CPU0 source/data only; root executed targets",
+  "candidateApi": {
+    "path": "selfhost/build/phase70/compiler02/equality/api.mjs",
+    "sha256": "f326862f5163fce83e47642c9b8dcfdb6596683bafe36054b7fb6d5430376f2f",
+    "bytes": 2212323
+  },
+  "checked": true,
+  "strictExact": true,
+  "artifactKind": "derived-b1",
+  "sources": [
+    {
+      "current": {
+        "path": "selfhost/src/back/native/bridge.bend",
+        "sha256": "be6e2272248ad8921fdef3b140a444835c50a29769fbcd57e438e0dd62d37205",
+        "bytes": 33019
+      },
+      "checkedSnapshot": {
+        "path": "selfhost/build/phase70/compiler02/snapshot/src/back/native/bridge.bend",
+        "sha256": "be6e2272248ad8921fdef3b140a444835c50a29769fbcd57e438e0dd62d37205",
+        "bytes": 33019
+      },
+      "identical": true
+    },
+    {
+      "current": {
+        "path": "selfhost/src/back/native/scalar-array.bend",
+        "sha256": "45dcf8f9924a635b1815a0157c264dbf252c896c4b026e6db76d64056efd6393",
+        "bytes": 5564
+      },
+      "checkedSnapshot": {
+        "path": "selfhost/build/phase70/compiler02/snapshot/src/back/native/scalar-array.bend",
+        "sha256": "45dcf8f9924a635b1815a0157c264dbf252c896c4b026e6db76d64056efd6393",
+        "bytes": 5564
+      },
+      "identical": true
+    }
+  ],
+  "finishedEvidence": [
+    {
+      "path": "selfhost/build/phase70/compiler02/attempt.json",
+      "sha256": "ada0bf2a3995886d5001ad1b5cea2a4dcfb269ca20685d699c5c081655bd1970",
+      "bytes": 312300
+    },
+    {
+      "path": "selfhost/build/phase70/compiler02-occurrence-controls/report.json",
+      "sha256": "768202704cc36aec869bd42574f5a5db89c15f87e92d4a9782602931a0742709",
+      "bytes": 2087237
+    },
+    {
+      "path": "selfhost/build/phase70/compiler02-bool07/execution/report.json",
+      "sha256": "f88beb89f45cbba5e3c22adf2d94ea5d884eb60517b23cddae44d910777f6411",
+      "bytes": 8814
+    },
+    {
+      "path": "selfhost/build/phase70/compiler02-bool07/execution/selected/candidate.json",
+      "sha256": "e1cb0948862177d7bbddc2f71630dc5e5f510ad4db353413ba9b88eb10485b6c",
+      "bytes": 2042405
+    },
+    {
+      "path": "selfhost/build/phase70/compiler02-bool07/execution/selected/reference.json",
+      "sha256": "51bf45e62116071bdf36a8b23224c243b32a030e26c37d7b12f2cbccdcf26dcc",
+      "bytes": 2021627
+    },
+    {
+      "path": "selfhost/build/phase70/compiler02-bool-admission/report.json",
+      "sha256": "c25b05832b072cb625c435b9c99fac99770c6e3bf9a68c8728326215ab31e65b",
+      "bytes": 7498
+    },
+    {
+      "path": "selfhost/build/phase70/compiler02-js-protection/report.json",
+      "sha256": "710dc5dc92ad2dd3ee1dffb5586eab7dcb744b6bd935fd0ab3afe422945b8952",
+      "bytes": 17164
+    },
+    {
+      "path": "selfhost/build/phase70/observer-diagnostics-run02/report.json",
+      "sha256": "8627dac689b76fa203176eb9c8ef247fc0c1ad03ffc868e759932a2493335043",
+      "bytes": 26705
+    },
+    {
+      "path": "selfhost/build/phase70/observer-diagnostics-run03/report.json",
+      "sha256": "71e89431730bc76a282358f9a169293f0be23f0b8789293b5b366a29cb6de07c",
+      "bytes": 22894
+    },
+    {
+      "path": "selfhost/build/phase70/compiler01-observer-mismatches05/execution/selected/candidate.json",
+      "sha256": "d14ac7e203cce9cbf6f544beae050596d8b1fb0f4e43b7a1ea1d717100dffc6d",
+      "bytes": 2079870
+    }
+  ],
+  "occurrence": {
+    "terms": 38,
+    "ids": 67,
+    "membershipQueriesPerRole": 2546,
+    "orderedPartitionsPerRole": 228,
+    "sharingQueriesPerRole": 228,
+    "completeSummaryEquality": true,
+    "repeatedSingleInsertCalls": {
+      "before": 63,
+      "after": 0
+    },
+    "repeatedSingleLeafCalls": {
+      "before": 64,
+      "after": 1
+    },
+    "reducedTerms": 3
+  },
+  "bool": {
+    "nativeCandidatePass": 7,
+    "nativeUpstreamPass": 7,
+    "emissionAdmissionChecks": 9,
+    "sharedScalarFlag": 1,
+    "sharedUnsharedFlag": 0,
+    "allFlagsZero": [
+      "enum-refusal",
+      "foreign-refusal",
+      "raw",
+      "untrusted-effects"
+    ]
+  },
+  "js": {
+    "unchangedReachableFunctions": 2992,
+    "unchangedPublicWrappers": 100,
+    "additionalExcludedRoots": []
+  },
+  "earlierObserverDiagnostics": {
+    "api": "d59577dbd15cd31b8c04bf6243d70fb3969c365f07f7a933ca152253f2a85a5e",
+    "fourRouteAndErrorDiagnosticsPassed": 4,
+    "recursiveDemandMarkersPassed": 2,
+    "scope": "Earlier observer-emission02 image; retain separate from final candidate native gate."
+  },
+  "pending": [
+    "compiler02 native100: expect candidate100 and7 known upstream unused-demand mismatches",
+    "compiler02 raw31",
+    "genuine B2 artifact and final B1/B2 compilation request measurements",
+    "release installation and portable evidence consolidation"
+  ]
+}

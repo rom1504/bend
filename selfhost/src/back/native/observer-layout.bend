@@ -1,5 +1,5 @@
-# Source-only Phase70 proposal; not installed or compiler-validated.
-# NO_Layout is supplied by observer-emitter-v1.bend. This file proves only a
+# Bounded typed schemas for root-preserving native traversals.
+# NO_Layout is supplied by observer-emitter.bend. This file proves only a
 # bounded schema, never ownership, purity, return identity or runtime validity.
 # Names below identify native representations, never candidate functions.
 

@@ -1,4 +1,4 @@
-# Source-only proposal. No production integration or target validation.
+# Owning result adapter for a checked root-preserving traversal.
 # Inputs are accepted plans; the caller separately enforces fresh private
 # names, typed residual validation and explicit checked-mode permission.
 

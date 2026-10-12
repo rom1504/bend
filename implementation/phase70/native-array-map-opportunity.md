@@ -1,4 +1,56 @@
-# Array-map: a representation certificate stops applying
+# Array-map: restoring representation permission helps; loop products remain
+
+## Measured compiler02 checkpoint
+
+The checked Bool admission is now implemented in compiler02. Root's balanced
+saved-binary comparison measured **1.385× faster execution than Phase69 B1** on
+this Array-map case, with **2.468× upstream execution time** still remaining.
+This is one workload, not the original six-family or broader coverage geomean.
+
+| Role | Three measured intervals | Median |
+| --- | --- | --- |
+| Phase69 B1 | 1022, 1028, 1010ms | 1022ms |
+| compiler02 B1 | 738, 732, 751ms | 738ms |
+| Pinned upstream | 299, 299, 327ms | 299ms |
+
+Each interval uses 15,360 measured repetitions and 15,360 warmups with identical
+source and Clang settings. Roles rotate over three rounds. All nine intervals
+passed the independent base/warm/measured digest and 100ms timing floor. The
+comparison excludes emission and C compilation. The exact measurement is
+`selfhost/build/phase70/compiler02-array-map-comparison/report.json`, SHA-256
+`9080ffa4849ede8388cd9953703f9cdfe8856142d3d9a8e04280230a1372c89a`.
+This whole-version comparison includes the observer/compiler02 changes; it is
+not a controlled isolated attribution of every saved millisecond to Bool alone.
+
+The new [C inventory](../../selfhost/tools/performance/phase70/coverage/array-map-shape-v2.json)
+shows the intended structural effect: typed scalar parameters, scalar arrays,
+unshared arrays and cold user constructors all change from permission 0 to 1.
+The runtime's later `#ifndef` zero defaults are inactive. As a result,
+`native_array_get/set` select direct locations and packed 32-bit accesses,
+without generic element retain/sink/seal paths; private NF_SCALAR parameters
+become u32. Narrowing Bool did not authorize shared arrays: the independent
+shared-alias control still requires unshared permission 0.
+
+Both specialized map-loop bodies are **byte-identical before and after this
+change**, including their signatures before preprocessing. Each retains one
+`heap_alloc`, one `ctr_take` and two `rfc_seal` sites around the two-field Tuple
+transporting the input array and current element. Upstream's corresponding
+loops retain no such sites and pass those components as separate parameters.
+The remaining general opportunity is therefore product transport across loop
+parameters and call/return boundaries, with ownership preserved. The already
+admitted scalar path gives a cleaner fast loop for evaluating it.
+
+These are lexical sites, not an executed allocation profile: Clang may inline
+or simplify code, and remaining list conversion/folding also costs time. A
+product prototype should first prove that these recurring Tuple sites disappear
+from emitted hot loops, then use the same frozen workload and independent
+digest. It should not promise that removing them alone closes 2.468× to parity.
+Candidate C is 1,072,812 bytes / 35,674 lines, slightly larger than the Phase69
+file despite faster execution; source length is not the hot-path cost metric.
+
+The historical source diagnosis below explains why this experiment was chosen.
+
+## Initial diagnosis before Bool admission
 
 The strongest source-level lead for the new Array-map gap is **a whole-program
 fallback triggered by an intermediate `Array<Bool>`**. The compiler already has
@@ -33,10 +85,10 @@ The total C files are 1,068,151 versus 130,945 bytes. This is emitted source siz
 including runtime, scheduler fallback and helpers—not an executable hot-code
 size measurement or an explanation of the elapsed-time ratio.
 
-## Why the existing optimization declines
+## Why the earlier optimization declined
 
 In [scalar-array.bend](../../selfhost/src/back/native/scalar-array.bend),
-`ns_scalar` accepts trusted Base U32/F32/Char, but excludes Bool. The reachable
+the earlier `ns_scalar` accepted trusted Base U32/F32/Char, but excluded Bool. The reachable
 specialized maps require `Array.new/set/get` with Bool elements, so the
 whole-program packed certificate necessarily fails. There could also be other
 refusal reasons; no analysis query has been executed here.
@@ -51,7 +103,7 @@ storage and owned fields from each element layout. The prior
 already isolated packed storage and sharing as meaningful costs on a different
 workload. Those old speedups must not be transplanted to this case.
 
-## Smallest useful next experiment, after observer integration
+## Original experiment proposal, now completed above
 
 First investigate **checked Bool admission to the existing packed certificate**.
 This is a general type rule: current constructor lowering already emits trusted

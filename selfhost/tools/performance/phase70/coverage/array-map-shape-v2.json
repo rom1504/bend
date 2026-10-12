@@ -1,0 +1,264 @@
+{
+  "kind": "phase70-array-map-compiler02-source-comparison",
+  "targetsExecuted": false,
+  "priorInventory": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/coverage/array-map-shape-v1.json",
+    "sha256": "63d549762c1fe87d03594a8a70c7b983cc4f0ef383313376d267e972489b2fd8",
+    "bytes": 3750
+  },
+  "measurement": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/compiler02-array-map-comparison/report.json",
+    "sha256": "9080ffa4849ede8388cd9953703f9cdfe8856142d3d9a8e04280230a1372c89a",
+    "bytes": 16659
+  },
+  "rows": [
+    {
+      "role": "baseline69",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/coverage-baseline01/array-map-selfhost/program.c",
+        "sha256": "9e46cf5fcffa89fea7760dee1d8978ca57c89c880286e535b0beb6e97e20352e",
+        "bytes": 1068151
+      },
+      "physicalLines": 35520,
+      "featureMacros": [
+        [
+          "NATIVE_PACK_CTORS",
+          "1"
+        ],
+        [
+          "NATIVE_TYPED_SCALARS",
+          "0"
+        ],
+        [
+          "NATIVE_COLD_USER_CTORS",
+          "0"
+        ],
+        [
+          "NATIVE_SCALAR_ARRAYS",
+          "0"
+        ],
+        [
+          "NATIVE_UNSHARED_ARRAYS",
+          "0"
+        ],
+        [
+          "NATIVE_SCALAR_ARRAYS",
+          "0"
+        ],
+        [
+          "NATIVE_UNSHARED_ARRAYS",
+          "0"
+        ]
+      ],
+      "loops": [
+        {
+          "bend": "Array.map.go~0",
+          "line": 14357,
+          "lines": 209,
+          "signature": "NF_INLINE Term NF_FID_65_114_114_97_121_46_109_97_112_46_103_111_126_48_(Env e, bool seq, Term* nf_out, Term v_4294967295, NF_SCALAR v_4294967294, Term v_4294967293, Term v_4294967292) {",
+          "bodySha256": "01ef07fcfe03af5229876cc08130219fdc3c67e1d0cb345ac5771c87df889291",
+          "counts": {
+            "heap_alloc": 1,
+            "ctr_take": 1,
+            "rfc_seal": 2,
+            "native_array_set": 1,
+            "native_array_get": 1,
+            "blk_read": 0,
+            "blk_write": 0,
+            "WL_AGAIN": 0
+          },
+          "allocationContext": [
+            "if ((term_aux(v_4294967280) == CID_TUPLE)) {",
+            "spare_free(e, cls_fit(2), ctr_take(e, v_4294967280, 2, fields));",
+            "u64 nd_38 = heap_alloc(e, cls_fit(2));",
+            "e.mem[nd_38 + 0] = rfc_seal(e, v_4294967264);",
+            "e.mem[nd_38 + 1] = rfc_seal(e, v_4294967263);",
+            "v_4294967262 = term_ctr(CID_TUPLE, nd_38);"
+          ]
+        },
+        {
+          "bend": "Array.map.go~1",
+          "line": 15092,
+          "lines": 204,
+          "signature": "NF_INLINE Term NF_FID_65_114_114_97_121_46_109_97_112_46_103_111_126_49_(Env e, bool seq, Term* nf_out, Term v_4294967295, NF_SCALAR v_4294967294, Term v_4294967293, Term v_4294967292) {",
+          "bodySha256": "263b1f2a346957c5e62519137fccdb8e4cd68158098fb55dcc883a670f51ad11",
+          "counts": {
+            "heap_alloc": 1,
+            "ctr_take": 1,
+            "rfc_seal": 2,
+            "native_array_set": 1,
+            "native_array_get": 1,
+            "blk_read": 0,
+            "blk_write": 0,
+            "WL_AGAIN": 0
+          },
+          "allocationContext": [
+            "if ((term_aux(v_4294967280) == CID_TUPLE)) {",
+            "spare_free(e, cls_fit(2), ctr_take(e, v_4294967280, 2, fields));",
+            "u64 nd_38 = heap_alloc(e, cls_fit(2));",
+            "e.mem[nd_38 + 0] = rfc_seal(e, v_4294967264);",
+            "e.mem[nd_38 + 1] = rfc_seal(e, v_4294967263);",
+            "v_4294967262 = term_ctr(CID_TUPLE, nd_38);"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "compiler02",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/compiler02-array-map/array-map-selfhost/program.c",
+        "sha256": "1297ec3492260a9ad692edffa489163367ab4f24f19ce8bb791c6c033acf3043",
+        "bytes": 1072812
+      },
+      "physicalLines": 35674,
+      "featureMacros": [
+        [
+          "NATIVE_READONLY_OBSERVERS",
+          "1"
+        ],
+        [
+          "NATIVE_PACK_CTORS",
+          "1"
+        ],
+        [
+          "NATIVE_TYPED_SCALARS",
+          "1"
+        ],
+        [
+          "NATIVE_COLD_USER_CTORS",
+          "1"
+        ],
+        [
+          "NATIVE_SCALAR_ARRAYS",
+          "1"
+        ],
+        [
+          "NATIVE_UNSHARED_ARRAYS",
+          "1"
+        ],
+        [
+          "NATIVE_SCALAR_ARRAYS",
+          "0"
+        ]
+      ],
+      "loops": [
+        {
+          "bend": "Array.map.go~0",
+          "line": 14501,
+          "lines": 209,
+          "signature": "NF_INLINE Term NF_FID_65_114_114_97_121_46_109_97_112_46_103_111_126_48_(Env e, bool seq, Term* nf_out, Term v_4294967295, NF_SCALAR v_4294967294, Term v_4294967293, Term v_4294967292) {",
+          "bodySha256": "01ef07fcfe03af5229876cc08130219fdc3c67e1d0cb345ac5771c87df889291",
+          "counts": {
+            "heap_alloc": 1,
+            "ctr_take": 1,
+            "rfc_seal": 2,
+            "native_array_set": 1,
+            "native_array_get": 1,
+            "blk_read": 0,
+            "blk_write": 0,
+            "WL_AGAIN": 0
+          },
+          "allocationContext": [
+            "if ((term_aux(v_4294967280) == CID_TUPLE)) {",
+            "spare_free(e, cls_fit(2), ctr_take(e, v_4294967280, 2, fields));",
+            "u64 nd_38 = heap_alloc(e, cls_fit(2));",
+            "e.mem[nd_38 + 0] = rfc_seal(e, v_4294967264);",
+            "e.mem[nd_38 + 1] = rfc_seal(e, v_4294967263);",
+            "v_4294967262 = term_ctr(CID_TUPLE, nd_38);"
+          ]
+        },
+        {
+          "bend": "Array.map.go~1",
+          "line": 15236,
+          "lines": 204,
+          "signature": "NF_INLINE Term NF_FID_65_114_114_97_121_46_109_97_112_46_103_111_126_49_(Env e, bool seq, Term* nf_out, Term v_4294967295, NF_SCALAR v_4294967294, Term v_4294967293, Term v_4294967292) {",
+          "bodySha256": "263b1f2a346957c5e62519137fccdb8e4cd68158098fb55dcc883a670f51ad11",
+          "counts": {
+            "heap_alloc": 1,
+            "ctr_take": 1,
+            "rfc_seal": 2,
+            "native_array_set": 1,
+            "native_array_get": 1,
+            "blk_read": 0,
+            "blk_write": 0,
+            "WL_AGAIN": 0
+          },
+          "allocationContext": [
+            "if ((term_aux(v_4294967280) == CID_TUPLE)) {",
+            "spare_free(e, cls_fit(2), ctr_take(e, v_4294967280, 2, fields));",
+            "u64 nd_38 = heap_alloc(e, cls_fit(2));",
+            "e.mem[nd_38 + 0] = rfc_seal(e, v_4294967264);",
+            "e.mem[nd_38 + 1] = rfc_seal(e, v_4294967263);",
+            "v_4294967262 = term_ctr(CID_TUPLE, nd_38);"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "upstream",
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/coverage-baseline01/array-map-upstream/program.c",
+        "sha256": "312dbd2da2a1a3b8b4d58a1454f3f90861f82d155f8afe8dfb4f21d79eec1215",
+        "bytes": 130945
+      },
+      "physicalLines": 5108,
+      "featureMacros": [
+        [
+          "BLK_SHR",
+          "0"
+        ]
+      ],
+      "loops": [
+        {
+          "bend": "Array.map.go",
+          "line": 1368,
+          "lines": 35,
+          "signature": "INLINE Term spin_6(Env e, THR Term* o, Term r0, u32 r1, Term r2, Term r3, u32 r4) {",
+          "bodySha256": "0cea06e6371b40ddac61d21bbc78403f4cb99bce99b698f53ccc8351c2e4f089",
+          "counts": {
+            "heap_alloc": 0,
+            "ctr_take": 0,
+            "rfc_seal": 0,
+            "native_array_set": 0,
+            "native_array_get": 0,
+            "blk_read": 2,
+            "blk_write": 1,
+            "WL_AGAIN": 1
+          },
+          "allocationContext": []
+        },
+        {
+          "bend": "Array.map.go",
+          "line": 1406,
+          "lines": 41,
+          "signature": "INLINE Term spin_7(Env e, THR Term* o, Term r0, u32 r1, Term r2, Term r3, u32 r4) {",
+          "bodySha256": "9c18324795c4eb71e34ff8f6756759e87de124f75585b466a89ae2706330d875",
+          "counts": {
+            "heap_alloc": 0,
+            "ctr_take": 0,
+            "rfc_seal": 0,
+            "native_array_set": 0,
+            "native_array_get": 0,
+            "blk_read": 2,
+            "blk_write": 1,
+            "WL_AGAIN": 1
+          },
+          "allocationContext": []
+        }
+      ]
+    }
+  ],
+  "measurementSummary": [
+    {
+      "case": "array-map",
+      "mediansMs": {
+        "baseline69": 1022,
+        "candidate": 738,
+        "upstream": 299
+      },
+      "candidateOverUpstream": 2.468227424749164,
+      "baseline69OverCandidate": 1.3848238482384825
+    }
+  ],
+  "scope": "Source/data analysis of saved C and a prior root-run balanced timing report. Lexical function-body counts are not executed allocation counts, profile attribution or optimized machine-code counts."
+}

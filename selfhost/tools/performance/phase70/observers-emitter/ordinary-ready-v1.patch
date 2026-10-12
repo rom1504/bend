@@ -1,0 +1,5 @@
+--- a/selfhost/src/back/native/observer-integration.bend
++++ b/selfhost/src/back/native/observer-integration.bend
+@@ -72,1 +72,1 @@
+-    u => no_route_plan(book, entry, old, no_observer_plan(book, name, True{})), u => old)
++    u => nt_choose(NO_Route, nb_contains(no_route_ready(old), name), v => old, v => no_route_plan(book, entry, old, no_observer_plan(book, name, True{}))), u => old)

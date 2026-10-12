@@ -1,5 +1,10 @@
 # Phase70 additive native coverage
 
+For the frozen compiler02 validation campaign, use the
+[practical acquisition/calibration/comparison queue](final-compiler02.md).
+It preserves the six-family membership, freezes the two native holdouts before
+execution, and keeps this denominator separate from the original six families.
+
 Six preselected families broaden the old six-native loop. Read the
 [design](../../../../../design/phase70/native-coverage.md) for scope, independent
 oracles and holdout policy. These are source/method proposals; target acquisition

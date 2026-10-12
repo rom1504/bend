@@ -220,3 +220,25 @@ One unused private source helper, `no_schema_spec`, is explicitly recorded as
 omitted from the API; no unknown omission is accepted. The first overstrict
 classifier and its failed source-only output are retained. The v2 result for
 `observer-emission02` preserves all 2,992 protected function bodies exactly.
+
+## Final compiler02 queues
+
+`compiler02-final-measurement-plan01/plan.json` records the exact original-six
+acquisition, 54 balanced saved-binary samples, and subsequent TS/B1/genuine-B2
+compilation commands. `prepare-clean-compilation-v1.py` is an exact successor that
+only omits four optional profile jobs: two preparations and 27 clean requests can
+therefore form a complete final clean campaign. It must consume the final B2
+image pins and final native-acquisition C oracles, not earlier candidate products.
+
+`compiler02-postmeasurement-plan01/plan.json` separately records two preparations
+and four final diagnostic profiles, data-only analyses, and the later release
+qualification preparation command. Actual fresh B2 own-source type acceptance
+and B2/B3 byte equality precede deferred installation. Clean, diagnostic, Clang and
+native-runtime clocks remain separate. The independent coverage lane owns the
+six-case coverage queue and frozen BST/expression holdout receipt.
+
+The Phase70 `artifacts/seal.py` producer reuses the exact Phase69 streaming archive
+checks and adds its sealed capsule as an external dependency. Root executes it
+only after all target and data/tool writers have stopped; it includes failures,
+verifies every reopened archive member and preserves file modes/symlinks. Designs
+and reports remain tracked separately from the raw/tools capsule.

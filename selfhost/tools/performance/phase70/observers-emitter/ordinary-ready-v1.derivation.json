@@ -1,0 +1,15 @@
+{
+  "kind": "phase70-P70-008-source-only-optional-patch-v1",
+  "baseline": {
+    "file": "selfhost/src/back/native/observer-integration.bend",
+    "sha256": "994f9f771f109d7e38b7bd21b2dd3b344a415d91a7c5bc1ae71fd6735d80fb1b"
+  },
+  "hypothesis": "experiments/phase70/P70-008-observers-after-ordinary-refusal.md",
+  "change": {
+    "line": 72,
+    "before": "    u => no_route_plan(book, entry, old, no_observer_plan(book, name, True{})), u => old)",
+    "after": "    u => nt_choose(NO_Route, nb_contains(no_route_ready(old), name), v => old, v => no_route_plan(book, entry, old, no_observer_plan(book, name, True{}))), u => old)"
+  },
+  "productionMutated": false,
+  "targetsExecuted": 0
+}

@@ -43,6 +43,7 @@ is blocked by the available Lean version. It is not a proof of the compiler.
 
 Read the [Phase69 report](implementation/phase69/README.md),
 [native optimizations and fast loops](docs/self_hosted/native-parity.md),
+[Phase70 working native observers](docs/self_hosted/NATIVE_OBSERVERS.md),
 [qualification evidence](implementation/phase69/evidence/summary.json)
 and [compiler guide](docs/BEND-IN-BEND.md). From `selfhost/`, run
 `npm run verify:release`, then `node cli.mjs FILE --run`. The

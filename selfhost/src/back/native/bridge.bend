@@ -120,12 +120,22 @@ def nc_occurs_list(
 def nc_occurs(t, id):
   nt_choose(Bool, String.eq(tg(t), "Var"), u => U32.is_eq(ix(t), id), u => nc_occurs_list(ks(t), id))
 
+# Occurrence sets insert one immutable marker: an existing ID needs no update.
+@unsafe
+def nc_uses_put(+uses: KDef, +mark: KDef, +id: U32) -> KDef:
+  nt_choose(KDef, String.eq(dk(uses), "Absent"), u => index_leaf(mark, id, Nil{}),
+    u => nc_uses_put_mask(uses, mark, id, index_split_bit(U32.xor(id, da(index_tip(uses, id))))))
+
+@unsafe
+def nc_uses_put_mask(+uses: KDef, +mark: KDef, +id: U32, +mask: U32) -> KDef:
+  nt_choose(KDef, U32.is_eq(mask, 0), u => uses, u => index_insert(uses, mark, id, mask))
+
 # Full U32 IDs are explicit trie keys; the payload name is constant.
 # Var is a leaf, including malformed raw terms with Var children.
 @unsafe
 def nc_uses_term(+t: KTerm, +uses: KDef, +mark: KDef) -> KDef:
   nt_choose(KDef, String.eq(tg(t), "Var"),
-    u => index_set(uses, mark, ix(t), 32),
+    u => nc_uses_put(uses, mark, ix(t)),
     u => nc_uses_list(ks(t), uses, mark))
 
 @unsafe

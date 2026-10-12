@@ -1,0 +1,226 @@
+{
+  "kind": "phase70-compiler02-native-raw-driver-correctness-followup",
+  "version": 1,
+  "reviewedAt": "2026-10-12T01:58:02.386187+00:00",
+  "reviewMode": "Independent source/data only; all target execution performed by root.",
+  "parentCheckpoint": {
+    "file": "implementation/phase70/evidence/compiler02-correctness-checkpoint.json",
+    "sha256": "54e03d119136648407e4532aabdecf03ce6ba76d694514aa887318a68fc348d0",
+    "bytes": 4824
+  },
+  "candidateApiSha256": "f326862f5163fce83e47642c9b8dcfdb6596683bafe36054b7fb6d5430376f2f",
+  "native100": {
+    "candidateGoldenPasses": 100,
+    "candidateSelectedComplete": true,
+    "upstreamGoldenPasses": 93,
+    "upstreamExpectedGoldenDifferences": 7,
+    "same100CaseIds": true,
+    "changedInputs": [],
+    "workflowComplete": true,
+    "workflowPass": false,
+    "strictExact": true,
+    "unexpectedDifferences": [],
+    "knownDifferences": [
+      {
+        "id": "phase70/observer-demand/partial-factory-demand-v1.bend",
+        "candidate": {
+          "status": "error",
+          "stdout": "bend: a Nat past the largest immediate 2^48-1\n",
+          "stderr": "",
+          "exitCode": 1
+        },
+        "upstream": {
+          "status": "ok",
+          "stdout": "7080\n",
+          "stderr": "",
+          "exitCode": 0
+        }
+      },
+      {
+        "id": "phase70/observer-demand/successor-demand-refusal-v2.bend",
+        "candidate": {
+          "status": "error",
+          "stdout": "bend: a Nat past the largest immediate 2^48-1\n",
+          "stderr": "",
+          "exitCode": 1
+        },
+        "upstream": {
+          "status": "ok",
+          "stdout": "7080\n",
+          "stderr": "",
+          "exitCode": 0
+        }
+      },
+      {
+        "id": "phase70/observer-demand/zeroarity-demand-v1.bend",
+        "candidate": {
+          "status": "error",
+          "stdout": "bend: a Nat past the largest immediate 2^48-1\n",
+          "stderr": "",
+          "exitCode": 1
+        },
+        "upstream": {
+          "status": "ok",
+          "stdout": "7080\n",
+          "stderr": "",
+          "exitCode": 0
+        }
+      },
+      {
+        "id": "phase70/observer-recursive-demand/hidden-scalar-error-recursive-v2.bend",
+        "candidate": {
+          "status": "error",
+          "stdout": "bend: a Nat past the largest immediate 2^48-1\n",
+          "stderr": "",
+          "exitCode": 1
+        },
+        "upstream": {
+          "status": "ok",
+          "stdout": "7080\n",
+          "stderr": "",
+          "exitCode": 0
+        }
+      },
+      {
+        "id": "phase70/observer-recursive-demand/partial-factory-recursive-v2.bend",
+        "candidate": {
+          "status": "error",
+          "stdout": "bend: a Nat past the largest immediate 2^48-1\n",
+          "stderr": "",
+          "exitCode": 1
+        },
+        "upstream": {
+          "status": "ok",
+          "stdout": "7080\n",
+          "stderr": "",
+          "exitCode": 0
+        }
+      },
+      {
+        "id": "phase70/observer-v4/hidden-scalar-error.bend",
+        "candidate": {
+          "status": "error",
+          "stdout": "bend: a Nat past the largest immediate 2^48-1\n",
+          "stderr": "",
+          "exitCode": 1
+        },
+        "upstream": {
+          "status": "ok",
+          "stdout": "7080\n",
+          "stderr": "",
+          "exitCode": 0
+        }
+      },
+      {
+        "id": "phase70/observer-v4/post-recursion-error-refusal.bend",
+        "candidate": {
+          "status": "error",
+          "stdout": "bend: a Nat past the largest immediate 2^48-1\n",
+          "stderr": "",
+          "exitCode": 1
+        },
+        "upstream": {
+          "status": "ok",
+          "stdout": "7080\n",
+          "stderr": "",
+          "exitCode": 0
+        }
+      }
+    ],
+    "scope": "100 selected native cases, not full language conformance. Seven programs cover the known unused-demand difference. Harness records the Nat error in stdout; raw diagnostic stream oracles are separate.",
+    "pins": [
+      {
+        "file": "selfhost/build/phase70/compiler02-native100/execution/selected/candidate.json",
+        "sha256": "4184c69152af20544569b44fb8b3c0c2db8f7edebb157237d78d4ff9c76b05a1",
+        "bytes": 2388718
+      },
+      {
+        "file": "selfhost/build/phase70/compiler02-native100/execution/selected/reference.json",
+        "sha256": "fe24b04976617ca7223bd061d246732150a058936e7c3a0e79d5283d5dfc2b64",
+        "bytes": 2317655
+      },
+      {
+        "file": "selfhost/build/phase70/compiler02-native100/execution/report.json",
+        "sha256": "cae70b009f92620757f1726f5797d9e165451f27223ee1aec273987fcab9f3a2",
+        "bytes": 9224
+      }
+    ]
+  },
+  "raw31": {
+    "complete": true,
+    "pass": true,
+    "rows": 31,
+    "rowNames": [
+      "body-error-first",
+      "value-error",
+      "unused-mistyped-product",
+      "unused-mistyped-product",
+      "atom-chain",
+      "shared-error-checkpoint",
+      "atom-chain",
+      "shared-error-checkpoint",
+      "primitive-override",
+      "primitive-override",
+      "primitive-partial",
+      "primitive-partial",
+      "custom-0-dead-bang",
+      "custom-0-masked-duplicate-bang",
+      "custom-0-dead-unbound-value",
+      "custom-0-live-bang",
+      "custom-0-live-missing-reference",
+      "custom-1-interior-cache-lookup",
+      "custom-1-forged-prior-static-context",
+      "custom-1-forged-static-term",
+      "custom-2-comb-callee-id-equals-captured-caller-id",
+      "custom-2-comb-unbound-callee-variable",
+      "custom-2-comb-unused-literal-argument-still-demanded",
+      "custom-2-comb-nested-unused-literal-argument-still-demanded",
+      "custom-2-comb-repeated-parameter-fallback",
+      "custom-2-comb-dropped-parameter-fallback",
+      "custom-3-raw-declared-u32-retains-high-nat",
+      "custom-3-raw-declared-bool-retains-high-nat",
+      "custom-4-raw-forged-observer-context-is-inert",
+      "custom-4-raw-observer-return-node-is-not-source",
+      "custom-4-raw-observer-loop-node-is-not-source"
+    ],
+    "pins": [
+      {
+        "file": "selfhost/build/phase70/compiler02-raw31/execution/report.json",
+        "sha256": "26310dae355a6817bb61deb84f567614d44387af1944fccaa5c191702b569d28",
+        "bytes": 63406
+      },
+      {
+        "file": "selfhost/build/phase70/compiler02-raw31/plan.json",
+        "sha256": "8cbaea9f068ee25b2f97dc60477c8c98ea6b92e962f42e14cc23d6c5afdde694",
+        "bytes": 205947
+      }
+    ]
+  },
+  "genuineB2": {
+    "image": {
+      "file": "selfhost/build/phase70/compiler02-b2/full/compiler.mjs",
+      "sha256": "7c638e4ae4ae57a9ae759247a30ede1b27a24a2d07e239d94c0b2ee9828cee56"
+    },
+    "productionComplete": true,
+    "driverObservations": 8,
+    "driverPass": true,
+    "driverScope": "Exact ordinary driver observations and JS/C emitted bytes; JS result executed. C emitted only. No compiler fixed-point claim.",
+    "pins": [
+      {
+        "file": "selfhost/build/phase70/compiler02-b2/image-pins.json",
+        "sha256": "0ce997df20b6137e67239790701ef343f1399a7d0639cf2220fb0d9a60d4c1ce",
+        "bytes": 4890
+      },
+      {
+        "file": "selfhost/build/phase70/compiler02-b2/driver-comparison.json",
+        "sha256": "f00011acd347e6bdb5d439ff7f5329db82ece3071ec8c625e416e1270bab28a6",
+        "bytes": 1098
+      }
+    ]
+  },
+  "pending": [
+    "Genuine B2 self-check, B3 and final native qualification",
+    "Final B1/B2 C compilation-request timing",
+    "Release installation and final portable evidence bundle"
+  ]
+}

@@ -6,7 +6,7 @@ type NC_Literal is Data:
   NC_Literal{+valid: Bool, +value: U32}
 
 type NC_Binding is Data:
-  NC_Binding{+id: U32, +word: String}
+  NC_Binding{+id: U32, +word: String, +kind: N_WordKind}
 
 # Ordered output rows remain independent of the occurrence-ID set.
 type NC_EnvPartition is Data:
@@ -19,20 +19,20 @@ type NC_Code is Data:
 def nc_word(+id: U32, +env: List<&2, NC_Binding>) -> String:
   match env:
     case Nil{}: "NATIVE_UNBOUND_VARIABLE"
-    case Con{NC_Binding{+at, +word}, +rest}:
+    case Con{NC_Binding{+at, +word, +kind}, +rest}:
       nt_choose(String, U32.is_eq(id, at), u => word, u => nc_word(id, rest))
 
 @unsafe
 def nc_words(+env: List<&2, NC_Binding>) -> List<&2, String>:
   match env:
     case Nil{}: Nil{}
-    case Con{NC_Binding{+id, +word}, +rest}: Con{word, nc_words(rest)}
+    case Con{NC_Binding{+id, +word, +kind}, +rest}: Con{word, nc_words(rest)}
 
 @unsafe
 def nc_params(+env: List<&2, NC_Binding>) -> List<&2, N_Param>:
   match env:
     case Nil{}: Nil{}
-    case Con{NC_Binding{+id, +word}, +rest}: Con{N_Param{word, N_W64{}}, nc_params(rest)}
+    case Con{NC_Binding{+id, +word, +kind}, +rest}: Con{N_Param{word, kind}, nc_params(rest)}
 
 @unsafe
 def nc_slots(+env: List<&2, NC_Binding>, +i: U32) -> List<&2, String>:
@@ -82,7 +82,7 @@ def nc_id(+n: U32) -> U32:
 
 @unsafe
 def nc_binding(+id: U32) -> NC_Binding:
-  NC_Binding{id, "v_" ++ U32.show(id)}
+  NC_Binding{id, "v_" ++ U32.show(id), N_W64{}}
 
 @unsafe
 def nc_cut_task(+next: String, +ws: List<&2, String>, emitted: N_Emitted) -> String:
@@ -146,8 +146,8 @@ def nc_uses_has(+uses: KDef, +id: U32) -> Bool:
 def nc_live_uses(env: List<&2, NC_Binding>, +uses: KDef) -> List<&2, NC_Binding>:
   match env:
     case Nil{}: Nil{}
-    case Con{NC_Binding{+id, +word}, +rest}:
-      nt_choose(List<&2, NC_Binding>, nc_uses_has(uses, id), u => Con{NC_Binding{id, word}, nc_live_uses(rest, uses)}, u => nc_live_uses(rest, uses))
+    case Con{NC_Binding{+id, +word, +kind}, +rest}:
+      nt_choose(List<&2, NC_Binding>, nc_uses_has(uses, id), u => Con{NC_Binding{id, word, kind}, nc_live_uses(rest, uses)}, u => nc_live_uses(rest, uses))
 
 @unsafe
 def nc_live_env(env: List<&2, NC_Binding>, +t: KTerm) -> List<&2, NC_Binding>:
@@ -156,19 +156,19 @@ def nc_live_env(env: List<&2, NC_Binding>, +t: KTerm) -> List<&2, NC_Binding>:
     case Con{h, rest}: nc_live_uses(Con{h, rest}, nc_uses(t))
 
 @unsafe
-def nc_partition_step(+id: U32, +word: String, +live: Bool, +more: NC_EnvPartition) -> NC_EnvPartition:
+def nc_partition_step(+id: U32, +word: String, +kind: N_WordKind, +live: Bool, +more: NC_EnvPartition) -> NC_EnvPartition:
   match more:
     case NC_EnvPartition{+env, +drop}:
       nt_choose(NC_EnvPartition, live,
-        u => NC_EnvPartition{Con{NC_Binding{id, word}, env}, drop},
+        u => NC_EnvPartition{Con{NC_Binding{id, word, kind}, env}, drop},
         u => NC_EnvPartition{env, "term_sink(e, " ++ word ++ ");\n" ++ drop})
 
 @unsafe
 def nc_partition_uses(env: List<&2, NC_Binding>, +uses: KDef) -> NC_EnvPartition:
   match env:
     case Nil{}: NC_EnvPartition{Nil{}, ""}
-    case Con{NC_Binding{id, word}, rest}:
-      nc_partition_step(id, word, nc_uses_has(uses, id), nc_partition_uses(rest, uses))
+    case Con{NC_Binding{id, word, kind}, rest}:
+      nc_partition_step(id, word, kind, nc_uses_has(uses, id), nc_partition_uses(rest, uses))
 
 @unsafe
 def nc_prepare_env(env: List<&2, NC_Binding>, +t: KTerm) -> NC_EnvPartition:
@@ -180,8 +180,8 @@ def nc_prepare_env(env: List<&2, NC_Binding>, +t: KTerm) -> NC_EnvPartition:
 def nc_remove_env(env: List<&2, NC_Binding>, +id: U32) -> List<&2, NC_Binding>:
   match env:
     case Nil{}: Nil{}
-    case Con{NC_Binding{+at, +word}, +rest}:
-      nt_choose(List<&2, NC_Binding>, U32.is_eq(at, id), u => rest, u => Con{NC_Binding{at, word}, nc_remove_env(rest, id)})
+    case Con{NC_Binding{+at, +word, +kind}, +rest}:
+      nt_choose(List<&2, NC_Binding>, U32.is_eq(at, id), u => rest, u => Con{NC_Binding{at, word, kind}, nc_remove_env(rest, id)})
 
 @unsafe
 def nc_partition_drop(+parts: NC_EnvPartition) -> String:
@@ -196,7 +196,7 @@ def nc_drop_dead(env: List<&2, NC_Binding>, +t: KTerm) -> String:
 def nc_keep_uses(env: List<&2, NC_Binding>, +uses: KDef) -> String:
   match env:
     case Nil{}: ""
-    case Con{NC_Binding{+id, +word}, rest}:
+    case Con{NC_Binding{+id, +word, +kind}, rest}:
       nt_choose(String, nc_uses_has(uses, id), u => word ++ " = term_keep(e, " ++ word ++ ");\n", u => "") ++ nc_keep_uses(rest, uses)
 
 @unsafe
@@ -234,7 +234,7 @@ def nc_let_atom(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&
   +word = nt_choose(String, String.eq(tg(value), "Var"), u => nc_word(ix(value), env), u => nt_choose(String, String.eq(tg(value), "NOp"), u => nd_scalar_word(nm(value), nc_values(ks(value), env)), u => nt_choose(String, String.eq(tg(value), "NStatic"), v => ns_word(value), v => nm(value) ++ "ull")))
   +bodyUses = nc_uses(body)
   +held = nc_live_uses(env, bodyUses)
-  +rest = nc_lower_partition(book, body, n, NC_Scheduler{}, nc_partition_uses(List.append(&2, NC_Binding, held, [nc_binding(id)]), bodyUses))
+  +rest = nc_lower_partition(book, body, n, NC_Scheduler{}, nc_partition_uses(List.append(&2, NC_Binding, held, [nk_binding(id, value, env)]), bodyUses))
   nt_choose(NC_Code, String.eq(word, "NATIVE_UNBOUND_VARIABLE"),
     u => nc_let_cut(book, value, body, env, id, n),
     u => nc_prepend(nc_keep_uses(nc_live_env(env, value), bodyUses) ++ "Term v_" ++ U32.show(id) ++ " = " ++ word ++ ";\nif (!seq && err_seen(e.mem)) { return 0; }\n", rest))
@@ -255,7 +255,7 @@ def nc_let_emitted(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: Lis
   match emitted:
     case N_Emitted{code, word, n}:
       +bodyUses = nc_uses(body)
-      +rest = nc_lower_partition(book, body, n, NC_Scheduler{}, nc_partition_uses(List.append(&2, NC_Binding, nc_live_uses(env, bodyUses), [nc_binding(id)]), bodyUses))
+      +rest = nc_lower_partition(book, body, n, NC_Scheduler{}, nc_partition_uses(List.append(&2, NC_Binding, nc_live_uses(env, bodyUses), [nk_binding(id, value, env)]), bodyUses))
       nc_prepend(nc_keep_uses(nc_live_env(env, value), bodyUses) ++ "Term v_" ++ U32.show(id) ++ ";\n{\n" ++ code ++ "v_" ++ U32.show(id) ++ " = " ++ word ++ ";\n}\nif (!seq && err_seen(e.mem)) { return 0; }\n", rest)
 
 @unsafe
@@ -290,7 +290,7 @@ def nc_let_cut(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2
   +next = nc_name(n)
   +bodyUses = nc_uses(body)
   +held = nc_live_uses(env, bodyUses)
-  +newenv = List.append(&2, NC_Binding, held, [nc_binding(id)])
+  +newenv = List.append(&2, NC_Binding, held, [nk_binding(id, value, env)])
   +rest = nc_lower_partition(book, body, U32.inc(n), NC_Scheduler{}, nc_partition_uses(newenv, bodyUses))
   +valueEnv = nc_live_env(env, value)
   +val = nc_lower_live_to(book, value, valueEnv, nc_fresh(rest), NC_Scheduler{})
@@ -406,9 +406,9 @@ def nc_field_word(+name: String, +word: String, +i: U32) -> String:
     "e.mem[term_peek(e, " ++ word ++ ") + " ++ U32.show(i) ++ "]")))))
 
 @unsafe
-def nc_field_env(+name: String, +word: String, +count: U32, +i: U32, +n: U32) -> List<&2, NC_Binding>:
+def nc_field_env(+name: String, +word: String, +count: U32, +i: U32, +n: U32, +mask: U32) -> List<&2, NC_Binding>:
   nt_choose(List<&2, NC_Binding>, U32.is_eq(i, count), u => Nil{}, u =>
-    Con{nc_binding(nc_id(U32.add(n, i))), nc_field_env(name, word, count, U32.inc(i), n)})
+    Con{nk_field_binding(nc_id(U32.add(n, i)), mask, i), nc_field_env(name, word, count, U32.inc(i), n, mask)})
 
 @unsafe
 def nc_field_apps(+term: KTerm, +count: U32, +i: U32, +n: U32) -> KTerm:
@@ -445,7 +445,7 @@ def nc_match_apply_slow_to(book, t, env, n, target):
   +arg = kid(t, 1)
   +word = nc_word(ix(arg), env)
   +count = nt_choose(U32, U32.is_eq(ix(mat), 0), u => nc_field_count(book, nm(mat)), u => U32.sub(ix(mat), 1))
-  +hit = nc_lower_to(book, nd_reapply(nc_field_apps(kid(mat, 0), count, 0, n), nd_match_rest(t)), List.append(&2, NC_Binding, nc_remove_env(env, ix(arg)), nc_field_env(nm(mat), word, count, 0, n)), U32.add(n, count), target)
+  +hit = nc_lower_to(book, nd_reapply(nc_field_apps(kid(mat, 0), count, 0, n), nd_match_rest(t)), List.append(&2, NC_Binding, nc_remove_env(env, ix(arg)), nc_field_env(nm(mat), word, count, 0, n, qt(mat))), U32.add(n, count), target)
   +miss = nc_lower_to(book, nd_reapply(app(kid(mat, 1), arg), nd_match_rest(t)), env, nc_fresh(hit), target)
   +guard = nt_choose(String, String.eq(nm(mat), "Emit") || String.eq(nm(mat), "Halt"), u => "if (term_aux(" ++ word ++ ") != CID_EMIT && term_aux(" ++ word ++ ") != CID_HALT) { err_post(e.mem, ERR_TAGS); return 0; }\n", u => "")
   NC_Code{guard ++ "if (" ++ nc_condition(nm(mat), word) ++ ") {\n" ++ nc_destructure(nm(mat), word, count, n) ++ nc_body(hit) ++ "} else {\n" ++ nc_body(miss) ++ "}\n", nt_append(N_Segment, nc_segs(hit), nc_segs(miss)), nc_fresh(miss), nc_first_error(hit, miss), List.append(&2, String, nc_calls(hit), List.append(&2, String, nc_calls(miss), Nil{}))}

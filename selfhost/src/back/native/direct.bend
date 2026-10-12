@@ -154,7 +154,7 @@ def nd_comb_uses(+t: KTerm, +id: U32) -> U32:
 def nd_comb_linear(params: List<&2, NC_Binding>, +body: KTerm) -> Bool:
   match params:
     case Nil{}: True{}
-    case Con{NC_Binding{+id, word}, +rest}:
+    case Con{NC_Binding{+id, word, +kind}, +rest}:
       nt_choose(Bool, String.eq(nc_word(id, rest), "NATIVE_UNBOUND_VARIABLE") && U32.is_eq(nd_comb_uses(body, id), 1), u => nd_comb_linear(rest, body), u => False{})
 
 # Refuse even malformed raw-ID collisions before using the ordinary substitution
@@ -255,11 +255,11 @@ def nd_entry_params(+left: U32, +n: U32) -> List<&2, NC_Binding>:
 def nd_entry_args(params: List<&2, NC_Binding>) -> List<&2, KTerm>:
   match params:
     case Nil{}: Nil{}
-    case Con{NC_Binding{id, word}, rest}: Con{var("", id), nd_entry_args(rest)}
+    case Con{NC_Binding{id, word, kind}, rest}: Con{var("", id), nd_entry_args(rest)}
 
 @unsafe
 def nd_extend_arity(+book: List<&2, KDef>, +body: KTerm, +base: NC_Code, +name: String, +arity: U32) -> NC_Code:
-  +params = nd_entry_params(arity, nc_fresh(base))
+  +params = nk_typed_bindings(nd_entry_params(arity, nc_fresh(base)), nf_worker_kinds(book, name, arity))
   nt_choose(NC_Code, U32.is_eq(arity, 0), u => base, u =>
     nd_join(base, nc_lower(book, nd_reapply(body, nd_entry_args(params)), params, U32.add(nc_fresh(base), arity)), nc_ref_name(book, name), params))
 
@@ -274,7 +274,7 @@ def nd_extend(+book: List<&2, KDef>, +body: KTerm, +base: NC_Code, +name: String
 def nd_eta_body(params: List<&2, NC_Binding>, +call: KTerm) -> KTerm:
   match params:
     case Nil{}: call
-    case Con{NC_Binding{id, word}, rest}: k_lam("", id, 1, [nd_eta_body(rest, call)], 0, 0, False{})
+    case Con{NC_Binding{id, word, kind}, rest}: k_lam("", id, 1, [nd_eta_body(rest, call)], 0, 0, False{})
 
 @unsafe
 def nd_eta_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +arity: U32) -> NC_Code:

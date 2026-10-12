@@ -35,7 +35,7 @@ def nc_keeps(+word: String, +n: U32) -> String:
 def nc_parallel_share(env: List<&2, NC_Binding>, +xs: List<&2, KTerm>) -> String:
   match env:
     case Nil{}: ""
-    case Con{NC_Binding{id, word}, rest}: nc_keeps(word, nc_parallel_uses(xs, id)) ++ nc_parallel_share(rest, xs)
+    case Con{NC_Binding{id, word, kind}, rest}: nc_keeps(word, nc_parallel_uses(xs, id)) ++ nc_parallel_share(rest, xs)
 
 @unsafe
 def nc_child_task(+fid: String, +join: String, +idx: U32, +em: N_Emitted) -> String:

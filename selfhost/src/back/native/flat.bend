@@ -32,7 +32,7 @@ def nf_bind_boxed(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List
   +join = "nf_join_" ++ U32.show(n)
   +word = "v_" ++ U32.show(id)
   +bodyUses = nc_uses(body)
-  +rest = nc_lower_partition(book, body, U32.inc(n), target, nc_partition_uses(List.append(&2, NC_Binding, nc_live_uses(env, bodyUses), [nc_binding(id)]), bodyUses))
+  +rest = nc_lower_partition(book, body, U32.inc(n), target, nc_partition_uses(List.append(&2, NC_Binding, nc_live_uses(env, bodyUses), [nk_binding(id, value, env)]), bodyUses))
   +valueEnv = nc_live_env(env, value)
   +val = nc_lower_live_to(book, value, valueEnv, nc_fresh(rest), nf_local(target, word, join))
   NC_Code{nc_keep_uses(valueEnv, bodyUses) ++ "Term " ++ word ++ ";\n{\n" ++ nc_body(val) ++ "}\n" ++ join ++ ":;\nif (!seq && err_seen(e.mem)) { return 0; }\n" ++ nc_body(rest), nt_append(N_Segment, nc_segs(val), nc_segs(rest)), nc_fresh(val), nc_first_error(val, rest), List.append(&2, String, nc_calls(val), List.append(&2, String, nc_calls(rest), Nil{}))}
@@ -116,8 +116,8 @@ def nf_typed_params(+params: List<&2, NC_Binding>, +kinds: List<&2, N_WordKind>)
 def nf_params_zip(params: List<&2, NC_Binding>, kinds: List<&2, N_WordKind>) -> List<&2, N_Param>:
   match params, kinds:
     case Nil{}, _: Nil{}
-    case Con{NC_Binding{id, word}, rest}, Con{kind, more}: Con{N_Param{word, kind}, nf_params_zip(rest, more)}
-    case Con{NC_Binding{id, word}, rest}, Nil{}: Con{N_Param{word, N_W64{}}, nf_params_zip(rest, Nil{})}
+    case Con{NC_Binding{id, word, old}, rest}, Con{kind, more}: Con{N_Param{word, kind}, nf_params_zip(rest, more)}
+    case Con{NC_Binding{id, word, kind}, rest}, Nil{}: Con{N_Param{word, N_W64{}}, nf_params_zip(rest, Nil{})}
 
 # A shell's fields remain opaque. Only nonflattened scalar arguments inherit
 # the original argument kind; expanding a product must not shift later slots.
@@ -136,7 +136,7 @@ def nf_arg_c(words: List<&2, String>) -> String:
 @unsafe
 def nf_self_moves(params: List<&2, NC_Binding>, words: List<&2, String>, +i: U32) -> String:
   match params, words:
-    case Con{NC_Binding{id, word}, rest}, Con{value, more}: word ++ " = nf_arg_" ++ U32.show(i) ++ ";\n" ++ nf_self_moves(rest, more, U32.inc(i))
+    case Con{NC_Binding{id, word, kind}, rest}, Con{value, more}: word ++ " = nf_arg_" ++ U32.show(i) ++ ";\n" ++ nf_self_moves(rest, more, U32.inc(i))
     case _, _: ""
 
 @unsafe
@@ -169,11 +169,11 @@ def nf_ref(+book: List<&2, KDef>, +t: KTerm, +n: U32, +target: NC_Target) -> NC_
 
 @unsafe
 def nf_candidate(+book: List<&2, KDef>, +name: String, +signatures: List<&2, KDef>) -> NF_Worker:
-  +params = nd_entry_params(nd_arity(book, name), 0)
+  +params = nk_typed_bindings(nd_entry_params(nd_arity(book, name), 0), nf_worker_kinds(book, name, nd_arity(book, name)))
   +body = nc_compact_definition(book, lookup(book, name), 0)
   +shape = atom("Absent")
   +code = nc_lower_to(book, nd_reapply(body, nd_entry_args(params)), params, nt_count(NC_Binding, params), NC_Destination{nq_words("nf_out", nq_width(shape), 0), shape, "", name, params, True{}, signatures})
-  NF_Worker{name, nf_typed_params(params, nf_worker_kinds(book, name, nt_count(NC_Binding, params))), code, nc_calls(code), shape}
+  NF_Worker{name, nc_params(params), code, nc_calls(code), shape}
 
 @unsafe
 def nf_candidates(+book: List<&2, KDef>, names: List<&2, String>, +bangs: List<&2, String>, +signatures: List<&2, KDef>) -> List<&2, NF_Worker>:
@@ -263,7 +263,7 @@ def nf_wrap_segments(segments: List<&2, N_Segment>, +index: List<&2, KDef>) -> L
 
 @unsafe
 def nf_finish_ready(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:
-  +ordinary = nf_wrap_segments(nt_choose(List<&2, N_Segment>, observers, u => nf_typed_segments(book, ss), u => ss), book_cached(nf_adapter_defs(workers, ready), 0))
+  +ordinary = nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0))
   +route = no_route(book, ordinary, observer_names, workers, ready, observers)
   nc_with_show(no_wrap_routes(ordinary, no_route_entries(route), no_route_ready(route)), cs, runtime, requests, pure, show, nh_observer_macros(book, no_route_entries(route), no_route_ready(route)) ++ "#if !DEVICE\n#if NATIVE_TYPED_SCALARS\n#define NF_SCALAR u32\n#else\n#define NF_SCALAR Term\n#endif\n#if defined(__GNUC__) || defined(__clang__)\n#define NF_INLINE INLINE __attribute__((always_inline))\n#else\n#define NF_INLINE INLINE\n#endif\n" ++ nf_prototypes(no_route_workers(route), no_route_ready(route)) ++ nf_bodies(no_route_workers(route), no_route_ready(route)) ++ "#undef NF_INLINE\n#undef NF_SCALAR\n#endif\n", image)
 
@@ -303,20 +303,3 @@ def nf_finish_show(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2
   +bangs = nc_bangs_names(book, names)
   +observer_names = nt_choose(List<&2, String>, observers, u => no_candidate_names(book, names, bangs), u => Nil{})
   nf_finish_workers(book, ss, cs, runtime, requests, pure, show, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates_mode(book, names, bangs, signatures, observers)), signatures, observer_names, observers)
-
-# Preserve checked scalar telescope facts at scheduler entries as well as
-# private workers. Continuations and dynamically applied closures remain opaque.
-@unsafe
-def nf_typed_segments(+book: List<&2, KDef>, ss: List<&2, N_Segment>) -> List<&2, N_Segment>:
-  match ss:
-    case Nil{}: Nil{}
-    case Con{N_Segment{+name, +params, result, +frame, body, refs, host, spin, fork, bang}, rest}:
-      +owner = nt_choose(String, String.starts_with(name, "$direct."), u => String.drop(name, 8n), u => name)
-      +typed = nt_choose(List<&2, N_Param>, no_direct_frame(frame), u => nf_segment_kinds(params, nf_worker_kinds(book, owner, nt_count(N_Param, params))), u => params)
-      Con{N_Segment{name, typed, result, frame, body, refs, host, spin, fork, bang}, nf_typed_segments(book, rest)}
-
-@unsafe
-def nf_segment_kinds(params: List<&2, N_Param>, kinds: List<&2, N_WordKind>) -> List<&2, N_Param>:
-  match params, kinds:
-    case Con{N_Param{word, old}, rest}, Con{kind, more}: Con{N_Param{word, kind}, nf_segment_kinds(rest, more)}
-    case _, _: params

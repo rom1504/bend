@@ -199,7 +199,7 @@ def nq_remove_fields(env: List<&2, NC_Binding>, fields: List<&2, KTerm>) -> List
 def nq_field_bindings(fields: List<&2, KTerm>, +env: List<&2, NC_Binding>) -> List<&2, NC_Binding>:
   match fields:
     case Nil{}: Nil{}
-    case Con{+field, rest}: Con{NC_Binding{ix(field), nc_word(ix(field), env)}, nq_field_bindings(rest, env)}
+    case Con{+field, rest}: Con{NC_Binding{ix(field), nc_word(ix(field), env), nk_kind(ix(field), env)}, nq_field_bindings(rest, env)}
 
 @unsafe
 def nq_match_args(args: List<&2, KTerm>) -> Bool:

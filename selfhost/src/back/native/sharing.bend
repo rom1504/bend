@@ -181,19 +181,15 @@ def nh_cast_words(+ctor: String, words: List<&2, String>, +i: U32) -> String:
     case Con{+word, rest}: "#if " ++ nh_field_test(ctor, i) ++ "\n" ++ word ++ " = (u32)" ++ word ++ ";\n#endif\n" ++ nh_cast_words(ctor, rest, U32.inc(i))
 
 @unsafe
-def nh_field_telescope(+book: List<&2, KDef>, +ctor: String, +ty: KTerm, +left: U32, +i: U32) -> String:
-  nt_choose(String, U32.is_eq(left, 0) || U32.is_gt(left, 8), u => "", u => nh_field_header(book, ctor, nq_layout_type(book, ty), left, i))
-
-@unsafe
-def nh_field_header(+book: List<&2, KDef>, +ctor: String, +head: KTerm, +left: U32, +i: U32) -> String:
-  nt_choose(String, String.eq(tg(head), "All"), u =>
-    nt_choose(String, Bool.not(U32.is_eq(qt(head), 0)) && ns_scalar(book, kid(head, 0)), v => "#define NATIVE_FIELD32_" ++ nt_cid(ctor) ++ "_" ++ U32.show(i) ++ " 1\n", v => "") ++ nh_field_telescope(book, ctor, kid(head, 1), U32.sub(left, 1), U32.add(i, nt_bool(Bool.not(U32.is_eq(qt(head), 0))))), u => "")
+def nh_field_flags(+ctor: String, +mask: U32, +i: U32) -> String:
+  nt_choose(String, U32.is_eq(i, 8), u => "", u =>
+    nt_choose(String, U32.is_ne(U32.and(mask, U32.shln(1, U32.to_nat(i))), 0), v => "#define NATIVE_FIELD32_" ++ nt_cid(ctor) ++ "_" ++ U32.show(i) ++ " 1\n", v => "") ++ nh_field_flags(ctor, mask, U32.inc(i)))
 
 @unsafe
 def nh_field_ctors(+book: List<&2, KDef>, cs: List<&2, KDef>) -> String:
   match cs:
     case Nil{}: ""
-    case Con{+c, rest}: nh_field_telescope(book, nc_ctor_encode(dn(c)), dt(c), da(c), 0) ++ nh_field_ctors(book, rest)
+    case Con{+c, rest}: nh_field_flags(nc_ctor_encode(dn(c)), nh_field_mask(book, dt(c), da(c), 0), 0) ++ nh_field_ctors(book, rest)
 
 @unsafe
 def nh_field_macros(+book: List<&2, KDef>, ds: List<&2, KDef>) -> String:
@@ -207,3 +203,15 @@ def nh_param_facts(args: List<&2, KTerm>, +env: List<&2, NC_Binding>) -> String:
   match args:
     case Nil{}: ""
     case Con{+arg, rest}: nt_choose(String, String.eq(tg(arg), "NQBundle"), u => nh_cast_words(nm(arg), nc_values(ks(arg), env), 0), u => "") ++ nh_param_facts(rest, env)
+
+# Erased Mat.qty carries per-use scalar-field facts, not a source quantity.
+# Specialize before erasure, so List<U32> and List<String> stay distinct.
+# Every live field keeps its index; unknown/dependent fields remain opaque.
+@unsafe
+def nh_field_mask(+book: List<&2, KDef>, +ty: KTerm, +left: U32, +i: U32) -> U32:
+  nt_choose(U32, U32.is_eq(left, 0) || U32.is_gt(left, 8), u => 0, u => nh_field_mask_head(book, nq_layout_type(book, ty), left, i))
+
+@unsafe
+def nh_field_mask_head(+book: List<&2, KDef>, +head: KTerm, +left: U32, +i: U32) -> U32:
+  nt_choose(U32, String.eq(tg(head), "All"), u =>
+    U32.or(nt_choose(U32, Bool.not(U32.is_eq(qt(head), 0)) && ns_scalar(book, kid(head, 0)), v => U32.shln(1, U32.to_nat(i)), v => 0), nh_field_mask(book, kid(head, 1), U32.sub(left, 1), U32.add(i, nt_bool(Bool.not(U32.is_eq(qt(head), 0)))))), u => 0)

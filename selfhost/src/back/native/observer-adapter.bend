@@ -20,22 +20,22 @@ def no_root_index(roots: List<&2, U32>, +i: U32) -> Bool:
 def no_owned_roots(params: List<&2, NC_Binding>, +roots: List<&2, U32>, +i: U32) -> List<&2, NC_Binding>:
   match params:
     case Nil{}: Nil{}
-    case Con{NC_Binding{id, word}, rest}:
+    case Con{NC_Binding{id, word, kind}, rest}:
       +more = no_owned_roots(rest, roots, U32.inc(i))
-      nt_choose(List<&2, NC_Binding>, no_root_index(roots, i), u => Con{NC_Binding{id, "no_root_" ++ U32.show(i)}, more}, u => more)
+      nt_choose(List<&2, NC_Binding>, no_root_index(roots, i), u => Con{NC_Binding{id, "no_root_" ++ U32.show(i), kind}, more}, u => more)
 
 @unsafe
 def no_root_decls(params: List<&2, NC_Binding>, +roots: List<&2, U32>, +i: U32) -> String:
   match params:
     case Nil{}: ""
-    case Con{NC_Binding{id, word}, rest}:
+    case Con{NC_Binding{id, word, kind}, rest}:
       nt_choose(String, no_root_index(roots, i), u => "Term no_root_" ++ U32.show(i) ++ " = " ++ word ++ ";\n", u => "") ++ no_root_decls(rest, roots, U32.inc(i))
 
 @unsafe
 def no_wrapper_once(+wrapper: KTerm, env: List<&2, NC_Binding>) -> Bool:
   match env:
     case Nil{}: True{}
-    case Con{NC_Binding{id, word}, rest}: U32.is_le(nq_uses(wrapper, id), 1) && no_wrapper_once(wrapper, rest)
+    case Con{NC_Binding{id, word, kind}, rest}: U32.is_le(nq_uses(wrapper, id), 1) && no_wrapper_once(wrapper, rest)
 
 law no_wrapper_children:
   for +book: List<&2, KDef>
@@ -79,7 +79,7 @@ def no_adapter_lower(+book: List<&2, KDef>, +owner: String, +params: List<&2, NC
 @unsafe
 def no_adapter(+book: List<&2, KDef>, +owner: String, +params: List<&2, NC_Binding>, +roots: List<&2, U32>, +resultId: U32, +wrapper: KTerm, +fresh: U32) -> NF_Worker:
   +owned = no_owned_roots(params, roots, 0)
-  +env : List<&2, NC_Binding> = Con{NC_Binding{resultId, "no_scalar_result"}, owned}
+  +env : List<&2, NC_Binding> = Con{NC_Binding{resultId, "no_scalar_result", N_W64{}}, owned}
   +valid = U32.is_gt(nt_count(U32, roots), 0) && U32.is_le(nt_count(U32, roots), 2) && U32.is_eq(nt_count(U32, roots), nt_count(NC_Binding, owned)) && String.eq(nc_word(resultId, params), "NATIVE_UNBOUND_VARIABLE") && U32.is_le(no_wrapper_nodes(book, wrapper, env, 2), 2) && U32.is_eq(nq_uses(wrapper, resultId), 1) && no_wrapper_once(wrapper, env) && U32.is_le(fresh, 294967231) && nd_comb_fresh(wrapper, Nil{}, List.append(&2, NC_Binding, params, env), fresh, 64)
   +code = no_guard_code(nt_choose(NC_Code, valid, u => no_adapter_lower(book, owner, params, roots, env, wrapper, fresh), u => nc_fail("observer adapter: invalid owned wrapper or fresh span", fresh)))
   NF_Worker{no_adapter_name(owner), nc_params(params), code, nc_calls(code), atom("Absent")}

@@ -51,7 +51,7 @@ def nc_erase_args(
 def nc_erase_mat(+book: List<&2, KDef>, +t: KTerm, +adt: KTerm) -> KTerm:
   +ctr = lookup(dc(lookup(book, nm(adt))), nm(t))
   +count = nc_live_count(book, nc_tele_fill(book, dt(ctr), ks(adt)), da(ctr))
-  kt("Mat", nt_choose(String, db(lookup(book, nm(adt))), u => nm(t), u => nc_ctor_identity(book, nm(t))), U32.inc(count), qt(t), nc_erase_list(book, ks(t)))
+  kt("Mat", nt_choose(String, db(lookup(book, nm(adt))), u => nm(t), u => nc_ctor_identity(book, nm(t))), U32.inc(count), nh_field_mask(book, nc_tele_fill(book, dt(ctr), ks(adt)), da(ctr), 0), nc_erase_list(book, ks(t)))
 
 @unsafe
 def nc_erase_annotated(+book: List<&2, KDef>, +t: KTerm, +ty: KTerm) -> KTerm:

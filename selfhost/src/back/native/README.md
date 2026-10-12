@@ -202,3 +202,18 @@ interfaces remain boxed. There is no new IR, runtime representation or JS
 optimization. See the [Phase72 report](../../../../implementation/phase72/README.md)
 for measured scope and qualification status; candidate measurements alone do
 not identify an installed release.
+
+## Phase73 ownership and scalar facts
+
+`sharing.bend` tracks actual duplicated checked values and complete datatype
+instantiations, so proven unshared constructors avoid redundant RFC wrappers.
+Scalar-result observers borrow shared recursive roots; all-consumer and saturated-
+use proofs allow cold recursive children. `NC_Binding` carries existing word
+kinds through aliases and continuations, replacing the post-lowering argument
+rewrite. Monomorphic product fields and instantiated match fields reuse one
+bounded scalar-field proof. Compiler algorithms remain in Bend.
+
+See [Native ownership and scalar facts](../../../../docs/self_hosted/NATIVE_OWNERSHIP_FACTS.md)
+for invariants, refusal boundaries and maintenance requirements, and the
+[Phase73 report](../../../../implementation/phase73/README.md) for actual measured
+and installed status. Historical descriptions above refer to their own versions.

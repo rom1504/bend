@@ -862,7 +862,7 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
       const error=api.j_compile_error(book);
       if(error)return {status:'error',phase,diagnostic:error.startsWith('Error:')?error:'Error: '+error,exitCode:1,checked:true};
     }
-    const contextBook=api.book_context?
+    const contextBook=(mode!=='native'||ownedApi)&&api.book_context?
       (usedPreparedWorld&&typeof api.book_context_world==='function'?api.book_context_world(book,graph.prefixLoad,cached.preparedWorld):api.book_context(book)):book;
     const roots=backend==='direct'?api.jd_roots(contextBook,mode==='library'):api.j_roots?.(contextBook,mode==='library');
     const stops=mode!=='native'?(backend==='direct'?api.jd_stops?.(contextBook):api.j_stops?.(contextBook)):null;

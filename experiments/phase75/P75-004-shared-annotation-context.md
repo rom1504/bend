@@ -7,3 +7,6 @@ through the plain list. Use the already qualified book_context_world admission
 (or ordinary book_context fallback) for native requests too. No new compiler
 algorithm or API: the existing Bend context is shared across these phases.
 Check exact complete C against compiler02; retain raw public context behavior.
+
+Candidate09 narrows this host reuse to owned native requests. Injected API
+clients retain the previous native call sequence; JavaScript behavior is unchanged.

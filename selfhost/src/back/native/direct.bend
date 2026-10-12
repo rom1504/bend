@@ -67,6 +67,12 @@ def nd_foreign_arity(+book: List<&2, KDef>, +ty: KTerm, +n: U32) -> U32:
 
 @unsafe
 def nd_arity(+book: List<&2, KDef>, +name: String) -> U32:
+  +fact = ns_body(book, name)
+  nt_choose(U32, U32.is_eq(dx(fact), 1) && (String.eq(dk(fact), "NativeStaticBody") || String.eq(dk(fact), "NativeErasedBody")),
+    u => da(fact), u => nd_arity_plain(book, name))
+
+@unsafe
+def nd_arity_plain(+book: List<&2, KDef>, +name: String) -> U32:
   +d = lookup(book, name)
   nt_choose(U32, nc_native_def(d), u => nc_primitive_arity(nc_primitive_name(name)), u =>
     nt_choose(U32, String.eq(tg(nc_unann(dv(d))), "Foreign"), u => nd_foreign_arity(book, dt(d), 0), u => U32.max(nd_leading(dv(d), 0), jd_live_arity(book, dt(d), jd_arity(book, d)))))

@@ -213,7 +213,9 @@ def ns_defs(+book: List<&2, KDef>, +cs: KDef, names: List<&2, String>, +image: N
 @unsafe
 def ns_def_step(+book: List<&2, KDef>, +cs: KDef, +rest: List<&2, String>, +name: String, +facts: List<&2, KDef>, transformed: NS_Term) -> NS_Defs:
   match transformed:
-    case NS_Term{body, image}: ns_defs(book, cs, rest, image, Con{KDef{name, "NativeStaticBody", 0, 0, atom("Absent"), body, Nil{}, False{}, False{}}, facts})
+    case NS_Term{body, image}:
+      +prior = ns_body(book, name)
+      ns_defs(book, cs, rest, image, Con{KDef{name, "NativeStaticBody", da(prior), dx(prior), atom("Absent"), body, Nil{}, False{}, False{}}, facts})
 
 @unsafe
 def ns_attach(+book: List<&2, KDef>, built: NS_Defs) -> List<&2, KDef>:

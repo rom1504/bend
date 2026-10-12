@@ -312,3 +312,5 @@ can add it here.
 
 Thanks to [Ayush Somani](https://ayushsomani.me/) for reserving the
 `bend-lang` name for us.
+
+Native self-hosted compilation: [request architecture and validation](docs/self_hosted/NATIVE_COMPILATION.md).

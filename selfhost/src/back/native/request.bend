@@ -18,7 +18,7 @@ def nr_walk(+book: List<&2, KDef>, todo: List<&2, String>, +done: List<&2, Strin
 def nr_visit(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +facts: List<&2, KDef>, +d: KDef) -> NR_Closure:
   +body = nc_definition_plain(book, d, 0)
   +more = nt_choose(List<&2, KDef>, String.eq(dk(d), "Def") && Bool.not(nc_native_def(d) || nc_foreign(d)),
-    u => Con{KDef{name, "NativeErasedBody", 0, 0, atom("Absent"), body, Nil{}, False{}, False{}}, facts}, u => facts)
+    u => Con{KDef{name, "NativeErasedBody", nd_arity_plain(book, name), 1, atom("Absent"), body, Nil{}, False{}, False{}}, facts}, u => facts)
   nr_walk(book, nt_append(String, nc_refs(body), todo), Con{name, done}, more)
 
 @unsafe

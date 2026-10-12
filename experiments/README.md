@@ -5,6 +5,21 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed implementation: Phase70 observers and broader native coverage
+
+[Design](../design/phase70/observers-and-compilation.md) ·
+[Report](../implementation/phase70/README.md) ·
+[Current frontier](STEERING.md).
+Installed compiler03 preserves immutable roots during proven observations,
+restores checked Bool-array transport and avoids two repeated compiler scans.
+Original-six native runtime improves12.95% against paired Phase69; six broader
+additions improve18.90%. Respective upstream ratios1.12124×/1.84036× remain
+separate. B1/B2 C requests are3.41827×/2.16517× upstream, and the bounded paired
+Numeric screen shows added compiler cost. Native candidate100/100, raw31, B2
+self-check/B3 and installed42/24/5 pass; seven known reference disagreements stay
+explicit. Source grows1,183 physical lines. Read the report for evidence,
+limits, rejected experiments and next general opportunities.
+
 ## Completed implementation: Phase67 native speed and proof pilot
 
 [Design](../design/phase67/native-speed-and-proof.md) ·

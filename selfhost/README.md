@@ -1,28 +1,43 @@
 # Bend2 compiler port in Bend2
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The [Phase69 report](../implementation/phase69/README.md) records the selected
-and installed compiler: checked B1 `674e7960…`, genuine B2 `c858dfa5…`.
-Both self-hosting gates and installed-interface checks pass. Use
-`npm run verify:release` to check the installed package.
+The [Phase70 report](../implementation/phase70/README.md) records installed
+**compiler03**, source `d6d6049`, checked B1 `386ae358…` and separately qualified
+genuine B2 `d069204f…`. Fresh self-check, exact B2/B3 reproduction, installation,
+legacy42/default24/helper5 and verification before/after CLI checks pass. Use
+`npm run verify:release` to check the installed package against its manifest.
 
-Six native diagnostic families have an equal-family geometric mean of
-**1.033× upstream C execution time**,
-32.4% less than compiler23 in the same campaign. Tree/Map/lexer remain
-1.43×/1.59×/1.82×; the aggregate is not universal parity. The
-[native optimization guide](../docs/self_hosted/native-parity.md) explains the
-general rules and reproducible fast loops. C compilation itself measures
-3.23×/2.18× upstream for B1/B2 in a separate three-source screen.
+The [native runtime results](../implementation/phase70/native-runtime-results.md)
+measure **1.12124× upstream C time on the original six families** and
+**1.84036× on six additions**, improving 12.95% and 18.90% against Phase69
+measured in the same campaigns. An optional equal-weight twelve-family score
+is **1.43649×**. These finite, single-worker results measure programs emitted
+by compiler02. All 24 fresh compiler03 B1/B2 emissions match the complete C
+for those twelve programs, with the 56 pinned host/runtime/effect files unchanged,
+qualifying inheritance of the saved-program results. This is not a new
+compiler03 runtime timing campaign, compiler latency or universal parity. Do not
+compare historical Phase69's 1.033× directly with these new ratios: its saved baseline measures
+1.28809× in the current original-six campaign.
+
+The [observer guide](../docs/self_hosted/NATIVE_OBSERVERS.md) explains typed
+immutable-root borrowing, checked permission and fallbacks. Checked Bool arrays,
+lazy product demand and compact-body reuse are also selected. The occurrence
+shortcut failed its retention rule and was removed; the ordinary-ready observer
+skip was not shipped. The [source accounting](../implementation/phase70/simplicity-and-time.md)
+records the implementation cost as well as the measured gains.
 
 The unchanged frontend/JS executable closure retains Phase66's finite
-conformance results. Fresh selected native controls pass: 71 source cases and
-28 raw report rows.
-The last full campaign measured B1/B2 compilation 1.402×/1.321× TS and JS
-runtime 1.049× equal-point/1.047× equal-source. These broad historical JS ratios
-are distinct from the current narrow C request screen.
+conformance results. The last broad campaign measured B1/B2 compilation
+1.402×/1.321× TS and JS runtime 1.049× equal-point/1.047× equal-source;
+these remain historical. The separate three-source C-emission screen measures
+B1 **3.41827×** and genuine B2 **2.16517×** upstream TS over three balanced
+rounds and 27 exact-C requests. Request clocks exclude imports, Base preparation,
+Clang and program execution. Bend uses prepared Base; TS checks Base within its
+request. Compilation parity remains unfinished: a paired Numeric screen takes
+6.54% more B1 time and 1.09% more B2 time than Phase69.
 See the [conformance record](CONFORMANCE.md),
-[qualification evidence](../implementation/phase69/evidence/summary.json)
-and [measurement boundaries](../implementation/phase69/README.md).
+[compiler03 gate review](../implementation/phase70/compiler03-correctness.md)
+and [Phase70 measurement boundaries](../implementation/phase70/README.md).
 
 Phase66 changes namespace display, the Base/effect ABI and composite host
 marshalling. The new Base needs fresh prepared artifacts. Its exact-content

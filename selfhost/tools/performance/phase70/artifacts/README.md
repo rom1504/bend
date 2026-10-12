@@ -1,7 +1,9 @@
 # Phase70 preservation producer
 
-`seal.py` is prepared source. No Phase70 archive has been created here. Root
-must close every Phase70 raw and method writer before running it. The producer
+`seal.py` preserves the closed Phase70 campaign. All raw and method writers
+were frozen after final compiler03 qualification, release verification and the
+paired compilation screen. The selected capsule is [evidence01](evidence01/README.md);
+its `verification.json` records completion and exact contents. The producer
 runs no compiler or benchmark and never changes or removes original inputs.
 
 From the repository root, after that freeze:

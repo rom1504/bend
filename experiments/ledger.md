@@ -4197,3 +4197,27 @@ preserved exactly. C request B1/B2 screen3.231×/2.183× across27 exact requests
 separate from runtime and historical broad JS metrics. +440 physical lines,
 one module. Failed variants remain in the verified Phase69 capsule. Guarded
 occupancy21m44s, peak1.516GiB,51m29s first-to-last-target span. No PR comment.
+
+
+### Phase70 observers, expanded native coverage and release — 2026-10-12
+
+[Report](../implementation/phase70/README.md), selected source `d6d6049`,
+installed B1 `386ae358…`, genuine B2/B3 `d069204f…`. P70-001 bounded borrowed
+observers, P70-004 lazy demand, P70-005 compact reuse and P70-007 Bool transport
+selected. P70-006 occurrence update removed after factorial; P70-008 observer
+skip rejected. Original-six runtime1.12124× upstream, expanded-six1.84036×;
+12.95%/18.90% less time than contemporaneous Phase69,144qualified intervals
+including a separate sensitivity repeat. Compiler03 B1/B2 complete-C identities
+across12programs transfer measured02 results without rerunning native timing.
+
+Final C request B1/B2 ratios3.41827×/2.16517×. The legitimate-image paired
+Numeric screen shows +6.54%/+1.09% compiler time, so no aggregate compiler-speed
+win is claimed. Candidate native100/100, raw31, frontend36, JS2992 unchanged,
+B2driver8, own-source acceptance, exactB3 and installed42/24/5 pass. Reference
+93/100 preserves seven unused-demand disagreements and paired failure; broader
+native13scope gaps remain. Not full conformance or a mathematical proof.
+
++1,183 physical/+954code lines,128modules; native production+30.58%. Target
+occupancy38m39s over2h06m12s target span, peak1.506GiB. Evidence capsule retains
+failed experiments and prior dependencies. General product/loop-state transport
+and shared native layout/Base planning are next opportunities. No PR comment.

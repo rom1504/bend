@@ -136,7 +136,7 @@ and comment/string shields remain shared with JavaScript.
 See [native facts and fallback results](../../../../implementation/phase68/native-facts-and-calls.md)
 for separate runtime, B1/B2 compilation, conformance and size measurements.
 
-### Phase69 native integration
+### Retained Phase69 native integration
 
 Main-reachable bang facts now drive both scheduler metadata and worker
 admission. `static.bend` interns closed immutable constructor graphs in the
@@ -150,18 +150,18 @@ closure factories while preserving argument demand and capture identities.
 Checked no-sharing facts permit cold user-constructor stores, and private
 worker signatures retain proven U32/F32/Char/Bool widths through `N_Param`.
 Raw calls and scheduler registers keep the generic Term ABI. Product fields
-remain opaque, and general root borrowing/storage reuse are still separate
-experiments. Register new native modules in both `manifest.txt` and
+remain opaque, and general product-storage reuse remains a separate
+experiment. Phase70 adds the bounded root borrowing described below. Register new native modules in both `manifest.txt` and
 `src/compiler.json` for a full compiler build.
 
 The [native performance guide](../../../../docs/self_hosted/native-parity.md)
-explains contracts, the typed10 six-family 1.0332× upstream runtime result,
+explains contracts, the historical typed10 six-family 1.0332× upstream result,
 remaining individual gaps and reproducible fast loops. The
 [design](../../../../design/phase69/native-parity.md) and
 [report](../../../../implementation/phase69/README.md) separate measured source
 candidates, conformance, B1/B2 latency and installed release status.
 
-### Phase70 root-preserving observers (working source)
+### Phase70 installed root-preserving observers
 
 The optional checked CPU observer pass checks that a bounded immutable-list
 traversal returns its original roots, computes the scalar answer with borrowed
@@ -170,5 +170,18 @@ eligible scheduler entries after ordinary worker admission; existing private
 worker calls can bypass it. Explicit checked/effect permission, raw and device
 fallback, demand preservation and the analysis bounds are documented in
 [Native root-preserving observers](../../../../docs/self_hosted/NATIVE_OBSERVERS.md).
-That guide also separates the measured Map/String/Tape checkpoints and the
-working checked Bool-array change from the still-installed Phase69 release.
+Compiler03 is installed as checked B1 `386ae358…`; genuine B2 `d069204f…`
+passes fresh self-check and exact B3 reproduction. Checked Bool-array admission,
+lazy product demand and compact-body reuse are selected. The occurrence shortcut
+was removed after its performance gate failed; skipping observer planning for
+ordinary-ready entries was declined.
+
+The [Phase70 runtime campaign](../../../../implementation/phase70/native-runtime-results.md)
+measures 1.12124× upstream on the original six families and 1.84036× on six
+additions, with an optional equal-weight twelve-family score of 1.43649×.
+Compiler02 supplied the timed C; all 24 compiler03 B1/B2 emissions match those
+twelve complete programs and the 56 pinned host/runtime/effect files remain
+unchanged. This is finite inherited execution evidence, separate from the
+three-source C-emission ratios of 3.41827× for B1 and 2.16517× for B2.
+The observer guide keeps earlier Map/String/Tape checkpoints separate and
+explains the remaining fallback and correctness boundaries.

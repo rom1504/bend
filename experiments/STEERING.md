@@ -1,4 +1,55 @@
-# Active frontier: Phase69 installed native near parity
+# Active frontier: Phase70 installed observers and broader native coverage
+
+[Design](../design/phase70/observers-and-compilation.md) ·
+[Report](../implementation/phase70/README.md) ·
+[Qualified evidence](../implementation/phase70/evidence/summary.json).
+Installed compiler03: checked B1 `386ae358…`, genuine B2 `d069204f…`, flattened
+source `d583e187…`; selected source commit `d6d6049`, upstream `0592662`.
+Fresh B2 own-source acceptance, exact B3 and installed legacy42/default24/helper5
+all pass. The compiler algorithms remain Bend; runtime ABI is unchanged.
+
+Native runtime: original six **1.12124× upstream**, six independently selected
+additions **1.84036×**, respectively **12.95% / 18.90% less time** than Phase69
+in the same campaigns. Keep cohorts separate; optional equal-weight twelve GM
+is 1.43649×. Map0.888× and String ordering0.812× beat upstream; Array-map2.446×,
+Tape2.970×, list2.146× and BST2.186× expose substantial remaining gaps. Measured
+compiler02 binaries transfer to final03 through24 exact complete C emissions
+(B1+B2 across12 programs) and56 identical host/runtime support files. Historical
+1.033× Phase69 is not a contemporaneous baseline; see the retained noise audit.
+
+Selected P70-001 bounded root-preserving observers, P70-004 lazy product-demand
+checks, P70-005 compact-body reuse and P70-007 checked Bool arrays. Removed
+P70-006 occurrence shortcut after its failed retention gate; P70-008 observer
+skip was not selected. Compiler source31,444 physical/25,722 code lines,128
+modules: +1,183 physical lines (+3.91% overall, +30.58% native production).
+This is a performance/coverage tradeoff, not simplification.
+
+Final three-source C request ratios **3.41827× B1 / 2.16517× B2** upstream.
+Separate same-campaign Numeric old/new screen finds final03 **6.54% / 1.09%**
+slower (four balanced rounds); do not claim whole-phase compiler speed gains.
+Base preparation and imports are separate from requests; Clang and program
+execution are different clocks. Selected native candidate100/100, raw31,
+frontend36, B2 driver8 and unchanged2992 JS functions pass. Reference93/100
+leaves seven preexisting unused-error-demand disagreements and the paired gate
+false. Broader13 native API gaps remain. No new full JS/GPU sweep or formal proof.
+
+Next runtime experiment: saved-C scalar product/loop-state transport, initially
+Array-map and independent state loops, then integrate only demonstrated general
+wins. Next compiler experiment: reuse native layout/arity and Base planning
+products, guided by retained stage/V8 profiles. Root observer reconstruction
+elimination transfers, but does not explain arbitrary tree/list allocation.
+Do not repeat ineffective occurrence or ordinary-ready skip experiments.
+
+All Phase70 raw/method writers are closed; the
+[verified capsule](../selfhost/tools/performance/phase70/artifacts/evidence01/README.md)
+preserves successes, failures and rejected variants. Guarded target occupancy
+38m39s over2h06m12s target span, peak1.506GiB. New experiments need fresh paths.
+One guarded CPU3 target tree; source/data agents CPU0. Preserve inherited
+unrelated changes. No PR comments without explicit authorization.
+
+---
+
+# Historical frontier: Phase69 installed native near parity
 
 [Design](../design/phase69/native-parity.md) ·
 [Report](../implementation/phase69/README.md) ·

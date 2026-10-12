@@ -1,17 +1,22 @@
 # Native root-preserving observers
 
-The Phase70 working compiler implements a bounded optimization for functions
+The installed Phase70 compiler03 implements a bounded optimization for functions
 that traverse immutable data, return the original input roots, and compute one
 scalar answer. The compiler checks a restricted return-identity property and
 emits a borrowed traversal instead of repeatedly consuming and reconstructing
 the same nodes. The implementation is written in Bend; it uses the existing C
 runtime and worker machinery.
 
-**This document describes working source and measured checkpoints. Phase69
-remains the installed release.** The [Phase70 report](../../implementation/phase70/README.md)
-tracks final qualification and promotion; the [Phase69 report](../../implementation/phase69/README.md)
-identifies the installed compiler. The results below measure execution of
-B1-generated C programs, not B1/B2 compilation speed.
+Installed source is `d6d6049`, checked B1 `386ae358…`, with separately qualified
+genuine B2 `d069204f…`. The [Phase70 report](../../implementation/phase70/README.md)
+records fresh self-check, exact B2/B3 reproduction and passing installed-interface
+checks. The broader twelve-family runtime campaign below was timed on compiler02. All 24 fresh
+compiler03 B1/B2 emissions across those twelve cases match its complete C bytes;
+the 56 pinned host/runtime/effect files are unchanged. This qualifies inheritance
+of those saved-program results, not a newly timed compiler03 campaign. Separate
+C-emission request ratios are 3.41827× upstream for B1 and 2.16517× for B2 over
+three sources and 27 exact-C requests, excluding imports, Base preparation,
+Clang and program execution.
 
 ## What changes
 
@@ -70,9 +75,10 @@ is claimed.
 The current substitution is **at scheduler entries**. Existing private ordinary
 worker calls continue to use their admitted bodies and can bypass the observer.
 Seeing an observer in emitted C therefore does not prove it executes on a given
-control. Planning only after ordinary-worker refusal is a separate
-[compilation-cost experiment](../../experiments/phase70/P70-008-observers-after-ordinary-refusal.md),
-not a condition of the return-identity theorem.
+control. Planning only after ordinary-worker refusal was a separate
+[compilation-cost experiment](../../experiments/phase70/P70-008-observers-after-ordinary-refusal.md).
+It was declined after its cross-stage comparison and is not a selected routing
+rule or a condition of the return-identity analysis.
 
 ## Supported shapes and bounds
 
@@ -162,7 +168,23 @@ backend. See the [analysis design](../../design/phase70/observer-analysis.md),
 [source/query snapshots](../../selfhost/tools/performance/phase70/observers-analysis/README.md)
 for the proof boundary, preserved failures and exact residual grammar.
 
-## Measured checkpoint and validation
+## Runtime campaign and validation
+
+The [broader native campaign](../../implementation/phase70/native-runtime-results.md)
+measures compiler02 at **1.12124× upstream on the original six families** and
+**1.84036× on six additions**, respectively 12.95% and 18.90% less time than
+Phase69 measured alongside it. The optional equal-weight summary over twelve
+distinct families is **1.43649×**. All 144 retained intervals include the two
+primary campaigns and a separate sensitivity repeat; the repeat is not spliced
+into the primary scores. These single-worker workloads establish useful general
+transfer, not universal C parity or a compiler-latency result.
+
+Map and independent String ordering improve substantially; Tape, list pipeline,
+BST, tree and lexer retain sizeable gaps. Read the family tables before using
+an aggregate. Historical Phase69's 1.033× is not the contemporaneous baseline,
+and comparing it directly with 1.12124× would not establish a regression.
+
+### Earlier observer-emission checkpoint
 
 The `observer-emission02` comparisons use saved C/binaries, identical work within
 each comparison, matching compiler settings and rotated roles. The independent
@@ -188,12 +210,12 @@ policy and the [Phase70 experiment records](../../experiments/phase70/P70-001-ro
 for the new observer gates. Start with admission/refusal and emitted-route checks,
 then execute the focused semantic controls and saved-binary loop. Broad native,
 raw, B2/reproduction and release gates belong to final qualification. The
-installed CLI does not acquire these working changes merely because this document
-or the source modules exist.
+installed CLI now uses the qualified compiler03 release. The earlier checkpoint
+results below retain their original acquisition and work counts.
 
 ## Related checked Bool array change
 
-The Phase70 `compiler02` working candidate also admits trusted Base Bool in the
+The Phase70 selected source also admits trusted Base Bool in the
 existing whole-program scalar-array certificate. This is a separate change from
 borrowing roots. Under the checked Base/runtime/effect boundary, Bool producers
 emit exactly 0 or 1 and existing transports preserve those bits. A packed
@@ -206,10 +228,10 @@ prove an array is unshared, remove per-element product allocation or establish
 Array-map performance parity. Raw `native_bool` accepts a broader representation
 for compatibility; that generic ABI is not the checked 0/1 invariant.
 
-The [producer/transport audit and controls](../../selfhost/tools/performance/phase70/coverage/bool-admission-v1/README.md)
+The [producer/transport audit and controls](../../selfhost/tools/performance/phase70/coverage/bool-admission-v2/README.md)
 and [registered experiment](../../experiments/phase70/P70-007-checked-bool-arrays.md)
-record the contract. The compiler02 checked build, all seven Bool native
-controls in both compiler roles, and all nine admission checks pass. Its balanced
+record the contract. The compiler02 checked build, candidate 7/7 and upstream
+7/7 Bool native controls, and all nine admission checks pass. Its balanced
 three-round Array-map comparison has nine correct, qualified samples:
 
 | Phase69 baseline | Compiler02 candidate | Pinned upstream | Candidate / upstream |
@@ -219,5 +241,9 @@ three-round Array-map comparison has nine correct, qualified samples:
 That is 27.8% less execution time than the baseline, while a substantial gap
 remains. Evidence is `selfhost/build/phase70/compiler02-array-map-comparison/report.json`.
 This measures the combined compiler02 candidate, not a Bool-only ablation.
-Final release qualification remains pending; the observer-only Map/String/Tape
-numbers above belong to the earlier checkpoint.
+The final broader Array-map comparison records 817 ms versus 1,126 ms baseline and
+334 ms upstream (2.4461×), under its own fixed work count. Both measurements
+belong to compiler02; the observer-only Map/String/Tape numbers above belong to
+the still earlier checkpoint. The final twelve-family C-identity gate qualifies
+compiler03 inheritance of the broader results while preserving the original
+compiler02 timing provenance.

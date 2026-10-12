@@ -1,0 +1,1127 @@
+{
+  "kind": "phase70-selected-evidence-summary",
+  "version": 1,
+  "complete": true,
+  "recorded": "2026-10-12T02:38:09.084138+00:00",
+  "targetsExecuted": false,
+  "producer": {
+    "path": "selfhost/tools/performance/phase70/summarize-release.py",
+    "sha256": "cf190c40ec01a028c854561b2cd84578b79bdf448e45398573c7dd3a354c80ef",
+    "bytes": 19667
+  },
+  "sourceCommit": "d6d6049e24a083a9b4a2922969c2c66da33ef4d7",
+  "candidate": {
+    "name": "compiler03",
+    "attempt": {
+      "path": "selfhost/build/phase70/compiler03/attempt.json",
+      "sha256": "eea6173a0a3e12b2807e09eb68f6975c3776cc7ae781f5c0a0558d15f03cc451",
+      "bytes": 312300
+    },
+    "api": {
+      "path": "selfhost/build/phase70/compiler03/equality/api.mjs",
+      "sha256": "386ae358ee8fe33c5af3f7fec16f956b59451ee6004da99a94146140d3e8a162",
+      "bytes": 2211717
+    },
+    "source": {
+      "path": "selfhost/build/phase70/compiler03/snapshot/build/typed/snapshots/d3405a9f29c8df170e677afa4478790bb9c4f23ce23e4d6540e0440747d4a93f/compiler.bend",
+      "sha256": "d583e187290f087d48b95ffdbe402ed01af81a28d91e0e2cec5462ed8797b2cc",
+      "bytes": 1622079
+    },
+    "genuineB2": {
+      "path": "selfhost/build/phase70/compiler03-b2/full/compiler.mjs",
+      "sha256": "d069204f38786de7142f10dbc7126371dfa6f7fa234347da98e7d46a23cced8b",
+      "bytes": 4563498
+    },
+    "imagePins": {
+      "path": "selfhost/build/phase70/compiler03-b2/image-pins.json",
+      "sha256": "c1f5a419a19e54960098029150f6c012c7066ffec8ea52972eb777024ba133d8",
+      "bytes": 4890
+    },
+    "b2Generation": {
+      "path": "selfhost/build/phase70/compiler03-b2/full/report.json",
+      "sha256": "08a215fec1b5f047091cd62d79a8bcd16896c36cdce1d85c6bf27e4d99f1a518",
+      "bytes": 13461
+    },
+    "b2DriverQualification": {
+      "path": "selfhost/build/phase70/compiler03-b2/driver-comparison.json",
+      "sha256": "b4aa62d362934a20b42fcfa326b69cb6862796ab0dfd6327fdaf9a417667063d",
+      "bytes": 1098
+    },
+    "checkedValidation": {
+      "path": "selfhost/build/phase70/compiler03/validation-001/report.json",
+      "sha256": "a1b46ca02fc3b17e0cde348427f29a3b566baca5787df99962ffe96bee4fa7bc",
+      "bytes": 8816
+    }
+  },
+  "nativeControls": {
+    "report": {
+      "path": "selfhost/build/phase70/compiler03-native100/execution/report.json",
+      "sha256": "585974a59d3ccc701a945ecb1c57fdc66d297d161c5f880d60fa52c23f34cb29",
+      "bytes": 9210
+    },
+    "paired": {
+      "path": "selfhost/build/phase70/compiler03-native100/execution/selected/paired.json",
+      "sha256": "e07ede030b1a7e4aa9a2efe47269684358e58456e654ac62c71aa002c6a0ad99",
+      "bytes": 110850
+    },
+    "candidatePass": 100,
+    "cases": 100,
+    "pairedPass": false,
+    "referenceStatuses": {
+      "pass": 93,
+      "fail": 7
+    },
+    "discrepancies": [
+      {
+        "id": "phase70/observer-demand/partial-factory-demand-v1.bend",
+        "reference": "fail",
+        "candidate": "pass"
+      },
+      {
+        "id": "phase70/observer-demand/successor-demand-refusal-v2.bend",
+        "reference": "fail",
+        "candidate": "pass"
+      },
+      {
+        "id": "phase70/observer-demand/zeroarity-demand-v1.bend",
+        "reference": "fail",
+        "candidate": "pass"
+      },
+      {
+        "id": "phase70/observer-recursive-demand/hidden-scalar-error-recursive-v2.bend",
+        "reference": "fail",
+        "candidate": "pass"
+      },
+      {
+        "id": "phase70/observer-recursive-demand/partial-factory-recursive-v2.bend",
+        "reference": "fail",
+        "candidate": "pass"
+      },
+      {
+        "id": "phase70/observer-v4/hidden-scalar-error.bend",
+        "reference": "fail",
+        "candidate": "pass"
+      },
+      {
+        "id": "phase70/observer-v4/post-recursion-error-refusal.bend",
+        "reference": "fail",
+        "candidate": "pass"
+      }
+    ],
+    "scope": "Candidate golden outcomes and upstream paired agreement are separate; no full-language denominator."
+  },
+  "rawControls": {
+    "report": {
+      "path": "selfhost/build/phase70/compiler03-raw31/execution/report.json",
+      "sha256": "05f983264d0da9e2ad3d2727befceb005d9adf2afbdcfb161964ba039d6fbd8e",
+      "bytes": 63406
+    },
+    "passCount": 31
+  },
+  "jsProtection": {
+    "report": {
+      "path": "selfhost/build/phase70/compiler03-js-protection/report.json",
+      "sha256": "d5a4d017b13b36355400798fd5e651e8986a0e08e85730c7b02e858493f568e1",
+      "bytes": 17164
+    },
+    "unchangedFunctions": 2992,
+    "unchangedPublicExports": 100,
+    "scope": "Structural protection, not a new JS timing campaign."
+  },
+  "nativeProgramRuntime": {
+    "transfer": {
+      "path": "selfhost/build/phase70/compiler03-C-identity12-v2-summary.json",
+      "sha256": "fef66ef4b9ff565ac1b2b4faab749f5b4953af0b2896ae63275013aabb69802a",
+      "bytes": 62504
+    },
+    "identicalHostRuntimeSupportFiles": 56,
+    "stage": "Runtime measured from compiler02 B1 C; compiler03 checked B1 and genuine B2 reproduce all 12 complete C files byte for byte.",
+    "originalSix": {
+      "report": {
+        "path": "selfhost/build/phase70/compiler02-native06-comparison/report.json",
+        "sha256": "0e719e8e35c9979aaad94902027e656e6ab353ed54bb316b163a504ef6e4a291",
+        "bytes": 97190
+      },
+      "plan": {
+        "path": "selfhost/build/phase70/compiler02-native06-comparison/plan.json",
+        "sha256": "e6b163bec1766146ef5a7e7126ea04222ae471a7aa146396db9c67d4000b2134",
+        "bytes": 58889
+      },
+      "families": [
+        {
+          "case": "numeric",
+          "mediansMs": {
+            "baseline69": 252,
+            "candidate": 251,
+            "upstream": 250
+          },
+          "samplesMs": {
+            "baseline69": [
+              251,
+              252,
+              252
+            ],
+            "candidate": [
+              250,
+              251,
+              255
+            ],
+            "upstream": [
+              250,
+              250,
+              254
+            ]
+          },
+          "candidateOverUpstream": 1.004,
+          "baseline69OverCandidate": 1.00398406374502,
+          "source": {
+            "path": "selfhost/tools/performance/phase46/numeric-batch.bend",
+            "sha256": "33da0ca9134f709c22b3e8dd577c8715c9a81cfa3f7fc29d0e303a23aed9316c",
+            "bytes": 1937
+          },
+          "candidateC": {
+            "path": "selfhost/build/phase70/compiler02-native06/numeric-selfhost/program.c",
+            "sha256": "43fc5fe71339bf59a4de73d0853f7a9249b229bdd21d709b70a118c8d951226a",
+            "bytes": 959838
+          },
+          "executables": {
+            "baseline69": {
+              "path": "selfhost/build/phase69/typed10-native/numeric-selfhost/program",
+              "sha256": "d1d48273fe30b4e213c364c6df6fd521e3b2173922c13d134a6c4e71b9e6aadb",
+              "bytes": 179000
+            },
+            "candidate": {
+              "path": "selfhost/build/phase70/compiler02-native06/numeric-selfhost/program",
+              "sha256": "503bc929fe95b2c2e4e5c83ea6db092134f73c266aa73cc51f5ac140f609be5b",
+              "bytes": 177032
+            },
+            "upstream": {
+              "path": "selfhost/build/phase67/native-baseline02/numeric-upstream/program",
+              "sha256": "4ca029a7e79af7008bafce6a2033b9e7e1ad2a782e8b66d061f13fc75afac03d",
+              "bytes": 53224
+            }
+          },
+          "work": {
+            "repetitions": 77504,
+            "warmups": 9680
+          }
+        },
+        {
+          "case": "array",
+          "mediansMs": {
+            "baseline69": 191,
+            "candidate": 185,
+            "upstream": 174
+          },
+          "samplesMs": {
+            "baseline69": [
+              171,
+              191,
+              192
+            ],
+            "candidate": [
+              249,
+              172,
+              185
+            ],
+            "upstream": [
+              172,
+              207,
+              174
+            ]
+          },
+          "candidateOverUpstream": 1.0632183908045978,
+          "baseline69OverCandidate": 1.0324324324324323,
+          "source": {
+            "path": "selfhost/tools/performance/phase46/array-batch.bend",
+            "sha256": "cd989b0fc20dfab2e51cc4f790f699d740c4cff6a1c2b683cb8952b3073a3d10",
+            "bytes": 1934
+          },
+          "candidateC": {
+            "path": "selfhost/build/phase70/compiler02-native06/array-selfhost/program.c",
+            "sha256": "21f52a53baf87e0f7f2e0025f1234488ad9071aef6037c0fd201c3799d3807bf",
+            "bytes": 988296
+          },
+          "executables": {
+            "baseline69": {
+              "path": "selfhost/build/phase69/typed10-native/array-selfhost/program",
+              "sha256": "b87ff76721b32b35df43916116c329c3e0790fac4ef2ddc06a5861c581dde5c6",
+              "bytes": 186296
+            },
+            "candidate": {
+              "path": "selfhost/build/phase70/compiler02-native06/array-selfhost/program",
+              "sha256": "4a2634be591f556af29b033aaea40b4155a8bb2a6de314c835a96bb23c5212cf",
+              "bytes": 184312
+            },
+            "upstream": {
+              "path": "selfhost/build/phase67/native-baseline02/array-upstream/program",
+              "sha256": "482af063fabf2a528c5db910e2726821db6523dd6eadf83c18b8bb2efcd0ed1a",
+              "bytes": 54280
+            }
+          },
+          "work": {
+            "repetitions": 61440,
+            "warmups": 7680
+          }
+        },
+        {
+          "case": "closures",
+          "mediansMs": {
+            "baseline69": 164,
+            "candidate": 158,
+            "upstream": 225
+          },
+          "samplesMs": {
+            "baseline69": [
+              259,
+              159,
+              164
+            ],
+            "candidate": [
+              259,
+              158,
+              157
+            ],
+            "upstream": [
+              388,
+              224,
+              225
+            ]
+          },
+          "candidateOverUpstream": 0.7022222222222222,
+          "baseline69OverCandidate": 1.0379746835443038,
+          "source": {
+            "path": "selfhost/tools/performance/phase46/closures-batch.bend",
+            "sha256": "ee3fbda1fa851d6d781977e538512cc868455e2cab091193e8ee90bdccb2a461",
+            "bytes": 1925
+          },
+          "candidateC": {
+            "path": "selfhost/build/phase70/compiler02-native06/closures-selfhost/program.c",
+            "sha256": "9637efffdf24a2071c2a26f78c3d8c5a947c62687875c196bce9f67899553778",
+            "bytes": 939374
+          },
+          "executables": {
+            "baseline69": {
+              "path": "selfhost/build/phase69/typed10-native/closures-selfhost/program",
+              "sha256": "72627d516ccd3dc57079b9d98cce423e1d6c39e8372555100f1c820e7379fe8f",
+              "bytes": 176408
+            },
+            "candidate": {
+              "path": "selfhost/build/phase70/compiler02-native06/closures-selfhost/program",
+              "sha256": "d6571ce1a0e1716f5351a8f0c3141ddb755bffbc30aad8e78b48e9f06a3af4f6",
+              "bytes": 174440
+            },
+            "upstream": {
+              "path": "selfhost/build/phase67/native-baseline02/closures-upstream/program",
+              "sha256": "8aa74ee3ee4b73497ce775605c6eacc833d6e7df5e7445866cee6dde16b45e47",
+              "bytes": 56872
+            }
+          },
+          "work": {
+            "repetitions": 57888,
+            "warmups": 7232
+          }
+        },
+        {
+          "case": "tree",
+          "mediansMs": {
+            "baseline69": 338,
+            "candidate": 320,
+            "upstream": 194
+          },
+          "samplesMs": {
+            "baseline69": [
+              332,
+              338,
+              363
+            ],
+            "candidate": [
+              318,
+              320,
+              360
+            ],
+            "upstream": [
+              194,
+              192,
+              219
+            ]
+          },
+          "candidateOverUpstream": 1.6494845360824741,
+          "baseline69OverCandidate": 1.05625,
+          "source": {
+            "path": "selfhost/tools/performance/phase46/tree-batch.bend",
+            "sha256": "2abe55fb145b2ac73e770ed263d469cb2a6f2fac95edac228d69d161fe4c3a55",
+            "bytes": 1928
+          },
+          "candidateC": {
+            "path": "selfhost/build/phase70/compiler02-native06/tree-selfhost/program.c",
+            "sha256": "3aaf0af60a2372a62007e516d440a1da7e7c426b6f6725cf956aa9fe033c475d",
+            "bytes": 1127119
+          },
+          "executables": {
+            "baseline69": {
+              "path": "selfhost/build/phase69/typed10-native/tree-selfhost/program",
+              "sha256": "4837a3b18027e4f3eb0e7df70c07abc5168c251893ce4f95fef3fc30bfee1df8",
+              "bytes": 222720
+            },
+            "candidate": {
+              "path": "selfhost/build/phase70/compiler02-native06/tree-selfhost/program",
+              "sha256": "ffb3d01d190245c68af4dcffe6bec84949ec0082eba191d8b3da1c71ba253128",
+              "bytes": 220736
+            },
+            "upstream": {
+              "path": "selfhost/build/phase67/native-heldout-baseline02/tree-upstream/program",
+              "sha256": "2c551f955a7cd2bccc28cfd7418c61b810dba7d7ac005aef252e1dc69c333d44",
+              "bytes": 64848
+            }
+          },
+          "work": {
+            "repetitions": 1280,
+            "warmups": 160
+          }
+        },
+        {
+          "case": "map",
+          "mediansMs": {
+            "baseline69": 737,
+            "candidate": 373,
+            "upstream": 420
+          },
+          "samplesMs": {
+            "baseline69": [
+              728,
+              737,
+              762
+            ],
+            "candidate": [
+              366,
+              376,
+              373
+            ],
+            "upstream": [
+              420,
+              407,
+              543
+            ]
+          },
+          "candidateOverUpstream": 0.888095238095238,
+          "baseline69OverCandidate": 1.9758713136729222,
+          "source": {
+            "path": "selfhost/tools/performance/phase46/map-batch.bend",
+            "sha256": "9e4ae9cda2f58a92d630e2946843d02149b30696ad88b45c2e09db91538ccf28",
+            "bytes": 1926
+          },
+          "candidateC": {
+            "path": "selfhost/build/phase70/compiler02-native06/map-selfhost/program.c",
+            "sha256": "01e75aa51f22bfb8476ccf54797f77f4f60836484d312c73f9ef464008f08957",
+            "bytes": 1724903
+          },
+          "executables": {
+            "baseline69": {
+              "path": "selfhost/build/phase69/typed10-native/map-selfhost/program",
+              "sha256": "c2b5a7d66a7c413fd155c7e8ca7ac4da7f296f717e5e71f5e2d1467740b7a5cd",
+              "bytes": 436976
+            },
+            "candidate": {
+              "path": "selfhost/build/phase70/compiler02-native06/map-selfhost/program",
+              "sha256": "05b58a63e892163ebdf141f2796c7af9f73ad39aae9a2d08ce2165a7aeebb7bf",
+              "bytes": 433584
+            },
+            "upstream": {
+              "path": "selfhost/build/phase67/native-heldout-baseline02/map-upstream/program",
+              "sha256": "1b3beeaab2a4f1936f5da9be7bf7b3a369e20ab77935daa24ee595ae855b0b1e",
+              "bytes": 132152
+            }
+          },
+          "work": {
+            "repetitions": 1152,
+            "warmups": 144
+          }
+        },
+        {
+          "case": "lexer",
+          "mediansMs": {
+            "baseline69": 389,
+            "candidate": 380,
+            "upstream": 210
+          },
+          "samplesMs": {
+            "baseline69": [
+              428,
+              382,
+              389
+            ],
+            "candidate": [
+              380,
+              382,
+              378
+            ],
+            "upstream": [
+              210,
+              209,
+              240
+            ]
+          },
+          "candidateOverUpstream": 1.8095238095238095,
+          "baseline69OverCandidate": 1.0236842105263158,
+          "source": {
+            "path": "selfhost/tools/performance/phase46/lexer-batch.bend",
+            "sha256": "e3b661ec47669617618635dc4c69a19bf837e018bd2100b251babe695307206c",
+            "bytes": 1921
+          },
+          "candidateC": {
+            "path": "selfhost/build/phase70/compiler02-native06/lexer-selfhost/program.c",
+            "sha256": "a3d3fbe20bbd891c35f7bb2b6aac0d00904197cd95889ca31591aea898b9e992",
+            "bytes": 1245332
+          },
+          "executables": {
+            "baseline69": {
+              "path": "selfhost/build/phase69/typed10-native/lexer-selfhost/program",
+              "sha256": "a27eb33cf04a26aadc7b798d7a4a70fd8d998bb6c0a91381e758c9607bb9f7e3",
+              "bytes": 231768
+            },
+            "candidate": {
+              "path": "selfhost/build/phase70/compiler02-native06/lexer-selfhost/program",
+              "sha256": "69a91030a163221636c6e2af285de88c2b9e9ad9ae99560028e5971a1f15bef7",
+              "bytes": 229800
+            },
+            "upstream": {
+              "path": "selfhost/build/phase67/native-heldout-baseline02/lexer-upstream/program",
+              "sha256": "a64cbdd4a2f0005ebe874ea529c7c27d9e96cdcabcab319c5cd2933e08aa3f18",
+              "bytes": 61688
+            }
+          },
+          "work": {
+            "repetitions": 448,
+            "warmups": 48
+          }
+        }
+      ],
+      "qualifiedObservations": 54,
+      "geomeanCandidateOverUpstream": 1.1212448868706786,
+      "geomeanBaseline69OverCandidate": 1.1488000178843314,
+      "scope": "Fresh balanced saved-binary timings, identical sources and Clang recipe; compiler/runtime changes intentional. Old emission provenance preserved, no historical target reruns."
+    },
+    "expandedSix": {
+      "report": {
+        "path": "selfhost/build/phase70/compiler02-coverage-final-comparison01/report.json",
+        "sha256": "a1b962fc66c266dc304faacb711eb13e1fea44f01a8fdac342ccfe0b39dcd461",
+        "bytes": 99904
+      },
+      "plan": {
+        "path": "selfhost/build/phase70/compiler02-coverage-final-comparison01/plan.json",
+        "sha256": "61e0a29a8d34cafa64a43b7d2c9495807a37e59b231bd779f8bbc88feb6c4ef5",
+        "bytes": 102477
+      },
+      "families": [
+        {
+          "case": "list-pipeline",
+          "mediansMs": {
+            "baseline69": 644,
+            "candidate": 646,
+            "upstream": 301
+          },
+          "samplesMs": {
+            "baseline69": [
+              646,
+              644,
+              643
+            ],
+            "candidate": [
+              646,
+              656,
+              644
+            ],
+            "upstream": [
+              301,
+              304,
+              301
+            ]
+          },
+          "candidateOverUpstream": 2.1461794019933556,
+          "baseline69OverCandidate": 0.9969040247678018,
+          "source": {
+            "path": "selfhost/tools/performance/phase70/coverage/list-pipeline-batch.bend",
+            "sha256": "53c7b4c32bc534740bdb0b39edb40a5352cb3fbc1ce995fb9fdcb782269deb89",
+            "bytes": 1931
+          },
+          "candidateC": {
+            "path": "selfhost/build/phase70/compiler02-coverage-missing-five01/list-pipeline-selfhost/program.c",
+            "sha256": "7c5fa06858711cc994133dff00c54edca5daf1b8e15d1f50138b1496ca1f4595",
+            "bytes": 966061
+          },
+          "executables": {
+            "baseline69": {
+              "path": "selfhost/build/phase70/coverage-baseline01/list-pipeline-selfhost/program",
+              "sha256": "4d49f275ab193801ac441422ef89658d9ee34f55df782c7b8a781be447d526a4",
+              "bytes": 184752
+            },
+            "candidate": {
+              "path": "selfhost/build/phase70/compiler02-coverage-missing-five01/list-pipeline-selfhost/program",
+              "sha256": "92f22e1a6cfc7e3a908e21b4045ece00d10a5fc89096f086ddfb644bfd51f77e",
+              "bytes": 182784
+            },
+            "upstream": {
+              "path": "selfhost/build/phase70/coverage-baseline01/list-pipeline-upstream/program",
+              "sha256": "bfb370f9294deeb569bec6219660d3ac9cec8397244bce52aa2848ec3f3cd4ee",
+              "bytes": 58824
+            }
+          },
+          "work": {
+            "repetitions": 164576,
+            "warmups": 20560,
+            "targetFastMs": 300,
+            "predictedFastMs": 300.0083333333333,
+            "predictedSlowMs": 642.875
+          }
+        },
+        {
+          "case": "bst",
+          "mediansMs": {
+            "baseline69": 681,
+            "candidate": 693,
+            "upstream": 317
+          },
+          "samplesMs": {
+            "baseline69": [
+              681,
+              670,
+              683
+            ],
+            "candidate": [
+              693,
+              685,
+              764
+            ],
+            "upstream": [
+              318,
+              316,
+              317
+            ]
+          },
+          "candidateOverUpstream": 2.186119873817035,
+          "baseline69OverCandidate": 0.9826839826839827,
+          "source": {
+            "path": "selfhost/tools/performance/phase70/coverage/bst-batch.bend",
+            "sha256": "2cdcf3d3c6b186948f5bd288c9be58a8a604b3e6394cf6242b93847db5bb5017",
+            "bytes": 1919
+          },
+          "candidateC": {
+            "path": "selfhost/build/phase70/compiler02-coverage-missing-five01/bst-selfhost/program.c",
+            "sha256": "b5aa3cc150e5c59ec0311404c66d552dc3562ef031312d7ab7636c1c4c522ae3",
+            "bytes": 1060136
+          },
+          "executables": {
+            "baseline69": {
+              "path": "selfhost/build/phase70/compiler02-coverage-baseline-holdouts01/bst-selfhost/program",
+              "sha256": "f81d69b5e256c76b1bdf48c57f0d0a3a1ed496476278379589fdf34582af6b77",
+              "bytes": 201120
+            },
+            "candidate": {
+              "path": "selfhost/build/phase70/compiler02-coverage-missing-five01/bst-selfhost/program",
+              "sha256": "dae0e6127b49c75bd810f2ecf544d64d1336017a2ac49842fe47de65cacc1352",
+              "bytes": 199152
+            },
+            "upstream": {
+              "path": "selfhost/build/phase70/compiler02-coverage-baseline-holdouts01/bst-upstream/program",
+              "sha256": "ccc48bfb46455ff4802adadde43ee81effdaca46cad64b40c17235a4ff977216",
+              "bytes": 57480
+            }
+          },
+          "work": {
+            "repetitions": 122880,
+            "warmups": 15360,
+            "targetFastMs": 300,
+            "predictedFastMs": 300.0,
+            "predictedSlowMs": 720.0
+          }
+        },
+        {
+          "case": "expression",
+          "mediansMs": {
+            "baseline69": 564,
+            "candidate": 483,
+            "upstream": 344
+          },
+          "samplesMs": {
+            "baseline69": [
+              564,
+              565,
+              562
+            ],
+            "candidate": [
+              490,
+              481,
+              483
+            ],
+            "upstream": [
+              343,
+              344,
+              345
+            ]
+          },
+          "candidateOverUpstream": 1.4040697674418605,
+          "baseline69OverCandidate": 1.1677018633540373,
+          "source": {
+            "path": "selfhost/tools/performance/phase70/coverage/expression-batch.bend",
+            "sha256": "be50bea59fd7783f70df1bf2882eff7691c8e42c426296b11ea9f077b465a007",
+            "bytes": 1930
+          },
+          "candidateC": {
+            "path": "selfhost/build/phase70/compiler02-coverage-missing-five01/expression-selfhost/program.c",
+            "sha256": "33adcd5157d8499fb078a6f5b3d607489d24a793927073a0853f8134a327af69",
+            "bytes": 978758
+          },
+          "executables": {
+            "baseline69": {
+              "path": "selfhost/build/phase70/compiler02-coverage-baseline-holdouts01/expression-selfhost/program",
+              "sha256": "8c60a1833274d58d3beaedec0d104769bc711b0935de561201af260f8988ff2f",
+              "bytes": 182584
+            },
+            "candidate": {
+              "path": "selfhost/build/phase70/compiler02-coverage-missing-five01/expression-selfhost/program",
+              "sha256": "7238948367b9f4f575887d428ee106bade09603fec0f5f4cd0d9bf7c4f72e500",
+              "bytes": 180600
+            },
+            "upstream": {
+              "path": "selfhost/build/phase70/compiler02-coverage-baseline-holdouts01/expression-upstream/program",
+              "sha256": "2c5bc47ba75081db04dbfb6c1596274b617aca396d34d01e2641c0a2f23ae7c9",
+              "bytes": 59576
+            }
+          },
+          "work": {
+            "repetitions": 111712,
+            "warmups": 13952,
+            "targetFastMs": 300,
+            "predictedFastMs": 300.0078125,
+            "predictedSlowMs": 627.2890625
+          }
+        },
+        {
+          "case": "array-map",
+          "mediansMs": {
+            "baseline69": 1126,
+            "candidate": 817,
+            "upstream": 334
+          },
+          "samplesMs": {
+            "baseline69": [
+              1126,
+              1128,
+              1124
+            ],
+            "candidate": [
+              818,
+              817,
+              815
+            ],
+            "upstream": [
+              334,
+              332,
+              335
+            ]
+          },
+          "candidateOverUpstream": 2.446107784431138,
+          "baseline69OverCandidate": 1.3782129742962057,
+          "source": {
+            "path": "selfhost/tools/performance/phase70/coverage/array-map-batch.bend",
+            "sha256": "f5a053a7c771b805d0cdd6d36340c6e0bf972aedc10f003311e29d20d1d8b033",
+            "bytes": 1909
+          },
+          "candidateC": {
+            "path": "selfhost/build/phase70/compiler02-array-map/array-map-selfhost/program.c",
+            "sha256": "1297ec3492260a9ad692edffa489163367ab4f24f19ce8bb791c6c033acf3043",
+            "bytes": 1072812
+          },
+          "executables": {
+            "baseline69": {
+              "path": "selfhost/build/phase70/coverage-baseline01/array-map-selfhost/program",
+              "sha256": "cb7c1111c5908eef13d2b4de628b2668670e91258e82c13346199756ac980a6d",
+              "bytes": 237672
+            },
+            "candidate": {
+              "path": "selfhost/build/phase70/compiler02-array-map/array-map-selfhost/program",
+              "sha256": "4faa46c5d6ebe6e84f7b86c6fc9c830ba699641068943b1694f32a4ebfe3adc0",
+              "bytes": 225736
+            },
+            "upstream": {
+              "path": "selfhost/build/phase70/coverage-baseline01/array-map-upstream/program",
+              "sha256": "c9350b64441b1fbe3eaddd711731d5825b11f69a34c7b3df78740abe3a92f8f7",
+              "bytes": 58320
+            }
+          },
+          "work": {
+            "repetitions": 15360,
+            "warmups": 1920,
+            "targetFastMs": 300,
+            "predictedFastMs": 300.0,
+            "predictedSlowMs": 1033.1999999999998
+          }
+        },
+        {
+          "case": "tape-observer",
+          "mediansMs": {
+            "baseline69": 1169,
+            "candidate": 897,
+            "upstream": 302
+          },
+          "samplesMs": {
+            "baseline69": [
+              1169,
+              1154,
+              1172
+            ],
+            "candidate": [
+              897,
+              895,
+              984
+            ],
+            "upstream": [
+              302,
+              306,
+              297
+            ]
+          },
+          "candidateOverUpstream": 2.9701986754966887,
+          "baseline69OverCandidate": 1.3032329988851727,
+          "source": {
+            "path": "selfhost/tools/performance/phase70/coverage/tape-observer-batch-v2.bend",
+            "sha256": "5208f01c382d020ff374c290003a329f14774cc2ec08c0317adf5c415e7c36ec",
+            "bytes": 1914
+          },
+          "candidateC": {
+            "path": "selfhost/build/phase70/compiler02-coverage-missing-five01/tape-observer-selfhost/program.c",
+            "sha256": "46562d5dd820a5ac919b95e6ebcaab7655e3c0076250d0e01808563ebd1f3a95",
+            "bytes": 977018
+          },
+          "executables": {
+            "baseline69": {
+              "path": "selfhost/build/phase70/coverage-baseline01/tape-observer-selfhost/program",
+              "sha256": "3ebad5b913952b555528c3921977ee9f8648a7c9b0ecbd9185caf2a472ecb96d",
+              "bytes": 185016
+            },
+            "candidate": {
+              "path": "selfhost/build/phase70/compiler02-coverage-missing-five01/tape-observer-selfhost/program",
+              "sha256": "4ec0783b2738f5d6209589703bf3b9d7bc7830bd9f006c72665c3e79351e5648",
+              "bytes": 181704
+            },
+            "upstream": {
+              "path": "selfhost/build/phase70/coverage-baseline01/tape-observer-upstream/program",
+              "sha256": "6a00de13ddb2ccd8271815f5f9657102e16e7a00c80807812c43556b65dde12d",
+              "bytes": 57496
+            }
+          },
+          "work": {
+            "repetitions": 371616,
+            "warmups": 46448,
+            "targetFastMs": 300,
+            "predictedFastMs": 300.0025,
+            "predictedSlowMs": 1161.3
+          }
+        },
+        {
+          "case": "string-order",
+          "mediansMs": {
+            "baseline69": 472,
+            "candidate": 276,
+            "upstream": 340
+          },
+          "samplesMs": {
+            "baseline69": [
+              514,
+              459,
+              472
+            ],
+            "candidate": [
+              276,
+              276,
+              276
+            ],
+            "upstream": [
+              340,
+              342,
+              340
+            ]
+          },
+          "candidateOverUpstream": 0.8117647058823529,
+          "baseline69OverCandidate": 1.710144927536232,
+          "source": {
+            "path": "selfhost/tools/performance/phase70/coverage/string-order-batch.bend",
+            "sha256": "8e272dd981626d6ced7c763896ab1d19da85e230c5a2a9a49460824d59387d00",
+            "bytes": 1910
+          },
+          "candidateC": {
+            "path": "selfhost/build/phase70/compiler02-coverage-missing-five01/string-order-selfhost/program.c",
+            "sha256": "be506727b7f1c3d3586b2a34fcaabec81865e3ee378285dca2f39ec6311c194d",
+            "bytes": 1017268
+          },
+          "executables": {
+            "baseline69": {
+              "path": "selfhost/build/phase70/coverage-baseline01/string-order-selfhost/program",
+              "sha256": "0ddffd1d8f7b526e55c67446285fd8f3b67e9a03812c3e6f43849c10acf243d5",
+              "bytes": 197160
+            },
+            "candidate": {
+              "path": "selfhost/build/phase70/compiler02-coverage-missing-five01/string-order-selfhost/program",
+              "sha256": "4fde22828a003fb05f55fb44799e52ac2cff221076252d21dd363d33864358c0",
+              "bytes": 195192
+            },
+            "upstream": {
+              "path": "selfhost/build/phase70/coverage-baseline01/string-order-upstream/program",
+              "sha256": "0713a43dfd750019a4f40b3c55d0644380098cbbf95122ba26492072269255db",
+              "bytes": 65184
+            }
+          },
+          "work": {
+            "repetitions": 42368,
+            "warmups": 5296,
+            "targetFastMs": 300,
+            "predictedFastMs": 300.0139982502187,
+            "predictedSlowMs": 508.63666666666666
+          }
+        }
+      ],
+      "qualifiedObservations": 54,
+      "geomeanCandidateOverUpstream": 1.8403622781693108,
+      "geomeanBaseline69OverCandidate": 1.2329962424700602,
+      "scope": "Fresh balanced saved-binary timings, identical sources and Clang recipe; compiler/runtime changes intentional. Old emission provenance preserved, no historical target reruns."
+    }
+  },
+  "nativeCompilation": {
+    "analysis": {
+      "path": "selfhost/build/phase70/compiler03-compilation01-summary.json",
+      "sha256": "642adab9287b002cdf6c1e904da6ed36ed7ae98677d7588f8540f7a737ae922a",
+      "bytes": 145869
+    },
+    "plan": {
+      "path": "selfhost/build/phase70/compiler03-compilation01/plan.json",
+      "sha256": "b28eba6619cf41f7c95d417d17f187171e4377c1e6d5a4445f8a2360661e946d",
+      "bytes": 142709
+    },
+    "cleanRequests": 27,
+    "preparations": 2,
+    "families": [
+      {
+        "case": "numeric",
+        "roles": {
+          "b1": {
+            "samples": 3,
+            "requestMedianMs": 2451.0895680000003,
+            "importsMedianMs": 59.57329800000002
+          },
+          "b2": {
+            "samples": 3,
+            "requestMedianMs": 1540.5210180000001,
+            "importsMedianMs": 108.02560000000005
+          },
+          "typescript": {
+            "samples": 3,
+            "requestMedianMs": 712.258533,
+            "importsMedianMs": 220.061196
+          }
+        },
+        "requestRatios": {
+          "b1": 3.441291966943694,
+          "b2": 2.1628677602659203
+        }
+      },
+      {
+        "case": "array",
+        "roles": {
+          "b1": {
+            "samples": 3,
+            "requestMedianMs": 2471.861627,
+            "importsMedianMs": 59.18369900000005
+          },
+          "b2": {
+            "samples": 3,
+            "requestMedianMs": 1554.449865,
+            "importsMedianMs": 108.26588800000002
+          },
+          "typescript": {
+            "samples": 3,
+            "requestMedianMs": 716.638863,
+            "importsMedianMs": 222.298543
+          }
+        },
+        "requestRatios": {
+          "b1": 3.4492430631689035,
+          "b2": 2.1690839630057854
+        }
+      },
+      {
+        "case": "lexer",
+        "roles": {
+          "b1": {
+            "samples": 3,
+            "requestMedianMs": 3033.187219,
+            "importsMedianMs": 59.291472
+          },
+          "b2": {
+            "samples": 3,
+            "requestMedianMs": 1950.2776119999999,
+            "importsMedianMs": 107.92182500000001
+          },
+          "typescript": {
+            "samples": 3,
+            "requestMedianMs": 901.414612,
+            "importsMedianMs": 236.35010499999999
+          }
+        },
+        "requestRatios": {
+          "b1": 3.3649190712253505,
+          "b2": 2.16357443737555
+        }
+      }
+    ],
+    "geomeanRequestRatios": {
+      "b1": 3.4182722388460407,
+      "b2": 2.165173604745955
+    },
+    "basePreparation": [
+      {
+        "role": "b1",
+        "timingsMs": {
+          "importsMs": 66.52613500000007,
+          "prepareBaseMs": 3488.0574640000004
+        }
+      },
+      {
+        "role": "b2",
+        "timingsMs": {
+          "importsMs": 108.95090100000004,
+          "prepareBaseMs": 3049.6212349999996
+        }
+      }
+    ],
+    "scope": "Checked C request time; imports and explicit Bend Base preparation separate. Excludes Clang and generated-program execution. Three samples per cell."
+  },
+  "selfHostingQualification": {
+    "ownSourceCheck": {
+      "path": "selfhost/build/phase70/compiler03-release-qualification/self-check/report.json",
+      "sha256": "b48b0b09bbf9a4c5804e6c7a556b73b24e7a194e8ef49d6b9bb593cd80554549",
+      "bytes": 310124
+    },
+    "freshTypeAcceptance": true,
+    "proofTrust": "failed",
+    "mathematicalProof": false,
+    "fixedPoint": {
+      "path": "selfhost/build/phase70/compiler03-release-qualification/fixed-point/report.json",
+      "sha256": "ab4c778bcc1b0b1893acb35c3b8a4e64bf4c195d2f22c0dcef24c7e7eb8b1d25",
+      "bytes": 151397
+    },
+    "b3": {
+      "path": "selfhost/build/phase70/compiler03-release-qualification/fixed-point/compiler.mjs",
+      "sha256": "d069204f38786de7142f10dbc7126371dfa6f7fa234347da98e7d46a23cced8b",
+      "bytes": 4563498
+    },
+    "byteEquality": true
+  },
+  "release": {
+    "manifest": {
+      "path": "selfhost/dist/release.json",
+      "sha256": "aa57d1f8bc7266597f8af4b232210470e5c92def3736e65de64430598db644e1",
+      "bytes": 39078
+    },
+    "api": {
+      "path": "selfhost/dist/typed-api.mjs",
+      "sha256": "386ae358ee8fe33c5af3f7fec16f956b59451ee6004da99a94146140d3e8a162",
+      "bytes": 2211717
+    },
+    "controls": [
+      {
+        "name": "legacy42",
+        "report": {
+          "path": "selfhost/build/phase70/release-compiler03/legacy42/checks/report.json",
+          "sha256": "61943b12f07cf8098cce69a57eee27425c1e4f275a5aa282824106516ce1b89a",
+          "bytes": 182890
+        },
+        "observations": 42,
+        "passed": true
+      },
+      {
+        "name": "default24",
+        "report": {
+          "path": "selfhost/build/phase70/release-compiler03/default24/report.json",
+          "sha256": "cc65b81eb5cb55122516fc9471b607c351f2b57370127ed74897ae6a6f87a04b",
+          "bytes": 168537
+        },
+        "observations": 24,
+        "passed": true
+      },
+      {
+        "name": "helper5",
+        "report": {
+          "path": "selfhost/build/phase70/release-compiler03/helper5/report.json",
+          "sha256": "ec52723255b4585577d3ace6df311152ec143a8cbb833074252b08680489cef6",
+          "bytes": 2015
+        },
+        "observations": 5,
+        "passed": true
+      }
+    ],
+    "guardedJobs": [
+      {
+        "name": "install",
+        "receipt": {
+          "path": "selfhost/build/phase70/release-compiler03/job-install/process.json",
+          "sha256": "dda285868097b9b1bd63fea5d2c49daeb1cfb4f25f72e462a47301fc25f04593",
+          "bytes": 835
+        },
+        "wallSeconds": 6.698943373980001
+      },
+      {
+        "name": "verify-before",
+        "receipt": {
+          "path": "selfhost/build/phase70/release-compiler03/job-verify-before/process.json",
+          "sha256": "69605bbaad99042c6aa1239ca0d0f68038bfa8733bf4c868e178188f5f1e4fab",
+          "bytes": 752
+        },
+        "wallSeconds": 0.9215274309972301
+      },
+      {
+        "name": "legacy42",
+        "receipt": {
+          "path": "selfhost/build/phase70/release-compiler03/job-legacy42/process.json",
+          "sha256": "08fa34e341ed515d851d83ac188bcc560855db4a0991e5aefa323b2a4f3a2dbb",
+          "bytes": 988
+        },
+        "wallSeconds": 26.80432668107096
+      },
+      {
+        "name": "default24",
+        "receipt": {
+          "path": "selfhost/build/phase70/release-compiler03/job-default24/process.json",
+          "sha256": "ccedd163ac9d7183c0ad773d1a6e6bac535fa3a4f860a564f7beec1c6c05d780",
+          "bytes": 1128
+        },
+        "wallSeconds": 15.674302777973935
+      },
+      {
+        "name": "helper5",
+        "receipt": {
+          "path": "selfhost/build/phase70/release-compiler03/job-helper5/process.json",
+          "sha256": "11c564d555ea292cdc66d437fb338d2d94bf546668e9d50324f7aafb9d3a0d93",
+          "bytes": 993
+        },
+        "wallSeconds": 2.4728174480842426
+      },
+      {
+        "name": "verify-after",
+        "receipt": {
+          "path": "selfhost/build/phase70/release-compiler03/job-verify-after/process.json",
+          "sha256": "846e6972634ddeb244628bb6e19dcd6a78dce01910983596afd0b066fbd51616",
+          "bytes": 751
+        },
+        "wallSeconds": 0.921108286944218
+      }
+    ]
+  },
+  "limitations": [
+    "Selected controls are not full-language conformance.",
+    "Runtime and compiler throughput have separate denominators and clocks.",
+    "Six new families are separate from the historical six; neither establishes universal parity.",
+    "Retained evidence pins do not imply a hermetic build environment."
+  ],
+  "verifiedInputFiles": 1259
+}

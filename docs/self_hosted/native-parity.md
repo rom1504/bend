@@ -1,12 +1,19 @@
 # Native C performance and iteration
 
 The compiler written in Bend emits C directly, using the retained native
-runtime and Clang. Phase69 removes repeated construction, closure and ownership
-work from those generated programs. The current installed checked compiler is
-**typed10**, whose B1 API SHA-256 is
-`674e7960c7e8957452ffb0bdc6cb1f69ddaf8c03814617277886d1551fe16553`.
-Installed-release identity is recorded in `selfhost/dist/release.json` and the
-phase report. Genuine B2 `c858dfa5…` passes own-source checking and B3 equality.
+runtime and Clang. **Phase70 compiler03 is now installed**, checked B1
+`386ae358…` and genuine B2 `d069204f…`, with own-source checking and exact B3.
+Read the [current report](../../implementation/phase70/README.md),
+[observer guide](NATIVE_OBSERVERS.md) and
+[expanded runtime results](../../implementation/phase70/native-runtime-results.md)
+for its qualification and current metrics. Installed identity is recorded in
+`selfhost/dist/release.json`.
+
+This page retains the **historical Phase69 typed10** campaign, pass contracts
+and frozen iteration commands. Its B1 API is
+`674e7960c7e8957452ffb0bdc6cb1f69ddaf8c03814617277886d1551fe16553`;
+its B2 is `c858dfa5…`. Commands tied to these old plans reproduce historical
+artifacts. Use fresh plans bound to the installed API for new measurements.
 
 [Phase design](../../design/phase69/native-parity.md) ·
 [Implementation and qualification report](../../implementation/phase69/README.md) ·

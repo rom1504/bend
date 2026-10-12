@@ -14,11 +14,36 @@ It is a measured candidate checkpoint, not a release-promotion claim. A later
 compiler-only change must establish its emitted-code relationship or receive
 separate qualification before inheriting these runtime claims.
 
+**Final compiler03 transfer:** compiler03 is now installed from source commit
+`d6d6049`, with B1 SHA-256
+`386ae358ee8fe33c5af3f7fec16f956b59451ee6004da99a94146140d3e8a162`.
+Its checked B1 and genuine B2 each emitted all twelve benchmark programs:
+**24/24 complete C outputs are byte-identical to measured compiler02**, with
+56 supporting identity equalities. Self-check, B3 and the maintained final gates
+also passed. This transfers the saved-C runtime evidence under the same native
+toolchain; it is not a new timing campaign. Tables, chart and timestamps below
+remain attributed to compiler02. The completed transfer receipt is
+`selfhost/build/phase70/compiler03-C-identity12-v2-summary.json`, SHA-256
+`fef66ef4b9ff565ac1b2b4faab749f5b4953af0b2896ae63275013aabb69802a`.
+
 The [portable evidence summary](evidence/native-runtime-results.json) contains
 all **144 qualified intervals**: 54 original-family observations, 54 additional
 family observations and 36 separate sensitivity observations. It pins the raw
 reports, plans, APIs, holdout freeze, corpus and oracles. No intervals are removed
 and the sensitivity observations are not substituted into the primary scores.
+
+![Phase69 and measured compiler02 native runtime ratios, with all twelve families and a shared scale](native-runtime-comparison.svg)
+
+The [standalone SVG](native-runtime-comparison.svg) preserves both six-family
+panels on one common scale, with upstream at 1×. It plots this measured
+compiler02 dataset; any later compiler03 identity mapping is separate evidence.
+The small [Matplotlib generator](evidence/plot-native-runtime.py) reads only the
+portable summary and uses no compiler or generated program:
+
+```sh
+taskset -c 0 python3 -B implementation/phase70/evidence/plot-native-runtime.py \
+  --out implementation/phase70/native-runtime-comparison.svg
+```
 
 ## Original six families: contemporaneous comparison
 

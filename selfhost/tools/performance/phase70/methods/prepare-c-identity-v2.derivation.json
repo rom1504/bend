@@ -1,0 +1,29 @@
+{
+  "kind": "exact-method-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/prepare-c-identity.py",
+    "sha256": "d85d4babc6df7c948d6886ea4832874c498c98e957659b93bb8c21e905975f4c",
+    "bytes": 8692
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/prepare-c-identity-v2.py",
+    "sha256": "04b7b19a6f940eb85c04432de84cf0ddbf793a0b70f1d55e1d3fd1d6d8843300",
+    "bytes": 10313
+  },
+  "edits": [
+    {
+      "before": "    roles = {}\n    copies = []\n",
+      "after": "    # Complete emitted C can reference runtime/effect sources. Reusing native\n    # evidence also requires byte-identical host and native support on both sides.\n    oracle_snapshot = Path(oracle_attempt['snapshot']['root'])\n    oracle_frozen = {str(Path(x['frozen']['file']).relative_to(oracle_snapshot)): x['frozen']\n        for x in oracle_attempt['snapshot']['sources']}\n    assert verified(oracle_attempt['base'])['sha256'] == base['sha256']\n    host_equality = []\n    for source in source_files:\n        relative = str(source.relative_to(snapshot))\n        previous = verified(oracle_frozen[relative])\n        current = verified(frozen[str(source)])\n        assert current['sha256'] == previous['sha256'], ('host/runtime drift', relative)\n        host_equality.append(dict(relative=relative, previous=previous, current=current))\n    assert {str(p.relative_to(snapshot/'src/runtime/native')) for p in source_files if p.is_relative_to(snapshot/'src/runtime/native')} == {str(p.relative_to(oracle_snapshot/'src/runtime/native')) for p in (oracle_snapshot/'src/runtime/native').rglob('*') if p.is_file()}\n    roles = {}\n    copies = []\n"
+    },
+    {
+      "before": "attempt=attempt_pin, imagePins=b2_pin, copies=copies, roles=roles, cases=cases, jobs=jobs,",
+      "after": "attempt=attempt_pin, imagePins=b2_pin, hostRuntimeEquality=host_equality, copies=copies, roles=roles, cases=cases, jobs=jobs,"
+    },
+    {
+      "before": "            for key in ['inputs', 'programInputs', 'effectInputs', 'compiler']:\n                for item in emitted[key]: verified(item)\n",
+      "after": "            for key in ['inputs', 'programInputs', 'effectInputs', 'compiler']:\n                for item in emitted[key]: verified(item)\n            for item in emitted['effectInputs'] + emitted['compiler']:\n                original = Path(item.get('path', item.get('file'))).resolve()\n                if original.is_relative_to(ROOT/'selfhost/src') or original.is_relative_to(ROOT/'selfhost/tools'):\n                    relative = str(original.relative_to(ROOT/'selfhost'))\n                    assert verified(item)['sha256'] == verified(oracle_frozen[relative])['sha256'], ('acquired runtime/host drift', relative)\n"
+    }
+  ],
+  "targetsExecuted": false,
+  "scope": "Strengthen native-behavior transfer by explicitly equating the complete frozen host/runtime/effect file set and prior acquisition support, in addition to checked C identity. Original plan remains unexecuted and immutable."
+}

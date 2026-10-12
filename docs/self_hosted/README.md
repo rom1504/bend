@@ -1,14 +1,27 @@
 # Self-hosted compiler: current architecture and development
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The [Phase69 report](../../implementation/phase69/README.md) identifies the current
-installed native improvements, their finite1.033× upstream result, compiler
-latency and qualification. Read [native optimization contracts and fast loops](native-parity.md),
-the [Phase66 broad five-metric baseline](../../implementation/phase66/README.md),
-and [the compiler guide](../BEND-IN-BEND.md) for
-usage, the [direct guide](../../selfhost/docs/direct-javascript.md) for the
-new namespace/effect interfaces, and [prepared Base artifacts](prepared-base-artifacts.md)
-for new-Base invalidation and optional-product qualification.
+The [Phase70 report](../../implementation/phase70/README.md) records installed
+compiler03 (`d6d6049`, checked B1 `386ae358…`, genuine B2 `d069204f…`), its
+fresh self-check, exact B2/B3 reproduction and installed-interface checks. The
+[native runtime results](../../implementation/phase70/native-runtime-results.md)
+measure 1.12124× upstream on the original six families and 1.84036× on six
+additions, with an optional equal-weight twelve-family score of 1.43649×.
+Those are compiler02 generated-program observations inherited through complete
+C-byte identity of 24 fresh compiler03 B1/B2 emissions across all twelve cases;
+56 pinned host/runtime/effect files are unchanged. They are finite coverage, not
+universal parity or a new compiler03 timing campaign. Historical ratios are not
+a current regression denominator. The separate three-source, 27-request native
+compilation screen measures B1 3.41827× and B2 2.16517× upstream TS, excluding
+imports, Base preparation, Clang and generated-program execution.
+
+Read [native observers](NATIVE_OBSERVERS.md) for the new borrowing analysis and
+[optimization contracts and fast loops](native-parity.md) for the underlying
+native path. The [Phase66 broad five-metric baseline](../../implementation/phase66/README.md)
+remains historical. Use [the compiler guide](../BEND-IN-BEND.md) for usage,
+the [direct guide](../../selfhost/docs/direct-javascript.md) for namespace/effect
+interfaces, and [prepared Base artifacts](prepared-base-artifacts.md) for
+Base invalidation and optional-product qualification.
 
 For agent cost controls, see [usage monitoring and budget checkpoints](agent-usage.md).
 
@@ -86,7 +99,7 @@ The survey changes documentation only; it does not qualify a new compiler.
 | --- | --- |
 | [Backend boundaries](backend-boundaries.md) | Shared checked core and facts, backend-local representations, retained native contracts, and the incremental runtime-IR proposal. |
 | [Direct JavaScript backend](../../selfhost/docs/direct-javascript.md) | Current callable/data interface, ordered prefix/value lowering, 4,096-definition analysis bound and qualification limits. |
-| [Native observers](NATIVE_OBSERVERS.md) | Phase70 working typed root-preserving traversals, checked permission, scheduler-only scope, fallback and checkpoint evidence. |
+| [Native observers](NATIVE_OBSERVERS.md) | Phase70 selected typed root-preserving traversals, checked permission, scheduler-only scope, fallback and measured evidence. |
 | [Native value lowering](native-value-lowering.md) | Phase68 working09 shared arity, local values, ordinary C workers, admission and fallback; separate from the installed Phase67 release. |
 | [Architecture](architecture.md) | Dated Phase45 source organization, representations, pipeline and complexity; use backend boundaries for the current backend split. |
 | [Optimization inventory](optimization-inventory.md) | Existing transformations, where they live, how generally they apply, and missing analyses. |

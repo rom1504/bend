@@ -16,35 +16,38 @@ This fork ships the Bend2 compiler in [`selfhost/`](selfhost/README.md), targeti
 upstream **`0592662` (Bend 2.0.36)**. Ordinary compilation runs Bend algorithms
 without a TypeScript fallback.
 
-**Phase69 is installed and verified.** Checked B1 is `674e7960…`; genuine B2
-`c858dfa5…` checks its own source and reproduces B3 exactly. Direct JavaScript
-is the default; legacy JS and native C retain documented limits.
+**Phase70 compiler03 is installed and verified.** Checked B1 is `386ae358…`;
+genuine B2 `d069204f…` checks its own source and reproduces B3 exactly. Direct
+JavaScript is the default; legacy JS and native C retain documented limits.
 
-Six native diagnostic families have an equal-family geometric mean of
-**1.033× upstream C execution time**,
-with **32.4% less runtime than compiler23 in the same campaign**. Numeric and
-arrays are near parity; closures are faster; tree/Map/lexer remain
-1.43×/1.59×/1.82×. This finite set does not establish universal parity.
+Generated C programs measure **1.12124× upstream execution time on the original
+six families** and **1.84036× on six broader additions**: 12.95% and 18.90% less
+time than Phase69 measured alongside them. An optional equal-weight twelve-family
+score is **1.43649×**. These single-worker measurements were acquired with
+compiler02; all 24 compiler03 B1/B2 emissions match those twelve complete C
+programs, with the pinned host/runtime/effects unchanged. This is finite runtime
+coverage, not universal parity or a newly timed compiler03 campaign. Historical
+ratios use different execution conditions and are not a regression denominator.
 
-The frontend/JavaScript executable closure remains unchanged.
-Phase66's last full campaign measured **1.049× upstream JS runtime** and
-**1.402× / 1.321× TypeScript compilation time** for B1/B2 (including imports:
-0.983× / 0.990×). Phase69's separate three-source **C compilation** screen
-measures **3.23× / 2.18×**; these clocks must not be mixed.
+The frontend/JavaScript executable closure is unchanged. Phase66's historical
+broad measurements were: **1.049× upstream JS runtime** and **1.402× / 1.321× TS compilation
+time** for B1/B2 (including imports: 0.983× / 0.990×). Phase70's separate
+three-source, 27-request **C-emission screen measures 3.41827× / 2.16517×**.
+Imports, explicit Base preparation, Clang and program execution are separate
+clocks; Bend uses prepared Base while TS checks Base within its request.
 
-The unchanged frontend/JS executable closure retains 3,174 exact frontend
-observations and 1,045 golden JS passes, with 123 exemptions, one shared process
-failure and one graphics deferral. Fresh selected native controls (71 source
-cases and 28 raw report rows) pass;
-thirteen native API gaps remain. Maintained Bend source is **30,261 physical
-lines in 121 modules** (+440 lines this phase).
-The proof pilot is accepted by both Bend checkers; independent kernel checking
-is blocked by the available Lean version. It is not a proof of the compiler.
+Finite frontend/JS evidence remains 3,174 exact observations and 1,045 golden JS
+passes, with the documented exceptions. Compiler03 passes 100 native goldens
+and 31 raw controls; seven upstream unused-demand disagreements remain explicit,
+as do thirteen native API gaps. Maintained Bend source is **31,444 lines in
+128 modules**, up 1,183 lines (+3.91%); the native backend grows about 30.5%.
+The proof pilot is not an independently kernel-checked proof of the compiler.
 
-Read the [Phase69 report](implementation/phase69/README.md),
-[native optimizations and fast loops](docs/self_hosted/native-parity.md),
-[Phase70 working native observers](docs/self_hosted/NATIVE_OBSERVERS.md),
-[qualification evidence](implementation/phase69/evidence/summary.json)
+Read the [Phase70 report](implementation/phase70/README.md),
+[native runtime results](implementation/phase70/native-runtime-results.md),
+[native observers](docs/self_hosted/NATIVE_OBSERVERS.md),
+[fast loops](docs/self_hosted/native-parity.md),
+[qualification evidence](implementation/phase70/evidence/compiler03-selfhosting-correctness.json)
 and [compiler guide](docs/BEND-IN-BEND.md). From `selfhost/`, run
 `npm run verify:release`, then `node cli.mjs FILE --run`. The
 [conformance record](selfhost/CONFORMANCE.md), [architecture](selfhost/docs/ARCHITECTURE.md)

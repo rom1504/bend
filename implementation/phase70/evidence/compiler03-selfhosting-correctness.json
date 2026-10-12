@@ -1,0 +1,463 @@
+{
+  "kind": "phase70-compiler03-c-identity-and-selfhosting-qualification",
+  "version": 1,
+  "reviewedAt": "2026-10-12T02:35:03.585929+00:00",
+  "mode": "Independent retained-data review on CPU0; root owns all target execution.",
+  "previousCorrectness": {
+    "file": "implementation/phase70/evidence/compiler03-native-raw-js-driver-correctness.json",
+    "sha256": "3a197a8351c300516518dac347dda05273623281d519c6012e6f7bf5bb9ac174",
+    "bytes": 8499
+  },
+  "candidateB1Sha256": "386ae358ee8fe33c5af3f7fec16f956b59451ee6004da99a94146140d3e8a162",
+  "candidateB2Sha256": "d069204f38786de7142f10dbc7126371dfa6f7fa234347da98e7d46a23cced8b",
+  "completeCIdentity": {
+    "complete": true,
+    "preparations": 2,
+    "checkedEmissions": 24,
+    "cases": 12,
+    "mapping": [
+      {
+        "case": "numeric",
+        "stage": "b1",
+        "completeCSha256": "43fc5fe71339bf59a4de73d0853f7a9249b229bdd21d709b70a118c8d951226a",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-numeric-b1/program.c",
+          "sha256": "43fc5fe71339bf59a4de73d0853f7a9249b229bdd21d709b70a118c8d951226a",
+          "bytes": 959838
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-native06/numeric-selfhost/program.c",
+          "sha256": "43fc5fe71339bf59a4de73d0853f7a9249b229bdd21d709b70a118c8d951226a",
+          "bytes": 959838
+        }
+      },
+      {
+        "case": "numeric",
+        "stage": "b2",
+        "completeCSha256": "43fc5fe71339bf59a4de73d0853f7a9249b229bdd21d709b70a118c8d951226a",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-numeric-b2/program.c",
+          "sha256": "43fc5fe71339bf59a4de73d0853f7a9249b229bdd21d709b70a118c8d951226a",
+          "bytes": 959838
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-native06/numeric-selfhost/program.c",
+          "sha256": "43fc5fe71339bf59a4de73d0853f7a9249b229bdd21d709b70a118c8d951226a",
+          "bytes": 959838
+        }
+      },
+      {
+        "case": "array",
+        "stage": "b2",
+        "completeCSha256": "21f52a53baf87e0f7f2e0025f1234488ad9071aef6037c0fd201c3799d3807bf",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-array-b2/program.c",
+          "sha256": "21f52a53baf87e0f7f2e0025f1234488ad9071aef6037c0fd201c3799d3807bf",
+          "bytes": 988296
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-native06/array-selfhost/program.c",
+          "sha256": "21f52a53baf87e0f7f2e0025f1234488ad9071aef6037c0fd201c3799d3807bf",
+          "bytes": 988296
+        }
+      },
+      {
+        "case": "array",
+        "stage": "b1",
+        "completeCSha256": "21f52a53baf87e0f7f2e0025f1234488ad9071aef6037c0fd201c3799d3807bf",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-array-b1/program.c",
+          "sha256": "21f52a53baf87e0f7f2e0025f1234488ad9071aef6037c0fd201c3799d3807bf",
+          "bytes": 988296
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-native06/array-selfhost/program.c",
+          "sha256": "21f52a53baf87e0f7f2e0025f1234488ad9071aef6037c0fd201c3799d3807bf",
+          "bytes": 988296
+        }
+      },
+      {
+        "case": "closures",
+        "stage": "b1",
+        "completeCSha256": "9637efffdf24a2071c2a26f78c3d8c5a947c62687875c196bce9f67899553778",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-closures-b1/program.c",
+          "sha256": "9637efffdf24a2071c2a26f78c3d8c5a947c62687875c196bce9f67899553778",
+          "bytes": 939374
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-native06/closures-selfhost/program.c",
+          "sha256": "9637efffdf24a2071c2a26f78c3d8c5a947c62687875c196bce9f67899553778",
+          "bytes": 939374
+        }
+      },
+      {
+        "case": "closures",
+        "stage": "b2",
+        "completeCSha256": "9637efffdf24a2071c2a26f78c3d8c5a947c62687875c196bce9f67899553778",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-closures-b2/program.c",
+          "sha256": "9637efffdf24a2071c2a26f78c3d8c5a947c62687875c196bce9f67899553778",
+          "bytes": 939374
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-native06/closures-selfhost/program.c",
+          "sha256": "9637efffdf24a2071c2a26f78c3d8c5a947c62687875c196bce9f67899553778",
+          "bytes": 939374
+        }
+      },
+      {
+        "case": "tree",
+        "stage": "b2",
+        "completeCSha256": "3aaf0af60a2372a62007e516d440a1da7e7c426b6f6725cf956aa9fe033c475d",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-tree-b2/program.c",
+          "sha256": "3aaf0af60a2372a62007e516d440a1da7e7c426b6f6725cf956aa9fe033c475d",
+          "bytes": 1127119
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-native06/tree-selfhost/program.c",
+          "sha256": "3aaf0af60a2372a62007e516d440a1da7e7c426b6f6725cf956aa9fe033c475d",
+          "bytes": 1127119
+        }
+      },
+      {
+        "case": "tree",
+        "stage": "b1",
+        "completeCSha256": "3aaf0af60a2372a62007e516d440a1da7e7c426b6f6725cf956aa9fe033c475d",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-tree-b1/program.c",
+          "sha256": "3aaf0af60a2372a62007e516d440a1da7e7c426b6f6725cf956aa9fe033c475d",
+          "bytes": 1127119
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-native06/tree-selfhost/program.c",
+          "sha256": "3aaf0af60a2372a62007e516d440a1da7e7c426b6f6725cf956aa9fe033c475d",
+          "bytes": 1127119
+        }
+      },
+      {
+        "case": "map",
+        "stage": "b1",
+        "completeCSha256": "01e75aa51f22bfb8476ccf54797f77f4f60836484d312c73f9ef464008f08957",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-map-b1/program.c",
+          "sha256": "01e75aa51f22bfb8476ccf54797f77f4f60836484d312c73f9ef464008f08957",
+          "bytes": 1724903
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-native06/map-selfhost/program.c",
+          "sha256": "01e75aa51f22bfb8476ccf54797f77f4f60836484d312c73f9ef464008f08957",
+          "bytes": 1724903
+        }
+      },
+      {
+        "case": "map",
+        "stage": "b2",
+        "completeCSha256": "01e75aa51f22bfb8476ccf54797f77f4f60836484d312c73f9ef464008f08957",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-map-b2/program.c",
+          "sha256": "01e75aa51f22bfb8476ccf54797f77f4f60836484d312c73f9ef464008f08957",
+          "bytes": 1724903
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-native06/map-selfhost/program.c",
+          "sha256": "01e75aa51f22bfb8476ccf54797f77f4f60836484d312c73f9ef464008f08957",
+          "bytes": 1724903
+        }
+      },
+      {
+        "case": "lexer",
+        "stage": "b2",
+        "completeCSha256": "a3d3fbe20bbd891c35f7bb2b6aac0d00904197cd95889ca31591aea898b9e992",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-lexer-b2/program.c",
+          "sha256": "a3d3fbe20bbd891c35f7bb2b6aac0d00904197cd95889ca31591aea898b9e992",
+          "bytes": 1245332
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-native06/lexer-selfhost/program.c",
+          "sha256": "a3d3fbe20bbd891c35f7bb2b6aac0d00904197cd95889ca31591aea898b9e992",
+          "bytes": 1245332
+        }
+      },
+      {
+        "case": "lexer",
+        "stage": "b1",
+        "completeCSha256": "a3d3fbe20bbd891c35f7bb2b6aac0d00904197cd95889ca31591aea898b9e992",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-lexer-b1/program.c",
+          "sha256": "a3d3fbe20bbd891c35f7bb2b6aac0d00904197cd95889ca31591aea898b9e992",
+          "bytes": 1245332
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-native06/lexer-selfhost/program.c",
+          "sha256": "a3d3fbe20bbd891c35f7bb2b6aac0d00904197cd95889ca31591aea898b9e992",
+          "bytes": 1245332
+        }
+      },
+      {
+        "case": "list-pipeline",
+        "stage": "b1",
+        "completeCSha256": "7c5fa06858711cc994133dff00c54edca5daf1b8e15d1f50138b1496ca1f4595",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-list-pipeline-b1/program.c",
+          "sha256": "7c5fa06858711cc994133dff00c54edca5daf1b8e15d1f50138b1496ca1f4595",
+          "bytes": 966061
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-coverage-missing-five01/list-pipeline-selfhost/program.c",
+          "sha256": "7c5fa06858711cc994133dff00c54edca5daf1b8e15d1f50138b1496ca1f4595",
+          "bytes": 966061
+        }
+      },
+      {
+        "case": "list-pipeline",
+        "stage": "b2",
+        "completeCSha256": "7c5fa06858711cc994133dff00c54edca5daf1b8e15d1f50138b1496ca1f4595",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-list-pipeline-b2/program.c",
+          "sha256": "7c5fa06858711cc994133dff00c54edca5daf1b8e15d1f50138b1496ca1f4595",
+          "bytes": 966061
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-coverage-missing-five01/list-pipeline-selfhost/program.c",
+          "sha256": "7c5fa06858711cc994133dff00c54edca5daf1b8e15d1f50138b1496ca1f4595",
+          "bytes": 966061
+        }
+      },
+      {
+        "case": "bst",
+        "stage": "b2",
+        "completeCSha256": "b5aa3cc150e5c59ec0311404c66d552dc3562ef031312d7ab7636c1c4c522ae3",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-bst-b2/program.c",
+          "sha256": "b5aa3cc150e5c59ec0311404c66d552dc3562ef031312d7ab7636c1c4c522ae3",
+          "bytes": 1060136
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-coverage-missing-five01/bst-selfhost/program.c",
+          "sha256": "b5aa3cc150e5c59ec0311404c66d552dc3562ef031312d7ab7636c1c4c522ae3",
+          "bytes": 1060136
+        }
+      },
+      {
+        "case": "bst",
+        "stage": "b1",
+        "completeCSha256": "b5aa3cc150e5c59ec0311404c66d552dc3562ef031312d7ab7636c1c4c522ae3",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-bst-b1/program.c",
+          "sha256": "b5aa3cc150e5c59ec0311404c66d552dc3562ef031312d7ab7636c1c4c522ae3",
+          "bytes": 1060136
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-coverage-missing-five01/bst-selfhost/program.c",
+          "sha256": "b5aa3cc150e5c59ec0311404c66d552dc3562ef031312d7ab7636c1c4c522ae3",
+          "bytes": 1060136
+        }
+      },
+      {
+        "case": "expression",
+        "stage": "b1",
+        "completeCSha256": "33adcd5157d8499fb078a6f5b3d607489d24a793927073a0853f8134a327af69",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-expression-b1/program.c",
+          "sha256": "33adcd5157d8499fb078a6f5b3d607489d24a793927073a0853f8134a327af69",
+          "bytes": 978758
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-coverage-missing-five01/expression-selfhost/program.c",
+          "sha256": "33adcd5157d8499fb078a6f5b3d607489d24a793927073a0853f8134a327af69",
+          "bytes": 978758
+        }
+      },
+      {
+        "case": "expression",
+        "stage": "b2",
+        "completeCSha256": "33adcd5157d8499fb078a6f5b3d607489d24a793927073a0853f8134a327af69",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-expression-b2/program.c",
+          "sha256": "33adcd5157d8499fb078a6f5b3d607489d24a793927073a0853f8134a327af69",
+          "bytes": 978758
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-coverage-missing-five01/expression-selfhost/program.c",
+          "sha256": "33adcd5157d8499fb078a6f5b3d607489d24a793927073a0853f8134a327af69",
+          "bytes": 978758
+        }
+      },
+      {
+        "case": "tape-observer",
+        "stage": "b2",
+        "completeCSha256": "46562d5dd820a5ac919b95e6ebcaab7655e3c0076250d0e01808563ebd1f3a95",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-tape-observer-b2/program.c",
+          "sha256": "46562d5dd820a5ac919b95e6ebcaab7655e3c0076250d0e01808563ebd1f3a95",
+          "bytes": 977018
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-coverage-missing-five01/tape-observer-selfhost/program.c",
+          "sha256": "46562d5dd820a5ac919b95e6ebcaab7655e3c0076250d0e01808563ebd1f3a95",
+          "bytes": 977018
+        }
+      },
+      {
+        "case": "tape-observer",
+        "stage": "b1",
+        "completeCSha256": "46562d5dd820a5ac919b95e6ebcaab7655e3c0076250d0e01808563ebd1f3a95",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-tape-observer-b1/program.c",
+          "sha256": "46562d5dd820a5ac919b95e6ebcaab7655e3c0076250d0e01808563ebd1f3a95",
+          "bytes": 977018
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-coverage-missing-five01/tape-observer-selfhost/program.c",
+          "sha256": "46562d5dd820a5ac919b95e6ebcaab7655e3c0076250d0e01808563ebd1f3a95",
+          "bytes": 977018
+        }
+      },
+      {
+        "case": "string-order",
+        "stage": "b1",
+        "completeCSha256": "be506727b7f1c3d3586b2a34fcaabec81865e3ee378285dca2f39ec6311c194d",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-string-order-b1/program.c",
+          "sha256": "be506727b7f1c3d3586b2a34fcaabec81865e3ee378285dca2f39ec6311c194d",
+          "bytes": 1017268
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-coverage-missing-five01/string-order-selfhost/program.c",
+          "sha256": "be506727b7f1c3d3586b2a34fcaabec81865e3ee378285dca2f39ec6311c194d",
+          "bytes": 1017268
+        }
+      },
+      {
+        "case": "string-order",
+        "stage": "b2",
+        "completeCSha256": "be506727b7f1c3d3586b2a34fcaabec81865e3ee378285dca2f39ec6311c194d",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-string-order-b2/program.c",
+          "sha256": "be506727b7f1c3d3586b2a34fcaabec81865e3ee378285dca2f39ec6311c194d",
+          "bytes": 1017268
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-coverage-missing-five01/string-order-selfhost/program.c",
+          "sha256": "be506727b7f1c3d3586b2a34fcaabec81865e3ee378285dca2f39ec6311c194d",
+          "bytes": 1017268
+        }
+      },
+      {
+        "case": "array-map",
+        "stage": "b2",
+        "completeCSha256": "1297ec3492260a9ad692edffa489163367ab4f24f19ce8bb791c6c033acf3043",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-array-map-b2/program.c",
+          "sha256": "1297ec3492260a9ad692edffa489163367ab4f24f19ce8bb791c6c033acf3043",
+          "bytes": 1072812
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-array-map/array-map-selfhost/program.c",
+          "sha256": "1297ec3492260a9ad692edffa489163367ab4f24f19ce8bb791c6c033acf3043",
+          "bytes": 1072812
+        }
+      },
+      {
+        "case": "array-map",
+        "stage": "b1",
+        "completeCSha256": "1297ec3492260a9ad692edffa489163367ab4f24f19ce8bb791c6c033acf3043",
+        "output": {
+          "file": "selfhost/build/phase70/compiler03-C-identity12-v2/runs/clean-identity-array-map-b1/program.c",
+          "sha256": "1297ec3492260a9ad692edffa489163367ab4f24f19ce8bb791c6c033acf3043",
+          "bytes": 1072812
+        },
+        "oracle": {
+          "file": "selfhost/build/phase70/compiler02-array-map/array-map-selfhost/program.c",
+          "sha256": "1297ec3492260a9ad692edffa489163367ab4f24f19ce8bb791c6c033acf3043",
+          "bytes": 1072812
+        }
+      }
+    ],
+    "hostRuntimeSupportEqualityFiles": 56,
+    "guardReceiptsVerified": 26,
+    "pins": [
+      {
+        "file": "selfhost/build/phase70/compiler03-C-identity12-v2-summary.json",
+        "sha256": "fef66ef4b9ff565ac1b2b4faab749f5b4953af0b2896ae63275013aabb69802a",
+        "bytes": 62504
+      },
+      {
+        "file": "selfhost/build/phase70/compiler03-C-identity12-v2/plan.json",
+        "sha256": "8fb3d52ad05695a5e705105bd813cbf3fd288dc60ac0a3fd518717ea042af555",
+        "bytes": 219235
+      }
+    ],
+    "scope": "Identical complete C plus unchanged host/runtime/Base/effect support permits transfer of prior independently validated native behavior. Performance observations remain attributed to original compiler02 acquisition; no new runtime measurements here."
+  },
+  "freshSelfCheck": {
+    "complete": true,
+    "pass": true,
+    "freshTypeCheck": true,
+    "proofTrust": "failed",
+    "kernelChecked": false,
+    "mathematicalProof": false,
+    "expectedProofTrustFailure": true,
+    "explicitlyUnsafeDefinitions": 3701,
+    "pinnedInputsVerified": 376,
+    "source": {
+      "file": "selfhost/build/phase70/compiler03/snapshot/build/typed/snapshots/d3405a9f29c8df170e677afa4478790bb9c4f23ce23e4d6540e0440747d4a93f/compiler.bend",
+      "sha256": "d583e187290f087d48b95ffdbe402ed01af81a28d91e0e2cec5462ed8797b2cc",
+      "bytes": 1622079
+    },
+    "pins": [
+      {
+        "file": "selfhost/build/phase70/compiler03-release-qualification/self-check/report.json",
+        "sha256": "b48b0b09bbf9a4c5804e6c7a556b73b24e7a194e8ef49d6b9bb593cd80554549",
+        "bytes": 310124
+      },
+      {
+        "file": "selfhost/build/phase70/compiler03-release-qualification/job-self-check/process.json",
+        "sha256": "ce17f9e572716313f1f9a22e8b4004cc08af7298c7e43f926aae333ae18a6113",
+        "bytes": 778
+      }
+    ]
+  },
+  "fixedPoint": {
+    "complete": true,
+    "pass": true,
+    "byteEquality": true,
+    "bytes": 4563498,
+    "b2": {
+      "file": "selfhost/build/phase70/compiler03-b2/full/compiler.mjs",
+      "sha256": "d069204f38786de7142f10dbc7126371dfa6f7fa234347da98e7d46a23cced8b",
+      "bytes": 4563498
+    },
+    "b3": {
+      "file": "selfhost/build/phase70/compiler03-release-qualification/fixed-point/compiler.mjs",
+      "sha256": "d069204f38786de7142f10dbc7126371dfa6f7fa234347da98e7d46a23cced8b",
+      "bytes": 4563498
+    },
+    "pinnedInputsVerified": 375,
+    "checking": {
+      "lane": "inherited-exact-bootstrap",
+      "freshSelfCheck": false,
+      "sourceSha256": "d583e187290f087d48b95ffdbe402ed01af81a28d91e0e2cec5462ed8797b2cc"
+    },
+    "scope": "Exact emission fixed point on the explicitly pinned checked source and actual checked-export closure. No fresh compiler-source self-check, new bootstrap trust, or installation claim.",
+    "pins": [
+      {
+        "file": "selfhost/build/phase70/compiler03-release-qualification/fixed-point/report.json",
+        "sha256": "ab4c778bcc1b0b1893acb35c3b8a4e64bf4c195d2f22c0dcef24c7e7eb8b1d25",
+        "bytes": 151397
+      },
+      {
+        "file": "selfhost/build/phase70/compiler03-release-qualification/job-fixed-point/process.json",
+        "sha256": "531c1718058462bb0931bc474295380a82975776f61e412a7196b6da668aa71e",
+        "bytes": 776
+      }
+    ]
+  },
+  "remainingOutsideCorrectnessReview": [
+    "Final balanced compilation latency report",
+    "Release installation and sealed portable evidence"
+  ]
+}

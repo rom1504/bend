@@ -6,25 +6,49 @@ Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The [Phase69 report](../implementation/phase69/README.md) identifies the installed
-checked B1 `674e7960…` and genuine B2 `c858dfa5…`, with fresh self-check,
-reproduction, native controls and installed-interface verification. Its
-[native optimizations](self_hosted/native-parity.md) reduce six-family execution
-time by32.4% versus compiler23 in the same campaign, reaching1.033× upstream C.
-Tree/Map/lexer still lag individually. The documented saved-program loops
-exclude new compiler/C acquisition.
+The [Phase70 report](../implementation/phase70/README.md) records the installed
+**compiler03** source at `d6d6049`, checked B1 `386ae358…` and separately
+qualified genuine B2 `d069204f…`. It adds bounded
+[root-preserving native observers](self_hosted/NATIVE_OBSERVERS.md), checked
+Bool-array admission and two compiler-work reductions. The unsuccessful
+occurrence-insertion shortcut was removed; the ordinary-ready observer skip
+remains an unshipped experiment. Installation, verification before and after
+CLI checks, legacy42/default24/helper5, fresh self-check and exact B2/B3
+reproduction pass. [Phase69](../implementation/phase69/README.md) is the
+previous installed release.
+
+The [native runtime campaign](../implementation/phase70/native-runtime-results.md)
+measures **1.12124× upstream C execution time on the original six families**
+and **1.84036× on six broader additions**: respectively 12.95% and 18.90% less
+than Phase69 measured alongside it. An optional equal-weight twelve-family
+summary is **1.43649×**. These are finite, single-worker generated-program
+results, not compiler latency or universal parity. The timed artifact is
+compiler02; all 24 fresh compiler03 B1/B2 emissions over those twelve programs
+match its complete C bytes, with 56 host/runtime/effect files unchanged. This
+qualifies inheritance of the saved-program results; it is not a newly timed
+compiler03 runtime campaign. Historical Phase69's 1.033× used different execution
+conditions and is not the denominator for a regression comparison.
 
 Frontend/JavaScript behavior retains Phase66's finite conformance evidence
-through exact executable-closure equality. The [last broad five-metric campaign](../implementation/phase66/README.md)
-remains historical: B1/B2 compilation 1.402× / 1.321× TS, import-inclusive
+through exact executable-closure equality. The
+[last broad five-metric campaign](../implementation/phase66/README.md) remains
+historical: B1/B2 compilation 1.402× / 1.321× TS, import-inclusive
 0.983× / 0.990×, and generated JS runtime 1.049× equal-point / 1.047×
-equal-source. Phase69's three-source C request screen measures B1/B2
-3.23×/2.18× upstream; it does not update those broad JS ratios.
+equal-source. The separate Phase70 C-emission request screen measures B1
+**3.41827×** and genuine B2 **2.16517×** upstream TS across Numeric/Array/Lexer,
+three balanced rounds and 27 exact-C requests. These clocks exclude imports,
+explicit Base preparation, Clang and generated-program execution. Bend uses
+prepared Base; TS checks Base within its request. This is not a broad
+compilation-parity result. A separate paired Numeric screen takes 6.54% more
+B1 time and 1.09% more B2 time than Phase69; the phase does not establish a
+whole-version compiler-speed improvement.
 
-The [qualification evidence](../implementation/phase69/evidence/summary.json)
-passes integrity, legacy42/default24/helper5. Current direct/legacy effect
-limits and finite conformance exceptions are unchanged. Custom or later Base
-bytes retain ordinary annotation until independently qualified; see the
+The [selected-source review](../implementation/phase70/compiler03-correctness.md)
+records compiler03 gates separately from compiler02 results and known upstream
+disagreements. Its [self-hosting and C-identity evidence](../implementation/phase70/evidence/compiler03-selfhosting-correctness.json)
+pins the cross-stage qualification. Current direct/legacy effect limits and
+finite conformance exceptions remain explicit. Custom or later Base bytes retain ordinary
+annotation until independently qualified; see the
 [Base qualification](../implementation/phase66/base-host.md). The proof pilot's
 independent kernel check remains blocked on its toolchain, not established by
 self-reproduction or ordinary type acceptance.
@@ -673,9 +697,10 @@ full-source fixed point is not relabeled as B02's.
 
 ## Current release boundary
 
-Use the [Phase66 report](../implementation/phase66/README.md),
+Use the [Phase70 report](../implementation/phase70/README.md),
 [current conformance record](../selfhost/CONFORMANCE.md) and installed
-`dist/release.json` for current image identities and qualification. Run
+`dist/release.json` for current image identities and qualification. Compiler03 is installed and
+verified. Run
 `npm run verify:release` from `selfhost/` to check the installed closure.
 
 ### Historical Phase61 release boundary
@@ -691,7 +716,7 @@ remains shared, what belongs to legacy/direct JS or native C, and the proposed
 future native-IR seam. Native IO.args and actual GPU execution remain outside
 the demonstrated coverage. No LLVM or assembly backend was added.
 
-### Phase68 C-target source candidate
+### Historical Phase68 C-target source candidate
 
 The compiler written in Bend now proves when scalar arrays can use packed
 32-bit buffers and when unshared buffers can skip reference-count indirection.
@@ -699,4 +724,5 @@ Both proofs run in Bend; the host only authenticates Base/effect inputs and
 selects the checked entry. Unknown cases retain the generic native path.
 See the [native backend contract](../selfhost/src/back/native/README.md) and
 [measured results and limitations](../implementation/phase68/checked-scalar-arrays.md).
-These source changes are not an installed-release promotion.
+That source-candidate report did not itself establish release promotion; later
+release evidence is recorded separately.

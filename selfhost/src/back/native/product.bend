@@ -273,7 +273,7 @@ def nq_args_known(shapes: List<&2, KTerm>, args: List<&2, KTerm>) -> Bool:
     case Nil{}, Nil{}: True{}
     case Con{+shape, rest}, Con{+arg, more}:
       nt_choose(Bool, String.eq(tg(shape), "NQShape"),
-        u => String.eq(tg(arg), "NQBundle") && String.eq(nm(shape), nm(arg)) && U32.is_eq(ix(shape), terms_len(ks(arg))),
+        u => (String.eq(tg(arg), "NQBundle") || String.eq(tg(arg), "Ctr") || String.eq(tg(arg), "NCtr")) && String.eq(nm(shape), nm(arg)) && U32.is_eq(ix(shape), terms_len(ks(arg))),
         u => True{}) && nq_args_known(rest, more)
     case _, _: False{}
 
@@ -367,13 +367,22 @@ def nq_entry_cons(params: List<&2, NC_Binding>, arg: KTerm, tail: NQ_Entry) -> N
 
 @unsafe
 def nq_candidate(+book: List<&2, KDef>, +name: String, +signatures: List<&2, KDef>, entry: NQ_Entry) -> NF_Worker:
+  nq_candidate_mode(book, name, signatures, entry, False{})
+
+# Checked private calls enter only with flow-proven, already evaluated bundles.
+# No adapter unpacks an unknown boxed parameter. A dropped/shared/opaque bundle
+# still materializes through ordinary lowering at its original demand point.
+# This permits a flat loop backedge even when its exit drops the product.
+# Raw compilation retains the stronger historical prefix-demand admission.
+@unsafe
+def nq_candidate_mode(+book: List<&2, KDef>, +name: String, +signatures: List<&2, KDef>, entry: NQ_Entry, +checked: Bool) -> NF_Worker:
   match entry:
     case NQ_Entry{+params, +args, +fresh}:
       +info = lookup(signatures, name)
       +body = nc_compact_definition(book, lookup(book, name), fresh)
       +route = nm(dv(info))
       +shape = dt(info)
-      +code = nt_choose(NC_Code, nq_entry_demand(body, ks(dv(info)), nd_entry_args(nd_entry_params(da(info), 0)), 0),
+      +code = nt_choose(NC_Code, nt_choose(Bool, checked, u => True{}, u => nq_entry_demand(body, ks(dv(info)), nd_entry_args(nd_entry_params(da(info), 0)), 0)),
         u => nc_lower_to(book, nd_reapply(body, args), params, fresh, NC_Destination{nq_words("nf_out", nq_width(shape), 0), shape, "", route, params, True{}, signatures}),
         u => nc_fail("flat product: parameter may be dropped before matching", fresh))
       NF_Worker{route, nf_typed_params(params, nf_expand_kinds(ks(dv(info)), nf_worker_kinds(book, name, da(info)))), code, nc_calls(code), shape}
@@ -424,10 +433,14 @@ def nq_neutral_fields(+count: U32) -> List<&2, KTerm>:
 
 @unsafe
 def nq_candidates(+book: List<&2, KDef>, names: List<&2, String>, +bangs: List<&2, String>, +signatures: List<&2, KDef>) -> List<&2, NF_Worker>:
+  nq_candidates_mode(book, names, bangs, signatures, False{})
+
+@unsafe
+def nq_candidates_mode(+book: List<&2, KDef>, names: List<&2, String>, +bangs: List<&2, String>, +signatures: List<&2, KDef>, +checked: Bool) -> List<&2, NF_Worker>:
   match names:
     case Nil{}: Nil{}
     case Con{+name, +rest}:
       +info = lookup(signatures, name)
       nt_choose(List<&2, NF_Worker>, String.eq(tg(dv(info)), "NQSig") && Bool.not(nb_contains(bangs, name)),
-        u => Con{nq_candidate(book, name, signatures, nq_entry(ks(dv(info)), 0, da(info))), nq_candidates(book, rest, bangs, signatures)},
-        u => nq_candidates(book, rest, bangs, signatures))
+        u => Con{nq_candidate_mode(book, name, signatures, nq_entry(ks(dv(info)), 0, da(info)), checked), nq_candidates_mode(book, rest, bangs, signatures, checked)},
+        u => nq_candidates_mode(book, rest, bangs, signatures, checked))

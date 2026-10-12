@@ -302,4 +302,4 @@ def nf_finish_show(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2
   +signatures = book_cached(nq_signatures(book, names), 0)
   +bangs = nc_bangs_names(book, names)
   +observer_names = nt_choose(List<&2, String>, observers, u => no_candidate_names(book, names, bangs), u => Nil{})
-  nf_finish_workers(book, ss, cs, runtime, requests, pure, show, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates(book, names, bangs, signatures)), signatures, observer_names, observers)
+  nf_finish_workers(book, ss, cs, runtime, requests, pure, show, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates_mode(book, names, bangs, signatures, observers)), signatures, observer_names, observers)

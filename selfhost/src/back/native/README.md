@@ -185,3 +185,20 @@ unchanged. This is finite inherited execution evidence, separate from the
 three-source C-emission ratios of 3.41827× for B1 and 2.16517× for B2.
 The observer guide keeps earlier Map/String/Tape checkpoints separate and
 explains the remaining fallback and correctness boundaries.
+
+## Product transport across calls and loop backedges
+
+Phase72 extends the existing product path in two places. Result-shape queries
+recognize a matching constructor argument before argument sequencing converts it
+to a virtual bundle. This avoids reboxing a flat result between named calls.
+The checked, effect-admitted host path also permits private product workers whose
+exit can discard a parameter. Calls to those workers still require exact,
+already-evaluated bundles; no new adapter unpacks an unknown boxed argument.
+Existing lowering materializes shared, dropped or opaque products at their
+original use, so a loop can stay flat on its backedge and box only on exit.
+
+Raw compilation retains its prefix-demand admission, and device/scheduler
+interfaces remain boxed. There is no new IR, runtime representation or JS
+optimization. See the [Phase72 report](../../../../implementation/phase72/README.md)
+for measured scope and qualification status; candidate measurements alone do
+not identify an installed release.

@@ -50,10 +50,10 @@ def no_private_free(+book: List<&2, KDef>, +workers: List<&2, NF_Worker>, +name:
   String.eq(dk(lookup(book, name)), "Absent") && Bool.not(no_worker_taken(name, workers))
 
 @unsafe
-def no_route_pair(+book: List<&2, KDef>, +owner: String, +arity: U32, +pair: List<&2, NF_Worker>, +old: NO_Route, +scalar: Bool, +roots: List<&2, U32>) -> NO_Route:
+def no_route_pair(+book: List<&2, KDef>, +owner: String, +arity: U32, +pair: List<&2, NF_Worker>, +old: NO_Route, +scalar: Bool, +roots: List<&2, U32>, +types: List<&2, KTerm>) -> NO_Route:
   +ready = nf_admit(book, pair, no_route_ready(old), 2)
   nt_choose(NO_Route, nb_contains(ready, no_worker_name(owner)) && nb_contains(ready, no_adapter_name(owner)),
-    u => NO_Route{List.append(&2, NF_Worker, pair, nt_choose(List<&2, NF_Worker>, scalar, v => no_scalar_redirect(no_route_workers(old), owner, roots), v => no_route_workers(old))), ready, nt_choose(List<&2, KDef>, scalar, v => no_route_entries(old), v => Con{KDef{nd_name(owner), "NOObserverEntry", arity, 0, atom("Absent"), kt("NOOwner", owner, 0, 0, Nil{}), Nil{}, False{}, False{}}, no_route_entries(old)})},
+    u => NO_Route{List.append(&2, NF_Worker, pair, nt_choose(List<&2, NF_Worker>, scalar, v => no_scalar_redirect(no_route_workers(old), owner, roots), v => no_route_workers(old))), ready, Con{KDef{nd_name(owner), nt_choose(String, scalar, v => "NOScalarObserver", v => "NOObserverEntry"), arity, 0, kt("NORootTypes", "", 0, 0, types), kt("NOOwner", owner, 0, 0, Nil{}), Nil{}, False{}, False{}}, no_route_entries(old)}},
     u => old)
 
 @unsafe
@@ -65,12 +65,12 @@ def no_route_plan(+book: List<&2, KDef>, +entry: KDef, +old: NO_Route, +plan: NO
   +scalar = String.eq(tg(no_schema_wrapper(schema)), "Var")
   nt_choose(NO_Route, (Bool.not(scalar) || nb_contains(no_route_ready(old), owner)) && String.eq(no_plan_error(plan), "") && String.eq(no_schema_error(schema), "") && String.eq(noa_error(analysis), "") && U32.is_eq(nt_count(NC_Binding, params), da(entry)),
     u => nt_choose(NO_Route, no_private_free(book, no_route_workers(old), no_worker_name(owner)) && no_private_free(book, no_route_workers(old), no_adapter_name(owner)),
-      v => no_route_pair(book, owner, da(entry), [no_worker(owner, params, no_schema_specs_layouts(no_schema_specs(schema)), noa_body(analysis)), no_adapter(book, owner, params, no_schema_roots(schema), no_schema_result(schema), no_schema_wrapper(schema), noa_fresh(analysis))], old, scalar, no_schema_roots(schema)), v => old), u => old)
+      v => no_route_pair(book, owner, da(entry), [no_worker(owner, params, no_schema_specs_layouts(no_schema_specs(schema)), noa_body(analysis)), no_adapter(book, owner, params, no_schema_roots(schema), no_schema_result(schema), no_schema_wrapper(schema), noa_fresh(analysis))], old, scalar, no_schema_roots(schema), no_root_types(no_schema_params(schema), no_schema_roots(schema), 0)), v => old), u => old)
 
 @unsafe
 def no_route_one(+book: List<&2, KDef>, +name: String, +entry: KDef, +old: NO_Route) -> NO_Route:
   nt_choose(NO_Route, String.eq(dk(entry), "NOEligibleEntry"),
-    u => no_route_plan(book, entry, old, no_observer_plan(book, name, True{})), u => old)
+    u => no_route_schema(book, name, entry, old, no_schema(book, lookup(book, name), 0)), u => old)
 
 @unsafe
 def no_route_names(+book: List<&2, KDef>, names: List<&2, String>, +index: List<&2, KDef>, +old: NO_Route) -> NO_Route:
@@ -102,9 +102,9 @@ def no_wrap_routes(+segments: List<&2, N_Segment>, +entries: List<&2, KDef>, +re
 @unsafe
 def no_shared_roots(params: List<&2, N_Param>, +roots: List<&2, U32>, +i: U32) -> String:
   match params:
-    case Nil{}: "1"
+    case Nil{}: "0"
     case Con{N_Param{+word, kind}, rest}:
-      nt_choose(String, no_root_index(roots, i), u => "(term_rfc(" ++ word ++ ") && (rfc_view(e, term_loc(" ++ word ++ ")) & RFC_CNT) > 1) && ", u => "") ++ no_shared_roots(rest, roots, U32.inc(i))
+      nt_choose(String, no_root_index(roots, i), u => "(term_rfc(" ++ word ++ ") && (rfc_view(e, term_loc(" ++ word ++ ")) & RFC_CNT) > 1) || ", u => "") ++ no_shared_roots(rest, roots, U32.inc(i))
 
 @unsafe
 def no_scalar_redirect(workers: List<&2, NF_Worker>, +owner: String, +roots: List<&2, U32>) -> List<&2, NF_Worker>:
@@ -113,3 +113,15 @@ def no_scalar_redirect(workers: List<&2, NF_Worker>, +owner: String, +roots: Lis
     case Con{NF_Worker{+name, +params, +code, +deps, +shape}, rest}:
       +redirect = "if (" ++ no_shared_roots(params, roots, 0) ++ ") { return " ++ nf_name(no_adapter_name(owner)) ++ "(e, seq, nf_out" ++ nf_arg_c(nf_segment_args(params)) ++ "); }\n"
       Con{NF_Worker{name, params, nt_choose(NC_Code, String.eq(name, owner), u => nc_prepend(redirect, code), u => code), nt_choose(List<&2, String>, String.eq(name, owner), u => Con{no_adapter_name(owner), deps}, u => deps), shape}, no_scalar_redirect(rest, owner, roots)}
+
+@unsafe
+def no_root_types(params: List<&2, KTerm>, +roots: List<&2, U32>, +i: U32) -> List<&2, KTerm>:
+  match params:
+    case Nil{}: Nil{}
+    case Con{p, +rest}: nt_choose(List<&2, KTerm>, no_root_index(roots, i), u => Con{ref(nm(p)), no_root_types(rest, roots, U32.inc(i))}, u => no_root_types(rest, roots, U32.inc(i)))
+
+# Scalar-only routes require an ordinary fallback before symbolic evaluation.
+@unsafe
+def no_route_schema(+book: List<&2, KDef>, +name: String, +entry: KDef, +old: NO_Route, +schema: NO_Schema) -> NO_Route:
+  nt_choose(NO_Route, String.eq(no_schema_error(schema), "") && (Bool.not(String.eq(tg(no_schema_wrapper(schema)), "Var")) || nb_contains(no_route_ready(old), name)),
+    u => no_route_plan(book, entry, old, no_plan_schema_ready(book, name, schema)), u => old)

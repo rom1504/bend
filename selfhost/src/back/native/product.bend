@@ -93,7 +93,7 @@ def nq_info(+target: NC_Target, +name: String) -> KDef:
 def nq_call_result(+name: String, +words: List<&2, String>, +n: U32, +target: NC_Target) -> NC_Code:
   +shape = nq_signature(target, name)
   +base = "nq_result_" ++ U32.show(n)
-  nq_note_call(nc_prepend("Term " ++ base ++ "[" ++ U32.show(nq_width(shape)) ++ "];\nif (!" ++ nf_name(name) ++ "(e, seq, " ++ base ++ nf_arg_c(words) ++ ")) { return 0; }\n", nq_transfer(shape, nq_words(base, nq_width(shape), 0), U32.inc(n), target)), name)
+  nq_note_call(nc_prepend("Term " ++ base ++ "[" ++ U32.show(nq_width(shape)) ++ "];\nif (!" ++ nf_name(name) ++ "(e, seq, " ++ base ++ nf_arg_c(words) ++ ")) { return 0; }\n" ++ nt_choose(String, String.eq(tg(shape), "NQShape"), u => nh_cast_words(nm(shape), nq_words(base, nq_width(shape), 0), 0), u => ""), nq_transfer(shape, nq_words(base, nq_width(shape), 0), U32.inc(n), target)), name)
 
 # A virtual bundle has already evaluated fields, each represented by a Var.
 # A single-use substitution keeps the existing scalar ownership environment.
@@ -385,7 +385,7 @@ def nq_candidate_mode(+book: List<&2, KDef>, +name: String, +signatures: List<&2
       +code = nt_choose(NC_Code, nt_choose(Bool, checked, u => True{}, u => nq_entry_demand(body, ks(dv(info)), nd_entry_args(nd_entry_params(da(info), 0)), 0)),
         u => nc_lower_to(book, nd_reapply(body, args), params, fresh, NC_Destination{nq_words("nf_out", nq_width(shape), 0), shape, "", route, params, True{}, signatures}),
         u => nc_fail("flat product: parameter may be dropped before matching", fresh))
-      NF_Worker{route, nf_typed_params(params, nf_expand_kinds(ks(dv(info)), nf_worker_kinds(book, name, da(info)))), code, nc_calls(code), shape}
+      NF_Worker{route, nf_typed_params(params, nf_expand_kinds(ks(dv(info)), nf_worker_kinds(book, name, da(info)))), nc_prepend(nh_param_facts(args, params), code), nc_calls(code), shape}
 
 # Every flattened parameter must reach exactly one source use per prefix path.
 # All symbolic actuals below are already evaluated values, so beta substitution

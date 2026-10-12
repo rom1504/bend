@@ -259,4 +259,4 @@ def ns_compile(+book: List<&2, KDef>, +runtime: String, +requests: String, +obse
   +source = ns_source(book)
   +names = nc_live_names(source, ["main"], Nil{})
   +prepared = ns_prepare(source, names)
-  nc_finish(prepared, runtime, requests, nc_compile_defs(prepared, ["main"], Nil{}, 0, nc_bangs_names(prepared, names)), observers)
+  nc_finish(prepared, nh_macros(prepared, names, observers) ++ runtime, requests, nc_compile_defs(prepared, ["main"], Nil{}, 0, nc_bangs_names(prepared, names)), observers)

@@ -418,7 +418,7 @@ def nc_field_apps(+term: KTerm, +count: U32, +i: U32, +n: U32) -> KTerm:
 @unsafe
 def nc_field_decls(+name: String, +word: String, +count: U32, +i: U32, +n: U32, +boxed: Bool) -> String:
   nt_choose(String, U32.is_eq(i, count), u => "", u =>
-    "Term v_" ++ U32.show(nc_id(U32.add(n, i))) ++ " = " ++ nt_choose(String, boxed, u => "fields[" ++ U32.show(i) ++ "]", u => nc_field_word(name, word, i)) ++ ";\n" ++ nc_field_decls(name, word, count, U32.inc(i), n, boxed))
+    nh_field_type(name, i) ++ "v_" ++ U32.show(nc_id(U32.add(n, i))) ++ " = " ++ nt_choose(String, boxed, u => "fields[" ++ U32.show(i) ++ "]", u => nc_field_word(name, word, i)) ++ ";\n" ++ nc_field_decls(name, word, count, U32.inc(i), n, boxed))
 
 @unsafe
 def nc_destructure(+name: String, +word: String, +count: U32, +n: U32) -> String:

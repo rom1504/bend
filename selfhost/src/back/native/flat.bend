@@ -170,7 +170,7 @@ def nf_ref(+book: List<&2, KDef>, +t: KTerm, +n: U32, +target: NC_Target) -> NC_
 @unsafe
 def nf_candidate(+book: List<&2, KDef>, +name: String, +signatures: List<&2, KDef>) -> NF_Worker:
   +params = nd_entry_params(nd_arity(book, name), 0)
-  +body = nc_compact(nc_definition(book, lookup(book, name), 0))
+  +body = nc_compact_definition(book, lookup(book, name), 0)
   +shape = atom("Absent")
   +code = nc_lower_to(book, nd_reapply(body, nd_entry_args(params)), params, nt_count(NC_Binding, params), NC_Destination{nq_words("nf_out", nq_width(shape), 0), shape, "", name, params, True{}, signatures})
   NF_Worker{name, nf_typed_params(params, nf_worker_kinds(book, name, nt_count(NC_Binding, params))), code, nc_calls(code), shape}

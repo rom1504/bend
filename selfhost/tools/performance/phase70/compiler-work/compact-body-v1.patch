@@ -1,0 +1,46 @@
+--- a/selfhost/src/back/native/book.bend
++++ b/selfhost/src/back/native/book.bend
+@@ -70,6 +70,12 @@
+ def nc_definition(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
+   +fact = ns_body(book, dn(d))
+   nt_choose(KTerm, String.eq(dk(fact), "NativeStaticBody"), u => dv(fact), u => nc_definition_plain(book, d, n))
++
++# Prepared static bodies already passed literal compaction in this request.
++@unsafe
++def nc_compact_definition(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
++  +fact = ns_body(book, dn(d))
++  nt_choose(KTerm, String.eq(dk(fact), "NativeStaticBody"), u => dv(fact), u => nc_compact(nc_definition_plain(book, d, n)))
+ 
+ @unsafe
+ def nc_definition_plain(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
+@@ -129,7 +135,7 @@
+ @unsafe
+ def nc_compile_def(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +n: U32, +bangs: List<&2, String>) -> NC_Book:
+   +d = lookup(book, name)
+-  +body = nc_compact(nc_definition(book, d, n))
++  +body = nc_compact_definition(book, d, n)
+   +refs = nc_refs(body)
+   +calls = nc_mapped_refs(book, refs)
+   +forked = nc_term_fork(body)
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -170,7 +170,7 @@
+ @unsafe
+ def nf_candidate(+book: List<&2, KDef>, +name: String, +signatures: List<&2, KDef>) -> NF_Worker:
+   +params = nd_entry_params(nd_arity(book, name), 0)
+-  +body = nc_compact(nc_definition(book, lookup(book, name), 0))
++  +body = nc_compact_definition(book, lookup(book, name), 0)
+   +shape = atom("Absent")
+   +code = nc_lower_to(book, nd_reapply(body, nd_entry_args(params)), params, nt_count(NC_Binding, params), NC_Destination{nq_words("nf_out", nq_width(shape), 0), shape, "", name, params, True{}, signatures})
+   NF_Worker{name, nf_typed_params(params, nf_worker_kinds(book, name, nt_count(NC_Binding, params))), code, nc_calls(code), shape}
+--- a/selfhost/src/back/native/product.bend
++++ b/selfhost/src/back/native/product.bend
+@@ -366,7 +366,7 @@
+   match entry:
+     case NQ_Entry{+params, +args, +fresh}:
+       +info = lookup(signatures, name)
+-      +body = nc_compact(nc_definition(book, lookup(book, name), fresh))
++      +body = nc_compact_definition(book, lookup(book, name), fresh)
+       +route = nm(dv(info))
+       +shape = dt(info)
+       +code = nt_choose(NC_Code, nq_entry_demand(body, ks(dv(info)), nd_entry_args(nd_entry_params(da(info), 0)), 0),

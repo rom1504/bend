@@ -71,6 +71,12 @@ def nc_definition(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
   +fact = ns_body(book, dn(d))
   nt_choose(KTerm, String.eq(dk(fact), "NativeStaticBody"), u => dv(fact), u => nc_definition_plain(book, d, n))
 
+# Prepared static bodies already passed literal compaction in this request.
+@unsafe
+def nc_compact_definition(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
+  +fact = ns_body(book, dn(d))
+  nt_choose(KTerm, String.eq(dk(fact), "NativeStaticBody"), u => dv(fact), u => nc_compact(nc_definition_plain(book, d, n)))
+
 @unsafe
 def nc_definition_plain(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
   +prim = nc_primitive_name(dn(d))
@@ -129,7 +135,7 @@ def nc_append_book(+code: NC_Code, name: String, calls: List<&2, String>, forked
 @unsafe
 def nc_compile_def(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +n: U32, +bangs: List<&2, String>) -> NC_Book:
   +d = lookup(book, name)
-  +body = nc_compact(nc_definition(book, d, n))
+  +body = nc_compact_definition(book, d, n)
   +refs = nc_refs(body)
   +calls = nc_mapped_refs(book, refs)
   +forked = nc_term_fork(body)

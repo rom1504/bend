@@ -1,0 +1,23 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/prepare-b1-pair.py",
+    "sha256": "6ff04e6cb3061d43f830310754cf448e412ce799e324d9ddcdec9a91d0075b82",
+    "bytes": 6138
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/prepare-b1-pair-v2.py",
+    "sha256": "68831844e932c7ff077195de391adf04ba210ece196f57acc23eb5d776f730ed",
+    "bytes": 6245
+  },
+  "edits": [
+    {
+      "before": "        assert value == expected, path",
+      "after": "        assert value['sha256'] == expected['sha256'], path\n        assert 'bytes' not in expected or value['bytes'] == expected['bytes'], path"
+    },
+    {
+      "before": "self pin prepare-b1-pair.py",
+      "after": "self pin prepare-b1-pair-v2.py"
+    }
+  ],
+  "reason": "Source-only preparation probe found checked API records carry extra provenance fields. Verify full byte identity as inherited preparers do, preserving extra metadata in attempt pin. No targets ran."
+}

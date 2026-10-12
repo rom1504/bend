@@ -1,0 +1,178 @@
+{
+  "kind": "phase70-selected-c-entry-methods",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/upgrade-profile-entry.py",
+    "sha256": "27e9c9b72fcaf1976271dc5637e805fb47262e9d5be3e25151486097250c8d12",
+    "bytes": 4735
+  },
+  "parentManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/methods01/methods.json",
+    "sha256": "a4bcf5e95c23a576a777d532951da8a07cbecf1b2249e3d1ba1044aec0cc9ece",
+    "bytes": 17539
+  },
+  "methods": [
+    {
+      "kind": "phase70-selected-c-entry-method-derivation",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/worker.mjs",
+        "sha256": "496c2633d29a6e0278ff00db92620eef77d5915d6b1f7720d4b83e4b7a68170a",
+        "bytes": 7513
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/compilation/worker.mjs",
+        "sha256": "30307182755b85f5fdfcc6f7751787cbc0d0c3054c0a54b979d8136efc7546dd",
+        "bytes": 7598
+      },
+      "edits": [
+        {
+          "before": "'nc_foreign_scope','kf_source','nc_foreign_source','nc_compile'];",
+          "after": "'nc_foreign_scope','kf_source','nc_foreign_source','nc_compile','nc_compile_checked'];",
+          "count": 1
+        },
+        {
+          "before": "'nc_annotated_context','nc_foreign_paths','nc_compile'])assert(report.stages[name]?.calls>0",
+          "after": "'nc_annotated_context','nc_foreign_paths',typeof api.nc_compile_checked==='function'?'nc_compile_checked':'nc_compile'])assert(report.stages[name]?.calls>0",
+          "count": 1
+        }
+      ],
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/upgrade-profile-entry.py",
+        "sha256": "27e9c9b72fcaf1976271dc5637e805fb47262e9d5be3e25151486097250c8d12",
+        "bytes": 4735
+      },
+      "targetsExecuted": false,
+      "scope": "Source-preflight correction: selected driver invokes nc_compile_checked. Observe and require that exported entry when available; preserve nc_compile fallback. Other semantic oracles, source output, profiler sampling and resource guards unchanged."
+    },
+    {
+      "kind": "phase70-selected-c-entry-method-derivation",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/run.py",
+        "sha256": "cc5e8b7587aea619d321e0e37291940b49563e74246858d23b0c21dd36a51135",
+        "bytes": 2175
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/compilation/run.py",
+        "sha256": "6f07ca8e6633a4a01ae732bf460dfe12cb6107398aaad72bbd06435bd2a8b97f",
+        "bytes": 2201
+      },
+      "edits": [
+        {
+          "before": "ROOT = HERE.parents[4]",
+          "after": "ROOT = Path('/home/ai/bend2/build/publish/bend')",
+          "count": 1
+        }
+      ],
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/upgrade-profile-entry.py",
+        "sha256": "27e9c9b72fcaf1976271dc5637e805fb47262e9d5be3e25151486097250c8d12",
+        "bytes": 4735
+      },
+      "targetsExecuted": false,
+      "scope": "Source-preflight correction: selected driver invokes nc_compile_checked. Observe and require that exported entry when available; preserve nc_compile fallback. Other semantic oracles, source output, profiler sampling and resource guards unchanged."
+    },
+    {
+      "kind": "phase70-selected-c-entry-method-derivation",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/analyze.py",
+        "sha256": "10d5b0cb3164184fdb7040d7024a8db09cf3ce8b0d4520704884668b22d5588f",
+        "bytes": 5857
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/compilation/analyze.py",
+        "sha256": "a5af3966d0c4ca8518d4c34e6d78512a09e55bd9c750ae506424ca59890ed08a",
+        "bytes": 5883
+      },
+      "edits": [
+        {
+          "before": "ROOT = HERE.parents[4]",
+          "after": "ROOT = Path('/home/ai/bend2/build/publish/bend')",
+          "count": 1
+        }
+      ],
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/upgrade-profile-entry.py",
+        "sha256": "27e9c9b72fcaf1976271dc5637e805fb47262e9d5be3e25151486097250c8d12",
+        "bytes": 4735
+      },
+      "targetsExecuted": false,
+      "scope": "Source-preflight correction: selected driver invokes nc_compile_checked. Observe and require that exported entry when available; preserve nc_compile fallback. Other semantic oracles, source output, profiler sampling and resource guards unchanged."
+    },
+    {
+      "kind": "phase70-selected-c-entry-method-derivation",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/methods01/prepare-compilation.py",
+        "sha256": "a6869e680cfd559f106b4d572ea0da09e85b2035d095a3fbf4abea5e34cf9b08",
+        "bytes": 10559
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/prepare-compilation-v2.py",
+        "sha256": "9552d5f9bf87acdfeda658742df1113d55f3fb823de40a8e8847a9e1e10a3143",
+        "bytes": 10614
+      },
+      "edits": [
+        {
+          "before": "HERE = Path('/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation')",
+          "after": "HERE = Path('/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/compilation')",
+          "count": 1
+        },
+        {
+          "before": "pin(HERE/'prepare-selected-v1.py')",
+          "after": "pin(ROOT/'selfhost/tools/performance/phase68/compilation/prepare-selected-v1.py')",
+          "count": 1
+        }
+      ],
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/upgrade-profile-entry.py",
+        "sha256": "27e9c9b72fcaf1976271dc5637e805fb47262e9d5be3e25151486097250c8d12",
+        "bytes": 4735
+      },
+      "targetsExecuted": false,
+      "scope": "Source-preflight correction: selected driver invokes nc_compile_checked. Observe and require that exported entry when available; preserve nc_compile fallback. Other semantic oracles, source output, profiler sampling and resource guards unchanged."
+    },
+    {
+      "kind": "phase70-selected-c-entry-method-derivation",
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/prepare-compilation-v2.py",
+        "sha256": "9552d5f9bf87acdfeda658742df1113d55f3fb823de40a8e8847a9e1e10a3143",
+        "bytes": 10614
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/prepare-profiles-only-v2.py",
+        "sha256": "cab043aa936092aece55a9cf48f33328465e32bcba1d51970743ad74106611a9",
+        "bytes": 10685
+      },
+      "edits": [
+        {
+          "before": "\"\"\"Freeze selected B1/B2 and explicitly owned prior exact-C oracles; data only.\"\"\"",
+          "after": "\"\"\"Prepare two Base jobs and four diagnostic profile jobs only; no targets.\"\"\"",
+          "count": 1
+        },
+        {
+          "before": "for round_ in range(args.rounds):",
+          "after": "for round_ in range(0):",
+          "count": 1
+        },
+        {
+          "before": "scope='Fresh processes and mandatory prepared Bend Base.",
+          "after": "scope='Diagnostic-only plan: two Base preparations and four profiles; no clean timing jobs. Fresh processes and mandatory prepared Bend Base.",
+          "count": 1
+        }
+      ],
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/upgrade-profile-entry.py",
+        "sha256": "27e9c9b72fcaf1976271dc5637e805fb47262e9d5be3e25151486097250c8d12",
+        "bytes": 4735
+      },
+      "targetsExecuted": false,
+      "scope": "Source-preflight correction: selected driver invokes nc_compile_checked. Observe and require that exported entry when available; preserve nc_compile fallback. Other semantic oracles, source output, profiler sampling and resource guards unchanged."
+    }
+  ],
+  "originalPlanRetained": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/compiler69-profile01/plan.json",
+    "sha256": "b7f5f8f4105c43f36f4d3d35742eae9842c2cba93dec35c2e83a4f1adb9deb9d",
+    "bytes": 137935
+  },
+  "finding": "The inherited worker required a call to nc_compile; sealed69 driver selects nc_compile_checked instead. Found by source inspection before any original-plan target execution.",
+  "originalPlanExecuted": false,
+  "targetsExecuted": false
+}

@@ -1,0 +1,37 @@
+{
+  "kind": "phase70-profiles-only-method-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/methods01/prepare-compilation.py",
+    "sha256": "a6869e680cfd559f106b4d572ea0da09e85b2035d095a3fbf4abea5e34cf9b08",
+    "bytes": 10559
+  },
+  "parentDerivation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/methods01/prepare-compilation.derivation.json",
+    "sha256": "dd0f0e95a271d7db2476b469be054779e0492baf47e8f554cc8e5bf355e7fc5d",
+    "bytes": 1047
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/prepare-profiles-only.py",
+    "sha256": "8ca85b307b6887a6903864b32c8abc08e28a34e9c5fb5088dc8e3fbce9bd0284",
+    "bytes": 10630
+  },
+  "edits": [
+    {
+      "before": "\"\"\"Freeze selected B1/B2 and explicitly owned prior exact-C oracles; data only.\"\"\"",
+      "after": "\"\"\"Prepare two Base jobs and four diagnostic profile jobs only; no targets.\"\"\"",
+      "count": 1
+    },
+    {
+      "before": "for round_ in range(args.rounds):",
+      "after": "for round_ in range(0):",
+      "count": 1
+    },
+    {
+      "before": "scope='Fresh processes and mandatory prepared Bend Base.",
+      "after": "scope='Diagnostic-only plan: two Base preparations and four profiles; no clean timing jobs. Fresh processes and mandatory prepared Bend Base.",
+      "count": 1
+    }
+  ],
+  "targetsExecuted": false,
+  "scope": "Omit only construction of clean timing jobs. All input checks, private source copies, profiling worker, Base preparation and resource gates unchanged. Use the unmodified parent for a later balanced clean comparison."
+}

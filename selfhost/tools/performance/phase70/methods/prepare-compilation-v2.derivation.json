@@ -1,0 +1,32 @@
+{
+  "kind": "phase70-selected-c-entry-method-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase70/methods01/prepare-compilation.py",
+    "sha256": "a6869e680cfd559f106b4d572ea0da09e85b2035d095a3fbf4abea5e34cf9b08",
+    "bytes": 10559
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/prepare-compilation-v2.py",
+    "sha256": "9552d5f9bf87acdfeda658742df1113d55f3fb823de40a8e8847a9e1e10a3143",
+    "bytes": 10614
+  },
+  "edits": [
+    {
+      "before": "HERE = Path('/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation')",
+      "after": "HERE = Path('/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/compilation')",
+      "count": 1
+    },
+    {
+      "before": "pin(HERE/'prepare-selected-v1.py')",
+      "after": "pin(ROOT/'selfhost/tools/performance/phase68/compilation/prepare-selected-v1.py')",
+      "count": 1
+    }
+  ],
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/upgrade-profile-entry.py",
+    "sha256": "27e9c9b72fcaf1976271dc5637e805fb47262e9d5be3e25151486097250c8d12",
+    "bytes": 4735
+  },
+  "targetsExecuted": false,
+  "scope": "Source-preflight correction: selected driver invokes nc_compile_checked. Observe and require that exported entry when available; preserve nc_compile fallback. Other semantic oracles, source output, profiler sampling and resource guards unchanged."
+}

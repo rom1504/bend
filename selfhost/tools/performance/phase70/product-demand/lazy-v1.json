@@ -1,0 +1,21 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/product.bend",
+    "sha256": "f00ce794338837096f1fc8d66a713efbb12227651ddba90d98edb6569a562e57",
+    "bytes": 24945
+  },
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/product-demand/lazy-v1.patch",
+    "sha256": "dcb53db4285e7b1359aabfb711370849ab91c9034610556a688854d1212061f7",
+    "bytes": 1114
+  },
+  "candidateSha256": "8d4fde9446d0253bc14273bb2b898a385cfbc935311ac557f1f728816cc5204a",
+  "edits": [
+    {
+      "before": "  nt_choose(NC_Code, String.eq(tg(shape), \"NQShape\") && U32.is_eq(nq_uses(body, id), 1) && U32.is_eq(nq_min_uses(body, id), 1), u => nq_bind(book, value, body, env, id, n, target, shape), u => nf_bind_boxed(book, value, body, env, id, n, target))",
+      "after": "  nt_choose(NC_Code, String.eq(tg(shape), \"NQShape\"),\n    u => nt_choose(NC_Code, U32.is_eq(nq_uses(body, id), 1),\n      v => nt_choose(NC_Code, U32.is_eq(nq_min_uses(body, id), 1), w => nq_bind(book, value, body, env, id, n, target, shape), w => nf_bind_boxed(book, value, body, env, id, n, target)),\n      v => nf_bind_boxed(book, value, body, env, id, n, target)),\n    u => nf_bind_boxed(book, value, body, env, id, n, target))"
+    }
+  ],
+  "sourceOnly": true,
+  "expected": "Exact identical C on all terminating inputs; eager Bool.and is replaced by explicit branch thunks only for pure product-use queries."
+}

@@ -1,0 +1,905 @@
+{
+  "kind": "source-lane-profile-reduction",
+  "dataOnly": true,
+  "targetExecuted": false,
+  "scope": "V8 sampled stack unions; not calls or clean wall times. Inclusive rows and contexts overlap. Missing/inlined frames can underestimate functions.",
+  "profiles": [
+    {
+      "job": "profile-numeric-b2",
+      "profile": {
+        "file": "selfhost/build/phase70/compiler69-profile02/runs/profile-numeric-b2/request.cpuprofile",
+        "sha256": "797c234fa4b1c4fc89272f015f62b55255cf07af28f98fafef1ca71e05da4f17",
+        "bytes": 18002209
+      },
+      "sampledMs": 1706.586,
+      "inclusive": [
+        {
+          "name": "ns_compile",
+          "sampledMs": 468.653,
+          "alsoUnder": {
+            "nc_compile_checked": 468.653,
+            "ns_compile": 468.653,
+            "ns_defs": 50.115,
+            "nc_compile_def": 88.005,
+            "nf_finish_show": 309.651,
+            "nf_candidate": 126.882,
+            "nq_candidate": 6.231,
+            "nf_finish_retry": 137.607,
+            "nf_retry": 19.495
+          }
+        },
+        {
+          "name": "nf_finish_retry",
+          "sampledMs": 137.607,
+          "alsoUnder": {
+            "nc_compile_checked": 137.607,
+            "ns_compile": 137.607,
+            "nf_finish_retry": 137.607,
+            "nf_finish_show": 137.607,
+            "nf_candidate": 19.495,
+            "nf_retry": 19.495
+          }
+        },
+        {
+          "name": "nc_erase",
+          "sampledMs": 132.634,
+          "alsoUnder": {
+            "nc_foreign_paths": 20.321,
+            "nc_compile_checked": 65.405,
+            "ns_compile": 29.777,
+            "ns_defs": 24.031
+          }
+        },
+        {
+          "name": "nc_erase_annotated$scc",
+          "sampledMs": 132.363,
+          "alsoUnder": {
+            "nc_foreign_paths": 20.05,
+            "nc_compile_checked": 65.405,
+            "ns_compile": 29.777,
+            "ns_defs": 24.031
+          }
+        },
+        {
+          "name": "nf_candidate",
+          "sampledMs": 126.882,
+          "alsoUnder": {
+            "nc_compile_checked": 126.882,
+            "ns_compile": 126.882,
+            "nf_candidate": 126.882,
+            "nf_finish_show": 126.882,
+            "nf_retry": 19.495,
+            "nf_finish_retry": 19.495
+          }
+        },
+        {
+          "name": "nc_compile_def",
+          "sampledMs": 93.32,
+          "alsoUnder": {
+            "nc_compile_checked": 88.005,
+            "ns_compile": 88.005,
+            "nc_compile_def": 93.32
+          }
+        },
+        {
+          "name": "nc_definition_plain",
+          "sampledMs": 91.194,
+          "alsoUnder": {
+            "nc_foreign_paths": 21.092,
+            "nc_compile_checked": 62.987,
+            "ns_compile": 40.334,
+            "ns_defs": 24.031,
+            "nc_compile_def": 1.012,
+            "nf_finish_show": 9.545
+          }
+        },
+        {
+          "name": "nc_live_names",
+          "sampledMs": 79.3,
+          "alsoUnder": {
+            "nc_foreign_paths": 26.591,
+            "nc_compile_checked": 42.43,
+            "ns_compile": 17.67,
+            "nf_finish_show": 9.821
+          }
+        },
+        {
+          "name": "nc_definition",
+          "sampledMs": 71.396,
+          "alsoUnder": {
+            "nc_foreign_paths": 21.092,
+            "nc_compile_checked": 42.157,
+            "ns_compile": 18.486,
+            "nc_compile_def": 2.108,
+            "nf_finish_show": 9.545
+          }
+        },
+        {
+          "name": "ns_prepare",
+          "sampledMs": 55.667,
+          "alsoUnder": {
+            "nc_compile_checked": 55.667,
+            "ns_compile": 55.667,
+            "ns_defs": 50.115
+          }
+        },
+        {
+          "name": "ns_defs",
+          "sampledMs": 50.115,
+          "alsoUnder": {
+            "nc_compile_checked": 50.115,
+            "ns_compile": 50.115,
+            "ns_defs": 50.115
+          }
+        },
+        {
+          "name": "nq_signatures",
+          "sampledMs": 32.422,
+          "alsoUnder": {
+            "nc_compile_checked": 32.422,
+            "ns_compile": 32.422,
+            "nf_finish_show": 32.422
+          }
+        },
+        {
+          "name": "nc_foreign_paths",
+          "sampledMs": 26.828,
+          "alsoUnder": {
+            "nc_foreign_paths": 26.828
+          }
+        },
+        {
+          "name": "nc_refs",
+          "sampledMs": 20.865,
+          "alsoUnder": {
+            "nc_foreign_paths": 5.499,
+            "nc_compile_checked": 13.234,
+            "ns_compile": 12.145,
+            "nc_compile_def": 3.381,
+            "nf_finish_show": 8.764
+          }
+        },
+        {
+          "name": "nf_retry",
+          "sampledMs": 19.495,
+          "alsoUnder": {
+            "nc_compile_checked": 19.495,
+            "ns_compile": 19.495,
+            "nf_candidate": 19.495,
+            "nf_retry": 19.495,
+            "nf_finish_retry": 19.495,
+            "nf_finish_show": 19.495
+          }
+        },
+        {
+          "name": "nc_compact",
+          "sampledMs": 17.138,
+          "alsoUnder": {
+            "nc_compile_checked": 14.609,
+            "ns_compile": 14.609,
+            "ns_defs": 9.572,
+            "nc_compile_def": 1.083,
+            "nf_candidate": 5.037,
+            "nf_finish_show": 5.037
+          }
+        },
+        {
+          "name": "nc_compact_list",
+          "sampledMs": 15.934,
+          "alsoUnder": {
+            "nc_compile_checked": 13.405,
+            "ns_compile": 13.405,
+            "ns_defs": 9.558,
+            "nc_compile_def": 1.083,
+            "nf_candidate": 3.847,
+            "nf_finish_show": 3.847
+          }
+        },
+        {
+          "name": "nc_bangs_names",
+          "sampledMs": 15.237,
+          "alsoUnder": {
+            "nc_compile_checked": 15.237,
+            "ns_compile": 15.237,
+            "nf_finish_show": 11.837
+          }
+        },
+        {
+          "name": "nq_candidate",
+          "sampledMs": 6.231,
+          "alsoUnder": {
+            "nc_compile_checked": 6.231,
+            "ns_compile": 6.231,
+            "nq_candidate": 6.231,
+            "nf_finish_show": 6.231
+          }
+        },
+        {
+          "name": "nf_worker_kinds",
+          "sampledMs": 3.426,
+          "alsoUnder": {
+            "nc_compile_checked": 3.426,
+            "ns_compile": 3.426,
+            "nf_candidate": 3.426,
+            "nf_finish_show": 3.426
+          }
+        },
+        {
+          "name": "nc_term_fork",
+          "sampledMs": 2.737,
+          "alsoUnder": {
+            "nc_compile_checked": 2.737,
+            "ns_compile": 2.737,
+            "nc_compile_def": 2.737
+          }
+        },
+        {
+          "name": "nf_admit",
+          "sampledMs": 1.075,
+          "alsoUnder": {
+            "nc_compile_checked": 1.075,
+            "ns_compile": 1.075,
+            "nf_finish_show": 1.075
+          }
+        },
+        {
+          "name": "nf_admit_pass",
+          "sampledMs": 1.075,
+          "alsoUnder": {
+            "nc_compile_checked": 1.075,
+            "ns_compile": 1.075,
+            "nf_finish_show": 1.075
+          }
+        }
+      ]
+    },
+    {
+      "job": "profile-array-b2",
+      "profile": {
+        "file": "selfhost/build/phase70/compiler69-profile02/runs/profile-array-b2/request.cpuprofile",
+        "sha256": "43a30aaa0d292f7c6e4b36a6ea536cebf0bb2c2cef138ab5c8a3ca38d2777fa2",
+        "bytes": 17723257
+      },
+      "sampledMs": 1746.016,
+      "inclusive": [
+        {
+          "name": "ns_compile",
+          "sampledMs": 473.179,
+          "alsoUnder": {
+            "nc_compile_checked": 472.332,
+            "ns_compile": 473.179,
+            "ns_defs": 46.712,
+            "nc_compile_def": 99.029,
+            "nf_finish_show": 307.156,
+            "nf_candidate": 112.183,
+            "nq_candidate": 8.747,
+            "nf_finish_retry": 154.831,
+            "nf_retry": 26.739
+          }
+        },
+        {
+          "name": "nf_finish_retry",
+          "sampledMs": 154.831,
+          "alsoUnder": {
+            "nc_compile_checked": 154.831,
+            "ns_compile": 154.831,
+            "nf_finish_retry": 154.831,
+            "nf_finish_show": 154.831,
+            "nf_candidate": 26.739,
+            "nf_retry": 26.739
+          }
+        },
+        {
+          "name": "nc_erase_annotated$scc",
+          "sampledMs": 129.046,
+          "alsoUnder": {
+            "nc_foreign_paths": 13.351,
+            "nc_compile_checked": 61.933,
+            "ns_compile": 30.081,
+            "ns_defs": 21.4
+          }
+        },
+        {
+          "name": "nc_erase",
+          "sampledMs": 129.046,
+          "alsoUnder": {
+            "nc_foreign_paths": 13.351,
+            "nc_compile_checked": 61.933,
+            "ns_compile": 30.081,
+            "ns_defs": 21.4
+          }
+        },
+        {
+          "name": "nf_candidate",
+          "sampledMs": 113.374,
+          "alsoUnder": {
+            "nc_compile_checked": 112.183,
+            "ns_compile": 112.183,
+            "nf_candidate": 113.374,
+            "nf_finish_show": 112.183,
+            "nf_retry": 26.739,
+            "nf_finish_retry": 26.739
+          }
+        },
+        {
+          "name": "nc_compile_def",
+          "sampledMs": 101.914,
+          "alsoUnder": {
+            "nc_compile_checked": 99.029,
+            "ns_compile": 99.029,
+            "nc_compile_def": 101.914
+          }
+        },
+        {
+          "name": "nc_definition_plain",
+          "sampledMs": 71.074,
+          "alsoUnder": {
+            "nc_foreign_paths": 14.703,
+            "nc_compile_checked": 49.505,
+            "ns_compile": 30.081,
+            "ns_defs": 21.4
+          }
+        },
+        {
+          "name": "nc_live_names",
+          "sampledMs": 66.111,
+          "alsoUnder": {
+            "nc_foreign_paths": 18.609,
+            "nc_compile_checked": 39.667,
+            "ns_compile": 19.195,
+            "nf_finish_show": 9.512
+          }
+        },
+        {
+          "name": "nc_definition",
+          "sampledMs": 52.832,
+          "alsoUnder": {
+            "nc_foreign_paths": 15.785,
+            "nc_compile_checked": 30.181,
+            "ns_compile": 10.757,
+            "nf_finish_show": 2.076
+          }
+        },
+        {
+          "name": "ns_prepare",
+          "sampledMs": 52.017,
+          "alsoUnder": {
+            "nc_compile_checked": 52.017,
+            "ns_compile": 52.017,
+            "ns_defs": 46.712
+          }
+        },
+        {
+          "name": "ns_defs",
+          "sampledMs": 46.712,
+          "alsoUnder": {
+            "nc_compile_checked": 46.712,
+            "ns_compile": 46.712,
+            "ns_defs": 46.712
+          }
+        },
+        {
+          "name": "nq_signatures",
+          "sampledMs": 43.683,
+          "alsoUnder": {
+            "nc_compile_checked": 43.683,
+            "ns_compile": 43.683,
+            "nf_finish_show": 43.683
+          }
+        },
+        {
+          "name": "nf_retry",
+          "sampledMs": 26.739,
+          "alsoUnder": {
+            "nc_compile_checked": 26.739,
+            "ns_compile": 26.739,
+            "nf_candidate": 26.739,
+            "nf_retry": 26.739,
+            "nf_finish_retry": 26.739,
+            "nf_finish_show": 26.739
+          }
+        },
+        {
+          "name": "nc_foreign_paths",
+          "sampledMs": 20.314,
+          "alsoUnder": {
+            "nc_foreign_paths": 20.314
+          }
+        },
+        {
+          "name": "nc_compact",
+          "sampledMs": 17.344,
+          "alsoUnder": {
+            "nc_compile_checked": 12.295,
+            "ns_compile": 12.295,
+            "ns_defs": 7.241,
+            "nc_compile_def": 3.329,
+            "nf_candidate": 1.725,
+            "nf_finish_show": 1.725
+          }
+        },
+        {
+          "name": "nc_compact_list",
+          "sampledMs": 17.33,
+          "alsoUnder": {
+            "nc_compile_checked": 12.281,
+            "ns_compile": 12.281,
+            "ns_defs": 7.227,
+            "nc_compile_def": 3.329,
+            "nf_candidate": 1.725,
+            "nf_finish_show": 1.725
+          }
+        },
+        {
+          "name": "nc_refs",
+          "sampledMs": 15.321,
+          "alsoUnder": {
+            "nc_foreign_paths": 2.824,
+            "nc_compile_checked": 11.528,
+            "ns_compile": 10.48,
+            "nc_compile_def": 1.022,
+            "nf_finish_show": 8.456
+          }
+        },
+        {
+          "name": "nq_candidate",
+          "sampledMs": 8.747,
+          "alsoUnder": {
+            "nc_compile_checked": 8.747,
+            "ns_compile": 8.747,
+            "nq_candidate": 8.747,
+            "nf_finish_show": 8.747
+          }
+        },
+        {
+          "name": "nc_bangs_names",
+          "sampledMs": 4.593,
+          "alsoUnder": {
+            "nc_compile_checked": 4.593,
+            "ns_compile": 4.593,
+            "nf_finish_show": 2.197
+          }
+        },
+        {
+          "name": "nf_worker_kinds",
+          "sampledMs": 3.14,
+          "alsoUnder": {
+            "nc_compile_checked": 3.14,
+            "ns_compile": 3.14,
+            "nf_candidate": 3.14,
+            "nf_finish_show": 3.14,
+            "nf_retry": 1.031,
+            "nf_finish_retry": 1.031
+          }
+        },
+        {
+          "name": "nc_term_fork",
+          "sampledMs": 2.114,
+          "alsoUnder": {
+            "nc_compile_checked": 2.114,
+            "ns_compile": 2.114,
+            "nc_compile_def": 2.114
+          }
+        },
+        {
+          "name": "nf_admit",
+          "sampledMs": 2.019,
+          "alsoUnder": {
+            "nc_compile_checked": 2.019,
+            "ns_compile": 2.019,
+            "nf_finish_show": 2.019,
+            "nf_finish_retry": 1.078
+          }
+        },
+        {
+          "name": "nf_admit_pass",
+          "sampledMs": 2.019,
+          "alsoUnder": {
+            "nc_compile_checked": 2.019,
+            "ns_compile": 2.019,
+            "nf_finish_show": 2.019,
+            "nf_finish_retry": 1.078
+          }
+        }
+      ]
+    },
+    {
+      "job": "profile-lexer-b2",
+      "profile": {
+        "file": "selfhost/build/phase70/compiler69-profile02/runs/profile-lexer-b2/request.cpuprofile",
+        "sha256": "dd3f377eedf8a5d53144fd894bf47ef2a4aca638b079419d3cf34291cc5a0515",
+        "bytes": 19352708
+      },
+      "sampledMs": 2206.252,
+      "inclusive": [
+        {
+          "name": "ns_compile",
+          "sampledMs": 626.523,
+          "alsoUnder": {
+            "nc_compile_checked": 626.523,
+            "ns_compile": 626.523,
+            "ns_defs": 57.032,
+            "nc_compile_def": 133.994,
+            "nf_finish_show": 402.386,
+            "nf_candidate": 173.453,
+            "nq_candidate": 11.752,
+            "nf_finish_retry": 210.341,
+            "nf_retry": 61.816
+          }
+        },
+        {
+          "name": "nf_finish_retry",
+          "sampledMs": 210.341,
+          "alsoUnder": {
+            "nc_compile_checked": 210.341,
+            "ns_compile": 210.341,
+            "nf_finish_retry": 210.341,
+            "nf_finish_show": 210.341,
+            "nf_candidate": 59.828,
+            "nf_retry": 61.816
+          }
+        },
+        {
+          "name": "nf_candidate",
+          "sampledMs": 173.453,
+          "alsoUnder": {
+            "nc_compile_checked": 173.453,
+            "ns_compile": 173.453,
+            "nf_candidate": 173.453,
+            "nf_finish_show": 173.453,
+            "nf_retry": 59.828,
+            "nf_finish_retry": 59.828
+          }
+        },
+        {
+          "name": "nc_compile_def",
+          "sampledMs": 152.714,
+          "alsoUnder": {
+            "nc_compile_checked": 133.994,
+            "ns_compile": 133.994,
+            "nc_compile_def": 152.714
+          }
+        },
+        {
+          "name": "nc_erase",
+          "sampledMs": 148.657,
+          "alsoUnder": {
+            "nc_foreign_paths": 34.319,
+            "nc_compile_checked": 72.629,
+            "ns_compile": 36.527,
+            "ns_defs": 28.846
+          }
+        },
+        {
+          "name": "nc_definition_plain",
+          "sampledMs": 147.155,
+          "alsoUnder": {
+            "nc_foreign_paths": 48.915,
+            "nc_compile_checked": 72.967,
+            "ns_compile": 47.336,
+            "ns_defs": 28.846,
+            "nf_finish_show": 9.085
+          }
+        },
+        {
+          "name": "nc_erase_annotated$scc",
+          "sampledMs": 135.247,
+          "alsoUnder": {
+            "nc_foreign_paths": 34.319,
+            "nc_compile_checked": 59.219,
+            "ns_compile": 23.117,
+            "ns_defs": 15.436
+          }
+        },
+        {
+          "name": "nc_live_names",
+          "sampledMs": 131.589,
+          "alsoUnder": {
+            "nc_foreign_paths": 52.829,
+            "nc_compile_checked": 51.537,
+            "ns_compile": 22.685,
+            "nf_finish_show": 10.127
+          }
+        },
+        {
+          "name": "nc_definition",
+          "sampledMs": 121.456,
+          "alsoUnder": {
+            "nc_foreign_paths": 50.07,
+            "nc_compile_checked": 46.325,
+            "ns_compile": 20.694,
+            "nf_finish_show": 10.225
+          }
+        },
+        {
+          "name": "ns_prepare",
+          "sampledMs": 67.455,
+          "alsoUnder": {
+            "nc_compile_checked": 67.455,
+            "ns_compile": 67.455,
+            "ns_defs": 57.032
+          }
+        },
+        {
+          "name": "nf_retry",
+          "sampledMs": 61.816,
+          "alsoUnder": {
+            "nc_compile_checked": 61.816,
+            "ns_compile": 61.816,
+            "nf_candidate": 59.828,
+            "nf_retry": 61.816,
+            "nf_finish_retry": 61.816,
+            "nf_finish_show": 61.816
+          }
+        },
+        {
+          "name": "ns_defs",
+          "sampledMs": 57.032,
+          "alsoUnder": {
+            "nc_compile_checked": 57.032,
+            "ns_compile": 57.032,
+            "ns_defs": 57.032
+          }
+        },
+        {
+          "name": "nc_foreign_paths",
+          "sampledMs": 53.883,
+          "alsoUnder": {
+            "nc_foreign_paths": 53.883
+          }
+        },
+        {
+          "name": "nq_signatures",
+          "sampledMs": 44.554,
+          "alsoUnder": {
+            "nc_compile_checked": 44.554,
+            "ns_compile": 44.554,
+            "nf_finish_show": 44.554
+          }
+        },
+        {
+          "name": "nc_compact",
+          "sampledMs": 20.308,
+          "alsoUnder": {
+            "nc_compile_checked": 17.79,
+            "ns_compile": 17.79,
+            "ns_defs": 13.363,
+            "nc_compile_def": 1.089,
+            "nf_candidate": 4.427,
+            "nf_finish_show": 4.427
+          }
+        },
+        {
+          "name": "nc_compact_list",
+          "sampledMs": 19.243,
+          "alsoUnder": {
+            "nc_compile_checked": 16.725,
+            "ns_compile": 16.725,
+            "ns_defs": 12.298,
+            "nc_compile_def": 1.089,
+            "nf_candidate": 4.427,
+            "nf_finish_show": 4.427
+          }
+        },
+        {
+          "name": "nc_refs",
+          "sampledMs": 18.972,
+          "alsoUnder": {
+            "nc_foreign_paths": 2.759,
+            "nc_compile_checked": 15.161,
+            "ns_compile": 11.94,
+            "nc_compile_def": 8.809,
+            "nf_finish_show": 1.042
+          }
+        },
+        {
+          "name": "nq_candidate",
+          "sampledMs": 11.752,
+          "alsoUnder": {
+            "nc_compile_checked": 11.752,
+            "ns_compile": 11.752,
+            "nq_candidate": 11.752,
+            "nf_finish_show": 11.752
+          }
+        },
+        {
+          "name": "nc_bangs_names",
+          "sampledMs": 6.662,
+          "alsoUnder": {
+            "nc_compile_checked": 6.662,
+            "ns_compile": 6.662,
+            "nf_finish_show": 3.244
+          }
+        },
+        {
+          "name": "nf_worker_kinds",
+          "sampledMs": 4.841,
+          "alsoUnder": {
+            "nc_compile_checked": 4.841,
+            "ns_compile": 4.841,
+            "nf_candidate": 3.811,
+            "nf_finish_show": 4.841,
+            "nq_candidate": 1.03,
+            "nf_retry": 1.747,
+            "nf_finish_retry": 1.747
+          }
+        },
+        {
+          "name": "nc_term_fork",
+          "sampledMs": 2.95,
+          "alsoUnder": {
+            "nc_compile_checked": 2.95,
+            "ns_compile": 2.95,
+            "nc_compile_def": 2.95
+          }
+        },
+        {
+          "name": "nf_admit",
+          "sampledMs": 1.053,
+          "alsoUnder": {
+            "nc_compile_checked": 1.053,
+            "ns_compile": 1.053,
+            "nf_finish_show": 1.053
+          }
+        },
+        {
+          "name": "nf_admit_pass",
+          "sampledMs": 1.053,
+          "alsoUnder": {
+            "nc_compile_checked": 1.053,
+            "ns_compile": 1.053,
+            "nf_finish_show": 1.053
+          }
+        },
+        {
+          "name": "nq_entry_demand",
+          "sampledMs": 0.793,
+          "alsoUnder": {
+            "nc_compile_checked": 0.793,
+            "ns_compile": 0.793,
+            "nq_candidate": 0.793,
+            "nf_finish_show": 0.793
+          }
+        }
+      ]
+    },
+    {
+      "job": "profile-numeric-b1",
+      "profile": {
+        "file": "selfhost/build/phase70/compiler69-profile02/runs/profile-numeric-b1/request.cpuprofile",
+        "sha256": "9c1304583b99ee191a6d199d991c677c481de86e1a751ade7ba7443a4030f5e4",
+        "bytes": 30797532
+      },
+      "sampledMs": 2548.513,
+      "inclusive": [
+        {
+          "name": "ns_compile",
+          "sampledMs": 244.21,
+          "alsoUnder": {
+            "ns_compile": 244.21,
+            "nc_compile_def": 142.527
+          }
+        },
+        {
+          "name": "nf_candidate",
+          "sampledMs": 222.044,
+          "alsoUnder": {
+            "nf_candidate": 222.044,
+            "nf_finish_show": 212.478,
+            "nf_retry": 24.254,
+            "nf_finish_retry": 24.254
+          }
+        },
+        {
+          "name": "nc_compile_def",
+          "sampledMs": 155.795,
+          "alsoUnder": {
+            "ns_compile": 142.527,
+            "nc_compile_def": 155.795
+          }
+        },
+        {
+          "name": "nq_signatures",
+          "sampledMs": 55.987,
+          "alsoUnder": {
+            "nf_finish_show": 55.987
+          }
+        },
+        {
+          "name": "nc_foreign_paths",
+          "sampledMs": 47.409,
+          "alsoUnder": {
+            "nc_foreign_paths": 47.409
+          }
+        },
+        {
+          "name": "nf_finish_retry",
+          "sampledMs": 43.543,
+          "alsoUnder": {
+            "nf_finish_retry": 43.543,
+            "nf_finish_show": 43.543,
+            "nf_candidate": 24.254,
+            "nf_retry": 24.254
+          }
+        },
+        {
+          "name": "nf_retry",
+          "sampledMs": 24.254,
+          "alsoUnder": {
+            "nf_candidate": 24.254,
+            "nf_retry": 24.254,
+            "nf_finish_retry": 24.254,
+            "nf_finish_show": 24.254
+          }
+        },
+        {
+          "name": "nc_compact_list",
+          "sampledMs": 23.208,
+          "alsoUnder": {
+            "ns_compile": 14.89,
+            "nc_compile_def": 2.058,
+            "nf_candidate": 7.048,
+            "nf_finish_show": 5.866
+          }
+        },
+        {
+          "name": "nc_refs",
+          "sampledMs": 11.501,
+          "alsoUnder": {
+            "nc_foreign_paths": 3.149,
+            "nf_finish_show": 8.352
+          }
+        },
+        {
+          "name": "nq_candidate",
+          "sampledMs": 8.398,
+          "alsoUnder": {
+            "nq_candidate": 8.398,
+            "nf_finish_show": 8.398
+          }
+        },
+        {
+          "name": "nc_bangs_names",
+          "sampledMs": 7.828,
+          "alsoUnder": {
+            "ns_compile": 4.495,
+            "nf_finish_show": 3.333
+          }
+        },
+        {
+          "name": "nc_definition_plain",
+          "sampledMs": 5.659,
+          "alsoUnder": {
+            "nc_foreign_paths": 2.699,
+            "ns_compile": 1.903
+          }
+        },
+        {
+          "name": "nf_worker_kinds",
+          "sampledMs": 3.134,
+          "alsoUnder": {
+            "nf_candidate": 2.068,
+            "nf_finish_show": 3.134,
+            "nq_candidate": 1.066,
+            "nf_retry": 1.039,
+            "nf_finish_retry": 1.039
+          }
+        },
+        {
+          "name": "nf_admit_pass",
+          "sampledMs": 2.095,
+          "alsoUnder": {
+            "nf_finish_show": 2.095
+          }
+        },
+        {
+          "name": "nc_definition",
+          "sampledMs": 1.081,
+          "alsoUnder": {
+            "nf_finish_show": 1.081
+          }
+        }
+      ]
+    }
+  ]
+}

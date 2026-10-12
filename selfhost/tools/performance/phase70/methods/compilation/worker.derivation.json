@@ -1,0 +1,32 @@
+{
+  "kind": "phase70-selected-c-entry-method-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/compilation/worker.mjs",
+    "sha256": "496c2633d29a6e0278ff00db92620eef77d5915d6b1f7720d4b83e4b7a68170a",
+    "bytes": 7513
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/compilation/worker.mjs",
+    "sha256": "30307182755b85f5fdfcc6f7751787cbc0d0c3054c0a54b979d8136efc7546dd",
+    "bytes": 7598
+  },
+  "edits": [
+    {
+      "before": "'nc_foreign_scope','kf_source','nc_foreign_source','nc_compile'];",
+      "after": "'nc_foreign_scope','kf_source','nc_foreign_source','nc_compile','nc_compile_checked'];",
+      "count": 1
+    },
+    {
+      "before": "'nc_annotated_context','nc_foreign_paths','nc_compile'])assert(report.stages[name]?.calls>0",
+      "after": "'nc_annotated_context','nc_foreign_paths',typeof api.nc_compile_checked==='function'?'nc_compile_checked':'nc_compile'])assert(report.stages[name]?.calls>0",
+      "count": 1
+    }
+  ],
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/upgrade-profile-entry.py",
+    "sha256": "27e9c9b72fcaf1976271dc5637e805fb47262e9d5be3e25151486097250c8d12",
+    "bytes": 4735
+  },
+  "targetsExecuted": false,
+  "scope": "Source-preflight correction: selected driver invokes nc_compile_checked. Observe and require that exported entry when available; preserve nc_compile fallback. Other semantic oracles, source output, profiler sampling and resource guards unchanged."
+}

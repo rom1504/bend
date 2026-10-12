@@ -1,0 +1,12 @@
+{
+  "parent": {
+    "file": "selfhost/tools/performance/phase70/compiler-work/compact-body-controls-v1.mjs",
+    "sha256": "8265d01b3f18a1bd004bdb6e8256b6f80d2cccdce6aa2d829940a074d485316e"
+  },
+  "successor": {
+    "file": "selfhost/tools/performance/phase70/compiler-work/compact-body-controls-v2.mjs",
+    "sha256": "289dc78a8f4ff421c22c479dab10a11207cd7dc7c48940430e9454d1aace571f"
+  },
+  "change": "Retain complete observed terms per row for baseline/candidate deep equality; all existing queries/oracles unchanged.",
+  "diff": "--- selfhost/tools/performance/phase70/compiler-work/compact-body-controls-v1.mjs\n+++ selfhost/tools/performance/phase70/compiler-work/compact-body-controls-v2.mjs\n@@ -62,7 +62,7 @@\n   for (const [name, input] of terms) {\n     const result = api.ns_static_term(cs, api.nc_compact(input), nilImage(api));\n     assert.deepEqual(api.nc_compact(result.term), result.term, name + ' fixed point');\n-    rows.push({name, category: 'fresh-producer-fixed-point', pass: true});\n+    rows.push({name, category: 'fresh-producer-fixed-point', observed: result.term, pass: true});\n   }\n \n   const compare = (name, book, entry, fresh, expectFact) => {\n@@ -72,7 +72,7 @@\n     const expected = api.nc_compact(api.nc_definition(book, d, fresh));\n     const actual = api.nc_compact_definition(book, d, fresh);\n     assert.deepEqual(actual, expected, name + ' exact legacy body');\n-    rows.push({name, category: expectFact ? 'prepared-accessor' : 'fallback', fresh, pass: true});\n+    rows.push({name, category: expectFact ? 'prepared-accessor' : 'fallback', fresh, observed: actual, pass: true});\n   };\n   const dynamic = t('Lam', '', [t('App', '', [vr(7), literal('Nat', 3)])], 7, 1);\n   for (const [name, value] of [['dynamic', dynamic], ['literal', literal('Nat', 9)],\n"
+}

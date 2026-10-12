@@ -15,4 +15,7 @@ a general compilation improvement without changing program output. This is a
 survey hypothesis, not an assumed bottleneck. Register concrete edits separately
 after attribution and verify with paired controlled B1/B2 requests.
 
-Status: no new profiles, performance result or production compiler-speed change.
+Status: four exact-output baseline profiles complete; native planning/emission
+dominates. See [the baseline report](../../implementation/phase70/compilation-baseline.md).
+P70-004/005's combined checked B1 screen is complete; genuine B2 comparison remains
+an integration gate. No compiled-program speed follows from these request clocks.

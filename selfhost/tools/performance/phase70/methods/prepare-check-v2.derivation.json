@@ -1,0 +1,31 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/prepare-check.py",
+    "sha256": "c72bf9b1af2cc732b24889214ef92f8e9519790583ff6367b9c38d55fc573306",
+    "bytes": 5556
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/prepare-check-v2.py",
+    "sha256": "33d24c00c63b3f26e06031b63a97370fe36b2bf9375bcb884a869dcd76e466fc",
+    "bytes": 6779
+  },
+  "edits": [
+    {
+      "before": "    parser.add_argument('--expected-cases', type=int, required=True)",
+      "after": "    parser.add_argument('--expected-cases', type=int, required=True)\n    parser.add_argument('--oracle-catalog', type=Path)\n    parser.add_argument('--oracle-receipt', type=Path)"
+    },
+    {
+      "before": "    fixture_inputs, cases = [], []",
+      "after": "    catalog_pin, oracle_pin, catalog_wrappers = None, None, set()\n    assert bool(args.oracle_catalog) == bool(args.oracle_receipt)\n    if args.oracle_catalog:\n        catalog_pin = pin(args.oracle_catalog)\n        oracle_pin = pin(args.oracle_receipt)\n        oracle = json.loads(args.oracle_receipt.read_text())\n        assert oracle['complete'] and oracle['targetsExecuted'] is False\n        oracle_inputs = {}\n        for item in oracle['inputs']:\n            item_pin = pin(item.get('file', item.get('path')), item)\n            oracle_inputs[item_pin['file']] = item_pin\n        assert oracle_inputs[catalog_pin['file']] == catalog_pin\n        for item in json.loads(args.oracle_catalog.read_text()):\n            wrapper = pin(ROOT/item['wrapper'])\n            assert oracle_inputs[wrapper['file']] == wrapper\n            source_pin = pin(ROOT/item['source'], item)\n            assert oracle_inputs[source_pin['file']] == source_pin\n            catalog_wrappers.add(wrapper['file'])\n    fixture_inputs, cases = [], []"
+    },
+    {
+      "before": "        assert goldens, 'Original native oracle must remain present'",
+      "after": "        assert goldens or str(file) in catalog_wrappers, 'Native golden or independently pinned coverage oracle required'"
+    },
+    {
+      "before": "        selection=pin(selection), fixtureInputs=fixture_inputs, copies=copies,",
+      "after": "        selection=pin(selection), fixtureInputs=fixture_inputs, copies=copies,\n        oracleCatalog=catalog_pin, independentOracleReceipt=oracle_pin,"
+    }
+  ],
+  "scope": "Add explicit independently pinned coverage oracle provenance for batch wrappers without constant fourth-line goldens. Checker and guard semantics unchanged."
+}

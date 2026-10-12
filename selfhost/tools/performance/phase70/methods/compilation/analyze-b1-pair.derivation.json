@@ -1,0 +1,19 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/compilation/analyze.py",
+    "sha256": "a5af3966d0c4ca8518d4c34e6d78512a09e55bd9c750ae506424ca59890ed08a",
+    "bytes": 5883
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/methods/compilation/analyze-b1-pair.py",
+    "sha256": "d8068d31ca4fa68d001acc41f864e65b80ea04939cbdc96c5dc6cebbe9c627b3",
+    "bytes": 5960
+  },
+  "edits": [
+    {
+      "before": "        if len(per_role)==3:\n            ts=per_role['typescript']['requestMedianMs']\n            summaries.append(dict(case=case, roles=per_role,\n                requestRatios={r:per_role[r]['requestMedianMs']/ts for r in ['b1','b2']},\n                positionBalanced=all(x['samples']==3 for x in per_role.values())))",
+      "after": "        if len(per_role)==2:\n            baseline=per_role['baseline']['requestMedianMs']\n            candidate=per_role['candidate']['requestMedianMs']\n            summaries.append(dict(case=case, roles=per_role,\n                candidateOverBaseline=candidate/baseline, baselineOverCandidate=baseline/candidate,\n                positionBalanced=all(x['samples']==2 for x in per_role.values())))"
+    }
+  ],
+  "scope": "Retain exact data/profile validation; summarize two alternating B1 roles instead of TS/B1/B2."
+}

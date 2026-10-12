@@ -161,7 +161,11 @@ def nq_bind(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, N
 @unsafe
 def nq_bind_choose(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +target: NC_Target) -> NC_Code:
   +shape = nq_value_shape(book, value, target)
-  nt_choose(NC_Code, String.eq(tg(shape), "NQShape") && U32.is_eq(nq_uses(body, id), 1) && U32.is_eq(nq_min_uses(body, id), 1), u => nq_bind(book, value, body, env, id, n, target, shape), u => nf_bind_boxed(book, value, body, env, id, n, target))
+  nt_choose(NC_Code, String.eq(tg(shape), "NQShape"),
+    u => nt_choose(NC_Code, U32.is_eq(nq_uses(body, id), 1),
+      v => nt_choose(NC_Code, U32.is_eq(nq_min_uses(body, id), 1), w => nq_bind(book, value, body, env, id, n, target, shape), w => nf_bind_boxed(book, value, body, env, id, n, target)),
+      v => nf_bind_boxed(book, value, body, env, id, n, target)),
+    u => nf_bind_boxed(book, value, body, env, id, n, target))
 
 @unsafe
 def nq_bundle_return(+t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
@@ -366,7 +370,7 @@ def nq_candidate(+book: List<&2, KDef>, +name: String, +signatures: List<&2, KDe
   match entry:
     case NQ_Entry{+params, +args, +fresh}:
       +info = lookup(signatures, name)
-      +body = nc_compact(nc_definition(book, lookup(book, name), fresh))
+      +body = nc_compact_definition(book, lookup(book, name), fresh)
       +route = nm(dv(info))
       +shape = dt(info)
       +code = nt_choose(NC_Code, nq_entry_demand(body, ks(dv(info)), nd_entry_args(nd_entry_params(da(info), 0)), 0),

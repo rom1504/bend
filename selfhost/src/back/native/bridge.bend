@@ -120,30 +120,28 @@ def nc_occurs_list(
 def nc_occurs(t, id):
   nt_choose(Bool, String.eq(tg(t), "Var"), u => U32.is_eq(ix(t), id), u => nc_occurs_list(ks(t), id))
 
-# Full U32 IDs are explicit trie keys; the payload name is constant.
-# Var is a leaf, including malformed raw terms with Var children.
+# Var remains a leaf even in malformed raw terms with Var children.
 @unsafe
-def nc_uses_term(+t: KTerm, +uses: KDef, +mark: KDef) -> KDef:
-  nt_choose(KDef, String.eq(tg(t), "Var"),
-    u => index_set(uses, mark, ix(t), 32),
-    u => nc_uses_list(ks(t), uses, mark))
+def nc_uses_term(+t: KTerm, +uses: NU_Set) -> NU_Set:
+  nt_choose(NU_Set, String.eq(tg(t), "Var"),
+    u => nu_add(uses, ix(t)), u => nc_uses_list(ks(t), uses))
 
 @unsafe
-def nc_uses_list(+ts: List<&2, KTerm>, +uses: KDef, +mark: KDef) -> KDef:
+def nc_uses_list(+ts: List<&2, KTerm>, +uses: NU_Set) -> NU_Set:
   match ts:
     case Nil{}: uses
-    case Con{h, rest}: nc_uses_list(rest, nc_uses_term(h, uses, mark), mark)
+    case Con{h, rest}: nc_uses_list(rest, nc_uses_term(h, uses))
 
 @unsafe
-def nc_uses(+t: KTerm) -> KDef:
-  nc_uses_term(t, missing(), KDef{"$native.occurrence", "Occurrence", 0, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}})
+def nc_uses(+t: KTerm) -> NU_Set:
+  nc_uses_term(t, NU_Empty{})
 
 @unsafe
-def nc_uses_has(+uses: KDef, +id: U32) -> Bool:
-  String.eq(dn(index_find(uses, "$native.occurrence", id, 32)), "$native.occurrence")
+def nc_uses_has(+uses: NU_Set, +id: U32) -> Bool:
+  nu_has(uses, id)
 
 @unsafe
-def nc_live_uses(env: List<&2, NC_Binding>, +uses: KDef) -> List<&2, NC_Binding>:
+def nc_live_uses(env: List<&2, NC_Binding>, +uses: NU_Set) -> List<&2, NC_Binding>:
   match env:
     case Nil{}: Nil{}
     case Con{NC_Binding{+id, +word, +kind}, +rest}:
@@ -164,7 +162,7 @@ def nc_partition_step(+id: U32, +word: String, +kind: N_WordKind, +live: Bool, +
         u => NC_EnvPartition{env, "term_sink(e, " ++ word ++ ");\n" ++ drop})
 
 @unsafe
-def nc_partition_uses(env: List<&2, NC_Binding>, +uses: KDef) -> NC_EnvPartition:
+def nc_partition_uses(env: List<&2, NC_Binding>, +uses: NU_Set) -> NC_EnvPartition:
   match env:
     case Nil{}: NC_EnvPartition{Nil{}, ""}
     case Con{NC_Binding{id, word, kind}, rest}:
@@ -193,7 +191,7 @@ def nc_drop_dead(env: List<&2, NC_Binding>, +t: KTerm) -> String:
   nc_partition_drop(nc_prepare_env(env, t))
 
 @unsafe
-def nc_keep_uses(env: List<&2, NC_Binding>, +uses: KDef) -> String:
+def nc_keep_uses(env: List<&2, NC_Binding>, +uses: NU_Set) -> String:
   match env:
     case Nil{}: ""
     case Con{NC_Binding{+id, +word, +kind}, rest}:
@@ -374,11 +372,49 @@ def nc_lets(+book: List<&2, KDef>, +xs: List<&2, KTerm>, +env: List<&2, NC_Bindi
 
 @unsafe
 def nc_find_ctor(+book: List<&2, KDef>, +name: String) -> KDef:
+  +cached = nc_ctor_context(book)
+  nt_choose(KDef, String.eq(dk(cached), "NativeCtorIndex"),
+    u => index_find(index_first(dc(cached)), name, index_hash(name, 2166136261), 32),
+    u => nc_find_ctor_plain(book, name))
+
+@unsafe
+def nc_find_ctor_plain(+book: List<&2, KDef>, +name: String) -> KDef:
   match book:
     case Nil{}: missing()
     case Con{+d, +rest}:
-      nt_choose(KDef, String.eq(dn(d), name) && String.eq(dk(d), "Ctr"), u => d, u =>
-        nt_choose(KDef, String.eq(dk(nc_find_ctor(dc(d), name)), "Absent"), u => nc_find_ctor(rest, name), u => nc_find_ctor(dc(d), name)))
+      nt_choose(KDef, String.eq(dn(d), name) && String.eq(dk(d), "Ctr"), u => d,
+        u => nc_find_ctor_next(rest, name, nc_find_ctor_plain(dc(d), name)))
+
+@unsafe
+def nc_find_ctor_next(+rest: List<&2, KDef>, +name: String, +found: KDef) -> KDef:
+  nt_choose(KDef, String.eq(dk(found), "Absent"), u => nc_find_ctor_plain(rest, name), u => found)
+
+# First constructor in legacy depth-first order wins, including cache children.
+@unsafe
+def nc_ctor_index(ds: List<&2, KDef>, +tree: KDef) -> KDef:
+  match ds:
+    case Nil{}: tree
+    case Con{+d, rest}:
+      +next = nt_choose(KDef, String.eq(dk(d), "Ctr") && String.eq(dk(index_find(tree, dn(d), index_hash(dn(d), 2166136261), 32)), "Absent"),
+        u => index_set(tree, d, index_hash(dn(d), 2166136261), 32), u => tree)
+      nc_ctor_index(rest, nc_ctor_index(dc(d), next))
+
+@unsafe
+def nc_ctor_context(+book: List<&2, KDef>) -> KDef:
+  nc_ctor_payload(dc(ns_context(book)))
+
+@unsafe
+def nc_ctor_payload(children: List<&2, KDef>) -> KDef:
+  match children:
+    case Con{bodies, Con{+ctors, rest}}:
+      nt_choose(KDef, String.eq(dk(ctors), "NativeCtorIndex"), u => ctors, u => missing())
+    case _: missing()
+
+@unsafe
+def nc_ctor_prepare(+book: List<&2, KDef>) -> KDef:
+  +prior = nc_ctor_context(book)
+  nt_choose(KDef, String.eq(dk(prior), "NativeCtorIndex"), u => prior,
+    u => KDef{"$native.ctors", "NativeCtorIndex", 0, 0, atom("Absent"), atom("Absent"), [nc_ctor_index(book, missing())], False{}, False{}})
 
 @unsafe
 def nc_field_count(+book: List<&2, KDef>, +name: String) -> U32:

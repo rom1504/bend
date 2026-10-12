@@ -55,3 +55,19 @@ function symbols retain their sizes but change their modulo64 address offsets.
 this remains a hypothesis, not an explanation established by equal symbol sizes.
 The installed compiler is still Phase73. Do not treat the compilation gain as
 an approved tradeoff for those runtime regressions.
+
+## Runtime-safe continuation
+
+The runtime guard rejected host-body omission. Tree recovery from function
+alignment did not generalize to Array.map; hot/outline/bank/branch variants failed
+and forced block alignment made tree slower. The macro-wide alignment attempt
+also failed to compile after affecting a function-pointer typedef. All remain
+retained as rejected diagnostic attempts. No runtime/toolchain change was adopted.
+
+Compiler10 restores exact original C for numeric/array/lexer. Compiler11 adds a
+private first-winner constructor index (1,066 differential checks); its one-round
+B2 screen is1.93× upstream, with complete C identity. This is a screen, not final
+balanced evidence. Compiler13 compact U32 occurrence sets pass65,000 controls;
+compiler14 removes the rejected host-omission implementation and is being measured.
+Compiler12 was an accidental duplicate build after a manifest-path edit assertion;
+it is not counted as a new candidate or speed result. Installed Phase73 remains.

@@ -228,7 +228,7 @@ def ns_attach_book(+book: List<&2, KDef>, +facts: List<&2, KDef>, +size: U32, +w
   match book:
     case Con{cache, rest}:
       Con{KDef{dn(cache), dk(cache), da(cache), dx(cache), dt(cache), dv(cache),
-        [index_first(dc(cache)), KDef{"$native.static", "NativeStaticContext", 0, 0, kt("NativeImage", "", size, 0, ns_image_terms(nt_reverse(String, words, Nil{}))), atom("Absent"), [index_build(facts)], False{}, False{}}], db(cache), du(cache)}, rest}
+        [index_first(dc(cache)), KDef{"$native.static", "NativeStaticContext", 0, 0, kt("NativeImage", "", size, 0, ns_image_terms(nt_reverse(String, words, Nil{}))), atom("Absent"), [index_build(facts), nc_ctor_prepare(book)], False{}, False{}}], db(cache), du(cache)}, rest}
     case _: book
 
 @unsafe
@@ -273,8 +273,7 @@ def ns_compile_named(+source: List<&2, KDef>, +names: List<&2, String>, +runtime
 @unsafe
 def ns_compile_planned(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +runtime: String, +requests: String, +observers: Bool) -> NC_Result:
   +plan = nf_plan(book, names, bangs, observers)
-  +selected = nf_host_context(book, True{}, plan)
-  nc_finish(selected, nh_macros(selected, names, observers) ++ runtime, requests, nc_compile_defs(selected, ["main"], Nil{}, 0, bangs), observers, plan)
+  nc_finish(book, nh_macros(book, names, observers) ++ runtime, requests, nc_compile_defs(book, ["main"], Nil{}, 0, bangs), observers, plan)
 
 # Preserve the original raw/bang error order: failed generic lowering never
 # asks optional worker planning to inspect an unsupported or malformed body.

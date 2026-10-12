@@ -43,3 +43,10 @@ Upstream checks Base within its ordinary request; Bend's explicit prepared Base
 is outside the request clock. Backend products are disabled in the compilation
 comparison. Every measured request must reproduce an independently executed
 complete C file. Profiles and instrumented code are diagnostic only.
+
+- `ctor-controls.mjs`:1,066 legacy/indexed constructor comparisons including
+  duplicate names and nested cached graphs.
+- `uses-controls.mjs`:65,000 full-U32 set membership, persistence and raw-term
+  occurrence controls against JS Set and the retained linear predicate.
+- `*-alignment-probe.py`: rejected saved-C/machine-layout diagnostics; their
+  successful executions are not production changes or compilation speed claims.

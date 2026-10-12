@@ -21,12 +21,16 @@ adds no telescope evaluation, preserving raw demand/error behavior.
 
 `NF_Plan` chooses and admits ordinary/product workers before generic lowering
 when the checked representation certificate permits it and the reachable program
-has no bang calls. Admitted positive-arity host workers keep the same optimized
-worker and curried adapters, but do not also lower an unused scheduler body.
-The corresponding segment is host-only. Bang programs retain device bodies and
-the original pipeline; the runtime enables GPU evaluation only for programs with
-bang work. Unadmitted functions retain ordinary lowering. A failed generic raw
-lowering returns its original error before optional worker planning.
+has no bang calls. Generic scheduler bodies and device fallbacks remain. An
+experiment omitting already-admitted host bodies reduced compilation time but
+caused repeatable generated-program regressions through changed native layout;
+that permission path was removed. Bang/raw paths retain their original error
+order: failed generic lowering returns before optional worker planning.
+
+Private constructor lookup shares a depth-first, first-winner index across the
+request. Static preparation retains that index. Variable-use analysis has a
+separate compact U32 set, with exact full-width keys and no allocation on repeated
+insertion. It retains Var-as-leaf behavior even for malformed raw terms.
 
 Product-route retry retains prior code unless that function references a
 withdrawn product signature. Constructor facts and other lowering inputs do not

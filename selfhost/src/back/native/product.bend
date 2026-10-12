@@ -372,7 +372,7 @@ def nq_candidate(+book: List<&2, KDef>, +name: String, +signatures: List<&2, KDe
       +code = nt_choose(NC_Code, nq_entry_demand(body, ks(dv(info)), nd_entry_args(nd_entry_params(da(info), 0)), 0),
         u => nc_lower_to(book, nd_reapply(body, args), params, fresh, NC_Destination{nq_words("nf_out", nq_width(shape), 0), shape, "", route, params, True{}, signatures}),
         u => nc_fail("flat product: parameter may be dropped before matching", fresh))
-      NF_Worker{route, params, code, nc_calls(code), shape}
+      NF_Worker{route, nf_typed_params(params, nf_expand_kinds(ks(dv(info)), nf_worker_kinds(book, name, da(info)))), code, nc_calls(code), shape}
 
 # Every flattened parameter must reach exactly one source use per prefix path.
 # All symbolic actuals below are already evaluated values, so beta substitution

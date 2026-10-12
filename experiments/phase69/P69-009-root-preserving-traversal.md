@@ -1,7 +1,8 @@
 # P69-009: retain an unchanged root while traversing through borrowed fields
 
-Status: saved-C arms prepared; no target results yet. The hypothesis below was
-registered before construction. Only root owns target execution.
+Status: completed saved-C discriminator; general compiler implementation is
+proposed separately and not yet promoted. The hypothesis below was registered
+before construction. Only root owns target execution.
 
 `Map.bit.go` returns the same String contents that it receives, paired with a
 computed bit. Both current compilers consume and reconstruct the traversed String
@@ -53,3 +54,29 @@ nodes; unsupported shapes decline after reads only. This is not raw-equivalence
 qualification. In particular, the diagnostic insertion precedes the original
 shared-error check, and short loops may not poll. Production must preserve
 entry/error policy as well as prove identity on every returning branch.
+
+## Result and next decision
+
+Root's `selfhost/build/phase69/map-borrow-diagnostic01/report.json` is complete,
+with nine output controls and 25 qualified timing intervals. Receipt SHA-256:
+`5e6504f77f96a770b0cf2027da7587e75d94e046da3fef685f38157fe4b9575f`.
+
+| Arm | Median ms |
+| --- | ---: |
+| Original compiler23 | 722 |
+| Bit traversal retains root | 488 |
+| String comparison retains roots | 620 |
+| Both | 390 |
+| Pinned upstream | 429 |
+
+Both interventions reduced Map time by 46.0%, reaching 0.909× upstream in
+this controlled campaign. This is a family-specific saved-C result, not a
+production compiler or suite-wide parity claim. It justifies a generic proof
+and lowering effort; it does not justify recognizing these function names.
+
+The next bounded plan is
+[root-preserving observers](../../design/phase69/root-preserving-observers.md).
+It starts with an analysis-only identity/refusal report, then a checked host
+read-only worker for one/two immutable roots and immediate observations. Raw
+and device bodies remain ordinary. Production measurements must compare
+against the current combined compiler to detect overlapping savings.

@@ -3,6 +3,34 @@
 This lane prepares source/data only. No Bend compiler, Clang or native program
 was executed by the lane. Root owns the serial guarded target lane.
 
+## Latest typed10 follow-up
+
+[P69-010](../../../../../experiments/phase69/P69-010-native-result-layout-facts.md)
+tests scalar result and packed input facts on actual checked typed10 lexer C.
+`prepare-result-facts.py` produced
+`selfhost/build/phase69/result-facts-prep01/plan.json`: explicit unchanged
+`typed10`, 33 scalar-result read facts, and a separate five-worker packed-input
+arm. The last arm preserves constructor tag/payload bits and asserts only
+canonical packed Mode/Cls arguments under both checked-scalar and constructor
+packing permissions. It is a finite saved-C discriminator, not a production
+rule. Root's completed comparison found only 0.45%/0.89% less median time than
+typed10, with overlapping samples. Both are deferred: the result does not
+justify production complexity. See
+[P69-010 outcome](../../../../../experiments/phase69/P69-010-native-result-layout-facts-result.md)
+for the exact five-role clocks and qualification scope.
+
+The production rule would need an explicit representation fact, not simply a
+source enum test: Base Bool uses 0/1, user enums use tagged words, and a dead
+foreign definition can disable packing despite checked scalar permission.
+Static constructors must also agree. The known remaining lex loop-state pair
+boxing was already probed by P69-004 and is a distinct mechanism.
+
+`typed-affine-fix-v1.derivation.json` archives the exact prepared-v2 integration
+correction: root's failed build09 consumed `shape` twice, and successful build10
+adds `+shape` in `nf_expand_kinds`. The complete frozen flat.bend files differ
+only at that annotation. Original prepared candidate and failed receipt remain
+preserved; the archiver executed no compiler.
+
 Registration: [P69-005](../../../../../experiments/phase69/P69-005-node-reuse.md).
 Predecessors: P68-015 measured about 3% tree benefit from two lexical spares;
 P68-018 measured about 8% from a runtime predicate omitting selected value seals.
@@ -144,3 +172,16 @@ Reviewer boundaries also include F32 bit/NaN preservation, Char range, erased
 binder alignment, dependent/opaque arguments, expanded product slots, raw
 high-bit values and tagged raw Bool fallback. Reuse remains only the saved-C
 experiment and the [scoped-spare design](../../../../../design/phase69/scoped-native-spares.md).
+
+Root later measured the typed saved-C arm at 397 ms versus cold-only 459.5 ms,
+13.6% less elapsed time, with upstream 274.5 ms in the same campaign. See
+`residual-tree.md` and the authoritative `typed-tree-diagnostic01/report.json`.
+Root has selected the generic v2 proposal for integration; the proposal snapshots
+retain their historical prepared status, and production qualification belongs
+to root's report rather than this source-only lane.
+
+For the prepared scalar fixture selection, use `typed-selection-v2.json`.
+It computes the >32-bit Nat from small source literals rather than depending on
+large literal parsing. The original fixture/selection and derivation remain
+preserved. `raw-scalar-plan-v1.json` binds two raw high-word counterexamples,
+including the runtime List ABI, for the existing custom-raw controller.

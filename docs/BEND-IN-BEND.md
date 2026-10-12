@@ -6,22 +6,22 @@ Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The [Phase67 report](../implementation/phase67/README.md) identifies the installed
-checked B1 `c76f1113…` and genuine B2 `cbffd1f8…`, with fresh self-check,
+The [Phase69 report](../implementation/phase69/README.md) identifies the installed
+checked B1 `674e7960…` and genuine B2 `c858dfa5…`, with fresh self-check,
 reproduction, native controls and installed-interface verification. Its
-[native value lowering](self_hosted/native-value-lowering.md) improves six
-native families by 33.3% in execution time, with a seven-second recorded
-Bend-only runtime loop that excludes new compiler/C acquisition.
+[native optimizations](self_hosted/native-parity.md) reduce six-family execution
+time by32.4% versus compiler23 in the same campaign, reaching1.033× upstream C.
+Tree/Map/lexer still lag individually. The documented saved-program loops
+exclude new compiler/C acquisition.
 
 Frontend/JavaScript behavior retains Phase66's finite conformance evidence
-through exact executable-closure equality. All 45 benchmark point modules are
-byte-identical. The [last broad five-metric campaign](../implementation/phase66/README.md)
+through exact executable-closure equality. The [last broad five-metric campaign](../implementation/phase66/README.md)
 remains historical: B1/B2 compilation 1.402× / 1.321× TS, import-inclusive
 0.983× / 0.990×, and generated JS runtime 1.049× equal-point / 1.047×
-equal-source. Phase67's two-source compilation screens show no regression and
-do not update those broad ratios. Native performance remains a separate clock.
+equal-source. Phase69's three-source C request screen measures B1/B2
+3.23×/2.18× upstream; it does not update those broad JS ratios.
 
-The [installed receipt](../implementation/phase67/evidence/installed-release01.json)
+The [qualification evidence](../implementation/phase69/evidence/summary.json)
 passes integrity, legacy42/default24/helper5. Current direct/legacy effect
 limits and finite conformance exceptions are unchanged. Custom or later Base
 bytes retain ordinary annotation until independently qualified; see the

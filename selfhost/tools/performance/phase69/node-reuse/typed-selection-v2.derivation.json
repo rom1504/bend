@@ -1,0 +1,27 @@
+{
+  "kind": "phase69-runtime-width-fixture-isolation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures/scalar-and-large-nat.bend",
+    "sha256": "473201c3f7b6f03adcca076c4d48156a18d88443d200b10da45ccebc5fca8454"
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures/scalar-and-large-nat-v2.bend",
+    "sha256": "70a0d911c67f45d48c4fcb473535de61d4d59ad911de71e45ef222385f9160a7"
+  },
+  "edits": [
+    {
+      "before": "pass_nat(4294967311n)",
+      "after": "pass_nat(Nat.add(Nat.mul(65536n, 65536n), 15n))"
+    }
+  ],
+  "expectedUnchanged": "8589934606n",
+  "reason": "Build the large Nat from <=32-bit literals so the runtime-width control does not also depend on large source literal parsing. No target executed by this producer.",
+  "parentSelection": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/typed-selection-v1.json",
+    "sha256": "8b8964630a4701f6a8ce7fc54e889f00ac885aeb2dbd27d0ee00f18d974c2ca1"
+  },
+  "selection": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/typed-selection-v2.json",
+    "sha256": "0885fdc79b70cfafcafabaf93608eaa910315b4deab3ecf2dd306a33d7e6adee"
+  }
+}

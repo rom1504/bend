@@ -1,0 +1,89 @@
+{
+  "kind": "phase69-known-partial-controls",
+  "targetExecuted": false,
+  "independentGoldens": true,
+  "cases": [
+    {
+      "id": "phase69/closure-factory/bang-and-ordinary.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls/bang-and-ordinary.bend",
+      "sha256": "5fa8bcd9ced59c4d1947ff7f14758f2c5bd2725b4f7d835c215c74688b92f188",
+      "expected": [
+        "33"
+      ]
+    },
+    {
+      "id": "phase69/closure-factory/multiple-missing.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls/multiple-missing.bend",
+      "sha256": "a38d5f180c4e32b2e5f3df8285c896074b36426d341df1627c5e69024bdcee25",
+      "expected": [
+        "123"
+      ]
+    },
+    {
+      "id": "phase69/closure-factory/shared-capture-v2.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-fixed-v2/shared-capture-v2.bend",
+      "sha256": "39710ee9e07b11a70e9d75c8e685ef120e9cf172676f1b7a7ad09f2459aef63b",
+      "expected": [
+        "abac"
+      ]
+    },
+    {
+      "id": "phase69/closure-factory/stored-erased.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls/stored-erased.bend",
+      "sha256": "17b45b20496963837da8a61489a3c03e8becef067d3b9a5ee25e5491e488e9b7",
+      "expected": [
+        "kept"
+      ]
+    },
+    {
+      "id": "phase69/closure-factory/existing/compile/closure_partial_app.bend",
+      "file": "/home/ai/bend2/build/publish/bend/tests/compile/closure_partial_app.bend",
+      "sha256": "a5db1896b19521ea737bd80b3d76304ba9bcd75ac7ce67c5cf6da4011f529d94",
+      "expected": [
+        "17"
+      ]
+    },
+    {
+      "id": "phase69/closure-factory/existing/compile/erased_partial_closure.bend",
+      "file": "/home/ai/bend2/build/publish/bend/tests/compile/erased_partial_closure.bend",
+      "sha256": "6cd012e49a9622ccf1026e9333cae84318f4f84bd7997580a384cb9d5c3ba114",
+      "expected": [
+        "3"
+      ]
+    },
+    {
+      "id": "phase69/closure-factory/existing/compile/over_application.bend",
+      "file": "/home/ai/bend2/build/publish/bend/tests/compile/over_application.bend",
+      "sha256": "cf14db87224d84b118a5797c72c24c4418a2ae85268a5fc322883f0f14efde96",
+      "expected": [
+        "42"
+      ]
+    },
+    {
+      "id": "phase69/closure-factory/existing/compile/bang_intrinsic_closure.bend",
+      "file": "/home/ai/bend2/build/publish/bend/tests/compile/bang_intrinsic_closure.bend",
+      "sha256": "b4e9b3ae9b9f080986a40d5d9e3e097cf5fa43f459b71112b75202d801b469d7",
+      "expected": [
+        "3"
+      ]
+    },
+    {
+      "id": "phase69/closure-factory/early-matcher-partial.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v1/partial.bend",
+      "sha256": "67b757b2141734d5f1f3fbcfdb0e2ee8824f7d367bbc2272559d5acfbcd7e763",
+      "expected": [
+        "bend: a Nat past the largest immediate 2^48-1",
+        "exit 1"
+      ]
+    },
+    {
+      "id": "phase69/closure-factory/early-matcher-staged.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v2/staged.bend",
+      "sha256": "28bda0a151f551a2a8ddd8ee772c9a036773d84f900d9fa55fdbb9966dc711a0",
+      "expected": [
+        "bend: runtime fail-stop",
+        "exit 1"
+      ]
+    }
+  ]
+}

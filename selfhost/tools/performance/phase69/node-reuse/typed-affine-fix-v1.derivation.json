@@ -1,0 +1,49 @@
+{
+  "kind": "phase69-typed-affine-fix-derivation-v1",
+  "producer": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/archive-typed-affine-fix.py",
+    "sha256": "dad7ae87b16ff32436a3bbc3c7ad39f7fa62c74b1e1e2bbe5b782b1e1f91634e",
+    "bytes": 2297
+  },
+  "failedSource": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase69/typed-build09/snapshot/src/back/native/flat.bend",
+    "sha256": "67a3c822d61540053a217b363b4ed19870a3e1deec5af0d2aab5f941d2daf07f",
+    "bytes": 18151
+  },
+  "successfulSource": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase69/typed-build10/snapshot/src/back/native/flat.bend",
+    "sha256": "36251d51b1d70ce59772cf8bfbdd453520384b738b1987ad25a582a10416406f",
+    "bytes": 18152
+  },
+  "failedBuild": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase69/typed-build09/build.json",
+    "sha256": "9f734fe5947747b8f5f3afe214194057956a2af6fa77562a87416481324fa24f",
+    "bytes": 3845
+  },
+  "successfulBuild": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase69/typed-build10/build.json",
+    "sha256": "43d9cb0d195aaab3381d50d73a13ab00c1ea6161a15e1be5b5252a60ff52de8f",
+    "bytes": 3633
+  },
+  "originalFailure": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase69/typed-build09/bootstrap/stderr",
+    "sha256": "816b8b48c71fa2fea4df097b2ab6cd67d0ce349520d16825f7b9ff2b52f08558",
+    "bytes": 560
+  },
+  "originalCandidate": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/typed-worker-candidate-v2/plan.json",
+    "sha256": "ba7b35722b3d63dbaa18cd9935a8f1c78d8e8419d31c9e6525b30e8eba0b7b70",
+    "bytes": 2901
+  },
+  "edits": [
+    {
+      "offsetInParent": 6922,
+      "lineInParent": 127,
+      "before": "case Con{shape, rest}",
+      "after": "case Con{+shape, rest}"
+    }
+  ],
+  "exactWholeFileReplay": true,
+  "targetsExecutedByArchiver": false,
+  "explanation": "Mark shape shareable because the guard reads tg(shape) and its selected branch reads ix(shape). Root applied this single affine annotation after build09 failed. The prepared v2 candidate and failed build remain preserved; successful10 is the execution evidence."
+}

@@ -1,6 +1,7 @@
 # P69-004: constructor-proven product transport through a tail loop
 
-Status: prospective, registered before deriving or executing target code.
+Status: saved-C discriminator completed; production integration deferred.
+The hypothesis below was registered before deriving or executing target code.
 
 Compiler23's lexer allocates one two-field Tuple per character, immediately
 consumes it on the next self-tail iteration, and already receives both fields
@@ -42,4 +43,23 @@ fed by `NQBundle` values, with an ordinary boxed entry retained. This differs
 from globally weakening `nq_entry_demand`, recursively flattening every type, or
 changing the scheduler ABI. Map multiword returns remain a separate larger slice.
 
-No gain or correctness claim is made until root-owned target results exist.
+## Result and decision
+
+Root completed nine controls and 25 clean timing intervals in
+`selfhost/build/phase69/product-transport-diagnostic01/report.json`, SHA-256
+`b3ad24ac0cb73ea1c9a688339bc9509cde60572496089ee99118dbd15abf48ea`.
+Medians in milliseconds: original 611, loop-only 595, static plus scheduling
+mode 482, combined with loop 432, upstream 246. The loop saves 2.6% alone or
+10.4% relative to the cleaner static/mode base. This is insufficient to make
+the estimated 100–200-line private-loop integration the first priority.
+
+The current admission failure is deliberate: `nq_entry_demand` requires every
+flattened parent parameter to reach exactly one source use on each prefix path.
+A malformed String miss can drop the still-boxed state before matching it;
+Nil/Cons exhaustiveness cannot be inferred for the raw entry from a type
+annotation. The constructor-proven private loop preserves this initial boundary
+and reconstructs the parent before the original cold-path drop. Globally
+weakening the demand check is not an acceptable substitute.
+
+Evidence remains frozen for a later general loop-transport feature. P69-009's
+root-preserving traversal experiment subsequently established a larger target.

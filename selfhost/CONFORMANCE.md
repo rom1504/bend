@@ -1,5 +1,25 @@
 # Compiler validation
 
+## Phase69 installed native qualification
+
+[Report](../implementation/phase69/README.md) ·
+[Exact evidence](../implementation/phase69/evidence/summary.json).
+Installed checked B1 `674e7960…`, genuine B2 `c858dfa5…`, upstream `0592662`.
+Fresh selected gates pass:36 frontend observations,71 paired native source
+cases,28 raw result rows and7 static-image helper boundary queries. The latter
+two counts are not distinct source-program counts. Native runtime controls
+include one/four threads; physical GPU execution is untested.
+
+All2,992 functions in the audited frontend/JS reachable closure and their
+runtime/public wrappers remain unchanged from compiler23. Prior finite
+frontend/JS evidence is retained through that continuity, not a new full-suite
+run. Six native performance families pass independent checksums;27 C compilation
+requests preserve exact qualified output, including genuine B2 on three sources.
+B2 checks its own complete source and reproduces4,365,136-byte B3 exactly.
+Unsafe declaration trust remains explicitly refused; no compiler proof is claimed.
+Installed integrity, legacy42/default24/helper5 pass; old seven-file release
+lineage is preserved byte-for-byte. Thirteen native API gaps remain unchanged.
+
 ## Phase67 native lowering qualification
 
 [Current report](../implementation/phase67/README.md) and

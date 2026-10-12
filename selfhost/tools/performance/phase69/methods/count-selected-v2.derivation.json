@@ -1,0 +1,33 @@
+{
+  "kind": "phase69-counter-python39-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/count-selected.py",
+    "sha256": "7c3ac376a2618aa1fac30a78a4f4a4b8a7afc7dbb716b29352a5db70869502f5",
+    "bytes": 9381
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/count-selected-v2.py",
+    "sha256": "cd16571eddf0c18f0c9b7395b59c3f5ae7a8311b5450c31aa568d59072a38daf",
+    "bytes": 9471
+  },
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/upgrade-counts-py39.py",
+    "sha256": "d513f24b176ee8542652c080f0fc8395ea093254237a89b99222a362aaf0f7ae",
+    "bytes": 1859
+  },
+  "edits": [
+    {
+      "before": "    sites = [a-b for a,b in zip(high['allocationSites'], low['allocationSites'], strict=True)]",
+      "after": "    assert len(high['allocationSites']) == len(low['allocationSites'])\n    sites = [a-b for a,b in zip(high['allocationSites'], low['allocationSites'])]",
+      "count": 1
+    },
+    {
+      "before": "    top = sorted((dict(site=site, addedCalls=count) for site,count in zip(item['sites'],sites,strict=True)",
+      "after": "    assert len(item['sites']) == len(sites)\n    top = sorted((dict(site=site, addedCalls=count) for site,count in zip(item['sites'],sites)",
+      "count": 1
+    }
+  ],
+  "dataOnly": true,
+  "targetsExecuted": false,
+  "scope": "Only replace both Python3.10 strict zip calls by preceding equal-length assertions and ordinary zip. Instrumentation, target commands, caching/provenance, operation counts and oracles remain unchanged. The failed first count campaign stays immutable."
+}

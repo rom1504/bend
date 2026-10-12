@@ -1,25 +1,28 @@
 # Bend2 compiler port in Bend2
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The [Phase67 report](../implementation/phase67/README.md) records the selected
-and installed compiler: checked B1 `c76f1113…`, genuine B2 `cbffd1f8…`.
+The [Phase69 report](../implementation/phase69/README.md) records the selected
+and installed compiler: checked B1 `674e7960…`, genuine B2 `c858dfa5…`.
 Both self-hosting gates and installed-interface checks pass. Use
 `npm run verify:release` to check the installed package.
 
-Six native diagnostic families run 1.50× faster, with 20% smaller C and 18%
-less Clang build time. The [native lowering guide](../docs/self_hosted/native-value-lowering.md)
-explains the general rules and seven-second execution-only loop. The native
-corpus still averages 10.41× upstream execution time; this is separate from
-JavaScript output speed and compiler latency.
+Six native diagnostic families have an equal-family geometric mean of
+**1.033× upstream C execution time**,
+32.4% less than compiler23 in the same campaign. Tree/Map/lexer remain
+1.43×/1.59×/1.82×; the aggregate is not universal parity. The
+[native optimization guide](../docs/self_hosted/native-parity.md) explains the
+general rules and reproducible fast loops. C compilation itself measures
+3.23×/2.18× upstream for B1/B2 in a separate three-source screen.
 
 The unchanged frontend/JS executable closure retains Phase66's finite
-conformance results, and all 45 benchmark point modules are byte-identical.
+conformance results. Fresh selected native controls pass: 71 source cases and
+28 raw report rows.
 The last full campaign measured B1/B2 compilation 1.402×/1.321× TS and JS
-runtime 1.049× equal-point/1.047× equal-source. Phase67's short compilation
-screens show no regression; they do not update those broad ratios.
+runtime 1.049× equal-point/1.047× equal-source. These broad historical JS ratios
+are distinct from the current narrow C request screen.
 See the [conformance record](CONFORMANCE.md),
-[release receipt](../implementation/phase67/evidence/installed-release01.json)
-and [measurement boundaries](../implementation/phase67/compilation-and-selfhosting.md).
+[qualification evidence](../implementation/phase69/evidence/summary.json)
+and [measurement boundaries](../implementation/phase69/README.md).
 
 Phase66 changes namespace display, the Base/effect ABI and composite host
 marshalling. The new Base needs fresh prepared artifacts. Its exact-content

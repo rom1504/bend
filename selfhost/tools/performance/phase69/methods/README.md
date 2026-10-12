@@ -188,7 +188,7 @@ List ADT. Original declaration positions, cache payloads/indexes and oracles are
 preserved; exact derivations accompany each. This is fixture packaging repair,
 not a compiler regression or changed expected result. Keep the failed attempt.
 
-For mechanism confirmation, `count-selected.py --candidate ACQUISITION...`
+For mechanism confirmation, `count-selected-v2.py --candidate ACQUISITION...`
 accepts `--cases closures,lexer,tree` and either `--check-only` or a fresh
 `--out`. It imports the unchanged Phase68 instrumentation functions, reproduces
 complete old diagnostic C before reusing23/upstream counters, and independently
@@ -197,6 +197,12 @@ rebuilt/run under the sole CPU3 guard. New and cached16-workload deltas remain
 separately attributed. Allocation sites must sum exactly to aggregate calls;
 instrumented clocks earn no runtime credit. Source-only combined08 admission
 passed for all three families and six exact cached role rows.
+V1's first target campaign retained valid closure outputs before failing in
+Python3.9's unsupported `zip(strict=True)` during summarization. V2 replaces
+both occurrences with explicit equal-length assertions and plain zip; no
+target or instrumentation logic changes. The old campaign is retained.
+Fifteen saved delta rows and an unequal-vector refusal passed a data-only
+Python3.9 preflight before the successor was handed to root.
 
 ## JS protection and actual B2
 
@@ -211,7 +217,7 @@ taskset -c 0 python3 -B selfhost/build/phase69/methods01/verify-js.py \
   selfhost/build/phase68/facts-build23/equality/api.mjs \
   selfhost/build/phase69/candidate01/equality/api.mjs \
   selfhost/build/phase69/candidate01-js-closure
-taskset -c 0 python3 -B selfhost/build/phase69/methods01/prepare-bootstrap.py \
+taskset -c 0 python3 -B selfhost/build/phase69/methods01/prepare-bootstrap-v2.py \
   plan selfhost/build/phase69/candidate01 \
   selfhost/build/phase69/candidate01-b2 \
   --admission selfhost/build/phase68/scalar-export-admission20.json
@@ -226,6 +232,13 @@ the final source/data join produces `image-pins.json`. This earns a genuine B2
 image and driver checks; **full own-source checking, B3 reproduction and release
 promotion remain separate gates**. Schedule those after final selection, not
 for every native experiment.
+
+The first Phase69 B2-plan preparation stopped on a relocated receipt filename,
+before target execution. `prepare-bootstrap-v2.py` corrects only that reference
+to its actual adjacent `.derivation.json`; the receipt preserves its exact
+methods01 parent entry and all edits. The failed `typed10-b2` remains intact;
+fresh `typed10-b2-v2/plan.json` passed data-only preparation. Execute the selected
+plan's own `run.sh`, never the failed predecessor's path.
 
 ## Compiler request time: B1 and B2 separate from program runtime
 
@@ -263,8 +276,38 @@ clocks must never replace clean samples.
 The analyzer lists missing profile jobs and marks the full planned campaign
 incomplete when those are intentionally deferred; completed clean rows remain
 separately reported and must not be relabeled as a complete profile campaign.
+The unchanged request factory also passed a source-only end-to-end preparation
+using actual compiler23 B1/B2 and their native oracles at
+`phase69/compilation-method-preflight23/plan.json`. Its15 jobs were not executed;
+this verifies method metadata/copying, not typed10 compilation performance.
 
 ## Time, resource and provenance account
+
+The optional final-selection producer `prepare-release-qualification.py`
+materializes the exact Phase67 self-check/reproduction methods with only
+Phase69 output relocation. The prepared typed10 plan is
+`selfhost/build/phase69/release-methods10/plan.json`. After genuine B2 closes,
+execute its two `qualificationCommands` in order: fresh own-source checking,
+then complete B2→B3 byte reproduction. Type acceptance and the explicitly
+expected unsafe proof-trust refusal are separate; no mathematical proof is
+invented. Six `deferredReleaseCommands` then reuse the installed release
+controllers for install, integrity, legacy42, default24, helper5 and final
+integrity. Only root's final successful selection/admission permits those
+deferred commands; preparing this plan neither installs nor marks a gate passed.
+
+These eight jobs occupied94.25s in Phase67, with peak tree RSS1071MiB. Planning
+2–3minutes after B2 is reasonable but unmeasured for the new compiler. Fresh
+JS23/B2 complete-byte validation is a separate optional~104s historical addition;
+source closure evidence does not itself execute it. Installation selects the
+genuine checked equality-derived B1 while recording actual B2 evidence.
+The previous seven release artifacts are pinned before promotion and the
+unchanged installer preserves them in `dist/release-history/OLD_API_SHA`.
+
+The all71/native workflow and these Node packaging jobs require root's approved
+sandbox escalation because managed-sandbox `spawnSync` stdin PIPE setup was
+observed to report `EPERM` even for `/bin/true`. The same command/resource guard
+must remain in place outside that sandbox. Failed sandbox attempts stay visible;
+this is an execution-environment correction, not a changed compiler or oracle.
 
 `time-account.py --raw selfhost/build/phase69 --out FRESH.json` reads completed
 guard receipts and reports both summed target wall and union occupancy, peak

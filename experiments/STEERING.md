@@ -1,4 +1,43 @@
-# Active frontier: Phase68 native parity investigation
+# Active frontier: Phase69 installed native near parity
+
+[Design](../design/phase69/native-parity.md) ·
+[Report](../implementation/phase69/README.md) ·
+[Qualified evidence](../implementation/phase69/evidence/summary.json).
+Installed checked B1 `674e7960…`, genuine B2 `c858dfa5…`, source `75e10b92…`,
+upstream `0592662`. Source/release commit `f1655d0` is pushed. B2 own-source
+acceptance, exact B3 reproduction and installed legacy42/default24/helper5 pass.
+
+Six-family native runtime is **1.0332× upstream**, versus compiler23's **1.5285×
+in the same campaign**: 32.4% less time. Numeric/arrays are near parity;
+closures0.299×, tree1.429×, Map1.595×, lexer1.816×. The aggregate does not mean
+every-program parity. Implemented: reachable bangs, immutable static images,
+known closure factories/linear combinators, cold owned constructor stores and
+typed native worker parameters. No new runtime or host compiler algorithm.
+
+Selected native71, raw28 result rows, static7 helper queries and frontend36 pass.
+JS/frontend executable continuity covers2,992 functions, not a new full-suite
+run. Existing native13 API gaps remain. Three-source C request screen gives
+B1/B2 **3.231×/2.183×** upstream; keep separate from generated-program runtime
+and historical broad JS compilation. Source30,261 physical/24,768 code lines,
+121 modules; +440 physical lines. Final target occupancy21m44s, peak1.516GiB.
+
+Strongest next opportunity: implement the bounded
+[root-preserving observer design](../design/phase69/root-preserving-observers.md).
+Saved-C Map prototype722→390ms versus upstream429ms proves potential, not
+production correctness. Structural root-origin analysis, representation guards,
+error/poll preservation and independent admission/refusal controls are required.
+Estimated350–600 lines/4.5–9h. Lexer state transport and scoped tree reuse are
+secondary; result/packed metadata probes gave<1% and were deferred.
+
+Phase69 raw and methods are now closed and
+[verified in a capsule](../selfhost/tools/performance/phase69/artifacts/evidence01/README.md).
+New authorized work uses fresh raw paths, preserving all history and inherited
+unrelated changes. One guarded CPU3 target tree; source/data agents CPU0.
+No PR comments without explicit authorization.
+
+---
+
+# Historical frontier: Phase68 native parity investigation
 
 [Design](../design/phase68/c23-parity-investigation.md) ·
 [Current report](../implementation/phase68/c23-parity-survey.md).

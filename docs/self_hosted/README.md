@@ -1,8 +1,11 @@
 # Self-hosted compiler: current architecture and development
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The [Phase66 report](../../implementation/phase66/README.md) is the current
-status and five-metric index. Read [the compiler guide](../BEND-IN-BEND.md) for
+The [Phase69 report](../../implementation/phase69/README.md) identifies the current
+installed native improvements, their finite1.033× upstream result, compiler
+latency and qualification. Read [native optimization contracts and fast loops](native-parity.md),
+the [Phase66 broad five-metric baseline](../../implementation/phase66/README.md),
+and [the compiler guide](../BEND-IN-BEND.md) for
 usage, the [direct guide](../../selfhost/docs/direct-javascript.md) for the
 new namespace/effect interfaces, and [prepared Base artifacts](prepared-base-artifacts.md)
 for new-Base invalidation and optional-product qualification.

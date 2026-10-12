@@ -119,3 +119,23 @@ IDs to unique `phase69/closure-factory/existing/compile/` IDs, preserving all fi
 bytes and goldens; `selection-v2-derivation.json` records the correction. All
 superseded sources, selections, rejected review drafts and failed builds remain
 preserved rather than overwritten.
+
+## Corrected typed control syntax
+
+`combined08-controls02` exposed four invalid control sources: both roles rejected
+them during checking, so those observations did not qualify runtime behavior.
+Fresh sources in `controls-fixed-v2/` preserve all four original goldens; exact
+diffs and hashes are recorded in `fixture-corrections-v2.json`. Use factory
+`selection-v3.json` and combinator `selection-v5.json`, or the focused four-case
+`selection-fixture-corrections-v2.json`.
+
+Current Bend function types are always `Type`, so a closure cannot be a reusable
+`+` binding; `&2` is not a reusable function-type escape. The revised shared
+capture case creates two affine closures sharing a typed String prefix (`abac`).
+The nonlinear combinator repeats a reusable U32 argument in `f(x,x)` instead of
+duplicating a function; its dropped-function branch remains, giving32. Repeated
+function transport is still explicitly exercised by the raw backend case.
+The shared literal capture now annotates its String binding (`pq!p`). The overflow
+helper now has the required ordinary parameter quantity and makes an explicit
+typed reusable local copy; its original demanded-overflow golden is unchanged.
+These successors remain unexecuted by this lane pending root's guarded replay.

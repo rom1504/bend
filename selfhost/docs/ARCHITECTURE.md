@@ -1,10 +1,18 @@
 # Compiler architecture
 
 **Current source target:** `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The [Phase67 report](../../implementation/phase67/README.md) identifies the
+The [Phase69 report](../../implementation/phase69/README.md) identifies the
 installed checked B1 and separately qualified genuine B2. Source architecture
 alone does not establish release readiness; see the
-[installed receipt](../../implementation/phase67/evidence/installed-release01.json).
+[qualification evidence](../../implementation/phase69/evidence/summary.json).
+
+Phase69 shares reachable bang facts with worker admission, interns closed
+constructor graphs through the existing static image ABI, removes intermediate
+known closure factories, specializes bounded linear combinators and retains
+checked scalar kinds in private workers. The existing no-sharing certificate
+also permits cold user-constructor stores. Raw/unknown/shared cases retain
+their fallbacks; native runtime, host and frontend algorithms are unchanged.
+See [native contracts and fast loops](../../docs/self_hosted/native-parity.md).
 
 Phase67 removes native continuations for already computed atoms and inlines
 exactly saturated genuine Base scalar calls. It retains ownership, liveness,

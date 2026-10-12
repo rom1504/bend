@@ -1,0 +1,1900 @@
+{
+  "kind": "phase69-selected-evidence-summary",
+  "version": 1,
+  "recorded": "2026-10-12T00:13:10.876488+00:00",
+  "status": "selected optimization and usable checked-B1 release qualified; portable evidence complete",
+  "scope": "Compact portable results for selected typed-build10. Repository-relative paths identify retained local artifacts; raw build artifacts are not implied to be tracked. SHA256 pins join these results to exact local evidence. No pooled full-language conformance denominator and no universal program-speed parity claim.",
+  "candidate": {
+    "name": "typed-build10",
+    "artifactKind": "checked equality-derived B1",
+    "attempt": {
+      "path": "selfhost/build/phase69/typed-build10/attempt.json",
+      "sha256": "fd2d26e1ce07c1a72988626fabe9316bfb783515d4ff2af43e9f8f2e7327bf7a",
+      "bytes": 306002
+    },
+    "api": {
+      "path": "selfhost/build/phase69/typed-build10/equality/api.mjs",
+      "sha256": "674e7960c7e8957452ffb0bdc6cb1f69ddaf8c03814617277886d1551fe16553",
+      "bytes": 2119259
+    },
+    "compilerManifest": {
+      "path": "selfhost/build/phase69/typed-build10/snapshot/src/compiler.json",
+      "sha256": "06cc807e1a7b175e85ca89a56cc9d0c7ac50396e0092bfe147e0e48409d18d0c",
+      "bytes": 4250
+    },
+    "flattenedSource": {
+      "path": "selfhost/build/phase69/typed-build10/snapshot/build/typed/snapshots/e88e179b31e1bd1a1cfacf5d31a3f71f665020039abd7ac864c5ef62b53332f2/compiler.bend",
+      "sha256": "75e10b92c0c55594b9c02de6d1c8cae56a5ebc129eb31004ef77dc86d23cedc8",
+      "bytes": 1547081
+    },
+    "checkedBuildValidation": {
+      "path": "selfhost/build/phase69/typed-build10/validation-001/report.json",
+      "sha256": "707f05dcb2a190c149f252e88ce17bbb0d31e48c981c06336151264914d60a17",
+      "bytes": 8900
+    }
+  },
+  "baseline": {
+    "name": "compiler23",
+    "attempt": {
+      "path": "selfhost/build/phase68/facts-build23/attempt.json",
+      "sha256": "d71d68f9355099a18aa149fd5bb22febd7d081ce50ef4083a1224ca228c0a47c",
+      "bytes": 304759
+    },
+    "api": {
+      "path": "selfhost/build/phase68/facts-build23/equality/api.mjs",
+      "sha256": "079c0be19a15d707147b4c3f3b381cb7387dd42fdfb6de87c9137b63dedb644b",
+      "bytes": 2084883
+    },
+    "compilerManifest": {
+      "path": "selfhost/build/phase68/facts-build23/snapshot/src/compiler.json",
+      "sha256": "99157494226a77a92f69e48a1ae4daf605fdc5b38f30cd6a62ed5db7104128e9",
+      "bytes": 4215
+    }
+  },
+  "upstream": {
+    "commit": "059266225b77c8ca256ac6b25ee5c21449bab151",
+    "checkout": "selfhost/.bootstrap/upstream-phase66"
+  },
+  "nativeProgramRuntime": {
+    "complete": true,
+    "compilerStage": "B1 emitted C, compiled by pinned Clang; not B2 compiler execution time",
+    "report": {
+      "path": "selfhost/build/phase69/typed10-comparison/report.json",
+      "sha256": "eb55f4c45eaf8a7ceca302f1e79ebdbeec407ae05485be2943417b5484b28ccd",
+      "bytes": 96442
+    },
+    "plan": {
+      "path": "selfhost/build/phase69/typed10-comparison/plan.json",
+      "sha256": "940fedb78c318fedbfc24fc157b07fcc084141081471b409417fa056a7d81746",
+      "bytes": 59347
+    },
+    "acquisition": {
+      "path": "selfhost/build/phase69/typed10-native/report.json",
+      "sha256": "b0756f8d444248231e3ccf0d2ae6c694e74545e36fd52d95eca332703f826324",
+      "bytes": 64155
+    },
+    "recipe": {
+      "path": "selfhost/build/phase69/typed10-recipe.json",
+      "sha256": "495f4554d7ba00e020f354560f827f62df3925f7b175bf69374d3b3858b6742a",
+      "bytes": 40789
+    },
+    "comparator": {
+      "path": "selfhost/build/phase69/methods01/compare-native-v2.py",
+      "sha256": "b09b38af16ecf4cce59c6893ef4e5123014566d740194da175dbcf11c11ecdd5",
+      "bytes": 5557
+    },
+    "oracle": {
+      "path": "selfhost/tools/performance/phase46/oracle.py",
+      "sha256": "d7ad109d37b5beb210dfd4942f6d5baa6a2e14a02abb57ac18db656a16d9d2ad",
+      "bytes": 4273
+    },
+    "method": {
+      "families": 6,
+      "rounds": 3,
+      "timedObservations": 54,
+      "balancedRoleOrder": true,
+      "roles": [
+        "baseline23",
+        "candidate",
+        "upstream"
+      ],
+      "inputCycle": 16,
+      "minimumQualifiedDurationMs": 100,
+      "threads": 1,
+      "gpu": "off",
+      "cpu": 3,
+      "clangFlags": [
+        "-std=c11",
+        "-O3"
+      ],
+      "linkFlags": [
+        "-lpthread",
+        "-lm"
+      ],
+      "toolchainBinaries": [
+        {
+          "name": "clang",
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def",
+          "bytes": 119320
+        },
+        {
+          "name": "ld.lld",
+          "sha256": "d32d5121d96810b624306e48faacc75e41f7302ad0e4865be63c3bbf8f4cd810",
+          "bytes": 6001368
+        }
+      ],
+      "runtimeScope": "Same wrapper, 16-input cycle, fixed warmups and measured repetitions per role. Four stdout lines: base, warm digest, measured digest, integer milliseconds. Execution excludes imports and C build; checksum formatting/printing included.",
+      "timingScope": "Fresh uninstrumented saved-binary execution. Excludes Bend emission and C build. Historical compiler23/upstream emission provenance retained; fresh candidate acquisition. Three samples per family/role, descriptive medians without confidence-interval claim."
+    },
+    "geomeanCandidateOverUpstream": 1.0331994107903297,
+    "geomeanBaseline23OverCandidate": 1.4793736849437966,
+    "geomeanBaseline23OverUpstream": 1.5284880196226496,
+    "correctObservations": 54,
+    "qualifiedObservations": 54,
+    "families": [
+      {
+        "case": "numeric",
+        "mediansMs": {
+          "baseline23": 252,
+          "candidate": 253,
+          "upstream": 257
+        },
+        "candidateOverUpstream": 0.9844357976653697,
+        "baseline23OverCandidate": 0.9960474308300395,
+        "work": {
+          "repetitions": 77504,
+          "warmups": 9680
+        },
+        "source": {
+          "path": "selfhost/tools/performance/phase46/numeric-batch.bend",
+          "sha256": "33da0ca9134f709c22b3e8dd577c8715c9a81cfa3f7fc29d0e303a23aed9316c",
+          "bytes": 1937
+        },
+        "candidateC": {
+          "path": "selfhost/build/phase69/typed10-native/numeric-selfhost/program.c",
+          "sha256": "0333792844daa9d6c4defbb14b67743bc451db9c769d52630ed7d03f20da74f6",
+          "bytes": 955177
+        },
+        "candidateExecutable": {
+          "path": "selfhost/build/phase69/typed10-native/numeric-selfhost/program",
+          "sha256": "d1d48273fe30b4e213c364c6df6fd521e3b2173922c13d134a6c4e71b9e6aadb",
+          "bytes": 179000
+        },
+        "samplesMs": {
+          "baseline23": [
+            252,
+            252,
+            253
+          ],
+          "candidate": [
+            253,
+            234,
+            255
+          ],
+          "upstream": [
+            253,
+            258,
+            257
+          ]
+        }
+      },
+      {
+        "case": "array",
+        "mediansMs": {
+          "baseline23": 171,
+          "candidate": 170,
+          "upstream": 170
+        },
+        "candidateOverUpstream": 1.0,
+        "baseline23OverCandidate": 1.0058823529411764,
+        "work": {
+          "repetitions": 61440,
+          "warmups": 7680
+        },
+        "source": {
+          "path": "selfhost/tools/performance/phase46/array-batch.bend",
+          "sha256": "cd989b0fc20dfab2e51cc4f790f699d740c4cff6a1c2b683cb8952b3073a3d10",
+          "bytes": 1934
+        },
+        "candidateC": {
+          "path": "selfhost/build/phase69/typed10-native/array-selfhost/program.c",
+          "sha256": "de4d1b2ff31e7be2ffdb818349ad7e33a98a69dcec9a1a3b377b57cd69925c6a",
+          "bytes": 983635
+        },
+        "candidateExecutable": {
+          "path": "selfhost/build/phase69/typed10-native/array-selfhost/program",
+          "sha256": "b87ff76721b32b35df43916116c329c3e0790fac4ef2ddc06a5861c581dde5c6",
+          "bytes": 186296
+        },
+        "samplesMs": {
+          "baseline23": [
+            171,
+            172,
+            169
+          ],
+          "candidate": [
+            170,
+            170,
+            169
+          ],
+          "upstream": [
+            170,
+            170,
+            169
+          ]
+        }
+      },
+      {
+        "case": "closures",
+        "mediansMs": {
+          "baseline23": 729,
+          "candidate": 169,
+          "upstream": 566
+        },
+        "candidateOverUpstream": 0.29858657243816256,
+        "baseline23OverCandidate": 4.313609467455621,
+        "work": {
+          "repetitions": 57888,
+          "warmups": 7232
+        },
+        "source": {
+          "path": "selfhost/tools/performance/phase46/closures-batch.bend",
+          "sha256": "ee3fbda1fa851d6d781977e538512cc868455e2cab091193e8ee90bdccb2a461",
+          "bytes": 1925
+        },
+        "candidateC": {
+          "path": "selfhost/build/phase69/typed10-native/closures-selfhost/program.c",
+          "sha256": "ef369300da656c465a8822cbe1470212296bc68ad367eeea87985065a7414d8b",
+          "bytes": 934713
+        },
+        "candidateExecutable": {
+          "path": "selfhost/build/phase69/typed10-native/closures-selfhost/program",
+          "sha256": "72627d516ccd3dc57079b9d98cce423e1d6c39e8372555100f1c820e7379fe8f",
+          "bytes": 176408
+        },
+        "samplesMs": {
+          "baseline23": [
+            729,
+            728,
+            737
+          ],
+          "candidate": [
+            170,
+            169,
+            169
+          ],
+          "upstream": [
+            631,
+            566,
+            564
+          ]
+        }
+      },
+      {
+        "case": "tree",
+        "mediansMs": {
+          "baseline23": 664,
+          "candidate": 390,
+          "upstream": 273
+        },
+        "candidateOverUpstream": 1.4285714285714286,
+        "baseline23OverCandidate": 1.7025641025641025,
+        "work": {
+          "repetitions": 1280,
+          "warmups": 160
+        },
+        "source": {
+          "path": "selfhost/tools/performance/phase46/tree-batch.bend",
+          "sha256": "2abe55fb145b2ac73e770ed263d469cb2a6f2fac95edac228d69d161fe4c3a55",
+          "bytes": 1928
+        },
+        "candidateC": {
+          "path": "selfhost/build/phase69/typed10-native/tree-selfhost/program.c",
+          "sha256": "5429e0e805dbb957ece537b91beb843cee238fffeaff513ffbff7a35a032e8b4",
+          "bytes": 1122458
+        },
+        "candidateExecutable": {
+          "path": "selfhost/build/phase69/typed10-native/tree-selfhost/program",
+          "sha256": "4837a3b18027e4f3eb0e7df70c07abc5168c251893ce4f95fef3fc30bfee1df8",
+          "bytes": 222720
+        },
+        "samplesMs": {
+          "baseline23": [
+            664,
+            679,
+            663
+          ],
+          "candidate": [
+            390,
+            390,
+            396
+          ],
+          "upstream": [
+            273,
+            273,
+            275
+          ]
+        }
+      },
+      {
+        "case": "map",
+        "mediansMs": {
+          "baseline23": 722,
+          "candidate": 697,
+          "upstream": 437
+        },
+        "candidateOverUpstream": 1.5949656750572083,
+        "baseline23OverCandidate": 1.035868005738881,
+        "work": {
+          "repetitions": 1152,
+          "warmups": 144
+        },
+        "source": {
+          "path": "selfhost/tools/performance/phase46/map-batch.bend",
+          "sha256": "9e4ae9cda2f58a92d630e2946843d02149b30696ad88b45c2e09db91538ccf28",
+          "bytes": 1926
+        },
+        "candidateC": {
+          "path": "selfhost/build/phase69/typed10-native/map-selfhost/program.c",
+          "sha256": "e0e6ea60d821dbd6489141ef5081fe6a35df92ae15c791c901c4f46ae7ad5780",
+          "bytes": 1716483
+        },
+        "candidateExecutable": {
+          "path": "selfhost/build/phase69/typed10-native/map-selfhost/program",
+          "sha256": "c2b5a7d66a7c413fd155c7e8ca7ac4da7f296f717e5e71f5e2d1467740b7a5cd",
+          "bytes": 436976
+        },
+        "samplesMs": {
+          "baseline23": [
+            719,
+            802,
+            722
+          ],
+          "candidate": [
+            698,
+            697,
+            695
+          ],
+          "upstream": [
+            428,
+            437,
+            495
+          ]
+        }
+      },
+      {
+        "case": "lexer",
+        "mediansMs": {
+          "baseline23": 612,
+          "candidate": 445,
+          "upstream": 245
+        },
+        "candidateOverUpstream": 1.816326530612245,
+        "baseline23OverCandidate": 1.3752808988764045,
+        "work": {
+          "repetitions": 448,
+          "warmups": 48
+        },
+        "source": {
+          "path": "selfhost/tools/performance/phase46/lexer-batch.bend",
+          "sha256": "e3b661ec47669617618635dc4c69a19bf837e018bd2100b251babe695307206c",
+          "bytes": 1921
+        },
+        "candidateC": {
+          "path": "selfhost/build/phase69/typed10-native/lexer-selfhost/program.c",
+          "sha256": "5d9f267bd9509942f1c33a140abe31dd6ef65b739a68c81114445a7af87ccac0",
+          "bytes": 1240671
+        },
+        "candidateExecutable": {
+          "path": "selfhost/build/phase69/typed10-native/lexer-selfhost/program",
+          "sha256": "a27eb33cf04a26aadc7b798d7a4a70fd8d998bb6c0a91381e758c9607bb9f7e3",
+          "bytes": 231768
+        },
+        "samplesMs": {
+          "baseline23": [
+            612,
+            614,
+            612
+          ],
+          "candidate": [
+            445,
+            444,
+            491
+          ],
+          "upstream": [
+            244,
+            250,
+            245
+          ]
+        }
+      }
+    ],
+    "limitation": "The aggregate is near parity on these six fixed-work families; closures are much faster than upstream while tree/map/lexer remain slower. This is not evidence that every program has reached parity."
+  },
+  "nativeControls": {
+    "complete": true,
+    "pass": true,
+    "report": {
+      "path": "selfhost/build/phase69/typed10-all-controls/execution/report.json",
+      "sha256": "750ed70ea4f9cb7912a064d846a48f0cc570585e19005f73d35adff0c7670270",
+      "bytes": 9212
+    },
+    "pairedReport": {
+      "path": "selfhost/build/phase69/typed10-all-controls/execution/selected/paired.json",
+      "sha256": "95cbdf1555f645c729856739c89214b1ee6986c4818ce0d6c562379c07904ea0",
+      "bytes": 75487
+    },
+    "plan": {
+      "path": "selfhost/build/phase69/typed10-all-controls/plan.json",
+      "sha256": "dccf792cb80bba44709b8122e078386b99492a862bfbbc2f8204cad7d6324365",
+      "bytes": 168734
+    },
+    "selection": {
+      "path": "selfhost/build/phase69/typed10-all-controls/selection.json",
+      "sha256": "5a54a66349863c83c95635d3b45dd79b720f830903d43cb6ed8bab8a84f19d82",
+      "bytes": 16822
+    },
+    "referencePass": 71,
+    "candidatePass": 71,
+    "exactAgreement": 71,
+    "discrepancies": 0,
+    "externalFixtures": 46,
+    "selectedComplete": true,
+    "fullSuiteComplete": false,
+    "scope": "Selected probes only. Exact fixture or explicit acceptance oracles and compiler agreement are separate. Complete full-suite conformance is never inferred.",
+    "environment": "Run with approved escalation and unchanged CPU/RSS guards after managed-sandbox Node24 spawnSync default-stdin PIPE produced EPERM despite completed child commands. Failed earlier attempts remain retained."
+  },
+  "rawNativeControls": {
+    "complete": true,
+    "pass": true,
+    "report": {
+      "path": "selfhost/build/phase69/typed10-raw/execution/report.json",
+      "sha256": "b0853770baeeb7059d27b3534cbd4f0d94de109a313ee3765ae7a2dcde246d14",
+      "bytes": 57803
+    },
+    "plan": {
+      "path": "selfhost/build/phase69/typed10-raw/plan.json",
+      "sha256": "ffd3232b5256eaf1cbe2281d38cb1e7d5177c72feb4e982ca8f98e25a6f46f75",
+      "bytes": 204691
+    },
+    "inputs": [
+      {
+        "path": "selfhost/build/phase69/typed10-recipe.json",
+        "sha256": "495f4554d7ba00e020f354560f827f62df3925f7b175bf69374d3b3858b6742a",
+        "bytes": 40789
+      },
+      {
+        "path": "selfhost/build/phase68/facts-build23/equality/api.mjs",
+        "sha256": "079c0be19a15d707147b4c3f3b381cb7387dd42fdfb6de87c9137b63dedb644b",
+        "bytes": 2084883
+      },
+      {
+        "path": "selfhost/build/phase69/typed-build10/equality/api.mjs",
+        "sha256": "674e7960c7e8957452ffb0bdc6cb1f69ddaf8c03814617277886d1551fe16553",
+        "bytes": 2119259
+      },
+      {
+        "path": "selfhost/src/runtime/native/runtime.c",
+        "sha256": "0e52adc8d206f7c07944567adddaefaedfb7830ad23d2ba6bbca64dd2e4fb245",
+        "bytes": 83387
+      },
+      {
+        "path": "selfhost/tools/performance/phase69/methods/raw-controls-custom-v2.mjs",
+        "sha256": "9b679f257520fbcda5b72b79aae531a28004de86c229a2397eecb9c89a62c4f6",
+        "bytes": 15126
+      },
+      {
+        "path": "selfhost/build/phase69/typed10-raw/cases.json",
+        "sha256": "0c57b348e68775b193ddbc0f2974490e1bcb9bc80518ad17f7b117d98f70723b",
+        "bytes": 1051
+      },
+      {
+        "path": "selfhost/tools/performance/phase69/reachability/controls/raw-cases-v2.mjs",
+        "sha256": "eb976138e59b12fdee46b75a7ae6f10bc1524f903229740715b40bc4fd7ea167",
+        "bytes": 2942
+      },
+      {
+        "path": "selfhost/tools/performance/phase69/static-data/raw-review-cases-v2.mjs",
+        "sha256": "c8b730a425d542c04320252ba4be893dcb819dd850bc622448d56f5a7b8147df",
+        "bytes": 3801
+      },
+      {
+        "path": "selfhost/tools/performance/phase69/closure-factory/raw-combinator-cases-v5.mjs",
+        "sha256": "2d4db4ab2e7ade9ecc0fcf20d5640c7a3981854aa89a8f7a700b74d9083be311",
+        "bytes": 4427
+      },
+      {
+        "path": "selfhost/tools/performance/phase69/node-reuse/raw-scalar-cases.mjs",
+        "sha256": "b716f1f7e8b887000190d5be0d2fa981c717d7fcd63a76dd956308b4bf62551c",
+        "bytes": 2185
+      }
+    ],
+    "resultRows": 28,
+    "inheritedResultRows": 12,
+    "addedRawCases": 16,
+    "distinctWitnessNames": 23,
+    "rowKinds": {
+      "compile-error": 2,
+      "native-execution": 8,
+      "emitted-C-mocked-shared-error-diagnostic": 2,
+      "custom-raw-core": 16
+    },
+    "intentionalBehaviorChanges": [],
+    "scope": "Raw core/control observations compare compiler23 and candidate without claiming source type acceptance. Runtime witnesses use threads1 and4 with GPU off; established diagnostics require exact first errors. Two mocked shared-error rows run on CPU and make no device-conformance claim. Forged-static refusal requires nonempty error and no emitted C, not identical unsupported-node wording. Dead/masked bang selection and static-word invariants are explicit structural oracles."
+  },
+  "staticImageBoundaries": {
+    "complete": true,
+    "pass": true,
+    "report": {
+      "path": "selfhost/build/phase69/typed10-static-boundaries/report.json",
+      "sha256": "532bebc44de195f97a23d6c17a03d87b6cdc391f31ea4e5cb2fc8a429e01d442",
+      "bytes": 3359
+    },
+    "originalApiPreserved": true,
+    "diagnosticApi": {
+      "path": "selfhost/build/phase69/typed10-static-boundaries/query-api.mjs",
+      "sha256": "18d84de3cd2af1d2813d6610ea20d2fc39f9757ac0984ca8224fa45e75b8a52a",
+      "bytes": 2119566
+    },
+    "scope": "Pure candidate helper, actual 65534/65535-word prefixes; no C/native execution or whole-emitter cap claim.",
+    "rows": [
+      {
+        "name": "exact-fit-at-bound",
+        "pass": true,
+        "tag": "NStatic",
+        "imageWords": 65536,
+        "offset": 65534
+      },
+      {
+        "name": "new-node-refused-after-bound",
+        "pass": true,
+        "tag": "Ctr",
+        "imageWords": 65536,
+        "offset": 0
+      },
+      {
+        "name": "interned-node-reused-at-bound",
+        "pass": true,
+        "tag": "NStatic",
+        "imageWords": 65536,
+        "offset": 65534
+      },
+      {
+        "name": "dynamic-parent-retains-static-child",
+        "pass": true,
+        "tag": "Ctr",
+        "imageWords": 65536,
+        "offset": 0
+      },
+      {
+        "name": "nullary-still-packed-at-bound",
+        "pass": true,
+        "tag": "NStatic",
+        "imageWords": 65536,
+        "offset": 0
+      },
+      {
+        "name": "scalar-field-still-packed-at-bound",
+        "pass": true,
+        "tag": "NStatic",
+        "imageWords": 65536,
+        "offset": 0
+      },
+      {
+        "name": "two-words-refused-with-one-free",
+        "pass": true,
+        "tag": "Ctr",
+        "imageWords": 65535,
+        "offset": 0
+      }
+    ]
+  },
+  "jsProtection": {
+    "complete": true,
+    "report": {
+      "path": "selfhost/build/phase69/typed10-js-closure/report.json",
+      "sha256": "d7bdea875f1f0ad7e41a7d617b9306f09420059927e5b26f8a358c0d7093a6b7",
+      "bytes": 3565
+    },
+    "unchangedFunctions": 2992,
+    "changedFunctions": [],
+    "exportedRoots": 93,
+    "scope": "Exact generated closure of all exported roots not starting nc_, runtime and public wrappers; no changed function permitted.",
+    "limitation": "Structural byte protection against compiler23; not a newly timed JS benchmark or full JS conformance rerun."
+  },
+  "genuineB2": {
+    "complete": true,
+    "imagePins": {
+      "path": "selfhost/build/phase69/typed10-b2-v2/image-pins.json",
+      "sha256": "43eab1b6263488ef1b24695c328a70d5df937b21aa5c5d58eb7df15d7a00a348",
+      "bytes": 4905
+    },
+    "image": {
+      "path": "selfhost/build/phase69/typed10-b2-v2/full/compiler.mjs",
+      "sha256": "c858dfa5424c534444a2b733c0336a7009fc260da272d64c52f33a188d3f066e",
+      "bytes": 4365136
+    },
+    "source": {
+      "path": "selfhost/build/phase69/typed-build10/snapshot/build/typed/snapshots/e88e179b31e1bd1a1cfacf5d31a3f71f665020039abd7ac864c5ef62b53332f2/compiler.bend",
+      "sha256": "75e10b92c0c55594b9c02de6d1c8cae56a5ebc129eb31004ef77dc86d23cedc8",
+      "bytes": 1547081
+    },
+    "directRuntime": {
+      "path": "selfhost/build/phase69/typed-build10/snapshot/src/runtime/js/direct.mjs",
+      "sha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575",
+      "bytes": 13862
+    },
+    "emissionReport": {
+      "path": "selfhost/build/phase69/typed10-b2-v2/full/report.json",
+      "sha256": "9bf5e3ce229f8521068fee6d26f5503c426458f1f49969178622a0bfffe251c5",
+      "bytes": 13531
+    },
+    "driverComparison": {
+      "path": "selfhost/build/phase69/typed10-b2-v2/driver-comparison.json",
+      "sha256": "2bc47eb55288a0321f747318182b3f98e427acce40ff2f25db7b84b75652bf53",
+      "bytes": 1098
+    },
+    "driverObservations": 8,
+    "driverExact": true,
+    "driverScope": "Exact ordinary driver observations and JS/C emitted bytes; JS result executed. C emitted only. No compiler fixed-point claim.",
+    "emissionChecking": {
+      "lane": "inherited-exact-bootstrap",
+      "freshSelfCheck": false,
+      "sourceSha256": "75e10b92c0c55594b9c02de6d1c8cae56a5ebc129eb31004ef77dc86d23cedc8",
+      "scope": "Exact subject source proof inherited; current generator still performs frontend completion and emission proofs."
+    },
+    "limitation": "Image generation and8 driver checks are qualified by the separate selfHostingQualification section. No invented checked-development B2 sidecar; B2 C-emission timing and exact-output evidence are in nativeCompilation."
+  },
+  "simplicity": {
+    "census": {
+      "path": "selfhost/build/phase69/typed10-source-evidence-inventory01.json",
+      "sha256": "d86d2d3c9898de877d28b4fb8e7d6d9be0df185b77b8f46d05b9881115e454e8",
+      "bytes": 142131
+    },
+    "baseline": {
+      "physical": 29821,
+      "code": 24424,
+      "definitions": 3471,
+      "laws": 643,
+      "types": 122,
+      "modules": 120
+    },
+    "candidate": {
+      "physical": 30261,
+      "code": 24768,
+      "definitions": 3533,
+      "laws": 644,
+      "types": 126,
+      "modules": 121
+    },
+    "deltas": {
+      "physical": 440,
+      "code": 344,
+      "definitions": 62,
+      "laws": 1,
+      "types": 4,
+      "modules": 1
+    },
+    "physicalPercentIncrease": 1.4754703061600885,
+    "codePercentIncrease": 1.408450704225352,
+    "changedModules": [
+      {
+        "module": "selfhost/src/back/native/book.bend",
+        "deltas": {
+          "physical": 11,
+          "code": 7,
+          "definitions": 2,
+          "laws": 0,
+          "types": 0
+        },
+        "candidate": {
+          "path": "selfhost/build/phase69/typed-build10/snapshot/src/back/native/book.bend",
+          "sha256": "d87dbecc7fb784ce66a3c707e959278adcd7a3f4bebea3235c8791cdc3d5bae3",
+          "bytes": 15461
+        },
+        "baseline": {
+          "path": "selfhost/build/phase68/facts-build23/snapshot/src/back/native/book.bend",
+          "sha256": "6973f46e3f30dd46dc2743910bf9d66da3cd5995fb29da36c92fc1066fe1fbb6",
+          "bytes": 14910
+        }
+      },
+      {
+        "module": "selfhost/src/back/native/bridge.bend",
+        "deltas": {
+          "physical": 4,
+          "code": 3,
+          "definitions": 1,
+          "laws": 0,
+          "types": 0
+        },
+        "candidate": {
+          "path": "selfhost/build/phase69/typed-build10/snapshot/src/back/native/bridge.bend",
+          "sha256": "6a844d2f8abfb73f090a2afe18bb35771591cd9d58f0d041ce5d86c5afcc1d29",
+          "bytes": 32514
+        },
+        "baseline": {
+          "path": "selfhost/build/phase68/facts-build23/snapshot/src/back/native/bridge.bend",
+          "sha256": "d45747728b22d54d31a621d43f3f81cdce2fce94efbed0cf71cf38e42f8c2706",
+          "bytes": 32091
+        }
+      },
+      {
+        "module": "selfhost/src/back/native/direct.bend",
+        "deltas": {
+          "physical": 99,
+          "code": 79,
+          "definitions": 13,
+          "laws": 0,
+          "types": 0
+        },
+        "candidate": {
+          "path": "selfhost/build/phase69/typed-build10/snapshot/src/back/native/direct.bend",
+          "sha256": "a2ab779ad8296e07e56b5ebcb6e8e715bbff64d025f31527eab456e73856921c",
+          "bytes": 16426
+        },
+        "baseline": {
+          "path": "selfhost/build/phase68/facts-build23/snapshot/src/back/native/direct.bend",
+          "sha256": "a860340dc21c179551e0d1b461520025682b2a5d891f1705192928edbcf337a6",
+          "bytes": 10757
+        }
+      },
+      {
+        "module": "selfhost/src/back/native/emit.bend",
+        "deltas": {
+          "physical": 11,
+          "code": 7,
+          "definitions": 1,
+          "laws": 0,
+          "types": 0
+        },
+        "candidate": {
+          "path": "selfhost/build/phase69/typed-build10/snapshot/src/back/native/emit.bend",
+          "sha256": "59dbc319b119b76a76fa850b9888f5d89bb5a73a888f410b6b6975e65caf46e5",
+          "bytes": 9953
+        },
+        "baseline": {
+          "path": "selfhost/build/phase68/facts-build23/snapshot/src/back/native/emit.bend",
+          "sha256": "79930350592906285d17bdd9daf3483394e8d78308e5fdc2528ab540c516f0d9",
+          "bytes": 9247
+        }
+      },
+      {
+        "module": "selfhost/src/back/native/flat.bend",
+        "deltas": {
+          "physical": 53,
+          "code": 40,
+          "definitions": 9,
+          "laws": 0,
+          "types": 0
+        },
+        "candidate": {
+          "path": "selfhost/build/phase69/typed-build10/snapshot/src/back/native/flat.bend",
+          "sha256": "36251d51b1d70ce59772cf8bfbdd453520384b738b1987ad25a582a10416406f",
+          "bytes": 18152
+        },
+        "baseline": {
+          "path": "selfhost/build/phase68/facts-build23/snapshot/src/back/native/flat.bend",
+          "sha256": "bc6e4c1d4a5c11f6a0a229bdf3690f3a4c039974336fb33aa65ae843004476fa",
+          "bytes": 14808
+        }
+      },
+      {
+        "module": "selfhost/src/back/native/product.bend",
+        "deltas": {
+          "physical": 0,
+          "code": 0,
+          "definitions": 0,
+          "laws": 0,
+          "types": 0
+        },
+        "candidate": {
+          "path": "selfhost/build/phase69/typed-build10/snapshot/src/back/native/product.bend",
+          "sha256": "f00ce794338837096f1fc8d66a713efbb12227651ddba90d98edb6569a562e57",
+          "bytes": 24945
+        },
+        "baseline": {
+          "path": "selfhost/build/phase68/facts-build23/snapshot/src/back/native/product.bend",
+          "sha256": "604eda0f0357f8d65f2680ba80166669ad1e12c9898a2fd4f8ce794359e609c8",
+          "bytes": 24823
+        }
+      },
+      {
+        "module": "selfhost/src/back/native/scalar-array.bend",
+        "deltas": {
+          "physical": 0,
+          "code": 0,
+          "definitions": 0,
+          "laws": 0,
+          "types": 0
+        },
+        "candidate": {
+          "path": "selfhost/build/phase69/typed-build10/snapshot/src/back/native/scalar-array.bend",
+          "sha256": "67a4935b166aa530a1018a855e724a3c5027c36b1879df2dc5288f433e90ebf3",
+          "bytes": 5238
+        },
+        "baseline": {
+          "path": "selfhost/build/phase68/facts-build23/snapshot/src/back/native/scalar-array.bend",
+          "sha256": "9a55d615e0b3527e08b976b8344c8aeca91e1d5b8d0dfc2eed92ec98531b5c06",
+          "bytes": 5062
+        }
+      },
+      {
+        "module": "selfhost/src/back/native/static.bend",
+        "deltas": {
+          "physical": 262,
+          "code": 208,
+          "definitions": 36,
+          "laws": 1,
+          "types": 4
+        },
+        "candidate": {
+          "path": "selfhost/build/phase69/typed-build10/snapshot/src/back/native/static.bend",
+          "sha256": "13669f4832252c79e22a9b9acf1a5ffdf2993d7ec243a43b0187101c0bb3b02d",
+          "bytes": 11856
+        },
+        "baseline": null
+      }
+    ],
+    "liveSourceDifferencesAtCensus": [],
+    "scope": "Frozen registered Bend modules counted once, matching Phase68 physical/code-line rules. Definitions/laws/types are syntactic counts, not semantic-concept complexity. Runtime/host, generated C and diagnostic infrastructure are excluded from Bend counts. Evidence list is a point-in-time status inventory while root may still run; it is not a final qualification join, pooled denominator or performance conclusion.",
+    "finalCensus": {
+      "path": "selfhost/build/phase69/typed10-source-evidence-final01.json",
+      "sha256": "541dff0470881bf936f459162d9946ab80bebc92c4782c4d81e78f3bd89ec044",
+      "bytes": 143327
+    },
+    "liveSourceDifferencesAtFinalCensus": []
+  },
+  "timeSnapshot": {
+    "report": {
+      "path": "selfhost/build/phase69/time-account-snapshot01.json",
+      "sha256": "3dbb099c97d1a4151d1c7471fb1e7f8c61b3527708cb15f46884da3e434d2b19",
+      "bytes": 362560
+    },
+    "uniqueGuardReceipts": 407,
+    "guardOccupancySeconds": 1105.80411195755,
+    "summedGuardSeconds": 1105.7920824610628,
+    "firstTargetStartUtc": "2026-10-11T23:22:06.316542+00:00",
+    "lastTargetFinishUtc": "2026-10-12T00:08:20.546970+00:00",
+    "firstToLastTargetSpanSeconds": 2774.2304282188416,
+    "peakTreeRssBytes": 1627656192,
+    "failedGuardReceipts": 11,
+    "scope": "Interim guard-receipt accounting only. Excludes work before first target and non-target/source preparation. Not finished-phase elapsed time; an in-flight target may not have written its receipt."
+  },
+  "notYetIncluded": [],
+  "nativeCompilation": {
+    "cleanComplete": true,
+    "cleanPass": true,
+    "plan": {
+      "path": "selfhost/build/phase69/typed10-compilation01/plan.json",
+      "sha256": "9c23de1c7ffa8e936dda79a0003df1e6411f8a2005fe0d82c2408fa1db5ca45a",
+      "bytes": 142516
+    },
+    "analysis": {
+      "path": "selfhost/build/phase69/typed10-compilation01-summary.json",
+      "sha256": "e7a4b3791b9f61e5bab2bb76c22bf2064f1b956e250a68f7f6c56a006290bbd4",
+      "bytes": 143646
+    },
+    "cleanRequests": 27,
+    "preparationJobs": 2,
+    "families": [
+      {
+        "case": "numeric",
+        "roles": {
+          "b1": {
+            "samples": 3,
+            "requestMedianMs": 2267.989242,
+            "importsMedianMs": 57.87635799999998
+          },
+          "b2": {
+            "samples": 3,
+            "requestMedianMs": 1548.854936,
+            "importsMedianMs": 106.33274900000004
+          },
+          "typescript": {
+            "samples": 3,
+            "requestMedianMs": 712.7307370000001,
+            "importsMedianMs": 226.49096800000007
+          }
+        },
+        "requestRatios": {
+          "b1": 3.1821122960773893,
+          "b2": 2.1731277403853566
+        },
+        "positionBalanced": true
+      },
+      {
+        "case": "array",
+        "roles": {
+          "b1": {
+            "samples": 3,
+            "requestMedianMs": 2339.8454250000004,
+            "importsMedianMs": 58.549413999999956
+          },
+          "b2": {
+            "samples": 3,
+            "requestMedianMs": 1559.323342,
+            "importsMedianMs": 105.055789
+          },
+          "typescript": {
+            "samples": 3,
+            "requestMedianMs": 716.263529,
+            "importsMedianMs": 222.4476800000001
+          }
+        },
+        "requestRatios": {
+          "b1": 3.266738190993389,
+          "b2": 2.1770246269233122
+        },
+        "positionBalanced": true
+      },
+      {
+        "case": "lexer",
+        "roles": {
+          "b1": {
+            "samples": 3,
+            "requestMedianMs": 2873.314187,
+            "importsMedianMs": 57.728053999999986
+          },
+          "b2": {
+            "samples": 3,
+            "requestMedianMs": 1945.9146950000002,
+            "importsMedianMs": 104.19378699999999
+          },
+          "typescript": {
+            "samples": 3,
+            "requestMedianMs": 885.3519710000002,
+            "importsMedianMs": 223.064866
+          }
+        },
+        "requestRatios": {
+          "b1": 3.245391980948105,
+          "b2": 2.197899545874507
+        },
+        "positionBalanced": true
+      }
+    ],
+    "geomeanRequestRatios": {
+      "b1": 3.2312135653827663,
+      "b2": 2.1826569314305084
+    },
+    "basePreparation": [
+      {
+        "role": "b1",
+        "timingsMs": {
+          "importsMs": 58.647643000000016,
+          "prepareBaseMs": 3272.2283899999998
+        }
+      },
+      {
+        "role": "b2",
+        "timingsMs": {
+          "importsMs": 105.027424,
+          "prepareBaseMs": 2921.250618
+        }
+      }
+    ],
+    "exactCRequests": 27,
+    "allCampaignComplete": false,
+    "deliberatelyOmittedDiagnosticJobs": [
+      "profile-numeric-b2",
+      "profile-array-b2",
+      "profile-lexer-b2",
+      "profile-numeric-b1"
+    ],
+    "closedJobReceipts": [
+      {
+        "job": "prepare-b1",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/prepare-b1/report.json",
+          "sha256": "514ef7c2fd855bf5cdec46e278db7f52ad4e72b6595f4fe49c0e9307ab4c73d6",
+          "bytes": 64456
+        }
+      },
+      {
+        "job": "prepare-b2",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/prepare-b2/report.json",
+          "sha256": "7a87faae24f196cd0f9dafe491a31ec5959bce9073b30cc89378750b95937884",
+          "bytes": 64441
+        }
+      },
+      {
+        "job": "clean-0-numeric-typescript",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-0-numeric-typescript/report.json",
+          "sha256": "dc0acbee64b6f6591f99b7b2daa7ac590db96bee183fbee4318c45b0eb31dee8",
+          "bytes": 64918
+        }
+      },
+      {
+        "job": "clean-0-numeric-b1",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-0-numeric-b1/report.json",
+          "sha256": "f5ffc52e2d00b4633531f5f6a12f3fd3bac777d4db9cde5e15125878e0b92ff8",
+          "bytes": 68313
+        }
+      },
+      {
+        "job": "clean-0-numeric-b2",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-0-numeric-b2/report.json",
+          "sha256": "c8785d0b97d40082588d0e5766dfe1c31e57dfcfd27dad821011ab63527cfeb7",
+          "bytes": 68314
+        }
+      },
+      {
+        "job": "clean-0-array-b1",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-0-array-b1/report.json",
+          "sha256": "7a024251deee90ea1c5eb002ca2a55cd1143676322947b113f6843d976018aae",
+          "bytes": 68305
+        }
+      },
+      {
+        "job": "clean-0-array-b2",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-0-array-b2/report.json",
+          "sha256": "e69d260f26c3ef891a3052b2609023f98eac2e4c07be415e3c78a1a830f0b891",
+          "bytes": 68305
+        }
+      },
+      {
+        "job": "clean-0-array-typescript",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-0-array-typescript/report.json",
+          "sha256": "84fca20021d865863ced3e5ee8e94679baeb399a8d7f4a8be753175f3f6a9a28",
+          "bytes": 64894
+        }
+      },
+      {
+        "job": "clean-0-lexer-b2",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-0-lexer-b2/report.json",
+          "sha256": "c9f833a551ab8a1cba874c00f5cf1c809318ce9a4f542c078910a34a0a82a29a",
+          "bytes": 68298
+        }
+      },
+      {
+        "job": "clean-0-lexer-typescript",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-0-lexer-typescript/report.json",
+          "sha256": "320abc7e03e3cffbda3e966c2e85b3a44deffc78c4656f216c7c3255509b6fa0",
+          "bytes": 64916
+        }
+      },
+      {
+        "job": "clean-0-lexer-b1",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-0-lexer-b1/report.json",
+          "sha256": "79b76f9b036632d8f639297c238daa824c96b7e5ae6c3002790c6d814c826a2d",
+          "bytes": 68291
+        }
+      },
+      {
+        "job": "clean-1-numeric-b1",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-1-numeric-b1/report.json",
+          "sha256": "389e9bad5853650526253fab0b6c03b6db77dd040efad9d0662b20891ece5be9",
+          "bytes": 68313
+        }
+      },
+      {
+        "job": "clean-1-numeric-b2",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-1-numeric-b2/report.json",
+          "sha256": "a4eddb9cecb8c194cedbb2c61b94f16c0bc05b726c5099b285c0ddb25ff9b612",
+          "bytes": 68321
+        }
+      },
+      {
+        "job": "clean-1-numeric-typescript",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-1-numeric-typescript/report.json",
+          "sha256": "5886093136ec21ce3e4c39685c388ba4b77acccbfe7feab9e69ade3f54ea9fe1",
+          "bytes": 64920
+        }
+      },
+      {
+        "job": "clean-1-array-b2",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-1-array-b2/report.json",
+          "sha256": "e5e8a2581ffd302d541b4e3024cce888c70147b24721d8a2d8d6d657073625d7",
+          "bytes": 68290
+        }
+      },
+      {
+        "job": "clean-1-array-typescript",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-1-array-typescript/report.json",
+          "sha256": "2c7edb940514e5bfe3d9e415e63f9b85f130de28da42044acd1ceee0072a21cd",
+          "bytes": 64894
+        }
+      },
+      {
+        "job": "clean-1-array-b1",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-1-array-b1/report.json",
+          "sha256": "2717cbf6a0a91b689b74ac71eadee281be1f7308813ad658007ae01f49b74dc6",
+          "bytes": 68298
+        }
+      },
+      {
+        "job": "clean-1-lexer-typescript",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-1-lexer-typescript/report.json",
+          "sha256": "87a7d01bef46a5ce00ef14ed63adf2518f3a7eea8af75096ce7295b353982ad8",
+          "bytes": 64902
+        }
+      },
+      {
+        "job": "clean-1-lexer-b1",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-1-lexer-b1/report.json",
+          "sha256": "1741fa9e2fb055fefe17aa6fea38b50cf9780b3cae5e87582c0fcb71b146ae6e",
+          "bytes": 68290
+        }
+      },
+      {
+        "job": "clean-1-lexer-b2",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-1-lexer-b2/report.json",
+          "sha256": "864d468fb80293befd10b95c6ca474fc05d032dd63472ad13cb9ecf854801de5",
+          "bytes": 68298
+        }
+      },
+      {
+        "job": "clean-2-numeric-b2",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-2-numeric-b2/report.json",
+          "sha256": "d2728cf3c2b867f549db4d01b6d69cd43100538e79678f07f87efa12ef3e17f1",
+          "bytes": 68314
+        }
+      },
+      {
+        "job": "clean-2-numeric-typescript",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-2-numeric-typescript/report.json",
+          "sha256": "e6c1bace32f5d945ace3659a82687dafae9a67384e9399ed27a42d0e6786a9c6",
+          "bytes": 64912
+        }
+      },
+      {
+        "job": "clean-2-numeric-b1",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-2-numeric-b1/report.json",
+          "sha256": "627facfc8562d6163230d10a9ff2885533fd21cfe6d9207d62f9b0cffd584f48",
+          "bytes": 68313
+        }
+      },
+      {
+        "job": "clean-2-array-typescript",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-2-array-typescript/report.json",
+          "sha256": "e1d5c64d65ff4987698f19aad4fd35212630294dcc391018bc0a567a060bfbba",
+          "bytes": 64894
+        }
+      },
+      {
+        "job": "clean-2-array-b1",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-2-array-b1/report.json",
+          "sha256": "02d09d76d6f5f2d49388e2a4c7ec456ba7d3c6ca33d1411bef353a248c6f7af8",
+          "bytes": 68298
+        }
+      },
+      {
+        "job": "clean-2-array-b2",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-2-array-b2/report.json",
+          "sha256": "1d6511f12244a28e32175456058b60fd0765ad149684559e8f51d6d846aa6d16",
+          "bytes": 68298
+        }
+      },
+      {
+        "job": "clean-2-lexer-b1",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-2-lexer-b1/report.json",
+          "sha256": "4d3d3a4ef5cc1f51fefd6363d5be92bff23d665fdf71fa78d0583efe689a411c",
+          "bytes": 68290
+        }
+      },
+      {
+        "job": "clean-2-lexer-b2",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-2-lexer-b2/report.json",
+          "sha256": "859812c09c8d818198156774660c0fb51358117ecb899a81059cf5ad89cc7952",
+          "bytes": 68291
+        }
+      },
+      {
+        "job": "clean-2-lexer-typescript",
+        "report": {
+          "path": "selfhost/build/phase69/typed10-compilation01/runs/clean-2-lexer-typescript/report.json",
+          "sha256": "5941c504af9dbb7dd963eb0e6b2856a06c8a4169d6c774a7cb26cd0a3b61ac95",
+          "bytes": 64909
+        }
+      }
+    ],
+    "scope": "Fresh processes and mandatory prepared Bend Base. Imports/API loading, explicit preparation, full checked C-emission request, Clang and runtime are separate clocks. TS ordinary book_load checks Base within its request. Exact C must match independently validated native acquisitions from the separately identified oracleAttempt; fresh selected B1/B2 workers earn this complete-byte equality and no earlier producer is relabeled. Profile workers are diagnostics, never timing samples. One round is a screen; three rotations are required for a position-balanced TS/B1/B2 comparison.",
+    "limitation": "Three selected source programs, three fresh-process rounds per compiler role. This measures checked C-emission request time, not generated-program execution, C build, or JS-emission parity. B1/B2 prepared Base before measured requests; upstream checks Base within request. Four optional profile jobs were intentionally omitted, so the original all-campaign analyzer remains complete:false while every clean request and preparation gate passed."
+  },
+  "allocationDiagnostics": {
+    "complete": true,
+    "report": {
+      "path": "selfhost/build/phase69/typed10-counts02/report.json",
+      "sha256": "a174d1bad377640298fcf52b204a760f205367cb01786bc411d4b38d4c6fbf70",
+      "bytes": 1983376
+    },
+    "plan": {
+      "path": "selfhost/build/phase69/typed10-counts02/plan.json",
+      "sha256": "c1c8f961bf2563f22ea6e4efffb16bc32af4e30005bb37681853a3b429afab01",
+      "bytes": 44261
+    },
+    "producer": {
+      "path": "selfhost/tools/performance/phase69/methods/count-selected-v2.py",
+      "sha256": "cd16571eddf0c18f0c9b7395b59c3f5ae7a8311b5450c31aa568d59072a38daf",
+      "bytes": 9471
+    },
+    "historicalReuse": {
+      "roles": [
+        "baseline23",
+        "upstream"
+      ],
+      "rows": 6,
+      "report": {
+        "path": "selfhost/build/phase68/parity-survey23-counts01/report.json",
+        "sha256": "9711a8bb7ba2bcb7ae50688753e30525a5321187e6907848985574fe1601aa26",
+        "bytes": 1529453
+      },
+      "wholeInstrumentedCReproduced": true,
+      "targetsRerun": false
+    },
+    "newTargets": "candidate only; each1/17repetitions, zero warmup, threads1/GPUoff",
+    "scope": "Exact inherited atomic operation/site instrumentation. Whole diagnostic C and independently checked historical outputs proved before cache reuse. Source-operation frequencies, not time attribution or performance timings.",
+    "deltaRule": "Per role and case: counters at17 measured workloads minus counters at1, zero warmup, exactly16 additional varying-input workloads; never clean timing credit.",
+    "deltas": [
+      {
+        "case": "closures",
+        "role": "baseline23",
+        "extraWorkloads": 16,
+        "counts": {
+          "heapAllocCalls": 12318,
+          "heapMissCalls": 0,
+          "heapFreeCalls": 12318,
+          "termKeepCalls": 4156,
+          "termDropCalls": 1,
+          "rfcWrapCalls": 3,
+          "rfcBumpCalls": 2,
+          "rfcBumpUnits": 2,
+          "rfcDecrementOperations": 2,
+          "requestedWords": 16425,
+          "invalidClassCalls": 0,
+          "hostSegmentEntries": 65783,
+          "genericClosureEntries": 16432
+        }
+      },
+      {
+        "case": "closures",
+        "role": "upstream",
+        "extraWorkloads": 16,
+        "counts": {
+          "heapAllocCalls": 8214,
+          "heapMissCalls": 0,
+          "heapFreeCalls": 8214,
+          "termKeepCalls": 0,
+          "termDropCalls": 0,
+          "rfcWrapCalls": 3,
+          "rfcBumpCalls": 1,
+          "rfcBumpUnits": 1,
+          "rfcDecrementOperations": 1,
+          "requestedWords": 12321,
+          "invalidClassCalls": 0,
+          "hostSegmentEntries": 28845,
+          "genericClosureEntries": 8224
+        }
+      },
+      {
+        "case": "lexer",
+        "role": "baseline23",
+        "extraWorkloads": 16,
+        "counts": {
+          "heapAllocCalls": 1596879,
+          "heapMissCalls": 0,
+          "heapFreeCalls": 1596879,
+          "termKeepCalls": 4575670,
+          "termDropCalls": 1,
+          "rfcWrapCalls": 597839,
+          "rfcBumpCalls": 2,
+          "rfcBumpUnits": 2,
+          "rfcDecrementOperations": 2,
+          "requestedWords": 2620503,
+          "invalidClassCalls": 0,
+          "hostSegmentEntries": 2784494,
+          "genericClosureEntries": 0
+        }
+      },
+      {
+        "case": "lexer",
+        "role": "upstream",
+        "extraWorkloads": 16,
+        "counts": {
+          "heapAllocCalls": 734878,
+          "heapMissCalls": 0,
+          "heapFreeCalls": 734878,
+          "termKeepCalls": 0,
+          "termDropCalls": 0,
+          "rfcWrapCalls": 364367,
+          "rfcBumpCalls": 1,
+          "rfcBumpUnits": 1,
+          "rfcDecrementOperations": 1,
+          "requestedWords": 1105389,
+          "invalidClassCalls": 0,
+          "hostSegmentEntries": 913038,
+          "genericClosureEntries": 0
+        }
+      },
+      {
+        "case": "tree",
+        "role": "baseline23",
+        "extraWorkloads": 16,
+        "counts": {
+          "heapAllocCalls": 640908,
+          "heapMissCalls": 0,
+          "heapFreeCalls": 640908,
+          "termKeepCalls": 477216,
+          "termDropCalls": 1,
+          "rfcWrapCalls": 204801,
+          "rfcBumpCalls": 2,
+          "rfcBumpUnits": 2,
+          "rfcDecrementOperations": 2,
+          "requestedWords": 1108523,
+          "invalidClassCalls": 0,
+          "hostSegmentEntries": 833341,
+          "genericClosureEntries": 0
+        }
+      },
+      {
+        "case": "tree",
+        "role": "upstream",
+        "extraWorkloads": 16,
+        "counts": {
+          "heapAllocCalls": 231426,
+          "heapMissCalls": 0,
+          "heapFreeCalls": 231426,
+          "termKeepCalls": 0,
+          "termDropCalls": 0,
+          "rfcWrapCalls": 1,
+          "rfcBumpCalls": 1,
+          "rfcBumpUnits": 1,
+          "rfcDecrementOperations": 1,
+          "requestedWords": 462851,
+          "invalidClassCalls": 0,
+          "hostSegmentEntries": 714755,
+          "genericClosureEntries": 0
+        }
+      },
+      {
+        "case": "closures",
+        "role": "candidate",
+        "extraWorkloads": 16,
+        "counts": {
+          "heapAllocCalls": 4110,
+          "heapMissCalls": 0,
+          "heapFreeCalls": 4110,
+          "termKeepCalls": 4156,
+          "termDropCalls": 1,
+          "rfcWrapCalls": 3,
+          "rfcBumpCalls": 2,
+          "rfcBumpUnits": 2,
+          "rfcDecrementOperations": 2,
+          "requestedWords": 8217,
+          "invalidClassCalls": 0,
+          "hostSegmentEntries": 20639,
+          "genericClosureEntries": 4120
+        }
+      },
+      {
+        "case": "lexer",
+        "role": "candidate",
+        "extraWorkloads": 16,
+        "counts": {
+          "heapAllocCalls": 1105389,
+          "heapMissCalls": 0,
+          "heapFreeCalls": 1105389,
+          "termKeepCalls": 4575670,
+          "termDropCalls": 1,
+          "rfcWrapCalls": 364367,
+          "rfcBumpCalls": 2,
+          "rfcBumpUnits": 2,
+          "rfcDecrementOperations": 2,
+          "requestedWords": 1846411,
+          "invalidClassCalls": 0,
+          "hostSegmentEntries": 2759996,
+          "genericClosureEntries": 0
+        }
+      },
+      {
+        "case": "tree",
+        "role": "candidate",
+        "extraWorkloads": 16,
+        "counts": {
+          "heapAllocCalls": 434132,
+          "heapMissCalls": 0,
+          "heapFreeCalls": 434132,
+          "termKeepCalls": 477216,
+          "termDropCalls": 1,
+          "rfcWrapCalls": 1,
+          "rfcBumpCalls": 2,
+          "rfcBumpUnits": 2,
+          "rfcDecrementOperations": 2,
+          "requestedWords": 892807,
+          "invalidClassCalls": 0,
+          "hostSegmentEntries": 829463,
+          "genericClosureEntries": 0
+        }
+      }
+    ]
+  },
+  "selfHostingQualification": {
+    "complete": true,
+    "ownSourceCheck": {
+      "report": {
+        "path": "selfhost/build/phase69/typed10-release-qualification/self-check/report.json",
+        "sha256": "a1b414d425f5f47ec0645fc6ee17c07e118e8caa6eb7025b6b67a0ee412cf55b",
+        "bytes": 303671
+      },
+      "freshSelfCheck": true,
+      "freshTypeCheck": true,
+      "typeAccepted": true,
+      "proofTrust": "failed",
+      "expectedProofTrustFailure": true,
+      "mathematicalProof": false,
+      "sourceTrustOracle": {
+        "method": "Every unique def in the exact selected checked assembly is explicitly annotated @unsafe; count is derived from that pinned source.",
+        "definitions": 3533,
+        "explicitlyUnsafe": 3533
+      },
+      "additionalUnsafeDeclarations": [],
+      "scope": "The actual self-emitted B2 image checks its exact complete source through a private byte-identical ordinary driver. The private Base cache starts empty. Fresh type acceptance and the explicit unsafe proof-trust failure are separate outcomes; no checked development attempt, fixed point or mathematical proof is invented."
+    },
+    "b3Reproduction": {
+      "report": {
+        "path": "selfhost/build/phase69/typed10-release-qualification/fixed-point/report.json",
+        "sha256": "5bd92cb0fd4665d935673ca802b2791667ef06d476ba039be194fb060cf2361b",
+        "bytes": 151699
+      },
+      "b2": {
+        "path": "selfhost/build/phase69/typed10-b2-v2/full/compiler.mjs",
+        "sha256": "c858dfa5424c534444a2b733c0336a7009fc260da272d64c52f33a188d3f066e",
+        "bytes": 4365136
+      },
+      "b3": {
+        "path": "selfhost/build/phase69/typed10-release-qualification/fixed-point/compiler.mjs",
+        "sha256": "c858dfa5424c534444a2b733c0336a7009fc260da272d64c52f33a188d3f066e",
+        "bytes": 4365136
+      },
+      "byteEquality": true,
+      "scope": "Exact emission fixed point on the explicitly pinned checked source and actual checked-export closure. No fresh compiler-source self-check, new bootstrap trust, or installation claim."
+    }
+  },
+  "generatedArtifactAndCBuildEvidence": {
+    "acquisitions": [
+      {
+        "role": "candidate",
+        "receipt": {
+          "path": "selfhost/build/phase69/typed10-native/report.json",
+          "sha256": "b0756f8d444248231e3ccf0d2ae6c694e74545e36fd52d95eca332703f826324",
+          "bytes": 64155
+        },
+        "acquisitionStartedUtc": "2026-10-11T23:53:21.229670+00:00",
+        "freshThisPhase": true
+      },
+      {
+        "role": "baseline23",
+        "receipt": {
+          "path": "selfhost/build/phase68/native-facts23-rest/report.json",
+          "sha256": "77a97628bba5f40134504ae28a5092aee2b1811e8dec2051b318df4372b1c78f",
+          "bytes": 60262
+        },
+        "acquisitionStartedUtc": "2026-10-11T21:04:05.931256+00:00",
+        "freshThisPhase": false
+      },
+      {
+        "role": "baseline23",
+        "receipt": {
+          "path": "selfhost/build/phase68/native-facts23-lexer/report.json",
+          "sha256": "023a33972789e0c9fd4b361201ea231eea841ad281520dff610d5db86d18a2c4",
+          "bytes": 43680
+        },
+        "acquisitionStartedUtc": "2026-10-11T21:00:06.320453+00:00",
+        "freshThisPhase": false
+      },
+      {
+        "role": "upstream",
+        "receipt": {
+          "path": "selfhost/build/phase67/native-baseline02/report.json",
+          "sha256": "37bb490f129ca26aafde0e7d7c236a665c8b9e64bb0376321b2a57428df3c5c1",
+          "bytes": 63882
+        },
+        "acquisitionStartedUtc": "2026-10-08T09:12:01.659861+00:00",
+        "freshThisPhase": false
+      },
+      {
+        "role": "upstream",
+        "receipt": {
+          "path": "selfhost/build/phase67/native-heldout-baseline02/report.json",
+          "sha256": "c57b58189777f227ad586e142b5183bc71922c3bd98222bb127a4c0b7d4d61aa",
+          "bytes": 64360
+        },
+        "acquisitionStartedUtc": "2026-10-08T09:36:01.614221+00:00",
+        "freshThisPhase": false
+      }
+    ],
+    "rows": [
+      {
+        "case": "numeric",
+        "role": "candidate",
+        "cBytes": 955177,
+        "executableBytes": 179000,
+        "cSha256": "0333792844daa9d6c4defbb14b67743bc451db9c769d52630ed7d03f20da74f6",
+        "executableSha256": "d1d48273fe30b4e213c364c6df6fd521e3b2173922c13d134a6c4e71b9e6aadb",
+        "clangAcquisitionWallSeconds": 4.530471616075374
+      },
+      {
+        "case": "array",
+        "role": "candidate",
+        "cBytes": 983635,
+        "executableBytes": 186296,
+        "cSha256": "de4d1b2ff31e7be2ffdb818349ad7e33a98a69dcec9a1a3b377b57cd69925c6a",
+        "executableSha256": "b87ff76721b32b35df43916116c329c3e0790fac4ef2ddc06a5861c581dde5c6",
+        "clangAcquisitionWallSeconds": 4.692789481021464
+      },
+      {
+        "case": "closures",
+        "role": "candidate",
+        "cBytes": 934713,
+        "executableBytes": 176408,
+        "cSha256": "ef369300da656c465a8822cbe1470212296bc68ad367eeea87985065a7414d8b",
+        "executableSha256": "72627d516ccd3dc57079b9d98cce423e1d6c39e8372555100f1c820e7379fe8f",
+        "clangAcquisitionWallSeconds": 4.51541081094183
+      },
+      {
+        "case": "tree",
+        "role": "candidate",
+        "cBytes": 1122458,
+        "executableBytes": 222720,
+        "cSha256": "5429e0e805dbb957ece537b91beb843cee238fffeaff513ffbff7a35a032e8b4",
+        "executableSha256": "4837a3b18027e4f3eb0e7df70c07abc5168c251893ce4f95fef3fc30bfee1df8",
+        "clangAcquisitionWallSeconds": 5.4985662560211495
+      },
+      {
+        "case": "map",
+        "role": "candidate",
+        "cBytes": 1716483,
+        "executableBytes": 436976,
+        "cSha256": "e0e6ea60d821dbd6489141ef5081fe6a35df92ae15c791c901c4f46ae7ad5780",
+        "executableSha256": "c2b5a7d66a7c413fd155c7e8ca7ac4da7f296f717e5e71f5e2d1467740b7a5cd",
+        "clangAcquisitionWallSeconds": 8.668118280009367
+      },
+      {
+        "case": "lexer",
+        "role": "candidate",
+        "cBytes": 1240671,
+        "executableBytes": 231768,
+        "cSha256": "5d9f267bd9509942f1c33a140abe31dd6ef65b739a68c81114445a7af87ccac0",
+        "executableSha256": "a27eb33cf04a26aadc7b798d7a4a70fd8d998bb6c0a91381e758c9607bb9f7e3",
+        "clangAcquisitionWallSeconds": 5.331542550004087
+      },
+      {
+        "case": "numeric",
+        "role": "baseline23",
+        "cBytes": 984749,
+        "executableBytes": 184128,
+        "cSha256": "e2d24586bd273959fa98fb97e46aeee99a6d05523eb614615a6dd4e94805f270",
+        "executableSha256": "bfd21c94003d290050f7a397a1ac6208e6dadd1cd0f323dad0434f135b218722",
+        "clangAcquisitionWallSeconds": 4.546899815090001
+      },
+      {
+        "case": "array",
+        "role": "baseline23",
+        "cBytes": 1013147,
+        "executableBytes": 192416,
+        "cSha256": "9fc4b35b3de3106d67463740db88b05941b335f72c0fdfe50b880ee29d9d0bd8",
+        "executableSha256": "4c89d6a47e1e557c861b41c03f7465e7e06d538a8ddcacd7a50f177c9bd8afec",
+        "clangAcquisitionWallSeconds": 4.640442145988345
+      },
+      {
+        "case": "closures",
+        "role": "baseline23",
+        "cBytes": 966246,
+        "executableBytes": 181440,
+        "cSha256": "eef056e6069ed0c9364f40b5bf5715e2428958143f0b950849bec844d2dcb9ca",
+        "executableSha256": "a06261fac251948e6e377cfefe0d7d61173a3f4d2fc7e4697483880a8486e4c1",
+        "clangAcquisitionWallSeconds": 4.462642738944851
+      },
+      {
+        "case": "tree",
+        "role": "baseline23",
+        "cBytes": 1173400,
+        "executableBytes": 330520,
+        "cSha256": "277d7adb6bf59b3d70fdd254b40142483ebd1e1878584c05a7487a73dea448e2",
+        "executableSha256": "78591c20dde37d13876193758dad400556d4e049d0d0bc216bf0f8922242f668",
+        "clangAcquisitionWallSeconds": 7.643282906035893
+      },
+      {
+        "case": "map",
+        "role": "baseline23",
+        "cBytes": 1750653,
+        "executableBytes": 442768,
+        "cSha256": "1a4d1a59191ce115af04765dc0373e82803dc4ba6116f7a99bbfbd6d4d09847b",
+        "executableSha256": "37a4af9061596b27bba0b4acaddb70b3ea73882ce9079fa36084ceab8c3c47d4",
+        "clangAcquisitionWallSeconds": 8.600097666028887
+      },
+      {
+        "case": "lexer",
+        "role": "baseline23",
+        "cBytes": 1314022,
+        "executableBytes": 348880,
+        "cSha256": "5a6a19f98a4ed6f4135333f0f9cce814a3626677b0242f99d17b489ec5bf3cd1",
+        "executableSha256": "130da0d0886ad7dc5afe68d8624e4fdce333ea7c733ac39c1388aa8471c5dba9",
+        "clangAcquisitionWallSeconds": 8.472579642082565
+      },
+      {
+        "case": "numeric",
+        "role": "upstream",
+        "cBytes": 117622,
+        "executableBytes": 53224,
+        "cSha256": "95653988a02a529d73497a4e56dbbdb8a9a46188f8027a8e736aa60395d3b523",
+        "executableSha256": "4ca029a7e79af7008bafce6a2033b9e7e1ad2a782e8b66d061f13fc75afac03d",
+        "clangAcquisitionWallSeconds": 0.9459272519452497
+      },
+      {
+        "case": "array",
+        "role": "upstream",
+        "cBytes": 118820,
+        "executableBytes": 54280,
+        "cSha256": "73cd2c48edcd833c516b4738a46918f92d3083f97c7f598afe574c17a19a0f12",
+        "executableSha256": "482af063fabf2a528c5db910e2726821db6523dd6eadf83c18b8bb2efcd0ed1a",
+        "clangAcquisitionWallSeconds": 0.9048942849040031
+      },
+      {
+        "case": "closures",
+        "role": "upstream",
+        "cBytes": 125109,
+        "executableBytes": 56872,
+        "cSha256": "30cc71d2cd7033652cf7b1af569fd6dc20727edb44943c8e67b3b06d2049332b",
+        "executableSha256": "8aa74ee3ee4b73497ce775605c6eacc833d6e7df5e7445866cee6dde16b45e47",
+        "clangAcquisitionWallSeconds": 0.8832087200134993
+      },
+      {
+        "case": "tree",
+        "role": "upstream",
+        "cBytes": 153342,
+        "executableBytes": 64848,
+        "cSha256": "a272ac6bdd3f85344310ba62bee61cff9ba8cc618fd113fd180f8499bdc2839d",
+        "executableSha256": "2c551f955a7cd2bccc28cfd7418c61b810dba7d7ac005aef252e1dc69c333d44",
+        "clangAcquisitionWallSeconds": 1.0743245619814843
+      },
+      {
+        "case": "map",
+        "role": "upstream",
+        "cBytes": 320345,
+        "executableBytes": 132152,
+        "cSha256": "2bc75f0e2636fba80aa3561089894436b02789faaaca45eb531d575a87702135",
+        "executableSha256": "1b3beeaab2a4f1936f5da9be7bf7b3a369e20ab77935daa24ee595ae855b0b1e",
+        "clangAcquisitionWallSeconds": 2.0287817899370566
+      },
+      {
+        "case": "lexer",
+        "role": "upstream",
+        "cBytes": 144943,
+        "executableBytes": 61688,
+        "cSha256": "809a39f4811bd72efb97399362728fa18ef05e0b346579a7816e7c01c7122169",
+        "executableSha256": "a64cbdd4a2f0005ebe874ea529c7c27d9e96cdcabcab319c5cd2933e08aa3f18",
+        "clangAcquisitionWallSeconds": 1.0688383979722857
+      }
+    ],
+    "scope": "Exact artifacts consumed by the balanced native-runtime campaign. Candidate acquisition is fresh Phase69; compiler23 and upstream sizes and Clang durations come from the original separately pinned Phase68/67 acquisitions. Clang duration is one guarded acquisition build per artifact, not a newly balanced C-compilation benchmark or clean Bend-request timing. All use inherited pinned -O3 Clang recipe."
+  },
+  "updated": "2026-10-12T00:15:29.784227+00:00",
+  "release": {
+    "complete": true,
+    "pass": true,
+    "installedArtifactKind": "equality-derived-b1",
+    "installed": "2026-10-12T00:12:50.574Z",
+    "releaseManifest": {
+      "path": "selfhost/dist/release.json",
+      "sha256": "3fa904f9ab5b6de0b890506daae202f3db41b6f688cd697c82c7e323939324f7",
+      "bytes": 37870
+    },
+    "installedApi": {
+      "path": "selfhost/dist/typed-api.mjs",
+      "sha256": "674e7960c7e8957452ffb0bdc6cb1f69ddaf8c03814617277886d1551fe16553",
+      "bytes": 2119259
+    },
+    "sourceSha256": "75e10b92c0c55594b9c02de6d1c8cae56a5ebc129eb31004ef77dc86d23cedc8",
+    "lineage": {
+      "checkedParentSha256": "f7642d7d9f02db7fab17673f84698c3079bc13aa66b472ec9751cfc0b6bc6138",
+      "derivationSha256": "f671cf0568b3c2c03e10307272127cbacfa87699e64331587f2db59e663691f5",
+      "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151"
+    },
+    "newBootstrap": false,
+    "guardedJobs": [
+      {
+        "name": "install",
+        "guard": {
+          "path": "selfhost/build/phase69/release-typed10/job-install/process.json",
+          "sha256": "620ba05df41afd3ca77b2685b570b8ffa9308dc29ce9e343c2e817129cc35697",
+          "bytes": 838
+        },
+        "returncode": 0,
+        "wallSeconds": 6.522343785036355,
+        "peakTreeRssBytes": 552099840
+      },
+      {
+        "name": "verify-before",
+        "guard": {
+          "path": "selfhost/build/phase69/release-typed10/job-verify-before/process.json",
+          "sha256": "e422c773be7a6d9af8fac23ece5f42a221c64b46a4a982abb919cb4373470127",
+          "bytes": 752
+        },
+        "returncode": 0,
+        "wallSeconds": 0.9423732990399003,
+        "peakTreeRssBytes": 238886912
+      },
+      {
+        "name": "legacy42",
+        "guard": {
+          "path": "selfhost/build/phase69/release-typed10/job-legacy42/process.json",
+          "sha256": "0a58e28e5463db700e0924570c56e0408238e5ea8897d0c914446b2a4df9586d",
+          "bytes": 984
+        },
+        "returncode": 0,
+        "wallSeconds": 23.36784085794352,
+        "peakTreeRssBytes": 561299456
+      },
+      {
+        "name": "default24",
+        "guard": {
+          "path": "selfhost/build/phase69/release-typed10/job-default24/process.json",
+          "sha256": "b12bfd2626e352080aab3e67223dd489022adddec8e5f63150e85664f32dd54d",
+          "bytes": 1125
+        },
+        "returncode": 0,
+        "wallSeconds": 15.617771257995628,
+        "peakTreeRssBytes": 408625152
+      },
+      {
+        "name": "helper5",
+        "guard": {
+          "path": "selfhost/build/phase69/release-typed10/job-helper5/process.json",
+          "sha256": "d5dc47123ffc9e5bd227a8fedbd81ca433a20be0634aa5b3977ac52e9ecb453e",
+          "bytes": 992
+        },
+        "returncode": 0,
+        "wallSeconds": 2.5345583269372582,
+        "peakTreeRssBytes": 367185920
+      },
+      {
+        "name": "verify-after",
+        "guard": {
+          "path": "selfhost/build/phase69/release-typed10/job-verify-after/process.json",
+          "sha256": "0c19d0268e8bf3aad6727816f5992707527a9a617c1b8a71b0b8f914f8bba081",
+          "bytes": 752
+        },
+        "returncode": 0,
+        "wallSeconds": 1.0245571590494365,
+        "peakTreeRssBytes": 240680960
+      }
+    ],
+    "controls": [
+      {
+        "name": "legacy42",
+        "report": {
+          "path": "selfhost/build/phase69/release-typed10/legacy42/checks/report.json",
+          "sha256": "dad2d8983945ab4fdfbe32fa2f5fe08c4a6d557bc495825d418d7409c2c06c92",
+          "bytes": 177612
+        },
+        "observations": 42,
+        "pass": true
+      },
+      {
+        "name": "default24",
+        "report": {
+          "path": "selfhost/build/phase69/release-typed10/default24/report.json",
+          "sha256": "734e53dcf91da7671d6ef8fe2e325e136dd991464ebba787e242eaa6fb714f18",
+          "bytes": 163241
+        },
+        "observations": 24,
+        "pass": true
+      },
+      {
+        "name": "helper5",
+        "report": {
+          "path": "selfhost/build/phase69/release-typed10/helper5/report.json",
+          "sha256": "ba824fda0c66aaeb631c5dd20dbe6ca9ca202e8c3d122b40196e0f7706274265",
+          "bytes": 2024
+        },
+        "observations": 5,
+        "pass": true
+      }
+    ],
+    "oldReleasePreserved": [
+      {
+        "originalPath": "selfhost/dist/release.json",
+        "preserved": {
+          "path": "selfhost/dist/release-history/c76f111391e337ec76645fe27b45608f52c0a3ae5256691241a11db0360c1fb3/release.json",
+          "sha256": "a9bf2458db901bbb8affbecb64ef6669057734350817b90b5693945711a6da67",
+          "bytes": 36882
+        }
+      },
+      {
+        "originalPath": "selfhost/dist/typed-api.mjs",
+        "preserved": {
+          "path": "selfhost/dist/release-history/c76f111391e337ec76645fe27b45608f52c0a3ae5256691241a11db0360c1fb3/typed-api.mjs",
+          "sha256": "c76f111391e337ec76645fe27b45608f52c0a3ae5256691241a11db0360c1fb3",
+          "bytes": 1981751
+        }
+      },
+      {
+        "originalPath": "selfhost/dist/base.bend",
+        "preserved": {
+          "path": "selfhost/dist/release-history/c76f111391e337ec76645fe27b45608f52c0a3ae5256691241a11db0360c1fb3/base.bend",
+          "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+          "bytes": 75064
+        }
+      },
+      {
+        "originalPath": "selfhost/dist/release-lineage/checked-api.mjs",
+        "preserved": {
+          "path": "selfhost/dist/release-history/c76f111391e337ec76645fe27b45608f52c0a3ae5256691241a11db0360c1fb3/release-lineage/checked-api.mjs",
+          "sha256": "ea5279e8603ec989cf77fb984d6cfdd3ab8754c6f5c4936e79610c8d3195ee40",
+          "bytes": 1962355
+        }
+      },
+      {
+        "originalPath": "selfhost/dist/release-lineage/checked-bootstrap.json",
+        "preserved": {
+          "path": "selfhost/dist/release-history/c76f111391e337ec76645fe27b45608f52c0a3ae5256691241a11db0360c1fb3/release-lineage/checked-bootstrap.json",
+          "sha256": "a02f976ac89676455fd51caaf73fe0fa9ca48d6bbb944c7b4558ab84a95ac3f3",
+          "bytes": 90872
+        }
+      },
+      {
+        "originalPath": "selfhost/dist/release-lineage/derivation.json",
+        "preserved": {
+          "path": "selfhost/dist/release-history/c76f111391e337ec76645fe27b45608f52c0a3ae5256691241a11db0360c1fb3/release-lineage/derivation.json",
+          "sha256": "008c9ef01fee457e8e7df76ebd1ae78ec97f9730dbe358c319d7a6891fc4ae23",
+          "bytes": 77071
+        }
+      },
+      {
+        "originalPath": "selfhost/dist/release-lineage/equality.mjs",
+        "preserved": {
+          "path": "selfhost/dist/release-history/c76f111391e337ec76645fe27b45608f52c0a3ae5256691241a11db0360c1fb3/release-lineage/equality.mjs",
+          "sha256": "fcc80fd4da249e74f2cfd296c7e88f3c5f795a627e498c26bf5deb4ac8397eb5",
+          "bytes": 31254
+        }
+      }
+    ],
+    "oldReleaseFileCount": 7,
+    "scope": "Promoted selected checked equality-derived B1 after independent actual-B2 self-hosting qualification. Release smoke and helper checks are separate from selected native/raw controls and do not form a full-language denominator. Historical seven-file lineage preserved byte for byte."
+  },
+  "timeAccount": {
+    "report": {
+      "path": "selfhost/build/phase69/time-account-final01.json",
+      "sha256": "a869d8a325c447cedf309c23dc196988b8ea61c77f798bf594995112726c5bc7",
+      "bytes": 408780
+    },
+    "uniqueGuardReceipts": 453,
+    "guardOccupancySeconds": 1304.1451411247253,
+    "summedGuardSeconds": 1304.133358086343,
+    "firstTargetStartUtc": "2026-10-11T23:22:06.316542+00:00",
+    "lastTargetFinishUtc": "2026-10-12T00:13:35.192210+00:00",
+    "firstToLastTargetSpanSeconds": 3088.875668525696,
+    "peakTreeRssBytes": 1627656192,
+    "failedGuardReceipts": 11,
+    "pendingReceiptFiles": 0,
+    "scope": "Final receipt snapshot after phase owner declared target execution finished. Unique guarded jobs only; excludes work before first target and non-target/source work. Includes retained failed experiments. Guard occupancy is the union of intervals, not agent effort or quota. No whole-phase elapsed-time claim."
+  }
+}

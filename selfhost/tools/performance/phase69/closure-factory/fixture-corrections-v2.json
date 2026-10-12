@@ -1,0 +1,62 @@
+{
+  "kind": "phase69-closure-fixture-check-corrections",
+  "targetExecuted": false,
+  "reason": "Original four fixtures fail checking in both roles; new paths preserve originals and every independent golden.",
+  "failedReference": "selfhost/build/phase69/combined08-controls02/execution/selected/reference.json",
+  "sourceAuthority": [
+    "guide/GUIDE.md:221",
+    "tests/check/nested_field_bound.bend",
+    "tests/run/morning_program.bend:139"
+  ],
+  "edits": [
+    {
+      "parentFile": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls/shared-capture.bend",
+      "parentSha256": "3a7dd0681ac9b93f04906cd4b19c8bb6167182a6ca8b690089e681dc445dec2c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-fixed-v2/shared-capture-v2.bend",
+      "sha256": "39710ee9e07b11a70e9d75c8e685ef120e9cf172676f1b7a7ad09f2459aef63b",
+      "expected": [
+        "abac"
+      ],
+      "diff": "--- selfhost/tools/performance/phase69/closure-factory/controls/shared-capture.bend\n+++ selfhost/tools/performance/phase69/closure-factory/controls-fixed-v2/shared-capture-v2.bend\n@@ -4,7 +4,9 @@\n   String.append(a, b)\n \n def main() -> IO(Unit):\n-  +f = {join(\"a\") : String -> String}\n-  IO.print(String.append(f(\"b\"), f(\"c\")))\n+  +prefix = {\"a\" : String}\n+  f = {join(prefix) : String -> String}\n+  g = {join(prefix) : String -> String}\n+  IO.print(String.append(f(\"b\"), g(\"c\")))\n \n #|abac\n",
+      "parentId": "phase69/closure-factory/shared-capture.bend",
+      "id": "phase69/closure-factory/shared-capture-v2.bend"
+    },
+    {
+      "parentFile": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-v4/nonlinear-fallback.bend",
+      "parentSha256": "0cb9d9486caa4f189369c50b20bb478afc8f5902d8e868587c7c86438774a54c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-fixed-v2/nonlinear-fallback-v2.bend",
+      "sha256": "465c14d3b1ec69b1ca65ec14240fb4e404365046e46230345e0e0a2bca98b566",
+      "expected": [
+        "32"
+      ],
+      "diff": "--- selfhost/tools/performance/phase69/closure-factory/controls-v4/nonlinear-fallback.bend\n+++ selfhost/tools/performance/phase69/closure-factory/controls-fixed-v2/nonlinear-fallback-v2.bend\n@@ -1,14 +1,14 @@\n import Base\n \n-def twice(+f: U32 -> U32, x: U32) -> U32:\n-  f(f(x))\n+def repeated(f: U32 -> U32 -> U32, +x: U32) -> U32:\n+  f(x, x)\n \n def ignore(f: U32 -> U32, x: U32) -> U32:\n   x\n \n def main() -> IO(Unit):\n-  f = {twice(x => U32.add(x, 1)) : U32 -> U32}\n+  f = {repeated(a => b => U32.add(a, b)) : @+x: U32 -> U32}\n   g = {ignore(x => U32.add(x, 100)) : U32 -> U32}\n-  IO.print(U32.show(U32.add(f(10), g(20))))\n+  IO.print(U32.show(U32.add(f(6), g(20))))\n \n #|32\n",
+      "parentId": "phase69/known-combinators/nonlinear-fallback.bend",
+      "id": "phase69/known-combinators/nonlinear-fallback-v2.bend"
+    },
+    {
+      "parentFile": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-v4/shared-literal-capture.bend",
+      "parentSha256": "0232e739b445abf886526a9107a5be29cdc666e838343da25b83c120f9843497",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-fixed-v2/shared-literal-capture-v2.bend",
+      "sha256": "ea36940f1f949f5d590f8a2ff036ba08071553f72d22bdeb9a3e098b95f682d6",
+      "expected": [
+        "pq!p"
+      ],
+      "diff": "--- selfhost/tools/performance/phase69/closure-factory/controls-v4/shared-literal-capture.bend\n+++ selfhost/tools/performance/phase69/closure-factory/controls-fixed-v2/shared-literal-capture-v2.bend\n@@ -12,7 +12,7 @@\n       f(\"q\")\n \n def main() -> IO(Unit):\n-  +prefix = \"p\"\n+  +prefix = {\"p\" : String}\n   f = {pipe(x => String.append(prefix, x), x => String.append(x, \"!\")) : String -> String}\n   IO.print(String.append(run_stored(Stored69{f}), prefix))\n \n",
+      "parentId": "phase69/known-combinators/shared-literal-capture.bend",
+      "id": "phase69/known-combinators/shared-literal-capture-v2.bend"
+    },
+    {
+      "parentFile": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-v4/unused-literal-argument-error.bend",
+      "parentSha256": "a691f7f1775be646aaec4eebe4590e5d232787df07ead29ac07df2037902c23d",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-fixed-v2/unused-literal-argument-error-v2.bend",
+      "sha256": "e203c0cb4614f131197b1624a6f2bad350a5b81c7a1cb606a299e0c149d78ea8",
+      "expected": [
+        "bend: a Nat past the largest immediate 2^48-1",
+        "exit 1"
+      ],
+      "diff": "--- selfhost/tools/performance/phase69/closure-factory/controls-v4/unused-literal-argument-error.bend\n+++ selfhost/tools/performance/phase69/closure-factory/controls-fixed-v2/unused-literal-argument-error-v2.bend\n@@ -5,8 +5,9 @@\n def after(f: Nat -> U32, g: U32 -> Nat, x: U32) -> U32:\n   f(g(x))\n \n-def overflow(+n: U32) -> Nat:\n-  Nat.mul(U32.to_nat(n), U32.to_nat(n))\n+def overflow(n: U32) -> Nat:\n+  +value = {n : U32}\n+  Nat.mul(U32.to_nat(value), U32.to_nat(value))\n \n def main() -> U32:\n   f = {after(y => 0, overflow) : U32 -> U32}\n",
+      "parentId": "phase69/known-combinators/unused-literal-argument-error.bend",
+      "id": "phase69/known-combinators/unused-literal-argument-error-v2.bend"
+    }
+  ]
+}

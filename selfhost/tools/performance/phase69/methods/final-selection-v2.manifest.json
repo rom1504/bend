@@ -1,0 +1,377 @@
+{
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/prepare-final-selection.py",
+    "sha256": "4e8ed154df4e1bac26bba448049cfe515d7a1b967f61268b0680570882111915"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/integration-v3/integration-selection.json",
+      "sha256": "0a7a5bed6727109568f381829996e06939a3e5d8997f4989c56885f2e19dde8a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/reachability/selection-v1.json",
+      "sha256": "ac3ba8a26acfaadac8747ae08f3f159affd40f6cc2636c2668fb5d47c13af0b8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/selection-v3.json",
+      "sha256": "48989b893189d5ff708d124427989bf44f153aad574d2c2aeda267e1d03936c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/selection-v5.json",
+      "sha256": "314d16418efd3d27d005471ab20b6d3b2d9ca6807246149fa82ef5077d72021a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/static-cold-selection-v1.json",
+      "sha256": "436317897ba08c6fcbd00b79c5ee925389c50352c4c226052190e39e408ea1df"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/selection-refusal-v2.json",
+      "sha256": "5beaf232d7b67f2932309c656cc08aa3a73c5acdd9bcdc7876df08c8a08d6b6d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/typed-selection-v2.json",
+      "sha256": "0885fdc79b70cfafcafabaf93608eaa910315b4deab3ecf2dd306a33d7e6adee"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/static-data/resource-controls/long-selection-v1.json",
+      "sha256": "ae7b5acfebfdef14736d32b801de47802468b4e02bb1c431d88b4584690b318f"
+    }
+  ],
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/methods/final-selection-v2.json",
+    "sha256": "5a54a66349863c83c95635d3b45dd79b720f830903d43cb6ed8bab8a84f19d82"
+  },
+  "cases": 71,
+  "replacedInvalidFixtures": [
+    {
+      "id": "phase69/node-reuse/captured-user-refusal.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures/captured-user-refusal.bend",
+      "lanes": [
+        "native"
+      ]
+    },
+    {
+      "id": "phase69/node-reuse/container-user-refusal.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures/container-user-refusal.bend",
+      "lanes": [
+        "native"
+      ]
+    },
+    {
+      "id": "phase69/node-reuse/shared-user-refusal.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures/shared-user-refusal.bend",
+      "lanes": [
+        "native"
+      ]
+    }
+  ],
+  "identicalFileDuplicates": [
+    {
+      "omitted": {
+        "id": "phase69/closure-factory/early-matcher-partial.bend",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v1/partial.bend",
+        "lanes": [
+          "native"
+        ]
+      },
+      "retained": "phase68/error-order-partial.bend"
+    },
+    {
+      "omitted": {
+        "id": "phase69/closure-factory/early-matcher-staged.bend",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v2/staged.bend",
+        "lanes": [
+          "native"
+        ]
+      },
+      "retained": "phase68/error-order-staged-v2.bend"
+    }
+  ],
+  "sourcePins": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/match-arity-packet.bend",
+      "sha256": "c09c80b019278591caf94ec4bc6e06c634e56ce4a17d7b3dbcedbc9abd7ee976"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/erasure_match_arm.bend",
+      "sha256": "0a2edf53eb72a46d92d3660a3fba08cb6f0ab5f865fea069bae3c8b8ee8aa377"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/erased_partial_closure.bend",
+      "sha256": "6cd012e49a9622ccf1026e9333cae84318f4f84bd7997580a384cb9d5c3ba114"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/over_application.bend",
+      "sha256": "cf14db87224d84b118a5797c72c24c4418a2ae85268a5fc322883f0f14efde96"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/match_absurd_tail.bend",
+      "sha256": "7d07583390c764a300b26e48892176dafa275c6f0ddfc53802a377e67c9165a2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/aggregate-tail-swap.bend",
+      "sha256": "63f61f2abb63ee23189e3ff4a8211597b7985905323a46754d622675ebeda903"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/callback-array-owner-v2.bend",
+      "sha256": "ebc91e8911f027c3f5cd2b910cc57778c95d3339135a05824bf114dade9a1ed5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/array_swap_header.bend",
+      "sha256": "e16438d4138cbf1700473d0f1a1805194787c107b39af819c0dbdeed752d7f87"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/closure_partial_app.bend",
+      "sha256": "a5db1896b19521ea737bd80b3d76304ba9bcd75ac7ce67c5cf6da4011f529d94"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/bang_intrinsic_closure.bend",
+      "sha256": "b4e9b3ae9b9f080986a40d5d9e3e097cf5fa43f459b71112b75202d801b469d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/fork_shared_flat.bend",
+      "sha256": "660e4064a8c56d844edd24f14caf9395f9081701883e1b7aabdeb7094ff6a684"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/closure_record_shared.bend",
+      "sha256": "813c7e22f0e2f1fc24d31df443c635d6568919a936da2bc09479d45a2d1e5546"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/array_clone_boxed.bend",
+      "sha256": "54a4c9126e3de955580b6a6c3db967564446efc19bfb57b521a6ceba6445e9e3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/shared_tree_copies.bend",
+      "sha256": "b4676d28fd53187ce4bdfdea7a42a30580e67334abeac7a5ebb99d6a971441a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/shared_pattern_reuse.bend",
+      "sha256": "d3de894f0e7a8c4333be3e10ae17a41b58d634e62789804fdef9985319225fb8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/fn_capture_owns.bend",
+      "sha256": "5e3b574fa94b09517b05572e999abf3740c2977d2be89a1e7f24100ec36bc082"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/closure_slab_drop.bend",
+      "sha256": "5a076fec1370690cdfa5b34675900f8d80959aebbba22b51ca3b5f4b8e7ce51c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/brw_audit3_dependent_array.bend",
+      "sha256": "7f979264891f53114ad432c92ebc7c88c6ddf7ed1c607c647fc2a5ff97ffe8cc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/list_rebox_generic_sum.bend",
+      "sha256": "978e18c2f3a9fc709f7a3339e9f515e5386b681730cc6b4c95b57fea8ea653c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/request_out_of_band.bend",
+      "sha256": "61a2b7111a1c92ca9aa5648d02d61be92016ddec754a6a7bc1fe3c11c4b04772"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/request_wildcard.bend",
+      "sha256": "734d78bf220080bf677f7cc624e5b5c34c15d3e286b5e8991262fff06ffe0371"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/intrinsic_user_name.bend",
+      "sha256": "a978e3436b0d9e9643e7a4e99e55e0b3a3af6de1847ca27584a3e4c3af8226d6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/foreign_runtime_apply_tail.bend",
+      "sha256": "92eb4f6cf22ffc8e72036ecad0ff991dc754586e784d50528d013b3e2b2ffd8f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/reg/erased_field_call.bend",
+      "sha256": "1ddf82d0eafefbfc03fb0582afe50ec7f86ee815495eb7181dbfdc982194c81c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/compile/float_unboxed_ctor.bend",
+      "sha256": "bc5bb3e4acd4b37a0a779f0cfad508e7dcac2080539144763c7f0190c47edcd9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/base/u32_divmod_zero.bend",
+      "sha256": "5f57c932ae8b8d2afdf570f6e8a4fb9978a9bdb117d3528880dbb4af7b7c41d9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/base/nat_divmod_zero.bend",
+      "sha256": "d1723264b044ff7f9b38c402a96e9726e8ea25b7d9a6640e76803568a26d95ca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/run/nat_overflow.bend",
+      "sha256": "8004dc6d43642ec742482ac2f15df4bf90e35e43e50ea67442341e311b1e1afa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/matcher-shared-residual-v3.bend",
+      "sha256": "77a348063a8ca9cb2169d9d4ffe7798d3e3bbf130be5e6e1c6056ac9fb1317f2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v1/saturated.bend",
+      "sha256": "91b3d2bff40a4969471d481cefa43abe3810624ff688f1aeae23ec890aff7abd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v1/partial.bend",
+      "sha256": "67b757b2141734d5f1f3fbcfdb0e2ee8824f7d367bbc2272559d5acfbcd7e763"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/error-order-v2/staged.bend",
+      "sha256": "28bda0a151f551a2a8ddd8ee772c9a036773d84f900d9fa55fdbb9966dc711a0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/prefix-scratch-v2.bend",
+      "sha256": "8d69617c49df1f08f89480151ccc0b51fe462c3971edd9e098c211426914b37f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/flat-admission-v1.bend",
+      "sha256": "d32c5ed12d0521d677e28e1cf09ecf8b2bd0f68b5bcdd24ecab95db832904db3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/flat-product-record-v1.bend",
+      "sha256": "74761b456b5fa753193665ea651914441f6a459cb8fe3d1c0ee3bc62599f8fc5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/flat-product-array-v1.bend",
+      "sha256": "cff321b4f9a683a121c6e35c25e8f050cd7ea62b5480575d140ef72bbf492eac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/controls/fixtures/flat-product-branch-drop-v1.bend",
+      "sha256": "49cbee22709a83eff215c898bbe9ef4fbb79b8bbfbb72cab10096afb96b37fc1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/reachability/controls/ordinary.bend",
+      "sha256": "9a2d9a1e67d562a383f0eaf522123590d7c1c91d5dc5cda3c12a41d7e722207f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/reachability/controls/dead-bang.bend",
+      "sha256": "3f4423cee9c3004b35212e86c4f8d1da66edbc256b851ae7940031625a3479d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/reachability/controls/live-bang.bend",
+      "sha256": "72dad14d49ec3e565d1fb27e35fbc97acf7cfb7018d9e2fecdd426d8fd741cc7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/reachability/controls/closure-bang.bend",
+      "sha256": "ab2e2e569aee435d0e111392ebe49b5187b91c336c0323e55143ce5a811aae78"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/reachability/controls/erased-bang.bend",
+      "sha256": "3ce6a2cf6837a89f96fb8a6ed2e3cac94631ee1d0bc3fb34cb71afc146abd210"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/reachability/controls/import-plain.bend",
+      "sha256": "add2a38bed935b1f4abb90e908f5881081f7906091aaeaf1754ee2d11e6c3d09"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/reachability/controls/import-dead-main.bend",
+      "sha256": "0b3252eec95000304a4c264c77c2cce5679014643d63c34ef048c4da5c394def"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls/bang-and-ordinary.bend",
+      "sha256": "5fa8bcd9ced59c4d1947ff7f14758f2c5bd2725b4f7d835c215c74688b92f188"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls/multiple-missing.bend",
+      "sha256": "a38d5f180c4e32b2e5f3df8285c896074b36426d341df1627c5e69024bdcee25"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-fixed-v2/shared-capture-v2.bend",
+      "sha256": "39710ee9e07b11a70e9d75c8e685ef120e9cf172676f1b7a7ad09f2459aef63b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls/stored-erased.bend",
+      "sha256": "17b45b20496963837da8a61489a3c03e8becef067d3b9a5ee25e5491e488e9b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/compile/closure_partial_app.bend",
+      "sha256": "a5db1896b19521ea737bd80b3d76304ba9bcd75ac7ce67c5cf6da4011f529d94"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/compile/erased_partial_closure.bend",
+      "sha256": "6cd012e49a9622ccf1026e9333cae84318f4f84bd7997580a384cb9d5c3ba114"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/compile/over_application.bend",
+      "sha256": "cf14db87224d84b118a5797c72c24c4418a2ae85268a5fc322883f0f14efde96"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/compile/bang_intrinsic_closure.bend",
+      "sha256": "b4e9b3ae9b9f080986a40d5d9e3e097cf5fa43f459b71112b75202d801b469d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-v4/capture-error-order.bend",
+      "sha256": "6a14230d1b06986da0e8ef1841d258cff2fc4acebc28ff07cced17862bd31199"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-v4/flip.bend",
+      "sha256": "d72747c5f93bf8fb337b1a7af56577be723cc9b284191d7aca1bff4174d8c38a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-v4/nested-literal-argument-error.bend",
+      "sha256": "02245d82a0c74dc06c7bab9e3f746f8435443851ac7d8e8be0e7fe2bb504edb1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-fixed-v2/nonlinear-fallback-v2.bend",
+      "sha256": "465c14d3b1ec69b1ca65ec14240fb4e404365046e46230345e0e0a2bca98b566"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-fixed-v2/shared-literal-capture-v2.bend",
+      "sha256": "ea36940f1f949f5d590f8a2ff036ba08071553f72d22bdeb9a3e098b95f682d6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/closure-factory/controls-fixed-v2/unused-literal-argument-error-v2.bend",
+      "sha256": "e203c0cb4614f131197b1624a6f2bad350a5b81c7a1cb606a299e0c149d78ea8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/static-data/fixtures/nested-shared.bend",
+      "sha256": "28c88dd52754d1a414f465c69e977e46c473758b05204158012ba7ac73867bcf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/static-data/fixtures/product-and-packed.bend",
+      "sha256": "bd6704934bf7a986615c36c7c588629b7eb0de77d601186348c9030441bd7c1b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/static-data/fixtures/string-shared.bend",
+      "sha256": "9f39c8bd6448047ceec9ddcd4d6f502b48f81e9f137465de1d91be2e501d6551"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures/shared-base-inside-cold.bend",
+      "sha256": "23cd8cf7044a8caf3e68ed44a4e4bc7fdd2129ed642bae254438a6a68fd69e45"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures/shared-user-dynamic-refusal.bend",
+      "sha256": "fdd12f9de146e200bf219b1823cb274c7f7c0b829d16cbff641c1b959e02d591"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures/unique-rotation.bend",
+      "sha256": "fae3a02034d0ded7b00615a83e589deb59f816944fac9420d1f40285c9eec4d5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures-v2/shared-user-refusal.bend",
+      "sha256": "178328b61b8394e97198aff344a9cd86cbce037c79915989a99ce000954a4885"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures-v2/container-user-refusal.bend",
+      "sha256": "c8d1b7bdcb08b5f2fb48acf7e591b5c2cca15724953823c669ff8dc9ef77feaf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures-v2/captured-user-refusal.bend",
+      "sha256": "96cb20d3be3ddad331f6b67eddce4dc0722dd64b569e7951802343653c99d15d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures/scalar-and-large-nat-v2.bend",
+      "sha256": "70a0d911c67f45d48c4fcb473535de61d4d59ad911de71e45ef222385f9160a7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures/tagged-user-enum.bend",
+      "sha256": "fe3fd43058e05b26e3c565067b7ce9bd0fd94c9a2f50bac1c393848b618305fd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/node-reuse/fixtures/scalar-widening.bend",
+      "sha256": "8f9535173007b12c196d4fa5015fb5898a78fba463025d0219abab533c81c1e6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase69/static-data/resource-controls/long-string-2000.bend",
+      "sha256": "bda9a623c9dcda31bde1f743c894310b7bc71b92f67e3c9903c7c4df63822e6d"
+    }
+  ],
+  "targetsExecuted": false
+}

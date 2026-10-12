@@ -10,6 +10,14 @@ This is a compiler feature proposal, not permission to recognize Base function
 names. The saved-C experiments use names only to select intervention sites and
 are explicitly typed-value diagnostics. There is no production implementation.
 
+The completed root campaign subsequently measured original/bit/compare/both/
+upstream at **722/488/620/390/429 ms**, with nine controls and 25 qualified
+intervals. The combined intervention reaches **0.909× upstream** for this Map
+family. Receipt `selfhost/build/phase69/map-borrow-diagnostic01/report.json`
+has SHA-256 `5e6504f77f96a770b0cf2027da7587e75d94e046da3fef685f38157fe4b9575f`.
+The concrete next-stage design and cost estimate are in
+[`design/phase69/root-preserving-observers.md`](../../../../../design/phase69/root-preserving-observers.md).
+
 ## Why the product island did not give a large gain
 
 Root-owned completed receipts:
@@ -119,6 +127,24 @@ requires an owned copy/retain at that escape point or candidate refusal. Opaque
 uses and writes are not initially supported. Existing typed layout/origin
 machinery should be reused instead of adding a separate emitter for each
 observer.
+
+## What the pinned upstream already does
+
+The active `bend2/comp.ts` explicitly separates borrowed roots and owned values:
+`node_fields` uses `term_peek` for a rooted word and propagates the root to boxed
+children; `val_own` records ownership or lending requirements; `val_owned` and
+`val_sink` avoid dropping borrowed fields. Its `file_new` fact sets (`own`,
+`lend`, `hot`) converge over emitter passes. Those are useful ownership rules,
+not a proof that reconstruction returns its original input.
+
+The saved upstream Map code still rebuilds the witnessed String prefixes.
+Therefore copying upstream borrowing alone and proving return identity are
+different interventions. A local bounded identity proof can first remove the
+reconstruction and leave a small observer for ordinary borrowed lowering. This
+avoids importing the entire upstream fixpoint emitter merely to obtain this
+specific capability. Current `NC_Binding{id, word}` does not record provenance,
+so ordinary environment cleanup cannot safely consume borrowed bindings without
+an explicit ownership distinction or a separately validated observer lowering.
 
 ## Raw fallback is a separate obligation
 

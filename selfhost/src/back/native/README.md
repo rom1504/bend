@@ -42,8 +42,8 @@ overwide arities and overlapping source/temporary binder ranges.
 
 General values use one runtime word and boxed constructors. Specialized native
 workers can flatten selected product arguments/results, and checked scalar arrays
-use the policy below. Upstream borrow and static-data optimizations are not fully
-reproduced. GPU execution has not been tested
+use the policy below. Closed immutable constructor graphs can use the static
+image; general upstream borrowing is not yet reproduced. GPU execution has not been tested
 on physical hardware in this workspace. Unprintable/dependent result types and
 unlowered core forms return explicit diagnostics.
 
@@ -135,3 +135,28 @@ and comment/string shields remain shared with JavaScript.
 
 See [native facts and fallback results](../../../../implementation/phase68/native-facts-and-calls.md)
 for separate runtime, B1/B2 compilation, conformance and size measurements.
+
+### Phase69 native integration
+
+Main-reachable bang facts now drive both scheduler metadata and worker
+admission. `static.bend` interns closed immutable constructor graphs in the
+existing static image and shares request-local prepared bodies across lowering
+routes. Its fresh BookCache payload preserves the original source index; raw
+forged/static and interior-cache inputs retain explicit rejection/fallback.
+The image is bounded at 65,536 words, with ordinary allocation after refusal.
+
+Known partial applications and bounded linear combinators avoid redundant
+closure factories while preserving argument demand and capture identities.
+Checked no-sharing facts permit cold user-constructor stores, and private
+worker signatures retain proven U32/F32/Char/Bool widths through `N_Param`.
+Raw calls and scheduler registers keep the generic Term ABI. Product fields
+remain opaque, and general root borrowing/storage reuse are still separate
+experiments. Register new native modules in both `manifest.txt` and
+`src/compiler.json` for a full compiler build.
+
+The [native performance guide](../../../../docs/self_hosted/native-parity.md)
+explains contracts, the typed10 six-family 1.0332× upstream runtime result,
+remaining individual gaps and reproducible fast loops. The
+[design](../../../../design/phase69/native-parity.md) and
+[report](../../../../implementation/phase69/README.md) separate measured source
+candidates, conformance, B1/B2 latency and installed release status.

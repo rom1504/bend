@@ -4174,3 +4174,26 @@ shared typed transport, known closure and ownership/reuse experiments.
 Previous compiler23 six-family1.724× remains unchanged; no saved-C whole-suite
 claim. Lean/GHC/Flambda/Koka/LLVM research expanded; failures and exact methods
 preserved. Guarded process time7min29s, max treeRSS347.52MiB. No PR comment.
+
+### Phase69 native implementation and installed release — 2026-10-12
+
+[Report](../implementation/phase69/README.md), qualified source/release `f1655d0`.
+P69-001/002/003/006/008 implement reachable bangs, static images, known closure
+factories, bounded linear combinators and typed private parameters. P69-005's
+cold user-constructor rule is selected; storage reuse is deferred. Compiler stays
+in Bend, runtime ABI unchanged. Fresh six-family54-observation campaign:
+compiler23 **1.5285× → selected1.0332×** upstream,32.4% less time. Tree/Map/lexer
+remain1.429×/1.595×/1.816×; closures0.299×. No universal parity claim.
+
+P69-004 lexer loop transport adds10.4% beyond static/mode; P69-007 Map scheduler
+product island adds6.2%; both deferred on complexity. P69-009 borrowed observer
+prototype beats upstream Map390vs429ms and has a reviewed general design; no
+production admission yet. P69-010 result/packed facts add<1%, not selected.
+
+Selected native71, raw28 result rows, static7 helper boundaries, frontend36,
+2,992 unchanged JS/frontend functions, genuine B2 driver8, fresh own-source
+check, exact B3 and installed42/24/5 controls pass. Old seven-file release is
+preserved exactly. C request B1/B2 screen3.231×/2.183× across27 exact requests;
+separate from runtime and historical broad JS metrics. +440 physical lines,
+one module. Failed variants remain in the verified Phase69 capsule. Guarded
+occupancy21m44s, peak1.516GiB,51m29s first-to-last-target span. No PR comment.

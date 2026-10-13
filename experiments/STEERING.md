@@ -1,4 +1,4 @@
-# Active frontier: Phase78 installed; Phase79 library cache rejected
+# Active frontier: Phase78 installed; Phase80 representation experiments closed
 
 Installed genuine B2 `cc99ac9b…`, checked B1 `475610ea…`, source commit `6758bf2`.
 [Report](../implementation/phase78/README.md), [qualification](../implementation/phase78/source-qualification.json),
@@ -31,14 +31,25 @@ decode, GC and context work. Non-IO held-outs are unchanged. Reject both, stop
 observer-cache expansion, and restore exact Phase78 production source. Release
 verification passes after rollback. All prototypes/failures remain preserved.
 
-Next: cold parity still needs about 42% less B1 time /28% less B2 time on the
-three-source loop. Require a new bounded representation/control-flow prototype
-covering general user work and the 65-function control. Do not repeat broad
-serialization or branch-helper expansion without a demonstrated cheaper mechanism.
-No new optimization is selected by this report.
+[Phase80 report](../implementation/phase80/README.md): whole/live-only checker type
+retention saves0.6–1.3% on the IO-based B1 screen but the live-only variant regresses
+small17.4%/functions65 8.9%; reject and restore. Exact-argument counters expose
+repeated different-binder occurrence walks. List and integer-set body summaries
+pass15,678 generated comparisons each; final set summary saves2.15% on45 fresh
+requests, with small unchanged/functions65 1.31% slower on18 held-outs. Defer
+both summary patches. All147 clean requests and four diagnostic requests preserve
+C. Five checked-B1/frontend36 builds pass; no prototype B2 or release claim.
+Production source/driver/dist are unchanged and final release verification passes.
+
+Next: cold parity still needs about42% less B1 time /28% less B2 time on the
+three-source loop. A future compact native-body product should replace multiple
+consumer traversals together, without enlarging the frontend or serialized Base.
+Whole typed graphs, generic memo tables and node IDs alone have no demonstrated
+large net gain. Keep construction, decode, lookup and held-out costs in the gate.
+Read the preserved Phase80 patches/counters before repeating either approach.
 
 One guarded CPU3 tree,2GiB RSS/4GiB available floor,Node1GiB heap/4MiB stack.
 No agents or PR comments. Preserve unrelated inherited Phase6/68 work and all
-sealed historical evidence. Phase78 evidence is sealed; Phase79 evidence is linked from its report.
+sealed historical evidence. Phase78–80 evidence is sealed and linked from the respective reports.
 Historical frontiers remain in Git history and the linked Phase73–77 reports;
 consult them before repeating a rejected hypothesis.

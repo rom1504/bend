@@ -1,0 +1,116 @@
+--- a/selfhost/src/back/native/product.bend
++++ b/selfhost/src/back/native/product.bend
+@@ -444,3 +444,61 @@
+       nt_choose(List<&2, NF_Worker>, String.eq(tg(dv(info)), "NQSig") && Bool.not(nb_contains(bangs, name)),
+         u => Con{nq_candidate_mode(book, name, signatures, nq_entry(ks(dv(info)), 0, da(info)), checked), nq_candidates_mode(book, rest, bangs, signatures, checked)},
+         u => nq_candidates_mode(book, rest, bangs, signatures, checked))
++
++# All binder occurrences for one immutable body. The two persistent sets encode
++# counts 0/1/many; sequential visits update them and alternative branches union
++# them. This shares the backend's existing compact U32-key representation.
++type NQ_Counts is Data:
++  NQ_Counts{+used: NU_Set, +many: NU_Set}
++
++law nq_counts_walk:
++  for +t: KTerm
++  for +counts: NQ_Counts
++  NQ_Counts
++
++@unsafe
++def nq_count_get(+counts: NQ_Counts, +id: U32) -> U32:
++  match counts:
++    case NQ_Counts{used, many}: nt_choose(U32, nu_has(many, id), u => 2, u => nt_bool(nu_has(used, id)))
++
++@unsafe
++def nq_count_add(+counts: NQ_Counts, +id: U32) -> NQ_Counts:
++  match counts:
++    case NQ_Counts{+used, +many}:
++      nt_choose(NQ_Counts, nu_has(many, id), u => counts, u =>
++        nt_choose(NQ_Counts, nu_has(used, id), v => NQ_Counts{used, nu_add(many, id)}, v => NQ_Counts{nu_add(used, id), many}))
++
++@unsafe
++def nq_count_union(+a: NU_Set, +b: NU_Set) -> NU_Set:
++  match a:
++    case NU_Empty{}: b
++    case NU_Leaf{key}: nu_add(b, key)
++    case NU_Node{mask, left, right}: nq_count_union(left, nq_count_union(right, b))
++
++@unsafe
++def nq_count_join(+a: NQ_Counts, +b: NQ_Counts) -> NQ_Counts:
++  match a b:
++    case NQ_Counts{au, am} NQ_Counts{bu, bm}: NQ_Counts{nq_count_union(au, bu), nq_count_union(am, bm)}
++
++@unsafe
++def nq_counts_list(ts: List<&2,KTerm>, +counts: NQ_Counts) -> NQ_Counts:
++  match ts:
++    case Nil{}: counts
++    case Con{h, rest}: nq_counts_list(rest, nq_counts_walk(h, counts))
++
++@unsafe
++def nq_counts_rows(rows: List<&2,KTerm>, +counts: NQ_Counts) -> NQ_Counts:
++  match rows:
++    case Nil{}: counts
++    case Con{row, rest}: nq_count_join(nq_counts_walk(kid(row, 0), counts), nq_counts_rows(rest, counts))
++
++@unsafe
++def nq_counts_walk(t, counts):
++  nt_choose(NQ_Counts, String.eq(tg(t), "Var"), u => nq_count_add(counts, ix(t)), u =>
++    nt_choose(NQ_Counts, String.eq(tg(t), "Mat") && U32.is_eq(terms_len(ks(t)), 2),
++      v => nq_count_join(nq_counts_walk(kid(t, 0), counts), nq_counts_walk(kid(t, 1), counts)),
++      v => nt_choose(NQ_Counts, String.eq(tg(t), "NWPattern"), w => nq_counts_rows(ks(t), counts), w => nq_counts_list(ks(t), counts))))
++
++@unsafe
++def nq_counts(+t: KTerm) -> NQ_Counts:
++  nq_counts_walk(t, NQ_Counts{NU_Empty{}, NU_Empty{}})
+--- a/selfhost/src/back/native/scalar-array.bend
++++ b/selfhost/src/back/native/scalar-array.bend
+@@ -85,16 +85,20 @@
+ 
+ @unsafe
+ def ns_unshared_terms(+book: List<&2, KDef>, +body: KTerm, ts: List<&2, KTerm>) -> Bool:
++  ns_unshared_counts(book, nq_counts(body), ts)
++
++@unsafe
++def ns_unshared_counts(+book: List<&2, KDef>, +counts: NQ_Counts, ts: List<&2, KTerm>) -> Bool:
+   match ts:
+     case Nil{}: True{}
+     case Con{+t, +rest}:
+       nt_choose(Bool, String.eq(tg(t), "Ann"),
+         u => nt_choose(Bool, String.eq(tg(kid(t, 0)), "Var"),
+-          v => nt_choose(Bool, ns_array_free(book, kid(t, 1)), w => ns_unshared_terms(book, body, rest), w => nt_choose(Bool, U32.is_le(nq_uses(body, ix(kid(t, 0))), 1), x => ns_unshared_terms(book, body, rest), x => False{})),
+-          v => ns_unshared_terms(book, body, Con{kid(t, 0), rest})),
++          v => nt_choose(Bool, ns_array_free(book, kid(t, 1)), w => ns_unshared_counts(book, counts, rest), w => nt_choose(Bool, U32.is_le(nq_count_get(counts, ix(kid(t, 0))), 1), x => ns_unshared_counts(book, counts, rest), x => False{})),
++          v => ns_unshared_counts(book, counts, Con{kid(t, 0), rest})),
+         u => nt_choose(Bool, String.eq(tg(t), "Var"),
+-          v => nt_choose(Bool, U32.is_le(nq_uses(body, ix(t)), 1), w => ns_unshared_terms(book, body, nt_append(KTerm, ks(t), rest)), w => False{}),
+-          v => ns_unshared_terms(book, body, nt_append(KTerm, ks(t), rest))))
++          v => nt_choose(Bool, U32.is_le(nq_count_get(counts, ix(t)), 1), w => ns_unshared_counts(book, counts, nt_append(KTerm, ks(t), rest)), w => False{}),
++          v => ns_unshared_counts(book, counts, nt_append(KTerm, ks(t), rest))))
+ 
+ @unsafe
+ def ns_unshared_definitions(+book: List<&2, KDef>, names: List<&2, String>) -> Bool:
+--- a/selfhost/src/back/native/sharing.bend
++++ b/selfhost/src/back/native/sharing.bend
+@@ -54,15 +54,19 @@
+ 
+ @unsafe
+ def nh_terms(+book: List<&2, KDef>, +body: KTerm, ts: List<&2, KTerm>, +hot: List<&2, String>) -> List<&2, String>:
++  nh_terms_counts(book, nq_counts(body), ts, hot)
++
++@unsafe
++def nh_terms_counts(+book: List<&2, KDef>, +counts: NQ_Counts, ts: List<&2, KTerm>, +hot: List<&2, String>) -> List<&2, String>:
+   match ts:
+     case Nil{}: hot
+     case Con{+t, +rest}:
+       nt_choose(List<&2, String>, nb_contains(hot, "*"), u => hot, u =>
+         nt_choose(List<&2, String>, String.eq(tg(t), "Ann"), v =>
+           nt_choose(List<&2, String>, String.eq(tg(kid(t, 0)), "Var"), w =>
+-            nh_terms(book, body, rest, nt_choose(List<&2, String>, U32.is_gt(nq_uses(body, ix(kid(t, 0))), 1), x => nh_type(book, kid(t, 1), hot, 64), x => hot)),
+-            w => nh_terms(book, body, Con{kid(t, 0), rest}, hot)), v =>
+-          nt_choose(List<&2, String>, String.eq(tg(t), "Var"), w => nt_choose(List<&2, String>, U32.is_gt(nq_uses(body, ix(t)), 1), x => nh_add("*", hot), x => nh_terms(book, body, rest, hot)), w => nh_terms(book, body, nt_append(KTerm, ks(t), rest), hot))))
++            nh_terms_counts(book, counts, rest, nt_choose(List<&2, String>, U32.is_gt(nq_count_get(counts, ix(kid(t, 0))), 1), x => nh_type(book, kid(t, 1), hot, 64), x => hot)),
++            w => nh_terms_counts(book, counts, Con{kid(t, 0), rest}, hot)), v =>
++          nt_choose(List<&2, String>, String.eq(tg(t), "Var"), w => nt_choose(List<&2, String>, U32.is_gt(nq_count_get(counts, ix(t)), 1), x => nh_add("*", hot), x => nh_terms_counts(book, counts, rest, hot)), w => nh_terms_counts(book, counts, nt_append(KTerm, ks(t), rest), hot))))
+ 
+ @unsafe
+ def nh_definitions(+book: List<&2, KDef>, names: List<&2, String>, +hot: List<&2, String>) -> List<&2, String>:

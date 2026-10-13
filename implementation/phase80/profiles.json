@@ -1,0 +1,2219 @@
+{
+  "scope": "Diagnostic only. Public stage clocks and V8 samples do not replace clean request timings. Inclusive clocks overlap.",
+  "profiles": [
+    {
+      "role": "baseline",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase80/profiles02/runs/profile-numeric-baseline/report.json",
+        "sha256": "cd0b78d612c8ecf4146c9c3279a9c6d39f5bbbf0fee4cedeb8a85402988e57e4",
+        "bytes": 236369
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase80/profiles02/runs/profile-numeric-baseline/request.cpuprofile",
+        "sha256": "814a8bab78b845ea1809030c134d6bfe481de61241fb24a01d4090d9fdc7c4ab",
+        "bytes": 5394986
+      },
+      "requestMs": 1270.046751,
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 18.60584499999993,
+          "exclusiveMs": 18.60584499999993
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.8903960000000097,
+          "exclusiveMs": 0.8903960000000097
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 110.932004,
+          "exclusiveMs": 110.932004
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.08959700000002613,
+          "exclusiveMs": 0.08959700000002613
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 7.205956000000015,
+          "exclusiveMs": 7.205956000000015
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 71.98442799999998,
+          "exclusiveMs": 71.98442799999998
+        },
+        "driver_report_data": {
+          "calls": 1,
+          "inclusiveMs": 43.15880600000003,
+          "exclusiveMs": 43.15880600000003
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 14.247863999999936,
+          "exclusiveMs": 14.247863999999936
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 0.5088189999999031,
+          "exclusiveMs": 0.5088189999999031
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 18.635618000000022,
+          "exclusiveMs": 18.635618000000022
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 8.653638,
+          "exclusiveMs": 8.653638
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 84.860997,
+          "exclusiveMs": 84.860997
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 20.865707000000157,
+          "exclusiveMs": 20.865707000000157
+        },
+        "nr_prepare": {
+          "calls": 1,
+          "inclusiveMs": 92.93046099999992,
+          "exclusiveMs": 92.93046099999992
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 9.070469999999887,
+          "exclusiveMs": 9.070469999999887
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.6234179999999014,
+          "exclusiveMs": 0.6234179999999014
+        },
+        "nr_compile": {
+          "calls": 1,
+          "inclusiveMs": 664.566896,
+          "exclusiveMs": 664.566896
+        }
+      },
+      "exclusiveLeafSampledMs": [
+        {
+          "name": "",
+          "milliseconds": 386.23099999999954
+        },
+        {
+          "name": "run_loop",
+          "milliseconds": 255.12800000000004
+        },
+        {
+          "name": "(garbage collector)",
+          "milliseconds": 106.42400000000002
+        },
+        {
+          "name": "post",
+          "milliseconds": 32.483
+        },
+        {
+          "name": "$annotate$",
+          "milliseconds": 19.192999999999998
+        },
+        {
+          "name": "$String$starts_with$",
+          "milliseconds": 16.82
+        },
+        {
+          "name": "arenaReadCon",
+          "milliseconds": 15.67
+        },
+        {
+          "name": "decodeBaseArena",
+          "milliseconds": 13.046
+        },
+        {
+          "name": "$norm_node_min$",
+          "milliseconds": 9.126999999999999
+        },
+        {
+          "name": "$index_find$",
+          "milliseconds": 9.036999999999999
+        },
+        {
+          "name": "$subst_terms$",
+          "milliseconds": 8.869
+        },
+        {
+          "name": "$norm_max_term$",
+          "milliseconds": 8.441
+        },
+        {
+          "name": "validateSpanBook",
+          "milliseconds": 7.708
+        },
+        {
+          "name": "run_tail",
+          "milliseconds": 7.488
+        },
+        {
+          "name": "$norm_node_let$",
+          "milliseconds": 7.364
+        },
+        {
+          "name": "$nt_lines_go$",
+          "milliseconds": 6.946
+        },
+        {
+          "name": "$j_find_ctor_children$",
+          "milliseconds": 6.878
+        },
+        {
+          "name": "$kr_refs_list$",
+          "milliseconds": 6.429
+        },
+        {
+          "name": "$nt_replace_step$",
+          "milliseconds": 6.003
+        },
+        {
+          "name": "$nc_refs$",
+          "milliseconds": 5.8660000000000005
+        },
+        {
+          "name": "$nq_uses_list$",
+          "milliseconds": 5.529
+        },
+        {
+          "name": "$nt_lines$",
+          "milliseconds": 5.512
+        },
+        {
+          "name": "$norm_max_book$",
+          "milliseconds": 5.4799999999999995
+        },
+        {
+          "name": "$nc_ctor_codes$",
+          "milliseconds": 5.458
+        },
+        {
+          "name": "$nc_lower_to$",
+          "milliseconds": 5.417
+        },
+        {
+          "name": "$index_hash$",
+          "milliseconds": 5.237
+        },
+        {
+          "name": "$nc_lower_partition$",
+          "milliseconds": 4.7989999999999995
+        },
+        {
+          "name": "$kr_resolve$",
+          "milliseconds": 4.72
+        },
+        {
+          "name": "$nc_native_primitive$",
+          "milliseconds": 4.561
+        },
+        {
+          "name": "$nf_bind_boxed$",
+          "milliseconds": 4.525
+        },
+        {
+          "name": "$nt_fid$",
+          "milliseconds": 4.432
+        },
+        {
+          "name": "$nt_clean$",
+          "milliseconds": 4.225
+        },
+        {
+          "name": "$dn$",
+          "milliseconds": 3.8740000000000006
+        },
+        {
+          "name": "$norm_max_defs$",
+          "milliseconds": 3.841
+        },
+        {
+          "name": "$book_final_scan$",
+          "milliseconds": 3.795
+        },
+        {
+          "name": "$nq_signature_def$",
+          "milliseconds": 3.772
+        },
+        {
+          "name": "$String$to_lower$",
+          "milliseconds": 3.439
+        },
+        {
+          "name": "$noa_match_spec$",
+          "milliseconds": 3.439
+        },
+        {
+          "name": "$infer$",
+          "milliseconds": 3.356
+        },
+        {
+          "name": "$kr_refs$",
+          "milliseconds": 3.333
+        },
+        {
+          "name": "$wnf$",
+          "milliseconds": 3.328
+        },
+        {
+          "name": "$kf_char$",
+          "milliseconds": 3.294
+        },
+        {
+          "name": "$norm_exact_lists$",
+          "milliseconds": 3.2110000000000003
+        },
+        {
+          "name": "$lookup$",
+          "milliseconds": 3.1980000000000004
+        },
+        {
+          "name": "$norm_node_ref$",
+          "milliseconds": 3.178
+        },
+        {
+          "name": "$index_leaf$",
+          "milliseconds": 3.161
+        },
+        {
+          "name": "$String$eq$",
+          "milliseconds": 3.141
+        },
+        {
+          "name": "$index_build$",
+          "milliseconds": 3.1270000000000002
+        },
+        {
+          "name": "$kt$",
+          "milliseconds": 3.085
+        },
+        {
+          "name": "$tg$",
+          "milliseconds": 3.0840000000000005
+        },
+        {
+          "name": "$U32$show$",
+          "milliseconds": 3.0389999999999997
+        },
+        {
+          "name": "$nc_ctor_index$",
+          "milliseconds": 2.705
+        },
+        {
+          "name": "$j_literal_typed$",
+          "milliseconds": 2.527
+        },
+        {
+          "name": "$f_two$",
+          "milliseconds": 2.41
+        },
+        {
+          "name": "$nc_pack_foreign$",
+          "milliseconds": 2.383
+        },
+        {
+          "name": "$index_remove$",
+          "milliseconds": 2.373
+        },
+        {
+          "name": "$jd_domains$",
+          "milliseconds": 2.363
+        },
+        {
+          "name": "$f_context_material_children$",
+          "milliseconds": 2.3600000000000003
+        },
+        {
+          "name": "$norm_max_walk$",
+          "milliseconds": 2.3360000000000003
+        },
+        {
+          "name": "$norm_node_ann$",
+          "milliseconds": 2.264
+        },
+        {
+          "name": "$ns_static_terms$",
+          "milliseconds": 2.259
+        },
+        {
+          "name": "$nc_let_cut$",
+          "milliseconds": 2.2560000000000002
+        },
+        {
+          "name": "$ns_ctor_index$",
+          "milliseconds": 2.2409999999999997
+        },
+        {
+          "name": "$kr_dependencies$",
+          "milliseconds": 2.229
+        },
+        {
+          "name": "$dr_walk$",
+          "milliseconds": 2.194
+        },
+        {
+          "name": "$index_lookup$",
+          "milliseconds": 2.121
+        },
+        {
+          "name": "$ne_template_plain$",
+          "milliseconds": 2.113
+        },
+        {
+          "name": "$nu_join$",
+          "milliseconds": 2.107
+        },
+        {
+          "name": "$nh_observer_types$",
+          "milliseconds": 2.104
+        },
+        {
+          "name": "$base_prefix_ctor_disjoint$",
+          "milliseconds": 2.088
+        },
+        {
+          "name": "$f_graph_finish_indexed$",
+          "milliseconds": 2.0860000000000003
+        },
+        {
+          "name": "f32_bits",
+          "milliseconds": 2.082
+        },
+        {
+          "name": "$f_find$",
+          "milliseconds": 2.081
+        },
+        {
+          "name": "$base_prefix_context_drop$",
+          "milliseconds": 2.077
+        },
+        {
+          "name": "$nc_array_known$",
+          "milliseconds": 1.963
+        },
+        {
+          "name": "$kw_temp_fresh$",
+          "milliseconds": 1.938
+        },
+        {
+          "name": "$List$reverse$go$",
+          "milliseconds": 1.9369999999999998
+        },
+        {
+          "name": "$f_ident$",
+          "milliseconds": 1.899
+        },
+        {
+          "name": "$nc_match_apply_slow_to$",
+          "milliseconds": 1.665
+        },
+        {
+          "name": "$nq_assign$",
+          "milliseconds": 1.547
+        },
+        {
+          "name": "$db$",
+          "milliseconds": 1.5090000000000001
+        },
+        {
+          "name": "$ka_annotated$",
+          "milliseconds": 1.506
+        },
+        {
+          "name": "$book_cached$",
+          "milliseconds": 1.431
+        },
+        {
+          "name": "$base_prefix_world_resume_state$",
+          "milliseconds": 1.399
+        },
+        {
+          "name": "$kf_has_path$",
+          "milliseconds": 1.389
+        },
+        {
+          "name": "$ffw_kids$",
+          "milliseconds": 1.381
+        },
+        {
+          "name": "$nq_layout_subst_small$",
+          "milliseconds": 1.362
+        },
+        {
+          "name": "$f_triple_op$",
+          "milliseconds": 1.282
+        },
+        {
+          "name": "$nv_owned$",
+          "milliseconds": 1.279
+        },
+        {
+          "name": "$nq_value_shape$",
+          "milliseconds": 1.278
+        },
+        {
+          "name": "$nc_compact_list$",
+          "milliseconds": 1.271
+        },
+        {
+          "name": "$nc_uses_list$",
+          "milliseconds": 1.27
+        },
+        {
+          "name": "$ns_terms_step$",
+          "milliseconds": 1.266
+        },
+        {
+          "name": "$ns_terms$",
+          "milliseconds": 1.26
+        },
+        {
+          "name": "$f_grow_existing$",
+          "milliseconds": 1.254
+        },
+        {
+          "name": "$nc_partition_uses$",
+          "milliseconds": 1.246
+        },
+        {
+          "name": "$nf_worker_kinds$",
+          "milliseconds": 1.241
+        },
+        {
+          "name": "$jl_fields$",
+          "milliseconds": 1.234
+        },
+        {
+          "name": "$nd_join$",
+          "milliseconds": 1.234
+        },
+        {
+          "name": "$dk$",
+          "milliseconds": 1.2309999999999999
+        },
+        {
+          "name": "$nc_erase_args$",
+          "milliseconds": 1.202
+        },
+        {
+          "name": "$driver_foreign_names$",
+          "milliseconds": 1.193
+        },
+        {
+          "name": "$nc_has_ctor$",
+          "milliseconds": 1.191
+        },
+        {
+          "name": "$nq_layout_size$",
+          "milliseconds": 1.189
+        },
+        {
+          "name": "$nol_root_specs$",
+          "milliseconds": 1.161
+        },
+        {
+          "name": "$U32$show$go$",
+          "milliseconds": 1.1540000000000001
+        },
+        {
+          "name": "$nc_all_args$",
+          "milliseconds": 1.14
+        },
+        {
+          "name": "$nf_candidate$",
+          "milliseconds": 1.136
+        },
+        {
+          "name": "$jd_raise_match$",
+          "milliseconds": 1.134
+        },
+        {
+          "name": "$nc_refs_go$",
+          "milliseconds": 1.132
+        },
+        {
+          "name": "$no_entry_defs$",
+          "milliseconds": 1.129
+        },
+        {
+          "name": "$Char$is_lower$",
+          "milliseconds": 1.128
+        },
+        {
+          "name": "$ffw_done$",
+          "milliseconds": 1.124
+        },
+        {
+          "name": "inspectWithMemo",
+          "milliseconds": 1.117
+        },
+        {
+          "name": "$kf_scan$",
+          "milliseconds": 1.115
+        },
+        {
+          "name": "$book_final_name_valid$",
+          "milliseconds": 1.113
+        },
+        {
+          "name": "$dt$",
+          "milliseconds": 1.111
+        },
+        {
+          "name": "$index_bucket$",
+          "milliseconds": 1.111
+        },
+        {
+          "name": "$norm_eval_node$",
+          "milliseconds": 1.109
+        },
+        {
+          "name": "arenaReadKTerm",
+          "milliseconds": 1.107
+        },
+        {
+          "name": "$jd_raise_head$",
+          "milliseconds": 1.107
+        },
+        {
+          "name": "$nw_bits_ready$",
+          "milliseconds": 1.105
+        },
+        {
+          "name": "$nq_layout_type$",
+          "milliseconds": 1.104
+        },
+        {
+          "name": "$ns_word$",
+          "milliseconds": 1.096
+        },
+        {
+          "name": "$ns_return_known$",
+          "milliseconds": 1.095
+        },
+        {
+          "name": "$k_rebuild$",
+          "milliseconds": 1.095
+        },
+        {
+          "name": "$String$split$",
+          "milliseconds": 1.094
+        },
+        {
+          "name": "$f_def_base$",
+          "milliseconds": 1.094
+        },
+        {
+          "name": "$f_declared$",
+          "milliseconds": 1.092
+        },
+        {
+          "name": "$f_atom_existing$",
+          "milliseconds": 1.092
+        },
+        {
+          "name": "$nc_constructors$",
+          "milliseconds": 1.092
+        },
+        {
+          "name": "$index_tip$",
+          "milliseconds": 1.09
+        },
+        {
+          "name": "$no_emit_match_found$",
+          "milliseconds": 1.09
+        },
+        {
+          "name": "$f_alias$",
+          "milliseconds": 1.088
+        },
+        {
+          "name": "$ns_terms_cons$",
+          "milliseconds": 1.088
+        },
+        {
+          "name": "$nc_prepare_env$",
+          "milliseconds": 1.086
+        },
+        {
+          "name": "$ne_take_params$",
+          "milliseconds": 1.086
+        },
+        {
+          "name": "$f_col$",
+          "milliseconds": 1.082
+        },
+        {
+          "name": "$f_tele$",
+          "milliseconds": 1.081
+        },
+        {
+          "name": "$nd_app_to$",
+          "milliseconds": 1.081
+        },
+        {
+          "name": "$norm_args$",
+          "milliseconds": 1.078
+        },
+        {
+          "name": "$nb_width$",
+          "milliseconds": 1.078
+        },
+        {
+          "name": "$nh_head$",
+          "milliseconds": 1.077
+        },
+        {
+          "name": "$nk_kind$",
+          "milliseconds": 1.077
+        },
+        {
+          "name": "$Bool$not$",
+          "milliseconds": 1.075
+        },
+        {
+          "name": "$nc_terms_fork$",
+          "milliseconds": 1.075
+        },
+        {
+          "name": "$env_subst_start$",
+          "milliseconds": 1.073
+        },
+        {
+          "name": "$ks$",
+          "milliseconds": 1.072
+        },
+        {
+          "name": "$nb_fork_close$",
+          "milliseconds": 1.072
+        },
+        {
+          "name": "$f_lex_symbol$",
+          "milliseconds": 1.071
+        },
+        {
+          "name": "$k_with_children$",
+          "milliseconds": 1.069
+        },
+        {
+          "name": "$kb$",
+          "milliseconds": 1.068
+        },
+        {
+          "name": "$ne_stores$",
+          "milliseconds": 1.068
+        },
+        {
+          "name": "$has_name$",
+          "milliseconds": 1.067
+        },
+        {
+          "name": "$nf_escape_terms$",
+          "milliseconds": 1.067
+        },
+        {
+          "name": "$nd_scalar_word$",
+          "milliseconds": 1.067
+        },
+        {
+          "name": "$ok$",
+          "milliseconds": 1.066
+        },
+        {
+          "name": "$ns_array_free$",
+          "milliseconds": 1.066
+        },
+        {
+          "name": "$nd_scalar_call$",
+          "milliseconds": 1.065
+        },
+        {
+          "name": "$nu_add$",
+          "milliseconds": 1.065
+        },
+        {
+          "name": "$noa_reference$",
+          "milliseconds": 1.065
+        },
+        {
+          "name": "$nm$",
+          "milliseconds": 1.064
+        },
+        {
+          "name": "$nd_leading$",
+          "milliseconds": 1.063
+        },
+        {
+          "name": "$ns_defs$",
+          "milliseconds": 1.063
+        },
+        {
+          "name": "$no_bind_fields$",
+          "milliseconds": 1.063
+        },
+        {
+          "name": "(program)",
+          "milliseconds": 1.062
+        },
+        {
+          "name": "$f_atom$",
+          "milliseconds": 1.061
+        },
+        {
+          "name": "$ns_static_scalar_fields$",
+          "milliseconds": 1.061
+        },
+        {
+          "name": "$nol_param_type$",
+          "milliseconds": 1.061
+        },
+        {
+          "name": "$f_raw_skip$",
+          "milliseconds": 1.06
+        },
+        {
+          "name": "$k_with_span$",
+          "milliseconds": 1.059
+        },
+        {
+          "name": "$f_mark_rows$",
+          "milliseconds": 1.059
+        },
+        {
+          "name": "$norm_cmp_loop$",
+          "milliseconds": 1.059
+        },
+        {
+          "name": "$g_return$",
+          "milliseconds": 1.059
+        },
+        {
+          "name": "$driver_holes_terms$",
+          "milliseconds": 1.059
+        },
+        {
+          "name": "$book_final_seen$",
+          "milliseconds": 1.059
+        },
+        {
+          "name": "$f_kind$",
+          "milliseconds": 1.058
+        },
+        {
+          "name": "$f_unmark$",
+          "milliseconds": 1.057
+        },
+        {
+          "name": "$f_lex_cursor$",
+          "milliseconds": 1.057
+        },
+        {
+          "name": "$book_context_world$",
+          "milliseconds": 1.057
+        },
+        {
+          "name": "$Char$to_lower$",
+          "milliseconds": 1.057
+        },
+        {
+          "name": "$nr_compile$",
+          "milliseconds": 1.057
+        },
+        {
+          "name": "$no_route_schema$",
+          "milliseconds": 1.057
+        },
+        {
+          "name": "$String$reverse$",
+          "milliseconds": 1.056
+        },
+        {
+          "name": "$sk_escape$",
+          "milliseconds": 1.056
+        },
+        {
+          "name": "$f_context_name$",
+          "milliseconds": 1.054
+        },
+        {
+          "name": "$f_locate$",
+          "milliseconds": 1.054
+        },
+        {
+          "name": "$norm_cmp_kind_right$",
+          "milliseconds": 1.054
+        },
+        {
+          "name": "$norm_node_app$",
+          "milliseconds": 1.054
+        },
+        {
+          "name": "lstat",
+          "milliseconds": 1.053
+        },
+        {
+          "name": "$nf_plan_workers$",
+          "milliseconds": 1.053
+        },
+        {
+          "name": "$f_lex_comment$",
+          "milliseconds": 1.052
+        },
+        {
+          "name": "$ke_world$",
+          "milliseconds": 1.051
+        },
+        {
+          "name": "$kid$",
+          "milliseconds": 1.051
+        },
+        {
+          "name": "$subst_node$",
+          "milliseconds": 1.05
+        },
+        {
+          "name": "$dr_cached_names$",
+          "milliseconds": 1.049
+        },
+        {
+          "name": "$ns_body$",
+          "milliseconds": 1.047
+        },
+        {
+          "name": "visit",
+          "milliseconds": 1.045
+        },
+        {
+          "name": "$nb_contains$",
+          "milliseconds": 1.045
+        },
+        {
+          "name": "$nr_unshared$",
+          "milliseconds": 1.044
+        },
+        {
+          "name": "$nf_plan_retry$",
+          "milliseconds": 1.043
+        },
+        {
+          "name": "$ka_type_node$",
+          "milliseconds": 1.042
+        },
+        {
+          "name": "$nf_lets_local$",
+          "milliseconds": 1.042
+        },
+        {
+          "name": "$nf_host_calls$",
+          "milliseconds": 1.042
+        },
+        {
+          "name": "$nk_binding$",
+          "milliseconds": 1.042
+        },
+        {
+          "name": "$g_term$",
+          "milliseconds": 1.041
+        },
+        {
+          "name": "$nr_visit$",
+          "milliseconds": 1.041
+        },
+        {
+          "name": "$f_last$",
+          "milliseconds": 1.04
+        },
+        {
+          "name": "$nol_fields$",
+          "milliseconds": 1.04
+        },
+        {
+          "name": "$f_context_constructor$",
+          "milliseconds": 1.039
+        },
+        {
+          "name": "$String$to_upper$",
+          "milliseconds": 1.039
+        },
+        {
+          "name": "$core_rebuild$",
+          "milliseconds": 1.036
+        },
+        {
+          "name": "$f_begin$",
+          "milliseconds": 1.034
+        },
+        {
+          "name": "$nq_shape_words$",
+          "milliseconds": 1.034
+        },
+        {
+          "name": "$ix$",
+          "milliseconds": 1.033
+        },
+        {
+          "name": "$nw_same_list$",
+          "milliseconds": 1.033
+        },
+        {
+          "name": "$f_group$",
+          "milliseconds": 1.032
+        },
+        {
+          "name": "$g_shared_head$",
+          "milliseconds": 1.029
+        },
+        {
+          "name": "$j_layout_native_nat$",
+          "milliseconds": 1.026
+        },
+        {
+          "name": "$nf_wrap_segments$",
+          "milliseconds": 1.021
+        },
+        {
+          "name": "$nq_pair_primitive$",
+          "milliseconds": 1.019
+        },
+        {
+          "name": "$ka_lam$",
+          "milliseconds": 1.016
+        },
+        {
+          "name": "f32_read",
+          "milliseconds": 1.015
+        },
+        {
+          "name": "$fpe_terms$",
+          "milliseconds": 1.008
+        },
+        {
+          "name": "$nd_arity_plain$",
+          "milliseconds": 1.007
+        },
+        {
+          "name": "arenaReadKLambda",
+          "milliseconds": 1.006
+        },
+        {
+          "name": "$nf_host_payload$",
+          "milliseconds": 1.004
+        },
+        {
+          "name": "$ns_types_free$",
+          "milliseconds": 1.0
+        },
+        {
+          "name": "$nc_foreign$",
+          "milliseconds": 0.996
+        },
+        {
+          "name": "$driver_report_data$",
+          "milliseconds": 0.991
+        },
+        {
+          "name": "$f_context_call$",
+          "milliseconds": 0.986
+        },
+        {
+          "name": "$ka_wrap$",
+          "milliseconds": 0.985
+        },
+        {
+          "name": "$nol_root_pair$",
+          "milliseconds": 0.981
+        },
+        {
+          "name": "$no_emit_match_layout$",
+          "milliseconds": 0.979
+        },
+        {
+          "name": "$ne_segment$",
+          "milliseconds": 0.963
+        },
+        {
+          "name": "$rm$",
+          "milliseconds": 0.955
+        },
+        {
+          "name": "$env_tele_fill$",
+          "milliseconds": 0.919
+        },
+        {
+          "name": "$nd_arity$",
+          "milliseconds": 0.906
+        },
+        {
+          "name": "$nc_lower_live_to$",
+          "milliseconds": 0.893
+        },
+        {
+          "name": "update",
+          "milliseconds": 0.876
+        },
+        {
+          "name": "$kr_push$",
+          "milliseconds": 0.859
+        },
+        {
+          "name": "$nc_lambda$",
+          "milliseconds": 0.841
+        },
+        {
+          "name": "$nf_lets$",
+          "milliseconds": 0.816
+        },
+        {
+          "name": "$f_decl_local$",
+          "milliseconds": 0.776
+        },
+        {
+          "name": "$nc_closure_result$",
+          "milliseconds": 0.613
+        },
+        {
+          "name": "$nc_word$",
+          "milliseconds": 0.454
+        },
+        {
+          "name": "$nf_inline$",
+          "milliseconds": 0.452
+        },
+        {
+          "name": "$f_line$",
+          "milliseconds": 0.446
+        },
+        {
+          "name": "$String$ends_with$",
+          "milliseconds": 0.324
+        },
+        {
+          "name": "$no_route_plan$",
+          "milliseconds": 0.246
+        },
+        {
+          "name": "readBaseCache",
+          "milliseconds": 0.14
+        },
+        {
+          "name": "$f_tl$",
+          "milliseconds": 0.12
+        },
+        {
+          "name": "$nf_scheduler$",
+          "milliseconds": 0.047
+        },
+        {
+          "name": "$f_tx$",
+          "milliseconds": 0.033
+        },
+        {
+          "name": "$f_raw_col$",
+          "milliseconds": 0.031
+        },
+        {
+          "name": "$dv$",
+          "milliseconds": 0.028
+        },
+        {
+          "name": "$dc$",
+          "milliseconds": 0.02
+        },
+        {
+          "name": "$f_raw_tx$",
+          "milliseconds": 0.018
+        }
+      ]
+    },
+    {
+      "role": "ordinary",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase80/profiles02/runs/profile-numeric-ordinary/report.json",
+        "sha256": "ba37a9e1f027ce36810a3766af5626750bf5d4da38b7b2d3a5e144459de54289",
+        "bytes": 236414
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase80/profiles02/runs/profile-numeric-ordinary/request.cpuprofile",
+        "sha256": "353b3747e22e767de847c1aca1a516c3434abf94c50b2f8475f01198d0ae2bc3",
+        "bytes": 4726791
+      },
+      "requestMs": 1233.040661,
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 12.387878000000114,
+          "exclusiveMs": 12.387878000000114
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.810877000000005,
+          "exclusiveMs": 0.810877000000005
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 141.776613,
+          "exclusiveMs": 141.776613
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.08459199999992961,
+          "exclusiveMs": 0.08459199999992961
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 7.623980000000074,
+          "exclusiveMs": 7.623980000000074
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 59.085636000000136,
+          "exclusiveMs": 59.085636000000136
+        },
+        "driver_report_data": {
+          "calls": 1,
+          "inclusiveMs": 42.766238999999814,
+          "exclusiveMs": 42.766238999999814
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 14.08086000000003,
+          "exclusiveMs": 14.08086000000003
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 0.5652520000001005,
+          "exclusiveMs": 0.5652520000001005
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 19.22587999999996,
+          "exclusiveMs": 19.22587999999996
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 11.06886099999997,
+          "exclusiveMs": 11.06886099999997
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 25.506642000000056,
+          "exclusiveMs": 25.506642000000056
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 33.9270140000001,
+          "exclusiveMs": 33.9270140000001
+        },
+        "nr_prepare": {
+          "calls": 1,
+          "inclusiveMs": 83.9289060000001,
+          "exclusiveMs": 83.9289060000001
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 8.263918000000103,
+          "exclusiveMs": 8.263918000000103
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.5749449999998433,
+          "exclusiveMs": 0.5749449999998433
+        },
+        "nr_compile": {
+          "calls": 1,
+          "inclusiveMs": 643.5572789999999,
+          "exclusiveMs": 643.5572789999999
+        }
+      },
+      "exclusiveLeafSampledMs": [
+        {
+          "name": "",
+          "milliseconds": 392.4449999999997
+        },
+        {
+          "name": "run_loop",
+          "milliseconds": 234.63400000000004
+        },
+        {
+          "name": "(garbage collector)",
+          "milliseconds": 94.71700000000001
+        },
+        {
+          "name": "post",
+          "milliseconds": 32.381
+        },
+        {
+          "name": "decodeBaseArena",
+          "milliseconds": 21.555000000000003
+        },
+        {
+          "name": "$norm_max_term$",
+          "milliseconds": 19.545999999999996
+        },
+        {
+          "name": "arenaReadCon",
+          "milliseconds": 16.424
+        },
+        {
+          "name": "$String$starts_with$",
+          "milliseconds": 10.788999999999998
+        },
+        {
+          "name": "$f_declared$",
+          "milliseconds": 8.791
+        },
+        {
+          "name": "$index_find$",
+          "milliseconds": 8.73
+        },
+        {
+          "name": "$ni_replace_all$",
+          "milliseconds": 7.529
+        },
+        {
+          "name": "validateSpanBook",
+          "milliseconds": 7.306
+        },
+        {
+          "name": "$norm_join$",
+          "milliseconds": 7.199999999999999
+        },
+        {
+          "name": "$norm_node_app$",
+          "milliseconds": 7.07
+        },
+        {
+          "name": "$j_find_ctor_children$",
+          "milliseconds": 6.979
+        },
+        {
+          "name": "$nc_refs$",
+          "milliseconds": 6.925
+        },
+        {
+          "name": "$kr_refs_list$",
+          "milliseconds": 6.84
+        },
+        {
+          "name": "$nq_uses_list$",
+          "milliseconds": 6.7219999999999995
+        },
+        {
+          "name": "$nt_lines$",
+          "milliseconds": 6.715
+        },
+        {
+          "name": "$nt_clean$",
+          "milliseconds": 6.125
+        },
+        {
+          "name": "$norm_max_defs$",
+          "milliseconds": 6.076
+        },
+        {
+          "name": "run_tail",
+          "milliseconds": 5.532
+        },
+        {
+          "name": "$book_final_scan$",
+          "milliseconds": 5.102
+        },
+        {
+          "name": "$nt_lines_go$",
+          "milliseconds": 4.853
+        },
+        {
+          "name": "$nc_lower_to$",
+          "milliseconds": 4.815
+        },
+        {
+          "name": "$nt_fid$",
+          "milliseconds": 4.724
+        },
+        {
+          "name": "$nc_match_apply_slow_to$",
+          "milliseconds": 4.562
+        },
+        {
+          "name": "$kr_resolve$",
+          "milliseconds": 4.483
+        },
+        {
+          "name": "$f_find$",
+          "milliseconds": 4.475
+        },
+        {
+          "name": "$norm_node_min$",
+          "milliseconds": 4.368
+        },
+        {
+          "name": "$subst_terms$",
+          "milliseconds": 3.8339999999999996
+        },
+        {
+          "name": "$nq_signature_def$",
+          "milliseconds": 3.812
+        },
+        {
+          "name": "$String$to_lower$",
+          "milliseconds": 3.58
+        },
+        {
+          "name": "$nc_ctor_codes$",
+          "milliseconds": 3.565
+        },
+        {
+          "name": "$index_remove$",
+          "milliseconds": 3.555
+        },
+        {
+          "name": "$U32$show$",
+          "milliseconds": 3.52
+        },
+        {
+          "name": "$tg$",
+          "milliseconds": 3.276
+        },
+        {
+          "name": "$k_rebuild$",
+          "milliseconds": 3.263
+        },
+        {
+          "name": "$Bool$and$",
+          "milliseconds": 3.168
+        },
+        {
+          "name": "$nc_native_primitive$",
+          "milliseconds": 3.157
+        },
+        {
+          "name": "$index_hash$",
+          "milliseconds": 3.1559999999999997
+        },
+        {
+          "name": "$nc_live_uses$",
+          "milliseconds": 3.128
+        },
+        {
+          "name": "$norm_exact_lists$",
+          "milliseconds": 3.02
+        },
+        {
+          "name": "update",
+          "milliseconds": 2.9669999999999996
+        },
+        {
+          "name": "$String$ends_with$",
+          "milliseconds": 2.82
+        },
+        {
+          "name": "$dc$",
+          "milliseconds": 2.731
+        },
+        {
+          "name": "$U32$read$",
+          "milliseconds": 2.66
+        },
+        {
+          "name": "$noa_match_spec$",
+          "milliseconds": 2.623
+        },
+        {
+          "name": "$nc_ctor_index$",
+          "milliseconds": 2.575
+        },
+        {
+          "name": "$norm_node_ref$",
+          "milliseconds": 2.568
+        },
+        {
+          "name": "$dk$",
+          "milliseconds": 2.499
+        },
+        {
+          "name": "$nc_pack_foreign$",
+          "milliseconds": 2.465
+        },
+        {
+          "name": "$nc_partition_uses$",
+          "milliseconds": 2.456
+        },
+        {
+          "name": "$f_two$",
+          "milliseconds": 2.438
+        },
+        {
+          "name": "$kr_dependencies$",
+          "milliseconds": 2.411
+        },
+        {
+          "name": "$norm_node_ann$",
+          "milliseconds": 2.395
+        },
+        {
+          "name": "$ns_ctor_index$",
+          "milliseconds": 2.3760000000000003
+        },
+        {
+          "name": "$List$reverse$go$",
+          "milliseconds": 2.345
+        },
+        {
+          "name": "$norm_max_book$",
+          "milliseconds": 2.344
+        },
+        {
+          "name": "$nq_layout_subst_small$",
+          "milliseconds": 2.287
+        },
+        {
+          "name": "$nc_lower_partition$",
+          "milliseconds": 2.2640000000000002
+        },
+        {
+          "name": "$nf_bind_boxed$",
+          "milliseconds": 2.221
+        },
+        {
+          "name": "$kid$",
+          "milliseconds": 2.216
+        },
+        {
+          "name": "arenaReadKTerm",
+          "milliseconds": 2.195
+        },
+        {
+          "name": "$nf_finish_ready$",
+          "milliseconds": 2.1719999999999997
+        },
+        {
+          "name": "inspectWithMemo",
+          "milliseconds": 2.1660000000000004
+        },
+        {
+          "name": "$nu_add$",
+          "milliseconds": 2.16
+        },
+        {
+          "name": "$ns_array_free$",
+          "milliseconds": 2.1580000000000004
+        },
+        {
+          "name": "$infer$",
+          "milliseconds": 2.1550000000000002
+        },
+        {
+          "name": "$nq_candidate_mode$",
+          "milliseconds": 2.151
+        },
+        {
+          "name": "$f_context_constructor$",
+          "milliseconds": 2.133
+        },
+        {
+          "name": "$subst$",
+          "milliseconds": 2.13
+        },
+        {
+          "name": "$U32$show$go$",
+          "milliseconds": 2.128
+        },
+        {
+          "name": "$nw_same_list$",
+          "milliseconds": 2.122
+        },
+        {
+          "name": "$kf_scan$",
+          "milliseconds": 2.117
+        },
+        {
+          "name": "$index_leaf$",
+          "milliseconds": 2.116
+        },
+        {
+          "name": "$nr_compile$",
+          "milliseconds": 2.115
+        },
+        {
+          "name": "$kf_shield$",
+          "milliseconds": 2.114
+        },
+        {
+          "name": "$kr_refs$",
+          "milliseconds": 2.113
+        },
+        {
+          "name": "$norm_node_let$",
+          "milliseconds": 2.093
+        },
+        {
+          "name": "$nq_signatures$",
+          "milliseconds": 2.092
+        },
+        {
+          "name": "$nf_plan_retry$",
+          "milliseconds": 2.091
+        },
+        {
+          "name": "$norm_defs_join$",
+          "milliseconds": 2.09
+        },
+        {
+          "name": "$String$eq$",
+          "milliseconds": 2.084
+        },
+        {
+          "name": "$nq_uses$",
+          "milliseconds": 2.07
+        },
+        {
+          "name": "$fpe_terms$",
+          "milliseconds": 2.059
+        },
+        {
+          "name": "$dr_walk$",
+          "milliseconds": 2.017
+        },
+        {
+          "name": "$kw_temp_fresh$",
+          "milliseconds": 1.976
+        },
+        {
+          "name": "visit",
+          "milliseconds": 1.9449999999999998
+        },
+        {
+          "name": "$f_tl$",
+          "milliseconds": 1.935
+        },
+        {
+          "name": "$wnf$",
+          "milliseconds": 1.6019999999999999
+        },
+        {
+          "name": "$nb_contains$",
+          "milliseconds": 1.546
+        },
+        {
+          "name": "$nol_root_specs$",
+          "milliseconds": 1.489
+        },
+        {
+          "name": "$base_prefix_context_drop$",
+          "milliseconds": 1.42
+        },
+        {
+          "name": "$jl_fields$",
+          "milliseconds": 1.378
+        },
+        {
+          "name": "$constructor_exists$",
+          "milliseconds": 1.357
+        },
+        {
+          "name": "$nc_foreign$",
+          "milliseconds": 1.344
+        },
+        {
+          "name": "$nv_owned$",
+          "milliseconds": 1.335
+        },
+        {
+          "name": "$book_cached$",
+          "milliseconds": 1.328
+        },
+        {
+          "name": "$nq_value_shape$",
+          "milliseconds": 1.309
+        },
+        {
+          "name": "$nf_worker_kinds$",
+          "milliseconds": 1.302
+        },
+        {
+          "name": "$f_triple_op$",
+          "milliseconds": 1.292
+        },
+        {
+          "name": "$dn$",
+          "milliseconds": 1.288
+        },
+        {
+          "name": "$String$to_upper$",
+          "milliseconds": 1.284
+        },
+        {
+          "name": "$ns_ctor$",
+          "milliseconds": 1.251
+        },
+        {
+          "name": "$nc_terms_fork$",
+          "milliseconds": 1.246
+        },
+        {
+          "name": "$norm_eval_node$",
+          "milliseconds": 1.241
+        },
+        {
+          "name": "$nol_result$",
+          "milliseconds": 1.238
+        },
+        {
+          "name": "$nc_uses_list$",
+          "milliseconds": 1.234
+        },
+        {
+          "name": "$nq_layout_type$",
+          "milliseconds": 1.22
+        },
+        {
+          "name": "$driver_foreign_names$",
+          "milliseconds": 1.214
+        },
+        {
+          "name": "$nc_erase_list$",
+          "milliseconds": 1.159
+        },
+        {
+          "name": "$ns_body$",
+          "milliseconds": 1.145
+        },
+        {
+          "name": "$f_reserved$",
+          "milliseconds": 1.142
+        },
+        {
+          "name": "$jd_raise_match$",
+          "milliseconds": 1.142
+        },
+        {
+          "name": "$nc_cut$",
+          "milliseconds": 1.137
+        },
+        {
+          "name": "$dt$",
+          "milliseconds": 1.13
+        },
+        {
+          "name": "$noa_reference$",
+          "milliseconds": 1.128
+        },
+        {
+          "name": "$norm_dec$",
+          "milliseconds": 1.123
+        },
+        {
+          "name": "$ns_generic_array$",
+          "milliseconds": 1.123
+        },
+        {
+          "name": "$np_emit_row$",
+          "milliseconds": 1.123
+        },
+        {
+          "name": "$nb_bangs_go$",
+          "milliseconds": 1.12
+        },
+        {
+          "name": "$nc_let$",
+          "milliseconds": 1.119
+        },
+        {
+          "name": "$nc_has_ctor$",
+          "milliseconds": 1.117
+        },
+        {
+          "name": "$nc_lets$",
+          "milliseconds": 1.114
+        },
+        {
+          "name": "$U32$show$if$",
+          "milliseconds": 1.113
+        },
+        {
+          "name": "$nv_ctor_names$",
+          "milliseconds": 1.113
+        },
+        {
+          "name": "$f_number$",
+          "milliseconds": 1.11
+        },
+        {
+          "name": "$nd_prefix_call$",
+          "milliseconds": 1.109
+        },
+        {
+          "name": "$Char$to_lower$",
+          "milliseconds": 1.103
+        },
+        {
+          "name": "$lookup$",
+          "milliseconds": 1.102
+        },
+        {
+          "name": "$fpe_def$",
+          "milliseconds": 1.098
+        },
+        {
+          "name": "$nc_head$",
+          "milliseconds": 1.098
+        },
+        {
+          "name": "$nc_partition_step$",
+          "milliseconds": 1.094
+        },
+        {
+          "name": "$norm_apply$",
+          "milliseconds": 1.087
+        },
+        {
+          "name": "$index_lookup$",
+          "milliseconds": 1.0859999999999999
+        },
+        {
+          "name": "$descend_fields$",
+          "milliseconds": 1.084
+        },
+        {
+          "name": "$j_constructor_count$",
+          "milliseconds": 1.084
+        },
+        {
+          "name": "$nt_join$",
+          "milliseconds": 1.083
+        },
+        {
+          "name": "$nq_layout_subst_list$",
+          "milliseconds": 1.08
+        },
+        {
+          "name": "$f_env$",
+          "milliseconds": 1.078
+        },
+        {
+          "name": "$dr_known$",
+          "milliseconds": 1.078
+        },
+        {
+          "name": "$f_context_tele$",
+          "milliseconds": 1.077
+        },
+        {
+          "name": "$nf_host_calls$",
+          "milliseconds": 1.077
+        },
+        {
+          "name": "$ks$",
+          "milliseconds": 1.076
+        },
+        {
+          "name": "$nq_transfer$",
+          "milliseconds": 1.075
+        },
+        {
+          "name": "$book_final_legacy$",
+          "milliseconds": 1.073
+        },
+        {
+          "name": "$nc_prim_args$",
+          "milliseconds": 1.073
+        },
+        {
+          "name": "$nq_call_result$",
+          "milliseconds": 1.073
+        },
+        {
+          "name": "$String$contains$",
+          "milliseconds": 1.072
+        },
+        {
+          "name": "$check_node$",
+          "milliseconds": 1.07
+        },
+        {
+          "name": "$norm_convert$",
+          "milliseconds": 1.07
+        },
+        {
+          "name": "$ns_rebuild$",
+          "milliseconds": 1.07
+        },
+        {
+          "name": "$ne_take_params$",
+          "milliseconds": 1.07
+        },
+        {
+          "name": "$nq_pair_primitive$",
+          "milliseconds": 1.069
+        },
+        {
+          "name": "$nb_flags_go$",
+          "milliseconds": 1.067
+        },
+        {
+          "name": "$f_context_stop$",
+          "milliseconds": 1.066
+        },
+        {
+          "name": "$book_final_name_valid$",
+          "milliseconds": 1.064
+        },
+        {
+          "name": "$has_name$",
+          "milliseconds": 1.064
+        },
+        {
+          "name": "$ne_template_step$",
+          "milliseconds": 1.064
+        },
+        {
+          "name": "$f_alias_valid$",
+          "milliseconds": 1.063
+        },
+        {
+          "name": "$ne_ctor_node$",
+          "milliseconds": 1.063
+        },
+        {
+          "name": "$ns_payload$",
+          "milliseconds": 1.063
+        },
+        {
+          "name": "$nol_params$",
+          "milliseconds": 1.063
+        },
+        {
+          "name": "$f_source_header$",
+          "milliseconds": 1.062
+        },
+        {
+          "name": "$f_import$",
+          "milliseconds": 1.062
+        },
+        {
+          "name": "$f_eq$",
+          "milliseconds": 1.062
+        },
+        {
+          "name": "$driver_owned_candidates$",
+          "milliseconds": 1.062
+        },
+        {
+          "name": "$nt_count_go$",
+          "milliseconds": 1.062
+        },
+        {
+          "name": "$nol_scalar$",
+          "milliseconds": 1.062
+        },
+        {
+          "name": "arenaReadKIndexNode",
+          "milliseconds": 1.061
+        },
+        {
+          "name": "$ki_readback_terms$",
+          "milliseconds": 1.061
+        },
+        {
+          "name": "$nc_mklet$",
+          "milliseconds": 1.061
+        },
+        {
+          "name": "$Char$is_eq$",
+          "milliseconds": 1.06
+        },
+        {
+          "name": "$f_expr$",
+          "milliseconds": 1.06
+        },
+        {
+          "name": "$nc_bangs_terms$",
+          "milliseconds": 1.06
+        },
+        {
+          "name": "$nq_shape_words$",
+          "milliseconds": 1.06
+        },
+        {
+          "name": "$dx$",
+          "milliseconds": 1.06
+        },
+        {
+          "name": "$sk_escape$",
+          "milliseconds": 1.06
+        },
+        {
+          "name": "$nh_observer_types$",
+          "milliseconds": 1.06
+        },
+        {
+          "name": "$nc_binding$",
+          "milliseconds": 1.059
+        },
+        {
+          "name": "$index_bucket$",
+          "milliseconds": 1.058
+        },
+        {
+          "name": "$ns_terms_step$",
+          "milliseconds": 1.058
+        },
+        {
+          "name": "$ne_template_plain$",
+          "milliseconds": 1.058
+        },
+        {
+          "name": "f32_read",
+          "milliseconds": 1.057
+        },
+        {
+          "name": "$norm_eval$",
+          "milliseconds": 1.057
+        },
+        {
+          "name": "$nc_unann$",
+          "milliseconds": 1.057
+        },
+        {
+          "name": "$ne_segment$",
+          "milliseconds": 1.057
+        },
+        {
+          "name": "$f_context_case$",
+          "milliseconds": 1.056
+        },
+        {
+          "name": "$f_pair_op$",
+          "milliseconds": 1.056
+        },
+        {
+          "name": "$ne_program_texts$",
+          "milliseconds": 1.056
+        },
+        {
+          "name": "$nc_primitive_arity$",
+          "milliseconds": 1.054
+        },
+        {
+          "name": "$no_emit_match_found$",
+          "milliseconds": 1.054
+        },
+        {
+          "name": "$f_grow_existing$",
+          "milliseconds": 1.05
+        },
+        {
+          "name": "$f_scope_apply_span$",
+          "milliseconds": 1.049
+        },
+        {
+          "name": "$nu_join$",
+          "milliseconds": 1.048
+        },
+        {
+          "name": "$f_fresh_book_stack$",
+          "milliseconds": 1.046
+        },
+        {
+          "name": "$ne_take$",
+          "milliseconds": 1.043
+        },
+        {
+          "name": "$f_alias$",
+          "milliseconds": 1.041
+        },
+        {
+          "name": "$norm_cmp_heads$",
+          "milliseconds": 1.041
+        },
+        {
+          "name": "$nc_erase_mat$",
+          "milliseconds": 1.041
+        },
+        {
+          "name": "$j_literal_typed$",
+          "milliseconds": 1.04
+        },
+        {
+          "name": "$nr_prepare$",
+          "milliseconds": 1.039
+        },
+        {
+          "name": "$nol_owner$",
+          "milliseconds": 1.039
+        },
+        {
+          "name": "$f_first_ctor$",
+          "milliseconds": 1.034
+        },
+        {
+          "name": "$nc_mark_code$",
+          "milliseconds": 1.033
+        },
+        {
+          "name": "$index_tip$",
+          "milliseconds": 1.032
+        },
+        {
+          "name": "$dg_check_events$",
+          "milliseconds": 1.032
+        },
+        {
+          "name": "$kr_filter$",
+          "milliseconds": 1.032
+        },
+        {
+          "name": "arenaReadKLambda",
+          "milliseconds": 1.03
+        },
+        {
+          "name": "$nf_candidate$",
+          "milliseconds": 1.03
+        },
+        {
+          "name": "$noa_fact$",
+          "milliseconds": 1.029
+        },
+        {
+          "name": "$qt$",
+          "milliseconds": 1.025
+        },
+        {
+          "name": "$nc_erase_args$",
+          "milliseconds": 1.024
+        },
+        {
+          "name": "$f_context_definition$",
+          "milliseconds": 1.013
+        },
+        {
+          "name": "$norm_max_walk$",
+          "milliseconds": 1.004
+        },
+        {
+          "name": "$nc_array_known$",
+          "milliseconds": 1.003
+        },
+        {
+          "name": "$nc_compact$",
+          "milliseconds": 0.99
+        },
+        {
+          "name": "$nu_tip$",
+          "milliseconds": 0.986
+        },
+        {
+          "name": "$noa_loop_words$",
+          "milliseconds": 0.983
+        },
+        {
+          "name": "$terms_len$",
+          "milliseconds": 0.975
+        },
+        {
+          "name": "$nc_lower_live_to$",
+          "milliseconds": 0.973
+        },
+        {
+          "name": "$nc_compact_list$",
+          "milliseconds": 0.93
+        },
+        {
+          "name": "$f_context_call$",
+          "milliseconds": 0.929
+        },
+        {
+          "name": "$base_prefix_ctor_disjoint$",
+          "milliseconds": 0.902
+        },
+        {
+          "name": "$jl_node$",
+          "milliseconds": 0.896
+        },
+        {
+          "name": "$ix$",
+          "milliseconds": 0.893
+        },
+        {
+          "name": "$driver_report_data$",
+          "milliseconds": 0.89
+        },
+        {
+          "name": "$nv_seg_names$",
+          "milliseconds": 0.871
+        },
+        {
+          "name": "$db$",
+          "milliseconds": 0.832
+        },
+        {
+          "name": "$nb_emit$",
+          "milliseconds": 0.649
+        },
+        {
+          "name": "$nf_lets$",
+          "milliseconds": 0.542
+        },
+        {
+          "name": "$index_insert$",
+          "milliseconds": 0.502
+        },
+        {
+          "name": "$norm_args$",
+          "milliseconds": 0.322
+        },
+        {
+          "name": "$book_final_step$",
+          "milliseconds": 0.241
+        },
+        {
+          "name": "$nc_word$",
+          "milliseconds": 0.162
+        },
+        {
+          "name": "$f_line$",
+          "milliseconds": 0.111
+        },
+        {
+          "name": "decodeBaseCacheGraphFrame",
+          "milliseconds": 0.107
+        },
+        {
+          "name": "char_new",
+          "milliseconds": 0.043
+        },
+        {
+          "name": "$f_raw_col$",
+          "milliseconds": 0.036
+        },
+        {
+          "name": "$f_tx$",
+          "milliseconds": 0.034
+        },
+        {
+          "name": "$dv$",
+          "milliseconds": 0.029
+        },
+        {
+          "name": "$nf_scheduler$",
+          "milliseconds": 0.023
+        },
+        {
+          "name": "$f_raw_tx$",
+          "milliseconds": 0.018
+        }
+      ]
+    }
+  ]
+}

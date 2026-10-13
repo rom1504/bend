@@ -4355,3 +4355,16 @@ Extra preparation is 3.3 s; product 2.94 MB. Two V8 profiles explain offsetting
 decode/GC/context work; non-IO held-out16 is unchanged. Total64 clean requests
 and2 profiles preserve exact C. Reject and restore exact Phase78 source; release
 verification passes. No B2/cache release claim, no agents or PR comments.
+
+## Phase80 checker types and body summaries — 2026-10-13
+
+[Report](../implementation/phase80/README.md). Five checked B1 prototypes pass
+frontend36. Whole/live-only type retention saves0.61%/1.25% on the three-source
+loop, but live-only held-outs regress17.4%/8.9%; reject. Two occurrence-summary
+representations validate15,678 generated comparisons each. The final integer-set
+summary saves2.15% over45 fresh screen requests, with small unchanged and
+functions65 1.31% slower over18 held-outs; defer rather than promote. All147 clean
+requests and four diagnostics preserve complete C. Restore exact Phase78 source,
+verify installed B2, and preserve every prototype and receipt. No agents, PR
+comments, prototype B2 or broad qualification claim. Production complexity and
+all five installed metrics remain unchanged; no parity claim.

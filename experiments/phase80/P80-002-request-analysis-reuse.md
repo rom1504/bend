@@ -1,6 +1,7 @@
 # P80-002: determine whether request-local analysis tables are justified
 
-Status: registered after the typed-IR02 screen; no table implemented or selected.
+Status: observation complete; two exact-C diagnostic requests. No generic table
+selected. [Report](../../implementation/phase80/README.md).
 
 The first type-retention screen saves only0.61% overall despite a diagnostic
 annotation reduction84.86→25.51ms. Before increasing graph size again, measure

@@ -5,6 +5,16 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed experiments: Phase80 checker types and body summaries
+
+[Report](../implementation/phase80/README.md). Five checked prototypes test retained
+checker types and compact per-body occurrence summaries. Typed graphs cut local
+annotation cost but regress held-outs; reject. Integer-set summaries save2.15%
+on45 fresh B1 requests, with no held-out gain; defer the preserved patch. All147
+clean C outputs and four diagnostics remain exact, and both summaries pass15,678
+generated comparisons. No production source change or new B2 release; Phase78
+remains installed and verified. Read the current frontier before expanding IR.
+
 ## Completed implementation: Phase78 retained native work
 
 [Report](../implementation/phase78/README.md). Installed genuine B2 `cc99ac9b…`.

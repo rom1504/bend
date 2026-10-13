@@ -1,6 +1,7 @@
 # P80-003: one occurrence summary per native body
 
-Registered after counts02; not measured or selected yet.
+Status: measured and deferred; finite correctness gates pass, not promoted.
+Registered after counts02. [Report](../../implementation/phase80/README.md).
 
 The original type-retention variants are rejected. Numeric's unchanged-B1
 diagnostic records271 top-level `nq_uses` queries on45 distinct root terms,
@@ -25,3 +26,19 @@ a clear net gain without a material regression before broad qualification.
 Compare the summary with `nq_uses` over generated finite term trees, including
 branches, NWPattern rows, malformed Vars and saturated sequential uses. Preserve
 all attempts. Only promote after the design's applicable integration gates.
+
+Compiler04's list representation passes15,678 generated comparisons and36
+clean exact-C requests across the screen/held-outs, but its aggregate screen
+gain is only0.39% (one Array sample is substantially slower). Before repeating
+measurement, compiler05 replaces lists of generic KTerm counters with a pair
+of the existing NU_Set integer tries: used and multiply-used. Sequential visits
+saturate counts; branch results union each set. This remains the same query
+semantics and body-local lifetime. Run the generated-tree comparison again and
+use five fresh rounds to make the final selection decision less noise-sensitive.
+
+Final05:45 clean screen requests save2.147%;18 held-outs give small0.26% less
+time and functions65 1.31% more. All C remains exact. Both summary variants pass
+15,678 differential binder queries each. The integer-set variant adds66 physical
+lines/one private datatype. Preserve both patches but defer production selection:
+the small mixed result does not warrant expanding this into a larger IR rewrite.
+No new B2, full qualification or installed speed improvement is claimed.

@@ -34,6 +34,7 @@ No mathematical compiler proof is claimed.
 Read the [Phase78 report](implementation/phase78/README.md),
 [native compilation/session guide](docs/self_hosted/NATIVE_COMPILATION.md),
 [native ownership facts](docs/self_hosted/NATIVE_OWNERSHIP_FACTS.md),
+[analysis fact lifetimes and experiments](docs/self_hosted/ANALYSIS_FACTS.md),
 [fast loops](selfhost/tools/performance/phase78/README.md) and
 [compiler guide](docs/BEND-IN-BEND.md). From `selfhost/`, run
 `npm run verify:release`, then `node cli.mjs FILE --run`.

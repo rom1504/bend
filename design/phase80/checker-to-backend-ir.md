@@ -85,3 +85,15 @@ One supervised CPU3 execution tree; aggregate RSS 2 GiB, available-memory floor
 4 GiB; Node heap 1 GiB/stack 4 MiB. Check disk headroom. No agents, no PR comments.
 Design, experiment, implementation and report commits may be pushed without
 additional confirmation. Unrelated inherited Phase6/68 work stays untouched.
+
+## Evidence-driven amendment after the first screens
+
+Whole/live-only type retention misses the gain gate and regresses held-outs;
+restore the original frontend. Counts02 instead finds repeated *different-binder*
+queries over the same native bodies (271 root queries/45 bodies,49,732 recursive
+calls/2,243 term identities). Test a compact per-body occurrence summary shared
+by existing sharing analyses, using the existing saturated quantity algebra.
+This needs neither a new frontend IR nor node IDs. The summary must equal the
+old per-binder query, including branch maxima and malformed-node conventions.
+Its cost belongs inside the request. This bounded revised stage-four experiment
+has the same measurement, held-out and qualification gates; see P80-003.

@@ -1,0 +1,184 @@
+--- a/selfhost/src/check/annotate.bend
++++ b/selfhost/src/check/annotate.bend
+@@ -166,7 +166,7 @@
+ 
+ @unsafe
+ def annotate(e, ctx, t, ty):
+-  ka_annotated(e, ctx, core_beta(t), wnf(cb(e), ty))
++  kc(KTerm, ki_is_typed(t), u => ki_readback(cb(e), t), u => ka_annotated(e, ctx, core_beta(t), wnf(cb(e), ty)))
+ 
+ # Keep the type head already demanded by ka_node. Backend consumers otherwise
+ # normalize the original annotation again while determining the same layout.
+--- a/selfhost/src/check/env-telescope.bend
++++ b/selfhost/src/check/env-telescope.bend
+@@ -113,7 +113,7 @@
+ 
+ @unsafe
+ def env_tele_check_head(+e: KEnv, +ctx: List<&2,KTerm>, +tel: KTerm, +h: KTerm, +rest: List<&2,KTerm>, +dem: U32, +bindings: List<&2,KTelescopeBinding>, +count: U32) -> KChecking:
+-  env_tele_check_after(e, ctx, tel, h, rest, dem, bindings, count, check(e, ctx, h, qdem(qt(tel), dem), env_tele_apply(kid(tel, 0), bindings)))
++  env_tele_check_after(e, ctx, tel, h, rest, dem, bindings, count, ki_field_result(qt(tel), check(e, ctx, h, qdem(qt(tel), dem), env_tele_apply(kid(tel, 0), bindings))))
+ 
+ @unsafe
+ def env_tele_check_open(+e: KEnv, +ctx: List<&2,KTerm>, +tel: KTerm, +h: KTerm, +rest: List<&2,KTerm>, +dem: U32) -> KChecking:
+--- a/selfhost/src/check/kernel.bend
++++ b/selfhost/src/check/kernel.bend
+@@ -638,7 +638,7 @@
+   +dem: U32,
+   +sp: List<&2, KTerm>,
+ ) -> KChecking:
+-  dg_trace(e, ctx, t, atom("Absent"), infer_node(e, ctx, core_beta(t), dem, sp))
++  ki_typed(dem, dg_trace(e, ctx, t, atom("Absent"), infer_node(e, ctx, core_beta(t), dem, sp)))
+ 
+ @unsafe
+ def infer_node(e, ctx, t, dem, sp):
+@@ -712,7 +712,7 @@
+ 
+ @unsafe
+ def check(e, ctx, t, dem, ty):
+-  dg_trace(e, ctx, t, ty, check_node(e, ctx, core_beta(t), dem, ty))
++  ki_typed(dem, dg_trace(e, ctx, t, ty, check_node(e, ctx, core_beta(t), dem, ty)))
+ 
+ @unsafe
+ def check_node(e, ctx, t, dem, ty):
+@@ -740,7 +740,7 @@
+ 
+ @unsafe
+ def check_lam_done(t, ty, q, r):
+-  kc(KChecking, good(r), u => kc(KChecking, U32.is_gt(uses_get(cs(r), ix(t)), q), u => kr_from(r, dg_quant_error(rw(r), "affine variable consumed more than allowed", nm(t), q, uses_get(cs(r), ix(t)))), u => KChecking{k_with_children(t, Con{ct(r), Nil{}}), ty, uses_del(cs(r), ix(t)), "", rw(r), rx(r)}), u => r)
++  kc(KChecking, good(r), u => kc(KChecking, U32.is_gt(uses_get(cs(r), ix(t)), q), u => kr_from(r, dg_quant_error(rw(r), "affine variable consumed more than allowed", nm(t), q, uses_get(cs(r), ix(t)))), u => KChecking{k_lam(nm(t), ix(t), q, Con{ct(r), Nil{}}, kb(t), ke(t), False{}), ty, uses_del(cs(r), ix(t)), "", rw(r), rx(r)}), u => r)
+ 
+ @unsafe
+ def check_ctr(e, ctx, t, dem, ty):
+@@ -1147,7 +1147,7 @@
+ @unsafe
+ def tele_check_cached_head(e, ctx, tel, h, rest, dem):
+   kc(KChecking, String.eq(tg(tel), "All"),
+-    u => tele_check_after_head(e, ctx, tel, h, rest, dem, check(e, ctx, h, qdem(qt(tel), dem), kid(tel, 0))),
++    u => tele_check_after_head(e, ctx, tel, h, rest, dem, ki_field_result(qt(tel), check(e, ctx, h, qdem(qt(tel), dem), kid(tel, 0)))),
+     u => bad(cw(e), "too many telescope arguments"))
+ 
+ @unsafe
+@@ -1155,7 +1155,7 @@
+   match args:
+     case Nil{}: ok(cw(e), atom("Args"), tel, Nil{})
+     case Con{h, rest}:
+-      kc(KChecking, String.eq(tg(tel), "All"), u => ki_tele_static(e, ctx, tel, rest, dem, check(e, ctx, h, qdem(qt(tel), dem), kid(tel, 0))), u => tele_check(e, ctx, tel, args, dem))
++      kc(KChecking, String.eq(tg(tel), "All"), u => ki_tele_static(e, ctx, tel, rest, dem, ki_field_result(qt(tel), check(e, ctx, h, qdem(qt(tel), dem), kid(tel, 0)))), u => tele_check(e, ctx, tel, args, dem))
+ 
+ @unsafe
+ def tele_check_legacy(
+@@ -1172,7 +1172,7 @@
+ 
+ @unsafe
+ def tele_check_legacy_head(e, ctx, tel, h, rest, dem):
+-  kc(KChecking, String.eq(tg(tel), "All"), u => ki_tele_legacy(e, ctx, tel, h, rest, dem, check(e, ctx, h, qdem(qt(tel), dem), kid(tel, 0))), u => bad(cw(e), "too many telescope arguments"))
++  kc(KChecking, String.eq(tg(tel), "All"), u => ki_tele_legacy(e, ctx, tel, h, rest, dem, ki_field_result(qt(tel), check(e, ctx, h, qdem(qt(tel), dem), kid(tel, 0)))), u => bad(cw(e), "too many telescope arguments"))
+ 
+ law tele_check_after_head:
+   for +e: KEnv
+--- a/selfhost/src/check/prefix-state.bend
++++ b/selfhost/src/check/prefix-state.bend
+@@ -155,7 +155,7 @@
+ @unsafe
+ def base_prefix_prepare_known(+prefix: List<&2,KDef>, +bound: U32, +result: DChecking, +world: KWorld, +next: U32) -> KBasePrefixState:
+   +final = base_prefix_final(prefix)
+-  +checked = kw_checked(world)
++  +checked = ki_prefix_defs(kw_checked(world), bound)
+   +stamp = base_prefix_stamp(kw_book(world), bound)
+   +ordered = book_final_reverse(checked, Nil{})
+   +patches = base_prefix_deltas(ordered, book_context(final))
+--- a/selfhost/src/compiler.json
++++ b/selfhost/src/compiler.json
+@@ -15,6 +15,7 @@
+     "src/check/prefix.bend",
+     "src/check/prefix-state.bend",
+     "src/check/annotate.bend",
++    "src/check/typed-readback.bend",
+     "src/check/base-products.bend",
+     "src/front/lexer.bend",
+     "src/front/contextual.bend",
+--- /dev/null
++++ b/selfhost/src/check/typed-readback.bend
+@@ -0,0 +1,82 @@
++import Base
++
++# Successful output only: the chronological semantic world retains source terms.
++# Retained types are resolved in the final book, never normalized early and cached.
++@unsafe
++def ki_typed(+dem: U32, +r: KChecking) -> KChecking:
++  kc(KChecking, good(r) && Bool.not(U32.is_eq(dem, 0)), u => KChecking{kt("Ann", "$kernel.typed", 0, 0, [strip(ct(r)), cy(r)]), cy(r), cs(r), "", rw(r), rx(r)}, u => r)
++
++@unsafe
++def ki_is_typed(+t: KTerm) -> Bool:
++  String.eq(tg(t), "Ann") && String.eq(nm(t), "$kernel.typed")
++
++@unsafe
++def ki_field_result(+q: U32, +r: KChecking) -> KChecking:
++  kc(KChecking, good(r), u => KChecking{kt("Ann", "$kernel.typed", 1, q, [strip(ct(r)), cy(r)]), cy(r), cs(r), "", rw(r), rx(r)}, u => r)
++
++law ki_readback:
++  for +book: List<&2,KDef>
++  for +t: KTerm
++  KTerm
++
++law ki_readback_node:
++  for +book: List<&2,KDef>
++  for +t: KTerm
++  KTerm
++
++law ki_readback_terms:
++  for +book: List<&2,KDef>
++  for +ts: List<&2,KTerm>
++  List<&2,KTerm>
++
++law ki_raw:
++  for +t: KTerm
++  KTerm
++
++law ki_raw_terms:
++  for +ts: List<&2,KTerm>
++  List<&2,KTerm>
++
++@unsafe
++def ki_readback(book, t):
++  kc(KTerm, ki_is_typed(t),
++    u => kt("Ann", "", ix(t), qt(t), [ki_readback_node(book, kid(t, 0)), wnf(book, kid(t, 1))]),
++    u => ki_readback_node(book, t))
++
++@unsafe
++def ki_readback_node(book, t):
++  kc(KTerm, core_literal(t), u => t,
++    u => kc(KTerm, String.eq(tg(t), "Lam"), u => k_lam(nm(t), ix(t), qt(t), [ki_readback(book, kid(t, 0))], 0, 0, False{}),
++    u => kc(KTerm, String.eq(tg(t), "App"), u => app(ki_readback(book, kid(t, 0)), ki_readback(book, kid(t, 1))),
++    u => kc(KTerm, String.eq(tg(t), "Ctr") || String.eq(tg(t), "Mat") || String.eq(tg(t), "Let") || String.eq(tg(t), "Bind"),
++      u => kt(tg(t), nm(t), ix(t), qt(t), ki_readback_terms(book, ks(t))),
++    u => kc(KTerm, String.eq(tg(t), "Rwt"), u => kt("Rwt", nm(t), ix(t), qt(t), [ki_readback(book, kid(t, 0)), ki_raw(kid(t, 1)), ki_readback(book, kid(t, 2))]),
++    u => ki_raw(t))))))
++
++@unsafe
++def ki_readback_terms(book, ts):
++  match ts:
++    case Nil{}: Nil{}
++    case Con{h, rest}: Con{ki_readback(book, h), ki_readback_terms(book, rest)}
++
++@unsafe
++def ki_raw(t):
++  kc(KTerm, ki_is_typed(t), u => ki_raw(kid(t, 0)),
++    u => kc(KTerm, core_literal(t) || List.is_empty(&2, KTerm, ks(t)), u => t,
++    u => k_with_children(t, ki_raw_terms(ks(t)))))
++
++@unsafe
++def ki_raw_terms(ts):
++  match ts:
++    case Nil{}: Nil{}
++    case Con{h, rest}: Con{ki_raw(h), ki_raw_terms(rest)}
++
++# A prepared prefix may not export checking-local fresh binders into a suffix.
++# Retain the existing admission invariant, falling back per definition if a
++# retained type mentions a binder minted beyond the source prefix's bound.
++@unsafe
++def ki_prefix_defs(+ds: List<&2,KDef>, +bound: U32) -> List<&2,KDef>:
++  match ds:
++    case Nil{}: Nil{}
++    case Con{d, rest}: Con{kc(KDef, U32.is_le(norm_max_term(dv(d)), bound), u => d,
++      u => KDef{dn(d), dk(d), da(d), dx(d), dt(d), ki_raw(dv(d)), dc(d), db(d), du(d)}), ki_prefix_defs(rest, bound)}

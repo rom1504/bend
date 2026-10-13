@@ -141,4 +141,6 @@ The fast discriminators precede one selected integration campaign. The final
 Clang/runtime timing work. The extra erasure consumer was stopped after its
 isolated B1/B2 screens rather than subjected to another full release campaign.
 Complete raw methods, failed candidates, profiles and outputs are sealed under
-`selfhost/tools/performance/phase82/evidence01` after all writers close.
+[the evidence archive](../../selfhost/tools/performance/phase82/evidence01/README.md):
+8,977 files/2,644 unique objects,44.37MB compressed. All archived content and
+source hashes/modes are verified; [receipt](evidence.json).

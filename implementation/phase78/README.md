@@ -64,3 +64,19 @@ The next larger proposal is [reusable native library products](../../design/phas
 Prepared-native-library measurements must remain separate from the existing
 prepared-frontend-only baseline, with preparation and reading/admission reported.
 No product implementation or parity claim is made at this checkpoint.
+
+## Observer work experiments
+
+Compiler15's prefix filter measures0.9363× Phase77 B1 /1.7637× upstream.
+Compiler16 retains pre-compaction erased bodies for observers:0.9227×/1.7632×.
+Compiler17 makes three eager observer predicates conditional:0.9134×/1.7319×.
+All54 requests across these three screens reproduce compiler11 C exactly;
+[receipts and medians](screens03.json). These successive short screens suggest
+small gains but do not isolate them precisely from process/JIT variation.
+Compiler17 avoids the160 generated branch helpers of compiler11 while recovering
+similar upstream-relative speed. No release has changed.
+
+P78-009 tests early observer planning to avoid lowering proved-redundant generic
+bodies. Compiler18 hit Bend's match-placement restriction and compiler19 its
+affine binder rule; both failures are preserved. Corrected compiler20 is pending.
+No cached-library mode is implemented and parity remains an unachieved target.

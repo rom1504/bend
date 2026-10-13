@@ -1,4 +1,39 @@
-# Active frontier: Phase75 faster native compilation, exact programs
+# Active frontier: Phase76 exact-output native checks
+
+Installed compiler12: checked B1`98134f59…`, genuine B2/B3`29da003b…`.
+[Report](../implementation/phase76/README.md) and [qualification](../implementation/phase76/qualification.json).
+The interleaved45 comparison gives B1 **2.93623x→2.75191x** upstream and B2
+**1.94374x→1.90803x**:6.28%/1.84% less request time. The B2 difference is small
+at this sampling precision. Fresh JS-hosted Bend-to-C requests exclude imports,
+explicit Bend Base, Clang and execution; TS checks Base in its request.
+
+Retain lazy native-definition/call admission and representation certificates.
+The four-module change adds34 physical/22 code lines;131 modules now contain
+32,018 physical/26,162 code lines. All twelve C files and binaries remain exact
+Phase75/73, preserving the prior runtime artifact set (historical1.05060x aggregate).
+All selected native/raw/selfhosting/installed gates pass. Seven reference failures
+and thirteen broader API gaps remain. Source algorithms stay in Bend.
+
+Reject the scalar-pattern prototype for default promotion despite a substantial
+compilation gain: candidate08 reaches1.99078x B1/1.51774x B2 (32.25%/22.20% less
+time) but Tree/Array.map executables regress3.66%/4.93%. Candidate10 reconstruction
+elimination and alignment/placement variants fail to recover both. Complete
+prototype source, controls and failures remain in experiments/phase76/prototypes
+and the evidence capsule. Changed addresses/layout are plausible, not proven
+hardware causes. Do not keep guessing alignment without hardware counters.
+
+Next large discriminator: retain per-node lowering facts/relocatable products
+while requiring exact existing C before committing to a bigger native IR. A
+root-only memo remains weak (97% distinct roots). Reusable Base products need
+explicit dependency/static-image/ID relocation and separate cold/warm metrics.
+Shared benchmark argument-reading code limits extrapolation of pattern savings.
+Parity remains unachieved. Do not present rejected prototype speed as the release.
+
+Use fresh phase/output paths after sealing. One guarded CPU3 target tree,2GiB
+RSS/4GiB available floor,Node1GiB heap/4MiB stack. No agents were used; no PR
+comments without explicit request. Preserve inherited work and sealed history.
+
+## Historical Phase75 frontier
 
 Installed selected compiler14: checked B1`7f05ac96…`, genuine B2/B3`0444d283…`.
 [Report](../implementation/phase75/README.md) and [qualification](../implementation/phase75/qualification.json).

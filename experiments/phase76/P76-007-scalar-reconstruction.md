@@ -12,3 +12,8 @@ It may change startup allocation and native layout. Require independent rewrite
 controls, actual partial-word/captured/default/F32 execution, conformance and
 balanced runtime timing. Do not assume it explains or fixes the observed runtime
 regressions before measuring. Alignment probes remain separate diagnostics.
+
+Candidate10 passes frontend36 and 20,521 independent comparisons. It removes two
+word-tail reconstruction loops from Array.map output but does not recover the
+Tree/Array.map runtime regressions. Rejected for default promotion; complete
+source is preserved in prototypes/candidate10.patch. No full-release claim.

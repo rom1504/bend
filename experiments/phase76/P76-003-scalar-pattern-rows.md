@@ -35,3 +35,7 @@ screen measures 251/251ms. Array is stable; lexer improves slightly. A saved-C
 64-byte scheduler alignment probe does not improve numeric and is not adopted.
 Broad balanced timings are required; neither individual screen establishes a
 stable numeric regression or non-regression. Failed attempts remain retained.
+
+## Final decision
+
+Rejected for default promotion after candidate08 paired 45 shows 32.25%/22.20% compilation savings but twelve-family runtime repeats Tree +3.66% and Array.map +4.93%. The alpha fix remains in the preserved prototype. See P76-008 and the final report; no parity or full-release claim.

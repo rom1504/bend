@@ -5,6 +5,16 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed implementation: Phase76 exact-output native checks
+
+[Design](../design/phase76/native-work-reuse.md) ·
+[Report](../implementation/phase76/README.md). Installed compiler12 improves the
+paired three-source loop to2.75191x B1/1.90803x B2 upstream,6.28%/1.84% less time.
+All twelve C files/binaries are exact previous artifacts; all selected release
+gates pass. Reject the scalar-pattern prototype (1.99078x/1.51774x) because two
+programs regress3–5%; preserve its complete source, controls and measurements.
++34 physical/+22 code lines, no module added. Known gaps remain; no parity claim.
+
 ## Completed implementation: Phase75 exact-output compilation improvements
 
 [Design](../design/phase75/native-compilation-parity.md) ·

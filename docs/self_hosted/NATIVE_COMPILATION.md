@@ -48,3 +48,18 @@ screen and exact C comparison. Run raw/native integration, genuine B2/B3 and the
 twelve-family runtime comparison when selecting a release. The
 [Phase75 methods](../../selfhost/tools/performance/phase75/README.md) document the
 commands and limits. Avoid running large validations after every minor edit.
+
+
+Phase76 evaluates compact scalar decision rows and explicit lazy native checks.
+The latter avoid metadata construction for ordinary definitions/non-call heads,
+and stop representation scans once eligibility is decided. Native admission and
+certificate rules are preserved. Bend Boolean argument evaluation made the old
+combined expressions perform work even when its result was no longer needed.
+See the [Phase76 report](../../implementation/phase76/README.md) for selected
+measurements and qualification.
+
+Scalar decision rows are retained as an unpromoted experiment outside the active
+manifest. They substantially reduce compilation time and C size, but generated
+Tree and Array.map executables regress by roughly 4–5%. Smaller generated code or
+identical hot instruction sequences do not establish equal execution speed.
+The selected exact-output path keeps the existing representation and output.

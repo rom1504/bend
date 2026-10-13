@@ -296,8 +296,16 @@ function $nc_foreign_paths$(_book_0) {
 
 function $nc_compile_checked$(_book_0, _runtime_0, _requests_0, _effects_safe_0) {
   const _names_0 = run_loop($nc_live_names$(_book_0, {$: "Con", "head": "main", "tail": {$: "Nil"}}, {$: "Nil"}));
-  const _packed_0 = ($Bool$and$(_effects_safe_0, ($ns_definitions$(_book_0, _names_0))));
-  const _unshared_0 = ($Bool$and$(_packed_0, ($ns_unshared_definitions$(_book_0, _names_0))));
+  const _packed_0 = run_loop(run_tail((_effects_safe_0) ? ((_x_0) => {
+  return $ns_definitions$(_book_0, _names_0);
+}) : ((_x_1) => {
+  return false;
+}), {$: "Unit"}));
+  const _unshared_0 = run_loop(run_tail((_packed_0) ? ((_x_2) => {
+  return $ns_unshared_definitions$(_book_0, _names_0);
+}) : ((_x_3) => {
+  return false;
+}), {$: "Unit"}));
   return $nc_compile_mode$(_book_0, ($ns_checked_runtime$(_book_0, _runtime_0, _packed_0, _unshared_0)), _requests_0, _packed_0);
 }
 
@@ -310,13 +318,21 @@ function $nr_compile$(_request_0, _runtime_0, _requests_0, _effects_safe_0) {
   const _source_0 = _request_0["source"];
   const _book_0 = _request_0["book"];
   const _names_0 = _request_0["names"];
-  const _packed_0 = ($Bool$and$(_effects_safe_0, ($ns_definitions$(_book_0, _names_0))));
-  const _unshared_0 = ($Bool$and$(_packed_0, ($nr_unshared$(_book_0, _names_0))));
+  const _packed_0 = run_loop(run_tail((_effects_safe_0) ? ((_x_0) => {
+  return $ns_definitions$(_book_0, _names_0);
+}) : ((_x_1) => {
+  return false;
+}), {$: "Unit"}));
+  const _unshared_0 = run_loop(run_tail((_packed_0) ? ((_x_2) => {
+  return $nr_unshared$(_book_0, _names_0);
+}) : ((_x_3) => {
+  return false;
+}), {$: "Unit"}));
   const _header_0 = ($ns_checked_runtime$(_book_0, _runtime_0, _packed_0, _unshared_0));
   const _error_0 = run_loop($nc_compile_error$(_source_0));
-  return run_tail((($String$eq$(_error_0, ""))) ? ((_x_0) => {
+  return run_tail((($String$eq$(_error_0, ""))) ? ((_x_4) => {
   return $ns_compile_named$(_book_0, _names_0, _header_0, _requests_0, _packed_0);
-}) : ((_x_1) => {
+}) : ((_x_5) => {
   return {$: "NC_Result", "source": "", "error": _error_0};
 }), {$: "Unit"});
 }
@@ -327,7 +343,7 @@ function $nc_annotation_stops$(_book_0) {
   } else {
     const _d_0 = _book_0["head"];
     const _rest_0 = _book_0["tail"];
-    return run_tail((($nc_native_def$(_d_0))) ? ((_x_0) => {
+    return run_tail((run_loop($nc_native_def$(_d_0))) ? ((_x_0) => {
   return {$: "Con", "head": ($dn$(_d_0)), "tail": run_loop($nc_annotation_stops$(_rest_0))};
 }) : ((_x_1) => {
   return $nc_annotation_stops$(_rest_0);
@@ -1484,6 +1500,14 @@ function $nc_live_names$(_book_0, _todo_0, _done_0) {
   }
 }
 
+function $nt_choose$(_b_0, _yes_0, _no_0) {
+  if (_b_0) {
+    return run_tail(_yes_0, {$: "Unit"});
+  } else {
+    return run_tail(_no_0, {$: "Unit"});
+  }
+}
+
 function $ns_definitions$(_book_0, _names_0) {
   if (_names_0.$ === "Nil") {
     return true;
@@ -1491,13 +1515,19 @@ function $ns_definitions$(_book_0, _names_0) {
     const _name_0 = _names_0["head"];
     const _rest_0 = _names_0["tail"];
     const _d_0 = run_loop($lookup$(_book_0, _name_0));
-    const _x_2 = ($nc_native_def$(_d_0));
-    const _x_3 = run_loop(run_tail((($nc_foreign$(_d_0))) ? ((_x_0) => {
-  return $Bool$and$(($db$(_d_0)), ($nb_contains$({$: "Con", "head": "IO.args", "tail": {$: "Con", "head": "IO.print", "tail": {$: "Con", "head": "IO.now", "tail": {$: "Nil"}}}}, ($dn$(_d_0)))));
+    return run_tail((run_loop(run_tail((run_loop($nc_native_def$(_d_0))) ? ((_x_0) => {
+  return true;
 }) : ((_x_1) => {
+  return run_tail((($nc_foreign$(_d_0))) ? ((_x_2) => {
+  return $Bool$and$(($db$(_d_0)), ($nb_contains$({$: "Con", "head": "IO.args", "tail": {$: "Con", "head": "IO.print", "tail": {$: "Con", "head": "IO.now", "tail": {$: "Nil"}}}}, ($dn$(_d_0)))));
+}) : ((_x_3) => {
   return $ns_term$(_book_0, ($dv$(_d_0)));
-}), {$: "Unit"}));
-    return $Bool$and$((_x_2 || _x_3), ($ns_definitions$(_book_0, _rest_0)));
+}), {$: "Unit"});
+}), {$: "Unit"}))) ? ((_x_4) => {
+  return $ns_definitions$(_book_0, _rest_0);
+}) : ((_x_5) => {
+  return false;
+}), {$: "Unit"});
   }
 }
 
@@ -1508,11 +1538,17 @@ function $ns_unshared_definitions$(_book_0, _names_0) {
     const _name_0 = _names_0["head"];
     const _rest_0 = _names_0["tail"];
     const _d_0 = run_loop($lookup$(_book_0, _name_0));
-    const _x_0 = ($nc_native_def$(_d_0));
+    const _x_0 = run_loop($nc_native_def$(_d_0));
     const _x_1 = ($nc_foreign$(_d_0));
-    const _x_2 = (_x_0 || _x_1);
-    const _x_3 = run_loop($ns_unshared_terms$(_book_0, run_loop($nc_erase$(_book_0, ($dv$(_d_0)))), {$: "Con", "head": ($dv$(_d_0)), "tail": {$: "Nil"}}));
-    return $Bool$and$((_x_2 || _x_3), ($ns_unshared_definitions$(_book_0, _rest_0)));
+    return run_tail((run_loop(run_tail(((_x_0 || _x_1)) ? ((_x_2) => {
+  return true;
+}) : ((_x_3) => {
+  return $ns_unshared_terms$(_book_0, run_loop($nc_erase$(_book_0, ($dv$(_d_0)))), {$: "Con", "head": ($dv$(_d_0)), "tail": {$: "Nil"}});
+}), {$: "Unit"}))) ? ((_x_4) => {
+  return $ns_unshared_definitions$(_book_0, _rest_0);
+}) : ((_x_5) => {
+  return false;
+}), {$: "Unit"});
   }
 }
 
@@ -1599,11 +1635,17 @@ function $nr_unshared$(_book_0, _names_0) {
     const _name_0 = _names_0["head"];
     const _rest_0 = _names_0["tail"];
     const _d_0 = run_loop($lookup$(_book_0, _name_0));
-    const _x_0 = ($nc_native_def$(_d_0));
+    const _x_0 = run_loop($nc_native_def$(_d_0));
     const _x_1 = ($nc_foreign$(_d_0));
-    const _x_2 = (_x_0 || _x_1);
-    const _x_3 = run_loop($ns_unshared_terms$(_book_0, run_loop($nc_definition$(_book_0, _d_0, 0)), {$: "Con", "head": ($dv$(_d_0)), "tail": {$: "Nil"}}));
-    return $Bool$and$((_x_2 || _x_3), ($nr_unshared$(_book_0, _rest_0)));
+    return run_tail((run_loop(run_tail(((_x_0 || _x_1)) ? ((_x_2) => {
+  return true;
+}) : ((_x_3) => {
+  return $ns_unshared_terms$(_book_0, run_loop($nc_definition$(_book_0, _d_0, 0)), {$: "Con", "head": ($dv$(_d_0)), "tail": {$: "Nil"}});
+}), {$: "Unit"}))) ? ((_x_4) => {
+  return $nr_unshared$(_book_0, _rest_0);
+}) : ((_x_5) => {
+  return false;
+}), {$: "Unit"});
   }
 }
 
@@ -1632,14 +1674,6 @@ function $nc_compile_error$(_book_0) {
 }), {$: "Unit"});
 }
 
-function $nt_choose$(_b_0, _yes_0, _no_0) {
-  if (_b_0) {
-    return run_tail(_yes_0, {$: "Unit"});
-  } else {
-    return run_tail(_no_0, {$: "Unit"});
-  }
-}
-
 function $ns_compile_named$(_source_0, _names_0, _runtime_0, _requests_0, _observers_0) {
   const _prepared_0 = run_loop($ns_prepare$(_source_0, _names_0));
   const _bangs_0 = ($nc_bangs_names$(_prepared_0, _names_0));
@@ -1652,12 +1686,11 @@ function $ns_compile_named$(_source_0, _names_0, _runtime_0, _requests_0, _obser
 }
 
 function $nc_native_def$(_d_0) {
-  const _prim_0 = ($nc_primitive_name$(($dn$(_d_0))));
-  const _x_0 = ($Bool$not$(($String$eq$(run_loop($ni_template$(_prim_0)), ""))));
-  const _x_1 = ($nc_array_known$(_prim_0));
-  const _x_2 = (_x_0 || _x_1);
-  const _x_3 = ($String$eq$(_prim_0, "nat_divmod"));
-  return $Bool$and$(($Bool$and$(($db$(_d_0)), ($Bool$not$(($String$eq$(($tg$(run_loop($nc_unann$(($dv$(_d_0)))))), "Foreign")))))), (_x_2 || _x_3));
+  return run_tail((($db$(_d_0))) ? ((_x_0) => {
+  return $nc_native_marked$(_d_0);
+}) : ((_x_1) => {
+  return false;
+}), {$: "Unit"});
 }
 
 function $dn$(_d_0) {
@@ -3730,12 +3763,16 @@ function $ns_term$(_book_0, _t_0) {
   return run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
   return false;
 }) : ((_x_5) => {
-  return run_tail((($Bool$and$(($String$eq$(($tg$(_t_0)), "App")), ($ns_generic_array$(_book_0, run_loop($nc_unann$(run_loop($kid$(_t_0, 0))))))))) ? ((_x_6) => {
-  return $ns_scalar$(_book_0, run_loop($kid$(_t_0, 1)));
+  return run_tail((run_loop(run_tail((($String$eq$(($tg$(_t_0)), "App"))) ? ((_x_6) => {
+  return $ns_generic_array$(_book_0, run_loop($nc_unann$(run_loop($kid$(_t_0, 0)))));
 }) : ((_x_7) => {
-  return run_tail((($ns_generic_array$(_book_0, _t_0))) ? ((_x_8) => {
   return false;
+}), {$: "Unit"}))) ? ((_x_8) => {
+  return $ns_scalar$(_book_0, run_loop($kid$(_t_0, 1)));
 }) : ((_x_9) => {
+  return run_tail((run_loop($ns_generic_array$(_book_0, _t_0))) ? ((_x_10) => {
+  return false;
+}) : ((_x_11) => {
   return $ns_terms$(_book_0, ($ks$(_t_0)));
 }), {$: "Unit"});
 }), {$: "Unit"});
@@ -3899,7 +3936,7 @@ function $ns_attach_book$(_book_0, _facts_0, _size_0, _words_0) {
 
 function $nr_visit$(_book_0, _name_0, _todo_0, _done_0, _facts_0, _d_0) {
   const _body_0 = run_loop($nc_definition_plain$(_book_0, _d_0, 0));
-  const _x_0 = ($nc_native_def$(_d_0));
+  const _x_0 = run_loop($nc_native_def$(_d_0));
   const _x_1 = ($nc_foreign$(_d_0));
   const _more_0 = run_loop(run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($Bool$not$((_x_0 || _x_1)))))) ? ((_x_2) => {
   return {$: "Con", "head": {$: "KDef", "name": _name_0, "kind": "NativeErasedBody", "arity": run_loop($nd_arity_plain$(_book_0, _name_0)), "templates": 1, "typ": ($atom$("Absent")), "value": _body_0, "ctors": {$: "Nil"}, "native": false, "unsafe": false}, "tail": _facts_0};
@@ -3988,309 +4025,12 @@ function $nc_compile_defs$(_book_0, _todo_0, _done_0, _n_0, _bangs_0) {
   }
 }
 
-function $nc_primitive_name$(_k_0) {
-  return $String$to_lower$(($nt_clean$(_k_0)));
-}
-
-function $ni_template$(_k_0) {
-  return run_tail((($String$is_empty$(_k_0))) ? ((_x_0) => {
-  return "";
+function $nc_native_marked$(_d_0) {
+  return run_tail((($String$eq$(($tg$(run_loop($nc_unann$(($dv$(_d_0)))))), "Foreign"))) ? ((_x_0) => {
+  return false;
 }) : ((_x_1) => {
-  return run_tail((($String$eq$(_k_0, "u32_add"))) ? ((_x_2) => {
-  return "U32_BIN($0, +, $1)";
-}) : ((_x_3) => {
-  return run_tail((($String$eq$(_k_0, "u32_sub"))) ? ((_x_4) => {
-  return "U32_BIN($0, -, $1)";
-}) : ((_x_5) => {
-  return run_tail((($String$eq$(_k_0, "u32_and"))) ? ((_x_6) => {
-  return "U32_BIN($0, &, $1)";
-}) : ((_x_7) => {
-  return run_tail((($String$eq$(_k_0, "u32_or"))) ? ((_x_8) => {
-  return "U32_BIN($0, |, $1)";
-}) : ((_x_9) => {
-  return run_tail((($String$eq$(_k_0, "u32_xor"))) ? ((_x_10) => {
-  return "U32_BIN($0, ^, $1)";
-}) : ((_x_11) => {
-  return run_tail((($String$eq$(_k_0, "u32_mul"))) ? ((_x_12) => {
-  return "U32_BIN($0, *, $1)";
-}) : ((_x_13) => {
-  return run_tail((($String$eq$(_k_0, "u32_is_eq"))) ? ((_x_14) => {
-  return "U32_BIN($0, ==, $1)";
-}) : ((_x_15) => {
-  return run_tail((($String$eq$(_k_0, "u32_is_ne"))) ? ((_x_16) => {
-  return "U32_BIN($0, !=, $1)";
-}) : ((_x_17) => {
-  return run_tail((($String$eq$(_k_0, "u32_is_lt"))) ? ((_x_18) => {
-  return "U32_BIN($0, <, $1)";
-}) : ((_x_19) => {
-  return run_tail((($String$eq$(_k_0, "u32_is_le"))) ? ((_x_20) => {
-  return "U32_BIN($0, <=, $1)";
-}) : ((_x_21) => {
-  return run_tail((($String$eq$(_k_0, "u32_is_gt"))) ? ((_x_22) => {
-  return "U32_BIN($0, >, $1)";
-}) : ((_x_23) => {
-  return run_tail((($String$eq$(_k_0, "u32_is_ge"))) ? ((_x_24) => {
-  return "U32_BIN($0, >=, $1)";
-}) : ((_x_25) => {
-  return run_tail((($String$eq$(_k_0, "u32_inc"))) ? ((_x_26) => {
-  return "U32_BIN($0, +, 1)";
-}) : ((_x_27) => {
-  return run_tail((($String$eq$(_k_0, "u32_shl"))) ? ((_x_28) => {
-  return "U32_BIN($0, <<, 1)";
-}) : ((_x_29) => {
-  return run_tail((($String$eq$(_k_0, "u32_shr"))) ? ((_x_30) => {
-  return "U32_BIN($0, >>, 1)";
-}) : ((_x_31) => {
-  return run_tail((($String$eq$(_k_0, "u32_shln"))) ? ((_x_32) => {
-  return "($1 >= 32 ? 0 : U32_BIN($0, <<, $1))";
-}) : ((_x_33) => {
-  return run_tail((($String$eq$(_k_0, "u32_shrn"))) ? ((_x_34) => {
-  return "($1 >= 32 ? 0 : U32_BIN($0, >>, $1))";
-}) : ((_x_35) => {
-  return run_tail((($String$eq$(_k_0, "u32_div"))) ? ((_x_36) => {
-  return "((u32)($1) == 0 ? 0 : (u64)U32_QUO((u32)($0), (u32)($1)))";
-}) : ((_x_37) => {
-  return run_tail((($String$eq$(_k_0, "u32_mod"))) ? ((_x_38) => {
-  return "((u32)($1) == 0 ? $0 : U32_BIN($0, -, U32_QUO((u32)($0), (u32)($1)) * $1))";
-}) : ((_x_39) => {
-  return run_tail((($String$eq$(_k_0, "u32_not"))) ? ((_x_40) => {
-  return "((u64)~(u32)($0))";
-}) : ((_x_41) => {
-  return run_tail((($String$eq$(_k_0, "u32_is_zero"))) ? ((_x_42) => {
-  return "U32_BIN($0, ==, 0)";
-}) : ((_x_43) => {
-  return run_tail((($String$eq$(_k_0, "u32_cmp"))) ? ((_x_44) => {
-  return "(U32_BIN($0, >, $1) + U32_BIN($0, >=, $1))";
-}) : ((_x_45) => {
-  return run_tail((($String$eq$(_k_0, "u32_to_f32"))) ? ((_x_46) => {
-  return "f32_rewrap((f32)(u32)($0))";
-}) : ((_x_47) => {
-  return run_tail((($String$eq$(_k_0, "u32_to_nat"))) ? ((_x_48) => {
-  return "((u64)$0)";
-}) : ((_x_49) => {
-  return run_tail((($String$eq$(_k_0, "u32_from_nat"))) ? ((_x_50) => {
-  return "((u64)(u32)($0))";
-}) : ((_x_51) => {
-  return run_tail((($String$eq$(_k_0, "f32_add"))) ? ((_x_52) => {
-  return "f32_rewrap(f32_unbox($0) + f32_unbox($1))";
-}) : ((_x_53) => {
-  return run_tail((($String$eq$(_k_0, "f32_sub"))) ? ((_x_54) => {
-  return "f32_rewrap(f32_unbox($0) - f32_unbox($1))";
-}) : ((_x_55) => {
-  return run_tail((($String$eq$(_k_0, "f32_mul"))) ? ((_x_56) => {
-  return "f32_rewrap(f32_unbox($0) * f32_unbox($1))";
-}) : ((_x_57) => {
-  return run_tail((($String$eq$(_k_0, "f32_div"))) ? ((_x_58) => {
-  return "f32_rewrap(f32_unbox($0) / f32_unbox($1))";
-}) : ((_x_59) => {
-  return run_tail((($String$eq$(_k_0, "f32_is_eq"))) ? ((_x_60) => {
-  return "((u64)(f32_unbox($0) == f32_unbox($1)))";
-}) : ((_x_61) => {
-  return run_tail((($String$eq$(_k_0, "f32_is_ne"))) ? ((_x_62) => {
-  return "((u64)(f32_unbox($0) != f32_unbox($1)))";
-}) : ((_x_63) => {
-  return run_tail((($String$eq$(_k_0, "f32_is_lt"))) ? ((_x_64) => {
-  return "((u64)(f32_unbox($0) < f32_unbox($1)))";
-}) : ((_x_65) => {
-  return run_tail((($String$eq$(_k_0, "f32_is_le"))) ? ((_x_66) => {
-  return "((u64)(f32_unbox($0) <= f32_unbox($1)))";
-}) : ((_x_67) => {
-  return run_tail((($String$eq$(_k_0, "f32_is_gt"))) ? ((_x_68) => {
-  return "((u64)(f32_unbox($0) > f32_unbox($1)))";
-}) : ((_x_69) => {
-  return run_tail((($String$eq$(_k_0, "f32_is_ge"))) ? ((_x_70) => {
-  return "((u64)(f32_unbox($0) >= f32_unbox($1)))";
-}) : ((_x_71) => {
-  return run_tail((($String$eq$(_k_0, "f32_sqrt"))) ? ((_x_72) => {
-  return "f32_rewrap((f32)sqrt(f32_unbox($0)))";
-}) : ((_x_73) => {
-  return run_tail((($String$eq$(_k_0, "f32_exp"))) ? ((_x_74) => {
-  return "f32_rewrap((f32)exp(f32_unbox($0)))";
-}) : ((_x_75) => {
-  return run_tail((($String$eq$(_k_0, "f32_log"))) ? ((_x_76) => {
-  return "f32_rewrap((f32)log(f32_unbox($0)))";
-}) : ((_x_77) => {
-  return run_tail((($String$eq$(_k_0, "f32_log2"))) ? ((_x_78) => {
-  return "f32_rewrap((f32)log2(f32_unbox($0)))";
-}) : ((_x_79) => {
-  return run_tail((($String$eq$(_k_0, "f32_log10"))) ? ((_x_80) => {
-  return "f32_rewrap((f32)log10(f32_unbox($0)))";
-}) : ((_x_81) => {
-  return run_tail((($String$eq$(_k_0, "f32_sin"))) ? ((_x_82) => {
-  return "f32_rewrap((f32)sin(f32_unbox($0)))";
-}) : ((_x_83) => {
-  return run_tail((($String$eq$(_k_0, "f32_cos"))) ? ((_x_84) => {
-  return "f32_rewrap((f32)cos(f32_unbox($0)))";
-}) : ((_x_85) => {
-  return run_tail((($String$eq$(_k_0, "f32_tan"))) ? ((_x_86) => {
-  return "f32_rewrap((f32)tan(f32_unbox($0)))";
-}) : ((_x_87) => {
-  return run_tail((($String$eq$(_k_0, "f32_asin"))) ? ((_x_88) => {
-  return "f32_rewrap((f32)asin(f32_unbox($0)))";
-}) : ((_x_89) => {
-  return run_tail((($String$eq$(_k_0, "f32_acos"))) ? ((_x_90) => {
-  return "f32_rewrap((f32)acos(f32_unbox($0)))";
-}) : ((_x_91) => {
-  return run_tail((($String$eq$(_k_0, "f32_atan"))) ? ((_x_92) => {
-  return "f32_rewrap((f32)atan(f32_unbox($0)))";
-}) : ((_x_93) => {
-  return run_tail((($String$eq$(_k_0, "f32_sinh"))) ? ((_x_94) => {
-  return "f32_rewrap((f32)sinh(f32_unbox($0)))";
-}) : ((_x_95) => {
-  return run_tail((($String$eq$(_k_0, "f32_cosh"))) ? ((_x_96) => {
-  return "f32_rewrap((f32)cosh(f32_unbox($0)))";
-}) : ((_x_97) => {
-  return run_tail((($String$eq$(_k_0, "f32_tanh"))) ? ((_x_98) => {
-  return "f32_rewrap((f32)tanh(f32_unbox($0)))";
-}) : ((_x_99) => {
-  return run_tail((($String$eq$(_k_0, "f32_floor"))) ? ((_x_100) => {
-  return "f32_rewrap((f32)floor(f32_unbox($0)))";
-}) : ((_x_101) => {
-  return run_tail((($String$eq$(_k_0, "f32_ceil"))) ? ((_x_102) => {
-  return "f32_rewrap((f32)ceil(f32_unbox($0)))";
-}) : ((_x_103) => {
-  return run_tail((($String$eq$(_k_0, "f32_trunc"))) ? ((_x_104) => {
-  return "f32_rewrap((f32)trunc(f32_unbox($0)))";
-}) : ((_x_105) => {
-  return run_tail((($String$eq$(_k_0, "f32_abs"))) ? ((_x_106) => {
-  return "f32_rewrap((f32)fabs(f32_unbox($0)))";
-}) : ((_x_107) => {
-  return run_tail((($String$eq$(_k_0, "f32_pow"))) ? ((_x_108) => {
-  return "f32_rewrap((f32)pow(f32_unbox($0), f32_unbox($1)))";
-}) : ((_x_109) => {
-  return run_tail((($String$eq$(_k_0, "f32_atan2"))) ? ((_x_110) => {
-  return "f32_rewrap((f32)atan2(f32_unbox($0), f32_unbox($1)))";
-}) : ((_x_111) => {
-  return run_tail((($String$eq$(_k_0, "f32_mod"))) ? ((_x_112) => {
-  return "f32_rewrap((f32)fmod(f32_unbox($0), f32_unbox($1)))";
-}) : ((_x_113) => {
-  return run_tail((($String$eq$(_k_0, "f32_neg"))) ? ((_x_114) => {
-  return "f32_rewrap(-f32_unbox($0))";
-}) : ((_x_115) => {
-  return run_tail((($String$eq$(_k_0, "f32_to_u32"))) ? ((_x_116) => {
-  return "f32_to_u32($0)";
-}) : ((_x_117) => {
-  return run_tail((($String$eq$(_k_0, "f32_bits"))) ? ((_x_118) => {
-  return "$0";
-}) : ((_x_119) => {
-  return run_tail((($String$eq$(_k_0, "f32_show"))) ? ((_x_120) => {
-  return "f32_show(e, $0)";
-}) : ((_x_121) => {
-  return run_tail((($String$eq$(_k_0, "f32_read"))) ? ((_x_122) => {
-  return "f32_read(e, $0)";
-}) : ((_x_123) => {
-  return run_tail((($String$eq$(_k_0, "nat_add"))) ? ((_x_124) => {
-  return "nat_chk(e, $0 + $1)";
-}) : ((_x_125) => {
-  return run_tail((($String$eq$(_k_0, "nat_sub"))) ? ((_x_126) => {
-  return "($0 < $1 ? 0 : $0 - $1)";
-}) : ((_x_127) => {
-  return run_tail((($String$eq$(_k_0, "nat_mul"))) ? ((_x_128) => {
-  return "nat_mul(e, $0, $1)";
-}) : ((_x_129) => {
-  return run_tail((($String$eq$(_k_0, "nat_double"))) ? ((_x_130) => {
-  return "nat_chk(e, $0 + $0)";
-}) : ((_x_131) => {
-  return run_tail((($String$eq$(_k_0, "nat_cmp"))) ? ((_x_132) => {
-  return "(($0 > $1) + ($0 >= $1))";
-}) : ((_x_133) => {
-  return run_tail((($String$eq$(_k_0, "nat_is_lt"))) ? ((_x_134) => {
-  return "($0 < $1)";
-}) : ((_x_135) => {
-  return run_tail((($String$eq$(_k_0, "bool_or"))) ? ((_x_136) => {
-  return "(native_bool($0) | native_bool($1))";
-}) : ((_x_137) => {
-  return run_tail((($String$eq$(_k_0, "bool_xor"))) ? ((_x_138) => {
-  return "(native_bool($0) ^ native_bool($1))";
-}) : ((_x_139) => {
-  return "";
+  return $nc_native_primitive$(($nc_primitive_name$(($dn$(_d_0)))));
 }), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}
-
-function $nc_array_known$(_k_0) {
-  const _x_0 = run_loop($nc_atomic$(_k_0));
-  const _x_1 = (_x_0 !== 0);
-  const _x_2 = ($String$eq$(_k_0, "array_new"));
-  const _x_3 = (_x_1 || _x_2);
-  const _x_4 = ($String$eq$(_k_0, "array_get"));
-  const _x_5 = (_x_3 || _x_4);
-  const _x_6 = ($String$eq$(_k_0, "array_set"));
-  const _x_7 = (_x_5 || _x_6);
-  const _x_8 = ($String$eq$(_k_0, "array_swap"));
-  const _x_9 = (_x_7 || _x_8);
-  const _x_10 = ($String$eq$(_k_0, "array_size"));
-  const _x_11 = (_x_9 || _x_10);
-  const _x_12 = ($String$eq$(_k_0, "array_clone"));
-  return (_x_11 || _x_12);
 }
 
 function $nc_context_pick$(_original_0, _annotated_0) {
@@ -4337,7 +4077,7 @@ function $nt_fid$(_k_0) {
 }
 
 function $nc_ref_name$(_book_0, _name_0) {
-  return run_tail((($nc_native_def$(run_loop($lookup$(_book_0, _name_0))))) ? ((_x_0) => {
+  return run_tail((run_loop($nc_native_def$(run_loop($lookup$(_book_0, _name_0))))) ? ((_x_0) => {
   return ("$native." + _name_0);
 }) : ((_x_1) => {
   return _name_0;
@@ -7205,7 +6945,7 @@ function $ns_body$(_book_0, _name_0) {
 
 function $nc_definition_plain$(_book_0, _d_0, _n_0) {
   const _prim_0 = ($nc_primitive_name$(($dn$(_d_0))));
-  return run_tail((($nc_native_def$(_d_0))) ? ((_x_0) => {
+  return run_tail((run_loop($nc_native_def$(_d_0))) ? ((_x_0) => {
   return $nc_primitive_body$(_prim_0);
 }) : ((_x_1) => {
   return run_tail((($nc_foreign$(_d_0))) ? ((_x_2) => {
@@ -7218,11 +6958,11 @@ function $nc_definition_plain$(_book_0, _d_0, _n_0) {
 
 function $ns_annotated$(_book_0, _value_0, _ty_0) {
   return run_tail((($ns_array_pattern$(_value_0))) ? ((_x_0) => {
-  return $Bool$and$(($ns_array_type$(_book_0, run_loop(run_tail((($String$eq$(($tg$(_value_0)), "Mat"))) ? ((_x_1) => {
+  return $Bool$and$(run_loop($ns_array_type$(_book_0, run_loop(run_tail((($String$eq$(($tg$(_value_0)), "Mat"))) ? ((_x_1) => {
   return $kid$(run_loop($nq_layout_type$(_book_0, _ty_0)), 0);
 }) : ((_x_2) => {
   return _ty_0;
-}), {$: "Unit"})))), ($ns_terms$(_book_0, ($ks$(_value_0)))));
+}), {$: "Unit"})))), run_loop($ns_terms$(_book_0, ($ks$(_value_0)))));
 }) : ((_x_3) => {
   return $ns_term$(_book_0, _value_0);
 }), {$: "Unit"});
@@ -7237,7 +6977,15 @@ function $ns_array_pattern$(_t_0) {
 }
 
 function $ns_generic_array$(_book_0, _t_0) {
-  return $Bool$and$(($Bool$and$(($String$eq$(($tg$(_t_0)), "Ref")), ($nc_native_def$(run_loop($lookup$(_book_0, ($nm$(_t_0)))))))), ($nb_contains$({$: "Con", "head": "array_new", "tail": {$: "Con", "head": "array_get", "tail": {$: "Con", "head": "array_set", "tail": {$: "Con", "head": "array_swap", "tail": {$: "Con", "head": "array_size", "tail": {$: "Con", "head": "array_clone", "tail": {$: "Nil"}}}}}}}, ($nc_primitive_name$(($nm$(_t_0)))))));
+  return run_tail((($String$eq$(($tg$(_t_0)), "Ref"))) ? ((_x_0) => {
+  return run_tail((run_loop($nc_native_def$(run_loop($lookup$(_book_0, ($nm$(_t_0))))))) ? ((_x_1) => {
+  return $nb_contains$({$: "Con", "head": "array_new", "tail": {$: "Con", "head": "array_get", "tail": {$: "Con", "head": "array_set", "tail": {$: "Con", "head": "array_swap", "tail": {$: "Con", "head": "array_size", "tail": {$: "Con", "head": "array_clone", "tail": {$: "Nil"}}}}}}}, ($nc_primitive_name$(($nm$(_t_0)))));
+}) : ((_x_2) => {
+  return false;
+}), {$: "Unit"});
+}) : ((_x_3) => {
+  return false;
+}), {$: "Unit"});
 }
 
 function $ns_scalar$(_book_0, _ty_0) {
@@ -7251,7 +6999,11 @@ function $ns_terms$(_book_0, _ts_0) {
   } else {
     const _h_0 = _ts_0["head"];
     const _rest_0 = _ts_0["tail"];
-    return $Bool$and$(run_loop($ns_term$(_book_0, _h_0)), ($ns_terms$(_book_0, _rest_0)));
+    return run_tail((run_loop($ns_term$(_book_0, _h_0))) ? ((_x_0) => {
+  return $ns_terms$(_book_0, _rest_0);
+}) : ((_x_1) => {
+  return false;
+}), {$: "Unit"});
   }
 }
 
@@ -7265,7 +7017,11 @@ function $ns_array_free$(_book_0, _ty_0) {
   return run_tail((($String$eq$(($tg$(_head_0)), "Lam"))) ? ((_x_4) => {
   return $ns_array_free$(_book_0, run_loop($kid$(_head_0, 0)));
 }) : ((_x_5) => {
-  return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_head_0)), "ADT")), ($db$(run_loop($lookup$(_book_0, ($nm$(_head_0)))))))), ($nb_contains$({$: "Con", "head": "Nat", "tail": {$: "Con", "head": "U32", "tail": {$: "Con", "head": "F32", "tail": {$: "Con", "head": "Char", "tail": {$: "Con", "head": "Bool", "tail": {$: "Con", "head": "Unit", "tail": {$: "Con", "head": "String", "tail": {$: "Con", "head": "List", "tail": {$: "Con", "head": "Maybe", "tail": {$: "Con", "head": "Result", "tail": {$: "Con", "head": "Sigma", "tail": {$: "Con", "head": "Word.Nil", "tail": {$: "Con", "head": "Word.Con", "tail": {$: "Nil"}}}}}}}}}}}}}}, ($nm$(_head_0)))))), ($ns_types_free$(_book_0, ($ks$(_head_0)))));
+  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($tg$(_head_0)), "ADT")), ($db$(run_loop($lookup$(_book_0, ($nm$(_head_0)))))))), ($nb_contains$({$: "Con", "head": "Nat", "tail": {$: "Con", "head": "U32", "tail": {$: "Con", "head": "F32", "tail": {$: "Con", "head": "Char", "tail": {$: "Con", "head": "Bool", "tail": {$: "Con", "head": "Unit", "tail": {$: "Con", "head": "String", "tail": {$: "Con", "head": "List", "tail": {$: "Con", "head": "Maybe", "tail": {$: "Con", "head": "Result", "tail": {$: "Con", "head": "Sigma", "tail": {$: "Con", "head": "Word.Nil", "tail": {$: "Con", "head": "Word.Con", "tail": {$: "Nil"}}}}}}}}}}}}}}, ($nm$(_head_0))))))) ? ((_x_6) => {
+  return $ns_types_free$(_book_0, ($ks$(_head_0)));
+}) : ((_x_7) => {
+  return false;
+}), {$: "Unit"});
 }), {$: "Unit"});
 }), {$: "Unit"});
 }
@@ -7403,7 +7159,7 @@ function $nc_ctor_prepare$(_book_0) {
 
 function $nd_arity_plain$(_book_0, _name_0) {
   const _d_0 = run_loop($lookup$(_book_0, _name_0));
-  return run_tail((($nc_native_def$(_d_0))) ? ((_x_0) => {
+  return run_tail((run_loop($nc_native_def$(_d_0))) ? ((_x_0) => {
   return $nc_primitive_arity$(($nc_primitive_name$(_name_0)));
 }) : ((_x_1) => {
   return run_tail((($String$eq$(($tg$(run_loop($nc_unann$(($dv$(_d_0)))))), "Foreign"))) ? ((_x_2) => {
@@ -7499,7 +7255,7 @@ function $nh_definitions$(_book_0, _names_0, _hot_0) {
     return run_tail((($nb_contains$(_hot_0, "*"))) ? ((_x_0) => {
   return _hot_0;
 }) : ((_x_1) => {
-  const _x_2 = ($nc_native_def$(_d_0));
+  const _x_2 = run_loop($nc_native_def$(_d_0));
   const _x_3 = ($nc_foreign$(_d_0));
   return $nh_definitions$(_book_0, _rest_0, run_loop(run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
   return _hot_0;
@@ -7525,64 +7281,16 @@ function $nc_compile_def$(_book_0, _name_0, _todo_0, _done_0, _n_0, _bangs_0) {
 }), {$: "Unit"});
 }
 
-function $nt_clean$(_s_0) {
-  if (_s_0 === "") {
-    return "";
-  } else {
-    const _h_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(0, 2) : _s_0[0]);
-    const _t_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(2) : _s_0.slice(1));
-    const _x_0 = ($Char$is_alpha$(_h_0));
-    const _x_1 = ($Char$is_digit$(_h_0));
-    const _x_2 = (_x_0 || _x_1);
-    const _x_3 = ($Char$is_eq$(_h_0, "_"));
-    const _x_6 = run_loop(run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
-  return (_h_0 + "");
-}) : ((_x_5) => {
-  return "_";
-}), {$: "Unit"}));
-    const _x_7 = ($nt_clean$(_t_0));
-    return (_x_6 + _x_7);
-  }
+function $nc_native_primitive$(_prim_0) {
+  const _x_0 = ($Bool$not$(($String$eq$(run_loop($ni_template$(_prim_0)), ""))));
+  const _x_1 = ($nc_array_known$(_prim_0));
+  const _x_2 = (_x_0 || _x_1);
+  const _x_3 = ($String$eq$(_prim_0, "nat_divmod"));
+  return (_x_2 || _x_3);
 }
 
-function $nc_atomic$(_k_0) {
-  return run_tail((($String$eq$(_k_0, "array_atomic_add"))) ? ((_x_0) => {
-  return 1;
-}) : ((_x_1) => {
-  return run_tail((($String$eq$(_k_0, "array_atomic_min"))) ? ((_x_2) => {
-  return 2;
-}) : ((_x_3) => {
-  return run_tail((($String$eq$(_k_0, "array_atomic_max"))) ? ((_x_4) => {
-  return 3;
-}) : ((_x_5) => {
-  return run_tail((($String$eq$(_k_0, "array_atomic_and"))) ? ((_x_6) => {
-  return 4;
-}) : ((_x_7) => {
-  return run_tail((($String$eq$(_k_0, "array_atomic_or"))) ? ((_x_8) => {
-  return 5;
-}) : ((_x_9) => {
-  return run_tail((($String$eq$(_k_0, "array_atomic_xor"))) ? ((_x_10) => {
-  return 6;
-}) : ((_x_11) => {
-  return run_tail((($String$eq$(_k_0, "array_atomic_exch"))) ? ((_x_12) => {
-  return 7;
-}) : ((_x_13) => {
-  return run_tail((($String$eq$(_k_0, "array_atomic_cas"))) ? ((_x_14) => {
-  return 8;
-}) : ((_x_15) => {
-  return run_tail((($String$eq$(_k_0, "array_atomic_fadd"))) ? ((_x_16) => {
-  return 9;
-}) : ((_x_17) => {
-  return 0;
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"});
+function $nc_primitive_name$(_k_0) {
+  return $String$to_lower$(($nt_clean$(_k_0)));
 }
 
 function $nc_ctor_codes$(_name_0) {
@@ -7605,6 +7313,26 @@ function $String$to_upper$(_s_0) {
     const _h_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(0, 2) : _s_0[0]);
     const _t_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(2) : _s_0.slice(1));
     return (($Char$to_upper$(_h_0)) + ($String$to_upper$(_t_0)));
+  }
+}
+
+function $nt_clean$(_s_0) {
+  if (_s_0 === "") {
+    return "";
+  } else {
+    const _h_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(0, 2) : _s_0[0]);
+    const _t_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(2) : _s_0.slice(1));
+    const _x_0 = ($Char$is_alpha$(_h_0));
+    const _x_1 = ($Char$is_digit$(_h_0));
+    const _x_2 = (_x_0 || _x_1);
+    const _x_3 = ($Char$is_eq$(_h_0, "_"));
+    const _x_6 = run_loop(run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
+  return (_h_0 + "");
+}) : ((_x_5) => {
+  return "_";
+}), {$: "Unit"}));
+    const _x_7 = ($nt_clean$(_t_0));
+    return (_x_6 + _x_7);
   }
 }
 
@@ -10615,7 +10343,11 @@ function $nc_foreign_tel$(_book_0, _ty_0, _name_0, _args_0, _n_0) {
 
 function $ns_array_type$(_book_0, _ty_0) {
   const _head_0 = run_loop($nq_layout_type$(_book_0, _ty_0));
-  return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_head_0)), "ADT")), ($String$eq$(($nm$(_head_0)), "Array")))), ($db$(run_loop($lookup$(_book_0, "Array")))))), ($ns_scalar$(_book_0, run_loop($kid$(_head_0, 0)))));
+  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($tg$(_head_0)), "ADT")), ($String$eq$(($nm$(_head_0)), "Array")))), ($db$(run_loop($lookup$(_book_0, "Array"))))))) ? ((_x_0) => {
+  return $ns_scalar$(_book_0, run_loop($kid$(_head_0, 0)));
+}) : ((_x_1) => {
+  return false;
+}), {$: "Unit"});
 }
 
 function $nq_layout_type$(_book_0, _ty_0) {
@@ -10628,7 +10360,11 @@ function $ns_types_free$(_book_0, _ts_0) {
   } else {
     const _h_0 = _ts_0["head"];
     const _rest_0 = _ts_0["tail"];
-    return $Bool$and$(run_loop($ns_array_free$(_book_0, _h_0)), ($ns_types_free$(_book_0, _rest_0)));
+    return run_tail((run_loop($ns_array_free$(_book_0, _h_0))) ? ((_x_0) => {
+  return $ns_types_free$(_book_0, _rest_0);
+}) : ((_x_1) => {
+  return false;
+}), {$: "Unit"});
   }
 }
 
@@ -10848,7 +10584,7 @@ function $ns_defs$(_book_0, _cs_0, _names_0, _image_0, _facts_0) {
     const _rest_0 = _names_0["tail"];
     const _d_0 = run_loop($lookup$(_book_0, _name_0));
     return run_tail((($String$eq$(($dk$(_d_0)), "Def"))) ? ((_x_0) => {
-  const _x_1 = ($nc_native_def$(_d_0));
+  const _x_1 = run_loop($nc_native_def$(_d_0));
   const _x_2 = ($nc_foreign$(_d_0));
   return run_tail(((_x_1 || _x_2)) ? ((_x_3) => {
   return $ns_defs$(_book_0, _cs_0, _rest_0, _image_0, _facts_0);
@@ -10937,7 +10673,7 @@ function $no_candidate_names$(_book_0, _names_0, _bangs_0) {
     const _name_0 = _names_0["head"];
     const _rest_0 = _names_0["tail"];
     const _d_0 = run_loop($lookup$(_book_0, _name_0));
-    const _x_0 = ($nc_native_def$(_d_0));
+    const _x_0 = run_loop($nc_native_def$(_d_0));
     const _x_1 = ($nc_foreign$(_d_0));
     const _x_2 = (_x_0 || _x_1);
     const _x_3 = ($nb_contains$(_bangs_0, _name_0));
@@ -10960,7 +10696,7 @@ function $nf_candidates$(_book_0, _names_0, _bangs_0, _signatures_0) {
     const _name_0 = _names_0["head"];
     const _rest_0 = _names_0["tail"];
     const _d_0 = run_loop($lookup$(_book_0, _name_0));
-    const _x_0 = ($nc_native_def$(_d_0));
+    const _x_0 = run_loop($nc_native_def$(_d_0));
     const _x_1 = ($nc_foreign$(_d_0));
     const _x_2 = (_x_0 || _x_1);
     const _x_3 = ($nb_contains$(_bangs_0, _name_0));
@@ -11091,7 +10827,7 @@ function $nc_mark_code$(_c_0, _bang_0, _forked_0, _calls_0) {
 
 function $nd_compile_entry$(_book_0, _body_0, _name_0, _n_0, _bang_0) {
   const _d_0 = run_loop($lookup$(_book_0, _name_0));
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$not$(_bang_0)), ($Bool$not$(($nc_native_def$(_d_0)))))), ($Bool$not$(($nc_foreign$(_d_0))))))) ? ((_x_0) => {
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$not$(_bang_0)), ($Bool$not$(run_loop($nc_native_def$(_d_0)))))), ($Bool$not$(($nc_foreign$(_d_0))))))) ? ((_x_0) => {
   return $nd_user_entry$(_book_0, _body_0, _name_0, _n_0, _d_0);
 }) : ((_x_1) => {
   return $nd_extend$(_book_0, _body_0, ($nc_lower$(_book_0, _body_0, {$: "Nil"}, _n_0)), _name_0);
@@ -11114,6 +10850,314 @@ function $nc_fresh$(_x_0) {
   return _n_0;
 }
 
+function $ni_template$(_k_0) {
+  return run_tail((($String$is_empty$(_k_0))) ? ((_x_0) => {
+  return "";
+}) : ((_x_1) => {
+  return run_tail((($String$eq$(_k_0, "u32_add"))) ? ((_x_2) => {
+  return "U32_BIN($0, +, $1)";
+}) : ((_x_3) => {
+  return run_tail((($String$eq$(_k_0, "u32_sub"))) ? ((_x_4) => {
+  return "U32_BIN($0, -, $1)";
+}) : ((_x_5) => {
+  return run_tail((($String$eq$(_k_0, "u32_and"))) ? ((_x_6) => {
+  return "U32_BIN($0, &, $1)";
+}) : ((_x_7) => {
+  return run_tail((($String$eq$(_k_0, "u32_or"))) ? ((_x_8) => {
+  return "U32_BIN($0, |, $1)";
+}) : ((_x_9) => {
+  return run_tail((($String$eq$(_k_0, "u32_xor"))) ? ((_x_10) => {
+  return "U32_BIN($0, ^, $1)";
+}) : ((_x_11) => {
+  return run_tail((($String$eq$(_k_0, "u32_mul"))) ? ((_x_12) => {
+  return "U32_BIN($0, *, $1)";
+}) : ((_x_13) => {
+  return run_tail((($String$eq$(_k_0, "u32_is_eq"))) ? ((_x_14) => {
+  return "U32_BIN($0, ==, $1)";
+}) : ((_x_15) => {
+  return run_tail((($String$eq$(_k_0, "u32_is_ne"))) ? ((_x_16) => {
+  return "U32_BIN($0, !=, $1)";
+}) : ((_x_17) => {
+  return run_tail((($String$eq$(_k_0, "u32_is_lt"))) ? ((_x_18) => {
+  return "U32_BIN($0, <, $1)";
+}) : ((_x_19) => {
+  return run_tail((($String$eq$(_k_0, "u32_is_le"))) ? ((_x_20) => {
+  return "U32_BIN($0, <=, $1)";
+}) : ((_x_21) => {
+  return run_tail((($String$eq$(_k_0, "u32_is_gt"))) ? ((_x_22) => {
+  return "U32_BIN($0, >, $1)";
+}) : ((_x_23) => {
+  return run_tail((($String$eq$(_k_0, "u32_is_ge"))) ? ((_x_24) => {
+  return "U32_BIN($0, >=, $1)";
+}) : ((_x_25) => {
+  return run_tail((($String$eq$(_k_0, "u32_inc"))) ? ((_x_26) => {
+  return "U32_BIN($0, +, 1)";
+}) : ((_x_27) => {
+  return run_tail((($String$eq$(_k_0, "u32_shl"))) ? ((_x_28) => {
+  return "U32_BIN($0, <<, 1)";
+}) : ((_x_29) => {
+  return run_tail((($String$eq$(_k_0, "u32_shr"))) ? ((_x_30) => {
+  return "U32_BIN($0, >>, 1)";
+}) : ((_x_31) => {
+  return run_tail((($String$eq$(_k_0, "u32_shln"))) ? ((_x_32) => {
+  return "($1 >= 32 ? 0 : U32_BIN($0, <<, $1))";
+}) : ((_x_33) => {
+  return run_tail((($String$eq$(_k_0, "u32_shrn"))) ? ((_x_34) => {
+  return "($1 >= 32 ? 0 : U32_BIN($0, >>, $1))";
+}) : ((_x_35) => {
+  return run_tail((($String$eq$(_k_0, "u32_div"))) ? ((_x_36) => {
+  return "((u32)($1) == 0 ? 0 : (u64)U32_QUO((u32)($0), (u32)($1)))";
+}) : ((_x_37) => {
+  return run_tail((($String$eq$(_k_0, "u32_mod"))) ? ((_x_38) => {
+  return "((u32)($1) == 0 ? $0 : U32_BIN($0, -, U32_QUO((u32)($0), (u32)($1)) * $1))";
+}) : ((_x_39) => {
+  return run_tail((($String$eq$(_k_0, "u32_not"))) ? ((_x_40) => {
+  return "((u64)~(u32)($0))";
+}) : ((_x_41) => {
+  return run_tail((($String$eq$(_k_0, "u32_is_zero"))) ? ((_x_42) => {
+  return "U32_BIN($0, ==, 0)";
+}) : ((_x_43) => {
+  return run_tail((($String$eq$(_k_0, "u32_cmp"))) ? ((_x_44) => {
+  return "(U32_BIN($0, >, $1) + U32_BIN($0, >=, $1))";
+}) : ((_x_45) => {
+  return run_tail((($String$eq$(_k_0, "u32_to_f32"))) ? ((_x_46) => {
+  return "f32_rewrap((f32)(u32)($0))";
+}) : ((_x_47) => {
+  return run_tail((($String$eq$(_k_0, "u32_to_nat"))) ? ((_x_48) => {
+  return "((u64)$0)";
+}) : ((_x_49) => {
+  return run_tail((($String$eq$(_k_0, "u32_from_nat"))) ? ((_x_50) => {
+  return "((u64)(u32)($0))";
+}) : ((_x_51) => {
+  return run_tail((($String$eq$(_k_0, "f32_add"))) ? ((_x_52) => {
+  return "f32_rewrap(f32_unbox($0) + f32_unbox($1))";
+}) : ((_x_53) => {
+  return run_tail((($String$eq$(_k_0, "f32_sub"))) ? ((_x_54) => {
+  return "f32_rewrap(f32_unbox($0) - f32_unbox($1))";
+}) : ((_x_55) => {
+  return run_tail((($String$eq$(_k_0, "f32_mul"))) ? ((_x_56) => {
+  return "f32_rewrap(f32_unbox($0) * f32_unbox($1))";
+}) : ((_x_57) => {
+  return run_tail((($String$eq$(_k_0, "f32_div"))) ? ((_x_58) => {
+  return "f32_rewrap(f32_unbox($0) / f32_unbox($1))";
+}) : ((_x_59) => {
+  return run_tail((($String$eq$(_k_0, "f32_is_eq"))) ? ((_x_60) => {
+  return "((u64)(f32_unbox($0) == f32_unbox($1)))";
+}) : ((_x_61) => {
+  return run_tail((($String$eq$(_k_0, "f32_is_ne"))) ? ((_x_62) => {
+  return "((u64)(f32_unbox($0) != f32_unbox($1)))";
+}) : ((_x_63) => {
+  return run_tail((($String$eq$(_k_0, "f32_is_lt"))) ? ((_x_64) => {
+  return "((u64)(f32_unbox($0) < f32_unbox($1)))";
+}) : ((_x_65) => {
+  return run_tail((($String$eq$(_k_0, "f32_is_le"))) ? ((_x_66) => {
+  return "((u64)(f32_unbox($0) <= f32_unbox($1)))";
+}) : ((_x_67) => {
+  return run_tail((($String$eq$(_k_0, "f32_is_gt"))) ? ((_x_68) => {
+  return "((u64)(f32_unbox($0) > f32_unbox($1)))";
+}) : ((_x_69) => {
+  return run_tail((($String$eq$(_k_0, "f32_is_ge"))) ? ((_x_70) => {
+  return "((u64)(f32_unbox($0) >= f32_unbox($1)))";
+}) : ((_x_71) => {
+  return run_tail((($String$eq$(_k_0, "f32_sqrt"))) ? ((_x_72) => {
+  return "f32_rewrap((f32)sqrt(f32_unbox($0)))";
+}) : ((_x_73) => {
+  return run_tail((($String$eq$(_k_0, "f32_exp"))) ? ((_x_74) => {
+  return "f32_rewrap((f32)exp(f32_unbox($0)))";
+}) : ((_x_75) => {
+  return run_tail((($String$eq$(_k_0, "f32_log"))) ? ((_x_76) => {
+  return "f32_rewrap((f32)log(f32_unbox($0)))";
+}) : ((_x_77) => {
+  return run_tail((($String$eq$(_k_0, "f32_log2"))) ? ((_x_78) => {
+  return "f32_rewrap((f32)log2(f32_unbox($0)))";
+}) : ((_x_79) => {
+  return run_tail((($String$eq$(_k_0, "f32_log10"))) ? ((_x_80) => {
+  return "f32_rewrap((f32)log10(f32_unbox($0)))";
+}) : ((_x_81) => {
+  return run_tail((($String$eq$(_k_0, "f32_sin"))) ? ((_x_82) => {
+  return "f32_rewrap((f32)sin(f32_unbox($0)))";
+}) : ((_x_83) => {
+  return run_tail((($String$eq$(_k_0, "f32_cos"))) ? ((_x_84) => {
+  return "f32_rewrap((f32)cos(f32_unbox($0)))";
+}) : ((_x_85) => {
+  return run_tail((($String$eq$(_k_0, "f32_tan"))) ? ((_x_86) => {
+  return "f32_rewrap((f32)tan(f32_unbox($0)))";
+}) : ((_x_87) => {
+  return run_tail((($String$eq$(_k_0, "f32_asin"))) ? ((_x_88) => {
+  return "f32_rewrap((f32)asin(f32_unbox($0)))";
+}) : ((_x_89) => {
+  return run_tail((($String$eq$(_k_0, "f32_acos"))) ? ((_x_90) => {
+  return "f32_rewrap((f32)acos(f32_unbox($0)))";
+}) : ((_x_91) => {
+  return run_tail((($String$eq$(_k_0, "f32_atan"))) ? ((_x_92) => {
+  return "f32_rewrap((f32)atan(f32_unbox($0)))";
+}) : ((_x_93) => {
+  return run_tail((($String$eq$(_k_0, "f32_sinh"))) ? ((_x_94) => {
+  return "f32_rewrap((f32)sinh(f32_unbox($0)))";
+}) : ((_x_95) => {
+  return run_tail((($String$eq$(_k_0, "f32_cosh"))) ? ((_x_96) => {
+  return "f32_rewrap((f32)cosh(f32_unbox($0)))";
+}) : ((_x_97) => {
+  return run_tail((($String$eq$(_k_0, "f32_tanh"))) ? ((_x_98) => {
+  return "f32_rewrap((f32)tanh(f32_unbox($0)))";
+}) : ((_x_99) => {
+  return run_tail((($String$eq$(_k_0, "f32_floor"))) ? ((_x_100) => {
+  return "f32_rewrap((f32)floor(f32_unbox($0)))";
+}) : ((_x_101) => {
+  return run_tail((($String$eq$(_k_0, "f32_ceil"))) ? ((_x_102) => {
+  return "f32_rewrap((f32)ceil(f32_unbox($0)))";
+}) : ((_x_103) => {
+  return run_tail((($String$eq$(_k_0, "f32_trunc"))) ? ((_x_104) => {
+  return "f32_rewrap((f32)trunc(f32_unbox($0)))";
+}) : ((_x_105) => {
+  return run_tail((($String$eq$(_k_0, "f32_abs"))) ? ((_x_106) => {
+  return "f32_rewrap((f32)fabs(f32_unbox($0)))";
+}) : ((_x_107) => {
+  return run_tail((($String$eq$(_k_0, "f32_pow"))) ? ((_x_108) => {
+  return "f32_rewrap((f32)pow(f32_unbox($0), f32_unbox($1)))";
+}) : ((_x_109) => {
+  return run_tail((($String$eq$(_k_0, "f32_atan2"))) ? ((_x_110) => {
+  return "f32_rewrap((f32)atan2(f32_unbox($0), f32_unbox($1)))";
+}) : ((_x_111) => {
+  return run_tail((($String$eq$(_k_0, "f32_mod"))) ? ((_x_112) => {
+  return "f32_rewrap((f32)fmod(f32_unbox($0), f32_unbox($1)))";
+}) : ((_x_113) => {
+  return run_tail((($String$eq$(_k_0, "f32_neg"))) ? ((_x_114) => {
+  return "f32_rewrap(-f32_unbox($0))";
+}) : ((_x_115) => {
+  return run_tail((($String$eq$(_k_0, "f32_to_u32"))) ? ((_x_116) => {
+  return "f32_to_u32($0)";
+}) : ((_x_117) => {
+  return run_tail((($String$eq$(_k_0, "f32_bits"))) ? ((_x_118) => {
+  return "$0";
+}) : ((_x_119) => {
+  return run_tail((($String$eq$(_k_0, "f32_show"))) ? ((_x_120) => {
+  return "f32_show(e, $0)";
+}) : ((_x_121) => {
+  return run_tail((($String$eq$(_k_0, "f32_read"))) ? ((_x_122) => {
+  return "f32_read(e, $0)";
+}) : ((_x_123) => {
+  return run_tail((($String$eq$(_k_0, "nat_add"))) ? ((_x_124) => {
+  return "nat_chk(e, $0 + $1)";
+}) : ((_x_125) => {
+  return run_tail((($String$eq$(_k_0, "nat_sub"))) ? ((_x_126) => {
+  return "($0 < $1 ? 0 : $0 - $1)";
+}) : ((_x_127) => {
+  return run_tail((($String$eq$(_k_0, "nat_mul"))) ? ((_x_128) => {
+  return "nat_mul(e, $0, $1)";
+}) : ((_x_129) => {
+  return run_tail((($String$eq$(_k_0, "nat_double"))) ? ((_x_130) => {
+  return "nat_chk(e, $0 + $0)";
+}) : ((_x_131) => {
+  return run_tail((($String$eq$(_k_0, "nat_cmp"))) ? ((_x_132) => {
+  return "(($0 > $1) + ($0 >= $1))";
+}) : ((_x_133) => {
+  return run_tail((($String$eq$(_k_0, "nat_is_lt"))) ? ((_x_134) => {
+  return "($0 < $1)";
+}) : ((_x_135) => {
+  return run_tail((($String$eq$(_k_0, "bool_or"))) ? ((_x_136) => {
+  return "(native_bool($0) | native_bool($1))";
+}) : ((_x_137) => {
+  return run_tail((($String$eq$(_k_0, "bool_xor"))) ? ((_x_138) => {
+  return "(native_bool($0) ^ native_bool($1))";
+}) : ((_x_139) => {
+  return "";
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $nc_array_known$(_k_0) {
+  const _x_0 = run_loop($nc_atomic$(_k_0));
+  const _x_1 = (_x_0 !== 0);
+  const _x_2 = ($String$eq$(_k_0, "array_new"));
+  const _x_3 = (_x_1 || _x_2);
+  const _x_4 = ($String$eq$(_k_0, "array_get"));
+  const _x_5 = (_x_3 || _x_4);
+  const _x_6 = ($String$eq$(_k_0, "array_set"));
+  const _x_7 = (_x_5 || _x_6);
+  const _x_8 = ($String$eq$(_k_0, "array_swap"));
+  const _x_9 = (_x_7 || _x_8);
+  const _x_10 = ($String$eq$(_k_0, "array_size"));
+  const _x_11 = (_x_9 || _x_10);
+  const _x_12 = ($String$eq$(_k_0, "array_clone"));
+  return (_x_11 || _x_12);
+}
+
+function $Char$to_upper$(_c_0) {
+  const _x_0 = ($Bool$to_u32$(($Char$is_lower$(_c_0))));
+  const _x_1 = _c_0.codePointAt(0);
+  const _x_2 = (Math.imul(_x_0, 32) >>> 0);
+  return char_new(((_x_1 - _x_2) >>> 0));
+}
+
 function $Char$is_alpha$(_c_0) {
   const _x_0 = ($Char$is_upper$(_c_0));
   const _x_1 = ($Char$is_lower$(_c_0));
@@ -11124,13 +11168,6 @@ function $Char$is_digit$(_c_0) {
   const _x_0 = _c_0.codePointAt(0);
   const _x_1 = _c_0.codePointAt(0);
   return $Bool$and$((_x_0 >= 48), (_x_1 <= 57));
-}
-
-function $Char$to_upper$(_c_0) {
-  const _x_0 = ($Bool$to_u32$(($Char$is_lower$(_c_0))));
-  const _x_1 = _c_0.codePointAt(0);
-  const _x_2 = (Math.imul(_x_0, 32) >>> 0);
-  return char_new(((_x_1 - _x_2) >>> 0));
 }
 
 function $nc_ctor_decode$(_rest_0, _acc_0, _digits_0, _out_0, _original_0) {
@@ -13696,6 +13733,46 @@ function $nc_ctor_payload$(_children_0) {
   }
 }
 
+function $nc_atomic$(_k_0) {
+  return run_tail((($String$eq$(_k_0, "array_atomic_add"))) ? ((_x_0) => {
+  return 1;
+}) : ((_x_1) => {
+  return run_tail((($String$eq$(_k_0, "array_atomic_min"))) ? ((_x_2) => {
+  return 2;
+}) : ((_x_3) => {
+  return run_tail((($String$eq$(_k_0, "array_atomic_max"))) ? ((_x_4) => {
+  return 3;
+}) : ((_x_5) => {
+  return run_tail((($String$eq$(_k_0, "array_atomic_and"))) ? ((_x_6) => {
+  return 4;
+}) : ((_x_7) => {
+  return run_tail((($String$eq$(_k_0, "array_atomic_or"))) ? ((_x_8) => {
+  return 5;
+}) : ((_x_9) => {
+  return run_tail((($String$eq$(_k_0, "array_atomic_xor"))) ? ((_x_10) => {
+  return 6;
+}) : ((_x_11) => {
+  return run_tail((($String$eq$(_k_0, "array_atomic_exch"))) ? ((_x_12) => {
+  return 7;
+}) : ((_x_13) => {
+  return run_tail((($String$eq$(_k_0, "array_atomic_cas"))) ? ((_x_14) => {
+  return 8;
+}) : ((_x_15) => {
+  return run_tail((($String$eq$(_k_0, "array_atomic_fadd"))) ? ((_x_16) => {
+  return 9;
+}) : ((_x_17) => {
+  return 0;
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
 function $nt_replace$(_s_0, _key_0, _value_0) {
   return $nt_replace_go$(_s_0, _key_0, _value_0, "");
 }
@@ -13770,7 +13847,7 @@ function $nq_signature_cons$(_d_0, _rest_0) {
 function $nq_signature_def$(_book_0, _name_0) {
   const _d_0 = run_loop($lookup$(_book_0, _name_0));
   const _x_0 = ($nc_foreign$(_d_0));
-  const _x_1 = ($nc_native_def$(_d_0));
+  const _x_1 = run_loop($nc_native_def$(_d_0));
   return run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($Bool$not$((_x_0 || _x_1)))))) ? ((_x_2) => {
   return $nq_signature_user$(_book_0, _name_0, _d_0);
 }) : ((_x_3) => {
@@ -27869,7 +27946,7 @@ function $nc_apply_code$(_ws_0, _n_0) {
 
 function $nq_call$(_book_0, _t_0, _env_0, _n_0, _target_0) {
   const _info_0 = run_loop($nq_info$(_target_0, ($nm$(_t_0))));
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$not$(($nc_native_def$(run_loop($lookup$(_book_0, ($nm$(_t_0)))))))), ($String$eq$(($tg$(($dv$(_info_0)))), "NQSig")))), ($nq_args_fit$(($ks$(($dv$(_info_0)))), ($ks$(_t_0))))))) ? ((_x_0) => {
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$not$(run_loop($nc_native_def$(run_loop($lookup$(_book_0, ($nm$(_t_0)))))))), ($String$eq$(($tg$(($dv$(_info_0)))), "NQSig")))), ($nq_args_fit$(($ks$(($dv$(_info_0)))), ($ks$(_t_0))))))) ? ((_x_0) => {
   return $nf_call_local$(_book_0, ($nm$(($dv$(_info_0)))), ($nq_arg_words$(($ks$(($dv$(_info_0)))), ($ks$(_t_0)), _env_0)), _n_0, _target_0);
 }) : ((_x_1) => {
   return run_tail((($nq_has_bundle$(($ks$(_t_0))))) ? ((_x_2) => {
@@ -28018,7 +28095,7 @@ function $no_route_schema$(_book_0, _name_0, _entry_0, _old_0, _schema_0) {
 
 function $no_schema$(_book_0, _d_0, _firstFresh_0) {
   const _x_0 = ($nc_foreign$(_d_0));
-  const _x_1 = ($nc_native_def$(_d_0));
+  const _x_1 = run_loop($nc_native_def$(_d_0));
   const _x_2 = run_loop($nd_arity$(_book_0, ($dn$(_d_0))));
   return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($Bool$not$((_x_0 || _x_1))))), (_x_2 <= 4))), (_firstFresh_0 < 2147483600)))) ? ((_x_3) => {
   return $nol_params$(_book_0, ($dt$(_d_0)), {$: "Nil"}, {$: "Nil"}, {$: "Nil"}, {$: "Nil"}, _firstFresh_0, 32, run_loop($nd_arity$(_book_0, ($dn$(_d_0)))));
@@ -31096,15 +31173,15 @@ function $nc_lambda$(_book_0, _t_0, _env_0, _n_0) {
 }
 
 function $nd_scalar_call$(_book_0, _t_0) {
-  const _head_0 = run_loop($nd_head$(_t_0));
-  const _name_0 = ($nc_primitive_name$(($nm$(_head_0))));
-  const _x_0 = ($qt$(_head_0));
-  const _x_1 = ($terms_len$(run_loop($nd_args$(_t_0, {$: "Nil"}))));
-  const _x_2 = run_loop($nc_primitive_arity$(_name_0));
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_t_0)), "App")), ($String$eq$(($tg$(_head_0)), "Ref")))), ($Bool$not$((_x_0 === 3))))), ($nc_native_def$(run_loop($lookup$(_book_0, ($nm$(_head_0)))))))), ($nd_scalar_known$(_name_0)))), (_x_1 === _x_2)))) ? ((_x_3) => {
-  return _name_0;
-}) : ((_x_4) => {
+  const _name_0 = run_loop($nd_native_call$(_book_0, _t_0));
+  return run_tail((($String$eq$(_name_0, ""))) ? ((_x_0) => {
   return "";
+}) : ((_x_1) => {
+  return run_tail((($nd_scalar_known$(_name_0))) ? ((_x_2) => {
+  return _name_0;
+}) : ((_x_3) => {
+  return "";
+}), {$: "Unit"});
 }), {$: "Unit"});
 }
 
@@ -31384,7 +31461,7 @@ function $nq_arg_words$(_shapes_0, _args_0, _env_0) {
 
 function $nf_call$(_book_0, _name_0, _words_0, _n_0, _target_0) {
   const _d_0 = run_loop($lookup$(_book_0, _name_0));
-  return run_tail((($nc_native_def$(_d_0))) ? ((_x_0) => {
+  return run_tail((run_loop($nc_native_def$(_d_0))) ? ((_x_0) => {
   return $nq_intrinsic$(($nc_primitive_name$(_name_0)), _words_0, _n_0, _target_0);
 }) : ((_x_1) => {
   return run_tail((($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($Bool$not$(($nc_foreign$(_d_0))))))) ? ((_x_2) => {
@@ -34570,6 +34647,14 @@ function $nc_words$(_env_0) {
   }
 }
 
+function $nd_native_call$(_book_0, _t_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "App"))) ? ((_x_0) => {
+  return $nd_native_head$(_book_0, _t_0, run_loop($nd_head$(_t_0)));
+}) : ((_x_1) => {
+  return "";
+}), {$: "Unit"});
+}
+
 function $nd_scalar_known$(_name_0) {
   const _x_0 = ($String$eq$(_name_0, "f32_show"));
   const _x_1 = ($String$eq$(_name_0, "f32_read"));
@@ -37603,8 +37688,21 @@ function $ne_node$(_prefix_0, _alloc_0, _ws_0, _n_0, _seal_0) {
   return {$: "N_Emitted", "code": ("u64 " + _x_4), "value": _name_0, "fresh": ((_n_0 + 1) >>> 0)};
 }
 
+function $nd_native_head$(_book_0, _t_0, _head_0) {
+  const _x_0 = ($qt$(_head_0));
+  return run_tail((($Bool$and$(($String$eq$(($tg$(_head_0)), "Ref")), ($Bool$not$((_x_0 === 3)))))) ? ((_x_1) => {
+  return run_tail((run_loop($nc_native_def$(run_loop($lookup$(_book_0, ($nm$(_head_0))))))) ? ((_x_2) => {
+  return $nd_native_saturated$(_t_0, ($nc_primitive_name$(($nm$(_head_0)))));
+}) : ((_x_3) => {
+  return "";
+}), {$: "Unit"});
+}) : ((_x_4) => {
+  return "";
+}), {$: "Unit"});
+}
+
 function $nd_partial_def$(_book_0, _t_0, _head_0, _args_0, _env_0, _n_0, _target_0, _arity_0, _d_0) {
-  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($Bool$not$(($nc_native_def$(_d_0)))))), ($Bool$not$(($nc_foreign$(_d_0))))))) ? ((_x_0) => {
+  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($Bool$not$(run_loop($nc_native_def$(_d_0)))))), ($Bool$not$(($nc_foreign$(_d_0))))))) ? ((_x_0) => {
   const _x_1 = run_loop($nd_leading$(($dv$(_d_0)), 0));
   return run_tail(((_x_1 === _arity_0)) ? ((_x_2) => {
   return $nc_lower_to$(_book_0, run_loop($nd_partial_selected$(_book_0, _head_0, _args_0, _env_0, _n_0, _arity_0, _d_0)), _env_0, ((_n_0 + _arity_0) >>> 0), _target_0);
@@ -40245,6 +40343,16 @@ function $nq_layout_leaf$(_field_0, _owner_0, _seen_0) {
   return $Bool$and$(($Bool$and$(($Bool$not$((_x_0 || _x_1))), ($Bool$not$(($nq_layout_dep$(_field_0, _seen_0)))))), ($Bool$not$(($Bool$and$(($String$eq$(($tg$(_field_0)), "ADT")), ($String$eq$(($nm$(_field_0)), ($nm$(_owner_0)))))))));
 }
 
+function $nd_native_saturated$(_t_0, _name_0) {
+  const _x_0 = ($terms_len$(run_loop($nd_args$(_t_0, {$: "Nil"}))));
+  const _x_1 = run_loop($nc_primitive_arity$(_name_0));
+  return run_tail(((_x_0 === _x_1)) ? ((_x_2) => {
+  return _name_0;
+}) : ((_x_3) => {
+  return "";
+}), {$: "Unit"});
+}
+
 function $nd_partial_selected$(_book_0, _head_0, _args_0, _env_0, _n_0, _arity_0, _d_0) {
   const _selected_0 = run_loop(run_tail(((_arity_0 < 9)) ? ((_x_0) => {
   return run_tail((run_loop($nd_comb_literal$(_args_0))) ? ((_x_1) => {
@@ -40449,17 +40557,17 @@ function $nc_let_prefix_call$(_book_0, _value_0, _body_0, _env_0, _id_0, _n_0, _
 }
 
 function $nd_prefix_call$(_book_0, _t_0) {
-  const _head_0 = run_loop($nd_head$(_t_0));
-  const _name_0 = ($nc_primitive_name$(($nm$(_head_0))));
-  const _x_0 = ($qt$(_head_0));
-  const _x_1 = ($nc_array_known$(_name_0));
-  const _x_2 = ($String$eq$(_name_0, "nat_divmod"));
-  const _x_3 = ($terms_len$(run_loop($nd_args$(_t_0, {$: "Nil"}))));
-  const _x_4 = run_loop($nc_primitive_arity$(_name_0));
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_t_0)), "App")), ($String$eq$(($tg$(_head_0)), "Ref")))), ($Bool$not$((_x_0 === 3))))), ($nc_native_def$(run_loop($lookup$(_book_0, ($nm$(_head_0)))))))), (_x_1 || _x_2))), (_x_3 === _x_4)))) ? ((_x_5) => {
-  return _name_0;
-}) : ((_x_6) => {
+  const _name_0 = run_loop($nd_native_call$(_book_0, _t_0));
+  return run_tail((($String$eq$(_name_0, ""))) ? ((_x_0) => {
   return "";
+}) : ((_x_1) => {
+  const _x_2 = ($nc_array_known$(_name_0));
+  const _x_3 = ($String$eq$(_name_0, "nat_divmod"));
+  return run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
+  return _name_0;
+}) : ((_x_5) => {
+  return "";
+}), {$: "Unit"});
 }), {$: "Unit"});
 }
 
@@ -40488,7 +40596,7 @@ function $nq_ctor_shape$(_value_0, _target_0) {
 function $nq_call_shape$(_book_0, _name_0, _args_0, _target_0) {
   const _d_0 = run_loop($lookup$(_book_0, _name_0));
   const _info_0 = run_loop($nq_info$(_target_0, _name_0));
-  return run_tail((($Bool$and$(($nc_native_def$(_d_0)), ($nq_pair_primitive$(($nc_primitive_name$(_name_0))))))) ? ((_x_0) => {
+  return run_tail((($Bool$and$(run_loop($nc_native_def$(_d_0)), ($nq_pair_primitive$(($nc_primitive_name$(_name_0))))))) ? ((_x_0) => {
   return $kt$("NQShape", "Tuple", 2, 0, {$: "Nil"});
 }) : ((_x_1) => {
   return run_tail((($Bool$and$(($String$eq$(($tg$(($dv$(_info_0)))), "NQSig")), ($nq_args_known$(($ks$(($dv$(_info_0)))), _args_0))))) ? ((_x_2) => {
@@ -45983,11 +46091,11 @@ function $noa_reference$(_ctx_0, _name_0, _args_0, _facts_0, _stack_0, _n_0, _fu
   return run_tail((($String$eq$(_name_0, ($noa_owner$(_ctx_0))))) ? ((_x_6) => {
   return $noa_recur$(_ctx_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0);
 }) : ((_x_7) => {
-  return run_tail((($Bool$and$(($nc_native_def$(_d_0)), ($nd_scalar_known$(($nc_primitive_name$(_name_0))))))) ? ((_x_8) => {
+  return run_tail((($Bool$and$(run_loop($nc_native_def$(_d_0)), ($nd_scalar_known$(($nc_primitive_name$(_name_0))))))) ? ((_x_8) => {
   return $noa_primitive$(_ctx_0, _name_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0);
 }) : ((_x_9) => {
   const _x_10 = ($nc_foreign$(_d_0));
-  const _x_11 = ($nc_native_def$(_d_0));
+  const _x_11 = run_loop($nc_native_def$(_d_0));
   const _x_12 = (_x_10 || _x_11);
   const _x_13 = ($nb_contains$(_stack_0, _name_0));
   const _x_14 = ($nt_count$(_stack_0));

@@ -10,3 +10,7 @@ non-Mat/non-scalar nodes during early word-pattern preparation.
 Hypothesis: less string allocation and repeated metadata work with complete C
 byte identity versus candidate07. All algorithms remain Bend. Exact-output
 screen, raw diagnostics and fresh B1/B2 comparisons decide retention.
+
+## Final decision
+
+The shared lazy intrinsic-call admission is retained in installed candidate12. Pattern-preparation changes are excluded with the rejected scalar-pattern prototype. The final combined safe change preserves all twelve C/binaries and selected conformance; its measured gain is 6.28% B1/1.84% B2. See final measurements for the compound result.

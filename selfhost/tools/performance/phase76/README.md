@@ -69,8 +69,13 @@ content-addressed evidence, including failed builds and controls.
 
 
 The selected-source controller is `qualify12.py`, followed by
-`qualify12-integration.py`. Both refuse reused output paths and preserve logs.
-Neither installs. The integration plan has explicit deferred release commands;
+`qualify12-integration.py`. The latter stopped at a missing C-identity metadata
+sidecar, before those targets ran. `qualify12-final.py` resumes the remaining gates
+in a fresh `compiler12-C-identity12b` directory after recording that sidecar.
+Controllers refuse reused output paths and preserve logs.
+They do not install. `decide-release.py` verifies the completed evidence;
+`install-selected.py` requires its recorded selection and verifies seven-file
+release preservation after the deferred install/smoke commands. The integration plan has explicit deferred release commands;
 run those only after reviewing completed qualification. `summarize.py` requires
 all 45 requests and exact twelve-program identities before emitting measurements.
 The paired-plan v2 gives every role its own cache-free project copy; v1 failed on

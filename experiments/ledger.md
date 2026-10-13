@@ -4302,3 +4302,18 @@ layout repairs, and bitmap sets (no measured gain). +254physical/+201code lines,
 two modules. All failures/unused plans preserved in content-addressed evidence.
 No agents or PR comments. Parity remains unachieved; next major prototype must
 address duplicated native lowering/per-node work or validated library products.
+
+
+## Phase76 native work amplification and safe admission — 2026-10-13
+
+[Design](../design/phase76/native-work-reuse.md) · [Report](../implementation/phase76/README.md).
+Install compiler12, B1`98134f59…`, genuine B2/B3`29da003b…`. Paired45:
+B1 2.93623x→2.75191x, B2 1.94374x→1.90803x TS;6.28%/1.84% less time.
+Select lazy intrinsic/call admission and representation certificates. Twelve
+C files/binaries exactPhase75/73. All selected native/raw/selfhosting/installed
+gates pass; known seven reference failures/thirteen broader API gaps remain.
+Reject general scalar-pattern compaction despite32.25%/22.20% request savings:
+Tree/Array.map regress3.66%/4.93%. Reconstruction elimination and saved-C layout
+variants fail to repair both. Full prototype/independent controls retained.
++34physical/+22code lines, unchanged131modules. No agents or PR comments.
+Parity not achieved; no default runtime regression on the twelve artifact set.

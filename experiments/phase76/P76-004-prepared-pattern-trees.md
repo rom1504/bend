@@ -13,3 +13,7 @@ candidate05. Numeric acquisition time falls about 11%; other acquisition clocks
 are much closer. These clocks are diagnostic, not balanced speed evidence.
 Genuine B2, targeted pattern/raw controls and broad runtime gates are pending.
 Do not promote merely on a smaller internal representation.
+
+## Final decision
+
+Corrected prepared rows participate in candidate08, whose larger compilation saving is real on the three-source loop but whose generated-program regressions block promotion. Removed from the production manifest; exact prototype source and all observations remain. See P76-008.

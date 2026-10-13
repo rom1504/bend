@@ -1,0 +1,336 @@
+diff --git a/selfhost/src/back/native/request.bend b/selfhost/src/back/native/request.bend
+index 407d990..c196195 100644
+--- a/selfhost/src/back/native/request.bend
++++ b/selfhost/src/back/native/request.bend
+@@ -16,7 +16,7 @@ def nr_walk(+book: List<&2, KDef>, todo: List<&2, String>, +done: List<&2, Strin
+ 
+ @unsafe
+ def nr_visit(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +facts: List<&2, KDef>, +d: KDef) -> NR_Closure:
+-  +body = nc_definition_plain(book, d, 0)
++  +body = nc_definition(book, d, 0)
+   +more = nt_choose(List<&2, KDef>, String.eq(dk(d), "Def") && Bool.not(nc_native_def(d) || nc_foreign(d)),
+     u => Con{KDef{name, "NativeErasedBody", nd_arity_plain(book, name), 1, atom("Absent"), body, Nil{}, False{}, False{}}, facts}, u => facts)
+   nr_walk(book, nt_append(String, nc_refs(body), todo), Con{name, done}, more)
+@@ -65,3 +65,281 @@ def nr_prepare_annotated(+book: List<&2, KDef>, annotated: List<&2, KDef>) -> NR
+   +bound = norm_max_book(merged)
+   +source = book_cached(merged, bound)
+   nr_prepared(source, nr_walk(source, ["main"], Nil{}, Nil{}), Some{bound})
++
++# Experimental private paired producer. The annotated source remains exact for
++# layout/scalar/sharing consumers; its erased runtime body is built alongside it.
++# This removes the later recursive erasure pass, not annotation allocation.
++type NR_FusedNode is Data:
++  NR_FusedNode{+annotated: KTerm, +erased: KTerm}
++
++type NR_FusedTerms is Data:
++  NR_FusedTerms{+annotated: List<&2, KTerm>, +erased: List<&2, KTerm>}
++
++type NR_FusedSpine is Data:
++  NR_FusedSpine{+annotated: KTerm, +erased: KTerm, +typ: KTerm}
++
++type NR_FusedBody is Data:
++  NR_FusedBody{+name: String, +body: KTerm}
++
++type NR_FusedSelected is Data:
++  NR_FusedSelected{+defs: List<&2, KDef>, +bodies: List<&2, NR_FusedBody>, +fused: U32, +ordinary: U32}
++
++law nrf_term:
++  for +e: KEnv
++  for +ctx: List<&2, KTerm>
++  for +t: KTerm
++  for +ty: KTerm
++  NR_FusedNode
++
++law nrf_node:
++  for +e: KEnv
++  for +ctx: List<&2, KTerm>
++  for +t: KTerm
++  for +ty: KTerm
++  NR_FusedNode
++
++law nrf_fields:
++  for +e: KEnv
++  for +ctx: List<&2, KTerm>
++  for +tel: KTerm
++  for +args: List<&2, KTerm>
++  NR_FusedTerms
++
++law nrf_fields_static:
++  for +e: KEnv
++  for +ctx: List<&2, KTerm>
++  for +tel: KTerm
++  for +args: List<&2, KTerm>
++  NR_FusedTerms
++
++law nrf_lets:
++  for +e: KEnv
++  for +outer: List<&2, KTerm>
++  for +ctx: List<&2, KTerm>
++  for +xs: List<&2, KTerm>
++  for +ty: KTerm
++  NR_FusedTerms
++
++law nrf_spine:
++  for +e: KEnv
++  for +ctx: List<&2, KTerm>
++  for +t: KTerm
++  NR_FusedSpine
++
++@unsafe
++def nrf_wrap(+ty: KTerm, pair: NR_FusedNode) -> NR_FusedNode:
++  match pair:
++    case NR_FusedNode{source, body}:
++      NR_FusedNode{ka_wrap(source, ty), nt_choose(KTerm, String.eq(tg(ty), "Eql"), u => atom("Rfl"), u => body)}
++
++@unsafe
++def nrf_term(e, ctx, t, ty):
++  +head = wnf(cb(e), ty)
++  nt_choose(NR_FusedNode, String.eq(tg(head), "Eql"),
++    u => NR_FusedNode{ka_wrap(ka_node(e, ctx, core_beta(t), head), head), atom("Rfl")},
++    u => nrf_wrap(head, nrf_node(e, ctx, core_beta(t), head)))
++
++# Erased arguments still need their exact source annotation, but must not build
++# an otherwise unused runtime subtree. Their parent discards the placeholder.
++@unsafe
++def nrf_argument(+e: KEnv, +ctx: List<&2, KTerm>, +arg: KTerm, +ty: KTerm, +quantity: U32) -> NR_FusedNode:
++  nt_choose(NR_FusedNode, U32.is_eq(quantity, 0),
++    u => NR_FusedNode{annotate(e, ctx, arg, ty), atom("Absent")}, u => nrf_term(e, ctx, arg, ty))
++
++@unsafe
++def nrf_ordinary(+e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +ty: KTerm) -> NR_FusedNode:
++  +source = ka_node(e, ctx, t, ty)
++  NR_FusedNode{source, nc_erase_annotated(cb(e), source, ty)}
++
++@unsafe
++def nrf_lambda_finish(+t: KTerm, +quantity: U32, pair: NR_FusedNode) -> NR_FusedNode:
++  match pair:
++    case NR_FusedNode{source, +body}:
++      +lam = k_lam(nm(t), ix(t), quantity, [source], 0, 0, False{})
++      NR_FusedNode{lam, nt_choose(KTerm, U32.is_eq(quantity, 0), u => body, u => k_rebuild(lam, nm(lam), ix(lam), qt(lam), [body], Nil{}, 0, 0))}
++
++@unsafe
++def nrf_lambda(+e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +ty: KTerm) -> NR_FusedNode:
++  +quantity = nt_choose(U32, k_quantity_present(t) && U32.is_eq(qt(t), 2) && U32.is_eq(qt(ty), 1), u => 2, u => qt(ty))
++  nrf_lambda_finish(t, quantity, nrf_term(e, ctx_bind(ctx, ix(t), qt(ty), nm(t), kid(ty, 0)), kid(t, 0), subst(kid(ty, 1), ix(ty), var(nm(t), ix(t)))))
++
++@unsafe
++def nrf_app_pair(+fty: KTerm, fn: NR_FusedNode, arg: NR_FusedNode) -> NR_FusedNode:
++  match fn, arg:
++    case NR_FusedNode{fsource, +fbody}, NR_FusedNode{asource, abody}:
++      NR_FusedNode{app(fsource, asource), nt_choose(KTerm, U32.is_eq(qt(fty), 0), u => fbody, u => app(fbody, abody))}
++
++@unsafe
++def nrf_app_plain(+e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +fty: KTerm) -> NR_FusedNode:
++  nrf_app_pair(fty, nrf_term(e, ctx, kid(t, 0), fty), nrf_argument(e, ctx, kid(t, 1), kid(fty, 0), qt(fty)))
++
++# As in ka_spine, its unannotated root stays untouched until the enclosing
++# application supplies the normalized function goal. This preserves metadata.
++@unsafe
++def nrf_spine_result(typ: KTerm, pair: NR_FusedNode) -> NR_FusedSpine:
++  match pair:
++    case NR_FusedNode{source, body}: NR_FusedSpine{source, body, typ}
++
++@unsafe
++def nrf_spine_join(+e: KEnv, +ctx: List<&2, KTerm>, +arg: KTerm, prior: NR_FusedSpine) -> NR_FusedSpine:
++  match prior:
++    case NR_FusedSpine{source, body, typ}:
++      +fty = wnf(cb(e), typ)
++      nrf_spine_result(subst(kid(fty, 1), ix(fty), arg), nrf_app_pair(fty, nrf_wrap(fty, NR_FusedNode{source, body}), nrf_argument(e, ctx, arg, kid(fty, 0), qt(fty))))
++
++@unsafe
++def nrf_spine(e, ctx, t):
++  nt_choose(NR_FusedSpine, String.eq(tg(t), "App"),
++    u => nrf_spine_join(e, ctx, kid(t, 1), nrf_spine(e, ctx, kid(t, 0))),
++    u => NR_FusedSpine{t, nc_erase(cb(e), t), ka_type(e, ctx, t)})
++
++@unsafe
++def nrf_spine_apply(+e: KEnv, +ctx: List<&2, KTerm>, +arg: KTerm, prior: NR_FusedSpine) -> NR_FusedNode:
++  match prior:
++    case NR_FusedSpine{source, body, typ}:
++      +fty = wnf(cb(e), typ)
++      nrf_app_pair(fty, nrf_wrap(fty, NR_FusedNode{source, body}), nrf_argument(e, ctx, arg, kid(fty, 0), qt(fty)))
++
++@unsafe
++def nrf_app_spine(+e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm) -> NR_FusedNode:
++  nrf_spine_apply(e, ctx, kid(t, 1), nrf_spine(e, ctx, kid(t, 0)))
++
++@unsafe
++def nrf_field_cons(+quantity: U32, first: NR_FusedNode, rest: NR_FusedTerms) -> NR_FusedTerms:
++  match first, rest:
++    case NR_FusedNode{source, body}, NR_FusedTerms{sources, +bodies}:
++      NR_FusedTerms{Con{ka_field(source, quantity), sources}, nt_choose(List<&2, KTerm>, U32.is_eq(quantity, 0), u => bodies, u => Con{body, bodies})}
++
++@unsafe
++def nrf_field_head(+e: KEnv, +ctx: List<&2, KTerm>, +tel: KTerm, +arg: KTerm, +rest: List<&2, KTerm>) -> NR_FusedTerms:
++  nrf_field_cons(qt(tel), nrf_argument(e, ctx, arg, kid(tel, 0), qt(tel)),
++    nt_choose(NR_FusedTerms, String.eq(tg(tel), "All") && core_subst_stable(kid(tel, 1)),
++      u => nrf_fields_static(e, ctx, kid(tel, 1), rest),
++      u => nrf_fields(e, ctx, subst(kid(tel, 1), ix(tel), arg), rest)))
++
++@unsafe
++def nrf_fields(e, ctx, tel, args):
++  match args:
++    case Nil{}: NR_FusedTerms{Nil{}, Nil{}}
++    case Con{arg, rest}: nrf_field_head(e, ctx, wnf(cb(e), tel), arg, rest)
++
++@unsafe
++def nrf_fields_static(e, ctx, tel, args):
++  match args:
++    case Nil{}: NR_FusedTerms{Nil{}, Nil{}}
++    case Con{+arg, +rest}:
++      nt_choose(NR_FusedTerms, String.eq(tg(tel), "All"),
++        u => nrf_field_cons(qt(tel), nrf_argument(e, ctx, arg, kid(tel, 0), qt(tel)), nrf_fields_static(e, ctx, kid(tel, 1), rest)),
++        u => nrf_fields(e, ctx, tel, args))
++
++@unsafe
++def nrf_ctor_finish(+book: List<&2, KDef>, +t: KTerm, +ty: KTerm, fields: NR_FusedTerms) -> NR_FusedNode:
++  match fields:
++    case NR_FusedTerms{sources, bodies}:
++      NR_FusedNode{kt("Ctr", nm(t), ix(t), qt(t), sources), kt("Ctr", nt_choose(String, db(lookup(book, nm(ty))), u => nm(t), u => nc_ctor_identity(book, nm(t))), ix(t), qt(t), bodies)}
++
++@unsafe
++def nrf_ctor(+e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +ty: KTerm) -> NR_FusedNode:
++  nrf_ctor_finish(cb(e), t, ty, nrf_fields(e, ctx, tele_fill(cb(e), dt(lookup(dc(lookup(cb(e), nm(ty))), nm(t))), ks(ty)), ks(t)))
++
++@unsafe
++def nrf_match_finish(+book: List<&2, KDef>, +t: KTerm, +adt: KTerm, +tel: KTerm, +arity: U32, first: NR_FusedNode, rest: NR_FusedNode) -> NR_FusedNode:
++  match first, rest:
++    case NR_FusedNode{yesSource, yesBody}, NR_FusedNode{noSource, noBody}:
++      NR_FusedNode{kt("Mat", nm(t), ix(t), qt(t), [yesSource, noSource]), kt("Mat", nt_choose(String, db(lookup(book, nm(adt))), u => nm(t), u => nc_ctor_identity(book, nm(t))), U32.inc(nc_live_count(book, tel, arity)), nh_field_mask(book, tel, arity, 0), [yesBody, noBody])}
++
++@unsafe
++def nrf_match_known(+e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +ty: KTerm, +adt: KTerm, +ctr: KDef) -> NR_FusedNode:
++  +tel = tele_fill(cb(e), dt(ctr), ks(adt))
++  nrf_match_finish(cb(e), t, adt, tel, da(ctr),
++    nrf_term(e, ctx, kid(t, 0), mat_goal(cb(e), ty, tel, da(ctr), nm(t), Nil{})),
++    nrf_term(e, ctx, mat_rest(cb(e), t, adt), all(qt(ty), nm(ty), ix(ty), KTerm{tg(adt), nm(adt), ix(adt), qt(adt), ks(adt), Con{nm(t), rm(adt)}, kb(adt), ke(adt)}, kid(ty, 1))))
++
++@unsafe
++def nrf_match(+e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +ty: KTerm, +adt: KTerm) -> NR_FusedNode:
++  nrf_match_known(e, ctx, t, ty, adt, lookup(dc(lookup(cb(e), nm(adt))), nm(t)))
++
++@unsafe
++def nrf_let_last(pair: NR_FusedNode) -> NR_FusedTerms:
++  match pair:
++    case NR_FusedNode{source, body}: NR_FusedTerms{[source], [body]}
++
++@unsafe
++def nrf_bind_cons(+binding: KTerm, first: NR_FusedNode, rest: NR_FusedTerms) -> NR_FusedTerms:
++  match first, rest:
++    case NR_FusedNode{source, body}, NR_FusedTerms{sources, bodies}:
++      NR_FusedTerms{Con{kt("Bind", nm(binding), ix(binding), qt(binding), [source]), sources}, Con{kt("Bind", nm(binding), ix(binding), qt(binding), [body]), bodies}}
++
++@unsafe
++def nrf_let_head(+e: KEnv, +outer: List<&2, KTerm>, +ctx: List<&2, KTerm>, +binding: KTerm, +rest: List<&2, KTerm>, +ty: KTerm, +vty: KTerm) -> NR_FusedTerms:
++  nrf_bind_cons(binding, nrf_term(e, outer, kid(binding, 0), vty), nrf_lets(e, outer, ctx_bind(ctx, ix(binding), qt(binding), nm(binding), vty), subst_terms(rest, ix(binding), kt("Var", nm(binding), ix(binding), 0, [kid(binding, 0)])), ty))
++
++@unsafe
++def nrf_lets(e, outer, ctx, xs, ty):
++  match xs:
++    case Nil{}: NR_FusedTerms{Nil{}, Nil{}}
++    case Con{+h, +rest}:
++      nt_choose(NR_FusedTerms, String.eq(tg(h), "Bind"),
++        u => nrf_let_head(e, outer, ctx, h, rest, ty, ka_type(e, outer, kid(h, 0))),
++        u => nrf_let_last(nrf_term(e, ctx, h, ty)))
++
++@unsafe
++def nrf_let_finish(+t: KTerm, terms: NR_FusedTerms) -> NR_FusedNode:
++  match terms:
++    case NR_FusedTerms{sources, bodies}:
++      NR_FusedNode{kt("Let", nm(t), ix(t), qt(t), sources), kt("Let", nm(t), ix(t), qt(t), bodies)}
++
++@unsafe
++def nrf_node(e, ctx, t, ty):
++  nt_choose(NR_FusedNode, core_literal(t),
++    u => nt_choose(NR_FusedNode, core_literal_type(cb(e), t, ty), v => NR_FusedNode{t, t}, v => nrf_node(e, ctx, core_literal_step(t), ty)), u =>
++  nt_choose(NR_FusedNode, String.eq(tg(t), "Lam"), u => nrf_lambda(e, ctx, t, ty), u =>
++  nt_choose(NR_FusedNode, String.eq(tg(t), "App"),
++    u => nt_choose(NR_FusedNode, ka_spine_eligible(t), v => nrf_app_spine(e, ctx, t), v => nrf_app_plain(e, ctx, t, wnf(cb(e), ka_type(e, ctx, kid(t, 0))))), u =>
++  nt_choose(NR_FusedNode, String.eq(tg(t), "Ctr"), u => nrf_ctor(e, ctx, t, ty), u =>
++  nt_choose(NR_FusedNode, String.eq(tg(t), "Mat"), u => nrf_match(e, ctx, t, ty, wnf(cb(e), kid(ty, 0))), u =>
++  nt_choose(NR_FusedNode, String.eq(tg(t), "Let"), u => nrf_let_finish(t, nrf_lets(e, ctx, ctx, ks(t), ty)),
++    u => nrf_ordinary(e, ctx, t, ty)))))))
++
++@unsafe
++def nrf_selected_cons(+d: KDef, pair: NR_FusedNode, rest: NR_FusedSelected) -> NR_FusedSelected:
++  match pair, rest:
++    case NR_FusedNode{source, body}, NR_FusedSelected{defs, bodies, fused, ordinary}:
++      NR_FusedSelected{Con{KDef{dn(d), dk(d), da(d), dx(d), dt(d), source, dc(d), db(d), du(d)}, defs}, Con{NR_FusedBody{dn(d), body}, bodies}, U32.inc(fused), ordinary}
++
++@unsafe
++def nrf_selected_plain(d: KDef, rest: NR_FusedSelected) -> NR_FusedSelected:
++  match rest:
++    case NR_FusedSelected{defs, bodies, fused, ordinary}: NR_FusedSelected{Con{d, defs}, bodies, fused, U32.inc(ordinary)}
++
++@unsafe
++def nrf_selected_defs(+book: List<&2, KDef>, defs: List<&2, KDef>, +stops: List<&2, String>) -> NR_FusedSelected:
++  match defs:
++    case Nil{}: NR_FusedSelected{Nil{}, Nil{}, 0, 0}
++    case Con{+d, +rest}:
++      nt_choose(NR_FusedSelected, has_name(stops, dn(d)) || String.eq(tg(dv(d)), "Absent") || String.eq(tg(dv(d)), "Foreign") || U32.is_gt(dx(d), 0),
++        u => nrf_selected_plain(d, nrf_selected_defs(book, rest, stops)),
++        u => nrf_selected_cons(d, nrf_term(KEnv{kw_initial(book), dn(d), ref(dn(d)), 0, Nil{}, du(d), 0}, Nil{}, dv(d), dt(d)), nrf_selected_defs(book, rest, stops)))
++
++@unsafe
++def nr_fuse_selected(+book: List<&2, KDef>, selected: List<&2, KDef>, stops: List<&2, String>) -> NR_FusedSelected:
++  nrf_selected_defs(book_context(book), selected, stops)
++
++# Transport the private producer's bodies into the existing request cache. This
++# index carries no checked permission; source/layout checks remain unchanged.
++@unsafe
++def nrf_body_facts(bodies: List<&2, NR_FusedBody>) -> List<&2, KDef>:
++  match bodies:
++    case Nil{}: Nil{}
++    case Con{NR_FusedBody{name, body}, rest}:
++      Con{KDef{name, "NativeErasedBody", 0, 0, atom("Absent"), body, Nil{}, False{}, False{}}, nrf_body_facts(rest)}
++
++@unsafe
++def nr_prepare_fused(+book: List<&2, KDef>, selected: NR_FusedSelected) -> NR_Request:
++  match selected:
++    case NR_FusedSelected{defs, bodies, fused, ordinary}:
++      +merged = nc_context_defs(book, nc_context_index(defs))
++      +bound = norm_max_book(merged)
++      +source = book_cached(merged, bound)
++      +prepared = ns_attach_book(source, nrf_body_facts(bodies), 0, Nil{})
++      nr_prepared(source, nr_walk(prepared, ["main"], Nil{}, Nil{}), Some{bound})
+diff --git a/selfhost/tools/typed-driver.mjs b/selfhost/tools/typed-driver.mjs
+index 539c62a..5ce70cf 100644
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -114,7 +114,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
+   if(files.includes('src/back/native/book.bend')) {
+     exports.push('nc_compile','nc_foreign_paths');
+     if(files.includes('src/back/native/scalar-array.bend'))exports.push('nc_compile_checked');
+-    if(files.includes('src/back/native/request.bend'))exports.push('nr_prepare','nr_compile','nr_compile_prepared','ne_runtime_prepare','nr_prepare_annotated');
++    if(files.includes('src/back/native/request.bend'))exports.push('nr_prepare','nr_compile','nr_compile_prepared','ne_runtime_prepare','nr_prepare_annotated','nr_fuse_selected','nr_prepare_fused');
+     if(fs.readFileSync(path.join(project,'src/back/native/book.bend'),'utf8').includes('nc_annotation_stops('))exports.push('nc_annotation_stops','nc_annotated_context');
+   }
+   if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source','nc_foreign_scope');
+@@ -893,11 +893,15 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
+       if(error)return {status:'error',phase,diagnostic:error.startsWith('Error:')?error:'Error: '+error,exitCode:1,checked:true};
+     }
+     trace('annotate book');
+-    let layoutDefs,layoutStops,directPlan;
++    let layoutDefs,layoutStops,directPlan,fusedNative;
+     if(mode==='native'&&api.nc_annotation_stops&&api.nc_annotated_context&&api.reach_book&&api.annotate_selected) {
+       const stops=api.nc_annotation_stops(contextBook);
+       const selected=api.reach_book(contextBook,list(['main']),stops);
+-      layoutDefs=api.annotate_selected(contextBook,selected,stops);layoutStops=stops;
++      if(ownedApi&&typeof api.nr_fuse_selected==='function'&&typeof api.nr_prepare_fused==='function') {
++        fusedNative=api.nr_fuse_selected(contextBook,selected,stops);
++        layoutDefs=fusedNative.defs;
++      } else layoutDefs=api.annotate_selected(contextBook,selected,stops);
++      layoutStops=stops;
+       if(!ownedApi||typeof api.nr_prepare_annotated!=='function')book=api.nc_annotated_context(contextBook,layoutDefs);
+     } else if(selectedEmission){
+       const products=usedPreparedWorld&&backend==='direct'&&baseAnnotationApis(api)?readBaseAnnotations(api,info,cached,graph.prefixLoad,book,stops):null;
+@@ -923,7 +927,8 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
+     if(mode==='native') {
+       if(!api.nc_compile)return {status:'unsupported',phase,reason:'Native emitter was not bootstrapped.',checked:true};
+       trace('collect native foreign paths');
+-      const nativePlan=ownedApi&&layoutDefs&&typeof api.nr_prepare_annotated==='function'?api.nr_prepare_annotated(contextBook,layoutDefs):
++      const nativePlan=ownedApi&&fusedNative?api.nr_prepare_fused(contextBook,fusedNative):
++        ownedApi&&layoutDefs&&typeof api.nr_prepare_annotated==='function'?api.nr_prepare_annotated(contextBook,layoutDefs):
+         ownedApi&&typeof api.nr_prepare==='function'&&typeof api.nr_compile==='function'?api.nr_prepare(book):null;
+       if(nativePlan)book=nativePlan.source;
+       const paths=nativePlan?array(nativePlan.paths):api.nc_foreign_paths?array(api.nc_foreign_paths(book)):graph.foreign.filter(f=>path.extname(f.path)==='.c').map(f=>f.path);

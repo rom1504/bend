@@ -1,0 +1,71 @@
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -13,6 +13,13 @@
+   match target:
+     case NC_Scheduler{}: True{}
+     case _: False{}
++
++# Failed private workers are never emitted or retried. Keep their identity and
++# exact first refusal, but stop constructing siblings and discarded parent text.
++# Scheduler lowering retains its historical complete result and diagnostics.
++@unsafe
++def nf_failed(+target: NC_Target, +code: NC_Code) -> Bool:
++  Bool.not(nf_scheduler(target)) && Bool.not(String.eq(nc_error(code), ""))
+ 
+ @unsafe
+ def nf_return(+word: String, +n: U32, +target: NC_Target) -> NC_Code:
+@@ -35,7 +42,9 @@
+   +rest = nc_lower_partition(book, body, U32.inc(n), target, nc_partition_uses(List.append(&2, NC_Binding, nc_live_uses(env, bodyUses), [nk_binding(id, value, env)]), bodyUses))
+   +valueEnv = nc_live_env(env, value)
+   +val = nc_lower_live_to(book, value, valueEnv, nc_fresh(rest), nf_local(target, word, join))
+-  NC_Code{nc_keep_uses(valueEnv, bodyUses) ++ "Term " ++ word ++ ";\n{\n" ++ nc_body(val) ++ "}\n" ++ join ++ ":;\nif (!seq && err_seen(e.mem)) { return 0; }\n" ++ nc_body(rest), nt_append(N_Segment, nc_segs(val), nc_segs(rest)), nc_fresh(val), nc_first_error(val, rest), List.append(&2, String, nc_calls(val), List.append(&2, String, nc_calls(rest), Nil{}))}
++  nt_choose(NC_Code, nf_failed(target, val), u => val, u =>
++    nt_choose(NC_Code, nf_failed(target, rest), u => rest, u =>
++      NC_Code{nc_keep_uses(valueEnv, bodyUses) ++ "Term " ++ word ++ ";\n{\n" ++ nc_body(val) ++ "}\n" ++ join ++ ":;\nif (!seq && err_seen(e.mem)) { return 0; }\n" ++ nc_body(rest), nt_append(N_Segment, nc_segs(val), nc_segs(rest)), nc_fresh(val), nc_first_error(val, rest), List.append(&2, String, nc_calls(val), List.append(&2, String, nc_calls(rest), Nil{}))}))
+ 
+ @unsafe
+ def nf_lets(+book: List<&2, KDef>, +xs: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+--- a/selfhost/src/back/native/bridge.bend
++++ b/selfhost/src/back/native/bridge.bend
+@@ -490,9 +490,15 @@
+   +word = nc_word(ix(arg), env)
+   +count = nt_choose(U32, U32.is_eq(ix(mat), 0), u => nc_field_count(book, nm(mat)), u => U32.sub(ix(mat), 1))
+   +hit = nc_lower_to(book, nd_reapply(nc_field_apps(kid(mat, 0), count, 0, n), nd_match_rest(t)), List.append(&2, NC_Binding, nc_remove_env(env, ix(arg)), nc_field_env(nm(mat), word, count, 0, n, qt(mat))), U32.add(n, count), target)
++  nt_choose(NC_Code, nf_failed(target, hit), u => hit,
++    u => nc_match_apply_after_hit(book, t, env, n, target, mat, arg, word, count, hit))
++
++@unsafe
++def nc_match_apply_after_hit(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +mat: KTerm, +arg: KTerm, +word: String, +count: U32, +hit: NC_Code) -> NC_Code:
+   +miss = nc_lower_to(book, nd_reapply(app(kid(mat, 1), arg), nd_match_rest(t)), env, nc_fresh(hit), target)
+   +guard = nt_choose(String, String.eq(nm(mat), "Emit") || String.eq(nm(mat), "Halt"), u => "if (term_aux(" ++ word ++ ") != CID_EMIT && term_aux(" ++ word ++ ") != CID_HALT) { err_post(e.mem, ERR_TAGS); return 0; }\n", u => "")
+-  NC_Code{guard ++ "if (" ++ nc_condition(nm(mat), word) ++ ") {\n" ++ nc_destructure(nm(mat), word, count, n) ++ nc_body(hit) ++ "} else {\n" ++ nc_body(miss) ++ "}\n", nt_append(N_Segment, nc_segs(hit), nc_segs(miss)), nc_fresh(miss), nc_first_error(hit, miss), List.append(&2, String, nc_calls(hit), List.append(&2, String, nc_calls(miss), Nil{}))}
++  nt_choose(NC_Code, nf_failed(target, miss), u => miss, u =>
++    NC_Code{guard ++ "if (" ++ nc_condition(nm(mat), word) ++ ") {\n" ++ nc_destructure(nm(mat), word, count, n) ++ nc_body(hit) ++ "} else {\n" ++ nc_body(miss) ++ "}\n", nt_append(N_Segment, nc_segs(hit), nc_segs(miss)), nc_fresh(miss), nc_first_error(hit, miss), List.append(&2, String, nc_calls(hit), List.append(&2, String, nc_calls(miss), Nil{}))})
+ 
+ @unsafe
+ def nc_match(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32) -> NC_Code:
+--- a/selfhost/src/back/native/product.bend
++++ b/selfhost/src/back/native/product.bend
+@@ -156,7 +156,9 @@
+   +bundle = kt("NQBundle", nm(shape), 0, 0, nd_entry_args(params))
+   +rest = nc_lower_to(book, subst(body, id, bundle), List.append(&2, NC_Binding, nc_live_env(env, body), params), U32.add(n, ix(shape)), target)
+   +val = nc_lower_to(book, value, nc_live_env(env, value), nc_fresh(rest), nq_local(target, nc_words(params), shape, join))
+-  NC_Code{nc_share_env(env, value, body) ++ nq_declare(nc_words(params)) ++ "{\n" ++ nc_body(val) ++ "}\n" ++ join ++ ":;\nif (!seq && err_seen(e.mem)) { return 0; }\n" ++ nc_body(rest), nt_append(N_Segment, nc_segs(val), nc_segs(rest)), nc_fresh(val), nc_first_error(val, rest), List.append(&2, String, nc_calls(val), List.append(&2, String, nc_calls(rest), Nil{}))}
++  nt_choose(NC_Code, nf_failed(target, val), u => val, u =>
++    nt_choose(NC_Code, nf_failed(target, rest), u => rest, u =>
++      NC_Code{nc_share_env(env, value, body) ++ nq_declare(nc_words(params)) ++ "{\n" ++ nc_body(val) ++ "}\n" ++ join ++ ":;\nif (!seq && err_seen(e.mem)) { return 0; }\n" ++ nc_body(rest), nt_append(N_Segment, nc_segs(val), nc_segs(rest)), nc_fresh(val), nc_first_error(val, rest), List.append(&2, String, nc_calls(val), List.append(&2, String, nc_calls(rest), Nil{}))}))
+ 
+ @unsafe
+ def nq_bind_choose(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +target: NC_Target) -> NC_Code:
+--- a/selfhost/src/back/native/word-pattern.bend
++++ b/selfhost/src/back/native/word-pattern.bend
+@@ -214,7 +214,8 @@
+ 
+ @unsafe
+ def nw_emit_more(+book: List<&2, KDef>, +row: KTerm, +rows: List<&2, KTerm>, +word: String, +rest: List<&2, KTerm>, +env: List<&2, NC_Binding>, +target: NC_Target, +code: NC_Code) -> NC_Code:
+-  nw_emit_join(nw_condition(word, row), code, nw_emit(book, rows, word, rest, env, nc_fresh(code), target))
++  nt_choose(NC_Code, nf_failed(target, code), u => code,
++    u => nw_emit_join(nw_condition(word, row), code, nw_emit(book, rows, word, rest, env, nc_fresh(code), target)))
+ 
+ @unsafe
+ def nw_emit_join(+condition: String, +code: NC_Code, +tail: NC_Code) -> NC_Code:

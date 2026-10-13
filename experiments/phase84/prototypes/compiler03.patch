@@ -1,0 +1,47 @@
+diff --git a/selfhost/src/driver/report.bend b/selfhost/src/driver/report.bend
+index 0c5eb15..82b2d37 100644
+--- a/selfhost/src/driver/report.bend
++++ b/selfhost/src/driver/report.bend
+@@ -154,3 +154,20 @@ def dr_cached_step(+book: List<&2, KDef>, +name: String, +rest: List<&2, String>
+     case DR_Closure{+bad, +seen}:
+       kc(List<&2, String>, bad, u => Con{name, dr_cached_names(book, rest, safe)},
+         u => dr_cached_names(book, rest, dr_mark_safe(seen, safe)))
++
++# PRIVATE ordinary-driver path. The certified Base index is already present in
++# the existing loader state. Overlay the exact freshened source suffix: parser
++# terms before freshening may still contain FGlobal, so cannot supply this query.
++# Existing public report APIs and unready source loads retain their old path.
++@unsafe
++def driver_report_prefix_data(+book: List<&2, KDef>, +load: FPrefixLoad, +state: FReadyPrefixState) -> DR_Report:
++  match load state:
++    case FPrefixLoad{trace, prefix, suffix, complete} FReadyPrefixState{names, ctors, count, ready}:
++      kc(DR_Report, complete && ready,
++        u => dr_prefix_report(book, suffix, names), u => driver_report_data(book))
++
++@unsafe
++def dr_prefix_report(+book: List<&2, KDef>, +suffix: List<&2, KDef>, +index: KDef) -> DR_Report:
++  +context: List<&2, KDef> = Con{KDef{"$kernel.cache", "BookCache", 0, 0, atom("Absent"), atom("Absent"), [f_prefix_names_extend(suffix, index)], True{}, False{}}, book}
++  +names = dr_cached_names(context, dr_own_names(book, Nil{}), missing())
++  DR_Report{dr_verdict(names), names}
+diff --git a/selfhost/tools/typed-driver.mjs b/selfhost/tools/typed-driver.mjs
+index 539c62a..77834f6 100644
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -104,6 +104,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
+   }
+   const exports=[...roots];
+   if(fs.readFileSync(path.join(project,'src/driver/report.bend'),'utf8').includes('def driver_report_data('))exports.push('driver_report_data');
++  if(fs.readFileSync(path.join(project,'src/driver/report.bend'),'utf8').includes('def driver_report_prefix_data('))exports.push('driver_report_prefix_data');
+   if(fs.readFileSync(path.join(project,'src/core/term.bend'),'utf8').includes('def compiler_term_abi('))exports.push('compiler_term_abi');
+   if(fs.readFileSync(path.join(project,'src/core/term.bend'),'utf8').includes('def compiler_span_abi('))exports.push('compiler_span_abi');
+   if(fs.existsSync(path.join(project,'src/check/specialize.bend'))) {
+@@ -852,7 +853,8 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
+     }
+     const needReport=mode==='check'||(mode==='interpreter'&&!api.driver_has_main(book))||withReport;
+     if(needReport)trace('report declarations');
+-    const reportData=needReport&&ownedApi&&typeof api.driver_report_data==='function'?api.driver_report_data(loaded.book):null;
++    const reportData=needReport&&ownedApi&&graph.prefixLoad&&cached?.frontendReadyState&&typeof api.driver_report_prefix_data==='function'?api.driver_report_prefix_data(loaded.book,graph.prefixLoad,cached.frontendReadyState):
++      needReport&&ownedApi&&typeof api.driver_report_data==='function'?api.driver_report_data(loaded.book):null;
+     const verdict=reportData?reportData.verdict:needReport&&api.driver_report?api.driver_report(loaded.book,list([])):'ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n';
+     const unsafeDefinitions=reportData?array(reportData.names):needReport&&api.driver_bad_names?array(api.driver_bad_names(loaded.book)):[];
+     const trust={typeAccepted:true,proofTrust:needReport?(unsafeDefinitions.length?'failed':'passed'):'not-assessed',unsafeDefinitions,kernelChecked:false};

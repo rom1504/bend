@@ -64,3 +64,15 @@ observer inputs stay intact. Classifiers must reject ordinary heads before
 constructing intrinsic metadata; a shared lazy admission removes duplication.
 These are cold algorithm changes, not precomputation outside the request clock.
 Do not add runtime alignment hints on an inconsistent short-run observation.
+
+## Selection after runtime evidence
+
+The scalar-pattern hypothesis succeeds at reducing compile-time work, but does
+not meet the no-runtime-regression constraint. Keep its source/controls/results
+as an unpromoted experiment, and stop speculative native alignment tuning.
+Qualify explicit short-circuit native admission and representation certificates
+independently, with exact generated C on all twelve families. No backend cache,
+new default stage or runtime flag may obscure the remaining parity deficit.
+The next large experiment should retain an immutable lowering product with
+relocatable IDs while preserving emitted code, or investigate pattern compaction
+with actual hardware counters on a suitable machine. Both remain hypotheses.

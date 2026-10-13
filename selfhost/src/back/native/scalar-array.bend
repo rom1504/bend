@@ -8,11 +8,14 @@ def ns_scalar(+book: List<&2, KDef>, +ty: KTerm) -> Bool:
 @unsafe
 def ns_array_type(+book: List<&2, KDef>, +ty: KTerm) -> Bool:
   +head = nq_layout_type(book, ty)
-  String.eq(tg(head), "ADT") && String.eq(nm(head), "Array") && db(lookup(book, "Array")) && ns_scalar(book, kid(head, 0))
+  nt_choose(Bool, String.eq(tg(head), "ADT") && String.eq(nm(head), "Array") && db(lookup(book, "Array")),
+    u => ns_scalar(book, kid(head, 0)), u => False{})
 
 @unsafe
 def ns_generic_array(+book: List<&2, KDef>, +t: KTerm) -> Bool:
-  String.eq(tg(t), "Ref") && nc_native_def(lookup(book, nm(t))) && nb_contains(["array_new", "array_get", "array_set", "array_swap", "array_size", "array_clone"], nc_primitive_name(nm(t)))
+  nt_choose(Bool, String.eq(tg(t), "Ref"),
+    u => nt_choose(Bool, nc_native_def(lookup(book, nm(t))),
+      v => nb_contains(["array_new", "array_get", "array_set", "array_swap", "array_size", "array_clone"], nc_primitive_name(nm(t))), v => False{}), u => False{})
 
 @unsafe
 def ns_array_pattern(+t: KTerm) -> Bool:
@@ -22,7 +25,7 @@ def ns_array_pattern(+t: KTerm) -> Bool:
 def ns_terms(+book: List<&2, KDef>, ts: List<&2, KTerm>) -> Bool:
   match ts:
     case Nil{}: True{}
-    case Con{h, rest}: ns_term(book, h) && ns_terms(book, rest)
+    case Con{h, rest}: nt_choose(Bool, ns_term(book, h), u => ns_terms(book, rest), u => False{})
 
 @unsafe
 def ns_annotated(+book: List<&2, KDef>, +value: KTerm, +ty: KTerm) -> Bool:
@@ -34,7 +37,7 @@ def ns_annotated(+book: List<&2, KDef>, +value: KTerm, +ty: KTerm) -> Bool:
 def ns_term(+book: List<&2, KDef>, +t: KTerm) -> Bool:
   nt_choose(Bool, String.eq(tg(t), "Ann"), u => ns_annotated(book, kid(t, 0), kid(t, 1)), u =>
   nt_choose(Bool, String.eq(tg(t), "Rwt") || ns_array_pattern(t), u => False{}, u =>
-  nt_choose(Bool, String.eq(tg(t), "App") && ns_generic_array(book, nc_unann(kid(t, 0))), u => ns_scalar(book, kid(t, 1)), u =>
+  nt_choose(Bool, nt_choose(Bool, String.eq(tg(t), "App"), v => ns_generic_array(book, nc_unann(kid(t, 0))), v => False{}), u => ns_scalar(book, kid(t, 1)), u =>
   nt_choose(Bool, ns_generic_array(book, t), u => False{}, u => ns_terms(book, ks(t))))))
 
 @unsafe
@@ -43,9 +46,9 @@ def ns_definitions(+book: List<&2, KDef>, names: List<&2, String>) -> Bool:
     case Nil{}: True{}
     case Con{name, rest}:
       +d = lookup(book, name)
-      (nc_native_def(d) || nt_choose(Bool, nc_foreign(d),
-        u => db(d) && nb_contains(["IO.args", "IO.print", "IO.now"], dn(d)),
-        u => ns_term(book, dv(d)))) && ns_definitions(book, rest)
+      nt_choose(Bool, nt_choose(Bool, nc_native_def(d), u => True{}, u => nt_choose(Bool, nc_foreign(d),
+        v => db(d) && nb_contains(["IO.args", "IO.print", "IO.now"], dn(d)),
+        v => ns_term(book, dv(d)))), u => ns_definitions(book, rest), u => False{})
 
 # The same certificate permits root-preserving observers: the current native
 # catalog and audited IO.args/print/now handlers expose no immutable-root
@@ -56,8 +59,8 @@ def ns_definitions(+book: List<&2, KDef>, names: List<&2, String>) -> Bool:
 @unsafe
 def nc_compile_checked(+book: List<&2, KDef>, runtime: String, requests: String, effects_safe: Bool) -> NC_Result:
   +names = nc_live_names(book, ["main"], Nil{})
-  +packed = effects_safe && ns_definitions(book, names)
-  +unshared = packed && ns_unshared_definitions(book, names)
+  +packed = nt_choose(Bool, effects_safe, u => ns_definitions(book, names), u => False{})
+  +unshared = nt_choose(Bool, packed, u => ns_unshared_definitions(book, names), u => False{})
   nc_compile_mode(book, ns_checked_runtime(book, runtime, packed, unshared), requests, packed)
 
 @unsafe
@@ -71,13 +74,14 @@ def ns_array_free(+book: List<&2, KDef>, +ty: KTerm) -> Bool:
   +head = nq_layout_type(book, ty)
   nt_choose(Bool, String.eq(tg(head), "Qua") || String.eq(tg(head), "Qnt"), u => True{}, u =>
   nt_choose(Bool, String.eq(tg(head), "Lam"), u => ns_array_free(book, kid(head, 0)), u =>
-    String.eq(tg(head), "ADT") && db(lookup(book, nm(head))) && nb_contains(["Nat", "U32", "F32", "Char", "Bool", "Unit", "String", "List", "Maybe", "Result", "Sigma", "Word.Nil", "Word.Con"], nm(head)) && ns_types_free(book, ks(head))))
+    nt_choose(Bool, String.eq(tg(head), "ADT") && db(lookup(book, nm(head))) && nb_contains(["Nat", "U32", "F32", "Char", "Bool", "Unit", "String", "List", "Maybe", "Result", "Sigma", "Word.Nil", "Word.Con"], nm(head)),
+      u => ns_types_free(book, ks(head)), u => False{})))
 
 @unsafe
 def ns_types_free(+book: List<&2, KDef>, ts: List<&2, KTerm>) -> Bool:
   match ts:
     case Nil{}: True{}
-    case Con{h, rest}: ns_array_free(book, h) && ns_types_free(book, rest)
+    case Con{h, rest}: nt_choose(Bool, ns_array_free(book, h), u => ns_types_free(book, rest), u => False{})
 
 @unsafe
 def ns_unshared_terms(+book: List<&2, KDef>, +body: KTerm, ts: List<&2, KTerm>) -> Bool:
@@ -98,4 +102,5 @@ def ns_unshared_definitions(+book: List<&2, KDef>, names: List<&2, String>) -> B
     case Nil{}: True{}
     case Con{name, rest}:
       +d = lookup(book, name)
-      (nc_native_def(d) || nc_foreign(d) || ns_unshared_terms(book, nc_erase(book, dv(d)), [dv(d)])) && ns_unshared_definitions(book, rest)
+      nt_choose(Bool, nt_choose(Bool, nc_native_def(d) || nc_foreign(d), u => True{}, u => ns_unshared_terms(book, nc_erase(book, dv(d)), [dv(d)])),
+        u => ns_unshared_definitions(book, rest), u => False{})

@@ -100,7 +100,7 @@ def nq_call_result(+name: String, +words: List<&2, String>, +n: U32, +target: NC
 @unsafe
 def nq_uses(+t: KTerm, +id: U32) -> U32:
   nt_choose(U32, String.eq(tg(t), "Var"), u => nt_bool(U32.is_eq(ix(t), id)), u =>
-    nt_choose(U32, String.eq(tg(t), "Mat") && U32.is_eq(terms_len(ks(t)), 2), u => U32.max(nq_uses(kid(t, 0), id), nq_uses(kid(t, 1), id)), u => nt_choose(U32, String.eq(tg(t), "NWPattern"), v => nw_uses(ks(t), id), v => nq_uses_list(ks(t), id))))
+    nt_choose(U32, String.eq(tg(t), "Mat") && U32.is_eq(terms_len(ks(t)), 2), u => U32.max(nq_uses(kid(t, 0), id), nq_uses(kid(t, 1), id)), u => nq_uses_list(ks(t), id)))
 
 @unsafe
 def nq_uses_list(ts: List<&2, KTerm>, +id: U32) -> U32:
@@ -111,7 +111,7 @@ def nq_uses_list(ts: List<&2, KTerm>, +id: U32) -> U32:
 @unsafe
 def nq_min_uses(+t: KTerm, +id: U32) -> U32:
   nt_choose(U32, String.eq(tg(t), "Var"), u => nt_bool(U32.is_eq(ix(t), id)), u =>
-    nt_choose(U32, String.eq(tg(t), "Mat") && U32.is_eq(terms_len(ks(t)), 2), u => U32.min(nq_min_uses(kid(t, 0), id), nq_min_uses(kid(t, 1), id)), u => nt_choose(U32, String.eq(tg(t), "NWPattern"), v => 0, v => nq_min_uses_list(ks(t), id))))
+    nt_choose(U32, String.eq(tg(t), "Mat") && U32.is_eq(terms_len(ks(t)), 2), u => U32.min(nq_min_uses(kid(t, 0), id), nq_min_uses(kid(t, 1), id)), u => nq_min_uses_list(ks(t), id)))
 
 @unsafe
 def nq_min_uses_list(ts: List<&2, KTerm>, +id: U32) -> U32:

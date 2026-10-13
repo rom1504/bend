@@ -31,3 +31,21 @@ candidate05 C outputs on the three sources. Candidate08 adds shared lazy call
 admission. Its checked frontend36 and 12,073 independent scalar controls pass;
 full selected gates remain pending. No production runtime or JavaScript algorithm
 change has been made. No agents or PR comments were used.
+
+
+## Selection checkpoint
+
+Candidate08's complete paired45 comparison is 1.99078x B1 / 1.51774x B2
+upstream (32.25% / 22.20% less time than the contemporaneous Phase75 baseline).
+Its complete twelve-family execution gate repeats tree +3.66% and Array.map
++4.93% regressions. It is rejected for default promotion. Scalar reconstruction
+elimination and the saved-C placement variants did not resolve both regressions.
+
+Candidate12 removes the pattern module from production and keeps only lazy
+native/call admission and representation certificates. Its checked frontend36
+and all twelve acquisitions pass; all twelve C files and binaries are exact
+Phase75/73. Genuine B2 formation and driver comparison also pass. Clean paired
+timing and final integration are running. Phase75 remains installed until review.
+The complete candidate10 prototype is retained as a verified reconstructible
+patch in `experiments/phase76/prototypes/`; no successful prototype speed is
+being represented as a default release result.

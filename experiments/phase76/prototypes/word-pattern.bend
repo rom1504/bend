@@ -145,14 +145,62 @@ def nw_condition(+word: String, +row: KTerm) -> String:
 def nw_tail(+word: String, +depth: U32, +id: U32) -> String:
   "Term v_" ++ U32.show(id) ++ " = term_pak(CID_WNIL, 0);\nfor (u32 wi = 32; wi > " ++ U32.show(depth) ++ "; wi--) {\nLoc wp = heap_alloc(e, 1);\ne.mem[wp] = ((u32)" ++ word ++ " >> (wi - 1)) & 1;\ne.mem[wp + 1] = rfc_seal(e, v_" ++ U32.show(id) ++ ");\nv_" ++ U32.show(id) ++ " = term_ctr(CID_WCON, wp);\n}\n"
 
+# Under a row's bit constraints, reconstructing its original scalar wrapper is
+# the original low 32-bit value. Keep the value; materialize an escaping Word
+# tail only if it remains used after beta substitution and this local rewrite.
+@unsafe
+def nw_prefix(+depth: U32, +value: U32, +tail: KTerm) -> KTerm:
+  nt_choose(KTerm, U32.is_eq(depth, 0), u => tail,
+    u => nw_prefix(U32.sub(depth, 1), value, nw_word(kt("NWord", U32.show(U32.and(U32.shrn(value, U32.to_nat(U32.sub(depth, 1))), 1)), 0, 0, Nil{}), tail)))
+
+@unsafe
+def nw_value(row: KTerm) -> U32:
+  nw_value_result(U32.read(nm(row)))
+
+@unsafe
+def nw_value_result(parsed: Maybe<&2, U32>) -> U32:
+  match parsed:
+    case None{}: 0
+    case Some{value}: value
+
+@unsafe
+def nw_restore(+t: KTerm, +word: KTerm, +id: U32) -> KTerm:
+  nt_choose(KTerm, String.eq(tg(t), "Ctr") && (String.eq(nm(t), "U32") || String.eq(nm(t), "F32")) && U32.is_eq(terms_len(ks(t)), 1),
+    u => nt_choose(KTerm, nw_same(kid(t, 0), word, Nil{}), v => var("", id), v => nw_restore_children(t, word, id)),
+    u => nw_restore_children(t, word, id))
+
+@unsafe
+def nw_restore_children(+t: KTerm, +word: KTerm, +id: U32) -> KTerm:
+  k_rebuild(t, nm(t), ix(t), qt(t), nw_restore_list(ks(t), word, id), rm(t), kb(t), ke(t))
+
+@unsafe
+def nw_restore_list(ts: List<&2, KTerm>, +word: KTerm, +id: U32) -> List<&2, KTerm>:
+  match ts:
+    case Nil{}: Nil{}
+    case Con{t, rest}: Con{nw_restore(t, word, id), nw_restore_list(rest, word, id)}
+
 @unsafe
 def nw_code(+book: List<&2, KDef>, +row: KTerm, +word: String, +rest: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
-  +body = kid(row, 0)
-  nt_choose(NC_Code, U32.is_eq(qt(row), 0), u => nc_lower_to(book, nd_reapply(body, rest), env, n, target), u =>
-    nt_choose(NC_Code, U32.is_eq(qt(row), 1),
-      v => nc_prepend(nw_tail(word, ix(row), nc_id(n)), nc_lower_to(book, nd_reapply(body, Con{var("", nc_id(n)), rest}), Con{nc_binding(nc_id(n)), env}, U32.inc(n), target)),
-      v => nc_prepend("Term v_" ++ U32.show(nc_id(n)) ++ " = ((u32)" ++ word ++ " >> " ++ U32.show(ix(row)) ++ ") & 1;\n" ++ nw_tail(word, U32.inc(ix(row)), nc_id(U32.inc(n))),
-        nc_lower_to(book, nd_reapply(body, Con{var("", nc_id(n)), Con{var("", nc_id(U32.inc(n))), rest}}), Con{NC_Binding{nc_id(n), "v_" ++ U32.show(nc_id(n)), N_W32{}}, Con{nc_binding(nc_id(U32.inc(n))), env}}, U32.add(n, 2), target))))
+  nt_choose(NC_Code, U32.is_eq(qt(row), 0), u => nc_lower_to(book, nd_reapply(kid(row, 0), rest), env, n, target),
+    u => nw_code_body(book, row, word, env, n, target,
+      nd_reapply(nw_restore(nd_beta(kid(row, 0), nt_choose(List<&2, KTerm>, U32.is_eq(qt(row), 1),
+        v => [var("", nc_id(U32.add(n, 2)))], v => [var("", nc_id(U32.inc(n))), var("", nc_id(U32.add(n, 2)))])),
+        nw_prefix(ix(row), nw_value(row), nt_choose(KTerm, U32.is_eq(qt(row), 1),
+          v => var("", nc_id(U32.add(n, 2))), v => nw_word(var("", nc_id(U32.inc(n))), var("", nc_id(U32.add(n, 2)))))), nc_id(n)), rest)))
+
+@unsafe
+def nw_code_body(+book: List<&2, KDef>, +row: KTerm, +word: String, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +body: KTerm) -> NC_Code:
+  +uses = nc_uses(body)
+  +bit = nc_id(U32.inc(n))
+  +tail = nc_id(U32.add(n, 2))
+  +hasBit = nc_uses_has(uses, bit)
+  +hasTail = nc_uses_has(uses, tail)
+  +bindings = nt_choose(List<&2, NC_Binding>, hasTail, u => Con{nc_binding(tail), env}, u => env)
+  +bindings = nt_choose(List<&2, NC_Binding>, hasBit, u => Con{NC_Binding{bit, "v_" ++ U32.show(bit), N_W32{}}, bindings}, u => bindings)
+  nc_prepend("Term v_" ++ U32.show(nc_id(n)) ++ " = (u32)" ++ word ++ ";\n" ++
+    nt_choose(String, hasBit, u => "Term v_" ++ U32.show(bit) ++ " = ((u32)" ++ word ++ " >> " ++ U32.show(ix(row)) ++ ") & 1;\n", u => "") ++
+    nt_choose(String, hasTail, u => nw_tail(word, U32.add(ix(row), nt_bool(U32.is_eq(qt(row), 2))), tail), u => ""),
+    nc_lower_to(book, body, Con{NC_Binding{nc_id(n), "v_" ++ U32.show(nc_id(n)), N_W32{}}, bindings}, U32.add(n, 3), target))
 
 law nw_emit:
   for +book: List<&2, KDef>

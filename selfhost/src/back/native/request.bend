@@ -38,14 +38,15 @@ def nr_unshared(+book: List<&2, KDef>, names: List<&2, String>) -> Bool:
     case Nil{}: True{}
     case Con{name, rest}:
       +d = lookup(book, name)
-      (nc_native_def(d) || nc_foreign(d) || ns_unshared_terms(book, nc_definition(book, d, 0), [dv(d)])) && nr_unshared(book, rest)
+      nt_choose(Bool, nt_choose(Bool, nc_native_def(d) || nc_foreign(d), u => True{}, u => ns_unshared_terms(book, nc_definition(book, d, 0), [dv(d)])),
+        u => nr_unshared(book, rest), u => False{})
 
 @unsafe
 def nr_compile(request: NR_Request, +runtime: String, +requests: String, +effects_safe: Bool) -> NC_Result:
   match request:
     case NR_Request{+source, +book, +names, paths, scope}:
-      +packed = effects_safe && ns_definitions(book, names)
-      +unshared = packed && nr_unshared(book, names)
+      +packed = nt_choose(Bool, effects_safe, u => ns_definitions(book, names), u => False{})
+      +unshared = nt_choose(Bool, packed, u => nr_unshared(book, names), u => False{})
       +header = ns_checked_runtime(book, runtime, packed, unshared)
       +error = nc_compile_error(source)
       nt_choose(NC_Result, String.eq(error, ""),

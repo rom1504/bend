@@ -67,3 +67,20 @@ which functions are hot, which tiers run them, where optimization fails, and
 how first/later costs compare with upstream. Rank next implementation options
 with measured scope, conditional gain estimates and effort. Parity needs24.7%
 less qualified B2 time; no single trace or pass-name budget proves that gain.
+
+## Evidence-driven extension (before execution)
+
+The first thread CPU trace observes substantial background optimization work
+competing with the JavaScript thread on CPU3. Add a small, paired two-CPU
+diagnostic: unchanged images, first request only, two rounds, same four sources
+and both roles. Interleave CPU3 control with CPU2,3 affinity. Retain every output,
+RSS and preparation boundary. This tests hardware contention with matched
+upstream conditions; it is not a new one-core compiler optimization or release.
+
+The original timeline01 captures V8 events but Node does not emit the requested
+performance.mark events. Preserve it as incomplete for request attribution.
+Timeline02 adds explicit PID/job and process.hrtime microsecond records; Node's
+tracing documentation identifies this as the same time source as trace events.
+An exact lexer-only generated-image experiment lowers four simple expression
+choices to ternaries. It owns a newly validated Base cache under its new API
+hash, stays unchecked/unreleased, and tests closure/context overhead only.

@@ -1,0 +1,555 @@
+{
+  "caution": "Observation-only generated B2 derivative. Wrappers break some compiler tail loops; counts include recursive entries. Recursive inclusive sums can exceed wall time. Use exclusive values for recursive regions; neither is a clean optimization result.",
+  "cases": {
+    "array": {
+      "requestMs": 933.5416759999999,
+      "regions": {
+        "f_context_definition": {
+          "calls": 15,
+          "inclusiveMs": 47.379528999999934,
+          "exclusiveMs": 47.379528999999934
+        },
+        "norm_max_book": {
+          "calls": 5,
+          "inclusiveMs": 25.164432999999804,
+          "exclusiveMs": 25.164432999999804
+        },
+        "book_final_fast": {
+          "calls": 3,
+          "inclusiveMs": 18.57976700000006,
+          "exclusiveMs": 18.57976700000006
+        },
+        "index_build": {
+          "calls": 2058,
+          "inclusiveMs": 2733.1443470000104,
+          "exclusiveMs": 18.64934700000049
+        },
+        "jl_checked_error": {
+          "calls": 1,
+          "inclusiveMs": 42.45622400000002,
+          "exclusiveMs": 42.315405000000055
+        },
+        "nc_ctor_prepare": {
+          "calls": 2,
+          "inclusiveMs": 2.6263810000000376,
+          "exclusiveMs": 2.6263810000000376
+        },
+        "ns_definitions": {
+          "calls": 1,
+          "inclusiveMs": 6.186069000000089,
+          "exclusiveMs": 6.186069000000089
+        },
+        "nr_unshared": {
+          "calls": 1,
+          "inclusiveMs": 24.69936100000018,
+          "exclusiveMs": 24.69936100000018
+        },
+        "ns_checked_runtime": {
+          "calls": 1,
+          "inclusiveMs": 0.9564010000001417,
+          "exclusiveMs": 0.9564010000001417
+        },
+        "nc_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 14.877759999999853,
+          "exclusiveMs": 2.4511939999999868
+        },
+        "nc_constructors": {
+          "calls": 264,
+          "inclusiveMs": 326.8174320000014,
+          "exclusiveMs": 8.960747000000083
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 37.192723000000115,
+          "exclusiveMs": 33.94535199999996
+        },
+        "nq_signatures": {
+          "calls": 66,
+          "inclusiveMs": 582.2032899999999,
+          "exclusiveMs": 34.38662700000009
+        },
+        "nf_plan": {
+          "calls": 1,
+          "inclusiveMs": 129.38770999999997,
+          "exclusiveMs": 93.66331599999967
+        },
+        "nh_macros": {
+          "calls": 1,
+          "inclusiveMs": 20.004910999999993,
+          "exclusiveMs": 20.004910999999993
+        },
+        "nc_compile_defs": {
+          "calls": 43,
+          "inclusiveMs": 755.7302700000002,
+          "exclusiveMs": 41.947542999999996
+        },
+        "no_route": {
+          "calls": 1,
+          "inclusiveMs": 20.760968999999932,
+          "exclusiveMs": 20.61380299999996
+        },
+        "ne_template_scan": {
+          "calls": 1,
+          "inclusiveMs": 53.57052399999998,
+          "exclusiveMs": 53.57052399999998
+        },
+        "ne_program": {
+          "calls": 1,
+          "inclusiveMs": 83.58300400000007,
+          "exclusiveMs": 30.012480000000096
+        },
+        "nc_finish": {
+          "calls": 1,
+          "inclusiveMs": 129.29604900000004,
+          "exclusiveMs": 18.95364399999994
+        }
+      },
+      "report": {
+        "file": "selfhost/build/phase81/regions01/runs/clean-region-array/report.json",
+        "sha256": "9bea9ec7cd004eb94340a288735dd1f06fd21bf4b7ebe1464480ee3574f6fae7",
+        "bytes": 281594
+      }
+    },
+    "numeric": {
+      "requestMs": 952.771646,
+      "regions": {
+        "f_context_definition": {
+          "calls": 11,
+          "inclusiveMs": 62.20488799999987,
+          "exclusiveMs": 62.20488799999987
+        },
+        "norm_max_book": {
+          "calls": 5,
+          "inclusiveMs": 27.00121300000012,
+          "exclusiveMs": 27.00121300000012
+        },
+        "book_final_fast": {
+          "calls": 3,
+          "inclusiveMs": 17.14260400000012,
+          "exclusiveMs": 17.14260400000012
+        },
+        "index_build": {
+          "calls": 2000,
+          "inclusiveMs": 7813.690866000002,
+          "exclusiveMs": 26.483604000000014
+        },
+        "jl_checked_error": {
+          "calls": 1,
+          "inclusiveMs": 15.099639000000025,
+          "exclusiveMs": 14.97515199999998
+        },
+        "nc_ctor_prepare": {
+          "calls": 2,
+          "inclusiveMs": 3.59737999999993,
+          "exclusiveMs": 3.59737999999993
+        },
+        "ns_definitions": {
+          "calls": 1,
+          "inclusiveMs": 6.2745149999998375,
+          "exclusiveMs": 6.2745149999998375
+        },
+        "nr_unshared": {
+          "calls": 1,
+          "inclusiveMs": 26.768789999999854,
+          "exclusiveMs": 26.768789999999854
+        },
+        "ns_checked_runtime": {
+          "calls": 1,
+          "inclusiveMs": 0.9007880000001478,
+          "exclusiveMs": 0.9007880000001478
+        },
+        "nc_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 13.880787000000055,
+          "exclusiveMs": 2.459607999999889
+        },
+        "nc_constructors": {
+          "calls": 264,
+          "inclusiveMs": 231.9117800000006,
+          "exclusiveMs": 5.145678999999973
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 35.97436799999991,
+          "exclusiveMs": 33.07566400000019
+        },
+        "nq_signatures": {
+          "calls": 65,
+          "inclusiveMs": 267.16282899999874,
+          "exclusiveMs": 31.34383099999991
+        },
+        "nf_plan": {
+          "calls": 1,
+          "inclusiveMs": 131.96961699999997,
+          "exclusiveMs": 99.36280099999999
+        },
+        "nh_macros": {
+          "calls": 1,
+          "inclusiveMs": 18.074892999999975,
+          "exclusiveMs": 18.074892999999975
+        },
+        "nc_compile_defs": {
+          "calls": 40,
+          "inclusiveMs": 714.4586180000001,
+          "exclusiveMs": 44.229744999999866
+        },
+        "no_route": {
+          "calls": 1,
+          "inclusiveMs": 22.76249400000006,
+          "exclusiveMs": 22.565728000000036
+        },
+        "ne_template_scan": {
+          "calls": 1,
+          "inclusiveMs": 58.97736899999995,
+          "exclusiveMs": 58.97736899999995
+        },
+        "ne_program": {
+          "calls": 1,
+          "inclusiveMs": 89.28287599999999,
+          "exclusiveMs": 30.305507000000034
+        },
+        "nc_finish": {
+          "calls": 1,
+          "inclusiveMs": 129.56238800000006,
+          "exclusiveMs": 15.005679999999984
+        }
+      },
+      "report": {
+        "file": "selfhost/build/phase81/regions01/runs/clean-region-numeric/report.json",
+        "sha256": "c1cc1958c8da2f7638702542d608a422c3be7da5fbac1607f218f34bac0ab596",
+        "bytes": 281601
+      }
+    },
+    "functions65": {
+      "requestMs": 641.7411770000001,
+      "regions": {
+        "f_context_definition": {
+          "calls": 66,
+          "inclusiveMs": 34.63213499999961,
+          "exclusiveMs": 34.63213499999961
+        },
+        "norm_max_book": {
+          "calls": 5,
+          "inclusiveMs": 29.405765000000088,
+          "exclusiveMs": 29.405765000000088
+        },
+        "book_final_fast": {
+          "calls": 3,
+          "inclusiveMs": 16.58382000000006,
+          "exclusiveMs": 16.58382000000006
+        },
+        "index_build": {
+          "calls": 2310,
+          "inclusiveMs": 4419.9364259999975,
+          "exclusiveMs": 16.819161000000577
+        },
+        "jl_checked_error": {
+          "calls": 1,
+          "inclusiveMs": 9.080208999999968,
+          "exclusiveMs": 8.970791999999847
+        },
+        "nc_ctor_prepare": {
+          "calls": 2,
+          "inclusiveMs": 4.474357999999938,
+          "exclusiveMs": 4.474357999999938
+        },
+        "ns_definitions": {
+          "calls": 1,
+          "inclusiveMs": 5.636273999999958,
+          "exclusiveMs": 5.636273999999958
+        },
+        "nr_unshared": {
+          "calls": 1,
+          "inclusiveMs": 2.9183989999999085,
+          "exclusiveMs": 2.9183989999999085
+        },
+        "ns_checked_runtime": {
+          "calls": 1,
+          "inclusiveMs": 0.8992729999999938,
+          "exclusiveMs": 0.8992729999999938
+        },
+        "nc_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 23.35773999999992,
+          "exclusiveMs": 2.7088129999997363
+        },
+        "nc_constructors": {
+          "calls": 264,
+          "inclusiveMs": 874.6021139999984,
+          "exclusiveMs": 23.17238700000007
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 16.300169000000096,
+          "exclusiveMs": 9.831072000000177
+        },
+        "nq_signatures": {
+          "calls": 68,
+          "inclusiveMs": 462.4606200000003,
+          "exclusiveMs": 25.111914999999954
+        },
+        "nf_plan": {
+          "calls": 1,
+          "inclusiveMs": 63.180569000000105,
+          "exclusiveMs": 37.774130000000014
+        },
+        "nh_macros": {
+          "calls": 1,
+          "inclusiveMs": 3.565650000000005,
+          "exclusiveMs": 3.565650000000005
+        },
+        "nc_compile_defs": {
+          "calls": 67,
+          "inclusiveMs": 484.6273770000014,
+          "exclusiveMs": 13.217493999999988
+        },
+        "no_route": {
+          "calls": 1,
+          "inclusiveMs": 7.716290999999956,
+          "exclusiveMs": 7.570896999999832
+        },
+        "ne_template_scan": {
+          "calls": 1,
+          "inclusiveMs": 42.45645300000001,
+          "exclusiveMs": 42.45645300000001
+        },
+        "ne_program": {
+          "calls": 1,
+          "inclusiveMs": 62.540848000000096,
+          "exclusiveMs": 20.084395000000086
+        },
+        "nc_finish": {
+          "calls": 1,
+          "inclusiveMs": 98.27647499999989,
+          "exclusiveMs": 11.013867999999775
+        }
+      },
+      "report": {
+        "file": "selfhost/build/phase81/regions01/runs/clean-region-functions65/report.json",
+        "sha256": "9695a4c76f6ae7e2cc6e968e92734d1f12ec30d4bc908c20958aa65d4068c4fe",
+        "bytes": 280263
+      }
+    },
+    "lexer": {
+      "requestMs": 1325.869286,
+      "regions": {
+        "f_context_definition": {
+          "calls": 38,
+          "inclusiveMs": 113.91183699999976,
+          "exclusiveMs": 113.91183699999976
+        },
+        "norm_max_book": {
+          "calls": 5,
+          "inclusiveMs": 50.07371900000044,
+          "exclusiveMs": 50.07371900000044
+        },
+        "book_final_fast": {
+          "calls": 3,
+          "inclusiveMs": 17.427615999999944,
+          "exclusiveMs": 17.427615999999944
+        },
+        "index_build": {
+          "calls": 2309,
+          "inclusiveMs": 2237.104962000012,
+          "exclusiveMs": 11.75503300000014
+        },
+        "jl_checked_error": {
+          "calls": 1,
+          "inclusiveMs": 15.107857999999851,
+          "exclusiveMs": 14.912076999999954
+        },
+        "nc_ctor_prepare": {
+          "calls": 2,
+          "inclusiveMs": 3.536514999999781,
+          "exclusiveMs": 3.536514999999781
+        },
+        "ns_definitions": {
+          "calls": 1,
+          "inclusiveMs": 17.332550999999967,
+          "exclusiveMs": 17.332550999999967
+        },
+        "nr_unshared": {
+          "calls": 1,
+          "inclusiveMs": 27.142027999999982,
+          "exclusiveMs": 27.142027999999982
+        },
+        "ns_checked_runtime": {
+          "calls": 1,
+          "inclusiveMs": 1.8257750000000215,
+          "exclusiveMs": 1.8257750000000215
+        },
+        "nc_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 20.60376599999995,
+          "exclusiveMs": 1.858214000000089
+        },
+        "nc_constructors": {
+          "calls": 270,
+          "inclusiveMs": 301.6705040000006,
+          "exclusiveMs": 5.116808999999876
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 40.548767000000225,
+          "exclusiveMs": 37.59403100000054
+        },
+        "nq_signatures": {
+          "calls": 87,
+          "inclusiveMs": 370.94428300000163,
+          "exclusiveMs": 28.364106999999876
+        },
+        "nf_plan": {
+          "calls": 1,
+          "inclusiveMs": 177.21978599999989,
+          "exclusiveMs": 147.34260700000004
+        },
+        "nh_macros": {
+          "calls": 1,
+          "inclusiveMs": 24.719158000000107,
+          "exclusiveMs": 24.719158000000107
+        },
+        "nc_compile_defs": {
+          "calls": 62,
+          "inclusiveMs": 1870.7161850000002,
+          "exclusiveMs": 61.80201299999999
+        },
+        "no_route": {
+          "calls": 1,
+          "inclusiveMs": 33.99022100000002,
+          "exclusiveMs": 33.779777000000195
+        },
+        "ne_template_scan": {
+          "calls": 1,
+          "inclusiveMs": 65.55863,
+          "exclusiveMs": 65.55863
+        },
+        "ne_program": {
+          "calls": 1,
+          "inclusiveMs": 142.21267100000023,
+          "exclusiveMs": 76.65404100000023
+        },
+        "nc_finish": {
+          "calls": 1,
+          "inclusiveMs": 192.86062399999992,
+          "exclusiveMs": 14.144236999999748
+        }
+      },
+      "report": {
+        "file": "selfhost/build/phase81/regions01/runs/clean-region-lexer/report.json",
+        "sha256": "b55967b96c0df852233f407ff7972c049039bdeb55a3bc05a55045569199ef47",
+        "bytes": 281565
+      }
+    },
+    "small": {
+      "requestMs": 362.635046,
+      "regions": {
+        "f_context_definition": {
+          "calls": 2,
+          "inclusiveMs": 4.495700000000056,
+          "exclusiveMs": 4.495700000000056
+        },
+        "norm_max_book": {
+          "calls": 5,
+          "inclusiveMs": 34.79496800000004,
+          "exclusiveMs": 34.79496800000004
+        },
+        "book_final_fast": {
+          "calls": 3,
+          "inclusiveMs": 18.690720000000056,
+          "exclusiveMs": 18.690720000000056
+        },
+        "index_build": {
+          "calls": 1478,
+          "inclusiveMs": 4385.157415000003,
+          "exclusiveMs": 17.363024999999766
+        },
+        "jl_checked_error": {
+          "calls": 1,
+          "inclusiveMs": 1.6295260000000553,
+          "exclusiveMs": 1.40166499999998
+        },
+        "nc_ctor_prepare": {
+          "calls": 2,
+          "inclusiveMs": 4.196333000000095,
+          "exclusiveMs": 4.196333000000095
+        },
+        "ns_definitions": {
+          "calls": 1,
+          "inclusiveMs": 1.4030660000000807,
+          "exclusiveMs": 1.4030660000000807
+        },
+        "nr_unshared": {
+          "calls": 1,
+          "inclusiveMs": 0.6874219999999696,
+          "exclusiveMs": 0.6874219999999696
+        },
+        "ns_checked_runtime": {
+          "calls": 1,
+          "inclusiveMs": 1.3395879999999352,
+          "exclusiveMs": 1.3395879999999352
+        },
+        "nc_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 31.145325999999955,
+          "exclusiveMs": 2.2332069999998794
+        },
+        "nc_constructors": {
+          "calls": 264,
+          "inclusiveMs": 532.260666999998,
+          "exclusiveMs": 12.067625999999791
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 16.902336000000105,
+          "exclusiveMs": 7.568353000000116
+        },
+        "nq_signatures": {
+          "calls": 4,
+          "inclusiveMs": 2.555705999999873,
+          "exclusiveMs": 1.255335999999943
+        },
+        "nf_plan": {
+          "calls": 1,
+          "inclusiveMs": 7.583570000000009,
+          "exclusiveMs": 6.303443000000243
+        },
+        "nh_macros": {
+          "calls": 1,
+          "inclusiveMs": 0.7985369999998966,
+          "exclusiveMs": 0.7985369999998966
+        },
+        "nc_compile_defs": {
+          "calls": 3,
+          "inclusiveMs": 2.9270890000000236,
+          "exclusiveMs": 2.066477999999961
+        },
+        "no_route": {
+          "calls": 1,
+          "inclusiveMs": 0.971176000000014,
+          "exclusiveMs": 0.9640650000001187
+        },
+        "ne_template_scan": {
+          "calls": 1,
+          "inclusiveMs": 49.12465800000018,
+          "exclusiveMs": 49.12465800000018
+        },
+        "ne_program": {
+          "calls": 1,
+          "inclusiveMs": 85.78557099999989,
+          "exclusiveMs": 36.66091299999971
+        },
+        "nc_finish": {
+          "calls": 1,
+          "inclusiveMs": 105.05382699999996,
+          "exclusiveMs": 15.53107900000009
+        }
+      },
+      "report": {
+        "file": "selfhost/build/phase81/regions01/runs/clean-region-small/report.json",
+        "sha256": "d2365dd1f8b2e2aeee0b15ba1e6fc15b667f2e015cda143bad3420de566e47f2",
+        "bytes": 280198
+      }
+    }
+  }
+}

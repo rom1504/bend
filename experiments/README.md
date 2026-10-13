@@ -5,6 +5,15 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed investigation: Phase81 compilation costs and compiler research
+
+[Report](../implementation/phase81/README.md). Fresh clean/CPU/allocation/internal
+measurements preserve77 C outputs. Fixed runtime text and repeated book metadata
+remain substantial; B1 and B2 have different allocation costs. Rank fixed-work
+removal and replacement of native representation transitions before more local
+caches. Estimates and stop gates are explicit. Phase78 remains installed; this
+investigation changes no production algorithm or qualified metric.
+
 ## Completed experiments: Phase80 checker types and body summaries
 
 [Report](../implementation/phase80/README.md). Five checked prototypes test retained

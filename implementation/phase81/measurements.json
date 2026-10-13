@@ -1,0 +1,485 @@
+{
+  "scope": "Phase81 investigation only. Unchanged Phase78 B1/B2, upstream0592662. Fresh checked C requests; imports and explicit Base excluded; backendProducts false. Quiet API is a separately labelled contract ablation. Profiles are diagnostic, never clean speedups.",
+  "cases": {
+    "numeric": {
+      "b1": {
+        "samplesMs": [
+          1153.845614,
+          1253.5785150000002,
+          1148.0099030000001
+        ],
+        "medianMs": 1153.845614,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-numeric-b1/report.json",
+            "sha256": "77251d659510f0ed926fc690a825467cd544138d997df3c1a48a65569a054197",
+            "bytes": 264475
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-numeric-b1/report.json",
+            "sha256": "bbf95437ca9af97c8ac1424cbf193586a9673a49202d97688446b8ecf3e0be37",
+            "bytes": 264482
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-numeric-b1/report.json",
+            "sha256": "aae156c1d2d67726639963fef4ec0126a0ada6fb3e77d471adec9897dec86ac1",
+            "bytes": 264474
+          }
+        ],
+        "overTS": 1.5234432231868984
+      },
+      "b2": {
+        "samplesMs": [
+          944.401229,
+          925.9662099999999,
+          1036.671397
+        ],
+        "medianMs": 944.401229,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-numeric-b2/report.json",
+            "sha256": "dbcc594c2e3b5c724ae7f54336ea8e98b26f59a5bd92c9740c6f9ef148b81915",
+            "bytes": 264475
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-numeric-b2/report.json",
+            "sha256": "4af6593788b7ba0ca64670dee86a78be57c8935ecf3de497a3e6da3598ba3766",
+            "bytes": 264482
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-numeric-b2/report.json",
+            "sha256": "f3fc5bbfb72eb6adb27826b162a37eefc55f3464d59937c197d8995a7298fed2",
+            "bytes": 264476
+          }
+        ],
+        "overTS": 1.2469100153718033
+      },
+      "typescript": {
+        "samplesMs": [
+          768.395837,
+          692.728775,
+          757.3932499999999
+        ],
+        "medianMs": 757.3932499999999,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-numeric-typescript/report.json",
+            "sha256": "93189058f8ac53851cd368fcb46ffec199f4c57626a40052e3f80cdb4c8607b3",
+            "bytes": 261187
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-numeric-typescript/report.json",
+            "sha256": "8e04d8de07bec1c151290a162ba0b90ae83f8f1738417e4c691c5f94c7d322f9",
+            "bytes": 261180
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-numeric-typescript/report.json",
+            "sha256": "6100c2b44b07c2879a25da3b43164646d6941635ca19408a9b242c6a5c2deea1",
+            "bytes": 261195
+          }
+        ]
+      }
+    },
+    "array": {
+      "b1": {
+        "samplesMs": [
+          1335.692609,
+          1326.2705139999998,
+          1234.056182
+        ],
+        "medianMs": 1326.2705139999998,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-array-b1/report.json",
+            "sha256": "69bcfce16d3a7d504838f0d9781ec93da598e54339112a3b19908400eabdf723",
+            "bytes": 264449
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-array-b1/report.json",
+            "sha256": "3dbddd0cf294d535873f4612efd2ca4fd8f15af2f5285e7db4956cd60b482ccf",
+            "bytes": 264464
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-array-b1/report.json",
+            "sha256": "34f141e09e311e09f9b19b38a85571f67caab84a59f46a19638c42db9bb59adf",
+            "bytes": 264457
+          }
+        ],
+        "overTS": 1.735387807935469
+      },
+      "b2": {
+        "samplesMs": [
+          937.613406,
+          1023.9342340000001,
+          920.2013599999999
+        ],
+        "medianMs": 937.613406,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-array-b2/report.json",
+            "sha256": "c03608c269ed0499e5df1049bfdbda04cf75146462e67f9d11573d1ae8d0083f",
+            "bytes": 264457
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-array-b2/report.json",
+            "sha256": "a5d37ed7e9f526db9eb1a50a3a1ae7bc8211911180046487175cd3eea9a22b08",
+            "bytes": 264465
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-array-b2/report.json",
+            "sha256": "cb02ba366a747b9cf541f4aca92b582e03e46c75abfcac21ba29bc614ee7a6f7",
+            "bytes": 264464
+          }
+        ],
+        "overTS": 1.2268408715669066
+      },
+      "typescript": {
+        "samplesMs": [
+          701.7996949999999,
+          764.2502199999999,
+          767.4935849999999
+        ],
+        "medianMs": 764.2502199999999,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-array-typescript/report.json",
+            "sha256": "4280ec4697d5cb624f523cde778f86d2f59b28fd9e0c8141f5fc5bea5a821571",
+            "bytes": 261184
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-array-typescript/report.json",
+            "sha256": "64829a579acb1f998349e4c83402e204215d32bf8085ec9de2715115729652a9",
+            "bytes": 261182
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-array-typescript/report.json",
+            "sha256": "dd156c2bed4055196a6af7edf65e485b998f2247fd755259127828abcf2e8af5",
+            "bytes": 261175
+          }
+        ]
+      }
+    },
+    "lexer": {
+      "b1": {
+        "samplesMs": [
+          1682.250104,
+          1678.2398970000002,
+          1681.850649
+        ],
+        "medianMs": 1681.850649,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-lexer-b1/report.json",
+            "sha256": "6b52efa15d48ce8bc399edba3e280482b0aee42132d056915b04d4e042c465cb",
+            "bytes": 264448
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-lexer-b1/report.json",
+            "sha256": "c7281d4d8b28175511b17d93c836ef6ae1d1748f9207b4cd51811c161737c9fa",
+            "bytes": 264455
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-lexer-b1/report.json",
+            "sha256": "3922e3d908f1c42c8fadbb5e6667d5aafb4ef82c95ebd7bc6011532918d94612",
+            "bytes": 264449
+          }
+        ],
+        "overTS": 1.932240564219312
+      },
+      "b2": {
+        "samplesMs": [
+          1277.428018,
+          1271.451819,
+          1323.4629530000002
+        ],
+        "medianMs": 1277.428018,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-lexer-b2/report.json",
+            "sha256": "3b928509529242d88a7cb11dc127e634963d93839f29ae5030b2039409e4eecc",
+            "bytes": 264449
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-lexer-b2/report.json",
+            "sha256": "b4db7f25e95c4135814185ca58393e9b82d970927439b8209e6fe9e1476f4d93",
+            "bytes": 264449
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-lexer-b2/report.json",
+            "sha256": "d905df35c136415755a479ff747db579c4ca1dbccdeb54c53ccf33bc0a5f9b03",
+            "bytes": 264448
+          }
+        ],
+        "overTS": 1.4676084560287717
+      },
+      "typescript": {
+        "samplesMs": [
+          863.651615,
+          883.3999130000001,
+          870.41473
+        ],
+        "medianMs": 870.41473,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-lexer-typescript/report.json",
+            "sha256": "ecfb7afcc939df986dbf570e84b93cb0f838362d29a5ff62a26f3dd776762664",
+            "bytes": 261176
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-lexer-typescript/report.json",
+            "sha256": "299a03b68fa3986fa5e591aba6630961d8b659c9fbeceda06acfb2e9cdfaa272",
+            "bytes": 261175
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-lexer-typescript/report.json",
+            "sha256": "1af2c7f58962b8332a753bf57c18ebcda8e27b71c2468f3571c3c391e445e765",
+            "bytes": 261183
+          }
+        ]
+      }
+    },
+    "small": {
+      "b1": {
+        "samplesMs": [
+          333.87876299999994,
+          334.8704899999999,
+          332.1930480000001
+        ],
+        "medianMs": 333.87876299999994,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-small-b1/report.json",
+            "sha256": "7143628dceef30852548bfecb4a97113c5e7caa890fd6ef3cd51115e2bd33d49",
+            "bytes": 263070
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-small-b1/report.json",
+            "sha256": "257d5acfa5e1fabde74b60bb3c3ac6d91504373d7a9803ceb57fad63b9a68b55",
+            "bytes": 263068
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-small-b1/report.json",
+            "sha256": "901764b6618ee3f86a86797fece86b0a5a0e6ffe8f69baf8a4cf223aa54ef112",
+            "bytes": 263068
+          }
+        ],
+        "overTS": 1.0984935763649157
+      },
+      "b2": {
+        "samplesMs": [
+          343.9771169999999,
+          343.58674600000006,
+          344.33638700000006
+        ],
+        "medianMs": 343.9771169999999,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-small-b2/report.json",
+            "sha256": "543af219238021eafbb5e637aa98dc17ed84ef457307b33d6abc7c6dfdf0a7a9",
+            "bytes": 263069
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-small-b2/report.json",
+            "sha256": "398a262ce26865afa6d96d0d6b9bfb9f65dc931a6cd65e24f32183ed5e5a64ae",
+            "bytes": 263070
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-small-b2/report.json",
+            "sha256": "ac84e603071eb47c971ab02e06ac95b5253124991318072ecaf89407f9233370",
+            "bytes": 263070
+          }
+        ],
+        "overTS": 1.1317181423755995
+      },
+      "typescript": {
+        "samplesMs": [
+          303.94238999999993,
+          304.7460980000001,
+          301.78892599999995
+        ],
+        "medianMs": 303.94238999999993,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-small-typescript/report.json",
+            "sha256": "2340ce2bdc7b0ff284ffc2eddf30799d3b600e6d06b816a8e37ffbe832540a53",
+            "bytes": 261214
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-small-typescript/report.json",
+            "sha256": "e2cbfe402fe4730ebfe07168438471cc1849093edb0fbefa406ab8dc9e9ba8db",
+            "bytes": 261203
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-small-typescript/report.json",
+            "sha256": "5dd3927f7ad27e103090c4bb1aa2e89c9f04763f1d3abca6e65d4e98776ca21b",
+            "bytes": 261204
+          }
+        ]
+      }
+    },
+    "functions65": {
+      "b1": {
+        "samplesMs": [
+          682.655151,
+          674.4013649999999,
+          677.279519
+        ],
+        "medianMs": 677.279519,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-functions65-b1/report.json",
+            "sha256": "44322bb3b1941d9a7dc650412fc66baac547073eead29dc4c3883cf7f80e685b",
+            "bytes": 263116
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-functions65-b1/report.json",
+            "sha256": "a1160e1756f9c9800fd37539b7bd0310eaaba5ffa98f759795c36f343f46fcae",
+            "bytes": 263115
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-functions65-b1/report.json",
+            "sha256": "87a052a298aac24c95f7848ee0d1c915bb43d6e9780d0c2c086f2562bbf89b27",
+            "bytes": 263107
+          }
+        ],
+        "overTS": 1.8316246748490697
+      },
+      "b2": {
+        "samplesMs": [
+          676.049934,
+          634.1394510000001,
+          636.6959429999999
+        ],
+        "medianMs": 636.6959429999999,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-functions65-b2/report.json",
+            "sha256": "575f67cc71b5a17fef5667f862430062548f93affa513b5de6884763fe0d9fda",
+            "bytes": 263117
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-functions65-b2/report.json",
+            "sha256": "e0403f0ee4d66adbfde88c9d8004b809fb8db2f13d985b65be42cbed00f52f8b",
+            "bytes": 263124
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-functions65-b2/report.json",
+            "sha256": "7851da1e45337a801e0f32ab44d68003f57e6c17cde5889be33720eb3525a314",
+            "bytes": 263124
+          }
+        ],
+        "overTS": 1.7218710545048928
+      },
+      "typescript": {
+        "samplesMs": [
+          369.7698159999999,
+          370.6496390000001,
+          366.5355410000001
+        ],
+        "medianMs": 369.7698159999999,
+        "evidence": [
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-0-functions65-typescript/report.json",
+            "sha256": "eac4ea4837a7e2a4ab785dc22c8ec00f51afa8cedd5653e15c64cc71b8442c0f",
+            "bytes": 261242
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-1-functions65-typescript/report.json",
+            "sha256": "1e054f1e6617f0698dcadd82bda69e8da84780d1329246cbf02a406a914955a5",
+            "bytes": 261249
+          },
+          {
+            "file": "selfhost/build/phase81/survey01/runs/clean-2-functions65-typescript/report.json",
+            "sha256": "2299b3ee75ec5d777a1f270918260675dbefedd82ebad0dc0f081c099789536c",
+            "bytes": 261249
+          }
+        ]
+      }
+    }
+  },
+  "screenGM": {
+    "b1": 1.72224395918902,
+    "b2": 1.3094166276152146
+  },
+  "quietDifferentContract": {
+    "numeric": {
+      "samplesMs": [
+        934.5702140000001,
+        892.8401499999999,
+        895.7525049999999
+      ],
+      "medianMs": 895.7525049999999,
+      "overReport": 0.9484872292558187,
+      "evidence": [
+        {
+          "file": "selfhost/build/phase81/survey01/runs/clean-0-numeric-b2-quiet/report.json",
+          "sha256": "fca83b273bc201f399d73488987fd08a1f75866d2d052158aa93b0d3e3bb0ae2",
+          "bytes": 264525
+        },
+        {
+          "file": "selfhost/build/phase81/survey01/runs/clean-2-numeric-b2-quiet/report.json",
+          "sha256": "71db2a03ec13d3853d7e86dfd267ba3edac9d2b900c96c5b6f10c76fad3bb187",
+          "bytes": 264525
+        },
+        {
+          "file": "selfhost/build/phase81/survey01/runs/clean-1-numeric-b2-quiet/report.json",
+          "sha256": "82745a96554dd90d012afc1ac97c8b936b32d967cfd6505f5ce8864504f3d8db",
+          "bytes": 264525
+        }
+      ]
+    },
+    "array": {
+      "samplesMs": [
+        896.268898,
+        892.027283,
+        981.1605849999999
+      ],
+      "medianMs": 896.268898,
+      "overReport": 0.9559045255374686,
+      "evidence": [
+        {
+          "file": "selfhost/build/phase81/survey01/runs/clean-1-array-b2-quiet/report.json",
+          "sha256": "ca9d8bbe0b46f25d330da89df259cea4b6b12e491825f57cfeb29097eda6d8e1",
+          "bytes": 264500
+        },
+        {
+          "file": "selfhost/build/phase81/survey01/runs/clean-2-array-b2-quiet/report.json",
+          "sha256": "963b9770760e9826c518cccbd3bbc941bfa5b40dc60b3b59c5b4304ebdfe6d1b",
+          "bytes": 264500
+        },
+        {
+          "file": "selfhost/build/phase81/survey01/runs/clean-0-array-b2-quiet/report.json",
+          "sha256": "17a8169bfee7df815bb58db2ee9afccb02c2f036746f1b5b2e15f1d23a59c802",
+          "bytes": 264506
+        }
+      ]
+    },
+    "lexer": {
+      "samplesMs": [
+        1273.9518429999998,
+        1282.311015,
+        1273.54376
+      ],
+      "medianMs": 1273.9518429999998,
+      "overReport": 0.9972787703486865,
+      "evidence": [
+        {
+          "file": "selfhost/build/phase81/survey01/runs/clean-1-lexer-b2-quiet/report.json",
+          "sha256": "09f0244cf3fc069b5e49e532cd25ee1c40f29df0c695262ec4ba301247080cfb",
+          "bytes": 264499
+        },
+        {
+          "file": "selfhost/build/phase81/survey01/runs/clean-0-lexer-b2-quiet/report.json",
+          "sha256": "74e33f42b15e300ab64b5d66d17572e57ffb759583c1b41f729fb680240d6d55",
+          "bytes": 264492
+        },
+        {
+          "file": "selfhost/build/phase81/survey01/runs/clean-2-lexer-b2-quiet/report.json",
+          "sha256": "0ad7ca646b4ea618278c5e7266e0c5a15fd5a0988e467d15cb9ac404c5d94a83",
+          "bytes": 264491
+        }
+      ]
+    }
+  },
+  "allExactC": true
+}

@@ -1,4 +1,4 @@
-# Active frontier: Phase78 installed; Phase80 representation experiments closed
+# Active frontier: Phase78 installed; Phase81 residual-cost investigation complete
 
 Installed genuine B2 `cc99ac9b…`, checked B1 `475610ea…`, source commit `6758bf2`.
 [Report](../implementation/phase78/README.md), [qualification](../implementation/phase78/source-qualification.json),
@@ -41,12 +41,25 @@ both summary patches. All147 clean requests and four diagnostic requests preserv
 C. Five checked-B1/frontend36 builds pass; no prototype B2 or release claim.
 Production source/driver/dist are unchanged and final release verification passes.
 
-Next: cold parity still needs about42% less B1 time /28% less B2 time on the
-three-source loop. A future compact native-body product should replace multiple
-consumer traversals together, without enlarging the frontend or serialized Base.
-Whole typed graphs, generic memo tables and node IDs alone have no demonstrated
-large net gain. Keep construction, decode, lookup and held-out costs in the gate.
-Read the preserved Phase80 patches/counters before repeating either approach.
+[Phase81 investigation](../implementation/phase81/README.md) adds54 clean requests,
+15 CPU profiles,3 allocation profiles and5 internal-region requests; all77 outputs
+remain exact. Unchanged-source fresh ratios1.722x/1.309x are a new diagnostic
+screen, not an improvement over the qualified1.732x/1.382x. Functions65 stays1.72x.
+B2 final native-stage time is near upstream emission on IO sources, but has large
+fixed cost on small sources. Template scans cost43–66ms, five freshness-bound
+queries25–50ms and three final-book constructions17–19ms in separate diagnostics.
+These overlap other stages and are not additive savings. Numeric sampled
+allocations:B1 538MB,B2 138MB,TS148MB. B2 text helpers account for about50MB.
+
+Next: rank removal of fixed text/book/report work first, then a per-function
+native representation that replaces annotation/erasure/reconstruction and feeds
+multiple consumers. Resolve symbols once where measured. Cold parity still needs
+about42% less B1 /28% less B2 time on the qualified three-source loop. Combined
+25–35% B2 reduction is a target to falsify, not a measured forecast; held-outs may
+need more. Whole typed graphs, eager products, generic memo tables and node IDs
+alone have no demonstrated large net gain. Read Phase79/80 before repeating them.
+New primary-source research compares V8, Cranelift, Go, Zig, LLVM and Lean. No
+production edits, candidate promotion or implementation gain in Phase81.
 
 One guarded CPU3 tree,2GiB RSS/4GiB available floor,Node1GiB heap/4MiB stack.
 No agents or PR comments. Preserve unrelated inherited Phase6/68 work and all

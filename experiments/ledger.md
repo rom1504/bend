@@ -4368,3 +4368,16 @@ requests and four diagnostics preserve complete C. Restore exact Phase78 source,
 verify installed B2, and preserve every prototype and receipt. No agents, PR
 comments, prototype B2 or broad qualification claim. Production complexity and
 all five installed metrics remain unchanged; no parity claim.
+
+## Phase81 residual compilation costs and compiler research — 2026-10-13
+
+[Report](../implementation/phase81/README.md). Investigation only:54 clean requests,
+15 CPU profiles,3 sampled allocation profiles and5 internal-region diagnostics
+preserve77 complete C outputs. B2 final native time is close to TS emission on
+the IO screen; fixed text/book costs dominate simpler cases. Numeric allocation
+is538MB B1,138MB B2,148MB TS. The unchanged compiler's new1.309x B2 screen is
+run variability, not an improvement over qualified1.382x. Rank fixed-work removal,
+per-function representation/consumer fusion and resolved symbols; combined25–35%
+is an explicit target, not a measured gain. Refresh V8/Cranelift/Go/Zig/LLVM/Lean
+research. Production unchanged, no agents or PR comments;80 guarded jobs take
+198.38s and peak477.1MiB. Preserve raw methods/profiles/derivative and estimates.

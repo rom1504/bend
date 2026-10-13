@@ -35,3 +35,32 @@ Checked layout also remains provisional pending differential and own-source gate
 Raw attempts, snapshots, pins, guard receipts, errors and complete C files are in
 `selfhost/build/phase78`. [Screen medians](screens01.json) are a checkpoint, not a
 final evidence capsule. Experimental source has not replaced the released image.
+
+## Structural trials and fresh attribution
+
+Compiler10 removes only39–73 closure segments from the timing sources; its
+paired result is0.9312× Phase77 B1 /1.7870× upstream. Compiler11 extends the escape
+certificate to ordinary nonescaping direct entries and removes inlined intrinsic
+entries. It passes six native execution checks and produces21–23% less C on the
+three timing sources. Its paired result is0.9041× Phase77 B1 /1.7302× upstream.
+These are18-request screening measurements, not final confidence intervals.
+
+Compiler12 removes all160 branch helpers and the scanner rewrites. It retains
+annotation/layout and structural entry changes in164 added/18 removed lines
+across six production files, and exactly reproduces compiler11 C on three cases.
+It costs about3% against compiler11 in these screens but avoids the large source
+expansion. Compiler13's exact string-pattern tag discriminator creates48,945 bytes
+of B1 JS; compiler14 factors prefix characters. Neither improves the short screen,
+so both are rejected. [Further screens](screens02.json).
+
+[Fresh compiler11 profiles](diagnostic11.json) show observer routing123–195ms,
+native preparation95–114ms, and final C rendering96–117ms. String.cmp is a
+successful expensive observer route. Nat.read.trim bears the first substantial
+annotation cost, including possible cold JIT work; do not infer a body-specific
+algorithmic defect just from that attribution. Compiler15 tests an exact cheap
+negative intrinsic-name filter on the smaller compiler12 source.
+
+The next larger proposal is [reusable native library products](../../design/phase78/native-library-products.md).
+Prepared-native-library measurements must remain separate from the existing
+prepared-frontend-only baseline, with preparation and reading/admission reported.
+No product implementation or parity claim is made at this checkpoint.

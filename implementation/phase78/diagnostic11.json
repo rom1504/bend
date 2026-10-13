@@ -1,0 +1,3557 @@
+{
+  "complete": true,
+  "scope": "Instrumented attribution only. Recursive inclusive clocks overlap; cold JIT time can be charged to the first definition.",
+  "rows": [
+    {
+      "case": "numeric",
+      "timings": {
+        "importsMs": 70.24920299999997,
+        "requestMs": 1262.9939239999999
+      },
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 19.031462000000033,
+          "exclusiveMs": 19.031462000000033
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.8443409999999858,
+          "exclusiveMs": 0.8443409999999858
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 111.57825600000001,
+          "exclusiveMs": 111.57825600000001
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.0927000000000362,
+          "exclusiveMs": 0.0927000000000362
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 7.158999999999992,
+          "exclusiveMs": 7.158999999999992
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 51.498559,
+          "exclusiveMs": 51.498559
+        },
+        "driver_report_data": {
+          "calls": 1,
+          "inclusiveMs": 44.024181999999996,
+          "exclusiveMs": 44.024181999999996
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 13.563020999999935,
+          "exclusiveMs": 13.563020999999935
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 0.5063189999999622,
+          "exclusiveMs": 0.5063189999999622
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 37.085300000000075,
+          "exclusiveMs": 37.085300000000075
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 9.412203999999974,
+          "exclusiveMs": 9.412203999999974
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 87.3151049999999,
+          "exclusiveMs": 87.3151049999999
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 22.562687000000096,
+          "exclusiveMs": 22.562687000000096
+        },
+        "nr_prepare": {
+          "calls": 1,
+          "inclusiveMs": 99.44570399999998,
+          "exclusiveMs": 99.44570399999998
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 8.30016599999999,
+          "exclusiveMs": 8.30016599999999
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.5753900000001977,
+          "exclusiveMs": 0.5753900000001977
+        },
+        "nr_compile": {
+          "calls": 1,
+          "inclusiveMs": 633.806472,
+          "exclusiveMs": 633.806472
+        }
+      },
+      "diagnostic": {
+        "ka_def:Unit": {
+          "calls": 1,
+          "inclusiveMs": 0.28736400000002504,
+          "exclusiveMs": 0.28736400000002504
+        },
+        "ka_def:Bool": {
+          "calls": 1,
+          "inclusiveMs": 0.010046999999985928,
+          "exclusiveMs": 0.010046999999985928
+        },
+        "ka_def:Cmp": {
+          "calls": 1,
+          "inclusiveMs": 0.008325999999897249,
+          "exclusiveMs": 0.008325999999897249
+        },
+        "ka_def:Sigma": {
+          "calls": 1,
+          "inclusiveMs": 0.008086999999932232,
+          "exclusiveMs": 0.008086999999932232
+        },
+        "ka_def:Nat": {
+          "calls": 1,
+          "inclusiveMs": 0.008027000000083717,
+          "exclusiveMs": 0.008027000000083717
+        },
+        "ka_def:Maybe": {
+          "calls": 1,
+          "inclusiveMs": 0.007851999999957116,
+          "exclusiveMs": 0.007851999999957116
+        },
+        "ka_def:List": {
+          "calls": 1,
+          "inclusiveMs": 0.0078369999998813,
+          "exclusiveMs": 0.0078369999998813
+        },
+        "ka_def:Word.Nil": {
+          "calls": 1,
+          "inclusiveMs": 0.017995000000155414,
+          "exclusiveMs": 0.017995000000155414
+        },
+        "ka_def:Word.Con": {
+          "calls": 1,
+          "inclusiveMs": 0.011503999999831649,
+          "exclusiveMs": 0.011503999999831649
+        },
+        "ka_def:Word": {
+          "calls": 1,
+          "inclusiveMs": 0.7393309999999929,
+          "exclusiveMs": 0.7393309999999929
+        },
+        "ka_def:U32": {
+          "calls": 1,
+          "inclusiveMs": 0.006476000000020576,
+          "exclusiveMs": 0.006476000000020576
+        },
+        "ka_def:F32": {
+          "calls": 1,
+          "inclusiveMs": 0.002273999999943044,
+          "exclusiveMs": 0.002273999999943044
+        },
+        "ka_def:Char": {
+          "calls": 1,
+          "inclusiveMs": 0.00203300000021045,
+          "exclusiveMs": 0.00203300000021045
+        },
+        "ka_def:String": {
+          "calls": 1,
+          "inclusiveMs": 0.0020320000000992877,
+          "exclusiveMs": 0.0020320000000992877
+        },
+        "ka_def:IO.OP": {
+          "calls": 1,
+          "inclusiveMs": 0.0019909999998617423,
+          "exclusiveMs": 0.0019909999998617423
+        },
+        "ka_def:Pair": {
+          "calls": 1,
+          "inclusiveMs": 0.051056999999900654,
+          "exclusiveMs": 0.051056999999900654
+        },
+        "ka_def:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 0.9375729999999294,
+          "exclusiveMs": 0.9375729999999294
+        },
+        "ka_def:IO": {
+          "calls": 1,
+          "inclusiveMs": 0.030992999999853055,
+          "exclusiveMs": 0.030992999999853055
+        },
+        "ka_def:IO.bind": {
+          "calls": 1,
+          "inclusiveMs": 1.247081999999864,
+          "exclusiveMs": 1.247081999999864
+        },
+        "ka_def:IO.print": {
+          "calls": 1,
+          "inclusiveMs": 0.0030039999999189604,
+          "exclusiveMs": 0.0030039999999189604
+        },
+        "ka_def:IO.args": {
+          "calls": 1,
+          "inclusiveMs": 0.002226000000064232,
+          "exclusiveMs": 0.002226000000064232
+        },
+        "ka_def:IO.now": {
+          "calls": 1,
+          "inclusiveMs": 0.0022719999999480933,
+          "exclusiveMs": 0.0022719999999480933
+        },
+        "ka_def:Bool.and": {
+          "calls": 1,
+          "inclusiveMs": 0.16681500000004235,
+          "exclusiveMs": 0.16681500000004235
+        },
+        "ka_def:Cmp.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.06986600000004728,
+          "exclusiveMs": 0.06986600000004728
+        },
+        "ka_def:Cmp.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.06729900000004818,
+          "exclusiveMs": 0.06729900000004818
+        },
+        "ka_def:Nat.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.09609099999988757,
+          "exclusiveMs": 0.09609099999988757
+        },
+        "ka_def:Char.cmp": {
+          "calls": 1,
+          "inclusiveMs": 3.281105999999909,
+          "exclusiveMs": 3.281105999999909
+        },
+        "ka_def:String.cmp.rec": {
+          "calls": 1,
+          "inclusiveMs": 1.5861229999998159,
+          "exclusiveMs": 1.5861229999998159
+        },
+        "ka_def:String.cmp.fin": {
+          "calls": 1,
+          "inclusiveMs": 2.0224600000001374,
+          "exclusiveMs": 2.0224600000001374
+        },
+        "ka_def:String.cmp": {
+          "calls": 1,
+          "inclusiveMs": 2.5477430000000822,
+          "exclusiveMs": 2.5477430000000822
+        },
+        "ka_def:String.length": {
+          "calls": 1,
+          "inclusiveMs": 0.1555030000001807,
+          "exclusiveMs": 0.1555030000001807
+        },
+        "ka_def:String.order": {
+          "calls": 1,
+          "inclusiveMs": 0.12555199999997058,
+          "exclusiveMs": 0.12555199999997058
+        },
+        "ka_def:String.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.05258899999989808,
+          "exclusiveMs": 0.05258899999989808
+        },
+        "ka_def:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 0.36851400000000467,
+          "exclusiveMs": 0.36851400000000467
+        },
+        "ka_def:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 1.5122400000000198,
+          "exclusiveMs": 1.5122400000000198
+        },
+        "ka_def:Nat.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.2637720000000172,
+          "exclusiveMs": 0.2637720000000172
+        },
+        "ka_def:Nat.show": {
+          "calls": 1,
+          "inclusiveMs": 0.3236090000000331,
+          "exclusiveMs": 0.3236090000000331
+        },
+        "ka_def:Nat.read.if": {
+          "calls": 1,
+          "inclusiveMs": 0.633382999999867,
+          "exclusiveMs": 0.633382999999867
+        },
+        "ka_def:Nat.read.go": {
+          "calls": 1,
+          "inclusiveMs": 0.29131900000015776,
+          "exclusiveMs": 0.29131900000015776
+        },
+        "ka_def:Nat.read.trim": {
+          "calls": 1,
+          "inclusiveMs": 60.99559499999987,
+          "exclusiveMs": 60.99559499999987
+        },
+        "ka_def:Nat.read.fits": {
+          "calls": 1,
+          "inclusiveMs": 0.1633079999999154,
+          "exclusiveMs": 0.1633079999999154
+        },
+        "ka_def:Nat.read.gate": {
+          "calls": 1,
+          "inclusiveMs": 0.11396399999989626,
+          "exclusiveMs": 0.11396399999989626
+        },
+        "ka_def:Nat.read": {
+          "calls": 1,
+          "inclusiveMs": 0.15004099999987375,
+          "exclusiveMs": 0.15004099999987375
+        },
+        "ka_def:U32.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 0.1611910000001444,
+          "exclusiveMs": 0.1611910000001444
+        },
+        "ka_def:U32.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.3583929999999782,
+          "exclusiveMs": 0.3583929999999782
+        },
+        "ka_def:U32.show.if": {
+          "calls": 1,
+          "inclusiveMs": 0.13635499999986678,
+          "exclusiveMs": 0.13635499999986678
+        },
+        "ka_def:U32.show": {
+          "calls": 1,
+          "inclusiveMs": 0.13727700000004006,
+          "exclusiveMs": 0.13727700000004006
+        },
+        "ka_def:../phase37/fixtures-new/numeric-recurrence:p37.numeric": {
+          "calls": 1,
+          "inclusiveMs": 1.803470999999945,
+          "exclusiveMs": 1.803470999999945
+        },
+        "ka_def:../phase37/fixtures-new/numeric-recurrence:bench": {
+          "calls": 1,
+          "inclusiveMs": 0.10814299999992727,
+          "exclusiveMs": 0.10814299999992727
+        },
+        "ka_def:p46.parsed": {
+          "calls": 1,
+          "inclusiveMs": 0.07634699999994154,
+          "exclusiveMs": 0.07634699999994154
+        },
+        "ka_def:p46.number": {
+          "calls": 1,
+          "inclusiveMs": 0.037896000000046115,
+          "exclusiveMs": 0.037896000000046115
+        },
+        "ka_def:p46.arguments": {
+          "calls": 1,
+          "inclusiveMs": 1.7730650000000878,
+          "exclusiveMs": 1.7730650000000878
+        },
+        "ka_def:p46.loop": {
+          "calls": 1,
+          "inclusiveMs": 0.5734910000001037,
+          "exclusiveMs": 0.5734910000001037
+        },
+        "ka_def:p46.batch": {
+          "calls": 1,
+          "inclusiveMs": 1.8091400000000704,
+          "exclusiveMs": 1.8091400000000704
+        },
+        "ka_def:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 0.4532769999998436,
+          "exclusiveMs": 0.4532769999998436
+        },
+        "ka_def:main": {
+          "calls": 1,
+          "inclusiveMs": 0.0913029999999253,
+          "exclusiveMs": 0.0913029999999253
+        },
+        "jl_checked_error": {
+          "calls": 1,
+          "inclusiveMs": 42.90614800000003,
+          "exclusiveMs": 42.90614800000003
+        },
+        "nr_prepare": {
+          "calls": 1,
+          "inclusiveMs": 99.3212880000001,
+          "exclusiveMs": 99.3212880000001
+        },
+        "nr_compile": {
+          "calls": 1,
+          "inclusiveMs": 633.7364160000002,
+          "exclusiveMs": 78.8821449999989
+        },
+        "nr_unshared": {
+          "calls": 65,
+          "inclusiveMs": 543.7550429999999,
+          "exclusiveMs": 23.319930999999997
+        },
+        "nc_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 11.547526000000062,
+          "exclusiveMs": 11.547526000000062
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 72.54923600000006,
+          "exclusiveMs": 72.54923600000006
+        },
+        "nf_plan": {
+          "calls": 1,
+          "inclusiveMs": 154.39659400000005,
+          "exclusiveMs": 57.887279000000035
+        },
+        "nf_candidate:Char.cmp": {
+          "calls": 1,
+          "inclusiveMs": 15.789029000000028,
+          "exclusiveMs": 15.789029000000028
+        },
+        "nf_candidate:String.cmp.rec": {
+          "calls": 1,
+          "inclusiveMs": 5.532821000000013,
+          "exclusiveMs": 5.532821000000013
+        },
+        "nf_candidate:String.cmp.fin": {
+          "calls": 1,
+          "inclusiveMs": 7.517245000000003,
+          "exclusiveMs": 7.517245000000003
+        },
+        "nf_candidate:String.cmp": {
+          "calls": 1,
+          "inclusiveMs": 4.132377000000133,
+          "exclusiveMs": 4.132377000000133
+        },
+        "nf_candidate:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 0.22247200000015255,
+          "exclusiveMs": 0.22247200000015255
+        },
+        "nf_candidate:String.order": {
+          "calls": 1,
+          "inclusiveMs": 0.8373770000000604,
+          "exclusiveMs": 0.8373770000000604
+        },
+        "nf_candidate:Cmp.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.11886499999991429,
+          "exclusiveMs": 0.11886499999991429
+        },
+        "nf_candidate:String.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.4094310000000405,
+          "exclusiveMs": 0.4094310000000405
+        },
+        "nf_candidate:Cmp.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.931007000000136,
+          "exclusiveMs": 0.931007000000136
+        },
+        "nf_candidate:Nat.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 1.1582750000000033,
+          "exclusiveMs": 1.1582750000000033
+        },
+        "nf_candidate:Bool.and": {
+          "calls": 1,
+          "inclusiveMs": 0.34308599999985745,
+          "exclusiveMs": 0.34308599999985745
+        },
+        "nf_candidate:String.length": {
+          "calls": 1,
+          "inclusiveMs": 2.505828999999949,
+          "exclusiveMs": 2.505828999999949
+        },
+        "nf_candidate:Nat.read.fits": {
+          "calls": 1,
+          "inclusiveMs": 3.6064349999999195,
+          "exclusiveMs": 3.6064349999999195
+        },
+        "nf_candidate:Nat.read.if": {
+          "calls": 1,
+          "inclusiveMs": 1.0489129999998568,
+          "exclusiveMs": 1.0489129999998568
+        },
+        "nf_candidate:Nat.read.go": {
+          "calls": 1,
+          "inclusiveMs": 2.526252999999997,
+          "exclusiveMs": 2.526252999999997
+        },
+        "nf_candidate:Nat.read.gate": {
+          "calls": 1,
+          "inclusiveMs": 0.42465199999992365,
+          "exclusiveMs": 0.42465199999992365
+        },
+        "nf_candidate:Nat.read.trim": {
+          "calls": 1,
+          "inclusiveMs": 3.904852000000119,
+          "exclusiveMs": 3.904852000000119
+        },
+        "nf_candidate:Nat.read": {
+          "calls": 1,
+          "inclusiveMs": 1.4343230000001768,
+          "exclusiveMs": 1.4343230000001768
+        },
+        "nf_candidate:p46.parsed": {
+          "calls": 1,
+          "inclusiveMs": 1.2381769999999506,
+          "exclusiveMs": 1.2381769999999506
+        },
+        "nf_candidate:p46.number": {
+          "calls": 1,
+          "inclusiveMs": 1.0119310000000041,
+          "exclusiveMs": 1.0119310000000041
+        },
+        "nf_candidate:p46.arguments": {
+          "calls": 2,
+          "inclusiveMs": 2.7013019999999415,
+          "exclusiveMs": 2.7013019999999415
+        },
+        "nf_candidate:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 1.1273619999999482,
+          "exclusiveMs": 1.1273619999999482
+        },
+        "nf_candidate:Nat.show.go": {
+          "calls": 2,
+          "inclusiveMs": 3.195737999999892,
+          "exclusiveMs": 3.195737999999892
+        },
+        "nf_candidate:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 3.051234999999906,
+          "exclusiveMs": 3.051234999999906
+        },
+        "nf_candidate:Nat.show": {
+          "calls": 2,
+          "inclusiveMs": 1.0178929999999582,
+          "exclusiveMs": 1.0178929999999582
+        },
+        "nf_candidate:p46.loop": {
+          "calls": 1,
+          "inclusiveMs": 5.636737999999923,
+          "exclusiveMs": 5.636737999999923
+        },
+        "nf_candidate:p46.batch": {
+          "calls": 1,
+          "inclusiveMs": 0.3394710000000032,
+          "exclusiveMs": 0.3394710000000032
+        },
+        "nf_candidate:../phase37/fixtures-new/numeric-recurrence:p37.numeric": {
+          "calls": 1,
+          "inclusiveMs": 15.812614000000167,
+          "exclusiveMs": 15.812614000000167
+        },
+        "nf_candidate:../phase37/fixtures-new/numeric-recurrence:bench": {
+          "calls": 1,
+          "inclusiveMs": 1.5129420000000664,
+          "exclusiveMs": 1.5129420000000664
+        },
+        "nf_candidate:U32.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 0.9245080000000598,
+          "exclusiveMs": 0.9245080000000598
+        },
+        "nf_candidate:U32.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.6863089999999374,
+          "exclusiveMs": 0.6863089999999374
+        },
+        "nf_candidate:U32.show.if": {
+          "calls": 1,
+          "inclusiveMs": 0.45768199999997705,
+          "exclusiveMs": 0.45768199999997705
+        },
+        "nf_candidate:U32.show": {
+          "calls": 1,
+          "inclusiveMs": 0.24315899999987778,
+          "exclusiveMs": 0.24315899999987778
+        },
+        "nf_candidate:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 0.40208800000004885,
+          "exclusiveMs": 0.40208800000004885
+        },
+        "nf_candidate:IO.bind": {
+          "calls": 1,
+          "inclusiveMs": 0.12752199999999903,
+          "exclusiveMs": 0.12752199999999903
+        },
+        "nf_candidate:main": {
+          "calls": 1,
+          "inclusiveMs": 0.06057799999985036,
+          "exclusiveMs": 0.06057799999985036
+        },
+        "nq_candidate_mode:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 0.7304260000000795,
+          "exclusiveMs": 0.7304260000000795
+        },
+        "nq_candidate_mode:p46.arguments": {
+          "calls": 1,
+          "inclusiveMs": 1.7875329999999394,
+          "exclusiveMs": 1.7875329999999394
+        },
+        "nq_candidate_mode:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 0.4680110000001605,
+          "exclusiveMs": 0.4680110000001605
+        },
+        "nq_candidate_mode:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 1.2080020000000786,
+          "exclusiveMs": 1.2080020000000786
+        },
+        "nq_candidate_mode:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 0.3248519999999644,
+          "exclusiveMs": 0.3248519999999644
+        },
+        "nh_macros": {
+          "calls": 1,
+          "inclusiveMs": 19.480123999999932,
+          "exclusiveMs": 19.480123999999932
+        },
+        "nd_compile_entry:main": {
+          "calls": 1,
+          "inclusiveMs": 4.969829000000118,
+          "exclusiveMs": 4.969829000000118
+        },
+        "nd_compile_entry:IO.bind": {
+          "calls": 1,
+          "inclusiveMs": 1.576998999999887,
+          "exclusiveMs": 1.576998999999887
+        },
+        "nd_compile_entry:IO.args": {
+          "calls": 1,
+          "inclusiveMs": 0.5206610000000182,
+          "exclusiveMs": 0.5206610000000182
+        },
+        "nd_compile_entry:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 6.206147000000101,
+          "exclusiveMs": 6.206147000000101
+        },
+        "nd_compile_entry:IO.print": {
+          "calls": 1,
+          "inclusiveMs": 0.22306200000002718,
+          "exclusiveMs": 0.22306200000002718
+        },
+        "nd_compile_entry:U32.show": {
+          "calls": 1,
+          "inclusiveMs": 0.39760299999989,
+          "exclusiveMs": 0.39760299999989
+        },
+        "nd_compile_entry:U32.show.if": {
+          "calls": 1,
+          "inclusiveMs": 0.5558189999999286,
+          "exclusiveMs": 0.5558189999999286
+        },
+        "nd_compile_entry:U32.show.go": {
+          "calls": 1,
+          "inclusiveMs": 1.1533759999999802,
+          "exclusiveMs": 1.1533759999999802
+        },
+        "nd_compile_entry:U32.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 2.8359060000000227,
+          "exclusiveMs": 2.8359060000000227
+        },
+        "nd_compile_entry:../phase37/fixtures-new/numeric-recurrence:bench": {
+          "calls": 1,
+          "inclusiveMs": 0.10679899999990994,
+          "exclusiveMs": 0.10679899999990994
+        },
+        "nd_compile_entry:../phase37/fixtures-new/numeric-recurrence:p37.numeric": {
+          "calls": 1,
+          "inclusiveMs": 0.23460700000009638,
+          "exclusiveMs": 0.23460700000009638
+        },
+        "nd_compile_entry:p46.batch": {
+          "calls": 1,
+          "inclusiveMs": 0.10155600000007325,
+          "exclusiveMs": 0.10155600000007325
+        },
+        "nd_compile_entry:p46.loop": {
+          "calls": 1,
+          "inclusiveMs": 0.16423699999995733,
+          "exclusiveMs": 0.16423699999995733
+        },
+        "nd_compile_entry:IO.now": {
+          "calls": 1,
+          "inclusiveMs": 0.19457599999986996,
+          "exclusiveMs": 0.19457599999986996
+        },
+        "nd_compile_entry:Nat.show": {
+          "calls": 1,
+          "inclusiveMs": 2.677481999999827,
+          "exclusiveMs": 2.677481999999827
+        },
+        "nd_compile_entry:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 1.7384239999998954,
+          "exclusiveMs": 1.7384239999998954
+        },
+        "nd_compile_entry:Nat.show.go": {
+          "calls": 1,
+          "inclusiveMs": 8.82714900000019,
+          "exclusiveMs": 8.82714900000019
+        },
+        "nd_compile_entry:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 0.17591899999979432,
+          "exclusiveMs": 0.17591899999979432
+        },
+        "nd_compile_entry:p46.arguments": {
+          "calls": 1,
+          "inclusiveMs": 1.8309010000000399,
+          "exclusiveMs": 1.8309010000000399
+        },
+        "nd_compile_entry:p46.number": {
+          "calls": 1,
+          "inclusiveMs": 0.7379349999998794,
+          "exclusiveMs": 0.7379349999998794
+        },
+        "nd_compile_entry:p46.parsed": {
+          "calls": 1,
+          "inclusiveMs": 0.12931699999990087,
+          "exclusiveMs": 0.12931699999990087
+        },
+        "nd_compile_entry:Nat.read": {
+          "calls": 1,
+          "inclusiveMs": 0.8374310000001515,
+          "exclusiveMs": 0.8374310000001515
+        },
+        "nd_compile_entry:Nat.read.trim": {
+          "calls": 1,
+          "inclusiveMs": 1.7317350000000715,
+          "exclusiveMs": 1.7317350000000715
+        },
+        "nd_compile_entry:Nat.read.gate": {
+          "calls": 1,
+          "inclusiveMs": 0.3086190000001352,
+          "exclusiveMs": 0.3086190000001352
+        },
+        "nd_compile_entry:Nat.read.go": {
+          "calls": 1,
+          "inclusiveMs": 1.4491920000000391,
+          "exclusiveMs": 1.4491920000000391
+        },
+        "nd_compile_entry:Nat.read.if": {
+          "calls": 1,
+          "inclusiveMs": 0.9414329999999609,
+          "exclusiveMs": 0.9414329999999609
+        },
+        "nd_compile_entry:Nat.read.fits": {
+          "calls": 1,
+          "inclusiveMs": 2.069441999999981,
+          "exclusiveMs": 2.069441999999981
+        },
+        "nd_compile_entry:String.length": {
+          "calls": 1,
+          "inclusiveMs": 0.3365990000002057,
+          "exclusiveMs": 0.3365990000002057
+        },
+        "nd_compile_entry:Bool.and": {
+          "calls": 1,
+          "inclusiveMs": 0.11086299999988114,
+          "exclusiveMs": 0.11086299999988114
+        },
+        "nd_compile_entry:Nat.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.08717999999998938,
+          "exclusiveMs": 0.08717999999998938
+        },
+        "nd_compile_entry:Cmp.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.08935700000006364,
+          "exclusiveMs": 0.08935700000006364
+        },
+        "nd_compile_entry:String.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.23539700000014818,
+          "exclusiveMs": 0.23539700000014818
+        },
+        "nd_compile_entry:Cmp.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.9452380000000176,
+          "exclusiveMs": 0.9452380000000176
+        },
+        "nd_compile_entry:String.order": {
+          "calls": 1,
+          "inclusiveMs": 0.242486000000099,
+          "exclusiveMs": 0.242486000000099
+        },
+        "nd_compile_entry:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 1.3315309999998135,
+          "exclusiveMs": 1.3315309999998135
+        },
+        "nd_compile_entry:String.cmp": {
+          "calls": 1,
+          "inclusiveMs": 3.305738999999903,
+          "exclusiveMs": 3.305738999999903
+        },
+        "nd_compile_entry:String.cmp.fin": {
+          "calls": 1,
+          "inclusiveMs": 4.226376000000073,
+          "exclusiveMs": 4.226376000000073
+        },
+        "nd_compile_entry:String.cmp.rec": {
+          "calls": 1,
+          "inclusiveMs": 0.24117200000000594,
+          "exclusiveMs": 0.24117200000000594
+        },
+        "nd_compile_entry:Char.cmp": {
+          "calls": 1,
+          "inclusiveMs": 1.068958000000066,
+          "exclusiveMs": 1.068958000000066
+        },
+        "no_route_one:Char.cmp": {
+          "calls": 1,
+          "inclusiveMs": 1.1156530000000657,
+          "exclusiveMs": 1.1156530000000657
+        },
+        "no_route_one:String.cmp.rec": {
+          "calls": 1,
+          "inclusiveMs": 0.235580999999911,
+          "exclusiveMs": 0.235580999999911
+        },
+        "no_route_one:String.cmp.fin": {
+          "calls": 1,
+          "inclusiveMs": 1.2894800000001396,
+          "exclusiveMs": 1.2894800000001396
+        },
+        "no_route_one:String.cmp": {
+          "calls": 1,
+          "inclusiveMs": 91.52779099999998,
+          "exclusiveMs": 91.52779099999998
+        },
+        "no_route_one:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 0.10566500000004453,
+          "exclusiveMs": 0.10566500000004453
+        },
+        "no_route_one:String.order": {
+          "calls": 1,
+          "inclusiveMs": 4.5284180000001015,
+          "exclusiveMs": 4.5284180000001015
+        },
+        "no_route_one:Cmp.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.09783300000003692,
+          "exclusiveMs": 0.09783300000003692
+        },
+        "no_route_one:String.is_le": {
+          "calls": 1,
+          "inclusiveMs": 7.750774999999976,
+          "exclusiveMs": 7.750774999999976
+        },
+        "no_route_one:Cmp.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.1980740000001333,
+          "exclusiveMs": 0.1980740000001333
+        },
+        "no_route_one:Nat.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.0765200000000732,
+          "exclusiveMs": 0.0765200000000732
+        },
+        "no_route_one:Bool.and": {
+          "calls": 1,
+          "inclusiveMs": 0.07709300000010444,
+          "exclusiveMs": 0.07709300000010444
+        },
+        "no_route_one:String.length": {
+          "calls": 1,
+          "inclusiveMs": 2.535477000000128,
+          "exclusiveMs": 2.535477000000128
+        },
+        "no_route_one:Nat.read.fits": {
+          "calls": 1,
+          "inclusiveMs": 4.465171000000055,
+          "exclusiveMs": 4.465171000000055
+        },
+        "no_route_one:Nat.read.if": {
+          "calls": 1,
+          "inclusiveMs": 0.26732300000003306,
+          "exclusiveMs": 0.26732300000003306
+        },
+        "no_route_one:Nat.read.go": {
+          "calls": 1,
+          "inclusiveMs": 0.12825599999996484,
+          "exclusiveMs": 0.12825599999996484
+        },
+        "no_route_one:Nat.read.gate": {
+          "calls": 1,
+          "inclusiveMs": 0.12437500000010004,
+          "exclusiveMs": 0.12437500000010004
+        },
+        "no_route_one:Nat.read.trim": {
+          "calls": 1,
+          "inclusiveMs": 0.14082199999984368,
+          "exclusiveMs": 0.14082199999984368
+        },
+        "no_route_one:Nat.read": {
+          "calls": 1,
+          "inclusiveMs": 0.14214700000002267,
+          "exclusiveMs": 0.14214700000002267
+        },
+        "no_route_one:p46.parsed": {
+          "calls": 1,
+          "inclusiveMs": 0.029299000000037267,
+          "exclusiveMs": 0.029299000000037267
+        },
+        "no_route_one:p46.number": {
+          "calls": 1,
+          "inclusiveMs": 6.331370000000106,
+          "exclusiveMs": 6.331370000000106
+        },
+        "no_route_one:p46.arguments": {
+          "calls": 1,
+          "inclusiveMs": 0.04492500000014843,
+          "exclusiveMs": 0.04492500000014843
+        },
+        "no_route_one:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 0.07245899999998073,
+          "exclusiveMs": 0.07245899999998073
+        },
+        "no_route_one:Nat.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.5804060000000391,
+          "exclusiveMs": 0.5804060000000391
+        },
+        "no_route_one:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 0.1248040000000401,
+          "exclusiveMs": 0.1248040000000401
+        },
+        "no_route_one:Nat.show": {
+          "calls": 1,
+          "inclusiveMs": 0.04129299999999603,
+          "exclusiveMs": 0.04129299999999603
+        },
+        "no_route_one:p46.loop": {
+          "calls": 1,
+          "inclusiveMs": 0.056871000000001004,
+          "exclusiveMs": 0.056871000000001004
+        },
+        "no_route_one:p46.batch": {
+          "calls": 1,
+          "inclusiveMs": 0.03208999999992557,
+          "exclusiveMs": 0.03208999999992557
+        },
+        "no_route_one:../phase37/fixtures-new/numeric-recurrence:p37.numeric": {
+          "calls": 1,
+          "inclusiveMs": 0.06494199999997363,
+          "exclusiveMs": 0.06494199999997363
+        },
+        "no_route_one:../phase37/fixtures-new/numeric-recurrence:bench": {
+          "calls": 1,
+          "inclusiveMs": 0.042233000000123866,
+          "exclusiveMs": 0.042233000000123866
+        },
+        "no_route_one:U32.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 0.3469230000000607,
+          "exclusiveMs": 0.3469230000000607
+        },
+        "no_route_one:U32.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.16449499999998807,
+          "exclusiveMs": 0.16449499999998807
+        },
+        "no_route_one:U32.show.if": {
+          "calls": 1,
+          "inclusiveMs": 0.05435799999986557,
+          "exclusiveMs": 0.05435799999986557
+        },
+        "no_route_one:U32.show": {
+          "calls": 1,
+          "inclusiveMs": 0.03388300000005984,
+          "exclusiveMs": 0.03388300000005984
+        },
+        "no_route_one:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 0.03918399999997746,
+          "exclusiveMs": 0.03918399999997746
+        },
+        "no_route_one:IO.bind": {
+          "calls": 1,
+          "inclusiveMs": 0.05317700000000514,
+          "exclusiveMs": 0.05317700000000514
+        },
+        "no_route_one:main": {
+          "calls": 1,
+          "inclusiveMs": 0.003216000000065833,
+          "exclusiveMs": 0.003216000000065833
+        },
+        "ne_program": {
+          "calls": 1,
+          "inclusiveMs": 95.72142600000006,
+          "exclusiveMs": 95.72142600000006
+        }
+      },
+      "exactC": true
+    },
+    {
+      "case": "array",
+      "timings": {
+        "importsMs": 69.98998299999994,
+        "requestMs": 1282.1998290000001
+      },
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 17.94326000000001,
+          "exclusiveMs": 17.94326000000001
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.8460949999999912,
+          "exclusiveMs": 0.8460949999999912
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 129.584786,
+          "exclusiveMs": 129.584786
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.10211899999990237,
+          "exclusiveMs": 0.10211899999990237
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 6.50037999999995,
+          "exclusiveMs": 6.50037999999995
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 67.832809,
+          "exclusiveMs": 67.832809
+        },
+        "driver_report_data": {
+          "calls": 1,
+          "inclusiveMs": 39.28942499999994,
+          "exclusiveMs": 39.28942499999994
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 14.650710000000004,
+          "exclusiveMs": 14.650710000000004
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 10.776433000000111,
+          "exclusiveMs": 10.776433000000111
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 16.52455400000008,
+          "exclusiveMs": 16.52455400000008
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 4.806149999999889,
+          "exclusiveMs": 4.806149999999889
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 93.5605109999999,
+          "exclusiveMs": 93.5605109999999
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 19.221986000000015,
+          "exclusiveMs": 19.221986000000015
+        },
+        "nr_prepare": {
+          "calls": 1,
+          "inclusiveMs": 95.57527899999991,
+          "exclusiveMs": 95.57527899999991
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 8.591231000000334,
+          "exclusiveMs": 8.591231000000334
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.5539799999996831,
+          "exclusiveMs": 0.5539799999996831
+        },
+        "nr_compile": {
+          "calls": 1,
+          "inclusiveMs": 623.3913259999999,
+          "exclusiveMs": 623.3913259999999
+        }
+      },
+      "diagnostic": {
+        "ka_def:Unit": {
+          "calls": 1,
+          "inclusiveMs": 0.10773900000003778,
+          "exclusiveMs": 0.10773900000003778
+        },
+        "ka_def:Bool": {
+          "calls": 1,
+          "inclusiveMs": 0.010356000000001586,
+          "exclusiveMs": 0.010356000000001586
+        },
+        "ka_def:Cmp": {
+          "calls": 1,
+          "inclusiveMs": 0.008604000000104861,
+          "exclusiveMs": 0.008604000000104861
+        },
+        "ka_def:Sigma": {
+          "calls": 1,
+          "inclusiveMs": 0.008389999999963038,
+          "exclusiveMs": 0.008389999999963038
+        },
+        "ka_def:Nat": {
+          "calls": 1,
+          "inclusiveMs": 0.008068999999977677,
+          "exclusiveMs": 0.008068999999977677
+        },
+        "ka_def:Maybe": {
+          "calls": 1,
+          "inclusiveMs": 0.00801299999989169,
+          "exclusiveMs": 0.00801299999989169
+        },
+        "ka_def:List": {
+          "calls": 1,
+          "inclusiveMs": 0.007830999999896449,
+          "exclusiveMs": 0.007830999999896449
+        },
+        "ka_def:Word.Nil": {
+          "calls": 1,
+          "inclusiveMs": 0.008029000000078668,
+          "exclusiveMs": 0.008029000000078668
+        },
+        "ka_def:Word.Con": {
+          "calls": 1,
+          "inclusiveMs": 0.011229999999841311,
+          "exclusiveMs": 0.011229999999841311
+        },
+        "ka_def:Word": {
+          "calls": 1,
+          "inclusiveMs": 1.4131089999998494,
+          "exclusiveMs": 1.4131089999998494
+        },
+        "ka_def:U32": {
+          "calls": 1,
+          "inclusiveMs": 0.007004999999935535,
+          "exclusiveMs": 0.007004999999935535
+        },
+        "ka_def:Char": {
+          "calls": 1,
+          "inclusiveMs": 0.002264000000195665,
+          "exclusiveMs": 0.002264000000195665
+        },
+        "ka_def:String": {
+          "calls": 1,
+          "inclusiveMs": 0.0019909999998617423,
+          "exclusiveMs": 0.0019909999998617423
+        },
+        "ka_def:Array": {
+          "calls": 1,
+          "inclusiveMs": 0.002964999999903739,
+          "exclusiveMs": 0.002964999999903739
+        },
+        "ka_def:IO.OP": {
+          "calls": 1,
+          "inclusiveMs": 0.0019520000000738946,
+          "exclusiveMs": 0.0019520000000738946
+        },
+        "ka_def:Pair": {
+          "calls": 1,
+          "inclusiveMs": 0.052755999999817504,
+          "exclusiveMs": 0.052755999999817504
+        },
+        "ka_def:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 0.5833229999998366,
+          "exclusiveMs": 0.5833229999998366
+        },
+        "ka_def:IO": {
+          "calls": 1,
+          "inclusiveMs": 0.027743000000100437,
+          "exclusiveMs": 0.027743000000100437
+        },
+        "ka_def:IO.bind": {
+          "calls": 1,
+          "inclusiveMs": 1.7031380000000809,
+          "exclusiveMs": 1.7031380000000809
+        },
+        "ka_def:IO.print": {
+          "calls": 1,
+          "inclusiveMs": 0.003061999999999898,
+          "exclusiveMs": 0.003061999999999898
+        },
+        "ka_def:IO.args": {
+          "calls": 1,
+          "inclusiveMs": 0.002128999999968073,
+          "exclusiveMs": 0.002128999999968073
+        },
+        "ka_def:IO.now": {
+          "calls": 1,
+          "inclusiveMs": 0.002050000000053842,
+          "exclusiveMs": 0.002050000000053842
+        },
+        "ka_def:Bool.and": {
+          "calls": 1,
+          "inclusiveMs": 0.1669280000000981,
+          "exclusiveMs": 0.1669280000000981
+        },
+        "ka_def:Cmp.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.06792999999993299,
+          "exclusiveMs": 0.06792999999993299
+        },
+        "ka_def:Cmp.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.06376799999998184,
+          "exclusiveMs": 0.06376799999998184
+        },
+        "ka_def:Nat.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.17772500000000946,
+          "exclusiveMs": 0.17772500000000946
+        },
+        "ka_def:Char.cmp": {
+          "calls": 1,
+          "inclusiveMs": 1.0602559999999812,
+          "exclusiveMs": 1.0602559999999812
+        },
+        "ka_def:String.cmp.rec": {
+          "calls": 1,
+          "inclusiveMs": 1.14994200000001,
+          "exclusiveMs": 1.14994200000001
+        },
+        "ka_def:String.cmp.fin": {
+          "calls": 1,
+          "inclusiveMs": 2.7757839999999305,
+          "exclusiveMs": 2.7757839999999305
+        },
+        "ka_def:String.cmp": {
+          "calls": 1,
+          "inclusiveMs": 2.26194200000009,
+          "exclusiveMs": 2.26194200000009
+        },
+        "ka_def:String.length": {
+          "calls": 1,
+          "inclusiveMs": 0.1079219999999168,
+          "exclusiveMs": 0.1079219999999168
+        },
+        "ka_def:String.order": {
+          "calls": 1,
+          "inclusiveMs": 0.1432959999999639,
+          "exclusiveMs": 0.1432959999999639
+        },
+        "ka_def:String.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.05703600000015285,
+          "exclusiveMs": 0.05703600000015285
+        },
+        "ka_def:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 2.189767999999958,
+          "exclusiveMs": 2.189767999999958
+        },
+        "ka_def:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 0.6494299999999384,
+          "exclusiveMs": 0.6494299999999384
+        },
+        "ka_def:Nat.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.1706970000000183,
+          "exclusiveMs": 0.1706970000000183
+        },
+        "ka_def:Nat.show": {
+          "calls": 1,
+          "inclusiveMs": 0.40370000000007167,
+          "exclusiveMs": 0.40370000000007167
+        },
+        "ka_def:Nat.read.if": {
+          "calls": 1,
+          "inclusiveMs": 1.789066000000048,
+          "exclusiveMs": 1.789066000000048
+        },
+        "ka_def:Nat.read.go": {
+          "calls": 1,
+          "inclusiveMs": 0.34137600000008206,
+          "exclusiveMs": 0.34137600000008206
+        },
+        "ka_def:Nat.read.trim": {
+          "calls": 1,
+          "inclusiveMs": 64.43585800000005,
+          "exclusiveMs": 64.43585800000005
+        },
+        "ka_def:Nat.read.fits": {
+          "calls": 1,
+          "inclusiveMs": 0.1743619999999737,
+          "exclusiveMs": 0.1743619999999737
+        },
+        "ka_def:Nat.read.gate": {
+          "calls": 1,
+          "inclusiveMs": 0.08933500000011918,
+          "exclusiveMs": 0.08933500000011918
+        },
+        "ka_def:Nat.read": {
+          "calls": 1,
+          "inclusiveMs": 0.20584200000007513,
+          "exclusiveMs": 0.20584200000007513
+        },
+        "ka_def:U32.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 0.14896299999986695,
+          "exclusiveMs": 0.14896299999986695
+        },
+        "ka_def:U32.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.102053000000069,
+          "exclusiveMs": 0.102053000000069
+        },
+        "ka_def:U32.show.if": {
+          "calls": 1,
+          "inclusiveMs": 0.08961999999996806,
+          "exclusiveMs": 0.08961999999996806
+        },
+        "ka_def:U32.show": {
+          "calls": 1,
+          "inclusiveMs": 0.16731499999991684,
+          "exclusiveMs": 0.16731499999991684
+        },
+        "ka_def:../phase37/fixtures-historical/local-fold:fold.step": {
+          "calls": 1,
+          "inclusiveMs": 0.2776560000002064,
+          "exclusiveMs": 0.2776560000002064
+        },
+        "ka_def:../phase37/fixtures-historical/local-fold:fold.cell": {
+          "calls": 1,
+          "inclusiveMs": 0.22721599999999853,
+          "exclusiveMs": 0.22721599999999853
+        },
+        "ka_def:../phase37/fixtures-historical/local-fold:fold.loop": {
+          "calls": 1,
+          "inclusiveMs": 4.743600000000015,
+          "exclusiveMs": 4.743600000000015
+        },
+        "ka_def:../phase37/fixtures-historical/local-fold:fold.finish": {
+          "calls": 1,
+          "inclusiveMs": 0.09462300000018331,
+          "exclusiveMs": 0.09462300000018331
+        },
+        "ka_def:../phase37/fixtures-historical/local-fold:bench": {
+          "calls": 1,
+          "inclusiveMs": 0.27039300000001276,
+          "exclusiveMs": 0.27039300000001276
+        },
+        "ka_def:p46.parsed": {
+          "calls": 1,
+          "inclusiveMs": 0.09607400000004418,
+          "exclusiveMs": 0.09607400000004418
+        },
+        "ka_def:p46.number": {
+          "calls": 1,
+          "inclusiveMs": 0.533036999999922,
+          "exclusiveMs": 0.533036999999922
+        },
+        "ka_def:p46.arguments": {
+          "calls": 1,
+          "inclusiveMs": 0.8362509999999475,
+          "exclusiveMs": 0.8362509999999475
+        },
+        "ka_def:p46.loop": {
+          "calls": 1,
+          "inclusiveMs": 1.2806730000002062,
+          "exclusiveMs": 1.2806730000002062
+        },
+        "ka_def:p46.batch": {
+          "calls": 1,
+          "inclusiveMs": 0.04331500000012056,
+          "exclusiveMs": 0.04331500000012056
+        },
+        "ka_def:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 0.5679189999998471,
+          "exclusiveMs": 0.5679189999998471
+        },
+        "ka_def:main": {
+          "calls": 1,
+          "inclusiveMs": 0.13794900000016241,
+          "exclusiveMs": 0.13794900000016241
+        },
+        "jl_checked_error": {
+          "calls": 1,
+          "inclusiveMs": 48.62246500000015,
+          "exclusiveMs": 48.62246500000015
+        },
+        "nr_prepare": {
+          "calls": 1,
+          "inclusiveMs": 95.4659079999999,
+          "exclusiveMs": 95.4659079999999
+        },
+        "nr_compile": {
+          "calls": 1,
+          "inclusiveMs": 623.316951,
+          "exclusiveMs": 65.4966939999997
+        },
+        "nr_unshared": {
+          "calls": 66,
+          "inclusiveMs": 525.6715250000002,
+          "exclusiveMs": 22.661079999999856
+        },
+        "nc_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 12.010590999999977,
+          "exclusiveMs": 12.010590999999977
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 60.746429000000035,
+          "exclusiveMs": 60.746429000000035
+        },
+        "nf_plan": {
+          "calls": 1,
+          "inclusiveMs": 166.9707860000001,
+          "exclusiveMs": 61.1817800000008
+        },
+        "nf_candidate:Char.cmp": {
+          "calls": 1,
+          "inclusiveMs": 16.20015699999999,
+          "exclusiveMs": 16.20015699999999
+        },
+        "nf_candidate:String.cmp.rec": {
+          "calls": 1,
+          "inclusiveMs": 3.837769999999864,
+          "exclusiveMs": 3.837769999999864
+        },
+        "nf_candidate:String.cmp.fin": {
+          "calls": 1,
+          "inclusiveMs": 8.110500000000002,
+          "exclusiveMs": 8.110500000000002
+        },
+        "nf_candidate:String.cmp": {
+          "calls": 1,
+          "inclusiveMs": 4.160376999999926,
+          "exclusiveMs": 4.160376999999926
+        },
+        "nf_candidate:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 0.22500800000011623,
+          "exclusiveMs": 0.22500800000011623
+        },
+        "nf_candidate:String.order": {
+          "calls": 1,
+          "inclusiveMs": 0.6114669999999478,
+          "exclusiveMs": 0.6114669999999478
+        },
+        "nf_candidate:Cmp.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.1197869999998602,
+          "exclusiveMs": 0.1197869999998602
+        },
+        "nf_candidate:String.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.38880699999981516,
+          "exclusiveMs": 0.38880699999981516
+        },
+        "nf_candidate:Cmp.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.2208020000000488,
+          "exclusiveMs": 0.2208020000000488
+        },
+        "nf_candidate:Nat.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.8005699999998797,
+          "exclusiveMs": 0.8005699999998797
+        },
+        "nf_candidate:Bool.and": {
+          "calls": 1,
+          "inclusiveMs": 0.9927739999998266,
+          "exclusiveMs": 0.9927739999998266
+        },
+        "nf_candidate:String.length": {
+          "calls": 1,
+          "inclusiveMs": 2.3674670000000333,
+          "exclusiveMs": 2.3674670000000333
+        },
+        "nf_candidate:Nat.read.fits": {
+          "calls": 1,
+          "inclusiveMs": 3.2633719999998902,
+          "exclusiveMs": 3.2633719999998902
+        },
+        "nf_candidate:Nat.read.if": {
+          "calls": 1,
+          "inclusiveMs": 1.0339309999999386,
+          "exclusiveMs": 1.0339309999999386
+        },
+        "nf_candidate:Nat.read.go": {
+          "calls": 1,
+          "inclusiveMs": 3.0855199999998604,
+          "exclusiveMs": 3.0855199999998604
+        },
+        "nf_candidate:Nat.read.gate": {
+          "calls": 1,
+          "inclusiveMs": 0.7186040000001412,
+          "exclusiveMs": 0.7186040000001412
+        },
+        "nf_candidate:Nat.read.trim": {
+          "calls": 1,
+          "inclusiveMs": 4.01608699999997,
+          "exclusiveMs": 4.01608699999997
+        },
+        "nf_candidate:Nat.read": {
+          "calls": 1,
+          "inclusiveMs": 1.7923820000000887,
+          "exclusiveMs": 1.7923820000000887
+        },
+        "nf_candidate:p46.parsed": {
+          "calls": 1,
+          "inclusiveMs": 1.5036529999999857,
+          "exclusiveMs": 1.5036529999999857
+        },
+        "nf_candidate:p46.number": {
+          "calls": 1,
+          "inclusiveMs": 2.086753999999928,
+          "exclusiveMs": 2.086753999999928
+        },
+        "nf_candidate:p46.arguments": {
+          "calls": 2,
+          "inclusiveMs": 4.913193999999976,
+          "exclusiveMs": 4.913193999999976
+        },
+        "nf_candidate:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 1.3263819999999669,
+          "exclusiveMs": 1.3263819999999669
+        },
+        "nf_candidate:Nat.show.go": {
+          "calls": 2,
+          "inclusiveMs": 2.1353569999998854,
+          "exclusiveMs": 2.1353569999998854
+        },
+        "nf_candidate:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 2.899718000000121,
+          "exclusiveMs": 2.899718000000121
+        },
+        "nf_candidate:Nat.show": {
+          "calls": 2,
+          "inclusiveMs": 0.9794770000000881,
+          "exclusiveMs": 0.9794770000000881
+        },
+        "nf_candidate:p46.loop": {
+          "calls": 1,
+          "inclusiveMs": 3.53852199999983,
+          "exclusiveMs": 3.53852199999983
+        },
+        "nf_candidate:p46.batch": {
+          "calls": 1,
+          "inclusiveMs": 0.3979099999999107,
+          "exclusiveMs": 0.3979099999999107
+        },
+        "nf_candidate:../phase37/fixtures-historical/local-fold:fold.step": {
+          "calls": 1,
+          "inclusiveMs": 1.4629469999999856,
+          "exclusiveMs": 1.4629469999999856
+        },
+        "nf_candidate:../phase37/fixtures-historical/local-fold:fold.cell": {
+          "calls": 1,
+          "inclusiveMs": 1.3844249999999647,
+          "exclusiveMs": 1.3844249999999647
+        },
+        "nf_candidate:../phase37/fixtures-historical/local-fold:fold.loop": {
+          "calls": 1,
+          "inclusiveMs": 0.9257269999998243,
+          "exclusiveMs": 0.9257269999998243
+        },
+        "nf_candidate:../phase37/fixtures-historical/local-fold:fold.finish": {
+          "calls": 1,
+          "inclusiveMs": 8.396439999999984,
+          "exclusiveMs": 8.396439999999984
+        },
+        "nf_candidate:../phase37/fixtures-historical/local-fold:bench": {
+          "calls": 1,
+          "inclusiveMs": 1.333129000000099,
+          "exclusiveMs": 1.333129000000099
+        },
+        "nf_candidate:U32.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 6.182812000000013,
+          "exclusiveMs": 6.182812000000013
+        },
+        "nf_candidate:U32.show.go": {
+          "calls": 1,
+          "inclusiveMs": 1.061138999999912,
+          "exclusiveMs": 1.061138999999912
+        },
+        "nf_candidate:U32.show.if": {
+          "calls": 1,
+          "inclusiveMs": 0.3121210000001611,
+          "exclusiveMs": 0.3121210000001611
+        },
+        "nf_candidate:U32.show": {
+          "calls": 1,
+          "inclusiveMs": 0.3372540000000299,
+          "exclusiveMs": 0.3372540000000299
+        },
+        "nf_candidate:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 1.8675430000000688,
+          "exclusiveMs": 1.8675430000000688
+        },
+        "nf_candidate:IO.bind": {
+          "calls": 1,
+          "inclusiveMs": 0.619425000000092,
+          "exclusiveMs": 0.619425000000092
+        },
+        "nf_candidate:main": {
+          "calls": 1,
+          "inclusiveMs": 0.07809500000007574,
+          "exclusiveMs": 0.07809500000007574
+        },
+        "nq_candidate_mode:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 0.7534030000001621,
+          "exclusiveMs": 0.7534030000001621
+        },
+        "nq_candidate_mode:p46.arguments": {
+          "calls": 1,
+          "inclusiveMs": 0.9542240000000675,
+          "exclusiveMs": 0.9542240000000675
+        },
+        "nq_candidate_mode:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 0.8283979999998792,
+          "exclusiveMs": 0.8283979999998792
+        },
+        "nq_candidate_mode:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 0.6562120000000959,
+          "exclusiveMs": 0.6562120000000959
+        },
+        "nq_candidate_mode:../phase37/fixtures-historical/local-fold:fold.step": {
+          "calls": 1,
+          "inclusiveMs": 0.9103230000000622,
+          "exclusiveMs": 0.9103230000000622
+        },
+        "nq_candidate_mode:../phase37/fixtures-historical/local-fold:fold.cell": {
+          "calls": 1,
+          "inclusiveMs": 0.7195689999998649,
+          "exclusiveMs": 0.7195689999998649
+        },
+        "nq_candidate_mode:../phase37/fixtures-historical/local-fold:fold.loop": {
+          "calls": 1,
+          "inclusiveMs": 4.551971000000094,
+          "exclusiveMs": 4.551971000000094
+        },
+        "nq_candidate_mode:../phase37/fixtures-historical/local-fold:fold.finish": {
+          "calls": 1,
+          "inclusiveMs": 0.154158999999936,
+          "exclusiveMs": 0.154158999999936
+        },
+        "nq_candidate_mode:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 0.5733410000000276,
+          "exclusiveMs": 0.5733410000000276
+        },
+        "nh_macros": {
+          "calls": 1,
+          "inclusiveMs": 18.21750300000008,
+          "exclusiveMs": 18.21750300000008
+        },
+        "nd_compile_entry:main": {
+          "calls": 1,
+          "inclusiveMs": 5.310588999999936,
+          "exclusiveMs": 5.310588999999936
+        },
+        "nd_compile_entry:IO.bind": {
+          "calls": 1,
+          "inclusiveMs": 2.6908260000000155,
+          "exclusiveMs": 2.6908260000000155
+        },
+        "nd_compile_entry:IO.args": {
+          "calls": 1,
+          "inclusiveMs": 0.3740900000000238,
+          "exclusiveMs": 0.3740900000000238
+        },
+        "nd_compile_entry:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 6.2786429999998745,
+          "exclusiveMs": 6.2786429999998745
+        },
+        "nd_compile_entry:IO.print": {
+          "calls": 1,
+          "inclusiveMs": 0.31219000000010055,
+          "exclusiveMs": 0.31219000000010055
+        },
+        "nd_compile_entry:U32.show": {
+          "calls": 1,
+          "inclusiveMs": 1.0469739999998637,
+          "exclusiveMs": 1.0469739999998637
+        },
+        "nd_compile_entry:U32.show.if": {
+          "calls": 1,
+          "inclusiveMs": 0.7576630000000932,
+          "exclusiveMs": 0.7576630000000932
+        },
+        "nd_compile_entry:U32.show.go": {
+          "calls": 1,
+          "inclusiveMs": 3.169601000000057,
+          "exclusiveMs": 3.169601000000057
+        },
+        "nd_compile_entry:U32.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 1.8562650000001213,
+          "exclusiveMs": 1.8562650000001213
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/local-fold:bench": {
+          "calls": 1,
+          "inclusiveMs": 0.18754899999998997,
+          "exclusiveMs": 0.18754899999998997
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/local-fold:fold.finish": {
+          "calls": 1,
+          "inclusiveMs": 5.539944999999989,
+          "exclusiveMs": 5.539944999999989
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/local-fold:fold.loop": {
+          "calls": 1,
+          "inclusiveMs": 0.2679120000000239,
+          "exclusiveMs": 0.2679120000000239
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/local-fold:fold.cell": {
+          "calls": 1,
+          "inclusiveMs": 0.18536799999992581,
+          "exclusiveMs": 0.18536799999992581
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/local-fold:fold.step": {
+          "calls": 1,
+          "inclusiveMs": 2.6815149999999903,
+          "exclusiveMs": 2.6815149999999903
+        },
+        "nd_compile_entry:p46.batch": {
+          "calls": 1,
+          "inclusiveMs": 0.9497499999999945,
+          "exclusiveMs": 0.9497499999999945
+        },
+        "nd_compile_entry:p46.loop": {
+          "calls": 1,
+          "inclusiveMs": 1.3278479999999035,
+          "exclusiveMs": 1.3278479999999035
+        },
+        "nd_compile_entry:IO.now": {
+          "calls": 1,
+          "inclusiveMs": 0.1945539999999255,
+          "exclusiveMs": 0.1945539999999255
+        },
+        "nd_compile_entry:Nat.show": {
+          "calls": 1,
+          "inclusiveMs": 0.7241919999999027,
+          "exclusiveMs": 0.7241919999999027
+        },
+        "nd_compile_entry:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 1.8187540000001263,
+          "exclusiveMs": 1.8187540000001263
+        },
+        "nd_compile_entry:Nat.show.go": {
+          "calls": 1,
+          "inclusiveMs": 2.068284000000176,
+          "exclusiveMs": 2.068284000000176
+        },
+        "nd_compile_entry:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 0.374217999999928,
+          "exclusiveMs": 0.374217999999928
+        },
+        "nd_compile_entry:p46.arguments": {
+          "calls": 1,
+          "inclusiveMs": 1.120093999999881,
+          "exclusiveMs": 1.120093999999881
+        },
+        "nd_compile_entry:p46.number": {
+          "calls": 1,
+          "inclusiveMs": 0.21660500000007232,
+          "exclusiveMs": 0.21660500000007232
+        },
+        "nd_compile_entry:p46.parsed": {
+          "calls": 1,
+          "inclusiveMs": 0.0954269999999724,
+          "exclusiveMs": 0.0954269999999724
+        },
+        "nd_compile_entry:Nat.read": {
+          "calls": 1,
+          "inclusiveMs": 0.738070000000107,
+          "exclusiveMs": 0.738070000000107
+        },
+        "nd_compile_entry:Nat.read.trim": {
+          "calls": 1,
+          "inclusiveMs": 11.298430000000053,
+          "exclusiveMs": 11.298430000000053
+        },
+        "nd_compile_entry:Nat.read.gate": {
+          "calls": 1,
+          "inclusiveMs": 1.4945909999999003,
+          "exclusiveMs": 1.4945909999999003
+        },
+        "nd_compile_entry:Nat.read.go": {
+          "calls": 1,
+          "inclusiveMs": 3.6989829999999984,
+          "exclusiveMs": 3.6989829999999984
+        },
+        "nd_compile_entry:Nat.read.if": {
+          "calls": 1,
+          "inclusiveMs": 0.8273229999999785,
+          "exclusiveMs": 0.8273229999999785
+        },
+        "nd_compile_entry:Nat.read.fits": {
+          "calls": 1,
+          "inclusiveMs": 0.9652849999999944,
+          "exclusiveMs": 0.9652849999999944
+        },
+        "nd_compile_entry:String.length": {
+          "calls": 1,
+          "inclusiveMs": 0.6935610000000452,
+          "exclusiveMs": 0.6935610000000452
+        },
+        "nd_compile_entry:Bool.and": {
+          "calls": 1,
+          "inclusiveMs": 0.11696099999994658,
+          "exclusiveMs": 0.11696099999994658
+        },
+        "nd_compile_entry:Nat.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.9866129999998066,
+          "exclusiveMs": 0.9866129999998066
+        },
+        "nd_compile_entry:Cmp.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.0894740000001093,
+          "exclusiveMs": 0.0894740000001093
+        },
+        "nd_compile_entry:String.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.23497599999996055,
+          "exclusiveMs": 0.23497599999996055
+        },
+        "nd_compile_entry:Cmp.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.07886000000007698,
+          "exclusiveMs": 0.07886000000007698
+        },
+        "nd_compile_entry:String.order": {
+          "calls": 1,
+          "inclusiveMs": 0.27814200000011624,
+          "exclusiveMs": 0.27814200000011624
+        },
+        "nd_compile_entry:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 0.17584000000010747,
+          "exclusiveMs": 0.17584000000010747
+        },
+        "nd_compile_entry:String.cmp": {
+          "calls": 1,
+          "inclusiveMs": 3.2609469999999874,
+          "exclusiveMs": 3.2609469999999874
+        },
+        "nd_compile_entry:String.cmp.fin": {
+          "calls": 1,
+          "inclusiveMs": 2.6966929999998683,
+          "exclusiveMs": 2.6966929999998683
+        },
+        "nd_compile_entry:String.cmp.rec": {
+          "calls": 1,
+          "inclusiveMs": 0.22517500000003565,
+          "exclusiveMs": 0.22517500000003565
+        },
+        "nd_compile_entry:Char.cmp": {
+          "calls": 1,
+          "inclusiveMs": 0.33464299999991454,
+          "exclusiveMs": 0.33464299999991454
+        },
+        "no_route_one:Char.cmp": {
+          "calls": 1,
+          "inclusiveMs": 1.03144599999996,
+          "exclusiveMs": 1.03144599999996
+        },
+        "no_route_one:String.cmp.rec": {
+          "calls": 1,
+          "inclusiveMs": 0.2242109999999684,
+          "exclusiveMs": 0.2242109999999684
+        },
+        "no_route_one:String.cmp.fin": {
+          "calls": 1,
+          "inclusiveMs": 1.0633510000000115,
+          "exclusiveMs": 1.0633510000000115
+        },
+        "no_route_one:String.cmp": {
+          "calls": 1,
+          "inclusiveMs": 75.43887999999993,
+          "exclusiveMs": 75.43887999999993
+        },
+        "no_route_one:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 0.10702900000001137,
+          "exclusiveMs": 0.10702900000001137
+        },
+        "no_route_one:String.order": {
+          "calls": 1,
+          "inclusiveMs": 5.8019829999998365,
+          "exclusiveMs": 5.8019829999998365
+        },
+        "no_route_one:Cmp.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.10669000000007145,
+          "exclusiveMs": 0.10669000000007145
+        },
+        "no_route_one:String.is_le": {
+          "calls": 1,
+          "inclusiveMs": 7.845997000000125,
+          "exclusiveMs": 7.845997000000125
+        },
+        "no_route_one:Cmp.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.19820900000013353,
+          "exclusiveMs": 0.19820900000013353
+        },
+        "no_route_one:Nat.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.10641599999985374,
+          "exclusiveMs": 0.10641599999985374
+        },
+        "no_route_one:Bool.and": {
+          "calls": 1,
+          "inclusiveMs": 0.07855900000004112,
+          "exclusiveMs": 0.07855900000004112
+        },
+        "no_route_one:String.length": {
+          "calls": 1,
+          "inclusiveMs": 1.8768989999998666,
+          "exclusiveMs": 1.8768989999998666
+        },
+        "no_route_one:Nat.read.fits": {
+          "calls": 1,
+          "inclusiveMs": 5.164331000000175,
+          "exclusiveMs": 5.164331000000175
+        },
+        "no_route_one:Nat.read.if": {
+          "calls": 1,
+          "inclusiveMs": 0.289602000000059,
+          "exclusiveMs": 0.289602000000059
+        },
+        "no_route_one:Nat.read.go": {
+          "calls": 1,
+          "inclusiveMs": 0.13355300000011994,
+          "exclusiveMs": 0.13355300000011994
+        },
+        "no_route_one:Nat.read.gate": {
+          "calls": 1,
+          "inclusiveMs": 0.5271649999999681,
+          "exclusiveMs": 0.5271649999999681
+        },
+        "no_route_one:Nat.read.trim": {
+          "calls": 1,
+          "inclusiveMs": 0.14585199999987708,
+          "exclusiveMs": 0.14585199999987708
+        },
+        "no_route_one:Nat.read": {
+          "calls": 1,
+          "inclusiveMs": 0.10940999999979795,
+          "exclusiveMs": 0.10940999999979795
+        },
+        "no_route_one:p46.parsed": {
+          "calls": 1,
+          "inclusiveMs": 0.02980000000002292,
+          "exclusiveMs": 0.02980000000002292
+        },
+        "no_route_one:p46.number": {
+          "calls": 1,
+          "inclusiveMs": 6.403313999999909,
+          "exclusiveMs": 6.403313999999909
+        },
+        "no_route_one:p46.arguments": {
+          "calls": 1,
+          "inclusiveMs": 0.05038199999989956,
+          "exclusiveMs": 0.05038199999989956
+        },
+        "no_route_one:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 0.08228000000008251,
+          "exclusiveMs": 0.08228000000008251
+        },
+        "no_route_one:Nat.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.19260899999994763,
+          "exclusiveMs": 0.19260899999994763
+        },
+        "no_route_one:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 0.12112200000001394,
+          "exclusiveMs": 0.12112200000001394
+        },
+        "no_route_one:Nat.show": {
+          "calls": 1,
+          "inclusiveMs": 0.039905999999973574,
+          "exclusiveMs": 0.039905999999973574
+        },
+        "no_route_one:p46.loop": {
+          "calls": 1,
+          "inclusiveMs": 0.05719999999996617,
+          "exclusiveMs": 0.05719999999996617
+        },
+        "no_route_one:p46.batch": {
+          "calls": 1,
+          "inclusiveMs": 0.031968000000006214,
+          "exclusiveMs": 0.031968000000006214
+        },
+        "no_route_one:../phase37/fixtures-historical/local-fold:fold.step": {
+          "calls": 1,
+          "inclusiveMs": 0.06699600000001737,
+          "exclusiveMs": 0.06699600000001737
+        },
+        "no_route_one:../phase37/fixtures-historical/local-fold:fold.cell": {
+          "calls": 1,
+          "inclusiveMs": 0.060004000000162705,
+          "exclusiveMs": 0.060004000000162705
+        },
+        "no_route_one:../phase37/fixtures-historical/local-fold:fold.loop": {
+          "calls": 1,
+          "inclusiveMs": 0.06902500000001055,
+          "exclusiveMs": 0.06902500000001055
+        },
+        "no_route_one:../phase37/fixtures-historical/local-fold:fold.finish": {
+          "calls": 1,
+          "inclusiveMs": 0.040568000000121174,
+          "exclusiveMs": 0.040568000000121174
+        },
+        "no_route_one:../phase37/fixtures-historical/local-fold:bench": {
+          "calls": 1,
+          "inclusiveMs": 0.043263000000024476,
+          "exclusiveMs": 0.043263000000024476
+        },
+        "no_route_one:U32.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 0.34689899999989393,
+          "exclusiveMs": 0.34689899999989393
+        },
+        "no_route_one:U32.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.1659540000000561,
+          "exclusiveMs": 0.1659540000000561
+        },
+        "no_route_one:U32.show.if": {
+          "calls": 1,
+          "inclusiveMs": 0.05674500000009175,
+          "exclusiveMs": 0.05674500000009175
+        },
+        "no_route_one:U32.show": {
+          "calls": 1,
+          "inclusiveMs": 0.034370000000080836,
+          "exclusiveMs": 0.034370000000080836
+        },
+        "no_route_one:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 0.037898000000041066,
+          "exclusiveMs": 0.037898000000041066
+        },
+        "no_route_one:IO.bind": {
+          "calls": 1,
+          "inclusiveMs": 0.05135300000006282,
+          "exclusiveMs": 0.05135300000006282
+        },
+        "no_route_one:main": {
+          "calls": 1,
+          "inclusiveMs": 0.0032370000001265,
+          "exclusiveMs": 0.0032370000001265
+        },
+        "ne_program": {
+          "calls": 1,
+          "inclusiveMs": 101.23596900000007,
+          "exclusiveMs": 101.23596900000007
+        }
+      },
+      "exactC": true
+    },
+    {
+      "case": "lexer",
+      "timings": {
+        "importsMs": 70.260044,
+        "requestMs": 1785.568648
+      },
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 20.204613999999992,
+          "exclusiveMs": 20.204613999999992
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.8226839999999811,
+          "exclusiveMs": 0.8226839999999811
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 264.2499069999999,
+          "exclusiveMs": 264.2499069999999
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.12897000000020853,
+          "exclusiveMs": 0.12897000000020853
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 12.738084000000072,
+          "exclusiveMs": 12.738084000000072
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 143.6139680000001,
+          "exclusiveMs": 143.6139680000001
+        },
+        "driver_report_data": {
+          "calls": 1,
+          "inclusiveMs": 51.15535199999999,
+          "exclusiveMs": 51.15535199999999
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 14.782715999999937,
+          "exclusiveMs": 14.782715999999937
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 0.5267339999998057,
+          "exclusiveMs": 0.5267339999998057
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 15.84619500000008,
+          "exclusiveMs": 15.84619500000008
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 16.005388999999923,
+          "exclusiveMs": 16.005388999999923
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 101.93074699999988,
+          "exclusiveMs": 101.93074699999988
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 23.901039999999966,
+          "exclusiveMs": 23.901039999999966
+        },
+        "nr_prepare": {
+          "calls": 1,
+          "inclusiveMs": 114.40183999999999,
+          "exclusiveMs": 114.40183999999999
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 7.39347500000008,
+          "exclusiveMs": 7.39347500000008
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.5587350000000697,
+          "exclusiveMs": 0.5587350000000697
+        },
+        "nr_compile": {
+          "calls": 1,
+          "inclusiveMs": 870.3008830000001,
+          "exclusiveMs": 870.3008830000001
+        }
+      },
+      "diagnostic": {
+        "ka_def:Unit": {
+          "calls": 1,
+          "inclusiveMs": 0.10742900000013833,
+          "exclusiveMs": 0.10742900000013833
+        },
+        "ka_def:Bool": {
+          "calls": 1,
+          "inclusiveMs": 0.010307000000011612,
+          "exclusiveMs": 0.010307000000011612
+        },
+        "ka_def:Cmp": {
+          "calls": 1,
+          "inclusiveMs": 0.008122000000184926,
+          "exclusiveMs": 0.008122000000184926
+        },
+        "ka_def:Sigma": {
+          "calls": 1,
+          "inclusiveMs": 0.0075839999999516294,
+          "exclusiveMs": 0.0075839999999516294
+        },
+        "ka_def:Nat": {
+          "calls": 1,
+          "inclusiveMs": 0.007600000000138607,
+          "exclusiveMs": 0.007600000000138607
+        },
+        "ka_def:Maybe": {
+          "calls": 1,
+          "inclusiveMs": 0.007475000000113141,
+          "exclusiveMs": 0.007475000000113141
+        },
+        "ka_def:List": {
+          "calls": 1,
+          "inclusiveMs": 0.007435999999870546,
+          "exclusiveMs": 0.007435999999870546
+        },
+        "ka_def:Word.Nil": {
+          "calls": 1,
+          "inclusiveMs": 0.007546999999931359,
+          "exclusiveMs": 0.007546999999931359
+        },
+        "ka_def:Word.Con": {
+          "calls": 1,
+          "inclusiveMs": 0.010568000000148459,
+          "exclusiveMs": 0.010568000000148459
+        },
+        "ka_def:Word": {
+          "calls": 1,
+          "inclusiveMs": 0.6941540000000259,
+          "exclusiveMs": 0.6941540000000259
+        },
+        "ka_def:U32": {
+          "calls": 1,
+          "inclusiveMs": 0.006363000000192187,
+          "exclusiveMs": 0.006363000000192187
+        },
+        "ka_def:Char": {
+          "calls": 1,
+          "inclusiveMs": 0.0020410000001902517,
+          "exclusiveMs": 0.0020410000001902517
+        },
+        "ka_def:String": {
+          "calls": 1,
+          "inclusiveMs": 0.0019010000000889704,
+          "exclusiveMs": 0.0019010000000889704
+        },
+        "ka_def:IO.OP": {
+          "calls": 1,
+          "inclusiveMs": 0.0017770000001746666,
+          "exclusiveMs": 0.0017770000001746666
+        },
+        "ka_def:Pair": {
+          "calls": 1,
+          "inclusiveMs": 0.043408999999883235,
+          "exclusiveMs": 0.043408999999883235
+        },
+        "ka_def:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 0.20206499999994776,
+          "exclusiveMs": 0.20206499999994776
+        },
+        "ka_def:IO": {
+          "calls": 1,
+          "inclusiveMs": 0.02338799999984076,
+          "exclusiveMs": 0.02338799999984076
+        },
+        "ka_def:IO.bind": {
+          "calls": 1,
+          "inclusiveMs": 0.8107210000000578,
+          "exclusiveMs": 0.8107210000000578
+        },
+        "ka_def:IO.print": {
+          "calls": 1,
+          "inclusiveMs": 0.0026609999999891443,
+          "exclusiveMs": 0.0026609999999891443
+        },
+        "ka_def:IO.args": {
+          "calls": 1,
+          "inclusiveMs": 0.0019330000000081782,
+          "exclusiveMs": 0.0019330000000081782
+        },
+        "ka_def:IO.now": {
+          "calls": 1,
+          "inclusiveMs": 0.0017230000000836299,
+          "exclusiveMs": 0.0017230000000836299
+        },
+        "ka_def:Bool.and": {
+          "calls": 1,
+          "inclusiveMs": 0.14515099999994163,
+          "exclusiveMs": 0.14515099999994163
+        },
+        "ka_def:Cmp.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.059932000000117114,
+          "exclusiveMs": 0.059932000000117114
+        },
+        "ka_def:Cmp.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.08277899999984584,
+          "exclusiveMs": 0.08277899999984584
+        },
+        "ka_def:Nat.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.24909200000001874,
+          "exclusiveMs": 0.24909200000001874
+        },
+        "ka_def:Char.cmp": {
+          "calls": 1,
+          "inclusiveMs": 0.8712659999998777,
+          "exclusiveMs": 0.8712659999998777
+        },
+        "ka_def:String.cmp.rec": {
+          "calls": 1,
+          "inclusiveMs": 2.191471999999976,
+          "exclusiveMs": 2.191471999999976
+        },
+        "ka_def:String.cmp.fin": {
+          "calls": 1,
+          "inclusiveMs": 1.9466710000001513,
+          "exclusiveMs": 1.9466710000001513
+        },
+        "ka_def:String.cmp": {
+          "calls": 1,
+          "inclusiveMs": 0.8776659999998628,
+          "exclusiveMs": 0.8776659999998628
+        },
+        "ka_def:String.length": {
+          "calls": 1,
+          "inclusiveMs": 0.09376700000007077,
+          "exclusiveMs": 0.09376700000007077
+        },
+        "ka_def:String.order": {
+          "calls": 1,
+          "inclusiveMs": 0.20301500000005035,
+          "exclusiveMs": 0.20301500000005035
+        },
+        "ka_def:String.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.047634000000016385,
+          "exclusiveMs": 0.047634000000016385
+        },
+        "ka_def:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 0.17705900000009933,
+          "exclusiveMs": 0.17705900000009933
+        },
+        "ka_def:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 0.27927999999997155,
+          "exclusiveMs": 0.27927999999997155
+        },
+        "ka_def:Nat.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.14726599999994505,
+          "exclusiveMs": 0.14726599999994505
+        },
+        "ka_def:Nat.show": {
+          "calls": 1,
+          "inclusiveMs": 0.32153600000015103,
+          "exclusiveMs": 0.32153600000015103
+        },
+        "ka_def:Nat.read.if": {
+          "calls": 1,
+          "inclusiveMs": 0.1449329999998099,
+          "exclusiveMs": 0.1449329999998099
+        },
+        "ka_def:Nat.read.go": {
+          "calls": 1,
+          "inclusiveMs": 0.7133989999999812,
+          "exclusiveMs": 0.7133989999999812
+        },
+        "ka_def:Nat.read.trim": {
+          "calls": 1,
+          "inclusiveMs": 66.45344399999999,
+          "exclusiveMs": 66.45344399999999
+        },
+        "ka_def:Nat.read.fits": {
+          "calls": 1,
+          "inclusiveMs": 0.25147900000001755,
+          "exclusiveMs": 0.25147900000001755
+        },
+        "ka_def:Nat.read.gate": {
+          "calls": 1,
+          "inclusiveMs": 0.12098100000002887,
+          "exclusiveMs": 0.12098100000002887
+        },
+        "ka_def:Nat.read": {
+          "calls": 1,
+          "inclusiveMs": 2.110345999999936,
+          "exclusiveMs": 2.110345999999936
+        },
+        "ka_def:U32.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 1.9411059999999907,
+          "exclusiveMs": 1.9411059999999907
+        },
+        "ka_def:U32.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.10826000000020031,
+          "exclusiveMs": 0.10826000000020031
+        },
+        "ka_def:U32.show.if": {
+          "calls": 1,
+          "inclusiveMs": 1.957249000000047,
+          "exclusiveMs": 1.957249000000047
+        },
+        "ka_def:U32.show": {
+          "calls": 1,
+          "inclusiveMs": 0.07544800000005125,
+          "exclusiveMs": 0.07544800000005125
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:Slot": {
+          "calls": 1,
+          "inclusiveMs": 0.00250200000004952,
+          "exclusiveMs": 0.00250200000004952
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:Cls": {
+          "calls": 1,
+          "inclusiveMs": 0.0017829999999321444,
+          "exclusiveMs": 0.0017829999999321444
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:Mode": {
+          "calls": 1,
+          "inclusiveMs": 0.0017379999999320717,
+          "exclusiveMs": 0.0017379999999320717
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:prng": {
+          "calls": 1,
+          "inclusiveMs": 0.18460299999992458,
+          "exclusiveMs": 0.18460299999992458
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:seed": {
+          "calls": 1,
+          "inclusiveMs": 0.05815499999994245,
+          "exclusiveMs": 0.05815499999994245
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:salt": {
+          "calls": 1,
+          "inclusiveMs": 0.05769400000008318,
+          "exclusiveMs": 0.05769400000008318
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:op.pick": {
+          "calls": 1,
+          "inclusiveMs": 0.12227899999993497,
+          "exclusiveMs": 0.12227899999993497
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:op": {
+          "calls": 1,
+          "inclusiveMs": 0.12162400000011075,
+          "exclusiveMs": 0.12162400000011075
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:ident": {
+          "calls": 1,
+          "inclusiveMs": 0.2584079999999176,
+          "exclusiveMs": 0.2584079999999176
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:num": {
+          "calls": 1,
+          "inclusiveMs": 0.5933620000000701,
+          "exclusiveMs": 0.5933620000000701
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:expand": {
+          "calls": 1,
+          "inclusiveMs": 0.2879950000001372,
+          "exclusiveMs": 0.2879950000001372
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:slot.go": {
+          "calls": 1,
+          "inclusiveMs": 0.25092099999983475,
+          "exclusiveMs": 0.25092099999983475
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:slot": {
+          "calls": 1,
+          "inclusiveMs": 0.08411399999999958,
+          "exclusiveMs": 0.08411399999999958
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:gen.at": {
+          "calls": 1,
+          "inclusiveMs": 0.06077800000002753,
+          "exclusiveMs": 0.06077800000002753
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:gen": {
+          "calls": 1,
+          "inclusiveMs": 0.2293699999997898,
+          "exclusiveMs": 0.2293699999997898
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:tpl": {
+          "calls": 1,
+          "inclusiveMs": 0.009005000000115615,
+          "exclusiveMs": 0.009005000000115615
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:cls.go": {
+          "calls": 1,
+          "inclusiveMs": 0.36383500000010827,
+          "exclusiveMs": 0.36383500000010827
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:cls": {
+          "calls": 1,
+          "inclusiveMs": 0.20521599999983664,
+          "exclusiveMs": 0.20521599999983664
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:mix": {
+          "calls": 1,
+          "inclusiveMs": 0.07973300000003292,
+          "exclusiveMs": 0.07973300000003292
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:fnv": {
+          "calls": 1,
+          "inclusiveMs": 0.044038999999884254,
+          "exclusiveMs": 0.044038999999884254
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:step.at": {
+          "calls": 1,
+          "inclusiveMs": 7.927680000000009,
+          "exclusiveMs": 7.927680000000009
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:step": {
+          "calls": 1,
+          "inclusiveMs": 0.1415150000000267,
+          "exclusiveMs": 0.1415150000000267
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:flush": {
+          "calls": 1,
+          "inclusiveMs": 0.1212470000000394,
+          "exclusiveMs": 0.1212470000000394
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:lex": {
+          "calls": 1,
+          "inclusiveMs": 0.6705999999999221,
+          "exclusiveMs": 0.6705999999999221
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:line": {
+          "calls": 1,
+          "inclusiveMs": 0.29640199999994365,
+          "exclusiveMs": 0.29640199999994365
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:batch": {
+          "calls": 1,
+          "inclusiveMs": 0.31762099999991733,
+          "exclusiveMs": 0.31762099999991733
+        },
+        "ka_def:../phase37/fixtures-historical/lexer:bench": {
+          "calls": 1,
+          "inclusiveMs": 0.05875400000013542,
+          "exclusiveMs": 0.05875400000013542
+        },
+        "ka_def:p46.parsed": {
+          "calls": 1,
+          "inclusiveMs": 0.2667460000000119,
+          "exclusiveMs": 0.2667460000000119
+        },
+        "ka_def:p46.number": {
+          "calls": 1,
+          "inclusiveMs": 0.05710200000021359,
+          "exclusiveMs": 0.05710200000021359
+        },
+        "ka_def:p46.arguments": {
+          "calls": 1,
+          "inclusiveMs": 1.4170460000000276,
+          "exclusiveMs": 1.4170460000000276
+        },
+        "ka_def:p46.loop": {
+          "calls": 1,
+          "inclusiveMs": 0.6918390000000727,
+          "exclusiveMs": 0.6918390000000727
+        },
+        "ka_def:p46.batch": {
+          "calls": 1,
+          "inclusiveMs": 0.3147879999999077,
+          "exclusiveMs": 0.3147879999999077
+        },
+        "ka_def:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 1.0891670000000886,
+          "exclusiveMs": 1.0891670000000886
+        },
+        "ka_def:main": {
+          "calls": 1,
+          "inclusiveMs": 0.25289299999985815,
+          "exclusiveMs": 0.25289299999985815
+        },
+        "jl_checked_error": {
+          "calls": 1,
+          "inclusiveMs": 49.013258999999834,
+          "exclusiveMs": 49.013258999999834
+        },
+        "nr_prepare": {
+          "calls": 1,
+          "inclusiveMs": 114.27705100000003,
+          "exclusiveMs": 114.27705100000003
+        },
+        "nr_compile": {
+          "calls": 1,
+          "inclusiveMs": 870.226966,
+          "exclusiveMs": 111.80949100000248
+        },
+        "nr_unshared": {
+          "calls": 87,
+          "inclusiveMs": 603.4914329999995,
+          "exclusiveMs": 24.188727999999855
+        },
+        "nc_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 17.416394999999966,
+          "exclusiveMs": 17.416394999999966
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 62.212676999999985,
+          "exclusiveMs": 62.212676999999985
+        },
+        "nf_plan": {
+          "calls": 1,
+          "inclusiveMs": 238.37200799999982,
+          "exclusiveMs": 57.534802999999556
+        },
+        "nf_candidate:Char.cmp": {
+          "calls": 1,
+          "inclusiveMs": 15.589772000000039,
+          "exclusiveMs": 15.589772000000039
+        },
+        "nf_candidate:String.cmp.rec": {
+          "calls": 1,
+          "inclusiveMs": 2.9860929999999826,
+          "exclusiveMs": 2.9860929999999826
+        },
+        "nf_candidate:String.cmp.fin": {
+          "calls": 1,
+          "inclusiveMs": 7.4069489999999405,
+          "exclusiveMs": 7.4069489999999405
+        },
+        "nf_candidate:String.cmp": {
+          "calls": 1,
+          "inclusiveMs": 5.1339459999999235,
+          "exclusiveMs": 5.1339459999999235
+        },
+        "nf_candidate:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 0.21228099999984806,
+          "exclusiveMs": 0.21228099999984806
+        },
+        "nf_candidate:String.order": {
+          "calls": 1,
+          "inclusiveMs": 0.3554030000000239,
+          "exclusiveMs": 0.3554030000000239
+        },
+        "nf_candidate:Cmp.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.41760199999998804,
+          "exclusiveMs": 0.41760199999998804
+        },
+        "nf_candidate:String.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.8032780000000912,
+          "exclusiveMs": 0.8032780000000912
+        },
+        "nf_candidate:Cmp.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.22224099999993996,
+          "exclusiveMs": 0.22224099999993996
+        },
+        "nf_candidate:Nat.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 1.8308309999999892,
+          "exclusiveMs": 1.8308309999999892
+        },
+        "nf_candidate:String.length": {
+          "calls": 1,
+          "inclusiveMs": 0.41814399999998386,
+          "exclusiveMs": 0.41814399999998386
+        },
+        "nf_candidate:Nat.read.fits": {
+          "calls": 1,
+          "inclusiveMs": 4.601959999999963,
+          "exclusiveMs": 4.601959999999963
+        },
+        "nf_candidate:Nat.read.if": {
+          "calls": 1,
+          "inclusiveMs": 1.7830350000001545,
+          "exclusiveMs": 1.7830350000001545
+        },
+        "nf_candidate:Nat.read.go": {
+          "calls": 1,
+          "inclusiveMs": 3.150327999999945,
+          "exclusiveMs": 3.150327999999945
+        },
+        "nf_candidate:Nat.read.gate": {
+          "calls": 1,
+          "inclusiveMs": 0.3124209999998584,
+          "exclusiveMs": 0.3124209999998584
+        },
+        "nf_candidate:Nat.read.trim": {
+          "calls": 1,
+          "inclusiveMs": 7.459085999999843,
+          "exclusiveMs": 7.459085999999843
+        },
+        "nf_candidate:Nat.read": {
+          "calls": 1,
+          "inclusiveMs": 2.684052000000065,
+          "exclusiveMs": 2.684052000000065
+        },
+        "nf_candidate:p46.parsed": {
+          "calls": 1,
+          "inclusiveMs": 0.642430000000104,
+          "exclusiveMs": 0.642430000000104
+        },
+        "nf_candidate:p46.number": {
+          "calls": 1,
+          "inclusiveMs": 0.8334370000000035,
+          "exclusiveMs": 0.8334370000000035
+        },
+        "nf_candidate:p46.arguments": {
+          "calls": 2,
+          "inclusiveMs": 3.5996070000001055,
+          "exclusiveMs": 3.5996070000001055
+        },
+        "nf_candidate:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 4.49664000000007,
+          "exclusiveMs": 4.49664000000007
+        },
+        "nf_candidate:Nat.show.go": {
+          "calls": 2,
+          "inclusiveMs": 3.0332590000000437,
+          "exclusiveMs": 3.0332590000000437
+        },
+        "nf_candidate:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 1.1861569999998665,
+          "exclusiveMs": 1.1861569999998665
+        },
+        "nf_candidate:Nat.show": {
+          "calls": 2,
+          "inclusiveMs": 0.9887710000000425,
+          "exclusiveMs": 0.9887710000000425
+        },
+        "nf_candidate:p46.loop": {
+          "calls": 1,
+          "inclusiveMs": 3.2300109999998767,
+          "exclusiveMs": 3.2300109999998767
+        },
+        "nf_candidate:p46.batch": {
+          "calls": 1,
+          "inclusiveMs": 0.17001700000014353,
+          "exclusiveMs": 0.17001700000014353
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:seed": {
+          "calls": 1,
+          "inclusiveMs": 0.590558000000101,
+          "exclusiveMs": 0.590558000000101
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:tpl": {
+          "calls": 1,
+          "inclusiveMs": 0.044818999999961306,
+          "exclusiveMs": 0.044818999999961306
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:salt": {
+          "calls": 1,
+          "inclusiveMs": 0.3910480000001826,
+          "exclusiveMs": 0.3910480000001826
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:slot.go": {
+          "calls": 1,
+          "inclusiveMs": 1.2257870000000821,
+          "exclusiveMs": 1.2257870000000821
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:slot": {
+          "calls": 1,
+          "inclusiveMs": 0.7160469999998895,
+          "exclusiveMs": 0.7160469999998895
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:op.pick": {
+          "calls": 1,
+          "inclusiveMs": 0.5526709999999184,
+          "exclusiveMs": 0.5526709999999184
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:op": {
+          "calls": 1,
+          "inclusiveMs": 9.19403699999998,
+          "exclusiveMs": 9.19403699999998
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:num": {
+          "calls": 1,
+          "inclusiveMs": 2.618972999999869,
+          "exclusiveMs": 2.618972999999869
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:prng": {
+          "calls": 1,
+          "inclusiveMs": 0.7146540000001096,
+          "exclusiveMs": 0.7146540000001096
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:ident": {
+          "calls": 1,
+          "inclusiveMs": 1.094867000000022,
+          "exclusiveMs": 1.094867000000022
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:expand": {
+          "calls": 1,
+          "inclusiveMs": 4.041101000000026,
+          "exclusiveMs": 4.041101000000026
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:gen.at": {
+          "calls": 1,
+          "inclusiveMs": 0.5811559999999645,
+          "exclusiveMs": 0.5811559999999645
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:gen": {
+          "calls": 1,
+          "inclusiveMs": 5.423776999999973,
+          "exclusiveMs": 5.423776999999973
+        },
+        "nf_candidate:Bool.and": {
+          "calls": 1,
+          "inclusiveMs": 0.2739050000000134,
+          "exclusiveMs": 0.2739050000000134
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:cls.go": {
+          "calls": 1,
+          "inclusiveMs": 0.7710000000001855,
+          "exclusiveMs": 0.7710000000001855
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:cls": {
+          "calls": 1,
+          "inclusiveMs": 1.7336150000000998,
+          "exclusiveMs": 1.7336150000000998
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:fnv": {
+          "calls": 1,
+          "inclusiveMs": 0.2555049999998573,
+          "exclusiveMs": 0.2555049999998573
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:step.at": {
+          "calls": 1,
+          "inclusiveMs": 27.84791199999995,
+          "exclusiveMs": 27.84791199999995
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:step": {
+          "calls": 1,
+          "inclusiveMs": 2.428301000000147,
+          "exclusiveMs": 2.428301000000147
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:mix": {
+          "calls": 1,
+          "inclusiveMs": 1.3017540000000736,
+          "exclusiveMs": 1.3017540000000736
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:flush": {
+          "calls": 1,
+          "inclusiveMs": 2.794010000000071,
+          "exclusiveMs": 2.794010000000071
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:lex": {
+          "calls": 1,
+          "inclusiveMs": 3.2312600000000202,
+          "exclusiveMs": 3.2312600000000202
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:line": {
+          "calls": 1,
+          "inclusiveMs": 0.8794369999998253,
+          "exclusiveMs": 0.8794369999998253
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:batch": {
+          "calls": 1,
+          "inclusiveMs": 4.028797000000168,
+          "exclusiveMs": 4.028797000000168
+        },
+        "nf_candidate:../phase37/fixtures-historical/lexer:bench": {
+          "calls": 1,
+          "inclusiveMs": 0.23790899999994508,
+          "exclusiveMs": 0.23790899999994508
+        },
+        "nf_candidate:U32.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 0.8164580000000115,
+          "exclusiveMs": 0.8164580000000115
+        },
+        "nf_candidate:U32.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.552789999999959,
+          "exclusiveMs": 0.552789999999959
+        },
+        "nf_candidate:U32.show.if": {
+          "calls": 1,
+          "inclusiveMs": 3.5578199999999924,
+          "exclusiveMs": 3.5578199999999924
+        },
+        "nf_candidate:U32.show": {
+          "calls": 1,
+          "inclusiveMs": 0.2563329999998132,
+          "exclusiveMs": 0.2563329999998132
+        },
+        "nf_candidate:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 0.41130500000008396,
+          "exclusiveMs": 0.41130500000008396
+        },
+        "nf_candidate:IO.bind": {
+          "calls": 1,
+          "inclusiveMs": 0.13001500000018495,
+          "exclusiveMs": 0.13001500000018495
+        },
+        "nf_candidate:main": {
+          "calls": 1,
+          "inclusiveMs": 0.05026700000007622,
+          "exclusiveMs": 0.05026700000007622
+        },
+        "nq_candidate_mode:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 0.7560539999999492,
+          "exclusiveMs": 0.7560539999999492
+        },
+        "nq_candidate_mode:p46.arguments": {
+          "calls": 1,
+          "inclusiveMs": 0.8557509999998274,
+          "exclusiveMs": 0.8557509999998274
+        },
+        "nq_candidate_mode:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 0.4158750000001419,
+          "exclusiveMs": 0.4158750000001419
+        },
+        "nq_candidate_mode:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 2.1910619999998744,
+          "exclusiveMs": 2.1910619999998744
+        },
+        "nq_candidate_mode:../phase37/fixtures-historical/lexer:step.at": {
+          "calls": 1,
+          "inclusiveMs": 14.241866999999957,
+          "exclusiveMs": 14.241866999999957
+        },
+        "nq_candidate_mode:../phase37/fixtures-historical/lexer:step": {
+          "calls": 1,
+          "inclusiveMs": 0.7805170000001453,
+          "exclusiveMs": 0.7805170000001453
+        },
+        "nq_candidate_mode:../phase37/fixtures-historical/lexer:lex": {
+          "calls": 1,
+          "inclusiveMs": 9.072523000000047,
+          "exclusiveMs": 9.072523000000047
+        },
+        "nq_candidate_mode:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 0.22791699999993398,
+          "exclusiveMs": 0.22791699999993398
+        },
+        "nh_macros": {
+          "calls": 1,
+          "inclusiveMs": 26.780269999999973,
+          "exclusiveMs": 26.780269999999973
+        },
+        "nd_compile_entry:main": {
+          "calls": 1,
+          "inclusiveMs": 5.223177999999962,
+          "exclusiveMs": 5.223177999999962
+        },
+        "nd_compile_entry:IO.bind": {
+          "calls": 1,
+          "inclusiveMs": 2.352055000000064,
+          "exclusiveMs": 2.352055000000064
+        },
+        "nd_compile_entry:IO.args": {
+          "calls": 1,
+          "inclusiveMs": 0.29624699999999393,
+          "exclusiveMs": 0.29624699999999393
+        },
+        "nd_compile_entry:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 4.4160159999999,
+          "exclusiveMs": 4.4160159999999
+        },
+        "nd_compile_entry:IO.print": {
+          "calls": 1,
+          "inclusiveMs": 0.20277499999997417,
+          "exclusiveMs": 0.20277499999997417
+        },
+        "nd_compile_entry:U32.show": {
+          "calls": 1,
+          "inclusiveMs": 0.45141000000012355,
+          "exclusiveMs": 0.45141000000012355
+        },
+        "nd_compile_entry:U32.show.if": {
+          "calls": 1,
+          "inclusiveMs": 2.31943299999989,
+          "exclusiveMs": 2.31943299999989
+        },
+        "nd_compile_entry:U32.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.968262999999979,
+          "exclusiveMs": 0.968262999999979
+        },
+        "nd_compile_entry:U32.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 7.705778999999893,
+          "exclusiveMs": 7.705778999999893
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:bench": {
+          "calls": 1,
+          "inclusiveMs": 0.6300870000000032,
+          "exclusiveMs": 0.6300870000000032
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:batch": {
+          "calls": 1,
+          "inclusiveMs": 3.038514999999734,
+          "exclusiveMs": 3.038514999999734
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:line": {
+          "calls": 1,
+          "inclusiveMs": 0.5786250000001019,
+          "exclusiveMs": 0.5786250000001019
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:lex": {
+          "calls": 1,
+          "inclusiveMs": 0.22836899999992966,
+          "exclusiveMs": 0.22836899999992966
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:flush": {
+          "calls": 1,
+          "inclusiveMs": 0.12352699999973993,
+          "exclusiveMs": 0.12352699999973993
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:mix": {
+          "calls": 1,
+          "inclusiveMs": 0.09417200000007142,
+          "exclusiveMs": 0.09417200000007142
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:step": {
+          "calls": 1,
+          "inclusiveMs": 0.10375500000009197,
+          "exclusiveMs": 0.10375500000009197
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:step.at": {
+          "calls": 1,
+          "inclusiveMs": 0.3300480000002608,
+          "exclusiveMs": 0.3300480000002608
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:fnv": {
+          "calls": 1,
+          "inclusiveMs": 0.34250499999961903,
+          "exclusiveMs": 0.34250499999961903
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:cls": {
+          "calls": 1,
+          "inclusiveMs": 0.07381200000008903,
+          "exclusiveMs": 0.07381200000008903
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:cls.go": {
+          "calls": 1,
+          "inclusiveMs": 0.16895599999998012,
+          "exclusiveMs": 0.16895599999998012
+        },
+        "nd_compile_entry:Bool.and": {
+          "calls": 1,
+          "inclusiveMs": 0.10522399999990739,
+          "exclusiveMs": 0.10522399999990739
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:gen": {
+          "calls": 1,
+          "inclusiveMs": 1.424793000000136,
+          "exclusiveMs": 1.424793000000136
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:gen.at": {
+          "calls": 1,
+          "inclusiveMs": 0.26951599999983955,
+          "exclusiveMs": 0.26951599999983955
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:expand": {
+          "calls": 1,
+          "inclusiveMs": 7.777254999999968,
+          "exclusiveMs": 7.777254999999968
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:ident": {
+          "calls": 1,
+          "inclusiveMs": 1.2624559999999292,
+          "exclusiveMs": 1.2624559999999292
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:prng": {
+          "calls": 1,
+          "inclusiveMs": 0.06925999999975829,
+          "exclusiveMs": 0.06925999999975829
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:num": {
+          "calls": 1,
+          "inclusiveMs": 1.3047480000000178,
+          "exclusiveMs": 1.3047480000000178
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:op": {
+          "calls": 1,
+          "inclusiveMs": 0.07776399999966088,
+          "exclusiveMs": 0.07776399999966088
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:op.pick": {
+          "calls": 1,
+          "inclusiveMs": 2.196998999999778,
+          "exclusiveMs": 2.196998999999778
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:slot": {
+          "calls": 1,
+          "inclusiveMs": 0.06581400000004578,
+          "exclusiveMs": 0.06581400000004578
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:slot.go": {
+          "calls": 1,
+          "inclusiveMs": 0.16354899999987538,
+          "exclusiveMs": 0.16354899999987538
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:salt": {
+          "calls": 1,
+          "inclusiveMs": 0.06739599999991697,
+          "exclusiveMs": 0.06739599999991697
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:tpl": {
+          "calls": 1,
+          "inclusiveMs": 0.03497500000003129,
+          "exclusiveMs": 0.03497500000003129
+        },
+        "nd_compile_entry:../phase37/fixtures-historical/lexer:seed": {
+          "calls": 1,
+          "inclusiveMs": 0.053118000000267784,
+          "exclusiveMs": 0.053118000000267784
+        },
+        "nd_compile_entry:p46.batch": {
+          "calls": 1,
+          "inclusiveMs": 0.4414609999998902,
+          "exclusiveMs": 0.4414609999998902
+        },
+        "nd_compile_entry:p46.loop": {
+          "calls": 1,
+          "inclusiveMs": 2.6425890000000436,
+          "exclusiveMs": 2.6425890000000436
+        },
+        "nd_compile_entry:IO.now": {
+          "calls": 1,
+          "inclusiveMs": 0.1489779999997154,
+          "exclusiveMs": 0.1489779999997154
+        },
+        "nd_compile_entry:Nat.show": {
+          "calls": 1,
+          "inclusiveMs": 0.5140230000001793,
+          "exclusiveMs": 0.5140230000001793
+        },
+        "nd_compile_entry:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 6.572038999999677,
+          "exclusiveMs": 6.572038999999677
+        },
+        "nd_compile_entry:Nat.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.8339979999996103,
+          "exclusiveMs": 0.8339979999996103
+        },
+        "nd_compile_entry:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 0.14884099999972022,
+          "exclusiveMs": 0.14884099999972022
+        },
+        "nd_compile_entry:p46.arguments": {
+          "calls": 1,
+          "inclusiveMs": 1.1163390000001527,
+          "exclusiveMs": 1.1163390000001527
+        },
+        "nd_compile_entry:p46.number": {
+          "calls": 1,
+          "inclusiveMs": 0.1937950000001365,
+          "exclusiveMs": 0.1937950000001365
+        },
+        "nd_compile_entry:p46.parsed": {
+          "calls": 1,
+          "inclusiveMs": 0.08675799999991796,
+          "exclusiveMs": 0.08675799999991796
+        },
+        "nd_compile_entry:Nat.read": {
+          "calls": 1,
+          "inclusiveMs": 1.0565679999999702,
+          "exclusiveMs": 1.0565679999999702
+        },
+        "nd_compile_entry:Nat.read.trim": {
+          "calls": 1,
+          "inclusiveMs": 5.734625000000051,
+          "exclusiveMs": 5.734625000000051
+        },
+        "nd_compile_entry:Nat.read.gate": {
+          "calls": 1,
+          "inclusiveMs": 0.3121139999998377,
+          "exclusiveMs": 0.3121139999998377
+        },
+        "nd_compile_entry:Nat.read.go": {
+          "calls": 1,
+          "inclusiveMs": 3.4214270000002216,
+          "exclusiveMs": 3.4214270000002216
+        },
+        "nd_compile_entry:Nat.read.if": {
+          "calls": 1,
+          "inclusiveMs": 0.8233470000000125,
+          "exclusiveMs": 0.8233470000000125
+        },
+        "nd_compile_entry:Nat.read.fits": {
+          "calls": 1,
+          "inclusiveMs": 0.7073479999999108,
+          "exclusiveMs": 0.7073479999999108
+        },
+        "nd_compile_entry:String.length": {
+          "calls": 1,
+          "inclusiveMs": 0.5273799999999937,
+          "exclusiveMs": 0.5273799999999937
+        },
+        "nd_compile_entry:Nat.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.09326799999962532,
+          "exclusiveMs": 0.09326799999962532
+        },
+        "nd_compile_entry:Cmp.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.0816740000000209,
+          "exclusiveMs": 0.0816740000000209
+        },
+        "nd_compile_entry:String.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.219021999999768,
+          "exclusiveMs": 0.219021999999768
+        },
+        "nd_compile_entry:Cmp.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.5958749999999782,
+          "exclusiveMs": 0.5958749999999782
+        },
+        "nd_compile_entry:String.order": {
+          "calls": 1,
+          "inclusiveMs": 0.21666599999980463,
+          "exclusiveMs": 0.21666599999980463
+        },
+        "nd_compile_entry:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 1.6723350000002029,
+          "exclusiveMs": 1.6723350000002029
+        },
+        "nd_compile_entry:String.cmp": {
+          "calls": 1,
+          "inclusiveMs": 3.050303999999869,
+          "exclusiveMs": 3.050303999999869
+        },
+        "nd_compile_entry:String.cmp.fin": {
+          "calls": 1,
+          "inclusiveMs": 2.035077000000001,
+          "exclusiveMs": 2.035077000000001
+        },
+        "nd_compile_entry:String.cmp.rec": {
+          "calls": 1,
+          "inclusiveMs": 0.21207900000035806,
+          "exclusiveMs": 0.21207900000035806
+        },
+        "nd_compile_entry:Char.cmp": {
+          "calls": 1,
+          "inclusiveMs": 0.12531600000011167,
+          "exclusiveMs": 0.12531600000011167
+        },
+        "no_route_one:Char.cmp": {
+          "calls": 1,
+          "inclusiveMs": 1.0074910000003001,
+          "exclusiveMs": 1.0074910000003001
+        },
+        "no_route_one:String.cmp.rec": {
+          "calls": 1,
+          "inclusiveMs": 0.22401600000011967,
+          "exclusiveMs": 0.22401600000011967
+        },
+        "no_route_one:String.cmp.fin": {
+          "calls": 1,
+          "inclusiveMs": 1.0729129999999714,
+          "exclusiveMs": 1.0729129999999714
+        },
+        "no_route_one:String.cmp": {
+          "calls": 1,
+          "inclusiveMs": 151.59006100000033,
+          "exclusiveMs": 151.59006100000033
+        },
+        "no_route_one:Pair.snd": {
+          "calls": 1,
+          "inclusiveMs": 0.1261970000000474,
+          "exclusiveMs": 0.1261970000000474
+        },
+        "no_route_one:String.order": {
+          "calls": 1,
+          "inclusiveMs": 10.538207000000057,
+          "exclusiveMs": 10.538207000000057
+        },
+        "no_route_one:Cmp.is_le": {
+          "calls": 1,
+          "inclusiveMs": 0.10634600000003047,
+          "exclusiveMs": 0.10634600000003047
+        },
+        "no_route_one:String.is_le": {
+          "calls": 1,
+          "inclusiveMs": 10.582140999999865,
+          "exclusiveMs": 10.582140999999865
+        },
+        "no_route_one:Cmp.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.11581999999998516,
+          "exclusiveMs": 0.11581999999998516
+        },
+        "no_route_one:Nat.is_eq": {
+          "calls": 1,
+          "inclusiveMs": 0.07283200000028955,
+          "exclusiveMs": 0.07283200000028955
+        },
+        "no_route_one:String.length": {
+          "calls": 1,
+          "inclusiveMs": 3.1745089999999436,
+          "exclusiveMs": 3.1745089999999436
+        },
+        "no_route_one:Nat.read.fits": {
+          "calls": 1,
+          "inclusiveMs": 4.7075049999998555,
+          "exclusiveMs": 4.7075049999998555
+        },
+        "no_route_one:Nat.read.if": {
+          "calls": 1,
+          "inclusiveMs": 0.27132799999981216,
+          "exclusiveMs": 0.27132799999981216
+        },
+        "no_route_one:Nat.read.go": {
+          "calls": 1,
+          "inclusiveMs": 0.1315060000001722,
+          "exclusiveMs": 0.1315060000001722
+        },
+        "no_route_one:Nat.read.gate": {
+          "calls": 1,
+          "inclusiveMs": 0.12033900000005815,
+          "exclusiveMs": 0.12033900000005815
+        },
+        "no_route_one:Nat.read.trim": {
+          "calls": 1,
+          "inclusiveMs": 0.29337000000032276,
+          "exclusiveMs": 0.29337000000032276
+        },
+        "no_route_one:Nat.read": {
+          "calls": 1,
+          "inclusiveMs": 0.11104400000021997,
+          "exclusiveMs": 0.11104400000021997
+        },
+        "no_route_one:p46.parsed": {
+          "calls": 1,
+          "inclusiveMs": 0.028277999999772874,
+          "exclusiveMs": 0.028277999999772874
+        },
+        "no_route_one:p46.number": {
+          "calls": 1,
+          "inclusiveMs": 3.7339160000001357,
+          "exclusiveMs": 3.7339160000001357
+        },
+        "no_route_one:p46.arguments": {
+          "calls": 1,
+          "inclusiveMs": 0.07887699999992037,
+          "exclusiveMs": 0.07887699999992037
+        },
+        "no_route_one:Nat.show.put": {
+          "calls": 1,
+          "inclusiveMs": 0.07629700000006778,
+          "exclusiveMs": 0.07629700000006778
+        },
+        "no_route_one:Nat.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.7943019999997887,
+          "exclusiveMs": 0.7943019999997887
+        },
+        "no_route_one:Nat.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 0.1522130000003017,
+          "exclusiveMs": 0.1522130000003017
+        },
+        "no_route_one:Nat.show": {
+          "calls": 1,
+          "inclusiveMs": 0.04481600000008257,
+          "exclusiveMs": 0.04481600000008257
+        },
+        "no_route_one:p46.loop": {
+          "calls": 1,
+          "inclusiveMs": 0.05798899999990681,
+          "exclusiveMs": 0.05798899999990681
+        },
+        "no_route_one:p46.batch": {
+          "calls": 1,
+          "inclusiveMs": 0.03206599999975879,
+          "exclusiveMs": 0.03206599999975879
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:seed": {
+          "calls": 1,
+          "inclusiveMs": 0.030957999999827734,
+          "exclusiveMs": 0.030957999999827734
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:tpl": {
+          "calls": 1,
+          "inclusiveMs": 0.003412999999909516,
+          "exclusiveMs": 0.003412999999909516
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:salt": {
+          "calls": 1,
+          "inclusiveMs": 0.04299600000013015,
+          "exclusiveMs": 0.04299600000013015
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:slot.go": {
+          "calls": 1,
+          "inclusiveMs": 0.07317699999975957,
+          "exclusiveMs": 0.07317699999975957
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:slot": {
+          "calls": 1,
+          "inclusiveMs": 0.03145200000017212,
+          "exclusiveMs": 0.03145200000017212
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:op.pick": {
+          "calls": 1,
+          "inclusiveMs": 0.053769999999985885,
+          "exclusiveMs": 0.053769999999985885
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:op": {
+          "calls": 1,
+          "inclusiveMs": 0.13851300000033007,
+          "exclusiveMs": 0.13851300000033007
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:num": {
+          "calls": 1,
+          "inclusiveMs": 0.1677639999998064,
+          "exclusiveMs": 0.1677639999998064
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:prng": {
+          "calls": 1,
+          "inclusiveMs": 0.03979200000003402,
+          "exclusiveMs": 0.03979200000003402
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:ident": {
+          "calls": 1,
+          "inclusiveMs": 0.15348199999971257,
+          "exclusiveMs": 0.15348199999971257
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:expand": {
+          "calls": 1,
+          "inclusiveMs": 0.22407799999973577,
+          "exclusiveMs": 0.22407799999973577
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:gen.at": {
+          "calls": 1,
+          "inclusiveMs": 0.14817600000014863,
+          "exclusiveMs": 0.14817600000014863
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:gen": {
+          "calls": 1,
+          "inclusiveMs": 1.5613570000000436,
+          "exclusiveMs": 1.5613570000000436
+        },
+        "no_route_one:Bool.and": {
+          "calls": 1,
+          "inclusiveMs": 0.06525599999986298,
+          "exclusiveMs": 0.06525599999986298
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:cls.go": {
+          "calls": 1,
+          "inclusiveMs": 1.3012300000000323,
+          "exclusiveMs": 1.3012300000000323
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:cls": {
+          "calls": 1,
+          "inclusiveMs": 0.036837000000105036,
+          "exclusiveMs": 0.036837000000105036
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:fnv": {
+          "calls": 1,
+          "inclusiveMs": 0.04366600000003018,
+          "exclusiveMs": 0.04366600000003018
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:step.at": {
+          "calls": 1,
+          "inclusiveMs": 0.04116199999998571,
+          "exclusiveMs": 0.04116199999998571
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:step": {
+          "calls": 1,
+          "inclusiveMs": 0.03614100000004328,
+          "exclusiveMs": 0.03614100000004328
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:mix": {
+          "calls": 1,
+          "inclusiveMs": 0.05395300000009229,
+          "exclusiveMs": 0.05395300000009229
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:flush": {
+          "calls": 1,
+          "inclusiveMs": 0.033321999999770924,
+          "exclusiveMs": 0.033321999999770924
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:lex": {
+          "calls": 1,
+          "inclusiveMs": 0.11798600000020087,
+          "exclusiveMs": 0.11798600000020087
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:line": {
+          "calls": 1,
+          "inclusiveMs": 0.039640000000417785,
+          "exclusiveMs": 0.039640000000417785
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:batch": {
+          "calls": 1,
+          "inclusiveMs": 0.0469239999997626,
+          "exclusiveMs": 0.0469239999997626
+        },
+        "no_route_one:../phase37/fixtures-historical/lexer:bench": {
+          "calls": 1,
+          "inclusiveMs": 0.0399609999999484,
+          "exclusiveMs": 0.0399609999999484
+        },
+        "no_route_one:U32.show.fin": {
+          "calls": 1,
+          "inclusiveMs": 0.4967229999997471,
+          "exclusiveMs": 0.4967229999997471
+        },
+        "no_route_one:U32.show.go": {
+          "calls": 1,
+          "inclusiveMs": 0.3077739999998812,
+          "exclusiveMs": 0.3077739999998812
+        },
+        "no_route_one:U32.show.if": {
+          "calls": 1,
+          "inclusiveMs": 0.05691399999977875,
+          "exclusiveMs": 0.05691399999977875
+        },
+        "no_route_one:U32.show": {
+          "calls": 1,
+          "inclusiveMs": 0.036481000000094355,
+          "exclusiveMs": 0.036481000000094355
+        },
+        "no_route_one:p46.run": {
+          "calls": 1,
+          "inclusiveMs": 0.04302400000005946,
+          "exclusiveMs": 0.04302400000005946
+        },
+        "no_route_one:IO.bind": {
+          "calls": 1,
+          "inclusiveMs": 0.05184800000006362,
+          "exclusiveMs": 0.05184800000006362
+        },
+        "no_route_one:main": {
+          "calls": 1,
+          "inclusiveMs": 0.002716999999847758,
+          "exclusiveMs": 0.002716999999847758
+        },
+        "ne_program": {
+          "calls": 1,
+          "inclusiveMs": 116.57889100000011,
+          "exclusiveMs": 116.57889100000011
+        }
+      },
+      "exactC": true
+    }
+  ]
+}

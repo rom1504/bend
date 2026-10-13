@@ -1,0 +1,3894 @@
+{
+ "kind": "phase85-diagnostic-comparisons",
+ "complete": true,
+ "ratioDirection": "Candidate/request time divided by control/request time; below 1 is faster.",
+ "comparisons": {
+  "sparkplug-vs-default": {
+   "candidateLane": "sparkplug01",
+   "controlLane": "clean01",
+   "candidatePlan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/sparkplug01/plan.json",
+    "sha256": "d83ccb3a1412e515c9f41382e616e190c8885ccbb8e6fa67c348ab37274dc055",
+    "bytes": 458053
+   },
+   "controlPlan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/clean01/plan.json",
+    "sha256": "4f168016fc078f0c8a0cd37ca6e12078f3406b8a5955869d75e1b75ee96259cf",
+    "bytes": 459402
+   },
+   "candidateCpu": 3,
+   "controlCpu": 3,
+   "candidateClass": "Altered V8 tier/filter counterfactual, not production compiler performance.",
+   "relationship": "Separate lane versus earlier default survey, not interleaved paired timing; variation/temperature/tiering can confound differences.",
+   "roles": {
+    "b2": {
+     "cases": {
+      "functions65": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 952.1298890000002,
+        "controlMedianMs": 728.75219,
+        "medianRatio": 1.3065207927539815,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-b2",
+          "valueMs": 920.9065380000002
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-b2",
+          "valueMs": 983.3532400000001
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 728.75219
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 805.1701639999999
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 725.536569
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 819.3797410000001,
+        "controlMedianMs": 601.195112,
+        "medianRatio": 1.362918168569541,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-b2",
+          "valueMs": 792.1772190000002
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-b2",
+          "valueMs": 846.582263
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 601.195112
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 663.6199899999999
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 598.487899
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 697.9466759999998,
+        "controlMedianMs": 227.377113,
+        "medianRatio": 3.0695555361370066,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-b2",
+          "valueMs": 688.2312310000002
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-b2",
+          "valueMs": 707.6621209999994
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 198.79445600000008
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 252.0826280000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 227.377113
+         }
+        ]
+       }
+      },
+      "lexer": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 2496.488947,
+        "controlMedianMs": 1423.1482690000003,
+        "medianRatio": 1.7542015834753473,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-b2",
+          "valueMs": 2560.210014
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-b2",
+          "valueMs": 2432.7678800000003
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 1416.6059719999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 1475.758122
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 1423.1482690000003
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 2360.5465575,
+        "controlMedianMs": 1295.316383,
+        "medianRatio": 1.8223706489629103,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-b2",
+          "valueMs": 2426.818531
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-b2",
+          "valueMs": 2294.2745840000002
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 1290.290685
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 1347.3293469999999
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 1295.316383
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 2226.6561409999995,
+        "controlMedianMs": 390.7029900000002,
+        "medianRatio": 5.6991018701955625,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-b2",
+          "valueMs": 2215.7672060000004
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-b2",
+          "valueMs": 2237.5450759999985
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 399.77971299999945
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 390.7029900000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 385.2548690000003
+         }
+        ]
+       }
+      },
+      "map": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 5048.291064,
+        "controlMedianMs": 1922.965204,
+        "medianRatio": 2.625263865148961,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-b2",
+          "valueMs": 5200.67626
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-b2",
+          "valueMs": 4895.905868
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 1911.3245679999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1922.965204
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 1955.716391
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 4915.7334845000005,
+        "controlMedianMs": 1795.232154,
+        "medianRatio": 2.7382160427258038,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-b2",
+          "valueMs": 5061.646221
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-b2",
+          "valueMs": 4769.820748
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 1783.7143939999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1795.232154
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 1825.775447
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 4532.886770000001,
+        "controlMedianMs": 675.3201200000003,
+        "medianRatio": 6.712204531978107,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-b2",
+          "valueMs": 4558.971982000003
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-b2",
+          "valueMs": 4506.801557999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 630.9973140000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 699.7879279999997
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 675.3201200000003
+         }
+        ]
+       }
+      },
+      "numeric": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1443.84651,
+        "controlMedianMs": 1067.962331,
+        "medianRatio": 1.3519638924418207,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-b2",
+          "valueMs": 1451.6280810000003
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-b2",
+          "valueMs": 1436.0649389999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 1074.7959600000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 1067.962331
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 1065.039135
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 1315.7899235,
+        "controlMedianMs": 941.492652,
+        "medianRatio": 1.3975572944779604,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-b2",
+          "valueMs": 1322.3877160000002
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-b2",
+          "valueMs": 1309.1921309999998
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 945.9659110000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 941.492652
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 937.7991559999999
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 1145.82683,
+        "controlMedianMs": 284.54706099999976,
+        "medianRatio": 4.026844719369641,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-b2",
+          "valueMs": 1163.1926270000004
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-b2",
+          "valueMs": 1128.4610329999996
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 286.556024
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 284.54706099999976
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 276.606053
+         }
+        ]
+       }
+      }
+     },
+     "equalCaseGeomean": {
+      "call1": 1.7558441146419148,
+      "call5": 4.663135067657242,
+      "importsPlusFirstMs": 1.6888204123306692
+     }
+    },
+    "typescript": {
+     "cases": {
+      "functions65": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 654.1100574999999,
+        "controlMedianMs": 667.9189110000001,
+        "medianRatio": 0.9793255539368908,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-typescript",
+          "valueMs": 660.40987
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-typescript",
+          "valueMs": 647.8102449999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-typescript",
+          "valueMs": 667.9189110000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-typescript",
+          "valueMs": 667.636071
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-typescript",
+          "valueMs": 671.3681840000002
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 371.4147039999999,
+        "controlMedianMs": 401.85732299999995,
+        "medianRatio": 0.9242452053063618,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-typescript",
+          "valueMs": 372.738617
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-typescript",
+          "valueMs": 370.09079099999985
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-typescript",
+          "valueMs": 401.7700510000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-typescript",
+          "valueMs": 401.85732299999995
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-typescript",
+          "valueMs": 407.93613600000003
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 322.7896890000002,
+        "controlMedianMs": 166.12126799999987,
+        "medianRatio": 1.9430967081228903,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-typescript",
+          "valueMs": 307.21075800000017
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-typescript",
+          "valueMs": 338.3686200000002
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-typescript",
+          "valueMs": 170.074748
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-typescript",
+          "valueMs": 166.12126799999987
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-typescript",
+          "valueMs": 164.62118800000007
+         }
+        ]
+       }
+      },
+      "lexer": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1335.5993055,
+        "controlMedianMs": 1215.5240600000002,
+        "medianRatio": 1.0987847542071687,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-typescript",
+          "valueMs": 1243.374625
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-typescript",
+          "valueMs": 1427.823986
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-typescript",
+          "valueMs": 1223.8102039999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-typescript",
+          "valueMs": 1215.5240600000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-typescript",
+          "valueMs": 1181.639099
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 1045.7032675,
+        "controlMedianMs": 945.420478,
+        "medianRatio": 1.1060721571338759,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-typescript",
+          "valueMs": 966.4539520000001
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-typescript",
+          "valueMs": 1124.952583
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-typescript",
+          "valueMs": 957.782974
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-typescript",
+          "valueMs": 945.420478
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-typescript",
+          "valueMs": 920.721288
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 912.1237080000001,
+        "controlMedianMs": 488.39654299999984,
+        "medianRatio": 1.86758837889645,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-typescript",
+          "valueMs": 936.033915
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-typescript",
+          "valueMs": 888.2135010000002
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-typescript",
+          "valueMs": 528.1007079999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-typescript",
+          "valueMs": 485.70231899999953
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-typescript",
+          "valueMs": 488.39654299999984
+         }
+        ]
+       }
+      },
+      "map": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1669.1637620000001,
+        "controlMedianMs": 1475.0284620000002,
+        "medianRatio": 1.1316146128711106,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-typescript",
+          "valueMs": 1695.760013
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-typescript",
+          "valueMs": 1642.5675110000002
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-typescript",
+          "valueMs": 1486.3087689999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-typescript",
+          "valueMs": 1475.0284620000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-typescript",
+          "valueMs": 1465.8238689999998
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 1379.767785,
+        "controlMedianMs": 1213.6266190000001,
+        "medianRatio": 1.1368964419525474,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-typescript",
+          "valueMs": 1397.026173
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-typescript",
+          "valueMs": 1362.509397
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-typescript",
+          "valueMs": 1219.136898
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-typescript",
+          "valueMs": 1213.6266190000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-typescript",
+          "valueMs": 1203.386888
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 1218.071644,
+        "controlMedianMs": 635.6485109999994,
+        "medianRatio": 1.9162660226856116,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-typescript",
+          "valueMs": 1235.62237
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-typescript",
+          "valueMs": 1200.5209180000002
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-typescript",
+          "valueMs": 609.6583760000003
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-typescript",
+          "valueMs": 650.427197
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-typescript",
+          "valueMs": 635.6485109999994
+         }
+        ]
+       }
+      },
+      "numeric": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1082.6022420000002,
+        "controlMedianMs": 1027.2446490000002,
+        "medianRatio": 1.0538893953391621,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-typescript",
+          "valueMs": 1077.9577990000003
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-typescript",
+          "valueMs": 1087.246685
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-typescript",
+          "valueMs": 1038.081038
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-typescript",
+          "valueMs": 1027.2446490000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-typescript",
+          "valueMs": 1022.6505930000003
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 780.6118045000001,
+        "controlMedianMs": 756.7754940000002,
+        "medianRatio": 1.0314972018636743,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-typescript",
+          "valueMs": 772.2071840000001
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-typescript",
+          "valueMs": 789.016425
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-typescript",
+          "valueMs": 771.6014990000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-typescript",
+          "valueMs": 756.7568900000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-typescript",
+          "valueMs": 756.7754940000002
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 661.7168474999996,
+        "controlMedianMs": 346.45116800000005,
+        "medianRatio": 1.9099859045647656,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-typescript",
+          "valueMs": 663.8907469999999
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-typescript",
+          "valueMs": 659.5429479999993
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-typescript",
+          "valueMs": 375.07406400000036
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-typescript",
+          "valueMs": 346.45116800000005
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-typescript",
+          "valueMs": 343.312179
+         }
+        ]
+       }
+      }
+     },
+     "equalCaseGeomean": {
+      "call1": 1.0463811487937567,
+      "call5": 1.9090415685689401,
+      "importsPlusFirstMs": 1.0643472032439785
+     }
+    }
+   }
+  },
+  "maglev-vs-default": {
+   "candidateLane": "maglev01",
+   "controlLane": "clean01",
+   "candidatePlan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/maglev01/plan.json",
+    "sha256": "108b880a35859e3bdbe7d1e0e65010c68d199336e4a063d4bae0184cc0bea6aa",
+    "bytes": 458053
+   },
+   "controlPlan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/clean01/plan.json",
+    "sha256": "4f168016fc078f0c8a0cd37ca6e12078f3406b8a5955869d75e1b75ee96259cf",
+    "bytes": 459402
+   },
+   "candidateCpu": 3,
+   "controlCpu": 3,
+   "candidateClass": "Altered V8 tier/filter counterfactual, not production compiler performance.",
+   "relationship": "Separate lane versus earlier default survey, not interleaved paired timing; variation/temperature/tiering can confound differences.",
+   "roles": {
+    "b2": {
+     "cases": {
+      "functions65": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 617.065051,
+        "controlMedianMs": 728.75219,
+        "medianRatio": 0.8467419507857671,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-b2",
+          "valueMs": 621.2733850000001
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-b2",
+          "valueMs": 612.8567170000001
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 728.75219
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 805.1701639999999
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 725.536569
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 485.16952150000003,
+        "controlMedianMs": 601.195112,
+        "medianRatio": 0.8070084267418329,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-b2",
+          "valueMs": 485.520213
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-b2",
+          "valueMs": 484.81883000000005
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 601.195112
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 663.6199899999999
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 598.487899
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 211.12759649999998,
+        "controlMedianMs": 227.377113,
+        "medianRatio": 0.9285349510968589,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-b2",
+          "valueMs": 209.61029000000008
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-b2",
+          "valueMs": 212.64490299999989
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 198.79445600000008
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 252.0826280000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 227.377113
+         }
+        ]
+       }
+      },
+      "lexer": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1068.840854,
+        "controlMedianMs": 1423.1482690000003,
+        "medianRatio": 0.7510397035096277,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-b2",
+          "valueMs": 1069.4098119999999
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-b2",
+          "valueMs": 1068.271896
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 1416.6059719999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 1475.758122
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 1423.1482690000003
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 941.2541884999999,
+        "controlMedianMs": 1295.316383,
+        "medianRatio": 0.7266596801007186,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-b2",
+          "valueMs": 942.565354
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-b2",
+          "valueMs": 939.9430229999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 1290.290685
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 1347.3293469999999
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 1295.316383
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 492.9051529999999,
+        "controlMedianMs": 390.7029900000002,
+        "medianRatio": 1.261585310621758,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-b2",
+          "valueMs": 486.7368670000001
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-b2",
+          "valueMs": 499.0734389999998
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 399.77971299999945
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 390.7029900000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 385.2548690000003
+         }
+        ]
+       }
+      },
+      "map": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1740.3180935,
+        "controlMedianMs": 1922.965204,
+        "medianRatio": 0.9050179846623995,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-b2",
+          "valueMs": 1743.5176470000001
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-b2",
+          "valueMs": 1737.1185400000002
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 1911.3245679999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1922.965204
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 1955.716391
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 1611.9478765000003,
+        "controlMedianMs": 1795.232154,
+        "medianRatio": 0.8979049717377111,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-b2",
+          "valueMs": 1613.7746500000003
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-b2",
+          "valueMs": 1610.1211030000002
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 1783.7143939999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1795.232154
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 1825.775447
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 1028.2226025,
+        "controlMedianMs": 675.3201200000003,
+        "medianRatio": 1.5225706624881834,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-b2",
+          "valueMs": 994.2124180000001
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-b2",
+          "valueMs": 1062.232787
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 630.9973140000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 699.7879279999997
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 675.3201200000003
+         }
+        ]
+       }
+      },
+      "numeric": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 811.1227395000001,
+        "controlMedianMs": 1067.962331,
+        "medianRatio": 0.7595050087024091,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-b2",
+          "valueMs": 810.3416400000001
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-b2",
+          "valueMs": 811.9038390000001
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 1074.7959600000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 1067.962331
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 1065.039135
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 679.214499,
+        "controlMedianMs": 941.492652,
+        "medianRatio": 0.7214230483447257,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-b2",
+          "valueMs": 677.119555
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-b2",
+          "valueMs": 681.3094430000001
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 945.9659110000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 941.492652
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 937.7991559999999
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 303.7026854999999,
+        "controlMedianMs": 284.54706099999976,
+        "medianRatio": 1.0673197060362545,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-b2",
+          "valueMs": 304.94367999999986
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-b2",
+          "valueMs": 302.461691
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 286.556024
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 284.54706099999976
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 276.606053
+         }
+        ]
+       }
+      }
+     },
+     "equalCaseGeomean": {
+      "call1": 0.7850681899617914,
+      "call5": 1.1746181742109825,
+      "importsPlusFirstMs": 0.8131121607098419
+     }
+    },
+    "typescript": {
+     "cases": {
+      "functions65": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 597.1430725,
+        "controlMedianMs": 667.9189110000001,
+        "medianRatio": 0.8940352828249235,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-typescript",
+          "valueMs": 592.440891
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-typescript",
+          "valueMs": 601.845254
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-typescript",
+          "valueMs": 667.9189110000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-typescript",
+          "valueMs": 667.636071
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-typescript",
+          "valueMs": 671.3681840000002
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 332.538869,
+        "controlMedianMs": 401.85732299999995,
+        "medianRatio": 0.8275048131946074,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-typescript",
+          "valueMs": 329.27280500000006
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-typescript",
+          "valueMs": 335.8049329999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-typescript",
+          "valueMs": 401.7700510000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-typescript",
+          "valueMs": 401.85732299999995
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-typescript",
+          "valueMs": 407.93613600000003
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 107.79746,
+        "controlMedianMs": 166.12126799999987,
+        "medianRatio": 0.6489082421403145,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-typescript",
+          "valueMs": 106.90385400000014
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-typescript",
+          "valueMs": 108.69106599999986
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-typescript",
+          "valueMs": 170.074748
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-typescript",
+          "valueMs": 166.12126799999987
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-typescript",
+          "valueMs": 164.62118800000007
+         }
+        ]
+       }
+      },
+      "lexer": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 942.8438164999999,
+        "controlMedianMs": 1215.5240600000002,
+        "medianRatio": 0.7756685758239946,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-typescript",
+          "valueMs": 961.6078709999999
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-typescript",
+          "valueMs": 924.0797619999998
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-typescript",
+          "valueMs": 1223.8102039999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-typescript",
+          "valueMs": 1215.5240600000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-typescript",
+          "valueMs": 1181.639099
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 679.3906509999999,
+        "controlMedianMs": 945.420478,
+        "medianRatio": 0.718612159149783,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-typescript",
+          "valueMs": 698.487549
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-typescript",
+          "valueMs": 660.2937529999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-typescript",
+          "valueMs": 957.782974
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-typescript",
+          "valueMs": 945.420478
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-typescript",
+          "valueMs": 920.721288
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 396.81489250000004,
+        "controlMedianMs": 488.39654299999984,
+        "medianRatio": 0.8124850558166219,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-typescript",
+          "valueMs": 398.70971899999995
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-typescript",
+          "valueMs": 394.92006600000013
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-typescript",
+          "valueMs": 528.1007079999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-typescript",
+          "valueMs": 485.70231899999953
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-typescript",
+          "valueMs": 488.39654299999984
+         }
+        ]
+       }
+      },
+      "map": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1128.892026,
+        "controlMedianMs": 1475.0284620000002,
+        "medianRatio": 0.7653357579753602,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-typescript",
+          "valueMs": 1077.745069
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-typescript",
+          "valueMs": 1180.038983
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-typescript",
+          "valueMs": 1486.3087689999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-typescript",
+          "valueMs": 1475.0284620000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-typescript",
+          "valueMs": 1465.8238689999998
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 858.7162144999999,
+        "controlMedianMs": 1213.6266190000001,
+        "medianRatio": 0.7075621126434767,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-typescript",
+          "valueMs": 817.430678
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-typescript",
+          "valueMs": 900.0017509999998
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-typescript",
+          "valueMs": 1219.136898
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-typescript",
+          "valueMs": 1213.6266190000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-typescript",
+          "valueMs": 1203.386888
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 468.2693755,
+        "controlMedianMs": 635.6485109999994,
+        "medianRatio": 0.736679733211867,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-typescript",
+          "valueMs": 441.895853
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-typescript",
+          "valueMs": 494.64289800000006
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-typescript",
+          "valueMs": 609.6583760000003
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-typescript",
+          "valueMs": 650.427197
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-typescript",
+          "valueMs": 635.6485109999994
+         }
+        ]
+       }
+      },
+      "numeric": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 806.593472,
+        "controlMedianMs": 1027.2446490000002,
+        "medianRatio": 0.7852009477831798,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-typescript",
+          "valueMs": 818.006878
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-typescript",
+          "valueMs": 795.180066
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-typescript",
+          "valueMs": 1038.081038
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-typescript",
+          "valueMs": 1027.2446490000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-typescript",
+          "valueMs": 1022.6505930000003
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 539.8467455,
+        "controlMedianMs": 756.7754940000002,
+        "medianRatio": 0.7133512511704031,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-typescript",
+          "valueMs": 546.14419
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-typescript",
+          "valueMs": 533.549301
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-typescript",
+          "valueMs": 771.6014990000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-typescript",
+          "valueMs": 756.7568900000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-typescript",
+          "valueMs": 756.7754940000002
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 251.423,
+        "controlMedianMs": 346.45116800000005,
+        "medianRatio": 0.7257097773733006,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-typescript",
+          "valueMs": 251.23122899999998
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-typescript",
+          "valueMs": 251.61477100000002
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-typescript",
+          "valueMs": 375.07406400000036
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-typescript",
+          "valueMs": 346.45116800000005
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-typescript",
+          "valueMs": 343.312179
+         }
+        ]
+       }
+      }
+     },
+     "equalCaseGeomean": {
+      "call1": 0.7401730561005827,
+      "call5": 0.7286351063326229,
+      "importsPlusFirstMs": 0.8034630684108017
+     }
+    }
+   }
+  },
+  "no-lexer-tf-vs-default": {
+   "candidateLane": "no-lexer-tf01",
+   "controlLane": "clean01",
+   "candidatePlan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/no-lexer-tf01/plan.json",
+    "sha256": "d75282307e80f922a600d9c8bbb687d583e51ec50be6d3d8ee0d1daa2f83a6ec",
+    "bytes": 459405
+   },
+   "controlPlan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/clean01/plan.json",
+    "sha256": "4f168016fc078f0c8a0cd37ca6e12078f3406b8a5955869d75e1b75ee96259cf",
+    "bytes": 459402
+   },
+   "candidateCpu": 3,
+   "controlCpu": 3,
+   "candidateClass": "Altered V8 tier/filter counterfactual, not production compiler performance.",
+   "relationship": "Separate lane versus earlier default survey, not interleaved paired timing; variation/temperature/tiering can confound differences.",
+   "roles": {
+    "b2": {
+     "cases": {
+      "functions65": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 700.588784,
+        "controlMedianMs": 728.75219,
+        "medianRatio": 0.9613539329466715,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-b2",
+          "valueMs": 700.2728870000002
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-b2",
+          "valueMs": 702.634595
+         },
+         {
+          "round": 3,
+          "job": "tier-3-functions65-b2",
+          "valueMs": 700.588784
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 728.75219
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 805.1701639999999
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 725.536569
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 573.5056020000001,
+        "controlMedianMs": 601.195112,
+        "medianRatio": 0.9539425563393471,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-b2",
+          "valueMs": 572.5257810000002
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-b2",
+          "valueMs": 574.060518
+         },
+         {
+          "round": 3,
+          "job": "tier-3-functions65-b2",
+          "valueMs": 573.5056020000001
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 601.195112
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 663.6199899999999
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 598.487899
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 219.37888199999998,
+        "controlMedianMs": 227.377113,
+        "medianRatio": 0.9648239398659265,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-b2",
+          "valueMs": 219.36397399999987
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-b2",
+          "valueMs": 219.37888199999998
+         },
+         {
+          "round": 3,
+          "job": "tier-3-functions65-b2",
+          "valueMs": 221.69428100000005
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 198.79445600000008
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 252.0826280000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 227.377113
+         }
+        ]
+       }
+      },
+      "lexer": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1378.1038969999997,
+        "controlMedianMs": 1423.1482690000003,
+        "medianRatio": 0.9683487848868679,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-b2",
+          "valueMs": 1378.1038969999997
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-b2",
+          "valueMs": 1378.339812
+         },
+         {
+          "round": 3,
+          "job": "tier-3-lexer-b2",
+          "valueMs": 1350.9505390000002
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 1416.6059719999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 1475.758122
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 1423.1482690000003
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 1249.7387279999998,
+        "controlMedianMs": 1295.316383,
+        "medianRatio": 0.9648134960707895,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-b2",
+          "valueMs": 1249.7387279999998
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-b2",
+          "valueMs": 1250.585521
+         },
+         {
+          "round": 3,
+          "job": "tier-3-lexer-b2",
+          "valueMs": 1223.5146840000002
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 1290.290685
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 1347.3293469999999
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 1295.316383
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 390.4538429999998,
+        "controlMedianMs": 390.7029900000002,
+        "medianRatio": 0.999362310997414,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-b2",
+          "valueMs": 396.3477829999997
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-b2",
+          "valueMs": 377.88662200000044
+         },
+         {
+          "round": 3,
+          "job": "tier-3-lexer-b2",
+          "valueMs": 390.4538429999998
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 399.77971299999945
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 390.7029900000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 385.2548690000003
+         }
+        ]
+       }
+      },
+      "map": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1900.832947,
+        "controlMedianMs": 1922.965204,
+        "medianRatio": 0.9884905577313816,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-b2",
+          "valueMs": 1900.832947
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-b2",
+          "valueMs": 1906.5913799999998
+         },
+         {
+          "round": 3,
+          "job": "tier-3-map-b2",
+          "valueMs": 1898.6957729999997
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 1911.3245679999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1922.965204
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 1955.716391
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 1772.838383,
+        "controlMedianMs": 1795.232154,
+        "medianRatio": 0.9875259748717714,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-b2",
+          "valueMs": 1772.838383
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-b2",
+          "valueMs": 1777.1381259999998
+         },
+         {
+          "round": 3,
+          "job": "tier-3-map-b2",
+          "valueMs": 1769.4171699999997
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 1783.7143939999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1795.232154
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 1825.775447
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 672.0176080000001,
+        "controlMedianMs": 675.3201200000003,
+        "medianRatio": 0.9951097088592589,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-b2",
+          "valueMs": 686.6742290000002
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-b2",
+          "valueMs": 624.2314700000006
+         },
+         {
+          "round": 3,
+          "job": "tier-3-map-b2",
+          "valueMs": 672.0176080000001
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 630.9973140000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 699.7879279999997
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 675.3201200000003
+         }
+        ]
+       }
+      },
+      "numeric": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1042.497041,
+        "controlMedianMs": 1067.962331,
+        "medianRatio": 0.9761552544871549,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-b2",
+          "valueMs": 1051.712466
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-b2",
+          "valueMs": 1026.4997239999998
+         },
+         {
+          "round": 3,
+          "job": "tier-3-numeric-b2",
+          "valueMs": 1042.497041
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 1074.7959600000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 1067.962331
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 1065.039135
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 906.5922069999999,
+        "controlMedianMs": 941.492652,
+        "medianRatio": 0.96293073033989,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-b2",
+          "valueMs": 923.429124
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-b2",
+          "valueMs": 899.835244
+         },
+         {
+          "round": 3,
+          "job": "tier-3-numeric-b2",
+          "valueMs": 906.5922069999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 945.9659110000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 941.492652
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 937.7991559999999
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 348.8251640000003,
+        "controlMedianMs": 284.54706099999976,
+        "medianRatio": 1.225896211242191,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-b2",
+          "valueMs": 327.220315
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-b2",
+          "valueMs": 348.8251640000003
+         },
+         {
+          "round": 3,
+          "job": "tier-3-numeric-b2",
+          "valueMs": 364.68778999999995
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 286.556024
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 284.54706099999976
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 276.606053
+         }
+        ]
+       }
+      }
+     },
+     "equalCaseGeomean": {
+      "call1": 0.9672245071004709,
+      "call5": 1.0414152332828406,
+      "importsPlusFirstMs": 0.9735351469540695
+     }
+    },
+    "typescript": {
+     "cases": {
+      "functions65": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 673.4367940000001,
+        "controlMedianMs": 667.9189110000001,
+        "medianRatio": 1.0082613067381767,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-typescript",
+          "valueMs": 673.4509489999999
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-typescript",
+          "valueMs": 673.4367940000001
+         },
+         {
+          "round": 3,
+          "job": "tier-3-functions65-typescript",
+          "valueMs": 666.946336
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-typescript",
+          "valueMs": 667.9189110000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-typescript",
+          "valueMs": 667.636071
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-typescript",
+          "valueMs": 671.3681840000002
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 405.40676899999994,
+        "controlMedianMs": 401.85732299999995,
+        "medianRatio": 1.0088326025105183,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-typescript",
+          "valueMs": 405.40676899999994
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-typescript",
+          "valueMs": 407.9011230000001
+         },
+         {
+          "round": 3,
+          "job": "tier-3-functions65-typescript",
+          "valueMs": 403.82671099999993
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-typescript",
+          "valueMs": 401.7700510000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-typescript",
+          "valueMs": 401.85732299999995
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-typescript",
+          "valueMs": 407.93613600000003
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 166.6428450000003,
+        "controlMedianMs": 166.12126799999987,
+        "medianRatio": 1.0031397364484387,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-functions65-typescript",
+          "valueMs": 166.6428450000003
+         },
+         {
+          "round": 2,
+          "job": "tier-2-functions65-typescript",
+          "valueMs": 194.42521899999974
+         },
+         {
+          "round": 3,
+          "job": "tier-3-functions65-typescript",
+          "valueMs": 157.10600900000009
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-typescript",
+          "valueMs": 170.074748
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-typescript",
+          "valueMs": 166.12126799999987
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-typescript",
+          "valueMs": 164.62118800000007
+         }
+        ]
+       }
+      },
+      "lexer": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1193.024153,
+        "controlMedianMs": 1215.5240600000002,
+        "medianRatio": 0.9814895420498709,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-typescript",
+          "valueMs": 1206.834604
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-typescript",
+          "valueMs": 1193.024153
+         },
+         {
+          "round": 3,
+          "job": "tier-3-lexer-typescript",
+          "valueMs": 1186.0100349999998
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-typescript",
+          "valueMs": 1223.8102039999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-typescript",
+          "valueMs": 1215.5240600000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-typescript",
+          "valueMs": 1181.639099
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 925.6595869999999,
+        "controlMedianMs": 945.420478,
+        "medianRatio": 0.9790983044477696,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-typescript",
+          "valueMs": 942.6602479999999
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-typescript",
+          "valueMs": 923.7312400000001
+         },
+         {
+          "round": 3,
+          "job": "tier-3-lexer-typescript",
+          "valueMs": 925.6595869999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-typescript",
+          "valueMs": 957.782974
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-typescript",
+          "valueMs": 945.420478
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-typescript",
+          "valueMs": 920.721288
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 478.94919400000026,
+        "controlMedianMs": 488.39654299999984,
+        "medianRatio": 0.9806563966608592,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-lexer-typescript",
+          "valueMs": 478.94919400000026
+         },
+         {
+          "round": 2,
+          "job": "tier-2-lexer-typescript",
+          "valueMs": 490.5991750000003
+         },
+         {
+          "round": 3,
+          "job": "tier-3-lexer-typescript",
+          "valueMs": 476.1632920000002
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-typescript",
+          "valueMs": 528.1007079999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-typescript",
+          "valueMs": 485.70231899999953
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-typescript",
+          "valueMs": 488.39654299999984
+         }
+        ]
+       }
+      },
+      "map": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1477.923059,
+        "controlMedianMs": 1475.0284620000002,
+        "medianRatio": 1.00196240077705,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-typescript",
+          "valueMs": 1496.4525160000003
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-typescript",
+          "valueMs": 1477.923059
+         },
+         {
+          "round": 3,
+          "job": "tier-3-map-typescript",
+          "valueMs": 1471.451102
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-typescript",
+          "valueMs": 1486.3087689999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-typescript",
+          "valueMs": 1475.0284620000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-typescript",
+          "valueMs": 1465.8238689999998
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 1213.651394,
+        "controlMedianMs": 1213.6266190000001,
+        "medianRatio": 1.0000204140215878,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-typescript",
+          "valueMs": 1232.4406150000002
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-typescript",
+          "valueMs": 1213.651394
+         },
+         {
+          "round": 3,
+          "job": "tier-3-map-typescript",
+          "valueMs": 1210.044019
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-typescript",
+          "valueMs": 1219.136898
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-typescript",
+          "valueMs": 1213.6266190000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-typescript",
+          "valueMs": 1203.386888
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 687.8931499999999,
+        "controlMedianMs": 635.6485109999994,
+        "medianRatio": 1.082191082171827,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-map-typescript",
+          "valueMs": 724.7060169999995
+         },
+         {
+          "round": 2,
+          "job": "tier-2-map-typescript",
+          "valueMs": 671.3441219999995
+         },
+         {
+          "round": 3,
+          "job": "tier-3-map-typescript",
+          "valueMs": 687.8931499999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-typescript",
+          "valueMs": 609.6583760000003
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-typescript",
+          "valueMs": 650.427197
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-typescript",
+          "valueMs": 635.6485109999994
+         }
+        ]
+       }
+      },
+      "numeric": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1025.7027119999998,
+        "controlMedianMs": 1027.2446490000002,
+        "medianRatio": 0.9984989583528117,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-typescript",
+          "valueMs": 1034.5671000000002
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-typescript",
+          "valueMs": 1025.7027119999998
+         },
+         {
+          "round": 3,
+          "job": "tier-3-numeric-typescript",
+          "valueMs": 1022.3188640000001
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-typescript",
+          "valueMs": 1038.081038
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-typescript",
+          "valueMs": 1027.2446490000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-typescript",
+          "valueMs": 1022.6505930000003
+         }
+        ]
+       },
+       "call1": {
+        "candidateMedianMs": 756.721031,
+        "controlMedianMs": 756.7754940000002,
+        "medianRatio": 0.9999280328176163,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-typescript",
+          "valueMs": 758.9904200000001
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-typescript",
+          "valueMs": 755.865098
+         },
+         {
+          "round": 3,
+          "job": "tier-3-numeric-typescript",
+          "valueMs": 756.721031
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-typescript",
+          "valueMs": 771.6014990000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-typescript",
+          "valueMs": 756.7568900000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-typescript",
+          "valueMs": 756.7754940000002
+         }
+        ]
+       },
+       "call5": {
+        "candidateMedianMs": 376.92770999999993,
+        "controlMedianMs": 346.45116800000005,
+        "medianRatio": 1.0879677854051855,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "tier-1-numeric-typescript",
+          "valueMs": 418.17208100000016
+         },
+         {
+          "round": 2,
+          "job": "tier-2-numeric-typescript",
+          "valueMs": 367.8752800000002
+         },
+         {
+          "round": 3,
+          "job": "tier-3-numeric-typescript",
+          "valueMs": 376.92770999999993
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-typescript",
+          "valueMs": 375.07406400000036
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-typescript",
+          "valueMs": 346.45116800000005
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-typescript",
+          "valueMs": 343.312179
+         }
+        ]
+       }
+      }
+     },
+     "equalCaseGeomean": {
+      "call1": 0.9969095450499598,
+      "call5": 1.0374079495576785,
+      "importsPlusFirstMs": 0.997503560546621
+     }
+    }
+   }
+  },
+  "saved-choice-vs-control": {
+   "candidateLane": "choice-screen01",
+   "controlLane": "choice-control01",
+   "candidatePlan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/choice-screen01/plan.json",
+    "sha256": "85fd4d20dc5f3057f53c6942d0f2b82381a0068d2ceed35564d0e87f0cf57dce",
+    "bytes": 472087
+   },
+   "controlPlan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/choice-control01/plan.json",
+    "sha256": "50bd0eb51bf97caf67b9c01dc61abe02d47834d5bf4fb63a5bd3cc7d81f68777",
+    "bytes": 456351
+   },
+   "candidateCpu": 3,
+   "controlCpu": 3,
+   "candidateClass": "Unchecked saved compiler-image derivative. Exact C controls only; no production/semantic promotion or ordinary installed-performance claim.",
+   "relationship": "Matching source/role/round experiment; sample orders are retained in raw guards.",
+   "roles": {
+    "b2": {
+     "cases": {
+      "functions65": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 732.305824,
+        "controlMedianMs": 733.983504,
+        "medianRatio": 0.9977142810555589,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 725.450958
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 805.0527920000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 732.305824
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 734.733591
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 729.6958350000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 733.983504
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.9873659880074817,
+         "2": 1.1032717378741788,
+         "3": 0.9977142810555589
+        }
+       },
+       "call1": {
+        "candidateMedianMs": 602.485403,
+        "controlMedianMs": 604.586606,
+        "medianRatio": 0.996524562437958,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 598.342128
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 664.389797
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 602.485403
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 604.586606
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 599.224273
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 607.064158
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.9896714913330383,
+         "2": 1.1087498069358082,
+         "3": 0.9924575435072878
+        }
+       },
+       "call5": {
+        "candidateMedianMs": 238.0761050000001,
+        "controlMedianMs": 227.4170949999998,
+        "medianRatio": 1.0468698714140214,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 238.0761050000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 250.27580999999964
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 226.08650099999977
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 227.4170949999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 198.19455199999993
+         },
+         {
+          "round": 3,
+          "job": "clean-3-functions65-b2",
+          "valueMs": 228.35506900000019
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 1.0468698714140214,
+         "2": 1.2627784541726441,
+         "3": 0.9900656113747122
+        }
+       }
+      },
+      "lexer": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1403.222065,
+        "controlMedianMs": 1426.72557,
+        "medianRatio": 0.9835262607650607,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 1412.587538
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 1394.551575
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 1403.222065
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 1419.522042
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 1428.789068
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 1426.72557
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.9951149022031177,
+         "2": 0.9760374055437552,
+         "3": 0.9835262607650607
+        }
+       },
+       "call1": {
+        "candidateMedianMs": 1275.998597,
+        "controlMedianMs": 1297.8900859999999,
+        "medianRatio": 0.9831330177831408,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 1285.743539
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 1267.555546
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 1275.998597
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 1290.578857
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 1299.856295
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 1297.8900859999999
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.9962533726832936,
+         "2": 0.9751505230814764,
+         "3": 0.9831330177831408
+        }
+       },
+       "call5": {
+        "candidateMedianMs": 345.65462899999966,
+        "controlMedianMs": 390.37193600000046,
+        "medianRatio": 0.8854494832333419,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 344.6460440000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 358.5843500000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 345.65462899999966
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 400.4329200000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 372.61529100000007
+         },
+         {
+          "round": 3,
+          "job": "clean-3-lexer-b2",
+          "valueMs": 390.37193600000046
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.8606835921482178,
+         "2": 0.9623446988384596,
+         "3": 0.8854494832333419
+        }
+       }
+      },
+      "map": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1932.7739579999998,
+        "controlMedianMs": 1925.232214,
+        "medianRatio": 1.0039173165424706,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 2099.113335
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1932.7739579999998
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 1911.8402909999998
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 1935.8451449999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1920.10484
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 1925.232214
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 1.0843394888386075,
+         "2": 1.0065981386724694,
+         "3": 0.9930439959903973
+        }
+       },
+       "call1": {
+        "candidateMedianMs": 1803.8518629999999,
+        "controlMedianMs": 1798.5846310000002,
+        "medianRatio": 1.0029285427603545,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 1957.989856
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1803.8518629999999
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 1784.6490129999997
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 1805.7086849999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1794.1968200000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 1798.5846310000002
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 1.0843331885508432,
+         "2": 1.005381261906372,
+         "3": 0.9922518975422067
+        }
+       },
+       "call5": {
+        "candidateMedianMs": 667.0313180000003,
+        "controlMedianMs": 629.1981310000001,
+        "medianRatio": 1.0601292107143914,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 736.8697649999995
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 667.0313180000003
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 666.9998850000002
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 672.2343069999997
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 624.1034330000002
+         },
+         {
+          "round": 3,
+          "job": "clean-3-map-b2",
+          "valueMs": 629.1981310000001
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 1.0961501924655561,
+         "2": 1.0687832861191777,
+         "3": 1.06007925347763
+        }
+       }
+      },
+      "numeric": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1067.661698,
+        "controlMedianMs": 1070.1128210000002,
+        "medianRatio": 0.9977094723547842,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 1066.4784399999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 1077.144538
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 1067.661698
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 1074.1351769999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 1069.6377310000003
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 1070.1128210000002
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.9928717193478526,
+         "2": 1.007018083583291,
+         "3": 0.9977094723547842
+        }
+       },
+       "call1": {
+        "candidateMedianMs": 940.7463069999999,
+        "controlMedianMs": 942.7763290000001,
+        "medianRatio": 0.9978467618060017,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 937.1894909999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 946.6743160000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 940.7463069999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 944.780045
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 942.7763290000001
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 942.5883210000001
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.9919657977111486,
+         "2": 1.004134583018365,
+         "3": 0.9980457916155316
+        }
+       },
+       "call5": {
+        "candidateMedianMs": 351.0202079999999,
+        "controlMedianMs": 285.44428800000014,
+        "medianRatio": 1.2297328156729475,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 351.0202079999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 361.5073809999999
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 342.220867
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 285.44428800000014
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 283.95278400000007
+         },
+         {
+          "round": 3,
+          "job": "clean-3-numeric-b2",
+          "valueMs": 290.5212069999998
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 1.2297328156729475,
+         "2": 1.273124974890191,
+         "3": 1.177954857526116
+        }
+       }
+      }
+     },
+     "equalCaseGeomean": {
+      "call1": 0.99508122759329,
+      "call5": 1.0484712190012553,
+      "importsPlusFirstMs": 0.9956886291493161
+     }
+    }
+   }
+  },
+  "two-cpu-vs-one": {
+   "candidateLane": "cpu-two01",
+   "controlLane": "cpu-one01",
+   "candidatePlan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/cpu-two01/plan.json",
+    "sha256": "aa1ea4eed9e225350ddc21f3b1dc534526e20dbcd877a953e7340b6c0b950e4b",
+    "bytes": 458186
+   },
+   "controlPlan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/cpu-one01/plan.json",
+    "sha256": "0738c7a72c8fc6b4b261b68e80983e1761f53a5305b8cadfcdd99f9b15694e0f",
+    "bytes": 458066
+   },
+   "candidateCpu": "2,3",
+   "controlCpu": 3,
+   "candidateClass": "Two-CPU affinity hardware counterfactual, despite clean worker mode; no production compiler change.",
+   "relationship": "Matching source/role/round experiment; sample orders are retained in raw guards.",
+   "roles": {
+    "b2": {
+     "cases": {
+      "functions65": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 504.3343695,
+        "controlMedianMs": 729.7655215,
+        "medianRatio": 0.691090980104628,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 503.7377999999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 504.9309390000001
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 732.167194
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 727.363849
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.6880092472430551,
+         "2": 0.6941930640272996
+        }
+       },
+       "call1": {
+        "candidateMedianMs": 380.617522,
+        "controlMedianMs": 601.3317995,
+        "medianRatio": 0.6329575823471814,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 380.77558999999997
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 380.45945400000005
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-b2",
+          "valueMs": 604.057011
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-b2",
+          "valueMs": 598.606588
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.630363662809966,
+         "2": 0.6355751199985124
+        }
+       }
+      },
+      "lexer": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 942.8634674999998,
+        "controlMedianMs": 1495.3899185,
+        "medianRatio": 0.6305134572832817,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 956.4303459999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 929.2965889999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 1567.1208190000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 1423.6590179999998
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.6103105353487106,
+         "2": 0.6527522231450509
+        }
+       },
+       "call1": {
+        "candidateMedianMs": 811.499611,
+        "controlMedianMs": 1361.1770245,
+        "medianRatio": 0.5961749253724639,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 818.3934649999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 804.6057569999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-b2",
+          "valueMs": 1424.8924370000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-b2",
+          "valueMs": 1297.4616119999998
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.5743545574029879,
+         "2": 0.6201383914239461
+        }
+       }
+      },
+      "map": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 1310.100031,
+        "controlMedianMs": 1997.5162055,
+        "medianRatio": 0.6558645318584876,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 1303.4504700000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1316.749592
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 2069.5875450000003
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1925.4448659999998
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.6298117096563799,
+         "2": 0.6838677207805336
+        }
+       },
+       "call1": {
+        "candidateMedianMs": 1179.5778545,
+        "controlMedianMs": 1868.9529714999999,
+        "medianRatio": 0.6311436791013979,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 1177.7904790000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1181.3652299999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-b2",
+          "valueMs": 1941.196803
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-b2",
+          "valueMs": 1796.70914
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.6067341946884508,
+         "2": 0.6575161241735543
+        }
+       }
+      },
+      "numeric": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 703.7981505,
+        "controlMedianMs": 1120.5634130000003,
+        "medianRatio": 0.6280752542292757,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 719.484599
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 688.1117020000002
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 1172.9707550000003
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 1068.156071
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.6133866474786916,
+         "2": 0.6442052062258982
+        }
+       },
+       "call1": {
+        "candidateMedianMs": 580.3261965,
+        "controlMedianMs": 984.4471420000002,
+        "medianRatio": 0.5894945210781057,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 596.440523
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 564.2118700000001
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-b2",
+          "valueMs": 1029.5151690000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-b2",
+          "valueMs": 939.3791150000001
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.579341170445639,
+         "2": 0.600622114107785
+        }
+       }
+      }
+     },
+     "equalCaseGeomean": {
+      "call1": 0.6121235393576389,
+      "importsPlusFirstMs": 0.6508993732434656
+     }
+    },
+    "typescript": {
+     "cases": {
+      "functions65": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 430.3394475,
+        "controlMedianMs": 674.5100795,
+        "medianRatio": 0.6380029899909005,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-typescript",
+          "valueMs": 435.896081
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-typescript",
+          "valueMs": 424.78281400000003
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-typescript",
+          "valueMs": 674.2412409999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-typescript",
+          "valueMs": 674.7789180000001
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.6464986928914366,
+         "2": 0.6295140566321012
+        }
+       },
+       "call1": {
+        "candidateMedianMs": 257.017119,
+        "controlMedianMs": 403.80022599999995,
+        "medianRatio": 0.6364957284595477,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-typescript",
+          "valueMs": 260.2004159999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-typescript",
+          "valueMs": 253.83382200000005
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-functions65-typescript",
+          "valueMs": 403.2509319999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-functions65-typescript",
+          "valueMs": 404.34952
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.6452568248496943,
+         "2": 0.6277584353259528
+        }
+       }
+      },
+      "lexer": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 825.815798,
+        "controlMedianMs": 1241.3315625,
+        "medianRatio": 0.6652660924345102,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-typescript",
+          "valueMs": 841.2890980000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-typescript",
+          "valueMs": 810.3424979999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-typescript",
+          "valueMs": 1193.1868829999999
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-typescript",
+          "valueMs": 1289.476242
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.7050773939827163,
+         "2": 0.6284276294560841
+        }
+       },
+       "call1": {
+        "candidateMedianMs": 651.6082134999999,
+        "controlMedianMs": 966.0143484999999,
+        "medianRatio": 0.6745326448947668,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-typescript",
+          "valueMs": 659.3160670000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-typescript",
+          "valueMs": 643.9003599999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-lexer-typescript",
+          "valueMs": 924.1365449999998
+         },
+         {
+          "round": 2,
+          "job": "clean-2-lexer-typescript",
+          "valueMs": 1007.8921519999999
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.713440097750923,
+         "2": 0.6388583924602281
+        }
+       }
+      },
+      "map": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 983.614924,
+        "controlMedianMs": 1504.202761,
+        "medianRatio": 0.6539111278761972,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-typescript",
+          "valueMs": 935.298307
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-typescript",
+          "valueMs": 1031.931541
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-typescript",
+          "valueMs": 1475.5180570000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-typescript",
+          "valueMs": 1532.8874649999998
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.6338779132948286,
+         "2": 0.6731945850963039
+        }
+       },
+       "call1": {
+        "candidateMedianMs": 801.0939095000001,
+        "controlMedianMs": 1226.8338480000002,
+        "medianRatio": 0.6529766934666446,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-typescript",
+          "valueMs": 755.2559590000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-typescript",
+          "valueMs": 846.93186
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-map-typescript",
+          "valueMs": 1207.7496210000002
+         },
+         {
+          "round": 2,
+          "job": "clean-2-map-typescript",
+          "valueMs": 1245.918075
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.6253414994861753,
+         "2": 0.6797652887409953
+        }
+       }
+      },
+      "numeric": {
+       "importsPlusFirstMs": {
+        "candidateMedianMs": 684.3582114999999,
+        "controlMedianMs": 1033.3421795,
+        "medianRatio": 0.6622764705406086,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-typescript",
+          "valueMs": 678.3286870000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-typescript",
+          "valueMs": 690.3877359999999
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-typescript",
+          "valueMs": 1036.098611
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-typescript",
+          "valueMs": 1030.585748
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.6546951031478606,
+         "2": 0.6698983925789743
+        }
+       },
+       "call1": {
+        "candidateMedianMs": 497.02628500000003,
+        "controlMedianMs": 764.451248,
+        "medianRatio": 0.6501739467367579,
+        "candidateSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-typescript",
+          "valueMs": 503.7663150000001
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-typescript",
+          "valueMs": 490.286255
+         }
+        ],
+        "controlSamples": [
+         {
+          "round": 1,
+          "job": "clean-1-numeric-typescript",
+          "valueMs": 766.40327
+         },
+         {
+          "round": 2,
+          "job": "clean-2-numeric-typescript",
+          "valueMs": 762.4992259999999
+         }
+        ],
+        "matchingRoundRatios": {
+         "1": 0.6573123246199094,
+         "2": 0.6429990199098249
+        }
+       }
+      }
+     },
+     "equalCaseGeomean": {
+      "call1": 0.6534034561808278,
+      "importsPlusFirstMs": 0.6547779397615321
+     }
+    }
+   }
+  }
+ },
+ "limitations": [
+  "Ratios compare medians within the stated diagnostic protocols, not confidence intervals or an installed compiler improvement.",
+  "Five calls share a process; no convergence is established. Hardware lanes run one cold call, so they have no request5 and must not be mixed into warmed comparisons.",
+  "Choice is a saved unchecked image intervention. Exact generated C on these requests establishes output preservation only for this scope.",
+  "Tier ceiling/filter jobs alter V8 semantics of optimization; their timings are diagnostic counterfactuals.",
+  "Equal-case geometric means weight sources equally, not elapsed seconds or representative application frequency."
+ ],
+ "rawFullSummary": {
+  "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/summary-final.json",
+  "sha256": "7e6a0610323b6b034f8f5f64697b73b21425323ae2ddc47fbf750ac1416fe1ac",
+  "bytes": 7979478
+ }
+}

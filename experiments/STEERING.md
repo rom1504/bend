@@ -1,4 +1,34 @@
-# Active frontier: Phase84 prototypes rejected/deferred; Phase82 installed
+# Active frontier: Phase85 V8 startup cost identified; Phase82 installed
+
+[Phase85 report](../implementation/phase85/README.md) directly attributes first
+request CPU by V8 thread, beyond inspector samples. Extra compilation CPU explains
+96.1%/64.6% of Numeric/Functions65 observed gaps in single instrumented pairs:
+main first-use compilation and TurboFan dominate the excess; Maglev is similar.
+This is not a removable-time forecast. B2 still benefits greatly from optimizing
+tiers. Prioritize general generated-JS first-use cost: function work, bytecode,
+temporary lifetime and optimization-unit shape, with complete-request falsifiers.
+
+Three-round four-source cold/fifth ratios1.394×/0.989× demonstrate process reuse,
+not steady-state or every-source parity. Maglev ceiling cuts B2 cold time21.5%
+but worsens fifth17.5%; upstream benefits more cold. Lexer-only TF exclusion saves
+only3.3%, despite large elapsed job durations. Largest measured SCC bytecode20,700
+is below61,440; do not raise the size limit or revive legacy descriptor guards.
+
+Paired CPU3 versus CPU2,3 cuts first-request time38.8% B2/34.7% TS; fair relative
+ratio remains1.334×. Use explicit two-CPU development diagnostics for faster
+iteration while retaining declared one-CPU qualification. Cold compilation
+parity still requires a compiler improvement, not unmatched hardware or warmup.
+
+Reject the lexer-only IIFE→ternary saved-image prototype: common-path80-byte
+context allocation disappears and all120 C comparisons pass, but cold ratio
+0.9951/fifth1.0485. Bytecode/register usage grows; allocation reduction alone
+is insufficient. No production source/image change. Overall623 C outputs pass,
+160 serial guarded jobs use761.8s, peak480.3MiB; no timeout/OOM. Raw failed filter
+selectivity and initial missing timeline marks remain preserved. Three bounded
+research/offline agents, root-only targets, no PR comments or quota claim.
+
+The following Phase84 conclusions remain relevant counterexamples to speculative
+opportunity budgets and small added-product rewrites.
 
 [Phase84 report](../implementation/phase84/README.md) tests four actual Bend
 prototypes. Paired annotation/erasure adds278 lines and is neutral on B2

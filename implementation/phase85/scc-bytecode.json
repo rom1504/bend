@@ -1,0 +1,2603 @@
+{
+  "kind": "phase85-offline-scc-evidence",
+  "targetExecution": false,
+  "method": "Parse V8 bytecode section headers, count named instructions, extract exact offsets and map UTF16 source positions. Trace events counted only between P85 request-start/request-end per call; no sum of concurrent compilation durations is a request saving.",
+  "image": {
+    "file": "selfhost/build/phase82/compiler04-b2/full/compiler.mjs",
+    "sha256": "098320e8f3e40894156790d740ad205e386f375195b3c6741d67cca96e94e092",
+    "bytes": 4731079
+  },
+  "bytecodeLog": {
+    "file": "selfhost/build/phase85/bytecode01/runs/bytecode-1-numeric-b2-guard/stdout.log",
+    "sha256": "4d91e68d8ac01ecc66a5f34dd28db0a9ff2ff4baa01092fe3c15eec41436a690",
+    "bytes": 12895532
+  },
+  "bytecodeReport": {
+    "file": "selfhost/build/phase85/bytecode01/runs/bytecode-1-numeric-b2/report.json",
+    "sha256": "55cb4138db49bbe24e4006477cddec95e205bffcbe5f22acf517219cc621b522",
+    "bytes": 5197
+  },
+  "bytecodeProcess": {
+    "file": "selfhost/build/phase85/bytecode01/runs/bytecode-1-numeric-b2-guard/process.json",
+    "sha256": "4ba71a7017502fcd506407544381375a611ffec746fd682fadec79a52cf674bc",
+    "bytes": 935
+  },
+  "printedFunctions": 2153,
+  "printedSccFunctions": 79,
+  "maxByBytes": {
+    "name": "$jd$f_95_context_95_publish$scc",
+    "bytecodeBytes": 20700,
+    "parametersIncludingReceiver": 11,
+    "registers": 685,
+    "frameBytes": 5480,
+    "instructions": 4305,
+    "wideInstructions": 3339,
+    "blockContextSites": 17,
+    "closureSites": 10
+  },
+  "maxByRegisters": {
+    "name": "$jd$f_95_context_95_publish$scc",
+    "bytecodeBytes": 20700,
+    "parametersIncludingReceiver": 11,
+    "registers": 685,
+    "frameBytes": 5480,
+    "instructions": 4305,
+    "wideInstructions": 3339,
+    "blockContextSites": 17,
+    "closureSites": 10
+  },
+  "scc": [
+    {
+      "name": "$jd$f_95_context_95_publish$scc",
+      "bytecodeBytes": 20700,
+      "parametersIncludingReceiver": 11,
+      "registers": 685,
+      "frameBytes": 5480,
+      "instructions": 4305,
+      "wideInstructions": 3339,
+      "blockContextSites": 17,
+      "closureSites": 10
+    },
+    {
+      "name": "$jd$f_95_context_95_grow$scc",
+      "bytecodeBytes": 9210,
+      "parametersIncludingReceiver": 8,
+      "registers": 262,
+      "frameBytes": 2096,
+      "instructions": 2029,
+      "wideInstructions": 1404,
+      "blockContextSites": 8,
+      "closureSites": 4
+    },
+    {
+      "name": "$jd$norm_95_cmp_95_loop$scc",
+      "bytecodeBytes": 8302,
+      "parametersIncludingReceiver": 11,
+      "registers": 376,
+      "frameBytes": 3008,
+      "instructions": 1843,
+      "wideInstructions": 1176,
+      "blockContextSites": 1,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$g_95_eval$scc",
+      "bytecodeBytes": 7554,
+      "parametersIncludingReceiver": 12,
+      "registers": 397,
+      "frameBytes": 3176,
+      "instructions": 1655,
+      "wideInstructions": 1059,
+      "blockContextSites": 5,
+      "closureSites": 3
+    },
+    {
+      "name": "$jd$f_95_lex_95_scanned$scc",
+      "bytecodeBytes": 4888,
+      "parametersIncludingReceiver": 10,
+      "registers": 184,
+      "frameBytes": 1472,
+      "instructions": 1151,
+      "wideInstructions": 600,
+      "blockContextSites": 5,
+      "closureSites": 5
+    },
+    {
+      "name": "$jd$ffw_95_walk$scc",
+      "bytecodeBytes": 4323,
+      "parametersIncludingReceiver": 9,
+      "registers": 202,
+      "frameBytes": 1616,
+      "instructions": 1018,
+      "wideInstructions": 544,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$norm_95_eval_95_node$scc",
+      "bytecodeBytes": 3872,
+      "parametersIncludingReceiver": 10,
+      "registers": 235,
+      "frameBytes": 1880,
+      "instructions": 952,
+      "wideInstructions": 470,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$noa_95_eval_95_args$scc",
+      "bytecodeBytes": 2756,
+      "parametersIncludingReceiver": 11,
+      "registers": 132,
+      "frameBytes": 1056,
+      "instructions": 945,
+      "wideInstructions": 69,
+      "blockContextSites": 4,
+      "closureSites": 5
+    },
+    {
+      "name": "$jd$f_95_context_95_tele$scc",
+      "bytecodeBytes": 1661,
+      "parametersIncludingReceiver": 8,
+      "registers": 74,
+      "frameBytes": 592,
+      "instructions": 562,
+      "wideInstructions": 44,
+      "blockContextSites": 3,
+      "closureSites": 3
+    },
+    {
+      "name": "$jd$f_95_context_95_case$scc",
+      "bytecodeBytes": 1488,
+      "parametersIncludingReceiver": 8,
+      "registers": 98,
+      "frameBytes": 784,
+      "instructions": 531,
+      "wideInstructions": 25,
+      "blockContextSites": 1,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$nc_95_erase_95_annotated$scc",
+      "bytecodeBytes": 1325,
+      "parametersIncludingReceiver": 5,
+      "registers": 32,
+      "frameBytes": 256,
+      "instructions": 512,
+      "wideInstructions": 7,
+      "blockContextSites": 3,
+      "closureSites": 2
+    },
+    {
+      "name": "$jd$ff_95_flat$scc",
+      "bytecodeBytes": 1181,
+      "parametersIncludingReceiver": 7,
+      "registers": 57,
+      "frameBytes": 456,
+      "instructions": 436,
+      "wideInstructions": 20,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$j_95_layout_95_term$scc",
+      "bytecodeBytes": 1159,
+      "parametersIncludingReceiver": 8,
+      "registers": 54,
+      "frameBytes": 432,
+      "instructions": 423,
+      "wideInstructions": 12,
+      "blockContextSites": 1,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$jl_95_term$scc",
+      "bytecodeBytes": 1007,
+      "parametersIncludingReceiver": 6,
+      "registers": 53,
+      "frameBytes": 424,
+      "instructions": 376,
+      "wideInstructions": 11,
+      "blockContextSites": 1,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$kf_95_char$scc",
+      "bytecodeBytes": 1005,
+      "parametersIncludingReceiver": 8,
+      "registers": 81,
+      "frameBytes": 648,
+      "instructions": 385,
+      "wideInstructions": 5,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$check_95_let$scc",
+      "bytecodeBytes": 1002,
+      "parametersIncludingReceiver": 15,
+      "registers": 86,
+      "frameBytes": 688,
+      "instructions": 339,
+      "wideInstructions": 25,
+      "blockContextSites": 2,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$check_95_template_95_definition$scc",
+      "bytecodeBytes": 900,
+      "parametersIncludingReceiver": 10,
+      "registers": 60,
+      "frameBytes": 480,
+      "instructions": 332,
+      "wideInstructions": 12,
+      "blockContextSites": 1,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$nol_95_params$scc",
+      "bytecodeBytes": 875,
+      "parametersIncludingReceiver": 12,
+      "registers": 78,
+      "frameBytes": 624,
+      "instructions": 309,
+      "wideInstructions": 10,
+      "blockContextSites": 2,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$subst$scc",
+      "bytecodeBytes": 867,
+      "parametersIncludingReceiver": 6,
+      "registers": 58,
+      "frameBytes": 464,
+      "instructions": 324,
+      "wideInstructions": 1,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$nc_95_compact_95_ctor$scc",
+      "bytecodeBytes": 846,
+      "parametersIncludingReceiver": 4,
+      "registers": 28,
+      "frameBytes": 224,
+      "instructions": 343,
+      "wideInstructions": 6,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$nq_95_layout_95_eval$scc",
+      "bytecodeBytes": 844,
+      "parametersIncludingReceiver": 7,
+      "registers": 58,
+      "frameBytes": 464,
+      "instructions": 326,
+      "wideInstructions": 4,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$f_95_context_95_higher$scc",
+      "bytecodeBytes": 786,
+      "parametersIncludingReceiver": 7,
+      "registers": 42,
+      "frameBytes": 336,
+      "instructions": 302,
+      "wideInstructions": 11,
+      "blockContextSites": 4,
+      "closureSites": 2
+    },
+    {
+      "name": "$jd$f_95_args_95_base$scc",
+      "bytecodeBytes": 743,
+      "parametersIncludingReceiver": 5,
+      "registers": 35,
+      "frameBytes": 280,
+      "instructions": 258,
+      "wideInstructions": 22,
+      "blockContextSites": 2,
+      "closureSites": 2
+    },
+    {
+      "name": "$jd$jd_95_raise$scc",
+      "bytecodeBytes": 698,
+      "parametersIncludingReceiver": 6,
+      "registers": 46,
+      "frameBytes": 368,
+      "instructions": 267,
+      "wideInstructions": 10,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$ffd_95_walk$scc",
+      "bytecodeBytes": 682,
+      "parametersIncludingReceiver": 8,
+      "registers": 70,
+      "frameBytes": 560,
+      "instructions": 244,
+      "wideInstructions": 3,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$index_95_find$scc",
+      "bytecodeBytes": 647,
+      "parametersIncludingReceiver": 7,
+      "registers": 69,
+      "frameBytes": 552,
+      "instructions": 242,
+      "wideInstructions": 1,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$noa_95_scalar$scc",
+      "bytecodeBytes": 599,
+      "parametersIncludingReceiver": 5,
+      "registers": 27,
+      "frameBytes": 216,
+      "instructions": 235,
+      "wideInstructions": 9,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$j_95_string$scc",
+      "bytecodeBytes": 551,
+      "parametersIncludingReceiver": 5,
+      "registers": 27,
+      "frameBytes": 216,
+      "instructions": 212,
+      "wideInstructions": 4,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$nh_95_type$scc",
+      "bytecodeBytes": 550,
+      "parametersIncludingReceiver": 6,
+      "registers": 36,
+      "frameBytes": 288,
+      "instructions": 202,
+      "wideInstructions": 10,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$env_95_tele_95_fill_95_open$scc",
+      "bytecodeBytes": 530,
+      "parametersIncludingReceiver": 7,
+      "registers": 32,
+      "frameBytes": 256,
+      "instructions": 192,
+      "wideInstructions": 8,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$ns_95_defs$scc",
+      "bytecodeBytes": 520,
+      "parametersIncludingReceiver": 8,
+      "registers": 52,
+      "frameBytes": 416,
+      "instructions": 186,
+      "wideInstructions": 7,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$f_95_graph_95_fresh_95_names$scc",
+      "bytecodeBytes": 519,
+      "parametersIncludingReceiver": 7,
+      "registers": 41,
+      "frameBytes": 328,
+      "instructions": 201,
+      "wideInstructions": 6,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$nf_95_escape_95_terms$scc",
+      "bytecodeBytes": 506,
+      "parametersIncludingReceiver": 7,
+      "registers": 33,
+      "frameBytes": 264,
+      "instructions": 186,
+      "wideInstructions": 8,
+      "blockContextSites": 2,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$kf_95_namespaces$scc",
+      "bytecodeBytes": 476,
+      "parametersIncludingReceiver": 7,
+      "registers": 34,
+      "frameBytes": 272,
+      "instructions": 181,
+      "wideInstructions": 3,
+      "blockContextSites": 3,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$np_95_level$scc",
+      "bytecodeBytes": 463,
+      "parametersIncludingReceiver": 7,
+      "registers": 31,
+      "frameBytes": 248,
+      "instructions": 178,
+      "wideInstructions": 3,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$dg_95_check_95_events$scc",
+      "bytecodeBytes": 458,
+      "parametersIncludingReceiver": 7,
+      "registers": 37,
+      "frameBytes": 296,
+      "instructions": 166,
+      "wideInstructions": 11,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$f_95_match_95_heads$scc",
+      "bytecodeBytes": 453,
+      "parametersIncludingReceiver": 5,
+      "registers": 20,
+      "frameBytes": 160,
+      "instructions": 153,
+      "wideInstructions": 14,
+      "blockContextSites": 1,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$f_95_context_95_templates$scc",
+      "bytecodeBytes": 444,
+      "parametersIncludingReceiver": 7,
+      "registers": 36,
+      "frameBytes": 288,
+      "instructions": 166,
+      "wideInstructions": 10,
+      "blockContextSites": 1,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$j_95_word$scc",
+      "bytecodeBytes": 433,
+      "parametersIncludingReceiver": 6,
+      "registers": 20,
+      "frameBytes": 160,
+      "instructions": 173,
+      "wideInstructions": 3,
+      "blockContextSites": 1,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$nc_95_compile_95_def$scc",
+      "bytecodeBytes": 432,
+      "parametersIncludingReceiver": 8,
+      "registers": 50,
+      "frameBytes": 400,
+      "instructions": 151,
+      "wideInstructions": 9,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$noa_95_call_95_result$scc",
+      "bytecodeBytes": 429,
+      "parametersIncludingReceiver": 6,
+      "registers": 28,
+      "frameBytes": 224,
+      "instructions": 163,
+      "wideInstructions": 10,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$nr_95_walk$scc",
+      "bytecodeBytes": 421,
+      "parametersIncludingReceiver": 8,
+      "registers": 34,
+      "frameBytes": 272,
+      "instructions": 156,
+      "wideInstructions": 7,
+      "blockContextSites": 3,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$ns_95_annotated$scc",
+      "bytecodeBytes": 410,
+      "parametersIncludingReceiver": 5,
+      "registers": 14,
+      "frameBytes": 112,
+      "instructions": 176,
+      "wideInstructions": 8,
+      "blockContextSites": 2,
+      "closureSites": 2
+    },
+    {
+      "name": "$jd$np_95_collect$scc",
+      "bytecodeBytes": 407,
+      "parametersIncludingReceiver": 6,
+      "registers": 20,
+      "frameBytes": 160,
+      "instructions": 152,
+      "wideInstructions": 3,
+      "blockContextSites": 2,
+      "closureSites": 3
+    },
+    {
+      "name": "$jd$nq_95_tele$scc",
+      "bytecodeBytes": 402,
+      "parametersIncludingReceiver": 7,
+      "registers": 34,
+      "frameBytes": 272,
+      "instructions": 157,
+      "wideInstructions": 4,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$dr_95_walk$scc",
+      "bytecodeBytes": 383,
+      "parametersIncludingReceiver": 7,
+      "registers": 34,
+      "frameBytes": 272,
+      "instructions": 143,
+      "wideInstructions": 4,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$f_95_header_95_scan$scc",
+      "bytecodeBytes": 376,
+      "parametersIncludingReceiver": 9,
+      "registers": 43,
+      "frameBytes": 344,
+      "instructions": 138,
+      "wideInstructions": 9,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$String_46_starts_95_with_46_if$scc",
+      "bytecodeBytes": 363,
+      "parametersIncludingReceiver": 5,
+      "registers": 23,
+      "frameBytes": 184,
+      "instructions": 139,
+      "wideInstructions": 1,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$book_95_final_95_scan$scc",
+      "bytecodeBytes": 363,
+      "parametersIncludingReceiver": 8,
+      "registers": 35,
+      "frameBytes": 280,
+      "instructions": 133,
+      "wideInstructions": 1,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$j_95_find_95_ctor$scc",
+      "bytecodeBytes": 342,
+      "parametersIncludingReceiver": 5,
+      "registers": 35,
+      "frameBytes": 280,
+      "instructions": 131,
+      "wideInstructions": 1,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$env_95_subst_95_binding$scc",
+      "bytecodeBytes": 335,
+      "parametersIncludingReceiver": 5,
+      "registers": 31,
+      "frameBytes": 248,
+      "instructions": 128,
+      "wideInstructions": 2,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$kr_95_visit$scc",
+      "bytecodeBytes": 325,
+      "parametersIncludingReceiver": 7,
+      "registers": 34,
+      "frameBytes": 272,
+      "instructions": 117,
+      "wideInstructions": 3,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$jl_95_visit$scc",
+      "bytecodeBytes": 325,
+      "parametersIncludingReceiver": 8,
+      "registers": 33,
+      "frameBytes": 264,
+      "instructions": 128,
+      "wideInstructions": 1,
+      "blockContextSites": 2,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$U32_46_read_46_if$scc",
+      "bytecodeBytes": 324,
+      "parametersIncludingReceiver": 5,
+      "registers": 25,
+      "frameBytes": 200,
+      "instructions": 126,
+      "wideInstructions": 1,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$nh_95_fields$scc",
+      "bytecodeBytes": 313,
+      "parametersIncludingReceiver": 7,
+      "registers": 21,
+      "frameBytes": 168,
+      "instructions": 125,
+      "wideInstructions": 4,
+      "blockContextSites": 2,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$kr_95_refs$scc",
+      "bytecodeBytes": 309,
+      "parametersIncludingReceiver": 4,
+      "registers": 19,
+      "frameBytes": 152,
+      "instructions": 122,
+      "wideInstructions": 2,
+      "blockContextSites": 2,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$nf_95_kind_95_tele$scc",
+      "bytecodeBytes": 304,
+      "parametersIncludingReceiver": 6,
+      "registers": 24,
+      "frameBytes": 192,
+      "instructions": 115,
+      "wideInstructions": 6,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$f_95_context_95_patterns$scc",
+      "bytecodeBytes": 293,
+      "parametersIncludingReceiver": 7,
+      "registers": 31,
+      "frameBytes": 248,
+      "instructions": 105,
+      "wideInstructions": 3,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$nt_95_replace_95_step$scc",
+      "bytecodeBytes": 287,
+      "parametersIncludingReceiver": 6,
+      "registers": 27,
+      "frameBytes": 216,
+      "instructions": 109,
+      "wideInstructions": 1,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$nq_95_layout_95_reduce$scc",
+      "bytecodeBytes": 287,
+      "parametersIncludingReceiver": 4,
+      "registers": 17,
+      "frameBytes": 136,
+      "instructions": 131,
+      "wideInstructions": 3,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$nq_95_layout_95_specialize$scc",
+      "bytecodeBytes": 282,
+      "parametersIncludingReceiver": 6,
+      "registers": 23,
+      "frameBytes": 184,
+      "instructions": 109,
+      "wideInstructions": 4,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$descend_95_fields$scc",
+      "bytecodeBytes": 264,
+      "parametersIncludingReceiver": 7,
+      "registers": 26,
+      "frameBytes": 208,
+      "instructions": 104,
+      "wideInstructions": 3,
+      "blockContextSites": 1,
+      "closureSites": 1
+    },
+    {
+      "name": "$jd$dr_95_cached_95_names$scc",
+      "bytecodeBytes": 250,
+      "parametersIncludingReceiver": 7,
+      "registers": 27,
+      "frameBytes": 216,
+      "instructions": 90,
+      "wideInstructions": 3,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$lookup$scc",
+      "bytecodeBytes": 238,
+      "parametersIncludingReceiver": 6,
+      "registers": 28,
+      "frameBytes": 224,
+      "instructions": 93,
+      "wideInstructions": 0,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$String_46_contains_46_if$scc",
+      "bytecodeBytes": 224,
+      "parametersIncludingReceiver": 5,
+      "registers": 19,
+      "frameBytes": 152,
+      "instructions": 90,
+      "wideInstructions": 0,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$descend_95_spine$scc",
+      "bytecodeBytes": 207,
+      "parametersIncludingReceiver": 6,
+      "registers": 22,
+      "frameBytes": 176,
+      "instructions": 84,
+      "wideInstructions": 3,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$env_95_tele_95_fill_95_eager_95_head$scc",
+      "bytecodeBytes": 205,
+      "parametersIncludingReceiver": 6,
+      "registers": 21,
+      "frameBytes": 168,
+      "instructions": 81,
+      "wideInstructions": 0,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$f_95_find$scc",
+      "bytecodeBytes": 199,
+      "parametersIncludingReceiver": 6,
+      "registers": 19,
+      "frameBytes": 152,
+      "instructions": 77,
+      "wideInstructions": 1,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$g_95_share_95_terms$scc",
+      "bytecodeBytes": 196,
+      "parametersIncludingReceiver": 5,
+      "registers": 19,
+      "frameBytes": 152,
+      "instructions": 72,
+      "wideInstructions": 3,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$U32_46_show_46_fin$scc",
+      "bytecodeBytes": 194,
+      "parametersIncludingReceiver": 6,
+      "registers": 20,
+      "frameBytes": 160,
+      "instructions": 84,
+      "wideInstructions": 0,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$nf_95_admit$scc",
+      "bytecodeBytes": 181,
+      "parametersIncludingReceiver": 7,
+      "registers": 24,
+      "frameBytes": 192,
+      "instructions": 69,
+      "wideInstructions": 3,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$index_95_remove$scc",
+      "bytecodeBytes": 175,
+      "parametersIncludingReceiver": 6,
+      "registers": 19,
+      "frameBytes": 152,
+      "instructions": 67,
+      "wideInstructions": 0,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$dg_95_origin_95_trail$scc",
+      "bytecodeBytes": 175,
+      "parametersIncludingReceiver": 6,
+      "registers": 21,
+      "frameBytes": 168,
+      "instructions": 66,
+      "wideInstructions": 2,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$nb_95_fork_95_close$scc",
+      "bytecodeBytes": 165,
+      "parametersIncludingReceiver": 6,
+      "registers": 18,
+      "frameBytes": 144,
+      "instructions": 65,
+      "wideInstructions": 3,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$base_95_prefix_95_context_95_drop$scc",
+      "bytecodeBytes": 146,
+      "parametersIncludingReceiver": 4,
+      "registers": 14,
+      "frameBytes": 112,
+      "instructions": 60,
+      "wideInstructions": 0,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$fpe_95_defs$scc",
+      "bytecodeBytes": 129,
+      "parametersIncludingReceiver": 4,
+      "registers": 12,
+      "frameBytes": 96,
+      "instructions": 55,
+      "wideInstructions": 2,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$fpe_95_terms$scc",
+      "bytecodeBytes": 129,
+      "parametersIncludingReceiver": 4,
+      "registers": 12,
+      "frameBytes": 96,
+      "instructions": 55,
+      "wideInstructions": 2,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$has_95_name$scc",
+      "bytecodeBytes": 117,
+      "parametersIncludingReceiver": 5,
+      "registers": 15,
+      "frameBytes": 120,
+      "instructions": 49,
+      "wideInstructions": 0,
+      "blockContextSites": 0,
+      "closureSites": 0
+    },
+    {
+      "name": "$jd$sp_95_drop$scc",
+      "bytecodeBytes": 109,
+      "parametersIncludingReceiver": 4,
+      "registers": 11,
+      "frameBytes": 88,
+      "instructions": 45,
+      "wideInstructions": 0,
+      "blockContextSites": 0,
+      "closureSites": 0
+    }
+  ],
+  "offsets": [
+    {
+      "function": "$jd$norm_95_eval_95_node$scc",
+      "bytecodeOffset": 252,
+      "instruction": "112834 E> 0x1ec98e63a14 @  252 : 00 6a 17 ff 33 ff 15 ff 08 00 CallUndefinedReceiver2.Wide r226, r198, r228, [8]",
+      "precedingInstructions": [
+        "         0x1ec98e63a0b @  243 : 00 1a 17 ff       Star.Wide r226",
+        "         0x1ec98e63a0f @  247 : 0c                LdaZero",
+        "         0x1ec98e63a10 @  248 : 00 1a 15 ff       Star.Wide r228"
+      ],
+      "sourceUtf16Offset": 112834,
+      "sourceLine": 2089,
+      "sourceExcerpt": "0=(\n/*JD_USE:7586*/$x7586);const $next1=(\n/*JD_REF:$jd$kid*/$jd$kid((\n/*JD_USE:7587*/$x7587),0));const $next2=({$:\"Con\",\"head\":(\n/*JD_REF:$jd$kid*/$jd$kid((\n/*J",
+      "sccState": 1
+    },
+    {
+      "function": "$jd$norm_95_eval_95_node$scc",
+      "bytecodeOffset": 558,
+      "instruction": "113827 E> 0x1ec98e63b46 @  558 : 00 6a 17 ff 45 ff 15 ff 15 00 CallUndefinedReceiver2.Wide r226, r180, r228, [21]",
+      "precedingInstructions": [
+        "         0x1ec98e63b3d @  549 : 00 1a 17 ff       Star.Wide r226",
+        "         0x1ec98e63b41 @  553 : 0c                LdaZero",
+        "         0x1ec98e63b42 @  554 : 00 1a 15 ff       Star.Wide r228"
+      ],
+      "sourceUtf16Offset": 113827,
+      "sourceLine": 2107,
+      "sourceExcerpt": "0=(\n/*JD_USE:7597*/$x7597);const $next1=(\n/*JD_REF:$jd$kid*/$jd$kid((\n/*JD_USE:7598*/$x7598),0));const $next2=(\n/*JD_USE:7599*/$x7599);const $next3=(\n/*JD_USE:7",
+      "sccState": 2
+    },
+    {
+      "function": "$jd$norm_95_eval_95_node$scc",
+      "bytecodeOffset": 2265,
+      "instruction": "120172 E> 0x1ec98e641f1 @ 2265 : 00 6a 17 ff 94 ff 93 ff 72 00 CallUndefinedReceiver2.Wide r226, r101, r102, [114]",
+      "precedingInstructions": [
+        "120119 S> 0x1ec98e641e9 @ 2257 : 94 32             JumpConstant [50] (0x1ec98e64830 @ 3864)",
+        "120135 S> 0x1ec98e641eb @ 2259 : 17 d1             LdaCurrentContextSlot [209]",
+        "         0x1ec98e641ed @ 2261 : 00 1a 17 ff       Star.Wide r226"
+      ],
+      "sourceUtf16Offset": 120172,
+      "sourceLine": 2235,
+      "sourceExcerpt": "$pc=10;continue;}}else{return (\n/*JD_REF:$jd$norm_95_apply*/$jd$norm_95_apply((\n/*JD_USE:7653*/$x7653),(\n/*JD_USE:7654*/$x7654)));}}}}}case 8:{const $x7667=$a0;",
+      "sccState": 7
+    },
+    {
+      "function": "$jd$norm_95_eval_95_node$scc",
+      "bytecodeOffset": 2494,
+      "instruction": "121205 E> 0x1ec98e642d6 @ 2494 : 00 69 16 ff a9 ff 87 00 CallUndefinedReceiver1.Wide r227, r80, [135]",
+      "precedingInstructions": [
+        "         0x1ec98e642cc @ 2484 : 00 1a 17 ff       Star.Wide r226",
+        "         0x1ec98e642d0 @ 2488 : 17 5c             LdaCurrentContextSlot [92]",
+        "         0x1ec98e642d2 @ 2490 : 00 1a 16 ff       Star.Wide r227"
+      ],
+      "sourceUtf16Offset": 121205,
+      "sourceLine": 2255,
+      "sourceExcerpt": "D_REF:$jd$String_46_eq*/$jd$String_46_eq((\n/*JD_REF:$jd$tg*/$jd$tg((\n/*JD_USE:7668*/$x7668))),\"Mat\"))){{\n/*JD_REF:$jd$norm_95_match*/const $next0=(\n/*JD_USE:766",
+      "sccState": 8
+    },
+    {
+      "function": "$jd$norm_95_eval_95_node$scc",
+      "bytecodeOffset": 2939,
+      "instruction": "123363 E> 0x1ec98e64493 @ 2939 : 00 6a 17 ff da ff 15 ff a9 00 CallUndefinedReceiver2.Wide r226, r31, r228, [169]",
+      "precedingInstructions": [
+        "         0x1ec98e6448a @ 2930 : 00 1a 17 ff       Star.Wide r226",
+        "         0x1ec98e6448e @ 2934 : 0c                LdaZero",
+        "         0x1ec98e6448f @ 2935 : 00 1a 15 ff       Star.Wide r228"
+      ],
+      "sourceUtf16Offset": 123363,
+      "sourceLine": 2299,
+      "sourceExcerpt": "0=(\n/*JD_USE:7693*/$x7693);const $next1=(\n/*JD_REF:$jd$kid*/$jd$kid((\n/*JD_USE:7694*/$x7694),0));const $next2=(\n/*JD_USE:7695*/$x7695);const $next3=(\n/*JD_USE:7",
+      "sccState": 9
+    },
+    {
+      "function": "$jd$f_95_lex_95_scanned$scc",
+      "bytecodeOffset": 2913,
+      "instruction": "639576 E> 0x7b7efcecfe1 @ 2913 : 00 69 4b ff 04 00 e1 00 CallUndefinedReceiver1.Wide r174, a1, [225]",
+      "precedingInstructions": [
+        "639521 S> 0x7b7efcecfd8 @ 2904 : 1b 0a b5          Mov a7, r68",
+        "639538 S> 0x7b7efcecfdb @ 2907 : 17 39             LdaCurrentContextSlot [57]",
+        "         0x7b7efcecfdd @ 2909 : 00 1a 4b ff       Star.Wide r174"
+      ],
+      "sourceUtf16Offset": 639576,
+      "sourceLine": 12426,
+      "sourceExcerpt": "6297=$a6;{const $ord0=(\n/*JD_REF:$jd$String_46_is_95_empty*/$jd$String_46_is_95_empty((\n/*JD_USE:16291*/$x16291)));const $ord1=(\n/*JD_REF:$jd$f_95_ascii_95_char"
+    },
+    {
+      "function": "$jd$f_95_lex_95_scanned$scc",
+      "bytecodeOffset": 3143,
+      "instruction": "         0x7b7efced0c7 @ 3143 : 8a 2c             CreateBlockContext [44]",
+      "precedingInstructions": [
+        "640852 S> 0x7b7efced0c0 @ 3136 : 1b b5 0a          Mov r68, a7",
+        "         0x7b7efced0c3 @ 3139 : 0b 0a             Ldar a7",
+        "640863 S> 0x7b7efced0c5 @ 3141 : 94 3f             JumpConstant [63] (0x7b7efced790 @ 4880)"
+      ]
+    },
+    {
+      "function": "$jd$f_95_lex_95_scanned$scc",
+      "bytecodeOffset": 3236,
+      "instruction": "641546 E> 0x7b7efced124 @ 3236 : 00 68 49 ff f1 00 CallUndefinedReceiver0.Wide r176, [241]",
+      "precedingInstructions": [
+        "         0x7b7efced118 @ 3224 : 00 1a 4a ff       Star.Wide r175",
+        "         0x7b7efced11c @ 3228 : 89 2d 03 02       CreateClosure [45], [3], #2",
+        "         0x7b7efced120 @ 3232 : 00 1a 49 ff       Star.Wide r176"
+      ],
+      "sourceUtf16Offset": 641546,
+      "sourceLine": 12460,
+      "sourceExcerpt": ":16313*/$x16313)}),[\"tail\"]:(\n/*JD_USE:16311*/$x16311)});}})()));}else{{/* direct literal choice */if((\n/*JD_REF:$jd$f_95_ascii_95_char_95_eq*/$jd$f_95_ascii_95"
+    },
+    {
+      "function": "$jd$f_95_lex_95_scanned$scc",
+      "bytecodeOffset": 4880,
+      "instruction": "629716 E> 0x7b7efced790 @ 4880 : 00 92 11 13 00 00 5c 01 JumpLoop.Wide [4881], [0], [348] (0x7b7efcec480 @ 0)",
+      "precedingInstructions": [
+        "         0x7b7efced788 @ 4872 : 1a 03             Star a0",
+        "648225 S> 0x7b7efced78a @ 4874 : 00 1d 4b ff       PopContext.Wide r174",
+        "         0x7b7efced78e @ 4878 : 93 02             Jump [2] (0x7b7efced790 @ 4880)"
+      ],
+      "sourceUtf16Offset": 629716,
+      "sourceLine": 12256,
+      "sourceExcerpt": ":$jd$f_95_lex_95_comment*/\n/*JD_REF:$jd$f_95_lex_95_cursor*/for(;;)switch($pc){case 0:{{const $match1=$a0;const $x16220=$match1[\"word\"];const $x16221=$match1[\"r"
+    }
+  ],
+  "traces": {
+    "numeric": {
+      "evidence": {
+        "file": "selfhost/build/phase85/trace01/runs/trace-1-numeric-b2-guard/stdout.log",
+        "sha256": "91b41eff9db389e068461dc3184bcb1acb78cc767eaf6d1bb0ca9ecb7c274800",
+        "bytes": 2324870
+      },
+      "calls": {
+        "1": {
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 3,
+            "starts": 2,
+            "completed": [
+              {
+                "line": 1128,
+                "tier": "MAGLEV",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.001,
+                  4.149,
+                  0.016
+                ]
+              },
+              {
+                "line": 2848,
+                "tier": "TURBOFAN_JS",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.004,
+                  150.98,
+                  0.077
+                ]
+              }
+            ],
+            "deopts": [],
+            "inlineSites": 46
+          },
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 10,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$norm_95_eval_95_node$scc": {
+            "delays": 1,
+            "starts": 10,
+            "completed": [
+              {
+                "line": 3024,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  0.98,
+                  0.006
+                ]
+              },
+              {
+                "line": 3149,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.001,
+                  1.21,
+                  0.009
+                ]
+              },
+              {
+                "line": 4283,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  1.295,
+                  0.009
+                ]
+              },
+              {
+                "line": 4321,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  1.627,
+                  0.011
+                ]
+              },
+              {
+                "line": 4734,
+                "tier": "TURBOFAN_JS",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.004,
+                  22.94,
+                  0.066
+                ]
+              },
+              {
+                "line": 5027,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.001,
+                  1.71,
+                  0.01
+                ]
+              },
+              {
+                "line": 5089,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  1.739,
+                  0.009
+                ]
+              },
+              {
+                "line": 5446,
+                "tier": "TURBOFAN_JS",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.003,
+                  32.81,
+                  0.077
+                ]
+              },
+              {
+                "line": 6675,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  1.702,
+                  0.009
+                ]
+              },
+              {
+                "line": 7697,
+                "tier": "TURBOFAN_JS",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.005,
+                  44.391,
+                  0.084
+                ]
+              }
+            ],
+            "deopts": [
+              {
+                "line": 3067,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 252
+              },
+              {
+                "line": 4007,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 2265
+              },
+              {
+                "line": 4317,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 2494
+              },
+              {
+                "line": 5013,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 558
+              },
+              {
+                "line": 5083,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 2939
+              }
+            ],
+            "inlineSites": 53
+          }
+        },
+        "2": {
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 0,
+            "starts": 1,
+            "completed": [
+              {
+                "line": 8784,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  2.725,
+                  0.015
+                ]
+              }
+            ],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 1,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$norm_95_eval_95_node$scc": {
+            "delays": 0,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          }
+        },
+        "5": {
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 0,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$norm_95_eval_95_node$scc": {
+            "delays": 0,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          }
+        }
+      }
+    },
+    "functions65": {
+      "evidence": {
+        "file": "selfhost/build/phase85/trace01/runs/trace-1-functions65-b2-guard/stdout.log",
+        "sha256": "7d62be262b420cb1af9d7bf21f71dbb7d272dcd4b0343718e8b8d0fc74d7a0b4",
+        "bytes": 2166267
+      },
+      "calls": {
+        "1": {
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 3,
+            "starts": 2,
+            "completed": [
+              {
+                "line": 781,
+                "tier": "MAGLEV",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.001,
+                  3.928,
+                  0.014
+                ]
+              },
+              {
+                "line": 2501,
+                "tier": "TURBOFAN_JS",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.006,
+                  166.795,
+                  0.073
+                ]
+              }
+            ],
+            "deopts": [
+              {
+                "line": 1514,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 2913
+              }
+            ],
+            "inlineSites": 42
+          },
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 6,
+            "starts": 1,
+            "completed": [
+              {
+                "line": 2509,
+                "tier": "MAGLEV",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.0,
+                  8.844,
+                  0.026
+                ]
+              }
+            ],
+            "deopts": [
+              {
+                "line": 2552,
+                "reason": "(unknown)",
+                "bytecodeOffset": 5891
+              }
+            ],
+            "inlineSites": 0
+          },
+          "$jd$norm_95_eval_95_node$scc": {
+            "delays": 3,
+            "starts": 4,
+            "completed": [
+              {
+                "line": 3042,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  0.914,
+                  0.006
+                ]
+              },
+              {
+                "line": 4345,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  0.936,
+                  0.006
+                ]
+              },
+              {
+                "line": 4705,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.001,
+                  1.323,
+                  0.008
+                ]
+              },
+              {
+                "line": 5370,
+                "tier": "TURBOFAN_JS",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.005,
+                  27.884,
+                  0.062
+                ]
+              }
+            ],
+            "deopts": [
+              {
+                "line": 4693,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 252
+              }
+            ],
+            "inlineSites": 19
+          }
+        },
+        "2": {
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 3,
+            "starts": 1,
+            "completed": [
+              {
+                "line": 7393,
+                "tier": "MAGLEV",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.0,
+                  9.389,
+                  0.029
+                ]
+              }
+            ],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 0,
+            "starts": 2,
+            "completed": [
+              {
+                "line": 5892,
+                "tier": "MAGLEV",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.0,
+                  3.592,
+                  0.014
+                ]
+              },
+              {
+                "line": 7477,
+                "tier": "TURBOFAN_JS",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.004,
+                  148.033,
+                  0.08
+                ]
+              }
+            ],
+            "deopts": [
+              {
+                "line": 7163,
+                "reason": "wrong call target",
+                "bytecodeOffset": 3236
+              }
+            ],
+            "inlineSites": 41
+          },
+          "$jd$norm_95_eval_95_node$scc": {
+            "delays": 0,
+            "starts": 2,
+            "completed": [
+              {
+                "line": 7637,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  1.338,
+                  0.008
+                ]
+              },
+              {
+                "line": 8637,
+                "tier": "TURBOFAN_JS",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.006,
+                  22.965,
+                  0.056
+                ]
+              }
+            ],
+            "deopts": [],
+            "inlineSites": 17
+          }
+        },
+        "3": {
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 0,
+            "starts": 1,
+            "completed": [
+              {
+                "line": 9078,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.001,
+                  5.064,
+                  0.023
+                ]
+              }
+            ],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 0,
+            "starts": 2,
+            "completed": [
+              {
+                "line": 9092,
+                "tier": "MAGLEV",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.001,
+                  3.044,
+                  0.015
+                ]
+              },
+              {
+                "line": 10817,
+                "tier": "TURBOFAN_JS",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.004,
+                  174.552,
+                  0.073
+                ]
+              }
+            ],
+            "deopts": [],
+            "inlineSites": 41
+          }
+        },
+        "4": {
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 0,
+            "starts": 1,
+            "completed": [
+              {
+                "line": 11861,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  2.81,
+                  0.019
+                ]
+              }
+            ],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 0,
+            "starts": 0,
+            "completed": [],
+            "deopts": [
+              {
+                "line": 11863,
+                "reason": "Insufficient type feedback for object literal",
+                "bytecodeOffset": 4105
+              }
+            ],
+            "inlineSites": 0
+          }
+        },
+        "5": {
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 0,
+            "starts": 2,
+            "completed": [
+              {
+                "line": 13384,
+                "tier": "MAGLEV",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.001,
+                  8.608,
+                  0.032
+                ]
+              },
+              {
+                "line": 15824,
+                "tier": "TURBOFAN_JS",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.008,
+                  189.763,
+                  0.117
+                ]
+              }
+            ],
+            "deopts": [],
+            "inlineSites": 65
+          }
+        }
+      }
+    },
+    "lexer": {
+      "evidence": {
+        "file": "selfhost/build/phase85/trace01/runs/trace-1-lexer-b2-guard/stdout.log",
+        "sha256": "57d90a117877b049c283f5e482ba94c31d54f3da868bc10fe1b63afcb0d8d0c5",
+        "bytes": 3484195
+      },
+      "calls": {
+        "1": {
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 8,
+            "starts": 4,
+            "completed": [
+              {
+                "line": 781,
+                "tier": "MAGLEV",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.0,
+                  3.477,
+                  0.016
+                ]
+              },
+              {
+                "line": 2263,
+                "tier": "TURBOFAN_JS",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.005,
+                  129.823,
+                  0.084
+                ]
+              },
+              {
+                "line": 3120,
+                "tier": "MAGLEV",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.001,
+                  4.622,
+                  0.023
+                ]
+              },
+              {
+                "line": 4998,
+                "tier": "TURBOFAN_JS",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.006,
+                  181.289,
+                  0.138
+                ]
+              }
+            ],
+            "deopts": [
+              {
+                "line": 1765,
+                "reason": "wrong call target",
+                "bytecodeOffset": 3236
+              }
+            ],
+            "inlineSites": 79
+          },
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 16,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$norm_95_eval_95_node$scc": {
+            "delays": 4,
+            "starts": 11,
+            "completed": [
+              {
+                "line": 5031,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  0.965,
+                  0.006
+                ]
+              },
+              {
+                "line": 5240,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.001,
+                  1.919,
+                  0.011
+                ]
+              },
+              {
+                "line": 6329,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  1.292,
+                  0.008
+                ]
+              },
+              {
+                "line": 6350,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.001,
+                  1.567,
+                  0.01
+                ]
+              },
+              {
+                "line": 7006,
+                "tier": "TURBOFAN_JS",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.004,
+                  41.378,
+                  0.083
+                ]
+              },
+              {
+                "line": 7228,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  2.508,
+                  0.013
+                ]
+              },
+              {
+                "line": 7978,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.001,
+                  1.738,
+                  0.009
+                ]
+              },
+              {
+                "line": 8308,
+                "tier": "TURBOFAN_JS",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.004,
+                  37.664,
+                  0.075
+                ]
+              },
+              {
+                "line": 10009,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  1.653,
+                  0.008
+                ]
+              },
+              {
+                "line": 10659,
+                "tier": "TURBOFAN_JS",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.004,
+                  32.208,
+                  0.066
+                ]
+              }
+            ],
+            "deopts": [
+              {
+                "line": 5189,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 252
+              },
+              {
+                "line": 6217,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 2265
+              },
+              {
+                "line": 6346,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 2494
+              },
+              {
+                "line": 7215,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 558
+              },
+              {
+                "line": 7972,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 2939
+              }
+            ],
+            "inlineSites": 81
+          }
+        },
+        "2": {
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 0,
+            "starts": 1,
+            "completed": [
+              {
+                "line": 12460,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  3.006,
+                  0.016
+                ]
+              }
+            ],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 0,
+            "starts": 3,
+            "completed": [
+              {
+                "line": 12707,
+                "tier": "MAGLEV",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.0,
+                  14.622,
+                  0.038
+                ]
+              },
+              {
+                "line": 13250,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.001,
+                  8.381,
+                  0.031
+                ]
+              },
+              {
+                "line": 14929,
+                "tier": "TURBOFAN_JS",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.005,
+                  345.133,
+                  0.159
+                ]
+              }
+            ],
+            "deopts": [],
+            "inlineSites": 105
+          }
+        },
+        "3": {
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 0,
+            "starts": 1,
+            "completed": [
+              {
+                "line": 19379,
+                "tier": "TURBOFAN_JS",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.007,
+                  146.351,
+                  0.092
+                ]
+              }
+            ],
+            "deopts": [],
+            "inlineSites": 39
+          }
+        },
+        "4": {
+          "$jd$norm_95_eval_95_node$scc": {
+            "delays": 0,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          }
+        }
+      }
+    },
+    "map": {
+      "evidence": {
+        "file": "selfhost/build/phase85/trace01/runs/trace-1-map-b2-guard/stdout.log",
+        "sha256": "37081982332474abbcc01eec6e8d95bc835b875c12137d68917d099b4ca65522",
+        "bytes": 3938465
+      },
+      "calls": {
+        "1": {
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 6,
+            "starts": 3,
+            "completed": [
+              {
+                "line": 823,
+                "tier": "MAGLEV",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.0,
+                  4.384,
+                  0.013
+                ]
+              },
+              {
+                "line": 2767,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  2.897,
+                  0.014
+                ]
+              },
+              {
+                "line": 2777,
+                "tier": "TURBOFAN_JS",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.005,
+                  153.753,
+                  0.107
+                ]
+              }
+            ],
+            "deopts": [
+              {
+                "line": 2781,
+                "reason": "prepare for on stack replacement (OSR)",
+                "bytecodeOffset": 4880
+              }
+            ],
+            "inlineSites": 43
+          },
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 10,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$norm_95_eval_95_node$scc": {
+            "delays": 4,
+            "starts": 11,
+            "completed": [
+              {
+                "line": 4517,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  0.953,
+                  0.006
+                ]
+              },
+              {
+                "line": 4638,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  1.396,
+                  0.008
+                ]
+              },
+              {
+                "line": 6099,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.001,
+                  1.395,
+                  0.009
+                ]
+              },
+              {
+                "line": 6231,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  1.669,
+                  0.009
+                ]
+              },
+              {
+                "line": 6668,
+                "tier": "TURBOFAN_JS",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.004,
+                  37.028,
+                  0.084
+                ]
+              },
+              {
+                "line": 6969,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.001,
+                  1.724,
+                  0.01
+                ]
+              },
+              {
+                "line": 7401,
+                "tier": "TURBOFAN_JS",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.004,
+                  44.424,
+                  0.065
+                ]
+              },
+              {
+                "line": 7476,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  1.868,
+                  0.011
+                ]
+              },
+              {
+                "line": 7754,
+                "tier": "TURBOFAN_JS",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.005,
+                  26.334,
+                  0.075
+                ]
+              },
+              {
+                "line": 9845,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  1.655,
+                  0.008
+                ]
+              },
+              {
+                "line": 10210,
+                "tier": "TURBOFAN_JS",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.004,
+                  27.758,
+                  0.069
+                ]
+              }
+            ],
+            "deopts": [
+              {
+                "line": 4626,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 252
+              },
+              {
+                "line": 5619,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 2265
+              },
+              {
+                "line": 6120,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 2494
+              },
+              {
+                "line": 6956,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 558
+              },
+              {
+                "line": 7470,
+                "reason": "Insufficient type feedback for call",
+                "bytecodeOffset": 2939
+              }
+            ],
+            "inlineSites": 71
+          }
+        },
+        "2": {
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 0,
+            "starts": 3,
+            "completed": [
+              {
+                "line": 14384,
+                "tier": "MAGLEV",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.0,
+                  3.272,
+                  0.017
+                ]
+              },
+              {
+                "line": 15218,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.0,
+                  2.943,
+                  0.018
+                ]
+              },
+              {
+                "line": 16223,
+                "tier": "TURBOFAN_JS",
+                "osr": true,
+                "durationFieldsMs": [
+                  0.006,
+                  194.92,
+                  0.076
+                ]
+              }
+            ],
+            "deopts": [
+              {
+                "line": 15229,
+                "reason": "Insufficient type feedback for object literal",
+                "bytecodeOffset": 348
+              }
+            ],
+            "inlineSites": 40
+          },
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 1,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          }
+        },
+        "3": {
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 0,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$norm_95_eval_95_node$scc": {
+            "delays": 0,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          }
+        },
+        "4": {
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 0,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 0,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$norm_95_eval_95_node$scc": {
+            "delays": 0,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          }
+        },
+        "5": {
+          "$jd$f_95_lex_95_scanned$scc": {
+            "delays": 0,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$f_95_context_95_publish$scc": {
+            "delays": 0,
+            "starts": 1,
+            "completed": [
+              {
+                "line": 29990,
+                "tier": "MAGLEV",
+                "osr": false,
+                "durationFieldsMs": [
+                  0.001,
+                  5.485,
+                  0.034
+                ]
+              }
+            ],
+            "deopts": [],
+            "inlineSites": 0
+          },
+          "$jd$norm_95_eval_95_node$scc": {
+            "delays": 0,
+            "starts": 0,
+            "completed": [],
+            "deopts": [],
+            "inlineSites": 0
+          }
+        }
+      }
+    }
+  },
+  "assembly": {
+    "log": {
+      "file": "selfhost/build/phase85/assembly01/runs/bytecode-1-numeric-b2-guard/stdout.log",
+      "sha256": "e298e22cd45a897e50c89f68c02cd6885ad2bc88b2fec4dd65b5998cf939365c",
+      "bytes": 809184
+    },
+    "report": {
+      "file": "selfhost/build/phase85/assembly01/runs/bytecode-1-numeric-b2/report.json",
+      "sha256": "1885c1d8b646c69e5ed5a6338352eb4f767d7c96d6eed787bb3264b8253e003f",
+      "bytes": 5221
+    },
+    "process": {
+      "file": "selfhost/build/phase85/assembly01/runs/bytecode-1-numeric-b2-guard/process.json",
+      "sha256": "5e89409bdb2328044d773e41ddcd5b556b7503a97fdb0c41a4dab29fbf427e93",
+      "bytes": 959
+    },
+    "function": "$jd$f_95_lex_95_scanned$scc",
+    "tier": "TURBOFAN_JS",
+    "entryKind": "OSR",
+    "optimizationId": 109,
+    "sourcePositionUtf16": 629500,
+    "machineCodeBytes": 41416,
+    "inlinedFunctions": 12,
+    "deoptPoints": 263,
+    "safepointStackSlots": 213,
+    "safepointEntries": 87,
+    "cursorCase4Context": {
+      "stateDispatchTargetPc": "0x1c7",
+      "newSpaceTopLoadPc": "0x1f9",
+      "newSpaceAdvancePc": "0x212",
+      "newSpaceAdvanceBytes": 80,
+      "mapStorePc": "0x21a",
+      "capturedLocalStorePcs": [
+        "0x24c",
+        "0x257",
+        "0x262",
+        "0x26d",
+        "0x278",
+        "0x283"
+      ],
+      "eofBranchPc": "0x2af",
+      "sourcePositionAtAllocationUtf16": 640863,
+      "interpretation": "TurboFan OSR retains the case-4 block-context allocation on both empty and nonempty cursor paths, before the EOF branch. Context slots capture six scanner locals. This does not measure request savings or imply that all slots belong only to the EOF IIFE."
+    }
+  },
+  "choiceCandidate": {
+    "log": {
+      "file": "selfhost/build/phase85/choice-code01/runs/bytecode-1-numeric-b2-guard/stdout.log",
+      "sha256": "7cc3aea2b6073bf406341f4faa380cde4a350ea045be937b30c8b6e8e8de243a",
+      "bytes": 877944
+    },
+    "report": {
+      "file": "selfhost/build/phase85/choice-code01/runs/bytecode-1-numeric-b2/report.json",
+      "sha256": "ca90ce7074b1ae48b615ba3ee2e7b220e0a6ab0b5d712a2b43798016cfaba5af",
+      "bytes": 5416
+    },
+    "process": {
+      "file": "selfhost/build/phase85/choice-code01/runs/bytecode-1-numeric-b2-guard/process.json",
+      "sha256": "10d1c92c2e16bf34d74619c069fbf343118d26aed223e58d52fd522957118ea0",
+      "bytes": 1048
+    },
+    "image": {
+      "file": "selfhost/build/phase85/lexer-choice01/compiler.mjs",
+      "sha256": "cf15ec8c1c3ae98ae5db7d8030570ef41bf8174a4f7a3ddba5fd51f69b5df888",
+      "bytes": 4730818
+    },
+    "metrics": {
+      "bytecodeBytes": 4948,
+      "registers": 196,
+      "frameBytes": 1568,
+      "instructions": 1128,
+      "wideInstructions": 651,
+      "blockContextSites": 2,
+      "closureSites": 1,
+      "machineCodeBytes": 39880,
+      "inlinedFunctions": 10,
+      "deoptPoints": 269,
+      "safepointStackSlots": 225,
+      "safepointEntries": 84
+    },
+    "cursorCase4Context": {
+      "removed": true,
+      "stateDispatchTargetPc": "0x185",
+      "emptyStringComparePc": "0x193",
+      "emptyBranchPc": "0x196",
+      "explanation": "No context allocation between dispatch to case4 and the EOF branch or immediately following nonempty continuation. Two remaining optimized context sites belong to state2."
+    },
+    "remainingContexts": [
+      {
+        "bytecode": 1394,
+        "machineAllocationPc": "0x36bc",
+        "allocationBytes": 48,
+        "scope": "case2 symbol scanning",
+        "captures": [
+          "$x16269 (source)",
+          "$x16272 (nesting depth)"
+        ]
+      },
+      {
+        "bytecode": 2289,
+        "machineAllocationPc": "0x43fd",
+        "allocationBytes": 48,
+        "scope": "case2 single-symbol branch",
+        "captures": [
+          "$ord2 (first opening-delimiter disjunction)",
+          "$ord3 (opening brace predicate)"
+        ]
+      }
+    ],
+    "remainingClosure": {
+      "bytecode": 2554,
+      "callBytecode": 2562,
+      "sourcePositionUtf16": 637349,
+      "sourceLine": 12389,
+      "cause": "Retained declaration-bearing nesting-depth choice IIFE."
+    },
+    "inliningDifference": {
+      "baselineOnly": [
+        "$jd$f_95_ascii_95_space",
+        "$jd$f_95_ascii_95_space_95_code"
+      ],
+      "causalAttribution": "Different inlining and larger register/frame layouts are observed confounders; no measurement isolates their timing impact."
+    },
+    "timingScreen": {
+      "method": "Geometric mean across four sources of candidate/control median over three rounds, at fixed request number. Separate compiler processes per row; all five calls checked.",
+      "exactCRequests": 120,
+      "rows": [
+        {
+          "case": "functions65",
+          "calls": {
+            "1": {
+              "controlMs": [
+                604.586606,
+                599.224273,
+                607.064158
+              ],
+              "candidateMs": [
+                598.342128,
+                664.389797,
+                602.485403
+              ],
+              "medianRatio": 0.996524562437958,
+              "medianPairedRatio": 0.9924575435072878
+            },
+            "5": {
+              "controlMs": [
+                227.4170949999998,
+                198.19455199999993,
+                228.35506900000019
+              ],
+              "candidateMs": [
+                238.0761050000001,
+                250.27580999999964,
+                226.08650099999977
+              ],
+              "medianRatio": 1.0468698714140214,
+              "medianPairedRatio": 1.0468698714140214
+            }
+          }
+        },
+        {
+          "case": "lexer",
+          "calls": {
+            "1": {
+              "controlMs": [
+                1290.578857,
+                1299.856295,
+                1297.8900859999999
+              ],
+              "candidateMs": [
+                1285.743539,
+                1267.555546,
+                1275.998597
+              ],
+              "medianRatio": 0.9831330177831408,
+              "medianPairedRatio": 0.9831330177831408
+            },
+            "5": {
+              "controlMs": [
+                400.4329200000002,
+                372.61529100000007,
+                390.37193600000046
+              ],
+              "candidateMs": [
+                344.6460440000001,
+                358.5843500000001,
+                345.65462899999966
+              ],
+              "medianRatio": 0.8854494832333419,
+              "medianPairedRatio": 0.8854494832333419
+            }
+          }
+        },
+        {
+          "case": "map",
+          "calls": {
+            "1": {
+              "controlMs": [
+                1805.7086849999998,
+                1794.1968200000001,
+                1798.5846310000002
+              ],
+              "candidateMs": [
+                1957.989856,
+                1803.8518629999999,
+                1784.6490129999997
+              ],
+              "medianRatio": 1.0029285427603545,
+              "medianPairedRatio": 1.005381261906372
+            },
+            "5": {
+              "controlMs": [
+                672.2343069999997,
+                624.1034330000002,
+                629.1981310000001
+              ],
+              "candidateMs": [
+                736.8697649999995,
+                667.0313180000003,
+                666.9998850000002
+              ],
+              "medianRatio": 1.0601292107143914,
+              "medianPairedRatio": 1.0687832861191777
+            }
+          }
+        },
+        {
+          "case": "numeric",
+          "calls": {
+            "1": {
+              "controlMs": [
+                944.780045,
+                942.7763290000001,
+                942.5883210000001
+              ],
+              "candidateMs": [
+                937.1894909999999,
+                946.6743160000001,
+                940.7463069999999
+              ],
+              "medianRatio": 0.9978467618060017,
+              "medianPairedRatio": 0.9980457916155316
+            },
+            "5": {
+              "controlMs": [
+                285.44428800000014,
+                283.95278400000007,
+                290.5212069999998
+              ],
+              "candidateMs": [
+                351.0202079999999,
+                361.5073809999999,
+                342.220867
+              ],
+              "medianRatio": 1.2297328156729475,
+              "medianPairedRatio": 1.2297328156729475
+            }
+          }
+        }
+      ],
+      "geomeanMedianRatio": {
+        "1": 0.99508122759329,
+        "5": 1.0484712190012553
+      },
+      "receipts": [
+        {
+          "file": "selfhost/build/phase85/choice-control01/runs/clean-1-functions65-b2/report.json",
+          "sha256": "aab2d803659a3f560215f52588e7e9b204d3856a5dc301d4cf019e34f8859e0e",
+          "bytes": 12560
+        },
+        {
+          "file": "selfhost/build/phase85/choice-control01/runs/clean-1-lexer-b2/report.json",
+          "sha256": "a636a5946374c93d00923a42791b659b58fdbbce511c3494046dc12fb264ec4c",
+          "bytes": 20023
+        },
+        {
+          "file": "selfhost/build/phase85/choice-control01/runs/clean-1-map-b2/report.json",
+          "sha256": "9f0580c7db627dad7be2b81976880cb451400ba32bbec856187f33f5c7f83f5f",
+          "bytes": 19982
+        },
+        {
+          "file": "selfhost/build/phase85/choice-control01/runs/clean-1-numeric-b2/report.json",
+          "sha256": "d6940346338986f9f62af8b7158151cad1e8343ddf8dcd5a68f216dfc56c67b2",
+          "bytes": 20093
+        },
+        {
+          "file": "selfhost/build/phase85/choice-control01/runs/clean-2-functions65-b2/report.json",
+          "sha256": "a6487d95313d139913ed011d3116698ab9bc8211c686f14b95042950b7821580",
+          "bytes": 12562
+        },
+        {
+          "file": "selfhost/build/phase85/choice-control01/runs/clean-2-lexer-b2/report.json",
+          "sha256": "76f7a31197da3a20c8c5dac5432accac4b825237820aac9d5afa4b51e703eb78",
+          "bytes": 20016
+        },
+        {
+          "file": "selfhost/build/phase85/choice-control01/runs/clean-2-map-b2/report.json",
+          "sha256": "f2d44ce9f383cb7ce977b1b061dadb51a50d6d3a99badf35a5badaa8b89758c4",
+          "bytes": 19982
+        },
+        {
+          "file": "selfhost/build/phase85/choice-control01/runs/clean-2-numeric-b2/report.json",
+          "sha256": "7c94689295cdee98eab773108502da80bc0e12260a01e8d3bd444cebb314c83f",
+          "bytes": 20093
+        },
+        {
+          "file": "selfhost/build/phase85/choice-control01/runs/clean-3-functions65-b2/report.json",
+          "sha256": "160dbf3640e6e15a6b12a68def149cf48d0d2cd2a5cb09d6420918fdd2e1ac64",
+          "bytes": 12554
+        },
+        {
+          "file": "selfhost/build/phase85/choice-control01/runs/clean-3-lexer-b2/report.json",
+          "sha256": "c1ecbd44b9b805a9d20f6fb15fd661f02274a9367c0924344fe31cd88f77b6ee",
+          "bytes": 20030
+        },
+        {
+          "file": "selfhost/build/phase85/choice-control01/runs/clean-3-map-b2/report.json",
+          "sha256": "fc3c2dd5a2b08ad4d477940c799bfb80e8ad6fcaf6371bab26c3c28f05c42875",
+          "bytes": 19983
+        },
+        {
+          "file": "selfhost/build/phase85/choice-control01/runs/clean-3-numeric-b2/report.json",
+          "sha256": "111f5760ccb0d0a62bc4eec643de867d8ba576a68bb03ad67665f513b4189b4c",
+          "bytes": 20107
+        },
+        {
+          "file": "selfhost/build/phase85/choice-screen01/runs/clean-1-functions65-b2/report.json",
+          "sha256": "ee8ff1a029c0cfc980e8a1dec226c3666eaf6379d32cd2fcd40477d6e2519664",
+          "bytes": 12742
+        },
+        {
+          "file": "selfhost/build/phase85/choice-screen01/runs/clean-1-lexer-b2/report.json",
+          "sha256": "4f1326ad142de7517af6dc05af2738efb912e691e60b3524048d3da16c6d6894",
+          "bytes": 20475
+        },
+        {
+          "file": "selfhost/build/phase85/choice-screen01/runs/clean-1-map-b2/report.json",
+          "sha256": "d029bbdeae782a92676f9209215357e6bcb1e680b46a39e83c9f678809fd9724",
+          "bytes": 20435
+        },
+        {
+          "file": "selfhost/build/phase85/choice-screen01/runs/clean-1-numeric-b2/report.json",
+          "sha256": "703a5cb9b98442f696c236f85d55a3affb2ccc266ad6b3e16b498dee02a42a65",
+          "bytes": 20559
+        },
+        {
+          "file": "selfhost/build/phase85/choice-screen01/runs/clean-2-functions65-b2/report.json",
+          "sha256": "bd414bac4acd4f5905d79b066739a490ce00292ec087ff46138d0f997cf8d97d",
+          "bytes": 12752
+        },
+        {
+          "file": "selfhost/build/phase85/choice-screen01/runs/clean-2-lexer-b2/report.json",
+          "sha256": "bbb220c10df29f6667cd5242880ce77aeba0daaeac1626c48d15d8fc3e095c2e",
+          "bytes": 20478
+        },
+        {
+          "file": "selfhost/build/phase85/choice-screen01/runs/clean-2-map-b2/report.json",
+          "sha256": "536181d6953f61ca16c79eab761e0c79e0bb87c7fc492fcd25f92cc1217743c9",
+          "bytes": 20434
+        },
+        {
+          "file": "selfhost/build/phase85/choice-screen01/runs/clean-2-numeric-b2/report.json",
+          "sha256": "bfb522e7a11eb03c2f02dfbb1ce7e9e43cbd9a1f669ea8d16f36af65944cf0bd",
+          "bytes": 20560
+        },
+        {
+          "file": "selfhost/build/phase85/choice-screen01/runs/clean-3-functions65-b2/report.json",
+          "sha256": "aff9b116fdb12536133c8ce45c853f4ba31a56f73ad3a179afd5e9f18f6db6fe",
+          "bytes": 12742
+        },
+        {
+          "file": "selfhost/build/phase85/choice-screen01/runs/clean-3-lexer-b2/report.json",
+          "sha256": "42ebc1f8915067b42c690973cf67ae758741b8b90f15d776f7edaf5cc1dffc1e",
+          "bytes": 20481
+        },
+        {
+          "file": "selfhost/build/phase85/choice-screen01/runs/clean-3-map-b2/report.json",
+          "sha256": "73a753ab082753f085a13dc4f0f370f0959f4a15405e319daf2fb90723fa64bd",
+          "bytes": 20442
+        },
+        {
+          "file": "selfhost/build/phase85/choice-screen01/runs/clean-3-numeric-b2/report.json",
+          "sha256": "99c5d8b3c24c558d5b444965bcdffb42c2dff15a59367af537c844eac115ce0c",
+          "bytes": 20552
+        }
+      ],
+      "decision": "Reject promotion: targeted allocation removed but cold result is null and fifth-call timing regresses."
+    }
+  }
+}

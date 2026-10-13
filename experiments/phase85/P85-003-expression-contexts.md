@@ -1,5 +1,7 @@
 # P85-003: captured contexts from expression choices
 
+Status: completed, reject promotion. [Report](../../implementation/phase85/scc-findings.md).
+
 Registered after default bytecode/optimized-code inspection, before paired
 candidate execution. Lexer bytecode allocates block contexts; its optimized
 TurboFan OSR body retains an80-byte context on the common cursor path before
@@ -18,3 +20,9 @@ both first and later request effects without extrapolating four sites to all cod
 Method: `selfhost/tools/performance/phase85/lexer-choice.py`; original image
 `098320e8…`, disposable `cf15ec8c…`. Full source/hash derivation is retained under
 `selfhost/build/phase85/lexer-choice01`, with own preparation and paired plans.
+
+All120 exact-C comparisons pass. Targeted80-byte context allocation disappears
+from optimized common-path code, but first/fifth geometric time ratios are
+0.9951/1.0485. Bytecode/register count increases while machine code shrinks.
+This is a real mechanism removal with no demonstrated general performance gain.
+Preserve the image and valid new cache; no production Bend/backend/installed edits.

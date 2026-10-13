@@ -5,6 +5,17 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed investigation: Phase85 V8 execution of the compiler
+
+[Report](../implementation/phase85/README.md). Direct per-thread CPU traces show
+extra first-use parsing/bytecode and TurboFan compilation account for96%/65% of
+the observed Numeric/Functions65 CPU gaps. Four-source first/fifth ratios are
+1.394×/0.989×, without hidden semantic memoization. Two CPUs reduce B2 first time
+39% and upstream35%; parity remains open. Reject a lexer expression-choice
+rewrite: allocation disappears but paired cold time is neutral. All623 C outputs
+match; production Phase82 remains unchanged. Read the frontier before another
+native-pass rewrite or interpreting a background job duration as removable time.
+
 ## Completed experiments: Phase84 native work replacement
 
 [Report](../implementation/phase84/README.md). Four checked prototypes fail to

@@ -339,11 +339,23 @@ def read_lane(directory):
 def compact_summary(full, full_pin):
     result = {k: full[k] for k in ['kind', 'complete', 'targetExecution', 'selectedLanes',
               'intervalsDoNotOverlap', 'targetOccupancySeconds', 'recordedSpanSeconds', 'scope']}
+    for key in ['totalJobs', 'totalValidatedCalls', 'peakTreeRssBytes']:
+        if key in full:
+            result[key] = full[key]
     result.update(kind='phase85-offline-summary-compact', producer=pin(Path(__file__)),
-                  rawFullSummary=full_pin, lanes={})
+                  rawFullSummary=full_pin, identities={}, lanes={})
     for name, lane in full['lanes'].items():
         small = {k: lane[k] for k in ['plan', 'modes', 'nodeArgs', 'jobs', 'totalValidatedCalls',
-                                     'identities', 'runtimeVersions']}
+                                     'runtimeVersions']}
+        for key in ['cpuAffinity', 'methodClassification']:
+            if key in lane:
+                small[key] = lane[key]
+        small['identityBindings'] = {}
+        for role, identities in lane['identities'].items():
+            small['identityBindings'][role] = {}
+            for key, item in identities.items():
+                result['identities'][item['sha256']] = item
+                small['identityBindings'][role][key] = item['sha256']
         if 'timings' in lane:
             small['timings'] = json.loads(json.dumps(lane['timings']))
             small['timingClass'] = lane['timingClass']
@@ -407,12 +419,91 @@ def compact_summary(full, full_pin):
     return result
 
 
+def method_classification(name, modes):
+    if name.startswith('choice-screen'):
+        return 'Unchecked saved compiler-image derivative. Exact C controls only; no production/semantic promotion or ordinary installed-performance claim.'
+    if name.startswith('choice-control'):
+        return 'Unmodified B2 control for paired saved-image experiment; separate from original clean survey.'
+    if name.startswith('choice-code'):
+        return 'Unchecked saved compiler-image derivative with V8 code dumps; diagnostic only.'
+    if name.startswith('cpu-two'):
+        return 'Two-CPU affinity hardware counterfactual, despite clean worker mode; no production compiler change.'
+    if name.startswith('cpu-one'):
+        return 'One-CPU control for hardware-affinity experiment; one cold request per process.'
+    if modes == ['tier']:
+        return 'Altered V8 tier/filter counterfactual, not production compiler performance.'
+    if modes == ['clean']:
+        return 'Ordinary complete native requests with default V8 flags; first and subsequent calls remain separate.'
+    return 'Instrumented diagnostic only; no clean timing comparison.'
+
+
+def comparisons(full):
+    result = dict(kind='phase85-diagnostic-comparisons', complete=True,
+                  ratioDirection='Candidate/request time divided by control/request time; below 1 is faster.',
+                  comparisons={})
+    specs = [('sparkplug-vs-default', 'sparkplug01', 'clean01', False),
+             ('maglev-vs-default', 'maglev01', 'clean01', False),
+             ('no-lexer-tf-vs-default', 'no-lexer-tf01', 'clean01', False),
+             ('saved-choice-vs-control', 'choice-screen01', 'choice-control01', True),
+             ('two-cpu-vs-one', 'cpu-two01', 'cpu-one01', True)]
+    for name, candidate, control, paired in specs:
+        if candidate not in full['lanes'] or control not in full['lanes']:
+            continue
+        c, b = full['lanes'][candidate], full['lanes'][control]
+        row = dict(candidateLane=candidate, controlLane=control,
+                   candidatePlan=c['plan'], controlPlan=b['plan'],
+                   candidateCpu=c.get('cpuAffinity'), controlCpu=b.get('cpuAffinity'),
+                   candidateClass=c['methodClassification'],
+                   relationship='Matching source/role/round experiment; sample orders are retained in raw guards.' if paired else
+                       'Separate lane versus earlier default survey, not interleaved paired timing; variation/temperature/tiering can confound differences.',
+                   roles={})
+        cc, bc = c['timings']['cases'], b['timings']['cases']
+        for role in sorted(set.intersection(*[set(r) for r in cc.values()])):
+            cases = sorted(case for case in cc if case in bc and role in bc[case])
+            if not cases:
+                continue
+            detail = {}
+            for case in cases:
+                cr, br = cc[case][role], bc[case][role]
+                measures = {'importsPlusFirstMs': (cr['importsPlusFirstMs'], br['importsPlusFirstMs'])}
+                for call in ['1', '5']:
+                    if call in cr['callMs'] and call in br['callMs']:
+                        measures['call'+call] = (cr['callMs'][call], br['callMs'][call])
+                detail[case] = {}
+                for metric, (cs, bs) in measures.items():
+                    def samples(runs):
+                        return [dict(round=r['round'], job=r['job'], valueMs=r['importsPlusFirstMs']
+                            if metric == 'importsPlusFirstMs' else r['calls'][int(metric[4:])-1]['requestMs']) for r in runs]
+                    ca, ba = samples(cr['runs']), samples(br['runs'])
+                    entry = dict(candidateMedianMs=cs['median'], controlMedianMs=bs['median'],
+                                 medianRatio=cs['median']/bs['median'],
+                                 candidateSamples=ca, controlSamples=ba)
+                    if paired:
+                        cm, bm = {x['round']: x for x in ca}, {x['round']: x for x in ba}
+                        assert cm.keys() == bm.keys() and len(cm) == len(ca) == len(ba)
+                        entry['matchingRoundRatios'] = {str(n): cm[n]['valueMs']/bm[n]['valueMs'] for n in sorted(cm)}
+                    detail[case][metric] = entry
+            all_metrics = set.intersection(*[set(v) for v in detail.values()])
+            row['roles'][role] = dict(cases=detail, equalCaseGeomean={
+                metric: geomean([detail[case][metric]['medianRatio'] for case in cases]) for metric in sorted(all_metrics)})
+        result['comparisons'][name] = row
+    result['limitations'] = [
+        'Ratios compare medians within the stated diagnostic protocols, not confidence intervals or an installed compiler improvement.',
+        'Five calls share a process; no convergence is established. Hardware lanes run one cold call, so they have no request5 and must not be mixed into warmed comparisons.',
+        'Choice is a saved unchecked image intervention. Exact generated C on these requests establishes output preservation only for this scope.',
+        'Tier ceiling/filter jobs alter V8 semantics of optimization; their timings are diagnostic counterfactuals.',
+        'Equal-case geometric means weight sources equally, not elapsed seconds or representative application frequency.'
+    ]
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root-data', type=Path)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--lanes', default='clean01,trace01,cpu01')
     parser.add_argument('--compact-from', type=Path, help='Derive a small report from an immutable complete full summary; no target or raw profile reread')
+    parser.add_argument('--comparisons-out', type=Path, help='Optional separate exact diagnostic comparison tables')
     args = parser.parse_args()
     if args.compact_from:
         full_pin = pin(args.compact_from);full = json.loads(args.compact_from.read_text())
@@ -422,6 +513,11 @@ def main():
             assert old['kind'] == 'phase85-offline-summary-compact'
             verify(old['rawFullSummary'])  # Its complete source remains independently preserved.
         compact = compact_summary(full, full_pin)
+        if args.comparisons_out:
+            comparison = comparisons(full);comparison['rawFullSummary'] = full_pin
+            assert not args.comparisons_out.exists(), 'Choose a fresh comparisons artifact'
+            args.comparisons_out.write_text(json.dumps(comparison, indent=1)+'\n')
+            compact['comparisons'] = pin(args.comparisons_out)
         args.out.parent.mkdir(parents=True, exist_ok=True)
         args.out.write_text(json.dumps(compact, indent=1)+'\n')
         verify(full_pin)
@@ -441,6 +537,7 @@ def main():
             assert inputs[item['file']]['sha256'] == item['sha256']
         modes = sorted({r['job']['mode'] for r in rows})
         lane = dict(plan=plan_pin, modes=modes, nodeArgs=plan['nodeArgs'], jobs=len(rows),
+                    cpuAffinity=plan['cpu'], methodClassification=method_classification(name, modes),
                     totalValidatedCalls=sum(len(r['report']['calls']) for r in rows),
                     identities={role: {k: v for k, v in values.items() if k in ['node', 'api', 'runtime', 'base', 'driver', 'bend', 'compiler']}
                                 for role, values in plan['roles'].items()},
@@ -450,7 +547,10 @@ def main():
             process = row['process'];intervals.append((process['started'], process['finished'], row['job']['name']))
         if modes == ['clean'] or modes == ['tier']:
             lane['timings'] = clean_summary(rows)
-            lane['timingClass'] = 'ordinary-clean' if modes == ['clean'] else 'altered-tier-counterfactual-not-production-performance'
+            lane['timingClass'] = ('unchecked-image-diagnostic' if name.startswith('choice-screen') else
+                'hardware-affinity-diagnostic' if name.startswith(('cpu-one', 'cpu-two')) else
+                'paired-unmodified-control' if name.startswith('choice-control') else
+                'ordinary-clean' if modes == ['clean'] else 'altered-tier-counterfactual-not-production-performance')
         if modes == ['trace']:
             lane['traces'] = {r['job']['name']: trace_summary(
                 r['directory'].with_name(r['directory'].name+'-guard')/'stdout.log',
@@ -466,6 +566,10 @@ def main():
     for a, b in zip(intervals, intervals[1:]):
         assert a[1] <= b[0], 'Overlapping recorded target processes: '+a[2]+' / '+b[2]
     output.update(complete=True, inputs=list(inputs.values()), intervalsDoNotOverlap=True,
+                  totalJobs=sum(lane['jobs'] for lane in output['lanes'].values()),
+                  totalValidatedCalls=sum(lane['totalValidatedCalls'] for lane in output['lanes'].values()),
+                  peakTreeRssBytes=max(json.loads(Path(row['guard']['file']).read_text())['peakTreeRssBytes']
+                      for lane in output['lanes'].values() for row in lane['receipts']),
                   targetOccupancySeconds=sum(end-start for start, end, _ in intervals),
                   recordedSpanSeconds=intervals[-1][1]-intervals[0][0],
                   scope='Only the explicitly selected complete lanes. Target occupancy is sum of nonoverlapping process intervals, not total phase time. Trace/CPU/tier-counterfactual durations never enter ordinary-clean ratios.')

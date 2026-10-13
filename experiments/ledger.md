@@ -4427,3 +4427,24 @@ Production restored; Phase82 release verifies. Three bounded agents, root-only
 serial targets; no PR comment. Updated frontier: no demonstrated25% mechanism;
 future native representation work must replace consumers and budget actual
 removable work instead of adding paired products or repeating local shortcuts.
+
+## Phase85 V8 execution of the compiler — 2026-10-13
+
+[Report](../implementation/phase85/README.md). Direct thread CPU traces attribute
+Numeric/Functions65 extra V8 compilation CPU to96.1%/64.6% of observed CPU gaps.
+Main first-use parsing/bytecode and TurboFan explain the excess, not a measured
+Maglev deficit. Four-source three-round B2/TS first/fifth ratios1.394×/0.989×
+show process-reuse benefit, not steady-state or broad parity. Maglev-only improves
+B2 cold time21.5% but worsens fifth17.5%; upstream improves more cold. One lexer
+TF exclusion saves only3.3% despite large elapsed optimization-job durations.
+
+Actual SCC bytecode max20,700 is below61,440. A lexer-only generated-image
+IIFE→ternary experiment removes a real80-byte optimized allocation but is neutral
+cold and4.85% slower by fifth call: reject, retain image and genuine new Base
+preparation. Paired CPU3/CPU2,3 screen saves38.8% B2/34.7% TS request time,
+remaining1.334× relative on two CPUs. Every one of623 C checks passes;160 serial
+guarded jobs take761.8s and peak480.3MiB. Preserve initial missing timeline marks,
+overbroad bytecode filter and negative profiler deltas. Three bounded research/
+offline agents; no production/installed change, PR comment or quota claim.
+Prioritize V8 compilation budget and general emitted-JS shape, using cheap
+exact-output falsifiers before selfhost rebuilds. Qualified Phase82 metrics stay.

@@ -162,6 +162,18 @@ walk may share its safety facts with subsequent roots in the same immutable
 book. A walk that encounters unsafe code contributes no such facts. Public
 `driver_report` and `driver_bad_names` remain available as differential oracles.
 
+## Diagnosing compilation latency
+
+The [Phase85 V8 investigation](../../implementation/phase85/README.md) measures
+the JS-hosted compiler's native-emission latency separately from Clang and native
+program execution. Much first-request CPU is V8 compiling the compiler itself.
+The [diagnostic commands](../../selfhost/tools/performance/phase85/README.md)
+provide clean, trace, CPU, bytecode and thread-CPU modes with exact-output checks.
+An explicit two-CPU development configuration cuts B2 request time39% in the
+four-source screen; upstream gets the same hardware and also speeds up. Keep this
+hardware result and repeated-process timings separate from qualified cold metrics.
+Production flags and compiler images remain unchanged.
+
 ## Historical Phase76 decision
 
 The following records the earlier exact-output selection, superseded by the

@@ -1,0 +1,2292 @@
+{
+  "kind": "phase85-offline-thread-cpu-attribution",
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase85/timeline-summary.py",
+    "bytes": 15648,
+    "sha256": "4b5b4cd110378b309f6f896c06479f2b1237a9430a038aeb8b2dc66d406314b1"
+  },
+  "runDirectory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/timeline02",
+  "jobs": [
+    {
+      "job": {
+        "name": "tier-1-functions65-b2",
+        "mode": "tier",
+        "role": "b2",
+        "case": "functions65",
+        "calls": 1,
+        "profileCalls": []
+      },
+      "pid": 43,
+      "mainTid": 43,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/timeline02/runs/tier-1-functions65-b2/report.json",
+        "bytes": 3955,
+        "sha256": "23df2159757de674a6e3c37c2cee84524a12a4418dbf80725a0d1a81c3aed3a8"
+      },
+      "trace": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/timeline02/timeline-43.json",
+        "bytes": 3616244,
+        "sha256": "71c41204e831066f10c611bb5c4a48337603eb5e2c4747dbdb80461a2b417173"
+      },
+      "clockLog": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/timeline02/runs/tier-1-functions65-b2-guard/stdout.log",
+        "bytes": 1137,
+        "sha256": "b5856b603ae714b327d2d01821149c57d1e62b39ca3f4dce1e4d46bb2d10f613"
+      },
+      "pass": true,
+      "exactC": true,
+      "phases": {
+        "import": {
+          "startHrtimeUs": 1123945543662,
+          "endHrtimeUs": 1123945711269,
+          "markerWallMs": 167.607,
+          "mainCompile": {
+            "containedCpuMs": 136.804,
+            "overlappingWholeSlicesCpuMs": 136.804,
+            "containedEventCount": 4768,
+            "byThread": {
+              "43": {
+                "containedCpuMs": 136.804,
+                "overlappingWholeSlicesCpuMs": 136.804
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "FlushInstructionCache": {
+                "count": 126,
+                "inclusiveCpuMs": 0.19100000000000014
+              },
+              "V8.Compile": {
+                "count": 7,
+                "inclusiveCpuMs": 14.065
+              },
+              "V8.CompileCode": {
+                "count": 41,
+                "inclusiveCpuMs": 135.88900000000004
+              },
+              "V8.CompileDeserialize": {
+                "count": 7,
+                "inclusiveCpuMs": 0.017
+              },
+              "V8.CompileEval": {
+                "count": 7,
+                "inclusiveCpuMs": 0.5860000000000001
+              },
+              "V8.CompileIgnition": {
+                "count": 49,
+                "inclusiveCpuMs": 7.675999999999999
+              },
+              "V8.CompileIgnitionFinalization": {
+                "count": 49,
+                "inclusiveCpuMs": 5.553
+              },
+              "V8.CompileScript": {
+                "count": 7,
+                "inclusiveCpuMs": 130.123
+              },
+              "V8.CompileSerialize": {
+                "count": 7,
+                "inclusiveCpuMs": 0.6360000000000001
+              },
+              "V8.FinalizeBaselineConcurrentCompilation": {
+                "count": 11,
+                "inclusiveCpuMs": 0.031
+              },
+              "V8.FinalizeMaglevConcurrentCompilation": {
+                "count": 3,
+                "inclusiveCpuMs": 0.058
+              },
+              "V8.Maglev.CodeGeneration": {
+                "count": 3,
+                "inclusiveCpuMs": 0.004
+              },
+              "V8.Maglev.CommittingDependencies": {
+                "count": 3,
+                "inclusiveCpuMs": 0.012
+              },
+              "V8.MaglevConcurrentFinalize": {
+                "count": 3,
+                "inclusiveCpuMs": 0.05
+              },
+              "V8.MaglevConcurrentPrepare": {
+                "count": 3,
+                "inclusiveCpuMs": 0.007
+              },
+              "V8.MarkCandidatesForOptimization": {
+                "count": 3,
+                "inclusiveCpuMs": 0.006
+              },
+              "V8.ParseFunction": {
+                "count": 27,
+                "inclusiveCpuMs": 0.5910000000000001
+              },
+              "V8.ParseProgram": {
+                "count": 14,
+                "inclusiveCpuMs": 119.729
+              },
+              "V8.PreParse": {
+                "count": 4398,
+                "inclusiveCpuMs": 74.81300000000117
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundTurboFan": {
+            "containedCpuMs": 0.0,
+            "overlappingWholeSlicesCpuMs": 0.0,
+            "containedEventCount": 0,
+            "byThread": {},
+            "byNameInclusiveNotAdditive": {},
+            "boundaryCrossing": []
+          },
+          "backgroundMaglev": {
+            "containedCpuMs": 0.694,
+            "overlappingWholeSlicesCpuMs": 0.694,
+            "containedEventCount": 3,
+            "byThread": {
+              "46": {
+                "containedCpuMs": 0.234,
+                "overlappingWholeSlicesCpuMs": 0.234
+              },
+              "47": {
+                "containedCpuMs": 0.205,
+                "overlappingWholeSlicesCpuMs": 0.205
+              },
+              "48": {
+                "containedCpuMs": 0.255,
+                "overlappingWholeSlicesCpuMs": 0.255
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.MaglevBackground": {
+                "count": 3,
+                "inclusiveCpuMs": 0.694
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainGc": {
+            "containedCpuMs": 2.669,
+            "overlappingWholeSlicesCpuMs": 2.669,
+            "containedEventCount": 4,
+            "byThread": {
+              "43": {
+                "containedCpuMs": 2.669,
+                "overlappingWholeSlicesCpuMs": 2.669
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "MajorGC": {
+                "count": 1,
+                "inclusiveCpuMs": 2.419
+              },
+              "MinorGC": {
+                "count": 1,
+                "inclusiveCpuMs": 0.25
+              },
+              "V8.GCCompactor": {
+                "count": 1,
+                "inclusiveCpuMs": 2.383
+              },
+              "V8.GCScavenger": {
+                "count": 1,
+                "inclusiveCpuMs": 0.228
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainCompileExcludingObservedGcCpuMs": {
+            "lower": 134.385,
+            "upper": 134.385
+          },
+          "attributedCompileCpuMs": {
+            "lower": 135.07899999999998,
+            "upper": 135.07899999999998
+          },
+          "largestBackgroundJobsOverlappingPhase": [
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 48,
+              "ts": 1123945555890,
+              "dur": 254,
+              "tts": 2453,
+              "tdur": 255,
+              "bind_id": "0x285ee6f3"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 46,
+              "ts": 1123945551893,
+              "dur": 233,
+              "tts": 5864,
+              "tdur": 234,
+              "bind_id": "0x285ee0fe"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 47,
+              "ts": 1123945707528,
+              "dur": 205,
+              "tts": 26082,
+              "tdur": 205,
+              "bind_id": "0x28aef545"
+            }
+          ],
+          "workerStopwatchMs": 166.52515200000005,
+          "markerMinusStopwatchMs": 1.081847999999951,
+          "processCpuMs": null
+        },
+        "request1": {
+          "startHrtimeUs": 1123945711522,
+          "endHrtimeUs": 1123946387530,
+          "markerWallMs": 676.008,
+          "mainCompile": {
+            "containedCpuMs": 79.48,
+            "overlappingWholeSlicesCpuMs": 79.48,
+            "containedEventCount": 7196,
+            "byThread": {
+              "43": {
+                "containedCpuMs": 79.48,
+                "overlappingWholeSlicesCpuMs": 79.48
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "FlushInstructionCache": {
+                "count": 50,
+                "inclusiveCpuMs": 0.07000000000000005
+              },
+              "V8.CompileCode": {
+                "count": 1060,
+                "inclusiveCpuMs": 67.77999999999994
+              },
+              "V8.CompileIgnition": {
+                "count": 1225,
+                "inclusiveCpuMs": 17.087999999999948
+              },
+              "V8.CompileIgnitionFinalization": {
+                "count": 1225,
+                "inclusiveCpuMs": 3.8399999999999332
+              },
+              "V8.FinalizeBaselineConcurrentCompilation": {
+                "count": 168,
+                "inclusiveCpuMs": 0.4110000000000003
+              },
+              "V8.FinalizeMaglevConcurrentCompilation": {
+                "count": 340,
+                "inclusiveCpuMs": 6.538999999999999
+              },
+              "V8.InstallOptimizedFunctions": {
+                "count": 50,
+                "inclusiveCpuMs": 1.8989999999999991
+              },
+              "V8.Maglev.CodeGeneration": {
+                "count": 352,
+                "inclusiveCpuMs": 0.43800000000000033
+              },
+              "V8.Maglev.CommittingDependencies": {
+                "count": 352,
+                "inclusiveCpuMs": 1.844999999999992
+              },
+              "V8.MaglevConcurrentFinalize": {
+                "count": 352,
+                "inclusiveCpuMs": 5.761999999999988
+              },
+              "V8.MaglevConcurrentPrepare": {
+                "count": 352,
+                "inclusiveCpuMs": 0.6990000000000005
+              },
+              "V8.MarkCandidatesForOptimization": {
+                "count": 460,
+                "inclusiveCpuMs": 0.7920000000000006
+              },
+              "V8.OptimizeCode": {
+                "count": 50,
+                "inclusiveCpuMs": 1.3600000000000003
+              },
+              "V8.OptimizeConcurrentFinalize": {
+                "count": 50,
+                "inclusiveCpuMs": 1.5529999999999997
+              },
+              "V8.OptimizeConcurrentPrepare": {
+                "count": 50,
+                "inclusiveCpuMs": 0.8130000000000006
+              },
+              "V8.ParseFunction": {
+                "count": 1060,
+                "inclusiveCpuMs": 34.60100000000002
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundTurboFan": {
+            "containedCpuMs": 168.082,
+            "overlappingWholeSlicesCpuMs": 168.082,
+            "containedEventCount": 50,
+            "byThread": {
+              "46": {
+                "containedCpuMs": 43.315,
+                "overlappingWholeSlicesCpuMs": 43.315
+              },
+              "47": {
+                "containedCpuMs": 80.556,
+                "overlappingWholeSlicesCpuMs": 80.556
+              },
+              "48": {
+                "containedCpuMs": 20.425,
+                "overlappingWholeSlicesCpuMs": 20.425
+              },
+              "49": {
+                "containedCpuMs": 23.786,
+                "overlappingWholeSlicesCpuMs": 23.786
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.OptimizeBackground": {
+                "count": 50,
+                "inclusiveCpuMs": 168.0819999999999
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundMaglev": {
+            "containedCpuMs": 122.486,
+            "overlappingWholeSlicesCpuMs": 122.486,
+            "containedEventCount": 352,
+            "byThread": {
+              "46": {
+                "containedCpuMs": 31.758,
+                "overlappingWholeSlicesCpuMs": 31.758
+              },
+              "47": {
+                "containedCpuMs": 32.578,
+                "overlappingWholeSlicesCpuMs": 32.578
+              },
+              "48": {
+                "containedCpuMs": 28.78,
+                "overlappingWholeSlicesCpuMs": 28.78
+              },
+              "49": {
+                "containedCpuMs": 29.37,
+                "overlappingWholeSlicesCpuMs": 29.37
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.MaglevBackground": {
+                "count": 352,
+                "inclusiveCpuMs": 122.48599999999986
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainGc": {
+            "containedCpuMs": 5.317,
+            "overlappingWholeSlicesCpuMs": 5.317,
+            "containedEventCount": 24,
+            "byThread": {
+              "43": {
+                "containedCpuMs": 5.317,
+                "overlappingWholeSlicesCpuMs": 5.317
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "MajorGC": {
+                "count": 1,
+                "inclusiveCpuMs": 1.164
+              },
+              "MinorGC": {
+                "count": 10,
+                "inclusiveCpuMs": 3.7749999999999995
+              },
+              "V8.GCFinalizeMC": {
+                "count": 1,
+                "inclusiveCpuMs": 1.133
+              },
+              "V8.GCIncrementalMarking": {
+                "count": 1,
+                "inclusiveCpuMs": 0.027
+              },
+              "V8.GCIncrementalMarkingStart": {
+                "count": 1,
+                "inclusiveCpuMs": 0.351
+              },
+              "V8.GCScavenger": {
+                "count": 10,
+                "inclusiveCpuMs": 3.5210000000000004
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainCompileExcludingObservedGcCpuMs": {
+            "lower": 79.48,
+            "upper": 79.48
+          },
+          "attributedCompileCpuMs": {
+            "lower": 370.048,
+            "upper": 370.048
+          },
+          "largestBackgroundJobsOverlappingPhase": [
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 47,
+              "ts": 1123945817377,
+              "dur": 74469,
+              "tts": 38638,
+              "tdur": 36592,
+              "bind_id": "0xfa5701d528383c30"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 46,
+              "ts": 1123946322823,
+              "dur": 12981,
+              "tts": 79404,
+              "tdur": 12983,
+              "bind_id": "0xfa5701fd28c2d310"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 47,
+              "ts": 1123946088803,
+              "dur": 9770,
+              "tts": 107756,
+              "tdur": 9772,
+              "bind_id": "0xfa5701e928383c30"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 46,
+              "ts": 1123945935892,
+              "dur": 9652,
+              "tts": 26532,
+              "tdur": 9647,
+              "bind_id": "0x28b49967"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 46,
+              "ts": 1123946110635,
+              "dur": 7671,
+              "tts": 55246,
+              "tdur": 7672,
+              "bind_id": "0xfa5701ed28383c30"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 47,
+              "ts": 1123946008874,
+              "dur": 6502,
+              "tts": 93670,
+              "tdur": 6503,
+              "bind_id": "0xfa5701e128383c30"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 47,
+              "ts": 1123945809451,
+              "dur": 6369,
+              "tts": 31975,
+              "tdur": 6369,
+              "bind_id": "0x28129f7a"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 48,
+              "ts": 1123946208229,
+              "dur": 5750,
+              "tts": 47345,
+              "tdur": 5751,
+              "bind_id": "0xfa5701f628370dc0"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 47,
+              "ts": 1123946171393,
+              "dur": 5724,
+              "tts": 126395,
+              "tdur": 5725,
+              "bind_id": "0xfa5701f328383c30"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 46,
+              "ts": 1123945970822,
+              "dur": 5666,
+              "tts": 37331,
+              "tdur": 5668,
+              "bind_id": "0xfa5701de28383c30"
+            }
+          ],
+          "workerStopwatchMs": 675.7455520000001,
+          "markerMinusStopwatchMs": 0.2624479999999494,
+          "processCpuMs": 676.068,
+          "attributedCompileShareOfProcessCpuBounds": {
+            "lower": 0.5473532248235384,
+            "upper": 0.5473532248235384
+          }
+        }
+      }
+    },
+    {
+      "job": {
+        "name": "tier-1-functions65-typescript",
+        "mode": "tier",
+        "role": "typescript",
+        "case": "functions65",
+        "calls": 1,
+        "profileCalls": []
+      },
+      "pid": 31,
+      "mainTid": 31,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/timeline02/runs/tier-1-functions65-typescript/report.json",
+        "bytes": 2023,
+        "sha256": "c22a3504fbe187eaff02bebb5874842f2f5560d1735e477542081f5829ba1450"
+      },
+      "trace": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/timeline02/timeline-31.json",
+        "bytes": 2067895,
+        "sha256": "30cd5ee2de474d3360ef451594c38d0bf8f3eb5014cf86a8bff34f9268650da0"
+      },
+      "clockLog": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/timeline02/runs/tier-1-functions65-typescript-guard/stdout.log",
+        "bytes": 1178,
+        "sha256": "c2ef22c763ae5a045d306e1d210dc90d0fc55cf4b53861497e1dbfabb500e95b"
+      },
+      "pass": true,
+      "exactC": true,
+      "phases": {
+        "import": {
+          "startHrtimeUs": 1123943172046,
+          "endHrtimeUs": 1123943442962,
+          "markerWallMs": 270.916,
+          "mainCompile": {
+            "containedCpuMs": 52.908,
+            "overlappingWholeSlicesCpuMs": 52.908,
+            "containedEventCount": 1965,
+            "byThread": {
+              "31": {
+                "containedCpuMs": 52.908,
+                "overlappingWholeSlicesCpuMs": 52.908
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "FlushInstructionCache": {
+                "count": 1313,
+                "inclusiveCpuMs": 1.73599999999996
+              },
+              "V8.Compile": {
+                "count": 2,
+                "inclusiveCpuMs": 0.362
+              },
+              "V8.CompileCode": {
+                "count": 69,
+                "inclusiveCpuMs": 50.686000000000014
+              },
+              "V8.CompileDeserialize": {
+                "count": 1,
+                "inclusiveCpuMs": 0.003
+              },
+              "V8.CompileEval": {
+                "count": 1,
+                "inclusiveCpuMs": 0.091
+              },
+              "V8.CompileIgnition": {
+                "count": 70,
+                "inclusiveCpuMs": 0.8900000000000005
+              },
+              "V8.CompileIgnitionFinalization": {
+                "count": 70,
+                "inclusiveCpuMs": 0.37700000000000017
+              },
+              "V8.CompileScript": {
+                "count": 2,
+                "inclusiveCpuMs": 7.731
+              },
+              "V8.CompileSerialize": {
+                "count": 1,
+                "inclusiveCpuMs": 0.054
+              },
+              "V8.FinalizeBaselineConcurrentCompilation": {
+                "count": 9,
+                "inclusiveCpuMs": 0.027000000000000003
+              },
+              "V8.FinalizeMaglevConcurrentCompilation": {
+                "count": 7,
+                "inclusiveCpuMs": 0.112
+              },
+              "V8.InstallOptimizedFunctions": {
+                "count": 1,
+                "inclusiveCpuMs": 0.031
+              },
+              "V8.Maglev.CodeGeneration": {
+                "count": 7,
+                "inclusiveCpuMs": 0.007
+              },
+              "V8.Maglev.CommittingDependencies": {
+                "count": 7,
+                "inclusiveCpuMs": 0.024
+              },
+              "V8.MaglevConcurrentFinalize": {
+                "count": 7,
+                "inclusiveCpuMs": 0.09699999999999999
+              },
+              "V8.MaglevConcurrentPrepare": {
+                "count": 7,
+                "inclusiveCpuMs": 0.015000000000000001
+              },
+              "V8.MarkCandidatesForOptimization": {
+                "count": 6,
+                "inclusiveCpuMs": 0.009000000000000001
+              },
+              "V8.OptimizeCode": {
+                "count": 1,
+                "inclusiveCpuMs": 0.026
+              },
+              "V8.OptimizeConcurrentFinalize": {
+                "count": 1,
+                "inclusiveCpuMs": 0.025
+              },
+              "V8.OptimizeConcurrentPrepare": {
+                "count": 1,
+                "inclusiveCpuMs": 0.015
+              },
+              "V8.ParseFunction": {
+                "count": 66,
+                "inclusiveCpuMs": 21.37000000000001
+              },
+              "V8.ParseProgram": {
+                "count": 3,
+                "inclusiveCpuMs": 26.655
+              },
+              "V8.PreParse": {
+                "count": 313,
+                "inclusiveCpuMs": 24.220000000000034
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundTurboFan": {
+            "containedCpuMs": 2.123,
+            "overlappingWholeSlicesCpuMs": 2.123,
+            "containedEventCount": 1,
+            "byThread": {
+              "37": {
+                "containedCpuMs": 2.123,
+                "overlappingWholeSlicesCpuMs": 2.123
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.OptimizeBackground": {
+                "count": 1,
+                "inclusiveCpuMs": 2.123
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundMaglev": {
+            "containedCpuMs": 1.207,
+            "overlappingWholeSlicesCpuMs": 1.207,
+            "containedEventCount": 7,
+            "byThread": {
+              "34": {
+                "containedCpuMs": 0.307,
+                "overlappingWholeSlicesCpuMs": 0.307
+              },
+              "35": {
+                "containedCpuMs": 0.396,
+                "overlappingWholeSlicesCpuMs": 0.396
+              },
+              "37": {
+                "containedCpuMs": 0.504,
+                "overlappingWholeSlicesCpuMs": 0.504
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.MaglevBackground": {
+                "count": 7,
+                "inclusiveCpuMs": 1.207
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainGc": {
+            "containedCpuMs": 1.251,
+            "overlappingWholeSlicesCpuMs": 1.251,
+            "containedEventCount": 4,
+            "byThread": {
+              "31": {
+                "containedCpuMs": 1.251,
+                "overlappingWholeSlicesCpuMs": 1.251
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "MajorGC": {
+                "count": 1,
+                "inclusiveCpuMs": 0.934
+              },
+              "V8.GCFinalizeMC": {
+                "count": 1,
+                "inclusiveCpuMs": 0.908
+              },
+              "V8.GCIncrementalMarking": {
+                "count": 1,
+                "inclusiveCpuMs": 0.03
+              },
+              "V8.GCIncrementalMarkingStart": {
+                "count": 1,
+                "inclusiveCpuMs": 0.287
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainCompileExcludingObservedGcCpuMs": {
+            "lower": 52.908,
+            "upper": 52.908
+          },
+          "attributedCompileCpuMs": {
+            "lower": 56.238,
+            "upper": 56.238
+          },
+          "largestBackgroundJobsOverlappingPhase": [
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 37,
+              "ts": 1123943246891,
+              "dur": 2122,
+              "tts": 6650,
+              "tdur": 2123,
+              "bind_id": "0xfa5701d22484de30"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 37,
+              "ts": 1123943246453,
+              "dur": 339,
+              "tts": 6298,
+              "tdur": 339,
+              "bind_id": "0x24646eec"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 35,
+              "ts": 1123943386572,
+              "dur": 229,
+              "tts": 36473,
+              "tdur": 228,
+              "bind_id": "0x24777a1c"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 34,
+              "ts": 1123943385640,
+              "dur": 208,
+              "tts": 32632,
+              "tdur": 208,
+              "bind_id": "0x248110a7"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 37,
+              "ts": 1123943387138,
+              "dur": 164,
+              "tts": 20697,
+              "tdur": 165,
+              "bind_id": "0x24777a15"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 35,
+              "ts": 1123943386974,
+              "dur": 101,
+              "tts": 36713,
+              "tdur": 102,
+              "bind_id": "0x24777a14"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 34,
+              "ts": 1123943387379,
+              "dur": 100,
+              "tts": 32887,
+              "tdur": 99,
+              "bind_id": "0x247d1c16"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 35,
+              "ts": 1123943387568,
+              "dur": 66,
+              "tts": 36839,
+              "tdur": 66,
+              "bind_id": "0x247d1eca"
+            }
+          ],
+          "workerStopwatchMs": 270.10061599999995,
+          "markerMinusStopwatchMs": 0.8153840000000514,
+          "processCpuMs": null
+        },
+        "request1": {
+          "startHrtimeUs": 1123943443136,
+          "endHrtimeUs": 1123943864451,
+          "markerWallMs": 421.315,
+          "mainCompile": {
+            "containedCpuMs": 28.732,
+            "overlappingWholeSlicesCpuMs": 28.732,
+            "containedEventCount": 3192,
+            "byThread": {
+              "31": {
+                "containedCpuMs": 28.732,
+                "overlappingWholeSlicesCpuMs": 28.732
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "FlushInstructionCache": {
+                "count": 39,
+                "inclusiveCpuMs": 0.06700000000000005
+              },
+              "V8.CompileCode": {
+                "count": 411,
+                "inclusiveCpuMs": 21.46499999999997
+              },
+              "V8.CompileIgnition": {
+                "count": 411,
+                "inclusiveCpuMs": 5.772999999999984
+              },
+              "V8.CompileIgnitionFinalization": {
+                "count": 411,
+                "inclusiveCpuMs": 1.3589999999999967
+              },
+              "V8.FinalizeBaselineConcurrentCompilation": {
+                "count": 59,
+                "inclusiveCpuMs": 0.1450000000000001
+              },
+              "V8.FinalizeMaglevConcurrentCompilation": {
+                "count": 221,
+                "inclusiveCpuMs": 4.750999999999997
+              },
+              "V8.InstallOptimizedFunctions": {
+                "count": 24,
+                "inclusiveCpuMs": 0.8360000000000003
+              },
+              "V8.Maglev.CodeGeneration": {
+                "count": 222,
+                "inclusiveCpuMs": 0.2630000000000002
+              },
+              "V8.Maglev.CommittingDependencies": {
+                "count": 222,
+                "inclusiveCpuMs": 1.827999999999996
+              },
+              "V8.MaglevConcurrentFinalize": {
+                "count": 222,
+                "inclusiveCpuMs": 4.278999999999992
+              },
+              "V8.MaglevConcurrentPrepare": {
+                "count": 222,
+                "inclusiveCpuMs": 0.4130000000000003
+              },
+              "V8.MarkCandidatesForOptimization": {
+                "count": 245,
+                "inclusiveCpuMs": 0.47500000000000037
+              },
+              "V8.OptimizeCode": {
+                "count": 24,
+                "inclusiveCpuMs": 0.6180000000000002
+              },
+              "V8.OptimizeConcurrentFinalize": {
+                "count": 24,
+                "inclusiveCpuMs": 0.6680000000000001
+              },
+              "V8.OptimizeConcurrentPrepare": {
+                "count": 24,
+                "inclusiveCpuMs": 0.3750000000000002
+              },
+              "V8.ParseFunction": {
+                "count": 411,
+                "inclusiveCpuMs": 9.851999999999995
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundTurboFan": {
+            "containedCpuMs": 57.396,
+            "overlappingWholeSlicesCpuMs": 57.396,
+            "containedEventCount": 24,
+            "byThread": {
+              "34": {
+                "containedCpuMs": 5.627,
+                "overlappingWholeSlicesCpuMs": 5.627
+              },
+              "35": {
+                "containedCpuMs": 13.805,
+                "overlappingWholeSlicesCpuMs": 13.805
+              },
+              "36": {
+                "containedCpuMs": 31.642,
+                "overlappingWholeSlicesCpuMs": 31.642
+              },
+              "37": {
+                "containedCpuMs": 6.322,
+                "overlappingWholeSlicesCpuMs": 6.322
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.OptimizeBackground": {
+                "count": 24,
+                "inclusiveCpuMs": 57.396
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundMaglev": {
+            "containedCpuMs": 119.504,
+            "overlappingWholeSlicesCpuMs": 119.504,
+            "containedEventCount": 222,
+            "byThread": {
+              "34": {
+                "containedCpuMs": 29.734,
+                "overlappingWholeSlicesCpuMs": 29.734
+              },
+              "35": {
+                "containedCpuMs": 33.565,
+                "overlappingWholeSlicesCpuMs": 33.565
+              },
+              "36": {
+                "containedCpuMs": 19.662,
+                "overlappingWholeSlicesCpuMs": 19.662
+              },
+              "37": {
+                "containedCpuMs": 36.543,
+                "overlappingWholeSlicesCpuMs": 36.543
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.MaglevBackground": {
+                "count": 222,
+                "inclusiveCpuMs": 119.50399999999998
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainGc": {
+            "containedCpuMs": 4.592,
+            "overlappingWholeSlicesCpuMs": 4.592,
+            "containedEventCount": 25,
+            "byThread": {
+              "31": {
+                "containedCpuMs": 4.592,
+                "overlappingWholeSlicesCpuMs": 4.592
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "MajorGC": {
+                "count": 1,
+                "inclusiveCpuMs": 1.325
+              },
+              "MinorGC": {
+                "count": 10,
+                "inclusiveCpuMs": 2.9650000000000003
+              },
+              "V8.GCFinalizeMC": {
+                "count": 1,
+                "inclusiveCpuMs": 1.299
+              },
+              "V8.GCIncrementalMarking": {
+                "count": 1,
+                "inclusiveCpuMs": 0.024
+              },
+              "V8.GCIncrementalMarkingStart": {
+                "count": 1,
+                "inclusiveCpuMs": 0.274
+              },
+              "V8.GCPhantomHandleProcessingCallback": {
+                "count": 1,
+                "inclusiveCpuMs": 0.004
+              },
+              "V8.GCScavenger": {
+                "count": 10,
+                "inclusiveCpuMs": 2.7270000000000003
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainCompileExcludingObservedGcCpuMs": {
+            "lower": 28.732,
+            "upper": 28.732
+          },
+          "attributedCompileCpuMs": {
+            "lower": 205.632,
+            "upper": 205.632
+          },
+          "largestBackgroundJobsOverlappingPhase": [
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 36,
+              "ts": 1123943749084,
+              "dur": 17887,
+              "tts": 113326,
+              "tdur": 17882,
+              "bind_id": "0xfa5701e524c7dab0"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 35,
+              "ts": 1123943696930,
+              "dur": 12096,
+              "tts": 78341,
+              "tdur": 12098,
+              "bind_id": "0xfa5701df24c7dab0"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 36,
+              "ts": 1123943531850,
+              "dur": 6746,
+              "tts": 73855,
+              "tdur": 6748,
+              "bind_id": "0xfa5701d4246852d0"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 37,
+              "ts": 1123943780675,
+              "dur": 4116,
+              "tts": 74644,
+              "tdur": 4116,
+              "bind_id": "0x2473c7a8"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 37,
+              "ts": 1123943546475,
+              "dur": 3347,
+              "tts": 34532,
+              "tdur": 3349,
+              "bind_id": "0xfa5701d7246852d0"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 37,
+              "ts": 1123943665674,
+              "dur": 3230,
+              "tts": 49811,
+              "tdur": 3230,
+              "bind_id": "0x24887668"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 36,
+              "ts": 1123943623661,
+              "dur": 3216,
+              "tts": 99236,
+              "tdur": 3217,
+              "bind_id": "0x243ad458"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 34,
+              "ts": 1123943715217,
+              "dur": 3196,
+              "tts": 62237,
+              "tdur": 3196,
+              "bind_id": "0x248bae58"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 37,
+              "ts": 1123943645294,
+              "dur": 3193,
+              "tts": 45102,
+              "tdur": 3193,
+              "bind_id": "0x24887668"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 35,
+              "ts": 1123943674822,
+              "dur": 3180,
+              "tts": 74197,
+              "tdur": 3180,
+              "bind_id": "0x2486c758"
+            }
+          ],
+          "workerStopwatchMs": 421.136806,
+          "markerMinusStopwatchMs": 0.17819400000001906,
+          "processCpuMs": 421.384,
+          "attributedCompileShareOfProcessCpuBounds": {
+            "lower": 0.4879919503350863,
+            "upper": 0.4879919503350863
+          }
+        }
+      }
+    },
+    {
+      "job": {
+        "name": "tier-1-numeric-b2",
+        "mode": "tier",
+        "role": "b2",
+        "case": "numeric",
+        "calls": 1,
+        "profileCalls": []
+      },
+      "pid": 7,
+      "mainTid": 7,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/timeline02/runs/tier-1-numeric-b2/report.json",
+        "bytes": 5453,
+        "sha256": "166cb7412d06d9eb0d90cfb87ec08838d8787de67933a0040e55664f77902e84"
+      },
+      "trace": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/timeline02/timeline-7.json",
+        "bytes": 4909208,
+        "sha256": "b5ac89901b3bcb1e0a5b627a3c85b5d0b2fdfacc23210c8ca5b5a3a6e5dd3562"
+      },
+      "clockLog": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/timeline02/runs/tier-1-numeric-b2-guard/stdout.log",
+        "bytes": 1105,
+        "sha256": "0383c4db5ab063b668d9fae5f9f2298d3c6164d8b9613991186786e03d10904b"
+      },
+      "pass": true,
+      "exactC": true,
+      "phases": {
+        "import": {
+          "startHrtimeUs": 1123937534076,
+          "endHrtimeUs": 1123937673839,
+          "markerWallMs": 139.763,
+          "mainCompile": {
+            "containedCpuMs": 118.014,
+            "overlappingWholeSlicesCpuMs": 118.014,
+            "containedEventCount": 4768,
+            "byThread": {
+              "7": {
+                "containedCpuMs": 118.014,
+                "overlappingWholeSlicesCpuMs": 118.014
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "FlushInstructionCache": {
+                "count": 126,
+                "inclusiveCpuMs": 0.1310000000000001
+              },
+              "V8.Compile": {
+                "count": 7,
+                "inclusiveCpuMs": 8.206
+              },
+              "V8.CompileCode": {
+                "count": 41,
+                "inclusiveCpuMs": 117.14299999999999
+              },
+              "V8.CompileDeserialize": {
+                "count": 7,
+                "inclusiveCpuMs": 0.015000000000000001
+              },
+              "V8.CompileEval": {
+                "count": 7,
+                "inclusiveCpuMs": 0.5940000000000001
+              },
+              "V8.CompileIgnition": {
+                "count": 49,
+                "inclusiveCpuMs": 5.098999999999999
+              },
+              "V8.CompileIgnitionFinalization": {
+                "count": 49,
+                "inclusiveCpuMs": 3.0069999999999992
+              },
+              "V8.CompileScript": {
+                "count": 7,
+                "inclusiveCpuMs": 111.47999999999999
+              },
+              "V8.CompileSerialize": {
+                "count": 7,
+                "inclusiveCpuMs": 0.632
+              },
+              "V8.FinalizeBaselineConcurrentCompilation": {
+                "count": 11,
+                "inclusiveCpuMs": 0.030000000000000002
+              },
+              "V8.FinalizeMaglevConcurrentCompilation": {
+                "count": 3,
+                "inclusiveCpuMs": 0.054
+              },
+              "V8.Maglev.CodeGeneration": {
+                "count": 3,
+                "inclusiveCpuMs": 0.003
+              },
+              "V8.Maglev.CommittingDependencies": {
+                "count": 3,
+                "inclusiveCpuMs": 0.013
+              },
+              "V8.MaglevConcurrentFinalize": {
+                "count": 3,
+                "inclusiveCpuMs": 0.047
+              },
+              "V8.MaglevConcurrentPrepare": {
+                "count": 3,
+                "inclusiveCpuMs": 0.007
+              },
+              "V8.MarkCandidatesForOptimization": {
+                "count": 3,
+                "inclusiveCpuMs": 0.006
+              },
+              "V8.ParseFunction": {
+                "count": 27,
+                "inclusiveCpuMs": 0.5320000000000003
+              },
+              "V8.ParseProgram": {
+                "count": 14,
+                "inclusiveCpuMs": 107.033
+              },
+              "V8.PreParse": {
+                "count": 4398,
+                "inclusiveCpuMs": 73.86900000000131
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundTurboFan": {
+            "containedCpuMs": 0.0,
+            "overlappingWholeSlicesCpuMs": 0.0,
+            "containedEventCount": 0,
+            "byThread": {},
+            "byNameInclusiveNotAdditive": {},
+            "boundaryCrossing": []
+          },
+          "backgroundMaglev": {
+            "containedCpuMs": 0.577,
+            "overlappingWholeSlicesCpuMs": 0.577,
+            "containedEventCount": 3,
+            "byThread": {
+              "10": {
+                "containedCpuMs": 0.151,
+                "overlappingWholeSlicesCpuMs": 0.151
+              },
+              "12": {
+                "containedCpuMs": 0.23,
+                "overlappingWholeSlicesCpuMs": 0.23
+              },
+              "13": {
+                "containedCpuMs": 0.196,
+                "overlappingWholeSlicesCpuMs": 0.196
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.MaglevBackground": {
+                "count": 3,
+                "inclusiveCpuMs": 0.5770000000000001
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainGc": {
+            "containedCpuMs": 1.821,
+            "overlappingWholeSlicesCpuMs": 1.821,
+            "containedEventCount": 4,
+            "byThread": {
+              "7": {
+                "containedCpuMs": 1.821,
+                "overlappingWholeSlicesCpuMs": 1.821
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "MajorGC": {
+                "count": 1,
+                "inclusiveCpuMs": 1.542
+              },
+              "MinorGC": {
+                "count": 1,
+                "inclusiveCpuMs": 0.279
+              },
+              "V8.GCCompactor": {
+                "count": 1,
+                "inclusiveCpuMs": 1.516
+              },
+              "V8.GCScavenger": {
+                "count": 1,
+                "inclusiveCpuMs": 0.256
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainCompileExcludingObservedGcCpuMs": {
+            "lower": 116.472,
+            "upper": 116.472
+          },
+          "attributedCompileCpuMs": {
+            "lower": 117.04899999999999,
+            "upper": 117.04899999999999
+          },
+          "largestBackgroundJobsOverlappingPhase": [
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 12,
+              "ts": 1123937546396,
+              "dur": 229,
+              "tts": 2523,
+              "tdur": 230,
+              "bind_id": "0x1f9524b3"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 13,
+              "ts": 1123937542337,
+              "dur": 196,
+              "tts": 6354,
+              "tdur": 196,
+              "bind_id": "0x1f9524fe"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 10,
+              "ts": 1123937671846,
+              "dur": 151,
+              "tts": 16348,
+              "tdur": 151,
+              "bind_id": "0x20cbda05"
+            }
+          ],
+          "workerStopwatchMs": 138.81167599999992,
+          "markerMinusStopwatchMs": 0.9513240000000849,
+          "processCpuMs": null
+        },
+        "request1": {
+          "startHrtimeUs": 1123937674020,
+          "endHrtimeUs": 1123938660541,
+          "markerWallMs": 986.521,
+          "mainCompile": {
+            "containedCpuMs": 119.571,
+            "overlappingWholeSlicesCpuMs": 119.571,
+            "containedEventCount": 10592,
+            "byThread": {
+              "7": {
+                "containedCpuMs": 119.571,
+                "overlappingWholeSlicesCpuMs": 119.571
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "FlushInstructionCache": {
+                "count": 77,
+                "inclusiveCpuMs": 0.10000000000000007
+              },
+              "V8.CompileCode": {
+                "count": 1675,
+                "inclusiveCpuMs": 104.41900000000025
+              },
+              "V8.CompileIgnition": {
+                "count": 1951,
+                "inclusiveCpuMs": 25.85600000000004
+              },
+              "V8.CompileIgnitionFinalization": {
+                "count": 1951,
+                "inclusiveCpuMs": 5.950999999999867
+              },
+              "V8.FinalizeBaselineConcurrentCompilation": {
+                "count": 253,
+                "inclusiveCpuMs": 0.6350000000000005
+              },
+              "V8.FinalizeMaglevConcurrentCompilation": {
+                "count": 427,
+                "inclusiveCpuMs": 7.916999999999993
+              },
+              "V8.InstallOptimizedFunctions": {
+                "count": 74,
+                "inclusiveCpuMs": 2.9640000000000004
+              },
+              "V8.Maglev.CodeGeneration": {
+                "count": 432,
+                "inclusiveCpuMs": 0.5220000000000004
+              },
+              "V8.Maglev.CommittingDependencies": {
+                "count": 432,
+                "inclusiveCpuMs": 2.313999999999989
+              },
+              "V8.MaglevConcurrentFinalize": {
+                "count": 432,
+                "inclusiveCpuMs": 7.000999999999984
+              },
+              "V8.MaglevConcurrentPrepare": {
+                "count": 432,
+                "inclusiveCpuMs": 0.7980000000000006
+              },
+              "V8.MarkCandidatesForOptimization": {
+                "count": 556,
+                "inclusiveCpuMs": 0.9510000000000007
+              },
+              "V8.OptimizeCode": {
+                "count": 75,
+                "inclusiveCpuMs": 1.8829999999999998
+              },
+              "V8.OptimizeConcurrentFinalize": {
+                "count": 75,
+                "inclusiveCpuMs": 2.4619999999999984
+              },
+              "V8.OptimizeConcurrentPrepare": {
+                "count": 75,
+                "inclusiveCpuMs": 1.1330000000000005
+              },
+              "V8.ParseFunction": {
+                "count": 1675,
+                "inclusiveCpuMs": 53.23100000000014
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundTurboFan": {
+            "containedCpuMs": 299.619,
+            "overlappingWholeSlicesCpuMs": 299.619,
+            "containedEventCount": 75,
+            "byThread": {
+              "10": {
+                "containedCpuMs": 82.742,
+                "overlappingWholeSlicesCpuMs": 82.742
+              },
+              "11": {
+                "containedCpuMs": 55.995,
+                "overlappingWholeSlicesCpuMs": 55.995
+              },
+              "12": {
+                "containedCpuMs": 57.055,
+                "overlappingWholeSlicesCpuMs": 57.055
+              },
+              "13": {
+                "containedCpuMs": 103.827,
+                "overlappingWholeSlicesCpuMs": 103.827
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.OptimizeBackground": {
+                "count": 75,
+                "inclusiveCpuMs": 299.61899999999997
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundMaglev": {
+            "containedCpuMs": 149.664,
+            "overlappingWholeSlicesCpuMs": 149.664,
+            "containedEventCount": 432,
+            "byThread": {
+              "10": {
+                "containedCpuMs": 32.834,
+                "overlappingWholeSlicesCpuMs": 32.834
+              },
+              "11": {
+                "containedCpuMs": 40.449,
+                "overlappingWholeSlicesCpuMs": 40.449
+              },
+              "12": {
+                "containedCpuMs": 37.55,
+                "overlappingWholeSlicesCpuMs": 37.55
+              },
+              "13": {
+                "containedCpuMs": 38.831,
+                "overlappingWholeSlicesCpuMs": 38.831
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.MaglevBackground": {
+                "count": 432,
+                "inclusiveCpuMs": 149.66400000000013
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainGc": {
+            "containedCpuMs": 6.317,
+            "overlappingWholeSlicesCpuMs": 6.317,
+            "containedEventCount": 24,
+            "byThread": {
+              "7": {
+                "containedCpuMs": 6.317,
+                "overlappingWholeSlicesCpuMs": 6.317
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "MajorGC": {
+                "count": 1,
+                "inclusiveCpuMs": 2.22
+              },
+              "MinorGC": {
+                "count": 10,
+                "inclusiveCpuMs": 3.771
+              },
+              "V8.GCFinalizeMC": {
+                "count": 1,
+                "inclusiveCpuMs": 2.191
+              },
+              "V8.GCIncrementalMarking": {
+                "count": 1,
+                "inclusiveCpuMs": 0.023
+              },
+              "V8.GCIncrementalMarkingStart": {
+                "count": 1,
+                "inclusiveCpuMs": 0.303
+              },
+              "V8.GCScavenger": {
+                "count": 10,
+                "inclusiveCpuMs": 3.532
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainCompileExcludingObservedGcCpuMs": {
+            "lower": 119.571,
+            "upper": 119.571
+          },
+          "attributedCompileCpuMs": {
+            "lower": 568.854,
+            "upper": 568.854
+          },
+          "largestBackgroundJobsOverlappingPhase": [
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 13,
+              "ts": 1123937786459,
+              "dur": 57466,
+              "tts": 12106,
+              "tdur": 34496,
+              "bind_id": "0xfa5701d91f7be830"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 10,
+              "ts": 1123938095343,
+              "dur": 33759,
+              "tts": 76844,
+              "tdur": 14644,
+              "bind_id": "0xfa5701f020233290"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 11,
+              "ts": 1123938448945,
+              "dur": 14012,
+              "tts": 117696,
+              "tdur": 14013,
+              "bind_id": "0xfa5702101f59c130"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 10,
+              "ts": 1123938202239,
+              "dur": 22560,
+              "tts": 96588,
+              "tdur": 13842,
+              "bind_id": "0xfa5701f81fb826a0"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 13,
+              "ts": 1123938241824,
+              "dur": 13605,
+              "tts": 94147,
+              "tdur": 13607,
+              "bind_id": "0xfa5701fb1f59c130"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 12,
+              "ts": 1123938506732,
+              "dur": 11960,
+              "tts": 87278,
+              "tdur": 11962,
+              "bind_id": "0xfa5702131f59c130"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 13,
+              "ts": 1123938465259,
+              "dur": 11079,
+              "tts": 132633,
+              "tdur": 11081,
+              "bind_id": "0xfa5702111f59c130"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 11,
+              "ts": 1123937962003,
+              "dur": 10215,
+              "tts": 54724,
+              "tdur": 10217,
+              "bind_id": "0xfa5701df1f779550"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 11,
+              "ts": 1123938267592,
+              "dur": 9601,
+              "tts": 90405,
+              "tdur": 9603,
+              "bind_id": "0xfa5701fc1f59c130"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 13,
+              "ts": 1123938110384,
+              "dur": 8809,
+              "tts": 70269,
+              "tdur": 8810,
+              "bind_id": "0xfa5701f11fa1f800"
+            }
+          ],
+          "workerStopwatchMs": 986.3113299999999,
+          "markerMinusStopwatchMs": 0.20967000000007374,
+          "processCpuMs": 986.589,
+          "attributedCompileShareOfProcessCpuBounds": {
+            "lower": 0.57658660293192,
+            "upper": 0.57658660293192
+          }
+        }
+      }
+    },
+    {
+      "job": {
+        "name": "tier-1-numeric-typescript",
+        "mode": "tier",
+        "role": "typescript",
+        "case": "numeric",
+        "calls": 1,
+        "profileCalls": []
+      },
+      "pid": 19,
+      "mainTid": 19,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/timeline02/runs/tier-1-numeric-typescript/report.json",
+        "bytes": 2029,
+        "sha256": "89109f90808de4687ca40bbf1ffd2af34925632b4e58d5f20e961a78b5818111"
+      },
+      "trace": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/timeline02/timeline-19.json",
+        "bytes": 2613346,
+        "sha256": "9587064d5920d89ad8e793a9964d8e81ec32ae12ea634d7f8bfe0d54bee44f9a"
+      },
+      "clockLog": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase85/timeline02/runs/tier-1-numeric-typescript-guard/stdout.log",
+        "bytes": 1162,
+        "sha256": "ea9e94679e398ff0c13203d7f9cb931d2aac4bf311c679342d0d1480819e3e3a"
+      },
+      "pass": true,
+      "exactC": true,
+      "phases": {
+        "import": {
+          "startHrtimeUs": 1123940402918,
+          "endHrtimeUs": 1123940689881,
+          "markerWallMs": 286.963,
+          "mainCompile": {
+            "containedCpuMs": 50.29,
+            "overlappingWholeSlicesCpuMs": 50.29,
+            "containedEventCount": 1965,
+            "byThread": {
+              "19": {
+                "containedCpuMs": 50.29,
+                "overlappingWholeSlicesCpuMs": 50.29
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "FlushInstructionCache": {
+                "count": 1313,
+                "inclusiveCpuMs": 1.796999999999962
+              },
+              "V8.Compile": {
+                "count": 2,
+                "inclusiveCpuMs": 0.431
+              },
+              "V8.CompileCode": {
+                "count": 69,
+                "inclusiveCpuMs": 47.95900000000001
+              },
+              "V8.CompileDeserialize": {
+                "count": 1,
+                "inclusiveCpuMs": 0.003
+              },
+              "V8.CompileEval": {
+                "count": 1,
+                "inclusiveCpuMs": 0.074
+              },
+              "V8.CompileIgnition": {
+                "count": 70,
+                "inclusiveCpuMs": 0.9410000000000005
+              },
+              "V8.CompileIgnitionFinalization": {
+                "count": 70,
+                "inclusiveCpuMs": 0.41200000000000014
+              },
+              "V8.CompileScript": {
+                "count": 2,
+                "inclusiveCpuMs": 8.361
+              },
+              "V8.CompileSerialize": {
+                "count": 1,
+                "inclusiveCpuMs": 0.054
+              },
+              "V8.FinalizeBaselineConcurrentCompilation": {
+                "count": 9,
+                "inclusiveCpuMs": 0.026000000000000002
+              },
+              "V8.FinalizeMaglevConcurrentCompilation": {
+                "count": 7,
+                "inclusiveCpuMs": 0.126
+              },
+              "V8.InstallOptimizedFunctions": {
+                "count": 1,
+                "inclusiveCpuMs": 0.036
+              },
+              "V8.Maglev.CodeGeneration": {
+                "count": 7,
+                "inclusiveCpuMs": 0.008
+              },
+              "V8.Maglev.CommittingDependencies": {
+                "count": 7,
+                "inclusiveCpuMs": 0.028000000000000004
+              },
+              "V8.MaglevConcurrentFinalize": {
+                "count": 7,
+                "inclusiveCpuMs": 0.107
+              },
+              "V8.MaglevConcurrentPrepare": {
+                "count": 7,
+                "inclusiveCpuMs": 0.017
+              },
+              "V8.MarkCandidatesForOptimization": {
+                "count": 6,
+                "inclusiveCpuMs": 0.009000000000000001
+              },
+              "V8.OptimizeCode": {
+                "count": 1,
+                "inclusiveCpuMs": 0.028
+              },
+              "V8.OptimizeConcurrentFinalize": {
+                "count": 1,
+                "inclusiveCpuMs": 0.028
+              },
+              "V8.OptimizeConcurrentPrepare": {
+                "count": 1,
+                "inclusiveCpuMs": 0.017
+              },
+              "V8.ParseFunction": {
+                "count": 66,
+                "inclusiveCpuMs": 19.97600000000001
+              },
+              "V8.ParseProgram": {
+                "count": 3,
+                "inclusiveCpuMs": 25.683
+              },
+              "V8.PreParse": {
+                "count": 313,
+                "inclusiveCpuMs": 22.92100000000006
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundTurboFan": {
+            "containedCpuMs": 2.385,
+            "overlappingWholeSlicesCpuMs": 2.385,
+            "containedEventCount": 1,
+            "byThread": {
+              "24": {
+                "containedCpuMs": 2.385,
+                "overlappingWholeSlicesCpuMs": 2.385
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.OptimizeBackground": {
+                "count": 1,
+                "inclusiveCpuMs": 2.385
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundMaglev": {
+            "containedCpuMs": 1.377,
+            "overlappingWholeSlicesCpuMs": 1.377,
+            "containedEventCount": 7,
+            "byThread": {
+              "22": {
+                "containedCpuMs": 0.336,
+                "overlappingWholeSlicesCpuMs": 0.336
+              },
+              "23": {
+                "containedCpuMs": 0.348,
+                "overlappingWholeSlicesCpuMs": 0.348
+              },
+              "24": {
+                "containedCpuMs": 0.186,
+                "overlappingWholeSlicesCpuMs": 0.186
+              },
+              "25": {
+                "containedCpuMs": 0.507,
+                "overlappingWholeSlicesCpuMs": 0.507
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.MaglevBackground": {
+                "count": 7,
+                "inclusiveCpuMs": 1.377
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainGc": {
+            "containedCpuMs": 1.255,
+            "overlappingWholeSlicesCpuMs": 1.255,
+            "containedEventCount": 4,
+            "byThread": {
+              "19": {
+                "containedCpuMs": 1.255,
+                "overlappingWholeSlicesCpuMs": 1.255
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "MajorGC": {
+                "count": 1,
+                "inclusiveCpuMs": 0.939
+              },
+              "V8.GCFinalizeMC": {
+                "count": 1,
+                "inclusiveCpuMs": 0.912
+              },
+              "V8.GCIncrementalMarking": {
+                "count": 1,
+                "inclusiveCpuMs": 0.029
+              },
+              "V8.GCIncrementalMarkingStart": {
+                "count": 1,
+                "inclusiveCpuMs": 0.287
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainCompileExcludingObservedGcCpuMs": {
+            "lower": 50.29,
+            "upper": 50.29
+          },
+          "attributedCompileCpuMs": {
+            "lower": 54.052,
+            "upper": 54.052
+          },
+          "largestBackgroundJobsOverlappingPhase": [
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 24,
+              "ts": 1123940473179,
+              "dur": 2385,
+              "tts": 14293,
+              "tdur": 2385,
+              "bind_id": "0xfa5701d24257bb10"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 23,
+              "ts": 1123940472737,
+              "dur": 349,
+              "tts": 18838,
+              "tdur": 348,
+              "bind_id": "0x4301276c"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 25,
+              "ts": 1123940622547,
+              "dur": 319,
+              "tts": 26947,
+              "tdur": 318,
+              "bind_id": "0x43c45b3c"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 22,
+              "ts": 1123940621308,
+              "dur": 240,
+              "tts": 33865,
+              "tdur": 240,
+              "bind_id": "0x4320e497"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 24,
+              "ts": 1123940623282,
+              "dur": 186,
+              "tts": 28819,
+              "tdur": 186,
+              "bind_id": "0x43c45b35"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 25,
+              "ts": 1123940623092,
+              "dur": 118,
+              "tts": 27280,
+              "tdur": 118,
+              "bind_id": "0x43c45b34"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 22,
+              "ts": 1123940623544,
+              "dur": 95,
+              "tts": 34148,
+              "tdur": 96,
+              "bind_id": "0x4256f656"
+            },
+            {
+              "name": "V8.MaglevBackground",
+              "tid": 25,
+              "ts": 1123940623739,
+              "dur": 70,
+              "tts": 27423,
+              "tdur": 71,
+              "bind_id": "0x4256f65a"
+            }
+          ],
+          "workerStopwatchMs": 286.13203099999987,
+          "markerMinusStopwatchMs": 0.8309690000001524,
+          "processCpuMs": null
+        },
+        "request1": {
+          "startHrtimeUs": 1123940690079,
+          "endHrtimeUs": 1123941492405,
+          "markerWallMs": 802.326,
+          "mainCompile": {
+            "containedCpuMs": 41.996,
+            "overlappingWholeSlicesCpuMs": 41.996,
+            "containedEventCount": 4658,
+            "byThread": {
+              "19": {
+                "containedCpuMs": 41.996,
+                "overlappingWholeSlicesCpuMs": 41.996
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "FlushInstructionCache": {
+                "count": 66,
+                "inclusiveCpuMs": 0.09900000000000007
+              },
+              "V8.CompileCode": {
+                "count": 556,
+                "inclusiveCpuMs": 29.765
+              },
+              "V8.CompileIgnition": {
+                "count": 557,
+                "inclusiveCpuMs": 7.851999999999966
+              },
+              "V8.CompileIgnitionFinalization": {
+                "count": 557,
+                "inclusiveCpuMs": 2.0229999999999864
+              },
+              "V8.FinalizeBaselineConcurrentCompilation": {
+                "count": 83,
+                "inclusiveCpuMs": 0.22800000000000017
+              },
+              "V8.FinalizeMaglevConcurrentCompilation": {
+                "count": 338,
+                "inclusiveCpuMs": 7.22199999999999
+              },
+              "V8.InstallOptimizedFunctions": {
+                "count": 44,
+                "inclusiveCpuMs": 1.9979999999999998
+              },
+              "V8.Maglev.CodeGeneration": {
+                "count": 343,
+                "inclusiveCpuMs": 0.4270000000000003
+              },
+              "V8.Maglev.CommittingDependencies": {
+                "count": 343,
+                "inclusiveCpuMs": 2.543999999999992
+              },
+              "V8.MaglevConcurrentFinalize": {
+                "count": 343,
+                "inclusiveCpuMs": 6.435999999999989
+              },
+              "V8.MaglevConcurrentPrepare": {
+                "count": 343,
+                "inclusiveCpuMs": 0.6970000000000005
+              },
+              "V8.MarkCandidatesForOptimization": {
+                "count": 394,
+                "inclusiveCpuMs": 0.8000000000000006
+              },
+              "V8.OptimizeCode": {
+                "count": 45,
+                "inclusiveCpuMs": 1.2440000000000002
+              },
+              "V8.OptimizeConcurrentFinalize": {
+                "count": 45,
+                "inclusiveCpuMs": 1.687
+              },
+              "V8.OptimizeConcurrentPrepare": {
+                "count": 45,
+                "inclusiveCpuMs": 0.7490000000000004
+              },
+              "V8.ParseFunction": {
+                "count": 556,
+                "inclusiveCpuMs": 13.287999999999968
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundTurboFan": {
+            "containedCpuMs": 194.879,
+            "overlappingWholeSlicesCpuMs": 194.879,
+            "containedEventCount": 45,
+            "byThread": {
+              "22": {
+                "containedCpuMs": 39.944,
+                "overlappingWholeSlicesCpuMs": 39.944
+              },
+              "23": {
+                "containedCpuMs": 29.983,
+                "overlappingWholeSlicesCpuMs": 29.983
+              },
+              "24": {
+                "containedCpuMs": 83.82,
+                "overlappingWholeSlicesCpuMs": 83.82
+              },
+              "25": {
+                "containedCpuMs": 41.132,
+                "overlappingWholeSlicesCpuMs": 41.132
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.OptimizeBackground": {
+                "count": 45,
+                "inclusiveCpuMs": 194.879
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "backgroundMaglev": {
+            "containedCpuMs": 154.9,
+            "overlappingWholeSlicesCpuMs": 154.9,
+            "containedEventCount": 343,
+            "byThread": {
+              "22": {
+                "containedCpuMs": 31.296,
+                "overlappingWholeSlicesCpuMs": 31.296
+              },
+              "23": {
+                "containedCpuMs": 43.778,
+                "overlappingWholeSlicesCpuMs": 43.778
+              },
+              "24": {
+                "containedCpuMs": 39.273,
+                "overlappingWholeSlicesCpuMs": 39.273
+              },
+              "25": {
+                "containedCpuMs": 40.553,
+                "overlappingWholeSlicesCpuMs": 40.553
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "V8.MaglevBackground": {
+                "count": 343,
+                "inclusiveCpuMs": 154.9000000000002
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainGc": {
+            "containedCpuMs": 6.03,
+            "overlappingWholeSlicesCpuMs": 6.03,
+            "containedEventCount": 35,
+            "byThread": {
+              "19": {
+                "containedCpuMs": 6.03,
+                "overlappingWholeSlicesCpuMs": 6.03
+              }
+            },
+            "byNameInclusiveNotAdditive": {
+              "MajorGC": {
+                "count": 1,
+                "inclusiveCpuMs": 1.397
+              },
+              "MinorGC": {
+                "count": 15,
+                "inclusiveCpuMs": 4.309
+              },
+              "V8.GCFinalizeMC": {
+                "count": 1,
+                "inclusiveCpuMs": 1.36
+              },
+              "V8.GCIncrementalMarking": {
+                "count": 1,
+                "inclusiveCpuMs": 0.025
+              },
+              "V8.GCIncrementalMarkingStart": {
+                "count": 1,
+                "inclusiveCpuMs": 0.294
+              },
+              "V8.GCPhantomHandleProcessingCallback": {
+                "count": 1,
+                "inclusiveCpuMs": 0.005
+              },
+              "V8.GCScavenger": {
+                "count": 15,
+                "inclusiveCpuMs": 3.9610000000000003
+              }
+            },
+            "boundaryCrossing": []
+          },
+          "mainCompileExcludingObservedGcCpuMs": {
+            "lower": 41.996,
+            "upper": 41.996
+          },
+          "attributedCompileCpuMs": {
+            "lower": 391.775,
+            "upper": 391.775
+          },
+          "largestBackgroundJobsOverlappingPhase": [
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 22,
+              "ts": 1123941084080,
+              "dur": 36493,
+              "tts": 68626,
+              "tdur": 19604,
+              "bind_id": "0xfa5701ea42b37f50"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 24,
+              "ts": 1123941402993,
+              "dur": 23258,
+              "tts": 156683,
+              "tdur": 19553,
+              "bind_id": "0xfa5701fb42b38070"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 24,
+              "ts": 1123941004307,
+              "dur": 32015,
+              "tts": 94228,
+              "tdur": 18738,
+              "bind_id": "0xfa5701e5431ff350"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 25,
+              "ts": 1123941124684,
+              "dur": 22638,
+              "tts": 87144,
+              "tdur": 18556,
+              "bind_id": "0xfa5701ec426ee320"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 24,
+              "ts": 1123941100469,
+              "dur": 12116,
+              "tts": 119627,
+              "tdur": 12118,
+              "bind_id": "0xfa5701eb426edfd0"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 23,
+              "ts": 1123940952414,
+              "dur": 12099,
+              "tts": 107849,
+              "tdur": 12101,
+              "bind_id": "0xfa5701df426f28d0"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 25,
+              "ts": 1123941315312,
+              "dur": 12018,
+              "tts": 114493,
+              "tdur": 12019,
+              "bind_id": "0xfa5701f5425705a0"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 24,
+              "ts": 1123941258536,
+              "dur": 11951,
+              "tts": 139995,
+              "tdur": 11952,
+              "bind_id": "0xfa5701f2431e8f40"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 22,
+              "ts": 1123941244682,
+              "dur": 11930,
+              "tts": 96971,
+              "tdur": 11932,
+              "bind_id": "0xfa5701f1431e8f40"
+            },
+            {
+              "name": "V8.OptimizeBackground",
+              "tid": 23,
+              "ts": 1123941476933,
+              "dur": 9545,
+              "tts": 155269,
+              "tdur": 9546,
+              "bind_id": "0xfa5701ff42b28ca0"
+            }
+          ],
+          "workerStopwatchMs": 802.1332060000002,
+          "markerMinusStopwatchMs": 0.1927939999998216,
+          "processCpuMs": 802.392,
+          "attributedCompileShareOfProcessCpuBounds": {
+            "lower": 0.4882588560204986,
+            "upper": 0.4882588560204986
+          }
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Diagnostic traced runs, not clean benchmark clocks or additive removable costs.",
+    "CPU unions are computed separately per OS tid using tts/tdur; nested events are not double counted.",
+    "Boundary-straddling slices yield lower/upper attribution bounds; no wall-time prorating.",
+    "Main compilation category includes tier decisions and code finalization; observed nested GC is subtracted for compile-only bounds.",
+    "Background accounting includes job-execution scopes only, excludes task-wrapper overhead and uninstrumented Sparkplug compilation.",
+    "Import process-CPU denominator was not recorded; request CPU comes from the near-boundary P85_CPU observer.",
+    "Unattributed CPU is not proven JavaScript execution and observed JIT CPU is not guaranteed removable without execution regressions."
+  ],
+  "comparisons": [
+    {
+      "case": "functions65",
+      "processCpuGapMs": 254.68399999999997,
+      "attributedCompileCpuGapMs": {
+        "lower": 164.416,
+        "upper": 164.416
+      },
+      "compileGapShareOfProcessCpuGap": {
+        "lower": 0.6455686262191579,
+        "upper": 0.6455686262191579
+      },
+      "notAttributedToTracedCompilationCpuMs": {
+        "b2": {
+          "lower": 306.02,
+          "upper": 306.02
+        },
+        "typescript": {
+          "lower": 215.752,
+          "upper": 215.752
+        }
+      }
+    },
+    {
+      "case": "numeric",
+      "processCpuGapMs": 184.197,
+      "attributedCompileCpuGapMs": {
+        "lower": 177.07900000000006,
+        "upper": 177.07900000000006
+      },
+      "compileGapShareOfProcessCpuGap": {
+        "lower": 0.9613565910411139,
+        "upper": 0.9613565910411139
+      },
+      "notAttributedToTracedCompilationCpuMs": {
+        "b2": {
+          "lower": 417.735,
+          "upper": 417.735
+        },
+        "typescript": {
+          "lower": 410.6170000000001,
+          "upper": 410.6170000000001
+        }
+      }
+    }
+  ]
+}

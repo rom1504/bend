@@ -1,6 +1,6 @@
 # Native compilation and a fast editing loop
 
-The default self-hosted package is Phase77 B2: the Bend compiler compiled by
+The default self-hosted package is Phase78 B2: the Bend compiler compiled by
 itself. It checks and compiles Bend to JavaScript or C without a TypeScript
 fallback. B1 remains the checked development-build stage. Use
 `node selfhost/tools/development/release.mjs --verify` from the repository root
@@ -55,12 +55,23 @@ Base replacement, not merely a new session object in a process holding old modul
 
 ## Measurements and admission rules
 
-Phase77 fresh C requests take1.920× upstream with B1 and1.482× with B2 on the
-three-source loop. These clocks exclude process imports, explicit prepared Bend
-Base, Clang and execution; upstream checks Base inside its request. Five mixed
-sources in a reused process measure approximately1.10× upstream, including the
-session's integrity hashing. Both roles reuse their process. Individual cases
-still differ significantly and this short run is not steady-state parity.
+Phase78 fresh C requests take1.732× upstream with B1 and1.382× with B2 on the
+three-source loop:8.2%/5.6% less time than the paired Phase77 compiler. These
+clocks exclude imports, explicitly prepared Bend Base, Clang and execution;
+upstream checks Base inside its request. Non-IO held-outs improve less, about2–4%
+for B1 and0–2% for B2. No cold parity or universal ratio is claimed.
+
+The earlier Phase77 five-source warm-session result is historical: approximately
+1.10× upstream with both processes reused. It was not remeasured in Phase78.
+The installed session's correctness/edit/error controls were rerun.
+
+Phase78 retains normalized annotation heads and field quantities for checked
+layout validation. A whole-runtime-closure escape index permits omitting curried
+factories only for exactly saturated non-bang uses; all value/partial/overapplied
+uses keep the closure ABI. Saturated intrinsic calls use existing native operation
+lowering, so their now-unused public entries can be omitted under the same private
+checked-host permission. Observers retain original erased bodies through static
+preparation, avoiding repeated erasure. No cross-request native cache is shipped.
 
 Scalar Word patterns are compacted into private low-bit rows after typed erasure;
 alpha-equivalence guards default sharing and escaping tails retain materialization.
@@ -69,7 +80,9 @@ the checked no-bang path. Raw/bang/device fallbacks stay available. These change
 trade a measured1.8% aggregate native-execution slowdown for substantially lower
 compiler request time. Expression regresses14.25% and Array.map5.04%.
 
-Read the [complete report](../../implementation/phase77/README.md),
+Phase78 execution is effectively unchanged versus Phase77 on12 families; see
+[all metrics and tradeoffs](../../implementation/phase78/README.md),
+[the historical Phase77 report](../../implementation/phase77/README.md),
 [native ownership rules](NATIVE_OWNERSHIP_FACTS.md) and
 [fast-loop methods](../../selfhost/tools/performance/phase77/README.md) before
 changing admission rules or comparing numbers. Keep cold compilation, warm

@@ -1,18 +1,21 @@
 # Bend2 compiler port in Bend2
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The current default is **Phase77 B2** (`35d7a606…`) with preserved checked B1
-parent and exact self-reproduction lineage. The [Phase77 report](../implementation/phase77/README.md)
-records fresh C-compilation requests at **1.920× B1 /1.482× B2 upstream**, down
-30.7%/23.1% against the paired previous source. Selecting B2 and optimizing its
-source reduce default request time46.6% together. Generated C execution is
-**1.055× upstream**, with an accepted1.8% aggregate regression versus before
-(expression14.25%, Array.map5.04%). Known conformance gaps remain.
+The default package is genuine **Phase78 B2** (`cc99ac9b…`), emitted by the Bend
+compiler itself, with checked B1 and self-check/fixed-point lineage retained.
+The [Phase78 report](../implementation/phase78/README.md) records paired fresh C-request ratios
+**1.732× B1 /1.382× B2 upstream**,8.2%/5.6% less time than Phase77 measured
+alongside. These clocks exclude imports, prepared Bend Base, Clang and execution;
+upstream checks Base within its request. Parity remains open.
 
-Use the [native session guide](../docs/self_hosted/NATIVE_COMPILATION.md) for
-repeated C-emission requests. Five mixed programs measure about1.10× upstream
-when both compilers reuse their process, including session integrity checks.
-Warm/cold requests and Clang/execution are separate measurements.
+Generated C execution is effectively unchanged versus Phase77: **1.002×** its
+time across12 families (**1.067× upstream**). All23 JS benchmark sources remain
+byte-identical, covering45 points. Selected conformance and installed/relocated
+checks pass; known gaps remain. Source grows154 lines, with no new module.
+
+The [native session guide](../docs/self_hosted/NATIVE_COMPILATION.md) documents repeated C-emission requests.
+The older Phase77 warm-session result (about1.10× upstream over five mixed
+programs) is historical and separate from these fresh-request measurements.
 
 The following Phase73 results are historical. Read the current report for the
 installed image and tradeoffs.

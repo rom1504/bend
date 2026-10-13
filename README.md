@@ -16,29 +16,25 @@ This fork ships the Bend2 compiler in [`selfhost/`](selfhost/README.md), targeti
 upstream **`0592662` (Bend 2.0.36)**. Ordinary compilation runs Bend algorithms
 without a TypeScript fallback.
 
-**Phase77 self-emitted B2 is installed** (`35d7a606…`). Its checked B1 parent,
-fresh own-source acceptance and exact B3 reproduction are preserved in the
-release lineage. Direct JavaScript is the default; native C and legacy JS retain
-documented limits.
+**Phase78 self-emitted B2 is installed** (`cc99ac9b…`), with checked B1 parent,
+fresh own-source acceptance and exact B3 reproduction. Direct JavaScript is the
+default; native C and legacy JS retain documented limits.
 
-Fresh C-compilation requests now take **1.920× B1 /1.482× B2 upstream**, down
-30.7%/23.1% in the paired three-source loop. Switching the default from B1 to B2
-and optimizing its source together reduce default request time46.6%. A new
-persistent session measures about**1.10× upstream** across five mixed sources;
-both compilers reuse their process. Neither result establishes universal parity.
-Imports, prepared Bend Base, Clang and execution are separate clocks.
+Fresh C-compilation requests take **1.732× B1 /1.382× B2 upstream**:8.2%/5.6%
+less time than Phase77 measured alongside. Imports, prepared Bend Base, Clang and
+execution remain separate. Non-IO held-outs improve less; parity remains open.
 
-The twelve-family C execution score is **1.055× upstream**. This accepts a1.8%
-aggregate slowdown versus the previous compiler to improve compilation; expression
-regresses14.25% and Array.map5.04%. Native100,raw31,scalar-pattern controls,
-threaded,self-hosting and installed/relocated checks pass. Seven reference native
-failures and thirteen broader native API gaps remain. Manifest-listed Bend source
-is **32,317 physical lines /132 modules**. No mathematical compiler proof is claimed.
+Twelve-family C execution is effectively unchanged versus Phase77 (**1.002×**
+its time, **1.067× upstream**). All23 JS benchmark sources are byte-identical,
+covering45 points. Native100,raw31,frontend,threaded,self-hosting and installed/
+relocated checks pass. Seven reference native failures and thirteen broader native
+API gaps remain. Production Bend source is **32,471 physical lines /132 modules**.
+No mathematical compiler proof is claimed.
 
-Read the [Phase77 report](implementation/phase77/README.md),
+Read the [Phase78 report](implementation/phase78/README.md),
 [native compilation/session guide](docs/self_hosted/NATIVE_COMPILATION.md),
 [native ownership facts](docs/self_hosted/NATIVE_OWNERSHIP_FACTS.md),
-[fast loops](selfhost/tools/performance/phase77/README.md) and
+[fast loops](selfhost/tools/performance/phase78/README.md) and
 [compiler guide](docs/BEND-IN-BEND.md). From `selfhost/`, run
 `npm run verify:release`, then `node cli.mjs FILE --run`.
 The [conformance record](selfhost/CONFORMANCE.md),

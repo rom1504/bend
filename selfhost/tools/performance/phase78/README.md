@@ -16,3 +16,15 @@ Do not rerun these against the current already-rewritten sources.
 
 The frozen compilation worker/run/analyze methods are unchanged Phase77 copies.
 Every plan records methods and inputs; never mutate a method after pinning it.
+
+## Selected checkpoint
+
+Compiler21 is installed as genuine B2. `qualify21.py` and `finish21.py` record
+one-shot serial campaigns; never rerun over those existing destinations. The
+independent paired plan has45 fresh requests, the non-IO held-out plan30.
+`js-continuity.mjs` checks all23 raw JS sources against the qualified45-point
+corpus. Runtime comparators use Phase77 saved binaries as the paired baseline.
+Source qualification, installed checks and preserved negative experiments are
+linked in the report. The four requested V8 profiles are diagnostic; their parent
+plan's unexecuted clean jobs are deliberately reported as missing because clean
+measurements used the separate paired plan.

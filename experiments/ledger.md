@@ -4329,3 +4329,19 @@ Tree/Array.map regress3.66%/4.93%. Reconstruction elimination and saved-C layout
 variants fail to repair both. Full prototype/independent controls retained.
 +34physical/+22code lines, unchanged131modules. No agents or PR comments.
 Parity not achieved; no default runtime regression on the twelve artifact set.
+
+## Phase78 retained native facts — 2026-10-13
+
+[Report](../implementation/phase78/README.md), source commit `6758bf2`.
+Install compiler21, checked B1 `475610ea…`, genuine B2/B3 `cc99ac9b…`.
+Paired45 C requests: B1 1.88678×→1.73205×, B2 1.46354×→1.38187× upstream;
+8.20%/5.58% less time. Non-IO held-outs improve less. Twelve-family runtime is
+1.06678× upstream/1.00162× prior;23 JS sources remain exact across45 points.
+All selected source/raw/native/thread/selfhosting/installed gates pass. Seven
+reference failures/thirteen broader native API gaps remain. +154 physical Bend
+lines; no new module. Reject branch expansion, shortened symbols, both tag
+classifiers and early observer planning. No agents or PR comments.
+
+Updated frontier: cold parity is unachieved. Test reusable native Base products
+under a separately labelled preparation contract, with exact C and a15% net-saving
+falsifier before expansion. [Phase79 design](../design/phase79/prepared-native-library.md).

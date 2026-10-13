@@ -807,6 +807,14 @@ function $j_layout_error$(_book_0, _defs_0, _roots_0, _stops_0) {
 }));
 }
 
+function $jl_checked_error$(_book_0, _defs_0, _roots_0, _stops_0) {
+  return $kc$(run_loop($jl_visit$(run_loop($book_context$(_book_0)), ($book_cached$(_defs_0, 0)), _roots_0, {$: "Nil"}, _stops_0)), run_clo((_x_0) => {
+  return "an open Array element type";
+}), run_clo((_x_1) => {
+  return "";
+}));
+}
+
 function $reach_book$(_book_0, _roots_0, _stops_0) {
   return $kr_filter$(_book_0, run_loop($kr_visit$(_book_0, _roots_0, {$: "Nil"}, _stops_0)));
 }
@@ -2714,6 +2722,26 @@ function $j_layout_visit$(_book_0, _defs_0, _todo_0, _seen_0, _stops_0) {
   return $j_layout_visit$(_book_0, _defs_0, _rest_0, _seen_0, _stops_0);
 }), run_clo((_x_5) => {
   return $j_layout_def$(_book_0, _defs_0, run_loop($lookup$(_defs_0, _h_0)), _rest_0, {$: "Con", "head": _h_0, "tail": _seen_0}, _stops_0);
+}));
+}));
+  }
+}
+
+function $jl_visit$(_book_0, _defs_0, _todo_0, _seen_0, _stops_0) {
+  if (_todo_0.$ === "Nil") {
+    return false;
+  } else {
+    const _name_0 = _todo_0["head"];
+    const _rest_0 = _todo_0["tail"];
+    return $kc$(($String$eq$(_name_0, "$layout.open-array")), run_clo((_x_0) => {
+  return true;
+}), run_clo((_x_1) => {
+  const _x_2 = ($has_name$(_seen_0, _name_0));
+  const _x_3 = ($has_name$(_stops_0, _name_0));
+  return $kc$((_x_2 || _x_3), run_clo((_x_4) => {
+  return $jl_visit$(_book_0, _defs_0, _rest_0, _seen_0, _stops_0);
+}), run_clo((_x_5) => {
+  return $jl_def$(_book_0, _defs_0, run_loop($lookup$(_defs_0, _name_0)), _rest_0, {$: "Con", "head": _name_0, "tail": _seen_0}, _stops_0);
 }));
 }));
   }
@@ -5446,6 +5474,15 @@ function $j_layout_def$(_book_0, _defs_0, _d_0, _todo_0, _seen_0, _stops_0) {
 }))), _seen_0, _stops_0);
 }
 
+function $jl_def$(_book_0, _defs_0, _d_0, _todo_0, _seen_0, _stops_0) {
+  const _x_0 = ($dx$(_d_0));
+  return $jl_visit$(_book_0, _defs_0, run_loop($kc$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_0 === 0))), run_clo((_x_1) => {
+  return $jl_term$(_book_0, ($dv$(_d_0)), _todo_0);
+}), run_clo((_x_2) => {
+  return _todo_0;
+}))), _seen_0, _stops_0);
+}
+
 function $kr_visit_def$(_book_0, _todo_0, _seen_0, _stops_0, _d_0) {
   return $kc$(($String$eq$(($dk$(_d_0)), "Absent")), run_clo((_x_0) => {
   return $kr_visit$(_book_0, _todo_0, _seen_0, _stops_0);
@@ -5993,7 +6030,7 @@ function $jd_host_native_context$(_book_0) {
 }
 
 function $annotate$(_e_0, _ctx_0, _t_0, _ty_0) {
-  return $ka_wrap$(run_loop($ka_node$(_e_0, _ctx_0, run_loop($core_beta$(_t_0)), run_loop($wnf$(($cb$(_e_0)), _ty_0)))), _ty_0);
+  return $ka_annotated$(_e_0, _ctx_0, run_loop($core_beta$(_t_0)), run_loop($wnf$(($cb$(_e_0)), _ty_0)));
 }
 
 function $kw_initial$(_book_0) {
@@ -7213,7 +7250,7 @@ function $nf_host_context$(_book_0, _permission_0, _plan_0) {
   const _workers_0 = _plan_0["workers"];
   const _ready_0 = _plan_0["ready"];
   return $nt_choose$(_permission_0, run_clo((_x_0) => {
-  return $nf_host_attach$(_book_0, run_loop($index_build$(run_loop($nf_host_defs$(_workers_0, _ready_0)))));
+  return $nf_host_calls$(_book_0, _workers_0, _ready_0, run_loop($nc_live_names$(_book_0, {$: "Con", "head": "main", "tail": {$: "Nil"}}, {$: "Nil"})));
 }), run_clo((_x_1) => {
   return _book_0;
 }));
@@ -7285,13 +7322,10 @@ function $nc_compile_def$(_book_0, _name_0, _todo_0, _done_0, _n_0, _bangs_0) {
   const _body_0 = run_loop($nc_compact_definition$(_book_0, _d_0, _n_0));
   const _refs_0 = ($nc_refs$(_body_0));
   const _calls_0 = ($nc_mapped_refs$(_book_0, _refs_0));
-  const _forked_0 = run_loop($nc_term_fork$(_body_0));
-  const _code_0 = ($nc_mark_code$(run_loop($nd_compile_entry$(_book_0, _body_0, _name_0, ((_n_0 + 1024) >>> 0), ($nb_contains$(_bangs_0, _name_0)))), ($nb_contains$(_bangs_0, _name_0)), _forked_0, _calls_0));
-  return $nt_choose$(($String$eq$(($dk$(_d_0)), "Absent")), run_clo((_x_0) => {
-  const _x_1 = run_loop($name_key$(_name_0));
-  return {$: "NC_Book", "segments": {$: "Nil"}, "fresh": _n_0, "error": ("native definition not found: " + _x_1)};
-}), run_clo((_x_2) => {
-  return $nc_append_book$(_code_0, run_loop($nc_ref_name$(_book_0, _name_0)), _calls_0, _forked_0, run_loop($nc_compile_defs$(_book_0, ($List$append$(_refs_0, _todo_0)), {$: "Con", "head": _name_0, "tail": _done_0}, ($nc_fresh$(_code_0)), _bangs_0)));
+  return $nt_choose$(($Bool$and$(run_loop($nc_native_def$(_d_0)), ($nf_host_no_factory$(_book_0, _name_0, run_loop($nd_arity$(_book_0, _name_0)))))), run_clo((_x_0) => {
+  return $nc_compile_defs$(_book_0, ($List$append$(_refs_0, _todo_0)), {$: "Con", "head": _name_0, "tail": _done_0}, _n_0, _bangs_0);
+}), run_clo((_x_1) => {
+  return $nc_compile_kept$(_book_0, _name_0, _todo_0, _done_0, _n_0, _bangs_0, _d_0, _body_0, _refs_0, _calls_0);
 }));
 }
 
@@ -8497,6 +8531,14 @@ function $j_layout_term$(_book_0, _env_0, _t_0, _ty_0, _todo_0) {
   return $j_layout_kind$(_book_0, _env_0, _t_0, _ty_0, _todo_0, ($tg$(_t_0)));
 }
 
+function $jl_term$(_book_0, _t_0, _todo_0) {
+  return $kc$(($String$eq$(($tg$(_t_0)), "Ann")), run_clo((_x_0) => {
+  return $jl_node$(_book_0, run_loop($kid$(_t_0, 0)), run_loop($kid$(_t_0, 1)), _todo_0);
+}), run_clo((_x_1) => {
+  return $j_layout_term$(_book_0, {$: "Nil"}, _t_0, ($atom$("Absent")), _todo_0);
+}));
+}
+
 function $kr_dependencies$(_d_0, _stops_0, _todo_0) {
   return $List$append$(($kr_refs$(($dt$(_d_0)), ($kr_ctor_refs$(($dc$(_d_0)), run_loop($kc$(($has_name$(_stops_0, ($dn$(_d_0)))), run_clo((_x_0) => {
   return {$: "Nil"};
@@ -9232,52 +9274,8 @@ function $jd_host_native_proof$(_book_0, _name_0) {
 }));
 }
 
-function $ka_wrap$(_t_0, _ty_0) {
-  return $kt$("Ann", "", 0, 0, {$: "Con", "head": _t_0, "tail": {$: "Con", "head": _ty_0, "tail": {$: "Nil"}}});
-}
-
-function $ka_node$(_e_0, _ctx_0, _t_0, _ty_0) {
-  return $kc$(($core_literal$(_t_0)), run_clo((_x_0) => {
-  return $kc$(($core_literal_type$(($cb$(_e_0)), _t_0, _ty_0)), run_clo((_x_1) => {
-  return _t_0;
-}), run_clo((_x_2) => {
-  return $ka_node$(_e_0, _ctx_0, run_loop($core_literal_step$(_t_0)), _ty_0);
-}));
-}), run_clo((_x_3) => {
-  return $kc$(($String$eq$(($tg$(_t_0)), "Ann")), run_clo((_x_4) => {
-  return $ka_node$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), run_loop($wnf$(($cb$(_e_0)), run_loop($kid$(_t_0, 1)))));
-}), run_clo((_x_5) => {
-  return $kc$(($String$eq$(($tg$(_t_0)), "Lam")), run_clo((_x_6) => {
-  return $ka_lam$(_e_0, _ctx_0, _t_0, _ty_0);
-}), run_clo((_x_7) => {
-  return $kc$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_8) => {
-  return $kc$(run_loop($ka_spine_eligible$(_t_0)), run_clo((_x_9) => {
-  return $ka_app_spine$(_e_0, _ctx_0, _t_0);
-}), run_clo((_x_10) => {
-  return $ka_app$(_e_0, _ctx_0, _t_0, run_loop($wnf$(($cb$(_e_0)), run_loop($ka_type$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)))))));
-}));
-}), run_clo((_x_11) => {
-  return $kc$(($String$eq$(($tg$(_t_0)), "Ctr")), run_clo((_x_12) => {
-  return $kt$("Ctr", ($nm$(_t_0)), ($ix$(_t_0)), ($qt$(_t_0)), run_loop($ka_args_cached$(_e_0, _ctx_0, run_loop($tele_fill$(($cb$(_e_0)), ($dt$(run_loop($lookup$(($dc$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_ty_0)))))), ($nm$(_t_0)))))), ($ks$(_ty_0)))), ($ks$(_t_0)))));
-}), run_clo((_x_13) => {
-  return $kc$(($String$eq$(($tg$(_t_0)), "Mat")), run_clo((_x_14) => {
-  return $ka_mat$(_e_0, _ctx_0, _t_0, _ty_0, run_loop($wnf$(($cb$(_e_0)), run_loop($kid$(_ty_0, 0)))));
-}), run_clo((_x_15) => {
-  return $kc$(($String$eq$(($tg$(_t_0)), "Let")), run_clo((_x_16) => {
-  return $kt$("Let", ($nm$(_t_0)), ($ix$(_t_0)), ($qt$(_t_0)), run_loop($ka_let$(_e_0, _ctx_0, _ctx_0, ($ks$(_t_0)), _ty_0)));
-}), run_clo((_x_17) => {
-  return $kc$(($String$eq$(($tg$(_t_0)), "Rwt")), run_clo((_x_18) => {
-  return $ka_rwt$(_e_0, _ctx_0, _t_0, run_loop($wnf$(($cb$(_e_0)), run_loop($ka_type$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)))))));
-}), run_clo((_x_19) => {
-  return _t_0;
-}));
-}));
-}));
-}));
-}));
-}));
-}));
-}));
+function $ka_annotated$(_e_0, _ctx_0, _t_0, _ty_0) {
+  return $ka_wrap$(run_loop($ka_node$(_e_0, _ctx_0, _t_0, _ty_0)), _ty_0);
 }
 
 function $core_beta$(_t_0) {
@@ -10747,31 +10745,9 @@ function $nq_candidates_mode$(_book_0, _names_0, _bangs_0, _signatures_0, _check
   }
 }
 
-function $nf_host_attach$(_book_0, _index_0) {
-  if (_book_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _cache_0 = _book_0["head"];
-    const _rest_0 = _book_0["tail"];
-    return {$: "Con", "head": {$: "KDef", "name": ($dn$(_cache_0)), "kind": ($dk$(_cache_0)), "arity": ($da$(_cache_0)), "templates": ($dx$(_cache_0)), "typ": ($dt$(_cache_0)), "value": ($dv$(_cache_0)), "ctors": {$: "Con", "head": ($index_first$(($dc$(_cache_0)))), "tail": {$: "Con", "head": run_loop($ns_context$({$: "Con", "head": _cache_0, "tail": _rest_0})), "tail": {$: "Con", "head": {$: "KDef", "name": "$native.host.plan", "kind": "NativeHostPlan", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Con", "head": _index_0, "tail": {$: "Nil"}}, "native": false, "unsafe": false}, "tail": {$: "Nil"}}}}, "native": ($db$(_cache_0)), "unsafe": ($du$(_cache_0))}, "tail": _rest_0};
-  }
-}
-
-function $nf_host_defs$(_workers_0, _ready_0) {
-  if (_workers_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _t_0 = _workers_0["head"];
-    const _name_0 = _t_0["name"];
-    const _params_0 = _t_0["params"];
-    const _rest_0 = _workers_0["tail"];
-    const _arity_0 = ($nt_count$(_params_0));
-    return $nt_choose$(($Bool$and$(($Bool$and$((_arity_0 > 0), ($Bool$not$(($String$starts_with$(_name_0, "$product.")))))), ($nb_contains$(_ready_0, _name_0)))), run_clo((_x_0) => {
-  return {$: "Con", "head": {$: "KDef", "name": _name_0, "kind": "NativeHostWorker", "arity": _arity_0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false}, "tail": run_loop($nf_host_defs$(_rest_0, _ready_0))};
-}), run_clo((_x_1) => {
-  return $nf_host_defs$(_rest_0, _ready_0);
-}));
-  }
+function $nf_host_calls$(_book_0, _workers_0, _ready_0, _names_0) {
+  const _escapes_0 = ($nf_escape_names$(_book_0, _names_0, ($missing$())));
+  return $nf_host_attach$(_book_0, run_loop($index_build$(($nt_append$(run_loop($nf_host_defs$(_workers_0, _ready_0, _escapes_0)), run_loop($nf_call_only_defs$(_book_0, _names_0, _escapes_0)))))));
 }
 
 function $nf_finish_plan$(_book_0, _ss_0, _cs_0, _runtime_0, _requests_0, _pure_0, _show_0, _observers_0, _plan_0) {
@@ -10863,42 +10839,36 @@ function $nc_mapped_refs$(_book_0, _refs_0) {
   }
 }
 
-function $nc_term_fork$(_t_0) {
-  return $nc_terms_fork$({$: "Con", "head": _t_0, "tail": {$: "Nil"}});
+function $nf_host_no_factory$(_book_0, _name_0, _arity_0) {
+  const _d_0 = run_loop($index_find$(run_loop($nf_host_payload$(($dc$(($index_first$(_book_0)))))), _name_0, ($index_hash$(_name_0, 2166136261)), 32));
+  const _x_0 = ($String$eq$(($dk$(_d_0)), "NativeHostWorker"));
+  const _x_1 = ($String$eq$(($dk$(_d_0)), "NativeCallOnly"));
+  const _x_2 = ($da$(_d_0));
+  const _x_3 = ($dx$(_d_0));
+  return $Bool$and$(($Bool$and$(($Bool$and$((_arity_0 > 0), (_x_0 || _x_1))), (_x_2 === _arity_0))), (_x_3 === 1));
 }
 
-function $nc_mark_code$(_c_0, _bang_0, _forked_0, _calls_0) {
-  const _body_0 = _c_0["body"];
-  const _ss_0 = _c_0["segments"];
-  const _n_0 = _c_0["fresh"];
-  const _err_0 = _c_0["error"];
-  const _edges_0 = _c_0["calls"];
-  return {$: "NC_Code", "body": _body_0, "segments": ($nc_mark_segments$(_ss_0, _bang_0, _forked_0, _calls_0)), "fresh": _n_0, "error": _err_0, "calls": _edges_0};
-}
-
-function $nd_compile_entry$(_book_0, _body_0, _name_0, _n_0, _bang_0) {
-  const _d_0 = run_loop($lookup$(_book_0, _name_0));
-  return $nt_choose$(($Bool$and$(($Bool$and$(($Bool$not$(_bang_0)), ($Bool$not$(run_loop($nc_native_def$(_d_0)))))), ($Bool$not$(($nc_foreign$(_d_0)))))), run_clo((_x_0) => {
-  return $nd_user_entry$(_book_0, _body_0, _name_0, _n_0, _d_0);
-}), run_clo((_x_1) => {
-  return $nd_extend$(_book_0, _body_0, ($nc_lower$(_book_0, _body_0, {$: "Nil"}, _n_0)), _name_0);
+function $nd_arity$(_book_0, _name_0) {
+  const _fact_0 = run_loop($ns_body$(_book_0, _name_0));
+  const _x_0 = ($dx$(_fact_0));
+  const _x_1 = ($String$eq$(($dk$(_fact_0)), "NativeStaticBody"));
+  const _x_2 = ($String$eq$(($dk$(_fact_0)), "NativeErasedBody"));
+  return $nt_choose$(($Bool$and$((_x_0 === 1), (_x_1 || _x_2))), run_clo((_x_3) => {
+  return $da$(_fact_0);
+}), run_clo((_x_4) => {
+  return $nd_arity_plain$(_book_0, _name_0);
 }));
 }
 
-function $nc_append_book$(_code_0, _name_0, _calls_0, _forked_0, _rest_0) {
-  const _segs_0 = _rest_0["segments"];
-  const _fresh_0 = _rest_0["fresh"];
-  const _err_0 = _rest_0["error"];
-  return {$: "NC_Book", "segments": {$: "Con", "head": {$: "N_Segment", "name": _name_0, "params": {$: "Nil"}, "result": 1, "frame": {$: "N_Direct"}, "body": ($nc_body$(_code_0)), "refs": _calls_0, "host": false, "spin": false, "fork": _forked_0, "bang": false}, "tail": ($nt_append$(($nc_segs$(_code_0)), _segs_0))}, "fresh": _fresh_0, "error": run_loop($nt_choose$(($String$eq$(($nc_error$(_code_0)), "")), run_clo((_x_0) => {
-  return _err_0;
-}), run_clo((_x_1) => {
-  return $nc_error$(_code_0);
-})))};
-}
-
-function $nc_fresh$(_x_0) {
-  const _n_0 = _x_0["fresh"];
-  return _n_0;
+function $nc_compile_kept$(_book_0, _name_0, _todo_0, _done_0, _n_0, _bangs_0, _d_0, _body_0, _refs_0, _calls_0) {
+  const _forked_0 = run_loop($nc_term_fork$(_body_0));
+  const _code_0 = ($nc_mark_code$(run_loop($nd_compile_entry$(_book_0, _body_0, _name_0, ((_n_0 + 1024) >>> 0), ($nb_contains$(_bangs_0, _name_0)))), ($nb_contains$(_bangs_0, _name_0)), _forked_0, _calls_0));
+  return $nt_choose$(($String$eq$(($dk$(_d_0)), "Absent")), run_clo((_x_0) => {
+  const _x_1 = run_loop($name_key$(_name_0));
+  return {$: "NC_Book", "segments": {$: "Nil"}, "fresh": _n_0, "error": ("native definition not found: " + _x_1)};
+}), run_clo((_x_2) => {
+  return $nc_append_book$(_code_0, run_loop($nc_ref_name$(_book_0, _name_0)), _calls_0, _forked_0, ($Bool$and$(($nf_host_no_factory$(_book_0, _name_0, run_loop($nd_arity$(_book_0, _name_0)))), ($String$eq$(($nc_body$(_code_0)), "")))), run_loop($nc_compile_defs$(_book_0, ($List$append$(_refs_0, _todo_0)), {$: "Con", "head": _name_0, "tail": _done_0}, ($nc_fresh$(_code_0)), _bangs_0)));
+}));
 }
 
 function $ni_template$(_k_0) {
@@ -12175,6 +12145,51 @@ function $j_layout_kind$(_book_0, _env_0, _t_0, _ty_0, _todo_0, _key_0) {
 }));
 }
 
+function $jl_node$(_book_0, _t_0, _ty_0, _todo_0) {
+  const _key_0 = ($tg$(_t_0));
+  return $kc$(($String$eq$(_key_0, "Ann")), run_clo((_x_0) => {
+  return $jl_term$(_book_0, _t_0, _todo_0);
+}), run_clo((_x_1) => {
+  return $kc$(($String$eq$(_key_0, "Ref")), run_clo((_x_2) => {
+  return $j_layout_mark$(($j_layout_array_intrinsic$(_book_0, _t_0)), {$: "Con", "head": ($nm$(_t_0)), "tail": _todo_0});
+}), run_clo((_x_3) => {
+  return $kc$(($String$eq$(_key_0, "App")), run_clo((_x_4) => {
+  return $jl_app$(_book_0, _t_0, run_loop($wnf$(_book_0, run_loop($j_type$(_book_0, {$: "Nil"}, run_loop($kid$(_t_0, 0)))))), _todo_0);
+}), run_clo((_x_5) => {
+  return $kc$(($String$eq$(_key_0, "Lam")), run_clo((_x_6) => {
+  return $jl_term$(_book_0, run_loop($kid$(_t_0, 0)), _todo_0);
+}), run_clo((_x_7) => {
+  return $kc$(($String$eq$(_key_0, "Mat")), run_clo((_x_8) => {
+  return $jl_match$(_book_0, _t_0, run_loop($wnf$(_book_0, _ty_0)), _todo_0);
+}), run_clo((_x_9) => {
+  return $kc$(($String$eq$(_key_0, "Ctr")), run_clo((_x_10) => {
+  return $kc$(($Bool$not$(($String$eq$(run_loop($kc$(($j_layout_native_nat$(_book_0, _t_0, run_loop($wnf$(_book_0, _ty_0)))), run_clo((_x_11) => {
+  return "";
+}), run_clo((_x_12) => {
+  return $j_literal_typed$(_book_0, _t_0, _ty_0);
+}))), "")))), run_clo((_x_13) => {
+  return _todo_0;
+}), run_clo((_x_14) => {
+  return $j_layout_mark$(run_loop($j_layout_open$(_book_0, _ty_0)), ($jl_fields$(_book_0, ($ks$(_t_0)), _todo_0)));
+}));
+}), run_clo((_x_15) => {
+  return $kc$(($String$eq$(_key_0, "Let")), run_clo((_x_16) => {
+  return $jl_bindings$(_book_0, ($ks$(_t_0)), _todo_0);
+}), run_clo((_x_17) => {
+  return $kc$(($String$eq$(_key_0, "Rwt")), run_clo((_x_18) => {
+  return $jl_term$(_book_0, run_loop($kid$(_t_0, 2)), _todo_0);
+}), run_clo((_x_19) => {
+  return _todo_0;
+}));
+}));
+}));
+}));
+}));
+}));
+}));
+}));
+}
+
 function $kr_refs$($0, $1) {
   let $pc = 0;
   for (;;) switch ($pc) {
@@ -12802,76 +12817,52 @@ function $jd_host_nat_status$(_book_0, _todo_0, _seen_0, _fuel_0) {
   }
 }
 
-function $core_literal_type$(_book_0, _t_0, _ty_0) {
-  return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "ADT")), ($String$eq$(($nm$(_ty_0)), ($nm$(_t_0)))))), ($List$is_empty$(($rm$(_ty_0)))))), ($db$(run_loop($lookup$(_book_0, ($nm$(_t_0)))))));
+function $ka_wrap$(_t_0, _ty_0) {
+  return $kt$("Ann", "", 0, 0, {$: "Con", "head": _t_0, "tail": {$: "Con", "head": _ty_0, "tail": {$: "Nil"}}});
 }
 
-function $ka_lam$(_e_0, _ctx_0, _t_0, _ty_0) {
-  const _x_0 = ($qt$(_t_0));
-  const _x_1 = ($qt$(_ty_0));
-  return $k_lam$(($nm$(_t_0)), ($ix$(_t_0)), run_loop($kc$(($Bool$and$(($Bool$and$(($k_quantity_present$(_t_0)), (_x_0 === 2))), (_x_1 === 1))), run_clo((_x_2) => {
-  return 2;
+function $ka_node$(_e_0, _ctx_0, _t_0, _ty_0) {
+  return $kc$(($core_literal$(_t_0)), run_clo((_x_0) => {
+  return $kc$(($core_literal_type$(($cb$(_e_0)), _t_0, _ty_0)), run_clo((_x_1) => {
+  return _t_0;
+}), run_clo((_x_2) => {
+  return $ka_node$(_e_0, _ctx_0, run_loop($core_literal_step$(_t_0)), _ty_0);
+}));
 }), run_clo((_x_3) => {
-  return $qt$(_ty_0);
-}))), {$: "Con", "head": ($annotate$(_e_0, ($ctx_bind$(_ctx_0, ($ix$(_t_0)), ($qt$(_ty_0)), ($nm$(_t_0)), run_loop($kid$(_ty_0, 0)))), run_loop($kid$(_t_0, 0)), run_loop($subst$(run_loop($kid$(_ty_0, 1)), ($ix$(_ty_0)), ($var$(($nm$(_t_0)), ($ix$(_t_0)))))))), "tail": {$: "Nil"}}, 0, 0, false);
-}
-
-function $ka_spine_eligible$(_t_0) {
-  return $kc$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_0) => {
-  return $ka_spine_eligible$(run_loop($kid$(_t_0, 0)));
-}), run_clo((_x_1) => {
-  const _x_2 = ($String$eq$(($tg$(_t_0)), "Ref"));
-  const _x_3 = ($String$eq$(($tg$(_t_0)), "Var"));
-  return (_x_2 || _x_3);
+  return $kc$(($String$eq$(($tg$(_t_0)), "Ann")), run_clo((_x_4) => {
+  return $ka_node$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), run_loop($wnf$(($cb$(_e_0)), run_loop($kid$(_t_0, 1)))));
+}), run_clo((_x_5) => {
+  return $kc$(($String$eq$(($tg$(_t_0)), "Lam")), run_clo((_x_6) => {
+  return $ka_lam$(_e_0, _ctx_0, _t_0, _ty_0);
+}), run_clo((_x_7) => {
+  return $kc$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_8) => {
+  return $kc$(run_loop($ka_spine_eligible$(_t_0)), run_clo((_x_9) => {
+  return $ka_app_spine$(_e_0, _ctx_0, _t_0);
+}), run_clo((_x_10) => {
+  return $ka_app$(_e_0, _ctx_0, _t_0, run_loop($wnf$(($cb$(_e_0)), run_loop($ka_type$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)))))));
 }));
-}
-
-function $ka_app_spine$(_e_0, _ctx_0, _t_0) {
-  return $ka_app_spine_finish$(_e_0, _ctx_0, run_loop($kid$(_t_0, 1)), run_loop($ka_spine$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)))));
-}
-
-function $ka_app$(_e_0, _ctx_0, _t_0, _fty_0) {
-  return $app$(($annotate$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), _fty_0)), ($annotate$(_e_0, _ctx_0, run_loop($kid$(_t_0, 1)), run_loop($kid$(_fty_0, 0)))));
-}
-
-function $ka_type$(_e_0, _ctx_0, _t_0) {
-  return $ka_type_node$(_e_0, _ctx_0, run_loop($core_beta$(_t_0)));
-}
-
-function $ka_args_cached$(_e_0, _ctx_0, _tel_0, _xs_0) {
-  if (_xs_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _xs_0["head"];
-    const _rest_0 = _xs_0["tail"];
-    return $ka_args_cached_head$(_e_0, _ctx_0, run_loop($wnf$(($cb$(_e_0)), _tel_0)), _h_0, _rest_0);
-  }
-}
-
-function $tele_fill$(_book_0, _tel_0, _args_0) {
-  return $env_tele_fill$(_book_0, _tel_0, _args_0);
-}
-
-function $ka_mat$(_e_0, _ctx_0, _t_0, _ty_0, _a_0) {
-  return $ka_mat_ctr$(_e_0, _ctx_0, _t_0, _ty_0, _a_0, run_loop($lookup$(($dc$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_a_0)))))), ($nm$(_t_0)))));
-}
-
-function $ka_let$(_e_0, _outer_0, _ctx_0, _xs_0, _ty_0) {
-  if (_xs_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _xs_0["head"];
-    const _rest_0 = _xs_0["tail"];
-    return $kc$(($String$eq$(($tg$(_h_0)), "Bind")), run_clo((_x_0) => {
-  return $ka_let_head$(_e_0, _outer_0, _ctx_0, _h_0, _rest_0, _ty_0, run_loop($ka_type$(_e_0, _outer_0, run_loop($kid$(_h_0, 0)))));
-}), run_clo((_x_1) => {
-  return {$: "Con", "head": ($annotate$(_e_0, _ctx_0, _h_0, _ty_0)), "tail": {$: "Nil"}};
+}), run_clo((_x_11) => {
+  return $kc$(($String$eq$(($tg$(_t_0)), "Ctr")), run_clo((_x_12) => {
+  return $kt$("Ctr", ($nm$(_t_0)), ($ix$(_t_0)), ($qt$(_t_0)), run_loop($ka_args_cached$(_e_0, _ctx_0, run_loop($tele_fill$(($cb$(_e_0)), ($dt$(run_loop($lookup$(($dc$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_ty_0)))))), ($nm$(_t_0)))))), ($ks$(_ty_0)))), ($ks$(_t_0)))));
+}), run_clo((_x_13) => {
+  return $kc$(($String$eq$(($tg$(_t_0)), "Mat")), run_clo((_x_14) => {
+  return $ka_mat$(_e_0, _ctx_0, _t_0, _ty_0, run_loop($wnf$(($cb$(_e_0)), run_loop($kid$(_ty_0, 0)))));
+}), run_clo((_x_15) => {
+  return $kc$(($String$eq$(($tg$(_t_0)), "Let")), run_clo((_x_16) => {
+  return $kt$("Let", ($nm$(_t_0)), ($ix$(_t_0)), ($qt$(_t_0)), run_loop($ka_let$(_e_0, _ctx_0, _ctx_0, ($ks$(_t_0)), _ty_0)));
+}), run_clo((_x_17) => {
+  return $kc$(($String$eq$(($tg$(_t_0)), "Rwt")), run_clo((_x_18) => {
+  return $ka_rwt$(_e_0, _ctx_0, _t_0, run_loop($wnf$(($cb$(_e_0)), run_loop($ka_type$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)))))));
+}), run_clo((_x_19) => {
+  return _t_0;
 }));
-  }
-}
-
-function $ka_rwt$(_e_0, _ctx_0, _t_0, _eq_0) {
-  return $kt$("Rwt", ($nm$(_t_0)), ($ix$(_t_0)), ($qt$(_t_0)), {$: "Con", "head": ($annotate$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), _eq_0)), "tail": {$: "Con", "head": run_loop($kid$(_t_0, 1)), "tail": {$: "Con", "head": ($annotate$(_e_0, _ctx_0, run_loop($kid$(_t_0, 2)), run_loop($kapply$(run_loop($kapply$(run_loop($kid$(_t_0, 1)), run_loop($kid$(_eq_0, 0)))), ($atom$("Rfl")))))), "tail": {$: "Nil"}}}});
+}));
+}));
+}));
+}));
+}));
+}));
+}));
 }
 
 function $core_apply_span$(_f_0, _x_0, _begin_0, _end_0) {
@@ -13847,7 +13838,7 @@ function $ns_def_step$(_book_0, _cs_0, _rest_0, _name_0, _facts_0, _transformed_
   const _body_0 = _transformed_0["term"];
   const _image_0 = _transformed_0["image"];
   const _prior_0 = run_loop($ns_body$(_book_0, _name_0));
-  return $ns_defs$(_book_0, _cs_0, _rest_0, _image_0, {$: "Con", "head": {$: "KDef", "name": _name_0, "kind": "NativeStaticBody", "arity": ($da$(_prior_0)), "templates": ($dx$(_prior_0)), "typ": ($atom$("Absent")), "value": _body_0, "ctors": {$: "Nil"}, "native": false, "unsafe": false}, "tail": _facts_0});
+  return $ns_defs$(_book_0, _cs_0, _rest_0, _image_0, {$: "Con", "head": {$: "KDef", "name": _name_0, "kind": "NativeStaticBody", "arity": ($da$(_prior_0)), "templates": ($dx$(_prior_0)), "typ": ($atom$("Absent")), "value": _body_0, "ctors": {$: "Con", "head": _prior_0, "tail": {$: "Nil"}}, "native": false, "unsafe": false}, "tail": _facts_0});
 }
 
 function $ns_static_term$(_cs_0, _t_0, _image_0) {
@@ -13978,6 +13969,67 @@ function $nq_entry$(_shapes_0, _i_0, _n_0) {
   }
 }
 
+function $nf_escape_names$($0, $1, $2) {
+  for (;;) {
+    {
+      const _book_0 = $0;
+      const _names_0 = $1;
+      const _index_0 = $2;
+      if (_names_0.$ === "Nil") {
+        return _index_0;
+      } else {
+        const _name_0 = _names_0["head"];
+        const _rest_0 = _names_0["tail"];
+        $0 = _book_0;
+        $1 = _rest_0;
+        $2 = run_loop($nf_escape_terms$(_book_0, {$: "Con", "head": run_loop($nc_definition$(_book_0, run_loop($lookup$(_book_0, _name_0)), 0)), "tail": {$: "Nil"}}, _index_0));
+        continue;
+      }
+    }
+  }
+}
+
+function $nf_host_attach$(_book_0, _index_0) {
+  if (_book_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _cache_0 = _book_0["head"];
+    const _rest_0 = _book_0["tail"];
+    return {$: "Con", "head": {$: "KDef", "name": ($dn$(_cache_0)), "kind": ($dk$(_cache_0)), "arity": ($da$(_cache_0)), "templates": ($dx$(_cache_0)), "typ": ($dt$(_cache_0)), "value": ($dv$(_cache_0)), "ctors": {$: "Con", "head": ($index_first$(($dc$(_cache_0)))), "tail": {$: "Con", "head": run_loop($ns_context$({$: "Con", "head": _cache_0, "tail": _rest_0})), "tail": {$: "Con", "head": {$: "KDef", "name": "$native.host.plan", "kind": "NativeHostPlan", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Con", "head": _index_0, "tail": {$: "Nil"}}, "native": false, "unsafe": false}, "tail": {$: "Nil"}}}}, "native": ($db$(_cache_0)), "unsafe": ($du$(_cache_0))}, "tail": _rest_0};
+  }
+}
+
+function $nf_host_defs$(_workers_0, _ready_0, _escapes_0) {
+  if (_workers_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _t_0 = _workers_0["head"];
+    const _name_0 = _t_0["name"];
+    const _params_0 = _t_0["params"];
+    const _rest_0 = _workers_0["tail"];
+    const _arity_0 = ($nt_count$(_params_0));
+    return $nt_choose$(($Bool$and$(($Bool$and$((_arity_0 > 0), ($Bool$not$(($String$starts_with$(_name_0, "$product.")))))), ($nb_contains$(_ready_0, _name_0)))), run_clo((_x_0) => {
+  return {$: "Con", "head": {$: "KDef", "name": _name_0, "kind": "NativeHostWorker", "arity": _arity_0, "templates": ($nt_bool$(($String$eq$(($dk$(run_loop($index_find$(_escapes_0, _name_0, ($index_hash$(_name_0, 2166136261)), 32)))), "Absent")))), "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false}, "tail": run_loop($nf_host_defs$(_rest_0, _ready_0, _escapes_0))};
+}), run_clo((_x_1) => {
+  return $nf_host_defs$(_rest_0, _ready_0, _escapes_0);
+}));
+  }
+}
+
+function $nf_call_only_defs$(_book_0, _names_0, _escapes_0) {
+  if (_names_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _name_0 = _names_0["head"];
+    const _rest_0 = _names_0["tail"];
+    return $nt_choose$(($String$eq$(($dk$(run_loop($index_find$(_escapes_0, _name_0, ($index_hash$(_name_0, 2166136261)), 32)))), "Absent")), run_clo((_x_0) => {
+  return {$: "Con", "head": {$: "KDef", "name": _name_0, "kind": "NativeCallOnly", "arity": run_loop($nd_arity$(_book_0, _name_0)), "templates": 1, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false}, "tail": run_loop($nf_call_only_defs$(_book_0, _rest_0, _escapes_0))};
+}), run_clo((_x_1) => {
+  return $nf_call_only_defs$(_book_0, _rest_0, _escapes_0);
+}));
+  }
+}
+
 function $nf_finish_ready$(_book_0, _ss_0, _cs_0, _runtime_0, _requests_0, _pure_0, _show_0, _workers_0, _ready_0, _image_0, _observer_names_0, _observers_0) {
   const _ordinary_0 = ($nf_wrap_segments$(_ss_0, ($book_cached$(run_loop($nf_adapter_defs$(_workers_0, _ready_0)), 0))));
   const _route_0 = run_loop($no_route$(_book_0, _ordinary_0, _observer_names_0, _workers_0, _ready_0, _observers_0));
@@ -14038,43 +14090,68 @@ function $nh_add$(_key_0, _hot_0) {
 }));
 }
 
-function $nc_terms_fork$(_ts_0) {
-  if (_ts_0.$ === "Nil") {
-    return false;
-  } else {
-    const _h_0 = _ts_0["head"];
-    const _rest_0 = _ts_0["tail"];
-    const _x_0 = ($terms_len$(($ks$(_h_0))));
-    const _x_1 = ($Bool$and$(($String$eq$(($tg$(_h_0)), "Let")), (_x_0 > 2)));
-    const _x_2 = ($Bool$and$(($String$eq$(($tg$(_h_0)), "App")), ($String$eq$(($tg$(run_loop($nc_call_head$(_h_0)))), "Var"))));
-    return $nt_choose$((_x_1 || _x_2), run_clo((_x_3) => {
-  return true;
-}), run_clo((_x_4) => {
-  return $nc_terms_fork$(($nt_append$(($ks$(_h_0)), _rest_0)));
+function $nf_host_payload$(_children_0) {
+  if (_children_0.$ === "Con") {
+    const _t_0 = _children_0["tail"];
+    if (_t_0.$ === "Con") {
+      const _t_1 = _t_0["tail"];
+      if (_t_1.$ === "Con") {
+        const _plan_0 = _t_1["head"];
+        return $nt_choose$(($Bool$and$(($String$eq$(($dk$(_plan_0)), "NativeHostPlan")), ($String$eq$(($dn$(_plan_0)), "$native.host.plan")))), run_clo((_x_0) => {
+  return $index_first$(($dc$(_plan_0)));
+}), run_clo((_x_1) => {
+  return $missing$();
 }));
+      } else {
+        return $missing$();
+      }
+    } else {
+      return $missing$();
+    }
+  } else {
+    return $missing$();
   }
 }
 
-function $nc_mark_segments$(_ss_0, _bang_0, _forked_0, _calls_0) {
-  return $nc_mark_segments_go$(_ss_0, _bang_0, _forked_0, _calls_0, {$: "Nil"});
+function $nc_term_fork$(_t_0) {
+  return $nc_terms_fork$({$: "Con", "head": _t_0, "tail": {$: "Nil"}});
 }
 
-function $nd_user_entry$(_book_0, _body_0, _name_0, _n_0, _d_0) {
-  const _typed_0 = run_loop($jd_live_arity$(_book_0, ($dt$(_d_0)), run_loop($jd_arity$(_book_0, _d_0))));
-  const _arity_0 = ($U32$max$(run_loop($nd_leading$(($dv$(_d_0)), 0)), _typed_0));
-  return $nt_choose$(($Bool$and$((_typed_0 > 0), (_arity_0 === _typed_0))), run_clo((_x_0) => {
-  return $nd_eta_entry$(_book_0, _body_0, _name_0, _n_0, _arity_0);
+function $nc_mark_code$(_c_0, _bang_0, _forked_0, _calls_0) {
+  const _body_0 = _c_0["body"];
+  const _ss_0 = _c_0["segments"];
+  const _n_0 = _c_0["fresh"];
+  const _err_0 = _c_0["error"];
+  const _edges_0 = _c_0["calls"];
+  return {$: "NC_Code", "body": _body_0, "segments": ($nc_mark_segments$(_ss_0, _bang_0, _forked_0, _calls_0)), "fresh": _n_0, "error": _err_0, "calls": _edges_0};
+}
+
+function $nd_compile_entry$(_book_0, _body_0, _name_0, _n_0, _bang_0) {
+  const _d_0 = run_loop($lookup$(_book_0, _name_0));
+  return $nt_choose$(($Bool$and$(($Bool$and$(($Bool$not$(_bang_0)), ($Bool$not$(run_loop($nc_native_def$(_d_0)))))), ($Bool$not$(($nc_foreign$(_d_0)))))), run_clo((_x_0) => {
+  return $nd_user_entry$(_book_0, _body_0, _name_0, _n_0, _d_0);
 }), run_clo((_x_1) => {
-  return $nd_extend_arity$(_book_0, _body_0, ($nc_lower$(_book_0, _body_0, {$: "Nil"}, _n_0)), _name_0, _arity_0);
+  return $nt_choose$(($nf_host_no_factory$(_book_0, _name_0, run_loop($nd_arity$(_book_0, _name_0)))), run_clo((_x_2) => {
+  return $nd_extend$(_book_0, _body_0, {$: "NC_Code", "body": "", "segments": {$: "Nil"}, "fresh": _n_0, "error": "", "calls": {$: "Nil"}}, _name_0);
+}), run_clo((_x_3) => {
+  return $nd_extend$(_book_0, _body_0, ($nc_lower$(_book_0, _body_0, {$: "Nil"}, _n_0)), _name_0);
+}));
 }));
 }
 
-function $nd_extend$(_book_0, _body_0, _base_0, _name_0) {
-  return $nd_extend_arity$(_book_0, _body_0, _base_0, _name_0, run_loop($nd_arity$(_book_0, _name_0)));
-}
-
-function $nc_lower$(_book_0, _t_0, _env_0, _n_0) {
-  return $nc_lower_to$(_book_0, _t_0, _env_0, _n_0, {$: "NC_Scheduler"});
+function $nc_append_book$(_code_0, _name_0, _calls_0, _forked_0, _omit_0, _rest_0) {
+  const _segs_0 = _rest_0["segments"];
+  const _fresh_0 = _rest_0["fresh"];
+  const _err_0 = _rest_0["error"];
+  return {$: "NC_Book", "segments": run_loop($nt_choose$(_omit_0, run_clo((_x_0) => {
+  return $nt_append$(($nc_segs$(_code_0)), _segs_0);
+}), run_clo((_x_1) => {
+  return {$: "Con", "head": {$: "N_Segment", "name": _name_0, "params": {$: "Nil"}, "result": 1, "frame": {$: "N_Direct"}, "body": ($nc_body$(_code_0)), "refs": _calls_0, "host": false, "spin": false, "fork": _forked_0, "bang": false}, "tail": ($nt_append$(($nc_segs$(_code_0)), _segs_0))};
+}))), "fresh": _fresh_0, "error": run_loop($nt_choose$(($String$eq$(($nc_error$(_code_0)), "")), run_clo((_x_2) => {
+  return _err_0;
+}), run_clo((_x_3) => {
+  return $nc_error$(_code_0);
+})))};
 }
 
 function $nc_body$(_x_0) {
@@ -14082,14 +14159,9 @@ function $nc_body$(_x_0) {
   return _body_0;
 }
 
-function $nc_segs$(_x_0) {
-  const _segs_0 = _x_0["segments"];
-  return _segs_0;
-}
-
-function $nc_error$(_x_0) {
-  const _err_0 = _x_0["error"];
-  return _err_0;
+function $nc_fresh$(_x_0) {
+  const _n_0 = _x_0["fresh"];
+  return _n_0;
 }
 
 function $Char$is_lower$(_c_0) {
@@ -15052,6 +15124,68 @@ function $j_layout_fields$($0, $1, $2, $3, $4) {
 
 function $j_layout_let$(_book_0, _env_0, _xs_0, _ty_0, _todo_0) {
   return $j_layout_bindings$(_book_0, _env_0, _xs_0, run_loop($j_layout_term$(_book_0, ($j_context$(_book_0, _env_0, _xs_0)), ($j_body$(_xs_0)), _ty_0, _todo_0)));
+}
+
+function $jl_app$(_book_0, _t_0, _fty_0, _todo_0) {
+  const _x_0 = ($qt$(_fty_0));
+  return $j_layout_mark$(run_loop($j_layout_intrinsic$(_book_0, run_loop($j_strip$(run_loop($kid$(_t_0, 0)))), run_loop($kid$(_t_0, 1)))), run_loop($jl_function$(_book_0, run_loop($kid$(_t_0, 0)), run_loop($kc$(($Bool$and$(($String$eq$(($tg$(_fty_0)), "All")), (_x_0 === 0))), run_clo((_x_1) => {
+  return _todo_0;
+}), run_clo((_x_2) => {
+  return $jl_term$(_book_0, run_loop($kid$(_t_0, 1)), _todo_0);
+}))))));
+}
+
+function $jl_match$(_book_0, _t_0, _ty_0, _todo_0) {
+  const _x_0 = ($j_constructor_count$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_ty_0, 0))))));
+  return $j_layout_mark$(run_loop($j_layout_open$(_book_0, run_loop($kid$(_ty_0, 0)))), run_loop($jl_term$(_book_0, run_loop($kid$(_t_0, 0)), run_loop($kc$((_x_0 === 1), run_clo((_x_1) => {
+  return _todo_0;
+}), run_clo((_x_2) => {
+  return $jl_term$(_book_0, run_loop($kid$(_t_0, 1)), _todo_0);
+}))))));
+}
+
+function $jl_fields$($0, $1, $2) {
+  for (;;) {
+    {
+      const _book_0 = $0;
+      const _args_0 = $1;
+      const _todo_0 = $2;
+      if (_args_0.$ === "Nil") {
+        return _todo_0;
+      } else {
+        const _h_0 = _args_0["head"];
+        const _rest_0 = _args_0["tail"];
+        const _x_0 = ($qt$(_h_0));
+        $0 = _book_0;
+        $1 = _rest_0;
+        $2 = run_loop($kc$((_x_0 === 0), run_clo((_x_1) => {
+  return _todo_0;
+}), run_clo((_x_2) => {
+  return $jl_term$(_book_0, _h_0, _todo_0);
+})));
+        continue;
+      }
+    }
+  }
+}
+
+function $jl_bindings$(_book_0, _xs_0, _todo_0) {
+  if (_xs_0.$ === "Nil") {
+    return _todo_0;
+  } else {
+    const _h_0 = _xs_0["head"];
+    const _t_0 = _xs_0["tail"];
+    if (_t_0.$ === "Nil") {
+      return $jl_term$(_book_0, _h_0, _todo_0);
+    } else {
+      const _x_0 = ($qt$(_h_0));
+      return $kc$((_x_0 === 0), run_clo((_x_1) => {
+  return $jl_bindings$(_book_0, _t_0, _todo_0);
+}), run_clo((_x_2) => {
+  return $jl_term$(_book_0, run_loop($kid$(_h_0, 0)), run_loop($jl_bindings$(_book_0, _t_0, _todo_0)));
+}));
+    }
+  }
 }
 
 function $kr_refs_list$($0, $1) {
@@ -16065,100 +16199,76 @@ function $jd_host_nat_status_on$(_book_0, _t_0, _rest_0, _seen_0, _fuel_0) {
 }));
 }
 
-function $ctx_bind$(_ctx_0, _id_0, _q_0, _name_0, _ty_0) {
-  return {$: "Con", "head": ($kt$("Bind", _name_0, _id_0, _q_0, {$: "Con", "head": _ty_0, "tail": {$: "Nil"}})), "tail": _ctx_0};
+function $core_literal_type$(_book_0, _t_0, _ty_0) {
+  return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "ADT")), ($String$eq$(($nm$(_ty_0)), ($nm$(_t_0)))))), ($List$is_empty$(($rm$(_ty_0)))))), ($db$(run_loop($lookup$(_book_0, ($nm$(_t_0)))))));
 }
 
-function $ka_app_spine_finish$(_e_0, _ctx_0, _arg_0, _r_0) {
-  const _node_0 = _r_0["node"];
-  const _ty_0 = _r_0["typ"];
-  return $ka_app_spine_root$(_e_0, _ctx_0, _arg_0, _node_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)));
+function $ka_lam$(_e_0, _ctx_0, _t_0, _ty_0) {
+  const _x_0 = ($qt$(_t_0));
+  const _x_1 = ($qt$(_ty_0));
+  return $k_lam$(($nm$(_t_0)), ($ix$(_t_0)), run_loop($kc$(($Bool$and$(($Bool$and$(($k_quantity_present$(_t_0)), (_x_0 === 2))), (_x_1 === 1))), run_clo((_x_2) => {
+  return 2;
+}), run_clo((_x_3) => {
+  return $qt$(_ty_0);
+}))), {$: "Con", "head": ($annotate$(_e_0, ($ctx_bind$(_ctx_0, ($ix$(_t_0)), ($qt$(_ty_0)), ($nm$(_t_0)), run_loop($kid$(_ty_0, 0)))), run_loop($kid$(_t_0, 0)), run_loop($subst$(run_loop($kid$(_ty_0, 1)), ($ix$(_ty_0)), ($var$(($nm$(_t_0)), ($ix$(_t_0)))))))), "tail": {$: "Nil"}}, 0, 0, false);
 }
 
-function $ka_spine$(_e_0, _ctx_0, _t_0) {
+function $ka_spine_eligible$(_t_0) {
   return $kc$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_0) => {
-  return $ka_spine_finish$(_e_0, _ctx_0, run_loop($kid$(_t_0, 1)), run_loop($ka_spine$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)))));
+  return $ka_spine_eligible$(run_loop($kid$(_t_0, 0)));
 }), run_clo((_x_1) => {
-  return {$: "KAnnotatedSpine", "node": _t_0, "typ": run_loop($ka_type$(_e_0, _ctx_0, _t_0))};
+  const _x_2 = ($String$eq$(($tg$(_t_0)), "Ref"));
+  const _x_3 = ($String$eq$(($tg$(_t_0)), "Var"));
+  return (_x_2 || _x_3);
 }));
 }
 
-function $ka_type_node$(_e_0, _ctx_0, _t_0) {
-  return $kc$(($String$eq$(($tg$(_t_0)), "Var")), run_clo((_x_0) => {
-  return $kid$(run_loop($ctx_get$(_ctx_0, ($ix$(_t_0)))), 0);
+function $ka_app_spine$(_e_0, _ctx_0, _t_0) {
+  return $ka_app_spine_finish$(_e_0, _ctx_0, run_loop($kid$(_t_0, 1)), run_loop($ka_spine$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)))));
+}
+
+function $ka_app$(_e_0, _ctx_0, _t_0, _fty_0) {
+  return $app$(($annotate$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), _fty_0)), ($annotate$(_e_0, _ctx_0, run_loop($kid$(_t_0, 1)), run_loop($kid$(_fty_0, 0)))));
+}
+
+function $ka_type$(_e_0, _ctx_0, _t_0) {
+  return $ka_type_node$(_e_0, _ctx_0, run_loop($core_beta$(_t_0)));
+}
+
+function $ka_args_cached$(_e_0, _ctx_0, _tel_0, _xs_0) {
+  if (_xs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _xs_0["head"];
+    const _rest_0 = _xs_0["tail"];
+    return $ka_args_cached_head$(_e_0, _ctx_0, run_loop($wnf$(($cb$(_e_0)), _tel_0)), _h_0, _rest_0);
+  }
+}
+
+function $tele_fill$(_book_0, _tel_0, _args_0) {
+  return $env_tele_fill$(_book_0, _tel_0, _args_0);
+}
+
+function $ka_mat$(_e_0, _ctx_0, _t_0, _ty_0, _a_0) {
+  return $ka_mat_ctr$(_e_0, _ctx_0, _t_0, _ty_0, _a_0, run_loop($lookup$(($dc$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_a_0)))))), ($nm$(_t_0)))));
+}
+
+function $ka_let$(_e_0, _outer_0, _ctx_0, _xs_0, _ty_0) {
+  if (_xs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _xs_0["head"];
+    const _rest_0 = _xs_0["tail"];
+    return $kc$(($String$eq$(($tg$(_h_0)), "Bind")), run_clo((_x_0) => {
+  return $ka_let_head$(_e_0, _outer_0, _ctx_0, _h_0, _rest_0, _ty_0, run_loop($ka_type$(_e_0, _outer_0, run_loop($kid$(_h_0, 0)))));
 }), run_clo((_x_1) => {
-  return $kc$(($String$eq$(($tg$(_t_0)), "Ref")), run_clo((_x_2) => {
-  return $dt$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_t_0)))));
-}), run_clo((_x_3) => {
-  return $kc$(($String$eq$(($tg$(_t_0)), "Ann")), run_clo((_x_4) => {
-  return $kid$(_t_0, 1);
-}), run_clo((_x_5) => {
-  return $kc$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_6) => {
-  return $ka_type_app$(_e_0, _t_0, run_loop($wnf$(($cb$(_e_0)), run_loop($ka_type$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)))))));
-}), run_clo((_x_7) => {
-  return $kc$(($String$eq$(($tg$(_t_0)), "ADT")), run_clo((_x_8) => {
-  return $tele_fill$(($cb$(_e_0)), ($dt$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_t_0)))))), ($ks$(_t_0)));
-}), run_clo((_x_9) => {
-  return $kc$(($String$eq$(($tg$(_t_0)), "Eql")), run_clo((_x_10) => {
-  return $typ$(2);
-}), run_clo((_x_11) => {
-  const _x_12 = ($String$eq$(($tg$(_t_0)), "Qua"));
-  const _x_13 = ($String$eq$(($tg$(_t_0)), "Min"));
-  return $kc$((_x_12 || _x_13), run_clo((_x_14) => {
-  return $atom$("Qnt");
-}), run_clo((_x_15) => {
-  const _x_16 = ($String$eq$(($tg$(_t_0)), "Typ"));
-  const _x_17 = ($String$eq$(($tg$(_t_0)), "Qnt"));
-  const _x_18 = (_x_16 || _x_17);
-  const _x_19 = ($String$eq$(($tg$(_t_0)), "All"));
-  return $kc$((_x_18 || _x_19), run_clo((_x_20) => {
-  return $typ$(1);
-}), run_clo((_x_21) => {
-  return $atom$("Error");
+  return {$: "Con", "head": ($annotate$(_e_0, _ctx_0, _h_0, _ty_0)), "tail": {$: "Nil"}};
 }));
-}));
-}));
-}));
-}));
-}));
-}));
-}));
+  }
 }
 
-function $ka_args_cached_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0) {
-  return $kc$(($String$eq$(($tg$(_tel_0)), "All")), run_clo((_x_0) => {
-  return $ka_args_after_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, ($annotate$(_e_0, _ctx_0, _h_0, run_loop($kid$(_tel_0, 0)))));
-}), run_clo((_x_1) => {
-  return $ka_args_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0);
-}));
-}
-
-function $env_tele_fill$(_book_0, _tel_0, _args_0) {
-  return $kc$(($env_tele_many$(_args_0)), run_clo((_x_0) => {
-  return $kc$(run_loop($env_tele_safe$(_tel_0)), run_clo((_x_1) => {
-  return $env_tele_fill_loop$(_book_0, _tel_0, _args_0, {$: "Nil"}, 0);
-}), run_clo((_x_2) => {
-  return $env_tele_fill_eager$(_book_0, _tel_0, _args_0);
-}));
-}), run_clo((_x_3) => {
-  return $env_tele_fill_eager$(_book_0, _tel_0, _args_0);
-}));
-}
-
-function $ka_mat_ctr$(_e_0, _ctx_0, _t_0, _ty_0, _a_0, _c_0) {
-  return $kt$("Mat", ($nm$(_t_0)), ($ix$(_t_0)), ($qt$(_t_0)), {$: "Con", "head": ($annotate$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), run_loop($mat_goal$(($cb$(_e_0)), _ty_0, run_loop($tele_fill$(($cb$(_e_0)), ($dt$(_c_0)), ($ks$(_a_0)))), ($da$(_c_0)), ($nm$(_t_0)), {$: "Nil"})))), "tail": {$: "Con", "head": ($annotate$(_e_0, _ctx_0, run_loop($mat_rest$(($cb$(_e_0)), _t_0, _a_0)), ($all$(($qt$(_ty_0)), ($nm$(_ty_0)), ($ix$(_ty_0)), {$: "KTerm", "tag": ($tg$(_a_0)), "name": ($nm$(_a_0)), "id": ($ix$(_a_0)), "quant": ($qt$(_a_0)), "kids": ($ks$(_a_0)), "removed": {$: "Con", "head": ($nm$(_t_0)), "tail": ($rm$(_a_0))}, "originBegin": ($kb$(_a_0)), "originEnd": ($ke$(_a_0))}, run_loop($kid$(_ty_0, 1)))))), "tail": {$: "Nil"}}});
-}
-
-function $ka_let_head$(_e_0, _outer_0, _ctx_0, _h_0, _rest_0, _ty_0, _vty_0) {
-  return {$: "Con", "head": ($kt$("Bind", ($nm$(_h_0)), ($ix$(_h_0)), ($qt$(_h_0)), {$: "Con", "head": ($annotate$(_e_0, _outer_0, run_loop($kid$(_h_0, 0)), _vty_0)), "tail": {$: "Nil"}})), "tail": run_loop($ka_let$(_e_0, _outer_0, ($ctx_bind$(_ctx_0, ($ix$(_h_0)), ($qt$(_h_0)), ($nm$(_h_0)), _vty_0)), ($subst_terms$(_rest_0, ($ix$(_h_0)), ($kt$("Var", ($nm$(_h_0)), ($ix$(_h_0)), 0, {$: "Con", "head": run_loop($kid$(_h_0, 0)), "tail": {$: "Nil"}})))), _ty_0))};
-}
-
-function $kapply$(_fn_0, _x_0) {
-  return $kc$(($String$eq$(($tg$(run_loop($strip$(_fn_0)))), "Lam")), run_clo((_x_1) => {
-  return $subst$(run_loop($kid$(run_loop($strip$(_fn_0)), 0)), ($ix$(run_loop($strip$(_fn_0)))), _x_0);
-}), run_clo((_x_2) => {
-  return $app$(_fn_0, _x_0);
-}));
+function $ka_rwt$(_e_0, _ctx_0, _t_0, _eq_0) {
+  return $kt$("Rwt", ($nm$(_t_0)), ($ix$(_t_0)), ($qt$(_t_0)), {$: "Con", "head": ($annotate$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), _eq_0)), "tail": {$: "Con", "head": run_loop($kid$(_t_0, 1)), "tail": {$: "Con", "head": ($annotate$(_e_0, _ctx_0, run_loop($kid$(_t_0, 2)), run_loop($kapply$(run_loop($kapply$(run_loop($kid$(_t_0, 1)), run_loop($kid$(_eq_0, 0)))), ($atom$("Rfl")))))), "tail": {$: "Nil"}}}});
 }
 
 function $j_finite_match$(_t_0) {
@@ -17173,18 +17283,6 @@ function $nd_entry_params$(_left_0, _n_0) {
 }));
 }
 
-function $nd_arity$(_book_0, _name_0) {
-  const _fact_0 = run_loop($ns_body$(_book_0, _name_0));
-  const _x_0 = ($dx$(_fact_0));
-  const _x_1 = ($String$eq$(($dk$(_fact_0)), "NativeStaticBody"));
-  const _x_2 = ($String$eq$(($dk$(_fact_0)), "NativeErasedBody"));
-  return $nt_choose$(($Bool$and$((_x_0 === 1), (_x_1 || _x_2))), run_clo((_x_3) => {
-  return $da$(_fact_0);
-}), run_clo((_x_4) => {
-  return $nd_arity_plain$(_book_0, _name_0);
-}));
-}
-
 function $nf_worker_kinds$(_book_0, _name_0, _arity_0) {
   const _d_0 = run_loop($lookup$(_book_0, _name_0));
   const _x_0 = run_loop($jd_live_arity$(_book_0, ($dt$(_d_0)), run_loop($jd_arity$(_book_0, _d_0))));
@@ -17355,6 +17453,24 @@ function $nq_entry_cons$(_params_0, _arg_0, _tail_0) {
   const _args_0 = _tail_0["args"];
   const _fresh_0 = _tail_0["fresh"];
   return {$: "NQ_Entry", "params": ($List$append$(_params_0, _more_0)), "args": {$: "Con", "head": _arg_0, "tail": _args_0}, "fresh": _fresh_0};
+}
+
+function $nf_escape_terms$(_book_0, _ts_0, _index_0) {
+  if (_ts_0.$ === "Nil") {
+    return _index_0;
+  } else {
+    const _t_0 = _ts_0["head"];
+    const _rest_0 = _ts_0["tail"];
+    return $nt_choose$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_0) => {
+  return $nf_escape_app$(_book_0, run_loop($nd_head$(_t_0)), run_loop($nd_args$(_t_0, {$: "Nil"})), _rest_0, _index_0);
+}), run_clo((_x_1) => {
+  return $nt_choose$(($String$eq$(($tg$(_t_0)), "Ref")), run_clo((_x_2) => {
+  return $nf_escape_terms$(_book_0, _rest_0, run_loop($nf_escape_add$(($nm$(_t_0)), _index_0)));
+}), run_clo((_x_3) => {
+  return $nf_escape_terms$(_book_0, ($nt_append$(($ks$(_t_0)), _rest_0)), _index_0);
+}));
+}));
+  }
 }
 
 function $nf_wrap_segments$(_segments_0, _index_0) {
@@ -17614,75 +17730,53 @@ function $nh_head$(_book_0, _t_0, _hot_0, _fuel_0) {
 }));
 }
 
-function $nc_call_head$(_t_0) {
-  return $nt_choose$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_0) => {
-  return $nc_call_head$(run_loop($kid$(_t_0, 0)));
-}), run_clo((_x_1) => {
-  return _t_0;
+function $nc_terms_fork$(_ts_0) {
+  if (_ts_0.$ === "Nil") {
+    return false;
+  } else {
+    const _h_0 = _ts_0["head"];
+    const _rest_0 = _ts_0["tail"];
+    const _x_0 = ($terms_len$(($ks$(_h_0))));
+    const _x_1 = ($Bool$and$(($String$eq$(($tg$(_h_0)), "Let")), (_x_0 > 2)));
+    const _x_2 = ($Bool$and$(($String$eq$(($tg$(_h_0)), "App")), ($String$eq$(($tg$(run_loop($nc_call_head$(_h_0)))), "Var"))));
+    return $nt_choose$((_x_1 || _x_2), run_clo((_x_3) => {
+  return true;
+}), run_clo((_x_4) => {
+  return $nc_terms_fork$(($nt_append$(($ks$(_h_0)), _rest_0)));
 }));
-}
-
-function $nc_mark_segments_go$($0, $1, $2, $3, $4) {
-  for (;;) {
-    {
-      const _ss_0 = $0;
-      const _bang_0 = $1;
-      const _forked_0 = $2;
-      const _calls_0 = $3;
-      const _acc_0 = $4;
-      if (_ss_0.$ === "Nil") {
-        return $nt_reverse$(_acc_0, {$: "Nil"});
-      } else {
-        const _t_0 = _ss_0["head"];
-        const _k_0 = _t_0["name"];
-        const _ps_0 = _t_0["params"];
-        const _r_0 = _t_0["result"];
-        const _f_0 = _t_0["frame"];
-        const _b_0 = _t_0["body"];
-        const _refs_0 = _t_0["refs"];
-        const _host_0 = _t_0["host"];
-        const _spin_0 = _t_0["spin"];
-        const _fork_0 = _t_0["fork"];
-        const _rest_0 = _ss_0["tail"];
-        $0 = _rest_0;
-        $1 = _bang_0;
-        $2 = _forked_0;
-        $3 = _calls_0;
-        $4 = {$: "Con", "head": {$: "N_Segment", "name": _k_0, "params": _ps_0, "result": _r_0, "frame": _f_0, "body": _b_0, "refs": run_loop($nt_choose$(($nb_contains$(_refs_0, "$local")), run_clo((_x_0) => {
-  return _refs_0;
-}), run_clo((_x_1) => {
-  return _calls_0;
-}))), "host": _host_0, "spin": _spin_0, "fork": run_loop($nt_choose$(($nb_contains$(_refs_0, "$local")), run_clo((_x_2) => {
-  return _fork_0;
-}), run_clo((_x_3) => {
-  return _forked_0;
-}))), "bang": _bang_0}, "tail": _acc_0};
-        continue;
-      }
-    }
   }
 }
 
-function $nd_eta_entry$(_book_0, _body_0, _name_0, _n_0, _arity_0) {
-  const _params_0 = run_loop($nd_entry_params$(_arity_0, _n_0));
-  const _call_0 = ($kt$("NCall", ($nd_name$(run_loop($nc_ref_name$(_book_0, _name_0)))), 0, 0, ($nd_entry_args$(_params_0))));
-  const _base_0 = ($nc_lower$(_book_0, ($nd_eta_body$(_params_0, _call_0)), {$: "Nil"}, ((_n_0 + _arity_0) >>> 0)));
-  return $nd_extend_arity$(_book_0, _body_0, _base_0, _name_0, _arity_0);
+function $nc_mark_segments$(_ss_0, _bang_0, _forked_0, _calls_0) {
+  return $nc_mark_segments_go$(_ss_0, _bang_0, _forked_0, _calls_0, {$: "Nil"});
 }
 
-function $nd_extend_arity$(_book_0, _body_0, _base_0, _name_0, _arity_0) {
-  const _params_0 = ($nk_typed_bindings$(run_loop($nd_entry_params$(_arity_0, ($nc_fresh$(_base_0)))), run_loop($nf_worker_kinds$(_book_0, _name_0, _arity_0))));
-  return $nt_choose$((_arity_0 === 0), run_clo((_x_0) => {
-  return _base_0;
+function $nd_user_entry$(_book_0, _body_0, _name_0, _n_0, _d_0) {
+  const _typed_0 = run_loop($jd_live_arity$(_book_0, ($dt$(_d_0)), run_loop($jd_arity$(_book_0, _d_0))));
+  const _arity_0 = ($U32$max$(run_loop($nd_leading$(($dv$(_d_0)), 0)), _typed_0));
+  return $nt_choose$(($Bool$and$((_typed_0 > 0), (_arity_0 === _typed_0))), run_clo((_x_0) => {
+  return $nd_eta_entry$(_book_0, _body_0, _name_0, _n_0, _arity_0);
 }), run_clo((_x_1) => {
-  return $nd_join$(_base_0, run_loop($nt_choose$(($nf_host_selected$(_book_0, _name_0, _arity_0)), run_clo((_x_2) => {
-  const _x_3 = ($nc_fresh$(_base_0));
-  return {$: "NC_Code", "body": "", "segments": {$: "Nil"}, "fresh": ((_x_3 + _arity_0) >>> 0), "error": "", "calls": {$: "Nil"}};
-}), run_clo((_x_4) => {
-  const _x_5 = ($nc_fresh$(_base_0));
-  return $nc_lower$(_book_0, ($nd_reapply$(_body_0, ($nd_entry_args$(_params_0)))), _params_0, ((_x_5 + _arity_0) >>> 0));
-}))), run_loop($nc_ref_name$(_book_0, _name_0)), _params_0, ($nf_host_selected$(_book_0, _name_0, _arity_0)));
+  return $nd_extend_arity$(_book_0, _body_0, ($nc_lower$(_book_0, _body_0, {$: "Nil"}, _n_0)), _name_0, _arity_0);
 }));
+}
+
+function $nd_extend$(_book_0, _body_0, _base_0, _name_0) {
+  return $nd_extend_arity$(_book_0, _body_0, _base_0, _name_0, run_loop($nd_arity$(_book_0, _name_0)));
+}
+
+function $nc_lower$(_book_0, _t_0, _env_0, _n_0) {
+  return $nc_lower_to$(_book_0, _t_0, _env_0, _n_0, {$: "NC_Scheduler"});
+}
+
+function $nc_segs$(_x_0) {
+  const _segs_0 = _x_0["segments"];
+  return _segs_0;
+}
+
+function $nc_error$(_x_0) {
+  const _err_0 = _x_0["error"];
+  return _err_0;
 }
 
 function $nt_join_go$($0, $1, $2, $3) {
@@ -18492,6 +18586,14 @@ function $j_layout_bindings$($0, $1, $2, $3) {
       }
     }
   }
+}
+
+function $jl_function$(_book_0, _t_0, _todo_0) {
+  return $kc$(($String$eq$(($tg$(run_loop($j_strip$(_t_0)))), "Ref")), run_clo((_x_0) => {
+  return {$: "Con", "head": ($nm$(run_loop($j_strip$(_t_0)))), "tail": _todo_0};
+}), run_clo((_x_1) => {
+  return $jl_term$(_book_0, _t_0, _todo_0);
+}));
 }
 
 function $j_nat_loop_shape$(_book_0, _d_0) {
@@ -19447,136 +19549,100 @@ function $jd_host_ctor_types$(_book_0, _ctors_0, _args_0) {
   }
 }
 
-function $ka_app_spine_root$(_e_0, _ctx_0, _arg_0, _node_0, _fty_0) {
-  return $app$(($ka_wrap$(_node_0, _fty_0)), ($annotate$(_e_0, _ctx_0, _arg_0, run_loop($kid$(_fty_0, 0)))));
+function $ctx_bind$(_ctx_0, _id_0, _q_0, _name_0, _ty_0) {
+  return {$: "Con", "head": ($kt$("Bind", _name_0, _id_0, _q_0, {$: "Con", "head": _ty_0, "tail": {$: "Nil"}})), "tail": _ctx_0};
 }
 
-function $ka_spine_finish$(_e_0, _ctx_0, _arg_0, _r_0) {
+function $ka_app_spine_finish$(_e_0, _ctx_0, _arg_0, _r_0) {
   const _node_0 = _r_0["node"];
   const _ty_0 = _r_0["typ"];
-  return $ka_spine_step$(_e_0, _ctx_0, _arg_0, _node_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)));
+  return $ka_app_spine_root$(_e_0, _ctx_0, _arg_0, _node_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)));
 }
 
-function $ctx_get$(_ctx_0, _id_0) {
-  if (_ctx_0.$ === "Nil") {
-    return $atom$("Absent");
-  } else {
-    const _h_0 = _ctx_0["head"];
-    const _t_0 = _ctx_0["tail"];
-    const _x_0 = ($ix$(_h_0));
-    return $kc$((_x_0 === _id_0), run_clo((_x_1) => {
-  return _h_0;
-}), run_clo((_x_2) => {
-  return $ctx_get$(_t_0, _id_0);
-}));
-  }
-}
-
-function $ka_type_app$(_e_0, _t_0, _fty_0) {
-  return $subst$(run_loop($kid$(_fty_0, 1)), ($ix$(_fty_0)), run_loop($kid$(_t_0, 1)));
-}
-
-function $ka_args_after_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _annotated_0) {
-  return $kc$(run_loop($core_subst_stable$(run_loop($kid$(_tel_0, 1)))), run_clo((_x_0) => {
-  return {$: "Con", "head": _annotated_0, "tail": run_loop($ka_args_static$(_e_0, _ctx_0, run_loop($kid$(_tel_0, 1)), _rest_0))};
+function $ka_spine$(_e_0, _ctx_0, _t_0) {
+  return $kc$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_0) => {
+  return $ka_spine_finish$(_e_0, _ctx_0, run_loop($kid$(_t_0, 1)), run_loop($ka_spine$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)))));
 }), run_clo((_x_1) => {
-  return {$: "Con", "head": _annotated_0, "tail": ($ka_args$(_e_0, _ctx_0, run_loop($subst$(run_loop($kid$(_tel_0, 1)), ($ix$(_tel_0)), _h_0)), _rest_0))};
+  return {$: "KAnnotatedSpine", "node": _t_0, "typ": run_loop($ka_type$(_e_0, _ctx_0, _t_0))};
 }));
 }
 
-function $ka_args_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0) {
-  return {$: "Con", "head": ($annotate$(_e_0, _ctx_0, _h_0, run_loop($kid$(_tel_0, 0)))), "tail": ($ka_args$(_e_0, _ctx_0, run_loop($subst$(run_loop($kid$(_tel_0, 1)), ($ix$(_tel_0)), _h_0)), _rest_0))};
-}
-
-function $env_tele_many$(_args_0) {
-  if (_args_0.$ === "Nil") {
-    return false;
-  } else {
-    const _rest_0 = _args_0["tail"];
-    return $Bool$not$(($List$is_empty$(_rest_0)));
-  }
-}
-
-function $env_tele_safe$(_t_0) {
-  const _x_0 = ($core_literal$(_t_0));
-  const _x_1 = ($String$eq$(($tg$(_t_0)), "Var"));
-  return $kc$((_x_0 || _x_1), run_clo((_x_2) => {
-  return true;
+function $ka_type_node$(_e_0, _ctx_0, _t_0) {
+  return $kc$(($String$eq$(($tg$(_t_0)), "Var")), run_clo((_x_0) => {
+  return $kid$(run_loop($ctx_get$(_ctx_0, ($ix$(_t_0)))), 0);
+}), run_clo((_x_1) => {
+  return $kc$(($String$eq$(($tg$(_t_0)), "Ref")), run_clo((_x_2) => {
+  return $dt$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_t_0)))));
 }), run_clo((_x_3) => {
-  return $kc$(run_loop($env_tele_safe_terms$(($ks$(_t_0)))), run_clo((_x_4) => {
-  return $kc$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_5) => {
-  const _x_6 = ($ix$(_t_0));
-  const _x_7 = ($qt$(_t_0));
-  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($nm$(_t_0)), "")), (_x_6 === 0))), (_x_7 === 0))), ($core_subst_stable_app$(($ks$(_t_0)), ($rm$(_t_0)))))), ($Bool$not$(($String$eq$(($tg$(run_loop($kid$(_t_0, 0)))), "Var")))));
-}), run_clo((_x_8) => {
-  return true;
-}));
-}), run_clo((_x_9) => {
-  return false;
-}));
-}));
-}
-
-function $env_tele_fill_loop$(_book_0, _tel_0, _args_0, _bindings_0, _count_0) {
-  if (_args_0.$ === "Nil") {
-    return $env_tele_apply$(_tel_0, _bindings_0);
-  } else {
-    const _h_0 = _args_0["head"];
-    const _rest_0 = _args_0["tail"];
-    return $kc$(run_loop($env_tele_safe$(_h_0)), run_clo((_x_0) => {
-  return $kc$(($Bool$and$(($String$eq$(($tg$(_tel_0)), "All")), (_count_0 < 64))), run_clo((_x_1) => {
-  return $env_tele_fill_loop$(_book_0, run_loop($kid$(_tel_0, 1)), _rest_0, {$: "Con", "head": {$: "KTelescopeBinding", "id": ($ix$(_tel_0)), "value": _h_0}, "tail": _bindings_0}, ((_count_0 + 1) >>> 0));
-}), run_clo((_x_2) => {
-  return $env_tele_fill_open$(_book_0, run_loop($wnf$(_book_0, run_loop($env_tele_apply$(_tel_0, _bindings_0)))), _h_0, _rest_0);
-}));
-}), run_clo((_x_3) => {
-  return $env_tele_fill_eager$(_book_0, run_loop($env_tele_apply$(_tel_0, _bindings_0)), {$: "Con", "head": _h_0, "tail": _rest_0});
-}));
-  }
-}
-
-function $env_tele_fill_eager$(_book_0, _tel_0, _args_0) {
-  if (_args_0.$ === "Nil") {
-    return _tel_0;
-  } else {
-    const _h_0 = _args_0["head"];
-    const _rest_0 = _args_0["tail"];
-    return $env_tele_fill_eager_head$(_book_0, run_loop($wnf$(_book_0, _tel_0)), _h_0, _rest_0);
-  }
-}
-
-function $mat_goal$(_book_0, _goal_0, _tel_0, _n_0, _name_0, _xs_0) {
-  return $kc$((_n_0 === 0), run_clo((_x_0) => {
-  return $subst$(run_loop($kid$(_goal_0, 1)), ($ix$(_goal_0)), ($kt$("Ctr", _name_0, 0, 0, ($norm_join$(_xs_0, {$: "Nil"})))));
-}), run_clo((_x_1) => {
-  return $mat_goal_head$(_book_0, _goal_0, run_loop($wnf$(_book_0, _tel_0)), _n_0, _name_0, _xs_0);
-}));
-}
-
-function $mat_rest$(_book_0, _t_0, _a_0) {
-  return $kc$(($Bool$and$(($Bool$not$(($String$eq$(($tg$(run_loop($kid$(_t_0, 1)))), "Mat")))), ($defs_empty$(run_loop($remaining$(($dc$(run_loop($lookup$(_book_0, ($nm$(_a_0)))))), {$: "Con", "head": ($nm$(_t_0)), "tail": ($rm$(_a_0))})))))), run_clo((_x_0) => {
-  return $atom$("Efq");
-}), run_clo((_x_1) => {
+  return $kc$(($String$eq$(($tg$(_t_0)), "Ann")), run_clo((_x_4) => {
   return $kid$(_t_0, 1);
+}), run_clo((_x_5) => {
+  return $kc$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_6) => {
+  return $ka_type_app$(_e_0, _t_0, run_loop($wnf$(($cb$(_e_0)), run_loop($ka_type$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)))))));
+}), run_clo((_x_7) => {
+  return $kc$(($String$eq$(($tg$(_t_0)), "ADT")), run_clo((_x_8) => {
+  return $tele_fill$(($cb$(_e_0)), ($dt$(run_loop($lookup$(($cb$(_e_0)), ($nm$(_t_0)))))), ($ks$(_t_0)));
+}), run_clo((_x_9) => {
+  return $kc$(($String$eq$(($tg$(_t_0)), "Eql")), run_clo((_x_10) => {
+  return $typ$(2);
+}), run_clo((_x_11) => {
+  const _x_12 = ($String$eq$(($tg$(_t_0)), "Qua"));
+  const _x_13 = ($String$eq$(($tg$(_t_0)), "Min"));
+  return $kc$((_x_12 || _x_13), run_clo((_x_14) => {
+  return $atom$("Qnt");
+}), run_clo((_x_15) => {
+  const _x_16 = ($String$eq$(($tg$(_t_0)), "Typ"));
+  const _x_17 = ($String$eq$(($tg$(_t_0)), "Qnt"));
+  const _x_18 = (_x_16 || _x_17);
+  const _x_19 = ($String$eq$(($tg$(_t_0)), "All"));
+  return $kc$((_x_18 || _x_19), run_clo((_x_20) => {
+  return $typ$(1);
+}), run_clo((_x_21) => {
+  return $atom$("Error");
+}));
+}));
+}));
+}));
+}));
+}));
+}));
 }));
 }
 
-function $all$(_q_0, _name_0, _id_0, _a_0, _b_0) {
-  return $kt$("All", _name_0, _id_0, _q_0, {$: "Con", "head": _a_0, "tail": {$: "Con", "head": _b_0, "tail": {$: "Nil"}}});
+function $ka_args_cached_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0) {
+  return $kc$(($String$eq$(($tg$(_tel_0)), "All")), run_clo((_x_0) => {
+  return $ka_args_after_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, ($annotate$(_e_0, _ctx_0, _h_0, run_loop($kid$(_tel_0, 0)))));
+}), run_clo((_x_1) => {
+  return $ka_args_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0);
+}));
 }
 
-function $subst_terms$(_ts_0, _id_0, _v_0) {
-  if (_ts_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _ts_0["head"];
-    const _t_0 = _ts_0["tail"];
-    return {$: "Con", "head": run_loop($subst$(_h_0, _id_0, _v_0)), "tail": ($subst_terms$(_t_0, _id_0, _v_0))};
-  }
+function $env_tele_fill$(_book_0, _tel_0, _args_0) {
+  return $kc$(($env_tele_many$(_args_0)), run_clo((_x_0) => {
+  return $kc$(run_loop($env_tele_safe$(_tel_0)), run_clo((_x_1) => {
+  return $env_tele_fill_loop$(_book_0, _tel_0, _args_0, {$: "Nil"}, 0);
+}), run_clo((_x_2) => {
+  return $env_tele_fill_eager$(_book_0, _tel_0, _args_0);
+}));
+}), run_clo((_x_3) => {
+  return $env_tele_fill_eager$(_book_0, _tel_0, _args_0);
+}));
 }
 
-function $strip$(_t_0) {
-  return $core_force$(_t_0);
+function $ka_mat_ctr$(_e_0, _ctx_0, _t_0, _ty_0, _a_0, _c_0) {
+  return $kt$("Mat", ($nm$(_t_0)), ($ix$(_t_0)), ($qt$(_t_0)), {$: "Con", "head": ($annotate$(_e_0, _ctx_0, run_loop($kid$(_t_0, 0)), run_loop($mat_goal$(($cb$(_e_0)), _ty_0, run_loop($tele_fill$(($cb$(_e_0)), ($dt$(_c_0)), ($ks$(_a_0)))), ($da$(_c_0)), ($nm$(_t_0)), {$: "Nil"})))), "tail": {$: "Con", "head": ($annotate$(_e_0, _ctx_0, run_loop($mat_rest$(($cb$(_e_0)), _t_0, _a_0)), ($all$(($qt$(_ty_0)), ($nm$(_ty_0)), ($ix$(_ty_0)), {$: "KTerm", "tag": ($tg$(_a_0)), "name": ($nm$(_a_0)), "id": ($ix$(_a_0)), "quant": ($qt$(_a_0)), "kids": ($ks$(_a_0)), "removed": {$: "Con", "head": ($nm$(_t_0)), "tail": ($rm$(_a_0))}, "originBegin": ($kb$(_a_0)), "originEnd": ($ke$(_a_0))}, run_loop($kid$(_ty_0, 1)))))), "tail": {$: "Nil"}}});
+}
+
+function $ka_let_head$(_e_0, _outer_0, _ctx_0, _h_0, _rest_0, _ty_0, _vty_0) {
+  return {$: "Con", "head": ($kt$("Bind", ($nm$(_h_0)), ($ix$(_h_0)), ($qt$(_h_0)), {$: "Con", "head": ($annotate$(_e_0, _outer_0, run_loop($kid$(_h_0, 0)), _vty_0)), "tail": {$: "Nil"}})), "tail": run_loop($ka_let$(_e_0, _outer_0, ($ctx_bind$(_ctx_0, ($ix$(_h_0)), ($qt$(_h_0)), ($nm$(_h_0)), _vty_0)), ($subst_terms$(_rest_0, ($ix$(_h_0)), ($kt$("Var", ($nm$(_h_0)), ($ix$(_h_0)), 0, {$: "Con", "head": run_loop($kid$(_h_0, 0)), "tail": {$: "Nil"}})))), _ty_0))};
+}
+
+function $kapply$(_fn_0, _x_0) {
+  return $kc$(($String$eq$(($tg$(run_loop($strip$(_fn_0)))), "Lam")), run_clo((_x_1) => {
+  return $subst$(run_loop($kid$(run_loop($strip$(_fn_0)), 0)), ($ix$(run_loop($strip$(_fn_0)))), _x_0);
+}), run_clo((_x_2) => {
+  return $app$(_fn_0, _x_0);
+}));
 }
 
 function $j_finite_matches$(_xs_0) {
@@ -20134,6 +20200,20 @@ function $core_rebuild$(_t_0) {
 }));
 }
 
+function $subst_terms$(_ts_0, _id_0, _v_0) {
+  if (_ts_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _ts_0["head"];
+    const _t_0 = _ts_0["tail"];
+    return {$: "Con", "head": run_loop($subst$(_h_0, _id_0, _v_0)), "tail": ($subst_terms$(_t_0, _id_0, _v_0))};
+  }
+}
+
+function $all$(_q_0, _name_0, _id_0, _a_0, _b_0) {
+  return $kt$("All", _name_0, _id_0, _q_0, {$: "Con", "head": _a_0, "tail": {$: "Con", "head": _b_0, "tail": {$: "Nil"}}});
+}
+
 function $j_literal_ctor$(_t_0) {
   return $kc$(($String$eq$(($nm$(_t_0)), "U32")), run_clo((_x_0) => {
   return $j_word_text$(run_loop($j_word$(run_loop($j_strip$(run_loop($kid$(_t_0, 0)))), 0, 0)), false);
@@ -20654,6 +20734,41 @@ function $nc_values$(_xs_0, _env_0) {
   }
 }
 
+function $nf_escape_app$(_book_0, _head_0, _args_0, _rest_0, _index_0) {
+  return $nt_choose$(($String$eq$(($tg$(_head_0)), "Ref")), run_clo((_x_0) => {
+  const _x_1 = ($qt$(_head_0));
+  const _x_2 = ($terms_len$(_args_0));
+  const _x_3 = run_loop($nd_arity$(_book_0, ($nm$(_head_0))));
+  return $nf_escape_terms$(_book_0, ($nt_append$(_args_0, _rest_0)), run_loop($nt_choose$(($Bool$and$(($Bool$not$((_x_1 === 3))), (_x_2 === _x_3))), run_clo((_x_4) => {
+  return _index_0;
+}), run_clo((_x_5) => {
+  return $nf_escape_add$(($nm$(_head_0)), _index_0);
+}))));
+}), run_clo((_x_6) => {
+  return $nf_escape_terms$(_book_0, {$: "Con", "head": _head_0, "tail": ($nt_append$(_args_0, _rest_0))}, _index_0);
+}));
+}
+
+function $nd_head$(_t_0) {
+  return $nt_choose$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_0) => {
+  return $nd_head$(run_loop($kid$(_t_0, 0)));
+}), run_clo((_x_1) => {
+  return _t_0;
+}));
+}
+
+function $nd_args$(_t_0, _acc_0) {
+  return $nt_choose$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_0) => {
+  return $nd_args$(run_loop($kid$(_t_0, 0)), {$: "Con", "head": run_loop($kid$(_t_0, 1)), "tail": _acc_0});
+}), run_clo((_x_1) => {
+  return _acc_0;
+}));
+}
+
+function $nf_escape_add$(_name_0, _index_0) {
+  return $index_set$(_index_0, ($nv_id$(_name_0)), ($index_hash$(_name_0, 2166136261)), 32);
+}
+
 function $nq_wrap_segment$(_d_0, _params_0, _original_0) {
   const _shape_0 = ($dt$(_d_0));
   const _result_0 = run_loop($nq_transfer$(_shape_0, run_loop($nq_words$("nq_result", run_loop($nq_width$(_shape_0)), 0)), 0, {$: "NC_Scheduler"}));
@@ -20932,25 +21047,79 @@ function $nh_adt$(_book_0, _t_0, _d_0, _hot_0, _fuel_0) {
 }));
 }
 
-function $nd_eta_body$(_params_0, _call_0) {
-  if (_params_0.$ === "Nil") {
-    return _call_0;
-  } else {
-    const _t_0 = _params_0["head"];
-    const _id_0 = _t_0["id"];
-    const _rest_0 = _params_0["tail"];
-    return $k_lam$("", _id_0, 1, {$: "Con", "head": ($nd_eta_body$(_rest_0, _call_0)), "tail": {$: "Nil"}}, 0, 0, false);
+function $nc_call_head$(_t_0) {
+  return $nt_choose$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_0) => {
+  return $nc_call_head$(run_loop($kid$(_t_0, 0)));
+}), run_clo((_x_1) => {
+  return _t_0;
+}));
+}
+
+function $nc_mark_segments_go$($0, $1, $2, $3, $4) {
+  for (;;) {
+    {
+      const _ss_0 = $0;
+      const _bang_0 = $1;
+      const _forked_0 = $2;
+      const _calls_0 = $3;
+      const _acc_0 = $4;
+      if (_ss_0.$ === "Nil") {
+        return $nt_reverse$(_acc_0, {$: "Nil"});
+      } else {
+        const _t_0 = _ss_0["head"];
+        const _k_0 = _t_0["name"];
+        const _ps_0 = _t_0["params"];
+        const _r_0 = _t_0["result"];
+        const _f_0 = _t_0["frame"];
+        const _b_0 = _t_0["body"];
+        const _refs_0 = _t_0["refs"];
+        const _host_0 = _t_0["host"];
+        const _spin_0 = _t_0["spin"];
+        const _fork_0 = _t_0["fork"];
+        const _rest_0 = _ss_0["tail"];
+        $0 = _rest_0;
+        $1 = _bang_0;
+        $2 = _forked_0;
+        $3 = _calls_0;
+        $4 = {$: "Con", "head": {$: "N_Segment", "name": _k_0, "params": _ps_0, "result": _r_0, "frame": _f_0, "body": _b_0, "refs": run_loop($nt_choose$(($nb_contains$(_refs_0, "$local")), run_clo((_x_0) => {
+  return _refs_0;
+}), run_clo((_x_1) => {
+  return _calls_0;
+}))), "host": _host_0, "spin": _spin_0, "fork": run_loop($nt_choose$(($nb_contains$(_refs_0, "$local")), run_clo((_x_2) => {
+  return _fork_0;
+}), run_clo((_x_3) => {
+  return _forked_0;
+}))), "bang": _bang_0}, "tail": _acc_0};
+        continue;
+      }
+    }
   }
 }
 
-function $nd_join$(_base_0, _body_0, _name_0, _params_0, _host_0) {
-  return {$: "NC_Code", "body": ($nc_body$(_base_0)), "segments": ($nt_append$(($nc_segs$(_base_0)), {$: "Con", "head": {$: "N_Segment", "name": ($nd_name$(_name_0)), "params": ($nc_params$(_params_0)), "result": 1, "frame": {$: "N_Direct"}, "body": ($nc_body$(_body_0)), "refs": {$: "Nil"}, "host": _host_0, "spin": false, "fork": false, "bang": false}, "tail": ($nc_segs$(_body_0))})), "fresh": ($nc_fresh$(_body_0)), "error": run_loop($nc_first_error$(_base_0, _body_0)), "calls": ($List$append$(($nc_calls$(_base_0)), ($List$append$(($nc_calls$(_body_0)), {$: "Nil"}))))};
+function $nd_eta_entry$(_book_0, _body_0, _name_0, _n_0, _arity_0) {
+  const _params_0 = run_loop($nd_entry_params$(_arity_0, _n_0));
+  const _call_0 = ($kt$("NCall", ($nd_name$(run_loop($nc_ref_name$(_book_0, _name_0)))), 0, 0, ($nd_entry_args$(_params_0))));
+  const _base_0 = run_loop($nt_choose$(($nf_host_no_factory$(_book_0, _name_0, _arity_0)), run_clo((_x_0) => {
+  return {$: "NC_Code", "body": "", "segments": {$: "Nil"}, "fresh": _n_0, "error": "", "calls": {$: "Nil"}};
+}), run_clo((_x_1) => {
+  return $nc_lower$(_book_0, ($nd_eta_body$(_params_0, _call_0)), {$: "Nil"}, ((_n_0 + _arity_0) >>> 0));
+})));
+  return $nd_extend_arity$(_book_0, _body_0, _base_0, _name_0, _arity_0);
 }
 
-function $nf_host_selected$(_book_0, _name_0, _arity_0) {
-  const _d_0 = run_loop($index_find$(run_loop($nf_host_payload$(($dc$(($index_first$(_book_0)))))), _name_0, ($index_hash$(_name_0, 2166136261)), 32));
-  const _x_0 = ($da$(_d_0));
-  return $Bool$and$(($Bool$and$((_arity_0 > 0), ($String$eq$(($dk$(_d_0)), "NativeHostWorker")))), (_x_0 === _arity_0));
+function $nd_extend_arity$(_book_0, _body_0, _base_0, _name_0, _arity_0) {
+  const _params_0 = ($nk_typed_bindings$(run_loop($nd_entry_params$(_arity_0, ($nc_fresh$(_base_0)))), run_loop($nf_worker_kinds$(_book_0, _name_0, _arity_0))));
+  return $nt_choose$((_arity_0 === 0), run_clo((_x_0) => {
+  return _base_0;
+}), run_clo((_x_1) => {
+  return $nd_join$(_base_0, run_loop($nt_choose$(($nf_host_selected$(_book_0, _name_0, _arity_0)), run_clo((_x_2) => {
+  const _x_3 = ($nc_fresh$(_base_0));
+  return {$: "NC_Code", "body": "", "segments": {$: "Nil"}, "fresh": ((_x_3 + _arity_0) >>> 0), "error": "", "calls": {$: "Nil"}};
+}), run_clo((_x_4) => {
+  const _x_5 = ($nc_fresh$(_base_0));
+  return $nc_lower$(_book_0, ($nd_reapply$(_body_0, ($nd_entry_args$(_params_0)))), _params_0, ((_x_5 + _arity_0) >>> 0));
+}))), run_loop($nc_ref_name$(_book_0, _name_0)), _params_0, ($nf_host_selected$(_book_0, _name_0, _arity_0)));
+}));
 }
 
 function $kw_with_checked$(_world_0, _checked_0) {
@@ -22803,152 +22972,122 @@ function $jd_host_signature_prepend$(_head_0, _signature_0) {
   return {$: "JDHostSignature", "result": _result_0, "heads": {$: "Con", "head": _head_0, "tail": _heads_0}};
 }
 
-function $ka_spine_step$(_e_0, _ctx_0, _arg_0, _node_0, _fty_0) {
-  return {$: "KAnnotatedSpine", "node": ($ka_app_spine_root$(_e_0, _ctx_0, _arg_0, _node_0, _fty_0)), "typ": run_loop($subst$(run_loop($kid$(_fty_0, 1)), ($ix$(_fty_0)), _arg_0))};
+function $ka_app_spine_root$(_e_0, _ctx_0, _arg_0, _node_0, _fty_0) {
+  return $app$(($ka_wrap$(_node_0, _fty_0)), ($annotate$(_e_0, _ctx_0, _arg_0, run_loop($kid$(_fty_0, 0)))));
 }
 
-function $core_subst_stable$(_t_0) {
-  if (_t_0.$ === "KTerm") {
-    const _tag_0 = _t_0["tag"];
-    const _name_0 = _t_0["name"];
-    const _id_0 = _t_0["id"];
-    const _quant_0 = _t_0["quant"];
-    const _kids_0 = _t_0["kids"];
-    const _removed_0 = _t_0["removed"];
-    return $kc$(($String$eq$(_tag_0, "Var")), run_clo((_x_0) => {
-  return false;
+function $ka_spine_finish$(_e_0, _ctx_0, _arg_0, _r_0) {
+  const _node_0 = _r_0["node"];
+  const _ty_0 = _r_0["typ"];
+  return $ka_spine_step$(_e_0, _ctx_0, _arg_0, _node_0, run_loop($wnf$(($cb$(_e_0)), _ty_0)));
+}
+
+function $ctx_get$(_ctx_0, _id_0) {
+  if (_ctx_0.$ === "Nil") {
+    return $atom$("Absent");
+  } else {
+    const _h_0 = _ctx_0["head"];
+    const _t_0 = _ctx_0["tail"];
+    const _x_0 = ($ix$(_h_0));
+    return $kc$((_x_0 === _id_0), run_clo((_x_1) => {
+  return _h_0;
+}), run_clo((_x_2) => {
+  return $ctx_get$(_t_0, _id_0);
+}));
+  }
+}
+
+function $ka_type_app$(_e_0, _t_0, _fty_0) {
+  return $subst$(run_loop($kid$(_fty_0, 1)), ($ix$(_fty_0)), run_loop($kid$(_t_0, 1)));
+}
+
+function $ka_args_after_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0, _annotated_0) {
+  return $kc$(run_loop($core_subst_stable$(run_loop($kid$(_tel_0, 1)))), run_clo((_x_0) => {
+  return {$: "Con", "head": ($ka_field$(_annotated_0, ($qt$(_tel_0)))), "tail": run_loop($ka_args_static$(_e_0, _ctx_0, run_loop($kid$(_tel_0, 1)), _rest_0))};
 }), run_clo((_x_1) => {
-  return $kc$(run_loop($core_subst_stable_terms$(_kids_0)), run_clo((_x_2) => {
-  return $kc$(($String$eq$(_tag_0, "App")), run_clo((_x_3) => {
-  return $kc$(($Bool$and$(($Bool$and$(($String$eq$(_name_0, "")), (_id_0 === 0))), (_quant_0 === 0))), run_clo((_x_4) => {
-  return $core_subst_stable_app$(_kids_0, _removed_0);
-}), run_clo((_x_5) => {
-  return false;
+  return {$: "Con", "head": ($ka_field$(_annotated_0, ($qt$(_tel_0)))), "tail": ($ka_args$(_e_0, _ctx_0, run_loop($subst$(run_loop($kid$(_tel_0, 1)), ($ix$(_tel_0)), _h_0)), _rest_0))};
 }));
-}), run_clo((_x_6) => {
-  return true;
-}));
-}), run_clo((_x_7) => {
-  return false;
-}));
-}));
-  } else if (_t_0.$ === "KLambda") {
-    const _kids_1 = _t_0["kids"];
-    return $core_subst_stable_terms$(_kids_1);
-  } else {
-    return true;
-  }
 }
 
-function $ka_args_static$(_e_0, _ctx_0, _tel_0, _xs_0) {
-  if (_xs_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _xs_0["head"];
-    const _rest_0 = _xs_0["tail"];
-    return $kc$(($String$eq$(($tg$(_tel_0)), "All")), run_clo((_x_0) => {
-  return {$: "Con", "head": ($annotate$(_e_0, _ctx_0, _h_0, run_loop($kid$(_tel_0, 0)))), "tail": run_loop($ka_args_static$(_e_0, _ctx_0, run_loop($kid$(_tel_0, 1)), _rest_0))};
-}), run_clo((_x_1) => {
-  return $ka_args_cached$(_e_0, _ctx_0, _tel_0, {$: "Con", "head": _h_0, "tail": _rest_0});
-}));
-  }
+function $ka_args_head$(_e_0, _ctx_0, _tel_0, _h_0, _rest_0) {
+  return {$: "Con", "head": ($ka_field$(($annotate$(_e_0, _ctx_0, _h_0, run_loop($kid$(_tel_0, 0)))), ($qt$(_tel_0)))), "tail": ($ka_args$(_e_0, _ctx_0, run_loop($subst$(run_loop($kid$(_tel_0, 1)), ($ix$(_tel_0)), _h_0)), _rest_0))};
 }
 
-function $ka_args$(_e_0, _ctx_0, _tel_0, _xs_0) {
-  if (_xs_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _xs_0["head"];
-    const _rest_0 = _xs_0["tail"];
-    return $ka_args_head$(_e_0, _ctx_0, run_loop($wnf$(($cb$(_e_0)), _tel_0)), _h_0, _rest_0);
-  }
-}
-
-function $env_tele_safe_terms$(_ts_0) {
-  if (_ts_0.$ === "Nil") {
-    return true;
-  } else {
-    const _h_0 = _ts_0["head"];
-    const _rest_0 = _ts_0["tail"];
-    return $kc$(run_loop($env_tele_safe$(_h_0)), run_clo((_x_0) => {
-  return $env_tele_safe_terms$(_rest_0);
-}), run_clo((_x_1) => {
-  return false;
-}));
-  }
-}
-
-function $core_subst_stable_app$(_kids_0, _removed_0) {
-  if (_removed_0.$ === "Con") {
+function $env_tele_many$(_args_0) {
+  if (_args_0.$ === "Nil") {
     return false;
   } else {
-    return $core_subst_stable_app_kids$(_kids_0);
+    const _rest_0 = _args_0["tail"];
+    return $Bool$not$(($List$is_empty$(_rest_0)));
   }
 }
 
-function $env_tele_apply$(_t_0, _bindings_0) {
-  return $env_subst_apply$(_t_0, _bindings_0);
+function $env_tele_safe$(_t_0) {
+  const _x_0 = ($core_literal$(_t_0));
+  const _x_1 = ($String$eq$(($tg$(_t_0)), "Var"));
+  return $kc$((_x_0 || _x_1), run_clo((_x_2) => {
+  return true;
+}), run_clo((_x_3) => {
+  return $kc$(run_loop($env_tele_safe_terms$(($ks$(_t_0)))), run_clo((_x_4) => {
+  return $kc$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_5) => {
+  const _x_6 = ($ix$(_t_0));
+  const _x_7 = ($qt$(_t_0));
+  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($nm$(_t_0)), "")), (_x_6 === 0))), (_x_7 === 0))), ($core_subst_stable_app$(($ks$(_t_0)), ($rm$(_t_0)))))), ($Bool$not$(($String$eq$(($tg$(run_loop($kid$(_t_0, 0)))), "Var")))));
+}), run_clo((_x_8) => {
+  return true;
+}));
+}), run_clo((_x_9) => {
+  return false;
+}));
+}));
 }
 
-function $env_tele_fill_open$(_book_0, _tel_0, _h_0, _rest_0) {
-  return $kc$(($String$eq$(($tg$(_tel_0)), "All")), run_clo((_x_0) => {
-  return $kc$(run_loop($env_tele_safe$(_tel_0)), run_clo((_x_1) => {
-  return $env_tele_fill_loop$(_book_0, run_loop($kid$(_tel_0, 1)), _rest_0, {$: "Con", "head": {$: "KTelescopeBinding", "id": ($ix$(_tel_0)), "value": _h_0}, "tail": {$: "Nil"}}, 1);
+function $env_tele_fill_loop$(_book_0, _tel_0, _args_0, _bindings_0, _count_0) {
+  if (_args_0.$ === "Nil") {
+    return $env_tele_apply$(_tel_0, _bindings_0);
+  } else {
+    const _h_0 = _args_0["head"];
+    const _rest_0 = _args_0["tail"];
+    return $kc$(run_loop($env_tele_safe$(_h_0)), run_clo((_x_0) => {
+  return $kc$(($Bool$and$(($String$eq$(($tg$(_tel_0)), "All")), (_count_0 < 64))), run_clo((_x_1) => {
+  return $env_tele_fill_loop$(_book_0, run_loop($kid$(_tel_0, 1)), _rest_0, {$: "Con", "head": {$: "KTelescopeBinding", "id": ($ix$(_tel_0)), "value": _h_0}, "tail": _bindings_0}, ((_count_0 + 1) >>> 0));
 }), run_clo((_x_2) => {
-  return $env_tele_fill_eager_head$(_book_0, _tel_0, _h_0, _rest_0);
+  return $env_tele_fill_open$(_book_0, run_loop($wnf$(_book_0, run_loop($env_tele_apply$(_tel_0, _bindings_0)))), _h_0, _rest_0);
 }));
 }), run_clo((_x_3) => {
-  return $atom$("Error");
-}));
-}
-
-function $env_tele_fill_eager_head$(_book_0, _tel_0, _h_0, _rest_0) {
-  return $kc$(($String$eq$(($tg$(_tel_0)), "All")), run_clo((_x_0) => {
-  return $env_tele_fill_eager$(_book_0, run_loop($subst$(run_loop($kid$(_tel_0, 1)), ($ix$(_tel_0)), _h_0)), _rest_0);
-}), run_clo((_x_1) => {
-  return $atom$("Error");
-}));
-}
-
-function $mat_goal_head$(_book_0, _goal_0, _tel_0, _n_0, _name_0, _xs_0) {
-  const _x_0 = ($qt$(_tel_0));
-  return $all$(run_loop($kc$((_x_0 === 0), run_clo((_x_1) => {
-  return 0;
-}), run_clo((_x_2) => {
-  const _x_3 = ($qt$(_tel_0));
-  return $kc$((_x_3 === 1), run_clo((_x_4) => {
-  return $qt$(_goal_0);
-}), run_clo((_x_5) => {
-  return $qadd$(($qt$(_goal_0)), ($qt$(_goal_0)));
-}));
-}))), ($nm$(_tel_0)), ($ix$(_tel_0)), run_loop($kid$(_tel_0, 0)), run_loop($mat_goal$(_book_0, _goal_0, run_loop($kid$(_tel_0, 1)), ((_n_0 - 1) >>> 0), _name_0, ($norm_join$(_xs_0, {$: "Con", "head": ($var$(($nm$(_tel_0)), ($ix$(_tel_0)))), "tail": {$: "Nil"}})))));
-}
-
-function $remaining$(_cs_0, _removed_0) {
-  if (_cs_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _cs_0["head"];
-    const _t_0 = _cs_0["tail"];
-    return $kc$(($has_name$(_removed_0, ($dn$(_h_0)))), run_clo((_x_0) => {
-  return $remaining$(_t_0, _removed_0);
-}), run_clo((_x_1) => {
-  return {$: "Con", "head": _h_0, "tail": run_loop($remaining$(_t_0, _removed_0))};
+  return $env_tele_fill_eager$(_book_0, run_loop($env_tele_apply$(_tel_0, _bindings_0)), {$: "Con", "head": _h_0, "tail": _rest_0});
 }));
   }
 }
 
-function $core_force$(_t_0) {
-  return $kc$(($String$eq$(($tg$(_t_0)), "Ann")), run_clo((_x_0) => {
-  return $core_force$(run_loop($kid$(_t_0, 0)));
+function $env_tele_fill_eager$(_book_0, _tel_0, _args_0) {
+  if (_args_0.$ === "Nil") {
+    return _tel_0;
+  } else {
+    const _h_0 = _args_0["head"];
+    const _rest_0 = _args_0["tail"];
+    return $env_tele_fill_eager_head$(_book_0, run_loop($wnf$(_book_0, _tel_0)), _h_0, _rest_0);
+  }
+}
+
+function $mat_goal$(_book_0, _goal_0, _tel_0, _n_0, _name_0, _xs_0) {
+  return $kc$((_n_0 === 0), run_clo((_x_0) => {
+  return $subst$(run_loop($kid$(_goal_0, 1)), ($ix$(_goal_0)), ($kt$("Ctr", _name_0, 0, 0, ($norm_join$(_xs_0, {$: "Nil"})))));
 }), run_clo((_x_1) => {
-  const _x_2 = ($terms_len$(($ks$(_t_0))));
-  return $kc$(($Bool$and$(($String$eq$(($tg$(_t_0)), "Var")), (_x_2 > 0))), run_clo((_x_3) => {
-  return $core_force$(run_loop($kid$(_t_0, 0)));
-}), run_clo((_x_4) => {
-  return _t_0;
+  return $mat_goal_head$(_book_0, _goal_0, run_loop($wnf$(_book_0, _tel_0)), _n_0, _name_0, _xs_0);
 }));
+}
+
+function $mat_rest$(_book_0, _t_0, _a_0) {
+  return $kc$(($Bool$and$(($Bool$not$(($String$eq$(($tg$(run_loop($kid$(_t_0, 1)))), "Mat")))), ($defs_empty$(run_loop($remaining$(($dc$(run_loop($lookup$(_book_0, ($nm$(_a_0)))))), {$: "Con", "head": ($nm$(_t_0)), "tail": ($rm$(_a_0))})))))), run_clo((_x_0) => {
+  return $atom$("Efq");
+}), run_clo((_x_1) => {
+  return $kid$(_t_0, 1);
 }));
+}
+
+function $strip$(_t_0) {
+  return $core_force$(_t_0);
 }
 
 function $j_finite_ctor$(_book_0, _env_0, _t_0, _ty_0, _depth_0) {
@@ -24198,22 +24337,6 @@ function $nq_demand_head$(_t_0, _head_0, _args_0, _id_0, _fuel_0) {
 }));
 }
 
-function $nd_head$(_t_0) {
-  return $nt_choose$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_0) => {
-  return $nd_head$(run_loop($kid$(_t_0, 0)));
-}), run_clo((_x_1) => {
-  return _t_0;
-}));
-}
-
-function $nd_args$(_t_0, _acc_0) {
-  return $nt_choose$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_0) => {
-  return $nd_args$(run_loop($kid$(_t_0, 0)), {$: "Con", "head": run_loop($kid$(_t_0, 1)), "tail": _acc_0});
-}), run_clo((_x_1) => {
-  return _acc_0;
-}));
-}
-
 function $nh_field_test$(_ctor_0, _i_0) {
   const _x_0 = ($U32$show$(_i_0));
   const _x_1 = ($nt_cid$(_ctor_0));
@@ -24236,6 +24359,10 @@ function $nc_word$(_id_0, _env_0) {
   return $nc_word$(_id_0, _rest_0);
 }));
   }
+}
+
+function $nv_id$(_name_0) {
+  return {$: "KDef", "name": _name_0, "kind": "NativeId", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false};
 }
 
 function $nq_transfer$(_shape_0, _words_0, _n_0, _target_0) {
@@ -24570,35 +24697,25 @@ function $nh_types$($0, $1, $2, $3) {
   }
 }
 
-function $nc_first_error$(_a_0, _b_0) {
-  return $nt_choose$(($String$eq$(($nc_error$(_a_0)), "")), run_clo((_x_0) => {
-  return $nc_error$(_b_0);
-}), run_clo((_x_1) => {
-  return $nc_error$(_a_0);
-}));
+function $nd_eta_body$(_params_0, _call_0) {
+  if (_params_0.$ === "Nil") {
+    return _call_0;
+  } else {
+    const _t_0 = _params_0["head"];
+    const _id_0 = _t_0["id"];
+    const _rest_0 = _params_0["tail"];
+    return $k_lam$("", _id_0, 1, {$: "Con", "head": ($nd_eta_body$(_rest_0, _call_0)), "tail": {$: "Nil"}}, 0, 0, false);
+  }
 }
 
-function $nf_host_payload$(_children_0) {
-  if (_children_0.$ === "Con") {
-    const _t_0 = _children_0["tail"];
-    if (_t_0.$ === "Con") {
-      const _t_1 = _t_0["tail"];
-      if (_t_1.$ === "Con") {
-        const _plan_0 = _t_1["head"];
-        return $nt_choose$(($Bool$and$(($String$eq$(($dk$(_plan_0)), "NativeHostPlan")), ($String$eq$(($dn$(_plan_0)), "$native.host.plan")))), run_clo((_x_0) => {
-  return $index_first$(($dc$(_plan_0)));
-}), run_clo((_x_1) => {
-  return $missing$();
-}));
-      } else {
-        return $missing$();
-      }
-    } else {
-      return $missing$();
-    }
-  } else {
-    return $missing$();
-  }
+function $nd_join$(_base_0, _body_0, _name_0, _params_0, _host_0) {
+  return {$: "NC_Code", "body": ($nc_body$(_base_0)), "segments": ($nt_append$(($nc_segs$(_base_0)), {$: "Con", "head": {$: "N_Segment", "name": ($nd_name$(_name_0)), "params": ($nc_params$(_params_0)), "result": 1, "frame": {$: "N_Direct"}, "body": ($nc_body$(_body_0)), "refs": {$: "Nil"}, "host": _host_0, "spin": false, "fork": false, "bang": false}, "tail": ($nc_segs$(_body_0))})), "fresh": ($nc_fresh$(_body_0)), "error": run_loop($nc_first_error$(_base_0, _body_0)), "calls": ($List$append$(($nc_calls$(_base_0)), ($List$append$(($nc_calls$(_body_0)), {$: "Nil"}))))};
+}
+
+function $nf_host_selected$(_book_0, _name_0, _arity_0) {
+  const _d_0 = run_loop($index_find$(run_loop($nf_host_payload$(($dc$(($index_first$(_book_0)))))), _name_0, ($index_hash$(_name_0, 2166136261)), 32));
+  const _x_0 = ($da$(_d_0));
+  return $Bool$and$(($Bool$and$((_arity_0 > 0), ($String$eq$(($dk$(_d_0)), "NativeHostWorker")))), (_x_0 === _arity_0));
 }
 
 function $tele_tip_head$(_book_0, _t_0) {
@@ -27078,48 +27195,154 @@ function $jd_host_marshal$(_book_0, _ty_0, _out_0, _seen_0, _depth_0, _fuel_0) {
 }));
 }
 
-function $core_subst_stable_terms$(_ts_0) {
+function $ka_spine_step$(_e_0, _ctx_0, _arg_0, _node_0, _fty_0) {
+  return {$: "KAnnotatedSpine", "node": ($ka_app_spine_root$(_e_0, _ctx_0, _arg_0, _node_0, _fty_0)), "typ": run_loop($subst$(run_loop($kid$(_fty_0, 1)), ($ix$(_fty_0)), _arg_0))};
+}
+
+function $core_subst_stable$(_t_0) {
+  if (_t_0.$ === "KTerm") {
+    const _tag_0 = _t_0["tag"];
+    const _name_0 = _t_0["name"];
+    const _id_0 = _t_0["id"];
+    const _quant_0 = _t_0["quant"];
+    const _kids_0 = _t_0["kids"];
+    const _removed_0 = _t_0["removed"];
+    return $kc$(($String$eq$(_tag_0, "Var")), run_clo((_x_0) => {
+  return false;
+}), run_clo((_x_1) => {
+  return $kc$(run_loop($core_subst_stable_terms$(_kids_0)), run_clo((_x_2) => {
+  return $kc$(($String$eq$(_tag_0, "App")), run_clo((_x_3) => {
+  return $kc$(($Bool$and$(($Bool$and$(($String$eq$(_name_0, "")), (_id_0 === 0))), (_quant_0 === 0))), run_clo((_x_4) => {
+  return $core_subst_stable_app$(_kids_0, _removed_0);
+}), run_clo((_x_5) => {
+  return false;
+}));
+}), run_clo((_x_6) => {
+  return true;
+}));
+}), run_clo((_x_7) => {
+  return false;
+}));
+}));
+  } else if (_t_0.$ === "KLambda") {
+    const _kids_1 = _t_0["kids"];
+    return $core_subst_stable_terms$(_kids_1);
+  } else {
+    return true;
+  }
+}
+
+function $ka_field$(_annotated_0, _quantity_0) {
+  return $kt$("Ann", "", 1, _quantity_0, ($ks$(_annotated_0)));
+}
+
+function $ka_args_static$(_e_0, _ctx_0, _tel_0, _xs_0) {
+  if (_xs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _xs_0["head"];
+    const _rest_0 = _xs_0["tail"];
+    return $kc$(($String$eq$(($tg$(_tel_0)), "All")), run_clo((_x_0) => {
+  return {$: "Con", "head": ($ka_field$(($annotate$(_e_0, _ctx_0, _h_0, run_loop($kid$(_tel_0, 0)))), ($qt$(_tel_0)))), "tail": run_loop($ka_args_static$(_e_0, _ctx_0, run_loop($kid$(_tel_0, 1)), _rest_0))};
+}), run_clo((_x_1) => {
+  return $ka_args_cached$(_e_0, _ctx_0, _tel_0, {$: "Con", "head": _h_0, "tail": _rest_0});
+}));
+  }
+}
+
+function $ka_args$(_e_0, _ctx_0, _tel_0, _xs_0) {
+  if (_xs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _xs_0["head"];
+    const _rest_0 = _xs_0["tail"];
+    return $ka_args_head$(_e_0, _ctx_0, run_loop($wnf$(($cb$(_e_0)), _tel_0)), _h_0, _rest_0);
+  }
+}
+
+function $env_tele_safe_terms$(_ts_0) {
   if (_ts_0.$ === "Nil") {
     return true;
   } else {
     const _h_0 = _ts_0["head"];
     const _rest_0 = _ts_0["tail"];
-    return $kc$(run_loop($core_subst_stable$(_h_0)), run_clo((_x_0) => {
-  return $core_subst_stable_terms$(_rest_0);
+    return $kc$(run_loop($env_tele_safe$(_h_0)), run_clo((_x_0) => {
+  return $env_tele_safe_terms$(_rest_0);
 }), run_clo((_x_1) => {
   return false;
 }));
   }
 }
 
-function $core_subst_stable_app_kids$(_kids_0) {
-  if (_kids_0.$ === "Nil") {
+function $core_subst_stable_app$(_kids_0, _removed_0) {
+  if (_removed_0.$ === "Con") {
     return false;
   } else {
-    const _f_0 = _kids_0["head"];
-    const _tail_0 = _kids_0["tail"];
-    return $core_subst_stable_app_tail$(_f_0, _tail_0);
+    return $core_subst_stable_app_kids$(_kids_0);
   }
 }
 
-function $env_subst_apply$(_t_0, _bindings_0) {
-  if (_bindings_0.$ === "Nil") {
-    return _t_0;
-  } else {
-    const _first_0 = _bindings_0["head"];
-    const _rest_0 = _bindings_0["tail"];
-    return $env_subst_start$(_t_0, {$: "Con", "head": _first_0, "tail": _rest_0}, _first_0, _rest_0);
-  }
+function $env_tele_apply$(_t_0, _bindings_0) {
+  return $env_subst_apply$(_t_0, _bindings_0);
 }
 
-function $qadd$(_a_0, _b_0) {
-  return $kc$((_a_0 === 0), run_clo((_x_0) => {
-  return _b_0;
-}), run_clo((_x_1) => {
-  return $kc$((_b_0 === 0), run_clo((_x_2) => {
-  return _a_0;
+function $env_tele_fill_open$(_book_0, _tel_0, _h_0, _rest_0) {
+  return $kc$(($String$eq$(($tg$(_tel_0)), "All")), run_clo((_x_0) => {
+  return $kc$(run_loop($env_tele_safe$(_tel_0)), run_clo((_x_1) => {
+  return $env_tele_fill_loop$(_book_0, run_loop($kid$(_tel_0, 1)), _rest_0, {$: "Con", "head": {$: "KTelescopeBinding", "id": ($ix$(_tel_0)), "value": _h_0}, "tail": {$: "Nil"}}, 1);
+}), run_clo((_x_2) => {
+  return $env_tele_fill_eager_head$(_book_0, _tel_0, _h_0, _rest_0);
+}));
 }), run_clo((_x_3) => {
-  return 2;
+  return $atom$("Error");
+}));
+}
+
+function $env_tele_fill_eager_head$(_book_0, _tel_0, _h_0, _rest_0) {
+  return $kc$(($String$eq$(($tg$(_tel_0)), "All")), run_clo((_x_0) => {
+  return $env_tele_fill_eager$(_book_0, run_loop($subst$(run_loop($kid$(_tel_0, 1)), ($ix$(_tel_0)), _h_0)), _rest_0);
+}), run_clo((_x_1) => {
+  return $atom$("Error");
+}));
+}
+
+function $mat_goal_head$(_book_0, _goal_0, _tel_0, _n_0, _name_0, _xs_0) {
+  const _x_0 = ($qt$(_tel_0));
+  return $all$(run_loop($kc$((_x_0 === 0), run_clo((_x_1) => {
+  return 0;
+}), run_clo((_x_2) => {
+  const _x_3 = ($qt$(_tel_0));
+  return $kc$((_x_3 === 1), run_clo((_x_4) => {
+  return $qt$(_goal_0);
+}), run_clo((_x_5) => {
+  return $qadd$(($qt$(_goal_0)), ($qt$(_goal_0)));
+}));
+}))), ($nm$(_tel_0)), ($ix$(_tel_0)), run_loop($kid$(_tel_0, 0)), run_loop($mat_goal$(_book_0, _goal_0, run_loop($kid$(_tel_0, 1)), ((_n_0 - 1) >>> 0), _name_0, ($norm_join$(_xs_0, {$: "Con", "head": ($var$(($nm$(_tel_0)), ($ix$(_tel_0)))), "tail": {$: "Nil"}})))));
+}
+
+function $remaining$(_cs_0, _removed_0) {
+  if (_cs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _cs_0["head"];
+    const _t_0 = _cs_0["tail"];
+    return $kc$(($has_name$(_removed_0, ($dn$(_h_0)))), run_clo((_x_0) => {
+  return $remaining$(_t_0, _removed_0);
+}), run_clo((_x_1) => {
+  return {$: "Con", "head": _h_0, "tail": run_loop($remaining$(_t_0, _removed_0))};
+}));
+  }
+}
+
+function $core_force$(_t_0) {
+  return $kc$(($String$eq$(($tg$(_t_0)), "Ann")), run_clo((_x_0) => {
+  return $core_force$(run_loop($kid$(_t_0, 0)));
+}), run_clo((_x_1) => {
+  const _x_2 = ($terms_len$(($ks$(_t_0))));
+  return $kc$(($Bool$and$(($String$eq$(($tg$(_t_0)), "Var")), (_x_2 > 0))), run_clo((_x_3) => {
+  return $core_force$(run_loop($kid$(_t_0, 0)));
+}), run_clo((_x_4) => {
+  return _t_0;
 }));
 }));
 }
@@ -28042,35 +28265,39 @@ function $nf_lambda$(_book_0, _t_0, _env_0, _n_0, _target_0) {
 function $nd_app_to$(_book_0, _t_0, _env_0, _n_0, _target_0) {
   const _head_0 = run_loop($nd_head$(_t_0));
   const _args_0 = run_loop($nd_args$(_t_0, {$: "Nil"}));
-  const _scalar_0 = run_loop($nd_scalar_call$(_book_0, _t_0));
-  return $nt_choose$(($Bool$not$(($String$eq$(_scalar_0, "")))), run_clo((_x_0) => {
-  const _x_1 = ($terms_len$(_args_0));
-  return $nc_lower_to$(_book_0, ($nc_sequence$("NOp", _scalar_0, _args_0, {$: "Nil"}, _n_0)), _env_0, ((_n_0 + _x_1) >>> 0), _target_0);
-}), run_clo((_x_2) => {
-  return $nt_choose$(($Bool$and$(($String$eq$(($tg$(_head_0)), "Efq")), ($Bool$not$(($nf_scheduler$(_target_0)))))), run_clo((_x_3) => {
-  return $nc_lower_to$(_book_0, _head_0, _env_0, _n_0, _target_0);
+  const _scalar_0 = run_loop($nt_choose$(($Bool$not$(($String$eq$(($dk$(run_loop($nf_host_payload$(($dc$(($index_first$(_book_0)))))))), "Absent")))), run_clo((_x_0) => {
+  return $nd_native_call$(_book_0, _t_0);
+}), run_clo((_x_1) => {
+  return $nd_scalar_call$(_book_0, _t_0);
+})));
+  return $nt_choose$(($Bool$not$(($String$eq$(_scalar_0, "")))), run_clo((_x_2) => {
+  const _x_3 = ($terms_len$(_args_0));
+  return $nc_lower_to$(_book_0, ($nc_sequence$("NOp", _scalar_0, _args_0, {$: "Nil"}, _n_0)), _env_0, ((_n_0 + _x_3) >>> 0), _target_0);
 }), run_clo((_x_4) => {
-  return $nt_choose$(($String$eq$(($tg$(_head_0)), "Lam")), run_clo((_x_5) => {
-  return $nc_lower_to$(_book_0, run_loop($nd_beta$(_head_0, _args_0)), _env_0, _n_0, _target_0);
+  return $nt_choose$(($Bool$and$(($String$eq$(($tg$(_head_0)), "Efq")), ($Bool$not$(($nf_scheduler$(_target_0)))))), run_clo((_x_5) => {
+  return $nc_lower_to$(_book_0, _head_0, _env_0, _n_0, _target_0);
 }), run_clo((_x_6) => {
-  const _x_7 = ($String$eq$(($tg$(_head_0)), "Mat"));
-  const _x_8 = ($String$eq$(($tg$(_head_0)), "NWPattern"));
-  const _x_9 = ($terms_len$(_args_0));
-  return $nt_choose$(($Bool$and$((_x_7 || _x_8), (_x_9 === 1))), run_clo((_x_10) => {
+  return $nt_choose$(($String$eq$(($tg$(_head_0)), "Lam")), run_clo((_x_7) => {
+  return $nc_lower_to$(_book_0, run_loop($nd_beta$(_head_0, _args_0)), _env_0, _n_0, _target_0);
+}), run_clo((_x_8) => {
+  const _x_9 = ($String$eq$(($tg$(_head_0)), "Mat"));
+  const _x_10 = ($String$eq$(($tg$(_head_0)), "NWPattern"));
+  const _x_11 = ($terms_len$(_args_0));
+  return $nt_choose$(($Bool$and$((_x_9 || _x_10), (_x_11 === 1))), run_clo((_x_12) => {
   return $nd_match_to$(_book_0, _head_0, run_loop($kid$(_t_0, 1)), _env_0, _n_0, _target_0);
-}), run_clo((_x_11) => {
-  const _x_12 = ($String$eq$(($tg$(_head_0)), "Mat"));
-  const _x_13 = ($String$eq$(($tg$(_head_0)), "NWPattern"));
-  const _x_14 = ($terms_len$(_args_0));
-  const _x_15 = ($nd_match_vars$(_args_0));
-  const _x_16 = ($Bool$and$(($Bool$not$(($nf_scheduler$(_target_0)))), ($nq_match_args$(_args_0))));
-  return $nt_choose$(($Bool$and$(($Bool$and$((_x_12 || _x_13), (_x_14 > 1))), (_x_15 || _x_16))), run_clo((_x_17) => {
-  const _x_18 = ($terms_len$(_args_0));
-  return $nc_lower_to$(_book_0, ($nd_match_sequence$(_head_0, _args_0, {$: "Nil"}, _n_0)), _env_0, ((_n_0 + _x_18) >>> 0), _target_0);
-}), run_clo((_x_19) => {
-  return $nt_choose$(($String$eq$(($tg$(_head_0)), "Ref")), run_clo((_x_20) => {
-  return $nd_ref_app$(_book_0, _t_0, _head_0, _args_0, _env_0, _n_0, _target_0);
+}), run_clo((_x_13) => {
+  const _x_14 = ($String$eq$(($tg$(_head_0)), "Mat"));
+  const _x_15 = ($String$eq$(($tg$(_head_0)), "NWPattern"));
+  const _x_16 = ($terms_len$(_args_0));
+  const _x_17 = ($nd_match_vars$(_args_0));
+  const _x_18 = ($Bool$and$(($Bool$not$(($nf_scheduler$(_target_0)))), ($nq_match_args$(_args_0))));
+  return $nt_choose$(($Bool$and$(($Bool$and$((_x_14 || _x_15), (_x_16 > 1))), (_x_17 || _x_18))), run_clo((_x_19) => {
+  const _x_20 = ($terms_len$(_args_0));
+  return $nc_lower_to$(_book_0, ($nd_match_sequence$(_head_0, _args_0, {$: "Nil"}, _n_0)), _env_0, ((_n_0 + _x_20) >>> 0), _target_0);
 }), run_clo((_x_21) => {
+  return $nt_choose$(($String$eq$(($tg$(_head_0)), "Ref")), run_clo((_x_22) => {
+  return $nd_ref_app$(_book_0, _t_0, _head_0, _args_0, _env_0, _n_0, _target_0);
+}), run_clo((_x_23) => {
   return $nf_slow_app$(_book_0, _t_0, _env_0, _n_0, _target_0);
 }));
 }));
@@ -28616,6 +28843,14 @@ function $nh_ctors$($0, $1, $2, $3, $4, $5) {
       }
     }
   }
+}
+
+function $nc_first_error$(_a_0, _b_0) {
+  return $nt_choose$(($String$eq$(($nc_error$(_a_0)), "")), run_clo((_x_0) => {
+  return $nc_error$(_b_0);
+}), run_clo((_x_1) => {
+  return $nc_error$(_a_0);
+}));
 }
 
 function $check_ctor_head$(_e_0, _d_0, _tel_0, _kind_0, _params_0, _fields_0, _ctx_0, _args_0) {
@@ -30919,22 +31154,50 @@ function $jd_host_marshal_on$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0)
 }));
 }
 
-function $core_subst_stable_app_tail$(_f_0, _tail_0) {
-  if (_tail_0.$ === "Nil") {
-    return false;
+function $core_subst_stable_terms$(_ts_0) {
+  if (_ts_0.$ === "Nil") {
+    return true;
   } else {
-    const _x_0 = _tail_0["head"];
-    const _rest_0 = _tail_0["tail"];
-    return $core_subst_stable_app_last$(_f_0, _x_0, _rest_0);
+    const _h_0 = _ts_0["head"];
+    const _rest_0 = _ts_0["tail"];
+    return $kc$(run_loop($core_subst_stable$(_h_0)), run_clo((_x_0) => {
+  return $core_subst_stable_terms$(_rest_0);
+}), run_clo((_x_1) => {
+  return false;
+}));
   }
 }
 
-function $env_subst_start$(_t_0, _bindings_0, _first_0, _rest_0) {
-  if (_rest_0.$ === "Nil") {
-    return $env_tele_apply_binding$(_t_0, _first_0);
+function $core_subst_stable_app_kids$(_kids_0) {
+  if (_kids_0.$ === "Nil") {
+    return false;
   } else {
-    return $env_subst_term$(_t_0, ($env_subst_reverse$(_bindings_0, {$: "Nil"})));
+    const _f_0 = _kids_0["head"];
+    const _tail_0 = _kids_0["tail"];
+    return $core_subst_stable_app_tail$(_f_0, _tail_0);
   }
+}
+
+function $env_subst_apply$(_t_0, _bindings_0) {
+  if (_bindings_0.$ === "Nil") {
+    return _t_0;
+  } else {
+    const _first_0 = _bindings_0["head"];
+    const _rest_0 = _bindings_0["tail"];
+    return $env_subst_start$(_t_0, {$: "Con", "head": _first_0, "tail": _rest_0}, _first_0, _rest_0);
+  }
+}
+
+function $qadd$(_a_0, _b_0) {
+  return $kc$((_a_0 === 0), run_clo((_x_0) => {
+  return _b_0;
+}), run_clo((_x_1) => {
+  return $kc$((_b_0 === 0), run_clo((_x_2) => {
+  return _a_0;
+}), run_clo((_x_3) => {
+  return 2;
+}));
+}));
 }
 
 function $j_pure_same_check$(_book_0, _a_0, _b_0, _fuel_0) {
@@ -31442,6 +31705,14 @@ function $nc_lambda$(_book_0, _t_0, _env_0, _n_0) {
   return $nc_closure_result$(_s_0, _body_0, ($ne_closure$(_name_0, ($nc_words$(_env_0)), ($nc_fresh$(_body_0)))));
 }
 
+function $nd_native_call$(_book_0, _t_0) {
+  return $nt_choose$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_0) => {
+  return $nd_native_head$(_book_0, _t_0, run_loop($nd_head$(_t_0)));
+}), run_clo((_x_1) => {
+  return "";
+}));
+}
+
 function $nd_scalar_call$(_book_0, _t_0) {
   const _name_0 = run_loop($nd_native_call$(_book_0, _t_0));
   return $nt_choose$(($String$eq$(_name_0, "")), run_clo((_x_0) => {
@@ -31927,10 +32198,6 @@ function $nol_params$(_book_0, _ty_0, _params_0, _roots_0, _specs_0, _seen_0, _f
 
 function $nol_failure$(_reason_0, _fresh_0) {
   return {$: "NO_Schema", "params": {$: "Nil"}, "roots": {$: "Nil"}, "wrapper": ($atom$("Absent")), "result": 0, "observation": "", "specs": {$: "Nil"}, "fresh": _fresh_0, "error": _reason_0};
-}
-
-function $nv_id$(_name_0) {
-  return {$: "KDef", "name": _name_0, "kind": "NativeId", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false};
 }
 
 function $ne_template_slow$($0, $1, $2) {
@@ -34561,53 +34828,21 @@ function $jd_host_marshal_status$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fue
 }));
 }
 
-function $core_subst_stable_app_last$(_f_0, _x_0, _rest_0) {
-  if (_rest_0.$ === "Con") {
+function $core_subst_stable_app_tail$(_f_0, _tail_0) {
+  if (_tail_0.$ === "Nil") {
     return false;
   } else {
-    return $Bool$not$(($String$eq$(($tg$(_f_0)), "Lam")));
+    const _x_0 = _tail_0["head"];
+    const _rest_0 = _tail_0["tail"];
+    return $core_subst_stable_app_last$(_f_0, _x_0, _rest_0);
   }
 }
 
-function $env_tele_apply_binding$(_t_0, _binding_0) {
-  const _id_0 = _binding_0["id"];
-  const _value_0 = _binding_0["value"];
-  return $subst$(_t_0, _id_0, _value_0);
-}
-
-function $env_subst_term$(_t_0, _bindings_0) {
-  if (_bindings_0.$ === "Nil") {
-    return _t_0;
+function $env_subst_start$(_t_0, _bindings_0, _first_0, _rest_0) {
+  if (_rest_0.$ === "Nil") {
+    return $env_tele_apply_binding$(_t_0, _first_0);
   } else {
-    const _binding_0 = _bindings_0["head"];
-    const _rest_0 = _bindings_0["tail"];
-    return $kc$(($String$eq$(($tg$(_t_0)), "Var")), run_clo((_x_0) => {
-  return $env_subst_find$(_t_0, {$: "Con", "head": _binding_0, "tail": _rest_0});
-}), run_clo((_x_1) => {
-  return $kc$(($core_literal$(_t_0)), run_clo((_x_2) => {
-  return _t_0;
-}), run_clo((_x_3) => {
-  return $k_with_children$(_t_0, ($env_subst_terms$(($ks$(_t_0)), {$: "Con", "head": _binding_0, "tail": _rest_0})));
-}));
-}));
-  }
-}
-
-function $env_subst_reverse$($0, $1) {
-  for (;;) {
-    {
-      const _bindings_0 = $0;
-      const _out_0 = $1;
-      if (_bindings_0.$ === "Nil") {
-        return _out_0;
-      } else {
-        const _binding_0 = _bindings_0["head"];
-        const _rest_0 = _bindings_0["tail"];
-        $0 = _rest_0;
-        $1 = {$: "Con", "head": _binding_0, "tail": _out_0};
-        continue;
-      }
-    }
+    return $env_subst_term$(_t_0, ($env_subst_reverse$(_bindings_0, {$: "Nil"})));
   }
 }
 
@@ -34990,10 +35225,15 @@ function $nc_words$(_env_0) {
   }
 }
 
-function $nd_native_call$(_book_0, _t_0) {
-  return $nt_choose$(($String$eq$(($tg$(_t_0)), "App")), run_clo((_x_0) => {
-  return $nd_native_head$(_book_0, _t_0, run_loop($nd_head$(_t_0)));
-}), run_clo((_x_1) => {
+function $nd_native_head$(_book_0, _t_0, _head_0) {
+  const _x_0 = ($qt$(_head_0));
+  return $nt_choose$(($Bool$and$(($String$eq$(($tg$(_head_0)), "Ref")), ($Bool$not$((_x_0 === 3))))), run_clo((_x_1) => {
+  return $nt_choose$(run_loop($nc_native_def$(run_loop($lookup$(_book_0, ($nm$(_head_0)))))), run_clo((_x_2) => {
+  return $nd_native_saturated$(_t_0, ($nc_primitive_name$(($nm$(_head_0)))));
+}), run_clo((_x_3) => {
+  return "";
+}));
+}), run_clo((_x_4) => {
   return "";
 }));
 }
@@ -37827,23 +38067,53 @@ function $jd_host_marshal_named$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel
 }));
 }
 
-function $env_subst_find$(_t_0, _bindings_0) {
+function $core_subst_stable_app_last$(_f_0, _x_0, _rest_0) {
+  if (_rest_0.$ === "Con") {
+    return false;
+  } else {
+    return $Bool$not$(($String$eq$(($tg$(_f_0)), "Lam")));
+  }
+}
+
+function $env_tele_apply_binding$(_t_0, _binding_0) {
+  const _id_0 = _binding_0["id"];
+  const _value_0 = _binding_0["value"];
+  return $subst$(_t_0, _id_0, _value_0);
+}
+
+function $env_subst_term$(_t_0, _bindings_0) {
   if (_bindings_0.$ === "Nil") {
     return _t_0;
   } else {
     const _binding_0 = _bindings_0["head"];
     const _rest_0 = _bindings_0["tail"];
-    return $env_subst_binding$(_t_0, _binding_0, _rest_0);
+    return $kc$(($String$eq$(($tg$(_t_0)), "Var")), run_clo((_x_0) => {
+  return $env_subst_find$(_t_0, {$: "Con", "head": _binding_0, "tail": _rest_0});
+}), run_clo((_x_1) => {
+  return $kc$(($core_literal$(_t_0)), run_clo((_x_2) => {
+  return _t_0;
+}), run_clo((_x_3) => {
+  return $k_with_children$(_t_0, ($env_subst_terms$(($ks$(_t_0)), {$: "Con", "head": _binding_0, "tail": _rest_0})));
+}));
+}));
   }
 }
 
-function $env_subst_terms$(_ts_0, _bindings_0) {
-  if (_ts_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _ts_0["head"];
-    const _rest_0 = _ts_0["tail"];
-    return {$: "Con", "head": run_loop($env_subst_term$(_h_0, _bindings_0)), "tail": ($env_subst_terms$(_rest_0, _bindings_0))};
+function $env_subst_reverse$($0, $1) {
+  for (;;) {
+    {
+      const _bindings_0 = $0;
+      const _out_0 = $1;
+      if (_bindings_0.$ === "Nil") {
+        return _out_0;
+      } else {
+        const _binding_0 = _bindings_0["head"];
+        const _rest_0 = _bindings_0["tail"];
+        $0 = _rest_0;
+        $1 = {$: "Con", "head": _binding_0, "tail": _out_0};
+        continue;
+      }
+    }
   }
 }
 
@@ -38016,15 +38286,12 @@ function $ne_node$(_prefix_0, _alloc_0, _ws_0, _n_0, _seal_0) {
   return {$: "N_Emitted", "code": ("u64 " + _x_4), "value": _name_0, "fresh": ((_n_0 + 1) >>> 0)};
 }
 
-function $nd_native_head$(_book_0, _t_0, _head_0) {
-  const _x_0 = ($qt$(_head_0));
-  return $nt_choose$(($Bool$and$(($String$eq$(($tg$(_head_0)), "Ref")), ($Bool$not$((_x_0 === 3))))), run_clo((_x_1) => {
-  return $nt_choose$(run_loop($nc_native_def$(run_loop($lookup$(_book_0, ($nm$(_head_0)))))), run_clo((_x_2) => {
-  return $nd_native_saturated$(_t_0, ($nc_primitive_name$(($nm$(_head_0)))));
+function $nd_native_saturated$(_t_0, _name_0) {
+  const _x_0 = ($terms_len$(run_loop($nd_args$(_t_0, {$: "Nil"}))));
+  const _x_1 = run_loop($nc_primitive_arity$(_name_0));
+  return $nt_choose$((_x_0 === _x_1), run_clo((_x_2) => {
+  return _name_0;
 }), run_clo((_x_3) => {
-  return "";
-}));
-}), run_clo((_x_4) => {
   return "";
 }));
 }
@@ -38612,7 +38879,7 @@ function $no_root_index$(_roots_0, _i_0) {
 function $noa_analyze_ready$(_ctx_0) {
   const _schema_0 = ($noa_schema$(_ctx_0));
   const _params_0 = ($noa_entry_values$(($no_schema_params$(_schema_0)), 0));
-  const _body_0 = run_loop($nc_definition_plain$(($noa_book$(_ctx_0)), run_loop($lookup$(($noa_book$(_ctx_0)), ($noa_owner$(_ctx_0)))), ($no_schema_fresh$(_schema_0))));
+  const _body_0 = run_loop($nc_source_body$(($noa_book$(_ctx_0)), run_loop($lookup$(($noa_book$(_ctx_0)), ($noa_owner$(_ctx_0)))), ($no_schema_fresh$(_schema_0))));
   return $noa_eval$(_ctx_0, _body_0, {$: "Nil"}, {$: "Nil"}, {$: "Nil"}, ($no_schema_fresh$(_schema_0)), 4096, run_clo((_x_0) => {
   return $noa_apply_args$(_ctx_0, ($noa_iv$(_x_0)), _params_0, ($noa_if$(_x_0)), ($noa_in$(_x_0)), ($noa_iu$(_x_0)), run_clo((_x_1) => {
   return $noa_finish$(_ctx_0, _x_1);
@@ -40510,15 +40777,24 @@ function $jd_host_marshal_body$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_
 }));
 }
 
-function $env_subst_binding$(_t_0, _binding_0, _rest_0) {
-  const _id_0 = _binding_0["id"];
-  const _value_0 = _binding_0["value"];
-  const _x_0 = ($ix$(_t_0));
-  return $kc$((_x_0 === _id_0), run_clo((_x_1) => {
-  return $env_subst_term$(_value_0, _rest_0);
-}), run_clo((_x_2) => {
-  return $env_subst_find$(_t_0, _rest_0);
-}));
+function $env_subst_find$(_t_0, _bindings_0) {
+  if (_bindings_0.$ === "Nil") {
+    return _t_0;
+  } else {
+    const _binding_0 = _bindings_0["head"];
+    const _rest_0 = _bindings_0["tail"];
+    return $env_subst_binding$(_t_0, _binding_0, _rest_0);
+  }
+}
+
+function $env_subst_terms$(_ts_0, _bindings_0) {
+  if (_ts_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _ts_0["head"];
+    const _rest_0 = _ts_0["tail"];
+    return {$: "Con", "head": run_loop($env_subst_term$(_h_0, _bindings_0)), "tail": ($env_subst_terms$(_rest_0, _bindings_0))};
+  }
 }
 
 function $nq_layout_dep$(_ty_0, _ids_0) {
@@ -40537,16 +40813,6 @@ function $nq_layout_leaf$(_field_0, _owner_0, _seen_0) {
   const _x_0 = ($String$eq$(($tg$(_field_0)), "Absent"));
   const _x_1 = ($String$eq$(($tg$(_field_0)), "Ref"));
   return $Bool$and$(($Bool$and$(($Bool$not$((_x_0 || _x_1))), ($Bool$not$(($nq_layout_dep$(_field_0, _seen_0)))))), ($Bool$not$(($Bool$and$(($String$eq$(($tg$(_field_0)), "ADT")), ($String$eq$(($nm$(_field_0)), ($nm$(_owner_0)))))))));
-}
-
-function $nd_native_saturated$(_t_0, _name_0) {
-  const _x_0 = ($terms_len$(run_loop($nd_args$(_t_0, {$: "Nil"}))));
-  const _x_1 = run_loop($nc_primitive_arity$(_name_0));
-  return $nt_choose$((_x_0 === _x_1), run_clo((_x_2) => {
-  return _name_0;
-}), run_clo((_x_3) => {
-  return "";
-}));
 }
 
 function $nd_partial_selected$(_book_0, _head_0, _args_0, _env_0, _n_0, _arity_0, _d_0) {
@@ -41215,6 +41481,20 @@ function $noa_entry_values$(_params_0, _i_0) {
   }
 }
 
+function $nc_source_body$(_book_0, _d_0, _n_0) {
+  const _fact_0 = run_loop($ns_body$(_book_0, ($dn$(_d_0))));
+  const _original_0 = run_loop($nt_choose$(($String$eq$(($dk$(_fact_0)), "NativeStaticBody")), run_clo((_x_0) => {
+  return $index_first$(($dc$(_fact_0)));
+}), run_clo((_x_1) => {
+  return _fact_0;
+})));
+  return $nt_choose$(($Bool$and$(($String$eq$(($dk$(_original_0)), "NativeErasedBody")), ($String$eq$(($dn$(_original_0)), ($dn$(_d_0)))))), run_clo((_x_2) => {
+  return $dv$(_original_0);
+}), run_clo((_x_3) => {
+  return $nc_definition_plain$(_book_0, _d_0, _n_0);
+}));
+}
+
 function $noa_book$(_c_0) {
   const _b_0 = _c_0["book"];
   return _b_0;
@@ -41291,9 +41571,11 @@ function $nol_root_specs$(_book_0, _ty_0) {
 function $nol_scalar$(_book_0, _ty_0) {
   const _d_0 = run_loop($lookup$(_book_0, ($nm$(_ty_0))));
   return $nt_choose$(($Bool$and$(($nol_plain$(_ty_0)), ($nol_owner$(_book_0, _ty_0)))), run_clo((_x_0) => {
-  const _x_1 = ($Bool$and$(($db$(_d_0)), ($nb_contains$({$: "Con", "head": "Nat", "tail": {$: "Con", "head": "Char", "tail": {$: "Con", "head": "U32", "tail": {$: "Con", "head": "F32", "tail": {$: "Nil"}}}}}, ($dn$(_d_0))))));
-  const _x_2 = ($Bool$and$(($Bool$not$(($List$is_empty$(($dc$(_d_0)))))), run_loop($nol_enum$(_book_0, _ty_0, ($dc$(_d_0)), 32))));
-  return (_x_1 || _x_2);
+  return $nt_choose$(($Bool$and$(($db$(_d_0)), ($nb_contains$({$: "Con", "head": "Nat", "tail": {$: "Con", "head": "Char", "tail": {$: "Con", "head": "U32", "tail": {$: "Con", "head": "F32", "tail": {$: "Nil"}}}}}, ($dn$(_d_0)))))), run_clo((_x_1) => {
+  return true;
+}), run_clo((_x_2) => {
+  return $Bool$and$(($Bool$not$(($List$is_empty$(($dc$(_d_0)))))), run_loop($nol_enum$(_book_0, _ty_0, ($dc$(_d_0)), 32)));
+}));
 }), run_clo((_x_3) => {
   return false;
 }));
@@ -42677,6 +42959,17 @@ function $jd_host_ctor_tags$(_ctors_0) {
   }
 }
 
+function $env_subst_binding$(_t_0, _binding_0, _rest_0) {
+  const _id_0 = _binding_0["id"];
+  const _value_0 = _binding_0["value"];
+  const _x_0 = ($ix$(_t_0));
+  return $kc$((_x_0 === _id_0), run_clo((_x_1) => {
+  return $env_subst_term$(_value_0, _rest_0);
+}), run_clo((_x_2) => {
+  return $env_subst_find$(_t_0, _rest_0);
+}));
+}
+
 function $nd_comb_literal$(_args_0) {
   if (_args_0.$ === "Nil") {
     return false;
@@ -43318,9 +43611,13 @@ function $nol_scalar_specs$(_book_0, _defs_0) {
     const _d_0 = _defs_0["head"];
     const _rest_0 = _defs_0["tail"];
     const _ty_0 = ($kt$("ADT", ($dn$(_d_0)), 0, 0, {$: "Nil"}));
-    return $nt_choose$(($Bool$and$(($String$eq$(($dk$(_d_0)), "ADT")), run_loop($nol_scalar$(_book_0, _ty_0)))), run_clo((_x_0) => {
-  return $List$append$(run_loop($nol_scalar_ctors$(_book_0, _ty_0, ($dc$(_d_0)))), run_loop($nol_scalar_specs$(_book_0, _rest_0)));
+    return $nt_choose$(run_loop($nt_choose$(($String$eq$(($dk$(_d_0)), "ADT")), run_clo((_x_0) => {
+  return $nol_scalar$(_book_0, _ty_0);
 }), run_clo((_x_1) => {
+  return false;
+}))), run_clo((_x_2) => {
+  return $List$append$(run_loop($nol_scalar_ctors$(_book_0, _ty_0, ($dc$(_d_0)))), run_loop($nol_scalar_specs$(_book_0, _rest_0)));
+}), run_clo((_x_3) => {
   return $nol_scalar_specs$(_book_0, _rest_0);
 }));
   }
@@ -46646,19 +46943,23 @@ function $noa_reference$(_ctx_0, _name_0, _args_0, _facts_0, _stack_0, _n_0, _fu
   return $nt_choose$(($String$eq$(_name_0, ($noa_owner$(_ctx_0)))), run_clo((_x_6) => {
   return $noa_recur$(_ctx_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0);
 }), run_clo((_x_7) => {
-  return $nt_choose$(($Bool$and$(run_loop($nc_native_def$(_d_0)), ($nd_scalar_known$(($nc_primitive_name$(_name_0)))))), run_clo((_x_8) => {
-  return $noa_primitive$(_ctx_0, _name_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0);
+  return $nt_choose$(run_loop($nt_choose$(run_loop($nc_native_def$(_d_0)), run_clo((_x_8) => {
+  return $nd_scalar_known$(($nc_primitive_name$(_name_0)));
 }), run_clo((_x_9) => {
-  const _x_10 = ($nc_foreign$(_d_0));
-  const _x_11 = run_loop($nc_native_def$(_d_0));
-  const _x_12 = (_x_10 || _x_11);
-  const _x_13 = ($nb_contains$(_stack_0, _name_0));
-  const _x_14 = ($nt_count$(_stack_0));
-  return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($Bool$not$((_x_12 || _x_13))))), (_x_14 < 8))), run_clo((_x_15) => {
-  return $noa_eval$(_ctx_0, run_loop($nc_definition_plain$(($noa_book$(_ctx_0)), _d_0, _n_0)), {$: "Nil"}, _facts_0, {$: "Con", "head": _name_0, "tail": _stack_0}, _n_0, _fuel_0, run_clo((_x_16) => {
-  return $noa_apply_args$(_ctx_0, ($noa_iv$(_x_16)), _args_0, ($noa_if$(_x_16)), ($noa_in$(_x_16)), ($noa_iu$(_x_16)), _k_0);
+  return false;
+}))), run_clo((_x_10) => {
+  return $noa_primitive$(_ctx_0, _name_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0);
+}), run_clo((_x_11) => {
+  const _x_12 = ($nc_foreign$(_d_0));
+  const _x_13 = run_loop($nc_native_def$(_d_0));
+  const _x_14 = (_x_12 || _x_13);
+  const _x_15 = ($nb_contains$(_stack_0, _name_0));
+  const _x_16 = ($nt_count$(_stack_0));
+  return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($Bool$not$((_x_14 || _x_15))))), (_x_16 < 8))), run_clo((_x_17) => {
+  return $noa_eval$(_ctx_0, run_loop($nc_source_body$(($noa_book$(_ctx_0)), _d_0, _n_0)), {$: "Nil"}, _facts_0, {$: "Con", "head": _name_0, "tail": _stack_0}, _n_0, _fuel_0, run_clo((_x_18) => {
+  return $noa_apply_args$(_ctx_0, ($noa_iv$(_x_18)), _args_0, ($noa_if$(_x_18)), ($noa_in$(_x_18)), ($noa_iu$(_x_18)), _k_0);
 }));
-}), run_clo((_x_17) => {
+}), run_clo((_x_19) => {
   return $noa_fail$("observer: helper effect, cycle or depth", _n_0, _fuel_0);
 }));
 }));
@@ -54397,6 +54698,7 @@ export default {
   "diagnostic_render_loaded": run_lib((a0, a1) => { const r = (run_loop($diagnostic_render_loaded$((a0), (a1)))); (a0); (a1); return r; }, 2),
   "j_compile_error": run_lib((a0) => { const r = (run_loop($j_compile_error$((a0)))); (a0); return r; }, 1),
   "j_layout_error": run_lib((a0, a1, a2, a3) => { const r = (run_loop($j_layout_error$((a0), (a1), (a2), (a3)))); (a0); (a1); (a2); (a3); return r; }, 4),
+  "jl_checked_error": run_lib((a0, a1, a2, a3) => { const r = (run_loop($jl_checked_error$((a0), (a1), (a2), (a3)))); (a0); (a1); (a2); (a3); return r; }, 4),
   "reach_book": run_lib((a0, a1, a2) => { const r = (run_loop($reach_book$((a0), (a1), (a2)))); (a0); (a1); (a2); return r; }, 3),
   "j_roots": run_lib((a0, a1) => { const r = (run_loop($j_roots$((a0), (a1)))); (a0); (a1); return r; }, 2),
   "j_stops": run_lib((a0) => { const r = (run_loop($j_stops$((a0)))); (a0); return r; }, 1),

@@ -5,6 +5,16 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed implementation: Phase78 retained native work
+
+[Report](../implementation/phase78/README.md). Installed genuine B2 `cc99ac9b…`.
+Paired fresh C request time decreases8.2% B1/5.6% B2, reaching1.732×/1.382×
+upstream. Native execution is effectively unchanged and all23 JS benchmark source
+outputs remain exact. Selected source/selfhosting/installed gates pass; known gaps
+remain. Reject larger branch/tag/early-observer prototypes, retain154 added Bend
+lines. Parity remains open. The next separately measured library-product experiment
+is in [Phase79](../design/phase79/prepared-native-library.md).
+
 ## Completed implementation: Phase77 B2 and compact native lowering
 
 [Design](../design/phase77/native-parity.md) · [Report](../implementation/phase77/README.md).

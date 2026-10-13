@@ -5,20 +5,21 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-The default package is genuine **Phase77 B2** (`35d7a606…`), emitted by the Bend
-compiler itself, with its checked B1 parent and self-check/fixed-point receipts
-retained in `selfhost/dist/release-lineage/`. The [Phase77 report](../implementation/phase77/README.md)
-records fresh C-request ratios **1.920× B1 /1.482× B2 upstream**:30.7%/23.1% less
-time than the paired previous source. Selecting B2 as default and optimizing its
-source together reduce default request time46.6%. Native execution measures
-**1.055× upstream**, with an explicitly accepted1.8% aggregate regression versus
-the prior compiler and a14.25% expression-case regression. Known gaps remain.
+The default package is genuine **Phase78 B2** (`cc99ac9b…`), emitted by the Bend
+compiler itself, with checked B1 and self-check/fixed-point lineage retained.
+The [Phase78 report](../implementation/phase78/README.md) records paired fresh C-request ratios
+**1.732× B1 /1.382× B2 upstream**,8.2%/5.6% less time than Phase77 measured
+alongside. These clocks exclude imports, prepared Bend Base, Clang and execution;
+upstream checks Base within its request. Parity remains open.
 
-The [native compilation guide](self_hosted/NATIVE_COMPILATION.md) documents the
-new persistent C-emission session. Five mixed programs measure about**1.10×**
-upstream with both compiler processes reused, including session integrity checks.
-This short warm comparison is separate from cold requests and Clang execution.
-Installed/relocated legacy42/default24 and the qualified B2 lineage pass.
+Generated C execution is effectively unchanged versus Phase77: **1.002×** its
+time across12 families (**1.067× upstream**). All23 JS benchmark sources remain
+byte-identical, covering45 points. Selected conformance and installed/relocated
+checks pass; known gaps remain. Source grows154 lines, with no new module.
+
+The [native session guide](self_hosted/NATIVE_COMPILATION.md) documents repeated C-emission requests.
+The older Phase77 warm-session result (about1.10× upstream over five mixed
+programs) is historical and separate from these fresh-request measurements.
 
 To install a qualified B2 explicitly, run from `selfhost/`:
 

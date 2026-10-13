@@ -1,5 +1,21 @@
 # Compiler validation
 
+## Phase78 retained native facts
+
+[Report](../implementation/phase78/README.md) ·
+[Source qualification](../implementation/phase78/source-qualification.json) ·
+[Installed release](../implementation/phase78/release.json).
+Installed genuine B2 `cc99ac9b…`, checked B1 parent `475610ea…`. Frontend36,
+candidate native100,raw31,new14,word10,held-out2,JS9 and28 threaded executions
+pass. The reference retains the same seven native failures; the paired native100
+controller returns nonzero and is not relabeled universally passing. B2 driver8,
+fresh own-source type acceptance and exactB3 pass; all12 B2 C outputs equal B1.
+All23 JS benchmark sources equal qualified Phase66 bytes, covering45 points.
+All108 C execution intervals and75 paired fresh compilation requests qualify.
+Installed/relocated legacy42/default24 and native-session CLI controls pass.
+Thirteen broader native API gaps, finite frontend/JS limits and physical GPU
+deferrals remain. This is not an independent mathematical compiler proof.
+
 ## Phase73 ownership and scalar-fact qualification
 
 [Report](../implementation/phase73/README.md) ·

@@ -1,6 +1,8 @@
 # Phase78: retained native facts and nonescaping entries
 
-Compiler21 is qualified; installation is the next step. Parity remains unachieved.
+Compiler21 is installed as genuine B2 `cc99ac9b…`, with its checked B1 parent
+and exact B3 reproduction. [Installed/relocated checks](release.json) pass.
+Parity remains unachieved.
 [Design](../../design/phase78/b1-parity.md). No agents; one guarded CPU3 process
 tree, 2GiB aggregate RSS, 4GiB available-memory floor. No upstream modifications.
 
@@ -162,3 +164,16 @@ P78-009 tests early observer planning to avoid lowering proved-redundant generic
 bodies. Compiler18 hit Bend's match-placement restriction and compiler19 its
 affine binder rule; both failures are preserved. Corrected compiler20 is pending.
 No cached-library mode is implemented and parity remains an unachieved target.
+
+## Final installed checkpoint and time accounting
+
+Compiler21 is now installed and passes the installed/relocated42/24 checks and
+five real session-CLI checks. Earlier pending-installation statements above are
+chronological experiment checkpoints; [release receipts](release.json) are final.
+[Guard accounting](timing-account.json) records41.65 minutes of guarded execution
+within117.77 minutes spanned by those receipts, with overlapping guards counted
+once. The remainder includes analysis, editing, orchestration and unrecorded
+intervals; this is not a quota estimate. Peak recorded tree RSS was1.66GiB.
+No warm-session timing was repeated in this phase.
+
+[Complete verified evidence](../../selfhost/tools/performance/phase78/evidence01/README.md) preserves selected and rejected attempts.

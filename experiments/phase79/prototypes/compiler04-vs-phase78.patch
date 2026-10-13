@@ -1,0 +1,391 @@
+diff --git a/selfhost/src/back/native/flat.bend b/selfhost/src/back/native/flat.bend
+index aa8ceae..108f4a8 100644
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -168,7 +168,11 @@ def nf_ref(+book: List<&2, KDef>, +t: KTerm, +n: U32, +target: NC_Target) -> NC_
+     nt_choose(NC_Code, U32.is_eq(nd_arity(book, nm(t)), 0) && Bool.not(U32.is_eq(qt(t), 3)), u => nq_call(book, kt("NFCall", nm(t), 0, 0, Nil{}), Nil{}, n, target), u => nc_fail("flat worker: unsaturated or bang reference", n)))
+ 
+ @unsafe
+-def nf_candidate(+book: List<&2, KDef>, +name: String, +signatures: List<&2, KDef>) -> NF_Worker:
++def nf_candidate(+book: List<&2,KDef>, +name: String, +signatures: List<&2,KDef>) -> NF_Worker:
++  nl_candidate(book, name, signatures)
++
++@unsafe
++def nf_candidate_plain(+book: List<&2, KDef>, +name: String, +signatures: List<&2, KDef>) -> NF_Worker:
+   +params = nk_typed_bindings(nd_entry_params(nd_arity(book, name), 0), nf_worker_kinds(book, name, nd_arity(book, name)))
+   +body = nc_compact_definition(book, lookup(book, name), 0)
+   +shape = atom("Absent")
+diff --git a/selfhost/src/back/native/manifest.txt b/selfhost/src/back/native/manifest.txt
+index 458334f..3a3f4f6 100644
+--- a/selfhost/src/back/native/manifest.txt
++++ b/selfhost/src/back/native/manifest.txt
+@@ -32,3 +32,5 @@ observer-literals.bend
+ observer-analysis.bend
+ observer-plan.bend
+ observer-integration.bend
++request.bend
++library-products.bend
+diff --git a/selfhost/src/back/native/request.bend b/selfhost/src/back/native/request.bend
+index b81f40a..370b4a1 100644
+--- a/selfhost/src/back/native/request.bend
++++ b/selfhost/src/back/native/request.bend
+@@ -16,9 +16,10 @@ def nr_walk(+book: List<&2, KDef>, todo: List<&2, String>, +done: List<&2, Strin
+ 
+ @unsafe
+ def nr_visit(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +facts: List<&2, KDef>, +d: KDef) -> NR_Closure:
+-  +body = nc_definition_plain(book, d, 0)
++  +prior = nl_erased(book, name)
++  +body = nt_choose(KTerm, String.eq(dk(prior), "NativeErasedBody"), u => dv(prior), u => nc_definition_plain(book, d, 0))
+   +more = nt_choose(List<&2, KDef>, String.eq(dk(d), "Def") && Bool.not(nc_native_def(d) || nc_foreign(d)),
+-    u => Con{KDef{name, "NativeErasedBody", nd_arity_plain(book, name), 1, atom("Absent"), body, Nil{}, False{}, False{}}, facts}, u => facts)
++    u => Con{KDef{name, "NativeErasedBody", nt_choose(U32, String.eq(dk(prior), "NativeErasedBody"), u => da(prior), u => nd_arity_plain(book, name)), 1, atom("Absent"), body, Nil{}, False{}, False{}}, facts}, u => facts)
+   nr_walk(book, nt_append(String, nc_refs(body), todo), Con{name, done}, more)
+ 
+ @unsafe
+diff --git a/selfhost/src/back/native/static.bend b/selfhost/src/back/native/static.bend
+index 0dc7c46..5798102 100644
+--- a/selfhost/src/back/native/static.bend
++++ b/selfhost/src/back/native/static.bend
+@@ -228,7 +228,7 @@ def ns_attach_book(+book: List<&2, KDef>, +facts: List<&2, KDef>, +size: U32, +w
+   match book:
+     case Con{cache, rest}:
+       Con{KDef{dn(cache), dk(cache), da(cache), dx(cache), dt(cache), dv(cache),
+-        [index_first(dc(cache)), KDef{"$native.static", "NativeStaticContext", 0, 0, kt("NativeImage", "", size, 0, ns_image_terms(nt_reverse(String, words, Nil{}))), atom("Absent"), [index_build(facts), nc_ctor_prepare(book)], False{}, False{}}], db(cache), du(cache)}, rest}
++        [index_first(dc(cache)), KDef{"$native.static", "NativeStaticContext", 0, 0, kt("NativeImage", "", size, 0, ns_image_terms(nt_reverse(String, words, Nil{}))), atom("Absent"), [index_build(facts), nc_ctor_prepare(book), nl_payload(book)], False{}, False{}}], db(cache), du(cache)}, rest}
+     case _: book
+ 
+ @unsafe
+diff --git a/selfhost/src/compiler.json b/selfhost/src/compiler.json
+index 57a8fcf..5640c8b 100644
+--- a/selfhost/src/compiler.json
++++ b/selfhost/src/compiler.json
+@@ -124,6 +124,7 @@
+     "src/back/native/book.bend",
+     "src/back/native/static.bend",
+     "src/back/native/request.bend",
++    "src/back/native/library-products.bend",
+     "src/back/native/observer-emitter.bend",
+     "src/back/native/observer-adapter.bend",
+     "src/back/native/observer-layout.bend",
+diff --git a/selfhost/tools/typed-driver.mjs b/selfhost/tools/typed-driver.mjs
+index b715194..4487c96 100644
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -100,6 +100,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
+     exports.push('nc_compile','nc_foreign_paths');
+     if(files.includes('src/back/native/scalar-array.bend'))exports.push('nc_compile_checked');
+     if(files.includes('src/back/native/request.bend'))exports.push('nr_prepare','nr_compile');
++    if(files.includes('src/back/native/library-products.bend'))exports.push('base_native_prepare','nr_prepare_library');
+     if(fs.readFileSync(path.join(project,'src/back/native/book.bend'),'utf8').includes('nc_annotation_stops('))exports.push('nc_annotation_stops','nc_annotated_context');
+   }
+   if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source','nc_foreign_scope');
+@@ -580,23 +581,23 @@ const BASE_ANNOTATIONS='bend-base-annotations-1',BASE_ANNOTATION_WORK=64;
+ // A changed or custom Base uses ordinary annotation until independently qualified.
+ const BASE_ANNOTATION_BASE_SHA256='99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf';
+ const baseAnnotationApis=api=>['base_annotation_prepare','base_annotation_wanted','base_annotation_allowed','annotate_selected_base'].every(name=>typeof api[name]==='function');
+-const baseAnnotationFile=info=>path.join(baseAnnotationDirectory,path.basename(info.file).replace(/-frame4\.json$/,'-annotations64-v1.bin'));
++const baseAnnotationFile=(info,native=false)=>path.join(baseAnnotationDirectory,path.basename(info.file).replace(/-frame4\.json$/,native?'-native64-v1.bin':'-annotations64-v1.bin'));
+ function readAnnotationBytes(fd,length,position) {
+   const bytes=Buffer.allocUnsafe(length);let at=0;
+   while(at<length){const count=fs.readSync(fd,bytes,at,length-at,position+at);if(!count)throw Error('Truncated Base annotation product');at+=count;}
+   return bytes;
+ }
+-function withBaseAnnotationFile(info,cached,consume) {
++function withBaseAnnotationFile(info,cached,consume,native=false) {
+   if(info.baseSha256!==BASE_ANNOTATION_BASE_SHA256)return null;
+   const binding=baseAnnotationFrames.get(cached?.preparedWorld);if(!binding)return null;
+   let fd;
+   try {
+-    fd=fs.openSync(baseAnnotationFile(info),'r');const size=fs.fstatSync(fd).size;
++    fd=fs.openSync(baseAnnotationFile(info,native),'r');const size=fs.fstatSync(fd).size;
+     if(size<36||size>128*1024*1024+65540)return null;
+     const length=readAnnotationBytes(fd,4,0).readUInt32LE(0);if(!length||length>65536||length+36>size)return null;
+     const header=JSON.parse(readAnnotationBytes(fd,length,4).toString('utf8'));
+     if(header===null||typeof header!=='object'||Array.isArray(header))return null;
+-    const expected={format:BASE_ANNOTATIONS,version:1,producer:'base_annotation_prepare',minimumWork:BASE_ANNOTATION_WORK,
++    const expected={format:native?'bend-base-native-1':BASE_ANNOTATIONS,version:1,producer:native?'base_native_prepare':'base_annotation_prepare',minimumWork:BASE_ANNOTATION_WORK,
+       compilerSha256:info.compilerSha256,baseSha256:info.baseSha256,sourcePath:info.sourcePath,termAbi:info.termAbi,
+       spanAbi:cached.spanAbi,sourceBegin:cached.sourceBegin,sourceEnd:cached.sourceEnd,
+       bookGraphSha256:binding.bookGraphSha256,preparedGraphSha256:binding.preparedGraphSha256};
+@@ -614,18 +615,19 @@ function decodeBaseAnnotationProduct({fd,offset,header,binding,options}) {
+   const product=decodeBaseArena(bytes,{...options,base:binding.graph,rootKinds:['defs']}).roots[0];
+   if(product===null)throw Error('Missing Base annotation product');return product;
+ }
+-function readBaseAnnotations(api,info,cached,load,selected,stops) {
++function readBaseAnnotations(api,info,cached,load,selected,stops,native=false) {
+   return withBaseAnnotationFile(info,cached,record=>{
+     if(!api.base_annotation_wanted(selected,stops,record.keys)||!api.base_annotation_allowed(load,cached.preparedWorld))return null;
+     return decodeBaseAnnotationProduct(record);
+-  });
++  },native);
+ }
+-function prepareBaseAnnotations(api,cached,info) {
++function prepareBaseAnnotations(api,cached,info,native=false) {
++  if(native&&typeof api.base_native_prepare!=='function')return false;
+   if(info.baseSha256!==BASE_ANNOTATION_BASE_SHA256)return false;
+   if(!baseAnnotationApis(api)||!baseAnnotationFrames.has(cached?.preparedWorld))return false;
+-  if(withBaseAnnotationFile(info,cached,record=>{decodeBaseAnnotationProduct(record);return true;}))return true;
++  if(withBaseAnnotationFile(info,cached,record=>{decodeBaseAnnotationProduct(record);return true;},native))return true;
+   try {
+-    const state=api.base_annotation_prepare(cached.preparedWorld,BASE_ANNOTATION_WORK);
++    const state=api[native?'base_native_prepare':'base_annotation_prepare'](cached.preparedWorld,BASE_ANNOTATION_WORK);
+     if(state?.$!=='KBaseAnnotationState')return false;
+     const binding=baseAnnotationFrames.get(cached.preparedWorld),book=encodeBaseArena([cached.book]);
+     const prepared=encodeBaseArena([cached.checkedPrefixState??null,cached.freshPrefixState??null,cached.preparedWorld??null,cached.frontendReadyState??null],book);
+@@ -634,20 +636,20 @@ function prepareBaseAnnotations(api,cached,info) {
+     const options={range:{begin:cached.sourceBegin,end:cached.sourceEnd},termAbi:info.termAbi};
+     if(decodeBaseArena(keys,{...options,rootKinds:['strings']}).roots[0]===null||
+       decodeBaseArena(product,{...options,base:binding.graph,rootKinds:['defs']}).roots[0]===null)return false;
+-    const header={format:BASE_ANNOTATIONS,version:1,producer:'base_annotation_prepare',minimumWork:BASE_ANNOTATION_WORK,
++    const header={format:native?'bend-base-native-1':BASE_ANNOTATIONS,version:1,producer:native?'base_native_prepare':'base_annotation_prepare',minimumWork:BASE_ANNOTATION_WORK,
+       compilerSha256:info.compilerSha256,baseSha256:info.baseSha256,sourcePath:info.sourcePath,termAbi:info.termAbi,
+       spanAbi:cached.spanAbi,sourceBegin:cached.sourceBegin,sourceEnd:cached.sourceEnd,
+       bookGraphSha256:binding.bookGraphSha256,preparedGraphSha256:binding.preparedGraphSha256,
+       keys:keys.toString('base64'),keysSha256:digest(keys),productBytes:product.length,productSha256:digest(product)};
+     const text=Buffer.from(JSON.stringify(header));if(text.length>65536)return false;
+     const length=Buffer.alloc(4);length.writeUInt32LE(text.length);
+-    const file=baseAnnotationFile(info),staged=file+'.tmp-'+process.pid;fs.mkdirSync(baseAnnotationDirectory,{recursive:true});
++    const file=baseAnnotationFile(info,native),staged=file+'.tmp-'+process.pid;fs.mkdirSync(baseAnnotationDirectory,{recursive:true});
+     try{fs.writeFileSync(staged,Buffer.concat([length,text,product]),{flag:'wx'});fs.renameSync(staged,file);}finally{fs.rmSync(staged,{force:true});}
+     return true;
+   }catch(error){trace('optional Base annotation preparation unavailable: '+error.message);return false;}
+ }
+ 
+-export async function prepareBase(api,{backendProducts=true}={}) {
++export async function prepareBase(api,{backendProducts=true,nativeProducts=false}={}) {
+   api??=await loadApi();
+   requireLoaderApi(api);
+   const info=baseCacheInfo(api),prior=readBaseCache(info);
+@@ -655,7 +657,7 @@ export async function prepareBase(api,{backendProducts=true}={}) {
+   const wantFrontend=typeof api.f_ready_prefix_prepare==='function'&&typeof api.f_prefix_complete_ready_seed==='function';
+   // Inspection accepts older frames; explicit preparation writes the selected
+   // transport when only an older filename exists. Corrupt present files refuse.
+-  if(prior&&fs.existsSync(info.file)&&(!wantWorld||prior.preparedWorld)&&(!wantFrontend||prior.frontendReadyState)){if(backendProducts)prepareBaseAnnotations(api,prior,info);return prior;}
++  if(prior&&fs.existsSync(info.file)&&(!wantWorld||prior.preparedWorld)&&(!wantFrontend||prior.frontendReadyState)){if(backendProducts)prepareBaseAnnotations(api,prior,info);if(nativeProducts)prepareBaseAnnotations(api,prior,info,true);return prior;}
+   const raw={$:'FSource',name:'Base',path:info.sourcePath,text:info.sourceText};
+   const range=info.version>=SPAN_CACHE?interval(1,info.sourceText):null;
+   const source=range?api.f_source_located(raw,range.begin,range.end):raw;
+@@ -694,7 +696,7 @@ export async function prepareBase(api,{backendProducts=true}={}) {
+   fs.mkdirSync(directory,{recursive:true});
+   const staged=file+'.tmp-'+process.pid;
+   try {fs.writeFileSync(staged,range?(file.endsWith('-frame4.json')?encodeBaseCacheArenaFrame(cached):encodeBaseCacheFrame(cached,bookJson)):JSON.stringify(cached));fs.renameSync(staged,file);} finally {fs.rmSync(staged,{force:true});}
+-  if(backendProducts&&baseAnnotationApis(api)){const admitted=readBaseCache(info);if(admitted)prepareBaseAnnotations(api,admitted,info);}
++  if((backendProducts||nativeProducts)&&baseAnnotationApis(api)){const admitted=readBaseCache(info);if(admitted){if(backendProducts)prepareBaseAnnotations(api,admitted,info);if(nativeProducts)prepareBaseAnnotations(api,admitted,info,true);}}
+   return {...cached,sourceText:info.sourceText};
+ }
+ 
+@@ -878,11 +880,12 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
+       if(error)return {status:'error',phase,diagnostic:error.startsWith('Error:')?error:'Error: '+error,exitCode:1,checked:true};
+     }
+     trace('annotate book');
+-    let layoutDefs,layoutStops,directPlan;
++    let layoutDefs,layoutStops,directPlan,nativeProducts;
+     if(mode==='native'&&api.nc_annotation_stops&&api.nc_annotated_context&&api.reach_book&&api.annotate_selected) {
+       const stops=api.nc_annotation_stops(contextBook);
+       const selected=api.reach_book(contextBook,list(['main']),stops);
+-      layoutDefs=api.annotate_selected(contextBook,selected,stops);layoutStops=stops;
++      nativeProducts=ownedApi&&usedPreparedWorld&&baseAnnotationApis(api)&&typeof api.nr_prepare_library==='function'?readBaseAnnotations(api,info,cached,graph.prefixLoad,selected,stops,true):null;
++      layoutDefs=nativeProducts?api.annotate_selected_base(contextBook,selected,stops,nativeProducts):api.annotate_selected(contextBook,selected,stops);layoutStops=stops;
+       book=api.nc_annotated_context(contextBook,layoutDefs);
+     } else if(selectedEmission){
+       const products=usedPreparedWorld&&backend==='direct'&&baseAnnotationApis(api)?readBaseAnnotations(api,info,cached,graph.prefixLoad,book,stops):null;
+@@ -908,7 +911,7 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
+     if(mode==='native') {
+       if(!api.nc_compile)return {status:'unsupported',phase,reason:'Native emitter was not bootstrapped.',checked:true};
+       trace('collect native foreign paths');
+-      const nativePlan=ownedApi&&typeof api.nr_prepare==='function'&&typeof api.nr_compile==='function'?api.nr_prepare(book):null;
++      const nativePlan=ownedApi&&typeof api.nr_prepare==='function'&&typeof api.nr_compile==='function'?(nativeProducts?api.nr_prepare_library(book,nativeProducts):api.nr_prepare(book)):null;
+       const paths=nativePlan?array(nativePlan.paths):api.nc_foreign_paths?array(api.nc_foreign_paths(book)):graph.foreign.filter(f=>path.extname(f.path)==='.c').map(f=>f.path);
+       const foreignScope=nativePlan?nativePlan.scope:api.nc_foreign_scope?api.nc_foreign_scope(book):book;
+       const nativeInputs=[...graph.files,path.join(project,'src/runtime/native/runtime.c')];
+--- /dev/null
++++ b/selfhost/src/back/native/library-products.bend
+@@ -0,0 +1,188 @@
++# PRIVATE prepared native Base products. The host admits compiler/Base/graph
++# identity and the current disjoint successful checked world before attachment.
++# Ordinary/raw requests never infer this permission from source declarations.
++@unsafe
++def base_native_prepare(+prepared: KBasePreparedWorld, +minimumWork: U32) -> KBaseAnnotationState:
++  match prepared:
++    case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, bound}:
++      nl_prepare_state(state, checked, minimumWork)
++
++@unsafe
++def nl_prepare_state(state: KBasePrefixState, +checked: List<&2,KDef>, +minimumWork: U32) -> KBaseAnnotationState:
++  match state:
++    case KBasePrefixState{bound, delta, stamp, patches, ready}:
++      kc(KBaseAnnotationState, ready, u => nl_prepare_closed(book_final_reverse(checked, Nil{}), minimumWork), u => KBaseAnnotationState{Nil{}, Nil{}})
++
++@unsafe
++def nl_prepare_closed(+checked: List<&2,KDef>, +minimumWork: U32) -> KBaseAnnotationState:
++  +context = book_context(checked)
++  kc(KBaseAnnotationState, base_prefix_closed(checked, context) &&
++    base_annotation_implicit(context, ["Nat", "U32", "F32", "String", "Char", "Bool", "Word", "List"]),
++    u => nl_prepare_defs(context, base_annotation_collect(context, checked, nc_annotation_stops(context), 0), minimumWork),
++    u => KBaseAnnotationState{Nil{}, Nil{}})
++
++@unsafe
++def nl_prepare_defs(+context: List<&2,KDef>, +defs: List<&2,KDef>, +minimumWork: U32) -> KBaseAnnotationState:
++  +book = nc_annotated_context(context, defs)
++  nl_prepare_closure(book, defs, nr_walk(book, base_annotation_keys(defs), Nil{}, Nil{}), minimumWork)
++
++@unsafe
++def nl_prepare_closure(+book: List<&2,KDef>, +defs: List<&2,KDef>, closure: NR_Closure, +minimumWork: U32) -> KBaseAnnotationState:
++  match closure:
++    case NR_Closure{+names, +facts}:
++      nl_prepare_workers(ns_prepare(ns_attach_book(book, facts, 0, Nil{}), names), defs, facts, names, minimumWork)
++
++@unsafe
++def nl_prepare_workers(+book: List<&2,KDef>, +defs: List<&2,KDef>, +facts: List<&2,KDef>, +names: List<&2,String>, +minimumWork: U32) -> KBaseAnnotationState:
++  +signatures = book_cached(nq_signatures(book, names), 0)
++  +workers = nl_store_workers(book, nf_candidates(book, names, Nil{}, signatures), signatures)
++  +payload : KDef = KDef{"$native.library", "NativeLibrary", 0, 0, atom("Absent"), atom("Absent"), [index_build(facts), index_build(workers)], False{}, False{}}
++  KBaseAnnotationState{nl_work_keys(defs, minimumWork), book_cached(Con{payload, defs}, 0)}
++
++@unsafe
++def nl_work_keys(defs: List<&2,KDef>, +minimumWork: U32) -> List<&2,String>:
++  match defs:
++    case Nil{}: Nil{}
++    case Con{+d, +rest}: kc(List<&2,String>, base_annotation_large([dv(d)], minimumWork),
++      u => Con{dn(d), nl_work_keys(rest, minimumWork)}, u => nl_work_keys(rest, minimumWork))
++
++@unsafe
++def nl_strings(values: List<&2,String>) -> List<&2,KTerm>:
++  match values:
++    case Nil{}: Nil{}
++    case Con{h, rest}: Con{kt("NativeName", h, 0, 0, Nil{}), nl_strings(rest)}
++
++@unsafe
++def nl_names(values: List<&2,KTerm>) -> List<&2,String>:
++  match values:
++    case Nil{}: Nil{}
++    case Con{h, rest}: Con{nm(h), nl_names(rest)}
++
++@unsafe
++def nl_params(params: List<&2,N_Param>) -> List<&2,KTerm>:
++  match params:
++    case Nil{}: Nil{}
++    case Con{N_Param{word, kind}, rest}: Con{kt("NativeParam", word, nl_kind(kind), 0, Nil{}), nl_params(rest)}
++
++@unsafe
++def nl_kind(kind: N_WordKind) -> U32:
++  match kind:
++    case N_W32{}: 1
++    case _: 0
++
++@unsafe
++def nl_decode_params(params: List<&2,KTerm>) -> List<&2,N_Param>:
++  match params:
++    case Nil{}: Nil{}
++    case Con{+h, rest}: Con{N_Param{nm(h), kc(N_WordKind, U32.is_eq(ix(h), 1), u => N_W32{}, u => N_W64{})}, nl_decode_params(rest)}
++
++# Snapshot all signature queries reachable from the compact body. Both function
++# and constructor queries are checked again, including retry withdrawal. No
++# negative lowering result, global segment ID or static image address is reused.
++@unsafe
++def nl_signature_inputs(ts: List<&2,KTerm>, +signatures: List<&2,KDef>) -> List<&2,KDef>:
++  match ts:
++    case Nil{}: Nil{}
++    case Con{+t, +rest}:
++      +more = nl_signature_inputs(nt_append(KTerm, ks(t), rest), signatures)
++      kc(List<&2,KDef>, String.eq(tg(t), "Ref") || String.eq(tg(t), "NFCall"),
++        u => Con{nl_signature_input(signatures, nm(t)), more},
++        u => kc(List<&2,KDef>, String.eq(tg(t), "Ctr") || String.eq(tg(t), "NCtr") || String.eq(tg(t), "NStatic"),
++          v => Con{nl_signature_input(signatures, "$constructor." ++ nm(t)), more}, v => more))
++
++@unsafe
++def nl_signature_input(+signatures: List<&2,KDef>, +name: String) -> KDef:
++  +d = lookup(signatures, name)
++  KDef{name, dk(d), da(d), dx(d), dt(d), dv(d), Nil{}, False{}, False{}}
++
++@unsafe
++def nl_store_workers(+book: List<&2,KDef>, workers: List<&2,NF_Worker>, +signatures: List<&2,KDef>) -> List<&2,KDef>:
++  match workers:
++    case Nil{}: Nil{}
++    case Con{NF_Worker{+name, +params, +code, +deps, +shape}, +rest}:
++      kc(List<&2,KDef>, String.is_empty(nc_error(code)) && List.is_empty(&2,N_Segment,nc_segs(code)) && Bool.not(String.contains(nc_body(code), "STAT_OFF")),
++        u => Con{KDef{name, "NativeLibraryWorker", nc_fresh(code), 0, shape,
++          kt("NativeCode", nc_body(code), 0, 0, [kt("Params", "", 0, 0, nl_params(params)), kt("Calls", "", 0, 0, nl_strings(deps))]),
++          nl_signature_inputs([nc_compact_definition(book, lookup(book, name), 0)], signatures), False{}, False{}}, nl_store_workers(book, rest, signatures)},
++        u => nl_store_workers(book, rest, signatures))
++
++@unsafe
++def nl_payload(+book: List<&2,KDef>) -> KDef:
++  nl_payload_children(dc(ns_context(book)))
++
++@unsafe
++def nl_payload_children(children: List<&2,KDef>) -> KDef:
++  match children:
++    case Con{bodies, Con{ctors, Con{product, rest}}}: product
++    case _: missing()
++
++@unsafe
++def nl_with(+book: List<&2,KDef>, +product: KDef) -> List<&2,KDef>:
++  match book:
++    case Nil{}: book
++    case Con{+cache, rest}:
++      +context = ns_context(book)
++      Con{KDef{dn(cache), dk(cache), da(cache), dx(cache), dt(cache), dv(cache),
++        [index_first(dc(cache)), KDef{dn(context), dk(context), da(context), dx(context), dt(context), dv(context),
++          [index_first(dc(context)), index_first(dc_tail(dc(context))), product], db(context), du(context)}], db(cache), du(cache)}, rest}
++
++@unsafe
++def dc_tail(ds: List<&2,KDef>) -> List<&2,KDef>:
++  match ds:
++    case Nil{}: Nil{}
++    case Con{head, tail}: tail
++
++@unsafe
++def nr_prepare_library(+book: List<&2,KDef>, +products: List<&2,KDef>) -> NR_Request:
++  +source = ns_source(book)
++  +product = lookup(products, "$native.library")
++  +seed = nl_with(ns_attach_book(source, Nil{}, 0, Nil{}), product)
++  nl_prepared_library(source, product, nr_walk(seed, ["main"], Nil{}, Nil{}))
++
++@unsafe
++def nl_prepared_library(+source: List<&2,KDef>, +product: KDef, closure: NR_Closure) -> NR_Request:
++  match closure:
++    case NR_Closure{+names, facts}:
++      NR_Request{source, nl_with(ns_attach_book(source, facts, 0, Nil{}), nl_selected(product, names)), names, nc_paths_of(source, names), kr_filter(source, names)}
++
++@unsafe
++def nl_erased(+book: List<&2,KDef>, +name: String) -> KDef:
++  index_find(index_first(dc(nl_payload(book))), name, index_hash(name, 2166136261), 32)
++
++@unsafe
++def nl_terms_same(a: List<&2,KTerm>, b: List<&2,KTerm>) -> Bool:
++  match a, b:
++    case Nil{}, Nil{}: True{}
++    case Con{+x, xs}, Con{+y, ys}: String.eq(tg(x), tg(y)) && String.eq(nm(x), nm(y)) && U32.is_eq(ix(x), ix(y)) && U32.is_eq(qt(x), qt(y)) && nl_terms_same(ks(x), ks(y)) && nl_terms_same(xs, ys)
++    case _, _: False{}
++
++@unsafe
++def nl_inputs_match(inputs: List<&2,KDef>, +signatures: List<&2,KDef>) -> Bool:
++  match inputs:
++    case Nil{}: True{}
++    case Con{+d, rest}:
++      +actual = lookup(signatures, dn(d))
++      String.eq(dk(d), dk(actual)) && nl_terms_same([dt(d), dv(d)], [dt(actual), dv(actual)]) && nl_inputs_match(rest, signatures)
++
++@unsafe
++def nl_candidate(+book: List<&2,KDef>, +name: String, +signatures: List<&2,KDef>) -> NF_Worker:
++  +d = index_find(index_first(dc_tail(dc(nl_payload(book)))), name, index_hash(name, 2166136261), 32)
++  kc(NF_Worker, String.eq(dk(d), "NativeLibraryWorker") && nl_inputs_match(dc(d), signatures),
++    u => NF_Worker{name, nl_decode_params(ks(kid(dv(d), 0))), NC_Code{nm(dv(d)), Nil{}, da(d), "", nl_names(ks(kid(dv(d), 1)))}, nl_names(ks(kid(dv(d), 1))), dt(d)},
++    u => nf_candidate_plain(book, name, signatures))
++
++# After erasure, retain only selected workers. Generic source-tree walks must
++# not repeatedly traverse an entire prepared library through private metadata.
++@unsafe
++def nl_selected(+product: KDef, +names: List<&2,String>) -> KDef:
++  KDef{"$native.library", "NativeLibrary", 0, 0, atom("Absent"), atom("Absent"),
++    [missing(), index_build(nl_select_workers(index_first(dc_tail(dc(product))), names))], False{}, False{}}
++
++@unsafe
++def nl_select_workers(+workers: KDef, names: List<&2,String>) -> List<&2,KDef>:
++  match names:
++    case Nil{}: Nil{}
++    case Con{+name, +rest}:
++      +d = index_find(workers, name, index_hash(name, 2166136261), 32)
++      kc(List<&2,KDef>, String.eq(dk(d), "NativeLibraryWorker"),
++        u => Con{d, nl_select_workers(workers, rest)}, u => nl_select_workers(workers, rest))

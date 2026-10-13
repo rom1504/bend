@@ -177,3 +177,5 @@ intervals; this is not a quota estimate. Peak recorded tree RSS was1.66GiB.
 No warm-session timing was repeated in this phase.
 
 [Complete verified evidence](../../selfhost/tools/performance/phase78/evidence01/README.md) preserves selected and rejected attempts.
+
+The subsequent [Phase79 library-cache experiment](../phase79/README.md) missed its gain threshold and was rejected; this release remains selected.

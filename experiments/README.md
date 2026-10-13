@@ -12,8 +12,9 @@ Paired fresh C request time decreases8.2% B1/5.6% B2, reaching1.732×/1.382×
 upstream. Native execution is effectively unchanged and all23 JS benchmark source
 outputs remain exact. Selected source/selfhosting/installed gates pass; known gaps
 remain. Reject larger branch/tag/early-observer prototypes, retain154 added Bend
-lines. Parity remains open. The next separately measured library-product experiment
-is in [Phase79](../design/phase79/prepared-native-library.md).
+lines. Parity remains open. The separately measured library-product experiment
+was [rejected in Phase79](../implementation/phase79/README.md): only 3–5%
+request savings, added preparation and no held-out gain. Production is unchanged.
 
 ## Completed implementation: Phase77 B2 and compact native lowering
 

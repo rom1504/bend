@@ -1,0 +1,17 @@
+{
+  "derivations": [
+    {
+      "source": "selfhost/tools/performance/phase78/compilation/worker.mjs",
+      "sourceSha256": "a41bdac841ff00f39da565f0c0b080fdd122efe1e66138545f77072adf4ad265",
+      "target": "selfhost/tools/performance/phase79/worker.mjs",
+      "targetSha256": "a8a6e10e62e674d107a826dc883b31b4a12d95ea042789d2b07d338544ab6efe"
+    },
+    {
+      "source": "selfhost/tools/performance/phase78/compilation/run.py",
+      "sourceSha256": "6f07ca8e6633a4a01ae732bf460dfe12cb6107398aaad72bbd06435bd2a8b97f",
+      "target": "selfhost/tools/performance/phase79/run.py",
+      "targetSha256": "6f07ca8e6633a4a01ae732bf460dfe12cb6107398aaad72bbd06435bd2a8b97f"
+    }
+  ],
+  "changes": "Separate explicit native-product preparation and pinned product files; preserve mismatched C before exact hash gate. Same fresh request boundaries, single execution guard and source set."
+}

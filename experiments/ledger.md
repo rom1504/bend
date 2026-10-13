@@ -4345,3 +4345,13 @@ classifiers and early observer planning. No agents or PR comments.
 Updated frontier: cold parity is unachieved. Test reusable native Base products
 under a separately labelled preparation contract, with exact C and a15% net-saving
 falsifier before expansion. [Phase79 design](../design/phase79/prepared-native-library.md).
+
+## Phase79 prepared native library — 2026-10-13
+
+[Report](../implementation/phase79/README.md). Two checked prototypes preserve
+complete C but miss the predeclared 15% net-saving threshold. Whole-library
+payload saves 3.49%, request-selected workers 5.15%, against their ordinary modes.
+Extra preparation is 3.3 s; product 2.94 MB. Two V8 profiles explain offsetting
+decode/GC/context work; non-IO held-out16 is unchanged. Total64 clean requests
+and2 profiles preserve exact C. Reject and restore exact Phase78 source; release
+verification passes. No B2/cache release claim, no agents or PR comments.

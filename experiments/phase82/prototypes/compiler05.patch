@@ -1,0 +1,417 @@
+diff --git a/selfhost/src/back/native/book.bend b/selfhost/src/back/native/book.bend
+index 1c2a0c4..7cece84 100644
+--- a/selfhost/src/back/native/book.bend
++++ b/selfhost/src/back/native/book.bend
+@@ -207,9 +207,9 @@ def nc_helpers() -> String:
+   "INLINE bool native_bool(Term t) { return t == 1 || (term_tag(t) == TAG_PAK && term_aux(t) == CID_TRUE); }\nINLINE Term native_word(Env e, u32 x) {\n  Term w = term_pak(CID_WNIL, 0);\n  for (u32 i = 32; i > 0; i--) {\n    Loc p = heap_alloc(e, 1);\n    e.mem[p] = (x >> (i - 1)) & 1;\n    e.mem[p + 1] = rfc_seal(e, w);\n    w = term_ctr(CID_WCON, p);\n  }\n  return w;\n}\n"
+ 
+ @unsafe
+-def nc_with_show(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, d: NC_Show, workers: String, +image: List<&2, String>) -> NC_Result:
++def nc_with_show(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: NE_Runtime, requests: String, pure: Bool, d: NC_Show, workers: String, +image: List<&2, String>) -> NC_Result:
+   match d:
+-    case NC_Show{+src, +err}: nt_choose(NC_Result, String.eq(nv_first(err, nv_program(ss, cs)), ""), u => NC_Result{ne_program(runtime, N_Program{ss, cs, image, requests, nc_helpers() ++ workers, src, pure}), ""}, u => NC_Result{"", nv_first(err, nv_program(ss, cs))})
++    case NC_Show{+src, +err}: nt_choose(NC_Result, String.eq(nv_first(err, nv_program(ss, cs)), ""), u => NC_Result{ne_program_runtime(runtime, N_Program{ss, cs, image, requests, nc_helpers() ++ workers, src, pure}), ""}, u => NC_Result{"", nv_first(err, nv_program(ss, cs))})
+ 
+ # Include index/constructor children: raw cached books may carry definitions there.
+ # A foreign program retains its previous ordinary-constructor representation.
+@@ -221,14 +221,14 @@ def nc_pack_foreign(ds: List<&2, KDef>) -> Bool:
+       (Bool.not(db(d)) && (String.eq(tg(nc_unann(dv(d))), "Foreign") || (String.eq(dk(d), "Def") && nc_foreign(d)))) || nc_pack_foreign(dc(d)) || nc_pack_foreign(rest)
+ 
+ @unsafe
+-def nc_finish(+book: List<&2, KDef>, +runtime: String, +requests: String, compiled: NC_Book, +observers: Bool, +plan: NF_Plan) -> NC_Result:
++def nc_finish(+book: List<&2, KDef>, +runtime: NE_Runtime, +requests: String, compiled: NC_Book, +observers: Bool, +plan: NF_Plan) -> NC_Result:
+   match compiled:
+     case NC_Book{+ss, n, +error}:
+       +ty = dt(lookup(book, "main"))
+       +pure = Bool.not(nc_is_io(book, ty))
+       +cs = nc_add_ctors(nc_default_ctors(), nc_constructors(book, book))
+       nt_choose(NC_Result, Bool.not(String.eq(error, "")), u => NC_Result{"", error}, u =>
+-        nf_finish_plan(book, ss, cs, "#define NATIVE_READONLY_OBSERVERS " ++ nt_choose(String, observers, v => "1", v => "0") ++ "\n#define NATIVE_PACK_CTORS " ++ nt_choose(String, nc_pack_foreign(book), u => "0", u => "1") ++ "\n" ++ runtime, requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show("0"), ""}), observers, plan))
++        nf_finish_plan(book, ss, cs, ne_runtime_prepend(runtime, "#define NATIVE_READONLY_OBSERVERS " ++ nt_choose(String, observers, v => "1", v => "0") ++ "\n#define NATIVE_PACK_CTORS " ++ nt_choose(String, nc_pack_foreign(book), u => "0", u => "1") ++ "\n"), requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show("0"), ""}), observers, plan))
+ 
+ law nc_bangs_term:
+   for +t: KTerm
+@@ -263,18 +263,28 @@ def nc_compile(+book: List<&2, KDef>, runtime: String, requests: String) -> NC_R
+   nc_compile_mode(book, runtime, requests, False{})
+ 
+ @unsafe
+-def nc_compile_error(+book: List<&2, KDef>) -> String:
++def nc_compile_error(book: List<&2, KDef>) -> String:
++  nc_compile_error_known(book, None{})
++
++@unsafe
++def nc_source_bound(+book: List<&2, KDef>, bound: Maybe<&2, U32>) -> U32:
++  match bound:
++    case None{}: norm_max_book(book)
++    case Some{value}: value
++
++@unsafe
++def nc_compile_error_known(+book: List<&2, KDef>, +bound: Maybe<&2, U32>) -> String:
+   +main = lookup(book, "main")
+   +owned = nv_owned(book)
+   nt_choose(String, Bool.not(String.eq(owned, "")), u => owned, u =>
+   nt_choose(String, Bool.not(String.eq(dk(main), "Def")) || String.eq(tg(nc_unann(dv(main))), "Absent"), u => "no main to run", u =>
+   nt_choose(String, nc_is_io(book, dt(main)) && String.eq(tg(nc_unann(dv(main))), "Foreign"), u => "main must be a filled def: a foreign main cannot anchor IO", u =>
+-  nt_choose(String, U32.is_ge(norm_max_book(book), 4000000000), u => "native source binder IDs overlap the compiler temporary range", u => ""))))
++  nt_choose(String, U32.is_ge(nc_source_bound(book, bound), 4000000000), u => "native source binder IDs overlap the compiler temporary range", u => ""))))
+ 
+ @unsafe
+ def nc_compile_mode(+book: List<&2, KDef>, runtime: String, requests: String, +observers: Bool) -> NC_Result:
+   +error = nc_compile_error(book)
+-  nt_choose(NC_Result, String.eq(error, ""), u => ns_compile(book, runtime, requests, observers), u => NC_Result{"", error})
++  nt_choose(NC_Result, String.eq(error, ""), u => ns_compile(book, NE_Text{runtime}, requests, observers), u => NC_Result{"", error})
+ 
+ @unsafe
+ def nc_live_names(+book: List<&2, KDef>, todo: List<&2, String>, +done: List<&2, String>) -> List<&2, String>:
+diff --git a/selfhost/src/back/native/emit.bend b/selfhost/src/back/native/emit.bend
+index 6f65326..81974a7 100644
+--- a/selfhost/src/back/native/emit.bend
++++ b/selfhost/src/back/native/emit.bend
+@@ -127,6 +127,47 @@ def ne_segments(+ss: List<&2, N_Segment>) -> String:
+ def ne_fill(+src: String, +mark: String, +text: String) -> String:
+   nt_replace(src, mark, mark ++ "\n\n" ++ text)
+ 
++# A private canonical artifact is split by this Bend compiler, then transported
++# without rescanning. Raw/custom runtime text retains the original scanner.
++type NE_Runtime is Data:
++  NE_Text{+text: String}
++  NE_Parts{+parts: List<&2, String>}
++
++@unsafe
++def ne_runtime_prepare(+src: String) -> NE_Runtime:
++  +marks = ne_template_marks()
++  ne_runtime_prepared(src, ne_template_scan(src, marks, marks, "", Nil{}))
++
++@unsafe
++def ne_runtime_prepared(src: String, parts: Maybe<&2, List<&2, String>>) -> NE_Runtime:
++  match parts:
++    case None{}: NE_Text{src}
++    case Some{pieces}: NE_Parts{pieces}
++
++@unsafe
++def ne_runtime_prepend(runtime: NE_Runtime, prefix: String) -> NE_Runtime:
++  match runtime:
++    case NE_Text{text}: NE_Text{prefix ++ text}
++    case NE_Parts{parts}: ne_runtime_prefix(parts, prefix)
++
++@unsafe
++def ne_runtime_prefix(+parts: List<&2, String>, +prefix: String) -> NE_Runtime:
++  match parts:
++    case Nil{}: NE_Text{prefix}
++    case Con{head, rest}:
++      nt_choose(NE_Runtime, ne_template_plain(prefix, False{}),
++        u => NE_Parts{Con{prefix ++ head, rest}},
++        u => NE_Text{prefix ++ nt_join(parts, "")})
++
++@unsafe
++def ne_runtime_texts(runtime: NE_Runtime, +texts: List<&2, String>) -> String:
++  match runtime:
++    case NE_Text{src}: ne_program_texts(src, texts)
++    case NE_Parts{+parts}:
++      nt_choose(String, ne_template_payloads(texts),
++        u => ne_template_join(parts, texts),
++        u => ne_template_slow(nt_join(parts, ""), ne_template_marks(), texts))
++
+ # Split only original runtime text. Suspicious input retains sequential fill.
+ @unsafe
+ def ne_template_marks() -> List<&2, String>:
+@@ -197,9 +238,13 @@ def ne_program_texts(+src: String, +texts: List<&2, String>) -> String:
+   ne_template_finish(src, marks, texts, ne_template_scan(src, marks, marks, "", Nil{}))
+ 
+ @unsafe
+-def ne_program(+src: String, +p: N_Program) -> String:
++def ne_program(src: String, p: N_Program) -> String:
++  ne_program_runtime(NE_Text{src}, p)
++
++@unsafe
++def ne_program_runtime(+runtime: NE_Runtime, +p: N_Program) -> String:
+   match p:
+     case N_Program{+ss, +cs, +image, +requests, +decls, +show, +pure}:
+-      ne_program_texts(src, [nb_emit(ss, cs, nt_count(String, image), pure) ++ show,
++      ne_runtime_texts(runtime, [nb_emit(ss, cs, nt_count(String, image), pure) ++ show,
+         "CONSTV u64 STAT_IMG[] = { " ++ nt_choose(String, U32.is_eq(nt_count(String, image), 0), u => "0", u => nt_join(image, ", ")) ++ " };\n" ++ decls,
+         ne_segments(ss), requests])
+diff --git a/selfhost/src/back/native/erase.bend b/selfhost/src/back/native/erase.bend
+index c201d71..b15d059 100644
+--- a/selfhost/src/back/native/erase.bend
++++ b/selfhost/src/back/native/erase.bend
+@@ -81,3 +81,71 @@ def nc_erase(book, t):
+   nt_choose(KTerm, String.eq(tg(t), "Lam") && U32.is_eq(qt(t), 0), u => nc_erase(book, kid(t, 0)), u =>
+   nt_choose(KTerm, String.eq(tg(t), "App"), u => nc_erase_app(book, t), u =>
+     k_rebuild(t, nt_choose(String, String.eq(tg(t), "Ctr") || String.eq(tg(t), "Mat"), u => nc_ctor_identity(book, nm(t)), u => nm(t)), ix(t), qt(t), nc_erase_list(book, ks(t)), Nil{}, 0, 0))))))
++
++law ner_erase:
++  for +book: List<&2, KDef>
++  for +t: KTerm
++  KTerm
++
++law ner_erase_list:
++  for +book: List<&2, KDef>
++  for +ts: List<&2, KTerm>
++  List<&2, KTerm>
++
++
++# Private consumer of annotate_selected output. Type heads and constructor
++# field quantities were computed there; raw nc_erase never trusts these facts.
++@unsafe
++def ner_field_facts(ts: List<&2, KTerm>) -> Bool:
++  match ts:
++    case Nil{}: True{}
++    case Con{+h, rest}:
++      String.eq(tg(h), "Ann") && U32.is_eq(ix(h), 1) && ner_field_facts(rest)
++
++@unsafe
++def ner_fields(+book: List<&2, KDef>, ts: List<&2, KTerm>) -> List<&2, KTerm>:
++  match ts:
++    case Nil{}: Nil{}
++    case Con{+h, +rest}:
++      nt_choose(List<&2, KTerm>, U32.is_eq(qt(h), 0),
++        u => ner_fields(book, rest), u => Con{ner_erase(book, h), ner_fields(book, rest)})
++
++@unsafe
++def ner_fields_or_raw(+book: List<&2, KDef>, +t: KTerm, +ty: KTerm) -> List<&2, KTerm>:
++  nt_choose(List<&2, KTerm>, ner_field_facts(ks(t)), u => ner_fields(book, ks(t)),
++    u => nc_erase_args(book, nc_tele_fill(book, dt(lookup(dc(lookup(book, nm(ty))), nm(t))), ks(ty)), ks(t)))
++
++@unsafe
++def ner_erase_mat(+book: List<&2, KDef>, +t: KTerm, +adt: KTerm) -> KTerm:
++  +ctr = lookup(dc(lookup(book, nm(adt))), nm(t))
++  +count = nc_live_count(book, nc_tele_fill(book, dt(ctr), ks(adt)), da(ctr))
++  kt("Mat", nt_choose(String, db(lookup(book, nm(adt))), u => nm(t), u => nc_ctor_identity(book, nm(t))), U32.inc(count), nh_field_mask(book, nc_tele_fill(book, dt(ctr), ks(adt)), da(ctr), 0), ner_erase_list(book, ks(t)))
++
++@unsafe
++def ner_erase_annotated(+book: List<&2, KDef>, +t: KTerm, +ty: KTerm) -> KTerm:
++  nt_choose(KTerm, String.eq(tg(ty), "Eql"), u => atom("Rfl"), u =>
++  nt_choose(KTerm, String.eq(tg(t), "Ctr"),
++    u => kt("Ctr", nt_choose(String, db(lookup(book, nm(ty))), u => nm(t), u => nc_ctor_identity(book, nm(t))), ix(t), qt(t), ner_fields_or_raw(book, t, ty)),
++    u => nt_choose(KTerm, String.eq(tg(t), "Mat"),
++      u => ner_erase_mat(book, t, wnf(book, kid(ty, 0))),
++      u => ner_erase(book, t))))
++
++@unsafe
++def ner_erase_list(book, ts):
++  match ts:
++    case Nil{}: Nil{}
++    case Con{h, rest}: Con{ner_erase(book, h), ner_erase_list(book, rest)}
++
++@unsafe
++def ner_erase_app(+book: List<&2, KDef>, +t: KTerm) -> KTerm:
++  nt_choose(KTerm, String.eq(tg(kid(t, 0)), "Ann"),
++    u => nt_choose(KTerm, U32.is_eq(qt(kid(kid(t, 0), 1)), 0), u => ner_erase(book, kid(t, 0)), u => k_rebuild(t, nm(t), ix(t), qt(t), ner_erase_list(book, ks(t)), Nil{}, 0, 0)),
++    u => k_rebuild(t, nm(t), ix(t), qt(t), ner_erase_list(book, ks(t)), Nil{}, 0, 0))
++
++@unsafe
++def ner_erase(book, t):
++  kc(KTerm, core_literal(t), u => t, u => nt_choose(KTerm, String.eq(tg(t), "Var"), u => var(nm(t), ix(t)), u =>
++  nt_choose(KTerm, String.eq(tg(t), "Ann"), u => ner_erase_annotated(book, kid(t, 0), kid(t, 1)), u =>
++  nt_choose(KTerm, String.eq(tg(t), "Lam") && U32.is_eq(qt(t), 0), u => ner_erase(book, kid(t, 0)), u =>
++  nt_choose(KTerm, String.eq(tg(t), "App"), u => ner_erase_app(book, t), u =>
++    k_rebuild(t, nt_choose(String, String.eq(tg(t), "Ctr") || String.eq(tg(t), "Mat"), u => nc_ctor_identity(book, nm(t)), u => nm(t)), ix(t), qt(t), ner_erase_list(book, ks(t)), Nil{}, 0, 0))))))
+diff --git a/selfhost/src/back/native/flat.bend b/selfhost/src/back/native/flat.bend
+index aa8ceae..921c4b2 100644
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -262,7 +262,7 @@ def nf_wrap_segments(segments: List<&2, N_Segment>, +index: List<&2, KDef>) -> L
+       Con{N_Segment{name, params, result, frame, wrapped, refs, host, spin, fork, bang}, nf_wrap_segments(rest, index)}
+ 
+ @unsafe
+-def nf_finish_ready(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:
++def nf_finish_ready(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: NE_Runtime, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:
+   +ordinary = nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0))
+   +route = no_route(book, ordinary, observer_names, workers, ready, observers)
+   nc_with_show(no_wrap_routes(ordinary, no_route_entries(route), no_route_ready(route)), cs, runtime, requests, pure, show, nh_observer_macros(book, no_route_entries(route), no_route_ready(route)) ++ "#if !DEVICE\n#if NATIVE_TYPED_SCALARS\n#define NF_SCALAR u32\n#else\n#define NF_SCALAR Term\n#endif\n#if defined(__GNUC__) || defined(__clang__)\n#define NF_INLINE INLINE __attribute__((always_inline))\n#else\n#define NF_INLINE INLINE\n#endif\n" ++ nf_prototypes(no_route_workers(route), no_route_ready(route)) ++ nf_bodies(no_route_workers(route), no_route_ready(route)) ++ "#undef NF_INLINE\n#undef NF_SCALAR\n#endif\n", image)
+@@ -324,7 +324,7 @@ def nf_plan(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, St
+   nf_plan_workers(book, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates_mode(book, names, bangs, signatures, observers)), signatures, observer_names)
+ 
+ @unsafe
+-def nf_finish_plan(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +observers: Bool, plan: NF_Plan) -> NC_Result:
++def nf_finish_plan(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: NE_Runtime, requests: String, pure: Bool, show: NC_Show, +observers: Bool, plan: NF_Plan) -> NC_Result:
+   match plan:
+     case NF_Plan{workers, ready, observer_names}: nf_finish_ready(book, ss, cs, runtime, requests, pure, show, workers, ready, ns_image(book), observer_names, observers)
+ 
+diff --git a/selfhost/src/back/native/request.bend b/selfhost/src/back/native/request.bend
+index b81f40a..ca0a51e 100644
+--- a/selfhost/src/back/native/request.bend
++++ b/selfhost/src/back/native/request.bend
+@@ -4,33 +4,34 @@ type NR_Closure is Data:
+   NR_Closure{+names: List<&2, String>, +facts: List<&2, KDef>}
+ 
+ type NR_Request is Data:
+-  NR_Request{+source: List<&2, KDef>, +book: List<&2, KDef>, +names: List<&2, String>, +paths: List<&2, String>, +scope: List<&2, KDef>}
++  NR_Request{+source: List<&2, KDef>, +book: List<&2, KDef>, +names: List<&2, String>, +paths: List<&2, String>, +scope: List<&2, KDef>, +bound: Maybe<&2, U32>}
+ 
+ @unsafe
+-def nr_walk(+book: List<&2, KDef>, todo: List<&2, String>, +done: List<&2, String>, +facts: List<&2, KDef>) -> NR_Closure:
++def nr_walk(+book: List<&2, KDef>, todo: List<&2, String>, +done: List<&2, String>, +facts: List<&2, KDef>, +owned: Bool) -> NR_Closure:
+   match todo:
+     case Nil{}: NR_Closure{done, facts}
+     case Con{+name, +rest}:
+-      nt_choose(NR_Closure, nb_contains(done, name), u => nr_walk(book, rest, done, facts),
+-        u => nr_visit(book, name, rest, done, facts, lookup(book, name)))
++      nt_choose(NR_Closure, nb_contains(done, name), u => nr_walk(book, rest, done, facts, owned),
++        u => nr_visit(book, name, rest, done, facts, lookup(book, name), owned))
+ 
+ @unsafe
+-def nr_visit(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +facts: List<&2, KDef>, +d: KDef) -> NR_Closure:
+-  +body = nc_definition_plain(book, d, 0)
+-  +more = nt_choose(List<&2, KDef>, String.eq(dk(d), "Def") && Bool.not(nc_native_def(d) || nc_foreign(d)),
++def nr_visit(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +facts: List<&2, KDef>, +d: KDef, +owned: Bool) -> NR_Closure:
++  +user = String.eq(dk(d), "Def") && Bool.not(nc_native_def(d) || nc_foreign(d))
++  +body = nt_choose(KTerm, owned && user, u => ner_erase(book, dv(d)), u => nc_definition_plain(book, d, 0))
++  +more = nt_choose(List<&2, KDef>, user,
+     u => Con{KDef{name, "NativeErasedBody", nd_arity_plain(book, name), 1, atom("Absent"), body, Nil{}, False{}, False{}}, facts}, u => facts)
+-  nr_walk(book, nt_append(String, nc_refs(body), todo), Con{name, done}, more)
++  nr_walk(book, nt_append(String, nc_refs(body), todo), Con{name, done}, more, owned)
+ 
+ @unsafe
+ def nr_prepare(+book: List<&2, KDef>) -> NR_Request:
+   +source = ns_source(book)
+-  nr_prepared(source, nr_walk(source, ["main"], Nil{}, Nil{}))
++  nr_prepared(source, nr_walk(source, ["main"], Nil{}, Nil{}, False{}), None{})
+ 
+ @unsafe
+-def nr_prepared(+source: List<&2, KDef>, closure: NR_Closure) -> NR_Request:
++def nr_prepared(+source: List<&2, KDef>, closure: NR_Closure, bound: Maybe<&2, U32>) -> NR_Request:
+   match closure:
+     case NR_Closure{+names, facts}:
+-      NR_Request{source, ns_attach_book(source, facts, 0, Nil{}), names, nc_paths_of(source, names), kr_filter(source, names)}
++      NR_Request{source, ns_attach_book(source, facts, 0, Nil{}), names, nc_paths_of(source, names), kr_filter(source, names), bound}
+ 
+ @unsafe
+ def nr_unshared(+book: List<&2, KDef>, names: List<&2, String>) -> Bool:
+@@ -42,12 +43,26 @@ def nr_unshared(+book: List<&2, KDef>, names: List<&2, String>) -> Bool:
+         u => nr_unshared(book, rest), u => False{})
+ 
+ @unsafe
+-def nr_compile(request: NR_Request, +runtime: String, +requests: String, +effects_safe: Bool) -> NC_Result:
++def nr_compile(request: NR_Request, runtime: String, requests: String, effects_safe: Bool) -> NC_Result:
++  nr_compile_prepared(request, NE_Text{runtime}, requests, effects_safe)
++
++@unsafe
++def nr_compile_prepared(request: NR_Request, +runtime: NE_Runtime, +requests: String, +effects_safe: Bool) -> NC_Result:
+   match request:
+-    case NR_Request{+source, +book, +names, paths, scope}:
++    case NR_Request{+source, +book, +names, paths, scope, bound}:
+       +packed = nt_choose(Bool, effects_safe, u => ns_definitions(book, names), u => False{})
+       +unshared = nt_choose(Bool, packed, u => nr_unshared(book, names), u => False{})
+-      +header = ns_checked_runtime(book, runtime, packed, unshared)
+-      +error = nc_compile_error(source)
++      +header = ne_runtime_prepend(runtime, ns_checked_runtime(book, "", packed, unshared))
++      +error = nc_compile_error_known(source, bound)
+       nt_choose(NC_Result, String.eq(error, ""),
+         u => ns_compile_named(book, names, header, requests, packed), u => NC_Result{"", error})
++
++# Owned annotation creates a plain merged book and a fresh mirror index. Its
++# exact bound also bounds that index; erased/generated facts are not source.
++# Raw nr_prepare retains the independent source-bound scan at compile time.
++@unsafe
++def nr_prepare_annotated(+book: List<&2, KDef>, annotated: List<&2, KDef>) -> NR_Request:
++  +merged = nc_context_defs(book, nc_context_index(annotated))
++  +bound = norm_max_book(merged)
++  +source = book_cached(merged, bound)
++  nr_prepared(source, nr_walk(source, ["main"], Nil{}, Nil{}, True{}), Some{bound})
+diff --git a/selfhost/src/back/native/static.bend b/selfhost/src/back/native/static.bend
+index 0dc7c46..fdb25d9 100644
+--- a/selfhost/src/back/native/static.bend
++++ b/selfhost/src/back/native/static.bend
+@@ -257,29 +257,29 @@ def ns_return_known(+t: KTerm, +n: U32, +target: NC_Target) -> NC_Code:
+ 
+ # Called only after nc_compile validates main, source ownership and binder IDs.
+ @unsafe
+-def ns_compile(+book: List<&2, KDef>, +runtime: String, +requests: String, +observers: Bool) -> NC_Result:
++def ns_compile(+book: List<&2, KDef>, +runtime: NE_Runtime, +requests: String, +observers: Bool) -> NC_Result:
+   +source = ns_source(book)
+   +names = nc_live_names(source, ["main"], Nil{})
+   ns_compile_named(source, names, runtime, requests, observers)
+ 
+ @unsafe
+-def ns_compile_named(+source: List<&2, KDef>, +names: List<&2, String>, +runtime: String, +requests: String, +observers: Bool) -> NC_Result:
++def ns_compile_named(+source: List<&2, KDef>, +names: List<&2, String>, +runtime: NE_Runtime, +requests: String, +observers: Bool) -> NC_Result:
+   +prepared = ns_prepare(source, names)
+   +bangs = nc_bangs_names(prepared, names)
+   nt_choose(NC_Result, observers && List.is_empty(&2, String, bangs),
+     u => ns_compile_planned(prepared, names, bangs, runtime, requests, observers),
+-    u => ns_compile_fallback(prepared, names, bangs, nh_macros(prepared, names, observers) ++ runtime, requests, observers, nc_compile_defs(prepared, ["main"], Nil{}, 0, bangs)))
++    u => ns_compile_fallback(prepared, names, bangs, ne_runtime_prepend(runtime, nh_macros(prepared, names, observers)), requests, observers, nc_compile_defs(prepared, ["main"], Nil{}, 0, bangs)))
+ 
+ @unsafe
+-def ns_compile_planned(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +runtime: String, +requests: String, +observers: Bool) -> NC_Result:
++def ns_compile_planned(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +runtime: NE_Runtime, +requests: String, +observers: Bool) -> NC_Result:
+   +plan = nf_plan(book, names, bangs, observers)
+   +selected = nf_host_context(book, True{}, plan)
+-  nc_finish(selected, nh_macros(selected, names, observers) ++ runtime, requests, nc_compile_defs(selected, ["main"], Nil{}, 0, bangs), observers, plan)
++  nc_finish(selected, ne_runtime_prepend(runtime, nh_macros(selected, names, observers)), requests, nc_compile_defs(selected, ["main"], Nil{}, 0, bangs), observers, plan)
+ 
+ # Preserve the original raw/bang error order: failed generic lowering never
+ # asks optional worker planning to inspect an unsupported or malformed body.
+ @unsafe
+-def ns_compile_fallback(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +runtime: String, +requests: String, +observers: Bool, compiled: NC_Book) -> NC_Result:
++def ns_compile_fallback(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +runtime: NE_Runtime, +requests: String, +observers: Bool, compiled: NC_Book) -> NC_Result:
+   match compiled:
+     case NC_Book{ss, fresh, +error}:
+       nt_choose(NC_Result, String.eq(error, ""),
+diff --git a/selfhost/tools/typed-driver.mjs b/selfhost/tools/typed-driver.mjs
+index b715194..539c62a 100644
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -35,6 +35,21 @@ function array(value) {
+ const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+ const trace=(message)=>{if(process.env.BEND_TYPED_TRACE)process.stderr.write(`[typed ${new Date().toISOString()}] ${message}\n`);};
+ 
++// Produced by ne_runtime_prepare in Bend; this shell only verifies/transports it.
++// The digest binds insertion boundaries, not merely the concatenated C bytes.
++const nativeTemplateSha256='f9f5a1c98f17f892d891032ca35489234e43d3b4112a18e592e6da408b09736c';
++function nativeTemplate(runtime,inputs) {
++  const file=path.join(project,'src/runtime/native/runtime-template.json');
++  let bytes;
++  try{bytes=fs.readFileSync(file);}catch(error){if(error.code==='ENOENT')return null;throw error;}
++  if(crypto.createHash('sha256').update(bytes).digest('hex')!==nativeTemplateSha256)return null;
++  const artifact=JSON.parse(bytes);
++  if(artifact.runtimeSha256!==crypto.createHash('sha256').update(runtime).digest('hex'))return null;
++  inputs.push(file);
++  return {$:'NE_Parts',parts:list(artifact.parts)};
++}
++
++
+ const compilerTarget=JSON.parse(fs.readFileSync(path.join(project,'src/compiler.json'),'utf8'));
+ const bootstrapPin=compilerTarget.upstream;
+ // Bootstrap is synchronous, but its subprocess output need not use pipes.
+@@ -99,7 +114,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
+   if(files.includes('src/back/native/book.bend')) {
+     exports.push('nc_compile','nc_foreign_paths');
+     if(files.includes('src/back/native/scalar-array.bend'))exports.push('nc_compile_checked');
+-    if(files.includes('src/back/native/request.bend'))exports.push('nr_prepare','nr_compile');
++    if(files.includes('src/back/native/request.bend'))exports.push('nr_prepare','nr_compile','nr_compile_prepared','ne_runtime_prepare','nr_prepare_annotated');
+     if(fs.readFileSync(path.join(project,'src/back/native/book.bend'),'utf8').includes('nc_annotation_stops('))exports.push('nc_annotation_stops','nc_annotated_context');
+   }
+   if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source','nc_foreign_scope');
+@@ -883,7 +898,7 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
+       const stops=api.nc_annotation_stops(contextBook);
+       const selected=api.reach_book(contextBook,list(['main']),stops);
+       layoutDefs=api.annotate_selected(contextBook,selected,stops);layoutStops=stops;
+-      book=api.nc_annotated_context(contextBook,layoutDefs);
++      if(!ownedApi||typeof api.nr_prepare_annotated!=='function')book=api.nc_annotated_context(contextBook,layoutDefs);
+     } else if(selectedEmission){
+       const products=usedPreparedWorld&&backend==='direct'&&baseAnnotationApis(api)?readBaseAnnotations(api,info,cached,graph.prefixLoad,book,stops):null;
+       book=products?api.annotate_selected_base(contextBook,book,stops,products):api.annotate_selected(contextBook,book,stops);
+@@ -908,7 +923,9 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
+     if(mode==='native') {
+       if(!api.nc_compile)return {status:'unsupported',phase,reason:'Native emitter was not bootstrapped.',checked:true};
+       trace('collect native foreign paths');
+-      const nativePlan=ownedApi&&typeof api.nr_prepare==='function'&&typeof api.nr_compile==='function'?api.nr_prepare(book):null;
++      const nativePlan=ownedApi&&layoutDefs&&typeof api.nr_prepare_annotated==='function'?api.nr_prepare_annotated(contextBook,layoutDefs):
++        ownedApi&&typeof api.nr_prepare==='function'&&typeof api.nr_compile==='function'?api.nr_prepare(book):null;
++      if(nativePlan)book=nativePlan.source;
+       const paths=nativePlan?array(nativePlan.paths):api.nc_foreign_paths?array(api.nc_foreign_paths(book)):graph.foreign.filter(f=>path.extname(f.path)==='.c').map(f=>f.path);
+       const foreignScope=nativePlan?nativePlan.scope:api.nc_foreign_scope?api.nc_foreign_scope(book):book;
+       const nativeInputs=[...graph.files,path.join(project,'src/runtime/native/runtime.c')];
+@@ -933,7 +950,8 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
+       }).join('\n');
+       trace('emit native');
+       const nativeRuntime=fs.readFileSync(path.join(project,'src/runtime/native/runtime.c'),'utf8');
+-      const native=nativePlan?api.nr_compile(nativePlan,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile_checked?api.nc_compile_checked(book,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile(book,nativeRuntime,requests);
++      const template=nativePlan&&typeof api.nr_compile_prepared==='function'?nativeTemplate(nativeRuntime,nativeInputs):null;
++      const native=template?api.nr_compile_prepared(nativePlan,template,requests,scalarEffectsSafe):nativePlan?api.nr_compile(nativePlan,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile_checked?api.nc_compile_checked(book,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile(book,nativeRuntime,requests);
+       if(native.error)return {status:'error',phase,diagnostic:'Error: '+native.error,exitCode:1,checked:true};
+       return {status:'ok',phase,code:native.source,verdict,exitCode:0,checked:true,files:nativeInputs};
+     }

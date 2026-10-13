@@ -35,6 +35,21 @@ function array(value) {
 const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 const trace=(message)=>{if(process.env.BEND_TYPED_TRACE)process.stderr.write(`[typed ${new Date().toISOString()}] ${message}\n`);};
 
+// Produced by ne_runtime_prepare in Bend; this shell only verifies/transports it.
+// The digest binds insertion boundaries, not merely the concatenated C bytes.
+const nativeTemplateSha256='f9f5a1c98f17f892d891032ca35489234e43d3b4112a18e592e6da408b09736c';
+function nativeTemplate(runtime,inputs) {
+  const file=path.join(project,'src/runtime/native/runtime-template.json');
+  let bytes;
+  try{bytes=fs.readFileSync(file);}catch(error){if(error.code==='ENOENT')return null;throw error;}
+  if(crypto.createHash('sha256').update(bytes).digest('hex')!==nativeTemplateSha256)return null;
+  const artifact=JSON.parse(bytes);
+  if(artifact.runtimeSha256!==crypto.createHash('sha256').update(runtime).digest('hex'))return null;
+  inputs.push(file);
+  return {$:'NE_Parts',parts:list(artifact.parts)};
+}
+
+
 const compilerTarget=JSON.parse(fs.readFileSync(path.join(project,'src/compiler.json'),'utf8'));
 const bootstrapPin=compilerTarget.upstream;
 // Bootstrap is synchronous, but its subprocess output need not use pipes.
@@ -99,7 +114,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   if(files.includes('src/back/native/book.bend')) {
     exports.push('nc_compile','nc_foreign_paths');
     if(files.includes('src/back/native/scalar-array.bend'))exports.push('nc_compile_checked');
-    if(files.includes('src/back/native/request.bend'))exports.push('nr_prepare','nr_compile');
+    if(files.includes('src/back/native/request.bend'))exports.push('nr_prepare','nr_compile','nr_compile_prepared','ne_runtime_prepare','nr_prepare_annotated');
     if(fs.readFileSync(path.join(project,'src/back/native/book.bend'),'utf8').includes('nc_annotation_stops('))exports.push('nc_annotation_stops','nc_annotated_context');
   }
   if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source','nc_foreign_scope');
@@ -883,7 +898,7 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
       const stops=api.nc_annotation_stops(contextBook);
       const selected=api.reach_book(contextBook,list(['main']),stops);
       layoutDefs=api.annotate_selected(contextBook,selected,stops);layoutStops=stops;
-      book=api.nc_annotated_context(contextBook,layoutDefs);
+      if(!ownedApi||typeof api.nr_prepare_annotated!=='function')book=api.nc_annotated_context(contextBook,layoutDefs);
     } else if(selectedEmission){
       const products=usedPreparedWorld&&backend==='direct'&&baseAnnotationApis(api)?readBaseAnnotations(api,info,cached,graph.prefixLoad,book,stops):null;
       book=products?api.annotate_selected_base(contextBook,book,stops,products):api.annotate_selected(contextBook,book,stops);
@@ -908,7 +923,9 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
     if(mode==='native') {
       if(!api.nc_compile)return {status:'unsupported',phase,reason:'Native emitter was not bootstrapped.',checked:true};
       trace('collect native foreign paths');
-      const nativePlan=ownedApi&&typeof api.nr_prepare==='function'&&typeof api.nr_compile==='function'?api.nr_prepare(book):null;
+      const nativePlan=ownedApi&&layoutDefs&&typeof api.nr_prepare_annotated==='function'?api.nr_prepare_annotated(contextBook,layoutDefs):
+        ownedApi&&typeof api.nr_prepare==='function'&&typeof api.nr_compile==='function'?api.nr_prepare(book):null;
+      if(nativePlan)book=nativePlan.source;
       const paths=nativePlan?array(nativePlan.paths):api.nc_foreign_paths?array(api.nc_foreign_paths(book)):graph.foreign.filter(f=>path.extname(f.path)==='.c').map(f=>f.path);
       const foreignScope=nativePlan?nativePlan.scope:api.nc_foreign_scope?api.nc_foreign_scope(book):book;
       const nativeInputs=[...graph.files,path.join(project,'src/runtime/native/runtime.c')];
@@ -933,7 +950,8 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
       }).join('\n');
       trace('emit native');
       const nativeRuntime=fs.readFileSync(path.join(project,'src/runtime/native/runtime.c'),'utf8');
-      const native=nativePlan?api.nr_compile(nativePlan,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile_checked?api.nc_compile_checked(book,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile(book,nativeRuntime,requests);
+      const template=nativePlan&&typeof api.nr_compile_prepared==='function'?nativeTemplate(nativeRuntime,nativeInputs):null;
+      const native=template?api.nr_compile_prepared(nativePlan,template,requests,scalarEffectsSafe):nativePlan?api.nr_compile(nativePlan,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile_checked?api.nc_compile_checked(book,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile(book,nativeRuntime,requests);
       if(native.error)return {status:'error',phase,diagnostic:'Error: '+native.error,exitCode:1,checked:true};
       return {status:'ok',phase,code:native.source,verdict,exitCode:0,checked:true,files:nativeInputs};
     }

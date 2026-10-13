@@ -127,6 +127,47 @@ def ne_segments(+ss: List<&2, N_Segment>) -> String:
 def ne_fill(+src: String, +mark: String, +text: String) -> String:
   nt_replace(src, mark, mark ++ "\n\n" ++ text)
 
+# A private canonical artifact is split by this Bend compiler, then transported
+# without rescanning. Raw/custom runtime text retains the original scanner.
+type NE_Runtime is Data:
+  NE_Text{+text: String}
+  NE_Parts{+parts: List<&2, String>}
+
+@unsafe
+def ne_runtime_prepare(+src: String) -> NE_Runtime:
+  +marks = ne_template_marks()
+  ne_runtime_prepared(src, ne_template_scan(src, marks, marks, "", Nil{}))
+
+@unsafe
+def ne_runtime_prepared(src: String, parts: Maybe<&2, List<&2, String>>) -> NE_Runtime:
+  match parts:
+    case None{}: NE_Text{src}
+    case Some{pieces}: NE_Parts{pieces}
+
+@unsafe
+def ne_runtime_prepend(runtime: NE_Runtime, prefix: String) -> NE_Runtime:
+  match runtime:
+    case NE_Text{text}: NE_Text{prefix ++ text}
+    case NE_Parts{parts}: ne_runtime_prefix(parts, prefix)
+
+@unsafe
+def ne_runtime_prefix(+parts: List<&2, String>, +prefix: String) -> NE_Runtime:
+  match parts:
+    case Nil{}: NE_Text{prefix}
+    case Con{head, rest}:
+      nt_choose(NE_Runtime, ne_template_plain(prefix, False{}),
+        u => NE_Parts{Con{prefix ++ head, rest}},
+        u => NE_Text{prefix ++ nt_join(parts, "")})
+
+@unsafe
+def ne_runtime_texts(runtime: NE_Runtime, +texts: List<&2, String>) -> String:
+  match runtime:
+    case NE_Text{src}: ne_program_texts(src, texts)
+    case NE_Parts{+parts}:
+      nt_choose(String, ne_template_payloads(texts),
+        u => ne_template_join(parts, texts),
+        u => ne_template_slow(nt_join(parts, ""), ne_template_marks(), texts))
+
 # Split only original runtime text. Suspicious input retains sequential fill.
 @unsafe
 def ne_template_marks() -> List<&2, String>:
@@ -197,9 +238,13 @@ def ne_program_texts(+src: String, +texts: List<&2, String>) -> String:
   ne_template_finish(src, marks, texts, ne_template_scan(src, marks, marks, "", Nil{}))
 
 @unsafe
-def ne_program(+src: String, +p: N_Program) -> String:
+def ne_program(src: String, p: N_Program) -> String:
+  ne_program_runtime(NE_Text{src}, p)
+
+@unsafe
+def ne_program_runtime(+runtime: NE_Runtime, +p: N_Program) -> String:
   match p:
     case N_Program{+ss, +cs, +image, +requests, +decls, +show, +pure}:
-      ne_program_texts(src, [nb_emit(ss, cs, nt_count(String, image), pure) ++ show,
+      ne_runtime_texts(runtime, [nb_emit(ss, cs, nt_count(String, image), pure) ++ show,
         "CONSTV u64 STAT_IMG[] = { " ++ nt_choose(String, U32.is_eq(nt_count(String, image), 0), u => "0", u => nt_join(image, ", ")) ++ " };\n" ++ decls,
         ne_segments(ss), requests])

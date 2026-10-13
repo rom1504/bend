@@ -1,5 +1,8 @@
 # Independent static review of paired native annotation/erasure
 
+Agent handoff notes; see the [final Phase84 report](README.md) for root-run
+measurements, completed controls and rejection/deferral decisions.
+
 Reviewed patch SHA256:
 `c86ff6eeab32e28757b49ad7df2d193b92d84065bc77fc0c21fd21ef90ba1746`.
 This review compares the patch with `check/annotate.bend`, native `erase.bend`,

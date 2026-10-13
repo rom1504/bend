@@ -5,6 +5,16 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed experiments: Phase84 native work replacement
+
+[Report](../implementation/phase84/README.md). Four checked prototypes fail to
+establish a general parity mechanism. Paired annotation/erasure is neutral on
+genuine B2 and adds278 lines: reject. Refusal/report shortcuts save only0.5–2.2%
+on exploratory four-source B1 screens: defer. All88 clean C outputs are exact;
+full-product and focused semantic controls pass. Preserve every failure and
+experimental image. Production/installed Phase82 metrics remain unchanged and
+release verification passes. Read the current frontier before another IR rewrite.
+
 ## Completed investigation: Phase83 agent and compiler research
 
 [Report](../implementation/phase83/README.md). Three focused research agents and

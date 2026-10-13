@@ -1,0 +1,41 @@
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -26,6 +26,24 @@
+ @unsafe
+ def nf_local(+target: NC_Target, +word: String, +join: String) -> NC_Target:
+   nq_local(target, [word], atom("Absent"), join)
++
++# A bound value has a non-tail destination. Refuse only when actual call
++# routing cannot select a product worker or an intrinsic instead of the owner.
++@unsafe
++def nf_binding_self_call(+book: List<&2, KDef>, +value: KTerm, +target: NC_Target) -> Bool:
++  match target:
++    case NC_Scheduler{}: False{}
++    case NC_Destination{words, shape, join, +owner, params, tail, signatures}:
++      +head = nd_head(value)
++      nt_choose(Bool, String.eq(tg(head), "Ref") && String.eq(nm(head), owner) && Bool.not(U32.is_eq(qt(head), 3)),
++        u => nf_binding_self_head(book, value, head, target), u => False{})
++
++@unsafe
++def nf_binding_self_head(+book: List<&2, KDef>, +value: KTerm, +head: KTerm, +target: NC_Target) -> Bool:
++  +d = lookup(book, nm(head))
++  nt_choose(Bool, String.eq(dk(d), "Def") && Bool.not(nc_native_def(d) || nc_foreign(d)),
++    u => nt_choose(Bool, Bool.not(String.eq(tg(dv(nq_info(target, nm(head)))), "NQSig")),
++      v => U32.is_eq(terms_len(nd_args(value, Nil{})), nd_arity(book, nm(head))), v => False{}), u => False{})
+ 
+ @unsafe
+ def nf_bind_boxed(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +target: NC_Target) -> NC_Code:
+--- a/selfhost/src/back/native/product.bend
++++ b/selfhost/src/back/native/product.bend
+@@ -160,6 +160,11 @@
+ 
+ @unsafe
+ def nq_bind_choose(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +target: NC_Target) -> NC_Code:
++  nt_choose(NC_Code, nf_binding_self_call(book, value, target),
++    u => nc_fail("flat worker: non-tail self call", n), u => nq_bind_route(book, value, body, env, id, n, target))
++
++@unsafe
++def nq_bind_route(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +target: NC_Target) -> NC_Code:
+   +shape = nq_value_shape(book, value, target)
+   nt_choose(NC_Code, String.eq(tg(shape), "NQShape"),
+     u => nt_choose(NC_Code, U32.is_eq(nq_uses(body, id), 1),

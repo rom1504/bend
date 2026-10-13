@@ -4409,3 +4409,21 @@ B2 Numeric allocation100.8 MB is below upstream145.45 MB; B1 is457 MB. Definitio
 sweep shows warm-process effects, not demonstrated quadratic frontend work.
 82 guarded jobs take253.6 seconds, peak488.5 MiB, no failed target/OOM/timeout.
 Production, installed Phase82 ratios and source complexity unchanged. No PR comment.
+
+## Phase84 replacement prototypes — 2026-10-13
+
+[Report](../implementation/phase84/README.md). Four actual Bend prototypes: actual
+refusal fail-fast, owned report/world reuse, coupled annotation/erasure and
+non-tail binding preflight. All88 clean outputs stay exact. Four checked B1
+builds/frontend36 pass; one failed build retained. Fusion's genuine B2/eight
+driver comparisons pass, but its clean four-source ratio is1.0043× baseline.
+Reject278 added lines: Numeric preparation saves33.5 ms but paired production
+adds14.9 ms. This is partial fusion, not full Ann elimination. Other B1 screens
+save0.5–2.2% with variation/local effects; defer. Binding preflight counts28 Map,
+one Numeric, zero simple held-out hits. Full-product comparisons and six focused
+fusion controls,17 report controls pass. Four source/harness failures remain
+preserved.120 guarded jobs consume618.6 s, peak1.60 GiB, no OOM/timeout.
+Production restored; Phase82 release verifies. Three bounded agents, root-only
+serial targets; no PR comment. Updated frontier: no demonstrated25% mechanism;
+future native representation work must replace consumers and budget actual
+removable work instead of adding paired products or repeating local shortcuts.

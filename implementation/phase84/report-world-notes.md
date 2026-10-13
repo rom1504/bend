@@ -1,5 +1,8 @@
 # Phase84 report-world prototype
 
+Agent handoff notes; see the [final Phase84 report](README.md) for root-run
+measurements, completed controls and rejection/deferral decisions.
+
 Prepared against `7352a0048c84a4eb48d8197169858b5fb262c229`. This is a
 **prototype handoff, not a measured or qualified improvement**. The agent made
 temporary source copies, a patch and this note; it ran no compiler targets.

@@ -1,5 +1,8 @@
 # Paired native annotation/erasure prototype
 
+Agent handoff notes; see the [final Phase84 report](README.md) for root-run
+measurements, completed controls and rejection/deferral decisions.
+
 Status: **source prototype delivered for root integration; not built or measured
 by the investigation agent**. This is partial deforestation, not completed
 annotation removal and not a production recommendation.
@@ -146,6 +149,52 @@ untyped constructor RHS expressions. All local RHS expressions are typed functio
 calls; nested constructors receive function-return or argument type context.
 No target compiler was run by the agent. Root owns checked builds, differential
 execution and candidate promotion.
+
+The separate
+[`fusion-controls-v2.mjs`](../../selfhost/tools/performance/phase84/fusion-controls-v2.mjs)
+adds ten existing source fixtures while preserving v1 unchanged. Invoke it with
+`PLAN CASE_OR_all FRESH_OUTPUT_DIRECTORY`. Its embedded source hashes cover
+dependent pairs, erased fields and erased field calls, open Array rejection,
+a dependent String/Array family, rewrites, partial intrinsic applications,
+capturing closures, erased-field conversion rejection and shared nested matches.
+Each case can run independently under the usual root resource guard.
+
+The authoritative v2 comparison is the complete owned inspection result with
+fusion enabled versus the same owned API with only the two fusion exports
+temporarily disabled. It therefore preserves the other checked permissions.
+A third inspection with explicit `{api}` exercises the older public fallback;
+its complete non-code observation must agree, and complete C identities are
+recorded separately. That fallback also disables prepared-world, checked-layout
+and request-product permissions, so differing C there is not by itself a fusion
+regression. The harness does not infer runtime equivalence from differing C.
+Successful cases must exercise both paired boundaries; the layout refusal must
+exercise annotation but stop before request preparation; checker rejection must
+reach neither. Fixture status contracts are checked hypotheses, not claimed
+prior native results. Only syntax and the ten source identities were checked by
+this agent; root owns all executions and interpretation.
+
+Root's first v2 execution found that `tests/proof/dependent_pair.bend` has no
+`import Base`; all three inspection paths refused with `a build needs import
+Base` before fusion. This is preserved evidence of a fixture-selection mistake,
+not a paired-producer correctness failure or a dependent-constructor control.
+V2 is immutable. The smaller
+[`fusion-controls-v3.mjs`](../../selfhost/tools/performance/phase84/fusion-controls-v3.mjs)
+selects six existing files statically verified to import Base and define main:
+`erased-field`, `open-array`, `dependent-array`, `rewrite-binders`,
+`closure-partial` and `erased-field-call`. Their source goldens are recorded in
+the manifest. The dependent Array case exercises a value-dependent family;
+this selection does not claim the omitted dependent-pair case was covered.
+Invocation and comparison boundaries are otherwise unchanged.
+
+V3's first executed case passed complete fusion-versus-owned-legacy equality,
+then failed the auxiliary explicit-API comparison because loader permissions
+produced different `files` lists. Root therefore requested removing that
+unrelated route. V3 remains immutable; use
+[`fusion-controls-v4.mjs`](../../selfhost/tools/performance/phase84/fusion-controls-v4.mjs)
+for the six-case focused gate. V4 runs only the same owned route with fusion
+enabled versus disabled, compares every inspection field including C and files,
+and retains complete intermediate annotation/request comparisons. It makes no
+claim about public injected-API behavior and adds no new fixture assumptions.
 
 ## Delivery identities
 

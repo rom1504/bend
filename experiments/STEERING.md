@@ -1,16 +1,24 @@
-# Active frontier: Phase83 investigated; Phase82 remains installed
+# Active frontier: Phase84 prototypes rejected/deferred; Phase82 installed
 
-[Phase83 report](../implementation/phase83/README.md) adds three authorized agent
-studies,48 clean requests,16 CPU/three heap profiles,four internal diagnostics
-and24 frontend check/report requests. All71 emitted C outputs remain exact.
-Priority: prove definite non-tail worker refusal before generating discarded C.
-Map spends379 ms on finally-unready candidate construction in one diagnostic;
-Numeric36 ms, small/functions65 zero. These are opportunity bounds, not gains.
-Current B2 Numeric allocation100.8 MB is below upstream145.45 MB; B1 is457 MB.
-The frontend size/warmth sweep shows large warm-process effects, not a quadratic
-parser finding. Existing erased-body/arity/static caches already cover part of
-the proposed IR; require replacement of actual consumers before a broad rewrite.
-Production, installed metrics, conformance and complexity remain Phase82 below.
+[Phase84 report](../implementation/phase84/README.md) tests four actual Bend
+prototypes. Paired annotation/erasure adds278 lines and is neutral on B2
+(1.0043× baseline); reject. Its Numeric profile removes33.5 ms from preparation
+but adds14.9 ms to the producer:18.6 ms net, not a25% mechanism. Full annotated
+definitions and NR_Request values match on four sources; six focused owned
+comparisons pass. This was partial fusion, not removal of Ann/its consumers.
+
+Defer fail-fast/refusal-binding/report reuse: four-source B1 screens show only
+0.5%/2.2%/2.1% savings with variation and local effects. Binding preflight hits
+28/4116 Map checks,1/338 Numeric, zero on simple held-outs.17 report controls
+pass. Do not repeat these small shortcuts or pair construction as a claimed
+parity architecture. A future representation experiment must replace actual
+world/preparation/consumer work and demonstrate a complete-request budget.
+88 clean C outputs remain exact. Four checked B1/frontend36 builds, one genuine
+experimental B2/eight-driver comparison, two profiles and counter diagnostics
+complete.120 guarded jobs take618.6 s, peak1.60 GiB; four source/harness failures
+are preserved, no OOM/timeout. Production is restored and release verification
+passes. [Phase83 investigation](../implementation/phase83/README.md) remains
+relevant background; its379 ms Map opportunity ceiling was not a measured gain.
 
 Installed genuine B2 `098320e8…`, checked B1 `8a400725…`, source commit `070064e`.
 [Report](../implementation/phase82/README.md), [qualification](../implementation/phase82/qualification.json),

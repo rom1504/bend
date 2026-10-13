@@ -1,5 +1,8 @@
 # Phase84 candidate: stop after an actual private-worker refusal
 
+Agent handoff notes; see the [final Phase84 report](README.md) for root-run
+measurements, completed controls and rejection/deferral decisions.
+
 Status: source prototype, not checked, measured or promoted by this lane.
 Baseline `7352a00`; patch [refusal.patch](../../experiments/phase84/prototypes/refusal.patch).
 The patch applies cleanly with `git apply --check`; production files were not

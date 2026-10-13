@@ -1,27 +1,39 @@
-# Active frontier: Phase78 installed; Phase81 residual-cost investigation complete
+# Active frontier: Phase82 installed; fixed native request costs reduced
 
-Installed genuine B2 `cc99ac9b…`, checked B1 `475610ea…`, source commit `6758bf2`.
-[Report](../implementation/phase78/README.md), [qualification](../implementation/phase78/source-qualification.json),
-[release](../implementation/phase78/release.json), [usage](../docs/self_hosted/NATIVE_COMPILATION.md).
-Paired45 fresh C requests: B1 1.88678×→1.73205× upstream, B2 1.46354×→1.38187×;
-8.20%/5.58% less time. Imports, explicit Bend Base, Clang and execution excluded;
-upstream checks Base inside its request. No backend products or reused processes.
-Non-IO held-outs improve less: B1 about2–4%,B2 about0–2%; functions65 remains1.74×
-upstream with B2. Cold parity is not achieved.
+Installed genuine B2 `098320e8…`, checked B1 `8a400725…`, source commit `070064e`.
+[Report](../implementation/phase82/README.md), [qualification](../implementation/phase82/qualification.json),
+[release](../implementation/phase82/release.json), [usage](../docs/self_hosted/NATIVE_COMPILATION.md).
+Paired45 fresh C requests improve5.10% B1/6.15% B2 against simultaneous Phase78:
+1.76295×→1.67299× B1 and1.41542×→1.32836× B2 upstream. Historical Phase78's
+qualified1.732×/1.382× remains a separate run. Imports, explicit Bend Base,
+Clang and execution are excluded; reports enabled, no reused process.
+Held-out small/functions65 B2 improve20.7%/15.1%, to0.826×/1.483× upstream.
+Cold parity still needs24.7% less B2/40.2% less B1 time on the three-source loop.
 
-Retain normalized type/field annotations, private checked layout validation,
-whole-closure escape facts and omission of nonescaping factories/inlined intrinsic
-entries, pre-compaction body reuse and lazy observer gates. +154physical/+115code
-Bend lines, no new module (32,471/26,523 lines,132modules). Reject160 branch helpers,
-compact identifiers, two tag classifiers and early observer planning for poor
-benefit/complexity. Rejected snapshots and independent results stay preserved.
+Keep canonical runtime chunks produced by the Bend scanner and host-verified by
+exact asset/runtime hashes. Prefix/payload marker fallbacks and raw/custom API
+behavior stay intact. The owned annotation merge carries its exact source bound
+instead of scanning the mirror index/declaration list again. No semantic host
+compiler or new optimizer framework. +69 physical/+53 code Bend lines,132 modules:
+32,540/26,576 lines. Source/driver equal selected compiler04; compiler05 deferred.
 
-Native execution is1.06678× upstream/1.00162× paired Phase77 over12 families;
-effectively unchanged with case changes −3.0% to+1.9%. All108 intervals qualify.
-All23 raw JS sources remain byte-identical, preserving45 benchmark points.
-Frontend36/native100/raw31/new14/word10/held-out2/JS9/threads28, B2 driver8,
-self-check/B3,12 B1/B2 C outputs, installed/relocated42/24 and session CLI pass.
-Seven reference failures/thirteen broader native API gaps remain explicit.
+Reject the extra private erasure consumer despite exact preparation products:
+only1.68% B1/1.38% B2 over compiler04. Preserve both patches and actual B1/B2
+images. Full per-function representation replacement remains open; do not label
+this small consumer experiment a completed IR fusion. Two selected B2 profiles
+show no template-scanner samples; source processing, report/index work,
+normalization and native planning remain. Read the current report before a rewrite.
+
+All159 clean experimental requests retain C/reports. Renderer250/transport5,
+frontend36/native100/raw31/new14/word10/heldout2/threads28, B2 driver8,
+self-check/B3 and installed/relocated42/24/session5 pass. Both stages emit all12
+benchmark C files exactly; all23 JS sources (45points) remain byte-identical.
+Reuse prior native1.067× upstream execution evidence, not a new runtime clock.
+Seven reference native failures/thirteen broader native API gaps remain explicit.
+264 guarded jobs take1,363.5s; peak RSS1.61GiB, no OOM or timeout. No quota claim.
+
+Prior Phase79–81 findings follow; those phases left Phase78 installed at their
+completion. Their raw evidence and rejected prototypes remain historical inputs.
 
 [Phase79 report](../implementation/phase79/README.md): whole-library and selected-worker
 prepared products pass exact-C screens but save only 3.49%/5.15% against their
@@ -51,7 +63,7 @@ queries25–50ms and three final-book constructions17–19ms in separate diagnos
 These overlap other stages and are not additive savings. Numeric sampled
 allocations:B1 538MB,B2 138MB,TS148MB. B2 text helpers account for about50MB.
 
-Next: rank removal of fixed text/book/report work first, then a per-function
+The Phase81 recommendation was fixed text/book/report removal, then a per-function
 native representation that replaces annotation/erasure/reconstruction and feeds
 multiple consumers. Resolve symbols once where measured. Cold parity still needs
 about42% less B1 /28% less B2 time on the qualified three-source loop. Combined

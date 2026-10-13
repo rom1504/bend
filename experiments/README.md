@@ -5,6 +5,16 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed implementation: Phase82 fixed native request work
+
+[Report](../implementation/phase82/README.md). Genuine B2 `098320e8…` retains
+Bend-produced canonical runtime chunks and exact source-bound reuse. Paired
+fresh C requests improve5.10% B1/6.15% B2, to1.673×/1.328× upstream. Held-out
+small/functions65 B2 improve20.7%/15.1%. All12 C files and23 JS sources stay exact;
+selected conformance/selfhosting/installed gates pass. Defer the separately
+measured private erasure consumer: only1.68% B1/1.38% B2 over this candidate.
+Source grows69 physical/53 code lines, no module. Parity remains open.
+
 ## Completed investigation: Phase81 compilation costs and compiler research
 
 [Report](../implementation/phase81/README.md). Fresh clean/CPU/allocation/internal

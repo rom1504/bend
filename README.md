@@ -16,22 +16,23 @@ This fork ships the Bend2 compiler in [`selfhost/`](selfhost/README.md), targeti
 upstream **`0592662` (Bend 2.0.36)**. Ordinary compilation runs Bend algorithms
 without a TypeScript fallback.
 
-**Phase78 self-emitted B2 is installed** (`cc99ac9b…`), with checked B1 parent,
+**Phase82 self-emitted B2 is installed** (`098320e8…`), with checked B1 parent,
 fresh own-source acceptance and exact B3 reproduction. Direct JavaScript is the
 default; native C and legacy JS retain documented limits.
 
-Fresh C-compilation requests take **1.732× B1 /1.382× B2 upstream**:8.2%/5.6%
-less time than Phase77 measured alongside. Imports, prepared Bend Base, Clang and
-execution remain separate. Non-IO held-outs improve less; parity remains open.
+Fresh C-compilation requests take **1.673× B1 /1.328× B2 upstream** on the
+three-source loop: **5.1%/6.2% less time** than Phase78 measured alongside.
+The small and65-function held-outs use20.7%/15.1% less B2 time. Imports, prepared
+Bend Base, Clang and execution remain separate; general parity remains open.
 
-Twelve-family C execution is effectively unchanged versus Phase77 (**1.002×**
-its time, **1.067× upstream**). All23 JS benchmark sources are byte-identical,
+Both stages reproduce all12 benchmark C files exactly, preserving the prior
+**1.067× upstream** execution evidence. All23 JS sources remain byte-identical,
 covering45 points. Native100,raw31,frontend,threaded,self-hosting and installed/
 relocated checks pass. Seven reference native failures and thirteen broader native
-API gaps remain. Production Bend source is **32,471 physical lines /132 modules**.
-No mathematical compiler proof is claimed.
+API gaps remain. Production Bend source is **32,540 physical lines /132 modules**
+(+69 lines). No mathematical compiler proof is claimed.
 
-Read the [Phase78 report](implementation/phase78/README.md),
+Read the [Phase82 report](implementation/phase82/README.md),
 [native compilation/session guide](docs/self_hosted/NATIVE_COMPILATION.md),
 [native ownership facts](docs/self_hosted/NATIVE_OWNERSHIP_FACTS.md),
 [analysis fact lifetimes and experiments](docs/self_hosted/ANALYSIS_FACTS.md),

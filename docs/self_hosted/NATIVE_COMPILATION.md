@@ -1,6 +1,6 @@
 # Native compilation and a fast editing loop
 
-The default self-hosted package is Phase78 B2: the Bend compiler compiled by
+The default self-hosted package is Phase82 B2: the Bend compiler compiled by
 itself. It checks and compiles Bend to JavaScript or C without a TypeScript
 fallback. B1 remains the checked development-build stage. Use
 `node selfhost/tools/development/release.mjs --verify` from the repository root
@@ -54,6 +54,42 @@ that need the C string directly. Create it in a fresh process, then await
 Base replacement, not merely a new session object in a process holding old modules.
 
 ## Measurements and admission rules
+
+Phase82 removes two fixed costs from native requests: rescanning the canonical
+C runtime template and recomputing a source binder bound after constructing its
+mirror index. The [implementation report](../../implementation/phase82/README.md)
+records1.673× B1/1.328× B2 upstream on the three-source loop,5.1%/6.2% less
+request time than paired Phase78. The small/functions65 held-outs use20.7%/15.1%
+less B2 time. Complete C/JS output identity preserves execution behavior. The compiler algorithms remain
+in Bend. Public raw APIs and custom runtimes retain their ordinary checks.
+
+### Canonical template artifact
+
+`selfhost/src/runtime/native/runtime-template.json` is generated data. Its five
+chunks come from the Bend function `ne_runtime_prepare`, using the same marker
+scanner as ordinary emission. The driver checks both the artifact digest and
+runtime digest before transporting those chunks. Missing or changed assets use
+ordinary rendering. Marker-sensitive prefixes/payloads retain sequential
+substitution, and all rendering decisions remain in Bend.
+
+After intentionally changing the C runtime, generate a new artifact with a
+checked development attempt:
+
+```sh
+node --stack-size=4096 --max-old-space-size=1024 \
+  selfhost/tools/development/native-template.mjs \
+  ATTEMPT/attempt.json selfhost/src/runtime/native/runtime.c \
+  /tmp/new-runtime-template.json /tmp/new-runtime-template-receipt.json
+```
+
+Review the receipt, replace the canonical artifact, and update
+`nativeTemplateSha256` in `selfhost/tools/typed-driver.mjs` to its recorded
+artifact hash. Rebuild and qualify the compiler/driver together. The tool refuses
+to overwrite its outputs. The receipt identifies the checked Bend producer;
+the JavaScript tool does not parse template markers. The release inventory
+includes the artifact, so relocation preserves the fast path.
+
+### Historical measurements
 
 Phase78 fresh C requests take1.732× upstream with B1 and1.382× with B2 on the
 three-source loop:8.2%/5.6% less time than the paired Phase77 compiler. These

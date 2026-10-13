@@ -4381,3 +4381,17 @@ per-function representation/consumer fusion and resolved symbols; combined25–3
 is an explicit target, not a measured gain. Refresh V8/Cranelift/Go/Zig/LLVM/Lean
 research. Production unchanged, no agents or PR comments;80 guarded jobs take
 198.38s and peak477.1MiB. Preserve raw methods/profiles/derivative and estimates.
+
+## Phase82 — fixed native request work — 2026-10-13
+
+[Report](../implementation/phase82/README.md). Installed genuine B2 `098320e8…`,
+checked B1 `8a400725…`, source commit `070064e`. Canonical chunks produced by
+Bend and exact-world source bounds save5.10%/6.15% B1/B2 request time. Paired
+ratios1.673×/1.328× TS; held-out B2 small/functions65 improve20.7%/15.1%.
+All159 clean experimental requests preserve C and reports. Both stages retain
+12-family C identity;23 JS sources stay exact.250 renderer/five transport
+controls and selected native/raw/threaded/selfhosting/installed gates pass.
+Reject compiler05's extra erasure consumer despite exact preparation products:
+only1.68%/1.38% request savings. Preserve both candidate patches and all failed
+preparations. +69 physical/+53 code Bend lines,132 modules. Cold parity still
+needs24.7% less B2 time. No agents, PR comments or generated-program regression.

@@ -1,17 +1,20 @@
 # Bend2 compiler port in Bend2
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The default package is genuine **Phase78 B2** (`cc99ac9b…`), emitted by the Bend
+The default package is genuine **Phase82 B2** (`098320e8…`), emitted by the Bend
 compiler itself, with checked B1 and self-check/fixed-point lineage retained.
-The [Phase78 report](../implementation/phase78/README.md) records paired fresh C-request ratios
-**1.732× B1 /1.382× B2 upstream**,8.2%/5.6% less time than Phase77 measured
-alongside. These clocks exclude imports, prepared Bend Base, Clang and execution;
-upstream checks Base within its request. Parity remains open.
+The [Phase82 report](../implementation/phase82/README.md) records paired fresh
+C-request ratios **1.673× B1 /1.328× B2 upstream**,5.1%/6.2% less time than Phase78
+measured alongside. B2 small/functions65 held-outs improve20.7%/15.1%.
+These clocks exclude imports, prepared Bend Base, Clang and execution;
+upstream checks Base within its request. General parity remains open.
 
-Generated C execution is effectively unchanged versus Phase77: **1.002×** its
-time across12 families (**1.067× upstream**). All23 JS benchmark sources remain
+All12 benchmark C files remain exact in both stages, preserving the prior
+**1.067× upstream** execution evidence. All23 JS benchmark sources remain
 byte-identical, covering45 points. Selected conformance and installed/relocated
-checks pass; known gaps remain. Source grows154 lines, with no new module.
+checks pass; known gaps remain. Source grows69 physical/53 code lines, with no
+new module. The compiler remains written in Bend; the new template artifact is
+produced by Bend and verified/transported by its host.
 
 The [native session guide](../docs/self_hosted/NATIVE_COMPILATION.md) documents repeated C-emission requests.
 The older Phase77 warm-session result (about1.10× upstream over five mixed

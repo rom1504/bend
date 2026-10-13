@@ -1,6 +1,6 @@
 # P82-001: canonical runtime parts
 
-Status: compiler04 selected for integration; installation pending qualification.
+Status: compiler04 genuine B2 installed and verified.
 
 Hypothesis: repeating the Bend runtime scanner for unchanged canonical bytes
 costs 43–66 ms per B2 request and substantial temporary allocation. A small

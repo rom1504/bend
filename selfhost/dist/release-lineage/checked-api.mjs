@@ -311,13 +311,18 @@ function $nc_compile_checked$(_book_0, _runtime_0, _requests_0, _effects_safe_0)
 
 function $nr_prepare$(_book_0) {
   const _source_0 = run_loop($ns_source$(_book_0));
-  return $nr_prepared$(_source_0, run_loop($nr_walk$(_source_0, {$: "Con", "head": "main", "tail": {$: "Nil"}}, {$: "Nil"}, {$: "Nil"})));
+  return $nr_prepared$(_source_0, run_loop($nr_walk$(_source_0, {$: "Con", "head": "main", "tail": {$: "Nil"}}, {$: "Nil"}, {$: "Nil"})), {$: "None"});
 }
 
 function $nr_compile$(_request_0, _runtime_0, _requests_0, _effects_safe_0) {
+  return $nr_compile_prepared$(_request_0, {$: "NE_Text", "text": _runtime_0}, _requests_0, _effects_safe_0);
+}
+
+function $nr_compile_prepared$(_request_0, _runtime_0, _requests_0, _effects_safe_0) {
   const _source_0 = _request_0["source"];
   const _book_0 = _request_0["book"];
   const _names_0 = _request_0["names"];
+  const _bound_0 = _request_0["bound"];
   const _packed_0 = run_loop($nt_choose$(_effects_safe_0, run_clo((_x_0) => {
   return $ns_definitions$(_book_0, _names_0);
 }), run_clo((_x_1) => {
@@ -328,13 +333,25 @@ function $nr_compile$(_request_0, _runtime_0, _requests_0, _effects_safe_0) {
 }), run_clo((_x_3) => {
   return false;
 })));
-  const _header_0 = ($ns_checked_runtime$(_book_0, _runtime_0, _packed_0, _unshared_0));
-  const _error_0 = run_loop($nc_compile_error$(_source_0));
+  const _header_0 = run_loop($ne_runtime_prepend$(_runtime_0, ($ns_checked_runtime$(_book_0, "", _packed_0, _unshared_0))));
+  const _error_0 = run_loop($nc_compile_error_known$(_source_0, _bound_0));
   return $nt_choose$(($String$eq$(_error_0, "")), run_clo((_x_4) => {
   return $ns_compile_named$(_book_0, _names_0, _header_0, _requests_0, _packed_0);
 }), run_clo((_x_5) => {
   return {$: "NC_Result", "source": "", "error": _error_0};
 }));
+}
+
+function $ne_runtime_prepare$(_src_0) {
+  const _marks_0 = ($ne_template_marks$());
+  return $ne_runtime_prepared$(_src_0, run_loop($ne_template_scan$(_src_0, _marks_0, _marks_0, "", {$: "Nil"})));
+}
+
+function $nr_prepare_annotated$(_book_0, _annotated_0) {
+  const _merged_0 = run_loop($nc_context_defs$(_book_0, run_loop($nc_context_index$(_annotated_0))));
+  const _bound_0 = ($norm_max_book$(_merged_0));
+  const _source_0 = ($book_cached$(_merged_0, _bound_0));
+  return $nr_prepared$(_source_0, run_loop($nr_walk$(_source_0, {$: "Con", "head": "main", "tail": {$: "Nil"}}, {$: "Nil"}, {$: "Nil"})), {$: "Some", "value": _bound_0});
 }
 
 function $nc_annotation_stops$(_book_0) {
@@ -1477,7 +1494,7 @@ function $sp_payload_term$(_payload_0) {
 function $nc_compile_mode$(_book_0, _runtime_0, _requests_0, _observers_0) {
   const _error_0 = run_loop($nc_compile_error$(_book_0));
   return $nt_choose$(($String$eq$(_error_0, "")), run_clo((_x_0) => {
-  return $ns_compile$(_book_0, _runtime_0, _requests_0, _observers_0);
+  return $ns_compile$(_book_0, {$: "NE_Text", "text": _runtime_0}, _requests_0, _observers_0);
 }), run_clo((_x_1) => {
   return {$: "NC_Result", "source": "", "error": _error_0};
 }));
@@ -1615,10 +1632,10 @@ function $ns_source$(_book_0) {
   }
 }
 
-function $nr_prepared$(_source_0, _closure_0) {
+function $nr_prepared$(_source_0, _closure_0, _bound_0) {
   const _names_0 = _closure_0["names"];
   const _facts_0 = _closure_0["facts"];
-  return {$: "NR_Request", "source": _source_0, "book": ($ns_attach_book$(_source_0, _facts_0, 0, {$: "Nil"})), "names": _names_0, "paths": ($nc_paths_of$(_source_0, _names_0)), "scope": run_loop($kr_filter$(_source_0, _names_0))};
+  return {$: "NR_Request", "source": _source_0, "book": ($ns_attach_book$(_source_0, _facts_0, 0, {$: "Nil"})), "names": _names_0, "paths": ($nc_paths_of$(_source_0, _names_0)), "scope": run_loop($kr_filter$(_source_0, _names_0)), "bound": _bound_0};
 }
 
 function $nr_walk$(_book_0, _todo_0, _done_0, _facts_0) {
@@ -1656,7 +1673,17 @@ function $nr_unshared$(_book_0, _names_0) {
   }
 }
 
-function $nc_compile_error$(_book_0) {
+function $ne_runtime_prepend$(_runtime_0, _prefix_0) {
+  if (_runtime_0.$ === "NE_Text") {
+    const _text_0 = _runtime_0["text"];
+    return {$: "NE_Text", "text": (_prefix_0 + _text_0)};
+  } else {
+    const _parts_0 = _runtime_0["parts"];
+    return $ne_runtime_prefix$(_parts_0, _prefix_0);
+  }
+}
+
+function $nc_compile_error_known$(_book_0, _bound_0) {
   const _main_0 = run_loop($lookup$(_book_0, "main"));
   const _owned_0 = run_loop($nv_owned$(_book_0));
   return $nt_choose$(($Bool$not$(($String$eq$(_owned_0, "")))), run_clo((_x_0) => {
@@ -1670,7 +1697,7 @@ function $nc_compile_error$(_book_0) {
   return $nt_choose$(($Bool$and$(($nc_is_io$(_book_0, ($dt$(_main_0)))), ($String$eq$(($tg$(run_loop($nc_unann$(($dv$(_main_0)))))), "Foreign")))), run_clo((_x_6) => {
   return "main must be a filled def: a foreign main cannot anchor IO";
 }), run_clo((_x_7) => {
-  const _x_8 = ($norm_max_book$(_book_0));
+  const _x_8 = ($nc_source_bound$(_book_0, _bound_0));
   return $nt_choose$((_x_8 >= 4000000000), run_clo((_x_9) => {
   return "native source binder IDs overlap the compiler temporary range";
 }), run_clo((_x_10) => {
@@ -1687,27 +1714,30 @@ function $ns_compile_named$(_source_0, _names_0, _runtime_0, _requests_0, _obser
   return $nt_choose$(($Bool$and$(_observers_0, ($List$is_empty$(_bangs_0)))), run_clo((_x_0) => {
   return $ns_compile_planned$(_prepared_0, _names_0, _bangs_0, _runtime_0, _requests_0, _observers_0);
 }), run_clo((_x_1) => {
-  const _x_2 = run_loop($nh_macros$(_prepared_0, _names_0, _observers_0));
-  return $ns_compile_fallback$(_prepared_0, _names_0, _bangs_0, (_x_2 + _runtime_0), _requests_0, _observers_0, run_loop($nc_compile_defs$(_prepared_0, {$: "Con", "head": "main", "tail": {$: "Nil"}}, {$: "Nil"}, 0, _bangs_0)));
+  return $ns_compile_fallback$(_prepared_0, _names_0, _bangs_0, run_loop($ne_runtime_prepend$(_runtime_0, run_loop($nh_macros$(_prepared_0, _names_0, _observers_0)))), _requests_0, _observers_0, run_loop($nc_compile_defs$(_prepared_0, {$: "Con", "head": "main", "tail": {$: "Nil"}}, {$: "Nil"}, 0, _bangs_0)));
 }));
 }
 
-function $nc_native_def$(_d_0) {
-  return $nt_choose$(($db$(_d_0)), run_clo((_x_0) => {
-  return $nc_native_marked$(_d_0);
-}), run_clo((_x_1) => {
-  return false;
-}));
+function $ne_template_marks$() {
+  return {$: "Con", "head": "// Tables\n// ======", "tail": {$: "Con", "head": "// Spins\n// =====", "tail": {$: "Con", "head": "// Segments\n// ========", "tail": {$: "Con", "head": "// Requests\n// ========", "tail": {$: "Nil"}}}}};
 }
 
-function $dn$(_d_0) {
-  if (_d_0.$ === "KDef") {
-    const _name_0 = _d_0["name"];
-    return _name_0;
-  } else if (_d_0.$ === "KIndexLeaf") {
-    return "";
+function $ne_runtime_prepared$(_src_0, _parts_0) {
+  if (_parts_0.$ === "None") {
+    return {$: "NE_Text", "text": _src_0};
   } else {
-    return "";
+    const _pieces_0 = _parts_0["value"];
+    return {$: "NE_Parts", "parts": _pieces_0};
+  }
+}
+
+function $ne_template_scan$(_src_0, _marks_0, _todo_0, _acc_0, _parts_0) {
+  if (_todo_0.$ === "Nil") {
+    return {$: "Some", "value": ($nt_reverse$({$: "Con", "head": (_acc_0 + _src_0), "tail": _parts_0}, {$: "Nil"}))};
+  } else {
+    const _want_0 = _todo_0["head"];
+    const _more_0 = _todo_0["tail"];
+    return $ne_template_step$(_src_0, _marks_0, _want_0, _more_0, _acc_0, _parts_0);
   }
 }
 
@@ -1741,6 +1771,25 @@ function $nc_context_index$(_annotated_0) {
 
 function $norm_max_book$(_book_0) {
   return $norm_max_defs$(_book_0, 0);
+}
+
+function $nc_native_def$(_d_0) {
+  return $nt_choose$(($db$(_d_0)), run_clo((_x_0) => {
+  return $nc_native_marked$(_d_0);
+}), run_clo((_x_1) => {
+  return false;
+}));
+}
+
+function $dn$(_d_0) {
+  if (_d_0.$ === "KDef") {
+    const _name_0 = _d_0["name"];
+    return _name_0;
+  } else if (_d_0.$ === "KIndexLeaf") {
+    return "";
+  } else {
+    return "";
+  }
 }
 
 function $nc_foreign_base$(_ds_0, _path_0) {
@@ -3710,6 +3759,10 @@ function $dg_no_report$(_name_0, _message_0) {
   return {$: "DDiagnostic", "expected": {$: "DText", "text": _message_0}, "observed": {$: "DText", "text": ""}, "has_observed": false, "context": {$: "Nil"}, "definition": _name_0, "span": {$: "DNoSpan"}, "note": "", "trail": {$: "Nil"}};
 }
 
+function $nc_compile_error$(_book_0) {
+  return $nc_compile_error_known$(_book_0, {$: "None"});
+}
+
 function $ns_compile$(_book_0, _runtime_0, _requests_0, _observers_0) {
   const _source_0 = run_loop($ns_source$(_book_0));
   const _names_0 = run_loop($nc_live_names$(_source_0, {$: "Con", "head": "main", "tail": {$: "Nil"}}, {$: "Nil"}));
@@ -3973,6 +4026,21 @@ function $nr_visit$(_book_0, _name_0, _todo_0, _done_0, _facts_0, _d_0) {
   return $nr_walk$(_book_0, ($nt_append$(($nc_refs$(_body_0)), _todo_0)), {$: "Con", "head": _name_0, "tail": _done_0}, _more_0);
 }
 
+function $ne_runtime_prefix$(_parts_0, _prefix_0) {
+  if (_parts_0.$ === "Nil") {
+    return {$: "NE_Text", "text": _prefix_0};
+  } else {
+    const _head_0 = _parts_0["head"];
+    const _rest_0 = _parts_0["tail"];
+    return $nt_choose$(run_loop($ne_template_plain$(_prefix_0, false)), run_clo((_x_0) => {
+  return {$: "NE_Parts", "parts": {$: "Con", "head": (_prefix_0 + _head_0), "tail": _rest_0}};
+}), run_clo((_x_1) => {
+  const _x_2 = ($nt_join$({$: "Con", "head": _head_0, "tail": _rest_0}, ""));
+  return {$: "NE_Text", "text": (_prefix_0 + _x_2)};
+}));
+  }
+}
+
 function $nv_owned$(_book_0) {
   if (_book_0.$ === "Nil") {
     return "";
@@ -3993,6 +4061,15 @@ function $nc_is_io$(_book_0, _ty_0) {
   const _shadow_0 = run_loop($book_put$(_book_0, {$: "KDef", "name": ($dn$(_io_0)), "kind": ($dk$(_io_0)), "arity": ($da$(_io_0)), "templates": ($dx$(_io_0)), "typ": ($dt$(_io_0)), "value": ($atom$("Absent")), "ctors": ($dc$(_io_0)), "native": ($db$(_io_0)), "unsafe": ($du$(_io_0))}));
   const _head_0 = run_loop($wnf$(_shadow_0, _ty_0));
   return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_io_0)), "Def")), ($db$(_io_0)))), ($String$eq$(($tg$(_head_0)), "App")))), ($String$eq$(($tg$(run_loop($kid$(_head_0, 0)))), "Ref")))), ($String$eq$(($nm$(run_loop($kid$(_head_0, 0)))), "IO")));
+}
+
+function $nc_source_bound$(_book_0, _bound_0) {
+  if (_bound_0.$ === "None") {
+    return $norm_max_book$(_book_0);
+  } else {
+    const _value_0 = _bound_0["value"];
+    return _value_0;
+  }
 }
 
 function $ns_prepare$(_book_0, _names_0) {
@@ -4016,8 +4093,7 @@ function $nc_bangs_names$(_book_0, _names_0) {
 function $ns_compile_planned$(_book_0, _names_0, _bangs_0, _runtime_0, _requests_0, _observers_0) {
   const _plan_0 = ($nf_plan$(_book_0, _names_0, _bangs_0, _observers_0));
   const _selected_0 = run_loop($nf_host_context$(_book_0, true, _plan_0));
-  const _x_0 = run_loop($nh_macros$(_selected_0, _names_0, _observers_0));
-  return $nc_finish$(_selected_0, (_x_0 + _runtime_0), _requests_0, run_loop($nc_compile_defs$(_selected_0, {$: "Con", "head": "main", "tail": {$: "Nil"}}, {$: "Nil"}, 0, _bangs_0)), _observers_0, _plan_0);
+  return $nc_finish$(_selected_0, run_loop($ne_runtime_prepend$(_runtime_0, run_loop($nh_macros$(_selected_0, _names_0, _observers_0)))), _requests_0, run_loop($nc_compile_defs$(_selected_0, {$: "Con", "head": "main", "tail": {$: "Nil"}}, {$: "Nil"}, 0, _bangs_0)), _observers_0, _plan_0);
 }
 
 function $ns_compile_fallback$(_book_0, _names_0, _bangs_0, _runtime_0, _requests_0, _observers_0, _compiled_0) {
@@ -4053,12 +4129,42 @@ function $nc_compile_defs$(_book_0, _todo_0, _done_0, _n_0, _bangs_0) {
   }
 }
 
-function $nc_native_marked$(_d_0) {
-  return $nt_choose$(($String$eq$(($tg$(run_loop($nc_unann$(($dv$(_d_0)))))), "Foreign")), run_clo((_x_0) => {
-  return false;
+function $nt_reverse$($0, $1) {
+  for (;;) {
+    {
+      const _xs_0 = $0;
+      const _acc_0 = $1;
+      if (_xs_0.$ === "Nil") {
+        return _acc_0;
+      } else {
+        const _h_0 = _xs_0["head"];
+        const _t_0 = _xs_0["tail"];
+        $0 = _t_0;
+        $1 = {$: "Con", "head": _h_0, "tail": _acc_0};
+        continue;
+      }
+    }
+  }
+}
+
+function $ne_template_step$(_src_0, _marks_0, _want_0, _more_0, _acc_0, _parts_0) {
+  if (_src_0 === "") {
+    return {$: "None"};
+  } else {
+    const _h_0 = (_src_0.codePointAt(0) > 0xFFFF ? _src_0.slice(0, 2) : _src_0[0]);
+    const _rest_0 = (_src_0.codePointAt(0) > 0xFFFF ? _src_0.slice(2) : _src_0.slice(1));
+    const _mark_0 = run_loop($nt_choose$(($Char$is_eq$(_h_0, "/")), run_clo((_x_0) => {
+  return $ne_template_mark$((_h_0 + _rest_0), _marks_0);
 }), run_clo((_x_1) => {
-  return $nc_native_primitive$(($nc_primitive_name$(($dn$(_d_0)))));
+  return "";
+})));
+    return $nt_choose$(($String$eq$(_mark_0, "")), run_clo((_x_2) => {
+  const _x_3 = (_h_0 + "");
+  return $ne_template_step$(_rest_0, _marks_0, _want_0, _more_0, (_acc_0 + _x_3), _parts_0);
+}), run_clo((_x_4) => {
+  return $ne_template_take$((_h_0 + _rest_0), _marks_0, _want_0, _more_0, _acc_0, _parts_0, _mark_0);
 }));
+  }
 }
 
 function $nc_context_pick$(_original_0, _annotated_0) {
@@ -4085,6 +4191,14 @@ function $norm_max_defs$($0, $1) {
       }
     }
   }
+}
+
+function $nc_native_marked$(_d_0) {
+  return $nt_choose$(($String$eq$(($tg$(run_loop($nc_unann$(($dv$(_d_0)))))), "Foreign")), run_clo((_x_0) => {
+  return false;
+}), run_clo((_x_1) => {
+  return $nc_native_primitive$(($nc_primitive_name$(($dn$(_d_0)))));
+}));
 }
 
 function $nc_foreign_has$(_paths_0, _path_0) {
@@ -7171,24 +7285,6 @@ function $ns_image_terms$(_ws_0) {
   }
 }
 
-function $nt_reverse$($0, $1) {
-  for (;;) {
-    {
-      const _xs_0 = $0;
-      const _acc_0 = $1;
-      if (_xs_0.$ === "Nil") {
-        return _acc_0;
-      } else {
-        const _h_0 = _xs_0["head"];
-        const _t_0 = _xs_0["tail"];
-        $0 = _t_0;
-        $1 = {$: "Con", "head": _h_0, "tail": _acc_0};
-        continue;
-      }
-    }
-  }
-}
-
 function $nc_ctor_prepare$(_book_0) {
   const _prior_0 = run_loop($nc_ctor_context$(_book_0));
   return $nt_choose$(($String$eq$(($dk$(_prior_0)), "NativeCtorIndex")), run_clo((_x_0) => {
@@ -7209,6 +7305,24 @@ function $nd_arity_plain$(_book_0, _name_0) {
   return $U32$max$(run_loop($nd_leading$(($dv$(_d_0)), 0)), run_loop($jd_live_arity$(_book_0, ($dt$(_d_0)), run_loop($jd_arity$(_book_0, _d_0)))));
 }));
 }));
+}
+
+function $ne_template_plain$(_src_0, _slash_0) {
+  if (_src_0 === "") {
+    return true;
+  } else {
+    const _h_0 = (_src_0.codePointAt(0) > 0xFFFF ? _src_0.slice(0, 2) : _src_0[0]);
+    const _rest_0 = (_src_0.codePointAt(0) > 0xFFFF ? _src_0.slice(2) : _src_0.slice(1));
+    return $nt_choose$(($Bool$and$(_slash_0, ($Char$is_eq$(_h_0, "/")))), run_clo((_x_0) => {
+  return false;
+}), run_clo((_x_1) => {
+  return $ne_template_plain$(_rest_0, ($Char$is_eq$(_h_0, "/")));
+}));
+  }
+}
+
+function $nt_join$(_xs_0, _sep_0) {
+  return $nt_join_go$(_xs_0, _sep_0, "", true);
 }
 
 function $ns_prepare_cached$(_book_0, _names_0) {
@@ -7270,18 +7384,17 @@ function $nc_finish$(_book_0, _runtime_0, _requests_0, _compiled_0, _observers_0
 }), run_clo((_x_5) => {
   return "1";
 })));
-  const _x_7 = ("\n" + _runtime_0);
-  const _x_8 = (_x_6 + _x_7);
-  const _x_9 = run_loop($nt_choose$(_observers_0, run_clo((_x_2) => {
+  const _x_7 = (_x_6 + "\n");
+  const _x_8 = run_loop($nt_choose$(_observers_0, run_clo((_x_2) => {
   return "1";
 }), run_clo((_x_3) => {
   return "0";
 })));
-  const _x_10 = ("\n#define NATIVE_PACK_CTORS " + _x_8);
-  const _x_11 = (_x_9 + _x_10);
-  return $nf_finish_plan$(_book_0, _ss_0, _cs_0, ("#define NATIVE_READONLY_OBSERVERS " + _x_11), _requests_0, _pure_0, run_loop($nt_choose$(_pure_0, run_clo((_x_12) => {
+  const _x_9 = ("\n#define NATIVE_PACK_CTORS " + _x_7);
+  const _x_10 = (_x_8 + _x_9);
+  return $nf_finish_plan$(_book_0, _ss_0, _cs_0, run_loop($ne_runtime_prepend$(_runtime_0, ("#define NATIVE_READONLY_OBSERVERS " + _x_10))), _requests_0, _pure_0, run_loop($nt_choose$(_pure_0, run_clo((_x_11) => {
   return $nc_show_program$(_book_0, _ty_0, _cs_0);
-}), run_clo((_x_13) => {
+}), run_clo((_x_12) => {
   return {$: "NC_Show", "source": ($nc_show$("0")), "error": ""};
 }))), _observers_0, _plan_0);
 }));
@@ -7326,6 +7439,29 @@ function $nc_compile_def$(_book_0, _name_0, _todo_0, _done_0, _n_0, _bangs_0) {
   return $nc_compile_defs$(_book_0, ($List$append$(_refs_0, _todo_0)), {$: "Con", "head": _name_0, "tail": _done_0}, _n_0, _bangs_0);
 }), run_clo((_x_1) => {
   return $nc_compile_kept$(_book_0, _name_0, _todo_0, _done_0, _n_0, _bangs_0, _d_0, _body_0, _refs_0, _calls_0);
+}));
+}
+
+function $ne_template_mark$(_src_0, _marks_0) {
+  if (_marks_0.$ === "Nil") {
+    return "";
+  } else {
+    const _h_0 = _marks_0["head"];
+    const _rest_0 = _marks_0["tail"];
+    return $nt_choose$(($String$starts_with$(_src_0, _h_0)), run_clo((_x_0) => {
+  return _h_0;
+}), run_clo((_x_1) => {
+  return $ne_template_mark$(_src_0, _rest_0);
+}));
+  }
+}
+
+function $ne_template_take$(_src_0, _marks_0, _want_0, _more_0, _acc_0, _parts_0, _mark_0) {
+  const _rest_0 = ($String$drop$(_src_0, [..._mark_0].length));
+  return $nt_choose$(($Bool$and$(($String$eq$(_mark_0, _want_0)), ($String$starts_with$(_rest_0, "\n")))), run_clo((_x_0) => {
+  return $ne_template_scan$(_rest_0, _marks_0, _more_0, "", {$: "Con", "head": (_acc_0 + _mark_0), "tail": _parts_0});
+}), run_clo((_x_1) => {
+  return {$: "None"};
 }));
 }
 
@@ -10572,6 +10708,34 @@ function $jd_live_arity$(_book_0, _ty_0, _left_0) {
 }), run_clo((_x_1) => {
   return $jd_live_arity_head$(_book_0, run_loop($wnf$(_book_0, _ty_0)), _left_0);
 }));
+}
+
+function $nt_join_go$($0, $1, $2, $3) {
+  for (;;) {
+    {
+      const _xs_0 = $0;
+      const _sep_0 = $1;
+      const _acc_0 = $2;
+      const _first_0 = $3;
+      if (_xs_0.$ === "Nil") {
+        return _acc_0;
+      } else {
+        const _h_0 = _xs_0["head"];
+        const _t_0 = _xs_0["tail"];
+        const _x_2 = run_loop($nt_choose$(_first_0, run_clo((_x_0) => {
+  return "";
+}), run_clo((_x_1) => {
+  return _sep_0;
+})));
+        const _x_3 = (_x_2 + _h_0);
+        $0 = _t_0;
+        $1 = _sep_0;
+        $2 = (_acc_0 + _x_3);
+        $3 = false;
+        continue;
+      }
+    }
+  }
 }
 
 function $nc_pack_foreign$(_ds_0) {
@@ -14208,10 +14372,6 @@ function $nc_source_has_id$(_source_0, _name_0) {
   return (_x_10 || _x_11);
 }
 
-function $nt_join$(_xs_0, _sep_0) {
-  return $nt_join_go$(_xs_0, _sep_0, "", true);
-}
-
 function $exact_terms_head$(_h_0, _rest_0, _b_0) {
   if (_b_0.$ === "Nil") {
     return false;
@@ -17536,7 +17696,7 @@ function $nc_with_show$(_ss_0, _cs_0, _runtime_0, _requests_0, _pure_0, _d_0, _w
   const _err_0 = _d_0["error"];
   return $nt_choose$(($String$eq$(run_loop($nv_first$(_err_0, run_loop($nv_program$(_ss_0, _cs_0)))), "")), run_clo((_x_0) => {
   const _x_1 = ($nc_helpers$());
-  return {$: "NC_Result", "source": run_loop($ne_program$(_runtime_0, {$: "N_Program", "segments": _ss_0, "constructors": _cs_0, "image": _image_0, "requests": _requests_0, "declarations": (_x_1 + _workers_0), "show": _src_0, "pure": _pure_0})), "error": ""};
+  return {$: "NC_Result", "source": run_loop($ne_program_runtime$(_runtime_0, {$: "N_Program", "segments": _ss_0, "constructors": _cs_0, "image": _image_0, "requests": _requests_0, "declarations": (_x_1 + _workers_0), "show": _src_0, "pure": _pure_0})), "error": ""};
 }), run_clo((_x_2) => {
   return {$: "NC_Result", "source": "", "error": run_loop($nv_first$(_err_0, run_loop($nv_program$(_ss_0, _cs_0))))};
 }));
@@ -17777,34 +17937,6 @@ function $nc_segs$(_x_0) {
 function $nc_error$(_x_0) {
   const _err_0 = _x_0["error"];
   return _err_0;
-}
-
-function $nt_join_go$($0, $1, $2, $3) {
-  for (;;) {
-    {
-      const _xs_0 = $0;
-      const _sep_0 = $1;
-      const _acc_0 = $2;
-      const _first_0 = $3;
-      if (_xs_0.$ === "Nil") {
-        return _acc_0;
-      } else {
-        const _h_0 = _xs_0["head"];
-        const _t_0 = _xs_0["tail"];
-        const _x_2 = run_loop($nt_choose$(_first_0, run_clo((_x_0) => {
-  return "";
-}), run_clo((_x_1) => {
-  return _sep_0;
-})));
-        const _x_3 = (_x_2 + _h_0);
-        $0 = _t_0;
-        $1 = _sep_0;
-        $2 = (_acc_0 + _x_3);
-        $3 = false;
-        continue;
-      }
-    }
-  }
 }
 
 function $prefix_state_variant$(_t_0) {
@@ -20853,7 +20985,7 @@ function $nv_program$(_ss_0, _cs_0) {
 }));
 }
 
-function $ne_program$(_src_0, _p_0) {
+function $ne_program_runtime$(_runtime_0, _p_0) {
   const _ss_0 = _p_0["segments"];
   const _cs_0 = _p_0["constructors"];
   const _image_0 = _p_0["image"];
@@ -20870,7 +21002,7 @@ function $ne_program$(_src_0, _p_0) {
 })));
   const _x_5 = (" };\n" + _decls_0);
   const _x_6 = (_x_4 + _x_5);
-  return $ne_program_texts$(_src_0, {$: "Con", "head": (_x_0 + _show_0), "tail": {$: "Con", "head": ("CONSTV u64 STAT_IMG[] = { " + _x_6), "tail": {$: "Con", "head": ($ne_segments$(_ss_0)), "tail": {$: "Con", "head": _requests_0, "tail": {$: "Nil"}}}}});
+  return $ne_runtime_texts$(_runtime_0, {$: "Con", "head": (_x_0 + _show_0), "tail": {$: "Con", "head": ("CONSTV u64 STAT_IMG[] = { " + _x_6), "tail": {$: "Con", "head": ($ne_segments$(_ss_0)), "tail": {$: "Con", "head": _requests_0, "tail": {$: "Nil"}}}}});
 }
 
 function $nc_helpers$() {
@@ -24491,9 +24623,18 @@ function $nv_segs$(_ss_0) {
   }
 }
 
-function $ne_program_texts$(_src_0, _texts_0) {
-  const _marks_0 = ($ne_template_marks$());
-  return $ne_template_finish$(_src_0, _marks_0, _texts_0, run_loop($ne_template_scan$(_src_0, _marks_0, _marks_0, "", {$: "Nil"})));
+function $ne_runtime_texts$(_runtime_0, _texts_0) {
+  if (_runtime_0.$ === "NE_Text") {
+    const _src_0 = _runtime_0["text"];
+    return $ne_program_texts$(_src_0, _texts_0);
+  } else {
+    const _parts_0 = _runtime_0["parts"];
+    return $nt_choose$(run_loop($ne_template_payloads$(_texts_0)), run_clo((_x_0) => {
+  return $ne_template_join$(_parts_0, _texts_0);
+}), run_clo((_x_1) => {
+  return $ne_template_slow$(($nt_join$(_parts_0, "")), ($ne_template_marks$()), _texts_0);
+}));
+  }
 }
 
 function $nb_emit$(_ss_0, _cs_0, _image_size_0, _pure_0) {
@@ -28572,30 +28713,84 @@ function $nv_seg_names_go$($0, $1) {
   }
 }
 
-function $ne_template_marks$() {
-  return {$: "Con", "head": "// Tables\n// ======", "tail": {$: "Con", "head": "// Spins\n// =====", "tail": {$: "Con", "head": "// Segments\n// ========", "tail": {$: "Con", "head": "// Requests\n// ========", "tail": {$: "Nil"}}}}};
+function $ne_program_texts$(_src_0, _texts_0) {
+  const _marks_0 = ($ne_template_marks$());
+  return $ne_template_finish$(_src_0, _marks_0, _texts_0, run_loop($ne_template_scan$(_src_0, _marks_0, _marks_0, "", {$: "Nil"})));
 }
 
-function $ne_template_finish$(_src_0, _marks_0, _texts_0, _parts_0) {
-  if (_parts_0.$ === "None") {
-    return $ne_template_slow$(_src_0, _marks_0, _texts_0);
+function $ne_template_payloads$(_texts_0) {
+  if (_texts_0.$ === "Nil") {
+    return true;
   } else {
-    const _pieces_0 = _parts_0["value"];
-    return $nt_choose$(run_loop($ne_template_payloads$(_texts_0)), run_clo((_x_0) => {
-  return $ne_template_join$(_pieces_0, _texts_0);
+    const _h_0 = _texts_0["head"];
+    const _rest_0 = _texts_0["tail"];
+    return $nt_choose$(($List$is_empty$(_rest_0)), run_clo((_x_0) => {
+  return true;
 }), run_clo((_x_1) => {
-  return $ne_template_slow$(_src_0, _marks_0, _texts_0);
+  return $nt_choose$(run_loop($ne_template_plain$(_h_0, false)), run_clo((_x_2) => {
+  return $ne_template_payloads$(_rest_0);
+}), run_clo((_x_3) => {
+  return false;
+}));
 }));
   }
 }
 
-function $ne_template_scan$(_src_0, _marks_0, _todo_0, _acc_0, _parts_0) {
-  if (_todo_0.$ === "Nil") {
-    return {$: "Some", "value": ($nt_reverse$({$: "Con", "head": (_acc_0 + _src_0), "tail": _parts_0}, {$: "Nil"}))};
+function $ne_template_join$(_parts_0, _texts_0) {
+  if (_parts_0.$ === "Con") {
+    const _h_0 = _parts_0["head"];
+    const _t_0 = _parts_0["tail"];
+    if (_t_0.$ === "Nil") {
+      if (_texts_0.$ === "Con") {
+        const _text_0 = _texts_0["head"];
+        const _more_0 = _texts_0["tail"];
+        const _x_0 = ($ne_template_join$({$: "Nil"}, _more_0));
+        const _x_1 = (_text_0 + _x_0);
+        const _x_2 = ("\n\n" + _x_1);
+        return (_h_0 + _x_2);
+      } else {
+        return _h_0;
+      }
+    } else {
+      if (_texts_0.$ === "Con") {
+        const _text_1 = _texts_0["head"];
+        const _more_1 = _texts_0["tail"];
+        const _x_3 = ($ne_template_join$(_t_0, _more_1));
+        const _x_4 = (_text_1 + _x_3);
+        const _x_5 = ("\n\n" + _x_4);
+        return (_h_0 + _x_5);
+      } else {
+        return "";
+      }
+    }
   } else {
-    const _want_0 = _todo_0["head"];
-    const _more_0 = _todo_0["tail"];
-    return $ne_template_step$(_src_0, _marks_0, _want_0, _more_0, _acc_0, _parts_0);
+    return "";
+  }
+}
+
+function $ne_template_slow$($0, $1, $2) {
+  for (;;) {
+    {
+      const _src_0 = $0;
+      const _marks_0 = $1;
+      const _texts_0 = $2;
+      if (_marks_0.$ === "Con") {
+        const _mark_0 = _marks_0["head"];
+        const _more_0 = _marks_0["tail"];
+        if (_texts_0.$ === "Con") {
+          const _text_0 = _texts_0["head"];
+          const _rest_0 = _texts_0["tail"];
+          $0 = run_loop($ne_fill$(_src_0, _mark_0, _text_0));
+          $1 = _more_0;
+          $2 = _rest_0;
+          continue;
+        } else {
+          return _src_0;
+        }
+      } else {
+        return _src_0;
+      }
+    }
   }
 }
 
@@ -32200,100 +32395,22 @@ function $nol_failure$(_reason_0, _fresh_0) {
   return {$: "NO_Schema", "params": {$: "Nil"}, "roots": {$: "Nil"}, "wrapper": ($atom$("Absent")), "result": 0, "observation": "", "specs": {$: "Nil"}, "fresh": _fresh_0, "error": _reason_0};
 }
 
-function $ne_template_slow$($0, $1, $2) {
-  for (;;) {
-    {
-      const _src_0 = $0;
-      const _marks_0 = $1;
-      const _texts_0 = $2;
-      if (_marks_0.$ === "Con") {
-        const _mark_0 = _marks_0["head"];
-        const _more_0 = _marks_0["tail"];
-        if (_texts_0.$ === "Con") {
-          const _text_0 = _texts_0["head"];
-          const _rest_0 = _texts_0["tail"];
-          $0 = run_loop($ne_fill$(_src_0, _mark_0, _text_0));
-          $1 = _more_0;
-          $2 = _rest_0;
-          continue;
-        } else {
-          return _src_0;
-        }
-      } else {
-        return _src_0;
-      }
-    }
-  }
-}
-
-function $ne_template_payloads$(_texts_0) {
-  if (_texts_0.$ === "Nil") {
-    return true;
+function $ne_template_finish$(_src_0, _marks_0, _texts_0, _parts_0) {
+  if (_parts_0.$ === "None") {
+    return $ne_template_slow$(_src_0, _marks_0, _texts_0);
   } else {
-    const _h_0 = _texts_0["head"];
-    const _rest_0 = _texts_0["tail"];
-    return $nt_choose$(($List$is_empty$(_rest_0)), run_clo((_x_0) => {
-  return true;
+    const _pieces_0 = _parts_0["value"];
+    return $nt_choose$(run_loop($ne_template_payloads$(_texts_0)), run_clo((_x_0) => {
+  return $ne_template_join$(_pieces_0, _texts_0);
 }), run_clo((_x_1) => {
-  return $nt_choose$(run_loop($ne_template_plain$(_h_0, false)), run_clo((_x_2) => {
-  return $ne_template_payloads$(_rest_0);
-}), run_clo((_x_3) => {
-  return false;
-}));
+  return $ne_template_slow$(_src_0, _marks_0, _texts_0);
 }));
   }
 }
 
-function $ne_template_join$(_parts_0, _texts_0) {
-  if (_parts_0.$ === "Con") {
-    const _h_0 = _parts_0["head"];
-    const _t_0 = _parts_0["tail"];
-    if (_t_0.$ === "Nil") {
-      if (_texts_0.$ === "Con") {
-        const _text_0 = _texts_0["head"];
-        const _more_0 = _texts_0["tail"];
-        const _x_0 = ($ne_template_join$({$: "Nil"}, _more_0));
-        const _x_1 = (_text_0 + _x_0);
-        const _x_2 = ("\n\n" + _x_1);
-        return (_h_0 + _x_2);
-      } else {
-        return _h_0;
-      }
-    } else {
-      if (_texts_0.$ === "Con") {
-        const _text_1 = _texts_0["head"];
-        const _more_1 = _texts_0["tail"];
-        const _x_3 = ($ne_template_join$(_t_0, _more_1));
-        const _x_4 = (_text_1 + _x_3);
-        const _x_5 = ("\n\n" + _x_4);
-        return (_h_0 + _x_5);
-      } else {
-        return "";
-      }
-    }
-  } else {
-    return "";
-  }
-}
-
-function $ne_template_step$(_src_0, _marks_0, _want_0, _more_0, _acc_0, _parts_0) {
-  if (_src_0 === "") {
-    return {$: "None"};
-  } else {
-    const _h_0 = (_src_0.codePointAt(0) > 0xFFFF ? _src_0.slice(0, 2) : _src_0[0]);
-    const _rest_0 = (_src_0.codePointAt(0) > 0xFFFF ? _src_0.slice(2) : _src_0.slice(1));
-    const _mark_0 = run_loop($nt_choose$(($Char$is_eq$(_h_0, "/")), run_clo((_x_0) => {
-  return $ne_template_mark$((_h_0 + _rest_0), _marks_0);
-}), run_clo((_x_1) => {
-  return "";
-})));
-    return $nt_choose$(($String$eq$(_mark_0, "")), run_clo((_x_2) => {
-  const _x_3 = (_h_0 + "");
-  return $ne_template_step$(_rest_0, _marks_0, _want_0, _more_0, (_acc_0 + _x_3), _parts_0);
-}), run_clo((_x_4) => {
-  return $ne_template_take$((_h_0 + _rest_0), _marks_0, _want_0, _more_0, _acc_0, _parts_0, _mark_0);
-}));
-  }
+function $ne_fill$(_src_0, _mark_0, _text_0) {
+  const _x_0 = ("\n\n" + _text_0);
+  return $nt_replace$(_src_0, _mark_0, (_mark_0 + _x_0));
 }
 
 function $nb_seg_ids_go$($0, $1, $2) {
@@ -35826,48 +35943,6 @@ function $nol_param_head$(_book_0, _head_0, _params_0, _roots_0, _specs_0, _seen
 }));
 }), run_clo((_x_4) => {
   return $nol_result$(_book_0, _head_0, ($List$reverse$(_params_0)), ($List$reverse$(_roots_0)), _specs_0, _seen_0, _fresh_0, _arity_0);
-}));
-}
-
-function $ne_fill$(_src_0, _mark_0, _text_0) {
-  const _x_0 = ("\n\n" + _text_0);
-  return $nt_replace$(_src_0, _mark_0, (_mark_0 + _x_0));
-}
-
-function $ne_template_plain$(_src_0, _slash_0) {
-  if (_src_0 === "") {
-    return true;
-  } else {
-    const _h_0 = (_src_0.codePointAt(0) > 0xFFFF ? _src_0.slice(0, 2) : _src_0[0]);
-    const _rest_0 = (_src_0.codePointAt(0) > 0xFFFF ? _src_0.slice(2) : _src_0.slice(1));
-    return $nt_choose$(($Bool$and$(_slash_0, ($Char$is_eq$(_h_0, "/")))), run_clo((_x_0) => {
-  return false;
-}), run_clo((_x_1) => {
-  return $ne_template_plain$(_rest_0, ($Char$is_eq$(_h_0, "/")));
-}));
-  }
-}
-
-function $ne_template_mark$(_src_0, _marks_0) {
-  if (_marks_0.$ === "Nil") {
-    return "";
-  } else {
-    const _h_0 = _marks_0["head"];
-    const _rest_0 = _marks_0["tail"];
-    return $nt_choose$(($String$starts_with$(_src_0, _h_0)), run_clo((_x_0) => {
-  return _h_0;
-}), run_clo((_x_1) => {
-  return $ne_template_mark$(_src_0, _rest_0);
-}));
-  }
-}
-
-function $ne_template_take$(_src_0, _marks_0, _want_0, _more_0, _acc_0, _parts_0, _mark_0) {
-  const _rest_0 = ($String$drop$(_src_0, [..._mark_0].length));
-  return $nt_choose$(($Bool$and$(($String$eq$(_mark_0, _want_0)), ($String$starts_with$(_rest_0, "\n")))), run_clo((_x_0) => {
-  return $ne_template_scan$(_rest_0, _marks_0, _more_0, "", {$: "Con", "head": (_acc_0 + _mark_0), "tail": _parts_0});
-}), run_clo((_x_1) => {
-  return {$: "None"};
 }));
 }
 
@@ -54646,6 +54721,9 @@ export default {
   "nc_compile_checked": run_lib((a0, a1, a2, a3) => { const r = (run_loop($nc_compile_checked$((a0), (a1), (a2), (a3)))); (a0); (a1); (a2); (a3); return r; }, 4),
   "nr_prepare": run_lib((a0) => { const r = (run_loop($nr_prepare$((a0)))); (a0); return r; }, 1),
   "nr_compile": run_lib((a0, a1, a2, a3) => { const r = (run_loop($nr_compile$((a0), (a1), (a2), (a3)))); (a0); (a1); (a2); (a3); return r; }, 4),
+  "nr_compile_prepared": run_lib((a0, a1, a2, a3) => { const r = (run_loop($nr_compile_prepared$((a0), (a1), (a2), (a3)))); (a0); (a1); (a2); (a3); return r; }, 4),
+  "ne_runtime_prepare": run_lib((a0) => { const r = (run_loop($ne_runtime_prepare$((a0)))); (a0); return r; }, 1),
+  "nr_prepare_annotated": run_lib((a0, a1) => { const r = (run_loop($nr_prepare_annotated$((a0), (a1)))); (a0); (a1); return r; }, 2),
   "nc_annotation_stops": run_lib((a0) => { const r = (run_loop($nc_annotation_stops$((a0)))); (a0); return r; }, 1),
   "nc_annotated_context": run_lib((a0, a1) => { const r = (run_loop($nc_annotated_context$((a0), (a1)))); (a0); (a1); return r; }, 2),
   "nc_foreign_source": run_lib((a0, a1, a2, a3, a4) => { const r = (run_loop($nc_foreign_source$((a0), (a1), (a2), (a3), (a4)))); (a0); (a1); (a2); (a3); (a4); return r; }, 5),

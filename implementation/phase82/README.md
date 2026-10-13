@@ -1,12 +1,13 @@
 # Phase82: fixed native request work
 
-Status: compiler04 selected; integration qualification in progress. Phase78 is
-still installed until those gates complete. No parity claim.
+Status: **compiler04 genuine B2 installed and verified**, source commit `070064e`.
+General cold compilation parity remains open.
 
 [Design](../../design/phase82/fixed-work-and-native-products.md) ·
-[measurements](measurements.json) · [template producer](runtime-template.json)
+[measurements](measurements.json) · [qualification](qualification.json) ·
+[release](release.json) · [profiles](profiles.json) · [template producer](runtime-template.json)
 
-## Result measured so far
+## Result
 
 The paired three-source comparison reduces fresh C request time **5.10% in B1**
 and **6.15% in B2**. B2 is **1.328× TypeScript**, versus **1.415×** for the
@@ -93,8 +94,29 @@ identity, and complete emitted C remains the executable-output gate.
 B1 and B2 each pass125 renderer controls, including malformed templates,
 Unicode, injected markers and prefix fallback. Five driver transport controls
 cover canonical, absent, corrupt, changed-runtime and injected-API paths.
-Raw31/new14/word10/heldout2 are complete; native100, complete12-family C identity,
-JS continuity, self-check/B3 and installed/relocated checks are being completed.
+Frontend36/raw31/new14/word10/heldout2/native100 and28 threaded executions pass.
+The reference retains exactly its seven known native failures; broader native API
+gaps remain unchanged. Each stage reproduces all12 benchmark C files exactly
+(24 requests). All23 JS source artifacts match, preserving45 benchmark points.
+No new execution timing is claimed: exact generated files retain the previous
+native1.067× upstream execution evidence.
+
+Genuine B2 checks its own source and reproduces B3 exactly. This is type acceptance
+with the expected unsafe proof-trust refusal, not a mathematical compiler proof.
+Installed/relocated legacy42/default24, release integrity and session CLI5 pass.
+The previous Phase78 release is preserved with all artifact hashes checked.
+
+- B1: `8a4007259794bdf0bca9616bc106423f227436013442e9a9ced78659bf6f374c`.
+- B2/B3: `098320e8f3e40894156790d740ad205e386f375195b3c6741d67cca96e94e092`.
+- Flattened source: `9c356b3ef52056ecf266c9629a4fdde86da1edac3b6421bfb45584b0f04e9baf`.
+
+Two final B2 diagnostic profiles retain exact C. Neither contains runtime-template
+scanner samples, consistent with the intended removal. Numeric's annotation,
+combined preparation and final native stages take75/104/387ms in that instrumented
+run; functions65 takes6/43/184ms. GC, normalization, indexing, source processing
+and report work remain. Do not compare these instrumented times as clean gains.
+The larger whole-function replacement proposal remains unimplemented; the small
+private-consumer experiment does not establish or disprove its full potential.
 
 The three-source ratio still needs **24.7% less B2 request time** for parity;
 B1 needs40.2%. A0.5× goal needs62.4% less B2 time. This phase does not demonstrate
@@ -106,5 +128,17 @@ consumer is evidence against expecting large gains from removing just one.
 Raw evidence: `selfhost/build/phase82`. Methods and preserved prototype patches
 are under `selfhost/tools/performance/phase82` and `experiments/phase82`.
 One CPU3 target tree,2GiB RSS ceiling,4GiB available floor and1GiB Node heap.
-No agents, PR comments or parallel target jobs. Detailed qualification and release
-receipts will replace the pending status before this phase is complete.
+No agents, PR comments or parallel target jobs. [Resource receipts](resources.json)
+record264 guarded jobs and1,363.5seconds of target wall time (22.7minutes),
+including baselines and qualification. Peak tree RSS is1.61GiB; available memory
+never falls below24.5GiB. No OOM, timeout or runtime failure occurred. The two
+nonzero guarded exits are compiler03's affine error and native100's expected
+reference disagreements. Source/method preparation, reasoning, Git and archiving
+are outside this target-time total; it is not quota/token accounting.
+
+The fast discriminators precede one selected integration campaign. The final
+12-family runtime benchmark is reused through byte identity, avoiding repeated
+Clang/runtime timing work. The extra erasure consumer was stopped after its
+isolated B1/B2 screens rather than subjected to another full release campaign.
+Complete raw methods, failed candidates, profiles and outputs are sealed under
+`selfhost/tools/performance/phase82/evidence01` after all writers close.

@@ -1,0 +1,3910 @@
+{
+  "caution": "Observation-only generated B2 derivative. Wrapper counts omit internal SCC/tail-loop iterations; diagnostic wrappers may change JIT behavior. Recursive inclusive sums can exceed wall time. Use exclusive values for recursive regions; neither is a clean optimization result.",
+  "cases": {
+    "map": {
+      "requestMs": 1962.2985480000002,
+      "regions": {
+        "f_context_definition": {
+          "calls": 16,
+          "inclusiveMs": 101.36019199999942,
+          "exclusiveMs": 101.36019199999942
+        },
+        "norm_max_book": {
+          "calls": 4,
+          "inclusiveMs": 20.218751999999995,
+          "exclusiveMs": 20.218751999999995
+        },
+        "book_final_fast": {
+          "calls": 3,
+          "inclusiveMs": 19.90192299999967,
+          "exclusiveMs": 19.90192299999967
+        },
+        "driver_report_data": {
+          "calls": 1,
+          "inclusiveMs": 59.947441000000026,
+          "exclusiveMs": 40.36930500000017
+        },
+        "ns_definitions": {
+          "calls": 1,
+          "inclusiveMs": 38.69116800000006,
+          "exclusiveMs": 38.69116800000006
+        },
+        "nr_unshared": {
+          "calls": 1,
+          "inclusiveMs": 48.815321999999924,
+          "exclusiveMs": 48.815321999999924
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 48.662072999999964,
+          "exclusiveMs": 48.662072999999964
+        },
+        "nq_signatures": {
+          "calls": 107,
+          "inclusiveMs": 2988.481713,
+          "exclusiveMs": 60.295375999999806
+        },
+        "nf_candidate": {
+          "calls": 96,
+          "inclusiveMs": 302.4784499999969,
+          "exclusiveMs": 302.4784499999969
+        },
+        "nf_candidates": {
+          "calls": 80,
+          "inclusiveMs": 8651.241623999997,
+          "exclusiveMs": 2.5910450000028504
+        },
+        "nq_candidate_mode": {
+          "calls": 25,
+          "inclusiveMs": 114.9503679999998,
+          "exclusiveMs": 114.9503679999998
+        },
+        "nq_candidates_mode": {
+          "calls": 26,
+          "inclusiveMs": 1629.4569690000003,
+          "exclusiveMs": 1.7749590000003082
+        },
+        "nf_admit": {
+          "calls": 5,
+          "inclusiveMs": 1.967965999999251,
+          "exclusiveMs": 1.967965999999251
+        },
+        "nf_retry": {
+          "calls": 105,
+          "inclusiveMs": 4727.066013999999,
+          "exclusiveMs": 7.080695000000105
+        },
+        "nf_plan": {
+          "calls": 1,
+          "inclusiveMs": 494.8030050000002,
+          "exclusiveMs": 3.712275000001
+        },
+        "nc_compile_defs": {
+          "calls": 83,
+          "inclusiveMs": 3965.028260000002,
+          "exclusiveMs": 138.43419200000017
+        },
+        "no_route": {
+          "calls": 1,
+          "inclusiveMs": 38.07679400000006,
+          "exclusiveMs": 38.028665000000274
+        },
+        "nc_finish": {
+          "calls": 1,
+          "inclusiveMs": 229.4653040000003,
+          "exclusiveMs": 191.38851000000022
+        }
+      },
+      "workers": [
+        {
+          "route": "nf_candidate",
+          "name": "Pair.snd",
+          "error": "",
+          "bodyUnits": 446,
+          "segments": 0,
+          "ms": 4.345340999999735
+        },
+        {
+          "route": "nf_candidate",
+          "name": "String.order",
+          "error": "",
+          "bodyUnits": 657,
+          "segments": 0,
+          "ms": 4.053093999999874
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Cmp.is_le",
+          "error": "",
+          "bodyUnits": 137,
+          "segments": 0,
+          "ms": 0.17788599999994403
+        },
+        {
+          "route": "nf_candidate",
+          "name": "String.is_le",
+          "error": "",
+          "bodyUnits": 670,
+          "segments": 0,
+          "ms": 0.5476039999998648
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Cmp.is_eq",
+          "error": "",
+          "bodyUnits": 137,
+          "segments": 0,
+          "ms": 0.17105799999990268
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.is_eq",
+          "error": "",
+          "bodyUnits": 648,
+          "segments": 0,
+          "ms": 2.323601999999937
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Bool.and",
+          "error": "",
+          "bodyUnits": 768,
+          "segments": 0,
+          "ms": 0.6605199999999058
+        },
+        {
+          "route": "nf_candidate",
+          "name": "String.length",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 743,
+          "segments": 0,
+          "ms": 1.4512379999996483
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.read.fits",
+          "error": "",
+          "bodyUnits": 2197,
+          "segments": 0,
+          "ms": 1.697646000000077
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.read.if",
+          "error": "",
+          "bodyUnits": 1384,
+          "segments": 0,
+          "ms": 1.3223619999998846
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.read.go",
+          "error": "",
+          "bodyUnits": 3297,
+          "segments": 0,
+          "ms": 2.883002000000033
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.read.gate",
+          "error": "",
+          "bodyUnits": 642,
+          "segments": 0,
+          "ms": 0.3004809999997633
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.read.trim",
+          "error": "",
+          "bodyUnits": 2112,
+          "segments": 0,
+          "ms": 6.3127190000000155
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.read",
+          "error": "",
+          "bodyUnits": 2089,
+          "segments": 0,
+          "ms": 6.279883000000154
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.parsed",
+          "error": "",
+          "bodyUnits": 1053,
+          "segments": 0,
+          "ms": 0.4346540000001369
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.number",
+          "error": "",
+          "bodyUnits": 655,
+          "segments": 0,
+          "ms": 0.2661889999999403
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.arguments",
+          "error": "",
+          "bodyUnits": 4357,
+          "segments": 0,
+          "ms": 1.8861139999999068
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.show.put",
+          "error": "",
+          "bodyUnits": 1472,
+          "segments": 0,
+          "ms": 0.8770449999997254
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.show.go",
+          "error": "",
+          "bodyUnits": 2644,
+          "segments": 0,
+          "ms": 1.1328840000001037
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.show.fin",
+          "error": "",
+          "bodyUnits": 2584,
+          "segments": 0,
+          "ms": 7.013213000000178
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.show",
+          "error": "",
+          "bodyUnits": 1671,
+          "segments": 0,
+          "ms": 0.7975380000002588
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.loop",
+          "error": "",
+          "bodyUnits": 4436,
+          "segments": 0,
+          "ms": 2.975249000000076
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.batch",
+          "error": "",
+          "bodyUnits": 541,
+          "segments": 0,
+          "ms": 0.364158999999745
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.to_list.go",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 3530,
+          "segments": 0,
+          "ms": 1.9436900000000605
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.to_list",
+          "error": "",
+          "bodyUnits": 441,
+          "segments": 0,
+          "ms": 0.5343689999999697
+        },
+        {
+          "route": "nf_candidate",
+          "name": "../phase37/fixtures-new/map-churn:p37.map.string",
+          "error": "",
+          "bodyUnits": 2521,
+          "segments": 0,
+          "ms": 1.0428940000001603
+        },
+        {
+          "route": "nf_candidate",
+          "name": "../phase37/fixtures-new/map-churn:p37.map.digest",
+          "error": "",
+          "bodyUnits": 3256,
+          "segments": 0,
+          "ms": 2.925800999999865
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.pop.lo",
+          "error": "",
+          "bodyUnits": 2639,
+          "segments": 0,
+          "ms": 0.7252519999997276
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.pop.hi",
+          "error": "",
+          "bodyUnits": 2639,
+          "segments": 0,
+          "ms": 2.1289419999998245
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.pop.go",
+          "error": "",
+          "bodyUnits": 56601,
+          "segments": 0,
+          "ms": 35.78792599999997
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.pop.leaf",
+          "error": "",
+          "bodyUnits": 3243,
+          "segments": 0,
+          "ms": 0.5852530000001934
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.pop",
+          "error": "",
+          "bodyUnits": 5383,
+          "segments": 0,
+          "ms": 1.0003609999998844
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.del.fin",
+          "error": "",
+          "bodyUnits": 446,
+          "segments": 0,
+          "ms": 0.12540599999965707
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.del",
+          "error": "",
+          "bodyUnits": 968,
+          "segments": 0,
+          "ms": 0.20780000000013388
+        },
+        {
+          "route": "nf_candidate",
+          "name": "../phase37/fixtures-new/map-churn:p37.map.remove",
+          "error": "",
+          "bodyUnits": 2727,
+          "segments": 0,
+          "ms": 0.8983929999999418
+        },
+        {
+          "route": "nf_candidate",
+          "name": "../phase37/fixtures-new/map-churn:p37.map.update",
+          "error": "",
+          "bodyUnits": 3985,
+          "segments": 0,
+          "ms": 1.9960419999997612
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.new",
+          "error": "",
+          "bodyUnits": 45,
+          "segments": 0,
+          "ms": 0.0292819999999665
+        },
+        {
+          "route": "nf_candidate",
+          "name": "String.append",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 1760,
+          "segments": 0,
+          "ms": 0.4248939999997674
+        },
+        {
+          "route": "nf_candidate",
+          "name": "../phase37/fixtures-new/map-churn:p37.map.key",
+          "error": "",
+          "bodyUnits": 689,
+          "segments": 0,
+          "ms": 0.18114699999978257
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.lo",
+          "error": "",
+          "bodyUnits": 1732,
+          "segments": 0,
+          "ms": 1.9861289999998917
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.hi",
+          "error": "",
+          "bodyUnits": 1732,
+          "segments": 0,
+          "ms": 0.3421690000000126
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.seek.go",
+          "error": "",
+          "bodyUnits": 69386,
+          "segments": 0,
+          "ms": 33.740197999999964
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.seek",
+          "error": "",
+          "bodyUnits": 6973,
+          "segments": 0,
+          "ms": 0.9087939999999435
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Char.cmp",
+          "error": "",
+          "bodyUnits": 2655,
+          "segments": 0,
+          "ms": 0.4709929999999076
+        },
+        {
+          "route": "nf_candidate",
+          "name": "String.cmp.rec",
+          "error": "",
+          "bodyUnits": 3483,
+          "segments": 0,
+          "ms": 0.5030139999998937
+        },
+        {
+          "route": "nf_candidate",
+          "name": "String.cmp.fin",
+          "error": "",
+          "bodyUnits": 7135,
+          "segments": 0,
+          "ms": 2.2741970000001857
+        },
+        {
+          "route": "nf_candidate",
+          "name": "String.cmp",
+          "error": "",
+          "bodyUnits": 6539,
+          "segments": 0,
+          "ms": 0.9020550000000185
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.msb.u.if",
+          "error": "",
+          "bodyUnits": 1120,
+          "segments": 0,
+          "ms": 0.3025360000001456
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.msb.u",
+          "error": "",
+          "bodyUnits": 1569,
+          "segments": 0,
+          "ms": 0.31790399999999863
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.diff.chr",
+          "error": "",
+          "bodyUnits": 696,
+          "segments": 0,
+          "ms": 0.16643900000008216
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.diff.step",
+          "error": "",
+          "bodyUnits": 2118,
+          "segments": 0,
+          "ms": 0.4144410000003518
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.diff.fin",
+          "error": "",
+          "bodyUnits": 1426,
+          "segments": 0,
+          "ms": 0.33691399999997884
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.diff",
+          "error": "",
+          "bodyUnits": 2866,
+          "segments": 0,
+          "ms": 0.7168190000002141
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.ins.go",
+          "error": "",
+          "bodyUnits": 126512,
+          "segments": 0,
+          "ms": 36.64037099999996
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.ins.splice.bit",
+          "error": "",
+          "bodyUnits": 3340,
+          "segments": 0,
+          "ms": 0.388253000000077
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.ins.splice",
+          "error": "",
+          "bodyUnits": 1457,
+          "segments": 0,
+          "ms": 0.2529060000001664
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.ins",
+          "error": "",
+          "bodyUnits": 6930,
+          "segments": 0,
+          "ms": 1.5138190000002396
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.bit.go.rec",
+          "error": "",
+          "bodyUnits": 1498,
+          "segments": 0,
+          "ms": 0.20263699999986784
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.bit.u",
+          "error": "",
+          "bodyUnits": 869,
+          "segments": 0,
+          "ms": 0.234958000000006
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.bit.chr",
+          "error": "",
+          "bodyUnits": 2814,
+          "segments": 0,
+          "ms": 0.41897500000004584
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.bit.go.chr",
+          "error": "",
+          "bodyUnits": 1498,
+          "segments": 0,
+          "ms": 0.2092619999998533
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.bit.go",
+          "error": "",
+          "bodyUnits": 5521,
+          "segments": 0,
+          "ms": 0.7372539999996661
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.bit.at",
+          "error": "",
+          "bodyUnits": 1469,
+          "segments": 0,
+          "ms": 0.20484799999985626
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.bit",
+          "error": "",
+          "bodyUnits": 1125,
+          "segments": 0,
+          "ms": 0.1839270000000397
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.put.go",
+          "error": "",
+          "bodyUnits": 58117,
+          "segments": 0,
+          "ms": 23.099465999999666
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.put",
+          "error": "",
+          "bodyUnits": 5240,
+          "segments": 0,
+          "ms": 0.6295150000000831
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.set.fin.go",
+          "error": "",
+          "bodyUnits": 2970,
+          "segments": 0,
+          "ms": 0.4833990000001904
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.set.fin",
+          "error": "",
+          "bodyUnits": 1106,
+          "segments": 0,
+          "ms": 0.21887499999957072
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.set.go",
+          "error": "",
+          "bodyUnits": 2935,
+          "segments": 0,
+          "ms": 0.3803699999998571
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.set",
+          "error": "",
+          "bodyUnits": 800,
+          "segments": 0,
+          "ms": 0.15948400000024776
+        },
+        {
+          "route": "nf_candidate",
+          "name": "../phase37/fixtures-new/map-churn:p37.map.fill",
+          "error": "",
+          "bodyUnits": 3985,
+          "segments": 0,
+          "ms": 6.82629100000031
+        },
+        {
+          "route": "nf_candidate",
+          "name": "../phase37/fixtures-new/map-churn:bench",
+          "error": "",
+          "bodyUnits": 5164,
+          "segments": 0,
+          "ms": 1.1980129999997189
+        },
+        {
+          "route": "nf_candidate",
+          "name": "U32.show.fin",
+          "error": "",
+          "bodyUnits": 2543,
+          "segments": 0,
+          "ms": 0.5104010000000017
+        },
+        {
+          "route": "nf_candidate",
+          "name": "U32.show.go",
+          "error": "",
+          "bodyUnits": 1997,
+          "segments": 0,
+          "ms": 0.3678530000001956
+        },
+        {
+          "route": "nf_candidate",
+          "name": "U32.show.if",
+          "error": "",
+          "bodyUnits": 829,
+          "segments": 0,
+          "ms": 0.1663370000001123
+        },
+        {
+          "route": "nf_candidate",
+          "name": "U32.show",
+          "error": "",
+          "bodyUnits": 690,
+          "segments": 0,
+          "ms": 0.3732430000000022
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.run",
+          "error": "flat worker: partial, dynamic or bang call",
+          "bodyUnits": 382,
+          "segments": 0,
+          "ms": 0.20971899999995003
+        },
+        {
+          "route": "nf_candidate",
+          "name": "IO.bind",
+          "error": "flat worker: partial, dynamic or bang call",
+          "bodyUnits": 0,
+          "segments": 0,
+          "ms": 0.578874999999698
+        },
+        {
+          "route": "nf_candidate",
+          "name": "main",
+          "error": "flat worker: partial, dynamic or bang call",
+          "bodyUnits": 0,
+          "segments": 0,
+          "ms": 0.03730199999972683
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Pair.snd",
+          "error": "",
+          "bodyUnits": 230,
+          "segments": 0,
+          "ms": 0.5697940000000017
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.p46.arguments",
+          "error": "",
+          "bodyUnits": 2893,
+          "segments": 0,
+          "ms": 1.4505810000000565
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Nat.show.put",
+          "error": "",
+          "bodyUnits": 1006,
+          "segments": 0,
+          "ms": 6.023526999999831
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Nat.show.fin",
+          "error": "",
+          "bodyUnits": 2312,
+          "segments": 0,
+          "ms": 0.4268190000002505
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.pop.lo",
+          "error": "",
+          "bodyUnits": 1855,
+          "segments": 0,
+          "ms": 0.45684099999971295
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.pop.hi",
+          "error": "",
+          "bodyUnits": 1855,
+          "segments": 0,
+          "ms": 0.3730089999999109
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.pop.go",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 45996,
+          "segments": 0,
+          "ms": 11.635587999999643
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.pop.leaf",
+          "error": "",
+          "bodyUnits": 2731,
+          "segments": 0,
+          "ms": 1.035396000000219
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.pop",
+          "error": "",
+          "bodyUnits": 4881,
+          "segments": 0,
+          "ms": 1.9041460000003099
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.del.fin",
+          "error": "",
+          "bodyUnits": 230,
+          "segments": 0,
+          "ms": 0.17190200000004552
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.lo",
+          "error": "",
+          "bodyUnits": 1210,
+          "segments": 0,
+          "ms": 0.37927099999978964
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.hi",
+          "error": "",
+          "bodyUnits": 1210,
+          "segments": 0,
+          "ms": 0.36578400000007605
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.seek.go",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 63910,
+          "segments": 0,
+          "ms": 36.78608299999996
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.diff.step",
+          "error": "",
+          "bodyUnits": 1862,
+          "segments": 0,
+          "ms": 0.4387079999996786
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.diff.fin",
+          "error": "",
+          "bodyUnits": 1154,
+          "segments": 0,
+          "ms": 0.26469500000030166
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.ins.go",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 121301,
+          "segments": 0,
+          "ms": 34.706568999999945
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.ins.splice.bit",
+          "error": "",
+          "bodyUnits": 3040,
+          "segments": 0,
+          "ms": 0.32277799999974377
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.bit.go.rec",
+          "error": "",
+          "bodyUnits": 1004,
+          "segments": 0,
+          "ms": 0.15003000000024258
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.bit.chr",
+          "error": "",
+          "bodyUnits": 2302,
+          "segments": 0,
+          "ms": 0.4107440000002498
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.bit.go.chr",
+          "error": "",
+          "bodyUnits": 1004,
+          "segments": 0,
+          "ms": 0.14763500000026397
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.bit.go",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 4561,
+          "segments": 0,
+          "ms": 0.6285219999999754
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.bit.at",
+          "error": "",
+          "bodyUnits": 963,
+          "segments": 0,
+          "ms": 0.1635949999999866
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.bit",
+          "error": "flat product: opaque or mismatched result",
+          "bodyUnits": 1087,
+          "segments": 0,
+          "ms": 0.4796089999999822
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Map.put.go",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 53136,
+          "segments": 0,
+          "ms": 15.441050999999788
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.p46.run",
+          "error": "flat worker: partial, dynamic or bang call",
+          "bodyUnits": 166,
+          "segments": 0,
+          "ms": 0.21769099999983155
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.arguments",
+          "error": "",
+          "bodyUnits": 3155,
+          "segments": 0,
+          "ms": 2.4755150000000867
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.show.go",
+          "error": "",
+          "bodyUnits": 2644,
+          "segments": 0,
+          "ms": 0.46998900000016874
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.show",
+          "error": "",
+          "bodyUnits": 1671,
+          "segments": 0,
+          "ms": 0.2612640000002102
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.pop.go",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 50709,
+          "segments": 0,
+          "ms": 7.547927999999956
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.pop",
+          "error": "",
+          "bodyUnits": 4605,
+          "segments": 0,
+          "ms": 0.6275120000000243
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.del",
+          "error": "",
+          "bodyUnits": 656,
+          "segments": 0,
+          "ms": 0.15227999999979147
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.seek.go",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 66344,
+          "segments": 0,
+          "ms": 7.628292999999758
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.seek",
+          "error": "",
+          "bodyUnits": 6664,
+          "segments": 0,
+          "ms": 0.7830810000000383
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.diff",
+          "error": "",
+          "bodyUnits": 2557,
+          "segments": 0,
+          "ms": 0.40749000000005253
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.ins.go",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 123208,
+          "segments": 0,
+          "ms": 35.71682099999998
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.ins.splice",
+          "error": "",
+          "bodyUnits": 1148,
+          "segments": 0,
+          "ms": 0.20640300000013667
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.ins",
+          "error": "",
+          "bodyUnits": 6621,
+          "segments": 0,
+          "ms": 0.7898150000000896
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.bit.go",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 4545,
+          "segments": 0,
+          "ms": 0.591146999999637
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.bit.at",
+          "error": "",
+          "bodyUnits": 967,
+          "segments": 0,
+          "ms": 0.16344200000003184
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.bit",
+          "error": "",
+          "bodyUnits": 1125,
+          "segments": 0,
+          "ms": 0.16423799999984112
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.put.go",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 55015,
+          "segments": 0,
+          "ms": 25.378293000000212
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Map.put",
+          "error": "",
+          "bodyUnits": 4931,
+          "segments": 0,
+          "ms": 0.6950509999996939
+        }
+      ],
+      "plans": [
+        {
+          "ready": [
+            "$product.Map.bit.go.chr",
+            "$product.Map.bit.chr",
+            "$product.Map.bit.go.rec",
+            "$product.Map.ins.splice.bit",
+            "$product.Map.hi",
+            "$product.Map.lo",
+            "$product.Map.del.fin",
+            "$product.Map.pop.leaf",
+            "$product.Map.pop.hi",
+            "$product.Map.pop.lo",
+            "$product.Nat.show.put",
+            "$product.Pair.snd",
+            "Map.bit.go.chr",
+            "Map.bit.chr",
+            "Map.bit.u",
+            "Map.bit.go.rec",
+            "Map.ins.splice.bit",
+            "String.cmp.rec",
+            "Char.cmp",
+            "Map.hi",
+            "Map.lo",
+            "Map.new",
+            "Map.del.fin",
+            "Map.pop.leaf",
+            "Map.pop.hi",
+            "Map.pop.lo",
+            "../phase37/fixtures-new/map-churn:p37.map.digest",
+            "../phase37/fixtures-new/map-churn:p37.map.string",
+            "Nat.show.put",
+            "p46.parsed",
+            "Nat.read.trim",
+            "Bool.and",
+            "Nat.is_eq",
+            "Cmp.is_eq",
+            "Cmp.is_le",
+            "Pair.snd"
+          ],
+          "workers": [
+            {
+              "name": "Pair.snd",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 446,
+              "segments": 0
+            },
+            {
+              "name": "String.order",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 657,
+              "segments": 0
+            },
+            {
+              "name": "Cmp.is_le",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 137,
+              "segments": 0
+            },
+            {
+              "name": "String.is_le",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 670,
+              "segments": 0
+            },
+            {
+              "name": "Cmp.is_eq",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 137,
+              "segments": 0
+            },
+            {
+              "name": "Nat.is_eq",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 648,
+              "segments": 0
+            },
+            {
+              "name": "Bool.and",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 768,
+              "segments": 0
+            },
+            {
+              "name": "String.length",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 743,
+              "segments": 0
+            },
+            {
+              "name": "Nat.read.fits",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2197,
+              "segments": 0
+            },
+            {
+              "name": "Nat.read.if",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1384,
+              "segments": 0
+            },
+            {
+              "name": "Nat.read.go",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 3297,
+              "segments": 0
+            },
+            {
+              "name": "Nat.read.gate",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 642,
+              "segments": 0
+            },
+            {
+              "name": "Nat.read.trim",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 2112,
+              "segments": 0
+            },
+            {
+              "name": "Nat.read",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2089,
+              "segments": 0
+            },
+            {
+              "name": "p46.parsed",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1053,
+              "segments": 0
+            },
+            {
+              "name": "p46.number",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 655,
+              "segments": 0
+            },
+            {
+              "name": "p46.arguments",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 3155,
+              "segments": 0
+            },
+            {
+              "name": "Nat.show.put",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1472,
+              "segments": 0
+            },
+            {
+              "name": "Nat.show.go",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2644,
+              "segments": 0
+            },
+            {
+              "name": "Nat.show.fin",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2584,
+              "segments": 0
+            },
+            {
+              "name": "Nat.show",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1671,
+              "segments": 0
+            },
+            {
+              "name": "p46.loop",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 4436,
+              "segments": 0
+            },
+            {
+              "name": "p46.batch",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 541,
+              "segments": 0
+            },
+            {
+              "name": "Map.to_list.go",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 3530,
+              "segments": 0
+            },
+            {
+              "name": "Map.to_list",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 441,
+              "segments": 0
+            },
+            {
+              "name": "../phase37/fixtures-new/map-churn:p37.map.string",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 2521,
+              "segments": 0
+            },
+            {
+              "name": "../phase37/fixtures-new/map-churn:p37.map.digest",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 3256,
+              "segments": 0
+            },
+            {
+              "name": "Map.pop.lo",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 2639,
+              "segments": 0
+            },
+            {
+              "name": "Map.pop.hi",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 2639,
+              "segments": 0
+            },
+            {
+              "name": "Map.pop.go",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 50709,
+              "segments": 0
+            },
+            {
+              "name": "Map.pop.leaf",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 3243,
+              "segments": 0
+            },
+            {
+              "name": "Map.pop",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 4605,
+              "segments": 0
+            },
+            {
+              "name": "Map.del.fin",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 446,
+              "segments": 0
+            },
+            {
+              "name": "Map.del",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 656,
+              "segments": 0
+            },
+            {
+              "name": "../phase37/fixtures-new/map-churn:p37.map.remove",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2727,
+              "segments": 0
+            },
+            {
+              "name": "../phase37/fixtures-new/map-churn:p37.map.update",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 3985,
+              "segments": 0
+            },
+            {
+              "name": "Map.new",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 45,
+              "segments": 0
+            },
+            {
+              "name": "String.append",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 1760,
+              "segments": 0
+            },
+            {
+              "name": "../phase37/fixtures-new/map-churn:p37.map.key",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 689,
+              "segments": 0
+            },
+            {
+              "name": "Map.lo",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1732,
+              "segments": 0
+            },
+            {
+              "name": "Map.hi",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1732,
+              "segments": 0
+            },
+            {
+              "name": "Map.seek.go",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 66344,
+              "segments": 0
+            },
+            {
+              "name": "Map.seek",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 6664,
+              "segments": 0
+            },
+            {
+              "name": "Char.cmp",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 2655,
+              "segments": 0
+            },
+            {
+              "name": "String.cmp.rec",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 3483,
+              "segments": 0
+            },
+            {
+              "name": "String.cmp.fin",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 7135,
+              "segments": 0
+            },
+            {
+              "name": "String.cmp",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 6539,
+              "segments": 0
+            },
+            {
+              "name": "Map.msb.u.if",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1120,
+              "segments": 0
+            },
+            {
+              "name": "Map.msb.u",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1569,
+              "segments": 0
+            },
+            {
+              "name": "Map.diff.chr",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 696,
+              "segments": 0
+            },
+            {
+              "name": "Map.diff.step",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2118,
+              "segments": 0
+            },
+            {
+              "name": "Map.diff.fin",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1426,
+              "segments": 0
+            },
+            {
+              "name": "Map.diff",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2557,
+              "segments": 0
+            },
+            {
+              "name": "Map.ins.go",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 123208,
+              "segments": 0
+            },
+            {
+              "name": "Map.ins.splice.bit",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 3340,
+              "segments": 0
+            },
+            {
+              "name": "Map.ins.splice",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1148,
+              "segments": 0
+            },
+            {
+              "name": "Map.ins",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 6621,
+              "segments": 0
+            },
+            {
+              "name": "Map.bit.go.rec",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1498,
+              "segments": 0
+            },
+            {
+              "name": "Map.bit.u",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 869,
+              "segments": 0
+            },
+            {
+              "name": "Map.bit.chr",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 2814,
+              "segments": 0
+            },
+            {
+              "name": "Map.bit.go.chr",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1498,
+              "segments": 0
+            },
+            {
+              "name": "Map.bit.go",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 4545,
+              "segments": 0
+            },
+            {
+              "name": "Map.bit.at",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 967,
+              "segments": 0
+            },
+            {
+              "name": "Map.bit",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1125,
+              "segments": 0
+            },
+            {
+              "name": "Map.put.go",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 55015,
+              "segments": 0
+            },
+            {
+              "name": "Map.put",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 4931,
+              "segments": 0
+            },
+            {
+              "name": "Map.set.fin.go",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2970,
+              "segments": 0
+            },
+            {
+              "name": "Map.set.fin",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1106,
+              "segments": 0
+            },
+            {
+              "name": "Map.set.go",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2935,
+              "segments": 0
+            },
+            {
+              "name": "Map.set",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 800,
+              "segments": 0
+            },
+            {
+              "name": "../phase37/fixtures-new/map-churn:p37.map.fill",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 3985,
+              "segments": 0
+            },
+            {
+              "name": "../phase37/fixtures-new/map-churn:bench",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 5164,
+              "segments": 0
+            },
+            {
+              "name": "U32.show.fin",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2543,
+              "segments": 0
+            },
+            {
+              "name": "U32.show.go",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1997,
+              "segments": 0
+            },
+            {
+              "name": "U32.show.if",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 829,
+              "segments": 0
+            },
+            {
+              "name": "U32.show",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 690,
+              "segments": 0
+            },
+            {
+              "name": "p46.run",
+              "accepted": false,
+              "error": "flat worker: partial, dynamic or bang call",
+              "bodyUnits": 382,
+              "segments": 0
+            },
+            {
+              "name": "IO.bind",
+              "accepted": false,
+              "error": "flat worker: partial, dynamic or bang call",
+              "bodyUnits": 0,
+              "segments": 0
+            },
+            {
+              "name": "main",
+              "accepted": false,
+              "error": "flat worker: partial, dynamic or bang call",
+              "bodyUnits": 0,
+              "segments": 0
+            },
+            {
+              "name": "$product.Pair.snd",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 230,
+              "segments": 0
+            },
+            {
+              "name": "$product.p46.arguments",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2893,
+              "segments": 0
+            },
+            {
+              "name": "$product.Nat.show.put",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1006,
+              "segments": 0
+            },
+            {
+              "name": "$product.Nat.show.fin",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2312,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.pop.lo",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1855,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.pop.hi",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1855,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.pop.go",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 45996,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.pop.leaf",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 2731,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.pop",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 4881,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.del.fin",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 230,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.lo",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1210,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.hi",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1210,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.seek.go",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 63910,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.diff.step",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1862,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.diff.fin",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1154,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.ins.go",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 121301,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.ins.splice.bit",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 3040,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.bit.go.rec",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1004,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.bit.chr",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 2302,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.bit.go.chr",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1004,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.bit.go",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 4561,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.bit.at",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 963,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.bit",
+              "accepted": false,
+              "error": "flat product: opaque or mismatched result",
+              "bodyUnits": 1087,
+              "segments": 0
+            },
+            {
+              "name": "$product.Map.put.go",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 53136,
+              "segments": 0
+            },
+            {
+              "name": "$product.p46.run",
+              "accepted": false,
+              "error": "flat worker: partial, dynamic or bang call",
+              "bodyUnits": 166,
+              "segments": 0
+            }
+          ]
+        }
+      ],
+      "report": {
+        "file": "selfhost/build/phase83/regions01/runs/clean-region-map/report.json",
+        "sha256": "eff3c93e7c210ceb8d2c0c6a32194932f3ff2b757fbb918810c656f0fec7cfcf",
+        "bytes": 510324
+      }
+    },
+    "numeric": {
+      "requestMs": 968.3035740000001,
+      "regions": {
+        "f_context_definition": {
+          "calls": 11,
+          "inclusiveMs": 48.075128000000404,
+          "exclusiveMs": 48.075128000000404
+        },
+        "norm_max_book": {
+          "calls": 4,
+          "inclusiveMs": 13.680321000000276,
+          "exclusiveMs": 13.680321000000276
+        },
+        "book_final_fast": {
+          "calls": 3,
+          "inclusiveMs": 18.99949599999991,
+          "exclusiveMs": 18.99949599999991
+        },
+        "driver_report_data": {
+          "calls": 1,
+          "inclusiveMs": 56.986250000000155,
+          "exclusiveMs": 38.27893300000028
+        },
+        "ns_definitions": {
+          "calls": 1,
+          "inclusiveMs": 5.8661879999999655,
+          "exclusiveMs": 5.8661879999999655
+        },
+        "nr_unshared": {
+          "calls": 1,
+          "inclusiveMs": 30.939558000000034,
+          "exclusiveMs": 30.939558000000034
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 73.28597599999989,
+          "exclusiveMs": 73.28597599999989
+        },
+        "nq_signatures": {
+          "calls": 65,
+          "inclusiveMs": 279.04745299999945,
+          "exclusiveMs": 32.46436100000005
+        },
+        "nf_candidate": {
+          "calls": 39,
+          "inclusiveMs": 88.82483700000034,
+          "exclusiveMs": 88.82483700000034
+        },
+        "nf_candidates": {
+          "calls": 37,
+          "inclusiveMs": 1589.8467010000008,
+          "exclusiveMs": 1.3586449999997967
+        },
+        "nq_candidate_mode": {
+          "calls": 5,
+          "inclusiveMs": 3.5083219999999073,
+          "exclusiveMs": 3.5083219999999073
+        },
+        "nq_candidates_mode": {
+          "calls": 6,
+          "inclusiveMs": 10.83669999999961,
+          "exclusiveMs": 0.5895640000001094
+        },
+        "nf_admit": {
+          "calls": 3,
+          "inclusiveMs": 0.8487430000000131,
+          "exclusiveMs": 0.8487430000000131
+        },
+        "nf_retry": {
+          "calls": 42,
+          "inclusiveMs": 113.77406799999994,
+          "exclusiveMs": 4.133770999999797
+        },
+        "nf_plan": {
+          "calls": 1,
+          "inclusiveMs": 137.8556430000001,
+          "exclusiveMs": 6.146653000000015
+        },
+        "nc_compile_defs": {
+          "calls": 40,
+          "inclusiveMs": 790.6341250000007,
+          "exclusiveMs": 49.293292000000065
+        },
+        "no_route": {
+          "calls": 1,
+          "inclusiveMs": 24.022136000000046,
+          "exclusiveMs": 24.00288300000011
+        },
+        "nc_finish": {
+          "calls": 1,
+          "inclusiveMs": 84.25303799999983,
+          "exclusiveMs": 60.23090199999979
+        }
+      },
+      "workers": [
+        {
+          "route": "nf_candidate",
+          "name": "Char.cmp",
+          "error": "",
+          "bodyUnits": 2655,
+          "segments": 0,
+          "ms": 11.128210999999965
+        },
+        {
+          "route": "nf_candidate",
+          "name": "String.cmp.rec",
+          "error": "",
+          "bodyUnits": 3483,
+          "segments": 0,
+          "ms": 3.485875999999962
+        },
+        {
+          "route": "nf_candidate",
+          "name": "String.cmp.fin",
+          "error": "",
+          "bodyUnits": 7135,
+          "segments": 0,
+          "ms": 5.304415000000063
+        },
+        {
+          "route": "nf_candidate",
+          "name": "String.cmp",
+          "error": "",
+          "bodyUnits": 6538,
+          "segments": 0,
+          "ms": 2.8300239999998666
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Pair.snd",
+          "error": "",
+          "bodyUnits": 446,
+          "segments": 0,
+          "ms": 0.1828689999999824
+        },
+        {
+          "route": "nf_candidate",
+          "name": "String.order",
+          "error": "",
+          "bodyUnits": 657,
+          "segments": 0,
+          "ms": 0.2940370000001167
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Cmp.is_le",
+          "error": "",
+          "bodyUnits": 137,
+          "segments": 0,
+          "ms": 0.09184299999992618
+        },
+        {
+          "route": "nf_candidate",
+          "name": "String.is_le",
+          "error": "",
+          "bodyUnits": 670,
+          "segments": 0,
+          "ms": 0.28871299999991606
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Cmp.is_eq",
+          "error": "",
+          "bodyUnits": 137,
+          "segments": 0,
+          "ms": 0.1645370000001094
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.is_eq",
+          "error": "",
+          "bodyUnits": 648,
+          "segments": 0,
+          "ms": 0.47513499999990927
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Bool.and",
+          "error": "",
+          "bodyUnits": 768,
+          "segments": 0,
+          "ms": 0.30804399999988163
+        },
+        {
+          "route": "nf_candidate",
+          "name": "String.length",
+          "error": "flat worker: non-tail self call",
+          "bodyUnits": 743,
+          "segments": 0,
+          "ms": 1.1742229999999836
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.read.fits",
+          "error": "",
+          "bodyUnits": 2197,
+          "segments": 0,
+          "ms": 1.506890999999996
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.read.if",
+          "error": "",
+          "bodyUnits": 1384,
+          "segments": 0,
+          "ms": 0.9625580000001719
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.read.go",
+          "error": "",
+          "bodyUnits": 3297,
+          "segments": 0,
+          "ms": 2.7211090000000695
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.read.gate",
+          "error": "",
+          "bodyUnits": 642,
+          "segments": 0,
+          "ms": 0.3312140000000454
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.read.trim",
+          "error": "",
+          "bodyUnits": 2112,
+          "segments": 0,
+          "ms": 4.619582000000037
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.read",
+          "error": "",
+          "bodyUnits": 2089,
+          "segments": 0,
+          "ms": 0.8343830000001162
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.parsed",
+          "error": "",
+          "bodyUnits": 1053,
+          "segments": 0,
+          "ms": 1.4958599999999933
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.number",
+          "error": "",
+          "bodyUnits": 655,
+          "segments": 0,
+          "ms": 7.825712000000067
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.arguments",
+          "error": "",
+          "bodyUnits": 4357,
+          "segments": 0,
+          "ms": 1.662082000000055
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.show.put",
+          "error": "",
+          "bodyUnits": 1472,
+          "segments": 0,
+          "ms": 0.49058999999988373
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.show.go",
+          "error": "",
+          "bodyUnits": 2644,
+          "segments": 0,
+          "ms": 1.3351749999999356
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.show.fin",
+          "error": "",
+          "bodyUnits": 2584,
+          "segments": 0,
+          "ms": 2.3458650000000034
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.show",
+          "error": "",
+          "bodyUnits": 1671,
+          "segments": 0,
+          "ms": 0.4087489999999434
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.loop",
+          "error": "",
+          "bodyUnits": 4472,
+          "segments": 0,
+          "ms": 2.4085050000001047
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.batch",
+          "error": "",
+          "bodyUnits": 541,
+          "segments": 0,
+          "ms": 0.46873100000016166
+        },
+        {
+          "route": "nf_candidate",
+          "name": "../phase37/fixtures-new/numeric-recurrence:p37.numeric",
+          "error": "",
+          "bodyUnits": 3724,
+          "segments": 0,
+          "ms": 15.611140999999861
+        },
+        {
+          "route": "nf_candidate",
+          "name": "../phase37/fixtures-new/numeric-recurrence:bench",
+          "error": "",
+          "bodyUnits": 1974,
+          "segments": 0,
+          "ms": 13.998759999999947
+        },
+        {
+          "route": "nf_candidate",
+          "name": "U32.show.fin",
+          "error": "",
+          "bodyUnits": 2543,
+          "segments": 0,
+          "ms": 0.7533330000001115
+        },
+        {
+          "route": "nf_candidate",
+          "name": "U32.show.go",
+          "error": "",
+          "bodyUnits": 1997,
+          "segments": 0,
+          "ms": 0.6776879999999892
+        },
+        {
+          "route": "nf_candidate",
+          "name": "U32.show.if",
+          "error": "",
+          "bodyUnits": 829,
+          "segments": 0,
+          "ms": 0.24433499999986452
+        },
+        {
+          "route": "nf_candidate",
+          "name": "U32.show",
+          "error": "",
+          "bodyUnits": 690,
+          "segments": 0,
+          "ms": 0.20290700000009565
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.run",
+          "error": "flat worker: partial, dynamic or bang call",
+          "bodyUnits": 382,
+          "segments": 0,
+          "ms": 0.3058690000000297
+        },
+        {
+          "route": "nf_candidate",
+          "name": "IO.bind",
+          "error": "flat worker: partial, dynamic or bang call",
+          "bodyUnits": 0,
+          "segments": 0,
+          "ms": 0.11852299999986826
+        },
+        {
+          "route": "nf_candidate",
+          "name": "main",
+          "error": "flat worker: partial, dynamic or bang call",
+          "bodyUnits": 0,
+          "segments": 0,
+          "ms": 0.04705600000011145
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Pair.snd",
+          "error": "",
+          "bodyUnits": 230,
+          "segments": 0,
+          "ms": 0.9599779999998646
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.p46.arguments",
+          "error": "",
+          "bodyUnits": 2893,
+          "segments": 0,
+          "ms": 0.668713999999909
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Nat.show.put",
+          "error": "",
+          "bodyUnits": 1006,
+          "segments": 0,
+          "ms": 0.392676000000165
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.Nat.show.fin",
+          "error": "",
+          "bodyUnits": 2312,
+          "segments": 0,
+          "ms": 1.2648529999999027
+        },
+        {
+          "route": "nq_candidate_mode",
+          "name": "$product.p46.run",
+          "error": "flat worker: partial, dynamic or bang call",
+          "bodyUnits": 166,
+          "segments": 0,
+          "ms": 0.22210100000006605
+        },
+        {
+          "route": "nf_candidate",
+          "name": "p46.arguments",
+          "error": "",
+          "bodyUnits": 3155,
+          "segments": 0,
+          "ms": 0.641018000000031
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.show.go",
+          "error": "",
+          "bodyUnits": 2644,
+          "segments": 0,
+          "ms": 0.7350180000000819
+        },
+        {
+          "route": "nf_candidate",
+          "name": "Nat.show",
+          "error": "",
+          "bodyUnits": 1671,
+          "segments": 0,
+          "ms": 0.3442560000000867
+        }
+      ],
+      "plans": [
+        {
+          "ready": [
+            "p46.batch",
+            "p46.loop",
+            "$product.Nat.show.put",
+            "$product.Pair.snd",
+            "../phase37/fixtures-new/numeric-recurrence:bench",
+            "../phase37/fixtures-new/numeric-recurrence:p37.numeric",
+            "Nat.show.put",
+            "p46.parsed",
+            "Nat.read.trim",
+            "Bool.and",
+            "Nat.is_eq",
+            "Cmp.is_eq",
+            "Cmp.is_le",
+            "Pair.snd",
+            "String.cmp.rec",
+            "Char.cmp"
+          ],
+          "workers": [
+            {
+              "name": "Char.cmp",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 2655,
+              "segments": 0
+            },
+            {
+              "name": "String.cmp.rec",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 3483,
+              "segments": 0
+            },
+            {
+              "name": "String.cmp.fin",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 7135,
+              "segments": 0
+            },
+            {
+              "name": "String.cmp",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 6538,
+              "segments": 0
+            },
+            {
+              "name": "Pair.snd",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 446,
+              "segments": 0
+            },
+            {
+              "name": "String.order",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 657,
+              "segments": 0
+            },
+            {
+              "name": "Cmp.is_le",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 137,
+              "segments": 0
+            },
+            {
+              "name": "String.is_le",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 670,
+              "segments": 0
+            },
+            {
+              "name": "Cmp.is_eq",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 137,
+              "segments": 0
+            },
+            {
+              "name": "Nat.is_eq",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 648,
+              "segments": 0
+            },
+            {
+              "name": "Bool.and",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 768,
+              "segments": 0
+            },
+            {
+              "name": "String.length",
+              "accepted": false,
+              "error": "flat worker: non-tail self call",
+              "bodyUnits": 743,
+              "segments": 0
+            },
+            {
+              "name": "Nat.read.fits",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2197,
+              "segments": 0
+            },
+            {
+              "name": "Nat.read.if",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1384,
+              "segments": 0
+            },
+            {
+              "name": "Nat.read.go",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 3297,
+              "segments": 0
+            },
+            {
+              "name": "Nat.read.gate",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 642,
+              "segments": 0
+            },
+            {
+              "name": "Nat.read.trim",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 2112,
+              "segments": 0
+            },
+            {
+              "name": "Nat.read",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2089,
+              "segments": 0
+            },
+            {
+              "name": "p46.parsed",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1053,
+              "segments": 0
+            },
+            {
+              "name": "p46.number",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 655,
+              "segments": 0
+            },
+            {
+              "name": "p46.arguments",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 3155,
+              "segments": 0
+            },
+            {
+              "name": "Nat.show.put",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1472,
+              "segments": 0
+            },
+            {
+              "name": "Nat.show.go",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2644,
+              "segments": 0
+            },
+            {
+              "name": "Nat.show.fin",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2584,
+              "segments": 0
+            },
+            {
+              "name": "Nat.show",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1671,
+              "segments": 0
+            },
+            {
+              "name": "p46.loop",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 4472,
+              "segments": 0
+            },
+            {
+              "name": "p46.batch",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 541,
+              "segments": 0
+            },
+            {
+              "name": "../phase37/fixtures-new/numeric-recurrence:p37.numeric",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 3724,
+              "segments": 0
+            },
+            {
+              "name": "../phase37/fixtures-new/numeric-recurrence:bench",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1974,
+              "segments": 0
+            },
+            {
+              "name": "U32.show.fin",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2543,
+              "segments": 0
+            },
+            {
+              "name": "U32.show.go",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 1997,
+              "segments": 0
+            },
+            {
+              "name": "U32.show.if",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 829,
+              "segments": 0
+            },
+            {
+              "name": "U32.show",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 690,
+              "segments": 0
+            },
+            {
+              "name": "p46.run",
+              "accepted": false,
+              "error": "flat worker: partial, dynamic or bang call",
+              "bodyUnits": 382,
+              "segments": 0
+            },
+            {
+              "name": "IO.bind",
+              "accepted": false,
+              "error": "flat worker: partial, dynamic or bang call",
+              "bodyUnits": 0,
+              "segments": 0
+            },
+            {
+              "name": "main",
+              "accepted": false,
+              "error": "flat worker: partial, dynamic or bang call",
+              "bodyUnits": 0,
+              "segments": 0
+            },
+            {
+              "name": "$product.Pair.snd",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 230,
+              "segments": 0
+            },
+            {
+              "name": "$product.p46.arguments",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2893,
+              "segments": 0
+            },
+            {
+              "name": "$product.Nat.show.put",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 1006,
+              "segments": 0
+            },
+            {
+              "name": "$product.Nat.show.fin",
+              "accepted": false,
+              "error": "",
+              "bodyUnits": 2312,
+              "segments": 0
+            },
+            {
+              "name": "$product.p46.run",
+              "accepted": false,
+              "error": "flat worker: partial, dynamic or bang call",
+              "bodyUnits": 166,
+              "segments": 0
+            }
+          ]
+        }
+      ],
+      "report": {
+        "file": "selfhost/build/phase83/regions01/runs/clean-region-numeric/report.json",
+        "sha256": "b0ba5047b17a81d91089f4cae0f63c2f22a2a5a95d0cf04d5c66205a2e3a2bea",
+        "bytes": 483143
+      }
+    },
+    "functions65": {
+      "requestMs": 607.0100340000001,
+      "regions": {
+        "f_context_definition": {
+          "calls": 66,
+          "inclusiveMs": 48.31918399999972,
+          "exclusiveMs": 48.31918399999972
+        },
+        "norm_max_book": {
+          "calls": 4,
+          "inclusiveMs": 9.110061999999743,
+          "exclusiveMs": 9.110061999999743
+        },
+        "book_final_fast": {
+          "calls": 3,
+          "inclusiveMs": 18.29092999999989,
+          "exclusiveMs": 18.29092999999989
+        },
+        "driver_report_data": {
+          "calls": 1,
+          "inclusiveMs": 38.292045000000144,
+          "exclusiveMs": 21.918858000000228
+        },
+        "ns_definitions": {
+          "calls": 1,
+          "inclusiveMs": 7.520757000000003,
+          "exclusiveMs": 7.520757000000003
+        },
+        "nr_unshared": {
+          "calls": 1,
+          "inclusiveMs": 3.139994999999999,
+          "exclusiveMs": 3.139994999999999
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 19.182068000000072,
+          "exclusiveMs": 19.182068000000072
+        },
+        "nq_signatures": {
+          "calls": 68,
+          "inclusiveMs": 176.2337809999999,
+          "exclusiveMs": 5.158943000000136
+        },
+        "nf_candidate": {
+          "calls": 66,
+          "inclusiveMs": 32.610465000001795,
+          "exclusiveMs": 32.610465000001795
+        },
+        "nf_candidates": {
+          "calls": 67,
+          "inclusiveMs": 860.4659419999998,
+          "exclusiveMs": 1.548954999998159
+        },
+        "nq_candidates_mode": {
+          "calls": 1,
+          "inclusiveMs": 0.1646969999999328,
+          "exclusiveMs": 0.1646969999999328
+        },
+        "nf_admit": {
+          "calls": 2,
+          "inclusiveMs": 0.7550640000001749,
+          "exclusiveMs": 0.7550640000001749
+        },
+        "nf_retry": {
+          "calls": 67,
+          "inclusiveMs": 52.684690999998566,
+          "exclusiveMs": 1.6374969999999394
+        },
+        "nf_plan": {
+          "calls": 1,
+          "inclusiveMs": 45.686676000000034,
+          "exclusiveMs": 3.8110549999998966
+        },
+        "nc_compile_defs": {
+          "calls": 67,
+          "inclusiveMs": 436.43650400000047,
+          "exclusiveMs": 13.865983000000142
+        },
+        "no_route": {
+          "calls": 1,
+          "inclusiveMs": 6.664138999999977,
+          "exclusiveMs": 6.664138999999977
+        },
+        "nc_finish": {
+          "calls": 1,
+          "inclusiveMs": 61.21303799999987,
+          "exclusiveMs": 54.54889899999989
+        }
+      },
+      "workers": [
+        {
+          "route": "nf_candidate",
+          "name": "f0",
+          "error": "",
+          "bodyUnits": 300,
+          "segments": 0,
+          "ms": 4.887212999999974
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f1",
+          "error": "",
+          "bodyUnits": 516,
+          "segments": 0,
+          "ms": 1.8148490000000947
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f2",
+          "error": "",
+          "bodyUnits": 516,
+          "segments": 0,
+          "ms": 0.6530549999999948
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f3",
+          "error": "",
+          "bodyUnits": 516,
+          "segments": 0,
+          "ms": 0.9211089999998876
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f4",
+          "error": "",
+          "bodyUnits": 516,
+          "segments": 0,
+          "ms": 0.43756699999994453
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f5",
+          "error": "",
+          "bodyUnits": 516,
+          "segments": 0,
+          "ms": 0.4271679999999378
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f6",
+          "error": "",
+          "bodyUnits": 516,
+          "segments": 0,
+          "ms": 0.3391260000000784
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f7",
+          "error": "",
+          "bodyUnits": 516,
+          "segments": 0,
+          "ms": 0.6491989999999532
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f8",
+          "error": "",
+          "bodyUnits": 516,
+          "segments": 0,
+          "ms": 1.0147190000000137
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f9",
+          "error": "",
+          "bodyUnits": 517,
+          "segments": 0,
+          "ms": 0.7294090000000324
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f10",
+          "error": "",
+          "bodyUnits": 517,
+          "segments": 0,
+          "ms": 0.37150599999995393
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f11",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.6331740000000536
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f12",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.6516210000002047
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f13",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.7402150000000347
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f14",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.23083500000007007
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f15",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.22821999999996478
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f16",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.6797639999999774
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f17",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.22956500000009328
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f18",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.2211090000000695
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f19",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.3713599999998678
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f20",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.31625199999984943
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f21",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.21821199999999408
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f22",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.3132140000000163
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f23",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.217935000000125
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f24",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.7714189999999235
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f25",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.4624700000001667
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f26",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.22444300000006479
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f27",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.2121309999999994
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f28",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.21139700000003359
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f29",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.21205299999996896
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f30",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.4596239999998488
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f31",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.4941949999999906
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f32",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.22786900000005517
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f33",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 1.2351430000001073
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f34",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.4223030000000563
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f35",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.2273290000000543
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f36",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.20900300000016614
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f37",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.5478680000001077
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f38",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.557995000000119
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f39",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.21125099999994745
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f40",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.19996400000013637
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f41",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.5609309999999823
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f42",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.6626410000001215
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f43",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.20184899999981099
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f44",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.19510200000013356
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f45",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.39065900000014153
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f46",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.22396500000013475
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f47",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.19142699999997603
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f48",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.21176700000000892
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f49",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.18871100000001206
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f50",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.1902939999999944
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f51",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.18968400000017027
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f52",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.44810000000006767
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f53",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.191635000000133
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f54",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.18902400000001762
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f55",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.7596650000000409
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f56",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.195013999999901
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f57",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.1922230000000127
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f58",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.2946889999998348
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f59",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.575858000000153
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f60",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.4777720000001864
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f61",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.3983769999999822
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f62",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.7076469999999517
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f63",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.19107400000007146
+        },
+        {
+          "route": "nf_candidate",
+          "name": "f64",
+          "error": "",
+          "bodyUnits": 520,
+          "segments": 0,
+          "ms": 0.4746310000000449
+        },
+        {
+          "route": "nf_candidate",
+          "name": "main",
+          "error": "",
+          "bodyUnits": 247,
+          "segments": 0,
+          "ms": 0.12487299999997958
+        }
+      ],
+      "plans": [
+        {
+          "ready": [
+            "main",
+            "f64",
+            "f63",
+            "f62",
+            "f61",
+            "f60",
+            "f59",
+            "f58",
+            "f57",
+            "f56",
+            "f55",
+            "f54",
+            "f53",
+            "f52",
+            "f51",
+            "f50",
+            "f49",
+            "f48",
+            "f47",
+            "f46",
+            "f45",
+            "f44",
+            "f43",
+            "f42",
+            "f41",
+            "f40",
+            "f39",
+            "f38",
+            "f37",
+            "f36",
+            "f35",
+            "f34",
+            "f33",
+            "f32",
+            "f31",
+            "f30",
+            "f29",
+            "f28",
+            "f27",
+            "f26",
+            "f25",
+            "f24",
+            "f23",
+            "f22",
+            "f21",
+            "f20",
+            "f19",
+            "f18",
+            "f17",
+            "f16",
+            "f15",
+            "f14",
+            "f13",
+            "f12",
+            "f11",
+            "f10",
+            "f9",
+            "f8",
+            "f7",
+            "f6",
+            "f5",
+            "f4",
+            "f3",
+            "f2",
+            "f1",
+            "f0"
+          ],
+          "workers": [
+            {
+              "name": "f0",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 300,
+              "segments": 0
+            },
+            {
+              "name": "f1",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 516,
+              "segments": 0
+            },
+            {
+              "name": "f2",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 516,
+              "segments": 0
+            },
+            {
+              "name": "f3",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 516,
+              "segments": 0
+            },
+            {
+              "name": "f4",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 516,
+              "segments": 0
+            },
+            {
+              "name": "f5",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 516,
+              "segments": 0
+            },
+            {
+              "name": "f6",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 516,
+              "segments": 0
+            },
+            {
+              "name": "f7",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 516,
+              "segments": 0
+            },
+            {
+              "name": "f8",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 516,
+              "segments": 0
+            },
+            {
+              "name": "f9",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 517,
+              "segments": 0
+            },
+            {
+              "name": "f10",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 517,
+              "segments": 0
+            },
+            {
+              "name": "f11",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f12",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f13",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f14",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f15",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f16",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f17",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f18",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f19",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f20",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f21",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f22",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f23",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f24",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f25",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f26",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f27",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f28",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f29",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f30",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f31",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f32",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f33",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f34",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f35",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f36",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f37",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f38",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f39",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f40",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f41",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f42",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f43",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f44",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f45",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f46",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f47",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f48",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f49",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f50",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f51",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f52",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f53",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f54",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f55",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f56",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f57",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f58",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f59",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f60",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f61",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f62",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f63",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "f64",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 520,
+              "segments": 0
+            },
+            {
+              "name": "main",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 247,
+              "segments": 0
+            }
+          ]
+        }
+      ],
+      "report": {
+        "file": "selfhost/build/phase83/regions01/runs/clean-region-functions65/report.json",
+        "sha256": "e592f1fcf1a2233ebfa438f59ec13254175e6eaac11d184f0d956afd3ed295a2",
+        "bytes": 488879
+      }
+    },
+    "small": {
+      "requestMs": 300.8394289999999,
+      "regions": {
+        "f_context_definition": {
+          "calls": 2,
+          "inclusiveMs": 5.1288180000001375,
+          "exclusiveMs": 5.1288180000001375
+        },
+        "norm_max_book": {
+          "calls": 4,
+          "inclusiveMs": 6.126148000000057,
+          "exclusiveMs": 6.126148000000057
+        },
+        "book_final_fast": {
+          "calls": 3,
+          "inclusiveMs": 23.982835000000023,
+          "exclusiveMs": 23.982835000000023
+        },
+        "driver_report_data": {
+          "calls": 1,
+          "inclusiveMs": 40.768673000000035,
+          "exclusiveMs": 16.920834000000013
+        },
+        "ns_definitions": {
+          "calls": 1,
+          "inclusiveMs": 1.5201239999998961,
+          "exclusiveMs": 1.5201239999998961
+        },
+        "nr_unshared": {
+          "calls": 1,
+          "inclusiveMs": 0.8229300000000421,
+          "exclusiveMs": 0.8229300000000421
+        },
+        "ns_prepare": {
+          "calls": 1,
+          "inclusiveMs": 19.27395200000001,
+          "exclusiveMs": 19.27395200000001
+        },
+        "nq_signatures": {
+          "calls": 4,
+          "inclusiveMs": 4.222440999999435,
+          "exclusiveMs": 2.070788999999877
+        },
+        "nf_candidate": {
+          "calls": 2,
+          "inclusiveMs": 8.62145600000008,
+          "exclusiveMs": 8.62145600000008
+        },
+        "nf_candidates": {
+          "calls": 3,
+          "inclusiveMs": 10.159274000000323,
+          "exclusiveMs": 0.35837100000003375
+        },
+        "nq_candidates_mode": {
+          "calls": 1,
+          "inclusiveMs": 0.09113099999990482,
+          "exclusiveMs": 0.09113099999990482
+        },
+        "nf_admit": {
+          "calls": 2,
+          "inclusiveMs": 0.2367389999999432,
+          "exclusiveMs": 0.2367389999999432
+        },
+        "nf_retry": {
+          "calls": 3,
+          "inclusiveMs": 0.25231599999960963,
+          "exclusiveMs": 0.21053199999983008
+        },
+        "nf_plan": {
+          "calls": 1,
+          "inclusiveMs": 12.47503699999993,
+          "exclusiveMs": 0.8860190000002603
+        },
+        "nc_compile_defs": {
+          "calls": 3,
+          "inclusiveMs": 3.2160650000000714,
+          "exclusiveMs": 2.2887490000000525
+        },
+        "no_route": {
+          "calls": 1,
+          "inclusiveMs": 1.0793129999999564,
+          "exclusiveMs": 1.0793129999999564
+        },
+        "nc_finish": {
+          "calls": 1,
+          "inclusiveMs": 33.6866849999999,
+          "exclusiveMs": 32.60737199999994
+        }
+      },
+      "workers": [
+        {
+          "route": "nf_candidate",
+          "name": "twice",
+          "error": "",
+          "bodyUnits": 351,
+          "segments": 0,
+          "ms": 7.482811999999967
+        },
+        {
+          "route": "nf_candidate",
+          "name": "main",
+          "error": "",
+          "bodyUnits": 257,
+          "segments": 0,
+          "ms": 1.138644000000113
+        }
+      ],
+      "plans": [
+        {
+          "ready": [
+            "main",
+            "twice"
+          ],
+          "workers": [
+            {
+              "name": "twice",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 351,
+              "segments": 0
+            },
+            {
+              "name": "main",
+              "accepted": true,
+              "error": "",
+              "bodyUnits": 257,
+              "segments": 0
+            }
+          ]
+        }
+      ],
+      "report": {
+        "file": "selfhost/build/phase83/regions01/runs/clean-region-small/report.json",
+        "sha256": "1c36978cc27d07d52f47030336439671219f7125d83c904d0a5e1c0a954c148c",
+        "bytes": 466057
+      }
+    }
+  }
+}

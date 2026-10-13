@@ -1,4 +1,16 @@
-# Active frontier: Phase82 installed; fixed native request costs reduced
+# Active frontier: Phase83 investigated; Phase82 remains installed
+
+[Phase83 report](../implementation/phase83/README.md) adds three authorized agent
+studies,48 clean requests,16 CPU/three heap profiles,four internal diagnostics
+and24 frontend check/report requests. All71 emitted C outputs remain exact.
+Priority: prove definite non-tail worker refusal before generating discarded C.
+Map spends379 ms on finally-unready candidate construction in one diagnostic;
+Numeric36 ms, small/functions65 zero. These are opportunity bounds, not gains.
+Current B2 Numeric allocation100.8 MB is below upstream145.45 MB; B1 is457 MB.
+The frontend size/warmth sweep shows large warm-process effects, not a quadratic
+parser finding. Existing erased-body/arity/static caches already cover part of
+the proposed IR; require replacement of actual consumers before a broad rewrite.
+Production, installed metrics, conformance and complexity remain Phase82 below.
 
 Installed genuine B2 `098320e8…`, checked B1 `8a400725…`, source commit `070064e`.
 [Report](../implementation/phase82/README.md), [qualification](../implementation/phase82/qualification.json),
@@ -74,7 +86,7 @@ New primary-source research compares V8, Cranelift, Go, Zig, LLVM and Lean. No
 production edits, candidate promotion or implementation gain in Phase81.
 
 One guarded CPU3 tree,2GiB RSS/4GiB available floor,Node1GiB heap/4MiB stack.
-No agents or PR comments. Preserve unrelated inherited Phase6/68 work and all
+Phase83 agents were explicitly authorized; no PR comments. Preserve unrelated inherited Phase6/68 work and all
 sealed historical evidence. Phase78–80 evidence is sealed and linked from the respective reports.
 Historical frontiers remain in Git history and the linked Phase73–77 reports;
 consult them before repeating a rejected hypothesis.

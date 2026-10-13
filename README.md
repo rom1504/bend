@@ -37,6 +37,7 @@ Read the [Phase82 report](implementation/phase82/README.md),
 [native ownership facts](docs/self_hosted/NATIVE_OWNERSHIP_FACTS.md),
 [analysis fact lifetimes and experiments](docs/self_hosted/ANALYSIS_FACTS.md),
 [remaining compilation costs and ranked options](implementation/phase81/README.md),
+[deeper investigation and next prototypes](implementation/phase83/README.md),
 [fast loops](selfhost/tools/performance/phase78/README.md) and
 [compiler guide](docs/BEND-IN-BEND.md). From `selfhost/`, run
 `npm run verify:release`, then `node cli.mjs FILE --run`.

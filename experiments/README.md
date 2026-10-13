@@ -5,6 +5,15 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed investigation: Phase83 agent and compiler research
+
+[Report](../implementation/phase83/README.md). Three focused research agents and
+serial diagnostics identify expensive rejected worker construction, B1 closure
+overhead and cold-process frontend effects.71 complete C outputs stay exact;
+24 frontend check/report requests pass. Prioritize general definite-refusal
+preflight before broad IR migration. Production and installed Phase82 metrics
+remain unchanged; estimates are conditional and parity is unproved.
+
 ## Completed implementation: Phase82 fixed native request work
 
 [Report](../implementation/phase82/README.md). Genuine B2 `098320e8…` retains

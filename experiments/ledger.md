@@ -4395,3 +4395,17 @@ Reject compiler05's extra erasure consumer despite exact preparation products:
 only1.68%/1.38% request savings. Preserve both candidate patches and all failed
 preparations. +69 physical/+53 code Bend lines,132 modules. Cold parity still
 needs24.7% less B2 time. No agents, PR comments or generated-program regression.
+
+## Phase83 agent investigation — 2026-10-13
+
+[Report](../implementation/phase83/README.md). Three explicitly authorized agents
+study pipeline differences, representation replacement and B1/B2 code shape,
+refreshing primary Go/LLVM/Zig/Cranelift/V8/Lean/Flambda2 research.48 clean requests,
+16 CPU/three heap profiles andfour internal diagnostics retain71 exact C outputs;
+24 frontend check/report requests pass. Map finally-unready candidate construction
+costs379 ms in one diagnostic, Numeric36 ms, simple held-outs zero. Recommend
+proving definite refusal before C generation, not a wholesale IR rewrite yet.
+B2 Numeric allocation100.8 MB is below upstream145.45 MB; B1 is457 MB. Definition
+sweep shows warm-process effects, not demonstrated quadratic frontend work.
+82 guarded jobs take253.6 seconds, peak488.5 MiB, no failed target/OOM/timeout.
+Production, installed Phase82 ratios and source complexity unchanged. No PR comment.

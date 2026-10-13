@@ -1,5 +1,10 @@
 # Compiler architectures and optimization techniques
 
+The [Phase83 investigation](phase83/README.md) refreshes Go/LLVM, Zig/Cranelift,
+V8/Lean/Flambda2 source research against current compilation profiles. It finds
+expensive rejected native workers and distinguishes B1 control overhead from
+B2's remaining work; see the [ranked report](../../implementation/phase83/README.md).
+
 The [Phase62 compilation-speed investigation](../../implementation/phase62/README.md)
 adds focused [term-processing research](phase62-term-processing.md) on Lean,
 Lean4Lean and smalltt, and [query-reuse research](phase62-query-reuse.md) on the

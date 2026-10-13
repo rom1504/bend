@@ -1,0 +1,751 @@
+{
+  "kind": "phase83-frontend-size-warmth-summary",
+  "scope": "One fresh process per role and definition count; three successive ordinary check-only requests with reports. Instrumented diagnostic, not stable warm benchmark or compilation speed improvement.",
+  "plan": {
+    "file": "selfhost/build/phase83/frontend01/plan.json",
+    "sha256": "35132a718e4d8426da74372d82ceb866685de493cc48e3d093b46af25cbd003a",
+    "bytes": 452838
+  },
+  "rows": [
+    {
+      "job": {
+        "name": "frontend-functions128-b2",
+        "case": "functions128",
+        "role": "b2"
+      },
+      "report": {
+        "file": "selfhost/build/phase83/frontend01/runs/frontend-functions128-b2/report.json",
+        "sha256": "55e75b122b27d89de0e48885e0be3f7131f7166db263f87a9fe6032d1edb8264",
+        "bytes": 6644
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase83/frontend01/functions128.bend",
+        "sha256": "850c874e2849f5004f56d3e7e68066edbe3f1e9d698258492854fe9ccbe07a7f",
+        "bytes": 6244
+      },
+      "iterations": [
+        {
+          "iteration": 0,
+          "requestMs": 452.8381010000003,
+          "stages": {
+            "f_source_header": {
+              "calls": 1,
+              "inclusiveMs": 5.769915000000083,
+              "exclusiveMs": 5.769915000000083
+            },
+            "f_prefix_complete_ready_seed": {
+              "calls": 1,
+              "inclusiveMs": 0.9180699999999433,
+              "exclusiveMs": 0.9180699999999433
+            },
+            "f_prefix_complete_source": {
+              "calls": 1,
+              "inclusiveMs": 216.8795520000001,
+              "exclusiveMs": 216.8795520000001
+            },
+            "f_source_completed": {
+              "calls": 1,
+              "inclusiveMs": 0.1221299999999701,
+              "exclusiveMs": 0.1221299999999701
+            },
+            "f_prefix_graph_trace": {
+              "calls": 1,
+              "inclusiveMs": 16.474478999999974,
+              "exclusiveMs": 16.474478999999974
+            },
+            "check_program_diagnostic_world": {
+              "calls": 1,
+              "inclusiveMs": 95.04824699999995,
+              "exclusiveMs": 95.04824699999995
+            },
+            "driver_report_data": {
+              "calls": 1,
+              "inclusiveMs": 43.704298999999764,
+              "exclusiveMs": 43.704298999999764
+            }
+          }
+        },
+        {
+          "iteration": 1,
+          "requestMs": 338.9676880000002,
+          "stages": {
+            "f_source_header": {
+              "calls": 1,
+              "inclusiveMs": 0.6786179999999149,
+              "exclusiveMs": 0.6786179999999149
+            },
+            "f_prefix_complete_ready_seed": {
+              "calls": 1,
+              "inclusiveMs": 0.2875669999998536,
+              "exclusiveMs": 0.2875669999998536
+            },
+            "f_prefix_complete_source": {
+              "calls": 1,
+              "inclusiveMs": 175.65079300000025,
+              "exclusiveMs": 175.65079300000025
+            },
+            "f_source_completed": {
+              "calls": 1,
+              "inclusiveMs": 0.027727000000140833,
+              "exclusiveMs": 0.027727000000140833
+            },
+            "f_prefix_graph_trace": {
+              "calls": 1,
+              "inclusiveMs": 26.62337400000024,
+              "exclusiveMs": 26.62337400000024
+            },
+            "check_program_diagnostic_world": {
+              "calls": 1,
+              "inclusiveMs": 38.644432999999935,
+              "exclusiveMs": 38.644432999999935
+            },
+            "driver_report_data": {
+              "calls": 1,
+              "inclusiveMs": 18.958748000000014,
+              "exclusiveMs": 18.958748000000014
+            }
+          }
+        },
+        {
+          "iteration": 2,
+          "requestMs": 175.47794399999975,
+          "stages": {
+            "f_source_header": {
+              "calls": 1,
+              "inclusiveMs": 6.401045000000067,
+              "exclusiveMs": 6.401045000000067
+            },
+            "f_prefix_complete_ready_seed": {
+              "calls": 1,
+              "inclusiveMs": 0.05179199999975026,
+              "exclusiveMs": 0.05179199999975026
+            },
+            "f_prefix_complete_source": {
+              "calls": 1,
+              "inclusiveMs": 54.78579200000013,
+              "exclusiveMs": 54.78579200000013
+            },
+            "f_source_completed": {
+              "calls": 1,
+              "inclusiveMs": 0.008475999999973283,
+              "exclusiveMs": 0.008475999999973283
+            },
+            "f_prefix_graph_trace": {
+              "calls": 1,
+              "inclusiveMs": 23.07515999999987,
+              "exclusiveMs": 23.07515999999987
+            },
+            "check_program_diagnostic_world": {
+              "calls": 1,
+              "inclusiveMs": 49.63566200000014,
+              "exclusiveMs": 49.63566200000014
+            },
+            "driver_report_data": {
+              "calls": 1,
+              "inclusiveMs": 14.892839000000095,
+              "exclusiveMs": 14.892839000000095
+            }
+          }
+        }
+      ]
+    },
+    {
+      "job": {
+        "name": "frontend-functions128-typescript",
+        "case": "functions128",
+        "role": "typescript"
+      },
+      "report": {
+        "file": "selfhost/build/phase83/frontend01/runs/frontend-functions128-typescript/report.json",
+        "sha256": "7eede04809ab14fe08a150629840a1ce3d1c7d50010909a58f6d10f6fabb160f",
+        "bytes": 2297
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase83/frontend01/functions128.bend",
+        "sha256": "850c874e2849f5004f56d3e7e68066edbe3f1e9d698258492854fe9ccbe07a7f",
+        "bytes": 6244
+      },
+      "iterations": [
+        {
+          "iteration": 0,
+          "requestMs": 344.39923,
+          "stages": {},
+          "loadMs": 158.43648500000018,
+          "checkMs": 179.71225600000002,
+          "reportMs": 6.173408999999992
+        },
+        {
+          "iteration": 1,
+          "requestMs": 216.49832300000025,
+          "stages": {},
+          "loadMs": 95.59055999999964,
+          "checkMs": 109.49713400000019,
+          "reportMs": 11.383229999999912
+        },
+        {
+          "iteration": 2,
+          "requestMs": 278.2841569999996,
+          "stages": {},
+          "loadMs": 137.05987200000027,
+          "checkMs": 119.52050499999996,
+          "reportMs": 21.685433000000103
+        }
+      ]
+    },
+    {
+      "job": {
+        "name": "frontend-functions32-b2",
+        "case": "functions32",
+        "role": "b2"
+      },
+      "report": {
+        "file": "selfhost/build/phase83/frontend01/runs/frontend-functions32-b2/report.json",
+        "sha256": "fd47a71e194253901bf8139500822e4d67a0199c2f9cbf242addd6597ca6312d",
+        "bytes": 6640
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase83/frontend01/functions32.bend",
+        "sha256": "cafd4dd9c6df2936ed4f5e2deaf0812be7d51a8bac79fa308b3e92d34dbd604d",
+        "bytes": 1550
+      },
+      "iterations": [
+        {
+          "iteration": 0,
+          "requestMs": 283.0632659999999,
+          "stages": {
+            "f_source_header": {
+              "calls": 1,
+              "inclusiveMs": 5.736075000000028,
+              "exclusiveMs": 5.736075000000028
+            },
+            "f_prefix_complete_ready_seed": {
+              "calls": 1,
+              "inclusiveMs": 0.9307350000001406,
+              "exclusiveMs": 0.9307350000001406
+            },
+            "f_prefix_complete_source": {
+              "calls": 1,
+              "inclusiveMs": 99.90965299999993,
+              "exclusiveMs": 99.90965299999993
+            },
+            "f_source_completed": {
+              "calls": 1,
+              "inclusiveMs": 0.10241799999994328,
+              "exclusiveMs": 0.10241799999994328
+            },
+            "f_prefix_graph_trace": {
+              "calls": 1,
+              "inclusiveMs": 5.827232999999978,
+              "exclusiveMs": 5.827232999999978
+            },
+            "check_program_diagnostic_world": {
+              "calls": 1,
+              "inclusiveMs": 59.92647499999998,
+              "exclusiveMs": 59.92647499999998
+            },
+            "driver_report_data": {
+              "calls": 1,
+              "inclusiveMs": 37.3446570000001,
+              "exclusiveMs": 37.3446570000001
+            }
+          }
+        },
+        {
+          "iteration": 1,
+          "requestMs": 199.13746000000015,
+          "stages": {
+            "f_source_header": {
+              "calls": 1,
+              "inclusiveMs": 1.0754749999998694,
+              "exclusiveMs": 1.0754749999998694
+            },
+            "f_prefix_complete_ready_seed": {
+              "calls": 1,
+              "inclusiveMs": 0.27972699999986617,
+              "exclusiveMs": 0.27972699999986617
+            },
+            "f_prefix_complete_source": {
+              "calls": 1,
+              "inclusiveMs": 64.15333600000008,
+              "exclusiveMs": 64.15333600000008
+            },
+            "f_source_completed": {
+              "calls": 1,
+              "inclusiveMs": 0.029367999999976746,
+              "exclusiveMs": 0.029367999999976746
+            },
+            "f_prefix_graph_trace": {
+              "calls": 1,
+              "inclusiveMs": 3.0544629999999415,
+              "exclusiveMs": 3.0544629999999415
+            },
+            "check_program_diagnostic_world": {
+              "calls": 1,
+              "inclusiveMs": 15.258306000000175,
+              "exclusiveMs": 15.258306000000175
+            },
+            "driver_report_data": {
+              "calls": 1,
+              "inclusiveMs": 36.39925600000015,
+              "exclusiveMs": 36.39925600000015
+            }
+          }
+        },
+        {
+          "iteration": 2,
+          "requestMs": 85.79245700000001,
+          "stages": {
+            "f_source_header": {
+              "calls": 1,
+              "inclusiveMs": 0.12845700000025317,
+              "exclusiveMs": 0.12845700000025317
+            },
+            "f_prefix_complete_ready_seed": {
+              "calls": 1,
+              "inclusiveMs": 0.043924000000060914,
+              "exclusiveMs": 0.043924000000060914
+            },
+            "f_prefix_complete_source": {
+              "calls": 1,
+              "inclusiveMs": 30.926234999999906,
+              "exclusiveMs": 30.926234999999906
+            },
+            "f_source_completed": {
+              "calls": 1,
+              "inclusiveMs": 0.00826199999983146,
+              "exclusiveMs": 0.00826199999983146
+            },
+            "f_prefix_graph_trace": {
+              "calls": 1,
+              "inclusiveMs": 0.8625110000002678,
+              "exclusiveMs": 0.8625110000002678
+            },
+            "check_program_diagnostic_world": {
+              "calls": 1,
+              "inclusiveMs": 19.957499000000098,
+              "exclusiveMs": 19.957499000000098
+            },
+            "driver_report_data": {
+              "calls": 1,
+              "inclusiveMs": 8.20453899999984,
+              "exclusiveMs": 8.20453899999984
+            }
+          }
+        }
+      ]
+    },
+    {
+      "job": {
+        "name": "frontend-functions32-typescript",
+        "case": "functions32",
+        "role": "typescript"
+      },
+      "report": {
+        "file": "selfhost/build/phase83/frontend01/runs/frontend-functions32-typescript/report.json",
+        "sha256": "37133e481e441e7780fb409f768432b23f363ed028dffae9a75a2e932f4bed4c",
+        "bytes": 2285
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase83/frontend01/functions32.bend",
+        "sha256": "cafd4dd9c6df2936ed4f5e2deaf0812be7d51a8bac79fa308b3e92d34dbd604d",
+        "bytes": 1550
+      },
+      "iterations": [
+        {
+          "iteration": 0,
+          "requestMs": 332.66347999999994,
+          "stages": {},
+          "loadMs": 159.54172399999993,
+          "checkMs": 168.15848900000015,
+          "reportMs": 4.898976000000175
+        },
+        {
+          "iteration": 1,
+          "requestMs": 194.90249300000005,
+          "stages": {},
+          "loadMs": 85.55569099999957,
+          "checkMs": 104.26534200000015,
+          "reportMs": 5.055076999999983
+        },
+        {
+          "iteration": 2,
+          "requestMs": 261.403769,
+          "stages": {},
+          "loadMs": 150.355955,
+          "checkMs": 106.36543800000027,
+          "reportMs": 4.665431999999782
+        }
+      ]
+    },
+    {
+      "job": {
+        "name": "frontend-functions65-b2",
+        "case": "functions65",
+        "role": "b2"
+      },
+      "report": {
+        "file": "selfhost/build/phase83/frontend01/runs/frontend-functions65-b2/report.json",
+        "sha256": "c052c00e87e69525aabf5cefea047f99483198e417d205a2253d6a691785ad32",
+        "bytes": 6632
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase83/frontend01/functions65.bend",
+        "sha256": "301e07212360ee4741b08271cb1eacbb5b92494e0372eae9eb3a6a716888e9db",
+        "bytes": 3135
+      },
+      "iterations": [
+        {
+          "iteration": 0,
+          "requestMs": 351.37319,
+          "stages": {
+            "f_source_header": {
+              "calls": 1,
+              "inclusiveMs": 5.822795000000042,
+              "exclusiveMs": 5.822795000000042
+            },
+            "f_prefix_complete_ready_seed": {
+              "calls": 1,
+              "inclusiveMs": 0.9212110000000848,
+              "exclusiveMs": 0.9212110000000848
+            },
+            "f_prefix_complete_source": {
+              "calls": 1,
+              "inclusiveMs": 144.31325199999992,
+              "exclusiveMs": 144.31325199999992
+            },
+            "f_source_completed": {
+              "calls": 1,
+              "inclusiveMs": 0.12316400000008798,
+              "exclusiveMs": 0.12316400000008798
+            },
+            "f_prefix_graph_trace": {
+              "calls": 1,
+              "inclusiveMs": 6.413000000000011,
+              "exclusiveMs": 6.413000000000011
+            },
+            "check_program_diagnostic_world": {
+              "calls": 1,
+              "inclusiveMs": 82.49299499999984,
+              "exclusiveMs": 82.49299499999984
+            },
+            "driver_report_data": {
+              "calls": 1,
+              "inclusiveMs": 39.221708000000035,
+              "exclusiveMs": 39.221708000000035
+            }
+          }
+        },
+        {
+          "iteration": 1,
+          "requestMs": 223.29127700000026,
+          "stages": {
+            "f_source_header": {
+              "calls": 1,
+              "inclusiveMs": 0.3754869999997936,
+              "exclusiveMs": 0.3754869999997936
+            },
+            "f_prefix_complete_ready_seed": {
+              "calls": 1,
+              "inclusiveMs": 0.3975460000001476,
+              "exclusiveMs": 0.3975460000001476
+            },
+            "f_prefix_complete_source": {
+              "calls": 1,
+              "inclusiveMs": 92.43861800000013,
+              "exclusiveMs": 92.43861800000013
+            },
+            "f_source_completed": {
+              "calls": 1,
+              "inclusiveMs": 0.02499400000033347,
+              "exclusiveMs": 0.02499400000033347
+            },
+            "f_prefix_graph_trace": {
+              "calls": 1,
+              "inclusiveMs": 3.9934439999997267,
+              "exclusiveMs": 3.9934439999997267
+            },
+            "check_program_diagnostic_world": {
+              "calls": 1,
+              "inclusiveMs": 24.25711000000001,
+              "exclusiveMs": 24.25711000000001
+            },
+            "driver_report_data": {
+              "calls": 1,
+              "inclusiveMs": 30.406658999999763,
+              "exclusiveMs": 30.406658999999763
+            }
+          }
+        },
+        {
+          "iteration": 2,
+          "requestMs": 136.3811300000002,
+          "stages": {
+            "f_source_header": {
+              "calls": 1,
+              "inclusiveMs": 9.107206000000133,
+              "exclusiveMs": 9.107206000000133
+            },
+            "f_prefix_complete_ready_seed": {
+              "calls": 1,
+              "inclusiveMs": 0.05505700000003344,
+              "exclusiveMs": 0.05505700000003344
+            },
+            "f_prefix_complete_source": {
+              "calls": 1,
+              "inclusiveMs": 44.842881000000034,
+              "exclusiveMs": 44.842881000000034
+            },
+            "f_source_completed": {
+              "calls": 1,
+              "inclusiveMs": 0.010895999999775086,
+              "exclusiveMs": 0.010895999999775086
+            },
+            "f_prefix_graph_trace": {
+              "calls": 1,
+              "inclusiveMs": 1.3881200000000717,
+              "exclusiveMs": 1.3881200000000717
+            },
+            "check_program_diagnostic_world": {
+              "calls": 1,
+              "inclusiveMs": 23.76513900000009,
+              "exclusiveMs": 23.76513900000009
+            },
+            "driver_report_data": {
+              "calls": 1,
+              "inclusiveMs": 11.635944999999992,
+              "exclusiveMs": 11.635944999999992
+            }
+          }
+        }
+      ]
+    },
+    {
+      "job": {
+        "name": "frontend-functions65-typescript",
+        "case": "functions65",
+        "role": "typescript"
+      },
+      "report": {
+        "file": "selfhost/build/phase83/frontend01/runs/frontend-functions65-typescript/report.json",
+        "sha256": "7578deabe8023abbda2c8ceb52a1f95f237eb45cbe10eada36a424393936a55f",
+        "bytes": 2302
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase83/frontend01/functions65.bend",
+        "sha256": "301e07212360ee4741b08271cb1eacbb5b92494e0372eae9eb3a6a716888e9db",
+        "bytes": 3135
+      },
+      "iterations": [
+        {
+          "iteration": 0,
+          "requestMs": 370.7730399999998,
+          "stages": {},
+          "loadMs": 174.64571899999987,
+          "checkMs": 190.80098700000008,
+          "reportMs": 5.255534999999782
+        },
+        {
+          "iteration": 1,
+          "requestMs": 225.60851599999978,
+          "stages": {},
+          "loadMs": 107.68955500000038,
+          "checkMs": 110.73527800000011,
+          "reportMs": 7.156614999999874
+        },
+        {
+          "iteration": 2,
+          "requestMs": 313.03798099999995,
+          "stages": {},
+          "loadMs": 137.45400400000017,
+          "checkMs": 168.61486400000013,
+          "reportMs": 6.951658999999836
+        }
+      ]
+    },
+    {
+      "job": {
+        "name": "frontend-functions8-b2",
+        "case": "functions8",
+        "role": "b2"
+      },
+      "report": {
+        "file": "selfhost/build/phase83/frontend01/runs/frontend-functions8-b2/report.json",
+        "sha256": "87094e800c86236c72aa0a16b53b69426d1715c55c5440e96893bfab163c5f3e",
+        "bytes": 6623
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase83/frontend01/functions8.bend",
+        "sha256": "4badc19fd09eed755fdca71a99a32c9f17fe31d4bb2d4368fd8e93dd8c0cd431",
+        "bytes": 402
+      },
+      "iterations": [
+        {
+          "iteration": 0,
+          "requestMs": 170.9592829999999,
+          "stages": {
+            "f_source_header": {
+              "calls": 1,
+              "inclusiveMs": 5.999740000000202,
+              "exclusiveMs": 5.999740000000202
+            },
+            "f_prefix_complete_ready_seed": {
+              "calls": 1,
+              "inclusiveMs": 0.8927169999999478,
+              "exclusiveMs": 0.8927169999999478
+            },
+            "f_prefix_complete_source": {
+              "calls": 1,
+              "inclusiveMs": 28.71585600000003,
+              "exclusiveMs": 28.71585600000003
+            },
+            "f_source_completed": {
+              "calls": 1,
+              "inclusiveMs": 0.07510800000000017,
+              "exclusiveMs": 0.07510800000000017
+            },
+            "f_prefix_graph_trace": {
+              "calls": 1,
+              "inclusiveMs": 2.697604000000183,
+              "exclusiveMs": 2.697604000000183
+            },
+            "check_program_diagnostic_world": {
+              "calls": 1,
+              "inclusiveMs": 25.14587900000015,
+              "exclusiveMs": 25.14587900000015
+            },
+            "driver_report_data": {
+              "calls": 1,
+              "inclusiveMs": 41.45769600000017,
+              "exclusiveMs": 41.45769600000017
+            }
+          }
+        },
+        {
+          "iteration": 1,
+          "requestMs": 143.43905199999995,
+          "stages": {
+            "f_source_header": {
+              "calls": 1,
+              "inclusiveMs": 12.050041000000192,
+              "exclusiveMs": 12.050041000000192
+            },
+            "f_prefix_complete_ready_seed": {
+              "calls": 1,
+              "inclusiveMs": 0.3885459999999057,
+              "exclusiveMs": 0.3885459999999057
+            },
+            "f_prefix_complete_source": {
+              "calls": 1,
+              "inclusiveMs": 30.596470999999838,
+              "exclusiveMs": 30.596470999999838
+            },
+            "f_source_completed": {
+              "calls": 1,
+              "inclusiveMs": 0.01729499999987638,
+              "exclusiveMs": 0.01729499999987638
+            },
+            "f_prefix_graph_trace": {
+              "calls": 1,
+              "inclusiveMs": 0.5296900000000733,
+              "exclusiveMs": 0.5296900000000733
+            },
+            "check_program_diagnostic_world": {
+              "calls": 1,
+              "inclusiveMs": 33.13107999999988,
+              "exclusiveMs": 33.13107999999988
+            },
+            "driver_report_data": {
+              "calls": 1,
+              "inclusiveMs": 25.448217999999997,
+              "exclusiveMs": 25.448217999999997
+            }
+          }
+        },
+        {
+          "iteration": 2,
+          "requestMs": 92.87701199999992,
+          "stages": {
+            "f_source_header": {
+              "calls": 1,
+              "inclusiveMs": 2.886820999999827,
+              "exclusiveMs": 2.886820999999827
+            },
+            "f_prefix_complete_ready_seed": {
+              "calls": 1,
+              "inclusiveMs": 0.047431999999844265,
+              "exclusiveMs": 0.047431999999844265
+            },
+            "f_prefix_complete_source": {
+              "calls": 1,
+              "inclusiveMs": 10.459208999999646,
+              "exclusiveMs": 10.459208999999646
+            },
+            "f_source_completed": {
+              "calls": 1,
+              "inclusiveMs": 0.014192000000093685,
+              "exclusiveMs": 0.014192000000093685
+            },
+            "f_prefix_graph_trace": {
+              "calls": 1,
+              "inclusiveMs": 2.357270999999855,
+              "exclusiveMs": 2.357270999999855
+            },
+            "check_program_diagnostic_world": {
+              "calls": 1,
+              "inclusiveMs": 10.37756599999966,
+              "exclusiveMs": 10.37756599999966
+            },
+            "driver_report_data": {
+              "calls": 1,
+              "inclusiveMs": 22.243600000000242,
+              "exclusiveMs": 22.243600000000242
+            }
+          }
+        }
+      ]
+    },
+    {
+      "job": {
+        "name": "frontend-functions8-typescript",
+        "case": "functions8",
+        "role": "typescript"
+      },
+      "report": {
+        "file": "selfhost/build/phase83/frontend01/runs/frontend-functions8-typescript/report.json",
+        "sha256": "caf29942650670bb7a62e6a8a3056654b27806deb18326e15958e30b6eea1f2b",
+        "bytes": 2297
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase83/frontend01/functions8.bend",
+        "sha256": "4badc19fd09eed755fdca71a99a32c9f17fe31d4bb2d4368fd8e93dd8c0cd431",
+        "bytes": 402
+      },
+      "iterations": [
+        {
+          "iteration": 0,
+          "requestMs": 331.12380400000006,
+          "stages": {},
+          "loadMs": 157.16997700000002,
+          "checkMs": 169.1515589999999,
+          "reportMs": 4.735644000000093
+        },
+        {
+          "iteration": 1,
+          "requestMs": 196.96611099999973,
+          "stages": {},
+          "loadMs": 92.84791099999984,
+          "checkMs": 100.95692899999995,
+          "reportMs": 3.138876999999866
+        },
+        {
+          "iteration": 2,
+          "requestMs": 295.7651679999999,
+          "stages": {},
+          "loadMs": 100.19006799999988,
+          "checkMs": 193.53738199999998,
+          "reportMs": 2.0203520000000026
+        }
+      ]
+    }
+  ]
+}

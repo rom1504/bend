@@ -1,5 +1,5 @@
 # Exact source literal kinds and demanded scalar constructor barriers.
-# Analyze nc_definition_plain directly, including every expanded helper.
+# Analyze the uncompacted erased source form, including every expanded helper.
 # Incoming NWord is deliberately unsupported: its source kind is already lost.
 
 @unsafe

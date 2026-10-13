@@ -1,0 +1,1749 @@
+--- a/selfhost/src/back/js/validate.bend
++++ b/selfhost/src/back/js/validate.bend
+@@ -336,3 +336,73 @@
+   +ty: KTerm,
+ ) -> Bool:
+   String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Nat") && db(lookup(book, "Nat")) && ((String.eq(nm(t), "Zero") && U32.is_eq(terms_len(ks(t)), 0)) || (String.eq(nm(t), "Succ") && U32.is_eq(terms_len(ks(t)), 1)))
++
++# Private checked path. Its definitions have just passed annotate_selected;
++# field quantities and every child goal come from that same book/context.
++# Raw layout callers retain j_layout_error and its original reconstruction.
++@unsafe
++def jl_checked_error(+book: List<&2, KDef>, +defs: List<&2, KDef>, +roots: List<&2, String>, +stops: List<&2, String>) -> String:
++  kc(String, jl_visit(book_context(book), book_cached(defs, 0), roots, Nil{}, stops), u => "an open Array element type", u => "")
++
++@unsafe
++def jl_visit(+book: List<&2, KDef>, +defs: List<&2, KDef>, todo: List<&2, String>, +seen: List<&2, String>, +stops: List<&2, String>) -> Bool:
++  match todo:
++    case Nil{}: False{}
++    case Con{+name, +rest}:
++      kc(Bool, String.eq(name, "$layout.open-array"), u => True{}, u =>
++        kc(Bool, has_name(seen, name) || has_name(stops, name), u => jl_visit(book, defs, rest, seen, stops), u =>
++          jl_def(book, defs, lookup(defs, name), rest, Con{name, seen}, stops)))
++
++@unsafe
++def jl_def(+book: List<&2, KDef>, +defs: List<&2, KDef>, +d: KDef, +todo: List<&2, String>, +seen: List<&2, String>, +stops: List<&2, String>) -> Bool:
++  jl_visit(book, defs, kc(List<&2, String>, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0), u => jl_term(book, dv(d), todo), u => todo), seen, stops)
++
++law jl_term:
++  for +book: List<&2, KDef>
++  for +t: KTerm
++  for +todo: List<&2, String>
++  List<&2, String>
++
++@unsafe
++def jl_term(book, t, todo):
++  kc(List<&2, String>, String.eq(tg(t), "Ann"), u => jl_node(book, kid(t, 0), kid(t, 1), todo),
++    u => j_layout_term(book, Nil{}, t, atom("Absent"), todo))
++
++@unsafe
++def jl_node(+book: List<&2, KDef>, +t: KTerm, +ty: KTerm, +todo: List<&2, String>) -> List<&2, String>:
++  +key = tg(t)
++  kc(List<&2, String>, String.eq(key, "Ann"), u => jl_term(book, t, todo), u =>
++  kc(List<&2, String>, String.eq(key, "Ref"), u => j_layout_mark(j_layout_array_intrinsic(book, t), Con{nm(t), todo}), u =>
++  kc(List<&2, String>, String.eq(key, "App"), u => jl_app(book, t, wnf(book, j_type(book, Nil{}, kid(t, 0))), todo), u =>
++  kc(List<&2, String>, String.eq(key, "Lam"), u => jl_term(book, kid(t, 0), todo), u =>
++  kc(List<&2, String>, String.eq(key, "Mat"), u => jl_match(book, t, wnf(book, ty), todo), u =>
++  kc(List<&2, String>, String.eq(key, "Ctr"), u => kc(List<&2, String>, Bool.not(String.eq(kc(String, j_layout_native_nat(book, t, wnf(book, ty)), u => "", u => j_literal_typed(book, t, ty)), "")), u => todo, u => j_layout_mark(j_layout_open(book, ty), jl_fields(book, ks(t), todo))), u =>
++  kc(List<&2, String>, String.eq(key, "Let"), u => jl_bindings(book, ks(t), todo), u =>
++  kc(List<&2, String>, String.eq(key, "Rwt"), u => jl_term(book, kid(t, 2), todo), u => todo))))))))
++
++@unsafe
++def jl_match(+book: List<&2, KDef>, +t: KTerm, +ty: KTerm, +todo: List<&2, String>) -> List<&2, String>:
++  j_layout_mark(j_layout_open(book, kid(ty, 0)), jl_term(book, kid(t, 0), kc(List<&2, String>, U32.is_eq(j_constructor_count(book, wnf(book, kid(ty, 0))), 1), u => todo, u => jl_term(book, kid(t, 1), todo))))
++
++@unsafe
++def jl_app(+book: List<&2, KDef>, +t: KTerm, +fty: KTerm, +todo: List<&2, String>) -> List<&2, String>:
++  j_layout_mark(j_layout_intrinsic(book, j_strip(kid(t, 0)), kid(t, 1)), jl_function(book, kid(t, 0), kc(List<&2, String>, String.eq(tg(fty), "All") && U32.is_eq(qt(fty), 0), u => todo, u => jl_term(book, kid(t, 1), todo))))
++
++@unsafe
++def jl_function(+book: List<&2, KDef>, +t: KTerm, +todo: List<&2, String>) -> List<&2, String>:
++  kc(List<&2, String>, String.eq(tg(j_strip(t)), "Ref"), u => Con{nm(j_strip(t)), todo}, u => jl_term(book, t, todo))
++
++@unsafe
++def jl_fields(+book: List<&2, KDef>, args: List<&2, KTerm>, +todo: List<&2, String>) -> List<&2, String>:
++  match args:
++    case Nil{}: todo
++    case Con{+h, +rest}:
++      jl_fields(book, rest, kc(List<&2, String>, U32.is_eq(qt(h), 0), u => todo, u => jl_term(book, h, todo)))
++
++@unsafe
++def jl_bindings(+book: List<&2, KDef>, xs: List<&2, KTerm>, +todo: List<&2, String>) -> List<&2, String>:
++  match xs:
++    case Nil{}: todo
++    case Con{h, Nil{}}: jl_term(book, h, todo)
++    case Con{+h, +rest}:
++      kc(List<&2, String>, U32.is_eq(qt(h), 0), u => jl_bindings(book, rest, todo), u => jl_term(book, kid(h, 0), jl_bindings(book, rest, todo)))
+--- a/selfhost/src/back/native/book.bend
++++ b/selfhost/src/back/native/book.bend
+@@ -127,10 +127,10 @@
+     case NC_Code{body, ss, n, err, edges}: NC_Code{body, nc_mark_segments(ss, bang, forked, calls), n, err, edges}
+ 
+ @unsafe
+-def nc_append_book(+code: NC_Code, name: String, calls: List<&2, String>, forked: Bool, rest: NC_Book) -> NC_Book:
++def nc_append_book(+code: NC_Code, name: String, calls: List<&2, String>, forked: Bool, omit: Bool, rest: NC_Book) -> NC_Book:
+   match rest:
+     case NC_Book{segs, fresh, +err}:
+-      NC_Book{Con{N_Segment{name, Nil{}, 1, N_Direct{}, nc_body(code), calls, False{}, False{}, forked, False{}}, nt_append(N_Segment, nc_segs(code), segs)}, fresh, nt_choose(String, String.eq(nc_error(code), ""), u => err, u => nc_error(code))}
++      NC_Book{nt_choose(List<&2, N_Segment>, omit, u => nt_append(N_Segment, nc_segs(code), segs), u => Con{N_Segment{name, Nil{}, 1, N_Direct{}, nc_body(code), calls, False{}, False{}, forked, False{}}, nt_append(N_Segment, nc_segs(code), segs)}), fresh, nt_choose(String, String.eq(nc_error(code), ""), u => err, u => nc_error(code))}
+ 
+ @unsafe
+ def nc_compile_def(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +n: U32, +bangs: List<&2, String>) -> NC_Book:
+@@ -138,10 +138,16 @@
+   +body = nc_compact_definition(book, d, n)
+   +refs = nc_refs(body)
+   +calls = nc_mapped_refs(book, refs)
++  nt_choose(NC_Book, nc_native_def(d) && nf_host_no_factory(book, name, nd_arity(book, name)),
++    u => nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, n, bangs),
++    u => nc_compile_kept(book, name, todo, done, n, bangs, d, body, refs, calls))
++
++@unsafe
++def nc_compile_kept(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +n: U32, +bangs: List<&2, String>, +d: KDef, +body: KTerm, +refs: List<&2, String>, +calls: List<&2, String>) -> NC_Book:
+   +forked = nc_term_fork(body)
+   +code = nc_mark_code(nd_compile_entry(book, body, name, U32.add(n, 1024), nb_contains(bangs, name)), nb_contains(bangs, name), forked, calls)
+   nt_choose(NC_Book, String.eq(dk(d), "Absent"), u => NC_Book{Nil{}, n, "native definition not found: " ++ name_key(name)}, u =>
+-    nc_append_book(code, nc_ref_name(book, name), calls, forked, nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, nc_fresh(code), bangs)))
++    nc_append_book(code, nc_ref_name(book, name), calls, forked, nf_host_no_factory(book, name, nd_arity(book, name)) && String.eq(nc_body(code), ""), nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, nc_fresh(code), bangs)))
+ 
+ @unsafe
+ def nc_compile_defs(book, todo, done, n, bangs):
+--- a/selfhost/src/back/native/bridge.bend
++++ b/selfhost/src/back/native/bridge.bend
+@@ -118,13 +118,24 @@
+ 
+ @unsafe
+ def nc_occurs(t, id):
+-  nt_choose(Bool, String.eq(tg(t), "Var"), u => U32.is_eq(ix(t), id), u => nc_occurs_list(ks(t), id))
++  nc_occurs_branch0(String.eq(tg(t), "Var"), t, id)
++
++@unsafe
++def nc_occurs_branch0(branch: Bool, +t: KTerm, +id: U32) -> Bool:
++  match branch:
++    case True{}: U32.is_eq(ix(t), id)
++    case False{}: nc_occurs_list(ks(t), id)
+ 
+ # Var remains a leaf even in malformed raw terms with Var children.
+ @unsafe
+ def nc_uses_term(+t: KTerm, +uses: NU_Set) -> NU_Set:
+-  nt_choose(NU_Set, String.eq(tg(t), "Var"),
+-    u => nu_add(uses, ix(t)), u => nc_uses_list(ks(t), uses))
++  nc_uses_term_branch0(String.eq(tg(t), "Var"), t, uses)
++
++@unsafe
++def nc_uses_term_branch0(branch: Bool, +t: KTerm, +uses: NU_Set) -> NU_Set:
++  match branch:
++    case True{}: nu_add(uses, ix(t))
++    case False{}: nc_uses_list(ks(t), uses)
+ 
+ @unsafe
+ def nc_uses_list(+ts: List<&2, KTerm>, +uses: NU_Set) -> NU_Set:
+@@ -272,11 +283,29 @@
+ 
+ @unsafe
+ def nc_let_value(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32) -> NC_Code:
+-  +tag = tg(value)
+-  nt_choose(NC_Code, String.eq(tag, "Ctr"), u => nc_let_constructor(book, value, body, env, id, n, nc_literal(value)), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NCtr") && nc_prefix_vars(ks(value), env), u => nc_let_emitted(book, value, body, env, id, nc_constructor_value(nm(value), nc_values(ks(value), env), n)), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NOp") && (nc_array_known(nm(value)) || String.eq(nm(value), "nat_divmod")) && nc_prefix_vars(ks(value), env), u => nc_let_emitted(book, value, body, env, id, nc_intrinsic_value(nm(value), nc_values(ks(value), env), n)), u =>
+-    nc_let_prefix_call(book, value, body, env, id, n, nd_prefix_call(book, value)))))
++  nc_let_tag(book, value, body, env, id, n, tg(value))
++
++@unsafe
++def nc_let_tag(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +tag: String) -> NC_Code:
++  nc_let_tag_branch0(String.eq(tag, "Ctr"), book, value, body, env, id, n, tag)
++
++@unsafe
++def nc_let_tag_branch0(branch: Bool, +book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_let_constructor(book, value, body, env, id, n, nc_literal(value))
++    case False{}: nc_let_tag_branch1(String.eq(tag, "NCtr") && nc_prefix_vars(ks(value), env), book, value, body, env, id, n, tag)
++
++@unsafe
++def nc_let_tag_branch1(branch: Bool, +book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_let_emitted(book, value, body, env, id, nc_constructor_value(nm(value), nc_values(ks(value), env), n))
++    case False{}: nc_let_tag_branch2(String.eq(tag, "NOp") && (nc_array_known(nm(value)) || String.eq(nm(value), "nat_divmod")) && nc_prefix_vars(ks(value), env), book, value, body, env, id, n, tag)
++
++@unsafe
++def nc_let_tag_branch2(branch: Bool, +book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_let_emitted(book, value, body, env, id, nc_intrinsic_value(nm(value), nc_values(ks(value), env), n))
++    case False{}: nc_let_prefix_call(book, value, body, env, id, n, nd_prefix_call(book, value))
+ 
+ @unsafe
+ def nc_let_prefix_call(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +name: String) -> NC_Code:
+@@ -473,15 +502,29 @@
+ 
+ @unsafe
+ def nc_match_apply_to(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+-  nt_choose(NC_Code, String.eq(tg(kid(t, 0)), "NWPattern"),
+-    u => nw_match(book, t, env, n, target, NW_Rows{True{}, ks(kid(t, 0))}),
+-    u => nt_choose(NC_Code, nw_applicable(kid(t, 0)),
+-      v => nw_match(book, t, env, n, target, nw_walk(kid(kid(t, 0), 0), 0, 0, NW_None{})),
+-      v => nc_match_apply_original_to(book, t, env, n, target)))
++  nc_match_apply_to_branch0(String.eq(tg(kid(t, 0)), "NWPattern"), book, t, env, n, target)
++
++@unsafe
++def nc_match_apply_to_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
++  match branch:
++    case True{}: nw_match(book, t, env, n, target, NW_Rows{True{}, ks(kid(t, 0))})
++    case False{}: nc_match_apply_to_branch1(nw_applicable(kid(t, 0)), book, t, env, n, target)
++
++@unsafe
++def nc_match_apply_to_branch1(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
++  match branch:
++    case True{}: nw_match(book, t, env, n, target, nw_walk(kid(kid(t, 0), 0), 0, 0, NW_None{}))
++    case False{}: nc_match_apply_original_to(book, t, env, n, target)
+ 
+ @unsafe
+ def nc_match_apply_original_to(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+-  nt_choose(NC_Code, nf_scheduler(target) && U32.is_eq(terms_len(ks(t)), 2) && np_can_match(kid(t, 0)), u => np_match_apply(book, t, env, n), u => nc_match_apply_slow_to(book, t, env, n, target))
++  nc_match_apply_original_to_branch0(nf_scheduler(target) && U32.is_eq(terms_len(ks(t)), 2) && np_can_match(kid(t, 0)), book, t, env, n, target)
++
++@unsafe
++def nc_match_apply_original_to_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
++  match branch:
++    case True{}: np_match_apply(book, t, env, n)
++    case False{}: nc_match_apply_slow_to(book, t, env, n, target)
+ 
+ @unsafe
+ def nc_match_apply_slow_to(book, t, env, n, target):
+@@ -508,14 +551,25 @@
+ 
+ @unsafe
+ def nc_native_def(+d: KDef) -> Bool:
+-  nt_choose(Bool, db(d), u => nc_native_marked(d), u => False{})
++  nc_native_def_branch0(db(d), d)
++
++@unsafe
++def nc_native_def_branch0(branch: Bool, +d: KDef) -> Bool:
++  match branch:
++    case True{}: nc_native_marked(d)
++    case False{}: False{}
+ 
+ # Ordinary definitions never require intrinsic-name construction or templates.
+ # Explicit control flow matters: Boolean arguments are otherwise evaluated.
+ @unsafe
+ def nc_native_marked(+d: KDef) -> Bool:
+-  nt_choose(Bool, String.eq(tg(nc_unann(dv(d))), "Foreign"), u => False{},
+-    u => nc_native_primitive(nc_primitive_name(dn(d))))
++  nc_native_marked_branch0(String.eq(tg(nc_unann(dv(d))), "Foreign"), d)
++
++@unsafe
++def nc_native_marked_branch0(branch: Bool, +d: KDef) -> Bool:
++  match branch:
++    case True{}: False{}
++    case False{}: nc_native_primitive(nc_primitive_name(dn(d)))
+ 
+ @unsafe
+ def nc_native_primitive(+prim: String) -> Bool:
+@@ -608,8 +662,25 @@
+ 
+ @unsafe
+ def nc_compact_plain(+t: KTerm) -> KTerm:
+-  kc(KTerm, core_literal(t), u => kc(KTerm, String.eq(nm(t), "String"), u => nc_compact(core_literal_step(t)), u => kt("NWord", U32.show(kl_number(t)), 0, 0, Nil{})), u =>
+-  nt_choose(KTerm, String.eq(tg(t), "Ctr"), u => nc_compact_ctor(t, nc_literal(t)), u => k_rebuild(t, nm(t), ix(t), qt(t), nc_compact_list(ks(t)), Nil{}, 0, 0)))
++  nc_compact_plain_branch0(core_literal(t), t)
++
++@unsafe
++def nc_compact_plain_branch0(branch: Bool, +t: KTerm) -> KTerm:
++  match branch:
++    case True{}: nc_compact_plain_branch1(String.eq(nm(t), "String"), t)
++    case False{}: nc_compact_plain_branch2(String.eq(tg(t), "Ctr"), t)
++
++@unsafe
++def nc_compact_plain_branch1(branch: Bool, +t: KTerm) -> KTerm:
++  match branch:
++    case True{}: nc_compact(core_literal_step(t))
++    case False{}: kt("NWord", U32.show(kl_number(t)), 0, 0, Nil{})
++
++@unsafe
++def nc_compact_plain_branch2(branch: Bool, +t: KTerm) -> KTerm:
++  match branch:
++    case True{}: nc_compact_ctor(t, nc_literal(t))
++    case False{}: k_rebuild(t, nm(t), ix(t), qt(t), nc_compact_list(ks(t)), Nil{}, 0, 0)
+ 
+ @unsafe
+ def nc_lower_ctor_to(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, lit: NC_Literal, +target: NC_Target) -> NC_Code:
+@@ -619,31 +690,179 @@
+ 
+ @unsafe
+ def nc_lower_live_to(book, t, env, n, target):
+-  +tag = tg(t)
+-  nt_choose(NC_Code, String.eq(tag, "NQBundle") && Bool.not(nf_scheduler(target)), u => nq_bundle_return(t, env, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NQBox") && Bool.not(nf_scheduler(target)), u => nf_emitted(nc_constructor_value(nm(t), nc_values(ks(t), env), n), target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NWord") || String.eq(tag, "NStatic"), u => nt_choose(NC_Code, String.eq(tag, "NStatic"), v => ns_return(book, t, n, target), v => nf_return(nm(t) ++ "ull", n, target)), u =>
+-  nt_choose(NC_Code, String.eq(tag, "Var"), u => nt_choose(NC_Code, String.eq(nc_word(ix(t), env), "NATIVE_UNBOUND_VARIABLE"), u => nc_fail("native unbound variable " ++ U32.show(ix(t)), n), u => nf_return(nc_word(ix(t), env), n, target)), u =>
+-  nt_choose(NC_Code, String.eq(tag, "Ref"), u => nf_ref(book, t, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "Ann") || String.eq(tag, "Loc") || String.eq(tag, "Src") || String.eq(tag, "Cut") || String.eq(tag, "Slf") || String.eq(tag, "Ins"), u => nc_lower_to(book, kid(t, 0), env, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "Lam"), u => nf_lambda(book, t, env, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "App"), u => nd_app_to(book, t, env, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "Let"), u => nt_choose(NC_Code, U32.is_gt(terms_len(ks(t)), 2), u => nf_parallel(book, ks(t), env, n, target), u => nf_lets(book, ks(t), env, n, target)), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NSeqLet"), u => nf_lets(book, ks(t), env, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NNatAdd"), u => nc_lower_to(book, nc_sequence("NNatSum", nm(t), ks(t), Nil{}, n), env, U32.inc(n), target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NNatSum"), u => nf_return("nat_chk(e, nat_chk(e, " ++ nc_head(nc_values(ks(t), env)) ++ " + 1) + " ++ nm(t) ++ "ull)", n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "Ctr"), u => nc_lower_ctor_to(book, t, env, n, nc_literal(t), target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NCtr"), u => nq_operation(book, t, env, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NApply"), u => nt_choose(NC_Code, nf_scheduler(target), v => nc_apply_code(nc_values(ks(t), env), n), v => nc_fail("flat worker: dynamic application", n)), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NFCall"), u => nq_call(book, t, env, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NCall"), u => nt_choose(NC_Code, nf_scheduler(target), v => NC_Code{ne_jump(nc_values(ks(t), env), nm(t)), Nil{}, n, "", Nil{}}, v => nc_fail("flat worker: scheduler call node", n)), u =>
+-  nt_choose(NC_Code, String.eq(tag, "Rfl") || String.eq(tag, "Typ") || String.eq(tag, "All") || String.eq(tag, "Qua") || String.eq(tag, "ADT") || String.eq(tag, "Eql"), u => nf_return("0", n, target), u =>
+-  nt_choose(NC_Code, (String.eq(tag, "Mat") || String.eq(tag, "NWPattern")), u => nf_match_value(book, t, env, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NMatch"), u => nq_match(book, t, env, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NOp"), u => nq_operation(book, t, env, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "Efq"), u => NC_Code{"err_post(e.mem, ERR_FIDS); return 0;\n", Nil{}, n, "", Nil{}}, u =>
+-  nt_choose(NC_Code, String.eq(tag, "Rwt"), u => nc_lower_to(book, kid(t, 2), env, n, target), u =>
+-  nc_fail("native lowering does not support core node " ++ tag, n))))))))))))))))))))))))
++  nc_lower_tag(book, t, env, n, target, tg(t))
++
++@unsafe
++def nc_lower_tag(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  nc_lower_tag_branch0(String.eq(tag, "NQBundle") && Bool.not(nf_scheduler(target)), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nq_bundle_return(t, env, n, target)
++    case False{}: nc_lower_tag_branch1(String.eq(tag, "NQBox") && Bool.not(nf_scheduler(target)), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch1(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nf_emitted(nc_constructor_value(nm(t), nc_values(ks(t), env), n), target)
++    case False{}: nc_lower_tag_branch2(String.eq(tag, "NWord") || String.eq(tag, "NStatic"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch2(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_tag_branch3(String.eq(tag, "NStatic"), book, t, env, n, target, tag)
++    case False{}: nc_lower_tag_branch4(String.eq(tag, "Var"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch3(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: ns_return(book, t, n, target)
++    case False{}: nf_return(nm(t) ++ "ull", n, target)
++
++@unsafe
++def nc_lower_tag_branch4(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_tag_branch5(String.eq(nc_word(ix(t), env), "NATIVE_UNBOUND_VARIABLE"), book, t, env, n, target, tag)
++    case False{}: nc_lower_tag_branch6(String.eq(tag, "Ref"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch5(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_fail("native unbound variable " ++ U32.show(ix(t)), n)
++    case False{}: nf_return(nc_word(ix(t), env), n, target)
++
++@unsafe
++def nc_lower_tag_branch6(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nf_ref(book, t, n, target)
++    case False{}: nc_lower_tag_branch7(String.eq(tag, "Ann") || String.eq(tag, "Loc") || String.eq(tag, "Src") || String.eq(tag, "Cut") || String.eq(tag, "Slf") || String.eq(tag, "Ins"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch7(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_to(book, kid(t, 0), env, n, target)
++    case False{}: nc_lower_tag_branch8(String.eq(tag, "Lam"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch8(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nf_lambda(book, t, env, n, target)
++    case False{}: nc_lower_tag_branch9(String.eq(tag, "App"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch9(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nd_app_to(book, t, env, n, target)
++    case False{}: nc_lower_tag_branch10(String.eq(tag, "Let"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch10(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_tag_branch11(U32.is_gt(terms_len(ks(t)), 2), book, t, env, n, target, tag)
++    case False{}: nc_lower_tag_branch12(String.eq(tag, "NSeqLet"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch11(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nf_parallel(book, ks(t), env, n, target)
++    case False{}: nf_lets(book, ks(t), env, n, target)
++
++@unsafe
++def nc_lower_tag_branch12(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nf_lets(book, ks(t), env, n, target)
++    case False{}: nc_lower_tag_branch13(String.eq(tag, "NNatAdd"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch13(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_to(book, nc_sequence("NNatSum", nm(t), ks(t), Nil{}, n), env, U32.inc(n), target)
++    case False{}: nc_lower_tag_branch14(String.eq(tag, "NNatSum"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch14(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nf_return("nat_chk(e, nat_chk(e, " ++ nc_head(nc_values(ks(t), env)) ++ " + 1) + " ++ nm(t) ++ "ull)", n, target)
++    case False{}: nc_lower_tag_branch15(String.eq(tag, "Ctr"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch15(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_ctor_to(book, t, env, n, nc_literal(t), target)
++    case False{}: nc_lower_tag_branch16(String.eq(tag, "NCtr"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch16(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nq_operation(book, t, env, n, target)
++    case False{}: nc_lower_tag_branch17(String.eq(tag, "NApply"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch17(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_tag_branch18(nf_scheduler(target), book, t, env, n, target, tag)
++    case False{}: nc_lower_tag_branch19(String.eq(tag, "NFCall"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch18(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_apply_code(nc_values(ks(t), env), n)
++    case False{}: nc_fail("flat worker: dynamic application", n)
++
++@unsafe
++def nc_lower_tag_branch19(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nq_call(book, t, env, n, target)
++    case False{}: nc_lower_tag_branch20(String.eq(tag, "NCall"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch20(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_tag_branch21(nf_scheduler(target), book, t, env, n, target, tag)
++    case False{}: nc_lower_tag_branch22(String.eq(tag, "Rfl") || String.eq(tag, "Typ") || String.eq(tag, "All") || String.eq(tag, "Qua") || String.eq(tag, "ADT") || String.eq(tag, "Eql"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch21(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: NC_Code{ne_jump(nc_values(ks(t), env), nm(t)), Nil{}, n, "", Nil{}}
++    case False{}: nc_fail("flat worker: scheduler call node", n)
++
++@unsafe
++def nc_lower_tag_branch22(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nf_return("0", n, target)
++    case False{}: nc_lower_tag_branch23((String.eq(tag, "Mat") || String.eq(tag, "NWPattern")), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch23(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nf_match_value(book, t, env, n, target)
++    case False{}: nc_lower_tag_branch24(String.eq(tag, "NMatch"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch24(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nq_match(book, t, env, n, target)
++    case False{}: nc_lower_tag_branch25(String.eq(tag, "NOp"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch25(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nq_operation(book, t, env, n, target)
++    case False{}: nc_lower_tag_branch26(String.eq(tag, "Efq"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch26(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: NC_Code{"err_post(e.mem, ERR_FIDS); return 0;\n", Nil{}, n, "", Nil{}}
++    case False{}: nc_lower_tag_branch27(String.eq(tag, "Rwt"), book, t, env, n, target, tag)
++
++@unsafe
++def nc_lower_tag_branch27(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +tag: String) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_to(book, kid(t, 2), env, n, target)
++    case False{}: nc_fail("native lowering does not support core node " ++ tag, n)
+ 
+ # Typed erasure renames user-owned constructors; this pass sees native Succ only.
+ # Keep the first checked increment: even a malformed foreign U64 tail retains
+--- a/selfhost/src/back/native/direct.bend
++++ b/selfhost/src/back/native/direct.bend
+@@ -9,18 +9,39 @@
+ # Scalar and allocating call classifiers share the same provenance/arity gate.
+ @unsafe
+ def nd_native_call(+book: List<&2, KDef>, +t: KTerm) -> String:
+-  nt_choose(String, String.eq(tg(t), "App"),
+-    u => nd_native_head(book, t, nd_head(t)), u => "")
++  nd_native_call_branch0(String.eq(tg(t), "App"), book, t)
++
++@unsafe
++def nd_native_call_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm) -> String:
++  match branch:
++    case True{}: nd_native_head(book, t, nd_head(t))
++    case False{}: ""
+ 
+ @unsafe
+ def nd_native_head(+book: List<&2, KDef>, +t: KTerm, +head: KTerm) -> String:
+-  nt_choose(String, String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)),
+-    u => nt_choose(String, nc_native_def(lookup(book, nm(head))),
+-      v => nd_native_saturated(t, nc_primitive_name(nm(head))), v => ""), u => "")
++  nd_native_head_branch0(String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)), book, t, head)
++
++@unsafe
++def nd_native_head_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +head: KTerm) -> String:
++  match branch:
++    case True{}: nd_native_head_branch1(nc_native_def(lookup(book, nm(head))), book, t, head)
++    case False{}: ""
++
++@unsafe
++def nd_native_head_branch1(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +head: KTerm) -> String:
++  match branch:
++    case True{}: nd_native_saturated(t, nc_primitive_name(nm(head)))
++    case False{}: ""
+ 
+ @unsafe
+ def nd_native_saturated(+t: KTerm, +name: String) -> String:
+-  nt_choose(String, U32.is_eq(terms_len(nd_args(t, Nil{})), nc_primitive_arity(name)), u => name, u => "")
++  nd_native_saturated_branch0(U32.is_eq(terms_len(nd_args(t, Nil{})), nc_primitive_arity(name)), t, name)
++
++@unsafe
++def nd_native_saturated_branch0(branch: Bool, +t: KTerm, +name: String) -> String:
++  match branch:
++    case True{}: name
++    case False{}: ""
+ 
+ @unsafe
+ def nd_scalar_call(+book: List<&2, KDef>, +t: KTerm) -> String:
+@@ -64,11 +85,23 @@
+ 
+ @unsafe
+ def nd_head(+t: KTerm) -> KTerm:
+-  nt_choose(KTerm, String.eq(tg(t), "App"), u => nd_head(kid(t, 0)), u => t)
++  nd_head_branch0(String.eq(tg(t), "App"), t)
++
++@unsafe
++def nd_head_branch0(branch: Bool, +t: KTerm) -> KTerm:
++  match branch:
++    case True{}: nd_head(kid(t, 0))
++    case False{}: t
+ 
+ @unsafe
+ def nd_args(+t: KTerm, +acc: List<&2, KTerm>) -> List<&2, KTerm>:
+-  nt_choose(List<&2, KTerm>, String.eq(tg(t), "App"), u => nd_args(kid(t, 0), Con{kid(t, 1), acc}), u => acc)
++  nd_args_branch0(String.eq(tg(t), "App"), t, acc)
++
++@unsafe
++def nd_args_branch0(branch: Bool, +t: KTerm, +acc: List<&2, KTerm>) -> List<&2, KTerm>:
++  match branch:
++    case True{}: nd_args(kid(t, 0), Con{kid(t, 1), acc})
++    case False{}: acc
+ 
+ @unsafe
+ def nd_leading(+t: KTerm, +n: U32) -> U32:
+@@ -229,11 +262,19 @@
+ 
+ @unsafe
+ def nd_ref_arity(+book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +count: U32, +arity: U32) -> NC_Code:
+-  nt_choose(NC_Code, U32.is_eq(arity, count),
+-    u => nc_lower_to(book, nc_sequence(nt_choose(String, nf_scheduler(target), v => "NCall", v => "NFCall"), nt_choose(String, nf_scheduler(target), v => nd_name(nc_ref_name(book, nm(head))), v => nm(head)), args, Nil{}, n), env, U32.add(n, count), target),
+-    u => nt_choose(NC_Code, nf_scheduler(target) && U32.is_lt(count, arity),
+-      v => nd_partial_def(book, t, head, args, env, n, target, arity, lookup(book, nm(head))),
+-      v => nf_slow_app(book, t, env, n, target)))
++  nd_ref_arity_branch0(U32.is_eq(arity, count), book, t, head, args, env, n, target, count, arity)
++
++@unsafe
++def nd_ref_arity_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +count: U32, +arity: U32) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_to(book, nc_sequence(nt_choose(String, nf_scheduler(target), v => "NCall", v => "NFCall"), nt_choose(String, nf_scheduler(target), v => nd_name(nc_ref_name(book, nm(head))), v => nm(head)), args, Nil{}, n), env, U32.add(n, count), target)
++    case False{}: nd_ref_arity_branch1(nf_scheduler(target) && U32.is_lt(count, arity), book, t, head, args, env, n, target, count, arity)
++
++@unsafe
++def nd_ref_arity_branch1(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +count: U32, +arity: U32) -> NC_Code:
++  match branch:
++    case True{}: nd_partial_def(book, t, head, args, env, n, target, arity, lookup(book, nm(head)))
++    case False{}: nf_slow_app(book, t, env, n, target)
+ 
+ @unsafe
+ def nd_ref_app(+book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+@@ -246,14 +287,48 @@
+ def nd_app_to(book, t, env, n, target):
+   +head = nd_head(t)
+   +args = nd_args(t, Nil{})
+-  +scalar = nd_scalar_call(book, t)
+-  nt_choose(NC_Code, Bool.not(String.eq(scalar, "")), u => nc_lower_to(book, nc_sequence("NOp", scalar, args, Nil{}, n), env, U32.add(n, terms_len(args)), target), u =>
+-  nt_choose(NC_Code, String.eq(tg(head), "Efq") && Bool.not(nf_scheduler(target)), u => nc_lower_to(book, head, env, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tg(head), "Lam"), u => nc_lower_to(book, nd_beta(head, args), env, n, target), u =>
+-    nt_choose(NC_Code, (String.eq(tg(head), "Mat") || String.eq(tg(head), "NWPattern")) && U32.is_eq(terms_len(args), 1), u => nd_match_to(book, head, kid(t, 1), env, n, target), u =>
+-    nt_choose(NC_Code, (String.eq(tg(head), "Mat") || String.eq(tg(head), "NWPattern")) && U32.is_gt(terms_len(args), 1) && (nd_match_vars(args) || (Bool.not(nf_scheduler(target)) && nq_match_args(args))),
+-      u => nc_lower_to(book, nd_match_sequence(head, args, Nil{}, n), env, U32.add(n, terms_len(args)), target), u =>
+-    nt_choose(NC_Code, String.eq(tg(head), "Ref"), u => nd_ref_app(book, t, head, args, env, n, target), u => nf_slow_app(book, t, env, n, target)))))))
++  +scalar = nt_choose(String, Bool.not(String.eq(dk(nf_host_payload(dc(index_first(book)))), "Absent")), u => nd_native_call(book, t), u => nd_scalar_call(book, t))
++  nd_app_parts(book, t, env, n, target, head, args, scalar)
++
++@unsafe
++def nd_app_parts(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +head: KTerm, +args: List<&2, KTerm>, +scalar: String) -> NC_Code:
++  nd_app_parts_branch0(Bool.not(String.eq(scalar, "")), book, t, env, n, target, head, args, scalar)
++
++@unsafe
++def nd_app_parts_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +head: KTerm, +args: List<&2, KTerm>, +scalar: String) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_to(book, nc_sequence("NOp", scalar, args, Nil{}, n), env, U32.add(n, terms_len(args)), target)
++    case False{}: nd_app_parts_branch1(String.eq(tg(head), "Efq") && Bool.not(nf_scheduler(target)), book, t, env, n, target, head, args, scalar)
++
++@unsafe
++def nd_app_parts_branch1(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +head: KTerm, +args: List<&2, KTerm>, +scalar: String) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_to(book, head, env, n, target)
++    case False{}: nd_app_parts_branch2(String.eq(tg(head), "Lam"), book, t, env, n, target, head, args, scalar)
++
++@unsafe
++def nd_app_parts_branch2(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +head: KTerm, +args: List<&2, KTerm>, +scalar: String) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_to(book, nd_beta(head, args), env, n, target)
++    case False{}: nd_app_parts_branch3((String.eq(tg(head), "Mat") || String.eq(tg(head), "NWPattern")) && U32.is_eq(terms_len(args), 1), book, t, env, n, target, head, args, scalar)
++
++@unsafe
++def nd_app_parts_branch3(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +head: KTerm, +args: List<&2, KTerm>, +scalar: String) -> NC_Code:
++  match branch:
++    case True{}: nd_match_to(book, head, kid(t, 1), env, n, target)
++    case False{}: nd_app_parts_branch4((String.eq(tg(head), "Mat") || String.eq(tg(head), "NWPattern")) && U32.is_gt(terms_len(args), 1) && (nd_match_vars(args) || (Bool.not(nf_scheduler(target)) && nq_match_args(args))), book, t, env, n, target, head, args, scalar)
++
++@unsafe
++def nd_app_parts_branch4(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +head: KTerm, +args: List<&2, KTerm>, +scalar: String) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_to(book, nd_match_sequence(head, args, Nil{}, n), env, U32.add(n, terms_len(args)), target)
++    case False{}: nd_app_parts_branch5(String.eq(tg(head), "Ref"), book, t, env, n, target, head, args, scalar)
++
++@unsafe
++def nd_app_parts_branch5(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +head: KTerm, +args: List<&2, KTerm>, +scalar: String) -> NC_Code:
++  match branch:
++    case True{}: nd_ref_app(book, t, head, args, env, n, target)
++    case False{}: nf_slow_app(book, t, env, n, target)
+ 
+ @unsafe
+ def nd_body(+t: KTerm) -> KTerm:
+@@ -303,7 +378,7 @@
+ def nd_eta_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +arity: U32) -> NC_Code:
+   +params = nd_entry_params(arity, n)
+   +call = kt("NCall", nd_name(nc_ref_name(book, name)), 0, 0, nd_entry_args(params))
+-  +base = nc_lower(book, nd_eta_body(params, call), Nil{}, U32.add(n, arity))
++  +base = nt_choose(NC_Code, nf_host_no_factory(book, name, arity), u => NC_Code{"", Nil{}, n, "", Nil{}}, u => nc_lower(book, nd_eta_body(params, call), Nil{}, U32.add(n, arity)))
+   nd_extend_arity(book, body, base, name, arity)
+ 
+ # Typed arity is computed once. Keep the original path when only a malformed
+@@ -321,4 +396,6 @@
+   +d = lookup(book, name)
+   nt_choose(NC_Code, Bool.not(bang) && Bool.not(nc_native_def(d)) && Bool.not(nc_foreign(d)),
+     u => nd_user_entry(book, body, name, n, d),
+-    u => nd_extend(book, body, nc_lower(book, body, Nil{}, n), name))
++    u => nt_choose(NC_Code, nf_host_no_factory(book, name, nd_arity(book, name)),
++      v => nd_extend(book, body, NC_Code{"", Nil{}, n, "", Nil{}}, name),
++      v => nd_extend(book, body, nc_lower(book, body, Nil{}, n), name)))
+--- a/selfhost/src/back/native/emit.bend
++++ b/selfhost/src/back/native/emit.bend
+@@ -136,7 +136,13 @@
+ def ne_template_mark(+src: String, marks: List<&2, String>) -> String:
+   match marks:
+     case Nil{}: ""
+-    case Con{+h, rest}: nt_choose(String, String.starts_with(src, h), u => h, u => ne_template_mark(src, rest))
++    case Con{+h, rest}: ne_template_mark_if(String.starts_with(src, h), src, h, rest)
++
++@unsafe
++def ne_template_mark_if(found: Bool, +src: String, +head: String, +rest: List<&2, String>) -> String:
++  match found:
++    case True{}: head
++    case False{}: ne_template_mark(src, rest)
+ 
+ @unsafe
+ def ne_template_scan(+src: String, +marks: List<&2, String>, +todo: List<&2, String>, +acc: String, +parts: List<&2, String>) -> Maybe<&2, List<&2, String>>:
+@@ -150,27 +156,54 @@
+     case SNil{}: None{}
+     case SCon{+h, +rest}:
+       +mark = nt_choose(String, Char.is_eq(h, '/'), u => ne_template_mark(src, marks), u => "")
+-      nt_choose(Maybe<&2, List<&2, String>>, String.eq(mark, ""),
+-        u => ne_template_step(rest, marks, want, more, acc ++ SCon{h, ""}, parts),
+-        u => ne_template_take(src, marks, want, more, acc, parts, mark))
++      ne_template_step_if(String.eq(mark, ""), src, h, rest, marks, want, more, acc, parts, mark)
++
++@unsafe
++def ne_template_step_if(plain: Bool, +src: String, +h: Char, +rest: String, +marks: List<&2, String>, +want: String, +more: List<&2, String>, +acc: String, +parts: List<&2, String>, +mark: String) -> Maybe<&2, List<&2, String>>:
++  match plain:
++    case True{}: ne_template_step(rest, marks, want, more, acc ++ SCon{h, ""}, parts)
++    case False{}: ne_template_take(src, marks, want, more, acc, parts, mark)
+ 
+ @unsafe
+ def ne_template_take(+src: String, +marks: List<&2, String>, +want: String, +more: List<&2, String>, +acc: String, +parts: List<&2, String>, +mark: String) -> Maybe<&2, List<&2, String>>:
+   +rest = String.drop(src, String.length(mark))
+-  nt_choose(Maybe<&2, List<&2, String>>, String.eq(mark, want) && String.starts_with(rest, "\n"),
+-    u => ne_template_scan(rest, marks, more, "", Con{acc ++ mark, parts}), u => None{})
++  ne_template_take_if(String.eq(mark, want) && String.starts_with(rest, "\n"), rest, marks, more, acc, parts, mark)
++
++@unsafe
++def ne_template_take_if(valid: Bool, +rest: String, +marks: List<&2, String>, +more: List<&2, String>, +acc: String, +parts: List<&2, String>, +mark: String) -> Maybe<&2, List<&2, String>>:
++  match valid:
++    case True{}: ne_template_scan(rest, marks, more, "", Con{acc ++ mark, parts})
++    case False{}: None{}
+ 
+ @unsafe
+ def ne_template_plain(src: String, +slash: Bool) -> Bool:
+   match src:
+     case SNil{}: True{}
+-    case SCon{+h, rest}: nt_choose(Bool, slash && Char.is_eq(h, '/'), u => False{}, u => ne_template_plain(rest, Char.is_eq(h, '/')))
++    case SCon{+h, rest}: ne_template_plain_if(slash && Char.is_eq(h, '/'), h, rest)
++
++@unsafe
++def ne_template_plain_if(stop: Bool, +h: Char, +rest: String) -> Bool:
++  match stop:
++    case True{}: False{}
++    case False{}: ne_template_plain(rest, Char.is_eq(h, '/'))
+ 
+ @unsafe
+ def ne_template_payloads(texts: List<&2, String>) -> Bool:
+   match texts:
+     case Nil{}: True{}
+-    case Con{+h, +rest}: nt_choose(Bool, List.is_empty(&2, String, rest), u => True{}, u => nt_choose(Bool, ne_template_plain(h, False{}), v => ne_template_payloads(rest), v => False{}))
++    case Con{+h, +rest}: ne_template_payloads_last(List.is_empty(&2, String, rest), h, rest)
++
++@unsafe
++def ne_template_payloads_last(last: Bool, +h: String, +rest: List<&2, String>) -> Bool:
++  match last:
++    case True{}: True{}
++    case False{}: ne_template_payloads_if(ne_template_plain(h, False{}), rest)
++
++@unsafe
++def ne_template_payloads_if(valid: Bool, +rest: List<&2, String>) -> Bool:
++  match valid:
++    case True{}: ne_template_payloads(rest)
++    case False{}: False{}
+ 
+ @unsafe
+ def ne_template_slow(src: String, marks: List<&2, String>, texts: List<&2, String>) -> String:
+--- a/selfhost/src/back/native/erase.bend
++++ b/selfhost/src/back/native/erase.bend
+@@ -55,12 +55,25 @@
+ 
+ @unsafe
+ def nc_erase_annotated(+book: List<&2, KDef>, +t: KTerm, +ty: KTerm) -> KTerm:
+-  nt_choose(KTerm, String.eq(tg(ty), "Eql"), u => atom("Rfl"), u =>
+-  nt_choose(KTerm, String.eq(tg(t), "Ctr"),
+-    u => kt("Ctr", nt_choose(String, db(lookup(book, nm(ty))), u => nm(t), u => nc_ctor_identity(book, nm(t))), ix(t), qt(t), nc_erase_args(book, nc_tele_fill(book, dt(lookup(dc(lookup(book, nm(ty))), nm(t))), ks(ty)), ks(t))),
+-    u => nt_choose(KTerm, String.eq(tg(t), "Mat"),
+-      u => nc_erase_mat(book, t, wnf(book, kid(ty, 0))),
+-      u => nc_erase(book, t))))
++  nc_erase_annotated_branch0(String.eq(tg(ty), "Eql"), book, t, ty)
++
++@unsafe
++def nc_erase_annotated_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +ty: KTerm) -> KTerm:
++  match branch:
++    case True{}: atom("Rfl")
++    case False{}: nc_erase_annotated_branch1(String.eq(tg(t), "Ctr"), book, t, ty)
++
++@unsafe
++def nc_erase_annotated_branch1(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +ty: KTerm) -> KTerm:
++  match branch:
++    case True{}: kt("Ctr", nt_choose(String, db(lookup(book, nm(ty))), u => nm(t), u => nc_ctor_identity(book, nm(t))), ix(t), qt(t), nc_erase_args(book, nc_tele_fill(book, dt(lookup(dc(lookup(book, nm(ty))), nm(t))), ks(ty)), ks(t)))
++    case False{}: nc_erase_annotated_branch2(String.eq(tg(t), "Mat"), book, t, ty)
++
++@unsafe
++def nc_erase_annotated_branch2(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +ty: KTerm) -> KTerm:
++  match branch:
++    case True{}: nc_erase_mat(book, t, wnf(book, kid(ty, 0)))
++    case False{}: nc_erase(book, t)
+ 
+ @unsafe
+ def nc_erase_list(book, ts):
+@@ -70,14 +83,51 @@
+ 
+ @unsafe
+ def nc_erase_app(+book: List<&2, KDef>, +t: KTerm) -> KTerm:
+-  nt_choose(KTerm, String.eq(tg(kid(t, 0)), "Ann"),
+-    u => nt_choose(KTerm, U32.is_eq(qt(wnf(book, kid(kid(t, 0), 1))), 0), u => nc_erase(book, kid(t, 0)), u => k_rebuild(t, nm(t), ix(t), qt(t), nc_erase_list(book, ks(t)), Nil{}, 0, 0)),
+-    u => k_rebuild(t, nm(t), ix(t), qt(t), nc_erase_list(book, ks(t)), Nil{}, 0, 0))
++  nc_erase_app_branch0(String.eq(tg(kid(t, 0)), "Ann"), book, t)
++
++@unsafe
++def nc_erase_app_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm) -> KTerm:
++  match branch:
++    case True{}: nc_erase_app_branch1(U32.is_eq(qt(wnf(book, kid(kid(t, 0), 1))), 0), book, t)
++    case False{}: k_rebuild(t, nm(t), ix(t), qt(t), nc_erase_list(book, ks(t)), Nil{}, 0, 0)
++
++@unsafe
++def nc_erase_app_branch1(branch: Bool, +book: List<&2, KDef>, +t: KTerm) -> KTerm:
++  match branch:
++    case True{}: nc_erase(book, kid(t, 0))
++    case False{}: k_rebuild(t, nm(t), ix(t), qt(t), nc_erase_list(book, ks(t)), Nil{}, 0, 0)
+ 
+ @unsafe
+ def nc_erase(book, t):
+-  kc(KTerm, core_literal(t), u => t, u => nt_choose(KTerm, String.eq(tg(t), "Var"), u => var(nm(t), ix(t)), u =>
+-  nt_choose(KTerm, String.eq(tg(t), "Ann"), u => nc_erase_annotated(book, kid(t, 0), wnf(book, kid(t, 1))), u =>
+-  nt_choose(KTerm, String.eq(tg(t), "Lam") && U32.is_eq(qt(t), 0), u => nc_erase(book, kid(t, 0)), u =>
+-  nt_choose(KTerm, String.eq(tg(t), "App"), u => nc_erase_app(book, t), u =>
+-    k_rebuild(t, nt_choose(String, String.eq(tg(t), "Ctr") || String.eq(tg(t), "Mat"), u => nc_ctor_identity(book, nm(t)), u => nm(t)), ix(t), qt(t), nc_erase_list(book, ks(t)), Nil{}, 0, 0))))))
++  nc_erase_branch0(core_literal(t), book, t)
++
++@unsafe
++def nc_erase_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm) -> KTerm:
++  match branch:
++    case True{}: t
++    case False{}: nc_erase_branch1(String.eq(tg(t), "Var"), book, t)
++
++@unsafe
++def nc_erase_branch1(branch: Bool, +book: List<&2, KDef>, +t: KTerm) -> KTerm:
++  match branch:
++    case True{}: var(nm(t), ix(t))
++    case False{}: nc_erase_branch2(String.eq(tg(t), "Ann"), book, t)
++
++@unsafe
++def nc_erase_branch2(branch: Bool, +book: List<&2, KDef>, +t: KTerm) -> KTerm:
++  match branch:
++    case True{}: nc_erase_annotated(book, kid(t, 0), wnf(book, kid(t, 1)))
++    case False{}: nc_erase_branch3(String.eq(tg(t), "Lam") && U32.is_eq(qt(t), 0), book, t)
++
++@unsafe
++def nc_erase_branch3(branch: Bool, +book: List<&2, KDef>, +t: KTerm) -> KTerm:
++  match branch:
++    case True{}: nc_erase(book, kid(t, 0))
++    case False{}: nc_erase_branch4(String.eq(tg(t), "App"), book, t)
++
++@unsafe
++def nc_erase_branch4(branch: Bool, +book: List<&2, KDef>, +t: KTerm) -> KTerm:
++  match branch:
++    case True{}: nc_erase_app(book, t)
++    case False{}: k_rebuild(t, nt_choose(String, String.eq(tg(t), "Ctr") || String.eq(tg(t), "Mat"), u => nc_ctor_identity(book, nm(t)), u => nm(t)), ix(t), qt(t), nc_erase_list(book, ks(t)), Nil{}, 0, 0)
++
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -16,7 +16,13 @@
+ 
+ @unsafe
+ def nf_return(+word: String, +n: U32, +target: NC_Target) -> NC_Code:
+-  nt_choose(NC_Code, nf_scheduler(target), u => nc_return(word, n), u => nq_transfer(atom("Absent"), [word], n, target))
++  nf_return_branch0(nf_scheduler(target), word, n, target)
++
++@unsafe
++def nf_return_branch0(branch: Bool, +word: String, +n: U32, +target: NC_Target) -> NC_Code:
++  match branch:
++    case True{}: nc_return(word, n)
++    case False{}: nq_transfer(atom("Absent"), [word], n, target)
+ 
+ @unsafe
+ def nf_emitted(emitted: N_Emitted, +target: NC_Target) -> NC_Code:
+@@ -54,15 +60,33 @@
+ 
+ @unsafe
+ def nf_lambda(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+-  nt_choose(NC_Code, nf_scheduler(target), u => nc_lambda(book, t, env, n), u => nc_fail("flat worker: escaping closure", n))
++  nf_lambda_branch0(nf_scheduler(target), book, t, env, n, target)
++
++@unsafe
++def nf_lambda_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
++  match branch:
++    case True{}: nc_lambda(book, t, env, n)
++    case False{}: nc_fail("flat worker: escaping closure", n)
+ 
+ @unsafe
+ def nf_match_value(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+-  nt_choose(NC_Code, nf_scheduler(target), u => nc_match(book, t, env, n), u => nc_fail("flat worker: escaping matcher", n))
++  nf_match_value_branch0(nf_scheduler(target), book, t, env, n, target)
++
++@unsafe
++def nf_match_value_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
++  match branch:
++    case True{}: nc_match(book, t, env, n)
++    case False{}: nc_fail("flat worker: escaping matcher", n)
+ 
+ @unsafe
+ def nf_slow_app(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+-  nt_choose(NC_Code, nf_scheduler(target), u => nc_app_slow(book, t, env, n), u => nc_fail("flat worker: partial, dynamic or bang call", n))
++  nf_slow_app_branch0(nf_scheduler(target), book, t, env, n, target)
++
++@unsafe
++def nf_slow_app_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
++  match branch:
++    case True{}: nc_app_slow(book, t, env, n)
++    case False{}: nc_fail("flat worker: partial, dynamic or bang call", n)
+ 
+ @unsafe
+ def nf_name(+name: String) -> String:
+@@ -99,9 +123,19 @@
+ 
+ @unsafe
+ def nf_kind_head(+book: List<&2, KDef>, +head: KTerm, +left: U32, +fuel: U32) -> List<&2, N_WordKind>:
+-  nt_choose(List<&2, N_WordKind>, String.eq(tg(head), "All"),
+-    u => nt_choose(List<&2, N_WordKind>, U32.is_eq(qt(head), 0), v => nf_kind_tele(book, kid(head, 1), left, fuel), v => Con{nf_scalar_kind(book, kid(head, 0)), nf_kind_tele(book, kid(head, 1), U32.sub(left, 1), fuel)}),
+-    u => nf_opaque_kinds(left))
++  nf_kind_head_branch0(String.eq(tg(head), "All"), book, head, left, fuel)
++
++@unsafe
++def nf_kind_head_branch0(branch: Bool, +book: List<&2, KDef>, +head: KTerm, +left: U32, +fuel: U32) -> List<&2, N_WordKind>:
++  match branch:
++    case True{}: nf_kind_head_branch1(U32.is_eq(qt(head), 0), book, head, left, fuel)
++    case False{}: nf_opaque_kinds(left)
++
++@unsafe
++def nf_kind_head_branch1(branch: Bool, +book: List<&2, KDef>, +head: KTerm, +left: U32, +fuel: U32) -> List<&2, N_WordKind>:
++  match branch:
++    case True{}: nf_kind_tele(book, kid(head, 1), left, fuel)
++    case False{}: Con{nf_scalar_kind(book, kid(head, 0)), nf_kind_tele(book, kid(head, 1), U32.sub(left, 1), fuel)}
+ 
+ @unsafe
+ def nf_worker_kinds(+book: List<&2, KDef>, +name: String, +arity: U32) -> List<&2, N_WordKind>:
+@@ -164,8 +198,19 @@
+ 
+ @unsafe
+ def nf_ref(+book: List<&2, KDef>, +t: KTerm, +n: U32, +target: NC_Target) -> NC_Code:
+-  nt_choose(NC_Code, nf_scheduler(target), u => NC_Code{ne_jump(Nil{}, nc_ref_name(book, nm(t))), Nil{}, n, "", Nil{}}, u =>
+-    nt_choose(NC_Code, U32.is_eq(nd_arity(book, nm(t)), 0) && Bool.not(U32.is_eq(qt(t), 3)), u => nq_call(book, kt("NFCall", nm(t), 0, 0, Nil{}), Nil{}, n, target), u => nc_fail("flat worker: unsaturated or bang reference", n)))
++  nf_ref_branch0(nf_scheduler(target), book, t, n, target)
++
++@unsafe
++def nf_ref_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +n: U32, +target: NC_Target) -> NC_Code:
++  match branch:
++    case True{}: NC_Code{ne_jump(Nil{}, nc_ref_name(book, nm(t))), Nil{}, n, "", Nil{}}
++    case False{}: nf_ref_branch1(U32.is_eq(nd_arity(book, nm(t)), 0) && Bool.not(U32.is_eq(qt(t), 3)), book, t, n, target)
++
++@unsafe
++def nf_ref_branch1(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +n: U32, +target: NC_Target) -> NC_Code:
++  match branch:
++    case True{}: nq_call(book, kt("NFCall", nm(t), 0, 0, Nil{}), Nil{}, n, target)
++    case False{}: nc_fail("flat worker: unsaturated or bang reference", n)
+ 
+ @unsafe
+ def nf_candidate(+book: List<&2, KDef>, +name: String, +signatures: List<&2, KDef>) -> NF_Worker:
+@@ -333,19 +378,19 @@
+ # No bang roots means the runtime cannot offload. Keep all device fallbacks for
+ # any program with bangs, and keep raw API emission on its original lowering.
+ @unsafe
+-def nf_host_defs(workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> List<&2, KDef>:
++def nf_host_defs(workers: List<&2, NF_Worker>, +ready: List<&2, String>, +escapes: KDef) -> List<&2, KDef>:
+   match workers:
+     case Nil{}: Nil{}
+     case Con{NF_Worker{+name, +params, code, deps, shape}, +rest}:
+       +arity = nt_count(N_Param, params)
+       nt_choose(List<&2, KDef>, U32.is_gt(arity, 0) && Bool.not(String.starts_with(name, "$product.")) && nb_contains(ready, name),
+-        u => Con{KDef{name, "NativeHostWorker", arity, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, nf_host_defs(rest, ready)}, u => nf_host_defs(rest, ready))
++        u => Con{KDef{name, "NativeHostWorker", arity, nt_bool(String.eq(dk(index_find(escapes, name, index_hash(name, 2166136261), 32)), "Absent")), atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, nf_host_defs(rest, ready, escapes)}, u => nf_host_defs(rest, ready, escapes))
+ 
+ @unsafe
+ def nf_host_context(+book: List<&2, KDef>, +permission: Bool, plan: NF_Plan) -> List<&2, KDef>:
+   match plan:
+     case NF_Plan{workers, ready, observers}:
+-      nt_choose(List<&2, KDef>, permission, u => nf_host_attach(book, index_build(nf_host_defs(workers, ready))), u => book)
++      nt_choose(List<&2, KDef>, permission, u => nf_host_calls(book, workers, ready, nc_live_names(book, ["main"], Nil{})), u => book)
+ 
+ @unsafe
+ def nf_host_attach(+book: List<&2, KDef>, +index: KDef) -> List<&2, KDef>:
+@@ -363,3 +408,52 @@
+ def nf_host_selected(+book: List<&2, KDef>, +name: String, +arity: U32) -> Bool:
+   +d = index_find(nf_host_payload(dc(index_first(book))), name, index_hash(name, 2166136261), 32)
+   U32.is_gt(arity, 0) && String.eq(dk(d), "NativeHostWorker") && U32.is_eq(da(d), arity)
++
++# Bare or inexact calls can expose the curried entry. Inspect the complete
++# erased runtime closure once; higher-order argument bodies are included.
++@unsafe
++def nf_escape_add(+name: String, +index: KDef) -> KDef:
++  index_set(index, nv_id(name), index_hash(name, 2166136261), 32)
++
++@unsafe
++def nf_escape_terms(+book: List<&2, KDef>, ts: List<&2, KTerm>, +index: KDef) -> KDef:
++  match ts:
++    case Nil{}: index
++    case Con{+t, +rest}:
++      nt_choose(KDef, String.eq(tg(t), "App"),
++        u => nf_escape_app(book, nd_head(t), nd_args(t, Nil{}), rest, index),
++        u => nt_choose(KDef, String.eq(tg(t), "Ref"),
++          v => nf_escape_terms(book, rest, nf_escape_add(nm(t), index)),
++          v => nf_escape_terms(book, nt_append(KTerm, ks(t), rest), index)))
++
++@unsafe
++def nf_escape_app(+book: List<&2, KDef>, +head: KTerm, +args: List<&2, KTerm>, +rest: List<&2, KTerm>, +index: KDef) -> KDef:
++  nt_choose(KDef, String.eq(tg(head), "Ref"),
++    u => nf_escape_terms(book, nt_append(KTerm, args, rest),
++      nt_choose(KDef, Bool.not(U32.is_eq(qt(head), 3)) && U32.is_eq(terms_len(args), nd_arity(book, nm(head))), v => index, v => nf_escape_add(nm(head), index))),
++    u => nf_escape_terms(book, Con{head, nt_append(KTerm, args, rest)}, index))
++
++@unsafe
++def nf_escape_names(+book: List<&2, KDef>, names: List<&2, String>, +index: KDef) -> KDef:
++  match names:
++    case Nil{}: index
++    case Con{name, rest}: nf_escape_names(book, rest, nf_escape_terms(book, [nc_definition(book, lookup(book, name), 0)], index))
++
++@unsafe
++def nf_host_no_factory(+book: List<&2, KDef>, +name: String, +arity: U32) -> Bool:
++  +d = index_find(nf_host_payload(dc(index_first(book))), name, index_hash(name, 2166136261), 32)
++  U32.is_gt(arity, 0) && (String.eq(dk(d), "NativeHostWorker") || String.eq(dk(d), "NativeCallOnly")) && U32.is_eq(da(d), arity) && U32.is_eq(dx(d), 1)
++
++@unsafe
++def nf_host_calls(+book: List<&2, KDef>, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +names: List<&2, String>) -> List<&2, KDef>:
++  +escapes = nf_escape_names(book, names, missing())
++  nf_host_attach(book, index_build(nt_append(KDef, nf_host_defs(workers, ready, escapes), nf_call_only_defs(book, names, escapes))))
++
++@unsafe
++def nf_call_only_defs(+book: List<&2, KDef>, names: List<&2, String>, +escapes: KDef) -> List<&2, KDef>:
++  match names:
++    case Nil{}: Nil{}
++    case Con{+name, +rest}:
++      nt_choose(List<&2, KDef>, String.eq(dk(index_find(escapes, name, index_hash(name, 2166136261), 32)), "Absent"),
++        u => Con{KDef{name, "NativeCallOnly", nd_arity(book, name), 1, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, nf_call_only_defs(book, rest, escapes)},
++        u => nf_call_only_defs(book, rest, escapes))
+--- a/selfhost/src/back/native/intrinsic.bend
++++ b/selfhost/src/back/native/intrinsic.bend
+@@ -2,77 +2,427 @@
+ # Empty primitive names are common identity misses and cannot match this catalog.
+ @unsafe
+ def ni_template(+k: String) -> String:
+-  nt_choose(String, String.is_empty(k), u => "", u =>
+-    nt_choose(String, String.eq(k, "u32_add"), u => "U32_BIN($0, +, $1)", u =>
+-    nt_choose(String, String.eq(k, "u32_sub"), u => "U32_BIN($0, -, $1)", u =>
+-    nt_choose(String, String.eq(k, "u32_and"), u => "U32_BIN($0, &, $1)", u =>
+-    nt_choose(String, String.eq(k, "u32_or"), u => "U32_BIN($0, |, $1)", u =>
+-    nt_choose(String, String.eq(k, "u32_xor"), u => "U32_BIN($0, ^, $1)", u =>
+-    nt_choose(String, String.eq(k, "u32_mul"), u => "U32_BIN($0, *, $1)", u =>
+-    nt_choose(String, String.eq(k, "u32_is_eq"), u => "U32_BIN($0, ==, $1)", u =>
+-    nt_choose(String, String.eq(k, "u32_is_ne"), u => "U32_BIN($0, !=, $1)", u =>
+-    nt_choose(String, String.eq(k, "u32_is_lt"), u => "U32_BIN($0, <, $1)", u =>
+-    nt_choose(String, String.eq(k, "u32_is_le"), u => "U32_BIN($0, <=, $1)", u =>
+-    nt_choose(String, String.eq(k, "u32_is_gt"), u => "U32_BIN($0, >, $1)", u =>
+-    nt_choose(String, String.eq(k, "u32_is_ge"), u => "U32_BIN($0, >=, $1)", u =>
+-    nt_choose(String, String.eq(k, "u32_inc"), u => "U32_BIN($0, +, 1)", u =>
+-    nt_choose(String, String.eq(k, "u32_shl"), u => "U32_BIN($0, <<, 1)", u =>
+-    nt_choose(String, String.eq(k, "u32_shr"), u => "U32_BIN($0, >>, 1)", u =>
+-    nt_choose(String, String.eq(k, "u32_shln"), u => "($1 >= 32 ? 0 : U32_BIN($0, <<, $1))", u =>
+-    nt_choose(String, String.eq(k, "u32_shrn"), u => "($1 >= 32 ? 0 : U32_BIN($0, >>, $1))", u =>
+-    nt_choose(String, String.eq(k, "u32_div"), u => "((u32)($1) == 0 ? 0 : (u64)U32_QUO((u32)($0), (u32)($1)))", u =>
+-    nt_choose(String, String.eq(k, "u32_mod"), u => "((u32)($1) == 0 ? $0 : U32_BIN($0, -, U32_QUO((u32)($0), (u32)($1)) * $1))", u =>
+-    nt_choose(String, String.eq(k, "u32_not"), u => "((u64)~(u32)($0))", u =>
+-    nt_choose(String, String.eq(k, "u32_is_zero"), u => "U32_BIN($0, ==, 0)", u =>
+-    nt_choose(String, String.eq(k, "u32_cmp"), u => "(U32_BIN($0, >, $1) + U32_BIN($0, >=, $1))", u =>
+-    nt_choose(String, String.eq(k, "u32_to_f32"), u => "f32_rewrap((f32)(u32)($0))", u =>
+-    nt_choose(String, String.eq(k, "u32_to_nat"), u => "((u64)$0)", u =>
+-    nt_choose(String, String.eq(k, "u32_from_nat"), u => "((u64)(u32)($0))", u =>
+-    nt_choose(String, String.eq(k, "f32_add"), u => "f32_rewrap(f32_unbox($0) + f32_unbox($1))", u =>
+-    nt_choose(String, String.eq(k, "f32_sub"), u => "f32_rewrap(f32_unbox($0) - f32_unbox($1))", u =>
+-    nt_choose(String, String.eq(k, "f32_mul"), u => "f32_rewrap(f32_unbox($0) * f32_unbox($1))", u =>
+-    nt_choose(String, String.eq(k, "f32_div"), u => "f32_rewrap(f32_unbox($0) / f32_unbox($1))", u =>
+-    nt_choose(String, String.eq(k, "f32_is_eq"), u => "((u64)(f32_unbox($0) == f32_unbox($1)))", u =>
+-    nt_choose(String, String.eq(k, "f32_is_ne"), u => "((u64)(f32_unbox($0) != f32_unbox($1)))", u =>
+-    nt_choose(String, String.eq(k, "f32_is_lt"), u => "((u64)(f32_unbox($0) < f32_unbox($1)))", u =>
+-    nt_choose(String, String.eq(k, "f32_is_le"), u => "((u64)(f32_unbox($0) <= f32_unbox($1)))", u =>
+-    nt_choose(String, String.eq(k, "f32_is_gt"), u => "((u64)(f32_unbox($0) > f32_unbox($1)))", u =>
+-    nt_choose(String, String.eq(k, "f32_is_ge"), u => "((u64)(f32_unbox($0) >= f32_unbox($1)))", u =>
+-    nt_choose(String, String.eq(k, "f32_sqrt"), u => "f32_rewrap((f32)sqrt(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_exp"), u => "f32_rewrap((f32)exp(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_log"), u => "f32_rewrap((f32)log(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_log2"), u => "f32_rewrap((f32)log2(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_log10"), u => "f32_rewrap((f32)log10(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_sin"), u => "f32_rewrap((f32)sin(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_cos"), u => "f32_rewrap((f32)cos(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_tan"), u => "f32_rewrap((f32)tan(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_asin"), u => "f32_rewrap((f32)asin(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_acos"), u => "f32_rewrap((f32)acos(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_atan"), u => "f32_rewrap((f32)atan(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_sinh"), u => "f32_rewrap((f32)sinh(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_cosh"), u => "f32_rewrap((f32)cosh(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_tanh"), u => "f32_rewrap((f32)tanh(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_floor"), u => "f32_rewrap((f32)floor(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_ceil"), u => "f32_rewrap((f32)ceil(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_trunc"), u => "f32_rewrap((f32)trunc(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_abs"), u => "f32_rewrap((f32)fabs(f32_unbox($0)))", u =>
+-    nt_choose(String, String.eq(k, "f32_pow"), u => "f32_rewrap((f32)pow(f32_unbox($0), f32_unbox($1)))", u =>
+-    nt_choose(String, String.eq(k, "f32_atan2"), u => "f32_rewrap((f32)atan2(f32_unbox($0), f32_unbox($1)))", u =>
+-    nt_choose(String, String.eq(k, "f32_mod"), u => "f32_rewrap((f32)fmod(f32_unbox($0), f32_unbox($1)))", u =>
+-    nt_choose(String, String.eq(k, "f32_neg"), u => "f32_rewrap(-f32_unbox($0))", u =>
+-    nt_choose(String, String.eq(k, "f32_to_u32"), u => "f32_to_u32($0)", u =>
+-    nt_choose(String, String.eq(k, "f32_bits"), u => "$0", u =>
+-    nt_choose(String, String.eq(k, "f32_show"), u => "f32_show(e, $0)", u =>
+-    nt_choose(String, String.eq(k, "f32_read"), u => "f32_read(e, $0)", u =>
+-    nt_choose(String, String.eq(k, "nat_add"), u => "nat_chk(e, $0 + $1)", u =>
+-    nt_choose(String, String.eq(k, "nat_sub"), u => "($0 < $1 ? 0 : $0 - $1)", u =>
+-    nt_choose(String, String.eq(k, "nat_mul"), u => "nat_mul(e, $0, $1)", u =>
+-    nt_choose(String, String.eq(k, "nat_double"), u => "nat_chk(e, $0 + $0)", u =>
+-    nt_choose(String, String.eq(k, "nat_cmp"), u => "(($0 > $1) + ($0 >= $1))", u =>
+-    nt_choose(String, String.eq(k, "nat_is_lt"), u => "($0 < $1)", u =>
+-    nt_choose(String, String.eq(k, "bool_or"), u => "(native_bool($0) | native_bool($1))", u =>
+-    nt_choose(String, String.eq(k, "bool_xor"), u => "(native_bool($0) ^ native_bool($1))", u =>
+-      ""))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
++  ni_template_branch0(String.is_empty(k), k)
++
++@unsafe
++def ni_template_branch0(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: ""
++    case False{}: ni_template_branch1(String.eq(k, "u32_add"), k)
++
++@unsafe
++def ni_template_branch1(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, +, $1)"
++    case False{}: ni_template_branch2(String.eq(k, "u32_sub"), k)
++
++@unsafe
++def ni_template_branch2(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, -, $1)"
++    case False{}: ni_template_branch3(String.eq(k, "u32_and"), k)
++
++@unsafe
++def ni_template_branch3(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, &, $1)"
++    case False{}: ni_template_branch4(String.eq(k, "u32_or"), k)
++
++@unsafe
++def ni_template_branch4(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, |, $1)"
++    case False{}: ni_template_branch5(String.eq(k, "u32_xor"), k)
++
++@unsafe
++def ni_template_branch5(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, ^, $1)"
++    case False{}: ni_template_branch6(String.eq(k, "u32_mul"), k)
++
++@unsafe
++def ni_template_branch6(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, *, $1)"
++    case False{}: ni_template_branch7(String.eq(k, "u32_is_eq"), k)
++
++@unsafe
++def ni_template_branch7(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, ==, $1)"
++    case False{}: ni_template_branch8(String.eq(k, "u32_is_ne"), k)
++
++@unsafe
++def ni_template_branch8(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, !=, $1)"
++    case False{}: ni_template_branch9(String.eq(k, "u32_is_lt"), k)
++
++@unsafe
++def ni_template_branch9(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, <, $1)"
++    case False{}: ni_template_branch10(String.eq(k, "u32_is_le"), k)
++
++@unsafe
++def ni_template_branch10(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, <=, $1)"
++    case False{}: ni_template_branch11(String.eq(k, "u32_is_gt"), k)
++
++@unsafe
++def ni_template_branch11(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, >, $1)"
++    case False{}: ni_template_branch12(String.eq(k, "u32_is_ge"), k)
++
++@unsafe
++def ni_template_branch12(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, >=, $1)"
++    case False{}: ni_template_branch13(String.eq(k, "u32_inc"), k)
++
++@unsafe
++def ni_template_branch13(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, +, 1)"
++    case False{}: ni_template_branch14(String.eq(k, "u32_shl"), k)
++
++@unsafe
++def ni_template_branch14(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, <<, 1)"
++    case False{}: ni_template_branch15(String.eq(k, "u32_shr"), k)
++
++@unsafe
++def ni_template_branch15(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, >>, 1)"
++    case False{}: ni_template_branch16(String.eq(k, "u32_shln"), k)
++
++@unsafe
++def ni_template_branch16(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "($1 >= 32 ? 0 : U32_BIN($0, <<, $1))"
++    case False{}: ni_template_branch17(String.eq(k, "u32_shrn"), k)
++
++@unsafe
++def ni_template_branch17(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "($1 >= 32 ? 0 : U32_BIN($0, >>, $1))"
++    case False{}: ni_template_branch18(String.eq(k, "u32_div"), k)
++
++@unsafe
++def ni_template_branch18(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "((u32)($1) == 0 ? 0 : (u64)U32_QUO((u32)($0), (u32)($1)))"
++    case False{}: ni_template_branch19(String.eq(k, "u32_mod"), k)
++
++@unsafe
++def ni_template_branch19(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "((u32)($1) == 0 ? $0 : U32_BIN($0, -, U32_QUO((u32)($0), (u32)($1)) * $1))"
++    case False{}: ni_template_branch20(String.eq(k, "u32_not"), k)
++
++@unsafe
++def ni_template_branch20(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "((u64)~(u32)($0))"
++    case False{}: ni_template_branch21(String.eq(k, "u32_is_zero"), k)
++
++@unsafe
++def ni_template_branch21(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "U32_BIN($0, ==, 0)"
++    case False{}: ni_template_branch22(String.eq(k, "u32_cmp"), k)
++
++@unsafe
++def ni_template_branch22(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "(U32_BIN($0, >, $1) + U32_BIN($0, >=, $1))"
++    case False{}: ni_template_branch23(String.eq(k, "u32_to_f32"), k)
++
++@unsafe
++def ni_template_branch23(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)(u32)($0))"
++    case False{}: ni_template_branch24(String.eq(k, "u32_to_nat"), k)
++
++@unsafe
++def ni_template_branch24(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "((u64)$0)"
++    case False{}: ni_template_branch25(String.eq(k, "u32_from_nat"), k)
++
++@unsafe
++def ni_template_branch25(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "((u64)(u32)($0))"
++    case False{}: ni_template_branch26(String.eq(k, "f32_add"), k)
++
++@unsafe
++def ni_template_branch26(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap(f32_unbox($0) + f32_unbox($1))"
++    case False{}: ni_template_branch27(String.eq(k, "f32_sub"), k)
++
++@unsafe
++def ni_template_branch27(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap(f32_unbox($0) - f32_unbox($1))"
++    case False{}: ni_template_branch28(String.eq(k, "f32_mul"), k)
++
++@unsafe
++def ni_template_branch28(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap(f32_unbox($0) * f32_unbox($1))"
++    case False{}: ni_template_branch29(String.eq(k, "f32_div"), k)
++
++@unsafe
++def ni_template_branch29(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap(f32_unbox($0) / f32_unbox($1))"
++    case False{}: ni_template_branch30(String.eq(k, "f32_is_eq"), k)
++
++@unsafe
++def ni_template_branch30(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "((u64)(f32_unbox($0) == f32_unbox($1)))"
++    case False{}: ni_template_branch31(String.eq(k, "f32_is_ne"), k)
++
++@unsafe
++def ni_template_branch31(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "((u64)(f32_unbox($0) != f32_unbox($1)))"
++    case False{}: ni_template_branch32(String.eq(k, "f32_is_lt"), k)
++
++@unsafe
++def ni_template_branch32(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "((u64)(f32_unbox($0) < f32_unbox($1)))"
++    case False{}: ni_template_branch33(String.eq(k, "f32_is_le"), k)
++
++@unsafe
++def ni_template_branch33(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "((u64)(f32_unbox($0) <= f32_unbox($1)))"
++    case False{}: ni_template_branch34(String.eq(k, "f32_is_gt"), k)
++
++@unsafe
++def ni_template_branch34(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "((u64)(f32_unbox($0) > f32_unbox($1)))"
++    case False{}: ni_template_branch35(String.eq(k, "f32_is_ge"), k)
++
++@unsafe
++def ni_template_branch35(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "((u64)(f32_unbox($0) >= f32_unbox($1)))"
++    case False{}: ni_template_branch36(String.eq(k, "f32_sqrt"), k)
++
++@unsafe
++def ni_template_branch36(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)sqrt(f32_unbox($0)))"
++    case False{}: ni_template_branch37(String.eq(k, "f32_exp"), k)
++
++@unsafe
++def ni_template_branch37(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)exp(f32_unbox($0)))"
++    case False{}: ni_template_branch38(String.eq(k, "f32_log"), k)
++
++@unsafe
++def ni_template_branch38(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)log(f32_unbox($0)))"
++    case False{}: ni_template_branch39(String.eq(k, "f32_log2"), k)
++
++@unsafe
++def ni_template_branch39(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)log2(f32_unbox($0)))"
++    case False{}: ni_template_branch40(String.eq(k, "f32_log10"), k)
++
++@unsafe
++def ni_template_branch40(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)log10(f32_unbox($0)))"
++    case False{}: ni_template_branch41(String.eq(k, "f32_sin"), k)
++
++@unsafe
++def ni_template_branch41(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)sin(f32_unbox($0)))"
++    case False{}: ni_template_branch42(String.eq(k, "f32_cos"), k)
++
++@unsafe
++def ni_template_branch42(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)cos(f32_unbox($0)))"
++    case False{}: ni_template_branch43(String.eq(k, "f32_tan"), k)
++
++@unsafe
++def ni_template_branch43(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)tan(f32_unbox($0)))"
++    case False{}: ni_template_branch44(String.eq(k, "f32_asin"), k)
++
++@unsafe
++def ni_template_branch44(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)asin(f32_unbox($0)))"
++    case False{}: ni_template_branch45(String.eq(k, "f32_acos"), k)
++
++@unsafe
++def ni_template_branch45(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)acos(f32_unbox($0)))"
++    case False{}: ni_template_branch46(String.eq(k, "f32_atan"), k)
++
++@unsafe
++def ni_template_branch46(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)atan(f32_unbox($0)))"
++    case False{}: ni_template_branch47(String.eq(k, "f32_sinh"), k)
++
++@unsafe
++def ni_template_branch47(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)sinh(f32_unbox($0)))"
++    case False{}: ni_template_branch48(String.eq(k, "f32_cosh"), k)
++
++@unsafe
++def ni_template_branch48(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)cosh(f32_unbox($0)))"
++    case False{}: ni_template_branch49(String.eq(k, "f32_tanh"), k)
++
++@unsafe
++def ni_template_branch49(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)tanh(f32_unbox($0)))"
++    case False{}: ni_template_branch50(String.eq(k, "f32_floor"), k)
++
++@unsafe
++def ni_template_branch50(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)floor(f32_unbox($0)))"
++    case False{}: ni_template_branch51(String.eq(k, "f32_ceil"), k)
++
++@unsafe
++def ni_template_branch51(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)ceil(f32_unbox($0)))"
++    case False{}: ni_template_branch52(String.eq(k, "f32_trunc"), k)
++
++@unsafe
++def ni_template_branch52(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)trunc(f32_unbox($0)))"
++    case False{}: ni_template_branch53(String.eq(k, "f32_abs"), k)
++
++@unsafe
++def ni_template_branch53(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)fabs(f32_unbox($0)))"
++    case False{}: ni_template_branch54(String.eq(k, "f32_pow"), k)
++
++@unsafe
++def ni_template_branch54(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)pow(f32_unbox($0), f32_unbox($1)))"
++    case False{}: ni_template_branch55(String.eq(k, "f32_atan2"), k)
++
++@unsafe
++def ni_template_branch55(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)atan2(f32_unbox($0), f32_unbox($1)))"
++    case False{}: ni_template_branch56(String.eq(k, "f32_mod"), k)
++
++@unsafe
++def ni_template_branch56(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap((f32)fmod(f32_unbox($0), f32_unbox($1)))"
++    case False{}: ni_template_branch57(String.eq(k, "f32_neg"), k)
++
++@unsafe
++def ni_template_branch57(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_rewrap(-f32_unbox($0))"
++    case False{}: ni_template_branch58(String.eq(k, "f32_to_u32"), k)
++
++@unsafe
++def ni_template_branch58(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_to_u32($0)"
++    case False{}: ni_template_branch59(String.eq(k, "f32_bits"), k)
++
++@unsafe
++def ni_template_branch59(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "$0"
++    case False{}: ni_template_branch60(String.eq(k, "f32_show"), k)
++
++@unsafe
++def ni_template_branch60(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_show(e, $0)"
++    case False{}: ni_template_branch61(String.eq(k, "f32_read"), k)
++
++@unsafe
++def ni_template_branch61(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "f32_read(e, $0)"
++    case False{}: ni_template_branch62(String.eq(k, "nat_add"), k)
++
++@unsafe
++def ni_template_branch62(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "nat_chk(e, $0 + $1)"
++    case False{}: ni_template_branch63(String.eq(k, "nat_sub"), k)
++
++@unsafe
++def ni_template_branch63(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "($0 < $1 ? 0 : $0 - $1)"
++    case False{}: ni_template_branch64(String.eq(k, "nat_mul"), k)
++
++@unsafe
++def ni_template_branch64(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "nat_mul(e, $0, $1)"
++    case False{}: ni_template_branch65(String.eq(k, "nat_double"), k)
++
++@unsafe
++def ni_template_branch65(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "nat_chk(e, $0 + $0)"
++    case False{}: ni_template_branch66(String.eq(k, "nat_cmp"), k)
++
++@unsafe
++def ni_template_branch66(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "(($0 > $1) + ($0 >= $1))"
++    case False{}: ni_template_branch67(String.eq(k, "nat_is_lt"), k)
++
++@unsafe
++def ni_template_branch67(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "($0 < $1)"
++    case False{}: ni_template_branch68(String.eq(k, "bool_or"), k)
++
++@unsafe
++def ni_template_branch68(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "(native_bool($0) | native_bool($1))"
++    case False{}: ni_template_branch69(String.eq(k, "bool_xor"), k)
++
++@unsafe
++def ni_template_branch69(branch: Bool, +k: String) -> String:
++  match branch:
++    case True{}: "(native_bool($0) ^ native_bool($1))"
++    case False{}: ""
+ 
+ @unsafe
+ def ni_replace_all(+s: String, +key: String, +value: String) -> String:
+--- a/selfhost/src/back/native/layout.bend
++++ b/selfhost/src/back/native/layout.bend
+@@ -16,7 +16,19 @@
+ 
+ @unsafe
+ def nk_value(+value: KTerm, +env: List<&2, NC_Binding>) -> N_WordKind:
+-  nt_choose(N_WordKind, String.eq(tg(value), "Var"), u => nk_kind(ix(value), env), u => nt_choose(N_WordKind, String.eq(tg(value), "NWord"), v => N_W32{}, v => N_W64{}))
++  nk_value_branch0(String.eq(tg(value), "Var"), value, env)
++
++@unsafe
++def nk_value_branch0(branch: Bool, +value: KTerm, +env: List<&2, NC_Binding>) -> N_WordKind:
++  match branch:
++    case True{}: nk_kind(ix(value), env)
++    case False{}: nk_value_branch1(String.eq(tg(value), "NWord"), value, env)
++
++@unsafe
++def nk_value_branch1(branch: Bool, +value: KTerm, +env: List<&2, NC_Binding>) -> N_WordKind:
++  match branch:
++    case True{}: N_W32{}
++    case False{}: N_W64{}
+ 
+ @unsafe
+ def nk_binding(+id: U32, +value: KTerm, +env: List<&2, NC_Binding>) -> NC_Binding:
+--- a/selfhost/src/back/native/observer-analysis.bend
++++ b/selfhost/src/back/native/observer-analysis.bend
+@@ -76,7 +76,13 @@
+ 
+ @unsafe
+ def noa_origin(+value: KTerm) -> KTerm:
+-  nt_choose(KTerm, String.eq(tg(value), "OA"), u => kid(value, 0), u => atom("Absent"))
++  noa_origin_branch0(String.eq(tg(value), "OA"), value)
++
++@unsafe
++def noa_origin_branch0(branch: Bool, +value: KTerm) -> KTerm:
++  match branch:
++    case True{}: kid(value, 0)
++    case False{}: atom("Absent")
+ 
+ @unsafe
+ def noa_env(+id: U32, xs: List<&2, KTerm>) -> KTerm:
+--- a/selfhost/src/back/native/product.bend
++++ b/selfhost/src/back/native/product.bend
+@@ -99,8 +99,25 @@
+ # A single-use substitution keeps the existing scalar ownership environment.
+ @unsafe
+ def nq_uses(+t: KTerm, +id: U32) -> U32:
+-  nt_choose(U32, String.eq(tg(t), "Var"), u => nt_bool(U32.is_eq(ix(t), id)), u =>
+-    nt_choose(U32, String.eq(tg(t), "Mat") && U32.is_eq(terms_len(ks(t)), 2), u => U32.max(nq_uses(kid(t, 0), id), nq_uses(kid(t, 1), id)), u => nt_choose(U32, String.eq(tg(t), "NWPattern"), v => nw_uses(ks(t), id), v => nq_uses_list(ks(t), id))))
++  nq_uses_branch0(String.eq(tg(t), "Var"), t, id)
++
++@unsafe
++def nq_uses_branch0(branch: Bool, +t: KTerm, +id: U32) -> U32:
++  match branch:
++    case True{}: nt_bool(U32.is_eq(ix(t), id))
++    case False{}: nq_uses_branch1(String.eq(tg(t), "Mat") && U32.is_eq(terms_len(ks(t)), 2), t, id)
++
++@unsafe
++def nq_uses_branch1(branch: Bool, +t: KTerm, +id: U32) -> U32:
++  match branch:
++    case True{}: U32.max(nq_uses(kid(t, 0), id), nq_uses(kid(t, 1), id))
++    case False{}: nq_uses_branch2(String.eq(tg(t), "NWPattern"), t, id)
++
++@unsafe
++def nq_uses_branch2(branch: Bool, +t: KTerm, +id: U32) -> U32:
++  match branch:
++    case True{}: nw_uses(ks(t), id)
++    case False{}: nq_uses_list(ks(t), id)
+ 
+ @unsafe
+ def nq_uses_list(ts: List<&2, KTerm>, +id: U32) -> U32:
+@@ -110,8 +127,25 @@
+ 
+ @unsafe
+ def nq_min_uses(+t: KTerm, +id: U32) -> U32:
+-  nt_choose(U32, String.eq(tg(t), "Var"), u => nt_bool(U32.is_eq(ix(t), id)), u =>
+-    nt_choose(U32, String.eq(tg(t), "Mat") && U32.is_eq(terms_len(ks(t)), 2), u => U32.min(nq_min_uses(kid(t, 0), id), nq_min_uses(kid(t, 1), id)), u => nt_choose(U32, String.eq(tg(t), "NWPattern"), v => 0, v => nq_min_uses_list(ks(t), id))))
++  nq_min_uses_branch0(String.eq(tg(t), "Var"), t, id)
++
++@unsafe
++def nq_min_uses_branch0(branch: Bool, +t: KTerm, +id: U32) -> U32:
++  match branch:
++    case True{}: nt_bool(U32.is_eq(ix(t), id))
++    case False{}: nq_min_uses_branch1(String.eq(tg(t), "Mat") && U32.is_eq(terms_len(ks(t)), 2), t, id)
++
++@unsafe
++def nq_min_uses_branch1(branch: Bool, +t: KTerm, +id: U32) -> U32:
++  match branch:
++    case True{}: U32.min(nq_min_uses(kid(t, 0), id), nq_min_uses(kid(t, 1), id))
++    case False{}: nq_min_uses_branch2(String.eq(tg(t), "NWPattern"), t, id)
++
++@unsafe
++def nq_min_uses_branch2(branch: Bool, +t: KTerm, +id: U32) -> U32:
++  match branch:
++    case True{}: 0
++    case False{}: nq_min_uses_list(ks(t), id)
+ 
+ @unsafe
+ def nq_min_uses_list(ts: List<&2, KTerm>, +id: U32) -> U32:
+@@ -135,7 +169,13 @@
+ 
+ @unsafe
+ def nq_bundle_params(+count: U32, +n: U32) -> List<&2, NC_Binding>:
+-  nt_choose(List<&2, NC_Binding>, U32.is_eq(count, 0), u => Nil{}, u => Con{nc_binding(nc_id(n)), nq_bundle_params(U32.sub(count, 1), U32.inc(n))})
++  nq_bundle_params_branch0(U32.is_eq(count, 0), count, n)
++
++@unsafe
++def nq_bundle_params_branch0(branch: Bool, +count: U32, +n: U32) -> List<&2, NC_Binding>:
++  match branch:
++    case True{}: Nil{}
++    case False{}: Con{nc_binding(nc_id(n)), nq_bundle_params(U32.sub(count, 1), U32.inc(n))}
+ 
+ @unsafe
+ def nq_declare(words: List<&2, String>) -> String:
+@@ -173,7 +213,13 @@
+ 
+ @unsafe
+ def nq_match(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+-  nt_choose(NC_Code, nf_scheduler(target), u => nc_match_apply_to(book, t, env, n, target), u => nq_match_local(book, t, env, n, target))
++  nq_match_branch0(nf_scheduler(target), book, t, env, n, target)
++
++@unsafe
++def nq_match_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
++  match branch:
++    case True{}: nc_match_apply_to(book, t, env, n, target)
++    case False{}: nq_match_local(book, t, env, n, target)
+ 
+ @unsafe
+ def nq_match_local(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+@@ -233,9 +279,19 @@
+ 
+ @unsafe
+ def nq_operation(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+-  nt_choose(NC_Code, Bool.not(nf_scheduler(target)) && nq_has_bundle(ks(t)),
+-    u => nc_lower_to(book, nq_opaque_args(tg(t), nm(t), ks(t), Nil{}, n), env, U32.add(n, terms_len(ks(t))), target),
+-    u => nt_choose(NC_Code, String.eq(tg(t), "NCtr"), v => nq_ctor(nm(t), nc_values(ks(t), env), n, target), v => nq_intrinsic(nm(t), nc_values(ks(t), env), n, target)))
++  nq_operation_branch0(Bool.not(nf_scheduler(target)) && nq_has_bundle(ks(t)), book, t, env, n, target)
++
++@unsafe
++def nq_operation_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
++  match branch:
++    case True{}: nc_lower_to(book, nq_opaque_args(tg(t), nm(t), ks(t), Nil{}, n), env, U32.add(n, terms_len(ks(t))), target)
++    case False{}: nq_operation_branch1(String.eq(tg(t), "NCtr"), book, t, env, n, target)
++
++@unsafe
++def nq_operation_branch1(branch: Bool, +book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
++  match branch:
++    case True{}: nq_ctor(nm(t), nc_values(ks(t), env), n, target)
++    case False{}: nq_intrinsic(nm(t), nc_values(ks(t), env), n, target)
+ 
+ @unsafe
+ def nq_wrap_segment(+d: KDef, +params: List<&2, N_Param>, +original: String) -> String:
+--- a/selfhost/src/back/native/scalar-array.bend
++++ b/selfhost/src/back/native/scalar-array.bend
+@@ -35,10 +35,31 @@
+ 
+ @unsafe
+ def ns_term(+book: List<&2, KDef>, +t: KTerm) -> Bool:
+-  nt_choose(Bool, String.eq(tg(t), "Ann"), u => ns_annotated(book, kid(t, 0), kid(t, 1)), u =>
+-  nt_choose(Bool, String.eq(tg(t), "Rwt") || ns_array_pattern(t), u => False{}, u =>
+-  nt_choose(Bool, nt_choose(Bool, String.eq(tg(t), "App"), v => ns_generic_array(book, nc_unann(kid(t, 0))), v => False{}), u => ns_scalar(book, kid(t, 1)), u =>
+-  nt_choose(Bool, ns_generic_array(book, t), u => False{}, u => ns_terms(book, ks(t))))))
++  ns_term_branch0(String.eq(tg(t), "Ann"), book, t)
++
++@unsafe
++def ns_term_branch0(branch: Bool, +book: List<&2, KDef>, +t: KTerm) -> Bool:
++  match branch:
++    case True{}: ns_annotated(book, kid(t, 0), kid(t, 1))
++    case False{}: ns_term_branch1(String.eq(tg(t), "Rwt") || ns_array_pattern(t), book, t)
++
++@unsafe
++def ns_term_branch1(branch: Bool, +book: List<&2, KDef>, +t: KTerm) -> Bool:
++  match branch:
++    case True{}: False{}
++    case False{}: ns_term_branch2(nt_choose(Bool, String.eq(tg(t), "App"), v => ns_generic_array(book, nc_unann(kid(t, 0))), v => False{}), book, t)
++
++@unsafe
++def ns_term_branch2(branch: Bool, +book: List<&2, KDef>, +t: KTerm) -> Bool:
++  match branch:
++    case True{}: ns_scalar(book, kid(t, 1))
++    case False{}: ns_term_branch3(ns_generic_array(book, t), book, t)
++
++@unsafe
++def ns_term_branch3(branch: Bool, +book: List<&2, KDef>, +t: KTerm) -> Bool:
++  match branch:
++    case True{}: False{}
++    case False{}: ns_terms(book, ks(t))
+ 
+ @unsafe
+ def ns_definitions(+book: List<&2, KDef>, names: List<&2, String>) -> Bool:
+--- a/selfhost/src/back/native/text.bend
++++ b/selfhost/src/back/native/text.bend
+@@ -79,7 +79,13 @@
+ 
+ @unsafe
+ def nt_replace_go(s, key, value, acc):
+-  nt_choose(String, String.starts_with(s, key), u => acc ++ value ++ String.drop(s, String.length(key)), u => nt_replace_step(s, key, value, acc))
++  nt_replace_if(String.starts_with(s, key), s, key, value, acc)
++
++@unsafe
++def nt_replace_if(found: Bool, +s: String, +key: String, +value: String, +acc: String) -> String:
++  match found:
++    case True{}: acc ++ value ++ String.drop(s, String.length(key))
++    case False{}: nt_replace_step(s, key, value, acc)
+ 
+ @unsafe
+ def nt_replace(s: String, key: String, value: String) -> String:
+--- a/selfhost/src/check/annotate.bend
++++ b/selfhost/src/check/annotate.bend
+@@ -166,7 +166,13 @@
+ 
+ @unsafe
+ def annotate(e, ctx, t, ty):
+-  ka_wrap(ka_node(e, ctx, core_beta(t), wnf(cb(e), ty)), ty)
++  ka_annotated(e, ctx, core_beta(t), wnf(cb(e), ty))
++
++# Keep the type head already demanded by ka_node. Backend consumers otherwise
++# normalize the original annotation again while determining the same layout.
++@unsafe
++def ka_annotated(+e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +ty: KTerm) -> KTerm:
++  ka_wrap(ka_node(e, ctx, t, ty), ty)
+ 
+ @unsafe
+ def ka_node(e, ctx, t, ty):
+@@ -223,7 +229,7 @@
+ 
+ @unsafe
+ def ka_args_head(e, ctx, tel, h, rest):
+-  Con{annotate(e, ctx, h, kid(tel, 0)), ka_args(e, ctx, subst(kid(tel, 1), ix(tel), h), rest)}
++  Con{ka_field(annotate(e, ctx, h, kid(tel, 0)), qt(tel)), ka_args(e, ctx, subst(kid(tel, 1), ix(tel), h), rest)}
+ 
+ @unsafe
+ def ka_mat(e, ctx, t, ty, a):
+@@ -370,7 +376,7 @@
+     case Nil{}: Nil{}
+     case Con{h, rest}:
+       kc(List<&2, KTerm>, String.eq(tg(tel), "All"),
+-        u => Con{annotate(e, ctx, h, kid(tel, 0)), ka_args_static(e, ctx, kid(tel, 1), rest)},
++        u => Con{ka_field(annotate(e, ctx, h, kid(tel, 0)), qt(tel)), ka_args_static(e, ctx, kid(tel, 1), rest)},
+         u => ka_args_cached(e, ctx, tel, xs))
+ 
+ law ka_args_after_head:
+@@ -385,5 +391,11 @@
+ @unsafe
+ def ka_args_after_head(e, ctx, tel, h, rest, annotated):
+   kc(List<&2, KTerm>, core_subst_stable(kid(tel, 1)),
+-    u => Con{annotated, ka_args_static(e, ctx, kid(tel, 1), rest)},
+-    u => Con{annotated, ka_args(e, ctx, subst(kid(tel, 1), ix(tel), h), rest)})
++    u => Con{ka_field(annotated, qt(tel)), ka_args_static(e, ctx, kid(tel, 1), rest)},
++    u => Con{ka_field(annotated, qt(tel)), ka_args(e, ctx, subst(kid(tel, 1), ix(tel), h), rest)})
++
++# Checked layout validation consumes the field quantity already reconstructed
++# here. Ann's first two children keep the existing backend representation.
++@unsafe
++def ka_field(+annotated: KTerm, +quantity: U32) -> KTerm:
++  kt("Ann", "", 1, quantity, ks(annotated))

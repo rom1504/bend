@@ -246,7 +246,7 @@ def nd_ref_app(+book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&2, K
 def nd_app_to(book, t, env, n, target):
   +head = nd_head(t)
   +args = nd_args(t, Nil{})
-  +scalar = nd_scalar_call(book, t)
+  +scalar = nt_choose(String, Bool.not(String.eq(dk(nf_host_payload(dc(index_first(book)))), "Absent")), u => nd_native_call(book, t), u => nd_scalar_call(book, t))
   nt_choose(NC_Code, Bool.not(String.eq(scalar, "")), u => nc_lower_to(book, nc_sequence("NOp", scalar, args, Nil{}, n), env, U32.add(n, terms_len(args)), target), u =>
   nt_choose(NC_Code, String.eq(tg(head), "Efq") && Bool.not(nf_scheduler(target)), u => nc_lower_to(book, head, env, n, target), u =>
   nt_choose(NC_Code, String.eq(tg(head), "Lam"), u => nc_lower_to(book, nd_beta(head, args), env, n, target), u =>
@@ -303,7 +303,7 @@ def nd_eta_body(params: List<&2, NC_Binding>, +call: KTerm) -> KTerm:
 def nd_eta_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +arity: U32) -> NC_Code:
   +params = nd_entry_params(arity, n)
   +call = kt("NCall", nd_name(nc_ref_name(book, name)), 0, 0, nd_entry_args(params))
-  +base = nc_lower(book, nd_eta_body(params, call), Nil{}, U32.add(n, arity))
+  +base = nt_choose(NC_Code, nf_host_no_factory(book, name, arity), u => NC_Code{"", Nil{}, n, "", Nil{}}, u => nc_lower(book, nd_eta_body(params, call), Nil{}, U32.add(n, arity)))
   nd_extend_arity(book, body, base, name, arity)
 
 # Typed arity is computed once. Keep the original path when only a malformed
@@ -321,4 +321,6 @@ def nd_compile_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32
   +d = lookup(book, name)
   nt_choose(NC_Code, Bool.not(bang) && Bool.not(nc_native_def(d)) && Bool.not(nc_foreign(d)),
     u => nd_user_entry(book, body, name, n, d),
-    u => nd_extend(book, body, nc_lower(book, body, Nil{}, n), name))
+    u => nt_choose(NC_Code, nf_host_no_factory(book, name, nd_arity(book, name)),
+      v => nd_extend(book, body, NC_Code{"", Nil{}, n, "", Nil{}}, name),
+      v => nd_extend(book, body, nc_lower(book, body, Nil{}, n), name)))

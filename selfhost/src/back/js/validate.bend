@@ -336,3 +336,73 @@ def j_layout_native_nat(
   +ty: KTerm,
 ) -> Bool:
   String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Nat") && db(lookup(book, "Nat")) && ((String.eq(nm(t), "Zero") && U32.is_eq(terms_len(ks(t)), 0)) || (String.eq(nm(t), "Succ") && U32.is_eq(terms_len(ks(t)), 1)))
+
+# Private checked path. Its definitions have just passed annotate_selected;
+# field quantities and every child goal come from that same book/context.
+# Raw layout callers retain j_layout_error and its original reconstruction.
+@unsafe
+def jl_checked_error(+book: List<&2, KDef>, +defs: List<&2, KDef>, +roots: List<&2, String>, +stops: List<&2, String>) -> String:
+  kc(String, jl_visit(book_context(book), book_cached(defs, 0), roots, Nil{}, stops), u => "an open Array element type", u => "")
+
+@unsafe
+def jl_visit(+book: List<&2, KDef>, +defs: List<&2, KDef>, todo: List<&2, String>, +seen: List<&2, String>, +stops: List<&2, String>) -> Bool:
+  match todo:
+    case Nil{}: False{}
+    case Con{+name, +rest}:
+      kc(Bool, String.eq(name, "$layout.open-array"), u => True{}, u =>
+        kc(Bool, has_name(seen, name) || has_name(stops, name), u => jl_visit(book, defs, rest, seen, stops), u =>
+          jl_def(book, defs, lookup(defs, name), rest, Con{name, seen}, stops)))
+
+@unsafe
+def jl_def(+book: List<&2, KDef>, +defs: List<&2, KDef>, +d: KDef, +todo: List<&2, String>, +seen: List<&2, String>, +stops: List<&2, String>) -> Bool:
+  jl_visit(book, defs, kc(List<&2, String>, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0), u => jl_term(book, dv(d), todo), u => todo), seen, stops)
+
+law jl_term:
+  for +book: List<&2, KDef>
+  for +t: KTerm
+  for +todo: List<&2, String>
+  List<&2, String>
+
+@unsafe
+def jl_term(book, t, todo):
+  kc(List<&2, String>, String.eq(tg(t), "Ann"), u => jl_node(book, kid(t, 0), kid(t, 1), todo),
+    u => j_layout_term(book, Nil{}, t, atom("Absent"), todo))
+
+@unsafe
+def jl_node(+book: List<&2, KDef>, +t: KTerm, +ty: KTerm, +todo: List<&2, String>) -> List<&2, String>:
+  +key = tg(t)
+  kc(List<&2, String>, String.eq(key, "Ann"), u => jl_term(book, t, todo), u =>
+  kc(List<&2, String>, String.eq(key, "Ref"), u => j_layout_mark(j_layout_array_intrinsic(book, t), Con{nm(t), todo}), u =>
+  kc(List<&2, String>, String.eq(key, "App"), u => jl_app(book, t, wnf(book, j_type(book, Nil{}, kid(t, 0))), todo), u =>
+  kc(List<&2, String>, String.eq(key, "Lam"), u => jl_term(book, kid(t, 0), todo), u =>
+  kc(List<&2, String>, String.eq(key, "Mat"), u => jl_match(book, t, wnf(book, ty), todo), u =>
+  kc(List<&2, String>, String.eq(key, "Ctr"), u => kc(List<&2, String>, Bool.not(String.eq(kc(String, j_layout_native_nat(book, t, wnf(book, ty)), u => "", u => j_literal_typed(book, t, ty)), "")), u => todo, u => j_layout_mark(j_layout_open(book, ty), jl_fields(book, ks(t), todo))), u =>
+  kc(List<&2, String>, String.eq(key, "Let"), u => jl_bindings(book, ks(t), todo), u =>
+  kc(List<&2, String>, String.eq(key, "Rwt"), u => jl_term(book, kid(t, 2), todo), u => todo))))))))
+
+@unsafe
+def jl_match(+book: List<&2, KDef>, +t: KTerm, +ty: KTerm, +todo: List<&2, String>) -> List<&2, String>:
+  j_layout_mark(j_layout_open(book, kid(ty, 0)), jl_term(book, kid(t, 0), kc(List<&2, String>, U32.is_eq(j_constructor_count(book, wnf(book, kid(ty, 0))), 1), u => todo, u => jl_term(book, kid(t, 1), todo))))
+
+@unsafe
+def jl_app(+book: List<&2, KDef>, +t: KTerm, +fty: KTerm, +todo: List<&2, String>) -> List<&2, String>:
+  j_layout_mark(j_layout_intrinsic(book, j_strip(kid(t, 0)), kid(t, 1)), jl_function(book, kid(t, 0), kc(List<&2, String>, String.eq(tg(fty), "All") && U32.is_eq(qt(fty), 0), u => todo, u => jl_term(book, kid(t, 1), todo))))
+
+@unsafe
+def jl_function(+book: List<&2, KDef>, +t: KTerm, +todo: List<&2, String>) -> List<&2, String>:
+  kc(List<&2, String>, String.eq(tg(j_strip(t)), "Ref"), u => Con{nm(j_strip(t)), todo}, u => jl_term(book, t, todo))
+
+@unsafe
+def jl_fields(+book: List<&2, KDef>, args: List<&2, KTerm>, +todo: List<&2, String>) -> List<&2, String>:
+  match args:
+    case Nil{}: todo
+    case Con{+h, +rest}:
+      jl_fields(book, rest, kc(List<&2, String>, U32.is_eq(qt(h), 0), u => todo, u => jl_term(book, h, todo)))
+
+@unsafe
+def jl_bindings(+book: List<&2, KDef>, xs: List<&2, KTerm>, +todo: List<&2, String>) -> List<&2, String>:
+  match xs:
+    case Nil{}: todo
+    case Con{h, Nil{}}: jl_term(book, h, todo)
+    case Con{+h, +rest}:
+      kc(List<&2, String>, U32.is_eq(qt(h), 0), u => jl_bindings(book, rest, todo), u => jl_term(book, kid(h, 0), jl_bindings(book, rest, todo)))

@@ -1,0 +1,470 @@
+--- a/selfhost/src/back/js/validate.bend
++++ b/selfhost/src/back/js/validate.bend
+@@ -336,3 +336,73 @@
+   +ty: KTerm,
+ ) -> Bool:
+   String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Nat") && db(lookup(book, "Nat")) && ((String.eq(nm(t), "Zero") && U32.is_eq(terms_len(ks(t)), 0)) || (String.eq(nm(t), "Succ") && U32.is_eq(terms_len(ks(t)), 1)))
++
++# Private checked path. Its definitions have just passed annotate_selected;
++# field quantities and every child goal come from that same book/context.
++# Raw layout callers retain j_layout_error and its original reconstruction.
++@unsafe
++def jl_checked_error(+book: List<&2, KDef>, +defs: List<&2, KDef>, +roots: List<&2, String>, +stops: List<&2, String>) -> String:
++  kc(String, jl_visit(book_context(book), book_cached(defs, 0), roots, Nil{}, stops), u => "an open Array element type", u => "")
++
++@unsafe
++def jl_visit(+book: List<&2, KDef>, +defs: List<&2, KDef>, todo: List<&2, String>, +seen: List<&2, String>, +stops: List<&2, String>) -> Bool:
++  match todo:
++    case Nil{}: False{}
++    case Con{+name, +rest}:
++      kc(Bool, String.eq(name, "$layout.open-array"), u => True{}, u =>
++        kc(Bool, has_name(seen, name) || has_name(stops, name), u => jl_visit(book, defs, rest, seen, stops), u =>
++          jl_def(book, defs, lookup(defs, name), rest, Con{name, seen}, stops)))
++
++@unsafe
++def jl_def(+book: List<&2, KDef>, +defs: List<&2, KDef>, +d: KDef, +todo: List<&2, String>, +seen: List<&2, String>, +stops: List<&2, String>) -> Bool:
++  jl_visit(book, defs, kc(List<&2, String>, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0), u => jl_term(book, dv(d), todo), u => todo), seen, stops)
++
++law jl_term:
++  for +book: List<&2, KDef>
++  for +t: KTerm
++  for +todo: List<&2, String>
++  List<&2, String>
++
++@unsafe
++def jl_term(book, t, todo):
++  kc(List<&2, String>, String.eq(tg(t), "Ann"), u => jl_node(book, kid(t, 0), kid(t, 1), todo),
++    u => j_layout_term(book, Nil{}, t, atom("Absent"), todo))
++
++@unsafe
++def jl_node(+book: List<&2, KDef>, +t: KTerm, +ty: KTerm, +todo: List<&2, String>) -> List<&2, String>:
++  +key = tg(t)
++  kc(List<&2, String>, String.eq(key, "Ann"), u => jl_term(book, t, todo), u =>
++  kc(List<&2, String>, String.eq(key, "Ref"), u => j_layout_mark(j_layout_array_intrinsic(book, t), Con{nm(t), todo}), u =>
++  kc(List<&2, String>, String.eq(key, "App"), u => jl_app(book, t, wnf(book, j_type(book, Nil{}, kid(t, 0))), todo), u =>
++  kc(List<&2, String>, String.eq(key, "Lam"), u => jl_term(book, kid(t, 0), todo), u =>
++  kc(List<&2, String>, String.eq(key, "Mat"), u => jl_match(book, t, wnf(book, ty), todo), u =>
++  kc(List<&2, String>, String.eq(key, "Ctr"), u => kc(List<&2, String>, Bool.not(String.eq(kc(String, j_layout_native_nat(book, t, wnf(book, ty)), u => "", u => j_literal_typed(book, t, ty)), "")), u => todo, u => j_layout_mark(j_layout_open(book, ty), jl_fields(book, ks(t), todo))), u =>
++  kc(List<&2, String>, String.eq(key, "Let"), u => jl_bindings(book, ks(t), todo), u =>
++  kc(List<&2, String>, String.eq(key, "Rwt"), u => jl_term(book, kid(t, 2), todo), u => todo))))))))
++
++@unsafe
++def jl_match(+book: List<&2, KDef>, +t: KTerm, +ty: KTerm, +todo: List<&2, String>) -> List<&2, String>:
++  j_layout_mark(j_layout_open(book, kid(ty, 0)), jl_term(book, kid(t, 0), kc(List<&2, String>, U32.is_eq(j_constructor_count(book, wnf(book, kid(ty, 0))), 1), u => todo, u => jl_term(book, kid(t, 1), todo))))
++
++@unsafe
++def jl_app(+book: List<&2, KDef>, +t: KTerm, +fty: KTerm, +todo: List<&2, String>) -> List<&2, String>:
++  j_layout_mark(j_layout_intrinsic(book, j_strip(kid(t, 0)), kid(t, 1)), jl_function(book, kid(t, 0), kc(List<&2, String>, String.eq(tg(fty), "All") && U32.is_eq(qt(fty), 0), u => todo, u => jl_term(book, kid(t, 1), todo))))
++
++@unsafe
++def jl_function(+book: List<&2, KDef>, +t: KTerm, +todo: List<&2, String>) -> List<&2, String>:
++  kc(List<&2, String>, String.eq(tg(j_strip(t)), "Ref"), u => Con{nm(j_strip(t)), todo}, u => jl_term(book, t, todo))
++
++@unsafe
++def jl_fields(+book: List<&2, KDef>, args: List<&2, KTerm>, +todo: List<&2, String>) -> List<&2, String>:
++  match args:
++    case Nil{}: todo
++    case Con{+h, +rest}:
++      jl_fields(book, rest, kc(List<&2, String>, U32.is_eq(qt(h), 0), u => todo, u => jl_term(book, h, todo)))
++
++@unsafe
++def jl_bindings(+book: List<&2, KDef>, xs: List<&2, KTerm>, +todo: List<&2, String>) -> List<&2, String>:
++  match xs:
++    case Nil{}: todo
++    case Con{h, Nil{}}: jl_term(book, h, todo)
++    case Con{+h, +rest}:
++      kc(List<&2, String>, U32.is_eq(qt(h), 0), u => jl_bindings(book, rest, todo), u => jl_term(book, kid(h, 0), jl_bindings(book, rest, todo)))
+--- a/selfhost/src/back/native/book.bend
++++ b/selfhost/src/back/native/book.bend
+@@ -127,10 +127,10 @@
+     case NC_Code{body, ss, n, err, edges}: NC_Code{body, nc_mark_segments(ss, bang, forked, calls), n, err, edges}
+ 
+ @unsafe
+-def nc_append_book(+code: NC_Code, name: String, calls: List<&2, String>, forked: Bool, rest: NC_Book) -> NC_Book:
++def nc_append_book(+code: NC_Code, name: String, calls: List<&2, String>, forked: Bool, omit: Bool, rest: NC_Book) -> NC_Book:
+   match rest:
+     case NC_Book{segs, fresh, +err}:
+-      NC_Book{Con{N_Segment{name, Nil{}, 1, N_Direct{}, nc_body(code), calls, False{}, False{}, forked, False{}}, nt_append(N_Segment, nc_segs(code), segs)}, fresh, nt_choose(String, String.eq(nc_error(code), ""), u => err, u => nc_error(code))}
++      NC_Book{nt_choose(List<&2, N_Segment>, omit, u => nt_append(N_Segment, nc_segs(code), segs), u => Con{N_Segment{name, Nil{}, 1, N_Direct{}, nc_body(code), calls, False{}, False{}, forked, False{}}, nt_append(N_Segment, nc_segs(code), segs)}), fresh, nt_choose(String, String.eq(nc_error(code), ""), u => err, u => nc_error(code))}
+ 
+ @unsafe
+ def nc_compile_def(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +n: U32, +bangs: List<&2, String>) -> NC_Book:
+@@ -138,10 +138,9 @@
+   +body = nc_compact_definition(book, d, n)
+   +refs = nc_refs(body)
+   +calls = nc_mapped_refs(book, refs)
+-  +forked = nc_term_fork(body)
+-  +code = nc_mark_code(nd_compile_entry(book, body, name, U32.add(n, 1024), nb_contains(bangs, name)), nb_contains(bangs, name), forked, calls)
+-  nt_choose(NC_Book, String.eq(dk(d), "Absent"), u => NC_Book{Nil{}, n, "native definition not found: " ++ name_key(name)}, u =>
+-    nc_append_book(code, nc_ref_name(book, name), calls, forked, nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, nc_fresh(code), bangs)))
++  nt_choose(NC_Book, nc_native_def(d) && nf_host_no_factory(book, name, nd_arity(book, name)),
++    u => nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, n, bangs),
++    u => nc_compile_kept(book, name, todo, done, n, bangs, d, body, refs, calls))
+ 
+ @unsafe
+ def nc_compile_defs(book, todo, done, n, bangs):
+@@ -349,3 +348,20 @@
+     case Nil{}: False{}
+     case Con{head, rest}:
+       nt_choose(Bool, String.eq(dk(head), "BookCache"), u => True{}, u => nc_context_has_cache(rest))
++
++@unsafe
++def nc_compile_kept(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +n: U32, +bangs: List<&2, String>, +d: KDef, +body: KTerm, +refs: List<&2, String>, +calls: List<&2, String>) -> NC_Book:
++  +forked = nc_term_fork(body)
++  +code = nc_mark_code(nd_compile_entry(book, body, name, U32.add(n, 1024), nb_contains(bangs, name)), nb_contains(bangs, name), forked, calls)
++  nt_choose(NC_Book, String.eq(dk(d), "Absent"), u => NC_Book{Nil{}, n, "native definition not found: " ++ name_key(name)}, u =>
++    nc_append_book(code, nc_ref_name(book, name), calls, forked, nf_host_no_factory(book, name, nd_arity(book, name)) && String.eq(nc_body(code), ""), nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, nc_fresh(code), bangs)))
++
++
++# Observers require the pre-compaction source form, including typed literals.
++# Retain that exact erased body through static preparation instead of erasing
++# every expanded helper again. No fact means the original raw path is used.
++@unsafe
++def nc_source_body(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
++  +fact = ns_body(book, dn(d))
++  +original = nt_choose(KDef, String.eq(dk(fact), "NativeStaticBody"), u => index_first(dc(fact)), u => fact)
++  nt_choose(KTerm, String.eq(dk(original), "NativeErasedBody") && String.eq(dn(original), dn(d)), u => dv(original), u => nc_definition_plain(book, d, n))
+--- a/selfhost/src/back/native/bridge.bend
++++ b/selfhost/src/back/native/bridge.bend
+@@ -515,7 +515,7 @@
+ @unsafe
+ def nc_native_marked(+d: KDef) -> Bool:
+   nt_choose(Bool, String.eq(tg(nc_unann(dv(d))), "Foreign"), u => False{},
+-    u => nc_native_primitive(nc_primitive_name(dn(d))))
++    u => nt_choose(Bool, nc_intrinsic_prefix(dn(d)), v => nc_native_primitive(nc_primitive_name(dn(d))), v => False{}))
+ 
+ @unsafe
+ def nc_native_primitive(+prim: String) -> Bool:
+@@ -654,3 +654,21 @@
+   nt_choose(KTerm, String.eq(tg(t), "Ctr") && String.eq(nm(t), "Succ") && U32.is_eq(terms_len(ks(t)), 1) && U32.is_lt(count, 4294967295),
+     u => nc_compact_succ(kid(t, 0), U32.inc(count)),
+     u => nt_choose(KTerm, U32.is_eq(count, 1), u => kt("Ctr", "Succ", 0, 0, [nc_compact(t)]), u => kt("NNatAdd", U32.show(U32.sub(count, 1)), 0, 0, [nc_compact(t)]))))
++
++# Only these ASCII initials can reach the existing intrinsic catalog after
++# case folding/identifier cleaning. Every other name is an exact miss.
++@unsafe
++def nc_intrinsic_prefix(name: String) -> Bool:
++  match name:
++    case SNil{}: False{}
++    case SCon{h, rest}: nc_intrinsic_initial(U32.or(Char.to_u32(h), 32))
++
++@unsafe
++def nc_intrinsic_initial(code: U32) -> Bool:
++  match code:
++    case 97: True{}
++    case 98: True{}
++    case 102: True{}
++    case 110: True{}
++    case 117: True{}
++    case _: False{}
+--- a/selfhost/src/back/native/direct.bend
++++ b/selfhost/src/back/native/direct.bend
+@@ -246,7 +246,7 @@
+ def nd_app_to(book, t, env, n, target):
+   +head = nd_head(t)
+   +args = nd_args(t, Nil{})
+-  +scalar = nd_scalar_call(book, t)
++  +scalar = nt_choose(String, Bool.not(String.eq(dk(nf_host_payload(dc(index_first(book)))), "Absent")), u => nd_native_call(book, t), u => nd_scalar_call(book, t))
+   nt_choose(NC_Code, Bool.not(String.eq(scalar, "")), u => nc_lower_to(book, nc_sequence("NOp", scalar, args, Nil{}, n), env, U32.add(n, terms_len(args)), target), u =>
+   nt_choose(NC_Code, String.eq(tg(head), "Efq") && Bool.not(nf_scheduler(target)), u => nc_lower_to(book, head, env, n, target), u =>
+   nt_choose(NC_Code, String.eq(tg(head), "Lam"), u => nc_lower_to(book, nd_beta(head, args), env, n, target), u =>
+@@ -303,7 +303,7 @@
+ def nd_eta_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +arity: U32) -> NC_Code:
+   +params = nd_entry_params(arity, n)
+   +call = kt("NCall", nd_name(nc_ref_name(book, name)), 0, 0, nd_entry_args(params))
+-  +base = nc_lower(book, nd_eta_body(params, call), Nil{}, U32.add(n, arity))
++  +base = nt_choose(NC_Code, nf_host_no_factory(book, name, arity), u => NC_Code{"", Nil{}, n, "", Nil{}}, u => nc_lower(book, nd_eta_body(params, call), Nil{}, U32.add(n, arity)))
+   nd_extend_arity(book, body, base, name, arity)
+ 
+ # Typed arity is computed once. Keep the original path when only a malformed
+@@ -321,4 +321,6 @@
+   +d = lookup(book, name)
+   nt_choose(NC_Code, Bool.not(bang) && Bool.not(nc_native_def(d)) && Bool.not(nc_foreign(d)),
+     u => nd_user_entry(book, body, name, n, d),
+-    u => nd_extend(book, body, nc_lower(book, body, Nil{}, n), name))
++    u => nt_choose(NC_Code, nf_host_no_factory(book, name, nd_arity(book, name)),
++      v => nd_extend(book, body, NC_Code{"", Nil{}, n, "", Nil{}}, name),
++      v => nd_extend(book, body, nc_lower(book, body, Nil{}, n), name)))
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -265,6 +265,10 @@
+ def nf_finish_ready(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:
+   +ordinary = nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0))
+   +route = no_route(book, ordinary, observer_names, workers, ready, observers)
++  nf_finish_route(book, ordinary, cs, runtime, requests, pure, show, image, route)
++
++@unsafe
++def nf_finish_route(+book: List<&2, KDef>, +ordinary: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +image: List<&2, String>, +route: NO_Route) -> NC_Result:
+   nc_with_show(no_wrap_routes(ordinary, no_route_entries(route), no_route_ready(route)), cs, runtime, requests, pure, show, nh_observer_macros(book, no_route_entries(route), no_route_ready(route)) ++ "#if !DEVICE\n#if NATIVE_TYPED_SCALARS\n#define NF_SCALAR u32\n#else\n#define NF_SCALAR Term\n#endif\n#if defined(__GNUC__) || defined(__clang__)\n#define NF_INLINE INLINE __attribute__((always_inline))\n#else\n#define NF_INLINE INLINE\n#endif\n" ++ nf_prototypes(no_route_workers(route), no_route_ready(route)) ++ nf_bodies(no_route_workers(route), no_route_ready(route)) ++ "#undef NF_INLINE\n#undef NF_SCALAR\n#endif\n", image)
+ 
+ # A failed optional product route must not poison the ordinary worker. Retain
+@@ -306,12 +310,12 @@
+ # Admission precedes scheduler lowering. The same workers and retry rules feed
+ # the final renderer; the plan only allows proven redundant work to be skipped.
+ type NF_Plan is Data:
+-  NF_Plan{+workers: List<&2, NF_Worker>, +ready: List<&2, String>, +observers: List<&2, String>}
++  NF_Plan{+workers: List<&2, NF_Worker>, +ready: List<&2, String>, +observers: List<&2, String>, +route: Maybe<&2, NO_Route>}
+ 
+ @unsafe
+ def nf_plan_retry(+book: List<&2, KDef>, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>, +observers: List<&2, String>) -> NF_Plan:
+   +retried = nf_retry(book, workers, ready, book_cached(nf_ready_signatures(signatures, ready), 0), nf_removed_signatures(signatures, ready))
+-  NF_Plan{retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)), observers}
++  NF_Plan{retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)), observers, None{}}
+ 
+ @unsafe
+ def nf_plan_workers(+book: List<&2, KDef>, +workers: List<&2, NF_Worker>, +signatures: List<&2, KDef>, +observers: List<&2, String>) -> NF_Plan:
+@@ -326,26 +330,29 @@
+ @unsafe
+ def nf_finish_plan(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: String, requests: String, pure: Bool, show: NC_Show, +observers: Bool, plan: NF_Plan) -> NC_Result:
+   match plan:
+-    case NF_Plan{workers, ready, observer_names}: nf_finish_ready(book, ss, cs, runtime, requests, pure, show, workers, ready, ns_image(book), observer_names, observers)
++    case NF_Plan{workers, ready, observer_names, route}:
++      match route:
++        case None{}: nf_finish_ready(book, ss, cs, runtime, requests, pure, show, workers, ready, ns_image(book), observer_names, observers)
++        case Some{+done}: nf_finish_route(book, nf_wrap_segments(ss, book_cached(nf_adapter_defs(no_route_workers(done), no_route_ready(done)), 0)), cs, runtime, requests, pure, show, ns_image(book), done)
+ 
+ 
+ # Private request permission, attached only after ns_source clears caller facts.
+ # No bang roots means the runtime cannot offload. Keep all device fallbacks for
+ # any program with bangs, and keep raw API emission on its original lowering.
+ @unsafe
+-def nf_host_defs(workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> List<&2, KDef>:
++def nf_host_defs(workers: List<&2, NF_Worker>, +ready: List<&2, String>, +escapes: KDef) -> List<&2, KDef>:
+   match workers:
+     case Nil{}: Nil{}
+     case Con{NF_Worker{+name, +params, code, deps, shape}, +rest}:
+       +arity = nt_count(N_Param, params)
+       nt_choose(List<&2, KDef>, U32.is_gt(arity, 0) && Bool.not(String.starts_with(name, "$product.")) && nb_contains(ready, name),
+-        u => Con{KDef{name, "NativeHostWorker", arity, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, nf_host_defs(rest, ready)}, u => nf_host_defs(rest, ready))
++        u => Con{KDef{name, "NativeHostWorker", arity, nt_bool(String.eq(dk(index_find(escapes, name, index_hash(name, 2166136261), 32)), "Absent")), atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, nf_host_defs(rest, ready, escapes)}, u => nf_host_defs(rest, ready, escapes))
+ 
+ @unsafe
+ def nf_host_context(+book: List<&2, KDef>, +permission: Bool, plan: NF_Plan) -> List<&2, KDef>:
+   match plan:
+-    case NF_Plan{workers, ready, observers}:
+-      nt_choose(List<&2, KDef>, permission, u => nf_host_attach(book, index_build(nf_host_defs(workers, ready))), u => book)
++    case NF_Plan{workers, ready, observers, route}:
++      nt_choose(List<&2, KDef>, permission, u => nf_host_calls(book, workers, ready, nc_live_names(book, ["main"], Nil{}), route), u => book)
+ 
+ @unsafe
+ def nf_host_attach(+book: List<&2, KDef>, +index: KDef) -> List<&2, KDef>:
+@@ -362,4 +369,64 @@
+ @unsafe
+ def nf_host_selected(+book: List<&2, KDef>, +name: String, +arity: U32) -> Bool:
+   +d = index_find(nf_host_payload(dc(index_first(book))), name, index_hash(name, 2166136261), 32)
+-  U32.is_gt(arity, 0) && String.eq(dk(d), "NativeHostWorker") && U32.is_eq(da(d), arity)
++  U32.is_gt(arity, 0) && (String.eq(dk(d), "NativeHostWorker") || String.eq(dk(d), "NativeHostObserver")) && U32.is_eq(da(d), arity)
++
++@unsafe
++def nf_escape_add(+name: String, +index: KDef) -> KDef:
++  index_set(index, nv_id(name), index_hash(name, 2166136261), 32)
++
++
++@unsafe
++def nf_escape_terms(+book: List<&2, KDef>, ts: List<&2, KTerm>, +index: KDef) -> KDef:
++  match ts:
++    case Nil{}: index
++    case Con{+t, +rest}:
++      nt_choose(KDef, String.eq(tg(t), "App"),
++        u => nf_escape_app(book, nd_head(t), nd_args(t, Nil{}), rest, index),
++        u => nt_choose(KDef, String.eq(tg(t), "Ref"),
++          v => nf_escape_terms(book, rest, nf_escape_add(nm(t), index)),
++          v => nf_escape_terms(book, nt_append(KTerm, ks(t), rest), index)))
++
++
++@unsafe
++def nf_escape_app(+book: List<&2, KDef>, +head: KTerm, +args: List<&2, KTerm>, +rest: List<&2, KTerm>, +index: KDef) -> KDef:
++  nt_choose(KDef, String.eq(tg(head), "Ref"),
++    u => nf_escape_terms(book, nt_append(KTerm, args, rest),
++      nt_choose(KDef, Bool.not(U32.is_eq(qt(head), 3)) && U32.is_eq(terms_len(args), nd_arity(book, nm(head))), v => index, v => nf_escape_add(nm(head), index))),
++    u => nf_escape_terms(book, Con{head, nt_append(KTerm, args, rest)}, index))
++
++
++@unsafe
++def nf_escape_names(+book: List<&2, KDef>, names: List<&2, String>, +index: KDef) -> KDef:
++  match names:
++    case Nil{}: index
++    case Con{name, rest}: nf_escape_names(book, rest, nf_escape_terms(book, [nc_definition(book, lookup(book, name), 0)], index))
++
++
++@unsafe
++def nf_host_no_factory(+book: List<&2, KDef>, +name: String, +arity: U32) -> Bool:
++  +d = index_find(nf_host_payload(dc(index_first(book))), name, index_hash(name, 2166136261), 32)
++  U32.is_gt(arity, 0) && (String.eq(dk(d), "NativeHostWorker") || String.eq(dk(d), "NativeHostObserver") || String.eq(dk(d), "NativeCallOnly")) && U32.is_eq(da(d), arity) && U32.is_eq(dx(d), 1)
++
++
++@unsafe
++def nf_host_calls(+book: List<&2, KDef>, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +names: List<&2, String>, route: Maybe<&2, NO_Route>) -> List<&2, KDef>:
++  +escapes = nf_escape_names(book, names, missing())
++  +ordinary = nt_append(KDef, nf_host_defs(workers, ready, escapes), nf_call_only_defs(book, names, escapes))
++  nf_host_routed(book, ordinary, escapes, route)
++
++@unsafe
++def nf_host_routed(+book: List<&2, KDef>, +ordinary: List<&2, KDef>, +escapes: KDef, route: Maybe<&2, NO_Route>) -> List<&2, KDef>:
++  match route:
++    case None{}: nf_host_attach(book, index_build(ordinary))
++    case Some{done}: nf_host_attach(book, index_build(nt_append(KDef, no_host_entries(no_route_entries(done), escapes), ordinary)))
++
++
++@unsafe
++def nf_call_only_defs(+book: List<&2, KDef>, names: List<&2, String>, +escapes: KDef) -> List<&2, KDef>:
++  match names:
++    case Nil{}: Nil{}
++    case Con{+name, +rest}:
++      nt_choose(List<&2, KDef>, String.eq(dk(index_find(escapes, name, index_hash(name, 2166136261), 32)), "Absent"),
++        u => Con{KDef{name, "NativeCallOnly", nd_arity(book, name), 1, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, nf_call_only_defs(book, rest, escapes)},
++        u => nf_call_only_defs(book, rest, escapes))
+--- a/selfhost/src/back/native/observer-analysis.bend
++++ b/selfhost/src/back/native/observer-analysis.bend
+@@ -271,9 +271,9 @@
+   nt_choose(NO_Analysis, U32.is_lt(terms_len(args), arity), u => k(NO_Input{kt("OR", name, 0, 0, Con{kt("OStack", "", 0, 0, noa_names(stack)), args}), facts, n, fuel}), u =>
+   nt_choose(NO_Analysis, Bool.not(U32.is_eq(terms_len(args), arity)), u => noa_fail("observer: saturation", n, fuel), u =>
+   nt_choose(NO_Analysis, String.eq(name, noa_owner(ctx)), u => noa_recur(ctx, args, facts, n, fuel, k), u =>
+-  nt_choose(NO_Analysis, nc_native_def(d) && nd_scalar_known(nc_primitive_name(name)), u => noa_primitive(ctx, name, args, facts, n, fuel, k), u =>
++  nt_choose(NO_Analysis, nt_choose(Bool, nc_native_def(d), v => nd_scalar_known(nc_primitive_name(name)), v => False{}), u => noa_primitive(ctx, name, args, facts, n, fuel, k), u =>
+   nt_choose(NO_Analysis, String.eq(dk(d), "Def") && Bool.not(nc_foreign(d) || nc_native_def(d) || nb_contains(stack, name)) && U32.is_lt(nt_count(String, stack), 8),
+-    u => noa_eval(ctx, nc_definition_plain(noa_book(ctx), d, n), Nil{}, facts, Con{name, stack}, n, fuel, +i => noa_apply_args(ctx, noa_iv(i), args, noa_if(i), noa_in(i), noa_iu(i), k)),
++    u => noa_eval(ctx, nc_source_body(noa_book(ctx), d, n), Nil{}, facts, Con{name, stack}, n, fuel, +i => noa_apply_args(ctx, noa_iv(i), args, noa_if(i), noa_in(i), noa_iu(i), k)),
+     u => noa_fail("observer: helper effect, cycle or depth", n, fuel))))))
+ 
+ @unsafe
+@@ -448,7 +448,7 @@
+ def noa_analyze_ready(+ctx: NO_Context) -> NO_Analysis:
+   +schema = noa_schema(ctx)
+   +params = noa_entry_values(no_schema_params(schema), 0)
+-  +body = nc_definition_plain(noa_book(ctx), lookup(noa_book(ctx), noa_owner(ctx)), no_schema_fresh(schema))
++  +body = nc_source_body(noa_book(ctx), lookup(noa_book(ctx), noa_owner(ctx)), no_schema_fresh(schema))
+   noa_eval(ctx, body, Nil{}, Nil{}, Nil{}, no_schema_fresh(schema), 4096, +i => noa_apply_args(ctx, noa_iv(i), params, noa_if(i), noa_in(i), noa_iu(i), +j => noa_finish(ctx, j)))
+ 
+ @unsafe
+--- a/selfhost/src/back/native/observer-integration.bend
++++ b/selfhost/src/back/native/observer-integration.bend
+@@ -125,3 +125,29 @@
+ def no_route_schema(+book: List<&2, KDef>, +name: String, +entry: KDef, +old: NO_Route, +schema: NO_Schema) -> NO_Route:
+   nt_choose(NO_Route, String.eq(no_schema_error(schema), "") && (Bool.not(String.eq(tg(no_schema_wrapper(schema)), "Var")) || nb_contains(no_route_ready(old), name)),
+     u => no_route_plan(book, entry, old, no_plan_schema_ready(book, name, schema)), u => old)
++
++# Only the checked no-bang caller may move routing before generic lowering.
++# nd_extend_arity creates these direct entries for every positive source arity.
++@unsafe
++def no_early_entries(+book: List<&2, KDef>, names: List<&2, String>) -> List<&2, KDef>:
++  match names:
++    case Nil{}: Nil{}
++    case Con{+name, +rest}:
++      +arity = nd_arity(book, name)
++      nt_choose(List<&2, KDef>, U32.is_ge(arity, 1) && U32.is_le(arity, 4),
++        u => Con{KDef{nd_name(name), "NOEligibleEntry", arity, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, no_early_entries(book, rest)}, u => no_early_entries(book, rest))
++
++@unsafe
++def no_early_plan(+book: List<&2, KDef>, plan: NF_Plan) -> NF_Plan:
++  match plan:
++    case NF_Plan{+workers, +ready, +names, old}:
++      NF_Plan{workers, ready, names, Some{no_route_names(book, names, book_cached(no_early_entries(book, names), 0), NO_Route{workers, ready, Nil{}})}}
++
++@unsafe
++def no_host_entries(entries: List<&2, KDef>, +escapes: KDef) -> List<&2, KDef>:
++  match entries:
++    case Nil{}: Nil{}
++    case Con{+entry, +rest}:
++      +name = nm(dv(entry))
++      nt_choose(List<&2, KDef>, String.eq(dk(entry), "NOObserverEntry"),
++        u => Con{KDef{name, "NativeHostObserver", da(entry), nt_bool(String.eq(dk(index_find(escapes, name, index_hash(name, 2166136261), 32)), "Absent")), atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, no_host_entries(rest, escapes)}, u => no_host_entries(rest, escapes))
+--- a/selfhost/src/back/native/observer-layout.bend
++++ b/selfhost/src/back/native/observer-layout.bend
+@@ -65,7 +65,8 @@
+ def nol_scalar(+book: List<&2, KDef>, +ty: KTerm) -> Bool:
+   +d = lookup(book, nm(ty))
+   nt_choose(Bool, nol_plain(ty) && nol_owner(book, ty),
+-    u => (db(d) && nb_contains(["Nat", "Char", "U32", "F32"], dn(d))) || (Bool.not(List.is_empty(&2, KDef, dc(d))) && nol_enum(book, ty, dc(d), 32)), u => False{})
++    u => nt_choose(Bool, db(d) && nb_contains(["Nat", "Char", "U32", "F32"], dn(d)),
++      v => True{}, v => Bool.not(List.is_empty(&2, KDef, dc(d))) && nol_enum(book, ty, dc(d), 32)), u => False{})
+ 
+ @unsafe
+ def nol_type_names(types: List<&2, KTerm>) -> List<&2, String>:
+@@ -126,7 +127,7 @@
+     case Nil{}: Nil{}
+     case Con{+d, +rest}:
+       +ty = kt("ADT", dn(d), 0, 0, Nil{})
+-      nt_choose(List<&2, NO_Spec>, String.eq(dk(d), "ADT") && nol_scalar(book, ty),
++      nt_choose(List<&2, NO_Spec>, nt_choose(Bool, String.eq(dk(d), "ADT"), v => nol_scalar(book, ty), v => False{}),
+         u => List.append(&2, NO_Spec, nol_scalar_ctors(book, ty, dc(d)), nol_scalar_specs(book, rest)), u => nol_scalar_specs(book, rest))
+ 
+ @unsafe
+--- a/selfhost/src/back/native/observer-literals.bend
++++ b/selfhost/src/back/native/observer-literals.bend
+@@ -1,5 +1,5 @@
+ # Exact source literal kinds and demanded scalar constructor barriers.
+-# Analyze nc_definition_plain directly, including every expanded helper.
++# Analyze the uncompacted erased source form, including every expanded helper.
+ # Incoming NWord is deliberately unsupported: its source kind is already lost.
+ 
+ @unsafe
+--- a/selfhost/src/back/native/static.bend
++++ b/selfhost/src/back/native/static.bend
+@@ -215,7 +215,7 @@
+   match transformed:
+     case NS_Term{body, image}:
+       +prior = ns_body(book, name)
+-      ns_defs(book, cs, rest, image, Con{KDef{name, "NativeStaticBody", da(prior), dx(prior), atom("Absent"), body, Nil{}, False{}, False{}}, facts})
++      ns_defs(book, cs, rest, image, Con{KDef{name, "NativeStaticBody", da(prior), dx(prior), atom("Absent"), body, [prior], False{}, False{}}, facts})
+ 
+ @unsafe
+ def ns_attach(+book: List<&2, KDef>, built: NS_Defs) -> List<&2, KDef>:
+@@ -272,7 +272,7 @@
+ 
+ @unsafe
+ def ns_compile_planned(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +runtime: String, +requests: String, +observers: Bool) -> NC_Result:
+-  +plan = nf_plan(book, names, bangs, observers)
++  +plan = no_early_plan(book, nf_plan(book, names, bangs, observers))
+   +selected = nf_host_context(book, True{}, plan)
+   nc_finish(selected, nh_macros(selected, names, observers) ++ runtime, requests, nc_compile_defs(selected, ["main"], Nil{}, 0, bangs), observers, plan)
+ 
+--- a/selfhost/src/check/annotate.bend
++++ b/selfhost/src/check/annotate.bend
+@@ -166,7 +166,13 @@
+ 
+ @unsafe
+ def annotate(e, ctx, t, ty):
+-  ka_wrap(ka_node(e, ctx, core_beta(t), wnf(cb(e), ty)), ty)
++  ka_annotated(e, ctx, core_beta(t), wnf(cb(e), ty))
++
++# Keep the type head already demanded by ka_node. Backend consumers otherwise
++# normalize the original annotation again while determining the same layout.
++@unsafe
++def ka_annotated(+e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +ty: KTerm) -> KTerm:
++  ka_wrap(ka_node(e, ctx, t, ty), ty)
+ 
+ @unsafe
+ def ka_node(e, ctx, t, ty):
+@@ -223,7 +229,7 @@
+ 
+ @unsafe
+ def ka_args_head(e, ctx, tel, h, rest):
+-  Con{annotate(e, ctx, h, kid(tel, 0)), ka_args(e, ctx, subst(kid(tel, 1), ix(tel), h), rest)}
++  Con{ka_field(annotate(e, ctx, h, kid(tel, 0)), qt(tel)), ka_args(e, ctx, subst(kid(tel, 1), ix(tel), h), rest)}
+ 
+ @unsafe
+ def ka_mat(e, ctx, t, ty, a):
+@@ -370,7 +376,7 @@
+     case Nil{}: Nil{}
+     case Con{h, rest}:
+       kc(List<&2, KTerm>, String.eq(tg(tel), "All"),
+-        u => Con{annotate(e, ctx, h, kid(tel, 0)), ka_args_static(e, ctx, kid(tel, 1), rest)},
++        u => Con{ka_field(annotate(e, ctx, h, kid(tel, 0)), qt(tel)), ka_args_static(e, ctx, kid(tel, 1), rest)},
+         u => ka_args_cached(e, ctx, tel, xs))
+ 
+ law ka_args_after_head:
+@@ -385,5 +391,11 @@
+ @unsafe
+ def ka_args_after_head(e, ctx, tel, h, rest, annotated):
+   kc(List<&2, KTerm>, core_subst_stable(kid(tel, 1)),
+-    u => Con{annotated, ka_args_static(e, ctx, kid(tel, 1), rest)},
+-    u => Con{annotated, ka_args(e, ctx, subst(kid(tel, 1), ix(tel), h), rest)})
++    u => Con{ka_field(annotated, qt(tel)), ka_args_static(e, ctx, kid(tel, 1), rest)},
++    u => Con{ka_field(annotated, qt(tel)), ka_args(e, ctx, subst(kid(tel, 1), ix(tel), h), rest)})
++
++# Checked layout validation consumes the field quantity already reconstructed
++# here. Ann's first two children keep the existing backend representation.
++@unsafe
++def ka_field(+annotated: KTerm, +quantity: U32) -> KTerm:
++  kt("Ann", "", 1, quantity, ks(annotated))

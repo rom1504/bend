@@ -122,6 +122,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   if(files.includes('src/back/js/validate.bend')) {
     exports.push('j_compile_error');
     if(fs.readFileSync(path.join(project,'src/back/js/validate.bend'),'utf8').includes('law j_layout_error:'))exports.push('j_layout_error');
+    if(fs.readFileSync(path.join(project,'src/back/js/validate.bend'),'utf8').includes('def jl_checked_error('))exports.push('jl_checked_error');
   }
   if(files.includes('src/core/reach.bend'))exports.push('reach_book','j_roots','j_stops','annotate_except','kf_source');
   if(fs.readFileSync(path.join(project,'src/check/annotate.bend'),'utf8').includes('law annotate_selected:'))exports.push('annotate_selected');
@@ -900,7 +901,8 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
     }
     if(api.j_layout_error) {
       trace('validate runtime layouts');
-      const error=api.j_layout_error(contextBook,layoutDefs||book,roots,layoutStops||stops);
+      const layoutCheck=ownedApi&&mode==='native'&&layoutDefs&&typeof api.jl_checked_error==='function'?api.jl_checked_error:api.j_layout_error;
+      const error=layoutCheck(contextBook,layoutDefs||book,roots,layoutStops||stops);
       if(error)return {status:'error',phase,diagnostic:'Error: '+error,exitCode:1,checked:true};
     }
     if(mode==='native') {

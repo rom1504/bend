@@ -333,19 +333,19 @@ def nf_finish_plan(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2
 # No bang roots means the runtime cannot offload. Keep all device fallbacks for
 # any program with bangs, and keep raw API emission on its original lowering.
 @unsafe
-def nf_host_defs(workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> List<&2, KDef>:
+def nf_host_defs(workers: List<&2, NF_Worker>, +ready: List<&2, String>, +escapes: KDef) -> List<&2, KDef>:
   match workers:
     case Nil{}: Nil{}
     case Con{NF_Worker{+name, +params, code, deps, shape}, +rest}:
       +arity = nt_count(N_Param, params)
       nt_choose(List<&2, KDef>, U32.is_gt(arity, 0) && Bool.not(String.starts_with(name, "$product.")) && nb_contains(ready, name),
-        u => Con{KDef{name, "NativeHostWorker", arity, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, nf_host_defs(rest, ready)}, u => nf_host_defs(rest, ready))
+        u => Con{KDef{name, "NativeHostWorker", arity, nt_bool(String.eq(dk(index_find(escapes, name, index_hash(name, 2166136261), 32)), "Absent")), atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, nf_host_defs(rest, ready, escapes)}, u => nf_host_defs(rest, ready, escapes))
 
 @unsafe
 def nf_host_context(+book: List<&2, KDef>, +permission: Bool, plan: NF_Plan) -> List<&2, KDef>:
   match plan:
     case NF_Plan{workers, ready, observers}:
-      nt_choose(List<&2, KDef>, permission, u => nf_host_attach(book, index_build(nf_host_defs(workers, ready))), u => book)
+      nt_choose(List<&2, KDef>, permission, u => nf_host_calls(book, workers, ready, nc_live_names(book, ["main"], Nil{})), u => book)
 
 @unsafe
 def nf_host_attach(+book: List<&2, KDef>, +index: KDef) -> List<&2, KDef>:
@@ -363,3 +363,56 @@ def nf_host_payload(children: List<&2, KDef>) -> KDef:
 def nf_host_selected(+book: List<&2, KDef>, +name: String, +arity: U32) -> Bool:
   +d = index_find(nf_host_payload(dc(index_first(book))), name, index_hash(name, 2166136261), 32)
   U32.is_gt(arity, 0) && String.eq(dk(d), "NativeHostWorker") && U32.is_eq(da(d), arity)
+
+@unsafe
+def nf_escape_add(+name: String, +index: KDef) -> KDef:
+  index_set(index, nv_id(name), index_hash(name, 2166136261), 32)
+
+
+@unsafe
+def nf_escape_terms(+book: List<&2, KDef>, ts: List<&2, KTerm>, +index: KDef) -> KDef:
+  match ts:
+    case Nil{}: index
+    case Con{+t, +rest}:
+      nt_choose(KDef, String.eq(tg(t), "App"),
+        u => nf_escape_app(book, nd_head(t), nd_args(t, Nil{}), rest, index),
+        u => nt_choose(KDef, String.eq(tg(t), "Ref"),
+          v => nf_escape_terms(book, rest, nf_escape_add(nm(t), index)),
+          v => nf_escape_terms(book, nt_append(KTerm, ks(t), rest), index)))
+
+
+@unsafe
+def nf_escape_app(+book: List<&2, KDef>, +head: KTerm, +args: List<&2, KTerm>, +rest: List<&2, KTerm>, +index: KDef) -> KDef:
+  nt_choose(KDef, String.eq(tg(head), "Ref"),
+    u => nf_escape_terms(book, nt_append(KTerm, args, rest),
+      nt_choose(KDef, Bool.not(U32.is_eq(qt(head), 3)) && U32.is_eq(terms_len(args), nd_arity(book, nm(head))), v => index, v => nf_escape_add(nm(head), index))),
+    u => nf_escape_terms(book, Con{head, nt_append(KTerm, args, rest)}, index))
+
+
+@unsafe
+def nf_escape_names(+book: List<&2, KDef>, names: List<&2, String>, +index: KDef) -> KDef:
+  match names:
+    case Nil{}: index
+    case Con{name, rest}: nf_escape_names(book, rest, nf_escape_terms(book, [nc_definition(book, lookup(book, name), 0)], index))
+
+
+@unsafe
+def nf_host_no_factory(+book: List<&2, KDef>, +name: String, +arity: U32) -> Bool:
+  +d = index_find(nf_host_payload(dc(index_first(book))), name, index_hash(name, 2166136261), 32)
+  U32.is_gt(arity, 0) && (String.eq(dk(d), "NativeHostWorker") || String.eq(dk(d), "NativeCallOnly")) && U32.is_eq(da(d), arity) && U32.is_eq(dx(d), 1)
+
+
+@unsafe
+def nf_host_calls(+book: List<&2, KDef>, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +names: List<&2, String>) -> List<&2, KDef>:
+  +escapes = nf_escape_names(book, names, missing())
+  nf_host_attach(book, index_build(nt_append(KDef, nf_host_defs(workers, ready, escapes), nf_call_only_defs(book, names, escapes))))
+
+
+@unsafe
+def nf_call_only_defs(+book: List<&2, KDef>, names: List<&2, String>, +escapes: KDef) -> List<&2, KDef>:
+  match names:
+    case Nil{}: Nil{}
+    case Con{+name, +rest}:
+      nt_choose(List<&2, KDef>, String.eq(dk(index_find(escapes, name, index_hash(name, 2166136261), 32)), "Absent"),
+        u => Con{KDef{name, "NativeCallOnly", nd_arity(book, name), 1, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, nf_call_only_defs(book, rest, escapes)},
+        u => nf_call_only_defs(book, rest, escapes))

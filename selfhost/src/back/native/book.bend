@@ -127,10 +127,10 @@ def nc_mark_code(c: NC_Code, bang: Bool, forked: Bool, calls: List<&2, String>) 
     case NC_Code{body, ss, n, err, edges}: NC_Code{body, nc_mark_segments(ss, bang, forked, calls), n, err, edges}
 
 @unsafe
-def nc_append_book(+code: NC_Code, name: String, calls: List<&2, String>, forked: Bool, rest: NC_Book) -> NC_Book:
+def nc_append_book(+code: NC_Code, name: String, calls: List<&2, String>, forked: Bool, omit: Bool, rest: NC_Book) -> NC_Book:
   match rest:
     case NC_Book{segs, fresh, +err}:
-      NC_Book{Con{N_Segment{name, Nil{}, 1, N_Direct{}, nc_body(code), calls, False{}, False{}, forked, False{}}, nt_append(N_Segment, nc_segs(code), segs)}, fresh, nt_choose(String, String.eq(nc_error(code), ""), u => err, u => nc_error(code))}
+      NC_Book{nt_choose(List<&2, N_Segment>, omit, u => nt_append(N_Segment, nc_segs(code), segs), u => Con{N_Segment{name, Nil{}, 1, N_Direct{}, nc_body(code), calls, False{}, False{}, forked, False{}}, nt_append(N_Segment, nc_segs(code), segs)}), fresh, nt_choose(String, String.eq(nc_error(code), ""), u => err, u => nc_error(code))}
 
 @unsafe
 def nc_compile_def(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +n: U32, +bangs: List<&2, String>) -> NC_Book:
@@ -138,10 +138,9 @@ def nc_compile_def(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>
   +body = nc_compact_definition(book, d, n)
   +refs = nc_refs(body)
   +calls = nc_mapped_refs(book, refs)
-  +forked = nc_term_fork(body)
-  +code = nc_mark_code(nd_compile_entry(book, body, name, U32.add(n, 1024), nb_contains(bangs, name)), nb_contains(bangs, name), forked, calls)
-  nt_choose(NC_Book, String.eq(dk(d), "Absent"), u => NC_Book{Nil{}, n, "native definition not found: " ++ name_key(name)}, u =>
-    nc_append_book(code, nc_ref_name(book, name), calls, forked, nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, nc_fresh(code), bangs)))
+  nt_choose(NC_Book, nc_native_def(d) && nf_host_no_factory(book, name, nd_arity(book, name)),
+    u => nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, n, bangs),
+    u => nc_compile_kept(book, name, todo, done, n, bangs, d, body, refs, calls))
 
 @unsafe
 def nc_compile_defs(book, todo, done, n, bangs):
@@ -349,3 +348,20 @@ def nc_context_has_cache(annotated):
     case Nil{}: False{}
     case Con{head, rest}:
       nt_choose(Bool, String.eq(dk(head), "BookCache"), u => True{}, u => nc_context_has_cache(rest))
+
+@unsafe
+def nc_compile_kept(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +n: U32, +bangs: List<&2, String>, +d: KDef, +body: KTerm, +refs: List<&2, String>, +calls: List<&2, String>) -> NC_Book:
+  +forked = nc_term_fork(body)
+  +code = nc_mark_code(nd_compile_entry(book, body, name, U32.add(n, 1024), nb_contains(bangs, name)), nb_contains(bangs, name), forked, calls)
+  nt_choose(NC_Book, String.eq(dk(d), "Absent"), u => NC_Book{Nil{}, n, "native definition not found: " ++ name_key(name)}, u =>
+    nc_append_book(code, nc_ref_name(book, name), calls, forked, nf_host_no_factory(book, name, nd_arity(book, name)) && String.eq(nc_body(code), ""), nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, nc_fresh(code), bangs)))
+
+
+# Observers require the pre-compaction source form, including typed literals.
+# Retain that exact erased body through static preparation instead of erasing
+# every expanded helper again. No fact means the original raw path is used.
+@unsafe
+def nc_source_body(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
+  +fact = ns_body(book, dn(d))
+  +original = nt_choose(KDef, String.eq(dk(fact), "NativeStaticBody"), u => index_first(dc(fact)), u => fact)
+  nt_choose(KTerm, String.eq(dk(original), "NativeErasedBody") && String.eq(dn(original), dn(d)), u => dv(original), u => nc_definition_plain(book, d, n))

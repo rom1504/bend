@@ -65,7 +65,8 @@ def nol_enum(+book: List<&2, KDef>, +ty: KTerm, ctors: List<&2, KDef>, +left: U3
 def nol_scalar(+book: List<&2, KDef>, +ty: KTerm) -> Bool:
   +d = lookup(book, nm(ty))
   nt_choose(Bool, nol_plain(ty) && nol_owner(book, ty),
-    u => (db(d) && nb_contains(["Nat", "Char", "U32", "F32"], dn(d))) || (Bool.not(List.is_empty(&2, KDef, dc(d))) && nol_enum(book, ty, dc(d), 32)), u => False{})
+    u => nt_choose(Bool, db(d) && nb_contains(["Nat", "Char", "U32", "F32"], dn(d)),
+      v => True{}, v => Bool.not(List.is_empty(&2, KDef, dc(d))) && nol_enum(book, ty, dc(d), 32)), u => False{})
 
 @unsafe
 def nol_type_names(types: List<&2, KTerm>) -> List<&2, String>:
@@ -126,7 +127,7 @@ def nol_scalar_specs(+book: List<&2, KDef>, defs: List<&2, KDef>) -> List<&2, NO
     case Nil{}: Nil{}
     case Con{+d, +rest}:
       +ty = kt("ADT", dn(d), 0, 0, Nil{})
-      nt_choose(List<&2, NO_Spec>, String.eq(dk(d), "ADT") && nol_scalar(book, ty),
+      nt_choose(List<&2, NO_Spec>, nt_choose(Bool, String.eq(dk(d), "ADT"), v => nol_scalar(book, ty), v => False{}),
         u => List.append(&2, NO_Spec, nol_scalar_ctors(book, ty, dc(d)), nol_scalar_specs(book, rest)), u => nol_scalar_specs(book, rest))
 
 @unsafe

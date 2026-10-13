@@ -271,9 +271,9 @@ def noa_reference(+ctx: NO_Context, +name: String, +args: List<&2, KTerm>, +fact
   nt_choose(NO_Analysis, U32.is_lt(terms_len(args), arity), u => k(NO_Input{kt("OR", name, 0, 0, Con{kt("OStack", "", 0, 0, noa_names(stack)), args}), facts, n, fuel}), u =>
   nt_choose(NO_Analysis, Bool.not(U32.is_eq(terms_len(args), arity)), u => noa_fail("observer: saturation", n, fuel), u =>
   nt_choose(NO_Analysis, String.eq(name, noa_owner(ctx)), u => noa_recur(ctx, args, facts, n, fuel, k), u =>
-  nt_choose(NO_Analysis, nc_native_def(d) && nd_scalar_known(nc_primitive_name(name)), u => noa_primitive(ctx, name, args, facts, n, fuel, k), u =>
+  nt_choose(NO_Analysis, nt_choose(Bool, nc_native_def(d), v => nd_scalar_known(nc_primitive_name(name)), v => False{}), u => noa_primitive(ctx, name, args, facts, n, fuel, k), u =>
   nt_choose(NO_Analysis, String.eq(dk(d), "Def") && Bool.not(nc_foreign(d) || nc_native_def(d) || nb_contains(stack, name)) && U32.is_lt(nt_count(String, stack), 8),
-    u => noa_eval(ctx, nc_definition_plain(noa_book(ctx), d, n), Nil{}, facts, Con{name, stack}, n, fuel, +i => noa_apply_args(ctx, noa_iv(i), args, noa_if(i), noa_in(i), noa_iu(i), k)),
+    u => noa_eval(ctx, nc_source_body(noa_book(ctx), d, n), Nil{}, facts, Con{name, stack}, n, fuel, +i => noa_apply_args(ctx, noa_iv(i), args, noa_if(i), noa_in(i), noa_iu(i), k)),
     u => noa_fail("observer: helper effect, cycle or depth", n, fuel))))))
 
 @unsafe
@@ -448,7 +448,7 @@ def noa_analyze(+book: List<&2, KDef>, +name: String, +schema: NO_Schema, +permi
 def noa_analyze_ready(+ctx: NO_Context) -> NO_Analysis:
   +schema = noa_schema(ctx)
   +params = noa_entry_values(no_schema_params(schema), 0)
-  +body = nc_definition_plain(noa_book(ctx), lookup(noa_book(ctx), noa_owner(ctx)), no_schema_fresh(schema))
+  +body = nc_source_body(noa_book(ctx), lookup(noa_book(ctx), noa_owner(ctx)), no_schema_fresh(schema))
   noa_eval(ctx, body, Nil{}, Nil{}, Nil{}, no_schema_fresh(schema), 4096, +i => noa_apply_args(ctx, noa_iv(i), params, noa_if(i), noa_in(i), noa_iu(i), +j => noa_finish(ctx, j)))
 
 @unsafe

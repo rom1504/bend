@@ -166,7 +166,13 @@ def ka_def(book, d):
 
 @unsafe
 def annotate(e, ctx, t, ty):
-  ka_wrap(ka_node(e, ctx, core_beta(t), wnf(cb(e), ty)), ty)
+  ka_annotated(e, ctx, core_beta(t), wnf(cb(e), ty))
+
+# Keep the type head already demanded by ka_node. Backend consumers otherwise
+# normalize the original annotation again while determining the same layout.
+@unsafe
+def ka_annotated(+e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +ty: KTerm) -> KTerm:
+  ka_wrap(ka_node(e, ctx, t, ty), ty)
 
 @unsafe
 def ka_node(e, ctx, t, ty):
@@ -223,7 +229,7 @@ def ka_args(
 
 @unsafe
 def ka_args_head(e, ctx, tel, h, rest):
-  Con{annotate(e, ctx, h, kid(tel, 0)), ka_args(e, ctx, subst(kid(tel, 1), ix(tel), h), rest)}
+  Con{ka_field(annotate(e, ctx, h, kid(tel, 0)), qt(tel)), ka_args(e, ctx, subst(kid(tel, 1), ix(tel), h), rest)}
 
 @unsafe
 def ka_mat(e, ctx, t, ty, a):
@@ -370,7 +376,7 @@ def ka_args_static(
     case Nil{}: Nil{}
     case Con{h, rest}:
       kc(List<&2, KTerm>, String.eq(tg(tel), "All"),
-        u => Con{annotate(e, ctx, h, kid(tel, 0)), ka_args_static(e, ctx, kid(tel, 1), rest)},
+        u => Con{ka_field(annotate(e, ctx, h, kid(tel, 0)), qt(tel)), ka_args_static(e, ctx, kid(tel, 1), rest)},
         u => ka_args_cached(e, ctx, tel, xs))
 
 law ka_args_after_head:
@@ -385,5 +391,11 @@ law ka_args_after_head:
 @unsafe
 def ka_args_after_head(e, ctx, tel, h, rest, annotated):
   kc(List<&2, KTerm>, core_subst_stable(kid(tel, 1)),
-    u => Con{annotated, ka_args_static(e, ctx, kid(tel, 1), rest)},
-    u => Con{annotated, ka_args(e, ctx, subst(kid(tel, 1), ix(tel), h), rest)})
+    u => Con{ka_field(annotated, qt(tel)), ka_args_static(e, ctx, kid(tel, 1), rest)},
+    u => Con{ka_field(annotated, qt(tel)), ka_args(e, ctx, subst(kid(tel, 1), ix(tel), h), rest)})
+
+# Checked layout validation consumes the field quantity already reconstructed
+# here. Ann's first two children keep the existing backend representation.
+@unsafe
+def ka_field(+annotated: KTerm, +quantity: U32) -> KTerm:
+  kt("Ann", "", 1, quantity, ks(annotated))

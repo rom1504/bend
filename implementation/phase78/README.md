@@ -1,8 +1,90 @@
-# Phase78: B1 parity experiments (in progress)
+# Phase78: retained native facts and nonescaping entries
 
-The installed compiler remains Phase77. No parity or new release is claimed.
+Compiler21 is qualified; installation is the next step. Parity remains unachieved.
 [Design](../../design/phase78/b1-parity.md). No agents; one guarded CPU3 process
 tree, 2GiB aggregate RSS, 4GiB available-memory floor. No upstream modifications.
+
+## Selected result
+
+| Metric | Same-run Phase77 | Compiler21 |
+| --- | ---: | ---: |
+| Fresh B1 Bend-to-C request / upstream | 1.88678× | **1.73205×** |
+| Fresh B2 Bend-to-C request / upstream | 1.46354× | **1.38187×** |
+| Native execution / upstream, twelve families | measured alongside | **1.06678×** |
+| Native execution / Phase77 | 1× | **1.00162×** |
+| Production Bend physical/code lines | 32,317 /26,408 | **32,471 /26,523** |
+| Production Bend modules | 132 | **132** |
+
+The45 paired compilation requests show **8.20% less B1 time and5.58% less B2
+time**. Do not compare the new ratios directly with the previous session's1.920×
+and1.482× to calculate savings: the paired baseline above controls timing drift.
+The clocks exclude imports, explicitly prepared Bend Base, Clang and execution;
+upstream checks Base inside its request. No backend products or persistent process
+are used. [Complete samples](measurements.json).
+
+The non-IO held-outs improve less. Small B1/B2 take321.7/347.8ms versus334.5/348.4ms
+before; upstream302.9ms. Functions65 takes663.1/637.8ms versus676.9/649.5ms;
+upstream366.8ms. Thus the three-source mean is not a universal speed ratio.
+[Thirty paired held-out requests](heldout.json).
+
+All108 native runtime intervals pass independent checksums. The0.16% aggregate
+change versus Phase77 is effectively unchanged at this precision, with individual
+changes from about−3.0% to+1.9%. Tree, expression and Array.map remain materially
+slower than upstream despite the near-parity aggregate. [Per-family data](runtime.json).
+All23 JS benchmark sources are byte-identical to qualified Phase66 outputs, covering
+the45 benchmark points; no fresh JS execution timing is claimed.
+
+## Selected implementation
+
+- Retain the weak-head-normal type already computed during annotation and the
+  constructor field quantities. A private checked layout walk consumes those
+  facts instead of rebuilding lambda environments and constructor telescopes.
+  Public raw layout validation keeps its existing reconstruction path.
+- Compute an escape index over the whole erased runtime closure. Exactly saturated
+  non-bang calls do not need curried factories; bare, partial, overapplied or bang
+  references keep them. In the existing checked no-bang host path, inline native
+  operations and omit intrinsic entries proven unused. The three timing C files
+  shrink21–23% compared with Phase77.
+- Retain pre-compaction erased bodies for symbolic observers and make three pure
+  observer admission predicates conditional. Raw/foreign paths retain fresh-ID
+  construction and the original fallback.
+
+The implementation adds154 physical/115 code lines,0.48%/0.44%, without a new
+module. The experiment did not simplify total source size. It rejects160 branch
+helpers and the more complicated early-observer plan for insufficient gain.
+[Size accounting](simplicity.json).
+
+## Correctness boundary
+
+The checked frontend36, native100, raw31, new14, word10, held-out2, JS9 and28
+threaded executions pass. Genuine B2 driver8, own-source type acceptance and exact
+B3 reproduction pass; B2 emits all twelve qualified C artifacts exactly. The
+reference retains its same seven native failures and thirteen broader native API
+gaps remain. This is finite conformance evidence, not a compiler correctness proof.
+[Source qualification and exact image identities](source-qualification.json).
+
+## Why the ambitious trials did not reach parity
+
+Direct Boolean control helped less than expected once code growth and cold V8
+work were included. Retained type/layout facts and unneeded entry elimination
+were more useful. Shortened C names did not help. Two string-tag classifiers did
+not help; one emitted48,945 bytes for its discriminator. Early observer planning
+passed six native executions but removed only11–22k additional C bytes and gave
+no timing gain:1.7649× upstream in its short screen. Reject it and preserve the
+[result](early-observer.json) and [prototype patches](../../experiments/phase78/prototypes).
+
+Fresh selected-image profiles still show substantial allocation/GC, normalization,
+runtime-template scanning and B1 trampoline work. B1 numeric samples attribute
+about238ms to `run_loop`; B2 template scanning costs32–44 sampled ms and GC65–133ms
+across these sources. These are overlapping/instrumented profiles, not additive
+clean-time savings. [Profiles](profiles.json).
+
+Reaching1× still requires about42.3% less B1 request time or27.6% less B2 time on
+this loop. The next larger discriminator is [prepared native library products](../../design/phase78/native-library-products.md).
+It must measure actual work avoided, decoding/admission and one-time preparation,
+and report that prepared-library contract separately. It is not implemented here.
+
+## Preserved experiment sequence
 
 ## First discriminators
 

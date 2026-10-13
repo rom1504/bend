@@ -1,0 +1,2377 @@
+{
+  "scope": "All four requested V8 profiles passed exact-C. Parent clean jobs were intentionally not run there; clean timings live in the paired plan. Samples are diagnostic and inclusive times overlap.",
+  "profiles": [
+    {
+      "job": {
+        "name": "profile-numeric-b2",
+        "action": "request",
+        "role": "b2",
+        "case": "numeric",
+        "profile": true
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase78/compiler21-compilation/runs/profile-numeric-b2/report.json",
+        "sha256": "6904b38ac8f8132055ce025185b4a7d1710a7a4ca44efd55eaa282c00bc0c026",
+        "bytes": 71035
+      },
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 10.627003999999943,
+          "exclusiveMs": 10.627003999999943
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.9353039999999737,
+          "exclusiveMs": 0.9353039999999737
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 122.30259300000012,
+          "exclusiveMs": 122.30259300000012
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.0996100000000979,
+          "exclusiveMs": 0.0996100000000979
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 7.33607399999994,
+          "exclusiveMs": 7.33607399999994
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 51.91769099999999,
+          "exclusiveMs": 51.91769099999999
+        },
+        "driver_report_data": {
+          "calls": 1,
+          "inclusiveMs": 59.02698700000008,
+          "exclusiveMs": 59.02698700000008
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 9.84598700000015,
+          "exclusiveMs": 9.84598700000015
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 0.5686719999998786,
+          "exclusiveMs": 0.5686719999998786
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 8.648127000000159,
+          "exclusiveMs": 8.648127000000159
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 2.989186000000018,
+          "exclusiveMs": 2.989186000000018
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 69.88272700000016,
+          "exclusiveMs": 69.88272700000016
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 18.682530000000042,
+          "exclusiveMs": 18.682530000000042
+        },
+        "nr_prepare": {
+          "calls": 1,
+          "inclusiveMs": 84.98246199999994,
+          "exclusiveMs": 84.98246199999994
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 18.637542000000167,
+          "exclusiveMs": 18.637542000000167
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.31123600000023544,
+          "exclusiveMs": 0.31123600000023544
+        },
+        "nr_compile": {
+          "calls": 1,
+          "inclusiveMs": 445.4596140000001,
+          "exclusiveMs": 445.4596140000001
+        }
+      },
+      "cpu": {
+        "samples": 719,
+        "sampledMs": 1045.636,
+        "exclusiveLeafFunctions": [
+          {
+            "name": "(garbage collector)",
+            "sampledMs": 69.976
+          },
+          {
+            "name": "$jd$ne_95_template_95_scan$scc",
+            "sampledMs": 32.093
+          },
+          {
+            "name": "$jd$wnf",
+            "sampledMs": 28.989
+          },
+          {
+            "name": "post",
+            "sampledMs": 26.189
+          },
+          {
+            "name": "digest",
+            "sampledMs": 23.973
+          },
+          {
+            "name": "",
+            "sampledMs": 21.558
+          },
+          {
+            "name": "$jd$norm_95_eval_95_node$scc",
+            "sampledMs": 19.727
+          },
+          {
+            "name": "$jd$f_95_lex_95_scanned$scc",
+            "sampledMs": 18.516
+          },
+          {
+            "name": "decodeBaseArena",
+            "sampledMs": 16.94
+          },
+          {
+            "name": "$jd$nc_95_uses_95_list",
+            "sampledMs": 16.823
+          },
+          {
+            "name": "$jd$nc_95_erase_95_annotated$scc",
+            "sampledMs": 16.045
+          },
+          {
+            "name": "$jd$kf_95_char$scc",
+            "sampledMs": 15.19
+          },
+          {
+            "name": "$jd$index_95_lookup",
+            "sampledMs": 15.048
+          },
+          {
+            "name": "$jd$norm_95_max_95_term",
+            "sampledMs": 14.86
+          },
+          {
+            "name": "$jd$nh_95_terms",
+            "sampledMs": 13.864
+          },
+          {
+            "name": "$jd$book_95_final_95_scan$scc",
+            "sampledMs": 12.41
+          },
+          {
+            "name": "$jd$lookup",
+            "sampledMs": 12.292
+          },
+          {
+            "name": "$jd$index_95_leaf",
+            "sampledMs": 10.033
+          },
+          {
+            "name": "$jd$nq_95_uses_95_list",
+            "sampledMs": 10.0
+          },
+          {
+            "name": "$jd$lookup$scc",
+            "sampledMs": 9.93
+          },
+          {
+            "name": "$jd$nq_95_uses",
+            "sampledMs": 9.913
+          },
+          {
+            "name": "$jd$subst",
+            "sampledMs": 9.735
+          },
+          {
+            "name": "$jd$nc_95_primitive_95_name",
+            "sampledMs": 8.994
+          },
+          {
+            "name": "validateSpanBook",
+            "sampledMs": 8.28
+          },
+          {
+            "name": "$jd$ne_95_template_95_plain",
+            "sampledMs": 8.271
+          },
+          {
+            "name": "$jd$j_95_find_95_ctor$scc",
+            "sampledMs": 8.204
+          },
+          {
+            "name": "$jd$kr_95_parent",
+            "sampledMs": 8.122
+          },
+          {
+            "name": "$jd$nt_95_clean",
+            "sampledMs": 7.953
+          },
+          {
+            "name": "$jd$ni_95_replace_95_all",
+            "sampledMs": 7.303
+          },
+          {
+            "name": "$jd$f_95_grow",
+            "sampledMs": 7.285
+          },
+          {
+            "name": "$jd$ns_95_unshared_95_terms",
+            "sampledMs": 7.198
+          },
+          {
+            "name": "$jd$nt_95_lines",
+            "sampledMs": 6.845
+          },
+          {
+            "name": "$jd$kr_95_refs_95_list",
+            "sampledMs": 6.682
+          },
+          {
+            "name": "$jd$String_46_to_95_lower",
+            "sampledMs": 6.257
+          },
+          {
+            "name": "$jd$f_95_declared",
+            "sampledMs": 6.238
+          },
+          {
+            "name": "$jd$f_95_tl",
+            "sampledMs": 5.999
+          },
+          {
+            "name": "$jd$norm_95_eval",
+            "sampledMs": 5.972
+          },
+          {
+            "name": "$jd$index_95_set",
+            "sampledMs": 5.669
+          },
+          {
+            "name": "$jd$nc_95_compact",
+            "sampledMs": 5.54
+          },
+          {
+            "name": "$jd$nu_95_join",
+            "sampledMs": 5.371
+          }
+        ],
+        "inclusiveFunctionUnion": [
+          {
+            "name": "(root)",
+            "sampledMs": 1045.636
+          },
+          {
+            "name": "inspectWithMemo",
+            "sampledMs": 858.71
+          },
+          {
+            "name": "",
+            "sampledMs": 834.507
+          },
+          {
+            "name": "api.<computed>",
+            "sampledMs": 773.387
+          },
+          {
+            "name": "nr_compile",
+            "sampledMs": 417.324
+          },
+          {
+            "name": "ns_compile_named",
+            "sampledMs": 364.901
+          },
+          {
+            "name": "ns_compile_planned",
+            "sampledMs": 323.302
+          },
+          {
+            "name": "discoverSources",
+            "sampledMs": 147.35
+          },
+          {
+            "name": "nf_plan",
+            "sampledMs": 139.245
+          },
+          {
+            "name": "visit",
+            "sampledMs": 138.982
+          },
+          {
+            "name": "f_complete_aliases_indexed",
+            "sampledMs": 115.373
+          },
+          {
+            "name": "f_complete_source_indexed",
+            "sampledMs": 115.373
+          },
+          {
+            "name": "f_prefix_complete_source",
+            "sampledMs": 115.373
+          },
+          {
+            "name": "f_body_header",
+            "sampledMs": 112.236
+          },
+          {
+            "name": "f_source_body_indexed",
+            "sampledMs": 112.236
+          },
+          {
+            "name": "nc_lower_to",
+            "sampledMs": 108.544
+          },
+          {
+            "name": "nc_finish",
+            "sampledMs": 107.667
+          },
+          {
+            "name": "nc_lower_live_to",
+            "sampledMs": 106.438
+          },
+          {
+            "name": "nd_app_to",
+            "sampledMs": 104.878
+          },
+          {
+            "name": "nf_finish_ready",
+            "sampledMs": 104.122
+          },
+          {
+            "name": "nf_finish_plan",
+            "sampledMs": 104.122
+          },
+          {
+            "name": "nc_lower_partition",
+            "sampledMs": 95.602
+          },
+          {
+            "name": "nf_candidate",
+            "sampledMs": 92.511
+          },
+          {
+            "name": "nf_candidates",
+            "sampledMs": 90.311
+          },
+          {
+            "name": "nf_lets",
+            "sampledMs": 89.167
+          },
+          {
+            "name": "f_tops",
+            "sampledMs": 88.891
+          },
+          {
+            "name": "f_context_publish$scc",
+            "sampledMs": 86.775
+          },
+          {
+            "name": "nc_with_show",
+            "sampledMs": 72.947
+          },
+          {
+            "name": "(garbage collector)",
+            "sampledMs": 69.976
+          },
+          {
+            "name": "nq_match",
+            "sampledMs": 68.847
+          },
+          {
+            "name": "annotate",
+            "sampledMs": 68.22
+          },
+          {
+            "name": "ka_node",
+            "sampledMs": 68.22
+          },
+          {
+            "name": "ne_program",
+            "sampledMs": 67.985
+          },
+          {
+            "name": "nc_match_apply_to",
+            "sampledMs": 67.788
+          },
+          {
+            "name": "ka_mat_ctr",
+            "sampledMs": 67.145
+          },
+          {
+            "name": "ka_mat",
+            "sampledMs": 67.145
+          },
+          {
+            "name": "nc_match_apply_original_to",
+            "sampledMs": 66.967
+          },
+          {
+            "name": "wnf",
+            "sampledMs": 66.758
+          },
+          {
+            "name": "f_context_definition",
+            "sampledMs": 66.304
+          },
+          {
+            "name": "nc_match_apply_slow_to",
+            "sampledMs": 65.902
+          }
+        ],
+        "nearestSourceOwner": [
+          {
+            "name": "unattributed/host/runtime/GC",
+            "sampledMs": 154.108
+          },
+          {
+            "name": "src/back/native/bridge.bend",
+            "sampledMs": 77.547
+          },
+          {
+            "name": "src/core/normalize.bend",
+            "sampledMs": 77.521
+          },
+          {
+            "name": "src/core/term.bend",
+            "sampledMs": 72.253
+          },
+          {
+            "name": "src/core/index.bend",
+            "sampledMs": 65.139
+          },
+          {
+            "name": "src/back/native/emit.bend",
+            "sampledMs": 48.39
+          },
+          {
+            "name": "src/front/lexer.bend",
+            "sampledMs": 43.327
+          },
+          {
+            "name": "src/core/reach.bend",
+            "sampledMs": 40.857
+          },
+          {
+            "name": "src/back/native/product.bend",
+            "sampledMs": 36.784
+          },
+          {
+            "name": "src/back/native/erase.bend",
+            "sampledMs": 28.491
+          },
+          {
+            "name": "src/back/native/text.bend",
+            "sampledMs": 25.594
+          },
+          {
+            "name": "src/back/native/book.bend",
+            "sampledMs": 23.706
+          },
+          {
+            "name": "src/check/kernel.bend",
+            "sampledMs": 22.928
+          },
+          {
+            "name": "src/back/native/flat.bend",
+            "sampledMs": 21.433
+          },
+          {
+            "name": "src/check/annotate.bend",
+            "sampledMs": 19.737
+          },
+          {
+            "name": "src/front/parser.bend",
+            "sampledMs": 19.341
+          },
+          {
+            "name": "src/back/native/static.bend",
+            "sampledMs": 17.41
+          },
+          {
+            "name": "src/back/native/sharing.bend",
+            "sampledMs": 14.919
+          },
+          {
+            "name": "src/front/declarations.bend",
+            "sampledMs": 14.415
+          },
+          {
+            "name": "src/back/native/direct.bend",
+            "sampledMs": 13.934
+          },
+          {
+            "name": "src/back/native/scalar-array.bend",
+            "sampledMs": 13.923
+          },
+          {
+            "name": "src/load/modules.bend",
+            "sampledMs": 13.707
+          },
+          {
+            "name": "src/front/contextual.bend",
+            "sampledMs": 12.045
+          },
+          {
+            "name": "src/back/native/intrinsic.bend",
+            "sampledMs": 11.449
+          },
+          {
+            "name": "src/back/native/observer-layout.bend",
+            "sampledMs": 10.048
+          },
+          {
+            "name": "src/back/native/product-layout.bend",
+            "sampledMs": 9.573
+          },
+          {
+            "name": "src/back/common/queries.bend",
+            "sampledMs": 9.251
+          },
+          {
+            "name": "src/back/native/identity.bend",
+            "sampledMs": 9.095
+          },
+          {
+            "name": "src/back/native/observer-analysis.bend",
+            "sampledMs": 8.543
+          },
+          {
+            "name": "src/back/native/word-pattern.bend",
+            "sampledMs": 7.974
+          },
+          {
+            "name": "src/back/native/tables.bend",
+            "sampledMs": 7.714
+          },
+          {
+            "name": "src/back/native/uses.bend",
+            "sampledMs": 7.663
+          },
+          {
+            "name": "src/back/js/validate.bend",
+            "sampledMs": 6.691
+          },
+          {
+            "name": "src/front/flatten.bend",
+            "sampledMs": 6.3
+          },
+          {
+            "name": "src/back/common/arity.bend",
+            "sampledMs": 6.267
+          },
+          {
+            "name": "src/load/graph.bend",
+            "sampledMs": 6.233
+          },
+          {
+            "name": "src/back/native/request.bend",
+            "sampledMs": 5.954
+          },
+          {
+            "name": "src/driver/report.bend",
+            "sampledMs": 5.589
+          },
+          {
+            "name": "src/front/fresh_work.bend",
+            "sampledMs": 5.268
+          },
+          {
+            "name": "src/back/common/literals.bend",
+            "sampledMs": 5.001
+          }
+        ],
+        "scope": "V8 sampled time, not clean wall timing. Source owner uses nearest recognized named frame; inlining/missing names/GC may remain unattributed. Inclusive rows overlap and must not be added."
+      }
+    },
+    {
+      "job": {
+        "name": "profile-array-b2",
+        "action": "request",
+        "role": "b2",
+        "case": "array",
+        "profile": true
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase78/compiler21-compilation/runs/profile-array-b2/report.json",
+        "sha256": "20533d311147c2ec1c48fea901b9b4b90364908362bb5d628d46aea3fca42090",
+        "bytes": 71016
+      },
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 10.538551999999981,
+          "exclusiveMs": 10.538551999999981
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.9220260000000735,
+          "exclusiveMs": 0.9220260000000735
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 100.67201799999998,
+          "exclusiveMs": 100.67201799999998
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.11951299999998355,
+          "exclusiveMs": 0.11951299999998355
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 7.119005000000016,
+          "exclusiveMs": 7.119005000000016
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 73.08214099999998,
+          "exclusiveMs": 73.08214099999998
+        },
+        "driver_report_data": {
+          "calls": 1,
+          "inclusiveMs": 55.01029499999993,
+          "exclusiveMs": 55.01029499999993
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 9.73025000000007,
+          "exclusiveMs": 9.73025000000007
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 0.41655199999991055,
+          "exclusiveMs": 0.41655199999991055
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 7.176270000000045,
+          "exclusiveMs": 7.176270000000045
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 2.9171350000000302,
+          "exclusiveMs": 2.9171350000000302
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 73.94740399999989,
+          "exclusiveMs": 73.94740399999989
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 15.263745999999855,
+          "exclusiveMs": 15.263745999999855
+        },
+        "nr_prepare": {
+          "calls": 1,
+          "inclusiveMs": 55.044088999999985,
+          "exclusiveMs": 55.044088999999985
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 18.01265599999988,
+          "exclusiveMs": 18.01265599999988
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.3039330000001428,
+          "exclusiveMs": 0.3039330000001428
+        },
+        "nr_compile": {
+          "calls": 1,
+          "inclusiveMs": 457.5411079999999,
+          "exclusiveMs": 457.5411079999999
+        }
+      },
+      "cpu": {
+        "samples": 777,
+        "sampledMs": 1046.336,
+        "exclusiveLeafFunctions": [
+          {
+            "name": "(garbage collector)",
+            "sampledMs": 64.823
+          },
+          {
+            "name": "$jd$wnf",
+            "sampledMs": 39.031
+          },
+          {
+            "name": "$jd$ne_95_template_95_scan$scc",
+            "sampledMs": 36.176
+          },
+          {
+            "name": "post",
+            "sampledMs": 26.136
+          },
+          {
+            "name": "digest",
+            "sampledMs": 23.941
+          },
+          {
+            "name": "$jd$subst$scc",
+            "sampledMs": 20.539
+          },
+          {
+            "name": "$jd$norm_95_max_95_term",
+            "sampledMs": 20.098
+          },
+          {
+            "name": "decodeBaseArena",
+            "sampledMs": 17.751
+          },
+          {
+            "name": "$jd$nh_95_terms",
+            "sampledMs": 16.782
+          },
+          {
+            "name": "$jd$nc_95_uses_95_list",
+            "sampledMs": 16.476
+          },
+          {
+            "name": "$jd$kf_95_char$scc",
+            "sampledMs": 15.932
+          },
+          {
+            "name": "",
+            "sampledMs": 15.517
+          },
+          {
+            "name": "$jd$jd_95_domains",
+            "sampledMs": 15.403
+          },
+          {
+            "name": "$jd$book_95_final_95_scan$scc",
+            "sampledMs": 13.429
+          },
+          {
+            "name": "$jd$lookup",
+            "sampledMs": 11.414
+          },
+          {
+            "name": "$jd$nc_95_primitive_95_name",
+            "sampledMs": 10.973
+          },
+          {
+            "name": "$jd$ns_95_unshared_95_terms",
+            "sampledMs": 10.661
+          },
+          {
+            "name": "$jd$index_95_lookup",
+            "sampledMs": 10.341
+          },
+          {
+            "name": "$jd$subst",
+            "sampledMs": 10.248
+          },
+          {
+            "name": "$jd$norm_95_eval_95_node$scc",
+            "sampledMs": 9.659
+          },
+          {
+            "name": "$jd$lookup$scc",
+            "sampledMs": 9.195
+          },
+          {
+            "name": "$jd$kr_95_parent",
+            "sampledMs": 8.763
+          },
+          {
+            "name": "$jd$ne_95_template_95_plain",
+            "sampledMs": 8.754
+          },
+          {
+            "name": "$jd$nq_95_uses",
+            "sampledMs": 8.728
+          },
+          {
+            "name": "$jd$j_95_find_95_ctor$scc",
+            "sampledMs": 8.635
+          },
+          {
+            "name": "$jd$kr_95_refs_95_list",
+            "sampledMs": 7.953
+          },
+          {
+            "name": "$jd$index_95_remove",
+            "sampledMs": 7.83
+          },
+          {
+            "name": "validateSpanBook",
+            "sampledMs": 7.522
+          },
+          {
+            "name": "$jd$f_95_grow",
+            "sampledMs": 7.427
+          },
+          {
+            "name": "$jd$nt_95_replace_95_step$scc",
+            "sampledMs": 7.412
+          },
+          {
+            "name": "$jd$nt_95_clean",
+            "sampledMs": 7.351
+          },
+          {
+            "name": "$jd$nt_95_lines",
+            "sampledMs": 7.175
+          },
+          {
+            "name": "$jd$index_95_set",
+            "sampledMs": 6.966
+          },
+          {
+            "name": "$jd$jl_95_term",
+            "sampledMs": 6.604
+          },
+          {
+            "name": "$jd$nq_95_uses_95_list",
+            "sampledMs": 6.541
+          },
+          {
+            "name": "$jd$missing",
+            "sampledMs": 6.357
+          },
+          {
+            "name": "$jd$index_95_find$scc",
+            "sampledMs": 5.926
+          },
+          {
+            "name": "$jd$U32_46_show",
+            "sampledMs": 5.894
+          },
+          {
+            "name": "$jd$subst_95_terms",
+            "sampledMs": 5.685
+          },
+          {
+            "name": "$jd$String_46_eq",
+            "sampledMs": 5.507
+          }
+        ],
+        "inclusiveFunctionUnion": [
+          {
+            "name": "(root)",
+            "sampledMs": 1046.336
+          },
+          {
+            "name": "inspectWithMemo",
+            "sampledMs": 873.429
+          },
+          {
+            "name": "",
+            "sampledMs": 846.837
+          },
+          {
+            "name": "api.<computed>",
+            "sampledMs": 767.943
+          },
+          {
+            "name": "nr_compile",
+            "sampledMs": 430.78
+          },
+          {
+            "name": "ns_compile_named",
+            "sampledMs": 380.375
+          },
+          {
+            "name": "ns_compile_planned",
+            "sampledMs": 338.558
+          },
+          {
+            "name": "nf_plan",
+            "sampledMs": 141.201
+          },
+          {
+            "name": "discoverSources",
+            "sampledMs": 124.06
+          },
+          {
+            "name": "nc_finish",
+            "sampledMs": 121.638
+          },
+          {
+            "name": "nc_lower_to",
+            "sampledMs": 119.406
+          },
+          {
+            "name": "nf_finish_ready",
+            "sampledMs": 117.755
+          },
+          {
+            "name": "nf_finish_plan",
+            "sampledMs": 117.755
+          },
+          {
+            "name": "visit",
+            "sampledMs": 115.706
+          },
+          {
+            "name": "nc_lower_live_to",
+            "sampledMs": 106.203
+          },
+          {
+            "name": "nd_app_to",
+            "sampledMs": 104.14
+          },
+          {
+            "name": "f_prefix_complete_source",
+            "sampledMs": 92.665
+          },
+          {
+            "name": "f_complete_aliases_indexed",
+            "sampledMs": 91.468
+          },
+          {
+            "name": "f_complete_source_indexed",
+            "sampledMs": 91.468
+          },
+          {
+            "name": "nf_lets",
+            "sampledMs": 90.08
+          },
+          {
+            "name": "f_body_header",
+            "sampledMs": 89.001
+          },
+          {
+            "name": "f_source_body_indexed",
+            "sampledMs": 89.001
+          },
+          {
+            "name": "nf_candidate",
+            "sampledMs": 86.446
+          },
+          {
+            "name": "nc_lower_partition",
+            "sampledMs": 85.995
+          },
+          {
+            "name": "nf_candidates",
+            "sampledMs": 83.195
+          },
+          {
+            "name": "f_tops",
+            "sampledMs": 82.398
+          },
+          {
+            "name": "f_context_publish$scc",
+            "sampledMs": 80.282
+          },
+          {
+            "name": "nc_with_show",
+            "sampledMs": 80.238
+          },
+          {
+            "name": "nc_match_apply_to",
+            "sampledMs": 80.193
+          },
+          {
+            "name": "nq_match",
+            "sampledMs": 80.193
+          },
+          {
+            "name": "nc_match_apply_slow_to",
+            "sampledMs": 79.321
+          },
+          {
+            "name": "nc_match_apply_original_to",
+            "sampledMs": 79.321
+          },
+          {
+            "name": "wnf",
+            "sampledMs": 76.846
+          },
+          {
+            "name": "ne_program",
+            "sampledMs": 74.288
+          },
+          {
+            "name": "ka_node",
+            "sampledMs": 71.187
+          },
+          {
+            "name": "annotate",
+            "sampledMs": 71.187
+          },
+          {
+            "name": "ka_mat_ctr",
+            "sampledMs": 67.034
+          },
+          {
+            "name": "ka_mat",
+            "sampledMs": 67.034
+          },
+          {
+            "name": "ka_lam",
+            "sampledMs": 65.488
+          },
+          {
+            "name": "nd_match_to",
+            "sampledMs": 64.849
+          }
+        ],
+        "nearestSourceOwner": [
+          {
+            "name": "unattributed/host/runtime/GC",
+            "sampledMs": 151.333
+          },
+          {
+            "name": "src/core/term.bend",
+            "sampledMs": 100.91
+          },
+          {
+            "name": "src/core/normalize.bend",
+            "sampledMs": 82.618
+          },
+          {
+            "name": "src/back/native/bridge.bend",
+            "sampledMs": 80.809
+          },
+          {
+            "name": "src/back/native/emit.bend",
+            "sampledMs": 59.224
+          },
+          {
+            "name": "src/core/index.bend",
+            "sampledMs": 58.373
+          },
+          {
+            "name": "src/core/reach.bend",
+            "sampledMs": 35.832
+          },
+          {
+            "name": "src/back/native/text.bend",
+            "sampledMs": 34.861
+          },
+          {
+            "name": "src/back/native/product.bend",
+            "sampledMs": 26.978
+          },
+          {
+            "name": "src/check/kernel.bend",
+            "sampledMs": 23.951
+          },
+          {
+            "name": "src/front/parser.bend",
+            "sampledMs": 22.962
+          },
+          {
+            "name": "src/back/common/arity.bend",
+            "sampledMs": 22.021
+          },
+          {
+            "name": "src/back/native/flat.bend",
+            "sampledMs": 21.355
+          },
+          {
+            "name": "src/front/lexer.bend",
+            "sampledMs": 20.195
+          },
+          {
+            "name": "src/back/native/sharing.bend",
+            "sampledMs": 17.846
+          },
+          {
+            "name": "src/back/native/static.bend",
+            "sampledMs": 17.356
+          },
+          {
+            "name": "src/back/native/book.bend",
+            "sampledMs": 16.66
+          },
+          {
+            "name": "src/check/annotate.bend",
+            "sampledMs": 15.903
+          },
+          {
+            "name": "src/back/native/scalar-array.bend",
+            "sampledMs": 15.761
+          },
+          {
+            "name": "src/back/native/erase.bend",
+            "sampledMs": 14.241
+          },
+          {
+            "name": "src/back/js/validate.bend",
+            "sampledMs": 14.073
+          },
+          {
+            "name": "src/front/declarations.bend",
+            "sampledMs": 13.137
+          },
+          {
+            "name": "src/back/native/product-layout.bend",
+            "sampledMs": 12.299
+          },
+          {
+            "name": "src/back/native/direct.bend",
+            "sampledMs": 12.147
+          },
+          {
+            "name": "src/back/native/identity.bend",
+            "sampledMs": 11.398
+          },
+          {
+            "name": "src/back/native/uses.bend",
+            "sampledMs": 10.031
+          },
+          {
+            "name": "src/back/common/queries.bend",
+            "sampledMs": 9.533
+          },
+          {
+            "name": "src/back/native/word-pattern.bend",
+            "sampledMs": 8.487
+          },
+          {
+            "name": "src/back/native/intrinsic.bend",
+            "sampledMs": 8.287
+          },
+          {
+            "name": "src/back/native/observer-analysis.bend",
+            "sampledMs": 7.519
+          },
+          {
+            "name": "src/load/modules.bend",
+            "sampledMs": 7.499
+          },
+          {
+            "name": "src/front/contextual.bend",
+            "sampledMs": 7.153
+          },
+          {
+            "name": "src/front/literals_arrays.bend",
+            "sampledMs": 7.019
+          },
+          {
+            "name": "src/load/graph.bend",
+            "sampledMs": 6.674
+          },
+          {
+            "name": "src/back/native/observer-layout.bend",
+            "sampledMs": 6.549
+          },
+          {
+            "name": "src/back/native/observer-integration.bend",
+            "sampledMs": 6.277
+          },
+          {
+            "name": "src/front/fresh_work.bend",
+            "sampledMs": 6.259
+          },
+          {
+            "name": "src/front/elaborate.bend",
+            "sampledMs": 5.496
+          },
+          {
+            "name": "src/core/graph.bend",
+            "sampledMs": 5.423
+          },
+          {
+            "name": "src/back/native/tables.bend",
+            "sampledMs": 4.378
+          }
+        ],
+        "scope": "V8 sampled time, not clean wall timing. Source owner uses nearest recognized named frame; inlining/missing names/GC may remain unattributed. Inclusive rows overlap and must not be added."
+      }
+    },
+    {
+      "job": {
+        "name": "profile-lexer-b2",
+        "action": "request",
+        "role": "b2",
+        "case": "lexer",
+        "profile": true
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase78/compiler21-compilation/runs/profile-lexer-b2/report.json",
+        "sha256": "afe969cdbb63b59215fca3f3e1a0f56b441d4fb33146dd715ad9dce5fafc77ba",
+        "bytes": 70989
+      },
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 28.02151200000003,
+          "exclusiveMs": 28.02151200000003
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.9198390000000245,
+          "exclusiveMs": 0.9198390000000245
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 228.206638,
+          "exclusiveMs": 228.206638
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.14354600000001483,
+          "exclusiveMs": 0.14354600000001483
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 15.688005999999973,
+          "exclusiveMs": 15.688005999999973
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 136.37466800000004,
+          "exclusiveMs": 136.37466800000004
+        },
+        "driver_report_data": {
+          "calls": 1,
+          "inclusiveMs": 52.85685599999988,
+          "exclusiveMs": 52.85685599999988
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 9.83106100000009,
+          "exclusiveMs": 9.83106100000009
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 4.845810999999912,
+          "exclusiveMs": 4.845810999999912
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 6.781628999999839,
+          "exclusiveMs": 6.781628999999839
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 5.669900999999982,
+          "exclusiveMs": 5.669900999999982
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 72.84157699999992,
+          "exclusiveMs": 72.84157699999992
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 20.676067000000103,
+          "exclusiveMs": 20.676067000000103
+        },
+        "nr_prepare": {
+          "calls": 1,
+          "inclusiveMs": 82.43193300000007,
+          "exclusiveMs": 82.43193300000007
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 17.947335999999723,
+          "exclusiveMs": 17.947335999999723
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.34727300000008654,
+          "exclusiveMs": 0.34727300000008654
+        },
+        "nr_compile": {
+          "calls": 1,
+          "inclusiveMs": 637.2851879999998,
+          "exclusiveMs": 637.2851879999998
+        }
+      },
+      "cpu": {
+        "samples": 999,
+        "sampledMs": 1455.543,
+        "exclusiveLeafFunctions": [
+          {
+            "name": "(garbage collector)",
+            "sampledMs": 132.806
+          },
+          {
+            "name": "$jd$f_95_lex_95_scanned$scc",
+            "sampledMs": 45.021
+          },
+          {
+            "name": "$jd$ne_95_template_95_scan$scc",
+            "sampledMs": 44.373
+          },
+          {
+            "name": "$jd$wnf",
+            "sampledMs": 39.248
+          },
+          {
+            "name": "",
+            "sampledMs": 27.735
+          },
+          {
+            "name": "post",
+            "sampledMs": 26.385
+          },
+          {
+            "name": "digest",
+            "sampledMs": 24.037
+          },
+          {
+            "name": "$jd$nc_95_erase_95_annotated$scc",
+            "sampledMs": 19.853
+          },
+          {
+            "name": "$jd$norm_95_max_95_term",
+            "sampledMs": 18.302
+          },
+          {
+            "name": "$jd$index_95_lookup",
+            "sampledMs": 17.925
+          },
+          {
+            "name": "validateSpanBook",
+            "sampledMs": 16.187
+          },
+          {
+            "name": "decodeBaseArena",
+            "sampledMs": 15.8
+          },
+          {
+            "name": "$jd$lookup$scc",
+            "sampledMs": 14.894
+          },
+          {
+            "name": "$jd$kf_95_char$scc",
+            "sampledMs": 14.663
+          },
+          {
+            "name": "$jd$ne_95_template_95_plain",
+            "sampledMs": 14.27
+          },
+          {
+            "name": "$jd$nc_95_uses_95_list",
+            "sampledMs": 13.889
+          },
+          {
+            "name": "$jd$f_95_declared",
+            "sampledMs": 13.555
+          },
+          {
+            "name": "$jd$book_95_final_95_scan$scc",
+            "sampledMs": 13.494
+          },
+          {
+            "name": "$jd$nh_95_terms",
+            "sampledMs": 12.999
+          },
+          {
+            "name": "$jd$cy",
+            "sampledMs": 11.896
+          },
+          {
+            "name": "$jd$nc_95_ctor_95_owned",
+            "sampledMs": 11.828
+          },
+          {
+            "name": "$jd$norm_95_eval",
+            "sampledMs": 11.364
+          },
+          {
+            "name": "$jd$nc_95_lower_95_to",
+            "sampledMs": 11.2
+          },
+          {
+            "name": "$jd$norm_95_eval_95_node$scc",
+            "sampledMs": 11.057
+          },
+          {
+            "name": "$jd$index_95_find$scc",
+            "sampledMs": 10.652
+          },
+          {
+            "name": "$jd$nq_95_uses_95_list",
+            "sampledMs": 10.517
+          },
+          {
+            "name": "$jd$ns_95_unshared_95_terms",
+            "sampledMs": 10.25
+          },
+          {
+            "name": "$jd$subst",
+            "sampledMs": 10.205
+          },
+          {
+            "name": "$jd$kr_95_parent",
+            "sampledMs": 10.07
+          },
+          {
+            "name": "$jd$index_95_find",
+            "sampledMs": 9.744
+          },
+          {
+            "name": "$jd$nc_95_ctor_95_identity",
+            "sampledMs": 9.418
+          },
+          {
+            "name": "$jd$nc_95_primitive_95_name",
+            "sampledMs": 9.112
+          },
+          {
+            "name": "$jd$subst$scc",
+            "sampledMs": 9.059
+          },
+          {
+            "name": "$jd$ffw_95_walk",
+            "sampledMs": 8.613
+          },
+          {
+            "name": "$jd$String_46_eq",
+            "sampledMs": 8.531
+          },
+          {
+            "name": "$jd$f_95_find$scc",
+            "sampledMs": 8.419
+          },
+          {
+            "name": "$jd$nc_95_ctor_95_codes",
+            "sampledMs": 8.104
+          },
+          {
+            "name": "$jd$index_95_remove",
+            "sampledMs": 8.074
+          },
+          {
+            "name": "$jd$String_46_contains",
+            "sampledMs": 8.027
+          },
+          {
+            "name": "$jd$kr_95_refs_95_list",
+            "sampledMs": 7.854
+          }
+        ],
+        "inclusiveFunctionUnion": [
+          {
+            "name": "(root)",
+            "sampledMs": 1455.543
+          },
+          {
+            "name": "inspectWithMemo",
+            "sampledMs": 1203.03
+          },
+          {
+            "name": "",
+            "sampledMs": 1188.209
+          },
+          {
+            "name": "api.<computed>",
+            "sampledMs": 1108.625
+          },
+          {
+            "name": "nr_compile",
+            "sampledMs": 524.331
+          },
+          {
+            "name": "ns_compile_named",
+            "sampledMs": 462.194
+          },
+          {
+            "name": "ns_compile_planned",
+            "sampledMs": 401.07
+          },
+          {
+            "name": "discoverSources",
+            "sampledMs": 285.534
+          },
+          {
+            "name": "visit",
+            "sampledMs": 269.519
+          },
+          {
+            "name": "f_prefix_complete_source",
+            "sampledMs": 217.928
+          },
+          {
+            "name": "f_complete_source_indexed",
+            "sampledMs": 215.671
+          },
+          {
+            "name": "f_complete_aliases_indexed",
+            "sampledMs": 214.704
+          },
+          {
+            "name": "f_body_header",
+            "sampledMs": 209.636
+          },
+          {
+            "name": "f_source_body_indexed",
+            "sampledMs": 209.636
+          },
+          {
+            "name": "nc_lower_to",
+            "sampledMs": 178.381
+          },
+          {
+            "name": "nf_plan",
+            "sampledMs": 175.424
+          },
+          {
+            "name": "nc_lower_live_to",
+            "sampledMs": 175.322
+          },
+          {
+            "name": "nd_app_to",
+            "sampledMs": 169.948
+          },
+          {
+            "name": "f_tops",
+            "sampledMs": 166.423
+          },
+          {
+            "name": "f_context_publish$scc",
+            "sampledMs": 164.305
+          },
+          {
+            "name": "nc_finish",
+            "sampledMs": 140.575
+          },
+          {
+            "name": "nf_lets",
+            "sampledMs": 139.978
+          },
+          {
+            "name": "nf_finish_plan",
+            "sampledMs": 137.256
+          },
+          {
+            "name": "nf_finish_ready",
+            "sampledMs": 136.242
+          },
+          {
+            "name": "(garbage collector)",
+            "sampledMs": 132.806
+          },
+          {
+            "name": "nf_candidate",
+            "sampledMs": 123.783
+          },
+          {
+            "name": "nf_candidates",
+            "sampledMs": 122.802
+          },
+          {
+            "name": "nc_match_apply_original_to",
+            "sampledMs": 122.382
+          },
+          {
+            "name": "nc_match_apply_to",
+            "sampledMs": 122.382
+          },
+          {
+            "name": "nq_match",
+            "sampledMs": 122.382
+          },
+          {
+            "name": "nc_match_apply_slow_to",
+            "sampledMs": 121.401
+          },
+          {
+            "name": "nc_lower_partition",
+            "sampledMs": 113.888
+          },
+          {
+            "name": "base_prefix_program_world_book",
+            "sampledMs": 112.669
+          },
+          {
+            "name": "check_program_diagnostic_world",
+            "sampledMs": 112.669
+          },
+          {
+            "name": "f_context_definition",
+            "sampledMs": 110.483
+          },
+          {
+            "name": "f_context_definition_input",
+            "sampledMs": 108.306
+          },
+          {
+            "name": "f_context_definition_start",
+            "sampledMs": 108.306
+          },
+          {
+            "name": "nq_bind_choose",
+            "sampledMs": 100.012
+          },
+          {
+            "name": "nf_lets_local",
+            "sampledMs": 100.012
+          },
+          {
+            "name": "nf_bind_boxed",
+            "sampledMs": 96.324
+          }
+        ],
+        "nearestSourceOwner": [
+          {
+            "name": "unattributed/host/runtime/GC",
+            "sampledMs": 229.052
+          },
+          {
+            "name": "src/back/native/bridge.bend",
+            "sampledMs": 102.373
+          },
+          {
+            "name": "src/core/normalize.bend",
+            "sampledMs": 93.934
+          },
+          {
+            "name": "src/core/index.bend",
+            "sampledMs": 88.518
+          },
+          {
+            "name": "src/core/term.bend",
+            "sampledMs": 82.041
+          },
+          {
+            "name": "src/front/lexer.bend",
+            "sampledMs": 76.728
+          },
+          {
+            "name": "src/back/native/emit.bend",
+            "sampledMs": 71.383
+          },
+          {
+            "name": "src/front/parser.bend",
+            "sampledMs": 52.772
+          },
+          {
+            "name": "src/core/reach.bend",
+            "sampledMs": 44.685
+          },
+          {
+            "name": "src/check/kernel.bend",
+            "sampledMs": 43.124
+          },
+          {
+            "name": "src/back/native/product.bend",
+            "sampledMs": 39.707
+          },
+          {
+            "name": "src/back/native/text.bend",
+            "sampledMs": 39.274
+          },
+          {
+            "name": "src/back/native/identity.bend",
+            "sampledMs": 29.788
+          },
+          {
+            "name": "src/back/native/erase.bend",
+            "sampledMs": 28.889
+          },
+          {
+            "name": "src/back/native/book.bend",
+            "sampledMs": 28.774
+          },
+          {
+            "name": "src/back/native/static.bend",
+            "sampledMs": 23.668
+          },
+          {
+            "name": "src/back/native/flat.bend",
+            "sampledMs": 23.252
+          },
+          {
+            "name": "src/front/declarations.bend",
+            "sampledMs": 21.679
+          },
+          {
+            "name": "src/back/native/scalar-array.bend",
+            "sampledMs": 21.593
+          },
+          {
+            "name": "src/load/modules.bend",
+            "sampledMs": 20.685
+          },
+          {
+            "name": "src/front/contextual.bend",
+            "sampledMs": 19.906
+          },
+          {
+            "name": "src/back/native/sharing.bend",
+            "sampledMs": 19.691
+          },
+          {
+            "name": "src/check/prefix-state.bend",
+            "sampledMs": 19.369
+          },
+          {
+            "name": "src/check/annotate.bend",
+            "sampledMs": 18.371
+          },
+          {
+            "name": "src/back/native/uses.bend",
+            "sampledMs": 16.925
+          },
+          {
+            "name": "src/back/native/direct.bend",
+            "sampledMs": 14.635
+          },
+          {
+            "name": "src/back/native/product-layout.bend",
+            "sampledMs": 13.588
+          },
+          {
+            "name": "src/back/common/arity.bend",
+            "sampledMs": 13.558
+          },
+          {
+            "name": "src/back/js/validate.bend",
+            "sampledMs": 12.904
+          },
+          {
+            "name": "src/front/fresh_work.bend",
+            "sampledMs": 11.938
+          },
+          {
+            "name": "src/load/graph.bend",
+            "sampledMs": 11.352
+          },
+          {
+            "name": "src/front/validate.bend",
+            "sampledMs": 10.59
+          },
+          {
+            "name": "src/back/native/observer-layout.bend",
+            "sampledMs": 9.471
+          },
+          {
+            "name": "src/back/native/word-pattern.bend",
+            "sampledMs": 8.982
+          },
+          {
+            "name": "src/back/common/queries.bend",
+            "sampledMs": 7.806
+          },
+          {
+            "name": "src/back/native/intrinsic.bend",
+            "sampledMs": 7.657
+          },
+          {
+            "name": "src/front/literals_arrays.bend",
+            "sampledMs": 7.476
+          },
+          {
+            "name": "src/back/native/tables.bend",
+            "sampledMs": 6.734
+          },
+          {
+            "name": "src/back/native/observer-analysis.bend",
+            "sampledMs": 6.447
+          },
+          {
+            "name": "src/front/flatten.bend",
+            "sampledMs": 5.347
+          }
+        ],
+        "scope": "V8 sampled time, not clean wall timing. Source owner uses nearest recognized named frame; inlining/missing names/GC may remain unattributed. Inclusive rows overlap and must not be added."
+      }
+    },
+    {
+      "job": {
+        "name": "profile-numeric-b1",
+        "action": "request",
+        "role": "b1",
+        "case": "numeric",
+        "profile": true
+      },
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase78/compiler21-compilation/runs/profile-numeric-b1/report.json",
+        "sha256": "c374dc5bd321feabc0432f35f9b1bc14169616ad2d7ff0963ae3c011e10ec4e7",
+        "bytes": 71003
+      },
+      "stages": {
+        "f_source_header": {
+          "calls": 2,
+          "inclusiveMs": 17.728437999999983,
+          "exclusiveMs": 17.728437999999983
+        },
+        "f_prefix_complete_ready_seed": {
+          "calls": 1,
+          "inclusiveMs": 0.8835119999999961,
+          "exclusiveMs": 0.8835119999999961
+        },
+        "f_prefix_complete_source": {
+          "calls": 2,
+          "inclusiveMs": 111.18896400000006,
+          "exclusiveMs": 111.18896400000006
+        },
+        "f_source_completed": {
+          "calls": 2,
+          "inclusiveMs": 0.08448199999997996,
+          "exclusiveMs": 0.08448199999997996
+        },
+        "f_prefix_graph_trace": {
+          "calls": 1,
+          "inclusiveMs": 7.254506000000106,
+          "exclusiveMs": 7.254506000000106
+        },
+        "check_program_diagnostic_world": {
+          "calls": 1,
+          "inclusiveMs": 51.901791,
+          "exclusiveMs": 51.901791
+        },
+        "driver_report_data": {
+          "calls": 1,
+          "inclusiveMs": 43.21701900000005,
+          "exclusiveMs": 43.21701900000005
+        },
+        "driver_emit_owned": {
+          "calls": 1,
+          "inclusiveMs": 13.424149000000057,
+          "exclusiveMs": 13.424149000000057
+        },
+        "j_compile_error": {
+          "calls": 1,
+          "inclusiveMs": 0.5449619999999413,
+          "exclusiveMs": 0.5449619999999413
+        },
+        "nc_annotation_stops": {
+          "calls": 1,
+          "inclusiveMs": 19.354260000000068,
+          "exclusiveMs": 19.354260000000068
+        },
+        "reach_book": {
+          "calls": 1,
+          "inclusiveMs": 8.221902999999998,
+          "exclusiveMs": 8.221902999999998
+        },
+        "annotate_selected": {
+          "calls": 1,
+          "inclusiveMs": 110.48624799999993,
+          "exclusiveMs": 110.48624799999993
+        },
+        "nc_annotated_context": {
+          "calls": 1,
+          "inclusiveMs": 24.27150800000004,
+          "exclusiveMs": 24.27150800000004
+        },
+        "nr_prepare": {
+          "calls": 1,
+          "inclusiveMs": 93.81188399999996,
+          "exclusiveMs": 93.81188399999996
+        },
+        "kf_source": {
+          "calls": 3,
+          "inclusiveMs": 8.991312000000107,
+          "exclusiveMs": 8.991312000000107
+        },
+        "nc_foreign_source": {
+          "calls": 3,
+          "inclusiveMs": 0.5872840000004089,
+          "exclusiveMs": 0.5872840000004089
+        },
+        "nr_compile": {
+          "calls": 1,
+          "inclusiveMs": 626.593145,
+          "exclusiveMs": 626.593145
+        }
+      },
+      "cpu": {
+        "samples": 983,
+        "sampledMs": 1275.959,
+        "exclusiveLeafFunctions": [
+          {
+            "name": "",
+            "sampledMs": 382.06
+          },
+          {
+            "name": "run_loop",
+            "sampledMs": 237.622
+          },
+          {
+            "name": "(garbage collector)",
+            "sampledMs": 115.961
+          },
+          {
+            "name": "post",
+            "sampledMs": 22.053
+          },
+          {
+            "name": "$nc_native_primitive$",
+            "sampledMs": 17.687
+          },
+          {
+            "name": "$annotate$",
+            "sampledMs": 15.773
+          },
+          {
+            "name": "decodeBaseArena",
+            "sampledMs": 15.003
+          },
+          {
+            "name": "$norm_node_min$",
+            "sampledMs": 10.558
+          },
+          {
+            "name": "$norm_max_term$",
+            "sampledMs": 10.546
+          },
+          {
+            "name": "$nc_primitive_name$",
+            "sampledMs": 9.926
+          },
+          {
+            "name": "validateSpanBook",
+            "sampledMs": 8.735
+          },
+          {
+            "name": "$index_find$",
+            "sampledMs": 8.324
+          },
+          {
+            "name": "$nc_refs$",
+            "sampledMs": 7.79
+          },
+          {
+            "name": "$nt_lines$",
+            "sampledMs": 7.579
+          },
+          {
+            "name": "$kr_refs_list$",
+            "sampledMs": 7.463
+          },
+          {
+            "name": "$index_hash$",
+            "sampledMs": 7.268
+          },
+          {
+            "name": "$subst_terms$",
+            "sampledMs": 7.205
+          },
+          {
+            "name": "$j_find_ctor_children$",
+            "sampledMs": 6.782
+          },
+          {
+            "name": "$nt_replace_step$",
+            "sampledMs": 6.63
+          },
+          {
+            "name": "$norm_node_let$",
+            "sampledMs": 5.939
+          },
+          {
+            "name": "$nt_clean$",
+            "sampledMs": 5.676
+          },
+          {
+            "name": "$nc_array_known$",
+            "sampledMs": 5.523
+          },
+          {
+            "name": "$nq_uses_list$",
+            "sampledMs": 4.832
+          },
+          {
+            "name": "$nt_lines_go$",
+            "sampledMs": 4.72
+          },
+          {
+            "name": "$nt_fid$",
+            "sampledMs": 4.648
+          },
+          {
+            "name": "$nc_ctor_codes$",
+            "sampledMs": 4.206
+          },
+          {
+            "name": "$kr_resolve$",
+            "sampledMs": 4.196
+          },
+          {
+            "name": "$nol_wrap$",
+            "sampledMs": 4.083
+          },
+          {
+            "name": "$nq_signature_def$",
+            "sampledMs": 3.788
+          },
+          {
+            "name": "$String$starts_with$",
+            "sampledMs": 3.701
+          },
+          {
+            "name": "$book_final_scan$",
+            "sampledMs": 3.677
+          },
+          {
+            "name": "$norm_args$",
+            "sampledMs": 3.566
+          },
+          {
+            "name": "$nf_bind_boxed$",
+            "sampledMs": 3.485
+          },
+          {
+            "name": "$nc_ctor_index$",
+            "sampledMs": 3.378
+          },
+          {
+            "name": "$ns_static_terms$",
+            "sampledMs": 3.351
+          },
+          {
+            "name": "$index_leaf$",
+            "sampledMs": 3.244
+          },
+          {
+            "name": "$String$eq$",
+            "sampledMs": 3.226
+          },
+          {
+            "name": "$noa_match_spec$",
+            "sampledMs": 3.178
+          },
+          {
+            "name": "$norm_exact_lists$",
+            "sampledMs": 3.13
+          },
+          {
+            "name": "$norm_node_ref$",
+            "sampledMs": 3.058
+          }
+        ],
+        "inclusiveFunctionUnion": [
+          {
+            "name": "(root)",
+            "sampledMs": 1275.959
+          },
+          {
+            "name": "",
+            "sampledMs": 1122.9
+          },
+          {
+            "name": "run_loop",
+            "sampledMs": 1076.699
+          },
+          {
+            "name": "inspectWithMemo",
+            "sampledMs": 1025.759
+          },
+          {
+            "name": "api.<computed>",
+            "sampledMs": 946.702
+          },
+          {
+            "name": "ns_compile_planned",
+            "sampledMs": 241.937
+          },
+          {
+            "name": "nf_plan",
+            "sampledMs": 151.222
+          },
+          {
+            "name": "nc_lower_to",
+            "sampledMs": 143.282
+          },
+          {
+            "name": "discoverSources",
+            "sampledMs": 138.242
+          },
+          {
+            "name": "nf_finish_ready",
+            "sampledMs": 134.5
+          },
+          {
+            "name": "nf_finish_plan",
+            "sampledMs": 134.5
+          },
+          {
+            "name": "visit",
+            "sampledMs": 130.369
+          },
+          {
+            "name": "nc_lower_partition",
+            "sampledMs": 123.097
+          },
+          {
+            "name": "(garbage collector)",
+            "sampledMs": 115.961
+          },
+          {
+            "name": "f_complete_aliases_indexed",
+            "sampledMs": 105.051
+          },
+          {
+            "name": "no_route_names",
+            "sampledMs": 100.573
+          },
+          {
+            "name": "nf_candidate",
+            "sampledMs": 86.688
+          },
+          {
+            "name": "nf_bind_boxed",
+            "sampledMs": 84.017
+          },
+          {
+            "name": "annotate",
+            "sampledMs": 83.7
+          },
+          {
+            "name": "ka_mat_ctr",
+            "sampledMs": 78.578
+          },
+          {
+            "name": "ka_mat",
+            "sampledMs": 78.578
+          },
+          {
+            "name": "ka_lam",
+            "sampledMs": 78.563
+          },
+          {
+            "name": "ka_annotated",
+            "sampledMs": 77.914
+          },
+          {
+            "name": "ne_program",
+            "sampledMs": 77.742
+          },
+          {
+            "name": "nf_lets_local",
+            "sampledMs": 77.559
+          },
+          {
+            "name": "nc_match_apply_slow_to",
+            "sampledMs": 77.093
+          },
+          {
+            "name": "nr_prepare",
+            "sampledMs": 74.099
+          },
+          {
+            "name": "nr_visit",
+            "sampledMs": 65.458
+          },
+          {
+            "name": "f_context_definition_input",
+            "sampledMs": 65.423
+          },
+          {
+            "name": "nc_compile_kept",
+            "sampledMs": 59.939
+          },
+          {
+            "name": "ns_compile_named",
+            "sampledMs": 58.384
+          },
+          {
+            "name": "nr_compile",
+            "sampledMs": 56.705
+          },
+          {
+            "name": "ne_program_texts",
+            "sampledMs": 52.441
+          },
+          {
+            "name": "nc_erase_mat",
+            "sampledMs": 49.476
+          },
+          {
+            "name": "nc_native_primitive",
+            "sampledMs": 47.076
+          },
+          {
+            "name": "nq_signatures",
+            "sampledMs": 45.658
+          },
+          {
+            "name": "nc_erase_list",
+            "sampledMs": 45.581
+          },
+          {
+            "name": "f_atom",
+            "sampledMs": 43.877
+          },
+          {
+            "name": "f_expr",
+            "sampledMs": 43.877
+          },
+          {
+            "name": "f_atom_existing",
+            "sampledMs": 40.719
+          }
+        ],
+        "nearestSourceOwner": [
+          {
+            "name": "unattributed/host/runtime/GC",
+            "sampledMs": 180.963
+          },
+          {
+            "name": "src/back/native/bridge.bend",
+            "sampledMs": 135.914
+          },
+          {
+            "name": "src/core/normalize.bend",
+            "sampledMs": 61.623
+          },
+          {
+            "name": "src/core/term.bend",
+            "sampledMs": 57.77
+          },
+          {
+            "name": "src/check/annotate.bend",
+            "sampledMs": 55.996
+          },
+          {
+            "name": "src/back/native/emit.bend",
+            "sampledMs": 55.465
+          },
+          {
+            "name": "src/back/native/product.bend",
+            "sampledMs": 54.225
+          },
+          {
+            "name": "src/core/index.bend",
+            "sampledMs": 50.827
+          },
+          {
+            "name": "src/back/native/book.bend",
+            "sampledMs": 47.977
+          },
+          {
+            "name": "src/back/native/static.bend",
+            "sampledMs": 42.29
+          },
+          {
+            "name": "src/back/native/text.bend",
+            "sampledMs": 39.044
+          },
+          {
+            "name": "src/back/native/flat.bend",
+            "sampledMs": 36.782
+          },
+          {
+            "name": "src/back/native/erase.bend",
+            "sampledMs": 36.589
+          },
+          {
+            "name": "src/front/parser.bend",
+            "sampledMs": 34.838
+          },
+          {
+            "name": "src/core/reach.bend",
+            "sampledMs": 31.388
+          },
+          {
+            "name": "src/back/js/validate.bend",
+            "sampledMs": 30.072
+          },
+          {
+            "name": "src/check/kernel.bend",
+            "sampledMs": 26.66
+          },
+          {
+            "name": "src/back/native/direct.bend",
+            "sampledMs": 21.982
+          },
+          {
+            "name": "src/load/modules.bend",
+            "sampledMs": 19.193
+          },
+          {
+            "name": "src/back/native/request.bend",
+            "sampledMs": 18.471
+          },
+          {
+            "name": "src/front/contextual.bend",
+            "sampledMs": 17.773
+          },
+          {
+            "name": "src/back/native/scalar-array.bend",
+            "sampledMs": 14.57
+          },
+          {
+            "name": "src/back/native/observer-analysis.bend",
+            "sampledMs": 14.303
+          },
+          {
+            "name": "src/back/native/observer-layout.bend",
+            "sampledMs": 14.215
+          },
+          {
+            "name": "src/back/common/arity.bend",
+            "sampledMs": 14.017
+          },
+          {
+            "name": "src/driver/report.bend",
+            "sampledMs": 11.721
+          },
+          {
+            "name": "src/front/lexer.bend",
+            "sampledMs": 11.621
+          },
+          {
+            "name": "src/back/js/literals.bend",
+            "sampledMs": 9.581
+          },
+          {
+            "name": "src/back/native/word-pattern.bend",
+            "sampledMs": 8.698
+          },
+          {
+            "name": "src/back/native/array.bend",
+            "sampledMs": 8.69
+          },
+          {
+            "name": "src/driver/api.bend",
+            "sampledMs": 8.17
+          },
+          {
+            "name": "src/back/native/observer-adapter.bend",
+            "sampledMs": 8.012
+          },
+          {
+            "name": "src/back/native/identity.bend",
+            "sampledMs": 7.638
+          },
+          {
+            "name": "src/back/common/queries.bend",
+            "sampledMs": 6.782
+          },
+          {
+            "name": "src/front/declarations.bend",
+            "sampledMs": 6.34
+          },
+          {
+            "name": "src/check/prefix-state.bend",
+            "sampledMs": 6.119
+          },
+          {
+            "name": "src/back/native/observer-integration.bend",
+            "sampledMs": 5.978
+          },
+          {
+            "name": "src/front/literals_arrays.bend",
+            "sampledMs": 5.766
+          },
+          {
+            "name": "src/back/native/product-layout.bend",
+            "sampledMs": 4.49
+          },
+          {
+            "name": "src/front/fresh_work.bend",
+            "sampledMs": 4.405
+          }
+        ],
+        "scope": "V8 sampled time, not clean wall timing. Source owner uses nearest recognized named frame; inlining/missing names/GC may remain unattributed. Inclusive rows overlap and must not be added."
+      }
+    }
+  ],
+  "receipt": {
+    "path": "selfhost/build/phase78/profile21-analysis.json",
+    "sha256": "d8f754d1f3433c8b245a2cc326cfe1ebe268cf7d38d0d2727dfd6e86e5ac19db"
+  }
+}

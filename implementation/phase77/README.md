@@ -219,3 +219,10 @@ method bytes. See its manifest, verification and restore instructions in the
 methods directory. Older baselines, pinned upstream and toolchains remain
 external dependencies. The final installed package is self-contained for its
 local lineage verification.
+
+
+The selected release is committed in [60bb45f](https://github.com/rom1504/bend/commit/60bb45f).
+The [sealed capsule](../../selfhost/tools/performance/phase77/evidence01/README.md)
+contains7,117 files (343MB before deduplication,37.6MB compressed); all objects,
+input hashes and modes verify. The preceding B2 packaging checkpoint is
+[98c54d9](https://github.com/rom1504/bend/commit/98c54d9).

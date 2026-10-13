@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
 import {verifyAttempt,runDevelopment,identity,digest} from './workflow.mjs';
 import {verifyEqualityDerivation,transformEquality} from './equality.mjs';
+import {prepareSelfRelease,verifySelfRelease} from './self-release.mjs';
 
 const project=path.resolve(import.meta.dirname,'../..');
 const dist=path.join(project,'dist');
@@ -32,9 +33,9 @@ function graphHelperInput(bootstrap,root=project){
 export function verifyRelease(root=project){
  const dist=path.join(root,'dist');
  const manifest=read(path.join(dist,'release.json'));
- const checked=manifest.kind==='bend-default-checked-release';
- assert.ok(checked||manifest.kind==='bend-default-equality-release','Unsupported release kind');assert.equal(manifest.version,1);assert.equal(manifest.newBootstrap,false);
- assert.equal(manifest.artifact,checked?'checked-b1':'equality-derived-b1');
+ const checked=manifest.kind==='bend-default-checked-release',selfHosted=manifest.kind==='bend-default-selfhost-release';
+ assert.ok(checked||selfHosted||manifest.kind==='bend-default-equality-release','Unsupported release kind');assert.equal(manifest.version,1);assert.equal(manifest.newBootstrap,false);
+ assert.equal(manifest.artifact,selfHosted?'self-emitted-b2':checked?'checked-b1':'equality-derived-b1');
  assert.equal(fs.existsSync(path.join(dist,'typed-api.mjs.bootstrap.json')),false,'Installed provenance belongs in release-lineage');
  assert.equal(fs.existsSync(path.join(dist,'typed-bootstrap-report.json')),false,'Stale default bootstrap report');
  for(const items of [manifest.files,manifest.checkout]){assert.equal(new Set(items.map(x=>x.path)).size,items.length,'Duplicate release paths');for(const item of items)check(item,root);}
@@ -85,15 +86,17 @@ export function verifyRelease(root=project){
  }
  const derivation=read(path.join(dist,'release-lineage/derivation.json'));
  assert.equal(derivation.kind,'bend-derived-b1-equality');assert.equal(derivation.complete,true);assert.equal(derivation.newBootstrap,false);
- assert.equal(derivation.original.api.sha256,parent.sha256);assert.equal(derivation.output.sha256,api.sha256);
+ const generated=selfHosted?files['dist/release-lineage/generator-api.mjs']:api;assert.ok(generated);
+ assert.equal(derivation.original.api.sha256,parent.sha256);assert.equal(derivation.output.sha256,generated.sha256);
  assert.equal(derivation.original.bootstrapReport.sha256,files['dist/release-lineage/checked-bootstrap.json'].sha256);
  assert.equal(derivation.toolSnapshot.sha256,files['dist/release-lineage/equality.mjs'].sha256);
  const replay=transformEquality(fs.readFileSync(check(parent,root),'utf8'),derivation.transform.version);
- assert.equal(digest(replay.source),api.sha256);assert.deepEqual(replay.stats,derivation.transform);
+ assert.equal(digest(replay.source),generated.sha256);assert.deepEqual(replay.stats,derivation.transform);
+ if(selfHosted)verifySelfRelease(manifest,root);
  return manifest;
 }
 
-export async function installAttempt(directory,derivationFile){
+export async function installAttempt(directory,derivationFile,selfHosted){
  directory=fs.realpathSync(directory);
  const attempt=await verifyAttempt(directory);
  const derivation=derivationFile??attempt.derivationReport?.file;
@@ -118,32 +121,46 @@ export async function installAttempt(directory,derivationFile){
  if(hasDirect)for(const file of walk(path.join(project,'src/runtime/js/effs'))){assert.equal(identity(file).sha256,identity(path.join(attempt.snapshot.root,relative(file))).sha256);checkout.push(record(file));}
  for(const file of walk(path.join(project,'src/runtime/native'))){assert.equal(identity(file).sha256,identity(path.join(attempt.snapshot.root,relative(file))).sha256);checkout.push(record(file));}
  checkout.push(record(path.join(project,'cli.mjs')));
+ for(const name of ['release','self-release'])checkout.push(record(path.join(project,'tools/development',name+'.mjs')));
  const stage=fs.mkdtempSync(path.join(dist,'.release-'));
  try {
   const lineage=path.join(stage,'release-lineage');fs.mkdirSync(lineage);
   const copies=[[derived?.api??attempt.checkedApi.file,'typed-api.mjs'],[attempt.base.file,'base.bend'],[attempt.checkedApi.file,'release-lineage/checked-api.mjs'],[attempt.bootstrapReport.file,'release-lineage/checked-bootstrap.json'],...(derived?[[derived.report,'release-lineage/derivation.json'],[derived.metadata.toolSnapshot.file,'release-lineage/equality.mjs']]:[])];
+  if(selfHosted){
+   assert.ok(derived,'B2 installation requires its checked equality-derived B1 generator');
+   const names=new Set(selfHosted.copies.map(([,name])=>name));
+   for(let i=copies.length-1;i>=0;i--)if(names.has(copies[i][1]))copies.splice(i,1);
+   copies.push(...selfHosted.copies);
+  }
   for(const [source,target] of copies)fs.copyFileSync(source,path.join(stage,target));
   await verifyAttempt(directory);if(derived)verifyEqualityDerivation(derived.report);
+  if(selfHosted)verifySelfRelease({files:copies.map(([,name])=>({path:'dist/'+name,sha256:identity(path.join(stage,name)).sha256,bytes:fs.statSync(path.join(stage,name)).size})),checkout,sourceSha256:bootstrap.sourceSha256,runtimeSha256:attempt.runtime.sha256,directRuntimeSha256:identity(path.join(project,'src/runtime/js/direct.mjs')).sha256,lineage:{selfEmittedSha256:selfHosted.apiSha256,generatorSha256:selfHosted.generatorSha256}},project,name=>path.join(stage,name.replace(/^dist\//,'')));
   // Preserve the previous default's Base and lineage as well as its API.
   const previous=[];
   const priorManifest=path.join(dist,'release.json');
   const priorFiles=fs.existsSync(priorManifest)?read(priorManifest).files.map(item=>{const file=local(item.path);assert.ok(file.startsWith(dist+path.sep),'Previous release artifact is outside dist');return path.relative(dist,file);}):[];
   for(const name of new Set(['typed-api.mjs','typed-api.mjs.bootstrap.json','typed-bootstrap-report.json',...(fs.existsSync(priorManifest)?['release.json',...priorFiles]:[])]))if(fs.existsSync(path.join(dist,name)))previous.push({name,...identity(path.join(dist,name))});
-  if(previous.length&&previous[0].sha256!==(derived?.metadata.output.sha256??attempt.checkedApi.sha256)){const history=path.join(dist,'release-history',previous[0].sha256);fs.mkdirSync(history,{recursive:true});for(const item of previous){const target=path.join(history,item.name);fs.mkdirSync(path.dirname(target),{recursive:true});if(fs.existsSync(target))assert.equal(identity(target).sha256,item.sha256);else fs.copyFileSync(item.file,target);}}
+  if(previous.length&&previous[0].sha256!==(selfHosted?.apiSha256??derived?.metadata.output.sha256??attempt.checkedApi.sha256)){const history=path.join(dist,'release-history',previous[0].sha256);fs.mkdirSync(history,{recursive:true});for(const item of previous){const target=path.join(history,item.name);fs.mkdirSync(path.dirname(target),{recursive:true});if(fs.existsSync(target))assert.equal(identity(target).sha256,item.sha256);else fs.copyFileSync(item.file,target);}}
   fs.mkdirSync(path.join(dist,'release-lineage'),{recursive:true});
   const names=copies.map(([,name])=>name);
   for(const name of names)fs.renameSync(path.join(stage,name),path.join(dist,name));
   for(const name of ['typed-api.mjs.bootstrap.json','typed-bootstrap-report.json',...(derived?[]:['release-lineage/derivation.json','release-lineage/equality.mjs'])])fs.rmSync(path.join(dist,name),{force:true});
-  const manifest={kind:derived?'bend-default-equality-release':'bend-default-checked-release',version:1,newBootstrap:false,installed:new Date().toISOString(),
-   artifact:derived?'equality-derived-b1':'checked-b1',sourceSha256:bootstrap.sourceSha256,runtimeSha256:attempt.runtime.sha256,
+  for(const name of priorFiles)if(name.startsWith('release-lineage/')&&!names.includes(name))fs.rmSync(path.join(dist,name),{force:true});
+  const manifest={kind:selfHosted?'bend-default-selfhost-release':derived?'bend-default-equality-release':'bend-default-checked-release',version:1,newBootstrap:false,installed:new Date().toISOString(),
+   artifact:selfHosted?'self-emitted-b2':derived?'equality-derived-b1':'checked-b1',sourceSha256:bootstrap.sourceSha256,runtimeSha256:attempt.runtime.sha256,
    ...(hasDirect?{directRuntimeSha256:identity(path.join(project,'src/runtime/js/direct.mjs')).sha256,javascriptBackends:['js','direct']}:{}),
    files:names.map(name=>record(path.join(dist,name))),checkout,
-   lineage:{...(derived?{checkedParentSha256:attempt.checkedApi.sha256,derivationSha256:identity(derived.report).sha256}:{checkedApiSha256:attempt.checkedApi.sha256,bootstrapSha256:attempt.bootstrapReport.sha256}),upstreamRevision:bootstrap.revision},
-   provenanceScope:derived?'Original checked bootstrap and derivation reports are preserved byte-for-byte with historical paths. Local verification checks relative installed/checkout identities and exact transformation replay; it does not create or relocate bootstrap provenance.':'The installed API is byte-identical to the genuine checked attempt. Its original bootstrap report is retained byte-for-byte with historical paths; relocated verification binds local source, recipe, Base and runtime identities without creating new bootstrap provenance.',
+   lineage:{...(selfHosted?{selfEmittedSha256:selfHosted.apiSha256,generatorSha256:selfHosted.generatorSha256}:{}),...(derived?{checkedParentSha256:attempt.checkedApi.sha256,derivationSha256:identity(derived.report).sha256}:{checkedApiSha256:attempt.checkedApi.sha256,bootstrapSha256:attempt.bootstrapReport.sha256}),upstreamRevision:bootstrap.revision},
+   provenanceScope:selfHosted?selfHosted.provenanceScope:derived?'Original checked bootstrap and derivation reports are preserved byte-for-byte with historical paths. Local verification checks relative installed/checkout identities and exact transformation replay; it does not create or relocate bootstrap provenance.':'The installed API is byte-identical to the genuine checked attempt. Its original bootstrap report is retained byte-for-byte with historical paths; relocated verification binds local source, recipe, Base and runtime identities without creating new bootstrap provenance.',
    validationScope:'Installation verifies the completed checked attempt and any explicit derivation. Release build additionally requires maintained focused validation; broad conformance and self-reproduction are separate evidence.'};
   fs.writeFileSync(path.join(stage,'release.json'),JSON.stringify(manifest,null,2)+'\n');fs.renameSync(path.join(stage,'release.json'),path.join(dist,'release.json'));
   return verifyRelease();
  }finally{fs.rmSync(stage,{recursive:true,force:true});}
+}
+
+export async function installSelfHosted(directory,pinsFile,qualificationDirectory){
+ const candidate=prepareSelfRelease(fs.realpathSync(directory),fs.realpathSync(pinsFile),fs.realpathSync(qualificationDirectory));
+ return installAttempt(directory,undefined,candidate);
 }
 
 export async function buildRelease(configFile,output){
@@ -164,8 +181,9 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1]
   const [mode,...args]=process.argv.slice(2);let result;
   if(mode==='--verify'&&!args.length)result=verifyRelease();
   else if(mode==='--install-attempt'&&(args.length===1||args.length===2))result=await installAttempt(...args);
+  else if(mode==='--install-b2'&&args.length===3)result=await installSelfHosted(...args);
   else if(mode==='--build'&&(args.length===0||args.length===2))result=await buildRelease(...args);
-  else throw Error('Usage: release.mjs --build [CONFIG NEW_ATTEMPT] | --install-attempt ATTEMPT [DERIVATION] | --verify');
+  else throw Error('Usage: release.mjs --build [CONFIG NEW_ATTEMPT] | --install-attempt ATTEMPT [DERIVATION] | --install-b2 ATTEMPT IMAGE_PINS QUALIFICATION_DIRECTORY | --verify');
   console.log(JSON.stringify({complete:true,artifact:result.artifact,api:result.files.find(x=>x.path==='dist/typed-api.mjs'),sourceSha256:result.sourceSha256,newBootstrap:false}));
  }catch(error){console.error(error.stack??error);process.exitCode=1;}
 }

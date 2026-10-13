@@ -5,6 +5,30 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
+The default package is now genuine **B2** (`29da003b…`), emitted by the Bend
+compiler itself, with the checked B1 generator and self-check/fixed-point receipts
+retained in `selfhost/dist/release-lineage/`. The [Phase77 report](../implementation/phase77/README.md)
+tracks the current work. The unchanged Phase76 source measured **1.908×** upstream
+for B2 C-compilation requests versus **2.752×** for B1. This is a deployment-stage
+change, not a new algorithmic gain. Installed/relocated legacy42 and default24
+checks and 13 package-integrity controls pass.
+
+To install a qualified B2 explicitly, run from `selfhost/`:
+
+```sh
+node tools/development/release.mjs --install-b2 ATTEMPT IMAGE_PINS QUALIFICATION_DIRECTORY
+node tools/development/release.mjs --verify
+```
+
+`QUALIFICATION_DIRECTORY` contains the original `self-check/report.json` and
+`fixed-point/report.json`. The installer validates local hash joins and preserves
+the previous release. Routine development and `npm run build` still create and
+install checked B1; installing a qualified B2 is a separate explicit step.
+
+The following Phase73 results are historical; Phase76 retains their exact twelve
+C artifacts while improving compilation time. Read the latest report for the
+active compiler and finite conformance boundaries.
+
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
 The [Phase73 report](../implementation/phase73/README.md) records installed
 **compiler14**, production source `a6ca26d`, checked B1 `c2705793…` and genuine

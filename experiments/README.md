@@ -5,6 +5,17 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed implementation: Phase77 B2 and compact native lowering
+
+[Design](../design/phase77/native-parity.md) · [Report](../implementation/phase77/README.md).
+Default B2`35d7a606…`, qualified B1 parent`f058269d…`. Paired cold C-request
+ratios1.920×/1.482× upstream,30.7%/23.1% less time. The newly authorized
+runtime tradeoff recovers compact scalar patterns and redundant host-body omission:
+1.055× upstream execution,1.8% slower than before overall,expression14.25% slower.
+The real five-source warm session is about1.10× upstream; cold parity remains
+open. All selected gates pass. Complete evidence includes rejected string/product
+prototypes and both favorable and broader warm-loop results.
+
 ## Completed implementation: Phase76 exact-output native checks
 
 [Design](../design/phase76/native-work-reuse.md) ·

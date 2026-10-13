@@ -593,6 +593,19 @@ type NPLevel is Data:
 type NPRow is Data:
   NPRow{+index: U32, +body: KTerm, +residual: U32, +apply: Bool, +last: Bool}
 
+# Module: src/back/native/word-pattern.bend:4
+type NW_Rows is Data:
+  NW_Rows{+valid: Bool, +rows: List<&2, KTerm>}
+
+# Module: src/back/native/word-pattern.bend:7
+type NW_Arms is Data:
+  NW_Arms{+zero: KTerm, +one: KTerm, +end: KTerm, +hasZero: Bool, +hasOne: Bool, +valid: Bool}
+
+# Module: src/back/native/word-pattern.bend:10
+type NW_Cover is Data:
+  NW_None{}
+  NW_Cover{+body: KTerm, +bits: List<&2, KTerm>, +fields: U32}
+
 # Module: src/back/native/show.bend:3
 type NC_Desc is Data:
   NC_Desc{+cells: List<&2, String>, +types: List<&2, KTerm>, +error: String}
@@ -5125,23 +5138,23 @@ law nc_match_apply_slow_to:
   for +target: NC_Target
   NC_Code
 
-# Module: src/back/native/bridge.bend:497
+# Module: src/back/native/bridge.bend:505
 law nc_array_known:
   for +k: String
   Bool
 
-# Module: src/back/native/bridge.bend:565
+# Module: src/back/native/bridge.bend:582
 law nc_compact:
   for +t: KTerm
   KTerm
 
-# Module: src/back/native/bridge.bend:577
+# Module: src/back/native/bridge.bend:594
 law nc_compact_succ:
   for +t: KTerm
   for +count: U32
   KTerm
 
-# Module: src/back/native/direct.bend:36
+# Module: src/back/native/direct.bend:53
 law nd_app_to:
   for +book: List<&2, KDef>
   for +t: KTerm
@@ -5238,6 +5251,32 @@ law np_match_apply:
 law np_can_match:
   for +term: KTerm
   Bool
+
+# Module: src/back/native/word-pattern.bend:22
+law nw_same:
+  for +a: KTerm
+  for +b: KTerm
+  for +pairs: List<&2, KTerm>
+  Bool
+
+# Module: src/back/native/word-pattern.bend:95
+law nw_walk:
+  for +t: KTerm
+  for +depth: U32
+  for +value: U32
+  for +cover: NW_Cover
+  NW_Rows
+
+# Module: src/back/native/word-pattern.bend:205
+law nw_emit:
+  for +book: List<&2, KDef>
+  for rows: List<&2, KTerm>
+  for +word: String
+  for +rest: List<&2, KTerm>
+  for +env: List<&2, NC_Binding>
+  for +n: U32
+  for +target: NC_Target
+  NC_Code
 
 # Module: src/back/native/show.bend:9
 law nc_show_nodes:
@@ -32124,9 +32163,18 @@ def nc_destructure(+name: String, +word: String, +count: U32, +n: U32) -> String
 # Module: src/back/native/bridge.bend:475
 @unsafe
 def nc_match_apply_to(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+  nt_choose(NC_Code, String.eq(tg(kid(t, 0)), "NWPattern"),
+    u => nw_match(book, t, env, n, target, NW_Rows{True{}, ks(kid(t, 0))}),
+    u => nt_choose(NC_Code, nw_applicable(kid(t, 0)),
+      v => nw_match(book, t, env, n, target, nw_walk(kid(kid(t, 0), 0), 0, 0, NW_None{})),
+      v => nc_match_apply_original_to(book, t, env, n, target)))
+
+# Module: src/back/native/bridge.bend:483
+@unsafe
+def nc_match_apply_original_to(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
   nt_choose(NC_Code, nf_scheduler(target) && U32.is_eq(terms_len(ks(t)), 2) && np_can_match(kid(t, 0)), u => np_match_apply(book, t, env, n), u => nc_match_apply_slow_to(book, t, env, n, target))
 
-# Module: src/back/native/bridge.bend:479
+# Module: src/back/native/bridge.bend:487
 @unsafe
 def nc_match_apply_slow_to(book, t, env, n, target):
   +mat = kid(t, 0)
@@ -32138,17 +32186,17 @@ def nc_match_apply_slow_to(book, t, env, n, target):
   +guard = nt_choose(String, String.eq(nm(mat), "Emit") || String.eq(nm(mat), "Halt"), u => "if (term_aux(" ++ word ++ ") != CID_EMIT && term_aux(" ++ word ++ ") != CID_HALT) { err_post(e.mem, ERR_TAGS); return 0; }\n", u => "")
   NC_Code{guard ++ "if (" ++ nc_condition(nm(mat), word) ++ ") {\n" ++ nc_destructure(nm(mat), word, count, n) ++ nc_body(hit) ++ "} else {\n" ++ nc_body(miss) ++ "}\n", nt_append(N_Segment, nc_segs(hit), nc_segs(miss)), nc_fresh(miss), nc_first_error(hit, miss), List.append(&2, String, nc_calls(hit), List.append(&2, String, nc_calls(miss), Nil{}))}
 
-# Module: src/back/native/bridge.bend:490
+# Module: src/back/native/bridge.bend:498
 @unsafe
 def nc_match(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32) -> NC_Code:
   nc_lambda(book, k_lam("", nc_id(n), 1, [kt("NMatch", "", 0, 0, [t, var("", nc_id(n))])], 0, 0, False{}), env, U32.inc(n))
 
-# Module: src/back/native/bridge.bend:494
+# Module: src/back/native/bridge.bend:502
 @unsafe
 def nc_primitive_name(k: String) -> String:
   String.to_lower(nt_clean(k))
 
-# Module: src/back/native/bridge.bend:502
+# Module: src/back/native/bridge.bend:510
 @unsafe
 def nc_native_def(+d: KDef) -> Bool:
   nt_choose(Bool, db(d), u => nc_native_marked(d), u => False{})
@@ -32156,12 +32204,23 @@ def nc_native_def(+d: KDef) -> Bool:
 # Ordinary definitions never require intrinsic-name construction or templates.
 # Explicit control flow matters: Boolean arguments are otherwise evaluated.
 
-# Module: src/back/native/bridge.bend:508
+# Module: src/back/native/bridge.bend:516
+@unsafe
+def nc_native_marked(+d: KDef) -> Bool:
+  nt_choose(Bool, String.eq(tg(nc_unann(dv(d))), "Foreign"), u => False{},
+    u => nc_native_primitive(nc_primitive_name(dn(d))))
+
+# Module: src/back/native/bridge.bend:521
+@unsafe
+def nc_native_primitive(+prim: String) -> Bool:
+  Bool.not(String.eq(ni_template(prim), "")) || nc_array_known(prim) || String.eq(prim, "nat_divmod")
+
+# Module: src/back/native/bridge.bend:525
 @unsafe
 def nc_ref_name(+book: List<&2, KDef>, +name: String) -> String:
   nt_choose(String, nc_native_def(lookup(book, name)), u => "$native." ++ name, u => name)
 
-# Module: src/back/native/bridge.bend:512
+# Module: src/back/native/bridge.bend:529
 @unsafe
 def nc_primitive_arity(+k: String) -> U32:
   +fmt = ni_template(k)
@@ -32170,27 +32229,27 @@ def nc_primitive_arity(+k: String) -> U32:
   nt_choose(U32, String.eq(k, "array_new") || String.eq(k, "array_get") || String.eq(k, "nat_divmod"), u => 2, u =>
   nt_choose(U32, String.eq(fmt, nt_replace(fmt, "$1", "?")), u => 1, u => 2))))
 
-# Module: src/back/native/bridge.bend:520
+# Module: src/back/native/bridge.bend:537
 @unsafe
 def nc_prim_args(+n: U32, +i: U32) -> List<&2, KTerm>:
   nt_choose(List<&2, KTerm>, U32.is_eq(i, n), u => Nil{}, u => Con{var("", U32.add(4000000000, i)), nc_prim_args(n, U32.inc(i))})
 
-# Module: src/back/native/bridge.bend:524
+# Module: src/back/native/bridge.bend:541
 @unsafe
 def nc_prim_lambdas(+k: String, +n: U32, +i: U32) -> KTerm:
   nt_choose(KTerm, U32.is_eq(i, n), u => kt("NOp", k, 0, 0, nc_prim_args(n, 0)), u => k_lam("", U32.add(4000000000, i), 1, [nc_prim_lambdas(k, n, U32.inc(i))], 0, 0, False{}))
 
-# Module: src/back/native/bridge.bend:528
+# Module: src/back/native/bridge.bend:545
 @unsafe
 def nc_primitive_body(+k: String) -> KTerm:
   nc_prim_lambdas(k, nc_primitive_arity(k), 0)
 
-# Module: src/back/native/bridge.bend:532
+# Module: src/back/native/bridge.bend:549
 @unsafe
 def nc_intrinsic(+k: String, +ws: List<&2, String>, +n: U32) -> NC_Code:
   nc_ctor_result(nc_intrinsic_value(k, ws, n))
 
-# Module: src/back/native/bridge.bend:536
+# Module: src/back/native/bridge.bend:553
 @unsafe
 def nc_intrinsic_value(+k: String, +ws: List<&2, String>, +n: U32) -> N_Emitted:
   nt_choose(N_Emitted, nc_array_known(k), u => nc_array_value(k, ws, n), u =>
@@ -32198,14 +32257,14 @@ def nc_intrinsic_value(+k: String, +ws: List<&2, String>, +n: U32) -> N_Emitted:
   nt_choose(N_Emitted, String.eq(k, "u32_cmp") || String.eq(k, "nat_cmp"), u => N_Emitted{"Term cmp = " ++ ni_emit(k, ws) ++ ";\n", "term_pak(cmp == 0 ? CID_LT : cmp == 1 ? CID_EQ : CID_GT, 0)", n}, u =>
     N_Emitted{"", ni_emit(k, ws), n})))
 
-# Module: src/back/native/bridge.bend:543
+# Module: src/back/native/bridge.bend:560
 @unsafe
 def nc_apply_code(+ws: List<&2, String>, +n: U32) -> NC_Code:
   NC_Code{ "{ Term fn = " ++ nc_head(ws) ++ "; Term arg = " ++ nc_head(nc_tail(ws)) ++ ";\n"
     ++ "Fid f = (Fid)term_aux(fn);\n"
     ++ "if (!seq && fid_bangs(f)) {\n  u32 war = fid_arity(f) - 1;\n  Loc src = term_loc(fn);\n  Loc dst = task_node(e, f, WL_CONT, WL_IDX, 0);\n  for (u32 j = 0; j < war; ++j) e.mem[dst + j] = e.mem[src + j];\n  e.mem[dst + war] = arg;\n  spare_free(e, cls_fit(war), src);\n  return term_tsk(f, dst);\n}\nr0 = fn; r1 = arg; WL_JMP(BEND_CLO_APPLY);\n}\n", Nil{}, n, "", Nil{}}
 
-# Module: src/back/native/bridge.bend:549
+# Module: src/back/native/bridge.bend:566
 @unsafe
 def nc_word_literal(+t: KTerm, +bit: U32, +value: U32) -> NC_Literal:
   nt_choose(NC_Literal, String.eq(tg(t), "Ctr") && String.eq(nm(t), "WNil"), u => NC_Literal{True{}, value}, u =>
@@ -32213,19 +32272,19 @@ def nc_word_literal(+t: KTerm, +bit: U32, +value: U32) -> NC_Literal:
     u => nc_word_literal(kid(t, 1), U32.inc(bit), U32.or(value, nt_choose(U32, String.eq(nm(kid(t, 0)), "True"), u => U32.shln(1, U32.to_nat(bit)), u => 0))),
     u => NC_Literal{False{}, 0}))
 
-# Module: src/back/native/bridge.bend:556
+# Module: src/back/native/bridge.bend:573
 @unsafe
 def nc_nat_literal(+t: KTerm, +value: U32) -> NC_Literal:
   nt_choose(NC_Literal, core_nat(t), u => nt_choose(NC_Literal, U32.is_le(kl_number(t), U32.sub(4294967295, value)), u => NC_Literal{True{}, U32.add(value, kl_number(t))}, u => NC_Literal{False{}, 0}), u =>
   nt_choose(NC_Literal, String.eq(tg(t), "Ctr") && String.eq(nm(t), "Zero"), u => NC_Literal{True{}, value}, u =>
     nt_choose(NC_Literal, String.eq(tg(t), "Ctr") && String.eq(nm(t), "Succ"), u => nc_nat_literal(kid(t, 0), U32.inc(value)), u => NC_Literal{False{}, 0})))
 
-# Module: src/back/native/bridge.bend:562
+# Module: src/back/native/bridge.bend:579
 @unsafe
 def nc_literal(+t: KTerm) -> NC_Literal:
   kc(NC_Literal, core_literal(t) && Bool.not(String.eq(nm(t), "String")), u => NC_Literal{True{}, kl_number(t)}, u => nt_choose(NC_Literal, String.eq(nm(t), "U32") || String.eq(nm(t), "F32"), u => nc_word_literal(kid(t, 0), 0, 0), u => nc_nat_literal(t, 0)))
 
-# Module: src/back/native/bridge.bend:570
+# Module: src/back/native/bridge.bend:587
 @unsafe
 def nc_compact_list(
   +ts: List<&2, KTerm>,
@@ -32234,32 +32293,32 @@ def nc_compact_list(
     case Nil{}: Nil{}
     case Con{h, rest}: Con{nc_compact(h), nc_compact_list(rest)}
 
-# Module: src/back/native/bridge.bend:583
+# Module: src/back/native/bridge.bend:600
 @unsafe
 def nc_compact_ctor(+t: KTerm, lit: NC_Literal) -> KTerm:
   match lit:
     case NC_Literal{valid, value}:
       nt_choose(KTerm, valid, u => kt("NWord", U32.show(value), 0, 0, Nil{}), u => nt_choose(KTerm, String.eq(nm(t), "Succ") && U32.is_eq(terms_len(ks(t)), 1), u => nc_compact_succ(kid(t, 0), 1), u => k_rebuild(t, nm(t), ix(t), qt(t), nc_compact_list(ks(t)), Nil{}, 0, 0)))
 
-# Module: src/back/native/bridge.bend:589
+# Module: src/back/native/bridge.bend:606
 @unsafe
 def nc_compact(t):
   nt_choose(KTerm, String.eq(tg(t), "NStatic"), u => t, u => nc_compact_plain(t))
 
-# Module: src/back/native/bridge.bend:593
+# Module: src/back/native/bridge.bend:610
 @unsafe
 def nc_compact_plain(+t: KTerm) -> KTerm:
   kc(KTerm, core_literal(t), u => kc(KTerm, String.eq(nm(t), "String"), u => nc_compact(core_literal_step(t)), u => kt("NWord", U32.show(kl_number(t)), 0, 0, Nil{})), u =>
   nt_choose(KTerm, String.eq(tg(t), "Ctr"), u => nc_compact_ctor(t, nc_literal(t)), u => k_rebuild(t, nm(t), ix(t), qt(t), nc_compact_list(ks(t)), Nil{}, 0, 0)))
 
-# Module: src/back/native/bridge.bend:598
+# Module: src/back/native/bridge.bend:615
 @unsafe
 def nc_lower_ctor_to(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, lit: NC_Literal, +target: NC_Target) -> NC_Code:
   match lit:
     case NC_Literal{+valid, +value}:
       nt_choose(NC_Code, valid, u => nf_return(U32.show(value) ++ "ull", n, target), u => nc_lower_to(book, nc_sequence("NCtr", nm(t), ks(t), Nil{}, n), env, U32.add(n, terms_len(ks(t))), target))
 
-# Module: src/back/native/bridge.bend:604
+# Module: src/back/native/bridge.bend:621
 @unsafe
 def nc_lower_live_to(book, t, env, n, target):
   +tag = tg(t)
@@ -32281,7 +32340,7 @@ def nc_lower_live_to(book, t, env, n, target):
   nt_choose(NC_Code, String.eq(tag, "NFCall"), u => nq_call(book, t, env, n, target), u =>
   nt_choose(NC_Code, String.eq(tag, "NCall"), u => nt_choose(NC_Code, nf_scheduler(target), v => NC_Code{ne_jump(nc_values(ks(t), env), nm(t)), Nil{}, n, "", Nil{}}, v => nc_fail("flat worker: scheduler call node", n)), u =>
   nt_choose(NC_Code, String.eq(tag, "Rfl") || String.eq(tag, "Typ") || String.eq(tag, "All") || String.eq(tag, "Qua") || String.eq(tag, "ADT") || String.eq(tag, "Eql"), u => nf_return("0", n, target), u =>
-  nt_choose(NC_Code, String.eq(tag, "Mat"), u => nf_match_value(book, t, env, n, target), u =>
+  nt_choose(NC_Code, (String.eq(tag, "Mat") || String.eq(tag, "NWPattern")), u => nf_match_value(book, t, env, n, target), u =>
   nt_choose(NC_Code, String.eq(tag, "NMatch"), u => nq_match(book, t, env, n, target), u =>
   nt_choose(NC_Code, String.eq(tag, "NOp"), u => nq_operation(book, t, env, n, target), u =>
   nt_choose(NC_Code, String.eq(tag, "Efq"), u => NC_Code{"err_post(e.mem, ERR_FIDS); return 0;\n", Nil{}, n, "", Nil{}}, u =>
@@ -32292,7 +32351,7 @@ def nc_lower_live_to(book, t, env, n, target):
 # Keep the first checked increment: even a malformed foreign U64 tail retains
 # its original wrapping/error behavior before the bounded remaining offset.
 
-# Module: src/back/native/bridge.bend:635
+# Module: src/back/native/bridge.bend:652
 @unsafe
 def nc_compact_succ(t, count):
   nt_choose(KTerm, U32.is_eq(count, 0), u => nc_compact(t), u =>
@@ -32300,49 +32359,59 @@ def nc_compact_succ(t, count):
     u => nc_compact_succ(kid(t, 0), U32.inc(count)),
     u => nt_choose(KTerm, U32.is_eq(count, 1), u => kt("Ctr", "Succ", 0, 0, [nc_compact(t)]), u => kt("NNatAdd", U32.show(U32.sub(count, 1)), 0, 0, [nc_compact(t)]))))
 
-# Module: src/back/native/bridge.bend:642
-@unsafe
-def nc_native_marked(+d: KDef) -> Bool:
-  nt_choose(Bool, String.eq(tg(nc_unann(dv(d))), "Foreign"), u => False{},
-    u => nc_native_primitive(nc_primitive_name(dn(d))))
-
-# Module: src/back/native/bridge.bend:648
-@unsafe
-def nc_native_primitive(+prim: String) -> Bool:
-  Bool.not(String.eq(ni_template(prim), "")) || nc_array_known(prim) || String.eq(prim, "nat_divmod")
-
 # Module: src/back/native/direct.bend:5
 @unsafe
 def nd_scalar_known(+name: String) -> Bool:
   Bool.not(String.eq(ni_template(name), "")) && Bool.not(String.eq(name, "f32_show") || String.eq(name, "f32_read"))
 
-# Module: src/back/native/direct.bend:9
+# Reject ordinary/non-call heads before building intrinsic names and templates.
+# Scalar and allocating call classifiers share the same provenance/arity gate.
+
+# Module: src/back/native/direct.bend:11
+@unsafe
+def nd_native_call(+book: List<&2, KDef>, +t: KTerm) -> String:
+  nt_choose(String, String.eq(tg(t), "App"),
+    u => nd_native_head(book, t, nd_head(t)), u => "")
+
+# Module: src/back/native/direct.bend:16
+@unsafe
+def nd_native_head(+book: List<&2, KDef>, +t: KTerm, +head: KTerm) -> String:
+  nt_choose(String, String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)),
+    u => nt_choose(String, nc_native_def(lookup(book, nm(head))),
+      v => nd_native_saturated(t, nc_primitive_name(nm(head))), v => ""), u => "")
+
+# Module: src/back/native/direct.bend:22
+@unsafe
+def nd_native_saturated(+t: KTerm, +name: String) -> String:
+  nt_choose(String, U32.is_eq(terms_len(nd_args(t, Nil{})), nc_primitive_arity(name)), u => name, u => "")
+
+# Module: src/back/native/direct.bend:26
 @unsafe
 def nd_scalar_call(+book: List<&2, KDef>, +t: KTerm) -> String:
   +name = nd_native_call(book, t)
   nt_choose(String, String.eq(name, ""), u => "", u => nt_choose(String, nd_scalar_known(name), v => name, v => ""))
 
-# Module: src/back/native/direct.bend:14
+# Module: src/back/native/direct.bend:31
 @unsafe
 def nd_bind_scalar(+name: String, args: List<&2, KTerm>, +acc: List<&2, KTerm>, +n: U32, +id: U32, +body: KTerm) -> KTerm:
   nd_bind_value("NOp", name, args, acc, n, id, body)
 
 # The same ordered argument sequencing serves scalar and allocating results.
 
-# Module: src/back/native/direct.bend:19
+# Module: src/back/native/direct.bend:36
 @unsafe
 def nd_bind_value(+tag: String, +name: String, args: List<&2, KTerm>, +acc: List<&2, KTerm>, +n: U32, +id: U32, +body: KTerm) -> KTerm:
   match args:
     case Nil{}: nc_mklet(id, kt(tag, name, 0, 0, List.reverse(&2, KTerm, acc)), body)
     case Con{+h, +rest}: nc_mklet(nc_id(n), h, nd_bind_value(tag, name, rest, Con{var("", nc_id(n)), acc}, U32.inc(n), id, body))
 
-# Module: src/back/native/direct.bend:25
+# Module: src/back/native/direct.bend:42
 @unsafe
 def nd_prefix_call(+book: List<&2, KDef>, +t: KTerm) -> String:
   +name = nd_native_call(book, t)
   nt_choose(String, String.eq(name, ""), u => "", u => nt_choose(String, nc_array_known(name) || String.eq(name, "nat_divmod"), v => name, v => ""))
 
-# Module: src/back/native/direct.bend:30
+# Module: src/back/native/direct.bend:47
 @unsafe
 def nd_scalar_word(+name: String, +words: List<&2, String>) -> String:
   +expr = ni_emit(name, words)
@@ -32351,55 +32420,55 @@ def nd_scalar_word(+name: String, +words: List<&2, String>) -> String:
 # Saturated calls to a known leading lambda telescope use one register entry.
 # Partial applications keep the closure ABI; eligible named prefixes skip factories.
 
-# Module: src/back/native/direct.bend:45
+# Module: src/back/native/direct.bend:62
 @unsafe
 def nd_name(name: String) -> String:
   "$direct." ++ name
 
-# Module: src/back/native/direct.bend:49
+# Module: src/back/native/direct.bend:66
 @unsafe
 def nd_head(+t: KTerm) -> KTerm:
   nt_choose(KTerm, String.eq(tg(t), "App"), u => nd_head(kid(t, 0)), u => t)
 
-# Module: src/back/native/direct.bend:53
+# Module: src/back/native/direct.bend:70
 @unsafe
 def nd_args(+t: KTerm, +acc: List<&2, KTerm>) -> List<&2, KTerm>:
   nt_choose(List<&2, KTerm>, String.eq(tg(t), "App"), u => nd_args(kid(t, 0), Con{kid(t, 1), acc}), u => acc)
 
-# Module: src/back/native/direct.bend:57
+# Module: src/back/native/direct.bend:74
 @unsafe
 def nd_leading(+t: KTerm, +n: U32) -> U32:
   nt_choose(U32, String.eq(tg(t), "Ann"), u => nd_leading(kid(t, 0), n), u =>
     nt_choose(U32, String.eq(tg(t), "Lam"), u => nd_leading(kid(t, 0), U32.add(n, nt_bool(Bool.not(U32.is_eq(qt(t), 0))))), u => n))
 
-# Module: src/back/native/direct.bend:62
+# Module: src/back/native/direct.bend:79
 @unsafe
 def nd_foreign_arity(+book: List<&2, KDef>, +ty: KTerm, +n: U32) -> U32:
   +tel = wnf(book, ty)
   nt_choose(U32, String.eq(tg(tel), "All"), u => nd_foreign_arity(book, kid(tel, 1), U32.add(n, nt_bool(Bool.not(U32.is_eq(qt(tel), 0))))), u => n)
 
-# Module: src/back/native/direct.bend:67
+# Module: src/back/native/direct.bend:84
 @unsafe
 def nd_arity(+book: List<&2, KDef>, +name: String) -> U32:
   +fact = ns_body(book, name)
   nt_choose(U32, U32.is_eq(dx(fact), 1) && (String.eq(dk(fact), "NativeStaticBody") || String.eq(dk(fact), "NativeErasedBody")),
     u => da(fact), u => nd_arity_plain(book, name))
 
-# Module: src/back/native/direct.bend:73
+# Module: src/back/native/direct.bend:90
 @unsafe
 def nd_arity_plain(+book: List<&2, KDef>, +name: String) -> U32:
   +d = lookup(book, name)
   nt_choose(U32, nc_native_def(d), u => nc_primitive_arity(nc_primitive_name(name)), u =>
     nt_choose(U32, String.eq(tg(nc_unann(dv(d))), "Foreign"), u => nd_foreign_arity(book, dt(d), 0), u => U32.max(nd_leading(dv(d), 0), jd_live_arity(book, dt(d), jd_arity(book, d)))))
 
-# Module: src/back/native/direct.bend:79
+# Module: src/back/native/direct.bend:96
 @unsafe
 def nd_reapply(+head: KTerm, args: List<&2, KTerm>) -> KTerm:
   match args:
     case Nil{}: head
     case Con{h, rest}: nd_reapply(app(head, h), rest)
 
-# Module: src/back/native/direct.bend:85
+# Module: src/back/native/direct.bend:102
 @unsafe
 def nd_beta(+head: KTerm, args: List<&2, KTerm>) -> KTerm:
   match args:
@@ -32411,7 +32480,7 @@ def nd_beta(+head: KTerm, args: List<&2, KTerm>) -> KTerm:
           u => nc_mklet(ix(head), arg, nd_beta(kid(head, 0), rest))),
         u => nd_reapply(head, Con{arg, rest}))
 
-# Module: src/back/native/direct.bend:96
+# Module: src/back/native/direct.bend:113
 @unsafe
 def nd_match_to(+book: List<&2, KDef>, +head: KTerm, +arg: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
   nt_choose(NC_Code, (String.eq(tg(arg), "Var") || (Bool.not(nf_scheduler(target)) && String.eq(tg(arg), "NQBundle"))),
@@ -32422,26 +32491,26 @@ def nd_match_to(+book: List<&2, KDef>, +head: KTerm, +arg: KTerm, +env: List<&2,
 # ordinary sharing prelude retain a scrutinee also used by another argument or
 # by a captured branch before matching consumes its own reference.
 
-# Module: src/back/native/direct.bend:105
+# Module: src/back/native/direct.bend:122
 @unsafe
 def nd_match_vars(args: List<&2, KTerm>) -> Bool:
   match args:
     case Nil{}: True{}
     case Con{h, rest}: String.eq(tg(h), "Var") && nd_match_vars(rest)
 
-# Module: src/back/native/direct.bend:111
+# Module: src/back/native/direct.bend:128
 @unsafe
 def nd_match_sequence(+head: KTerm, args: List<&2, KTerm>, +acc: List<&2, KTerm>, +n: U32) -> KTerm:
   match args:
     case Nil{}: kt("NMatch", "", 0, 0, Con{head, nt_reverse(KTerm, acc, Nil{})})
     case Con{+h, +rest}: nc_mklet(nc_id(n), h, nd_match_sequence(head, rest, Con{var("", nc_id(n)), acc}, U32.inc(n)))
 
-# Module: src/back/native/direct.bend:117
+# Module: src/back/native/direct.bend:134
 @unsafe
 def nd_match_rest(+t: KTerm) -> List<&2, KTerm>:
   nd_match_rest_list(ks(t))
 
-# Module: src/back/native/direct.bend:121
+# Module: src/back/native/direct.bend:138
 @unsafe
 def nd_match_rest_list(ts: List<&2, KTerm>) -> List<&2, KTerm>:
   match ts:
@@ -32452,7 +32521,7 @@ def nd_match_rest_list(ts: List<&2, KTerm>) -> List<&2, KTerm>:
 # complete live lambda telescope. Type annotations alone never grant admission.
 # Gates are lazy: worker, bang, saturated and non-user paths do no partial scan.
 
-# Module: src/back/native/direct.bend:130
+# Module: src/back/native/direct.bend:147
 @unsafe
 def nd_partial_term(+name: String, args: List<&2, KTerm>, +acc: List<&2, KTerm>, +n: U32, +left: U32) -> KTerm:
   match args:
@@ -32465,27 +32534,27 @@ def nd_partial_term(+name: String, args: List<&2, KTerm>, +acc: List<&2, KTerm>,
 # A small linear combinator exposes literal captures to the existing beta rule.
 # Only its closed App/Var body is copied: <=8 parameters imply <=15 body nodes.
 
-# Module: src/back/native/direct.bend:141
+# Module: src/back/native/direct.bend:158
 @unsafe
 def nd_comb_literal(args: List<&2, KTerm>) -> Bool:
   match args:
     case Nil{}: False{}
     case Con{+h, rest}: nt_choose(Bool, String.eq(tg(h), "Lam"), u => True{}, u => nd_comb_literal(rest))
 
-# Module: src/back/native/direct.bend:147
+# Module: src/back/native/direct.bend:164
 @unsafe
 def nd_comb_closed(+t: KTerm, +params: List<&2, NC_Binding>, +depth: U32) -> Bool:
   nt_choose(Bool, String.eq(tg(t), "Var"), u => Bool.not(String.eq(nc_word(ix(t), params), "NATIVE_UNBOUND_VARIABLE")), u =>
     nt_choose(Bool, String.eq(tg(t), "App") && U32.is_gt(depth, 0),
       u => nd_comb_closed(kid(t, 0), params, U32.sub(depth, 1)) && nd_comb_closed(kid(t, 1), params, U32.sub(depth, 1)), u => False{}))
 
-# Module: src/back/native/direct.bend:153
+# Module: src/back/native/direct.bend:170
 @unsafe
 def nd_comb_uses(+t: KTerm, +id: U32) -> U32:
   nt_choose(U32, String.eq(tg(t), "Var"), u => nt_bool(U32.is_eq(ix(t), id)), u =>
     U32.add(nd_comb_uses(kid(t, 0), id), nd_comb_uses(kid(t, 1), id)))
 
-# Module: src/back/native/direct.bend:158
+# Module: src/back/native/direct.bend:175
 @unsafe
 def nd_comb_linear(params: List<&2, NC_Binding>, +body: KTerm) -> Bool:
   match params:
@@ -32496,20 +32565,20 @@ def nd_comb_linear(params: List<&2, NC_Binding>, +body: KTerm) -> Bool:
 # Refuse even malformed raw-ID collisions before using the ordinary substitution
 # helper. Syntax-only substitution leaves demand-preserving beta to lowering.
 
-# Module: src/back/native/direct.bend:167
+# Module: src/back/native/direct.bend:184
 @unsafe
 def nd_comb_fresh(+body: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +left: U32) -> Bool:
   nt_choose(Bool, U32.is_eq(left, 0), u => True{}, u =>
     nt_choose(Bool, Bool.not(nc_occurs(body, nc_id(n))) && Bool.not(nc_occurs_list(args, nc_id(n))) && String.eq(nc_word(nc_id(n), env), "NATIVE_UNBOUND_VARIABLE"),
       u => nd_comb_fresh(body, args, env, U32.inc(n), U32.sub(left, 1)), u => False{}))
 
-# Module: src/back/native/direct.bend:173
+# Module: src/back/native/direct.bend:190
 @unsafe
 def nd_comb_rename(+t: KTerm, +n: U32, +left: U32) -> KTerm:
   nt_choose(KTerm, U32.is_eq(left, 0), u => t, u =>
     k_lam("", nc_id(n), 1, [nd_comb_rename(nq_layout_subst(kid(t, 0), ix(t), var("", nc_id(n))), U32.inc(n), U32.sub(left, 1))], 0, 0, False{}))
 
-# Module: src/back/native/direct.bend:178
+# Module: src/back/native/direct.bend:195
 @unsafe
 def nd_comb_fill(+body: KTerm, args: List<&2, KTerm>) -> KTerm:
   match args:
@@ -32519,7 +32588,7 @@ def nd_comb_fill(+body: KTerm, args: List<&2, KTerm>) -> KTerm:
         u => nd_comb_fill(nq_layout_subst(kid(body, 0), ix(body), h), rest),
         u => nc_mklet(ix(body), h, nd_comb_fill(kid(body, 0), rest)))
 
-# Module: src/back/native/direct.bend:187
+# Module: src/back/native/direct.bend:204
 @unsafe
 def nd_comb_try(+body: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +arity: U32) -> KTerm:
   +params = nd_bindings(body, Nil{})
@@ -32531,7 +32600,7 @@ def nd_comb_try(+body: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>
           u => nd_comb_fill(nd_comb_rename(body, n, arity), args), u => atom("Absent")),
         u => atom("Absent")), u => atom("Absent")), u => atom("Absent"))
 
-# Module: src/back/native/direct.bend:198
+# Module: src/back/native/direct.bend:215
 @unsafe
 def nd_partial_selected(+book: List<&2, KDef>, +head: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +arity: U32, +d: KDef) -> KTerm:
   +selected = nt_choose(KTerm, U32.is_lt(arity, 9),
@@ -32540,7 +32609,7 @@ def nd_partial_selected(+book: List<&2, KDef>, +head: KTerm, +args: List<&2, KTe
   nt_choose(KTerm, String.eq(tg(selected), "Absent"),
     u => nd_partial_term(nd_name(nc_ref_name(book, nm(head))), args, Nil{}, n, U32.sub(arity, terms_len(args))), u => selected)
 
-# Module: src/back/native/direct.bend:206
+# Module: src/back/native/direct.bend:223
 @unsafe
 def nd_partial_def(+book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +arity: U32, +d: KDef) -> NC_Code:
   nt_choose(NC_Code, String.eq(dk(d), "Def") && Bool.not(nc_native_def(d)) && Bool.not(nc_foreign(d)),
@@ -32549,7 +32618,7 @@ def nd_partial_def(+book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&
       v => nf_slow_app(book, t, env, n, target)),
     u => nf_slow_app(book, t, env, n, target))
 
-# Module: src/back/native/direct.bend:214
+# Module: src/back/native/direct.bend:231
 @unsafe
 def nd_ref_arity(+book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +count: U32, +arity: U32) -> NC_Code:
   nt_choose(NC_Code, U32.is_eq(arity, count),
@@ -32558,7 +32627,7 @@ def nd_ref_arity(+book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&2,
       v => nd_partial_def(book, t, head, args, env, n, target, arity, lookup(book, nm(head))),
       v => nf_slow_app(book, t, env, n, target)))
 
-# Module: src/back/native/direct.bend:222
+# Module: src/back/native/direct.bend:239
 @unsafe
 def nd_ref_app(+book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
   +count = terms_len(args)
@@ -32566,7 +32635,7 @@ def nd_ref_app(+book: List<&2, KDef>, +t: KTerm, +head: KTerm, +args: List<&2, K
     u => nd_ref_arity(book, t, head, args, env, n, target, count, nd_arity(book, nm(head))),
     u => nf_slow_app(book, t, env, n, target))
 
-# Module: src/back/native/direct.bend:229
+# Module: src/back/native/direct.bend:246
 @unsafe
 def nd_app_to(book, t, env, n, target):
   +head = nd_head(t)
@@ -32575,47 +32644,49 @@ def nd_app_to(book, t, env, n, target):
   nt_choose(NC_Code, Bool.not(String.eq(scalar, "")), u => nc_lower_to(book, nc_sequence("NOp", scalar, args, Nil{}, n), env, U32.add(n, terms_len(args)), target), u =>
   nt_choose(NC_Code, String.eq(tg(head), "Efq") && Bool.not(nf_scheduler(target)), u => nc_lower_to(book, head, env, n, target), u =>
   nt_choose(NC_Code, String.eq(tg(head), "Lam"), u => nc_lower_to(book, nd_beta(head, args), env, n, target), u =>
-    nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_eq(terms_len(args), 1), u => nd_match_to(book, head, kid(t, 1), env, n, target), u =>
-    nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_gt(terms_len(args), 1) && (nd_match_vars(args) || (Bool.not(nf_scheduler(target)) && nq_match_args(args))),
+    nt_choose(NC_Code, (String.eq(tg(head), "Mat") || String.eq(tg(head), "NWPattern")) && U32.is_eq(terms_len(args), 1), u => nd_match_to(book, head, kid(t, 1), env, n, target), u =>
+    nt_choose(NC_Code, (String.eq(tg(head), "Mat") || String.eq(tg(head), "NWPattern")) && U32.is_gt(terms_len(args), 1) && (nd_match_vars(args) || (Bool.not(nf_scheduler(target)) && nq_match_args(args))),
       u => nc_lower_to(book, nd_match_sequence(head, args, Nil{}, n), env, U32.add(n, terms_len(args)), target), u =>
     nt_choose(NC_Code, String.eq(tg(head), "Ref"), u => nd_ref_app(book, t, head, args, env, n, target), u => nf_slow_app(book, t, env, n, target)))))))
 
-# Module: src/back/native/direct.bend:242
+# Module: src/back/native/direct.bend:259
 @unsafe
 def nd_body(+t: KTerm) -> KTerm:
   nt_choose(KTerm, String.eq(tg(t), "Lam"), u => nd_body(kid(t, 0)), u => t)
 
-# Module: src/back/native/direct.bend:246
+# Module: src/back/native/direct.bend:263
 @unsafe
 def nd_bindings(+t: KTerm, +acc: List<&2, NC_Binding>) -> List<&2, NC_Binding>:
   nt_choose(List<&2, NC_Binding>, String.eq(tg(t), "Lam"), u => nd_bindings(kid(t, 0), Con{nc_binding(ix(t)), acc}), u => nt_reverse(NC_Binding, acc, Nil{}))
 
-# Module: src/back/native/direct.bend:250
+# Module: src/back/native/direct.bend:267
 @unsafe
-def nd_join(+base: NC_Code, +body: NC_Code, name: String, params: List<&2, NC_Binding>) -> NC_Code:
-  NC_Code{nc_body(base), nt_append(N_Segment, nc_segs(base), Con{N_Segment{nd_name(name), nc_params(params), 1, N_Direct{}, nc_body(body), Nil{}, False{}, False{}, False{}, False{}}, nc_segs(body)}), nc_fresh(body), nc_first_error(base, body), List.append(&2, String, nc_calls(base), List.append(&2, String, nc_calls(body), Nil{}))}
+def nd_join(+base: NC_Code, +body: NC_Code, name: String, params: List<&2, NC_Binding>, host: Bool) -> NC_Code:
+  NC_Code{nc_body(base), nt_append(N_Segment, nc_segs(base), Con{N_Segment{nd_name(name), nc_params(params), 1, N_Direct{}, nc_body(body), Nil{}, host, False{}, False{}, False{}}, nc_segs(body)}), nc_fresh(body), nc_first_error(base, body), List.append(&2, String, nc_calls(base), List.append(&2, String, nc_calls(body), Nil{}))}
 
-# Module: src/back/native/direct.bend:254
+# Module: src/back/native/direct.bend:271
 @unsafe
 def nd_entry_params(+left: U32, +n: U32) -> List<&2, NC_Binding>:
   nt_choose(List<&2, NC_Binding>, U32.is_eq(left, 0), u => Nil{}, u =>
     Con{nc_binding(nc_id(n)), nd_entry_params(U32.sub(left, 1), U32.inc(n))})
 
-# Module: src/back/native/direct.bend:259
+# Module: src/back/native/direct.bend:276
 @unsafe
 def nd_entry_args(params: List<&2, NC_Binding>) -> List<&2, KTerm>:
   match params:
     case Nil{}: Nil{}
     case Con{NC_Binding{id, word, kind}, rest}: Con{var("", id), nd_entry_args(rest)}
 
-# Module: src/back/native/direct.bend:265
+# Module: src/back/native/direct.bend:282
 @unsafe
 def nd_extend_arity(+book: List<&2, KDef>, +body: KTerm, +base: NC_Code, +name: String, +arity: U32) -> NC_Code:
   +params = nk_typed_bindings(nd_entry_params(arity, nc_fresh(base)), nf_worker_kinds(book, name, arity))
   nt_choose(NC_Code, U32.is_eq(arity, 0), u => base, u =>
-    nd_join(base, nc_lower(book, nd_reapply(body, nd_entry_args(params)), params, U32.add(nc_fresh(base), arity)), nc_ref_name(book, name), params))
+    nd_join(base, nt_choose(NC_Code, nf_host_selected(book, name, arity),
+      u => NC_Code{"", Nil{}, U32.add(nc_fresh(base), arity), "", Nil{}},
+      u => nc_lower(book, nd_reapply(body, nd_entry_args(params)), params, U32.add(nc_fresh(base), arity))), nc_ref_name(book, name), params, nf_host_selected(book, name, arity)))
 
-# Module: src/back/native/direct.bend:271
+# Module: src/back/native/direct.bend:290
 @unsafe
 def nd_extend(+book: List<&2, KDef>, +body: KTerm, +base: NC_Code, +name: String) -> NC_Code:
   nd_extend_arity(book, body, base, name, nd_arity(book, name))
@@ -32624,14 +32695,14 @@ def nd_extend(+book: List<&2, KDef>, +body: KTerm, +base: NC_Code, +name: String
 # closure tail-calls the full direct worker so only one copy of the actual
 # body is lowered. Foreign, intrinsic and bang entries keep their old path.
 
-# Module: src/back/native/direct.bend:278
+# Module: src/back/native/direct.bend:297
 @unsafe
 def nd_eta_body(params: List<&2, NC_Binding>, +call: KTerm) -> KTerm:
   match params:
     case Nil{}: call
     case Con{NC_Binding{id, word, kind}, rest}: k_lam("", id, 1, [nd_eta_body(rest, call)], 0, 0, False{})
 
-# Module: src/back/native/direct.bend:284
+# Module: src/back/native/direct.bend:303
 @unsafe
 def nd_eta_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +arity: U32) -> NC_Code:
   +params = nd_entry_params(arity, n)
@@ -32642,7 +32713,7 @@ def nd_eta_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +a
 # Typed arity is computed once. Keep the original path when only a malformed
 # raw definition's leading lambdas supply its positive arity.
 
-# Module: src/back/native/direct.bend:293
+# Module: src/back/native/direct.bend:312
 @unsafe
 def nd_user_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +d: KDef) -> NC_Code:
   +typed = jd_live_arity(book, dt(d), jd_arity(book, d))
@@ -32651,31 +32722,13 @@ def nd_user_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +
     u => nd_eta_entry(book, body, name, n, arity),
     u => nd_extend_arity(book, body, nc_lower(book, body, Nil{}, n), name, arity))
 
-# Module: src/back/native/direct.bend:301
+# Module: src/back/native/direct.bend:320
 @unsafe
 def nd_compile_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +bang: Bool) -> NC_Code:
   +d = lookup(book, name)
   nt_choose(NC_Code, Bool.not(bang) && Bool.not(nc_native_def(d)) && Bool.not(nc_foreign(d)),
     u => nd_user_entry(book, body, name, n, d),
     u => nd_extend(book, body, nc_lower(book, body, Nil{}, n), name))
-
-# Module: src/back/native/direct.bend:308
-@unsafe
-def nd_native_call(+book: List<&2, KDef>, +t: KTerm) -> String:
-  nt_choose(String, String.eq(tg(t), "App"),
-    u => nd_native_head(book, t, nd_head(t)), u => "")
-
-# Module: src/back/native/direct.bend:314
-@unsafe
-def nd_native_head(+book: List<&2, KDef>, +t: KTerm, +head: KTerm) -> String:
-  nt_choose(String, String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)),
-    u => nt_choose(String, nc_native_def(lookup(book, nm(head))),
-      v => nd_native_saturated(t, nc_primitive_name(nm(head))), v => ""), u => "")
-
-# Module: src/back/native/direct.bend:321
-@unsafe
-def nd_native_saturated(+t: KTerm, +name: String) -> String:
-  nt_choose(String, U32.is_eq(terms_len(nd_args(t, Nil{})), nc_primitive_arity(name)), u => name, u => "")
 
 # Module: src/back/native/flat.bend:12
 @unsafe
@@ -33041,6 +33094,48 @@ def nf_finish_plan(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2
   match plan:
     case NF_Plan{workers, ready, observer_names}: nf_finish_ready(book, ss, cs, runtime, requests, pure, show, workers, ready, ns_image(book), observer_names, observers)
 
+
+# Private request permission, attached only after ns_source clears caller facts.
+# No bang roots means the runtime cannot offload. Keep all device fallbacks for
+# any program with bangs, and keep raw API emission on its original lowering.
+
+# Module: src/back/native/flat.bend:336
+@unsafe
+def nf_host_defs(workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> List<&2, KDef>:
+  match workers:
+    case Nil{}: Nil{}
+    case Con{NF_Worker{+name, +params, code, deps, shape}, +rest}:
+      +arity = nt_count(N_Param, params)
+      nt_choose(List<&2, KDef>, U32.is_gt(arity, 0) && Bool.not(String.starts_with(name, "$product.")) && nb_contains(ready, name),
+        u => Con{KDef{name, "NativeHostWorker", arity, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, nf_host_defs(rest, ready)}, u => nf_host_defs(rest, ready))
+
+# Module: src/back/native/flat.bend:345
+@unsafe
+def nf_host_context(+book: List<&2, KDef>, +permission: Bool, plan: NF_Plan) -> List<&2, KDef>:
+  match plan:
+    case NF_Plan{workers, ready, observers}:
+      nt_choose(List<&2, KDef>, permission, u => nf_host_attach(book, index_build(nf_host_defs(workers, ready))), u => book)
+
+# Module: src/back/native/flat.bend:351
+@unsafe
+def nf_host_attach(+book: List<&2, KDef>, +index: KDef) -> List<&2, KDef>:
+  match book:
+    case Nil{}: book
+    case Con{cache, rest}: Con{KDef{dn(cache), dk(cache), da(cache), dx(cache), dt(cache), dv(cache), [index_first(dc(cache)), ns_context(book), KDef{"$native.host.plan", "NativeHostPlan", 0, 0, atom("Absent"), atom("Absent"), [index], False{}, False{}}], db(cache), du(cache)}, rest}
+
+# Module: src/back/native/flat.bend:357
+@unsafe
+def nf_host_payload(children: List<&2, KDef>) -> KDef:
+  match children:
+    case Con{source, Con{statics, Con{+plan, rest}}}: nt_choose(KDef, String.eq(dk(plan), "NativeHostPlan") && String.eq(dn(plan), "$native.host.plan"), u => index_first(dc(plan)), u => missing())
+    case _: missing()
+
+# Module: src/back/native/flat.bend:363
+@unsafe
+def nf_host_selected(+book: List<&2, KDef>, +name: String, +arity: U32) -> Bool:
+  +d = index_find(nf_host_payload(dc(index_first(book))), name, index_hash(name, 2166136261), 32)
+  U32.is_gt(arity, 0) && String.eq(dk(d), "NativeHostWorker") && U32.is_eq(da(d), arity)
+
 # Module: src/back/native/product-layout.bend:5
 @unsafe
 def nq_layout(+book: List<&2, KDef>, +ty: KTerm) -> KTerm:
@@ -33317,7 +33412,7 @@ def nq_call_result(+name: String, +words: List<&2, String>, +n: U32, +target: NC
 @unsafe
 def nq_uses(+t: KTerm, +id: U32) -> U32:
   nt_choose(U32, String.eq(tg(t), "Var"), u => nt_bool(U32.is_eq(ix(t), id)), u =>
-    nt_choose(U32, String.eq(tg(t), "Mat") && U32.is_eq(terms_len(ks(t)), 2), u => U32.max(nq_uses(kid(t, 0), id), nq_uses(kid(t, 1), id)), u => nq_uses_list(ks(t), id)))
+    nt_choose(U32, String.eq(tg(t), "Mat") && U32.is_eq(terms_len(ks(t)), 2), u => U32.max(nq_uses(kid(t, 0), id), nq_uses(kid(t, 1), id)), u => nt_choose(U32, String.eq(tg(t), "NWPattern"), v => nw_uses(ks(t), id), v => nq_uses_list(ks(t), id))))
 
 # Module: src/back/native/product.bend:106
 @unsafe
@@ -33330,7 +33425,7 @@ def nq_uses_list(ts: List<&2, KTerm>, +id: U32) -> U32:
 @unsafe
 def nq_min_uses(+t: KTerm, +id: U32) -> U32:
   nt_choose(U32, String.eq(tg(t), "Var"), u => nt_bool(U32.is_eq(ix(t), id)), u =>
-    nt_choose(U32, String.eq(tg(t), "Mat") && U32.is_eq(terms_len(ks(t)), 2), u => U32.min(nq_min_uses(kid(t, 0), id), nq_min_uses(kid(t, 1), id)), u => nq_min_uses_list(ks(t), id)))
+    nt_choose(U32, String.eq(tg(t), "Mat") && U32.is_eq(terms_len(ks(t)), 2), u => U32.min(nq_min_uses(kid(t, 0), id), nq_min_uses(kid(t, 1), id)), u => nt_choose(U32, String.eq(tg(t), "NWPattern"), v => 0, v => nq_min_uses_list(ks(t), id))))
 
 # Module: src/back/native/product.bend:117
 @unsafe
@@ -33807,6 +33902,262 @@ def np_level_valid(
 @unsafe
 def np_can_match(term):
   np_supported(term) && np_level_valid(np_level(term, atom("Efq"), atom("Efq"), False{}, False{}))
+
+# Module: src/back/native/word-pattern.bend:15
+@unsafe
+def nw_var_same(+a: U32, +b: U32, pairs: List<&2, KTerm>) -> Bool:
+  match pairs:
+    case Nil{}: U32.is_eq(a, b)
+    case Con{+p, rest}:
+      nt_choose(Bool, U32.is_eq(ix(p), a), u => U32.is_eq(qt(p), b),
+        u => nt_choose(Bool, U32.is_eq(qt(p), b), v => False{}, v => nw_var_same(a, b, rest)))
+
+# Module: src/back/native/word-pattern.bend:29
+@unsafe
+def nw_same_list(as: List<&2, KTerm>, bs: List<&2, KTerm>, +pairs: List<&2, KTerm>) -> Bool:
+  match as, bs:
+    case Nil{}, Nil{}: True{}
+    case Con{a, ar}, Con{b, br}: nt_choose(Bool, nw_same(a, b, pairs), u => nw_same_list(ar, br, pairs), u => False{})
+    case _, _: False{}
+
+# Module: src/back/native/word-pattern.bend:36
+@unsafe
+def nw_same(a, b, pairs):
+  nt_choose(Bool, String.eq(tg(a), tg(b)) && U32.is_eq(qt(a), qt(b)),
+    u => nt_choose(Bool, String.eq(tg(a), "Var"),
+      v => nw_var_same(ix(a), ix(b), pairs) && List.is_empty(&2, KTerm, ks(a)) && List.is_empty(&2, KTerm, ks(b)),
+      v => nt_choose(Bool, String.eq(tg(a), "Lam") && U32.is_eq(terms_len(ks(a)), 1) && U32.is_eq(terms_len(ks(b)), 1),
+        w => nw_same(kid(a, 0), kid(b, 0), Con{kt("NWPair", "", ix(a), ix(b), Nil{}), pairs}),
+        w => norm_exact_head(a, b) && nw_same_list(ks(a), ks(b), pairs))), u => False{})
+
+# Module: src/back/native/word-pattern.bend:45
+@unsafe
+def nw_arms(+t: KTerm, +zero: KTerm, +one: KTerm, +hasZero: Bool, +hasOne: Bool) -> NW_Arms:
+  nt_choose(NW_Arms, String.eq(tg(t), "Mat"),
+    u => nt_choose(NW_Arms, U32.is_eq(ix(t), 1) && U32.is_eq(terms_len(ks(t)), 2),
+      v => nt_choose(NW_Arms, String.eq(nm(t), "False") && Bool.not(hasZero),
+        w => nw_arms(kid(t, 1), kid(t, 0), one, True{}, hasOne),
+        w => nt_choose(NW_Arms, String.eq(nm(t), "True") && Bool.not(hasOne),
+          x => nw_arms(kid(t, 1), zero, kid(t, 0), hasZero, True{}),
+          x => NW_Arms{zero, one, t, hasZero, hasOne, False{}})),
+      v => NW_Arms{zero, one, t, hasZero, hasOne, False{}}),
+    u => NW_Arms{zero, one, t, hasZero, hasOne, True{}})
+
+# Module: src/back/native/word-pattern.bend:57
+@unsafe
+def nw_word(+bit: KTerm, +tail: KTerm) -> KTerm:
+  kt("Ctr", "WCon", 0, 1, [bit, tail])
+
+# Module: src/back/native/word-pattern.bend:61
+@unsafe
+def nw_rebuild(bits: List<&2, KTerm>, +word: KTerm) -> KTerm:
+  match bits:
+    case Nil{}: word
+    case Con{h, rest}: nw_rebuild(rest, nw_word(h, word))
+
+# Module: src/back/native/word-pattern.bend:67
+@unsafe
+def nw_apply(+body: KTerm, +word: KTerm, +fields: U32) -> KTerm:
+  nt_choose(KTerm, U32.is_eq(fields, 2),
+    u => core_apply(core_apply(body, kid(word, 0)), kid(word, 1)),
+    u => core_apply(body, word))
+
+# Module: src/back/native/word-pattern.bend:73
+@unsafe
+def nw_covered(+body: KTerm, +fields: U32, cover: NW_Cover) -> Bool:
+  match cover:
+    case NW_None{}: False{}
+    case NW_Cover{prior, bits, priorFields}:
+      +word = nw_word(atom("NWBitProbe"), atom("NWTailProbe"))
+      nw_same(nw_apply(body, word, fields), nw_apply(prior, nw_rebuild(bits, word), priorFields), Nil{})
+
+# Module: src/back/native/word-pattern.bend:81
+@unsafe
+def nw_descend(cover: NW_Cover, +bit: U32) -> NW_Cover:
+  match cover:
+    case NW_None{}: NW_None{}
+    case NW_Cover{body, bits, fields}: NW_Cover{body, Con{kt("NWord", U32.show(bit), 0, 0, Nil{}), bits}, fields}
+
+# Module: src/back/native/word-pattern.bend:87
+@unsafe
+def nw_join(a: NW_Rows, b: NW_Rows) -> NW_Rows:
+  match a, b:
+    case NW_Rows{av, ar}, NW_Rows{bv, br}: NW_Rows{av && bv, List.append(&2, KTerm, ar, br)}
+
+# Module: src/back/native/word-pattern.bend:92
+@unsafe
+def nw_row(+body: KTerm, +depth: U32, +value: U32, +fields: U32) -> KTerm:
+  kt("NWRow", U32.show(value), depth, fields, [body])
+
+# Module: src/back/native/word-pattern.bend:103
+@unsafe
+def nw_branch(+t: KTerm, +depth: U32, +value: U32, +cover: NW_Cover, +bit: U32, +present: Bool) -> NW_Rows:
+  nt_choose(NW_Rows, present,
+    u => nw_walk(t, U32.inc(depth), U32.or(value, U32.shln(bit, U32.to_nat(depth))), nw_descend(cover, bit)),
+    u => NW_Rows{True{}, Nil{}})
+
+# Module: src/back/native/word-pattern.bend:109
+@unsafe
+def nw_bits(+depth: U32, +value: U32, +cover: NW_Cover, arms: NW_Arms) -> NW_Rows:
+  match arms:
+    case NW_Arms{zero, one, +end, +hasZero, +hasOne, valid}:
+      nt_choose(NW_Rows, valid && (hasZero || hasOne),
+        u => nw_bits_ready(zero, one, end, hasZero, hasOne, depth, value, cover, Bool.not(hasZero && hasOne) && Bool.not(nw_covered(end, 2, cover))),
+        u => NW_Rows{False{}, Nil{}})
+
+# Module: src/back/native/word-pattern.bend:117
+@unsafe
+def nw_bits_ready(+zero: KTerm, +one: KTerm, +end: KTerm, +hasZero: Bool, +hasOne: Bool, +depth: U32, +value: U32, +cover: NW_Cover, +own: Bool) -> NW_Rows:
+  +next = nt_choose(NW_Cover, own, u => NW_Cover{end, Nil{}, 2}, u => cover)
+  nw_join(nw_join(nw_branch(zero, depth, value, next, 0, hasZero), nw_branch(one, depth, value, next, 1, hasOne)),
+    NW_Rows{True{}, nt_choose(List<&2, KTerm>, own, u => [nw_row(end, depth, value, 2)], u => Nil{})})
+
+# Module: src/back/native/word-pattern.bend:123
+@unsafe
+def nw_walk(t, depth, value, cover):
+  nt_choose(NW_Rows, U32.is_eq(depth, 32),
+    u => nt_choose(NW_Rows, String.eq(tg(t), "Mat") && String.eq(nm(t), "WNil") && U32.is_eq(ix(t), 1) && U32.is_eq(terms_len(ks(t)), 2),
+      v => NW_Rows{True{}, [nw_row(kid(t, 0), depth, value, 0)]}, v => NW_Rows{False{}, Nil{}}),
+    u => nt_choose(NW_Rows, String.eq(tg(t), "Mat") && String.eq(nm(t), "WCon") && U32.is_eq(ix(t), 3) && U32.is_eq(terms_len(ks(t)), 2),
+      v => nw_bits(depth, value, cover, nw_arms(kid(t, 0), atom("Absent"), atom("Absent"), False{}, False{})),
+      v => nt_choose(NW_Rows, String.eq(tg(t), "Lam"),
+        w => NW_Rows{True{}, nt_choose(List<&2, KTerm>, nw_covered(t, 1, cover), x => Nil{}, x => [nw_row(t, depth, value, 1)])},
+        w => NW_Rows{False{}, Nil{}})))
+
+# Module: src/back/native/word-pattern.bend:134
+@unsafe
+def nw_applicable(+mat: KTerm) -> Bool:
+  nt_choose(Bool, String.eq(tg(mat), "Mat"),
+    u => nt_choose(Bool, String.eq(nm(mat), "U32") || String.eq(nm(mat), "F32"),
+      v => U32.is_eq(ix(mat), 2) && U32.is_eq(terms_len(ks(mat)), 2) && String.eq(tg(kid(mat, 1)), "Efq"), v => False{}), u => False{})
+
+# Module: src/back/native/word-pattern.bend:140
+@unsafe
+def nw_condition(+word: String, +row: KTerm) -> String:
+  nt_choose(String, U32.is_eq(ix(row), 32), u => "((u32)" ++ word ++ " == " ++ nm(row) ++ "u)",
+    u => "(((u32)" ++ word ++ " & " ++ U32.show(U32.sub(U32.shln(1, U32.to_nat(ix(row))), 1)) ++ "u) == " ++ nm(row) ++ "u)")
+
+# Module: src/back/native/word-pattern.bend:145
+@unsafe
+def nw_tail(+word: String, +depth: U32, +id: U32) -> String:
+  "Term v_" ++ U32.show(id) ++ " = term_pak(CID_WNIL, 0);\nfor (u32 wi = 32; wi > " ++ U32.show(depth) ++ "; wi--) {\nLoc wp = heap_alloc(e, 1);\ne.mem[wp] = ((u32)" ++ word ++ " >> (wi - 1)) & 1;\ne.mem[wp + 1] = rfc_seal(e, v_" ++ U32.show(id) ++ ");\nv_" ++ U32.show(id) ++ " = term_ctr(CID_WCON, wp);\n}\n"
+
+# Under a row's bit constraints, reconstructing its original scalar wrapper is
+# the original low 32-bit value. Keep the value; materialize an escaping Word
+# tail only if it remains used after beta substitution and this local rewrite.
+
+# Module: src/back/native/word-pattern.bend:152
+@unsafe
+def nw_prefix(+depth: U32, +value: U32, +tail: KTerm) -> KTerm:
+  nt_choose(KTerm, U32.is_eq(depth, 0), u => tail,
+    u => nw_prefix(U32.sub(depth, 1), value, nw_word(kt("NWord", U32.show(U32.and(U32.shrn(value, U32.to_nat(U32.sub(depth, 1))), 1)), 0, 0, Nil{}), tail)))
+
+# Module: src/back/native/word-pattern.bend:157
+@unsafe
+def nw_value(row: KTerm) -> U32:
+  nw_value_result(U32.read(nm(row)))
+
+# Module: src/back/native/word-pattern.bend:161
+@unsafe
+def nw_value_result(parsed: Maybe<&2, U32>) -> U32:
+  match parsed:
+    case None{}: 0
+    case Some{value}: value
+
+# Module: src/back/native/word-pattern.bend:167
+@unsafe
+def nw_restore(+t: KTerm, +word: KTerm, +id: U32) -> KTerm:
+  nt_choose(KTerm, String.eq(tg(t), "Ctr") && (String.eq(nm(t), "U32") || String.eq(nm(t), "F32")) && U32.is_eq(terms_len(ks(t)), 1),
+    u => nt_choose(KTerm, nw_same(kid(t, 0), word, Nil{}), v => var("", id), v => nw_restore_children(t, word, id)),
+    u => nw_restore_children(t, word, id))
+
+# Module: src/back/native/word-pattern.bend:173
+@unsafe
+def nw_restore_children(+t: KTerm, +word: KTerm, +id: U32) -> KTerm:
+  k_rebuild(t, nm(t), ix(t), qt(t), nw_restore_list(ks(t), word, id), rm(t), kb(t), ke(t))
+
+# Module: src/back/native/word-pattern.bend:177
+@unsafe
+def nw_restore_list(ts: List<&2, KTerm>, +word: KTerm, +id: U32) -> List<&2, KTerm>:
+  match ts:
+    case Nil{}: Nil{}
+    case Con{t, rest}: Con{nw_restore(t, word, id), nw_restore_list(rest, word, id)}
+
+# Module: src/back/native/word-pattern.bend:183
+@unsafe
+def nw_code(+book: List<&2, KDef>, +row: KTerm, +word: String, +rest: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+  nt_choose(NC_Code, U32.is_eq(qt(row), 0), u => nc_lower_to(book, nd_reapply(kid(row, 0), rest), env, n, target),
+    u => nw_code_body(book, row, word, env, n, target,
+      nd_reapply(nw_restore(nd_beta(kid(row, 0), nt_choose(List<&2, KTerm>, U32.is_eq(qt(row), 1),
+        v => [var("", nc_id(U32.add(n, 2)))], v => [var("", nc_id(U32.inc(n))), var("", nc_id(U32.add(n, 2)))])),
+        nw_prefix(ix(row), nw_value(row), nt_choose(KTerm, U32.is_eq(qt(row), 1),
+          v => var("", nc_id(U32.add(n, 2))), v => nw_word(var("", nc_id(U32.inc(n))), var("", nc_id(U32.add(n, 2)))))), nc_id(n)), rest)))
+
+# Module: src/back/native/word-pattern.bend:192
+@unsafe
+def nw_code_body(+book: List<&2, KDef>, +row: KTerm, +word: String, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +body: KTerm) -> NC_Code:
+  +uses = nc_uses(body)
+  +bit = nc_id(U32.inc(n))
+  +tail = nc_id(U32.add(n, 2))
+  +hasBit = nc_uses_has(uses, bit)
+  +hasTail = nc_uses_has(uses, tail)
+  +bindings = nt_choose(List<&2, NC_Binding>, hasTail, u => Con{nc_binding(tail), env}, u => env)
+  +bindings = nt_choose(List<&2, NC_Binding>, hasBit, u => Con{NC_Binding{bit, "v_" ++ U32.show(bit), N_W32{}}, bindings}, u => bindings)
+  nc_prepend("Term v_" ++ U32.show(nc_id(n)) ++ " = (u32)" ++ word ++ ";\n" ++
+    nt_choose(String, hasBit, u => "Term v_" ++ U32.show(bit) ++ " = ((u32)" ++ word ++ " >> " ++ U32.show(ix(row)) ++ ") & 1;\n", u => "") ++
+    nt_choose(String, hasTail, u => nw_tail(word, U32.add(ix(row), nt_bool(U32.is_eq(qt(row), 2))), tail), u => ""),
+    nc_lower_to(book, body, Con{NC_Binding{nc_id(n), "v_" ++ U32.show(nc_id(n)), N_W32{}}, bindings}, U32.add(n, 3), target))
+
+# Module: src/back/native/word-pattern.bend:216
+@unsafe
+def nw_emit_more(+book: List<&2, KDef>, +row: KTerm, +rows: List<&2, KTerm>, +word: String, +rest: List<&2, KTerm>, +env: List<&2, NC_Binding>, +target: NC_Target, +code: NC_Code) -> NC_Code:
+  nw_emit_join(nw_condition(word, row), code, nw_emit(book, rows, word, rest, env, nc_fresh(code), target))
+
+# Module: src/back/native/word-pattern.bend:220
+@unsafe
+def nw_emit_join(+condition: String, +code: NC_Code, +tail: NC_Code) -> NC_Code:
+  NC_Code{"if (" ++ condition ++ ") {\n" ++ nc_body(code) ++ "} else {\n" ++ nc_body(tail) ++ "}\n", nt_append(N_Segment, nc_segs(code), nc_segs(tail)), nc_fresh(tail), nc_first_error(code, tail), List.append(&2, String, nc_calls(code), nc_calls(tail))}
+
+# Module: src/back/native/word-pattern.bend:224
+@unsafe
+def nw_emit(book, rows, word, rest, env, n, target):
+  match rows:
+    case Nil{}: NC_Code{"err_post(e.mem, ERR_FIDS); return 0;\n", Nil{}, n, "", Nil{}}
+    case Con{+row, +more}: nw_emit_more(book, row, more, word, rest, env, target, nw_code(book, row, word, rest, env, n, target))
+
+# Module: src/back/native/word-pattern.bend:230
+@unsafe
+def nw_match(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, rows: NW_Rows) -> NC_Code:
+  match rows:
+    case NW_Rows{valid, +rs}:
+      nt_choose(NC_Code, valid && Bool.not(List.is_empty(&2, KTerm, rs)),
+        u => nw_emit(book, rs, nc_word(ix(kid(t, 1)), env), nd_match_rest(t), nc_remove_env(env, ix(kid(t, 1))), n, target),
+        u => nc_match_apply_original_to(book, t, env, n, target))
+
+# Store reduced rows once in the private native tree, after typed erasure and
+# static preparation. Source/ABI terms never carry this marker; static input
+# rejects it. Analyses now see retained row bodies instead of expanded defaults.
+
+# Module: src/back/native/word-pattern.bend:241
+@unsafe
+def nw_prepare(+t: KTerm) -> KTerm:
+  nt_choose(KTerm, nw_applicable(t),
+    u => nw_prepared(t, nw_walk(kid(t, 0), 0, 0, NW_None{})), u => t)
+
+# Module: src/back/native/word-pattern.bend:246
+@unsafe
+def nw_prepared(+t: KTerm, rows: NW_Rows) -> KTerm:
+  match rows:
+    case NW_Rows{valid, +rs}:
+      nt_choose(KTerm, valid && Bool.not(List.is_empty(&2, KTerm, rs)),
+        u => kt("NWPattern", nm(t), 2, 0, rs), u => t)
+
+# Module: src/back/native/word-pattern.bend:253
+@unsafe
+def nw_uses(rows: List<&2, KTerm>, +id: U32) -> U32:
+  match rows:
+    case Nil{}: 0
+    case Con{row, rest}: U32.max(nq_uses(kid(row, 0), id), nw_uses(rest, id))
 
 # Module: src/back/native/show.bend:35
 @unsafe
@@ -35158,7 +35509,7 @@ def ns_terms_cons(head: KTerm, tail: NS_Terms) -> NS_Terms:
 @unsafe
 def ns_static_term(cs, t, image):
   # Input cannot import a stale or forged image offset into this request.
-  nt_choose(NS_Term, String.eq(tg(t), "NStatic"), u => NS_Term{atom("NativeStaticInput"), image},
+  nt_choose(NS_Term, (String.eq(tg(t), "NStatic") || String.eq(tg(t), "NWPattern")), u => NS_Term{atom("NativeStaticInput"), image},
     u => nt_choose(NS_Term, String.eq(tg(t), "NWord") || String.eq(tg(t), "Var") || String.eq(tg(t), "Ref"),
       v => NS_Term{t, image}, v => ns_rebuild(cs, t, ns_static_terms(cs, ks(t), image))))
 
@@ -35169,7 +35520,7 @@ def ns_rebuild(+cs: KDef, +original: KTerm, children: NS_Terms) -> NS_Term:
     case NS_Terms{+kids, image}:
       +t = k_rebuild(original, nm(original), ix(original), qt(original), kids, rm(original), kb(original), ke(original))
       nt_choose(NS_Term, String.eq(tg(t), "Ctr"),
-        u => ns_constructor(cs, ns_static_scalar(t), image), u => NS_Term{t, image})
+        u => ns_constructor(cs, ns_static_scalar(t), image), u => NS_Term{nw_prepare(t), image})
 
 # Module: src/back/native/static.bend:179
 @unsafe
@@ -35286,12 +35637,13 @@ def ns_compile_named(+source: List<&2, KDef>, +names: List<&2, String>, +runtime
 @unsafe
 def ns_compile_planned(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +runtime: String, +requests: String, +observers: Bool) -> NC_Result:
   +plan = nf_plan(book, names, bangs, observers)
-  nc_finish(book, nh_macros(book, names, observers) ++ runtime, requests, nc_compile_defs(book, ["main"], Nil{}, 0, bangs), observers, plan)
+  +selected = nf_host_context(book, True{}, plan)
+  nc_finish(selected, nh_macros(selected, names, observers) ++ runtime, requests, nc_compile_defs(selected, ["main"], Nil{}, 0, bangs), observers, plan)
 
 # Preserve the original raw/bang error order: failed generic lowering never
 # asks optional worker planning to inspect an unsupported or malformed body.
 
-# Module: src/back/native/static.bend:281
+# Module: src/back/native/static.bend:282
 @unsafe
 def ns_compile_fallback(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +runtime: String, +requests: String, +observers: Bool, compiled: NC_Book) -> NC_Result:
   match compiled:

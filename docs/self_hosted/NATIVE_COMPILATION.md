@@ -1,10 +1,81 @@
-# Native compilation requests
+# Native compilation and a fast editing loop
 
-The C target is implemented in Bend under `selfhost/src/back/native/`. B1 and
-B2 are JavaScript compiler images; both produce C source which Clang builds
-separately. Compiler request latency, Clang time and generated-program execution
-are different measurements. See the [Phase75 design](../../design/phase75/native-compilation-parity.md)
-and [report](../../implementation/phase75/README.md).
+The default self-hosted package is Phase77 B2: the Bend compiler compiled by
+itself. It checks and compiles Bend to JavaScript or C without a TypeScript
+fallback. B1 remains the checked development-build stage. Use
+`node selfhost/tools/development/release.mjs --verify` from the repository root
+to check the installed source/package bindings.
+
+For ordinary one-shot execution, use the existing CLI:
+
+```sh
+node --stack-size=4096 --max-old-space-size=1024 selfhost/cli.mjs program.bend --run
+```
+
+For repeated **Bend-to-C emission**, keep the compiler process alive:
+
+```sh
+node --stack-size=4096 --max-old-space-size=1024 selfhost/tools/native-session.mjs
+```
+
+Write one JSON request per input line, keeping stdin open between edits:
+
+```json
+{"id":"edit-1","input":"program.bend","output":"build/program.c"}
+{"id":"edit-2","input":"program.bend","output":"build/program.c"}
+```
+
+Paths are relative to the process working directory. Create the output directory
+first. Each response is one JSON line containing the same `id`, status,
+diagnostic/report information, request duration, RSS and `recycle`. Successful
+responses include the output path, C byte count and SHA256. Only successful
+compilation replaces the output; errors preserve an existing file. The output
+must end in `.c`. The session emits C; compiling/linking it and executing the
+program remain separate existing native-build operations.
+
+Source graphs are discovered and checked on every request. Editing a source or
+an import does not require restarting. Ordinary semantic errors allow the next
+request; an unexpected host/protocol error terminates the session. Compiler,
+runtime, Base or bound driver changes require restarting. The tool hashes their
+identities before/after each request and rejects source/compiler output aliases.
+No generated-program cache, custom compiler algorithm or TypeScript fallback is
+introduced by this JavaScript process wrapper.
+
+Requests are serial. Restart when the response has `recycle:true`, at most128
+requests or when post-request RSS reaches1GiB. This is a recycling threshold,
+not an operating-system memory limit; the Node flags bound heap/stack and the
+benchmark guard additionally bounds the process tree. A source change racing
+with compilation has the same limits as the ordinary file-based driver; the
+session does not add a filesystem snapshot transaction.
+
+The module also exports `createNativeSession({maxRequests, rssMiB})` for callers
+that need the C string directly. Create it in a fresh process, then await
+`session.compile(inputPath)` sequentially. Start a new process after compiler or
+Base replacement, not merely a new session object in a process holding old modules.
+
+## Measurements and admission rules
+
+Phase77 fresh C requests take1.920× upstream with B1 and1.482× with B2 on the
+three-source loop. These clocks exclude process imports, explicit prepared Bend
+Base, Clang and execution; upstream checks Base inside its request. Five mixed
+sources in a reused process measure approximately1.10× upstream, including the
+session's integrity hashing. Both roles reuse their process. Individual cases
+still differ significantly and this short run is not steady-state parity.
+
+Scalar Word patterns are compacted into private low-bit rows after typed erasure;
+alpha-equivalence guards default sharing and escaping tails retain materialization.
+An admitted worker plan permits omitting redundant generic host bodies only on
+the checked no-bang path. Raw/bang/device fallbacks stay available. These changes
+trade a measured1.8% aggregate native-execution slowdown for substantially lower
+compiler request time. Expression regresses14.25% and Array.map5.04%.
+
+Read the [complete report](../../implementation/phase77/README.md),
+[native ownership rules](NATIVE_OWNERSHIP_FACTS.md) and
+[fast-loop methods](../../selfhost/tools/performance/phase77/README.md) before
+changing admission rules or comparing numbers. Keep cold compilation, warm
+requests, Clang time and generated-program execution as separate measurements.
+
+## Retained request architecture
 
 The checked driver shares an immutable indexed context between annotation and
 runtime-layout validation. It then asks Bend to create an `NR_Request` containing
@@ -21,10 +92,10 @@ adds no telescope evaluation, preserving raw demand/error behavior.
 
 `NF_Plan` chooses and admits ordinary/product workers before generic lowering
 when the checked representation certificate permits it and the reachable program
-has no bang calls. Generic scheduler bodies and device fallbacks remain. An
-experiment omitting already-admitted host bodies reduced compilation time but
-caused repeatable generated-program regressions alongside changed native layout;
-that permission path was removed. Bang/raw paths retain their original error
+has no bang calls. Generic scheduler bodies and device fallbacks remain where demanded. Phase75
+removed omission of redundant host bodies for generated-program regressions;
+Phase77 restores this permission on the checked no-bang path under explicit
+user authorization for that measured tradeoff. Bang/raw paths retain their original error
 order: failed generic lowering returns before optional worker planning.
 
 Private constructor lookup shares a depth-first, first-winner index across the
@@ -42,13 +113,10 @@ walk may share its safety facts with subsequent roots in the same immutable
 book. A walk that encounters unsafe code contributes no such facts. Public
 `driver_report` and `driver_bad_names` remain available as differential oracles.
 
-For a small edit, use the checked B1 workflow in
-[PHASE5_DEVELOPMENT](../PHASE5_DEVELOPMENT.md), then the three-source compilation
-screen and exact C comparison. Run raw/native integration, genuine B2/B3 and the
-twelve-family runtime comparison when selecting a release. The
-[Phase75 methods](../../selfhost/tools/performance/phase75/README.md) document the
-commands and limits. Avoid running large validations after every minor edit.
+## Historical Phase76 decision
 
+The following records the earlier exact-output selection, superseded by the
+explicit Phase77 tradeoff above.
 
 Phase76 evaluates compact scalar decision rows and explicit lazy native checks.
 The latter avoid metadata construction for ordinary definitions/non-call heads,

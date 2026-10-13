@@ -1,6 +1,22 @@
 # Bend2 compiler port in Bend2
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
+The current default is **Phase77 B2** (`35d7a606…`) with preserved checked B1
+parent and exact self-reproduction lineage. The [Phase77 report](../implementation/phase77/README.md)
+records fresh C-compilation requests at **1.920× B1 /1.482× B2 upstream**, down
+30.7%/23.1% against the paired previous source. Selecting B2 and optimizing its
+source reduce default request time46.6% together. Generated C execution is
+**1.055× upstream**, with an accepted1.8% aggregate regression versus before
+(expression14.25%, Array.map5.04%). Known conformance gaps remain.
+
+Use the [native session guide](../docs/self_hosted/NATIVE_COMPILATION.md) for
+repeated C-emission requests. Five mixed programs measure about1.10× upstream
+when both compilers reuse their process, including session integrity checks.
+Warm/cold requests and Clang/execution are separate measurements.
+
+The following Phase73 results are historical. Read the current report for the
+installed image and tradeoffs.
+
 The [Phase73 report](../implementation/phase73/README.md) records installed
 **compiler14**, production source `a6ca26d`, checked B1 `c2705793…` and genuine
 B2/B3 `25d4ca2e…`. General constructor-sharing certificates, borrowed scalar

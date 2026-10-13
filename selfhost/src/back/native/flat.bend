@@ -328,3 +328,38 @@ def nf_finish_plan(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2
   match plan:
     case NF_Plan{workers, ready, observer_names}: nf_finish_ready(book, ss, cs, runtime, requests, pure, show, workers, ready, ns_image(book), observer_names, observers)
 
+
+# Private request permission, attached only after ns_source clears caller facts.
+# No bang roots means the runtime cannot offload. Keep all device fallbacks for
+# any program with bangs, and keep raw API emission on its original lowering.
+@unsafe
+def nf_host_defs(workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> List<&2, KDef>:
+  match workers:
+    case Nil{}: Nil{}
+    case Con{NF_Worker{+name, +params, code, deps, shape}, +rest}:
+      +arity = nt_count(N_Param, params)
+      nt_choose(List<&2, KDef>, U32.is_gt(arity, 0) && Bool.not(String.starts_with(name, "$product.")) && nb_contains(ready, name),
+        u => Con{KDef{name, "NativeHostWorker", arity, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, nf_host_defs(rest, ready)}, u => nf_host_defs(rest, ready))
+
+@unsafe
+def nf_host_context(+book: List<&2, KDef>, +permission: Bool, plan: NF_Plan) -> List<&2, KDef>:
+  match plan:
+    case NF_Plan{workers, ready, observers}:
+      nt_choose(List<&2, KDef>, permission, u => nf_host_attach(book, index_build(nf_host_defs(workers, ready))), u => book)
+
+@unsafe
+def nf_host_attach(+book: List<&2, KDef>, +index: KDef) -> List<&2, KDef>:
+  match book:
+    case Nil{}: book
+    case Con{cache, rest}: Con{KDef{dn(cache), dk(cache), da(cache), dx(cache), dt(cache), dv(cache), [index_first(dc(cache)), ns_context(book), KDef{"$native.host.plan", "NativeHostPlan", 0, 0, atom("Absent"), atom("Absent"), [index], False{}, False{}}], db(cache), du(cache)}, rest}
+
+@unsafe
+def nf_host_payload(children: List<&2, KDef>) -> KDef:
+  match children:
+    case Con{source, Con{statics, Con{+plan, rest}}}: nt_choose(KDef, String.eq(dk(plan), "NativeHostPlan") && String.eq(dn(plan), "$native.host.plan"), u => index_first(dc(plan)), u => missing())
+    case _: missing()
+
+@unsafe
+def nf_host_selected(+book: List<&2, KDef>, +name: String, +arity: U32) -> Bool:
+  +d = index_find(nf_host_payload(dc(index_first(book))), name, index_hash(name, 2166136261), 32)
+  U32.is_gt(arity, 0) && String.eq(dk(d), "NativeHostWorker") && U32.is_eq(da(d), arity)

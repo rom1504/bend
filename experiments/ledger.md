@@ -4,6 +4,18 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase77 completed — 2026-10-13
+
+Installed B2`35d7a606…` with preserved checked B1/self-emission lineage.
+[Report](../implementation/phase77/README.md). Accept explicit B2 packaging and
+compact scalar patterns plus admitted host-body omission under the user's
+new runtime-regression permission. Cold B1/B2 improve30.7%/23.1%; current
+ratios1.920×/1.482× upstream. Generated C execution1.055× upstream,1.8% slower
+than prior overall; retain per-case regressions. Ship serial native-session tool,
+about1.10× upstream on the mixed five-source warm screen. Defer string kernels
+and annotation reuse; full native products/large shared IR remain unimplemented.
+See [current frontier](STEERING.md) for remaining gaps and precise boundaries.
+
 ## Migration checkpoint — 2026-09-22, 17:13 UTC
 
 The file workflow is adopted during Phase 4 in response to the user's `rom1504/math` suggestion. These records summarize already completed or active experiments; they were not preregistered. Existing designs, detailed reports and raw evidence stay in place. Earlier phases remain indexed by their reports rather than being retroactively relabeled as this wave.

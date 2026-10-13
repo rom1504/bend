@@ -163,7 +163,7 @@ def ns_terms_cons(head: KTerm, tail: NS_Terms) -> NS_Terms:
 @unsafe
 def ns_static_term(cs, t, image):
   # Input cannot import a stale or forged image offset into this request.
-  nt_choose(NS_Term, String.eq(tg(t), "NStatic"), u => NS_Term{atom("NativeStaticInput"), image},
+  nt_choose(NS_Term, (String.eq(tg(t), "NStatic") || String.eq(tg(t), "NWPattern")), u => NS_Term{atom("NativeStaticInput"), image},
     u => nt_choose(NS_Term, String.eq(tg(t), "NWord") || String.eq(tg(t), "Var") || String.eq(tg(t), "Ref"),
       v => NS_Term{t, image}, v => ns_rebuild(cs, t, ns_static_terms(cs, ks(t), image))))
 
@@ -173,7 +173,7 @@ def ns_rebuild(+cs: KDef, +original: KTerm, children: NS_Terms) -> NS_Term:
     case NS_Terms{+kids, image}:
       +t = k_rebuild(original, nm(original), ix(original), qt(original), kids, rm(original), kb(original), ke(original))
       nt_choose(NS_Term, String.eq(tg(t), "Ctr"),
-        u => ns_constructor(cs, ns_static_scalar(t), image), u => NS_Term{t, image})
+        u => ns_constructor(cs, ns_static_scalar(t), image), u => NS_Term{nw_prepare(t), image})
 
 @unsafe
 def ns_constructor(+cs: KDef, +t: KTerm, +image: NS_Image) -> NS_Term:
@@ -273,7 +273,8 @@ def ns_compile_named(+source: List<&2, KDef>, +names: List<&2, String>, +runtime
 @unsafe
 def ns_compile_planned(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +runtime: String, +requests: String, +observers: Bool) -> NC_Result:
   +plan = nf_plan(book, names, bangs, observers)
-  nc_finish(book, nh_macros(book, names, observers) ++ runtime, requests, nc_compile_defs(book, ["main"], Nil{}, 0, bangs), observers, plan)
+  +selected = nf_host_context(book, True{}, plan)
+  nc_finish(selected, nh_macros(selected, names, observers) ++ runtime, requests, nc_compile_defs(selected, ["main"], Nil{}, 0, bangs), observers, plan)
 
 # Preserve the original raw/bang error order: failed generic lowering never
 # asks optional worker planning to inspect an unsupported or malformed body.

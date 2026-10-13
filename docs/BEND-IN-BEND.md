@@ -5,13 +5,20 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-The default package is now genuine **B2** (`29da003b…`), emitted by the Bend
-compiler itself, with the checked B1 generator and self-check/fixed-point receipts
+The default package is genuine **Phase77 B2** (`35d7a606…`), emitted by the Bend
+compiler itself, with its checked B1 parent and self-check/fixed-point receipts
 retained in `selfhost/dist/release-lineage/`. The [Phase77 report](../implementation/phase77/README.md)
-tracks the current work. The unchanged Phase76 source measured **1.908×** upstream
-for B2 C-compilation requests versus **2.752×** for B1. This is a deployment-stage
-change, not a new algorithmic gain. Installed/relocated legacy42 and default24
-checks and 13 package-integrity controls pass.
+records fresh C-request ratios **1.920× B1 /1.482× B2 upstream**:30.7%/23.1% less
+time than the paired previous source. Selecting B2 as default and optimizing its
+source together reduce default request time46.6%. Native execution measures
+**1.055× upstream**, with an explicitly accepted1.8% aggregate regression versus
+the prior compiler and a14.25% expression-case regression. Known gaps remain.
+
+The [native compilation guide](self_hosted/NATIVE_COMPILATION.md) documents the
+new persistent C-emission session. Five mixed programs measure about**1.10×**
+upstream with both compiler processes reused, including session integrity checks.
+This short warm comparison is separate from cold requests and Clang execution.
+Installed/relocated legacy42/default24 and the qualified B2 lineage pass.
 
 To install a qualified B2 explicitly, run from `selfhost/`:
 

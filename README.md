@@ -16,31 +16,29 @@ This fork ships the Bend2 compiler in [`selfhost/`](selfhost/README.md), targeti
 upstream **`0592662` (Bend 2.0.36)**. Ordinary compilation runs Bend algorithms
 without a TypeScript fallback.
 
-**Phase73 compiler14 is installed.** Checked B1 is `c2705793…`; genuine B2
-`25d4ca2e…` checks its source and reproduces B3 exactly. Direct JavaScript is the
-default; legacy JS and native C retain documented limits.
+**Phase77 self-emitted B2 is installed** (`35d7a606…`). Its checked B1 parent,
+fresh own-source acceptance and exact B3 reproduction are preserved in the
+release lineage. Direct JavaScript is the default; native C and legacy JS retain
+documented limits.
 
-The fixed twelve-family C execution score improves **1.36903×→1.05060× upstream**:
-**23.26% less time** than Phase72 measured alongside it. Tape is **3.36× faster**,
-list processing **1.98×**, BST **1.64×**. Original/additional six means are
-**1.00924×/1.09365×**. All216 final intervals pass independent checksums, and B2
-emits all twelve timed C programs exactly. Four families still take1.37–1.53×
-upstream time; this is near aggregate parity on a finite single-worker corpus.
+Fresh C-compilation requests now take **1.920× B1 /1.482× B2 upstream**, down
+30.7%/23.1% in the paired three-source loop. Switching the default from B1 to B2
+and optimizing its source together reduce default request time46.6%. A new
+persistent session measures about**1.10× upstream** across five mixed sources;
+both compilers reuse their process. Neither result establishes universal parity.
+Imports, prepared Bend Base, Clang and execution are separate clocks.
 
-C compilation pays for the new analysis: **3.59582× B1 /2.29667× B2 upstream**,
-or7.33%/6.28% more request time than Phase72. Imports, prepared Bend Base, Clang
-and execution are separate clocks. Historical broad JS metrics remain1.049×
-runtime and1.402×/1.321× compilation through exact frontend/JS closure identity.
+The twelve-family C execution score is **1.055× upstream**. This accepts a1.8%
+aggregate slowdown versus the previous compiler to improve compilation; expression
+regresses14.25% and Array.map5.04%. Native100,raw31,scalar-pattern controls,
+threaded,self-hosting and installed/relocated checks pass. Seven reference native
+failures and thirteen broader native API gaps remain. Manifest-listed Bend source
+is **32,317 physical lines /132 modules**. No mathematical compiler proof is claimed.
 
-Candidate native100,raw31,twelve new controls,threaded and self-hosting gates pass.
-Seven reference failures and thirteen native API gaps remain explicit. Maintained
-Bend source is **31,730 lines /129 modules** (+273 lines/one module). The compiler
-has no TypeScript fallback and is not independently kernel-proved.
-
-Read the [Phase73 report and chart](implementation/phase73/README.md),
+Read the [Phase77 report](implementation/phase77/README.md),
+[native compilation/session guide](docs/self_hosted/NATIVE_COMPILATION.md),
 [native ownership facts](docs/self_hosted/NATIVE_OWNERSHIP_FACTS.md),
-[native backend documentation](selfhost/src/back/native/README.md),
-[fast loops](selfhost/tools/performance/phase73/README.md) and
+[fast loops](selfhost/tools/performance/phase77/README.md) and
 [compiler guide](docs/BEND-IN-BEND.md). From `selfhost/`, run
 `npm run verify:release`, then `node cli.mjs FILE --run`.
 The [conformance record](selfhost/CONFORMANCE.md),

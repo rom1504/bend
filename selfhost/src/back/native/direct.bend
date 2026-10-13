@@ -5,6 +5,23 @@
 def nd_scalar_known(+name: String) -> Bool:
   Bool.not(String.eq(ni_template(name), "")) && Bool.not(String.eq(name, "f32_show") || String.eq(name, "f32_read"))
 
+# Reject ordinary/non-call heads before building intrinsic names and templates.
+# Scalar and allocating call classifiers share the same provenance/arity gate.
+@unsafe
+def nd_native_call(+book: List<&2, KDef>, +t: KTerm) -> String:
+  nt_choose(String, String.eq(tg(t), "App"),
+    u => nd_native_head(book, t, nd_head(t)), u => "")
+
+@unsafe
+def nd_native_head(+book: List<&2, KDef>, +t: KTerm, +head: KTerm) -> String:
+  nt_choose(String, String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)),
+    u => nt_choose(String, nc_native_def(lookup(book, nm(head))),
+      v => nd_native_saturated(t, nc_primitive_name(nm(head))), v => ""), u => "")
+
+@unsafe
+def nd_native_saturated(+t: KTerm, +name: String) -> String:
+  nt_choose(String, U32.is_eq(terms_len(nd_args(t, Nil{})), nc_primitive_arity(name)), u => name, u => "")
+
 @unsafe
 def nd_scalar_call(+book: List<&2, KDef>, +t: KTerm) -> String:
   +name = nd_native_call(book, t)
@@ -233,8 +250,8 @@ def nd_app_to(book, t, env, n, target):
   nt_choose(NC_Code, Bool.not(String.eq(scalar, "")), u => nc_lower_to(book, nc_sequence("NOp", scalar, args, Nil{}, n), env, U32.add(n, terms_len(args)), target), u =>
   nt_choose(NC_Code, String.eq(tg(head), "Efq") && Bool.not(nf_scheduler(target)), u => nc_lower_to(book, head, env, n, target), u =>
   nt_choose(NC_Code, String.eq(tg(head), "Lam"), u => nc_lower_to(book, nd_beta(head, args), env, n, target), u =>
-    nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_eq(terms_len(args), 1), u => nd_match_to(book, head, kid(t, 1), env, n, target), u =>
-    nt_choose(NC_Code, String.eq(tg(head), "Mat") && U32.is_gt(terms_len(args), 1) && (nd_match_vars(args) || (Bool.not(nf_scheduler(target)) && nq_match_args(args))),
+    nt_choose(NC_Code, (String.eq(tg(head), "Mat") || String.eq(tg(head), "NWPattern")) && U32.is_eq(terms_len(args), 1), u => nd_match_to(book, head, kid(t, 1), env, n, target), u =>
+    nt_choose(NC_Code, (String.eq(tg(head), "Mat") || String.eq(tg(head), "NWPattern")) && U32.is_gt(terms_len(args), 1) && (nd_match_vars(args) || (Bool.not(nf_scheduler(target)) && nq_match_args(args))),
       u => nc_lower_to(book, nd_match_sequence(head, args, Nil{}, n), env, U32.add(n, terms_len(args)), target), u =>
     nt_choose(NC_Code, String.eq(tg(head), "Ref"), u => nd_ref_app(book, t, head, args, env, n, target), u => nf_slow_app(book, t, env, n, target)))))))
 
@@ -247,8 +264,8 @@ def nd_bindings(+t: KTerm, +acc: List<&2, NC_Binding>) -> List<&2, NC_Binding>:
   nt_choose(List<&2, NC_Binding>, String.eq(tg(t), "Lam"), u => nd_bindings(kid(t, 0), Con{nc_binding(ix(t)), acc}), u => nt_reverse(NC_Binding, acc, Nil{}))
 
 @unsafe
-def nd_join(+base: NC_Code, +body: NC_Code, name: String, params: List<&2, NC_Binding>) -> NC_Code:
-  NC_Code{nc_body(base), nt_append(N_Segment, nc_segs(base), Con{N_Segment{nd_name(name), nc_params(params), 1, N_Direct{}, nc_body(body), Nil{}, False{}, False{}, False{}, False{}}, nc_segs(body)}), nc_fresh(body), nc_first_error(base, body), List.append(&2, String, nc_calls(base), List.append(&2, String, nc_calls(body), Nil{}))}
+def nd_join(+base: NC_Code, +body: NC_Code, name: String, params: List<&2, NC_Binding>, host: Bool) -> NC_Code:
+  NC_Code{nc_body(base), nt_append(N_Segment, nc_segs(base), Con{N_Segment{nd_name(name), nc_params(params), 1, N_Direct{}, nc_body(body), Nil{}, host, False{}, False{}, False{}}, nc_segs(body)}), nc_fresh(body), nc_first_error(base, body), List.append(&2, String, nc_calls(base), List.append(&2, String, nc_calls(body), Nil{}))}
 
 @unsafe
 def nd_entry_params(+left: U32, +n: U32) -> List<&2, NC_Binding>:
@@ -265,7 +282,9 @@ def nd_entry_args(params: List<&2, NC_Binding>) -> List<&2, KTerm>:
 def nd_extend_arity(+book: List<&2, KDef>, +body: KTerm, +base: NC_Code, +name: String, +arity: U32) -> NC_Code:
   +params = nk_typed_bindings(nd_entry_params(arity, nc_fresh(base)), nf_worker_kinds(book, name, arity))
   nt_choose(NC_Code, U32.is_eq(arity, 0), u => base, u =>
-    nd_join(base, nc_lower(book, nd_reapply(body, nd_entry_args(params)), params, U32.add(nc_fresh(base), arity)), nc_ref_name(book, name), params))
+    nd_join(base, nt_choose(NC_Code, nf_host_selected(book, name, arity),
+      u => NC_Code{"", Nil{}, U32.add(nc_fresh(base), arity), "", Nil{}},
+      u => nc_lower(book, nd_reapply(body, nd_entry_args(params)), params, U32.add(nc_fresh(base), arity))), nc_ref_name(book, name), params, nf_host_selected(book, name, arity)))
 
 @unsafe
 def nd_extend(+book: List<&2, KDef>, +body: KTerm, +base: NC_Code, +name: String) -> NC_Code:
@@ -303,21 +322,3 @@ def nd_compile_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32
   nt_choose(NC_Code, Bool.not(bang) && Bool.not(nc_native_def(d)) && Bool.not(nc_foreign(d)),
     u => nd_user_entry(book, body, name, n, d),
     u => nd_extend(book, body, nc_lower(book, body, Nil{}, n), name))
-
-@unsafe
-def nd_native_call(+book: List<&2, KDef>, +t: KTerm) -> String:
-  nt_choose(String, String.eq(tg(t), "App"),
-    u => nd_native_head(book, t, nd_head(t)), u => "")
-
-
-@unsafe
-def nd_native_head(+book: List<&2, KDef>, +t: KTerm, +head: KTerm) -> String:
-  nt_choose(String, String.eq(tg(head), "Ref") && Bool.not(U32.is_eq(qt(head), 3)),
-    u => nt_choose(String, nc_native_def(lookup(book, nm(head))),
-      v => nd_native_saturated(t, nc_primitive_name(nm(head))), v => ""), u => "")
-
-
-@unsafe
-def nd_native_saturated(+t: KTerm, +name: String) -> String:
-  nt_choose(String, U32.is_eq(terms_len(nd_args(t, Nil{})), nc_primitive_arity(name)), u => name, u => "")
-

@@ -1,0 +1,155 @@
+{
+  "complete": true,
+  "windows": {
+    "all6": {
+      "rows": [
+        {
+          "case": "numeric",
+          "mediansMs": {
+            "b2": 302.2177569999999,
+            "typescript": 274.41373999999996
+          },
+          "ratio": 1.101321519104692
+        },
+        {
+          "case": "array",
+          "mediansMs": {
+            "b2": 291.03553349999993,
+            "typescript": 280.7262230000001
+          },
+          "ratio": 1.0367237174704544
+        },
+        {
+          "case": "lexer",
+          "mediansMs": {
+            "b2": 382.5727615000005,
+            "typescript": 395.66267100000005
+          },
+          "ratio": 0.9669164910934963
+        },
+        {
+          "case": "small",
+          "mediansMs": {
+            "b2": 83.86282299999948,
+            "typescript": 80.5708169999998
+          },
+          "ratio": 1.04085854063016
+        },
+        {
+          "case": "functions65",
+          "mediansMs": {
+            "b2": 171.49010899999985,
+            "typescript": 122.55164400000012
+          },
+          "ratio": 1.3993293227465775
+        }
+      ],
+      "geometricRatio": 1.0996527238315759
+    },
+    "afterFirstRound": {
+      "rows": [
+        {
+          "case": "numeric",
+          "mediansMs": {
+            "b2": 297.39124300000003,
+            "typescript": 269.3157199999996
+          },
+          "ratio": 1.1042476205993488
+        },
+        {
+          "case": "array",
+          "mediansMs": {
+            "b2": 256.07894899999974,
+            "typescript": 260.3773860000001
+          },
+          "ratio": 0.98349151181662
+        },
+        {
+          "case": "lexer",
+          "mediansMs": {
+            "b2": 382.10619600000064,
+            "typescript": 389.8421560000006
+          },
+          "ratio": 0.9801561737720331
+        },
+        {
+          "case": "small",
+          "mediansMs": {
+            "b2": 82.4797639999997,
+            "typescript": 71.99009800000022
+          },
+          "ratio": 1.145709844706691
+        },
+        {
+          "case": "functions65",
+          "mediansMs": {
+            "b2": 166.32119000000057,
+            "typescript": 118.19586900000013
+          },
+          "ratio": 1.407165846041543
+        }
+      ],
+      "geometricRatio": 1.1140648184846709
+    },
+    "last3": {
+      "rows": [
+        {
+          "case": "numeric",
+          "mediansMs": {
+            "b2": 231.8779339999992,
+            "typescript": 257.9555049999999
+          },
+          "ratio": 0.8989067087364515
+        },
+        {
+          "case": "array",
+          "mediansMs": {
+            "b2": 243.266791,
+            "typescript": 242.13382700000057
+          },
+          "ratio": 1.0046790818698763
+        },
+        {
+          "case": "lexer",
+          "mediansMs": {
+            "b2": 353.08369700000003,
+            "typescript": 389.8421560000006
+          },
+          "ratio": 0.9057093789518225
+        },
+        {
+          "case": "small",
+          "mediansMs": {
+            "b2": 82.4797639999997,
+            "typescript": 71.99009800000022
+          },
+          "ratio": 1.145709844706691
+        },
+        {
+          "case": "functions65",
+          "mediansMs": {
+            "b2": 153.34217999999964,
+            "typescript": 89.97467200000028
+          },
+          "ratio": 1.7042816227215496
+        }
+      ],
+      "geometricRatio": 1.0981694819442143
+    }
+  },
+  "receipts": [
+    {
+      "path": "selfhost/build/phase77/mixed01-b2/report.json",
+      "sha256": "f6210e54b2d37d22b9ab2c8452da07c66716b551df19283fd4976a527b4b6cbd"
+    },
+    {
+      "path": "selfhost/build/phase77/mixed01-typescript/report.json",
+      "sha256": "cf41e04b6957ed21f92f0b146b1aaac5ccf84ce83a764dd74ee6b7f6e28d41b8"
+    }
+  ],
+  "peakObservedRssBytes": {
+    "b2": 347897856,
+    "typescript": 351821824
+  },
+  "scope": "One fresh process per role, TS then B2, 6 rotated rounds of 5 mixed programs. B2 elapsed includes per-request file integrity hashing; imports and prepared Base are separate. Exploratory short run, not universal steady-state parity."
+}

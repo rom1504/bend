@@ -1,0 +1,18 @@
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {pathToFileURL} from 'node:url';import {createHash} from 'node:crypto';
+const [planFile,out]=process.argv.slice(2);fs.mkdirSync(out);const plan=JSON.parse(fs.readFileSync(planFile)),r=plan.roles.b2;
+const project=path.join(out,'project');fs.mkdirSync(project);for(const name of ['tools','src'])fs.cpSync(path.join(r.project,name),path.join(project,name),{recursive:true});
+const tool=path.resolve('selfhost/tools/native-session.mjs'),copy=path.join(project,'tools/native-session.mjs');fs.copyFileSync(tool,copy);
+const api=path.join(out,'api.mjs'),base=path.join(out,'base.bend');fs.copyFileSync(r.api.file,api);fs.copyFileSync(r.base.file,base);
+process.env.BEND_TYPED_API=path.resolve(api);process.env.BEND_TYPED_RUNTIME=path.resolve(project,'src/runtime.mjs');process.env.BEND_BASE=path.resolve(base);
+const {createNativeSession}=await import(pathToFileURL(path.resolve(copy)));const session=await createNativeSession({maxRequests:8});
+const source=path.join(out,'source.bend');const write=n=>fs.writeFileSync(source,'import Base\n\ndef main() -> U32:\n  '+n+'\n');write(42);
+const first=await session.compile(source);assert.equal(first.status,'ok');
+fs.writeFileSync(source,'import Base\n\ndef main() -> U32:\n  "bad"\n');const bad=await session.compile(source);assert.equal(bad.status,'error');assert.equal(bad.recycle,false);
+write(43);const changed=await session.compile(source);assert.equal(changed.status,'ok');assert.notEqual(changed.code,first.code);
+write(42);const restored=await session.compile(source);assert.equal(restored.code,first.code);
+const limited=await createNativeSession({maxRequests:1});assert.equal((await limited.compile(source)).recycle,true);await assert.rejects(()=>limited.compile(source),/exhausted/);
+const replaced=await createNativeSession();fs.appendFileSync(api,'\n');await assert.rejects(()=>replaced.compile(source),/changed/);
+await assert.rejects(()=>createNativeSession(),/restart the process/);fs.copyFileSync(r.api.file,api);
+const baseSession=await createNativeSession();fs.appendFileSync(base,'\n');await assert.rejects(()=>baseSession.compile(source),/changed/);
+const pin=f=>({file:path.resolve(f),sha256:createHash('sha256').update(fs.readFileSync(f)).digest('hex')});
+fs.writeFileSync(path.join(out,'report.json'),JSON.stringify({complete:true,pass:true,checks:['valid-request','error-isolation','source-edit','source-restoration','request-limit','compiler-replacement','Base-replacement'],inputs:[planFile,tool,import.meta.filename].map(pin),peakObservedRss:Math.max(first.rssBytes,bad.rssBytes,changed.rssBytes,restored.rssBytes),scope:'Serial actual B2 native requests in a private copied project. API/Base changes rejected; source changes rechecked. No filesystem/source cache introduced.'},null,2)+'\n');console.log('session controls passed');

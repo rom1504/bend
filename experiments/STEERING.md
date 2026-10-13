@@ -1,4 +1,41 @@
-# Active frontier: Phase76 exact-output native checks
+# Active frontier: Phase77 B2 default and compact native lowering
+
+Installed genuine B2`35d7a606…`, checked B1 parent`f058269d…`.
+[Report](../implementation/phase77/README.md), [qualification](../implementation/phase77/qualification.json),
+[session guide](../docs/self_hosted/NATIVE_COMPILATION.md).
+Paired fresh45 requests: oldB1 2.77248×→newB1 1.92036×,oldB2 1.92566×→newB2
+1.48173× upstream;30.74%/23.05% less time. Default stage selection plus source
+changes cut46.56% versus the old B1. JS-hosted Bend-to-C request clocks exclude
+imports, explicit Bend Base, Clang and execution; upstream checks Base inside.
+
+The user explicitly authorized temporary generated-program regressions. This
+supersedes the historical runtime veto below: selected compact scalar rows,
+alpha-equivalent default/reconstruction elimination and admitted host-body omission
+now ship. Twelve-family runtime is1.05491× upstream/1.01792× previous;
+expression14.25%,Array.map5.04%,Tree3.10%,lexer2.03% regress. All108 intervals
+pass. These costs remain visible follow-up work. Raw/bang/device fallbacks remain.
+
+The real native-session tool measures about1.10× upstream over five mixed sources,
+including identity hashing, with both processes reused. Short windows and individual
+ratios0.90–1.70× do not prove universal parity. Cold non-IO held-outs measure
+1.063×/1.752× B2. Source graphs are re-read; no program-output cache is introduced.
+
+All selected native/raw/frontend/threaded/B2/self-check/B3/installed gates pass;
+JS closure2992 stays exact. Seven reference failures/thirteen broader API gaps
+remain. Production32,317 physical/26,408 code lines in132 Bend modules (+299/+246/+1).
+
+Defer the string-kernel image (only2–3%) and annotation-product prototype (no clear
+cold gain). The larger reusable native-product/retained-node-plan rewrite is not
+implemented; require a discriminator showing eliminated work on functions65 as
+well as the shared IO fixtures. Profiles now distribute cost among native
+rendering, erasure, source completion, annotation and GC. Do not multiply their
+inclusive clocks or infer native product value from Base-name overlap.
+
+Use fresh phase paths after sealing. One guarded CPU3 tree,2GiB RSS/4GiB available,
+Node1GiB heap/4MiB stack. No agents were used. No PR comments without explicit
+request. Preserve unrelated work and sealed evidence.
+
+## Historical Phase76 frontier
 
 Installed compiler12: checked B1`98134f59…`, genuine B2/B3`29da003b…`.
 [Report](../implementation/phase76/README.md) and [qualification](../implementation/phase76/qualification.json).

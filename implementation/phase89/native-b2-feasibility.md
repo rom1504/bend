@@ -1,16 +1,54 @@
 # Phase89 native B2 feasibility: source and host audit
 
 Initial read-only audit of source at Phase88 commit `da6420b`, 2026-10-14;
-subsequently updated with root's completed, serial guarded small controls.
+subsequently updated with root's completed, serial guarded controls and full
+self-emission attempt.
 The audit/preparation agent ran no targets or builds. This document separates
-those finite controls from unmeasured full-compiler risks.
+finite controls, the completed timeout, and still-unmeasured successor behavior.
 
-Native B2 is a plausible next qualification, but the existing native B1 cannot
-compile a runnable copy of its own entry unchanged. The immediate obstacles are
-the foreign-effect allowlist, an actual argv convention mismatch, and the build/
-cache admission protocol. General import discovery is not required for the first
-assembled-source attempt. Native B2 performance is unknown: its emitted runtime
-and lowering differ materially from the upstream-built native B1.
+## Current status: native B1 passes; full self-emission times out
+
+The new upstream-built native B1 `compiler-native-self01` passes all eight
+live/cache exact-C gates (Small, Map, Unicode and entry-shaped file IO), plus
+all45 broad catalog-point C comparisons. A separate full frozen compiler source
+self-emission reaches the600s deadline without producing C. **No native B2
+has been built or executed.** The stop is a deadline, not OOM or a demonstrated
+semantic refusal.
+
+| Current native B1 artifact | SHA256 |
+| --- | --- |
+| Binary,10,019,312 bytes | `8bacae268296d6fe16d02ce50a7a2189bd587506c074532c6e5d74e622716e45` |
+| Frozen Bend source,1,755,310 bytes | `4584cf083d9eddad6f1290c9472c3aac2708099caa716a27f5b53fbcbaee1618` |
+| Upstream-emitted C,17,762,895 bytes | `b156023421863836c4a0a752b61f9d538282aa376359716a36909f131e9555ff` |
+
+The immutable [eight-gate receipt](../../selfhost/build/phase89/native-b1-nine-gates01/gates.json)
+is complete/passing. The encompassing [optional self-emission report](../../selfhost/build/phase89/native-b1-nine-gates01/report.json)
+remains failed:600.022s wall,1,079,590,912 bytes peak tree RSS, return−9 from the
+deadline guard, no completed request clock and no emitted compiler C. These are
+different records; the successful gate receipt does not turn self-emission into
+a success. The [new image's broad45 report](../../selfhost/build/phase89/nine-broad01/report.json)
+is independently complete/passing, with unchanged inputs and all45 exact C
+hashes matching previously executed Phase88 points. It reuses that prior
+execution evidence; it is not a fresh generated-program speed measurement.
+
+The versioned [native89 launcher and admission](../../selfhost/tools/performance/phase89/native-launcher.md)
+bind this exact image, nine providers and private prepared cache. Its admission
+manifest is pinned; all ten separate wrapper success/refusal controls pass.
+Restoration verifies all12 selected assets and recovers a missing executable
+with unchanged admission. Source optimizations stay in the
+explicit native build profile; canonical production and installed Phase82 JS B2
+remain unchanged after the [ordinary JS ablations](js-integration.md).
+
+[Bounded partial capture](../../selfhost/tools/performance/phase89/partial-capture/README.md)
+provides separate diagnostic evidence. The retained60s self-prefix capture has one timer
+overrun and remains [explicitly unqualified](partial-self02-unqualified.json);
+the strict analyzer was not weakened. Its exploratory samples cannot establish
+a completed compilation profile, removable-time forecast or native B2 result.
+
+The earlier audit below is retained with its original producer facts. Its
+foreign-effect and new-B1-build proposals have since been implemented and gated;
+its first full S→C2 attempt has now timed out. Argv adaptation, native-produced
+build/cache provenance and actual B2 execution remain future boundaries.
 
 ## Completed small controls
 
@@ -43,14 +81,15 @@ The producer identities remain Phase82 JS B2 `098320e8…` and Phase88 native B1
 `5babec07…`. Three expected program refusals have nonzero guard status, but their
 specific exit/error/output-absence checks pass; resource stops are not accepted.
 
-This establishes the three small falsifiers. It does **not** establish a native
-B2 compiler, full prepared-Base admission by B2, new native-B1 file-effect
-admission, self-emitted compiler C, or a speed gain. The next smallest step is
-the private nine-file entry derivative below.
+At that checkpoint these three small falsifiers did not establish native-B1
+file-effect admission. The later nine-effect B1 gates above supersede that
+limitation: actual native B1 now emits the same file-IO C in live/cached modes.
+The historical file-IO row remains correctly labeled JS-B2-produced. Native B2,
+its prepared-Base admission and self-emitted compiler C remain unestablished.
 
 ## Existing artifacts and the exact chain
 
-The selected B1 is `selfhost/build/phase88/compiler-native02`, built from the
+The initial Phase88 baseline B1 is `selfhost/build/phase88/compiler-native02`, built from the
 upstream-emitted `selfhost/build/phase88/native02/compiler.c`. Its source is
 `native02/compiler.bend`, 1,750,898 bytes, SHA256
 `08ea659193cc0c5f040f209e63e9b6df71ff3c928784db81706c264b41d05e4f`.
@@ -81,7 +120,11 @@ manifest plus copied entry. Freeze this assembly, including the safe consuming
 equality derivative from `phase88/strings/native-assembly.py`, once for all
 stages. Do not regenerate from mutable production between stages.
 
-## Immediate obstacles and minimal changes
+## Initial obstacles and minimal changes
+
+The first row has been implemented for the exact nine-effect image above.
+The remaining rows describe successor/B2 boundaries, not missing functionality
+in the already qualified live/cache B1 requests.
 
 | Boundary | Actual evidence | Smallest candidate change / gate |
 | --- | --- | --- |
@@ -101,7 +144,7 @@ The emitter parses them through `kf_source`, then rewrites IDs through
 
 The existing B1 itself can execute file IO because upstream compiled its entry
 and linked upstream effects. Its *output compiler* uses the retained selfhost
-runtime and vendored providers. This distinction explains why today's entry can
+runtime and vendored providers. This distinction explained why the initial entry could
 read source files while refusing to compile a file-reading successor.
 
 The native backend already has generic file handles, result/pair construction
@@ -110,7 +153,7 @@ read-bytes/read-at/write-bytes registrations with constructor macros. The bounde
 entry-shaped file control now passes UTF-8 strings, failures and affine handle
 threading. The complete successor compiler has not exercised these providers.
 
-## Next minimal private entry derivative
+## Private entry derivative, now checked and built
 
 `selfhost/tools/performance/phase89/native-b2/extend-entry.py SOURCE NEW_SOURCE`
 replaces exactly one byte-identical `p86_effect_file` definition using frozen
@@ -119,6 +162,9 @@ assembly, and refuses an unknown or already modified definition. The prefix and
 suffix remain byte-identical and receive separate hashes in its derivation
 receipt. The output is explicitly `checked:false`: root must check the entire
 new compiler and acquire/build a distinct B1 before executing it.
+That subsequent full check/acquisition/build has completed for source4584cf08…
+and image8bacae26…; the transport receipt correctly retains its original
+`checked:false` fact rather than claiming it performed that later check.
 
 `nine-effects.json` supplies exact external hashes for the nine vendored files,
 canonical Base, runtime/template and both definition blocks. The helper retains
@@ -135,7 +181,9 @@ the old three-effect authentication is insufficient for this new image. Its
 source/C/binary identity also needs explicit live/cache admission under a new
 receipt. Existing native02 identity and sealed evidence remain unchanged. First
 repeat the file-IO control through the new actual B1 and require exact JS-B2 C;
-only then attempt frozen full compiler S→C2. Preserve the explicit retained-B2
+only then attempt frozen full compiler S→C2. Both the actual-B1 file-IO gate and
+the bounded full-source attempt have now run; the latter timed out as recorded
+above. Preserve the explicit retained-B2
 argv adapter when that later stage becomes runnable.
 
 ## Representation and cache inheritance
@@ -172,10 +220,12 @@ shared Data, Array.get/set and Unicode before constructing a full B2.
 
 ## Fastest falsification sequence
 
-Gates1–3 now pass in the finite scope recorded above; upstream-execution
-comparison in gate1 was a proposal, not an additional completed lane. Gates4–6
-remain proposed. These are not measured time estimates. Root runs targets
-serially with the existing resource guard.
+Gates1–4 now pass in the finite scopes recorded above. Gate5 has completed as a
+600s deadline failure without C2, so gate6 has not run. Upstream-execution
+comparison in gate1 was an initial proposal; the retained argv lane records its
+actual producers separately. The sequence below remains the original dependency
+plan, not a claim that all stages completed or a measured time estimate.
+Root runs targets serially with the existing resource guard.
 
 1. **Argv only.** Compile a tiny IO.args program through current native B1, build
    it, and observe the retained-runtime list with zero, one and multiple payload
@@ -216,9 +266,10 @@ Use a new output path on failure; do not relabel an unexecuted or refused stage.
   Keep these explicit rejections. An offline scan of upstream-emitted native02 C
   finds12,691 numeric FID definitions (maximum12,690) and197 CID definitions.
   Different segmentation means those counts do not prove our emitter fits.
-- Existing full upstream acquisition used about63.7s for C emission, and the
-  Phase88 ClangO2 build took175s/approximately4GiB peak. Our emitter's source size,
-  emission time, Clang time and B2 runtime are unknown. Its generic fallback and
+- The initial full upstream acquisition used about63.7s for C emission, and the
+  Phase88 ClangO2 build took175s/approximately4GiB peak. The size of our emitter's
+  complete compiler C, Clang time and B2 runtime remain unknown. Native B1 did
+  not finish full self-emission within the600s process guard. Its generic fallback and
   compiler-scale unsafe code may expose bugs absent from the45 program points.
   Treat budgets as stop limits, not predictions or automatic reasons to retry.
 - `phase86/guard.py` has a64MiB output-file limit and native.py has a600s maximum
@@ -237,6 +288,11 @@ they should precede any full acquisition. The complete native fixed point is an
 integration project, not an inexpensive extension of a small-program benchmark.
 
 ## Local upstream executable packaging source
+
+This section preserves the initial bounded source-only audit. Later engine
+download/packaging experiments and their exact identities are recorded in
+[the engine report](engines.md); this paragraph does not describe their current
+installation state.
 
 Exact release packaging source was **not found in the bounded local search**.
 `SITE_REPO` is unset. The documented sibling `bend-lang.com` checkout is absent

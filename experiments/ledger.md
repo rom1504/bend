@@ -4514,3 +4514,31 @@ is pending. Production/release remains unchanged and verifies.
 build; peak4.03GiB under6GiB/16GiB-headroom guard, no OOM/deadline. Initial1ms
 sampling overruns and a True-versus-True{} display expectation error are retained.
 Two bounded audit agents, root-only serial execution, no PR comment or quota claim.
+
+## Phase89 native composition, host engines and self-emission — 2026-10-14
+
+[Report](../implementation/phase89/README.md). Qualified native B1`8bacae26…`
+combines owned NC_Code composition and ordered body pieces; Map cold/fifth
+request time falls28.0%/33.7%. Append work-39.8%, allocation calls-29.4%; all
+31 stable counters stay equal on calls2–5 despite time growth. No leak/locality
+cause is claimed. Native changes remain isolated: combined ordinaryJSB1 requests
+regress4.11%, owned-only1.15%; production132 modules and Phase82 B2 unchanged.
+
+Upstream Bun cold process geomean is20.2% faster than Node, but our JS B2 favors
+Node. Final native89/TS-Bun cold process geomean0.4924× across six sources,5wins;
+Map1.385×, fifth Map/Lexer3.625×/2.152×. Cache/startup boundaries differ; no
+broad parity or fresh program-execution measurement. Eight actual-image gates,
+45 complete-C points,81 final timing outputs and10 wrapper controls pass.
+Nine IO providers are admitted without enlarging scalar-array permission.
+
+Self-source emission times out600.022s/noC/1.01GiB; no native B2. Exploratory60s
+prefix retains one-overrun strict rejection; physical shared-string equality
+ownership30.42%, name projection9.40%. Tiny False-first comparator fails language
+match order in0.921s and stops before building. Next: tiny shared-observation and
+lookup scaling controls; no unmeasured allocator or output-builder rewrite.
+
+Release audit finds16 installed artifacts intact but3 inherited Phase88 checkout
+mismatches against Phase82. Explicit verification fails; ordinary CLI smoke
+prints42. Retain both facts. All evidence/failures and deletion/restoration
+receipts are linked. Three bounded offline agents, root-only serial targets,
+no PR comments or quota-percentage claim.

@@ -1,0 +1,359 @@
+{
+  "kind": "phase89-installed-release-offline-audit",
+  "complete": true,
+  "compilerTargetsRunByThisAudit": 0,
+  "head": "0e3545441824641bffabba93cc0212011dfbb482",
+  "manifest": {
+    "file": "selfhost/dist/release.json",
+    "sha256": "6473b95ea14137e16f791097e4273ed53cb952f47546943dc9173546e8179d8f",
+    "bytes": 42257
+  },
+  "releaseKind": "bend-default-selfhost-release",
+  "artifact": "self-emitted-b2",
+  "counts": {
+    "files": {
+      "total": 16,
+      "matching": 16,
+      "mismatching": 0
+    },
+    "checkout": {
+      "total": 231,
+      "matching": 228,
+      "mismatching": 3
+    }
+  },
+  "mismatches": [
+    {
+      "section": "checkout",
+      "expected": {
+        "path": "src/back/native/text.bend",
+        "sha256": "31c1ff5973df46d17ad395070fbefa1d2dc58398b3d12af80c62ed6c5548ff9d",
+        "bytes": 2533
+      },
+      "actual": {
+        "file": "selfhost/src/back/native/text.bend",
+        "sha256": "acc430c939a7dd6b404ba7a13f762019b717a62313ae3066234f78bb62df04c0",
+        "bytes": 3305
+      },
+      "origin": {
+        "commit": "36a11b89afe453f53583408cba49cc635952d4d8",
+        "description": "fix(native): share observer continuations as Data and use linear text builders",
+        "date": "2026-10-14T06:50:32+00:00",
+        "parentSha256": "31c1ff5973df46d17ad395070fbefa1d2dc58398b3d12af80c62ed6c5548ff9d",
+        "commitSha256": "acc430c939a7dd6b404ba7a13f762019b717a62313ae3066234f78bb62df04c0",
+        "phase82InstallSha256": "31c1ff5973df46d17ad395070fbefa1d2dc58398b3d12af80c62ed6c5548ff9d",
+        "parentMatchesRelease": true,
+        "commitMatchesCurrent": true,
+        "phase82InstallMatchesRelease": true
+      }
+    },
+    {
+      "section": "checkout",
+      "expected": {
+        "path": "src/back/native/emit.bend",
+        "sha256": "73aba2f0b1eb035bd8a58075deea68ca682fd0bc36957f95ab15ec3985a98dc6",
+        "bytes": 11694
+      },
+      "actual": {
+        "file": "selfhost/src/back/native/emit.bend",
+        "sha256": "7f0c0fa39902831819b86afa1068b1e6a2024a26c8a2f9fae3ae28003c616b23",
+        "bytes": 11854
+      },
+      "origin": {
+        "commit": "36a11b89afe453f53583408cba49cc635952d4d8",
+        "description": "fix(native): share observer continuations as Data and use linear text builders",
+        "date": "2026-10-14T06:50:32+00:00",
+        "parentSha256": "73aba2f0b1eb035bd8a58075deea68ca682fd0bc36957f95ab15ec3985a98dc6",
+        "commitSha256": "7f0c0fa39902831819b86afa1068b1e6a2024a26c8a2f9fae3ae28003c616b23",
+        "phase82InstallSha256": "73aba2f0b1eb035bd8a58075deea68ca682fd0bc36957f95ab15ec3985a98dc6",
+        "parentMatchesRelease": true,
+        "commitMatchesCurrent": true,
+        "phase82InstallMatchesRelease": true
+      }
+    },
+    {
+      "section": "checkout",
+      "expected": {
+        "path": "src/back/native/observer-analysis.bend",
+        "sha256": "a438a531d0a0b1c3caba728e66b604875d8f3925d8905abd5f1df70211eb990a",
+        "bytes": 25032
+      },
+      "actual": {
+        "file": "selfhost/src/back/native/observer-analysis.bend",
+        "sha256": "26aa9fcbdb144e2a900190812e0e1776d446e0f6c8d5ccc26259756c125f478a",
+        "bytes": 26235
+      },
+      "origin": {
+        "commit": "36a11b89afe453f53583408cba49cc635952d4d8",
+        "description": "fix(native): share observer continuations as Data and use linear text builders",
+        "date": "2026-10-14T06:50:32+00:00",
+        "parentSha256": "a438a531d0a0b1c3caba728e66b604875d8f3925d8905abd5f1df70211eb990a",
+        "commitSha256": "26aa9fcbdb144e2a900190812e0e1776d446e0f6c8d5ccc26259756c125f478a",
+        "phase82InstallSha256": "a438a531d0a0b1c3caba728e66b604875d8f3925d8905abd5f1df70211eb990a",
+        "parentMatchesRelease": true,
+        "commitMatchesCurrent": true,
+        "phase82InstallMatchesRelease": true
+      }
+    }
+  ],
+  "installedArtifacts": [
+    {
+      "expected": {
+        "path": "dist/base.bend",
+        "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+        "bytes": 75064
+      },
+      "actual": {
+        "file": "selfhost/dist/base.bend",
+        "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+        "bytes": 75064
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/checked-api.mjs",
+        "sha256": "286495aefb579d45ffd4e72f7dec395ce67617a0118c9ffda41e7d84ccdff5cd",
+        "bytes": 2274019
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/checked-api.mjs",
+        "sha256": "286495aefb579d45ffd4e72f7dec395ce67617a0118c9ffda41e7d84ccdff5cd",
+        "bytes": 2274019
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/checked-bootstrap.json",
+        "sha256": "f2e357d37fc4c017224d2e0891705f5354df146e3c87aab2a740bd7c4abcc7b7",
+        "bytes": 102138
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/checked-bootstrap.json",
+        "sha256": "f2e357d37fc4c017224d2e0891705f5354df146e3c87aab2a740bd7c4abcc7b7",
+        "bytes": 102138
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/derivation.json",
+        "sha256": "9a6b0ebafd754d71bf3237b0fa524146a5f8d74058abfd34b255014f8df5149b",
+        "bytes": 85430
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/derivation.json",
+        "sha256": "9a6b0ebafd754d71bf3237b0fa524146a5f8d74058abfd34b255014f8df5149b",
+        "bytes": 85430
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/equality.mjs",
+        "sha256": "fcc80fd4da249e74f2cfd296c7e88f3c5f795a627e498c26bf5deb4ac8397eb5",
+        "bytes": 31254
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/equality.mjs",
+        "sha256": "fcc80fd4da249e74f2cfd296c7e88f3c5f795a627e498c26bf5deb4ac8397eb5",
+        "bytes": 31254
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/typed-api.mjs",
+        "sha256": "098320e8f3e40894156790d740ad205e386f375195b3c6741d67cca96e94e092",
+        "bytes": 4731079
+      },
+      "actual": {
+        "file": "selfhost/dist/typed-api.mjs",
+        "sha256": "098320e8f3e40894156790d740ad205e386f375195b3c6741d67cca96e94e092",
+        "bytes": 4731079
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/generator-api.mjs",
+        "sha256": "8a4007259794bdf0bca9616bc106423f227436013442e9a9ced78659bf6f374c",
+        "bytes": 2293576
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/generator-api.mjs",
+        "sha256": "8a4007259794bdf0bca9616bc106423f227436013442e9a9ced78659bf6f374c",
+        "bytes": 2293576
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/self-attempt.json",
+        "sha256": "c49753db6575e54b6c8a7f866d322325141d15ee8a7cdd2240b25c133ad3fb52",
+        "bytes": 319504
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/self-attempt.json",
+        "sha256": "c49753db6575e54b6c8a7f866d322325141d15ee8a7cdd2240b25c133ad3fb52",
+        "bytes": 319504
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/self-source.bend",
+        "sha256": "9c356b3ef52056ecf266c9629a4fdde86da1edac3b6421bfb45584b0f04e9baf",
+        "bytes": 1687259
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/self-source.bend",
+        "sha256": "9c356b3ef52056ecf266c9629a4fdde86da1edac3b6421bfb45584b0f04e9baf",
+        "bytes": 1687259
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/self-image-pins.json",
+        "sha256": "0c6bec3c10837dad8512457ca9e4322c71df9d9f602041fea2bcddc6ec8429b4",
+        "bytes": 5054
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/self-image-pins.json",
+        "sha256": "0c6bec3c10837dad8512457ca9e4322c71df9d9f602041fea2bcddc6ec8429b4",
+        "bytes": 5054
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/self-emission.json",
+        "sha256": "7ebbb4bc1a9b19b04d4cc265de5ac3c3975ae22c1145a0f2c435c7e223958c93",
+        "bytes": 13637
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/self-emission.json",
+        "sha256": "7ebbb4bc1a9b19b04d4cc265de5ac3c3975ae22c1145a0f2c435c7e223958c93",
+        "bytes": 13637
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/self-driver-comparison.json",
+        "sha256": "10681d5c47bac169bddbc6fea8d53fd067feb8f657451eb57d90c12692752d08",
+        "bytes": 1098
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/self-driver-comparison.json",
+        "sha256": "10681d5c47bac169bddbc6fea8d53fd067feb8f657451eb57d90c12692752d08",
+        "bytes": 1098
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/self-check.json",
+        "sha256": "eafa7915b6501bbbe9e3cf5e5d27761ca04814c18b9127d124280e5fb18f6987",
+        "bytes": 316337
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/self-check.json",
+        "sha256": "eafa7915b6501bbbe9e3cf5e5d27761ca04814c18b9127d124280e5fb18f6987",
+        "bytes": 316337
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/self-fixed-point.json",
+        "sha256": "8bdb7e029f9a05153a9510f3bf514d00b52ec3ab12558423c1998fc22f9f9b11",
+        "bytes": 151726
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/self-fixed-point.json",
+        "sha256": "8bdb7e029f9a05153a9510f3bf514d00b52ec3ab12558423c1998fc22f9f9b11",
+        "bytes": 151726
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/self-driver-source.json",
+        "sha256": "6ab159dbaf00855e9b980e6f70f30091b1d6fa02d30ace172df4230f627510e4",
+        "bytes": 98754
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/self-driver-source.json",
+        "sha256": "6ab159dbaf00855e9b980e6f70f30091b1d6fa02d30ace172df4230f627510e4",
+        "bytes": 98754
+      },
+      "matches": true
+    },
+    {
+      "expected": {
+        "path": "dist/release-lineage/self-driver-direct.json",
+        "sha256": "c4aba0ad0c5e046980d0ed7fc089a7fa280834607a34dd22623b70c0b1c3be05",
+        "bytes": 184887
+      },
+      "actual": {
+        "file": "selfhost/dist/release-lineage/self-driver-direct.json",
+        "sha256": "c4aba0ad0c5e046980d0ed7fc089a7fa280834607a34dd22623b70c0b1c3be05",
+        "bytes": 184887
+      },
+      "matches": true
+    }
+  ],
+  "productionWorkingTreeDiff": "",
+  "releaseVerification": {
+    "passed": false,
+    "observedBy": "root",
+    "process": {
+      "file": "selfhost/build/phase89/release-verify01/process.json",
+      "sha256": "203ff2b71958015b34858fea5e9cf6c6c7d32c9d5a3b179caad69b446e66df0e",
+      "bytes": 574
+    },
+    "stderr": {
+      "file": "selfhost/build/phase89/release-verify01/stderr.log",
+      "sha256": "d95526386f3ac2932a1d4230bbd51128ca24d2e2c4037fbe6f841e36cbb98c94",
+      "bytes": 546
+    },
+    "returncode": 1,
+    "wallSeconds": 0.1459473620634526,
+    "firstFailure": "Changed release input: src/back/native/text.bend",
+    "scope": "The verifier stops at its first mismatch. This audit checks every files/checkout identity, not later semantic verifier assertions."
+  },
+  "cli": {
+    "observation": "Source inspection only; no fresh CLI execution by this audit.",
+    "refusesBecauseOfReleaseMismatch": false,
+    "defaultApi": {
+      "file": "selfhost/dist/typed-api.mjs",
+      "sha256": "098320e8f3e40894156790d740ad205e386f375195b3c6741d67cca96e94e092",
+      "bytes": 4731079
+    },
+    "reason": "cli.mjs invokes typed-driver.main. Normal main/inspect/loadApi imports the installed API and checks its ABI without calling verifyRelease or reading these three compiler-source modules. The explicit release verifier separately checks all checkout identities.",
+    "sourceEvidence": [
+      {
+        "file": "selfhost/cli.mjs",
+        "sha256": "e9e57dff0070a9023263c5355d5ca66923e98a5cd0cc28c4d2ccefe1024b28e7",
+        "bytes": 238,
+        "lines": "3-4"
+      },
+      {
+        "file": "selfhost/tools/typed-driver.mjs",
+        "sha256": "8af64866d16dc063056261bbd6f2ab1a1689a37d466ba87e4a6004b72cdb6a88",
+        "bytes": 84651,
+        "lines": "21,215-232,1021-1110"
+      },
+      {
+        "file": "selfhost/tools/development/release.mjs",
+        "sha256": "3c807fd5a1f315b507380928cebd074cada4a34e792a44c3450a71ed8743cc7a",
+        "bytes": 17970,
+        "lines": "20,33-41"
+      }
+    ]
+  },
+  "conclusion": "Installed Phase82 artifact bytes are intact; current checkout release verification fails on three committed Phase88 native-source changes. Phase89 introduced none of these mismatches. Ordinary CLI dispatch does not automatically refuse for this mismatch. No source rollback, verifier weakening, release promotion or compiler build was performed."
+}

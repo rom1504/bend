@@ -39,10 +39,15 @@ process cases beat TypeScript; Map and warm throughput remain gaps. See the
 [native usage guide](docs/self_hosted/NATIVE_HOST.md) and
 [Phase88 results](implementation/phase88/README.md). Installed Phase82 is unchanged.
 
-The [Phase89 investigation](implementation/phase89/README.md) compares Bun,
-Node and native hosting, measures allocation/copy costs, and tests a faster native
-output builder. See the [host runtime guide](docs/self_hosted/host-runtimes.md)
-for the measured engine choice and reproducible fast loop.
+**Phase89 qualifies a faster native B1:** owned result composition and deferred
+body strings cut Map compilation time28% cold /34% on the fifth request, with
+45 broader exact-C checks. Against upstream TS on Bun, the final cold screen
+wins five of six cases; Map is still1.385× slower and warm gaps remain. Nine
+IO providers are supported. Full native self-emission hits a600-second deadline;
+no native B2 is claimed. Canonical production and installed JS B2 remain unchanged.
+See the [Phase89 report](implementation/phase89/README.md),
+[final timings](implementation/phase89/qualified-screen.md) and
+[host runtime guide](docs/self_hosted/host-runtimes.md).
 
 Read the [Phase82 report](implementation/phase82/README.md),
 [native compilation/session guide](docs/self_hosted/NATIVE_COMPILATION.md),
@@ -53,8 +58,9 @@ Read the [Phase82 report](implementation/phase82/README.md),
 [native compiler hosting investigation](implementation/phase86/README.md),
 [native optimization and correctness investigation](implementation/phase87/README.md),
 [fast loops](selfhost/tools/performance/phase78/README.md) and
-[compiler guide](docs/BEND-IN-BEND.md). From `selfhost/`, run
-`npm run verify:release`, then `node cli.mjs FILE --run`.
+[compiler guide](docs/BEND-IN-BEND.md). From `selfhost/`, run `node cli.mjs FILE --run`. The installed API is intact,
+but `npm run verify:release` currently reports three Phase88 source changes
+relative to its Phase82 manifest; see the [release status](implementation/phase89/release-status.md).
 The [conformance record](selfhost/CONFORMANCE.md),
 [architecture](selfhost/docs/ARCHITECTURE.md) and
 [experiment frontier](experiments/STEERING.md) document scope and next work.

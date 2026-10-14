@@ -1,0 +1,881 @@
+{
+  "kind": "phase89-owned-only-js-ablation",
+  "complete": true,
+  "pass_": true,
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/plan.json",
+    "sha256": "a910967fb7b623d2a53747a2540ed9d53121f1e688b1af1f26ffa2c036de065c",
+    "bytes": 147326
+  },
+  "cases": [
+    {
+      "case": "map_closed",
+      "medians": {
+        "baseline": {
+          "requestMs": 2193.8726675,
+          "importsMs": 83.95611249999999,
+          "processMs": 3291.0867294995114
+        },
+        "candidate": {
+          "requestMs": 2228.672969,
+          "importsMs": 94.29028399999996,
+          "processMs": 3372.801367077045
+        }
+      },
+      "requestRatio": 1.015862498318855,
+      "processRatio": 1.0248290744953903,
+      "pairs": [
+        {
+          "round": 1,
+          "baseline": 2173.464884,
+          "candidate": 2202.162735,
+          "requestRatio": 1.013203733454016,
+          "baselineProcessMs": 3268.8959990628064,
+          "candidateProcessMs": 3311.8896710220724,
+          "processRatio": 1.013152352345132
+        },
+        {
+          "round": 2,
+          "baseline": 2214.280451,
+          "candidate": 2255.183203,
+          "requestRatio": 1.0184722544885982,
+          "baselineProcessMs": 3313.2774599362165,
+          "candidateProcessMs": 3433.713063132018,
+          "processRatio": 1.036349386567257
+        }
+      ]
+    },
+    {
+      "case": "small",
+      "medians": {
+        "baseline": {
+          "requestMs": 282.66424,
+          "importsMs": 83.30289350000001,
+          "processMs": 1341.4041550131515
+        },
+        "candidate": {
+          "requestMs": 283.277539,
+          "importsMs": 83.25616250000002,
+          "processMs": 1382.4663620907813
+        }
+      },
+      "requestRatio": 1.0021697084852332,
+      "processRatio": 1.0306113611801264,
+      "pairs": [
+        {
+          "round": 1,
+          "baseline": 281.082404,
+          "candidate": 282.352622,
+          "requestRatio": 1.0045190235387342,
+          "baselineProcessMs": 1329.8674949910492,
+          "candidateProcessMs": 1412.1296431403607,
+          "processRatio": 1.061857401928502
+        },
+        {
+          "round": 2,
+          "baseline": 284.246076,
+          "candidate": 284.202456,
+          "requestRatio": 0.9998465414171627,
+          "baselineProcessMs": 1352.9408150352538,
+          "candidateProcessMs": 1352.803081041202,
+          "processRatio": 0.9998981965858956
+        }
+      ]
+    },
+    {
+      "case": "functions65",
+      "medians": {
+        "baseline": {
+          "requestMs": 668.1733105,
+          "importsMs": 83.65128350000003,
+          "processMs": 1771.7048494378105
+        },
+        "candidate": {
+          "requestMs": 667.8599575000001,
+          "importsMs": 83.60738699999999,
+          "processMs": 1760.9963610302657
+        }
+      },
+      "requestRatio": 0.9995310303553349,
+      "processRatio": 0.9939558282459164,
+      "pairs": [
+        {
+          "round": 1,
+          "baseline": 668.7436559999999,
+          "candidate": 667.2516680000001,
+          "requestRatio": 0.9977689687421876,
+          "baselineProcessMs": 1780.4580498486757,
+          "candidateProcessMs": 1759.2000989243388,
+          "processRatio": 0.9880604033742083
+        },
+        {
+          "round": 2,
+          "baseline": 667.602965,
+          "candidate": 668.468247,
+          "requestRatio": 1.0012961026918148,
+          "baselineProcessMs": 1762.9516490269452,
+          "candidateProcessMs": 1762.7926231361926,
+          "processRatio": 0.9999097956595461
+        }
+      ]
+    },
+    {
+      "case": "numeric_closed",
+      "medians": {
+        "baseline": {
+          "requestMs": 460.6369234999999,
+          "importsMs": 83.26526199999998,
+          "processMs": 1556.102067930624
+        },
+        "candidate": {
+          "requestMs": 466.90361149999995,
+          "importsMs": 83.41886949999997,
+          "processMs": 1535.6914740987122
+        }
+      },
+      "requestRatio": 1.0136043979114497,
+      "processRatio": 0.9868835121727878,
+      "pairs": [
+        {
+          "round": 1,
+          "baseline": 459.40149099999996,
+          "candidate": 472.49579299999994,
+          "requestRatio": 1.0285029592992765,
+          "baselineProcessMs": 1554.6056248713285,
+          "candidateProcessMs": 1534.199858084321,
+          "processRatio": 0.9868739914094313
+        },
+        {
+          "round": 2,
+          "baseline": 461.87235599999985,
+          "candidate": 461.31143,
+          "requestRatio": 0.9987855389206279,
+          "baselineProcessMs": 1557.5985109899193,
+          "candidateProcessMs": 1537.1830901131034,
+          "processRatio": 0.9868930146422386
+        }
+      ]
+    },
+    {
+      "case": "lexer_original",
+      "medians": {
+        "baseline": {
+          "requestMs": 1098.008345,
+          "importsMs": 83.26681650000003,
+          "processMs": 2178.37606894318
+        },
+        "candidate": {
+          "requestMs": 1137.904384,
+          "importsMs": 84.58622800000006,
+          "processMs": 2292.2836880898103
+        }
+      },
+      "requestRatio": 1.0363349141941176,
+      "processRatio": 1.0522901535554838,
+      "pairs": [
+        {
+          "round": 1,
+          "baseline": 1099.4812350000002,
+          "candidate": 1175.314052,
+          "requestRatio": 1.0689714517956277,
+          "baselineProcessMs": 2167.356783989817,
+          "candidateProcessMs": 2350.008621113375,
+          "processRatio": 1.0842740053104316
+        },
+        {
+          "round": 2,
+          "baseline": 1096.5354549999997,
+          "candidate": 1100.4947160000002,
+          "requestRatio": 1.0036107003945445,
+          "baselineProcessMs": 2189.3953538965434,
+          "candidateProcessMs": 2234.558755066246,
+          "processRatio": 1.0206282529508997
+        }
+      ]
+    },
+    {
+      "case": "unicode",
+      "medians": {
+        "baseline": {
+          "requestMs": 298.8089755,
+          "importsMs": 87.91818099999998,
+          "processMs": 1431.1488304520026
+        },
+        "candidate": {
+          "requestMs": 299.4045075,
+          "importsMs": 87.73614100000003,
+          "processMs": 1420.8437501220033
+        }
+      },
+      "requestRatio": 1.001993019115318,
+      "processRatio": 0.9927994348940322,
+      "pairs": [
+        {
+          "round": 1,
+          "baseline": 309.50174300000003,
+          "candidate": 310.429217,
+          "requestRatio": 1.0029966680995395,
+          "baselineProcessMs": 1512.1006239205599,
+          "candidateProcessMs": 1512.201459147036,
+          "processRatio": 1.0000666855266647
+        },
+        {
+          "round": 2,
+          "baseline": 288.1162079999999,
+          "candidate": 288.37979800000005,
+          "requestRatio": 1.0009148739039357,
+          "baselineProcessMs": 1350.1970369834453,
+          "candidateProcessMs": 1329.4860410969704,
+          "processRatio": 0.9846607603785397
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "case": "map_closed",
+      "role": "baseline",
+      "round": 1,
+      "requestMs": 2173.464884,
+      "importsMs": 83.82109600000001,
+      "processMs": 3268.8959990628064,
+      "peakRssMiB": 376.51953125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-map_closed-baseline/report.json",
+        "sha256": "f377a27ed50e08aff175bb679334c8928b47bbc53e42ff447c168ab0dec07848",
+        "bytes": 42841
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-map_closed-baseline-guard/process.json",
+        "sha256": "31b29a519dbcbdf0fc1edc1c33eec2cd5660e930579cf83a92efc6317a9dbc0b",
+        "bytes": 780
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-map_closed-baseline/program.c",
+        "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+        "bytes": 895710
+      }
+    },
+    {
+      "case": "map_closed",
+      "role": "candidate",
+      "round": 1,
+      "requestMs": 2202.162735,
+      "importsMs": 83.99278899999996,
+      "processMs": 3311.8896710220724,
+      "peakRssMiB": 373.12109375,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-map_closed-candidate/report.json",
+        "sha256": "54ddcaac390888155e56b50cbc7de862791fdc8eef4e4eee8d854c79eaceb26c",
+        "bytes": 42854
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-map_closed-candidate-guard/process.json",
+        "sha256": "f43fd10a68f3ed59f3b3704262dd5ffd6bf14681bbb794fd6f58743f6ebbe874",
+        "bytes": 781
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-map_closed-candidate/program.c",
+        "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+        "bytes": 895710
+      }
+    },
+    {
+      "case": "small",
+      "role": "candidate",
+      "round": 1,
+      "requestMs": 282.352622,
+      "importsMs": 83.24359800000002,
+      "processMs": 1412.1296431403607,
+      "peakRssMiB": 216.21484375,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-small-candidate/report.json",
+        "sha256": "7364fe62b859ded33712709a39b669a8f68021455f449f8d2cff346e1879d4e2",
+        "bytes": 42450
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-small-candidate-guard/process.json",
+        "sha256": "972796d0f26f1629f2a8a6eec51a6813c2cdb6eb4a78282a50da74476aea2ab1",
+        "bytes": 772
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-small-candidate/program.c",
+        "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+        "bytes": 93941
+      }
+    },
+    {
+      "case": "small",
+      "role": "baseline",
+      "round": 1,
+      "requestMs": 281.082404,
+      "importsMs": 83.54718200000002,
+      "processMs": 1329.8674949910492,
+      "peakRssMiB": 218.4453125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-small-baseline/report.json",
+        "sha256": "4ae91ecccf38088cefe7d0ff6466f1ea18a5ae8827db3685f40d949de2edbdc5",
+        "bytes": 42439
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-small-baseline-guard/process.json",
+        "sha256": "43aff442f615c5c3012b85422f74cbe669d0608e3f20b4e6ed17a1970593dcc3",
+        "bytes": 769
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-small-baseline/program.c",
+        "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+        "bytes": 93941
+      }
+    },
+    {
+      "case": "functions65",
+      "role": "baseline",
+      "round": 1,
+      "requestMs": 668.7436559999999,
+      "importsMs": 83.60760300000004,
+      "processMs": 1780.4580498486757,
+      "peakRssMiB": 245.3828125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-functions65-baseline/report.json",
+        "sha256": "81be138d38f8a25ac0dadf08c8666b841a745c2436d2325068cb9e1250d6ce15",
+        "bytes": 42501
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-functions65-baseline-guard/process.json",
+        "sha256": "1e25dd0d29c3a6fcb9f6cd3044bfe890f9e2caa5381aca8f2e424b81067cedac",
+        "bytes": 781
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-functions65-baseline/program.c",
+        "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+        "bytes": 174938
+      }
+    },
+    {
+      "case": "functions65",
+      "role": "candidate",
+      "round": 1,
+      "requestMs": 667.2516680000001,
+      "importsMs": 83.449255,
+      "processMs": 1759.2000989243388,
+      "peakRssMiB": 243.1171875,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-functions65-candidate/report.json",
+        "sha256": "9dcbbd872103ca4e67678151662bf372c7f099b52d8dd2ded5b3f54eecd0744d",
+        "bytes": 42504
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-functions65-candidate-guard/process.json",
+        "sha256": "71441df5c8ab3fdf864ed8277b1567749ff48ec12c6e39a37e7d0084a6c18425",
+        "bytes": 784
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-functions65-candidate/program.c",
+        "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+        "bytes": 174938
+      }
+    },
+    {
+      "case": "numeric_closed",
+      "role": "candidate",
+      "round": 1,
+      "requestMs": 472.49579299999994,
+      "importsMs": 83.315925,
+      "processMs": 1534.199858084321,
+      "peakRssMiB": 225.6484375,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-numeric_closed-candidate/report.json",
+        "sha256": "9ff1ea4f129055316985ccb15bb38f802056709eb797f85311df550a87a1656a",
+        "bytes": 42883
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-numeric_closed-candidate-guard/process.json",
+        "sha256": "fd3f6779e4ba37fc27276ff5f0ad364ce70e3f5ca4409d547a40a9a293522fa4",
+        "bytes": 788
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-numeric_closed-candidate/program.c",
+        "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+        "bytes": 116011
+      }
+    },
+    {
+      "case": "numeric_closed",
+      "role": "baseline",
+      "round": 1,
+      "requestMs": 459.40149099999996,
+      "importsMs": 82.87649800000003,
+      "processMs": 1554.6056248713285,
+      "peakRssMiB": 223.765625,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-numeric_closed-baseline/report.json",
+        "sha256": "b72ab231e75ebaad800075eedff49a389e7eed3278ace7e7d876c7f9ace2e7db",
+        "bytes": 42878
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-numeric_closed-baseline-guard/process.json",
+        "sha256": "be3c61627fa1fc33218df99adb347c2ce65a3abbc46effb55720db025e080ad2",
+        "bytes": 788
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-numeric_closed-baseline/program.c",
+        "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+        "bytes": 116011
+      }
+    },
+    {
+      "case": "lexer_original",
+      "role": "baseline",
+      "round": 1,
+      "requestMs": 1099.4812350000002,
+      "importsMs": 83.06153700000004,
+      "processMs": 2167.356783989817,
+      "peakRssMiB": 277.36328125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-lexer_original-baseline/report.json",
+        "sha256": "778ede5493cd04d0740cccebe393adf3787d3de7e8b9525f461456937e405867",
+        "bytes": 42922
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-lexer_original-baseline-guard/process.json",
+        "sha256": "c37af0ed82086e99167fb954b6c77898b4bb809b17be20ca4d7746de30683453",
+        "bytes": 785
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-lexer_original-baseline/program.c",
+        "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+        "bytes": 418969
+      }
+    },
+    {
+      "case": "lexer_original",
+      "role": "candidate",
+      "round": 1,
+      "requestMs": 1175.314052,
+      "importsMs": 85.60985100000005,
+      "processMs": 2350.008621113375,
+      "peakRssMiB": 275.19921875,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-lexer_original-candidate/report.json",
+        "sha256": "2ee8213a75b7bee31425ccd6ab5b9d6a68f2ec0623225102f2d1ab7ef32e20d3",
+        "bytes": 42928
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-lexer_original-candidate-guard/process.json",
+        "sha256": "30e6f9bd3e646a3b18f62cda7744aa8ac9ead32b9e60a41c332f6ea3a0361a7e",
+        "bytes": 788
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-lexer_original-candidate/program.c",
+        "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+        "bytes": 418969
+      }
+    },
+    {
+      "case": "unicode",
+      "role": "candidate",
+      "round": 1,
+      "requestMs": 310.429217,
+      "importsMs": 92.72225700000001,
+      "processMs": 1512.201459147036,
+      "peakRssMiB": 219.6328125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-unicode-candidate/report.json",
+        "sha256": "d7638df812da88f30d4a992173e4e818a82c84718549b8841d01af521e65c226",
+        "bytes": 42822
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-unicode-candidate-guard/process.json",
+        "sha256": "1143e2a5164d62544524d66424fa72ad6746394d4073127df032200b3b2ad84c",
+        "bytes": 775
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-unicode-candidate/program.c",
+        "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+        "bytes": 93760
+      }
+    },
+    {
+      "case": "unicode",
+      "role": "baseline",
+      "round": 1,
+      "requestMs": 309.50174300000003,
+      "importsMs": 92.90814499999999,
+      "processMs": 1512.1006239205599,
+      "peakRssMiB": 222.06640625,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-unicode-baseline/report.json",
+        "sha256": "5b3e0745a96b0df9e2f23d7ebe5d89000d9695e4260d6839cacac2d97ce088c6",
+        "bytes": 42817
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-unicode-baseline-guard/process.json",
+        "sha256": "c5e491c4c92f29d4715e3ac69ecdffdcd9a645e0822e1b38bf05a242c8ff9b52",
+        "bytes": 774
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-1-unicode-baseline/program.c",
+        "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+        "bytes": 93760
+      }
+    },
+    {
+      "case": "map_closed",
+      "role": "candidate",
+      "round": 2,
+      "requestMs": 2255.183203,
+      "importsMs": 104.58777899999995,
+      "processMs": 3433.713063132018,
+      "peakRssMiB": 374.6328125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-map_closed-candidate/report.json",
+        "sha256": "37c93da815d6d5a647300c14b62ca71be48379e13ffd3431d6c07099ba62fdcd",
+        "bytes": 42855
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-map_closed-candidate-guard/process.json",
+        "sha256": "6d93848664682ad1836a0e8de5f809fa9707a6740b8f6a7e21a2ac6960919c33",
+        "bytes": 781
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-map_closed-candidate/program.c",
+        "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+        "bytes": 895710
+      }
+    },
+    {
+      "case": "map_closed",
+      "role": "baseline",
+      "round": 2,
+      "requestMs": 2214.280451,
+      "importsMs": 84.09112899999997,
+      "processMs": 3313.2774599362165,
+      "peakRssMiB": 373.92578125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-map_closed-baseline/report.json",
+        "sha256": "a307ff162255d5e7e4d796e3d29ca533da597f22738ff9fe6bf5149649b57cdc",
+        "bytes": 42841
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-map_closed-baseline-guard/process.json",
+        "sha256": "7de96ddb1e8166ae3fc58d435cad52018753d7f461ef40815991213e01ead139",
+        "bytes": 780
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-map_closed-baseline/program.c",
+        "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+        "bytes": 895710
+      }
+    },
+    {
+      "case": "small",
+      "role": "baseline",
+      "round": 2,
+      "requestMs": 284.246076,
+      "importsMs": 83.058605,
+      "processMs": 1352.9408150352538,
+      "peakRssMiB": 218.62890625,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-small-baseline/report.json",
+        "sha256": "f5dfe235c00c2cc0d761b1c770153a8a91bdabfed36cb163b9f07fe140e5acb4",
+        "bytes": 42431
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-small-baseline-guard/process.json",
+        "sha256": "5dad44ab9a697c02777f58883e92c774b10a22ee41f78d4a1155a99b90f9e993",
+        "bytes": 770
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-small-baseline/program.c",
+        "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+        "bytes": 93941
+      }
+    },
+    {
+      "case": "small",
+      "role": "candidate",
+      "round": 2,
+      "requestMs": 284.202456,
+      "importsMs": 83.26872700000001,
+      "processMs": 1352.803081041202,
+      "peakRssMiB": 216.34375,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-small-candidate/report.json",
+        "sha256": "4a16932a30ced3456417cf336c7de58357084b2be290dbf24c4a36d7fa325316",
+        "bytes": 42450
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-small-candidate-guard/process.json",
+        "sha256": "8f2166946eac241d7848292049479d1ed903f9029c7c73ac22503b33134e3d5f",
+        "bytes": 769
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-small-candidate/program.c",
+        "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+        "bytes": 93941
+      }
+    },
+    {
+      "case": "functions65",
+      "role": "candidate",
+      "round": 2,
+      "requestMs": 668.468247,
+      "importsMs": 83.76551899999998,
+      "processMs": 1762.7926231361926,
+      "peakRssMiB": 243.08203125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-functions65-candidate/report.json",
+        "sha256": "9eaa9da9cc85d1c1bd4e45b9623ccc80a1f21b939e398ec8168ff2e6770ba5eb",
+        "bytes": 42505
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-functions65-candidate-guard/process.json",
+        "sha256": "2de20bf29543da9ec5902be9370470f57fd5650e0cb5c0079aeca2e07b5e121e",
+        "bytes": 783
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-functions65-candidate/program.c",
+        "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+        "bytes": 174938
+      }
+    },
+    {
+      "case": "functions65",
+      "role": "baseline",
+      "round": 2,
+      "requestMs": 667.602965,
+      "importsMs": 83.69496400000003,
+      "processMs": 1762.9516490269452,
+      "peakRssMiB": 243.44921875,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-functions65-baseline/report.json",
+        "sha256": "3a16580299c0b3cc8081dd6e33c596a5a1b5b40760ecc6dc95fd78a0fae5ff85",
+        "bytes": 42494
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-functions65-baseline-guard/process.json",
+        "sha256": "e000f05708832b30a3f75c7dc023ad898573d4419984686d88fd45fd40fd9a1b",
+        "bytes": 782
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-functions65-baseline/program.c",
+        "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+        "bytes": 174938
+      }
+    },
+    {
+      "case": "numeric_closed",
+      "role": "baseline",
+      "round": 2,
+      "requestMs": 461.87235599999985,
+      "importsMs": 83.65402599999993,
+      "processMs": 1557.5985109899193,
+      "peakRssMiB": 225.79296875,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-numeric_closed-baseline/report.json",
+        "sha256": "4aed9afe191b8d2640afca48a5aff519724164a29f53b81e974babeaa2c6cb3e",
+        "bytes": 42878
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-numeric_closed-baseline-guard/process.json",
+        "sha256": "1cbee88da22181c8882449ec735b5706f0b749ac4815eaf209cfd9641f89e0d3",
+        "bytes": 788
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-numeric_closed-baseline/program.c",
+        "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+        "bytes": 116011
+      }
+    },
+    {
+      "case": "numeric_closed",
+      "role": "candidate",
+      "round": 2,
+      "requestMs": 461.31143,
+      "importsMs": 83.52181399999995,
+      "processMs": 1537.1830901131034,
+      "peakRssMiB": 221.58984375,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-numeric_closed-candidate/report.json",
+        "sha256": "4bdae19ada323ac9d4688b53f7597c6bfd208c2a39e528fc026ba41879463908",
+        "bytes": 42882
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-numeric_closed-candidate-guard/process.json",
+        "sha256": "586f88c194f1d924e100bfbbb06a5d25210bbc05cfcad953e33aa315b50f1cbe",
+        "bytes": 790
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-numeric_closed-candidate/program.c",
+        "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+        "bytes": 116011
+      }
+    },
+    {
+      "case": "lexer_original",
+      "role": "candidate",
+      "round": 2,
+      "requestMs": 1100.4947160000002,
+      "importsMs": 83.56260500000008,
+      "processMs": 2234.558755066246,
+      "peakRssMiB": 273.26171875,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-lexer_original-candidate/report.json",
+        "sha256": "d118decfca8b93725bd4edd417ca3e34dd7d88068e4ca47b29a168a3a833dad3",
+        "bytes": 42935
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-lexer_original-candidate-guard/process.json",
+        "sha256": "fc4242b834686449916f03df6545b4fad617c417a3ab009230f3e163871d93d9",
+        "bytes": 788
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-lexer_original-candidate/program.c",
+        "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+        "bytes": 418969
+      }
+    },
+    {
+      "case": "lexer_original",
+      "role": "baseline",
+      "round": 2,
+      "requestMs": 1096.5354549999997,
+      "importsMs": 83.47209600000002,
+      "processMs": 2189.3953538965434,
+      "peakRssMiB": 274.953125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-lexer_original-baseline/report.json",
+        "sha256": "cab45a70322c40509821fa3e01a21f048703b4e8ecebfac8ce2213bf1a2c365b",
+        "bytes": 42922
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-lexer_original-baseline-guard/process.json",
+        "sha256": "1e397de9e6d0bd51122e5db153d8a1bb8efb82d341c5a9cfb8733868752ef7d4",
+        "bytes": 788
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-lexer_original-baseline/program.c",
+        "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+        "bytes": 418969
+      }
+    },
+    {
+      "case": "unicode",
+      "role": "baseline",
+      "round": 2,
+      "requestMs": 288.1162079999999,
+      "importsMs": 82.92821699999996,
+      "processMs": 1350.1970369834453,
+      "peakRssMiB": 222.0625,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-unicode-baseline/report.json",
+        "sha256": "03b429cb16d3a072f2e5c37c107c1a69a5557f568b274ad0626a27bc8d673b93",
+        "bytes": 42816
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-unicode-baseline-guard/process.json",
+        "sha256": "4c6a417b1a292f8777cf40fc006fe503491df7517703ed54f39363c71b9a1982",
+        "bytes": 774
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-unicode-baseline/program.c",
+        "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+        "bytes": 93760
+      }
+    },
+    {
+      "case": "unicode",
+      "role": "candidate",
+      "round": 2,
+      "requestMs": 288.37979800000005,
+      "importsMs": 82.75002500000005,
+      "processMs": 1329.4860410969704,
+      "peakRssMiB": 218.0,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-unicode-candidate/report.json",
+        "sha256": "f7e1105792e3b40ab883a28ccacebd1b371922f12998f26e1160d6405e5f8a7b",
+        "bytes": 42830
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-unicode-candidate-guard/process.json",
+        "sha256": "c87ebb14e4a34928e6b292d270b7d92514cf8d33b80d0784cfaae25eccd003ce",
+        "bytes": 775
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/clean-2-unicode-candidate/program.c",
+        "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+        "bytes": 93760
+      }
+    }
+  ],
+  "preparations": [
+    {
+      "role": "baseline",
+      "timings": {
+        "importsMs": 83.18271999999996,
+        "prepareBaseMs": 3542.3676269999996
+      },
+      "processMs": 4677.122924942523,
+      "peakRssMiB": 393.484375,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/prepare-baseline/report.json",
+        "sha256": "54ddd3e3df634c850dbaf34f66b8b9bb767d85acb30b4f9ed53fedb8de9efdf9",
+        "bytes": 39416
+      }
+    },
+    {
+      "role": "candidate",
+      "timings": {
+        "importsMs": 83.67839500000002,
+        "prepareBaseMs": 3671.7304810000005
+      },
+      "processMs": 4777.781889075413,
+      "peakRssMiB": 370.1328125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-paired01/runs/prepare-candidate/report.json",
+        "sha256": "9b5039b9d08f45352ab67d699e034942e06700dcc83af1bc73d98dc7c4af1a72",
+        "bytes": 39420
+      }
+    }
+  ],
+  "counts": {
+    "jobs": 26,
+    "requests": 24,
+    "exactC": 24,
+    "sources": 6,
+    "rounds": 2
+  },
+  "aggregates": {
+    "equalCaseMedianRequestRatio": 1.011504064352419,
+    "equalCaseMedianProcessRatio": 1.0132798232011944,
+    "allPairRequestRatio": 1.0113923226743955,
+    "guardWallSeconds": 56.12471622158773,
+    "peakRssMiB": 393.484375,
+    "requestJobWallSeconds": 46.669811407569796
+  },
+  "development": {
+    "validation": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-development01/validation-001/report.json",
+      "sha256": "a9cd6e29ef8b59678dc08540bcbd528d50fb7da9311d06634bacfd91ae9f649d",
+      "bytes": 9315
+    },
+    "rawApi": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-development01/api.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-development01/api.mjs",
+      "sha256": "3b5799998b92f9588d0210ae8acdd4726f850332ee102a227b2a86186b5d541b"
+    },
+    "selectedApi": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-development01/equality/api.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-owned-development01/equality/api.mjs",
+      "sha256": "cd50fb563fb1eb49a7688b25f6ef20dc8b0df99284480d7c99f68632a8a2e381"
+    },
+    "exactDifferences": 0,
+    "discrepancies": 0,
+    "referencePass": 36,
+    "candidatePass": 36,
+    "guardWallSeconds": 35.83006852120161,
+    "peakRssMiB": 1664.61328125
+  },
+  "scope": "Owned-composition-only ordinary checked JS B1, one module override. No JS benefit established; preserve native-only build-profile decision, canonical production and installed Phase82 unchanged. No new target run during this offline analysis."
+}

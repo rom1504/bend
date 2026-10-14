@@ -1,0 +1,203 @@
+{
+  "complete": true,
+  "cold": {
+    "file": "selfhost/build/phase89/qualified-cold01/report.json",
+    "bytes": 38922,
+    "sha256": "0e7c761588c1518bc66add31a4675aee813e05a18ea3ad0316cba1d78cc6c0ff"
+  },
+  "warm": {
+    "file": "selfhost/build/phase89/qualified-warm01/report.json",
+    "bytes": 27907,
+    "sha256": "c6a377ec8a1a2bc9247671fa0435aeee7f85abc9d283e6704e678e66f0bb29da"
+  },
+  "method": {
+    "file": "selfhost/tools/performance/phase89/summarize-qualified.py",
+    "bytes": 2506,
+    "sha256": "2084aac55900a0ef8cd20b0399e88d494e3389c71d3c4ab92f67ab9a9621aabd"
+  },
+  "cleanOutputs": 81,
+  "coldNativeOverTsBunGeomean": 0.4923843758173018,
+  "rows": [
+    {
+      "case": "small",
+      "cold": {
+        "ts-bun": {
+          "processMs": 492.8736995207146,
+          "requestMs": 430.43241350000005
+        },
+        "b2-node": {
+          "processMs": 493.2148769730702,
+          "requestMs": 257.000204
+        },
+        "native": {
+          "processMs": 156.17287147324532,
+          "requestMs": 62.0
+        }
+      },
+      "nativeOverTsBunColdProcess": 0.3168618484311753
+    },
+    {
+      "case": "numeric_closed",
+      "cold": {
+        "ts-bun": {
+          "processMs": 575.7805935572833,
+          "requestMs": 517.5335419999999
+        },
+        "b2-node": {
+          "processMs": 646.8528824625537,
+          "requestMs": 396.3094515
+        },
+        "native": {
+          "processMs": 186.76307960413396,
+          "requestMs": 101.0
+        }
+      },
+      "nativeOverTsBunColdProcess": 0.32436501280856955,
+      "fiveCallsMs": {
+        "native": [
+          100,
+          99,
+          99,
+          101,
+          101
+        ],
+        "ts-bun": [
+          526.061813,
+          251.13046099999997,
+          178.03196300000002,
+          192.04854699999999,
+          184.191693
+        ],
+        "b2-node": [
+          398.292199,
+          265.022831,
+          174.55047000000002,
+          206.117301,
+          119.96483599999988
+        ]
+      },
+      "nativeOverTsBunFifthRequest": 0.5483417756521735
+    },
+    {
+      "case": "lexer_original",
+      "cold": {
+        "ts-bun": {
+          "processMs": 782.2775384411216,
+          "requestMs": 726.1830985
+        },
+        "b2-node": {
+          "processMs": 1146.2528315605596,
+          "requestMs": 923.6163019999999
+        },
+        "native": {
+          "processMs": 532.9588134773076,
+          "requestMs": 436.0
+        }
+      },
+      "nativeOverTsBunColdProcess": 0.6812912135242407,
+      "fiveCallsMs": {
+        "b2-node": [
+          934.527732,
+          506.4215099999999,
+          405.1181839999997,
+          395.35781099999986,
+          287.7344210000001
+        ],
+        "native": [
+          434,
+          441,
+          457,
+          471,
+          487
+        ],
+        "ts-bun": [
+          721.268264,
+          307.321631,
+          290.14912000000004,
+          319.0961749999999,
+          226.34000400000014
+        ]
+      },
+      "nativeOverTsBunFifthRequest": 2.151630252688339
+    },
+    {
+      "case": "map_closed",
+      "cold": {
+        "ts-bun": {
+          "processMs": 1206.4444324932992,
+          "requestMs": 1130.9909254999998
+        },
+        "b2-node": {
+          "processMs": 1697.2127798944712,
+          "requestMs": 1428.844216
+        },
+        "native": {
+          "processMs": 1671.03826708626,
+          "requestMs": 1540.0
+        }
+      },
+      "nativeOverTsBunColdProcess": 1.3850934382720037,
+      "fiveCallsMs": {
+        "ts-bun": [
+          1091.1934130000002,
+          569.5525970000001,
+          567.2598629999998,
+          544.4267,
+          517.3104739999999
+        ],
+        "b2-node": [
+          1425.686902,
+          870.3146490000001,
+          780.3898760000002,
+          588.0268490000003,
+          540.5622009999997
+        ],
+        "native": [
+          1557,
+          1605,
+          1864,
+          2245,
+          1875
+        ]
+      },
+      "nativeOverTsBunFifthRequest": 3.6245158260607737
+    },
+    {
+      "case": "functions65",
+      "cold": {
+        "ts-bun": {
+          "processMs": 636.0013233497739,
+          "requestMs": 573.5922835
+        },
+        "b2-node": {
+          "processMs": 840.0108674541116,
+          "requestMs": 606.3069115
+        },
+        "native": {
+          "processMs": 328.7504855543375,
+          "requestMs": 231.5
+        }
+      },
+      "nativeOverTsBunColdProcess": 0.5169022036350994
+    },
+    {
+      "case": "unicode",
+      "cold": {
+        "ts-bun": {
+          "processMs": 513.7433356139809,
+          "requestMs": 443.235545
+        },
+        "b2-node": {
+          "processMs": 524.0444674855098,
+          "requestMs": 275.54238300000003
+        },
+        "native": {
+          "processMs": 146.03184908628464,
+          "requestMs": 57.0
+        }
+      },
+      "nativeOverTsBunColdProcess": 0.2842505955075022
+    }
+  ],
+  "scope": "Six-case cold process screen, two rounds; three-case five-call screen, one round. Prepared native Base and JS source loading have different boundaries. Not a backend-only ratio, steady-state claim, broad parity claim or program execution timing."
+}

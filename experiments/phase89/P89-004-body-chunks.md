@@ -1,5 +1,9 @@
 # P89-004: defer nested native body strings
 
+**Final outcome.** Completed: v1 failed and is preserved; v2 passes114 standalone assertions,9 complete lowering products,129 clean C outputs and45 broad outputs. Combined native Map cold/fifth gains28.0%/33.7%; append work falls39.8%, allocation calls29.4%. Promoted only into isolated native89; ordinary JS B1 request geomean regresses4.11%. [Report](../../implementation/phase89/body-chunks-feasibility.md).
+
+## Original registration and earlier checkpoints
+
 Status: isolated prototype authorized after the operation-count discriminator.
 Map appends 26,639,166 characters and makes 72,050,847–849 allocator requests
 per compilation, producing 895 KB of C. Calls 2–5 perform identical counted work

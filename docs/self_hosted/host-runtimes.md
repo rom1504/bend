@@ -8,10 +8,22 @@ single fastest host independent of the compiler implementation and workload.
 For the qualified native B1 pilot, follow [NATIVE_HOST.md](NATIVE_HOST.md).
 It runs the compiler written in Bend as native code, with Python only for
 authentication and resource supervision. It supports one module importing
-canonical Base and the three audited scalar effects. It is a separate host
+canonical Base and nine audited IO providers. It is a separate host
 option, not a native self-emitted B2 or a general replacement for the JS driver.
 
-## What the measurements say
+## Current native profile
+
+Phase89 qualifies native B1 `8bacae26…` with owned result composition and ordered
+body chunks. Against upstream TS on Bun, the final six-source cold process
+screen gives0.4924× geometric-mean time and five wins; Map remains1.385× slower.
+Fifth-request Map/Lexer remain3.625×/2.152× upstream, while Numeric is0.548×.
+See [the final screen](../../implementation/phase89/qualified-screen.md) for
+per-source clocks and cache boundaries. This is compilation to C, not program
+execution, and does not establish general parity or a native self-produced B2.
+Use `phase89/measure-qualified.py` for this image; `measure.py` below deliberately
+retains the old image for historical reproduction.
+
+## Original engine comparison
 
 Phase89 compares exactly pinned upstream source under Node24.18.0/Bun1.4.3,
 the same frozen genuine Phase82 B2 under both engines, and Phase88 native02 B1.

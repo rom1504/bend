@@ -87,7 +87,7 @@ samples are5161.89ms baseline and3854.46ms candidate, with process costs6335.75m
 and4987.87ms. They are separately reported single observations, not a repeatable
 Base-speed claim or credit against request regressions.
 
-## Decision and next gate
+## Decision before the owned-only ablation
 
 Keep the chunks candidate isolated pending an **owned-composition-only** ordinary
 JS ablation. That variant changes one bridge module, removing repeated ownership
@@ -110,3 +110,64 @@ native guard `path`/`file` schema mistake are retained in
 `offline-method-failures01`; corrected actual-input preflight is recorded in
 `offline-method-preflight02.json`. Syntax parsing alone did not validate either
 runtime compatibility or input schemas. Existing plan/method pins stay unchanged.
+
+## Completed owned-only ablation
+
+The follow-up isolates the one-module owned match-composition change, without
+the chunk representation. Its shadow project uses the same333 baseline files and
+132-module manifest, overriding only `src/back/native/bridge.bend` (+14 physical
+lines). The checked raw API is
+`3b5799998b92f9588d0210ae8acdd4726f850332ee102a227b2a86186b5d541b`;
+the selected equality API is
+`cd50fb563fb1eb49a7688b25f6ef20dc8b0df99284480d7c99f68632a8a2e381`.
+The Phase88 baseline remains `fc488307…`.
+
+The owned-only checked workflow takes35.83s and peaks at1,664.61MiB. Its strict
+frontend36 gate passes with zero exact differences and discrepancies. All26
+paired jobs pass, and all24 full C outputs match the same retained oracles;
+the offline analysis rehashes the actual output copies. No target was run by
+the reporting task. The previous chunks plan and method remain frozen.
+
+Request samples below are milliseconds, with candidate/baseline ratios. Each
+role again has its own freshly prepared API-specific Base cache and two rotated
+cold rounds under the same resource configuration.
+
+| Case | Baseline samples ms | Owned samples ms | Median B/O ms | Median ratio | Paired ratios |
+| --- | --- | --- | --- | --- | --- |
+| Map | 2173.46 /2214.28 | 2202.16 /2255.18 | 2193.87 /2228.67 | 1.0159 | 1.0132 /1.0185 |
+| Small | 281.08 /284.25 | 282.35 /284.20 | 282.66 /283.28 | 1.0022 | 1.0045 /0.9998 |
+| Functions65 | 668.74 /667.60 | 667.25 /668.47 | 668.17 /667.86 | 0.9995 | 0.9978 /1.0013 |
+| Numeric | 459.40 /461.87 | 472.50 /461.31 | 460.64 /466.90 | 1.0136 | 1.0285 /0.9988 |
+| Lexer | 1099.48 /1096.54 | 1175.31 /1100.49 | 1098.01 /1137.90 | 1.0363 | 1.0690 /1.0036 |
+| Unicode | 309.50 /288.12 | 310.43 /288.38 | 298.81 /299.40 | 1.0020 | 1.0030 /1.0009 |
+
+The equal-case geometric mean of median request ratios is **1.01150**:1.15%
+slower. The geometric mean of all paired ratios is1.01139. Functions65 is
+effectively unchanged; Numeric and Lexer vary between rounds, while Map is
+slower in both. None demonstrates a useful JS-host gain. Two rounds do not
+establish the precise size or statistical significance of these small changes.
+
+| Case | Baseline process ms | Owned process ms | Ratio |
+| --- | ---: | ---: | ---: |
+| Map | 3291.09 | 3372.80 | 1.0248 |
+| Small | 1341.40 | 1382.47 | 1.0306 |
+| Functions65 | 1771.70 | 1761.00 | 0.9940 |
+| Numeric | 1556.10 | 1535.69 | 0.9869 |
+| Lexer | 2178.38 | 2292.28 | 1.0523 |
+| Unicode | 1431.15 | 1420.84 | 0.9928 |
+
+Whole-process median ratio is1.01328, with the same harness-overhead caveat as
+above. All26 guards occupy56.12s, including46.67s for the24 request jobs; peak
+tree RSS is393.48MiB. Per-pair process values, preparation observations, complete
+sample identities and lineage are retained in
+[the separate owned-only record](js-owned-integration.json).
+
+**Final JS decision:** keep both owned composition and chunks in the explicit
+native build profile. Leave canonical production source and installed Phase82
+unchanged. The native ownership/string-cost gains do not transfer automatically
+to the JS host. The owned-only ablation removes the combined candidate's large
+Functions65 slowdown but provides no positive JS result warranting promotion.
+No additional JS repeat or23-source JS-output continuity run is needed for this
+decision because production JS is unchanged. The two separately paired campaigns
+do not justify subtracting their percentages to estimate an exact chunk-only
+cost; such attribution would need its own controlled comparison.

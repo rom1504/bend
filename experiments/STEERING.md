@@ -1,4 +1,37 @@
-# Active frontier: native compiler output composition; Phase82 JS B2 installed
+# Active frontier: qualified native89; shared-data observation next
+
+[Phase89](../implementation/phase89/README.md) qualifies native B1 `8bacae26…`
+with consume-once NC_Code and ordered body chunks. Map cold/fifth request time
+falls28.0%/33.7% in paired native trials; append work39.8%, allocation calls29.4%.
+Eight live/cache gates,45 exact-C points and10 launcher controls pass. The nine
+providers include file IO without broadening scalar/array permission. Use the
+[versioned native launcher](../docs/self_hosted/NATIVE_HOST.md).
+
+Final six-source cold process screen versus TS/Bun wins5/6, geomean0.4924×,
+Map1.385×. Native prepared Base differs from TS source preparation; no backend-only
+or broad parity claim. Fifth Map/Lexer remain3.625×/2.152×, Numeric0.548×.
+Use Bun for upstream reference, Node for our JS B2. Same native changes regress
+ordinary JS B1 requests4.11% combined/1.15% owned-only, so canonical modules and
+installed Phase82 B2 remain unchanged. Production32,591physical lines/132modules.
+
+Full native self-emission hit600.022s/noC at1.01GiB RSS, not OOM. No native B2.
+A60s prefix has one overrun and remains strictly unqualified: exploratory physical
+samples identify30.42% shared-string equality ownership,9.40% definition-name
+projection, only two append leaves. Start with tiny shared-observation/lookup
+scaling controls, not another output builder or blind600s attempt. A False-first
+string helper already failed upstream match-order checking in0.921s; preserve it.
+True borrowing needs a lowering/representation change, not argument shuffling.
+
+All installed16 Phase82 artifacts match and ordinaryCLI smoke prints42, but
+explicit release verification fails on three Phase88 source changes. Read the
+[release audit](../implementation/phase89/release-status.md); do not call current
+checkout release verification passing or silently rewrite the old manifest.
+
+Root runs targets serially under RSS/memory/disk guards; bounded agents only
+prepare/audit. Use immutable evidence01/02/03, including rejected attempts and
+native restoration selection. No PR comments without explicit user instruction.
+
+# Historical Phase88 frontier (superseded below)
 
 [Phase88](../implementation/phase88/README.md) repairs Map with shareable Data
 observer frames and integrates the linear builders. All45points/23sources match

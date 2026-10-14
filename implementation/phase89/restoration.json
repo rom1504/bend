@@ -1,0 +1,58 @@
+{
+  "complete": true,
+  "passed": true,
+  "targetJobsRun": 0,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/restore-control.py",
+    "sha256": "2375bd3c18411ef869e7f9774899ee4157d3adc4678579814d994e9bc58b790c",
+    "bytes": 2307
+  },
+  "image": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/compiler-native-self01",
+    "sha256": "8bacae268296d6fe16d02ce50a7a2189bd587506c074532c6e5d74e622716e45",
+    "bytes": 10019312
+  },
+  "steps": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/restore.py",
+        "--verify-only"
+      ],
+      "returncode": 0,
+      "stdout": "{\"complete\": true, \"verifiedFiles\": 12, \"mode\": \"verify\", \"targetJobsRun\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/restore.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\"complete\": true, \"verifiedFiles\": 12, \"mode\": \"restore\", \"targetJobsRun\": 0}\n",
+      "stderr": ""
+    }
+  ],
+  "receipts": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase89/evidence02.json",
+      "sha256": "3e3017eabb1e1c8f0b587e0253dd1fbdd48075cfdf3722d75405fc99e7765dab",
+      "bytes": 815
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase89/evidence03.json",
+      "sha256": "170272d58bd7fe75ed4be1fc0445912caf8d4ab36c1845fe2ef802b5c97b1b22",
+      "bytes": 1289
+    }
+  ],
+  "missingExecutableExercised": true,
+  "restored": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/compiler-native-self01",
+    "sha256": "8bacae268296d6fe16d02ce50a7a2189bd587506c074532c6e5d74e622716e45",
+    "bytes": 10019312
+  },
+  "authenticationUnchanged": true,
+  "rollbackCopyRemovedAfterIdentityCheck": true
+}

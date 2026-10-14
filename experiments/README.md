@@ -5,6 +5,18 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed investigation: Phase86 native compiler hosting
+
+[Report](../implementation/phase86/README.md). The current Bend compiler builds
+through pinned upstream C into a standalone native B1. All87 successful native/
+JS-pilot C outputs match ordinary B2. Reject a default migration for now: native
+Map hits a localized reference-counting fail-stop; Lexer takes5.03× sibling-JS
+first time and slows further across repeated calls. Native Base costs3.06s and
+image acquisition/build259s. Reusing canonical runtime chunks removes a separate
+16.6s scanner cost. Preserve all failures; no production change. Next minimize
+the typed/erased observer-continuation boundary and profile native Lexer before
+full host work. Installed Phase82 remains verified; read the frontier.
+
 ## Completed investigation: Phase85 V8 execution of the compiler
 
 [Report](../implementation/phase85/README.md). Direct per-thread CPU traces show

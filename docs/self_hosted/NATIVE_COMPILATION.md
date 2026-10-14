@@ -164,6 +164,16 @@ book. A walk that encounters unsafe code contributes no such facts. Public
 
 ## Diagnosing compilation latency
 
+Compiler hosting and the emitted program target are independent. The installed
+B2 runs as JavaScript even when emitting C. The [Phase86 native-host investigation](../../implementation/phase86/README.md)
+also builds the current Bend source as a native executable through pinned
+upstream TypeScript C emission and Clang. That executable runs compiler algorithms
+in Bend without Node or TypeScript at request time. It is an experimental native
+B1, with a restricted IO entry; it is not the installed CLI or native B2.
+Its [methods](../../selfhost/tools/performance/phase86/README.md) separate Base
+preparation, prepared requests, whole processes and compiler-image build cost.
+Read those limits and results before treating native hosting as a speedup.
+
 The [Phase85 V8 investigation](../../implementation/phase85/README.md) measures
 the JS-hosted compiler's native-emission latency separately from Clang and native
 program execution. Much first-request CPU is V8 compiling the compiler itself.

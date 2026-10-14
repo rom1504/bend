@@ -4448,3 +4448,28 @@ overbroad bytecode filter and negative profiler deltas. Three bounded research/
 offline agents; no production/installed change, PR comment or quota claim.
 Prioritize V8 compilation budget and general emitted-JS shape, using cheap
 exact-output falsifiers before selfhost rebuilds. Qualified Phase82 metrics stay.
+
+## Phase86 native compiler hosting — 2026-10-14
+
+[Report](../implementation/phase86/README.md). Current132-module Bend compiler
+builds through upstream0592662/Clang22 into a native B1, with no Node/TypeScript
+in its request path. All87 successful prototype C outputs (40 native,47 sibling
+JS) match independent B2. Raw/guarded JS, native binaries, complete C and failures
+are retained. Reusing canonical Bend-produced chunks removes16.6s native template
+scanning, leaving1–2ms transport. Base still costs3.06s; image acquisition/build259s.
+
+Do not migrate: native Map hits `rfc_wrap` from `NOA_EVAL_K8169`; a diagnostic
+exit interceptor identifies the sharing boundary without rebuilding or modifying
+the compiler. Lexer is5.03× sibling-JS first time, then grows5.31s→10.79s across
+five calls while JS falls1.06s→0.476s. Native40.5MiB RSS is not an OOM event.
+The broad campaign stopped; no aggregate hides Map. Next minimize typed/erased
+continuation sharing and profile Lexer with a working profiler. Keep production
+JS hosting and prepared cache/session. No native-B2/default-host/full-conformance
+claim. Positive Unicode/Small executables and negative/scope controls pass their
+declared contracts; inherited production remains unchanged and release verifies.
+
+109 guarded records:78 successes,11 expected refusals,19 completed failures/stops,
+one unfinalized interruption. Measured occupancy1,359.23s; peak4.14GiB on separately
+bounded Clang. Three controlled RSS stops, no system OOM/deadline. Preserve wrapper
+syntax/path mistakes and invalid initial import control. Two bounded audit agents,
+serial root targets, no PR comment or quota claim. Installed Phase82 metrics stay.

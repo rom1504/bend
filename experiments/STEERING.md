@@ -1,4 +1,35 @@
-# Active frontier: Phase85 V8 startup cost identified; Phase82 installed
+# Active frontier: native hosting has concrete blockers; Phase82 installed
+
+[Phase86 report](../implementation/phase86/README.md) establishes current native
+B1 feasibility through pinned upstream C/Clang, without a JS runtime bridge.
+All87 successful prototype outputs (40 native,47 JS) match independent B2 C.
+Do not migrate the default yet: Map fails in `rfc_wrap` from generated
+`WL_FID_NOA_EVAL_K8169`; the ordinary reference-counting path rejects a closure
+or task. Minimize typed/erased higher-order forwarding before assigning blame
+or repairing it. Never disable the guard. The exact binary, stack and assembly
+are retained without another194s compiler-image rebuild.
+
+Native first requests improve on three simple controls, but Lexer takes5.31s
+versus1.06s sibling JS. By fifth call it grows to10.79s while JS falls to0.476s.
+Native RSS is40.5MiB; the growth is unprofiled, not evidence of OOM. The system
+perf wrapper references missing `perf_5.10`. A native profiler and small reproducer
+are prerequisites to another broad claim. The planned broad campaign stopped;
+there is no aggregate excluding failed Map or new native-B2 qualification.
+
+Canonical Bend-produced runtime chunks reduce native template setup16.6s→1–2ms.
+Base still costs3.06s per process; ordinary B2 loads a cache. Acquisition plus
+O2 image build costs259s, peak4.14GiB under a6GiB/16GiB-headroom guard. That
+exception applies only to large Clang builds, not routine runtime experiments.
+Do not assume AOT execution or a resident native process fixes latency. First
+resolve Map and Lexer, then qualify prepared Base loading and the full host.
+Keep the JS development host/session and Phase85 first-use work available.
+
+Production core/source/images remain unchanged and release verification passes.
+109 guarded records,1,359s measured occupancy; three controlled RSS stops, no
+system OOM/deadline. One cancelled receipt lacks final timing and remains so.
+Two bounded source/method agents, root-only serial targets, no PR comment.
+
+## Phase85 findings retained
 
 [Phase85 report](../implementation/phase85/README.md) directly attributes first
 request CPU by V8 thread, beyond inspector samples. Extra compilation CPU explains

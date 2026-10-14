@@ -1,6 +1,8 @@
 # Disposable Phase86 native-host entry. Assemble after the CURRENT manifest.
 # Root freezes/audits Base, runtime and EFFECTDIR; only the three audited scalar
 # Base effects are admitted. This is a prepared-session experiment, not a CLI.
+# RUNTIME names the authenticated runtime whose five prepared sibling files
+# RUNTIME.part0 .. RUNTIME.part4 are supplied by the root harness.
 import Base
 
 type P86Seed is Data:
@@ -162,9 +164,10 @@ def p86_plan_annotated(+context: List<&2,KDef>, +stops: List<&2,String>, +verdic
 @unsafe
 def p86_effect_file(+base: String, +path: String) -> String:
   +dir = f_path_dir(base) ++ "effs/"
-  kc(String, String.eq(path, dir ++ "args.c"), u => "args.c", u =>
-    kc(String, String.eq(path, dir ++ "print.c"), u => "print.c", u =>
-      kc(String, String.eq(path, dir ++ "now.c"), u => "now.c", u => "")))
+  +dot = f_path_dir(base) ++ "./effs/"
+  kc(String, String.eq(path, dir ++ "args.c") || String.eq(path, dot ++ "args.c"), u => "args.c", u =>
+    kc(String, String.eq(path, dir ++ "print.c") || String.eq(path, dot ++ "print.c"), u => "print.c", u =>
+      kc(String, String.eq(path, dir ++ "now.c") || String.eq(path, dot ++ "now.c"), u => "now.c", u => "")))
 
 @unsafe
 def p86_effects(+request: NR_Request, +base: String, +directory: String, paths: List<&2,String>, +seen: List<&2,String>, +text: String) -> IO(String):
@@ -252,8 +255,21 @@ def p86_runtime_prepared(+seed: P86Seed, +input: String, +text: String, +base: S
         Unit <- IO.print_err("runtime_prepare_ms=" ++ Nat.show(Nat.sub(after, before)))
         p86_requests(seed, runtime, input, text, base, directory, output, count, 1)
 
+# The root verifies every part against the existing Bend-produced canonical
+# template artifact and checks their concatenation against the raw runtime.
+# This host transport replaces no compiler algorithm and rescans no template.
 @unsafe
-def p86_base_prepared(+input: String, +text: String, +base: String, +runtime: String, +directory: String, +output: String, +count: U32, prepared: P86Preparation, before: Nat) -> IO(U32):
+def p86_runtime_read(+path: String) -> IO(NE_Runtime):
+  do IO<NE_Runtime>:
+    part0 : String <- p86_read_file(path ++ ".part0")
+    part1 : String <- p86_read_file(path ++ ".part1")
+    part2 : String <- p86_read_file(path ++ ".part2")
+    part3 : String <- p86_read_file(path ++ ".part3")
+    part4 : String <- p86_read_file(path ++ ".part4")
+    IO.pure(NE_Runtime, NE_Parts{[part0, part1, part2, part3, part4]})
+
+@unsafe
+def p86_base_prepared(+input: String, +text: String, +base: String, +runtime_path: String, +directory: String, +output: String, +count: U32, prepared: P86Preparation, before: Nat) -> IO(U32):
   match prepared:
     case P86PreparationError{error}: IO.die(U32, 1, error)
     case P86PreparationReady{seed}:
@@ -261,16 +277,16 @@ def p86_base_prepared(+input: String, +text: String, +base: String, +runtime: St
         after : Nat <- IO.now()
         Unit <- IO.print_err("base_prepare_ms=" ++ Nat.show(Nat.sub(after, before)))
         start : Nat <- IO.now()
-        p86_runtime_prepared(seed, input, text, base, directory, output, count, ne_runtime_prepare(runtime), start)
+        runtime : NE_Runtime <- p86_runtime_read(runtime_path)
+        p86_runtime_prepared(seed, input, text, base, directory, output, count, runtime, start)
 
 @unsafe
 def p86_paths(+input: String, +base: String, runtime: String, +directory: String, +output: String, +count: U32) -> IO(U32):
   do IO<U32>:
     text : String <- p86_read_file(input)
     base_text : String <- p86_read_file(base)
-    runtime_text : String <- p86_read_file(runtime)
     before : Nat <- IO.now()
-    p86_base_prepared(input, text, base, runtime_text, directory, output, count, p86_prepare(base, base_text), before)
+    p86_base_prepared(input, text, base, runtime, directory, output, count, p86_prepare(base, base_text), before)
 
 # Sized read plus EOF verification, adapted from the historical rapid host.
 @unsafe

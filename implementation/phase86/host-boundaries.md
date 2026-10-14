@@ -203,3 +203,20 @@ the experimental entry is not a public permission to accept arbitrary effect
 files with those names. File IO limits inputs to 16 MiB and checks EOF after sized
 reads. Affine file handles are selected through direct matches, never duplicated
 between alternative closure arguments. The entry is frozen for root acquisition.
+
+The subsequent host-only revision loads five sibling files `RUNTIME.part0` through
+`RUNTIME.part4` and constructs `NE_Parts`, instead of running the scanner in each
+new process. Root must bind these files to the existing Bend-produced canonical
+`runtime-template.json` and verify that concatenation reproduces the authenticated
+raw runtime. Their file reads belong to `runtime_prepare_ms`; raw runtime text
+is no longer read by the entry. This mirrors retained runtime preparation without
+changing scanner/emitter algorithms. The earlier live-scanner entry and its
+acquired images remain separate evidence, not overwritten results.
+
+Final root acquisition08 additionally accepts both exact Base effect spellings
+`effs/NAME.c` and `./effs/NAME.c`; the admitted names and authenticated bytes do
+not change. Its entry digest is
+`3e6707ab55094c5ef7140652f43c25483833de4860921c91e97b606afa7eba4f`.
+The [completed report](README.md) supersedes this feasibility audit for measured
+behavior: native Map fails in reference counting and Lexer is substantially
+slower. No default-host migration is qualified.

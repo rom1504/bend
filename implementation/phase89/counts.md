@@ -1,11 +1,120 @@
 # Per-request native compiler work counters
 
-This is a disposable diagnostic of the exact Phase88 native02 executable's
-generated C. It changes no compiler algorithm, production module, upstream
-source, runtime guard or historical artifact. Root owns compilation and target
-execution. This lane only prepared and checked the source transformation.
+This records disposable operation-count diagnostics of Phase88 native02 and the
+checked Phase89 owned-result/body-chunk candidate. Counter instrumentation changes
+no compiler algorithm, upstream source, runtime guard or historical artifact.
+Root owns compilation and target execution; this lane prepares tools and analyzes
+their evidence offline.
 
-## Completed counter results
+## Owned results and body chunks: completed v2 comparison
+
+The [new three-source run](../../selfhost/build/phase89/counts-chunks-run02/report.json)
+passes **15/15 complete C comparisons**, including every repeated request. All
+three counter analyses have14 phase marks, zero foreign-thread events and zero
+overflow. Input hashes remain unchanged. This compares native02 with the combined
+owned-result plus body-chunk candidate, not an ablation isolating either change.
+
+The baseline diagnostic uses Clang `-O2`; the new one uses `-O1`. Both define
+`__OPTIMIZE__` and retain the runtime's `preserve_none`/`preserve_most` calling
+conventions. Their31 shared counters have the same definitions and source hooks;
+v2 omits `match_joins`, whose generated continuation identity changes. The unique
+append-return continuation is discovered and checked instead of hardcoding its
+numeric suffix. These are observed operation counts from differently optimized,
+instrumented binaries. **Do not infer compiler speed from their diagnostic clocks
+or treat the optimization levels as an otherwise controlled timing comparison.**
+Use the [clean three-way comparison](../../selfhost/build/phase89/chunks-cold01/report.json)
+for speed evidence.
+
+The following exact counts use request2; each repeats unchanged in requests3–5.
+Percentages describe counted work, not elapsed-time savings.
+
+| Source | Append characters, old → new | Allocation calls, old → new | Requested allocation words, old → new |
+| --- | ---: | ---: | ---: |
+| [Map](../../selfhost/build/phase89/counts-chunks-run02/map_closed-counts.json) | 26,639,166 →16,041,108 (−39.78%) | 72,050,847 →50,882,736 (−29.38%) | 139,968,521 →108,139,891 (−22.74%) |
+| [Lexer](../../selfhost/build/phase89/counts-chunks-run02/lexer_original-counts.json) | 7,416,105 →6,976,089 (−5.93%) | 18,706,857 →17,828,069 (−4.70%) | 36,256,558 →34,922,435 (−3.68%) |
+| [Numeric](../../selfhost/build/phase89/counts-chunks-run02/numeric_closed-counts.json) | 372,386 →339,094 (−8.94%) | 1,743,733 →1,677,312 (−3.81%) | 4,694,356 →4,593,058 (−2.16%) |
+
+At8bytes per word, the new cumulative requested capacities are865,119,128bytes
+for Map,279,379,480 for Lexer and36,744,464 for Numeric. These include allocator
+reuse and are not live-memory measurements. Final C sizes remain895,710,
+418,969 and116,011bytes respectively. Map still performs substantial copying,
+but the candidate removes10,598,058 append-character traversals per request.
+
+| Source | Drop child fields, old → new | Refcount wrappers, old → new | Shared constructor/fade calls, old → new | `nt_choose` calls, unchanged |
+| --- | ---: | ---: | ---: | ---: |
+| Map | 44,200,086 →24,393,848 (−44.81%) | 29,389,249 →18,849,908 (−35.86%) | 30,454,455 →20,775,028 (−31.78%) | 6,068,096 |
+| Lexer | 6,051,989 →5,201,854 (−14.05%) | 8,133,428 →7,705,074 (−5.27%) | 6,717,758 →6,206,912 (−7.60%) | 846,000 |
+| Numeric | 1,456,998 →1,393,694 (−4.34%) | 510,457 →478,411 (−6.28%) | 1,874,127 →1,841,665 (−1.73%) | 172,175 |
+
+Thus the measured reduction includes destruction and sharing work alongside
+copying. The unchanged choice count is a useful semantic-work control. The
+effect is much larger on Map than on Lexer/Numeric; these three sources do not
+establish a uniform reduction across all compiler inputs.
+
+### Repeat behavior and allocator limits
+
+**All31 new counters are exactly identical across requests2–5 for all three
+sources**, as the original32 counters were in the baseline. Request1 differs
+by two additional one-word wrapper allocations and two fewer retain units, plus
+initial allocator population. No later request acquires fresh corpus capacity.
+This again rules out growth in these counted operations over requests2–5; it
+does not identify the cause of any remaining clean-run timing trend.
+
+| Source | Hot-list misses, old → new, requests2–5 | Generation handoffs, old → new | New fresh corpus events, request1 →2–5 |
+| --- | ---: | ---: | ---: |
+| Map | 4,358 →1,972 (−54.75%) | 4,276 →1,889 (−55.82%) | 248 →0 |
+| Lexer | 1,006 →1,232 (+22.47%) | 968 →1,194 (+23.35%) | 14 →0 |
+| Numeric | 26 →32 (+23.08%) | 15 →21 (+40.00%) | 6 →0 |
+
+Lexer and Numeric make more allocator slow-path visits despite requesting fewer
+allocations overall. Count reductions therefore do not establish uniformly better
+locality or allocator efficiency. Addresses, cache misses and cycles per operation
+remain unmeasured. The earlier proposed allocator-capacity experiment below is
+still unimplemented; these results do not justify a runtime allocator change.
+
+Final process allocation/free calls and words balance exactly in every new run:
+Map257,876,151calls/546,870,269words; Lexer92,613,466/180,798,964;
+Numeric11,846,775/29,132,720. Each number is equal on the allocation and free
+sides. The original caveats remain: final aggregate balance is not a leak proof,
+peak-live measurement or per-object lifetime audit.
+
+### New source, build and failure bindings
+
+The [checked acquisition](../../selfhost/build/phase89/chunks02/report.json)
+uses upstream`059266225b77c8ca256ac6b25ee5c21449bab151`. Its Bend source is
+`670204c4898753c29b648ca77cc19c2b3ad33764bfdf2f55598e8957a2310751` and clean C is
+`08fb3bda86dbcaae55c5cd2e2252359805bd27e11c160694728af301226ed1b0`.
+The [counter derivation](../../selfhost/build/phase89/counts-chunks-source02/derivation.json)
+binds14 reversible edit groups,31 fields and `STRING_APPEND_K21819`. Reversing
+the edits recovers every original C byte; the first/last1,024bytes are unchanged.
+Its instrumented C is
+`494523b8341f57ccd02ca185d7e4b57246d89d84abd4b78cc38080765ec6cff8`.
+
+The [guarded O1 build](../../selfhost/build/phase89/counts-chunks-build02-guard/process.json)
+passes in189.48s, peaking at4,285,968,384bytes (4.286GB/3.992GiB) under the explicit
+6GiB guard. Its binary is
+`eb29b5894d7d9ac9700e5d3f8610653b566cfde599379e292287a7837683082c`
+(12,546,184bytes). The successful run report SHA256 is
+`7c1717f7e7165f19b0eda5db65c218ecd8afd71ed97cf4eb8d1afebd766ce865`;
+it binds acquisition, derivation, build inputs/command, binary, source fixtures,
+authenticated Base/runtime/effects/cache, each output and all three analyses.
+The [v2 runner](../../selfhost/tools/performance/phase89/counts-v2/README.md)
+checks the clean parent's live Small/Map/Unicode gates before diagnostic-only
+carrier reuse. Original B2 C files were archived, so retained full-C copies are
+verified against their historical B2 hashes and lengths; both identities are
+recorded. This does not promote a new public cache consumer or native release.
+
+The new diagnostic build and all three request jobs succeeded; no failed target
+was excluded. The earlier [chunk-v1 checked failure](../../selfhost/build/phase89/chunks-control01/report.json)
+remains preserved: it matched `todo` after a later binder. The
+[v2 correction](../../selfhost/tools/performance/phase89/chunks-v2/v2-correction.json)
+changes worker argument order and all call sites before checked acquisition.
+An offline runner preflight also detected missing archived oracle paths; the
+verified-copy handling above resolved it without regenerating targets. This
+report update ran no compiler or benchmark.
+
+## Original native02 counter results (retained baseline)
+
 
 Root's [three-source run](../../selfhost/build/phase89/counts-run01/report.json)
 passes all15 complete C comparisons (five each for Map, Lexer and Numeric).

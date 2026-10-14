@@ -18,14 +18,18 @@ has been posted.
   time 19.6% and fifth request 26.4%, with exact C on 87 requests. Tiny/full
   lowering controls pass. Small cases show no clear benefit; promotion awaits
   broader integration.
-- [Deferred body pieces](body-chunks-feasibility.md): the next isolated prototype
-  carries ordered text through nested lowering and renders only at final string
-  boundaries. Its gain is unmeasured.
+- [Deferred body pieces](body-chunks-feasibility.md): the combined native candidate
+  reduces Map cold request time 28.0% and fifth-request time 33.7% against native02.
+  All 129 paired outputs and 45 broader points preserve complete C. Counters show
+  39.8% less character copying and 29.4% fewer allocations on Map. This remains a
+  native build experiment: [ordinary JS B1](js-integration.md) regresses 7–11% on
+  Numeric, Lexer and Functions65, so unconditional source promotion is rejected.
 - [Native B2 feasibility](native-b2-feasibility.md): native self-emission requires
   narrow file-effect admission, an explicit argument adapter and new stage/cache
-  qualification. Tiny controls precede a full compiler build. The first argv
-  fixture correctly fails affine checking because its index lacks `+`; that
-  fixture failure is preserved and will be corrected separately.
+  qualification. Corrected argv, decoder and file-IO controls pass, including
+  expected failures. The first fixture's affine-checking failure is preserved.
+  A fully checked nine-effect native B1 has built; its live/cache gates and
+  bounded self-emission are now being attempted. Native B2 is not established.
 
 [Design](../../design/phase89/bun-and-native-output.md),
 [host usage](../../docs/self_hosted/host-runtimes.md),
@@ -36,6 +40,13 @@ use a new capsule; the original remains unchanged. External runtime downloads
 have explicit URL/version/hash receipts; Phase88 admission assets remain in
 their existing capsule. Current raw build links can be restored at their recorded
 repository paths from the checkpoint manifest.
+
+[Checkpoint two](evidence02.json) retains the corrected/rejected chunk attempts,
+native comparisons, counters, broad45, JS regression screen and nine-effect B1
+build. Verified duplicate raw products were removed only after archiving; their
+[deletion receipt](prune-checkpoint02.json) gives exact restoration members.
+The smaller ownership-only JS ablation remains pending. All installed and
+production compiler files are still unchanged.
 
 The clocks above measure compilation to C, not generated-program execution.
 Exact C preserves prior program behavior/code identity on the checked sources;

@@ -1,0 +1,857 @@
+{
+  "complete": true,
+  "pass_": true,
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/plan.json",
+    "sha256": "9ed9754793875a65f288d244222a7500330368bd7a06f957035b84d898139a69",
+    "bytes": 147483
+  },
+  "cases": [
+    {
+      "case": "map_closed",
+      "medians": {
+        "baseline": {
+          "requestMs": 2452.189604,
+          "importsMs": 84.53668599999997,
+          "processMs": 3648.012531455606
+        },
+        "candidate": {
+          "requestMs": 2405.184185,
+          "importsMs": 85.31802249999998,
+          "processMs": 3572.5542745785788
+        }
+      },
+      "requestRatio": 0.9808312461143603,
+      "processRatio": 0.9793152418676263,
+      "pairs": [
+        {
+          "round": 1,
+          "baseline": 2729.357486,
+          "candidate": 2412.621818,
+          "requestRatio": 0.8839522966028937,
+          "baselineProcessMs": 3986.2124749924988,
+          "candidateProcessMs": 3545.345852151513,
+          "processRatio": 0.8894021265532728
+        },
+        {
+          "round": 2,
+          "baseline": 2175.021722,
+          "candidate": 2397.746552,
+          "requestRatio": 1.1024011979959436,
+          "baselineProcessMs": 3309.8125879187137,
+          "candidateProcessMs": 3599.7626970056444,
+          "processRatio": 1.0876031803568849
+        }
+      ]
+    },
+    {
+      "case": "small",
+      "medians": {
+        "baseline": {
+          "requestMs": 287.002879,
+          "importsMs": 84.12997100000001,
+          "processMs": 1412.9357273923233
+        },
+        "candidate": {
+          "requestMs": 293.92844449999996,
+          "importsMs": 85.17638549999995,
+          "processMs": 1393.0949774803594
+        }
+      },
+      "requestRatio": 1.0241306481807102,
+      "processRatio": 0.98595778312678,
+      "pairs": [
+        {
+          "round": 1,
+          "baseline": 292.84959000000003,
+          "candidate": 299.210645,
+          "requestRatio": 1.0217212358057253,
+          "baselineProcessMs": 1434.4108907971531,
+          "candidateProcessMs": 1395.0984010007232,
+          "processRatio": 0.9725932854744413
+        },
+        {
+          "round": 2,
+          "baseline": 281.156168,
+          "candidate": 288.6462439999999,
+          "requestRatio": 1.0266402691901817,
+          "baselineProcessMs": 1391.4605639874935,
+          "candidateProcessMs": 1391.0915539599955,
+          "processRatio": 0.9997348038190601
+        }
+      ]
+    },
+    {
+      "case": "functions65",
+      "medians": {
+        "baseline": {
+          "requestMs": 675.7984660000001,
+          "importsMs": 84.2252695,
+          "processMs": 1861.0733384266496
+        },
+        "candidate": {
+          "requestMs": 751.2767315,
+          "importsMs": 85.55606650000001,
+          "processMs": 1983.8568239938468
+        }
+      },
+      "requestRatio": 1.1116875359998226,
+      "processRatio": 1.0659745551301048,
+      "pairs": [
+        {
+          "round": 1,
+          "baseline": 685.5978680000001,
+          "candidate": 765.257576,
+          "requestRatio": 1.116190133776787,
+          "baselineProcessMs": 1983.6648129858077,
+          "candidateProcessMs": 2148.130296031013,
+          "processRatio": 1.0829099160143152
+        },
+        {
+          "round": 2,
+          "baseline": 665.9990640000001,
+          "candidate": 737.295887,
+          "requestRatio": 1.1070524372388606,
+          "baselineProcessMs": 1738.4818638674915,
+          "candidateProcessMs": 1819.5833519566804,
+          "processRatio": 1.0466507530361966
+        }
+      ]
+    },
+    {
+      "case": "numeric_closed",
+      "medians": {
+        "baseline": {
+          "requestMs": 470.599481,
+          "importsMs": 84.68281700000003,
+          "processMs": 1586.9463523849845
+        },
+        "candidate": {
+          "requestMs": 504.7810774999999,
+          "importsMs": 84.85023800000005,
+          "processMs": 1587.1647055028006
+        }
+      },
+      "requestRatio": 1.072634156814975,
+      "processRatio": 1.0001375932573195,
+      "pairs": [
+        {
+          "round": 1,
+          "baseline": 477.98437,
+          "candidate": 515.3125129999999,
+          "requestRatio": 1.078094902977685,
+          "baselineProcessMs": 1595.3226739075035,
+          "candidateProcessMs": 1596.2137449532747,
+          "processRatio": 1.0005585522354477
+        },
+        {
+          "round": 2,
+          "baseline": 463.21459200000004,
+          "candidate": 494.249642,
+          "requestRatio": 1.0669992926302285,
+          "baselineProcessMs": 1578.5700308624655,
+          "candidateProcessMs": 1578.1156660523266,
+          "processRatio": 0.9997121668337446
+        }
+      ]
+    },
+    {
+      "case": "lexer_original",
+      "medians": {
+        "baseline": {
+          "requestMs": 1120.838173,
+          "importsMs": 84.65880350000003,
+          "processMs": 2221.416618442163
+        },
+        "candidate": {
+          "requestMs": 1196.2851915,
+          "importsMs": 89.297155,
+          "processMs": 2303.894499083981
+        }
+      },
+      "requestRatio": 1.0673130344035846,
+      "processRatio": 1.0371285061780344,
+      "pairs": [
+        {
+          "round": 1,
+          "baseline": 1137.083991,
+          "candidate": 1214.691981,
+          "requestRatio": 1.0682517655813166,
+          "baselineProcessMs": 2228.5534099210054,
+          "candidateProcessMs": 2331.6832720302045,
+          "processRatio": 1.046276594336976
+        },
+        {
+          "round": 2,
+          "baseline": 1104.592355,
+          "candidate": 1177.878402,
+          "requestRatio": 1.0663466904041718,
+          "baselineProcessMs": 2214.2798269633204,
+          "candidateProcessMs": 2276.1057261377573,
+          "processRatio": 1.0279214480580015
+        }
+      ]
+    },
+    {
+      "case": "unicode",
+      "medians": {
+        "baseline": {
+          "requestMs": 292.1928445,
+          "importsMs": 84.55985049999995,
+          "processMs": 1372.7235544938594
+        },
+        "candidate": {
+          "requestMs": 291.0053345,
+          "importsMs": 85.19047199999997,
+          "processMs": 1372.007091413252
+        }
+      },
+      "requestRatio": 0.995935868990796,
+      "processRatio": 0.9994780718388186,
+      "pairs": [
+        {
+          "round": 1,
+          "baseline": 295.940607,
+          "candidate": 294.298459,
+          "requestRatio": 0.9944510893025233,
+          "baselineProcessMs": 1372.2225748933852,
+          "candidateProcessMs": 1391.2272609304637,
+          "processRatio": 1.0138495652125203
+        },
+        {
+          "round": 2,
+          "baseline": 288.44508199999996,
+          "candidate": 287.71221,
+          "requestRatio": 0.9974592321182306,
+          "baselineProcessMs": 1373.2245340943336,
+          "candidateProcessMs": 1352.7869218960404,
+          "processRatio": 0.9851170644778989
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "case": "map_closed",
+      "role": "baseline",
+      "round": 1,
+      "requestMs": 2729.357486,
+      "importsMs": 85.67125399999992,
+      "processMs": 3986.2124749924988,
+      "peakRssMiB": 376.10546875,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-map_closed-baseline/report.json",
+        "sha256": "8b19fb80c23ccf7eba70880560d046b42ace00472acdaa4a1ae752621f2a59cd",
+        "bytes": 42757
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-map_closed-baseline-guard/process.json",
+        "sha256": "3d21e7f99daced6a5df5757dbb1eb2a5c8b5967141d1507a3bdca19832009217",
+        "bytes": 782
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-map_closed-baseline/program.c",
+        "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+        "bytes": 895710
+      }
+    },
+    {
+      "case": "map_closed",
+      "role": "candidate",
+      "round": 1,
+      "requestMs": 2412.621818,
+      "importsMs": 85.35298899999998,
+      "processMs": 3545.345852151513,
+      "peakRssMiB": 376.68359375,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-map_closed-candidate/report.json",
+        "sha256": "d04af42ed0ac51836840619e2b65f54ed8aabcc350d6fe46f141d9704a89fd03",
+        "bytes": 42770
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-map_closed-candidate-guard/process.json",
+        "sha256": "3ace2a243256ce7b453969a737c9490860a60fa136be7d23339edc86e5a0818a",
+        "bytes": 781
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-map_closed-candidate/program.c",
+        "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+        "bytes": 895710
+      }
+    },
+    {
+      "case": "small",
+      "role": "candidate",
+      "round": 1,
+      "requestMs": 299.210645,
+      "importsMs": 85.83552799999995,
+      "processMs": 1395.0984010007232,
+      "peakRssMiB": 218.8984375,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-small-candidate/report.json",
+        "sha256": "c5463b786451317f8eb0b08b963c199b97ce6ca70d70e4c4622944c54338aa94",
+        "bytes": 42364
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-small-candidate-guard/process.json",
+        "sha256": "8f3e4369817767244f586ee0eee574d2910098d5e0fd98c0d464b6cf51b9d163",
+        "bytes": 771
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-small-candidate/program.c",
+        "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+        "bytes": 93941
+      }
+    },
+    {
+      "case": "small",
+      "role": "baseline",
+      "round": 1,
+      "requestMs": 292.84959000000003,
+      "importsMs": 84.91499499999998,
+      "processMs": 1434.4108907971531,
+      "peakRssMiB": 220.76953125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-small-baseline/report.json",
+        "sha256": "46cac6d1463818118b4eb3e7da1e2d442682327b22526af19bae39b1876f9dad",
+        "bytes": 42361
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-small-baseline-guard/process.json",
+        "sha256": "a2b6db37935ab4fd7e67e68796192326b492f7fc0dc085f373fe03576eabfa65",
+        "bytes": 772
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-small-baseline/program.c",
+        "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+        "bytes": 93941
+      }
+    },
+    {
+      "case": "functions65",
+      "role": "baseline",
+      "round": 1,
+      "requestMs": 685.5978680000001,
+      "importsMs": 85.47642300000001,
+      "processMs": 1983.6648129858077,
+      "peakRssMiB": 243.15234375,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-functions65-baseline/report.json",
+        "sha256": "13d7a3d788c7e1d83a4709cd5c6c95383165d00e3b2c4cea9f5831f594d1a2c3",
+        "bytes": 42415
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-functions65-baseline-guard/process.json",
+        "sha256": "c62b90320f1a3332d4a6ac2d8b6d568cbdc321ffad3fd82f2e0a95bf6fa63df8",
+        "bytes": 783
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-functions65-baseline/program.c",
+        "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+        "bytes": 174938
+      }
+    },
+    {
+      "case": "functions65",
+      "role": "candidate",
+      "round": 1,
+      "requestMs": 765.257576,
+      "importsMs": 85.85645299999999,
+      "processMs": 2148.130296031013,
+      "peakRssMiB": 243.50390625,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-functions65-candidate/report.json",
+        "sha256": "6e4305bb030746cf76ffe9d7758bde3cee528610c50ad360541b0ae95fdbbed0",
+        "bytes": 42419
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-functions65-candidate-guard/process.json",
+        "sha256": "a171527567dd8537156a2dc7ff8ee219a08f31d3020cccdf58ce6f5c8c6f2e97",
+        "bytes": 784
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-functions65-candidate/program.c",
+        "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+        "bytes": 174938
+      }
+    },
+    {
+      "case": "numeric_closed",
+      "role": "candidate",
+      "round": 1,
+      "requestMs": 515.3125129999999,
+      "importsMs": 85.51600200000007,
+      "processMs": 1596.2137449532747,
+      "peakRssMiB": 221.88671875,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-numeric_closed-candidate/report.json",
+        "sha256": "20ab6b26856f04075ec128d973a49a40e8680322230cd28c51cbd97b74cc54f4",
+        "bytes": 42806
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-numeric_closed-candidate-guard/process.json",
+        "sha256": "1d47f32256b92f6e4ecd347eb3506bffd6b74bad50492b06deba3da1728273da",
+        "bytes": 792
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-numeric_closed-candidate/program.c",
+        "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+        "bytes": 116011
+      }
+    },
+    {
+      "case": "numeric_closed",
+      "role": "baseline",
+      "round": 1,
+      "requestMs": 477.98437,
+      "importsMs": 85.26145100000002,
+      "processMs": 1595.3226739075035,
+      "peakRssMiB": 223.83984375,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-numeric_closed-baseline/report.json",
+        "sha256": "e56127ec432bd3e4d7ecbbf9d3debc4aadfa561a74e25c1c1b940e0739b6b58d",
+        "bytes": 42785
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-numeric_closed-baseline-guard/process.json",
+        "sha256": "836c0a66ce050ee0df2ba63d8071ef13ac193298ee001056b2f343c1dcbb651b",
+        "bytes": 790
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-numeric_closed-baseline/program.c",
+        "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+        "bytes": 116011
+      }
+    },
+    {
+      "case": "lexer_original",
+      "role": "baseline",
+      "round": 1,
+      "requestMs": 1137.083991,
+      "importsMs": 85.31609600000002,
+      "processMs": 2228.5534099210054,
+      "peakRssMiB": 276.8125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-lexer_original-baseline/report.json",
+        "sha256": "f204161d6ce97f57712d90f4a033d1855f76294e843e79277e345d81491c5fcd",
+        "bytes": 42831
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-lexer_original-baseline-guard/process.json",
+        "sha256": "c468567733632984792a741ac5a4a0e611e32a7fd9a70406c3f6edfe4899b395",
+        "bytes": 790
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-lexer_original-baseline/program.c",
+        "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+        "bytes": 418969
+      }
+    },
+    {
+      "case": "lexer_original",
+      "role": "candidate",
+      "round": 1,
+      "requestMs": 1214.691981,
+      "importsMs": 94.02036600000008,
+      "processMs": 2331.6832720302045,
+      "peakRssMiB": 253.578125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-lexer_original-candidate/report.json",
+        "sha256": "9f42d9e2171b3073b25b2eb54587e350553c018f2717c7e0a69d82b7cc122c5e",
+        "bytes": 42844
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-lexer_original-candidate-guard/process.json",
+        "sha256": "80b310e97d8f1f824106e718ea4d6732293ceb53fcd8b3f3e776ed674632f08c",
+        "bytes": 791
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-lexer_original-candidate/program.c",
+        "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+        "bytes": 418969
+      }
+    },
+    {
+      "case": "unicode",
+      "role": "candidate",
+      "round": 1,
+      "requestMs": 294.298459,
+      "importsMs": 85.87319799999995,
+      "processMs": 1391.2272609304637,
+      "peakRssMiB": 217.81640625,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-unicode-candidate/report.json",
+        "sha256": "323b53daed7f6056b7dcfe3d0aa34f9304aa1abe6bea41b1341853ab59ea7e4b",
+        "bytes": 42738
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-unicode-candidate-guard/process.json",
+        "sha256": "d52b1594946af52adf94292ce853b885a104605d201f1189c6189ba1d07f85de",
+        "bytes": 778
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-unicode-candidate/program.c",
+        "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+        "bytes": 93760
+      }
+    },
+    {
+      "case": "unicode",
+      "role": "baseline",
+      "round": 1,
+      "requestMs": 295.940607,
+      "importsMs": 85.42294999999996,
+      "processMs": 1372.2225748933852,
+      "peakRssMiB": 219.984375,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-unicode-baseline/report.json",
+        "sha256": "7eb76f3628a4e93098666098b131b970179ad124755364ea9a05247a0cfb02fb",
+        "bytes": 42725
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-unicode-baseline-guard/process.json",
+        "sha256": "ed139fcbf5c9ac1e3426f8d5d6a11bdfd547ee78addf422392feeee56986aefb",
+        "bytes": 772
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-1-unicode-baseline/program.c",
+        "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+        "bytes": 93760
+      }
+    },
+    {
+      "case": "map_closed",
+      "role": "candidate",
+      "round": 2,
+      "requestMs": 2397.746552,
+      "importsMs": 85.28305599999999,
+      "processMs": 3599.7626970056444,
+      "peakRssMiB": 373.1171875,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-map_closed-candidate/report.json",
+        "sha256": "cab184644bc1dac58ee5fd445e6948c20b40c113e87f7ca7b297446b500629c3",
+        "bytes": 42770
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-map_closed-candidate-guard/process.json",
+        "sha256": "5f637c219e7a892b97d9ee114576f1236e1ffe376c4cbce057727a0e84508e11",
+        "bytes": 782
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-map_closed-candidate/program.c",
+        "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+        "bytes": 895710
+      }
+    },
+    {
+      "case": "map_closed",
+      "role": "baseline",
+      "round": 2,
+      "requestMs": 2175.021722,
+      "importsMs": 83.40211800000003,
+      "processMs": 3309.8125879187137,
+      "peakRssMiB": 375.99609375,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-map_closed-baseline/report.json",
+        "sha256": "a154f9d1df89078039ddceaaacfe0b460ea22bf0eafd1068e4b518d720e2d394",
+        "bytes": 42757
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-map_closed-baseline-guard/process.json",
+        "sha256": "9a5ac4539a0d8287aed6e961d2197a4c2a0d967c3c535ac27f49fad54b2e8752",
+        "bytes": 781
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-map_closed-baseline/program.c",
+        "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+        "bytes": 895710
+      }
+    },
+    {
+      "case": "small",
+      "role": "baseline",
+      "round": 2,
+      "requestMs": 281.156168,
+      "importsMs": 83.34494700000005,
+      "processMs": 1391.4605639874935,
+      "peakRssMiB": 219.0390625,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-small-baseline/report.json",
+        "sha256": "e343b30ee35ff5d2f6efdf0f3ed6e252c43013e2a4a6308bb98d6bbb01652e29",
+        "bytes": 42353
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-small-baseline-guard/process.json",
+        "sha256": "536a15bba37d9f45d68b5ffa7632ac27b5eb65fc6c7432b3af82189857a307a7",
+        "bytes": 772
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-small-baseline/program.c",
+        "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+        "bytes": 93941
+      }
+    },
+    {
+      "case": "small",
+      "role": "candidate",
+      "round": 2,
+      "requestMs": 288.6462439999999,
+      "importsMs": 84.51724299999995,
+      "processMs": 1391.0915539599955,
+      "peakRssMiB": 216.3671875,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-small-candidate/report.json",
+        "sha256": "56b3162ff2b937799fc97982845db83aa2dfa5f4e0c2a18cc12debcb20e76779",
+        "bytes": 42371
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-small-candidate-guard/process.json",
+        "sha256": "5cfabf4936b59dcac598b398ea54e4ed24b8236508a565042422adc4dc48aded",
+        "bytes": 774
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-small-candidate/program.c",
+        "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+        "bytes": 93941
+      }
+    },
+    {
+      "case": "functions65",
+      "role": "candidate",
+      "round": 2,
+      "requestMs": 737.295887,
+      "importsMs": 85.25568000000004,
+      "processMs": 1819.5833519566804,
+      "peakRssMiB": 243.578125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-functions65-candidate/report.json",
+        "sha256": "91e630a5ca7a51e55b924d16fe1326cdb4ac3dc55f6c8a8d196f1b11d1ea2359",
+        "bytes": 42419
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-functions65-candidate-guard/process.json",
+        "sha256": "523a9364bfda3dc34137dc1ad5f9990fc7fc5730a4de5c2abd77796230c2de8c",
+        "bytes": 785
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-functions65-candidate/program.c",
+        "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+        "bytes": 174938
+      }
+    },
+    {
+      "case": "functions65",
+      "role": "baseline",
+      "round": 2,
+      "requestMs": 665.9990640000001,
+      "importsMs": 82.97411599999998,
+      "processMs": 1738.4818638674915,
+      "peakRssMiB": 245.46875,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-functions65-baseline/report.json",
+        "sha256": "2f260bffd0d162416c0b67607f57e8675ea2ba9ae7b8d6a6beb71066cefe5ecd",
+        "bytes": 42415
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-functions65-baseline-guard/process.json",
+        "sha256": "c1d69c7ca5bf1231048c2029f798fb42c4bfd1772f0fe519ddd59a0c48e1043a",
+        "bytes": 784
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-functions65-baseline/program.c",
+        "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+        "bytes": 174938
+      }
+    },
+    {
+      "case": "numeric_closed",
+      "role": "baseline",
+      "round": 2,
+      "requestMs": 463.21459200000004,
+      "importsMs": 84.10418300000003,
+      "processMs": 1578.5700308624655,
+      "peakRssMiB": 223.84765625,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-numeric_closed-baseline/report.json",
+        "sha256": "e9ab654ca6bec5227fab5095776d2150bc968e481fdafc083bc29d17a0b5e950",
+        "bytes": 42794
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-numeric_closed-baseline-guard/process.json",
+        "sha256": "fb1bd4e564f91a1fc68199c675311d97fe9ccb5b840d2fddc9c2deec1c42afbc",
+        "bytes": 790
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-numeric_closed-baseline/program.c",
+        "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+        "bytes": 116011
+      }
+    },
+    {
+      "case": "numeric_closed",
+      "role": "candidate",
+      "round": 2,
+      "requestMs": 494.249642,
+      "importsMs": 84.18447400000002,
+      "processMs": 1578.1156660523266,
+      "peakRssMiB": 221.62890625,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-numeric_closed-candidate/report.json",
+        "sha256": "73e6b686492891ec359e2ec3c296fc13039c4e157e1ab06fe4fb15344c0a3beb",
+        "bytes": 42799
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-numeric_closed-candidate-guard/process.json",
+        "sha256": "8e40d1518a6b24004aafe740168caf42f4366ad4c06aecc9ad2ff8a7c6781c93",
+        "bytes": 792
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-numeric_closed-candidate/program.c",
+        "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+        "bytes": 116011
+      }
+    },
+    {
+      "case": "lexer_original",
+      "role": "candidate",
+      "round": 2,
+      "requestMs": 1177.878402,
+      "importsMs": 84.57394399999993,
+      "processMs": 2276.1057261377573,
+      "peakRssMiB": 251.90234375,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-lexer_original-candidate/report.json",
+        "sha256": "143ff320243b0e35303d311073269402669c0876e3b79ef8051236c170eb5561",
+        "bytes": 42844
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-lexer_original-candidate-guard/process.json",
+        "sha256": "37ddb5e5b68bf48b83f12a0afd25967b6a2e9ee1dfa4f6037697e52a33a9d039",
+        "bytes": 792
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-lexer_original-candidate/program.c",
+        "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+        "bytes": 418969
+      }
+    },
+    {
+      "case": "lexer_original",
+      "role": "baseline",
+      "round": 2,
+      "requestMs": 1104.592355,
+      "importsMs": 84.00151100000005,
+      "processMs": 2214.2798269633204,
+      "peakRssMiB": 277.1953125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-lexer_original-baseline/report.json",
+        "sha256": "f18696a5a381b79d35061ffdd4828acb39847516b45c5fe7a7f2f7d6f35c8d2b",
+        "bytes": 42831
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-lexer_original-baseline-guard/process.json",
+        "sha256": "0bee32427d600c4a1ef2ef5aa60890ba936680f2f362aa1677786ea839c56d77",
+        "bytes": 789
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-lexer_original-baseline/program.c",
+        "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+        "bytes": 418969
+      }
+    },
+    {
+      "case": "unicode",
+      "role": "baseline",
+      "round": 2,
+      "requestMs": 288.44508199999996,
+      "importsMs": 83.69675099999995,
+      "processMs": 1373.2245340943336,
+      "peakRssMiB": 221.9765625,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-unicode-baseline/report.json",
+        "sha256": "dd5428397a5b611239d3e7c51bd9541b0133b0661f728cebd5d4bb2c1f675df1",
+        "bytes": 42733
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-unicode-baseline-guard/process.json",
+        "sha256": "63ad4c538f2a8d1570a67f9dd4ab35e409b74d18f7492868f8eac61f05097dfb",
+        "bytes": 775
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-unicode-baseline/program.c",
+        "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+        "bytes": 93760
+      }
+    },
+    {
+      "case": "unicode",
+      "role": "candidate",
+      "round": 2,
+      "requestMs": 287.71221,
+      "importsMs": 84.507746,
+      "processMs": 1352.7869218960404,
+      "peakRssMiB": 219.5546875,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-unicode-candidate/report.json",
+        "sha256": "e8b51eb2a3660ce15cfa1af0a66afa7d5033b296a648ddcb11c9e0ab1be9f6ce",
+        "bytes": 42729
+      },
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-unicode-candidate-guard/process.json",
+        "sha256": "e574904cf47a74e401c684c1fcc25a3ccd40f0973f1816e7291f1e46cb67e947",
+        "bytes": 777
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/clean-2-unicode-candidate/program.c",
+        "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+        "bytes": 93760
+      }
+    }
+  ],
+  "preparations": [
+    {
+      "role": "baseline",
+      "timings": {
+        "importsMs": 97.47384400000004,
+        "prepareBaseMs": 5161.885651
+      },
+      "processMs": 6335.745686199516,
+      "peakRssMiB": 371.9140625,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/prepare-baseline/report.json",
+        "sha256": "4ea654f69543f1b9e4ab25d73106e0f894252a0352a0187e60f8d24fcdb98772",
+        "bytes": 39315
+      }
+    },
+    {
+      "role": "candidate",
+      "timings": {
+        "importsMs": 84.94202999999999,
+        "prepareBaseMs": 3854.458745
+      },
+      "processMs": 4987.865386065096,
+      "peakRssMiB": 361.6328125,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase89/js-chunks-paired02/runs/prepare-candidate/report.json",
+        "sha256": "9f04ed30b114652eb08b10e2267ef5275ea73d3a84268f6b237ed2fc56dffc3c",
+        "bytes": 39319
+      }
+    }
+  ],
+  "counts": {
+    "jobs": 26,
+    "requests": 24,
+    "exactC": 24,
+    "sources": 6,
+    "rounds": 2
+  },
+  "aggregates": {
+    "equalCaseMedianRequestRatio": 1.0410810313103573,
+    "equalCaseMedianProcessRatio": 1.0108783085129147,
+    "allPairRequestRatio": 1.0421769060362371,
+    "guardWallSeconds": 59.95497206156142,
+    "peakRssMiB": 376.68359375,
+    "requestJobWallSeconds": 48.63136098929681
+  },
+  "scope": "Offline analysis of24 exact-C cold requests; two samples percase/role do not establish statistical confidence or universal speed."
+}

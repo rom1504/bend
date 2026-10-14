@@ -1,8 +1,9 @@
 # Phase89 native B2 feasibility: source and host audit
 
-Read-only audit of source at Phase88 commit `da6420b`, 2026-10-14. No compiler,
-benchmark, binary, build, download or release command was run. This document
-separates demonstrated source obstacles from unmeasured full-compiler risks.
+Initial read-only audit of source at Phase88 commit `da6420b`, 2026-10-14;
+subsequently updated with root's completed, serial guarded small controls.
+The audit/preparation agent ran no targets or builds. This document separates
+those finite controls from unmeasured full-compiler risks.
 
 Native B2 is a plausible next qualification, but the existing native B1 cannot
 compile a runnable copy of its own entry unchanged. The immediate obstacles are
@@ -10,6 +11,42 @@ the foreign-effect allowlist, an actual argv convention mismatch, and the build/
 cache admission protocol. General import discovery is not required for the first
 assembled-source attempt. Native B2 performance is unknown: its emitted runtime
 and lowering differ materially from the upstream-built native B1.
+
+## Completed small controls
+
+Root's [native-b2-run02 report](../../selfhost/build/phase89/native-b2-run02/report.json)
+is complete and passes. The original argv fixture omitted `+` on its reused
+index; the checker rejected it. That failure is preserved in evidence01. The
+corrected source, SHA256 `3ed0bbbdb2ca6650da88f445769c8e48daab955d77b29db5277963c9f16fea3e`,
+declares `+index`; no assertion or ownership check was weakened.
+
+| Control | Producers and full-C equality | Native execution | Emitted policy |
+| --- | --- | --- | --- |
+| Argv | JS B2 and native B1, exact134,135-byte C | Zero/one/three payload arguments pass, including spaces/Unicode; retained runtime omits executable name | Four checked policy macros1 |
+| Decoder | JS B2 and native B1, exact1,489,523-byte C | Unchanged16-assertion fixture returns exactly `True{}` | All four macros0 |
+| Entry-shaped file IO | JS B2,377,752-byte C; not emitted by native B1 | Empty/Unicode full copies and missing-file/early-EOF/oversize refusals all pass | All four macros0 |
+
+Full emitted-C SHA256 identities, respectively:
+
+```text
+argv     7f8c8cededcefbc4bf090e455192e67080a43ee043c6168edbc81934d2e627d0
+decoder  9c2e054f4364209c763182ced09b4b01456a4a49bfa364ace491f2fd802260d7
+file-io  13248086372f28686773f613257426824ef47d114aec22360c0932d92eceecbc
+```
+
+The policy fields are `NATIVE_TYPED_SCALARS`, `NATIVE_COLD_USER_CTORS`,
+`NATIVE_SCALAR_ARRAYS`, `NATIVE_UNSHARED_ARRAYS`. Decoder/file IO passed through
+the conservative representation. The runtime remained
+`0e52adc8d206f7c07944567adddaefaedfb7830ad23d2ba6bbca64dd2e4fb245`,
+template `f9f5a1c98f17f892d891032ca35489234e43d3b4112a18e592e6da408b09736c`.
+The producer identities remain Phase82 JS B2 `098320e8…` and Phase88 native B1
+`5babec07…`. Three expected program refusals have nonzero guard status, but their
+specific exit/error/output-absence checks pass; resource stops are not accepted.
+
+This establishes the three small falsifiers. It does **not** establish a native
+B2 compiler, full prepared-Base admission by B2, new native-B1 file-effect
+admission, self-emitted compiler C, or a speed gain. The next smallest step is
+the private nine-file entry derivative below.
 
 ## Existing artifacts and the exact chain
 
@@ -69,10 +106,37 @@ read source files while refusing to compile a file-reading successor.
 
 The native backend already has generic file handles, result/pair construction
 and asynchronous file work. `file_read.c` and `file_write.c` guard optional
-read-bytes/read-at/write-bytes registrations with constructor macros. This is a
-usable implementation to test, not proof that these providers have passed the
-new compiler-entry workload. Test UTF-8 strings, failures and affine file-handle
-threading through the exact emitted program.
+read-bytes/read-at/write-bytes registrations with constructor macros. The bounded
+entry-shaped file control now passes UTF-8 strings, failures and affine handle
+threading. The complete successor compiler has not exercised these providers.
+
+## Next minimal private entry derivative
+
+`selfhost/tools/performance/phase89/native-b2/extend-entry.py SOURCE NEW_SOURCE`
+replaces exactly one byte-identical `p86_effect_file` definition using frozen
+old/new blocks. It accepts the unchanged entry inside a new owned/chunk compiler
+assembly, and refuses an unknown or already modified definition. The prefix and
+suffix remain byte-identical and receive separate hashes in its derivation
+receipt. The output is explicitly `checked:false`: root must check the entire
+new compiler and acquire/build a distinct B1 before executing it.
+
+`nine-effects.json` supplies exact external hashes for the nine vendored files,
+canonical Base, runtime/template and both definition blocks. The helper retains
+only the two existing exact Base-relative path spellings (`effs/NAME` and
+`./effs/NAME`). Unknown filenames, other directories and arbitrary foreign paths
+still produce the existing refusal. No source algorithm, IO helper, entry check,
+foreign-ID parser, `ns_definitions`, argv or cache-admission bytes are changed.
+Although the entry still calls the checked native API, the unchanged certificate
+rejects its new file effects and keeps conservative representation. Do not
+generalize the three-name observer/scalar policy as part of this change.
+
+The launcher must authenticate all nine exact files before and after requests;
+the old three-effect authentication is insufficient for this new image. Its
+source/C/binary identity also needs explicit live/cache admission under a new
+receipt. Existing native02 identity and sealed evidence remain unchanged. First
+repeat the file-IO control through the new actual B1 and require exact JS-B2 C;
+only then attempt frozen full compiler S→C2. Preserve the explicit retained-B2
+argv adapter when that later stage becomes runnable.
 
 ## Representation and cache inheritance
 
@@ -108,8 +172,10 @@ shared Data, Array.get/set and Unicode before constructing a full B2.
 
 ## Fastest falsification sequence
 
-These are proposed gates, not completed experiments or measured time estimates.
-Root should run them serially with the existing resource guard.
+Gates1–3 now pass in the finite scope recorded above; upstream-execution
+comparison in gate1 was a proposal, not an additional completed lane. Gates4–6
+remain proposed. These are not measured time estimates. Root runs targets
+serially with the existing resource guard.
 
 1. **Argv only.** Compile a tiny IO.args program through current native B1, build
    it, and observe the retained-runtime list with zero, one and multiple payload

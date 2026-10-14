@@ -1,0 +1,413 @@
+--- a/selfhost/src/back/native/bridge.bend
++++ b/selfhost/src/back/native/bridge.bend
+@@ -12,8 +12,84 @@
+ type NC_EnvPartition is Data:
+   NC_EnvPartition{+live: List<&2, NC_Binding>, +drop: String}
+ 
++# Native bodies remain ordered Data until a segment or flat-function boundary.
++# Empty leaves/joins are normalized, so emptiness is an exact tag test.
++type NC_Text is Data:
++  NC_Empty{}
++  NC_Leaf{+text: String}
++  NC_Join{+left: NC_Text, +right: NC_Text}
++
++@unsafe
++def nct_leaf(text: String) -> NC_Text:
++  match text:
++    case SNil{}: NC_Empty{}
++    case SCon{head, tail}: NC_Leaf{SCon{head, tail}}
++
++@unsafe
++def nct_empty(text: NC_Text) -> Bool:
++  match text:
++    case NC_Empty{}: True{}
++    case NC_Leaf{code}: False{}
++    case NC_Join{left, right}: False{}
++
++# The predicate borrows a Data reference; no function-valued continuation is
++# stored or duplicated. Each chosen branch consumes its two tree arguments.
++@unsafe
++def nct_cat_right(left: NC_Text, right: NC_Text, empty: Bool) -> NC_Text:
++  match empty:
++    case True{}: left
++    case False{}: NC_Join{left, right}
++
++@unsafe
++def nct_cat_left(left: NC_Text, +right: NC_Text, empty: Bool) -> NC_Text:
++  match empty:
++    case True{}: right
++    case False{}: nct_cat_right(left, right, nct_empty(right))
++
++@unsafe
++def nct_cat(+left: NC_Text, right: NC_Text) -> NC_Text:
++  nct_cat_left(left, right, nct_empty(left))
++
++# This is the existing JDText right-first worklist algorithm, without JS marker
++# metadata or cached lengths. A growing output string is never an append left.
++@unsafe
++def nct_render_work(todo: List<&2, NC_Text>, suffix: String) -> String:
++  match todo:
++    case Nil{}: suffix
++    case Con{head, rest}:
++      match head:
++        case NC_Empty{}: nct_render_work(rest, suffix)
++        case NC_Leaf{code}: nct_render_work(rest, code ++ suffix)
++        case NC_Join{left, right}: nct_render_work(Con{right, Con{left, rest}}, suffix)
++
++@unsafe
++def nct_render(text: NC_Text) -> String:
++  nct_render_work([text], "")
++
++# Walk at most limit+1 characters, without flattening or assuming byte length.
++# Both pending trees and the current leaf use explicit tail-recursive state.
++@unsafe
++def nct_within_work(current: String, todo: List<&2, NC_Text>, +remaining: U32) -> Bool:
++  match current:
++    case SNil{}:
++      match todo:
++        case Nil{}: True{}
++        case Con{head, rest}:
++          match head:
++            case NC_Empty{}: nct_within_work("", rest, remaining)
++            case NC_Leaf{code}: nct_within_work(code, rest, remaining)
++            case NC_Join{left, right}: nct_within_work("", Con{left, Con{right, rest}}, remaining)
++    case SCon{head, tail}:
++      match remaining:
++        case 0: False{}
++        case _: nct_within_work(tail, todo, U32.sub(remaining, 1))
++
++@unsafe
++def nct_within(text: NC_Text, limit: U32) -> Bool:
++  nct_within_work("", [text], limit)
++
+ type NC_Code is Data:
+-  NC_Code{+body: String, +segments: List<&2, N_Segment>, +fresh: U32, +error: String, +calls: List<&2, String>}
++  NC_Code{+body: NC_Text, +segments: List<&2, N_Segment>, +fresh: U32, +error: String, +calls: List<&2, String>}
+ 
+ @unsafe
+ def nc_word(+id: U32, +env: List<&2, NC_Binding>) -> String:
+@@ -41,9 +117,14 @@
+     case Con{+h, +rest}: Con{U32.show(i), nc_slots(rest, U32.inc(i))}
+ 
+ @unsafe
+-def nc_body(+x: NC_Code) -> String:
++def nc_body(x: NC_Code) -> String:
+   match x:
+-    case NC_Code{+body, +segs, +n, +err, edges}: body
++    case NC_Code{body, segs, n, err, edges}: nct_render(body)
++
++@unsafe
++def nc_text(x: NC_Code) -> NC_Text:
++  match x:
++    case NC_Code{body, segs, n, err, edges}: body
+ 
+ @unsafe
+ def nc_segs(+x: NC_Code) -> List<&2, N_Segment>:
+@@ -66,11 +147,11 @@
+ 
+ @unsafe
+ def nc_return(+w: String, +n: U32) -> NC_Code:
+-  NC_Code{ne_ret([w]), Nil{}, n, "", Nil{}}
++  NC_Code{nct_leaf(ne_ret([w])), Nil{}, n, "", Nil{}}
+ 
+ @unsafe
+ def nc_fail(+msg: String, +n: U32) -> NC_Code:
+-  NC_Code{"", Nil{}, n, msg, Nil{}}
++  NC_Code{nct_leaf(""), Nil{}, n, msg, Nil{}}
+ 
+ @unsafe
+ def nc_name(+n: U32) -> String:
+@@ -210,7 +291,7 @@
+ @unsafe
+ def nc_prepend(code: String, x: NC_Code) -> NC_Code:
+   match x:
+-    case NC_Code{body, segs, fresh, err, edges}: NC_Code{code ++ body, segs, fresh, err, edges}
++    case NC_Code{body, segs, fresh, err, edges}: NC_Code{nct_cat(nct_leaf(code), body), segs, fresh, err, edges}
+ 
+ @unsafe
+ def nc_lower(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32) -> NC_Code:
+@@ -293,13 +374,13 @@
+   +valueEnv = nc_live_env(env, value)
+   +val = nc_lower_live_to(book, value, valueEnv, nc_fresh(rest), NC_Scheduler{})
+   +seg : N_Segment = N_Segment{next, nc_params(newenv), 1, N_Frame{nt_count(NC_Binding, held), nc_slots(held, 0)}, nc_body(rest), Nil{}, False{}, False{}, False{}, False{}}
+-  NC_Code{nc_keep_uses(valueEnv, bodyUses) ++ nc_cut(nc_words(held), next, nc_fresh(val)) ++ nc_body(val), Con{seg, nt_append(N_Segment, nc_segs(rest), nc_segs(val))}, nc_fresh(val), nc_first_error(rest, val), List.append(&2, String, nc_calls(val), List.append(&2, String, nc_calls(rest), Nil{}))}
++  NC_Code{nct_cat(nct_leaf(nc_keep_uses(valueEnv, bodyUses) ++ nc_cut(nc_words(held), next, nc_fresh(val))), nc_text(val)), Con{seg, nt_append(N_Segment, nc_segs(rest), nc_segs(val))}, nc_fresh(val), nc_first_error(rest, val), List.append(&2, String, nc_calls(val), List.append(&2, String, nc_calls(rest), Nil{}))}
+ 
+ @unsafe
+ def nc_closure_result(+s: N_Segment, +body: NC_Code, +emitted: N_Emitted) -> NC_Code:
+   match emitted:
+     case N_Emitted{+code, +word, +fresh}:
+-      NC_Code{code ++ ne_ret([word]), Con{s, nc_segs(body)}, fresh, nc_error(body), List.append(&2, String, nc_calls(body), Nil{})}
++      NC_Code{nct_leaf(code ++ ne_ret([word])), Con{s, nc_segs(body)}, fresh, nc_error(body), List.append(&2, String, nc_calls(body), Nil{})}
+ 
+ @unsafe
+ def nc_lambda(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32) -> NC_Code:
+@@ -346,7 +427,7 @@
+ @unsafe
+ def nc_ctor_result(+x: N_Emitted) -> NC_Code:
+   match x:
+-    case N_Emitted{+code, +word, +n}: NC_Code{code ++ ne_ret([word]), Nil{}, n, "", Nil{}}
++    case N_Emitted{+code, +word, +n}: NC_Code{nct_leaf(code ++ ne_ret([word])), Nil{}, n, "", Nil{}}
+ 
+ @unsafe
+ def nc_constructor(+name: String, +ws: List<&2, String>, +n: U32) -> NC_Code:
+@@ -502,11 +583,11 @@
+ 
+ # Bodies are affine inputs: no child NC_Code survives parent body construction.
+ @unsafe
+-def nc_match_apply_join(+name: String, +word: String, +count: U32, +n: U32, hit_body: String, hit_segs: List<&2, N_Segment>, +hit_error: String, hit_calls: List<&2, String>, miss: NC_Code) -> NC_Code:
++def nc_match_apply_join(+name: String, +word: String, +count: U32, +n: U32, hit_body: NC_Text, hit_segs: List<&2, N_Segment>, +hit_error: String, hit_calls: List<&2, String>, miss: NC_Code) -> NC_Code:
+   match miss:
+     case NC_Code{miss_body, miss_segs, miss_next, miss_error, miss_calls}:
+       +guard = nt_choose(String, String.eq(name, "Emit") || String.eq(name, "Halt"), u => "if (term_aux(" ++ word ++ ") != CID_EMIT && term_aux(" ++ word ++ ") != CID_HALT) { err_post(e.mem, ERR_TAGS); return 0; }\n", u => "")
+-      NC_Code{guard ++ "if (" ++ nc_condition(name, word) ++ ") {\n" ++ nc_destructure(name, word, count, n) ++ hit_body ++ "} else {\n" ++ miss_body ++ "}\n", nt_append(N_Segment, hit_segs, miss_segs), miss_next, nt_choose(String, String.eq(hit_error, ""), u => miss_error, u => hit_error), List.append(&2, String, hit_calls, List.append(&2, String, miss_calls, Nil{}))}
++      NC_Code{nct_cat(nct_leaf(guard ++ "if (" ++ nc_condition(name, word) ++ ") {\n" ++ nc_destructure(name, word, count, n)), nct_cat(hit_body, nct_cat(nct_leaf("} else {\n"), nct_cat(miss_body, nct_leaf("}\n"))))), nt_append(N_Segment, hit_segs, miss_segs), miss_next, nt_choose(String, String.eq(hit_error, ""), u => miss_error, u => hit_error), List.append(&2, String, hit_calls, List.append(&2, String, miss_calls, Nil{}))}
+ 
+ @unsafe
+ def nc_match(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32) -> NC_Code:
+@@ -572,9 +653,7 @@
+ 
+ @unsafe
+ def nc_apply_code(+ws: List<&2, String>, +n: U32) -> NC_Code:
+-  NC_Code{ "{ Term fn = " ++ nc_head(ws) ++ "; Term arg = " ++ nc_head(nc_tail(ws)) ++ ";\n"
+-    ++ "Fid f = (Fid)term_aux(fn);\n"
+-    ++ "if (!seq && fid_bangs(f)) {\n  u32 war = fid_arity(f) - 1;\n  Loc src = term_loc(fn);\n  Loc dst = task_node(e, f, WL_CONT, WL_IDX, 0);\n  for (u32 j = 0; j < war; ++j) e.mem[dst + j] = e.mem[src + j];\n  e.mem[dst + war] = arg;\n  spare_free(e, cls_fit(war), src);\n  return term_tsk(f, dst);\n}\nr0 = fn; r1 = arg; WL_JMP(BEND_CLO_APPLY);\n}\n", Nil{}, n, "", Nil{}}
++  NC_Code{nct_leaf("{ Term fn = " ++ nc_head(ws) ++ "; Term arg = " ++ nc_head(nc_tail(ws)) ++ ";\n" ++ "Fid f = (Fid)term_aux(fn);\n" ++ "if (!seq && fid_bangs(f)) {\n  u32 war = fid_arity(f) - 1;\n  Loc src = term_loc(fn);\n  Loc dst = task_node(e, f, WL_CONT, WL_IDX, 0);\n  for (u32 j = 0; j < war; ++j) e.mem[dst + j] = e.mem[src + j];\n  e.mem[dst + war] = arg;\n  spare_free(e, cls_fit(war), src);\n  return term_tsk(f, dst);\n}\nr0 = fn; r1 = arg; WL_JMP(BEND_CLO_APPLY);\n}\n"), Nil{}, n, "", Nil{}}
+ 
+ @unsafe
+ def nc_word_literal(+t: KTerm, +bit: U32, +value: U32) -> NC_Literal:
+@@ -650,12 +729,12 @@
+   nt_choose(NC_Code, String.eq(tag, "NCtr"), u => nq_operation(book, t, env, n, target), u =>
+   nt_choose(NC_Code, String.eq(tag, "NApply"), u => nt_choose(NC_Code, nf_scheduler(target), v => nc_apply_code(nc_values(ks(t), env), n), v => nc_fail("flat worker: dynamic application", n)), u =>
+   nt_choose(NC_Code, String.eq(tag, "NFCall"), u => nq_call(book, t, env, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "NCall"), u => nt_choose(NC_Code, nf_scheduler(target), v => NC_Code{ne_jump(nc_values(ks(t), env), nm(t)), Nil{}, n, "", Nil{}}, v => nc_fail("flat worker: scheduler call node", n)), u =>
++  nt_choose(NC_Code, String.eq(tag, "NCall"), u => nt_choose(NC_Code, nf_scheduler(target), v => NC_Code{nct_leaf(ne_jump(nc_values(ks(t), env), nm(t))), Nil{}, n, "", Nil{}}, v => nc_fail("flat worker: scheduler call node", n)), u =>
+   nt_choose(NC_Code, String.eq(tag, "Rfl") || String.eq(tag, "Typ") || String.eq(tag, "All") || String.eq(tag, "Qua") || String.eq(tag, "ADT") || String.eq(tag, "Eql"), u => nf_return("0", n, target), u =>
+   nt_choose(NC_Code, (String.eq(tag, "Mat") || String.eq(tag, "NWPattern")), u => nf_match_value(book, t, env, n, target), u =>
+   nt_choose(NC_Code, String.eq(tag, "NMatch"), u => nq_match(book, t, env, n, target), u =>
+   nt_choose(NC_Code, String.eq(tag, "NOp"), u => nq_operation(book, t, env, n, target), u =>
+-  nt_choose(NC_Code, String.eq(tag, "Efq"), u => NC_Code{"err_post(e.mem, ERR_FIDS); return 0;\n", Nil{}, n, "", Nil{}}, u =>
++  nt_choose(NC_Code, String.eq(tag, "Efq"), u => NC_Code{nct_leaf("err_post(e.mem, ERR_FIDS); return 0;\n"), Nil{}, n, "", Nil{}}, u =>
+   nt_choose(NC_Code, String.eq(tag, "Rwt"), u => nc_lower_to(book, kid(t, 2), env, n, target), u =>
+   nc_fail("native lowering does not support core node " ++ tag, n))))))))))))))))))))))))
+ 
+--- a/selfhost/src/back/native/direct.bend
++++ b/selfhost/src/back/native/direct.bend
+@@ -265,7 +265,7 @@
+ 
+ @unsafe
+ def nd_join(+base: NC_Code, +body: NC_Code, name: String, params: List<&2, NC_Binding>, host: Bool) -> NC_Code:
+-  NC_Code{nc_body(base), nt_append(N_Segment, nc_segs(base), Con{N_Segment{nd_name(name), nc_params(params), 1, N_Direct{}, nc_body(body), Nil{}, host, False{}, False{}, False{}}, nc_segs(body)}), nc_fresh(body), nc_first_error(base, body), List.append(&2, String, nc_calls(base), List.append(&2, String, nc_calls(body), Nil{}))}
++  NC_Code{nc_text(base), nt_append(N_Segment, nc_segs(base), Con{N_Segment{nd_name(name), nc_params(params), 1, N_Direct{}, nc_body(body), Nil{}, host, False{}, False{}, False{}}, nc_segs(body)}), nc_fresh(body), nc_first_error(base, body), List.append(&2, String, nc_calls(base), List.append(&2, String, nc_calls(body), Nil{}))}
+ 
+ @unsafe
+ def nd_entry_params(+left: U32, +n: U32) -> List<&2, NC_Binding>:
+@@ -283,7 +283,7 @@
+   +params = nk_typed_bindings(nd_entry_params(arity, nc_fresh(base)), nf_worker_kinds(book, name, arity))
+   nt_choose(NC_Code, U32.is_eq(arity, 0), u => base, u =>
+     nd_join(base, nt_choose(NC_Code, nf_host_selected(book, name, arity),
+-      u => NC_Code{"", Nil{}, U32.add(nc_fresh(base), arity), "", Nil{}},
++      u => NC_Code{nct_leaf(""), Nil{}, U32.add(nc_fresh(base), arity), "", Nil{}},
+       u => nc_lower(book, nd_reapply(body, nd_entry_args(params)), params, U32.add(nc_fresh(base), arity))), nc_ref_name(book, name), params, nf_host_selected(book, name, arity)))
+ 
+ @unsafe
+@@ -303,7 +303,7 @@
+ def nd_eta_entry(+book: List<&2, KDef>, +body: KTerm, +name: String, +n: U32, +arity: U32) -> NC_Code:
+   +params = nd_entry_params(arity, n)
+   +call = kt("NCall", nd_name(nc_ref_name(book, name)), 0, 0, nd_entry_args(params))
+-  +base = nt_choose(NC_Code, nf_host_no_factory(book, name, arity), u => NC_Code{"", Nil{}, n, "", Nil{}}, u => nc_lower(book, nd_eta_body(params, call), Nil{}, U32.add(n, arity)))
++  +base = nt_choose(NC_Code, nf_host_no_factory(book, name, arity), u => NC_Code{nct_leaf(""), Nil{}, n, "", Nil{}}, u => nc_lower(book, nd_eta_body(params, call), Nil{}, U32.add(n, arity)))
+   nd_extend_arity(book, body, base, name, arity)
+ 
+ # Typed arity is computed once. Keep the original path when only a malformed
+@@ -322,5 +322,5 @@
+   nt_choose(NC_Code, Bool.not(bang) && Bool.not(nc_native_def(d)) && Bool.not(nc_foreign(d)),
+     u => nd_user_entry(book, body, name, n, d),
+     u => nt_choose(NC_Code, nf_host_no_factory(book, name, nd_arity(book, name)),
+-      v => nd_extend(book, body, NC_Code{"", Nil{}, n, "", Nil{}}, name),
++      v => nd_extend(book, body, NC_Code{nct_leaf(""), Nil{}, n, "", Nil{}}, name),
+       v => nd_extend(book, body, nc_lower(book, body, Nil{}, n), name)))
+--- a/selfhost/src/back/native/flat.bend
++++ b/selfhost/src/back/native/flat.bend
+@@ -35,7 +35,7 @@
+   +rest = nc_lower_partition(book, body, U32.inc(n), target, nc_partition_uses(List.append(&2, NC_Binding, nc_live_uses(env, bodyUses), [nk_binding(id, value, env)]), bodyUses))
+   +valueEnv = nc_live_env(env, value)
+   +val = nc_lower_live_to(book, value, valueEnv, nc_fresh(rest), nf_local(target, word, join))
+-  NC_Code{nc_keep_uses(valueEnv, bodyUses) ++ "Term " ++ word ++ ";\n{\n" ++ nc_body(val) ++ "}\n" ++ join ++ ":;\nif (!seq && err_seen(e.mem)) { return 0; }\n" ++ nc_body(rest), nt_append(N_Segment, nc_segs(val), nc_segs(rest)), nc_fresh(val), nc_first_error(val, rest), List.append(&2, String, nc_calls(val), List.append(&2, String, nc_calls(rest), Nil{}))}
++  NC_Code{nct_cat(nct_leaf(nc_keep_uses(valueEnv, bodyUses) ++ "Term " ++ word ++ ";\n{\n"), nct_cat(nc_text(val), nct_cat(nct_leaf("}\n" ++ join ++ ":;\nif (!seq && err_seen(e.mem)) { return 0; }\n"), nc_text(rest)))), nt_append(N_Segment, nc_segs(val), nc_segs(rest)), nc_fresh(val), nc_first_error(val, rest), List.append(&2, String, nc_calls(val), List.append(&2, String, nc_calls(rest), Nil{}))}
+ 
+ @unsafe
+ def nf_lets(+book: List<&2, KDef>, +xs: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
+@@ -152,7 +152,7 @@
+     case NC_Destination{dests, shape, join, +owner, +params, +tail, signatures}:
+       nt_choose(NC_Code, String.eq(name, owner),
+         u => nt_choose(NC_Code, tail && U32.is_eq(nt_count(NC_Binding, params), nt_count(String, words)),
+-          u => NC_Code{"{\n" ++ nf_self_temps(words, 0) ++ nf_self_moves(params, words, 0) ++ "goto nf_again;\n}\n", Nil{}, n, "", Nil{}},
++          u => NC_Code{nct_leaf("{\n" ++ nf_self_temps(words, 0) ++ nf_self_moves(params, words, 0) ++ "goto nf_again;\n}\n"), Nil{}, n, "", Nil{}},
+           u => nc_fail("flat worker: non-tail self call", n)),
+         u => nq_call_result(name, words, n, target))
+ 
+@@ -164,7 +164,7 @@
+ 
+ @unsafe
+ def nf_ref(+book: List<&2, KDef>, +t: KTerm, +n: U32, +target: NC_Target) -> NC_Code:
+-  nt_choose(NC_Code, nf_scheduler(target), u => NC_Code{ne_jump(Nil{}, nc_ref_name(book, nm(t))), Nil{}, n, "", Nil{}}, u =>
++  nt_choose(NC_Code, nf_scheduler(target), u => NC_Code{nct_leaf(ne_jump(Nil{}, nc_ref_name(book, nm(t)))), Nil{}, n, "", Nil{}}, u =>
+     nt_choose(NC_Code, U32.is_eq(nd_arity(book, nm(t)), 0) && Bool.not(U32.is_eq(qt(t), 3)), u => nq_call(book, kt("NFCall", nm(t), 0, 0, Nil{}), Nil{}, n, target), u => nc_fail("flat worker: unsaturated or bang reference", n)))
+ 
+ @unsafe
+@@ -222,7 +222,7 @@
+ # excludes C recursion cycles; this is not a transitive code-growth bound.
+ @unsafe
+ def nf_inline(+code: NC_Code) -> String:
+-  nt_choose(String, Nat.is_le(String.length(nc_body(code)), 4096n), u => "NF_INLINE", u => "INLINE")
++  nt_choose(String, nct_within(nc_text(code), 4096), u => "NF_INLINE", u => "INLINE")
+ 
+ @unsafe
+ def nf_prototypes(workers: List<&2, NF_Worker>, +ready: List<&2, String>) -> String:
+--- a/selfhost/src/back/native/product.bend
++++ b/selfhost/src/back/native/product.bend
+@@ -34,7 +34,7 @@
+     case NC_Scheduler{}: nq_box_return(shape, words, n, target)
+     case NC_Destination{+dests, +wanted, +join, owner, params, tail, signatures}:
+       nt_choose(NC_Code, nq_same(shape, wanted) && U32.is_eq(nt_count(String, words), nt_count(String, dests)),
+-        u => NC_Code{nq_assign(dests, words) ++ nt_choose(String, String.eq(join, ""), v => "return 1;\n", v => "goto " ++ join ++ ";\n"), Nil{}, n, "", Nil{}},
++        u => NC_Code{nct_leaf(nq_assign(dests, words) ++ nt_choose(String, String.eq(join, ""), v => "return 1;\n", v => "goto " ++ join ++ ";\n")), Nil{}, n, "", Nil{}},
+         u => nt_choose(NC_Code, String.eq(tg(wanted), "NQShape"), v => nc_fail("flat product: opaque or mismatched result", n), v => nq_box_return(shape, words, n, target)))
+ 
+ @unsafe
+@@ -156,7 +156,7 @@
+   +bundle = kt("NQBundle", nm(shape), 0, 0, nd_entry_args(params))
+   +rest = nc_lower_to(book, subst(body, id, bundle), List.append(&2, NC_Binding, nc_live_env(env, body), params), U32.add(n, ix(shape)), target)
+   +val = nc_lower_to(book, value, nc_live_env(env, value), nc_fresh(rest), nq_local(target, nc_words(params), shape, join))
+-  NC_Code{nc_share_env(env, value, body) ++ nq_declare(nc_words(params)) ++ "{\n" ++ nc_body(val) ++ "}\n" ++ join ++ ":;\nif (!seq && err_seen(e.mem)) { return 0; }\n" ++ nc_body(rest), nt_append(N_Segment, nc_segs(val), nc_segs(rest)), nc_fresh(val), nc_first_error(val, rest), List.append(&2, String, nc_calls(val), List.append(&2, String, nc_calls(rest), Nil{}))}
++  NC_Code{nct_cat(nct_leaf(nc_share_env(env, value, body) ++ nq_declare(nc_words(params)) ++ "{\n"), nct_cat(nc_text(val), nct_cat(nct_leaf("}\n" ++ join ++ ":;\nif (!seq && err_seen(e.mem)) { return 0; }\n"), nc_text(rest)))), nt_append(N_Segment, nc_segs(val), nc_segs(rest)), nc_fresh(val), nc_first_error(val, rest), List.append(&2, String, nc_calls(val), List.append(&2, String, nc_calls(rest), Nil{}))}
+ 
+ @unsafe
+ def nq_bind_choose(+book: List<&2, KDef>, +value: KTerm, +body: KTerm, +env: List<&2, NC_Binding>, +id: U32, +n: U32, +target: NC_Target) -> NC_Code:
+--- a/selfhost/src/back/native/pattern.bend
++++ b/selfhost/src/back/native/pattern.bend
+@@ -115,10 +115,10 @@
+       np_emit_done(book, index, last, rest, word, env, np_row_code(book, body, residual, apply, word, env, next))
+ @unsafe
+ def np_emit_done(book, index, last, rest, word, env, code):
+-  nt_choose(NC_Code, last, u => NC_Code{"{\n" ++ nc_body(code) ++ "}\n", nc_segs(code), nc_fresh(code), nc_error(code), List.append(&2, String, nc_calls(code), Nil{})}, u => np_emit_join(index, last, word, code, np_emit(book, rest, word, env, nc_fresh(code))))
++  nt_choose(NC_Code, last, u => NC_Code{nct_cat(nct_leaf("{\n"), nct_cat(nc_text(code), nct_leaf("}\n"))), nc_segs(code), nc_fresh(code), nc_error(code), List.append(&2, String, nc_calls(code), Nil{})}, u => np_emit_join(index, last, word, code, np_emit(book, rest, word, env, nc_fresh(code))))
+ @unsafe
+ def np_emit_join(index, last, word, code, tail):
+-  NC_Code{"if (" ++ word ++ " == " ++ U32.show(index) ++ "ull) {\n" ++ nc_body(code) ++ "} else " ++ nc_body(tail), nt_append(N_Segment, nc_segs(code), nc_segs(tail)), nc_fresh(tail), nc_first_error(code, tail), List.append(&2, String, nc_calls(code), List.append(&2, String, nc_calls(tail), Nil{}))}
++  NC_Code{nct_cat(nct_leaf("if (" ++ word ++ " == " ++ U32.show(index) ++ "ull) {\n"), nct_cat(nc_text(code), nct_cat(nct_leaf("} else "), nc_text(tail)))), nt_append(N_Segment, nc_segs(code), nc_segs(tail)), nc_fresh(tail), nc_first_error(code, tail), List.append(&2, String, nc_calls(code), List.append(&2, String, nc_calls(tail), Nil{}))}
+ @unsafe
+ def np_row_code(book, body, residual, apply, word, env, next):
+   nt_choose(NC_Code, apply,
+--- a/selfhost/src/back/native/word-pattern.bend
++++ b/selfhost/src/back/native/word-pattern.bend
+@@ -218,12 +218,12 @@
+ 
+ @unsafe
+ def nw_emit_join(+condition: String, +code: NC_Code, +tail: NC_Code) -> NC_Code:
+-  NC_Code{"if (" ++ condition ++ ") {\n" ++ nc_body(code) ++ "} else {\n" ++ nc_body(tail) ++ "}\n", nt_append(N_Segment, nc_segs(code), nc_segs(tail)), nc_fresh(tail), nc_first_error(code, tail), List.append(&2, String, nc_calls(code), nc_calls(tail))}
++  NC_Code{nct_cat(nct_leaf("if (" ++ condition ++ ") {\n"), nct_cat(nc_text(code), nct_cat(nct_leaf("} else {\n"), nct_cat(nc_text(tail), nct_leaf("}\n"))))), nt_append(N_Segment, nc_segs(code), nc_segs(tail)), nc_fresh(tail), nc_first_error(code, tail), List.append(&2, String, nc_calls(code), nc_calls(tail))}
+ 
+ @unsafe
+ def nw_emit(book, rows, word, rest, env, n, target):
+   match rows:
+-    case Nil{}: NC_Code{"err_post(e.mem, ERR_FIDS); return 0;\n", Nil{}, n, "", Nil{}}
++    case Nil{}: NC_Code{nct_leaf("err_post(e.mem, ERR_FIDS); return 0;\n"), Nil{}, n, "", Nil{}}
+     case Con{+row, +more}: nw_emit_more(book, row, more, word, rest, env, target, nw_code(book, row, word, rest, env, n, target))
+ 
+ @unsafe
+--- a/selfhost/src/back/native/parallel.bend
++++ b/selfhost/src/back/native/parallel.bend
+@@ -58,8 +58,8 @@
+ @unsafe
+ def nc_children(+book: List<&2, KDef>, xs: List<&2, KTerm>, +env: List<&2, NC_Binding>, +joinname: String, +joinword: String, +idx: U32, +n: U32) -> NC_Code:
+   match xs:
+-    case Nil{}: NC_Code{"", Nil{}, n, "", Nil{}}
+-    case Con{h, Nil{}}: NC_Code{"", Nil{}, n, "", Nil{}}
++    case Nil{}: NC_Code{nct_leaf(""), Nil{}, n, "", Nil{}}
++    case Con{h, Nil{}}: NC_Code{nct_leaf(""), Nil{}, n, "", Nil{}}
+     case Con{+h, rest}:
+       +name = nc_name(n)
+       +caps = nc_live_env(env, kid(h, 0))
+@@ -68,13 +68,13 @@
+       +forked = nc_term_fork(kid(h, 0))
+       +task = ne_task(name, 0, nc_words(caps), "term_tsk(" ++ nt_fid(joinname) ++ ", " ++ joinword ++ ")", U32.show(idx), nc_fresh(code))
+       +next = nc_children(book, rest, env, joinname, joinword, U32.inc(idx), U32.inc(nc_fresh(code)))
+-      NC_Code{nc_child_task(name, joinword, idx, task) ++ nc_body(next), Con{N_Segment{name, nc_params(caps), 1, N_Direct{}, nc_body(code), calls, False{}, False{}, forked, False{}}, nt_append(N_Segment, nc_local_segments(nc_segs(code), calls, forked, Nil{}), nc_segs(next))}, nc_fresh(next), nc_first_error(code, next), List.append(&2, String, nc_calls(next), List.append(&2, String, nc_calls(code), Nil{}))}
++      NC_Code{nct_cat(nct_leaf(nc_child_task(name, joinword, idx, task)), nc_text(next)), Con{N_Segment{name, nc_params(caps), 1, N_Direct{}, nc_body(code), calls, False{}, False{}, forked, False{}}, nt_append(N_Segment, nc_local_segments(nc_segs(code), calls, forked, Nil{}), nc_segs(next))}, nc_fresh(next), nc_first_error(code, next), List.append(&2, String, nc_calls(next), List.append(&2, String, nc_calls(code), Nil{}))}
+ 
+ @unsafe
+ def nc_parallel_finish(+env: List<&2, NC_Binding>, +xs: List<&2, KTerm>, +name: String, +join: NC_Code, +seq: NC_Code, +children: NC_Code, em: N_Emitted, +params: List<&2, NC_Binding>) -> NC_Code:
+   match em:
+     case N_Emitted{code, +word, n}:
+-      NC_Code{"if (!seq) {\n" ++ nc_parallel_share(env, xs) ++ code ++ nc_body(children) ++ "return term_tsk(" ++ nt_fid(name) ++ ", " ++ word ++ ");\n}\n" ++ nc_body(seq), Con{N_Segment{name, nc_params(params), 1, N_Direct{}, nc_body(join), Nil{}, False{}, False{}, True{}, False{}}, nt_append(N_Segment, nc_segs(join), nt_append(N_Segment, nc_segs(seq), nc_segs(children)))}, nc_fresh(children), nt_choose(String, String.eq(nc_first_error(seq, join), ""), u => nc_error(children), u => nc_first_error(seq, join)), List.append(&2, String, nc_calls(children), List.append(&2, String, nc_calls(seq), List.append(&2, String, nc_calls(join), Nil{})))}
++      NC_Code{nct_cat(nct_leaf("if (!seq) {\n" ++ nc_parallel_share(env, xs) ++ code), nct_cat(nc_text(children), nct_cat(nct_leaf("return term_tsk(" ++ nt_fid(name) ++ ", " ++ word ++ ");\n}\n"), nc_text(seq)))), Con{N_Segment{name, nc_params(params), 1, N_Direct{}, nc_body(join), Nil{}, False{}, False{}, True{}, False{}}, nt_append(N_Segment, nc_segs(join), nt_append(N_Segment, nc_segs(seq), nc_segs(children)))}, nc_fresh(children), nt_choose(String, String.eq(nc_first_error(seq, join), ""), u => nc_error(children), u => nc_first_error(seq, join)), List.append(&2, String, nc_calls(children), List.append(&2, String, nc_calls(seq), List.append(&2, String, nc_calls(join), Nil{})))}
+ 
+ @unsafe
+ def nc_parallel_task(+book: List<&2, KDef>, +xs: List<&2, KTerm>, +env: List<&2, NC_Binding>, +name: String, +join: NC_Code, +seq: NC_Code, +task: N_Emitted, +params: List<&2, NC_Binding>, +idx: U32) -> NC_Code:
+--- a/selfhost/src/back/native/book.bend
++++ b/selfhost/src/back/native/book.bend
+@@ -364,7 +364,7 @@
+   +forked = nc_term_fork(body)
+   +code = nc_mark_code(nd_compile_entry(book, body, name, U32.add(n, 1024), nb_contains(bangs, name)), nb_contains(bangs, name), forked, calls)
+   nt_choose(NC_Book, String.eq(dk(d), "Absent"), u => NC_Book{Nil{}, n, "native definition not found: " ++ name_key(name)}, u =>
+-    nc_append_book(code, nc_ref_name(book, name), calls, forked, nf_host_no_factory(book, name, nd_arity(book, name)) && String.eq(nc_body(code), ""), nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, nc_fresh(code), bangs)))
++    nc_append_book(code, nc_ref_name(book, name), calls, forked, nf_host_no_factory(book, name, nd_arity(book, name)) && nct_empty(nc_text(code)), nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, nc_fresh(code), bangs)))
+ 
+ 
+ # Observers require the pre-compaction source form, including typed literals.
+--- a/selfhost/src/back/native/observer-emitter.bend
++++ b/selfhost/src/back/native/observer-emitter.bend
+@@ -75,14 +75,14 @@
+ @unsafe
+ def no_emit_return(+t: KTerm, +env: List<&2, NC_Binding>, +n: U32) -> NC_Code:
+   nt_choose(NC_Code, U32.is_eq(terms_len(ks(t)), 1) && no_atoms_valid(ks(t), env),
+-    u => NC_Code{"if (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = " ++ no_atom(kid(t, 0), env) ++ ";\nreturn 1;\n", Nil{}, n, "", Nil{}},
++    u => NC_Code{nct_leaf("if (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = " ++ no_atom(kid(t, 0), env) ++ ";\nreturn 1;\n"), Nil{}, n, "", Nil{}},
+     u => nc_fail("observer: invalid immediate return", n))
+ 
+ @unsafe
+ def no_emit_loop(+t: KTerm, +env: List<&2, NC_Binding>, +params: List<&2, NC_Binding>, +n: U32) -> NC_Code:
+   +words = no_words(ks(t), env)
+   nt_choose(NC_Code, U32.is_eq(terms_len(ks(t)), nt_count(NC_Binding, params)) && no_atoms_valid(ks(t), env),
+-    u => NC_Code{"{\n" ++ nf_self_temps(words, 0) ++ nf_self_moves(params, words, 0) ++ "goto nf_again;\n}\n", Nil{}, n, "", Nil{}},
++    u => NC_Code{nct_leaf("{\n" ++ nf_self_temps(words, 0) ++ nf_self_moves(params, words, 0) ++ "goto nf_again;\n}\n"), Nil{}, n, "", Nil{}},
+     u => nc_fail("observer: invalid self-tail transition", n))
+ 
+ @unsafe
+@@ -107,7 +107,7 @@
+       +hit = no_emit(kid(t, 2), no_bind_fields(fields, env), params, layouts, U32.inc(n))
+       +miss = no_emit(kid(t, 3), env, params, layouts, nc_fresh(hit))
+       +reads = nt_choose(String, String.eq(storage, "Boxed"), u => "Loc " ++ loc ++ " = term_peek(e, " ++ word ++ ");\n", u => "") ++ no_field_decls(fields, storage, word, loc, 0)
+-      NC_Code{"if (" ++ nc_condition(ctor, word) ++ ") {\n" ++ reads ++ nc_body(hit) ++ "} else {\n" ++ nc_body(miss) ++ "}\n", Nil{}, nc_fresh(miss), nc_first_error(hit, miss), List.append(&2, String, nc_calls(hit), nc_calls(miss))}
++      NC_Code{nct_cat(nct_leaf("if (" ++ nc_condition(ctor, word) ++ ") {\n" ++ reads), nct_cat(nc_text(hit), nct_cat(nct_leaf("} else {\n"), nct_cat(nc_text(miss), nct_leaf("}\n"))))), Nil{}, nc_fresh(miss), nc_first_error(hit, miss), List.append(&2, String, nc_calls(hit), nc_calls(miss))}
+ 
+ @unsafe
+ def no_emit_match_found(+t: KTerm, +env: List<&2, NC_Binding>, +params: List<&2, NC_Binding>, +layouts: List<&2, NO_Layout>, +n: U32, found: Maybe<&2, NO_Layout>) -> NC_Code:
+@@ -126,4 +126,4 @@
+   nt_choose(NC_Code, String.eq(tg(t), "NO_Let"), u => no_emit_let(t, env, params, layouts, n), u =>
+   nt_choose(NC_Code, String.eq(tg(t), "NO_Match"), u => no_emit_match_found(t, env, params, layouts, n, no_layout(nm(t), layouts)), u =>
+     nt_choose(NC_Code, String.eq(tg(t), "NO_Error") && String.eq(nm(t), "ERR_FIDS") && List.is_empty(&2, KTerm, ks(t)),
+-      u => NC_Code{"err_post(e.mem, ERR_FIDS); return 0;\n", Nil{}, n, "", Nil{}}, u => nc_fail("observer: unsupported residual syntax", n))))))
++      u => NC_Code{nct_leaf("err_post(e.mem, ERR_FIDS); return 0;\n"), Nil{}, n, "", Nil{}}, u => nc_fail("observer: unsupported residual syntax", n))))))
+--- a/selfhost/src/back/native/observer-adapter.bend
++++ b/selfhost/src/back/native/observer-adapter.bend
+@@ -59,7 +59,7 @@
+ @unsafe
+ def no_guard_code(code: NC_Code) -> NC_Code:
+   match code:
+-    case NC_Code{body, segs, fresh, error, deps}: NC_Code{"#if NATIVE_READONLY_OBSERVERS\n" ++ body ++ "#else\nreturn 0;\n#endif\n", segs, fresh, error, deps}
++    case NC_Code{body, segs, fresh, error, deps}: NC_Code{nct_cat(nct_leaf("#if NATIVE_READONLY_OBSERVERS\n"), nct_cat(body, nct_leaf("#else\nreturn 0;\n#endif\n"))), segs, fresh, error, deps}
+ 
+ @unsafe
+ def no_worker(+owner: String, +params: List<&2, NC_Binding>, layouts: List<&2, NO_Layout>, body: KTerm) -> NF_Worker:
+@@ -73,7 +73,7 @@
+   +code = nc_lower_to(book, wrapper, env, fresh, NC_Destination{["nf_out[0]"], atom("Absent"), "", name, params, False{}, Nil{}})
+   +prefix = no_root_decls(params, roots, 0) ++ "if (!seq && err_seen(e.mem)) { return 0; }\nTerm no_observed[1];\nif (!" ++ nf_name(observed) ++ "(e, seq, no_observed" ++ nf_arg_c(nc_words(params)) ++ ")) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_scalar_result = no_observed[0];\n"
+   nt_choose(NC_Code, List.is_empty(&2, N_Segment, nc_segs(code)) && U32.is_le(nc_fresh(code), U32.add(fresh, 64)),
+-    u => NC_Code{prefix ++ nc_body(code), Nil{}, nc_fresh(code), nc_error(code), Con{observed, nc_calls(code)}},
++    u => NC_Code{nct_cat(nct_leaf(prefix), nc_text(code)), Nil{}, nc_fresh(code), nc_error(code), Con{observed, nc_calls(code)}},
+     u => nc_fail("observer adapter: wrapper needs continuation or exceeds fresh span", fresh))
+ 
+ @unsafe

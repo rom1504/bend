@@ -1,8 +1,11 @@
 # Native B2 falsifiers: root-run protocol
 
-These methods are offline-prepared candidates. No Bend control has been newly
-checked or executed as part of their preparation. Root runs all compiler, Clang
-and program targets serially under the existing execution guard. Use fresh
+Root completed `selfhost/build/phase89/native-b2-run02`: exact native-B1/JS-B2 C
+for argv and decoder, three argv executions, all16 decoder assertions, and five
+conservative JS-B2-produced file-IO executions pass. The original missing
+`+index` declaration was rejected and preserved; current argv source fixes that
+ownership annotation. No full native B2 has been built. Root runs all compiler,
+Clang and program targets serially under the existing execution guard. Use fresh
 directories and preserve failed source/check/build/run evidence.
 
 The three controls are:
@@ -22,6 +25,54 @@ The three controls are:
 
 No production source, native runtime, effect permission or Phase88 artifact is
 modified. `file-io.derivation.json` records the copied helper/source identities.
+
+`extend-entry.py SOURCE.bend NEW_SOURCE.bend` is the next offline candidate:
+replace exactly the frozen old `p86_effect_file` definition with the nine-file
+version, preserving and hashing every other source byte. `nine-effects.json`
+binds all admitted vendored bytes. The resulting `.derivation.json` says
+`checked:false`; root must check/build the entire new source and authenticate
+all nine effects before/after use. It grants no broader foreign, scalar-array
+or observer permission, and does not admit a new cache consumer. Unchanged
+Phase88 comments outside the replaced definition remain historical; the
+derivative receipt describes this candidate's precise nine-file boundary.
+
+`run-b1.py NEW_NINE_EFFECT_B1 NEW_RUN_DIRECTORY [--check-only] [--self-source]` is the next
+experimental root-run gate. It admits only checked source SHA256
+`4584cf083d9eddad6f1290c9472c3aac2708099caa716a27f5b53fbcbaee1618`, whose exact
+derivation is `selfhost/build/phase89/native-self-source01.bend.derivation.json`.
+It authenticates the upstream-built B1's source/C/build chain, independently
+checks all nine vendored effects against the fixed asset manifest, and binds
+inputs before and after every request. No public launcher/cache list changes.
+
+Run `--check-only` first after the new image build. It validates the entire
+image/source/C/build, effect, cache and oracle binding chain, rechecks identities,
+and returns without launching any compiler, guard or target. Its report is
+explicitly input validation only: it does not qualify live/cache use or emit
+`gates.json`. Use a distinct fresh directory for the subsequent real gates.
+`run-b1-v1.py` and its receipt preserve the unexecuted original method.
+`run-b1-offline-review.json` records successful independent verification of
+321 artifact records, actual prior build/authentication schemas and all new
+acquisition inputs; the new image build was still pending for that review.
+
+The runner first emits live Small, Map, Unicode and the actual file-IO fixture,
+requiring complete-C equality against independent B2 oracle receipts. Only after
+all four live gates pass does the same exact image consume the authenticated
+Phase88 prepared carrier experimentally and repeat all four checks. The file-IO
+oracle is the exact `native-b2-run02/file-io-b2/report.json` named in
+`nine-effects.json`; historical screen outputs may be archived, so their pinned
+receipt digests remain the comparison oracle. This step emits programs but does
+not repeat their already-qualified execution after exact-C equality.
+
+By default it stops with an immutable `gates.json` after those eight checks.
+Adding `--self-source` permits only the exact frozen source S above, with an
+explicit 600-second, 2-GiB RSS, 4-GiB available-memory, CPU3 guard and 64-MiB
+output-file cap. Success writes `native-emission.json` identifying the native
+B1 producer and complete C2, without an upstream-acquisition claim for C2.
+It performs no C2 Clang build, B2 execution, independent C2 comparison or fixed
+point. A refusal/resource stop preserves logs and any partial output, leaves
+`passed:false`, and cannot become a build/admission receipt. The runner itself
+has been syntax-checked and its inputs/schema reviewed offline; root must run
+its full preflight and actual gates after the distinct nine-effect B1 is built.
 
 ## Prepare and emit
 

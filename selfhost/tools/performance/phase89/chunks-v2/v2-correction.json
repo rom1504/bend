@@ -1,0 +1,29 @@
+{
+  "kind": "phase89-body-chunks-v2-source-correction",
+  "compiled": false,
+  "baselineControl": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/chunks/controls.bend",
+    "sha256": "f6357f0d03072248fd1fa12510f2028e522982ef3a8b05dc4a4bbde25eb91b95",
+    "bytes": 5177
+  },
+  "baselineHelpers": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/chunks/helpers.bend",
+    "sha256": "976317ee79cb9c131927eb0a5f7516c6e71ba917f12f0c4b279b040df2a26357",
+    "bytes": 2644
+  },
+  "fixedHelpers": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/chunks-v2/helpers.bend",
+    "sha256": "20f5b22947e1f92e6b7236ddc3bb5038a49b2182c4868dcf48d60b0f4f9ed191",
+    "bytes": 2644
+  },
+  "rejectedReport": "selfhost/build/phase89/chunks-control01/report.json",
+  "reason": "V1 checked source rejected matching earlier todo binder after later current. V2 places current first, todo second, remaining third in the worker and all six declaration/call sites. Algorithm and tree semantics unchanged.",
+  "changes": {
+    "nct_within_work(todo: List<&2, NC_Text>, current: String, +remaining: U32)": "nct_within_work(current: String, todo: List<&2, NC_Text>, +remaining: U32)",
+    "nct_within_work(rest, \"\", remaining)": "nct_within_work(\"\", rest, remaining)",
+    "nct_within_work(rest, code, remaining)": "nct_within_work(code, rest, remaining)",
+    "nct_within_work(Con{left, Con{right, rest}}, \"\", remaining)": "nct_within_work(\"\", Con{left, Con{right, rest}}, remaining)",
+    "nct_within_work(todo, tail, U32.sub(remaining, 1))": "nct_within_work(tail, todo, U32.sub(remaining, 1))",
+    "nct_within_work([text], \"\", limit)": "nct_within_work(\"\", [text], limit)"
+  }
+}

@@ -32,12 +32,16 @@ def no_candidate_names(+book: List<&2, KDef>, names: List<&2, String>, +bangs: L
 # remain untouched; index once rather than rescanning segments per candidate.
 @unsafe
 def no_entry_defs(segments: List<&2, N_Segment>) -> List<&2, KDef>:
+  no_entry_defs_rev(segments, Nil{})
+
+@unsafe
+def no_entry_defs_rev(segments: List<&2, N_Segment>, +entries: List<&2, KDef>) -> List<&2, KDef>:
   match segments:
-    case Nil{}: Nil{}
+    case Nil{}: nt_reverse(KDef, entries, Nil{})
     case Con{N_Segment{+name, params, result, +frame, body, refs, host, spin, fork, +bang}, +rest}:
       +arity = nt_count(N_Param, params)
       nt_choose(List<&2, KDef>, no_direct_frame(frame) && Bool.not(bang) && U32.is_ge(arity, 1) && U32.is_le(arity, 4),
-        u => Con{KDef{name, "NOEligibleEntry", arity, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, no_entry_defs(rest)}, u => no_entry_defs(rest))
+        u => no_entry_defs_rev(rest, Con{KDef{name, "NOEligibleEntry", arity, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, entries}), u => no_entry_defs_rev(rest, entries))
 
 @unsafe
 def no_worker_taken(+name: String, workers: List<&2, NF_Worker>) -> Bool:
@@ -85,13 +89,17 @@ def no_route(+book: List<&2, KDef>, +segments: List<&2, N_Segment>, +names: List
 
 @unsafe
 def no_wrap_registered(segments: List<&2, N_Segment>, +index: List<&2, KDef>, +ready: List<&2, String>) -> List<&2, N_Segment>:
+  no_wrap_registered_rev(segments, index, ready, Nil{})
+
+@unsafe
+def no_wrap_registered_rev(segments: List<&2, N_Segment>, +index: List<&2, KDef>, +ready: List<&2, String>, wrapped: List<&2, N_Segment>) -> List<&2, N_Segment>:
   match segments:
-    case Nil{}: Nil{}
+    case Nil{}: nt_reverse(N_Segment, wrapped, Nil{})
     case Con{+segment, rest}:
       match segment:
         case N_Segment{name, params, result, frame, body, refs, host, spin, fork, bang}:
           +d = lookup(index, name)
-          Con{nt_choose(N_Segment, String.eq(dk(d), "NOObserverEntry"), u => no_wrap_adapter(nm(dv(d)), da(d), ready, segment), u => segment), no_wrap_registered(rest, index, ready)}
+          no_wrap_registered_rev(rest, index, ready, Con{nt_choose(N_Segment, String.eq(dk(d), "NOObserverEntry"), u => no_wrap_adapter(nm(dv(d)), da(d), ready, segment), u => segment), wrapped})
 
 @unsafe
 def no_wrap_routes(+segments: List<&2, N_Segment>, +entries: List<&2, KDef>, +ready: List<&2, String>) -> List<&2, N_Segment>:

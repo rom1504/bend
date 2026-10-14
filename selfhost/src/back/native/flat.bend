@@ -253,13 +253,17 @@ def nf_segment_args(params: List<&2, N_Param>) -> List<&2, String>:
 
 @unsafe
 def nf_wrap_segments(segments: List<&2, N_Segment>, +index: List<&2, KDef>) -> List<&2, N_Segment>:
+  nf_wrap_segments_rev(segments, index, Nil{})
+
+@unsafe
+def nf_wrap_segments_rev(segments: List<&2, N_Segment>, +index: List<&2, KDef>, wrapped: List<&2, N_Segment>) -> List<&2, N_Segment>:
   match segments:
-    case Nil{}: Nil{}
+    case Nil{}: nt_reverse(N_Segment, wrapped, Nil{})
     case Con{N_Segment{+name, +params, result, frame, +body, refs, host, spin, fork, bang}, rest}:
       +d = lookup(index, name)
-      +wrapped = nt_choose(String, String.eq(dk(d), "NFWorker") && U32.is_eq(da(d), nt_count(N_Param, params)),
+      +text = nt_choose(String, String.eq(dk(d), "NFWorker") && U32.is_eq(da(d), nt_count(N_Param, params)),
         u => nq_wrap_segment(d, params, body), u => body)
-      Con{N_Segment{name, params, result, frame, wrapped, refs, host, spin, fork, bang}, nf_wrap_segments(rest, index)}
+      nf_wrap_segments_rev(rest, index, Con{N_Segment{name, params, result, frame, text, refs, host, spin, fork, bang}, wrapped})
 
 @unsafe
 def nf_finish_ready(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: NE_Runtime, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:

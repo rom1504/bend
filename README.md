@@ -29,8 +29,15 @@ Both stages reproduce all12 benchmark C files exactly, preserving the prior
 **1.067× upstream** execution evidence. All23 JS sources remain byte-identical,
 covering45 points. Native100,raw31,frontend,threaded,self-hosting and installed/
 relocated checks pass. Seven reference native failures and thirteen broader native
-API gaps remain. Production Bend source is **32,540 physical lines /132 modules**
+API gaps remain. Phase82 Bend source is **32,540 physical lines /132 modules**
 (+69 lines). No mathematical compiler proof is claimed.
+
+**Phase88 adds a separate native compiler pilot:** Map's crash is fixed,
+45 benchmark points emit exact B2 C and execute correctly, and prepared Base
+startup is58–59ms. Current source is32,591lines/132modules. Five of six cold
+process cases beat TypeScript; Map and warm throughput remain gaps. See the
+[native usage guide](docs/self_hosted/NATIVE_HOST.md) and
+[Phase88 results](implementation/phase88/README.md). Installed Phase82 is unchanged.
 
 Read the [Phase82 report](implementation/phase82/README.md),
 [native compilation/session guide](docs/self_hosted/NATIVE_COMPILATION.md),

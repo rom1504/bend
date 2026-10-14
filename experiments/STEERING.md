@@ -1,4 +1,32 @@
-# Active frontier: make the native compiler safe and linear; Phase82 installed
+# Active frontier: native compiler output composition; Phase82 JS B2 installed
+
+[Phase88](../implementation/phase88/README.md) repairs Map with shareable Data
+observer frames and integrates the linear builders. All45points/23sources match
+independent B2 C and expected execution. Consuming native compiler equality
+cuts live request time22.4–32.3%; prepared Base falls~3.1s→58–59ms. This is a
+separate usable native B1, not native B2 or full host support. Current source
+32,591physical lines/132modules; installed JS Phase82 remains unchanged.
+
+Six-source paired cold process medians beat TypeScript in5/6cases; Map is1.76×.
+Repeated Map request5 remains6.46× TS; Lexer1.85×. Native02 physical profiles
+identify30.7% append/ownership,11.6% retained child NC_Code body destruction,
+7.7% discarded choice closures. These are cost budgets, not additive forecasts.
+Start with owned NC_Code field consumption at the measured general match
+composer; complete-product and exact-C controls precede another full build.
+Then test output chunks flattened once, and operation counts to distinguish
+repeat work from locality. Do not claim a leak or tweak the allocator without
+causal evidence. Preserve fuel/error/fresh/order and both JS/native execution.
+
+Use the [native launcher](../docs/self_hosted/NATIVE_HOST.md),
+[fast-loop methods](../selfhost/tools/performance/phase88/README.md) and sealed
+failed attempts. Root alone runs targets serially under RSS/free-memory/disk
+guards; bounded agents audit independent source/mechanisms. General imports,
+foreign effects, relocation and native B2 reproduction need separate gates.
+No PR comments without explicit user instruction.
+
+## Historical Phase87 frontier (superseded by Phase88 above)
+
+### Phase87: make the native compiler safe and linear; Phase82 installed
 
 [Phase87](../implementation/phase87/README.md) profiles the exact Phase86 native
 B1 and demonstrates a general linear-text candidate in an isolated source image.

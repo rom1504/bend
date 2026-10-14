@@ -1,5 +1,14 @@
 # P88-002: remaining ownership cost and Base preparation
 
+Final status: accepted in the separate native pilot. Single Base check,
+phase/caller attribution and authenticated Bend Data decoding qualify. Base
+startup is58–59ms including cache read/decode/cleanup; full product and refusal
+gates pass. Native B2 and general host support remain open.
+[Report](../../implementation/phase88/README.md).
+
+## Initial hypothesis (retained)
+
+
 Status: attribution/prototype preparation. Phase87 removes quadratic text work,
 leaving term_drop/span_fade about3.8s over a five-Lexer process and Base~3s per
 process. Existing leaf profiles do not identify allocation callers or phase.

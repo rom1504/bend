@@ -1,0 +1,114 @@
+{
+  "kind": "phase88-base-small-controls",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/core/term.bend",
+      "sha256": "d75234683496e33fcb59cd3598979245700733236d9326025d298f9c33ef33d3",
+      "bytes": 19671
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/check/prefix-state.bend",
+      "sha256": "e3d23adaabb0ddc866adc3546a56d6362df2d6f55d91c73aef71c73cbd628a63",
+      "bytes": 24106
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/load/prefix.bend",
+      "sha256": "6d98e35c38cb9e6491e6cb34b60517a86efe6f48992cb8bae9d54aabfe041096",
+      "bytes": 14895
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/decoder.bend",
+      "sha256": "296b7c1ce16476ee5e1e433efb8a86c69dd1279ddedd16a7a0734fed83c13480",
+      "bytes": 17766
+    }
+  ],
+  "stamp": "p88-small-control-v1",
+  "cases": [
+    {
+      "name": "shared-full-products-unicode-u32max",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n4294967295\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\n",
+      "pass": true
+    },
+    {
+      "name": "wrong-stamp",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n4294967295\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\n",
+      "expectedStamp": "p88-small-control-v1!",
+      "pass": false
+    },
+    {
+      "name": "truncated",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n4294967295\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7",
+      "pass": false
+    },
+    {
+      "name": "trailing",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n4294967295\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\nx",
+      "pass": false
+    },
+    {
+      "name": "forward-reference",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n3\n0\n6\n2\n4294967295\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\n",
+      "pass": false
+    },
+    {
+      "name": "wrong-ref-family",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n4294967295\n1\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\n",
+      "pass": false
+    },
+    {
+      "name": "bad-bool",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n4294967295\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n2\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\n",
+      "pass": false
+    },
+    {
+      "name": "ready-false",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n4294967295\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n0\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\n",
+      "pass": false
+    },
+    {
+      "name": "invalid-tag",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n4294967295\n3\n8\n5\n1\n0\n0\n0\n1\n12\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\n",
+      "pass": false
+    },
+    {
+      "name": "source-span",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n8\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n4294967295\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\n",
+      "pass": false
+    },
+    {
+      "name": "wrong-root",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n4294967295\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n1\n8\n",
+      "pass": false
+    },
+    {
+      "name": "u32-overflow",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n4294967296\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\n",
+      "pass": false
+    },
+    {
+      "name": "leading-zero",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n04294967295\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\n",
+      "pass": false
+    },
+    {
+      "name": "wrong-width",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n1\n4294967295\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\n",
+      "pass": false
+    },
+    {
+      "name": "node-bound",
+      "wire": "20\np88-small-control-v1\n65537\n4\n3\nTyp\n2\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n4294967295\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\n",
+      "pass": false
+    },
+    {
+      "name": "unicode-length",
+      "wire": "20\np88-small-control-v1\n9\n4\n3\nTyp\n3\nλ🙂\n0\n\n3\nDef\n0\n0\n2\n8\n0\n1\n0\n0\n0\n0\n1\n2\n5\n9\n1\n3\n0\n0\n1\n1\n0\n0\n0\n1\n2\n2\n0\n6\n2\n4294967295\n3\n8\n5\n1\n0\n0\n0\n1\n9\n2\n1\n1\n10\n8\n5\n3\n3\n3\n0\n0\n0\n1\n11\n4\n4\n4\n1\n1\n3\n5\n6\n7\n8\n",
+      "pass": false
+    }
+  ],
+  "source": {
+    "sha256": "3c1d8ebea28c3e7ebe952a144c064f40824fc322bcb0d663e0e6f9dcb42fa619",
+    "bytes": 25853
+  },
+  "limitation": "Readiness in this synthetic fixture is a decoder shape control, not a real checked Base capability."
+}

@@ -16,6 +16,14 @@ checks pass; known gaps remain. Source grows69 physical/53 code lines, with no
 new module. The compiler remains written in Bend; the new template artifact is
 produced by Bend and verified/transported by its host.
 
+The separate [Phase88 native B1 pilot](../docs/self_hosted/NATIVE_HOST.md) runs
+compiler requests as machine code, with no JavaScript execution bridge. Its
+45-point exact-C/execution gate passes; prepared Base takes58–59ms. Map and warm
+throughput still need work. The native host currently supports one Base-importing
+source and three audited effects. This is distinct from the installed JS B2.
+See the [report](../implementation/phase88/README.md) for cold/warm timings and
+scope; current production source has51additional physical lines in three modules.
+
 The [native session guide](../docs/self_hosted/NATIVE_COMPILATION.md) documents repeated C-emission requests.
 The older Phase77 warm-session result (about1.10× upstream over five mixed
 programs) is historical and separate from these fresh-request measurements.

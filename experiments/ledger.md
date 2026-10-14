@@ -4,6 +4,19 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase88 completed — 2026-10-14
+
+Native B1 `5babec07…` qualified separately from installed Phase82 JS B2.
+[P88-001](phase88/P88-001-native-continuations.md): accept Data observer frames
+and integrate the retained linear builders. [P88-002](phase88/P88-002-native-ownership-and-startup.md):
+accept single Base check and private authenticated Bend-decoded prepared Base.
+[P88-003](phase88/P88-003-consuming-string-comparison.md): accept compiler-only
+consuming equality in the native image derivative.45points/23sources pass
+exact-C/execution; JS development frontend36 remains exact. Live request savings
+22.4–32.3%, Base58–59ms, but warm Map remains6.46× TypeScript. Preserve all
+failures; no full-language/native-B2/default-promotion claim.
+[Report](../implementation/phase88/README.md), [evidence](../implementation/phase88/evidence.json).
+
 ## Phase77 completed — 2026-10-13
 
 Installed B2`35d7a606…` with preserved checked B1/self-emission lineage.

@@ -1,5 +1,18 @@
 # Compiler validation
 
+## Phase88 native compiler pilot
+
+[Report](../implementation/phase88/README.md) ·
+[Exact evidence](../implementation/phase88/summary.json).
+Native B1 `5babec07…` fixes the observer continuation-sharing failure. All45
+benchmark points from23sources emit exact independent Phase82 B2 C and execute
+to complete expected stdout. Observer17, string1444pairs, decoder16, full Base
+products, authentication10, launcher refusals and checked JS B1/frontend36 pass.
+The installed JS B2 remains unchanged. General imports/effects and native B2
+self-reproduction are not qualified; this is not full-language conformance.
+Failed controls and fixture-adapter attempts are retained in the capsule.
+
+
 ## Phase78 retained native facts
 
 [Report](../implementation/phase78/README.md) ·

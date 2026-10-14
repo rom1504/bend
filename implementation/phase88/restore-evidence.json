@@ -1,0 +1,43 @@
+{
+  "complete": true,
+  "parent": {
+    "file": "implementation/phase88/evidence.json",
+    "sha256": "6e543d818345caa5a46264397ef0eafd5a27d09644662d6d36fc0bc2feccc637",
+    "bytes": 12307
+  },
+  "supplement": {
+    "file": "selfhost/tools/performance/phase88/evidence02/transport.zip",
+    "sha256": "b5e4b952a9c8aeae1cd32bebeec92afdd5315f56be66a663063b48c454f20004",
+    "bytes": 720
+  },
+  "manifest": {
+    "file": "selfhost/tools/performance/phase88/evidence02/manifest.json",
+    "sha256": "3f8ac5de6282aaf29ab79403d776e1c9f10b6036f0f21762b97db107a2d32ccf",
+    "bytes": 173
+  },
+  "reason": "Post-seal restore audit found the runtime transport receipt was read internally by authenticate but absent from its returned pins. Preserve the original capsule; add its exact external receipt as a supplemental archive. Original restore/seal methods are retained beside this supplement. The corrected restore reads and verifies both archives.",
+  "methods": [
+    {
+      "file": "selfhost/tools/performance/phase88/restore.py",
+      "sha256": "8cb4258eaed22605a5bd000a316d7e062e0bb756a9faac9901c7ebb11f6aef2f",
+      "bytes": 3005
+    },
+    {
+      "file": "selfhost/tools/performance/phase88/seal.py",
+      "sha256": "4c961022da6f479be11c3f425a084c090a1f5287b036cc66490e9265be428c66",
+      "bytes": 2971
+    }
+  ],
+  "previousMethods": [
+    {
+      "file": "selfhost/tools/performance/phase88/evidence02/restore-v1.py",
+      "sha256": "220d384ae87df0f3294cc4f3da31d55ddb016348daa315ba97e92c6d43247f53",
+      "bytes": 2477
+    },
+    {
+      "file": "selfhost/tools/performance/phase88/evidence02/seal-v1.py",
+      "sha256": "f2982b46c7a34a1e55a35e13ab5db1f7fef4aea152ac09326fe0d88b2ff70bf3",
+      "bytes": 2906
+    }
+  ]
+}

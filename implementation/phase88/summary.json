@@ -1,0 +1,5632 @@
+{
+  "complete": true,
+  "kind": "phase88-native-compiler-qualification",
+  "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "nativeImage": {
+    "file": "selfhost/build/phase88/compiler-native02",
+    "sha256": "5babec07f3ff4c3a8c8e7be00566a681a4068b098349f9ee5207e53aa3231c9c",
+    "bytes": 9964168
+  },
+  "installedJsRelease": "Phase82 unchanged",
+  "nativeStage": "Upstream-built native B1, not native self-produced B2",
+  "medians": [
+    {
+      "case": "small",
+      "roles": {
+        "native01": {
+          "requestMs": 78.0,
+          "processWallSeconds": 2.226518678944558,
+          "peakRssBytes": 34529280,
+          "basePrepareMs": 2108.5
+        },
+        "native02": {
+          "requestMs": 54.0,
+          "processWallSeconds": 1.6475938794901595,
+          "peakRssBytes": 29978624,
+          "basePrepareMs": 1559.5
+        },
+        "cached02": {
+          "requestMs": 56.5,
+          "processWallSeconds": 0.14594864507671446,
+          "peakRssBytes": 56664064,
+          "basePrepareMs": 58.0
+        },
+        "typescript": {
+          "requestMs": 335.36513650000006,
+          "processWallSeconds": 0.7175264749675989,
+          "peakRssBytes": 134397952
+        },
+        "b2": {
+          "requestMs": 257.259148,
+          "processWallSeconds": 0.5128475736128166,
+          "peakRssBytes": 116596736
+        }
+      },
+      "liveRequestReduction": 0.3076923076923077,
+      "cachedWholeVsTypescript": 0.20340524031995474
+    },
+    {
+      "case": "numeric_closed",
+      "roles": {
+        "native01": {
+          "requestMs": 139.0,
+          "processWallSeconds": 2.2777244194876403,
+          "peakRssBytes": 33353728,
+          "basePrepareMs": 2109.5
+        },
+        "native02": {
+          "requestMs": 96.0,
+          "processWallSeconds": 1.6886978384573013,
+          "peakRssBytes": 34529280,
+          "basePrepareMs": 1560.0
+        },
+        "cached02": {
+          "requestMs": 99.0,
+          "processWallSeconds": 0.18641392048448324,
+          "peakRssBytes": 55222272,
+          "basePrepareMs": 59.0
+        },
+        "typescript": {
+          "requestMs": 371.355318,
+          "processWallSeconds": 0.7583820325089619,
+          "peakRssBytes": 135151616
+        },
+        "b2": {
+          "requestMs": 396.2056355,
+          "processWallSeconds": 0.6456428238889202,
+          "peakRssBytes": 121733120
+        }
+      },
+      "liveRequestReduction": 0.3093525179856115,
+      "cachedWholeVsTypescript": 0.24580476922398656
+    },
+    {
+      "case": "lexer_original",
+      "roles": {
+        "native01": {
+          "requestMs": 605.0,
+          "processWallSeconds": 2.7444615769200027,
+          "peakRssBytes": 43692032,
+          "basePrepareMs": 2108.5
+        },
+        "native02": {
+          "requestMs": 449.0,
+          "processWallSeconds": 2.0441691109444946,
+          "peakRssBytes": 41889792,
+          "basePrepareMs": 1563.0
+        },
+        "cached02": {
+          "requestMs": 462.0,
+          "processWallSeconds": 0.5624548365594819,
+          "peakRssBytes": 60350464,
+          "basePrepareMs": 58.0
+        },
+        "typescript": {
+          "requestMs": 470.76570000000004,
+          "processWallSeconds": 0.8399746340001002,
+          "peakRssBytes": 157138944
+        },
+        "b2": {
+          "requestMs": 944.3014925,
+          "processWallSeconds": 1.1874639164889231,
+          "peakRssBytes": 155357184
+        }
+      },
+      "liveRequestReduction": 0.2578512396694215,
+      "cachedWholeVsTypescript": 0.6696093117490675
+    },
+    {
+      "case": "map_closed",
+      "roles": {
+        "native01": {
+          "requestMs": 2642.0,
+          "processWallSeconds": 4.78784341015853,
+          "peakRssBytes": 73904128,
+          "basePrepareMs": 2108.5
+        },
+        "native02": {
+          "requestMs": 2050.5,
+          "processWallSeconds": 3.6516669334378093,
+          "peakRssBytes": 73089024,
+          "basePrepareMs": 1563.0
+        },
+        "cached02": {
+          "requestMs": 2082.0,
+          "processWallSeconds": 2.199901406071149,
+          "peakRssBytes": 79712256,
+          "basePrepareMs": 58.5
+        },
+        "typescript": {
+          "requestMs": 817.9873184999999,
+          "processWallSeconds": 1.249087828444317,
+          "peakRssBytes": 159891456
+        },
+        "b2": {
+          "requestMs": 1495.579624,
+          "processWallSeconds": 1.7583554284647107,
+          "peakRssBytes": 220819456
+        }
+      },
+      "liveRequestReduction": 0.22388342165026498,
+      "cachedWholeVsTypescript": 1.7612063427205336
+    },
+    {
+      "case": "functions65",
+      "roles": {
+        "native01": {
+          "requestMs": 328.0,
+          "processWallSeconds": 2.4704943989636377,
+          "peakRssBytes": 33427456,
+          "basePrepareMs": 2103.5
+        },
+        "native02": {
+          "requestMs": 222.0,
+          "processWallSeconds": 1.8098463414935395,
+          "peakRssBytes": 32694272,
+          "basePrepareMs": 1559.0
+        },
+        "cached02": {
+          "requestMs": 225.0,
+          "processWallSeconds": 0.3084298425819725,
+          "peakRssBytes": 54702080,
+          "basePrepareMs": 58.0
+        },
+        "typescript": {
+          "requestMs": 408.1104815,
+          "processWallSeconds": 0.7992178545100614,
+          "peakRssBytes": 142012416
+        },
+        "b2": {
+          "requestMs": 607.4088879999999,
+          "processWallSeconds": 0.8398491424741223,
+          "peakRssBytes": 138645504
+        }
+      },
+      "liveRequestReduction": 0.323170731707317,
+      "cachedWholeVsTypescript": 0.38591460493715685
+    },
+    {
+      "case": "unicode",
+      "roles": {
+        "native01": {
+          "requestMs": 75.0,
+          "processWallSeconds": 2.215963922906667,
+          "peakRssBytes": 35713024,
+          "basePrepareMs": 2103.5
+        },
+        "native02": {
+          "requestMs": 53.0,
+          "processWallSeconds": 1.6479854539502412,
+          "peakRssBytes": 32083968,
+          "basePrepareMs": 1558.5
+        },
+        "cached02": {
+          "requestMs": 56.0,
+          "processWallSeconds": 0.14589940942823887,
+          "peakRssBytes": 54620160,
+          "basePrepareMs": 58.0
+        },
+        "typescript": {
+          "requestMs": 331.953159,
+          "processWallSeconds": 0.7073873284971341,
+          "peakRssBytes": 133541888
+        },
+        "b2": {
+          "requestMs": 263.0867275,
+          "processWallSeconds": 0.492564735468477,
+          "peakRssBytes": 119017472
+        }
+      },
+      "liveRequestReduction": 0.29333333333333333,
+      "cachedWholeVsTypescript": 0.2062510926485022
+    }
+  ],
+  "repeated": [
+    {
+      "case": "small",
+      "requestMs": {
+        "cached02": [
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        "typescript": [
+          341.479152,
+          206.15348899999992,
+          284.097541,
+          201.81622100000004,
+          181.4267729999999
+        ],
+        "b2": [
+          258.376897,
+          161.714225,
+          173.15874399999996,
+          86.64151600000002,
+          95.17802400000005
+        ]
+      }
+    },
+    {
+      "case": "numeric_closed",
+      "requestMs": {
+        "typescript": [
+          370.9568259999999,
+          250.63410299999998,
+          276.5353959999999,
+          211.4688779999999,
+          160.76259499999992
+        ],
+        "b2": [
+          394.29432799999995,
+          263.155264,
+          179.7744530000001,
+          198.99921500000005,
+          109.55093299999999
+        ],
+        "cached02": [
+          99,
+          98,
+          98,
+          100,
+          99
+        ]
+      }
+    },
+    {
+      "case": "lexer_original",
+      "requestMs": {
+        "b2": [
+          926.108731,
+          501.28134,
+          385.0425970000001,
+          376.46495600000003,
+          285.7492320000001
+        ],
+        "cached02": [
+          456,
+          469,
+          482,
+          502,
+          518
+        ],
+        "typescript": [
+          513.051269,
+          409.84323100000006,
+          398.62673199999995,
+          288.4745190000001,
+          279.49912800000016
+        ]
+      }
+    },
+    {
+      "case": "map_closed",
+      "requestMs": {
+        "cached02": [
+          2276,
+          2415,
+          2420,
+          2578,
+          2789
+        ],
+        "typescript": [
+          790.774717,
+          565.293064,
+          577.283837,
+          437.95166599999993,
+          431.846552
+        ],
+        "b2": [
+          1426.2419049999999,
+          854.0368639999999,
+          740.9663780000001,
+          591.6377579999998,
+          544.086839
+        ]
+      }
+    },
+    {
+      "case": "functions65",
+      "requestMs": {
+        "typescript": [
+          405.840238,
+          262.53698499999996,
+          289.13951799999995,
+          233.26182099999983,
+          173.03760899999997
+        ],
+        "b2": [
+          610.4972879999999,
+          390.1581900000001,
+          224.104556,
+          216.13087999999993,
+          290.779407
+        ],
+        "cached02": [
+          251,
+          249,
+          250,
+          227,
+          230
+        ]
+      }
+    },
+    {
+      "case": "unicode",
+      "requestMs": {
+        "b2": [
+          262.305333,
+          138.15059600000006,
+          170.97313100000008,
+          79.4778389999999,
+          55.320065
+        ],
+        "cached02": [
+          57,
+          55,
+          56,
+          56,
+          55
+        ],
+        "typescript": [
+          334.6186379999999,
+          207.29154799999992,
+          278.13462100000015,
+          219.312684,
+          168.02583600000003
+        ]
+      }
+    }
+  ],
+  "broad": {
+    "points": 45,
+    "originalSources": 23,
+    "exactC": 45,
+    "exactStdout": 45,
+    "fixtureFailuresPreserved": 16,
+    "evidence": {
+      "file": "selfhost/build/phase88/broad-qualified.json",
+      "sha256": "6aa1db77cb9e809ee4c6d1d5ae382194a2970e2c0d774fcf41d1d3bf65336b5a",
+      "bytes": 16898
+    }
+  },
+  "controls": {
+    "observer": {
+      "passed": true,
+      "evidence": {
+        "file": "selfhost/build/phase88/observer-controls.json",
+        "sha256": "055fedc5ba939c2f6c4f78a46532009aa8cb0ee44b59065d21cbe224ba1f135f",
+        "bytes": 3200
+      }
+    },
+    "strings": {
+      "passed": true,
+      "evidence": {
+        "file": "selfhost/build/phase88/strings-controls.json",
+        "sha256": "f1c2856d5a11514e149fe97bd9a9787d25106a9c27f97507af0464ceb8f8d1c0",
+        "bytes": 1182
+      }
+    },
+    "cacheProducts": {
+      "passed": true,
+      "evidence": {
+        "file": "selfhost/build/phase88/cache-products01/report.json",
+        "sha256": "524fc507f719720f3877544827199dfbad26f4b666556a79b12fc7561ff91501",
+        "bytes": 5070
+      }
+    },
+    "baseProducts": {
+      "passed": true,
+      "evidence": {
+        "file": "selfhost/build/phase88/base-products05/report.json",
+        "sha256": "6ab1bb5d69bf12892dcb2cc1201cfe0447611a0b0e559a544f74c7eee9bd8459",
+        "bytes": 4166
+      }
+    },
+    "auth": {
+      "passed": true,
+      "evidence": {
+        "file": "selfhost/build/phase88/auth-controls01/report.json",
+        "sha256": "ba22fee2775b002ab3aba477762edc827ad8779514fc26f7e22b36cb5d0779c8",
+        "bytes": 1550
+      }
+    },
+    "launcher": {
+      "passed": true,
+      "evidence": {
+        "file": "selfhost/build/phase88/launcher-controls03/report.json",
+        "sha256": "cf1a4f9da07c3bf496cee54e7592cdca17bdea0955394b5e9e19a1beef5efacd",
+        "bytes": 4272
+      }
+    },
+    "jsDevelopment": {
+      "passed": true,
+      "evidence": {
+        "file": "selfhost/build/phase88/js-development01/validation-001/report.json",
+        "sha256": "cdd51d5dd9fd8bcb971eab646805d2a62b1dc6c51764f075de162bfefd682570",
+        "bytes": 8972
+      }
+    }
+  },
+  "profileOutputs": [
+    {
+      "file": "selfhost/build/phase88/ownership02-map.1.c",
+      "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+      "bytes": 895710
+    },
+    {
+      "file": "selfhost/build/phase88/ownership02-map.2.c",
+      "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+      "bytes": 895710
+    },
+    {
+      "file": "selfhost/build/phase88/ownership02-map.3.c",
+      "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+      "bytes": 895710
+    },
+    {
+      "file": "selfhost/build/phase88/ownership02-map.4.c",
+      "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+      "bytes": 895710
+    },
+    {
+      "file": "selfhost/build/phase88/ownership02-map.5.c",
+      "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+      "bytes": 895710
+    }
+  ],
+  "sourceCensus": {
+    "modules": 132,
+    "beforePhysicalLines": 32540,
+    "afterPhysicalLines": 32591,
+    "delta": 51,
+    "changed": [
+      {
+        "file": "selfhost/src/back/native/text.bend",
+        "beforeLines": 101,
+        "afterLines": 123,
+        "delta": 22
+      },
+      {
+        "file": "selfhost/src/back/native/emit.bend",
+        "beforeLines": 250,
+        "afterLines": 254,
+        "delta": 4
+      },
+      {
+        "file": "selfhost/src/back/native/observer-analysis.bend",
+        "beforeLines": 465,
+        "afterLines": 490,
+        "delta": 25
+      }
+    ]
+  },
+  "resourceUse": {
+    "guardJobs": 373,
+    "guardedWallSeconds": 1090.8613531966694,
+    "peakTreeRssBytes": 4440768512,
+    "nonzeroOrIncomplete": [
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071647Z-k_fcypne/guard/process.json",
+          "sha256": "c2c542e04c1dba8e296551978365819428847eb6a6c81fbc8a5255e88b32578b",
+          "bytes": 1228
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08462779805995524,
+        "peakRssBytes": 46985216,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071648Z-uyxlxl1b/guard/process.json",
+          "sha256": "39def5daa27bd1988c383dcb2f47330aeed75e75a5ab735255506aae27c97008",
+          "bytes": 1232
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08472733199596405,
+        "peakRssBytes": 46886912,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071648Z-xxep8uxu/guard/process.json",
+          "sha256": "956eba18cb0602720ae7af86097e48840a7b7de2b2a930e05949de1bd4028afc",
+          "bytes": 1231
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.12543257209472358,
+        "peakRssBytes": 48996352,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071815Z-4o44z_da/guard/process.json",
+          "sha256": "01d6f712a9255578210892e6af79ff964cbacb6b34ce9ca6ffd541240e734d29",
+          "bytes": 1230
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08470922103151679,
+        "peakRssBytes": 46878720,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071816Z-19fbk478/guard/process.json",
+          "sha256": "f3a282cc58c564696989c80ed17dedd7f725f0bf9df622a36c45e3ca104c08ea",
+          "bytes": 1230
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1253245531115681,
+        "peakRssBytes": 48975872,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071816Z-ihtzt1ca/guard/process.json",
+          "sha256": "88db56af50d542ce507180f4a3d20871781fff632c13f7bd99d78dd6cf84ada0",
+          "bytes": 1230
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08462000894360244,
+        "peakRssBytes": 47050752,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071911Z-7t_cvudt/guard/process.json",
+          "sha256": "fde4e94139a1409b018d2bd0dfe6967c61d4f9a034b003fe2ba962f112358162",
+          "bytes": 1231
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1267902860417962,
+        "peakRssBytes": 48939008,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071911Z-w1x4gq95/guard/process.json",
+          "sha256": "16b64c4ce038dc618df438a857295bb8d512b675d3fb6fcb1dd9961064bdc022",
+          "bytes": 1231
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08479074505157769,
+        "peakRssBytes": 47030272,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071912Z-e6k67e2u/guard/process.json",
+          "sha256": "23828ba41f7bd1ca298ad0d74ce5e7c8fc771764f87ad1034745a28036e4552d",
+          "bytes": 1232
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08463063999079168,
+        "peakRssBytes": 46997504,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071912Z-hrxnxzwf/guard/process.json",
+          "sha256": "3692b169bcc45b0281367bb60fbc7537275b739f301885137480d15a32daf44f",
+          "bytes": 1232
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08474956708960235,
+        "peakRssBytes": 46841856,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071913Z-s1eywq1q/guard/process.json",
+          "sha256": "0b771a46aeae293c98da27324f854fe4e528c6269ca6d22874c01546560efc93",
+          "bytes": 1236
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.12548948894254863,
+        "peakRssBytes": 50749440,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/base-products01-guard/process.json",
+          "sha256": "38019fbea6f72e32061cdae1289352df62d5f72dda0f92458a5e649bbfc00650",
+          "bytes": 936
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 3.4968085889704525,
+        "peakRssBytes": 231731200,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/base-products02-guard/process.json",
+          "sha256": "e9f4ed7c0052c801af9615294f8b4c35515981865726f63b726d67569f1577e1",
+          "bytes": 935
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 7.582057420862839,
+        "peakRssBytes": 298897408,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/base-products03-guard/process.json",
+          "sha256": "2bcd4730b1bcaf589ce4a5ce02ca7adef69634128f611c78259472ec01cc72f0",
+          "bytes": 935
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 7.604231751989573,
+        "peakRssBytes": 293654528,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/base-products04-guard/process.json",
+          "sha256": "5eb73b60065718263c7693ad71fef12074157109d8d4d5dd5daf79749e64fbca",
+          "bytes": 933
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 7.63724863785319,
+        "peakRssBytes": 293113856,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/complete-generic-row32/b2-guard/process.json",
+          "sha256": "39307e6531f5135a55ac53e16acfcb3e5cb8fac044ed2989784c87b6c101c86a",
+          "bytes": 850
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.7405017239507288,
+        "peakRssBytes": 130228224,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/complete-generic-row32/native-guard/process.json",
+          "sha256": "c60d613e54d788a136348a5128941ef5527567d6debf3855a23cbe0dfb6a17f6",
+          "bytes": 1235
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.16656684689223766,
+        "peakRssBytes": 52588544,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-bst-32/b2-guard/process.json",
+          "sha256": "f0e441afa612fb7cbde9e3ca0ed9b312f672f1897bd998c4ec925c8e69db5c6d",
+          "bytes": 839
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.43115814309567213,
+        "peakRssBytes": 119570432,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-bst-32/native-guard/process.json",
+          "sha256": "1072cb8555ca0ca3d333fd0538b57c5920c6b2d9f73b40029803a5e4e22ff271",
+          "bytes": 1221
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.16621179901994765,
+        "peakRssBytes": 52797440,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-bst-64/b2-guard/process.json",
+          "sha256": "74fecc8bc95560abfe38a8be2dc3bfc857e6579dd6f720a347ab39de31008f69",
+          "bytes": 836
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.471982394810766,
+        "peakRssBytes": 118501376,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-bst-64/native-guard/process.json",
+          "sha256": "7ea2ccf3fadd2dbf20e1dc72c883ac7ac97cb0bfa1d09f3a261ab93b0664361a",
+          "bytes": 1221
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.16623450093902647,
+        "peakRssBytes": 54894592,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-closures-256/b2-guard/process.json",
+          "sha256": "e07c49a4eecf507eafa9d677b81e23a1b428607efc59dce796d680af7aaa7fce",
+          "bytes": 851
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.41222011391073465,
+        "peakRssBytes": 114429952,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-closures-256/native-guard/process.json",
+          "sha256": "efda89623a1e11792c1976ff48fe145860eddf34637babb29b051a3f5b1e8c68",
+          "bytes": 1233
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.14611223991960287,
+        "peakRssBytes": 54824960,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-closures-64/b2-guard/process.json",
+          "sha256": "e90d474de660de3b2d87e0e44d89b55baf5e9ba0fd9c78b6fb0c69a886decc84",
+          "bytes": 848
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.4310272561851889,
+        "peakRssBytes": 111341568,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-closures-64/native-guard/process.json",
+          "sha256": "7448a1d09110a75a8fcae4528d51968b9ed6a043c6cf5a6963d0ddb17f1d4878",
+          "bytes": 1229
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1456927009858191,
+        "peakRssBytes": 52617216,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-expression-128/b2-guard/process.json",
+          "sha256": "b5b2f31a3abfe249845620ca610d0bf8905f9e8d8ca78aef010bedac06b3c350",
+          "bytes": 853
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.3903811441268772,
+        "peakRssBytes": 110481408,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-expression-128/native-guard/process.json",
+          "sha256": "96a69730b43c89bcd37b2df5830846b805dc2bf7e973f406556face4f10ba227",
+          "bytes": 1236
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.14585116202943027,
+        "peakRssBytes": 54808576,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-expression-32/b2-guard/process.json",
+          "sha256": "bf087dcc4fe2d353ef14c9d3953231a8009b4d5af5314a4ae7be36f0c003e402",
+          "bytes": 852
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.3905662999022752,
+        "peakRssBytes": 114511872,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-expression-32/native-guard/process.json",
+          "sha256": "1b3ab126a15f7aaaab223532623a37653495c7922af0e77a52a73074236ba16a",
+          "bytes": 1234
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1458353130146861,
+        "peakRssBytes": 54861824,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-list-pipeline-128/b2-guard/process.json",
+          "sha256": "f810a2ca4e7f0189bfe76cf3b6e7e0eb72672f8318cfc9ecebac7141f2dae6f5",
+          "bytes": 860
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.4325492260977626,
+        "peakRssBytes": 117837824,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-list-pipeline-128/native-guard/process.json",
+          "sha256": "dceabdf380a939476b223c05bad45840a00f6380e8eebba981a1e0371a69425f",
+          "bytes": 1241
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1457811777945608,
+        "peakRssBytes": 52686848,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-list-pipeline-512/b2-guard/process.json",
+          "sha256": "d779d2b3ac46d62112e7b4e3cf71923bf8abb280c91a0fd9d096ec95840656f5",
+          "bytes": 858
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.4519413758534938,
+        "peakRssBytes": 120467456,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-list-pipeline-512/native-guard/process.json",
+          "sha256": "74d4e795d86a7364705d6315f7ce355ea1c1a923340ac86915a87af8526ebc32",
+          "bytes": 1243
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.14562142617069185,
+        "peakRssBytes": 52789248,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-unicode-text-16/b2-guard/process.json",
+          "sha256": "0af07402a8a18e815f65dbdd169613c5d391c1f40187c8b7014f6f7666c99099",
+          "bytes": 856
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.5333874931093305,
+        "peakRssBytes": 122036224,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-unicode-text-16/native-guard/process.json",
+          "sha256": "20fc073150a82f33e4a81bf5292de9c0eaec69d2f6788937a90d6a0888a2cfa7",
+          "bytes": 1237
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.18648189888335764,
+        "peakRssBytes": 54951936,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-unicode-text-64/b2-guard/process.json",
+          "sha256": "ce93fbf64128d496911f6d1a54e5bc0201d324cb7bab14eee5cdd2c282786581",
+          "bytes": 856
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.5332581480033696,
+        "peakRssBytes": 122249216,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-unicode-text-64/native-guard/process.json",
+          "sha256": "46ff1462fc564d256d98d403c9c300d5b7d9fdc28041dad1b875afd235678d6d",
+          "bytes": 1239
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.18645872897468507,
+        "peakRssBytes": 52850688,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-evening-program/b2-guard/process.json",
+          "sha256": "8fbfa98c1f1cb4c5499f90912d4f2fc6a473b803477c40a3b502bd38c12c08cb",
+          "bytes": 847
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.431463398039341,
+        "peakRssBytes": 120594432,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-evening-program/native-guard/process.json",
+          "sha256": "ef72f2d641d2780078683f4b7bfd4830a0037e08675d5363e1b5274c21eb0579",
+          "bytes": 1229
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.14591050194576383,
+        "peakRssBytes": 52772864,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-map-set-ops/b2-guard/process.json",
+          "sha256": "a13a7dfd00626cd4cab04e36fcf230a877bccd1bd3efa9814e5bfc7891a63341",
+          "bytes": 841
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.49270913912914693,
+        "peakRssBytes": 132014080,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-map-set-ops/native-guard/process.json",
+          "sha256": "919e123eecedacc7bbb9b09f12605161fe46c3b184ef6e8b5382b15780b05700",
+          "bytes": 1220
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1866705019492656,
+        "peakRssBytes": 56909824,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-morning-program/b2-guard/process.json",
+          "sha256": "92c8b6a84c26a01ea913b034ccc8ed2f762d4463a88d3f8f791541123044baed",
+          "bytes": 848
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.45214123488403857,
+        "peakRssBytes": 122241024,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-morning-program/native-guard/process.json",
+          "sha256": "dfca6a7daff540d06c139f15a42bc9068a4d3f7e45c8fc59a4e4233e3b54cb12",
+          "bytes": 1230
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1457626789342612,
+        "peakRssBytes": 52862976,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-rle-roundtrip/b2-guard/process.json",
+          "sha256": "153f23787b43230757274b92c0f6496a5bc1b21f1c830f1f2d33b8a2768dbd19",
+          "bytes": 844
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.45193510479293764,
+        "peakRssBytes": 116842496,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-rle-roundtrip/native-guard/process.json",
+          "sha256": "5564b90ff4c94460c75c088b76e3baa4670ff695403c02d4861eade7d497efac",
+          "bytes": 1226
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1459551239386201,
+        "peakRssBytes": 52776960,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/complete-generic-row32/b2-guard/process.json",
+          "sha256": "a3ad0a95e30126786b3100a0084f77e6286503b1e46f0d5fe72f64d7b3d46045",
+          "bytes": 853
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.7173180531244725,
+        "peakRssBytes": 134201344,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/complete-generic-row32/native-guard/process.json",
+          "sha256": "bf0eebab64fb0f47e661fbe37ca7ead1c5df8f75885a0756d760d60da4fca9a0",
+          "bytes": 1237
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.16625661798752844,
+        "peakRssBytes": 52469760,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/cache-control01-acquire-guard/process.json",
+          "sha256": "8ffa758e3285c0da3d08109fd804606616cbafb18b0ea2e06310c20aaefe7f48",
+          "bytes": 712
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.9219264471903443,
+        "peakRssBytes": 178212864,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/cache-control02-acquire-guard/process.json",
+          "sha256": "f7aa4d02a872b851ba1956e2463601c3ecb97cd25d90d8994b968f972921b9ce",
+          "bytes": 711
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 1.0640207228716463,
+        "peakRssBytes": 176205824,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/strings-control01-acquire-guard/process.json",
+          "sha256": "b6147308d6bd4b29fb5d5b99a17b8edbd55ccdb2d6b18f5eba402de3df25dc47",
+          "bytes": 705
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.921599610010162,
+        "peakRssBytes": 178241536,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/strings-control02-acquire-guard/process.json",
+          "sha256": "fa9d17c6afdc89e550e8842ff52b2564bff53605d6e97600ef960ab67ebffa69",
+          "bytes": 709
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 1.1050072750076652,
+        "peakRssBytes": 178212864,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/strings-control03-acquire-guard/process.json",
+          "sha256": "c781667a290300d83848fc2e2fb516d90f0aa2a8395598ff317a9b9a0a08111b",
+          "bytes": 707
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 1.08452188805677,
+        "peakRssBytes": 176537600,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/strings-control04-acquire-guard/process.json",
+          "sha256": "7385b16e7d93a9d7227afb5310e31e2854c9d206259cf6c58da55aff39d8d574",
+          "bytes": 708
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 1.1250790969934314,
+        "peakRssBytes": 178335744,
+        "reason": null
+      }
+    ],
+    "jobs": [
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T065628Z-oxgv1nm3/guard/process.json",
+          "sha256": "171324fdf87dd0b89d21d587da6183f29dd19af5b0974541740f9018262ae56f",
+          "bytes": 1225
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.14607764990068972,
+        "peakRssBytes": 54730752,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071647Z-k_fcypne/guard/process.json",
+          "sha256": "c2c542e04c1dba8e296551978365819428847eb6a6c81fbc8a5255e88b32578b",
+          "bytes": 1228
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08462779805995524,
+        "peakRssBytes": 46985216,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071648Z-uyxlxl1b/guard/process.json",
+          "sha256": "39def5daa27bd1988c383dcb2f47330aeed75e75a5ab735255506aae27c97008",
+          "bytes": 1232
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08472733199596405,
+        "peakRssBytes": 46886912,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071648Z-xxep8uxu/guard/process.json",
+          "sha256": "956eba18cb0602720ae7af86097e48840a7b7de2b2a930e05949de1bd4028afc",
+          "bytes": 1231
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.12543257209472358,
+        "peakRssBytes": 48996352,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071815Z-4o44z_da/guard/process.json",
+          "sha256": "01d6f712a9255578210892e6af79ff964cbacb6b34ce9ca6ffd541240e734d29",
+          "bytes": 1230
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08470922103151679,
+        "peakRssBytes": 46878720,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071816Z-19fbk478/guard/process.json",
+          "sha256": "f3a282cc58c564696989c80ed17dedd7f725f0bf9df622a36c45e3ca104c08ea",
+          "bytes": 1230
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1253245531115681,
+        "peakRssBytes": 48975872,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071816Z-ihtzt1ca/guard/process.json",
+          "sha256": "88db56af50d542ce507180f4a3d20871781fff632c13f7bd99d78dd6cf84ada0",
+          "bytes": 1230
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08462000894360244,
+        "peakRssBytes": 47050752,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071911Z-7t_cvudt/guard/process.json",
+          "sha256": "fde4e94139a1409b018d2bd0dfe6967c61d4f9a034b003fe2ba962f112358162",
+          "bytes": 1231
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1267902860417962,
+        "peakRssBytes": 48939008,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071911Z-w1x4gq95/guard/process.json",
+          "sha256": "16b64c4ce038dc618df438a857295bb8d512b675d3fb6fcb1dd9961064bdc022",
+          "bytes": 1231
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08479074505157769,
+        "peakRssBytes": 47030272,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071912Z-e6k67e2u/guard/process.json",
+          "sha256": "23828ba41f7bd1ca298ad0d74ce5e7c8fc771764f87ad1034745a28036e4552d",
+          "bytes": 1232
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08463063999079168,
+        "peakRssBytes": 46997504,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071912Z-hrxnxzwf/guard/process.json",
+          "sha256": "3692b169bcc45b0281367bb60fbc7537275b739f301885137480d15a32daf44f",
+          "bytes": 1232
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.08474956708960235,
+        "peakRssBytes": 46841856,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071913Z-s1eywq1q/guard/process.json",
+          "sha256": "0b771a46aeae293c98da27324f854fe4e528c6269ca6d22874c01546560efc93",
+          "bytes": 1236
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.12548948894254863,
+        "peakRssBytes": 50749440,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071913Z-ym90gikm/guard/process.json",
+          "sha256": "5f5794183ccfb5ac5dff872c80d39eaf509f9d8d7baff364c35883283864477a",
+          "bytes": 1226
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.14579909294843674,
+        "peakRssBytes": 55767040,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/native/requests/20261014T071914Z-s1kkluyd/guard/process.json",
+          "sha256": "1cfbc75ec19a12a32545a26093f2e440fff0e74942ad4ab51b7585a7aaae20fa",
+          "bytes": 1027
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.6490465148817748,
+        "peakRssBytes": 29437952,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/base-products01-guard/process.json",
+          "sha256": "38019fbea6f72e32061cdae1289352df62d5f72dda0f92458a5e649bbfc00650",
+          "bytes": 936
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 3.4968085889704525,
+        "peakRssBytes": 231731200,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/base-products02-guard/process.json",
+          "sha256": "e9f4ed7c0052c801af9615294f8b4c35515981865726f63b726d67569f1577e1",
+          "bytes": 935
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 7.582057420862839,
+        "peakRssBytes": 298897408,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/base-products03-guard/process.json",
+          "sha256": "2bcd4730b1bcaf589ce4a5ce02ca7adef69634128f611c78259472ec01cc72f0",
+          "bytes": 935
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 7.604231751989573,
+        "peakRssBytes": 293654528,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/base-products04-guard/process.json",
+          "sha256": "5eb73b60065718263c7693ad71fef12074157109d8d4d5dd5daf79749e64fbca",
+          "bytes": 933
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 7.63724863785319,
+        "peakRssBytes": 293113856,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/base-products05-guard/process.json",
+          "sha256": "796a45b07874269fcff32c5193fee7a6dabee3adb3d088cf0e1c522a12be3c47",
+          "bytes": 934
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 8.174820095067844,
+        "peakRssBytes": 302301184,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/complete-generic-row32/b2-guard/process.json",
+          "sha256": "39307e6531f5135a55ac53e16acfcb3e5cb8fac044ed2989784c87b6c101c86a",
+          "bytes": 850
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.7405017239507288,
+        "peakRssBytes": 130228224,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/complete-generic-row32/native-guard/process.json",
+          "sha256": "c60d613e54d788a136348a5128941ef5527567d6debf3855a23cbe0dfb6a17f6",
+          "bytes": 1235
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.16656684689223766,
+        "peakRssBytes": 52588544,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-bst-32/b2-guard/process.json",
+          "sha256": "f0e441afa612fb7cbde9e3ca0ed9b312f672f1897bd998c4ec925c8e69db5c6d",
+          "bytes": 839
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.43115814309567213,
+        "peakRssBytes": 119570432,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-bst-32/native-guard/process.json",
+          "sha256": "1072cb8555ca0ca3d333fd0538b57c5920c6b2d9f73b40029803a5e4e22ff271",
+          "bytes": 1221
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.16621179901994765,
+        "peakRssBytes": 52797440,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-bst-64/b2-guard/process.json",
+          "sha256": "74fecc8bc95560abfe38a8be2dc3bfc857e6579dd6f720a347ab39de31008f69",
+          "bytes": 836
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.471982394810766,
+        "peakRssBytes": 118501376,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-bst-64/native-guard/process.json",
+          "sha256": "7ea2ccf3fadd2dbf20e1dc72c883ac7ac97cb0bfa1d09f3a261ab93b0664361a",
+          "bytes": 1221
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.16623450093902647,
+        "peakRssBytes": 54894592,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-closures-256/b2-guard/process.json",
+          "sha256": "e07c49a4eecf507eafa9d677b81e23a1b428607efc59dce796d680af7aaa7fce",
+          "bytes": 851
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.41222011391073465,
+        "peakRssBytes": 114429952,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-closures-256/native-guard/process.json",
+          "sha256": "efda89623a1e11792c1976ff48fe145860eddf34637babb29b051a3f5b1e8c68",
+          "bytes": 1233
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.14611223991960287,
+        "peakRssBytes": 54824960,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-closures-64/b2-guard/process.json",
+          "sha256": "e90d474de660de3b2d87e0e44d89b55baf5e9ba0fd9c78b6fb0c69a886decc84",
+          "bytes": 848
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.4310272561851889,
+        "peakRssBytes": 111341568,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-closures-64/native-guard/process.json",
+          "sha256": "7448a1d09110a75a8fcae4528d51968b9ed6a043c6cf5a6963d0ddb17f1d4878",
+          "bytes": 1229
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1456927009858191,
+        "peakRssBytes": 52617216,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-expression-128/b2-guard/process.json",
+          "sha256": "b5b2f31a3abfe249845620ca610d0bf8905f9e8d8ca78aef010bedac06b3c350",
+          "bytes": 853
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.3903811441268772,
+        "peakRssBytes": 110481408,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-expression-128/native-guard/process.json",
+          "sha256": "96a69730b43c89bcd37b2df5830846b805dc2bf7e973f406556face4f10ba227",
+          "bytes": 1236
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.14585116202943027,
+        "peakRssBytes": 54808576,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-expression-32/b2-guard/process.json",
+          "sha256": "bf087dcc4fe2d353ef14c9d3953231a8009b4d5af5314a4ae7be36f0c003e402",
+          "bytes": 852
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.3905662999022752,
+        "peakRssBytes": 114511872,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-expression-32/native-guard/process.json",
+          "sha256": "1b3ab126a15f7aaaab223532623a37653495c7922af0e77a52a73074236ba16a",
+          "bytes": 1234
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1458353130146861,
+        "peakRssBytes": 54861824,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-list-pipeline-128/b2-guard/process.json",
+          "sha256": "f810a2ca4e7f0189bfe76cf3b6e7e0eb72672f8318cfc9ecebac7141f2dae6f5",
+          "bytes": 860
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.4325492260977626,
+        "peakRssBytes": 117837824,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-list-pipeline-128/native-guard/process.json",
+          "sha256": "dceabdf380a939476b223c05bad45840a00f6380e8eebba981a1e0371a69425f",
+          "bytes": 1241
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1457811777945608,
+        "peakRssBytes": 52686848,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-list-pipeline-512/b2-guard/process.json",
+          "sha256": "d779d2b3ac46d62112e7b4e3cf71923bf8abb280c91a0fd9d096ec95840656f5",
+          "bytes": 858
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.4519413758534938,
+        "peakRssBytes": 120467456,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-list-pipeline-512/native-guard/process.json",
+          "sha256": "74d4e795d86a7364705d6315f7ce355ea1c1a923340ac86915a87af8526ebc32",
+          "bytes": 1243
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.14562142617069185,
+        "peakRssBytes": 52789248,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-map-churn-128/b2-guard/process.json",
+          "sha256": "d2a034abec71d380adb4660caecad015bc32d190d607718f05b4a0ac01ed7677",
+          "bytes": 851
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.8392995849717408,
+        "peakRssBytes": 221528064,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-map-churn-128/clang-guard/process.json",
+          "sha256": "afd5da72c6b5720cec1e631725035b3bb97fb36d43dce4dc372d9e50e56f6c09",
+          "bytes": 844
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 4.036194504937157,
+        "peakRssBytes": 186785792,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-map-churn-128/execute-guard/process.json",
+          "sha256": "79ffdcee24173e7506b980e975eb2fe569ca73b4d24251117df97d1b70f50c20",
+          "bytes": 578
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023235588800162077,
+        "peakRssBytes": 1097728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-map-churn-128/native-guard/process.json",
+          "sha256": "61e2bed859b6ee53987fec96d58ac10d90795b4ecbbec0986f7ca683b1e27a73",
+          "bytes": 1232
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.381739956093952,
+        "peakRssBytes": 80068608,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-map-churn-32/b2-guard/process.json",
+          "sha256": "0b461f70f34256aad384cb818613c109a6a43ad4e0e59e430e7f97feb3eb719f",
+          "bytes": 849
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.6763979741372168,
+        "peakRssBytes": 218234880,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-map-churn-32/clang-guard/process.json",
+          "sha256": "88cbdfe672a765a9bde087526d24f59990eeb76f26f4b7f030ec27ef8c3d6e12",
+          "bytes": 843
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 3.7094401449430734,
+        "peakRssBytes": 187613184,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-map-churn-32/execute-guard/process.json",
+          "sha256": "f09fd0732b065b380ac5a7277a0493d1ffd01a3d5474f96d55d193080f039a63",
+          "bytes": 578
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023200634866952896,
+        "peakRssBytes": 1028096,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-map-churn-32/native-guard/process.json",
+          "sha256": "765517a502a82069cf5bafc73e454cdcca0ffa63aa04f3c7e734c79537cddf5a",
+          "bytes": 1229
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.1790557720232755,
+        "peakRssBytes": 78467072,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-numeric-recurrence-1024/b2-guard/process.json",
+          "sha256": "89031e63b379123720cf979ff1687ab243ab84ac30f5c31567d275b4082aebcd",
+          "bytes": 871
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6355219960678369,
+        "peakRssBytes": 120561664,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-numeric-recurrence-1024/clang-guard/process.json",
+          "sha256": "bcd846b5c818e8fa0efd8c0acfd571e4ce34771044298d7ca7c9b5037516e865",
+          "bytes": 865
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.5765977429691702,
+        "peakRssBytes": 144113664,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-numeric-recurrence-1024/execute-guard/process.json",
+          "sha256": "b501725ead5d5e2387a84c084a0fb8f734c011a7b24550680edafdd0593b4cd4",
+          "bytes": 587
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023122845217585564,
+        "peakRssBytes": 1093632,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-numeric-recurrence-1024/native-guard/process.json",
+          "sha256": "cc46453c49fabe2ad249fac90c03bbd7b28fd9b65475de9aab9f94119828780b",
+          "bytes": 1254
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.18670938699506223,
+        "peakRssBytes": 55324672,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-numeric-recurrence-256/b2-guard/process.json",
+          "sha256": "d31640bafb1a449395ce78a18b0e6b8371da9b78f09a9ff5b4842914ba964d16",
+          "bytes": 868
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6356882739346474,
+        "peakRssBytes": 119803904,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-numeric-recurrence-256/clang-guard/process.json",
+          "sha256": "dd1573e67221b0dd8588dd7e48fc4217050c4fa581a866bd25bdc895d84dcf42",
+          "bytes": 862
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.5766982729546726,
+        "peakRssBytes": 144257024,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-numeric-recurrence-256/execute-guard/process.json",
+          "sha256": "9170b6fdbc45f0795e72c2372ebc2f6eef35536a06ae0828b78dd78304b6263f",
+          "bytes": 588
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023202703101560473,
+        "peakRssBytes": 1028096,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-numeric-recurrence-256/native-guard/process.json",
+          "sha256": "c42f0d49cc058ef31d6212f525ad49496eeb14006b9916e2565377dfe099cbad",
+          "bytes": 1252
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.18643811508081853,
+        "peakRssBytes": 55328768,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-record-aggregation-256/b2-guard/process.json",
+          "sha256": "4d33965f68a6c861bde4cb35de4468c94c3832428980587cac354fa2faab7aa5",
+          "bytes": 868
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.6563097650650889,
+        "peakRssBytes": 219881472,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-record-aggregation-256/clang-guard/process.json",
+          "sha256": "324a75d3f63cd246b82afb46545e4d2c7ad19b39c14b7da8fa1adfee94d58cad",
+          "bytes": 861
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 4.261798087041825,
+        "peakRssBytes": 189952000,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-record-aggregation-256/execute-guard/process.json",
+          "sha256": "5379d2ba09853b866cd75b3fc986535ef1778ff6954c5a7c6dcb97b3c8b37764",
+          "bytes": 588
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023348337970674038,
+        "peakRssBytes": 1024000,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-record-aggregation-256/native-guard/process.json",
+          "sha256": "d3cc18bed61670bc98b201b2aa048610dd9c026de2e092ec7e85e9f0151f0b15",
+          "bytes": 1251
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.9963822360150516,
+        "peakRssBytes": 78766080,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-record-aggregation-64/b2-guard/process.json",
+          "sha256": "4166d88554fa146976d25bc493e710e2af2fec51c34bb345fa96e1cf26132dbc",
+          "bytes": 867
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.6749920169822872,
+        "peakRssBytes": 223301632,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-record-aggregation-64/clang-guard/process.json",
+          "sha256": "bb44b9c288a769f01460d984ae1c31a53f84c7584c8a072003fe5fe53b0776ee",
+          "bytes": 860
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 4.202281296020374,
+        "peakRssBytes": 189288448,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-record-aggregation-64/execute-guard/process.json",
+          "sha256": "6ccc96c5417cf057790f897b85b7d7f84f862221ce4b83db1d9743ac6cf93f96",
+          "bytes": 586
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023231852799654007,
+        "peakRssBytes": 1032192,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-record-aggregation-64/native-guard/process.json",
+          "sha256": "f2d594694a4e62b4572187e1dab1db73fc67eebf4e629fc9f3a00537b5f632bf",
+          "bytes": 1248
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.9961797089781612,
+        "peakRssBytes": 80719872,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-unicode-text-16/b2-guard/process.json",
+          "sha256": "0af07402a8a18e815f65dbdd169613c5d391c1f40187c8b7014f6f7666c99099",
+          "bytes": 856
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.5333874931093305,
+        "peakRssBytes": 122036224,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-unicode-text-16/native-guard/process.json",
+          "sha256": "20fc073150a82f33e4a81bf5292de9c0eaec69d2f6788937a90d6a0888a2cfa7",
+          "bytes": 1237
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.18648189888335764,
+        "peakRssBytes": 54951936,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-unicode-text-64/b2-guard/process.json",
+          "sha256": "ce93fbf64128d496911f6d1a54e5bc0201d324cb7bab14eee5cdd2c282786581",
+          "bytes": 856
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.5332581480033696,
+        "peakRssBytes": 122249216,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/coverage-unicode-text-64/native-guard/process.json",
+          "sha256": "46ff1462fc564d256d98d403c9c300d5b7d9fdc28041dad1b875afd235678d6d",
+          "bytes": 1239
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.18645872897468507,
+        "peakRssBytes": 52850688,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/editdist/b2-guard/process.json",
+          "sha256": "f5105aa90ce1a93923ff00b0ea039171807f8a1b4539aa075765934ab70d2bd9",
+          "bytes": 822
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0231132921762764,
+        "peakRssBytes": 142983168,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/editdist/clang-guard/process.json",
+          "sha256": "3fbda257b36263cc8db433b79f8d748178ca0d1a69a0ed5ab347ee8432430eca",
+          "bytes": 815
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.945204040966928,
+        "peakRssBytes": 147873792,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/editdist/execute-guard/process.json",
+          "sha256": "67ce722c123d5ba1b0c7d659a024477d010e1dc01879168ee2b24483c10756df",
+          "bytes": 564
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023289490956813097,
+        "peakRssBytes": 1097728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/editdist/native-guard/process.json",
+          "sha256": "19c44c75989af8fd254d57d66b9f09ee681a0a763a4dd886f698a606c626d20a",
+          "bytes": 1206
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.34910126496106386,
+        "peakRssBytes": 58859520,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/lexer/b2-guard/process.json",
+          "sha256": "75401b4702689715ced6d4f7ec1dc1527223fc656402653669b291b2781df79c",
+          "bytes": 817
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.1050548169296235,
+        "peakRssBytes": 148668416,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/lexer/clang-guard/process.json",
+          "sha256": "2f5c1b7e27f351da517b53d3ec12574587efe1d23026bfa2f31c9dc651ce4071",
+          "bytes": 811
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0902640409767628,
+        "peakRssBytes": 149204992,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/lexer/execute-guard/process.json",
+          "sha256": "e8cb5920ad4861cc2dd165529afbacc62b0a6eb0ed4b7c323ca9229b045cbcfe",
+          "bytes": 562
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023146193008869886,
+        "peakRssBytes": 1028096,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/lexer/native-guard/process.json",
+          "sha256": "02c98bd8395f47d181fe7c221092a94dbc7ad59f5812b445f1db20166b1b001b",
+          "bytes": 1198
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.4303000650834292,
+        "peakRssBytes": 60235776,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/local-fold/b2-guard/process.json",
+          "sha256": "a0cabbf1cf917aa26a4f1829e81ee28e49ac65b2437e7717052e657ec1d744c5",
+          "bytes": 827
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7372631260659546,
+        "peakRssBytes": 119898112,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/local-fold/clang-guard/process.json",
+          "sha256": "39d7ca6f886f3f81053cf345d17d52b4b0a230fc42e7713bfc11cf1dca093235",
+          "bytes": 821
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6787213860079646,
+        "peakRssBytes": 143237120,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/local-fold/execute-guard/process.json",
+          "sha256": "03d35d2cc309cd429a5c040daa335f7d4c1c5e3edb7b6a6ff6fd802a3884b2f5",
+          "bytes": 567
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023318405961617827,
+        "peakRssBytes": 1097728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/local-fold/native-guard/process.json",
+          "sha256": "aa20ae9a8316c35925b48af20654404f4a71afe9544f7d6b93713f36067df09b",
+          "bytes": 1209
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.22714850609190762,
+        "peakRssBytes": 55345152,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/local-pair/b2-guard/process.json",
+          "sha256": "2acbbbd7a5d086e2a7933eb076c3011489e35dda940416611df515776fad68d9",
+          "bytes": 827
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.1252808689605445,
+        "peakRssBytes": 145383424,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/local-pair/clang-guard/process.json",
+          "sha256": "cde35635dbc491d916249ed71bf91c058b6bc0519836068429fa11d10a60ce76",
+          "bytes": 820
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0067437859252095,
+        "peakRssBytes": 147791872,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/local-pair/execute-guard/process.json",
+          "sha256": "b89855ddd25be351ace9050501256ce816054551be5cfc8f53b22eb1fdf193aa",
+          "bytes": 565
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.02323786192573607,
+        "peakRssBytes": 1097728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/local-pair/native-guard/process.json",
+          "sha256": "a26fec769a7f20b54447612ed0621b3516db64458f50217eb318b66c27acfc41",
+          "bytes": 1208
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.3689932480920106,
+        "peakRssBytes": 55779328,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/mandelbrot/b2-guard/process.json",
+          "sha256": "6b319c0363a047e6e18c782f987b881e2cfb2cc6c82400792a6efd2a26d5fe77",
+          "bytes": 823
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.207287804922089,
+        "peakRssBytes": 154562560,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/mandelbrot/clang-guard/process.json",
+          "sha256": "32ea9c89ffc8ae7c40e10d5da71349d2c6fc3466f3de9b9fec46472992a383c7",
+          "bytes": 820
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0881001860834658,
+        "peakRssBytes": 152465408,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/mandelbrot/execute-guard/process.json",
+          "sha256": "f4ccc6e83eaa3798635d4d9e56574f4a7bde7b0584d88ee84082b96d7722e990",
+          "bytes": 565
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023202513111755252,
+        "peakRssBytes": 1101824,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/mandelbrot/native-guard/process.json",
+          "sha256": "c2ff7b1f81f6560ef394332d816cc793916cbdfa780cd41cdfb299007fe09f60",
+          "bytes": 1209
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.4709236160852015,
+        "peakRssBytes": 57909248,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/raytrace/b2-guard/process.json",
+          "sha256": "21f48c9748f08e762ddcb9f9131cf3cc7a2c2e1886bf09c2424281da17a85fa9",
+          "bytes": 821
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.5745707280002534,
+        "peakRssBytes": 181080064,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/raytrace/clang-guard/process.json",
+          "sha256": "c4c0a48bf8e2f2cbb9e852d8bca0bba7f0068924cceff870e09a60497f882c86",
+          "bytes": 817
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.4160257149487734,
+        "peakRssBytes": 159662080,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/raytrace/execute-guard/process.json",
+          "sha256": "62f41be98f9903a707ad3ff1eb501c838259b4464ad4390ed5454411806ec6a4",
+          "bytes": 562
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.043567090993747115,
+        "peakRssBytes": 2924544,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/raytrace/native-guard/process.json",
+          "sha256": "1e1b1da768b29474734667c934574b9cd1ea0cd455af550a2be4f7691bc00e5e",
+          "bytes": 1204
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.9989528448786587,
+        "peakRssBytes": 63606784,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/scalar-region-0/b2-guard/process.json",
+          "sha256": "fbbfd4dd1b7b1bf702d2989c0f607b0f5f58f63fa819d9f947f8153350b33e80",
+          "bytes": 837
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7579082960728556,
+        "peakRssBytes": 128471040,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/scalar-region-0/clang-guard/process.json",
+          "sha256": "184d012ee25dfcf598d4d278ee6a31ad467e8f1de8a646ebef37c49c7fe73ca5",
+          "bytes": 830
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6383742401376367,
+        "peakRssBytes": 144248832,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/scalar-region-0/execute-guard/process.json",
+          "sha256": "fb6a848e0616c74aed5499e3907f85dd53e30400c1d6145df400c8a1c0885142",
+          "bytes": 570
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023221176816150546,
+        "peakRssBytes": 512000,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/scalar-region-0/native-guard/process.json",
+          "sha256": "a7303c58a9f18f0a6488b3f11539d7222cc7bffe36ab8773b89fd0ee73b413b7",
+          "bytes": 1220
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.22770351800136268,
+        "peakRssBytes": 59170816,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/scalar-region-8192/b2-guard/process.json",
+          "sha256": "2b00225554e24a2fe921e9dfde47944d6efb94da2b57ea19d93ff5698bd2b338",
+          "bytes": 843
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8633436171803623,
+        "peakRssBytes": 128552960,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/scalar-region-8192/clang-guard/process.json",
+          "sha256": "9c1a228978dcbab8b8301c16cbc22731d9ec8788ad9fd981cb5cbd26155c6c12",
+          "bytes": 837
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7256305920891464,
+        "peakRssBytes": 144392192,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/scalar-region-8192/execute-guard/process.json",
+          "sha256": "696617acdbfea56eedf9c0401e2dfd069c03b4826b275b94db73e7188d9a8747",
+          "bytes": 573
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.02328110416419804,
+        "peakRssBytes": 1101824,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/scalar-region-8192/native-guard/process.json",
+          "sha256": "f50c32c41a732e4545d9cca48d4bc6c848f04eb08ab5901de6a7d276a71d4481",
+          "bytes": 1226
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.22736513102427125,
+        "peakRssBytes": 56807424,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/symreg/b2-guard/process.json",
+          "sha256": "f6d62a316f33da3182ca6c8700315256e2473ecc569f63287e6b09629d15ccd1",
+          "bytes": 818
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0439316590782255,
+        "peakRssBytes": 145616896,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/symreg/clang-guard/process.json",
+          "sha256": "0acdafe1606341241ef0a8e1f9cac18e2bdb3767df39b849b55e58c7ed7d5be4",
+          "bytes": 813
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.1303900168277323,
+        "peakRssBytes": 149835776,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/symreg/execute-guard/process.json",
+          "sha256": "0b9abd62a60d8369a3af797a29dcde94327a70d750d0a4d2fd62ca8fbb41a976",
+          "bytes": 563
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023220266215503216,
+        "peakRssBytes": 1028096,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/symreg/native-guard/process.json",
+          "sha256": "6b86420cec6bf68c9b7a3dd07fbbce5915b69942d961d53772237b4a83297958",
+          "bytes": 1199
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.3896681119222194,
+        "peakRssBytes": 57024512,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-evening-program/b2-guard/process.json",
+          "sha256": "8fbfa98c1f1cb4c5499f90912d4f2fc6a473b803477c40a3b502bd38c12c08cb",
+          "bytes": 847
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.431463398039341,
+        "peakRssBytes": 120594432,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-evening-program/native-guard/process.json",
+          "sha256": "ef72f2d641d2780078683f4b7bfd4830a0037e08675d5363e1b5274c21eb0579",
+          "bytes": 1229
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.14591050194576383,
+        "peakRssBytes": 52772864,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-map-set-ops/b2-guard/process.json",
+          "sha256": "a13a7dfd00626cd4cab04e36fcf230a877bccd1bd3efa9814e5bfc7891a63341",
+          "bytes": 841
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.49270913912914693,
+        "peakRssBytes": 132014080,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-map-set-ops/native-guard/process.json",
+          "sha256": "919e123eecedacc7bbb9b09f12605161fe46c3b184ef6e8b5382b15780b05700",
+          "bytes": 1220
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1866705019492656,
+        "peakRssBytes": 56909824,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-morning-program/b2-guard/process.json",
+          "sha256": "92c8b6a84c26a01ea913b034ccc8ed2f762d4463a88d3f8f791541123044baed",
+          "bytes": 848
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.45214123488403857,
+        "peakRssBytes": 122241024,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-morning-program/native-guard/process.json",
+          "sha256": "dfca6a7daff540d06c139f15a42bc9068a4d3f7e45c8fc59a4e4233e3b54cb12",
+          "bytes": 1230
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1457626789342612,
+        "peakRssBytes": 52862976,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-rle-roundtrip/b2-guard/process.json",
+          "sha256": "153f23787b43230757274b92c0f6496a5bc1b21f1c830f1f2d33b8a2768dbd19",
+          "bytes": 844
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.45193510479293764,
+        "peakRssBytes": 116842496,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/test-rle-roundtrip/native-guard/process.json",
+          "sha256": "5564b90ff4c94460c75c088b76e3baa4670ff695403c02d4861eade7d497efac",
+          "bytes": 1226
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.1459551239386201,
+        "peakRssBytes": 52776960,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/tree-bitonic/b2-guard/process.json",
+          "sha256": "1c665e8e919c31a0640a907c79e6306722040b8a2ddf9c96636d943d4a23c61d",
+          "bytes": 831
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.9621455899905413,
+        "peakRssBytes": 139403264,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/tree-bitonic/clang-guard/process.json",
+          "sha256": "d95e5ced43e6c66b46e854ae6ccc03514bb3242d55005778259843470edba932",
+          "bytes": 825
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0060231080278754,
+        "peakRssBytes": 149942272,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/tree-bitonic/execute-guard/process.json",
+          "sha256": "4cb23381f2c25f0ad437f8f2387bed897cb8263e2bc632a19c8d7d75284294d8",
+          "bytes": 569
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023181315045803785,
+        "peakRssBytes": 1097728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/tree-bitonic/native-guard/process.json",
+          "sha256": "4b453f2c29325f35fe030bbe04b41bf79d54d8ac2cc9786be78e0e99aa1d1245",
+          "bytes": 1213
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.32884119101800025,
+        "peakRssBytes": 59207680,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-editdist-0-17/b2-guard/process.json",
+          "sha256": "89e34973740eb9a5aa6b5d3aa25594af47a909339d72eda2bbe7683b2cea64fb",
+          "bytes": 853
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0240317701827735,
+        "peakRssBytes": 145809408,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-editdist-0-17/clang-guard/process.json",
+          "sha256": "23591faa3b7b44470165e928ccfd6c1ef7c590d72d470c19968555b3ce6efcbb",
+          "bytes": 847
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.9659511670470238,
+        "peakRssBytes": 147800064,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-editdist-0-17/execute-guard/process.json",
+          "sha256": "15fd4d6097374f08633c51e952d49814fc993351593c079d94636cba329c9b7e",
+          "bytes": 580
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023241376969963312,
+        "peakRssBytes": 1097728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-editdist-0-17/native-guard/process.json",
+          "sha256": "b168da8aa9080193ae252effa51f4346299d304033713bcbaea0bac3357b83f7",
+          "bytes": 1234
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.3491503749974072,
+        "peakRssBytes": 58925056,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-editdist-3-123/b2-guard/process.json",
+          "sha256": "81375a7cd54592abd612264f4a3c85be06f9d8ba0a550b4db34c487b707fafb5",
+          "bytes": 854
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.023679036879912,
+        "peakRssBytes": 143863808,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-editdist-3-123/clang-guard/process.json",
+          "sha256": "d0e120032a00dfc0d7462e24e703c4ada66997abda80a0f39f1a0bd26c35eeff",
+          "bytes": 847
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.1191801289096475,
+        "peakRssBytes": 147853312,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-editdist-3-123/execute-guard/process.json",
+          "sha256": "8188ae2d304f03315caca5c9f7bc1da60ce81d2e4cab156c1ea281c347f061be",
+          "bytes": 580
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.02294302498921752,
+        "peakRssBytes": 1032192,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-editdist-3-123/native-guard/process.json",
+          "sha256": "bde42950d963b3bf97e23eb89c5281448b32567f345a77358fad0d2524162dee",
+          "bytes": 1238
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.34932946995832026,
+        "peakRssBytes": 57581568,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-lexer-10-123/b2-guard/process.json",
+          "sha256": "64c82cc4d2a9ecbaae964894c649d6bd886ffbe1d0ffe3ad5a40ba63b2426c50",
+          "bytes": 851
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.2081433858256787,
+        "peakRssBytes": 146587648,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-lexer-10-123/clang-guard/process.json",
+          "sha256": "68b2c2ead8f0d058e4e27bb17c6acd9b3139872296d7fb7ad94d219c4b628f99",
+          "bytes": 843
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0702302230056375,
+        "peakRssBytes": 149684224,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-lexer-10-123/execute-guard/process.json",
+          "sha256": "45a3c14b142b748d15d4c2a337a15731d50151e273b1659810c0e4f472c717cd",
+          "bytes": 579
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.022975503001362085,
+        "peakRssBytes": 1097728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-lexer-10-123/native-guard/process.json",
+          "sha256": "b46400fe1742e3488c9fb3bba1789bb8024eaa3b2b3e38aa4626ef76259389c2",
+          "bytes": 1233
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.43178355717100203,
+        "peakRssBytes": 57294848,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-lexer-6-17/b2-guard/process.json",
+          "sha256": "8aa73e3868f9d8703fbb01a32bf188e81eb779f8afc0e3db621d88f7f5ec8d4b",
+          "bytes": 847
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.2092928129713982,
+        "peakRssBytes": 152039424,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-lexer-6-17/clang-guard/process.json",
+          "sha256": "00e47bd708aab6d6d4435a4691f4f8a665643fea381e34bc287fff1f3065889c",
+          "bytes": 839
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.2214294460136443,
+        "peakRssBytes": 149356544,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-lexer-6-17/execute-guard/process.json",
+          "sha256": "5c58c89f80faa1ff6a69f9cb1e62cab1b54b329104c7cf3f49e87fc4952c5088",
+          "bytes": 576
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.02309445501305163,
+        "peakRssBytes": 1036288,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-lexer-6-17/native-guard/process.json",
+          "sha256": "50261b33da41aef9ad2a4f0b6634ac4d37c12ed45adc573392b7468bfbe648c9",
+          "bytes": 1230
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.47241953387856483,
+        "peakRssBytes": 57810944,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-local-fold-128-0/b2-guard/process.json",
+          "sha256": "a7660022471746002c57a7dcbab9fbb7e7ecef39e40a550501c17be73a925ff2",
+          "bytes": 857
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6765273790806532,
+        "peakRssBytes": 121987072,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-local-fold-128-0/clang-guard/process.json",
+          "sha256": "2d2c64375c890858daed1ea10ad48686490d6b2e666947f95eec3a8210fabedf",
+          "bytes": 853
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6171010849066079,
+        "peakRssBytes": 143216640,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-local-fold-128-0/execute-guard/process.json",
+          "sha256": "8c73857d0f907125a84f7b6cd821f9e6b93d9fd6d18fa30cc5c2b9001d8b0af9",
+          "bytes": 583
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.022869620006531477,
+        "peakRssBytes": 1024000,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-local-fold-128-0/native-guard/process.json",
+          "sha256": "900432db58e415439591253d881b8805270ba2a8b3c8c71a0978de7850746a59",
+          "bytes": 1242
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.20649103401228786,
+        "peakRssBytes": 54431744,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-local-fold-8192-123/b2-guard/process.json",
+          "sha256": "ab6145a02df2d3074e669de643867a17b5ede99161471d8686e5aba7a35b24f9",
+          "bytes": 865
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8605891030747443,
+        "peakRssBytes": 121577472,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-local-fold-8192-123/clang-guard/process.json",
+          "sha256": "827c5108026c0172c0775d4fe21bbcba070b168229d310e6eaa10d5d5d754dd2",
+          "bytes": 859
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6382117348257452,
+        "peakRssBytes": 144441344,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-local-fold-8192-123/execute-guard/process.json",
+          "sha256": "e3b6cbdaa58aab1abd494b0b0f268cf5c7871549c8d33a84cea71511130faf08",
+          "bytes": 586
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023133852053433657,
+        "peakRssBytes": 1028096,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-local-fold-8192-123/native-guard/process.json",
+          "sha256": "2dd31aa1071944b24e8ca5ca0d1b904b36baa89e873eaff3bfadb63605d91193",
+          "bytes": 1245
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.206679857801646,
+        "peakRssBytes": 57176064,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-mandelbrot-grid-4-7/b2-guard/process.json",
+          "sha256": "8df3588633680bfd22d7fc3ade0b5b890a938ca290944a3ee7a9b8739383a82f",
+          "bytes": 863
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0031225690618157,
+        "peakRssBytes": 142299136,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-mandelbrot-grid-4-7/clang-guard/process.json",
+          "sha256": "1f1c529875f7a76cfeb460bf26feba0cc153dd514d365046d44bc4a8ea97eb5a",
+          "bytes": 856
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6602873259689659,
+        "peakRssBytes": 144945152,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-mandelbrot-grid-4-7/execute-guard/process.json",
+          "sha256": "a4f85f7153c9d54cbdfd85c2fe7c79833971081139f7aa346cc657dacfbb12dd",
+          "bytes": 586
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023154234047979116,
+        "peakRssBytes": 1097728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-mandelbrot-grid-4-7/native-guard/process.json",
+          "sha256": "67253f8db041d4761829c8c21483c626caf76c6c9a6956b9f2f3c33c93c23f4a",
+          "bytes": 1245
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.329406735021621,
+        "peakRssBytes": 58494976,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-mandelbrot-grid-5-31/b2-guard/process.json",
+          "sha256": "6355ec0f307d604fcf8aade5e39f712bdfb54b8255c28e28f935605f8a7afcd3",
+          "bytes": 865
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.023787131998688,
+        "peakRssBytes": 139763712,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-mandelbrot-grid-5-31/clang-guard/process.json",
+          "sha256": "5a52067b0ae6757b57f847d35740024011c94c9bda512fd8de8b648a38ef76de",
+          "bytes": 861
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6580635320860893,
+        "peakRssBytes": 144592896,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-mandelbrot-grid-5-31/execute-guard/process.json",
+          "sha256": "a62d57fde46107b661ba425ba5a85a15e33b6fcdcc9eac03566331e1def39512",
+          "bytes": 586
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023256051121279597,
+        "peakRssBytes": 1032192,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-mandelbrot-grid-5-31/native-guard/process.json",
+          "sha256": "5c3d680c314cd6ac716e4330d5d9d18b6bce26c472454c34a7adaf029b5bf4db",
+          "bytes": 1250
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.32921724510379136,
+        "peakRssBytes": 59256832,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-ray-active-256-2240/b2-guard/process.json",
+          "sha256": "e7829f9f1b624ac53e89fbb06c562fb0cbc3043e96b039d7cfea90d960017bee",
+          "bytes": 865
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.5130804269574583,
+        "peakRssBytes": 158916608,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-ray-active-256-2240/clang-guard/process.json",
+          "sha256": "253475f491826ead392692a1f4bc8dc19d8d10160e642a2207251985a2bc43d3",
+          "bytes": 856
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.314337476855144,
+        "peakRssBytes": 158277632,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-ray-active-256-2240/execute-guard/process.json",
+          "sha256": "a412a0dfa72bea1385ded7dc365646f12491eb3111bbd159c0d1176a0c7d5ee4",
+          "bytes": 585
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023242393974214792,
+        "peakRssBytes": 1097728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-ray-active-256-2240/native-guard/process.json",
+          "sha256": "e9d8986a4d57aa385963a4d94c0997081b313e4eb70fdf3ec65d0d8061e3c285",
+          "bytes": 1246
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.9583547369111329,
+        "peakRssBytes": 64618496,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-ray-active-64-2440/b2-guard/process.json",
+          "sha256": "a2ad048b39347821f277caa9947e52d374a91871e7f437fd368e2a2538c4d3b6",
+          "bytes": 861
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.513312233844772,
+        "peakRssBytes": 161841152,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-ray-active-64-2440/clang-guard/process.json",
+          "sha256": "26c5de2517ceadaf08629878e7a4330d54a233aa3f3ff0c87ad97b58058cb41f",
+          "bytes": 856
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.418551275972277,
+        "peakRssBytes": 158232576,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-ray-active-64-2440/execute-guard/process.json",
+          "sha256": "a545568cdb036ba50a0209a89c4c4e0328fe6fc14ae796c284b2d250a38c85b1",
+          "bytes": 585
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023181034019216895,
+        "peakRssBytes": 1097728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-ray-active-64-2440/native-guard/process.json",
+          "sha256": "d221be87e80878cbe967c853e4e4780fa169957d2afd246e887abed4b6dff0b6",
+          "bytes": 1243
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.95825275615789,
+        "peakRssBytes": 63713280,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-symreg-4-17/b2-guard/process.json",
+          "sha256": "f2e67d3c19fbfed21c444d57ac8735e2af5ec058c33144df5c0c76f37cda6097",
+          "bytes": 848
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0433910058345646,
+        "peakRssBytes": 142508032,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-symreg-4-17/clang-guard/process.json",
+          "sha256": "3a1203ec4f423cf373e953c4bc6bcc77e792cb3055553925e55b8bf05da71c84",
+          "bytes": 842
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0893019270151854,
+        "peakRssBytes": 150962176,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-symreg-4-17/execute-guard/process.json",
+          "sha256": "e2fd9c3f881f20332ec817e9feed78a0a235932b3fe97912af09bc73e0fae90d",
+          "bytes": 578
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023192589171230793,
+        "peakRssBytes": 1089536,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-symreg-4-17/native-guard/process.json",
+          "sha256": "5f2f31ced85eaa9c1b5b436b91bfe47312e7c8d5dea2b39d3096ef35ef609687",
+          "bytes": 1229
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.3692791198845953,
+        "peakRssBytes": 57077760,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-symreg-7-123/b2-guard/process.json",
+          "sha256": "70908ae49703c226acf7cf92b20d3bc1dc5bbe052a6af021b7974c7ea380688e",
+          "bytes": 850
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0436087800189853,
+        "peakRssBytes": 144011264,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-symreg-7-123/clang-guard/process.json",
+          "sha256": "e7ed2095940051876267acec92ca7fb7665fb3581afe3769c184b89a176c3e20",
+          "bytes": 844
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0470304060727358,
+        "peakRssBytes": 150302720,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-symreg-7-123/execute-guard/process.json",
+          "sha256": "890f9f64292410c84186e74db7f413626706f9188018958f33f3fb98f45839d6",
+          "bytes": 577
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.02319701388478279,
+        "peakRssBytes": 1032192,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-symreg-7-123/native-guard/process.json",
+          "sha256": "a63bec3ad3dd5f08dd950458261425b061122fe77f599398d42dddbca773b64b",
+          "bytes": 1232
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.3898770890664309,
+        "peakRssBytes": 57085952,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-tree-bitonic-6-17/b2-guard/process.json",
+          "sha256": "f13ef33b8d5084d89d9f877c6e16499ca940adfa2a3d307b0d54a3cfb5fa7c63",
+          "bytes": 860
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.9841132189612836,
+        "peakRssBytes": 137863168,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-tree-bitonic-6-17/clang-guard/process.json",
+          "sha256": "7880b4172e71c6454b8b5aa3f29ebf636dc2141606c3758ac198db2ecd6d4f91",
+          "bytes": 853
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0916055298876017,
+        "peakRssBytes": 149630976,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-tree-bitonic-6-17/execute-guard/process.json",
+          "sha256": "61ce2cf64571d911dfe2cfa48712471372de29685679c7ed1e10c44131df2121",
+          "bytes": 584
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023164571030065417,
+        "peakRssBytes": 1028096,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-tree-bitonic-6-17/native-guard/process.json",
+          "sha256": "a36f149991b07cfd3594de0278207fce00a136c406e924cf9277358f781ee940",
+          "bytes": 1244
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.37491138093173504,
+        "peakRssBytes": 57298944,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-tree-bitonic-9-123/b2-guard/process.json",
+          "sha256": "b149b76de3e6cb9bbb51d2c567de4b0d0d49933b6340291452869c6a8a8d380e",
+          "bytes": 860
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0867954269051552,
+        "peakRssBytes": 137994240,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-tree-bitonic-9-123/clang-guard/process.json",
+          "sha256": "a02b19ba42d772508908dd436d026aae38017e4979a451bfa289c76e233bed6c",
+          "bytes": 857
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0500078441109508,
+        "peakRssBytes": 148484096,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-tree-bitonic-9-123/execute-guard/process.json",
+          "sha256": "c8016295fc868371b081bce8857fafbd4d70c92b90c5e09963fec83a12634fd1",
+          "bytes": 582
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.0232037550304085,
+        "peakRssBytes": 1036288,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad01/variation-tree-bitonic-9-123/native-guard/process.json",
+          "sha256": "617788bd73b6409068cacf7f549911d9f3cf898366789b9233ff424d16023d8a",
+          "bytes": 1245
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.3498854269273579,
+        "peakRssBytes": 57581568,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/complete-generic-row32/b2-guard/process.json",
+          "sha256": "a3ad0a95e30126786b3100a0084f77e6286503b1e46f0d5fe72f64d7b3d46045",
+          "bytes": 853
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.7173180531244725,
+        "peakRssBytes": 134201344,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/complete-generic-row32/native-guard/process.json",
+          "sha256": "bf0eebab64fb0f47e661fbe37ca7ead1c5df8f75885a0756d760d60da4fca9a0",
+          "bytes": 1237
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.16625661798752844,
+        "peakRssBytes": 52469760,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-bst-32/b2-guard/process.json",
+          "sha256": "0ed7e3ff805547820e9deeaf7d7560f654aa4495649e27685a7293573ba50786",
+          "bytes": 837
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.880321386968717,
+        "peakRssBytes": 132501504,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-bst-32/clang-guard/process.json",
+          "sha256": "e22cf5c9e5c3b27524fe2646ebcc6a5e6c0ef47bfc756bbb31d221f9de2b97d9",
+          "bytes": 831
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8227144491393119,
+        "peakRssBytes": 144777216,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-bst-32/execute-guard/process.json",
+          "sha256": "59daec1d38aeb0eba1a037dbc981cfcd89a027f81f920dcf6fe175be7f267740",
+          "bytes": 568
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.0232504119630903,
+        "peakRssBytes": 1101824,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-bst-32/native-guard/process.json",
+          "sha256": "4a135af034e0e797095f7b521c33cd85b9009860cbc67f1af3fdeb49d3e9667f",
+          "bytes": 1217
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.267884616041556,
+        "peakRssBytes": 55029760,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-bst-64/b2-guard/process.json",
+          "sha256": "8a3e0229336baf9b0011565dbfc39e5236a62b61be6859d7d2d701aabebc47fa",
+          "bytes": 837
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.900991884060204,
+        "peakRssBytes": 132493312,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-bst-64/clang-guard/process.json",
+          "sha256": "282f1ba8928bddde7a85d371c278d5854fdafb45b1a43b7736b45b1e43860164",
+          "bytes": 831
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8228053080383688,
+        "peakRssBytes": 145088512,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-bst-64/execute-guard/process.json",
+          "sha256": "51d2f6b33ab8b4bad39c4f3c53191722e73e9107f457e15c0a9998de35a350ca",
+          "bytes": 570
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.02323302603326738,
+        "peakRssBytes": 1032192,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-bst-64/native-guard/process.json",
+          "sha256": "83b363ad9b5cea8e549946e023ecf578c05b6deb629c554481817ef9aa451b29",
+          "bytes": 1218
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.2677154401317239,
+        "peakRssBytes": 54996992,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-closures-256/b2-guard/process.json",
+          "sha256": "fc8487b0a0826f31492c585baec695928d42efdc51d6f6408808b7b4c8fd5289",
+          "bytes": 850
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7168598431162536,
+        "peakRssBytes": 128868352,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-closures-256/clang-guard/process.json",
+          "sha256": "94ae14b432a9f3d55c44da9a18609a4c2c23c92412ae65a916f9f6e3c1fa9316",
+          "bytes": 843
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.5972053890582174,
+        "peakRssBytes": 144093184,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-closures-256/execute-guard/process.json",
+          "sha256": "a96f0006ede322acad61cae5b5b2baa1cb6a94467ea980c0abc3fe119722ce0d",
+          "bytes": 578
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023156350012868643,
+        "peakRssBytes": 1032192,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-closures-256/native-guard/process.json",
+          "sha256": "fde0c6ca9ff875876a022ba05c8394542e8398566860b97dcfd90f0943c75df3",
+          "bytes": 1232
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.2073430169839412,
+        "peakRssBytes": 57376768,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-closures-64/b2-guard/process.json",
+          "sha256": "afef5923d8902ecb8fa872b9507683ce3efadc099eb7134dafcd41dd36c5f62c",
+          "bytes": 849
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7405003439635038,
+        "peakRssBytes": 127455232,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-closures-64/clang-guard/process.json",
+          "sha256": "026ae726898531cfd2377da8d830237a1afa2998cb62e38f25ac81d1a17d4e49",
+          "bytes": 840
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6227161490824074,
+        "peakRssBytes": 144769024,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-closures-64/execute-guard/process.json",
+          "sha256": "9268c0ddde64700b85d6eb02b6795c5eea65de029bce3ccd9f1108a6fef4a416",
+          "bytes": 575
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.02322818199172616,
+        "peakRssBytes": 1028096,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-closures-64/native-guard/process.json",
+          "sha256": "ec853f8dca5328cacc8b259664f58d90c44137252512bf8660a1e5745c530ae0",
+          "bytes": 1231
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.20701822498813272,
+        "peakRssBytes": 58793984,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-expression-128/b2-guard/process.json",
+          "sha256": "0a6e34b4360ccbcecb9d6939fee2260d8aba52526fb29cb4778d779507df39f3",
+          "bytes": 854
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8637083908542991,
+        "peakRssBytes": 132141056,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-expression-128/clang-guard/process.json",
+          "sha256": "d0c5995836ad2fe6d68d429b09e225ec48d5c4dfff0da6f902dda0bda12acbcc",
+          "bytes": 846
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6581054739654064,
+        "peakRssBytes": 144678912,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-expression-128/execute-guard/process.json",
+          "sha256": "3a5ac0dc2122ea1a0d96de124b8574e4ce28eeec515ffd9a01da4bdcbf8129b0",
+          "bytes": 580
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023196103051304817,
+        "peakRssBytes": 1032192,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-expression-128/native-guard/process.json",
+          "sha256": "e16aaffc2cbabf3ab1bab14f8d27e34305343ee8d2f712a2b6c40ff479821c03",
+          "bytes": 1237
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.22761728707700968,
+        "peakRssBytes": 59117568,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-expression-32/b2-guard/process.json",
+          "sha256": "93417c44e48b405f199df4199cbdff939e00a0c005d6db4e7b9301f1113c47b6",
+          "bytes": 853
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7815018040128052,
+        "peakRssBytes": 130007040,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-expression-32/clang-guard/process.json",
+          "sha256": "5738b295626ab42a4de292dd3a8fbdc6e67bf6a682709532669293626c7493bd",
+          "bytes": 845
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6779928160831332,
+        "peakRssBytes": 144871424,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-expression-32/execute-guard/process.json",
+          "sha256": "ad71c1f835efd11820d4a5828161394299140f6cfe9e7bc0a57b3ce9213c170a",
+          "bytes": 579
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023154180962592363,
+        "peakRssBytes": 1093632,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-expression-32/native-guard/process.json",
+          "sha256": "fbe672fb564d113ac3e7d307ee14235a9fe0e4c875ffb34a15bc28441dbd47fc",
+          "bytes": 1235
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.22750590089708567,
+        "peakRssBytes": 59138048,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-list-pipeline-128/b2-guard/process.json",
+          "sha256": "05c6fbf254b7f0fc0f04c3608d013b51796c76b11d0eb27148351639cd68a92b",
+          "bytes": 859
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8222475869115442,
+        "peakRssBytes": 129187840,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-list-pipeline-128/clang-guard/process.json",
+          "sha256": "5b617513f4f5f0cf54984be4b4466217cf4fca1f25245d41d2dfa7067cc8ceab",
+          "bytes": 851
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7213557199575007,
+        "peakRssBytes": 143130624,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-list-pipeline-128/execute-guard/process.json",
+          "sha256": "a88da8fcf999f822d970de6f962b2620aea02cde2fadf5ba433b537ea87339f5",
+          "bytes": 582
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023230284918099642,
+        "peakRssBytes": 1036288,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-list-pipeline-128/native-guard/process.json",
+          "sha256": "065b9f8a489d180ff27193877e03c0bafacda4555e9eac75426aaacec570a355",
+          "bytes": 1244
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.24722484778612852,
+        "peakRssBytes": 57098240,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-list-pipeline-512/b2-guard/process.json",
+          "sha256": "295642895e5c5e49cb38f8087cede85256e60d633b0a8e8658a2a4dc69f93acf",
+          "bytes": 861
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8193467750679702,
+        "peakRssBytes": 129261568,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-list-pipeline-512/clang-guard/process.json",
+          "sha256": "db81366484824f35910fee3937aa08fec20f57148242a0986076c71ca0899db9",
+          "bytes": 853
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6581218929495662,
+        "peakRssBytes": 144429056,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-list-pipeline-512/execute-guard/process.json",
+          "sha256": "679d05727e9d85262cc3c4e8b67f9f6307a7decefc1bf465f1ee8e7debbb6949",
+          "bytes": 581
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.02316676895134151,
+        "peakRssBytes": 1097728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-list-pipeline-512/native-guard/process.json",
+          "sha256": "07968c8c976f8e7c40339ede51bdb8c3dfc2c8dd0c74d3f20c676ac465669c1b",
+          "bytes": 1243
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.3082657780032605,
+        "peakRssBytes": 55058432,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-unicode-text-16/b2-guard/process.json",
+          "sha256": "030d19795c3e86504aa9489d3a798ff81f413a9e11fee5a5969c1cc0f5168be4",
+          "bytes": 855
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8805939538870007,
+        "peakRssBytes": 137134080,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-unicode-text-16/clang-guard/process.json",
+          "sha256": "0f3706deb0562ba491a5bf399a7f729f18dddce804b11b9d734c4491a06f2998",
+          "bytes": 848
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.740950217936188,
+        "peakRssBytes": 145076224,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-unicode-text-16/execute-guard/process.json",
+          "sha256": "581b8f50eed7acda18b3f63c62da1d2c9c2e42e6815b8ca5141289cb3cef25e5",
+          "bytes": 581
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023162571946159005,
+        "peakRssBytes": 1028096,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-unicode-text-16/native-guard/process.json",
+          "sha256": "3507f684ad01b52b685bb2e91eda58a8ea8b4a0865148fa5dafa37846bc4bc88",
+          "bytes": 1238
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.2879020080436021,
+        "peakRssBytes": 57397248,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-unicode-text-64/b2-guard/process.json",
+          "sha256": "5b30f1e3cae084076579b1adec763fd5a822d2113fc06bd48b89dca5303a952c",
+          "bytes": 857
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.9825401070993394,
+        "peakRssBytes": 132964352,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-unicode-text-64/clang-guard/process.json",
+          "sha256": "b08a7c5d169c79c9afd3e46825bd55d4eb4c9e5c2804fd5f6841c6f28fcdf184",
+          "bytes": 849
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7814122319687158,
+        "peakRssBytes": 145522688,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-unicode-text-64/execute-guard/process.json",
+          "sha256": "0d97e1b247b440a9e7cf3e0142445defced0dbad4779af00f63d2c1b1c38e368",
+          "bytes": 581
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023183736018836498,
+        "peakRssBytes": 1032192,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/coverage-unicode-text-64/native-guard/process.json",
+          "sha256": "9b60c7de06a6a6cb9686421fcb34952b259fda3a6c68492e92dd243a89b999cd",
+          "bytes": 1239
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.30818536900915205,
+        "peakRssBytes": 54902784,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-evening-program/b2-guard/process.json",
+          "sha256": "fe245ca4ee17708097c670a017dd5dabe9c573682dd4e3817901af7a1fbed380",
+          "bytes": 847
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.166167662013322,
+        "peakRssBytes": 247603200,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-evening-program/clang-guard/process.json",
+          "sha256": "6cdd2834fbbae6cfcb7c9c3b8433db8406e207568dfe363c1784fb8471cf259b",
+          "bytes": 840
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 5.365993203828111,
+        "peakRssBytes": 204779520,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-evening-program/execute-guard/process.json",
+          "sha256": "93bd64fe17ce25429a5530f54619afc2ccc75003911d0ef0eb9b1810c3bed0fe",
+          "bytes": 577
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023184126941487193,
+        "peakRssBytes": 1089536,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-evening-program/native-guard/process.json",
+          "sha256": "68b7721d9ba1c23078e91a3139fb2cdf2a0fc8997152ee93e1f2d382f6095bee",
+          "bytes": 1231
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 3.0720302308909595,
+        "peakRssBytes": 90959872,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-map-set-ops/b2-guard/process.json",
+          "sha256": "aa6e9eabca74d9b042ae2c9a33705f15f2f142a3bbfc50b0526e820b1d8d0383",
+          "bytes": 841
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.4739054979290813,
+        "peakRssBytes": 263909376,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-map-set-ops/clang-guard/process.json",
+          "sha256": "8b672e13c64b0b3faf282a42a8561effd7ab6a892310fa35d7c19de8a5e82202",
+          "bytes": 831
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 6.3249178868718445,
+        "peakRssBytes": 215310336,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-map-set-ops/execute-guard/process.json",
+          "sha256": "1cb97e65980d48ac1fcfacf16d0c752df79361e533207105f493ae0ef101201b",
+          "bytes": 572
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023237537126988173,
+        "peakRssBytes": 1036288,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-map-set-ops/native-guard/process.json",
+          "sha256": "ff8ec6d4f299d25973099a78188685017f9dd2dd87a263a4b52631f799d782ca",
+          "bytes": 1221
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 3.518933146027848,
+        "peakRssBytes": 97959936,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-morning-program/b2-guard/process.json",
+          "sha256": "c325bb2b083e456fa75022ed1a1cddc33543fa2b9c74760aec6f92741b3daade",
+          "bytes": 849
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.8195483260788023,
+        "peakRssBytes": 214315008,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-morning-program/clang-guard/process.json",
+          "sha256": "dd4d7f26747b3a7ffaf1ccc1a027a930714dd1dc7af0bb0c1c4481581940830d",
+          "bytes": 840
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 4.426785883959383,
+        "peakRssBytes": 197963776,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-morning-program/execute-guard/process.json",
+          "sha256": "9a0877be50f9eac1a3b7004cd7c513c145d6836e8563d43bcb48025bdec8d184",
+          "bytes": 575
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023224690929055214,
+        "peakRssBytes": 1028096,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-morning-program/native-guard/process.json",
+          "sha256": "b7b47530f845657a6564e4a4a40cbd35da58cf9b87215eef82fcff85e8b39b7b",
+          "bytes": 1229
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.320967514999211,
+        "peakRssBytes": 80572416,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-rle-roundtrip/b2-guard/process.json",
+          "sha256": "f08afdd6e43c36dfd8a93fdd2c234aba7d23387ef06c1e937749b45ad5533d66",
+          "bytes": 844
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.9044239860959351,
+        "peakRssBytes": 129261568,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-rle-roundtrip/clang-guard/process.json",
+          "sha256": "9502248616beaac86461c9ae57c8580a1fbb27c8277e85b96c804fb48c1aa1b6",
+          "bytes": 837
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8701463560573757,
+        "peakRssBytes": 144867328,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-rle-roundtrip/execute-guard/process.json",
+          "sha256": "1f7853d21bdb5a74640bd3732233fbff1eb5264310b6afa8c37d44b52e148e82",
+          "bytes": 574
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.02319852402433753,
+        "peakRssBytes": 1097728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad02/test-rle-roundtrip/native-guard/process.json",
+          "sha256": "57595cbbdb9ac9f570d597666ff0ab1636ebc93ce37bbc4b6c0c4853b2bb16a2",
+          "bytes": 1226
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.2678559471387416,
+        "peakRssBytes": 55574528,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad03/complete-generic-row32/b2-guard/process.json",
+          "sha256": "9ecdbfa76a51c937ccea7e3518d2f84c2bb5f7c845840cd886c6876db0e44044",
+          "bytes": 851
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0849361889995635,
+        "peakRssBytes": 145854464,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad03/complete-generic-row32/clang-guard/process.json",
+          "sha256": "e119264fa3e33ceebaedfa32ccd5fc2f3e1b6a3225517fa4640022e72c8f4a61",
+          "bytes": 843
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.04832266503945,
+        "peakRssBytes": 148672512,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad03/complete-generic-row32/execute-guard/process.json",
+          "sha256": "8b92bfc345250c7688f9abc453e84edadefb3fb5f7025159e482f07881191396",
+          "bytes": 578
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.02320518298074603,
+        "peakRssBytes": 1032192,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/broad03/complete-generic-row32/native-guard/process.json",
+          "sha256": "f256b1dff4461a1be373c8b5a1185e103a70006421365d1bbd2af2c3bc3d97a0",
+          "bytes": 1235
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.36961505305953324,
+        "peakRssBytes": 56393728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/cache-control01-acquire-guard/process.json",
+          "sha256": "8ffa758e3285c0da3d08109fd804606616cbafb18b0ea2e06310c20aaefe7f48",
+          "bytes": 712
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.9219264471903443,
+        "peakRssBytes": 178212864,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/cache-control02-acquire-guard/process.json",
+          "sha256": "f7aa4d02a872b851ba1956e2463601c3ecb97cd25d90d8994b968f972921b9ce",
+          "bytes": 711
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 1.0640207228716463,
+        "peakRssBytes": 176205824,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/cache-control03-acquire-guard/process.json",
+          "sha256": "17447d3b2b7b82ecbbc03c713339aa0fbabced9d2010e3c08d6515f3985ac4c5",
+          "bytes": 708
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 6.113190999021754,
+        "peakRssBytes": 544731136,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/cache-control03-build-guard/process.json",
+          "sha256": "9c7690e4776e40655d22b55a35892e0bdd9a411d74ad6ac14029de4d3a148495",
+          "bytes": 813
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 5.018857727991417,
+        "peakRssBytes": 208117760,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/cache-control03-js-guard/process.json",
+          "sha256": "293aa11609f314cfae724271d9d2d2783890b11050db920ee9d85cea242fb6e2",
+          "bytes": 627
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.06413402082398534,
+        "peakRssBytes": 50860032,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/cache-control03-native-guard/process.json",
+          "sha256": "14cdb17f65d4e261d4a60fa2a0ea9aa697434a5a1f3ed9ab5175ddd2a7db4b47",
+          "bytes": 562
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.0232538681011647,
+        "peakRssBytes": 1028096,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/cache-js01-acquire-guard/process.json",
+          "sha256": "391ae712b379f6b65c5cc640e7f4965fbab0564604092967c2d86ce87662190c",
+          "bytes": 774
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 17.407167514087632,
+        "peakRssBytes": 850681856,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/cache-products01-guard/process.json",
+          "sha256": "d04f61bf6dc5be4ba73ea3940d7022bfd0e35787ff305b7a36c304e26c6216e3",
+          "bytes": 950
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 8.489162682089955,
+        "peakRssBytes": 391761920,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/js-development01-guard/process.json",
+          "sha256": "3839c47bfeed3c2b200cc77877686a597da5302685527de5b640f917ebd851d2",
+          "bytes": 699
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 36.4259326341562,
+        "peakRssBytes": 1728622592,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/js01-acquire-guard/process.json",
+          "sha256": "92d1568641e5e2f1506b3c32c0be9e1fdeb25457c640376adb011a120c9507eb",
+          "bytes": 758
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 12.342807710869238,
+        "peakRssBytes": 808497152,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/live02/1-functions65-native-guard/process.json",
+          "sha256": "4aa7e59cd29bbe7a557d167845b4314f3fe318d9ff8af3d6c281e1e87dce8d13",
+          "bytes": 1021
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.8119365831371397,
+        "peakRssBytes": 29917184,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/live02/1-lexer_original-native-guard/process.json",
+          "sha256": "e44194640a36ac56f84e603341e850fd3f7fb816eda673fb3b79efa1c13729cf",
+          "bytes": 1028
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.05684111895971,
+        "peakRssBytes": 41541632,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/live02/1-map_closed-native-guard/process.json",
+          "sha256": "9e63b41f5f347372ac081d9e127350b4ede32cfe21978277723d476e89f9e04d",
+          "bytes": 1006
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 3.642479042056948,
+        "peakRssBytes": 72724480,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/live02/1-numeric_closed-native-guard/process.json",
+          "sha256": "42a81ac72f251ab42f31088d1d96352a6f94d6e7ee32b4098240552352caddb3",
+          "bytes": 1016
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.6905065788887441,
+        "peakRssBytes": 34398208,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/live02/1-small-native-guard/process.json",
+          "sha256": "c0ab75f341c34d3c2b7b295c9925dac24d57c046d2eda99cca1a8cb47b4b1571",
+          "bytes": 1008
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.64861000305973,
+        "peakRssBytes": 27815936,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/live02/1-unicode-native-guard/process.json",
+          "sha256": "820407e7383332f4bdc05b9fca0a073b47ec3de1c50864a433edb66317788ac3",
+          "bytes": 1002
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.6504004129674286,
+        "peakRssBytes": 24477696,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/map-js01-guard/process.json",
+          "sha256": "7e2dbae80b8caf054e19b90fcf5f8ddb2d73fc9575386a95ae523ead4a12409b",
+          "bytes": 1160
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 6.706477449042723,
+        "peakRssBytes": 286887936,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/native01-acquire-guard/process.json",
+          "sha256": "5a40e6781e259fafe0933bd930ec0946faf048eb76b78706eb85eccf0b74db41",
+          "bytes": 762
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 90.23984035197645,
+        "peakRssBytes": 1236393984,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/native01-build-guard/process.json",
+          "sha256": "51c694b47d4cc6629ce2855e018cd4999e643728cdea600a5eee2b32b292604e",
+          "bytes": 804
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 194.2669150568545,
+        "peakRssBytes": 4440768512,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/native02-acquire-guard/process.json",
+          "sha256": "1182024afdcfbc772805d7d0979f9efab54e8c4b02e1a68298f7ef43a2c1f9b2",
+          "bytes": 756
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 76.245943257818,
+        "peakRssBytes": 1284947968,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/native02-build-guard/process.json",
+          "sha256": "3472c12d33b67ada195abaec4374b840d0a2d61d97c8f1c49f5a915ee782bd1e",
+          "bytes": 805
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 175.07368456199765,
+        "peakRssBytes": 4289155072,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/observer-native-build-guard/process.json",
+          "sha256": "5748010bd0a44cf7b9ad80b1a3ebecd0e9a30e9fb667c4e591273117a67c490e",
+          "bytes": 825
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 16.08351758401841,
+        "peakRssBytes": 373067776,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/observer-native-guard/process.json",
+          "sha256": "391d15f86ae26285f9422a03c5d2ec980c46ddc5cb51b19afc4134a501553c11",
+          "bytes": 558
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.02326290891505778,
+        "peakRssBytes": 1093632,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/observer-new-acquire-guard/process.json",
+          "sha256": "549351133fad6dfacf7da02df9ff81e0ba88dfa51ea2d55dc04844257ce7fa14",
+          "bytes": 781
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 11.898100821999833,
+        "peakRssBytes": 806875136,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/observer-new-js-guard/process.json",
+          "sha256": "2af5280c6852ce1b1b71ba3d779e8438c7e17695e385706b6c6d645512b5e5e2",
+          "bytes": 627
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.08482940401881933,
+        "peakRssBytes": 52473856,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/observer-old-acquire-guard/process.json",
+          "sha256": "9d6c1d1348a7a588373f6086dbe92ab1e78e0e929d504cbf4d112a10068d2720",
+          "bytes": 784
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 8.875619773985818,
+        "peakRssBytes": 585961472,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/observer-old-js-guard/process.json",
+          "sha256": "de7966fbfac3bcc5e8bac11ab4c75700eafc59e12cf982465578d21d10754a52",
+          "bytes": 627
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.08452204708009958,
+        "peakRssBytes": 51126272,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/ownership-build-guard/process.json",
+          "sha256": "ae92efc7b6a22cf0571b0be0b2a8a4a0f962cac41735d9432f7c646cd882dfba",
+          "bytes": 925
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.3098745869938284,
+        "peakRssBytes": 139362304,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/ownership-lexer-guard/process.json",
+          "sha256": "aad0c715703224c475e7cddc5a1d1fc74cb31ea14f829a766b34f1d61b31f612",
+          "bytes": 1251
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 6.972501214127988,
+        "peakRssBytes": 44933120,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/ownership-small-guard/process.json",
+          "sha256": "92dacd9a843422b6184d97f313133aa1057180290ed245b3b87343d50d8c58ec",
+          "bytes": 1239
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 3.190477709984407,
+        "peakRssBytes": 36204544,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/ownership02-build-guard/process.json",
+          "sha256": "757d28152f4753bfcfef2ac82c0966df14840ad8fc903722c5198c7610f775ed",
+          "bytes": 1010
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.26915613398887217,
+        "peakRssBytes": 139567104,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/ownership02-map-guard/process.json",
+          "sha256": "03f29a3cffe0517b24eee4019bcf83e1c90be4bb1cbff715fc9d7b382bcafe1b",
+          "bytes": 1430
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 12.29484366090037,
+        "peakRssBytes": 82882560,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-functions65-b2-guard/process.json",
+          "sha256": "e0b2a6ee00aece5b2966d417a774e18a803a8f0cf2d99f86a56581766a3e0df9",
+          "bytes": 836
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8397177900187671,
+        "peakRssBytes": 137703424,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-functions65-cached02-guard/process.json",
+          "sha256": "ead92be3de197d44ec2a1fcf03832717f1b317879f2b1ca313fbc547b996ce1f",
+          "bytes": 1223
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.30844657705165446,
+        "peakRssBytes": 54702080,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-functions65-native01-guard/process.json",
+          "sha256": "a9cbad15d1215e18bd9ba050db64a418be77d74fd12fdd274a30ef2c15bea184",
+          "bytes": 1026
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.4806735368911177,
+        "peakRssBytes": 33427456,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-functions65-native02-guard/process.json",
+          "sha256": "9c8b9fb9bcd4ed436190a39313918e5b25213d1b74c14880b9fb3afc6cd6d0f2",
+          "bytes": 1026
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.8097567229997367,
+        "peakRssBytes": 29814784,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-functions65-typescript-guard/process.json",
+          "sha256": "5160b868ed4e9f84fe2a9b0fcbbf1d844ff49a7312fdd2c373f3a8dcc139f821",
+          "bytes": 854
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7787759921047837,
+        "peakRssBytes": 142012416,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-lexer_original-b2-guard/process.json",
+          "sha256": "0b42355d69edaa8a20df41df190042edec7427d76e3d9dd67b180f59041359ec",
+          "bytes": 846
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.1659756370354444,
+        "peakRssBytes": 155357184,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-lexer_original-cached02-guard/process.json",
+          "sha256": "25779e9d47795e7564a00f02473bc00f586a0a9628f7c637d2ce4efe50249e61",
+          "bytes": 1230
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.5725496420636773,
+        "peakRssBytes": 58134528,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-lexer_original-native01-guard/process.json",
+          "sha256": "fa30436c3831066b30059d8eccaa872fbaae84e1126d7af2300370b6db401db2",
+          "bytes": 1034
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.7441253878641874,
+        "peakRssBytes": 41226240,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-lexer_original-native02-guard/process.json",
+          "sha256": "d2bbe0c0a795e9c0a43c642058397684ee94b84296750a865fae67c4f3c69f4a",
+          "bytes": 1034
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.0542979559395462,
+        "peakRssBytes": 41304064,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-lexer_original-typescript-guard/process.json",
+          "sha256": "603c0fe66d3e092850ed83e8392a98f06c7f0b250e6c2f0b6c527d705ff901e6",
+          "bytes": 862
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8399212958756834,
+        "peakRssBytes": 149286912,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-map_closed-b2-guard/process.json",
+          "sha256": "daf619f58fe8e31d9d0588acc9bd94036c5c4fdcb90841d10c7212b01cb330df",
+          "bytes": 822
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.6767159379087389,
+        "peakRssBytes": 220123136,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-map_closed-cached02-guard/process.json",
+          "sha256": "2ded4ed0dd533ebd409becad4d14070b648e0de6a553addc56d5b842482b70e1",
+          "bytes": 1208
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.1787494451273233,
+        "peakRssBytes": 79712256,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-map_closed-native01-guard/process.json",
+          "sha256": "d802381e139c11d815941d3f81e96a88f3ae9c64362599b8c2055c386686ba89",
+          "bytes": 1011
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 4.798680856125429,
+        "peakRssBytes": 72757248,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-map_closed-native02-guard/process.json",
+          "sha256": "d93cab284b7a36973684345a0fbfeb2f79b968c327b6017742ac62a6d044a6a9",
+          "bytes": 1012
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 3.6607526978477836,
+        "peakRssBytes": 73089024,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-map_closed-typescript-guard/process.json",
+          "sha256": "b6401c3c25ede30212a678e00c7dfe54dfe4113c3de0dadcbd3fc7cae53df497",
+          "bytes": 838
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.167984550818801,
+        "peakRssBytes": 159760384,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-numeric_closed-b2-guard/process.json",
+          "sha256": "410317fe13a7832f1c8b755fc80c4b3227309616f5c18cb6ae83088c46d8a0f0",
+          "bytes": 832
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6558331768028438,
+        "peakRssBytes": 121552896,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-numeric_closed-cached02-guard/process.json",
+          "sha256": "d41286fed048540f52d2f9a1701c71aeacc74abfe719f6b7af46cde3b10b87d6",
+          "bytes": 1214
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.1863934500142932,
+        "peakRssBytes": 55222272,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-numeric_closed-native01-guard/process.json",
+          "sha256": "ff87fc8b04cdae59f9a8ca02fabb3f163a5751db93c7acbcb7ba3b7c03f362b9",
+          "bytes": 1017
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.27661110390909,
+        "peakRssBytes": 33353728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-numeric_closed-native02-guard/process.json",
+          "sha256": "e18fee0254822541759f80051eda9240b182ac7d1635aefb9ec1573b6d78bdb5",
+          "bytes": 1020
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.6888731520157307,
+        "peakRssBytes": 32395264,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-numeric_closed-typescript-guard/process.json",
+          "sha256": "fe10ceaae940895c3cd88e9de3db6a59adb908795b6465fbfe460133a68a6407",
+          "bytes": 846
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7583398630376905,
+        "peakRssBytes": 134545408,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-small-b2-guard/process.json",
+          "sha256": "7e48f0001603cbd999a80a3da4a3f3db15a1a2d1f8a673486893c310bc956d7b",
+          "bytes": 826
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.49268829612992704,
+        "peakRssBytes": 116596736,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-small-cached02-guard/process.json",
+          "sha256": "de35e38ea2dc99ea340832e4d9618ed9f466447b9a5a2fbd7f3057e285acf4ff",
+          "bytes": 1211
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.14592899312265217,
+        "peakRssBytes": 54583296,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-small-native01-guard/process.json",
+          "sha256": "e17c259e2c092aca6687080e184068d61e5ef993a5e52f54b16fafd0de3665f4",
+          "bytes": 1012
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.216294961050153,
+        "peakRssBytes": 34529280,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-small-native02-guard/process.json",
+          "sha256": "90880fb2bc43061210608d14ea1d14c316370413b4de9e892735a9d44382df19",
+          "bytes": 1011
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.64749765698798,
+        "peakRssBytes": 29978624,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-small-typescript-guard/process.json",
+          "sha256": "7899a4af1bc21a89d5cc515d0bb7c9246811bd6ec1667b12a2b8ed9388630055",
+          "bytes": 841
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7174417630303651,
+        "peakRssBytes": 132784128,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-unicode-b2-guard/process.json",
+          "sha256": "9bf44883ddab0f80ca9c2e4023c653d057c9981bb41b5e03957f8f2b8dd3f348",
+          "bytes": 818
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.49249149789102376,
+        "peakRssBytes": 116985856,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-unicode-cached02-guard/process.json",
+          "sha256": "2db016e29290fd73997a053d7a6d89c0e824d93d0210de69153093ecd9294679",
+          "bytes": 1202
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.1458884929306805,
+        "peakRssBytes": 54472704,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-unicode-native01-guard/process.json",
+          "sha256": "9bcfe41e6d0968eeb1be64f65f41b6459104fef985f02d674f336b821f178fed",
+          "bytes": 1006
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.2159711609128863,
+        "peakRssBytes": 34529280,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-unicode-native02-guard/process.json",
+          "sha256": "258f16f5a0b270aec01228d12ebfc2c589c6e04f268c1212ba0ac78f4b57dd69",
+          "bytes": 1005
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.6477590268477798,
+        "peakRssBytes": 32083968,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/1-unicode-typescript-guard/process.json",
+          "sha256": "730bd61dfab414f14e2db87073f8a5cf6d2be5791cf97f9fbf031c8f4174e4f8",
+          "bytes": 833
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7176430760882795,
+        "peakRssBytes": 133541888,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-functions65-b2-guard/process.json",
+          "sha256": "b829053f117ec0f2b369cadf94711e47af0b99a0cf302db911b5f66d8ee408da",
+          "bytes": 837
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8399804949294776,
+        "peakRssBytes": 138645504,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-functions65-cached02-guard/process.json",
+          "sha256": "f73eb8a29f66208b95db26a1bd5cba94314dd409a19b11bc27bc59ce3aebe828",
+          "bytes": 1220
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.3084131081122905,
+        "peakRssBytes": 54456320,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-functions65-native01-guard/process.json",
+          "sha256": "d4085fae9e6621c9014f795b044ae8c3434dcc07e18b7fbaad68b0675ecbd571",
+          "bytes": 1026
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.4603152610361576,
+        "peakRssBytes": 32698368,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-functions65-native02-guard/process.json",
+          "sha256": "06d7ddc6ab59d882ab59f48d364ba071a707fb505c227da1d389f4cdd586259e",
+          "bytes": 1026
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.8099359599873424,
+        "peakRssBytes": 32694272,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-functions65-typescript-guard/process.json",
+          "sha256": "04b14ce12640f97798347ab03d9f626542cf42ba32e832c6bd862abe16a27473",
+          "bytes": 854
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8196597169153392,
+        "peakRssBytes": 140996608,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-lexer_original-b2-guard/process.json",
+          "sha256": "3d8ca5ff969e8d0dfc732018ee0bce272f2c897efcb6506789e69b03f63c16b4",
+          "bytes": 846
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.2089521959424019,
+        "peakRssBytes": 153362432,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-lexer_original-cached02-guard/process.json",
+          "sha256": "cd89116ee4dccc1d539f3f1af88d4c074a31cd4879e2280e1e8a8ce21a9e2c45",
+          "bytes": 1230
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.5523600310552865,
+        "peakRssBytes": 60350464,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-lexer_original-native01-guard/process.json",
+          "sha256": "d659397417f424ef3dba1574f3b26ceed4190ff021cf1973b78e7a7c38286d8d",
+          "bytes": 1033
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.744797765975818,
+        "peakRssBytes": 43692032,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-lexer_original-native02-guard/process.json",
+          "sha256": "d579f536b3998ebbd4b53ec90461b4187296630b69d08d2ae6126e0d7ee3697d",
+          "bytes": 1032
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.034040265949443,
+        "peakRssBytes": 41889792,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-lexer_original-typescript-guard/process.json",
+          "sha256": "00c8ed683890306775badd01b13a223db2f775b66650b4c9c33024a4c5d5c377",
+          "bytes": 861
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.840027972124517,
+        "peakRssBytes": 157138944,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-map_closed-b2-guard/process.json",
+          "sha256": "4e0ff8d420e047c281d6fbb0e41e2b8fcf380c31dce9f73438e273ff6dbc733d",
+          "bytes": 824
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.8399949190206826,
+        "peakRssBytes": 220819456,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-map_closed-cached02-guard/process.json",
+          "sha256": "5d06700d92e6739df89b3c3d3ba0b59858d525d9c7a0e771f084bcfc7391b4b1",
+          "bytes": 1208
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.2210533670149744,
+        "peakRssBytes": 78790656,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-map_closed-native01-guard/process.json",
+          "sha256": "cbefddc2b805c3acc1c735216263a0bb80ad8f9428e5a12a41b58eab7269296b",
+          "bytes": 1011
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 4.7770059641916305,
+        "peakRssBytes": 73904128,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-map_closed-native02-guard/process.json",
+          "sha256": "8fb2837c7f87e4f8b58062489bb6742fcaa21d4ca03cecfe7f6861affa03ada2",
+          "bytes": 1011
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 3.642581169027835,
+        "peakRssBytes": 73043968,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-map_closed-typescript-guard/process.json",
+          "sha256": "a1e591ccaff1bc2db79ae65e245afbef170394578658ba7a099c63187a81c2ad",
+          "bytes": 837
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.330191106069833,
+        "peakRssBytes": 159891456,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-numeric_closed-b2-guard/process.json",
+          "sha256": "0d0a27ca4937872e3fe92ffd6903165b196c90f1403753968714cad08838a1d5",
+          "bytes": 832
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6354524709749967,
+        "peakRssBytes": 121733120,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-numeric_closed-cached02-guard/process.json",
+          "sha256": "05f85d031fe5077306fc9fac6d906e1a1f7b62793eaf722294b803a43018c5ac",
+          "bytes": 1216
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.1864343909546733,
+        "peakRssBytes": 55095296,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-numeric_closed-native01-guard/process.json",
+          "sha256": "1bb643ac7d391ac5051a222c153377dff69de9ea9f53544ba3254eb047b6b5e3",
+          "bytes": 1020
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.2788377350661904,
+        "peakRssBytes": 32460800,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-numeric_closed-native02-guard/process.json",
+          "sha256": "014112a170d3b54359abf0e5ca0032199c170005d68244c8f42228eb75fb7fec",
+          "bytes": 1019
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.6885225248988718,
+        "peakRssBytes": 34529280,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-numeric_closed-typescript-guard/process.json",
+          "sha256": "e8594617409d4ac77e800ba00c26862aad597279ff60a13dae435a645ca92ad7",
+          "bytes": 847
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7584242019802332,
+        "peakRssBytes": 135151616,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-small-b2-guard/process.json",
+          "sha256": "16ea1983f9c4e247080dd125df6031f123acdf30ceb8ba4a805a9a03af3c26c7",
+          "bytes": 826
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.5330068510957062,
+        "peakRssBytes": 114892800,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-small-cached02-guard/process.json",
+          "sha256": "af7927984326f40d0c775f1dd56f693ca5233a43169b201c78a460ebf9bfaa75",
+          "bytes": 1211
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.14596829703077674,
+        "peakRssBytes": 56664064,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-small-native01-guard/process.json",
+          "sha256": "487977205166517ed33bf87a07d44da2b4a2cd8ee3880c98c87088510e70c0a9",
+          "bytes": 1011
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.236742396838963,
+        "peakRssBytes": 34447360,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-small-native02-guard/process.json",
+          "sha256": "6074b1ce33c6759d09143105b9eb62553ee2cd0794c81f7c47889357012c3f04",
+          "bytes": 1012
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.647690101992339,
+        "peakRssBytes": 29958144,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-small-typescript-guard/process.json",
+          "sha256": "11b0423d3b993770fa54c4719b972903b22427d1f0d12b7bd1cc62d1046dc69e",
+          "bytes": 842
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7176111869048327,
+        "peakRssBytes": 134397952,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-unicode-b2-guard/process.json",
+          "sha256": "0bf964a4e4f9359234a67a197c6d27c9a9bd125100288979b641726a1966abb4",
+          "bytes": 819
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.49263797304593027,
+        "peakRssBytes": 119017472,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-unicode-cached02-guard/process.json",
+          "sha256": "0e9ff867955f75cae0a4fd9cd4b1a00be6f47800c493b008bf7470137c1be2ac",
+          "bytes": 1203
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.14591032592579722,
+        "peakRssBytes": 54620160,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-unicode-native01-guard/process.json",
+          "sha256": "789fbfe6d3e05c3dd01551273ae124cdac343433bd0c34356abc71aa1f293ebd",
+          "bytes": 1006
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.2159566849004477,
+        "peakRssBytes": 35713024,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-unicode-native02-guard/process.json",
+          "sha256": "58541fa8bf405c4e69cba41e9a1420ce1a1cfe0e3695376652871badb1a27e0c",
+          "bytes": 1005
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.6482118810527027,
+        "peakRssBytes": 30048256,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/paired01/2-unicode-typescript-guard/process.json",
+          "sha256": "464263cac561dbdb1b0c35f9c148caea3fc638935c4ee40d8dcb035f45e89717",
+          "bytes": 834
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.6971315809059888,
+        "peakRssBytes": 132677632,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-functions65-b2-guard/process.json",
+          "sha256": "ad701739188e06c0fa3adf256f92ade3f94d52d562805fe60032aff1d001471c",
+          "bytes": 838
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.9708353721071035,
+        "peakRssBytes": 216285184,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-functions65-cached02-guard/process.json",
+          "sha256": "6295d642f89e59ee17ff5a6f48cede8412f916bfd3ca792915f027e73c077b1f",
+          "bytes": 1220
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.324753917986527,
+        "peakRssBytes": 56053760,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-functions65-typescript-guard/process.json",
+          "sha256": "54a5cd8ec57ac6fdf767836f21c43f2584f139f15d3428152faf3b836110d885",
+          "bytes": 854
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.7589920198079199,
+        "peakRssBytes": 217661440,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-lexer_original-b2-guard/process.json",
+          "sha256": "226ba4c69c01ea2c25a5271917838d3bc6701f3bda444f9fcbbcd6d2fbe20b06",
+          "bytes": 846
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.7382859599310905,
+        "peakRssBytes": 281186304,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-lexer_original-cached02-guard/process.json",
+          "sha256": "454ba291d3aa1b8a159f8c0a9633f8096d2926900abe533bb7932fe6d5875139",
+          "bytes": 1230
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.5446161369327456,
+        "peakRssBytes": 59097088,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-lexer_original-typescript-guard/process.json",
+          "sha256": "6ff6b189041285e055fa6c5031cc48c4cd2273c431212e4547737fb5812959bb",
+          "bytes": 862
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.3100001071579754,
+        "peakRssBytes": 268521472,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-map_closed-b2-guard/process.json",
+          "sha256": "20d5ff402b5304de3fdaf1d49ba6f0b250451148cd5946a873c1edc8d95d0b56",
+          "bytes": 822
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 4.455320393899456,
+        "peakRssBytes": 332255232,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-map_closed-cached02-guard/process.json",
+          "sha256": "ac3134088efbf4e4a661353c89f17a5a8b3fd12b87233909ec2a39e12a3d82bb",
+          "bytes": 1207
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 12.719886485021561,
+        "peakRssBytes": 79949824,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-map_closed-typescript-guard/process.json",
+          "sha256": "cc9a63e52275f36c0387e763e4ca4d30f61a2e6a519df302d7542a046fb49092",
+          "bytes": 838
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 3.243091337149963,
+        "peakRssBytes": 301211648,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-numeric_closed-b2-guard/process.json",
+          "sha256": "9dfaf0eee99ffe40340d541760e1b466a9e86833fa5654a355169f6243506715",
+          "bytes": 832
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.3909212099388242,
+        "peakRssBytes": 169545728,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-numeric_closed-cached02-guard/process.json",
+          "sha256": "08614603a3c2afaf3529e92a51df1e7aacb08bc3933e47c0bc8d429e7d382d0c",
+          "bytes": 1215
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.5933184891473502,
+        "peakRssBytes": 57569280,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-numeric_closed-typescript-guard/process.json",
+          "sha256": "4c4292fdd26785451f147aaefe3d08bd9b78d5d95026372a8cebd82df4ef5df4",
+          "bytes": 847
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.676831090124324,
+        "peakRssBytes": 222650368,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-small-b2-guard/process.json",
+          "sha256": "fa80c4c81183375374bf2443c45f2757baf577c9949bdc9d03db5db4297d8f37",
+          "bytes": 826
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.0273895610589534,
+        "peakRssBytes": 163872768,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-small-cached02-guard/process.json",
+          "sha256": "907165c5ae86a932971c1b96539b7e55519d281b15d7835b2b956c51ba120dd1",
+          "bytes": 1211
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.36994598084129393,
+        "peakRssBytes": 54583296,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-small-typescript-guard/process.json",
+          "sha256": "2b4e634db158fff00ffbb8661ab944b8cf1bd8e788c86bf700b21bf772bb9fe1",
+          "bytes": 842
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.6363430670462549,
+        "peakRssBytes": 211914752,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-unicode-b2-guard/process.json",
+          "sha256": "0563eeab8c9702839a7b445062eb7ba101bebf437b6485f3796178a0d62c9277",
+          "bytes": 818
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.9621164461132139,
+        "peakRssBytes": 156168192,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-unicode-cached02-guard/process.json",
+          "sha256": "38497f79699a4f9b16ef18eb8dbd9870457c1cc67e164db9e80afbb42fce90e0",
+          "bytes": 1202
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.3707786379382014,
+        "peakRssBytes": 54571008,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/repeat01/1-unicode-typescript-guard/process.json",
+          "sha256": "37a7e627f3ee598b14a0a7504900194d9fff11bd6c6b9b87789d4789c17fb096",
+          "bytes": 832
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.595501909032464,
+        "peakRssBytes": 210423808,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-functions65-b2-guard/process.json",
+          "sha256": "ec628a4c82c9ece9255e3b56110919b238b2dceb95c4113257ec781631383b38",
+          "bytes": 838
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.9028665630612522,
+        "peakRssBytes": 132849664,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-functions65-js-guard/process.json",
+          "sha256": "5870ddee4d1be469e9018d83a74ea13bb75693395bc623e45a3cd3f0ac803139",
+          "bytes": 1185
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 4.445853850105777,
+        "peakRssBytes": 202850304,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-functions65-native-guard/process.json",
+          "sha256": "ceb59d395f804ec2f9ad298ed23946e6a20642bd016aeaec4bed35fc403e7c68",
+          "bytes": 1023
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.7665592771954834,
+        "peakRssBytes": 35295232,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-functions65-typescript-guard/process.json",
+          "sha256": "d57216351371435f89152f456b04bfa952c440a1a6e152eb2cb55057b7e9f4b8",
+          "bytes": 853
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8226142809726298,
+        "peakRssBytes": 142639104,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-lexer_original-b2-guard/process.json",
+          "sha256": "7799b71d8ae1ea989d792866f1c0f0ca0cfd591cdfcd5774058904e2eaad527c",
+          "bytes": 846
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.1694198541808873,
+        "peakRssBytes": 157020160,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-lexer_original-js-guard/process.json",
+          "sha256": "57f6defe2dc25cdeb8311a80ec37cc879406e535710fb7261502b4a5405b3d5a",
+          "bytes": 1194
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 4.782404494006187,
+        "peakRssBytes": 285908992,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-lexer_original-native-guard/process.json",
+          "sha256": "41c375504d541df3eb49566d1dc54bd551154ab73303b444a77f4bdf29a6391a",
+          "bytes": 1030
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.76614071498625,
+        "peakRssBytes": 43048960,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-lexer_original-typescript-guard/process.json",
+          "sha256": "f0e05c77e69f21ae037cd21c4ce4402348861f83ca70c546244eb4790b85b5c6",
+          "bytes": 861
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.8416920630261302,
+        "peakRssBytes": 151433216,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-map_closed-b2-guard/process.json",
+          "sha256": "efa9ddf310f672cac16534e938bdd4e2f503e34416db7c5221663daee546905d",
+          "bytes": 823
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.742081596981734,
+        "peakRssBytes": 220921856,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-map_closed-js-guard/process.json",
+          "sha256": "3f2a656f7083a8acf87bb31f478da984ce7fec200127a02ce07ac581b5fd3e96",
+          "bytes": 1172
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 6.0163804199546576,
+        "peakRssBytes": 301375488,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-map_closed-native-guard/process.json",
+          "sha256": "645f5efa4fa57a86eb23ef9f07a37b21bb9db9fd1f51a91200d51559ef7477fa",
+          "bytes": 1008
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 4.798854761989787,
+        "peakRssBytes": 73650176,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-map_closed-typescript-guard/process.json",
+          "sha256": "b8989643a067e88603aa9ed114d9b7fe2718fa191471f334ebe7620011afe6ad",
+          "bytes": 840
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.3765715840272605,
+        "peakRssBytes": 158150656,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-numeric_closed-b2-guard/process.json",
+          "sha256": "a63f80132edd77a44f3f3dbced66080af050750bf1e53dbc903f9637c506ba98",
+          "bytes": 831
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.762565003009513,
+        "peakRssBytes": 120127488,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-numeric_closed-js-guard/process.json",
+          "sha256": "82f08801cbca70ed10c3217970ed9fc0861cd2b822391367938c75567d1dd446",
+          "bytes": 1180
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 3.784067803993821,
+        "peakRssBytes": 188358656,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-numeric_closed-native-guard/process.json",
+          "sha256": "97637ce427892c921162bbaf06b3f1021629630bb374af90ce2b456e07fe35ea",
+          "bytes": 1018
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.2771094040945172,
+        "peakRssBytes": 33918976,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-numeric_closed-typescript-guard/process.json",
+          "sha256": "e687798a2af39a927485704693e8e2b7cedc2076dab8a03534ddcb0c298f58de",
+          "bytes": 847
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7628313249442726,
+        "peakRssBytes": 135168000,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-small-b2-guard/process.json",
+          "sha256": "11fbba29e3438e0654c1be6c92a19ddd6117b4a5176f2489ab0388f222c56228",
+          "bytes": 824
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.5157843120396137,
+        "peakRssBytes": 115048448,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-small-js-guard/process.json",
+          "sha256": "50fd9832cbe4b33adcc52e45befa93130d4f8a8a486c8eaaa570468e64669ce9",
+          "bytes": 1173
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 3.558451899094507,
+        "peakRssBytes": 176566272,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-small-native-guard/process.json",
+          "sha256": "1592192b683a9bfac0ba3495f55ffb83d0d964f72852ae03c2354fceab8e9558",
+          "bytes": 1011
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.3733201620634645,
+        "peakRssBytes": 35475456,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-small-typescript-guard/process.json",
+          "sha256": "e25635688a14bc37b11f55d7d88cfd9b5792b6021523befaedc6077b19a23571",
+          "bytes": 841
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.841494191903621,
+        "peakRssBytes": 130412544,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-unicode-b2-guard/process.json",
+          "sha256": "cec9870b24e675f0ac0c55830e20de503f5fda5a650280f631cd82bf35cbd150",
+          "bytes": 818
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.4932884161826223,
+        "peakRssBytes": 116965376,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-unicode-js-guard/process.json",
+          "sha256": "f545c31a333360ae8ea20e9ff2cd20b2e8024328d913453ece1d7c24b7f23409",
+          "bytes": 1167
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 3.5398441541474313,
+        "peakRssBytes": 175648768,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-unicode-native-guard/process.json",
+          "sha256": "942ac2ad6e0362c5b9e8d2c46380174b551e9b093de5de877578cd8e1c880232",
+          "bytes": 1004
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 2.2162478719837964,
+        "peakRssBytes": 35651584,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/screen01/1-unicode-typescript-guard/process.json",
+          "sha256": "8060222c98830f8fb42f78ae41e3f65e433297c97e51112be426211269d6f92e",
+          "bytes": 833
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.7395240038167685,
+        "peakRssBytes": 130433024,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/strings-control01-acquire-guard/process.json",
+          "sha256": "b6147308d6bd4b29fb5d5b99a17b8edbd55ccdb2d6b18f5eba402de3df25dc47",
+          "bytes": 705
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 0.921599610010162,
+        "peakRssBytes": 178241536,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/strings-control02-acquire-guard/process.json",
+          "sha256": "fa9d17c6afdc89e550e8842ff52b2564bff53605d6e97600ef960ab67ebffa69",
+          "bytes": 709
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 1.1050072750076652,
+        "peakRssBytes": 178212864,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/strings-control03-acquire-guard/process.json",
+          "sha256": "c781667a290300d83848fc2e2fb516d90f0aa2a8395598ff317a9b9a0a08111b",
+          "bytes": 707
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 1.08452188805677,
+        "peakRssBytes": 176537600,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/strings-control04-acquire-guard/process.json",
+          "sha256": "7385b16e7d93a9d7227afb5310e31e2854c9d206259cf6c58da55aff39d8d574",
+          "bytes": 708
+        },
+        "returncode": 1,
+        "complete": false,
+        "wallSeconds": 1.1250790969934314,
+        "peakRssBytes": 178335744,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/strings-control05-acquire-guard/process.json",
+          "sha256": "06e22d14a73b0c2e66d8b4e8f0f898b39ca5f79a638af962d87c630e60952642",
+          "bytes": 707
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.8426051959395409,
+        "peakRssBytes": 277135360,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/strings-control05-build-guard/process.json",
+          "sha256": "dabf1f6c2d4fe224a7ea0c1f04b97fb900b72659ae786dc2a3deb40c168a8d77",
+          "bytes": 818
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 1.3550581000745296,
+        "peakRssBytes": 154308608,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/strings-control05-js-guard/process.json",
+          "sha256": "9d8fb3554c1e9548725773c32f5225a1230067eeeb1bea5a7ede2430c9e9c3d7",
+          "bytes": 630
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.10508187301456928,
+        "peakRssBytes": 61964288,
+        "reason": null
+      },
+      {
+        "evidence": {
+          "file": "selfhost/build/phase88/strings-control05-native-guard/process.json",
+          "sha256": "3a8cb9e51d5c911ebd4a472089fa9e687a33aa68883bcecc14abd874276de496",
+          "bytes": 564
+        },
+        "returncode": 0,
+        "complete": true,
+        "wallSeconds": 0.023183166980743408,
+        "peakRssBytes": 1093632,
+        "reason": null
+      }
+    ]
+  },
+  "scope": "Linux x86_64, one native thread, pinned Base, one source and three audited scalar effects. Compilation-to-C clocks, not compiled-program execution speed. Cached native startup and ordinary reference startup use different prepared-Base mechanisms. Timings exclude Python authentication/guard startup, Clang and generated program execution. Two cold rounds; one five-request sequence. No universal/native-B2/full-conformance claim.",
+  "remaining": [
+    "Map cold whole process 1.76x TypeScript and warm fifth request about6.46x",
+    "General imports/effects and native B2 reproduction unqualified",
+    "Decoder and admission are experimental and bound to exact canonical paths"
+  ]
+}

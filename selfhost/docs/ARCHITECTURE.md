@@ -1,5 +1,20 @@
 # Compiler architecture
 
+## Phase88 native hosting
+
+The [native host guide](../../docs/self_hosted/NATIVE_HOST.md) describes a
+separate upstream-built native B1; installed Phase82 JS B2 remains unchanged.
+Production native observers now use eight shareable Data continuation frames
+instead of reusable function closures. Text indentation/join/segment builders
+are linear in output size. A native-only checked source derivative uses a safe
+consuming equality helper. A Bend decoder reconstructs a shared prepared Base
+from named Data, admitted by exact producer/Base/path/ABI/consumer identity.
+Python handles file authentication and process supervision, never compilation.
+See the [Phase88 report](../../implementation/phase88/README.md) for the finite
+correctness gates, timings and limitations. The following sections are dated
+architecture history, not the current installed-image identity.
+
+
 **Current source target:** `059266225b77c8ca256ac6b25ee5c21449bab151`.
 The [Phase69 report](../../implementation/phase69/README.md) identifies the
 installed checked B1 and separately qualified genuine B2. Source architecture

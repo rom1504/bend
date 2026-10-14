@@ -1,0 +1,31 @@
+--- a/selfhost/src/back/native/bridge.bend
++++ b/selfhost/src/back/native/bridge.bend
+@@ -489,10 +489,24 @@
+   +arg = kid(t, 1)
+   +word = nc_word(ix(arg), env)
+   +count = nt_choose(U32, U32.is_eq(ix(mat), 0), u => nc_field_count(book, nm(mat)), u => U32.sub(ix(mat), 1))
+-  +hit = nc_lower_to(book, nd_reapply(nc_field_apps(kid(mat, 0), count, 0, n), nd_match_rest(t)), List.append(&2, NC_Binding, nc_remove_env(env, ix(arg)), nc_field_env(nm(mat), word, count, 0, n, qt(mat))), U32.add(n, count), target)
+-  +miss = nc_lower_to(book, nd_reapply(app(kid(mat, 1), arg), nd_match_rest(t)), env, nc_fresh(hit), target)
+-  +guard = nt_choose(String, String.eq(nm(mat), "Emit") || String.eq(nm(mat), "Halt"), u => "if (term_aux(" ++ word ++ ") != CID_EMIT && term_aux(" ++ word ++ ") != CID_HALT) { err_post(e.mem, ERR_TAGS); return 0; }\n", u => "")
+-  NC_Code{guard ++ "if (" ++ nc_condition(nm(mat), word) ++ ") {\n" ++ nc_destructure(nm(mat), word, count, n) ++ nc_body(hit) ++ "} else {\n" ++ nc_body(miss) ++ "}\n", nt_append(N_Segment, nc_segs(hit), nc_segs(miss)), nc_fresh(miss), nc_first_error(hit, miss), List.append(&2, String, nc_calls(hit), List.append(&2, String, nc_calls(miss), Nil{}))}
++  nc_match_apply_hit_to(book, t, env, n, target, mat, arg, word, count,
++    nc_lower_to(book, nd_reapply(nc_field_apps(kid(mat, 0), count, 0, n), nd_match_rest(t)), List.append(&2, NC_Binding, nc_remove_env(env, ix(arg)), nc_field_env(nm(mat), word, count, 0, n, qt(mat))), U32.add(n, count), target))
++
++# Consume the hit product before lowering miss; only its fields stay live.
++@unsafe
++def nc_match_apply_hit_to(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +mat: KTerm, +arg: KTerm, +word: String, +count: U32, hit: NC_Code) -> NC_Code:
++  match hit:
++    case NC_Code{hit_body, hit_segs, hit_next, hit_error, hit_calls}:
++      nc_match_apply_join(nm(mat), word, count, n, hit_body, hit_segs, hit_error, hit_calls,
++        nc_lower_to(book, nd_reapply(app(kid(mat, 1), arg), nd_match_rest(t)), env, hit_next, target))
++
++# Bodies are affine inputs: no child NC_Code survives parent body construction.
++@unsafe
++def nc_match_apply_join(+name: String, +word: String, +count: U32, +n: U32, hit_body: String, hit_segs: List<&2, N_Segment>, +hit_error: String, hit_calls: List<&2, String>, miss: NC_Code) -> NC_Code:
++  match miss:
++    case NC_Code{miss_body, miss_segs, miss_next, miss_error, miss_calls}:
++      +guard = nt_choose(String, String.eq(name, "Emit") || String.eq(name, "Halt"), u => "if (term_aux(" ++ word ++ ") != CID_EMIT && term_aux(" ++ word ++ ") != CID_HALT) { err_post(e.mem, ERR_TAGS); return 0; }\n", u => "")
++      NC_Code{guard ++ "if (" ++ nc_condition(name, word) ++ ") {\n" ++ nc_destructure(name, word, count, n) ++ hit_body ++ "} else {\n" ++ miss_body ++ "}\n", nt_append(N_Segment, hit_segs, miss_segs), miss_next, nt_choose(String, String.eq(hit_error, ""), u => miss_error, u => hit_error), List.append(&2, String, hit_calls, List.append(&2, String, miss_calls, Nil{}))}
+ 
+ @unsafe
+ def nc_match(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32) -> NC_Code:

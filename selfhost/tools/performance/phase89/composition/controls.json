@@ -1,0 +1,433 @@
+{
+  "kind": "phase89-complete-composition-controls",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/composition/controls.bend",
+    "sha256": "9ca93172df13e0d254cde8d77e8878cfe75c4fd990245010f87cec2197b24c21",
+    "bytes": 9754
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/ir.bend",
+      "sha256": "dada548b975e325d96735f94b4e65e56d0d47b8e22851bc6815bed7063e0339b",
+      "bytes": 929
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/text.bend",
+      "sha256": "acc430c939a7dd6b404ba7a13f762019b717a62313ae3066234f78bb62df04c0",
+      "bytes": 3305
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/sharing.bend",
+      "sha256": "632ed9edecad2e700a9cf8eb0aa1ac0ddd8ddc9690ab354810fc6595836f27de",
+      "bytes": 12503
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/product.bend",
+      "sha256": "a13143b2f34afca660e6b685c64ff72e11291ea625a331962c218e77377d50f5",
+      "bytes": 26437
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/composition/bridge.baseline.bend",
+      "sha256": "d2165a184703a0e2c9355f6cf1081b5582c9f34dd0cb22757495e8bc8fd30358",
+      "bytes": 34875
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/composition/bridge.candidate.bend",
+      "sha256": "e2b2d65ee07ef953a7d5736cd6c2e344a1f38bad0114583b47cd8e033fbee260",
+      "bytes": 35791
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/composition/make-controls.py",
+      "sha256": "ef36d9da5bfe457255017bf40c84d6c51141863435be2faf0cb7ce08887e57cf",
+      "bytes": 5350
+    }
+  ],
+  "cases": {
+    "ordinary": {
+      "fresh": 29,
+      "error": "",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "hit-error": {
+      "fresh": 29,
+      "error": "hit-failed",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "miss-error": {
+      "fresh": 29,
+      "error": "miss-failed",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "both-error": {
+      "fresh": 29,
+      "error": "hit-failed",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "effect-emit": {
+      "fresh": 29,
+      "error": "",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": true
+    },
+    "effect-halt": {
+      "fresh": 29,
+      "error": "",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": true
+    },
+    "primitive-true": {
+      "fresh": 29,
+      "error": "",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "primitive-false": {
+      "fresh": 29,
+      "error": "",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "primitive-zero": {
+      "fresh": 29,
+      "error": "",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "primitive-succ": {
+      "fresh": 29,
+      "error": "",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "primitive-chr": {
+      "fresh": 29,
+      "error": "",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "primitive-u32": {
+      "fresh": 29,
+      "error": "",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "primitive-f32": {
+      "fresh": 29,
+      "error": "",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "array-leaf": {
+      "fresh": 29,
+      "error": "",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "array-node": {
+      "fresh": 29,
+      "error": "",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "generic-nullary": {
+      "fresh": 29,
+      "error": "",
+      "segments": [
+        "hit",
+        "miss"
+      ],
+      "calls": [
+        "first:hit",
+        "dup",
+        "last:hit",
+        "first:miss",
+        "dup",
+        "last:miss"
+      ],
+      "bodyContains": [
+        "BODY:hit;\n",
+        "BODY:miss;\n"
+      ],
+      "guard": false
+    },
+    "empty": {
+      "fresh": 7,
+      "error": "",
+      "segments": [],
+      "calls": [],
+      "bodyContains": [
+        "} else {\n"
+      ],
+      "guard": false
+    },
+    "no-newline": {
+      "fresh": 31,
+      "error": "",
+      "segments": [],
+      "calls": [
+        "h",
+        "m"
+      ],
+      "bodyContains": [
+        "HIT} else {\nMISS}\n"
+      ],
+      "guard": false
+    },
+    "nested": {
+      "fresh": 43,
+      "error": "",
+      "segments": [
+        "inner-hit",
+        "inner-miss",
+        "outer-miss"
+      ],
+      "calls": [
+        "first:inner-hit",
+        "dup",
+        "last:inner-hit",
+        "first:inner-miss",
+        "dup",
+        "last:inner-miss",
+        "first:outer-miss",
+        "dup",
+        "last:outer-miss"
+      ],
+      "bodyContains": [
+        "BODY:inner-hit;\n",
+        "BODY:inner-miss;\n",
+        "BODY:outer-miss;\n"
+      ],
+      "guard": false
+    }
+  },
+  "scope": "Actual extracted original expression and candidate final composer with real formatting helpers; synthetic child products, not recursive lowering."
+}

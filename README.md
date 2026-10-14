@@ -39,6 +39,11 @@ process cases beat TypeScript; Map and warm throughput remain gaps. See the
 [native usage guide](docs/self_hosted/NATIVE_HOST.md) and
 [Phase88 results](implementation/phase88/README.md). Installed Phase82 is unchanged.
 
+The [Phase89 investigation](implementation/phase89/README.md) compares Bun,
+Node and native hosting, measures allocation/copy costs, and tests a faster native
+output builder. See the [host runtime guide](docs/self_hosted/host-runtimes.md)
+for the measured engine choice and reproducible fast loop.
+
 Read the [Phase82 report](implementation/phase82/README.md),
 [native compilation/session guide](docs/self_hosted/NATIVE_COMPILATION.md),
 [native ownership facts](docs/self_hosted/NATIVE_OWNERSHIP_FACTS.md),

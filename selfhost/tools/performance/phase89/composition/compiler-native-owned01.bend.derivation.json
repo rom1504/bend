@@ -1,0 +1,50 @@
+{
+  "kind": "phase89-native02-owned-match-derivative",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/native02/compiler.bend",
+      "sha256": "08ea659193cc0c5f040f209e63e9b6df71ff3c928784db81706c264b41d05e4f",
+      "bytes": 1750898
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/native02/report.json",
+      "sha256": "c7343866dbfbe032bbe949f154ba1fae02993d801437d442b0de771d4aa3d189",
+      "bytes": 46599
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/composition/bridge.baseline.bend",
+      "sha256": "d2165a184703a0e2c9355f6cf1081b5582c9f34dd0cb22757495e8bc8fd30358",
+      "bytes": 34875
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/composition/bridge.candidate.bend",
+      "sha256": "e2b2d65ee07ef953a7d5736cd6c2e344a1f38bad0114583b47cd8e033fbee260",
+      "bytes": 35791
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/composition/freeze-native.py",
+      "sha256": "5b107ee82272c73065b92b1759c674fa24957d2449d9974116702fa1f29c1e2a",
+      "bytes": 3564
+    }
+  ],
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/composition/compiler-native-owned01.bend",
+    "sha256": "31080dedefd42b08a1103ea980a7d708d7f842ef2b715d1cccb7771471395d3b",
+    "bytes": 1751820
+  },
+  "replaced": {
+    "name": "nc_match_apply_slow_to",
+    "oldStartByte": 1425205,
+    "oldEndByte": 1426378,
+    "oldSha256": "23a2b406e97835151b61c4acaa200f393b467963426e04b023468cd6047275dd",
+    "newSha256": "9d9c3424598c8c8a1557c72f4ab28d6a43c47324897c80e0d1f57b5bbb64eb9e"
+  },
+  "addedDefinitions": [
+    "nc_match_apply_hit_to",
+    "nc_match_apply_join"
+  ],
+  "inverseRecoversParent": true,
+  "equality": "Only exact String.eq tokens in the three inserted definitions receive the existing p88_string_eq adaptation.",
+  "scope": "Parent native02 bytes retained except the exact slow-match definition and two inserted helpers. Existing imports, prepared Base/cache entry, equality helpers, runtime chunks and IO permissions unchanged. This source is not checked or emitted by this offline tool."
+}

@@ -174,6 +174,17 @@ Its [methods](../../selfhost/tools/performance/phase86/README.md) separate Base
 preparation, prepared requests, whole processes and compiler-image build cost.
 Read those limits and results before treating native hosting as a speedup.
 
+[Phase87](../../implementation/phase87/README.md) then profiles that exact native
+image and tests linear output builders in an isolated source candidate. Lexer
+requests improve by roughly8–14× while output C stays exact on the checked
+fixtures. Small-source timing changes little and Base still costs~3s. The Map
+fail-stop is minimized to unsafe closure sharing; the proposed8-frame Data
+continuation repair is not yet integrated. These are native B1 pilot results,
+not a new default release or native B2 qualification. The
+[fast loops](../../selfhost/tools/performance/phase87/README.md) preserve tiny
+ownership controls, symbol profiles and source/build/output provenance.
+
+
 The [Phase85 V8 investigation](../../implementation/phase85/README.md) measures
 the JS-hosted compiler's native-emission latency separately from Clang and native
 program execution. Much first-request CPU is V8 compiling the compiler itself.

@@ -1,0 +1,1829 @@
+{
+  "lanes": [
+    {
+      "lane": "baseline-repeat",
+      "report": {
+        "file": "selfhost/build/phase87/baseline-repeat/report.json",
+        "sha256": "a982b4c8a23f609f178cb5082e62563dae4dcbd1a80f6c50b11cc90e01f074d2",
+        "bytes": 22002
+      },
+      "complete": true,
+      "allJobsSucceeded": true,
+      "timing": [
+        {
+          "case": "numeric_closed",
+          "role": "native",
+          "samples": 1,
+          "requestMs": [
+            263,
+            285,
+            309,
+            327,
+            329
+          ],
+          "preparationMs": 3375,
+          "runtimePreparationMs": 2,
+          "wallMs": 4936.431504087523,
+          "peakRssBytes": 35463168,
+          "failures": []
+        },
+        {
+          "case": "lexer_original",
+          "role": "native",
+          "samples": 1,
+          "requestMs": [
+            5838,
+            7042,
+            8608,
+            10180,
+            11259
+          ],
+          "preparationMs": 3359,
+          "runtimePreparationMs": 1,
+          "wallMs": 46355.66087719053,
+          "peakRssBytes": 42434560,
+          "failures": []
+        }
+      ],
+      "outputs": 10,
+      "mismatches": []
+    },
+    {
+      "lane": "linear-repeat",
+      "report": {
+        "file": "selfhost/build/phase87/linear-repeat/report.json",
+        "sha256": "744a2bcb5b35360bfc8ff5670fa642d6c59e91e17302520f310b264f63cb6e59",
+        "bytes": 22006
+      },
+      "complete": true,
+      "allJobsSucceeded": true,
+      "timing": [
+        {
+          "case": "numeric_closed",
+          "role": "native",
+          "samples": 1,
+          "requestMs": [
+            151,
+            152,
+            154,
+            155,
+            158
+          ],
+          "preparationMs": 3066,
+          "runtimePreparationMs": 2,
+          "wallMs": 3904.281524941325,
+          "peakRssBytes": 34066432,
+          "failures": []
+        },
+        {
+          "case": "lexer_original",
+          "role": "native",
+          "samples": 1,
+          "requestMs": [
+            654,
+            671,
+            706,
+            749,
+            780
+          ],
+          "preparationMs": 3096,
+          "runtimePreparationMs": 1,
+          "wallMs": 6731.156689114869,
+          "peakRssBytes": 43954176,
+          "failures": []
+        }
+      ],
+      "outputs": 10,
+      "mismatches": []
+    },
+    {
+      "lane": "linear-screen",
+      "report": {
+        "file": "selfhost/build/phase87/linear-screen/report.json",
+        "sha256": "0429a4163eb80e132f9f7ccb6cac1043ce9d5cb313a33610ff9491b5bac51dd8",
+        "bytes": 132941
+      },
+      "complete": true,
+      "allJobsSucceeded": false,
+      "timing": [
+        {
+          "case": "small",
+          "role": "native",
+          "samples": 1,
+          "requestMs": [
+            85,
+            83,
+            84,
+            85,
+            87
+          ],
+          "preparationMs": 3085,
+          "runtimePreparationMs": 1,
+          "wallMs": 3536.294713849202,
+          "peakRssBytes": 34205696,
+          "failures": []
+        },
+        {
+          "case": "small",
+          "role": "js",
+          "samples": 1,
+          "requestMs": [
+            221,
+            228,
+            100,
+            72,
+            82
+          ],
+          "preparationMs": 3802,
+          "runtimePreparationMs": 2,
+          "wallMs": 4622.252123896033,
+          "peakRssBytes": 261320704,
+          "failures": []
+        },
+        {
+          "case": "small",
+          "role": "b2",
+          "samples": 1,
+          "requestMs": [
+            256.80818600000003,
+            160.76448600000003,
+            171.81058400000006,
+            86.64498500000002,
+            94.54086700000005
+          ],
+          "preparationMs": null,
+          "runtimePreparationMs": null,
+          "wallMs": 1024.8374801594764,
+          "peakRssBytes": 163315712,
+          "failures": []
+        },
+        {
+          "case": "small",
+          "role": "typescript",
+          "samples": 1,
+          "requestMs": [
+            333.080375,
+            206.38597900000002,
+            281.101909,
+            223.96846800000003,
+            166.283776
+          ],
+          "preparationMs": null,
+          "runtimePreparationMs": null,
+          "wallMs": 1597.0066338777542,
+          "peakRssBytes": 211718144,
+          "failures": []
+        },
+        {
+          "case": "functions65",
+          "role": "typescript",
+          "samples": 1,
+          "requestMs": [
+            406.770417,
+            261.59237099999996,
+            297.33526299999994,
+            259.751356,
+            185.24458299999992
+          ],
+          "preparationMs": null,
+          "runtimePreparationMs": null,
+          "wallMs": 1821.3622318580747,
+          "peakRssBytes": 214614016,
+          "failures": []
+        },
+        {
+          "case": "functions65",
+          "role": "b2",
+          "samples": 1,
+          "requestMs": [
+            671.530848,
+            432.7938230000001,
+            248.43502000000012,
+            233.532195,
+            334.0406909999999
+          ],
+          "preparationMs": null,
+          "runtimePreparationMs": null,
+          "wallMs": 2188.098154962063,
+          "peakRssBytes": 222248960,
+          "failures": []
+        },
+        {
+          "case": "functions65",
+          "role": "js",
+          "samples": 1,
+          "requestMs": [
+            637,
+            479,
+            290,
+            278,
+            243
+          ],
+          "preparationMs": 4131,
+          "runtimePreparationMs": 2,
+          "wallMs": 6174.841610947624,
+          "peakRssBytes": 294883328,
+          "failures": []
+        },
+        {
+          "case": "functions65",
+          "role": "native",
+          "samples": 1,
+          "requestMs": [
+            357,
+            361,
+            365,
+            383,
+            404
+          ],
+          "preparationMs": 3066,
+          "runtimePreparationMs": 2,
+          "wallMs": 4980.159958126023,
+          "peakRssBytes": 34324480,
+          "failures": []
+        },
+        {
+          "case": "numeric_closed",
+          "role": "native",
+          "samples": 1,
+          "requestMs": [
+            166,
+            166,
+            164,
+            166,
+            171
+          ],
+          "preparationMs": 3175,
+          "runtimePreparationMs": 1,
+          "wallMs": 4044.378160033375,
+          "peakRssBytes": 34037760,
+          "failures": []
+        },
+        {
+          "case": "numeric_closed",
+          "role": "js",
+          "samples": 1,
+          "requestMs": [
+            443,
+            312,
+            170,
+            197,
+            139
+          ],
+          "preparationMs": 4165,
+          "runtimePreparationMs": 2,
+          "wallMs": 5582.042808877304,
+          "peakRssBytes": 275795968,
+          "failures": []
+        },
+        {
+          "case": "numeric_closed",
+          "role": "b2",
+          "samples": 1,
+          "requestMs": [
+            395.103942,
+            264.507512,
+            170.78463900000008,
+            176.2707150000001,
+            114.24010199999998
+          ],
+          "preparationMs": null,
+          "runtimePreparationMs": null,
+          "wallMs": 1371.3619909249246,
+          "peakRssBytes": 167346176,
+          "failures": []
+        },
+        {
+          "case": "numeric_closed",
+          "role": "typescript",
+          "samples": 1,
+          "requestMs": [
+            370.59487400000006,
+            224.268691,
+            279.55883800000004,
+            227.63272299999994,
+            160.12059099999988
+          ],
+          "preparationMs": null,
+          "runtimePreparationMs": null,
+          "wallMs": 1657.9130708705634,
+          "peakRssBytes": 222728192,
+          "failures": []
+        },
+        {
+          "case": "lexer_original",
+          "role": "typescript",
+          "samples": 1,
+          "requestMs": [
+            469.61975099999995,
+            363.057016,
+            385.32742099999996,
+            273.02199900000005,
+            257.8861429999997
+          ],
+          "preparationMs": null,
+          "runtimePreparationMs": null,
+          "wallMs": 2148.4559029340744,
+          "peakRssBytes": 265637888,
+          "failures": []
+        },
+        {
+          "case": "lexer_original",
+          "role": "b2",
+          "samples": 1,
+          "requestMs": [
+            923.9775219999999,
+            499.8006429999998,
+            398.66999799999985,
+            385.4583480000001,
+            261.3425649999999
+          ],
+          "preparationMs": null,
+          "runtimePreparationMs": null,
+          "wallMs": 2739.3748369067907,
+          "peakRssBytes": 279420928,
+          "failures": []
+        },
+        {
+          "case": "lexer_original",
+          "role": "js",
+          "samples": 1,
+          "requestMs": [
+            1077,
+            861,
+            678,
+            534,
+            461
+          ],
+          "preparationMs": 3787,
+          "runtimePreparationMs": 2,
+          "wallMs": 7566.089496016502,
+          "peakRssBytes": 336617472,
+          "failures": []
+        },
+        {
+          "case": "lexer_original",
+          "role": "native",
+          "samples": 1,
+          "requestMs": [
+            646,
+            671,
+            711,
+            768,
+            783
+          ],
+          "preparationMs": 3071,
+          "runtimePreparationMs": 1,
+          "wallMs": 6728.470541071147,
+          "peakRssBytes": 42278912,
+          "failures": []
+        },
+        {
+          "case": "map_closed",
+          "role": "native",
+          "samples": 0,
+          "requestMs": [],
+          "preparationMs": null,
+          "runtimePreparationMs": null,
+          "wallMs": null,
+          "peakRssBytes": 0,
+          "failures": [
+            "1-map_closed-native"
+          ]
+        },
+        {
+          "case": "map_closed",
+          "role": "js",
+          "samples": 1,
+          "requestMs": [
+            2707,
+            2276,
+            2112,
+            1842,
+            2030
+          ],
+          "preparationMs": 3791,
+          "runtimePreparationMs": 2,
+          "wallMs": 14887.59592291899,
+          "peakRssBytes": 444145664,
+          "failures": []
+        },
+        {
+          "case": "map_closed",
+          "role": "b2",
+          "samples": 1,
+          "requestMs": [
+            1444.088025,
+            875.024762,
+            743.6062919999999,
+            593.150756,
+            557.2578089999997
+          ],
+          "preparationMs": null,
+          "runtimePreparationMs": null,
+          "wallMs": 4495.728186098859,
+          "peakRssBytes": 329588736,
+          "failures": []
+        },
+        {
+          "case": "map_closed",
+          "role": "typescript",
+          "samples": 1,
+          "requestMs": [
+            780.6993849999999,
+            585.052046,
+            516.4769820000001,
+            454.64591199999995,
+            420.07247700000016
+          ],
+          "preparationMs": null,
+          "runtimePreparationMs": null,
+          "wallMs": 3148.460210999474,
+          "peakRssBytes": 300793856,
+          "failures": []
+        },
+        {
+          "case": "unicode",
+          "role": "typescript",
+          "samples": 1,
+          "requestMs": [
+            331.671754,
+            206.83536099999992,
+            284.0736589999999,
+            210.9034059999999,
+            190.2109700000001
+          ],
+          "preparationMs": null,
+          "runtimePreparationMs": null,
+          "wallMs": 1637.6852919347584,
+          "peakRssBytes": 211267584,
+          "failures": []
+        },
+        {
+          "case": "unicode",
+          "role": "b2",
+          "samples": 1,
+          "requestMs": [
+            265.814772,
+            139.31210700000003,
+            155.79085199999997,
+            78.38903700000003,
+            55.563024999999925
+          ],
+          "preparationMs": null,
+          "runtimePreparationMs": null,
+          "wallMs": 943.4316449332982,
+          "peakRssBytes": 156069888,
+          "failures": []
+        },
+        {
+          "case": "unicode",
+          "role": "js",
+          "samples": 1,
+          "requestMs": [
+            225,
+            103,
+            87,
+            57,
+            69
+          ],
+          "preparationMs": 3830,
+          "runtimePreparationMs": 2,
+          "wallMs": 4481.1240448616445,
+          "peakRssBytes": 250650624,
+          "failures": []
+        },
+        {
+          "case": "unicode",
+          "role": "native",
+          "samples": 1,
+          "requestMs": [
+            80,
+            80,
+            83,
+            82,
+            83
+          ],
+          "preparationMs": 3066,
+          "runtimePreparationMs": 2,
+          "wallMs": 3516.6613198816776,
+          "peakRssBytes": 35209216,
+          "failures": []
+        }
+      ],
+      "outputs": 115,
+      "mismatches": []
+    }
+  ],
+  "independentB2": {
+    "small": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+    "functions65": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+    "numeric_closed": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+    "lexer_original": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+    "map_closed": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+    "unicode": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+    "extra_import_valid": "85a750b3c6b3a960703204382cb6861916a00b84cc47e33ac294e549a83a7a9b"
+  },
+  "portOutputs": [
+    {
+      "lane": "baseline-repeat",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "baseline-repeat",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "baseline-repeat",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "baseline-repeat",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "baseline-repeat",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "baseline-repeat",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "baseline-repeat",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "baseline-repeat",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "baseline-repeat",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "baseline-repeat",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-repeat",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-repeat",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-repeat",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-repeat",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-repeat",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-repeat",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-repeat",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-repeat",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-repeat",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-repeat",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "small",
+      "role": "native",
+      "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "small",
+      "role": "native",
+      "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "small",
+      "role": "native",
+      "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "small",
+      "role": "native",
+      "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "small",
+      "role": "native",
+      "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "small",
+      "role": "js",
+      "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "small",
+      "role": "js",
+      "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "small",
+      "role": "js",
+      "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "small",
+      "role": "js",
+      "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "small",
+      "role": "js",
+      "sha256": "19856c5af0e1572c88b2fb7b4612cbb658a355256613dbb2ddc1b3f0d5e7bf55",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "functions65",
+      "role": "js",
+      "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "functions65",
+      "role": "js",
+      "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "functions65",
+      "role": "js",
+      "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "functions65",
+      "role": "js",
+      "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "functions65",
+      "role": "js",
+      "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "functions65",
+      "role": "native",
+      "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "functions65",
+      "role": "native",
+      "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "functions65",
+      "role": "native",
+      "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "functions65",
+      "role": "native",
+      "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "functions65",
+      "role": "native",
+      "sha256": "7766f688fa1ccc1948067c003e3e56e07ba89b03169f9baf75fa5f9f78b19816",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "numeric_closed",
+      "role": "native",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "numeric_closed",
+      "role": "js",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "numeric_closed",
+      "role": "js",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "numeric_closed",
+      "role": "js",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "numeric_closed",
+      "role": "js",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "numeric_closed",
+      "role": "js",
+      "sha256": "656fabc8f29c5ae250e0d4677f32da2d2e435a21e3ba2ce25617e0fcff53bbf5",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "lexer_original",
+      "role": "js",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "lexer_original",
+      "role": "js",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "lexer_original",
+      "role": "js",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "lexer_original",
+      "role": "js",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "lexer_original",
+      "role": "js",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "lexer_original",
+      "role": "native",
+      "sha256": "3764848bea0421cfbee452e6fec778bcd0e1f5eacc8b2717f74fa139081fd29b",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "map_closed",
+      "role": "js",
+      "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "map_closed",
+      "role": "js",
+      "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "map_closed",
+      "role": "js",
+      "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "map_closed",
+      "role": "js",
+      "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "map_closed",
+      "role": "js",
+      "sha256": "01710772937dfa4736557a53823226f2f0652b005334073d72139d5bc5e6e67c",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "unicode",
+      "role": "js",
+      "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "unicode",
+      "role": "js",
+      "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "unicode",
+      "role": "js",
+      "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "unicode",
+      "role": "js",
+      "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "unicode",
+      "role": "js",
+      "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "unicode",
+      "role": "native",
+      "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "unicode",
+      "role": "native",
+      "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "unicode",
+      "role": "native",
+      "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "unicode",
+      "role": "native",
+      "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    },
+    {
+      "lane": "linear-screen",
+      "case": "unicode",
+      "role": "native",
+      "sha256": "d1337129cdca03e309a30365f3e30f88cb88e4ba09387acace4edbb883c258b2",
+      "hasIndependentB2": true,
+      "matchesB2": true
+    }
+  ],
+  "account": {
+    "jobs": 69,
+    "successful": 64,
+    "unfinalized": 0,
+    "occupancySeconds": 506.8599184784107,
+    "peakRssBytes": 4329799680,
+    "elapsedSeconds": 1054.196212053299,
+    "receipts": [
+      {
+        "file": "selfhost/build/phase87/linear-acquire-guard/process.json",
+        "complete": true,
+        "wallSeconds": 65.67161110998131,
+        "peakRssBytes": 1228410880,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956634.8350863,
+        "finished": 1791956700.5066962
+      },
+      {
+        "file": "selfhost/build/phase87/linear-repeat/1-numeric_closed-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 3.904281524941325,
+        "peakRssBytes": 34066432,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957212.6733103,
+        "finished": 1791957216.5775893
+      },
+      {
+        "file": "selfhost/build/phase87/linear-repeat/1-lexer_original-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 6.731156689114869,
+        "peakRssBytes": 43954176,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957216.6095011,
+        "finished": 1791957223.3406453
+      },
+      {
+        "file": "selfhost/build/phase87/lexer-five-profile-guard/process.json",
+        "complete": true,
+        "wallSeconds": 43.998422268079594,
+        "peakRssBytes": 44462080,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956338.02547,
+        "finished": 1791956382.0238898
+      },
+      {
+        "file": "selfhost/build/phase87/edges-candidate-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.04381566890515387,
+        "peakRssBytes": 31723520,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956791.430005,
+        "finished": 1791956791.4738178
+      },
+      {
+        "file": "selfhost/build/phase87/sampler-build-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.2689574419055134,
+        "peakRssBytes": 138096640,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956288.3851116,
+        "finished": 1791956288.6540656
+      },
+      {
+        "file": "selfhost/build/phase87/small-one-profile-guard/process.json",
+        "complete": true,
+        "wallSeconds": 3.232419477077201,
+        "peakRssBytes": 34013184,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956460.1074998,
+        "finished": 1791956463.3399162
+      },
+      {
+        "file": "selfhost/build/phase87/edges-candidate-build-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.8395968708209693,
+        "peakRssBytes": 159891456,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956774.6768248,
+        "finished": 1791956776.5164206
+      },
+      {
+        "file": "selfhost/build/phase87/lexer-one-profile-guard/process.json",
+        "complete": true,
+        "wallSeconds": 8.49419852020219,
+        "peakRssBytes": 45232128,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956296.1024275,
+        "finished": 1791956304.596623
+      },
+      {
+        "file": "selfhost/build/phase87/baseline-repeat/1-numeric_closed-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 4.936431504087523,
+        "peakRssBytes": 35463168,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957150.8931668,
+        "finished": 1791957155.829596
+      },
+      {
+        "file": "selfhost/build/phase87/baseline-repeat/1-lexer_original-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 46.35566087719053,
+        "peakRssBytes": 42434560,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957155.8676586,
+        "finished": 1791957202.2233074
+      },
+      {
+        "file": "selfhost/build/phase87/edges-candidate-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.023031502030789852,
+        "peakRssBytes": 471040,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956790.878787,
+        "finished": 1791956790.9018164
+      },
+      {
+        "file": "selfhost/build/phase87/release-verify-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.9630082219373435,
+        "peakRssBytes": 273543168,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957341.6183171,
+        "finished": 1791957342.5813236
+      },
+      {
+        "file": "selfhost/build/phase87/linear-clang-guard/process.json",
+        "complete": true,
+        "wallSeconds": 193.0562321159523,
+        "peakRssBytes": 4329799680,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956799.603475,
+        "finished": 1791956992.6597035
+      },
+      {
+        "file": "selfhost/build/phase87/edges-candidate-acquire-guard/process.json",
+        "complete": true,
+        "wallSeconds": 8.262919371016324,
+        "peakRssBytes": 595406848,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956748.902355,
+        "finished": 1791956757.165273
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-thread-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.02314841002225876,
+        "peakRssBytes": 1101824,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956397.6314628,
+        "finished": 1791956397.6546092
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-thread-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.043882790952920914,
+        "peakRssBytes": 34238464,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956396.9682097,
+        "finished": 1791956397.0120893
+      },
+      {
+        "file": "selfhost/build/phase87/map/law-eager-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.04377089091576636,
+        "peakRssBytes": 29319168,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956384.5453377,
+        "finished": 1791956384.5891054
+      },
+      {
+        "file": "selfhost/build/phase87/map/data-double-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.02319157007150352,
+        "peakRssBytes": 1089536,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956405.2105565,
+        "finished": 1791956405.2337458
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-thread-acquire-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.533288705861196,
+        "peakRssBytes": 252248064,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956395.0206094,
+        "finished": 1791956396.5538962
+      },
+      {
+        "file": "selfhost/build/phase87/map/data-double-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.043691823026165366,
+        "peakRssBytes": 27402240,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956404.6051254,
+        "finished": 1791956404.6488135
+      },
+      {
+        "file": "selfhost/build/phase87/map/law-match-build-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.47424674895592034,
+        "peakRssBytes": 142880768,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956387.8447974,
+        "finished": 1791956388.3190432
+      },
+      {
+        "file": "selfhost/build/phase87/map/law-match-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.04368327395059168,
+        "peakRssBytes": 31072256,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956387.7253284,
+        "finished": 1791956387.7690084
+      },
+      {
+        "file": "selfhost/build/phase87/map/law-eager-build-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.49445313797332346,
+        "peakRssBytes": 142962688,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956384.6406689,
+        "finished": 1791956385.1351197
+      },
+      {
+        "file": "selfhost/build/phase87/map/law-eager-acquire-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.553237356012687,
+        "peakRssBytes": 252100608,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956382.583031,
+        "finished": 1791956384.1362653
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-match-build-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.4362345361150801,
+        "peakRssBytes": 142843904,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956394.05587,
+        "finished": 1791956394.4921024
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-double-build-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.43617895105853677,
+        "peakRssBytes": 142458880,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956401.686852,
+        "finished": 1791956402.1230292
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-eager-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.043797112070024014,
+        "peakRssBytes": 30560256,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956390.9096432,
+        "finished": 1791956390.9534366
+      },
+      {
+        "file": "selfhost/build/phase87/map/law-match-acquire-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.6753581739030778,
+        "peakRssBytes": 252624896,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956385.6340792,
+        "finished": 1791956387.3094358
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-eager-native-guard/process.json",
+        "complete": false,
+        "wallSeconds": 0.02320771897211671,
+        "peakRssBytes": 1093632,
+        "stoppedFor": null,
+        "returncode": 1,
+        "started": 1791956391.609762,
+        "finished": 1791956391.6329677
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-match-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.04371615685522556,
+        "peakRssBytes": 29728768,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956393.9386587,
+        "finished": 1791956393.9823718
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-eager-build-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.5365251379553229,
+        "peakRssBytes": 142962688,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956391.0130565,
+        "finished": 1791956391.5495806
+      },
+      {
+        "file": "selfhost/build/phase87/map/law-eager-native-guard/process.json",
+        "complete": false,
+        "wallSeconds": 0.02318219910375774,
+        "peakRssBytes": 1093632,
+        "stoppedFor": null,
+        "returncode": 1,
+        "started": 1791956385.1900184,
+        "finished": 1791956385.2131984
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-match-acquire-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.4925631759688258,
+        "peakRssBytes": 252596224,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956392.0409603,
+        "finished": 1791956393.5335214
+      },
+      {
+        "file": "selfhost/build/phase87/map/safe-eager-negative-acquire-guard/process.json",
+        "complete": false,
+        "wallSeconds": 1.084445355925709,
+        "peakRssBytes": 176246784,
+        "stoppedFor": null,
+        "returncode": 1,
+        "started": 1791956398.1037679,
+        "finished": 1791956399.1882102
+      },
+      {
+        "file": "selfhost/build/phase87/map/data-double-build-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.4165306771174073,
+        "peakRssBytes": 142401536,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956404.728527,
+        "finished": 1791956405.1450567
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-double-native-guard/process.json",
+        "complete": false,
+        "wallSeconds": 0.02319615101441741,
+        "peakRssBytes": 1093632,
+        "stoppedFor": null,
+        "returncode": 1,
+        "started": 1791956402.1875918,
+        "finished": 1791956402.2107859
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-double-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.04370226594619453,
+        "peakRssBytes": 27406336,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956401.5685396,
+        "finished": 1791956401.612239
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-double-acquire-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.5566235750447959,
+        "peakRssBytes": 249053184,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956399.5984123,
+        "finished": 1791956401.155034
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-eager-acquire-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.654985971050337,
+        "peakRssBytes": 248909824,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956388.8400264,
+        "finished": 1791956390.4950106
+      },
+      {
+        "file": "selfhost/build/phase87/map/data-double-acquire-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.5747118000872433,
+        "peakRssBytes": 250945536,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956402.616335,
+        "finished": 1791956404.1910448
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-match-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.023152668960392475,
+        "peakRssBytes": 1032192,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956394.5550897,
+        "finished": 1791956394.57824
+      },
+      {
+        "file": "selfhost/build/phase87/map/law-match-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.023228407138958573,
+        "peakRssBytes": 1093632,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956388.38574,
+        "finished": 1791956388.408966
+      },
+      {
+        "file": "selfhost/build/phase87/map/typed-thread-build-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.45377167616970837,
+        "peakRssBytes": 142225408,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791956397.1104853,
+        "finished": 1791956397.5642478
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-map_closed-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 14.88759592291899,
+        "peakRssBytes": 444145664,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957091.5931742,
+        "finished": 1791957106.4807642
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-unicode-b2-guard/process.json",
+        "complete": true,
+        "wallSeconds": 0.9434316449332982,
+        "peakRssBytes": 156069888,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957116.1417115,
+        "finished": 1791957117.0851295
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-map_closed-b2-guard/process.json",
+        "complete": true,
+        "wallSeconds": 4.495728186098859,
+        "peakRssBytes": 329588736,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957106.5266025,
+        "finished": 1791957111.0223196
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-unicode-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 3.5166613198816776,
+        "peakRssBytes": 35209216,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957121.7442365,
+        "finished": 1791957125.2608848
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-numeric_closed-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 5.582042808877304,
+        "peakRssBytes": 275795968,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957057.8684232,
+        "finished": 1791957063.4504538
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-lexer_original-typescript-guard/process.json",
+        "complete": true,
+        "wallSeconds": 2.1484559029340744,
+        "peakRssBytes": 265637888,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957066.5914648,
+        "finished": 1791957068.7399092
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-unicode-typescript-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.6376852919347584,
+        "peakRssBytes": 211267584,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957114.333326,
+        "finished": 1791957115.9710004
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-small-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 4.622252123896033,
+        "peakRssBytes": 261320704,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957031.108514,
+        "finished": 1791957035.7307527
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-functions65-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 6.174841610947624,
+        "peakRssBytes": 294883328,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957042.5563657,
+        "finished": 1791957048.7311947
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-small-b2-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.0248374801594764,
+        "peakRssBytes": 163315712,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957035.783434,
+        "finished": 1791957036.8082592
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-map_closed-native-guard/process.json",
+        "complete": false,
+        "wallSeconds": 5.570664650993422,
+        "peakRssBytes": 65306624,
+        "stoppedFor": null,
+        "returncode": 1,
+        "started": 1791957085.9916756,
+        "finished": 1791957091.5623252
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-lexer_original-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 7.566089496016502,
+        "peakRssBytes": 336617472,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957071.599919,
+        "finished": 1791957079.1659954
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-functions65-b2-guard/process.json",
+        "complete": true,
+        "wallSeconds": 2.188098154962063,
+        "peakRssBytes": 222248960,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957040.3257196,
+        "finished": 1791957042.5138063
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-unicode-js-guard/process.json",
+        "complete": true,
+        "wallSeconds": 4.4811240448616445,
+        "peakRssBytes": 250650624,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957117.205466,
+        "finished": 1791957121.6865773
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-functions65-typescript-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.8213622318580747,
+        "peakRssBytes": 214614016,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957038.4448445,
+        "finished": 1791957040.266195
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-small-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 3.536294713849202,
+        "peakRssBytes": 34205696,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957027.528432,
+        "finished": 1791957031.0647244
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-functions65-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 4.980159958126023,
+        "peakRssBytes": 34324480,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957048.74233,
+        "finished": 1791957053.7224855
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-lexer_original-b2-guard/process.json",
+        "complete": true,
+        "wallSeconds": 2.7393748369067907,
+        "peakRssBytes": 279420928,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957068.7781909,
+        "finished": 1791957071.5175533
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-numeric_closed-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 4.044378160033375,
+        "peakRssBytes": 34037760,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957053.7815135,
+        "finished": 1791957057.82588
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-map_closed-typescript-guard/process.json",
+        "complete": true,
+        "wallSeconds": 3.148460210999474,
+        "peakRssBytes": 300793856,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957111.1083128,
+        "finished": 1791957114.2567618
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-lexer_original-native-guard/process.json",
+        "complete": true,
+        "wallSeconds": 6.728470541071147,
+        "peakRssBytes": 42278912,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957079.1949,
+        "finished": 1791957085.9233577
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-small-typescript-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.5970066338777542,
+        "peakRssBytes": 211718144,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957036.8354738,
+        "finished": 1791957038.4324696
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-numeric_closed-b2-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.3713619909249246,
+        "peakRssBytes": 167346176,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957063.4936368,
+        "finished": 1791957064.8649817
+      },
+      {
+        "file": "selfhost/build/phase87/linear-screen/1-numeric_closed-typescript-guard/process.json",
+        "complete": true,
+        "wallSeconds": 1.6579130708705634,
+        "peakRssBytes": 222728192,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957064.8986127,
+        "finished": 1791957066.5565128
+      },
+      {
+        "file": "selfhost/build/phase87/linear-lexer-profile-guard/process.json",
+        "complete": true,
+        "wallSeconds": 6.772177909035236,
+        "peakRssBytes": 44326912,
+        "stoppedFor": null,
+        "returncode": 0,
+        "started": 1791957274.9321344,
+        "finished": 1791957281.70431
+      }
+    ]
+  }
+}

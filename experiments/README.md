@@ -5,6 +5,19 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Completed investigation: Phase87 native compiler costs and sharing
+
+[Report](../implementation/phase87/README.md),
+[design](../design/phase87/native-compiler-investigation.md),
+[fast loops](../selfhost/tools/performance/phase87/README.md).
+Existing native sampling exposes growing-prefix String append. A26-line isolated
+builder change improves Lexer first/fifth requests8–9×/14× and Numeric1.5–2×;
+87 experimental-host C outputs stay exact, but Map remains blocked. Eight tiny
+controls prove unsafe continuation reuse; a scoped8-frame Data repair is designed.
+Base remains~3s and release/lifetime costs dominate after text copying is removed.
+No default/native-B2 promotion; installed Phase82 stays unchanged. Read the paired
+scope, repeated-request limits, expected failures and next native admission gates.
+
 ## Completed investigation: Phase86 native compiler hosting
 
 [Report](../implementation/phase86/README.md). The current Bend compiler builds

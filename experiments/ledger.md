@@ -4473,3 +4473,31 @@ one unfinalized interruption. Measured occupancy1,359.23s; peak4.14GiB on separa
 bounded Clang. Three controlled RSS stops, no system OOM/deadline. Preserve wrapper
 syntax/path mistakes and invalid initial import control. Two bounded audit agents,
 serial root targets, no PR comment or quota claim. Installed Phase82 metrics stay.
+
+## Phase87 native compiler mechanisms — 2026-10-14
+
+[Report](../implementation/phase87/README.md). Exact native B1 profiling works
+without another build using the existing Phase68 sampler. Primary4ms profiles
+have zero overruns/drops and~100% CPU coverage. String.append takes67.39% of
+five-Lexer process samples. A two-module/+26-line isolated Bend candidate makes
+indentation, joins and segment assembly linear. Lexer first/fifth request gains
+8.2–8.9×/13.8–14.4×; Numeric1.45–1.74×/1.81–2.08×. Small changes little. Output
+C stays exact on all87 experimental-host request outputs, including profiles;
+30ordinaryB2 checks also agree,30TS products retained separately. No aggregate
+excludes failing Map. Base~3s and native full host/B2 remain unqualified.
+
+Eight minimal controls establish unsafe affine-continuation sharing, with
+law/inline variants byte-identical. Direct branches and Data continuation reuse
+work; native eager/double closure reuse fails, safe checker rejects it. Designed
+8-frame observer-local repair is not implemented. Full candidate Map still fails.
+Post-change append falls to9.01%; absolute drop/fade sampled estimate stays~3.8s
+and becomes56.86% of process CPU. Next scope ownership callers and prepared Base
+alongside the correctness repair. Do not alter runtime guards or claim an allocator
+locality cause without counters. JS sibling outputs agree; broad JS speed admission
+is pending. Production/release remains unchanged and verifies.
+
+69 guarded jobs,64 successes and5 expected failures,506.86s target occupancy,
+17.57min guarded-campaign span. One checked compiler acquisition and one O2 image
+build; peak4.03GiB under6GiB/16GiB-headroom guard, no OOM/deadline. Initial1ms
+sampling overruns and a True-versus-True{} display expectation error are retained.
+Two bounded audit agents, root-only serial execution, no PR comment or quota claim.

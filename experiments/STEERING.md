@@ -1,33 +1,43 @@
-# Active frontier: native hosting has concrete blockers; Phase82 installed
+# Active frontier: make the native compiler safe and linear; Phase82 installed
 
-[Phase86 report](../implementation/phase86/README.md) establishes current native
-B1 feasibility through pinned upstream C/Clang, without a JS runtime bridge.
-All87 successful prototype outputs (40 native,47 JS) match independent B2 C.
-Do not migrate the default yet: Map fails in `rfc_wrap` from generated
-`WL_FID_NOA_EVAL_K8169`; the ordinary reference-counting path rejects a closure
-or task. Minimize typed/erased higher-order forwarding before assigning blame
-or repairing it. Never disable the guard. The exact binary, stack and assembly
-are retained without another194s compiler-image rebuild.
+[Phase87](../implementation/phase87/README.md) profiles the exact Phase86 native
+B1 and demonstrates a general linear-text candidate in an isolated source image.
+Native means the compiler request itself runs as C machine code, with no JS
+runtime bridge; it is still upstream-built B1, not a native self-produced B2.
+Production132 modules, upstream and installed JS-hosted Phase82 stay unchanged.
 
-Native first requests improve on three simple controls, but Lexer takes5.31s
-versus1.06s sibling JS. By fifth call it grows to10.79s while JS falls to0.476s.
-Native RSS is40.5MiB; the growth is unprofiled, not evidence of OOM. The system
-perf wrapper references missing `perf_5.10`. A native profiler and small reproducer
-are prerequisites to another broad claim. The planned broad campaign stopped;
-there is no aggregate excluding failed Map or new native-B2 qualification.
+Five-request Lexer profiling:67.39% String.append leaf samples,10,983 samples,
+zero overruns/drops and essentially100% process CPU coverage. Linked native
+strings make growing-prefix indentation/join/segment builders quadratic. The
+isolated two-module patch makes those builders linear;21 edge assertions pass
+in raw JS/native and complete output C is checked against independent B2.
+Use the report for measured paired results and limits; no failed-family-excluding
+aggregate establishes parity. Base remains~3s and startup-dominated sampling
+has62.55% term_drop/span_fade leaves. Profile actual request phases/callers before
+changing the runtime allocator or assigning those samples to a particular pass.
 
-Canonical Bend-produced runtime chunks reduce native template setup16.6s→1–2ms.
-Base still costs3.06s per process; ordinary B2 loads a cache. Acquisition plus
-O2 image build costs259s, peak4.14GiB under a6GiB/16GiB-headroom guard. That
-exception applies only to large Clang builds, not routine runtime experiments.
-Do not assume AOT execution or a resident native process fixes latency. First
-resolve Map and Lexer, then qualify prepared Base loading and the full host.
-Keep the JS development host/session and Phase85 first-use work available.
+Map's failure is now minimized: eager closures duplicate an affine continuation
+in unsafe observer source. Law/inline-signature pairs emit identical C/JS;
+signatures do not repair it. Direct match/threading works for exclusive use,
+but symbolic analysis genuinely reuses the continuation. The scoped repair is
+8 Data frame constructors plus a dispatcher in observer-analysis.bend, preserving
+fresh/fuel/first-error/recursive-tail behavior. The full repair is **not yet
+implemented**. Never relax rfc_wrap's closure/task rejection. Tiny controls run
+in~23s versus~259s to acquire/build a full compiler image.
 
-Production core/source/images remain unchanged and release verification passes.
-109 guarded records,1,359s measured occupancy; three controlled RSS stops, no
-system OOM/deadline. One cancelled receipt lacks final timing and remains so.
-Two bounded source/method agents, root-only serial targets, no PR comment.
+Next: repair observer continuations with exact analysis-product controls; integrate
+linear builders with broader native/JS conformance; then native prepared-Base
+persistence and ownership caller profiling. Native full host/import/effect support
+and native B2 self-reproduction remain separate gates. Repeated Lexer slowdown
+is reduced but not proven to be an allocator locality bug; no cumulative nested
+redirect or linear free-list search exists in the inspected runtime. Do not
+claim a memory leak/OOM from timing growth. Preserve Phase86 baseline/capsule,
+its exact emitted runtime chunks, and the installed JS development path.
+
+Root runs targets serially. Ordinary2GiB RSS guards; full Clang only6GiB with
+16GiB available-memory headroom. Two bounded source-audit agents, no PR comment.
+Read the [methods](../selfhost/tools/performance/phase87/README.md), exact retained
+failures and [Phase86 feasibility report](../implementation/phase86/README.md).
 
 ## Phase85 findings retained
 

@@ -39,6 +39,7 @@ Read the [Phase82 report](implementation/phase82/README.md),
 [remaining compilation costs and ranked options](implementation/phase81/README.md),
 [deeper investigation and next prototypes](implementation/phase83/README.md),
 [native compiler hosting investigation](implementation/phase86/README.md),
+[native optimization and correctness investigation](implementation/phase87/README.md),
 [fast loops](selfhost/tools/performance/phase78/README.md) and
 [compiler guide](docs/BEND-IN-BEND.md). From `selfhost/`, run
 `npm run verify:release`, then `node cli.mjs FILE --run`.

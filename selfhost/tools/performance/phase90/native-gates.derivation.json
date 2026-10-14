@@ -1,0 +1,96 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/native-b2/run-b1.py",
+    "sha256": "72cf397154b64b5aa964ca4b0f8319f1da254d2bf3d33a5598127350a6d27aa5",
+    "bytes": 12608
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/native-gates.py",
+    "sha256": "994eedb6b750f76e30826432172a3a742aa499a724255a041f56ebd7a3545069",
+    "bytes": 15889
+  },
+  "edits": [
+    {
+      "before": "Gate one exact nine-effect native B1, then optionally emit frozen S as C2.",
+      "after": "Gate the exact Phase90 combined native B1, then optionally emit its frozen S as C.",
+      "count": 1
+    },
+    {
+      "before": "ROOT = HERE.parents[4]",
+      "after": "ROOT = HERE.parents[3]",
+      "count": 1
+    },
+    {
+      "before": "SOURCE_SHA = '4584cf083d9eddad6f1290c9472c3aac2708099caa716a27f5b53fbcbaee1618'",
+      "after": "SOURCE_SHA = '74b390d3ba7ada2c001dbdc6f63b0eb63b2231d129279114b1d5d55fa39d7052'\nANCESTOR_SHA = '4584cf083d9eddad6f1290c9472c3aac2708099caa716a27f5b53fbcbaee1618'\nASSEMBLY = ROOT / 'selfhost/tools/performance/phase90/tables/compiler-native-tables-stack01.assembly.json'\nASSEMBLY_SHA = '209d3dfaf5bd792556f9905046f7ee09577c4e80841e180b57cbda7aff6e5e55'",
+      "count": 1
+    },
+    {
+      "before": "New checked upstream-built B1 for exact source 4584cf08\u2026",
+      "after": "New checked upstream-built B1 for exact combined source 74b390d3\u2026",
+      "count": 1
+    },
+    {
+      "before": "600s/2GiB/64MiB-file guard",
+      "after": "240s/2GiB/64MiB-file guard",
+      "count": 1
+    },
+    {
+      "before": "kind='phase89-nine-effect-native-b1-gates'",
+      "after": "kind='phase90-combined-native-b1-gates'",
+      "count": 1
+    },
+    {
+      "before": "assets_pin = bind_file(HERE / 'nine-effects.json')",
+      "after": "assets_pin = bind_file(PERF / 'phase89/native-b2/nine-effects.json')",
+      "count": 1
+    },
+    {
+      "before": "        frozen_source = bound(derivation['output'])\n        assert frozen_source['sha256'] == SOURCE_SHA",
+      "after": "        ancestor_source = bound(derivation['output'])\n        assert ancestor_source['sha256'] == ANCESTOR_SHA\n        # Exact new source is separate from the ancestor's nine-effect entry proof.\n        assembly_pin = bind_file(ASSEMBLY)\n        assert assembly_pin['sha256'] == ASSEMBLY_SHA\n        assembly = json.loads(ASSEMBLY.read_text())\n        assert assembly['kind'] == 'phase90-native-source-assembly' and assembly['complete']\n        assert assembly['acquisitionComplete'] is False and assembly['exactOutsideDefinitions']\n        assert assembly['inputs'][0]['sha256'] == ANCESTOR_SHA\n        bind_tree(assembly['inputs'])\n        frozen_source = bound(assembly['output'])\n        assert frozen_source['sha256'] == SOURCE_SHA\n        original = Path(ancestor_source['file']).read_text()\n        changes = assembly['replacements']\n        assert len(changes) == 10\n        current = original\n        for change in changes:\n            assert change['old'] and change['new'] and current.count(change['old']) == 1\n            current = current.replace(change['old'], change['new'], 1)\n        assert current == Path(frozen_source['file']).read_text()\n        for change in reversed(changes):\n            assert current.count(change['new']) == 1\n            current = current.replace(change['new'], change['old'], 1)\n        assert current == original, 'Combined source inverse differs from frozen ancestor'\n        assert 'p86_effect_file' not in assembly['functions'], 'Entry changed unexpectedly'\n        report['ancestorNineEffectProof'] = dict(source=ancestor_source, derivation=derivation_pin)\n        report['combinedSourceProof'] = dict(source=frozen_source, derivation=assembly_pin,\n            inverseRecoversAncestor=True, entryDefinitionUnchanged=True)",
+      "count": 1
+    },
+    {
+      "before": "assert checked['kind'] == 'phase89-checked-native-source-derivative'\n        assert verify(checked['derivation']) == derivation_pin",
+      "after": "assert checked['kind'] == 'phase90-checked-upstream-native-source-derivative'\n        assert verify(checked['derivation']) == assembly_pin\n        assert checked['inputsUnchanged'] and checked['holes'] == 0\n        assert checked['sourceDerivation']['inverseRecoversParent']\n        assert checked['sourceDerivation']['forwardSha256'] == SOURCE_SHA\n        assert checked['sourceDerivation']['inverseSha256'] == ANCESTOR_SHA\n        assert checked['parent']['sha256'] == 'eb6d743504b7636fd6dc7fdf176586ca4380d46ea25965f5c1a2b35a5c1a2743'\n        assert verify(checked['historicalParent']['source'])['sha256'] == ANCESTOR_SHA",
+      "count": 1
+    },
+    {
+      "before": "assets=assets_pin, derivation=derivation_pin,",
+      "after": "assets=assets_pin, derivation=assembly_pin,",
+      "count": 1
+    },
+    {
+      "before": "normalSeconds=90, selfSeconds=600",
+      "after": "normalSeconds=90, selfSeconds=240",
+      "count": 1
+    },
+    {
+      "before": "row = run('self-source', frozen_source, cached, 600)",
+      "after": "row = run('self-source', frozen_source, cached, 240)",
+      "count": 1
+    },
+    {
+      "before": "kind='phase89-native-b1-self-emission'",
+      "after": "kind='phase90-native-b1-self-emission'",
+      "count": 1
+    },
+    {
+      "before": "source=frozen_source, derivation=derivation_pin, base=auth['base']",
+      "after": "source=frozen_source, derivation=assembly_pin, ancestorNineEffectProof=report['ancestorNineEffectProof'], base=auth['base']",
+      "count": 1
+    },
+    {
+      "before": "        assert 'p86_effect_file' not in assembly['functions'], 'Entry changed unexpectedly'",
+      "after": "        def entry_definitions(text):\n            starts = list(re.finditer(r'(?m)^(?:@unsafe\\n)?def (p86_[A-Za-z0-9_]+)\\(', text))\n            result = {}\n            for match in starts:\n                end = re.search(r'(?m)^(?:@unsafe|def |law |type |import )', text[match.end():])\n                stop = match.end() + end.start() if end else len(text)\n                assert match[1] not in result\n                result[match[1]] = text[match.start():stop].rstrip()\n            assert 'p86_effect_file' in result and 'p86_cli' in result\n            return result\n        original_entry = entry_definitions(original)\n        assert entry_definitions(Path(frozen_source['file']).read_text()) == original_entry\n        assert 'p86_effect_file' not in assembly['functions'], 'Entry changed unexpectedly'",
+      "count": 1
+    },
+    {
+      "before": "inverseRecoversAncestor=True, entryDefinitionUnchanged=True)",
+      "after": "inverseRecoversAncestor=True, entryDefinitionUnchanged=True, unchangedEntryDefinitions=sorted(original_entry))",
+      "count": 1
+    }
+  ],
+  "targetsExecuted": false,
+  "scope": "Same eight independent exact-C gates; real combined-source acquisition/ancestor separation and 240-second self-emission limit. Public admission unchanged."
+}

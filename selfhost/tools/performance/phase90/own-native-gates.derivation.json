@@ -1,0 +1,91 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/native-gates.py",
+    "sha256": "994eedb6b750f76e30826432172a3a742aa499a724255a041f56ebd7a3545069",
+    "bytes": 15889
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/own-native-gates.py",
+    "sha256": "7cd334a5b610b9e2da89078dc9f5be2dea76dc476296da655db788612815dd29",
+    "bytes": 15298
+  },
+  "edits": [
+    {
+      "before": "Gate the exact Phase90 combined native B1, then optionally emit its frozen S as C.",
+      "after": "Gate an own-C-backend image of exact combined S, preserving honest producer lineage.",
+      "count": 1
+    },
+    {
+      "before": "from native_support import authenticate, native_args, DEFAULT_CACHE, pin, verify",
+      "after": "from native_support import authenticate, DEFAULT_CACHE, pin, verify\nfrom own_native_support import authenticate_own, own_args as native_args",
+      "count": 1
+    },
+    {
+      "before": "New checked upstream-built B1 for exact combined source 74b390d3\u2026",
+      "after": "Own-backend image with honest .own-build.json for exact source 74b390d3\u2026",
+      "count": 1
+    },
+    {
+      "before": "kind='phase90-combined-native-b1-gates'",
+      "after": "kind='phase90-own-backend-native-gates'",
+      "count": 1
+    },
+    {
+      "before": "No public cache/image admission or native B2 build/execution.",
+      "after": "No public cache/image admission or full-language/native-fixed-point claim.",
+      "count": 1
+    },
+    {
+      "before": "        # authenticate(..., None) verifies checked upstream acquisition and the\n        # build/source command chain. The additional six effects are checked\n        # independently above, rather than assumed covered by its scalar API.\n        auth = authenticate(args.image, None)\n        assert auth['source']['sha256'] == SOURCE_SHA, 'Only frozen nine-effect B1 is admitted'\n        checked = json.loads(Path(auth['checked']['file']).read_text())\n        assert checked['kind'] == 'phase90-checked-upstream-native-source-derivative'\n        assert verify(checked['derivation']) == assembly_pin\n        assert checked['inputsUnchanged'] and checked['holes'] == 0\n        assert checked['sourceDerivation']['inverseRecoversParent']\n        assert checked['sourceDerivation']['forwardSha256'] == SOURCE_SHA\n        assert checked['sourceDerivation']['inverseSha256'] == ANCESTOR_SHA\n        assert checked['parent']['sha256'] == 'eb6d743504b7636fd6dc7fdf176586ca4380d46ea25965f5c1a2b35a5c1a2743'\n        assert verify(checked['historicalParent']['source'])['sha256'] == ANCESTOR_SHA\n",
+      "after": "        # The own-C image has its own producer/build binding, never a fake upstream receipt.\n        auth = authenticate_own(args.image, None)\n        assert auth['source']['sha256'] == SOURCE_SHA, 'Only exact combined source is admitted'\n",
+      "count": 1
+    },
+    {
+      "before": "        bind_tree(checked['inputs'])\n        bound(checked['parent'])",
+      "after": "        bound(auth['emission'])\n        bind_tree(auth['bindingInputs'])",
+      "count": 1
+    },
+    {
+      "before": "report.update(nativeB1=auth,",
+      "after": "report.update(nativeCompiler=auth,",
+      "count": 1
+    },
+    {
+      "before": "authenticate(args.image, None)",
+      "after": "authenticate_own(args.image, None)",
+      "count": 2
+    },
+    {
+      "before": "PERF / 'phase88/native_support.py', sys.executable",
+      "after": "PERF / 'phase88/native_support.py', PERF / 'phase90/own_native_support.py', sys.executable",
+      "count": 1
+    },
+    {
+      "before": "Eight exact-C live/cache gates for this recorded B1 only; no self-emission or public admission.",
+      "after": "Eight exact-C live/cache gates for this honestly bound own-backend image; no fixed point or public admission.",
+      "count": 1
+    },
+    {
+      "before": "kind='phase90-native-b1-self-emission'",
+      "after": "kind='phase90-own-backend-native-self-emission'",
+      "count": 1
+    },
+    {
+      "before": "producer=dict(stage='upstream-built native B1', authentication=auth)",
+      "after": "producer=dict(stage='own-backend native compiler', provenance=auth['provenance'], authentication=auth)",
+      "count": 1
+    },
+    {
+      "before": "C2 emitted by the recorded native B1 from exact frozen S. No upstream acquisition claim for C2, no Clang build, native B2 execution or fixed point.",
+      "after": "Next C emitted by the recorded own-backend native compiler from exact combined S. No upstream acquisition, further Clang build, independent comparison or fixed point.",
+      "count": 1
+    },
+    {
+      "before": "This experimental runner never changes public image/cache admission, compiles\nC2 with Clang, executes B2, or labels native-produced C as an upstream build.",
+      "after": "This experimental runner executes the bound own-backend image for qualification.\nIt never changes public image/cache admission, invokes Clang, or labels\nnative-produced C as an upstream build.",
+      "count": 1
+    }
+  ],
+  "targetsExecuted": false,
+  "scope": "Preserve exact independent eight-gate oracle/entry/asset/cache-origin checks; replace only provenance authentication and retained-runtime argv adapter."
+}

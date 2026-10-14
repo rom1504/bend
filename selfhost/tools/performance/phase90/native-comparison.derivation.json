@@ -1,0 +1,138 @@
+{
+  "kind": "phase90-native-comparison-method-derivation",
+  "complete": true,
+  "targetExecuted": false,
+  "changes": [
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/broad-exact-v2.py",
+        "sha256": "928697f7f3937d6c2ee7fca1d7f49fc2fda53dde86cb59cf89a41900b86136ee",
+        "bytes": 19951
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/broad-exact.py",
+        "sha256": "d2db9d77404d3fde1e1c7bf46a07c461bb0b3ff7516b35eede183c97198ece1d",
+        "bytes": 20895
+      },
+      "edits": [
+        {
+          "startByte": 184,
+          "endByte": 267,
+          "old": "only after the exact candidate has passed compare-owned/chunks live qualification.\n",
+          "new": "only after the exact Phase90 candidate has passed all eight immutable live/cache gates.\n"
+        },
+        {
+          "startByte": 3802,
+          "endByte": 3867,
+          "old": "    assert gate['kind'] == 'phase89-nine-effect-native-b1-gates'\n",
+          "new": "    assert Path(gate_pin['file']).name == 'gates.json', 'Use immutable qualification, not mutable report.json'\n    assert gate['kind'] == 'phase90-combined-native-b1-gates'\n"
+        },
+        {
+          "startByte": 4155,
+          "endByte": 4200,
+          "old": "    method = P/'phase89/native-b2/run-b1.py'\n",
+          "new": "    method = P/'phase90/native-gates.py'\n"
+        },
+        {
+          "startByte": 4388,
+          "endByte": 4675,
+          "old": "    assets_pin, assets, effects, derivative_pin, source = nine_assets(remember)\n    assert gate['assets'] == assets_pin and gate['derivation'] == derivative_pin\n    assert gate['source'] == source and gate['nineEffects'] == effects\n    assert new['source']['sha256'] == source['sha256']\n",
+          "new": "    assets_pin, assets, effects, ancestor_derivation, ancestor_source = nine_assets(remember)\n    assert gate['assets'] == assets_pin and gate['nineEffects'] == effects\n    assert gate['ancestorNineEffectProof'] == dict(source=ancestor_source, derivation=ancestor_derivation)\n    assembly_path = P/'phase90/tables/compiler-native-tables-stack01.assembly.json'\n    derivative_pin = remember(assembly_path, gate['derivation'])\n    assert derivative_pin['sha256'] == '209d3dfaf5bd792556f9905046f7ee09577c4e80841e180b57cbda7aff6e5e55'\n    assembly = read(assembly_path)\n    assert assembly['kind'] == 'phase90-native-source-assembly' and assembly['complete']\n    assert assembly['exactOutsideDefinitions'] and assembly['acquisitionComplete'] is False\n    assert assembly['inputs'][0]['sha256'] == ancestor_source['sha256']\n    for item in assembly['inputs']:\n        remember(item.get('file', item.get('path')), item)\n    source = remember(assembly['output']['file'], assembly['output'])\n    assert source['sha256'] == '74b390d3ba7ada2c001dbdc6f63b0eb63b2231d129279114b1d5d55fa39d7052'\n    original = Path(ancestor_source['file']).read_text()\n    current = original\n    assert len(assembly['replacements']) == 10\n    for change in assembly['replacements']:\n        assert change['old'] and change['new'] and current.count(change['old']) == 1\n        current = current.replace(change['old'], change['new'], 1)\n    assert current == Path(source['file']).read_text()\n    for change in reversed(assembly['replacements']):\n        assert current.count(change['new']) == 1\n        current = current.replace(change['new'], change['old'], 1)\n    assert current == original\n    assert 'p86_effect_file' not in assembly['functions']\n    proof = gate['combinedSourceProof']\n    assert proof['source'] == source and proof['derivation'] == derivative_pin\n    assert proof['inverseRecoversAncestor'] and proof['entryDefinitionUnchanged']\n    assert 'p86_effect_file' in proof['unchangedEntryDefinitions'] and 'p86_cli' in proof['unchangedEntryDefinitions']\n    assert gate['source'] == source and new['source']['sha256'] == source['sha256']\n"
+        },
+        {
+          "startByte": 4961,
+          "endByte": 5034,
+          "old": "    assert checked['kind'] == 'phase89-checked-native-source-derivative'\n",
+          "new": "    assert checked['kind'] == 'phase90-checked-upstream-native-source-derivative'\n    assert checked['inputsUnchanged'] and checked['holes'] == 0\n    assert checked['sourceDerivation']['inverseRecoversParent']\n    assert checked['sourceDerivation']['forwardSha256'] == source['sha256']\n    assert checked['sourceDerivation']['inverseSha256'] == ancestor_source['sha256']\n    assert checked['parent']['sha256'] == 'eb6d743504b7636fd6dc7fdf176586ca4380d46ea25965f5c1a2b35a5c1a2743'\n    remember(checked['historicalParent']['source']['file'], checked['historicalParent']['source'])\n"
+        },
+        {
+          "startByte": 9378,
+          "endByte": 9560,
+          "old": "    gate_args = ap.add_mutually_exclusive_group(required=True)\n    gate_args.add_argument('--live-evidence', type=Path)\n    gate_args.add_argument('--nine-effects-gates', type=Path)\n",
+          "new": "    ap.add_argument('--gates', type=Path, required=True, help='Immutable Phase90 native-gates gates.json')\n"
+        },
+        {
+          "startByte": 9829,
+          "endByte": 9911,
+          "old": "    assert out.is_relative_to(ROOT/'selfhost/build/phase89') and not out.exists()\n",
+          "new": "    assert out.is_relative_to(ROOT/'selfhost/build/phase90') and not out.exists()\n"
+        },
+        {
+          "startByte": 10796,
+          "endByte": 10863,
+          "old": "                   P/'phase86/guard.py', P/'programs/support.py']:\n",
+          "new": "                   P/'phase86/guard.py', P/'programs/support.py', P/'phase90/native-gates.py']:\n"
+        },
+        {
+          "startByte": 11246,
+          "endByte": 12824,
+          "old": "    if a.nine_effects_gates:\n        live_pin = admit_nine_gates(a.nine_effects_gates, old, new, remember)\n        admission_kind = 'phase89-nine-effect-native-b1-gates'\n    else:\n        live_pin = remember(a.live_evidence)\n        live = read(live_pin['file'])\n        assert live['complete'] and live['passed'] and live['new'] == new and live['old'] == old\n        allowed_methods = [P/'phase89/compare-owned.py', P/'phase89/compare-chunks.py']\n        assert live['method']['file'] in list(map(str, allowed_methods))\n        remember(live['method']['file'], live['method'])\n        assert len(live['live']) == 3 and {r['case'] for r in live['live']} == {'small', 'map_closed', 'unicode'}\n        for row in live['live']:\n            assert row['exact'] and row['job']['pass_'] and row['role'] == 'candidate-live'\n            assert len(row['outputs']) == 1\n            source = live['sourcePins'][row['case']]\n            remember(source['file'], source)\n            remember(row['outputs'][0]['file'], row['outputs'][0])\n            process_path = Path(row['job']['guard'])/'process.json'\n            process = read(process_path)\n            assert process['complete'] and process['returncode'] == 0 and not process.get('stoppedFor')\n            command = process['command']\n            start = command.index(new['image']['file'])\n            prefix = row['outputs'][0]['file'].removesuffix('.1.c')\n            assert command[start:] == native_args(new, source['file'], prefix, 1)\n            remember(process_path)\n\n        admission_kind = 'compare-owned-or-chunks-live'\n",
+          "new": "    live_pin = admit_nine_gates(a.gates, old, new, remember)\n    admission_kind = 'phase90-combined-native-b1-gates'\n"
+        },
+        {
+          "startByte": 16181,
+          "endByte": 16268,
+          "old": "        preflight = dict(kind='phase89-native-broad-exact-c-preflight', complete=True,\n",
+          "new": "        preflight = dict(kind='phase90-native-broad-exact-c-preflight', complete=True,\n"
+        },
+        {
+          "startByte": 16912,
+          "endByte": 16997,
+          "old": "    report = dict(kind='phase89-native-broad-exact-c', complete=False, passed=False,\n",
+          "new": "    report = dict(kind='phase90-native-broad-exact-c', complete=False, passed=False,\n"
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase89/measure-qualified.py",
+        "sha256": "0ea6a8bb1e32edb2d71fee4bd9e732451c5aa5e5ab545e434b9c30a105f921a7",
+        "bytes": 3723
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/measure-qualified.py",
+        "sha256": "b794e76942e1f251d76fb1c880e1ba621f409dec5aa1183e3fa606c913a10a49",
+        "bytes": 8980
+      },
+      "edits": [
+        {
+          "startByte": 23,
+          "endByte": 130,
+          "old": "\"\"\"Serial pinned Bun/Node/native engine comparison; complete C is the gate.\"\"\"\nimport argparse,json,re,sys\n",
+          "new": "\"\"\"Paired historical native89 versus exact qualified native90; no TS rerun.\n\nEach fresh process receives the same authenticated prepared Base carrier. Calls\n1 and 5 are selectable; --calls 5 preserves every intermediate request/output.\nThis private comparison does not change public native image/cache admission.\n\"\"\"\nimport argparse\nimport importlib.util\nimport json\nimport re\nimport sys\n"
+        },
+        {
+          "startByte": 155,
+          "endByte": 3723,
+          "old": "ROOT=Path(__file__).resolve().parents[4];P=ROOT/'selfhost/tools/performance'\nsys.path.insert(0,str(P/'phase88'))\nfrom broad import guard,pin,save,NODE\nfrom native_support import native_args,DEFAULT_CACHE\nfrom admission import authenticate\nparser=argparse.ArgumentParser(description=__doc__)\nparser.add_argument('out',type=Path);parser.add_argument('--calls',type=int,choices=[1,5],default=1)\nparser.add_argument('--rounds',type=int,default=2)\nparser.add_argument('--roles',default='ts-bun,ts-node,b2-bun,b2-node,native')\nparser.add_argument('--cases',default='small,numeric_closed,lexer_original,map_closed,functions65,unicode')\na=parser.parse_args();out=a.out.resolve();out.mkdir(parents=True,exist_ok=False)\nbaseline=json.loads((ROOT/'selfhost/build/phase88/screen01/report.json').read_text())\nbun=json.loads((ROOT/'selfhost/build/phase89/bun-install.json').read_text())['binary'];assert pin(bun['file'])==bun\nroles=a.roles.split(',');cases=a.cases.split(',');auth=authenticate(ROOT/'selfhost/build/phase89/compiler-native-self01',DEFAULT_CACHE)\nsourcePins={name:pin(baseline['cases'][name]) for name in cases}\nreport=dict(complete=False,passed=False,method=pin(__file__),worker=pin(P/'phase86/reference.mjs'),bun=bun,node=pin(NODE),calls=a.calls,rounds=a.rounds,roles=roles,sourcePins=sourcePins,native=auth,rows=[])\nsave(out/'plan.json',report)\nfor rnd in range(a.rounds):\n for ix,name in enumerate(cases):\n  order=roles[ix%len(roles):]+roles[:ix%len(roles)]\n  if rnd%2:order=list(reversed(order))\n  for role in order:\n   source=Path(sourcePins[name]['file']);assert pin(source)==sourcePins[name]\n   prefix=out/f'{rnd+1}-{name}-{role}'\n   oracleRole='typescript' if role.startswith('ts-') else 'b2'\n   if role=='native':cmd=native_args(auth,source,prefix,a.calls)\n   else:\n    engine,flags=(bun['file'],[]) if role.endswith('-bun') else (NODE,['--max-old-space-size=1024','--stack-size=4096'])\n    cmd=[engine,*flags,str(P/'phase86/reference.mjs'),oracleRole,str(source),str(prefix),str(a.calls)]\n   job=guard(Path(str(prefix)+'-guard'),cmd,60)\n   logs='\\n'.join((Path(job['guard'])/n).read_text() for n in ['stdout.log','stderr.log'])\n   outputs=[pin(Path(str(prefix)+f'.{i}.c')) for i in range(1,a.calls+1) if Path(str(prefix)+f'.{i}.c').exists()]\n   oracle=next(r['outputs'][0]['sha256'] for r in baseline['rows'] if r['case']==name and r['role']==oracleRole)\n   exact=len(outputs)==a.calls and all(o['sha256']==oracle for o in outputs)\n   metrics=dict(re.findall(r'(base_prepare_ms|runtime_prepare_ms)=(\\d+)',logs))\n   requests=list(map(int,re.findall(r'request=\\d+ request_ms=(\\d+)',logs)))\n   reference=Path(str(prefix)+'.json');imports=None\n   if reference.exists():\n    ref=json.loads(reference.read_text());requests=[c['requestMs'] for c in ref['calls']];imports=ref.get('importsMs')\n   process=json.loads((Path(job['guard'])/'process.json').read_text())\n   row=dict(round=rnd+1,case=name,role=role,job=job,outputs=outputs,exact=exact,metrics=metrics,requestMs=requests,importsMs=imports,processWallSeconds=process['wallSeconds'],peakRssBytes=process.get('peakTreeRssBytes'))\n   report['rows'].append(row);save(out/'report.json',report)\n   print(json.dumps({k:row[k] for k in ['round','case','role','exact','requestMs','importsMs','processWallSeconds']}),flush=True)\n   if not job['pass_'] or not exact:raise SystemExit('Failed job/output; evidence retained')\nassert authenticate(ROOT/'selfhost/build/phase89/compiler-native-self01',DEFAULT_CACHE)==auth\nassert pin(bun['file'])==bun\nreport.update(complete=True,passed=True);save(out/'report.json',report)\n",
+          "new": "\nsys.dont_write_bytecode = True\nHERE = Path(__file__).resolve().parent\nROOT = HERE.parents[3]\nP = ROOT/'selfhost/tools/performance'\n\n\ndef load(name, path):\n    spec = importlib.util.spec_from_file_location(name, path)\n    module = importlib.util.module_from_spec(spec)\n    spec.loader.exec_module(module)\n    return module\n\n\nB = load('phase90_broad_exact', HERE/'broad-exact.py')\nA89 = load('phase89_native_admission', P/'phase89/admission.py')\nCASES = ['small', 'numeric_closed', 'lexer_original', 'map_closed', 'functions65', 'unicode']\nBASELINE_IMAGE = ROOT/'selfhost/build/phase89/compiler-native-self01'\nCACHE_IMAGE = ROOT/'selfhost/build/phase88/compiler-native02'\n\n\ndef main():\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument('image', type=Path)\n    parser.add_argument('out', type=Path)\n    parser.add_argument('--gates', type=Path, required=True)\n    parser.add_argument('--calls', type=int, choices=[1, 5], default=1)\n    parser.add_argument('--rounds', type=int, default=2)\n    parser.add_argument('--cases', default=','.join(CASES))\n    parser.add_argument('--seconds', type=int, default=90)\n    parser.add_argument('--check-only', action='store_true')\n    args = parser.parse_args()\n    cases = args.cases.split(',')\n    assert cases and len(cases) == len(set(cases)) and set(cases) <= set(CASES)\n    assert 1 <= args.rounds <= 5 and 1 <= args.seconds <= 180\n    out = args.out.resolve()\n    assert out.is_relative_to(ROOT/'selfhost/build/phase90') and not out.exists()\n    inputs = {}\n\n    def remember(path, expected=None):\n        actual = B.pin(path)\n        if expected is not None:\n            assert actual['file'] == str(Path(expected.get('file', expected.get('path'))).resolve())\n            assert all(actual[k] == expected[k] for k in ('sha256', 'bytes')), path\n        prior = inputs.setdefault(actual['file'], actual)\n        assert prior == actual\n        return actual\n\n    native89 = A89.authenticate(BASELINE_IMAGE, B.DEFAULT_CACHE)\n    cached_origin = B.authenticate(CACHE_IMAGE, B.DEFAULT_CACHE)\n    candidate = B.authenticate(args.image, None)\n    assert native89['cache'] == cached_origin['cache']\n    for field in ('base', 'runtime', 'runtimeParts', 'template', 'effectsDir', 'effects'):\n        assert native89[field] == cached_origin[field] == candidate[field], field\n    for method in [Path(__file__), HERE/'broad-exact.py', HERE/'native-gates.py',\n                   P/'phase89/admission.py', P/'phase88/broad.py', P/'phase88/native_support.py',\n                   P/'phase86/guard.py', P/'programs/support.py', Path(sys.executable)]:\n        remember(method)\n    for auth in (native89, cached_origin, candidate):\n        for item in B.walk_pins(auth):\n            remember(item['file'], item)\n        build = B.read(auth['build']['file'])\n        item = build['guard']\n        remember(item.get('file', item.get('path')), item)\n    remember(B.RUNTIME.parent/'receipt.json')\n    qualification = B.admit_nine_gates(args.gates, cached_origin, candidate, remember)\n    native90 = dict(candidate, cache=cached_origin['cache'])\n    baseline_path = ROOT/'selfhost/build/phase88/screen01/report.json'\n    screen_pin = remember(baseline_path)\n    baseline = B.read(baseline_path)\n    assert baseline['complete'] and baseline['allJobsSucceeded']\n    sources, oracles = {}, {}\n    for name in cases:\n        expected = next(p for p in baseline['inputs'] if p.get('file', p.get('path')) == baseline['cases'][name])\n        sources[name] = remember(baseline['cases'][name], expected)\n        row = next(r for r in baseline['rows'] if r['case'] == name and r['role'] == 'b2')\n        assert row['guard']['complete'] and row['guard']['returncode'] == 0 and len(row['outputs']) == 1\n        oracles[name] = row['outputs'][0]\n\n    def unchanged():\n        assert all(B.pin(p['file']) == p for p in inputs.values()), 'Frozen comparison input changed'\n        assert A89.authenticate(BASELINE_IMAGE, B.DEFAULT_CACHE) == native89\n        assert B.authenticate(CACHE_IMAGE, B.DEFAULT_CACHE) == cached_origin\n        assert B.authenticate(args.image, None) == candidate\n\n    report = dict(kind='phase90-native89-native90-paired', complete=False, passed=False,\n        method=B.pin(__file__), inputs=list(inputs.values()), checkOnly=args.check_only,\n        executionPerformed=False, roles=['native89', 'native90'], cases=cases,\n        calls=args.calls, rounds=args.rounds, sourcePins=sources, oracles=oracles,\n        oracleReceipt=screen_pin, native89=native89, native90=candidate,\n        candidateQualification=qualification, privateCache=cached_origin['cache'], rows=[],\n        scope='Paired native compilation only. Same prepared Base boundary, single thread/CPU3. '\n              'Every emitted C must equal retained B2 oracle. Process time, preparation and '\n              'request clocks remain separate; five-call mode is one actual process sequence. '\n              'No TS rerun, generated-program speed measurement, native B2 or public admission.')\n    out.mkdir(parents=True)\n    B.save(out/'plan.json', report)\n    if args.check_only:\n        unchanged()\n        report.update(complete=True, passed=True, targetJobsRun=0, inputsUnchanged=True)\n        B.save(out/'preflight.json', report)\n        print(json.dumps(dict(preflight=B.pin(out/'preflight.json'), targetJobsRun=0)))\n        return\n    error = None\n    try:\n        for rnd in range(args.rounds):\n            for ix, name in enumerate(cases):\n                order = ['native89', 'native90'] if (ix + rnd) % 2 == 0 else ['native90', 'native89']\n                for role in order:\n                    assert B.pin(sources[name]['file']) == sources[name]\n                    prefix = out/f'{rnd+1}-{name}-{role}'\n                    producer = native89 if role == 'native89' else native90\n                    command = B.native_args(producer, sources[name]['file'], prefix, args.calls)\n                    job = B.guard(Path(str(prefix)+'-guard'), command, args.seconds)\n                    directory = Path(job['guard'])\n                    process = B.read(directory/'process.json') if (directory/'process.json').exists() else {}\n                    logs = '\\n'.join((directory/n).read_text() for n in ('stdout.log', 'stderr.log') if (directory/n).exists())\n                    outputs = [B.pin(Path(str(prefix)+f'.{i}.c')) for i in range(1,args.calls+1) if Path(str(prefix)+f'.{i}.c').exists()]\n                    requests = list(map(int, re.findall(r'request=\\d+ request_ms=(\\d+)', logs)))\n                    exact = len(outputs) == args.calls and all(all(o[k] == oracles[name][k] for k in ('sha256','bytes')) for o in outputs)\n                    row = dict(round=rnd+1, case=name, role=role, command=command, job=job, process=process,\n                        outputs=outputs, exact=exact, requestMs=requests,\n                        metrics={k:int(v) for k,v in re.findall(r'(base_prepare_ms|runtime_prepare_ms)=(\\d+)',logs)},\n                        processWallSeconds=process.get('wallSeconds'), peakRssBytes=process.get('peakTreeRssBytes'),\n                        receipts=[B.pin(p) for p in sorted(directory.glob('*')) if p.is_file()])\n                    row['passed'] = bool(job['pass_'] and process.get('complete') and process.get('returncode') == 0\n                        and not process.get('stoppedFor') and exact and len(requests) == args.calls)\n                    report['executionPerformed'] = True\n                    report['rows'].append(row)\n                    B.save(out/'report.json', report)\n                    print(json.dumps({k:row[k] for k in ('round','case','role','exact','requestMs','processWallSeconds','passed')}), flush=True)\n                    assert row['passed'], 'Failed native process/output/clock gate; preserve complete evidence'\n    except BaseException as exc:\n        error = exc\n        report['error'] = f'{type(exc).__name__}: {exc}'\n    try:\n        unchanged()\n        report['inputsUnchanged'] = True\n    except BaseException as exc:\n        error = error or exc\n        report['inputVerificationError'] = f'{type(exc).__name__}: {exc}'\n    report['complete'] = error is None and len(report['rows']) == args.rounds*len(cases)*2\n    report['passed'] = bool(report['complete'] and report.get('inputsUnchanged') and all(r['passed'] for r in report['rows']))\n    report['exactCOutputs'] = sum(len(r['outputs']) for r in report['rows'] if r['passed'])\n    B.save(out/'report.json', report)\n    if error:\n        raise error\n\n\nif __name__ == '__main__':\n    main()\n"
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/native-gates.py",
+      "sha256": "994eedb6b750f76e30826432172a3a742aa499a724255a041f56ebd7a3545069",
+      "bytes": 15889
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/replay-native-methods.py",
+      "sha256": "70883d4453045d72dd1a91488b15a906bb1cf08308ef6571d597194f1b0aa74c",
+      "bytes": 1303
+    }
+  ],
+  "offlinePreflights": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/broad-preflight01/preflight.json",
+      "sha256": "919eb87ecca334063c6f5f9f475e66598cb24ceefa6e512e250977c0a4feabc4",
+      "bytes": 101087
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/pair-preflight01/preflight.json",
+      "sha256": "1e192afa8eeb3f3fc90e52206db64b87bd98f6460caeb49ed0da760a41602532",
+      "bytes": 65260
+    }
+  ],
+  "scope": "Historical method files unchanged; replay exact byte edits into fresh copies. Admission limited to exact Phase90 source and immutable eight-gate proof. Old45 C oracle digests and native89 paired baseline retained."
+}

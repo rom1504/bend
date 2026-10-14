@@ -1,0 +1,35 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/emit-self-v3.mjs",
+    "sha256": "46a574df81ffee7d377c17a7108fd583e45d78f5cc6897ab95a516d82ea9e555",
+    "bytes": 8187
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/emit-self-v5.mjs",
+    "sha256": "0bbb6f217ffce8f4867b0645e262ae944e2e6cc998087968efeeb6ead0f153eb",
+    "bytes": 9550
+  },
+  "edits": [
+    {
+      "before": "emits frozen native89 S as C.",
+      "after": "emits exact combined native90 S as C.",
+      "count": 1
+    },
+    {
+      "before": "kind:'phase90-qualified-js-b2-native-self-source-emission'",
+      "after": "kind:'phase90-qualified-js-b2-combined-source-emission'",
+      "count": 1
+    },
+    {
+      "before": "  const native=read(admission.file),source=bind(native.producer.source);\n  assert.equal(source.sha256,'4584cf083d9eddad6f1290c9472c3aac2708099caa716a27f5b53fbcbaee1618');\n  assert.equal(source.bytes,1755310);",
+      "after": "  const native=read(admission.file),ancestor=bind(native.producer.source);\n  assert.equal(ancestor.sha256,'4584cf083d9eddad6f1290c9472c3aac2708099caa716a27f5b53fbcbaee1618');\n  const assemblyPin=add(path.join(root,'selfhost/tools/performance/phase90/tables/compiler-native-tables-stack01.assembly.json'));\n  assert.equal(assemblyPin.sha256,'209d3dfaf5bd792556f9905046f7ee09577c4e80841e180b57cbda7aff6e5e55');\n  const assembly=read(assemblyPin.file);\n  assert.equal(assembly.kind,'phase90-native-source-assembly');assert(assembly.complete&&assembly.exactOutsideDefinitions);\n  assert.equal(assembly.inputs[0].sha256,ancestor.sha256);for(const record of assembly.inputs)bind(record);\n  const source=bind(assembly.output);\n  assert.equal(source.sha256,'74b390d3ba7ada2c001dbdc6f63b0eb63b2231d129279114b1d5d55fa39d7052');\n  assert.equal(source.bytes,1757157);\n  const original=fs.readFileSync(ancestor.file,'utf8');let forward=original;\n  assert.equal(assembly.replacements.length,10);\n  for(const change of assembly.replacements){assert(change.old&&change.new);assert.equal(forward.split(change.old).length-1,1);forward=forward.replace(change.old,()=>change.new);}\n  assert.equal(forward,fs.readFileSync(source.file,'utf8'));let inverse=forward;\n  for(const change of [...assembly.replacements].reverse()){assert.equal(inverse.split(change.new).length-1,1);inverse=inverse.replace(change.new,()=>change.old);}\n  assert.equal(inverse,original);\n  report.sourceDerivation={assembly:assemblyPin,ancestor,inverseRecoversAncestor:true,exactOutsideReplacements:true};",
+      "count": 1
+    },
+    {
+      "before": "report.subject=source;report.nativeProfileAdmission=admission;",
+      "after": "report.subject=source;report.ancestorNativeProfileAdmission=admission;",
+      "count": 1
+    }
+  ],
+  "targetsExecuted": false
+}

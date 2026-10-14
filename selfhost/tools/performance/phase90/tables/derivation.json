@@ -1,0 +1,22 @@
+{
+  "kind": "phase90-five-linear-tables",
+  "baseline": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/tables.bend",
+    "sha256": "6b8f36fa9063f35105889d8977aa2345fb01eeceb117e6f641151430d084bbaa",
+    "bytes": 8602
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/tables/tables.bend",
+    "sha256": "a61b8716723d683f470bb95ec8b209bf2af1b6e109f16f484530f78385e02d12",
+    "bytes": 9415
+  },
+  "functions": [
+    "nb_seg_ids_go",
+    "nb_arities_go",
+    "nb_result_words_go",
+    "nb_flags_go",
+    "nb_dispatch_go"
+  ],
+  "change": "Each public _go delegates to a reversed-String-chunk worker seeded with the original accumulator; nt_text_finish preserves original terminal suffix.",
+  "productionEdited": false
+}

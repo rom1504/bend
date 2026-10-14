@@ -1,0 +1,126 @@
+--- selfhost/tools/performance/phase89/partial-capture/run-v2.py
++++ selfhost/tools/performance/phase90/profiling-native01/run.py
+@@ -14,7 +14,10 @@
+ from native_support import authenticate, native_args, DEFAULT_CACHE, pin, verify, require
+ GUARD = PERF / 'phase86/guard.py'
+ OWNERSHIP = PERF / 'phase88/ownership'
+-SOURCE = '4584cf083d9eddad6f1290c9472c3aac2708099caa716a27f5b53fbcbaee1618'
++SOURCE = '74b390d3ba7ada2c001dbdc6f63b0eb63b2231d129279114b1d5d55fa39d7052'
++IMAGE = 'c621447d02fe924680ea59f162c7f2aa1d6a75ed965276c0ad0b6f42cf144f84'
++PARTIAL = PERF / 'phase89/partial-capture'
++LATE = PERF / 'phase90/profiling'
+ 
+ 
+ def read(path):
+@@ -25,10 +28,12 @@
+     p = argparse.ArgumentParser(description=__doc__)
+     p.add_argument('out', type=Path)
+     p.add_argument('--sampler', type=Path, required=True)
+-    p.add_argument('--watchdog', type=Path, required=True)
+-    p.add_argument('--gate', type=Path, default=ROOT / 'selfhost/build/phase89/native-b1-nine-gates01/gates.json')
+-    p.add_argument('--table', type=Path, default=ROOT / 'selfhost/build/phase89/ownership-self01-table/table.json')
+-    p.add_argument('--self-after', type=Path, help='Completed failed full-self report; enables one60s self capture')
++    p.add_argument('--watchdog', type=Path, default=ROOT / 'selfhost/build/phase90/watchdog01.so')
++    p.add_argument('--sampler-build', type=Path, required=True)
++    p.add_argument('--seconds', type=int, choices=[120, 180], default=180)
++    p.add_argument('--gate', type=Path, default=ROOT / 'selfhost/build/phase90/native-gates01/gates.json')
++    p.add_argument('--table', type=Path, default=ROOT / 'selfhost/build/phase90/ownership-native01-table/table.json')
++    p.add_argument('--self-after', type=Path, help='Completed failed matching full-self report; enables one bounded self capture')
+     p.add_argument('--check-only', action='store_true')
+     a = p.parse_args()
+     gate, table = read(a.gate), read(a.table)
+@@ -37,6 +42,10 @@
+             and gate.get('liveQualified') and gate.get('cacheQualifiedForThisExperiment')
+             and len(gate['rows']) == 8 and all(r['passed'] and r['exactC'] for r in gate['rows']),
+             'Expected eight completed nine-effect B1 live/cache gates')
++    require(gate['kind'] == 'phase90-combined-native-b1-gates'
++            and gate['nativeB1']['image']['sha256'] == IMAGE
++            and gate['combinedSourceProof']['inverseRecoversAncestor']
++            and gate['combinedSourceProof']['entryDefinitionUnchanged'], 'Wrong combined native gate')
+     auth = authenticate(gate['nativeB1']['image']['file'], None)
+     old = authenticate(ROOT / 'selfhost/build/phase88/compiler-native02', DEFAULT_CACHE)
+     require(auth == gate['nativeB1'] and auth['source']['sha256'] == SOURCE == gate['source']['sha256'], 'Wrong native image/source')
+@@ -47,12 +56,25 @@
+     inputs = [verify(v) for v in gate['inputs']] + [verify(v) for v in gate['nineEffects']]
+     inputs += [verify(gate[k]) for k in ['method', 'assets', 'derivation', 'source']]
+     inputs += [pin(v) for v in [a.gate, a.table, a.table.with_name('unwind-table.h'), a.sampler, a.watchdog,
+-        __file__, HERE / 'watchdog.c', HERE / 'analyze.py', OWNERSHIP / 'sample-ownership.c',
++        __file__, LATE / 'watchdog.c', PARTIAL / 'analyze.py', OWNERSHIP / 'sample-ownership.c',
++        LATE / 'windows.py', HERE / 'derivation.json', HERE / 'sampler-build-inputs.json',
+         OWNERSHIP / 'analyze.py', PERF / 'phase68/parity-survey/sample-analysis-v2.py', GUARD,
+         PERF / 'programs/support.py', PERF / 'phase88/native_support.py', sys.executable]]
++    build_inputs = read(HERE / 'sampler-build-inputs.json')
++    inputs += [verify(v) for v in build_inputs]
++    build = read(a.sampler_build)
++    command = build['command']
++    require(build.get('complete') and build.get('returncode') == 0
++            and str(OWNERSHIP / 'sample-ownership.c') in command
++            and '-shared' in command and '-fPIC' in command
++            and '-I' in command and command[command.index('-I') + 1] == str(a.table.resolve().parent)
++            and '-o' in command and command[command.index('-o') + 1] == str(a.sampler.resolve()),
++            'Sampler build is not bound to the exact-image table')
++    require(pin(a.watchdog)['sha256'] == '24ac72071c9239ea29c8003c6083d94f0d08e06be76531a10641c86673f3cfc0', 'Changed controlled watchdog')
++    inputs += [pin(a.sampler_build)]
+     cases = {c['name']: c for c in gate['oracleCases']}
+-    jobs = [('normal-map', cases['map_closed']['source'], 5, 60, cases['map_closed']['oracle']),
+-            ('stopped-map', cases['map_closed']['source'], 5, 3, None)]
++    jobs = [('normal-map', cases['map_closed']['source'], 5, 60, 4000, cases['map_closed']['oracle']),
++            ('stopped-map', cases['map_closed']['source'], 5, 3, 4000, None)]
+     if a.self_after:
+         failed = read(a.self_after)
+         rows = [r for r in failed['rows'] if r['name'] == 'self-source']
+@@ -65,7 +87,7 @@
+                 and gate['source']['file'] in process['command'] and auth['image']['file'] in process['command'],
+                 'Prior self run is still active, succeeded or has different bindings')
+         inputs += [pin(a.self_after), pin(process_path)]
+-        jobs.append(('stopped-self', gate['source'], 1, 60, None))
++        jobs.append(('stopped-self', gate['source'], 1, a.seconds, 16000, None))
+     cached = dict(auth, cache=old['cache'])
+     for value in inputs:
+         verify(value)
+@@ -74,20 +96,20 @@
+         return
+     out = a.out.resolve()
+     out.mkdir(parents=True, exist_ok=False)
+-    report = dict(complete=False, diagnosticUsable=False, kind='phase89-bounded-partial-capture',
++    report = dict(complete=False, diagnosticUsable=False, kind='phase90-native01-bounded-partial-capture',
+                   inputs=inputs, source=gate['source'], image=auth['image'], rows=[], compilationPassed=False)
+     def save():
+         (out / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
+     save()
+     try:
+-        for name, source, calls, seconds, oracle in jobs:
++        for name, source, calls, seconds, period, oracle in jobs:
+             for value in inputs:
+                 verify(value)
+             prefix, directory, samples = out / name, out / (name + '-guard'), out / (name + '.samples')
+             command = ['env', 'LD_PRELOAD=' + str(a.watchdog.resolve()) + ':' + str(a.sampler.resolve()),
+-                'BEND_SAMPLE_OUT=' + str(samples), 'BEND_SAMPLE_PERIOD_US=4000', 'BEND_CAPTURE_SECONDS=' + str(seconds),
++                'BEND_SAMPLE_OUT=' + str(samples), 'BEND_SAMPLE_PERIOD_US=' + str(period), 'BEND_CAPTURE_SECONDS=' + str(seconds),
+                 *native_args(cached, source['file'], prefix, calls)]
+-            row = dict(name=name, source=source, command=command, expectedReturncode=0 if oracle else 77,
++            row = dict(name=name, source=source, command=command, periodUs=period, captureSeconds=seconds, expectedReturncode=0 if oracle else 77,
+                        compilationPassed=False, diagnosticUsable=False)
+             report['rows'].append(row); save()
+             job = subprocess.run([sys.executable, '-B', str(GUARD), '--out', str(directory), '--seconds',
+@@ -98,7 +120,7 @@
+             save()
+             require(process['command'][-len(command):] == command and 'stoppedFor' not in process
+                     and process.get('returncode') == row['expectedReturncode'], 'Unexpected target exit; retain failed capture')
+-            analyzer = OWNERSHIP / 'analyze.py' if oracle else HERE / 'analyze.py'
++            analyzer = OWNERSHIP / 'analyze.py' if oracle else PARTIAL / 'analyze.py'
+             if oracle:
+                 require(process.get('complete') and len(row['outputs']) == calls
+                     and all(output[k] == oracle[k] for output in row['outputs']
+@@ -111,6 +133,11 @@
+                 cmd += ['--process', str(directory / 'process.json')]
+             subprocess.run(cmd, check=True)
+             row.update(diagnosticUsable=True, samples=pin(samples), analysis=pin(analysis)); save()
++            if not oracle:
++                windows = out / (name + '.windows.json')
++                subprocess.run([sys.executable, '-B', str(LATE / 'windows.py'),
++                    '--analysis', str(analysis), '--out', str(windows)], check=True)
++                row['windows'] = pin(windows); save()
+         report.update(complete=True, diagnosticUsable=True)
+     except Exception as error:
+         report['error'] = str(error)

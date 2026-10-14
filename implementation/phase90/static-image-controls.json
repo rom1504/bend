@@ -1,0 +1,430 @@
+{
+  "selfhost/build/phase90/static-old.json": {
+    "sha256": "4abf0d5ae838a6c8aa940dc3aadc6a6ee1ed31fa14b5a0471b7b3ca1de3bd164",
+    "report": {
+      "complete": false,
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-b2/full/compiler.mjs",
+          "sha256": "098320e8f3e40894156790d740ad205e386f375195b3c6741d67cca96e94e092",
+          "bytes": 4731079
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/static-controls.mjs",
+          "sha256": "df205f2887fbe5067f861bc2d3e548fb0f205e765068f9a2d8ceb9f52e081844",
+          "bytes": 1876
+        },
+        {
+          "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+          "bytes": 123655872
+        }
+      ],
+      "rows": [
+        {
+          "count": 0,
+          "terms": true,
+          "words": true,
+          "retainedInput": true
+        },
+        {
+          "count": 1,
+          "terms": true,
+          "words": true,
+          "retainedInput": true
+        },
+        {
+          "count": 17,
+          "terms": true,
+          "words": true,
+          "retainedInput": true
+        },
+        {
+          "count": 65536,
+          "terms": false,
+          "words": false,
+          "retainedInput": false
+        }
+      ],
+      "error": "RangeError: Maximum call stack size exceeded\n    at $jd$ns_95_image_95_terms (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-b2/full/compiler.mjs:73548:34)\n    at $jd$ns_95_image_95_terms (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-b2/full/compiler.mjs:73551:36)\n    at $jd$ns_95_image_95_terms (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-b2/full/compiler.mjs:73551:36)\n    at $jd$ns_95_image_95_terms (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-b2/full/compiler.mjs:73551:36)\n    at $jd$ns_95_image_95_terms (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-b2/full/compiler.mjs:73551:36)\n    at $jd$ns_95_image_95_terms (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-b2/full/compiler.mjs:73551:36)\n    at $jd$ns_95_image_95_terms (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-b2/full/compiler.mjs:73551:36)\n    at $jd$ns_95_image_95_terms (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-b2/full/compiler.mjs:73551:36)\n    at $jd$ns_95_image_95_terms (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-b2/full/compiler.mjs:73551:36)\n    at $jd$ns_95_image_95_terms (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-b2/full/compiler.mjs:73551:36)"
+    }
+  },
+  "selfhost/build/phase90/static-new.json": {
+    "sha256": "751d967e4567b87fecb6db66d3706cf8a168f50950d89c55c36d81afdd153915",
+    "report": {
+      "complete": true,
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01-b2/full/compiler.mjs",
+          "sha256": "239137106dd8940d0c0e09edb10085d898035ebcc841ac0181ec0da303461cd6",
+          "bytes": 4739985
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/static-controls.mjs",
+          "sha256": "df205f2887fbe5067f861bc2d3e548fb0f205e765068f9a2d8ceb9f52e081844",
+          "bytes": 1876
+        },
+        {
+          "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+          "bytes": 123655872
+        }
+      ],
+      "rows": [
+        {
+          "count": 0,
+          "terms": true,
+          "words": true,
+          "retainedInput": true
+        },
+        {
+          "count": 1,
+          "terms": true,
+          "words": true,
+          "retainedInput": true
+        },
+        {
+          "count": 17,
+          "terms": true,
+          "words": true,
+          "retainedInput": true
+        },
+        {
+          "count": 65536,
+          "terms": true,
+          "words": true,
+          "retainedInput": true
+        }
+      ]
+    }
+  },
+  "selfhost/build/phase90/static-old-guard/process.json": {
+    "sha256": "dcf727c916f3c3153c917cc89594b87394f9ecd99db9c4977f8585b96f2df125",
+    "report": {
+      "complete": false,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "selfhost/tools/performance/phase90/bootstrap/static-controls.mjs",
+        "selfhost/build/phase82/compiler04-b2/full/compiler.mjs",
+        "selfhost/build/phase90/static-old.json"
+      ],
+      "started": 1792020160.162062,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 185626624,
+      "minimumAvailableBytes": 27877756928,
+      "returncode": 1,
+      "wallSeconds": 0.6564717160072178,
+      "finished": 1792020160.818532
+    }
+  },
+  "selfhost/build/phase90/static-new-guard/process.json": {
+    "sha256": "7ba105d210ac74346fa80b00c7aceaa598f3f768cd50b6001488338f4f8592b9",
+    "report": {
+      "complete": true,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "selfhost/tools/performance/phase90/bootstrap/static-controls.mjs",
+        "selfhost/build/phase90/compiler01-b2/full/compiler.mjs",
+        "selfhost/build/phase90/static-new.json"
+      ],
+      "started": 1792020161.3366787,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 286846976,
+      "minimumAvailableBytes": 27781861376,
+      "returncode": 0,
+      "wallSeconds": 1.2263543310109526,
+      "finished": 1792020162.563031
+    }
+  },
+  "selfhost/build/phase90/compiler01/validation-001/report.json": {
+    "sha256": "d5eb3469e2509b7ca1837b8527b5a2101b80e96340b2db39136b42687a13d4be",
+    "report": {
+      "kind": "bend-development-validation",
+      "version": 1,
+      "started": "2026-10-14T23:17:17.034Z",
+      "complete": true,
+      "pass": true,
+      "artifactKind": "derived-b1",
+      "attempt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/attempt.json",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/attempt.json",
+        "sha256": "aa0c022bc13ca20dbe09e132941c10e7f5330375624425f78a193d782ff38775"
+      },
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/equality/api.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/equality/api.mjs",
+        "sha256": "2eb5a4f354b5fcbab03c1c750fc53bb16a38c3ac812e6beefa748b040b21bb7f"
+      },
+      "launcher": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+          "sha256": "4249a59916fcd36ef411d4864a5050489df2fc78deee7ebe0d98684ff80f46f1",
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/launcher/workflow.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/launcher/workflow.mjs",
+            "sha256": "4249a59916fcd36ef411d4864a5050489df2fc78deee7ebe0d98684ff80f46f1"
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/process.mjs",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/process.mjs",
+          "sha256": "fe6afbc8964f695e3b7bfe8c636b6da6295fd7265fcdebbf58839f3eafce4989",
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/launcher/process.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/launcher/process.mjs",
+            "sha256": "fe6afbc8964f695e3b7bfe8c636b6da6295fd7265fcdebbf58839f3eafce4989"
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/conformance/inventory.mjs",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/conformance/inventory.mjs",
+          "sha256": "91a1bd7be11e6e66a68c94251814286c9d0173d94a38b445240123bc558bc308",
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/launcher/inventory.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/launcher/inventory.mjs",
+            "sha256": "91a1bd7be11e6e66a68c94251814286c9d0173d94a38b445240123bc558bc308"
+          }
+        }
+      ],
+      "scope": "Selected paired probes; no full-language conformance inferred.",
+      "phases": [
+        {
+          "name": "prepare-base",
+          "execution": {
+            "command": "taskset",
+            "args": [
+              "-c",
+              "3",
+              "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+              "--stack-size=4096",
+              "--max-old-space-size=1024",
+              "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/snapshot/tools/typed-driver.mjs",
+              "--prepare-base"
+            ],
+            "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/prepare-base/stdout",
+            "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/prepare-base/stderr",
+            "timeoutMs": 180000,
+            "maxBytes": 16777216,
+            "exitCode": 0,
+            "signal": null,
+            "error": null,
+            "timedOut": false,
+            "overflow": false,
+            "logBytes": 101,
+            "wallMs": 4681.740057999999
+          }
+        },
+        {
+          "name": "selected",
+          "execution": {
+            "command": "taskset",
+            "args": [
+              "-c",
+              "3",
+              "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+              "--stack-size=4096",
+              "--max-old-space-size=1024",
+              "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/snapshot/tools/conformance/target.mjs",
+              "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/target.json",
+              "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/selected"
+            ],
+            "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/selected-command/stdout",
+            "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/selected-command/stderr",
+            "timeoutMs": 900000,
+            "maxBytes": 16777216,
+            "exitCode": 0,
+            "signal": null,
+            "error": null,
+            "timedOut": false,
+            "overflow": false,
+            "logBytes": 197,
+            "wallMs": 7553.348356999999
+          }
+        }
+      ],
+      "selection": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/snapshot/tests/frontend/phase2-rules/cases.json",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/snapshot/tests/frontend/phase2-rules/cases.json",
+        "sha256": "06daedd83a91e0601d2673ec233d6b4f80ce6487340f4d51f1cb9cef532fd9d6"
+      },
+      "cache": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/snapshot/build/typed/cache/base-2eb5a4f354b5fcbab03c1c750fc53bb16a38c3ac812e6beefa748b040b21bb7f-99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf-92673856f81bb146473729c6b1e427023a37d5cbcf3fb32d7f6805bfbbee4396-frame4.json",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/snapshot/build/typed/cache/base-2eb5a4f354b5fcbab03c1c750fc53bb16a38c3ac812e6beefa748b040b21bb7f-99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf-92673856f81bb146473729c6b1e427023a37d5cbcf3fb32d7f6805bfbbee4396-frame4.json",
+        "sha256": "8122bacda335d581b25b6ce3b813dda6d2d6de20861438d90ceb9a3721d07c22"
+      },
+      "selected": {
+        "file": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/selected/paired.json",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01/validation-001/selected/paired.json",
+          "sha256": "ac5398ed01003a85c20dfd0d7306183c0a8ec96111430503b862894faacb5ef7"
+        },
+        "selectedComplete": true,
+        "exactDifferences": 0,
+        "discrepancies": 0,
+        "reference": {
+          "tests": 36,
+          "allTests": 1587,
+          "externalTests": 25,
+          "excludedTests": 1576,
+          "probes": 36,
+          "statuses": {
+            "pass": 36
+          },
+          "lanes": {
+            "parse": {},
+            "check": {
+              "pass": 36
+            },
+            "interpreter": {},
+            "js": {},
+            "native": {},
+            "metal": {},
+            "cuda": {}
+          },
+          "namespaces": {
+            "base": {},
+            "check": {
+              "pass": 1
+            },
+            "compile": {},
+            "comptime": {},
+            "cost": {},
+            "eval": {},
+            "flatten": {},
+            "gfx": {},
+            "grade": {},
+            "halt": {},
+            "import": {
+              "pass": 9
+            },
+            "io": {},
+            "page": {},
+            "parse": {
+              "pass": 1
+            },
+            "printer": {},
+            "proof": {},
+            "reg": {},
+            "rfc": {},
+            "run": {},
+            "show": {},
+            "spec": {},
+            "state": {},
+            "stats": {},
+            "stuck": {}
+          },
+          "checkerRejections": 0,
+          "proofTrustRejections": 4,
+          "frontendRejections": 22,
+          "uncheckedExecutions": 0
+        },
+        "candidate": {
+          "tests": 36,
+          "allTests": 1587,
+          "externalTests": 25,
+          "excludedTests": 1576,
+          "probes": 36,
+          "statuses": {
+            "pass": 36
+          },
+          "lanes": {
+            "parse": {},
+            "check": {
+              "pass": 36
+            },
+            "interpreter": {},
+            "js": {},
+            "native": {},
+            "metal": {},
+            "cuda": {}
+          },
+          "namespaces": {
+            "base": {},
+            "check": {
+              "pass": 1
+            },
+            "compile": {},
+            "comptime": {},
+            "cost": {},
+            "eval": {},
+            "flatten": {},
+            "gfx": {},
+            "grade": {},
+            "halt": {},
+            "import": {
+              "pass": 9
+            },
+            "io": {},
+            "page": {},
+            "parse": {
+              "pass": 1
+            },
+            "printer": {},
+            "proof": {},
+            "reg": {},
+            "rfc": {},
+            "run": {},
+            "show": {},
+            "spec": {},
+            "state": {},
+            "stats": {},
+            "stuck": {}
+          },
+          "checkerRejections": 0,
+          "proofTrustRejections": 4,
+          "frontendRejections": 22,
+          "uncheckedExecutions": 0
+        }
+      },
+      "strictExact": true,
+      "finished": "2026-10-14T23:17:31.170Z"
+    }
+  },
+  "selfhost/build/phase90/compiler01-b2/driver-comparison.json": {
+    "sha256": "513d3b2c7047c4ee3563f21d084e591fc343707d3a3fd441d68afa5e1eb04751",
+    "report": {
+      "kind": "phase55-direct-compiler-driver-comparison",
+      "pass": true,
+      "complete": true,
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01-b2/tools/compare-driver.mjs",
+        "sha256": "0cc1946c29119dbee60d315b64abbaa2464d2af8b18e87cf75e956c5acb4efd3"
+      },
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase54/bootstrap/adapter.mjs",
+        "sha256": "a2f135e4eb2deff002eaf898a7dd0856bbbc980360837e22cb4f19c2dee9462b"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01-b2/driver-source/report.json",
+        "sha256": "8e6b0047dd64272c5fa1c552e557da7bfe593aab37eb066e36d2e9acc1bd2033"
+      },
+      "direct": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler01-b2/driver-direct/report.json",
+        "sha256": "1c446210b550b50016eb15594401a5b3656567b0de8fbc44559ce13138b80d59"
+      },
+      "observations": 8,
+      "scope": "Exact ordinary driver observations and JS/C emitted bytes; JS result executed. C emitted only. No compiler fixed-point claim."
+    }
+  }
+}

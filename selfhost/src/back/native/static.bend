@@ -46,15 +46,23 @@ def ns_image(+book: List<&2, KDef>) -> List<&2, String>:
 
 @unsafe
 def ns_image_words(ts: List<&2, KTerm>) -> List<&2, String>:
+  ns_image_words_rev(ts, Nil{})
+
+@unsafe
+def ns_image_words_rev(ts: List<&2, KTerm>, words: List<&2, String>) -> List<&2, String>:
   match ts:
-    case Nil{}: Nil{}
-    case Con{h, rest}: Con{nm(h), ns_image_words(rest)}
+    case Nil{}: nt_reverse(String, words, Nil{})
+    case Con{h, rest}: ns_image_words_rev(rest, Con{nm(h), words})
 
 @unsafe
 def ns_image_terms(ws: List<&2, String>) -> List<&2, KTerm>:
+  ns_image_terms_rev(ws, Nil{})
+
+@unsafe
+def ns_image_terms_rev(ws: List<&2, String>, terms: List<&2, KTerm>) -> List<&2, KTerm>:
   match ws:
-    case Nil{}: Nil{}
-    case Con{h, rest}: Con{kt("StaticWord", h, 0, 0, Nil{}), ns_image_terms(rest)}
+    case Nil{}: nt_reverse(KTerm, terms, Nil{})
+    case Con{h, rest}: ns_image_terms_rev(rest, Con{kt("StaticWord", h, 0, 0, Nil{}), terms})
 
 # Exclude constructors with special runtime treatment, including all IO nodes.
 # Scalar wrappers only become static after the existing literal pass proves

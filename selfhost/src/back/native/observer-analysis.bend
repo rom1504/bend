@@ -11,6 +11,31 @@ type NO_Input is Data:
 type NO_Analysis is Data:
   NO_Analysis{+body: KTerm, +fresh: U32, +fuel: U32, +error: String}
 
+# Symbolic branches reuse the remaining computation. Store its environment as
+# Data: native affine closures cannot be shared by ordinary reference counting.
+# The analysis context is constant and stays outside these continuation frames.
+type NO_Cont is Data:
+  NO_KFinish{}
+  NO_KEvalArgs{+terms: List<&2, KTerm>, +env: List<&2, KTerm>, +stack: List<&2, String>, +acc: List<&2, KTerm>, +next: NO_Cont}
+  NO_KApplyArgs{+args: List<&2, KTerm>, +next: NO_Cont}
+  NO_KAppFunction{+arg: KTerm, +env: List<&2, KTerm>, +stack: List<&2, String>, +next: NO_Cont}
+  NO_KAppArgument{+fn: KTerm, +next: NO_Cont}
+  NO_KConstructor{+name: String, +next: NO_Cont}
+  NO_KLetBody{+body: KTerm, +id: U32, +env: List<&2, KTerm>, +stack: List<&2, String>, +next: NO_Cont}
+  NO_KApplyOne{+arg: KTerm, +next: NO_Cont}
+
+@unsafe
+def noa_continue(+ctx: NO_Context, k: NO_Cont, +input: NO_Input) -> NO_Analysis:
+  match k:
+    case NO_KFinish{}: noa_finish(ctx, input)
+    case NO_KEvalArgs{terms, env, stack, acc, next}: noa_eval_args(ctx, terms, env, noa_if(input), stack, Con{noa_iv(input), acc}, noa_in(input), noa_iu(input), next)
+    case NO_KApplyArgs{args, next}: noa_apply_args(ctx, noa_iv(input), args, noa_if(input), noa_in(input), noa_iu(input), next)
+    case NO_KAppFunction{arg, env, stack, next}: noa_eval(ctx, arg, env, noa_if(input), stack, noa_in(input), noa_iu(input), NO_KAppArgument{noa_iv(input), next})
+    case NO_KAppArgument{fn, next}: noa_apply(ctx, fn, noa_iv(input), noa_if(input), noa_in(input), noa_iu(input), next)
+    case NO_KConstructor{name, next}: noa_constructor(ctx, name, input, next)
+    case NO_KLetBody{body, id, env, stack, next}: noa_eval(ctx, body, noa_bind(id, noa_iv(input), env), noa_if(input), stack, noa_in(input), noa_iu(input), next)
+    case NO_KApplyOne{arg, next}: noa_apply(ctx, noa_iv(input), arg, noa_if(input), noa_in(input), noa_iu(input), next)
+
 @unsafe
 def noa_book(c: NO_Context) -> List<&2, KDef>:
   match c:
@@ -135,7 +160,7 @@ law noa_eval:
   for +stack: List<&2, String>
   for +n: U32
   for +fuel: U32
-  for +k: NO_Input -> NO_Analysis
+  for +k: NO_Cont
   NO_Analysis
 
 law noa_apply:
@@ -145,7 +170,7 @@ law noa_apply:
   for +facts: List<&2, KTerm>
   for +n: U32
   for +fuel: U32
-  for +k: NO_Input -> NO_Analysis
+  for +k: NO_Cont
   NO_Analysis
 
 @unsafe
@@ -161,33 +186,33 @@ def noa_unames(names: List<&2, KTerm>) -> List<&2, String>:
     case Con{+h, +rest}: Con{nm(h), noa_unames(rest)}
 
 @unsafe
-def noa_eval_args(+ctx: NO_Context, ts: List<&2, KTerm>, +env: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +acc: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_eval_args(+ctx: NO_Context, ts: List<&2, KTerm>, +env: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +acc: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   match ts:
-    case Nil{}: k(NO_Input{kt("OArgs", "", 0, 0, nt_reverse(KTerm, acc, Nil{})), facts, n, fuel})
-    case Con{+h, +rest}: noa_eval(ctx, h, env, facts, stack, n, fuel, +i => noa_eval_args(ctx, rest, env, noa_if(i), stack, Con{noa_iv(i), acc}, noa_in(i), noa_iu(i), k))
+    case Nil{}: noa_continue(ctx, k, NO_Input{kt("OArgs", "", 0, 0, nt_reverse(KTerm, acc, Nil{})), facts, n, fuel})
+    case Con{+h, +rest}: noa_eval(ctx, h, env, facts, stack, n, fuel, NO_KEvalArgs{rest, env, stack, acc, k})
 
 @unsafe
-def noa_apply_args(+ctx: NO_Context, +fn: KTerm, args: List<&2, KTerm>, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_apply_args(+ctx: NO_Context, +fn: KTerm, args: List<&2, KTerm>, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   match args:
-    case Nil{}: k(NO_Input{fn, facts, n, fuel})
-    case Con{+arg, +rest}: noa_apply(ctx, fn, arg, facts, n, fuel, +i => noa_apply_args(ctx, noa_iv(i), rest, noa_if(i), noa_in(i), noa_iu(i), k))
+    case Nil{}: noa_continue(ctx, k, NO_Input{fn, facts, n, fuel})
+    case Con{+arg, +rest}: noa_apply(ctx, fn, arg, facts, n, fuel, NO_KApplyArgs{rest, k})
 
 @unsafe
 def noa_eval(ctx, t, env, facts, stack, n, fuel, k):
   nt_choose(NO_Analysis, U32.is_eq(fuel, 0) || U32.is_ge(n, 294967200), u => noa_fail("observer: candidate budget or fresh range", n, fuel), u => noa_eval_step(ctx, t, env, facts, stack, n, U32.sub(fuel, 1), k))
 
 @unsafe
-def noa_eval_step(+ctx: NO_Context, +t: KTerm, +env: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_eval_step(+ctx: NO_Context, +t: KTerm, +env: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   +tag = tg(t)
-  nt_choose(NO_Analysis, String.eq(tag, "Var"), u => nt_choose(NO_Analysis, String.eq(tg(noa_env(ix(t), env)), "Absent"), v => noa_fail("observer: unbound source variable", n, fuel), v => k(NO_Input{noa_env(ix(t), env), facts, n, fuel})), u =>
+  nt_choose(NO_Analysis, String.eq(tag, "Var"), u => nt_choose(NO_Analysis, String.eq(tg(noa_env(ix(t), env)), "Absent"), v => noa_fail("observer: unbound source variable", n, fuel), v => noa_continue(ctx, k, NO_Input{noa_env(ix(t), env), facts, n, fuel})), u =>
   nt_choose(NO_Analysis, core_literal(t), u => noa_literal(ctx, t, env, facts, stack, n, fuel, k), u =>
-  nt_choose(NO_Analysis, String.eq(tag, "Lam") || String.eq(tag, "Mat"), u => k(NO_Input{kt(nt_choose(String, String.eq(tag, "Lam"), v => "OL", v => "OM"), "", 0, 0, [t, kt("OEnv", "", 0, 0, env), kt("OStack", "", 0, 0, noa_names(stack))]), facts, n, fuel}), u =>
-  nt_choose(NO_Analysis, String.eq(tag, "Ref"), u => nt_choose(NO_Analysis, U32.is_eq(qt(t), 3) || U32.is_eq(nd_arity(noa_book(ctx), nm(t)), 0), v => noa_fail("observer: bang or demanded zero-arity reference", n, fuel), v => k(NO_Input{kt("OR", nm(t), 0, 0, [kt("OStack", "", 0, 0, noa_names(stack))]), facts, n, fuel})), u =>
-  nt_choose(NO_Analysis, String.eq(tag, "App"), u => noa_eval(ctx, kid(t, 0), env, facts, stack, n, fuel, +f => noa_eval(ctx, kid(t, 1), env, noa_if(f), stack, noa_in(f), noa_iu(f), +a => noa_apply(ctx, noa_iv(f), noa_iv(a), noa_if(a), noa_in(a), noa_iu(a), k))), u =>
-  nt_choose(NO_Analysis, String.eq(tag, "Ctr"), u => nt_choose(NO_Analysis, no_literal_demanding_ctor(nm(t)), v => noa_fail("observer: demanding scalar constructor", n, fuel), v => noa_eval_args(ctx, ks(t), env, facts, stack, Nil{}, n, fuel, +i => noa_constructor(ctx, nm(t), i, k))), u =>
+  nt_choose(NO_Analysis, String.eq(tag, "Lam") || String.eq(tag, "Mat"), u => noa_continue(ctx, k, NO_Input{kt(nt_choose(String, String.eq(tag, "Lam"), v => "OL", v => "OM"), "", 0, 0, [t, kt("OEnv", "", 0, 0, env), kt("OStack", "", 0, 0, noa_names(stack))]), facts, n, fuel}), u =>
+  nt_choose(NO_Analysis, String.eq(tag, "Ref"), u => nt_choose(NO_Analysis, U32.is_eq(qt(t), 3) || U32.is_eq(nd_arity(noa_book(ctx), nm(t)), 0), v => noa_fail("observer: bang or demanded zero-arity reference", n, fuel), v => noa_continue(ctx, k, NO_Input{kt("OR", nm(t), 0, 0, [kt("OStack", "", 0, 0, noa_names(stack))]), facts, n, fuel})), u =>
+  nt_choose(NO_Analysis, String.eq(tag, "App"), u => noa_eval(ctx, kid(t, 0), env, facts, stack, n, fuel, NO_KAppFunction{kid(t, 1), env, stack, k}), u =>
+  nt_choose(NO_Analysis, String.eq(tag, "Ctr"), u => nt_choose(NO_Analysis, no_literal_demanding_ctor(nm(t)), v => noa_fail("observer: demanding scalar constructor", n, fuel), v => noa_eval_args(ctx, ks(t), env, facts, stack, Nil{}, n, fuel, NO_KConstructor{nm(t), k})), u =>
   nt_choose(NO_Analysis, nb_contains(["Ann", "Loc", "Src", "Cut", "Slf", "Ins"], tag), u => noa_eval(ctx, kid(t, 0), env, facts, stack, n, fuel, k), u =>
   nt_choose(NO_Analysis, String.eq(tag, "Efq"), u => NO_Analysis{kt("NO_Error", "ERR_FIDS", 0, 0, Nil{}), n, fuel, ""}, u =>
-  nt_choose(NO_Analysis, String.eq(tag, "Let") && U32.is_eq(terms_len(ks(t)), 2) && String.eq(tg(kid(t, 0)), "Bind"), u => noa_eval(ctx, kid(kid(t, 0), 0), env, facts, stack, n, fuel, +i => noa_eval(ctx, kid(t, 1), noa_bind(ix(kid(t, 0)), noa_iv(i), env), noa_if(i), stack, noa_in(i), noa_iu(i), k)), u => noa_fail("observer: unsupported evaluated core " ++ tag, n, fuel))))))))))
+  nt_choose(NO_Analysis, String.eq(tag, "Let") && U32.is_eq(terms_len(ks(t)), 2) && String.eq(tg(kid(t, 0)), "Bind"), u => noa_eval(ctx, kid(kid(t, 0), 0), env, facts, stack, n, fuel, NO_KLetBody{kid(t, 1), ix(kid(t, 0)), env, stack, k}), u => noa_fail("observer: unsupported evaluated core " ++ tag, n, fuel))))))))))
 
 @unsafe
 def noa_value_type(+ctx: NO_Context, +v: KTerm) -> String:
@@ -237,12 +262,12 @@ def noa_call_types(+ctx: NO_Context, +head: KTerm, args: List<&2, KTerm>, +fuel:
       nt_choose(KTerm, String.eq(tg(head), "All") && Bool.not(U32.is_eq(qt(head), 0)) && nol_scalar(noa_book(ctx), want) && String.eq(noa_value_type(ctx, v), nm(want)), u => noa_call_result(ctx, kid(head, 1), rest, fuel), u => atom("Absent"))
 
 @unsafe
-def noa_primitive(+ctx: NO_Context, +name: String, +args: List<&2, KTerm>, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_primitive(+ctx: NO_Context, +name: String, +args: List<&2, KTerm>, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   +words = noa_scalars(ctx, args)
   +result = noa_call_result(ctx, dt(lookup(noa_book(ctx), name)), args, 8)
   +id = nc_id(n)
   nt_choose(NO_Analysis, noa_no_absent(words) && Bool.not(String.eq(tg(result), "Absent")),
-    u => noa_prepend(kt("NO_Let", "", id, 0, [kt("NOp", nc_primitive_name(name), 0, 0, words)]), k(NO_Input{noa_atom(nm(result), kt("OUnique", "", id, 0, Nil{}), var("", id)), facts, U32.inc(n), fuel})),
+    u => noa_prepend(kt("NO_Let", "", id, 0, [kt("NOp", nc_primitive_name(name), 0, 0, words)]), noa_continue(ctx, k, NO_Input{noa_atom(nm(result), kt("OUnique", "", id, 0, Nil{}), var("", id)), facts, U32.inc(n), fuel})),
     u => noa_fail("observer: scalar primitive type", n, fuel))
 
 law noa_recur:
@@ -251,7 +276,7 @@ law noa_recur:
   for +facts: List<&2, KTerm>
   for +n: U32
   for +fuel: U32
-  for +k: NO_Input -> NO_Analysis
+  for +k: NO_Cont
   NO_Analysis
 
 @unsafe
@@ -259,21 +284,21 @@ def noa_apply(ctx, fn, arg, facts, n, fuel, k):
   nt_choose(NO_Analysis, U32.is_eq(fuel, 0), u => noa_fail("observer: candidate budget", n, fuel), u => noa_apply_step(ctx, fn, arg, facts, n, U32.sub(fuel, 1), k))
 
 @unsafe
-def noa_apply_step(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_apply_step(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   nt_choose(NO_Analysis, String.eq(tg(fn), "OL"), u => noa_eval(ctx, kid(kid(fn, 0), 0), noa_bind(ix(kid(fn, 0)), arg, ks(kid(fn, 1))), facts, noa_unames(ks(kid(fn, 2))), n, fuel, k), u =>
   nt_choose(NO_Analysis, String.eq(tg(fn), "OM"), u => noa_match(ctx, fn, arg, facts, n, fuel, k), u =>
   nt_choose(NO_Analysis, String.eq(tg(fn), "OR"), u => noa_reference(ctx, nm(fn), List.append(&2, KTerm, noa_tail(ks(fn)), [arg]), facts, noa_unames(ks(kid(fn, 0))), n, fuel, k), u => noa_fail("observer: dynamic application", n, fuel))))
 
 @unsafe
-def noa_reference(+ctx: NO_Context, +name: String, +args: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_reference(+ctx: NO_Context, +name: String, +args: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   +arity = nd_arity(noa_book(ctx), name)
   +d = lookup(noa_book(ctx), name)
-  nt_choose(NO_Analysis, U32.is_lt(terms_len(args), arity), u => k(NO_Input{kt("OR", name, 0, 0, Con{kt("OStack", "", 0, 0, noa_names(stack)), args}), facts, n, fuel}), u =>
+  nt_choose(NO_Analysis, U32.is_lt(terms_len(args), arity), u => noa_continue(ctx, k, NO_Input{kt("OR", name, 0, 0, Con{kt("OStack", "", 0, 0, noa_names(stack)), args}), facts, n, fuel}), u =>
   nt_choose(NO_Analysis, Bool.not(U32.is_eq(terms_len(args), arity)), u => noa_fail("observer: saturation", n, fuel), u =>
   nt_choose(NO_Analysis, String.eq(name, noa_owner(ctx)), u => noa_recur(ctx, args, facts, n, fuel, k), u =>
   nt_choose(NO_Analysis, nt_choose(Bool, nc_native_def(d), v => nd_scalar_known(nc_primitive_name(name)), v => False{}), u => noa_primitive(ctx, name, args, facts, n, fuel, k), u =>
   nt_choose(NO_Analysis, String.eq(dk(d), "Def") && Bool.not(nc_foreign(d) || nc_native_def(d) || nb_contains(stack, name)) && U32.is_lt(nt_count(String, stack), 8),
-    u => noa_eval(ctx, nc_source_body(noa_book(ctx), d, n), Nil{}, facts, Con{name, stack}, n, fuel, +i => noa_apply_args(ctx, noa_iv(i), args, noa_if(i), noa_in(i), noa_iu(i), k)),
+    u => noa_eval(ctx, nc_source_body(noa_book(ctx), d, n), Nil{}, facts, Con{name, stack}, n, fuel, NO_KApplyArgs{args, k}),
     u => noa_fail("observer: helper effect, cycle or depth", n, fuel))))))
 
 @unsafe
@@ -295,16 +320,16 @@ def noa_value_words(values: List<&2, KTerm>) -> List<&2, KTerm>:
     case Con{+h, +rest}: Con{kid(h, 1), noa_value_words(rest)}
 
 @unsafe
-def noa_match(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_match(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   +mat = kid(fn, 0)
   nt_choose(NO_Analysis, String.eq(tg(arg), "OC"),
     u => nt_choose(NO_Analysis, String.eq(nm(mat), nm(arg)),
-      v => nt_choose(NO_Analysis, U32.is_eq(ix(mat), U32.inc(terms_len(ks(arg)))), w => noa_eval(ctx, kid(mat, 0), ks(kid(fn, 1)), facts, noa_unames(ks(kid(fn, 2))), n, fuel, +i => noa_apply_args(ctx, noa_iv(i), ks(arg), noa_if(i), noa_in(i), noa_iu(i), k)), w => noa_fail("observer: virtual constructor arity", n, fuel)),
-      v => noa_eval(ctx, kid(mat, 1), ks(kid(fn, 1)), facts, noa_unames(ks(kid(fn, 2))), n, fuel, +i => noa_apply(ctx, noa_iv(i), arg, noa_if(i), noa_in(i), noa_iu(i), k))),
+      v => nt_choose(NO_Analysis, U32.is_eq(ix(mat), U32.inc(terms_len(ks(arg)))), w => noa_eval(ctx, kid(mat, 0), ks(kid(fn, 1)), facts, noa_unames(ks(kid(fn, 2))), n, fuel, NO_KApplyArgs{ks(arg), k}), w => noa_fail("observer: virtual constructor arity", n, fuel)),
+      v => noa_eval(ctx, kid(mat, 1), ks(kid(fn, 1)), facts, noa_unames(ks(kid(fn, 2))), n, fuel, NO_KApplyOne{arg, k})),
     u => noa_match_spec(ctx, fn, arg, facts, n, fuel, k, noa_spec(nm(mat), no_schema_specs(noa_schema(ctx)))))
 
 @unsafe
-def noa_match_spec(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis, spec: Maybe<&2, NO_Spec>) -> NO_Analysis:
+def noa_match_spec(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont, spec: Maybe<&2, NO_Spec>) -> NO_Analysis:
   match spec:
     case None{}: noa_fail("observer: matcher representation", n, fuel)
     case Some{NO_Spec{NO_Layout{+key, +ctor, +storage, +width}, +owner, +types}}:
@@ -312,12 +337,12 @@ def noa_match_spec(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, K
         u => noa_match_fields(ctx, fn, arg, facts, key, noa_field_values(owner, ctor, noa_origin(arg), types, 0, n), U32.add(n, width), fuel, k), u => noa_fail("observer: matcher type or width", n, fuel))
 
 @unsafe
-def noa_match_fields(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +key: String, +fields: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_match_fields(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +key: String, +fields: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   +mat = kid(fn, 0)
   +yesfacts = {Con{kt("OFact", "", 0, 0, [noa_origin(arg), kt("OC", nm(mat), 0, 0, noa_origins(fields))]), facts}: List<&2, KTerm>}
-  +yes = noa_eval(ctx, kid(mat, 0), ks(kid(fn, 1)), yesfacts, noa_unames(ks(kid(fn, 2))), n, fuel, +i => noa_apply_args(ctx, noa_iv(i), fields, noa_if(i), noa_in(i), noa_iu(i), k))
+  +yes = noa_eval(ctx, kid(mat, 0), ks(kid(fn, 1)), yesfacts, noa_unames(ks(kid(fn, 2))), n, fuel, NO_KApplyArgs{fields, k})
   nt_choose(NO_Analysis, String.eq(noa_error(yes), ""),
-    u => noa_match_join(key, kid(arg, 1), fields, yes, noa_eval(ctx, kid(mat, 1), ks(kid(fn, 1)), facts, noa_unames(ks(kid(fn, 2))), noa_fresh(yes), noa_fuel(yes), +i => noa_apply(ctx, noa_iv(i), arg, noa_if(i), noa_in(i), noa_iu(i), k))), u => yes)
+    u => noa_match_join(key, kid(arg, 1), fields, yes, noa_eval(ctx, kid(mat, 1), ks(kid(fn, 1)), facts, noa_unames(ks(kid(fn, 2))), noa_fresh(yes), noa_fuel(yes), NO_KApplyOne{arg, k})), u => yes)
 
 @unsafe
 def noa_match_join(key: String, word: KTerm, fields: List<&2, KTerm>, yes: NO_Analysis, +no: NO_Analysis) -> NO_Analysis:
@@ -425,7 +450,7 @@ def noa_recur(ctx, args, facts, n, fuel, k):
   +observation = noa_atom(no_schema_observation(schema), kt("ORecursive", "", nc_id(n), 0, Nil{}), marker)
   +env = noa_bind(no_schema_result(schema), observation, noa_actuals(params, args))
   nt_choose(NO_Analysis, noa_loop_valid(ctx, params, args, 0, False{}),
-    u => noa_recur_done(ctx, args, marker, k(NO_Input{noa_virtual(no_schema_wrapper(schema), env), facts, U32.inc(n), fuel})),
+    u => noa_recur_done(ctx, args, marker, noa_continue(ctx, k, NO_Input{noa_virtual(no_schema_wrapper(schema), env), facts, U32.inc(n), fuel})),
     u => noa_fail("observer: recursive cursor or scalar slot", n, fuel))
 
 @unsafe
@@ -449,17 +474,17 @@ def noa_analyze_ready(+ctx: NO_Context) -> NO_Analysis:
   +schema = noa_schema(ctx)
   +params = noa_entry_values(no_schema_params(schema), 0)
   +body = nc_source_body(noa_book(ctx), lookup(noa_book(ctx), noa_owner(ctx)), no_schema_fresh(schema))
-  noa_eval(ctx, body, Nil{}, Nil{}, Nil{}, no_schema_fresh(schema), 4096, +i => noa_apply_args(ctx, noa_iv(i), params, noa_if(i), noa_in(i), noa_iu(i), +j => noa_finish(ctx, j)))
+  noa_eval(ctx, body, Nil{}, Nil{}, Nil{}, no_schema_fresh(schema), 4096, NO_KApplyArgs{params, NO_KFinish{}})
 
 @unsafe
-def noa_literal(+ctx: NO_Context, +t: KTerm, +env: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_literal(+ctx: NO_Context, +t: KTerm, +env: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   +lit = no_literal_typed(noa_book(ctx), t)
   +step = no_literal_string_step(noa_book(ctx), t)
-  nt_choose(NO_Analysis, String.eq(tg(lit), "NO_TypedWord"), u => k(NO_Input{noa_atom(nm(lit), kt("OConst", nm(lit), ix(lit), 0, Nil{}), kid(lit, 0)), facts, n, fuel}), u =>
+  nt_choose(NO_Analysis, String.eq(tg(lit), "NO_TypedWord"), u => noa_continue(ctx, k, NO_Input{noa_atom(nm(lit), kt("OConst", nm(lit), ix(lit), 0, Nil{}), kid(lit, 0)), facts, n, fuel}), u =>
     nt_choose(NO_Analysis, Bool.not(String.eq(tg(step), "Absent")), v => noa_eval(ctx, step, env, facts, stack, n, fuel, k), v => noa_fail("observer: unsupported literal", n, fuel)))
 
 @unsafe
-def noa_constructor(+ctx: NO_Context, +name: String, +input: NO_Input, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_constructor(+ctx: NO_Context, +name: String, +input: NO_Input, +k: NO_Cont) -> NO_Analysis:
   +args = ks(noa_iv(input))
   +valid = Bool.not(String.eq(name, "Chr")) || (U32.is_eq(terms_len(args), 1) && String.eq(noa_value_type(ctx, terms_at(args, 0)), "U32"))
-  nt_choose(NO_Analysis, valid, u => k(NO_Input{kt("OC", name, 0, 0, args), noa_if(input), noa_in(input), noa_iu(input)}), u => noa_fail("observer: Char constructor type", noa_in(input), noa_iu(input)))
+  nt_choose(NO_Analysis, valid, u => noa_continue(ctx, k, NO_Input{kt("OC", name, 0, 0, args), noa_if(input), noa_in(input), noa_iu(input)}), u => noa_fail("observer: Char constructor type", noa_in(input), noa_iu(input)))

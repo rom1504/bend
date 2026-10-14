@@ -4,11 +4,23 @@ def nt_choose(-A: Type, +b: Bool, yes: Unit -> A, no: Unit -> A) -> A:
     case True{}: yes(Unit{})
     case False{}: no(Unit{})
 
+# Chunks arrive in reverse output order. Only each new chunk is traversed by
+# append; the growing suffix stays on its right.
 @unsafe
-def nt_join_go(xs: List<&2, String>, +sep: String, +acc: String, +first: Bool) -> String:
+def nt_text_finish(xs: List<&2, String>, acc: String) -> String:
   match xs:
     case Nil{}: acc
-    case Con{h, t}: nt_join_go(t, sep, acc ++ nt_choose(String, first, u => "", u => sep) ++ h, False{})
+    case Con{h, t}: nt_text_finish(t, h ++ acc)
+
+@unsafe
+def nt_join_chunks(xs: List<&2, String>, +sep: String, +first: Bool, acc: List<&2, String>) -> String:
+  match xs:
+    case Nil{}: nt_text_finish(acc, "")
+    case Con{h, t}: nt_join_chunks(t, sep, False{}, Con{h, Con{nt_choose(String, first, u => "", u => sep), acc}})
+
+@unsafe
+def nt_join_go(xs: List<&2, String>, +sep: String, +acc: String, +first: Bool) -> String:
+  acc ++ nt_join_chunks(xs, sep, first, Nil{})
 
 @unsafe
 def nt_join(xs: List<&2, String>, sep: String) -> String:
@@ -86,11 +98,21 @@ def nt_replace(s: String, key: String, value: String) -> String:
   nt_replace_go(s, key, value, "")
 
 @unsafe
-def nt_lines_go(s: String, +acc: String) -> String:
+def nt_lines_rev(s: String, +acc: String) -> String:
   match s:
-    case SNil{}: acc
+    case SNil{}: String.reverse(acc)
     case SCon{+h, t}:
-      nt_lines_go(t, acc ++ nt_choose(String, Char.is_eq(h, '\n'), u => "\n    ", u => SCon{h, ""}))
+      nt_lines_char(t, h, acc, Char.is_eq(h, '\n'))
+
+@unsafe
+def nt_lines_char(s: String, h: Char, acc: String, newline: Bool) -> String:
+  match newline:
+    case True{}: nt_lines_rev(s, SCon{' ', SCon{' ', SCon{' ', SCon{' ', SCon{'\n', acc}}}}})
+    case False{}: nt_lines_rev(s, SCon{h, acc})
+
+@unsafe
+def nt_lines_go(s: String, +acc: String) -> String:
+  acc ++ nt_lines_rev(s, "")
 
 @unsafe
 def nt_lines(s: String) -> String:

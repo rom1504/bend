@@ -114,10 +114,14 @@ def ne_segment(+seg: N_Segment) -> String:
         ++ nt_choose(String, host, u => "#endif\n", u => "")
 
 @unsafe
-def ne_segments_go(ss: List<&2, N_Segment>, acc: String) -> String:
+def ne_segments_chunks(ss: List<&2, N_Segment>, acc: List<&2, String>) -> String:
   match ss:
-    case Nil{}: acc
-    case Con{h, t}: ne_segments_go(t, acc ++ ne_segment(h) ++ "\n")
+    case Nil{}: nt_text_finish(acc, "")
+    case Con{h, t}: ne_segments_chunks(t, Con{"\n", Con{ne_segment(h), acc}})
+
+@unsafe
+def ne_segments_go(ss: List<&2, N_Segment>, acc: String) -> String:
+  acc ++ ne_segments_chunks(ss, Nil{})
 
 @unsafe
 def ne_segments(+ss: List<&2, N_Segment>) -> String:

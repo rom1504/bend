@@ -123,3 +123,10 @@ Reclamation receipts preserve exact archive mappings for removed duplicates and
 obsolete images. Active native06/07, current upstream B1, sources and receipts
 remain. Actual quota consumption is unavailable; no quota estimate is claimed.
 No PR comments were posted.
+
+After the final evidence commit, 135 closed broad product files were reclaimed
+only after exact committed-archive verification. [Reclamation receipt](reclamation-products.json)
+records the 90 C outputs and 45 executables (31,096,894 bytes). The independent
+oracles, current compiler images, source and all logs/reports remain locally.
+Use `reclaim-products.py restore --out /tmp/FRESH` to recover their exact bytes
+and modes for a full raw-product audit.

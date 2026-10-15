@@ -4649,3 +4649,28 @@ campaign18.60s, screen21.99s,45-product continuity39.26s. Preserve two tiny sour
 failures, initial repetition-ceiling failure, guard preflight rejection and both
 profile quality failures. Capsule verifies824files/24.1MB. No PR comment or
 quota-percentage claim. Phase95 complete; next intervention remains unstarted.
+
+## Phase96 compiler law foundation — 2026-10-15
+
+[Report](../implementation/phase96/README.md) ·
+[Evidence](../selfhost/tools/laws/phase96/evidence01/summary.json) ·
+[Guide](../docs/self_hosted/COMPILER_LAWS.md).
+31 public universal laws +7 supporting lemmas have bodied, nonopaque elaborations
+accepted by unchanged BendTT/Lean. Representation extraction keeps exact helper
+bodies, removing only unsafe annotations; generic algebra uses actual Base and
+the still-unpromoted Phase94 helper. Upstream substitution/cache equivalence
+proofs informed explicit specifications, preconditions and production bridges.
+
+226 finite JS cases/16 families and32 generated-C witnesses pass.16 proof negatives
+are intended semantic frontend rejections (11 law-free helper admissions first);
+10 executable mutants compile and yield their named full-value counterexamples.
+False identities, wrong helper bodies, malformed-test failures and independent
+kernel rejection controls remain separate. No whole-compiler or runtime proof.
+
+Fast replay15.479s, audit90.722s.108 serial guarded jobs,103.27s target occupancy,
+23.61min target span,621.34MiB peak RSS, no overlap/resource stop. Three offline
+agents/root target owner. Archive readback verifies1,752 files/18.29MB uncompressed.
+Preserve proof-affinity, specialization-inventory, rejection-status, splice,
+serializer and missing-test-annotation failures plus corrected worker status.
+Production/source/images and five metrics unchanged; no performance claim, full
+rebuild or PR comment. Foundation complete; subsequent optimization unstarted.

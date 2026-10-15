@@ -5,7 +5,16 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active frontier: Phase95 native ownership attribution
+## Active frontier: Phase96 compiler law foundation
+
+[Report](../implementation/phase96/README.md) ·
+[Replay guide](../docs/self_hosted/COMPILER_LAWS.md) · [Strategy](STEERING.md).
+31 public laws and seven support lemmas independently checked;226 finite JS cases,
+32 generated-C witnesses,16 proof rejection controls and10 executable mutants pass.
+Fast replay15.48s, full audit90.72s. Exact production connections and remaining
+unsafe boundaries are documented. Production/images and five metrics unchanged.
+
+## Previous frontier: Phase95 native ownership attribution
 
 [Report](../implementation/phase95/README.md) ·
 [Methods](../selfhost/tools/performance/phase95/README.md) · [Strategy](STEERING.md).

@@ -53,6 +53,11 @@ The [Phase95 follow-up](implementation/phase95/README.md) attributes native
 cleanup to shared-string comparison, projections and discarded closures;
 an early-exit membership candidate remains unpromoted after a small timing difference.
 
+The [compiler law suite](docs/self_hosted/COMPILER_LAWS.md) adds 31 public laws
+independently checked by BendTT, 226 finite production contracts and deliberate
+bad-implementation controls. Its fast and audit commands constrain future
+optimization; see the [Phase96 report](implementation/phase96/README.md).
+
 Read the [Phase90 results and speed boundaries](implementation/phase90/README.md),
 [compiler guide](docs/BEND-IN-BEND.md),
 [conformance record](selfhost/CONFORMANCE.md),

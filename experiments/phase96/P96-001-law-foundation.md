@@ -1,7 +1,14 @@
 # P96-001: a production-connected law foundation
 
-Status: registered; implementation in progress.
+Status: complete; law foundation accepted; no production optimization.
 [Design](../../design/phase96/compiler-law-foundation.md).
+
+[Report](../../implementation/phase96/README.md) ·
+[Guide](../../docs/self_hosted/COMPILER_LAWS.md).
+31public laws +7support lemmas independently checked.226finite JS cases,
+32generated-C witnesses,16proof rejection controls and10executable semantic
+mutants pass. Single-command audit completes in90.72s with existing authenticated
+toolchain/images. Production and five established metrics remain unchanged.
 
 Hypothesis: a reusable set of semantic constraints can support future larger
 compiler changes more effectively than one-off output tests and isolated proofs.

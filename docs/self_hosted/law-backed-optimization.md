@@ -1,5 +1,11 @@
 # Laws for compiler optimization
 
+The [Phase96 law suite](COMPILER_LAWS.md) now provides 31 public universal laws,
+seven supporting lemmas, 226 finite production cases and mutation controls.
+Use its `fast` command while developing an optimization and its `audit` command
+before promotion. Both reuse the checked toolchain; no full compiler rebuild is
+needed. See the [results and boundaries](../../implementation/phase96/README.md).
+
 The [Phase94 pilot](../../implementation/phase94/README.md) proves equivalence
 of an environment-preparation helper and embeds that exact helper in a native
 compiler candidate. It establishes a practical method; the candidate is not

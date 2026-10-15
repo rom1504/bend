@@ -1,0 +1,60 @@
+{
+  "schema": "phase96-algebra-mutations-v1",
+  "targetsRun": false,
+  "mutations": [
+    {
+      "name": "append-reorders-suffixes",
+      "file": "list.bend",
+      "old": "{List.append(&2, A, List.append(&2, A, xs, ys), zs) == List.append(&2, A, xs, List.append(&2, A, ys, zs)) : List<&2, A>}",
+      "new": "{List.append(&2, A, List.append(&2, A, xs, ys), zs) == List.append(&2, A, xs, List.append(&2, A, zs, ys)) : List<&2, A>}",
+      "kind": "false public claim; unchanged proof body",
+      "expected": "reject",
+      "witness": "A=Nat, xs=[], ys=[1n], zs=[2n]"
+    },
+    {
+      "name": "append-length-multiplies",
+      "file": "list.bend",
+      "old": "{List.length(&2, A, List.append(&2, A, xs, ys)) == Nat.add(List.length(&2, A, xs), List.length(&2, A, ys)) : Nat}",
+      "new": "{List.length(&2, A, List.append(&2, A, xs, ys)) == Nat.mul(List.length(&2, A, xs), List.length(&2, A, ys)) : Nat}",
+      "kind": "false public claim; unchanged proof body",
+      "expected": "reject",
+      "witness": "A=Nat, xs=[], ys=[1n]"
+    },
+    {
+      "name": "reverse-keeps-chunk-order",
+      "file": "reverse.bend",
+      "old": "{List.append(&2, A, List.reverse(&2, A, ys), List.reverse(&2, A, xs)) == List.reverse(&2, A, List.append(&2, A, xs, ys)) : List<&2, A>}",
+      "new": "{List.append(&2, A, List.reverse(&2, A, xs), List.reverse(&2, A, ys)) == List.reverse(&2, A, List.append(&2, A, xs, ys)) : List<&2, A>}",
+      "kind": "false public claim; unchanged proof body",
+      "expected": "reject",
+      "witness": "A=Nat, xs=[1n], ys=[2n]"
+    },
+    {
+      "name": "membership-ignores-suffix",
+      "file": "membership.bend",
+      "old": "{List.contains(~A, ~eq, List.append(&2, A, xs, ys), key) == Bool.or(List.contains(~A, ~eq, xs, key), List.contains(~A, ~eq, ys, key)) : Bool}",
+      "new": "{List.contains(~A, ~eq, List.append(&2, A, xs, ys), key) == List.contains(~A, ~eq, xs, key) : Bool}",
+      "kind": "false public claim; unchanged proof body",
+      "expected": "reject",
+      "witness": "A=Nat, equality comparator, xs=[], ys=[1n], key=1n"
+    },
+    {
+      "name": "environment-retains-dead-prefix",
+      "file": "phase94/helper.bend",
+      "old": "    case False{}: more\n    case True{}:",
+      "new": "    case False{}:\n      match more:\n        case NPE_Part{rows, drop}: NPE_Part{Con{head, rows}, drop}\n    case True{}:",
+      "kind": "wrong helper; frozen laws/reference",
+      "expected": "reject",
+      "witness": "one dead row, empty retained tail"
+    },
+    {
+      "name": "environment-reverses-retained-prefix",
+      "file": "phase94/helper.bend",
+      "old": "case NPE_Part{rows, drop}: NPE_Part{Con{head, rows}, drop}",
+      "new": "case NPE_Part{rows, drop}: NPE_Part{List.append(&2, A, rows, Con{head, Nil{}}), drop}",
+      "kind": "wrong helper; frozen laws/reference",
+      "expected": "reject",
+      "witness": "two distinct live rows, empty retained tail"
+    }
+  ]
+}

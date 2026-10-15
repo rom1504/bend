@@ -1,0 +1,55 @@
+{
+  "schema": "phase96-algebra-law-inventory-v1",
+  "publicLawCount": 14,
+  "supportingLemmaCount": 7,
+  "publicLaws": {
+    "list.bend": [
+      "append_right_identity",
+      "append_associative",
+      "append_length"
+    ],
+    "reverse.bend": [
+      "reverse_accumulator",
+      "reverse_append",
+      "reverse_involution"
+    ],
+    "membership.bend": [
+      "contains_singleton",
+      "contains_append",
+      "contains_duplicate"
+    ],
+    "filter.bend": [
+      "filter_cons_decision",
+      "filter_append",
+      "filter_idempotent"
+    ],
+    "environment.bend": [
+      "prefix_chunking",
+      "prefix_order_and_drop"
+    ]
+  },
+  "supportingLemmas": {
+    "reverse.bend": [
+      "reverse_append_acc"
+    ],
+    "membership.bend": [
+      "or_associative",
+      "or_idempotent",
+      "or_right_identity"
+    ],
+    "filter.bend": [
+      "filter_put_append",
+      "filter_recheck"
+    ],
+    "environment.bend": [
+      "prefix_step_order"
+    ]
+  },
+  "status": "Source checking, safe elaboration and independent BendTT kernel acceptance passed in algebra-all03; 14 public laws and 7 supporting lemmas. algebra-negative-check01 passed: 8 proof rejections and 3 standalone helper admissions.",
+  "evidence": {
+    "universalProof": "selfhost/build/phase96/algebra-all03/report.json",
+    "negativeControls": "selfhost/build/phase96/algebra-negative-check01/report.json",
+    "negativeRejections": 8,
+    "standaloneHelperAdmissions": 3
+  }
+}

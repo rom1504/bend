@@ -1,4 +1,27 @@
-# Active frontier: Phase95 native ownership attribution
+# Active frontier: Phase96 compiler law foundation
+
+[Report](../implementation/phase96/README.md) ·
+[Law guide](../docs/self_hosted/COMPILER_LAWS.md) ·
+[Experiment](phase96/P96-001-law-foundation.md).
+
+31 public universal laws and seven support lemmas have complete nonopaque bodies
+accepted by unchanged upstream BendTT/Lean. Exact representation helper extraction
+and actual Base/Phase94 algebra dependencies are explicit; the Phase94 helper is
+still unpromoted. 226 finite JS production cases and32 selected generated-C cases
+pass;16 proof rejection controls and10 executable semantic mutants are detected.
+Fast replay15.48s, full audit90.72s with existing authenticated toolchain/images.
+
+Follow upstream's specification/executable bridge pattern. Preserve full payloads,
+metadata, duplicate/order semantics and the exact production connection. Weak
+identities need semantic anchors; absent-ID substitution may still beta-reduce.
+No whole-compiler, unsafe runtime, native-chain or parallel/GPU proof claim.
+No production optimization, image rebuild or new performance measurement; the
+five established metrics remain unchanged. The suite can constrain the next
+measured optimization, but a local proof alone is not a reason to promote it.
+Three offline agents, root-only serial guarded targets, no PR comment.
+Phase96 is complete; next optimization remains unstarted.
+
+# Previous frontier: Phase95 native ownership attribution
 
 [Report](../implementation/phase95/README.md) ·
 [Methods and evidence](../selfhost/tools/performance/phase95/README.md) ·

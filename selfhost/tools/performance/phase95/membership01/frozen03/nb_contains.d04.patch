@@ -1,0 +1,13 @@
+--- a/selfhost/build/phase92/upstream-checked01/compiler.bend
++++ b/selfhost/build/phase92/upstream-checked01/compiler.bend
+@@ -31459,9 +31459,7 @@
+ # Module: src/back/native/tables.bend:134
+ @unsafe
+ def nb_contains(+xs: List<&2, String>, +k: String) -> Bool:
+-  match xs:
+-    case Nil{}: False{}
+-    case Con{+h, +t}: p88_string_eq(h, k) || nb_contains(t, k)
++  has_name(xs, k)
+ 
+ # Module: src/back/native/tables.bend:140
+ @unsafe

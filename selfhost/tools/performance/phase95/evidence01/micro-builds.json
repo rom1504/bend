@@ -1,0 +1,86 @@
+[
+  {
+    "role": "baseline",
+    "receipt": {
+      "file": "selfhost/build/phase95/membership-baseline-build03/process.json",
+      "bytes": 774,
+      "sha256": "37fbb3451c0c98fdb9e0abb90bba76645316454d44bcb1494bae432e6b2f714c"
+    },
+    "inputs": {
+      "file": "selfhost/build/phase95/membership-baseline-build03/inputs.json",
+      "bytes": 408,
+      "sha256": "142dfcaf5bd79425434c1b4129ad1fef2b90e8be0f18de3ec202f1022e708884"
+    },
+    "command": [
+      "bash",
+      "-c",
+      "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+      "phase86",
+      "taskset",
+      "-c",
+      "3",
+      "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+      "-isystem",
+      "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+      "-std=c11",
+      "-O3",
+      "selfhost/build/phase95/membership03/baseline/program.c",
+      "-o",
+      "selfhost/build/phase95/membership03/baseline/program",
+      "-lm",
+      "-pthread"
+    ],
+    "source": {
+      "file": "selfhost/build/phase95/membership03/baseline/program.c",
+      "bytes": 131310,
+      "sha256": "8f7f90debb9ee6a4462818654f2a4a4fe6b3d1ece2a0aeed7426ea0f788cce1b"
+    },
+    "image": {
+      "file": "selfhost/build/phase95/membership03/baseline/program",
+      "bytes": 59232,
+      "sha256": "f65e6b1cf55f8a1a19f28181d2a43dc49c5571559153205846795532a5773031"
+    }
+  },
+  {
+    "role": "candidate",
+    "receipt": {
+      "file": "selfhost/build/phase95/membership-candidate-build03/process.json",
+      "bytes": 776,
+      "sha256": "4eb87abaa74aac2b1ef525cab9211022edaa55c59e18c138ddcebfd8d15b9eb5"
+    },
+    "inputs": {
+      "file": "selfhost/build/phase95/membership-candidate-build03/inputs.json",
+      "bytes": 409,
+      "sha256": "517d7b50051cd929666ed8a68ea85c8c80d645ff0a9aa087ae643a375899677b"
+    },
+    "command": [
+      "bash",
+      "-c",
+      "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+      "phase86",
+      "taskset",
+      "-c",
+      "3",
+      "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+      "-isystem",
+      "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+      "-std=c11",
+      "-O3",
+      "selfhost/build/phase95/membership03/candidate/program.c",
+      "-o",
+      "selfhost/build/phase95/membership03/candidate/program",
+      "-lm",
+      "-pthread"
+    ],
+    "source": {
+      "file": "selfhost/build/phase95/membership03/candidate/program.c",
+      "bytes": 130695,
+      "sha256": "e28c437d1497c1ad4077bf091d66f4b4a01f2374352a642762c8a04e442576f0"
+    },
+    "image": {
+      "file": "selfhost/build/phase95/membership03/candidate/program",
+      "bytes": 58752,
+      "sha256": "e13ff15db7dfa6ab982f6ad5701625c0169c202d6ad0ac27cacd9bdcfdb8292e"
+    }
+  }
+]

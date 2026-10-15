@@ -1,4 +1,33 @@
-# Active frontier: Phase94 law-backed native optimization pilot
+# Active frontier: Phase95 native ownership attribution
+
+[Report](../implementation/phase95/README.md) ·
+[Methods and evidence](../selfhost/tools/performance/phase95/README.md) ·
+[Experiment](phase95/P95-001-native-ownership.md).
+
+Accepted unchanged-B1 Map profiling attributes56.44% of request samples to
+cleanup, including branch closures, string comparison and term projections.
+Full self emits exact38.6MB C but has two timer overruns: keep that profile
+exploratory. Its physical equality leaf+cleanup bucket is31.88%, membership3.51%,
+kc8.41%. These are not removable-time estimates, allocation counts or a complete
+logical call tree. Static B2 source has similar consuming patterns; no B2 profile.
+
+Two-line membership delegation to existing has_name makes early hits much faster,
+but misses regress5.9%. Real six-source nativeB1 request0.996642× is neutral;
+one same-D04 full-input pair138.029s→136.418s gives0.988329×. All48 screen outputs,
+both full C outputs/unsafe diagnostics and45 original program C outputs match.
+Do not promote or rebuild B2/JS release for this small difference. No new formal
+proof of the unsafe helper, program-runtime campaign or broad conformance claim.
+Production, installed images and the five established metrics remain unchanged.
+
+Next bounded tests: cache repeated term-tag projection in infer_node and consume
+definition fields once during f_find. Larger opportunity: sound read-only
+projection/comparison lowering and closure-capture disposal. Use extracted native
+controls and code-shape falsifiers before another~228s image acquisition/build.
+Prior Bool-first equality variants failed checked recursion/match order; do not
+retry them blindly. Two offline agents, root-only serial targets, no PR comment.
+Phase95 is complete; no further optimization automatically started.
+
+# Previous frontier: Phase94 law-backed native optimization pilot
 
 [Report](../implementation/phase94/README.md) ·
 [Proof and method](../selfhost/proofs/phase94/README.md) ·

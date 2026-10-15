@@ -49,6 +49,9 @@ documents an independently checked helper proof connected to a native compiler
 candidate. Its local speedup did not improve overall compilation enough to
 promote; the [Phase94 report](implementation/phase94/README.md) records the
 proof boundary, measurements and reusable fast loop.
+The [Phase95 follow-up](implementation/phase95/README.md) attributes native
+cleanup to shared-string comparison, projections and discarded closures;
+an early-exit membership candidate remains unpromoted after a small timing difference.
 
 Read the [Phase90 results and speed boundaries](implementation/phase90/README.md),
 [compiler guide](docs/BEND-IN-BEND.md),

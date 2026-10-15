@@ -1,0 +1,86 @@
+{
+  "schema": "phase95-compiler-compare-derivation-v1",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase94/compiler-compare.py",
+    "sha256": "ed14ea0077977599add1d32c281a7edd68f9cc2da7edeff856cc4378a08ed95b"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase95/compiler-compare.py",
+    "sha256": "53cc14624007e0e7b27c8175ba2ab4ec43ab7c1472f219e19bdfbb38a8ccea6f"
+  },
+  "targetsRun": false,
+  "changes": [
+    {
+      "old": "BUILD = ROOT/'selfhost/build/phase94'",
+      "new": "BUILD = ROOT/'selfhost/build/phase95'"
+    },
+    {
+      "old": "CANDIDATE = '6dafff83739a9af962204b07df1824f4c812d55515dfea2e9d95cbc18afcdcd2'",
+      "new": "CANDIDATE = '847898094f72898b11eb3ecb8b58ea9530d9ff00c592aabd716947c5543c8169'"
+    },
+    {
+      "old": "choices=['screen','broad45']",
+      "new": "choices=['screen','broad45','self']"
+    },
+    {
+      "old": "No candidate B2 qualification, Clang rerun, or generated-program runtime measurement.",
+      "new": "Self mode compiles baseline D04 input and preserves its expected unsafe proof refusal. No candidate B2 qualification, Clang rerun, or generated-program runtime measurement."
+    },
+    {
+      "old": "checked = load(BUILD/'checked01/report.json')",
+      "new": "checked = load(BUILD/'membership-checked01/report.json')"
+    },
+    {
+      "old": "        changes = load(BUILD/'integration01/changes.json')\n        assert changes['candidateSha256'] == CANDIDATE and changes['forwardReplayExact']\n        for item in [changes['source'], changes['method'], changes['adapters'], *changes['proofInputs'],\n                     changes['outputs']['compiler.bend'], changes['outputs']['helper.embedded.bend']]: bind(item)\n        assert changes['source']['sha256'] == ctx['source']['sha256']\n        assert changes['outputs']['compiler.bend'] == checked['source']\n        source = Path(changes['source']['file']).read_bytes()\n        for change in changes['changes']:\n            old, new, offset = change['old'].encode(), change['new'].encode(), change['offsetBytes']\n            assert SHA(source) == change['beforeSha256'] and source[offset:offset+len(old)] == old\n            source = source[:offset]+new+source[offset+len(old):]\n            assert SHA(source) == change['afterSha256']\n        assert source == Path(checked['source']['file']).read_bytes()\n        frozen = load(BUILD/'proof-frozen01/manifest.json')\n        assert [(x['sha256'],x['bytes']) for x in frozen] == [(x['sha256'],x['bytes']) for x in changes['proofInputs']]\n        helper = Path(changes['proofInputs'][0]['file']).read_bytes(); prefix = b'import Base\\n'\n        embedded = Path(changes['outputs']['helper.embedded.bend']['file']).read_bytes()\n        assert helper.startswith(prefix) and helper[len(prefix):] == embedded and source.count(embedded) == 1\n        for file in ['environment01.bendtt','kernel/BendTT.lean','kernel/BendTT.olean','kernel/Run.lean']:\n            bind(BUILD/file)\n        proof = load(BUILD/'kernel-environment01/process.json')\n        assert proof['complete'] and proof['returncode'] == 0 and not proof.get('stoppedFor')\n        for file in ['inputs.json','stdout.log','stderr.log']: bind(BUILD/'kernel-environment01'/file)\n        proof_inputs = [x for x in read(BUILD/'kernel-environment01/inputs.json') if x['path'] == str(BUILD/'environment01.bendtt')]\n        assert len(proof_inputs) == 1 and proof_inputs[0]['sha256'] == '64ca377400730bc349a75e44f7dac417b0cb7000b82b71be2e32028b442e9a83'\n        assert pin(proof_inputs[0]['path'])['sha256'] == proof_inputs[0]['sha256']\n        assert (BUILD/'kernel-environment01/stdout.log').read_text() == 'ALL PROOFS CHECK\\n'\n",
+      "new": "        changes = load(BUILD/'membership-candidate01/changes.json')\n        assert changes['schema'] == 'phase95-membership-candidate-v1'\n        assert changes['candidateSha256'] == CANDIDATE and changes['forwardReplayExact']\n        assert len(changes['changes']) == 1 and not changes['targetsRun']\n        for item in [changes['source'], changes['method'], changes['extraction'], changes['patchSource'],\n                     *changes['outputs'].values()]: bind(item)\n        assert changes['source']['sha256'] == ctx['source']['sha256']\n        assert changes['outputs']['compiler.bend'] == checked['source']\n        source = Path(changes['source']['file']).read_bytes()\n        for change in changes['changes']:\n            old, new, offset = change['old'].encode(), change['new'].encode(), change['offsetBytes']\n            assert SHA(source) == change['beforeSha256'] and source[offset:offset+len(old)] == old\n            source = source[:offset]+new+source[offset+len(old):]\n            assert SHA(source) == change['afterSha256']\n        assert source == Path(checked['source']['file']).read_bytes()\n"
+    },
+    {
+      "old": "build = load(BUILD/'compiler-build01/process.json')",
+      "new": "build = load(BUILD/'membership-build01/process.json')"
+    },
+    {
+      "old": "for file in ['inputs.json','method.json','stdout.log','stderr.log']: bind(BUILD/'compiler-build01'/file)",
+      "new": "for file in ['inputs.json','method.json','stdout.log','stderr.log']: bind(BUILD/'membership-build01'/file)"
+    },
+    {
+      "old": "for item in read(BUILD/'compiler-build01/inputs.json'):",
+      "new": "for item in read(BUILD/'membership-build01/inputs.json'):"
+    },
+    {
+      "old": "candidate = bind(BUILD/'checked01/compiler'); clang = ctx['clang']['file']",
+      "new": "candidate = bind(BUILD/'membership-checked01/compiler'); clang = ctx['clang']['file']"
+    },
+    {
+      "old": "            assert len(cases) == 6\n        else:\n",
+      "new": "            assert len(cases) == 6\n        elif a.mode == 'self':\n            source = bind(ctx['roles']['b2']['admission']['source'])\n            oracle = bind(ctx['roles']['b2']['admission']['c'])\n            assert (source['sha256'], source['bytes']) == (ctx['source']['sha256'], ctx['source']['bytes'])\n            old = load(ROOT/'selfhost/build/phase92/self-b1-01/report.json')\n            assert old['complete'] and old['passed'] and old['exactC']\n            assert old['source'] == source and old['oracle'] == oracle\n            expected_log = bind(ROOT/'selfhost/build/phase92/self-b1-01/guard/stderr.log')\n            clock_line = r'^(?:base_prepare_ms=\\d+|runtime_prepare_ms=\\d+|request=\\d+ request_ms=\\d+ consumed_chars=\\d+)\\n'\n            expected_diagnostic = re.sub(clock_line, '', Path(expected_log['file']).read_text(), flags=re.M)\n            assert expected_diagnostic.startswith('SOME PROOFS FAIL\\nError: 3987 defs rely on unsafe or foreign code:\\n')\n            report['expectedUnsafeDiagnostic'] = dict(source=expected_log, sha256=SHA(expected_diagnostic.encode()))\n            cases = [dict(name='self-d04', source=source, oracle=oracle)]\n        else:\n"
+    },
+    {
+      "old": "assert shutil.disk_usage(ROOT).free > 160*1024**2",
+      "new": "assert shutil.disk_usage(ROOT).free > (210 if a.mode == 'self' else 160)*1024**2"
+    },
+    {
+      "old": "'phase94','taskset'",
+      "new": "'phase95','taskset'"
+    },
+    {
+      "old": "row['process'] = guard.run(command, directory, time.monotonic()+60)",
+      "new": "row['deadlineSeconds'] = 300 if a.mode == 'self' else 60\n                        row['process'] = guard.run(command, directory, time.monotonic()+row['deadlineSeconds'])"
+    },
+    {
+      "old": "assert proc['complete'] and not proc.get('stoppedFor'), row",
+      "new": "assert proc['complete'] and proc['returncode'] == 0 and not proc.get('stoppedFor'), row"
+    },
+    {
+      "old": "                        assert not (directory/'stdout.log').read_text() and 'SOME PROOFS FAIL' not in logs\n                        assert len(re.findall(r'^ALL PROOFS CHECK$', logs, re.M)) == 1",
+      "new": "                        assert not (directory/'stdout.log').read_text()\n                        if a.mode == 'self':\n                            diagnostic = re.sub(clock_line, '', logs, flags=re.M)\n                            row['expectedUnsafeRefusalExact'] = diagnostic == expected_diagnostic\n                            assert row['expectedUnsafeRefusalExact']\n                        else:\n                            assert 'SOME PROOFS FAIL' not in logs\n                            assert len(re.findall(r'^ALL PROOFS CHECK$', logs, re.M)) == 1"
+    },
+    {
+      "old": "        if a.mode == 'screen':\n            for case in cases:",
+      "new": "        if a.mode in ['screen','self']:\n            for case in cases:"
+    },
+    {
+      "old": "for n in range(1,a.rounds+1)]",
+      "new": "for n in range(1,report['rounds']+1)]"
+    }
+  ]
+}

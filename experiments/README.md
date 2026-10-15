@@ -5,7 +5,19 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active frontier: Phase94 laws connected to production
+## Active frontier: Phase95 native ownership attribution
+
+[Report](../implementation/phase95/README.md) ·
+[Methods](../selfhost/tools/performance/phase95/README.md) · [Strategy](STEERING.md).
+Authenticated physical caller profiles connect native cleanup to string
+comparison, branch closures and shared term projections. Full-self sampling
+remains exploratory after two overruns. An early-exit membership experiment
+removes two lines and preserves45 complete C products, but actual compilation
+improves too little to promote: neutral six-source screen and1.2% in one full-input
+pair. Production and installed images are unchanged; preserve the measured
+miss regression and distinguish physical ownership from logical ancestry.
+
+## Previous frontier: Phase94 laws connected to production
 
 [Report](../implementation/phase94/README.md) ·
 [Proof](../selfhost/proofs/phase94/README.md) · [Strategy](STEERING.md).

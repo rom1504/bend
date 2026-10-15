@@ -1,0 +1,13 @@
+--- a/selfhost/src/back/native/tables.bend
++++ b/selfhost/src/back/native/tables.bend
+@@ -144,9 +144,7 @@
+ 
+ @unsafe
+ def nb_contains(+xs: List<&2, String>, +k: String) -> Bool:
+-  match xs:
+-    case Nil{}: False{}
+-    case Con{+h, +t}: String.eq(h, k) || nb_contains(t, k)
++  has_name(xs, k)
+ 
+ @unsafe
+ def nb_fork_roots_go(ss: List<&2, N_Segment>, +acc: List<&2, String>) -> List<&2, String>:

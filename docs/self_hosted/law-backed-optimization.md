@@ -30,3 +30,11 @@ effectively unchanged. Choose subsequent proof targets using measured inclusive
 cost, not merely how convenient they are to specify. Production correctness,
 compilation latency, generated-program runtime and simplicity remain separate
 promotion criteria.
+
+The [Phase95 follow-up](../../implementation/phase95/README.md) attributes cleanup
+to physical callers before testing another helper. A shared-list membership scan
+has large selective-hit gains but almost neutral compiler performance; miss costs
+and actual hit distribution matter. Its existing unsafe mutually recursive helper
+is tested, not independently proved. Reusing a familiar helper does not transfer
+the Phase94 theorem to it. The profiler also loses logical tail-call ancestors,
+so a large equality bucket cannot be assigned wholesale to one caller.

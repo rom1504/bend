@@ -1,0 +1,563 @@
+{
+  "complete": true,
+  "scope": "Isolated upstream-built native B1 experiment; production/images unchanged.",
+  "helper": {
+    "cases": [
+      {
+        "args": [
+          8,
+          0
+        ],
+        "roles": {
+          "baseline": {
+            "repetitions": 650159,
+            "medianUs": 0.4368162249542035,
+            "minUs": 0.42451154256112733,
+            "maxUs": 0.4414304808516071
+          },
+          "candidate": {
+            "repetitions": 4388572,
+            "medianUs": 0.056966138415867396,
+            "minUs": 0.054003899218242286,
+            "maxUs": 0.056966138415867396
+          }
+        },
+        "candidateOverBaseline": 0.1304121393884575
+      },
+      {
+        "args": [
+          128,
+          0
+        ],
+        "roles": {
+          "baseline": {
+            "repetitions": 42667,
+            "medianUs": 7.078069702580448,
+            "minUs": 7.031195068788525,
+            "maxUs": 7.242130920852181
+          },
+          "candidate": {
+            "repetitions": 4853720,
+            "medianUs": 0.061190179903249466,
+            "minUs": 0.06098415236148769,
+            "maxUs": 0.062426345153820166
+          }
+        },
+        "candidateOverBaseline": 0.008645037767986573
+      },
+      {
+        "args": [
+          1024,
+          0
+        ],
+        "roles": {
+          "baseline": {
+            "repetitions": 5334,
+            "medianUs": 55.68053993250844,
+            "minUs": 55.49306336707912,
+            "maxUs": 56.99287589051369
+          },
+          "candidate": {
+            "repetitions": 4388572,
+            "medianUs": 0.06494139779408883,
+            "minUs": 0.0644856686867619,
+            "maxUs": 0.06790363699171394
+          }
+        },
+        "candidateOverBaseline": 0.0011663212654332317
+      },
+      {
+        "args": [
+          128,
+          1
+        ],
+        "roles": {
+          "baseline": {
+            "repetitions": 40635,
+            "medianUs": 7.185923464993232,
+            "minUs": 7.161314138058324,
+            "maxUs": 7.185923464993232
+          },
+          "candidate": {
+            "repetitions": 79176,
+            "medianUs": 3.5995756289784784,
+            "minUs": 3.5995756289784784,
+            "maxUs": 3.637465898757199
+          }
+        },
+        "candidateOverBaseline": 0.5009203961765085
+      },
+      {
+        "args": [
+          128,
+          2
+        ],
+        "roles": {
+          "baseline": {
+            "repetitions": 39385,
+            "medianUs": 7.261647835470357,
+            "minUs": 7.134695950234861,
+            "maxUs": 7.490161228894249
+          },
+          "candidate": {
+            "repetitions": 39793,
+            "medianUs": 7.689794687507853,
+            "minUs": 7.539014399517503,
+            "maxUs": 7.689794687507853
+          }
+        },
+        "candidateOverBaseline": 1.0589600131730657
+      },
+      {
+        "args": [
+          128,
+          3
+        ],
+        "roles": {
+          "baseline": {
+            "repetitions": 44652,
+            "medianUs": 7.009764400250829,
+            "minUs": 6.942578159992833,
+            "maxUs": 7.188927707605482
+          },
+          "candidate": {
+            "repetitions": 40852,
+            "medianUs": 7.196710075394106,
+            "minUs": 7.147752863996867,
+            "maxUs": 7.343581709585822
+          }
+        },
+        "candidateOverBaseline": 1.0266693235990338
+      }
+    ],
+    "scaling": [
+      {
+        "role": "baseline",
+        "doubleCountRatio": 1.954225352112676
+      },
+      {
+        "role": "candidate",
+        "doubleCountRatio": 1.916
+      }
+    ],
+    "sampleCounts": {
+      "pilot": 12,
+      "calibrate": 40,
+      "measure": 36,
+      "scaling": 2
+    }
+  },
+  "screen": {
+    "exactCCount": 48,
+    "cases": {
+      "small": {
+        "requestMs": {
+          "medians": {
+            "baseline": 58.0,
+            "candidate": 58.5
+          },
+          "ranges": {
+            "baseline": [
+              57,
+              58
+            ],
+            "candidate": [
+              58,
+              59
+            ]
+          },
+          "ratioOfMedians": 1.0086206896551724,
+          "pairedRatios": [
+            1.0,
+            1.0172413793103448,
+            1.0172413793103448,
+            1.0175438596491229
+          ],
+          "medianPairedRatio": 1.0172413793103448
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 146.4972859248519,
+            "candidate": 146.3911235332489
+          },
+          "ranges": {
+            "baseline": [
+              146.17713703773916,
+              146.966353058815
+            ],
+            "candidate": [
+              146.18278108537197,
+              146.4878690894693
+            ]
+          },
+          "ratioOfMedians": 0.9992753286114976,
+          "pairedRatios": [
+            0.996261776957125,
+            1.0012871368347216,
+            0.9979083343789531,
+            0.9998845701950165
+          ],
+          "medianPairedRatio": 0.9988964522869848
+        }
+      },
+      "numeric_closed": {
+        "requestMs": {
+          "medians": {
+            "baseline": 99.5,
+            "candidate": 99.5
+          },
+          "ranges": {
+            "baseline": [
+              99,
+              109
+            ],
+            "candidate": [
+              99,
+              101
+            ]
+          },
+          "ratioOfMedians": 1.0,
+          "pairedRatios": [
+            1.0,
+            0.926605504587156,
+            0.99,
+            1.0101010101010102
+          ],
+          "medianPairedRatio": 0.995
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 187.19873554073274,
+            "candidate": 186.87624554149806
+          },
+          "ranges": {
+            "baseline": [
+              186.91268796101213,
+              207.94628001749516
+            ],
+            "candidate": [
+              186.63481110706925,
+              187.42476613260806
+            ]
+          },
+          "ratioOfMedians": 0.9982772853764041,
+          "pairedRatios": [
+            0.9982805445560485,
+            0.898374142577839,
+            0.9999123412633594,
+            1.0001403976867587
+          ],
+          "medianPairedRatio": 0.999096442909704
+        }
+      },
+      "lexer_original": {
+        "requestMs": {
+          "medians": {
+            "baseline": 357.5,
+            "candidate": 357.0
+          },
+          "ranges": {
+            "baseline": [
+              355,
+              358
+            ],
+            "candidate": [
+              354,
+              363
+            ]
+          },
+          "ratioOfMedians": 0.9986013986013986,
+          "pairedRatios": [
+            1.0168067226890756,
+            1.0027932960893855,
+            0.9888268156424581,
+            1.0
+          ],
+          "medianPairedRatio": 1.0013966480446927
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 452.2110150428489,
+            "candidate": 451.7174205975607
+          },
+          "ranges": {
+            "baseline": [
+              451.1591668706387,
+              472.03300218097866
+            ],
+            "candidate": [
+              451.3181149959564,
+              452.17843097634614
+            ]
+          },
+          "ratioOfMedians": 0.9989084864612565,
+          "pairedRatios": [
+            1.0005355254032458,
+            1.0001481394883702,
+            0.9993889199872986,
+            0.9561155955424487
+          ],
+          "medianPairedRatio": 0.9997685297378345
+        }
+      },
+      "map_closed": {
+        "requestMs": {
+          "medians": {
+            "baseline": 1396.5,
+            "candidate": 1389.0
+          },
+          "ranges": {
+            "baseline": [
+              1395,
+              1397
+            ],
+            "candidate": [
+              1381,
+              1484
+            ]
+          },
+          "ratioOfMedians": 0.9946294307196563,
+          "pairedRatios": [
+            0.9885468861846815,
+            1.0630372492836677,
+            0.9921259842519685,
+            0.9978494623655914
+          ],
+          "medianPairedRatio": 0.9949877233087799
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 1487.534684012644,
+            "candidate": 1488.260701065883
+          },
+          "ranges": {
+            "baseline": [
+              1487.091544084251,
+              1488.609897904098
+            ],
+            "candidate": [
+              1467.3188428860158,
+              1568.58772598207
+            ]
+          },
+          "ratioOfMedians": 1.0004880673109957,
+          "pairedRatios": [
+            0.9867037767265289,
+            1.0543957874535,
+            1.0001998166638073,
+            1.000140985946336
+          ],
+          "medianPairedRatio": 1.0001704013050716
+        }
+      },
+      "functions65": {
+        "requestMs": {
+          "medians": {
+            "baseline": 228.0,
+            "candidate": 225.0
+          },
+          "ranges": {
+            "baseline": [
+              227,
+              243
+            ],
+            "candidate": [
+              223,
+              246
+            ]
+          },
+          "ratioOfMedians": 0.9868421052631579,
+          "pairedRatios": [
+            0.9780701754385965,
+            1.0123456790123457,
+            1.0,
+            0.9780701754385965
+          ],
+          "medianPairedRatio": 0.9890350877192983
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 308.7787345284596,
+            "candidate": 308.92470688559115
+          },
+          "ranges": {
+            "baseline": [
+              308.61362302675843,
+              330.4021069779992
+            ],
+            "candidate": [
+              308.8939990848303,
+              349.43522000685334
+            ]
+          },
+          "ratioOfMedians": 1.0004727409656446,
+          "pairedRatios": [
+            1.00079995035708,
+            1.0576059069445387,
+            1.0001457479070994,
+            1.0009085018844017
+          ],
+          "medianPairedRatio": 1.0008542261207407
+        }
+      },
+      "unicode": {
+        "requestMs": {
+          "medians": {
+            "baseline": 57.5,
+            "candidate": 57.0
+          },
+          "ranges": {
+            "baseline": [
+              56,
+              58
+            ],
+            "candidate": [
+              57,
+              57
+            ]
+          },
+          "ratioOfMedians": 0.991304347826087,
+          "pairedRatios": [
+            1.0178571428571428,
+            0.9827586206896551,
+            1.0,
+            0.9827586206896551
+          ],
+          "medianPairedRatio": 0.9913793103448276
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 146.28978807013482,
+            "candidate": 146.62542450241745
+          },
+          "ranges": {
+            "baseline": [
+              146.06188889592886,
+              146.49481792002916
+            ],
+            "candidate": [
+              146.4459199924022,
+              147.43345510214567
+            ]
+          },
+          "ratioOfMedians": 1.0022943257811114,
+          "pairedRatios": [
+            1.007102196636857,
+            1.0004057817457153,
+            1.003493826875341,
+            1.002629235452014
+          ],
+          "medianPairedRatio": 1.0030615311636777
+        }
+      }
+    },
+    "equalCaseGeometricRatios": {
+      "requestMs": 0.996642351881341,
+      "processWallMs": 0.9999518397217777
+    }
+  },
+  "fullInput": {
+    "exactCCount": 2,
+    "cases": {
+      "self-d04": {
+        "requestMs": {
+          "medians": {
+            "baseline": 138029,
+            "candidate": 136418
+          },
+          "ranges": {
+            "baseline": [
+              138029,
+              138029
+            ],
+            "candidate": [
+              136418,
+              136418
+            ]
+          },
+          "ratioOfMedians": 0.9883285396547102,
+          "pairedRatios": [
+            0.9883285396547102
+          ],
+          "medianPairedRatio": 0.9883285396547102
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 138777.92802988552,
+            "candidate": 137146.28891088068
+          },
+          "ranges": {
+            "baseline": [
+              138777.92802988552,
+              138777.92802988552
+            ],
+            "candidate": [
+              137146.28891088068,
+              137146.28891088068
+            ]
+          },
+          "ratioOfMedians": 0.9882428053065221,
+          "pairedRatios": [
+            0.9882428053065221
+          ],
+          "medianPairedRatio": 0.9882428053065221
+        }
+      }
+    },
+    "equalCaseGeometricRatios": {
+      "requestMs": 0.9883285396547102,
+      "processWallMs": 0.9882428053065221
+    }
+  },
+  "broadExactC": 45,
+  "controls": {
+    "expected": {
+      "file": "selfhost/tools/performance/phase95/membership01/frozen01/controls.expected.txt",
+      "bytes": 363,
+      "sha256": "ab260c9b57e4c657d17b3e0c6db6f9b3dd7e0ce35b98d2ac2df53616999a4f08"
+    },
+    "observed": {
+      "file": "selfhost/build/phase95/membership-controls-run01/stdout.log",
+      "bytes": 363,
+      "sha256": "ab260c9b57e4c657d17b3e0c6db6f9b3dd7e0ce35b98d2ac2df53616999a4f08"
+    },
+    "outputLines": 20,
+    "membership-controls-acquire01": {
+      "file": "selfhost/build/phase95/membership-controls-acquire01/process.json",
+      "bytes": 677,
+      "sha256": "7ab0e290a1e413939c64603d73a39635ea3630bc599f918799a651143383ee06"
+    },
+    "membership-controls-build01": {
+      "file": "selfhost/build/phase95/membership-controls-build01/process.json",
+      "bytes": 773,
+      "sha256": "3ddff6af85abf2c914481533e009e56e58dea2ce89bfd82ff142db95b08c5acb"
+    },
+    "membership-controls-run01": {
+      "file": "selfhost/build/phase95/membership-controls-run01/process.json",
+      "bytes": 535,
+      "sha256": "b9dcf9fd02cd5a457662644b30a5c6c46d004215bd06d073b9b383b54ab3439c"
+    }
+  },
+  "resources": {
+    "guardedJobs": 217,
+    "guardedWallSeconds": 752.471364563331,
+    "peakTreeRssBytes": 4293324800,
+    "overlaps": [],
+    "stopped": [],
+    "nonzeroExits": [
+      "selfhost/build/phase95/membership-baseline-acquire01/process.json",
+      "selfhost/build/phase95/membership-baseline-acquire02/process.json"
+    ],
+    "scope": "Serial guarded occupancy only; not elapsed research time, agent effort or quota usage."
+  },
+  "complexity": {
+    "candidateLines": -2,
+    "candidateBytes": -81,
+    "productionLines": 0
+  },
+  "limitations": [
+    "Self profile has two overruns and remains exploratory.",
+    "Single full-input pair is not a confidence interval or new B2 qualification.",
+    "No new compiled-program timings or formal proof of unsafe has_name."
+  ]
+}

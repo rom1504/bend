@@ -4620,3 +4620,32 @@ restorable from pinned release/manifests. No PR comment or quota-percentage clai
 Updated frontier: proof method feasible; do not promote a negligible performance
 result. Establish caller-level native allocation/lifetime costs and a bounded
 material improvement before reusing the law workflow on the next target.
+
+## Phase95 native ownership attribution and membership falsifier — 2026-10-15
+
+[Report](../implementation/phase95/README.md) ·
+[Evidence](../selfhost/tools/performance/phase95/evidence01/summary.json).
+Unchanged B1 physical-caller sampling accepts five Map requests:962 request
+samples,56.44% cleanup, all C exact. Full self emits exact38.6MB C, but two timer
+overruns keep its17,246 request samples exploratory. Equality owns27.08% cleanup
+plus4.80% own-leaf samples; kc cleanup7.87%, membership cleanup2.57%. Physical
+ancestry is bounded; no inclusive logical call tree, allocation counts or B2
+profile. Original strict failures are preserved, not silently requalified.
+
+Two-line membership delegation to existing has_name demonstrates early-exit
+gains7.7–857× on selected head-hit helpers, while misses regress5.9%. Twenty
+control output lines, consumed checksums and doubled-count controls pass.
+The actual six-source B1 screen is neutral0.996642× request/0.999952× process;
+full D04 pair138.029s→136.418s is only0.988329×. All95 complete C comparisons
+pass (48screen+2full+45originalproducts), with expected unsafe diagnostic intact.
+No new formal proof, B2 build, broad conformance or program runtime claim.
+Do not promote; production, installed images and five established metrics stay
+unchanged. Prefer shared-observation/closure work with exact native small controls
+before another full compiler build; old Bool-first equality failures still apply.
+
+Two offline agents;217 serial guarded jobs,752.47s occupancy,4.00GiB peak,
+33.42minutes first-to-last target span, no overlap/OOM/deadline. Accepted helper
+campaign18.60s, screen21.99s,45-product continuity39.26s. Preserve two tiny source
+failures, initial repetition-ceiling failure, guard preflight rejection and both
+profile quality failures. Capsule verifies824files/24.1MB. No PR comment or
+quota-percentage claim. Phase95 complete; next intervention remains unstarted.

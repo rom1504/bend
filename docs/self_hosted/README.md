@@ -14,6 +14,9 @@ The [law-backed optimization guide](law-backed-optimization.md) describes the
 Phase94 production-connected proof pilot, independent checker, unsafe boundaries
 and performance gate. The helper is faster locally, but remains experimental
 because the actual compilation screen is neutral.
+The [Phase95 ownership investigation](../../implementation/phase95/README.md)
+adds authenticated physical-caller profiles and an exact-helper experiment.
+Its membership change is also unpromoted; the installed scoreboard is unchanged.
 
 ## Historical Phase70 baseline
 

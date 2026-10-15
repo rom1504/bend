@@ -1,8 +1,9 @@
 # Phase90: native self-hosting — implementation in progress
 
 [Design](../../design/phase90/native-self-hosting.md). This phase is still active.
-Neither a completed native self-emission nor a native B2 fixed point has been
-established. The installed JS release is still Phase82; current source needs the
+Complete compiler C emission now succeeds through the checked JS-hosted Bend B1:
+109.399s request time,38.6MB C,1.21GB peak RSS. A native B2 fixed point has not
+been established. The installed JS release is still Phase82; current source needs the
 real checked/self-hosting release qualification, not a manifest-only update.
 
 ## Confirmed repairs
@@ -40,6 +41,13 @@ The independent genuine JS-B2 attempt on the same source hit90.066s without C,
 at1,259,184,128 bytes. Neither failed from the RSS limit. The remaining emission
 cost is being profiled before another change or longer full-source attempt.
 
+Subsequent profiling isolates ordered fork-flag propagation. An exact-name index
+passes46 complete-product cases in JS/native execution and removes the late
+list-search stall. The next profile exposes retained string allocation during
+body indentation; removing that cosmetic traversal enables the first complete
+C emission. Read [fork closure](fork-closure.md) and [formatting](formatting.md)
+for actual results, failed heap-limited attempts and the changed-C boundary.
+
 [Table controls and exact derivatives](tables.md), [profiling](profiling.md),
 [own-backend provenance/gates](own-backend-gates.md),
 [paired native and45-point methods](../../selfhost/tools/performance/phase90/native-comparison.md).
@@ -58,3 +66,25 @@ capsules and identities. No successful profile capture implies completed C.
 with committed archives. Current compiler images and release dependencies remain.
 Root alone runs compiler/native targets under resource guards. No PR comment was
 posted.
+
+## Second checkpoint: independent checks and build diagnosis
+
+Compiler06 genuine JS B2 passes tiny/full emission, all eight driver comparisons,
+a fresh own-source check and B2/B3 byte equality. The installed release has not
+yet been changed. The four complete C preprocessing comparisons now pass
+(`whitespace02`): Small, Map, Unicode and file IO. V2's stdin-pipe timeout and
+v3's successful read-only stdin descriptor are both retained.
+
+Clang-O1 full compilation reaches the6GiB guard; Clang-O0 fails register
+allocation. Tiny controls isolate indirect preserve-none must-tail calls. The
+runtime padding slot must remain dead: with that correction the tiny-O1 build
+works, while-O0 still fails. Upstream already guards these attributes with
+`defined(__OPTIMIZE__)`; our runtime omitted it. An explicit diagnostic-O0
+build using `-Dpreserve_none=cdecl -Dpreserve_most=cdecl` keeps emitted C exact
+and succeeds on the tiny compile/execution control. Its full-image build is
+in progress. Neither an optimized native speed result nor native reproduction
+is claimed yet.
+
+[Evidence02](evidence02.json) seals2,528 additional/changed files and preserves
+all included failed attempts. It excludes the then-active qualification06 and
+regalloc/noindent-method preparation; those need the next capsule.

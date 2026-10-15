@@ -1,0 +1,91 @@
+{
+  "kind": "phase90-noindent-regular-fd-oracle-admission",
+  "complete": true,
+  "changes": [
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods01/own_native_support.py",
+        "sha256": "92b24a1bad961703431223c02a6ba6271a17bd9ae5177deed61462c881e577ab",
+        "bytes": 11280
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods02/own_native_support.py",
+        "sha256": "92b24a1bad961703431223c02a6ba6271a17bd9ae5177deed61462c881e577ab",
+        "bytes": 11280
+      },
+      "edits": []
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods01/bind-own-native.py",
+        "sha256": "0f2467d72290b142a7c2e29d4fe80f3671196d230e6b0836bcacc2eabf0b2622",
+        "bytes": 867
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods02/bind-own-native.py",
+        "sha256": "0f2467d72290b142a7c2e29d4fe80f3671196d230e6b0836bcacc2eabf0b2622",
+        "bytes": 867
+      },
+      "edits": []
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods01/own-native-gates.py",
+        "sha256": "d66a7c69729c6e9a2b1de28c388d3a3af4ec144a8d557b81fb67fa779277a9e8",
+        "bytes": 14438
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods02/own-native-gates.py",
+        "sha256": "a167275be8c29b71a445eae231d91bb414344320152660c0f3057cc03268d60e",
+        "bytes": 14438
+      },
+      "edits": [
+        {
+          "startByte": 8014,
+          "endByte": 8253,
+          "old": "        for path in [__file__, GUARD, PERF / 'programs/support.py', PERF / 'phase88/native_support.py', PERF / 'phase90/noindent-methods01/own_native_support.py', PERF / 'phase90/noindent-methods01/whitespace_oracles.py', sys.executable]:\n",
+          "new": "        for path in [__file__, GUARD, PERF / 'programs/support.py', PERF / 'phase88/native_support.py', PERF / 'phase90/noindent-methods02/own_native_support.py', PERF / 'phase90/noindent-methods02/whitespace_oracles.py', sys.executable]:\n"
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods01/whitespace_oracles.py",
+        "sha256": "2bdea58b5c757c604ccf7c18dd89361168ba8c0c5cbd8dea5ba7e72585bf15b4",
+        "bytes": 5795
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods02/whitespace_oracles.py",
+        "sha256": "6e02aed8f4e47c583b582cc667711ac764fad52be070e813970023c9b82ea63f",
+        "bytes": 6329
+      },
+      "edits": [
+        {
+          "startByte": 164,
+          "endByte": 244,
+          "old": "METHOD_SHA = 'c86b2fd437f4596f4125e3c6af977008ce679ec9046f695db13a1cd6456b92b4'\n",
+          "new": "METHOD_SHA = 'b916bef1c3daf337b4bc7d133407b5f02104209789abf8ea1393c56299c59f50'\n"
+        },
+        {
+          "startByte": 1144,
+          "endByte": 1144,
+          "old": "",
+          "new": "    assert bound(proof['previousMethod'])['sha256'] == 'c86b2fd437f4596f4125e3c6af977008ce679ec9046f695db13a1cd6456b92b4'\n    previous = read(bound(proof['previousFailure'])['file'])\n    assert not previous['complete'] and not previous['pass']\n    failed = previous['rows'][0]['preprocess']['baseline']\n    assert failed['stdout']['bytes'] == failed['stderr']['bytes'] == 0 and 'ETIMEDOUT' in failed['error']\n"
+        },
+        {
+          "startByte": 4921,
+          "endByte": 4921,
+          "old": "",
+          "new": "            assert preprocessing['stdinTransport'] == 'read-only-file-descriptor' and preprocessing['stdinStartOffset'] == 0\n"
+        }
+      ]
+    }
+  ],
+  "cpuOracleMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/whitespace-check-v3.mjs",
+    "sha256": "b916bef1c3daf337b4bc7d133407b5f02104209789abf8ea1393c56299c59f50",
+    "bytes": 13086
+  },
+  "targetsExecuted": false,
+  "scope": "Preserve noindent01. Admit exact v3 regular-file-descriptor stdin transport and preserved v2 failure; all lineage, CPU byte proof and eight exact new-C gates remain unchanged."
+}

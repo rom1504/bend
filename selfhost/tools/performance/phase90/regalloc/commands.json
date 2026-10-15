@@ -1,0 +1,200 @@
+{
+  "kind": "phase90-regalloc-control-commands",
+  "targetExecuted": false,
+  "serial": true,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail.c",
+    "sha256": "2156a3254f990a7a11c4656b588cfa45c89cfc962aca9dbf6aaa4c513b7be784",
+    "bytes": 1456
+  },
+  "rows": [
+    {
+      "name": "o0",
+      "flags": [
+        "-O0"
+      ],
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-guard",
+        "--seconds",
+        "15",
+        "--rss-mib",
+        "512",
+        "--available-mib",
+        "4096",
+        "--cpu",
+        "3",
+        "--",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O0",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0"
+      ],
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0",
+      "expectedExecutionExitCode": 0
+    },
+    {
+      "name": "o0-greedy",
+      "flags": [
+        "-O0",
+        "-mllvm",
+        "-optimize-regalloc",
+        "-mllvm",
+        "-regalloc=greedy"
+      ],
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-greedy-guard",
+        "--seconds",
+        "15",
+        "--rss-mib",
+        "512",
+        "--available-mib",
+        "4096",
+        "--cpu",
+        "3",
+        "--",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O0",
+        "-mllvm",
+        "-optimize-regalloc",
+        "-mllvm",
+        "-regalloc=greedy",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-greedy"
+      ],
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-greedy",
+      "expectedExecutionExitCode": 0
+    },
+    {
+      "name": "o0-omitfp",
+      "flags": [
+        "-O0",
+        "-fomit-frame-pointer"
+      ],
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-omitfp-guard",
+        "--seconds",
+        "15",
+        "--rss-mib",
+        "512",
+        "--available-mib",
+        "4096",
+        "--cpu",
+        "3",
+        "--",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O0",
+        "-fomit-frame-pointer",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-omitfp"
+      ],
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-omitfp",
+      "expectedExecutionExitCode": 0
+    },
+    {
+      "name": "o0-direct",
+      "flags": [
+        "-O0",
+        "-DREPRO_DIRECT=1"
+      ],
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-direct-guard",
+        "--seconds",
+        "15",
+        "--rss-mib",
+        "512",
+        "--available-mib",
+        "4096",
+        "--cpu",
+        "3",
+        "--",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O0",
+        "-DREPRO_DIRECT=1",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-direct"
+      ],
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-direct",
+      "expectedExecutionExitCode": 0
+    },
+    {
+      "name": "o0-sysv",
+      "flags": [
+        "-O0",
+        "-DREPRO_PRESERVE=0"
+      ],
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-sysv-guard",
+        "--seconds",
+        "15",
+        "--rss-mib",
+        "512",
+        "--available-mib",
+        "4096",
+        "--cpu",
+        "3",
+        "--",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O0",
+        "-DREPRO_PRESERVE=0",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-sysv"
+      ],
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-sysv",
+      "expectedExecutionExitCode": 0
+    },
+    {
+      "name": "o1",
+      "flags": [
+        "-O1"
+      ],
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o1-guard",
+        "--seconds",
+        "15",
+        "--rss-mib",
+        "512",
+        "--available-mib",
+        "4096",
+        "--cpu",
+        "3",
+        "--",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O1",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o1"
+      ],
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o1",
+      "expectedExecutionExitCode": 0
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "phase90-whitespace-fourcase-command",
+  "status": "prepared-unexecuted",
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/whitespace-check-v3.mjs",
+    "sha256": "b916bef1c3daf337b4bc7d133407b5f02104209789abf8ea1393c56299c59f50",
+    "bytes": 13086
+  },
+  "preflight": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/whitespace-preflight03/report.json",
+    "sha256": "a0e2718a6a0bd2c4b09e2ff877b2b6ab4e91bab07874b1d4defd33ec92620462",
+    "bytes": 157333
+  },
+  "commands": [
+    {
+      "name": "checked-b1-fourcase-cpu-token-equality",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/whitespace02-guard",
+        "--seconds",
+        "180",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "--cpu",
+        "3",
+        "--",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/whitespace-check-v3.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler06/attempt.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/whitespace02",
+        "--guard-dir",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/whitespace02-guard"
+      ]
+    }
+  ],
+  "previousFailure": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/whitespace01/report.json",
+    "sha256": "6a2c34c45896fffa7702d0ac6b936155bf23259dbb788be8e46a2d10867bf1cc",
+    "bytes": 162957
+  }
+}

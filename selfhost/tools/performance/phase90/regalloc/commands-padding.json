@@ -1,0 +1,151 @@
+{
+  "kind": "phase90-regalloc-padding-controls",
+  "targetExecuted": false,
+  "serial": true,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail.c",
+    "sha256": "2156a3254f990a7a11c4656b588cfa45c89cfc962aca9dbf6aaa4c513b7be784",
+    "bytes": 1456
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail-padding.c",
+    "sha256": "6e61c4143c31f663c6bd6e8bb8eeeba0ebd4738ca7bfab345b76ec40c8d70519",
+    "bytes": 1538
+  },
+  "expectedReturn": 298,
+  "correction": "Original tiny control keeps rp live; real WL_OPEN shadows rp uninitialized as ABI padding. O1 failure of original control does not predict full-image O1 failure.",
+  "rows": [
+    {
+      "name": "padding-o0",
+      "flags": [
+        "-O0"
+      ],
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-padding-o0-guard",
+        "--seconds",
+        "15",
+        "--rss-mib",
+        "512",
+        "--available-mib",
+        "4096",
+        "--cpu",
+        "3",
+        "--",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O0",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail-padding.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-padding-o0"
+      ],
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-padding-o0",
+      "expectedExecutionExitCode": 0
+    },
+    {
+      "name": "padding-o1",
+      "flags": [
+        "-O1"
+      ],
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-padding-o1-guard",
+        "--seconds",
+        "15",
+        "--rss-mib",
+        "512",
+        "--available-mib",
+        "4096",
+        "--cpu",
+        "3",
+        "--",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O1",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail-padding.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-padding-o1"
+      ],
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-padding-o1",
+      "expectedExecutionExitCode": 0
+    },
+    {
+      "name": "padding-o0-greedy-nooptnone",
+      "flags": [
+        "-O0",
+        "-Xclang",
+        "-disable-O0-optnone",
+        "-mllvm",
+        "-optimize-regalloc",
+        "-mllvm",
+        "-regalloc=greedy"
+      ],
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-padding-o0-greedy-nooptnone-guard",
+        "--seconds",
+        "15",
+        "--rss-mib",
+        "512",
+        "--available-mib",
+        "4096",
+        "--cpu",
+        "3",
+        "--",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O0",
+        "-Xclang",
+        "-disable-O0-optnone",
+        "-mllvm",
+        "-optimize-regalloc",
+        "-mllvm",
+        "-regalloc=greedy",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail-padding.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-padding-o0-greedy-nooptnone"
+      ],
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-padding-o0-greedy-nooptnone",
+      "expectedExecutionExitCode": 0
+    },
+    {
+      "name": "padding-o1-no-ir",
+      "flags": [
+        "-O1",
+        "-Xclang",
+        "-disable-llvm-passes"
+      ],
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-padding-o1-no-ir-guard",
+        "--seconds",
+        "15",
+        "--rss-mib",
+        "512",
+        "--available-mib",
+        "4096",
+        "--cpu",
+        "3",
+        "--",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O1",
+        "-Xclang",
+        "-disable-llvm-passes",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail-padding.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-padding-o1-no-ir"
+      ],
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-padding-o1-no-ir",
+      "expectedExecutionExitCode": 0
+    }
+  ]
+}

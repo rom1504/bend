@@ -1,0 +1,395 @@
+{
+  "kind": "phase90-fork-demand-diagnostic-correction",
+  "complete": true,
+  "targetExecuted": false,
+  "correctnessProductsUnchanged": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/fork03/manifest.json",
+      "bytes": 233659,
+      "sha256": "7dd387851ac84c626dfc40d94e68c0d12aa02b85113961df15ef673802260db9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/fork-controls02/legacy/program.cjs",
+      "bytes": 58826,
+      "sha256": "0c5fc89d1126d32d0741bad07f784602605e9ee0d8028a1c20b2baa7ca7acd8b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/fork-demand-correction.py",
+      "bytes": 2333,
+      "sha256": "74acdef012071d182f7abc1adfef25ff525a46f8ed8f96a08c137c8bdce82c0d"
+    }
+  ],
+  "reason": "Upstream generated JS evaluates both Bool.and/or arguments. Frozen legacyNameComparisons numbers model Python short-circuit demand; do not treat them as Bend counts. Complete ordered output products were separately proved by four guarded executions.",
+  "limitations": "These are strict source-level predicate counts, not measured target counters or timings; downstream compiler optimizations may alter actual execution.",
+  "rows": [
+    {
+      "label": "empty-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "empty-fuel1",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "empty-fuel3",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "empty-roots-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "empty-roots-fuel1",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 5,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "empty-roots-fuel6",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 5,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "seeded-chain-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 2
+    },
+    {
+      "label": "seeded-chain-fuel1",
+      "oldPythonShortCircuitCount": 4,
+      "strictSourceNameComparisons": 4,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 5,
+      "strictFlagNameComparisons": 4
+    },
+    {
+      "label": "seeded-chain-fuel6",
+      "oldPythonShortCircuitCount": 12,
+      "strictSourceNameComparisons": 26,
+      "strictSourcePasses": 3,
+      "strictCandidateMembershipQueries": 15,
+      "strictFlagNameComparisons": 6
+    },
+    {
+      "label": "reverse-chain-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 2
+    },
+    {
+      "label": "reverse-chain-fuel1",
+      "oldPythonShortCircuitCount": 5,
+      "strictSourceNameComparisons": 6,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 5,
+      "strictFlagNameComparisons": 6
+    },
+    {
+      "label": "reverse-chain-fuel6",
+      "oldPythonShortCircuitCount": 8,
+      "strictSourceNameComparisons": 18,
+      "strictSourcePasses": 2,
+      "strictCandidateMembershipQueries": 10,
+      "strictFlagNameComparisons": 6
+    },
+    {
+      "label": "duplicates-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 6
+    },
+    {
+      "label": "duplicates-fuel1",
+      "oldPythonShortCircuitCount": 5,
+      "strictSourceNameComparisons": 14,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 5,
+      "strictFlagNameComparisons": 8
+    },
+    {
+      "label": "duplicates-fuel6",
+      "oldPythonShortCircuitCount": 7,
+      "strictSourceNameComparisons": 30,
+      "strictSourcePasses": 2,
+      "strictCandidateMembershipQueries": 10,
+      "strictFlagNameComparisons": 8
+    },
+    {
+      "label": "seeded-cycle-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 2
+    },
+    {
+      "label": "seeded-cycle-fuel1",
+      "oldPythonShortCircuitCount": 3,
+      "strictSourceNameComparisons": 4,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 4,
+      "strictFlagNameComparisons": 4
+    },
+    {
+      "label": "seeded-cycle-fuel5",
+      "oldPythonShortCircuitCount": 6,
+      "strictSourceNameComparisons": 12,
+      "strictSourcePasses": 2,
+      "strictCandidateMembershipQueries": 8,
+      "strictFlagNameComparisons": 4
+    },
+    {
+      "label": "unseeded-cycle-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "unseeded-cycle-fuel1",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 4,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "unseeded-cycle-fuel5",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 4,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "mixed-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 3
+    },
+    {
+      "label": "mixed-fuel1",
+      "oldPythonShortCircuitCount": 6,
+      "strictSourceNameComparisons": 6,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 5,
+      "strictFlagNameComparisons": 6
+    },
+    {
+      "label": "mixed-fuel7",
+      "oldPythonShortCircuitCount": 11,
+      "strictSourceNameComparisons": 14,
+      "strictSourcePasses": 2,
+      "strictCandidateMembershipQueries": 10,
+      "strictFlagNameComparisons": 6
+    },
+    {
+      "label": "fork-not-in-seed-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "fork-not-in-seed-fuel1",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 3,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "fork-not-in-seed-fuel5",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 3,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "unicode-empty-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 2
+    },
+    {
+      "label": "unicode-empty-fuel1",
+      "oldPythonShortCircuitCount": 5,
+      "strictSourceNameComparisons": 6,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 5,
+      "strictFlagNameComparisons": 6
+    },
+    {
+      "label": "unicode-empty-fuel6",
+      "oldPythonShortCircuitCount": 8,
+      "strictSourceNameComparisons": 18,
+      "strictSourcePasses": 2,
+      "strictCandidateMembershipQueries": 10,
+      "strictFlagNameComparisons": 6
+    },
+    {
+      "label": "collision-one-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 2
+    },
+    {
+      "label": "collision-one-fuel1",
+      "oldPythonShortCircuitCount": 2,
+      "strictSourceNameComparisons": 3,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 3,
+      "strictFlagNameComparisons": 2
+    },
+    {
+      "label": "collision-one-fuel5",
+      "oldPythonShortCircuitCount": 2,
+      "strictSourceNameComparisons": 3,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 3,
+      "strictFlagNameComparisons": 2
+    },
+    {
+      "label": "collision-other-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 2
+    },
+    {
+      "label": "collision-other-fuel1",
+      "oldPythonShortCircuitCount": 4,
+      "strictSourceNameComparisons": 4,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 3,
+      "strictFlagNameComparisons": 4
+    },
+    {
+      "label": "collision-other-fuel5",
+      "oldPythonShortCircuitCount": 7,
+      "strictSourceNameComparisons": 10,
+      "strictSourcePasses": 2,
+      "strictCandidateMembershipQueries": 6,
+      "strictFlagNameComparisons": 4
+    },
+    {
+      "label": "duplicate-refs-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 1
+    },
+    {
+      "label": "duplicate-refs-fuel1",
+      "oldPythonShortCircuitCount": 3,
+      "strictSourceNameComparisons": 4,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 5,
+      "strictFlagNameComparisons": 2
+    },
+    {
+      "label": "duplicate-refs-fuel5",
+      "oldPythonShortCircuitCount": 4,
+      "strictSourceNameComparisons": 12,
+      "strictSourcePasses": 2,
+      "strictCandidateMembershipQueries": 10,
+      "strictFlagNameComparisons": 2
+    },
+    {
+      "label": "self-edge-fuel0",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 0,
+      "strictCandidateMembershipQueries": 0,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "self-edge-fuel1",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 2,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "self-edge-fuel4",
+      "oldPythonShortCircuitCount": 0,
+      "strictSourceNameComparisons": 0,
+      "strictSourcePasses": 1,
+      "strictCandidateMembershipQueries": 2,
+      "strictFlagNameComparisons": 0
+    },
+    {
+      "label": "scale8-forward",
+      "oldPythonShortCircuitCount": 252,
+      "strictSourceNameComparisons": 546,
+      "strictSourcePasses": 8,
+      "strictCandidateMembershipQueries": 120,
+      "strictFlagNameComparisons": 56
+    },
+    {
+      "label": "scale8-reverse",
+      "oldPythonShortCircuitCount": 63,
+      "strictSourceNameComparisons": 168,
+      "strictSourcePasses": 2,
+      "strictCandidateMembershipQueries": 30,
+      "strictFlagNameComparisons": 56
+    },
+    {
+      "label": "scale32-forward",
+      "oldPythonShortCircuitCount": 16368,
+      "strictSourceNameComparisons": 33666,
+      "strictSourcePasses": 32,
+      "strictCandidateMembershipQueries": 2016,
+      "strictFlagNameComparisons": 992
+    },
+    {
+      "label": "scale32-reverse",
+      "oldPythonShortCircuitCount": 1023,
+      "strictSourceNameComparisons": 2976,
+      "strictSourcePasses": 2,
+      "strictCandidateMembershipQueries": 126,
+      "strictFlagNameComparisons": 992
+    }
+  ]
+}

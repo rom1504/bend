@@ -1,0 +1,131 @@
+{
+  "kind": "phase90-noindent-own-method-derivation",
+  "complete": true,
+  "changes": [
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/fork-methods01/own_native_support.py",
+        "sha256": "969f05e4e739e8ff31320cc286cc750ccde261730a4952b3f70eb529a441dd47",
+        "bytes": 7248
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods01/own_native_support.py",
+        "sha256": "92b24a1bad961703431223c02a6ba6271a17bd9ae5177deed61462c881e577ab",
+        "bytes": 11280
+      },
+      "edits": [
+        {
+          "startByte": 350,
+          "endByte": 512,
+          "old": "SOURCE_SHA = 'd8a94ce9f16e7576d2f4269c858d008e3da2f40f734cdf0983a3a9835f330791'\nASSEMBLY_SHA = '21a6140df89ff3f0757e78652ad234d37fd220fc774ff705fa289b2d2f3179ff'\n",
+          "new": "SOURCE_SHA = 'd04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097'\nASSEMBLY_SHA = '9b4c0796b7504ebcb030ae9ffe5f4d0d37dbd6ac4637e4723acf895de196fea9'\n"
+        },
+        {
+          "startByte": 2988,
+          "endByte": 2988,
+          "old": "",
+          "new": "    elif kind == 'phase90-js-b1-combined-source-emission':\n        assert report['inputsUnchanged'] and report['stage'] == 'complete'\n        assert report['observation']['status'] == 'ok' and report['observation']['checked']\n        assert len(report['policy']) == 4 and all(value == 0 for value in report['policy'].values())\n        for record in report['inputs']:\n            bind(record)\n        method = bind(pin(PERF/'phase90/bootstrap/emit-self-v7.mjs'))\n        assert method['sha256'] == '712e639ef3adb0ef265749d6ab32d8121bb89276a52ace5ee1da5678c7d3df0d'\n        assert method in report['inputs']\n        producer = report['producer']\n        assert producer['stage'] == 'checked equality-derived JS-hosted Bend B1'\n        attempt_pin, validation_pin = bind(producer['attempt']), bind(producer['validation'])\n        attempt, validation = read(attempt_pin['file']), read(validation_pin['file'])\n        assert attempt['checked'] and attempt['artifactKind'] == 'derived-b1'\n        assert validation['complete'] and validation['pass'] and validation['strictExact']\n        for field, key in [('api', 'api'), ('checkedApi', 'checkedApi'),\n                           ('bootstrap', 'bootstrapReport'), ('derivation', 'derivationReport')]:\n            assert bind(producer[field]) == bind(attempt[key])\n        assert bind(validation['api']) == bind(producer['api'])\n        bootstrap, derivation = read(producer['bootstrap']['file']), read(producer['derivation']['file'])\n        assert bootstrap['stage'] == 'upstream-bootstrap' and bootstrap['revision'] == '059266225b77c8ca256ac6b25ee5c21449bab151'\n        assert bootstrap['apiSha256'] == producer['checkedApi']['sha256']\n        assert derivation['kind'] == 'bend-derived-b1-equality' and derivation['complete'] and not derivation['newBootstrap']\n        assert bind(derivation['original']['api']) == bind(producer['checkedApi'])\n        assert bind(derivation['original']['bootstrapReport']) == bind(producer['bootstrap'])\n        assert bind(derivation['output']) == bind(producer['api'])\n        source, c = bind(report['subject']), bind(report['output'])\n        assert report['sourceDerivation']['inverseRecoversAncestor'] and report['sourceDerivation']['exactOutsideReplacements']\n        assembly_pin = bind(report['sourceDerivation']['assembly'])\n        assert assembly_pin['sha256'] == ASSEMBLY_SHA\n        assembly = read(assembly_pin['file'])\n        assert assembly['complete'] and assembly['exactOutsideDefinitions'] and len(assembly['replacements']) == 14\n        for record in assembly['inputs']:\n            bind(record)\n        assert bind(assembly['output']) == source\n        original = Path(assembly['inputs'][0]['file']).read_text()\n        forward = original\n        for change in assembly['replacements']:\n            assert forward.count(change['old']) == 1\n            forward = forward.replace(change['old'], change['new'], 1)\n        assert forward == Path(source['file']).read_text()\n        for change in reversed(assembly['replacements']):\n            assert forward.count(change['new']) == 1\n            forward = forward.replace(change['new'], change['old'], 1)\n        assert forward == original\n        # The root guard uses the existing sibling NAME-guard convention.\n        directory = Path(file).resolve().parent\n        guard_directory = directory.with_name(directory.name + '-guard')\n        guard = read(bind(pin(guard_directory/'process.json'))['file'])\n        guard_inputs = [bind(record) for record in read(bind(pin(guard_directory/'inputs.json'))['file'])]\n        assert guard['complete'] and guard['returncode'] == 0 and not guard.get('stoppedFor')\n        expected_tail = [Path(method['file']), Path(attempt_pin['file']).parent, directory]\n        assert [(ROOT/part).resolve() for part in guard['command'][-3:]] == expected_tail\n        assert bind(producer['node']) in guard_inputs and method in guard_inputs\n        assert producer['node']['file'] in guard['command']\n        provenance = 'JS-B1-cross-host-emitted-C'\n"
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/fork-methods01/bind-own-native.py",
+        "sha256": "0f2467d72290b142a7c2e29d4fe80f3671196d230e6b0836bcacc2eabf0b2622",
+        "bytes": 867
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods01/bind-own-native.py",
+        "sha256": "0f2467d72290b142a7c2e29d4fe80f3671196d230e6b0836bcacc2eabf0b2622",
+        "bytes": 867
+      },
+      "edits": []
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/fork-methods01/own-native-gates.py",
+        "sha256": "5c7784435f56a42eba628160e151c9d4ea275d04461e4889e229a6332fb2d596",
+        "bytes": 15308
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods01/own-native-gates.py",
+        "sha256": "d66a7c69729c6e9a2b1de28c388d3a3af4ec144a8d557b81fb67fa779277a9e8",
+        "bytes": 14438
+      },
+      "edits": [
+        {
+          "startByte": 721,
+          "endByte": 721,
+          "old": "",
+          "new": "from whitespace_oracles import load_oracles\n"
+        },
+        {
+          "startByte": 722,
+          "endByte": 802,
+          "old": "SOURCE_SHA = 'd8a94ce9f16e7576d2f4269c858d008e3da2f40f734cdf0983a3a9835f330791'\n",
+          "new": "SOURCE_SHA = 'd04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097'\n"
+        },
+        {
+          "startByte": 884,
+          "endByte": 1068,
+          "old": "ASSEMBLY = ROOT / 'selfhost/tools/performance/phase90/observation/fork01/compiler-fork.assembly.json'\nASSEMBLY_SHA = '21a6140df89ff3f0757e78652ad234d37fd220fc774ff705fa289b2d2f3179ff'\n",
+          "new": "ASSEMBLY = ROOT / 'selfhost/tools/performance/phase90/observation/noindent01/compiler-noindent.assembly.json'\nASSEMBLY_SHA = '9b4c0796b7504ebcb030ae9ffe5f4d0d37dbd6ac4637e4723acf895de196fea9'\n"
+        },
+        {
+          "startByte": 1495,
+          "endByte": 1622,
+          "old": "    parser.add_argument('image', type=Path, help='Own-backend image with honest .own-build.json for exact source d8a94ce9\u2026')\n",
+          "new": "    parser.add_argument('image', type=Path, help='Own-backend image with honest .own-build.json for exact source d04ad79c\u2026')\n"
+        },
+        {
+          "startByte": 2004,
+          "endByte": 2004,
+          "old": "",
+          "new": "    parser.add_argument('--oracles', type=Path, required=True, help='Completed four-case CPU-preprocessing equality report; new exact-C oracles')\n"
+        },
+        {
+          "startByte": 5321,
+          "endByte": 5355,
+          "old": "        assert len(changes) == 13\n",
+          "new": "        assert len(changes) == 14\n"
+        },
+        {
+          "startByte": 7816,
+          "endByte": 7992,
+          "old": "        for path in [__file__, GUARD, PERF / 'programs/support.py', PERF / 'phase88/native_support.py', PERF / 'phase90/fork-methods01/own_native_support.py', sys.executable]:\n",
+          "new": "        for path in [__file__, GUARD, PERF / 'programs/support.py', PERF / 'phase88/native_support.py', PERF / 'phase90/noindent-methods01/own_native_support.py', PERF / 'phase90/noindent-methods01/whitespace_oracles.py', sys.executable]:\n"
+        },
+        {
+          "startByte": 8020,
+          "endByte": 9460,
+          "old": "        # Keep independent oracle receipt digests even when historical complete\n        # C files have been archived; equality compares the full emitted hash.\n        screen_pin = bind_file(ROOT / 'selfhost/build/phase88/screen01/report.json')\n        screen = json.loads(Path(screen_pin['file']).read_text())\n        assert screen['complete'] and screen['allJobsSucceeded']\n        cases = []\n        for name in ['small', 'map_closed', 'unicode']:\n            source = bound(next(p for p in screen['inputs'] if p.get('file', p.get('path')) == screen['cases'][name]))\n            oracle = next(r for r in screen['rows'] if r['role'] == 'b2' and r['case'] == name)['outputs'][0]\n            cases.append(dict(name=name, source=source, oracle=oracle, oracleReceipt=screen_pin))\n        file_gate_pin = bound(assets['testedFileControl'])\n        file_gate = json.loads(Path(file_gate_pin['file']).read_text())\n        assert file_gate['kind'] == 'phase89-b2-control-emission' and file_gate['complete']\n        assert file_gate['case'] == 'file-io' and file_gate['observation']['status'] == 'ok'\n        assert file_gate['policy'] and all(x == 0 for x in file_gate['policy'].values())\n        io_source = bound(next(p for p in file_gate['inputs'] if p['file'].endswith('/file-io.bend')))\n        io_oracle = bound(file_gate['output'])\n        cases.append(dict(name='file-io', source=io_source, oracle=io_oracle, oracleReceipt=file_gate_pin))\n",
+          "new": "        # Formatting changes require a real new CPU token proof, not an old\n        # byte-oracle waiver. Every live/cache request still compares full C.\n        cases, whitespace_proof = load_oracles(args.oracles, auth, bind_file, bound, bind_tree)\n        report['cpuPreprocessingProof'] = whitespace_proof\n"
+        }
+      ]
+    }
+  ],
+  "newHelpers": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods01/whitespace_oracles.py",
+      "sha256": "2bdea58b5c757c604ccf7c18dd89361168ba8c0c5cbd8dea5ba7e72585bf15b4",
+      "bytes": 5795
+    }
+  ],
+  "sourceAssembly": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/noindent01/compiler-noindent.assembly.json",
+    "sha256": "9b4c0796b7504ebcb030ae9ffe5f4d0d37dbd6ac4637e4723acf895de196fea9",
+    "bytes": 21397
+  },
+  "checkedB1EmissionMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/emit-self-v7.mjs",
+    "sha256": "712e639ef3adb0ef265749d6ab32d8121bb89276a52ace5ee1da5678c7d3df0d",
+    "bytes": 8906
+  },
+  "cpuOracleMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/whitespace-check-v2.mjs",
+    "sha256": "c86b2fd437f4596f4125e3c6af977008ce679ec9046f695db13a1cd6456b92b4",
+    "bytes": 12293
+  },
+  "targetsExecuted": false,
+  "scope": "Add explicit checked-JS-B1 emission lineage and require complete default-CPU preprocessing proof before exact new-C live/cache gates. No public/cache admission or B2 claim."
+}

@@ -1,0 +1,53 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/emit-self-v4.mjs",
+    "sha256": "273961ea1158714199ae5b6e5b262316f0a66ffe416a2638a6ff95a85e952e85",
+    "bytes": 7540
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/emit-self-v7.mjs",
+    "sha256": "712e639ef3adb0ef265749d6ab32d8121bb89276a52ace5ee1da5678c7d3df0d",
+    "bytes": 8906
+  },
+  "edits": [
+    {
+      "before": "emits frozen native89 S as C.",
+      "after": "emits exact noindent native90 S as C.",
+      "count": 1
+    },
+    {
+      "before": "kind:'phase90-js-b1-native-self-source-emission'",
+      "after": "kind:'phase90-js-b1-combined-source-emission'",
+      "count": 1
+    },
+    {
+      "before": "  const native=read(admission.file),source=bind(native.producer.source);\n  assert.equal(source.sha256,'4584cf083d9eddad6f1290c9472c3aac2708099caa716a27f5b53fbcbaee1618');\n  assert.equal(source.bytes,1755310);",
+      "after": "  const native=read(admission.file),ancestor=bind(native.producer.source);\n  assert.equal(ancestor.sha256,'4584cf083d9eddad6f1290c9472c3aac2708099caa716a27f5b53fbcbaee1618');\n  const assemblyPin=add(path.join(root,'selfhost/tools/performance/phase90/observation/noindent01/compiler-noindent.assembly.json'));\n  assert.equal(assemblyPin.sha256,'9b4c0796b7504ebcb030ae9ffe5f4d0d37dbd6ac4637e4723acf895de196fea9');\n  const assembly=read(assemblyPin.file);\n  assert.equal(assembly.kind,'phase90-native-source-assembly');assert(assembly.complete&&assembly.exactOutsideDefinitions);\n  assert.equal(assembly.inputs[0].sha256,ancestor.sha256);for(const record of assembly.inputs)bind(record);\n  const source=bind(assembly.output);\n  assert.equal(source.sha256,'d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097');\n  assert.equal(source.bytes,1759353);\n  const original=fs.readFileSync(ancestor.file,'utf8');let forward=original;\n  assert.equal(assembly.replacements.length,14);\n  for(const change of assembly.replacements){assert(change.old&&change.new);assert.equal(forward.split(change.old).length-1,1);forward=forward.replace(change.old,()=>change.new);}\n  assert.equal(forward,fs.readFileSync(source.file,'utf8'));let inverse=forward;\n  for(const change of [...assembly.replacements].reverse()){assert.equal(inverse.split(change.new).length-1,1);inverse=inverse.replace(change.new,()=>change.old);}\n  assert.equal(inverse,original);\n  report.sourceDerivation={assembly:assemblyPin,ancestor,inverseRecoversAncestor:true,exactOutsideReplacements:true};",
+      "count": 1
+    },
+    {
+      "before": "report.subject=source;report.nativeProfileAdmission=admission;",
+      "after": "report.subject=source;report.ancestorNativeProfileAdmission=admission;",
+      "count": 1
+    }
+  ],
+  "sourceProofPattern": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/emit-self-v6.mjs",
+    "sha256": "c4e57d28a26f3ed8f1ee6da76b1216afefe71256e3de583f3ed8167506aed66d",
+    "bytes": 9545
+  },
+  "assembly": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/noindent01/compiler-noindent.assembly.json",
+    "sha256": "9b4c0796b7504ebcb030ae9ffe5f4d0d37dbd6ac4637e4723acf895de196fea9",
+    "bytes": 21397
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/noindent01/compiler-noindent.bend",
+    "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+    "bytes": 1759353
+  },
+  "methodInverseExact": true,
+  "sourceForwardAndInverseExact": true,
+  "targetsExecuted": false,
+  "scope": "Checked equality-derived JS-hosted Bend B1 emission only. Complete source derivation from frozen ancestor; no B2/setup claim, upstream acquisition, build or admission. Checked compiler06 attempt is a generic CLI argument."
+}

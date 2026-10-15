@@ -1,0 +1,150 @@
+{
+  "kind": "phase90-native-comparison-method-derivation",
+  "complete": true,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/fork01/compiler-fork.bend",
+    "sha256": "d8a94ce9f16e7576d2f4269c858d008e3da2f40f734cdf0983a3a9835f330791",
+    "bytes": 1759364
+  },
+  "assembly": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/fork01/compiler-fork.assembly.json",
+    "sha256": "21a6140df89ff3f0757e78652ad234d37fd220fc774ff705fa289b2d2f3179ff",
+    "bytes": 19158
+  },
+  "changes": [
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/native-gates.py",
+        "sha256": "994eedb6b750f76e30826432172a3a742aa499a724255a041f56ebd7a3545069",
+        "bytes": 15889
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/fork-methods01/native-gates.py",
+        "sha256": "e5d7ed8a1dc76e44465518a95756d9cbedbd311abd08985eb1e0ed9634aff4fa",
+        "bytes": 15884
+      },
+      "edits": [
+        {
+          "startByte": 433,
+          "endByte": 456,
+          "old": "ROOT = HERE.parents[3]\n",
+          "new": "ROOT = HERE.parents[4]\n"
+        },
+        {
+          "startByte": 623,
+          "endByte": 703,
+          "old": "SOURCE_SHA = '74b390d3ba7ada2c001dbdc6f63b0eb63b2231d129279114b1d5d55fa39d7052'\n",
+          "new": "SOURCE_SHA = 'd8a94ce9f16e7576d2f4269c858d008e3da2f40f734cdf0983a3a9835f330791'\n"
+        },
+        {
+          "startByte": 785,
+          "endByte": 974,
+          "old": "ASSEMBLY = ROOT / 'selfhost/tools/performance/phase90/tables/compiler-native-tables-stack01.assembly.json'\nASSEMBLY_SHA = '209d3dfaf5bd792556f9905046f7ee09577c4e80841e180b57cbda7aff6e5e55'\n",
+          "new": "ASSEMBLY = ROOT / 'selfhost/tools/performance/phase90/observation/fork01/compiler-fork.assembly.json'\nASSEMBLY_SHA = '21a6140df89ff3f0757e78652ad234d37fd220fc774ff705fa289b2d2f3179ff'\n"
+        },
+        {
+          "startByte": 1401,
+          "endByte": 1521,
+          "old": "    parser.add_argument('image', type=Path, help='New checked upstream-built B1 for exact combined source 74b390d3\u2026')\n",
+          "new": "    parser.add_argument('image', type=Path, help='New checked upstream-built B1 for exact combined source d8a94ce9\u2026')\n"
+        },
+        {
+          "startByte": 5207,
+          "endByte": 5241,
+          "old": "        assert len(changes) == 10\n",
+          "new": "        assert len(changes) == 13\n"
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/own_native_support.py",
+        "sha256": "1104d8d8f726a7f8ba59639e2e939368cb5e204b054e3884f8f205b60586a216",
+        "bytes": 7248
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/fork-methods01/own_native_support.py",
+        "sha256": "969f05e4e739e8ff31320cc286cc750ccde261730a4952b3f70eb529a441dd47",
+        "bytes": 7248
+      },
+      "edits": [
+        {
+          "startByte": 159,
+          "endByte": 202,
+          "old": "ROOT = Path(__file__).resolve().parents[4]\n",
+          "new": "ROOT = Path(__file__).resolve().parents[5]\n"
+        },
+        {
+          "startByte": 350,
+          "endByte": 512,
+          "old": "SOURCE_SHA = '74b390d3ba7ada2c001dbdc6f63b0eb63b2231d129279114b1d5d55fa39d7052'\nASSEMBLY_SHA = '209d3dfaf5bd792556f9905046f7ee09577c4e80841e180b57cbda7aff6e5e55'\n",
+          "new": "SOURCE_SHA = 'd8a94ce9f16e7576d2f4269c858d008e3da2f40f734cdf0983a3a9835f330791'\nASSEMBLY_SHA = '21a6140df89ff3f0757e78652ad234d37fd220fc774ff705fa289b2d2f3179ff'\n"
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bind-own-native.py",
+        "sha256": "0f2467d72290b142a7c2e29d4fe80f3671196d230e6b0836bcacc2eabf0b2622",
+        "bytes": 867
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/fork-methods01/bind-own-native.py",
+        "sha256": "0f2467d72290b142a7c2e29d4fe80f3671196d230e6b0836bcacc2eabf0b2622",
+        "bytes": 867
+      },
+      "edits": []
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/own-native-gates.py",
+        "sha256": "7cd334a5b610b9e2da89078dc9f5be2dea76dc476296da655db788612815dd29",
+        "bytes": 15298
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/fork-methods01/own-native-gates.py",
+        "sha256": "5c7784435f56a42eba628160e151c9d4ea275d04461e4889e229a6332fb2d596",
+        "bytes": 15308
+      },
+      "edits": [
+        {
+          "startByte": 472,
+          "endByte": 495,
+          "old": "ROOT = HERE.parents[3]\n",
+          "new": "ROOT = HERE.parents[4]\n"
+        },
+        {
+          "startByte": 722,
+          "endByte": 802,
+          "old": "SOURCE_SHA = '74b390d3ba7ada2c001dbdc6f63b0eb63b2231d129279114b1d5d55fa39d7052'\n",
+          "new": "SOURCE_SHA = 'd8a94ce9f16e7576d2f4269c858d008e3da2f40f734cdf0983a3a9835f330791'\n"
+        },
+        {
+          "startByte": 884,
+          "endByte": 1073,
+          "old": "ASSEMBLY = ROOT / 'selfhost/tools/performance/phase90/tables/compiler-native-tables-stack01.assembly.json'\nASSEMBLY_SHA = '209d3dfaf5bd792556f9905046f7ee09577c4e80841e180b57cbda7aff6e5e55'\n",
+          "new": "ASSEMBLY = ROOT / 'selfhost/tools/performance/phase90/observation/fork01/compiler-fork.assembly.json'\nASSEMBLY_SHA = '21a6140df89ff3f0757e78652ad234d37fd220fc774ff705fa289b2d2f3179ff'\n"
+        },
+        {
+          "startByte": 1500,
+          "endByte": 1627,
+          "old": "    parser.add_argument('image', type=Path, help='Own-backend image with honest .own-build.json for exact source 74b390d3\u2026')\n",
+          "new": "    parser.add_argument('image', type=Path, help='Own-backend image with honest .own-build.json for exact source d8a94ce9\u2026')\n"
+        },
+        {
+          "startByte": 5326,
+          "endByte": 5360,
+          "old": "        assert len(changes) == 10\n",
+          "new": "        assert len(changes) == 13\n"
+        },
+        {
+          "startByte": 7821,
+          "endByte": 7982,
+          "old": "        for path in [__file__, GUARD, PERF / 'programs/support.py', PERF / 'phase88/native_support.py', PERF / 'phase90/own_native_support.py', sys.executable]:\n",
+          "new": "        for path in [__file__, GUARD, PERF / 'programs/support.py', PERF / 'phase88/native_support.py', PERF / 'phase90/fork-methods01/own_native_support.py', sys.executable]:\n"
+        }
+      ]
+    }
+  ],
+  "scope": "Exact fork candidate admission only. Preserve all eight actual live/cache controls and honest upstream/own-C producer chains. Preparation runs no targets."
+}

@@ -1,0 +1,24 @@
+{
+  "parents": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/profiling/js-partial-worker.mjs",
+      "sha256": "39460ad42c15ff4bd9e40c145a55258a2bb07f8dac9a939d285d820533899f08"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/profiling/js-partial-preload.mjs",
+      "sha256": "95a0ea6207bc75b98f696995be744c76a0f30d71f95b47253d9773f77fe7f9fe"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/profiling/js-partial-worker-v2.mjs",
+      "sha256": "d5a463ccf1167797fc0275942fc2870d52594149db567c5942afac0d6c21263d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/profiling/js-partial-preload-v2.mjs",
+      "sha256": "bc5ddf3f042cd3c0ec4dea221f01e49096085db60bc5bcc4342709241ef60a77"
+    }
+  ],
+  "change": "Register parentPort message listener before awaiting Profiler.start so worker event loop remains alive; exact observer semantics unchanged.",
+  "failure": "Control01 worker exit13 unsettled top-level await, retained."
+}

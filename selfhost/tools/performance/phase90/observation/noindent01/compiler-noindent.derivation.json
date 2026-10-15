@@ -1,0 +1,32 @@
+{
+  "kind": "phase90-native-ne-segment-noindent",
+  "complete": true,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/fork01/compiler-fork.bend",
+    "sha256": "d8a94ce9f16e7576d2f4269c858d008e3da2f40f734cdf0983a3a9835f330791",
+    "bytes": 1759364
+  },
+  "parentAssembly": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/fork01/compiler-fork.assembly.json",
+    "sha256": "21a6140df89ff3f0757e78652ad234d37fd220fc774ff705fa289b2d2f3179ff",
+    "bytes": 19158
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/noindent01/prepare.py",
+    "sha256": "1ad1bbac568bb18ea3b9e2ffdbab065e65623255fc0d28e622f1e13d8dc32c29",
+    "bytes": 3124
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/noindent01/compiler-noindent.bend",
+    "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+    "bytes": 1759353
+  },
+  "replacement": {
+    "name": "ne_segment",
+    "old": "@unsafe\ndef ne_segment(+seg: N_Segment) -> String:\n  match seg:\n    case N_Segment{+k, +ps, +r, +f, +body, +refs, +host, +spin, +fork, +bang}:\n      nt_choose(String, host, u => \"#if !DEVICE\\n\", u => \"\")\n        ++ \"  WL_CASE(\" ++ nt_fid(k) ++ \")\\n  {\\n\" ++ ne_take(ps, f) ++ \"    WL_OPEN\\n\"\n        ++ nt_choose(String, spin, u => \"    WL_SPIN\\n\", u => \"\")\n        ++ nt_indent(body) ++ \"\\n\"\n        ++ nt_choose(String, spin, u => \"    WL_SPUN\\n\", u => \"\") ++ \"  }}\\n\"\n        ++ nt_choose(String, host, u => \"#endif\\n\", u => \"\")\n\n",
+    "new": "@unsafe\ndef ne_segment(+seg: N_Segment) -> String:\n  match seg:\n    case N_Segment{+k, +ps, +r, +f, +body, +refs, +host, +spin, +fork, +bang}:\n      nt_choose(String, host, u => \"#if !DEVICE\\n\", u => \"\")\n        ++ \"  WL_CASE(\" ++ nt_fid(k) ++ \")\\n  {\\n\" ++ ne_take(ps, f) ++ \"    WL_OPEN\\n\"\n        ++ nt_choose(String, spin, u => \"    WL_SPIN\\n\", u => \"\")\n        ++ body ++ \"\\n\"\n        ++ nt_choose(String, spin, u => \"    WL_SPUN\\n\", u => \"\") ++ \"  }}\\n\"\n        ++ nt_choose(String, host, u => \"#endif\\n\", u => \"\")\n\n"
+  },
+  "exactOutsideDefinition": true,
+  "inverseByteExact": true,
+  "targetExecuted": false
+}

@@ -1,0 +1,114 @@
+{
+  "kind": "phase90-canonical-tables-integration-proposal",
+  "complete": true,
+  "targetExecuted": false,
+  "sourceChanged": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/prepare-integration-v1.py",
+      "sha256": "ec1672f71543376a234c56decf9a3a201ab034a014ebbbe1da389ffb8f949968",
+      "bytes": 4555
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/prepare.py",
+      "sha256": "dde1bcc4a665607a3726faddc277762d68cb38c450480e04a200a2312b93a5e5",
+      "bytes": 8468
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/tables.bend",
+      "sha256": "6b8f36fa9063f35105889d8977aa2345fb01eeceb117e6f641151430d084bbaa",
+      "bytes": 8602
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/tables/tables.bend",
+      "sha256": "a61b8716723d683f470bb95ec8b209bf2af1b6e109f16f484530f78385e02d12",
+      "bytes": 9415
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/fork-indexed.bend",
+      "sha256": "03c3d926a76770d74e3499ce361f72aea0546e87d4cd65776891415591a97f6c",
+      "bytes": 3051
+    }
+  ],
+  "outputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/tables-integration01/tables.bend",
+      "sha256": "5b465f214110672836bf99df41b84e615642dea7c96c0dc68f8904c13f7727fb",
+      "bytes": 11881
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/tables-integration01/tables.patch",
+      "sha256": "f1088ca56417be089c0c0143a92d104905be2cd48f03054ba5d324286e31cacc",
+      "bytes": 7909
+    }
+  ],
+  "helperRenames": {
+    "p90_fork_member": "nb_fork_member",
+    "p90_fork_mark": "nb_fork_mark",
+    "p90_fork_index": "nb_fork_index",
+    "p90_fork_reaches": "nb_fork_reaches_indexed",
+    "p90_fork_round": "nb_fork_close_indexed",
+    "p90_fork_scan": "nb_fork_scan_indexed",
+    "p90_flags_indexed": "nb_flags_indexed"
+  },
+  "privateMarkerRename": {
+    "before": "$p90.fork",
+    "after": "NativeFork"
+  },
+  "helperInverseExact": true,
+  "originalLines": 221,
+  "candidateLines": 302,
+  "lineDelta": 81,
+  "originalFunctions": 37,
+  "candidateFunctions": 49,
+  "newFunctions": [
+    "nb_arities_chunks",
+    "nb_dispatch_chunks",
+    "nb_flags_chunks",
+    "nb_flags_indexed",
+    "nb_fork_close_indexed",
+    "nb_fork_index",
+    "nb_fork_mark",
+    "nb_fork_member",
+    "nb_fork_reaches_indexed",
+    "nb_fork_scan_indexed",
+    "nb_result_words_chunks",
+    "nb_seg_ids_chunks"
+  ],
+  "removedFunctions": [],
+  "retainedExactDeclarations": [
+    "nb_arities",
+    "nb_bangs",
+    "nb_bangs_go",
+    "nb_bank",
+    "nb_contains",
+    "nb_ctr_arity",
+    "nb_ctr_hot",
+    "nb_ctr_ids",
+    "nb_dispatch",
+    "nb_emit",
+    "nb_flags",
+    "nb_fork_next",
+    "nb_fork_roots",
+    "nb_fork_roots_go",
+    "nb_fork_step",
+    "nb_frame_results",
+    "nb_last",
+    "nb_load",
+    "nb_max",
+    "nb_pad",
+    "nb_reaches",
+    "nb_regs",
+    "nb_result_words",
+    "nb_returns",
+    "nb_returns_go",
+    "nb_save",
+    "nb_seg_ids",
+    "nb_take",
+    "nb_typed",
+    "nb_width",
+    "nb_width_go"
+  ],
+  "rootDecisionRequired": "Review and qualify canonical String.eq version; parent owns all production edits and target runs.",
+  "supersededBy": "tables-integration02 (comment placement only; neither variant has target qualification)"
+}

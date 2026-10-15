@@ -109,7 +109,7 @@ def ne_segment(+seg: N_Segment) -> String:
       nt_choose(String, host, u => "#if !DEVICE\n", u => "")
         ++ "  WL_CASE(" ++ nt_fid(k) ++ ")\n  {\n" ++ ne_take(ps, f) ++ "    WL_OPEN\n"
         ++ nt_choose(String, spin, u => "    WL_SPIN\n", u => "")
-        ++ nt_indent(body) ++ "\n"
+        ++ body ++ "\n"
         ++ nt_choose(String, spin, u => "    WL_SPUN\n", u => "") ++ "  }}\n"
         ++ nt_choose(String, host, u => "#endif\n", u => "")
 

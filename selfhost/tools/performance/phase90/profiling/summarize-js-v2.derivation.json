@@ -1,0 +1,28 @@
+{
+  "complete": true,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/profiling/summarize-js.py",
+    "sha256": "f8014952424e1ddd1ef666057231189ce9251369807be6d4b541539746c0de71",
+    "bytes": 3135
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/profiling/summarize-js-v2.py",
+    "sha256": "03b01da770d9008cb4e2e5e2733553ae4d49ecdf167ea4b68cf74298a377ff9f",
+    "bytes": 3511
+  },
+  "edits": [
+    {
+      "old": "elapsed = 0\n",
+      "new": "elapsed = 0\nraw_elapsed = 0\nnegative_deltas = []\n"
+    },
+    {
+      "old": "    assert delta >= 0 and identifier in nodes\n    end = elapsed + delta\n",
+      "new": "    assert identifier in nodes\n    if delta < 0:\n        negative_deltas.append(delta)\n    raw_elapsed += delta\n    end = max(elapsed, raw_elapsed)\n"
+    },
+    {
+      "old": "    durationSeconds=(profile['endTime'] - profile['startTime']) / 1e6, windows=windows,",
+      "new": "    durationSeconds=(profile['endTime'] - profile['startTime']) / 1e6, windows=windows,\n    timestampCorrections=dict(negativeDeltas=len(negative_deltas), negativeMicroseconds=-sum(negative_deltas),\n        method='Clamp cumulative sample timestamps monotonically; zero-duration backwards steps, no duplicate attribution of the recovered interval.'),"
+    }
+  ],
+  "reason": "Original analysis rejected17 negative deltas totaling143microseconds in real V8 profile. Preserve raw trace; clamp cumulative timestamps without counting overlaps twice. No compiler/profile input changes."
+}

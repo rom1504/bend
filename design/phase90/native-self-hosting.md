@@ -86,3 +86,35 @@ a report is not the stopping condition. Report unsolved limits honestly, but
 continue toward a usable self-reproducing native compiler while meaningful
 implementation work remains. Separate benchmark ratios, actual stage completion,
 conformance, program-speed preservation and production complexity throughout.
+
+## Measured follow-up: code formatting and bounded heap
+
+After indexed fork closure, genuine JS B2 reaches final native code formatting.
+The55–60s profile window is85.82% GC with `nt_lines_rev`/String reversal in the
+remaining samples. Clean1GiB and1.5GiB heap attempts abort at64.94/67.68s, below
+the2GiB RSS guard and with more than24GiB host memory available. Do not continue
+raising heap limits. These are contained target heap failures, not host OOMs.
+
+Test eliminating body indentation in `ne_segment`: the emitter currently scans
+every body character, reverses the accumulated text, and retains the resulting
+string ropes with all other generated segments. Indentation is cosmetic for the
+C syntax we emit. First audit multiline literals, line splicing, directives and
+foreign-code insertion; do not assume arbitrary C text is whitespace-insensitive.
+The standalone text helper's API can remain unchanged.
+
+Use a one-line source candidate and the checked B1 full-source fast loop before
+another B2 build. Changed C is expected; old byte-hash gates cannot be relabeled
+as passing. Compare complete preprocessed token streams under identical filename,
+flags and includes, retain macro/line-sensitive controls, and execute selected
+generated programs. If the candidate succeeds, apply the same check across the
+broad catalog and obtain an independent full compiler emission/fixed point.
+Separate this formatting change from the already-tested indexed closure and
+from the unexecuted explicit-laziness candidate.
+
+For the long first own-backend Clang build, allow one independent correctness
+qualification job concurrently: Clang on physical cores2/3, qualification on
+physical core0. Each remains root-run and guarded, with maxima6GiB+2GiB RSS;
+Clang retains its16GiB available-memory floor. Do not run native benchmarks or
+profiles concurrently, and do not use overlapping job wall times as performance
+comparisons. This bounded exception replaces idle validation waiting without
+relaxing either process-tree memory limit or the reserved host-memory floor.

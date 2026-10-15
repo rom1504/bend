@@ -1,0 +1,52 @@
+{
+  "kind": "phase90-regalloc-cdecl-control",
+  "targetExecuted": false,
+  "serial": true,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail.c",
+    "sha256": "2156a3254f990a7a11c4656b588cfa45c89cfc962aca9dbf6aaa4c513b7be784",
+    "bytes": 1456
+  },
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/commands.json",
+    "sha256": "177ba9c2760e32c58e672a74445e76d6e722bbbd58f8b2d032e3cad378c465e9",
+    "bytes": 6187
+  },
+  "scope": "Explicit compile-time macro aliases for only preserve_none/preserve_most. Original emitted C stays byte-identical; calling convention becomes cdecl consistently in definitions, declarations and pointer types. Diagnostic build configuration, not an optimization gain or canonical runtime migration.",
+  "rows": [
+    {
+      "name": "o0-cdecl",
+      "flags": [
+        "-O0",
+        "-Dpreserve_none=cdecl",
+        "-Dpreserve_most=cdecl"
+      ],
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-cdecl-guard",
+        "--seconds",
+        "15",
+        "--rss-mib",
+        "512",
+        "--available-mib",
+        "4096",
+        "--cpu",
+        "3",
+        "--",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O0",
+        "-Dpreserve_none=cdecl",
+        "-Dpreserve_most=cdecl",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/preserve-tail.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-cdecl"
+      ],
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/regalloc-o0-cdecl",
+      "expectedExecutionExitCode": 0,
+      "expectedReturn": 397
+    }
+  ]
+}

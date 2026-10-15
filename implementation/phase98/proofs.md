@@ -1,5 +1,7 @@
 # Phase98 proof track
 
+These are chronological experiment notes. See the [phase report](README.md) for the selected final source, qualification, measurements and remaining limits. Earlier pending/preparation statements retain their original checkpoint scope.
+
 The first accepted result establishes exact value preservation for the real
 held-root string comparison candidate. It uses the D04 compiler source
 `d04ad79c…`, candidate `held-source01/compiler.bend` (`81c017c8…`), and exact

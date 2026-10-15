@@ -1,6 +1,6 @@
 # P98-005: preserve roots across scalar term observations
 
-Status: mechanism established for fused tags; timing in progress.
+Status: fused tags selected; held scalar projections excluded. Final B1/B2 timing and qualification passed; see the [final report](../../implementation/phase98/README.md).
 
 The held equality result suggests keeping a complete term live while observing
 its tag or scalar fields. The current consuming projection can keep/drop every

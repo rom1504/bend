@@ -16,8 +16,19 @@ This fork ships the Bend2 compiler in [`selfhost/`](selfhost/README.md), targeti
 upstream **`0592662` (Bend 2.0.36)**. Ordinary compilation runs Bend algorithms
 without a TypeScript fallback.
 
-**Phase90 provides a self-hosted native compiler and a refreshed JS-hosted B2.**
-The native executable reproduces all **38,614,882 bytes of its own C exactly** in
+**Phase98 provides the current native B1/B2 release.** The smaller retained-root
+comparison and scoped observer changes reduce full self-compilation from
+135.5 to **104.8 seconds for B1**, and from 150.5 to **141.0 seconds for B2**.
+Both stages pass 69 native conformance cases and the 45-program behavior checks;
+all 45 runtime-benchmark C products remain byte-identical. The native profile
+adds 79 lines, and its actual-source law closures have 13 distinct accepted
+statements. See the [report](implementation/phase98/README.md) and
+[native usage, limits and restoration](docs/self_hosted/NATIVE_PHASE98.md).
+From this repository root, run `python3 -B selfhost/native.py input.bend -o output.c`;
+the default is native B2, with `--stage b1` available.
+
+**Historical Phase90 established the native chain and current JS-hosted B2.**
+Its native executable reproduces all **38,614,882 bytes of its own C exactly** in
 **164 seconds**; the previous native version timed out after 600 seconds without
 output. It is built from unpatched C emitted by our Bend compiler. The optimized
 Clang build takes 308 seconds with 3.89 GiB peak RSS after repairing a large-table
@@ -28,13 +39,15 @@ acceptance and exact B3 reproduction. Release verification and all 42 legacy /
 24 default installed and relocated checks pass. From `selfhost/`, use
 `node cli.mjs FILE --run`. Direct JavaScript remains the default output backend.
 
-For compilation with no JavaScript host, follow the
-[native usage and restoration guide](docs/self_hosted/NATIVE_HOST.md). Its scope
+The [historical native07 guide](docs/self_hosted/NATIVE_HOST.md) remains available.
+Its scope
 is one Base-importing source and nine audited effects. Eight live/cache controls,
 two invalid-input refusals, four generated-program executions and six public CLI
 controls pass. All 45 selected C preprocessing comparisons preserve program
 behavior. Full-language, GPU and parallel-native-host qualification remain open.
-Current production is **32,692 physical Bend lines in 132 modules**.
+The current canonical source inventory is **34,231 physical Bend lines in 134
+modules**, unchanged by Phase98; its separately assembled native profile is
+38,790 lines.
 
 See the [native-chain scoreboard](implementation/phase92/README.md) for the
 same-source native B1/B2 comparison and the [current JS-hosted five-metric scoreboard](implementation/phase91/README.md) and [metric definitions](docs/self_hosted/METRICS.md)

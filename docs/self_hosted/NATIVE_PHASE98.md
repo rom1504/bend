@@ -1,11 +1,13 @@
 # Phase98 native compiler profile
 
-Phase98 prepares a native compiler profile with retained String equality,
+Phase98 provides a qualified native compiler profile with retained String equality,
 fused tag comparisons, scoped observer permission and a correction to
 observer ancestry refusal. The source is separate from the installed JavaScript
 release and the canonical Bend modules. The [Phase98 report](../../implementation/phase98/README.md)
-records actual qualification, selected images and measurements; source preparation
-alone does not establish a public release.
+records actual qualification, selected images and measurements. The stable
+`selfhost/native.py` entry selects native B2 by default; `--stage b1` selects its
+upstream-built parent. Both stages and the actual public launcher passed their
+separate qualification gates.
 
 The exact profile source has SHA256
 `2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051`.
@@ -29,8 +31,8 @@ python3 -B selfhost/native.py input.bend -o output-live.c --live
 python3 -B selfhost/native.py input.bend -o output-repeat.c --calls 5 --seconds 300
 ```
 
-The selection declares the default stage. The prepared Phase98 release sequence
-selects B2 only after its own gates and the public CLI controls pass. `--stage b1`
+The selection declares the default stage. The completed Phase98 release sequence
+selected B2 after its own gates and the public CLI controls passed. `--stage b1`
 or `--stage b2` explicitly chooses the other admitted stage;
 `--selection PATH` chooses another exact admission pointer.
 
@@ -41,8 +43,11 @@ or `--stage b2` explicitly chooses the other admitted stage;
 
 The B1 build is recorded in `selfhost/build/phase98/origin-b1.json`; its ELF SHA256
 is `099df960c418c9caef6977f011074fcc2aa43e2fbbd3daee32fe80824b54e1e9`.
-The separate B2 build and the final admission must record the actual B2 ELF and
-its producer. A build receipt alone does not qualify either image. Full self-C
+The B2 ELF SHA256 is
+`c481bd2c1b057dee537442765aca1b36786437fe37b3543dc405677329f18554`,
+recorded in `selfhost/build/phase98/origin-b2.json`. The admission is
+`selfhost/build/phase98/origin-admission01/report.json`. A build receipt alone
+does not qualify either image. Full self-C
 agreement is a source-bound consistency check, not an ELF fixed point or a
 mathematical proof of the compiler.
 
@@ -98,7 +103,7 @@ Reproduce the source without running a compiler, using fresh output paths:
 python3 -B selfhost/tools/native/profile.py --profile selfhost/tools/native/profiles/phase98-comparison02/profile.json --out-source /tmp/compiler-native-phase98.bend --receipt /tmp/compiler-native-phase98-replay.json
 ```
 
-After the final request capsule is actually sealed, verify or restore it with:
+The final request capsule is sealed. Verify or restore it with:
 
 ```sh
 python3 -B selfhost/tools/native/assets.py restore selfhost/tools/native/releases/phase98-assets02/receipt.json --verify-only

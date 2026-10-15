@@ -35,9 +35,10 @@ adds fresh execution timings for the original 45-point catalog. Its 44 measurabl
 points take **1.115×** upstream C time (equal-point geometric mean); the zero-work
 control has no defined ratio. Both native stages emit identical C for all points.
 
-Read the [Phase90 report](../implementation/phase90/README.md) for current timing,
-lineage, failures and remaining work. Maintained production contains 32,692
-physical Bend lines in 132 modules, +101 lines in this phase. The
+Read the [Phase90 report](../implementation/phase90/README.md) for that release's
+timing, lineage and failures. The Phase98 inventory counts 34,231 physical Bend
+lines in 134 canonical modules, unchanged from the start of Phase98. Its separate
+assembled native profile has 38,790 lines, 79 more than D04. The
 [compiler guide](../docs/BEND-IN-BEND.md) and
 [native session guide](../docs/self_hosted/NATIVE_COMPILATION.md) distinguish
 native executable requests from repeated C emission by a JS-hosted compiler.

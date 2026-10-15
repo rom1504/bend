@@ -1,7 +1,6 @@
 # P98-002: preserve string roots across comparison
 
-Status: two implementations pass local correctness and native B1 timing gates;
-native B2 qualification remains pending.
+Status: the smaller finishing helper is selected and both native stages passed final qualification. The observations below retain the experiment sequence; see the [final report](../../implementation/phase98/README.md).
 
 The D04 native host uses a consuming equality walker. Its generated C takes and
 releases the two String constructors at every step. Upstream's existing borrowing

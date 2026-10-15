@@ -1,5 +1,7 @@
 # Phase98: separating observer permission from array representation
 
+These are chronological experiment notes. See the [phase report](README.md) for the selected final source, qualification, measurements and remaining limits. Earlier pending/preparation statements retain their original checkpoint scope.
+
 The scoped permission split passes small native qualification and the complete
 1,444-pair string corpus. A synthetic repeated shared-string workload takes
 0.145866× baseline process time; actual compiler gains remain a separate

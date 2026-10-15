@@ -1,6 +1,6 @@
 # P98-007: terminate observer ancestry refusal
 
-Status: minimal fix source-admitted; full native qualification pending.
+Status: selected; final native B1/B2 self compilation, 69-case conformance per stage, broad45 outputs and all five final observer programs pass. See the [final report](../../implementation/phase98/README.md).
 
 The broader observer permission exposed a pre-existing refusal-path bug.
 `noa_below(origin,want)` used eager Bool `&&` to combine an `OField` tag test with

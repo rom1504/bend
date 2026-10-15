@@ -1,7 +1,8 @@
 # Phase98: laws that support real native compiler optimization
 
-Status: final qualification in progress. No new public default is claimed until
-its admission and public CLI checks complete. This campaign began at
+Status: native B1/B2 qualification, public CLI, default selection and actual
+capsule restoration passed. Final profiling and evidence consolidation continue.
+This campaign began at
 2026-10-15 20:07:27 UTC and follows the [three-hour design](../../design/phase98/laws-and-native-optimization.md).
 
 ## Results measured so far
@@ -17,13 +18,26 @@ of a generated user program.
 | B1 complete process, same screen | **0.86564×** | Includes startup, prepared Base, output writing and teardown. |
 | B2 compilation request, same six programs | **0.93924×** | Four balanced rounds; 48 exact per-producer C/diagnostic matches. |
 | B2 complete process, same screen | **0.97834×** | Small-request preparation remains significant. |
-| B1 full self compilation | **104.821 s request**, 105.531 s process | Exact final source; matching previous B1 reference is being measured. |
-| B2 full self compilation | **141.614 s request**, 142.440 s process | Whole self-C and diagnostic equal B1; repeated old/new pairs pending. |
+| B1 full self compilation | **0.77379× request**: 135.465 → 104.821 s | One complete run per producer on the exact final source; process 136.173 → 105.531 s. |
+| B2 full self compilation | **0.93697× request**: 150.471 → 140.988 s | Two balanced rounds, four complete requests; median process 151.301 → 141.862 s. |
 
-A first previous-B2 reference on that exact source took 151.672 s request and
-152.493 s process. It is a separate preliminary observation, not the final paired
-estimate. Timed C identity is only consistency evidence; independent behavior and
-conformance checks remain required for changed backend output.
+The B1 full-input result is about **22.6% less time**, supported by the repeated
+six-source screen. The repeated B2 full-input result is **6.3% less time**. Every
+timed request checks complete per-producer C and diagnostics. Final B1 and B2 emit
+identical self-C; previous and new backend self-C deliberately differ. Timed C
+identity is consistency evidence; independent behavior and conformance checks
+remain required for changed backend output.
+
+For upstream context, two fresh Bun 1.4.3 processes running pinned TypeScript on
+this same 1.75 MB source took 45.357 and 45.361 s request time, median **45.359 s**;
+both produced the complete expected upstream C. The single qualification runs
+put native B1 at **2.31×** and native B2 at **3.12×** this request time. This is
+neither parity nor a representative-program geometric mean. TypeScript checks
+ordinary Base inside its request; native request time excludes prepared-Base
+decoding. Complete process ratios are similar, 2.315× and 3.124×. These contextual
+runs were not interleaved with the native pairs and are not a statistical claim
+about small differences. Raw inputs, clocks and products are retained in
+`selfhost/build/phase98/origin-ts-self-plan01/`.
 
 The final source is SHA256
 `2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051`.
@@ -120,11 +134,48 @@ measure them as compiler images.
 
 ## Qualification, release and five-metric scope
 
-Final native controls, 45 original programs, 69 native conformance cases per
-stage, five complete observer programs and Phase93 batch-C continuity are in
-progress. The unchanged 31 native exclusions remain explicit. The installed JS
-release and canonical Bend modules are unchanged; their previous results are
-continuity references, not fresh Phase98 tests.
+The exact final native images passed these separate gates:
+
+- 22 live/cache control compilations: 16 positive requests and six exact
+  rejections, including eight B1/B2 complete-C agreements.
+- 90 emissions for the 45 original programs, 45 B1/B2 C agreements and 45
+  independently checked generated-program executions.
+- 69 native conformance cases per stage and three exact diagnostic rejections
+  per stage; the existing 31 exclusions remain explicit.
+- Five final observer programs, with 15 emissions, five cross-stage C agreements,
+  five native builds and complete output comparisons. The retained comparison
+  corpus covers 1,444 pairs and all 14 observation fields.
+- All 45 original Phase93 runtime-benchmark batches emit byte-identical C to the
+  previous release. No changed subset needs a fresh runtime campaign.
+
+The actual admission is `selfhost/build/phase98/origin-admission01/report.json`.
+Public controls then passed nine launcher scenarios, including both stages,
+cached/live/repeated requests, invalid source and refusal to overwrite output or
+use a changed admission. The stable native entry now defaults to B2:
+
+```sh
+python3 -B selfhost/native.py input.bend -o output.c
+python3 -B selfhost/native.py input.bend -o output-b1.c --stage b1
+```
+
+Both request capsules were sealed and verified. Actual missing-file restorations
+recovered the Python entry and the B2 executable with exact bytes and modes;
+the restored B2 then emitted the expected complete Small C. The public default
+also compiled its full 1.75 MB source and matched private B1/B2 self-C exactly.
+See `origin-release-plan01/report.json` and `public-b2-restoration01/report.json`
+under `selfhost/build/phase98/` for the complete operations and failures policy.
+
+| Metric | Final scope |
+| --- | --- |
+| Compiled-program speed | All 45 Phase93 batch C products are unchanged. Reuse the prior 44 measurable points: **1.115× upstream C time** equal-point, **1.139×** equal-original-source; zero-work point has no ratio. This is artifact continuity, not fresh timing or a universal no-regression proof. |
+| Native B1 compilation | Six-source request ratio **0.81067×** previous B1; full same-input request **135.465 → 104.821 s**. |
+| Native B2 compilation | Six-source request ratio **0.93924×** previous B2; paired full same-input median **150.471 → 140.988 s**. |
+| Conformance | Fresh native **69/69 per stage**, all six exact rejections, broad45 and five final controls pass; **31 exclusions** remain. Installed JS and its historical 3,173/3,174 result are unchanged and not freshly tested here. |
+| Simplicity | Selected native source **38,790 lines**, +79 lines / −5,257 bytes versus D04. Canonical **134 modules / 34,231 physical lines** remain unchanged. Large neutral dispatch and speculative planning changes are excluded. |
+
+The selected native profile is separate from the installed JS release and the
+canonical modules. It does not claim a JS compiler-speed change, general module
+support, GPU/parallel scaling or full language conformance.
 
 The final native profile has 38,790 physical lines: **79 more** than D04, with
 5,257 fewer bytes. The selected optimization does not halve compiler complexity.
@@ -133,9 +184,46 @@ The compact exact forward/inverse source recipe is 14,812 compressed bytes plus
 its manifest. Historical native07 remains available independently.
 
 [Native usage and source replay](../../docs/self_hosted/NATIVE_PHASE98.md) describe
-B1/B2 identities, entry limits and restoration. This report will record actual
-public selection, capsules, final performance and resource accounting once those
-gates finish.
+B1/B2 identities, entry limits and restoration. The existing native07 entry and
+its original release remain available independently.
+
+## A faster validation loop
+
+The first final conformance suite exceeded its 300-second deadline before
+finishing. Each case was repeatedly hashing 411.5 MiB of mostly historical
+provenance, including Node, Bun and old full compiler C. Snapshot17 retains that
+complete closure before and after each suite and at collection/admission, and
+checks the selected execution inputs around every case. Compiler execution,
+fixtures, golden expectations, guards and rejection diagnostics are unchanged.
+
+The fresh B1 suite finishes in **68.633 s**, B2 in **79.686 s**, with all cases
+passing. Including integrity wrappers and diagnostic collection, the final
+conformance sequence takes about **163 s** for both stages. This is a harness
+improvement rather than a compiler speedup. The failed 300-second attempt is
+retained. [P98-008](../../experiments/phase98/P98-008-conformance-provenance-cost.md)
+records the exact derivation and partition controls.
+
+## What the next cycle should target
+
+The [complete B2 machine-code profile](origin-b2-profile.md) confirms active
+borrowed comparison. Ownership helpers still account for 50.58% of request
+samples. Even deleting all of that sampled helper work, with other work fixed,
+would leave about **1.54× TypeScript** in this full-source context. Parity needs
+broader reductions in traversal, construction and representation costs.
+
+Promising measured sites are known Boolean branch closures, field projections
+with escaping children, late String append reconstruction, and comparison
+ownership boundaries. These are follow-up hypotheses, not promised additive
+speedups. The rejected +525-line dispatch experiment makes it especially
+important to test direct backend lowering rather than assume another source
+rewrite will help.
+
+The [next-cycle playbook](next-cycle.md) pairs these experiments with useful law
+boundaries: origin progress, operational lazy-branch behavior and retained-root
+adapter ownership. Preserve the fast independently checked value laws and the
+finite native controls; neither replaces the other. Whole-compiler correctness
+requires connected semantics across much larger boundaries and is not a result
+of this campaign.
 
 ## Evidence and further reading
 

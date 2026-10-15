@@ -1,5 +1,7 @@
 # Phase98 comparison and ownership lane
 
+These are chronological experiment notes. See the [phase report](README.md) for the selected final source, qualification, measurements and remaining limits. Earlier pending/preparation statements retain their original checkpoint scope.
+
 This lane prepares source candidates; root performs all compiler, native and
 timing executions. No canonical source, upstream compiler or generated C has been
 edited here. Current first choice is a **ten-line held-root equality wrapper**.

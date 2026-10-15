@@ -1,5 +1,7 @@
 # Phase98 observer permission: independent caller and lifetime review
 
+These are chronological experiment notes. See the [phase report](README.md) for the selected final source, qualification, measurements and remaining limits. Earlier pending/preparation statements retain their original checkpoint scope.
+
 The later native prefix profile exposed a concrete **analysis-refusal
 nontermination bug**, described immediately below. The earlier source audit
 found no permission/ownership counterexample, but missed this eager recursive

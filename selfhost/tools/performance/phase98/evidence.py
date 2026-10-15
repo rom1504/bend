@@ -20,7 +20,8 @@ PART_BYTES = 64 * CHUNK
 RESERVE = 160 * CHUNK
 DEFAULT_ROOTS = [
     'selfhost/build/phase98', 'selfhost/tools/performance/phase98',
-    'selfhost/proofs/phase98', 'implementation/phase98', 'experiments/phase98',
+    'selfhost/proofs/phase98', 'selfhost/tools/laws/phase98',
+    'implementation/phase98', 'experiments/phase98',
     'selfhost/tools/native', 'selfhost/native.py', 'selfhost/build/native/requests',
     'design/phase98', 'research/phase98', 'selfhost/README.md', 'README.md',
     'docs/self_hosted/NATIVE_HOST.md', 'docs/self_hosted/NATIVE_OBSERVERS.md',

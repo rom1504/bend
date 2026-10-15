@@ -1,6 +1,6 @@
 # P98-001: co-develop laws and native optimization
 
-Status: registered; implementation in progress.
+Status: implemented; final native admission passed. See the [final report](../../implementation/phase98/README.md) for public release and archival outcomes.
 [Design](../../design/phase98/laws-and-native-optimization.md).
 
 Investigate shared observations, dispatch closures and comparison costs across

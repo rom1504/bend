@@ -23,3 +23,5 @@ that those distinct mechanisms succeed or fail.
 Receipts: `selfhost/build/phase98/dispatch-frozen01` through `03`,
 `dispatch-screen01/report.json`, and `dispatch-controls01/manifest.json`.
 Canonical production sources remain unchanged at this checkpoint.
+
+Final decision: the 19-function dispatch candidate measures 0.98766× request time for +525 lines and is rejected. The smaller cache-two-tags candidate is also rejected. Full receipts and source/proof observations remain in [the dispatch report](../../implementation/phase98/dispatch.md).

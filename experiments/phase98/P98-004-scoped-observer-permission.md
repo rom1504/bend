@@ -1,6 +1,6 @@
 # P98-004: separate observer permission from array representation
 
-Status: prepared; qualification in progress. No production promotion.
+Status: permission02 plus the lazy ancestry correction passed final native B1/B2 qualification. The original hypothesis below is retained; see the [final report](../../implementation/phase98/README.md).
 
 The actual file-IO comparison control establishes that native B2's emitter
 disables borrowed observers together with scalar arrays. Upstream-built B1 can

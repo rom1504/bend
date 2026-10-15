@@ -61,7 +61,16 @@ still uses `ctr_take` and disposes unused fields before calling
 generic tag comparison reaches the new String observer indirectly; this C does
 not demonstrate a newly borrowed `KTerm` projection.
 
-This is static mechanism evidence. The mapped route names are not counts of
-dynamic calls or saved allocations, and no aggregate RC reduction or speedup is
-inferred. Runtime lifetime safety, B2 execution and qualification remain separate
-checks.
+The later [complete B2 profile](origin-b2-profile.md) now binds this C to the
+executed `c481bd2c…` image and a successful full self-compilation with exact C
+and diagnostic output. It confirms that the observer is inlined into
+`NF:p88_string_eq_go`: 577 of that symbol's 743 request leaf samples occur in
+the mapped borrowed pointer-walk region. The symbol's remaining samples cannot
+all be treated as fallback work, and its owned root disposal remains material.
+The profile report ranks the remaining closure cleanup, retained projection,
+String construction and equality boundary opportunities.
+
+The mapped route names themselves are not counts of dynamic calls or saved
+allocations, and neither this static audit nor the single full profile implies
+an aggregate RC reduction or a causal B1/B2 speedup. Runtime lifetime safety and
+qualification remain separate checks.

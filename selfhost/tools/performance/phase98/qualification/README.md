@@ -342,3 +342,21 @@ stop or interruption. The request checker and admission now require that exact
 bounded exit-one shape, empty stdout, absent C and the unchanged complete original
 diagnostic. Positive jobs still require exit zero and `complete=true`. Snapshot15
 is retained as unused preparation; snapshot16 is the executable correction.
+
+Snapshot17 separates conformance provenance from per-case execution inputs. The
+full source/build/history/toolchain closure remains pinned as `provenanceInputs`
+and is verified before and after each guarded stage suite, again at collection,
+and by admission. A minimal adapter derivative changes only its three input-list
+uses to the selected stage's `executionInputs`. This list retains the selected
+compiler image/source, Base, runtime/template/parts, providers, carrier, all active
+fixtures, selection, compiler manifest and adapter/harness methods. Node/Clang,
+Bun acquisition history and prior C/proof/build provenance stay in suite checks.
+
+Original69 fixtures,31 exclusions, golden judge, argv, isolated worker behavior,
+three exact rejections per stage and300s/90s guard limits are unchanged. Diagnostic
+runner changes only its adapter import path. The derivations are checked exactly
+before execution and by admission. `conformance_integrity.py run --plan PLAN
+--role b1|b2|diagnostics` wraps the three existing guarded commands; `collect
+--plan PLAN --out RESULTS` runs the unchanged semantic collector then adds actual
+suite integrity receipts. The failed300s conformance01 observation remains an
+incomplete harness attempt, never a compiler semantic failure or qualification.

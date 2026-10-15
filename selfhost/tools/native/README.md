@@ -53,9 +53,9 @@ After actual admission and public CLI validation, a maintainer can seal the
 selected request assets without running targets:
 
 ```sh
-python3 -B selfhost/tools/native/assets.py seal selfhost/tools/native/selection.json selfhost/tools/native/releases/phase98-assets01
-python3 -B selfhost/tools/native/assets.py restore selfhost/tools/native/releases/phase98-assets01/receipt.json --verify-only
-python3 -B selfhost/tools/native/assets.py restore selfhost/tools/native/releases/phase98-assets01/receipt.json
+python3 -B selfhost/tools/native/assets.py seal selfhost/tools/native/selection.json selfhost/tools/native/releases/phase98-assets02
+python3 -B selfhost/tools/native/assets.py restore selfhost/tools/native/releases/phase98-assets02/receipt.json --verify-only
+python3 -B selfhost/tools/native/assets.py restore selfhost/tools/native/releases/phase98-assets02/receipt.json
 ```
 
 The capsule contains both qualified images, source, selection/manifest,

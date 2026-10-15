@@ -1,5 +1,7 @@
 # Phase98 native prefix diagnosis and exact correction
 
+These are chronological experiment notes. See the [phase report](README.md) for the selected final source, qualification, measurements and remaining limits. Earlier pending/preparation statements retain their original checkpoint scope.
+
 The late full-self failure in source `59b36a1c…2714` has a concrete source cause:
 `noa_below` eagerly recurses through a missing child before testing whether the
 origin is an `OField`. `kid(Absent,0)` returns `Absent` again, so a nonmatching

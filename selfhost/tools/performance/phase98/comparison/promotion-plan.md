@@ -25,8 +25,8 @@ For a fresh data-only reproduction:
 python3 -B selfhost/tools/native/profile.py --profile selfhost/tools/native/profiles/phase98-comparison02/profile.json --out-source /tmp/compiler-native-phase98.bend --receipt /tmp/compiler-native-phase98-replay.json
 ```
 
-Frozen snapshot 14 supplies the final gate and collector methods. The exact
-prepared target commands are in `build/phase98/origin-final-commands02/commands.json`.
+Frozen snapshot 17 supplies the final gate and collector methods. The exact
+prepared target commands are in `build/phase98/origin-final-commands05/commands.json`.
 That successor uses `profile-replay03.json`; preparation01 is preserved with its
 earlier replay02 argument. Never alter a preserved preparation receipt or a
 frozen method. Root's final images are `origin-b1.json`
@@ -37,15 +37,15 @@ per stage plus rejections, backend-specific evidence and all five final-image
 control programs pass, collect the actual receipts:
 
 ```sh
-python3 -B selfhost/build/phase98/qualification-methods14/methods/admit.py \
+python3 -B selfhost/build/phase98/qualification-methods17/methods/admit.py \
   --b1-build selfhost/build/phase98/origin-b1.json \
   --b2-build selfhost/build/phase98/origin-b2.json \
   --b1-self selfhost/build/phase98/origin-b1-self01/report.json \
   --b2-self selfhost/build/phase98/origin-b2-self01/report.json \
   --source-recipe selfhost/build/phase98/profile-replay03.json \
-  --controls selfhost/build/phase98/origin-controls-native01/report.json \
+  --controls selfhost/build/phase98/origin-controls-native02/report.json \
   --broad45 selfhost/build/phase98/origin-broad45-native01/report.json \
-  --conformance selfhost/build/phase98/origin-conformance01/collected.json \
+  --conformance selfhost/build/phase98/origin-conformance02/collected.json \
   --backend-policy selfhost/build/phase98/origin-guard-backend-policy01/policy.json \
   --backend-controls selfhost/build/phase98/origin-backend-specific01/report.json \
   --final-controls selfhost/build/phase98/origin-final-controls01/report.json \
@@ -74,7 +74,7 @@ selection=dict(kind='bend-native-compiler-selection',version=1,complete=True,
 with Path('selfhost/build/phase98/public-selection02.json').open('x') as f:
  json.dump(selection,f,indent=2);f.write('\n')
 PY
-python3 -B selfhost/tools/native/cli-controls.py selfhost/build/phase98/public-selection02.json selfhost/build/phase98/origin-controls-native01/report.json selfhost/build/phase98/public-cli02
+python3 -B selfhost/tools/native/cli-controls.py selfhost/build/phase98/public-selection02.json selfhost/build/phase98/origin-controls-native02/report.json selfhost/build/phase98/public-cli02
 ```
 
 The nine public controls cover both stages' cached Small, live file IO and five
@@ -137,7 +137,7 @@ the audit-pinned historical `NATIVE_HOST.md` and `NATIVE_OBSERVERS.md`. Stop all
 metadata writers, and acknowledge that freeze before running:
 
 ```sh
-python3 -B selfhost/tools/performance/phase98/evidence.py seal --frozen --public-assets selfhost/tools/native/releases/phase98-assets02/receipt.json --out selfhost/tools/performance/phase98/artifacts/evidence01
+python3 -B selfhost/tools/performance/phase98/evidence.py seal --frozen --public-assets selfhost/tools/native/releases/phase98-preselection02/receipt.json --public-assets selfhost/tools/native/releases/phase98-assets02/receipt.json --out selfhost/tools/performance/phase98/artifacts/evidence01
 python3 -B selfhost/tools/performance/phase98/evidence.py restore selfhost/tools/performance/phase98/artifacts/evidence01/receipt.json --verify-only
 python3 -B selfhost/tools/performance/phase98/evidence.py restore selfhost/tools/performance/phase98/artifacts/evidence01/receipt.json
 ```
@@ -145,7 +145,7 @@ python3 -B selfhost/tools/performance/phase98/evidence.py restore selfhost/tools
 Scratch data controls already exercise split ZIPs, deduplication with distinct
 modes, missing-only restoration, changed-byte/mode refusal and corrupt-part
 refusal, including insufficient spool-plus-parts space; see
-`build/phase98/evidence-method-controls02/report.json`. They are
+`build/phase98/evidence-method-controls03/report.json`. They are
 separate from the final campaign seal. The evidence archive records the public
 capsule as an external dependency and excludes archive-output directories and
 Python bytecode. Earlier-phase toolchains/upstream/history remain external;

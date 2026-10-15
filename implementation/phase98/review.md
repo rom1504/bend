@@ -1,5 +1,7 @@
 # Phase98 independent challenges and review
 
+These are chronological experiment notes. See the [phase report](README.md) for the selected final source, qualification, measurements and remaining limits. Earlier pending/preparation statements retain their original checkpoint scope.
+
 Status: independent choices frozen; the first unchanged finite suites and held
 and dispatch formal challenges have completed. Targeted follow-ups have completed separately; further
 candidate qualification remains separately reported. This review track runs no compiler,

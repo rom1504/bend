@@ -1,5 +1,7 @@
 # Phase98: shared term observations and dispatch
 
+These are chronological experiment notes. See the [phase report](README.md) for the selected final source, qualification, measurements and remaining limits. Earlier pending/preparation statements retain their original checkpoint scope.
+
 Hypothesis H98-D1: repeated `tg(t)` calls in the actual checker dispatchers add
 shared constructor projection and disposal work. Cache the immutable total tag
 once, retaining the original term for the selected branch. The first isolated

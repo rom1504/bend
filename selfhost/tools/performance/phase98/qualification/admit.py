@@ -8,6 +8,7 @@ from support import (Bindings, ROOT, SUCCESS_DIAGNOSTIC, authenticate, backend_p
                      baseline, baseline_producer, bounded_exit, native_args, pin, read, strip_clocks)
 from final_control_plan import load_cases, native_flags
 from historical_diagnostics import control_diagnostic
+from conformance_integrity import validate_partition, validate_suite
 
 
 def same(a, b): return all(a[k] == b[k] for k in ['sha256', 'bytes'])
@@ -27,6 +28,7 @@ def main():
     b = Bindings(); ctx = baseline(b); b.bind(__file__); b.bind(Path(__file__).with_name('support.py'))
     b.bind(Path(__file__).with_name('final_control_plan.py'))
     b.bind(Path(__file__).with_name('historical_diagnostics.py'))
+    b.bind(Path(__file__).with_name('conformance_integrity.py'))
     receipts = {}; producers = {}; builds = {}
     def report(file, kind):
         rp = b.bind(file); r = read(rp['file'])
@@ -161,6 +163,15 @@ def main():
     conf_pin, conf = report(a.conformance, 'phase92-native-conformance-results'); receipts['conformance'] = conf_pin
     plan = read(b.bind(conf['plan'])['file']); assert plan['phase98'] and plan['targetReady']
     for row in plan['inputs']: b.bind(row)
+    validate_partition(plan, b)
+    historical_assets = ctx['roles']['b2']['admission']
+    assert plan['executionAssets'] == {key:historical_assets[key] for key in ['base', 'runtime', 'template', 'parts', 'effects', 'cache']}
+    assert conf['fullProvenanceRechecked']
+    assert conf['provenanceSuites'] == {role:validate_suite(conf['plan'], plan, role, b) for role in ['b1', 'b2', 'diagnostics']}
+    semantic = read(b.bind(conf['semanticReport'])['file'])
+    assert semantic['method'] == plan['semanticCollector']
+    for key in ['kind', 'complete', 'passed', 'plan', 'roles', 'diagnostics', 'counts', 'excluded', 'inputsUnchanged']:
+        assert semantic[key] == conf[key]
     old_plan = read(b.bind(ROOT / 'selfhost/build/phase92/conformance01/plan.json')['file'])
     assert plan['eligible'] == old_plan['eligible'] and plan['excluded'] == old_plan['excluded']
     expected_ids = {row['id'] for row in plan['eligible']}; assert len(expected_ids) == 69 and len(plan['excluded']) == 31

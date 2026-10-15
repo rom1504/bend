@@ -1,6 +1,6 @@
 # P98-006: avoid repeated work exposed by observer admission
 
-Status: in progress, not a promoted image.
+Status: value/proof experiments complete; no native image built or promoted. The observed resource failure was instead fixed by P98-007. These candidates remain unmeasured performance hypotheses.
 
 The combined59b36a1c candidate enables checked observer planning for the native
 compiler's authenticated IO entry. Its six-source B1 screen improves to0.808856×

@@ -1,0 +1,111 @@
+{
+  "kind": "phase92-obsolete-upstream-c-reclaim-review",
+  "complete": true,
+  "applied": false,
+  "head": "99615833d1d1f226943721022f53d2fa6f1c92bb",
+  "reviewedUtc": "2026-10-15T04:40:17.128912+00:00",
+  "files": [
+    {
+      "file": "selfhost/build/phase90/native-tables-stack01/compiler.c",
+      "sha256": "c7a6a479906b1ce07026519403ec4d9dafb19db3a5188ead6b4926f403ff1dd2",
+      "bytes": 17760664,
+      "mode": 420,
+      "links": 1,
+      "capsules": [
+        {
+          "file": "selfhost/tools/performance/phase90/evidence01/manifest.json",
+          "sha256": "6072808d4ced9a0325c1043f17affad40ea41d1f92e395ee8225078f8d9ec3ba",
+          "bytes": 666391,
+          "gitBlob": "6ca455d0243daeccea727735a63c2c0193592079"
+        },
+        {
+          "file": "selfhost/tools/performance/phase90/evidence01/phase90.zip",
+          "sha256": "cda5fcac3e236dd6563d2a73bb8d35fe802b18f0912a8ee5ca8fd07d72c97025",
+          "bytes": 28758576,
+          "gitBlob": "4b89a0ff436503a5f975a258c5bc681cfe9395f4"
+        }
+      ],
+      "archiveMember": "selfhost/build/phase90/native-tables-stack01/compiler.c"
+    },
+    {
+      "file": "selfhost/build/phase90/native-fork01/compiler.c",
+      "sha256": "194619e86bfc9269a55d7f894f921fb5425a315828f616eef9b775d9bdad73e1",
+      "bytes": 17770265,
+      "mode": 420,
+      "links": 1,
+      "capsules": [
+        {
+          "file": "selfhost/tools/performance/phase90/evidence02/manifest.json",
+          "sha256": "45aac2998cab50643a2f7c6fe70324005840adbb872469c8a04f189eb13cd7fd",
+          "bytes": 531797,
+          "gitBlob": "cd1d056d6d7b614c502b3f5ce35cce43c4addda6"
+        },
+        {
+          "file": "selfhost/tools/performance/phase90/evidence02/phase90.zip",
+          "sha256": "523e2a87b9a06bca75cc70712cb1517b950ea9bcb9bc4f1733e1ad71ec6aae9a",
+          "bytes": 31984260,
+          "gitBlob": "cc78e02e2e048275f63593781108340028d9eb8c"
+        }
+      ],
+      "archiveMember": "selfhost/build/phase90/native-fork01/compiler.c"
+    }
+  ],
+  "bytes": 35530929,
+  "reviewedMethodsAndReceipts": [
+    {
+      "file": "selfhost/tools/performance/phase92/acquire-native.mjs",
+      "sha256": "d1d05bda11d2e30b515c03c93dba2e8fe381e89aeac1bb0a3d03c9dbfda4a090",
+      "bytes": 9656
+    },
+    {
+      "file": "selfhost/tools/performance/phase92/bind-build.py",
+      "sha256": "2c853df7b5d3825b2728a7e92d00b2c4db226c5ecf55d96e3a1acfa50c8b9462",
+      "bytes": 2779
+    },
+    {
+      "file": "selfhost/tools/performance/phase92/comparison/support.py",
+      "sha256": "b2a53b827bb8d7bb2892ec1c3db43e9d1a92976ab0f56a3af32bc517be7f1486",
+      "bytes": 5869
+    },
+    {
+      "file": "selfhost/tools/performance/phase90/runtime-migration01/native.py",
+      "sha256": "05e3fa2a64d6c7e1555babc46409ece2a4ab0de5458b1b8f70d02347e6dffda1",
+      "bytes": 5897
+    },
+    {
+      "file": "selfhost/tools/performance/phase90/runtime-migration01/support.py",
+      "sha256": "dfa291dc3765daea11036ba5a2613553b3c13e6b3ddaf879778f61c641f1c5d0",
+      "bytes": 5034
+    },
+    {
+      "file": "selfhost/tools/performance/phase90/runtime-migration01/image_support_v2.py",
+      "sha256": "c8c407bd4cf3c2ad21323205eb3123b93dac1bec33ac0758ad5ca53b932438ca",
+      "bytes": 7736
+    },
+    {
+      "file": "selfhost/build/phase90/runtime-transition01/transition.json",
+      "sha256": "d1bfca083361d03422814f8cec1880fb575803b4091c8075b1a08c84a45964b9",
+      "bytes": 348447
+    },
+    {
+      "file": "selfhost/build/native/releases/phase90-native07/admission.json",
+      "sha256": "06c90774a4886aa0dedbb0f8c3847ecc7da6f124ae28d13e92040309d8a62926",
+      "bytes": 167584
+    },
+    {
+      "file": "selfhost/build/phase90/compiler-own-native07.native-build.json",
+      "sha256": "aa35cf1e677c6671cf9911d67a68fd53e7a7d2aa55943bec196c36d010730bda",
+      "bytes": 162621
+    },
+    {
+      "file": "selfhost/tools/performance/phase90/observation/noindent01/compiler-noindent.assembly.json",
+      "sha256": "9b4c0796b7504ebcb030ae9ffe5f4d0d37dbd6ac4637e4723acf895de196fea9",
+      "bytes": 21397
+    }
+  ],
+  "decision": "Safe to remove these two exact archived raw C copies after root review. Keep all receipt/source/image files.",
+  "currentDependencies": "Current native07 public load, native07 transition input closure, Phase92 acquisition, same-source build binding and matched-request authentication do not read these old upstream C files.",
+  "historicalLimits": "Replaying historical tables/fork Clang builds or their older qualification binders may require restoring the exact archive member at its original path. Do not alter those historical receipts.",
+  "restore": "For each row, require committed archive/manifest hashes; extract only archiveMember into a fresh destination preserving its repository-relative path and mode. Verify full sha256/length before any explicit copy back to the original empty path.",
+  "alternative": "A completed new self C duplicate may be reclaimed only after exact comparison and evidence sealing; do not unlink incomplete output or the current native07 build oracle. Existing final C remains retained."
+}

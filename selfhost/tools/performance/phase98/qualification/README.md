@@ -188,3 +188,49 @@ without assuming each textual call is unique.
 Snapshot06 strengthens the final collector's raw-command checks: request and
 conformance records must name the selected binary and exact request assets.
 Snapshot05 remains preserved; no target or accepted gate was changed.
+
+Snapshot07 adds the actual native B2 paired screen and optional same-input self
+comparison documented in [b2-comparison.md](b2-comparison.md). It also checks
+explicit sequential offset bounds in source replay, accepting repeated call text
+and end-of-source insertions. `support.backend_policy` verifies only the frozen
+source and input pins; it contains no textual-uniqueness assumption.
+
+Snapshot08 adds `backend-specific.py`, a data-only consumer of the independently
+prepared declaration bridge and actual small/corpus execution records:
+
+```
+python3 -B selfhost/build/phase98/qualification-methods08/methods/backend-specific.py \
+  --bridge selfhost/build/phase98/permission-declaration-bridge02/report.json \
+  --backend-policy selfhost/build/phase98/combined-backend-policy02/policy.json \
+  --documents selfhost/build/phase98/audited-documents01/receipt.json \
+  --out selfhost/build/phase98/combined-backend-specific01
+```
+
+It verifies16 exact final permission declarations and five classified shared
+dependencies, final7permission/6tag kernel laws and their exact source closure,
+18 frozen Boolean cases, three emitted-control shapes, provider/raw refusals,
+seven tiny program executions and three corpus executions. The1444-pair corpus
+retains all14 observed fields and complete character arrays. Raw guard receipts
+and actual full stdout/stderr are reread. Existing expectations remain unchanged.
+Its29 evidence rows enumerate only these actual obligations, not every group in
+the broader exploratory plan. Qualified-source execution, final composition
+bridge and final-source laws remain separate receipt fields. `imageQualified`
+stays false until the final same-source image gates pass and admit.py collects
+them. No additional target is required merely to build this receipt.
+
+Audited NATIVE_HOST/OBSERVERS documentation bytes are separately snapshotted with
+original paths/pins/modes for isolated evidence replay. Perform admission before
+updating those audited live documentation paths. The public request capsule
+contains selected source/images/runtime assets and source replay inputs; it does
+not need the full historical qualification input closure on every request.
+
+Snapshot09 adds `request-v2.py --rss-mib 2048|4096`. Default behavior remains2GiB
+RSS/4GiB available. The explicit4GiB option requires the input source pin equal
+the authenticated compiler's own source and a16GiB available-memory floor; it
+does not change ordinary request, build or global guard limits. This follows the
+retained combined-b1-self01 tree-RSS stop. All diagnostic, output and provenance
+checks remain unchanged. Snapshot09 also fixes a data-only backend-specific
+preflight comparison: proof manifests retain one extra blank declaration
+separator, so both exact strings are now parsed by the same frozen declaration
+parser after verifying the complete manifest span occurs once in final source.
+The failed combined-backend-specific01 preparation and snapshot08 remain intact.

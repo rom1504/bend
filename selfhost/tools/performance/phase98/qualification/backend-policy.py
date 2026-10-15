@@ -24,6 +24,7 @@ def main():
     replay = original
     for change in recipe['changes']:
         start = change['offset']; old, new = change['old'], change['new']
+        assert isinstance(start, int) and 0 <= start <= len(replay) and start + len(old) <= len(replay)
         assert replay[start:start + len(old)] == old
         replay = replay[:start] + new + replay[start + len(old):]
     assert replay == Path(source['file']).read_text(), 'Exact recipe replay required'

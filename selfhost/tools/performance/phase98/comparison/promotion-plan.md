@@ -155,3 +155,62 @@ update `docs/self_hosted/NATIVE_HOST.md`, `selfhost/README.md`, the current
 scoreboard and the experiment ledger with exact source/stage/timing scope.
 Preserve the former scores as history. Only then select and publish the new
 default native release.
+
+## Prepared final59b36 release recipe
+
+The stable host now exists at `selfhost/native.py` and
+`selfhost/tools/native/{launch.py,assets.py,cli-controls.py,profile.py}`; this
+supersedes the earlier proposed-file wording above. No selection has been made.
+The main source is the permission02+held-simple+tag-v4 composition,59b36a1c…2714.
+Its actual upstream-built B1 receipt is `selfhost/build/phase98/combined-b1.json`.
+The B2 build/admission must still be the actual completed same-source result.
+
+The reproducible source profile is only15,554 compressed delta bytes plus a
+1,851-byte manifest in `selfhost/tools/native/profiles/phase98-comparison01/`.
+It reads original D04 directly from the already committed Phase90 public capsule,
+checks the entire capsule hash and exact member bytes, then applies and reverses
+all1,375 exact edits. Neither the1.75MB assembly nor the parent experiment tree
+needs to be committed as text. A data-only real replay already verified the
+actual final source and wrote `selfhost/build/phase98/profile-replay01.json`.
+That receipt meets the existing admission source-recipe shape, with finalsource
+and D04 identities plus compact reproduction assets. It introduces no new source
+semantics; universal source proofs and native acceptance remain separate.
+
+Reproduce to a fresh output, without invoking a compiler:
+
+```sh
+python3 -B selfhost/tools/native/profile.py --out-source /tmp/compiler-native-phase98.bend --receipt /tmp/compiler-native-phase98-replay.json
+```
+
+Admission can use the already verified `profile-replay01.json` as
+`--source-recipe`. The rest of its arguments must name actual final B1/B2 self,
+controls,broad45,69-case conformance and backend-specific reports. Do not select a
+build-only receipt. After admission succeeds, root can create a temporary pointer
+under `selfhost/build/phase98/`:
+
+```json
+{"kind":"bend-native-compiler-selection","version":1,"complete":true,"admission":{"file":"ABSOLUTE_ADMISSION_PATH","sha256":"ACTUAL_SHA256","bytes":0},"defaultStage":"b2"}
+```
+
+The bytes field must be the actual admitted manifest length; the example is a
+schema, not an executable or admitted selection. Root then runs:
+
+```sh
+python3 -B selfhost/tools/native/cli-controls.py selfhost/build/phase98/public-selection01.json ACTUAL_COMPLETED_CONTROL_REPORT selfhost/build/phase98/public-cli01
+```
+
+This prepared derivative of Phase90 cli-controls exercises both stages' cached
+Small,live file IO and five-call Map outputs against the exact new C products
+already in the admission's control receipt. It also tests default B2 selection,
+no-overwrite refusal,changed-manifest refusal and exact invalid-source diagnostic.
+It records all nine requests and checks selected assets before and after.
+Preparation has parsed this method and reviewed its actual upstream report schema;
+no successful public CLI result is claimed before root runs it.
+
+Only after those controls pass should the exact temporary pointer be selected as
+`selfhost/tools/native/selection.json` and sealed with `assets.py` as documented
+in the native host README. Retain CLI request directories in the evidence capsule:
+they are under `selfhost/build/native/requests`, outside the ordinary Phase98 tree.
+The public asset capsule includes both images and source/profile assets; full
+large generated C,individual gate history and CLI evidence stay separately archived.
+Historical native07 remains explicitly selectable through its unchanged launcher.

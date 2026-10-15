@@ -100,10 +100,10 @@ The [ongoing-source guide](../../selfhost/proofs/phase98/RUNNING.md) gives a
 data-only extractor and root-run check commands for future actual compiler
 edits. Missing selected helpers and changed representation boundaries fail
 preparation rather than falling back to a historical candidate. The
-[catalog](../../selfhost/proofs/phase98/catalog02.json) deduplicates statements
-and proof bodies: Phase98 currently has 14 distinct public contracts and 37
+[catalog](../../selfhost/proofs/phase98/catalog04.json) deduplicates statements
+and proof bodies: Phase98 currently has 15 distinct public contracts and 38
 supports. Phase96 plus the Phase97 ownership model contributes 35 public
-contracts and 10 supports; the combined count is 49 public and 47 support names.
+contracts and 10 supports; the combined count is 50 public and 48 support names.
 The ownership model's missing native bridge is retained in that catalog, and
 neither finite controls nor repeated checks increase the law count.
 
@@ -119,6 +119,46 @@ implementation effects, observer ownership or correct routing of backend flags.
 In particular, old packed permission does not universally imply the new
 predicate for arbitrary unfilled `KDef` values; checked filled-program premises
 would be needed for that wider claim.
+
+The exact old-membership bridge also independently passed in
+[`permission-bridge-check01`](../../selfhost/build/phase98/permission-bridge-check01/report.json):
+one new public guarded-expression preservation law, one arbitrary-list/key
+support lemma, and seven inherited laws. It uses the real source02 `nb_contains`
+declaration with its name and recursive calls unchanged; only its leading unsafe
+annotation is removed. No detached membership model replaces the old function.
+The new helper is constrained both against that executable reference and against
+the independently written closed-set specification. Its final-composite instance
+also independently passed in
+[`combined-membership-proof-check01`](../../selfhost/build/phase98/combined-membership-proof-check01/report.json).
+
+The final combined source `59b36a1ca3f7843ff7a03628cd39ed0f530ed137c4825d508a274a8e1ede2714`
+independently passed the unchanged six-law tag and seven-law permission closures
+in [`combined-tag-proof-check01`](../../selfhost/build/phase98/combined-tag-proof-check01/report.json)
+and [`combined-permission-proof-check01`](../../selfhost/build/phase98/combined-permission-proof-check01/report.json).
+The extraction includes the actual public held comparator and finish dependency.
+It does not silently reuse an old candidate implementation. As recorded by
+catalog04, 13 accepted closures contain 109 checked law instances but only 53
+distinct Phase98 named statements and 55 proof-body variants. Counts of public
+guard corollaries are declaration counts, not claims of logical independence.
+The final-source tag6, permission7 and membership9 closures share inherited laws,
+giving thirteen distinct final-source names: eight public and five support. The
+larger catalog also includes historical and unpromoted candidate packages; it
+does not imply that all fifteen public contracts describe the final compiler.
+
+Three late candidate-specific faults were admitted as helpers and then rejected
+by unchanged laws: generic tag/name confusion, missing trust guard, and missing
+ninth provider. Their receipts are
+[`tag-negative-check04`](../../selfhost/build/phase98/tag-negative-check04/report.json)
+and [`permission-negative-check01`](../../selfhost/build/phase98/permission-negative-check01/report.json).
+They remain separate from the original independently frozen eight-bad/two-good
+set. The original unchanged finite suites caught five distinct bad changes; the
+separate targeted follow-up caught all eight with previously frozen witnesses.
+That follow-up improves finite coverage without rewriting the original result.
+This campaign has demonstrated unbounded safe value contracts, maintained proofs
+across real implementation changes and a stronger internal observation contract;
+it has not demonstrated a same-contract public regression detected by proof and
+missed by the unchanged finite suites. The
+[independent review](review.md) retains the detailed detection matrix.
 
 Observed maintenance and challenge results:
 

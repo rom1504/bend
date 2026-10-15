@@ -12,10 +12,13 @@ all five theorem bodies passed source checking, safe BendTT emission, and the
 independent pinned BendTT kernel. The inventory contains no opaque definitions.
 The deliberately unequal kernel control was rejected separately.
 
-The [deduplicated catalog](catalog02.json) currently records 14 distinct Phase98
-public contracts and 37 support lemmas, rather than adding repeated checks of the
+The [deduplicated catalog](catalog04.json) currently records 15 distinct Phase98
+public contracts and 38 support lemmas, rather than adding repeated checks of the
 same laws. Together with Phase96 and the explicitly modeled Phase97 ownership
-protocol, this is 49 public contracts and 47 supports. See
+protocol, this is 50 public contracts and 48 supports. The catalog contains 13
+accepted closures with 109 checked law instances, but only 53 distinct Phase98
+named statements and 55 proof-body variants. Repeated implementations and
+inherited dependencies do not become additional laws. See
 [the ongoing-source workflow](RUNNING.md) for extraction from the actual compiler
 being edited, root-run commands, boundaries and a measured fast-tier budget.
 
@@ -93,6 +96,15 @@ Additional accepted packages and the remaining prepared attempt:
   routing remain separate obligations. The three guard laws are useful public
   corollaries of the exact contract; distinct declarations do not imply logical
   independence.
+- [`permission/bridge.bend`](permission/bridge.bend): one further public law
+  preserves the original complete guarded membership expression; one support
+  lemma relates the new helper to actual `nb_contains` for arbitrary lists and
+  strings. The original declaration keeps its name and recursive calls, with
+  only `@unsafe` removed. All nine laws, including the seven inherited laws,
+  independently passed in
+  [`permission-bridge-check01`](../../build/phase98/permission-bridge-check01/report.json)
+  against source02. Its final-composite instance also independently passed in
+  [`combined-membership-proof-check01`](../../build/phase98/combined-membership-proof-check01/report.json).
 - [`prepare-challenges.py`](prepare-challenges.py): candidate-only snapshots of
   independently selected semantic faults, each with law-free helper admission
   before unchanged-law rejection. It also records the independently chosen
@@ -117,6 +129,38 @@ The independent dispatch fault that drops `Efq` was likewise admitted alone and
 rejected by the unchanged selector laws in
 [`dispatch-formal-check01`](../../build/phase98/dispatch-formal-check01/report.json).
 It is reported separately from kernel acceptance of the positive package.
+
+The final combined source `59b36a1c…` was separately extracted and independently
+checked with the unchanged tag closure (six laws) and permission closure (seven)
+in [`combined-tag-proof-check01`](../../build/phase98/combined-tag-proof-check01/report.json)
+and [`combined-permission-proof-check01`](../../build/phase98/combined-permission-proof-check01/report.json).
+These checks use the actual composed helper bodies, including the held comparison
+finish dependency. The final composite also passes the nine-law membership
+bridge closure above. These are additional implementation instances of the same
+contracts. After deduplicating inherited comparator laws, the final-source union
+contains thirteen distinct names: eight public contracts and five supports.
+The larger catalog also retains the historical carrier and other candidate
+packages; it is not a count of contracts on the final compiler alone.
+
+The original independently selected challenge set remains eight bad changes and
+two equivalent controls. Its unchanged finite suites detected five distinct bad
+changes; the separate targeted follow-up detected all eight using the previously
+frozen distinguishing witnesses. The follow-up does not rewrite the earlier
+results. Same-contract comparison faults bad03 and bad05 were caught by both
+methods; the observed proof-only bad08 result expands the internal contract, as
+explained above. No additional same-contract public regression missed by those
+finite tests has been demonstrated. See the
+[independent review](../../../implementation/phase98/review.md).
+
+Three later candidate-specific faults are separate from that original set:
+tag/name confusion, ignoring the trust flag and omitting `File.close`. Every
+helper was admitted alone, then rejected by unchanged laws with a normal semantic
+expected/observed mismatch in
+[`tag-negative-check04`](../../build/phase98/tag-negative-check04/report.json) and
+[`permission-negative-check01`](../../build/phase98/permission-negative-check01/report.json).
+These are source-check rejections, not independent kernel rejections. Their
+selection occurred before reading the respective new laws/reference, but after
+some earlier campaign results were known.
 
 The proof boundary stops at safe Bend value semantics. Generated C, retained
 aliases, RC operations, unsafe caller branches, full compiler termination and

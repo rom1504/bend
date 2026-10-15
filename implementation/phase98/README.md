@@ -18,12 +18,15 @@ not generated-program execution or a measured native B2 improvement.
 | Preserve roots through a finishing function | 0.85619× | 3 | Proceed to broader/stage qualification. |
 | Fuse term-tag comparison with retained roots | 0.81383× | 23 | Material B1 result; stage qualification pending. |
 | Extract dispatch across19 functions | 0.98766× | 525 | No material gain; decline. |
+| Held equality plus scalar field readers | 0.83766× | 14 | Small incremental signal; exclude from main candidate. |
 
 The selected fused-tag helper also passes96 complete-value native controls and
 six independently checked laws (four inherited, two new). Its process ratio is
 0.87818×. The larger dispatch experiment preserves48 full products but does not
-justify its code cost. Two held scalar-field projections have passed10 complete
-native controls and two universal laws; they have no compiler timing result yet.
+justify its code cost. Two held scalar-field projections pass10 complete native
+controls and two universal laws. Their process ratio is0.95655×, weaker than the
+simpler held comparator's0.91709×; separate screens do not establish a precise
+incremental improvement. They are not part of the final composition.
 
 The accepted equality proofs use exact frozen helper bodies and an independent
 structural reference. Native controls cover all1,444 ordered pairs of38 strings,
@@ -41,14 +44,32 @@ internal retained-root product escapes the Boolean-result finite corpus but
 violates the full-value law. That is an internal contract failure, not evidence
 that its final Bool result is wrong.
 
-The remaining stage issue is concrete: the self-hosted backend couples observer
+The stage issue is concrete: the self-hosted backend couples observer
 permission to a whole-program scalar-array certificate. The compiler's audited
 file-IO entry does not satisfy that certificate. A real IO control keeps observers
 disabled and emits the consuming equality walker, so the source wrapper alone
-cannot be assumed to improve B2. Work is investigating a distinct checked
-observer permission while preserving existing array and constructor-sharing
-restrictions, followed by actual native-chain qualification.
+cannot be assumed to improve B2. A distinct checked observer permission now
+passes seven native controls and the full1,444-pair corpus, including complete
+surviving strings. It preserves the old array/scalar, cold-constructor, host-plan
+and product-admission restrictions. The complete final-source tag and permission
+proof closures pass, including the bridge to existing list membership:13 distinct
+names,8 public statements and5 support lemmas. The wider experiment catalog has
+separate historical/rejected candidate laws and must not be called final-image
+coverage.
+
+The combined native source has1,754,058 bytes,78 more physical lines than D04,
+and1,366 fused left-tag comparisons. Its upstream-built native B1 compiled in
+185.97 seconds with4.01GiB peak RSS. The first full B1 self-compilation was stopped
+cleanly at the2GiB process guard after83 seconds; more than23GiB remained
+available. This is a real resource regression to investigate, not a correctness
+pass or an OOM crash. A bounded4GiB self-only retry with a16GiB available-memory
+floor is planned. No new public image has been selected at this checkpoint.
+
+The held-string IO microbenchmark measures0.145866× time (about6.86× faster),
+with all full outputs preserved. It is a mechanism demonstration, not a claim
+about aggregate compiler time or representative generated programs.
 
 Detailed work tracks: [comparison](comparison.md), [dispatch](dispatch.md),
-[proofs](proofs.md), [independent review](review.md). The final report will bind
+[proofs](proofs.md), [observer permission](observer-permission.md),
+[independent review](review.md). The final report will bind
 all results, retained failures, execution cost, production changes and limits.

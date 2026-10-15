@@ -440,3 +440,62 @@ its admission collector. Only Python3.9 AST parsing and data-shape review have
 occurred; no fabricated release, target invocation, CLI pass or archive-restoration
 pass is claimed. Actual completed admission, selected CLI controls and capsule
 verification remain necessary before a new default can be published.
+
+## Scalar screen and exact candidate composition
+
+The subsequently completed `scalar-full-screen01` verifies48 full C outputs and
+48 complete diagnostics with unchanged inputs. Equal-case geometric ratios are
+**0.837655 request** and **0.956548 process** against the original native B1.
+The complete medians, ranges and per-round ratios are preserved in
+[`scalar-screen-summary01.json`](../../selfhost/tools/performance/phase98/comparison/scalar-screen-summary01.json).
+The request result is modestly below the separate held-simple screen's0.856190,
+but the extra11 source lines do not have a paired causal benefit established yet.
+Tag-v4's separate0.813832 screen remains the stronger measured source candidate.
+
+A generic exact-composition tool prepares tag plus scalar at
+`tag-scalar-source01/compiler.bend`, SHA256
+`76d00fc2b74c120f5b6815130b80dabcce16fe678755614f6850684cf5340fad`.
+It shares the held wrapper once and adds34 physical lines versus D04. The fresh
+`compare-candidates.py` derives the existing screen method to compare two
+independently checked/built source candidates using the same complete C and
+diagnostic oracles. Its offline preflight against actual tag/scalar acquisitions
+passes; this is input validation, not a target or performance result. It supports
+a direct tag-versus-tag-plus-scalar test before selecting that optional expansion.
+
+The main qualification candidate instead composes the independently developed
+observer-permission02 change with held-simple and tag-v4, without scalar:
+`permission-tag-source02/compiler.bend`, SHA256
+`59b36a1ca3f7843ff7a03628cd39ed0f530ed137c4825d508a274a8e1ede2714`,
+1,754,058 bytes, **78 extra physical lines** versus D04. Its recipe applies the
+seven exact permission definition edits first, then the held public wrapper and
+finish, then1,366 left-operand tag comparisons and the tag helper definitions.
+All1,375 edits replay sequentially and invert to the exact original source;
+the private equality walker remains byte-identical. New permission helpers'
+`String.eq` calls are preserved rather than silently normalized. These source
+transport checks do not establish backend correctness or lifetime safety.
+Actual-source proof extraction and whole-stage qualification remain separate
+root-run gates. This source is an explicit native profile derivative; canonical
+Bend modules and the installed JavaScript compiler are unchanged.
+
+## Combined actual B1 code and reproducible profile
+
+The actual combined upstream-built B1 acquires/builds successfully in
+`combined-checked01` / `combined-b1.json`. Its17,724,799-byte C, SHA256
+`5782601ed24d0215669e0fe27a62ff240c452219b510b9ab70c312645dc60767`, retains
+byte-identical tag-v4 bodies for public tag equality,borrowed tag read,private
+equality walker and tag finish. The walker has three peek sites and no take,
+keep,sink,free or allocation sites; tag read borrows all variants and drops only
+the key once after the generic comparison. Public equality finish drops the two
+retained original strings once. Exact bodies,pins and static counts are saved in
+[`combined-code-shape-b1-01.json`](../../selfhost/tools/performance/phase98/comparison/combined-code-shape-b1-01.json).
+This confirms the B1 mechanism survives permission integration; it does not
+establish B2 code shape,correctness or speed.
+
+A compact public source replay now verifies the same final59b36 source from the
+committed D04 capsule using15,554 compressed delta bytes and a1,851-byte manifest.
+`selfhost/tools/native/profile.py` validates source/capsule/delta identities,
+replays and inverses all1,375 edits and validates the final full source hash.
+The data-only completed receipt is `selfhost/build/phase98/profile-replay01.json`.
+The stable public CLI control method and final admission/archive command recipe
+are prepared in the native host directory and `comparison/promotion-plan.md`.
+No new default,public CLI pass or B2 admission is inferred from this preparation.

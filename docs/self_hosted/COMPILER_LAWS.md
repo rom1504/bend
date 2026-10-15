@@ -27,6 +27,25 @@ handles or escaped child ownership: a separate missing-retain C mutation compile
 and then fails at runtime. See the [proof boundary](../../implementation/phase97/semantic-pilot.md)
 and [supplemental commands](../../selfhost/tools/laws/phase97/README.md).
 
+The [Phase98 source-connected packages](../../selfhost/proofs/phase98/README.md)
+add 15 distinct public contracts and 38 support lemmas: actual string comparison,
+ordered dispatch selectors, tag comparison, scalar projections and the scoped
+foreign-admission predicate. The [deduplicated catalog](../../selfhost/proofs/phase98/catalog04.json)
+records 50 public and 48 support names across Phase96–98. Repeated checks and
+inherited dependencies are not extra laws. The final combined compiler source
+also passes the unchanged tag, permission and existing-membership packages; these prove safe helper
+values, not native reference-counting or the unsafe whole compiler. Those
+final-source closures contain thirteen distinct names (eight public, five support);
+the larger catalog also retains historical and unpromoted candidate packages.
+
+The Phase98 good02 codepoint refactor required a small support-proof repair while
+keeping public statements and reference unchanged. Its unchanged finite tests
+already passed. The stronger held-observation law rejects a changed internal
+result that the old public-Bool tests do not inspect; this expands the contract,
+rather than demonstrating the same public bug missed by tests. Original
+independent challenges, targeted follow-ups and three later candidate faults
+remain separately reported in the [proof account](../../implementation/phase98/proofs.md).
+
 ## Run the suite
 
 From the repository root, use a fresh output directory each time:
@@ -61,6 +80,32 @@ Each run writes `report.json`, raw process receipts, source snapshots, elaborate
 proofs, full expected and actual values, and identities of the tools used. A
 source-check failure, resource stop or compilation error is distinct from a
 semantic counterexample. Read the failed step's raw log before changing a law.
+
+For a Phase98 helper edit, extract the newly assembled effective native compiler
+source and check the relevant frozen package. This concrete source is an example;
+replace it with the actual compiler produced from the edit being reviewed:
+
+```sh
+python3 -B selfhost/proofs/phase98/prepare-current.py \
+  --candidate selfhost/build/phase98/permission-tag-source02/compiler.bend \
+  --kind tag \
+  --out selfhost/build/phase98/my-tag-proof-source
+
+python3 -B selfhost/tools/laws/phase98/check.py \
+  --source selfhost/build/phase98/my-tag-proof-source/tag.bend \
+  --out selfhost/build/phase98/my-tag-proof-check
+```
+
+The first command prepares source only. The second independently checks the
+proof and a false-equality kernel control. `--kind held-simple`, `scalars` and
+`permission` select the other current-source packages; exact entry names,
+source-bridge limitations and failure classification are in the
+[Phase98 run guide](../../selfhost/proofs/phase98/RUNNING.md). Missing helpers or
+changed reference boundaries fail rather than substituting an old implementation.
+Allow an initial 30-second serial slot for one package; observed target occupancy
+was about 1.7–2.7 seconds for these small proofs, not a general performance promise
+or proof-authoring estimate. Retain the existing resource guards and the separate
+native alias, generated-C and performance qualification.
 
 ## What is constrained
 

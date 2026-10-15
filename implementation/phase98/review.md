@@ -242,7 +242,7 @@ variation in the larger cases. This does not support a speedup or promotion.
 Selector equations and finite selectors also do not prove equivalence of every
 unsafe recursive branch body; the original compiler comparisons remain required.
 
-The independent observer-permission review and unexecuted scoped candidate are
+The independent observer-permission review and scoped native qualification are
 documented separately in [observer-permission.md](observer-permission.md). That
 candidate intentionally can change emitted C; old-byte continuity must not be
 misused as its only correctness criterion.
@@ -256,3 +256,11 @@ safe helper and its intended contract, after hearing its positive proof passed
 but before reading permission law/reference bodies. These are late negative
 controls, not additions to the original challenge score. Their scope excludes
 host byte authentication and the operational borrowed-memory boundary.
+
+
+Both late permission faults now pass standalone safe-helper admission and fail
+the unchanged `foreign_permission_exact` obligation, in
+`selfhost/build/phase98/permission-negative-check01/report.json` (complete four
+jobs; child reports independently rehashed). The failures concern the actual
+safe value predicate. They provide no automatic authority for FFI paths or
+borrowed-memory operations, and do not alter the original catalog outcomes.

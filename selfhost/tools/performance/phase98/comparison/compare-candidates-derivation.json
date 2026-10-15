@@ -1,0 +1,22 @@
+{
+  "kind": "phase98-two-candidate-comparison-derivation",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/compiler-compare.py",
+    "sha256": "2e34dbcffa09f1dc14b9b5b00387f480de7f8f4291236fc0fceaaac97117a840",
+    "bytes": 10787
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/compare-candidates.py",
+    "sha256": "8735a53bc22ffd3299e3291ce0c42a848a03101f6d5aa4027aefc868993bdf55",
+    "bytes": 11523
+  },
+  "changes": [
+    "Extract unchanged original candidate replay/check/Clang validator into one helper used independently for each of two images.",
+    "Add required reference checked/recipe/build/binary inputs and replace both measured argv images after validation.",
+    "Rename roles to reference/candidate, retain exact six historical C/diagnostic oracles,48 serial requests,four balanced rounds,raw samples and resource/disk caps.",
+    "Add data-only check-only preflight that never enters ExecutionGuard."
+  ],
+  "validation": "Python3.9 AST parse only; actual checked source/build preflight remains required. No target run or benchmark claim."
+}

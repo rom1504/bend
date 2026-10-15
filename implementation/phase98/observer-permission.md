@@ -1,17 +1,22 @@
 # Phase98: separating observer permission from array representation
 
-Source review supports a small, scoped experiment: admit the existing borrowed
-observer analysis for the native host's nine authenticated providers while
-keeping packed arrays, typed scalar narrowing and constructor-sharing permission
-on their old certificate. **This is not a flag-only runtime change.** The isolated
-candidate has been prepared, but this review ran no compiler or program targets.
+The scoped permission split passes small native qualification and the complete
+1,444-pair string corpus. A synthetic repeated shared-string workload takes
+0.145866× baseline process time; actual compiler gains remain a separate
+integration measurement. Root ran all targets serially; this reviewer performed
+source audits, prepared frozen methods and verified receipts offline.
 
-Candidate: `selfhost/build/phase98/observer-permission-source01/compiler.bend`,
-SHA-256 `2293f8e79216f42774b17ef2ddd592081863cf147b6c2371dbc734311352a3e3`.
-Its [producer](../../selfhost/tools/performance/phase98/observer-permission/prepare.py)
-records five exact reversible function edits from D04 and an unapplied patch
-for three maintained modules. It adds37 physical lines. Production, runtime,
-providers, driver and installed images are unchanged.
+Qualified isolated source02 is
+`selfhost/build/phase98/observer-permission-source02/compiler.bend`, SHA-256
+`9f4e516a9bd5b9134a3f0fd29017ee441bbad63f844a75a61517a5b877da0a94`.
+Its [producer](../../selfhost/tools/performance/phase98/observer-permission/prepare-v2.py)
+records seven reversible original-function edits,16 introduced/changed function
+declarations and an unapplied patch for four maintained modules (+55 physical
+lines). Packed arrays, scalar widths, cold constructors, planned host selection
+and checked product admission keep their old authority; only observer admission
+is separated. The earlier +37-line source01 and its failed admission are retained.
+Final composition and independent proof connections are detailed below; this
+report alone does not qualify a compiler release.
 
 ## Why the current gate refuses
 
@@ -91,7 +96,7 @@ applications; borrowed cursors stay within one synchronous native traversal.
 File.read_bytes/read_at share a provider file but are **not** newly admitted by
 the exact nine-function certificate.
 
-## The prepared split and its boundaries
+## Initial source01 split and its boundaries
 
 `no_effect_definitions` now requires trusted native intrinsics, or a filled
 trusted Foreign body with an exact allowlisted API, or an ordinary filled Def
@@ -110,10 +115,10 @@ the previous `observers` argument also reached `nh_macros`, which can authorize
 widened more than borrowing. The candidate sends the original `packed` value
 to that sharing analysis and does not enable new field-width or cold macros.
 
-Enabling observers also enables the existing planned-worker path in
-`ns_compile_named`, including private host call facts. Therefore performance
-attribution must inspect these routes too; a speed change cannot automatically
-be assigned solely to the borrowed equality loop.
+The initial split also widened the planned-worker path in `ns_compile_named`,
+including private host call facts. The subsequent audit found a checked-product
+admission coupling as well. Source02 below preserves both old permissions; they
+are not part of the measured observer-only intervention.
 
 The current integration has two routes. Root-preserving product observers
 replace a scheduler entry; an ordinary private product worker can bypass that
@@ -203,3 +208,84 @@ known names with an unfilled `Absent` body, while the new predicate deliberately
 requires `Foreign`, and the new ordinary case requires kind `Def`. Successful
 checked/filled entry may establish stronger preconditions, but source02 does
 not silently weaken the explicit unfilled and forged-name controls for speed.
+
+## Observed small qualification
+
+Root's `observer-permission-qualify05/report.json` is complete: all18 direct
+certificate cases, three actual emission groups, provider/raw boundaries and
+seven generated C executions pass. This reviewer rehashed189 pinned records
+and checked the emitted policy/route observations independently. Source02's
+safe provider predicate also passed its separately recorded universal-law check;
+that does not prove the unsafe classifier, FFI identity or generated ownership.
+
+For real IO.print_err and generic Array<String>, observer permission changes
+from0 to1 while typed scalars, scalar/unshared arrays and both cold-constructor
+flags remain0. Each equality observer has three static term_peek sites, no
+keep/sink/take/allocation in the borrowed body, and a shared-root redirect from
+the ordinary worker. This confirms an eligible static route, not a dynamic hit
+count or speed measurement. The array/Word refusal control keeps its previous
+scalar1/observer1 policy but emits neither prohibited observer. Both checked
+entry points emit identical C; explicit false and raw entry keep observers off.
+A separately altered provider fails authentication; an unknown provider receives
+false permission. The inert forged raw context executes its exact original
+value, while raw observer-return/loop nodes retain exact rejection diagnostics.
+
+Earlier failures are preserved: qualify01 source affinity, qualify02 emitter/
+guard directory collision, qualify03 incorrect harness Base-location comparison,
+and qualify04's historical unknown-provider fixture failing at an unrelated
+unfilled Strand law. Only the last fixture was replaced by a minimal equivalent
+external effect declaration using identical C/JS provider bytes. The preserved
+early source refusal earns no native-provider semantic credit.
+
+The corrected harness authenticates the bytes of the actual installed Base,
+requires the exact Base-origin effs path, mirrors typed-driver's maintained
+provider resolution and checks canonical provider identity plus admitted bytes.
+It records the ordinary JS driver's narrower permission separately: false for
+IO.print_err and true for ordinary IO.print. This is a scoped authenticated
+qualification harness, not a production driver permission change.
+
+The prepared real-I/O corpus follow-up retains the existing38-input1,444-pair
+matrix and12 original result fields, adding both complete surviving strings as
+codepoint arrays. Its120,386-byte expected stdout is computed independently
+from the frozen corpus. It uses the admitted APIs and two complete generated
+program products rather than rebuilding a compiler image. Root's `observer-permission-corpus-check01/report.json` is now complete: both
+old/new corpus products produce that exact stdout and expected stderr, plus the
+reused raw boundary product passes. The reviewer rehashed the receipt's pinned
+inputs and verified the1,444-pair/14-field observations. Old/new real-I/O observer
+flags are0/1 with unchanged representation permissions. These finite executions
+support this scoped path; they are not native lifetime proofs.
+
+## Bounded native timing and final-source connection
+
+`observer-permission-micro01/report.json` completes four balanced pairs with
+exact output in all eight native executions. The32-line program obtains two
+separate64-character equal strings from IO.args, compares them100,000 times,
+and prints the deterministic count and both complete surviving strings. Real
+IO.print_err keeps old observer permission0, new1. Both products use the same
+ClangO2/runtime and one CPU thread; the qualified APIs produce their C.
+
+Median whole-process time is **0.298058s baseline versus0.043477s candidate**,
+ratio **0.145866×**, or about6.86× faster for this synthetic workload. The
+reviewer rechecked the four orders, medians, full outputs and pinned inputs.
+The guard's roughly20ms observation granularity matters at the candidate's
+short duration. Equal long strings repeatedly held shared exercise a favorable
+path; short tags, early mismatches, unique inputs and unrelated compiler work
+can have different gains. This is evidence the route pays for substantial
+shared reads, not a prediction of compiler or representative-program speed.
+
+The source-bound `permission-declaration-bridge02/report.json` connects this
+isolated permission implementation to the final composed candidate
+`59b36a1ca3f7843ff7a03628cd39ed0f530ed137c4825d508a274a8e1ede2714`.
+Both recipes replay exactly; all16 introduced/changed permission declarations
+are byte-identical. Five direct callees differ: the p88 equality helper uses the
+final held implementation; nc_compile_error_known, nc_foreign, nc_unann and
+nq_candidates_mode differ only by authenticated tag-comparison substitutions.
+The bridge verifies those exact differences and binds the final-source seven-law
+permission and six-law tag proof closures, both independently checked/nonopaque.
+Repeated inherited comparator laws are not seven plus six new independent laws.
+
+The original small/corpus native qualification remains explicitly attributed to
+source02. The bridge preserves it as separate evidence and does not label the
+final image qualified: its full B1/B2 semantic/fixed-point gates and actual
+compiler timing are still required. The pure equations do not prove generated
+C ownership, foreign authenticity or whole-compiler correctness.

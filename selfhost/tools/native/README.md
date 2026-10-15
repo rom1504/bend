@@ -70,3 +70,25 @@ The original archive methods are preserved under Phase90. The new derivation
 record is `selfhost/tools/performance/phase98/comparison/public-host-preparation01.json`.
 Python syntax parsing during preparation is not a runtime, admission, public CLI
 or archive-restoration test. Those actual results must be recorded separately.
+
+## Reproduce the native source profile
+
+The Phase98 profile is a compressed exact edit recipe against D04, preserved in
+the committed Phase90 public capsule. It does not require committing the large
+assembled compiler or experimental parent sources as text:
+
+```sh
+python3 -B selfhost/tools/native/profile.py --out-source /tmp/compiler-native-phase98.bend --receipt /tmp/compiler-native-phase98-replay.json
+```
+
+This data-only command checks the baseline capsule and member, applies all exact
+edits, checks the final source hash and reverses the edits to the original bytes.
+Existing outputs are refused. The resulting source is the explicit native build
+profile; it does not update canonical Bend modules or the JavaScript release.
+Source replay is separate from source proof, checked acquisition and native gates.
+
+`cli-controls.py SELECTION COMPLETED_CONTROLS OUT` is the maintainer's serial
+public-interface gate after actual admission. It checks both stage argv policies,
+cached/live/repeated full products, exact invalid-source rejection, unchanged
+assets and refusals before publication. The final preparation and command order
+are recorded in `../performance/phase98/comparison/promotion-plan.md`.

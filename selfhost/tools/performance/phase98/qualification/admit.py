@@ -59,11 +59,13 @@ def main():
     text = Path(recipe['source']['file']).read_text(); before = text
     for change in recipe['changes']:
         at = change['offset']; old, new = change['old'], change['new']
+        assert isinstance(at, int) and 0 <= at <= len(text) and at + len(old) <= len(text)
         assert text[at:at + len(old)] == old
         text = text[:at] + new + text[at + len(old):]
     assert text == Path(source['file']).read_text()
     for change in reversed(recipe['changes']):
         at = change['offset']; old, new = change['old'], change['new']
+        assert 0 <= at <= len(text) and at + len(new) <= len(text)
         assert text[at:at + len(new)] == new
         text = text[:at] + old + text[at + len(new):]
     assert text == before

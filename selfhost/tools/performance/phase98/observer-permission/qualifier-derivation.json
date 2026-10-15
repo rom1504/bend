@@ -1,0 +1,52 @@
+{
+  "kind": "phase98-bounded-qualifier-method-derivation",
+  "targetsRun": false,
+  "methods": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/observer-permission/qualify.py",
+      "bytes": 8791,
+      "sha256": "cebaa635d9f9c364f70612a737374e59ae0c10af13f2102c8c7508f9b0af256b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/observer-permission/qualify.mjs",
+      "bytes": 10745,
+      "sha256": "839edc174fc1e80876e5c53d55baf62bbdb7687bc9e97ee5e8248406e1ae46ae"
+    }
+  ],
+  "reuse": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/stage0-library.mjs",
+      "bytes": 4172,
+      "sha256": "ec3506de1558fa1e56cef54345053ffaf7bfcc92b8632eaf96e217c15b8a59c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+      "bytes": 1688,
+      "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase70/observer-controls/raw-observer-cases-v1.mjs",
+      "bytes": 1921,
+      "sha256": "9bbd127c7c68bbfbf15c0307f2ac0d4f4ab6b2618cc1db22252e9adf97d375b9"
+    }
+  ],
+  "controlSuccessor": {
+    "original": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/observer-permission/generic-array-string.bend",
+      "bytes": 670,
+      "sha256": "d33a2dfec783aa4e8ba833b7ac6c0bd3720b1d501d6a8383018865a6a627b085"
+    },
+    "walker": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/held-helpers01.bend",
+      "bytes": 965,
+      "sha256": "721309feb98493af253d38364b34053603f556643c34e931fa0be363664616d9"
+    },
+    "successor": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/observer-permission/generic-array-string-v2.bend",
+      "bytes": 1054,
+      "sha256": "12f79064e2a1bc8af241e7e439feb92a18842fe9a496b9b8ab8389062b421cb6"
+    },
+    "why": "Expose the already qualified recursive equality walker directly; do not guess which private Base equality helper receives observer routing. Full output unchanged; first fixture remains preserved and unexecuted."
+  },
+  "scope": "Root-only targets. No parallelism. Full source checked by existing upstream stage0-library; narrow exports. Tiny-C ClangO2 uses exact historical compiler/include path. Raw old fixtures fill only missing source-origin metadata with zero."
+}

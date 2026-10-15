@@ -16,6 +16,14 @@ not generated-program execution or a measured native B2 improvement.
 | Cache two caller tag observations | 1.00749× | 2 | Neutral; decline. |
 | Preserve roots in a three-word observation | 0.85866× | 10 | Mechanism works; superseded by simpler form. |
 | Preserve roots through a finishing function | 0.85619× | 3 | Proceed to broader/stage qualification. |
+| Fuse term-tag comparison with retained roots | 0.81383× | 23 | Material B1 result; stage qualification pending. |
+| Extract dispatch across19 functions | 0.98766× | 525 | No material gain; decline. |
+
+The selected fused-tag helper also passes96 complete-value native controls and
+six independently checked laws (four inherited, two new). Its process ratio is
+0.87818×. The larger dispatch experiment preserves48 full products but does not
+justify its code cost. Two held scalar-field projections have passed10 complete
+native controls and two universal laws; they have no compiler timing result yet.
 
 The accepted equality proofs use exact frozen helper bodies and an independent
 structural reference. Native controls cover all1,444 ordered pairs of38 strings,

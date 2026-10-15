@@ -1,0 +1,88 @@
+{
+  "kind": "phase98-fused-tag-v4-full-compiler-c-audit",
+  "complete": true,
+  "targetsRun": false,
+  "c": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-full-checked04/program.c",
+    "sha256": "6bf3144e3fab34e995d35ca8dfb6a92a4bcd3bd42c5d8bc09c13ef1726fff7df",
+    "bytes": 17695414
+  },
+  "checked": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-full-checked04/report.json",
+    "sha256": "9df554e0a4da0f1e7f95eb61da593f41a90e1c35352b3d8c56149f60c45ac561",
+    "bytes": 17624
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-source04/compiler.bend",
+    "sha256": "2811d3c3329587cbc2278f1ed5660986b6b3ebf9bccd9c50441c5a05f2e8a805",
+    "bytes": 1750692
+  },
+  "recipe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-source04/changes.json",
+    "sha256": "0870a41f6bd29106f53ee99a7352db769e379cf26b005ea9eb65870bd59e97cd",
+    "bytes": 211661
+  },
+  "functions": {
+    "spin_1": {
+      "startLine": 14337,
+      "sha256": "3dcd28f6e7973a40ce858b73ecfe2cc073ba868f13ce0db0681b3b8081e700e9",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 1,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_1(Env e, THR Term* o, Term r0, Term r1) {\n  u32 wpoll = 0;\n  Term _term_1 = r0;\n  Term _key_0 = r1;\n  WL_SPIN\n    u32 _v_1 = 0;\n    _key_0 = term_keep(e, _key_0, 1);\n    Term _o_6[1];\n    if (spin_2(e, _o_6, _term_1, _key_0) == 0) {\n      return 0;\n    }\n    _v_1 = (u32)_o_6[0];\n    Term _o_7[1];\n    if (spin_7(e, _o_7, _v_1, _term_1, _key_0) == 0) {\n      return 0;\n    }\n    o[0] = (u32)_o_7[0];\n  break;\n  }\n  return 1;\n}"
+    },
+    "spin_2": {
+      "startLine": 14269,
+      "sha256": "da877e311d5a3e85b66884bfc241986baa5701a5697802ddd2d9981b5b130455",
+      "counts": {
+        "term_peek": 3,
+        "ctr_take": 0,
+        "term_sink": 1,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_2(Env e, THR Term* o, Term r0, Term r1) {\n  u32 wpoll = 0;\n  Term _term_2 = r0;\n  Term _key_1 = r1;\n  WL_SPIN\n    if (term_aux(_term_2) == CID_KTERM) {\n      u64 _sp_0 = term_peek(e.mem, _term_2);\n      Term _f_0 = e.mem[_sp_0 + 0];\n      Term _f_1 = e.mem[_sp_0 + 1];\n      u32 _f_2 = e.mem[_sp_0 + 2];\n      u32 _f_3 = e.mem[_sp_0 + 3];\n      Term _f_4 = e.mem[_sp_0 + 4];\n      Term _f_5 = e.mem[_sp_0 + 5];\n      u32 _f_6 = e.mem[_sp_0 + 6];\n      u32 _f_7 = e.mem[_sp_0 + 7];\n      Term _o_1[1];\n      if (spin_3(e, _o_1, _f_0, _key_1, 1) == 0) {\n        return 0;\n      }\n      term_sink(e, _key_1);\n      o[0] = (u32)_o_1[0];\n    } else if (term_aux(_term_2) == CID_KLAMBDA) {\n      u64 _sp_4 = term_peek(e.mem, _term_2);\n      Term _f_14 = e.mem[_sp_4 + 0];\n      u32 _f_15 = e.mem[_sp_4 + 1];\n      u32 _f_16 = e.mem[_sp_4 + 2];\n      Term _f_17 = e.mem[_sp_4 + 3];\n      Term _f_18 = e.mem[_sp_4 + 4];\n      u32 _f_19 = e.mem[_sp_4 + 5];\n      u32 _f_20 = e.mem[_sp_4 + 6];\n      u32 _f_21 = e.mem[_sp_4 + 7];\n      Term _o_4[1];\n      if (spin_5(e, _o_4, term_ctr(CID_SCON, STAT_OFF + 14), _key_1) == 0) {\n        return 0;\n      }\n      o[0] = (u32)_o_4[0];\n    } else {\n      u64 _sp_5 = term_peek(e.mem, _term_2);\n      Term _f_22 = e.mem[_sp_5 + 0];\n      u32 _f_23 = e.mem[_sp_5 + 1];\n      Term _f_24 = e.mem[_sp_5 + 2];\n      u32 _f_25 = e.mem[_sp_5 + 3];\n      u32 _f_26 = e.mem[_sp_5 + 4];\n      Term _o_5[1];\n      if (spin_5(e, _o_5, term_ctr(CID_SCON, STAT_OFF + 20), _key_1) == 0) {\n        return 0;\n      }\n      o[0] = (u32)_o_5[0];\n    }\n  break;\n  }\n  return 1;\n}"
+    },
+    "spin_3": {
+      "startLine": 14185,
+      "sha256": "6df756ab87a7f622eeb5aad8f18980a2fc8d65f22df60156b2bf7e75f51aa665",
+      "counts": {
+        "term_peek": 3,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_3(Env e, THR Term* o, Term r0, Term r1, u32 r2) {\n  u32 wpoll = 0;\n  Term _a_0 = r0;\n  Term _b_0 = r1;\n  u32 _same_0 = r2;\n  WL_SPIN\n    if (term_aux(_a_0) == CID_SNIL) {\n      if (term_aux(_b_0) == CID_SNIL) {\n        o[0] = _same_0;\n      } else {\n        u64 _sp_1 = term_peek(e.mem, _b_0);\n        u32 _f_8 = e.mem[_sp_1 + 0];\n        Term _f_9 = e.mem[_sp_1 + 1];\n        o[0] = 0;\n      }\n    } else {\n      u64 _sp_2 = term_peek(e.mem, _a_0);\n      u32 _f_10 = e.mem[_sp_2 + 0];\n      Term _f_11 = e.mem[_sp_2 + 1];\n      if (term_aux(_b_0) == CID_SNIL) {\n        o[0] = 0;\n      } else {\n        u64 _sp_3 = term_peek(e.mem, _b_0);\n        u32 _f_12 = e.mem[_sp_3 + 0];\n        Term _f_13 = e.mem[_sp_3 + 1];\n        if (_same_0 == 0) {\n          o[0] = 0;\n        } else {\n          u32 _v_2 = 0;\n          Term _o_0[1];\n          if (spin_4(e, _o_0, _f_10, _f_12) == 0) {\n            return 0;\n          }\n          _v_2 = (u32)_o_0[0];\n          r0 = _f_11;\n          r1 = _f_13;\n          r2 = _v_2;\n          _a_0 = r0;\n          _b_0 = r1;\n          _same_0 = r2;\n          WL_AGAIN(spin_3);\n        }\n      }\n    }\n  break;\n  }\n  return 1;\n}"
+    },
+    "spin_7": {
+      "startLine": 14323,
+      "sha256": "adbda55e3bc05e4a6e40fa68f1a083af94a1e7984be5bfcfc1c0f0049da8f18e",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 2,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_7(Env e, THR Term* o, u32 r0, Term r1, Term r2) {\n  u32 wpoll = 0;\n  u32 _same_2 = r0;\n  Term _term_3 = r1;\n  Term _key_2 = r2;\n  WL_SPIN\n    term_sink(e, _term_3);\n    term_sink(e, _key_2);\n    o[0] = _same_2;\n  break;\n  }\n  return 1;\n}"
+    }
+  },
+  "roles": {
+    "spin_1": "public tag equality wrapper",
+    "spin_2": "tag read",
+    "spin_3": "private equality walker",
+    "spin_7": "tag disposal finish"
+  },
+  "mechanismPassed": true,
+  "conclusion": "Full compiler retains borrowed tag access in all3variants and borrowed private equality walker. Generic tagread calls walker then sinks the key once; it does not take/drop unrelated term fields. Key ownership did not poison walker inference in actual full C, so v5 is not needed for the shape gate.",
+  "limits": "Source correctness, native execution and measured speed are separate gates. Counts are static C sites; no runtime lifetime proof."
+}

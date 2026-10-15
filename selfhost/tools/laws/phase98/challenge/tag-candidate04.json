@@ -1,0 +1,35 @@
+{
+  "id": "tag04-generic-tag-name-confusion",
+  "kind": "bad",
+  "file": "selfhost/tools/performance/phase98/comparison/tag-helpers03.bend",
+  "function": "p98_tag_eq_read",
+  "before": "      p88_string_eq(tag, key)",
+  "after": "      p88_string_eq(name, key)",
+  "expectedOccurrences": 1,
+  "source": {
+    "path": "selfhost/tools/performance/phase98/comparison/tag-helpers03.bend",
+    "bytes": 676,
+    "sha256": "ae1d6d7b02938653b47c842f134a969e4cccedb26c6120f9e365d3714e934099"
+  },
+  "changedSourceSha256": "36365e6aae3087494bd0965d9652c907b43e4d00722cfd5481460837250d378d",
+  "rationale": "A plausible field-destructuring mistake compares generic-node display name instead of arbitrary logical tag. The specialized KLambda/KLiteral branches are untouched.",
+  "expectedBehavior": "True becomes False on a valid generic KTerm whose logical tag is Lam and name is Lit.",
+  "witness": {
+    "expression": "p98_tag_eq(KTerm{\"Lam\", \"Lit\", 17, 2, [KLiteral{\"U32\", 37, \"retained\", 13, 29}], [\"kept\"], 11, 53}, \"Lam\")",
+    "returnType": "Bool",
+    "baselineValueBend": "True{}",
+    "challengeValueBend": "False{}"
+  },
+  "provenance": {
+    "kind": "synthetic-candidate-specific",
+    "selectionUTC": "2026-10-15T20:46:56.087951+00:00",
+    "selectionInputs": [
+      "exact helper-only candidate",
+      "maintained tg contract"
+    ],
+    "newTagLawsInspected": false,
+    "newTagOraclesInspected": false,
+    "originalTenCaseCatalogUnchanged": true,
+    "interpretation": "Separate late candidate-specific challenge; never merge into the original independently frozen eight-bad/two-good score. Earlier unrelated Phase98 proof and finite outcomes were known."
+  }
+}

@@ -56,6 +56,22 @@ laws. The observer's leading unsafe annotation is the sole change to its
 extracted declaration; independent checking confirms this body is safe. Native
 ownership and the unsafe production callers remain outside the theorem.
 
+The unchanged tag statement and proof subsequently passed for v4 and v5. This
+reuse is one contract with several implementation instances. The v3 generated C
+still consumed the term, despite passing the value proof. V4's private generic
+comparison path produced the intended borrowing in the tiny and full compiler
+inspection. That contrast makes the boundary concrete: a correct value theorem
+does not establish the optimization mechanism. The
+[v4 source bridge](../../selfhost/proofs/phase98/comparison/tag-source04-bridge.json)
+authenticates the exact proof helpers, actual full source and all 1,366 callsite
+substitutions.
+
+Two further public contracts independently passed in
+[`scalar-proof-check01`](../../selfhost/build/phase98/scalar-proof-check01/report.json).
+They compare the actual retained-root `ix` and `qt` wrappers with the complete
+original U32 projections on every actual `KTerm` constructor. They require no
+new abstract representation or finite index bound.
+
 Independent challenges were selected before their author inspected Phase98 law
 or finite-case bodies. The prepared formal trials admit each mutated helper on
 its own, then apply the unchanged accepted laws. Carry-loss and Unicode
@@ -79,6 +95,30 @@ The reusable source catalog and commands are in
 [`selfhost/proofs/phase98/README.md`](../../selfhost/proofs/phase98/README.md).
 Performance promotion is governed by actual compiler requests and broader
 qualification, separately from helper proof acceptance.
+
+The [ongoing-source guide](../../selfhost/proofs/phase98/RUNNING.md) gives a
+data-only extractor and root-run check commands for future actual compiler
+edits. Missing selected helpers and changed representation boundaries fail
+preparation rather than falling back to a historical candidate. The
+[catalog](../../selfhost/proofs/phase98/catalog02.json) deduplicates statements
+and proof bodies: Phase98 currently has 14 distinct public contracts and 37
+supports. Phase96 plus the Phase97 ownership model contributes 35 public
+contracts and 10 supports; the combined count is 49 public and 47 support names.
+The ownership model's missing native bridge is retained in that catalog, and
+neither finite controls nor repeated checks increase the law count.
+
+The actual source02 permission predicate independently passed seven laws in
+[`permission-proof-check01`](../../selfhost/build/phase98/permission-proof-check01/report.json).
+Four new public contracts specify the complete nine-name whitelist, require the
+trust flag, require a filled body and reject every name outside the independent
+structural-equality reference. One support lemma covers arbitrary lists and
+names; two comparator laws are inherited. Exact helper bytes occur in the actual
+classifier and its full source receipt replays. These laws treat both flags as
+inputs. They do not prove host authentication, unsafe closure traversal, provider
+implementation effects, observer ownership or correct routing of backend flags.
+In particular, old packed permission does not universally imply the new
+predicate for arbitrary unfilled `KDef` values; checked filled-program premises
+would be needed for that wider claim.
 
 Observed maintenance and challenge results:
 

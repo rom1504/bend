@@ -1,7 +1,8 @@
 # Phase98 independent challenges and review
 
-Status: independent choices frozen; target admission, frozen-suite comparisons
-and candidate qualification remain pending. This review track runs no compiler,
+Status: independent choices frozen; the first unchanged finite suites and held
+and dispatch formal challenges have completed. Targeted follow-ups have completed separately; further
+candidate qualification remains separately reported. This review track runs no compiler,
 proof-checker or program targets and makes no canonical source changes.
 
 ## Selection and evidence boundaries
@@ -154,5 +155,104 @@ values on final consumption. Those checks are finite runtime evidence, not a
 whole-memory-model theorem. Any stronger ownership claim needs its own concrete
 lowering/runtime connection.
 
-No compiler or program target has been run by this reviewer. Outcome and
-candidate-review sections will be added only after root supplies frozen receipts.
+## Observed unchanged-suite results
+
+The reviewer rehashed the pinned inputs/child receipts in all four finite
+reports, both formal reports and the successful maintenance receipt. All target
+executions below belong to root; no target was run by this reviewer.
+
+| Independent recipe | Existing finite result | New frozen formal result |
+|---|---|---|
+| bad01 logical literal | Outside the unchanged226-case extraction closure | Not yet tested against a connected obligation in this campaign |
+| bad02 lambda variant | Detected; six complete-value observations differ | Not yet tested against a connected obligation |
+| bad03 equality carry | Detected by the unchanged1,444-pair string corpus, also by its held-wrapper reuse | Helper admitted; held equality law rejects |
+| bad04 lexical carry | Detected by the unchanged string corpus and its held reuse | Not part of the held equality contract |
+| bad05 character width | Detected by the unchanged string corpus and its held reuse | Helper admitted; held equality law rejects |
+| bad06 literal prefix | Detected by the existing ten-input literal suite | Not yet recorded here |
+| bad07 grouped dispatch | The226-case suite does not include this candidate selector; separate41-case selector corpus exists | Helper admitted; frozen dispatch law rejects |
+| bad08 complete held observation | Escapes the old public-Bool/reused-input observations | Helper admitted; complete held-observation law rejects |
+| good01 exact literal reconstruction | All226 complete values unchanged | No new connected proof exercised |
+| good02 full codepoint equality | All original string/held corpus observations unchanged | Helper admitted; unchanged support proof needs maintenance; separate corrected support proof accepted independently |
+
+These are five distinct bad changes detected by the currently executed finite
+suites, not a mutation coverage percentage. Repeating bad03/04/05 through both
+wrappers does not create six independent discoveries. The pair matrix is one
+aggregate serialized case containing1,444 pairs and every original output field;
+do not inflate it into1,444 independently proved properties.
+
+Bad08 is the strongest example of a useful stronger contract, but its meaning
+must remain precise. The finite suite observes the public Bool and retained
+external input aliases. The law additionally observes both fields returned by
+the internal held helper. Repeating the left root in the right field violates
+that stronger internal contract while the public Bool can remain correct. This
+is **specification expansion**, not proof that the identical public-Boolean bug
+escaped tests. Bad03 and bad05 are detected by both methods; this chosen set has
+not yet demonstrated an incremental same-contract semantic detection by proof.
+
+Receipts: `selfhost/build/phase98/challenge-{production,strings,held,literal}-check01/report.json`,
+`dispatch-formal-check01/report.json`, and `held-formal-check01/report.json`.
+The last report intentionally remains `complete:false`: its first eight jobs
+establish the admitted bad-helper rejections and valid-refactor maintenance
+result, then the first support repair fails the language's pattern-order syntax
+restriction. This failed repair is preserved and receives no semantic credit.
+
+The separate `held-maintenance-check02/report.json` is complete and independently
+checked, with five accepted law definitions and no opaque definitions. Its exact
+source is `selfhost/proofs/phase98/comparison/maintenance02/held-exact.bend`,
+SHA-256 `54161810d0047c18989ca563cdfd3c98c0bd343da3bcbf3a9e79cf0887b48bda`.
+The two-line support repair moves Chr patterns to the enclosing Cons match;
+public statements/bodies and the reference remain fixed. A valid equivalent
+helper failing an old proof body was therefore maintenance work, not a compiler
+or semantic fault.
+
+The separate `challenge-targeted-check01/report.json` is complete. The reviewer
+rehashed its pinned inputs and child receipts and checked all11 role results:
+the10-case baseline and both equivalent controls pass; each of the eight
+admitted bad variants produces a complete-value mismatch, without case-loading
+or compiler-admission failures. These witnesses were selected before outcomes
+but were introduced into execution after the unchanged suites. They close the
+observed extraction/contract gaps and catch bad08's full returned value. This
+follow-up does not rewrite the original five finite detections or turn the
+chosen challenge set into a coverage estimate.
+
+A later, separately labeled candidate-specific challenge is frozen in
+[tag-candidate04.json](../../selfhost/tools/laws/phase98/challenge/tag-candidate04.json)
+(SHA-256 `da6d79af61be4ead791c6eb030c662a49d9a0dab7e4891dc95c96f88af1b52bf`).
+It changes the exact tag helper's generic KTerm branch to compare `name` instead
+of `tag`. A generic node with tagLam/nameLit and keyLam changes True to False,
+while specialized literal/lambda branches stay untouched. The reviewer read
+only the helper and maintained tg contract before this choice, not the new tag
+law or oracle; earlier unrelated Phase98 outcomes were already known. This late
+challenge is not added to the original eight-bad/two-good score.
+
+## Candidate measurement review
+
+The hardened Phase98 comparator authenticates D04, recursively verifies recipe
+pins, replays exact edits and requires final candidate bytes to agree. The first
+review found that generalized source selection lacked exact patch replay; root
+fixed this before execution. Unsupported literal insertion recipes explicitly
+refuse rather than silently bypass authentication. Candidate and baseline use
+the same runtime/Base/providers/cache and authenticated ClangO2 build settings.
+
+For `dispatch-screen01/report.json`, the reviewer independently checked48 passed
+C/diagnostic comparisons, six sources, four paired rounds, two occurrences of
+each role order per source, and recomputed the reported medians. Request ratio
+is **1.007493×**, process ratio **1.004350×**: neutral to slightly slower, with
+variation in the larger cases. This does not support a speedup or promotion.
+Selector equations and finite selectors also do not prove equivalence of every
+unsafe recursive branch body; the original compiler comparisons remain required.
+
+The independent observer-permission review and unexecuted scoped candidate are
+documented separately in [observer-permission.md](observer-permission.md). That
+candidate intentionally can change emitted C; old-byte continuity must not be
+misused as its only correctness criterion.
+
+
+Two additional safe-permission challenges are separately frozen in
+`selfhost/tools/laws/phase98/challenge/permission-candidate01.json`: ignoring the
+trusted flag wrongly accepts an untrusted IO.print_err declaration, and omitting
+File.close rejects the ninth legitimate provider. Selection used only the exact
+safe helper and its intended contract, after hearing its positive proof passed
+but before reading permission law/reference bodies. These are late negative
+controls, not additions to the original challenge score. Their scope excludes
+host byte authentication and the operational borrowed-memory boundary.

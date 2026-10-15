@@ -1,0 +1,31 @@
+{
+  "kind": "late-independent-safe-permission-challenges",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase98/permission/helper.d04.bend",
+    "bytes": 612,
+    "sha256": "1d879794821da54442ebe3ebd9d8f6005f6c335f4d77e3e1447233c2224024c7"
+  },
+  "cases": [
+    {
+      "id": "permission-bad01-forged-trust",
+      "before": "def no_effect_foreign_allowed(trusted: Bool, filled: Bool, name: String) -> Bool:\n  trusted && filled && no_effect_provider_member([\"IO.args\", \"IO.print\", \"IO.now\", \"IO.print_err\", \"File.open\", \"File.read\", \"File.size\", \"File.write\", \"File.close\"], name)\n",
+      "after": "def no_effect_foreign_allowed(trusted: Bool, filled: Bool, name: String) -> Bool:\n  True{} && filled && no_effect_provider_member([\"IO.args\", \"IO.print\", \"IO.now\", \"IO.print_err\", \"File.open\", \"File.read\", \"File.size\", \"File.write\", \"File.close\"], name)\n",
+      "witness": "no_effect_foreign_allowed(False{}, True{}, \"IO.print_err\")",
+      "expected": false,
+      "mutant": true,
+      "rationale": "Exact names cannot replace caller authentication; an untrusted declaration must remain rejected."
+    },
+    {
+      "id": "permission-bad02-forgets-ninth-provider",
+      "before": "def no_effect_foreign_allowed(trusted: Bool, filled: Bool, name: String) -> Bool:\n  trusted && filled && no_effect_provider_member([\"IO.args\", \"IO.print\", \"IO.now\", \"IO.print_err\", \"File.open\", \"File.read\", \"File.size\", \"File.write\", \"File.close\"], name)\n",
+      "after": "def no_effect_foreign_allowed(trusted: Bool, filled: Bool, name: String) -> Bool:\n  trusted && filled && no_effect_provider_member([\"IO.args\", \"IO.print\", \"IO.now\", \"IO.print_err\", \"File.open\", \"File.read\", \"File.size\", \"File.write\"], name)\n",
+      "witness": "no_effect_foreign_allowed(True{}, True{}, \"File.close\")",
+      "expected": true,
+      "mutant": false,
+      "rationale": "The independently audited closed set includes File.close; accidentally truncating it must decline a legitimate checked route."
+    }
+  ],
+  "selection": "Frozen after hearing positive permission proof passed, before reading its law/reference/oracle bodies. Selected by actual helper contract; broad earlier Phase98 results known. Separate from original8bad2good catalog.",
+  "scope": "Pure safe helper value behavior only; no classifier, FFI identity, borrowed lifetime or native ABI claim.",
+  "targetsRun": false
+}

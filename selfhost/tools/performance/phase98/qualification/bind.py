@@ -3,7 +3,7 @@
 import argparse
 import json
 from pathlib import Path
-from support import Bindings, ROOT, baseline, pin, read, entry_definitions
+from support import Bindings, ROOT, backend_policy, baseline, pin, read, entry_definitions
 
 
 def main():
@@ -31,7 +31,11 @@ def main():
     else:
         assert emission['kind'] == 'phase98-native-qualification-request'
         assert emission['passed'] and emission['inputsUnchanged'] and emission['producer']['stage'] == 'b1'
-        assert emission['purpose'] == 'compare' and emission['row']['exactC']
+        if emission['purpose'] == 'changed-backend':
+            assert emission['row']['diagnosticExact'] and emission['semanticQualificationRequired']
+            assert backend_policy(emission['backendPolicy'], source, b) == emission['backendPolicy']
+        else:
+            assert emission['purpose'] == 'compare' and emission['row']['exactC']
         assert b.bind(emission['source']) == source
         assert emission['producer']['source'] == source, 'B2 must be self-emitted by the candidate B1'
         for row in emission['inputs']: b.bind(row)

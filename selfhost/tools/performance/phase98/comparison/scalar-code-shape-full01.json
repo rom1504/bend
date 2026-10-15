@@ -1,0 +1,97 @@
+{
+  "kind": "phase98-held-scalar-full-compiler-c-audit",
+  "complete": true,
+  "targetsRun": false,
+  "c": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/scalar-full-checked01/program.c",
+    "bytes": 17765419,
+    "sha256": "0dec0ee63bb24d3cb79b6624838946f8b07a32d7ddec123408e611790d986216"
+  },
+  "checked": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/scalar-full-checked01/report.json",
+    "bytes": 17653,
+    "sha256": "8fd577f6b5888ca0559561ee0978e73469228cb66d28c1ae646fb149934ff11d"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/scalar-source01/compiler.bend",
+    "bytes": 1759734,
+    "sha256": "28ff9f5dc79b4c59ef9ca1d87170a0a79b681ae248b42943743f65b435f4699c"
+  },
+  "functions": {
+    "spin_8": {
+      "startLine": 14470,
+      "sha256": "57e9cbf02afdc3d4d09efc24c25252bdd63641342ef629f296a5a6ee46651002",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_8(Env e, THR Term* o, Term r0) {\n  u32 wpoll = 0;\n  Term _t_1 = r0;\n  WL_SPIN\n    u32 _v_8 = 0;\n    Term _o_2[1];\n    if (spin_9(e, _o_2, _t_1) == 0) {\n      return 0;\n    }\n    _v_8 = (u32)_o_2[0];\n    Term _o_3[1];\n    if (spin_10(e, _o_3, _v_8, _t_1) == 0) {\n      return 0;\n    }\n    o[0] = (u32)_o_3[0];\n  break;\n  }\n  return 1;\n}"
+    },
+    "spin_9": {
+      "startLine": 14418,
+      "sha256": "1cde3d41b8a20c1ad019aad7045482cd898631c5e320b3e5a0e60d1c6381d5b1",
+      "counts": {
+        "term_peek": 3,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_9(Env e, THR Term* o, Term r0) {\n  u32 wpoll = 0;\n  Term _t_2 = r0;\n  WL_SPIN\n    if (term_aux(_t_2) == CID_KTERM) {\n      u64 _sp_3 = term_peek(e.mem, _t_2);\n      Term _f_21 = e.mem[_sp_3 + 0];\n      Term _f_22 = e.mem[_sp_3 + 1];\n      u32 _f_23 = e.mem[_sp_3 + 2];\n      u32 _f_24 = e.mem[_sp_3 + 3];\n      Term _f_25 = e.mem[_sp_3 + 4];\n      Term _f_26 = e.mem[_sp_3 + 5];\n      u32 _f_27 = e.mem[_sp_3 + 6];\n      u32 _f_28 = e.mem[_sp_3 + 7];\n      o[0] = _f_23;\n    } else if (term_aux(_t_2) == CID_KLAMBDA) {\n      u64 _sp_4 = term_peek(e.mem, _t_2);\n      Term _f_29 = e.mem[_sp_4 + 0];\n      u32 _f_30 = e.mem[_sp_4 + 1];\n      u32 _f_31 = e.mem[_sp_4 + 2];\n      Term _f_32 = e.mem[_sp_4 + 3];\n      Term _f_33 = e.mem[_sp_4 + 4];\n      u32 _f_34 = e.mem[_sp_4 + 5];\n      u32 _f_35 = e.mem[_sp_4 + 6];\n      u32 _f_36 = e.mem[_sp_4 + 7];\n      o[0] = _f_30;\n    } else {\n      u64 _sp_5 = term_peek(e.mem, _t_2);\n      Term _f_37 = e.mem[_sp_5 + 0];\n      u32 _f_38 = e.mem[_sp_5 + 1];\n      Term _f_39 = e.mem[_sp_5 + 2];\n      u32 _f_40 = e.mem[_sp_5 + 3];\n      u32 _f_41 = e.mem[_sp_5 + 4];\n      o[0] = 0ull;\n    }\n  break;\n  }\n  return 1;\n}"
+    },
+    "spin_10": {
+      "startLine": 14458,
+      "sha256": "6cca5f412aca095d5d8e9484b29f4949b6f175cf22e8705ce43ad53e655ad05b",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 1,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_10(Env e, THR Term* o, u32 r0, Term r1) {\n  u32 wpoll = 0;\n  u32 _value_0 = r0;\n  Term _term_0 = r1;\n  WL_SPIN\n    term_sink(e, _term_0);\n    o[0] = _value_0;\n  break;\n  }\n  return 1;\n}"
+    },
+    "spin_11": {
+      "startLine": 14530,
+      "sha256": "1daf80e346bb1dd0b3fe2aaa85bbd5c3da5f7bb07926122fd1231a85a16a2eb7",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_11(Env e, THR Term* o, Term r0) {\n  u32 wpoll = 0;\n  Term _t_3 = r0;\n  WL_SPIN\n    u32 _v_10 = 0;\n    Term _o_5[1];\n    if (spin_12(e, _o_5, _t_3) == 0) {\n      return 0;\n    }\n    _v_10 = (u32)_o_5[0];\n    Term _o_6[1];\n    if (spin_10(e, _o_6, _v_10, _t_3) == 0) {\n      return 0;\n    }\n    o[0] = (u32)_o_6[0];\n  break;\n  }\n  return 1;\n}"
+    },
+    "spin_12": {
+      "startLine": 14490,
+      "sha256": "82690c2b3e4e81b6d0fbbf015e427a89b890357a74422473369c26caa5b2f716",
+      "counts": {
+        "term_peek": 3,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_12(Env e, THR Term* o, Term r0) {\n  u32 wpoll = 0;\n  Term _t_4 = r0;\n  WL_SPIN\n    if (term_aux(_t_4) == CID_KTERM) {\n      u64 _sp_6 = term_peek(e.mem, _t_4);\n      Term _f_42 = e.mem[_sp_6 + 0];\n      Term _f_43 = e.mem[_sp_6 + 1];\n      u32 _f_44 = e.mem[_sp_6 + 2];\n      u32 _f_45 = e.mem[_sp_6 + 3];\n      Term _f_46 = e.mem[_sp_6 + 4];\n      Term _f_47 = e.mem[_sp_6 + 5];\n      u32 _f_48 = e.mem[_sp_6 + 6];\n      u32 _f_49 = e.mem[_sp_6 + 7];\n      o[0] = _f_45;\n    } else if (term_aux(_t_4) == CID_KLAMBDA) {\n      u64 _sp_7 = term_peek(e.mem, _t_4);\n      Term _f_50 = e.mem[_sp_7 + 0];\n      u32 _f_51 = e.mem[_sp_7 + 1];\n      u32 _f_52 = e.mem[_sp_7 + 2];\n      Term _f_53 = e.mem[_sp_7 + 3];\n      Term _f_54 = e.mem[_sp_7 + 4];\n      u32 _f_55 = e.mem[_sp_7 + 5];\n      u32 _f_56 = e.mem[_sp_7 + 6];\n      u32 _f_57 = e.mem[_sp_7 + 7];\n      o[0] = _f_52;\n    } else {\n      u64 _sp_8 = term_peek(e.mem, _t_4);\n      Term _f_58 = e.mem[_sp_8 + 0];\n      u32 _f_59 = e.mem[_sp_8 + 1];\n      Term _f_60 = e.mem[_sp_8 + 2];\n      u32 _f_61 = e.mem[_sp_8 + 3];\n      u32 _f_62 = e.mem[_sp_8 + 4];\n      o[0] = 0ull;\n    }\n  break;\n  }\n  return 1;\n}"
+    }
+  },
+  "roles": {
+    "spin_8": "ix wrapper",
+    "spin_9": "ix reader",
+    "spin_10": "shared scalar finish",
+    "spin_11": "qt wrapper",
+    "spin_12": "qt reader"
+  },
+  "mechanismPassed": true,
+  "conclusion": "Both unchanged projection readers use borrowed term access in every variant with no ownership operations. Wrappers evaluate scalar while originalroot remains live, then finish drops thatroot once. No new carrier allocation or caller rewrites.",
+  "limits": "Static sites, not dynamic counts/timings. Actual finite products and universal source laws are separate from runtime lifetime correctness."
+}

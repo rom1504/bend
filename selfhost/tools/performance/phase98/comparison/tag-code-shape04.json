@@ -1,0 +1,69 @@
+{
+  "kind": "phase98-fused-tag-v4-c-mechanism-audit",
+  "complete": true,
+  "targetsRun": false,
+  "c": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-control-checked04/program.c",
+    "sha256": "b6df8cc38b73fb00b066af2329570ffa7ec4bfff43080582b45a7a68039eed3e",
+    "bytes": 95217
+  },
+  "checked": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-control-checked04/report.json",
+    "sha256": "d2c251445741bbab7df303f1dac821011ff107fd669ae7803c829cfaf8beb8d1",
+    "bytes": 17682
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls04/candidate.bend",
+    "sha256": "136e44369e31c2dacca12cab6d46320ea9d319dfa32f8c3ef046b8dc1cd2e084",
+    "bytes": 3481
+  },
+  "functions": {
+    "spin_0": {
+      "startLine": 1221,
+      "sha256": "3a30f074d349f9f12cf397ab3624dbd571aabab125bd4eef4bb0da1bc125592b",
+      "counts": {
+        "term_peek": 3,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_0(Env e, THR Term* o, Term r0, Term r1, u32 r2) {\n  u32 wpoll = 0;\n  Term _a_0 = r0;\n  Term _b_0 = r1;\n  u32 _same_0 = r2;\n  WL_SPIN\n    if (term_aux(_a_0) == CID_SNIL) {\n      if (term_aux(_b_0) == CID_SNIL) {\n        o[0] = _same_0;\n      } else {\n        u64 _sp_1 = term_peek(e.mem, _b_0);\n        u32 _f_8 = e.mem[_sp_1 + 0];\n        Term _f_9 = e.mem[_sp_1 + 1];\n        o[0] = 0;\n      }\n    } else {\n      u64 _sp_2 = term_peek(e.mem, _a_0);\n      u32 _f_10 = e.mem[_sp_2 + 0];\n      Term _f_11 = e.mem[_sp_2 + 1];\n      if (term_aux(_b_0) == CID_SNIL) {\n        o[0] = 0;\n      } else {\n        u64 _sp_3 = term_peek(e.mem, _b_0);\n        u32 _f_12 = e.mem[_sp_3 + 0];\n        Term _f_13 = e.mem[_sp_3 + 1];\n        if (_same_0 == 0) {\n          o[0] = 0;\n        } else {\n          u32 _v_0 = 0;\n          Term _o_0[1];\n          if (spin_1(e, _o_0, _f_10, _f_12) == 0) {\n            return 0;\n          }\n          _v_0 = (u32)_o_0[0];\n          r0 = _f_11;\n          r1 = _f_13;\n          r2 = _v_0;\n          _a_0 = r0;\n          _b_0 = r1;\n          _same_0 = r2;\n          WL_AGAIN(spin_0);\n        }\n      }\n    }\n  break;\n  }\n  return 1;\n}"
+    },
+    "spin_4": {
+      "startLine": 1304,
+      "sha256": "b086ba1b6b988780489de598e3a4fb3abdd6900d2adbc7984989f85e41f39f8a",
+      "counts": {
+        "term_peek": 3,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_4(Env e, THR Term* o, Term r0, Term r1) {\n  u32 wpoll = 0;\n  Term _term_1 = r0;\n  Term _key_1 = r1;\n  WL_SPIN\n    if (term_aux(_term_1) == CID_KTERM) {\n      u64 _sp_0 = term_peek(e.mem, _term_1);\n      Term _f_0 = e.mem[_sp_0 + 0];\n      Term _f_1 = e.mem[_sp_0 + 1];\n      u32 _f_2 = e.mem[_sp_0 + 2];\n      u32 _f_3 = e.mem[_sp_0 + 3];\n      Term _f_4 = e.mem[_sp_0 + 4];\n      Term _f_5 = e.mem[_sp_0 + 5];\n      u32 _f_6 = e.mem[_sp_0 + 6];\n      u32 _f_7 = e.mem[_sp_0 + 7];\n      Term _o_0[1];\n      if (spin_0(e, _o_0, _f_0, _key_1, 1) == 0) {\n        return 0;\n      }\n      o[0] = (u32)_o_0[0];\n    } else if (term_aux(_term_1) == CID_KLAMBDA) {\n      u64 _sp_1 = term_peek(e.mem, _term_1);\n      Term _f_8 = e.mem[_sp_1 + 0];\n      u32 _f_9 = e.mem[_sp_1 + 1];\n      u32 _f_10 = e.mem[_sp_1 + 2];\n      Term _f_11 = e.mem[_sp_1 + 3];\n      Term _f_12 = e.mem[_sp_1 + 4];\n      u32 _f_13 = e.mem[_sp_1 + 5];\n      u32 _f_14 = e.mem[_sp_1 + 6];\n      u32 _f_15 = e.mem[_sp_1 + 7];\n      Term _o_1[1];\n      if (spin_2(e, _o_1, term_ctr(CID_SCON, STAT_OFF + 4), _key_1) == 0) {\n        return 0;\n      }\n      o[0] = (u32)_o_1[0];\n    } else {\n      u64 _sp_2 = term_peek(e.mem, _term_1);\n      Term _f_16 = e.mem[_sp_2 + 0];\n      u32 _f_17 = e.mem[_sp_2 + 1];\n      Term _f_18 = e.mem[_sp_2 + 2];\n      u32 _f_19 = e.mem[_sp_2 + 3];\n      u32 _f_20 = e.mem[_sp_2 + 4];\n      Term _o_2[1];\n      if (spin_2(e, _o_2, term_ctr(CID_SCON, STAT_OFF + 10), _key_1) == 0) {\n        return 0;\n      }\n      o[0] = (u32)_o_2[0];\n    }\n  break;\n  }\n  return 1;\n}"
+    },
+    "spin_5": {
+      "startLine": 1357,
+      "sha256": "1e463d809bae68fb534dd1c95d8c6e9d245885c5cf12be25eb52f6354821f3bb",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 2,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_5(Env e, THR Term* o, u32 r0, Term r1, Term r2) {\n  u32 wpoll = 0;\n  u32 _same_0 = r0;\n  Term _term_2 = r1;\n  Term _key_2 = r2;\n  WL_SPIN\n    term_sink(e, _term_2);\n    term_sink(e, _key_2);\n    o[0] = _same_0;\n  break;\n  }\n  return 1;\n}"
+    }
+  },
+  "roles": {
+    "spin_0": "private equality walker",
+    "spin_4": "tag read",
+    "spin_5": "tag root disposal finish"
+  },
+  "mechanismPassed": true,
+  "conclusion": "Private generic-field comparison and public held static-literal comparisons preserve borrowed traversal of every term variant and both string inputs in this complete-product control. No per-term field ownership operations in read. Full compiler may have other caller constraints and needs its own shape gate.",
+  "limits": "Static C operation sites, not dynamic counts/timings. This audit performs no native execution and establishes no universal runtime lifetime proof."
+}

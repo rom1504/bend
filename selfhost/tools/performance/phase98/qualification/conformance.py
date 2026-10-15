@@ -5,13 +5,14 @@ import copy
 import json
 from pathlib import Path
 import sys
-from support import Bindings, ROOT, PERF, S, authenticate, baseline, freeze_methods, native_args, pin, read
+from support import Bindings, ROOT, PERF, S, authenticate, backend_policy, baseline, freeze_methods, native_args, pin, read
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--b1-build', type=Path, required=True)
     p.add_argument('--b2-build', type=Path, required=True)
+    p.add_argument('--backend-policy', type=Path)
     p.add_argument('--out', type=Path, required=True)
     a = p.parse_args(); out = a.out.resolve(); assert not out.exists(); out.mkdir(parents=True)
     b = Bindings(); ctx = baseline(b); freeze_methods(out, b)
@@ -24,6 +25,8 @@ def main():
         producer = authenticate(receipt['binary']['file'], stage, receipt['source']['file'], path, b, ctx)
         plan['roles'][stage] = dict(producer=producer, argv=native_args(ctx, producer, plan['sourceMarker'], plan['outputMarker']))
     assert plan['roles']['b1']['producer']['source'] == plan['roles']['b2']['producer']['source']
+    if a.backend_policy:
+        plan['backendPolicy'] = backend_policy(a.backend_policy, plan['roles']['b1']['producer']['source'], b)
     for row in old['inputs']: b.bind(row)
     for row in old['eligible'] + old['excluded']: b.bind(row['source'])
     for row in old['negatives']: b.bind(row['source'])

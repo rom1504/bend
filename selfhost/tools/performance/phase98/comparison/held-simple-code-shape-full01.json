@@ -1,0 +1,72 @@
+{
+  "kind": "phase98-held-simple-full-compiler-c-audit",
+  "complete": true,
+  "targetsRun": false,
+  "c": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-simple-checked01/program.c",
+    "bytes": 17764750,
+    "sha256": "68731d512d2a3dcd87ab98acae6ff584e7dc6a4f1f53d2a8b05bfc067a73c35c"
+  },
+  "checked": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-simple-checked01/report.json",
+    "bytes": 17636,
+    "sha256": "6e71e53b652158bb87ea2e43b755573d516af3d79985c8fc2f19343fdd95a16a"
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-source02/compiler.bend",
+    "bytes": 1759452,
+    "sha256": "5debb63d0c3f2fdd2b096cff9fd30e6770c06438a26216e6daa3af9569b26c46"
+  },
+  "recipe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-source02/changes.json",
+    "bytes": 1742,
+    "sha256": "77f96f3c217e1335347888caf38eed6d331c9bbfd10f65fde59596fe3cc1c901"
+  },
+  "functions": {
+    "spin_2": {
+      "startLine": 14302,
+      "sha256": "888a2e47c9a1012bfb2a1d512cf6eb1974f8a07d60709aedace8b119bd6daf32",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_2(Env e, THR Term* o, Term r0, Term r1) {\n  u32 wpoll = 0;\n  Term _a_0 = r0;\n  Term _b_0 = r1;\n  WL_SPIN\n    u32 _v_2 = 0;\n    Term _o_2[1];\n    if (spin_3(e, _o_2, _a_0, _b_0, 1) == 0) {\n      return 0;\n    }\n    _v_2 = (u32)_o_2[0];\n    Term _o_3[1];\n    if (spin_5(e, _o_3, _v_2, _a_0, _b_0) == 0) {\n      return 0;\n    }\n    o[0] = (u32)_o_3[0];\n  break;\n  }\n  return 1;\n}"
+    },
+    "spin_3": {
+      "startLine": 14239,
+      "sha256": "afa54ce398a4462a49f1e374faff5f17b8143b5b2507f15f869f31e880ee06a6",
+      "counts": {
+        "term_peek": 3,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_3(Env e, THR Term* o, Term r0, Term r1, u32 r2) {\n  u32 wpoll = 0;\n  Term _a_1 = r0;\n  Term _b_1 = r1;\n  u32 _same_0 = r2;\n  WL_SPIN\n    if (term_aux(_a_1) == CID_SNIL) {\n      if (term_aux(_b_1) == CID_SNIL) {\n        o[0] = _same_0;\n      } else {\n        u64 _sp_3 = term_peek(e.mem, _b_1);\n        u32 _f_21 = e.mem[_sp_3 + 0];\n        Term _f_22 = e.mem[_sp_3 + 1];\n        o[0] = 0;\n      }\n    } else {\n      u64 _sp_4 = term_peek(e.mem, _a_1);\n      u32 _f_23 = e.mem[_sp_4 + 0];\n      Term _f_24 = e.mem[_sp_4 + 1];\n      if (term_aux(_b_1) == CID_SNIL) {\n        o[0] = 0;\n      } else {\n        u64 _sp_5 = term_peek(e.mem, _b_1);\n        u32 _f_25 = e.mem[_sp_5 + 0];\n        Term _f_26 = e.mem[_sp_5 + 1];\n        if (_same_0 == 0) {\n          o[0] = 0;\n        } else {\n          u32 _v_3 = 0;\n          Term _o_1[1];\n          if (spin_4(e, _o_1, _f_23, _f_25) == 0) {\n            return 0;\n          }\n          _v_3 = (u32)_o_1[0];\n          r0 = _f_24;\n          r1 = _f_26;\n          r2 = _v_3;\n          _a_1 = r0;\n          _b_1 = r1;\n          _same_0 = r2;\n          WL_AGAIN(spin_3);\n        }\n      }\n    }\n  break;\n  }\n  return 1;\n}"
+    },
+    "spin_5": {
+      "startLine": 14288,
+      "sha256": "d78a9aea2d5756b4d0cadcc5c1ca7efb27127ba2f076558c9a44a069bf9efdbd",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 2,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_5(Env e, THR Term* o, u32 r0, Term r1, Term r2) {\n  u32 wpoll = 0;\n  u32 _same_1 = r0;\n  Term _left_0 = r1;\n  Term _right_0 = r2;\n  WL_SPIN\n    term_sink(e, _left_0);\n    term_sink(e, _right_0);\n    o[0] = _same_1;\n  break;\n  }\n  return 1;\n}"
+    }
+  },
+  "roles": {
+    "spin_2": "public equality wrapper",
+    "spin_3": "unchanged private equality walker",
+    "spin_5": "root disposal finish"
+  },
+  "conclusion": "Full compiler uses borrowed equality traversal and drops the two original roots only in finish. No carrier allocation; three-line source mechanism remains active with all compiler callers. Static counts do not establish dynamic lifetime correctness or timing."
+}

@@ -199,8 +199,7 @@ public wrapper plus the finish helper: **+3 physical lines / +99bytes**, SHA256
 [`prepare-held-simple.py`](../../selfhost/tools/performance/phase98/comparison/prepare-held-simple.py)
 records exact forward/inverse transport. Root reports1,444 native products and
 four exact-source universal laws pass. Its public Boolean contract is unchanged;
-the obsolete carrier's observation law disappears with the helper itself. Its
-full compiler acquisition/build/screen is pending at this revision.
+the obsolete carrier's observation law disappears with the helper itself. Its full compiler screen subsequently passes as recorded below.
 
 ## Stage boundary: own C does not yet inherit the full mechanism
 
@@ -283,3 +282,161 @@ borrowing. Keeping the source transformation in an explicit native profile is a
 narrow alternative if cross-target cost regresses. The candidate changes only
 how a tag is observed and retains all term constructors/payloads; it does not
 remove metadata or alter the KTerm representation.
+
+
+The simpler full compiler now also passes the shape and real-screen gates.
+`held-simple-checked01/program.c` uses `spin_3` at14239 with three `term_peek`
+sites and zero ownership operations; `spin_5` at14288 drops the two original
+roots after comparison. Exact pins/bodies are in
+[`held-simple-code-shape-full01.json`](../../selfhost/tools/performance/phase98/comparison/held-simple-code-shape-full01.json).
+Its completed48-request balanced screen passes complete C and diagnostic equality
+with unchanged inputs. Equal-case geometric ratios are **0.856190 request** and
+**0.917094 process**, a14.4% and8.3% reduction respectively. Per-case medians,
+ranges and paired values are retained in
+[`held-simple-screen-summary01.json`](../../selfhost/tools/performance/phase98/comparison/held-simple-screen-summary01.json).
+The simpler version therefore preserves the measured benefit without a new
+carrier datatype. No native B2 or whole-self speed conclusion follows from this
+B1 screen alone.
+
+Tag v3's correctness proof passes, but its emitted code **falsifies the proposed
+whole-term borrowing mechanism**. `spin_4` takes all three term variants,
+drops unrelated fields and frees their shells just like the original projection.
+The owning public equality call propagates ownership of the selected child back
+to the entire term. Exact code is preserved in
+[`tag-code-shape03.json`](../../selfhost/tools/performance/phase98/comparison/tag-code-shape03.json).
+The prepared full v3 source is retained without launching its expensive build.
+
+Two tiny follow-ups preserve v3: `tag-helpers04.bend` calls the private borrowed
+walker only for the generic KTerm tag, while static Lam/Lit branches use public
+held equality; `tag-helpers05.bend` additionally holds the key through that private
+call, preventing a last-use key in the generic branch from potentially poisoning
+the shared walker's inference. Their96-product controls are separately frozen as
+`tag-controls04` and `tag-controls05`. Neither changes the intended universal tag
+law; each must first pass actual code-shape and native complete-product gates.
+
+
+Tag v4 now passes the tiny emitted-code mechanism gate. In
+`tag-control-checked04/program.c`, the private equality walker `spin_0` at1221
+and the tag read `spin_4` at1304 each contain three `term_peek` sites and zero
+`ctr_take`, `term_sink`, `term_keep`, `spare_free` or heap allocations. All three
+term variants are observed without taking their fields. Exact bodies/pins are in
+[`tag-code-shape04.json`](../../selfhost/tools/performance/phase98/comparison/tag-code-shape04.json).
+The actual96-product runtime comparison and full-context inference remain separate
+gates. The key-held v5 fallback remains prepared but unexecuted.
+
+The full v4 derivative is `selfhost/build/phase98/tag-source04/compiler.bend`,
+SHA256 `2811d3c3329587cbc2278f1ed5660986b6b3ebf9bccd9c50441c5a05f2e8a805`.
+It has the same1,366 selected calls; relative to D04 it adds23 physical lines and
+removes8,661bytes. Its helper is exact `tag-helpers04.bend`; the extra line versus
+v3 is an explanatory comment. `prepare-tag-full-v4.py` records the same complete
+D04-based composite replay and exact inverse, with per-module call counts.
+This preparation alone does not claim a compiler speedup.
+
+
+The full v4 acquisition also passes its shape gate, resolving the caller-context
+uncertainty. `tag-full-checked04/program.c` has zero holes; `spin_2` at14269 reads
+all three term variants through `term_peek` and never takes their fields. Its
+generic branch calls the borrowed `spin_3` then releases the key once; no
+unrelated term fields are dropped. The private equality worker remains three
+peek sites with zero ownership operations. Exact bodies/pins are in
+[`tag-code-shape-full04.json`](../../selfhost/tools/performance/phase98/comparison/tag-code-shape-full04.json).
+Upstream therefore handles the key as a call followed by root cleanup; the feared
+ownership poisoning does not occur in this actual full compiler. Full v5 source
+is preserved as an unexecuted fallback at `tag-source05` (26 extra physical lines),
+but its acquisition/build is unnecessary for the already obtained v4 mechanism.
+
+## Separate scalar observation candidate
+
+Actual held-simple compiler C still consumes all three term variants in `ix`
+(`spin_8` at14418) and `qt` (`spin_9` at14473), each with three take and nine sink
+sites. Scalar origin readers nearby already borrow; not every projection needs
+the same treatment. Returning an ID or quantity does not require a child String
+or List to escape, making these two a bounded reuse of the retained-root pattern.
+
+[`scalar-helpers01.bend`](../../selfhost/tools/performance/phase98/comparison/scalar-helpers01.bend)
+adds one shared `finish(value,term): value`, calls unchanged renamed readers while
+holding the original term, and preserves public `ix`/`qt` signatures. The full
+source derivative `scalar-source01/compiler.bend`, SHA256
+`28ff9f5dc79b4c59ef9ca1d87170a0a79b681ae248b42943743f65b435f4699c`, composes
+held-simple plus these two wrappers:14 extra physical lines versus D04,11 versus
+held-simple. It does not rewrite callers. Exact replay/inverse and production
+body extraction are recorded by `prepare-scalars.py` and `changes.json`.
+
+The separately frozen `scalar-controls01` baseline/candidate return10 complete
+records including original full terms, old/new IDs and quantities, and reads of
+reconstructed expressions. Inputs cover every constructor, zero/U32-max fields,
+Unicode, nested children, duplicate removals, spans and literal payloads. This
+hypothesis has no execution or speed claim at this revision. The universal
+obligations are equality of both projections for arbitrary original KTerm values;
+actual borrowed C and native full-product equality remain additional gates.
+
+
+## Combined equality and tag screen
+
+The completed `tag-full-screen04` screen verifies48 full C outputs and48 complete
+diagnostics, all against the original qualified products, with unchanged inputs.
+The checked source is exact tag-v4 SHA256
+`2811d3c3329587cbc2278f1ed5660986b6b3ebf9bccd9c50441c5a05f2e8a805`.
+Four balanced rounds give:
+
+| Source | Baseline request median ms | Held equality + fused tag median ms | Ratio |
+|---|---:|---:|---:|
+| small | 58.0 | 48.5 | 0.8362 |
+| numeric_closed | 104.5 | 78.0 | 0.7464 |
+| lexer_original | 356.0 | 302.5 | 0.8497 |
+| map_closed | 1430.5 | 1208.5 | 0.8448 |
+| functions65 | 227.0 | 184.0 | 0.8106 |
+| unicode | 57.5 | 46.0 | 0.8000 |
+
+Equal-case geometric ratios are **0.813832 request** and **0.878177 process**:
+18.6% and12.2% less time than the original native B1. This combined candidate is
+promising across all six sources. Its screen is separate from the held-simple
+screen, so the difference between0.856190 and0.813832 is not a paired causal
+measurement of tag fusion alone. All sample ranges and individual paired ratios
+are retained in
+[`tag-screen-summary04.json`](../../selfhost/tools/performance/phase98/comparison/tag-screen-summary04.json).
+The independent exact-source tag proof at `tag-proof-check04` accepts six laws.
+Native full-product controls, B2 inheritance and whole-self timing remain distinct
+qualification stages.
+
+A minimal stable release plan is recorded in
+[`promotion-plan.md`](../../selfhost/tools/performance/phase98/comparison/promotion-plan.md).
+It preserves the installed JS source/image and historical native07 launcher,
+uses explicit native profile source replay, and proposes one stage-selectable
+compact manifest only after actual source-bound B1/B2 gates. No public release is
+admitted merely by this screen or by source proof acceptance.
+
+
+The scalar candidate passes its first real gates: root reports10 native complete
+records and two independent universal laws accepted. Full acquisition has zero
+holes. `scalar-full-checked01/program.c` uses `spin_9` at14418 for the ID reader
+and `spin_12` at14490 for the quantity reader; each has three `term_peek` sites
+and zero take/sink/keep/free/allocation sites. Shared finish `spin_10` drops the
+original term once after scalar evaluation. Exact C/source/body evidence is in
+[`scalar-code-shape-full01.json`](../../selfhost/tools/performance/phase98/comparison/scalar-code-shape-full01.json).
+This obtains the intended ownership mechanism in the full compiler context;
+compiler speed remains unmeasured until its balanced screen.
+
+
+## Public native host preparation
+
+The proposed small host is now prepared at `selfhost/native.py` and
+`selfhost/tools/native/{launch.py,assets.py,README.md}`. It consumes the admission
+collector's agreed versioned schema and a separate explicit selection pointer.
+No selection file/default has been created by this lane. Historical native07 and
+the installed JavaScript release remain unchanged.
+
+The launcher authenticates selected source/image/transport assets before and
+after execution, preserves the existing resource guard and no-overwrite atomic
+output behavior, and supports separately labeled B1/B2 argv conventions. The
+archive method is an explicit derivative of the preserved Phase90 public-assets
+code, with streaming full-byte hashes, exact modes/members, same-root restoration
+and missing-only writes. It seals both qualified images and optional pinned
+profile-reproduction inputs, without copying the large historical gate closure.
+
+`comparison/public-host-preparation01.json` pins old/new methods and the exact
+scope of preparation. Products independently reviewed the agreed schema against
+its admission collector. Only Python3.9 AST parsing and data-shape review have
+occurred; no fabricated release, target invocation, CLI pass or archive-restoration
+pass is claimed. Actual completed admission, selected CLI controls and capsule
+verification remain necessary before a new default can be published.

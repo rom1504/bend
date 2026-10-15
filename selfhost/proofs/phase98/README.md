@@ -12,6 +12,13 @@ all five theorem bodies passed source checking, safe BendTT emission, and the
 independent pinned BendTT kernel. The inventory contains no opaque definitions.
 The deliberately unequal kernel control was rejected separately.
 
+The [deduplicated catalog](catalog02.json) currently records 14 distinct Phase98
+public contracts and 37 support lemmas, rather than adding repeated checks of the
+same laws. Together with Phase96 and the explicitly modeled Phase97 ownership
+protocol, this is 49 public contracts and 47 supports. See
+[the ongoing-source workflow](RUNNING.md) for extraction from the actual compiler
+being edited, root-run commands, boundaries and a measured fast-tier budget.
+
 | Public law | Exact subject |
 | --- | --- |
 | `consuming_equal_specification` | Actual D04 `p88_string_eq` equals recursive structural equality using actual Base `Char.is_eq`. |
@@ -62,6 +69,30 @@ Additional accepted packages and the remaining prepared attempt:
   [`tag-proof-check01`](../../build/phase98/tag-proof-check01/report.json).
   Exact `KTerm` and `tg` are extracted from the actual compiler, with only the
   leading unsafe annotation removed from the total observer for safe checking.
+- The same frozen tag contract and proof also passed for the smaller v4 and
+  fallback v5 implementations in
+  [`tag-proof-check04`](../../build/phase98/tag-proof-check04/report.json) and
+  [`tag-proof-check05`](../../build/phase98/tag-proof-check05/report.json).
+  These are implementation instances, not new laws. The v3 value proof passed
+  even though its C ownership mechanism failed inspection; v4 passed that
+  separate inspection. The [v4 bridge audit](comparison/tag-source04-bridge.json)
+  binds the accepted declarations to the full candidate and 1,366 substitutions.
+- [`comparison/scalars.bend`](comparison/scalars.bend): two public laws preserve
+  the complete `ix` and `qt` results over the exact production datatype. Both
+  independently passed in
+  [`scalar-proof-check01`](../../build/phase98/scalar-proof-check01/report.json).
+  The original projection bodies are reference functions with only their
+  declaration names changed; the body identity is authenticated reversibly.
+- [`permission/laws.bend`](permission/laws.bend): exact whitelist and
+  guard contracts for the real source02 foreign-admission predicate. The
+  [preparer](permission/prepare.py) checks its full source replay and actual use.
+  All seven laws independently passed in
+  [`permission-proof-check01`](../../build/phase98/permission-proof-check01/report.json):
+  four new public contracts, one new membership support and two inherited
+  comparator laws. Host authentication, unsafe traversal and scoped backend
+  routing remain separate obligations. The three guard laws are useful public
+  corollaries of the exact contract; distinct declarations do not imply logical
+  independence.
 - [`prepare-challenges.py`](prepare-challenges.py): candidate-only snapshots of
   independently selected semantic faults, each with law-free helper admission
   before unchanged-law rejection. It also records the independently chosen

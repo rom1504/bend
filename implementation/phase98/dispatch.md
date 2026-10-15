@@ -72,7 +72,7 @@ Equal-case request geometric ratio is1.007493; process-wall ratio1.004350.
 This is neutral/slightly slower, with ordinary run noise; no hoist promotion.
 It establishes no candidate B2, full-self or product-runtime gain.
 
-`dispatch/hoist-c-shapes01.json` pins the actual upstream baseline C and the
+`dispatch/hoist-c-shapes02.json` pins the actual upstream baseline C and the
 root-acquired `dispatch-checked01/program.c`, and retains the exact `spin_1`
 constructor observer body. Within the generated infer family, syntactic tag
 observer calls fall15→4, while heap allocations remain99 and closure constructor
@@ -85,8 +85,51 @@ At the infer entry (`program.c:418046`), the cached tag gains its own retain and
 the false-branch closure grows15→16 fields. The original shared term observer
 still calls `ctr_take` over all fields and sinks non-tag boxed fields. Hoisting
 removes repeated projections but leaves closure ownership work and adds a tag
-capture, consistent with the neutral screen. Dispatch/direct candidates seek
-the remaining closure cost; their performance is still pending.
+capture, consistent with the neutral screen.
+
+## Wide dispatch outcome
+
+The root's `dispatch-wide-screen01/report.json` records48 exact C and diagnostic
+comparisons. Request medians across four balanced rounds are:
+
+| Source | Baseline ms | Wide ms | Ratio |
+| --- | ---: | ---: | ---: |
+| small |59|58|0.9831|
+| numeric_closed |99.5|98.5|0.9899|
+| lexer_original |356.5|369|1.0351|
+| map_closed |1393|1350.5|0.9695|
+| functions65 |229.5|222|0.9673|
+| unicode |57.5|56.5|0.9826|
+
+The equal-case request ratio is0.987662; process-wall ratio1.001928. The modest
+request reduction and neutral process result do not justify525 extra source
+lines. This candidate is declined for production. Its laws and finite controls
+remain useful applicability evidence and are tracked separately from promotion.
+
+`dispatch/wide-c-shapes02.json` pins the actual upstream-generated17,616,778-byte
+C (`d15a5940a105f46969fbdf3b722f663df67d8772ff1e314cd9999fb6e4a65126`).
+The audit locates the exact three-constructor tag observer by decoded Lam/Lit
+constants and field behavior; its symbol changes from `spin_1` to `spin_32`, so
+counting the old symbol in candidate C would be wrong. The audit method is frozen
+in `dispatch-code-methods01/methods/`; exploratory01 reports remain preserved.
+
+| Generated family | Tag observations | Heap allocation sites | Closure construction sites | Explicit sinks |
+| --- | ---: | ---: | ---: | ---: |
+| infer_node |15→5|99→50|128→52|18→74|
+| check_node |16→9|136→102|164→108|26→52|
+| ka_node |8→2|29→13|44→12|2→14|
+| ka_type |11→1|12→0|32→0|7→60|
+| core_beta |1→1|2→0|4→0|1→1|
+| core_rebuild |1→1|2→0|4→0|1→1|
+| core_apply_span |1→1|4→2|4→0|0→0|
+| nc_lower_live_to |13→13|172→95|220→108|34→119|
+
+These static family counts include inlined branch work. They establish the
+intended closure-removal mechanism, not execution frequency or a predicted
+runtime reduction. More explicit sinks appear because disposal moves from
+discarded closure bodies to direct selected branches. Remaining nested branch
+conditionals still allocate closures. The actual compiler screen decides the
+performance outcome; source counts cannot substitute for it.
 
 ## Law and finite-control boundaries
 
@@ -105,8 +148,11 @@ branch indices, complete escaped tag, actual constructor literal discriminator,
 and the surviving complete KTerm with metadata, duplicate children/removals and
 source spans. It covers every recognized tag, generic Lit/Efq/FUnboundVar,
 unknown/prefix/suffix/case/NUL/Unicode strings, both lambda quantity flags and
-three literal kinds. Native and genuine-JS execution remain root-owned. These
-controls exercise selectors and observation aliases, not recursive branch bodies.
+three literal kinds. Native and genuine-JS execution remain root-owned. The root's
+`dispatch-controls-check01/report.json` passes all41 through genuine JS B2, with
+successful checking and unchanged inputs. Native execution is not established by
+that result. These controls exercise selectors and observation aliases, not
+recursive branch bodies.
 
 `dispatch-production01/manifest.json` separately reuses the unchanged226 Phase96
 full-value expectations and32 native selections. It replaces only the parent
@@ -115,7 +161,10 @@ and helpers, adding exact D04 comparator dependencies. Production substitution
 reaches these actual changed operations. The parent corpus does not extract or
 invoke `core_beta`; the other17 changed wide callers remain outside this bridge.
 All expected values, original inputs and native stdout remain byte-identical to
-the independently accepted Phase96 parent. Execution is pending root evidence.
+the independently accepted Phase96 parent. The root's
+`dispatch-production-check01/report.json` passes all226 through genuine JS B2,
+with successful checking and unchanged inputs. Its32 native cases remain a
+separate unclaimed gate until actual execution evidence exists.
 
 ## Qualification path
 
@@ -140,3 +189,22 @@ false until the root combines self-consistency with semantic gates. Separate
 methods cover4live+4cached controls,3 exact rejections,45 complete C identities,
 and the unchanged native69+3 harness with31 explicit exclusions. No successful
 self-emission is labeled a whole-compiler proof.
+
+The intentional-backend path is separately frozen in `qualification-methods04`.
+`observer-backend-policy02/policy.json` replays the exact permission-source recipe
+and freezes all45 original full stdout/stderr expectations before target runs.
+Candidate B1 must preserve the independent baseline B2 diagnostic for its exact
+self source; candidate B2 must reproduce candidate B1's complete self C. The
+changed-backend gates require B1/B2 emitted-C agreement and actual matched-Clang
+program execution against the unchanged expectations. Historical C differences
+are recorded explicitly. This is preparation, not a claim those targets passed.
+An offline snapshot03 policy attempt misinterpreted sequential edit offsets;
+its failure is retained in `observer-backend-policy01/failure.json` and corrected
+without changing source or expected outputs.
+
+The later data-only admission collector combines successful self, controls,
+broad45 and native69 evidence into a compact nondefault native-stage manifest.
+Changed backends additionally need source-bound permission/refusal/alias control
+evidence. Its selected request assets are separate from the heavy historical
+validation closure; the independent public launcher/archive lane consumes that
+schema. No admission or default selection follows merely from preparing tools.

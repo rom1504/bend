@@ -1,0 +1,43 @@
+{
+  "kind": "phase98-stable-native-host-preparation",
+  "complete": true,
+  "targetsRun": false,
+  "defaultSelected": false,
+  "oldMethods": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/public-assets.py",
+      "sha256": "f7b4f73b1c785f702a19504a8afc95a2db1cf29678fe1f51da9fcaa9f24c3f13",
+      "bytes": 7341
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/native.py",
+      "sha256": "05e3fa2a64d6c7e1555babc46409ece2a4ab0de5458b1b8f70d02347e6dffda1",
+      "bytes": 5897
+    }
+  ],
+  "newMethods": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/native.py",
+      "sha256": "a4a22cdef938e825e664b2926ae2f6eadbfb5a71372ea5aca53d70e658fb0497",
+      "bytes": 236
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/native/launch.py",
+      "sha256": "7384cafc1b85f662dd6c0b9ffefe4fae3dbf3ad12e099e92db0f75dc1c0ccaa6",
+      "bytes": 7128
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/native/assets.py",
+      "sha256": "9e37771e369f83431b3e14647fe5d12f6b8d6161e2e349fb901b8071bdef9a2a",
+      "bytes": 7729
+    }
+  ],
+  "expectedQualificationSchema": "phase98-native-candidate-qualification v1, complete+qualified, explicit stages/assets",
+  "changes": [
+    "New selection schema and explicitly chosen B1/B2 stage; source identity comes from independently admitted release, not hardcoded D04.",
+    "Normal request validates only selected source/image/transport assets; offline collector validates complete provenance.",
+    "Preserves resource guard, before/after inputs, complete repeated C, atomic no-overwrite output and receipts.",
+    "Archive preserves Phase90 streaming hashes, member/mode/path checks, same-root ABI, minimum free-space checks and atomic missing-only restoration; enumerates both qualified images plus source and optional explicit profileAssets."
+  ],
+  "validation": "Python3.9 ast.parse only. No release fabricated, compiler executed, public CLI gate run, capsule sealed/restored, or default selection created. Actual admitted manifest/positive+negative CLI/restore controls remain required."
+}

@@ -105,6 +105,17 @@ def freeze_methods(out, bindings):
     bindings.bind(PERF / 'phase92/comparison/support.py')
 
 
+def backend_policy(file, source, bindings):
+    """An explicit source-bound change intent never waives semantic gates."""
+    policy_pin = bindings.bind(file); policy = read(policy_pin['file'])
+    assert policy['kind'] == 'phase98-changed-backend-intent' and policy['complete']
+    assert policy['source'] == source and policy['diagnosticsMustRemainExact']
+    assert policy['requireCandidateFixedPoint'] and policy['requireGeneratedProgramExecution']
+    assert policy['publicAdmission'] is False and policy['imageQualified'] is False
+    for row in policy['inputs']: bindings.bind(row)
+    return policy_pin
+
+
 SUCCESS_DIAGNOSTIC = 'ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n\n'
 CLOCK_LINE = r'^(?:base_prepare_ms=\d+|runtime_prepare_ms=\d+|request=\d+ request_ms=\d+ consumed_chars=\d+)\n'
 
@@ -137,7 +148,7 @@ def run_request(guard, context, producer, source, out, seconds=300, live=False, 
     if output.exists(): row['output'] = pin(output)
     if negative is not None:
         row['expectedDiagnostic'] = strip_clocks(negative)
-        row['passed'] = bool(process['returncode'] == 1 and not process.get('stoppedFor') and not process.get('interrupted') and not stdout and not output.exists() and diagnostic == row['expectedDiagnostic'])
+        row['passed'] = bool(process['complete'] and process['returncode'] == 1 and not process.get('stoppedFor') and not process.get('interrupted') and not stdout and not output.exists() and diagnostic == row['expectedDiagnostic'])
     else:
         unsafe = re.fullmatch(r'SOME PROOFS FAIL\nError: (\d+) defs rely on unsafe or foreign code:\n((?:- [^\n]+\n)+)\n', diagnostic)
         row['unsafeOrForeignDefinitions'] = int(unsafe[1]) if unsafe else 0 if diagnostic == SUCCESS_DIAGNOSTIC else None

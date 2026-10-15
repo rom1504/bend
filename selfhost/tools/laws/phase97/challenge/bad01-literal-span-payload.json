@@ -1,0 +1,48 @@
+{
+  "id": "bad01-literal-span-payload",
+  "label": "Span update resets a numeric literal payload",
+  "classification": "synthetic-semantic-fault",
+  "rationale": "A structural updater rebuilt with a default numeric field silently changes a closed literal while updating only its source range.",
+  "witness": {
+    "expression": "k_with_span(KLiteral{\"U32\", 37, \"\", 2, 4}, 11, 19)",
+    "baselineExpected": "KLiteral{\"U32\", 37, \"\", 11, 19}",
+    "challengeExpected": "KLiteral{\"U32\", 0, \"\", 11, 19}",
+    "returnType": "KTerm",
+    "baselineValueBend": "KLiteral{\"U32\", 37, \"\", 11, 19}",
+    "challengeValueBend": "KLiteral{\"U32\", 0, \"\", 11, 19}",
+    "source": {
+      "path": "selfhost/tools/laws/phase97/challenge/bad01-literal-span-payload.witness.bend",
+      "bytes": 442,
+      "sha256": "37bf5c359a1cdca6586caa9ab1d4607919976de14c420378ea730299d008b529"
+    }
+  },
+  "domain": "Finite well-typed helper data.",
+  "expectedDisposition": "reject-semantic-change",
+  "executed": false,
+  "schema": "phase97-independent-challenge-recipe-v1",
+  "kind": "bad",
+  "file": "selfhost/src/core/term.bend",
+  "function": "k_with_span",
+  "before": "      KLiteral{kind, number, text, newBegin, newEnd}",
+  "after": "      KLiteral{kind, 0, text, newBegin, newEnd}",
+  "expectedBehavior": "A structural updater rebuilt with a default numeric field silently changes a closed literal while updating only its source range.",
+  "edits": [
+    {
+      "source": {
+        "path": "selfhost/src/core/term.bend",
+        "bytes": 19671,
+        "sha256": "d75234683496e33fcb59cd3598979245700733236d9326025d298f9c33ef33d3"
+      },
+      "before": "      KLiteral{kind, number, text, newBegin, newEnd}",
+      "after": "      KLiteral{kind, 0, text, newBegin, newEnd}",
+      "expectedOccurrences": 1,
+      "line": 601,
+      "changedSourceSha256": "db2f9e4041b09f5c10cd4c5af40ff3d2b548bd2c1e4c6bce2bf155b3818b78e9",
+      "changedSourceBytes": 19666
+    }
+  ],
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Independent maintained-source reasoning before suite results."
+  }
+}

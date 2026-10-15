@@ -11,6 +11,22 @@ These are constraints for future changes, not a proof of the whole compiler.
 The distinction matters: most production algorithms remain unsafe, and the
 compiler's generated code, runtime and scheduler are not verified by BendTT.
 
+The [Phase97 experiments](../../implementation/phase97/README.md) test usefulness
+with independently selected faults and legitimate rewrites. The original suite
+detects five semantic faults, rejects one ill-formed mutant before execution,
+and lacks extraction coverage for two helpers. The supplemental campaign adds
+those two frozen witnesses: 228 JS cases and 34 native witnesses pass. These are
+a separate Phase97 extension, not a silent change to Phase96's 226-case count.
+Both equivalent finite controls pass; a literal corruption also fails an unchanged
+formal representation law after standalone helper admission.
+
+Phase97 additionally contributes four public ownership-model laws and three
+support lemmas, all independently checked. They prove a temporary retain/read/
+release replacement in arbitrary modeled contexts. They do not verify concrete
+handles or escaped child ownership: a separate missing-retain C mutation compiles
+and then fails at runtime. See the [proof boundary](../../implementation/phase97/semantic-pilot.md)
+and [supplemental commands](../../selfhost/tools/laws/phase97/README.md).
+
 ## Run the suite
 
 From the repository root, use a fresh output directory each time:

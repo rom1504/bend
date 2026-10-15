@@ -1,4 +1,40 @@
-# Active frontier: Phase96 compiler law foundation
+# Active frontier: Phase97 usefulness experiments complete
+
+[Report](../implementation/phase97/README.md) ·
+[Evidence/methods](../selfhost/tools/laws/phase97/README.md) ·
+[Experiment](phase97/P97-001-law-usefulness.md).
+
+Frozen independent challenge selection: five semantic detections, one affine
+admission refusal, two helpers absent from extraction, two equivalent controls
+accepted. Preserve that original score. Two pre-frozen gap witnesses plus the
+separate separator typing repair yield228 JS/34 native baseline passes and three
+follow-up semantic counterexamples. One independent payload fault also fails
+unchanged span_put_back after standalone safe helper admission.
+
+Four public laws+three support lemmas prove a temporary retain/read/release
+replacement in arbitrary contexts of an immutable single-cell model. Independent
+BendTT accepts26 bodied definitions, zero opaque; three admitted bad protocols
+fail. Separately, removing an actual generated-C child retain compiles then fails
+at runtime. The model omits individual handles and escaping child ownership;
+prove those and the actual lowering correspondence before using it to justify
+native lifetime optimizations. No runtime/parallel/GPU or whole-compiler proof.
+
+f_find consume-once candidate passes24 complete-value JS/native controls and five
+caller-mutant checks. Six extracted workloads take0.318–0.345× time; real nativeB1
+screen is only0.990332× request/0.991748× process,48 exact C/diagnostic comparisons.
+Some baseline timings vary; do not call this a material gain or promote its+17
+lines. No fullself, candidateB2, broad45/runtime campaign or installed change.
+
+Next useful work if requested: attribute inclusive cost before another helper
+rewrite/build; target shared observation/ownership across callers. Add focused
+contracts for parent/child transfer, first-match/cache correspondence and binding
+semantics. The roadmap scopes whole-compiler correctness as a separate long-term
+project, while optimization continues under explicit local obligations.
+
+All targets root-owned and serial; offline preparation/review only. Preserve
+source/method failures and the micro repetition-cap correction. No PR comment.
+
+# Previous frontier: Phase96 compiler law foundation
 
 [Report](../implementation/phase96/README.md) ·
 [Law guide](../docs/self_hosted/COMPILER_LAWS.md) ·

@@ -1,0 +1,163 @@
+{
+  "schema": "phase97-independent-challenge-manifest-v1",
+  "frozen": "2026-10-15T19:15:24.050375+00:00",
+  "sourceCommit": "52065f4e1a793805698803873c51234f79f35ed9",
+  "producer": {
+    "path": "selfhost/tools/laws/phase97/challenge/freeze.py",
+    "bytes": 15526,
+    "sha256": "13f465331b260c2a1e9eeac55b047aea37c984a0c5950d3b9267710684437123"
+  },
+  "sourceInputs": [
+    {
+      "path": "selfhost/src/core/term.bend",
+      "bytes": 19671,
+      "sha256": "d75234683496e33fcb59cd3598979245700733236d9326025d298f9c33ef33d3"
+    },
+    {
+      "path": "selfhost/src/core/index.bend",
+      "bytes": 14879,
+      "sha256": "51ce95941f955ed1c65f01ee88af31e35180c94d30ada97f359c6aa71dd47edb"
+    },
+    {
+      "path": "selfhost/src/back/native/uses.bend",
+      "bytes": 1740,
+      "sha256": "026f30482001768d563f66508d2600e6bc38fe2fd0dab9a52333ddb4c1527d31"
+    },
+    {
+      "path": "selfhost/src/back/native/ir.bend",
+      "bytes": 929,
+      "sha256": "dada548b975e325d96735f94b4e65e56d0d47b8e22851bc6815bed7063e0339b"
+    },
+    {
+      "path": "selfhost/src/back/native/text.bend",
+      "bytes": 3305,
+      "sha256": "acc430c939a7dd6b404ba7a13f762019b717a62313ae3066234f78bb62df04c0"
+    },
+    {
+      "path": "selfhost/src/back/native/identity.bend",
+      "bytes": 2476,
+      "sha256": "8d1c0ad2d35cb5072615ad6e23b99ec7db3c956679c1894d847869608be0e16a"
+    },
+    {
+      "path": "selfhost/src/back/native/tables.bend",
+      "bytes": 11881,
+      "sha256": "ce25c25c2e60526d8795e01eb0f9ed6ca1c7122811aca0032420066f6e317128"
+    },
+    {
+      "path": "selfhost/src/back/native/bridge.bend",
+      "bytes": 34875,
+      "sha256": "d2165a184703a0e2c9355f6cf1081b5582c9f34dd0cb22757495e8bc8fd30358"
+    }
+  ],
+  "badChallenges": 8,
+  "equivalentControls": 2,
+  "historicalChallenges": 1,
+  "syntheticFaults": 7,
+  "entries": [
+    {
+      "id": "bad01-literal-span-payload",
+      "classification": "synthetic-semantic-fault",
+      "recipe": {
+        "path": "selfhost/tools/laws/phase97/challenge/bad01-literal-span-payload.json",
+        "bytes": 2125,
+        "sha256": "f0737e1ef67bee86a80ab9ac50677941b5657952c169c130e90f7d66e7f3d77e"
+      }
+    },
+    {
+      "id": "bad02-index-remove-first",
+      "classification": "synthetic-semantic-fault",
+      "recipe": {
+        "path": "selfhost/tools/laws/phase97/challenge/bad02-index-remove-first.json",
+        "bytes": 2937,
+        "sha256": "2156b1cf2507d8ecc0910a5e91d773394c78ee0260290464e48fe327eb449959"
+      }
+    },
+    {
+      "id": "bad03-membership-high-bit",
+      "classification": "synthetic-semantic-fault",
+      "recipe": {
+        "path": "selfhost/tools/laws/phase97/challenge/bad03-membership-high-bit.json",
+        "bytes": 2104,
+        "sha256": "ed50ae62e871df4d66e395f5c955715d2ebce219f70feb20df42ed19de18ac84"
+      }
+    },
+    {
+      "id": "bad04-empty-chunk-separator",
+      "classification": "synthetic-semantic-fault",
+      "recipe": {
+        "path": "selfhost/tools/laws/phase97/challenge/bad04-empty-chunk-separator.json",
+        "bytes": 2312,
+        "sha256": "e6db9555e51e4d3e0442c5de3492af11682c0f155b3e185fc31740f17b7699e2"
+      }
+    },
+    {
+      "id": "bad05-frame-pop-is-slots",
+      "classification": "synthetic-semantic-fault",
+      "recipe": {
+        "path": "selfhost/tools/laws/phase97/challenge/bad05-frame-pop-is-slots.json",
+        "bytes": 2133,
+        "sha256": "d5826ecda7ba4f9ac02c8db409799c20b2f828fc9b8371d1cd00e026338de7a5"
+      }
+    },
+    {
+      "id": "bad06-environment-remove-all",
+      "classification": "synthetic-semantic-fault",
+      "recipe": {
+        "path": "selfhost/tools/laws/phase97/challenge/bad06-environment-remove-all.json",
+        "bytes": 2898,
+        "sha256": "d40ce5b1398c5b732454522e9af31278904d31ddaa96dd935c0e183692fe53aa"
+      }
+    },
+    {
+      "id": "bad07-noncanonical-constructor-display",
+      "classification": "synthetic-semantic-fault",
+      "recipe": {
+        "path": "selfhost/tools/laws/phase97/challenge/bad07-noncanonical-constructor-display.json",
+        "bytes": 2281,
+        "sha256": "ab94476da64cf6c31da7ab2ae04900d99a276d36a94ad4293f11542188bd1ea3"
+      }
+    },
+    {
+      "id": "bad08-historical-fid-collision",
+      "classification": "historical-semantic-regression",
+      "recipe": {
+        "path": "selfhost/tools/laws/phase97/challenge/bad08-historical-fid-collision.json",
+        "bytes": 4344,
+        "sha256": "5e031b79bede3a087893157ce195d0b65b81c4e41b08121873d018c6fb67dc95"
+      }
+    },
+    {
+      "id": "good01-direct-append",
+      "classification": "equivalent-control",
+      "recipe": {
+        "path": "selfhost/tools/laws/phase97/challenge/good01-direct-append.json",
+        "bytes": 2711,
+        "sha256": "b5c2ed71ad63fa0d304df0def9f8e102b2852d2fd7f2e777615fe7fee1c4fbcb"
+      }
+    },
+    {
+      "id": "good02-lowest-bit-algebra",
+      "classification": "equivalent-control",
+      "recipe": {
+        "path": "selfhost/tools/laws/phase97/challenge/good02-lowest-bit-algebra.json",
+        "bytes": 2270,
+        "sha256": "876a80ba723ef00d82e58ae16fe50b268292f99bcdd058fa63e8a1608a7d1c76"
+      }
+    }
+  ],
+  "targetsExecuted": false,
+  "productionEdited": false,
+  "methodology": {
+    "selection": "Read maintained helper implementations and restricted Git history before freezing this set.",
+    "excludedInputs": [
+      "Phase96 law bodies",
+      "Phase96 mutation recipes",
+      "Phase96 case corpus",
+      "Phase96 reference.py"
+    ],
+    "knownContext": "Broad task, helper scope and high-level Phase96 totals in STEERING.md were known; this is independent selection, not rigorous blinding.",
+    "expectedOutputs": "Source reasoning only. Witnesses have not been executed and no detection result is predicted.",
+    "historicalSearch": "One exact defect found. No equally strong second historical match; synthetic faults stay labeled synthetic.",
+    "scoring": "Root should keep type/extraction failures separate from semantic counterexamples, and good-control failures separate from bad-challenge detection. Do not tune recipes after seeing frozen-suite results."
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "kind": "phase97-static-f-find-callers",
+  "targetsRun": false,
+  "scope": "Textual source caller inventory; no runtime call counts or cost attribution. Includes one recursion in f_find_next.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/front/contextual.bend",
+      "bytes": 29415,
+      "sha256": "9de169c5f44d7da1f5982a0cbbb2af5e491222ebc954dba9be7442046dd44117"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/front/declarations.bend",
+      "bytes": 31642,
+      "sha256": "d8aa310be182a4d074ed2382890fc15424f62b02f4b3b6854328fef4c8f33530"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/front/sugar.bend",
+      "bytes": 14142,
+      "sha256": "d3e3cf5addf0498e8401b9988678eb6ac8ff81571a014b18a1b6fed0a76fb22a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/front/validate.bend",
+      "bytes": 11139,
+      "sha256": "40f4d11334d6e8a08c97dc4bc001dd8260a9cf7fb154125ac7ee04c6f659c766"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/load/graph.bend",
+      "bytes": 17785,
+      "sha256": "06f9f815b7e7e0f335907237845543bd09ff42886aea942065a9ba8ecdb05189"
+    }
+  ],
+  "calls": 13,
+  "directNilCalls": 4,
+  "rows": [
+    {
+      "file": "selfhost/src/front/contextual.bend",
+      "occurrences": [
+        {
+          "line": 428,
+          "calls": 1,
+          "source": "              f_grow(FParsed{f_adt(kt_span(\"ADT\", nm(head), ix(head), qt(head), ks(args), kb(head), ke(args)), ks(args), f_find(nm(head), prior)), input}, min)"
+        },
+        {
+          "line": 519,
+          "calls": 1,
+          "source": "              f_context_mark_known(term, syntax, resolved, f_find(nm(resolved), prior), input)"
+        }
+      ]
+    },
+    {
+      "file": "selfhost/src/front/declarations.bend",
+      "occurrences": [
+        {
+          "line": 258,
+          "calls": 1,
+          "source": "    case False{}: f_find(name, ds)"
+        },
+        {
+          "line": 489,
+          "calls": 1,
+          "source": "    u => f_choose(FRawResult, Bool.not(f_eq(dk(f_find(f_tx(ts), ctors)), \"Missing\")) || f_decl_ctor_taken(f_tx(ts), book, scope),"
+        },
+        {
+          "line": 690,
+          "calls": 1,
+          "source": "      f_choose(KDef, f_eq(dk(found), \"Absent\"), u => f_find(name, Nil{}), u => found)"
+        },
+        {
+          "line": 730,
+          "calls": 1,
+          "source": "        u => f_choose(KDef, f_eq(f_alias(name, aliases), name) && Bool.not(f_eq(dk(f_ctor_lookup(name, book)), \"Missing\")), u => f_find(name, Nil{}), u => old),"
+        },
+        {
+          "line": 741,
+          "calls": 1,
+          "source": "      f_find(name, f_choose(List<&2,KDef>, f_eq(dk(index_find(index, key, index_hash(key, 2166136261), 32)), \"Absent\"), u => Nil{}, u => book))"
+        }
+      ]
+    },
+    {
+      "file": "selfhost/src/front/sugar.bend",
+      "occurrences": [
+        {
+          "line": 80,
+          "calls": 2,
+          "source": "      f_do_types_at(f_choose(KTerm, f_eq(dk(f_find(nm(resolved), prior)), \"ADT\"), u => f_adt(monad, ks(monad), f_find(nm(resolved), prior)), u => monad), input)"
+        },
+        {
+          "line": 181,
+          "calls": 1,
+          "source": "          u => kt_span(\"Ann\", \"\", 0, 1, [kid(term, 1), f_choose(KTerm, f_eq(dk(f_find(nm(resolved), prior)), \"ADT\"), u => kt_span(\"ADT\", nm(resolved), 0, 1, types, kb(term), ke(term)), u => f_scope_apply_span(head, types, kb(term), ke(term)))], kb(term), ke(term)),"
+        }
+      ]
+    },
+    {
+      "file": "selfhost/src/front/validate.bend",
+      "occurrences": [
+        {
+          "line": 32,
+          "calls": 1,
+          "source": "      f_find(name, Nil{})"
+        },
+        {
+          "line": 67,
+          "calls": 1,
+          "source": "  f_choose(KDef, f_eq(dk(found), \"Absent\"), u => f_find(name, Nil{}), u => found)"
+        }
+      ]
+    },
+    {
+      "file": "selfhost/src/load/graph.bend",
+      "occurrences": [
+        {
+          "line": 455,
+          "calls": 1,
+          "source": "  f_choose(KDef, f_eq(tg(dt(d)), \"ImportLaw\"), u => f_graph_fill(d, f_find(f_alias(dn(d), imports), List.reverse(&2, KDef, scope))), u => d)"
+        }
+      ]
+    }
+  ]
+}

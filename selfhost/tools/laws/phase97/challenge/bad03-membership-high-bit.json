@@ -1,0 +1,48 @@
+{
+  "id": "bad03-membership-high-bit",
+  "label": "Occurrence membership aliases distinct full-width binder IDs",
+  "classification": "synthetic-semantic-fault",
+  "rationale": "Treating binder IDs as signed-safe 31-bit keys makes a plausible compact-key shortcut unsound. The compressed trie retains exact U32 keys.",
+  "witness": {
+    "expression": "nu_has(NU_Leaf{1}, 2147483649)",
+    "baselineExpected": "False{}",
+    "challengeExpected": "True{}",
+    "returnType": "Bool",
+    "baselineValueBend": "False{}",
+    "challengeValueBend": "True{}",
+    "source": {
+      "path": "selfhost/tools/laws/phase97/challenge/bad03-membership-high-bit.witness.bend",
+      "bytes": 368,
+      "sha256": "9f46df87966f7e019218bb8d27e61b3c2646880bd1479b56f736c31679e1e507"
+    }
+  },
+  "domain": "Finite well-typed helper data.",
+  "expectedDisposition": "reject-semantic-change",
+  "executed": false,
+  "schema": "phase97-independent-challenge-recipe-v1",
+  "kind": "bad",
+  "file": "selfhost/src/back/native/uses.bend",
+  "function": "nu_has",
+  "before": "    case NU_Leaf{stored}: U32.is_eq(stored, key)",
+  "after": "    case NU_Leaf{stored}: U32.is_eq(U32.and(stored, 2147483647), U32.and(key, 2147483647))",
+  "expectedBehavior": "Treating binder IDs as signed-safe 31-bit keys makes a plausible compact-key shortcut unsound. The compressed trie retains exact U32 keys.",
+  "edits": [
+    {
+      "source": {
+        "path": "selfhost/src/back/native/uses.bend",
+        "bytes": 1740,
+        "sha256": "026f30482001768d563f66508d2600e6bc38fe2fd0dab9a52333ddb4c1527d31"
+      },
+      "before": "    case NU_Leaf{stored}: U32.is_eq(stored, key)",
+      "after": "    case NU_Leaf{stored}: U32.is_eq(U32.and(stored, 2147483647), U32.and(key, 2147483647))",
+      "expectedOccurrences": 1,
+      "line": 44,
+      "changedSourceSha256": "0687378b0dde8487546ced4e86a2b3153f7c35c09116cdb40fb820248009a254",
+      "changedSourceBytes": 1782
+    }
+  ],
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Independent maintained-source reasoning before suite results."
+  }
+}

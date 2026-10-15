@@ -4674,3 +4674,31 @@ Preserve proof-affinity, specialization-inventory, rejection-status, splice,
 serializer and missing-test-annotation failures plus corrected worker status.
 Production/source/images and five metrics unchanged; no performance claim, full
 rebuild or PR comment. Foundation complete; subsequent optimization unstarted.
+
+## Phase97 usefulness of laws and ownership boundary — 2026-10-15
+
+[Report](../implementation/phase97/README.md) ·
+[Evidence](../selfhost/tools/laws/phase97/evidence01/summary.json).
+Independent challenges against unchanged226 finite cases: five semantic detections,
+one affine refusal, two extraction gaps; both equivalent changes accepted. One
+historical emitted-identifier collision is reproduced by its exact old body.
+Targeted extension preserves226 and adds2 frozen cases:228 JS/34 native pass,
+three follow-up faults reject. Independent literal corruption also passes safe
+helper admission then fails unchanged span_put_back.
+
+Four public ownership-model laws+three support lemmas independently check with
+zero opaque definitions; three admitted bad protocols reject. A missing child
+retain in isolated generated C compiles, then fails after8 correct prefix lines.
+This exposes the absent concrete-handle/child-transfer bridge; no native runtime
+or whole-compiler proof is claimed.
+
+Lookup candidate passes24 JS/native full-value controls and five caller mutants;
+all six extracted native workloads improve to0.318–0.345× time. One full candidate
+build costs33.89s acquisition+177.05s Clang. Actual nativeB1 six-source screen:
+0.990332× request/0.991748× process,48 exact C+diagnostics. Not enough to promote
++17source lines; production/images/five metrics unchanged. No candidateB2/fullself,
+45-program runtime or broad conformance run. No PR comment.
+
+Read verified evidence summary for full serial target and archive accounting.
+Preserve malformed source, cap failure and launcher failure; treat frontend
+rejections, model proofs, native faults and timings as distinct evidence.

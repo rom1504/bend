@@ -1,0 +1,653 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "accepted": {
+    "challenge-check01": {
+      "report": {
+        "file": "selfhost/build/phase97/challenge-check01/report.json",
+        "bytes": 28376,
+        "sha256": "43f068a2943c0362322ecffd14b6011d3205833b412668c89304093fe5b05332"
+      },
+      "kind": "frozen-independent-challenges",
+      "classifications": {
+        "semantic-detection": 5,
+        "compilation-refusal": 1,
+        "outside-extracted-closure": 2,
+        "valid-change-accepted": 2
+      },
+      "baselineCases": 226
+    },
+    "challenge-followups01": {
+      "report": {
+        "file": "selfhost/build/phase97/challenge-followups01/report.json",
+        "bytes": 4844,
+        "sha256": "48bca51ad77ab4de5197cf510e7519a6b10050740d6854c0765478d6603f0f58"
+      },
+      "kind": "production-contract-campaign",
+      "section": "followups",
+      "rows": [
+        {
+          "name": "baseline-js",
+          "report": {
+            "file": "selfhost/build/phase97/challenge-followups01/baseline-js/report.json",
+            "bytes": 2774,
+            "sha256": "e88675f4ab5ff49a2dca00743f94729eb39538e4b3595756eaaf6c156c920c4a"
+          },
+          "kind": "finite-js-full-values",
+          "cases": 228
+        },
+        {
+          "name": "bad05-frame-pop-is-slots",
+          "report": {
+            "file": "selfhost/build/phase97/challenge-followups01/bad05-frame-pop-is-slots/report.json",
+            "bytes": 2915,
+            "sha256": "7803ecedc7db6170372cb3ac8c764e9578e2ce00191f226c0c26c4850f0fd855"
+          },
+          "kind": "finite-semantic-rejection",
+          "witness": "p97-bad05-frame-pop-is-slots"
+        },
+        {
+          "name": "bad08-historical-fid-collision",
+          "report": {
+            "file": "selfhost/build/phase97/challenge-followups01/bad08-historical-fid-collision/report.json",
+            "bytes": 2964,
+            "sha256": "f432d2c0000268136a6a911d240249273e1a1920caf1bcad40a596c30114decc"
+          },
+          "kind": "finite-semantic-rejection",
+          "witness": "p97-bad08-historical-fid-collision"
+        },
+        {
+          "name": "bad04-empty-chunk-separator",
+          "report": {
+            "file": "selfhost/build/phase97/challenge-followups01/bad04-empty-chunk-separator/report.json",
+            "bytes": 2924,
+            "sha256": "5f58086552f39e03b4c755d2b11c4a7b4f19cadff6eb78c22aedce21a6cbd584"
+          },
+          "kind": "finite-semantic-rejection",
+          "witness": "text-assembly-002"
+        },
+        {
+          "name": "baseline-native",
+          "report": {
+            "file": "selfhost/build/phase97/challenge-followups01/baseline-native/report.json",
+            "bytes": 6057,
+            "sha256": "2a171df083de4563a3463aef79fd797bbdf46ffac889ab11ce4c6818774e32c5"
+          },
+          "kind": "native-full-output",
+          "cases": 34
+        }
+      ]
+    },
+    "ownership-proof02": {
+      "report": {
+        "file": "selfhost/build/phase97/ownership-proof02/report.json",
+        "bytes": 13344,
+        "sha256": "932cbe1fd0e4bd902754250ec6cb72ea8e4943c3a4b201fbb8b7fe5525d790dc"
+      },
+      "kind": "independent-model-proof",
+      "publicLaws": 4,
+      "supportLemmas": 3,
+      "definitions": 26,
+      "opaqueDefinitions": 0
+    },
+    "ownership-negatives01": {
+      "report": {
+        "file": "selfhost/build/phase97/ownership-negatives01/report.json",
+        "bytes": 5070,
+        "sha256": "b134bc5b8179b240ff31998ec5ab75c6342d991907e7960df18efc37b488b78a"
+      },
+      "kind": "frontend-proof-controls",
+      "semanticRejections": 3,
+      "lawFreeHelperAdmissions": 3,
+      "positiveLawChecks": 0,
+      "reportedHelperAdmissions": 3
+    },
+    "ownership-boundary01": {
+      "report": {
+        "file": "selfhost/build/phase97/ownership-boundary01/report.json",
+        "bytes": 21104,
+        "sha256": "542de5096cc8444951dc59e94d3fc27bd62e87a4efeb2e1e765f67c905ff3a27"
+      },
+      "kind": "generated-c-runtime-rejection",
+      "baselineLines": 32,
+      "matchingPrefixLines": 8
+    },
+    "projection-contracts02": {
+      "report": {
+        "file": "selfhost/build/phase97/projection-contracts02/report.json",
+        "bytes": 7968,
+        "sha256": "24d1ca2a6d45fe067b77175c23a8cc7be20573a15a4027b4fd947e397491e29a"
+      },
+      "kind": "production-contract-campaign",
+      "section": "projection",
+      "rows": [
+        {
+          "name": "baseline-js",
+          "report": {
+            "file": "selfhost/build/phase97/projection-baseline-js02/report.json",
+            "bytes": 2744,
+            "sha256": "ab3703112d8311019d7fbdc0680b23257402c17dcf94f6df1aa02212cf2db51a"
+          },
+          "kind": "finite-js-full-values",
+          "cases": 24
+        },
+        {
+          "name": "candidate-js",
+          "report": {
+            "file": "selfhost/build/phase97/projection-candidate-js02/report.json",
+            "bytes": 2750,
+            "sha256": "4683b6c583db8a62c534e62fffc4584230c06c77189f0062c8053bee8cedd134"
+          },
+          "kind": "finite-js-full-values",
+          "cases": 24
+        },
+        {
+          "name": "baseline-native",
+          "report": {
+            "file": "selfhost/build/phase97/projection-contracts02/baseline-native/report.json",
+            "bytes": 6059,
+            "sha256": "ed989a4c932948f7c540d3f325e9fd38cbc4bdf5bcab2c638f022f2437d62001"
+          },
+          "kind": "native-full-output",
+          "cases": 24
+        },
+        {
+          "name": "candidate-native",
+          "report": {
+            "file": "selfhost/build/phase97/projection-contracts02/candidate-native/report.json",
+            "bytes": 6076,
+            "sha256": "d5c504c0f24175fa7ae989a11ebf6575f80c3950e10fb226e85c868734fcd41d"
+          },
+          "kind": "native-full-output",
+          "cases": 24
+        },
+        {
+          "name": "wrong-query",
+          "report": {
+            "file": "selfhost/build/phase97/projection-contracts02/wrong-query/report.json",
+            "bytes": 2802,
+            "sha256": "273260b57ca475f5fc2f02b011db8c48609c84dfd29da59c58187253611a914b"
+          },
+          "kind": "finite-semantic-rejection",
+          "witness": "middle"
+        },
+        {
+          "name": "swap-type-value",
+          "report": {
+            "file": "selfhost/build/phase97/projection-contracts02/swap-type-value/report.json",
+            "bytes": 2839,
+            "sha256": "248228a6127071e180d2f3abe74e84ed1d593514f442827c71757c811fc9bfb0"
+          },
+          "kind": "finite-semantic-rejection",
+          "witness": "first-duplicate"
+        },
+        {
+          "name": "lose-unsafe",
+          "report": {
+            "file": "selfhost/build/phase97/projection-contracts02/lose-unsafe/report.json",
+            "bytes": 2812,
+            "sha256": "c1debb49ab437335f9d162aa7a762ce378c82a59a6c7e153d2bc2b0aa3364e3b"
+          },
+          "kind": "finite-semantic-rejection",
+          "witness": "first-duplicate"
+        },
+        {
+          "name": "skip-empty-index",
+          "report": {
+            "file": "selfhost/build/phase97/projection-contracts02/skip-empty-index/report.json",
+            "bytes": 2850,
+            "sha256": "77707b7f5d3d9a0fe0a891b125c09dd5c841be0204a563e4df07de8076499bf6"
+          },
+          "kind": "finite-semantic-rejection",
+          "witness": "index-leaf-empty-hit"
+        },
+        {
+          "name": "lose-missing-name",
+          "report": {
+            "file": "selfhost/build/phase97/projection-contracts02/lose-missing-name/report.json",
+            "bytes": 2842,
+            "sha256": "ad9ab6ee31ba289992107ff0334640b8c69c81cea48ad1c95e76b4a345c0429b"
+          },
+          "kind": "finite-semantic-rejection",
+          "witness": "empty"
+        }
+      ]
+    },
+    "projection-timing": {
+      "report": {
+        "file": "selfhost/build/phase97/projection-timing02/report.json",
+        "bytes": 206628,
+        "sha256": "7fbc0ffbb1b51414302cbc5794b5fc364f1578ffd30a4a9f3a114466608319c8"
+      },
+      "kind": "extracted-helper-timing",
+      "scope": "Actual extracted f_find with a shared original book. Timed work includes the success-count print; setup and full output/alias serialization are outside the timer. This is not compiler latency.",
+      "cases": [
+        {
+          "shape": "128-head",
+          "candidateOverBaseline": 0.3441331232911438
+        },
+        {
+          "shape": "128-middle",
+          "candidateOverBaseline": 0.32914379349995465
+        },
+        {
+          "shape": "128-miss",
+          "candidateOverBaseline": 0.3354814814814815
+        },
+        {
+          "shape": "128-tail",
+          "candidateOverBaseline": 0.3222818979627086
+        },
+        {
+          "shape": "8-miss",
+          "candidateOverBaseline": 0.34483063935907005
+        },
+        {
+          "shape": "1024-miss",
+          "candidateOverBaseline": 0.3181792859928265
+        }
+      ],
+      "speedupThresholdRequired": false,
+      "compilerSpeedClaim": false
+    },
+    "formal-challenge": {
+      "report": {
+        "file": "selfhost/build/phase97/formal-challenge01/report.json",
+        "bytes": 2632,
+        "sha256": "ae916834e317f5c21867d295742dd186a8f81f9c6a66ca5cb6a7aa439dfac95f"
+      },
+      "kind": "frontend-proof-controls",
+      "semanticRejections": 1,
+      "lawFreeHelperAdmissions": 1,
+      "positiveLawChecks": 1,
+      "reportedHelperAdmissions": 2
+    },
+    "compiler-screen": {
+      "report": {
+        "file": "selfhost/build/phase97/compiler-screen01/report.json",
+        "bytes": 659983,
+        "sha256": "cc42f88e5b5124537b33099f1cf563533feb827482728aaf5f44d966c5236279"
+      },
+      "kind": "native-compiler-screen",
+      "scope": "Upstream-built native B1 only; identical request assets/cache and Clang O2 flags. Six frozen sources, four balanced rounds and complete checked diagnostics are required. No candidate B2 qualification, Clang rerun, or generated-program runtime measurement. Request excludes preparation; process wall includes startup/preparation/write/teardown.",
+      "activeInputPins": 176,
+      "directlyVerifiedUniqueFiles": 368,
+      "cases": 6,
+      "rounds": 4,
+      "exactCCount": 48,
+      "exactDiagnosticCount": 48,
+      "recordedMetricSummary": {
+        "exactCCount": 48,
+        "exactDiagnosticCount": 48,
+        "cases": {
+          "small": {
+            "requestMs": {
+              "medians": {
+                "baseline": 58.0,
+                "candidate": 58.0
+              },
+              "ranges": {
+                "baseline": [
+                  58,
+                  58
+                ],
+                "candidate": [
+                  57,
+                  58
+                ]
+              },
+              "ratioOfMedians": 1.0,
+              "pairedRatios": [
+                1.0,
+                1.0,
+                1.0,
+                0.9827586206896551
+              ],
+              "medianPairedRatio": 1.0
+            },
+            "processWallMs": {
+              "medians": {
+                "baseline": 146.2389564840123,
+                "candidate": 146.31754800211638
+              },
+              "ranges": {
+                "baseline": [
+                  146.15143998526037,
+                  146.69423992745578
+                ],
+                "candidate": [
+                  145.97434480674565,
+                  146.53709391131997
+                ]
+              },
+              "ratioOfMedians": 1.0005374184826918,
+              "pairedRatios": [
+                1.0011725896188373,
+                0.9999017152039632,
+                0.9987882761980821,
+                0.9989287512842118
+              ],
+              "medianPairedRatio": 0.9994152332440875
+            }
+          },
+          "numeric_closed": {
+            "requestMs": {
+              "medians": {
+                "baseline": 99.0,
+                "candidate": 98.5
+              },
+              "ranges": {
+                "baseline": [
+                  99,
+                  100
+                ],
+                "candidate": [
+                  98,
+                  99
+                ]
+              },
+              "ratioOfMedians": 0.9949494949494949,
+              "pairedRatios": [
+                0.99,
+                0.98989898989899,
+                0.98989898989899,
+                1.0
+              ],
+              "medianPairedRatio": 0.9899494949494949
+            },
+            "processWallMs": {
+              "medians": {
+                "baseline": 187.11195047944784,
+                "candidate": 187.08189111202955
+              },
+              "ranges": {
+                "baseline": [
+                  186.3432009704411,
+                  187.67707096412778
+                ],
+                "candidate": [
+                  186.74266594462097,
+                  187.61890102177858
+                ]
+              },
+              "ratioOfMedians": 0.9998393508947918,
+              "pairedRatios": [
+                1.0014753631880071,
+                1.0068459704711192,
+                0.9959914719873341,
+                0.9972375853049872
+              ],
+              "medianPairedRatio": 0.9993564742464971
+            }
+          },
+          "lexer_original": {
+            "requestMs": {
+              "medians": {
+                "baseline": 354.5,
+                "candidate": 354.0
+              },
+              "ranges": {
+                "baseline": [
+                  353,
+                  359
+                ],
+                "candidate": [
+                  352,
+                  354
+                ]
+              },
+              "ratioOfMedians": 0.998589562764457,
+              "pairedRatios": [
+                1.0028328611898016,
+                0.9915492957746479,
+                1.0,
+                0.9860724233983287
+              ],
+              "medianPairedRatio": 0.995774647887324
+            },
+            "processWallMs": {
+              "medians": {
+                "baseline": 451.1718989815563,
+                "candidate": 451.2135065160692
+              },
+              "ranges": {
+                "baseline": [
+                  451.1197251267731,
+                  452.5642041116953
+                ],
+                "candidate": [
+                  451.04466495104134,
+                  452.1211360115558
+                ]
+              },
+              "ratioOfMedians": 1.000092221023975,
+              "pairedRatios": [
+                1.0004383249081004,
+                0.9996692108967744,
+                0.9999106015766193,
+                0.9990209828879216
+              ],
+              "medianPairedRatio": 0.9997899062366968
+            }
+          },
+          "map_closed": {
+            "requestMs": {
+              "medians": {
+                "baseline": 1405.5,
+                "candidate": 1394.0
+              },
+              "ranges": {
+                "baseline": [
+                  1389,
+                  1460
+                ],
+                "candidate": [
+                  1386,
+                  1397
+                ]
+              },
+              "ratioOfMedians": 0.991817858413376,
+              "pairedRatios": [
+                0.9864768683274021,
+                1.005759539236861,
+                0.9568493150684931,
+                0.9893314366998578
+              ],
+              "medianPairedRatio": 0.98790415251363
+            },
+            "processWallMs": {
+              "medians": {
+                "baseline": 1509.7683399217203,
+                "candidate": 1488.0460778949782
+              },
+              "ranges": {
+                "baseline": [
+                  1486.83238402009,
+                  1549.0734379272908
+                ],
+                "candidate": [
+                  1487.5634801574051,
+                  1489.7495270706713
+                ]
+              },
+              "ratioOfMedians": 0.9856121886700391,
+              "pairedRatios": [
+                0.9868302918324516,
+                1.0005127785923966,
+                0.960292419801486,
+                0.9858222151291294
+              ],
+              "medianPairedRatio": 0.9863262534807905
+            }
+          },
+          "functions65": {
+            "requestMs": {
+              "medians": {
+                "baseline": 234.0,
+                "candidate": 226.0
+              },
+              "ranges": {
+                "baseline": [
+                  226,
+                  255
+                ],
+                "candidate": [
+                  224,
+                  227
+                ]
+              },
+              "ratioOfMedians": 0.9658119658119658,
+              "pairedRatios": [
+                0.9294605809128631,
+                1.0,
+                0.8901960784313725,
+                0.9955947136563876
+              ],
+              "medianPairedRatio": 0.9625276472846254
+            },
+            "processWallMs": {
+              "medians": {
+                "baseline": 320.0535640353337,
+                "candidate": 309.37222798820585
+              },
+              "ranges": {
+                "baseline": [
+                  308.690883917734,
+                  350.17049708403647
+                ],
+                "candidate": [
+                  308.8393909856677,
+                  310.3763391263783
+                ]
+              },
+              "ratioOfMedians": 0.9666264111780095,
+              "pairedRatios": [
+                0.9378900082843433,
+                1.0004810866652392,
+                0.8834482131210319,
+                1.0006800417175994
+              ],
+              "medianPairedRatio": 0.9691855474747912
+            }
+          },
+          "unicode": {
+            "requestMs": {
+              "medians": {
+                "baseline": 57.0,
+                "candidate": 56.5
+              },
+              "ranges": {
+                "baseline": [
+                  57,
+                  57
+                ],
+                "candidate": [
+                  56,
+                  57
+                ]
+              },
+              "ratioOfMedians": 0.9912280701754386,
+              "pairedRatios": [
+                1.0,
+                0.9824561403508771,
+                1.0,
+                0.9824561403508771
+              ],
+              "medianPairedRatio": 0.9912280701754386
+            },
+            "processWallMs": {
+              "medians": {
+                "baseline": 146.56647655647248,
+                "candidate": 146.31001430097967
+              },
+              "ranges": {
+                "baseline": [
+                  146.11082104966044,
+                  146.78319892846048
+                ],
+                "candidate": [
+                  146.12568286247551,
+                  146.48011792451143
+                ]
+              },
+              "ratioOfMedians": 0.9982501983978991,
+              "pairedRatios": [
+                0.9956216642488767,
+                1.0001017160310803,
+                1.0001278283053823,
+                0.9986905348026914
+              ],
+              "medianPairedRatio": 0.9993961254168859
+            }
+          }
+        },
+        "equalCaseGeometricRatios": {
+          "requestMs": 0.9903324871825281,
+          "processWallMs": 0.9917479002095405
+        }
+      },
+      "authenticationBoundary": "Phase92 explicit active inputs; embedded historical role provenance inventoried separately.",
+      "methodResponsibility": "Pinned comparator/derivation validates patch replay, matched build flags, balanced order and timing arithmetic.",
+      "speedupThresholdRequired": false,
+      "generatedProgramSpeedClaim": false
+    },
+    "compiler-acquisition": {
+      "report": {
+        "file": "selfhost/build/phase97/projection-checked01/report.json",
+        "bytes": 17647,
+        "sha256": "e3e3964b387c7c61cb0cfc0b156cc782cf30f7b2a6a3a070be0eb4d1ff2ac31b"
+      },
+      "kind": "authenticated-completed-scope",
+      "scope": null,
+      "semanticInterpretation": "Receipt authenticated; no extra proof or performance claim inferred."
+    }
+  },
+  "method": {
+    "file": "selfhost/tools/laws/phase97/collect.py",
+    "bytes": 28654,
+    "sha256": "e92838699f512b341a934adfd0cb51acab2e4184efa6291e977c2e090745d944"
+  },
+  "archive": {
+    "file": "selfhost/tools/laws/phase97/evidence01/raw-evidence.zip",
+    "bytes": 25419418,
+    "sha256": "0a1f654b670e7945653a55573eb804979ab421d84ec225bc7ad607b760f5b241"
+  },
+  "archivedFiles": 2665,
+  "archivedBytes": 226588662,
+  "archiveReadbackVerified": true,
+  "excludedFiles": 24,
+  "rawFiles": 1920,
+  "allRawFilesAccountedFor": true,
+  "guardedJobs": 207,
+  "jobClassifications": {
+    "success": 184,
+    "expected-runtime-rejection": 1,
+    "expected-kernel-rejection": 2,
+    "expected-semantic-rejection": 13,
+    "compilation-refusal": 1,
+    "expected-frontend-proof-rejection": 4,
+    "nonzero-target-failure": 2
+  },
+  "targetOccupancySeconds": 381.6543472488411,
+  "targetSpanSeconds": 1511.3956050872803,
+  "peakTreeRssBytes": 4295372800,
+  "minimumAvailableBytes": 23755739136,
+  "resourceStoppedJobs": 0,
+  "serialVerified": true,
+  "overlaps": [],
+  "historicalUnverifiedClaims": 7,
+  "controllerFailureRecords": [
+    {
+      "file": "selfhost/build/phase97/controller-failures.json",
+      "bytes": 380,
+      "sha256": "0ab7d8c46032639ee31934292f2c7f48f478df8a2440702b9e6cd4bee1d18d3f"
+    }
+  ],
+  "limitations": [
+    "All raw attempts retained, including failures; accepted scopes are separately authenticated.",
+    "Normal nonzero semantic controls are not resource stops or extra theorems.",
+    "External executables, compiled images and toolchains are inventoried rather than copied.",
+    "Controller failures without process.json are retained raw, not counted as guarded target jobs.",
+    "Timing is optional; no required speedup and no full-compiler claim is inferred."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "phase97-ownership-semantic-mutants-v1",
+  "frozenLawEntry": "composition.bend",
+  "file": "protocol.bend",
+  "old": "def borrowed_read(tail: List<&2, M.OwnOp>) -> List<&2, M.OwnOp>:\n  M.OwnRead{} <> tail\n",
+  "mutations": [
+    {
+      "name": "drop-before-read",
+      "new": "def borrowed_read(tail: List<&2, M.OwnOp>) -> List<&2, M.OwnOp>:\n  M.OwnDrop{} <> M.OwnRead{} <> tail\n",
+      "violates": "A sole initial root is destroyed before the read; a successful read becomes an explicit fault.",
+      "witness": "A=Nat, cell=OwnLive{0n,7n}, tail=Nil: original OwnDone{OwnLive{0n,7n},[7n]}, mutant OwnFault{Nil}."
+    },
+    {
+      "name": "omit-read",
+      "new": "def borrowed_read(tail: List<&2, M.OwnOp>) -> List<&2, M.OwnOp>:\n  tail\n",
+      "violates": "Final roots alone do not determine equivalence: the observable read disappears.",
+      "witness": "A=Nat, cell=OwnLive{0n,7n}, tail=Nil: original reads [7n], mutant reads Nil; both end with one root."
+    },
+    {
+      "name": "retain-without-release",
+      "new": "def borrowed_read(tail: List<&2, M.OwnOp>) -> List<&2, M.OwnOp>:\n  M.OwnKeep{} <> M.OwnRead{} <> tail\n",
+      "violates": "The read trace is unchanged but a temporary root leaks.",
+      "witness": "A=Nat, cell=OwnLive{0n,7n}, tail=Nil: original final cell OwnLive{0n,7n}, mutant OwnLive{1n+0n,7n}; both read [7n]."
+    }
+  ]
+}

@@ -57,6 +57,9 @@ The [compiler law suite](docs/self_hosted/COMPILER_LAWS.md) adds 31 public laws
 independently checked by BendTT, 226 finite production contracts and deliberate
 bad-implementation controls. Its fast and audit commands constrain future
 optimization; see the [Phase96 report](implementation/phase96/README.md).
+The [Phase97 usefulness experiments](implementation/phase97/README.md) challenge
+that suite independently, close two finite-contract gaps, and prove a small
+ownership transformation while exposing its missing connection to native memory.
 
 Read the [Phase90 results and speed boundaries](implementation/phase90/README.md),
 [compiler guide](docs/BEND-IN-BEND.md),

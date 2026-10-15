@@ -1,0 +1,48 @@
+{
+  "id": "bad02-index-remove-first",
+  "label": "Definition removal accidentally stops after the first match",
+  "classification": "synthetic-semantic-fault",
+  "rationale": "Replacing a filtering removal with an ordinary first-hit deletion leaves shadowed declarations behind. This deliberately contrasts the environment helper, whose contract really does remove only the first match.",
+  "witness": {
+    "expression": "index_remove([KDef{\"x\", \"old1\", 0, 0, atom(\"Absent\"), atom(\"Absent\"), Nil{}, False{}, False{}}, KDef{\"y\", \"keep\", 0, 0, atom(\"Absent\"), atom(\"Absent\"), Nil{}, False{}, False{}}, KDef{\"x\", \"old2\", 0, 0, atom(\"Absent\"), atom(\"Absent\"), Nil{}, False{}, False{}}], \"x\")",
+    "baselineExpected": "[KDef{\"y\", \"keep\", 0, 0, atom(\"Absent\"), atom(\"Absent\"), Nil{}, False{}, False{}}]",
+    "challengeExpected": "[KDef{\"y\", \"keep\", 0, 0, atom(\"Absent\"), atom(\"Absent\"), Nil{}, False{}, False{}}, KDef{\"x\", \"old2\", 0, 0, atom(\"Absent\"), atom(\"Absent\"), Nil{}, False{}, False{}}]",
+    "returnType": "List<&2,KDef>",
+    "baselineValueBend": "[KDef{\"y\", \"keep\", 0, 0, atom(\"Absent\"), atom(\"Absent\"), Nil{}, False{}, False{}}]",
+    "challengeValueBend": "[KDef{\"y\", \"keep\", 0, 0, atom(\"Absent\"), atom(\"Absent\"), Nil{}, False{}, False{}}, KDef{\"x\", \"old2\", 0, 0, atom(\"Absent\"), atom(\"Absent\"), Nil{}, False{}, False{}}]",
+    "source": {
+      "path": "selfhost/tools/laws/phase97/challenge/bad02-index-remove-first.witness.bend",
+      "bytes": 860,
+      "sha256": "567a0da06f376d88a119f0fc4cb8855a346260eb52536dcfa910b783d5f9e317"
+    }
+  },
+  "domain": "Finite KDef event lists; duplicate names are supported, not an invalid input assumption.",
+  "expectedDisposition": "reject-semantic-change",
+  "executed": false,
+  "schema": "phase97-independent-challenge-recipe-v1",
+  "kind": "bad",
+  "file": "selfhost/src/core/index.bend",
+  "function": "index_remove_step",
+  "before": "    case True{}: index_remove(rest, name)",
+  "after": "    case True{}: rest",
+  "expectedBehavior": "Replacing a filtering removal with an ordinary first-hit deletion leaves shadowed declarations behind. This deliberately contrasts the environment helper, whose contract really does remove only the first match.",
+  "edits": [
+    {
+      "source": {
+        "path": "selfhost/src/core/index.bend",
+        "bytes": 14879,
+        "sha256": "51ce95941f955ed1c65f01ee88af31e35180c94d30ada97f359c6aa71dd47edb"
+      },
+      "before": "    case True{}: index_remove(rest, name)",
+      "after": "    case True{}: rest",
+      "expectedOccurrences": 1,
+      "line": 149,
+      "changedSourceSha256": "66ff88fc71bc7a6ac68ef8d14f2d64ca13ec9d1c371e85147d28c1f07308eda4",
+      "changedSourceBytes": 14859
+    }
+  ],
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Independent maintained-source reasoning before suite results."
+  }
+}

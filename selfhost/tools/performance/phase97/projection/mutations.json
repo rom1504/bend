@@ -1,0 +1,37 @@
+[
+  {
+    "id": "wrong-query",
+    "case": "middle",
+    "before": "f_eq(name, label)",
+    "after": "f_eq(name, name)",
+    "fault": "Correct projection/equality helpers, wrong caller comparison: always select the first ordinary row."
+  },
+  {
+    "id": "swap-type-value",
+    "case": "first-duplicate",
+    "before": "case True{}: KDef{label, kind, arity, templates, typ, value, ctors, native, unsafe}",
+    "after": "case True{}: KDef{label, kind, arity, templates, value, typ, ctors, native, unsafe}",
+    "fault": "Correct name selection but reconstruction swaps the complete type and value."
+  },
+  {
+    "id": "lose-unsafe",
+    "case": "first-duplicate",
+    "before": "case True{}: KDef{label, kind, arity, templates, typ, value, ctors, native, unsafe}",
+    "after": "case True{}: KDef{label, kind, arity, templates, typ, value, ctors, native, False{}}",
+    "fault": "Correct name and visible payload, but reconstruction loses the unsafe metadata bit."
+  },
+  {
+    "id": "skip-empty-index",
+    "case": "index-leaf-empty-hit",
+    "before": "f_find_next(name, KIndexLeaf{hash, bucket}, ds, f_eq(name, \"\"))",
+    "after": "f_find(name, ds)",
+    "fault": "A plausible caller specialization silently changes the neutral-name index behavior."
+  },
+  {
+    "id": "lose-missing-name",
+    "case": "empty",
+    "before": "KDef{name, \"Missing\", 0, 0, atom(\"Absent\"), atom(\"Absent\"), Nil{}, False{}, False{}}",
+    "after": "KDef{\"\", \"Missing\", 0, 0, atom(\"Absent\"), atom(\"Absent\"), Nil{}, False{}, False{}}",
+    "fault": "Failure still reports Missing but loses the requested name used by diagnostics."
+  }
+]

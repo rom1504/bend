@@ -1,0 +1,23 @@
+diff --git a/selfhost/src/back/native/tables.bend b/selfhost/src/back/native/tables.bend
+index aa3ddd6..9829088 100644
+--- a/selfhost/src/back/native/tables.bend
++++ b/selfhost/src/back/native/tables.bend
+@@ -218,4 +218,4 @@ def nb_emit(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, +image_size:
+     ++ "CONSTV u8 CID_ARITY_T[] = { " ++ nb_ctr_arity(cs) ++ " };\n"
+     ++ "CONSTV u8 CID_HOT_T[] = { " ++ nb_ctr_hot(cs) ++ " };\n"
+     ++ "#define STAT_LEN " ++ U32.show(image_size) ++ "\n#define WL_TABLE " ++ nb_dispatch(ss)
+-    ++ "\n#define MAIN_FID FID_MAIN\n#define MAIN_PURE " ++ U32.show(nt_bool(pure)) ++ "\n"
++    ++ "\n#define MAIN_FID " ++ nt_fid("main") ++ "\n#define MAIN_PURE " ++ U32.show(nt_bool(pure)) ++ "\n"
+diff --git a/selfhost/src/back/native/text.bend b/selfhost/src/back/native/text.bend
+index 1873312..285559c 100644
+--- a/selfhost/src/back/native/text.bend
++++ b/selfhost/src/back/native/text.bend
+@@ -43,7 +43,7 @@ def nt_clean(s: String) -> String:
+ 
+ @unsafe
+ def nt_fid(k: String) -> String:
+-  "FID_" ++ String.to_upper(nt_clean(k))
++  "FID_" ++ nc_ctor_codes(k)
+ 
+ @unsafe
+ def nt_cid(k: String) -> String:

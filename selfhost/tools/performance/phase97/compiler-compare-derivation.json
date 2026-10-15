@@ -1,0 +1,142 @@
+{
+  "schema": "phase97-compiler-compare-derivation-v1",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase95/compiler-compare.py",
+    "bytes": 11719,
+    "sha256": "53cc14624007e0e7b27c8175ba2ab4ec43ab7c1472f219e19bdfbb38a8ccea6f"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase97/compiler-compare.py",
+    "bytes": 10992,
+    "sha256": "dca8b605fe569ac97db060b27ec84d9d1cbdff6d2f906cb21407150cb34648c5"
+  },
+  "targetsRun": false,
+  "changes": [
+    {
+      "old": "BUILD = ROOT/'selfhost/build/phase95'",
+      "new": "BUILD = ROOT/'selfhost/build/phase97'",
+      "occurrences": 1
+    },
+    {
+      "old": "CANDIDATE = '847898094f72898b11eb3ecb8b58ea9530d9ff00c592aabd716947c5543c8169'",
+      "new": "CANDIDATE = '1a0e267aadd2c8f325e4d6b73896f8c96c4719abfe88b77198b5b0334f41ba9e'",
+      "occurrences": 1
+    },
+    {
+      "old": "choices=['screen','broad45','self']",
+      "new": "choices=['screen']",
+      "occurrences": 1
+    },
+    {
+      "old": "1 <= a.rounds <= 10",
+      "new": "a.rounds == 4",
+      "occurrences": 1
+    },
+    {
+      "old": "rounds=a.rounds if a.mode == 'screen' else 1",
+      "new": "rounds=a.rounds",
+      "occurrences": 1
+    },
+    {
+      "old": "Self mode compiles baseline D04 input and preserves its expected unsafe proof refusal. ",
+      "new": "Six frozen sources, four balanced rounds and complete checked diagnostics are required. ",
+      "occurrences": 1
+    },
+    {
+      "old": "P/'phase92/comparison/support.py', P/'programs/support.py'",
+      "new": "P/'phase92/comparison/support.py', P/'programs/support.py', P/'phase97/compiler-compare-derivation.json'",
+      "occurrences": 1
+    },
+    {
+      "old": "BUILD/'membership-checked01/report.json'",
+      "new": "BUILD/'projection-checked01/report.json'",
+      "occurrences": 1
+    },
+    {
+      "old": "        changes = load(BUILD/'membership-candidate01/changes.json')\n        assert changes['schema'] == 'phase95-membership-candidate-v1'\n        assert changes['candidateSha256'] == CANDIDATE and changes['forwardReplayExact']\n        assert len(changes['changes']) == 1 and not changes['targetsRun']\n        for item in [changes['source'], changes['method'], changes['extraction'], changes['patchSource'],\n                     *changes['outputs'].values()]: bind(item)\n        assert changes['source']['sha256'] == ctx['source']['sha256']\n        assert changes['outputs']['compiler.bend'] == checked['source']\n        source = Path(changes['source']['file']).read_bytes()\n        for change in changes['changes']:\n            old, new, offset = change['old'].encode(), change['new'].encode(), change['offsetBytes']\n            assert SHA(source) == change['beforeSha256'] and source[offset:offset+len(old)] == old\n            source = source[:offset]+new+source[offset+len(old):]\n            assert SHA(source) == change['afterSha256']\n        assert source == Path(checked['source']['file']).read_bytes()\n",
+      "new": "        changes = load(BUILD/'projection-frozen02/receipt.json')\n        assert changes['kind'] == 'phase97-projection-consume-once'\n        assert changes['complete'] and not changes['targetsRun']\n        assert changes['candidate']['sha256'] == CANDIDATE\n        for item in [changes['source'], changes['candidate'], *changes['methods'],\n                     *changes['manifests'].values()]: bind(item)\n        assert changes['source']['sha256'] == ctx['source']['sha256']\n        assert changes['candidate'] == checked['source']\n        change = changes['change']\n        assert change['function'] == 'f_find' and change['forwardReplayExact']\n        assert change['beforeSha256'] == ctx['source']['sha256'] and change['afterSha256'] == CANDIDATE\n        source = Path(changes['source']['file']).read_bytes()\n        old, new = change['old'].encode(), change['new'].encode()\n        begin, end = change['location']['startByte'], change['location']['endByte']\n        assert source.count(old) == 1 and end-begin == len(old)\n        assert SHA(source) == change['beforeSha256'] and source[begin:end] == old\n        assert SHA(old) == change['location']['sha256']\n        source = source[:begin]+new+source[end:]\n        assert SHA(source) == change['afterSha256']\n        assert source == Path(checked['source']['file']).read_bytes()\n        report['candidatePatch'] = dict(receipt=pin(BUILD/'projection-frozen02/receipt.json'),\n                                       function=change['function'], forwardReplayExact=True,\n                                       beforeSha256=change['beforeSha256'], afterSha256=change['afterSha256'])\n",
+      "occurrences": 1
+    },
+    {
+      "old": "BUILD/'membership-build01/",
+      "new": "BUILD/'projection-build01/",
+      "occurrences": 2
+    },
+    {
+      "old": "BUILD/'membership-build01'",
+      "new": "BUILD/'projection-build01'",
+      "occurrences": 1
+    },
+    {
+      "old": "BUILD/'membership-checked01/compiler'",
+      "new": "BUILD/'projection-checked01/compiler'",
+      "occurrences": 1
+    },
+    {
+      "old": "        if a.mode == 'screen':\n            old = load(ROOT/'selfhost/build/phase90/final-screen01/report.json'); assert old['complete']\n            cases = [dict(name=k, source=bind(v['input']), oracle=bind(v['b2Oracle'])) for k,v in old['oracles'].items()]\n            assert len(cases) == 6\n        elif a.mode == 'self':\n            source = bind(ctx['roles']['b2']['admission']['source'])\n            oracle = bind(ctx['roles']['b2']['admission']['c'])\n            assert (source['sha256'], source['bytes']) == (ctx['source']['sha256'], ctx['source']['bytes'])\n            old = load(ROOT/'selfhost/build/phase92/self-b1-01/report.json')\n            assert old['complete'] and old['passed'] and old['exactC']\n            assert old['source'] == source and old['oracle'] == oracle\n            expected_log = bind(ROOT/'selfhost/build/phase92/self-b1-01/guard/stderr.log')\n            clock_line = r'^(?:base_prepare_ms=\\d+|runtime_prepare_ms=\\d+|request=\\d+ request_ms=\\d+ consumed_chars=\\d+)\\n'\n            expected_diagnostic = re.sub(clock_line, '', Path(expected_log['file']).read_text(), flags=re.M)\n            assert expected_diagnostic.startswith('SOME PROOFS FAIL\\nError: 3987 defs rely on unsafe or foreign code:\\n')\n            report['expectedUnsafeDiagnostic'] = dict(source=expected_log, sha256=SHA(expected_diagnostic.encode()))\n            cases = [dict(name='self-d04', source=source, oracle=oracle)]\n        else:\n            cases = []\n            for name in ['pilot02','broad01']:\n                old = load(ROOT/f'selfhost/build/phase93/{name}/report.json'); assert old['complete']\n                for row in old['cases']:\n                    assert row['passed'] and row['sameNativeC']\n                    cases.append(dict(name=row['id'], source=bind(row['source']), oracle=bind(row['products']['own']['c'])))\n            assert len(cases) == len({x['name'] for x in cases}) == 45\n",
+      "new": "        old = load(ROOT/'selfhost/build/phase90/final-screen01/report.json'); assert old['complete']\n        cases = [dict(name=k, source=bind(v['input']), oracle=bind(v['b2Oracle'])) for k,v in old['oracles'].items()]\n        assert len(cases) == len({x['name'] for x in cases}) == 6\n        clock_line = r'^(?:base_prepare_ms=\\d+|runtime_prepare_ms=\\d+|request=\\d+ request_ms=\\d+ consumed_chars=\\d+)\\n'\n        expected_diagnostic = 'ALL PROOFS CHECK\\nUse --verdict for mathematical validity.\\n\\n'\n        report['expectedDiagnostic'] = dict(text=expected_diagnostic, sha256=SHA(expected_diagnostic.encode()),\n                                             scope='Exact stderr after removing only the three clock lines; stdout must remain empty.')\n",
+      "occurrences": 1
+    },
+    {
+      "old": "roles = ['candidate'] if a.mode == 'broad45' else (['baseline','candidate'] if (rnd+index)%2 == 0 else ['candidate','baseline'])",
+      "new": "roles = ['baseline','candidate'] if (rnd+index)%2 == 0 else ['candidate','baseline']",
+      "occurrences": 1
+    },
+    {
+      "old": "(210 if a.mode == 'self' else 160)*1024**2",
+      "new": "160*1024**2",
+      "occurrences": 1
+    },
+    {
+      "old": "'phase95','taskset'",
+      "new": "'phase97','taskset'",
+      "occurrences": 1
+    },
+    {
+      "old": "300 if a.mode == 'self' else 60",
+      "new": "60",
+      "occurrences": 1
+    },
+    {
+      "old": "                        if a.mode == 'self':\n                            diagnostic = re.sub(clock_line, '', logs, flags=re.M)\n                            row['expectedUnsafeRefusalExact'] = diagnostic == expected_diagnostic\n                            assert row['expectedUnsafeRefusalExact']\n                        else:\n                            assert 'SOME PROOFS FAIL' not in logs\n                            assert len(re.findall(r'^ALL PROOFS CHECK$', logs, re.M)) == 1\n",
+      "new": "                        diagnostic = re.sub(clock_line, '', logs, flags=re.M)\n                        row['diagnosticExact'] = diagnostic == expected_diagnostic\n                        row['diagnosticSha256'] = SHA(diagnostic.encode())\n                        assert row['diagnosticExact'], ('Unexpected checked diagnostic', diagnostic)\n",
+      "occurrences": 1
+    },
+    {
+      "old": "        summary = dict(exactCCount=len(report['rows']), cases={})",
+      "new": "        assert len(report['rows']) == 48 and all(r['passed'] and r['exactC'] and r['diagnosticExact'] for r in report['rows'])\n        summary = dict(exactCCount=len(report['rows']), exactDiagnosticCount=len(report['rows']), cases={})",
+      "occurrences": 1
+    },
+    {
+      "old": "        if a.mode in ['screen','self']:",
+      "new": "        if a.mode == 'screen':",
+      "occurrences": 1
+    }
+  ],
+  "scope": "Preserve Phase95 baseline/assets authentication, checked upstream candidate acquisition, exact patch replay, identical normalized Clang O2 flags, serial guarded execution and paired timing summaries. Bind Phase97 frozen02 f_find candidate; expose only the four-round six-source screen; require exact complete C and exact non-clock diagnostics for all48 requests.",
+  "compileCommand": [
+    "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+    "-isystem",
+    "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+    "-O2",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase97/projection-checked01/program.c",
+    "-o",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase97/projection-checked01/compiler",
+    "-lm",
+    "-pthread"
+  ],
+  "expectedAcquisition": "selfhost/build/phase97/projection-checked01/report.json",
+  "expectedBuildGuard": "selfhost/build/phase97/projection-build01/process.json",
+  "finalRun": [
+    "python3",
+    "-B",
+    "selfhost/tools/performance/phase97/compiler-compare.py",
+    "--mode",
+    "screen",
+    "--rounds",
+    "4",
+    "--out",
+    "selfhost/build/phase97/compiler-screen01"
+  ],
+  "review": "Python3.9 AST syntax accepted; no comparator import or execution and no compiler targets run. First source derivation attempt stopped before writing because one replacement occurrence count was overestimated; corrected exact count2, no target attempt."
+}

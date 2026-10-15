@@ -1,0 +1,58 @@
+{
+  "id": "good01-direct-append",
+  "label": "Use the direct recursive definition of finite list append",
+  "classification": "equivalent-control",
+  "rationale": "Reversing a list into an empty accumulator then reversing it onto ys equals structural append by induction on xs. Values, order and duplicates remain unchanged; allocation/stack behavior may differ.",
+  "witness": {
+    "expression": "nt_append(String, [\"a\", \"\", \"a\"], [\"z\"])",
+    "baselineExpected": [
+      "a",
+      "",
+      "a",
+      "z"
+    ],
+    "challengeExpected": [
+      "a",
+      "",
+      "a",
+      "z"
+    ],
+    "returnType": "List<&2,String>",
+    "baselineValueBend": "[\"a\", \"\", \"a\", \"z\"]",
+    "challengeValueBend": "[\"a\", \"\", \"a\", \"z\"]",
+    "source": {
+      "path": "selfhost/tools/laws/phase97/challenge/good01-direct-append.witness.bend",
+      "bytes": 421,
+      "sha256": "22ad9b065b0d875a546351214d3f340ad46a4286bf85cc3512418793d7ebac6d"
+    }
+  },
+  "domain": "Extensional equality for finite lists of Data values; no pointer identity, stack-use or performance equivalence claim.",
+  "expectedDisposition": "accept-equivalent",
+  "executed": false,
+  "schema": "phase97-independent-challenge-recipe-v1",
+  "kind": "good",
+  "file": "selfhost/src/back/native/text.bend",
+  "function": "nt_append",
+  "before": "def nt_append(-A: Data, xs: List<&2, A>, ys: List<&2, A>) -> List<&2, A>:\n  nt_reverse(A, nt_reverse(A, xs, Nil{}), ys)",
+  "after": "def nt_append(-A: Data, xs: List<&2, A>, ys: List<&2, A>) -> List<&2, A>:\n  match xs:\n    case Nil{}: ys\n    case Con{h, t}: Con{h, nt_append(A, t, ys)}",
+  "expectedBehavior": "Reversing a list into an empty accumulator then reversing it onto ys equals structural append by induction on xs. Values, order and duplicates remain unchanged; allocation/stack behavior may differ.",
+  "edits": [
+    {
+      "source": {
+        "path": "selfhost/src/back/native/text.bend",
+        "bytes": 3305,
+        "sha256": "acc430c939a7dd6b404ba7a13f762019b717a62313ae3066234f78bb62df04c0"
+      },
+      "before": "def nt_append(-A: Data, xs: List<&2, A>, ys: List<&2, A>) -> List<&2, A>:\n  nt_reverse(A, nt_reverse(A, xs, Nil{}), ys)",
+      "after": "def nt_append(-A: Data, xs: List<&2, A>, ys: List<&2, A>) -> List<&2, A>:\n  match xs:\n    case Nil{}: ys\n    case Con{h, t}: Con{h, nt_append(A, t, ys)}",
+      "expectedOccurrences": 1,
+      "line": 46,
+      "changedSourceSha256": "53dcfb33abe7793c630dfe2f8eacd3a52a72f5591b0cb798e36c4ed1d1170eeb",
+      "changedSourceBytes": 3338
+    }
+  ],
+  "provenance": {
+    "classification": "equivalent-control",
+    "selection": "Independent maintained-source reasoning before suite results."
+  }
+}

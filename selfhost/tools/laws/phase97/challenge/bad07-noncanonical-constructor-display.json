@@ -1,0 +1,48 @@
+{
+  "id": "bad07-noncanonical-constructor-display",
+  "label": "Display accepts noncanonical decimal constructor escapes",
+  "classification": "synthetic-semantic-fault",
+  "rationale": "Dropping the apparent redundant re-encoding check accepts leading-zero encodings that were not produced by the encoder, changing fallback display of reserved-looking names.",
+  "witness": {
+    "expression": "nc_ctor_display(\"$ctor.065_\")",
+    "baselineExpected": "$ctor.065_",
+    "challengeExpected": "A",
+    "returnType": "String",
+    "baselineValueBend": "\"$ctor.065_\"",
+    "challengeValueBend": "\"A\"",
+    "source": {
+      "path": "selfhost/tools/laws/phase97/challenge/bad07-noncanonical-constructor-display.witness.bend",
+      "bytes": 414,
+      "sha256": "8f31d87e2db696e6bc7ca38b72dfbec49e5f3dcba1473336541fbbf084bd9b1e"
+    }
+  },
+  "domain": "Finite well-typed helper data.",
+  "expectedDisposition": "reject-semantic-change",
+  "executed": false,
+  "schema": "phase97-independent-challenge-recipe-v1",
+  "kind": "bad",
+  "file": "selfhost/src/back/native/identity.bend",
+  "function": "nc_ctor_decode",
+  "before": "      kc(String, U32.is_eq(digits, 0) && String.eq(nc_ctor_encode(out), original), u => out, u => original)",
+  "after": "      kc(String, U32.is_eq(digits, 0), u => out, u => original)",
+  "expectedBehavior": "Dropping the apparent redundant re-encoding check accepts leading-zero encodings that were not produced by the encoder, changing fallback display of reserved-looking names.",
+  "edits": [
+    {
+      "source": {
+        "path": "selfhost/src/back/native/identity.bend",
+        "bytes": 2476,
+        "sha256": "8d1c0ad2d35cb5072615ad6e23b99ec7db3c956679c1894d847869608be0e16a"
+      },
+      "before": "      kc(String, U32.is_eq(digits, 0) && String.eq(nc_ctor_encode(out), original), u => out, u => original)",
+      "after": "      kc(String, U32.is_eq(digits, 0), u => out, u => original)",
+      "expectedOccurrences": 1,
+      "line": 77,
+      "changedSourceSha256": "9666c6ebbb726b3233d778cf42b4326c5453fba8a86db857c0e02d28a5cc6e36",
+      "changedSourceBytes": 2432
+    }
+  ],
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Independent maintained-source reasoning before suite results."
+  }
+}

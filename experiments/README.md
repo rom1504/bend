@@ -5,7 +5,22 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active frontier: Phase96 compiler law foundation
+## Active frontier: Phase97 law usefulness and ownership boundary
+
+[Report](../implementation/phase97/README.md) ·
+[Methods](../selfhost/tools/laws/phase97/README.md) · [Strategy](STEERING.md).
+Independent challenges detect five semantic faults, reject one malformed mutant,
+and expose two helper coverage gaps; both legitimate changes pass. Targeted
+extension checks228 JS cases and34 native witnesses. A compositional ownership-model proof
+checks independently, while a missing child retain in actual generated C fails
+at runtime: the production ownership bridge remains unproved.
+
+A full-value-constrained lookup rewrite runs about3× faster in extracted native
+workloads but changes real six-source compiler time by only~1%; not promoted.
+Production/images and five metrics remain unchanged. Prioritize measured caller
+cost and parent/child ownership transfer over adding unrelated laws.
+
+## Previous frontier: Phase96 compiler law foundation
 
 [Report](../implementation/phase96/README.md) ·
 [Replay guide](../docs/self_hosted/COMPILER_LAWS.md) · [Strategy](STEERING.md).

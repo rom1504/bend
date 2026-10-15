@@ -1,0 +1,48 @@
+{
+  "id": "bad05-frame-pop-is-slots",
+  "label": "Frame result width uses pop instead of captured-slot count",
+  "classification": "synthetic-semantic-fault",
+  "rationale": "Frame metadata fields are not interchangeable. Replacing a list count with a convenient cached-looking scalar changes FID_RESW_T.",
+  "witness": {
+    "expression": "nb_frame_results(N_Frame{1, [\"saved0\", \"saved1\"]}, 5)",
+    "baselineExpected": 3,
+    "challengeExpected": 4,
+    "returnType": "U32",
+    "baselineValueBend": "3",
+    "challengeValueBend": "4",
+    "source": {
+      "path": "selfhost/tools/laws/phase97/challenge/bad05-frame-pop-is-slots.witness.bend",
+      "bytes": 374,
+      "sha256": "04e7413884cb7f335327f8bb8dad0b6d64ea57b2450396f9051de9e79c21c4e0"
+    }
+  },
+  "domain": "Finite typed N_Frame helper data. This is a direct helper witness, not a claim that the lowerer constructs this exact combination.",
+  "expectedDisposition": "reject-semantic-change",
+  "executed": false,
+  "schema": "phase97-independent-challenge-recipe-v1",
+  "kind": "bad",
+  "file": "selfhost/src/back/native/tables.bend",
+  "function": "nb_frame_results",
+  "before": "    case N_Frame{+pop, +at}: U32.sub(n, nt_count(String, at))",
+  "after": "    case N_Frame{+pop, +at}: U32.sub(n, pop)",
+  "expectedBehavior": "Frame metadata fields are not interchangeable. Replacing a list count with a convenient cached-looking scalar changes FID_RESW_T.",
+  "edits": [
+    {
+      "source": {
+        "path": "selfhost/src/back/native/tables.bend",
+        "bytes": 11881,
+        "sha256": "ce25c25c2e60526d8795e01eb0f9ed6ca1c7122811aca0032420066f6e317128"
+      },
+      "before": "    case N_Frame{+pop, +at}: U32.sub(n, nt_count(String, at))",
+      "after": "    case N_Frame{+pop, +at}: U32.sub(n, pop)",
+      "expectedOccurrences": 1,
+      "line": 115,
+      "changedSourceSha256": "2e27f074b59e52390a94d38fcac3c874a28f87a7ab1de7fee26fc8df27370d3e",
+      "changedSourceBytes": 11864
+    }
+  ],
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Independent maintained-source reasoning before suite results."
+  }
+}

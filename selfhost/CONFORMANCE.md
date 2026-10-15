@@ -1,5 +1,28 @@
 # Compiler validation
 
+## Phase90 native self-hosting and coherent release
+
+[Report](../implementation/phase90/README.md) ·
+[Native guide](../docs/self_hosted/NATIVE_HOST.md).
+Native07 is built from unpatched native-emitted C and reproduces all 38,614,882
+bytes exactly; an independent genuine JS B2 emission agrees. Eight live/cache
+Small, Map, Unicode and file-IO controls, two invalid-input refusals, four actual
+generated-program executions and six public CLI controls pass. Complete CPU
+preprocessing comparisons pass for all 45 selected points after formatting and
+runtime integration; four threshold/O0/O2 runtime controls pass.
+
+Installed genuine JS B2 `284f6e9b…` has checked B1 `6bf8e093…`, fresh frontend36,
+eight driver comparisons, own-source acceptance and exact B3 reproduction.
+Release integrity and legacy42/default24 installed/relocated checks pass. The
+initial sandbox legacy run failed with a subprocess capture error; an unchanged,
+guarded rerun outside the sandbox passes, with both attempts retained.
+
+These are finite gates. The public native entry remains single-source with
+canonical Base and nine effects. This phase does not claim to close historical
+native API gaps, rerun all upstream conformance, prove the compiler mathematically,
+or qualify GPU/multithreaded native-host execution. Earlier sections are historical.
+
+
 ## Phase88 native compiler pilot
 
 [Report](../implementation/phase88/README.md) ·

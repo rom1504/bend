@@ -1,5 +1,15 @@
 # Own-backend native compiler: build and ABI controls
 
+The integrated native compiler now builds from unpatched Bend-emitted C and
+re-emits that same complete C. Native07 builds at Clang O2 in 308.201430 s with
+4,172,177,408 bytes peak process-tree RSS. Its full self request takes 164.322 s
+and produces all 38,614,882 bytes of `dae071f0…`, identical to its build input and
+the independent genuine JS-B2 emission. This is C-output self-reproduction for
+the frozen compiler source/runtime/effects tuple, not ELF-binary reproduction or
+a proof of full-language conformance. Public release qualification is separate.
+
+The earlier failures and diagnostic image below remain part of the evidence.
+
 Checked JS-hosted Bend B1 emitted the complete compiler C, SHA81ca2837…
 (38,614,586bytes). Clang-O1 hit the6GiB process-tree RSS guard after94.884s.
 An O0 attempt failed after93.388s with register-allocation errors, at3.16GB.
@@ -15,8 +25,9 @@ O1 with IR passes disabled also fails. Keep both controls and their scopes.
 
 Pinned upstream comp.ts already gates preserve-none/preserve-most with
 `defined(__OPTIMIZE__)`, explicitly documenting the O0 allocator limitation.
-Our runtime lacks that guard. The canonical runtime/template/driver repair is
-prepared separately; it has not yet been applied.
+Our runtime initially lacked that guard. The final canonical
+runtime/template/driver repair now includes it, together with the dispatch-table
+accessor described below.
 
 For the first actual image, explicit build flags
 `-O0 -Dpreserve_none=cdecl -Dpreserve_most=cdecl` consistently select the ordinary
@@ -36,11 +47,12 @@ An optimized O1 build with heuristic inlining disabled also reaches6GiB after
 90.781s. This rejects that flag as a sufficient solution to the resource cap.
 The complete own C has39,643 segments. Textual inline-call counts suggest
 possible duplication but do not establish actual inliner decisions or retained
-IR memory. A bounded larger build budget and optional analysis-cache
-invalidation are recorded in the design; normal compiler requests remain2GiB.
+IR memory. The larger build budget was tested and rejected below; existing LLVM
+analysis-cache defaults were checked rather than presented as a new optimization.
+Normal compiler requests remain limited to 2 GiB.
 
-Current native self-emission is a separate guarded request. Eight request
-controls do not establish self-reproduction or full-language conformance.
+Native self-emission is a separate guarded request. Eight request
+controls alone do not establish self-reproduction or full-language conformance.
 Raw evidence lives under selfhost/build/phase90; tiny controls and build methods
 are under selfhost/tools/performance/phase90/regalloc and clang-build.py.
 
@@ -57,9 +69,12 @@ to try. See the exact driver evidence and primary-source links in
 The single10GiB O1 attempt also stops at its RSS guard after120.231s, peaking
 at10,743,463,936bytes while retaining17,336,156,160bytes host memory available.
 There is no further limit increase. Its final pass trace cannot flush after
-the guard kills it. A separate6GiB diagnostic now drains LLVM pass messages,
+the guard kills it. A separate 6 GiB diagnostic drained LLVM pass messages,
 keeps64 recent events and bounded counts, and flushes pass/RSS snapshots every
-0.5s. Full verbose logs are intentionally not retained.
+0.5 s. Full verbose logs were intentionally not retained. The resulting
+[memory localization](clang-memory-localization.md) identified late
+callgraph/CGSCC growth and motivated the successful accessor intervention.
+
 # Optimized native execution and complete self-emission
 
 The two-edit dispatch-table diagnostic `compiler-own-native06` builds with
@@ -78,7 +93,57 @@ comparison with upstream.
 request time (164.056s guarded wall time), peaking at1,648,939,008bytes. All
 38,614,586 output bytes match `81ca2837…`, independently emitted by checked
 JS-hosted B1 and genuinely self-emitted JS B2. This establishes successful
-native execution of the complete own-backend compiler. It does not yet establish
-a final runtime's native fixed point: the diagnostic executable was built from
-the C-patched image, while this request deliberately used the original runtime.
-Final runtime integration and native successor qualification remain next.
+native execution of the complete own-backend compiler. That particular run did
+not establish the final runtime's native fixed point: the diagnostic executable
+was built from the C-patched image, while the request deliberately used the
+original runtime.
+
+## Integrated runtime and native07
+
+The applied runtime change adds the upstream O0 attribute guard and selects a
+pure noinline table accessor on the host when `FID_ENTER >= 4096`. The condition
+appears after the generated numeric FID definition. Optimized smaller images
+retain direct dispatch; the device branch is unchanged. The coordinated
+three-file change adds seven runtime lines, updates the checked Bend-generated
+five-part template and updates its driver digest. It adds no new mutable state,
+cache or compiler representation.
+
+Native06 and genuine JS B2 then emitted the frozen D04 compiler source using
+these same new runtime assets. Their complete C outputs match byte-for-byte:
+SHA `dae071f0fae7aec4ae8036ccebe4954690a249e32f59a87ac485b2fa428016bf`,
+38,614,882 bytes. Native07 is the actual O2 build of that unpatched output,
+binary SHA `d7c7a47917884b14fd3ef37471d9f2a8660d7c4ab9bcc93a249c7cb6d0e37d3e`.
+Its build took 308.201430 s and peaked at 4,172,177,408 bytes under the 6 GiB
+guard. It is not a fresh upstream-built compiler and its receipt retains the
+diagnostic ancestor honestly.
+
+Native07 passes eight complete-C live/cache comparisons on Small, Map, Unicode
+and file IO; two malformed-source/type-error rejections; and four actual O2
+generated-program builds and executions, including file IO. Its full self
+request then returns the same `dae071f0…` C: 164.322 s request time,
+165.171738 s guarded wall time and 1,649,618,944 bytes peak RSS under 2 GiB. The
+request uses the authenticated prepared Base carrier; startup preparation and
+Clang image construction are outside the request clock. These are single
+observations, not an upstream speed ratio or a matched O1-versus-O2 experiment.
+
+All 45 retained benchmark programs have `FID_ENTER` between 22 and 606. Applying
+the two runtime edits to their retained C gives exactly identical whole O2
+preprocessor output in all 45 cases, with the same stdin filename, environment,
+compiler and 163 prebound headers. This is a derivative-C preservation check,
+not 45 fresh new-runtime emissions or execution timings. Four separate tiny
+controls pass compilation and execution at threshold 4095/4096 and O0/O2,
+checking the dispatch/attribute branch and the live word-bank checksum. They
+use two real functions and a synthetic threshold value, not a 4096-function
+program. GPU execution and the accessor's performance on arbitrary large
+programs remain untested; 4096 is a policy threshold, not a measured crossover.
+
+Final raw evidence under `selfhost/build/phase90`:
+
+- `new-runtime-c-equality01.json` and `compiler-own-native07.native-build.json`;
+- `own-native07-build-guard/process.json`;
+- `native07-qualification01/report.json` and `native07-self01/report.json`;
+- `runtime-cpp45/report.json` and `runtime-boundary01-results/report.json`.
+
+These native gates establish the frozen image and source/runtime C-output fixed
+point. They do not themselves promote the image into the public launcher or
+complete the separate refreshed JS release workflow.

@@ -7276,13 +7276,7 @@ function $nh_field_ctors$(_book_0, _cs_0) {
 }
 
 function $ns_image_terms$(_ws_0) {
-  if (_ws_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _ws_0["head"];
-    const _rest_0 = _ws_0["tail"];
-    return {$: "Con", "head": ($kt$("StaticWord", _h_0, 0, 0, {$: "Nil"})), "tail": ($ns_image_terms$(_rest_0))};
-  }
+  return $ns_image_terms_rev$(_ws_0, {$: "Nil"});
 }
 
 function $nc_ctor_prepare$(_book_0) {
@@ -10620,6 +10614,24 @@ function $nh_field_mask$(_book_0, _ty_0, _left_0, _i_0) {
 }));
 }
 
+function $ns_image_terms_rev$($0, $1) {
+  for (;;) {
+    {
+      const _ws_0 = $0;
+      const _terms_0 = $1;
+      if (_ws_0.$ === "Nil") {
+        return $nt_reverse$(_terms_0, {$: "Nil"});
+      } else {
+        const _h_0 = _ws_0["head"];
+        const _rest_0 = _ws_0["tail"];
+        $0 = _rest_0;
+        $1 = {$: "Con", "head": ($kt$("StaticWord", _h_0, 0, 0, {$: "Nil"})), "tail": _terms_0};
+        continue;
+      }
+    }
+  }
+}
+
 function $nc_ctor_context$(_book_0) {
   return $nc_ctor_payload$(($dc$(run_loop($ns_context$(_book_0)))));
 }
@@ -10710,32 +10722,9 @@ function $jd_live_arity$(_book_0, _ty_0, _left_0) {
 }));
 }
 
-function $nt_join_go$($0, $1, $2, $3) {
-  for (;;) {
-    {
-      const _xs_0 = $0;
-      const _sep_0 = $1;
-      const _acc_0 = $2;
-      const _first_0 = $3;
-      if (_xs_0.$ === "Nil") {
-        return _acc_0;
-      } else {
-        const _h_0 = _xs_0["head"];
-        const _t_0 = _xs_0["tail"];
-        const _x_2 = run_loop($nt_choose$(_first_0, run_clo((_x_0) => {
-  return "";
-}), run_clo((_x_1) => {
-  return _sep_0;
-})));
-        const _x_3 = (_x_2 + _h_0);
-        $0 = _t_0;
-        $1 = _sep_0;
-        $2 = (_acc_0 + _x_3);
-        $3 = false;
-        continue;
-      }
-    }
-  }
+function $nt_join_go$(_xs_0, _sep_0, _acc_0, _first_0) {
+  const _x_0 = ($nt_join_chunks$(_xs_0, _sep_0, _first_0, {$: "Nil"}));
+  return (_acc_0 + _x_0);
 }
 
 function $nc_pack_foreign$(_ds_0) {
@@ -13998,6 +13987,32 @@ function $jd_live_arity_head$(_book_0, _ty_0, _left_0) {
 }));
 }
 
+function $nt_join_chunks$($0, $1, $2, $3) {
+  for (;;) {
+    {
+      const _xs_0 = $0;
+      const _sep_0 = $1;
+      const _first_0 = $2;
+      const _acc_0 = $3;
+      if (_xs_0.$ === "Nil") {
+        return $nt_text_finish$(_acc_0, "");
+      } else {
+        const _h_0 = _xs_0["head"];
+        const _t_0 = _xs_0["tail"];
+        $0 = _t_0;
+        $1 = _sep_0;
+        $2 = false;
+        $3 = {$: "Con", "head": _h_0, "tail": {$: "Con", "head": run_loop($nt_choose$(_first_0, run_clo((_x_0) => {
+  return "";
+}), run_clo((_x_1) => {
+  return _sep_0;
+}))), "tail": _acc_0}};
+        continue;
+      }
+    }
+  }
+}
+
 function $ns_def_step$(_book_0, _cs_0, _rest_0, _name_0, _facts_0, _transformed_0) {
   const _body_0 = _transformed_0["term"];
   const _image_0 = _transformed_0["image"];
@@ -17235,6 +17250,24 @@ function $nt_replace_go$(_s_0, _key_0, _value_0, _acc_0) {
 }));
 }
 
+function $nt_text_finish$($0, $1) {
+  for (;;) {
+    {
+      const _xs_0 = $0;
+      const _acc_0 = $1;
+      if (_xs_0.$ === "Nil") {
+        return _acc_0;
+      } else {
+        const _h_0 = _xs_0["head"];
+        const _t_0 = _xs_0["tail"];
+        $0 = _t_0;
+        $1 = (_h_0 + _acc_0);
+        continue;
+      }
+    }
+  }
+}
+
 function $ns_rebuild$(_cs_0, _original_0, _children_0) {
   const _kids_0 = _children_0["terms"];
   const _image_0 = _children_0["image"];
@@ -17634,31 +17667,7 @@ function $nf_escape_terms$(_book_0, _ts_0, _index_0) {
 }
 
 function $nf_wrap_segments$(_segments_0, _index_0) {
-  if (_segments_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _t_0 = _segments_0["head"];
-    const _name_0 = _t_0["name"];
-    const _params_0 = _t_0["params"];
-    const _result_0 = _t_0["result"];
-    const _frame_0 = _t_0["frame"];
-    const _body_0 = _t_0["body"];
-    const _refs_0 = _t_0["refs"];
-    const _host_0 = _t_0["host"];
-    const _spin_0 = _t_0["spin"];
-    const _fork_0 = _t_0["fork"];
-    const _bang_0 = _t_0["bang"];
-    const _rest_0 = _segments_0["tail"];
-    const _d_0 = run_loop($lookup$(_index_0, _name_0));
-    const _x_0 = ($da$(_d_0));
-    const _x_1 = ($nt_count$(_params_0));
-    const _wrapped_0 = run_loop($nt_choose$(($Bool$and$(($String$eq$(($dk$(_d_0)), "NFWorker")), (_x_0 === _x_1))), run_clo((_x_2) => {
-  return $nq_wrap_segment$(_d_0, _params_0, _body_0);
-}), run_clo((_x_3) => {
-  return _body_0;
-})));
-    return {$: "Con", "head": {$: "N_Segment", "name": _name_0, "params": _params_0, "result": _result_0, "frame": _frame_0, "body": _wrapped_0, "refs": _refs_0, "host": _host_0, "spin": _spin_0, "fork": _fork_0, "bang": _bang_0}, "tail": ($nf_wrap_segments$(_rest_0, _index_0))};
-  }
+  return $nf_wrap_segments_rev$(_segments_0, _index_0, {$: "Nil"});
 }
 
 function $nf_adapter_defs$(_workers_0, _ready_0) {
@@ -17791,13 +17800,7 @@ function $nf_bodies$(_workers_0, _ready_0) {
 }
 
 function $ns_image_words$(_ts_0) {
-  if (_ts_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _ts_0["head"];
-    const _rest_0 = _ts_0["tail"];
-    return {$: "Con", "head": ($nm$(_h_0)), "tail": ($ns_image_words$(_rest_0))};
-  }
+  return $ns_image_words_rev$(_ts_0, {$: "Nil"});
 }
 
 function $nc_show_names$(_cs_0) {
@@ -20901,23 +20904,42 @@ function $nf_escape_add$(_name_0, _index_0) {
   return $index_set$(_index_0, ($nv_id$(_name_0)), ($index_hash$(_name_0, 2166136261)), 32);
 }
 
-function $nq_wrap_segment$(_d_0, _params_0, _original_0) {
-  const _shape_0 = ($dt$(_d_0));
-  const _result_0 = run_loop($nq_transfer$(_shape_0, run_loop($nq_words$("nq_result", run_loop($nq_width$(_shape_0)), 0)), 0, {$: "NC_Scheduler"}));
-  const _x_0 = (_original_0 + "#endif\n");
-  const _x_1 = ($nc_body$(_result_0));
-  const _x_2 = ("}\n#else\n" + _x_0);
-  const _x_3 = (_x_1 + _x_2);
-  const _x_4 = ($nf_arg_c$(($nf_segment_args$(_params_0))));
-  const _x_5 = (")) { return 0; }\n" + _x_3);
-  const _x_6 = (_x_4 + _x_5);
-  const _x_7 = ($nf_name$(($nm$(($dv$(_d_0))))));
-  const _x_8 = ("(e, seq, nq_result" + _x_6);
-  const _x_9 = (_x_7 + _x_8);
-  const _x_10 = ($U32$show$(run_loop($nq_width$(_shape_0))));
-  const _x_11 = ("];\nif (!" + _x_9);
-  const _x_12 = (_x_10 + _x_11);
-  return ("#if !DEVICE\n{\nTerm nq_result[" + _x_12);
+function $nf_wrap_segments_rev$($0, $1, $2) {
+  for (;;) {
+    {
+      const _segments_0 = $0;
+      const _index_0 = $1;
+      const _wrapped_0 = $2;
+      if (_segments_0.$ === "Nil") {
+        return $nt_reverse$(_wrapped_0, {$: "Nil"});
+      } else {
+        const _t_0 = _segments_0["head"];
+        const _name_0 = _t_0["name"];
+        const _params_0 = _t_0["params"];
+        const _result_0 = _t_0["result"];
+        const _frame_0 = _t_0["frame"];
+        const _body_0 = _t_0["body"];
+        const _refs_0 = _t_0["refs"];
+        const _host_0 = _t_0["host"];
+        const _spin_0 = _t_0["spin"];
+        const _fork_0 = _t_0["fork"];
+        const _bang_0 = _t_0["bang"];
+        const _rest_0 = _segments_0["tail"];
+        const _d_0 = run_loop($lookup$(_index_0, _name_0));
+        const _x_0 = ($da$(_d_0));
+        const _x_1 = ($nt_count$(_params_0));
+        const _text_0 = run_loop($nt_choose$(($Bool$and$(($String$eq$(($dk$(_d_0)), "NFWorker")), (_x_0 === _x_1))), run_clo((_x_2) => {
+  return $nq_wrap_segment$(_d_0, _params_0, _body_0);
+}), run_clo((_x_3) => {
+  return _body_0;
+})));
+        $0 = _rest_0;
+        $1 = _index_0;
+        $2 = {$: "Con", "head": {$: "N_Segment", "name": _name_0, "params": _params_0, "result": _result_0, "frame": _frame_0, "body": _text_0, "refs": _refs_0, "host": _host_0, "spin": _spin_0, "fork": _fork_0, "bang": _bang_0}, "tail": _wrapped_0};
+        continue;
+      }
+    }
+  }
 }
 
 function $nd_name$(_name_0) {
@@ -20947,22 +20969,7 @@ function $no_route_names$($0, $1, $2, $3) {
 }
 
 function $no_entry_defs$(_segments_0) {
-  if (_segments_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _t_0 = _segments_0["head"];
-    const _name_0 = _t_0["name"];
-    const _params_0 = _t_0["params"];
-    const _frame_0 = _t_0["frame"];
-    const _bang_0 = _t_0["bang"];
-    const _rest_0 = _segments_0["tail"];
-    const _arity_0 = ($nt_count$(_params_0));
-    return $nt_choose$(($Bool$and$(($Bool$and$(($Bool$and$(($no_direct_frame$(_frame_0)), ($Bool$not$(_bang_0)))), (_arity_0 >= 1))), (_arity_0 <= 4))), run_clo((_x_0) => {
-  return {$: "Con", "head": {$: "KDef", "name": _name_0, "kind": "NOEligibleEntry", "arity": _arity_0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false}, "tail": run_loop($no_entry_defs$(_rest_0))};
-}), run_clo((_x_1) => {
-  return $no_entry_defs$(_rest_0);
-}));
-  }
+  return $no_entry_defs_rev$(_segments_0, {$: "Nil"});
 }
 
 function $nv_first$(_a_0, _b_0) {
@@ -21010,28 +21017,7 @@ function $nc_helpers$() {
 }
 
 function $no_wrap_registered$(_segments_0, _index_0, _ready_0) {
-  if (_segments_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _t_0 = _segments_0["head"];
-    const _name_0 = _t_0["name"];
-    const _params_0 = _t_0["params"];
-    const _result_0 = _t_0["result"];
-    const _frame_0 = _t_0["frame"];
-    const _body_0 = _t_0["body"];
-    const _refs_0 = _t_0["refs"];
-    const _host_0 = _t_0["host"];
-    const _spin_0 = _t_0["spin"];
-    const _fork_0 = _t_0["fork"];
-    const _bang_0 = _t_0["bang"];
-    const _rest_0 = _segments_0["tail"];
-    const _d_0 = run_loop($lookup$(_index_0, _name_0));
-    return {$: "Con", "head": run_loop($nt_choose$(($String$eq$(($dk$(_d_0)), "NOObserverEntry")), run_clo((_x_0) => {
-  return $no_wrap_adapter$(($nm$(($dv$(_d_0)))), ($da$(_d_0)), _ready_0, {$: "N_Segment", "name": _name_0, "params": _params_0, "result": _result_0, "frame": _frame_0, "body": _body_0, "refs": _refs_0, "host": _host_0, "spin": _spin_0, "fork": _fork_0, "bang": _bang_0});
-}), run_clo((_x_1) => {
-  return {$: "N_Segment", "name": _name_0, "params": _params_0, "result": _result_0, "frame": _frame_0, "body": _body_0, "refs": _refs_0, "host": _host_0, "spin": _spin_0, "fork": _fork_0, "bang": _bang_0};
-}))), "tail": ($no_wrap_registered$(_rest_0, _index_0, _ready_0))};
-  }
+  return $no_wrap_registered_rev$(_segments_0, _index_0, _ready_0, {$: "Nil"});
 }
 
 function $nh_observer_types$(_book_0, _types_0, _names_0, _entries_0, _ready_0, _seen_0) {
@@ -21100,6 +21086,24 @@ function $nf_param_c$(_params_0) {
     const _x_3 = (" " + _x_1);
     const _x_4 = (_x_2 + _x_3);
     return (", " + _x_4);
+  }
+}
+
+function $ns_image_words_rev$($0, $1) {
+  for (;;) {
+    {
+      const _ts_0 = $0;
+      const _words_0 = $1;
+      if (_ts_0.$ === "Nil") {
+        return $nt_reverse$(_words_0, {$: "Nil"});
+      } else {
+        const _h_0 = _ts_0["head"];
+        const _rest_0 = _ts_0["tail"];
+        $0 = _rest_0;
+        $1 = {$: "Con", "head": ($nm$(_h_0)), "tail": _words_0};
+        continue;
+      }
+    }
   }
 }
 
@@ -24497,59 +24501,23 @@ function $nv_id$(_name_0) {
   return {$: "KDef", "name": _name_0, "kind": "NativeId", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false};
 }
 
-function $nq_transfer$(_shape_0, _words_0, _n_0, _target_0) {
-  if (_target_0.$ === "NC_Scheduler") {
-    return $nq_box_return$(_shape_0, _words_0, _n_0, {$: "NC_Scheduler"});
-  } else {
-    const _dests_0 = _target_0["words"];
-    const _wanted_0 = _target_0["shape"];
-    const _join_0 = _target_0["join"];
-    const _owner_0 = _target_0["owner"];
-    const _params_0 = _target_0["params"];
-    const _tail_0 = _target_0["tail"];
-    const _signatures_0 = _target_0["signatures"];
-    const _x_0 = ($nt_count$(_words_0));
-    const _x_1 = ($nt_count$(_dests_0));
-    return $nt_choose$(($Bool$and$(($nq_same$(_shape_0, _wanted_0)), (_x_0 === _x_1))), run_clo((_x_2) => {
-  const _x_6 = ($nq_assign$(_dests_0, _words_0));
-  const _x_7 = run_loop($nt_choose$(($String$eq$(_join_0, "")), run_clo((_x_3) => {
-  return "return 1;\n";
-}), run_clo((_x_4) => {
-  const _x_5 = (_join_0 + ";\n");
-  return ("goto " + _x_5);
-})));
-  return {$: "NC_Code", "body": (_x_6 + _x_7), "segments": {$: "Nil"}, "fresh": _n_0, "error": "", "calls": {$: "Nil"}};
-}), run_clo((_x_8) => {
-  return $nt_choose$(($String$eq$(($tg$(_wanted_0)), "NQShape")), run_clo((_x_9) => {
-  return $nc_fail$("flat product: opaque or mismatched result", _n_0);
-}), run_clo((_x_10) => {
-  return $nq_box_return$(_shape_0, _words_0, _n_0, {$: "NC_Destination", "words": _dests_0, "shape": _wanted_0, "join": _join_0, "owner": _owner_0, "params": _params_0, "tail": _tail_0, "signatures": _signatures_0});
-}));
-}));
-  }
-}
-
-function $nf_arg_c$(_words_0) {
-  if (_words_0.$ === "Nil") {
-    return "";
-  } else {
-    const _word_0 = _words_0["head"];
-    const _rest_0 = _words_0["tail"];
-    const _x_0 = ($nf_arg_c$(_rest_0));
-    const _x_1 = (_word_0 + _x_0);
-    return (", " + _x_1);
-  }
-}
-
-function $nf_segment_args$(_params_0) {
-  if (_params_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _t_0 = _params_0["head"];
-    const _name_0 = _t_0["name"];
-    const _rest_0 = _params_0["tail"];
-    return {$: "Con", "head": _name_0, "tail": ($nf_segment_args$(_rest_0))};
-  }
+function $nq_wrap_segment$(_d_0, _params_0, _original_0) {
+  const _shape_0 = ($dt$(_d_0));
+  const _result_0 = run_loop($nq_transfer$(_shape_0, run_loop($nq_words$("nq_result", run_loop($nq_width$(_shape_0)), 0)), 0, {$: "NC_Scheduler"}));
+  const _x_0 = (_original_0 + "#endif\n");
+  const _x_1 = ($nc_body$(_result_0));
+  const _x_2 = ("}\n#else\n" + _x_0);
+  const _x_3 = (_x_1 + _x_2);
+  const _x_4 = ($nf_arg_c$(($nf_segment_args$(_params_0))));
+  const _x_5 = (")) { return 0; }\n" + _x_3);
+  const _x_6 = (_x_4 + _x_5);
+  const _x_7 = ($nf_name$(($nm$(($dv$(_d_0))))));
+  const _x_8 = ("(e, seq, nq_result" + _x_6);
+  const _x_9 = (_x_7 + _x_8);
+  const _x_10 = ($U32$show$(run_loop($nq_width$(_shape_0))));
+  const _x_11 = ("];\nif (!" + _x_9);
+  const _x_12 = (_x_10 + _x_11);
+  return ("#if !DEVICE\n{\nTerm nq_result[" + _x_12);
 }
 
 function $no_route_one$(_book_0, _name_0, _entry_0, _old_0) {
@@ -24560,11 +24528,22 @@ function $no_route_one$(_book_0, _name_0, _entry_0, _old_0) {
 }));
 }
 
-function $no_direct_frame$(_frame_0) {
-  if (_frame_0.$ === "N_Direct") {
-    return true;
+function $no_entry_defs_rev$(_segments_0, _entries_0) {
+  if (_segments_0.$ === "Nil") {
+    return $nt_reverse$(_entries_0, {$: "Nil"});
   } else {
-    return false;
+    const _t_0 = _segments_0["head"];
+    const _name_0 = _t_0["name"];
+    const _params_0 = _t_0["params"];
+    const _frame_0 = _t_0["frame"];
+    const _bang_0 = _t_0["bang"];
+    const _rest_0 = _segments_0["tail"];
+    const _arity_0 = ($nt_count$(_params_0));
+    return $nt_choose$(($Bool$and$(($Bool$and$(($Bool$and$(($no_direct_frame$(_frame_0)), ($Bool$not$(_bang_0)))), (_arity_0 >= 1))), (_arity_0 <= 4))), run_clo((_x_0) => {
+  return $no_entry_defs_rev$(_rest_0, {$: "Con", "head": {$: "KDef", "name": _name_0, "kind": "NOEligibleEntry", "arity": _arity_0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false}, "tail": _entries_0});
+}), run_clo((_x_1) => {
+  return $no_entry_defs_rev$(_rest_0, _entries_0);
+}));
   }
 }
 
@@ -24662,7 +24641,7 @@ function $nb_emit$(_ss_0, _cs_0, _image_size_0, _pure_0) {
   const _x_21 = (" };\n" + _x_19);
   const _x_22 = (_x_20 + _x_21);
   const _x_23 = ("CONSTV u8 FID_RESW_T[] = { " + _x_22);
-  const _x_24 = ($nb_flags$(_ss_0, run_loop($nb_fork_close$(_ss_0, ($nb_fork_roots$(_ss_0)), ($nt_count$(_ss_0))))));
+  const _x_24 = run_loop($nb_flags$(_ss_0, run_loop($nb_fork_close$(_ss_0, ($nb_fork_roots$(_ss_0)), ($nt_count$(_ss_0))))));
   const _x_25 = (" };\n" + _x_23);
   const _x_26 = (_x_24 + _x_25);
   const _x_27 = ("CONSTV u8 FID_FLAG_T[] = { " + _x_26);
@@ -24682,40 +24661,41 @@ function $ne_segments$(_ss_0) {
   return $ne_segments_go$(_ss_0, "");
 }
 
-function $no_wrap_adapter$(_owner_0, _arity_0, _ready_0, _segment_0) {
-  const _name_0 = _segment_0["name"];
-  const _params_0 = _segment_0["params"];
-  const _result_0 = _segment_0["result"];
-  const _frame_0 = _segment_0["frame"];
-  const _body_0 = _segment_0["body"];
-  const _refs_0 = _segment_0["refs"];
-  const _host_0 = _segment_0["host"];
-  const _spin_0 = _segment_0["spin"];
-  const _fork_0 = _segment_0["fork"];
-  const _bang_0 = _segment_0["bang"];
-  const _entry_0 = run_loop($nt_choose$((_arity_0 === 0), run_clo((_x_0) => {
-  return _owner_0;
+function $no_wrap_registered_rev$($0, $1, $2, $3) {
+  for (;;) {
+    {
+      const _segments_0 = $0;
+      const _index_0 = $1;
+      const _ready_0 = $2;
+      const _wrapped_0 = $3;
+      if (_segments_0.$ === "Nil") {
+        return $nt_reverse$(_wrapped_0, {$: "Nil"});
+      } else {
+        const _t_0 = _segments_0["head"];
+        const _name_0 = _t_0["name"];
+        const _params_0 = _t_0["params"];
+        const _result_0 = _t_0["result"];
+        const _frame_0 = _t_0["frame"];
+        const _body_0 = _t_0["body"];
+        const _refs_0 = _t_0["refs"];
+        const _host_0 = _t_0["host"];
+        const _spin_0 = _t_0["spin"];
+        const _fork_0 = _t_0["fork"];
+        const _bang_0 = _t_0["bang"];
+        const _rest_0 = _segments_0["tail"];
+        const _d_0 = run_loop($lookup$(_index_0, _name_0));
+        $0 = _rest_0;
+        $1 = _index_0;
+        $2 = _ready_0;
+        $3 = {$: "Con", "head": run_loop($nt_choose$(($String$eq$(($dk$(_d_0)), "NOObserverEntry")), run_clo((_x_0) => {
+  return $no_wrap_adapter$(($nm$(($dv$(_d_0)))), ($da$(_d_0)), _ready_0, {$: "N_Segment", "name": _name_0, "params": _params_0, "result": _result_0, "frame": _frame_0, "body": _body_0, "refs": _refs_0, "host": _host_0, "spin": _spin_0, "fork": _fork_0, "bang": _bang_0});
 }), run_clo((_x_1) => {
-  return $nd_name$(_owner_0);
-})));
-  const _x_2 = ($nt_count$(_params_0));
-  const _selected_0 = ($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(_name_0, _entry_0)), (_arity_0 === _x_2))), ($no_direct_frame$(_frame_0)))), ($nb_contains$(_ready_0, ($no_adapter_name$(_owner_0))))));
-  const _x_3 = (_body_0 + "#endif\n");
-  const _x_4 = ($ne_ret$({$: "Con", "head": "no_public_result[0]", "tail": {$: "Nil"}}));
-  const _x_5 = ("}\n#else\n" + _x_3);
-  const _x_6 = (_x_4 + _x_5);
-  const _x_7 = ($nf_arg_c$(($nf_segment_args$(_params_0))));
-  const _x_8 = (")) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\n" + _x_6);
-  const _x_9 = (_x_7 + _x_8);
-  const _x_10 = ($nf_name$(($no_adapter_name$(_owner_0))));
-  const _x_11 = ("(e, seq, no_public_result" + _x_9);
-  const _x_12 = (_x_10 + _x_11);
-  const _call_0 = ("#if !DEVICE && NATIVE_READONLY_OBSERVERS\n{\nTerm no_public_result[1];\nif (!" + _x_12);
-  return {$: "N_Segment", "name": _name_0, "params": _params_0, "result": _result_0, "frame": _frame_0, "body": run_loop($nt_choose$(_selected_0, run_clo((_x_13) => {
-  return _call_0;
-}), run_clo((_x_14) => {
-  return _body_0;
-}))), "refs": _refs_0, "host": _host_0, "spin": _spin_0, "fork": _fork_0, "bang": _bang_0};
+  return {$: "N_Segment", "name": _name_0, "params": _params_0, "result": _result_0, "frame": _frame_0, "body": _body_0, "refs": _refs_0, "host": _host_0, "spin": _spin_0, "fork": _fork_0, "bang": _bang_0};
+}))), "tail": _wrapped_0};
+        continue;
+      }
+    }
+  }
 }
 
 function $nh_ctor_names$(_cs_0) {
@@ -28620,41 +28600,58 @@ function $nq_demand_args$(_t_0, _head_0, _args_0, _id_0, _fuel_0) {
   }
 }
 
-function $nq_box_return$(_shape_0, _words_0, _n_0, _target_0) {
-  return $nt_choose$(($String$eq$(($tg$(_shape_0)), "NQShape")), run_clo((_x_0) => {
-  return $nf_emitted$(run_loop($nc_constructor_value$(($nm$(_shape_0)), _words_0, _n_0)), _target_0);
-}), run_clo((_x_1) => {
-  return $nt_choose$(($nf_scheduler$(_target_0)), run_clo((_x_2) => {
-  return $nc_return$(($nc_head$(_words_0)), _n_0);
-}), run_clo((_x_3) => {
-  return $nc_fail$("flat product: result width mismatch", _n_0);
-}));
-}));
-}
-
-function $nq_same$(_a_0, _b_0) {
-  const _x_0 = ($ix$(_a_0));
-  const _x_1 = ($ix$(_b_0));
-  return $Bool$and$(($Bool$and$(($String$eq$(($tg$(_a_0)), ($tg$(_b_0)))), ($String$eq$(($nm$(_a_0)), ($nm$(_b_0)))))), (_x_0 === _x_1));
-}
-
-function $nq_assign$(_dests_0, _words_0) {
-  if (_dests_0.$ === "Con") {
-    const _dest_0 = _dests_0["head"];
-    const _rest_0 = _dests_0["tail"];
-    if (_words_0.$ === "Con") {
-      const _word_0 = _words_0["head"];
-      const _more_0 = _words_0["tail"];
-      const _x_0 = ($nq_assign$(_rest_0, _more_0));
-      const _x_1 = (";\n" + _x_0);
-      const _x_2 = (_word_0 + _x_1);
-      const _x_3 = (" = " + _x_2);
-      return (_dest_0 + _x_3);
-    } else {
-      return "";
-    }
+function $nq_transfer$(_shape_0, _words_0, _n_0, _target_0) {
+  if (_target_0.$ === "NC_Scheduler") {
+    return $nq_box_return$(_shape_0, _words_0, _n_0, {$: "NC_Scheduler"});
   } else {
+    const _dests_0 = _target_0["words"];
+    const _wanted_0 = _target_0["shape"];
+    const _join_0 = _target_0["join"];
+    const _owner_0 = _target_0["owner"];
+    const _params_0 = _target_0["params"];
+    const _tail_0 = _target_0["tail"];
+    const _signatures_0 = _target_0["signatures"];
+    const _x_0 = ($nt_count$(_words_0));
+    const _x_1 = ($nt_count$(_dests_0));
+    return $nt_choose$(($Bool$and$(($nq_same$(_shape_0, _wanted_0)), (_x_0 === _x_1))), run_clo((_x_2) => {
+  const _x_6 = ($nq_assign$(_dests_0, _words_0));
+  const _x_7 = run_loop($nt_choose$(($String$eq$(_join_0, "")), run_clo((_x_3) => {
+  return "return 1;\n";
+}), run_clo((_x_4) => {
+  const _x_5 = (_join_0 + ";\n");
+  return ("goto " + _x_5);
+})));
+  return {$: "NC_Code", "body": (_x_6 + _x_7), "segments": {$: "Nil"}, "fresh": _n_0, "error": "", "calls": {$: "Nil"}};
+}), run_clo((_x_8) => {
+  return $nt_choose$(($String$eq$(($tg$(_wanted_0)), "NQShape")), run_clo((_x_9) => {
+  return $nc_fail$("flat product: opaque or mismatched result", _n_0);
+}), run_clo((_x_10) => {
+  return $nq_box_return$(_shape_0, _words_0, _n_0, {$: "NC_Destination", "words": _dests_0, "shape": _wanted_0, "join": _join_0, "owner": _owner_0, "params": _params_0, "tail": _tail_0, "signatures": _signatures_0});
+}));
+}));
+  }
+}
+
+function $nf_arg_c$(_words_0) {
+  if (_words_0.$ === "Nil") {
     return "";
+  } else {
+    const _word_0 = _words_0["head"];
+    const _rest_0 = _words_0["tail"];
+    const _x_0 = ($nf_arg_c$(_rest_0));
+    const _x_1 = (_word_0 + _x_0);
+    return (", " + _x_1);
+  }
+}
+
+function $nf_segment_args$(_params_0) {
+  if (_params_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _t_0 = _params_0["head"];
+    const _name_0 = _t_0["name"];
+    const _rest_0 = _params_0["tail"];
+    return {$: "Con", "head": _name_0, "tail": ($nf_segment_args$(_rest_0))};
   }
 }
 
@@ -28677,6 +28674,14 @@ function $no_schema$(_book_0, _d_0, _firstFresh_0) {
 }), run_clo((_x_4) => {
   return $nol_failure$("unsupported observer definition", _firstFresh_0);
 }));
+}
+
+function $no_direct_frame$(_frame_0) {
+  if (_frame_0.$ === "N_Direct") {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function $nv_unique_index$(_xs_0, _seen_0) {
@@ -28865,14 +28870,13 @@ function $nb_flags$(_ss_0, _forks_0) {
 }
 
 function $nb_fork_close$(_ss_0, _roots_0, _fuel_0) {
-  if (_fuel_0 == 0) {
-    return _roots_0;
-  } else {
-    const _15_0 = u32_to_word(_fuel_0)["head"];
-    const _16_0 = u32_to_word(_fuel_0)["tail"];
-    const _x_0 = word_to_u32({$: "WCon", "head": _15_0, "tail": _16_0});
-    return $nb_fork_next$(_ss_0, _roots_0, ($nb_fork_step$(_ss_0, _roots_0)), ((_x_0 - 1) >>> 0));
-  }
+  const _x_0 = (_fuel_0 === 0);
+  const _x_1 = ($List$is_empty$(_ss_0));
+  return $nt_choose$((_x_0 || _x_1), run_clo((_x_2) => {
+  return _roots_0;
+}), run_clo((_x_3) => {
+  return $nb_fork_close_indexed$(_ss_0, _roots_0, ($nb_fork_index$(_roots_0, ($missing$()))), _fuel_0);
+}));
 }
 
 function $nb_fork_roots$(_ss_0) {
@@ -28915,36 +28919,45 @@ function $nb_dispatch$(_ss_0) {
   return $nb_dispatch_go$(_ss_0, "");
 }
 
-function $ne_segments_go$($0, $1) {
-  for (;;) {
-    {
-      const _ss_0 = $0;
-      const _acc_0 = $1;
-      if (_ss_0.$ === "Nil") {
-        return _acc_0;
-      } else {
-        const _h_0 = _ss_0["head"];
-        const _t_0 = _ss_0["tail"];
-        const _x_0 = ($ne_segment$(_h_0));
-        const _x_1 = (_x_0 + "\n");
-        $0 = _t_0;
-        $1 = (_acc_0 + _x_1);
-        continue;
-      }
-    }
-  }
+function $ne_segments_go$(_ss_0, _acc_0) {
+  const _x_0 = ($ne_segments_chunks$(_ss_0, {$: "Nil"}));
+  return (_acc_0 + _x_0);
 }
 
-function $no_adapter_name$(_owner_0) {
-  return ("$observer.adapter." + _owner_0);
-}
-
-function $ne_ret$(_ws_0) {
-  const _x_0 = ($U32$show$(($nt_count$(_ws_0))));
-  const _x_1 = (_x_0 + ");\n");
-  const _x_2 = ($ne_registers$(_ws_0, 0));
-  const _x_3 = ("WL_RETN(" + _x_1);
-  return (_x_2 + _x_3);
+function $no_wrap_adapter$(_owner_0, _arity_0, _ready_0, _segment_0) {
+  const _name_0 = _segment_0["name"];
+  const _params_0 = _segment_0["params"];
+  const _result_0 = _segment_0["result"];
+  const _frame_0 = _segment_0["frame"];
+  const _body_0 = _segment_0["body"];
+  const _refs_0 = _segment_0["refs"];
+  const _host_0 = _segment_0["host"];
+  const _spin_0 = _segment_0["spin"];
+  const _fork_0 = _segment_0["fork"];
+  const _bang_0 = _segment_0["bang"];
+  const _entry_0 = run_loop($nt_choose$((_arity_0 === 0), run_clo((_x_0) => {
+  return _owner_0;
+}), run_clo((_x_1) => {
+  return $nd_name$(_owner_0);
+})));
+  const _x_2 = ($nt_count$(_params_0));
+  const _selected_0 = ($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(_name_0, _entry_0)), (_arity_0 === _x_2))), ($no_direct_frame$(_frame_0)))), ($nb_contains$(_ready_0, ($no_adapter_name$(_owner_0))))));
+  const _x_3 = (_body_0 + "#endif\n");
+  const _x_4 = ($ne_ret$({$: "Con", "head": "no_public_result[0]", "tail": {$: "Nil"}}));
+  const _x_5 = ("}\n#else\n" + _x_3);
+  const _x_6 = (_x_4 + _x_5);
+  const _x_7 = ($nf_arg_c$(($nf_segment_args$(_params_0))));
+  const _x_8 = (")) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\n" + _x_6);
+  const _x_9 = (_x_7 + _x_8);
+  const _x_10 = ($nf_name$(($no_adapter_name$(_owner_0))));
+  const _x_11 = ("(e, seq, no_public_result" + _x_9);
+  const _x_12 = (_x_10 + _x_11);
+  const _call_0 = ("#if !DEVICE && NATIVE_READONLY_OBSERVERS\n{\nTerm no_public_result[1];\nif (!" + _x_12);
+  return {$: "N_Segment", "name": _name_0, "params": _params_0, "result": _result_0, "frame": _frame_0, "body": run_loop($nt_choose$(_selected_0, run_clo((_x_13) => {
+  return _call_0;
+}), run_clo((_x_14) => {
+  return _body_0;
+}))), "refs": _refs_0, "host": _host_0, "spin": _spin_0, "fork": _fork_0, "bang": _bang_0};
 }
 
 function $nh_matches$(_ts_0, _ctors_0) {
@@ -32344,6 +32357,44 @@ function $nq_min_uses$(_t_0, _id_0) {
 }));
 }
 
+function $nq_box_return$(_shape_0, _words_0, _n_0, _target_0) {
+  return $nt_choose$(($String$eq$(($tg$(_shape_0)), "NQShape")), run_clo((_x_0) => {
+  return $nf_emitted$(run_loop($nc_constructor_value$(($nm$(_shape_0)), _words_0, _n_0)), _target_0);
+}), run_clo((_x_1) => {
+  return $nt_choose$(($nf_scheduler$(_target_0)), run_clo((_x_2) => {
+  return $nc_return$(($nc_head$(_words_0)), _n_0);
+}), run_clo((_x_3) => {
+  return $nc_fail$("flat product: result width mismatch", _n_0);
+}));
+}));
+}
+
+function $nq_same$(_a_0, _b_0) {
+  const _x_0 = ($ix$(_a_0));
+  const _x_1 = ($ix$(_b_0));
+  return $Bool$and$(($Bool$and$(($String$eq$(($tg$(_a_0)), ($tg$(_b_0)))), ($String$eq$(($nm$(_a_0)), ($nm$(_b_0)))))), (_x_0 === _x_1));
+}
+
+function $nq_assign$(_dests_0, _words_0) {
+  if (_dests_0.$ === "Con") {
+    const _dest_0 = _dests_0["head"];
+    const _rest_0 = _dests_0["tail"];
+    if (_words_0.$ === "Con") {
+      const _word_0 = _words_0["head"];
+      const _more_0 = _words_0["tail"];
+      const _x_0 = ($nq_assign$(_rest_0, _more_0));
+      const _x_1 = (";\n" + _x_0);
+      const _x_2 = (_word_0 + _x_1);
+      const _x_3 = (" = " + _x_2);
+      return (_dest_0 + _x_3);
+    } else {
+      return "";
+    }
+  } else {
+    return "";
+  }
+}
+
 function $no_schema_error$(_schema_0) {
   const _error_0 = _schema_0["error"];
   return _error_0;
@@ -32413,43 +32464,8 @@ function $ne_fill$(_src_0, _mark_0, _text_0) {
   return $nt_replace$(_src_0, _mark_0, (_mark_0 + _x_0));
 }
 
-function $nb_seg_ids_go$($0, $1, $2) {
-  for (;;) {
-    {
-      const _ss_0 = $0;
-      const _i_0 = $1;
-      const _acc_0 = $2;
-      if (_ss_0.$ === "Nil") {
-        const _x_0 = ($U32$show$(((_i_0 + 3) >>> 0)));
-        const _x_1 = (_x_0 + "\n");
-        const _x_2 = ($U32$show$(((_i_0 + 2) >>> 0)));
-        const _x_3 = ("\n#define FID_ENTER " + _x_1);
-        const _x_4 = (_x_2 + _x_3);
-        const _x_5 = ($U32$show$(((_i_0 + 1) >>> 0)));
-        const _x_6 = ("\n#define FID_EXIT " + _x_4);
-        const _x_7 = (_x_5 + _x_6);
-        const _x_8 = ($U32$show$(_i_0));
-        const _x_9 = ("\n#define BEND_CLO_APPLY " + _x_7);
-        const _x_10 = (_x_8 + _x_9);
-        const _x_11 = ("#define FID_IO_EMIT " + _x_10);
-        return (_acc_0 + _x_11);
-      } else {
-        const _t_0 = _ss_0["head"];
-        const _k_0 = _t_0["name"];
-        const _t_1 = _ss_0["tail"];
-        const _x_12 = ($U32$show$(_i_0));
-        const _x_13 = (_x_12 + "\n");
-        const _x_14 = ($nt_fid$(_k_0));
-        const _x_15 = (" " + _x_13);
-        const _x_16 = (_x_14 + _x_15);
-        const _x_17 = ("#define " + _x_16);
-        $0 = _t_1;
-        $1 = ((_i_0 + 1) >>> 0);
-        $2 = (_acc_0 + _x_17);
-        continue;
-      }
-    }
-  }
+function $nb_seg_ids_go$(_ss_0, _i_0, _acc_0) {
+  return $nb_seg_ids_chunks$(_ss_0, _i_0, {$: "Con", "head": _acc_0, "tail": {$: "Nil"}});
 }
 
 function $nb_width$(_ss_0) {
@@ -32566,92 +32582,37 @@ function $nb_typed$(_rs_0) {
   }
 }
 
-function $nb_arities_go$($0, $1) {
-  for (;;) {
-    {
-      const _ss_0 = $0;
-      const _acc_0 = $1;
-      if (_ss_0.$ === "Nil") {
-        return (_acc_0 + "1, 2");
-      } else {
-        const _t_0 = _ss_0["head"];
-        const _ps_0 = _t_0["params"];
-        const _t_1 = _ss_0["tail"];
-        const _x_0 = ($U32$show$(($nt_count$(_ps_0))));
-        const _x_1 = (_x_0 + ", ");
-        $0 = _t_1;
-        $1 = (_acc_0 + _x_1);
-        continue;
-      }
-    }
+function $nb_arities_go$(_ss_0, _acc_0) {
+  return $nb_arities_chunks$(_ss_0, {$: "Con", "head": _acc_0, "tail": {$: "Nil"}});
+}
+
+function $nb_flags_go$(_ss_0, _forks_0, _acc_0) {
+  return $nb_flags_chunks$(_ss_0, _forks_0, {$: "Con", "head": _acc_0, "tail": {$: "Nil"}});
+}
+
+function $nb_fork_close_indexed$(_ss_0, _roots_0, _seen_0, _fuel_0) {
+  if (_fuel_0 == 0) {
+    return _roots_0;
+  } else {
+    const _10_0 = u32_to_word(_fuel_0)["head"];
+    const _11_0 = u32_to_word(_fuel_0)["tail"];
+    const _x_0 = word_to_u32({$: "WCon", "head": _10_0, "tail": _11_0});
+    return $nb_fork_scan_indexed$(_ss_0, _ss_0, _roots_0, _seen_0, ($nt_count$(_roots_0)), ((_x_0 - 1) >>> 0));
   }
 }
 
-function $nb_flags_go$($0, $1, $2) {
+function $nb_fork_index$($0, $1) {
   for (;;) {
     {
-      const _ss_0 = $0;
-      const _forks_0 = $1;
-      const _acc_0 = $2;
-      if (_ss_0.$ === "Nil") {
-        return (_acc_0 + "2, 0");
+      const _roots_0 = $0;
+      const _seen_0 = $1;
+      if (_roots_0.$ === "Nil") {
+        return _seen_0;
       } else {
-        const _t_0 = _ss_0["head"];
-        const _k_0 = _t_0["name"];
-        const _fork_0 = _t_0["fork"];
-        const _bang_0 = _t_0["bang"];
-        const _t_1 = _ss_0["tail"];
-        const _x_2 = ($nt_bool$(run_loop($nt_choose$(_fork_0, run_clo((_x_0) => {
-  return false;
-}), run_clo((_x_1) => {
-  return $Bool$not$(($nb_contains$(_forks_0, _k_0)));
-})))));
-        const _x_3 = ($nt_bool$(_bang_0));
-        const _x_4 = (Math.imul(2, _x_2) >>> 0);
-        const _x_5 = ($U32$show$(((_x_3 + _x_4) >>> 0)));
-        const _x_6 = (_x_5 + ", ");
-        $0 = _t_1;
-        $1 = _forks_0;
-        $2 = (_acc_0 + _x_6);
-        continue;
-      }
-    }
-  }
-}
-
-function $nb_fork_next$(_ss_0, _roots_0, _next_0, _fuel_0) {
-  const _x_0 = ($nt_count$(_roots_0));
-  const _x_1 = ($nt_count$(_next_0));
-  return $nt_choose$((_x_0 === _x_1), run_clo((_x_2) => {
-  return _next_0;
-}), run_clo((_x_3) => {
-  return $nb_fork_close$(_ss_0, _next_0, _fuel_0);
-}));
-}
-
-function $nb_fork_step$($0, $1) {
-  for (;;) {
-    {
-      const _ss_0 = $0;
-      const _roots_0 = $1;
-      if (_ss_0.$ === "Nil") {
-        return _roots_0;
-      } else {
-        const _t_0 = _ss_0["head"];
-        const _k_0 = _t_0["name"];
-        const _refs_0 = _t_0["refs"];
-        const _fork_0 = _t_0["fork"];
-        const _t_1 = _ss_0["tail"];
-        $0 = _t_1;
-        $1 = run_loop($nt_choose$(_fork_0, run_clo((_x_0) => {
-  return _roots_0;
-}), run_clo((_x_1) => {
-  return $nt_choose$(($Bool$and$(($Bool$not$(($nb_contains$(_roots_0, _k_0)))), ($nb_reaches$(_refs_0, _roots_0)))), run_clo((_x_2) => {
-  return {$: "Con", "head": _k_0, "tail": _roots_0};
-}), run_clo((_x_3) => {
-  return _roots_0;
-}));
-})));
+        const _name_0 = _roots_0["head"];
+        const _rest_0 = _roots_0["tail"];
+        $0 = _rest_0;
+        $1 = run_loop($nb_fork_mark$(_seen_0, _name_0));
         continue;
       }
     }
@@ -32682,91 +32643,42 @@ function $nb_fork_roots_go$($0, $1) {
   }
 }
 
-function $nb_result_words_go$($0, $1) {
+function $nb_result_words_go$(_ss_0, _acc_0) {
+  return $nb_result_words_chunks$(_ss_0, {$: "Con", "head": _acc_0, "tail": {$: "Nil"}});
+}
+
+function $nb_dispatch_go$(_ss_0, _acc_0) {
+  return $nb_dispatch_chunks$(_ss_0, {$: "Con", "head": _acc_0, "tail": {$: "Nil"}});
+}
+
+function $ne_segments_chunks$($0, $1) {
   for (;;) {
     {
       const _ss_0 = $0;
       const _acc_0 = $1;
       if (_ss_0.$ === "Nil") {
-        return (_acc_0 + "0, 0");
+        return $nt_text_finish$(_acc_0, "");
       } else {
-        const _t_0 = _ss_0["head"];
-        const _ps_0 = _t_0["params"];
-        const _f_0 = _t_0["frame"];
-        const _t_1 = _ss_0["tail"];
-        const _x_0 = ($U32$show$(($nb_frame_results$(_f_0, ($nt_count$(_ps_0))))));
-        const _x_1 = (_x_0 + ", ");
-        $0 = _t_1;
-        $1 = (_acc_0 + _x_1);
+        const _h_0 = _ss_0["head"];
+        const _t_0 = _ss_0["tail"];
+        $0 = _t_0;
+        $1 = {$: "Con", "head": "\n", "tail": {$: "Con", "head": ($ne_segment$(_h_0)), "tail": _acc_0}};
         continue;
       }
     }
   }
 }
 
-function $nb_dispatch_go$($0, $1) {
-  for (;;) {
-    {
-      const _ss_0 = $0;
-      const _acc_0 = $1;
-      if (_ss_0.$ === "Nil") {
-        return (_acc_0 + "WL_X(FID_IO_EMIT) WL_X(BEND_CLO_APPLY) WL_X(FID_EXIT)");
-      } else {
-        const _t_0 = _ss_0["head"];
-        const _k_0 = _t_0["name"];
-        const _t_1 = _ss_0["tail"];
-        const _x_0 = ($nt_fid$(_k_0));
-        const _x_1 = (_x_0 + ") ");
-        const _x_2 = ("WL_X(" + _x_1);
-        $0 = _t_1;
-        $1 = (_acc_0 + _x_2);
-        continue;
-      }
-    }
-  }
+function $no_adapter_name$(_owner_0) {
+  return ("$observer.adapter." + _owner_0);
 }
 
-function $ne_segment$(_seg_0) {
-  const _k_0 = _seg_0["name"];
-  const _ps_0 = _seg_0["params"];
-  const _f_0 = _seg_0["frame"];
-  const _body_0 = _seg_0["body"];
-  const _host_0 = _seg_0["host"];
-  const _spin_0 = _seg_0["spin"];
-  const _x_8 = run_loop($nt_choose$(_host_0, run_clo((_x_6) => {
-  return "#endif\n";
-}), run_clo((_x_7) => {
-  return "";
-})));
-  const _x_9 = run_loop($nt_choose$(_spin_0, run_clo((_x_4) => {
-  return "    WL_SPUN\n";
-}), run_clo((_x_5) => {
-  return "";
-})));
-  const _x_10 = ("  }}\n" + _x_8);
-  const _x_11 = (_x_9 + _x_10);
-  const _x_12 = ($nt_indent$(_body_0));
-  const _x_13 = ("\n" + _x_11);
-  const _x_14 = run_loop($nt_choose$(_spin_0, run_clo((_x_2) => {
-  return "    WL_SPIN\n";
-}), run_clo((_x_3) => {
-  return "";
-})));
-  const _x_15 = (_x_12 + _x_13);
-  const _x_16 = (_x_14 + _x_15);
-  const _x_17 = ($ne_take$(_ps_0, _f_0));
-  const _x_18 = ("    WL_OPEN\n" + _x_16);
-  const _x_19 = (_x_17 + _x_18);
-  const _x_20 = ($nt_fid$(_k_0));
-  const _x_21 = (")\n  {\n" + _x_19);
-  const _x_22 = (_x_20 + _x_21);
-  const _x_23 = run_loop($nt_choose$(_host_0, run_clo((_x_0) => {
-  return "#if !DEVICE\n";
-}), run_clo((_x_1) => {
-  return "";
-})));
-  const _x_24 = ("  WL_CASE(" + _x_22);
-  return (_x_23 + _x_24);
+function $ne_ret$(_ws_0) {
+  const _x_0 = ($U32$show$(($nt_count$(_ws_0))));
+  const _x_1 = (_x_0 + ");\n");
+  const _x_2 = ($ne_registers$(_ws_0, 0));
+  const _x_3 = ("WL_RETN(" + _x_1);
+  return (_x_2 + _x_3);
 }
 
 function $nh_saturated$(_ts_0, _owner_0, _arity_0) {
@@ -35946,6 +35858,43 @@ function $nol_param_head$(_book_0, _head_0, _params_0, _roots_0, _specs_0, _seen
 }));
 }
 
+function $nb_seg_ids_chunks$($0, $1, $2) {
+  for (;;) {
+    {
+      const _ss_0 = $0;
+      const _i_0 = $1;
+      const _acc_0 = $2;
+      if (_ss_0.$ === "Nil") {
+        const _x_0 = ($U32$show$(((_i_0 + 3) >>> 0)));
+        const _x_1 = (_x_0 + "\n");
+        const _x_2 = ($U32$show$(((_i_0 + 2) >>> 0)));
+        const _x_3 = ("\n#define FID_ENTER " + _x_1);
+        const _x_4 = (_x_2 + _x_3);
+        const _x_5 = ($U32$show$(((_i_0 + 1) >>> 0)));
+        const _x_6 = ("\n#define FID_EXIT " + _x_4);
+        const _x_7 = (_x_5 + _x_6);
+        const _x_8 = ($U32$show$(_i_0));
+        const _x_9 = ("\n#define BEND_CLO_APPLY " + _x_7);
+        const _x_10 = (_x_8 + _x_9);
+        return $nt_text_finish$(_acc_0, ("#define FID_IO_EMIT " + _x_10));
+      } else {
+        const _t_0 = _ss_0["head"];
+        const _k_0 = _t_0["name"];
+        const _t_1 = _ss_0["tail"];
+        const _x_11 = ($U32$show$(_i_0));
+        const _x_12 = (_x_11 + "\n");
+        const _x_13 = ($nt_fid$(_k_0));
+        const _x_14 = (" " + _x_12);
+        const _x_15 = (_x_13 + _x_14);
+        $0 = _t_1;
+        $1 = ((_i_0 + 1) >>> 0);
+        $2 = {$: "Con", "head": ("#define " + _x_15), "tail": _acc_0};
+        continue;
+      }
+    }
+  }
+}
+
 function $nb_width_go$($0, $1) {
   for (;;) {
     {
@@ -36005,49 +35954,142 @@ function $nb_bangs_go$($0, $1) {
   }
 }
 
-function $nb_reaches$(_xs_0, _roots_0) {
-  if (_xs_0.$ === "Nil") {
-    return false;
-  } else {
-    const _h_0 = _xs_0["head"];
-    const _t_0 = _xs_0["tail"];
-    const _x_0 = ($nb_contains$(_roots_0, _h_0));
-    const _x_1 = ($nb_reaches$(_t_0, _roots_0));
-    return (_x_0 || _x_1);
+function $nb_arities_chunks$($0, $1) {
+  for (;;) {
+    {
+      const _ss_0 = $0;
+      const _acc_0 = $1;
+      if (_ss_0.$ === "Nil") {
+        return $nt_text_finish$(_acc_0, "1, 2");
+      } else {
+        const _t_0 = _ss_0["head"];
+        const _ps_0 = _t_0["params"];
+        const _t_1 = _ss_0["tail"];
+        const _x_0 = ($U32$show$(($nt_count$(_ps_0))));
+        $0 = _t_1;
+        $1 = {$: "Con", "head": (_x_0 + ", "), "tail": _acc_0};
+        continue;
+      }
+    }
   }
 }
 
-function $nb_frame_results$(_f_0, _n_0) {
-  if (_f_0.$ === "N_Direct") {
-    return 0;
-  } else {
-    const _at_0 = _f_0["slots"];
-    const _x_0 = ($nt_count$(_at_0));
-    return ((_n_0 - _x_0) >>> 0);
-  }
-}
-
-function $ne_take$(_ps_0, _f_0) {
-  if (_f_0.$ === "N_Direct") {
-    return $ne_take_params$(_ps_0, {$: "Nil"}, 0);
-  } else {
-    const _pop_0 = _f_0["pop"];
-    const _at_0 = _f_0["slots"];
-    const _x_4 = run_loop($nt_choose$((_pop_0 === 0), run_clo((_x_0) => {
-  return "";
+function $nb_flags_chunks$(_ss_0, _forks_0, _acc_0) {
+  return $nt_choose$(($List$is_empty$(_ss_0)), run_clo((_x_0) => {
+  return $nt_text_finish$(_acc_0, "2, 0");
 }), run_clo((_x_1) => {
-  const _x_2 = ($U32$show$(_pop_0));
-  const _x_3 = (_x_2 + ");\n");
-  return ("    WL_POPN(" + _x_3);
-})));
-    const _x_5 = ($ne_take_params$(_ps_0, _at_0, 0));
-    return (_x_4 + _x_5);
+  return $nb_flags_indexed$(_ss_0, ($nb_fork_index$(_forks_0, ($missing$()))), _acc_0);
+}));
+}
+
+function $nb_fork_scan_indexed$(_whole_0, _ss_0, _roots_0, _seen_0, _before_0, _fuel_0) {
+  if (_ss_0.$ === "Nil") {
+    const _x_0 = ($nt_count$(_roots_0));
+    return $nt_choose$((_before_0 === _x_0), run_clo((_x_1) => {
+  return _roots_0;
+}), run_clo((_x_2) => {
+  return $nb_fork_close_indexed$(_whole_0, _roots_0, _seen_0, _fuel_0);
+}));
+  } else {
+    const _t_0 = _ss_0["head"];
+    const _k_0 = _t_0["name"];
+    const _refs_0 = _t_0["refs"];
+    const _fork_0 = _t_0["fork"];
+    const _rest_0 = _ss_0["tail"];
+    return $nt_choose$(($Bool$and$(($Bool$and$(($Bool$not$(_fork_0)), ($Bool$not$(($nb_fork_member$(_seen_0, _k_0)))))), ($nb_fork_reaches_indexed$(_refs_0, _seen_0)))), run_clo((_x_3) => {
+  return $nb_fork_scan_indexed$(_whole_0, _rest_0, {$: "Con", "head": _k_0, "tail": _roots_0}, run_loop($nb_fork_mark$(_seen_0, _k_0)), _before_0, _fuel_0);
+}), run_clo((_x_4) => {
+  return $nb_fork_scan_indexed$(_whole_0, _rest_0, _roots_0, _seen_0, _before_0, _fuel_0);
+}));
   }
 }
 
-function $nt_indent$(_s_0) {
-  const _x_0 = ($nt_lines$(_s_0));
-  return ("    " + _x_0);
+function $nb_fork_mark$(_seen_0, _name_0) {
+  return $index_set$(_seen_0, {$: "KDef", "name": _name_0, "kind": "NativeFork", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false}, ($index_hash$(_name_0, 2166136261)), 32);
+}
+
+function $nb_result_words_chunks$($0, $1) {
+  for (;;) {
+    {
+      const _ss_0 = $0;
+      const _acc_0 = $1;
+      if (_ss_0.$ === "Nil") {
+        return $nt_text_finish$(_acc_0, "0, 0");
+      } else {
+        const _t_0 = _ss_0["head"];
+        const _ps_0 = _t_0["params"];
+        const _f_0 = _t_0["frame"];
+        const _t_1 = _ss_0["tail"];
+        const _x_0 = ($U32$show$(($nb_frame_results$(_f_0, ($nt_count$(_ps_0))))));
+        $0 = _t_1;
+        $1 = {$: "Con", "head": (_x_0 + ", "), "tail": _acc_0};
+        continue;
+      }
+    }
+  }
+}
+
+function $nb_dispatch_chunks$($0, $1) {
+  for (;;) {
+    {
+      const _ss_0 = $0;
+      const _acc_0 = $1;
+      if (_ss_0.$ === "Nil") {
+        return $nt_text_finish$(_acc_0, "WL_X(FID_IO_EMIT) WL_X(BEND_CLO_APPLY) WL_X(FID_EXIT)");
+      } else {
+        const _t_0 = _ss_0["head"];
+        const _k_0 = _t_0["name"];
+        const _t_1 = _ss_0["tail"];
+        const _x_0 = ($nt_fid$(_k_0));
+        const _x_1 = (_x_0 + ") ");
+        $0 = _t_1;
+        $1 = {$: "Con", "head": ("WL_X(" + _x_1), "tail": _acc_0};
+        continue;
+      }
+    }
+  }
+}
+
+function $ne_segment$(_seg_0) {
+  const _k_0 = _seg_0["name"];
+  const _ps_0 = _seg_0["params"];
+  const _f_0 = _seg_0["frame"];
+  const _body_0 = _seg_0["body"];
+  const _host_0 = _seg_0["host"];
+  const _spin_0 = _seg_0["spin"];
+  const _x_8 = run_loop($nt_choose$(_host_0, run_clo((_x_6) => {
+  return "#endif\n";
+}), run_clo((_x_7) => {
+  return "";
+})));
+  const _x_9 = run_loop($nt_choose$(_spin_0, run_clo((_x_4) => {
+  return "    WL_SPUN\n";
+}), run_clo((_x_5) => {
+  return "";
+})));
+  const _x_10 = ("  }}\n" + _x_8);
+  const _x_11 = (_x_9 + _x_10);
+  const _x_12 = ("\n" + _x_11);
+  const _x_13 = run_loop($nt_choose$(_spin_0, run_clo((_x_2) => {
+  return "    WL_SPIN\n";
+}), run_clo((_x_3) => {
+  return "";
+})));
+  const _x_14 = (_body_0 + _x_12);
+  const _x_15 = (_x_13 + _x_14);
+  const _x_16 = ($ne_take$(_ps_0, _f_0));
+  const _x_17 = ("    WL_OPEN\n" + _x_15);
+  const _x_18 = (_x_16 + _x_17);
+  const _x_19 = ($nt_fid$(_k_0));
+  const _x_20 = (")\n  {\n" + _x_18);
+  const _x_21 = (_x_19 + _x_20);
+  const _x_22 = run_loop($nt_choose$(_host_0, run_clo((_x_0) => {
+  return "#if !DEVICE\n";
+}), run_clo((_x_1) => {
+  return "";
+})));
+  const _x_23 = ("  WL_CASE(" + _x_21);
+  return (_x_22 + _x_23);
 }
 
 function $nh_field$(_book_0, _head_0, _left_0, _hot_0, _fuel_0) {
@@ -38955,11 +38997,7 @@ function $noa_analyze_ready$(_ctx_0) {
   const _schema_0 = ($noa_schema$(_ctx_0));
   const _params_0 = ($noa_entry_values$(($no_schema_params$(_schema_0)), 0));
   const _body_0 = run_loop($nc_source_body$(($noa_book$(_ctx_0)), run_loop($lookup$(($noa_book$(_ctx_0)), ($noa_owner$(_ctx_0)))), ($no_schema_fresh$(_schema_0))));
-  return $noa_eval$(_ctx_0, _body_0, {$: "Nil"}, {$: "Nil"}, {$: "Nil"}, ($no_schema_fresh$(_schema_0)), 4096, run_clo((_x_0) => {
-  return $noa_apply_args$(_ctx_0, ($noa_iv$(_x_0)), _params_0, ($noa_if$(_x_0)), ($noa_in$(_x_0)), ($noa_iu$(_x_0)), run_clo((_x_1) => {
-  return $noa_finish$(_ctx_0, _x_1);
-}));
-}));
+  return $noa_eval$(_ctx_0, _body_0, {$: "Nil"}, {$: "Nil"}, {$: "Nil"}, ($no_schema_fresh$(_schema_0)), 4096, {$: "NO_KApplyArgs", "args": _params_0, "next": {$: "NO_KFinish"}});
 }
 
 function $nol_param_type$(_book_0, _head_0, _ty_0, _params_0, _roots_0, _specs_0, _seen_0, _fresh_0, _fuel_0, _arity_0) {
@@ -38997,43 +39035,79 @@ function $nb_max$(_a_0, _b_0) {
 }));
 }
 
-function $ne_take_params$(_ps_0, _slots_0, _i_0) {
-  if (_ps_0.$ === "Nil") {
-    return "";
-  } else {
-    const _t_0 = _ps_0["head"];
-    const _name_0 = _t_0["name"];
-    const _kind_0 = _t_0["kind"];
-    const _t_1 = _ps_0["tail"];
-    if (_slots_0.$ === "Nil") {
-      const _x_0 = ($ne_take_params$(_t_1, {$: "Nil"}, ((_i_0 + 1) >>> 0)));
-      const _x_1 = ($U32$show$(_i_0));
-      const _x_2 = (";\n" + _x_0);
-      const _x_3 = (_x_1 + _x_2);
-      const _x_4 = (" = r" + _x_3);
-      const _x_5 = (_name_0 + _x_4);
-      const _x_6 = ($nl_c_type$(_kind_0));
-      const _x_7 = (" " + _x_5);
-      const _x_8 = (_x_6 + _x_7);
-      return ("    " + _x_8);
-    } else {
-      const _at_0 = _slots_0["head"];
-      const _rest_0 = _slots_0["tail"];
-      const _x_9 = ($ne_take_params$(_t_1, _rest_0, _i_0));
-      const _x_10 = (");\n" + _x_9);
-      const _x_11 = (_at_0 + _x_10);
-      const _x_12 = (" = STK(" + _x_11);
-      const _x_13 = (_name_0 + _x_12);
-      const _x_14 = ($nl_c_type$(_kind_0));
-      const _x_15 = (" " + _x_13);
-      const _x_16 = (_x_14 + _x_15);
-      return ("    " + _x_16);
+function $nb_flags_indexed$($0, $1, $2) {
+  for (;;) {
+    {
+      const _ss_0 = $0;
+      const _seen_0 = $1;
+      const _acc_0 = $2;
+      if (_ss_0.$ === "Nil") {
+        return $nt_text_finish$(_acc_0, "2, 0");
+      } else {
+        const _t_0 = _ss_0["head"];
+        const _k_0 = _t_0["name"];
+        const _fork_0 = _t_0["fork"];
+        const _bang_0 = _t_0["bang"];
+        const _rest_0 = _ss_0["tail"];
+        const _x_2 = ($nt_bool$(run_loop($nt_choose$(_fork_0, run_clo((_x_0) => {
+  return false;
+}), run_clo((_x_1) => {
+  return $Bool$not$(($nb_fork_member$(_seen_0, _k_0)));
+})))));
+        const _x_3 = ($nt_bool$(_bang_0));
+        const _x_4 = (Math.imul(2, _x_2) >>> 0);
+        const _x_5 = ($U32$show$(((_x_3 + _x_4) >>> 0)));
+        $0 = _rest_0;
+        $1 = _seen_0;
+        $2 = {$: "Con", "head": (_x_5 + ", "), "tail": _acc_0};
+        continue;
+      }
     }
   }
 }
 
-function $nt_lines$(_s_0) {
-  return $nt_lines_go$(_s_0, "");
+function $nb_fork_member$(_seen_0, _name_0) {
+  return $String$eq$(($dk$(run_loop($index_find$(_seen_0, _name_0, ($index_hash$(_name_0, 2166136261)), 32)))), "NativeFork");
+}
+
+function $nb_fork_reaches_indexed$(_refs_0, _seen_0) {
+  if (_refs_0.$ === "Nil") {
+    return false;
+  } else {
+    const _name_0 = _refs_0["head"];
+    const _rest_0 = _refs_0["tail"];
+    const _x_0 = ($nb_fork_member$(_seen_0, _name_0));
+    const _x_1 = ($nb_fork_reaches_indexed$(_rest_0, _seen_0));
+    return (_x_0 || _x_1);
+  }
+}
+
+function $nb_frame_results$(_f_0, _n_0) {
+  if (_f_0.$ === "N_Direct") {
+    return 0;
+  } else {
+    const _at_0 = _f_0["slots"];
+    const _x_0 = ($nt_count$(_at_0));
+    return ((_n_0 - _x_0) >>> 0);
+  }
+}
+
+function $ne_take$(_ps_0, _f_0) {
+  if (_f_0.$ === "N_Direct") {
+    return $ne_take_params$(_ps_0, {$: "Nil"}, 0);
+  } else {
+    const _pop_0 = _f_0["pop"];
+    const _at_0 = _f_0["slots"];
+    const _x_4 = run_loop($nt_choose$((_pop_0 === 0), run_clo((_x_0) => {
+  return "";
+}), run_clo((_x_1) => {
+  const _x_2 = ($U32$show$(_pop_0));
+  const _x_3 = (_x_2 + ");\n");
+  return ("    WL_POPN(" + _x_3);
+})));
+    const _x_5 = ($ne_take_params$(_ps_0, _at_0, 0));
+    return (_x_4 + _x_5);
+  }
 }
 
 function $tele_check_done$(_a_0, _b_0) {
@@ -41590,48 +41664,6 @@ function $noa_eval$(_ctx_0, _t_0, _env_0, _facts_0, _stack_0, _n_0, _fuel_0, _k_
 }));
 }
 
-function $noa_apply_args$(_ctx_0, _fn_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0) {
-  if (_args_0.$ === "Nil") {
-    return run_tail(_k_0, {$: "NO_Input", "value": _fn_0, "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0});
-  } else {
-    const _arg_0 = _args_0["head"];
-    const _rest_0 = _args_0["tail"];
-    return $noa_apply$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, run_clo((_x_0) => {
-  return $noa_apply_args$(_ctx_0, ($noa_iv$(_x_0)), _rest_0, ($noa_if$(_x_0)), ($noa_in$(_x_0)), ($noa_iu$(_x_0)), _k_0);
-}));
-  }
-}
-
-function $noa_iv$(_i_0) {
-  const _v_0 = _i_0["value"];
-  return _v_0;
-}
-
-function $noa_if$(_i_0) {
-  const _f_0 = _i_0["facts"];
-  return _f_0;
-}
-
-function $noa_in$(_i_0) {
-  const _n_0 = _i_0["fresh"];
-  return _n_0;
-}
-
-function $noa_iu$(_i_0) {
-  const _fuel_0 = _i_0["fuel"];
-  return _fuel_0;
-}
-
-function $noa_finish$(_ctx_0, _input_0) {
-  const _result_0 = run_loop($noa_finish_value$(_ctx_0, ($noa_iv$(_input_0)), ($no_schema_wrapper$(($noa_schema$(_ctx_0)))), ($noa_if$(_input_0))));
-  const _x_0 = ($terms_len$(($ks$(_result_0))));
-  return $nt_choose$(($Bool$and$(($String$eq$(($tg$(_result_0)), "OResult")), (_x_0 === 1))), run_clo((_x_1) => {
-  return {$: "NO_Analysis", "body": ($kt$("NO_Return", "", 0, 0, ($ks$(_result_0)))), "fresh": ($noa_in$(_input_0)), "fuel": ($noa_iu$(_input_0)), "error": ""};
-}), run_clo((_x_2) => {
-  return $noa_fail$("observer: returned root or observation unproved", ($noa_in$(_input_0)), ($noa_iu$(_input_0)));
-}));
-}
-
 function $nol_root_specs$(_book_0, _ty_0) {
   const _d_0 = run_loop($lookup$(_book_0, ($nm$(_ty_0))));
   const _x_0 = ($Bool$not$(($db$(_d_0))));
@@ -41700,35 +41732,37 @@ function $nol_wrap$(_book_0, _sourceType_0, _params_0, _roots_0, _shells_0, _obs
 }));
 }
 
-function $nl_c_type$(_k_0) {
-  if (_k_0.$ === "N_W32") {
-    return "#if !DEVICE && NATIVE_TYPED_SCALARS\nu32\n#else\nTerm\n#endif\n";
-  } else if (_k_0.$ === "N_W64") {
-    return "Term";
+function $ne_take_params$(_ps_0, _slots_0, _i_0) {
+  if (_ps_0.$ === "Nil") {
+    return "";
   } else {
-    return "Term";
-  }
-}
-
-function $nt_lines_go$($0, $1) {
-  for (;;) {
-    {
-      const _s_0 = $0;
-      const _acc_0 = $1;
-      if (_s_0 === "") {
-        return _acc_0;
-      } else {
-        const _h_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(0, 2) : _s_0[0]);
-        const _t_0 = (_s_0.codePointAt(0) > 0xFFFF ? _s_0.slice(2) : _s_0.slice(1));
-        const _x_2 = run_loop($nt_choose$(($Char$is_eq$(_h_0, "\n")), run_clo((_x_0) => {
-  return "\n    ";
-}), run_clo((_x_1) => {
-  return (_h_0 + "");
-})));
-        $0 = _t_0;
-        $1 = (_acc_0 + _x_2);
-        continue;
-      }
+    const _t_0 = _ps_0["head"];
+    const _name_0 = _t_0["name"];
+    const _kind_0 = _t_0["kind"];
+    const _t_1 = _ps_0["tail"];
+    if (_slots_0.$ === "Nil") {
+      const _x_0 = ($ne_take_params$(_t_1, {$: "Nil"}, ((_i_0 + 1) >>> 0)));
+      const _x_1 = ($U32$show$(_i_0));
+      const _x_2 = (";\n" + _x_0);
+      const _x_3 = (_x_1 + _x_2);
+      const _x_4 = (" = r" + _x_3);
+      const _x_5 = (_name_0 + _x_4);
+      const _x_6 = ($nl_c_type$(_kind_0));
+      const _x_7 = (" " + _x_5);
+      const _x_8 = (_x_6 + _x_7);
+      return ("    " + _x_8);
+    } else {
+      const _at_0 = _slots_0["head"];
+      const _rest_0 = _slots_0["tail"];
+      const _x_9 = ($ne_take_params$(_t_1, _rest_0, _i_0));
+      const _x_10 = (");\n" + _x_9);
+      const _x_11 = (_at_0 + _x_10);
+      const _x_12 = (" = STK(" + _x_11);
+      const _x_13 = (_name_0 + _x_12);
+      const _x_14 = ($nl_c_type$(_kind_0));
+      const _x_15 = (" " + _x_13);
+      const _x_16 = (_x_14 + _x_15);
+      return ("    " + _x_16);
     }
   }
 }
@@ -43527,7 +43561,7 @@ function $noa_eval_step$(_ctx_0, _t_0, _env_0, _facts_0, _stack_0, _n_0, _fuel_0
   return $nt_choose$(($String$eq$(($tg$(run_loop($noa_env$(($ix$(_t_0)), _env_0)))), "Absent")), run_clo((_x_1) => {
   return $noa_fail$("observer: unbound source variable", _n_0, _fuel_0);
 }), run_clo((_x_2) => {
-  return run_tail(_k_0, {$: "NO_Input", "value": run_loop($noa_env$(($ix$(_t_0)), _env_0)), "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0});
+  return $noa_continue$(_ctx_0, _k_0, {$: "NO_Input", "value": run_loop($noa_env$(($ix$(_t_0)), _env_0)), "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0});
 }));
 }), run_clo((_x_3) => {
   return $nt_choose$(($core_literal$(_t_0)), run_clo((_x_4) => {
@@ -43536,7 +43570,7 @@ function $noa_eval_step$(_ctx_0, _t_0, _env_0, _facts_0, _stack_0, _n_0, _fuel_0
   const _x_6 = ($String$eq$(_tag_0, "Lam"));
   const _x_7 = ($String$eq$(_tag_0, "Mat"));
   return $nt_choose$((_x_6 || _x_7), run_clo((_x_8) => {
-  return run_tail(_k_0, {$: "NO_Input", "value": ($kt$(run_loop($nt_choose$(($String$eq$(_tag_0, "Lam")), run_clo((_x_9) => {
+  return $noa_continue$(_ctx_0, _k_0, {$: "NO_Input", "value": ($kt$(run_loop($nt_choose$(($String$eq$(_tag_0, "Lam")), run_clo((_x_9) => {
   return "OL";
 }), run_clo((_x_10) => {
   return "OM";
@@ -43550,37 +43584,29 @@ function $noa_eval_step$(_ctx_0, _t_0, _env_0, _facts_0, _stack_0, _n_0, _fuel_0
   return $nt_choose$((_x_15 || _x_16), run_clo((_x_17) => {
   return $noa_fail$("observer: bang or demanded zero-arity reference", _n_0, _fuel_0);
 }), run_clo((_x_18) => {
-  return run_tail(_k_0, {$: "NO_Input", "value": ($kt$("OR", ($nm$(_t_0)), 0, 0, {$: "Con", "head": ($kt$("OStack", "", 0, 0, ($noa_names$(_stack_0)))), "tail": {$: "Nil"}})), "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0});
+  return $noa_continue$(_ctx_0, _k_0, {$: "NO_Input", "value": ($kt$("OR", ($nm$(_t_0)), 0, 0, {$: "Con", "head": ($kt$("OStack", "", 0, 0, ($noa_names$(_stack_0)))), "tail": {$: "Nil"}})), "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0});
 }));
 }), run_clo((_x_19) => {
   return $nt_choose$(($String$eq$(_tag_0, "App")), run_clo((_x_20) => {
-  return $noa_eval$(_ctx_0, run_loop($kid$(_t_0, 0)), _env_0, _facts_0, _stack_0, _n_0, _fuel_0, run_clo((_x_21) => {
-  return $noa_eval$(_ctx_0, run_loop($kid$(_t_0, 1)), _env_0, ($noa_if$(_x_21)), _stack_0, ($noa_in$(_x_21)), ($noa_iu$(_x_21)), run_clo((_x_22) => {
-  return $noa_apply$(_ctx_0, ($noa_iv$(_x_21)), ($noa_iv$(_x_22)), ($noa_if$(_x_22)), ($noa_in$(_x_22)), ($noa_iu$(_x_22)), _k_0);
-}));
-}));
-}), run_clo((_x_23) => {
-  return $nt_choose$(($String$eq$(_tag_0, "Ctr")), run_clo((_x_24) => {
-  return $nt_choose$(($no_literal_demanding_ctor$(($nm$(_t_0)))), run_clo((_x_25) => {
+  return $noa_eval$(_ctx_0, run_loop($kid$(_t_0, 0)), _env_0, _facts_0, _stack_0, _n_0, _fuel_0, {$: "NO_KAppFunction", "arg": run_loop($kid$(_t_0, 1)), "env": _env_0, "stack": _stack_0, "next": _k_0});
+}), run_clo((_x_21) => {
+  return $nt_choose$(($String$eq$(_tag_0, "Ctr")), run_clo((_x_22) => {
+  return $nt_choose$(($no_literal_demanding_ctor$(($nm$(_t_0)))), run_clo((_x_23) => {
   return $noa_fail$("observer: demanding scalar constructor", _n_0, _fuel_0);
-}), run_clo((_x_26) => {
-  return $noa_eval_args$(_ctx_0, ($ks$(_t_0)), _env_0, _facts_0, _stack_0, {$: "Nil"}, _n_0, _fuel_0, run_clo((_x_27) => {
-  return $noa_constructor$(_ctx_0, ($nm$(_t_0)), _x_27, _k_0);
+}), run_clo((_x_24) => {
+  return $noa_eval_args$(_ctx_0, ($ks$(_t_0)), _env_0, _facts_0, _stack_0, {$: "Nil"}, _n_0, _fuel_0, {$: "NO_KConstructor", "name": ($nm$(_t_0)), "next": _k_0});
 }));
-}));
-}), run_clo((_x_28) => {
-  return $nt_choose$(($nb_contains$({$: "Con", "head": "Ann", "tail": {$: "Con", "head": "Loc", "tail": {$: "Con", "head": "Src", "tail": {$: "Con", "head": "Cut", "tail": {$: "Con", "head": "Slf", "tail": {$: "Con", "head": "Ins", "tail": {$: "Nil"}}}}}}}, _tag_0)), run_clo((_x_29) => {
+}), run_clo((_x_25) => {
+  return $nt_choose$(($nb_contains$({$: "Con", "head": "Ann", "tail": {$: "Con", "head": "Loc", "tail": {$: "Con", "head": "Src", "tail": {$: "Con", "head": "Cut", "tail": {$: "Con", "head": "Slf", "tail": {$: "Con", "head": "Ins", "tail": {$: "Nil"}}}}}}}, _tag_0)), run_clo((_x_26) => {
   return $noa_eval$(_ctx_0, run_loop($kid$(_t_0, 0)), _env_0, _facts_0, _stack_0, _n_0, _fuel_0, _k_0);
-}), run_clo((_x_30) => {
-  return $nt_choose$(($String$eq$(_tag_0, "Efq")), run_clo((_x_31) => {
+}), run_clo((_x_27) => {
+  return $nt_choose$(($String$eq$(_tag_0, "Efq")), run_clo((_x_28) => {
   return {$: "NO_Analysis", "body": ($kt$("NO_Error", "ERR_FIDS", 0, 0, {$: "Nil"})), "fresh": _n_0, "fuel": _fuel_0, "error": ""};
+}), run_clo((_x_29) => {
+  const _x_30 = ($terms_len$(($ks$(_t_0))));
+  return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(_tag_0, "Let")), (_x_30 === 2))), ($String$eq$(($tg$(run_loop($kid$(_t_0, 0)))), "Bind")))), run_clo((_x_31) => {
+  return $noa_eval$(_ctx_0, run_loop($kid$(run_loop($kid$(_t_0, 0)), 0)), _env_0, _facts_0, _stack_0, _n_0, _fuel_0, {$: "NO_KLetBody", "body": run_loop($kid$(_t_0, 1)), "id": ($ix$(run_loop($kid$(_t_0, 0)))), "env": _env_0, "stack": _stack_0, "next": _k_0});
 }), run_clo((_x_32) => {
-  const _x_33 = ($terms_len$(($ks$(_t_0))));
-  return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(_tag_0, "Let")), (_x_33 === 2))), ($String$eq$(($tg$(run_loop($kid$(_t_0, 0)))), "Bind")))), run_clo((_x_34) => {
-  return $noa_eval$(_ctx_0, run_loop($kid$(run_loop($kid$(_t_0, 0)), 0)), _env_0, _facts_0, _stack_0, _n_0, _fuel_0, run_clo((_x_35) => {
-  return $noa_eval$(_ctx_0, run_loop($kid$(_t_0, 1)), ($noa_bind$(($ix$(run_loop($kid$(_t_0, 0)))), ($noa_iv$(_x_35)), _env_0)), ($noa_if$(_x_35)), _stack_0, ($noa_in$(_x_35)), ($noa_iu$(_x_35)), _k_0);
-}));
-}), run_clo((_x_36) => {
   return $noa_fail$(("observer: unsupported evaluated core " + _tag_0), _n_0, _fuel_0);
 }));
 }));
@@ -43589,40 +43615,6 @@ function $noa_eval_step$(_ctx_0, _t_0, _env_0, _facts_0, _stack_0, _n_0, _fuel_0
 }));
 }));
 }));
-}));
-}));
-}
-
-function $noa_apply$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, _k_0) {
-  return $nt_choose$((_fuel_0 === 0), run_clo((_x_0) => {
-  return $noa_fail$("observer: candidate budget", _n_0, _fuel_0);
-}), run_clo((_x_1) => {
-  return $noa_apply_step$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, ((_fuel_0 - 1) >>> 0), _k_0);
-}));
-}
-
-function $noa_finish_value$(_ctx_0, _value_0, _template_0, _facts_0) {
-  return $nt_choose$(($String$eq$(($tg$(_template_0)), "Var")), run_clo((_x_0) => {
-  const _x_1 = ($ix$(_template_0));
-  const _x_2 = ($no_schema_result$(($noa_schema$(_ctx_0))));
-  return $nt_choose$((_x_1 === _x_2), run_clo((_x_3) => {
-  return $nt_choose$(($Bool$and$(($String$eq$(run_loop($noa_value_type$(_ctx_0, _value_0)), ($no_schema_observation$(($noa_schema$(_ctx_0)))))), ($Bool$not$(($String$eq$(($tg$(run_loop($noa_scalar$(_ctx_0, _value_0)))), "Absent")))))), run_clo((_x_4) => {
-  return $kt$("OResult", "", 0, 0, {$: "Con", "head": run_loop($noa_scalar$(_ctx_0, _value_0)), "tail": {$: "Nil"}});
-}), run_clo((_x_5) => {
-  return $atom$("Absent");
-}));
-}), run_clo((_x_6) => {
-  return $nt_choose$(run_loop($noa_equal$(_value_0, run_loop($noa_param_origin$(($ix$(_template_0)), ($no_schema_params$(($noa_schema$(_ctx_0)))), 0)), _facts_0)), run_clo((_x_7) => {
-  return $kt$("OResult", "", 0, 0, {$: "Nil"});
-}), run_clo((_x_8) => {
-  return $atom$("Absent");
-}));
-}));
-}), run_clo((_x_9) => {
-  return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_template_0)), "Ctr")), ($String$eq$(($tg$(_value_0)), "OC")))), ($String$eq$(($nm$(_template_0)), ($nm$(_value_0)))))), run_clo((_x_10) => {
-  return $noa_finish_fields$(_ctx_0, ($ks$(_value_0)), ($ks$(_template_0)), _facts_0);
-}), run_clo((_x_11) => {
-  return $atom$("Absent");
 }));
 }));
 }
@@ -43738,6 +43730,16 @@ function $nol_wrap_shell$(_book_0, _ty_0, _params_0, _roots_0, _shells_0, _obser
     }
   } else {
     return $nol_wrap_fail$("result is not a fixed constructor", _roots_0, _shells_0, _observation_0);
+  }
+}
+
+function $nl_c_type$(_k_0) {
+  if (_k_0.$ === "N_W32") {
+    return "#if !DEVICE && NATIVE_TYPED_SCALARS\nu32\n#else\nTerm\n#endif\n";
+  } else if (_k_0.$ === "N_W64") {
+    return "Term";
+  } else {
+    return "Term";
   }
 }
 
@@ -45288,11 +45290,117 @@ function $noa_env$(_id_0, _xs_0) {
   }
 }
 
+function $noa_continue$($0, $1, $2, $3, $4, $5, $6, $7, $8) {
+  let $pc = 0;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _ctx_0 = $0;
+      const _k_0 = $1;
+      const _input_0 = $2;
+      if (_k_0.$ === "NO_KFinish") {
+        return $noa_finish$(_ctx_0, _input_0);
+      } else if (_k_0.$ === "NO_KEvalArgs") {
+        const _terms_0 = _k_0["terms"];
+        const _env_0 = _k_0["env"];
+        const _stack_0 = _k_0["stack"];
+        const _acc_0 = _k_0["acc"];
+        const _next_0 = _k_0["next"];
+        $0 = _ctx_0;
+        $1 = _terms_0;
+        $2 = _env_0;
+        $3 = ($noa_if$(_input_0));
+        $4 = _stack_0;
+        $5 = {$: "Con", "head": ($noa_iv$(_input_0)), "tail": _acc_0};
+        $6 = ($noa_in$(_input_0));
+        $7 = ($noa_iu$(_input_0));
+        $8 = _next_0;
+        $pc = 1; continue;
+      } else if (_k_0.$ === "NO_KApplyArgs") {
+        const _args_0 = _k_0["args"];
+        const _next_1 = _k_0["next"];
+        $0 = _ctx_0;
+        $1 = ($noa_iv$(_input_0));
+        $2 = _args_0;
+        $3 = ($noa_if$(_input_0));
+        $4 = ($noa_in$(_input_0));
+        $5 = ($noa_iu$(_input_0));
+        $6 = _next_1;
+        $pc = 2; continue;
+      } else if (_k_0.$ === "NO_KAppFunction") {
+        const _arg_0 = _k_0["arg"];
+        const _env_1 = _k_0["env"];
+        const _stack_1 = _k_0["stack"];
+        const _next_2 = _k_0["next"];
+        return $noa_eval$(_ctx_0, _arg_0, _env_1, ($noa_if$(_input_0)), _stack_1, ($noa_in$(_input_0)), ($noa_iu$(_input_0)), {$: "NO_KAppArgument", "fn": ($noa_iv$(_input_0)), "next": _next_2});
+      } else if (_k_0.$ === "NO_KAppArgument") {
+        const _fn_0 = _k_0["fn"];
+        const _next_3 = _k_0["next"];
+        return $noa_apply$(_ctx_0, _fn_0, ($noa_iv$(_input_0)), ($noa_if$(_input_0)), ($noa_in$(_input_0)), ($noa_iu$(_input_0)), _next_3);
+      } else if (_k_0.$ === "NO_KConstructor") {
+        const _name_0 = _k_0["name"];
+        const _next_4 = _k_0["next"];
+        return $noa_constructor$(_ctx_0, _name_0, _input_0, _next_4);
+      } else if (_k_0.$ === "NO_KLetBody") {
+        const _body_0 = _k_0["body"];
+        const _id_0 = _k_0["id"];
+        const _env_2 = _k_0["env"];
+        const _stack_2 = _k_0["stack"];
+        const _next_5 = _k_0["next"];
+        return $noa_eval$(_ctx_0, _body_0, ($noa_bind$(_id_0, ($noa_iv$(_input_0)), _env_2)), ($noa_if$(_input_0)), _stack_2, ($noa_in$(_input_0)), ($noa_iu$(_input_0)), _next_5);
+      } else {
+        const _arg_1 = _k_0["arg"];
+        const _next_6 = _k_0["next"];
+        return $noa_apply$(_ctx_0, ($noa_iv$(_input_0)), _arg_1, ($noa_if$(_input_0)), ($noa_in$(_input_0)), ($noa_iu$(_input_0)), _next_6);
+      }
+    }
+    case 1: {
+      const _ctx_0 = $0;
+      const _ts_0 = $1;
+      const _env_0 = $2;
+      const _facts_0 = $3;
+      const _stack_0 = $4;
+      const _acc_0 = $5;
+      const _n_0 = $6;
+      const _fuel_0 = $7;
+      const _k_0 = $8;
+      if (_ts_0.$ === "Nil") {
+        $0 = _ctx_0;
+        $1 = _k_0;
+        $2 = {$: "NO_Input", "value": ($kt$("OArgs", "", 0, 0, ($nt_reverse$(_acc_0, {$: "Nil"})))), "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0};
+        $pc = 0; continue;
+      } else {
+        const _h_0 = _ts_0["head"];
+        const _rest_0 = _ts_0["tail"];
+        return $noa_eval$(_ctx_0, _h_0, _env_0, _facts_0, _stack_0, _n_0, _fuel_0, {$: "NO_KEvalArgs", "terms": _rest_0, "env": _env_0, "stack": _stack_0, "acc": _acc_0, "next": _k_0});
+      }
+    }
+    case 2: {
+      const _ctx_0 = $0;
+      const _fn_0 = $1;
+      const _args_0 = $2;
+      const _facts_0 = $3;
+      const _n_0 = $4;
+      const _fuel_0 = $5;
+      const _k_0 = $6;
+      if (_args_0.$ === "Nil") {
+        $0 = _ctx_0;
+        $1 = _k_0;
+        $2 = {$: "NO_Input", "value": _fn_0, "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0};
+        $pc = 0; continue;
+      } else {
+        const _arg_0 = _args_0["head"];
+        const _rest_0 = _args_0["tail"];
+        return $noa_apply$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, {$: "NO_KApplyArgs", "args": _rest_0, "next": _k_0});
+      }
+    }
+  }
+}
+
 function $noa_literal$(_ctx_0, _t_0, _env_0, _facts_0, _stack_0, _n_0, _fuel_0, _k_0) {
   const _lit_0 = run_loop($no_literal_typed$(($noa_book$(_ctx_0)), _t_0));
   const _step_0 = run_loop($no_literal_string_step$(($noa_book$(_ctx_0)), _t_0));
   return $nt_choose$(($String$eq$(($tg$(_lit_0)), "NO_TypedWord")), run_clo((_x_0) => {
-  return run_tail(_k_0, {$: "NO_Input", "value": ($noa_atom$(($nm$(_lit_0)), ($kt$("OConst", ($nm$(_lit_0)), ($ix$(_lit_0)), 0, {$: "Nil"})), run_loop($kid$(_lit_0, 0)))), "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0});
+  return $noa_continue$(_ctx_0, _k_0, {$: "NO_Input", "value": ($noa_atom$(($nm$(_lit_0)), ($kt$("OConst", ($nm$(_lit_0)), ($ix$(_lit_0)), 0, {$: "Nil"})), run_loop($kid$(_lit_0, 0)))), "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0});
 }), run_clo((_x_1) => {
   return $nt_choose$(($Bool$not$(($String$eq$(($tg$(_step_0)), "Absent")))), run_clo((_x_2) => {
   return $noa_eval$(_ctx_0, _step_0, _env_0, _facts_0, _stack_0, _n_0, _fuel_0, _k_0);
@@ -45316,116 +45424,108 @@ function $no_literal_demanding_ctor$(_name_0) {
   return $nb_contains$({$: "Con", "head": "Succ", "tail": {$: "Con", "head": "U32", "tail": {$: "Con", "head": "F32", "tail": {$: "Nil"}}}}, _name_0);
 }
 
-function $noa_eval_args$(_ctx_0, _ts_0, _env_0, _facts_0, _stack_0, _acc_0, _n_0, _fuel_0, _k_0) {
-  if (_ts_0.$ === "Nil") {
-    return run_tail(_k_0, {$: "NO_Input", "value": ($kt$("OArgs", "", 0, 0, ($nt_reverse$(_acc_0, {$: "Nil"})))), "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0});
-  } else {
-    const _h_0 = _ts_0["head"];
-    const _rest_0 = _ts_0["tail"];
-    return $noa_eval$(_ctx_0, _h_0, _env_0, _facts_0, _stack_0, _n_0, _fuel_0, run_clo((_x_0) => {
-  return $noa_eval_args$(_ctx_0, _rest_0, _env_0, ($noa_if$(_x_0)), _stack_0, {$: "Con", "head": ($noa_iv$(_x_0)), "tail": _acc_0}, ($noa_in$(_x_0)), ($noa_iu$(_x_0)), _k_0);
-}));
-  }
-}
-
-function $noa_constructor$(_ctx_0, _name_0, _input_0, _k_0) {
-  const _args_0 = ($ks$(($noa_iv$(_input_0))));
-  const _x_0 = ($terms_len$(_args_0));
-  const _x_1 = ($Bool$not$(($String$eq$(_name_0, "Chr"))));
-  const _x_2 = ($Bool$and$((_x_0 === 1), ($String$eq$(run_loop($noa_value_type$(_ctx_0, run_loop($terms_at$(_args_0, 0)))), "U32"))));
-  const _valid_0 = (_x_1 || _x_2);
-  return $nt_choose$(_valid_0, run_clo((_x_3) => {
-  return run_tail(_k_0, {$: "NO_Input", "value": ($kt$("OC", _name_0, 0, 0, _args_0)), "facts": ($noa_if$(_input_0)), "fresh": ($noa_in$(_input_0)), "fuel": ($noa_iu$(_input_0))});
-}), run_clo((_x_4) => {
-  return $noa_fail$("observer: Char constructor type", ($noa_in$(_input_0)), ($noa_iu$(_input_0)));
-}));
-}
-
-function $noa_bind$(_id_0, _value_0, _env_0) {
-  return {$: "Con", "head": ($kt$("OBind", "", _id_0, 0, {$: "Con", "head": _value_0, "tail": {$: "Nil"}})), "tail": _env_0};
-}
-
-function $noa_apply_step$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, _k_0) {
-  return $nt_choose$(($String$eq$(($tg$(_fn_0)), "OL")), run_clo((_x_0) => {
-  return $noa_eval$(_ctx_0, run_loop($kid$(run_loop($kid$(_fn_0, 0)), 0)), ($noa_bind$(($ix$(run_loop($kid$(_fn_0, 0)))), _arg_0, ($ks$(run_loop($kid$(_fn_0, 1)))))), _facts_0, ($noa_unames$(($ks$(run_loop($kid$(_fn_0, 2)))))), _n_0, _fuel_0, _k_0);
-}), run_clo((_x_1) => {
-  return $nt_choose$(($String$eq$(($tg$(_fn_0)), "OM")), run_clo((_x_2) => {
-  return $noa_match$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, _k_0);
-}), run_clo((_x_3) => {
-  return $nt_choose$(($String$eq$(($tg$(_fn_0)), "OR")), run_clo((_x_4) => {
-  return $noa_reference$(_ctx_0, ($nm$(_fn_0)), ($List$append$(($noa_tail$(($ks$(_fn_0)))), {$: "Con", "head": _arg_0, "tail": {$: "Nil"}})), _facts_0, ($noa_unames$(($ks$(run_loop($kid$(_fn_0, 0)))))), _n_0, _fuel_0, _k_0);
-}), run_clo((_x_5) => {
-  return $noa_fail$("observer: dynamic application", _n_0, _fuel_0);
-}));
-}));
-}));
-}
-
-function $noa_value_type$(_ctx_0, _v_0) {
-  return $nt_choose$(($String$eq$(($tg$(_v_0)), "OA")), run_clo((_x_0) => {
-  return $nm$(_v_0);
-}), run_clo((_x_1) => {
-  return $noa_ctor_type$(run_loop($noa_spec$(($nm$(_v_0)), ($no_schema_specs$(($noa_schema$(_ctx_0)))))));
-}));
-}
-
-function $no_schema_observation$(_schema_0) {
-  const _observation_0 = _schema_0["observation"];
-  return _observation_0;
-}
-
-function $noa_scalar$(_ctx_0, _v_0) {
-  return $nt_choose$(($Bool$and$(($String$eq$(($tg$(_v_0)), "OA")), run_loop($nol_scalar$(($noa_book$(_ctx_0)), ($kt$("ADT", ($nm$(_v_0)), 0, 0, {$: "Nil"})))))), run_clo((_x_0) => {
-  return $kid$(_v_0, 1);
-}), run_clo((_x_1) => {
-  return $nt_choose$(($String$eq$(($tg$(_v_0)), "OC")), run_clo((_x_2) => {
-  return $noa_scalar_ctor$(_ctx_0, _v_0, run_loop($noa_spec$(($nm$(_v_0)), ($no_schema_specs$(($noa_schema$(_ctx_0)))))));
-}), run_clo((_x_3) => {
-  return $atom$("Absent");
-}));
-}));
-}
-
-function $noa_equal$(_value_0, _origin_0, _facts_0) {
-  const _shape_0 = run_loop($noa_fact$(_origin_0, _facts_0));
-  return $nt_choose$(($String$eq$(($tg$(_value_0)), "OA")), run_clo((_x_0) => {
-  return $norm_exact$(run_loop($noa_origin$(_value_0)), _origin_0);
-}), run_clo((_x_1) => {
-  return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_value_0)), "OC")), ($String$eq$(($tg$(_shape_0)), "OC")))), ($String$eq$(($nm$(_value_0)), ($nm$(_shape_0)))))), ($noa_equal_fields$(($ks$(_value_0)), ($ks$(_shape_0)), _facts_0)));
-}));
-}
-
-function $noa_param_origin$(_id_0, _params_0, _i_0) {
-  if (_params_0.$ === "Nil") {
-    return $atom$("Absent");
-  } else {
-    const _p_0 = _params_0["head"];
-    const _rest_0 = _params_0["tail"];
-    const _x_0 = ($ix$(_p_0));
-    return $nt_choose$((_x_0 === _id_0), run_clo((_x_1) => {
-  return $kt$("OArg", "", _i_0, 0, {$: "Nil"});
-}), run_clo((_x_2) => {
-  return $noa_param_origin$(_id_0, _rest_0, ((_i_0 + 1) >>> 0));
-}));
-  }
-}
-
-function $noa_finish_fields$(_ctx_0, _values_0, _templates_0, _facts_0) {
-  if (_values_0.$ === "Nil") {
-    if (_templates_0.$ === "Nil") {
-      return $kt$("OResult", "", 0, 0, {$: "Nil"});
-    } else {
-      return $atom$("Absent");
+function $noa_eval_args$($0, $1, $2, $3, $4, $5, $6, $7, $8) {
+  let $pc = 1;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _ctx_0 = $0;
+      const _k_0 = $1;
+      const _input_0 = $2;
+      if (_k_0.$ === "NO_KFinish") {
+        return $noa_finish$(_ctx_0, _input_0);
+      } else if (_k_0.$ === "NO_KEvalArgs") {
+        const _terms_0 = _k_0["terms"];
+        const _env_0 = _k_0["env"];
+        const _stack_0 = _k_0["stack"];
+        const _acc_0 = _k_0["acc"];
+        const _next_0 = _k_0["next"];
+        $0 = _ctx_0;
+        $1 = _terms_0;
+        $2 = _env_0;
+        $3 = ($noa_if$(_input_0));
+        $4 = _stack_0;
+        $5 = {$: "Con", "head": ($noa_iv$(_input_0)), "tail": _acc_0};
+        $6 = ($noa_in$(_input_0));
+        $7 = ($noa_iu$(_input_0));
+        $8 = _next_0;
+        $pc = 1; continue;
+      } else if (_k_0.$ === "NO_KApplyArgs") {
+        const _args_0 = _k_0["args"];
+        const _next_1 = _k_0["next"];
+        $0 = _ctx_0;
+        $1 = ($noa_iv$(_input_0));
+        $2 = _args_0;
+        $3 = ($noa_if$(_input_0));
+        $4 = ($noa_in$(_input_0));
+        $5 = ($noa_iu$(_input_0));
+        $6 = _next_1;
+        $pc = 2; continue;
+      } else if (_k_0.$ === "NO_KAppFunction") {
+        const _arg_0 = _k_0["arg"];
+        const _env_1 = _k_0["env"];
+        const _stack_1 = _k_0["stack"];
+        const _next_2 = _k_0["next"];
+        return $noa_eval$(_ctx_0, _arg_0, _env_1, ($noa_if$(_input_0)), _stack_1, ($noa_in$(_input_0)), ($noa_iu$(_input_0)), {$: "NO_KAppArgument", "fn": ($noa_iv$(_input_0)), "next": _next_2});
+      } else if (_k_0.$ === "NO_KAppArgument") {
+        const _fn_0 = _k_0["fn"];
+        const _next_3 = _k_0["next"];
+        return $noa_apply$(_ctx_0, _fn_0, ($noa_iv$(_input_0)), ($noa_if$(_input_0)), ($noa_in$(_input_0)), ($noa_iu$(_input_0)), _next_3);
+      } else if (_k_0.$ === "NO_KConstructor") {
+        const _name_0 = _k_0["name"];
+        const _next_4 = _k_0["next"];
+        return $noa_constructor$(_ctx_0, _name_0, _input_0, _next_4);
+      } else if (_k_0.$ === "NO_KLetBody") {
+        const _body_0 = _k_0["body"];
+        const _id_0 = _k_0["id"];
+        const _env_2 = _k_0["env"];
+        const _stack_2 = _k_0["stack"];
+        const _next_5 = _k_0["next"];
+        return $noa_eval$(_ctx_0, _body_0, ($noa_bind$(_id_0, ($noa_iv$(_input_0)), _env_2)), ($noa_if$(_input_0)), _stack_2, ($noa_in$(_input_0)), ($noa_iu$(_input_0)), _next_5);
+      } else {
+        const _arg_1 = _k_0["arg"];
+        const _next_6 = _k_0["next"];
+        return $noa_apply$(_ctx_0, ($noa_iv$(_input_0)), _arg_1, ($noa_if$(_input_0)), ($noa_in$(_input_0)), ($noa_iu$(_input_0)), _next_6);
+      }
     }
-  } else {
-    const _v_0 = _values_0["head"];
-    const _vs_0 = _values_0["tail"];
-    if (_templates_0.$ === "Con") {
-      const _t_0 = _templates_0["head"];
-      const _ts_0 = _templates_0["tail"];
-      return $noa_finish_merge$(run_loop($noa_finish_value$(_ctx_0, _v_0, _t_0, _facts_0)), run_loop($noa_finish_fields$(_ctx_0, _vs_0, _ts_0, _facts_0)));
-    } else {
-      return $atom$("Absent");
+    case 1: {
+      const _ctx_0 = $0;
+      const _ts_0 = $1;
+      const _env_0 = $2;
+      const _facts_0 = $3;
+      const _stack_0 = $4;
+      const _acc_0 = $5;
+      const _n_0 = $6;
+      const _fuel_0 = $7;
+      const _k_0 = $8;
+      if (_ts_0.$ === "Nil") {
+        $0 = _ctx_0;
+        $1 = _k_0;
+        $2 = {$: "NO_Input", "value": ($kt$("OArgs", "", 0, 0, ($nt_reverse$(_acc_0, {$: "Nil"})))), "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0};
+        $pc = 0; continue;
+      } else {
+        const _h_0 = _ts_0["head"];
+        const _rest_0 = _ts_0["tail"];
+        return $noa_eval$(_ctx_0, _h_0, _env_0, _facts_0, _stack_0, _n_0, _fuel_0, {$: "NO_KEvalArgs", "terms": _rest_0, "env": _env_0, "stack": _stack_0, "acc": _acc_0, "next": _k_0});
+      }
+    }
+    case 2: {
+      const _ctx_0 = $0;
+      const _fn_0 = $1;
+      const _args_0 = $2;
+      const _facts_0 = $3;
+      const _n_0 = $4;
+      const _fuel_0 = $5;
+      const _k_0 = $6;
+      if (_args_0.$ === "Nil") {
+        $0 = _ctx_0;
+        $1 = _k_0;
+        $2 = {$: "NO_Input", "value": _fn_0, "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0};
+        $pc = 0; continue;
+      } else {
+        const _arg_0 = _args_0["head"];
+        const _rest_0 = _args_0["tail"];
+        return $noa_apply$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, {$: "NO_KApplyArgs", "args": _rest_0, "next": _k_0});
+      }
     }
   }
 }
@@ -46954,6 +47054,167 @@ function $nc_find_ctor_next$(_rest_0, _name_0, _found_0) {
 }));
 }
 
+function $noa_finish$(_ctx_0, _input_0) {
+  const _result_0 = run_loop($noa_finish_value$(_ctx_0, ($noa_iv$(_input_0)), ($no_schema_wrapper$(($noa_schema$(_ctx_0)))), ($noa_if$(_input_0))));
+  const _x_0 = ($terms_len$(($ks$(_result_0))));
+  return $nt_choose$(($Bool$and$(($String$eq$(($tg$(_result_0)), "OResult")), (_x_0 === 1))), run_clo((_x_1) => {
+  return {$: "NO_Analysis", "body": ($kt$("NO_Return", "", 0, 0, ($ks$(_result_0)))), "fresh": ($noa_in$(_input_0)), "fuel": ($noa_iu$(_input_0)), "error": ""};
+}), run_clo((_x_2) => {
+  return $noa_fail$("observer: returned root or observation unproved", ($noa_in$(_input_0)), ($noa_iu$(_input_0)));
+}));
+}
+
+function $noa_if$(_i_0) {
+  const _f_0 = _i_0["facts"];
+  return _f_0;
+}
+
+function $noa_iv$(_i_0) {
+  const _v_0 = _i_0["value"];
+  return _v_0;
+}
+
+function $noa_in$(_i_0) {
+  const _n_0 = _i_0["fresh"];
+  return _n_0;
+}
+
+function $noa_iu$(_i_0) {
+  const _fuel_0 = _i_0["fuel"];
+  return _fuel_0;
+}
+
+function $noa_apply_args$($0, $1, $2, $3, $4, $5, $6, $7, $8) {
+  let $pc = 2;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _ctx_0 = $0;
+      const _k_0 = $1;
+      const _input_0 = $2;
+      if (_k_0.$ === "NO_KFinish") {
+        return $noa_finish$(_ctx_0, _input_0);
+      } else if (_k_0.$ === "NO_KEvalArgs") {
+        const _terms_0 = _k_0["terms"];
+        const _env_0 = _k_0["env"];
+        const _stack_0 = _k_0["stack"];
+        const _acc_0 = _k_0["acc"];
+        const _next_0 = _k_0["next"];
+        $0 = _ctx_0;
+        $1 = _terms_0;
+        $2 = _env_0;
+        $3 = ($noa_if$(_input_0));
+        $4 = _stack_0;
+        $5 = {$: "Con", "head": ($noa_iv$(_input_0)), "tail": _acc_0};
+        $6 = ($noa_in$(_input_0));
+        $7 = ($noa_iu$(_input_0));
+        $8 = _next_0;
+        $pc = 1; continue;
+      } else if (_k_0.$ === "NO_KApplyArgs") {
+        const _args_0 = _k_0["args"];
+        const _next_1 = _k_0["next"];
+        $0 = _ctx_0;
+        $1 = ($noa_iv$(_input_0));
+        $2 = _args_0;
+        $3 = ($noa_if$(_input_0));
+        $4 = ($noa_in$(_input_0));
+        $5 = ($noa_iu$(_input_0));
+        $6 = _next_1;
+        $pc = 2; continue;
+      } else if (_k_0.$ === "NO_KAppFunction") {
+        const _arg_0 = _k_0["arg"];
+        const _env_1 = _k_0["env"];
+        const _stack_1 = _k_0["stack"];
+        const _next_2 = _k_0["next"];
+        return $noa_eval$(_ctx_0, _arg_0, _env_1, ($noa_if$(_input_0)), _stack_1, ($noa_in$(_input_0)), ($noa_iu$(_input_0)), {$: "NO_KAppArgument", "fn": ($noa_iv$(_input_0)), "next": _next_2});
+      } else if (_k_0.$ === "NO_KAppArgument") {
+        const _fn_0 = _k_0["fn"];
+        const _next_3 = _k_0["next"];
+        return $noa_apply$(_ctx_0, _fn_0, ($noa_iv$(_input_0)), ($noa_if$(_input_0)), ($noa_in$(_input_0)), ($noa_iu$(_input_0)), _next_3);
+      } else if (_k_0.$ === "NO_KConstructor") {
+        const _name_0 = _k_0["name"];
+        const _next_4 = _k_0["next"];
+        return $noa_constructor$(_ctx_0, _name_0, _input_0, _next_4);
+      } else if (_k_0.$ === "NO_KLetBody") {
+        const _body_0 = _k_0["body"];
+        const _id_0 = _k_0["id"];
+        const _env_2 = _k_0["env"];
+        const _stack_2 = _k_0["stack"];
+        const _next_5 = _k_0["next"];
+        return $noa_eval$(_ctx_0, _body_0, ($noa_bind$(_id_0, ($noa_iv$(_input_0)), _env_2)), ($noa_if$(_input_0)), _stack_2, ($noa_in$(_input_0)), ($noa_iu$(_input_0)), _next_5);
+      } else {
+        const _arg_1 = _k_0["arg"];
+        const _next_6 = _k_0["next"];
+        return $noa_apply$(_ctx_0, ($noa_iv$(_input_0)), _arg_1, ($noa_if$(_input_0)), ($noa_in$(_input_0)), ($noa_iu$(_input_0)), _next_6);
+      }
+    }
+    case 1: {
+      const _ctx_0 = $0;
+      const _ts_0 = $1;
+      const _env_0 = $2;
+      const _facts_0 = $3;
+      const _stack_0 = $4;
+      const _acc_0 = $5;
+      const _n_0 = $6;
+      const _fuel_0 = $7;
+      const _k_0 = $8;
+      if (_ts_0.$ === "Nil") {
+        $0 = _ctx_0;
+        $1 = _k_0;
+        $2 = {$: "NO_Input", "value": ($kt$("OArgs", "", 0, 0, ($nt_reverse$(_acc_0, {$: "Nil"})))), "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0};
+        $pc = 0; continue;
+      } else {
+        const _h_0 = _ts_0["head"];
+        const _rest_0 = _ts_0["tail"];
+        return $noa_eval$(_ctx_0, _h_0, _env_0, _facts_0, _stack_0, _n_0, _fuel_0, {$: "NO_KEvalArgs", "terms": _rest_0, "env": _env_0, "stack": _stack_0, "acc": _acc_0, "next": _k_0});
+      }
+    }
+    case 2: {
+      const _ctx_0 = $0;
+      const _fn_0 = $1;
+      const _args_0 = $2;
+      const _facts_0 = $3;
+      const _n_0 = $4;
+      const _fuel_0 = $5;
+      const _k_0 = $6;
+      if (_args_0.$ === "Nil") {
+        $0 = _ctx_0;
+        $1 = _k_0;
+        $2 = {$: "NO_Input", "value": _fn_0, "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0};
+        $pc = 0; continue;
+      } else {
+        const _arg_0 = _args_0["head"];
+        const _rest_0 = _args_0["tail"];
+        return $noa_apply$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, {$: "NO_KApplyArgs", "args": _rest_0, "next": _k_0});
+      }
+    }
+  }
+}
+
+function $noa_apply$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, _k_0) {
+  return $nt_choose$((_fuel_0 === 0), run_clo((_x_0) => {
+  return $noa_fail$("observer: candidate budget", _n_0, _fuel_0);
+}), run_clo((_x_1) => {
+  return $noa_apply_step$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, ((_fuel_0 - 1) >>> 0), _k_0);
+}));
+}
+
+function $noa_constructor$(_ctx_0, _name_0, _input_0, _k_0) {
+  const _args_0 = ($ks$(($noa_iv$(_input_0))));
+  const _x_0 = ($terms_len$(_args_0));
+  const _x_1 = ($Bool$not$(($String$eq$(_name_0, "Chr"))));
+  const _x_2 = ($Bool$and$((_x_0 === 1), ($String$eq$(run_loop($noa_value_type$(_ctx_0, run_loop($terms_at$(_args_0, 0)))), "U32"))));
+  const _valid_0 = (_x_1 || _x_2);
+  return $nt_choose$(_valid_0, run_clo((_x_3) => {
+  return $noa_continue$(_ctx_0, _k_0, {$: "NO_Input", "value": ($kt$("OC", _name_0, 0, 0, _args_0)), "facts": ($noa_if$(_input_0)), "fresh": ($noa_in$(_input_0)), "fuel": ($noa_iu$(_input_0))});
+}), run_clo((_x_4) => {
+  return $noa_fail$("observer: Char constructor type", ($noa_in$(_input_0)), ($noa_iu$(_input_0)));
+}));
+}
+
+function $noa_bind$(_id_0, _value_0, _env_0) {
+  return {$: "Con", "head": ($kt$("OBind", "", _id_0, 0, {$: "Con", "head": _value_0, "tail": {$: "Nil"}})), "tail": _env_0};
+}
+
 function $no_literal_typed$(_book_0, _t_0) {
   return $nt_choose$(($Bool$and$(($Bool$and$(($core_literal$(_t_0)), ($nb_contains$({$: "Con", "head": "Nat", "tail": {$: "Con", "head": "U32", "tail": {$: "Con", "head": "F32", "tail": {$: "Nil"}}}}, ($nm$(_t_0)))))), ($no_literal_native$(_book_0, ($nm$(_t_0)))))), run_clo((_x_0) => {
   return $kt$("NO_TypedWord", ($nm$(_t_0)), ($kl_number$(_t_0)), 0, {$: "Con", "head": ($kt$("NWord", ($U32$show$(($kl_number$(_t_0)))), 0, 0, {$: "Nil"})), "tail": {$: "Nil"}});
@@ -46965,191 +47226,6 @@ function $no_literal_typed$(_book_0, _t_0) {
 function $no_literal_string_step$(_book_0, _t_0) {
   return $nt_choose$(($Bool$and$(($Bool$and$(($core_literal$(_t_0)), ($String$eq$(($nm$(_t_0)), "String")))), ($no_literal_native$(_book_0, "String")))), run_clo((_x_0) => {
   return $core_literal_step$(_t_0);
-}), run_clo((_x_1) => {
-  return $atom$("Absent");
-}));
-}
-
-function $noa_unames$(_names_0) {
-  if (_names_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _names_0["head"];
-    const _rest_0 = _names_0["tail"];
-    return {$: "Con", "head": ($nm$(_h_0)), "tail": ($noa_unames$(_rest_0))};
-  }
-}
-
-function $noa_match$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, _k_0) {
-  const _mat_0 = run_loop($kid$(_fn_0, 0));
-  return $nt_choose$(($String$eq$(($tg$(_arg_0)), "OC")), run_clo((_x_0) => {
-  return $nt_choose$(($String$eq$(($nm$(_mat_0)), ($nm$(_arg_0)))), run_clo((_x_1) => {
-  const _x_2 = ($terms_len$(($ks$(_arg_0))));
-  const _x_3 = ($ix$(_mat_0));
-  const _x_4 = ((_x_2 + 1) >>> 0);
-  return $nt_choose$((_x_3 === _x_4), run_clo((_x_5) => {
-  return $noa_eval$(_ctx_0, run_loop($kid$(_mat_0, 0)), ($ks$(run_loop($kid$(_fn_0, 1)))), _facts_0, ($noa_unames$(($ks$(run_loop($kid$(_fn_0, 2)))))), _n_0, _fuel_0, run_clo((_x_6) => {
-  return $noa_apply_args$(_ctx_0, ($noa_iv$(_x_6)), ($ks$(_arg_0)), ($noa_if$(_x_6)), ($noa_in$(_x_6)), ($noa_iu$(_x_6)), _k_0);
-}));
-}), run_clo((_x_7) => {
-  return $noa_fail$("observer: virtual constructor arity", _n_0, _fuel_0);
-}));
-}), run_clo((_x_8) => {
-  return $noa_eval$(_ctx_0, run_loop($kid$(_mat_0, 1)), ($ks$(run_loop($kid$(_fn_0, 1)))), _facts_0, ($noa_unames$(($ks$(run_loop($kid$(_fn_0, 2)))))), _n_0, _fuel_0, run_clo((_x_9) => {
-  return $noa_apply$(_ctx_0, ($noa_iv$(_x_9)), _arg_0, ($noa_if$(_x_9)), ($noa_in$(_x_9)), ($noa_iu$(_x_9)), _k_0);
-}));
-}));
-}), run_clo((_x_10) => {
-  return $noa_match_spec$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, _k_0, run_loop($noa_spec$(($nm$(_mat_0)), ($no_schema_specs$(($noa_schema$(_ctx_0)))))));
-}));
-}
-
-function $noa_reference$(_ctx_0, _name_0, _args_0, _facts_0, _stack_0, _n_0, _fuel_0, _k_0) {
-  const _arity_0 = run_loop($nd_arity$(($noa_book$(_ctx_0)), _name_0));
-  const _d_0 = run_loop($lookup$(($noa_book$(_ctx_0)), _name_0));
-  const _x_0 = ($terms_len$(_args_0));
-  return $nt_choose$((_x_0 < _arity_0), run_clo((_x_1) => {
-  return run_tail(_k_0, {$: "NO_Input", "value": ($kt$("OR", _name_0, 0, 0, {$: "Con", "head": ($kt$("OStack", "", 0, 0, ($noa_names$(_stack_0)))), "tail": _args_0})), "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0});
-}), run_clo((_x_2) => {
-  const _x_3 = ($terms_len$(_args_0));
-  return $nt_choose$(($Bool$not$((_x_3 === _arity_0))), run_clo((_x_4) => {
-  return $noa_fail$("observer: saturation", _n_0, _fuel_0);
-}), run_clo((_x_5) => {
-  return $nt_choose$(($String$eq$(_name_0, ($noa_owner$(_ctx_0)))), run_clo((_x_6) => {
-  return $noa_recur$(_ctx_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0);
-}), run_clo((_x_7) => {
-  return $nt_choose$(run_loop($nt_choose$(run_loop($nc_native_def$(_d_0)), run_clo((_x_8) => {
-  return $nd_scalar_known$(($nc_primitive_name$(_name_0)));
-}), run_clo((_x_9) => {
-  return false;
-}))), run_clo((_x_10) => {
-  return $noa_primitive$(_ctx_0, _name_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0);
-}), run_clo((_x_11) => {
-  const _x_12 = ($nc_foreign$(_d_0));
-  const _x_13 = run_loop($nc_native_def$(_d_0));
-  const _x_14 = (_x_12 || _x_13);
-  const _x_15 = ($nb_contains$(_stack_0, _name_0));
-  const _x_16 = ($nt_count$(_stack_0));
-  return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($Bool$not$((_x_14 || _x_15))))), (_x_16 < 8))), run_clo((_x_17) => {
-  return $noa_eval$(_ctx_0, run_loop($nc_source_body$(($noa_book$(_ctx_0)), _d_0, _n_0)), {$: "Nil"}, _facts_0, {$: "Con", "head": _name_0, "tail": _stack_0}, _n_0, _fuel_0, run_clo((_x_18) => {
-  return $noa_apply_args$(_ctx_0, ($noa_iv$(_x_18)), _args_0, ($noa_if$(_x_18)), ($noa_in$(_x_18)), ($noa_iu$(_x_18)), _k_0);
-}));
-}), run_clo((_x_19) => {
-  return $noa_fail$("observer: helper effect, cycle or depth", _n_0, _fuel_0);
-}));
-}));
-}));
-}));
-}));
-}
-
-function $noa_tail$(_xs_0) {
-  if (_xs_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _rest_0 = _xs_0["tail"];
-    return _rest_0;
-  }
-}
-
-function $noa_ctor_type$(_spec_0) {
-  if (_spec_0.$ === "None") {
-    return "";
-  } else {
-    const _t_0 = _spec_0["value"];
-    const _owner_0 = _t_0["owner"];
-    return _owner_0;
-  }
-}
-
-function $noa_spec$(_name_0, _specs_0) {
-  if (_specs_0.$ === "Nil") {
-    return {$: "None"};
-  } else {
-    const _t_0 = _specs_0["head"];
-    const _t_1 = _t_0["layout"];
-    const _key_0 = _t_1["key"];
-    const _ctor_0 = _t_1["ctor"];
-    const _storage_0 = _t_1["storage"];
-    const _width_0 = _t_1["width"];
-    const _owner_0 = _t_0["owner"];
-    const _fields_0 = _t_0["fields"];
-    const _rest_0 = _specs_0["tail"];
-    return $nt_choose$(($String$eq$(_name_0, _ctor_0)), run_clo((_x_0) => {
-  return {$: "Some", "value": {$: "NO_Spec", "layout": {$: "NO_Layout", "key": _key_0, "ctor": _ctor_0, "storage": _storage_0, "width": _width_0}, "owner": _owner_0, "fields": _fields_0}};
-}), run_clo((_x_1) => {
-  return $noa_spec$(_name_0, _rest_0);
-}));
-  }
-}
-
-function $noa_scalar_ctor$(_ctx_0, _v_0, _spec_0) {
-  if (_spec_0.$ === "None") {
-    return $atom$("Absent");
-  } else {
-    const _t_0 = _spec_0["value"];
-    const _t_1 = _t_0["layout"];
-    const _ctor_0 = _t_1["ctor"];
-    const _storage_0 = _t_1["storage"];
-    const _owner_0 = _t_0["owner"];
-    const _x_0 = ($terms_len$(($ks$(_v_0))));
-    return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(_storage_0, "Char")), (_x_0 === 1))), ($String$eq$(run_loop($noa_value_type$(_ctx_0, run_loop($kid$(_v_0, 0)))), "U32")))), run_clo((_x_1) => {
-  return $noa_scalar$(_ctx_0, run_loop($kid$(_v_0, 0)));
-}), run_clo((_x_2) => {
-  return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(_storage_0, "Nullary")), ($List$is_empty$(($ks$(_v_0)))))), run_loop($nol_scalar$(($noa_book$(_ctx_0)), ($kt$("ADT", _owner_0, 0, 0, {$: "Nil"})))))), run_clo((_x_3) => {
-  return $kt$("NCtr", _ctor_0, 0, 0, {$: "Nil"});
-}), run_clo((_x_4) => {
-  return $atom$("Absent");
-}));
-}));
-  }
-}
-
-function $noa_fact$(_origin_0, _facts_0) {
-  if (_facts_0.$ === "Nil") {
-    return $atom$("Absent");
-  } else {
-    const _f_0 = _facts_0["head"];
-    const _rest_0 = _facts_0["tail"];
-    return $nt_choose$(run_loop($norm_exact$(_origin_0, run_loop($kid$(_f_0, 0)))), run_clo((_x_0) => {
-  return $kid$(_f_0, 1);
-}), run_clo((_x_1) => {
-  return $noa_fact$(_origin_0, _rest_0);
-}));
-  }
-}
-
-function $noa_origin$(_value_0) {
-  return $nt_choose$(($String$eq$(($tg$(_value_0)), "OA")), run_clo((_x_0) => {
-  return $kid$(_value_0, 0);
-}), run_clo((_x_1) => {
-  return $atom$("Absent");
-}));
-}
-
-function $noa_equal_fields$(_values_0, _origins_0, _facts_0) {
-  if (_values_0.$ === "Nil") {
-    if (_origins_0.$ === "Nil") {
-      return true;
-    } else {
-      return false;
-    }
-  } else {
-    const _v_0 = _values_0["head"];
-    const _vs_0 = _values_0["tail"];
-    if (_origins_0.$ === "Con") {
-      const _o_0 = _origins_0["head"];
-      const _os_0 = _origins_0["tail"];
-      return $Bool$and$(run_loop($noa_equal$(_v_0, _o_0, _facts_0)), ($noa_equal_fields$(_vs_0, _os_0, _facts_0)));
-    } else {
-      return false;
-    }
-  }
-}
-
-function $noa_finish_merge$(_a_0, _b_0) {
-  return $nt_choose$(($Bool$and$(($String$eq$(($tg$(_a_0)), "OResult")), ($String$eq$(($tg$(_b_0)), "OResult")))), run_clo((_x_0) => {
-  return $kt$("OResult", "", 0, 0, ($nt_append$(($ks$(_a_0)), ($ks$(_b_0)))));
 }), run_clo((_x_1) => {
   return $atom$("Absent");
 }));
@@ -48521,56 +48597,61 @@ function $jd_host_marshal_field_rows_on$(_book_0, _t_0, _out_0, _seen_0, _depth_
 }));
 }
 
+function $noa_finish_value$(_ctx_0, _value_0, _template_0, _facts_0) {
+  return $nt_choose$(($String$eq$(($tg$(_template_0)), "Var")), run_clo((_x_0) => {
+  const _x_1 = ($ix$(_template_0));
+  const _x_2 = ($no_schema_result$(($noa_schema$(_ctx_0))));
+  return $nt_choose$((_x_1 === _x_2), run_clo((_x_3) => {
+  return $nt_choose$(($Bool$and$(($String$eq$(run_loop($noa_value_type$(_ctx_0, _value_0)), ($no_schema_observation$(($noa_schema$(_ctx_0)))))), ($Bool$not$(($String$eq$(($tg$(run_loop($noa_scalar$(_ctx_0, _value_0)))), "Absent")))))), run_clo((_x_4) => {
+  return $kt$("OResult", "", 0, 0, {$: "Con", "head": run_loop($noa_scalar$(_ctx_0, _value_0)), "tail": {$: "Nil"}});
+}), run_clo((_x_5) => {
+  return $atom$("Absent");
+}));
+}), run_clo((_x_6) => {
+  return $nt_choose$(run_loop($noa_equal$(_value_0, run_loop($noa_param_origin$(($ix$(_template_0)), ($no_schema_params$(($noa_schema$(_ctx_0)))), 0)), _facts_0)), run_clo((_x_7) => {
+  return $kt$("OResult", "", 0, 0, {$: "Nil"});
+}), run_clo((_x_8) => {
+  return $atom$("Absent");
+}));
+}));
+}), run_clo((_x_9) => {
+  return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_template_0)), "Ctr")), ($String$eq$(($tg$(_value_0)), "OC")))), ($String$eq$(($nm$(_template_0)), ($nm$(_value_0)))))), run_clo((_x_10) => {
+  return $noa_finish_fields$(_ctx_0, ($ks$(_value_0)), ($ks$(_template_0)), _facts_0);
+}), run_clo((_x_11) => {
+  return $atom$("Absent");
+}));
+}));
+}
+
+function $noa_apply_step$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, _k_0) {
+  return $nt_choose$(($String$eq$(($tg$(_fn_0)), "OL")), run_clo((_x_0) => {
+  return $noa_eval$(_ctx_0, run_loop($kid$(run_loop($kid$(_fn_0, 0)), 0)), ($noa_bind$(($ix$(run_loop($kid$(_fn_0, 0)))), _arg_0, ($ks$(run_loop($kid$(_fn_0, 1)))))), _facts_0, ($noa_unames$(($ks$(run_loop($kid$(_fn_0, 2)))))), _n_0, _fuel_0, _k_0);
+}), run_clo((_x_1) => {
+  return $nt_choose$(($String$eq$(($tg$(_fn_0)), "OM")), run_clo((_x_2) => {
+  return $noa_match$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, _k_0);
+}), run_clo((_x_3) => {
+  return $nt_choose$(($String$eq$(($tg$(_fn_0)), "OR")), run_clo((_x_4) => {
+  return $noa_reference$(_ctx_0, ($nm$(_fn_0)), ($List$append$(($noa_tail$(($ks$(_fn_0)))), {$: "Con", "head": _arg_0, "tail": {$: "Nil"}})), _facts_0, ($noa_unames$(($ks$(run_loop($kid$(_fn_0, 0)))))), _n_0, _fuel_0, _k_0);
+}), run_clo((_x_5) => {
+  return $noa_fail$("observer: dynamic application", _n_0, _fuel_0);
+}));
+}));
+}));
+}
+
+function $noa_value_type$(_ctx_0, _v_0) {
+  return $nt_choose$(($String$eq$(($tg$(_v_0)), "OA")), run_clo((_x_0) => {
+  return $nm$(_v_0);
+}), run_clo((_x_1) => {
+  return $noa_ctor_type$(run_loop($noa_spec$(($nm$(_v_0)), ($no_schema_specs$(($noa_schema$(_ctx_0)))))));
+}));
+}
+
 function $no_literal_native$(_book_0, _kind_0) {
   const _d_0 = run_loop($lookup$(_book_0, _kind_0));
   const _x_0 = ($da$(_d_0));
   const _x_1 = ($dx$(_d_0));
   return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "ADT")), ($db$(_d_0)))), (_x_0 === 0))), (_x_1 === 0));
-}
-
-function $noa_match_spec$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, _k_0, _spec_0) {
-  if (_spec_0.$ === "None") {
-    return $noa_fail$("observer: matcher representation", _n_0, _fuel_0);
-  } else {
-    const _t_0 = _spec_0["value"];
-    const _t_1 = _t_0["layout"];
-    const _key_0 = _t_1["key"];
-    const _ctor_0 = _t_1["ctor"];
-    const _width_0 = _t_1["width"];
-    const _owner_0 = _t_0["owner"];
-    const _types_0 = _t_0["fields"];
-    const _x_0 = ($ix$(run_loop($kid$(_fn_0, 0))));
-    const _x_1 = ((_width_0 + 1) >>> 0);
-    return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_arg_0)), "OA")), ($String$eq$(($nm$(_arg_0)), _owner_0)))), (_x_0 === _x_1))), run_clo((_x_2) => {
-  return $noa_match_fields$(_ctx_0, _fn_0, _arg_0, _facts_0, _key_0, ($noa_field_values$(_owner_0, _ctor_0, run_loop($noa_origin$(_arg_0)), _types_0, 0, _n_0)), ((_n_0 + _width_0) >>> 0), _fuel_0, _k_0);
-}), run_clo((_x_3) => {
-  return $noa_fail$("observer: matcher type or width", _n_0, _fuel_0);
-}));
-  }
-}
-
-function $noa_recur$(_ctx_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0) {
-  const _schema_0 = ($noa_schema$(_ctx_0));
-  const _params_0 = ($no_schema_params$(_schema_0));
-  const _marker_0 = ($var$("", ($nc_id$(_n_0))));
-  const _observation_0 = ($noa_atom$(($no_schema_observation$(_schema_0)), ($kt$("ORecursive", "", ($nc_id$(_n_0)), 0, {$: "Nil"})), _marker_0));
-  const _env_0 = ($noa_bind$(($no_schema_result$(_schema_0)), _observation_0, ($noa_actuals$(_params_0, _args_0))));
-  return $nt_choose$(run_loop($noa_loop_valid$(_ctx_0, _params_0, _args_0, 0, false)), run_clo((_x_0) => {
-  return $noa_recur_done$(_ctx_0, _args_0, _marker_0, _k_0({$: "NO_Input", "value": run_loop($noa_virtual$(($no_schema_wrapper$(_schema_0)), _env_0)), "facts": _facts_0, "fresh": ((_n_0 + 1) >>> 0), "fuel": _fuel_0}));
-}), run_clo((_x_1) => {
-  return $noa_fail$("observer: recursive cursor or scalar slot", _n_0, _fuel_0);
-}));
-}
-
-function $noa_primitive$(_ctx_0, _name_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0) {
-  const _words_0 = ($noa_scalars$(_ctx_0, _args_0));
-  const _result_0 = run_loop($noa_call_result$(_ctx_0, ($dt$(run_loop($lookup$(($noa_book$(_ctx_0)), _name_0)))), _args_0, 8));
-  const _id_0 = ($nc_id$(_n_0));
-  return $nt_choose$(($Bool$and$(($noa_no_absent$(_words_0)), ($Bool$not$(($String$eq$(($tg$(_result_0)), "Absent")))))), run_clo((_x_0) => {
-  return $noa_prepend$(($kt$("NO_Let", "", _id_0, 0, {$: "Con", "head": ($kt$("NOp", ($nc_primitive_name$(_name_0)), 0, 0, _words_0)), "tail": {$: "Nil"}})), _k_0({$: "NO_Input", "value": ($noa_atom$(($nm$(_result_0)), ($kt$("OUnique", "", _id_0, 0, {$: "Nil"})), ($var$("", _id_0)))), "facts": _facts_0, "fresh": ((_n_0 + 1) >>> 0), "fuel": _fuel_0}));
-}), run_clo((_x_1) => {
-  return $noa_fail$("observer: scalar primitive type", _n_0, _fuel_0);
-}));
 }
 
 function $nol_type_names$(_types_0) {
@@ -49900,131 +49981,172 @@ function $jd_ordered_eta_arg$(_args_0, _value_0) {
   return {$: "JDOrderedArgs", "prefix": _prefix_0, "values": ($List$append$(_values_0, {$: "Con", "head": _value_0, "tail": {$: "Nil"}})), "next": _next_0};
 }
 
-function $noa_match_fields$(_ctx_0, _fn_0, _arg_0, _facts_0, _key_0, _fields_0, _n_0, _fuel_0, _k_0) {
-  const _mat_0 = run_loop($kid$(_fn_0, 0));
-  const _yesfacts_0 = {$: "Con", "head": ($kt$("OFact", "", 0, 0, {$: "Con", "head": run_loop($noa_origin$(_arg_0)), "tail": {$: "Con", "head": ($kt$("OC", ($nm$(_mat_0)), 0, 0, ($noa_origins$(_fields_0)))), "tail": {$: "Nil"}}})), "tail": _facts_0};
-  const _yes_0 = run_loop($noa_eval$(_ctx_0, run_loop($kid$(_mat_0, 0)), ($ks$(run_loop($kid$(_fn_0, 1)))), _yesfacts_0, ($noa_unames$(($ks$(run_loop($kid$(_fn_0, 2)))))), _n_0, _fuel_0, run_clo((_x_0) => {
-  return $noa_apply_args$(_ctx_0, ($noa_iv$(_x_0)), _fields_0, ($noa_if$(_x_0)), ($noa_in$(_x_0)), ($noa_iu$(_x_0)), _k_0);
-})));
-  return $nt_choose$(($String$eq$(($noa_error$(_yes_0)), "")), run_clo((_x_1) => {
-  return $noa_match_join$(_key_0, run_loop($kid$(_arg_0, 1)), _fields_0, _yes_0, run_loop($noa_eval$(_ctx_0, run_loop($kid$(_mat_0, 1)), ($ks$(run_loop($kid$(_fn_0, 1)))), _facts_0, ($noa_unames$(($ks$(run_loop($kid$(_fn_0, 2)))))), ($noa_fresh$(_yes_0)), ($noa_fuel$(_yes_0)), run_clo((_x_2) => {
-  return $noa_apply$(_ctx_0, ($noa_iv$(_x_2)), _arg_0, ($noa_if$(_x_2)), ($noa_in$(_x_2)), ($noa_iu$(_x_2)), _k_0);
-}))));
+function $no_schema_observation$(_schema_0) {
+  const _observation_0 = _schema_0["observation"];
+  return _observation_0;
+}
+
+function $noa_scalar$(_ctx_0, _v_0) {
+  return $nt_choose$(($Bool$and$(($String$eq$(($tg$(_v_0)), "OA")), run_loop($nol_scalar$(($noa_book$(_ctx_0)), ($kt$("ADT", ($nm$(_v_0)), 0, 0, {$: "Nil"})))))), run_clo((_x_0) => {
+  return $kid$(_v_0, 1);
+}), run_clo((_x_1) => {
+  return $nt_choose$(($String$eq$(($tg$(_v_0)), "OC")), run_clo((_x_2) => {
+  return $noa_scalar_ctor$(_ctx_0, _v_0, run_loop($noa_spec$(($nm$(_v_0)), ($no_schema_specs$(($noa_schema$(_ctx_0)))))));
 }), run_clo((_x_3) => {
-  return _yes_0;
-}));
-}
-
-function $noa_field_values$(_owner_0, _ctor_0, _origin_0, _fields_0, _i_0, _n_0) {
-  if (_fields_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _ty_0 = _fields_0["head"];
-    const _rest_0 = _fields_0["tail"];
-    return {$: "Con", "head": ($noa_atom$(_ty_0, ($kt$("OField", _ctor_0, _i_0, 0, {$: "Con", "head": _origin_0, "tail": {$: "Con", "head": ($ref$(_owner_0)), "tail": {$: "Nil"}}})), ($var$("", ($nc_id$(_n_0)))))), "tail": ($noa_field_values$(_owner_0, _ctor_0, _origin_0, _rest_0, ((_i_0 + 1) >>> 0), ((_n_0 + 1) >>> 0)))};
-  }
-}
-
-function $noa_actuals$(_params_0, _args_0) {
-  if (_params_0.$ === "Con") {
-    const _p_0 = _params_0["head"];
-    const _ps_0 = _params_0["tail"];
-    if (_args_0.$ === "Con") {
-      const _a_0 = _args_0["head"];
-      const _rest_0 = _args_0["tail"];
-      return $noa_bind$(($ix$(_p_0)), _a_0, ($noa_actuals$(_ps_0, _rest_0)));
-    } else {
-      return {$: "Nil"};
-    }
-  } else {
-    return {$: "Nil"};
-  }
-}
-
-function $noa_loop_valid$(_ctx_0, _params_0, _args_0, _i_0, _strict_0) {
-  if (_params_0.$ === "Nil") {
-    if (_args_0.$ === "Nil") {
-      return _strict_0;
-    } else {
-      return false;
-    }
-  } else {
-    const _p_0 = _params_0["head"];
-    const _ps_0 = _params_0["tail"];
-    if (_args_0.$ === "Con") {
-      const _a_0 = _args_0["head"];
-      const _rest_0 = _args_0["tail"];
-      return $nt_choose$(($noa_root_param$(_ctx_0, _p_0)), run_clo((_x_0) => {
-  const _x_1 = ($String$eq$(($tg$(run_loop($noa_origin$(_a_0)))), "OField"));
-  return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_a_0)), "OA")), ($String$eq$(($nm$(_a_0)), ($nm$(_p_0)))))), run_loop($noa_below$(run_loop($noa_origin$(_a_0)), ($kt$("OArg", "", _i_0, 0, {$: "Nil"})))))), run_loop($noa_loop_valid$(_ctx_0, _ps_0, _rest_0, ((_i_0 + 1) >>> 0), (_strict_0 || _x_1))));
-}), run_clo((_x_2) => {
-  return $Bool$and$(($Bool$and$(($String$eq$(run_loop($noa_value_type$(_ctx_0, _a_0)), ($nm$(_p_0)))), ($Bool$not$(($String$eq$(($tg$(run_loop($noa_scalar$(_ctx_0, _a_0)))), "Absent")))))), run_loop($noa_loop_valid$(_ctx_0, _ps_0, _rest_0, ((_i_0 + 1) >>> 0), _strict_0)));
-}));
-    } else {
-      return false;
-    }
-  }
-}
-
-function $noa_recur_done$(_ctx_0, _args_0, _marker_0, _rest_0) {
-  const _body_0 = _rest_0["body"];
-  const _n_0 = _rest_0["fresh"];
-  const _fuel_0 = _rest_0["fuel"];
-  const _error_0 = _rest_0["error"];
-  const _x_0 = ($terms_len$(($ks$(_body_0))));
-  return $nt_choose$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(_error_0, "")), ($String$eq$(($tg$(_body_0)), "NO_Return")))), (_x_0 === 1))), run_loop($norm_exact$(run_loop($kid$(_body_0, 0)), _marker_0)))), run_clo((_x_1) => {
-  return {$: "NO_Analysis", "body": ($kt$("NO_Loop", "", 0, 0, ($noa_loop_words$(_ctx_0, ($no_schema_params$(($noa_schema$(_ctx_0)))), _args_0)))), "fresh": _n_0, "fuel": _fuel_0, "error": ""};
-}), run_clo((_x_2) => {
-  return $noa_fail$(run_loop($nt_choose$(($String$eq$(_error_0, "")), run_clo((_x_3) => {
-  return "observer: non-tail or discarded recursive result";
-}), run_clo((_x_4) => {
-  return _error_0;
-}))), _n_0, _fuel_0);
-}));
-}
-
-function $noa_virtual$(_t_0, _env_0) {
-  return $nt_choose$(($String$eq$(($tg$(_t_0)), "Var")), run_clo((_x_0) => {
-  return $noa_env$(($ix$(_t_0)), _env_0);
-}), run_clo((_x_1) => {
-  return $kt$("OC", ($nm$(_t_0)), 0, 0, ($noa_virtual_fields$(($ks$(_t_0)), _env_0)));
-}));
-}
-
-function $noa_scalars$(_ctx_0, _values_0) {
-  if (_values_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _values_0["head"];
-    const _rest_0 = _values_0["tail"];
-    return {$: "Con", "head": run_loop($noa_scalar$(_ctx_0, _h_0)), "tail": ($noa_scalars$(_ctx_0, _rest_0))};
-  }
-}
-
-function $noa_call_result$(_ctx_0, _ty_0, _args_0, _fuel_0) {
-  return $nt_choose$((_fuel_0 === 0), run_clo((_x_0) => {
   return $atom$("Absent");
-}), run_clo((_x_1) => {
-  return $noa_call_types$(_ctx_0, run_loop($nq_layout_type$(($noa_book$(_ctx_0)), _ty_0)), _args_0, ((_fuel_0 - 1) >>> 0));
+}));
 }));
 }
 
-function $noa_no_absent$(_values_0) {
-  if (_values_0.$ === "Nil") {
-    return true;
+function $noa_equal$(_value_0, _origin_0, _facts_0) {
+  const _shape_0 = run_loop($noa_fact$(_origin_0, _facts_0));
+  return $nt_choose$(($String$eq$(($tg$(_value_0)), "OA")), run_clo((_x_0) => {
+  return $norm_exact$(run_loop($noa_origin$(_value_0)), _origin_0);
+}), run_clo((_x_1) => {
+  return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_value_0)), "OC")), ($String$eq$(($tg$(_shape_0)), "OC")))), ($String$eq$(($nm$(_value_0)), ($nm$(_shape_0)))))), ($noa_equal_fields$(($ks$(_value_0)), ($ks$(_shape_0)), _facts_0)));
+}));
+}
+
+function $noa_param_origin$(_id_0, _params_0, _i_0) {
+  if (_params_0.$ === "Nil") {
+    return $atom$("Absent");
   } else {
-    const _h_0 = _values_0["head"];
-    const _rest_0 = _values_0["tail"];
-    return $Bool$and$(($Bool$not$(($String$eq$(($tg$(_h_0)), "Absent")))), ($noa_no_absent$(_rest_0)));
+    const _p_0 = _params_0["head"];
+    const _rest_0 = _params_0["tail"];
+    const _x_0 = ($ix$(_p_0));
+    return $nt_choose$((_x_0 === _id_0), run_clo((_x_1) => {
+  return $kt$("OArg", "", _i_0, 0, {$: "Nil"});
+}), run_clo((_x_2) => {
+  return $noa_param_origin$(_id_0, _rest_0, ((_i_0 + 1) >>> 0));
+}));
   }
 }
 
-function $noa_prepend$(_statement_0, _rest_0) {
-  const _body_0 = _rest_0["body"];
-  const _n_0 = _rest_0["fresh"];
-  const _fuel_0 = _rest_0["fuel"];
-  const _error_0 = _rest_0["error"];
-  return {$: "NO_Analysis", "body": ($kt$("NO_Let", "", ($ix$(_statement_0)), 0, {$: "Con", "head": run_loop($kid$(_statement_0, 0)), "tail": {$: "Con", "head": _body_0, "tail": {$: "Nil"}}})), "fresh": _n_0, "fuel": _fuel_0, "error": _error_0};
+function $noa_finish_fields$(_ctx_0, _values_0, _templates_0, _facts_0) {
+  if (_values_0.$ === "Nil") {
+    if (_templates_0.$ === "Nil") {
+      return $kt$("OResult", "", 0, 0, {$: "Nil"});
+    } else {
+      return $atom$("Absent");
+    }
+  } else {
+    const _v_0 = _values_0["head"];
+    const _vs_0 = _values_0["tail"];
+    if (_templates_0.$ === "Con") {
+      const _t_0 = _templates_0["head"];
+      const _ts_0 = _templates_0["tail"];
+      return $noa_finish_merge$(run_loop($noa_finish_value$(_ctx_0, _v_0, _t_0, _facts_0)), run_loop($noa_finish_fields$(_ctx_0, _vs_0, _ts_0, _facts_0)));
+    } else {
+      return $atom$("Absent");
+    }
+  }
+}
+
+function $noa_unames$(_names_0) {
+  if (_names_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _names_0["head"];
+    const _rest_0 = _names_0["tail"];
+    return {$: "Con", "head": ($nm$(_h_0)), "tail": ($noa_unames$(_rest_0))};
+  }
+}
+
+function $noa_match$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, _k_0) {
+  const _mat_0 = run_loop($kid$(_fn_0, 0));
+  return $nt_choose$(($String$eq$(($tg$(_arg_0)), "OC")), run_clo((_x_0) => {
+  return $nt_choose$(($String$eq$(($nm$(_mat_0)), ($nm$(_arg_0)))), run_clo((_x_1) => {
+  const _x_2 = ($terms_len$(($ks$(_arg_0))));
+  const _x_3 = ($ix$(_mat_0));
+  const _x_4 = ((_x_2 + 1) >>> 0);
+  return $nt_choose$((_x_3 === _x_4), run_clo((_x_5) => {
+  return $noa_eval$(_ctx_0, run_loop($kid$(_mat_0, 0)), ($ks$(run_loop($kid$(_fn_0, 1)))), _facts_0, ($noa_unames$(($ks$(run_loop($kid$(_fn_0, 2)))))), _n_0, _fuel_0, {$: "NO_KApplyArgs", "args": ($ks$(_arg_0)), "next": _k_0});
+}), run_clo((_x_6) => {
+  return $noa_fail$("observer: virtual constructor arity", _n_0, _fuel_0);
+}));
+}), run_clo((_x_7) => {
+  return $noa_eval$(_ctx_0, run_loop($kid$(_mat_0, 1)), ($ks$(run_loop($kid$(_fn_0, 1)))), _facts_0, ($noa_unames$(($ks$(run_loop($kid$(_fn_0, 2)))))), _n_0, _fuel_0, {$: "NO_KApplyOne", "arg": _arg_0, "next": _k_0});
+}));
+}), run_clo((_x_8) => {
+  return $noa_match_spec$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, _k_0, run_loop($noa_spec$(($nm$(_mat_0)), ($no_schema_specs$(($noa_schema$(_ctx_0)))))));
+}));
+}
+
+function $noa_reference$(_ctx_0, _name_0, _args_0, _facts_0, _stack_0, _n_0, _fuel_0, _k_0) {
+  const _arity_0 = run_loop($nd_arity$(($noa_book$(_ctx_0)), _name_0));
+  const _d_0 = run_loop($lookup$(($noa_book$(_ctx_0)), _name_0));
+  const _x_0 = ($terms_len$(_args_0));
+  return $nt_choose$((_x_0 < _arity_0), run_clo((_x_1) => {
+  return $noa_continue$(_ctx_0, _k_0, {$: "NO_Input", "value": ($kt$("OR", _name_0, 0, 0, {$: "Con", "head": ($kt$("OStack", "", 0, 0, ($noa_names$(_stack_0)))), "tail": _args_0})), "facts": _facts_0, "fresh": _n_0, "fuel": _fuel_0});
+}), run_clo((_x_2) => {
+  const _x_3 = ($terms_len$(_args_0));
+  return $nt_choose$(($Bool$not$((_x_3 === _arity_0))), run_clo((_x_4) => {
+  return $noa_fail$("observer: saturation", _n_0, _fuel_0);
+}), run_clo((_x_5) => {
+  return $nt_choose$(($String$eq$(_name_0, ($noa_owner$(_ctx_0)))), run_clo((_x_6) => {
+  return $noa_recur$(_ctx_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0);
+}), run_clo((_x_7) => {
+  return $nt_choose$(run_loop($nt_choose$(run_loop($nc_native_def$(_d_0)), run_clo((_x_8) => {
+  return $nd_scalar_known$(($nc_primitive_name$(_name_0)));
+}), run_clo((_x_9) => {
+  return false;
+}))), run_clo((_x_10) => {
+  return $noa_primitive$(_ctx_0, _name_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0);
+}), run_clo((_x_11) => {
+  const _x_12 = ($nc_foreign$(_d_0));
+  const _x_13 = run_loop($nc_native_def$(_d_0));
+  const _x_14 = (_x_12 || _x_13);
+  const _x_15 = ($nb_contains$(_stack_0, _name_0));
+  const _x_16 = ($nt_count$(_stack_0));
+  return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($Bool$not$((_x_14 || _x_15))))), (_x_16 < 8))), run_clo((_x_17) => {
+  return $noa_eval$(_ctx_0, run_loop($nc_source_body$(($noa_book$(_ctx_0)), _d_0, _n_0)), {$: "Nil"}, _facts_0, {$: "Con", "head": _name_0, "tail": _stack_0}, _n_0, _fuel_0, {$: "NO_KApplyArgs", "args": _args_0, "next": _k_0});
+}), run_clo((_x_18) => {
+  return $noa_fail$("observer: helper effect, cycle or depth", _n_0, _fuel_0);
+}));
+}));
+}));
+}));
+}));
+}
+
+function $noa_tail$(_xs_0) {
+  if (_xs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _rest_0 = _xs_0["tail"];
+    return _rest_0;
+  }
+}
+
+function $noa_ctor_type$(_spec_0) {
+  if (_spec_0.$ === "None") {
+    return "";
+  } else {
+    const _t_0 = _spec_0["value"];
+    const _owner_0 = _t_0["owner"];
+    return _owner_0;
+  }
+}
+
+function $noa_spec$(_name_0, _specs_0) {
+  if (_specs_0.$ === "Nil") {
+    return {$: "None"};
+  } else {
+    const _t_0 = _specs_0["head"];
+    const _t_1 = _t_0["layout"];
+    const _key_0 = _t_1["key"];
+    const _ctor_0 = _t_1["ctor"];
+    const _storage_0 = _t_1["storage"];
+    const _width_0 = _t_1["width"];
+    const _owner_0 = _t_0["owner"];
+    const _fields_0 = _t_0["fields"];
+    const _rest_0 = _specs_0["tail"];
+    return $nt_choose$(($String$eq$(_name_0, _ctor_0)), run_clo((_x_0) => {
+  return {$: "Some", "value": {$: "NO_Spec", "layout": {$: "NO_Layout", "key": _key_0, "ctor": _ctor_0, "storage": _storage_0, "width": _width_0}, "owner": _owner_0, "fields": _fields_0}};
+}), run_clo((_x_1) => {
+  return $noa_spec$(_name_0, _rest_0);
+}));
+  }
 }
 
 function $nol_field_cons$(_field_0, _tail_0) {
@@ -50950,85 +51072,121 @@ function $jd_ordered_field_head$(_book_0, _env_0, _rest_0, _tel_0, _name_0, _hea
   return $jd_ordered_field_join$(_prefix_0, _value_0, _name_0, run_loop($jd_ordered_fields$(_book_0, _env_0, _rest_0, _tel_0, _next_0)));
 }
 
-function $noa_origins$(_values_0) {
-  if (_values_0.$ === "Nil") {
-    return {$: "Nil"};
+function $noa_scalar_ctor$(_ctx_0, _v_0, _spec_0) {
+  if (_spec_0.$ === "None") {
+    return $atom$("Absent");
   } else {
-    const _h_0 = _values_0["head"];
-    const _rest_0 = _values_0["tail"];
-    return {$: "Con", "head": run_loop($noa_origin$(_h_0)), "tail": ($noa_origins$(_rest_0))};
-  }
-}
-
-function $noa_match_join$(_key_0, _word_0, _fields_0, _yes_0, _no_0) {
-  return {$: "NO_Analysis", "body": ($kt$("NO_Match", _key_0, 0, 0, {$: "Con", "head": _word_0, "tail": {$: "Con", "head": ($kt$("NO_Fields", "", 0, 0, ($noa_value_words$(_fields_0)))), "tail": {$: "Con", "head": ($noa_body$(_yes_0)), "tail": {$: "Con", "head": ($noa_body$(_no_0)), "tail": {$: "Nil"}}}}})), "fresh": ($noa_fresh$(_no_0)), "fuel": ($noa_fuel$(_no_0)), "error": ($noa_error$(_no_0))};
-}
-
-function $noa_fuel$(_a_0) {
-  const _f_0 = _a_0["fuel"];
-  return _f_0;
-}
-
-function $noa_root_param$(_ctx_0, _p_0) {
-  return $Bool$not$(run_loop($nol_scalar$(($noa_book$(_ctx_0)), ($kt$("ADT", ($nm$(_p_0)), 0, 0, {$: "Nil"})))));
-}
-
-function $noa_below$(_origin_0, _want_0) {
-  return $nt_choose$(run_loop($norm_exact$(_origin_0, _want_0)), run_clo((_x_0) => {
-  return true;
-}), run_clo((_x_1) => {
-  return $Bool$and$(($String$eq$(($tg$(_origin_0)), "OField")), run_loop($noa_below$(run_loop($kid$(_origin_0, 0)), _want_0)));
-}));
-}
-
-function $noa_loop_words$(_ctx_0, _params_0, _args_0) {
-  if (_params_0.$ === "Con") {
-    const _p_0 = _params_0["head"];
-    const _ps_0 = _params_0["tail"];
-    if (_args_0.$ === "Con") {
-      const _a_0 = _args_0["head"];
-      const _rest_0 = _args_0["tail"];
-      return {$: "Con", "head": run_loop($nt_choose$(($noa_root_param$(_ctx_0, _p_0)), run_clo((_x_0) => {
-  return $kid$(_a_0, 1);
-}), run_clo((_x_1) => {
-  return $noa_scalar$(_ctx_0, _a_0);
-}))), "tail": ($noa_loop_words$(_ctx_0, _ps_0, _rest_0))};
-    } else {
-      return {$: "Nil"};
-    }
-  } else {
-    return {$: "Nil"};
-  }
-}
-
-function $noa_virtual_fields$(_ts_0, _env_0) {
-  if (_ts_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _ts_0["head"];
-    const _rest_0 = _ts_0["tail"];
-    return {$: "Con", "head": run_loop($noa_virtual$(_h_0, _env_0)), "tail": ($noa_virtual_fields$(_rest_0, _env_0))};
-  }
-}
-
-function $noa_call_types$(_ctx_0, _head_0, _args_0, _fuel_0) {
-  if (_args_0.$ === "Nil") {
-    return $nt_choose$(run_loop($nol_scalar$(($noa_book$(_ctx_0)), _head_0)), run_clo((_x_0) => {
-  return _head_0;
-}), run_clo((_x_1) => {
-  return $atom$("Absent");
-}));
-  } else {
-    const _v_0 = _args_0["head"];
-    const _rest_0 = _args_0["tail"];
-    const _want_0 = run_loop($nq_layout_type$(($noa_book$(_ctx_0)), run_loop($kid$(_head_0, 0))));
-    const _x_2 = ($qt$(_head_0));
-    return $nt_choose$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_head_0)), "All")), ($Bool$not$((_x_2 === 0))))), run_loop($nol_scalar$(($noa_book$(_ctx_0)), _want_0)))), ($String$eq$(run_loop($noa_value_type$(_ctx_0, _v_0)), ($nm$(_want_0)))))), run_clo((_x_3) => {
-  return $noa_call_result$(_ctx_0, run_loop($kid$(_head_0, 1)), _rest_0, _fuel_0);
+    const _t_0 = _spec_0["value"];
+    const _t_1 = _t_0["layout"];
+    const _ctor_0 = _t_1["ctor"];
+    const _storage_0 = _t_1["storage"];
+    const _owner_0 = _t_0["owner"];
+    const _x_0 = ($terms_len$(($ks$(_v_0))));
+    return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(_storage_0, "Char")), (_x_0 === 1))), ($String$eq$(run_loop($noa_value_type$(_ctx_0, run_loop($kid$(_v_0, 0)))), "U32")))), run_clo((_x_1) => {
+  return $noa_scalar$(_ctx_0, run_loop($kid$(_v_0, 0)));
+}), run_clo((_x_2) => {
+  return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(_storage_0, "Nullary")), ($List$is_empty$(($ks$(_v_0)))))), run_loop($nol_scalar$(($noa_book$(_ctx_0)), ($kt$("ADT", _owner_0, 0, 0, {$: "Nil"})))))), run_clo((_x_3) => {
+  return $kt$("NCtr", _ctor_0, 0, 0, {$: "Nil"});
 }), run_clo((_x_4) => {
   return $atom$("Absent");
 }));
+}));
   }
+}
+
+function $noa_fact$(_origin_0, _facts_0) {
+  if (_facts_0.$ === "Nil") {
+    return $atom$("Absent");
+  } else {
+    const _f_0 = _facts_0["head"];
+    const _rest_0 = _facts_0["tail"];
+    return $nt_choose$(run_loop($norm_exact$(_origin_0, run_loop($kid$(_f_0, 0)))), run_clo((_x_0) => {
+  return $kid$(_f_0, 1);
+}), run_clo((_x_1) => {
+  return $noa_fact$(_origin_0, _rest_0);
+}));
+  }
+}
+
+function $noa_origin$(_value_0) {
+  return $nt_choose$(($String$eq$(($tg$(_value_0)), "OA")), run_clo((_x_0) => {
+  return $kid$(_value_0, 0);
+}), run_clo((_x_1) => {
+  return $atom$("Absent");
+}));
+}
+
+function $noa_equal_fields$(_values_0, _origins_0, _facts_0) {
+  if (_values_0.$ === "Nil") {
+    if (_origins_0.$ === "Nil") {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    const _v_0 = _values_0["head"];
+    const _vs_0 = _values_0["tail"];
+    if (_origins_0.$ === "Con") {
+      const _o_0 = _origins_0["head"];
+      const _os_0 = _origins_0["tail"];
+      return $Bool$and$(run_loop($noa_equal$(_v_0, _o_0, _facts_0)), ($noa_equal_fields$(_vs_0, _os_0, _facts_0)));
+    } else {
+      return false;
+    }
+  }
+}
+
+function $noa_finish_merge$(_a_0, _b_0) {
+  return $nt_choose$(($Bool$and$(($String$eq$(($tg$(_a_0)), "OResult")), ($String$eq$(($tg$(_b_0)), "OResult")))), run_clo((_x_0) => {
+  return $kt$("OResult", "", 0, 0, ($nt_append$(($ks$(_a_0)), ($ks$(_b_0)))));
+}), run_clo((_x_1) => {
+  return $atom$("Absent");
+}));
+}
+
+function $noa_match_spec$(_ctx_0, _fn_0, _arg_0, _facts_0, _n_0, _fuel_0, _k_0, _spec_0) {
+  if (_spec_0.$ === "None") {
+    return $noa_fail$("observer: matcher representation", _n_0, _fuel_0);
+  } else {
+    const _t_0 = _spec_0["value"];
+    const _t_1 = _t_0["layout"];
+    const _key_0 = _t_1["key"];
+    const _ctor_0 = _t_1["ctor"];
+    const _width_0 = _t_1["width"];
+    const _owner_0 = _t_0["owner"];
+    const _types_0 = _t_0["fields"];
+    const _x_0 = ($ix$(run_loop($kid$(_fn_0, 0))));
+    const _x_1 = ((_width_0 + 1) >>> 0);
+    return $nt_choose$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_arg_0)), "OA")), ($String$eq$(($nm$(_arg_0)), _owner_0)))), (_x_0 === _x_1))), run_clo((_x_2) => {
+  return $noa_match_fields$(_ctx_0, _fn_0, _arg_0, _facts_0, _key_0, ($noa_field_values$(_owner_0, _ctor_0, run_loop($noa_origin$(_arg_0)), _types_0, 0, _n_0)), ((_n_0 + _width_0) >>> 0), _fuel_0, _k_0);
+}), run_clo((_x_3) => {
+  return $noa_fail$("observer: matcher type or width", _n_0, _fuel_0);
+}));
+  }
+}
+
+function $noa_recur$(_ctx_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0) {
+  const _schema_0 = ($noa_schema$(_ctx_0));
+  const _params_0 = ($no_schema_params$(_schema_0));
+  const _marker_0 = ($var$("", ($nc_id$(_n_0))));
+  const _observation_0 = ($noa_atom$(($no_schema_observation$(_schema_0)), ($kt$("ORecursive", "", ($nc_id$(_n_0)), 0, {$: "Nil"})), _marker_0));
+  const _env_0 = ($noa_bind$(($no_schema_result$(_schema_0)), _observation_0, ($noa_actuals$(_params_0, _args_0))));
+  return $nt_choose$(run_loop($noa_loop_valid$(_ctx_0, _params_0, _args_0, 0, false)), run_clo((_x_0) => {
+  return $noa_recur_done$(_ctx_0, _args_0, _marker_0, run_loop($noa_continue$(_ctx_0, _k_0, {$: "NO_Input", "value": run_loop($noa_virtual$(($no_schema_wrapper$(_schema_0)), _env_0)), "facts": _facts_0, "fresh": ((_n_0 + 1) >>> 0), "fuel": _fuel_0})));
+}), run_clo((_x_1) => {
+  return $noa_fail$("observer: recursive cursor or scalar slot", _n_0, _fuel_0);
+}));
+}
+
+function $noa_primitive$(_ctx_0, _name_0, _args_0, _facts_0, _n_0, _fuel_0, _k_0) {
+  const _words_0 = ($noa_scalars$(_ctx_0, _args_0));
+  const _result_0 = run_loop($noa_call_result$(_ctx_0, ($dt$(run_loop($lookup$(($noa_book$(_ctx_0)), _name_0)))), _args_0, 8));
+  const _id_0 = ($nc_id$(_n_0));
+  return $nt_choose$(($Bool$and$(($noa_no_absent$(_words_0)), ($Bool$not$(($String$eq$(($tg$(_result_0)), "Absent")))))), run_clo((_x_0) => {
+  return $noa_prepend$(($kt$("NO_Let", "", _id_0, 0, {$: "Con", "head": ($kt$("NOp", ($nc_primitive_name$(_name_0)), 0, 0, _words_0)), "tail": {$: "Nil"}})), run_loop($noa_continue$(_ctx_0, _k_0, {$: "NO_Input", "value": ($noa_atom$(($nm$(_result_0)), ($kt$("OUnique", "", _id_0, 0, {$: "Nil"})), ($var$("", _id_0)))), "facts": _facts_0, "fresh": ((_n_0 + 1) >>> 0), "fuel": _fuel_0})));
+}), run_clo((_x_1) => {
+  return $noa_fail$("observer: scalar primitive type", _n_0, _fuel_0);
+}));
 }
 
 function $f_leading_quants$(_ty_0) {
@@ -51674,14 +51832,127 @@ function $jd_ordered_field_join$(_prefix_0, _value_0, _name_0, _rest_0) {
   return {$: "JDOrderedFields", "prefix": (_prefix_0 + _more_0), "values": {$: "Con", "head": _value_0, "tail": _values_0}, "named": ($jd_ctor_field_join$(_name_0, _value_0, _named_0)), "next": _next_0};
 }
 
-function $noa_value_words$(_values_0) {
+function $noa_match_fields$(_ctx_0, _fn_0, _arg_0, _facts_0, _key_0, _fields_0, _n_0, _fuel_0, _k_0) {
+  const _mat_0 = run_loop($kid$(_fn_0, 0));
+  const _yesfacts_0 = {$: "Con", "head": ($kt$("OFact", "", 0, 0, {$: "Con", "head": run_loop($noa_origin$(_arg_0)), "tail": {$: "Con", "head": ($kt$("OC", ($nm$(_mat_0)), 0, 0, ($noa_origins$(_fields_0)))), "tail": {$: "Nil"}}})), "tail": _facts_0};
+  const _yes_0 = run_loop($noa_eval$(_ctx_0, run_loop($kid$(_mat_0, 0)), ($ks$(run_loop($kid$(_fn_0, 1)))), _yesfacts_0, ($noa_unames$(($ks$(run_loop($kid$(_fn_0, 2)))))), _n_0, _fuel_0, {$: "NO_KApplyArgs", "args": _fields_0, "next": _k_0}));
+  return $nt_choose$(($String$eq$(($noa_error$(_yes_0)), "")), run_clo((_x_0) => {
+  return $noa_match_join$(_key_0, run_loop($kid$(_arg_0, 1)), _fields_0, _yes_0, run_loop($noa_eval$(_ctx_0, run_loop($kid$(_mat_0, 1)), ($ks$(run_loop($kid$(_fn_0, 1)))), _facts_0, ($noa_unames$(($ks$(run_loop($kid$(_fn_0, 2)))))), ($noa_fresh$(_yes_0)), ($noa_fuel$(_yes_0)), {$: "NO_KApplyOne", "arg": _arg_0, "next": _k_0})));
+}), run_clo((_x_1) => {
+  return _yes_0;
+}));
+}
+
+function $noa_field_values$(_owner_0, _ctor_0, _origin_0, _fields_0, _i_0, _n_0) {
+  if (_fields_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _ty_0 = _fields_0["head"];
+    const _rest_0 = _fields_0["tail"];
+    return {$: "Con", "head": ($noa_atom$(_ty_0, ($kt$("OField", _ctor_0, _i_0, 0, {$: "Con", "head": _origin_0, "tail": {$: "Con", "head": ($ref$(_owner_0)), "tail": {$: "Nil"}}})), ($var$("", ($nc_id$(_n_0)))))), "tail": ($noa_field_values$(_owner_0, _ctor_0, _origin_0, _rest_0, ((_i_0 + 1) >>> 0), ((_n_0 + 1) >>> 0)))};
+  }
+}
+
+function $noa_actuals$(_params_0, _args_0) {
+  if (_params_0.$ === "Con") {
+    const _p_0 = _params_0["head"];
+    const _ps_0 = _params_0["tail"];
+    if (_args_0.$ === "Con") {
+      const _a_0 = _args_0["head"];
+      const _rest_0 = _args_0["tail"];
+      return $noa_bind$(($ix$(_p_0)), _a_0, ($noa_actuals$(_ps_0, _rest_0)));
+    } else {
+      return {$: "Nil"};
+    }
+  } else {
+    return {$: "Nil"};
+  }
+}
+
+function $noa_loop_valid$(_ctx_0, _params_0, _args_0, _i_0, _strict_0) {
+  if (_params_0.$ === "Nil") {
+    if (_args_0.$ === "Nil") {
+      return _strict_0;
+    } else {
+      return false;
+    }
+  } else {
+    const _p_0 = _params_0["head"];
+    const _ps_0 = _params_0["tail"];
+    if (_args_0.$ === "Con") {
+      const _a_0 = _args_0["head"];
+      const _rest_0 = _args_0["tail"];
+      return $nt_choose$(($noa_root_param$(_ctx_0, _p_0)), run_clo((_x_0) => {
+  const _x_1 = ($String$eq$(($tg$(run_loop($noa_origin$(_a_0)))), "OField"));
+  return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_a_0)), "OA")), ($String$eq$(($nm$(_a_0)), ($nm$(_p_0)))))), run_loop($noa_below$(run_loop($noa_origin$(_a_0)), ($kt$("OArg", "", _i_0, 0, {$: "Nil"})))))), run_loop($noa_loop_valid$(_ctx_0, _ps_0, _rest_0, ((_i_0 + 1) >>> 0), (_strict_0 || _x_1))));
+}), run_clo((_x_2) => {
+  return $Bool$and$(($Bool$and$(($String$eq$(run_loop($noa_value_type$(_ctx_0, _a_0)), ($nm$(_p_0)))), ($Bool$not$(($String$eq$(($tg$(run_loop($noa_scalar$(_ctx_0, _a_0)))), "Absent")))))), run_loop($noa_loop_valid$(_ctx_0, _ps_0, _rest_0, ((_i_0 + 1) >>> 0), _strict_0)));
+}));
+    } else {
+      return false;
+    }
+  }
+}
+
+function $noa_recur_done$(_ctx_0, _args_0, _marker_0, _rest_0) {
+  const _body_0 = _rest_0["body"];
+  const _n_0 = _rest_0["fresh"];
+  const _fuel_0 = _rest_0["fuel"];
+  const _error_0 = _rest_0["error"];
+  const _x_0 = ($terms_len$(($ks$(_body_0))));
+  return $nt_choose$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(_error_0, "")), ($String$eq$(($tg$(_body_0)), "NO_Return")))), (_x_0 === 1))), run_loop($norm_exact$(run_loop($kid$(_body_0, 0)), _marker_0)))), run_clo((_x_1) => {
+  return {$: "NO_Analysis", "body": ($kt$("NO_Loop", "", 0, 0, ($noa_loop_words$(_ctx_0, ($no_schema_params$(($noa_schema$(_ctx_0)))), _args_0)))), "fresh": _n_0, "fuel": _fuel_0, "error": ""};
+}), run_clo((_x_2) => {
+  return $noa_fail$(run_loop($nt_choose$(($String$eq$(_error_0, "")), run_clo((_x_3) => {
+  return "observer: non-tail or discarded recursive result";
+}), run_clo((_x_4) => {
+  return _error_0;
+}))), _n_0, _fuel_0);
+}));
+}
+
+function $noa_virtual$(_t_0, _env_0) {
+  return $nt_choose$(($String$eq$(($tg$(_t_0)), "Var")), run_clo((_x_0) => {
+  return $noa_env$(($ix$(_t_0)), _env_0);
+}), run_clo((_x_1) => {
+  return $kt$("OC", ($nm$(_t_0)), 0, 0, ($noa_virtual_fields$(($ks$(_t_0)), _env_0)));
+}));
+}
+
+function $noa_scalars$(_ctx_0, _values_0) {
   if (_values_0.$ === "Nil") {
     return {$: "Nil"};
   } else {
     const _h_0 = _values_0["head"];
     const _rest_0 = _values_0["tail"];
-    return {$: "Con", "head": run_loop($kid$(_h_0, 1)), "tail": ($noa_value_words$(_rest_0))};
+    return {$: "Con", "head": run_loop($noa_scalar$(_ctx_0, _h_0)), "tail": ($noa_scalars$(_ctx_0, _rest_0))};
   }
+}
+
+function $noa_call_result$(_ctx_0, _ty_0, _args_0, _fuel_0) {
+  return $nt_choose$((_fuel_0 === 0), run_clo((_x_0) => {
+  return $atom$("Absent");
+}), run_clo((_x_1) => {
+  return $noa_call_types$(_ctx_0, run_loop($nq_layout_type$(($noa_book$(_ctx_0)), _ty_0)), _args_0, ((_fuel_0 - 1) >>> 0));
+}));
+}
+
+function $noa_no_absent$(_values_0) {
+  if (_values_0.$ === "Nil") {
+    return true;
+  } else {
+    const _h_0 = _values_0["head"];
+    const _rest_0 = _values_0["tail"];
+    return $Bool$and$(($Bool$not$(($String$eq$(($tg$(_h_0)), "Absent")))), ($noa_no_absent$(_rest_0)));
+  }
+}
+
+function $noa_prepend$(_statement_0, _rest_0) {
+  const _body_0 = _rest_0["body"];
+  const _n_0 = _rest_0["fresh"];
+  const _fuel_0 = _rest_0["fuel"];
+  const _error_0 = _rest_0["error"];
+  return {$: "NO_Analysis", "body": ($kt$("NO_Let", "", ($ix$(_statement_0)), 0, {$: "Con", "head": run_loop($kid$(_statement_0, 0)), "tail": {$: "Con", "head": _body_0, "tail": {$: "Nil"}}})), "fresh": _n_0, "fuel": _fuel_0, "error": _error_0};
 }
 
 function $f_quants$(_n_0, _q_0, _origin_0) {
@@ -52280,6 +52551,87 @@ function $jd_word_tails$(_depth_0) {
   const _x_2 = run_loop($jd_word_tails$(((_depth_0 - 1) >>> 0)));
   return ("[\"tail\"]" + _x_2);
 }));
+}
+
+function $noa_origins$(_values_0) {
+  if (_values_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _values_0["head"];
+    const _rest_0 = _values_0["tail"];
+    return {$: "Con", "head": run_loop($noa_origin$(_h_0)), "tail": ($noa_origins$(_rest_0))};
+  }
+}
+
+function $noa_match_join$(_key_0, _word_0, _fields_0, _yes_0, _no_0) {
+  return {$: "NO_Analysis", "body": ($kt$("NO_Match", _key_0, 0, 0, {$: "Con", "head": _word_0, "tail": {$: "Con", "head": ($kt$("NO_Fields", "", 0, 0, ($noa_value_words$(_fields_0)))), "tail": {$: "Con", "head": ($noa_body$(_yes_0)), "tail": {$: "Con", "head": ($noa_body$(_no_0)), "tail": {$: "Nil"}}}}})), "fresh": ($noa_fresh$(_no_0)), "fuel": ($noa_fuel$(_no_0)), "error": ($noa_error$(_no_0))};
+}
+
+function $noa_fuel$(_a_0) {
+  const _f_0 = _a_0["fuel"];
+  return _f_0;
+}
+
+function $noa_root_param$(_ctx_0, _p_0) {
+  return $Bool$not$(run_loop($nol_scalar$(($noa_book$(_ctx_0)), ($kt$("ADT", ($nm$(_p_0)), 0, 0, {$: "Nil"})))));
+}
+
+function $noa_below$(_origin_0, _want_0) {
+  return $nt_choose$(run_loop($norm_exact$(_origin_0, _want_0)), run_clo((_x_0) => {
+  return true;
+}), run_clo((_x_1) => {
+  return $Bool$and$(($String$eq$(($tg$(_origin_0)), "OField")), run_loop($noa_below$(run_loop($kid$(_origin_0, 0)), _want_0)));
+}));
+}
+
+function $noa_loop_words$(_ctx_0, _params_0, _args_0) {
+  if (_params_0.$ === "Con") {
+    const _p_0 = _params_0["head"];
+    const _ps_0 = _params_0["tail"];
+    if (_args_0.$ === "Con") {
+      const _a_0 = _args_0["head"];
+      const _rest_0 = _args_0["tail"];
+      return {$: "Con", "head": run_loop($nt_choose$(($noa_root_param$(_ctx_0, _p_0)), run_clo((_x_0) => {
+  return $kid$(_a_0, 1);
+}), run_clo((_x_1) => {
+  return $noa_scalar$(_ctx_0, _a_0);
+}))), "tail": ($noa_loop_words$(_ctx_0, _ps_0, _rest_0))};
+    } else {
+      return {$: "Nil"};
+    }
+  } else {
+    return {$: "Nil"};
+  }
+}
+
+function $noa_virtual_fields$(_ts_0, _env_0) {
+  if (_ts_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _ts_0["head"];
+    const _rest_0 = _ts_0["tail"];
+    return {$: "Con", "head": run_loop($noa_virtual$(_h_0, _env_0)), "tail": ($noa_virtual_fields$(_rest_0, _env_0))};
+  }
+}
+
+function $noa_call_types$(_ctx_0, _head_0, _args_0, _fuel_0) {
+  if (_args_0.$ === "Nil") {
+    return $nt_choose$(run_loop($nol_scalar$(($noa_book$(_ctx_0)), _head_0)), run_clo((_x_0) => {
+  return _head_0;
+}), run_clo((_x_1) => {
+  return $atom$("Absent");
+}));
+  } else {
+    const _v_0 = _args_0["head"];
+    const _rest_0 = _args_0["tail"];
+    const _want_0 = run_loop($nq_layout_type$(($noa_book$(_ctx_0)), run_loop($kid$(_head_0, 0))));
+    const _x_2 = ($qt$(_head_0));
+    return $nt_choose$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_head_0)), "All")), ($Bool$not$((_x_2 === 0))))), run_loop($nol_scalar$(($noa_book$(_ctx_0)), _want_0)))), ($String$eq$(run_loop($noa_value_type$(_ctx_0, _v_0)), ($nm$(_want_0)))))), run_clo((_x_3) => {
+  return $noa_call_result$(_ctx_0, run_loop($kid$(_head_0, 1)), _rest_0, _fuel_0);
+}), run_clo((_x_4) => {
+  return $atom$("Absent");
+}));
+  }
 }
 
 function $f_do_types_at$(_monad_0, _ts_0) {
@@ -52909,6 +53261,16 @@ function $jd_scalar_join_bits$(_head_0, _tail_0) {
   const _keep_0 = _head_0["keep"];
   const _literal_0 = _head_0["literal"];
   return $jd_scalar_join_fields$(_keep_0, _literal_0, _tail_0);
+}
+
+function $noa_value_words$(_values_0) {
+  if (_values_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _values_0["head"];
+    const _rest_0 = _values_0["tail"];
+    return {$: "Con", "head": run_loop($kid$(_h_0, 1)), "tail": ($noa_value_words$(_rest_0))};
+  }
 }
 
 function $f_do$(_monad_0, _ts_0, _indent_0) {

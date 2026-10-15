@@ -1,34 +1,49 @@
-# Active frontier: Phase90 complete native self-emission; final runtime next
+# Active frontier: Phase90 native self-hosting and release complete
 
-[Phase90](../implementation/phase90/README.md) is integrating its final runtime.
-All38,614,586 compiler C bytes now match checked JS-hosted B1, genuine JS B2
-and own-backend native06. Request clocks are109.399s,48.662s and163.217s
-respectively, single completed observations rather than upstream speed ratios.
-Native06 uses an explicitly recorded two-edit diagnostic C derivative; it emits
-with the old runtime. This is not yet final-runtime native self-reproduction.
+[Phase90 report](../implementation/phase90/README.md) and
+[verified summary](../implementation/phase90/summary.json): native07, built from
+unpatched native-emitted C, reproduces all38,614,882 C bytes exactly in164.322s.
+Independent genuine JS B2 agrees, taking51.672s on the same frozen source/runtime.
+The native image is d7c7a479…, source d04ad79c…, C dae071f0….
+This is a C fixed point for that tuple, not ELF equality or a compiler proof.
 
-Linear tables, exact-name indexed fork propagation and eliminating generated
-body indentation remove the full-emission blockers. All45 complete CPU
-preprocessing comparisons pass against independently qualified old B2 outputs;
-the broad run takes165.891s at532MB peak RSS. Eight native06 live/cache request
-controls pass. JS compiler06 fresh own-source check and B2/B3 equality pass.
-Installed JS remains Phase82 until real final-source release qualification.
+Installed JS is refreshed genuine B2 284f6e9b…, checked B1 6bf8e093…, source
+4ffae2a3…. Fresh frontend36, driver8, own-source check, exactB3, release integrity,
+legacy42/default24 installed/relocated pass. The old source/release mismatch is
+resolved. Native8live/cache,2negative,4program execution,6publicCLI gates pass.
+The public native entry remains canonical-path single-Base/nineeffects/oneCPU;
+use the [native guide](../docs/self_hosted/NATIVE_HOST.md) and restoration capsule.
 
-The10GiB Clang attempt also failed. Live pass attribution then localized late
-memory growth to LazyCallGraph construction. Generated return macros reference
-a39,642-entry table at15,296 sites. A noinline accessor fixes that scaling:
-fullO1 builds in267.681s at3.885GiB peak. Small dispatch controls pass. Do not
-raise memory limits again. Final runtime combines a host-only accessor at4096
-entries with upstream's missing O0 attribute guard, retaining small optimized
-programs' direct dispatch. Checked template generation is complete.
+Linear builders, indexed fork closure, stack-safe traversals and removing final
+body indentation close the self-emission stall. All45 formatting preprocessing
+comparisons pass. LLVM callgraph expansion of the39,642-entry dispatch table
+at15,296 return sites caused the optimized build memory explosion. A pure host
+noinline accessor for FID_ENTER>=4096 fixes it: finalO2 builds308.201s,3.886GiB.
+Keep small/GPU dispatch unchanged; O0 attributes now follow upstream's guard.
+All45 O2 runtime preprocessing comparisons and4threshold/O0/O2 controls pass.
+Do not retry memory increases, O1 no-inline flags, or redundant template scans.
 
-Next: independently match native06/JS-B2 C with the new runtime; build a native
-successor and require full C reproduction; integrate runtime/template/driver
-identities together and qualify compiler07/release. Historical runtime identities
-are frozen in an explicit transition seal, not silently rebound. Preserve rejected
-schema/preflight attempts. All targets remain serial under the global lock and
-resource guards. No PR comments. Evidence01/02/03 and exact archive reclamation
-receipts remain available; the native06 checkpoint is being sealed next.
+Final six-source/two-round screen:36complete-C checks pass. Native GM0.678x TS-Bun
+process /0.380x request; JS B2 1.367x process /0.891x request. Native wins5/6;
+Map remains1.706x process/1.642x request, Base decode~135ms. Prepared Base and
+worker overhead differ; no broad/algorithmic/publicCLI parity claim. Screen46.958s
+including setup/final verification. Full native self remains3.180x JS B2 from
+separate observations. No new generated-program timing campaign; retained C
+preprocessing identity protects45selectedpoints.
+
+Next: native07 Map and Base-decoder profiles with tiny complete-product controls;
+then a controlled same-source upstream-C versus own-C native build comparison.
+The older native B1 used upstream C lowering; do not call old~58ms Base timings
+or0.492x process ratio a matched comparison to current native07. Improve measured
+regions before another large rewrite. Extend portability/imports/effects under
+separate qualification. Production32,692physicalBendlines/132modules (+101),
+runtime+7netlines. Finite historical conformance/API gaps remain.
+
+All targets ran serially under guards; agents prepared/audited offline. Initial
+legacy smoke hit sandbox-dependent Node pipe EPERM; unchanged approved replay
+outside sandbox passes and both diagnostics remain. Evidence01–05 plus separate
+native request assets/CLI capsules retain completed inputs and failures. Preserve
+unrelated Phase6/68 work. No PR comments without explicit user instruction.
 
 # Historical Phase89 frontier
 

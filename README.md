@@ -16,54 +16,31 @@ This fork ships the Bend2 compiler in [`selfhost/`](selfhost/README.md), targeti
 upstream **`0592662` (Bend 2.0.36)**. Ordinary compilation runs Bend algorithms
 without a TypeScript fallback.
 
-**Phase82 self-emitted B2 is installed** (`098320e8…`), with checked B1 parent,
-fresh own-source acceptance and exact B3 reproduction. Direct JavaScript is the
-default; native C and legacy JS retain documented limits.
+**Phase90 provides a self-hosted native compiler and a refreshed JS-hosted B2.**
+The native executable reproduces all **38,614,882 bytes of its own C exactly** in
+**164 seconds**; the previous native version timed out after 600 seconds without
+output. It is built from unpatched C emitted by our Bend compiler. The optimized
+Clang build takes 308 seconds with 3.89 GiB peak RSS after repairing a large-table
+LLVM scaling problem.
 
-Fresh C-compilation requests take **1.673× B1 /1.328× B2 upstream** on the
-three-source loop: **5.1%/6.2% less time** than Phase78 measured alongside.
-The small and65-function held-outs use20.7%/15.1% less B2 time. Imports, prepared
-Bend Base, Clang and execution remain separate; general parity remains open.
+The installed JS B2 is `284f6e9b…`, with a checked B1 parent, fresh own-source
+acceptance and exact B3 reproduction. Release verification and all 42 legacy /
+24 default installed and relocated checks pass. From `selfhost/`, use
+`node cli.mjs FILE --run`. Direct JavaScript remains the default output backend.
 
-Both stages reproduce all12 benchmark C files exactly, preserving the prior
-**1.067× upstream** execution evidence. All23 JS sources remain byte-identical,
-covering45 points. Native100,raw31,frontend,threaded,self-hosting and installed/
-relocated checks pass. Seven reference native failures and thirteen broader native
-API gaps remain. Phase82 Bend source is **32,540 physical lines /132 modules**
-(+69 lines). No mathematical compiler proof is claimed.
+For compilation with no JavaScript host, follow the
+[native usage and restoration guide](docs/self_hosted/NATIVE_HOST.md). Its scope
+is one Base-importing source and nine audited effects. Eight live/cache controls,
+two invalid-input refusals, four generated-program executions and six public CLI
+controls pass. All 45 selected C preprocessing comparisons preserve program
+behavior. Full-language, GPU and parallel-native-host qualification remain open.
+Current production is **32,692 physical Bend lines in 132 modules**.
 
-**Phase88 adds a separate native compiler pilot:** Map's crash is fixed,
-45 benchmark points emit exact B2 C and execute correctly, and prepared Base
-startup is58–59ms. Current source is32,591lines/132modules. Five of six cold
-process cases beat TypeScript; Map and warm throughput remain gaps. See the
-[native usage guide](docs/self_hosted/NATIVE_HOST.md) and
-[Phase88 results](implementation/phase88/README.md). Installed Phase82 is unchanged.
-
-**Phase89 qualifies a faster native B1:** owned result composition and deferred
-body strings cut Map compilation time28% cold /34% on the fifth request, with
-45 broader exact-C checks. Against upstream TS on Bun, the final cold screen
-wins five of six cases; Map is still1.385× slower and warm gaps remain. Nine
-IO providers are supported. Full native self-emission hits a600-second deadline;
-no native B2 is claimed. Canonical production and installed JS B2 remain unchanged.
-See the [Phase89 report](implementation/phase89/README.md),
-[final timings](implementation/phase89/qualified-screen.md) and
-[host runtime guide](docs/self_hosted/host-runtimes.md).
-
-Read the [Phase82 report](implementation/phase82/README.md),
-[native compilation/session guide](docs/self_hosted/NATIVE_COMPILATION.md),
-[native ownership facts](docs/self_hosted/NATIVE_OWNERSHIP_FACTS.md),
-[analysis fact lifetimes and experiments](docs/self_hosted/ANALYSIS_FACTS.md),
-[remaining compilation costs and ranked options](implementation/phase81/README.md),
-[deeper investigation and next prototypes](implementation/phase83/README.md),
-[native compiler hosting investigation](implementation/phase86/README.md),
-[native optimization and correctness investigation](implementation/phase87/README.md),
-[fast loops](selfhost/tools/performance/phase78/README.md) and
-[compiler guide](docs/BEND-IN-BEND.md). From `selfhost/`, run `node cli.mjs FILE --run`. The installed API is intact,
-but `npm run verify:release` currently reports three Phase88 source changes
-relative to its Phase82 manifest; see the [release status](implementation/phase89/release-status.md).
-The [conformance record](selfhost/CONFORMANCE.md),
+Read the [Phase90 results and speed boundaries](implementation/phase90/README.md),
+[compiler guide](docs/BEND-IN-BEND.md),
+[conformance record](selfhost/CONFORMANCE.md),
 [architecture](selfhost/docs/ARCHITECTURE.md) and
-[experiment frontier](experiments/STEERING.md) document scope and next work.
+[experiment frontier](experiments/STEERING.md).
 
 ## Bend runs FAST
 

@@ -1,0 +1,74 @@
+{
+  "kind": "phase90-expected-nonzero-guard-status-correction",
+  "complete": true,
+  "executionPerformed": false,
+  "reviewCaughtBeforeTargets": true,
+  "records": [
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/qualify.py",
+        "sha256": "ed16c720e646303c7ac0b16feeadc2cdc6517e0239f0fc2b12479e05b91952d1",
+        "bytes": 6901
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/qualify-v2.py",
+        "sha256": "395b766dae85bbbc190be6ad0aa3446795040f9839533b4b567aa6b0cb50f06f",
+        "bytes": 7169
+      },
+      "exactInverse": true,
+      "edits": [
+        {
+          "old": "        def clean(row,code=0):\n            return row['process'].get('complete') and row['process'].get('returncode')==code and not row['process'].get('stoppedFor')",
+          "new": "        def clean(row,code=0):\n            process=row['process']\n            if process.get('returncode')!=code or process.get('stoppedFor'):return False\n            if code==0:return process.get('complete') is True\n            assert code==1\n            return process.get('complete') is False and isinstance(process.get('finished'),(int,float)) and isinstance(process.get('wallSeconds'),(int,float)) and process['wallSeconds']>=0"
+        },
+        {
+          "old": "clean(row,1) and row['guardReturncode']!=0",
+          "new": "clean(row,1) and row['guardReturncode']==1"
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/admit.py",
+        "sha256": "378ea68ae11d3cb4c144ae34d85d7fbcca10211865a278ec1fc2992016e3daff",
+        "bytes": 6783
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/admit-v2.py",
+        "sha256": "79b8c6f388194740f13d3f9e6d4c5404217fb55b70cf2dd2aa4c581c3a3be615",
+        "bytes": 7117
+      },
+      "exactInverse": true,
+      "edits": [
+        {
+          "old": "        assert process==row['process'] and process['complete'] and process['returncode']==expected_code and not process.get('stoppedFor')",
+          "new": "        assert process==row['process'] and process['returncode']==expected_code and not process.get('stoppedFor')\n        if expected_code==0:assert process['complete'] is True and row['guardReturncode']==0\n        else:\n            assert expected_code==1 and process['complete'] is False and row['guardReturncode']==1\n            assert isinstance(process.get('finished'),(int,float)) and isinstance(process.get('wallSeconds'),(int,float)) and process['wallSeconds']>=0"
+        },
+        {
+          "old": "'ed16c720e646303c7ac0b16feeadc2cdc6517e0239f0fc2b12479e05b91952d1'",
+          "new": "'395b766dae85bbbc190be6ad0aa3446795040f9839533b4b567aa6b0cb50f06f'"
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/run-image-v2.py",
+        "sha256": "6493d5ba6b52986d39159e7a7bfa1bd29ee20b2322631bb55c36dee4e2080cdf",
+        "bytes": 6140
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/run-image-v3.py",
+        "sha256": "140e57e4ce2724056b3f046b62a13ecde902f7c6f4c76f4c42e7c6d4f6193b83",
+        "bytes": 6302
+      },
+      "exactInverse": true,
+      "edits": [
+        {
+          "old": "success=bool(result.returncode!=0 and process.get('complete') and process.get('returncode')==1 and not process.get('stoppedFor')",
+          "new": "success=bool(result.returncode==1 and process.get('complete') is False and process.get('returncode')==1 and not process.get('stoppedFor')\n                and isinstance(process.get('finished'),(int,float)) and isinstance(process.get('wallSeconds'),(int,float)) and process['wallSeconds']>=0"
+        }
+      ]
+    }
+  ],
+  "scope": "Positive gates unchanged. Expected compiler exit1 requires guard complete=false, finished/wall metadata, no resource stop, guard exit1, matching diagnostic and absent C."
+}

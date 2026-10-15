@@ -93,7 +93,8 @@ using namespace metal;
 #else
 #define DEV
 // only clang 19+ has both, and only it compiles preserve_most soundly
-#if __has_attribute(preserve_none) && __has_attribute(preserve_most)
+#if __has_attribute(preserve_none) && __has_attribute(preserve_most) \
+  && defined(__OPTIMIZE__)
 #define PRESERVE(A) __attribute__((A))
 #else
 #define PRESERVE(A)
@@ -1271,6 +1272,12 @@ WL_TABLE WL_X(FID_ENTER)
 #define WL_X(F) WL_##F,
 static const WlFn wl_tab[] = { WL_TABLE };
 #undef WL_X
+#if FID_ENTER >= 4096
+// Keep the shared dispatch table out of each segment's LLVM reference graph.
+FAR PRESERVE(preserve_most) WlFn wl_target(Fid id) { return wl_tab[id]; }
+#undef WL_DYN
+#define WL_DYN(F) __attribute__((musttail)) return wl_target(F)(WL_ALL)
+#endif
 #endif
 
 static Reply work_loop(Env e, Stk sp, Term t, bool seq) {

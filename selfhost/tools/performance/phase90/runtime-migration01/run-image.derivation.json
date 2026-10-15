@@ -1,0 +1,66 @@
+{
+  "kind": "phase90-new-runtime-native07-request-method",
+  "complete": true,
+  "executionPerformed": false,
+  "original": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/run.py",
+    "sha256": "3a6a0ba11bafaee9a6a903969aa21f6cb578bfb3ef33c6822ae0b16aa8cc70ae",
+    "bytes": 5266
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/run-image.py",
+    "sha256": "cd505855742fde646c1f2d3571dd69d0b3d482671b153a47e73fc3dccd8ffc73",
+    "bytes": 6134
+  },
+  "exactInverse": true,
+  "edits": [
+    {
+      "old": "from support import ROOT,P,request_auth,args as native_args,transition,historical,read,pin,verify",
+      "new": "from support import ROOT,P,args as native_args,transition,historical,read,pin,verify\nfrom image_support import authenticate_unqualified\n\ndef request_auth(image,build,live=False):\n    auth,provenance=authenticate_unqualified(image,build)\n    if live:auth=dict(auth,cache=None)\n    return auth,provenance"
+    },
+    {
+      "old": "    ap.add_argument('transport',type=Path);ap.add_argument('out',type=Path)",
+      "new": "    ap.add_argument('image',type=Path);ap.add_argument('build',type=Path);ap.add_argument('out',type=Path)\n    ap.add_argument('--expect-error',choices=['parse','check'])"
+    },
+    {
+      "old": "kind='phase90-native-new-runtime-emission'",
+      "new": "kind='phase90-native-runtime-migrated-emission'"
+    },
+    {
+      "old": "scope='Unchanged qualified native06 source D04 with explicitly replaced external runtime assets. Emitted C is unpatched; no native07 build or fixed point claimed.'",
+      "new": "scope='Native07 built from unpatched native06 C independently equal to genuine JS B2. Actual request and optional exact C or expected semantic rejection; final public admission remains separate.'"
+    },
+    {
+      "old": "auth,provenance=request_auth(a.transport,a.live)",
+      "new": "auth,provenance=request_auth(a.image,a.build,a.live)"
+    },
+    {
+      "old": "assert prior['producer']['authentication']==provenance['producer']",
+      "new": "assert prior['producer']['authentication']==provenance['originProducer']"
+    },
+    {
+      "old": "assert prior['source']==auth['source'] and prior['c']['sha256']==auth['c']['sha256']",
+      "new": "assert prior['source']==auth['source'] and prior['c']['sha256']==provenance['originProducer']['c']['sha256']"
+    },
+    {
+      "old": "producer=dict(stage='qualified C-patched native06 producer',authentication=provenance['producer'],priorSelfEmission=self_pin)",
+      "new": "producer=dict(stage='native compiler built from unpatched native06 emission',authentication=provenance['producer'],build=provenance['build'],priorSelfEmission=self_pin)"
+    },
+    {
+      "old": "sourceUnchanged=source==auth['source'],cache=auth['cache'],base=auth['base'],calls=a.calls,oracle=oracle,",
+      "new": "sourceUnchanged=source==auth['source'],cache=auth['cache'],base=auth['base'],calls=a.calls,oracle=oracle,expectedError=a.expect_error,"
+    },
+    {
+      "old": "methods=[pin(__file__),pin(Path(__file__).with_name('support.py')),pin(GUARD),pin(P/'programs/support.py')])",
+      "new": "methods=[pin(__file__),pin(Path(__file__).with_name('support.py')),pin(Path(__file__).with_name('image_support.py')),pin(GUARD),pin(P/'programs/support.py')])"
+    },
+    {
+      "old": "current,_=request_auth(a.transport,a.live);assert current==auth and pin(source['file'])==source",
+      "new": "current,_=request_auth(a.image,a.build,a.live);assert current==auth and pin(source['file'])==source"
+    },
+    {
+      "old": "        report.update(complete=success,passed=success,independentlyCompared=bool(success and oracle));save()",
+      "new": "        if a.expect_error:\n            assert oracle is None and a.calls==1\n            success=bool(result.returncode!=0 and process.get('complete') and process.get('returncode')==1 and not process.get('stoppedFor')\n                and not outputs and len(report['requestMs'])==1 and a.expect_error+':' in stderr)\n            report['expectedRejectionObserved']=success\n        report.update(complete=success,passed=success,independentlyCompared=bool(success and oracle));save()"
+    }
+  ]
+}

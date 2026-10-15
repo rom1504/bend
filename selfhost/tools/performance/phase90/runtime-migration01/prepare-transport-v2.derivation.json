@@ -1,0 +1,32 @@
+{
+  "kind": "phase90-template-receipt-schema-transport-correction",
+  "complete": true,
+  "executionPerformed": false,
+  "original": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/prepare-transport.py",
+    "sha256": "ccc99a23a55acbd32c3b29995db0bb36ebdfa84d36075f0e4f40aca93995211f",
+    "bytes": 3923
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/prepare-transport-v2.py",
+    "sha256": "a25cc1c5a033b90f2637a9ac253fb861aaa3c19fc5e8b03b8b19ec957e564b7a",
+    "bytes": 4025
+  },
+  "templateReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-accessor-01/template-receipt.json",
+    "sha256": "72533cac24874b1cd1de9acdb87f504a6d12aa935b322eba6baa8b8be353bce9",
+    "bytes": 1137
+  },
+  "exactInverse": true,
+  "edits": [
+    {
+      "old": "    for key,other in [('producer','api'),('attempt','attempt'),('generator','generator'),('runtime','source')]:assert verify(receipt[key])==plan[other]",
+      "new": "    for key,other in [('producer','api'),('attempt','attempt'),('generator','generator'),('runtime','source')]:\n        expected=verify(plan[other]);assert all(receipt[key][k]==expected[k] for k in ['file','sha256'])"
+    },
+    {
+      "old": "    assert runtime==plan['source'] and template==verify(receipt['artifact']) and runtime['sha256']==RUNTIME_SHA",
+      "new": "    assert runtime==plan['source'] and runtime['sha256']==RUNTIME_SHA\n    assert all(receipt['artifact'][k]==template[k] for k in ['file','sha256'])"
+    }
+  ],
+  "scope": "Scanner receipt intentionally supplies file/SHA only; require both against known full plan/ready pins, then verify full expected byte length. No check relaxed."
+}

@@ -1,122 +1,129 @@
 # Running the compiler as a native executable
 
-Phase89 provides a qualified Linux x86_64 **native B1 image** of the compiler
-written in Bend. Once built, it parses, checks and emits C using native Bend
-code. Python authenticates files, supervises resource limits and publishes the
-result; it implements no compiler algorithm and runs no JavaScript. Clang is
-needed to build an executable from the emitted C.
+Phase90 provides a qualified Linux x86_64 **self-hosted native compiler written
+in Bend**. It parses, checks and emits C without running JavaScript. A native
+Bend compiler emitted the complete C used to build this image; the resulting
+image reproduced that same C exactly from its own frozen Bend source. Python
+authenticates selected files, bounds execution and publishes output. It
+implements no compiler algorithm. Clang builds executables from emitted C.
 
-The current image is `selfhost/build/phase89/compiler-native-self01`, SHA256
-`8bacae268296d6fe16d02ce50a7a2189bd587506c074532c6e5d74e622716e45`.
-Its checked Bend source is `4584cf08…`, and its C is `b1560234…`; complete
-identities and proof receipts are in the
-[admission manifest](../../selfhost/tools/performance/phase89/native-admission.json).
-The image has passed eight live/cache exact-C gates and the broad 45-point gate.
-The versioned launcher also passed all ten acceptance/refusal controls: cached
-and live Small/file-IO exact-C emissions, five public CLI refusals and a private
-changed-manifest admission refusal. The sealed capsules verify all12 selected
-assets, and a missing executable was restored with identical bytes and admission.
-See the [restoration receipt](../../implementation/phase89/restoration.json).
+The current native image is `selfhost/build/phase90/compiler-own-native07`,
+SHA-256 `d7c7a47917884b14fd3ef37471d9f2a8660d7c4ab9bcc93a249c7cb6d0e37d3e`.
+Its source is `d04ad79c…`; the complete 38,614,882-byte self-emitted C is
+`dae071f0fae7aec4ae8036ccebe4954690a249e32f59a87ac485b2fa428016bf`.
+The [native selection](../../selfhost/tools/performance/phase90/runtime-migration01/native-admission.json)
+binds the admission and selected assets. The
+[migration report](../../implementation/phase90/runtime-migration.md) records the
+independent genuine-JS-B2/native C comparison, actual native self reproduction,
+and build and qualification receipts.
 
-The installed `selfhost/cli.mjs` remains the separately qualified Phase82 JS B2.
-The native host accepts **one source importing canonical Base**, with these
-nine audited effect providers: args, print, now, print_err, file_open, file_read,
-file_size, file_write and file_close. Additional imports and other foreign
-effects refuse explicitly. File-effect availability does not grant the backend's
-scalar-array or observer optimization permission. This image is not a native
-self-emitted B2. The [Phase88 report](../../implementation/phase88/README.md)
-remains the history of the previous three-provider pilot.
+This launcher is separate from `selfhost/cli.mjs`. Its native qualification does
+not select or install a JavaScript release; consult the
+[JS release manifest](../../selfhost/dist/release.json) for that artifact.
 
-## Restore and use the qualified image
+## Restore and compile
 
-The capsule and missing-executable restoration checks pass. Run from the
-recorded canonical repository path `/home/ai/bend2/build/publish/bend`:
+Run from the recorded canonical repository path
+`/home/ai/bend2/build/publish/bend`:
 
 ```sh
-python3 -B selfhost/tools/performance/phase88/restore.py
-python3 -B selfhost/tools/performance/phase89/restore.py
-python3 -B selfhost/tools/performance/phase89/native.py \
+python3 -B selfhost/tools/performance/phase90/runtime-migration01/public-assets.py restore \
+  selfhost/tools/performance/phase90/runtime-migration01/public-assets01/receipt.json --verify-only
+python3 -B selfhost/tools/performance/phase90/runtime-migration01/public-assets.py restore \
+  selfhost/tools/performance/phase90/runtime-migration01/public-assets01/receipt.json
+python3 -B selfhost/tools/performance/phase90/runtime-migration01/native.py \
   selfhost/tools/performance/phase77/fixtures/small.bend \
-  --image selfhost/build/phase89/compiler-native-self01 \
   -o selfhost/build/native/small.c
 clang -O2 selfhost/build/native/small.c -o selfhost/build/native/small -lm -pthread
 selfhost/build/native/small --threads 1 --gpu off
 ```
 
+The first restoration command verifies every selected archived byte and file
+mode without writing. The second restores missing files atomically and refuses
+changed existing bytes or permissions. Both validate the capsule and its
+manifest; restoration retains 160 MiB free disk space. The capsule contains the
+26 request assets, including the executable, Base, carrier, frozen Bend source,
+runtime parts, effects, admission and launcher dependencies. Historical proof
+and large generated C remain in the separate experiment capsules. Neither
+restoration command executes a compiler. Obtain the capsule, receipt, manifest
+and methods together from the reviewed repository revision.
+
 The launcher requires Python3 and Linux `taskset`, with CPU3 available. The
-qualified build used the Clang distributed with Lean4.32.0, plus its explicit
-Clang include directory; use the exact toolchain recorded in the image's
-`.build.json` for reproduction. No Node or Clang is invoked by a native request.
+qualified native07 build used Lean4.32.0's Clang with its explicit Clang include
+directory and `-O2`; reproduce it using the command in the image's
+`.native-build.json`. A native compiler request invokes neither Node nor Clang.
 
-Output must be a new path. The launcher stages and verifies the copy before
-publishing it without overwriting. It retains request stdout, stderr, hashes,
-phase clocks and guard receipts under `selfhost/build/native/requests/`.
-Defaults are 60 seconds, 2 GiB maximum process-tree RSS, a 4 GiB available-memory
-floor and one native thread. `--seconds N` accepts 1..600; `--calls 5` repeats the
-same request in one process and verifies identical C. This is a diagnostic
-repeated-request mode, not a persistent multi-source server. Native lazy
-address-space reservations are large; avoid an arbitrary small virtual-memory
-limit.
+Output must be a new path. The launcher verifies a staged copy and publishes it
+without overwriting. Request stdout, stderr, phase clocks, file identities and
+guard receipts remain under `selfhost/build/native/requests/` on success and
+failure. Defaults are 60 seconds, a 2 GiB process-tree RSS limit, a 4 GiB
+available-memory floor, and one native thread. `--seconds N` accepts 1..600.
 
-Normal mode decodes an authenticated prepared Base in Bend. `--live` checks
-and prepares Base in the native process instead. Wrong cache/image/path/ABI or
-changed inputs refuse; no silent fallback admits a different artifact. The
-Phase89 wrapper reuses Phase88's process supervision and publication code with
-its own strict admission function. The returned authentication records identify
-both versions and all nine providers before and after each request. See the
-[launcher methods](../../selfhost/tools/performance/phase89/native-launcher.md).
+`--calls 5` repeats the same request in one process. All five complete C outputs
+must have identical hashes and lengths before the first is published. This is
+a diagnostic repeated-request mode, not a persistent multi-source server.
+`--live` checks and prepares Base inside the native process; normal mode decodes
+the authenticated immutable prepared Base. Changed admitted files and wrong
+cache/path identities refuse. No fallback silently selects a different image.
 
-Phase88 restoration supplies the preserved shared runtime/cache dependencies;
-Phase89 restoration verifies evidence02/03 and selects the required native89
-assets, then restores executable permission. Both refuse changed existing files
-and preserve 160 MiB free space. Phase89 `--verify-only` verifies selected archived
-assets without writing. Its evidence03 receipt must include `nativeAssets`;
-an incomplete capsule is not silently accepted.
-
-**Relocation is not qualified.** Receipts and cache source origins bind the
+**Relocation is not qualified.** Admission and carrier source locations bind the
 canonical checkout path. Rewriting paths or symlinking another checkout does not
-preserve the admitted identity. A portable package needs separate relocation
-qualification; this is not a universal installer.
+preserve that identity. A portable package requires separate qualification.
 
-## Build profile and validation boundaries
+## What is qualified
 
-The build is `Bend compiler source → upstream TypeScript C emitter → Clang →
-native B1`. TypeScript is a bootstrap dependency. Native B1 then handles user
-Bend→C requests independently. The prepared Base was produced offline by the
-identified Phase82 B2, compared against fresh Bend preparation, serialized and
-decoded as shared named Data; it is not a heap snapshot or native self-hosting.
+The entry accepts **one source importing canonical Base** and these nine audited
+C effect providers: args, print, now, print_err, file_open, file_read, file_size,
+file_write and file_close. Additional imports and other foreign effects refuse
+explicitly. File-effect availability does not grant scalar-array or observer
+optimization permission.
 
-The explicit native build profile adds owned match composition and ordered body
-chunks to the Phase88 observer/linear-builder fixes and compiler-owned consuming
-String equality adaptation. The two Phase89 compiler changes add **93 source
-lines** in total (+14 owned composition, +79 chunks); entry/effect tooling is
-separate. They are retained as checked source derivatives, without editing
-canonical production modules or the installed JS image. The profile leaves Base
-and user input untouched and is checked as a complete Bend program before
-emission.
+The actual native07 gates passed:
 
-Separate ordinary JS B1 screens found the combined change 4.11% slower and
-owned composition alone 1.15% slower in the six-case geometric mean of median
-compilation requests. Two rounds do not establish precise statistical effects,
-but neither screen supports JS promotion. The native profile therefore remains
-separate; see [JS integration evidence](../../implementation/phase89/js-integration.md).
-Native compilation gains from the chunks experiment are recorded in the
-[body-chunks report](../../implementation/phase89/body-chunks-feasibility.md);
-these are compiler request timings, not generated-program execution ratios.
+- Full own-source emission, exactly reproducing the C from which native07 was
+  built. That complete C also equals the independently generated genuine JS B2
+  output for the same frozen Bend source and runtime.
+- Four source fixtures in both live and cached Base modes: Small, Map, Unicode
+  and file IO. All eight emitted complete C files matched their admitted oracles.
+- Invalid syntax and a type error, with the required diagnostic, actual exit 1,
+  no resource stop and no output C.
+- Actual Clang builds and executions of all four generated programs, including
+  the file IO output bytes and diagnostics.
 
-The admitted nine-provider image emits complete C identical to installed B2 for
-all 45 broad points and the four live/cache fixtures. The broad gate transfers
-previous execution evidence for those exact C outputs; it is not a new full
-language-conformance or generated-program speed campaign.
+Native07's full self-emission request took 164.322 seconds. This measures
+compiling the full compiler source; it is not a user-program speed ratio or a
+claim of parity with upstream. Exact C reproduction is a finite fixed-point
+check, not a proof of compiler correctness. These controls do not establish
+unrestricted language conformance, GPU execution or parallel-runtime
+correctness. The prepared Base remains an authenticated offline product;
+`--live` exercises preparation separately.
 
-Full native self-compilation remains blocked: the exact 1,755,310-byte compiler
-source attempt hit the 600-second deadline (600.022 seconds guard wall time),
-with peak process-tree RSS 1,079,590,912 bytes and no emitted C. The recorded stop
-was a deadline, not OOM. Its separately frozen eight-gate qualification remains
-valid, while the overall self-emission attempt is failed. No native B2 was built
-or executed, and no self-reproduction claim follows from this native B1 image.
+The final native image was built from **unpatched native-emitted C**. An earlier
+native06 diagnostic used an explicit C accessor patch while investigating
+Clang's handling of the large function table. The accepted runtime implementation
+then emitted that accessor through the normal backend. Native06 and genuine JS
+B2 independently emitted the final C, native07 was built from it, and native07
+reproduced it. The earlier diagnostic patch is not silently relabeled as the
+final build.
 
-The installed JS artifact remains intact and its CLI smoke test passes. Explicit
-JS release verification currently rejects three Phase88 checkout-source changes;
-see [release status](../../implementation/phase89/release-status.md). That inherited
-source/manifest mismatch does not relax native89's separate admission checks.
+See the [launcher and migration methods](../../selfhost/tools/performance/phase90/runtime-migration01/README.md)
+for admission, public CLI controls, benchmark integration and restoration.
+
+## Historical Phase89 lineage
+
+Phase89's `selfhost/build/phase89/compiler-native-self01` was a native **B1**
+bootstrapped by the upstream TypeScript C emitter, with source `4584cf08…` and
+binary `8bacae26…`. Its eight live/cache controls, 45-point exact-C comparison,
+public launcher and restoration evidence remain tied to that older image.
+Its complete 1,755,310-byte self-compilation attempt timed out at 600.022 seconds
+without C output; that was a deadline stop, not OOM. It established no native
+self-emitted B2 or fixed point.
+
+The Phase89 launcher and its Phase88/89 restoration tools remain historical;
+they do not select or restore native07. The separate native source profile
+retains the compiler-owned equality/observer and linear-builder work from
+Phase88 plus Phase89's owned composition and ordered chunks. Their old JS
+screens and native measurements must not be treated as current speed results.
+See the [Phase89 report](../../implementation/phase89/README.md),
+[JS integration evidence](../../implementation/phase89/js-integration.md), and
+[historical restoration receipt](../../implementation/phase89/restoration.json).

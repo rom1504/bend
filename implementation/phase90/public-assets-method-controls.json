@@ -1,0 +1,77 @@
+{
+  "complete": true,
+  "targetJobsRun": 0,
+  "scope": "Synthetic finalized-guard status predicates and archive byte/mode verification only; no compiler or generated executable invoked.",
+  "methods": [
+    {
+      "file": "selfhost/tools/performance/phase90/runtime-migration01/qualify-v2.py",
+      "sha256": "395b766dae85bbbc190be6ad0aa3446795040f9839533b4b567aa6b0cb50f06f",
+      "bytes": 7169
+    },
+    {
+      "file": "selfhost/tools/performance/phase90/runtime-migration01/admit-v2.py",
+      "sha256": "79b8c6f388194740f13d3f9e6d4c5404217fb55b70cf2dd2aa4c581c3a3be615",
+      "bytes": 7117
+    },
+    {
+      "file": "selfhost/tools/performance/phase90/runtime-migration01/run-image-v3.py",
+      "sha256": "140e57e4ce2724056b3f046b62a13ecde902f7c6f4c76f4c42e7c6d4f6193b83",
+      "bytes": 6302
+    },
+    {
+      "file": "selfhost/tools/performance/phase90/runtime-migration01/public-assets.py",
+      "sha256": "f7b4f73b1c785f702a19504a8afc95a2db1cf29678fe1f51da9fcaa9f24c3f13",
+      "bytes": 7341
+    }
+  ],
+  "checks": [
+    {
+      "name": "positive",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "name": "expected_rejection",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "name": "stopped_rejection",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "unfinished_rejection",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "incorrect_complete_rejection",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "signal",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "negative_wall",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "wrong_hash",
+      "rejected": true
+    },
+    {
+      "name": "wrong_mode",
+      "rejected": true
+    }
+  ],
+  "archive": {
+    "file": "selfhost/build/phase90/public-assets-controls01/control.zip",
+    "sha256": "c66b4098c31f98adced26604f1874fe5416f9d196c141108505ca3f953ce7241",
+    "bytes": 422
+  }
+}

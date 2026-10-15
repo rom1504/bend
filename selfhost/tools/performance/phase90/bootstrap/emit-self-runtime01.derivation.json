@@ -1,0 +1,61 @@
+{
+  "kind": "phase90-qualified-js-b2-runtime-worker-derivative",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/emit-self-v8.mjs",
+    "sha256": "2f420457fa0ca58123fe6dd1639dace7a65fbb5f49def5024a264c8ffed68217",
+    "bytes": 9553
+  },
+  "runtimePlan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-accessor-01/plan.json",
+    "sha256": "1d6824d4be2a0a3e763336fe7ee19f67482190b2d8f7701df788d4ffcacdf566",
+    "bytes": 4585
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/emit-self-runtime01.mjs",
+    "sha256": "1a5dda1e4a0e38a39342ba26ad8c34d309c9f1966ff99d13c8f5379e1824c966",
+    "bytes": 14180
+  },
+  "edits": [
+    {
+      "before": "// ROOT-RUN TARGET: genuine driver-qualified Phase90 B2 emits exact combined native90 S as C.\n// IMAGE_PINS QUALIFICATION_METHOD_PLAN NEW_OUT; no upstream acquisition/build/admission.",
+      "after": "// ROOT-RUN TARGET: unchanged genuine Phase90 JS B2 emits D04 using separately authenticated new runtime assets.\n// IMAGE_PINS QUALIFICATION_METHOD_PLAN NEW_OUT RUNTIME_READY; no upstream acquisition/build/admission.",
+      "count": 1
+    },
+    {
+      "before": "const out=path.resolve(process.argv[4]??'');\nassert(process.argv.length===5",
+      "after": "const out=path.resolve(process.argv[4]??'');\nconst runtimeReadyFile=fs.realpathSync(process.argv[5]??'');\nassert(process.argv.length===6",
+      "count": 1
+    },
+    {
+      "before": "kind:'phase90-qualified-js-b2-combined-source-emission'",
+      "after": "kind:'phase90-qualified-js-b2-new-runtime-emission'",
+      "count": 1
+    },
+    {
+      "before": "scope:'Cross-host C emission by the recorded genuinely self-emitted, driver-qualified JS-hosted Bend B2. No upstream acquisition, Clang build, native execution, public admission or fixed point.'",
+      "after": "scope:'Cross-host C emission by unchanged genuine driver-qualified JS-hosted Bend B2 with separately verified candidate runtime/template and exact driver template-pin derivative. Original qualified staging remains untouched. No upstream acquisition, Clang build, native execution, public admission or fixed point.'",
+      "count": 1
+    },
+    {
+      "before": "  const {D,image}=selected;",
+      "after": "  const {image}=selected;let D=selected.D;",
+      "count": 1
+    },
+    {
+      "before": "  report.subject=source;report.ancestorNativeProfileAdmission=admission;",
+      "after": "  const readyPin=add(runtimeReadyFile),ready=read(readyPin.file);\n  assert.equal(ready.kind,'phase90-runtime-large-table-accessor-prepared');\n  assert(ready.complete&&ready.canonicalMutated===false&&ready.qualificationPending===true);\n  const runtimePlanPin=bind(ready.plan);\n  assert.equal(runtimePlanPin.sha256,'1d6824d4be2a0a3e763336fe7ee19f67482190b2d8f7701df788d4ffcacdf566');\n  const runtimePlan=read(runtimePlanPin.file);\n  assert.equal(runtimePlan.kind,'phase90-runtime-large-table-accessor-plan');\n  assert.equal(runtimePlan.threshold,4096);\n  for(const item of [...runtimePlan.canonicalInputs,...runtimePlan.sourceAudit,\n      ...['method','helper','upstream','attempt','api','generator','source'].map(k=>runtimePlan[k])])bind(item);\n  assert.deepEqual(ready.inputs,runtimePlan.canonicalInputs);\n  const outputs=ready.outputs.map(bind);\n  assert.equal(outputs.length,3);assert.deepEqual(outputs[0],runtimePlan.source);\n  assert.equal(outputs[0].sha256,'9e1c59078878be94052cb4d2d63a713e19e29b41ed3f94b034f2175a50efd0a9');\n  let transformed=fs.readFileSync(runtimePlan.canonicalInputs[0].file,'utf8');\n  assert.equal(runtimePlan.edits.length,2);\n  for(const e of runtimePlan.edits){assert.equal(transformed.split(e.before).length-1,1);transformed=transformed.replace(e.before,()=>e.after);}\n  assert.equal(transformed,fs.readFileSync(outputs[0].file,'utf8'));\n  const templateReceiptPin=bind(ready.templateReceipt),templateReceipt=read(templateReceiptPin.file);\n  assert.equal(templateReceipt.kind,'bend-native-template');assert.equal(templateReceipt.chunks,5);assert(templateReceipt.exactRoundTrip);\n  for(const [key,expected] of [['producer',runtimePlan.api],['attempt',runtimePlan.attempt],['generator',runtimePlan.generator],['runtime',outputs[0]],['artifact',outputs[1]]])assert.deepEqual(bind(templateReceipt[key]),expected);\n  const template=read(outputs[1].file);assert.equal(template.version,1);\n  assert.equal(template.runtimeSha256,outputs[0].sha256);assert.equal(template.parts.length,5);\n  assert.equal(template.parts.join(''),transformed);\n  const originalDriver=fs.readFileSync(role.driver.file,'utf8');\n  assert.equal(role.driver.sha256,runtimePlan.canonicalInputs[2].sha256);\n  const oldPin=\"const nativeTemplateSha256='\"+runtimePlan.canonicalInputs[1].sha256+\"';\";\n  const newPin=\"const nativeTemplateSha256='\"+outputs[1].sha256+\"';\";\n  assert.equal(originalDriver.split(oldPin).length-1,1);\n  assert.equal(fs.readFileSync(outputs[2].file,'utf8'),originalDriver.replace(oldPin,newPin));\n  const requestProject=path.join(out,'request-project');fs.mkdirSync(requestProject);\n  const overrides=new Map([['src/runtime/native/runtime.c',outputs[0]],['src/runtime/native/runtime-template.json',outputs[1]],['tools/typed-driver.mjs',outputs[2]]]);\n  const requestCopies=[];\n  const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name)).flatMap(x=>x.isDirectory()?walk(path.join(dir,x.name)):[path.join(dir,x.name)]);\n  for(const originalFile of walk(role.project)){\n    const relative=path.relative(role.project,originalFile),before=add(originalFile);\n    const chosen=overrides.get(relative)??before,target=path.join(requestProject,relative);\n    fs.mkdirSync(path.dirname(target),{recursive:true});fs.copyFileSync(chosen.file,target,fs.constants.COPYFILE_EXCL);\n    const after=add(target);assert.equal(after.sha256,chosen.sha256);\n    requestCopies.push({before,source:chosen,after,changed:chosen.sha256!==before.sha256});\n  }\n  assert.equal(requestCopies.filter(x=>x.changed).length,3);\n  assert(!fs.existsSync(path.join(requestProject,'build/typed/cache')));\n  process.env.BEND_TYPED_API=role.api.file;process.env.BEND_TYPED_RUNTIME=role.runtime.file;process.env.BEND_BASE=role.base.file;\n  D=await import(pathToFileURL(path.join(requestProject,'tools/typed-driver.mjs')));\n  assert.equal(D.apiPath,role.api.file);assert.equal(D.runtimePath,role.runtime.file);\n  assert.equal((await D.loadApi()),selected.api);\n  report.requestRuntime={plan:runtimePlanPin,ready:readyPin,templateReceipt:templateReceiptPin,\n    runtime:outputs[0],template:outputs[1],driver:outputs[2],project:requestProject,copies:requestCopies,\n    producerUnchanged:true,scope:'Candidate runtime input; original B2 API and qualified project remain byte-identical. Request driver differs only by the template SHA pin.'};\n  report.subject=source;report.ancestorNativeProfileAdmission=admission;",
+      "count": 1
+    },
+    {
+      "before": "const cache=W.validatedCache(path.join(role.project,'build/typed/cache'),role.api.file,role.base.file);",
+      "after": "const cache=W.validatedCache(path.join(requestProject,'build/typed/cache'),role.api.file,role.base.file);",
+      "count": 1
+    },
+    {
+      "before": "  report.verification=await selected.verifyFinal();unchanged();report.inputsUnchanged=true;",
+      "after": "  report.verification=await selected.verifyFinal();unchanged();report.verification.requestCopiesUnchanged=true;report.inputsUnchanged=true;",
+      "count": 1
+    }
+  ],
+  "targetExecuted": false
+}

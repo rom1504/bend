@@ -158,3 +158,19 @@ and a native-produced successor that reproduces its own C. Freeze historical
 runtime dependencies before updating canonical assets; do not rewrite earlier
 receipts or weaken their checks. Refresh the installed JS release through a
 new checked snapshot and real self-hosting gates after final runtime integration.
+
+## Completion
+
+The native successor now reproduces its unpatched complete C exactly, independent
+JS B2 agrees, and all eight live/cache, two negative and four program execution
+gates pass. The public native launcher and restoration capsule are qualified.
+Canonical runtime/template/driver identities moved together; the installed JS B2
+was rebuilt and freshly self-qualified, with installed/relocated checks passing.
+See the [final report](../../implementation/phase90/README.md) for timings,
+production size, finite scope, failures and remaining performance work.
+
+The initial legacy release smoke exposed a sandbox-dependent Node pipe capture
+error. Identical bounded pipe/file diagnostics outside the sandbox passed with
+byte-identical binaries. The unchanged smoke was rerun at a fresh path with
+approved outside-sandbox execution and all resource guards retained. No production
+host workaround or compiler semantic change was needed; both outcomes are kept.

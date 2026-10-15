@@ -544,7 +544,7 @@ type N_Program is Data:
 type N_Emitted is Data:
   N_Emitted{+code: String, +value: String, +fresh: U32}
 
-# Module: src/back/native/emit.bend:132
+# Module: src/back/native/emit.bend:136
 type NE_Runtime is Data:
   NE_Text{+text: String}
   NE_Parts{+parts: List<&2, String>}
@@ -582,7 +582,7 @@ type NC_Target is Data:
 type NF_Worker is Data:
   NF_Worker{+name: String, +params: List<&2, N_Param>, +code: NC_Code, +deps: List<&2, String>, +shape: KTerm}
 
-# Module: src/back/native/flat.bend:308
+# Module: src/back/native/flat.bend:312
 type NF_Plan is Data:
   NF_Plan{+workers: List<&2, NF_Worker>, +ready: List<&2, String>, +observers: List<&2, String>}
 
@@ -678,6 +678,21 @@ type NO_Input is Data:
 # Module: src/back/native/observer-analysis.bend:11
 type NO_Analysis is Data:
   NO_Analysis{+body: KTerm, +fresh: U32, +fuel: U32, +error: String}
+
+# Symbolic branches reuse the remaining computation. Store its environment as
+# Data: native affine closures cannot be shared by ordinary reference counting.
+# The analysis context is constant and stays outside these continuation frames.
+
+# Module: src/back/native/observer-analysis.bend:17
+type NO_Cont is Data:
+  NO_KFinish{}
+  NO_KEvalArgs{+terms: List<&2, KTerm>, +env: List<&2, KTerm>, +stack: List<&2, String>, +acc: List<&2, KTerm>, +next: NO_Cont}
+  NO_KApplyArgs{+args: List<&2, KTerm>, +next: NO_Cont}
+  NO_KAppFunction{+arg: KTerm, +env: List<&2, KTerm>, +stack: List<&2, String>, +next: NO_Cont}
+  NO_KAppArgument{+fn: KTerm, +next: NO_Cont}
+  NO_KConstructor{+name: String, +next: NO_Cont}
+  NO_KLetBody{+body: KTerm, +id: U32, +env: List<&2, KTerm>, +stack: List<&2, String>, +next: NO_Cont}
+  NO_KApplyOne{+arg: KTerm, +next: NO_Cont}
 
 # Module: src/back/native/observer-plan.bend:3
 type NO_Plan is Data:
@@ -5053,7 +5068,7 @@ law jd_host_native_walk:
   for +flags: U32
   U32
 
-# Module: src/back/native/text.bend:62
+# Module: src/back/native/text.bend:74
 law nt_replace_go:
   for +s: String
   for +key: String
@@ -5096,11 +5111,32 @@ law nc_ctor_decode_step:
   for +original: String
   String
 
-# Module: src/back/native/tables.bend:162
+# Module: src/back/native/tables.bend:174
 law nb_fork_next:
   for +ss: List<&2, N_Segment>
   for +roots: List<&2, String>
   for +next: List<&2, String>
+  for +fuel: U32
+  List<&2, String>
+
+# Carry exact membership beside the ordered roots. Within-pass growth,
+# duplicates in the initial roots, finite fuel and count convergence remain.
+
+# Module: src/back/native/tables.bend:203
+law nb_fork_close_indexed:
+  for +ss: List<&2, N_Segment>
+  for +roots: List<&2, String>
+  for +seen: KDef
+  for +fuel: U32
+  List<&2, String>
+
+# Module: src/back/native/tables.bend:210
+law nb_fork_scan_indexed:
+  for +whole: List<&2, N_Segment>
+  for ss: List<&2, N_Segment>
+  for +roots: List<&2, String>
+  for +seen: KDef
+  for +before: U32
   for +fuel: U32
   List<&2, String>
 
@@ -5389,7 +5425,7 @@ law nc_context_has_cache:
   for annotated: List<&2, KDef>
   Bool
 
-# Module: src/back/native/static.bend:141
+# Module: src/back/native/static.bend:149
 law ns_static_term:
   for +cs: KDef
   for +t: KTerm
@@ -5413,14 +5449,14 @@ law no_wrapper_children:
   for +fuel: U32
   U32
 
-# Module: src/back/native/observer-analysis.bend:106
+# Module: src/back/native/observer-analysis.bend:131
 law noa_equal:
   for +value: KTerm
   for +origin: KTerm
   for +facts: List<&2, KTerm>
   Bool
 
-# Module: src/back/native/observer-analysis.bend:130
+# Module: src/back/native/observer-analysis.bend:155
 law noa_eval:
   for +ctx: NO_Context
   for +t: KTerm
@@ -5429,10 +5465,10 @@ law noa_eval:
   for +stack: List<&2, String>
   for +n: U32
   for +fuel: U32
-  for +k: NO_Input -> NO_Analysis
+  for +k: NO_Cont
   NO_Analysis
 
-# Module: src/back/native/observer-analysis.bend:141
+# Module: src/back/native/observer-analysis.bend:166
 law noa_apply:
   for +ctx: NO_Context
   for +fn: KTerm
@@ -5440,20 +5476,20 @@ law noa_apply:
   for +facts: List<&2, KTerm>
   for +n: U32
   for +fuel: U32
-  for +k: NO_Input -> NO_Analysis
+  for +k: NO_Cont
   NO_Analysis
 
-# Module: src/back/native/observer-analysis.bend:248
+# Module: src/back/native/observer-analysis.bend:273
 law noa_recur:
   for +ctx: NO_Context
   for +args: List<&2, KTerm>
   for +facts: List<&2, KTerm>
   for +n: U32
   for +fuel: U32
-  for +k: NO_Input -> NO_Analysis
+  for +k: NO_Cont
   NO_Analysis
 
-# Module: src/back/native/observer-analysis.bend:344
+# Module: src/back/native/observer-analysis.bend:369
 law noa_finish_value:
   for +ctx: NO_Context
   for +value: KTerm
@@ -5461,7 +5497,7 @@ law noa_finish_value:
   for +facts: List<&2, KTerm>
   KTerm
 
-# Module: src/back/native/observer-analysis.bend:405
+# Module: src/back/native/observer-analysis.bend:430
 law noa_virtual:
   for +t: KTerm
   for +env: List<&2, KTerm>
@@ -30836,43 +30872,58 @@ def nt_choose(-A: Type, +b: Bool, yes: Unit -> A, no: Unit -> A) -> A:
     case True{}: yes(Unit{})
     case False{}: no(Unit{})
 
-# Module: src/back/native/text.bend:8
+# Chunks arrive in reverse output order. Only each new chunk is traversed by
+# append; the growing suffix stays on its right.
+
+# Module: src/back/native/text.bend:10
 @unsafe
-def nt_join_go(xs: List<&2, String>, +sep: String, +acc: String, +first: Bool) -> String:
+def nt_text_finish(xs: List<&2, String>, acc: String) -> String:
   match xs:
     case Nil{}: acc
-    case Con{h, t}: nt_join_go(t, sep, acc ++ nt_choose(String, first, u => "", u => sep) ++ h, False{})
+    case Con{h, t}: nt_text_finish(t, h ++ acc)
 
-# Module: src/back/native/text.bend:14
+# Module: src/back/native/text.bend:16
+@unsafe
+def nt_join_chunks(xs: List<&2, String>, +sep: String, +first: Bool, acc: List<&2, String>) -> String:
+  match xs:
+    case Nil{}: nt_text_finish(acc, "")
+    case Con{h, t}: nt_join_chunks(t, sep, False{}, Con{h, Con{nt_choose(String, first, u => "", u => sep), acc}})
+
+# Module: src/back/native/text.bend:22
+@unsafe
+def nt_join_go(xs: List<&2, String>, +sep: String, +acc: String, +first: Bool) -> String:
+  acc ++ nt_join_chunks(xs, sep, first, Nil{})
+
+# Module: src/back/native/text.bend:26
 @unsafe
 def nt_join(xs: List<&2, String>, sep: String) -> String:
   nt_join_go(xs, sep, "", True{})
 
-# Module: src/back/native/text.bend:18
+# Module: src/back/native/text.bend:30
 @unsafe
 def nt_count_go(-A: Data, xs: List<&2, A>, +n: U32) -> U32:
   match xs:
     case Nil{}: n
     case Con{h, t}: nt_count_go(A, t, U32.inc(n))
 
-# Module: src/back/native/text.bend:24
+# Module: src/back/native/text.bend:36
 @unsafe
 def nt_count(-A: Data, xs: List<&2, A>) -> U32:
   nt_count_go(A, xs, 0)
 
-# Module: src/back/native/text.bend:28
+# Module: src/back/native/text.bend:40
 @unsafe
 def nt_reverse(-A: Data, xs: List<&2, A>, acc: List<&2, A>) -> List<&2, A>:
   match xs:
     case Nil{}: acc
     case Con{h, t}: nt_reverse(A, t, Con{h, acc})
 
-# Module: src/back/native/text.bend:34
+# Module: src/back/native/text.bend:46
 @unsafe
 def nt_append(-A: Data, xs: List<&2, A>, ys: List<&2, A>) -> List<&2, A>:
   nt_reverse(A, nt_reverse(A, xs, Nil{}), ys)
 
-# Module: src/back/native/text.bend:38
+# Module: src/back/native/text.bend:50
 @unsafe
 def nt_clean(s: String) -> String:
   match s:
@@ -30880,29 +30931,29 @@ def nt_clean(s: String) -> String:
     case SCon{+h, t}:
       nt_choose(String, Char.is_alpha(h) || Char.is_digit(h) || Char.is_eq(h, '_'), u => SCon{h, ""}, u => "_") ++ nt_clean(t)
 
-# Module: src/back/native/text.bend:45
+# Module: src/back/native/text.bend:57
 @unsafe
 def nt_fid(k: String) -> String:
   "FID_" ++ nc_ctor_codes(k)
 
-# Module: src/back/native/text.bend:49
+# Module: src/back/native/text.bend:61
 @unsafe
 def nt_cid(k: String) -> String:
   "CID_" ++ String.to_upper(nt_clean(k))
 
-# Module: src/back/native/text.bend:53
+# Module: src/back/native/text.bend:65
 @unsafe
 def nt_local(k: String, n: U32) -> String:
   nt_clean(k) ++ "_" ++ U32.show(n)
 
-# Module: src/back/native/text.bend:57
+# Module: src/back/native/text.bend:69
 @unsafe
 def nt_bool(b: Bool) -> U32:
   match b:
     case True{}: 1
     case False{}: 0
 
-# Module: src/back/native/text.bend:70
+# Module: src/back/native/text.bend:82
 @unsafe
 def nt_replace_step(
   +s: String,
@@ -30914,30 +30965,42 @@ def nt_replace_step(
     case SNil{}: acc
     case SCon{h, t}: nt_replace_go(t, key, value, acc ++ SCon{h, ""})
 
-# Module: src/back/native/text.bend:81
+# Module: src/back/native/text.bend:93
 @unsafe
 def nt_replace_go(s, key, value, acc):
   nt_choose(String, String.starts_with(s, key), u => acc ++ value ++ String.drop(s, String.length(key)), u => nt_replace_step(s, key, value, acc))
 
-# Module: src/back/native/text.bend:85
+# Module: src/back/native/text.bend:97
 @unsafe
 def nt_replace(s: String, key: String, value: String) -> String:
   nt_replace_go(s, key, value, "")
 
-# Module: src/back/native/text.bend:89
+# Module: src/back/native/text.bend:101
+@unsafe
+def nt_lines_rev(s: String, +acc: String) -> String:
+  match s:
+    case SNil{}: String.reverse(acc)
+    case SCon{+h, t}:
+      nt_lines_char(t, h, acc, Char.is_eq(h, '\n'))
+
+# Module: src/back/native/text.bend:108
+@unsafe
+def nt_lines_char(s: String, h: Char, acc: String, newline: Bool) -> String:
+  match newline:
+    case True{}: nt_lines_rev(s, SCon{' ', SCon{' ', SCon{' ', SCon{' ', SCon{'\n', acc}}}}})
+    case False{}: nt_lines_rev(s, SCon{h, acc})
+
+# Module: src/back/native/text.bend:114
 @unsafe
 def nt_lines_go(s: String, +acc: String) -> String:
-  match s:
-    case SNil{}: acc
-    case SCon{+h, t}:
-      nt_lines_go(t, acc ++ nt_choose(String, Char.is_eq(h, '\n'), u => "\n    ", u => SCon{h, ""}))
+  acc ++ nt_lines_rev(s, "")
 
-# Module: src/back/native/text.bend:96
+# Module: src/back/native/text.bend:118
 @unsafe
 def nt_lines(s: String) -> String:
   nt_lines_go(s, "")
 
-# Module: src/back/native/text.bend:100
+# Module: src/back/native/text.bend:122
 @unsafe
 def nt_indent(s: String) -> String:
   "    " ++ nt_lines(s)
@@ -31247,81 +31310,96 @@ def nb_bank(+ss: List<&2, N_Segment>) -> String:
 
 # Module: src/back/native/tables.bend:92
 @unsafe
-def nb_seg_ids_go(ss: List<&2, N_Segment>, +i: U32, +acc: String) -> String:
+def nb_seg_ids_chunks(ss: List<&2, N_Segment>, +i: U32, acc: List<&2, String>) -> String:
   match ss:
-    case Nil{}: acc ++ "#define FID_IO_EMIT " ++ U32.show(i) ++ "\n#define BEND_CLO_APPLY " ++ U32.show(U32.add(i, 1)) ++ "\n#define FID_EXIT " ++ U32.show(U32.add(i, 2)) ++ "\n#define FID_ENTER " ++ U32.show(U32.add(i, 3)) ++ "\n"
-    case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}: nb_seg_ids_go(t, U32.inc(i), acc ++ "#define " ++ nt_fid(k) ++ " " ++ U32.show(i) ++ "\n")
+    case Nil{}: nt_text_finish(acc, "#define FID_IO_EMIT " ++ U32.show(i) ++ "\n#define BEND_CLO_APPLY " ++ U32.show(U32.add(i, 1)) ++ "\n#define FID_EXIT " ++ U32.show(U32.add(i, 2)) ++ "\n#define FID_ENTER " ++ U32.show(U32.add(i, 3)) ++ "\n")
+    case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}: nb_seg_ids_chunks(t, U32.inc(i), Con{"#define " ++ nt_fid(k) ++ " " ++ U32.show(i) ++ "\n", acc})
 
 # Module: src/back/native/tables.bend:98
+@unsafe
+def nb_seg_ids_go(ss: List<&2, N_Segment>, +i: U32, +acc: String) -> String:
+  nb_seg_ids_chunks(ss, i, Con{acc, Nil{}})
+
+# Module: src/back/native/tables.bend:102
 @unsafe
 def nb_seg_ids(ss: List<&2, N_Segment>, i: U32) -> String:
   nb_seg_ids_go(ss, i, "")
 
-# Module: src/back/native/tables.bend:102
+# Module: src/back/native/tables.bend:106
 @unsafe
 def nb_ctr_ids(+cs: List<&2, N_Constructor>, +i: U32) -> String:
   match cs:
     case Nil{}: ""
     case Con{N_Constructor{+k, +a, +h}, +t}: "#define " ++ nt_cid(k) ++ " " ++ U32.show(i) ++ "\n" ++ nb_ctr_ids(t, U32.inc(i))
 
-# Module: src/back/native/tables.bend:108
+# Module: src/back/native/tables.bend:112
 @unsafe
 def nb_frame_results(+f: N_Frame, +n: U32) -> U32:
   match f:
     case N_Direct{}: 0
     case N_Frame{+pop, +at}: U32.sub(n, nt_count(String, at))
 
-# Module: src/back/native/tables.bend:114
+# Module: src/back/native/tables.bend:118
+@unsafe
+def nb_arities_chunks(ss: List<&2, N_Segment>, acc: List<&2, String>) -> String:
+  match ss:
+    case Nil{}: nt_text_finish(acc, "1, 2")
+    case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}: nb_arities_chunks(t, Con{U32.show(nt_count(N_Param, ps)) ++ ", ", acc})
+
+# Module: src/back/native/tables.bend:124
 @unsafe
 def nb_arities_go(ss: List<&2, N_Segment>, +acc: String) -> String:
-  match ss:
-    case Nil{}: acc ++ "1, 2"
-    case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}: nb_arities_go(t, acc ++ U32.show(nt_count(N_Param, ps)) ++ ", ")
+  nb_arities_chunks(ss, Con{acc, Nil{}})
 
-# Module: src/back/native/tables.bend:120
+# Module: src/back/native/tables.bend:128
 @unsafe
 def nb_arities(ss: List<&2, N_Segment>) -> String:
   nb_arities_go(ss, "")
 
-# Module: src/back/native/tables.bend:124
+# Module: src/back/native/tables.bend:132
+@unsafe
+def nb_result_words_chunks(ss: List<&2, N_Segment>, acc: List<&2, String>) -> String:
+  match ss:
+    case Nil{}: nt_text_finish(acc, "0, 0")
+    case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}: nb_result_words_chunks(t, Con{U32.show(nb_frame_results(f, nt_count(N_Param, ps))) ++ ", ", acc})
+
+# Module: src/back/native/tables.bend:138
 @unsafe
 def nb_result_words_go(ss: List<&2, N_Segment>, +acc: String) -> String:
-  match ss:
-    case Nil{}: acc ++ "0, 0"
-    case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}: nb_result_words_go(t, acc ++ U32.show(nb_frame_results(f, nt_count(N_Param, ps))) ++ ", ")
+  nb_result_words_chunks(ss, Con{acc, Nil{}})
 
-# Module: src/back/native/tables.bend:130
+# Module: src/back/native/tables.bend:142
 @unsafe
 def nb_result_words(ss: List<&2, N_Segment>) -> String:
   nb_result_words_go(ss, "")
 
-# Module: src/back/native/tables.bend:134
+# Module: src/back/native/tables.bend:146
 @unsafe
 def nb_contains(+xs: List<&2, String>, +k: String) -> Bool:
   match xs:
     case Nil{}: False{}
     case Con{+h, +t}: String.eq(h, k) || nb_contains(t, k)
 
-# Module: src/back/native/tables.bend:140
+# Module: src/back/native/tables.bend:152
 @unsafe
 def nb_fork_roots_go(ss: List<&2, N_Segment>, +acc: List<&2, String>) -> List<&2, String>:
   match ss:
     case Nil{}: acc
     case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}: nb_fork_roots_go(t, nt_choose(List<&2, String>, fork, u => Con{k, acc}, u => acc))
 
-# Module: src/back/native/tables.bend:146
+# Module: src/back/native/tables.bend:158
 @unsafe
 def nb_fork_roots(ss: List<&2, N_Segment>) -> List<&2, String>:
   nb_fork_roots_go(ss, Nil{})
 
-# Module: src/back/native/tables.bend:150
+# Module: src/back/native/tables.bend:162
 @unsafe
 def nb_reaches(+xs: List<&2, String>, +roots: List<&2, String>) -> Bool:
   match xs:
     case Nil{}: False{}
     case Con{+h, +t}: nb_contains(roots, h) || nb_reaches(t, roots)
 
-# Module: src/back/native/tables.bend:156
+# Module: src/back/native/tables.bend:168
 @unsafe
 def nb_fork_step(+ss: List<&2, N_Segment>, +roots: List<&2, String>) -> List<&2, String>:
   match ss:
@@ -31329,58 +31407,118 @@ def nb_fork_step(+ss: List<&2, N_Segment>, +roots: List<&2, String>) -> List<&2,
     case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, +t}:
       nb_fork_step(t, nt_choose(List<&2, String>, fork, u => roots, u => nt_choose(List<&2, String>, Bool.not(nb_contains(roots, k)) && nb_reaches(refs, roots), u => Con{k, roots}, u => roots)))
 
-# Module: src/back/native/tables.bend:170
+# Module: src/back/native/tables.bend:184
 @unsafe
-def nb_fork_close(+ss: List<&2, N_Segment>, +roots: List<&2, String>, +fuel: U32) -> List<&2, String>:
+def nb_fork_member(+seen: KDef, +name: String) -> Bool:
+  String.eq(dk(index_find(seen, name, index_hash(name, 2166136261), 32)), "NativeFork")
+
+# Module: src/back/native/tables.bend:188
+@unsafe
+def nb_fork_mark(+seen: KDef, +name: String) -> KDef:
+  index_set(seen, KDef{name, "NativeFork", 0, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, index_hash(name, 2166136261), 32)
+
+# Module: src/back/native/tables.bend:192
+@unsafe
+def nb_fork_index(roots: List<&2, String>, seen: KDef) -> KDef:
+  match roots:
+    case Nil{}: seen
+    case Con{name, rest}: nb_fork_index(rest, nb_fork_mark(seen, name))
+
+# Module: src/back/native/tables.bend:198
+@unsafe
+def nb_fork_reaches_indexed(refs: List<&2, String>, +seen: KDef) -> Bool:
+  match refs:
+    case Nil{}: False{}
+    case Con{name, rest}: nb_fork_member(seen, name) || nb_fork_reaches_indexed(rest, seen)
+
+# Module: src/back/native/tables.bend:220
+@unsafe
+def nb_fork_close_indexed(ss, roots, seen, fuel):
   match fuel:
     case 0: roots
-    case _: nb_fork_next(ss, roots, nb_fork_step(ss, roots), U32.sub(fuel, 1))
+    case _: nb_fork_scan_indexed(ss, ss, roots, seen, nt_count(String, roots), U32.sub(fuel, 1))
 
-# Module: src/back/native/tables.bend:176
+# Module: src/back/native/tables.bend:226
+@unsafe
+def nb_fork_scan_indexed(whole, ss, roots, seen, before, fuel):
+  match ss:
+    case Nil{}:
+      nt_choose(List<&2, String>, U32.is_eq(before, nt_count(String, roots)),
+        u => roots, u => nb_fork_close_indexed(whole, roots, seen, fuel))
+    case Con{N_Segment{+k, ps, r, f, b, +refs, h, s, +fork, bang}, +rest}:
+      nt_choose(List<&2, String>, Bool.not(fork) && Bool.not(nb_fork_member(seen, k)) && nb_fork_reaches_indexed(refs, seen),
+        u => nb_fork_scan_indexed(whole, rest, Con{k, roots}, nb_fork_mark(seen, k), before, fuel),
+        u => nb_fork_scan_indexed(whole, rest, roots, seen, before, fuel))
+
+# Module: src/back/native/tables.bend:238
+@unsafe
+def nb_flags_indexed(ss: List<&2, N_Segment>, +seen: KDef, acc: List<&2, String>) -> String:
+  match ss:
+    case Nil{}: nt_text_finish(acc, "2, 0")
+    case Con{N_Segment{+k, ps, r, f, b, refs, h, s, +fork, +bang}, rest}:
+      nb_flags_indexed(rest, seen, Con{U32.show(U32.add(nt_bool(bang), U32.mul(2, nt_bool(nt_choose(Bool, fork, u => False{}, u => Bool.not(nb_fork_member(seen, k))))))) ++ ", ", acc})
+
+# Preserve zero-fuel and empty-segment returns without constructing any index.
+
+# Module: src/back/native/tables.bend:246
+@unsafe
+def nb_fork_close(+ss: List<&2, N_Segment>, +roots: List<&2, String>, +fuel: U32) -> List<&2, String>:
+  nt_choose(List<&2, String>, U32.is_eq(fuel, 0) || List.is_empty(&2, N_Segment, ss),
+    u => roots, u => nb_fork_close_indexed(ss, roots, nb_fork_index(roots, missing()), fuel))
+
+# Module: src/back/native/tables.bend:251
 @unsafe
 def nb_fork_next(ss, roots, next, fuel):
   nt_choose(List<&2, String>, U32.is_eq(nt_count(String, roots), nt_count(String, next)), u => next, u => nb_fork_close(ss, next, fuel))
 
-# Module: src/back/native/tables.bend:180
+# Module: src/back/native/tables.bend:255
+@unsafe
+def nb_flags_chunks(+ss: List<&2, N_Segment>, +forks: List<&2, String>, +acc: List<&2, String>) -> String:
+  nt_choose(String, List.is_empty(&2, N_Segment, ss),
+    u => nt_text_finish(acc, "2, 0"), u => nb_flags_indexed(ss, nb_fork_index(forks, missing()), acc))
+
+# Module: src/back/native/tables.bend:260
 @unsafe
 def nb_flags_go(ss: List<&2, N_Segment>, +forks: List<&2, String>, +acc: String) -> String:
-  match ss:
-    case Nil{}: acc ++ "2, 0"
-    case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}:
-      nb_flags_go(t, forks, acc ++ U32.show(U32.add(nt_bool(bang), U32.mul(2, nt_bool(nt_choose(Bool, fork, u => False{}, u => Bool.not(nb_contains(forks, k))))))) ++ ", ")
+  nb_flags_chunks(ss, forks, Con{acc, Nil{}})
 
-# Module: src/back/native/tables.bend:187
+# Module: src/back/native/tables.bend:264
 @unsafe
 def nb_flags(ss: List<&2, N_Segment>, forks: List<&2, String>) -> String:
   nb_flags_go(ss, forks, "")
 
-# Module: src/back/native/tables.bend:191
+# Module: src/back/native/tables.bend:268
 @unsafe
 def nb_ctr_arity(+cs: List<&2, N_Constructor>) -> String:
   match cs:
     case Nil{}: "0"
     case Con{N_Constructor{+k, +a, +h}, +t}: U32.show(a) ++ ", " ++ nb_ctr_arity(t)
 
-# Module: src/back/native/tables.bend:197
+# Module: src/back/native/tables.bend:274
 @unsafe
 def nb_ctr_hot(+cs: List<&2, N_Constructor>) -> String:
   match cs:
     case Nil{}: "0"
     case Con{N_Constructor{+k, +a, +h}, +t}: U32.show(nt_bool(h)) ++ ", " ++ nb_ctr_hot(t)
 
-# Module: src/back/native/tables.bend:203
+# Module: src/back/native/tables.bend:280
+@unsafe
+def nb_dispatch_chunks(ss: List<&2, N_Segment>, acc: List<&2, String>) -> String:
+  match ss:
+    case Nil{}: nt_text_finish(acc, "WL_X(FID_IO_EMIT) WL_X(BEND_CLO_APPLY) WL_X(FID_EXIT)")
+    case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}: nb_dispatch_chunks(t, Con{"WL_X(" ++ nt_fid(k) ++ ") ", acc})
+
+# Module: src/back/native/tables.bend:286
 @unsafe
 def nb_dispatch_go(ss: List<&2, N_Segment>, +acc: String) -> String:
-  match ss:
-    case Nil{}: acc ++ "WL_X(FID_IO_EMIT) WL_X(BEND_CLO_APPLY) WL_X(FID_EXIT)"
-    case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}: nb_dispatch_go(t, acc ++ "WL_X(" ++ nt_fid(k) ++ ") ")
+  nb_dispatch_chunks(ss, Con{acc, Nil{}})
 
-# Module: src/back/native/tables.bend:209
+# Module: src/back/native/tables.bend:290
 @unsafe
 def nb_dispatch(ss: List<&2, N_Segment>) -> String:
   nb_dispatch_go(ss, "")
 
-# Module: src/back/native/tables.bend:213
+# Module: src/back/native/tables.bend:294
 @unsafe
 def nb_emit(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, +image_size: U32, +pure: Bool) -> String:
   nb_seg_ids(ss, 0) ++ nb_ctr_ids(cs, 0) ++ nb_bank(ss)
@@ -31523,23 +31661,28 @@ def ne_segment(+seg: N_Segment) -> String:
       nt_choose(String, host, u => "#if !DEVICE\n", u => "")
         ++ "  WL_CASE(" ++ nt_fid(k) ++ ")\n  {\n" ++ ne_take(ps, f) ++ "    WL_OPEN\n"
         ++ nt_choose(String, spin, u => "    WL_SPIN\n", u => "")
-        ++ nt_indent(body) ++ "\n"
+        ++ body ++ "\n"
         ++ nt_choose(String, spin, u => "    WL_SPUN\n", u => "") ++ "  }}\n"
         ++ nt_choose(String, host, u => "#endif\n", u => "")
 
 # Module: src/back/native/emit.bend:117
 @unsafe
-def ne_segments_go(ss: List<&2, N_Segment>, acc: String) -> String:
+def ne_segments_chunks(ss: List<&2, N_Segment>, acc: List<&2, String>) -> String:
   match ss:
-    case Nil{}: acc
-    case Con{h, t}: ne_segments_go(t, acc ++ ne_segment(h) ++ "\n")
+    case Nil{}: nt_text_finish(acc, "")
+    case Con{h, t}: ne_segments_chunks(t, Con{"\n", Con{ne_segment(h), acc}})
 
 # Module: src/back/native/emit.bend:123
+@unsafe
+def ne_segments_go(ss: List<&2, N_Segment>, acc: String) -> String:
+  acc ++ ne_segments_chunks(ss, Nil{})
+
+# Module: src/back/native/emit.bend:127
 @unsafe
 def ne_segments(+ss: List<&2, N_Segment>) -> String:
   ne_segments_go(ss, "")
 
-# Module: src/back/native/emit.bend:127
+# Module: src/back/native/emit.bend:131
 @unsafe
 def ne_fill(+src: String, +mark: String, +text: String) -> String:
   nt_replace(src, mark, mark ++ "\n\n" ++ text)
@@ -31547,27 +31690,27 @@ def ne_fill(+src: String, +mark: String, +text: String) -> String:
 # A private canonical artifact is split by this Bend compiler, then transported
 # without rescanning. Raw/custom runtime text retains the original scanner.
 
-# Module: src/back/native/emit.bend:137
+# Module: src/back/native/emit.bend:141
 @unsafe
 def ne_runtime_prepare(+src: String) -> NE_Runtime:
   +marks = ne_template_marks()
   ne_runtime_prepared(src, ne_template_scan(src, marks, marks, "", Nil{}))
 
-# Module: src/back/native/emit.bend:142
+# Module: src/back/native/emit.bend:146
 @unsafe
 def ne_runtime_prepared(src: String, parts: Maybe<&2, List<&2, String>>) -> NE_Runtime:
   match parts:
     case None{}: NE_Text{src}
     case Some{pieces}: NE_Parts{pieces}
 
-# Module: src/back/native/emit.bend:148
+# Module: src/back/native/emit.bend:152
 @unsafe
 def ne_runtime_prepend(runtime: NE_Runtime, prefix: String) -> NE_Runtime:
   match runtime:
     case NE_Text{text}: NE_Text{prefix ++ text}
     case NE_Parts{parts}: ne_runtime_prefix(parts, prefix)
 
-# Module: src/back/native/emit.bend:154
+# Module: src/back/native/emit.bend:158
 @unsafe
 def ne_runtime_prefix(+parts: List<&2, String>, +prefix: String) -> NE_Runtime:
   match parts:
@@ -31577,7 +31720,7 @@ def ne_runtime_prefix(+parts: List<&2, String>, +prefix: String) -> NE_Runtime:
         u => NE_Parts{Con{prefix ++ head, rest}},
         u => NE_Text{prefix ++ nt_join(parts, "")})
 
-# Module: src/back/native/emit.bend:163
+# Module: src/back/native/emit.bend:167
 @unsafe
 def ne_runtime_texts(runtime: NE_Runtime, +texts: List<&2, String>) -> String:
   match runtime:
@@ -31589,26 +31732,26 @@ def ne_runtime_texts(runtime: NE_Runtime, +texts: List<&2, String>) -> String:
 
 # Split only original runtime text. Suspicious input retains sequential fill.
 
-# Module: src/back/native/emit.bend:173
+# Module: src/back/native/emit.bend:177
 @unsafe
 def ne_template_marks() -> List<&2, String>:
   ["// Tables\n// ======", "// Spins\n// =====", "// Segments\n// ========", "// Requests\n// ========"]
 
-# Module: src/back/native/emit.bend:177
+# Module: src/back/native/emit.bend:181
 @unsafe
 def ne_template_mark(+src: String, marks: List<&2, String>) -> String:
   match marks:
     case Nil{}: ""
     case Con{+h, rest}: nt_choose(String, String.starts_with(src, h), u => h, u => ne_template_mark(src, rest))
 
-# Module: src/back/native/emit.bend:183
+# Module: src/back/native/emit.bend:187
 @unsafe
 def ne_template_scan(+src: String, +marks: List<&2, String>, +todo: List<&2, String>, +acc: String, +parts: List<&2, String>) -> Maybe<&2, List<&2, String>>:
   match todo:
     case Nil{}: Some{nt_reverse(String, Con{acc ++ src, parts}, Nil{})}
     case Con{+want, +more}: ne_template_step(src, marks, want, more, acc, parts)
 
-# Module: src/back/native/emit.bend:189
+# Module: src/back/native/emit.bend:193
 @unsafe
 def ne_template_step(+src: String, +marks: List<&2, String>, +want: String, +more: List<&2, String>, +acc: String, +parts: List<&2, String>) -> Maybe<&2, List<&2, String>>:
   match src:
@@ -31619,35 +31762,35 @@ def ne_template_step(+src: String, +marks: List<&2, String>, +want: String, +mor
         u => ne_template_step(rest, marks, want, more, acc ++ SCon{h, ""}, parts),
         u => ne_template_take(src, marks, want, more, acc, parts, mark))
 
-# Module: src/back/native/emit.bend:199
+# Module: src/back/native/emit.bend:203
 @unsafe
 def ne_template_take(+src: String, +marks: List<&2, String>, +want: String, +more: List<&2, String>, +acc: String, +parts: List<&2, String>, +mark: String) -> Maybe<&2, List<&2, String>>:
   +rest = String.drop(src, String.length(mark))
   nt_choose(Maybe<&2, List<&2, String>>, String.eq(mark, want) && String.starts_with(rest, "\n"),
     u => ne_template_scan(rest, marks, more, "", Con{acc ++ mark, parts}), u => None{})
 
-# Module: src/back/native/emit.bend:205
+# Module: src/back/native/emit.bend:209
 @unsafe
 def ne_template_plain(src: String, +slash: Bool) -> Bool:
   match src:
     case SNil{}: True{}
     case SCon{+h, rest}: nt_choose(Bool, slash && Char.is_eq(h, '/'), u => False{}, u => ne_template_plain(rest, Char.is_eq(h, '/')))
 
-# Module: src/back/native/emit.bend:211
+# Module: src/back/native/emit.bend:215
 @unsafe
 def ne_template_payloads(texts: List<&2, String>) -> Bool:
   match texts:
     case Nil{}: True{}
     case Con{+h, +rest}: nt_choose(Bool, List.is_empty(&2, String, rest), u => True{}, u => nt_choose(Bool, ne_template_plain(h, False{}), v => ne_template_payloads(rest), v => False{}))
 
-# Module: src/back/native/emit.bend:217
+# Module: src/back/native/emit.bend:221
 @unsafe
 def ne_template_slow(src: String, marks: List<&2, String>, texts: List<&2, String>) -> String:
   match marks, texts:
     case Con{mark, more}, Con{text, rest}: ne_template_slow(ne_fill(src, mark, text), more, rest)
     case _, _: src
 
-# Module: src/back/native/emit.bend:223
+# Module: src/back/native/emit.bend:227
 @unsafe
 def ne_template_join(parts: List<&2, String>, texts: List<&2, String>) -> String:
   match parts, texts:
@@ -31655,25 +31798,25 @@ def ne_template_join(parts: List<&2, String>, texts: List<&2, String>) -> String
     case Con{h, Nil{}}, Nil{}: h
     case _, _: ""
 
-# Module: src/back/native/emit.bend:230
+# Module: src/back/native/emit.bend:234
 @unsafe
 def ne_template_finish(+src: String, +marks: List<&2, String>, +texts: List<&2, String>, parts: Maybe<&2, List<&2, String>>) -> String:
   match parts:
     case None{}: ne_template_slow(src, marks, texts)
     case Some{+pieces}: nt_choose(String, ne_template_payloads(texts), u => ne_template_join(pieces, texts), u => ne_template_slow(src, marks, texts))
 
-# Module: src/back/native/emit.bend:236
+# Module: src/back/native/emit.bend:240
 @unsafe
 def ne_program_texts(+src: String, +texts: List<&2, String>) -> String:
   +marks = ne_template_marks()
   ne_template_finish(src, marks, texts, ne_template_scan(src, marks, marks, "", Nil{}))
 
-# Module: src/back/native/emit.bend:241
+# Module: src/back/native/emit.bend:245
 @unsafe
 def ne_program(src: String, p: N_Program) -> String:
   ne_program_runtime(NE_Text{src}, p)
 
-# Module: src/back/native/emit.bend:245
+# Module: src/back/native/emit.bend:249
 @unsafe
 def ne_program_runtime(+runtime: NE_Runtime, +p: N_Program) -> String:
   match p:
@@ -33163,15 +33306,20 @@ def nf_segment_args(params: List<&2, N_Param>) -> List<&2, String>:
 # Module: src/back/native/flat.bend:255
 @unsafe
 def nf_wrap_segments(segments: List<&2, N_Segment>, +index: List<&2, KDef>) -> List<&2, N_Segment>:
+  nf_wrap_segments_rev(segments, index, Nil{})
+
+# Module: src/back/native/flat.bend:259
+@unsafe
+def nf_wrap_segments_rev(segments: List<&2, N_Segment>, +index: List<&2, KDef>, wrapped: List<&2, N_Segment>) -> List<&2, N_Segment>:
   match segments:
-    case Nil{}: Nil{}
+    case Nil{}: nt_reverse(N_Segment, wrapped, Nil{})
     case Con{N_Segment{+name, +params, result, frame, +body, refs, host, spin, fork, bang}, rest}:
       +d = lookup(index, name)
-      +wrapped = nt_choose(String, String.eq(dk(d), "NFWorker") && U32.is_eq(da(d), nt_count(N_Param, params)),
+      +text = nt_choose(String, String.eq(dk(d), "NFWorker") && U32.is_eq(da(d), nt_count(N_Param, params)),
         u => nq_wrap_segment(d, params, body), u => body)
-      Con{N_Segment{name, params, result, frame, wrapped, refs, host, spin, fork, bang}, nf_wrap_segments(rest, index)}
+      nf_wrap_segments_rev(rest, index, Con{N_Segment{name, params, result, frame, text, refs, host, spin, fork, bang}, wrapped})
 
-# Module: src/back/native/flat.bend:265
+# Module: src/back/native/flat.bend:269
 @unsafe
 def nf_finish_ready(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: NE_Runtime, requests: String, pure: Bool, show: NC_Show, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +image: List<&2, String>, +observer_names: List<&2, String>, +observers: Bool) -> NC_Result:
   +ordinary = nf_wrap_segments(ss, book_cached(nf_adapter_defs(workers, ready), 0))
@@ -33182,7 +33330,7 @@ def nf_finish_ready(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&
 # admitted code and retry ordinary candidates against only admitted signatures.
 # Constructor shape facts remain available; no demand or stack rule is relaxed.
 
-# Module: src/back/native/flat.bend:274
+# Module: src/back/native/flat.bend:278
 @unsafe
 def nf_ready_signatures(ds: List<&2, KDef>, +ready: List<&2, String>) -> List<&2, KDef>:
   match ds:
@@ -33194,7 +33342,7 @@ def nf_ready_signatures(ds: List<&2, KDef>, +ready: List<&2, String>) -> List<&2
 # A retry only changes withdrawn product signatures. Constructor facts and all
 # other lowering inputs remain identical; avoid rebuilding unaffected workers.
 
-# Module: src/back/native/flat.bend:284
+# Module: src/back/native/flat.bend:288
 @unsafe
 def nf_removed_signatures(ds: List<&2, KDef>, +ready: List<&2, String>) -> List<&2, String>:
   match ds:
@@ -33203,14 +33351,14 @@ def nf_removed_signatures(ds: List<&2, KDef>, +ready: List<&2, String>) -> List<
       nt_choose(List<&2, String>, String.eq(tg(dv(d)), "NQSig") && Bool.not(nb_contains(ready, nm(dv(d)))),
         u => Con{dn(d), nf_removed_signatures(rest, ready)}, u => nf_removed_signatures(rest, ready))
 
-# Module: src/back/native/flat.bend:292
+# Module: src/back/native/flat.bend:296
 @unsafe
 def nf_retry_refs(refs: List<&2, String>, +removed: List<&2, String>) -> Bool:
   match refs:
     case Nil{}: False{}
     case Con{name, rest}: nb_contains(removed, name) || nf_retry_refs(rest, removed)
 
-# Module: src/back/native/flat.bend:298
+# Module: src/back/native/flat.bend:302
 @unsafe
 def nf_retry(+book: List<&2, KDef>, workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>, +removed: List<&2, String>) -> List<&2, NF_Worker>:
   match workers:
@@ -33223,25 +33371,25 @@ def nf_retry(+book: List<&2, KDef>, workers: List<&2, NF_Worker>, +ready: List<&
 # Admission precedes scheduler lowering. The same workers and retry rules feed
 # the final renderer; the plan only allows proven redundant work to be skipped.
 
-# Module: src/back/native/flat.bend:312
+# Module: src/back/native/flat.bend:316
 @unsafe
 def nf_plan_retry(+book: List<&2, KDef>, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +signatures: List<&2, KDef>, +observers: List<&2, String>) -> NF_Plan:
   +retried = nf_retry(book, workers, ready, book_cached(nf_ready_signatures(signatures, ready), 0), nf_removed_signatures(signatures, ready))
   NF_Plan{retried, nf_admit(book, retried, ready, nt_count(NF_Worker, retried)), observers}
 
-# Module: src/back/native/flat.bend:317
+# Module: src/back/native/flat.bend:321
 @unsafe
 def nf_plan_workers(+book: List<&2, KDef>, +workers: List<&2, NF_Worker>, +signatures: List<&2, KDef>, +observers: List<&2, String>) -> NF_Plan:
   nf_plan_retry(book, workers, nf_admit(book, workers, Nil{}, nt_count(NF_Worker, workers)), signatures, observers)
 
-# Module: src/back/native/flat.bend:321
+# Module: src/back/native/flat.bend:325
 @unsafe
 def nf_plan(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +observers: Bool) -> NF_Plan:
   +signatures = book_cached(nq_signatures(book, names), 0)
   +observer_names = nt_choose(List<&2, String>, observers, u => no_candidate_names(book, names, bangs), u => Nil{})
   nf_plan_workers(book, List.append(&2, NF_Worker, nf_candidates(book, names, bangs, signatures), nq_candidates_mode(book, names, bangs, signatures, observers)), signatures, observer_names)
 
-# Module: src/back/native/flat.bend:327
+# Module: src/back/native/flat.bend:331
 @unsafe
 def nf_finish_plan(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: NE_Runtime, requests: String, pure: Bool, show: NC_Show, +observers: Bool, plan: NF_Plan) -> NC_Result:
   match plan:
@@ -33252,7 +33400,7 @@ def nf_finish_plan(+book: List<&2, KDef>, +ss: List<&2, N_Segment>, +cs: List<&2
 # No bang roots means the runtime cannot offload. Keep all device fallbacks for
 # any program with bangs, and keep raw API emission on its original lowering.
 
-# Module: src/back/native/flat.bend:336
+# Module: src/back/native/flat.bend:340
 @unsafe
 def nf_host_defs(workers: List<&2, NF_Worker>, +ready: List<&2, String>, +escapes: KDef) -> List<&2, KDef>:
   match workers:
@@ -33262,39 +33410,39 @@ def nf_host_defs(workers: List<&2, NF_Worker>, +ready: List<&2, String>, +escape
       nt_choose(List<&2, KDef>, U32.is_gt(arity, 0) && Bool.not(String.starts_with(name, "$product.")) && nb_contains(ready, name),
         u => Con{KDef{name, "NativeHostWorker", arity, nt_bool(String.eq(dk(index_find(escapes, name, index_hash(name, 2166136261), 32)), "Absent")), atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, nf_host_defs(rest, ready, escapes)}, u => nf_host_defs(rest, ready, escapes))
 
-# Module: src/back/native/flat.bend:345
+# Module: src/back/native/flat.bend:349
 @unsafe
 def nf_host_context(+book: List<&2, KDef>, +permission: Bool, plan: NF_Plan) -> List<&2, KDef>:
   match plan:
     case NF_Plan{workers, ready, observers}:
       nt_choose(List<&2, KDef>, permission, u => nf_host_calls(book, workers, ready, nc_live_names(book, ["main"], Nil{})), u => book)
 
-# Module: src/back/native/flat.bend:351
+# Module: src/back/native/flat.bend:355
 @unsafe
 def nf_host_attach(+book: List<&2, KDef>, +index: KDef) -> List<&2, KDef>:
   match book:
     case Nil{}: book
     case Con{cache, rest}: Con{KDef{dn(cache), dk(cache), da(cache), dx(cache), dt(cache), dv(cache), [index_first(dc(cache)), ns_context(book), KDef{"$native.host.plan", "NativeHostPlan", 0, 0, atom("Absent"), atom("Absent"), [index], False{}, False{}}], db(cache), du(cache)}, rest}
 
-# Module: src/back/native/flat.bend:357
+# Module: src/back/native/flat.bend:361
 @unsafe
 def nf_host_payload(children: List<&2, KDef>) -> KDef:
   match children:
     case Con{source, Con{statics, Con{+plan, rest}}}: nt_choose(KDef, String.eq(dk(plan), "NativeHostPlan") && String.eq(dn(plan), "$native.host.plan"), u => index_first(dc(plan)), u => missing())
     case _: missing()
 
-# Module: src/back/native/flat.bend:363
+# Module: src/back/native/flat.bend:367
 @unsafe
 def nf_host_selected(+book: List<&2, KDef>, +name: String, +arity: U32) -> Bool:
   +d = index_find(nf_host_payload(dc(index_first(book))), name, index_hash(name, 2166136261), 32)
   U32.is_gt(arity, 0) && String.eq(dk(d), "NativeHostWorker") && U32.is_eq(da(d), arity)
 
-# Module: src/back/native/flat.bend:368
+# Module: src/back/native/flat.bend:372
 @unsafe
 def nf_escape_add(+name: String, +index: KDef) -> KDef:
   index_set(index, nv_id(name), index_hash(name, 2166136261), 32)
 
-# Module: src/back/native/flat.bend:373
+# Module: src/back/native/flat.bend:377
 @unsafe
 def nf_escape_terms(+book: List<&2, KDef>, ts: List<&2, KTerm>, +index: KDef) -> KDef:
   match ts:
@@ -33306,7 +33454,7 @@ def nf_escape_terms(+book: List<&2, KDef>, ts: List<&2, KTerm>, +index: KDef) ->
           v => nf_escape_terms(book, rest, nf_escape_add(nm(t), index)),
           v => nf_escape_terms(book, nt_append(KTerm, ks(t), rest), index)))
 
-# Module: src/back/native/flat.bend:385
+# Module: src/back/native/flat.bend:389
 @unsafe
 def nf_escape_app(+book: List<&2, KDef>, +head: KTerm, +args: List<&2, KTerm>, +rest: List<&2, KTerm>, +index: KDef) -> KDef:
   nt_choose(KDef, String.eq(tg(head), "Ref"),
@@ -33314,26 +33462,26 @@ def nf_escape_app(+book: List<&2, KDef>, +head: KTerm, +args: List<&2, KTerm>, +
       nt_choose(KDef, Bool.not(U32.is_eq(qt(head), 3)) && U32.is_eq(terms_len(args), nd_arity(book, nm(head))), v => index, v => nf_escape_add(nm(head), index))),
     u => nf_escape_terms(book, Con{head, nt_append(KTerm, args, rest)}, index))
 
-# Module: src/back/native/flat.bend:393
+# Module: src/back/native/flat.bend:397
 @unsafe
 def nf_escape_names(+book: List<&2, KDef>, names: List<&2, String>, +index: KDef) -> KDef:
   match names:
     case Nil{}: index
     case Con{name, rest}: nf_escape_names(book, rest, nf_escape_terms(book, [nc_definition(book, lookup(book, name), 0)], index))
 
-# Module: src/back/native/flat.bend:400
+# Module: src/back/native/flat.bend:404
 @unsafe
 def nf_host_no_factory(+book: List<&2, KDef>, +name: String, +arity: U32) -> Bool:
   +d = index_find(nf_host_payload(dc(index_first(book))), name, index_hash(name, 2166136261), 32)
   U32.is_gt(arity, 0) && (String.eq(dk(d), "NativeHostWorker") || String.eq(dk(d), "NativeCallOnly")) && U32.is_eq(da(d), arity) && U32.is_eq(dx(d), 1)
 
-# Module: src/back/native/flat.bend:406
+# Module: src/back/native/flat.bend:410
 @unsafe
 def nf_host_calls(+book: List<&2, KDef>, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +names: List<&2, String>) -> List<&2, KDef>:
   +escapes = nf_escape_names(book, names, missing())
   nf_host_attach(book, index_build(nt_append(KDef, nf_host_defs(workers, ready, escapes), nf_call_only_defs(book, names, escapes))))
 
-# Module: src/back/native/flat.bend:412
+# Module: src/back/native/flat.bend:416
 @unsafe
 def nf_call_only_defs(+book: List<&2, KDef>, names: List<&2, String>, +escapes: KDef) -> List<&2, KDef>:
   match names:
@@ -35617,34 +35765,44 @@ def ns_image(+book: List<&2, KDef>) -> List<&2, String>:
 # Module: src/back/native/static.bend:48
 @unsafe
 def ns_image_words(ts: List<&2, KTerm>) -> List<&2, String>:
-  match ts:
-    case Nil{}: Nil{}
-    case Con{h, rest}: Con{nm(h), ns_image_words(rest)}
+  ns_image_words_rev(ts, Nil{})
 
-# Module: src/back/native/static.bend:54
+# Module: src/back/native/static.bend:52
+@unsafe
+def ns_image_words_rev(ts: List<&2, KTerm>, words: List<&2, String>) -> List<&2, String>:
+  match ts:
+    case Nil{}: nt_reverse(String, words, Nil{})
+    case Con{h, rest}: ns_image_words_rev(rest, Con{nm(h), words})
+
+# Module: src/back/native/static.bend:58
 @unsafe
 def ns_image_terms(ws: List<&2, String>) -> List<&2, KTerm>:
+  ns_image_terms_rev(ws, Nil{})
+
+# Module: src/back/native/static.bend:62
+@unsafe
+def ns_image_terms_rev(ws: List<&2, String>, terms: List<&2, KTerm>) -> List<&2, KTerm>:
   match ws:
-    case Nil{}: Nil{}
-    case Con{h, rest}: Con{kt("StaticWord", h, 0, 0, Nil{}), ns_image_terms(rest)}
+    case Nil{}: nt_reverse(KTerm, terms, Nil{})
+    case Con{h, rest}: ns_image_terms_rev(rest, Con{kt("StaticWord", h, 0, 0, Nil{}), terms})
 
 # Exclude constructors with special runtime treatment, including all IO nodes.
 # Scalar wrappers only become static after the existing literal pass proves
 # them. Exact constructor arity rejects malformed raw graphs.
 
-# Module: src/back/native/static.bend:63
+# Module: src/back/native/static.bend:71
 @unsafe
 def ns_ctor(+cs: KDef, +name: String, +arity: U32) -> Bool:
   nt_choose(Bool, nb_contains(["Zero", "Succ", "True", "False", "Chr", "U32", "F32", "ALeaf", "ANode", "Emit", "Halt", "Done", "Fail"], name),
     u => False{}, u => ns_ctor_known(cs, name, arity))
 
-# Module: src/back/native/static.bend:68
+# Module: src/back/native/static.bend:76
 @unsafe
 def ns_ctor_known(+cs: KDef, +name: String, +arity: U32) -> Bool:
   +d = index_find(cs, name, index_hash(name, 2166136261), 32)
   String.eq(dk(d), "NativeStaticCtor") && U32.is_eq(da(d), arity)
 
-# Module: src/back/native/static.bend:73
+# Module: src/back/native/static.bend:81
 @unsafe
 def ns_ctor_index(cs: List<&2, N_Constructor>, +index: KDef) -> KDef:
   match cs:
@@ -35652,27 +35810,27 @@ def ns_ctor_index(cs: List<&2, N_Constructor>, +index: KDef) -> KDef:
     case Con{N_Constructor{+name, arity, hot}, rest}:
       ns_ctor_index(rest, index_set(index, KDef{name, "NativeStaticCtor", arity, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, index_hash(name, 2166136261), 32))
 
-# Module: src/back/native/static.bend:80
+# Module: src/back/native/static.bend:88
 @unsafe
 def ns_constant(+t: KTerm) -> Bool:
   nt_choose(Bool, String.eq(tg(t), "NStatic"), u => True{}, u =>
     nt_choose(Bool, String.eq(tg(t), "NWord"), v => ns_canonical(nm(t), U32.read(nm(t))), v => False{}))
 
-# Module: src/back/native/static.bend:85
+# Module: src/back/native/static.bend:93
 @unsafe
 def ns_canonical(+text: String, parsed: Maybe<&2, U32>) -> Bool:
   match parsed:
     case None{}: False{}
     case Some{value}: String.eq(text, U32.show(value))
 
-# Module: src/back/native/static.bend:91
+# Module: src/back/native/static.bend:99
 @unsafe
 def ns_constants(ts: List<&2, KTerm>) -> Bool:
   match ts:
     case Nil{}: True{}
     case Con{h, rest}: nt_choose(Bool, ns_constant(h), u => ns_constants(rest), u => False{})
 
-# Module: src/back/native/static.bend:97
+# Module: src/back/native/static.bend:105
 @unsafe
 def ns_word(+t: KTerm) -> String:
   nt_choose(String, String.eq(tg(t), "NWord"), u => nm(t) ++ "ull", u =>
@@ -35680,7 +35838,7 @@ def ns_word(+t: KTerm) -> String:
       u => "term_pak(" ++ nt_cid(nm(t)) ++ ", " ++ nt_choose(String, List.is_empty(&2, KTerm, ks(t)), v => "0", v => ns_word(kid(t, 0))) ++ ")",
       u => "term_ctr(" ++ nt_cid(nm(t)) ++ ", STAT_OFF + " ++ U32.show(ix(t)) ++ ")"))
 
-# Module: src/back/native/static.bend:104
+# Module: src/back/native/static.bend:112
 @unsafe
 def ns_words(ts: List<&2, KTerm>) -> List<&2, String>:
   match ts:
@@ -35690,12 +35848,12 @@ def ns_words(ts: List<&2, KTerm>) -> List<&2, String>:
 # An immediate U32 payload is within LOC_MASK. Other one-field constructors
 # retain a box; no type annotation or raw width promise licenses packing.
 
-# Module: src/back/native/static.bend:112
+# Module: src/back/native/static.bend:120
 @unsafe
 def ns_packed(+t: KTerm) -> Bool:
   ns_packed_fields(t, ks(t))
 
-# Module: src/back/native/static.bend:116
+# Module: src/back/native/static.bend:124
 @unsafe
 def ns_packed_fields(+t: KTerm, fields: List<&2, KTerm>) -> Bool:
   match fields:
@@ -35704,13 +35862,13 @@ def ns_packed_fields(+t: KTerm, fields: List<&2, KTerm>) -> Bool:
       nt_choose(Bool, String.starts_with(nm(t), "$ctor.") && String.eq(tg(h), "NWord"), u => ns_constant(h), u => False{})
     case _: False{}
 
-# Module: src/back/native/static.bend:124
+# Module: src/back/native/static.bend:132
 @unsafe
 def ns_node(+t: KTerm, +image: NS_Image) -> NS_Term:
   nt_choose(NS_Term, ns_packed(t), u => NS_Term{kt("NStatic", nm(t), 0, 1, ks(t)), image},
     u => ns_intern(t, ns_words(ks(t)), image))
 
-# Module: src/back/native/static.bend:129
+# Module: src/back/native/static.bend:137
 @unsafe
 def ns_intern(+t: KTerm, +words: List<&2, String>, image: NS_Image) -> NS_Term:
   match image:
@@ -35724,26 +35882,26 @@ def ns_intern(+t: KTerm, +words: List<&2, String>, image: NS_Image) -> NS_Term:
           v => NS_Term{kt("NStatic", nm(t), size, 0, ks(t)), NS_Image{U32.add(size, terms_len(ks(t))), nt_reverse(String, words, stored), index_set(index, KDef{key, "NativeStaticNode", size, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, hash, 32)}},
           v => NS_Term{t, NS_Image{size, stored, index}}))
 
-# Module: src/back/native/static.bend:148
+# Module: src/back/native/static.bend:156
 @unsafe
 def ns_static_terms(+cs: KDef, ts: List<&2, KTerm>, +image: NS_Image) -> NS_Terms:
   match ts:
     case Nil{}: NS_Terms{Nil{}, image}
     case Con{h, rest}: ns_terms_step(cs, rest, ns_static_term(cs, h, image))
 
-# Module: src/back/native/static.bend:154
+# Module: src/back/native/static.bend:162
 @unsafe
 def ns_terms_step(+cs: KDef, +rest: List<&2, KTerm>, first: NS_Term) -> NS_Terms:
   match first:
     case NS_Term{head, image}: ns_terms_cons(head, ns_static_terms(cs, rest, image))
 
-# Module: src/back/native/static.bend:159
+# Module: src/back/native/static.bend:167
 @unsafe
 def ns_terms_cons(head: KTerm, tail: NS_Terms) -> NS_Terms:
   match tail:
     case NS_Terms{rest, image}: NS_Terms{Con{head, rest}, image}
 
-# Module: src/back/native/static.bend:164
+# Module: src/back/native/static.bend:172
 @unsafe
 def ns_static_term(cs, t, image):
   # Input cannot import a stale or forged image offset into this request.
@@ -35751,7 +35909,7 @@ def ns_static_term(cs, t, image):
     u => nt_choose(NS_Term, String.eq(tg(t), "NWord") || String.eq(tg(t), "Var") || String.eq(tg(t), "Ref"),
       v => NS_Term{t, image}, v => ns_rebuild(cs, t, ns_static_terms(cs, ks(t), image))))
 
-# Module: src/back/native/static.bend:171
+# Module: src/back/native/static.bend:179
 @unsafe
 def ns_rebuild(+cs: KDef, +original: KTerm, children: NS_Terms) -> NS_Term:
   match children:
@@ -35760,7 +35918,7 @@ def ns_rebuild(+cs: KDef, +original: KTerm, children: NS_Terms) -> NS_Term:
       nt_choose(NS_Term, String.eq(tg(t), "Ctr"),
         u => ns_constructor(cs, ns_static_scalar(t), image), u => NS_Term{nw_prepare(t), image})
 
-# Module: src/back/native/static.bend:179
+# Module: src/back/native/static.bend:187
 @unsafe
 def ns_constructor(+cs: KDef, +t: KTerm, +image: NS_Image) -> NS_Term:
   nt_choose(NS_Term, String.eq(tg(t), "NWord"), u => NS_Term{t, image}, u =>
@@ -35771,12 +35929,12 @@ def ns_constructor(+cs: KDef, +t: KTerm, +image: NS_Image) -> NS_Term:
 # Native Bool and Char constructors have immediate runtime representations.
 # Exact syntax/arity preserves malformed wrappers' original fallback.
 
-# Module: src/back/native/static.bend:188
+# Module: src/back/native/static.bend:196
 @unsafe
 def ns_static_scalar(+t: KTerm) -> KTerm:
   ns_static_scalar_fields(t, ks(t))
 
-# Module: src/back/native/static.bend:192
+# Module: src/back/native/static.bend:200
 @unsafe
 def ns_static_scalar_fields(+t: KTerm, fields: List<&2, KTerm>) -> KTerm:
   match fields:
@@ -35787,7 +35945,7 @@ def ns_static_scalar_fields(+t: KTerm, fields: List<&2, KTerm>) -> KTerm:
       nt_choose(KTerm, String.eq(nm(t), "Chr") && String.eq(tg(h), "NWord"), u => h, u => t)
     case _: t
 
-# Module: src/back/native/static.bend:202
+# Module: src/back/native/static.bend:210
 @unsafe
 def ns_defs(+book: List<&2, KDef>, +cs: KDef, names: List<&2, String>, +image: NS_Image, +facts: List<&2, KDef>) -> NS_Defs:
   match names:
@@ -35800,7 +35958,7 @@ def ns_defs(+book: List<&2, KDef>, +cs: KDef, names: List<&2, String>, +image: N
           v => ns_def_step(book, cs, rest, name, facts, ns_static_term(cs, nc_compact(nc_definition(book, d, 0)), image))),
         u => ns_defs(book, cs, rest, image, facts))
 
-# Module: src/back/native/static.bend:214
+# Module: src/back/native/static.bend:222
 @unsafe
 def ns_def_step(+book: List<&2, KDef>, +cs: KDef, +rest: List<&2, String>, +name: String, +facts: List<&2, KDef>, transformed: NS_Term) -> NS_Defs:
   match transformed:
@@ -35808,14 +35966,14 @@ def ns_def_step(+book: List<&2, KDef>, +cs: KDef, +rest: List<&2, String>, +name
       +prior = ns_body(book, name)
       ns_defs(book, cs, rest, image, Con{KDef{name, "NativeStaticBody", da(prior), dx(prior), atom("Absent"), body, [prior], False{}, False{}}, facts})
 
-# Module: src/back/native/static.bend:221
+# Module: src/back/native/static.bend:229
 @unsafe
 def ns_attach(+book: List<&2, KDef>, built: NS_Defs) -> List<&2, KDef>:
   match built:
     case NS_Defs{facts, NS_Image{size, words, index}}:
       ns_attach_book(book, facts, size, words)
 
-# Module: src/back/native/static.bend:227
+# Module: src/back/native/static.bend:235
 @unsafe
 def ns_attach_book(+book: List<&2, KDef>, +facts: List<&2, KDef>, +size: U32, +words: List<&2, String>) -> List<&2, KDef>:
   match book:
@@ -35824,13 +35982,13 @@ def ns_attach_book(+book: List<&2, KDef>, +facts: List<&2, KDef>, +size: U32, +w
         [index_first(dc(cache)), KDef{"$native.static", "NativeStaticContext", 0, 0, kt("NativeImage", "", size, 0, ns_image_terms(nt_reverse(String, words, Nil{}))), atom("Absent"), [index_build(facts), nc_ctor_prepare(book)], False{}, False{}}], db(cache), du(cache)}, rest}
     case _: book
 
-# Module: src/back/native/static.bend:235
+# Module: src/back/native/static.bend:243
 @unsafe
 def ns_prepare(+book: List<&2, KDef>, +names: List<&2, String>) -> List<&2, KDef>:
   nt_choose(List<&2, KDef>, String.eq(dk(index_first(book)), "BookCache"),
     u => ns_prepare_cached(book, names), u => book)
 
-# Module: src/back/native/static.bend:240
+# Module: src/back/native/static.bend:248
 @unsafe
 def ns_prepare_cached(+book: List<&2, KDef>, +names: List<&2, String>) -> List<&2, KDef>:
   nt_choose(List<&2, KDef>, nc_pack_foreign(book), u => book,
@@ -35839,12 +35997,12 @@ def ns_prepare_cached(+book: List<&2, KDef>, +names: List<&2, String>) -> List<&
 # Retain product facts: a static fixed-shell result can still return its fields
 # directly. Only opaque destinations receive the immortal constructor word.
 
-# Module: src/back/native/static.bend:247
+# Module: src/back/native/static.bend:255
 @unsafe
 def ns_return(+book: List<&2, KDef>, +t: KTerm, +n: U32, +target: NC_Target) -> NC_Code:
   nt_choose(NC_Code, String.eq(dk(ns_context(book)), "NativeStaticContext"), u => ns_return_known(t, n, target), u => nc_fail("native static word outside its request", n))
 
-# Module: src/back/native/static.bend:251
+# Module: src/back/native/static.bend:259
 @unsafe
 def ns_return_known(+t: KTerm, +n: U32, +target: NC_Target) -> NC_Code:
   match target:
@@ -35855,14 +36013,14 @@ def ns_return_known(+t: KTerm, +n: U32, +target: NC_Target) -> NC_Code:
 
 # Called only after nc_compile validates main, source ownership and binder IDs.
 
-# Module: src/back/native/static.bend:260
+# Module: src/back/native/static.bend:268
 @unsafe
 def ns_compile(+book: List<&2, KDef>, +runtime: NE_Runtime, +requests: String, +observers: Bool) -> NC_Result:
   +source = ns_source(book)
   +names = nc_live_names(source, ["main"], Nil{})
   ns_compile_named(source, names, runtime, requests, observers)
 
-# Module: src/back/native/static.bend:266
+# Module: src/back/native/static.bend:274
 @unsafe
 def ns_compile_named(+source: List<&2, KDef>, +names: List<&2, String>, +runtime: NE_Runtime, +requests: String, +observers: Bool) -> NC_Result:
   +prepared = ns_prepare(source, names)
@@ -35871,7 +36029,7 @@ def ns_compile_named(+source: List<&2, KDef>, +names: List<&2, String>, +runtime
     u => ns_compile_planned(prepared, names, bangs, runtime, requests, observers),
     u => ns_compile_fallback(prepared, names, bangs, ne_runtime_prepend(runtime, nh_macros(prepared, names, observers)), requests, observers, nc_compile_defs(prepared, ["main"], Nil{}, 0, bangs)))
 
-# Module: src/back/native/static.bend:274
+# Module: src/back/native/static.bend:282
 @unsafe
 def ns_compile_planned(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +runtime: NE_Runtime, +requests: String, +observers: Bool) -> NC_Result:
   +plan = nf_plan(book, names, bangs, observers)
@@ -35881,7 +36039,7 @@ def ns_compile_planned(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: 
 # Preserve the original raw/bang error order: failed generic lowering never
 # asks optional worker planning to inspect an unsupported or malformed body.
 
-# Module: src/back/native/static.bend:282
+# Module: src/back/native/static.bend:290
 @unsafe
 def ns_compile_fallback(+book: List<&2, KDef>, +names: List<&2, String>, +bangs: List<&2, String>, +runtime: NE_Runtime, +requests: String, +observers: Bool, compiled: NC_Book) -> NC_Result:
   match compiled:
@@ -36549,100 +36707,113 @@ def no_literal_string_step(+book: List<&2, KDef>, +t: KTerm) -> KTerm:
 def no_literal_demanding_ctor(+name: String) -> Bool:
   nb_contains(["Succ", "U32", "F32"], name)
 
-# Module: src/back/native/observer-analysis.bend:15
+# Module: src/back/native/observer-analysis.bend:28
+@unsafe
+def noa_continue(+ctx: NO_Context, k: NO_Cont, +input: NO_Input) -> NO_Analysis:
+  match k:
+    case NO_KFinish{}: noa_finish(ctx, input)
+    case NO_KEvalArgs{terms, env, stack, acc, next}: noa_eval_args(ctx, terms, env, noa_if(input), stack, Con{noa_iv(input), acc}, noa_in(input), noa_iu(input), next)
+    case NO_KApplyArgs{args, next}: noa_apply_args(ctx, noa_iv(input), args, noa_if(input), noa_in(input), noa_iu(input), next)
+    case NO_KAppFunction{arg, env, stack, next}: noa_eval(ctx, arg, env, noa_if(input), stack, noa_in(input), noa_iu(input), NO_KAppArgument{noa_iv(input), next})
+    case NO_KAppArgument{fn, next}: noa_apply(ctx, fn, noa_iv(input), noa_if(input), noa_in(input), noa_iu(input), next)
+    case NO_KConstructor{name, next}: noa_constructor(ctx, name, input, next)
+    case NO_KLetBody{body, id, env, stack, next}: noa_eval(ctx, body, noa_bind(id, noa_iv(input), env), noa_if(input), stack, noa_in(input), noa_iu(input), next)
+    case NO_KApplyOne{arg, next}: noa_apply(ctx, noa_iv(input), arg, noa_if(input), noa_in(input), noa_iu(input), next)
+
+# Module: src/back/native/observer-analysis.bend:40
 @unsafe
 def noa_book(c: NO_Context) -> List<&2, KDef>:
   match c:
     case NO_Context{+b, +o, +s}: b
 
-# Module: src/back/native/observer-analysis.bend:20
+# Module: src/back/native/observer-analysis.bend:45
 @unsafe
 def noa_owner(c: NO_Context) -> String:
   match c:
     case NO_Context{+b, +o, +s}: o
 
-# Module: src/back/native/observer-analysis.bend:25
+# Module: src/back/native/observer-analysis.bend:50
 @unsafe
 def noa_schema(c: NO_Context) -> NO_Schema:
   match c:
     case NO_Context{+b, +o, +s}: s
 
-# Module: src/back/native/observer-analysis.bend:30
+# Module: src/back/native/observer-analysis.bend:55
 @unsafe
 def noa_iv(i: NO_Input) -> KTerm:
   match i:
     case NO_Input{+v, +f, +n, +fuel}: v
 
-# Module: src/back/native/observer-analysis.bend:35
+# Module: src/back/native/observer-analysis.bend:60
 @unsafe
 def noa_if(i: NO_Input) -> List<&2, KTerm>:
   match i:
     case NO_Input{+v, +f, +n, +fuel}: f
 
-# Module: src/back/native/observer-analysis.bend:40
+# Module: src/back/native/observer-analysis.bend:65
 @unsafe
 def noa_in(i: NO_Input) -> U32:
   match i:
     case NO_Input{+v, +f, +n, +fuel}: n
 
-# Module: src/back/native/observer-analysis.bend:45
+# Module: src/back/native/observer-analysis.bend:70
 @unsafe
 def noa_iu(i: NO_Input) -> U32:
   match i:
     case NO_Input{+v, +f, +n, +fuel}: fuel
 
-# Module: src/back/native/observer-analysis.bend:50
+# Module: src/back/native/observer-analysis.bend:75
 @unsafe
 def noa_body(a: NO_Analysis) -> KTerm:
   match a:
     case NO_Analysis{+b, +n, +f, +e}: b
 
-# Module: src/back/native/observer-analysis.bend:55
+# Module: src/back/native/observer-analysis.bend:80
 @unsafe
 def noa_fresh(a: NO_Analysis) -> U32:
   match a:
     case NO_Analysis{+b, +n, +f, +e}: n
 
-# Module: src/back/native/observer-analysis.bend:60
+# Module: src/back/native/observer-analysis.bend:85
 @unsafe
 def noa_fuel(a: NO_Analysis) -> U32:
   match a:
     case NO_Analysis{+b, +n, +f, +e}: f
 
-# Module: src/back/native/observer-analysis.bend:65
+# Module: src/back/native/observer-analysis.bend:90
 @unsafe
 def noa_error(a: NO_Analysis) -> String:
   match a:
     case NO_Analysis{+b, +n, +f, +e}: e
 
-# Module: src/back/native/observer-analysis.bend:70
+# Module: src/back/native/observer-analysis.bend:95
 @unsafe
 def noa_fail(msg: String, n: U32, fuel: U32) -> NO_Analysis:
   NO_Analysis{atom("Absent"), n, fuel, msg}
 
-# Module: src/back/native/observer-analysis.bend:74
+# Module: src/back/native/observer-analysis.bend:99
 @unsafe
 def noa_atom(+ty: String, +origin: KTerm, +value: KTerm) -> KTerm:
   kt("OA", ty, 0, 0, [origin, value])
 
-# Module: src/back/native/observer-analysis.bend:78
+# Module: src/back/native/observer-analysis.bend:103
 @unsafe
 def noa_origin(+value: KTerm) -> KTerm:
   nt_choose(KTerm, String.eq(tg(value), "OA"), u => kid(value, 0), u => atom("Absent"))
 
-# Module: src/back/native/observer-analysis.bend:82
+# Module: src/back/native/observer-analysis.bend:107
 @unsafe
 def noa_env(+id: U32, xs: List<&2, KTerm>) -> KTerm:
   match xs:
     case Nil{}: atom("Absent")
     case Con{+x, +rest}: nt_choose(KTerm, U32.is_eq(ix(x), id), u => kid(x, 0), u => noa_env(id, rest))
 
-# Module: src/back/native/observer-analysis.bend:88
+# Module: src/back/native/observer-analysis.bend:113
 @unsafe
 def noa_bind(id: U32, value: KTerm, env: List<&2, KTerm>) -> List<&2, KTerm>:
   Con{kt("OBind", "", id, 0, [value]), env}
 
-# Module: src/back/native/observer-analysis.bend:92
+# Module: src/back/native/observer-analysis.bend:117
 @unsafe
 def noa_spec(+name: String, specs: List<&2, NO_Spec>) -> Maybe<&2, NO_Spec>:
   match specs:
@@ -36652,14 +36823,14 @@ def noa_spec(+name: String, specs: List<&2, NO_Spec>) -> Maybe<&2, NO_Spec>:
         case NO_Spec{NO_Layout{+key, +ctor, +storage, +width}, +owner, +fields}:
           nt_choose(Maybe<&2, NO_Spec>, String.eq(name, ctor), u => Some{spec}, u => noa_spec(name, rest))
 
-# Module: src/back/native/observer-analysis.bend:101
+# Module: src/back/native/observer-analysis.bend:126
 @unsafe
 def noa_fact(+origin: KTerm, facts: List<&2, KTerm>) -> KTerm:
   match facts:
     case Nil{}: atom("Absent")
     case Con{+f, +rest}: nt_choose(KTerm, norm_exact(origin, kid(f, 0)), u => kid(f, 1), u => noa_fact(origin, rest))
 
-# Module: src/back/native/observer-analysis.bend:113
+# Module: src/back/native/observer-analysis.bend:138
 @unsafe
 def noa_equal_fields(values: List<&2, KTerm>, origins: List<&2, KTerm>, +facts: List<&2, KTerm>) -> Bool:
   match values, origins:
@@ -36667,85 +36838,85 @@ def noa_equal_fields(values: List<&2, KTerm>, origins: List<&2, KTerm>, +facts: 
     case Con{+v, +vs}, Con{+o, +os}: noa_equal(v, o, facts) && noa_equal_fields(vs, os, facts)
     case _, _: False{}
 
-# Module: src/back/native/observer-analysis.bend:120
+# Module: src/back/native/observer-analysis.bend:145
 @unsafe
 def noa_equal(value, origin, facts):
   +shape = noa_fact(origin, facts)
   nt_choose(Bool, String.eq(tg(value), "OA"), u => norm_exact(noa_origin(value), origin), u =>
     String.eq(tg(value), "OC") && String.eq(tg(shape), "OC") && String.eq(nm(value), nm(shape)) && noa_equal_fields(ks(value), ks(shape), facts))
 
-# Module: src/back/native/observer-analysis.bend:126
+# Module: src/back/native/observer-analysis.bend:151
 @unsafe
 def noa_prepend(+statement: KTerm, rest: NO_Analysis) -> NO_Analysis:
   match rest:
     case NO_Analysis{+body, +n, +fuel, +error}: NO_Analysis{kt("NO_Let", "", ix(statement), 0, [kid(statement, 0), body]), n, fuel, error}
 
-# Module: src/back/native/observer-analysis.bend:152
+# Module: src/back/native/observer-analysis.bend:177
 @unsafe
 def noa_names(names: List<&2, String>) -> List<&2, KTerm>:
   match names:
     case Nil{}: Nil{}
     case Con{+name, +rest}: Con{ref(name), noa_names(rest)}
 
-# Module: src/back/native/observer-analysis.bend:158
+# Module: src/back/native/observer-analysis.bend:183
 @unsafe
 def noa_unames(names: List<&2, KTerm>) -> List<&2, String>:
   match names:
     case Nil{}: Nil{}
     case Con{+h, +rest}: Con{nm(h), noa_unames(rest)}
 
-# Module: src/back/native/observer-analysis.bend:164
+# Module: src/back/native/observer-analysis.bend:189
 @unsafe
-def noa_eval_args(+ctx: NO_Context, ts: List<&2, KTerm>, +env: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +acc: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_eval_args(+ctx: NO_Context, ts: List<&2, KTerm>, +env: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +acc: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   match ts:
-    case Nil{}: k(NO_Input{kt("OArgs", "", 0, 0, nt_reverse(KTerm, acc, Nil{})), facts, n, fuel})
-    case Con{+h, +rest}: noa_eval(ctx, h, env, facts, stack, n, fuel, +i => noa_eval_args(ctx, rest, env, noa_if(i), stack, Con{noa_iv(i), acc}, noa_in(i), noa_iu(i), k))
+    case Nil{}: noa_continue(ctx, k, NO_Input{kt("OArgs", "", 0, 0, nt_reverse(KTerm, acc, Nil{})), facts, n, fuel})
+    case Con{+h, +rest}: noa_eval(ctx, h, env, facts, stack, n, fuel, NO_KEvalArgs{rest, env, stack, acc, k})
 
-# Module: src/back/native/observer-analysis.bend:170
+# Module: src/back/native/observer-analysis.bend:195
 @unsafe
-def noa_apply_args(+ctx: NO_Context, +fn: KTerm, args: List<&2, KTerm>, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_apply_args(+ctx: NO_Context, +fn: KTerm, args: List<&2, KTerm>, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   match args:
-    case Nil{}: k(NO_Input{fn, facts, n, fuel})
-    case Con{+arg, +rest}: noa_apply(ctx, fn, arg, facts, n, fuel, +i => noa_apply_args(ctx, noa_iv(i), rest, noa_if(i), noa_in(i), noa_iu(i), k))
+    case Nil{}: noa_continue(ctx, k, NO_Input{fn, facts, n, fuel})
+    case Con{+arg, +rest}: noa_apply(ctx, fn, arg, facts, n, fuel, NO_KApplyArgs{rest, k})
 
-# Module: src/back/native/observer-analysis.bend:176
+# Module: src/back/native/observer-analysis.bend:201
 @unsafe
 def noa_eval(ctx, t, env, facts, stack, n, fuel, k):
   nt_choose(NO_Analysis, U32.is_eq(fuel, 0) || U32.is_ge(n, 294967200), u => noa_fail("observer: candidate budget or fresh range", n, fuel), u => noa_eval_step(ctx, t, env, facts, stack, n, U32.sub(fuel, 1), k))
 
-# Module: src/back/native/observer-analysis.bend:180
+# Module: src/back/native/observer-analysis.bend:205
 @unsafe
-def noa_eval_step(+ctx: NO_Context, +t: KTerm, +env: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_eval_step(+ctx: NO_Context, +t: KTerm, +env: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   +tag = tg(t)
-  nt_choose(NO_Analysis, String.eq(tag, "Var"), u => nt_choose(NO_Analysis, String.eq(tg(noa_env(ix(t), env)), "Absent"), v => noa_fail("observer: unbound source variable", n, fuel), v => k(NO_Input{noa_env(ix(t), env), facts, n, fuel})), u =>
+  nt_choose(NO_Analysis, String.eq(tag, "Var"), u => nt_choose(NO_Analysis, String.eq(tg(noa_env(ix(t), env)), "Absent"), v => noa_fail("observer: unbound source variable", n, fuel), v => noa_continue(ctx, k, NO_Input{noa_env(ix(t), env), facts, n, fuel})), u =>
   nt_choose(NO_Analysis, core_literal(t), u => noa_literal(ctx, t, env, facts, stack, n, fuel, k), u =>
-  nt_choose(NO_Analysis, String.eq(tag, "Lam") || String.eq(tag, "Mat"), u => k(NO_Input{kt(nt_choose(String, String.eq(tag, "Lam"), v => "OL", v => "OM"), "", 0, 0, [t, kt("OEnv", "", 0, 0, env), kt("OStack", "", 0, 0, noa_names(stack))]), facts, n, fuel}), u =>
-  nt_choose(NO_Analysis, String.eq(tag, "Ref"), u => nt_choose(NO_Analysis, U32.is_eq(qt(t), 3) || U32.is_eq(nd_arity(noa_book(ctx), nm(t)), 0), v => noa_fail("observer: bang or demanded zero-arity reference", n, fuel), v => k(NO_Input{kt("OR", nm(t), 0, 0, [kt("OStack", "", 0, 0, noa_names(stack))]), facts, n, fuel})), u =>
-  nt_choose(NO_Analysis, String.eq(tag, "App"), u => noa_eval(ctx, kid(t, 0), env, facts, stack, n, fuel, +f => noa_eval(ctx, kid(t, 1), env, noa_if(f), stack, noa_in(f), noa_iu(f), +a => noa_apply(ctx, noa_iv(f), noa_iv(a), noa_if(a), noa_in(a), noa_iu(a), k))), u =>
-  nt_choose(NO_Analysis, String.eq(tag, "Ctr"), u => nt_choose(NO_Analysis, no_literal_demanding_ctor(nm(t)), v => noa_fail("observer: demanding scalar constructor", n, fuel), v => noa_eval_args(ctx, ks(t), env, facts, stack, Nil{}, n, fuel, +i => noa_constructor(ctx, nm(t), i, k))), u =>
+  nt_choose(NO_Analysis, String.eq(tag, "Lam") || String.eq(tag, "Mat"), u => noa_continue(ctx, k, NO_Input{kt(nt_choose(String, String.eq(tag, "Lam"), v => "OL", v => "OM"), "", 0, 0, [t, kt("OEnv", "", 0, 0, env), kt("OStack", "", 0, 0, noa_names(stack))]), facts, n, fuel}), u =>
+  nt_choose(NO_Analysis, String.eq(tag, "Ref"), u => nt_choose(NO_Analysis, U32.is_eq(qt(t), 3) || U32.is_eq(nd_arity(noa_book(ctx), nm(t)), 0), v => noa_fail("observer: bang or demanded zero-arity reference", n, fuel), v => noa_continue(ctx, k, NO_Input{kt("OR", nm(t), 0, 0, [kt("OStack", "", 0, 0, noa_names(stack))]), facts, n, fuel})), u =>
+  nt_choose(NO_Analysis, String.eq(tag, "App"), u => noa_eval(ctx, kid(t, 0), env, facts, stack, n, fuel, NO_KAppFunction{kid(t, 1), env, stack, k}), u =>
+  nt_choose(NO_Analysis, String.eq(tag, "Ctr"), u => nt_choose(NO_Analysis, no_literal_demanding_ctor(nm(t)), v => noa_fail("observer: demanding scalar constructor", n, fuel), v => noa_eval_args(ctx, ks(t), env, facts, stack, Nil{}, n, fuel, NO_KConstructor{nm(t), k})), u =>
   nt_choose(NO_Analysis, nb_contains(["Ann", "Loc", "Src", "Cut", "Slf", "Ins"], tag), u => noa_eval(ctx, kid(t, 0), env, facts, stack, n, fuel, k), u =>
   nt_choose(NO_Analysis, String.eq(tag, "Efq"), u => NO_Analysis{kt("NO_Error", "ERR_FIDS", 0, 0, Nil{}), n, fuel, ""}, u =>
-  nt_choose(NO_Analysis, String.eq(tag, "Let") && U32.is_eq(terms_len(ks(t)), 2) && String.eq(tg(kid(t, 0)), "Bind"), u => noa_eval(ctx, kid(kid(t, 0), 0), env, facts, stack, n, fuel, +i => noa_eval(ctx, kid(t, 1), noa_bind(ix(kid(t, 0)), noa_iv(i), env), noa_if(i), stack, noa_in(i), noa_iu(i), k)), u => noa_fail("observer: unsupported evaluated core " ++ tag, n, fuel))))))))))
+  nt_choose(NO_Analysis, String.eq(tag, "Let") && U32.is_eq(terms_len(ks(t)), 2) && String.eq(tg(kid(t, 0)), "Bind"), u => noa_eval(ctx, kid(kid(t, 0), 0), env, facts, stack, n, fuel, NO_KLetBody{kid(t, 1), ix(kid(t, 0)), env, stack, k}), u => noa_fail("observer: unsupported evaluated core " ++ tag, n, fuel))))))))))
 
-# Module: src/back/native/observer-analysis.bend:193
+# Module: src/back/native/observer-analysis.bend:218
 @unsafe
 def noa_value_type(+ctx: NO_Context, +v: KTerm) -> String:
   nt_choose(String, String.eq(tg(v), "OA"), u => nm(v), u => noa_ctor_type(noa_spec(nm(v), no_schema_specs(noa_schema(ctx)))))
 
-# Module: src/back/native/observer-analysis.bend:197
+# Module: src/back/native/observer-analysis.bend:222
 @unsafe
 def noa_ctor_type(spec: Maybe<&2, NO_Spec>) -> String:
   match spec:
     case None{}: ""
     case Some{NO_Spec{+layout, +owner, +fields}}: owner
 
-# Module: src/back/native/observer-analysis.bend:203
+# Module: src/back/native/observer-analysis.bend:228
 @unsafe
 def noa_scalar(+ctx: NO_Context, +v: KTerm) -> KTerm:
   nt_choose(KTerm, String.eq(tg(v), "OA") && nol_scalar(noa_book(ctx), kt("ADT", nm(v), 0, 0, Nil{})), u => kid(v, 1), u =>
     nt_choose(KTerm, String.eq(tg(v), "OC"), w => noa_scalar_ctor(ctx, v, noa_spec(nm(v), no_schema_specs(noa_schema(ctx)))), w => atom("Absent")))
 
-# Module: src/back/native/observer-analysis.bend:208
+# Module: src/back/native/observer-analysis.bend:233
 @unsafe
 def noa_scalar_ctor(+ctx: NO_Context, +v: KTerm, spec: Maybe<&2, NO_Spec>) -> KTerm:
   match spec:
@@ -36754,26 +36925,26 @@ def noa_scalar_ctor(+ctx: NO_Context, +v: KTerm, spec: Maybe<&2, NO_Spec>) -> KT
       nt_choose(KTerm, String.eq(storage, "Char") && U32.is_eq(terms_len(ks(v)), 1) && String.eq(noa_value_type(ctx, kid(v, 0)), "U32"), u => noa_scalar(ctx, kid(v, 0)), u =>
         nt_choose(KTerm, String.eq(storage, "Nullary") && List.is_empty(&2, KTerm, ks(v)) && nol_scalar(noa_book(ctx), kt("ADT", owner, 0, 0, Nil{})), w => kt("NCtr", ctor, 0, 0, Nil{}), w => atom("Absent")))
 
-# Module: src/back/native/observer-analysis.bend:216
+# Module: src/back/native/observer-analysis.bend:241
 @unsafe
 def noa_scalars(+ctx: NO_Context, values: List<&2, KTerm>) -> List<&2, KTerm>:
   match values:
     case Nil{}: Nil{}
     case Con{+h, +rest}: Con{noa_scalar(ctx, h), noa_scalars(ctx, rest)}
 
-# Module: src/back/native/observer-analysis.bend:222
+# Module: src/back/native/observer-analysis.bend:247
 @unsafe
 def noa_no_absent(values: List<&2, KTerm>) -> Bool:
   match values:
     case Nil{}: True{}
     case Con{+h, +rest}: Bool.not(String.eq(tg(h), "Absent")) && noa_no_absent(rest)
 
-# Module: src/back/native/observer-analysis.bend:228
+# Module: src/back/native/observer-analysis.bend:253
 @unsafe
 def noa_call_result(+ctx: NO_Context, +ty: KTerm, args: List<&2, KTerm>, +fuel: U32) -> KTerm:
   nt_choose(KTerm, U32.is_eq(fuel, 0), u => atom("Absent"), u => noa_call_types(ctx, nq_layout_type(noa_book(ctx), ty), args, U32.sub(fuel, 1)))
 
-# Module: src/back/native/observer-analysis.bend:232
+# Module: src/back/native/observer-analysis.bend:257
 @unsafe
 def noa_call_types(+ctx: NO_Context, +head: KTerm, args: List<&2, KTerm>, +fuel: U32) -> KTerm:
   match args:
@@ -36782,117 +36953,117 @@ def noa_call_types(+ctx: NO_Context, +head: KTerm, args: List<&2, KTerm>, +fuel:
       +want = nq_layout_type(noa_book(ctx), kid(head, 0))
       nt_choose(KTerm, String.eq(tg(head), "All") && Bool.not(U32.is_eq(qt(head), 0)) && nol_scalar(noa_book(ctx), want) && String.eq(noa_value_type(ctx, v), nm(want)), u => noa_call_result(ctx, kid(head, 1), rest, fuel), u => atom("Absent"))
 
-# Module: src/back/native/observer-analysis.bend:240
+# Module: src/back/native/observer-analysis.bend:265
 @unsafe
-def noa_primitive(+ctx: NO_Context, +name: String, +args: List<&2, KTerm>, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_primitive(+ctx: NO_Context, +name: String, +args: List<&2, KTerm>, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   +words = noa_scalars(ctx, args)
   +result = noa_call_result(ctx, dt(lookup(noa_book(ctx), name)), args, 8)
   +id = nc_id(n)
   nt_choose(NO_Analysis, noa_no_absent(words) && Bool.not(String.eq(tg(result), "Absent")),
-    u => noa_prepend(kt("NO_Let", "", id, 0, [kt("NOp", nc_primitive_name(name), 0, 0, words)]), k(NO_Input{noa_atom(nm(result), kt("OUnique", "", id, 0, Nil{}), var("", id)), facts, U32.inc(n), fuel})),
+    u => noa_prepend(kt("NO_Let", "", id, 0, [kt("NOp", nc_primitive_name(name), 0, 0, words)]), noa_continue(ctx, k, NO_Input{noa_atom(nm(result), kt("OUnique", "", id, 0, Nil{}), var("", id)), facts, U32.inc(n), fuel})),
     u => noa_fail("observer: scalar primitive type", n, fuel))
 
-# Module: src/back/native/observer-analysis.bend:258
+# Module: src/back/native/observer-analysis.bend:283
 @unsafe
 def noa_apply(ctx, fn, arg, facts, n, fuel, k):
   nt_choose(NO_Analysis, U32.is_eq(fuel, 0), u => noa_fail("observer: candidate budget", n, fuel), u => noa_apply_step(ctx, fn, arg, facts, n, U32.sub(fuel, 1), k))
 
-# Module: src/back/native/observer-analysis.bend:262
+# Module: src/back/native/observer-analysis.bend:287
 @unsafe
-def noa_apply_step(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_apply_step(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   nt_choose(NO_Analysis, String.eq(tg(fn), "OL"), u => noa_eval(ctx, kid(kid(fn, 0), 0), noa_bind(ix(kid(fn, 0)), arg, ks(kid(fn, 1))), facts, noa_unames(ks(kid(fn, 2))), n, fuel, k), u =>
   nt_choose(NO_Analysis, String.eq(tg(fn), "OM"), u => noa_match(ctx, fn, arg, facts, n, fuel, k), u =>
   nt_choose(NO_Analysis, String.eq(tg(fn), "OR"), u => noa_reference(ctx, nm(fn), List.append(&2, KTerm, noa_tail(ks(fn)), [arg]), facts, noa_unames(ks(kid(fn, 0))), n, fuel, k), u => noa_fail("observer: dynamic application", n, fuel))))
 
-# Module: src/back/native/observer-analysis.bend:268
+# Module: src/back/native/observer-analysis.bend:293
 @unsafe
-def noa_reference(+ctx: NO_Context, +name: String, +args: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_reference(+ctx: NO_Context, +name: String, +args: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   +arity = nd_arity(noa_book(ctx), name)
   +d = lookup(noa_book(ctx), name)
-  nt_choose(NO_Analysis, U32.is_lt(terms_len(args), arity), u => k(NO_Input{kt("OR", name, 0, 0, Con{kt("OStack", "", 0, 0, noa_names(stack)), args}), facts, n, fuel}), u =>
+  nt_choose(NO_Analysis, U32.is_lt(terms_len(args), arity), u => noa_continue(ctx, k, NO_Input{kt("OR", name, 0, 0, Con{kt("OStack", "", 0, 0, noa_names(stack)), args}), facts, n, fuel}), u =>
   nt_choose(NO_Analysis, Bool.not(U32.is_eq(terms_len(args), arity)), u => noa_fail("observer: saturation", n, fuel), u =>
   nt_choose(NO_Analysis, String.eq(name, noa_owner(ctx)), u => noa_recur(ctx, args, facts, n, fuel, k), u =>
   nt_choose(NO_Analysis, nt_choose(Bool, nc_native_def(d), v => nd_scalar_known(nc_primitive_name(name)), v => False{}), u => noa_primitive(ctx, name, args, facts, n, fuel, k), u =>
   nt_choose(NO_Analysis, String.eq(dk(d), "Def") && Bool.not(nc_foreign(d) || nc_native_def(d) || nb_contains(stack, name)) && U32.is_lt(nt_count(String, stack), 8),
-    u => noa_eval(ctx, nc_source_body(noa_book(ctx), d, n), Nil{}, facts, Con{name, stack}, n, fuel, +i => noa_apply_args(ctx, noa_iv(i), args, noa_if(i), noa_in(i), noa_iu(i), k)),
+    u => noa_eval(ctx, nc_source_body(noa_book(ctx), d, n), Nil{}, facts, Con{name, stack}, n, fuel, NO_KApplyArgs{args, k}),
     u => noa_fail("observer: helper effect, cycle or depth", n, fuel))))))
 
-# Module: src/back/native/observer-analysis.bend:280
+# Module: src/back/native/observer-analysis.bend:305
 @unsafe
 def noa_field_values(+owner: String, +ctor: String, +origin: KTerm, fields: List<&2, String>, +i: U32, +n: U32) -> List<&2, KTerm>:
   match fields:
     case Nil{}: Nil{}
     case Con{+ty, +rest}: Con{noa_atom(ty, kt("OField", ctor, i, 0, [origin, ref(owner)]), var("", nc_id(n))), noa_field_values(owner, ctor, origin, rest, U32.inc(i), U32.inc(n))}
 
-# Module: src/back/native/observer-analysis.bend:286
+# Module: src/back/native/observer-analysis.bend:311
 @unsafe
 def noa_origins(values: List<&2, KTerm>) -> List<&2, KTerm>:
   match values:
     case Nil{}: Nil{}
     case Con{+h, +rest}: Con{noa_origin(h), noa_origins(rest)}
 
-# Module: src/back/native/observer-analysis.bend:292
+# Module: src/back/native/observer-analysis.bend:317
 @unsafe
 def noa_value_words(values: List<&2, KTerm>) -> List<&2, KTerm>:
   match values:
     case Nil{}: Nil{}
     case Con{+h, +rest}: Con{kid(h, 1), noa_value_words(rest)}
 
-# Module: src/back/native/observer-analysis.bend:298
+# Module: src/back/native/observer-analysis.bend:323
 @unsafe
-def noa_match(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_match(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   +mat = kid(fn, 0)
   nt_choose(NO_Analysis, String.eq(tg(arg), "OC"),
     u => nt_choose(NO_Analysis, String.eq(nm(mat), nm(arg)),
-      v => nt_choose(NO_Analysis, U32.is_eq(ix(mat), U32.inc(terms_len(ks(arg)))), w => noa_eval(ctx, kid(mat, 0), ks(kid(fn, 1)), facts, noa_unames(ks(kid(fn, 2))), n, fuel, +i => noa_apply_args(ctx, noa_iv(i), ks(arg), noa_if(i), noa_in(i), noa_iu(i), k)), w => noa_fail("observer: virtual constructor arity", n, fuel)),
-      v => noa_eval(ctx, kid(mat, 1), ks(kid(fn, 1)), facts, noa_unames(ks(kid(fn, 2))), n, fuel, +i => noa_apply(ctx, noa_iv(i), arg, noa_if(i), noa_in(i), noa_iu(i), k))),
+      v => nt_choose(NO_Analysis, U32.is_eq(ix(mat), U32.inc(terms_len(ks(arg)))), w => noa_eval(ctx, kid(mat, 0), ks(kid(fn, 1)), facts, noa_unames(ks(kid(fn, 2))), n, fuel, NO_KApplyArgs{ks(arg), k}), w => noa_fail("observer: virtual constructor arity", n, fuel)),
+      v => noa_eval(ctx, kid(mat, 1), ks(kid(fn, 1)), facts, noa_unames(ks(kid(fn, 2))), n, fuel, NO_KApplyOne{arg, k})),
     u => noa_match_spec(ctx, fn, arg, facts, n, fuel, k, noa_spec(nm(mat), no_schema_specs(noa_schema(ctx)))))
 
-# Module: src/back/native/observer-analysis.bend:307
+# Module: src/back/native/observer-analysis.bend:332
 @unsafe
-def noa_match_spec(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis, spec: Maybe<&2, NO_Spec>) -> NO_Analysis:
+def noa_match_spec(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont, spec: Maybe<&2, NO_Spec>) -> NO_Analysis:
   match spec:
     case None{}: noa_fail("observer: matcher representation", n, fuel)
     case Some{NO_Spec{NO_Layout{+key, +ctor, +storage, +width}, +owner, +types}}:
       nt_choose(NO_Analysis, String.eq(tg(arg), "OA") && String.eq(nm(arg), owner) && U32.is_eq(ix(kid(fn, 0)), U32.inc(width)),
         u => noa_match_fields(ctx, fn, arg, facts, key, noa_field_values(owner, ctor, noa_origin(arg), types, 0, n), U32.add(n, width), fuel, k), u => noa_fail("observer: matcher type or width", n, fuel))
 
-# Module: src/back/native/observer-analysis.bend:315
+# Module: src/back/native/observer-analysis.bend:340
 @unsafe
-def noa_match_fields(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +key: String, +fields: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_match_fields(+ctx: NO_Context, +fn: KTerm, +arg: KTerm, +facts: List<&2, KTerm>, +key: String, +fields: List<&2, KTerm>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   +mat = kid(fn, 0)
   +yesfacts = {Con{kt("OFact", "", 0, 0, [noa_origin(arg), kt("OC", nm(mat), 0, 0, noa_origins(fields))]), facts}: List<&2, KTerm>}
-  +yes = noa_eval(ctx, kid(mat, 0), ks(kid(fn, 1)), yesfacts, noa_unames(ks(kid(fn, 2))), n, fuel, +i => noa_apply_args(ctx, noa_iv(i), fields, noa_if(i), noa_in(i), noa_iu(i), k))
+  +yes = noa_eval(ctx, kid(mat, 0), ks(kid(fn, 1)), yesfacts, noa_unames(ks(kid(fn, 2))), n, fuel, NO_KApplyArgs{fields, k})
   nt_choose(NO_Analysis, String.eq(noa_error(yes), ""),
-    u => noa_match_join(key, kid(arg, 1), fields, yes, noa_eval(ctx, kid(mat, 1), ks(kid(fn, 1)), facts, noa_unames(ks(kid(fn, 2))), noa_fresh(yes), noa_fuel(yes), +i => noa_apply(ctx, noa_iv(i), arg, noa_if(i), noa_in(i), noa_iu(i), k))), u => yes)
+    u => noa_match_join(key, kid(arg, 1), fields, yes, noa_eval(ctx, kid(mat, 1), ks(kid(fn, 1)), facts, noa_unames(ks(kid(fn, 2))), noa_fresh(yes), noa_fuel(yes), NO_KApplyOne{arg, k})), u => yes)
 
-# Module: src/back/native/observer-analysis.bend:323
+# Module: src/back/native/observer-analysis.bend:348
 @unsafe
 def noa_match_join(key: String, word: KTerm, fields: List<&2, KTerm>, yes: NO_Analysis, +no: NO_Analysis) -> NO_Analysis:
   NO_Analysis{kt("NO_Match", key, 0, 0, [word, kt("NO_Fields", "", 0, 0, noa_value_words(fields)), noa_body(yes), noa_body(no)]), noa_fresh(no), noa_fuel(no), noa_error(no)}
 
-# Module: src/back/native/observer-analysis.bend:327
+# Module: src/back/native/observer-analysis.bend:352
 @unsafe
 def noa_tail(xs: List<&2, KTerm>) -> List<&2, KTerm>:
   match xs:
     case Nil{}: Nil{}
     case Con{+x, +rest}: rest
 
-# Module: src/back/native/observer-analysis.bend:333
+# Module: src/back/native/observer-analysis.bend:358
 @unsafe
 def noa_entry_values(params: List<&2, KTerm>, +i: U32) -> List<&2, KTerm>:
   match params:
     case Nil{}: Nil{}
     case Con{+p, +rest}: Con{noa_atom(nm(p), kt("OArg", "", i, 0, Nil{}), p), noa_entry_values(rest, U32.inc(i))}
 
-# Module: src/back/native/observer-analysis.bend:339
+# Module: src/back/native/observer-analysis.bend:364
 @unsafe
 def noa_param_origin(+id: U32, params: List<&2, KTerm>, +i: U32) -> KTerm:
   match params:
     case Nil{}: atom("Absent")
     case Con{+p, +rest}: nt_choose(KTerm, U32.is_eq(ix(p), id), u => kt("OArg", "", i, 0, Nil{}), u => noa_param_origin(id, rest, U32.inc(i)))
 
-# Module: src/back/native/observer-analysis.bend:352
+# Module: src/back/native/observer-analysis.bend:377
 @unsafe
 def noa_finish_fields(+ctx: NO_Context, values: List<&2, KTerm>, templates: List<&2, KTerm>, +facts: List<&2, KTerm>) -> KTerm:
   match values, templates:
@@ -36900,12 +37071,12 @@ def noa_finish_fields(+ctx: NO_Context, values: List<&2, KTerm>, templates: List
     case Con{+v, +vs}, Con{+t, +ts}: noa_finish_merge(noa_finish_value(ctx, v, t, facts), noa_finish_fields(ctx, vs, ts, facts))
     case _, _: atom("Absent")
 
-# Module: src/back/native/observer-analysis.bend:359
+# Module: src/back/native/observer-analysis.bend:384
 @unsafe
 def noa_finish_merge(+a: KTerm, +b: KTerm) -> KTerm:
   nt_choose(KTerm, String.eq(tg(a), "OResult") && String.eq(tg(b), "OResult"), u => kt("OResult", "", 0, 0, nt_append(KTerm, ks(a), ks(b))), u => atom("Absent"))
 
-# Module: src/back/native/observer-analysis.bend:363
+# Module: src/back/native/observer-analysis.bend:388
 @unsafe
 def noa_finish_value(ctx, value, template, facts):
   nt_choose(KTerm, String.eq(tg(template), "Var"), u =>
@@ -36914,23 +37085,23 @@ def noa_finish_value(ctx, value, template, facts):
       v => nt_choose(KTerm, noa_equal(value, noa_param_origin(ix(template), no_schema_params(noa_schema(ctx)), 0), facts), w => kt("OResult", "", 0, 0, Nil{}), w => atom("Absent"))), u =>
     nt_choose(KTerm, String.eq(tg(template), "Ctr") && String.eq(tg(value), "OC") && String.eq(nm(template), nm(value)), v => noa_finish_fields(ctx, ks(value), ks(template), facts), v => atom("Absent")))
 
-# Module: src/back/native/observer-analysis.bend:371
+# Module: src/back/native/observer-analysis.bend:396
 @unsafe
 def noa_finish(+ctx: NO_Context, +input: NO_Input) -> NO_Analysis:
   +result = noa_finish_value(ctx, noa_iv(input), no_schema_wrapper(noa_schema(ctx)), noa_if(input))
   nt_choose(NO_Analysis, String.eq(tg(result), "OResult") && U32.is_eq(terms_len(ks(result)), 1), u => NO_Analysis{kt("NO_Return", "", 0, 0, ks(result)), noa_in(input), noa_iu(input), ""}, u => noa_fail("observer: returned root or observation unproved", noa_in(input), noa_iu(input)))
 
-# Module: src/back/native/observer-analysis.bend:376
+# Module: src/back/native/observer-analysis.bend:401
 @unsafe
 def noa_below(+origin: KTerm, +want: KTerm) -> Bool:
   nt_choose(Bool, norm_exact(origin, want), u => True{}, u => String.eq(tg(origin), "OField") && noa_below(kid(origin, 0), want))
 
-# Module: src/back/native/observer-analysis.bend:380
+# Module: src/back/native/observer-analysis.bend:405
 @unsafe
 def noa_root_param(+ctx: NO_Context, +p: KTerm) -> Bool:
   Bool.not(nol_scalar(noa_book(ctx), kt("ADT", nm(p), 0, 0, Nil{})))
 
-# Module: src/back/native/observer-analysis.bend:384
+# Module: src/back/native/observer-analysis.bend:409
 @unsafe
 def noa_loop_valid(+ctx: NO_Context, params: List<&2, KTerm>, args: List<&2, KTerm>, +i: U32, +strict: Bool) -> Bool:
   match params, args:
@@ -36941,33 +37112,33 @@ def noa_loop_valid(+ctx: NO_Context, params: List<&2, KTerm>, args: List<&2, KTe
         u => String.eq(noa_value_type(ctx, a), nm(p)) && Bool.not(String.eq(tg(noa_scalar(ctx, a)), "Absent")) && noa_loop_valid(ctx, ps, rest, U32.inc(i), strict))
     case _, _: False{}
 
-# Module: src/back/native/observer-analysis.bend:394
+# Module: src/back/native/observer-analysis.bend:419
 @unsafe
 def noa_loop_words(+ctx: NO_Context, params: List<&2, KTerm>, args: List<&2, KTerm>) -> List<&2, KTerm>:
   match params, args:
     case Con{+p, +ps}, Con{+a, +rest}: Con{nt_choose(KTerm, noa_root_param(ctx, p), u => kid(a, 1), u => noa_scalar(ctx, a)), noa_loop_words(ctx, ps, rest)}
     case _, _: Nil{}
 
-# Module: src/back/native/observer-analysis.bend:400
+# Module: src/back/native/observer-analysis.bend:425
 @unsafe
 def noa_actuals(params: List<&2, KTerm>, args: List<&2, KTerm>) -> List<&2, KTerm>:
   match params, args:
     case Con{+p, +ps}, Con{+a, +rest}: noa_bind(ix(p), a, noa_actuals(ps, rest))
     case _, _: Nil{}
 
-# Module: src/back/native/observer-analysis.bend:411
+# Module: src/back/native/observer-analysis.bend:436
 @unsafe
 def noa_virtual_fields(ts: List<&2, KTerm>, +env: List<&2, KTerm>) -> List<&2, KTerm>:
   match ts:
     case Nil{}: Nil{}
     case Con{+h, +rest}: Con{noa_virtual(h, env), noa_virtual_fields(rest, env)}
 
-# Module: src/back/native/observer-analysis.bend:417
+# Module: src/back/native/observer-analysis.bend:442
 @unsafe
 def noa_virtual(t, env):
   nt_choose(KTerm, String.eq(tg(t), "Var"), u => noa_env(ix(t), env), u => kt("OC", nm(t), 0, 0, noa_virtual_fields(ks(t), env)))
 
-# Module: src/back/native/observer-analysis.bend:421
+# Module: src/back/native/observer-analysis.bend:446
 @unsafe
 def noa_recur(ctx, args, facts, n, fuel, k):
   +schema = noa_schema(ctx)
@@ -36976,10 +37147,10 @@ def noa_recur(ctx, args, facts, n, fuel, k):
   +observation = noa_atom(no_schema_observation(schema), kt("ORecursive", "", nc_id(n), 0, Nil{}), marker)
   +env = noa_bind(no_schema_result(schema), observation, noa_actuals(params, args))
   nt_choose(NO_Analysis, noa_loop_valid(ctx, params, args, 0, False{}),
-    u => noa_recur_done(ctx, args, marker, k(NO_Input{noa_virtual(no_schema_wrapper(schema), env), facts, U32.inc(n), fuel})),
+    u => noa_recur_done(ctx, args, marker, noa_continue(ctx, k, NO_Input{noa_virtual(no_schema_wrapper(schema), env), facts, U32.inc(n), fuel})),
     u => noa_fail("observer: recursive cursor or scalar slot", n, fuel))
 
-# Module: src/back/native/observer-analysis.bend:432
+# Module: src/back/native/observer-analysis.bend:457
 @unsafe
 def noa_recur_done(+ctx: NO_Context, +args: List<&2, KTerm>, +marker: KTerm, rest: NO_Analysis) -> NO_Analysis:
   match rest:
@@ -36991,35 +37162,35 @@ def noa_recur_done(+ctx: NO_Context, +args: List<&2, KTerm>, +marker: KTerm, res
 # Public query entry: permission must be supplied by the checked host path.
 # It is deliberately not read from any user-controlled book definition.
 
-# Module: src/back/native/observer-analysis.bend:442
+# Module: src/back/native/observer-analysis.bend:467
 @unsafe
 def noa_analyze(+book: List<&2, KDef>, +name: String, +schema: NO_Schema, +permission: Bool) -> NO_Analysis:
   nt_choose(NO_Analysis, permission && String.eq(no_schema_error(schema), ""),
     u => noa_analyze_ready(NO_Context{book, name, schema}),
     u => noa_fail("observer: absent checked permission or schema", no_schema_fresh(schema), 4096))
 
-# Module: src/back/native/observer-analysis.bend:448
+# Module: src/back/native/observer-analysis.bend:473
 @unsafe
 def noa_analyze_ready(+ctx: NO_Context) -> NO_Analysis:
   +schema = noa_schema(ctx)
   +params = noa_entry_values(no_schema_params(schema), 0)
   +body = nc_source_body(noa_book(ctx), lookup(noa_book(ctx), noa_owner(ctx)), no_schema_fresh(schema))
-  noa_eval(ctx, body, Nil{}, Nil{}, Nil{}, no_schema_fresh(schema), 4096, +i => noa_apply_args(ctx, noa_iv(i), params, noa_if(i), noa_in(i), noa_iu(i), +j => noa_finish(ctx, j)))
+  noa_eval(ctx, body, Nil{}, Nil{}, Nil{}, no_schema_fresh(schema), 4096, NO_KApplyArgs{params, NO_KFinish{}})
 
-# Module: src/back/native/observer-analysis.bend:455
+# Module: src/back/native/observer-analysis.bend:480
 @unsafe
-def noa_literal(+ctx: NO_Context, +t: KTerm, +env: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +n: U32, +fuel: U32, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_literal(+ctx: NO_Context, +t: KTerm, +env: List<&2, KTerm>, +facts: List<&2, KTerm>, +stack: List<&2, String>, +n: U32, +fuel: U32, +k: NO_Cont) -> NO_Analysis:
   +lit = no_literal_typed(noa_book(ctx), t)
   +step = no_literal_string_step(noa_book(ctx), t)
-  nt_choose(NO_Analysis, String.eq(tg(lit), "NO_TypedWord"), u => k(NO_Input{noa_atom(nm(lit), kt("OConst", nm(lit), ix(lit), 0, Nil{}), kid(lit, 0)), facts, n, fuel}), u =>
+  nt_choose(NO_Analysis, String.eq(tg(lit), "NO_TypedWord"), u => noa_continue(ctx, k, NO_Input{noa_atom(nm(lit), kt("OConst", nm(lit), ix(lit), 0, Nil{}), kid(lit, 0)), facts, n, fuel}), u =>
     nt_choose(NO_Analysis, Bool.not(String.eq(tg(step), "Absent")), v => noa_eval(ctx, step, env, facts, stack, n, fuel, k), v => noa_fail("observer: unsupported literal", n, fuel)))
 
-# Module: src/back/native/observer-analysis.bend:462
+# Module: src/back/native/observer-analysis.bend:487
 @unsafe
-def noa_constructor(+ctx: NO_Context, +name: String, +input: NO_Input, +k: NO_Input -> NO_Analysis) -> NO_Analysis:
+def noa_constructor(+ctx: NO_Context, +name: String, +input: NO_Input, +k: NO_Cont) -> NO_Analysis:
   +args = ks(noa_iv(input))
   +valid = Bool.not(String.eq(name, "Chr")) || (U32.is_eq(terms_len(args), 1) && String.eq(noa_value_type(ctx, terms_at(args, 0)), "U32"))
-  nt_choose(NO_Analysis, valid, u => k(NO_Input{kt("OC", name, 0, 0, args), noa_if(input), noa_in(input), noa_iu(input)}), u => noa_fail("observer: Char constructor type", noa_in(input), noa_iu(input)))
+  nt_choose(NO_Analysis, valid, u => noa_continue(ctx, k, NO_Input{kt("OC", name, 0, 0, args), noa_if(input), noa_in(input), noa_iu(input)}), u => noa_fail("observer: Char constructor type", noa_in(input), noa_iu(input)))
 
 # Module: src/back/native/observer-plan.bend:7
 @unsafe
@@ -37116,26 +37287,31 @@ def no_candidate_names(+book: List<&2, KDef>, names: List<&2, String>, +bangs: L
 # Module: src/back/native/observer-integration.bend:34
 @unsafe
 def no_entry_defs(segments: List<&2, N_Segment>) -> List<&2, KDef>:
+  no_entry_defs_rev(segments, Nil{})
+
+# Module: src/back/native/observer-integration.bend:38
+@unsafe
+def no_entry_defs_rev(segments: List<&2, N_Segment>, +entries: List<&2, KDef>) -> List<&2, KDef>:
   match segments:
-    case Nil{}: Nil{}
+    case Nil{}: nt_reverse(KDef, entries, Nil{})
     case Con{N_Segment{+name, params, result, +frame, body, refs, host, spin, fork, +bang}, +rest}:
       +arity = nt_count(N_Param, params)
       nt_choose(List<&2, KDef>, no_direct_frame(frame) && Bool.not(bang) && U32.is_ge(arity, 1) && U32.is_le(arity, 4),
-        u => Con{KDef{name, "NOEligibleEntry", arity, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, no_entry_defs(rest)}, u => no_entry_defs(rest))
+        u => no_entry_defs_rev(rest, Con{KDef{name, "NOEligibleEntry", arity, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, entries}), u => no_entry_defs_rev(rest, entries))
 
-# Module: src/back/native/observer-integration.bend:43
+# Module: src/back/native/observer-integration.bend:47
 @unsafe
 def no_worker_taken(+name: String, workers: List<&2, NF_Worker>) -> Bool:
   match workers:
     case Nil{}: False{}
     case Con{NF_Worker{current, params, code, deps, shape}, rest}: String.eq(name, current) || no_worker_taken(name, rest)
 
-# Module: src/back/native/observer-integration.bend:49
+# Module: src/back/native/observer-integration.bend:53
 @unsafe
 def no_private_free(+book: List<&2, KDef>, +workers: List<&2, NF_Worker>, +name: String) -> Bool:
   String.eq(dk(lookup(book, name)), "Absent") && Bool.not(no_worker_taken(name, workers))
 
-# Module: src/back/native/observer-integration.bend:53
+# Module: src/back/native/observer-integration.bend:57
 @unsafe
 def no_route_pair(+book: List<&2, KDef>, +owner: String, +arity: U32, +pair: List<&2, NF_Worker>, +old: NO_Route, +scalar: Bool, +roots: List<&2, U32>, +types: List<&2, KTerm>) -> NO_Route:
   +ready = nf_admit(book, pair, no_route_ready(old), 2)
@@ -37143,7 +37319,7 @@ def no_route_pair(+book: List<&2, KDef>, +owner: String, +arity: U32, +pair: Lis
     u => NO_Route{List.append(&2, NF_Worker, pair, nt_choose(List<&2, NF_Worker>, scalar, v => no_scalar_redirect(no_route_workers(old), owner, roots), v => no_route_workers(old))), ready, Con{KDef{nd_name(owner), nt_choose(String, scalar, v => "NOScalarObserver", v => "NOObserverEntry"), arity, 0, kt("NORootTypes", "", 0, 0, types), kt("NOOwner", owner, 0, 0, Nil{}), Nil{}, False{}, False{}}, no_route_entries(old)}},
     u => old)
 
-# Module: src/back/native/observer-integration.bend:60
+# Module: src/back/native/observer-integration.bend:64
 @unsafe
 def no_route_plan(+book: List<&2, KDef>, +entry: KDef, +old: NO_Route, +plan: NO_Plan) -> NO_Route:
   +schema = no_plan_schema(plan)
@@ -37155,37 +37331,42 @@ def no_route_plan(+book: List<&2, KDef>, +entry: KDef, +old: NO_Route, +plan: NO
     u => nt_choose(NO_Route, no_private_free(book, no_route_workers(old), no_worker_name(owner)) && no_private_free(book, no_route_workers(old), no_adapter_name(owner)),
       v => no_route_pair(book, owner, da(entry), [no_worker(owner, params, no_schema_specs_layouts(no_schema_specs(schema)), noa_body(analysis)), no_adapter(book, owner, params, no_schema_roots(schema), no_schema_result(schema), no_schema_wrapper(schema), noa_fresh(analysis))], old, scalar, no_schema_roots(schema), no_root_types(no_schema_params(schema), no_schema_roots(schema), 0)), v => old), u => old)
 
-# Module: src/back/native/observer-integration.bend:71
+# Module: src/back/native/observer-integration.bend:75
 @unsafe
 def no_route_one(+book: List<&2, KDef>, +name: String, +entry: KDef, +old: NO_Route) -> NO_Route:
   nt_choose(NO_Route, String.eq(dk(entry), "NOEligibleEntry"),
     u => no_route_schema(book, name, entry, old, no_schema(book, lookup(book, name), 0)), u => old)
 
-# Module: src/back/native/observer-integration.bend:76
+# Module: src/back/native/observer-integration.bend:80
 @unsafe
 def no_route_names(+book: List<&2, KDef>, names: List<&2, String>, +index: List<&2, KDef>, +old: NO_Route) -> NO_Route:
   match names:
     case Nil{}: old
     case Con{+name, rest}: no_route_names(book, rest, index, no_route_one(book, name, lookup(index, nd_name(name)), old))
 
-# Module: src/back/native/observer-integration.bend:82
+# Module: src/back/native/observer-integration.bend:86
 @unsafe
 def no_route(+book: List<&2, KDef>, +segments: List<&2, N_Segment>, +names: List<&2, String>, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +permission: Bool) -> NO_Route:
   +old : NO_Route = NO_Route{workers, ready, Nil{}}
   nt_choose(NO_Route, permission, u => no_route_names(book, names, book_cached(no_entry_defs(segments), 0), old), u => old)
 
-# Module: src/back/native/observer-integration.bend:87
+# Module: src/back/native/observer-integration.bend:91
 @unsafe
 def no_wrap_registered(segments: List<&2, N_Segment>, +index: List<&2, KDef>, +ready: List<&2, String>) -> List<&2, N_Segment>:
+  no_wrap_registered_rev(segments, index, ready, Nil{})
+
+# Module: src/back/native/observer-integration.bend:95
+@unsafe
+def no_wrap_registered_rev(segments: List<&2, N_Segment>, +index: List<&2, KDef>, +ready: List<&2, String>, wrapped: List<&2, N_Segment>) -> List<&2, N_Segment>:
   match segments:
-    case Nil{}: Nil{}
+    case Nil{}: nt_reverse(N_Segment, wrapped, Nil{})
     case Con{+segment, rest}:
       match segment:
         case N_Segment{name, params, result, frame, body, refs, host, spin, fork, bang}:
           +d = lookup(index, name)
-          Con{nt_choose(N_Segment, String.eq(dk(d), "NOObserverEntry"), u => no_wrap_adapter(nm(dv(d)), da(d), ready, segment), u => segment), no_wrap_registered(rest, index, ready)}
+          no_wrap_registered_rev(rest, index, ready, Con{nt_choose(N_Segment, String.eq(dk(d), "NOObserverEntry"), u => no_wrap_adapter(nm(dv(d)), da(d), ready, segment), u => segment), wrapped})
 
-# Module: src/back/native/observer-integration.bend:97
+# Module: src/back/native/observer-integration.bend:105
 @unsafe
 def no_wrap_routes(+segments: List<&2, N_Segment>, +entries: List<&2, KDef>, +ready: List<&2, String>) -> List<&2, N_Segment>:
   nt_choose(List<&2, N_Segment>, List.is_empty(&2, KDef, entries), u => segments, u => no_wrap_registered(segments, book_cached(entries, 0), ready))
@@ -37193,7 +37374,7 @@ def no_wrap_routes(+segments: List<&2, N_Segment>, +entries: List<&2, KDef>, +re
 # Scalar observers borrow only shared roots. Keep the existing owned worker
 # for unique inputs, including its tail loop, ownership and error checks.
 
-# Module: src/back/native/observer-integration.bend:103
+# Module: src/back/native/observer-integration.bend:111
 @unsafe
 def no_shared_roots(params: List<&2, N_Param>, +roots: List<&2, U32>, +i: U32) -> String:
   match params:
@@ -37201,7 +37382,7 @@ def no_shared_roots(params: List<&2, N_Param>, +roots: List<&2, U32>, +i: U32) -
     case Con{N_Param{+word, kind}, rest}:
       nt_choose(String, no_root_index(roots, i), u => "(term_rfc(" ++ word ++ ") && (rfc_view(e, term_loc(" ++ word ++ ")) & RFC_CNT) > 1) || ", u => "") ++ no_shared_roots(rest, roots, U32.inc(i))
 
-# Module: src/back/native/observer-integration.bend:110
+# Module: src/back/native/observer-integration.bend:118
 @unsafe
 def no_scalar_redirect(workers: List<&2, NF_Worker>, +owner: String, +roots: List<&2, U32>) -> List<&2, NF_Worker>:
   match workers:
@@ -37210,7 +37391,7 @@ def no_scalar_redirect(workers: List<&2, NF_Worker>, +owner: String, +roots: Lis
       +redirect = "if (" ++ no_shared_roots(params, roots, 0) ++ ") { return " ++ nf_name(no_adapter_name(owner)) ++ "(e, seq, nf_out" ++ nf_arg_c(nf_segment_args(params)) ++ "); }\n"
       Con{NF_Worker{name, params, nt_choose(NC_Code, String.eq(name, owner), u => nc_prepend(redirect, code), u => code), nt_choose(List<&2, String>, String.eq(name, owner), u => Con{no_adapter_name(owner), deps}, u => deps), shape}, no_scalar_redirect(rest, owner, roots)}
 
-# Module: src/back/native/observer-integration.bend:118
+# Module: src/back/native/observer-integration.bend:126
 @unsafe
 def no_root_types(params: List<&2, KTerm>, +roots: List<&2, U32>, +i: U32) -> List<&2, KTerm>:
   match params:
@@ -37219,7 +37400,7 @@ def no_root_types(params: List<&2, KTerm>, +roots: List<&2, U32>, +i: U32) -> Li
 
 # Scalar-only routes require an ordinary fallback before symbolic evaluation.
 
-# Module: src/back/native/observer-integration.bend:125
+# Module: src/back/native/observer-integration.bend:133
 @unsafe
 def no_route_schema(+book: List<&2, KDef>, +name: String, +entry: KDef, +old: NO_Route, +schema: NO_Schema) -> NO_Route:
   nt_choose(NO_Route, String.eq(no_schema_error(schema), "") && (Bool.not(String.eq(tg(no_schema_wrapper(schema)), "Var")) || nb_contains(no_route_ready(old), name)),

@@ -1,0 +1,81 @@
+{
+  "kind": "phase90-image-pin-reference-schema-correction",
+  "complete": true,
+  "executionPerformed": false,
+  "records": [
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/image_support.py",
+        "sha256": "7fb9652de1bede6f355b72c361552ab1e88c1c09836813ae2de2ee48aaed7d36",
+        "bytes": 7520
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/image_support_v2.py",
+        "sha256": "c8c407bd4cf3c2ad21323205eb3123b93dac1bec33ac0758ad5ca53b932438ca",
+        "bytes": 7736
+      },
+      "exactInverse": true,
+      "edits": [
+        {
+          "old": "def exact(a,b):return all(a[k]==b[k] for k in ['sha256','bytes'])",
+          "new": "def exact(a,b):return all(a[k]==b[k] for k in ['sha256','bytes'])\n\ndef reference(record):\n    actual=pin(record.get('file',record.get('path')))\n    assert actual['sha256']==record['sha256']\n    if 'bytes' in record:assert actual['bytes']==record['bytes']\n    return actual"
+        },
+        {
+          "old": "verify(pins[key])",
+          "new": "reference(pins[key])"
+        },
+        {
+          "old": "verify(pins['b2'])",
+          "new": "reference(pins['b2'])"
+        },
+        {
+          "old": "verify(pins['b1'])",
+          "new": "reference(pins['b1'])"
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/bind-image.py",
+        "sha256": "3cc6cad6bd20aa11b684f594d83bd9b0394089b5389d1921d09bc7c7bc2f37d8",
+        "bytes": 706
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/bind-image-v2.py",
+        "sha256": "7f20e9044d53b90cd8694869fc9936c943691a9a97fd61131c115f590b07173f",
+        "bytes": 709
+      },
+      "exactInverse": true,
+      "edits": [
+        {
+          "old": "from image_support import bind,pin",
+          "new": "from image_support_v2 import bind,pin"
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/run-image.py",
+        "sha256": "cd505855742fde646c1f2d3571dd69d0b3d482671b153a47e73fc3dccd8ffc73",
+        "bytes": 6134
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/runtime-migration01/run-image-v2.py",
+        "sha256": "6493d5ba6b52986d39159e7a7bfa1bd29ee20b2322631bb55c36dee4e2080cdf",
+        "bytes": 6140
+      },
+      "exactInverse": true,
+      "edits": [
+        {
+          "old": "from image_support import authenticate_unqualified",
+          "new": "from image_support_v2 import authenticate_unqualified"
+        },
+        {
+          "old": "pin(Path(__file__).with_name('image_support.py'))",
+          "new": "pin(Path(__file__).with_name('image_support_v2.py'))"
+        }
+      ]
+    }
+  ],
+  "scope": "Preserve image-pins file/SHA references with optional length; independently hash referenced actual bytes and compare full producer identity. Prior full pins/guards/equality gates unchanged."
+}

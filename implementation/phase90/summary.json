@@ -1,0 +1,273 @@
+{
+  "kind": "phase90-completed-native-and-js-release",
+  "complete": true,
+  "passed": true,
+  "targetJobsRun": 0,
+  "method": {
+    "file": "selfhost/tools/performance/phase90/finalize.py",
+    "sha256": "f7efcc6da38dfb7567bcff9d84e76ba211bfa037e84e39801b5dfb9fb0382026",
+    "bytes": 6552
+  },
+  "installedJs": {
+    "b1": {
+      "file": "selfhost/build/phase90/compiler07/equality/api.mjs",
+      "sha256": "6bf8e0938565fc4a1b2152640ac83e11e0538fe080a1ec6ac8b89ec6c5958379",
+      "bytes": 2307495
+    },
+    "b2": {
+      "file": "selfhost/build/phase90/compiler07-b2/full/compiler.mjs",
+      "sha256": "284f6e9b88614c4cbd60812a7641fb03d9b9c49892c9bb0d692b1b2c31b5bd30",
+      "bytes": 4745566
+    },
+    "source": {
+      "file": "selfhost/build/phase90/compiler07/snapshot/build/typed/snapshots/a9a2f09d42e8fbb040df2d91eeed3a1dcf06b90b6797a19d563e59e07038303d/compiler.bend",
+      "sha256": "4ffae2a3e5287f6ca8dce5ef078da55df8f7dc570f9f0a9422e7070bb19e9165",
+      "bytes": 1694830
+    },
+    "ownSourceCheck": true,
+    "exactB3": true,
+    "driverObservations": 8,
+    "legacyChecks": 42,
+    "defaultChecks": 24,
+    "releaseVerified": true
+  },
+  "native": {
+    "binary": {
+      "file": "selfhost/build/phase90/compiler-own-native07",
+      "sha256": "d7c7a47917884b14fd3ef37471d9f2a8660d7c4ab9bcc93a249c7cb6d0e37d3e",
+      "bytes": 16913416
+    },
+    "source": {
+      "file": "selfhost/tools/performance/phase90/observation/noindent01/compiler-noindent.bend",
+      "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+      "bytes": 1759353
+    },
+    "c": {
+      "file": "selfhost/build/phase90/native07-self01/output.1.c",
+      "sha256": "dae071f0fae7aec4ae8036ccebe4954690a249e32f59a87ac485b2fa428016bf",
+      "bytes": 38614882
+    },
+    "independentJsC": {
+      "file": "selfhost/build/phase90/js-new-runtime02/program.c",
+      "sha256": "dae071f0fae7aec4ae8036ccebe4954690a249e32f59a87ac485b2fa428016bf",
+      "bytes": 38614882
+    },
+    "nativeProducerC": {
+      "file": "selfhost/build/phase90/native06-new-runtime01/output.1.c",
+      "sha256": "dae071f0fae7aec4ae8036ccebe4954690a249e32f59a87ac485b2fa428016bf",
+      "bytes": 38614882
+    },
+    "cPatched": false,
+    "exactSelfC": true,
+    "requestMs": [
+      164322
+    ],
+    "selfPeakRssBytes": 1649618944,
+    "buildSeconds": 308.2014300089795,
+    "buildPeakRssBytes": 4172177408,
+    "liveCacheChecks": 8,
+    "negativeChecks": 2,
+    "executedPrograms": 4,
+    "publicCliChecks": 6
+  },
+  "continuity": {
+    "formattingPreprocessingPoints": 45,
+    "runtimePreprocessingPoints": 45,
+    "runtimeBoundaryExecutions": 4,
+    "newProgramSpeedCampaign": false
+  },
+  "performance": {
+    "screenCases": 6,
+    "screenRequests": 36,
+    "rounds": 2,
+    "ratios": {
+      "js-b2": {
+        "requestMs": 0.890501676906829,
+        "processWallMs": 1.3667066871353457
+      },
+      "native": {
+        "requestMs": 0.37999326304897535,
+        "processWallMs": 0.6782205758988626
+      }
+    },
+    "timedCampaignSeconds": 39.29001056100242,
+    "scope": "Six selected compilation workloads, two balanced fresh-process rounds; performance/output screen only. B2/native use separately prepared API/Base products; TS does ordinary load/check/emit including Base. Native Base decode is outside native request_ms and inside process time. B2 cache decode is inside inspect time. Process clocks include each measurement worker and output validation; B2 validation is also itemized, and this is not a production CLI startup comparison. No full-conformance, compiled-program-speed or general-parity claim.",
+    "fullCompilerJsB2RequestMs": 51671.975159,
+    "fullCompilerNativeOverJsB2": 3.180099067131927
+  },
+  "production": {
+    "modules": 132,
+    "physicalBendLines": 32692,
+    "addedPhysicalBendLines": 101,
+    "runtimeNetAddedLines": 7
+  },
+  "inputs": [
+    {
+      "file": "selfhost/build/phase90/compiler07/attempt.json",
+      "sha256": "bcd6d4c713f845fbd950d1dcdbf91667766da41b70ca24a8f3848fe3dc26b0eb",
+      "bytes": 319504
+    },
+    {
+      "file": "selfhost/build/phase90/compiler07-b2/image-pins.json",
+      "sha256": "9c061b558f6311971f1b1ec775a7e811efee92f31a06e442eb157134f8eac4bf",
+      "bytes": 5072
+    },
+    {
+      "file": "selfhost/build/phase90/compiler07/equality/api.mjs",
+      "sha256": "6bf8e0938565fc4a1b2152640ac83e11e0538fe080a1ec6ac8b89ec6c5958379",
+      "bytes": 2307495
+    },
+    {
+      "file": "selfhost/build/phase90/compiler07-b2/full/compiler.mjs",
+      "sha256": "284f6e9b88614c4cbd60812a7641fb03d9b9c49892c9bb0d692b1b2c31b5bd30",
+      "bytes": 4745566
+    },
+    {
+      "file": "selfhost/build/phase90/qualification07/self-check/report.json",
+      "sha256": "49e37ad95f5809df03d775ec72b2b2adb51addd48125ea70b934a2c75cb70155",
+      "bytes": 316445
+    },
+    {
+      "file": "selfhost/build/phase90/qualification07/fixed-point/report.json",
+      "sha256": "1948d36d10583390c5fbe49ced73fe997139a38df89aae41f533bf322af5c592",
+      "bytes": 150695
+    },
+    {
+      "file": "selfhost/build/phase90/qualification07/fixed-point/compiler.mjs",
+      "sha256": "284f6e9b88614c4cbd60812a7641fb03d9b9c49892c9bb0d692b1b2c31b5bd30",
+      "bytes": 4745566
+    },
+    {
+      "file": "selfhost/build/phase90/compiler07-b2/driver-comparison.json",
+      "sha256": "e4cac6056bb5936716a3e6021c67076b4e6846c7b5a4ed2d54fc1bff4a342a19",
+      "bytes": 1098
+    },
+    {
+      "file": "selfhost/build/phase90/release07-retry01/legacy42/checks/report.json",
+      "sha256": "a571516634cde38cfb3ac1f7124d0b940eb00512d29c03d7425e14e2de0a34e2",
+      "bytes": 192467
+    },
+    {
+      "file": "selfhost/build/phase90/release07-retry01/default24/report.json",
+      "sha256": "a390d9ce8dd7c2eae8d91cc297e81e68f4ae3a684d33f16d6673fbcb468d8c07",
+      "bytes": 178049
+    },
+    {
+      "file": "selfhost/build/phase90/release07-retry01/job-verify-after/stdout.log",
+      "sha256": "fd17d38564dffb5e2d82c7ae67cbf5b26bdec0a07c1a9c00575487fa073af5fa",
+      "bytes": 278
+    },
+    {
+      "file": "selfhost/dist/release.json",
+      "sha256": "d0b05dfaca2da7ccbb29552d04b33fa9ea02aca7cd49a60ec7430ee2be9a9d0b",
+      "bytes": 42258
+    },
+    {
+      "file": "selfhost/build/phase90/native07-self01/report.json",
+      "sha256": "32cdb739600b73471e4579ab783f0503957b51b2eec81a5ad68097baa24cbc69",
+      "bytes": 190148
+    },
+    {
+      "file": "selfhost/build/phase90/js-new-runtime02/report.json",
+      "sha256": "85d2392769970ad1cc31eda97cb47e9111ff4d9b76914c19815c2c805ec3e6e2",
+      "bytes": 378566
+    },
+    {
+      "file": "selfhost/build/phase90/native06-new-runtime01/report.json",
+      "sha256": "4225b9fbd7acd41466b6251ac8d0e1db437b6b6fd11a4513431effdd68be09db",
+      "bytes": 170958
+    },
+    {
+      "file": "selfhost/build/phase90/native06-new-runtime01/output.1.c",
+      "sha256": "dae071f0fae7aec4ae8036ccebe4954690a249e32f59a87ac485b2fa428016bf",
+      "bytes": 38614882
+    },
+    {
+      "file": "selfhost/build/phase90/js-new-runtime02/program.c",
+      "sha256": "dae071f0fae7aec4ae8036ccebe4954690a249e32f59a87ac485b2fa428016bf",
+      "bytes": 38614882
+    },
+    {
+      "file": "selfhost/build/phase90/native07-self01/output.1.c",
+      "sha256": "dae071f0fae7aec4ae8036ccebe4954690a249e32f59a87ac485b2fa428016bf",
+      "bytes": 38614882
+    },
+    {
+      "file": "selfhost/build/phase90/own-native07-build-guard/process.json",
+      "sha256": "6a81f21441519ff59de1f47bb718a71eb861c3282f3654c6ce1793e2466b4aef",
+      "bytes": 843
+    },
+    {
+      "file": "selfhost/build/phase90/compiler-own-native07",
+      "sha256": "d7c7a47917884b14fd3ef37471d9f2a8660d7c4ab9bcc93a249c7cb6d0e37d3e",
+      "bytes": 16913416
+    },
+    {
+      "file": "selfhost/tools/performance/phase90/runtime-migration01/native-admission.json",
+      "sha256": "431b4f396d6479628c602a546cbeb466376eea4e9e17f8594e033a9c16ad3de1",
+      "bytes": 541
+    },
+    {
+      "file": "selfhost/build/native/releases/phase90-native07/admission.json",
+      "sha256": "06c90774a4886aa0dedbb0f8c3847ecc7da6f124ae28d13e92040309d8a62926",
+      "bytes": 167584
+    },
+    {
+      "file": "selfhost/build/phase90/compiler-own-native07",
+      "sha256": "d7c7a47917884b14fd3ef37471d9f2a8660d7c4ab9bcc93a249c7cb6d0e37d3e",
+      "bytes": 16913416
+    },
+    {
+      "file": "selfhost/build/phase90/native07-qualification01/report.json",
+      "sha256": "81e9eaf6031c01f3fd88d9777e5944d857ca6e655c17242be23ed5b0e18c95e1",
+      "bytes": 270408
+    },
+    {
+      "file": "selfhost/build/phase90/native-cli01/report.json",
+      "sha256": "9684eddf3ea33f087a3c0f3e498a703aee89cc81a7c35864608d1038f5bb29da",
+      "bytes": 13298
+    },
+    {
+      "file": "selfhost/build/phase90/broad-token45/report.json",
+      "sha256": "31365b5c59e2bdeeaf7d06b617133b7f1150407f18b0aea81314c1fe307d4bae",
+      "bytes": 3845335
+    },
+    {
+      "file": "selfhost/build/phase90/runtime-cpp45/report.json",
+      "sha256": "0520f4697edabfb8ee1284ee7c163c933e6bad08b386fd7286c5c20babfdcd10",
+      "bytes": 1082965
+    },
+    {
+      "file": "selfhost/build/phase90/runtime-boundary01-results/report.json",
+      "sha256": "f10d6c4bc989d5a1c5cf7d743cca98350f2ef341a00c074642a9799d2d4f990d",
+      "bytes": 19363
+    },
+    {
+      "file": "selfhost/build/phase90/final-screen01/report.json",
+      "sha256": "c282819b5be9902c9816951615ede36d5fd26d7679d98316be7334187c94c5ff",
+      "bytes": 506499
+    },
+    {
+      "file": "implementation/phase90/production-size.json",
+      "sha256": "6dfaa2c69e738c50f3d0e8db4c9a48a9ecd22c040790ff449a6aeaab19da0868",
+      "bytes": 28489
+    },
+    {
+      "file": "selfhost/build/phase90/compiler07/snapshot/build/typed/snapshots/a9a2f09d42e8fbb040df2d91eeed3a1dcf06b90b6797a19d563e59e07038303d/compiler.bend",
+      "sha256": "4ffae2a3e5287f6ca8dce5ef078da55df8f7dc570f9f0a9422e7070bb19e9165",
+      "bytes": 1694830
+    },
+    {
+      "file": "selfhost/tools/performance/phase90/observation/noindent01/compiler-noindent.bend",
+      "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+      "bytes": 1759353
+    }
+  ],
+  "limitations": [
+    "Fixed C/source/runtime tuple and finite selected gates, not a compiler correctness proof or unrestricted conformance.",
+    "Native public entry is canonical-path single Base-importing source, nine effects, one CPU worker; GPU/parallel hosting is unqualified.",
+    "Prepared Base and worker overhead differ across measured roles; six-case two-round ratios are not broad algorithmic or installed-CLI parity.",
+    "Initial legacy smoke failed under sandbox pipe capture. Identical diagnostic and unchanged guarded smoke passed outside sandbox; all records retained.",
+    "The large-table threshold is conservative and arbitrary large-program dispatch overhead remains unmeasured."
+  ]
+}

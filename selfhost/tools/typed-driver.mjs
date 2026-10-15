@@ -37,7 +37,7 @@ const trace=(message)=>{if(process.env.BEND_TYPED_TRACE)process.stderr.write(`[t
 
 // Produced by ne_runtime_prepare in Bend; this shell only verifies/transports it.
 // The digest binds insertion boundaries, not merely the concatenated C bytes.
-const nativeTemplateSha256='f9f5a1c98f17f892d891032ca35489234e43d3b4112a18e592e6da408b09736c';
+const nativeTemplateSha256='53fc42a61e6ea8d156a7b7a8a691ed753828119f2ae7ef5bb08a20db57c74793';
 function nativeTemplate(runtime,inputs) {
   const file=path.join(project,'src/runtime/native/runtime-template.json');
   let bytes;

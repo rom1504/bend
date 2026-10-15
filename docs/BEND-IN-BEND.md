@@ -5,21 +5,23 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-The default package is genuine **Phase78 B2** (`cc99ac9b…`), emitted by the Bend
-compiler itself, with checked B1 and self-check/fixed-point lineage retained.
-The [Phase78 report](../implementation/phase78/README.md) records paired fresh C-request ratios
-**1.732× B1 /1.382× B2 upstream**,8.2%/5.6% less time than Phase77 measured
-alongside. These clocks exclude imports, prepared Bend Base, Clang and execution;
-upstream checks Base within its request. Parity remains open.
+The installed package is **Phase90 genuine JS-hosted B2** (`284f6e9b…`), emitted
+by the Bend compiler itself, with a checked B1 parent, fresh own-source acceptance
+and exact B3 reproduction. Release verification and all 42 legacy / 24 default
+installed and relocated checks pass. The active upstream pin is `0592662`
+(Bend 2.0.36). Read the [Phase90 report](../implementation/phase90/README.md) for
+current evidence and timing boundaries.
 
-Generated C execution is effectively unchanged versus Phase77: **1.002×** its
-time across12 families (**1.067× upstream**). All23 JS benchmark sources remain
-byte-identical, covering45 points. Selected conformance and installed/relocated
-checks pass; known gaps remain. Source grows154 lines, with no new module.
+A separate [native executable](self_hosted/NATIVE_HOST.md) now reproduces its
+complete C exactly in 164.322 seconds. It runs compiler algorithms as machine
+code and uses Python for authentication, resource supervision and file transport.
+Clang builds native executables from emitted C. Its current public entry supports
+one canonical Base-importing source and nine effects; no general GPU, parallel
+native-host or full-language qualification is implied.
 
-The [native session guide](self_hosted/NATIVE_COMPILATION.md) documents repeated C-emission requests.
-The older Phase77 warm-session result (about1.10× upstream over five mixed
-programs) is historical and separate from these fresh-request measurements.
+The [native session guide](self_hosted/NATIVE_COMPILATION.md) describes repeated
+C emission by a JS-hosted compiler, a different execution mode. Historical timing
+ratios below retain their original sources and measurement boundaries.
 
 To install a qualified B2 explicitly, run from `selfhost/`:
 
@@ -33,8 +35,7 @@ node tools/development/release.mjs --verify
 the previous release. Routine development and `npm run build` still create and
 install checked B1; installing a qualified B2 is a separate explicit step.
 
-The following Phase73 results are historical; Phase76 retains their exact twelve
-C artifacts while improving compilation time. Read the latest report for the
+The following Phase73 results are historical. Read the latest report for the
 active compiler and finite conformance boundaries.
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
@@ -433,6 +434,34 @@ replay. It works after moving
 the checkout; original bootstrap reports retain their historical paths and are
 not relabeled as new proofs. This verifies integrity and lineage, not another
 run of all conformance tests. Normal CLI execution does not rebuild source.
+
+## Run the self-hosted native compiler
+
+Phase90's separate native07 launcher runs the compiler written in Bend as a
+Linux x86_64 executable. A native Bend compiler emitted the unpatched C used to
+build native07; native07 then reproduced that entire 38,614,882-byte C file
+exactly from its frozen source. The C also matches an independent genuine JS B2
+emission. This is a finite self-hosting fixed point, not a general correctness
+proof or a claim about which JS release is installed.
+
+```sh
+python3 -B selfhost/tools/performance/phase90/runtime-migration01/native.py \
+  selfhost/tools/performance/phase77/fixtures/small.bend \
+  -o selfhost/build/native/small.c
+```
+
+The native entry supports one source importing canonical Base and nine admitted
+IO effects. `--live` prepares Base in the native process; the default uses its
+authenticated immutable carrier. `--calls 5` requires all five repeated C outputs
+to agree before publishing the first. The current admission binds the canonical
+checkout path; relocation, unrestricted imports, GPU and parallel-runtime
+qualification remain separate. Python only authenticates and supervises the
+native compiler; a request starts neither Node nor Clang.
+
+The [native host guide](self_hosted/NATIVE_HOST.md) gives the exact public capsule
+restore commands, resource limits, completed native07 gates and retained
+Phase89 lineage. The historical Phase89 launcher selects its older native B1
+image, whose self-compilation timed out; it does not select native07.
 
 ## Rebuild the default
 

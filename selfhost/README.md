@@ -1,32 +1,32 @@
 # Bend2 compiler port in Bend2
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The default package is genuine **Phase82 B2** (`098320e8…`), emitted by the Bend
-compiler itself, with checked B1 and self-check/fixed-point lineage retained.
-The [Phase82 report](../implementation/phase82/README.md) records paired fresh
-C-request ratios **1.673× B1 /1.328× B2 upstream**,5.1%/6.2% less time than Phase78
-measured alongside. B2 small/functions65 held-outs improve20.7%/15.1%.
-These clocks exclude imports, prepared Bend Base, Clang and execution;
-upstream checks Base within its request. General parity remains open.
+The installed package is **Phase90 genuine JS-hosted B2** (`284f6e9b…`), emitted
+by the Bend compiler, with a checked B1 parent and fresh own-source/fixed-point
+qualification. Release integrity, 42 legacy and 24 default installed/relocated
+checks pass. Ordinary compilation has no TypeScript fallback. Run
+`node cli.mjs FILE --run`; direct JavaScript remains the default output backend.
 
-All12 benchmark C files remain exact in both stages, preserving the prior
-**1.067× upstream** execution evidence. All23 JS benchmark sources remain
-byte-identical, covering45 points. Selected conformance and installed/relocated
-checks pass; known gaps remain. Source grows69 physical/53 code lines, with no
-new module. The compiler remains written in Bend; the new template artifact is
-produced by Bend and verified/transported by its host.
+Phase90 also provides a **self-hosted native executable**: native07 was built
+from unpatched C emitted by the native Bend compiler, then reproduced that
+complete C exactly in 164.322 seconds. The independent JS B2 emission agrees.
+Python only authenticates assets, bounds execution and transports files; native
+compiler requests run no JavaScript. See the
+[native usage and restoration guide](../docs/self_hosted/NATIVE_HOST.md).
 
-The separate [Phase88 native B1 pilot](../docs/self_hosted/NATIVE_HOST.md) runs
-compiler requests as machine code, with no JavaScript execution bridge. Its
-45-point exact-C/execution gate passes; prepared Base takes58–59ms. Map and warm
-throughput still need work. The native host currently supports one Base-importing
-source and three audited effects. This is distinct from the installed JS B2.
-See the [report](../implementation/phase88/README.md) for cold/warm timings and
-scope; current production source has51additional physical lines in three modules.
+The native entry supports one canonical Base-importing source and nine audited
+effects. Eight live/cache exact-C checks, two invalid-input refusals, four actual
+generated-program executions and six public CLI controls pass. Full C fixed-point
+agreement is finite evidence, not a mathematical compiler proof or unrestricted
+language/GPU/parallel conformance. All 45 selected CPU preprocessing comparisons
+preserve generated-program behavior; this is not a new program-speed campaign.
 
-The [native session guide](../docs/self_hosted/NATIVE_COMPILATION.md) documents repeated C-emission requests.
-The older Phase77 warm-session result (about1.10× upstream over five mixed
-programs) is historical and separate from these fresh-request measurements.
+Read the [Phase90 report](../implementation/phase90/README.md) for current timing,
+lineage, failures and remaining work. Maintained production contains 32,692
+physical Bend lines in 132 modules, +101 lines in this phase. The
+[compiler guide](../docs/BEND-IN-BEND.md) and
+[native session guide](../docs/self_hosted/NATIVE_COMPILATION.md) distinguish
+native executable requests from repeated C emission by a JS-hosted compiler.
 
 The following Phase73 results are historical. Read the current report for the
 installed image and tradeoffs.

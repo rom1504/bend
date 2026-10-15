@@ -4,6 +4,21 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase92 native-chain qualification — 2026-10-15
+
+[P92-001](phase92/P92-001-native-chain.md) · [Report](../implementation/phase92/README.md).
+New upstream-C native B1 and existing native07 use identical D04 Bend source and
+ClangO2 flags. B1 emits exactly native07's build C; both full self requests match
+all38,614,882bytes. Fresh B1/B2 self times140.262s/152.191s versus TS/Bun48.394s.
+Matched six-source B2/B1 request1.203×, process1.444×. Prepared-Base native
+B1/B2 process0.465×/0.672× TS, but live Small3.257×/3.684×; keep these boundaries.
+All45 products match and execute;69 golden fixtures+3rejections pass per role,
+with31 import/provider exclusions. No full frontend/JS/GPU claim. Compiler and
+public selections unchanged.227 serial guarded jobs,19m36.5s occupancy, one
+pre-launch disk stop resumed without repeating89 requests; no OOM/timeout.
+Next investigate common native large-input costs and own Base decoding. The
+JS B2 rich-diagnostic gap remains separate. No PR comments.
+
 ## Phase91 completed — 2026-10-15
 
 [Design](../design/phase91/five-metric-refresh.md) ·

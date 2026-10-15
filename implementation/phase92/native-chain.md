@@ -30,6 +30,18 @@ identity supports reusing that existing build and saves another roughly five
 minutes of Clang work. It is not a claim of fresh ELF bit-reproducibility or a
 correctness proof.
 
+```mermaid
+flowchart LR
+  S["Frozen Bend compiler source D04"] --> U["Upstream TypeScript C emitter"]
+  U --> C1["Upstream C"]
+  C1 --> B1["Clang O2: native B1"]
+  S --> B1
+  B1 --> C2["Own C: 38.6 MB"]
+  C2 -->|"matches existing build input"| B2["native07 / B2"]
+  S --> B2
+  B2 -->|"reproduces exact bytes"| C2
+```
+
 ## Build costs and fairness
 
 Fresh upstream acquisition took60.635s overall: load1.271s, check1.479s and
@@ -50,6 +62,7 @@ same Base, prepared carrier, output-runtime parts and nine effect providers.
 Upstream IO.args supplies the executable head; native07 needs its explicit
 sentinel. The shared native entry sees the same payload arguments.
 
-Self-emission observations and ratios are collected in `summary.json` after both
-bounded requests complete. The small-source screen is reported separately in
+Fresh self requests finished in140.262s for B1 and152.191s for B2, with exact C
+in both cases. Fresh TS/Bun compiles the same source in48.394s to its pinned
+upstream C. `summary.json` records all clocks, RSS and ratios. The small-source screen is reported separately in
 [compilation-screen.md](compilation-screen.md).

@@ -73,11 +73,12 @@ and [checked build receipt](../../selfhost/build/phase92/upstream-b1/build.json)
 
 This screen measures **compiler execution**, not the speed of programs it emits.
 Its complete-C identity proves unchanged products on these six sources. The
-prepared expanded lane covers 45 closed catalog points from 23 originals and
-will additionally execute their outputs; it is a separate qualification until
-its report completes.
+completed expanded lane covers 45 closed catalog points from 23 originals:
+90/90 exact C observations and 45/45 generated-program executions passed.
+See [broad-products.md](broad-products.md) for the preserved disk stop,
+continuation and independent audit.
 
-Even if all 45 products agree, that does **not** transfer the historical C12
+Agreement across all 45 products does **not** transfer the historical C12
 runtime ratio (1.067× upstream) to this experiment. Original C12 uses different
 batch wrappers and imported modules, which the frozen native entry cannot load.
 The closed45 sources and their old execution checks are correctness controls,

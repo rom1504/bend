@@ -1,7 +1,8 @@
 # Self-hosted compiler: current architecture and development
 
 The installed release is Phase90 genuine JS-hosted B2 (`284f6e9b…`), with
-qualified native07 available separately. See the [current five-metric scoreboard](../../implementation/phase91/README.md),
+qualified native07 available separately. See the [native-chain scoreboard](../../implementation/phase92/README.md),
+[JS-hosted five-metric scoreboard](../../implementation/phase91/README.md),
 [metric definitions and fast validation](METRICS.md), and
 [native usage guide](NATIVE_HOST.md).
 

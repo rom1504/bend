@@ -1,0 +1,2876 @@
+{
+  "kind": "phase92-native69-offline-product-audit",
+  "complete": true,
+  "passed": true,
+  "targetExecuted": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase92/conformance/audit-products.py",
+    "sha256": "13435dbdbb5ba47dfbbc45d3f853fb5c268cfe624dc5d9ea64fb9a236b9e8b11",
+    "bytes": 5766
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/plan.json",
+    "sha256": "8e67de8cb4190bb33ed83c67d8567930273998e0b1149ee86831b1ab4eda5297",
+    "bytes": 132133
+  },
+  "roles": {
+    "b1": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json",
+        "sha256": "646078899ef676c99edf69d6677de81b74d5d7977dcfff35c9c3716a0f39a105",
+        "bytes": 2696935
+      },
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1-guard/process.json",
+        "sha256": "842414fb9d95af3179bebf6abd4e3bda776822b3905da07ca9bd40282d5cf0ed",
+        "bytes": 1650
+      },
+      "producer": {
+        "label": "pinned TypeScript C backend; upstream C runtime",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/upstream-checked01/compiler.bend",
+          "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+          "bytes": 1759353
+        },
+        "image": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/upstream-b1/compiler",
+          "sha256": "6bb07e94e2f8ef383a9b8a476441ea751bb2c22e92c776ae66d779a6d6b72b22",
+          "bytes": 10019552
+        },
+        "argvSentinel": false,
+        "build": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/upstream-b1/build.json",
+          "sha256": "432a459f1d4d30079436c77a14b674218c4e7f533dd1f973f12b726d1fb3d191",
+          "bytes": 2815
+        },
+        "checked": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/upstream-checked01/report.json",
+          "sha256": "f2c98c04d7aa88e7584d92344938c3c2eab16abd942378e20e9dfff235664779",
+          "bytes": 40043
+        },
+        "publicAdmission": false,
+        "scope": "Build authentication is not a new B1 semantic admission."
+      },
+      "originalGoldenPasses": 69,
+      "historicalRuntimeMatches": 69,
+      "programExits": {
+        "0": 60,
+        "1": 9
+      },
+      "completeCBytes": 7868305,
+      "observations": [
+        {
+          "id": "base/nat_divmod_zero.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/25/nat_divmod_zero.c",
+            "sha256": "6e55b1965f1fd4a68b5cc68cb5cc8e795351f3cfa8aca8a7ff8329a3788ea29c",
+            "bytes": 139582
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "base/u32_divmod_zero.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/24/u32_divmod_zero.c",
+            "sha256": "554a5580b87f87ca8361261c568dcc6b150be808c0461d62e36e2b3d5b706c3e",
+            "bytes": 134068
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/array_swap_header.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/7/array_swap_header.c",
+            "sha256": "726d5492c874121cc3f770234f0ca6fd3c46ce909cc90eda2505957530625701",
+            "bytes": 119528
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/bang_intrinsic_closure.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/9/bang_intrinsic_closure.c",
+            "sha256": "2060b8c1bc6c6726103afd3620b3c4a9af56be9b468e7dd3e119d0661902c2ed",
+            "bytes": 120952
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/closure_partial_app.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/8/closure_partial_app.c",
+            "sha256": "dd17cde0b53c5083ce6823cdc8c4a3c4d050cf7c7c3ac889c1e885df2a27c530",
+            "bytes": 114955
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/closure_record_shared.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/11/closure_record_shared.c",
+            "sha256": "35186d2d8624bd6161565ea0c98c12d067ba709a2e30b6d2e45ca3f8c4fbfb5d",
+            "bytes": 118439
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/closure_slab_drop.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/16/closure_slab_drop.c",
+            "sha256": "4ced67399d48f9a0683b8499d8fa8f3e9797eee17768319e93c8037c4d11754b",
+            "bytes": 113700
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/erased_partial_closure.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/2/erased_partial_closure.c",
+            "sha256": "860c86865f02d1d46f3afd83828a9b898069cd9ffb408426688aa0c59398f944",
+            "bytes": 112288
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/erasure_match_arm.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/1/erasure_match_arm.c",
+            "sha256": "88cc4cb556dd701694e61836e54c9274ee686d5253aa0a88176d284035201195",
+            "bytes": 117066
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/float_unboxed_ctor.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/23/float_unboxed_ctor.c",
+            "sha256": "cd2b85bddc07546ff47cbafab8e9b9688b6beec6b3d2b355394d14d5d09dc371",
+            "bytes": 127300
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/match_absurd_tail.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/4/match_absurd_tail.c",
+            "sha256": "e2bddb9ff087836ffde01b852cb1dd64a4cb1fd706906a169e9c3df9dcd88a0f",
+            "bytes": 96544
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/over_application.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/3/over_application.c",
+            "sha256": "39fbc456db8a69f2041288ec44865e97aa423f24f80b91ee1f6aea7924686c1e",
+            "bytes": 111665
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/shared_pattern_reuse.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/14/shared_pattern_reuse.c",
+            "sha256": "c774d0a1b753002fca8f4b78644e6eb71ca608930ca368f2b0d25177750c8bd4",
+            "bytes": 118017
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/shared_tree_copies.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/13/shared_tree_copies.c",
+            "sha256": "47e276ed2592b605a9f16bca67047d3fdc812171b30d06f06f5c94f348ff6616",
+            "bytes": 141483
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "io/intrinsic_user_name.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/21/intrinsic_user_name.c",
+            "sha256": "5cc17c604862c4ff3846f717deeb2b0d93f115843810bfba504164a6ab832975",
+            "bytes": 125735
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "io/request_out_of_band.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/19/request_out_of_band.c",
+            "sha256": "d2ced5eb1583ae8fad6c10373266c58474a9afeb892a220f4d9e0721482f5c69",
+            "bytes": 137026
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "io/request_wildcard.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/20/request_wildcard.c",
+            "sha256": "3d2d54627dddde28115dd451e55b5ec0cfaac34bc62e5ff1619403909366d944",
+            "bytes": 132344
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/aggregate-tail-swap.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/5/aggregate-tail-swap.c",
+            "sha256": "7ee6c670543c508e65693563d0b564e2d7ed2c68937aae8886847efac1dbfbb8",
+            "bytes": 108112
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/callback-array-owner-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/6/callback-array-owner-v2.c",
+            "sha256": "e249f1f7cd600a8c0b8a4c616ab183b90358f8a7c46770a21800fb5d9dc0e4be",
+            "bytes": 104517
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/error-order-partial.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/29/partial.c",
+            "sha256": "bc63e9c39201ba68523fbffb29a9b1e894d7579364b7987afdc804eb6f6f8b43",
+            "bytes": 104137
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/error-order-saturated.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/28/saturated.c",
+            "sha256": "08787ccfecd8cecddc46fd02c3407cdc9ae1d8bd8c8b1b836728c1776e2467b5",
+            "bytes": 101139
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/error-order-staged-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/30/staged.c",
+            "sha256": "9affe5e62197518816561588ca9ae9796aafa2a6ec8fbd4284b14b0257d5ffa4",
+            "bytes": 100544
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/flat-admission-v1.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/32/flat-admission-v1.c",
+            "sha256": "ce5ba05a50d53d3272070c2ba817812cc5adfe4b4e66bf7f0e0619902019f129",
+            "bytes": 100240
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/flat-product-array-v1.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/34/flat-product-array-v1.c",
+            "sha256": "1aa74f1c027884bcd37e76be40e3a1a5e40482f25baeb579293268fb069e4210",
+            "bytes": 105385
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/flat-product-branch-drop-v1.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/35/flat-product-branch-drop-v1.c",
+            "sha256": "77d8d822a0f54220dafb016e1baa5f656e3554e6c4b83893551560478e6e2cd8",
+            "bytes": 117024
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/flat-product-record-v1.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/33/flat-product-record-v1.c",
+            "sha256": "2887f862ed35dd85925a0fd550c5078d9633906e335a5f288bc483270c2592af",
+            "bytes": 100726
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/match-arity-packet.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/0/match-arity-packet.c",
+            "sha256": "fab43157b382188d6feb0d7e9fcf30752ef9576af5c24309e0eb35a4d07a95d1",
+            "bytes": 109765
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/matcher-shared-residual-v3.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/27/matcher-shared-residual-v3.c",
+            "sha256": "c9911abdc0878db022c8608a0372d60f76e631832fa7e1116c2bd7b3edc6502f",
+            "bytes": 108370
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/prefix-scratch-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/31/prefix-scratch-v2.c",
+            "sha256": "e7834f502f96b08d756a78df8f01d4f34b0f6adc93ddda0a76875f5ee056f5ea",
+            "bytes": 127215
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/bang-and-ordinary.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/41/bang-and-ordinary.c",
+            "sha256": "a77e79b095d83e189f7740fbf51bd209111bee6bc47d2101d2f1c3032d5f3679",
+            "bytes": 129997
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/existing/compile/bang_intrinsic_closure.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/48/bang_intrinsic_closure.c",
+            "sha256": "2060b8c1bc6c6726103afd3620b3c4a9af56be9b468e7dd3e119d0661902c2ed",
+            "bytes": 120952
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/existing/compile/closure_partial_app.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/45/closure_partial_app.c",
+            "sha256": "dd17cde0b53c5083ce6823cdc8c4a3c4d050cf7c7c3ac889c1e885df2a27c530",
+            "bytes": 114955
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/existing/compile/erased_partial_closure.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/46/erased_partial_closure.c",
+            "sha256": "860c86865f02d1d46f3afd83828a9b898069cd9ffb408426688aa0c59398f944",
+            "bytes": 112288
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/existing/compile/over_application.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/47/over_application.c",
+            "sha256": "39fbc456db8a69f2041288ec44865e97aa423f24f80b91ee1f6aea7924686c1e",
+            "bytes": 111665
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/multiple-missing.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/42/multiple-missing.c",
+            "sha256": "004851bb534eccc8f20502d2852392d210ca617a82d96adb14c7f6091d7f861f",
+            "bytes": 114058
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/shared-capture-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/43/shared-capture-v2.c",
+            "sha256": "a68bfeef2064f23a7c7285b56a2f6877a8f1109d6a64ca823cd498d6624abfa1",
+            "bytes": 106086
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/stored-erased.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/44/stored-erased.c",
+            "sha256": "93cdc6baa6f7d2b7dd7e0dfb93dcb57a1176615ef61b015bf9e9758bb513198c",
+            "bytes": 101207
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/known-combinators/capture-error-order.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/49/capture-error-order.c",
+            "sha256": "2f1449f7986e2cf3629269bde39b7b29502019776a0d8b5761a4e773260b8a53",
+            "bytes": 105951
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/known-combinators/flip.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/50/flip.c",
+            "sha256": "c7effb6810af1c9875afeffce264aea6dd62372a050c6973dd644afb8768ff7c",
+            "bytes": 112741
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/known-combinators/nested-literal-argument-error.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/51/nested-literal-argument-error.c",
+            "sha256": "665b998bdb364665bc833f4fc2d0669cf02ce7a968d0d3454e46bd752f9a283a",
+            "bytes": 100092
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/known-combinators/nonlinear-fallback-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/52/nonlinear-fallback-v2.c",
+            "sha256": "bf532981fa98d243a743fb97b8d59dbe9556dbfd2015ea9dcea44604d865cfd2",
+            "bytes": 118981
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/known-combinators/shared-literal-capture-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/53/shared-literal-capture-v2.c",
+            "sha256": "0046dc9d08219d877f016db4f7c4ddd007f268080a80c9ff5ddd09c460431a21",
+            "bytes": 109322
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/known-combinators/unused-literal-argument-error-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/54/unused-literal-argument-error-v2.c",
+            "sha256": "70f9f21755e83bfa4eeb495f048c90e10e335a59c16230a135d2a16e95d28e4f",
+            "bytes": 101267
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/node-reuse-v2/captured-user-refusal.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/63/captured-user-refusal.c",
+            "sha256": "8422dfc9cb5a3bf6c46eb9f4491bf9c770b27bdb757998e042ba66871a8fd6b1",
+            "bytes": 104824
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/node-reuse-v2/container-user-refusal.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/62/container-user-refusal.c",
+            "sha256": "20c5ebbf5b36e396d75b73a8245be502f1858a57c77a76d439705fc80dab92f4",
+            "bytes": 106568
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/node-reuse-v2/shared-user-refusal.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/61/shared-user-refusal.c",
+            "sha256": "a197f111c3d1ed6bd29d97e0dfcf1456cc08d24a0b35e2b14e6a2b0a4dbfabbe",
+            "bytes": 98152
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/node-reuse/shared-base-inside-cold.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/58/shared-base-inside-cold.c",
+            "sha256": "ed8fd75b0a375376e4a20d08cb7885f7743d552addf1de6e5466c3e090d9f59f",
+            "bytes": 105745
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/node-reuse/shared-user-dynamic-refusal.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/59/shared-user-dynamic-refusal.c",
+            "sha256": "f58949c779c5537c02c7470c21cd3c69f6299f8e426accf3b44747b8463b979c",
+            "bytes": 101381
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/node-reuse/unique-rotation.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/60/unique-rotation.c",
+            "sha256": "d560b7b7dc33a0501232344aac1b76af2e9765b4a4da298aa902b81bf1fce386",
+            "bytes": 108762
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/reachability/closure-bang.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/39/closure-bang.c",
+            "sha256": "d385bd232083527137b99336094330d3ff8c9d7b673a2e9bac52ad557a2ef284",
+            "bytes": 101253
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/reachability/dead-bang.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/37/dead-bang.c",
+            "sha256": "43c9eda2e9316a09c516c21502fab1fa47e58f87d24fb82c3bc21cb303e6e9cf",
+            "bytes": 94130
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/reachability/erased-bang.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/40/erased-bang.c",
+            "sha256": "1e8c6e67f473f63f32a672c00a16ae46445383340f24f6337e646bebfc4b50e2",
+            "bytes": 95754
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/reachability/live-bang.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/38/live-bang.c",
+            "sha256": "614d5cb9a4aa927176fe6fa5348fcd94561404cc0f74d9cd4517a27b0b10ce1d",
+            "bytes": 96053
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/reachability/ordinary.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/36/ordinary.c",
+            "sha256": "43c9eda2e9316a09c516c21502fab1fa47e58f87d24fb82c3bc21cb303e6e9cf",
+            "bytes": 94130
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/static-data/nested-shared.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/55/nested-shared.c",
+            "sha256": "a766f97ae2a694f9f26ad950725c41155105d221c903aa1e2d4af1541589f12a",
+            "bytes": 100848
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/static-data/product-and-packed.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/56/product-and-packed.c",
+            "sha256": "99d1be8206c2621354382545d6f43e52c8747e1c982d79995ed72ffe253e7724",
+            "bytes": 100022
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/static-data/resource-controls/long-string-2000.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/67/long-string-2000.c",
+            "sha256": "3e01cf3eb2ee3ca3c69eb87fc8cfc396e5fc1b1dc3bee7a64a5f35a4c8ee28c2",
+            "bytes": 186602
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/static-data/string-shared.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/57/string-shared.c",
+            "sha256": "f912704ccfd810ceb0b5e61189c53552a5f1804de76ffc184de1be3539b0b88e",
+            "bytes": 100412
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/typed-worker/scalar-and-large-nat.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/64/scalar-and-large-nat-v2.c",
+            "sha256": "3c8af020cfbc3f92a946fa984ddbcbb35d0409ba50f79766a9a0fbf561c34b18",
+            "bytes": 97736
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/typed-worker/scalar-widening.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/66/scalar-widening.c",
+            "sha256": "5224d14968bafca9030a8ec491b7eaafff9bb7425f56a144635f9448bcb88c34",
+            "bytes": 101883
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/typed-worker/tagged-user-enum.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/65/tagged-user-enum.c",
+            "sha256": "67b2e0d86928eebb665f83720c28be2bb1e4f80f68b7de88aeeb038cc959fbe7",
+            "bytes": 96173
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase70/observer-v4/reordered-fields-refusal.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/68/reordered-fields-refusal.c",
+            "sha256": "ef508956a11cf07af14bf8f93aa696a2450182c09eaae528be7898e436efd922",
+            "bytes": 108932
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "reg/array_clone_boxed.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/12/array_clone_boxed.c",
+            "sha256": "740404e5b6763a5fbaeb8622a55e9d7144480b0dad32dd0566d110696f091fb2",
+            "bytes": 138611
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "reg/brw_audit3_dependent_array.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/17/brw_audit3_dependent_array.c",
+            "sha256": "baabba8572ba106e97ff5d76125c6bbfc7e7d4198b74df81a65578dc31782dfd",
+            "bytes": 131868
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "reg/erased_field_call.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/22/erased_field_call.c",
+            "sha256": "472a41ace9d0a7b79f856f6a2851ee1688aa434299b578970497d1d506d2f644",
+            "bytes": 133723
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "run/fn_capture_owns.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/15/fn_capture_owns.c",
+            "sha256": "70b33364682d5d16db39fcf91fbb12c7395c0b73f925fd9f055057d5a8e1f3f5",
+            "bytes": 132651
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "run/fork_shared_flat.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/10/fork_shared_flat.c",
+            "sha256": "ecfa917c8b80c56c33e76825eaf9db040a5902bcc22188c37047012906f23682",
+            "bytes": 173800
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "run/list_rebox_generic_sum.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/18/list_rebox_generic_sum.c",
+            "sha256": "260ec16a3406164f1c94469c1a83f1fc443600eae3168c366733b850b1645dc7",
+            "bytes": 122077
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "run/nat_overflow.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/26/nat_overflow.c",
+            "sha256": "e6f767d4f133b303e9e2fb03ff382932fb1b6bf0576426522df3a23c291aaabd",
+            "bytes": 108787
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        }
+      ]
+    },
+    "b2": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json",
+        "sha256": "5610e7ef6b25d8e7b2cc7ae8dd689c1370c1b2ec0e0475782c5ab894f0c6e258",
+        "bytes": 2699300
+      },
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2-guard/process.json",
+        "sha256": "31e48dfe3e04fcde39ea9d6248b90395fb147383e2eb382017f41aaf600f040a",
+        "bytes": 1650
+      },
+      "producer": {
+        "label": "self-emitted native07; own C runtime",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/upstream-checked01/compiler.bend",
+          "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+          "bytes": 1759353
+        },
+        "image": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler-own-native07",
+          "sha256": "d7c7a47917884b14fd3ef37471d9f2a8660d7c4ab9bcc93a249c7cb6d0e37d3e",
+          "bytes": 16913416
+        },
+        "argvSentinel": true,
+        "build": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler-own-native07.native-build.json",
+          "sha256": "aa35cf1e677c6671cf9911d67a68fd53e7a7d2aa55943bec196c36d010730bda",
+          "bytes": 162621
+        },
+        "checked": null,
+        "publicAdmission": true,
+        "scope": "Build authentication is not a new B1 semantic admission."
+      },
+      "originalGoldenPasses": 69,
+      "historicalRuntimeMatches": 69,
+      "programExits": {
+        "0": 60,
+        "1": 9
+      },
+      "completeCBytes": 7868305,
+      "observations": [
+        {
+          "id": "base/nat_divmod_zero.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/25/nat_divmod_zero.c",
+            "sha256": "6e55b1965f1fd4a68b5cc68cb5cc8e795351f3cfa8aca8a7ff8329a3788ea29c",
+            "bytes": 139582
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "base/u32_divmod_zero.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/24/u32_divmod_zero.c",
+            "sha256": "554a5580b87f87ca8361261c568dcc6b150be808c0461d62e36e2b3d5b706c3e",
+            "bytes": 134068
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/array_swap_header.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/7/array_swap_header.c",
+            "sha256": "726d5492c874121cc3f770234f0ca6fd3c46ce909cc90eda2505957530625701",
+            "bytes": 119528
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/bang_intrinsic_closure.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/9/bang_intrinsic_closure.c",
+            "sha256": "2060b8c1bc6c6726103afd3620b3c4a9af56be9b468e7dd3e119d0661902c2ed",
+            "bytes": 120952
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/closure_partial_app.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/8/closure_partial_app.c",
+            "sha256": "dd17cde0b53c5083ce6823cdc8c4a3c4d050cf7c7c3ac889c1e885df2a27c530",
+            "bytes": 114955
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/closure_record_shared.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/11/closure_record_shared.c",
+            "sha256": "35186d2d8624bd6161565ea0c98c12d067ba709a2e30b6d2e45ca3f8c4fbfb5d",
+            "bytes": 118439
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/closure_slab_drop.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/16/closure_slab_drop.c",
+            "sha256": "4ced67399d48f9a0683b8499d8fa8f3e9797eee17768319e93c8037c4d11754b",
+            "bytes": 113700
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/erased_partial_closure.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/2/erased_partial_closure.c",
+            "sha256": "860c86865f02d1d46f3afd83828a9b898069cd9ffb408426688aa0c59398f944",
+            "bytes": 112288
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/erasure_match_arm.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/1/erasure_match_arm.c",
+            "sha256": "88cc4cb556dd701694e61836e54c9274ee686d5253aa0a88176d284035201195",
+            "bytes": 117066
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/float_unboxed_ctor.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/23/float_unboxed_ctor.c",
+            "sha256": "cd2b85bddc07546ff47cbafab8e9b9688b6beec6b3d2b355394d14d5d09dc371",
+            "bytes": 127300
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/match_absurd_tail.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/4/match_absurd_tail.c",
+            "sha256": "e2bddb9ff087836ffde01b852cb1dd64a4cb1fd706906a169e9c3df9dcd88a0f",
+            "bytes": 96544
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/over_application.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/3/over_application.c",
+            "sha256": "39fbc456db8a69f2041288ec44865e97aa423f24f80b91ee1f6aea7924686c1e",
+            "bytes": 111665
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/shared_pattern_reuse.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/14/shared_pattern_reuse.c",
+            "sha256": "c774d0a1b753002fca8f4b78644e6eb71ca608930ca368f2b0d25177750c8bd4",
+            "bytes": 118017
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "compile/shared_tree_copies.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/13/shared_tree_copies.c",
+            "sha256": "47e276ed2592b605a9f16bca67047d3fdc812171b30d06f06f5c94f348ff6616",
+            "bytes": 141483
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "io/intrinsic_user_name.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/21/intrinsic_user_name.c",
+            "sha256": "5cc17c604862c4ff3846f717deeb2b0d93f115843810bfba504164a6ab832975",
+            "bytes": 125735
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "io/request_out_of_band.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/19/request_out_of_band.c",
+            "sha256": "d2ced5eb1583ae8fad6c10373266c58474a9afeb892a220f4d9e0721482f5c69",
+            "bytes": 137026
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "io/request_wildcard.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/20/request_wildcard.c",
+            "sha256": "3d2d54627dddde28115dd451e55b5ec0cfaac34bc62e5ff1619403909366d944",
+            "bytes": 132344
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/aggregate-tail-swap.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/5/aggregate-tail-swap.c",
+            "sha256": "7ee6c670543c508e65693563d0b564e2d7ed2c68937aae8886847efac1dbfbb8",
+            "bytes": 108112
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/callback-array-owner-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/6/callback-array-owner-v2.c",
+            "sha256": "e249f1f7cd600a8c0b8a4c616ab183b90358f8a7c46770a21800fb5d9dc0e4be",
+            "bytes": 104517
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/error-order-partial.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/29/partial.c",
+            "sha256": "bc63e9c39201ba68523fbffb29a9b1e894d7579364b7987afdc804eb6f6f8b43",
+            "bytes": 104137
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/error-order-saturated.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/28/saturated.c",
+            "sha256": "08787ccfecd8cecddc46fd02c3407cdc9ae1d8bd8c8b1b836728c1776e2467b5",
+            "bytes": 101139
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/error-order-staged-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/30/staged.c",
+            "sha256": "9affe5e62197518816561588ca9ae9796aafa2a6ec8fbd4284b14b0257d5ffa4",
+            "bytes": 100544
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/flat-admission-v1.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/32/flat-admission-v1.c",
+            "sha256": "ce5ba05a50d53d3272070c2ba817812cc5adfe4b4e66bf7f0e0619902019f129",
+            "bytes": 100240
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/flat-product-array-v1.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/34/flat-product-array-v1.c",
+            "sha256": "1aa74f1c027884bcd37e76be40e3a1a5e40482f25baeb579293268fb069e4210",
+            "bytes": 105385
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/flat-product-branch-drop-v1.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/35/flat-product-branch-drop-v1.c",
+            "sha256": "77d8d822a0f54220dafb016e1baa5f656e3554e6c4b83893551560478e6e2cd8",
+            "bytes": 117024
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/flat-product-record-v1.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/33/flat-product-record-v1.c",
+            "sha256": "2887f862ed35dd85925a0fd550c5078d9633906e335a5f288bc483270c2592af",
+            "bytes": 100726
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/match-arity-packet.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/0/match-arity-packet.c",
+            "sha256": "fab43157b382188d6feb0d7e9fcf30752ef9576af5c24309e0eb35a4d07a95d1",
+            "bytes": 109765
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/matcher-shared-residual-v3.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/27/matcher-shared-residual-v3.c",
+            "sha256": "c9911abdc0878db022c8608a0372d60f76e631832fa7e1116c2bd7b3edc6502f",
+            "bytes": 108370
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase68/prefix-scratch-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/31/prefix-scratch-v2.c",
+            "sha256": "e7834f502f96b08d756a78df8f01d4f34b0f6adc93ddda0a76875f5ee056f5ea",
+            "bytes": 127215
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/bang-and-ordinary.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/41/bang-and-ordinary.c",
+            "sha256": "a77e79b095d83e189f7740fbf51bd209111bee6bc47d2101d2f1c3032d5f3679",
+            "bytes": 129997
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/existing/compile/bang_intrinsic_closure.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/48/bang_intrinsic_closure.c",
+            "sha256": "2060b8c1bc6c6726103afd3620b3c4a9af56be9b468e7dd3e119d0661902c2ed",
+            "bytes": 120952
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/existing/compile/closure_partial_app.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/45/closure_partial_app.c",
+            "sha256": "dd17cde0b53c5083ce6823cdc8c4a3c4d050cf7c7c3ac889c1e885df2a27c530",
+            "bytes": 114955
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/existing/compile/erased_partial_closure.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/46/erased_partial_closure.c",
+            "sha256": "860c86865f02d1d46f3afd83828a9b898069cd9ffb408426688aa0c59398f944",
+            "bytes": 112288
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/existing/compile/over_application.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/47/over_application.c",
+            "sha256": "39fbc456db8a69f2041288ec44865e97aa423f24f80b91ee1f6aea7924686c1e",
+            "bytes": 111665
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/multiple-missing.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/42/multiple-missing.c",
+            "sha256": "004851bb534eccc8f20502d2852392d210ca617a82d96adb14c7f6091d7f861f",
+            "bytes": 114058
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/shared-capture-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/43/shared-capture-v2.c",
+            "sha256": "a68bfeef2064f23a7c7285b56a2f6877a8f1109d6a64ca823cd498d6624abfa1",
+            "bytes": 106086
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/closure-factory/stored-erased.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/44/stored-erased.c",
+            "sha256": "93cdc6baa6f7d2b7dd7e0dfb93dcb57a1176615ef61b015bf9e9758bb513198c",
+            "bytes": 101207
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/known-combinators/capture-error-order.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/49/capture-error-order.c",
+            "sha256": "2f1449f7986e2cf3629269bde39b7b29502019776a0d8b5761a4e773260b8a53",
+            "bytes": 105951
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/known-combinators/flip.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/50/flip.c",
+            "sha256": "c7effb6810af1c9875afeffce264aea6dd62372a050c6973dd644afb8768ff7c",
+            "bytes": 112741
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/known-combinators/nested-literal-argument-error.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/51/nested-literal-argument-error.c",
+            "sha256": "665b998bdb364665bc833f4fc2d0669cf02ce7a968d0d3454e46bd752f9a283a",
+            "bytes": 100092
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/known-combinators/nonlinear-fallback-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/52/nonlinear-fallback-v2.c",
+            "sha256": "bf532981fa98d243a743fb97b8d59dbe9556dbfd2015ea9dcea44604d865cfd2",
+            "bytes": 118981
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/known-combinators/shared-literal-capture-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/53/shared-literal-capture-v2.c",
+            "sha256": "0046dc9d08219d877f016db4f7c4ddd007f268080a80c9ff5ddd09c460431a21",
+            "bytes": 109322
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/known-combinators/unused-literal-argument-error-v2.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/54/unused-literal-argument-error-v2.c",
+            "sha256": "70f9f21755e83bfa4eeb495f048c90e10e335a59c16230a135d2a16e95d28e4f",
+            "bytes": 101267
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/node-reuse-v2/captured-user-refusal.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/63/captured-user-refusal.c",
+            "sha256": "8422dfc9cb5a3bf6c46eb9f4491bf9c770b27bdb757998e042ba66871a8fd6b1",
+            "bytes": 104824
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/node-reuse-v2/container-user-refusal.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/62/container-user-refusal.c",
+            "sha256": "20c5ebbf5b36e396d75b73a8245be502f1858a57c77a76d439705fc80dab92f4",
+            "bytes": 106568
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/node-reuse-v2/shared-user-refusal.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/61/shared-user-refusal.c",
+            "sha256": "a197f111c3d1ed6bd29d97e0dfcf1456cc08d24a0b35e2b14e6a2b0a4dbfabbe",
+            "bytes": 98152
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/node-reuse/shared-base-inside-cold.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/58/shared-base-inside-cold.c",
+            "sha256": "ed8fd75b0a375376e4a20d08cb7885f7743d552addf1de6e5466c3e090d9f59f",
+            "bytes": 105745
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/node-reuse/shared-user-dynamic-refusal.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/59/shared-user-dynamic-refusal.c",
+            "sha256": "f58949c779c5537c02c7470c21cd3c69f6299f8e426accf3b44747b8463b979c",
+            "bytes": 101381
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/node-reuse/unique-rotation.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/60/unique-rotation.c",
+            "sha256": "d560b7b7dc33a0501232344aac1b76af2e9765b4a4da298aa902b81bf1fce386",
+            "bytes": 108762
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/reachability/closure-bang.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/39/closure-bang.c",
+            "sha256": "d385bd232083527137b99336094330d3ff8c9d7b673a2e9bac52ad557a2ef284",
+            "bytes": 101253
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/reachability/dead-bang.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/37/dead-bang.c",
+            "sha256": "43c9eda2e9316a09c516c21502fab1fa47e58f87d24fb82c3bc21cb303e6e9cf",
+            "bytes": 94130
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/reachability/erased-bang.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/40/erased-bang.c",
+            "sha256": "1e8c6e67f473f63f32a672c00a16ae46445383340f24f6337e646bebfc4b50e2",
+            "bytes": 95754
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/reachability/live-bang.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/38/live-bang.c",
+            "sha256": "614d5cb9a4aa927176fe6fa5348fcd94561404cc0f74d9cd4517a27b0b10ce1d",
+            "bytes": 96053
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/reachability/ordinary.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/36/ordinary.c",
+            "sha256": "43c9eda2e9316a09c516c21502fab1fa47e58f87d24fb82c3bc21cb303e6e9cf",
+            "bytes": 94130
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/static-data/nested-shared.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/55/nested-shared.c",
+            "sha256": "a766f97ae2a694f9f26ad950725c41155105d221c903aa1e2d4af1541589f12a",
+            "bytes": 100848
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/static-data/product-and-packed.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/56/product-and-packed.c",
+            "sha256": "99d1be8206c2621354382545d6f43e52c8747e1c982d79995ed72ffe253e7724",
+            "bytes": 100022
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/static-data/resource-controls/long-string-2000.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/67/long-string-2000.c",
+            "sha256": "3e01cf3eb2ee3ca3c69eb87fc8cfc396e5fc1b1dc3bee7a64a5f35a4c8ee28c2",
+            "bytes": 186602
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/static-data/string-shared.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/57/string-shared.c",
+            "sha256": "f912704ccfd810ceb0b5e61189c53552a5f1804de76ffc184de1be3539b0b88e",
+            "bytes": 100412
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/typed-worker/scalar-and-large-nat.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/64/scalar-and-large-nat-v2.c",
+            "sha256": "3c8af020cfbc3f92a946fa984ddbcbb35d0409ba50f79766a9a0fbf561c34b18",
+            "bytes": 97736
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/typed-worker/scalar-widening.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/66/scalar-widening.c",
+            "sha256": "5224d14968bafca9030a8ec491b7eaafff9bb7425f56a144635f9448bcb88c34",
+            "bytes": 101883
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase69/typed-worker/tagged-user-enum.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/65/tagged-user-enum.c",
+            "sha256": "67b2e0d86928eebb665f83720c28be2bb1e4f80f68b7de88aeeb038cc959fbe7",
+            "bytes": 96173
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "phase70/observer-v4/reordered-fields-refusal.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/68/reordered-fields-refusal.c",
+            "sha256": "ef508956a11cf07af14bf8f93aa696a2450182c09eaae528be7898e436efd922",
+            "bytes": 108932
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "reg/array_clone_boxed.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/12/array_clone_boxed.c",
+            "sha256": "740404e5b6763a5fbaeb8622a55e9d7144480b0dad32dd0566d110696f091fb2",
+            "bytes": 138611
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "reg/brw_audit3_dependent_array.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/17/brw_audit3_dependent_array.c",
+            "sha256": "baabba8572ba106e97ff5d76125c6bbfc7e7d4198b74df81a65578dc31782dfd",
+            "bytes": 131868
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "reg/erased_field_call.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/22/erased_field_call.c",
+            "sha256": "472a41ace9d0a7b79f856f6a2851ee1688aa434299b578970497d1d506d2f644",
+            "bytes": 133723
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "run/fn_capture_owns.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/15/fn_capture_owns.c",
+            "sha256": "70b33364682d5d16db39fcf91fbb12c7395c0b73f925fd9f055057d5a8e1f3f5",
+            "bytes": 132651
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "run/fork_shared_flat.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/10/fork_shared_flat.c",
+            "sha256": "ecfa917c8b80c56c33e76825eaf9db040a5902bcc22188c37047012906f23682",
+            "bytes": 173800
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "run/list_rebox_generic_sum.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 0,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/18/list_rebox_generic_sum.c",
+            "sha256": "260ec16a3406164f1c94469c1a83f1fc443600eae3168c366733b850b1645dc7",
+            "bytes": 122077
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        },
+        {
+          "id": "run/nat_overflow.bend",
+          "originalGolden": true,
+          "exactHistoricalObservedFields": true,
+          "exitCode": 1,
+          "completeC": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/26/nat_overflow.c",
+            "sha256": "e6f767d4f133b303e9e2fb03ff382932fb1b6bf0576426522df3a23c291aaabd",
+            "bytes": 108787
+          },
+          "compiledAndExecuted": true,
+          "rawCaptureHashesVerified": true
+        }
+      ]
+    }
+  },
+  "products": [
+    {
+      "id": "phase68/match-arity-packet.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/0/match-arity-packet.c",
+        "sha256": "fab43157b382188d6feb0d7e9fcf30752ef9576af5c24309e0eb35a4d07a95d1",
+        "bytes": 109765
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/0/match-arity-packet.c",
+        "sha256": "fab43157b382188d6feb0d7e9fcf30752ef9576af5c24309e0eb35a4d07a95d1",
+        "bytes": 109765
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "compile/erasure_match_arm.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/1/erasure_match_arm.c",
+        "sha256": "88cc4cb556dd701694e61836e54c9274ee686d5253aa0a88176d284035201195",
+        "bytes": 117066
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/1/erasure_match_arm.c",
+        "sha256": "88cc4cb556dd701694e61836e54c9274ee686d5253aa0a88176d284035201195",
+        "bytes": 117066
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "compile/erased_partial_closure.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/2/erased_partial_closure.c",
+        "sha256": "860c86865f02d1d46f3afd83828a9b898069cd9ffb408426688aa0c59398f944",
+        "bytes": 112288
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/2/erased_partial_closure.c",
+        "sha256": "860c86865f02d1d46f3afd83828a9b898069cd9ffb408426688aa0c59398f944",
+        "bytes": 112288
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "compile/over_application.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/3/over_application.c",
+        "sha256": "39fbc456db8a69f2041288ec44865e97aa423f24f80b91ee1f6aea7924686c1e",
+        "bytes": 111665
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/3/over_application.c",
+        "sha256": "39fbc456db8a69f2041288ec44865e97aa423f24f80b91ee1f6aea7924686c1e",
+        "bytes": 111665
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "compile/match_absurd_tail.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/4/match_absurd_tail.c",
+        "sha256": "e2bddb9ff087836ffde01b852cb1dd64a4cb1fd706906a169e9c3df9dcd88a0f",
+        "bytes": 96544
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/4/match_absurd_tail.c",
+        "sha256": "e2bddb9ff087836ffde01b852cb1dd64a4cb1fd706906a169e9c3df9dcd88a0f",
+        "bytes": 96544
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase68/aggregate-tail-swap.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/5/aggregate-tail-swap.c",
+        "sha256": "7ee6c670543c508e65693563d0b564e2d7ed2c68937aae8886847efac1dbfbb8",
+        "bytes": 108112
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/5/aggregate-tail-swap.c",
+        "sha256": "7ee6c670543c508e65693563d0b564e2d7ed2c68937aae8886847efac1dbfbb8",
+        "bytes": 108112
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase68/callback-array-owner-v2.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/6/callback-array-owner-v2.c",
+        "sha256": "e249f1f7cd600a8c0b8a4c616ab183b90358f8a7c46770a21800fb5d9dc0e4be",
+        "bytes": 104517
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/6/callback-array-owner-v2.c",
+        "sha256": "e249f1f7cd600a8c0b8a4c616ab183b90358f8a7c46770a21800fb5d9dc0e4be",
+        "bytes": 104517
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "compile/array_swap_header.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/7/array_swap_header.c",
+        "sha256": "726d5492c874121cc3f770234f0ca6fd3c46ce909cc90eda2505957530625701",
+        "bytes": 119528
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/7/array_swap_header.c",
+        "sha256": "726d5492c874121cc3f770234f0ca6fd3c46ce909cc90eda2505957530625701",
+        "bytes": 119528
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "compile/closure_partial_app.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/8/closure_partial_app.c",
+        "sha256": "dd17cde0b53c5083ce6823cdc8c4a3c4d050cf7c7c3ac889c1e885df2a27c530",
+        "bytes": 114955
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/8/closure_partial_app.c",
+        "sha256": "dd17cde0b53c5083ce6823cdc8c4a3c4d050cf7c7c3ac889c1e885df2a27c530",
+        "bytes": 114955
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "compile/bang_intrinsic_closure.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/9/bang_intrinsic_closure.c",
+        "sha256": "2060b8c1bc6c6726103afd3620b3c4a9af56be9b468e7dd3e119d0661902c2ed",
+        "bytes": 120952
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/9/bang_intrinsic_closure.c",
+        "sha256": "2060b8c1bc6c6726103afd3620b3c4a9af56be9b468e7dd3e119d0661902c2ed",
+        "bytes": 120952
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "run/fork_shared_flat.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/10/fork_shared_flat.c",
+        "sha256": "ecfa917c8b80c56c33e76825eaf9db040a5902bcc22188c37047012906f23682",
+        "bytes": 173800
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/10/fork_shared_flat.c",
+        "sha256": "ecfa917c8b80c56c33e76825eaf9db040a5902bcc22188c37047012906f23682",
+        "bytes": 173800
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "compile/closure_record_shared.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/11/closure_record_shared.c",
+        "sha256": "35186d2d8624bd6161565ea0c98c12d067ba709a2e30b6d2e45ca3f8c4fbfb5d",
+        "bytes": 118439
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/11/closure_record_shared.c",
+        "sha256": "35186d2d8624bd6161565ea0c98c12d067ba709a2e30b6d2e45ca3f8c4fbfb5d",
+        "bytes": 118439
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "reg/array_clone_boxed.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/12/array_clone_boxed.c",
+        "sha256": "740404e5b6763a5fbaeb8622a55e9d7144480b0dad32dd0566d110696f091fb2",
+        "bytes": 138611
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/12/array_clone_boxed.c",
+        "sha256": "740404e5b6763a5fbaeb8622a55e9d7144480b0dad32dd0566d110696f091fb2",
+        "bytes": 138611
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "compile/shared_tree_copies.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/13/shared_tree_copies.c",
+        "sha256": "47e276ed2592b605a9f16bca67047d3fdc812171b30d06f06f5c94f348ff6616",
+        "bytes": 141483
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/13/shared_tree_copies.c",
+        "sha256": "47e276ed2592b605a9f16bca67047d3fdc812171b30d06f06f5c94f348ff6616",
+        "bytes": 141483
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "compile/shared_pattern_reuse.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/14/shared_pattern_reuse.c",
+        "sha256": "c774d0a1b753002fca8f4b78644e6eb71ca608930ca368f2b0d25177750c8bd4",
+        "bytes": 118017
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/14/shared_pattern_reuse.c",
+        "sha256": "c774d0a1b753002fca8f4b78644e6eb71ca608930ca368f2b0d25177750c8bd4",
+        "bytes": 118017
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "run/fn_capture_owns.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/15/fn_capture_owns.c",
+        "sha256": "70b33364682d5d16db39fcf91fbb12c7395c0b73f925fd9f055057d5a8e1f3f5",
+        "bytes": 132651
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/15/fn_capture_owns.c",
+        "sha256": "70b33364682d5d16db39fcf91fbb12c7395c0b73f925fd9f055057d5a8e1f3f5",
+        "bytes": 132651
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "compile/closure_slab_drop.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/16/closure_slab_drop.c",
+        "sha256": "4ced67399d48f9a0683b8499d8fa8f3e9797eee17768319e93c8037c4d11754b",
+        "bytes": 113700
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/16/closure_slab_drop.c",
+        "sha256": "4ced67399d48f9a0683b8499d8fa8f3e9797eee17768319e93c8037c4d11754b",
+        "bytes": 113700
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "reg/brw_audit3_dependent_array.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/17/brw_audit3_dependent_array.c",
+        "sha256": "baabba8572ba106e97ff5d76125c6bbfc7e7d4198b74df81a65578dc31782dfd",
+        "bytes": 131868
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/17/brw_audit3_dependent_array.c",
+        "sha256": "baabba8572ba106e97ff5d76125c6bbfc7e7d4198b74df81a65578dc31782dfd",
+        "bytes": 131868
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "run/list_rebox_generic_sum.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/18/list_rebox_generic_sum.c",
+        "sha256": "260ec16a3406164f1c94469c1a83f1fc443600eae3168c366733b850b1645dc7",
+        "bytes": 122077
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/18/list_rebox_generic_sum.c",
+        "sha256": "260ec16a3406164f1c94469c1a83f1fc443600eae3168c366733b850b1645dc7",
+        "bytes": 122077
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "io/request_out_of_band.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/19/request_out_of_band.c",
+        "sha256": "d2ced5eb1583ae8fad6c10373266c58474a9afeb892a220f4d9e0721482f5c69",
+        "bytes": 137026
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/19/request_out_of_band.c",
+        "sha256": "d2ced5eb1583ae8fad6c10373266c58474a9afeb892a220f4d9e0721482f5c69",
+        "bytes": 137026
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "io/request_wildcard.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/20/request_wildcard.c",
+        "sha256": "3d2d54627dddde28115dd451e55b5ec0cfaac34bc62e5ff1619403909366d944",
+        "bytes": 132344
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/20/request_wildcard.c",
+        "sha256": "3d2d54627dddde28115dd451e55b5ec0cfaac34bc62e5ff1619403909366d944",
+        "bytes": 132344
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "io/intrinsic_user_name.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/21/intrinsic_user_name.c",
+        "sha256": "5cc17c604862c4ff3846f717deeb2b0d93f115843810bfba504164a6ab832975",
+        "bytes": 125735
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/21/intrinsic_user_name.c",
+        "sha256": "5cc17c604862c4ff3846f717deeb2b0d93f115843810bfba504164a6ab832975",
+        "bytes": 125735
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "reg/erased_field_call.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/22/erased_field_call.c",
+        "sha256": "472a41ace9d0a7b79f856f6a2851ee1688aa434299b578970497d1d506d2f644",
+        "bytes": 133723
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/22/erased_field_call.c",
+        "sha256": "472a41ace9d0a7b79f856f6a2851ee1688aa434299b578970497d1d506d2f644",
+        "bytes": 133723
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "compile/float_unboxed_ctor.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/23/float_unboxed_ctor.c",
+        "sha256": "cd2b85bddc07546ff47cbafab8e9b9688b6beec6b3d2b355394d14d5d09dc371",
+        "bytes": 127300
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/23/float_unboxed_ctor.c",
+        "sha256": "cd2b85bddc07546ff47cbafab8e9b9688b6beec6b3d2b355394d14d5d09dc371",
+        "bytes": 127300
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "base/u32_divmod_zero.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/24/u32_divmod_zero.c",
+        "sha256": "554a5580b87f87ca8361261c568dcc6b150be808c0461d62e36e2b3d5b706c3e",
+        "bytes": 134068
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/24/u32_divmod_zero.c",
+        "sha256": "554a5580b87f87ca8361261c568dcc6b150be808c0461d62e36e2b3d5b706c3e",
+        "bytes": 134068
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "base/nat_divmod_zero.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/25/nat_divmod_zero.c",
+        "sha256": "6e55b1965f1fd4a68b5cc68cb5cc8e795351f3cfa8aca8a7ff8329a3788ea29c",
+        "bytes": 139582
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/25/nat_divmod_zero.c",
+        "sha256": "6e55b1965f1fd4a68b5cc68cb5cc8e795351f3cfa8aca8a7ff8329a3788ea29c",
+        "bytes": 139582
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "run/nat_overflow.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/26/nat_overflow.c",
+        "sha256": "e6f767d4f133b303e9e2fb03ff382932fb1b6bf0576426522df3a23c291aaabd",
+        "bytes": 108787
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/26/nat_overflow.c",
+        "sha256": "e6f767d4f133b303e9e2fb03ff382932fb1b6bf0576426522df3a23c291aaabd",
+        "bytes": 108787
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase68/matcher-shared-residual-v3.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/27/matcher-shared-residual-v3.c",
+        "sha256": "c9911abdc0878db022c8608a0372d60f76e631832fa7e1116c2bd7b3edc6502f",
+        "bytes": 108370
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/27/matcher-shared-residual-v3.c",
+        "sha256": "c9911abdc0878db022c8608a0372d60f76e631832fa7e1116c2bd7b3edc6502f",
+        "bytes": 108370
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase68/error-order-saturated.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/28/saturated.c",
+        "sha256": "08787ccfecd8cecddc46fd02c3407cdc9ae1d8bd8c8b1b836728c1776e2467b5",
+        "bytes": 101139
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/28/saturated.c",
+        "sha256": "08787ccfecd8cecddc46fd02c3407cdc9ae1d8bd8c8b1b836728c1776e2467b5",
+        "bytes": 101139
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase68/error-order-partial.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/29/partial.c",
+        "sha256": "bc63e9c39201ba68523fbffb29a9b1e894d7579364b7987afdc804eb6f6f8b43",
+        "bytes": 104137
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/29/partial.c",
+        "sha256": "bc63e9c39201ba68523fbffb29a9b1e894d7579364b7987afdc804eb6f6f8b43",
+        "bytes": 104137
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase68/error-order-staged-v2.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/30/staged.c",
+        "sha256": "9affe5e62197518816561588ca9ae9796aafa2a6ec8fbd4284b14b0257d5ffa4",
+        "bytes": 100544
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/30/staged.c",
+        "sha256": "9affe5e62197518816561588ca9ae9796aafa2a6ec8fbd4284b14b0257d5ffa4",
+        "bytes": 100544
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase68/prefix-scratch-v2.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/31/prefix-scratch-v2.c",
+        "sha256": "e7834f502f96b08d756a78df8f01d4f34b0f6adc93ddda0a76875f5ee056f5ea",
+        "bytes": 127215
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/31/prefix-scratch-v2.c",
+        "sha256": "e7834f502f96b08d756a78df8f01d4f34b0f6adc93ddda0a76875f5ee056f5ea",
+        "bytes": 127215
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase68/flat-admission-v1.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/32/flat-admission-v1.c",
+        "sha256": "ce5ba05a50d53d3272070c2ba817812cc5adfe4b4e66bf7f0e0619902019f129",
+        "bytes": 100240
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/32/flat-admission-v1.c",
+        "sha256": "ce5ba05a50d53d3272070c2ba817812cc5adfe4b4e66bf7f0e0619902019f129",
+        "bytes": 100240
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase68/flat-product-record-v1.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/33/flat-product-record-v1.c",
+        "sha256": "2887f862ed35dd85925a0fd550c5078d9633906e335a5f288bc483270c2592af",
+        "bytes": 100726
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/33/flat-product-record-v1.c",
+        "sha256": "2887f862ed35dd85925a0fd550c5078d9633906e335a5f288bc483270c2592af",
+        "bytes": 100726
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase68/flat-product-array-v1.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/34/flat-product-array-v1.c",
+        "sha256": "1aa74f1c027884bcd37e76be40e3a1a5e40482f25baeb579293268fb069e4210",
+        "bytes": 105385
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/34/flat-product-array-v1.c",
+        "sha256": "1aa74f1c027884bcd37e76be40e3a1a5e40482f25baeb579293268fb069e4210",
+        "bytes": 105385
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase68/flat-product-branch-drop-v1.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/35/flat-product-branch-drop-v1.c",
+        "sha256": "77d8d822a0f54220dafb016e1baa5f656e3554e6c4b83893551560478e6e2cd8",
+        "bytes": 117024
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/35/flat-product-branch-drop-v1.c",
+        "sha256": "77d8d822a0f54220dafb016e1baa5f656e3554e6c4b83893551560478e6e2cd8",
+        "bytes": 117024
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/reachability/ordinary.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/36/ordinary.c",
+        "sha256": "43c9eda2e9316a09c516c21502fab1fa47e58f87d24fb82c3bc21cb303e6e9cf",
+        "bytes": 94130
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/36/ordinary.c",
+        "sha256": "43c9eda2e9316a09c516c21502fab1fa47e58f87d24fb82c3bc21cb303e6e9cf",
+        "bytes": 94130
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/reachability/dead-bang.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/37/dead-bang.c",
+        "sha256": "43c9eda2e9316a09c516c21502fab1fa47e58f87d24fb82c3bc21cb303e6e9cf",
+        "bytes": 94130
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/37/dead-bang.c",
+        "sha256": "43c9eda2e9316a09c516c21502fab1fa47e58f87d24fb82c3bc21cb303e6e9cf",
+        "bytes": 94130
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/reachability/live-bang.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/38/live-bang.c",
+        "sha256": "614d5cb9a4aa927176fe6fa5348fcd94561404cc0f74d9cd4517a27b0b10ce1d",
+        "bytes": 96053
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/38/live-bang.c",
+        "sha256": "614d5cb9a4aa927176fe6fa5348fcd94561404cc0f74d9cd4517a27b0b10ce1d",
+        "bytes": 96053
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/reachability/closure-bang.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/39/closure-bang.c",
+        "sha256": "d385bd232083527137b99336094330d3ff8c9d7b673a2e9bac52ad557a2ef284",
+        "bytes": 101253
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/39/closure-bang.c",
+        "sha256": "d385bd232083527137b99336094330d3ff8c9d7b673a2e9bac52ad557a2ef284",
+        "bytes": 101253
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/reachability/erased-bang.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/40/erased-bang.c",
+        "sha256": "1e8c6e67f473f63f32a672c00a16ae46445383340f24f6337e646bebfc4b50e2",
+        "bytes": 95754
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/40/erased-bang.c",
+        "sha256": "1e8c6e67f473f63f32a672c00a16ae46445383340f24f6337e646bebfc4b50e2",
+        "bytes": 95754
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/closure-factory/bang-and-ordinary.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/41/bang-and-ordinary.c",
+        "sha256": "a77e79b095d83e189f7740fbf51bd209111bee6bc47d2101d2f1c3032d5f3679",
+        "bytes": 129997
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/41/bang-and-ordinary.c",
+        "sha256": "a77e79b095d83e189f7740fbf51bd209111bee6bc47d2101d2f1c3032d5f3679",
+        "bytes": 129997
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/closure-factory/multiple-missing.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/42/multiple-missing.c",
+        "sha256": "004851bb534eccc8f20502d2852392d210ca617a82d96adb14c7f6091d7f861f",
+        "bytes": 114058
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/42/multiple-missing.c",
+        "sha256": "004851bb534eccc8f20502d2852392d210ca617a82d96adb14c7f6091d7f861f",
+        "bytes": 114058
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/closure-factory/shared-capture-v2.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/43/shared-capture-v2.c",
+        "sha256": "a68bfeef2064f23a7c7285b56a2f6877a8f1109d6a64ca823cd498d6624abfa1",
+        "bytes": 106086
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/43/shared-capture-v2.c",
+        "sha256": "a68bfeef2064f23a7c7285b56a2f6877a8f1109d6a64ca823cd498d6624abfa1",
+        "bytes": 106086
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/closure-factory/stored-erased.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/44/stored-erased.c",
+        "sha256": "93cdc6baa6f7d2b7dd7e0dfb93dcb57a1176615ef61b015bf9e9758bb513198c",
+        "bytes": 101207
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/44/stored-erased.c",
+        "sha256": "93cdc6baa6f7d2b7dd7e0dfb93dcb57a1176615ef61b015bf9e9758bb513198c",
+        "bytes": 101207
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/closure-factory/existing/compile/closure_partial_app.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/45/closure_partial_app.c",
+        "sha256": "dd17cde0b53c5083ce6823cdc8c4a3c4d050cf7c7c3ac889c1e885df2a27c530",
+        "bytes": 114955
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/45/closure_partial_app.c",
+        "sha256": "dd17cde0b53c5083ce6823cdc8c4a3c4d050cf7c7c3ac889c1e885df2a27c530",
+        "bytes": 114955
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/closure-factory/existing/compile/erased_partial_closure.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/46/erased_partial_closure.c",
+        "sha256": "860c86865f02d1d46f3afd83828a9b898069cd9ffb408426688aa0c59398f944",
+        "bytes": 112288
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/46/erased_partial_closure.c",
+        "sha256": "860c86865f02d1d46f3afd83828a9b898069cd9ffb408426688aa0c59398f944",
+        "bytes": 112288
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/closure-factory/existing/compile/over_application.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/47/over_application.c",
+        "sha256": "39fbc456db8a69f2041288ec44865e97aa423f24f80b91ee1f6aea7924686c1e",
+        "bytes": 111665
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/47/over_application.c",
+        "sha256": "39fbc456db8a69f2041288ec44865e97aa423f24f80b91ee1f6aea7924686c1e",
+        "bytes": 111665
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/closure-factory/existing/compile/bang_intrinsic_closure.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/48/bang_intrinsic_closure.c",
+        "sha256": "2060b8c1bc6c6726103afd3620b3c4a9af56be9b468e7dd3e119d0661902c2ed",
+        "bytes": 120952
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/48/bang_intrinsic_closure.c",
+        "sha256": "2060b8c1bc6c6726103afd3620b3c4a9af56be9b468e7dd3e119d0661902c2ed",
+        "bytes": 120952
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/known-combinators/capture-error-order.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/49/capture-error-order.c",
+        "sha256": "2f1449f7986e2cf3629269bde39b7b29502019776a0d8b5761a4e773260b8a53",
+        "bytes": 105951
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/49/capture-error-order.c",
+        "sha256": "2f1449f7986e2cf3629269bde39b7b29502019776a0d8b5761a4e773260b8a53",
+        "bytes": 105951
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/known-combinators/flip.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/50/flip.c",
+        "sha256": "c7effb6810af1c9875afeffce264aea6dd62372a050c6973dd644afb8768ff7c",
+        "bytes": 112741
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/50/flip.c",
+        "sha256": "c7effb6810af1c9875afeffce264aea6dd62372a050c6973dd644afb8768ff7c",
+        "bytes": 112741
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/known-combinators/nested-literal-argument-error.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/51/nested-literal-argument-error.c",
+        "sha256": "665b998bdb364665bc833f4fc2d0669cf02ce7a968d0d3454e46bd752f9a283a",
+        "bytes": 100092
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/51/nested-literal-argument-error.c",
+        "sha256": "665b998bdb364665bc833f4fc2d0669cf02ce7a968d0d3454e46bd752f9a283a",
+        "bytes": 100092
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/known-combinators/nonlinear-fallback-v2.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/52/nonlinear-fallback-v2.c",
+        "sha256": "bf532981fa98d243a743fb97b8d59dbe9556dbfd2015ea9dcea44604d865cfd2",
+        "bytes": 118981
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/52/nonlinear-fallback-v2.c",
+        "sha256": "bf532981fa98d243a743fb97b8d59dbe9556dbfd2015ea9dcea44604d865cfd2",
+        "bytes": 118981
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/known-combinators/shared-literal-capture-v2.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/53/shared-literal-capture-v2.c",
+        "sha256": "0046dc9d08219d877f016db4f7c4ddd007f268080a80c9ff5ddd09c460431a21",
+        "bytes": 109322
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/53/shared-literal-capture-v2.c",
+        "sha256": "0046dc9d08219d877f016db4f7c4ddd007f268080a80c9ff5ddd09c460431a21",
+        "bytes": 109322
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/known-combinators/unused-literal-argument-error-v2.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/54/unused-literal-argument-error-v2.c",
+        "sha256": "70f9f21755e83bfa4eeb495f048c90e10e335a59c16230a135d2a16e95d28e4f",
+        "bytes": 101267
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/54/unused-literal-argument-error-v2.c",
+        "sha256": "70f9f21755e83bfa4eeb495f048c90e10e335a59c16230a135d2a16e95d28e4f",
+        "bytes": 101267
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/static-data/nested-shared.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/55/nested-shared.c",
+        "sha256": "a766f97ae2a694f9f26ad950725c41155105d221c903aa1e2d4af1541589f12a",
+        "bytes": 100848
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/55/nested-shared.c",
+        "sha256": "a766f97ae2a694f9f26ad950725c41155105d221c903aa1e2d4af1541589f12a",
+        "bytes": 100848
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/static-data/product-and-packed.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/56/product-and-packed.c",
+        "sha256": "99d1be8206c2621354382545d6f43e52c8747e1c982d79995ed72ffe253e7724",
+        "bytes": 100022
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/56/product-and-packed.c",
+        "sha256": "99d1be8206c2621354382545d6f43e52c8747e1c982d79995ed72ffe253e7724",
+        "bytes": 100022
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/static-data/string-shared.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/57/string-shared.c",
+        "sha256": "f912704ccfd810ceb0b5e61189c53552a5f1804de76ffc184de1be3539b0b88e",
+        "bytes": 100412
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/57/string-shared.c",
+        "sha256": "f912704ccfd810ceb0b5e61189c53552a5f1804de76ffc184de1be3539b0b88e",
+        "bytes": 100412
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/node-reuse/shared-base-inside-cold.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/58/shared-base-inside-cold.c",
+        "sha256": "ed8fd75b0a375376e4a20d08cb7885f7743d552addf1de6e5466c3e090d9f59f",
+        "bytes": 105745
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/58/shared-base-inside-cold.c",
+        "sha256": "ed8fd75b0a375376e4a20d08cb7885f7743d552addf1de6e5466c3e090d9f59f",
+        "bytes": 105745
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/node-reuse/shared-user-dynamic-refusal.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/59/shared-user-dynamic-refusal.c",
+        "sha256": "f58949c779c5537c02c7470c21cd3c69f6299f8e426accf3b44747b8463b979c",
+        "bytes": 101381
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/59/shared-user-dynamic-refusal.c",
+        "sha256": "f58949c779c5537c02c7470c21cd3c69f6299f8e426accf3b44747b8463b979c",
+        "bytes": 101381
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/node-reuse/unique-rotation.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/60/unique-rotation.c",
+        "sha256": "d560b7b7dc33a0501232344aac1b76af2e9765b4a4da298aa902b81bf1fce386",
+        "bytes": 108762
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/60/unique-rotation.c",
+        "sha256": "d560b7b7dc33a0501232344aac1b76af2e9765b4a4da298aa902b81bf1fce386",
+        "bytes": 108762
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/node-reuse-v2/shared-user-refusal.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/61/shared-user-refusal.c",
+        "sha256": "a197f111c3d1ed6bd29d97e0dfcf1456cc08d24a0b35e2b14e6a2b0a4dbfabbe",
+        "bytes": 98152
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/61/shared-user-refusal.c",
+        "sha256": "a197f111c3d1ed6bd29d97e0dfcf1456cc08d24a0b35e2b14e6a2b0a4dbfabbe",
+        "bytes": 98152
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/node-reuse-v2/container-user-refusal.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/62/container-user-refusal.c",
+        "sha256": "20c5ebbf5b36e396d75b73a8245be502f1858a57c77a76d439705fc80dab92f4",
+        "bytes": 106568
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/62/container-user-refusal.c",
+        "sha256": "20c5ebbf5b36e396d75b73a8245be502f1858a57c77a76d439705fc80dab92f4",
+        "bytes": 106568
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/node-reuse-v2/captured-user-refusal.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/63/captured-user-refusal.c",
+        "sha256": "8422dfc9cb5a3bf6c46eb9f4491bf9c770b27bdb757998e042ba66871a8fd6b1",
+        "bytes": 104824
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/63/captured-user-refusal.c",
+        "sha256": "8422dfc9cb5a3bf6c46eb9f4491bf9c770b27bdb757998e042ba66871a8fd6b1",
+        "bytes": 104824
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/typed-worker/scalar-and-large-nat.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/64/scalar-and-large-nat-v2.c",
+        "sha256": "3c8af020cfbc3f92a946fa984ddbcbb35d0409ba50f79766a9a0fbf561c34b18",
+        "bytes": 97736
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/64/scalar-and-large-nat-v2.c",
+        "sha256": "3c8af020cfbc3f92a946fa984ddbcbb35d0409ba50f79766a9a0fbf561c34b18",
+        "bytes": 97736
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/typed-worker/tagged-user-enum.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/65/tagged-user-enum.c",
+        "sha256": "67b2e0d86928eebb665f83720c28be2bb1e4f80f68b7de88aeeb038cc959fbe7",
+        "bytes": 96173
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/65/tagged-user-enum.c",
+        "sha256": "67b2e0d86928eebb665f83720c28be2bb1e4f80f68b7de88aeeb038cc959fbe7",
+        "bytes": 96173
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/typed-worker/scalar-widening.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/66/scalar-widening.c",
+        "sha256": "5224d14968bafca9030a8ec491b7eaafff9bb7425f56a144635f9448bcb88c34",
+        "bytes": 101883
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/66/scalar-widening.c",
+        "sha256": "5224d14968bafca9030a8ec491b7eaafff9bb7425f56a144635f9448bcb88c34",
+        "bytes": 101883
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase69/static-data/resource-controls/long-string-2000.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/67/long-string-2000.c",
+        "sha256": "3e01cf3eb2ee3ca3c69eb87fc8cfc396e5fc1b1dc3bee7a64a5f35a4c8ee28c2",
+        "bytes": 186602
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/67/long-string-2000.c",
+        "sha256": "3e01cf3eb2ee3ca3c69eb87fc8cfc396e5fc1b1dc3bee7a64a5f35a4c8ee28c2",
+        "bytes": 186602
+      },
+      "sameRecordedCompleteCHash": true
+    },
+    {
+      "id": "phase70/observer-v4/reordered-fields-refusal.bend",
+      "b1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b1/report.json.artifacts/68/reordered-fields-refusal.c",
+        "sha256": "ef508956a11cf07af14bf8f93aa696a2450182c09eaae528be7898e436efd922",
+        "bytes": 108932
+      },
+      "b2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/conformance01/b2/report.json.artifacts/68/reordered-fields-refusal.c",
+        "sha256": "ef508956a11cf07af14bf8f93aa696a2450182c09eaae528be7898e436efd922",
+        "bytes": 108932
+      },
+      "sameRecordedCompleteCHash": true
+    }
+  ],
+  "crossRoleRecordedCompleteCHashMatches": 69,
+  "productsCompared": 69,
+  "inputsReverified": 248,
+  "sourceUnchanged": true,
+  "exclusions": 31,
+  "scope": "Actual original golden executions and matching observed fields verified from frozen reports. C SHA256 and length concordance only: successful raw C/ELF were ephemeral under retain-failed. No reread bytewise C comparison, fresh speed measurement, native100/frontend/JS/parallel/GPU claim."
+}

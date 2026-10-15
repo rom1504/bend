@@ -88,3 +88,19 @@ Actual offline preparations passed in `screen-preflight01` and
 record the exact methods, commands, assets, C products, clock boundaries and
 selection. Fresh output directories are mandatory; existing evidence is never
 overwritten.
+
+The actual `broad01` run stopped at its disk preflight after 89 successful
+compiler requests, before launching request 90 or any generated-program build.
+Its failed report remains unchanged. The narrowly bound continuation verifies
+those 89 outputs and all parent inputs, then runs only the missing request and
+45 build/execution pairs into a fresh directory:
+
+```sh
+python3 -B selfhost/tools/performance/phase92/comparison/resume.py \
+  --parent selfhost/build/phase92/broad01/report.json \
+  --out selfhost/build/phase92/broad02
+```
+
+The continuation records the pause and actual job counts; it is not a fresh
+uninterrupted timing campaign. Its `--check-only` preparation passed without
+executing targets in `broad-resume-preflight01`.

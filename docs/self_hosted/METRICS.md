@@ -1,7 +1,8 @@
 # Compiler metrics and the current scoreboard
 
 Read the [Phase91 scoreboard](../../implementation/phase91/README.md) for the
-installed Phase90 compiler. Its definitions follow the
+installed JS-hosted compiler and the [Phase92 native-chain scoreboard](../../implementation/phase92/README.md)
+for native-hosted B1/B2. These are separate host configurations. Its definitions follow the
 [Phase66 five-axis design](../../design/phase66/upstream-and-five-metrics.md).
 A ratio is **our elapsed time / the reference elapsed time**: 1 is parity,
 0.5 is twice as fast, and 2 is twice as slow. Ratios describe the named corpus,
@@ -25,6 +26,15 @@ engine, configuration and clock; they are not universal language properties.
   cross-compilation; it does not make the generated C program a JS program.
 - **Output target:** JS and C have separate generated-program and compiler-request
   benchmarks. The C request clock ends after C emission; Clang time is separate.
+
+Phase92 builds native B1 from the exact native07 Bend source using pinned
+upstream C and the same Clang/O2 flags. Its full self output equals native07's
+existing build C, so that native B2 binary is reused. This content link does not
+claim a freshly rebuilt ELF or rewrite the historical diagnostic-seed lineage.
+The matched six-source native B2/B1 ratio is1.203× request /1.444× process;
+full-source self compilation is140.3s/152.2s for B1/B2 versus48.4s TS/Bun.
+Prepared Base is essential to the small-source results: the uncached Small
+control takes3.26×/3.68× TS process time. See the report's precise clock boundaries.
 
 The comparable Phase91 B1/B2 campaigns use Node for all three compiler roles,
 with the original JS23 and C3 input sets. The Phase90 six-source native-host

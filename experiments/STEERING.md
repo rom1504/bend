@@ -1,4 +1,32 @@
-# Active frontier: Phase91 scoreboard and B2 diagnostic gap
+# Active frontier: Phase92 source-matched native chain
+
+[Report](../implementation/phase92/README.md) ·
+[Experiment](phase92/P92-001-native-chain.md) · [Metrics](../docs/self_hosted/METRICS.md).
+Current native source D04 is unchanged. Upstream-C native B1 `6bb07e94…` emits
+exactly the38,614,882-byte C used to build native07 `d7c7a479…`; native07 again
+reproduces it. Existing native07 is reused, not claimed as a fresh ELF rebuild.
+
+Native B2/B1 request ratio is1.203× on six sources and1.085× on full self.
+Full self remains140.3s/152.2s versus48.4s TS/Bun:2.90×/3.14×. Small prepared-Base
+process ratios0.465×/0.672× TS are workflow-specific; without the carrier,
+Small is3.257×/3.684×. Native Base decode pooled medians59ms/139ms expose an own-C
+hotspot; full-source costs shared by both native images need profiling too.
+Do not infer allocator/string/dispatch causality or general parity from ratios.
+
+All45 complete products agree across stages and independent oracles;45 shared
+program executions pass. Both native stages pass69 golden fixtures+3rejections;
+31 native100 import/provider exclusions remain. Native entry cannot expose
+full frontend observations or JS modules. The canonical132 modules/32,692 lines,
+installed JS release and public native selection remain unchanged.
+
+Use the33s same-source screen after images exist, then selective product checks.
+A native B1 rebuild still costs about255s; full self and broad correctness are
+integration checks. Preserve the disk-stop failure and89 reused requests; no
+OOM, timeout, overlap, source change, PR comment or quota-percentage claim.
+The JS rich-diagnostic issue below remains open. No automatic optimization is
+started by this completed qualification.
+
+# Previous JS-hosted frontier: Phase91 scoreboard and B2 diagnostic gap
 
 [Report](../implementation/phase91/README.md) ·
 [Metrics guide](../docs/self_hosted/METRICS.md).

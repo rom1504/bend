@@ -21,6 +21,25 @@ This launcher is separate from `selfhost/cli.mjs`. Its native qualification does
 not select or install a JavaScript release; consult the
 [JS release manifest](../../selfhost/dist/release.json) for that artifact.
 
+## Current same-source qualification
+
+The [Phase92 native-chain scoreboard](../../implementation/phase92/README.md)
+builds an upstream-C native B1 from the exact same frozen Bend source and Clang
+flags. Its newly emitted self C is byte-identical to native07's existing build
+input. Fresh self requests take140.3s for B1 and152.2s for native07; TS/Bun
+compiles the same source to its own C in48.4s. These are single observations.
+
+On the six-source prepared-Base screen, native B1/B2 process times are0.465×/
+0.672× TS/Bun, with Map slower. The two native stages share preparation and
+request boundaries; TS performs ordinary Base preparation. Without the carrier,
+the single Small control takes3.257×/3.684× TS process time. These figures are
+not general language/compiler speed ratios.
+
+Both native stages pass69 selected golden execution fixtures and three rejection
+controls each.31 original native100 fixtures exceed the single-source/provider
+contract. Full frontend observations and JS emission are unavailable through
+this entry. The public native07 selection remains unchanged.
+
 ## Restore and compile
 
 Run from the recorded canonical repository path

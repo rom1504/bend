@@ -1,0 +1,221 @@
+{
+  "kind": "phase92-native-chain-scoreboard",
+  "complete": true,
+  "compilerChanged": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/upstream-checked01/compiler.bend",
+    "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+    "bytes": 1759353
+  },
+  "images": {
+    "b1": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/upstream-b1/compiler",
+      "sha256": "6bb07e94e2f8ef383a9b8a476441ea751bb2c22e92c776ae66d779a6d6b72b22",
+      "bytes": 10019552
+    },
+    "b2": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler-own-native07",
+      "sha256": "d7c7a47917884b14fd3ef37471d9f2a8660d7c4ab9bcc93a249c7cb6d0e37d3e",
+      "bytes": 16913416
+    }
+  },
+  "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "ratioDefinition": "numerator elapsed / denominator elapsed; smaller is faster",
+  "compilation": {
+    "sixSource": {
+      "b2/b1": {
+        "requestMs": 1.2025500376381648,
+        "processWallMs": 1.4444687015542148
+      },
+      "b1/ts-bun": {
+        "requestMs": 0.31226571127330044,
+        "processWallMs": 0.4653785890530791
+      },
+      "b2/ts-bun": {
+        "requestMs": 0.37551514284481574,
+        "processWallMs": 0.6722248062606336
+      }
+    },
+    "uncachedSmallControl": {
+      "cases": {
+        "small": {
+          "mediansMs": {
+            "b1": {
+              "requestMs": 57,
+              "processWallMs": 1672.3066549748182
+            },
+            "b2": {
+              "requestMs": 66,
+              "processWallMs": 1891.3522348739207
+            },
+            "ts-bun": {
+              "requestMs": 448.040673,
+              "processWallMs": 513.4473110083491
+            }
+          },
+          "ratios": {
+            "b2/b1": {
+              "requestMs": 1.1578947368421053,
+              "processWallMs": 1.1309840986684352
+            },
+            "b1/ts-bun": {
+              "requestMs": 0.12722059276078268,
+              "processWallMs": 3.2570170670299317
+            },
+            "b2/ts-bun": {
+              "requestMs": 0.1473080547756431,
+              "processWallMs": 3.6836345119025578
+            }
+          }
+        }
+      },
+      "equalCaseGeometricRatios": {
+        "b2/b1": {
+          "requestMs": 1.1578947368421053,
+          "processWallMs": 1.1309840986684352
+        },
+        "b1/ts-bun": {
+          "requestMs": 0.12722059276078268,
+          "processWallMs": 3.2570170670299317
+        },
+        "b2/ts-bun": {
+          "requestMs": 0.1473080547756431,
+          "processWallMs": 3.683634511902558
+        }
+      }
+    },
+    "fullSelf": {
+      "b1": {
+        "requestSeconds": 140.262,
+        "processSeconds": 140.9443262948189,
+        "peakRssBytes": 1653141504,
+        "overTsBunRequest": 2.8983282039440756,
+        "overTsBunProcess": 2.8965855094917448
+      },
+      "b2": {
+        "requestSeconds": 152.191,
+        "processSeconds": 152.98354829614982,
+        "peakRssBytes": 1650126848,
+        "overTsBunRequest": 3.1448251678034875,
+        "overTsBunProcess": 3.1440068630953295
+      },
+      "ts-bun": {
+        "requestSeconds": 48.394105198000005,
+        "processSeconds": 48.65878318902105,
+        "peakRssBytes": 2669588480
+      },
+      "b2OverB1Request": 1.0850479816343699
+    },
+    "broad45": {
+      "b2/b1": {
+        "requestMs": 1.1949309572989064,
+        "processWallMs": 1.3726704478305503
+      }
+    }
+  },
+  "generatedPrograms": {
+    "points": 45,
+    "originalSources": 23,
+    "exactCompleteCObservations": 90,
+    "executionPasses": 45,
+    "freshRuntimeSpeedRatio": null,
+    "scope": "Both native stages equal each frozen current C oracle and shared programs pass. This is output continuity and correctness, not fresh runtime timing; original C12 imports exceed entry scope."
+  },
+  "conformance": {
+    "nativePerRole": 69,
+    "rejectionsPerRole": 3,
+    "excludedPerRole": 31,
+    "reference": {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase92/native-conformance-results01.json",
+      "sha256": "d35e33d544c55f57dab0b77bc63222900ca987d499fe4080b7a0e8e4468bfadb",
+      "bytes": 117531
+    },
+    "fullFrontendQualified": false,
+    "jsTargetQualified": false
+  },
+  "simplicity": {
+    "moduleCount": 132,
+    "physicalLines": 32692,
+    "utf8Bytes": 1531764,
+    "codeLines": 26693,
+    "definitions": 3876,
+    "laws": 658,
+    "types": 146,
+    "sourceDeltaThisPhase": 0,
+    "nativeFrozenAssemblyLines": 38711,
+    "nativeProfileReplacements": 14
+  },
+  "execution": {
+    "guardedJobs": 227,
+    "targetWallSeconds": 1176.5026675835252,
+    "campaignSpanSeconds": 1695.5345492362976,
+    "peakRssBytes": 4291608576,
+    "overlapCount": 0,
+    "preLaunchDiskStops": 1,
+    "scope": "Root-guarded serial jobs, including suite controllers and their descendants. Does not count agents, documentation, archival IO or quota usage."
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/upstream-b1/build.json",
+      "sha256": "432a459f1d4d30079436c77a14b674218c4e7f533dd1f973f12b726d1fb3d191",
+      "bytes": 2815
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/screen01/report.json",
+      "sha256": "2bf06b30bf99fe4e6913210b02f75e82578d244da4c362a758afbea4ade753dd",
+      "bytes": 661862
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/broad02/report.json",
+      "sha256": "f5f8df9672b6369b265915760854e6116299ffcb41d2623aad9847f889a4e70d",
+      "bytes": 1466512
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/broad01/report.json",
+      "sha256": "77735c81d733c66d88791b9865e29123c8eb9e3e678ef2b53c635eb45a007307",
+      "bytes": 1090934
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/self-b1-01/report.json",
+      "sha256": "dc529f7645989ea23e42feded8aa122837c9f821a502d2e3c7379dc8ece3f7a5",
+      "bytes": 420132
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/self-b2-01/report.json",
+      "sha256": "3d37808321078f77635b38388d7425df84e2a1a7ff34dc0402ad662417200018",
+      "bytes": 420184
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/full-ts-bun01/report.json",
+      "sha256": "b72d5ed2d7d33ff6405e8d13dc68ff1d39bf060294f4ba935a5de59cd9d54788",
+      "bytes": 419842
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/live01/report.json",
+      "sha256": "e44dde0f3adcc590cba6673c5353a58fd35bd35e4cf18f7b6876eb18edbde644",
+      "bytes": 477452
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase92/native-conformance-results01.json",
+      "sha256": "d35e33d544c55f57dab0b77bc63222900ca987d499fe4080b7a0e8e4468bfadb",
+      "bytes": 117531
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase91/census01.json",
+      "sha256": "5883dc0e79a69daeaeeb6a2c6d3d826878877f8648226507a8fd5af8c933bf23",
+      "bytes": 241321
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase92/evidence01/receipt.json",
+      "sha256": "073424ede3dfee5bfcf6923e82c338e01e0a7f89091234010f54a6b165c936f2",
+      "bytes": 835
+    }
+  ],
+  "limits": [
+    "Six-source screen has two observations per role/source; full self has one per role. Broad45 spans an explicit disk-reclamation pause and is secondary timing evidence.",
+    "Native prepared Base is outside request time but inside process time; TS performs ordinary Base preparation.",
+    "Native B2 is reused from byte-identical C, not a newly rebuilt ELF.",
+    "Native entry supports checked C only, one Base-importing source and nine providers.",
+    "Existing JS B2 rich diagnostic gap, unsupported APIs and GPU/parallel scope remain."
+  ]
+}

@@ -1,5 +1,9 @@
 # Phase92 frozen native-host conformance plan
 
+Completed results are in [conformance.md](conformance.md):69/69 executions in
+each native role,69 complete-C hash concordances and six correct rejections.
+The preparation-time scope and pending-status account below remains historical.
+
 Preparation is complete; no compiler or generated program was executed by this
 agent. The reusable method is under
 [`phase92/conformance`](../../selfhost/tools/performance/phase92/conformance/README.md).

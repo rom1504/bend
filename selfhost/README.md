@@ -21,7 +21,8 @@ agreement is finite evidence, not a mathematical compiler proof or unrestricted
 language/GPU/parallel conformance. All 45 selected CPU preprocessing comparisons
 preserve generated-program behavior; this is not a new program-speed campaign.
 
-See the [current five-metric scoreboard](../implementation/phase91/README.md) and [metric definitions](../docs/self_hosted/METRICS.md)
+See the [native-chain scoreboard](../implementation/phase92/README.md) and
+[current JS-hosted five-metric scoreboard](../implementation/phase91/README.md) and [metric definitions](../docs/self_hosted/METRICS.md)
 for the refreshed B1/B2 measurements, program-output continuity and conformance scope.
 
 Read the [Phase90 report](../implementation/phase90/README.md) for current timing,

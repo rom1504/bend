@@ -1,5 +1,17 @@
 # Compiler validation
 
+## Phase92 native-host qualification
+
+[Report](../implementation/phase92/README.md) ·
+[Native conformance](../implementation/phase92/conformance.md).
+Current same-source upstream-C B1 and own-C native07 each pass69 original golden
+execution fixtures plus three rejection controls. All69 generated-C SHA256/length
+pairs agree across roles.31 native100 fixtures remain excluded by the native
+entry's import/provider contract. This is actual native compiler execution;
+Node only orchestrates the fixture judge and Clang. The frozen entry exposes
+neither parse/check-only observations nor JS emission. Its concise diagnostics
+do not exercise or fix the JS rich-printer gap below.
+
 ## Phase91 current-release refresh
 
 [Report](../implementation/phase91/README.md) ·

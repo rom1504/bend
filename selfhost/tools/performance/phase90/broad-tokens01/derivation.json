@@ -1,0 +1,76 @@
+{
+  "kind": "phase90-broad-token-method-derivative",
+  "complete": true,
+  "executionPerformed": false,
+  "original": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/whitespace-check-v3.mjs",
+    "sha256": "b916bef1c3daf337b4bc7d133407b5f02104209789abf8ea1393c56299c59f50",
+    "bytes": 13086
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/broad-tokens01/run.mjs",
+    "sha256": "78a1cc3b74f044a85e1686b70c322960eea452f9ae974225886a63c43fd15195",
+    "bytes": 16382
+  },
+  "oraclePreparation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/broad-tokens01/prepare.py",
+    "sha256": "1537b5232869e52c5d143dfbf3223642334d6efcbcd337d7f68ae171f3c53e06",
+    "bytes": 5486
+  },
+  "oracleManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/broad-token-oracles01/manifest.json",
+    "sha256": "2dc968fae3ea021ab25213711d4203fc6d324710bb96e247721e4f10138d6b0a",
+    "bytes": 90169
+  },
+  "exactInverse": true,
+  "edits": [
+    {
+      "old": "// Four ordinary checked-B1 C requests; default-CPU preprocessing equality only.",
+      "new": "// Checked-B1 broad catalog C requests; default-CPU preprocessing equality only."
+    },
+    {
+      "old": "path.resolve(import.meta.dirname,'../../../..')",
+      "new": "path.resolve(import.meta.dirname,'../../../../..')"
+    },
+    {
+      "old": "assert(args[0]&&args[1]);",
+      "new": "assert(args[0]&&args[1]);\nconst seconds=Number(option('--seconds')??300);assert([20,60,300].includes(seconds));\nconst started=performance.now(),deadline=started+seconds*1000;\nconst oracleManifest=path.resolve(option('--oracles')??path.join(root,'selfhost/build/phase90/broad-token-oracles01/manifest.json'));\nconst python=path.resolve(option('--python')??'/usr/bin/python3');"
+    },
+    {
+      "old": "kind:'phase90-checked-b1-cpu-preprocessed-c-equality'",
+      "new": "kind:'phase90-checked-b1-broad-cpu-preprocessed-c-equality'"
+    },
+    {
+      "old": "scope:'Four source-level programs, current checked B1 versus retained independent B2 C. Default CPU preprocessing equality; no compiled execution, benchmark, device or arbitrary raw-segment C claim.'",
+      "new": "scope:'Selected tier of 45 previously executed source-level catalog points, current checked B1 versus sealed independent B2 C. Default CPU preprocessing equality; no new execution, benchmark, device, full-language or native-fixed-point claim.',seconds"
+    },
+    {
+      "old": "  report.oracleGates=bind(path.join(root,'selfhost/build/phase90/native-gates01/gates.json'));\n  const gates=read(report.oracleGates);assert(gates.complete&&gates.passed&&gates.executionPerformed&&!gates.checkOnly);\n  assert.equal(gates.kind,'phase90-combined-native-b1-gates');assert.equal(gates.nativeB1.base.sha256,report.base.sha256);\n  const cases=[];\n  for(const name of ['small','map_closed','unicode','file-io']){\n    const item=gates.oracleCases.find(c=>c.name===name);assert(item);\n    const source=bind(item.source),oracleReceipt=bind(item.oracleReceipt),receipt=read(oracleReceipt);\n    if(name==='file-io'){\n      assert.equal(receipt.kind,'phase89-b2-control-emission');assert(receipt.complete);assert.equal(receipt.observation.status,'ok');assert(receipt.policy&&Object.values(receipt.policy).every(x=>x===0));assert.equal(receipt.output.sha256,item.oracle.sha256);\n    }else{\n      assert(receipt.complete&&receipt.allJobsSucceeded);\n      const prior=receipt.rows.find(r=>r.role==='b2'&&r.case===name);assert(prior&&prior.guard.complete&&prior.guard.returncode===0);\n      assert.equal(prior.outputs[0].sha256,item.oracle.sha256);assert.equal(prior.outputs[0].bytes,item.oracle.bytes);assert.equal(receipt.cases[name],source.file);\n    }\n    const recorded=path.resolve(item.oracle.file??item.oracle.path);\n    let baseline,transport;\n    if(fs.existsSync(recorded)){baseline=bind(item.oracle);transport='retained-independent-B2-output';}\n    else{\n      const copy=gates.rows.find(r=>r.name==='live-'+name);assert(copy&&copy.passed&&copy.exactC&&copy.process.complete&&copy.process.returncode===0&&copy.inputBindingsUnchanged);\n      assert.equal(copy.source.sha256,source.sha256);assert.equal(copy.oracle.sha256,item.oracle.sha256);\n      baseline=bind(copy.output);assert.equal(baseline.sha256,item.oracle.sha256);assert.equal(baseline.bytes,item.oracle.bytes);\n      bind(path.join(copy.guard,'process.json'));transport='retained-native-copy-with-full-independent-B2-digest';\n    }\n    cases.push({name,source,oracleReceipt,baseline,baselineOrigin:{recorded:item.oracle,transport}});\n  }\n",
+      "new": "  report.oracleManifest=bind(oracleManifest);const catalog=read(report.oracleManifest);\n  assert.equal(catalog.kind,'phase90-archived-independent-b2-c-oracles');assert(catalog.complete&&!catalog.executionPerformed);\n  assert.equal(catalog.cases.length,45);for(const p of catalog.inputs)bind(p);\n  report.oraclePreparation=bind(catalog.method);report.archive=bind(catalog.archive);\n  assert.equal(report.archive.sha256,'3ee20c99ea41489e9e2d1b53cfd93ba87234b9e94b03e30777b8128cfb00e7c3');\n  assert.equal(bind(catalog.sealedManifest).sha256,'a7420b151807b2606b0434287f5441da3566fd7c8b87d798fabdd505e7ab19e5');\n  const seal=new Map(read(catalog.sealedManifest).map(x=>[x.file,x]));\n  const qualified=read(bind(catalog.qualification)),fixtures=read(bind(catalog.manifest));\n  assert(qualified.complete&&qualified.passed&&qualified.points===45);assert.equal(fixtures.cases.length,45);\n  for(const p of [catalog.qualification,catalog.manifest]){const s=seal.get(path.relative(root,p.file));assert.equal(s.sha256,p.sha256);assert.equal(s.bytes,p.bytes);}\n  report.python=bind(python);\n  const quick=['local-pair','coverage-closures-64','coverage-unicode-text-16','coverage-map-churn-32'];\n  const medium=[...quick,'mandelbrot','editdist','tree-bitonic','lexer','symreg','raytrace','complete-generic-row32','coverage-list-pipeline-128','coverage-bst-32','coverage-expression-32','coverage-numeric-recurrence-256','coverage-record-aggregation-64'];\n  const selected=seconds===20?quick:seconds===60?medium:catalog.cases.map(c=>c.name);\n  const cases=[];\n  for(const item of catalog.cases){\n    const source=bind(item.source),receiptPin=bind(item.oracleReceipt),receipt=read(receiptPin);\n    const sealedReceipt=seal.get(path.relative(root,receiptPin.file));assert.equal(sealedReceipt.sha256,receiptPin.sha256);assert.equal(sealedReceipt.bytes,receiptPin.bytes);\n    const fixture=fixtures.cases.find(x=>x.id===item.name),qualification=qualified.rows.find(x=>x.id===item.name),prior=receipt.cases.find(x=>x.id===item.name);\n    assert(fixture&&qualification&&prior&&qualification.exactC&&qualification.exactStdout);\n    assert.equal(fixture.source.sha256,source.sha256);assert.equal(qualification.sourceSha256,source.sha256);assert.equal(prior.source.sha256,source.sha256);\n    assert.equal(qualification.family,fixture.family);assert.equal(item.family,fixture.family);\n    assert(prior.pass_&&prior.exact&&prior.executionExact&&Object.values(prior.jobs).every(x=>x.pass_));\n    assert.equal(prior.expected,fixture.expected);assert.equal(item.expectedStdout,fixture.expected);\n    assert.deepEqual(item.baseline,prior.b2);assert.equal(prior.b2.sha256,prior.native.sha256);assert.equal(prior.b2.sha256,qualification.cSha256);\n    assert.equal(item.baselineOrigin.member,path.relative(root,prior.b2.file));assert.deepEqual(item.baselineOrigin.archive,report.archive);\n    const sealedC=seal.get(item.baselineOrigin.member);assert.equal(sealedC.sha256,prior.b2.sha256);assert.equal(sealedC.bytes,prior.b2.bytes);\n    if(selected.includes(item.name))cases.push({...item,source,oracleReceipt:receiptPin,baseline:null});\n  }\n  cases.sort((a,b)=>selected.indexOf(a.name)-selected.indexOf(b.name));assert.equal(cases.length,selected.length);\n  report.totalPoints=45;report.selectedIds=selected;report.unselectedIds=catalog.cases.map(x=>x.name).filter(x=>!selected.includes(x));\n"
+    },
+    {
+      "old": "report.methodRevision='v3: regular read-only input FD replaces spawnSync input Buffer/pipe; identical Clang argv, stdin filename, timeout and equality gate.';",
+      "new": "report.parentMethod=bind(path.join(root,'selfhost/tools/performance/phase90/whitespace-check-v3.mjs'));assert.equal(report.parentMethod.sha256,'b916bef1c3daf337b4bc7d133407b5f02104209789abf8ea1393c56299c59f50');\n  report.methodRevision='Broad v1: sealed 45-point independent oracle set, deterministic 20/60/300-second tiers, one temporary baseline at a time; same checked producer and regular-FD preprocessing.';"
+    },
+    {
+      "old": "const record={command,cwd:root,stdin:input,stdinTransport:'read-only-file-descriptor',stdinStartOffset:0,passed:false};",
+      "new": "const timeoutMs=Math.min(30000,Math.floor(deadline-performance.now()));assert(timeoutMs>0,'Tier budget exhausted before preprocessing');\n      const record={command,cwd:root,stdin:input,stdinTransport:'read-only-file-descriptor',stdinStartOffset:0,timeoutMs,passed:false};"
+    },
+    {
+      "old": "timeout:30000",
+      "new": "timeout:timeoutMs"
+    },
+    {
+      "old": "unchanged();const row={...item,passed:false,exactPreprocessed:false,preprocess:{}};report.rows.push(row);save();",
+      "new": "assert(performance.now()<deadline,'Tier budget exhausted before next request');\n      unchanged();const row={...item,passed:false,exactPreprocessed:false,preprocess:{}};report.rows.push(row);save();\n      const baselineFile=path.join(out,item.name+'.baseline.tmp.c');\n      const extractCommand=[python,'-B',report.oraclePreparation.file,'extract',report.oracleManifest.file,item.name,baselineFile];\n      const extracted=spawnSync(extractCommand[0],extractCommand.slice(1),{cwd:root,encoding:'utf8',timeout:Math.max(1,Math.min(10000,Math.floor(deadline-performance.now())))});\n      row.extraction={command:extractCommand,returncode:extracted.status,signal:extracted.signal,error:extracted.error?.message??null,stdout:extracted.stdout,stderr:extracted.stderr};save();\n      assert(!extracted.error&&extracted.status===0,'Archived baseline extraction failed');\n      row.baseline=pin(baselineFile);assert.deepEqual(row.baseline,JSON.parse(extracted.stdout));\n      assert.equal(row.baseline.sha256,item.baselineOrigin.recorded.sha256);assert.equal(row.baseline.bytes,item.baselineOrigin.recorded.bytes);save();"
+    },
+    {
+      "old": "assert.deepEqual(cacheFiles(),report.preparedBase.cache,'Prepared cache changed during request');unchanged();row.passed=true;save();",
+      "new": "assert.deepEqual(cacheFiles(),report.preparedBase.cache,'Prepared cache changed during request');unchanged();row.passed=true;\n      fs.unlinkSync(row.baseline.file);row.baselineRemovedAfterExactComparison=true;report.coveredPoints=report.rows.filter(r=>r.passed).length;save();"
+    },
+    {
+      "old": "unchanged();report.inputBindingsUnchanged=true;report.complete=true;report.pass=true;report.rawCChanged=",
+      "new": "unchanged();report.inputBindingsUnchanged=true;report.complete=true;report.pass=true;report.all45=report.coveredPoints===45;report.elapsedMs=performance.now()-started;report.rawCChanged="
+    }
+  ]
+}

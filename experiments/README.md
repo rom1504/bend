@@ -5,6 +5,13 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
+## Active implementation: Phase90 native self-hosting
+
+Read [the current frontier](STEERING.md) and [Phase90 report](../implementation/phase90/README.md).
+Complete compiler C emission and eight own-backend native request controls now
+pass. Native reproduction, optimized build qualification and release refresh
+remain active work; earlier phase summaries below are historical.
+
 ## Completed investigation: Phase87 native compiler costs and sharing
 
 [Report](../implementation/phase87/README.md),

@@ -29,3 +29,19 @@ arbitrary raw segment bodies, native self-hosting, or performance.
 `derivation.json` records exact reversible edits. Previous methods and evidence
 are unchanged. The build binder preserves actual compiler flags and requires a
 successful guard; it does not require an optimization level.
+
+After the immutable eight-case gate exists, self-emission need not rerun it:
+
+```sh
+python3 -B selfhost/tools/performance/phase90/noindent-methods02/emit-qualified.py \
+  IMAGE COMPLETED_GATES_JSON selfhost/build/phase90/FRESH_SELF_OUTPUT --seconds 240
+```
+
+This re-authenticates all eight actual guards and exact-C outputs, current image,
+checked parent, source, CPU proof and cache assets. It performs one request under
+the existing CPU 3, 2 GiB RSS, 4 GiB available-memory and 240-second guard, then
+compares the complete C digest and length to `js-self11/program.c`. Optional
+`--check-only` performs no target work. Actual offline admission of
+`own-native03-gates/gates.json` passed in `own-native03-self-preflight01`; that
+receipt itself establishes no self-compilation result. Build flags are retained
+in the image provenance, including the current diagnostic SysV fallback.

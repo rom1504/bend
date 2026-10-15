@@ -1,0 +1,103 @@
+{
+  "kind": "phase90-offline-own-C-inlining-cost-shape",
+  "targetExecuted": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/js-self11/program.c",
+    "sha256": "81ca2837d2f274a23aeab7addf40cbef0e62a96a5ff7026c62a5112b1be0361e",
+    "bytes": 38614586
+  },
+  "wlCases": 39643,
+  "nfAlwaysInlineDefinitions": 444,
+  "nfDefinitionBytes": 1006400,
+  "nfTextualCallOccurrences": 843,
+  "oneLevelOccurrenceByteProduct": 1895368,
+  "topNF": [
+    {
+      "name": "kt",
+      "bytes": 2384,
+      "textualCallOccurrences": 41,
+      "oneLevelOccurrenceByteProduct": 97744
+    },
+    {
+      "name": "p88_node_at",
+      "bytes": 12246,
+      "textualCallOccurrences": 6,
+      "oneLevelOccurrenceByteProduct": 73476
+    },
+    {
+      "name": "tg",
+      "bytes": 3820,
+      "textualCallOccurrences": 19,
+      "oneLevelOccurrenceByteProduct": 72580
+    },
+    {
+      "name": "p88_roots_gate",
+      "bytes": 29002,
+      "textualCallOccurrences": 2,
+      "oneLevelOccurrenceByteProduct": 58004
+    },
+    {
+      "name": "nm",
+      "bytes": 3717,
+      "textualCallOccurrences": 14,
+      "oneLevelOccurrenceByteProduct": 52038
+    },
+    {
+      "name": "List.is_empty",
+      "bytes": 5848,
+      "textualCallOccurrences": 8,
+      "oneLevelOccurrenceByteProduct": 46784
+    },
+    {
+      "name": "Bool.and",
+      "bytes": 990,
+      "textualCallOccurrences": 47,
+      "oneLevelOccurrenceByteProduct": 46530
+    },
+    {
+      "name": "kl_text",
+      "bytes": 13693,
+      "textualCallOccurrences": 3,
+      "oneLevelOccurrenceByteProduct": 41079
+    },
+    {
+      "name": "f_line",
+      "bytes": 6655,
+      "textualCallOccurrences": 5,
+      "oneLevelOccurrenceByteProduct": 33275
+    },
+    {
+      "name": "rm",
+      "bytes": 16580,
+      "textualCallOccurrences": 2,
+      "oneLevelOccurrenceByteProduct": 33160
+    },
+    {
+      "name": "atom",
+      "bytes": 986,
+      "textualCallOccurrences": 33,
+      "oneLevelOccurrenceByteProduct": 32538
+    },
+    {
+      "name": "p88_bool_value",
+      "bytes": 15075,
+      "textualCallOccurrences": 2,
+      "oneLevelOccurrenceByteProduct": 30150
+    }
+  ],
+  "inlineKeywordLines": 138,
+  "binary": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler-own-native03",
+    "bytes": 46403800,
+    "sections": {
+      ".rodata": 407870,
+      ".eh_frame": 1903592,
+      ".text": 39075248,
+      ".data": 108,
+      ".bss": 1148193,
+      ".symtab": 958488,
+      ".strtab": 2461240
+    }
+  },
+  "limitation": "Pure lexical source/object accounting, not Clang inline decisions, expanded IR size, measured attribution or additive memory forecast. Same callee calls from helper definitions may overlap repeated outer uses."
+}

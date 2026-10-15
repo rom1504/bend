@@ -1,4 +1,33 @@
-# Active frontier: qualified native89; shared-data observation next
+# Active frontier: Phase90 own-backend native image; reproduction next
+
+[Phase90](../implementation/phase90/README.md) is in progress. Linear table
+builders, indexed fork closure and removing generated-body indentation allow
+checked JS-hosted Bend B1 to emit the complete native compiler:109.399s request,
+38.6MB C. Ordinary checked compiler06 passes36 frontend cases; genuine JS B2
+passes eight driver comparisons, fresh source checking and B2/B3 byte equality.
+Installed JS remains Phase82 until final source/performance/release gates.
+
+Own-backend native03 successfully builds the exact emitted C with an explicit
+O0/cdecl fallback, then passes all eight live/cache exact-C controls. Four complete
+CPU preprocessing comparisons transfer the independent older B2 references
+across intentional indentation changes. This is a JS-B1-produced native image,
+not native self-reproduction or optimized-performance qualification.
+
+Full Clang-O1 first hit the6GiB RSS guard; O0 then hit preserve-none indirect
+tail-call allocation failure. Tiny controls reproduce it; upstream already has
+an __OPTIMIZE__ guard omitted from our runtime. Proper runtime/template/driver
+fix is prepared but not applied. O1 without heuristic inlining also hit6GiB. An ordinary O1 build now uses
+one10GiB cap with16GiB host headroom and a pass trace; targets remain serial.
+Native03 self-emission timed out240s at202MB without C; its eight request
+gates remain valid. Qualify the optimized image before another self attempt. Keep actual runtime padding dead in ABI controls.
+
+Root targets remain serial: the existing execution lock rejects overlapping
+correctness work despite the proposed separate-core exception. No lock bypass.
+Memory/disk guards remain active. Evidence01/02 and pruning receipts preserve
+failures; restore exact archived members when needed. Native89/public launcher
+remains separately admitted. No PR comments without explicit instruction.
+
+# Historical Phase89 frontier
 
 [Phase89](../implementation/phase89/README.md) qualifies native B1 `8bacae26…`
 with consume-once NC_Code and ordered body chunks. Map cold/fifth request time

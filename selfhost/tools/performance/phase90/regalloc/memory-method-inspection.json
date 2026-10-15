@@ -1,0 +1,36 @@
+{
+  "kind": "phase90-offline-clang-memory-method-inspection",
+  "targetExecuted": false,
+  "compiler": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+  "llvmHelpSelected": [
+    "--eagerly-invalidate-analyses                                              - Eagerly invalidate more analyses in default pipelines",
+    "--time-passes                                                              - Time each pass, printing elapsed time for each on exit",
+    "--track-memory                                                             - Enable -time-passes memory tracking (this may be slow)"
+  ],
+  "dryRunArgv": [
+    "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+    "-###",
+    "-O1",
+    "selfhost/tools/performance/phase90/regalloc/preserve-tail-padding.c",
+    "-o",
+    "/tmp/phase90-never-built"
+  ],
+  "dryRunStderr": "clang version 22.1.4 (https://github.com/llvm/llvm-project 35990504507d79e0b9deb809c8ee5e1b34ceef20)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin\n \"/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang\" \"-cc1\" \"-triple\" \"x86_64-unknown-linux-gnu\" \"-O1\" \"-emit-obj\" \"-dumpdir\" \"/tmp/phase90-never-built-\" \"-disable-free\" \"-clear-ast-before-backend\" \"-disable-llvm-verifier\" \"-discard-value-names\" \"-main-file-name\" \"preserve-tail-padding.c\" \"-mrelocation-model\" \"pic\" \"-pic-level\" \"2\" \"-pic-is-pie\" \"-mframe-pointer=none\" \"-fmath-errno\" \"-ffp-contract=on\" \"-fno-rounding-math\" \"-mconstructor-aliases\" \"-funwind-tables=2\" \"-target-cpu\" \"x86-64\" \"-tune-cpu\" \"generic\" \"-debugger-tuning=gdb\" \"-fdebug-compilation-dir=/home/ai/bend2/build/publish/bend\" \"-fcoverage-compilation-dir=/home/ai/bend2/build/publish/bend\" \"-resource-dir\" \"/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/lib/clang/22\" \"-internal-isystem\" \"/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/lib/clang/22/include\" \"-internal-isystem\" \"/usr/local/include\" \"-internal-isystem\" \"/usr/lib/gcc/x86_64-linux-gnu/10/../../../../x86_64-linux-gnu/include\" \"-internal-externc-isystem\" \"/usr/include/x86_64-linux-gnu\" \"-internal-externc-isystem\" \"/include\" \"-internal-externc-isystem\" \"/usr/include\" \"-ferror-limit\" \"19\" \"-fgnuc-version=4.2.1\" \"-fskip-odr-check-in-gmf\" \"-faddrsig\" \"-fdwarf2-cfi-asm\" \"-o\" \"/tmp/preserve-tail-padding-608fdb.o\" \"-x\" \"c\" \"selfhost/tools/performance/phase90/regalloc/preserve-tail-padding.c\"\n \"/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/ld.lld\" \"--hash-style=gnu\" \"--eh-frame-hdr\" \"-m\" \"elf_x86_64\" \"-pie\" \"-dynamic-linker\" \"/lib64/ld-linux-x86-64.so.2\" \"-o\" \"/tmp/phase90-never-built\" \"/lib/x86_64-linux-gnu/Scrt1.o\" \"/lib/x86_64-linux-gnu/crti.o\" \"/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/lib/clang/22/lib/x86_64-unknown-linux-gnu/clang_rt.crtbegin.o\" \"-L/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/lib/clang/22/lib/x86_64-unknown-linux-gnu\" \"-L/usr/lib/gcc/x86_64-linux-gnu/10\" \"-L/usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib64\" \"-L/lib/x86_64-linux-gnu\" \"-L/lib/../lib64\" \"-L/usr/lib/x86_64-linux-gnu\" \"-L/usr/lib64\" \"-L/lib\" \"-L/usr/lib\" \"/tmp/preserve-tail-padding-608fdb.o\" \"/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/lib/clang/22/lib/x86_64-unknown-linux-gnu/libclang_rt.builtins.a\" \"-lc\" \"/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/lib/clang/22/lib/x86_64-unknown-linux-gnu/libclang_rt.builtins.a\" \"/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/lib/clang/22/lib/x86_64-unknown-linux-gnu/clang_rt.crtend.o\" \"/lib/x86_64-linux-gnu/crtn.o\"\n",
+  "defaultClearAstBeforeBackend": true,
+  "llvm2214SourceEagerInvalidateDefault": true,
+  "exactCommitSourceFetched": false,
+  "sourceLinks": [
+    "https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-22.1.4/llvm/lib/Passes/PassBuilderPipelines.cpp",
+    "https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-22.1.4/llvm/include/llvm/Passes/PassBuilder.h"
+  ],
+  "standaloneOptOrLlcFound": false,
+  "searchedExecutableLocations": [
+    "PATH",
+    "/usr/bin",
+    "/usr/local/bin",
+    "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin",
+    "/usr/lib/llvm-14/bin",
+    "/usr/lib/llvm-18/bin"
+  ],
+  "scope": "Version/help and driver -### only. No source compiled, IR emitted, or benchmark executed."
+}

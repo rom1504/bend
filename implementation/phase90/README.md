@@ -88,3 +88,16 @@ is claimed yet.
 [Evidence02](evidence02.json) seals2,528 additional/changed files and preserves
 all included failed attempts. It excludes the then-active qualification06 and
 regalloc/noindent-method preparation; those need the next capsule.
+
+## Own-backend native request qualification
+
+[Build/ABI report](native-build.md): native03 builds successfully from our emitted
+C and passes all eight live/cache exact-C requests. It is an explicitly
+unoptimized cdecl diagnostic image, not an optimized-speed result. Native
+self-emission remains a separate pending gate. The ordinary JS compiler06
+self-check and fixed point are complete; installed source refresh remains pending.
+
+[Prune06](prune06.json) removes66.3MB of exact archived failed-run image copies
+and completed raw JS profiles; [prune07](prune07.json) removes223.5MB of exact
+archived obsolete Phase78 candidate payloads. Restoration plans retain every
+original member/hash; current images and unrelated work remain present.

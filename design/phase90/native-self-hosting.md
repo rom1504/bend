@@ -118,3 +118,18 @@ Clang retains its16GiB available-memory floor. Do not run native benchmarks or
 profiles concurrently, and do not use overlapping job wall times as performance
 comparisons. This bounded exception replaces idle validation waiting without
 relaxing either process-tree memory limit or the reserved host-memory floor.
+
+Actual execution retains the existing global target lock: the attempted overlap
+was rejected before launching a child. Do not bypass that lock. Targets remain
+serial, and no measured overlap is claimed.
+
+Two optimized full-Clang attempts (O1 and O1 without heuristic inlining) reach
+the6GiB RSS guard at roughly91–95s. The same source builds atO0 in99.9s/3.17GB
+using an explicitly recorded cdecl fallback. Its C is2.17times the source size
+whose upstream-built optimized image already required4.30GB. Therefore admit
+one full-Clang-only10GiB RSS cap, retaining16GiB available memory, the global
+serial lock,64MiB output cap and420s deadline. Require240MiB initial disk reserve.
+This is a bounded toolchain-scale experiment, not an unrestricted heap increase
+or a change to normal2GiB compiler-request limits. Preserve pass timing/trace
+metadata to distinguish actual build work from resource-cap failures. Test an
+LLVM analysis-cache invalidation option only if this exact Clang supports it.

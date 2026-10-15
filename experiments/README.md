@@ -5,14 +5,15 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active frontier: Phase91 current-release metrics
+## Active frontier: Phase93 native generated-program runtime
 
-[Current strategy](STEERING.md) · [Scoreboard](../implementation/phase91/README.md).
-Installed Phase90 remains unchanged. Fresh B1/B2 timing, original JS23/C12
-output continuity and a source census are complete. Native100 passes; full B2
-frontend finds one pre-existing diagnostic stack gap. Read the report before
-claiming full conformance, mixing host/target ratios or beginning optimization.
-Phase90 native self-reproduction and release refresh are completed historical work.
+[Current strategy](STEERING.md) · [Runtime report](../implementation/phase93/README.md) ·
+[Native-chain scoreboard](../implementation/phase92/README.md) ·
+[JS-hosted scoreboard](../implementation/phase91/README.md).
+The original45 catalog now has fresh native execution evidence:44 measurable
+points average1.115× upstream C; the zero-work control is explicitly undefined.
+Native B1/B2 emit identical C for all45 wrappers. No production change; keep
+compiler latency, generated-program runtime and conformance separate.
 
 ## Completed investigation: Phase87 native compiler costs and sharing
 

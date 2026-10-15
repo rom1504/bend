@@ -24,6 +24,10 @@ preserve generated-program behavior; this is not a new program-speed campaign.
 See the [native-chain scoreboard](../implementation/phase92/README.md) and
 [current JS-hosted five-metric scoreboard](../implementation/phase91/README.md) and [metric definitions](../docs/self_hosted/METRICS.md)
 for the refreshed B1/B2 measurements, program-output continuity and conformance scope.
+The [Phase93 native program benchmark](../implementation/phase93/README.md)
+adds fresh execution timings for the original 45-point catalog. Its 44 measurable
+points take **1.115×** upstream C time (equal-point geometric mean); the zero-work
+control has no defined ratio. Both native stages emit identical C for all points.
 
 Read the [Phase90 report](../implementation/phase90/README.md) for current timing,
 lineage, failures and remaining work. Maintained production contains 32,692

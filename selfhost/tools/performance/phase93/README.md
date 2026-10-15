@@ -23,12 +23,18 @@ python3 -B selfhost/tools/performance/phase93/run.py acquire \
   --out selfhost/build/phase93/acquire-FRESH
 python3 -B selfhost/tools/performance/phase93/run.py calibrate \
   --acquired selfhost/build/phase93/acquire-FRESH/report.json \
+  --cases "$(cat selfhost/tools/performance/phase93/measured-cases.txt)" \
   --target-ms 250 --out selfhost/build/phase93/calibrate-FRESH
 python3 -B selfhost/tools/performance/phase93/run.py measure \
   --acquired selfhost/build/phase93/acquire-FRESH/report.json \
   --plans selfhost/build/phase93/calibrate-FRESH/report.json \
+  --cases "$(cat selfhost/tools/performance/phase93/measured-cases.txt)" \
   --rounds 3 --out selfhost/build/phase93/measure-FRESH
 ```
+
+The commands acquire all 45 points; the explicit measured-case file excludes
+only the proven zero-work `scalar-region-0` from calibration/timing. Recheck
+that control separately when changing code generation.
 
 Use `--cases id1,id2` for a fast screen, reusing acquired executables and an
 existing calibration plan. `--target-ms` and `--rounds` vary timing depth;
@@ -36,9 +42,18 @@ all final intervals must still be at least100 ms. Acquisition is a separate cost
 The initial campaign splits five pilot points from the other40, and each command
 accepts multiple acquisition/plan reports. Do not pass overlapping cases.
 
-`collect.py` combines disjoint three-round measurement reports into the complete
-45-point scoreboard and CSV; it refuses incomplete coverage. It reports equal
-point weighting and equal original-source weighting separately.
+`collect.py` combines disjoint three-round measurement reports into the
+45-point scoreboard and CSV. Every point must have measured results or an
+explicit, evidence-backed zero-work classification passed with `--unmeasured`.
+The initial campaign finds `scalar-region-0` optimized to a direct count by both
+backends: its ratio is undefined. Aggregates cover the other 44 points, with
+equal-point and equal-original-source weighting reported separately.
+
+`calibrate-broad01` stopped at that zero-work point. `resume-calibration.py`
+preserves the failed report and reuses its ten complete calibration plans;
+`calibrate-broad02` covers the remaining 29. The 39-point broad measurement
+explicitly excludes only the named zero-work control. The five pilot points
+remain in the final aggregate. No failed calibration interval is a final timing.
 
 The primary clock is the in-program IO.now interval: workload, complete-result
 validation, loop and final counter print. Startup, initial output and at most32

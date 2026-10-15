@@ -23,6 +23,15 @@ not select or install a JavaScript release; consult the
 
 ## Current same-source qualification
 
+The [Phase93 program-runtime comparison](../../implementation/phase93/README.md)
+freshly emits all 45 historical catalog points through both native stages and
+upstream C. Native B1/B2 products agree exactly. The 44 measurable points take
+1.115× upstream time with equal-point weighting, or 1.139× with equal-original-
+source weighting. The remaining zero-work control is optimized away by both;
+its ratio is undefined. These are generated-program timings, separate from the
+compiler-request measurements below. Full results, limits and reusable commands
+are in the report.
+
 The [Phase92 native-chain scoreboard](../../implementation/phase92/README.md)
 builds an upstream-C native B1 from the exact same frozen Bend source and Clang
 flags. Its newly emitted self C is byte-identical to native07's existing build

@@ -5,6 +5,10 @@ qualified native07 available separately. See the [native-chain scoreboard](../..
 [JS-hosted five-metric scoreboard](../../implementation/phase91/README.md),
 [metric definitions and fast validation](METRICS.md), and
 [native usage guide](NATIVE_HOST.md).
+Fresh [native generated-program runtime results](../../implementation/phase93/README.md)
+cover the original 45 points, with 44 measurable ratios and an explicit zero-work
+control. Use the [native runtime loop](../../selfhost/tools/performance/phase93/README.md)
+to reuse acquired products for focused or broad execution comparisons.
 
 ## Historical Phase70 baseline
 

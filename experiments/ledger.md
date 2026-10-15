@@ -4571,3 +4571,23 @@ mismatches against Phase82. Explicit verification fails; ordinary CLI smoke
 prints42. Retain both facts. All evidence/failures and deletion/restoration
 receipts are linked. Three bounded offline agents, root-only serial targets,
 no PR comments or quota-percentage claim.
+
+
+## Phase93 native runtime on the original45 points — 2026-10-15
+
+[Report](../implementation/phase93/README.md). Fresh actual native B1/B2 and
+upstream C acquisition for all45 fixed-input wrappers;45 exact native product
+pairs and264 qualified timing samples pass. The44 measurable point mean is
+1.114840× upstream C, equal23source mean1.139377×. Both backends optimize away
+the zero-work control; its ratio is undefined. Failed calibration, ten reused
+plans and continuation remain explicit. No full45 runtime ratio or historical
+JS/C12 regression claim. Program generation and Clang are outside runtime clocks.
+
+Active rays3.45–3.49× and RLE2.60× are clear gaps; closures0.30×, Map churn
+0.64–0.66× and Unicode0.68–0.69× are strong wins. Representative machine-code
+checks and10 doubled-count controls pass; their finite scope is documented.
+No production/image changes. Two offline agents;791 serial guarded jobs occupy
+450.9s, peak213MiB, no target failure/OOM/timeout. Full runtime99.9s, six-point
+subset16.7s. Evidence preserves4,798 raw files, with exact readback verification.
+Updated frontier: benchmark complete; profile the named slow families next if
+requested, retaining winners and the separate native compiler-latency work.

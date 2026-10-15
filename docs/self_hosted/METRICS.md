@@ -45,6 +45,18 @@ separately reported scaling test.
 
 ## Fast validation without repeating all timings
 
+For fresh **native generated-program runtime**, use the
+[Phase93 original45 suite](../../selfhost/tools/performance/phase93/README.md).
+Both actual native stages emit identical C for all 45 batch sources. The
+[results](../../implementation/phase93/README.md) cover 264 final samples across
+44 measurable points: 1.114840× upstream C with equal-point weighting and
+1.139377× with equal-original-source weighting. Both backends optimize away the
+zero-work control, so no full-45 runtime mean is defined. The measured interval
+includes full-result validation and batch overhead, excludes compiler/Clang
+work and startup, and uses matching C11/O3 builds. A six-point saved-product
+screen occupied 16.7 seconds; the full measured corpus occupied 99.9 seconds.
+Keep the original JS45/C12 historical ratios separate from this new C corpus.
+
 First verify the installed release and freeze the compiler, source, reference,
 Base, runtime and harness identities. Use the
 [JS23/C12 continuity gate](../../selfhost/tools/performance/phase91/continuity/README.md)

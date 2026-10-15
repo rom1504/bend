@@ -39,6 +39,10 @@ Current production is **32,692 physical Bend lines in 132 modules**.
 See the [native-chain scoreboard](implementation/phase92/README.md) for the
 same-source native B1/B2 comparison and the [current JS-hosted five-metric scoreboard](implementation/phase91/README.md) and [metric definitions](docs/self_hosted/METRICS.md)
 for the refreshed B1/B2 measurements, program-output continuity and conformance scope.
+Fresh [native generated-program benchmarks](implementation/phase93/README.md)
+cover the original 45 points: 44 measurable runtime ratios average **1.115×**
+upstream C with equal-point weighting; both backends optimize away the remaining
+zero-work control. Native B1/B2 emit identical C for all 45 batch programs.
 
 Read the [Phase90 results and speed boundaries](implementation/phase90/README.md),
 [compiler guide](docs/BEND-IN-BEND.md),

@@ -499,3 +499,25 @@ The data-only completed receipt is `selfhost/build/phase98/profile-replay01.json
 The stable public CLI control method and final admission/archive command recipe
 are prepared in the native host directory and `comparison/promotion-plan.md`.
 No new default,public CLI pass or B2 admission is inferred from this preparation.
+
+## Full-source resource stop and profile fallback
+
+The first combined B1 self request reaches the declared 2GiB process-tree limit
+at82.998s; the retained guard records SIGKILL and no completed C product. Root
+also reports a separate 4GiB retry stopped at about101s. These are resource
+failures, not accepted compilation or proof failures. The earlier B1 C mechanism
+and six-source results do not establish that full-self observer emission scales.
+The observer-permission lane is investigating repeated layout/planning work.
+
+For attribution if needed, the unchanged ownership-table generator already
+binds55 exact unwind rows to the current combined B1 ELF. The original sampler
+flushes in its destructor, so it cannot recover data after an RSS SIGKILL. The
+prepared fallback therefore reuses the already controlled Phase90 watchdog:
+ordinary-thread exit77 at75s flushes the unchanged sampler, while the existing
+4GiB/16GiB-headroom outer guard remains active. No new mapped format or
+signal-handler I/O is introduced. Exact commands and current input pins are in
+`comparison/ownership-prefix-preparation01.{json,md}`. Only root may build/run
+this diagnostic. The unchanged strict stopped analyzer and ownership-window
+reader retain the incomplete-compilation label and require zero sampling loss;
+missing C is never counted as a pass. Preparation has run only ELF/table reads,
+not a sampler build or compiler request.

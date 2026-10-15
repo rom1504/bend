@@ -6,7 +6,8 @@ from pathlib import Path
 import shutil
 import sys
 import time
-from support import Bindings, ROOT, S, authenticate, backend_policy, baseline, freeze_methods, pin, read, run_request
+from support import Bindings, ROOT, S, SUCCESS_DIAGNOSTIC, authenticate, backend_policy, baseline, freeze_methods, pin, read, run_request
+from historical_diagnostics import control_diagnostic
 
 
 def main():
@@ -33,7 +34,8 @@ def main():
         assert old['complete'] and old['passed'] and old['inputsUnchanged']
         for row in old['compilerRows']:
             assert row['passed'] and row['exactC']
-            cases.append(dict(name=row['name'], source=b.bind(row['source']), live=row['mode'] == 'live', historicalC=row['oracle']))
+            cases.append(dict(name=row['name'], source=b.bind(row['source']), live=row['mode'] == 'live',
+                              historicalC=row['oracle'], expectedDiagnostic=control_diagnostic(row, b)))
         assert len(cases) == 8
         old = read(b.bind(policy['independentOrigins']['negatives'])['file'])
         assert old['complete'] and old['passed'] and old['inputsUnchanged']
@@ -62,7 +64,8 @@ def main():
                 for stage in ['b1', 'b2']:
                     report['executionPerformed'] = True; save()
                     row = run_request(guard, ctx, producers[stage], case['source'], directory / stage,
-                                      seconds=60, live=case['live'], negative=case.get('negative'), oracle=common)
+                                      seconds=60, live=case['live'], negative=case.get('negative'), oracle=common,
+                                      expected_diagnostic=case.get('expectedDiagnostic', SUCCESS_DIAGNOSTIC))
                     row.update(name=case['name'], stage=stage); report['rows'].append(row); save()
                     assert row['passed'], (case['name'], stage)
                     if 'negative' in case: continue

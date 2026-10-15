@@ -5,7 +5,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
-DEFAULT = HERE / 'profiles/phase98-comparison01/profile.json'
+DEFAULT = HERE / 'profiles/phase98-comparison02/profile.json'
 
 
 def pin(file):

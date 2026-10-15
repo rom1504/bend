@@ -5,7 +5,9 @@ import json
 from pathlib import Path
 import re
 from support import (Bindings, ROOT, SUCCESS_DIAGNOSTIC, authenticate, backend_policy,
-                     baseline, baseline_producer, native_args, pin, read, strip_clocks)
+                     baseline, baseline_producer, bounded_exit, native_args, pin, read, strip_clocks)
+from final_control_plan import load_cases, native_flags
+from historical_diagnostics import control_diagnostic
 
 
 def same(a, b): return all(a[k] == b[k] for k in ['sha256', 'bytes'])
@@ -19,9 +21,12 @@ def main():
     p.add_argument('--broad45', type=Path, nargs='+', required=True)
     p.add_argument('--backend-policy', type=Path)
     p.add_argument('--backend-controls', type=Path)
+    p.add_argument('--final-controls', type=Path)
     p.add_argument('--out', type=Path, required=True)
     a = p.parse_args(); assert not a.out.exists()
     b = Bindings(); ctx = baseline(b); b.bind(__file__); b.bind(Path(__file__).with_name('support.py'))
+    b.bind(Path(__file__).with_name('final_control_plan.py'))
+    b.bind(Path(__file__).with_name('historical_diagnostics.py'))
     receipts = {}; producers = {}; builds = {}
     def report(file, kind):
         rp = b.bind(file); r = read(rp['file'])
@@ -30,7 +35,7 @@ def main():
         if 'method' in r: b.bind(r['method'])
         return rp, r
     def process(value, expected):
-        assert value['complete'] and value['returncode'] == expected and not value.get('stoppedFor') and not value.get('interrupted')
+        assert bounded_exit(value, expected)
     def request_row(row, producer, expected_diagnostic, expected_output=None, negative=False):
         assert row['passed']; raw = {Path(x['file']).name:b.bind(x) for x in row['raw']}
         actual = read(raw['process.json']['file']); assert actual == row['process']; process(actual, 1 if negative else 0)
@@ -122,7 +127,8 @@ def main():
                 for row, old in zip(rows, expected):
                     assert row['name'] == old['name'] and row['source'] == old['source']
                     assert row['live'] == (old['mode'] == 'live' if suite == 'controls' else False)
-                    request_row(row, producers[stage], SUCCESS_DIAGNOSTIC, None if policy_pin else old['oracle'])
+                    expected_diagnostic = control_diagnostic(old, b) if suite == 'controls' else SUCCESS_DIAGNOSTIC
+                    request_row(row, producers[stage], expected_diagnostic, None if policy_pin else old['oracle'])
                 if suite == 'controls':
                     for i, (row, old) in enumerate(zip(rows[len(expected):], original_negatives)):
                         assert row['name'] == 'negative-' + str(i) and row['source'] == old['source']
@@ -210,7 +216,47 @@ def main():
         for row in controls['rows']:
             for evidence in row['evidence']: b.bind(evidence)
         receipts['backendSpecific'] = rp
-    else: assert not a.backend_controls
+        assert a.final_controls, 'Changed backends require complete final-image native control outputs'
+        fp, final = report(a.final_controls, 'phase98-final-image-native-controls')
+        assert final['source'] == source and final['producers'] == producers
+        assert final['backendPolicy'] == policy_pin and final['backendControls'] == rp
+        assert final['referenceProducer'] == baseline_producer(ctx, 'b2')
+        original_plans, original = load_cases(controls, b)
+        assert final['originalPlans'] == original_plans
+        assert final['originalSelections'] == controls['finalImageControlPlans']
+        corpus_values = json.loads(next(case for case in original if case['id'] == 'full-string-corpus')['expectedStdout'])
+        assert len(corpus_values) == 1444 and all(len(value) == 14 for value in corpus_values)
+        assert len(final['cases']) == len(final['programs']) == 5 and len(final['rows']) == 15
+        for i, (case, old, product) in enumerate(zip(final['cases'], original, final['programs'])):
+            assert case == old and case['id'] == product['id']
+            rows = final['rows'][3*i:3*i+3]
+            assert [row['stage'] for row in rows] == ['reference', 'b1', 'b2']
+            assert all(row['id'] == old['id'] and row['source'] == old['source'] and not row['live'] for row in rows)
+            reference_row = rows[0]; assert reference_row['referenceDiagnosticCaptured']
+            request_row(reference_row, baseline_producer(ctx, 'b2'), reference_row['diagnostic'])
+            for row in rows[1:]:
+                request_row(row, producers[row['stage']], reference_row['diagnostic'], rows[1]['output'])
+                flags = native_flags(row['output']['file'])
+                assert flags == row['flags'] and flags['READONLY_OBSERVERS'] == 1
+                assert flags['TYPED_SCALARS'] == flags['SCALAR_ARRAYS'] == old['scalar'] and flags['UNSHARED_ARRAYS'] == 0
+                if 'declinedOwner' in old:
+                    symbol = 'NF_FID_' + ''.join(str(ord(c)) + '_' for c in '$observer.' + old['declinedOwner'])
+                    assert row['owningObserverDeclined'] and symbol not in Path(row['output']['file']).read_text()
+            assert product['passed'] and product['fullOutputExact'] and product['c'] == rows[1]['output']
+            for job in ['build', 'run']:
+                value = product[job]; assert value['passed']; process(value['process'], 0)
+                raw = {Path(item['file']).name:b.bind(item) for item in value['raw']}
+                assert read(raw['process.json']['file']) == value['process'] and value['process']['command'] == value['command']
+                if job == 'run':
+                    assert raw['stdout.log'] == b.bind(product['stdout']) and raw['stderr.log'] == b.bind(product['stderr'])
+            binary = b.bind(product['binary'])['file']; cc = ctx['clang']['file']
+            command = product['build']['command']
+            assert command[command.index(cc):] == [cc, '-isystem', str(Path(cc).parents[1] / 'include/clang'), '-O2', product['c']['file'], '-o', binary, '-lm', '-pthread']
+            command = product['run']['command']; assert command[command.index(binary):] == [binary, '--threads', '1', '--gpu', 'off']
+            assert Path(product['stdout']['file']).read_bytes() == old['expectedStdout'].encode()
+            assert Path(product['stderr']['file']).read_bytes() == old['expectedStderr'].encode()
+        receipts['finalImageControls'] = fp
+    else: assert not a.backend_controls and not a.final_controls
     old_assets = ctx['roles']['b2']['admission']
     assets = {k:old_assets[k] for k in ['base', 'runtime', 'template', 'parts', 'effects', 'effectsDir', 'cacheBasePath', 'argvSentinel']}
     assets['cache'] = {k:old_assets['cache'][k] for k in ['carrier', 'stamp']}; b.tree(assets)

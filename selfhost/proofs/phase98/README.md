@@ -12,12 +12,12 @@ all five theorem bodies passed source checking, safe BendTT emission, and the
 independent pinned BendTT kernel. The inventory contains no opaque definitions.
 The deliberately unequal kernel control was rejected separately.
 
-The [deduplicated catalog](catalog04.json) currently records 15 distinct Phase98
-public contracts and 38 support lemmas, rather than adding repeated checks of the
+The [deduplicated catalog](catalog06.json) currently records 16 distinct Phase98
+public contracts and 40 support lemmas, rather than adding repeated checks of the
 same laws. Together with Phase96 and the explicitly modeled Phase97 ownership
-protocol, this is 50 public contracts and 48 supports. The catalog contains 13
-accepted closures with 109 checked law instances, but only 53 distinct Phase98
-named statements and 55 proof-body variants. Repeated implementations and
+protocol, this is 51 public contracts and 50 supports. The catalog contains 16
+accepted closures with 127 checked law instances, but only 56 distinct Phase98
+named statements and 58 proof-body variants. Repeated implementations and
 inherited dependencies do not become additional laws. See
 [the ongoing-source workflow](RUNNING.md) for extraction from the actual compiler
 being edited, root-run commands, boundaries and a measured fast-tier budget.
@@ -109,6 +109,12 @@ Additional accepted packages and the remaining prepared attempt:
   independently selected semantic faults, each with law-free helper admission
   before unchanged-law rejection. It also records the independently chosen
   equivalent codepoint refactor and a support-proof maintenance exercise.
+- [Redirect preservation](redirect/README.md): the actual lazy redirect equals
+  the original complete worker-list transformation for arbitrary payloads and
+  duplicate names. One public law and two supports independently passed in
+  [`redirect-proof-check01`](../../build/phase98/redirect-proof-check01/report.json).
+  The safe dependency closure includes actual code/text construction helpers;
+  its value proof is separate from native ownership and allocation cost.
 
 Three bad held helpers were admitted independently of laws, then rejected by
 unchanged proofs. The codepoint refactor was admitted but needed one support
@@ -130,17 +136,38 @@ rejected by the unchanged selector laws in
 [`dispatch-formal-check01`](../../build/phase98/dispatch-formal-check01/report.json).
 It is reported separately from kernel acceptance of the positive package.
 
-The final combined source `59b36a1c…` was separately extracted and independently
+The combined parent source `59b36a1c…` was separately extracted and independently
 checked with the unchanged tag closure (six laws) and permission closure (seven)
 in [`combined-tag-proof-check01`](../../build/phase98/combined-tag-proof-check01/report.json)
 and [`combined-permission-proof-check01`](../../build/phase98/combined-permission-proof-check01/report.json).
 These checks use the actual composed helper bodies, including the held comparison
-finish dependency. The final composite also passes the nine-law membership
+finish dependency. This parent also passes the nine-law membership
 bridge closure above. These are additional implementation instances of the same
-contracts. After deduplicating inherited comparator laws, the final-source union
+contracts. After deduplicating inherited comparator laws, the parent-source union
 contains thirteen distinct names: eight public contracts and five supports.
 The larger catalog also retains the historical carrier and other candidate
-packages; it is not a count of contracts on the final compiler alone.
+packages; it is not a count of contracts on a single compiler source.
+
+The later minimal origin-guard candidate `2a72bbdc…` starts from that parent and
+adds a lazy `OField` recursion guard in `noa_below`. It omits the unpromoted
+redirect/cache changes. Its fresh actual-source tag and membership extractions
+bind that full compiler and preserve the same helper/proof module bytes. Both
+independently pass in
+[`origin-tag-proof-check01`](../../build/phase98/origin-tag-proof-check01/report.json)
+and [`origin-membership-proof-check01`](../../build/phase98/origin-membership-proof-check01/report.json).
+The [source-specific account](../../build/phase98/origin-proof-account01.json)
+authenticates the accepted source snapshots against their extraction manifests
+and the actual compiler. This successor has the same thirteen distinct law names
+(eight public, five support); the fifteen instances across its two packages add
+no new contract names. Their guarded target occupancy was 1.85 s and 2.36 s.
+The origin fix is covered separately by
+[`origin-controls01`](../../build/phase98/origin-controls01/report.json): the old
+mismatched-root helper raises a stack failure; eleven candidate origins pass;
+three complete C products remain exact; and a valid owning root-swap program
+declines the borrowed observer route and executes with exact output. These
+controls are not a universal origin-termination proof or additional laws. The
+comparison/permission laws do not establish native evaluation order or detect
+the old eager-conjunction bug.
 
 The original independently selected challenge set remains eight bad changes and
 two equivalent controls. Its unchanged finite suites detected five distinct bad

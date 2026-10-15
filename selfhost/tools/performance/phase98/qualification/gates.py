@@ -4,7 +4,8 @@ import argparse
 import json
 from pathlib import Path
 import sys
-from support import Bindings, ROOT, S, authenticate, baseline, freeze_methods, pin, read, run_request
+from support import Bindings, ROOT, S, SUCCESS_DIAGNOSTIC, authenticate, baseline, freeze_methods, pin, read, run_request
+from historical_diagnostics import control_diagnostic
 
 
 def main():
@@ -24,7 +25,8 @@ def main():
         old = read(origin['file']); assert old['complete'] and old['passed'] and old['inputsUnchanged']
         for row in old['compilerRows']:
             assert row['passed'] and row['exactC']
-            cases.append(dict(name=row['name'], source=b.bind(row['source']), live=row['mode'] == 'live', oracle=row['oracle'], oracleReceipt=origin))
+            cases.append(dict(name=row['name'], source=b.bind(row['source']), live=row['mode'] == 'live', oracle=row['oracle'],
+                              oracleReceipt=origin, expectedDiagnostic=control_diagnostic(row, b)))
         assert len(cases) == 8
         origin = b.bind(ROOT / 'selfhost/build/phase92/conformance01/diagnostics/report.json')
         old = read(origin['file']); assert old['complete'] and old['passed'] and old['inputsUnchanged']
@@ -51,7 +53,8 @@ def main():
             for i, case in enumerate(cases):
                 report['executionPerformed'] = True; save()
                 row = run_request(guard, ctx, producer, case['source'], out / (str(i).zfill(2) + '-' + case['name'].replace('/', '_')),
-                                  seconds=60, live=case['live'], oracle=case.get('oracle'), negative=case.get('negative'))
+                                  seconds=60, live=case['live'], oracle=case.get('oracle'), negative=case.get('negative'),
+                                  expected_diagnostic=case.get('expectedDiagnostic', SUCCESS_DIAGNOSTIC))
                 row['name'] = case['name']; report['rows'].append(row); save()
                 assert row['passed'], case['name']
         b.unchanged(); report['inputsUnchanged'] = True

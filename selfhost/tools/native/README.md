@@ -78,7 +78,7 @@ the committed Phase90 public capsule. It does not require committing the large
 assembled compiler or experimental parent sources as text:
 
 ```sh
-python3 -B selfhost/tools/native/profile.py --out-source /tmp/compiler-native-phase98.bend --receipt /tmp/compiler-native-phase98-replay.json
+python3 -B selfhost/tools/native/profile.py --profile selfhost/tools/native/profiles/phase98-comparison02/profile.json --out-source /tmp/compiler-native-phase98.bend --receipt /tmp/compiler-native-phase98-replay.json
 ```
 
 This data-only command checks the baseline capsule and member, applies all exact
@@ -86,6 +86,10 @@ edits, checks the final source hash and reverses the edits to the original bytes
 Existing outputs are refused. The resulting source is the explicit native build
 profile; it does not update canonical Bend modules or the JavaScript release.
 Source replay is separate from source proof, checked acquisition and native gates.
+The default replay profile is comparison02, exact source `2a72bbdc…e051`, which
+adds lazy observer-ancestry refusal to the permission/held-equality/tag profile.
+Comparison01 remains explicitly available as historical `59b36a1c…2714`; its
+eager ancestry recursion can diverge and it is not the release candidate.
 
 `cli-controls.py SELECTION COMPLETED_CONTROLS OUT` is the maintainer's serial
 public-interface gate after actual admission. It checks both stage argv policies,

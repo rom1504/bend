@@ -11,7 +11,7 @@ package. This example checks the tag comparison contract:
 
 ```sh
 python3 -B selfhost/proofs/phase98/prepare-current.py \
-  --candidate selfhost/build/phase98/permission-tag-source02/compiler.bend \
+  --candidate selfhost/build/phase98/origin-guard-source01/compiler.bend \
   --kind tag \
   --out selfhost/build/phase98/current-tag-proof-source01
 
@@ -75,7 +75,7 @@ unnecessary when this package is selected:
 
 ```sh
 python3 -B selfhost/proofs/phase98/permission/prepare-bridge.py \
-  --candidate selfhost/build/phase98/permission-tag-source02/compiler.bend \
+  --candidate selfhost/build/phase98/origin-guard-source01/compiler.bend \
   --out selfhost/build/phase98/current-membership-proof-source01
 
 python3 -B selfhost/tools/laws/phase98/check.py \
@@ -87,8 +87,9 @@ python3 -B selfhost/tools/laws/phase98/check.py \
 
 For a local change, select its one relevant package and run the default
 independent check once. Accepted Phase98 packages occupied roughly 1.7–2.7 s
-across their guarded targets; this is an observation about these small packages,
-not an authoring estimate or a promise for a future proof. A practical initial
+across their guarded targets; the later redirect package, including concrete
+string/text construction, occupied 9.73 s. These are observations about the
+measured packages, not an authoring estimate or a promise for a future proof. A practical initial
 scheduling allowance is 30 s per package, retaining the existing 60 s per-target
 guard, 2 GiB tree RSS limit, 4 GiB available-memory floor and CPU 3 assignment.
 Do not run packages concurrently with compiler acquisition or timing. Larger
@@ -109,18 +110,53 @@ correctness and performance screen. None follows merely from a law passing.
 
 ## Catalog and historical evidence
 
-[`catalog04.json`](catalog04.json) records accepted source closures and groups
+[`catalog06.json`](catalog06.json) records accepted source closures and groups
 laws by exact names, statement hashes and body hashes. Its baseline is Phase96
 plus the Phase97 ownership model: 35 public contracts and 10 supports. Phase98
-currently adds 15 distinct public contracts and 38 supports, for 50 public and
-48 support names combined. Its 13 accepted closures contain 109 checked law
-instances but only 53 distinct Phase98 named statements. These are not counts
+currently adds 16 distinct public contracts and 40 supports, for 51 public and
+50 support names combined. Its 16 accepted closures contain 127 checked law
+instances but only 56 distinct Phase98 named statements. These are not counts
 of repeated check runs. Tag
 v3/v4/v5 reuse the same statement and proof; the carrier contract is historical
 after its helper's removal. Finite controls, unaccepted literal drafts and the
 unproved production bridge of the Phase97 model are not folded into this count.
-The final combined source has thirteen distinct accepted law names: eight public
+The combined `59b36a1c…` source has thirteen distinct accepted law names: eight public
 contracts and five supports across its tag, permission and membership closures.
+The later [redirect package](redirect/README.md) adds one public full-worker-list
+contract and two supports on the cost-reduction candidate; its dependency/source
+receipt is separate from the unchanged tag and permission extraction.
+
+The minimal origin-guard candidate `2a72bbdc…` is based on that combined source,
+without the unpromoted redirect/cache edits. Its actual-source tag and membership
+preparations are `origin-tag-proof-source01` and
+`origin-membership-proof-source01`. These selected helper/proof modules are
+byte-identical to the parent closures, while their manifests bind the new full
+compiler. Both freshly passed the independent kernel in
+[`origin-tag-proof-check01`](../../build/phase98/origin-tag-proof-check01/report.json)
+and [`origin-membership-proof-check01`](../../build/phase98/origin-membership-proof-check01/report.json).
+The [data-only source account](../../build/phase98/origin-proof-account01.json)
+verifies their accepted source snapshots and recomputes thirteen distinct names:
+eight public contracts and five supports, with two shared laws across the six-
+and nine-law closures. Guarded target occupancy was 1.85 s and 2.36 s, separate
+from orchestration time. The lazy `noa_below` recursion guard lies outside those
+contracts.
+The separate `origin-controls01` receipt records the old mismatched-root stack
+failure, eleven fixed-helper cases, three unchanged complete C products and a
+valid owning root-swap program that declines the borrowed observer path and runs
+with exact output. Neither the finite controls nor a Boolean value proof
+establishes termination of the full unsafe origin analysis or native evaluation
+semantics; neither adds a new law to the catalog.
+
+The current source accounting is reproducible without running any targets:
+
+```sh
+python3 -B selfhost/proofs/phase98/origin-source-account.py \
+  --catalog selfhost/proofs/phase98/catalog06.json \
+  --out selfhost/build/phase98/my-origin-proof-account.json
+```
+
+That audit is intentionally pinned to this exact candidate and its two accepted
+reports. A later compiler edit requires fresh preparation and checking first.
 
 The ongoing-source extractor's first data-only preparation failed because the
 unrelated `subst_node` law and its proof definition legitimately share a name.

@@ -100,10 +100,10 @@ The [ongoing-source guide](../../selfhost/proofs/phase98/RUNNING.md) gives a
 data-only extractor and root-run check commands for future actual compiler
 edits. Missing selected helpers and changed representation boundaries fail
 preparation rather than falling back to a historical candidate. The
-[catalog](../../selfhost/proofs/phase98/catalog04.json) deduplicates statements
-and proof bodies: Phase98 currently has 15 distinct public contracts and 38
+[catalog](../../selfhost/proofs/phase98/catalog06.json) deduplicates statements
+and proof bodies: Phase98 currently has 16 distinct public contracts and 40
 supports. Phase96 plus the Phase97 ownership model contributes 35 public
-contracts and 10 supports; the combined count is 50 public and 48 support names.
+contracts and 10 supports; the combined count is 51 public and 50 support names.
 The ownership model's missing native bridge is retained in that catalog, and
 neither finite controls nor repeated checks increase the law count.
 
@@ -131,19 +131,19 @@ the independently written closed-set specification. Its final-composite instance
 also independently passed in
 [`combined-membership-proof-check01`](../../selfhost/build/phase98/combined-membership-proof-check01/report.json).
 
-The final combined source `59b36a1ca3f7843ff7a03628cd39ed0f530ed137c4825d508a274a8e1ede2714`
+The combined parent source `59b36a1ca3f7843ff7a03628cd39ed0f530ed137c4825d508a274a8e1ede2714`
 independently passed the unchanged six-law tag and seven-law permission closures
 in [`combined-tag-proof-check01`](../../selfhost/build/phase98/combined-tag-proof-check01/report.json)
 and [`combined-permission-proof-check01`](../../selfhost/build/phase98/combined-permission-proof-check01/report.json).
 The extraction includes the actual public held comparator and finish dependency.
 It does not silently reuse an old candidate implementation. As recorded by
-catalog04, 13 accepted closures contain 109 checked law instances but only 53
-distinct Phase98 named statements and 55 proof-body variants. Counts of public
+catalog06, 16 accepted closures contain 127 checked law instances but only 56
+distinct Phase98 named statements and 58 proof-body variants. Counts of public
 guard corollaries are declaration counts, not claims of logical independence.
-The final-source tag6, permission7 and membership9 closures share inherited laws,
-giving thirteen distinct final-source names: eight public and five support. The
+The parent-source tag6, permission7 and membership9 closures share inherited laws,
+giving thirteen distinct parent-source names: eight public and five support. The
 larger catalog also includes historical and unpromoted candidate packages; it
-does not imply that all fifteen public contracts describe the final compiler.
+does not imply that all sixteen public contracts describe that compiler source.
 
 Three late candidate-specific faults were admitted as helpers and then rejected
 by unchanged laws: generic tag/name confusion, missing trust guard, and missing
@@ -159,6 +159,59 @@ across real implementation changes and a stronger internal observation contract;
 it has not demonstrated a same-contract public regression detected by proof and
 missed by the unchanged finite suites. The
 [independent review](review.md) retains the detailed detection matrix.
+
+The later allocation-cost candidate adds an exact redirect preservation result:
+[`redirect-proof-check01`](../../selfhost/build/phase98/redirect-proof-check01/report.json)
+independently accepts one public complete-worker-list law and two supports.
+It proves the actual old/new functions equal over arbitrary typed workers,
+owner strings and root-index lists, including duplicate names and every nested
+code/error/dependency/metadata field. All actual string/text helper bodies are
+included safely; there is no opaque emitter callback. A reversible declaration
+header bridge combines `nc_ctor_codes`' ordinary String-returning signature with
+its unchanged body, without counting that function as a theorem.
+The emitted closure has 145 definitions and no opaque definitions; its four
+guarded targets occupied 9.73 seconds in total. This is a measured validation
+cost, separate from authoring time or the compiler's resource use.
+
+The proof closure is byte-identical in combined cost candidate `a0254c27…`.
+The [offline source audit](../../selfhost/proofs/phase98/final-cost-data01/source-audit.json)
+also checks all nine scalar-cache clones against their retained originals after
+undoing cache threading. That cache audit is not a universal layout/planning
+proof: descriptors can now be evaluated on permitted routes with no successful
+schema, so totality and resource behavior still need separate justification.
+The redirect theorem similarly does not establish a memory bound or C lifetime
+safety. The [package account](../../selfhost/proofs/phase98/redirect/README.md)
+contains source-bridge and run details.
+
+A late redirect mutation, stopping after the first matching worker and therefore
+missing later duplicates, passed safe helper admission and failed the unchanged
+full-worker-list law in
+[`redirect-negative-check01`](../../selfhost/build/phase98/redirect-negative-check01/report.json).
+This was a source-level expected/observed mismatch, not an independent-kernel
+rejection. The proof author selected this targeted case after positive
+acceptance; it is separate from the original independent challenge set.
+
+The minimal origin-guard successor `2a72bbdc…` starts from the combined parent
+and adds a lazy `OField` guard in `noa_below`. It does not carry the unpromoted
+redirect/cache edits. Its actual-source extractions independently pass the
+unchanged six-law tag and nine-law membership closures in
+[`origin-tag-proof-check01`](../../selfhost/build/phase98/origin-tag-proof-check01/report.json)
+and [`origin-membership-proof-check01`](../../selfhost/build/phase98/origin-membership-proof-check01/report.json).
+Their guarded targets occupied 1.85 s and 2.36 s respectively. The
+[source account](../../selfhost/build/phase98/origin-proof-account01.json)
+authenticates both preparation manifests, every selected helper and the accepted
+source snapshots against the exact successor compiler. The two closures contain
+fifteen checked law instances, sharing two comparator laws: thirteen distinct
+names, eight public contracts and five supports. These repeated implementation
+checks add no names to the catalog. The executable
+[`origin-controls01`](../../selfhost/build/phase98/origin-controls01/report.json)
+records the old mismatch's stack failure, eleven exact candidate origin cases,
+three unchanged complete C products, and a valid owning root-swap program that
+declines the borrowed observer route and executes with exact output. These are
+executable controls, not new laws. None of the comparison or permission laws
+proves the recursive origin analysis terminates, validates native evaluation
+order, or detects the old eager-conjunction bug. A value-level Boolean identity
+can erase the operational distinction which caused that failure.
 
 Observed maintenance and challenge results:
 

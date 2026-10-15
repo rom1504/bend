@@ -1,0 +1,166 @@
+{
+  "kind": "phase98-combined-b1-prefix75-attribution",
+  "complete": true,
+  "targetsRun": false,
+  "targetComplete": false,
+  "emittedCCorrectnessProved": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/ownership-combined-prefix01/analysis.json",
+      "sha256": "8ab3e5971062bf008ec6d4d2f162126d775b89537a4806145e8543f0a098dfa7",
+      "bytes": 35013
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/ownership-combined-prefix01/windows.json",
+      "sha256": "616067256af7486f4e565e69a7145d324141f8b73ddf8c499d2882fbc84a5e23",
+      "bytes": 179269
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/ownership-combined-prefix01/guard/process.json",
+      "sha256": "ae58d00c0b561beaf1156cfbb81c8f5205872d21bc9b14a1e7def36bb309ae80",
+      "bytes": 1656
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/ownership-combined-prefix01/samples.txt",
+      "sha256": "d750b56c40d68432a17add8c7f85ddf937c72ac6860e590ea93bef7c54408104",
+      "bytes": 226502
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-checked01/program.c",
+      "sha256": "5782601ed24d0215669e0fe27a62ff240c452219b510b9ab70c312645dc60767",
+      "bytes": 17724799
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-tag-source02/compiler.bend",
+      "sha256": "59b36a1ca3f7843ff7a03628cd39ed0f530ed137c4825d508a274a8e1ede2714",
+      "bytes": 1754058
+    }
+  ],
+  "sampleCount": 4688,
+  "peakTreeRssBytes": 1060147200,
+  "window": {
+    "startSeconds": 60,
+    "actualEndSeconds": 75,
+    "recordedBinEndSeconds": 90,
+    "samples": 937
+  },
+  "families": {
+    "WL_FID_NB_CONTAINS": {
+      "direct": 120,
+      "ownedCleanup": 251,
+      "disjointCombined": 371,
+      "percent": 39.59445037353255
+    },
+    "WL_FID_NT_CHOOSE": {
+      "direct": 7,
+      "ownedCleanup": 57,
+      "disjointCombined": 64,
+      "percent": 6.830309498399147
+    },
+    "WL_FID_KC": {
+      "direct": 3,
+      "ownedCleanup": 35,
+      "disjointCombined": 38,
+      "percent": 4.055496264674493
+    },
+    "spin_37": {
+      "direct": 5,
+      "ownedCleanup": 21,
+      "disjointCombined": 26,
+      "percent": 2.774813233724653
+    },
+    "spin_99": {
+      "direct": 1,
+      "ownedCleanup": 3,
+      "disjointCombined": 4,
+      "percent": 0.42689434364994666
+    },
+    "spin_1": {
+      "direct": 22,
+      "ownedCleanup": 10,
+      "disjointCombined": 32,
+      "percent": 3.4151547491995733
+    }
+  },
+  "locations": {
+    "WL_FID_NB_CONTAINS": {
+      "cLine": 561027,
+      "bendName": "nb_contains",
+      "bendLine": 31464,
+      "module": "src/back/native/tables.bend:134",
+      "meaning": "Consumes list spine and saves head/key continuation; evaluates full tail before equality OR."
+    },
+    "WL_FID_NB_CONTAINS_K20830": {
+      "cLine": 561068,
+      "bendName": "nb_contains",
+      "bendLine": 31464,
+      "meaning": "Continuation invokes held equality and disposes saved string roots; bool OR after eager tail."
+    },
+    "WL_FID_NT_CHOOSE": {
+      "cLine": 567889,
+      "bendName": "nt_choose",
+      "bendLine": 30959,
+      "meaning": "Drops unused captured branch closure."
+    },
+    "WL_FID_KC": {
+      "cLine": 593943,
+      "bendName": "kc",
+      "bendLine": 5660,
+      "meaning": "Drops unused captured branch closure."
+    },
+    "spin_37": {
+      "cLine": 15432,
+      "bendName": "ks",
+      "bendLine": 5756,
+      "meaning": "Consumes KTerm and returns children, disposing unrelated fields."
+    },
+    "spin_99": {
+      "cLine": 17390,
+      "bendName": "dn",
+      "bendLine": 5850,
+      "meaning": "Consumes KDef and returns name, disposing unrelated fields."
+    },
+    "spin_124": {
+      "cLine": 18033,
+      "bendName": "k_rebuild",
+      "bendLine": 6326,
+      "meaning": "Rebuilds original KTerm representation and disposes replaced fields."
+    },
+    "spin_1": {
+      "cLine": 14365,
+      "bendName": "p98_tag_eq",
+      "meaning": "Held tag observation; root cleanup finish can be inlined into wrapper by Clang."
+    }
+  },
+  "exactDisassemblySites": [
+    {
+      "recordedReturnMinusOne": "0x859bbc",
+      "call": "0x859bb8",
+      "callee": "span_fade",
+      "sourceOperation": "nb_contains list ctr_take"
+    },
+    {
+      "recordedReturnMinusOne": "0x859d87",
+      "call": "0x859d83",
+      "callee": "term_drop",
+      "sourceOperation": "nb_contains equality first retained root release"
+    },
+    {
+      "recordedReturnMinusOne": "0x859dbc",
+      "call": "0x859db8",
+      "callee": "term_drop",
+      "sourceOperation": "nb_contains equality second retained root release"
+    }
+  ],
+  "conclusions": [
+    "Strong late eager-list-membership cost while generic native lowering still appears in samples; equality walker borrowing itself remains intact.",
+    "The75s capture peak is below later2GiB/4GiB guard stops; this prefix does not identify the later retained-allocation cause.",
+    "A90s prefix is justified specifically to observe75\u201390s, without reinterpreting these samples as allocation counts or a complete stage profile."
+  ],
+  "limitations": [
+    "60\u201390 label is a30s bin truncated at75s; denominator937 is only its observed15s prefix.",
+    "CPU sampling and single peakRSS cannot locate allocation growth onset or recover heap retained ownership.",
+    "Physical musttail-erased callers cannot attribute all nb_contains traffic to a specific observer planning call.",
+    "No speed or correctness claim for intentionally stopped compiler."
+  ]
+}

@@ -234,3 +234,111 @@ preflight comparison: proof manifests retain one extra blank declaration
 separator, so both exact strings are now parsed by the same frozen declaration
 parser after verifying the complete manifest span occurs once in final source.
 The failed combined-backend-specific01 preparation and snapshot08 remain intact.
+
+Snapshot10 corrects the next data-only consumer assertion: the normal JS driver
+deliberately reports permission=false for real-io because it uses print_err.
+The original experiment separately authenticates every provider before granting
+its checked API permission. The consumer now requires that exact false/true/true
+driver-permission vector, authenticated authority and all original raw/false
+entry controls. `combined-backend-specific03/report.json` passes29 evidence
+rows; preparations01/02 remain failed evidence. No original target expectation
+or execution changed.
+
+`final-controls.py --b1-build B1.json --b2-build B2.json --backend-policy POLICY
+--backend-controls BACKEND_REPORT --out FRESH` binds those original plans and
+executes their four distinct Bend sources through the final images. The original
+seven small executions contain three unique Bend programs and one raw forged
+KTerm case; the three Bend sources plus the full1444-pair corpus are selected.
+The raw API experiment remains separate. Four independent baseline B2 emissions
+capture full diagnostics, including unsafe definitions. Eight final emissions
+must match those diagnostics and agree on entire C. Each common C is built once
+with matched O2 flags and run against every byte of the original stdout/stderr.
+Permission/scalar flags are checked too. This is four full-output executions,
+not a timing benchmark or a replacement for negative/provider controls.
+
+The successor admission collector requires `--final-controls FRESH/report.json`
+for changed backends. It independently rereads the original source/expectation
+plans, raw commands, diagnostics, all emitted C, build/run captures, flags and
+full outputs; its seal includes `receipts.finalImageControls`. Ordinary
+source-preserving admission is unchanged.
+
+`batch-continuity.py prepare --out FRESH` launches no target. It freezes all45
+original Phase93 batch sources, complete native C/product pins, full expected
+values, original workload arguments and44 retained calibration plans. Then the
+root may run `batch-continuity.py emit --plan FRESH/plan.json --b2-build B2.json
+--backend-policy POLICY --out EMISSIONS`. This emits each source once through
+the authenticated final B2 and requires the exact original diagnostic. It records
+whole-C equality without rebuilding historical executables. `passed` means all
+45 emissions and diagnostics succeeded; `allHistoricalCExact` and the separate
+changed/unchanged lists state whether runtime-product continuity holds.
+
+The resulting `changed-plan.json` contains only changed products and their
+unchanged calibration/oracle inputs. Those need B1 cross-check emission, one
+matched C11/O3 build each, and the unchanged Phase93 runtime methodology before
+new generated-program speed claims. Existing upstream executables can be reused.
+Exact-C cases need neither rebuild nor fresh timing to preserve the previous
+product comparison evidence; this is artifact continuity, not a fresh benchmark.
+The zero-work scalar-region-0 point remains explicit and has no runtime ratio.
+
+The cost-source successor uses `cost-backend-specific.py --parent-controls
+combined-backend-specific03/report.json --bridge permission-cost-declaration-bridge01/report.json
+--backend-policy cost-backend-policy01/policy.json --out FRESH`. This is data-only.
+It independently replays both D04 and parent59 recipes into a025, requires exactly
+two changed existing declarations and nine added cache helpers, preserves the16
+permission declarations and prior safe proof closures, and binds the accepted
+three-law redirect proof to its byte-identical final extraction. It rereads all
+105 complete worker lists and60 complete schemas, including untouched metadata,
+duplicates and NC_Text subtrees. Three actual cost-control C files must also
+equal the exact previously executed qualify05 products byte for byte.
+
+The resulting199 rows explicitly distinguish29 parent evidence rows from the
+new source bridge, redirect proof and168 finite comparisons. Cached unsafe
+planning correspondence remains source-audited and finitely tested; no universal
+cached-schema or native-lifetime proof is claimed. Failed cost-controls01 values
+are preserved; only its successful exact-source API build artifacts are reused.
+The new report still has `imageQualified=false`. Existing final-controls.py and
+admit.py authenticate source/policy/build pins dynamically and accept this a025
+receipt without a source-hash exception or relaxed final-image gate.
+
+Snapshot14 qualifies the minimal origin-ancestry termination correction, separately
+from the unpromoted planning-cost candidate. `origin-backend-specific.py` takes
+`--parent-controls`, `--bridge`, `--origin-controls`, `--backend-policy`, and
+`--out`. It rereads the actual completed origin controls, exact one-function
+source recipe, sixteen unchanged permission declarations, eleven complete origin
+decisions, three exact previously executed C products, bounded parent failure,
+and the actual owning-swap program output. Its46 evidence rows retain29 parent
+rows with explicit inherited scope. Old/new universal equivalence is not claimed.
+
+The resulting report pins three explicit original-plan selections for five
+final-image programs: real IO, generic array, schema refusals, full string corpus,
+and owning origin swap. Snapshot14 `final-controls.py` and `admit.py` consume
+those exact selections, retaining original source and stdout/stderr expectations.
+They require15 emissions (five independent references plus five per candidate
+stage), five cross-stage whole-C equalities, and five actual full-output native
+executions. The swapping function must remain declined by observer analysis.
+No candidate source hash is special-cased in these final-image gates.
+
+Snapshot14 also corrects active-flag reading: the six contiguous initial emitter
+definitions establish the flags. Later `#ifndef NATIVE_SCALAR_ARRAYS` runtime
+defaults do not override an already defined value. Earlier methods remain frozen;
+the scalar expectations and generated code are unchanged.
+
+Snapshot15 corrects the control diagnostic oracle. The independently retained
+Phase90 file-IO controls report thirteen unsafe/foreign definitions while
+successfully emitting C. `historical_diagnostics.py` binds their original guard,
+stdout and stderr pins, checks the raw process and complete counted protocol,
+then strips only transport clock lines. Both gate variants and admission compare
+every remaining byte with that original text. The other six control diagnostics
+and all90 historical broad45 observations retain the all-safe text. No diagnostic
+check is waived. Public CLI controls already compare the accepted control's full
+diagnostic, so their method needs no change. Failed origin-controls-native01 and
+snapshot14 remain preserved; the corrected controls use a fresh output path.
+
+Snapshot16 also corrects expected-rejection process interpretation, found during
+the same source review before snapshot15 ran any target. ExecutionGuard marks
+`complete` true only for exit zero. A valid expected exit one therefore has
+`complete=false` but still has finished/wall timestamps and no error, resource
+stop or interruption. The request checker and admission now require that exact
+bounded exit-one shape, empty stdout, absent C and the unchanged complete original
+diagnostic. Positive jobs still require exit zero and `complete=true`. Snapshot15
+is retained as unused preparation; snapshot16 is the executable correction.

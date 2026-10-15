@@ -1,0 +1,3101 @@
+{
+  "kind": "phase98-deduplicated-accepted-law-catalog",
+  "complete": true,
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase98/catalog-v3.py",
+    "bytes": 6283,
+    "sha256": "277a17e98f0548b4dc15cae27b0ff35bdc7e41aa6be712e5b4e5540baca96900"
+  },
+  "phase98": {
+    "public": 16,
+    "support": 40,
+    "distinctNames": 56,
+    "distinctStatements": 56,
+    "distinctProofBodies": 58
+  },
+  "baseline": {
+    "public": 35,
+    "support": 10,
+    "distinctNames": 45,
+    "packages": [
+      {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase96/algebra-all03/report.json",
+          "bytes": 19593,
+          "sha256": "b1f7ba51dd9c946c5a16953c913385e0679f8c44882642d3333f4974f6a87de0"
+        },
+        "public": 14,
+        "support": 7,
+        "scope": "Base operations and unpromoted Phase94 environment helper",
+        "lawNames": [
+          "append_right_identity",
+          "append_associative",
+          "append_length",
+          "reverse_accumulator",
+          "reverse_append_acc",
+          "reverse_append",
+          "reverse_involution",
+          "or_associative",
+          "or_idempotent",
+          "or_right_identity",
+          "contains_singleton",
+          "contains_append",
+          "contains_duplicate",
+          "filter_cons_decision",
+          "filter_put_append",
+          "filter_append",
+          "filter_recheck",
+          "filter_idempotent",
+          "prefix_chunking",
+          "prefix_step_order",
+          "prefix_order_and_drop"
+        ]
+      },
+      {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase96/representation-check03/report.json",
+          "bytes": 13857,
+          "sha256": "d0865433d5497a80b7f6c8965d8754df38e3b3b549be5cc8eaf58379fb6c18a7"
+        },
+        "public": 17,
+        "support": 0,
+        "scope": "Exact representation helper bodies",
+        "lawNames": [
+          "children_put_back",
+          "children_last_write",
+          "span_put_back",
+          "span_last_write",
+          "span_children_commute",
+          "children_preserve_metadata",
+          "span_preserves_semantics",
+          "span_reads_new_begin",
+          "span_reads_new_end",
+          "node_reads_new_children",
+          "lambda_reads_new_children",
+          "literal_ignores_children",
+          "rebuild_put_back",
+          "children_update_is_rebuild",
+          "literal_observation",
+          "lambda_observation",
+          "node_observation"
+        ]
+      },
+      {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase97/ownership-proof02/report.json",
+          "bytes": 13344,
+          "sha256": "932cbe1fd0e4bd902754250ec6cb72ea8e4943c3a4b201fbb8b7fe5525d790dc"
+        },
+        "public": 4,
+        "support": 3,
+        "scope": "Explicit ownership protocol model; no production runtime bridge",
+        "lawNames": [
+          "resume_read",
+          "execute_append",
+          "resume_temporary_read",
+          "temporary_read_in_context",
+          "temporary_read_preserves",
+          "dead_root_fault",
+          "drop_last_then_read_fault"
+        ]
+      }
+    ]
+  },
+  "combined": {
+    "public": 51,
+    "support": 50,
+    "distinctNames": 101
+  },
+  "acceptedInstances": [
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/report.json",
+        "bytes": 16224,
+        "sha256": "20cea5a368f6cab0cecedfbfb2871b41a693dcefeb7bfbfcb02936207518e5e0"
+      },
+      "lawNames": [
+        "provider_membership_existing",
+        "foreign_permission_preserves_existing_membership",
+        "provider_membership_exact",
+        "foreign_permission_exact",
+        "foreign_permission_requires_trust",
+        "foreign_permission_requires_body",
+        "foreign_permission_rejects_unlisted",
+        "consuming_equal_invariant",
+        "consuming_equal_specification"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-source01/bridge.bend",
+        "bytes": 1612,
+        "sha256": "e019f24a5f1966b5d7929015e01baaf20a61c4291b232a16d738924c556bd994"
+      },
+      "definitions": 66,
+      "opaqueDefinitions": [],
+      "targetSeconds": 2.4386717109009624
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/report.json",
+        "bytes": 14848,
+        "sha256": "7961763cc40d9eb09075a51bef04b76d0301bbbfd0cc962f1efc1a75cdfd380b"
+      },
+      "lawNames": [
+        "provider_membership_exact",
+        "foreign_permission_exact",
+        "foreign_permission_requires_trust",
+        "foreign_permission_requires_body",
+        "foreign_permission_rejects_unlisted",
+        "consuming_equal_invariant",
+        "consuming_equal_specification"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-source01/laws.bend",
+        "bytes": 2820,
+        "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+      },
+      "definitions": 63,
+      "opaqueDefinitions": [],
+      "targetSeconds": 2.3394357634242624
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-check01/report.json",
+        "bytes": 15973,
+        "sha256": "7fb03e2499e8156cbdf2b4fee2c123a43ba1ef365f2ecc1a5942b2297af8f270"
+      },
+      "lawNames": [
+        "tag_read_matches_projection",
+        "tag_comparison_preserves",
+        "held_walk_equal",
+        "held_comparison_preserves",
+        "consuming_equal_invariant",
+        "consuming_equal_specification"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-source01/tag.bend",
+        "bytes": 1198,
+        "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+      },
+      "definitions": 50,
+      "opaqueDefinitions": [],
+      "targetSeconds": 1.8701981080230325
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+        "bytes": 21553,
+        "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+      },
+      "lawNames": [
+        "p98_infer_node_stage10_ordered",
+        "p98_infer_node_stage9_ordered",
+        "p98_infer_node_stage8_ordered",
+        "p98_infer_node_stage7_ordered",
+        "p98_infer_node_stage6_ordered",
+        "p98_infer_node_stage5_ordered",
+        "p98_infer_node_stage4_ordered",
+        "p98_infer_node_stage3_ordered",
+        "p98_infer_node_stage2_ordered",
+        "p98_infer_node_stage1_ordered",
+        "p98_infer_node_stage0_ordered",
+        "p98_infer_node_preserves_ordered_dispatch",
+        "p98_check_node_stage6_ordered",
+        "p98_check_node_stage5_ordered",
+        "p98_check_node_stage4_ordered",
+        "p98_check_node_stage3_ordered",
+        "p98_check_node_stage2_ordered",
+        "p98_check_node_stage1_ordered",
+        "p98_check_node_stage0_ordered",
+        "p98_check_node_preserves_ordered_dispatch",
+        "p98_ka_node_stage6_ordered",
+        "p98_ka_node_stage5_ordered",
+        "p98_ka_node_stage4_ordered",
+        "p98_ka_node_stage3_ordered",
+        "p98_ka_node_stage2_ordered",
+        "p98_ka_node_stage1_ordered",
+        "p98_ka_node_stage0_ordered",
+        "p98_ka_node_preserves_ordered_dispatch",
+        "p98_ka_type_node_stage7_ordered",
+        "p98_ka_type_node_stage6_ordered",
+        "p98_ka_type_node_stage5_ordered",
+        "p98_ka_type_node_stage4_ordered",
+        "p98_ka_type_node_stage3_ordered",
+        "p98_ka_type_node_stage2_ordered",
+        "p98_ka_type_node_stage1_ordered",
+        "p98_ka_type_node_stage0_ordered",
+        "p98_ka_type_node_preserves_ordered_dispatch"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+        "bytes": 15743,
+        "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+      },
+      "definitions": 172,
+      "opaqueDefinitions": [],
+      "targetSeconds": 2.6887766760773957
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-maintenance-check02/report.json",
+        "bytes": 14682,
+        "sha256": "c52ccccef57b83006cd37cb28270786434554a19439731dfb9c7188c89a3a089"
+      },
+      "lawNames": [
+        "held_walk_equal",
+        "held_observation_complete",
+        "held_comparison_preserves",
+        "consuming_equal_invariant",
+        "consuming_equal_specification"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase98/comparison/maintenance02/held-exact.bend",
+        "bytes": 1595,
+        "sha256": "54161810d0047c18989ca563cdfd3c98c0bd343da3bcbf3a9e79cf0887b48bda"
+      },
+      "definitions": 40,
+      "opaqueDefinitions": [],
+      "targetSeconds": 1.7075199738610536
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-proof-check01/report.json",
+        "bytes": 14454,
+        "sha256": "a2e5ff8db6ebfd58491eb0454ac44bbce4c184018e7e7e10bcf3fef967eae668"
+      },
+      "lawNames": [
+        "held_walk_equal",
+        "held_observation_complete",
+        "held_comparison_preserves",
+        "consuming_equal_invariant",
+        "consuming_equal_specification"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-proof-source02/held-exact.bend",
+        "bytes": 1586,
+        "sha256": "9669aa15e32362d106580b3381ed9a78a4b19bc8028869c7a352a399d83fc426"
+      },
+      "definitions": 39,
+      "opaqueDefinitions": [],
+      "targetSeconds": 1.6855156680103391
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-simple-proof-check01/report.json",
+        "bytes": 14473,
+        "sha256": "4b6453e515db6fd52f9f55e1c3bf1633792ba5ce20d4c260f314eed6e1985d90"
+      },
+      "lawNames": [
+        "held_walk_equal",
+        "held_comparison_preserves",
+        "consuming_equal_invariant",
+        "consuming_equal_specification"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-simple-proof-source01/held-simple.bend",
+        "bytes": 1206,
+        "sha256": "8a704f9298d2aa101aa8276fc8d03fa5bd29d4faa698b7f210174b35ede6e90c"
+      },
+      "definitions": 35,
+      "opaqueDefinitions": [],
+      "targetSeconds": 1.6667877677828074
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/report.json",
+        "bytes": 16154,
+        "sha256": "b192062d9e2640961158db887b38a777ca312d50a1c762f97fbfa87e2bb6d8d9"
+      },
+      "lawNames": [
+        "provider_membership_existing",
+        "foreign_permission_preserves_existing_membership",
+        "provider_membership_exact",
+        "foreign_permission_exact",
+        "foreign_permission_requires_trust",
+        "foreign_permission_requires_body",
+        "foreign_permission_rejects_unlisted",
+        "consuming_equal_invariant",
+        "consuming_equal_specification"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-source01/bridge.bend",
+        "bytes": 1612,
+        "sha256": "e019f24a5f1966b5d7929015e01baaf20a61c4291b232a16d738924c556bd994"
+      },
+      "definitions": 66,
+      "opaqueDefinitions": [],
+      "targetSeconds": 2.3564277302939445
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-check01/report.json",
+        "bytes": 15890,
+        "sha256": "32c2d8ddebc5d73f7ecdf1d1d55c7e9514c491ad8c72437c78944a223e74e86d"
+      },
+      "lawNames": [
+        "tag_read_matches_projection",
+        "tag_comparison_preserves",
+        "held_walk_equal",
+        "held_comparison_preserves",
+        "consuming_equal_invariant",
+        "consuming_equal_specification"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-source01/tag.bend",
+        "bytes": 1198,
+        "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+      },
+      "definitions": 50,
+      "opaqueDefinitions": [],
+      "targetSeconds": 1.8490818543359637
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/report.json",
+        "bytes": 15910,
+        "sha256": "e2ba427ccfd6f55489fe69de3d217ef14d34f0035b3ca4d9535cbc4eac3f27ed"
+      },
+      "lawNames": [
+        "provider_membership_existing",
+        "foreign_permission_preserves_existing_membership",
+        "provider_membership_exact",
+        "foreign_permission_exact",
+        "foreign_permission_requires_trust",
+        "foreign_permission_requires_body",
+        "foreign_permission_rejects_unlisted",
+        "consuming_equal_invariant",
+        "consuming_equal_specification"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-source01/bridge.bend",
+        "bytes": 1612,
+        "sha256": "e019f24a5f1966b5d7929015e01baaf20a61c4291b232a16d738924c556bd994"
+      },
+      "definitions": 65,
+      "opaqueDefinitions": [],
+      "targetSeconds": 2.419080510735512
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/report.json",
+        "bytes": 14550,
+        "sha256": "06eab0e8e6b6cae07210326e0d7483b27b75e275dd64b9e016905d89842f8cf9"
+      },
+      "lawNames": [
+        "provider_membership_exact",
+        "foreign_permission_exact",
+        "foreign_permission_requires_trust",
+        "foreign_permission_requires_body",
+        "foreign_permission_rejects_unlisted",
+        "consuming_equal_invariant",
+        "consuming_equal_specification"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-source01/laws.bend",
+        "bytes": 2820,
+        "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+      },
+      "definitions": 62,
+      "opaqueDefinitions": [],
+      "targetSeconds": 2.255744725232944
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/redirect-proof-check01/report.json",
+        "bytes": 13882,
+        "sha256": "58e6f75c0df2520c481156faf5f29bd967d2ce387df04a186e268942a34bc501"
+      },
+      "lawNames": [
+        "redirect_worker_choice",
+        "redirect_list_cons",
+        "redirect_workers_preserves"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/redirect-proof-source01/proof.bend",
+        "bytes": 3185,
+        "sha256": "8fb875efc277742d475ac370860927af860a4ef8aecd0817df965f38959b3149"
+      },
+      "definitions": 145,
+      "opaqueDefinitions": [],
+      "targetSeconds": 9.727981528965756
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/scalar-proof-check01/report.json",
+        "bytes": 11385,
+        "sha256": "0e45ba81d081736ed4c7cfa9495b557ef690d09e80843de77867f17104f68c8a"
+      },
+      "lawNames": [
+        "retained_id_preserves",
+        "retained_quantity_preserves"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/scalar-proof-source01/scalars.bend",
+        "bytes": 968,
+        "sha256": "13b65f3242518373e24253462f277b8c21614d4df1d9817d12126a119fe24d65"
+      },
+      "definitions": 29,
+      "opaqueDefinitions": [],
+      "targetSeconds": 1.6448510631453246
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check01/report.json",
+        "bytes": 15617,
+        "sha256": "5c807c7d02916b90a54a6e6497ddedc4ce893ce40366a6842411db2212ec9504"
+      },
+      "lawNames": [
+        "tag_read_matches_projection",
+        "tag_comparison_preserves",
+        "held_walk_equal",
+        "held_comparison_preserves",
+        "consuming_equal_invariant",
+        "consuming_equal_specification"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-source01/tag.bend",
+        "bytes": 1198,
+        "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+      },
+      "definitions": 50,
+      "opaqueDefinitions": [],
+      "targetSeconds": 1.8271737766917795
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check04/report.json",
+        "bytes": 15615,
+        "sha256": "56563b90995991063a20c7cc14ede7395d0961493b1ed59fadd96f1b88f80021"
+      },
+      "lawNames": [
+        "tag_read_matches_projection",
+        "tag_comparison_preserves",
+        "held_walk_equal",
+        "held_comparison_preserves",
+        "consuming_equal_invariant",
+        "consuming_equal_specification"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-source04/tag.bend",
+        "bytes": 1198,
+        "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+      },
+      "definitions": 50,
+      "opaqueDefinitions": [],
+      "targetSeconds": 1.8706207687500864
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check05/report.json",
+        "bytes": 15655,
+        "sha256": "34a5a233048328fbb2c209c0691e95d58eaa52641925c35b935316dc225e9c6c"
+      },
+      "lawNames": [
+        "tag_read_matches_projection",
+        "tag_comparison_preserves",
+        "held_walk_equal",
+        "held_comparison_preserves",
+        "consuming_equal_invariant",
+        "consuming_equal_specification"
+      ],
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-source05/tag.bend",
+        "bytes": 1198,
+        "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+      },
+      "definitions": 51,
+      "opaqueDefinitions": [],
+      "targetSeconds": 1.8488872658926994
+    }
+  ],
+  "laws": [
+    {
+      "name": "consuming_equal_invariant",
+      "role": "support",
+      "statements": {
+        "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773": "law consuming_equal_invariant:\n  for a: String\n  for b: String\n  for same: Bool\n  {P.p88_string_eq_go(a, b, same) == Bool.and(same, R.structural_equal(a, b)) : Bool}\n"
+      },
+      "proofBodies": {
+        "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184": "def consuming_equal_invariant(a, b, same):\n  match a b same:\n    case SNil{} SNil{} False{}: {==}\n    case SNil{} SNil{} True{}: {==}\n    case SNil{} SCon{head, tail} False{}: {==}\n    case SNil{} SCon{head, tail} True{}: {==}\n    case SCon{head, tail} SNil{} False{}: {==}\n    case SCon{head, tail} SNil{} True{}: {==}\n    case SCon{ah, at} SCon{bh, bt} False{}: {==}\n    case SCon{ah, at} SCon{bh, bt} True{}:\n      consuming_equal_invariant(at, bt, Char.is_eq(ah, bh))\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/report.json",
+            "bytes": 16224,
+            "sha256": "20cea5a368f6cab0cecedfbfb2871b41a693dcefeb7bfbfcb02936207518e5e0"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/snapshot/selfhost/build/phase98/combined-membership-proof-source01/baseline.bend",
+            "bytes": 1294,
+            "sha256": "22c4402319298105fc5b6e93c919d84e457a3a7b069e8ff849896967a3879d76"
+          },
+          "statementSha256": "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773",
+          "bodySha256": "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184",
+          "closureIdentity": "21abb06482a2de235b44665a86c277a8ed7b1f770eec403f198235636cccb38c"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/report.json",
+            "bytes": 14848,
+            "sha256": "7961763cc40d9eb09075a51bef04b76d0301bbbfd0cc962f1efc1a75cdfd380b"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/snapshot/selfhost/build/phase98/combined-permission-proof-source01/baseline.bend",
+            "bytes": 1294,
+            "sha256": "22c4402319298105fc5b6e93c919d84e457a3a7b069e8ff849896967a3879d76"
+          },
+          "statementSha256": "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773",
+          "bodySha256": "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184",
+          "closureIdentity": "ac673711045f8113a61fd429a05e8792ca62a9f6dd06433a564475f1bea7c7ae"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-check01/report.json",
+            "bytes": 15973,
+            "sha256": "7fb03e2499e8156cbdf2b4fee2c123a43ba1ef365f2ecc1a5942b2297af8f270"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-check01/snapshot/selfhost/build/phase98/combined-tag-proof-source01/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773",
+          "bodySha256": "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184",
+          "closureIdentity": "a8162fa900d04039df77df055a192bcccfe00eda18b9bf0f3ba718bb0018136d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-maintenance-check02/report.json",
+            "bytes": 14682,
+            "sha256": "c52ccccef57b83006cd37cb28270786434554a19439731dfb9c7188c89a3a089"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-maintenance-check02/snapshot/selfhost/proofs/phase98/comparison/maintenance02/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773",
+          "bodySha256": "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184",
+          "closureIdentity": "3859207f6bd6694795faf3262ad851aa1e124e85def1d7111661a524ad93eff0"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-proof-check01/report.json",
+            "bytes": 14454,
+            "sha256": "a2e5ff8db6ebfd58491eb0454ac44bbce4c184018e7e7e10bcf3fef967eae668"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-proof-check01/snapshot/selfhost/build/phase98/held-proof-source02/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773",
+          "bodySha256": "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184",
+          "closureIdentity": "20de88b71d01cb3662310e029d9a66b4504ee955cb3028f4d89c3120e430546e"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-simple-proof-check01/report.json",
+            "bytes": 14473,
+            "sha256": "4b6453e515db6fd52f9f55e1c3bf1633792ba5ce20d4c260f314eed6e1985d90"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-simple-proof-check01/snapshot/selfhost/build/phase98/held-simple-proof-source01/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773",
+          "bodySha256": "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184",
+          "closureIdentity": "7b748a5a298f46036bd831390edffbfa3061eed1b72092b156aa44a5beffa7bb"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/report.json",
+            "bytes": 16154,
+            "sha256": "b192062d9e2640961158db887b38a777ca312d50a1c762f97fbfa87e2bb6d8d9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/snapshot/selfhost/build/phase98/origin-membership-proof-source01/baseline.bend",
+            "bytes": 1294,
+            "sha256": "22c4402319298105fc5b6e93c919d84e457a3a7b069e8ff849896967a3879d76"
+          },
+          "statementSha256": "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773",
+          "bodySha256": "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184",
+          "closureIdentity": "3bbe6e321b7391069ef36fa19c0433f368212c7c8d74be9aa67427ed56cad2be"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-check01/report.json",
+            "bytes": 15890,
+            "sha256": "32c2d8ddebc5d73f7ecdf1d1d55c7e9514c491ad8c72437c78944a223e74e86d"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-check01/snapshot/selfhost/build/phase98/origin-tag-proof-source01/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773",
+          "bodySha256": "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184",
+          "closureIdentity": "7dbb6b2f99b60c2cbe91a84f420098861810996a4a3cbe934433652cd686ad7d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/report.json",
+            "bytes": 15910,
+            "sha256": "e2ba427ccfd6f55489fe69de3d217ef14d34f0035b3ca4d9535cbc4eac3f27ed"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/snapshot/selfhost/build/phase98/permission-bridge-source01/baseline.bend",
+            "bytes": 1294,
+            "sha256": "22c4402319298105fc5b6e93c919d84e457a3a7b069e8ff849896967a3879d76"
+          },
+          "statementSha256": "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773",
+          "bodySha256": "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184",
+          "closureIdentity": "e69371ae2d05539c35928cf550c43f69fad6a891216e37f28beb132804905e03"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/report.json",
+            "bytes": 14550,
+            "sha256": "06eab0e8e6b6cae07210326e0d7483b27b75e275dd64b9e016905d89842f8cf9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/snapshot/selfhost/build/phase98/permission-proof-source01/baseline.bend",
+            "bytes": 1294,
+            "sha256": "22c4402319298105fc5b6e93c919d84e457a3a7b069e8ff849896967a3879d76"
+          },
+          "statementSha256": "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773",
+          "bodySha256": "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184",
+          "closureIdentity": "2dce0ea744a5c70b0052ce1c4a95bbe85ef72d3f10211cb276b84f25ab38584d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check01/report.json",
+            "bytes": 15617,
+            "sha256": "5c807c7d02916b90a54a6e6497ddedc4ce893ce40366a6842411db2212ec9504"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check01/snapshot/selfhost/build/phase98/tag-proof-source01/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773",
+          "bodySha256": "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184",
+          "closureIdentity": "78943fd773c789a750a68535d0a00f22b2615270c94e335e6143fe2d35d09ae1"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check04/report.json",
+            "bytes": 15615,
+            "sha256": "56563b90995991063a20c7cc14ede7395d0961493b1ed59fadd96f1b88f80021"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check04/snapshot/selfhost/build/phase98/tag-proof-source04/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773",
+          "bodySha256": "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184",
+          "closureIdentity": "d47a76b8ab57a4ad326ff02c4c9d6a890037d8039974f6e5e26b2c3fe1cb36e7"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check05/report.json",
+            "bytes": 15655,
+            "sha256": "34a5a233048328fbb2c209c0691e95d58eaa52641925c35b935316dc225e9c6c"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check05/snapshot/selfhost/build/phase98/tag-proof-source05/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "d5b27737219165bccd3720da61778a05b60bb313d415c60c1995155b0a2e6773",
+          "bodySha256": "be3e8af4edf4a84295f705f35fc59b69e6f30abc9779f2f161ca02c79ffb3184",
+          "closureIdentity": "b54df675ad6e3cc994b2c35a22461b5fbc3941e05e46ab4ab993423632f685b0"
+        }
+      ]
+    },
+    {
+      "name": "consuming_equal_specification",
+      "role": "public",
+      "statements": {
+        "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08": "law consuming_equal_specification:\n  for a: String\n  for b: String\n  {P.p88_string_eq(a, b) == R.structural_equal(a, b) : Bool}\n"
+      },
+      "proofBodies": {
+        "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e": "def consuming_equal_specification(a, b):\n  consuming_equal_invariant(a, b, True{})\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/report.json",
+            "bytes": 16224,
+            "sha256": "20cea5a368f6cab0cecedfbfb2871b41a693dcefeb7bfbfcb02936207518e5e0"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/snapshot/selfhost/build/phase98/combined-membership-proof-source01/baseline.bend",
+            "bytes": 1294,
+            "sha256": "22c4402319298105fc5b6e93c919d84e457a3a7b069e8ff849896967a3879d76"
+          },
+          "statementSha256": "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08",
+          "bodySha256": "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e",
+          "closureIdentity": "21abb06482a2de235b44665a86c277a8ed7b1f770eec403f198235636cccb38c"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/report.json",
+            "bytes": 14848,
+            "sha256": "7961763cc40d9eb09075a51bef04b76d0301bbbfd0cc962f1efc1a75cdfd380b"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/snapshot/selfhost/build/phase98/combined-permission-proof-source01/baseline.bend",
+            "bytes": 1294,
+            "sha256": "22c4402319298105fc5b6e93c919d84e457a3a7b069e8ff849896967a3879d76"
+          },
+          "statementSha256": "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08",
+          "bodySha256": "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e",
+          "closureIdentity": "ac673711045f8113a61fd429a05e8792ca62a9f6dd06433a564475f1bea7c7ae"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-check01/report.json",
+            "bytes": 15973,
+            "sha256": "7fb03e2499e8156cbdf2b4fee2c123a43ba1ef365f2ecc1a5942b2297af8f270"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-check01/snapshot/selfhost/build/phase98/combined-tag-proof-source01/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08",
+          "bodySha256": "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e",
+          "closureIdentity": "a8162fa900d04039df77df055a192bcccfe00eda18b9bf0f3ba718bb0018136d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-maintenance-check02/report.json",
+            "bytes": 14682,
+            "sha256": "c52ccccef57b83006cd37cb28270786434554a19439731dfb9c7188c89a3a089"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-maintenance-check02/snapshot/selfhost/proofs/phase98/comparison/maintenance02/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08",
+          "bodySha256": "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e",
+          "closureIdentity": "3859207f6bd6694795faf3262ad851aa1e124e85def1d7111661a524ad93eff0"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-proof-check01/report.json",
+            "bytes": 14454,
+            "sha256": "a2e5ff8db6ebfd58491eb0454ac44bbce4c184018e7e7e10bcf3fef967eae668"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-proof-check01/snapshot/selfhost/build/phase98/held-proof-source02/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08",
+          "bodySha256": "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e",
+          "closureIdentity": "20de88b71d01cb3662310e029d9a66b4504ee955cb3028f4d89c3120e430546e"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-simple-proof-check01/report.json",
+            "bytes": 14473,
+            "sha256": "4b6453e515db6fd52f9f55e1c3bf1633792ba5ce20d4c260f314eed6e1985d90"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-simple-proof-check01/snapshot/selfhost/build/phase98/held-simple-proof-source01/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08",
+          "bodySha256": "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e",
+          "closureIdentity": "7b748a5a298f46036bd831390edffbfa3061eed1b72092b156aa44a5beffa7bb"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/report.json",
+            "bytes": 16154,
+            "sha256": "b192062d9e2640961158db887b38a777ca312d50a1c762f97fbfa87e2bb6d8d9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/snapshot/selfhost/build/phase98/origin-membership-proof-source01/baseline.bend",
+            "bytes": 1294,
+            "sha256": "22c4402319298105fc5b6e93c919d84e457a3a7b069e8ff849896967a3879d76"
+          },
+          "statementSha256": "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08",
+          "bodySha256": "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e",
+          "closureIdentity": "3bbe6e321b7391069ef36fa19c0433f368212c7c8d74be9aa67427ed56cad2be"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-check01/report.json",
+            "bytes": 15890,
+            "sha256": "32c2d8ddebc5d73f7ecdf1d1d55c7e9514c491ad8c72437c78944a223e74e86d"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-check01/snapshot/selfhost/build/phase98/origin-tag-proof-source01/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08",
+          "bodySha256": "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e",
+          "closureIdentity": "7dbb6b2f99b60c2cbe91a84f420098861810996a4a3cbe934433652cd686ad7d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/report.json",
+            "bytes": 15910,
+            "sha256": "e2ba427ccfd6f55489fe69de3d217ef14d34f0035b3ca4d9535cbc4eac3f27ed"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/snapshot/selfhost/build/phase98/permission-bridge-source01/baseline.bend",
+            "bytes": 1294,
+            "sha256": "22c4402319298105fc5b6e93c919d84e457a3a7b069e8ff849896967a3879d76"
+          },
+          "statementSha256": "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08",
+          "bodySha256": "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e",
+          "closureIdentity": "e69371ae2d05539c35928cf550c43f69fad6a891216e37f28beb132804905e03"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/report.json",
+            "bytes": 14550,
+            "sha256": "06eab0e8e6b6cae07210326e0d7483b27b75e275dd64b9e016905d89842f8cf9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/snapshot/selfhost/build/phase98/permission-proof-source01/baseline.bend",
+            "bytes": 1294,
+            "sha256": "22c4402319298105fc5b6e93c919d84e457a3a7b069e8ff849896967a3879d76"
+          },
+          "statementSha256": "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08",
+          "bodySha256": "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e",
+          "closureIdentity": "2dce0ea744a5c70b0052ce1c4a95bbe85ef72d3f10211cb276b84f25ab38584d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check01/report.json",
+            "bytes": 15617,
+            "sha256": "5c807c7d02916b90a54a6e6497ddedc4ce893ce40366a6842411db2212ec9504"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check01/snapshot/selfhost/build/phase98/tag-proof-source01/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08",
+          "bodySha256": "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e",
+          "closureIdentity": "78943fd773c789a750a68535d0a00f22b2615270c94e335e6143fe2d35d09ae1"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check04/report.json",
+            "bytes": 15615,
+            "sha256": "56563b90995991063a20c7cc14ede7395d0961493b1ed59fadd96f1b88f80021"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check04/snapshot/selfhost/build/phase98/tag-proof-source04/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08",
+          "bodySha256": "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e",
+          "closureIdentity": "d47a76b8ab57a4ad326ff02c4c9d6a890037d8039974f6e5e26b2c3fe1cb36e7"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check05/report.json",
+            "bytes": 15655,
+            "sha256": "34a5a233048328fbb2c209c0691e95d58eaa52641925c35b935316dc225e9c6c"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check05/snapshot/selfhost/build/phase98/tag-proof-source05/baseline.bend",
+            "bytes": 1295,
+            "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+          },
+          "statementSha256": "75e7d887bc803b0083b80eda0c72d459cdfa104245cc5251e644d6755e960f08",
+          "bodySha256": "b8692178d753d3fbf5160ddd02bd40024d183adc6207536d569c5d8e0fb2145e",
+          "closureIdentity": "b54df675ad6e3cc994b2c35a22461b5fbc3941e05e46ab4ab993423632f685b0"
+        }
+      ]
+    },
+    {
+      "name": "foreign_permission_exact",
+      "role": "public",
+      "statements": {
+        "4838f9834a81e18d658c6ad0465f64b3f7a052e9a88a111696e3a399d14289a9": "law foreign_permission_exact:\n  for trusted: Bool\n  for filled: Bool\n  for name: String\n  {H.no_effect_foreign_allowed(trusted, filled, name) == Bool.and(trusted, Bool.and(filled, R.provider_allowed(name))) : Bool}\n"
+      },
+      "proofBodies": {
+        "3e183d5ef9cc0f609767730334eaf74a26976fd4c88c5d496afaf3204a1fe621": "def foreign_permission_exact(trusted, filled, name):\n  match trusted filled:\n    case False{} False{}: {==}\n    case False{} True{}: {==}\n    case True{} False{}: {==}\n    case True{} True{}:\n      provider_membership_exact([\"IO.args\", \"IO.print\", \"IO.now\", \"IO.print_err\", \"File.open\", \"File.read\", \"File.size\", \"File.write\", \"File.close\"], name)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/report.json",
+            "bytes": 16224,
+            "sha256": "20cea5a368f6cab0cecedfbfb2871b41a693dcefeb7bfbfcb02936207518e5e0"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/snapshot/selfhost/build/phase98/combined-membership-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "4838f9834a81e18d658c6ad0465f64b3f7a052e9a88a111696e3a399d14289a9",
+          "bodySha256": "3e183d5ef9cc0f609767730334eaf74a26976fd4c88c5d496afaf3204a1fe621",
+          "closureIdentity": "21abb06482a2de235b44665a86c277a8ed7b1f770eec403f198235636cccb38c"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/report.json",
+            "bytes": 14848,
+            "sha256": "7961763cc40d9eb09075a51bef04b76d0301bbbfd0cc962f1efc1a75cdfd380b"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/snapshot/selfhost/build/phase98/combined-permission-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "4838f9834a81e18d658c6ad0465f64b3f7a052e9a88a111696e3a399d14289a9",
+          "bodySha256": "3e183d5ef9cc0f609767730334eaf74a26976fd4c88c5d496afaf3204a1fe621",
+          "closureIdentity": "ac673711045f8113a61fd429a05e8792ca62a9f6dd06433a564475f1bea7c7ae"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/report.json",
+            "bytes": 16154,
+            "sha256": "b192062d9e2640961158db887b38a777ca312d50a1c762f97fbfa87e2bb6d8d9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/snapshot/selfhost/build/phase98/origin-membership-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "4838f9834a81e18d658c6ad0465f64b3f7a052e9a88a111696e3a399d14289a9",
+          "bodySha256": "3e183d5ef9cc0f609767730334eaf74a26976fd4c88c5d496afaf3204a1fe621",
+          "closureIdentity": "3bbe6e321b7391069ef36fa19c0433f368212c7c8d74be9aa67427ed56cad2be"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/report.json",
+            "bytes": 15910,
+            "sha256": "e2ba427ccfd6f55489fe69de3d217ef14d34f0035b3ca4d9535cbc4eac3f27ed"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/snapshot/selfhost/build/phase98/permission-bridge-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "4838f9834a81e18d658c6ad0465f64b3f7a052e9a88a111696e3a399d14289a9",
+          "bodySha256": "3e183d5ef9cc0f609767730334eaf74a26976fd4c88c5d496afaf3204a1fe621",
+          "closureIdentity": "e69371ae2d05539c35928cf550c43f69fad6a891216e37f28beb132804905e03"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/report.json",
+            "bytes": 14550,
+            "sha256": "06eab0e8e6b6cae07210326e0d7483b27b75e275dd64b9e016905d89842f8cf9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/snapshot/selfhost/build/phase98/permission-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "4838f9834a81e18d658c6ad0465f64b3f7a052e9a88a111696e3a399d14289a9",
+          "bodySha256": "3e183d5ef9cc0f609767730334eaf74a26976fd4c88c5d496afaf3204a1fe621",
+          "closureIdentity": "2dce0ea744a5c70b0052ce1c4a95bbe85ef72d3f10211cb276b84f25ab38584d"
+        }
+      ]
+    },
+    {
+      "name": "foreign_permission_preserves_existing_membership",
+      "role": "public",
+      "statements": {
+        "f2058767d0431cfea58a5943d4722136a4768a9d86578422df33f06a167837b0": "law foreign_permission_preserves_existing_membership:\n  for trusted: Bool\n  for filled: Bool\n  for name: String\n  {H.no_effect_foreign_allowed(trusted, filled, name) == Bool.and(trusted, Bool.and(filled, H.nb_contains([\"IO.args\", \"IO.print\", \"IO.now\", \"IO.print_err\", \"File.open\", \"File.read\", \"File.size\", \"File.write\", \"File.close\"], name))) : Bool}\n"
+      },
+      "proofBodies": {
+        "dd9aa154c1a2a807934cc563bc2eece36534fc530335b2f1ed5aea46207a99a3": "def foreign_permission_preserves_existing_membership(trusted, filled, name):\n  match trusted filled:\n    case False{} False{}: {==}\n    case False{} True{}: {==}\n    case True{} False{}: {==}\n    case True{} True{}:\n      provider_membership_existing([\"IO.args\", \"IO.print\", \"IO.now\", \"IO.print_err\", \"File.open\", \"File.read\", \"File.size\", \"File.write\", \"File.close\"], name)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/report.json",
+            "bytes": 16224,
+            "sha256": "20cea5a368f6cab0cecedfbfb2871b41a693dcefeb7bfbfcb02936207518e5e0"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/snapshot/selfhost/build/phase98/combined-membership-proof-source01/bridge.bend",
+            "bytes": 1612,
+            "sha256": "e019f24a5f1966b5d7929015e01baaf20a61c4291b232a16d738924c556bd994"
+          },
+          "statementSha256": "f2058767d0431cfea58a5943d4722136a4768a9d86578422df33f06a167837b0",
+          "bodySha256": "dd9aa154c1a2a807934cc563bc2eece36534fc530335b2f1ed5aea46207a99a3",
+          "closureIdentity": "21abb06482a2de235b44665a86c277a8ed7b1f770eec403f198235636cccb38c"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/report.json",
+            "bytes": 16154,
+            "sha256": "b192062d9e2640961158db887b38a777ca312d50a1c762f97fbfa87e2bb6d8d9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/snapshot/selfhost/build/phase98/origin-membership-proof-source01/bridge.bend",
+            "bytes": 1612,
+            "sha256": "e019f24a5f1966b5d7929015e01baaf20a61c4291b232a16d738924c556bd994"
+          },
+          "statementSha256": "f2058767d0431cfea58a5943d4722136a4768a9d86578422df33f06a167837b0",
+          "bodySha256": "dd9aa154c1a2a807934cc563bc2eece36534fc530335b2f1ed5aea46207a99a3",
+          "closureIdentity": "3bbe6e321b7391069ef36fa19c0433f368212c7c8d74be9aa67427ed56cad2be"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/report.json",
+            "bytes": 15910,
+            "sha256": "e2ba427ccfd6f55489fe69de3d217ef14d34f0035b3ca4d9535cbc4eac3f27ed"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/snapshot/selfhost/build/phase98/permission-bridge-source01/bridge.bend",
+            "bytes": 1612,
+            "sha256": "e019f24a5f1966b5d7929015e01baaf20a61c4291b232a16d738924c556bd994"
+          },
+          "statementSha256": "f2058767d0431cfea58a5943d4722136a4768a9d86578422df33f06a167837b0",
+          "bodySha256": "dd9aa154c1a2a807934cc563bc2eece36534fc530335b2f1ed5aea46207a99a3",
+          "closureIdentity": "e69371ae2d05539c35928cf550c43f69fad6a891216e37f28beb132804905e03"
+        }
+      ]
+    },
+    {
+      "name": "foreign_permission_rejects_unlisted",
+      "role": "public",
+      "statements": {
+        "b1d4b928bedf0f28388983d26354f16e95bc84fda3587cc523a4e1ad2d4fdc3c": "law foreign_permission_rejects_unlisted:\n  for name: String\n  for absent: {R.provider_allowed(name) == False{} : Bool}\n  {H.no_effect_foreign_allowed(True{}, True{}, name) == False{} : Bool}\n"
+      },
+      "proofBodies": {
+        "0a11bc387b93817bed12aef3f6e32693ec5f4fe9bf53d90063c631d6aa9883f6": "def foreign_permission_rejects_unlisted(name, absent):\n  %absent : {H.no_effect_foreign_allowed(True{}, True{}, name) == _ : Bool}\n  provider_membership_exact([\"IO.args\", \"IO.print\", \"IO.now\", \"IO.print_err\", \"File.open\", \"File.read\", \"File.size\", \"File.write\", \"File.close\"], name)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/report.json",
+            "bytes": 16224,
+            "sha256": "20cea5a368f6cab0cecedfbfb2871b41a693dcefeb7bfbfcb02936207518e5e0"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/snapshot/selfhost/build/phase98/combined-membership-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "b1d4b928bedf0f28388983d26354f16e95bc84fda3587cc523a4e1ad2d4fdc3c",
+          "bodySha256": "0a11bc387b93817bed12aef3f6e32693ec5f4fe9bf53d90063c631d6aa9883f6",
+          "closureIdentity": "21abb06482a2de235b44665a86c277a8ed7b1f770eec403f198235636cccb38c"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/report.json",
+            "bytes": 14848,
+            "sha256": "7961763cc40d9eb09075a51bef04b76d0301bbbfd0cc962f1efc1a75cdfd380b"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/snapshot/selfhost/build/phase98/combined-permission-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "b1d4b928bedf0f28388983d26354f16e95bc84fda3587cc523a4e1ad2d4fdc3c",
+          "bodySha256": "0a11bc387b93817bed12aef3f6e32693ec5f4fe9bf53d90063c631d6aa9883f6",
+          "closureIdentity": "ac673711045f8113a61fd429a05e8792ca62a9f6dd06433a564475f1bea7c7ae"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/report.json",
+            "bytes": 16154,
+            "sha256": "b192062d9e2640961158db887b38a777ca312d50a1c762f97fbfa87e2bb6d8d9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/snapshot/selfhost/build/phase98/origin-membership-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "b1d4b928bedf0f28388983d26354f16e95bc84fda3587cc523a4e1ad2d4fdc3c",
+          "bodySha256": "0a11bc387b93817bed12aef3f6e32693ec5f4fe9bf53d90063c631d6aa9883f6",
+          "closureIdentity": "3bbe6e321b7391069ef36fa19c0433f368212c7c8d74be9aa67427ed56cad2be"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/report.json",
+            "bytes": 15910,
+            "sha256": "e2ba427ccfd6f55489fe69de3d217ef14d34f0035b3ca4d9535cbc4eac3f27ed"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/snapshot/selfhost/build/phase98/permission-bridge-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "b1d4b928bedf0f28388983d26354f16e95bc84fda3587cc523a4e1ad2d4fdc3c",
+          "bodySha256": "0a11bc387b93817bed12aef3f6e32693ec5f4fe9bf53d90063c631d6aa9883f6",
+          "closureIdentity": "e69371ae2d05539c35928cf550c43f69fad6a891216e37f28beb132804905e03"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/report.json",
+            "bytes": 14550,
+            "sha256": "06eab0e8e6b6cae07210326e0d7483b27b75e275dd64b9e016905d89842f8cf9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/snapshot/selfhost/build/phase98/permission-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "b1d4b928bedf0f28388983d26354f16e95bc84fda3587cc523a4e1ad2d4fdc3c",
+          "bodySha256": "0a11bc387b93817bed12aef3f6e32693ec5f4fe9bf53d90063c631d6aa9883f6",
+          "closureIdentity": "2dce0ea744a5c70b0052ce1c4a95bbe85ef72d3f10211cb276b84f25ab38584d"
+        }
+      ]
+    },
+    {
+      "name": "foreign_permission_requires_body",
+      "role": "public",
+      "statements": {
+        "e1313554de22ea10a324b998c4620a1fbd1be522a1692f80b1329683431b3d27": "law foreign_permission_requires_body:\n  for trusted: Bool\n  for name: String\n  {H.no_effect_foreign_allowed(trusted, False{}, name) == False{} : Bool}\n"
+      },
+      "proofBodies": {
+        "9e0f6e85f859b8f23e99db4900058a5c465a4bd37305bc28f13997b0ea5f0348": "def foreign_permission_requires_body(trusted, name):\n  match trusted:\n    case False{}: {==}\n    case True{}: {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/report.json",
+            "bytes": 16224,
+            "sha256": "20cea5a368f6cab0cecedfbfb2871b41a693dcefeb7bfbfcb02936207518e5e0"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/snapshot/selfhost/build/phase98/combined-membership-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "e1313554de22ea10a324b998c4620a1fbd1be522a1692f80b1329683431b3d27",
+          "bodySha256": "9e0f6e85f859b8f23e99db4900058a5c465a4bd37305bc28f13997b0ea5f0348",
+          "closureIdentity": "21abb06482a2de235b44665a86c277a8ed7b1f770eec403f198235636cccb38c"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/report.json",
+            "bytes": 14848,
+            "sha256": "7961763cc40d9eb09075a51bef04b76d0301bbbfd0cc962f1efc1a75cdfd380b"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/snapshot/selfhost/build/phase98/combined-permission-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "e1313554de22ea10a324b998c4620a1fbd1be522a1692f80b1329683431b3d27",
+          "bodySha256": "9e0f6e85f859b8f23e99db4900058a5c465a4bd37305bc28f13997b0ea5f0348",
+          "closureIdentity": "ac673711045f8113a61fd429a05e8792ca62a9f6dd06433a564475f1bea7c7ae"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/report.json",
+            "bytes": 16154,
+            "sha256": "b192062d9e2640961158db887b38a777ca312d50a1c762f97fbfa87e2bb6d8d9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/snapshot/selfhost/build/phase98/origin-membership-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "e1313554de22ea10a324b998c4620a1fbd1be522a1692f80b1329683431b3d27",
+          "bodySha256": "9e0f6e85f859b8f23e99db4900058a5c465a4bd37305bc28f13997b0ea5f0348",
+          "closureIdentity": "3bbe6e321b7391069ef36fa19c0433f368212c7c8d74be9aa67427ed56cad2be"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/report.json",
+            "bytes": 15910,
+            "sha256": "e2ba427ccfd6f55489fe69de3d217ef14d34f0035b3ca4d9535cbc4eac3f27ed"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/snapshot/selfhost/build/phase98/permission-bridge-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "e1313554de22ea10a324b998c4620a1fbd1be522a1692f80b1329683431b3d27",
+          "bodySha256": "9e0f6e85f859b8f23e99db4900058a5c465a4bd37305bc28f13997b0ea5f0348",
+          "closureIdentity": "e69371ae2d05539c35928cf550c43f69fad6a891216e37f28beb132804905e03"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/report.json",
+            "bytes": 14550,
+            "sha256": "06eab0e8e6b6cae07210326e0d7483b27b75e275dd64b9e016905d89842f8cf9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/snapshot/selfhost/build/phase98/permission-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "e1313554de22ea10a324b998c4620a1fbd1be522a1692f80b1329683431b3d27",
+          "bodySha256": "9e0f6e85f859b8f23e99db4900058a5c465a4bd37305bc28f13997b0ea5f0348",
+          "closureIdentity": "2dce0ea744a5c70b0052ce1c4a95bbe85ef72d3f10211cb276b84f25ab38584d"
+        }
+      ]
+    },
+    {
+      "name": "foreign_permission_requires_trust",
+      "role": "public",
+      "statements": {
+        "d46e792d803433d9e3e06e50a301eeb971d40ff87d28dcf28ebc2e06b087dc10": "law foreign_permission_requires_trust:\n  for filled: Bool\n  for name: String\n  {H.no_effect_foreign_allowed(False{}, filled, name) == False{} : Bool}\n"
+      },
+      "proofBodies": {
+        "151c65e1582688080e1e37e489559d55690641848ba28a2a8f5023db4f98d091": "def foreign_permission_requires_trust(filled, name): {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/report.json",
+            "bytes": 16224,
+            "sha256": "20cea5a368f6cab0cecedfbfb2871b41a693dcefeb7bfbfcb02936207518e5e0"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/snapshot/selfhost/build/phase98/combined-membership-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "d46e792d803433d9e3e06e50a301eeb971d40ff87d28dcf28ebc2e06b087dc10",
+          "bodySha256": "151c65e1582688080e1e37e489559d55690641848ba28a2a8f5023db4f98d091",
+          "closureIdentity": "21abb06482a2de235b44665a86c277a8ed7b1f770eec403f198235636cccb38c"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/report.json",
+            "bytes": 14848,
+            "sha256": "7961763cc40d9eb09075a51bef04b76d0301bbbfd0cc962f1efc1a75cdfd380b"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/snapshot/selfhost/build/phase98/combined-permission-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "d46e792d803433d9e3e06e50a301eeb971d40ff87d28dcf28ebc2e06b087dc10",
+          "bodySha256": "151c65e1582688080e1e37e489559d55690641848ba28a2a8f5023db4f98d091",
+          "closureIdentity": "ac673711045f8113a61fd429a05e8792ca62a9f6dd06433a564475f1bea7c7ae"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/report.json",
+            "bytes": 16154,
+            "sha256": "b192062d9e2640961158db887b38a777ca312d50a1c762f97fbfa87e2bb6d8d9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/snapshot/selfhost/build/phase98/origin-membership-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "d46e792d803433d9e3e06e50a301eeb971d40ff87d28dcf28ebc2e06b087dc10",
+          "bodySha256": "151c65e1582688080e1e37e489559d55690641848ba28a2a8f5023db4f98d091",
+          "closureIdentity": "3bbe6e321b7391069ef36fa19c0433f368212c7c8d74be9aa67427ed56cad2be"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/report.json",
+            "bytes": 15910,
+            "sha256": "e2ba427ccfd6f55489fe69de3d217ef14d34f0035b3ca4d9535cbc4eac3f27ed"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/snapshot/selfhost/build/phase98/permission-bridge-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "d46e792d803433d9e3e06e50a301eeb971d40ff87d28dcf28ebc2e06b087dc10",
+          "bodySha256": "151c65e1582688080e1e37e489559d55690641848ba28a2a8f5023db4f98d091",
+          "closureIdentity": "e69371ae2d05539c35928cf550c43f69fad6a891216e37f28beb132804905e03"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/report.json",
+            "bytes": 14550,
+            "sha256": "06eab0e8e6b6cae07210326e0d7483b27b75e275dd64b9e016905d89842f8cf9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/snapshot/selfhost/build/phase98/permission-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "d46e792d803433d9e3e06e50a301eeb971d40ff87d28dcf28ebc2e06b087dc10",
+          "bodySha256": "151c65e1582688080e1e37e489559d55690641848ba28a2a8f5023db4f98d091",
+          "closureIdentity": "2dce0ea744a5c70b0052ce1c4a95bbe85ef72d3f10211cb276b84f25ab38584d"
+        }
+      ]
+    },
+    {
+      "name": "held_comparison_preserves",
+      "role": "public",
+      "statements": {
+        "2220be58783111c67c3ffa6b6c6912d3c7df7da74bb8fa67ba6495ccdb3b118f": "law held_comparison_preserves:\n  for +a: String\n  for +b: String\n  {P.p88_string_eq(a, b) == H.p88_string_eq(a, b) : Bool}\n"
+      },
+      "proofBodies": {
+        "02c710783775d7c23e16312df1945a73ca644e8215dab50c76e9fd22fb4208f3": "def held_comparison_preserves(a, b):\n  held_walk_equal(a, b, True{})\n",
+        "71bf7f0165f003ee60f1038a120835f463fabadcfa8ded81fce7ed896fa2e3b8": "def held_comparison_preserves(a, b):\n  %held_observation_complete(a, b) : {P.p88_string_eq(a, b) == H.p98_eq_finish(_) : Bool}\n  {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-check01/report.json",
+            "bytes": 15973,
+            "sha256": "7fb03e2499e8156cbdf2b4fee2c123a43ba1ef365f2ecc1a5942b2297af8f270"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-check01/snapshot/selfhost/build/phase98/combined-tag-proof-source01/held-simple.bend",
+            "bytes": 1206,
+            "sha256": "8a704f9298d2aa101aa8276fc8d03fa5bd29d4faa698b7f210174b35ede6e90c"
+          },
+          "statementSha256": "2220be58783111c67c3ffa6b6c6912d3c7df7da74bb8fa67ba6495ccdb3b118f",
+          "bodySha256": "02c710783775d7c23e16312df1945a73ca644e8215dab50c76e9fd22fb4208f3",
+          "closureIdentity": "a8162fa900d04039df77df055a192bcccfe00eda18b9bf0f3ba718bb0018136d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-maintenance-check02/report.json",
+            "bytes": 14682,
+            "sha256": "c52ccccef57b83006cd37cb28270786434554a19439731dfb9c7188c89a3a089"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-maintenance-check02/snapshot/selfhost/proofs/phase98/comparison/maintenance02/held-exact.bend",
+            "bytes": 1595,
+            "sha256": "54161810d0047c18989ca563cdfd3c98c0bd343da3bcbf3a9e79cf0887b48bda"
+          },
+          "statementSha256": "2220be58783111c67c3ffa6b6c6912d3c7df7da74bb8fa67ba6495ccdb3b118f",
+          "bodySha256": "71bf7f0165f003ee60f1038a120835f463fabadcfa8ded81fce7ed896fa2e3b8",
+          "closureIdentity": "3859207f6bd6694795faf3262ad851aa1e124e85def1d7111661a524ad93eff0"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-proof-check01/report.json",
+            "bytes": 14454,
+            "sha256": "a2e5ff8db6ebfd58491eb0454ac44bbce4c184018e7e7e10bcf3fef967eae668"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-proof-check01/snapshot/selfhost/build/phase98/held-proof-source02/held-exact.bend",
+            "bytes": 1586,
+            "sha256": "9669aa15e32362d106580b3381ed9a78a4b19bc8028869c7a352a399d83fc426"
+          },
+          "statementSha256": "2220be58783111c67c3ffa6b6c6912d3c7df7da74bb8fa67ba6495ccdb3b118f",
+          "bodySha256": "71bf7f0165f003ee60f1038a120835f463fabadcfa8ded81fce7ed896fa2e3b8",
+          "closureIdentity": "20de88b71d01cb3662310e029d9a66b4504ee955cb3028f4d89c3120e430546e"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-simple-proof-check01/report.json",
+            "bytes": 14473,
+            "sha256": "4b6453e515db6fd52f9f55e1c3bf1633792ba5ce20d4c260f314eed6e1985d90"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-simple-proof-check01/snapshot/selfhost/build/phase98/held-simple-proof-source01/held-simple.bend",
+            "bytes": 1206,
+            "sha256": "8a704f9298d2aa101aa8276fc8d03fa5bd29d4faa698b7f210174b35ede6e90c"
+          },
+          "statementSha256": "2220be58783111c67c3ffa6b6c6912d3c7df7da74bb8fa67ba6495ccdb3b118f",
+          "bodySha256": "02c710783775d7c23e16312df1945a73ca644e8215dab50c76e9fd22fb4208f3",
+          "closureIdentity": "7b748a5a298f46036bd831390edffbfa3061eed1b72092b156aa44a5beffa7bb"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-check01/report.json",
+            "bytes": 15890,
+            "sha256": "32c2d8ddebc5d73f7ecdf1d1d55c7e9514c491ad8c72437c78944a223e74e86d"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-check01/snapshot/selfhost/build/phase98/origin-tag-proof-source01/held-simple.bend",
+            "bytes": 1206,
+            "sha256": "8a704f9298d2aa101aa8276fc8d03fa5bd29d4faa698b7f210174b35ede6e90c"
+          },
+          "statementSha256": "2220be58783111c67c3ffa6b6c6912d3c7df7da74bb8fa67ba6495ccdb3b118f",
+          "bodySha256": "02c710783775d7c23e16312df1945a73ca644e8215dab50c76e9fd22fb4208f3",
+          "closureIdentity": "7dbb6b2f99b60c2cbe91a84f420098861810996a4a3cbe934433652cd686ad7d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check01/report.json",
+            "bytes": 15617,
+            "sha256": "5c807c7d02916b90a54a6e6497ddedc4ce893ce40366a6842411db2212ec9504"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check01/snapshot/selfhost/build/phase98/tag-proof-source01/held-simple.bend",
+            "bytes": 1206,
+            "sha256": "8a704f9298d2aa101aa8276fc8d03fa5bd29d4faa698b7f210174b35ede6e90c"
+          },
+          "statementSha256": "2220be58783111c67c3ffa6b6c6912d3c7df7da74bb8fa67ba6495ccdb3b118f",
+          "bodySha256": "02c710783775d7c23e16312df1945a73ca644e8215dab50c76e9fd22fb4208f3",
+          "closureIdentity": "78943fd773c789a750a68535d0a00f22b2615270c94e335e6143fe2d35d09ae1"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check04/report.json",
+            "bytes": 15615,
+            "sha256": "56563b90995991063a20c7cc14ede7395d0961493b1ed59fadd96f1b88f80021"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check04/snapshot/selfhost/build/phase98/tag-proof-source04/held-simple.bend",
+            "bytes": 1206,
+            "sha256": "8a704f9298d2aa101aa8276fc8d03fa5bd29d4faa698b7f210174b35ede6e90c"
+          },
+          "statementSha256": "2220be58783111c67c3ffa6b6c6912d3c7df7da74bb8fa67ba6495ccdb3b118f",
+          "bodySha256": "02c710783775d7c23e16312df1945a73ca644e8215dab50c76e9fd22fb4208f3",
+          "closureIdentity": "d47a76b8ab57a4ad326ff02c4c9d6a890037d8039974f6e5e26b2c3fe1cb36e7"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check05/report.json",
+            "bytes": 15655,
+            "sha256": "34a5a233048328fbb2c209c0691e95d58eaa52641925c35b935316dc225e9c6c"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check05/snapshot/selfhost/build/phase98/tag-proof-source05/held-simple.bend",
+            "bytes": 1206,
+            "sha256": "8a704f9298d2aa101aa8276fc8d03fa5bd29d4faa698b7f210174b35ede6e90c"
+          },
+          "statementSha256": "2220be58783111c67c3ffa6b6c6912d3c7df7da74bb8fa67ba6495ccdb3b118f",
+          "bodySha256": "02c710783775d7c23e16312df1945a73ca644e8215dab50c76e9fd22fb4208f3",
+          "closureIdentity": "b54df675ad6e3cc994b2c35a22461b5fbc3941e05e46ab4ab993423632f685b0"
+        }
+      ]
+    },
+    {
+      "name": "held_observation_complete",
+      "role": "public",
+      "statements": {
+        "df2f0ad49014f3354b32b0c09af1dccaee89288e6d11acf11b2eb2297451aa5d": "law held_observation_complete:\n  for +a: String\n  for +b: String\n  {H.P98EqHeld{P.p88_string_eq(a, b), a, b} == H.p98_eq_observe(a, b) : H.P98EqHeld}\n"
+      },
+      "proofBodies": {
+        "d1dd024f1eebdd44441120bab90095180827fbffbbf071d2d58512bf5b6a33af": "def held_observation_complete(a, b):\n  %held_walk_equal(a, b, True{}) : {H.P98EqHeld{P.p88_string_eq(a, b), a, b} == H.P98EqHeld{_, a, b} : H.P98EqHeld}\n  {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-maintenance-check02/report.json",
+            "bytes": 14682,
+            "sha256": "c52ccccef57b83006cd37cb28270786434554a19439731dfb9c7188c89a3a089"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-maintenance-check02/snapshot/selfhost/proofs/phase98/comparison/maintenance02/held-exact.bend",
+            "bytes": 1595,
+            "sha256": "54161810d0047c18989ca563cdfd3c98c0bd343da3bcbf3a9e79cf0887b48bda"
+          },
+          "statementSha256": "df2f0ad49014f3354b32b0c09af1dccaee89288e6d11acf11b2eb2297451aa5d",
+          "bodySha256": "d1dd024f1eebdd44441120bab90095180827fbffbbf071d2d58512bf5b6a33af",
+          "closureIdentity": "3859207f6bd6694795faf3262ad851aa1e124e85def1d7111661a524ad93eff0"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-proof-check01/report.json",
+            "bytes": 14454,
+            "sha256": "a2e5ff8db6ebfd58491eb0454ac44bbce4c184018e7e7e10bcf3fef967eae668"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-proof-check01/snapshot/selfhost/build/phase98/held-proof-source02/held-exact.bend",
+            "bytes": 1586,
+            "sha256": "9669aa15e32362d106580b3381ed9a78a4b19bc8028869c7a352a399d83fc426"
+          },
+          "statementSha256": "df2f0ad49014f3354b32b0c09af1dccaee89288e6d11acf11b2eb2297451aa5d",
+          "bodySha256": "d1dd024f1eebdd44441120bab90095180827fbffbbf071d2d58512bf5b6a33af",
+          "closureIdentity": "20de88b71d01cb3662310e029d9a66b4504ee955cb3028f4d89c3120e430546e"
+        }
+      ]
+    },
+    {
+      "name": "held_walk_equal",
+      "role": "support",
+      "statements": {
+        "2d1294837e44f4e642d96a985193d7845691608d9d5ca241caf97ec99f106037": "law held_walk_equal:\n  for a: String\n  for b: String\n  for same: Bool\n  {P.p88_string_eq_go(a, b, same) == H.p88_string_eq_go(a, b, same) : Bool}\n"
+      },
+      "proofBodies": {
+        "6e8ab951f1919fd33a992c8d5375d7e80f0fed19170877975644c56300189e78": "def held_walk_equal(a, b, same):\n  match a b same:\n    case SNil{} SNil{} result: {==}\n    case SNil{} SCon{head, tail} result: {==}\n    case SCon{head, tail} SNil{} result: {==}\n    case SCon{ah, at} SCon{bh, bt} False{}: {==}\n    case SCon{ah, at} SCon{bh, bt} True{}:\n      held_walk_equal(at, bt, Char.is_eq(ah, bh))\n",
+        "21be8ef33fd9f113eb12f7200300a9a5eea097821b722fac43f07ebe49cac7ad": "def held_walk_equal(a, b, same):\n  match a b same:\n    case SNil{} SNil{} result: {==}\n    case SNil{} SCon{head, tail} result: {==}\n    case SCon{head, tail} SNil{} result: {==}\n    case SCon{ah, at} SCon{bh, bt} False{}: {==}\n    case SCon{Chr{av}, at} SCon{Chr{bv}, bt} True{}:\n      held_walk_equal(at, bt, U32.is_eq(av, bv))\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-check01/report.json",
+            "bytes": 15973,
+            "sha256": "7fb03e2499e8156cbdf2b4fee2c123a43ba1ef365f2ecc1a5942b2297af8f270"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-check01/snapshot/selfhost/build/phase98/combined-tag-proof-source01/held-simple.bend",
+            "bytes": 1206,
+            "sha256": "8a704f9298d2aa101aa8276fc8d03fa5bd29d4faa698b7f210174b35ede6e90c"
+          },
+          "statementSha256": "2d1294837e44f4e642d96a985193d7845691608d9d5ca241caf97ec99f106037",
+          "bodySha256": "6e8ab951f1919fd33a992c8d5375d7e80f0fed19170877975644c56300189e78",
+          "closureIdentity": "a8162fa900d04039df77df055a192bcccfe00eda18b9bf0f3ba718bb0018136d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-maintenance-check02/report.json",
+            "bytes": 14682,
+            "sha256": "c52ccccef57b83006cd37cb28270786434554a19439731dfb9c7188c89a3a089"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-maintenance-check02/snapshot/selfhost/proofs/phase98/comparison/maintenance02/held-exact.bend",
+            "bytes": 1595,
+            "sha256": "54161810d0047c18989ca563cdfd3c98c0bd343da3bcbf3a9e79cf0887b48bda"
+          },
+          "statementSha256": "2d1294837e44f4e642d96a985193d7845691608d9d5ca241caf97ec99f106037",
+          "bodySha256": "21be8ef33fd9f113eb12f7200300a9a5eea097821b722fac43f07ebe49cac7ad",
+          "closureIdentity": "3859207f6bd6694795faf3262ad851aa1e124e85def1d7111661a524ad93eff0"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-proof-check01/report.json",
+            "bytes": 14454,
+            "sha256": "a2e5ff8db6ebfd58491eb0454ac44bbce4c184018e7e7e10bcf3fef967eae668"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-proof-check01/snapshot/selfhost/build/phase98/held-proof-source02/held-exact.bend",
+            "bytes": 1586,
+            "sha256": "9669aa15e32362d106580b3381ed9a78a4b19bc8028869c7a352a399d83fc426"
+          },
+          "statementSha256": "2d1294837e44f4e642d96a985193d7845691608d9d5ca241caf97ec99f106037",
+          "bodySha256": "6e8ab951f1919fd33a992c8d5375d7e80f0fed19170877975644c56300189e78",
+          "closureIdentity": "20de88b71d01cb3662310e029d9a66b4504ee955cb3028f4d89c3120e430546e"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-simple-proof-check01/report.json",
+            "bytes": 14473,
+            "sha256": "4b6453e515db6fd52f9f55e1c3bf1633792ba5ce20d4c260f314eed6e1985d90"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-simple-proof-check01/snapshot/selfhost/build/phase98/held-simple-proof-source01/held-simple.bend",
+            "bytes": 1206,
+            "sha256": "8a704f9298d2aa101aa8276fc8d03fa5bd29d4faa698b7f210174b35ede6e90c"
+          },
+          "statementSha256": "2d1294837e44f4e642d96a985193d7845691608d9d5ca241caf97ec99f106037",
+          "bodySha256": "6e8ab951f1919fd33a992c8d5375d7e80f0fed19170877975644c56300189e78",
+          "closureIdentity": "7b748a5a298f46036bd831390edffbfa3061eed1b72092b156aa44a5beffa7bb"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-check01/report.json",
+            "bytes": 15890,
+            "sha256": "32c2d8ddebc5d73f7ecdf1d1d55c7e9514c491ad8c72437c78944a223e74e86d"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-check01/snapshot/selfhost/build/phase98/origin-tag-proof-source01/held-simple.bend",
+            "bytes": 1206,
+            "sha256": "8a704f9298d2aa101aa8276fc8d03fa5bd29d4faa698b7f210174b35ede6e90c"
+          },
+          "statementSha256": "2d1294837e44f4e642d96a985193d7845691608d9d5ca241caf97ec99f106037",
+          "bodySha256": "6e8ab951f1919fd33a992c8d5375d7e80f0fed19170877975644c56300189e78",
+          "closureIdentity": "7dbb6b2f99b60c2cbe91a84f420098861810996a4a3cbe934433652cd686ad7d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check01/report.json",
+            "bytes": 15617,
+            "sha256": "5c807c7d02916b90a54a6e6497ddedc4ce893ce40366a6842411db2212ec9504"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check01/snapshot/selfhost/build/phase98/tag-proof-source01/held-simple.bend",
+            "bytes": 1206,
+            "sha256": "8a704f9298d2aa101aa8276fc8d03fa5bd29d4faa698b7f210174b35ede6e90c"
+          },
+          "statementSha256": "2d1294837e44f4e642d96a985193d7845691608d9d5ca241caf97ec99f106037",
+          "bodySha256": "6e8ab951f1919fd33a992c8d5375d7e80f0fed19170877975644c56300189e78",
+          "closureIdentity": "78943fd773c789a750a68535d0a00f22b2615270c94e335e6143fe2d35d09ae1"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check04/report.json",
+            "bytes": 15615,
+            "sha256": "56563b90995991063a20c7cc14ede7395d0961493b1ed59fadd96f1b88f80021"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check04/snapshot/selfhost/build/phase98/tag-proof-source04/held-simple.bend",
+            "bytes": 1206,
+            "sha256": "8a704f9298d2aa101aa8276fc8d03fa5bd29d4faa698b7f210174b35ede6e90c"
+          },
+          "statementSha256": "2d1294837e44f4e642d96a985193d7845691608d9d5ca241caf97ec99f106037",
+          "bodySha256": "6e8ab951f1919fd33a992c8d5375d7e80f0fed19170877975644c56300189e78",
+          "closureIdentity": "d47a76b8ab57a4ad326ff02c4c9d6a890037d8039974f6e5e26b2c3fe1cb36e7"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check05/report.json",
+            "bytes": 15655,
+            "sha256": "34a5a233048328fbb2c209c0691e95d58eaa52641925c35b935316dc225e9c6c"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check05/snapshot/selfhost/build/phase98/tag-proof-source05/held-simple.bend",
+            "bytes": 1206,
+            "sha256": "8a704f9298d2aa101aa8276fc8d03fa5bd29d4faa698b7f210174b35ede6e90c"
+          },
+          "statementSha256": "2d1294837e44f4e642d96a985193d7845691608d9d5ca241caf97ec99f106037",
+          "bodySha256": "6e8ab951f1919fd33a992c8d5375d7e80f0fed19170877975644c56300189e78",
+          "closureIdentity": "b54df675ad6e3cc994b2c35a22461b5fbc3941e05e46ab4ab993423632f685b0"
+        }
+      ]
+    },
+    {
+      "name": "p98_check_node_preserves_ordered_dispatch",
+      "role": "public",
+      "statements": {
+        "9f204fd37d3e7b228aac4c9ba5033a5a20e65f94ce3dbc6914816b9e65228511": "law p98_check_node_preserves_ordered_dispatch:\n  for +tag: String\n  {H.p98_check_node_select(tag) == R.p98_check_node_suffix0(tag) : H.P98CheckNode}\n"
+      },
+      "proofBodies": {
+        "3f5d48d9d41fb2fe0a89709c6c44fa5686ee976a3ef959d92cd7dc3112e394b3": "def p98_check_node_preserves_ordered_dispatch(tag):\n  p98_check_node_stage0_ordered(H.p88_string_eq(tag, \"Lam\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "9f204fd37d3e7b228aac4c9ba5033a5a20e65f94ce3dbc6914816b9e65228511",
+          "bodySha256": "3f5d48d9d41fb2fe0a89709c6c44fa5686ee976a3ef959d92cd7dc3112e394b3",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_check_node_stage0_ordered",
+      "role": "support",
+      "statements": {
+        "c532ff1b7cf0ae23f11b6e7bbb1289e0cde0f5f9b74547ce0c11e1034bc2dcae": "law p98_check_node_stage0_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_check_node_stage0(hit, tag) == R.p98_check_node_choice(hit, H.P98CheckNode0{}, R.p98_check_node_suffix1(tag)) : H.P98CheckNode}\n"
+      },
+      "proofBodies": {
+        "55cfb79ea5d7e348123685740702080deae1f85dcad0b81038b9d05a6bd5a75f": "def p98_check_node_stage0_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_check_node_stage1_ordered(H.p88_string_eq(tag, \"Ctr\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "c532ff1b7cf0ae23f11b6e7bbb1289e0cde0f5f9b74547ce0c11e1034bc2dcae",
+          "bodySha256": "55cfb79ea5d7e348123685740702080deae1f85dcad0b81038b9d05a6bd5a75f",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_check_node_stage1_ordered",
+      "role": "support",
+      "statements": {
+        "cf405877dcc9ed40b4f0b488b9b49122723e04d8324194a27c17631afbc71326": "law p98_check_node_stage1_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_check_node_stage1(hit, tag) == R.p98_check_node_choice(hit, H.P98CheckNode1{}, R.p98_check_node_suffix2(tag)) : H.P98CheckNode}\n"
+      },
+      "proofBodies": {
+        "79e6a9bf660af0ea78416861af4825bd8dba17db528ca4635f787acda671ef61": "def p98_check_node_stage1_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_check_node_stage2_ordered(H.p88_string_eq(tag, \"Mat\") || H.p88_string_eq(tag, \"Efq\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "cf405877dcc9ed40b4f0b488b9b49122723e04d8324194a27c17631afbc71326",
+          "bodySha256": "79e6a9bf660af0ea78416861af4825bd8dba17db528ca4635f787acda671ef61",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_check_node_stage2_ordered",
+      "role": "support",
+      "statements": {
+        "f990220a9266791e6e91580d9abc327afd68ce083db0212ac534d79df5dcc554": "law p98_check_node_stage2_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_check_node_stage2(hit, tag) == R.p98_check_node_choice(hit, H.P98CheckNode2{}, R.p98_check_node_suffix3(tag)) : H.P98CheckNode}\n"
+      },
+      "proofBodies": {
+        "7c0f393004ff2cfd6456d6a20cbd775ad632e7c929127f704c78bcaa5af7962e": "def p98_check_node_stage2_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_check_node_stage3_ordered(H.p88_string_eq(tag, \"Rfl\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "f990220a9266791e6e91580d9abc327afd68ce083db0212ac534d79df5dcc554",
+          "bodySha256": "7c0f393004ff2cfd6456d6a20cbd775ad632e7c929127f704c78bcaa5af7962e",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_check_node_stage3_ordered",
+      "role": "support",
+      "statements": {
+        "cc7fd675ed7d850cd5216cfbebd3be8417fddde96f9f7068de5ba1cbe96cced8": "law p98_check_node_stage3_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_check_node_stage3(hit, tag) == R.p98_check_node_choice(hit, H.P98CheckNode3{}, R.p98_check_node_suffix4(tag)) : H.P98CheckNode}\n"
+      },
+      "proofBodies": {
+        "c1a8d44a2e81a305b0fbd831542a26a0b109591530fe8a6d5bf5a17f479f5449": "def p98_check_node_stage3_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_check_node_stage4_ordered(H.p88_string_eq(tag, \"Hol\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "cc7fd675ed7d850cd5216cfbebd3be8417fddde96f9f7068de5ba1cbe96cced8",
+          "bodySha256": "c1a8d44a2e81a305b0fbd831542a26a0b109591530fe8a6d5bf5a17f479f5449",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_check_node_stage4_ordered",
+      "role": "support",
+      "statements": {
+        "8387bafae1298b7d8ee3038582c01f5d9c9f781bfa955a33d95c0adb4aad8797": "law p98_check_node_stage4_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_check_node_stage4(hit, tag) == R.p98_check_node_choice(hit, H.P98CheckNode4{}, R.p98_check_node_suffix5(tag)) : H.P98CheckNode}\n"
+      },
+      "proofBodies": {
+        "22d0ede5d48c655dfa4d5cf4d97f429cbbee1869ec975a9899c3cd567283c365": "def p98_check_node_stage4_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_check_node_stage5_ordered(H.p88_string_eq(tag, \"Let\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "8387bafae1298b7d8ee3038582c01f5d9c9f781bfa955a33d95c0adb4aad8797",
+          "bodySha256": "22d0ede5d48c655dfa4d5cf4d97f429cbbee1869ec975a9899c3cd567283c365",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_check_node_stage5_ordered",
+      "role": "support",
+      "statements": {
+        "e81363e09bb006cc026bba9ca8bb13e8a06871458b98fa37153e8895006dee9f": "law p98_check_node_stage5_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_check_node_stage5(hit, tag) == R.p98_check_node_choice(hit, H.P98CheckNode5{}, R.p98_check_node_suffix6(tag)) : H.P98CheckNode}\n"
+      },
+      "proofBodies": {
+        "f13e22af918bdc1c60bc33e60924f1feed6638cebe889c9e7885d9752c8c4323": "def p98_check_node_stage5_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_check_node_stage6_ordered(H.p88_string_eq(tag, \"Rwt\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "e81363e09bb006cc026bba9ca8bb13e8a06871458b98fa37153e8895006dee9f",
+          "bodySha256": "f13e22af918bdc1c60bc33e60924f1feed6638cebe889c9e7885d9752c8c4323",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_check_node_stage6_ordered",
+      "role": "support",
+      "statements": {
+        "7bad5097a1d46207392c19296274f8bbdf1cad35bf0d5f024de6ad596f53c36c": "law p98_check_node_stage6_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_check_node_stage6(hit, tag) == R.p98_check_node_choice(hit, H.P98CheckNode6{}, H.P98CheckNodeDefault{}) : H.P98CheckNode}\n"
+      },
+      "proofBodies": {
+        "100e2f4779a56742a39a6ad489b5df0cbf825602021dadf6aeac90cc7fe124b8": "def p98_check_node_stage6_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "7bad5097a1d46207392c19296274f8bbdf1cad35bf0d5f024de6ad596f53c36c",
+          "bodySha256": "100e2f4779a56742a39a6ad489b5df0cbf825602021dadf6aeac90cc7fe124b8",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_infer_node_preserves_ordered_dispatch",
+      "role": "public",
+      "statements": {
+        "033d20c1b2f81944d737d640c278c39d090f05d316edcbcaac3d7fa0ee6d3ef0": "law p98_infer_node_preserves_ordered_dispatch:\n  for +tag: String\n  {H.p98_infer_node_select(tag) == R.p98_infer_node_suffix0(tag) : H.P98InferNode}\n"
+      },
+      "proofBodies": {
+        "d33ba2292c9add14971f500d5b34479b4948e3a4781e6564033dbc70a6caab07": "def p98_infer_node_preserves_ordered_dispatch(tag):\n  p98_infer_node_stage0_ordered(H.p88_string_eq(tag, \"Var\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "033d20c1b2f81944d737d640c278c39d090f05d316edcbcaac3d7fa0ee6d3ef0",
+          "bodySha256": "d33ba2292c9add14971f500d5b34479b4948e3a4781e6564033dbc70a6caab07",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_infer_node_stage0_ordered",
+      "role": "support",
+      "statements": {
+        "5ccd3d58db99514a25f6c15a5dbbee3a01e67c032ff54b6d42117b7b56529bf6": "law p98_infer_node_stage0_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_infer_node_stage0(hit, tag) == R.p98_infer_node_choice(hit, H.P98InferNode0{}, R.p98_infer_node_suffix1(tag)) : H.P98InferNode}\n"
+      },
+      "proofBodies": {
+        "2a22e7837555499cbc9528777f2539fc6c4817497ba153ad66f7f8ca77ac520f": "def p98_infer_node_stage0_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_infer_node_stage1_ordered(H.p88_string_eq(tag, \"Ref\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "5ccd3d58db99514a25f6c15a5dbbee3a01e67c032ff54b6d42117b7b56529bf6",
+          "bodySha256": "2a22e7837555499cbc9528777f2539fc6c4817497ba153ad66f7f8ca77ac520f",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_infer_node_stage10_ordered",
+      "role": "support",
+      "statements": {
+        "7f39563cd553b3cf9241a0fcc56a35cd3c79fdde6e22e6d93027e5c7d86c48aa": "law p98_infer_node_stage10_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_infer_node_stage10(hit, tag) == R.p98_infer_node_choice(hit, H.P98InferNode10{}, H.P98InferNodeDefault{}) : H.P98InferNode}\n"
+      },
+      "proofBodies": {
+        "27fd59a3b36998d3685d5fdadd8b8ae22ac67805545ec3502e5a70fe23156afb": "def p98_infer_node_stage10_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "7f39563cd553b3cf9241a0fcc56a35cd3c79fdde6e22e6d93027e5c7d86c48aa",
+          "bodySha256": "27fd59a3b36998d3685d5fdadd8b8ae22ac67805545ec3502e5a70fe23156afb",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_infer_node_stage1_ordered",
+      "role": "support",
+      "statements": {
+        "eebc7daa41915bf9973aa54686f5f316b5de0cb0b52c17ea12223da7f30f15b6": "law p98_infer_node_stage1_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_infer_node_stage1(hit, tag) == R.p98_infer_node_choice(hit, H.P98InferNode1{}, R.p98_infer_node_suffix2(tag)) : H.P98InferNode}\n"
+      },
+      "proofBodies": {
+        "f2551d934c3f46a321f88414cacaf3d1498eb1396e80bb1f53d555132aa04f83": "def p98_infer_node_stage1_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_infer_node_stage2_ordered(H.p88_string_eq(tag, \"Typ\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "eebc7daa41915bf9973aa54686f5f316b5de0cb0b52c17ea12223da7f30f15b6",
+          "bodySha256": "f2551d934c3f46a321f88414cacaf3d1498eb1396e80bb1f53d555132aa04f83",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_infer_node_stage2_ordered",
+      "role": "support",
+      "statements": {
+        "b1147de3e20d73ae746523fd73fefe10f337ddc3c18d1f6d778da352c907facd": "law p98_infer_node_stage2_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_infer_node_stage2(hit, tag) == R.p98_infer_node_choice(hit, H.P98InferNode2{}, R.p98_infer_node_suffix3(tag)) : H.P98InferNode}\n"
+      },
+      "proofBodies": {
+        "00f5f33ccc97634cf52f0b6d06593b1e95987e2c850208f5f08b240ebf899196": "def p98_infer_node_stage2_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_infer_node_stage3_ordered(H.p88_string_eq(tag, \"Qnt\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "b1147de3e20d73ae746523fd73fefe10f337ddc3c18d1f6d778da352c907facd",
+          "bodySha256": "00f5f33ccc97634cf52f0b6d06593b1e95987e2c850208f5f08b240ebf899196",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_infer_node_stage3_ordered",
+      "role": "support",
+      "statements": {
+        "c2c154c789b6d9d7d6d4e32660eb10ca433ddeab387651d49cd49d06caf4301a": "law p98_infer_node_stage3_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_infer_node_stage3(hit, tag) == R.p98_infer_node_choice(hit, H.P98InferNode3{}, R.p98_infer_node_suffix4(tag)) : H.P98InferNode}\n"
+      },
+      "proofBodies": {
+        "539c26e0e9785a57c8ef2b4911fe520a28d2f84243762a4470775985823bdb42": "def p98_infer_node_stage3_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_infer_node_stage4_ordered(H.p88_string_eq(tag, \"Qua\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "c2c154c789b6d9d7d6d4e32660eb10ca433ddeab387651d49cd49d06caf4301a",
+          "bodySha256": "539c26e0e9785a57c8ef2b4911fe520a28d2f84243762a4470775985823bdb42",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_infer_node_stage4_ordered",
+      "role": "support",
+      "statements": {
+        "87dd355d2d3e015bce0b5877b79ad135d0179352eacc28b83f08eaebc3648e93": "law p98_infer_node_stage4_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_infer_node_stage4(hit, tag) == R.p98_infer_node_choice(hit, H.P98InferNode4{}, R.p98_infer_node_suffix5(tag)) : H.P98InferNode}\n"
+      },
+      "proofBodies": {
+        "6914a009a57367e31c1cc3b0d3cb334606d806c8f643c71395d297b70c2ad890": "def p98_infer_node_stage4_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_infer_node_stage5_ordered(H.p88_string_eq(tag, \"Min\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "87dd355d2d3e015bce0b5877b79ad135d0179352eacc28b83f08eaebc3648e93",
+          "bodySha256": "6914a009a57367e31c1cc3b0d3cb334606d806c8f643c71395d297b70c2ad890",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_infer_node_stage5_ordered",
+      "role": "support",
+      "statements": {
+        "e428f9d2f585797cfefdc934810d2ca53c83477e0070c2155ff61ea0ed3c5525": "law p98_infer_node_stage5_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_infer_node_stage5(hit, tag) == R.p98_infer_node_choice(hit, H.P98InferNode5{}, R.p98_infer_node_suffix6(tag)) : H.P98InferNode}\n"
+      },
+      "proofBodies": {
+        "9fb15f46e0ccaf0bc58382a083d22e641bd200055b7cf827635a5d434a305021": "def p98_infer_node_stage5_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_infer_node_stage6_ordered(H.p88_string_eq(tag, \"All\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "e428f9d2f585797cfefdc934810d2ca53c83477e0070c2155ff61ea0ed3c5525",
+          "bodySha256": "9fb15f46e0ccaf0bc58382a083d22e641bd200055b7cf827635a5d434a305021",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_infer_node_stage6_ordered",
+      "role": "support",
+      "statements": {
+        "c6ffd03966493b3473e6fb7f8dcac0bc47d9a1d4f86ed00e2407eb57e22198f0": "law p98_infer_node_stage6_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_infer_node_stage6(hit, tag) == R.p98_infer_node_choice(hit, H.P98InferNode6{}, R.p98_infer_node_suffix7(tag)) : H.P98InferNode}\n"
+      },
+      "proofBodies": {
+        "bca000ce2360ab66efa772e334655e0d3461b8b9cd48b8281069d9825a161722": "def p98_infer_node_stage6_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_infer_node_stage7_ordered(H.p88_string_eq(tag, \"App\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "c6ffd03966493b3473e6fb7f8dcac0bc47d9a1d4f86ed00e2407eb57e22198f0",
+          "bodySha256": "bca000ce2360ab66efa772e334655e0d3461b8b9cd48b8281069d9825a161722",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_infer_node_stage7_ordered",
+      "role": "support",
+      "statements": {
+        "d3c62037c8aaebe28651eec0bd72040accdcec2b417aa6031794a26eb46aab72": "law p98_infer_node_stage7_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_infer_node_stage7(hit, tag) == R.p98_infer_node_choice(hit, H.P98InferNode7{}, R.p98_infer_node_suffix8(tag)) : H.P98InferNode}\n"
+      },
+      "proofBodies": {
+        "62cc0f806990b6ad3942e4323b07a9e752c408b7d52293cfdeb9328a6f80cdec": "def p98_infer_node_stage7_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_infer_node_stage8_ordered(H.p88_string_eq(tag, \"ADT\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "d3c62037c8aaebe28651eec0bd72040accdcec2b417aa6031794a26eb46aab72",
+          "bodySha256": "62cc0f806990b6ad3942e4323b07a9e752c408b7d52293cfdeb9328a6f80cdec",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_infer_node_stage8_ordered",
+      "role": "support",
+      "statements": {
+        "020b4a093e38b7fd51604da75c4c2491eef0f5be2cd88a7560b545683e63527e": "law p98_infer_node_stage8_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_infer_node_stage8(hit, tag) == R.p98_infer_node_choice(hit, H.P98InferNode8{}, R.p98_infer_node_suffix9(tag)) : H.P98InferNode}\n"
+      },
+      "proofBodies": {
+        "acd1ea659a320435ad85c570dde0b038d13ea62f97b2f3f93a22d0de58606a8b": "def p98_infer_node_stage8_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_infer_node_stage9_ordered(H.p88_string_eq(tag, \"Eql\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "020b4a093e38b7fd51604da75c4c2491eef0f5be2cd88a7560b545683e63527e",
+          "bodySha256": "acd1ea659a320435ad85c570dde0b038d13ea62f97b2f3f93a22d0de58606a8b",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_infer_node_stage9_ordered",
+      "role": "support",
+      "statements": {
+        "ae4be3294d33221669003ce712845975839ed9739a69682f99c6c69bc55dd030": "law p98_infer_node_stage9_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_infer_node_stage9(hit, tag) == R.p98_infer_node_choice(hit, H.P98InferNode9{}, R.p98_infer_node_suffix10(tag)) : H.P98InferNode}\n"
+      },
+      "proofBodies": {
+        "400d121c73eb8d5a838e1eadbe901add8f95229c498ccacdb557f12d11ec7bbd": "def p98_infer_node_stage9_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_infer_node_stage10_ordered(H.p88_string_eq(tag, \"Ann\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "ae4be3294d33221669003ce712845975839ed9739a69682f99c6c69bc55dd030",
+          "bodySha256": "400d121c73eb8d5a838e1eadbe901add8f95229c498ccacdb557f12d11ec7bbd",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_node_preserves_ordered_dispatch",
+      "role": "public",
+      "statements": {
+        "5539786fa274e02c9280edeac18faef5d2e8f80b95891112ba87c538f0bec4ed": "law p98_ka_node_preserves_ordered_dispatch:\n  for +tag: String\n  {H.p98_ka_node_select(tag) == R.p98_ka_node_suffix0(tag) : H.P98KaNode}\n"
+      },
+      "proofBodies": {
+        "584dbe5ef0fd644624edfd6b49d10e9050c9c8f818533f66ed62ec07f02094c0": "def p98_ka_node_preserves_ordered_dispatch(tag):\n  p98_ka_node_stage0_ordered(H.p88_string_eq(tag, \"Ann\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "5539786fa274e02c9280edeac18faef5d2e8f80b95891112ba87c538f0bec4ed",
+          "bodySha256": "584dbe5ef0fd644624edfd6b49d10e9050c9c8f818533f66ed62ec07f02094c0",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_node_stage0_ordered",
+      "role": "support",
+      "statements": {
+        "ff09fc8c9683f6822c25df88739b5ae2a42b3565f6fc01f388b9e92aabcc440b": "law p98_ka_node_stage0_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_node_stage0(hit, tag) == R.p98_ka_node_choice(hit, H.P98KaNode0{}, R.p98_ka_node_suffix1(tag)) : H.P98KaNode}\n"
+      },
+      "proofBodies": {
+        "5884413a19df7ee606327cf68b381c6594a1ce35575b1e9afae66221a0e3e1ec": "def p98_ka_node_stage0_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_ka_node_stage1_ordered(H.p88_string_eq(tag, \"Lam\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "ff09fc8c9683f6822c25df88739b5ae2a42b3565f6fc01f388b9e92aabcc440b",
+          "bodySha256": "5884413a19df7ee606327cf68b381c6594a1ce35575b1e9afae66221a0e3e1ec",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_node_stage1_ordered",
+      "role": "support",
+      "statements": {
+        "b5b35356162377fc74f047fec978a0bb1f30ea2948a9a0a9458afb1d839ecaa4": "law p98_ka_node_stage1_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_node_stage1(hit, tag) == R.p98_ka_node_choice(hit, H.P98KaNode1{}, R.p98_ka_node_suffix2(tag)) : H.P98KaNode}\n"
+      },
+      "proofBodies": {
+        "cecf35d41775ea8515657c70e28bdbd0f224af4266c2916eebc779159af4944b": "def p98_ka_node_stage1_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_ka_node_stage2_ordered(H.p88_string_eq(tag, \"App\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "b5b35356162377fc74f047fec978a0bb1f30ea2948a9a0a9458afb1d839ecaa4",
+          "bodySha256": "cecf35d41775ea8515657c70e28bdbd0f224af4266c2916eebc779159af4944b",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_node_stage2_ordered",
+      "role": "support",
+      "statements": {
+        "ea47a0bd5629e4c399c9d856011b6862a03b986e56c9d6a6cee509afc765eeb3": "law p98_ka_node_stage2_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_node_stage2(hit, tag) == R.p98_ka_node_choice(hit, H.P98KaNode2{}, R.p98_ka_node_suffix3(tag)) : H.P98KaNode}\n"
+      },
+      "proofBodies": {
+        "1ba4c21e530913f54c4dc076f2cc2fc9469884213002d520e9d3ed089d446e77": "def p98_ka_node_stage2_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_ka_node_stage3_ordered(H.p88_string_eq(tag, \"Ctr\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "ea47a0bd5629e4c399c9d856011b6862a03b986e56c9d6a6cee509afc765eeb3",
+          "bodySha256": "1ba4c21e530913f54c4dc076f2cc2fc9469884213002d520e9d3ed089d446e77",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_node_stage3_ordered",
+      "role": "support",
+      "statements": {
+        "a774c03fe59a68c8c3edf0d46cbba9f598aa64d5fd271216f4dba428983e4eb4": "law p98_ka_node_stage3_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_node_stage3(hit, tag) == R.p98_ka_node_choice(hit, H.P98KaNode3{}, R.p98_ka_node_suffix4(tag)) : H.P98KaNode}\n"
+      },
+      "proofBodies": {
+        "99bccc516b9cdf77c2b478e9293c0f4d05d1563ac7301528971a310270aab921": "def p98_ka_node_stage3_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_ka_node_stage4_ordered(H.p88_string_eq(tag, \"Mat\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "a774c03fe59a68c8c3edf0d46cbba9f598aa64d5fd271216f4dba428983e4eb4",
+          "bodySha256": "99bccc516b9cdf77c2b478e9293c0f4d05d1563ac7301528971a310270aab921",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_node_stage4_ordered",
+      "role": "support",
+      "statements": {
+        "da1ad0eba4d925d0004a0cfcf1f30fa7b4f5333a68c1d8a8cf094ab9cca4a0ed": "law p98_ka_node_stage4_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_node_stage4(hit, tag) == R.p98_ka_node_choice(hit, H.P98KaNode4{}, R.p98_ka_node_suffix5(tag)) : H.P98KaNode}\n"
+      },
+      "proofBodies": {
+        "180739a7a46d7414e115f951b5b2e06d473208777b15116c175af08ef9e5fa12": "def p98_ka_node_stage4_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_ka_node_stage5_ordered(H.p88_string_eq(tag, \"Let\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "da1ad0eba4d925d0004a0cfcf1f30fa7b4f5333a68c1d8a8cf094ab9cca4a0ed",
+          "bodySha256": "180739a7a46d7414e115f951b5b2e06d473208777b15116c175af08ef9e5fa12",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_node_stage5_ordered",
+      "role": "support",
+      "statements": {
+        "4400ea10ccd2f781ea99690fea213071003a69ab6945badea172e11303628624": "law p98_ka_node_stage5_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_node_stage5(hit, tag) == R.p98_ka_node_choice(hit, H.P98KaNode5{}, R.p98_ka_node_suffix6(tag)) : H.P98KaNode}\n"
+      },
+      "proofBodies": {
+        "8756ac60f4c66a0f7c3edb5ce62f03737cb821e14f2197c4f55415a1d64cfe45": "def p98_ka_node_stage5_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_ka_node_stage6_ordered(H.p88_string_eq(tag, \"Rwt\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "4400ea10ccd2f781ea99690fea213071003a69ab6945badea172e11303628624",
+          "bodySha256": "8756ac60f4c66a0f7c3edb5ce62f03737cb821e14f2197c4f55415a1d64cfe45",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_node_stage6_ordered",
+      "role": "support",
+      "statements": {
+        "02d8804a674125eff3b916d3361349e4ed612418c66b2d29128c8ac73566760d": "law p98_ka_node_stage6_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_node_stage6(hit, tag) == R.p98_ka_node_choice(hit, H.P98KaNode6{}, H.P98KaNodeDefault{}) : H.P98KaNode}\n"
+      },
+      "proofBodies": {
+        "195a819a6d9f6eae18402ffc1c2f8101a89ff01796005b8111c63aa806959324": "def p98_ka_node_stage6_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "02d8804a674125eff3b916d3361349e4ed612418c66b2d29128c8ac73566760d",
+          "bodySha256": "195a819a6d9f6eae18402ffc1c2f8101a89ff01796005b8111c63aa806959324",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_type_node_preserves_ordered_dispatch",
+      "role": "public",
+      "statements": {
+        "2b9000663fd4de18caf45ebe7358448f3a9b66292e8f4dfc9e5d0f01de94a318": "law p98_ka_type_node_preserves_ordered_dispatch:\n  for +tag: String\n  {H.p98_ka_type_node_select(tag) == R.p98_ka_type_node_suffix0(tag) : H.P98KaTypeNode}\n"
+      },
+      "proofBodies": {
+        "5218c5f986734589e9dbb22e9da9b7fd381dfc0fa99c7bcaad0b4c413324d325": "def p98_ka_type_node_preserves_ordered_dispatch(tag):\n  p98_ka_type_node_stage0_ordered(H.p88_string_eq(tag, \"Var\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "2b9000663fd4de18caf45ebe7358448f3a9b66292e8f4dfc9e5d0f01de94a318",
+          "bodySha256": "5218c5f986734589e9dbb22e9da9b7fd381dfc0fa99c7bcaad0b4c413324d325",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_type_node_stage0_ordered",
+      "role": "support",
+      "statements": {
+        "f41776d3694961d370c675b87786b90ecaa6c7e82dbd8132e7856e2715c4b3da": "law p98_ka_type_node_stage0_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_type_node_stage0(hit, tag) == R.p98_ka_type_node_choice(hit, H.P98KaTypeNode0{}, R.p98_ka_type_node_suffix1(tag)) : H.P98KaTypeNode}\n"
+      },
+      "proofBodies": {
+        "1676add6d90b1be7ff5ef4030aac9fc83616b7a8e809b76d15b692a94cef9adb": "def p98_ka_type_node_stage0_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_ka_type_node_stage1_ordered(H.p88_string_eq(tag, \"Ref\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "f41776d3694961d370c675b87786b90ecaa6c7e82dbd8132e7856e2715c4b3da",
+          "bodySha256": "1676add6d90b1be7ff5ef4030aac9fc83616b7a8e809b76d15b692a94cef9adb",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_type_node_stage1_ordered",
+      "role": "support",
+      "statements": {
+        "997ad1d21e6439e8154051fc4a83c38a32a7136548c52b966779f54ec8b371d9": "law p98_ka_type_node_stage1_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_type_node_stage1(hit, tag) == R.p98_ka_type_node_choice(hit, H.P98KaTypeNode1{}, R.p98_ka_type_node_suffix2(tag)) : H.P98KaTypeNode}\n"
+      },
+      "proofBodies": {
+        "57bced000100ee50650efe219750c7926182f1da6402e5b519b84492d2ff2680": "def p98_ka_type_node_stage1_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_ka_type_node_stage2_ordered(H.p88_string_eq(tag, \"Ann\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "997ad1d21e6439e8154051fc4a83c38a32a7136548c52b966779f54ec8b371d9",
+          "bodySha256": "57bced000100ee50650efe219750c7926182f1da6402e5b519b84492d2ff2680",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_type_node_stage2_ordered",
+      "role": "support",
+      "statements": {
+        "b2be851a47ce54caf6e89a8259faa3f3305830a65ed7284ae768098ff3d17a00": "law p98_ka_type_node_stage2_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_type_node_stage2(hit, tag) == R.p98_ka_type_node_choice(hit, H.P98KaTypeNode2{}, R.p98_ka_type_node_suffix3(tag)) : H.P98KaTypeNode}\n"
+      },
+      "proofBodies": {
+        "e6bc3d8b99ff083fa3af16bddc047e6c7638971e0574468f2dce7da325c8b755": "def p98_ka_type_node_stage2_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_ka_type_node_stage3_ordered(H.p88_string_eq(tag, \"App\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "b2be851a47ce54caf6e89a8259faa3f3305830a65ed7284ae768098ff3d17a00",
+          "bodySha256": "e6bc3d8b99ff083fa3af16bddc047e6c7638971e0574468f2dce7da325c8b755",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_type_node_stage3_ordered",
+      "role": "support",
+      "statements": {
+        "5b02b7f12d6db2d4ca4ca19812271d75c2197d2bcaae88c0ff46dda6d1640bfd": "law p98_ka_type_node_stage3_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_type_node_stage3(hit, tag) == R.p98_ka_type_node_choice(hit, H.P98KaTypeNode3{}, R.p98_ka_type_node_suffix4(tag)) : H.P98KaTypeNode}\n"
+      },
+      "proofBodies": {
+        "0b51a51ddf73469469945d51debfb4cf1bb3616befd4dac028068c75a0d37090": "def p98_ka_type_node_stage3_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_ka_type_node_stage4_ordered(H.p88_string_eq(tag, \"ADT\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "5b02b7f12d6db2d4ca4ca19812271d75c2197d2bcaae88c0ff46dda6d1640bfd",
+          "bodySha256": "0b51a51ddf73469469945d51debfb4cf1bb3616befd4dac028068c75a0d37090",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_type_node_stage4_ordered",
+      "role": "support",
+      "statements": {
+        "d3e1cec135423173c89fefa17d08ce87aa713e0fde170cc5d4ecfbf2c370e19a": "law p98_ka_type_node_stage4_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_type_node_stage4(hit, tag) == R.p98_ka_type_node_choice(hit, H.P98KaTypeNode4{}, R.p98_ka_type_node_suffix5(tag)) : H.P98KaTypeNode}\n"
+      },
+      "proofBodies": {
+        "d6709a76128824bdd670f9ac3cf5dbad870e31b79f84b6fac3e73580d299c298": "def p98_ka_type_node_stage4_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_ka_type_node_stage5_ordered(H.p88_string_eq(tag, \"Eql\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "d3e1cec135423173c89fefa17d08ce87aa713e0fde170cc5d4ecfbf2c370e19a",
+          "bodySha256": "d6709a76128824bdd670f9ac3cf5dbad870e31b79f84b6fac3e73580d299c298",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_type_node_stage5_ordered",
+      "role": "support",
+      "statements": {
+        "64aa7739ebf1ad00a816bd9875864876bb91bca1b1bd06b0990d024814e6ecfa": "law p98_ka_type_node_stage5_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_type_node_stage5(hit, tag) == R.p98_ka_type_node_choice(hit, H.P98KaTypeNode5{}, R.p98_ka_type_node_suffix6(tag)) : H.P98KaTypeNode}\n"
+      },
+      "proofBodies": {
+        "39fc4c0d7f865c9f70c8e7ecd37cdc59e6d314cbef16154a40ae6677aa0754b5": "def p98_ka_type_node_stage5_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_ka_type_node_stage6_ordered(H.p88_string_eq(tag, \"Qua\") || H.p88_string_eq(tag, \"Min\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "64aa7739ebf1ad00a816bd9875864876bb91bca1b1bd06b0990d024814e6ecfa",
+          "bodySha256": "39fc4c0d7f865c9f70c8e7ecd37cdc59e6d314cbef16154a40ae6677aa0754b5",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_type_node_stage6_ordered",
+      "role": "support",
+      "statements": {
+        "07e46289015e123043b399e54a3a06a759f5bef3ead129b173e710e5f6496822": "law p98_ka_type_node_stage6_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_type_node_stage6(hit, tag) == R.p98_ka_type_node_choice(hit, H.P98KaTypeNode6{}, R.p98_ka_type_node_suffix7(tag)) : H.P98KaTypeNode}\n"
+      },
+      "proofBodies": {
+        "0ccd3e0364e6770c85da58d3f985a9917c1538dd8931414971c0907ba50cc825": "def p98_ka_type_node_stage6_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: p98_ka_type_node_stage7_ordered(H.p88_string_eq(tag, \"Typ\") || H.p88_string_eq(tag, \"Qnt\") || H.p88_string_eq(tag, \"All\"), tag)\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "07e46289015e123043b399e54a3a06a759f5bef3ead129b173e710e5f6496822",
+          "bodySha256": "0ccd3e0364e6770c85da58d3f985a9917c1538dd8931414971c0907ba50cc825",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "p98_ka_type_node_stage7_ordered",
+      "role": "support",
+      "statements": {
+        "5983d36cba86bb5058f7793abc8770bfd0a2ee43769cd06ae344a1c57d6cd6ee": "law p98_ka_type_node_stage7_ordered:\n  for +hit: Bool\n  for +tag: String\n  {H.p98_ka_type_node_stage7(hit, tag) == R.p98_ka_type_node_choice(hit, H.P98KaTypeNode7{}, H.P98KaTypeNodeDefault{}) : H.P98KaTypeNode}\n"
+      },
+      "proofBodies": {
+        "a7851c48afe8d0146ec94626796f9226ff81322efb4a76eb49eb9e6859b144b4": "def p98_ka_type_node_stage7_ordered(hit, tag):\n  match hit:\n    case True{}: {==}\n    case False{}: {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/report.json",
+            "bytes": 21553,
+            "sha256": "9e971d00a516a7e700ccf4b473ceb7f45283da1005bfeea999db551f2e97dfd8"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-proof-check01/snapshot/selfhost/build/phase98/dispatch-proof-source01/laws.bend",
+            "bytes": 15743,
+            "sha256": "bc68b22c80914647af8abc96b7af93e808e1cf071633f89ef45463b28450a24c"
+          },
+          "statementSha256": "5983d36cba86bb5058f7793abc8770bfd0a2ee43769cd06ae344a1c57d6cd6ee",
+          "bodySha256": "a7851c48afe8d0146ec94626796f9226ff81322efb4a76eb49eb9e6859b144b4",
+          "closureIdentity": "8124fe5702ed936dd79fbfcfffba8cd0d14736e630954e7401ac7746b9e0e278"
+        }
+      ]
+    },
+    {
+      "name": "provider_membership_exact",
+      "role": "support",
+      "statements": {
+        "0fa6b14f2fd5e6a1b983fd37a55a5b73844b3569901cb13e38e0b3dec2495983": "law provider_membership_exact:\n  for names: List<&2, String>\n  for +name: String\n  {H.no_effect_provider_member(names, name) == R.provider_member(names, name) : Bool}\n"
+      },
+      "proofBodies": {
+        "533b189d2a4a70273d175381c47f6660d0943202a58b633d18cd875e618d6136": "def provider_membership_exact(names, name):\n  match names:\n    case Nil{}: {==}\n    case Con{+head, +rest}:\n      %B.consuming_equal_specification(head, name) : {H.no_effect_provider_member(Con{head, rest}, name) == Bool.or(_, R.provider_member(rest, name)) : Bool}\n      %provider_membership_exact(rest, name) : {Bool.or(H.p88_string_eq(head, name), H.no_effect_provider_member(rest, name)) == Bool.or(H.p88_string_eq(head, name), _) : Bool}\n      {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/report.json",
+            "bytes": 16224,
+            "sha256": "20cea5a368f6cab0cecedfbfb2871b41a693dcefeb7bfbfcb02936207518e5e0"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/snapshot/selfhost/build/phase98/combined-membership-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "0fa6b14f2fd5e6a1b983fd37a55a5b73844b3569901cb13e38e0b3dec2495983",
+          "bodySha256": "533b189d2a4a70273d175381c47f6660d0943202a58b633d18cd875e618d6136",
+          "closureIdentity": "21abb06482a2de235b44665a86c277a8ed7b1f770eec403f198235636cccb38c"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/report.json",
+            "bytes": 14848,
+            "sha256": "7961763cc40d9eb09075a51bef04b76d0301bbbfd0cc962f1efc1a75cdfd380b"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-permission-proof-check01/snapshot/selfhost/build/phase98/combined-permission-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "0fa6b14f2fd5e6a1b983fd37a55a5b73844b3569901cb13e38e0b3dec2495983",
+          "bodySha256": "533b189d2a4a70273d175381c47f6660d0943202a58b633d18cd875e618d6136",
+          "closureIdentity": "ac673711045f8113a61fd429a05e8792ca62a9f6dd06433a564475f1bea7c7ae"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/report.json",
+            "bytes": 16154,
+            "sha256": "b192062d9e2640961158db887b38a777ca312d50a1c762f97fbfa87e2bb6d8d9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/snapshot/selfhost/build/phase98/origin-membership-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "0fa6b14f2fd5e6a1b983fd37a55a5b73844b3569901cb13e38e0b3dec2495983",
+          "bodySha256": "533b189d2a4a70273d175381c47f6660d0943202a58b633d18cd875e618d6136",
+          "closureIdentity": "3bbe6e321b7391069ef36fa19c0433f368212c7c8d74be9aa67427ed56cad2be"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/report.json",
+            "bytes": 15910,
+            "sha256": "e2ba427ccfd6f55489fe69de3d217ef14d34f0035b3ca4d9535cbc4eac3f27ed"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/snapshot/selfhost/build/phase98/permission-bridge-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "0fa6b14f2fd5e6a1b983fd37a55a5b73844b3569901cb13e38e0b3dec2495983",
+          "bodySha256": "533b189d2a4a70273d175381c47f6660d0943202a58b633d18cd875e618d6136",
+          "closureIdentity": "e69371ae2d05539c35928cf550c43f69fad6a891216e37f28beb132804905e03"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/report.json",
+            "bytes": 14550,
+            "sha256": "06eab0e8e6b6cae07210326e0d7483b27b75e275dd64b9e016905d89842f8cf9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-proof-check01/snapshot/selfhost/build/phase98/permission-proof-source01/laws.bend",
+            "bytes": 2820,
+            "sha256": "af6c8f1eb7c9223556d500f4db4327a036c39b991adfcd49270d296bf2f97879"
+          },
+          "statementSha256": "0fa6b14f2fd5e6a1b983fd37a55a5b73844b3569901cb13e38e0b3dec2495983",
+          "bodySha256": "533b189d2a4a70273d175381c47f6660d0943202a58b633d18cd875e618d6136",
+          "closureIdentity": "2dce0ea744a5c70b0052ce1c4a95bbe85ef72d3f10211cb276b84f25ab38584d"
+        }
+      ]
+    },
+    {
+      "name": "provider_membership_existing",
+      "role": "support",
+      "statements": {
+        "a214f6f4b580167d81cf654847c2e3da570d9f2b63d0b583ac23749279452236": "law provider_membership_existing:\n  for names: List<&2, String>\n  for +name: String\n  {H.no_effect_provider_member(names, name) == H.nb_contains(names, name) : Bool}\n"
+      },
+      "proofBodies": {
+        "2082b6d19c346ac744530423f4a24e44e1f54c7ead46b894f15f0ca516a4bc46": "def provider_membership_existing(names, name):\n  match names:\n    case Nil{}: {==}\n    case Con{+head, +rest}:\n      %provider_membership_existing(rest, name) : {H.no_effect_provider_member(Con{head, rest}, name) == Bool.or(H.p88_string_eq(head, name), _) : Bool}\n      {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/report.json",
+            "bytes": 16224,
+            "sha256": "20cea5a368f6cab0cecedfbfb2871b41a693dcefeb7bfbfcb02936207518e5e0"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-membership-proof-check01/snapshot/selfhost/build/phase98/combined-membership-proof-source01/bridge.bend",
+            "bytes": 1612,
+            "sha256": "e019f24a5f1966b5d7929015e01baaf20a61c4291b232a16d738924c556bd994"
+          },
+          "statementSha256": "a214f6f4b580167d81cf654847c2e3da570d9f2b63d0b583ac23749279452236",
+          "bodySha256": "2082b6d19c346ac744530423f4a24e44e1f54c7ead46b894f15f0ca516a4bc46",
+          "closureIdentity": "21abb06482a2de235b44665a86c277a8ed7b1f770eec403f198235636cccb38c"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/report.json",
+            "bytes": 16154,
+            "sha256": "b192062d9e2640961158db887b38a777ca312d50a1c762f97fbfa87e2bb6d8d9"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-membership-proof-check01/snapshot/selfhost/build/phase98/origin-membership-proof-source01/bridge.bend",
+            "bytes": 1612,
+            "sha256": "e019f24a5f1966b5d7929015e01baaf20a61c4291b232a16d738924c556bd994"
+          },
+          "statementSha256": "a214f6f4b580167d81cf654847c2e3da570d9f2b63d0b583ac23749279452236",
+          "bodySha256": "2082b6d19c346ac744530423f4a24e44e1f54c7ead46b894f15f0ca516a4bc46",
+          "closureIdentity": "3bbe6e321b7391069ef36fa19c0433f368212c7c8d74be9aa67427ed56cad2be"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/report.json",
+            "bytes": 15910,
+            "sha256": "e2ba427ccfd6f55489fe69de3d217ef14d34f0035b3ca4d9535cbc4eac3f27ed"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-bridge-check01/snapshot/selfhost/build/phase98/permission-bridge-source01/bridge.bend",
+            "bytes": 1612,
+            "sha256": "e019f24a5f1966b5d7929015e01baaf20a61c4291b232a16d738924c556bd994"
+          },
+          "statementSha256": "a214f6f4b580167d81cf654847c2e3da570d9f2b63d0b583ac23749279452236",
+          "bodySha256": "2082b6d19c346ac744530423f4a24e44e1f54c7ead46b894f15f0ca516a4bc46",
+          "closureIdentity": "e69371ae2d05539c35928cf550c43f69fad6a891216e37f28beb132804905e03"
+        }
+      ]
+    },
+    {
+      "name": "redirect_list_cons",
+      "role": "support",
+      "statements": {
+        "b8ed86ffaf47b9ade85c75fb978f8428e4125a5fc0f8e84d6619035494848a61": "law redirect_list_cons:\n  for +a: H.NF_Worker\n  for +b: H.NF_Worker\n  for +xs: List<&2, H.NF_Worker>\n  for +ys: List<&2, H.NF_Worker>\n  for head_equal: {a == b : H.NF_Worker}\n  for tail_equal: {xs == ys : List<&2, H.NF_Worker>}\n  {Con{a, xs} == Con{b, ys} : List<&2, H.NF_Worker>}\n"
+      },
+      "proofBodies": {
+        "92ccfb49876b0214db07906e1db413fe4781f1ade2714e46176c00c6756fae33": "def redirect_list_cons(a, b, xs, ys, head_equal, tail_equal):\n  %head_equal : {Con{a, xs} == Con{_, ys} : List<&2, H.NF_Worker>}\n  %tail_equal : {Con{a, xs} == Con{a, _} : List<&2, H.NF_Worker>}\n  {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/redirect-proof-check01/report.json",
+            "bytes": 13882,
+            "sha256": "58e6f75c0df2520c481156faf5f29bd967d2ce387df04a186e268942a34bc501"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/redirect-proof-check01/snapshot/selfhost/build/phase98/redirect-proof-source01/proof.bend",
+            "bytes": 3185,
+            "sha256": "8fb875efc277742d475ac370860927af860a4ef8aecd0817df965f38959b3149"
+          },
+          "statementSha256": "b8ed86ffaf47b9ade85c75fb978f8428e4125a5fc0f8e84d6619035494848a61",
+          "bodySha256": "92ccfb49876b0214db07906e1db413fe4781f1ade2714e46176c00c6756fae33",
+          "closureIdentity": "035679ef1999c1551d74576b2fc596b19fd49b83d30661a6d2190f4fd0b92dff"
+        }
+      ]
+    },
+    {
+      "name": "redirect_worker_choice",
+      "role": "support",
+      "statements": {
+        "68f8d61cd8e8a6d8bb71bc7c53f3169cf6a08461698c5a195b1c648cb5f0322c": "law redirect_worker_choice:\n  for hit: Bool\n  for +name: String\n  for +params: List<&2, H.N_Param>\n  for +code: H.NC_Code\n  for +deps: List<&2, String>\n  for +shape: H.KTerm\n  for +redirect: String\n  for +adapter: String\n  {H.NF_Worker{name, params, H.nt_choose(H.NC_Code, hit, u => H.nc_prepend(redirect, code), u => code), H.nt_choose(List<&2, String>, hit, u => Con{adapter, deps}, u => deps), shape} == H.nt_choose(H.NF_Worker, hit, u => H.NF_Worker{name, params, H.nc_prepend(redirect, code), Con{adapter, deps}, shape}, u => H.NF_Worker{name, params, code, deps, shape}) : H.NF_Worker}\n"
+      },
+      "proofBodies": {
+        "34be9929de43f6174ee4ec6b9ebe866a686b8b893b7180bf8a53d0b2c6a0a656": "def redirect_worker_choice(hit, name, params, code, deps, shape, redirect, adapter):\n  match hit:\n    case False{}: {==}\n    case True{}: {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/redirect-proof-check01/report.json",
+            "bytes": 13882,
+            "sha256": "58e6f75c0df2520c481156faf5f29bd967d2ce387df04a186e268942a34bc501"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/redirect-proof-check01/snapshot/selfhost/build/phase98/redirect-proof-source01/proof.bend",
+            "bytes": 3185,
+            "sha256": "8fb875efc277742d475ac370860927af860a4ef8aecd0817df965f38959b3149"
+          },
+          "statementSha256": "68f8d61cd8e8a6d8bb71bc7c53f3169cf6a08461698c5a195b1c648cb5f0322c",
+          "bodySha256": "34be9929de43f6174ee4ec6b9ebe866a686b8b893b7180bf8a53d0b2c6a0a656",
+          "closureIdentity": "035679ef1999c1551d74576b2fc596b19fd49b83d30661a6d2190f4fd0b92dff"
+        }
+      ]
+    },
+    {
+      "name": "redirect_workers_preserves",
+      "role": "public",
+      "statements": {
+        "53328bb4e8d6efb4170c1fef6069ac337bf2cc6d233b7716c50ee6b09c6a683f": "law redirect_workers_preserves:\n  for workers: List<&2, H.NF_Worker>\n  for +owner: String\n  for +roots: List<&2, U32>\n  {H.no_scalar_redirect_reference(workers, owner, roots) == H.no_scalar_redirect(workers, owner, roots) : List<&2, H.NF_Worker>}\n"
+      },
+      "proofBodies": {
+        "4b1bd6dff6fc532793d25c1ed2f415d59eef434008db8abb5f7c0c7d87a1a8ac": "def redirect_workers_preserves(workers, owner, roots):\n  match workers:\n    case Nil{}: {==}\n    case Con{H.NF_Worker{+name, +params, +code, +deps, +shape}, +rest}:\n      +redirect = \"if (\" ++ H.no_shared_roots(params, roots, 0) ++ \") { return \" ++ H.nf_name(H.no_adapter_name(owner)) ++ \"(e, seq, nf_out\" ++ H.nf_arg_c(H.nf_segment_args(params)) ++ \"); }\\n\"\n      +adapter = H.no_adapter_name(owner)\n      redirect_list_cons(\n        H.NF_Worker{name, params, H.nt_choose(H.NC_Code, H.p88_string_eq(name, owner), u => H.nc_prepend(redirect, code), u => code), H.nt_choose(List<&2, String>, H.p88_string_eq(name, owner), u => Con{adapter, deps}, u => deps), shape},\n        H.nt_choose(H.NF_Worker, H.p88_string_eq(name, owner), u => H.NF_Worker{name, params, H.nc_prepend(redirect, code), Con{adapter, deps}, shape}, u => H.NF_Worker{name, params, code, deps, shape}),\n        H.no_scalar_redirect_reference(rest, owner, roots), H.no_scalar_redirect(rest, owner, roots),\n        redirect_worker_choice(H.p88_string_eq(name, owner), name, params, code, deps, shape, redirect, adapter),\n        redirect_workers_preserves(rest, owner, roots))\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/redirect-proof-check01/report.json",
+            "bytes": 13882,
+            "sha256": "58e6f75c0df2520c481156faf5f29bd967d2ce387df04a186e268942a34bc501"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/redirect-proof-check01/snapshot/selfhost/build/phase98/redirect-proof-source01/proof.bend",
+            "bytes": 3185,
+            "sha256": "8fb875efc277742d475ac370860927af860a4ef8aecd0817df965f38959b3149"
+          },
+          "statementSha256": "53328bb4e8d6efb4170c1fef6069ac337bf2cc6d233b7716c50ee6b09c6a683f",
+          "bodySha256": "4b1bd6dff6fc532793d25c1ed2f415d59eef434008db8abb5f7c0c7d87a1a8ac",
+          "closureIdentity": "035679ef1999c1551d74576b2fc596b19fd49b83d30661a6d2190f4fd0b92dff"
+        }
+      ]
+    },
+    {
+      "name": "retained_id_preserves",
+      "role": "public",
+      "statements": {
+        "9dd9d4d0f80a187b622f39a8f2d81d0bdf9459f922f8fa40432cfc1e5a0aaaa8": "law retained_id_preserves:\n  for term: H.KTerm\n  {H.ix(term) == H.p98_original_ix(term) : U32}\n"
+      },
+      "proofBodies": {
+        "cd199ab4d75cced22ce08375feb0a32f4787a41c5d1c0d1fca93019f942cba2d": "def retained_id_preserves(term):\n  match term:\n    case H.KTerm{tag, name, id, quant, kids, removed, begin, end}: {==}\n    case H.KLambda{name, id, quant, kids, removed, begin, end, present}: {==}\n    case H.KLiteral{kind, number, text, begin, end}: {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/scalar-proof-check01/report.json",
+            "bytes": 11385,
+            "sha256": "0e45ba81d081736ed4c7cfa9495b557ef690d09e80843de77867f17104f68c8a"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/scalar-proof-check01/snapshot/selfhost/build/phase98/scalar-proof-source01/scalars.bend",
+            "bytes": 968,
+            "sha256": "13b65f3242518373e24253462f277b8c21614d4df1d9817d12126a119fe24d65"
+          },
+          "statementSha256": "9dd9d4d0f80a187b622f39a8f2d81d0bdf9459f922f8fa40432cfc1e5a0aaaa8",
+          "bodySha256": "cd199ab4d75cced22ce08375feb0a32f4787a41c5d1c0d1fca93019f942cba2d",
+          "closureIdentity": "238d93489933873a83938c2c899e269d1531a54e09142d1e272b53def885e9ce"
+        }
+      ]
+    },
+    {
+      "name": "retained_quantity_preserves",
+      "role": "public",
+      "statements": {
+        "bf511c28e5a8b08904560de10e4b58f3977706c17f38e9eb92a6e1aaa99c4c7e": "law retained_quantity_preserves:\n  for term: H.KTerm\n  {H.qt(term) == H.p98_original_qt(term) : U32}\n"
+      },
+      "proofBodies": {
+        "1103a69aa20e420c5546328c9093873043c7588f4a482c5858da55842ae17770": "def retained_quantity_preserves(term):\n  match term:\n    case H.KTerm{tag, name, id, quant, kids, removed, begin, end}: {==}\n    case H.KLambda{name, id, quant, kids, removed, begin, end, present}: {==}\n    case H.KLiteral{kind, number, text, begin, end}: {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/scalar-proof-check01/report.json",
+            "bytes": 11385,
+            "sha256": "0e45ba81d081736ed4c7cfa9495b557ef690d09e80843de77867f17104f68c8a"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/scalar-proof-check01/snapshot/selfhost/build/phase98/scalar-proof-source01/scalars.bend",
+            "bytes": 968,
+            "sha256": "13b65f3242518373e24253462f277b8c21614d4df1d9817d12126a119fe24d65"
+          },
+          "statementSha256": "bf511c28e5a8b08904560de10e4b58f3977706c17f38e9eb92a6e1aaa99c4c7e",
+          "bodySha256": "1103a69aa20e420c5546328c9093873043c7588f4a482c5858da55842ae17770",
+          "closureIdentity": "238d93489933873a83938c2c899e269d1531a54e09142d1e272b53def885e9ce"
+        }
+      ]
+    },
+    {
+      "name": "tag_comparison_preserves",
+      "role": "public",
+      "statements": {
+        "1314f240cf663ba51b546e36f8c56adc163174bd9a81a4b2896f988e2d843e61": "law tag_comparison_preserves:\n  for +term: H.KTerm\n  for +key: String\n  {H.p98_tag_eq(term, key) == P.p88_string_eq(H.tg(term), key) : Bool}\n"
+      },
+      "proofBodies": {
+        "54c76fa19926024a7bc18c4cc015b05b389c25617d40a22632e2db9ea28ae472": "def tag_comparison_preserves(term, key):\n  %tag_read_matches_projection(term, key) : {_ == P.p88_string_eq(H.tg(term), key) : Bool}\n  %B.held_comparison_preserves(H.tg(term), key) : {_ == P.p88_string_eq(H.tg(term), key) : Bool}\n  {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-check01/report.json",
+            "bytes": 15973,
+            "sha256": "7fb03e2499e8156cbdf2b4fee2c123a43ba1ef365f2ecc1a5942b2297af8f270"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-check01/snapshot/selfhost/build/phase98/combined-tag-proof-source01/tag.bend",
+            "bytes": 1198,
+            "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+          },
+          "statementSha256": "1314f240cf663ba51b546e36f8c56adc163174bd9a81a4b2896f988e2d843e61",
+          "bodySha256": "54c76fa19926024a7bc18c4cc015b05b389c25617d40a22632e2db9ea28ae472",
+          "closureIdentity": "a8162fa900d04039df77df055a192bcccfe00eda18b9bf0f3ba718bb0018136d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-check01/report.json",
+            "bytes": 15890,
+            "sha256": "32c2d8ddebc5d73f7ecdf1d1d55c7e9514c491ad8c72437c78944a223e74e86d"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-check01/snapshot/selfhost/build/phase98/origin-tag-proof-source01/tag.bend",
+            "bytes": 1198,
+            "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+          },
+          "statementSha256": "1314f240cf663ba51b546e36f8c56adc163174bd9a81a4b2896f988e2d843e61",
+          "bodySha256": "54c76fa19926024a7bc18c4cc015b05b389c25617d40a22632e2db9ea28ae472",
+          "closureIdentity": "7dbb6b2f99b60c2cbe91a84f420098861810996a4a3cbe934433652cd686ad7d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check01/report.json",
+            "bytes": 15617,
+            "sha256": "5c807c7d02916b90a54a6e6497ddedc4ce893ce40366a6842411db2212ec9504"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check01/snapshot/selfhost/build/phase98/tag-proof-source01/tag.bend",
+            "bytes": 1198,
+            "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+          },
+          "statementSha256": "1314f240cf663ba51b546e36f8c56adc163174bd9a81a4b2896f988e2d843e61",
+          "bodySha256": "54c76fa19926024a7bc18c4cc015b05b389c25617d40a22632e2db9ea28ae472",
+          "closureIdentity": "78943fd773c789a750a68535d0a00f22b2615270c94e335e6143fe2d35d09ae1"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check04/report.json",
+            "bytes": 15615,
+            "sha256": "56563b90995991063a20c7cc14ede7395d0961493b1ed59fadd96f1b88f80021"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check04/snapshot/selfhost/build/phase98/tag-proof-source04/tag.bend",
+            "bytes": 1198,
+            "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+          },
+          "statementSha256": "1314f240cf663ba51b546e36f8c56adc163174bd9a81a4b2896f988e2d843e61",
+          "bodySha256": "54c76fa19926024a7bc18c4cc015b05b389c25617d40a22632e2db9ea28ae472",
+          "closureIdentity": "d47a76b8ab57a4ad326ff02c4c9d6a890037d8039974f6e5e26b2c3fe1cb36e7"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check05/report.json",
+            "bytes": 15655,
+            "sha256": "34a5a233048328fbb2c209c0691e95d58eaa52641925c35b935316dc225e9c6c"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check05/snapshot/selfhost/build/phase98/tag-proof-source05/tag.bend",
+            "bytes": 1198,
+            "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+          },
+          "statementSha256": "1314f240cf663ba51b546e36f8c56adc163174bd9a81a4b2896f988e2d843e61",
+          "bodySha256": "54c76fa19926024a7bc18c4cc015b05b389c25617d40a22632e2db9ea28ae472",
+          "closureIdentity": "b54df675ad6e3cc994b2c35a22461b5fbc3941e05e46ab4ab993423632f685b0"
+        }
+      ]
+    },
+    {
+      "name": "tag_read_matches_projection",
+      "role": "support",
+      "statements": {
+        "6e9c431499b257096d956105e895c1c69f71485ad4e738395e8f71e5212b57f1": "law tag_read_matches_projection:\n  for term: H.KTerm\n  for key: String\n  {H.p88_string_eq(H.tg(term), key) == H.p98_tag_eq_read(term, key) : Bool}\n"
+      },
+      "proofBodies": {
+        "bc4b138d034588d48980c68a7e0c3c2557395628bd5234684463c1352d2d48bd": "def tag_read_matches_projection(term, key):\n  match term:\n    case H.KTerm{tag, name, id, quant, kids, removed, begin, end}: {==}\n    case H.KLambda{name, id, quant, kids, removed, begin, end, present}: {==}\n    case H.KLiteral{kind, number, text, begin, end}: {==}\n"
+      },
+      "instances": [
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-check01/report.json",
+            "bytes": 15973,
+            "sha256": "7fb03e2499e8156cbdf2b4fee2c123a43ba1ef365f2ecc1a5942b2297af8f270"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-tag-proof-check01/snapshot/selfhost/build/phase98/combined-tag-proof-source01/tag.bend",
+            "bytes": 1198,
+            "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+          },
+          "statementSha256": "6e9c431499b257096d956105e895c1c69f71485ad4e738395e8f71e5212b57f1",
+          "bodySha256": "bc4b138d034588d48980c68a7e0c3c2557395628bd5234684463c1352d2d48bd",
+          "closureIdentity": "a8162fa900d04039df77df055a192bcccfe00eda18b9bf0f3ba718bb0018136d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-check01/report.json",
+            "bytes": 15890,
+            "sha256": "32c2d8ddebc5d73f7ecdf1d1d55c7e9514c491ad8c72437c78944a223e74e86d"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-tag-proof-check01/snapshot/selfhost/build/phase98/origin-tag-proof-source01/tag.bend",
+            "bytes": 1198,
+            "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+          },
+          "statementSha256": "6e9c431499b257096d956105e895c1c69f71485ad4e738395e8f71e5212b57f1",
+          "bodySha256": "bc4b138d034588d48980c68a7e0c3c2557395628bd5234684463c1352d2d48bd",
+          "closureIdentity": "7dbb6b2f99b60c2cbe91a84f420098861810996a4a3cbe934433652cd686ad7d"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check01/report.json",
+            "bytes": 15617,
+            "sha256": "5c807c7d02916b90a54a6e6497ddedc4ce893ce40366a6842411db2212ec9504"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check01/snapshot/selfhost/build/phase98/tag-proof-source01/tag.bend",
+            "bytes": 1198,
+            "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+          },
+          "statementSha256": "6e9c431499b257096d956105e895c1c69f71485ad4e738395e8f71e5212b57f1",
+          "bodySha256": "bc4b138d034588d48980c68a7e0c3c2557395628bd5234684463c1352d2d48bd",
+          "closureIdentity": "78943fd773c789a750a68535d0a00f22b2615270c94e335e6143fe2d35d09ae1"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check04/report.json",
+            "bytes": 15615,
+            "sha256": "56563b90995991063a20c7cc14ede7395d0961493b1ed59fadd96f1b88f80021"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check04/snapshot/selfhost/build/phase98/tag-proof-source04/tag.bend",
+            "bytes": 1198,
+            "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+          },
+          "statementSha256": "6e9c431499b257096d956105e895c1c69f71485ad4e738395e8f71e5212b57f1",
+          "bodySha256": "bc4b138d034588d48980c68a7e0c3c2557395628bd5234684463c1352d2d48bd",
+          "closureIdentity": "d47a76b8ab57a4ad326ff02c4c9d6a890037d8039974f6e5e26b2c3fe1cb36e7"
+        },
+        {
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check05/report.json",
+            "bytes": 15655,
+            "sha256": "34a5a233048328fbb2c209c0691e95d58eaa52641925c35b935316dc225e9c6c"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-proof-check05/snapshot/selfhost/build/phase98/tag-proof-source05/tag.bend",
+            "bytes": 1198,
+            "sha256": "37d4457e50333a5b1c9a48b6e81fbaa18acb5af17a4da581ef1c66475f43be46"
+          },
+          "statementSha256": "6e9c431499b257096d956105e895c1c69f71485ad4e738395e8f71e5212b57f1",
+          "bodySha256": "bc4b138d034588d48980c68a7e0c3c2557395628bd5234684463c1352d2d48bd",
+          "closureIdentity": "b54df675ad6e3cc994b2c35a22461b5fbc3941e05e46ab4ab993423632f685b0"
+        }
+      ]
+    }
+  ],
+  "interpretation": [
+    "Counts distinct named contracts/lemmas, not summed repeated check counts.",
+    "Statement and proof-body hashes omit blank lines and full-line comments only; source snapshots retain exact bytes.",
+    "Identical statement text across candidate modules is one contract schema with separately authenticated implementation instances, not one universal theorem across all future implementations.",
+    "Carrier and no-carrier held variants share public Bool statement but have distinct proof bodies; carrier-only complete observation remains a historical accepted contract.",
+    "The equivalent codepoint refactor changes one support proof body. Tag variants reuse identical proof/reference bodies against distinct helper implementations.",
+    "Baseline is the established Phase96+97 catalog only; earlier proof pilots and finite production/projection cases are not added to universal law counts.",
+    "Formal acceptance does not promote any native optimization or prove C ownership."
+  ]
+}

@@ -103,7 +103,11 @@ def main():
         expectations = {}
         for case in plan['controls']:
             row = observed[case['id']]; assert row['kind'] == 'actual-emission' and row['passed']
-            assert all(row[key] for key in ['normalJsDriverPermission', 'checkedEntriesExact', 'falseEntriesExact', 'rawPermissionOff'])
+            # The ordinary driver deliberately declines print_err. The checked
+            # API experiment grants only its separately authenticated providers.
+            assert row['normalJsDriverPermission'] is (case['id'] != 'real-io')
+            assert row['authority']['safe'] and all(item['accepted'] for item in row['authority']['checks'])
+            assert all(row[key] for key in ['checkedEntriesExact', 'falseEntriesExact', 'rawPermissionOff'])
             for role in ['baseline', 'candidate']:
                 flags = row['policies'][role]
                 assert flags['TYPED_SCALARS'] == flags['SCALAR_ARRAYS'] == case['scalar'] and flags['UNSHARED_ARRAYS'] == 0

@@ -208,3 +208,54 @@ Changed backends additionally need source-bound permission/refusal/alias control
 evidence. Its selected request assets are separate from the heavy historical
 validation closure; the independent public launcher/archive lane consumes that
 schema. No admission or default selection follows merely from preparing tools.
+
+For the final composed source (`59b36a1c…`),
+`combined-backend-policy02/policy.json` authenticates exact sequential edits,
+including repeated call text and append edits, and freezes the unchanged45
+program expectations. `combined-backend-specific03/report.json` is a successful
+data-only consumer of the actual permission05/corpus executions and the final
+declaration/proof bridge. Its29 evidence rows cover16 exact permission declarations,
+five classified changed dependencies,13 final-source kernel laws,18 Boolean
+controls, three emitted-program shapes, provider/raw refusals and complete native
+outputs for the small and1444-pair/14-field corpora. It keeps `imageQualified=false`.
+The two failed preparation attempts are preserved:01 compared declaration spans
+with different trailing blank separators;02 incorrectly required ordinary JS
+driver permission for print_err, which the original controlled API experiment
+deliberately authenticates separately. Neither correction changes an expected
+value or relabels a failed target.
+
+The final-image continuation is frozen in
+`qualification-methods10/methods/final-controls.py`. It checks the four unique
+Bend control sources through both final images, full cross-stage C equality,
+independent full diagnostics and original complete stdout/stderr after four
+matched O2 builds. Snapshot11's admission collector independently consumes these
+raw results with `--final-controls`; preparation alone claims no execution.
+The bounded self request successor in snapshot09 permits4GiB RSS only when its
+input equals the authenticated compiler source, with16GiB available memory.
+It follows the retained2GiB `combined-b1-self01` stop and leaves general guard
+and ordinary request limits unchanged.
+
+`batch-continuity-plan01/plan.json` separately freezes all45 original Phase93
+batch sources/C products and44 retained calibration plans. Snapshot11's root-only
+continuity method emits through the final B2 and reports every whole-C match or
+change. It builds no historical executable. Exact-C cases preserve prior product
+evidence; changed cases require isolated new builds/executions and the unchanged
+Phase93 timing rules before any generated-program runtime claim. This addresses
+IO.args/print/now batch wrappers independently of the ordinary45 program gate.
+
+The selected-source public replay recipe `profile-replay01.json` passes exact
+forward and inverse source replay against the collector schema. It carries the
+compact delta and original D04 capsule rather than intermediate compiler copies.
+Audited native-host/observer document bytes are separately snapshotted for
+isolated evidence replay; the source audits retain their original paths/pins.
+The public request capsule and full qualification evidence closure remain
+separate, so each ordinary request need only verify selected source/image/assets.
+
+An a025 planning-cost continuation was prepared in `cost-backend-policy01` and
+`permission-cost-declaration-bridge01`; methods12 freezes its proposed data-only
+consumer. That consumer was not executed and no a025 backend qualification
+receipt was produced. The root stopped this promotion path after the independent
+native investigation identified eager nonmatching recursion in `noa_below` as
+the immediate full-source failure cause. The redirect/cache candidates and their
+accepted finite controls remain separate exploratory evidence; they are not
+bundled into the forthcoming minimal correction or promoted by this preparation.

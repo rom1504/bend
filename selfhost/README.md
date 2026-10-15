@@ -7,14 +7,20 @@ qualification. Release integrity, 42 legacy and 24 default installed/relocated
 checks pass. Ordinary compilation has no TypeScript fallback. Run
 `node cli.mjs FILE --run`; direct JavaScript remains the default output backend.
 
-Phase90 also provides a **self-hosted native executable**: native07 was built
+The [Phase98 native guide](../docs/self_hosted/NATIVE_PHASE98.md) describes the
+current native profile and stable stage-selectable entry, its source replay,
+release prerequisites and semantic boundaries. Read the
+[Phase98 report](../implementation/phase98/README.md) for actual admission and
+measurements. The installed JavaScript release remains separate.
+
+The historical Phase90 native executable, native07, was built
 from unpatched C emitted by the native Bend compiler, then reproduced that
 complete C exactly in 164.322 seconds. The independent JS B2 emission agrees.
 Python only authenticates assets, bounds execution and transports files; native
 compiler requests run no JavaScript. See the
-[native usage and restoration guide](../docs/self_hosted/NATIVE_HOST.md).
+[native07 usage and restoration guide](../docs/self_hosted/NATIVE_HOST.md).
 
-The native entry supports one canonical Base-importing source and nine audited
+That historical native entry supports one canonical Base-importing source and nine audited
 effects. Eight live/cache exact-C checks, two invalid-input refusals, four actual
 generated-program executions and six public CLI controls pass. Full C fixed-point
 agreement is finite evidence, not a mathematical compiler proof or unrestricted

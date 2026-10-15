@@ -123,6 +123,15 @@ CLOCK_LINE = r'^(?:base_prepare_ms=\d+|runtime_prepare_ms=\d+|request=\d+ reques
 def strip_clocks(text): return re.sub(CLOCK_LINE, '', text, flags=re.M)
 
 
+def bounded_exit(process, expected):
+    # ExecutionGuard.complete denotes exit zero, not merely a finished process.
+    return bool(process.get('returncode') == expected and process.get('complete') is (expected == 0)
+                and not process.get('stoppedFor') and not process.get('interrupted') and not process.get('error')
+                and isinstance(process.get('finished'), (int, float))
+                and isinstance(process.get('wallSeconds'), (int, float)) and process['wallSeconds'] >= 0
+                and process['finished'] >= process['started'])
+
+
 def run_request(guard, context, producer, source, out, seconds=300, live=False, oracle=None, negative=None,
                 expected_diagnostic=SUCCESS_DIAGNOSTIC, capture_reference_diagnostic=False):
     import shutil
@@ -148,7 +157,7 @@ def run_request(guard, context, producer, source, out, seconds=300, live=False, 
     if output.exists(): row['output'] = pin(output)
     if negative is not None:
         row['expectedDiagnostic'] = strip_clocks(negative)
-        row['passed'] = bool(process['complete'] and process['returncode'] == 1 and not process.get('stoppedFor') and not process.get('interrupted') and not stdout and not output.exists() and diagnostic == row['expectedDiagnostic'])
+        row['passed'] = bool(bounded_exit(process, 1) and not stdout and not output.exists() and diagnostic == row['expectedDiagnostic'])
     else:
         unsafe = re.fullmatch(r'SOME PROOFS FAIL\nError: (\d+) defs rely on unsafe or foreign code:\n((?:- [^\n]+\n)+)\n', diagnostic)
         row['unsafeOrForeignDefinitions'] = int(unsafe[1]) if unsafe else 0 if diagnostic == SUCCESS_DIAGNOSTIC else None

@@ -1,0 +1,618 @@
+{
+  "kind": "phase98-own-backend-self-c-observer-mechanism",
+  "complete": true,
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/origin-self-c-mechanism.py",
+    "bytes": 11512,
+    "sha256": "13c25fbb44697a7a241ee1e5722dd63bebef49ae14f98ac2a9112000695f2d04"
+  },
+  "inputs": {
+    "reference": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-reference01/report.json",
+        "bytes": 119844,
+        "sha256": "a518a6b15dba274822a71b65044d2ce1c78a5837c330e762ce9d1a1fe6684bde"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/compiler.bend",
+        "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+        "bytes": 1754096
+      },
+      "c": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-reference01/execution/output.1.c",
+        "sha256": "cd3358434c485292993734ae7f4902a0d6240944a08749a769e73abd321c8e1d",
+        "bytes": 38307512
+      },
+      "producerBinary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler-own-native07",
+        "sha256": "d7c7a47917884b14fd3ef37471d9f2a8660d7c4ab9bcc93a249c7cb6d0e37d3e",
+        "bytes": 16913416
+      },
+      "producerStage": "b2"
+    },
+    "candidate": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-b1-self01/report.json",
+        "bytes": 149312,
+        "sha256": "85781c3e063cded51721d3bfbcf7134a6dc658c755741e00c0578da82c373920"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/compiler.bend",
+        "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+        "bytes": 1754096
+      },
+      "c": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-b1-self01/execution/output.1.c",
+        "sha256": "6ae1675a1472afff7a871eb2cf3b42186ca51d0f1b28c03b567863fc4dcdd9d6",
+        "bytes": 38327511
+      },
+      "producerBinary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-checked01/compiler",
+        "sha256": "099df960c418c9caef6977f011074fcc2aa43e2fbbd3daee32fe80824b54e1e9",
+        "bytes": 10268256
+      },
+      "producerStage": "b1"
+    }
+  },
+  "sameInputCompilerSource": true,
+  "headerFlags": {
+    "reference": {
+      "span": {
+        "byteStart": 0,
+        "byteEnd": 192,
+        "lineStart": 1,
+        "lineEnd": 6,
+        "bytes": 192,
+        "sha256": "06a93738f67274babf1476ec685f4417c4e077b322d01f76452d761b13ebae2d",
+        "text": "#define NATIVE_READONLY_OBSERVERS 0\n#define NATIVE_PACK_CTORS 1\n#define NATIVE_TYPED_SCALARS 0\n#define NATIVE_COLD_USER_CTORS 0\n#define NATIVE_SCALAR_ARRAYS 0\n#define NATIVE_UNSHARED_ARRAYS 0\n"
+      },
+      "values": {
+        "NATIVE_READONLY_OBSERVERS": "0",
+        "NATIVE_PACK_CTORS": "1",
+        "NATIVE_TYPED_SCALARS": "0",
+        "NATIVE_COLD_USER_CTORS": "0",
+        "NATIVE_SCALAR_ARRAYS": "0",
+        "NATIVE_UNSHARED_ARRAYS": "0"
+      }
+    },
+    "candidate": {
+      "span": {
+        "byteStart": 0,
+        "byteEnd": 192,
+        "lineStart": 1,
+        "lineEnd": 6,
+        "bytes": 192,
+        "sha256": "bca436d09c8abd5db4cc79d097c67a8f13e12ab24e843c0ae33daf86c5a2c24f",
+        "text": "#define NATIVE_READONLY_OBSERVERS 1\n#define NATIVE_PACK_CTORS 1\n#define NATIVE_TYPED_SCALARS 0\n#define NATIVE_COLD_USER_CTORS 0\n#define NATIVE_SCALAR_ARRAYS 0\n#define NATIVE_UNSHARED_ARRAYS 0\n"
+      },
+      "values": {
+        "NATIVE_READONLY_OBSERVERS": "1",
+        "NATIVE_PACK_CTORS": "1",
+        "NATIVE_TYPED_SCALARS": "0",
+        "NATIVE_COLD_USER_CTORS": "0",
+        "NATIVE_SCALAR_ARRAYS": "0",
+        "NATIVE_UNSHARED_ARRAYS": "0"
+      }
+    }
+  },
+  "concreteAddedRoutes": [
+    {
+      "owner": "String.is_empty",
+      "worker": {
+        "name": "$observer.String.is_empty",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_83_116_114_105_110_103_46_105_115_95_101_109_112_116_121_",
+        "byteStart": 6687545,
+        "byteEnd": 6688264,
+        "lineStart": 41401,
+        "lineEnd": 41428,
+        "bytes": 719,
+        "sha256": "41640cc4ad12f0588904ed9b035c3d386403f70a43fb813cdc2ac61f38881983"
+      },
+      "adapter": {
+        "name": "$observer.adapter.String.is_empty",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_83_116_114_105_110_103_46_105_115_95_101_109_112_116_121_",
+        "byteStart": 6688264,
+        "byteEnd": 6689004,
+        "lineStart": 41429,
+        "lineEnd": 41449,
+        "bytes": 740,
+        "sha256": "4a0a470662777851232969444cc0c59e6229ef188ddf974b522bbadbbbe0f97f"
+      },
+      "entry": {
+        "name": "String.is_empty",
+        "cSymbol": "NF_FID_83_116_114_105_110_103_46_105_115_95_101_109_112_116_121_",
+        "byteStart": 7547222,
+        "byteEnd": 7547485,
+        "lineStart": 78316,
+        "lineEnd": 78316,
+        "bytes": 263,
+        "sha256": "59b0faa850a5ad12d071b32df7893ae4a7bd91be4693ac38bee4aab3ab77fc50",
+        "text": "if ((term_rfc(v_4294967295) && (rfc_view(e, term_loc(v_4294967295)) & RFC_CNT) > 1) || 0) { return NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_83_116_114_105_110_103_46_105_115_95_101_109_112_116_121_(e, seq, nf_out, v_4294967295); }\n"
+      },
+      "condition": "Redirect when at least one eligible root has reference count greater than one."
+    },
+    {
+      "owner": "String.cmp",
+      "worker": {
+        "name": "$observer.String.cmp",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_83_116_114_105_110_103_46_99_109_112_",
+        "byteStart": 6689004,
+        "byteEnd": 6691353,
+        "lineStart": 41450,
+        "lineEnd": 41535,
+        "bytes": 2349,
+        "sha256": "213126f78b76bf8bb5a517c69bbd0ee2ce6cd52d032529c0b0df016e0fe261f7"
+      },
+      "adapter": {
+        "name": "$observer.adapter.String.cmp",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_83_116_114_105_110_103_46_99_109_112_",
+        "byteStart": 6691353,
+        "byteEnd": 6693150,
+        "lineStart": 41536,
+        "lineEnd": 41600,
+        "bytes": 1797,
+        "sha256": "40aa429fdeeef9477b1a3b3e8b84be36465d1003b2ec56b220e987513d78ddab"
+      },
+      "entry": {
+        "name": "$direct.String.cmp",
+        "cSymbol": "FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_",
+        "byteStart": 7819466,
+        "byteEnd": 7819957,
+        "lineStart": 88422,
+        "lineEnd": 88434,
+        "bytes": 491,
+        "sha256": "d580254cd7a22e8689a4ffcb2684a4dccee88983f75f4c9ae254b97e4cc4bb5b",
+        "text": "  WL_CASE(FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_)\n  {\n    Term v_4294947364 = r0;\n    Term v_4294947363 = r1;\n    WL_OPEN\n#if !DEVICE && NATIVE_READONLY_OBSERVERS\n{\nTerm no_public_result[1];\nif (!NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_83_116_114_105_110_103_46_99_109_112_(e, seq, no_public_result, v_4294947364, v_4294947363)) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\nr0 = no_public_result[0];\nWL_RETN(1);\n}\n"
+      },
+      "condition": "CPU scheduler entry under NATIVE_READONLY_OBSERVERS; product-result adapter."
+    },
+    {
+      "owner": "p98_eq_finish",
+      "worker": {
+        "name": "$observer.p98_eq_finish",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+        "byteStart": 6693150,
+        "byteEnd": 6693569,
+        "lineStart": 41601,
+        "lineEnd": 41615,
+        "bytes": 419,
+        "sha256": "1bd9e5e6bbc7e0d2d606d5893a0977758fa91963df00214383c5610a6a8899b4"
+      },
+      "adapter": {
+        "name": "$observer.adapter.p98_eq_finish",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+        "byteStart": 6693569,
+        "byteEnd": 6694413,
+        "lineStart": 41616,
+        "lineEnd": 41638,
+        "bytes": 844,
+        "sha256": "702f2c9c68bfa9a4bb4a57ebdf2d8444ae3a54c1a21a4b6e417055fb01c727b6"
+      },
+      "entry": {
+        "name": "p98_eq_finish",
+        "cSymbol": "NF_FID_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+        "byteStart": 7535030,
+        "byteEnd": 7535395,
+        "lineStart": 77791,
+        "lineEnd": 77791,
+        "bytes": 365,
+        "sha256": "3742881c37f112d141a4a0f6de5b15279e17513ed94e1dcfab6ed385157b0a88",
+        "text": "if ((term_rfc(v_4294967294) && (rfc_view(e, term_loc(v_4294967294)) & RFC_CNT) > 1) || (term_rfc(v_4294967293) && (rfc_view(e, term_loc(v_4294967293)) & RFC_CNT) > 1) || 0) { return NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_112_57_56_95_101_113_95_102_105_110_105_115_104_(e, seq, nf_out, v_4294967295, v_4294967294, v_4294967293); }\n"
+      },
+      "condition": "Redirect when at least one eligible root has reference count greater than one."
+    },
+    {
+      "owner": "p88_string_eq_go",
+      "worker": {
+        "name": "$observer.p88_string_eq_go",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+        "byteStart": 6694413,
+        "byteEnd": 6696461,
+        "lineStart": 41639,
+        "lineEnd": 41720,
+        "bytes": 2048,
+        "sha256": "99dc6051d18047bd1044cb87aa1af834771bc5efc0c83721c90c6c46f8f2d7bd"
+      },
+      "adapter": {
+        "name": "$observer.adapter.p88_string_eq_go",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+        "byteStart": 6696461,
+        "byteEnd": 6697327,
+        "lineStart": 41721,
+        "lineEnd": 41743,
+        "bytes": 866,
+        "sha256": "c4d3b1e637ce743daf0c508846a4a4aa15c3a5e219e879ab3851d3272b57dd6c"
+      },
+      "entry": {
+        "name": "p88_string_eq_go",
+        "cSymbol": "NF_FID_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+        "byteStart": 7529569,
+        "byteEnd": 7529945,
+        "lineStart": 77536,
+        "lineEnd": 77536,
+        "bytes": 376,
+        "sha256": "4416404fcc996a6acd42ee9fb259e0af17fa12ab0de4c9dae89ad909823fead6",
+        "text": "if ((term_rfc(v_4294967295) && (rfc_view(e, term_loc(v_4294967295)) & RFC_CNT) > 1) || (term_rfc(v_4294967294) && (rfc_view(e, term_loc(v_4294967294)) & RFC_CNT) > 1) || 0) { return NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_(e, seq, nf_out, v_4294967295, v_4294967294, v_4294967293); }\n"
+      },
+      "condition": "Redirect when at least one eligible root has reference count greater than one."
+    },
+    {
+      "owner": "index_hash",
+      "worker": {
+        "name": "$observer.index_hash",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_105_110_100_101_120_95_104_97_115_104_",
+        "byteStart": 6697327,
+        "byteEnd": 6698414,
+        "lineStart": 41744,
+        "lineEnd": 41784,
+        "bytes": 1087,
+        "sha256": "b049fc06f875158bc6f5bf80e2943311a1836ddf105ceb7f533fa0f79f380beb"
+      },
+      "adapter": {
+        "name": "$observer.adapter.index_hash",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_105_110_100_101_120_95_104_97_115_104_",
+        "byteStart": 6698414,
+        "byteEnd": 6699149,
+        "lineStart": 41785,
+        "lineEnd": 41805,
+        "bytes": 735,
+        "sha256": "817eb0649930bfaa6806b730175c01961a4695feb78647e9b392cdd8dbd9a353"
+      },
+      "entry": {
+        "name": "index_hash",
+        "cSymbol": "NF_FID_105_110_100_101_120_95_104_97_115_104_",
+        "byteStart": 7470068,
+        "byteEnd": 7470326,
+        "lineStart": 74847,
+        "lineEnd": 74847,
+        "bytes": 258,
+        "sha256": "384ba8ccb599d4b415869e375159a1556295ffcc7bc5fcbf8d94f84518661092",
+        "text": "if ((term_rfc(v_4294967295) && (rfc_view(e, term_loc(v_4294967295)) & RFC_CNT) > 1) || 0) { return NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_105_110_100_101_120_95_104_97_115_104_(e, seq, nf_out, v_4294967295, v_4294967294); }\n"
+      },
+      "condition": "Redirect when at least one eligible root has reference count greater than one."
+    },
+    {
+      "owner": "f_head",
+      "worker": {
+        "name": "$observer.f_head",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_102_95_104_101_97_100_",
+        "byteStart": 6699149,
+        "byteEnd": 6699847,
+        "lineStart": 41806,
+        "lineEnd": 41833,
+        "bytes": 698,
+        "sha256": "e6fa6a8b5b14deb4d2dbbbb9369b05dd3d3788034971df1418d095a87c184aad"
+      },
+      "adapter": {
+        "name": "$observer.adapter.f_head",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_102_95_104_101_97_100_",
+        "byteStart": 6699847,
+        "byteEnd": 6700517,
+        "lineStart": 41834,
+        "lineEnd": 41854,
+        "bytes": 670,
+        "sha256": "63b3c62d06c7d6de7ee397c45f8c6886ff376b15846341157ae084b1e29380a4"
+      },
+      "entry": {
+        "name": "f_head",
+        "cSymbol": "NF_FID_102_95_104_101_97_100_",
+        "byteStart": 7398241,
+        "byteEnd": 7398469,
+        "lineStart": 71597,
+        "lineEnd": 71597,
+        "bytes": 228,
+        "sha256": "b130e9e4d3467549ed57c75aa68f9ed9b1b746d15217b829fe8abe06539e68b2",
+        "text": "if ((term_rfc(v_4294967295) && (rfc_view(e, term_loc(v_4294967295)) & RFC_CNT) > 1) || 0) { return NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_102_95_104_101_97_100_(e, seq, nf_out, v_4294967295); }\n"
+      },
+      "condition": "Redirect when at least one eligible root has reference count greater than one."
+    },
+    {
+      "owner": "dg_import_tail",
+      "worker": {
+        "name": "$observer.dg_import_tail",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_100_103_95_105_109_112_111_114_116_95_116_97_105_108_",
+        "byteStart": 6700517,
+        "byteEnd": 6702060,
+        "lineStart": 41855,
+        "lineEnd": 41907,
+        "bytes": 1543,
+        "sha256": "19831133e08b1bc04387fcfb5a7affeea15227ef8d5e76c93168ff104c907ae4"
+      },
+      "adapter": {
+        "name": "$observer.adapter.dg_import_tail",
+        "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_100_103_95_105_109_112_111_114_116_95_116_97_105_108_",
+        "byteStart": 6702060,
+        "byteEnd": 6702792,
+        "lineStart": 41908,
+        "lineEnd": 41928,
+        "bytes": 732,
+        "sha256": "cbe2c0aeed28ba1e295cda10b44c06e0689c2f8f9ef3abe0ef43ae99ece01a3c"
+      },
+      "entry": {
+        "name": "dg_import_tail",
+        "cSymbol": "NF_FID_100_103_95_105_109_112_111_114_116_95_116_97_105_108_",
+        "byteStart": 7039412,
+        "byteEnd": 7039671,
+        "lineStart": 56156,
+        "lineEnd": 56156,
+        "bytes": 259,
+        "sha256": "add283bb4bab3f29573091d6d708d19c90095a71a85d0e1207082893f2ca16ef",
+        "text": "if ((term_rfc(v_4294967295) && (rfc_view(e, term_loc(v_4294967295)) & RFC_CNT) > 1) || 0) { return NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_100_103_95_105_109_112_111_114_116_95_116_97_105_108_(e, seq, nf_out, v_4294967295); }\n"
+      },
+      "condition": "Redirect when at least one eligible root has reference count greater than one."
+    }
+  ],
+  "equality": {
+    "reference": {
+      "name": "p88_string_eq_go",
+      "cSymbol": "NF_FID_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+      "byteStart": 7510675,
+      "byteEnd": 7515768,
+      "lineStart": 76984,
+      "lineEnd": 77237,
+      "bytes": 5093,
+      "sha256": "aa17c89786ae272ddf2c3708aa85edb361ba593337f538edcaa6b31db1ca654a"
+    },
+    "candidate": {
+      "name": "p88_string_eq_go",
+      "cSymbol": "NF_FID_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+      "byteStart": 7529320,
+      "byteEnd": 7534789,
+      "lineStart": 77531,
+      "lineEnd": 77785,
+      "bytes": 5469,
+      "sha256": "7ed6b2e30f5f9ded77fed95e1c900994e4063555ead2ec46c3cd74dc8c7e067f"
+    },
+    "borrowedWorker": {
+      "name": "$observer.p88_string_eq_go",
+      "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+      "byteStart": 6694413,
+      "byteEnd": 6696461,
+      "lineStart": 41639,
+      "lineEnd": 41720,
+      "bytes": 2048,
+      "sha256": "99dc6051d18047bd1044cb87aa1af834771bc5efc0c83721c90c6c46f8f2d7bd",
+      "text": "NF_INLINE Term NF_FID_36_111_98_115_101_114_118_101_114_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294, Term v_4294967293) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\n#if NATIVE_READONLY_OBSERVERS\nif ((term_aux(v_4294967295) == CID_SNIL)) {\nif ((term_aux(v_4294967294) == CID_SNIL)) {\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = v_4294967293;\nreturn 1;\n} else {\nif ((term_aux(v_4294967294) == CID_SCON)) {\nLoc no_loc_2 = term_peek(e, v_4294967294);\nTerm v_4294967291 = e.mem[no_loc_2 + 0];\nTerm v_4294967290 = e.mem[no_loc_2 + 1];\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = 0;\nreturn 1;\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n} else {\nif ((term_aux(v_4294967295) == CID_SCON)) {\nLoc no_loc_3 = term_peek(e, v_4294967295);\nTerm v_4294967289 = e.mem[no_loc_3 + 0];\nTerm v_4294967288 = e.mem[no_loc_3 + 1];\nif ((term_aux(v_4294967294) == CID_SNIL)) {\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = 0;\nreturn 1;\n} else {\nif ((term_aux(v_4294967294) == CID_SCON)) {\nLoc no_loc_5 = term_peek(e, v_4294967294);\nTerm v_4294967287 = e.mem[no_loc_5 + 0];\nTerm v_4294967286 = e.mem[no_loc_5 + 1];\nif ((!native_bool(v_4294967293))) {\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = 0;\nreturn 1;\n} else {\nif (native_bool(v_4294967293)) {\nif (1) {\nTerm v_4294967285 = v_4294967289;\nif (1) {\nTerm v_4294967284 = v_4294967287;\nTerm v_4294967283 = U32_BIN(v_4294967285, ==, v_4294967284);\nif (!seq && err_seen(e.mem)) { return 0; }\n{\nTerm nf_arg_0 = v_4294967288;\nTerm nf_arg_1 = v_4294967286;\nTerm nf_arg_2 = v_4294967283;\nv_4294967295 = nf_arg_0;\nv_4294967294 = nf_arg_1;\nv_4294967293 = nf_arg_2;\ngoto nf_again;\n}\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n#else\nreturn 0;\n#endif\n}\nreturn 0;\n}\n"
+    },
+    "owningAdapter": {
+      "name": "$observer.adapter.p88_string_eq_go",
+      "cSymbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+      "byteStart": 6696461,
+      "byteEnd": 6697327,
+      "lineStart": 41721,
+      "lineEnd": 41743,
+      "bytes": 866,
+      "sha256": "c4d3b1e637ce743daf0c508846a4a4aa15c3a5e219e879ab3851d3272b57dd6c",
+      "text": "NF_INLINE Term NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294, Term v_4294967293) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\n#if NATIVE_READONLY_OBSERVERS\nTerm no_root_0 = v_4294967295;\nTerm no_root_1 = v_4294967294;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_observed[1];\nif (!NF_FID_36_111_98_115_101_114_118_101_114_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_(e, seq, no_observed, v_4294967295, v_4294967294, v_4294967293)) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_scalar_result = no_observed[0];\nterm_sink(e, no_root_0);\nterm_sink(e, no_root_1);\nnf_out[0] = no_scalar_result;\nreturn 1;\n#else\nreturn 0;\n#endif\n}\nreturn 0;\n}\n"
+    },
+    "referenceConsumingStep": {
+      "byteStart": 7512891,
+      "byteEnd": 7512956,
+      "lineStart": 77093,
+      "lineEnd": 77093,
+      "bytes": 65,
+      "sha256": "c10f4a850e96e802f69fa02a73edaac29aa098534a01cc3c94309ec39ad14201",
+      "text": "spare_free(e, cls_fit(2), ctr_take(e, v_4294967276, 2, fields));\n"
+    },
+    "checks": {
+      "originalBodyPreservedAfterRemovingOneRedirect": true,
+      "borrowedFieldsUsePeek": true,
+      "borrowedLoopHasNoListedConsumeOrAllocateCalls": [
+        "ctr_take(",
+        "spare_free(",
+        "term_sink(",
+        "term_keep(",
+        "heap_alloc("
+      ],
+      "fullU32CharacterComparison": true,
+      "rootsDisposedAfterObservation": true
+    },
+    "heldPublicWrapper": {
+      "name": "p88_string_eq",
+      "cSymbol": "NF_FID_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+      "byteStart": 7535501,
+      "byteEnd": 7536928,
+      "lineStart": 77799,
+      "lineEnd": 77856,
+      "bytes": 1427,
+      "sha256": "842fdd04808811d667a5d47b4d30f78af12238173811a4e5d0803ce04c71744b",
+      "text": "NF_INLINE Term NF_FID_112_56_56_95_115_116_114_105_110_103_95_101_113_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\nv_4294967295 = term_keep(e, v_4294967295);\nv_4294967294 = term_keep(e, v_4294967294);\nTerm v_4294967293;\n{\nTerm v_4294967286;\n{\nv_4294967286 = v_4294967295;\ngoto nf_join_12;\n}\nnf_join_12:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967285;\n{\nv_4294967285 = v_4294967294;\ngoto nf_join_13;\n}\nnf_join_13:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967284;\n{\nv_4294967284 = 1ull;\ngoto nf_join_14;\n}\nnf_join_14:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm nq_result_15[1];\nif (!NF_FID_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_(e, seq, nq_result_15, v_4294967286, v_4294967285, v_4294967284)) { return 0; }\nv_4294967293 = nq_result_15[0];\ngoto nf_join_5;\n}\nnf_join_5:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967292;\n{\nv_4294967292 = v_4294967295;\ngoto nf_join_6;\n}\nnf_join_6:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967291;\n{\nv_4294967291 = v_4294967294;\ngoto nf_join_7;\n}\nnf_join_7:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm nq_result_8[1];\nif (!NF_FID_112_57_56_95_101_113_95_102_105_110_105_115_104_(e, seq, nq_result_8, v_4294967293, v_4294967292, v_4294967291)) { return 0; }\nnf_out[0] = nq_result_8[0];\nreturn 1;\n}\nreturn 0;\n}\n"
+    }
+  },
+  "tag": {
+    "unchangedFunctions": [
+      {
+        "name": "p98_tag_eq",
+        "reference": {
+          "name": "p98_tag_eq",
+          "cSymbol": "NF_FID_112_57_56_95_116_97_103_95_101_113_",
+          "byteStart": 7501159,
+          "byteEnd": 7502450,
+          "lineStart": 76546,
+          "lineEnd": 76596,
+          "bytes": 1291,
+          "sha256": "d8d906b4b574581f19a4d2a8f6ac9007ac1ac99110de528ac7ec3ad6ea83a430"
+        },
+        "candidate": {
+          "name": "p98_tag_eq",
+          "cSymbol": "NF_FID_112_57_56_95_116_97_103_95_101_113_",
+          "byteStart": 7519804,
+          "byteEnd": 7521095,
+          "lineStart": 77093,
+          "lineEnd": 77143,
+          "bytes": 1291,
+          "sha256": "d8d906b4b574581f19a4d2a8f6ac9007ac1ac99110de528ac7ec3ad6ea83a430"
+        }
+      },
+      {
+        "name": "p98_tag_eq_read",
+        "reference": {
+          "name": "p98_tag_eq_read",
+          "cSymbol": "NF_FID_112_57_56_95_116_97_103_95_101_113_95_114_101_97_100_",
+          "byteStart": 7494798,
+          "byteEnd": 7500798,
+          "lineStart": 76259,
+          "lineEnd": 76533,
+          "bytes": 6000,
+          "sha256": "5c6d44c2481ec3a356954b004fee9bf0b0f94bf8125c19fff43f55a50b103484"
+        },
+        "candidate": {
+          "name": "p98_tag_eq_read",
+          "cSymbol": "NF_FID_112_57_56_95_116_97_103_95_101_113_95_114_101_97_100_",
+          "byteStart": 7513443,
+          "byteEnd": 7519443,
+          "lineStart": 76806,
+          "lineEnd": 77080,
+          "bytes": 6000,
+          "sha256": "5c6d44c2481ec3a356954b004fee9bf0b0f94bf8125c19fff43f55a50b103484"
+        }
+      },
+      {
+        "name": "p98_tag_eq_finish",
+        "reference": {
+          "name": "p98_tag_eq_finish",
+          "cSymbol": "NF_FID_112_57_56_95_116_97_103_95_101_113_95_102_105_110_105_115_104_",
+          "byteStart": 7500798,
+          "byteEnd": 7501159,
+          "lineStart": 76534,
+          "lineEnd": 76545,
+          "bytes": 361,
+          "sha256": "6a4dfc4a9ea30e33ecc6cf82512dbdc4f1f9869c00618247be3fad4a4be65647"
+        },
+        "candidate": {
+          "name": "p98_tag_eq_finish",
+          "cSymbol": "NF_FID_112_57_56_95_116_97_103_95_101_113_95_102_105_110_105_115_104_",
+          "byteStart": 7519443,
+          "byteEnd": 7519804,
+          "lineStart": 77081,
+          "lineEnd": 77092,
+          "bytes": 361,
+          "sha256": "6a4dfc4a9ea30e33ecc6cf82512dbdc4f1f9869c00618247be3fad4a4be65647"
+        }
+      },
+      {
+        "name": "p88_string_eq",
+        "reference": {
+          "name": "p88_string_eq",
+          "cSymbol": "NF_FID_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+          "byteStart": 7516115,
+          "byteEnd": 7517542,
+          "lineStart": 77250,
+          "lineEnd": 77307,
+          "bytes": 1427,
+          "sha256": "842fdd04808811d667a5d47b4d30f78af12238173811a4e5d0803ce04c71744b"
+        },
+        "candidate": {
+          "name": "p88_string_eq",
+          "cSymbol": "NF_FID_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+          "byteStart": 7535501,
+          "byteEnd": 7536928,
+          "lineStart": 77799,
+          "lineEnd": 77856,
+          "bytes": 1427,
+          "sha256": "842fdd04808811d667a5d47b4d30f78af12238173811a4e5d0803ce04c71744b"
+        }
+      }
+    ],
+    "genericKTermBranch": {
+      "byteStart": 7513443,
+      "byteEnd": 7515700,
+      "lineStart": 76806,
+      "lineEnd": 76907,
+      "bytes": 2257,
+      "sha256": "f5457420c9ef98f545389a8e64665158c3b74c10bf87321ffd1e978cc54b7919",
+      "text": "INLINE Term NF_FID_112_57_56_95_116_97_103_95_101_113_95_114_101_97_100_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\nTerm v_4294967293;\n{\nv_4294967293 = v_4294967295;\ngoto nf_join_4;\n}\nnf_join_4:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967292;\n{\nv_4294967292 = v_4294967294;\ngoto nf_join_5;\n}\nnf_join_5:;\nif (!seq && err_seen(e.mem)) { return 0; }\nif ((term_aux(v_4294967293) == CID__CTOR_75_84_101_114_109_)) {\nTerm fields[8];\nspare_free(e, cls_fit(8), ctr_take(e, v_4294967293, 8, fields));\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_75_84_101_114_109__0\nu32\n#else\nTerm\n#endif\nv_4294967289 = fields[0];\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_75_84_101_114_109__1\nu32\n#else\nTerm\n#endif\nv_4294967288 = fields[1];\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_75_84_101_114_109__2\nu32\n#else\nTerm\n#endif\nv_4294967287 = fields[2];\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_75_84_101_114_109__3\nu32\n#else\nTerm\n#endif\nv_4294967286 = fields[3];\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_75_84_101_114_109__4\nu32\n#else\nTerm\n#endif\nv_4294967285 = fields[4];\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_75_84_101_114_109__5\nu32\n#else\nTerm\n#endif\nv_4294967284 = fields[5];\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_75_84_101_114_109__6\nu32\n#else\nTerm\n#endif\nv_4294967283 = fields[6];\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_75_84_101_114_109__7\nu32\n#else\nTerm\n#endif\nv_4294967282 = fields[7];\nterm_sink(e, v_4294967288);\nterm_sink(e, v_4294967287);\nterm_sink(e, v_4294967286);\nterm_sink(e, v_4294967285);\nterm_sink(e, v_4294967284);\nterm_sink(e, v_4294967283);\nterm_sink(e, v_4294967282);\nTerm v_4294967281;\n{\nv_4294967281 = v_4294967289;\ngoto nf_join_17;\n}\nnf_join_17:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967280;\n{\nv_4294967280 = v_4294967292;\ngoto nf_join_18;\n}\nnf_join_18:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967279;\n{\nv_4294967279 = 1ull;\ngoto nf_join_19;\n}\nnf_join_19:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm nq_result_20[1];\nif (!NF_FID_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_(e, seq, nq_result_20, v_4294967281, v_4294967280, v_4294967279)) { return 0; }\nnf_out[0] = nq_result_20[0];\nreturn 1;\n"
+    },
+    "conclusion": "Generic tag comparison calls the newly redirected string walker. KTerm projection itself remains consuming and has no direct borrowed tag observer."
+  },
+  "unchangedRuntimeHelpers": [
+    {
+      "name": "term_peek",
+      "candidate": {
+        "byteStart": 5787997,
+        "byteEnd": 5788127,
+        "lineStart": 40395,
+        "lineEnd": 40400,
+        "bytes": 130,
+        "sha256": "9668bea915a21846554b38ac33120c1bc221c35d428861f1566f80905294c56d",
+        "text": "INLINE Loc term_peek(Env e, Term t) {\n  if (term_rfc(t)) {\n    return rfc_view(e, term_loc(t)) >> 24;\n  }\n  return term_loc(t);\n}\n"
+      },
+      "reference": {
+        "byteStart": 5787997,
+        "byteEnd": 5788127,
+        "lineStart": 40395,
+        "lineEnd": 40400,
+        "bytes": 130,
+        "sha256": "9668bea915a21846554b38ac33120c1bc221c35d428861f1566f80905294c56d"
+      }
+    },
+    {
+      "name": "ctr_take",
+      "candidate": {
+        "byteStart": 5790846,
+        "byteEnd": 5791313,
+        "lineStart": 40527,
+        "lineEnd": 40547,
+        "bytes": 467,
+        "sha256": "91a114f5a6f46a86dbd84e3210a8e86a0460c9ad247ff8d1ef1b980d00093cdb",
+        "text": "INLINE Loc ctr_take(Env e, Term t, u32 n, THR Term* out) {\n  Corpus H = e.mem;\n  if (!term_rfc(t)) {\n    for (u32 j = 0; j < n; j += 1) {\n      out[j] = H[term_loc(t) + j];\n    }\n    return term_loc(t);\n  }\n  Loc r    = term_loc(t);\n  u64 cell = rfc_view(e, r);\n  Loc src  = cell >> 24;\n  for (u32 j = 0; j < n; j += 1) {\n    out[j] = H[src + j];\n  }\n  if ((cell & RFC_CNT) == 1) {\n    heap_free(e, 0, r);\n    return src;\n  }\n  span_fade(e, t, src, n);\n  return 0;\n}\n"
+      },
+      "reference": {
+        "byteStart": 5790846,
+        "byteEnd": 5791313,
+        "lineStart": 40527,
+        "lineEnd": 40547,
+        "bytes": 467,
+        "sha256": "91a114f5a6f46a86dbd84e3210a8e86a0460c9ad247ff8d1ef1b980d00093cdb"
+      }
+    },
+    {
+      "name": "term_sink",
+      "candidate": {
+        "byteStart": 5790481,
+        "byteEnd": 5790570,
+        "lineStart": 40509,
+        "lineEnd": 40513,
+        "bytes": 89,
+        "sha256": "d0d0f21d8dceb738bacd37b079d0882357909e0df946af9b92e3526c1242670f",
+        "text": "INLINE void term_sink(Env e, Term t) {\n  if (!term_triv(t)) {\n    term_drop(e, t);\n  }\n}\n"
+      },
+      "reference": {
+        "byteStart": 5790481,
+        "byteEnd": 5790570,
+        "lineStart": 40509,
+        "lineEnd": 40513,
+        "bytes": 89,
+        "sha256": "d0d0f21d8dceb738bacd37b079d0882357909e0df946af9b92e3526c1242670f"
+      }
+    },
+    {
+      "name": "term_keep",
+      "candidate": {
+        "byteStart": 5787815,
+        "byteEnd": 5787996,
+        "lineStart": 40384,
+        "lineEnd": 40393,
+        "bytes": 181,
+        "sha256": "5fb86ade0e419edc0263c0bf4913c88dfed7158b2d031ef8b72ca2315018b0a2",
+        "text": "INLINE Term term_keep(Env e, Term t) {\n  if (term_rfc(t)) {\n    rfc_bump(e, term_loc(t), 1);\n    return t;\n  }\n  if (term_triv(t)) {\n    return t;\n  }\n  return rfc_wrap(e, t, 2);\n}\n"
+      },
+      "reference": {
+        "byteStart": 5787815,
+        "byteEnd": 5787996,
+        "lineStart": 40384,
+        "lineEnd": 40393,
+        "bytes": 181,
+        "sha256": "5fb86ade0e419edc0263c0bf4913c88dfed7158b2d031ef8b72ca2315018b0a2"
+      }
+    }
+  ],
+  "limitations": [
+    "Static inspection of complete own-backend self C intended for B2, not the earlier upstream-generated B1 C audit.",
+    "Mapped observer names are concrete definitions and entry routes; no global allocation/RC operation reduction is inferred.",
+    "The string loop avoids per-node consuming operations on its shared-root route; adapters and ordinary fallbacks still own and dispose inputs.",
+    "No direct borrowed KTerm tag projection is claimed. The generic tag branch reaches the shared-root string observer indirectly.",
+    "C shape does not prove runtime lifetime safety, qualify B2, establish dynamic call frequencies or measure speed."
+  ]
+}

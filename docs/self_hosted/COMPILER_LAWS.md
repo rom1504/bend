@@ -28,10 +28,10 @@ and then fails at runtime. See the [proof boundary](../../implementation/phase97
 and [supplemental commands](../../selfhost/tools/laws/phase97/README.md).
 
 The [Phase98 source-connected packages](../../selfhost/proofs/phase98/README.md)
-add 15 distinct public contracts and 38 support lemmas: actual string comparison,
+add 16 distinct public contracts and 40 support lemmas: actual string comparison,
 ordered dispatch selectors, tag comparison, scalar projections and the scoped
-foreign-admission predicate. The [deduplicated catalog](../../selfhost/proofs/phase98/catalog04.json)
-records 50 public and 48 support names across Phase96–98. Repeated checks and
+foreign-admission predicate and complete redirect-worker transformation. The [deduplicated catalog](../../selfhost/proofs/phase98/catalog05.json)
+records 51 public and 50 support names across Phase96–98. Repeated checks and
 inherited dependencies are not extra laws. The final combined compiler source
 also passes the unchanged tag, permission and existing-membership packages; these prove safe helper
 values, not native reference-counting or the unsafe whole compiler. Those
@@ -103,8 +103,9 @@ source-bridge limitations and failure classification are in the
 [Phase98 run guide](../../selfhost/proofs/phase98/RUNNING.md). Missing helpers or
 changed reference boundaries fail rather than substituting an old implementation.
 Allow an initial 30-second serial slot for one package; observed target occupancy
-was about 1.7–2.7 seconds for these small proofs, not a general performance promise
-or proof-authoring estimate. Retain the existing resource guards and the separate
+was about 1.7–2.7 seconds for the smaller proofs and 9.73 seconds for the concrete
+redirect package, not a general performance promise or proof-authoring estimate.
+Retain the existing resource guards and the separate
 native alias, generated-C and performance qualification.
 
 ## What is constrained

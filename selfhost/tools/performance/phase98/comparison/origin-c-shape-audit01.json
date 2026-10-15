@@ -1,0 +1,126 @@
+{
+  "kind": "phase98-origin-guard-generated-c-shape-audit",
+  "complete": true,
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/origin-c-shape-audit.py",
+    "sha256": "9bdd9ff1dd55861c158c21fc33df8997466c7c9548a038da60bf93b11f4dd286",
+    "bytes": 5510
+  },
+  "inputs": {
+    "oldSource": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/permission-tag-source02/compiler.bend",
+      "sha256": "59b36a1ca3f7843ff7a03628cd39ed0f530ed137c4825d508a274a8e1ede2714",
+      "bytes": 1754058
+    },
+    "newSource": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/compiler.bend",
+      "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+      "bytes": 1754096
+    },
+    "oldC": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/combined-checked01/program.c",
+      "sha256": "5782601ed24d0215669e0fe27a62ff240c452219b510b9ab70c312645dc60767",
+      "bytes": 17724799
+    },
+    "newC": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-checked01/program.c",
+      "sha256": "21c0e6b6a71a4bd409f0945bb0c1ff8928e3f4917cd445df06d4c5b07aa4e128",
+      "bytes": 17725478
+    }
+  },
+  "recipe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/changes.json",
+    "sha256": "f9a04dc6b397c45285043454b8ec1bd8409b818738c86c54b2a13f42b2f7a945",
+    "bytes": 220433
+  },
+  "sourceChange": {
+    "function": "noa_below",
+    "old": "@unsafe\ndef noa_below(+origin: KTerm, +want: KTerm) -> Bool:\n  nt_choose(Bool, norm_exact(origin, want), u => True{}, u => p98_tag_eq(origin, \"OField\") && noa_below(kid(origin, 0), want))\n",
+    "new": "@unsafe\ndef noa_below(+origin: KTerm, +want: KTerm) -> Bool:\n  nt_choose(Bool, norm_exact(origin, want), u => True{}, u =>\n    nt_choose(Bool, p98_tag_eq(origin, \"OField\"), v => noa_below(kid(origin, 0), want), v => False{}))\n",
+    "offset": 1679283
+  },
+  "physicalLineDelta": 1,
+  "byteDelta": 38,
+  "generatedC": {
+    "old": {
+      "FID_NOA_BELOW": {
+        "line": 49583,
+        "text": "  WL_CASE(FID_NOA_BELOW)\n  {\n    Term _origin_0 = r0;\n    Term _want_0 = r1;\n    WL_OPEN\n    _origin_0 = term_keep(e, _origin_0, 1);\n    _want_0 = term_keep(e, _want_0, 1);\n    if (seq) {\n      WL_ROOM(3);\n      STK(0) = _origin_0;\n      STK(1) = _want_0;\n      STK(2) = FID_NOA_BELOW_K894;\n      WL_PUSHN(3);\n    } else {\n      u64 _t_0 = task_node(e, FID_NOA_BELOW_K894, WL_CONT, WL_IDX, 1);\n      e.mem[_t_0 + 0] = _origin_0;\n      e.mem[_t_0 + 1] = _want_0;\n      WL_CONT = term_tsk(FID_NOA_BELOW_K894, _t_0);\n      WL_IDX = 2;\n    }\n    if (!DEVICE && !seq && fid_nofk(FID_NORM_EXACT)) {\n      u64 _t_1 = task_node(e, FID_NORM_EXACT, WL_CONT, WL_IDX, 0);\n      e.mem[_t_1 + 0] = _origin_0;\n      e.mem[_t_1 + 1] = _want_0;\n      return term_tsk(FID_NORM_EXACT, _t_1);\n    }\n    r0 = _origin_0;\n    r1 = _want_0;\n    WL_JMP(FID_NORM_EXACT);\n  }}\n"
+      },
+      "FID_NOA_BELOW_K894": {
+        "line": 49616,
+        "text": "  WL_CASE(FID_NOA_BELOW_K894)\n  {\n    WL_POPN(2);\n    Term _origin_1 = STK(0);\n    Term _want_1 = STK(1);\n    u32 _h_0 = r0;\n    WL_OPEN\n    u64 _nd_0 = heap_alloc(e, cls_fit(2));\n    e.mem[_nd_0 + 0] = _origin_1;\n    e.mem[_nd_0 + 1] = _want_1;\n    if (seq) {\n      WL_ROOM(1);\n      STK(0) = FID_NOA_BELOW_K899;\n      WL_PUSHN(1);\n    } else {\n      u64 _t_7 = task_node(e, FID_NOA_BELOW_K899, WL_CONT, WL_IDX, 1);\n      WL_CONT = term_tsk(FID_NOA_BELOW_K899, _t_7);\n      WL_IDX = 0;\n    }\n    if (!DEVICE && !seq && fid_nofk(FID_NT_CHOOSE)) {\n      u64 _t_8 = task_node(e, FID_NT_CHOOSE, WL_CONT, WL_IDX, 0);\n      e.mem[_t_8 + 0] = _h_0;\n      e.mem[_t_8 + 1] = term_clo(FID_NOA_BELOW_C895, 0);\n      e.mem[_t_8 + 2] = term_clo(FID_NOA_BELOW_C896, _nd_0);\n      return term_tsk(FID_NT_CHOOSE, _t_8);\n    }\n    r0 = _h_0;\n    r1 = term_clo(FID_NOA_BELOW_C895, 0);\n    r2 = term_clo(FID_NOA_BELOW_C896, _nd_0);\n    WL_JMP(FID_NT_CHOOSE);\n  }}\n"
+      },
+      "FID_NOA_BELOW_C895": {
+        "line": 49650,
+        "text": "  WL_CASE(FID_NOA_BELOW_C895)\n  {\n    Term _x_0 = r0;\n    WL_OPEN\n    r0 = term_pak(CID_TRUE, 0);\n    WL_RETN(1);\n  }}\n"
+      },
+      "FID_NOA_BELOW_C896": {
+        "line": 49660,
+        "text": "  WL_CASE(FID_NOA_BELOW_C896)\n  {\n    Term _origin_2 = r0;\n    Term _want_2 = r1;\n    Term _x_1 = r2;\n    WL_OPEN\n    _origin_2 = term_keep(e, _origin_2, 1);\n    if (seq) {\n      WL_ROOM(3);\n      STK(0) = _origin_2;\n      STK(1) = _want_2;\n      STK(2) = FID_NOA_BELOW_K897;\n      WL_PUSHN(3);\n    } else {\n      u64 _t_2 = task_node(e, FID_NOA_BELOW_K897, WL_CONT, WL_IDX, 1);\n      e.mem[_t_2 + 0] = _origin_2;\n      e.mem[_t_2 + 1] = _want_2;\n      WL_CONT = term_tsk(FID_NOA_BELOW_K897, _t_2);\n      WL_IDX = 2;\n    }\n    if (!DEVICE && !seq && fid_nofk(FID_KID)) {\n      u64 _t_3 = task_node(e, FID_KID, WL_CONT, WL_IDX, 0);\n      e.mem[_t_3 + 0] = _origin_2;\n      e.mem[_t_3 + 1] = 0ull;\n      return term_tsk(FID_KID, _t_3);\n    }\n    r0 = _origin_2;\n    r1 = 0ull;\n    WL_JMP(FID_KID);\n  }}\n"
+      },
+      "FID_NOA_BELOW_K897": {
+        "line": 49693,
+        "text": "  WL_CASE(FID_NOA_BELOW_K897)\n  {\n    WL_POPN(2);\n    Term _origin_3 = STK(0);\n    Term _want_3 = STK(1);\n    Term _h_1 = r0;\n    WL_OPEN\n    if (seq) {\n      WL_ROOM(2);\n      STK(0) = _origin_3;\n      STK(1) = FID_NOA_BELOW_K898;\n      WL_PUSHN(2);\n    } else {\n      u64 _t_4 = task_node(e, FID_NOA_BELOW_K898, WL_CONT, WL_IDX, 1);\n      e.mem[_t_4 + 0] = _origin_3;\n      WL_CONT = term_tsk(FID_NOA_BELOW_K898, _t_4);\n      WL_IDX = 1;\n    }\n    if (!DEVICE && !seq && fid_nofk(FID_NOA_BELOW)) {\n      u64 _t_5 = task_node(e, FID_NOA_BELOW, WL_CONT, WL_IDX, 0);\n      e.mem[_t_5 + 0] = _h_1;\n      e.mem[_t_5 + 1] = _want_3;\n      return term_tsk(FID_NOA_BELOW, _t_5);\n    }\n    r0 = _h_1;\n    r1 = _want_3;\n    WL_JMP(FID_NOA_BELOW);\n  }}\n"
+      },
+      "FID_NOA_BELOW_K898": {
+        "line": 49724,
+        "text": "  WL_CASE(FID_NOA_BELOW_K898)\n  {\n    WL_POPN(1);\n    Term _origin_4 = STK(0);\n    u32 _h_2 = r0;\n    WL_OPEN\n    u32 _v_0 = 0;\n    Term _o_0[1];\n    if (spin_1(e, _o_0, _origin_4, term_ctr(CID_SCON, STAT_OFF + 1874)) == 0) {\n      return 0;\n    }\n    _v_0 = (u32)_o_0[0];\n    Term _o_1[1];\n    if (spin_44(e, _o_1, _v_0, _h_2) == 0) {\n      return 0;\n    }\n    Term _b_0 = 0;\n    Term _t_6 = (u32)_o_1[0];\n    if (_t_6 == 0) {\n      _b_0 = term_pak(CID_FALSE, 0);\n    } else {\n      _b_0 = term_pak(CID_TRUE, 0);\n    }\n    r0 = _b_0;\n    WL_RETN(1);\n  }}\n"
+      }
+    },
+    "new": {
+      "FID_NOA_BELOW": {
+        "line": 49585,
+        "text": "  WL_CASE(FID_NOA_BELOW)\n  {\n    Term _origin_0 = r0;\n    Term _want_0 = r1;\n    WL_OPEN\n    _origin_0 = term_keep(e, _origin_0, 1);\n    _want_0 = term_keep(e, _want_0, 1);\n    if (seq) {\n      WL_ROOM(3);\n      STK(0) = _origin_0;\n      STK(1) = _want_0;\n      STK(2) = FID_NOA_BELOW_K894;\n      WL_PUSHN(3);\n    } else {\n      u64 _t_0 = task_node(e, FID_NOA_BELOW_K894, WL_CONT, WL_IDX, 1);\n      e.mem[_t_0 + 0] = _origin_0;\n      e.mem[_t_0 + 1] = _want_0;\n      WL_CONT = term_tsk(FID_NOA_BELOW_K894, _t_0);\n      WL_IDX = 2;\n    }\n    if (!DEVICE && !seq && fid_nofk(FID_NORM_EXACT)) {\n      u64 _t_1 = task_node(e, FID_NORM_EXACT, WL_CONT, WL_IDX, 0);\n      e.mem[_t_1 + 0] = _origin_0;\n      e.mem[_t_1 + 1] = _want_0;\n      return term_tsk(FID_NORM_EXACT, _t_1);\n    }\n    r0 = _origin_0;\n    r1 = _want_0;\n    WL_JMP(FID_NORM_EXACT);\n  }}\n"
+      },
+      "FID_NOA_BELOW_K894": {
+        "line": 49618,
+        "text": "  WL_CASE(FID_NOA_BELOW_K894)\n  {\n    WL_POPN(2);\n    Term _origin_1 = STK(0);\n    Term _want_1 = STK(1);\n    u32 _h_0 = r0;\n    WL_OPEN\n    u64 _nd_0 = heap_alloc(e, cls_fit(2));\n    e.mem[_nd_0 + 0] = _origin_1;\n    e.mem[_nd_0 + 1] = _want_1;\n    if (seq) {\n      WL_ROOM(1);\n      STK(0) = FID_NOA_BELOW_K901;\n      WL_PUSHN(1);\n    } else {\n      u64 _t_7 = task_node(e, FID_NOA_BELOW_K901, WL_CONT, WL_IDX, 1);\n      WL_CONT = term_tsk(FID_NOA_BELOW_K901, _t_7);\n      WL_IDX = 0;\n    }\n    if (!DEVICE && !seq && fid_nofk(FID_NT_CHOOSE)) {\n      u64 _t_8 = task_node(e, FID_NT_CHOOSE, WL_CONT, WL_IDX, 0);\n      e.mem[_t_8 + 0] = _h_0;\n      e.mem[_t_8 + 1] = term_clo(FID_NOA_BELOW_C895, 0);\n      e.mem[_t_8 + 2] = term_clo(FID_NOA_BELOW_C896, _nd_0);\n      return term_tsk(FID_NT_CHOOSE, _t_8);\n    }\n    r0 = _h_0;\n    r1 = term_clo(FID_NOA_BELOW_C895, 0);\n    r2 = term_clo(FID_NOA_BELOW_C896, _nd_0);\n    WL_JMP(FID_NT_CHOOSE);\n  }}\n"
+      },
+      "FID_NOA_BELOW_C895": {
+        "line": 49652,
+        "text": "  WL_CASE(FID_NOA_BELOW_C895)\n  {\n    Term _x_0 = r0;\n    WL_OPEN\n    r0 = term_pak(CID_TRUE, 0);\n    WL_RETN(1);\n  }}\n"
+      },
+      "FID_NOA_BELOW_C896": {
+        "line": 49662,
+        "text": "  WL_CASE(FID_NOA_BELOW_C896)\n  {\n    Term _origin_2 = r0;\n    Term _want_2 = r1;\n    Term _x_1 = r2;\n    WL_OPEN\n    u32 _v_0 = 0;\n    _origin_2 = term_keep(e, _origin_2, 1);\n    Term _o_0[1];\n    if (spin_1(e, _o_0, _origin_2, term_ctr(CID_SCON, STAT_OFF + 1874)) == 0) {\n      return 0;\n    }\n    _v_0 = (u32)_o_0[0];\n    u64 _nd_1 = heap_alloc(e, cls_fit(2));\n    e.mem[_nd_1 + 0] = _origin_2;\n    e.mem[_nd_1 + 1] = _want_2;\n    if (!DEVICE && !seq && fid_nofk(FID_NT_CHOOSE)) {\n      u64 _t_6 = task_node(e, FID_NT_CHOOSE, WL_CONT, WL_IDX, 0);\n      e.mem[_t_6 + 0] = _v_0;\n      e.mem[_t_6 + 1] = term_clo(FID_NOA_BELOW_C897, _nd_1);\n      e.mem[_t_6 + 2] = term_clo(FID_NOA_BELOW_C900, 0);\n      return term_tsk(FID_NT_CHOOSE, _t_6);\n    }\n    r0 = _v_0;\n    r1 = term_clo(FID_NOA_BELOW_C897, _nd_1);\n    r2 = term_clo(FID_NOA_BELOW_C900, 0);\n    WL_JMP(FID_NT_CHOOSE);\n  }}\n"
+      },
+      "FID_NOA_BELOW_C897": {
+        "line": 49693,
+        "text": "  WL_CASE(FID_NOA_BELOW_C897)\n  {\n    Term _origin_3 = r0;\n    Term _want_3 = r1;\n    Term _x_2 = r2;\n    WL_OPEN\n    if (seq) {\n      WL_ROOM(2);\n      STK(0) = _want_3;\n      STK(1) = FID_NOA_BELOW_K898;\n      WL_PUSHN(2);\n    } else {\n      u64 _t_2 = task_node(e, FID_NOA_BELOW_K898, WL_CONT, WL_IDX, 1);\n      e.mem[_t_2 + 0] = _want_3;\n      WL_CONT = term_tsk(FID_NOA_BELOW_K898, _t_2);\n      WL_IDX = 1;\n    }\n    if (!DEVICE && !seq && fid_nofk(FID_KID)) {\n      u64 _t_3 = task_node(e, FID_KID, WL_CONT, WL_IDX, 0);\n      e.mem[_t_3 + 0] = _origin_3;\n      e.mem[_t_3 + 1] = 0ull;\n      return term_tsk(FID_KID, _t_3);\n    }\n    r0 = _origin_3;\n    r1 = 0ull;\n    WL_JMP(FID_KID);\n  }}\n"
+      },
+      "FID_NOA_BELOW_K898": {
+        "line": 49723,
+        "text": "  WL_CASE(FID_NOA_BELOW_K898)\n  {\n    WL_POPN(1);\n    Term _want_4 = STK(0);\n    Term _h_1 = r0;\n    WL_OPEN\n    if (seq) {\n      WL_ROOM(1);\n      STK(0) = FID_NOA_BELOW_K899;\n      WL_PUSHN(1);\n    } else {\n      u64 _t_4 = task_node(e, FID_NOA_BELOW_K899, WL_CONT, WL_IDX, 1);\n      WL_CONT = term_tsk(FID_NOA_BELOW_K899, _t_4);\n      WL_IDX = 0;\n    }\n    if (!DEVICE && !seq && fid_nofk(FID_NOA_BELOW)) {\n      u64 _t_5 = task_node(e, FID_NOA_BELOW, WL_CONT, WL_IDX, 0);\n      e.mem[_t_5 + 0] = _h_1;\n      e.mem[_t_5 + 1] = _want_4;\n      return term_tsk(FID_NOA_BELOW, _t_5);\n    }\n    r0 = _h_1;\n    r1 = _want_4;\n    WL_JMP(FID_NOA_BELOW);\n  }}\n"
+      },
+      "FID_NOA_BELOW_K899": {
+        "line": 49751,
+        "text": "  WL_CASE(FID_NOA_BELOW_K899)\n  {\n    u32 _r_0 = r0;\n    WL_OPEN\n    Term _b_0 = 0;\n    if (_r_0 == 0) {\n      _b_0 = term_pak(CID_FALSE, 0);\n    } else {\n      _b_0 = term_pak(CID_TRUE, 0);\n    }\n    r0 = _b_0;\n    WL_RETN(1);\n  }}\n"
+      },
+      "FID_NOA_BELOW_C900": {
+        "line": 49767,
+        "text": "  WL_CASE(FID_NOA_BELOW_C900)\n  {\n    Term _x_3 = r0;\n    WL_OPEN\n    r0 = term_pak(CID_FALSE, 0);\n    WL_RETN(1);\n  }}\n"
+      }
+    }
+  },
+  "checks": {
+    "oldFallbackCallsKid": true,
+    "oldFallbackHasNoTagCheck": true,
+    "oldChildContinuationRecurses": true,
+    "oldTagCheckWaitsForRecursiveResult": true,
+    "newFallbackChecksTagBeforeChoose": true,
+    "newFallbackDoesNotCallKidOrRecurse": true,
+    "newChooseBranches": true,
+    "newTrueBranchCallsKid": true,
+    "newTrueContinuationRecurses": true,
+    "newFalseBranchReturnsFalse": true,
+    "newFalseBranchHasNoCallsOrAllocation": true
+  },
+  "conclusion": "New C evaluates the OField predicate before choosing the recursive branch; its false branch returns False without kid, recursion or allocation. Old C evaluates kid and recursion before its tag conjunction.",
+  "limitations": [
+    "Exact generated-C/source inspection, not a compiler execution or whole-compiler proof.",
+    "Fix extends termination to prior divergent inputs; no equivalence with divergent old behavior is claimed.",
+    "Actual final B1/B2 self, semantic, resource and release gates remain separate."
+  ]
+}

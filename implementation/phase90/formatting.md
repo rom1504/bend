@@ -65,3 +65,12 @@ against the new token-qualified C and preserve both proof chains.
 Raw attempts and methods live under `selfhost/{build,tools/performance}/phase90`.
 The successful full-source method is `bootstrap/emit-self-v7.mjs`; the new
 generated source and its replay proof are in `observation/noindent01`.
+
+The genuine, fresh-source-checked, fixed-point-qualified compiler06 JS B2 also
+emits the same full native compiler source successfully (`js-self12`). Its
+request takes48.662s, whole guarded invocation61.959s and peak RSS1,276,276,736
+bytes. The entire38,614,586-byte C output is byte-identical to B1's output
+(`cross-host-c-equality.json`). Both use the original1GiB heap cap and keep the
+four foreign-effect-sensitive representation policies at0. This strengthens
+cross-stage C correctness; it does not establish native execution parity or
+native self-reproduction.

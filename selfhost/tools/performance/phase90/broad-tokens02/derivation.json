@@ -1,0 +1,32 @@
+{
+  "kind": "phase90-broad-token-extraction-fd-derivative",
+  "complete": true,
+  "executionPerformed": false,
+  "original": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/broad-tokens01/run.mjs",
+    "sha256": "78a1cc3b74f044a85e1686b70c322960eea452f9ae974225886a63c43fd15195",
+    "bytes": 16382
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/broad-tokens02/run.mjs",
+    "sha256": "3e986c52e23dd77d528e39fc01b26c90264b4355b7445dee3494a96bf10ad9cc",
+    "bytes": 17808
+  },
+  "failure": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/broad-token16/report.json",
+    "sha256": "866aff6f482958f9eb89c8b9f049f2d2c34cce4fc1bb0c6582977572bd0759f8",
+    "bytes": 192489
+  },
+  "exactInverse": true,
+  "edits": [
+    {
+      "old": "report.method=bind(import.meta.filename);report.node=bind(process.execPath);",
+      "new": "report.method=bind(import.meta.filename);report.node=bind(process.execPath);\n  report.previousBroadMethod=bind(path.join(root,'selfhost/tools/performance/phase90/broad-tokens01/run.mjs'));\n  assert.equal(report.previousBroadMethod.sha256,'78a1cc3b74f044a85e1686b70c322960eea452f9ae974225886a63c43fd15195');\n  report.previousBroadFailure=bind(path.join(root,'selfhost/build/phase90/broad-token16/report.json'));\n  const failedBroad=read(report.previousBroadFailure);assert(!failedBroad.complete&&!failedBroad.pass);\n  const failedExtraction=failedBroad.rows[0].extraction;assert.equal(failedExtraction.returncode,0);assert(failedExtraction.error.includes('EPERM'));assert.equal(failedExtraction.stderr,'');\n  const extractedDespiteError=JSON.parse(failedExtraction.stdout);assert.equal(extractedDespiteError.sha256,failedBroad.rows[0].baselineOrigin.recorded.sha256);\n  report.extractionRevision='v2: regular stdout/stderr file descriptors replace extraction capture pipes; every child error still fails.';"
+    },
+    {
+      "old": "      const extracted=spawnSync(extractCommand[0],extractCommand.slice(1),{cwd:root,encoding:'utf8',timeout:Math.max(1,Math.min(10000,Math.floor(deadline-performance.now())))});\n      row.extraction={command:extractCommand,returncode:extracted.status,signal:extracted.signal,error:extracted.error?.message??null,stdout:extracted.stdout,stderr:extracted.stderr};save();\n      assert(!extracted.error&&extracted.status===0,'Archived baseline extraction failed');\n      row.baseline=pin(baselineFile);assert.deepEqual(row.baseline,JSON.parse(extracted.stdout));",
+      "new": "      const extractionStdout=path.join(out,item.name+'.extract.stdout'),extractionStderr=path.join(out,item.name+'.extract.stderr');\n      const extractionOutFd=fs.openSync(extractionStdout,'wx'),extractionErrFd=fs.openSync(extractionStderr,'wx');let extracted;\n      try{extracted=spawnSync(extractCommand[0],extractCommand.slice(1),{cwd:root,stdio:['ignore',extractionOutFd,extractionErrFd],timeout:Math.max(1,Math.min(10000,Math.floor(deadline-performance.now())))});}\n      finally{fs.closeSync(extractionOutFd);fs.closeSync(extractionErrFd);}\n      row.extraction={command:extractCommand,cwd:root,stdoutTransport:'regular-file-descriptor',stderrTransport:'regular-file-descriptor',returncode:extracted.status,signal:extracted.signal,error:extracted.error?.message??null,stdout:pin(extractionStdout),stderr:pin(extractionStderr)};save();\n      assert(!extracted.error&&extracted.status===0,'Archived baseline extraction failed');\n      row.baseline=pin(baselineFile);assert.deepEqual(row.baseline,JSON.parse(fs.readFileSync(extractionStdout,'utf8')));"
+    }
+  ],
+  "scope": "Only archive extraction subprocess stdout/stderr transport and explicit prior failure binding change; compiler, Clang preprocessing, oracle set, budgets and all error/equality gates preserved."
+}

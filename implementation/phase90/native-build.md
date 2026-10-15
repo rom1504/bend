@@ -53,3 +53,32 @@ LLVM AST clearing is already enabled in the exact local driver, and LLVM22.1.4
 already defaults eager analysis invalidation on. These are not new optimizations
 to try. See the exact driver evidence and primary-source links in
 [the memory-options note](../../selfhost/tools/performance/phase90/regalloc/memory-options.md).
+
+The single10GiB O1 attempt also stops at its RSS guard after120.231s, peaking
+at10,743,463,936bytes while retaining17,336,156,160bytes host memory available.
+There is no further limit increase. Its final pass trace cannot flush after
+the guard kills it. A separate6GiB diagnostic now drains LLVM pass messages,
+keeps64 recent events and bounded counts, and flushes pass/RSS snapshots every
+0.5s. Full verbose logs are intentionally not retained.
+# Optimized native execution and complete self-emission
+
+The two-edit dispatch-table diagnostic `compiler-own-native06` builds with
+Clang22.1.4 atO1 in267.681s, peaking at4,170,858,496bytes. Its exact patched
+build C is `a4cd3990…`; the independent Bend-emitted parent C is `81ca2837…`.
+The distinction remains explicit in its build receipt. See
+[memory localization](clang-memory-localization.md) for the mechanism and
+small controls.
+
+All eight live/cache Small, Map, Unicode and file-I/O requests pass exact-C
+comparison. Live request clocks are71/1759/69/377ms; cached clocks are
+74/1839/73/388ms. These are single diagnostic observations, not a new statistical
+comparison with upstream.
+
+`own-native06-self01/report.json` then completes full self-emission in163.217s
+request time (164.056s guarded wall time), peaking at1,648,939,008bytes. All
+38,614,586 output bytes match `81ca2837…`, independently emitted by checked
+JS-hosted B1 and genuinely self-emitted JS B2. This establishes successful
+native execution of the complete own-backend compiler. It does not yet establish
+a final runtime's native fixed point: the diagnostic executable was built from
+the C-patched image, while this request deliberately used the original runtime.
+Final runtime integration and native successor qualification remain next.

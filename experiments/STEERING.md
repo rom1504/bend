@@ -1,31 +1,34 @@
-# Active frontier: Phase90 own-backend native image; reproduction next
+# Active frontier: Phase90 complete native self-emission; final runtime next
 
-[Phase90](../implementation/phase90/README.md) is in progress. Linear table
-builders, indexed fork closure and removing generated-body indentation allow
-checked JS-hosted Bend B1 to emit the complete native compiler:109.399s request,
-38.6MB C. Ordinary checked compiler06 passes36 frontend cases; genuine JS B2
-passes eight driver comparisons, fresh source checking and B2/B3 byte equality.
-Installed JS remains Phase82 until final source/performance/release gates.
+[Phase90](../implementation/phase90/README.md) is integrating its final runtime.
+All38,614,586 compiler C bytes now match checked JS-hosted B1, genuine JS B2
+and own-backend native06. Request clocks are109.399s,48.662s and163.217s
+respectively, single completed observations rather than upstream speed ratios.
+Native06 uses an explicitly recorded two-edit diagnostic C derivative; it emits
+with the old runtime. This is not yet final-runtime native self-reproduction.
 
-Own-backend native03 successfully builds the exact emitted C with an explicit
-O0/cdecl fallback, then passes all eight live/cache exact-C controls. Four complete
-CPU preprocessing comparisons transfer the independent older B2 references
-across intentional indentation changes. This is a JS-B1-produced native image,
-not native self-reproduction or optimized-performance qualification.
+Linear tables, exact-name indexed fork propagation and eliminating generated
+body indentation remove the full-emission blockers. All45 complete CPU
+preprocessing comparisons pass against independently qualified old B2 outputs;
+the broad run takes165.891s at532MB peak RSS. Eight native06 live/cache request
+controls pass. JS compiler06 fresh own-source check and B2/B3 equality pass.
+Installed JS remains Phase82 until real final-source release qualification.
 
-Full Clang-O1 first hit the6GiB RSS guard; O0 then hit preserve-none indirect
-tail-call allocation failure. Tiny controls reproduce it; upstream already has
-an __OPTIMIZE__ guard omitted from our runtime. Proper runtime/template/driver
-fix is prepared but not applied. O1 without heuristic inlining also hit6GiB. An ordinary O1 build now uses
-one10GiB cap with16GiB host headroom and a pass trace; targets remain serial.
-Native03 self-emission timed out240s at202MB without C; its eight request
-gates remain valid. Qualify the optimized image before another self attempt. Keep actual runtime padding dead in ABI controls.
+The10GiB Clang attempt also failed. Live pass attribution then localized late
+memory growth to LazyCallGraph construction. Generated return macros reference
+a39,642-entry table at15,296 sites. A noinline accessor fixes that scaling:
+fullO1 builds in267.681s at3.885GiB peak. Small dispatch controls pass. Do not
+raise memory limits again. Final runtime combines a host-only accessor at4096
+entries with upstream's missing O0 attribute guard, retaining small optimized
+programs' direct dispatch. Checked template generation is complete.
 
-Root targets remain serial: the existing execution lock rejects overlapping
-correctness work despite the proposed separate-core exception. No lock bypass.
-Memory/disk guards remain active. Evidence01/02 and pruning receipts preserve
-failures; restore exact archived members when needed. Native89/public launcher
-remains separately admitted. No PR comments without explicit instruction.
+Next: independently match native06/JS-B2 C with the new runtime; build a native
+successor and require full C reproduction; integrate runtime/template/driver
+identities together and qualify compiler07/release. Historical runtime identities
+are frozen in an explicit transition seal, not silently rebound. Preserve rejected
+schema/preflight attempts. All targets remain serial under the global lock and
+resource guards. No PR comments. Evidence01/02/03 and exact archive reclamation
+receipts remain available; the native06 checkpoint is being sealed next.
 
 # Historical Phase89 frontier
 

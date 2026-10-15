@@ -1,0 +1,13 @@
+# Live Clang pass diagnosis
+
+`pass-watch-command.json` provides the serial root-run command using the existing guard:180 seconds,6GiB tree RSS,16GiB available-memory floor. The agent has not run it. `pass-watch.py` only wraps the explicit command; it does not alter compiler flags or generated C. It inherits the guard process group so the guard terminates it and Clang together.
+
+Flags are `-O1 -Xclang -fdebug-pass-manager -mllvm -opt-bisect-limit=-1`. The last pair is optional, but recording numbering now allows a subsequent bounded bisect without repeating the entire diagnostic. It runs every optimization. The debug stream itself can slow compilation; this is a memory-location experiment, not a timing comparison.
+
+Every0.5seconds `samples.jsonl` records wall/monotonic times, compiler process-tree RSS, last pass and last numbered bisect event. `state.json` is atomically refreshed with64 recent events and bounded aggregate counts. On an outer kill, read the last complete sample and state rather than requiring a final report. The final half-second is not guaranteed captured. RSS excludes the small Python observer; the outer guard measures the entire tree. The current pass identifies where memory is retained, not necessarily where it was allocated.
+
+Non-pass diagnostics are kept without keyword filtering in `nonpass-head.log` (first128KiB) and `nonpass-tail.log` (last64KiB); any single line is capped at8KiB and discarded bytes are counted explicitly. Pass events retain2KiB of each message. No full pass log or IR dump is written. `complete` means the wrapper observed compiler exit, while `compilerSucceeded` separately records its status; a killed partial report leaves that null.
+
+An `-opt-bisect-limit=N` follow-up skips optional optimizations afterN; it does not stop the compiler. Required passes and analysis still execute, and numbering is stable only through the chosen limit. In particular, a skipped optional cleanup can re-expose the preserve_none register-allocation issue already demonstrated here. Success still requires the normal independent semantic gates. Do not add `-opt-bisect-print-ir-path` with the current disk budget. [LLVM opt-bisect contract](https://llvm.org/docs/OptBisect.html).
+
+Watch first for early module passes such asIPSCCP, GlobalOpt or callgraph-related analyses versus repeated per-functionSROA/InstCombine or later always-inline work. The giant function-pointer table and many indirect musttail sites make a module-analysis hypothesis plausible, but the log must decide. No volatile-table/source derivative or additional build flag is justified yet.

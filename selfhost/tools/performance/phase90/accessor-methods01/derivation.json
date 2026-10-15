@@ -1,0 +1,172 @@
+{
+  "kind": "phase90-accessor-diagnostic-method-derivatives",
+  "complete": true,
+  "executionPerformed": false,
+  "cDerivation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/table-accessor01/derivation.json",
+    "sha256": "f37c23e53db6c8421eb88e1aa735c267d5d00f22cf61ac1e64fc87d074364455",
+    "bytes": 3246
+  },
+  "records": [
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods02/own_native_support.py",
+        "sha256": "92b24a1bad961703431223c02a6ba6271a17bd9ae5177deed61462c881e577ab",
+        "bytes": 11280
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/accessor-methods01/own_native_support.py",
+        "sha256": "8edd5d40078d38d7cd0530d07d69d660fa7780afb1c3bfe3df7885728312dd44",
+        "bytes": 13192
+      },
+      "exactInverse": true,
+      "edits": [
+        {
+          "old": "def bind_build(emission, guard_directory, binary):",
+          "new": "def diagnostic_c(binding):\n    \"\"\"Replay only the frozen two-edit host lookup derivative; never emitted-C identity.\"\"\"\n    receipt = verify(pin(ROOT/'selfhost/build/phase90/table-accessor01/derivation.json'))\n    assert receipt['sha256'] == 'f37c23e53db6c8421eb88e1aa735c267d5d00f22cf61ac1e64fc87d074364455'\n    derivative = read(receipt['file'])\n    assert derivative['kind'] == 'phase90-native-C-table-accessor-diagnostic'\n    assert derivative['exactInverse'] and derivative['targetExecuted'] is False\n    parent, output, recipe = [verify(derivative[key]) for key in ['parent', 'output', 'recipe']]\n    assert parent == binding['c'] and parent['sha256'] == '81ca2837d2f274a23aeab7addf40cbef0e62a96a5ff7026c62a5112b1be0361e'\n    assert output['sha256'] == 'a4cd3990972608fd71542c95cd1e6e20d77c1001ce65222d0c64bdea40bdd612'\n    original = Path(parent['file']).read_bytes(); current = original\n    assert len(derivative['edits']) == 2\n    for edit in derivative['edits']:\n        old, new = edit['old'].encode(), edit['new'].encode()\n        assert current.count(old) == 1; current = current.replace(old, new, 1)\n    assert current == Path(output['file']).read_bytes()\n    for edit in reversed(derivative['edits']):\n        old, new = edit['old'].encode(), edit['new'].encode()\n        assert current.count(new) == 1; current = current.replace(new, old, 1)\n    assert current == original\n    binding['inputs'].extend([receipt, output, recipe])\n    binding.update(compiledC=output, cDerivation=receipt, diagnosticOnly=True,\n        originalProvenance=binding['provenance'], provenance='C-table-accessor-diagnostic')\n    return output\n\n\ndef bind_build(emission, guard_directory, binary):"
+        },
+        {
+          "old": "    binding = emission_binding(emission)\n    guard_pin",
+          "new": "    binding = emission_binding(emission)\n    compiled_c = diagnostic_c(binding)\n    guard_pin"
+        },
+        {
+          "old": "assert image['file'] in guard['command'] and binding['c']['file'] in guard['command']\n    assert binding['c'] in inputs",
+          "new": "assert image['file'] in guard['command'] and compiled_c['file'] in guard['command']\n    assert compiled_c in inputs"
+        },
+        {
+          "old": "return dict(kind='phase90-own-backend-native-image'",
+          "new": "return dict(kind='phase90-c-patched-native-diagnostic-image'"
+        },
+        {
+          "old": "scope='Recorded Bend C emission plus actual guarded Clang build. Execution qualification and public/cache admission are separate.'",
+          "new": "scope='Diagnostic image compiled from a two-edit C derivative of checked Bend emission. Original emitted C and actual compiled C remain separate; no native B2 or public/cache admission.'"
+        },
+        {
+          "old": "assert record['kind'] == 'phase90-own-backend-native-image'",
+          "new": "assert record['kind'] == 'phase90-c-patched-native-diagnostic-image'"
+        },
+        {
+          "old": "return dict(image=image, source=record['source'], c=record['c'], build=receipt,",
+          "new": "return dict(image=image, source=record['source'], c=record['c'], build=receipt,\n                compiledC=record['compiledC'], cDerivation=record['cDerivation'], diagnosticOnly=True,\n                originalProvenance=record['originalProvenance'],"
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods02/bind-own-native.py",
+        "sha256": "0f2467d72290b142a7c2e29d4fe80f3671196d230e6b0836bcacc2eabf0b2622",
+        "bytes": 867
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/accessor-methods01/bind-own-native.py",
+        "sha256": "37f324687a5532ff9ea287cefc20b9eb1b231fcbba616ae854d4724ba4f1ebdd",
+        "bytes": 872
+      },
+      "exactInverse": true,
+      "edits": [
+        {
+          "old": "Bind actual own-backend C emission and guarded Clang build; no targets.",
+          "new": "Bind exact two-edit C diagnostic and actual guarded Clang build; no targets."
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods02/whitespace_oracles.py",
+        "sha256": "6e02aed8f4e47c583b582cc667711ac764fad52be070e813970023c9b82ea63f",
+        "bytes": 6329
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/accessor-methods01/whitespace_oracles.py",
+        "sha256": "a17bc1a68b670ff4cc244f42f659b28017c16c51d7a34bd6ee725acf2b4bfcc9",
+        "bytes": 6361
+      },
+      "exactInverse": true,
+      "edits": [
+        {
+          "old": "if auth['provenance'] == 'JS-B1-cross-host-emitted-C':",
+          "new": "if auth.get('originalProvenance', auth['provenance']) == 'JS-B1-cross-host-emitted-C':"
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods02/own-native-gates.py",
+        "sha256": "a167275be8c29b71a445eae231d91bb414344320152660c0f3057cc03268d60e",
+        "bytes": 14438
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/accessor-methods01/own-native-gates.py",
+        "sha256": "6585803ad190556134d9dceaf79a9b29a19183a615d924ea50d9f8ec4eb1dfc3",
+        "bytes": 14510
+      },
+      "exactInverse": true,
+      "edits": [
+        {
+          "old": "kind='phase90-own-backend-native-gates'",
+          "new": "kind='phase90-c-patched-native-diagnostic-gates'"
+        },
+        {
+          "old": "scope='Private exact-source experiment. No public cache/image admission or full-language/native-fixed-point claim.'",
+          "new": "scope='Private two-edit C-patched compiler diagnostic. Original emitted C differs from compiled C; no native B2, public admission or fixed-point claim.'"
+        },
+        {
+          "old": "PERF / 'phase90/noindent-methods02/own_native_support.py', PERF / 'phase90/noindent-methods02/whitespace_oracles.py'",
+          "new": "PERF / 'phase90/accessor-methods01/own_native_support.py', PERF / 'phase90/accessor-methods01/whitespace_oracles.py'"
+        },
+        {
+          "old": "scope='Eight exact-C live/cache gates for this honestly bound own-backend image; no fixed point or public admission.'",
+          "new": "scope='Eight exact-C live/cache controls for this C-patched diagnostic image; no native B2, fixed point or public admission.'"
+        },
+        {
+          "old": "kind='phase90-own-backend-native-self-emission'",
+          "new": "kind='phase90-c-patched-native-self-emission-diagnostic'"
+        },
+        {
+          "old": "stage='own-backend native compiler'",
+          "new": "stage='C-patched native compiler diagnostic'"
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/noindent-methods02/emit-qualified.py",
+        "sha256": "4e2fbf826f10767b2b2ffe0cac665c6e79ccb5bdc35cf1fc2a8fbeabf76a95d7",
+        "bytes": 7630
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/accessor-methods01/emit-qualified.py",
+        "sha256": "d81378fade2761923ccb4957a567c00e70054dd1ee04ce1ef28371cddb57a283",
+        "bytes": 7782
+      },
+      "exactInverse": true,
+      "edits": [
+        {
+          "old": "kind='phase90-own-backend-native-self-emission'",
+          "new": "kind='phase90-c-patched-native-self-emission-diagnostic'"
+        },
+        {
+          "old": "scope='One exact-source own-backend native self-emission, compared to its checked JS B1 parent C; no new image build or native B2 execution claim.'",
+          "new": "scope='One C-patched native compiler diagnostic self-emission, compared to original checked JS B1 C; not its patched build source, native B2 or public image qualification.'"
+        },
+        {
+          "old": "assert gates['kind']=='phase90-own-backend-native-gates'",
+          "new": "assert gates['kind']=='phase90-c-patched-native-diagnostic-gates'"
+        },
+        {
+          "old": "assert method['sha256']=='a167275be8c29b71a445eae231d91bb414344320152660c0f3057cc03268d60e'",
+          "new": "assert method['sha256']=='6585803ad190556134d9dceaf79a9b29a19183a615d924ea50d9f8ec4eb1dfc3'"
+        },
+        {
+          "old": "assert auth['emission']==parent and auth['provenance']=='JS-B1-cross-host-emitted-C'",
+          "new": "assert auth['emission']==parent and auth['provenance']=='C-table-accessor-diagnostic'\n        assert auth['originalProvenance']=='JS-B1-cross-host-emitted-C' and auth['diagnosticOnly']"
+        },
+        {
+          "old": "stage='own-backend native compiler'",
+          "new": "stage='C-patched native compiler diagnostic'"
+        }
+      ]
+    }
+  ],
+  "scope": "Exact source/gate/oracle requirements retained; diagnostic compiled C bound separately from original emitted C."
+}

@@ -1,0 +1,96 @@
+{
+  "kind": "phase90-runtime-large-table-accessor-plan",
+  "complete": true,
+  "targetExecuted": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/prepare-runtime-accessor.py",
+    "sha256": "1f2b82724ae8068d5f02f9abb205557eb36f1b34068dbc29bb643617900781ec",
+    "bytes": 5971
+  },
+  "helper": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/prepare-runtime-o0.py",
+    "sha256": "ec4d05d1b79724c92ff03865f8bad87e2ecb22939ea36a0be5b7f7ace87a33dd",
+    "bytes": 5824
+  },
+  "canonicalInputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c",
+      "sha256": "0e52adc8d206f7c07944567adddaefaedfb7830ad23d2ba6bbca64dd2e4fb245",
+      "bytes": 83387
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime-template.json",
+      "sha256": "f9f5a1c98f17f892d891032ca35489234e43d3b4112a18e592e6da408b09736c",
+      "bytes": 86920
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/typed-driver.mjs",
+      "sha256": "8af64866d16dc063056261bbd6f2ab1a1689a37d466ba87e4a6004b72cdb6a88",
+      "bytes": 84651
+    }
+  ],
+  "upstream": {
+    "file": "/home/ai/bend2/build/publish/bend/bend2/comp.ts",
+    "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c",
+    "bytes": 185124
+  },
+  "attempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler06/attempt.json",
+    "sha256": "439c20accdc1a874f783ab84650e52309cdfcd5e9619a0bd436f37096c8c9db4",
+    "bytes": 319504
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler06/equality/api.mjs",
+    "sha256": "6bf8e0938565fc4a1b2152640ac83e11e0538fe080a1ec6ac8b89ec6c5958379",
+    "bytes": 2307495
+  },
+  "generator": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/native-template.mjs",
+    "sha256": "15a9e9c78ffc335bdc6f367c92ba879d9baf33816a8dbd07f0863538ff2365cd",
+    "bytes": 1678
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-accessor-01/runtime.c",
+    "sha256": "9e1c59078878be94052cb4d2d63a713e19e29b41ed3f94b034f2175a50efd0a9",
+    "bytes": 83683
+  },
+  "sourceAudit": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/tables.bend",
+      "sha256": "ce25c25c2e60526d8795e01eb0f9ed6ca1c7122811aca0032420066f6e317128",
+      "bytes": 11881
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/emit.bend",
+      "sha256": "e66b2ddf34542300f2cd9d51502d9ff58c5578dd606c6cf1565e966a55c3c5e2",
+      "bytes": 11843
+    }
+  ],
+  "edits": [
+    {
+      "before": "#if __has_attribute(preserve_none) && __has_attribute(preserve_most)\n",
+      "after": "#if __has_attribute(preserve_none) && __has_attribute(preserve_most) \\\n  && defined(__OPTIMIZE__)\n"
+    },
+    {
+      "before": "static const WlFn wl_tab[] = { WL_TABLE };\n#undef WL_X\n#endif",
+      "after": "static const WlFn wl_tab[] = { WL_TABLE };\n#undef WL_X\n#if FID_ENTER >= 4096\n// Keep the shared dispatch table out of each segment's LLVM reference graph.\nFAR PRESERVE(preserve_most) WlFn wl_target(Fid id) { return wl_tab[id]; }\n#undef WL_DYN\n#define WL_DYN(F) __attribute__((musttail)) return wl_target(F)(WL_ALL)\n#endif\n#endif"
+    }
+  ],
+  "threshold": 4096,
+  "templateCommand": [
+    "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/development/native-template.mjs",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler06/attempt.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-accessor-01/runtime.c",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-accessor-01/runtime-template.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-accessor-01/template-receipt.json"
+  ],
+  "followup": [
+    "/usr/bin/python3",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/prepare-runtime-accessor.py",
+    "finish",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-accessor-01"
+  ],
+  "scope": "Prepared only. Late host-only conditional sees emitted FID_ENTER define; small optimized bodies use direct table dispatch. O0 guard intentionally fixes attributes at every size. GPU branch unchanged."
+}

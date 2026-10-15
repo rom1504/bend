@@ -1,0 +1,55 @@
+{
+  "kind": "phase90-runtime-o0-guard-prepared-patch",
+  "complete": true,
+  "canonicalMutated": false,
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-o0-01/plan.json",
+    "sha256": "26e15d0839cba8ba850ed588a90c8cd7a65c40c81dc1fe6acefedc927c9a23b2",
+    "bytes": 3334
+  },
+  "templateReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-o0-01/template-receipt.json",
+    "sha256": "1f8b09a168c1624d9ca7ff02dcf88ade91a42293fff5906d533d1c4bd15223cf",
+    "bytes": 1125
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c",
+      "sha256": "0e52adc8d206f7c07944567adddaefaedfb7830ad23d2ba6bbca64dd2e4fb245",
+      "bytes": 83387
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime-template.json",
+      "sha256": "f9f5a1c98f17f892d891032ca35489234e43d3b4112a18e592e6da408b09736c",
+      "bytes": 86920
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/typed-driver.mjs",
+      "sha256": "8af64866d16dc063056261bbd6f2ab1a1689a37d466ba87e4a6004b72cdb6a88",
+      "bytes": 84651
+    }
+  ],
+  "outputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-o0-01/runtime.c",
+      "sha256": "ff880ca6bb30097b68aeb1e88ae6d4ad2939556fbdf82439560d54de38fc4c3a",
+      "bytes": 83416
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-o0-01/runtime-template.json",
+      "sha256": "376a2a3e7a75b98b8beefb69ae21d162970c92023b2f14c2f4f89561280ab787",
+      "bytes": 86951
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-o0-01/typed-driver.mjs",
+      "sha256": "f13a1b04601ae360b2ddbabdb65ec4124454537e18f0965881b7f9e5d2ee3463",
+      "bytes": 84651
+    }
+  ],
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-o0-01/canonical.patch",
+    "sha256": "0ef2be891188eb2496c34968090fecd091bc4448d8b6c81085cc55bd13f7682c",
+    "bytes": 175019
+  },
+  "scope": "Reviewable patch only. Upstream-compatible O0 PRESERVE fallback; regenerated Bend template and matching driver fast-path pin. Checked build/release and native execution gates remain separate."
+}

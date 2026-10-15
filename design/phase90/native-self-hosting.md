@@ -133,3 +133,28 @@ This is a bounded toolchain-scale experiment, not an unrestricted heap increase
 or a change to normal2GiB compiler-request limits. Preserve pass timing/trace
 metadata to distinguish actual build work from resource-cap failures. Test an
 LLVM analysis-cache invalidation option only if this exact Clang supports it.
+
+## Large dispatch tables: measured build repair and integration
+
+The one10GiB attempt also reached its cap. A bounded pass/RSS diagnostic
+localizes the late growth to LLVM callgraph construction. Generated return
+macros expand to references to the shared39,642-entry function table at15,296
+sites. A noinline host accessor prevents each function's reference graph from
+walking that initializer. The two-edit diagnostic builds atO1 in267.681s with
+3.885GiB peak RSS; four small dispatch compile/execution controls also pass.
+Do not increase the memory cap further.
+
+First qualify actual native06 requests and self-emission against independent
+complete C. Then integrate the accessor for host tables with at least4,096
+entries, together with upstream's O0 attribute guard. Place the conditional
+after the emitted FID_ENTER macro, regenerate all runtime template parts through
+the checked Bend scanner, and update the driver's template identity. Small
+optimized programs keep their existing direct dispatch. The threshold is a
+conservative policy, not a measured crossover.
+
+Preserve the diagnostic image's actual patched-C provenance. Final qualification
+uses explicit new runtime assets, independently matching JS-B2/native emissions,
+and a native-produced successor that reproduces its own C. Freeze historical
+runtime dependencies before updating canonical assets; do not rewrite earlier
+receipts or weaken their checks. Refresh the installed JS release through a
+new checked snapshot and real self-hosting gates after final runtime integration.

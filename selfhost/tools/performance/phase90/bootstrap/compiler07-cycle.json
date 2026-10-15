@@ -1,0 +1,227 @@
+{
+  "kind": "phase90-runtime-migration-compiler07-cycle-recipe",
+  "complete": true,
+  "dataOnly": true,
+  "targetsExecuted": false,
+  "methods": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/prepare-runtime-admission.py",
+      "sha256": "e6e5f6e2e91cd6456980f96039326a17460052a233a079f856b263520ea4094c",
+      "bytes": 7881
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/prepare-bootstrap.py",
+      "sha256": "3e7760de5a249f8ed3ab5b1c8197408bea642e5f64e87f575b5bec0658c82fc2",
+      "bytes": 19448
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/prepare-qualification.py",
+      "sha256": "7a91aa46abe37fde51e29dadcd18b2848f116d54d8a6139acff60d72e1a59fca",
+      "bytes": 4592
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/prepare-release.py",
+      "sha256": "642bc8cb37ec326c21db9202190d62549d547024507f614b36183a91abfe3505",
+      "bytes": 5565
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/development.json",
+      "sha256": "f6d15b701e2f1b2571c85e5f5c0058319927eef6b4f310bc16771eeb2026ed3b",
+      "bytes": 243
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+      "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+      "bytes": 1688
+    }
+  ],
+  "steps": [
+    {
+      "name": "checked-B1",
+      "kind": "target",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07-guard",
+        "--seconds",
+        "180",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "--cpu",
+        "3",
+        "--",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+        "run",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/development.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07"
+      ],
+      "requires": [
+        "Root finishes runtime.c, Bend-generated template and exact driver-pin patch first.",
+        "All output paths must be fresh."
+      ]
+    },
+    {
+      "name": "admission-preflight",
+      "kind": "offline",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/prepare-runtime-admission.py",
+        "--attempt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07",
+        "--ready",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-accessor-01/ready.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/export-admission07",
+        "--check-only"
+      ]
+    },
+    {
+      "name": "admission",
+      "kind": "offline",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/prepare-runtime-admission.py",
+        "--attempt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07",
+        "--ready",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/regalloc/runtime-accessor-01/ready.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/export-admission07"
+      ]
+    },
+    {
+      "name": "B2-plan",
+      "kind": "offline",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/prepare-bootstrap.py",
+        "plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07-b2",
+        "--admission",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/export-admission07/admission.json"
+      ]
+    },
+    {
+      "name": "qualification-plan",
+      "kind": "offline",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/prepare-qualification.py",
+        "--attempt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07",
+        "--b2",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07-b2",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/qualification-method07",
+        "--qualification-out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/qualification07"
+      ]
+    },
+    {
+      "name": "B2-generation-and-driver-gates",
+      "kind": "root-executes-generated-commands",
+      "planFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07-b2/plan.json",
+      "commandNames": [
+        "tiny",
+        "full",
+        "driver-source",
+        "driver-direct",
+        "driver-join",
+        "image-pins"
+      ],
+      "sequential": true,
+      "stopOnFailure": true
+    },
+    {
+      "name": "selfhosting-qualification",
+      "kind": "root-executes-generated-commands",
+      "planFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/qualification-method07/plan.json",
+      "commandNames": [
+        "self-check",
+        "fixed-point"
+      ],
+      "sequential": true,
+      "stopOnFailure": true
+    },
+    {
+      "name": "release-plan",
+      "kind": "offline",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/bootstrap/prepare-release.py",
+        "--attempt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07",
+        "--b2",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07-b2",
+        "--qualification",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/qualification07",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/release07",
+        "--cc",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "--cpath",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+      ],
+      "requires": [
+        "Root reviews actual new-runtime native/static-image correctness and JS continuity first."
+      ]
+    },
+    {
+      "name": "release-install-and-smoke",
+      "kind": "root-executes-generated-commands",
+      "planFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/release07/plan.json",
+      "commandNames": [
+        "install",
+        "verify-before",
+        "legacy42",
+        "default24",
+        "verify-after"
+      ],
+      "sequential": true,
+      "stopOnFailure": true
+    }
+  ],
+  "legacyToolchain": {
+    "deliberatelyPreserved": true,
+    "launcher": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase77/legacy-release-smoke-launch-v1.mjs",
+      "sha256": "b4f40e6cc750e8d4c890e01ac4a142aa8e99f4ae124ddec72d2d9b3127009396",
+      "bytes": 2171
+    },
+    "runner": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase77/legacy-release-smoke-v1.mjs",
+      "sha256": "9fc4405572a39f7bc2698c338fa5c60ed95ba87effe8f7f6888c8377c8dfd144",
+      "bytes": 9230
+    },
+    "actualCompiler": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin/clang",
+      "sha256": "8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2",
+      "bytes": 145096
+    },
+    "environment": {
+      "CC": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+      "CPATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include",
+      "LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+      "LD_LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu"
+    },
+    "scope": "legacy42 runner deliberately overwrites inherited CC/CPATH and records this Clang16 binary in its actual report. The release plan environment identifies supplied Lean Clang, not the effective legacy CPU compiler. default24 runs JS only."
+  },
+  "limitations": [
+    "Recipe preparation establishes no completed compiler07, runtime generation, B2 image, qualification or release.",
+    "The admission method has been parsed and reviewed against actual old schemas; new-runtime and compiler07 full input preflight remains pending.",
+    "No canonical mutation, target launch, installation or native cache admission is performed here."
+  ]
+}

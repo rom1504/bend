@@ -66,6 +66,20 @@ a diagnostic repeated-request mode, not a persistent multi-source server.
 the authenticated immutable prepared Base. Changed admitted files and wrong
 cache/path identities refuse. No fallback silently selects a different image.
 
+To repeat the full compiler C emission using the restored frozen source, allow
+more than the default 60-second request deadline and choose a fresh output:
+
+```sh
+python3 -B selfhost/tools/performance/phase90/runtime-migration01/native.py \
+  selfhost/tools/performance/phase90/observation/noindent01/compiler-noindent.bend \
+  --seconds 240 -o selfhost/build/native/compiler-self.c
+sha256sum selfhost/build/native/compiler-self.c
+```
+
+The expected SHA-256 is `dae071f0fae7aec4ae8036ccebe4954690a249e32f59a87ac485b2fa428016bf`.
+This is the roughly 164-second emission gate; building that C into a new native
+executable is the separate roughly 308-second Clang gate recorded above.
+
 **Relocation is not qualified.** Admission and carrier source locations bind the
 canonical checkout path. Rewriting paths or symlinking another checkout does not
 preserve that identity. A portable package requires separate qualification.

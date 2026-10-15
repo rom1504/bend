@@ -57,3 +57,24 @@ Include unsuccessful attempts and derivative recipes; verify archive members
 against originals, commit capsule and manifest, and only then consider pruning
 old Phase90 raw copies. Do not remove reusable active baseline assets merely
 because a sealed duplicate exists.
+# Final release-test copy reclamation
+
+After evidence05 and the completed release were committed as `1806ba4`, the
+three completed relocation tests contained 756 redundant copied files totaling
+43,829,973 bytes. The [review](reclaim-release-copies-plan.json) verifies every
+file against both the committed archive and its retained current `selfhost/`
+counterpart, including path, size, digest, mode and single-link status.
+The [applied receipt](reclaim-release-copies-applied.json) records their removal.
+Reports, outputs, logs, installed release and native request assets are retained.
+
+Restore these historical copies into a fresh directory with:
+
+```sh
+python3 -B selfhost/tools/performance/phase90/reclaim-release-copies.py restore \
+  --plan implementation/phase90/reclaim-release-copies-plan.json \
+  --dest /tmp/phase90-release-copies-restored
+```
+
+Restoration verifies the committed capsule and preserves repository-relative
+paths and modes. It neither overwrites nor restores into the live repository.
+The tool uses the shared execution lock; this cleanup ran no compiler targets.

@@ -1,4 +1,29 @@
-# Active frontier: Phase93 native generated-program runtime
+# Active frontier: Phase94 law-backed native optimization pilot
+
+[Report](../implementation/phase94/README.md) ·
+[Proof and method](../selfhost/proofs/phase94/README.md) ·
+[Experiment](phase94/P94-001-law-backed-environment.md).
+
+The exact generic helper embedded in an isolated native compiler candidate has
+an independently checked equivalence proof under the unchanged BendTT kernel
+and official Lean4.34.0. Three bad helpers fail the frozen law; six adapter cases
+and all45 exact C comparisons pass. Unsafe adapters, analysis and runtime remain
+outside the proof. No whole-compiler correctness claim or new runtime timings.
+
+Extracted helper time falls17.6–39.0%, but24 nativeB1 pairs are neutral:
+request0.99724×, process0.99953×. Do not promote the +50line candidate or rebuild
+B2/fullself on this evidence. Production, installed images and all prior metrics
+remain unchanged. Initial compiler-screen method drift is excluded and preserved.
+
+Next learning step: attribute native allocation/lifetime costs to actual callers
+and test a bounded intervention before another full build. Reuse the proof method
+once inclusive cost supports the target; generic cleanup leaf samples are not
+enough. Fast cached kernel verdicts~0.3s; accepted compiler screen22s and45-product
+continuity39s target time. Two offline agents;220 serial guarded jobs,415.74s
+occupancy,4.00GiB peak, no overlap/OOM/timeout. Raw932files preserved and verified.
+No PR comment. This pilot is complete; no next optimization automatically begun.
+
+# Previous frontier: Phase93 native generated-program runtime
 
 [Report](../implementation/phase93/README.md) ·
 [Method](../selfhost/tools/performance/phase93/README.md) ·

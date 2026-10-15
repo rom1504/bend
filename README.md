@@ -44,6 +44,12 @@ cover the original 45 points: 44 measurable runtime ratios average **1.115×**
 upstream C with equal-point weighting; both backends optimize away the remaining
 zero-work control. Native B1/B2 emit identical C for all 45 batch programs.
 
+The [law-backed optimization guide](docs/self_hosted/law-backed-optimization.md)
+documents an independently checked helper proof connected to a native compiler
+candidate. Its local speedup did not improve overall compilation enough to
+promote; the [Phase94 report](implementation/phase94/README.md) records the
+proof boundary, measurements and reusable fast loop.
+
 Read the [Phase90 results and speed boundaries](implementation/phase90/README.md),
 [compiler guide](docs/BEND-IN-BEND.md),
 [conformance record](selfhost/CONFORMANCE.md),

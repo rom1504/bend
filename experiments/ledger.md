@@ -4591,3 +4591,32 @@ No production/image changes. Two offline agents;791 serial guarded jobs occupy
 subset16.7s. Evidence preserves4,798 raw files, with exact readback verification.
 Updated frontier: benchmark complete; profile the named slow families next if
 requested, retaining winners and the separate native compiler-latency work.
+
+## Phase94 production-connected law and neutral optimization — 2026-10-15
+
+[Report](../implementation/phase94/README.md) ·
+[Experiment](phase94/P94-001-law-backed-environment.md).
+Official Lean4.34.0 repairs independent checking with the unchanged BendTT kernel.
+The exact safe environment helper in an isolated native candidate has a checked
+36-definition equivalence proof. Independent false equality rejects, three bad
+helpers fail the frozen Bend law, six production-adapter controls pass. Unsafe
+adapter/analysis/C/runtime boundaries remain unproved; laws are agent-authored.
+
+Four extracted workloads save17.6–39.0% time with independent checksums and a
+first-case2× scaling control. Real six-source nativeB1 comparison,24 balanced
+pairs: request0.9972365×, process0.9995302× baseline, effectively neutral.
+All45 original native benchmark C products are byte-identical. No new program
+runtime campaign, candidateB2/fullself build or broad conformance claim.
+Candidate adds50assembled lines and is not promoted; production/images unchanged.
+
+Kernel module builds52.84s once; individual cached verdicts~0.3s. Accepted paired
+screen21.96s and45-product continuity39.33s target time. Two offline agents;
+220 serial guarded jobs415.74s,4.00GiBpeak, no overlap, timeout or memory stop.
+Preserve initial disk/download, kernel-module, proof, micro-source, inventory and
+collector failures, plus excluded compiler-screen01 method drift and its frozen
+initial method. Final evidence capsule verifies932members; official toolchain
+restorable from pinned release/manifests. No PR comment or quota-percentage claim.
+
+Updated frontier: proof method feasible; do not promote a negligible performance
+result. Establish caller-level native allocation/lifetime costs and a bounded
+material improvement before reusing the law workflow on the next target.

@@ -5,7 +5,17 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active frontier: Phase93 native generated-program runtime
+## Active frontier: Phase94 laws connected to production
+
+[Report](../implementation/phase94/README.md) ·
+[Proof](../selfhost/proofs/phase94/README.md) · [Strategy](STEERING.md).
+An independently checked helper-equivalence law constrains an actual isolated
+native compiler candidate. Three mutation rejections, six adapter controls and
+45 exact C comparisons pass. Helper time improves18–39%; real compiler timing
+is neutral0.997×. Candidate not promoted; production/images unchanged. Next choose
+a measured inclusive hotspot before applying the same proof workflow again.
+
+## Previous frontier: Phase93 native generated-program runtime
 
 [Current strategy](STEERING.md) · [Runtime report](../implementation/phase93/README.md) ·
 [Native-chain scoreboard](../implementation/phase92/README.md) ·

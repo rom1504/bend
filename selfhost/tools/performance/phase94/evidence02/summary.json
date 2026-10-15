@@ -1,0 +1,471 @@
+{
+  "complete": true,
+  "promoted": false,
+  "decision": "Retain the proven isolated candidate; compiler-wide gain is not established.",
+  "proof": {
+    "independentAcceptance": true,
+    "independentFalseEqualityRejected": true,
+    "definitions": 36,
+    "rejectedMutations": 3,
+    "adapterControls": 6,
+    "guardedStepSeconds": {
+      "check": 0.5342097328975797,
+      "elaborate": 0.6362362999934703,
+      "kernel-positive": 0.37021334702149034,
+      "kernel-negative": 0.28895614109933376
+    }
+  },
+  "helper": {
+    "cases": [
+      {
+        "args": [
+          16,
+          1,
+          1
+        ],
+        "repetitions": 537816,
+        "oracle": 1019719966,
+        "roles": {
+          "baseline": {
+            "medianUs": 0.7121394677733649,
+            "minUs": 0.7121394677733649,
+            "maxUs": 0.7139988397518854
+          },
+          "candidate": {
+            "medianUs": 0.48901483035090065,
+            "minUs": 0.48901483035090065,
+            "maxUs": 0.5001710622220239
+          }
+        },
+        "candidateOverBaseline": 0.6866840731070496
+      },
+      {
+        "args": [
+          64,
+          0,
+          1
+        ],
+        "repetitions": 111112,
+        "oracle": 1267955962,
+        "roles": {
+          "baseline": {
+            "medianUs": 3.734970120239038,
+            "minUs": 3.7259701922384623,
+            "maxUs": 3.770969832241342
+          },
+          "candidate": {
+            "medianUs": 2.2769817841457267,
+            "minUs": 2.258981928144575,
+            "maxUs": 2.312981496148031
+          }
+        },
+        "candidateOverBaseline": 0.6096385542168674
+      },
+      {
+        "args": [
+          256,
+          1,
+          0
+        ],
+        "repetitions": 33614,
+        "oracle": 2781901145,
+        "roles": {
+          "baseline": {
+            "medianUs": 10.412328196584756,
+            "minUs": 10.382578687451657,
+            "maxUs": 10.620574760516451
+          },
+          "candidate": {
+            "medianUs": 7.556375319807223,
+            "minUs": 7.4968763015410245,
+            "maxUs": 7.7051228654727195
+          }
+        },
+        "candidateOverBaseline": 0.7257142857142858
+      },
+      {
+        "args": [
+          1024,
+          3,
+          1
+        ],
+        "repetitions": 9260,
+        "oracle": 4150984230,
+        "roles": {
+          "baseline": {
+            "medianUs": 33.69330453563715,
+            "minUs": 33.585313174946,
+            "maxUs": 34.125269978401725
+          },
+          "candidate": {
+            "medianUs": 27.75377969762419,
+            "minUs": 27.75377969762419,
+            "maxUs": 27.861771058315334
+          }
+        },
+        "candidateOverBaseline": 0.8237179487179488
+      }
+    ],
+    "sampleCounts": {
+      "pilot": 8,
+      "calibrate": 16,
+      "measure": 24,
+      "scaling": 2
+    },
+    "scaling": [
+      {
+        "role": "baseline",
+        "repetitions": 1075632,
+        "elapsedMs": 766,
+        "doubleCountRatio": 2.0
+      },
+      {
+        "role": "candidate",
+        "repetitions": 1075632,
+        "elapsedMs": 527,
+        "doubleCountRatio": 2.0038022813688214
+      }
+    ]
+  },
+  "compiler": {
+    "exactCCount": 48,
+    "cases": {
+      "small": {
+        "requestMs": {
+          "medians": {
+            "baseline": 58.0,
+            "candidate": 57.0
+          },
+          "ranges": {
+            "baseline": [
+              58,
+              59
+            ],
+            "candidate": [
+              57,
+              58
+            ]
+          },
+          "ratioOfMedians": 0.9827586206896551,
+          "pairedRatios": [
+            0.9827586206896551,
+            0.9827586206896551,
+            0.9827586206896551,
+            0.9830508474576272
+          ],
+          "medianPairedRatio": 0.9827586206896551
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 146.19467698503286,
+            "candidate": 146.22413809411228
+          },
+          "ranges": {
+            "baseline": [
+              146.06469892896712,
+              146.43409685231745
+            ],
+            "candidate": [
+              146.08503389172256,
+              146.38846088200808
+            ]
+          },
+          "ratioOfMedians": 1.0002015197111618,
+          "pairedRatios": [
+            0.9994150715164682,
+            0.999382290220097,
+            1.0001392188729006,
+            1.001294472115502
+          ],
+          "medianPairedRatio": 0.9997771451946844
+        }
+      },
+      "numeric_closed": {
+        "requestMs": {
+          "medians": {
+            "baseline": 99.0,
+            "candidate": 99.0
+          },
+          "ranges": {
+            "baseline": [
+              99,
+              108
+            ],
+            "candidate": [
+              99,
+              106
+            ]
+          },
+          "ratioOfMedians": 1.0,
+          "pairedRatios": [
+            1.0,
+            1.0,
+            1.0,
+            0.9814814814814815
+          ],
+          "medianPairedRatio": 1.0
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 187.17059749178588,
+            "candidate": 187.545450986363
+          },
+          "ranges": {
+            "baseline": [
+              186.5896498784423,
+              207.29611907154322
+            ],
+            "candidate": [
+              186.65466993115842,
+              207.20320101827383
+            ]
+          },
+          "ratioOfMedians": 1.0020027370730253,
+          "pairedRatios": [
+            0.9997221857677437,
+            1.0003484654843315,
+            1.0042791151759283,
+            0.9995517617325131
+          ],
+          "medianPairedRatio": 1.0000353256260377
+        }
+      },
+      "lexer_original": {
+        "requestMs": {
+          "medians": {
+            "baseline": 354.0,
+            "candidate": 354.5
+          },
+          "ranges": {
+            "baseline": [
+              354,
+              355
+            ],
+            "candidate": [
+              353,
+              389
+            ]
+          },
+          "ratioOfMedians": 1.0014124293785311,
+          "pairedRatios": [
+            0.9943661971830986,
+            1.0,
+            1.002824858757062,
+            1.0988700564971752
+          ],
+          "medianPairedRatio": 1.0014124293785311
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 451.04207016993314,
+            "candidate": 451.2569265207276
+          },
+          "ranges": {
+            "baseline": [
+              450.90225199237466,
+              451.2274549342692
+            ],
+            "candidate": [
+              450.97371796146035,
+              491.8913380242884
+            ]
+          },
+          "ratioOfMedians": 1.0004763554555198,
+          "pairedRatios": [
+            0.9994376739047366,
+            1.0007100519451608,
+            1.000801374516073,
+            1.090295696762254
+          ],
+          "medianPairedRatio": 1.000755713230617
+        }
+      },
+      "map_closed": {
+        "requestMs": {
+          "medians": {
+            "baseline": 1389.5,
+            "candidate": 1388.5
+          },
+          "ranges": {
+            "baseline": [
+              1389,
+              1393
+            ],
+            "candidate": [
+              1384,
+              1393
+            ]
+          },
+          "ratioOfMedians": 0.9992803166606693,
+          "pairedRatios": [
+            0.9964002879769619,
+            0.9971284996410624,
+            1.0028797696184306,
+            0.9985611510791367
+          ],
+          "medianPairedRatio": 0.9978448253600996
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 1497.8348829317838,
+            "candidate": 1486.9267964968458
+          },
+          "ranges": {
+            "baseline": [
+              1487.0957741513848,
+              1527.3887659423053
+            ],
+            "candidate": [
+              1486.7482921108603,
+              1487.2385319322348
+            ]
+          },
+          "ratioOfMedians": 0.992717430633217,
+          "pairedRatios": [
+            0.9733921875440976,
+            0.9859940271298634,
+            1.0000959977046073,
+            0.999532925324763
+          ],
+          "medianPairedRatio": 0.9927634762273132
+        }
+      },
+      "functions65": {
+        "requestMs": {
+          "medians": {
+            "baseline": 225.5,
+            "candidate": 227.5
+          },
+          "ranges": {
+            "baseline": [
+              225,
+              226
+            ],
+            "candidate": [
+              226,
+              228
+            ]
+          },
+          "ratioOfMedians": 1.0088691796008868,
+          "pairedRatios": [
+            1.0133333333333334,
+            1.0044444444444445,
+            1.0044247787610618,
+            1.008849557522124
+          ],
+          "medianPairedRatio": 1.0066470009832842
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 308.6889535188675,
+            "candidate": 308.72684996575117
+          },
+          "ranges": {
+            "baseline": [
+              308.28924500383437,
+              308.81154793314636
+            ],
+            "candidate": [
+              308.4351250436157,
+              308.9967609848827
+            ]
+          },
+          "ratioOfMedians": 1.000122765801794,
+          "pairedRatios": [
+            1.0004731921146959,
+            1.0003112515651669,
+            1.0010228032845296,
+            0.9995113908454002
+          ],
+          "medianPairedRatio": 1.0003922218399315
+        }
+      },
+      "unicode": {
+        "requestMs": {
+          "medians": {
+            "baseline": 57.5,
+            "candidate": 57.0
+          },
+          "ranges": {
+            "baseline": [
+              57,
+              58
+            ],
+            "candidate": [
+              56,
+              58
+            ]
+          },
+          "ratioOfMedians": 0.991304347826087,
+          "pairedRatios": [
+            0.9824561403508771,
+            1.0,
+            0.9827586206896551,
+            1.0
+          ],
+          "medianPairedRatio": 0.9913793103448276
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 146.23481151647866,
+            "candidate": 146.48194692563266
+          },
+          "ranges": {
+            "baseline": [
+              146.10899100080132,
+              146.44205290824175
+            ],
+            "candidate": [
+              146.07012504711747,
+              147.95634406618774
+            ]
+          },
+          "ratioOfMedians": 1.0016899902738012,
+          "pairedRatios": [
+            0.9985482473485505,
+            1.0029647158023847,
+            0.9998541559556156,
+            1.0121023789883186
+          ],
+          "medianPairedRatio": 1.0014094358790002
+        }
+      }
+    },
+    "equalCaseGeometricRatios": {
+      "requestMs": 0.9972365166645042,
+      "processWallMs": 0.9995302072367862
+    }
+  },
+  "broadProductIdentityCount": 45,
+  "complexity": {
+    "productionLineDelta": 0,
+    "candidateLineDelta": 50,
+    "candidateByteDelta": 2230,
+    "safeHelperLines": 31,
+    "referenceLines": 30,
+    "proofLines": 114
+  },
+  "resources": {
+    "guardedJobs": 220,
+    "guardedWallSeconds": 415.7385578574613,
+    "peakTreeRssBytes": 4294279168,
+    "overlaps": [],
+    "nonzeroExits": [
+      "selfhost/build/phase94/kernel-build01/process.json",
+      "selfhost/build/phase94/kernel-negative01/process.json",
+      "selfhost/build/phase94/micro-acquire-baseline01/process.json",
+      "selfhost/build/phase94/micro-acquire-baseline02/process.json",
+      "selfhost/build/phase94/mutations01/omit-drop/guard/process.json",
+      "selfhost/build/phase94/mutations01/retain-dead/guard/process.json",
+      "selfhost/build/phase94/mutations01/reverse-live/guard/process.json",
+      "selfhost/build/phase94/proof-check01/process.json",
+      "selfhost/build/phase94/proof-replay02/kernel-negative/process.json"
+    ],
+    "scope": "Guard occupancy, not total elapsed time, agent work or quota usage."
+  },
+  "exclusions": [
+    "compiler-screen01: method changed during run; not pooled",
+    "profile-map01: two timer overruns; exploratory leaf attribution only",
+    "no candidate B2, full self-compilation, new broad conformance or program-runtime timing"
+  ]
+}

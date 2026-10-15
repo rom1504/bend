@@ -10,6 +10,11 @@ cover the original 45 points, with 44 measurable ratios and an explicit zero-wor
 control. Use the [native runtime loop](../../selfhost/tools/performance/phase93/README.md)
 to reuse acquired products for focused or broad execution comparisons.
 
+The [law-backed optimization guide](law-backed-optimization.md) describes the
+Phase94 production-connected proof pilot, independent checker, unsafe boundaries
+and performance gate. The helper is faster locally, but remains experimental
+because the actual compilation screen is neutral.
+
 ## Historical Phase70 baseline
 
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.

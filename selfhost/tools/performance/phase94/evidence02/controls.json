@@ -1,0 +1,117 @@
+{
+  "complete": true,
+  "cases": [
+    "empty-dead:PASS",
+    "empty-live:PASS",
+    "duplicates-and-kinds:PASS",
+    "duplicate-new-id:PASS",
+    "only-new-dropped:PASS",
+    "all-prefix-dead:PASS"
+  ],
+  "expected": {
+    "file": "selfhost/build/phase94/integration01/edge-controls.expected.txt",
+    "bytes": 123,
+    "sha256": "a0d9b51e4390afe44b2f75cd9ab4f2cbbc2b2083a652fe1d4734edad90b4cefb"
+  },
+  "observed": {
+    "file": "selfhost/build/phase94/controls-run01/stdout.log",
+    "bytes": 123,
+    "sha256": "a0d9b51e4390afe44b2f75cd9ab4f2cbbc2b2083a652fe1d4734edad90b4cefb"
+  },
+  "source": {
+    "file": "selfhost/build/phase94/integration01/edge-controls.bend",
+    "bytes": 1763800,
+    "sha256": "0509d5b529b282012ef4a1441bcb9cf56202663facb80a3a61b71669dee1cfe9"
+  },
+  "c": {
+    "file": "selfhost/build/phase94/controls01/program.c",
+    "bytes": 197940,
+    "sha256": "2c1fd9043c6444888ebdf0b8c409cd1b4ec31893891ade548a5958b047057aef"
+  },
+  "executable": {
+    "file": "selfhost/build/phase94/controls01/program",
+    "bytes": 92624,
+    "sha256": "dfd1bb185277eeadbc8734f675ccd36a2062d09be344d205130ca9d24dd616f9"
+  },
+  "controls-acquire01": {
+    "complete": true,
+    "command": [
+      "bash",
+      "-c",
+      "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+      "phase86",
+      "taskset",
+      "-c",
+      "3",
+      "node",
+      "--stack-size=4096",
+      "--max-old-space-size=1024",
+      "selfhost/tools/performance/phase94/acquire.mjs",
+      "selfhost/build/phase94/integration01/edge-controls.bend",
+      "selfhost/build/phase94/controls01"
+    ],
+    "started": 1792045939.7356246,
+    "rssLimitBytes": 2147483648,
+    "availableFloorBytes": 4294967296,
+    "peakTreeRssBytes": 449859584,
+    "minimumAvailableBytes": 27640549376,
+    "returncode": 0,
+    "wallSeconds": 5.02993201604113,
+    "finished": 1792045944.765552
+  },
+  "controls-build01": {
+    "complete": true,
+    "command": [
+      "bash",
+      "-c",
+      "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+      "phase86",
+      "taskset",
+      "-c",
+      "3",
+      "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+      "-isystem",
+      "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+      "-std=c11",
+      "-O3",
+      "selfhost/build/phase94/controls01/program.c",
+      "-o",
+      "selfhost/build/phase94/controls01/program",
+      "-lm",
+      "-pthread"
+    ],
+    "started": 1792046538.897136,
+    "rssLimitBytes": 2147483648,
+    "availableFloorBytes": 4294967296,
+    "peakTreeRssBytes": 152612864,
+    "minimumAvailableBytes": 28031987712,
+    "returncode": 0,
+    "wallSeconds": 1.4979867488145828,
+    "finished": 1792046540.3951197
+  },
+  "controls-run01": {
+    "complete": true,
+    "command": [
+      "bash",
+      "-c",
+      "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+      "phase86",
+      "taskset",
+      "-c",
+      "3",
+      "selfhost/build/phase94/controls01/program",
+      "--threads",
+      "1",
+      "--gpu",
+      "off"
+    ],
+    "started": 1792046557.938251,
+    "rssLimitBytes": 1073741824,
+    "availableFloorBytes": 4294967296,
+    "peakTreeRssBytes": 1097728,
+    "minimumAvailableBytes": 28059271168,
+    "returncode": 0,
+    "wallSeconds": 0.022975836880505085,
+    "finished": 1792046557.9612248
+  }
+}

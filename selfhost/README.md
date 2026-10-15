@@ -21,6 +21,9 @@ agreement is finite evidence, not a mathematical compiler proof or unrestricted
 language/GPU/parallel conformance. All 45 selected CPU preprocessing comparisons
 preserve generated-program behavior; this is not a new program-speed campaign.
 
+See the [current five-metric scoreboard](../implementation/phase91/README.md) and [metric definitions](../docs/self_hosted/METRICS.md)
+for the refreshed B1/B2 measurements, program-output continuity and conformance scope.
+
 Read the [Phase90 report](../implementation/phase90/README.md) for current timing,
 lineage, failures and remaining work. Maintained production contains 32,692
 physical Bend lines in 132 modules, +101 lines in this phase. The

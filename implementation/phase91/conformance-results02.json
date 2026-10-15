@@ -1,0 +1,619 @@
+{
+  "kind": "phase91-fresh-conformance-observations",
+  "complete": true,
+  "passed": false,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase91/collect-conformance-v2.py",
+    "sha256": "eeae128e87b1a7c1b314b0d8e4c47c5905b0f0d3fc7867ec3add2212fcb300b4",
+    "bytes": 9892
+  },
+  "previousStrictMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase91/collect-conformance.py",
+    "sha256": "f23cd6e401e8373d28ca9da7350910de0e009e5738ca296e3264ed73ec2e7349",
+    "bytes": 8326
+  },
+  "rows": [
+    {
+      "name": "frontend01",
+      "passed": false,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/frontend01/report.json",
+        "sha256": "a35950b49f20e74dcafbaaaa1aa37b6c0b994972e97627e45ed17684f89e62b2",
+        "bytes": 6414354
+      },
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/frontend01/guard/process.json",
+        "sha256": "16deff2053581fefd24d8cbd136d10ab89413ae0f59b2bd5e6b51287f74c9c38",
+        "bytes": 1825
+      },
+      "guardFiles": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/frontend01/guard/inputs.json",
+          "sha256": "e7e95319cb356c1ffda4a17493adaa7ff30e212ad88dd7c5059cef20d0c7a37a",
+          "bytes": 576
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/frontend01/guard/method.json",
+          "sha256": "96edd3c98ff4a5ff1d0c9d6bdf909e52bfe0ad298414088f1c750bbda984c464",
+          "bytes": 475
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/frontend01/guard/process.json",
+          "sha256": "16deff2053581fefd24d8cbd136d10ab89413ae0f59b2bd5e6b51287f74c9c38",
+          "bytes": 1825
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/frontend01/guard/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/frontend01/guard/stdout.log",
+          "sha256": "4007e8a5133a38b67129d4cf00971762052834130484200419f33d77c9c56375",
+          "bytes": 2230
+        }
+      ],
+      "comparison": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/frontend01/comparison.json",
+        "sha256": "20b4ce4b9c9e382d95f6e77dbefa12cd24a9a147c861d5818547ecf0c5aabbcb",
+        "bytes": 710273
+      },
+      "prior": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-new-ts-full01/typescript-new/frontend/report.json",
+        "sha256": "783b68d32862b3273da7c27f8f85e983e8226fbb1dac74b25894a2c4f4a329a2",
+        "bytes": 6921721
+      },
+      "observations": 3174,
+      "summary": {
+        "tests": 1587,
+        "allTests": 1587,
+        "externalTests": 0,
+        "excludedTests": 0,
+        "probes": 3174,
+        "statuses": {
+          "observed": 505,
+          "pass": 2664,
+          "fail": 5
+        },
+        "lanes": {
+          "parse": {
+            "observed": 505,
+            "pass": 1082
+          },
+          "check": {
+            "pass": 1582,
+            "fail": 5
+          }
+        },
+        "namespaces": {
+          "base": {
+            "observed": 4,
+            "pass": 52
+          },
+          "check": {
+            "pass": 367,
+            "observed": 159
+          },
+          "compile": {
+            "pass": 250,
+            "observed": 10
+          },
+          "comptime": {
+            "pass": 80,
+            "observed": 22
+          },
+          "cost": {
+            "pass": 9,
+            "observed": 1
+          },
+          "eval": {
+            "observed": 4,
+            "pass": 74
+          },
+          "flatten": {
+            "pass": 431,
+            "observed": 59
+          },
+          "gfx": {
+            "pass": 8
+          },
+          "grade": {
+            "pass": 19,
+            "observed": 15
+          },
+          "halt": {
+            "pass": 45,
+            "observed": 27
+          },
+          "import": {
+            "observed": 30,
+            "pass": 72
+          },
+          "io": {
+            "pass": 290,
+            "observed": 21,
+            "fail": 3
+          },
+          "page": {
+            "observed": 19,
+            "pass": 26,
+            "fail": 1
+          },
+          "parse": {
+            "pass": 237,
+            "observed": 69
+          },
+          "printer": {
+            "pass": 12
+          },
+          "proof": {
+            "pass": 155,
+            "observed": 33
+          },
+          "reg": {
+            "pass": 214,
+            "observed": 5,
+            "fail": 1
+          },
+          "rfc": {
+            "pass": 18
+          },
+          "run": {
+            "pass": 186,
+            "observed": 6
+          },
+          "show": {
+            "pass": 16
+          },
+          "spec": {
+            "observed": 13,
+            "pass": 17
+          },
+          "state": {
+            "pass": 24,
+            "observed": 8
+          },
+          "stats": {
+            "pass": 10
+          },
+          "stuck": {
+            "pass": 52
+          }
+        },
+        "checkerRejections": 287,
+        "proofTrustRejections": 14,
+        "frontendRejections": 199,
+        "uncheckedExecutions": 0
+      },
+      "seconds": 229.8281166148372,
+      "exactUpstreamPath": true,
+      "exactFixturePathsBytesOracles": true,
+      "rawObservedFieldsEqual": false,
+      "exactAgreements": 3173,
+      "differences": [
+        {
+          "id": "page/deep_list_walk.bend",
+          "lane": "check",
+          "before": {
+            "verdict": "pass",
+            "evidence": "checker-rejection",
+            "status": "error",
+            "phase": "check",
+            "checked": true,
+            "typeAccepted": false,
+            "proofTrust": "not-assessed",
+            "kernelChecked": false,
+            "unsafeDefinitions": null,
+            "exitCode": 1,
+            "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LN{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\n- observed : LN{}\nLocation: thm\n29 | def thm():\n30>|   {==}\n   |   ^^^^\n31 | ",
+            "output": null
+          },
+          "after": {
+            "verdict": "fail",
+            "evidence": null,
+            "status": "error",
+            "phase": "check",
+            "checked": true,
+            "typeAccepted": false,
+            "proofTrust": "not-assessed",
+            "kernelChecked": false,
+            "unsafeDefinitions": null,
+            "exitCode": 1,
+            "diagnostic": "SOME PROOFS FAIL\nError: thm: reflexivity endpoints differ",
+            "output": null
+          }
+        }
+      ],
+      "comparedFields": [
+        "verdict",
+        "evidence",
+        "status",
+        "phase",
+        "checked",
+        "typeAccepted",
+        "proofTrust",
+        "kernelChecked",
+        "unsafeDefinitions",
+        "exitCode",
+        "diagnostic",
+        "output-or-stdout"
+      ]
+    },
+    {
+      "name": "native100-01",
+      "passed": true,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/native100-01/report.json",
+        "sha256": "dcd6f5fefa6e2b5de3612137177bade499ed973b1492749a96d0414c26421eb6",
+        "bytes": 2333770
+      },
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/native100-01/guard/process.json",
+        "sha256": "cba98a8d5976ce33b179ce39de92acf7ad072f5b42271cca986cf74c1b2ab3b1",
+        "bytes": 1940
+      },
+      "guardFiles": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/native100-01/guard/inputs.json",
+          "sha256": "55d3c486dcedb36517ffe16b7b9a15fd33090ff73a8d232c52176da789b92d2b",
+          "bytes": 794
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/native100-01/guard/method.json",
+          "sha256": "eef9d0c1e5b03adefd04bc595adf90a48490b47d5db8ddf8126c13abb5443fe0",
+          "bytes": 475
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/native100-01/guard/process.json",
+          "sha256": "cba98a8d5976ce33b179ce39de92acf7ad072f5b42271cca986cf74c1b2ab3b1",
+          "bytes": 1940
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/native100-01/guard/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/native100-01/guard/stdout.log",
+          "sha256": "9e898e7d483e82b01fc50172168ee67a5381886eb5bbc9d7729c9ce00366860d",
+          "bytes": 1108
+        }
+      ],
+      "comparison": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/native100-01/comparison.json",
+        "sha256": "4b65449f223627df3ceedf8fa4ff92cebac4c5a1a2004996ae5da40e950b1d3a",
+        "bytes": 49182
+      },
+      "prior": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-native100/execution/selected/candidate.json",
+        "sha256": "875ab87cf583e0e834d33449a2a6ed27c04c1f19a55b72a1a1f5febb6cf2e893",
+        "bytes": 2388705
+      },
+      "observations": 100,
+      "summary": {
+        "tests": 100,
+        "allTests": 1587,
+        "externalTests": 75,
+        "excludedTests": 1562,
+        "probes": 100,
+        "statuses": {
+          "pass": 100
+        },
+        "lanes": {
+          "native": {
+            "pass": 100
+          }
+        },
+        "namespaces": {
+          "base": {
+            "pass": 2
+          },
+          "check": {},
+          "compile": {
+            "pass": 12
+          },
+          "comptime": {},
+          "cost": {},
+          "eval": {},
+          "flatten": {},
+          "gfx": {},
+          "grade": {},
+          "halt": {},
+          "import": {},
+          "io": {
+            "pass": 4
+          },
+          "page": {},
+          "parse": {},
+          "printer": {},
+          "proof": {},
+          "reg": {
+            "pass": 3
+          },
+          "rfc": {},
+          "run": {
+            "pass": 4
+          },
+          "show": {},
+          "spec": {},
+          "state": {},
+          "stats": {},
+          "stuck": {}
+        },
+        "checkerRejections": 0,
+        "proofTrustRejections": 0,
+        "frontendRejections": 0,
+        "uncheckedExecutions": 0
+      },
+      "seconds": 118.76080554607324,
+      "exactUpstreamPath": true,
+      "exactFixturePathsBytesOracles": true,
+      "rawObservedFieldsEqual": true,
+      "exactAgreements": 100,
+      "differences": [],
+      "comparedFields": [
+        "verdict",
+        "evidence",
+        "status",
+        "phase",
+        "checked",
+        "typeAccepted",
+        "proofTrust",
+        "kernelChecked",
+        "unsafeDefinitions",
+        "exitCode",
+        "diagnostic",
+        "output-or-stdout"
+      ]
+    }
+  ],
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase91/conformance-plan01.json",
+    "sha256": "410c18f5d63cf0971837268ff79647a2d0df1f0cbae5b9086d551c7b6f72bf05",
+    "bytes": 637147
+  },
+  "census": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase91/census01.json",
+    "sha256": "5883dc0e79a69daeaeeb6a2c6d3d826878877f8648226507a8fd5af8c933bf23",
+    "bytes": 241321
+  },
+  "release": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/release.json",
+    "sha256": "d0b05dfaca2da7ccbb29552d04b33fa9ea02aca7cd49a60ec7430ee2be9a9d0b",
+    "bytes": 42258
+  },
+  "referenceMode": "Historical reference retained, freshly verified source/harness/input identities; no new reference execution",
+  "frontend": {
+    "observations": 3174,
+    "exactAgreements": 3173,
+    "differenceCount": 1,
+    "differences": [
+      {
+        "id": "page/deep_list_walk.bend",
+        "lane": "check",
+        "before": {
+          "verdict": "pass",
+          "evidence": "checker-rejection",
+          "status": "error",
+          "phase": "check",
+          "checked": true,
+          "typeAccepted": false,
+          "proofTrust": "not-assessed",
+          "kernelChecked": false,
+          "unsafeDefinitions": null,
+          "exitCode": 1,
+          "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LC{LN{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\n- observed : LN{}\nLocation: thm\n29 | def thm():\n30>|   {==}\n   |   ^^^^\n31 | ",
+          "output": null
+        },
+        "after": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "check",
+          "checked": true,
+          "typeAccepted": false,
+          "proofTrust": "not-assessed",
+          "kernelChecked": false,
+          "unsafeDefinitions": null,
+          "exitCode": 1,
+          "diagnostic": "SOME PROOFS FAIL\nError: thm: reflexivity endpoints differ",
+          "output": null
+        }
+      }
+    ],
+    "lanes": {
+      "parse": {
+        "observed": 505,
+        "pass": 1082
+      },
+      "check": {
+        "pass": 1582,
+        "fail": 5
+      }
+    },
+    "goldenFailures": [
+      {
+        "id": "io/cid_unknown.bend",
+        "lane": "check",
+        "observation": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "typeAccepted": true,
+          "proofTrust": "failed",
+          "kernelChecked": false,
+          "unsafeDefinitions": [
+            "mk",
+            "main"
+          ],
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": "SOME PROOFS FAIL\nError: 2 defs rely on unsafe or foreign code:\n- mk\n- main\n"
+        },
+        "sharedHistoricalGoldenException": true
+      },
+      {
+        "id": "io/effect_ctr_name.bend",
+        "lane": "check",
+        "observation": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "typeAccepted": true,
+          "proofTrust": "failed",
+          "kernelChecked": false,
+          "unsafeDefinitions": [
+            "Tick",
+            "main"
+          ],
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": "SOME PROOFS FAIL\nError: 2 defs rely on unsafe or foreign code:\n- Tick\n- main\n"
+        },
+        "sharedHistoricalGoldenException": true
+      },
+      {
+        "id": "io/main_foreign.bend",
+        "lane": "check",
+        "observation": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "typeAccepted": true,
+          "proofTrust": "failed",
+          "kernelChecked": false,
+          "unsafeDefinitions": [
+            "main"
+          ],
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": "SOME PROOFS FAIL\nError: 1 def relies on unsafe or foreign code:\n- main\n"
+        },
+        "sharedHistoricalGoldenException": true
+      },
+      {
+        "id": "page/deep_list_walk.bend",
+        "lane": "check",
+        "observation": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "check",
+          "checked": true,
+          "typeAccepted": false,
+          "proofTrust": "not-assessed",
+          "kernelChecked": false,
+          "unsafeDefinitions": null,
+          "exitCode": 1,
+          "diagnostic": "SOME PROOFS FAIL\nError: thm: reflexivity endpoints differ",
+          "output": null
+        },
+        "sharedHistoricalGoldenException": false
+      },
+      {
+        "id": "reg/array_open_element.bend",
+        "lane": "check",
+        "observation": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "typeAccepted": true,
+          "proofTrust": "passed",
+          "kernelChecked": false,
+          "unsafeDefinitions": [],
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+        },
+        "sharedHistoricalGoldenException": true
+      }
+    ],
+    "passed": false
+  },
+  "native": {
+    "observations": 100,
+    "exactAgreements": 100,
+    "differenceCount": 0,
+    "differences": [],
+    "statuses": {
+      "pass": 100
+    },
+    "passed": true
+  },
+  "retainedNativeReference": {
+    "report": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-native100/execution/selected/reference.json",
+      "sha256": "d88e78f2626d1c5697e78e9dc4afa9692bb8829293c46ae009725e1b371932e0",
+      "bytes": 2317653
+    },
+    "executedInPhase91": false,
+    "statuses": {
+      "pass": 93,
+      "fail": 7
+    },
+    "failures": [
+      {
+        "id": "phase70/observer-demand/partial-factory-demand-v1.bend",
+        "lane": "native",
+        "status": "fail",
+        "phase": "runtime",
+        "reason": "Output/exit mismatch."
+      },
+      {
+        "id": "phase70/observer-demand/successor-demand-refusal-v2.bend",
+        "lane": "native",
+        "status": "fail",
+        "phase": "runtime",
+        "reason": "Output/exit mismatch."
+      },
+      {
+        "id": "phase70/observer-demand/zeroarity-demand-v1.bend",
+        "lane": "native",
+        "status": "fail",
+        "phase": "runtime",
+        "reason": "Output/exit mismatch."
+      },
+      {
+        "id": "phase70/observer-recursive-demand/hidden-scalar-error-recursive-v2.bend",
+        "lane": "native",
+        "status": "fail",
+        "phase": "runtime",
+        "reason": "Output/exit mismatch."
+      },
+      {
+        "id": "phase70/observer-recursive-demand/partial-factory-recursive-v2.bend",
+        "lane": "native",
+        "status": "fail",
+        "phase": "runtime",
+        "reason": "Output/exit mismatch."
+      },
+      {
+        "id": "phase70/observer-v4/hidden-scalar-error.bend",
+        "lane": "native",
+        "status": "fail",
+        "phase": "runtime",
+        "reason": "Output/exit mismatch."
+      },
+      {
+        "id": "phase70/observer-v4/post-recursion-error-refusal.bend",
+        "lane": "native",
+        "status": "fail",
+        "phase": "runtime",
+        "reason": "Output/exit mismatch."
+      }
+    ]
+  },
+  "inputsUnchanged": true,
+  "verifiedInputs": 2541,
+  "limits": "Fresh candidate frontend3174 and selected native100 only. Historical TypeScript reference observations reused. JS1170 union remains historical; no full-language/native07-host/GPU/kernel proof or aggregate conformance percentage."
+}

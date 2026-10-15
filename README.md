@@ -36,6 +36,9 @@ controls pass. All 45 selected C preprocessing comparisons preserve program
 behavior. Full-language, GPU and parallel-native-host qualification remain open.
 Current production is **32,692 physical Bend lines in 132 modules**.
 
+See the [current five-metric scoreboard](implementation/phase91/README.md) and [metric definitions](docs/self_hosted/METRICS.md)
+for the refreshed B1/B2 measurements, program-output continuity and conformance scope.
+
 Read the [Phase90 results and speed boundaries](implementation/phase90/README.md),
 [compiler guide](docs/BEND-IN-BEND.md),
 [conformance record](selfhost/CONFORMANCE.md),

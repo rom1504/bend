@@ -1,5 +1,22 @@
 # Compiler validation
 
+## Phase91 current-release refresh
+
+[Report](../implementation/phase91/README.md) ·
+[Conformance evidence](../implementation/phase91/conformance.md).
+Current installed genuine B2 has **3,173/3,174 exact frontend agreements** with
+the verified retained TypeScript reference, and freshly passes **100/100**
+selected C execution cases. The one frontend difference is deep error-page
+formatting: B2 exhausts the stack and returns a short fallback, while B1 and TS
+print the full page. All reject the invalid proof. Preserved Phase82 B2 reproduces
+the same gap. The original strict failed collector and isolated traces remain.
+
+Both current B1/B2 reproduce all23 historical JS benchmark modules exactly and
+all12 C benchmark programs' complete optimized preprocessing. All234 fresh
+compilation timing outputs pass. This refresh changes no compiler code and
+makes no full-language claim;13 native APIs and the historical JS/environment
+exceptions remain. Native07 host qualification is a separate scope.
+
 ## Phase90 native self-hosting and coherent release
 
 [Report](../implementation/phase90/README.md) ·

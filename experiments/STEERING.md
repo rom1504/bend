@@ -1,4 +1,35 @@
-# Active frontier: Phase90 native self-hosting and release complete
+# Active frontier: Phase91 scoreboard and B2 diagnostic gap
+
+[Report](../implementation/phase91/README.md) ·
+[Metrics guide](../docs/self_hosted/METRICS.md).
+Installed Phase90 stays unchanged: B1 `6bf8e093…`, genuine B2 `284f6e9b…`.
+Fresh original JS23 request ratios B1/B2 **1.408445×/1.306596× TS-Node**;
+C3 **1.453748×/1.230042×**. Imports+API+request are separate:
+JS0.969726×/0.981387×, C1.167128×/1.039948×. All234 timed outputs pass.
+Do not mix these with Phase90's six-source TS/Bun/native-host screen.
+
+All46 current JS modules equal historical bytes; all24 C outputs have exact
+historical-Clang O3 preprocessing. Thus historical program ratios JS1.049× and
+C1.067× have current-release artifact continuity, but are not fresh timings.
+Manifest census remains32,692physical/26,693code lines in132modules; no source
+or concept simplification this phase.
+
+Fresh B2 frontend: **3173/3174 exact observations**, one diagnostic fidelity gap
+at `page/deep_list_walk.bend`. The invalid proof is rejected everywhere. B1/TS
+print12119chars; old/current B2 both catch `Maximum call stack size exceeded`
+and return57chars. This predates Phase90. Preserve the failed strict collector;
+do not call current broad conformance3174/3174 or substitute B1 for B2.
+Fresh selected C100/100 passes; verified historical reference remains93/100.
+Thirteen native APIs, historical JS exceptions and GPU/native-host scope remain.
+
+First fix the diagnostic printer with this tiny control, then validate both
+compiler generations. Compilation work should retain the measured native07
+Map/Base and same-source backend comparison plan below; current JS Map/raytrace
+requests also expose gaps. No blind full rebuild or broad runtime rerun needed.
+Root-only guarded targets remain serial; offline agents may prepare/review.
+No PR comments without explicit user instruction.
+
+# Historical Phase90 native self-hosting and release complete
 
 [Phase90 report](../implementation/phase90/README.md) and
 [verified summary](../implementation/phase90/summary.json): native07, built from

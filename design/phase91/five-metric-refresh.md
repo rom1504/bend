@@ -48,3 +48,13 @@ output changes beyond the documented formatting/runtime edits, inspect the
 smallest differing case, run its correctness/runtime control, then decide the
 necessary larger validation. The phase must not quietly turn into an optimization
 or alter the installed compiler to improve a score.
+
+## Completed outcome
+
+[Report](../../implementation/phase91/README.md): all70 original-corpus output
+comparisons and234 fresh timing checks pass. Current B2 request ratios are
+1.306596× JS23 and1.230042× C3. Fresh native100 passes, while the full frontend
+finds one exact diagnostic mismatch (3173/3174 agreements). Isolated controls
+show the old and current B2 error-page printer exhaust the4MiB stack; current
+B1 and TS print the full diagnostic. Invalid proof rejection agrees. Preserve
+this qualification failure; no compiler or stack-setting workaround was made.

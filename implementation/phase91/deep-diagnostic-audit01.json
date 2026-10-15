@@ -1,0 +1,216 @@
+{
+  "kind": "phase91-deep-diagnostic-audit",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase91/deep-diagnostic-audit.py",
+    "sha256": "fe6ff71faacd047112272a34e1ca4d7eb2029eb6324f59e956b8b4d19f4ea993",
+    "bytes": 5336
+  },
+  "validationMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase91/collect-conformance.py",
+    "sha256": "f23cd6e401e8373d28ca9da7350910de0e009e5738ca296e3264ed73ec2e7349",
+    "bytes": 8326
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/deep-diagnostic01/plan.json",
+    "sha256": "fe3e7d3e3eb0106151ada6f1567839d833adbc6f5097e9d01ebb914931b44655",
+    "bytes": 9113
+  },
+  "roles": [
+    {
+      "role": "b1",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/deep-diagnostic01/b1/report.json",
+        "sha256": "e8ef4185e1ad2b2d68917d88fa7c4036ce0e74b3cf9be1bcb643e00d0d392963",
+        "bytes": 2026667
+      },
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/deep-diagnostic01/b1/guard/process.json",
+        "sha256": "9f66c6be1084211560a31872572d38fb38a19e35f6c2decc13b5620669a326cc",
+        "bytes": 1898
+      },
+      "sourceApi": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07/equality/api.mjs",
+        "sha256": "6bf8e0938565fc4a1b2152640ac83e11e0538fe080a1ec6ac8b89ec6c5958379"
+      },
+      "observedStatus": "pass",
+      "proofAccepted": false,
+      "diagnosticCharacters": 12119,
+      "diagnosticSha256": "22c496e73de6ac6bde1359d955a2b2ffab66957e86a12dc3221c31175caa0cbc",
+      "stackOverflowObserved": false,
+      "trace": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/deep-diagnostic01/b1/report.json.artifacts/0/worker.stderr",
+        "sha256": "b3748910057ece9a14a4297ba903c6e78fefbfaa5a135870e3d632aaec29ba73",
+        "bytes": 572
+      },
+      "seconds": 5.728853965876624
+    },
+    {
+      "role": "b2",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/deep-diagnostic01/b2/report.json",
+        "sha256": "df0a27d622b49caba126f50b522a518ac5a407a4cb8126fa3e09335eadf3d503",
+        "bytes": 2014617
+      },
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/deep-diagnostic01/b2/guard/process.json",
+        "sha256": "0832db0b507cf3961df0ccbc7b539fee9304a0e04f18eb278baee5c60661c33c",
+        "bytes": 1877
+      },
+      "sourceApi": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/typed-api.mjs",
+        "sha256": "284f6e9b88614c4cbd60812a7641fb03d9b9c49892c9bb0d692b1b2c31b5bd30"
+      },
+      "observedStatus": "fail",
+      "proofAccepted": false,
+      "diagnosticCharacters": 57,
+      "diagnosticSha256": "a9636acb420cb3f84c146200901c9c8234e7b37a622b80e83ecd82588de624bf",
+      "stackOverflowObserved": true,
+      "trace": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/deep-diagnostic01/b2/report.json.artifacts/0/worker.stderr",
+        "sha256": "ba3385a24ab7424d9000d1e78f7430d479fe7f6b5d7e34965bd136fe684a70fe",
+        "bytes": 672
+      },
+      "seconds": 1.2708313348703086
+    },
+    {
+      "role": "old-b2",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/deep-diagnostic01/old-b2/report.json",
+        "sha256": "8e9c573ddeec2d5bb049060135c9eacb31b655bace32b05ea58f684f5cd7c44b",
+        "bytes": 2014657
+      },
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/deep-diagnostic01/old-b2/guard/process.json",
+        "sha256": "70744b064a3ede9965f0afac605827baea8ca05ee6a2bc8ede4d74e9e67c288b",
+        "bytes": 1908
+      },
+      "sourceApi": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase82/compiler04-b2/full/compiler.mjs",
+        "sha256": "098320e8f3e40894156790d740ad205e386f375195b3c6741d67cca96e94e092"
+      },
+      "observedStatus": "fail",
+      "proofAccepted": false,
+      "diagnosticCharacters": 57,
+      "diagnosticSha256": "a9636acb420cb3f84c146200901c9c8234e7b37a622b80e83ecd82588de624bf",
+      "stackOverflowObserved": true,
+      "trace": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/deep-diagnostic01/old-b2/report.json.artifacts/0/worker.stderr",
+        "sha256": "5e1dbbcf47db88fb51faea8373e9432bf779e733115699b0baa823e407083d33",
+        "bytes": 672
+      },
+      "seconds": 5.109413919039071
+    },
+    {
+      "role": "typescript",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/deep-diagnostic01/typescript/report.json",
+        "sha256": "f837509d1104c673ea4c1a1cf574a473065f7c7b9fb67c48105cde05ce6283f4",
+        "bytes": 2011089
+      },
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/deep-diagnostic01/typescript/guard/process.json",
+        "sha256": "7d1de65eabad097f1d639660ed169518b9ae07ce7e08fa29ec1018d1b2ca6aa4",
+        "bytes": 1887
+      },
+      "sourceApi": null,
+      "observedStatus": "pass",
+      "proofAccepted": false,
+      "diagnosticCharacters": 12119,
+      "diagnosticSha256": "22c496e73de6ac6bde1359d955a2b2ffab66957e86a12dc3221c31175caa0cbc",
+      "stackOverflowObserved": false,
+      "trace": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase91/deep-diagnostic01/typescript/report.json.artifacts/0/worker.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "seconds": 1.4379118538927287
+    }
+  ],
+  "unchangedSource": [
+    {
+      "module": "src/core/pretty.bend",
+      "current": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/core/pretty.bend",
+        "sha256": "51552ee1dcb7fb5921f3028778f0cfdf1886405d64e9468795c2ee5c0b34c097",
+        "bytes": 17063
+      },
+      "historical": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-new-bend-full01/bend-candidate-new-base/project/src/core/pretty.bend",
+        "sha256": "51552ee1dcb7fb5921f3028778f0cfdf1886405d64e9468795c2ee5c0b34c097",
+        "bytes": 17063
+      }
+    },
+    {
+      "module": "src/core/normalize.bend",
+      "current": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/core/normalize.bend",
+        "sha256": "4845ff63f3c228abc9a432410ddc8b7e20bfce27e54d6d49412b06608f7ce702",
+        "bytes": 22263
+      },
+      "historical": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-new-bend-full01/bend-candidate-new-base/project/src/core/normalize.bend",
+        "sha256": "4845ff63f3c228abc9a432410ddc8b7e20bfce27e54d6d49412b06608f7ce702",
+        "bytes": 22263
+      }
+    },
+    {
+      "module": "src/diagnostic/render.bend",
+      "current": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/diagnostic/render.bend",
+        "sha256": "695f41ace13e08756273c317659a419deee5fc79d413bd58e8711f124370276c",
+        "bytes": 7804
+      },
+      "historical": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-new-bend-full01/bend-candidate-new-base/project/src/diagnostic/render.bend",
+        "sha256": "695f41ace13e08756273c317659a419deee5fc79d413bd58e8711f124370276c",
+        "bytes": 7804
+      }
+    },
+    {
+      "module": "src/diagnostic/frontend.bend",
+      "current": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/diagnostic/frontend.bend",
+        "sha256": "fdd07e6e3df5f999f2d162a4d3186cd8ae13102c8351710edab5291a2f80489f",
+        "bytes": 10910
+      },
+      "historical": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-new-bend-full01/bend-candidate-new-base/project/src/diagnostic/frontend.bend",
+        "sha256": "fdd07e6e3df5f999f2d162a4d3186cd8ae13102c8351710edab5291a2f80489f",
+        "bytes": 10910
+      }
+    },
+    {
+      "module": "src/diagnostic/trace.bend",
+      "current": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/diagnostic/trace.bend",
+        "sha256": "57410b6f4b2fde9ba3591c1e27e88deda48ef89e16f8418cdc7b0a918184f4fe",
+        "bytes": 6829
+      },
+      "historical": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-new-bend-full01/bend-candidate-new-base/project/src/diagnostic/trace.bend",
+        "sha256": "57410b6f4b2fde9ba3591c1e27e88deda48ef89e16f8418cdc7b0a918184f4fe",
+        "bytes": 6829
+      }
+    },
+    {
+      "module": "src/check/kernel.bend",
+      "current": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/check/kernel.bend",
+        "sha256": "bbeebc44d278044349a9cb7a35fe5956251e32098dcb0722d96542dee23148e1",
+        "bytes": 49206
+      },
+      "historical": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase66/conformance-new-bend-full01/bend-candidate-new-base/project/src/check/kernel.bend",
+        "sha256": "bbeebc44d278044349a9cb7a35fe5956251e32098dcb0722d96542dee23148e1",
+        "bytes": 49206
+      }
+    }
+  ],
+  "inputBindingsUnchanged": true,
+  "verifiedInputs": 1819,
+  "interpretation": "A pre-existing JS B2 diagnostic stack-depth gap: both B2 images reject the false proof but fall back after a caught rendering stack overflow. Current B1 and TypeScript retain the exact full error page.",
+  "limitation": "The caught exception identifies diagnostic rendering, not the exact overflowing Bend helper. Source inspection nominates recursive constructor pretty-printing; no stack-trace attribution, fix, larger-stack workaround or new compiler run is performed here."
+}

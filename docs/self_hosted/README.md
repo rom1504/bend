@@ -1,5 +1,12 @@
 # Self-hosted compiler: current architecture and development
 
+The installed release is Phase90 genuine JS-hosted B2 (`284f6e9b…`), with
+qualified native07 available separately. See the [current five-metric scoreboard](../../implementation/phase91/README.md),
+[metric definitions and fast validation](METRICS.md), and
+[native usage guide](NATIVE_HOST.md).
+
+## Historical Phase70 baseline
+
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
 The [Phase70 report](../../implementation/phase70/README.md) records installed
 compiler03 (`d6d6049`, checked B1 `386ae358…`, genuine B2 `d069204f…`), its

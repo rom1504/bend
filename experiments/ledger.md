@@ -4,6 +4,20 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase91 completed — 2026-10-15
+
+[Design](../design/phase91/five-metric-refresh.md) ·
+[Report](../implementation/phase91/README.md).
+Refresh installed Phase90 without compiler edits. Current B1/B2 request ratios
+JS23 1.408445×/1.306596× and C3 1.453748×/1.230042× versus TS-Node;
+234 exact timed outputs. Fresh original-corpus46JS/24C continuity carries dated
+runtime ratios1.049×/1.067×. Source remains32692physical lines/132modules.
+B2 full frontend finds one longstanding diagnostic stack gap (3173/3174 exact),
+confirmed in current/old B2 versus passing B1/TS isolated controls; no invalid
+proof acceptance. Selected C100/100 passes. Preserve strict qualification failure,
+reference reuse, limits and complete evidence. Next stack-safe error printer,
+then measured compilation bottlenecks. No PR comments.
+
 ## Phase88 completed — 2026-10-14
 
 Native B1 `5babec07…` qualified separately from installed Phase82 JS B2.

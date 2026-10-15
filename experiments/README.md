@@ -5,12 +5,14 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active implementation: Phase90 native self-hosting
+## Active frontier: Phase91 current-release metrics
 
-Read [the current frontier](STEERING.md) and [Phase90 report](../implementation/phase90/README.md).
-Complete compiler C emission and eight own-backend native request controls now
-pass. Native reproduction, optimized build qualification and release refresh
-remain active work; earlier phase summaries below are historical.
+[Current strategy](STEERING.md) · [Scoreboard](../implementation/phase91/README.md).
+Installed Phase90 remains unchanged. Fresh B1/B2 timing, original JS23/C12
+output continuity and a source census are complete. Native100 passes; full B2
+frontend finds one pre-existing diagnostic stack gap. Read the report before
+claiming full conformance, mixing host/target ratios or beginning optimization.
+Phase90 native self-reproduction and release refresh are completed historical work.
 
 ## Completed investigation: Phase87 native compiler costs and sharing
 

@@ -1,0 +1,1436 @@
+{
+  "kind": "phase91-five-metric-scoreboard",
+  "complete": true,
+  "compilerChanged": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+    "sha256": "d1de057f17bc04efdda460108145b98108812cb468f39674ab007385864b1d8b",
+    "bytes": 4713
+  },
+  "images": {
+    "rawCheckedB1": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07/api.mjs",
+      "sha256": "cc4817632a75961717ed56d1d74ca7edf45d6da13fa4c8a57d41b3c0be4e6611",
+      "bytes": 2287938
+    },
+    "selectedB1": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07/equality/api.mjs",
+      "sha256": "6bf8e0938565fc4a1b2152640ac83e11e0538fe080a1ec6ac8b89ec6c5958379",
+      "bytes": 2307495
+    },
+    "genuineB2": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler07-b2/full/compiler.mjs",
+      "sha256": "284f6e9b88614c4cbd60812a7641fb03d9b9c49892c9bb0d692b1b2c31b5bd30",
+      "bytes": 4745566
+    },
+    "installedB2": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/typed-api.mjs",
+      "sha256": "284f6e9b88614c4cbd60812a7641fb03d9b9c49892c9bb0d692b1b2c31b5bd30",
+      "bytes": 4745566
+    },
+    "native07": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/compiler-own-native07",
+      "sha256": "d7c7a47917884b14fd3ef37471d9f2a8660d7c4ab9bcc93a249c7cb6d0e37d3e",
+      "bytes": 16913416
+    }
+  },
+  "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "ratioDefinition": "our time / same-campaign pinned upstream time; lower is better",
+  "generatedProgramRuntime": {
+    "historicalTimings": {
+      "javascript": {
+        "summary": {
+          "file": "/home/ai/bend2/build/publish/bend/implementation/phase66/evidence/runtime-selected07-full.json",
+          "sha256": "461be254a846d444cfa1312afc76462a0a48a5331acc5eb20dbdab2f8657fcfc",
+          "bytes": 439877
+        },
+        "equalPointRatioToUpstream": 1.0492816261079674,
+        "equalSourceRatioToUpstream": 1.046986710980167,
+        "samples": 669,
+        "freshTiming": false
+      },
+      "nativeC": {
+        "summary": {
+          "file": "/home/ai/bend2/build/publish/bend/implementation/phase78/runtime.json",
+          "sha256": "1e7faafe8a739948645b54b5d69c7534e87aba50bda33a808c8fa507964843ff",
+          "bytes": 5537
+        },
+        "equalFamilyRatioToUpstream": 1.0667757342855049,
+        "intervals": 108,
+        "families": 12,
+        "freshTiming": false
+      }
+    },
+    "freshContinuity": {
+      "currentRoles": 2,
+      "jsSourcesPerRole": 23,
+      "jsObserverPoints": 45,
+      "jsModuleComparisons": 46,
+      "cTimedFamiliesPerRole": 12,
+      "cPreprocessedComparisons": 24,
+      "crossRoleCompleteOutputComparisons": 35,
+      "planInputPinsReverified": 813
+    },
+    "scope": "Exact current JS modules and complete O3-preprocessed C on original corpora. No fresh runtime timings or ELF/GPU claim."
+  },
+  "compilation": {
+    "js": {
+      "freshTiming": true,
+      "sources": 23,
+      "rounds": 3,
+      "samples": 207,
+      "ratios": {
+        "b1": {
+          "firstRequestMs": 1.408445445746195,
+          "importApiAndFirstMs": 0.9697259235321162
+        },
+        "b2": {
+          "firstRequestMs": 1.3065964504620142,
+          "importApiAndFirstMs": 0.9813865113645518
+        }
+      },
+      "wallSeconds": 254.7078352421522,
+      "scope": "Fresh Node processes, original JS23/C3 sources, 3 rotated rounds. Ordinary prepared Base. JS uses library/direct without report; C uses native withReport:true and no optional Base annotation product. Each stage measured separately; imports/API loading reported separately. No native-host or program-runtime timing."
+    },
+    "c": {
+      "freshTiming": true,
+      "sources": 3,
+      "rounds": 3,
+      "samples": 27,
+      "ratios": {
+        "b1": {
+          "firstRequestMs": 1.4537480670953036,
+          "importApiAndFirstMs": 1.167128427145364
+        },
+        "b2": {
+          "firstRequestMs": 1.2300416214134124,
+          "importApiAndFirstMs": 1.0399479758667027
+        }
+      },
+      "wallSeconds": 50.930920528946444,
+      "scope": "Fresh Node processes, original JS23/C3 sources, 3 rotated rounds. Ordinary prepared Base. JS uses library/direct without report; C uses native withReport:true and no optional Base annotation product. Each stage measured separately; imports/API loading reported separately. No native-host or program-runtime timing."
+    }
+  },
+  "conformance": {
+    "freshCandidateFrontendObservations": 3174,
+    "exactHistoricalReferenceAgreements": 3173,
+    "diagnosticMismatchCases": [
+      "page/deep_list_walk.bend"
+    ],
+    "diagnosticMismatchCause": "B2 diagnostic printer stack exhaustion; current B1/TS print the full page, old and current B2 return the same short fallback; invalid proof is rejected by all.",
+    "freshCandidateNativeCases": 100,
+    "passedCandidateNativeCases": 100,
+    "referenceExecutionFresh": false,
+    "retainedNativeReference": {
+      "pass": 93,
+      "fail": 7
+    },
+    "remainingNativeUnsupportedAPIs": 13,
+    "fullLanguageConformance": false,
+    "scope": "Fresh candidate frontend3174 and selected native100 only. Historical TypeScript reference observations reused. JS1170 union remains historical; no full-language/native07-host/GPU/kernel proof or aggregate conformance percentage."
+  },
+  "simplicity": {
+    "moduleCount": 132,
+    "physicalLines": 32692,
+    "utf8Bytes": 1531764,
+    "codeLines": 26693,
+    "definitions": 3876,
+    "laws": 658,
+    "types": 146,
+    "sourceDeltaThisPhase": 0,
+    "concepts": "No established numeric semantic-concept measure or demonstrated reduction."
+  },
+  "execution": {
+    "jobs": 249,
+    "successfulProcesses": 246,
+    "completedNonzeroProcesses": 3,
+    "resourceStops": 0,
+    "overlappingTargetPairs": 0,
+    "guardedSeconds": 737.6795078795403,
+    "guardedSpanSeconds": 1167.489963054657,
+    "peakTreeRssBytes": 598233088
+  },
+  "inputs": [
+    {
+      "file": "implementation/phase91/continuity.json",
+      "sha256": "e2ee81822204453192c8fb7485193f727166e7c2f7ffbe507b37fbd534bd6673",
+      "bytes": 47061
+    },
+    {
+      "file": "implementation/phase91/census01.json",
+      "sha256": "5883dc0e79a69daeaeeb6a2c6d3d826878877f8648226507a8fd5af8c933bf23",
+      "bytes": 241321
+    },
+    {
+      "file": "implementation/phase91/conformance-results02.json",
+      "sha256": "ebc257b718794a7c4d388644bf98835355a4248d883164fd0649325115a0847f",
+      "bytes": 42747
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/js-clean.json",
+      "sha256": "029cbc57083e46ff591605d3d7411ef8cc74b31ce5437e83f502f274839eb7ea",
+      "bytes": 350600
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/c-clean.json",
+      "sha256": "d8f16c172fd044512a3f7d64cb8fe19bd1e0feebbfaf855dd0d0b07dcb4a178a",
+      "bytes": 45589
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-0-array-b1-guard/process.json",
+      "sha256": "e27761738fd891e2de4db01341f58724ea1db4507358419f680273b654728dda",
+      "bytes": 785
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-0-array-b2-guard/process.json",
+      "sha256": "db98918be85380c968da47ed9321be70f213076b08f38cd2b7ed63cab727710e",
+      "bytes": 785
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-0-array-typescript-guard/process.json",
+      "sha256": "8e0260ebbf0debde94de29e9d1d222b8fd3d2b5cd2d22d1fdb9250b4942c5dc6",
+      "bytes": 801
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-0-lexer-b1-guard/process.json",
+      "sha256": "92683375c43bb14d01e19564d7d12ebe5fbf29c97486544869990716a6858c83",
+      "bytes": 786
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-0-lexer-b2-guard/process.json",
+      "sha256": "757be5a18dc7bb15bc87b9eb3ea9c572e08e8f475cdf5e306b27eac5326a7663",
+      "bytes": 785
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-0-lexer-typescript-guard/process.json",
+      "sha256": "239d204c03fd76d7bb394d72ffdcdbf49e3a3426a760d4ec6cf9936c58b7cd9c",
+      "bytes": 802
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-0-numeric-b1-guard/process.json",
+      "sha256": "d514365fe768532eda50f6a44d5b87c03234f94a07b274af966adaaa63595624",
+      "bytes": 790
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-0-numeric-b2-guard/process.json",
+      "sha256": "293ca5d5dec04f713b9037029ddd1c527e0e799c36106ec02fb208a2901cbf08",
+      "bytes": 790
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-0-numeric-typescript-guard/process.json",
+      "sha256": "7e3e8adecc16a81a3dc329cea5542031b6f884a6c351f0750917cd7f627f0551",
+      "bytes": 805
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-1-array-b1-guard/process.json",
+      "sha256": "a2318ced64ddc902f83a6e52ed263e4d3b5929808d9b40dcb6e368b0770503b2",
+      "bytes": 786
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-1-array-b2-guard/process.json",
+      "sha256": "ee9c8cd7a176e54f10b267809e12c5d6efd55c9d864aba62e84505c15ee49ae7",
+      "bytes": 786
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-1-array-typescript-guard/process.json",
+      "sha256": "16695046ff4869fb165374d7dc185c3a409958d60ed278e677413290a81b441f",
+      "bytes": 802
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-1-lexer-b1-guard/process.json",
+      "sha256": "2efb5d4003f6376f677808f52c926f50fa866ff0d4457a49067d5a4d5bb8def3",
+      "bytes": 786
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-1-lexer-b2-guard/process.json",
+      "sha256": "54f437cd51946eb67cd128ef68888046a8d35d263b57b537a9f739bef2b5d32b",
+      "bytes": 783
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-1-lexer-typescript-guard/process.json",
+      "sha256": "2a6c27525dadf66a17caee76d35274b5fefc986e5c41c69fea6c253593cf8fde",
+      "bytes": 801
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-1-numeric-b1-guard/process.json",
+      "sha256": "5a3ec866a02f9603c3c7401602cd99cc83d826f45a27bad8a9f9c9cd57b7df12",
+      "bytes": 789
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-1-numeric-b2-guard/process.json",
+      "sha256": "87b05b3f8fee2a601119e15c21d3cf26a4cf09791ce17b7ec14513c49451705f",
+      "bytes": 789
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-1-numeric-typescript-guard/process.json",
+      "sha256": "c9a2ff08578fd9b31c600bd77ec13882f730eb732b466429ed8a6e62bd534062",
+      "bytes": 805
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-2-array-b1-guard/process.json",
+      "sha256": "3f85919255b9abf43c8adfdadb4c23588bac232ef2bdc12e7d3170a69087e74a",
+      "bytes": 785
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-2-array-b2-guard/process.json",
+      "sha256": "14f45579a5234dfbd925da14681a0c7bcb99a172ec3846b4c34744f20138304f",
+      "bytes": 786
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-2-array-typescript-guard/process.json",
+      "sha256": "b53b69416166a313a68d0aba269d2e6e32a2b9a7c76befd8c0452cfdc300e868",
+      "bytes": 800
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-2-lexer-b1-guard/process.json",
+      "sha256": "73c159e8aa62c700a4cbf713d602bad98dca3fcc6ee4fb7512142f07afc70052",
+      "bytes": 786
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-2-lexer-b2-guard/process.json",
+      "sha256": "f375e7301655e714c61ba91ae52891a1be1cf045af1f225c20676e4ef978fe68",
+      "bytes": 786
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-2-lexer-typescript-guard/process.json",
+      "sha256": "ce7a9db5149af1fe4ec742ddd0e356f298d8e245a88a179503a816feed2c2ee1",
+      "bytes": 802
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-2-numeric-b1-guard/process.json",
+      "sha256": "e6c8c0a3c77ee127ff71fae5b0d4cf5f386752739f10169e7c661242e32a8dbb",
+      "bytes": 790
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-2-numeric-b2-guard/process.json",
+      "sha256": "efe084b7fe02a851bb4c0eff594413ca06cd59320a8f0ee0ed410b6f97af8aac",
+      "bytes": 789
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-c-2-numeric-typescript-guard/process.json",
+      "sha256": "60d4ce7726d0ecd1dc22d160555a8e5d98961a81350dacd21883c7ef08f67479",
+      "bytes": 805
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-bst-b1-guard/process.json",
+      "sha256": "205dfccf1b33e015cf9449b5727abc7cb7de68c0ef98a43227d8c43cba28fffb",
+      "bytes": 784
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-bst-b2-guard/process.json",
+      "sha256": "cbab817abe6d95fd5f1d9d48d56a5adc3eb6c0e0048e4e5d209e93812ecf263f",
+      "bytes": 784
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-bst-typescript-guard/process.json",
+      "sha256": "8a6476e9f4478dd195294928b9b4c6a38ebe71608f269605a4732b095f5c4cd1",
+      "bytes": 800
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-closures-b1-guard/process.json",
+      "sha256": "70c21a1ed007fae631f9b6b10cf04e51246272d0738320c2dbe19d93f9eddeb4",
+      "bytes": 793
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-closures-b2-guard/process.json",
+      "sha256": "243345c3f7c7015023722e47376e9459c50ca4a558b8fb0ae833b49bf70fe43c",
+      "bytes": 793
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-closures-typescript-guard/process.json",
+      "sha256": "1f6bc4ec879cae8edefdd918bda5f73978313497bbd34c474379d7795af4af4f",
+      "bytes": 809
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-editdist-b1-guard/process.json",
+      "sha256": "938f4d21dc32b9712cc660a5c5abd81a7f9d0f71ebfd3afbff7fc7a4c811e981",
+      "bytes": 792
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-editdist-b2-guard/process.json",
+      "sha256": "3b467ec9b58f36ddb4887dde217c8b265f7a232d8a9cce72b432d0f26d30838c",
+      "bytes": 793
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-editdist-typescript-guard/process.json",
+      "sha256": "0f7967bd10208c2ce7a0917c91a4bff0b61b52aee8753c35a9a045de5f65e3db",
+      "bytes": 808
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-expression-b1-guard/process.json",
+      "sha256": "020e4d0386a6166a674d0f626e79eba4ab0b5fc71f341403c3ac3f215544c8c2",
+      "bytes": 796
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-expression-b2-guard/process.json",
+      "sha256": "e912f590440bd2c4b73a9ce7faaf32053f369f2733e061fe8e104eea7a6b4a06",
+      "bytes": 797
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-expression-typescript-guard/process.json",
+      "sha256": "d772acbc6c15989cfd00152cbc8393bf4da9a77d3c5ca654b14364c74903ca72",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-lexer-b1-guard/process.json",
+      "sha256": "db82c66b7301f2915836c3168749742a800ade792f5838b4d8824f449abb590e",
+      "bytes": 788
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-lexer-b2-guard/process.json",
+      "sha256": "984b9819f90ffc7fd349b21f60d015523a47c4417dbb1f274ec77060669f8b04",
+      "bytes": 788
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-lexer-typescript-guard/process.json",
+      "sha256": "e01596e135e38020b5f602207f7cb204ae46333fc4e5f7e36b6fd732ee2d4b19",
+      "bytes": 804
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-list-pipeline-b1-guard/process.json",
+      "sha256": "9d0bf1232d96f72abb212eba840179d789de32aad2eab503e355999970ed3397",
+      "bytes": 801
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-list-pipeline-b2-guard/process.json",
+      "sha256": "d3196c6aa11653917c8068ed2e71319d60dfa3d752a2adc0f4c73eaa5466b0ce",
+      "bytes": 804
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-list-pipeline-typescript-guard/process.json",
+      "sha256": "a1d527b5e77e2a6a1fa5fc564cc495f0f5ea11e9e5368c2fb8e7922d3e803989",
+      "bytes": 819
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-local-fold-b1-guard/process.json",
+      "sha256": "8cac37360ac923e5cd3957f9d13a31a7051325efa65f3ed565917f23364dff61",
+      "bytes": 797
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-local-fold-b2-guard/process.json",
+      "sha256": "b70d49b5bc3130e58634e23da599937c62f8f0eccd7e732d74fcb5b6b8dc013c",
+      "bytes": 797
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-local-fold-typescript-guard/process.json",
+      "sha256": "2386328fec1db268663c983a7a4bd2fa144f965addb633cb933a3aa4535aed01",
+      "bytes": 812
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-local-row-b1-guard/process.json",
+      "sha256": "cabaafcc1d1152d0c782b3df836c71778ed22d497ae43fa7861f9384126406a6",
+      "bytes": 796
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-local-row-b2-guard/process.json",
+      "sha256": "9c2462deafa58b2dd63960031dc1e37b85b6ede8acaaae50dfc358922fcf1ffd",
+      "bytes": 795
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-local-row-typescript-guard/process.json",
+      "sha256": "7ac9f51d3329a64e38dd599444ff9058a309de88f7d547e30df3eef402552458",
+      "bytes": 810
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-mandelbrot-b1-guard/process.json",
+      "sha256": "1fff3085ce7f1dcc31c94c96e9f0e818162578865a8e146466aa2ba7b380298b",
+      "bytes": 798
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-mandelbrot-b2-guard/process.json",
+      "sha256": "3213f4b084fa6ea2eb665d67de069d8149a077b710191458489a1ebee62ebec3",
+      "bytes": 798
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-mandelbrot-grid-b1-guard/process.json",
+      "sha256": "7527b11d3ac0c7904cda841003eaf6fe441e9d7d9d6b9d408455bc05e661985a",
+      "bytes": 808
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-mandelbrot-grid-b2-guard/process.json",
+      "sha256": "bad63a3fcfc0a024f8dd247a79e789499f1f98df6d5492dbc04aaedf5193e9c4",
+      "bytes": 807
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-mandelbrot-grid-typescript-guard/process.json",
+      "sha256": "144d5b5689de95281431b0080fd6fa55ddc8b076bfc721513a348fd98df89f1b",
+      "bytes": 823
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-mandelbrot-typescript-guard/process.json",
+      "sha256": "66fed46adcecb9be86a6b7f46f26188479ccfe1f4676067ff37340d59bae8835",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-map-churn-b1-guard/process.json",
+      "sha256": "2732b4c3d6305ec28775f735c61d2a9d9047f28841b96594dba7dfa7428fb432",
+      "bytes": 794
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-map-churn-b2-guard/process.json",
+      "sha256": "94065873a2bc84fce251f327e0fa6ebec1c4faeafe6bb9cebada7b18ad635e3c",
+      "bytes": 796
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-map-churn-typescript-guard/process.json",
+      "sha256": "7f641c7156f33bca7432b5cfcb05c9a7d5151dc0ea3371c2845e00d9d655c4f3",
+      "bytes": 812
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-numeric-recurrence-b1-guard/process.json",
+      "sha256": "b6752f18a2d4e3d5d0a01743c9c9393fdc60b7729852ab1648dc16f9b66359e0",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-numeric-recurrence-b2-guard/process.json",
+      "sha256": "4e17d527ad7df110348f60e63dc66b73658a3a7634066ea22b80352e336eacd8",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-numeric-recurrence-typescript-guard/process.json",
+      "sha256": "11a79bf592db8ca39d302b56a6769952180dfc369c85be99b7fa9068eaedfc18",
+      "bytes": 829
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-raytrace-active-b1-guard/process.json",
+      "sha256": "2e401d8967769d1110a509dbfa858874e4ed3cffcae28ef5ff74c25e8bc69f07",
+      "bytes": 808
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-raytrace-active-b2-guard/process.json",
+      "sha256": "839f2078c0f1db2995b74112ad319b7a94d0c4ff8daabbe039633ee428d2f31a",
+      "bytes": 808
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-raytrace-active-typescript-guard/process.json",
+      "sha256": "d1180d00c769e822721ba4e7f6c0d271dd5072d0bb1f817709c4a80be29c154f",
+      "bytes": 822
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-raytrace-b1-guard/process.json",
+      "sha256": "97ca37dcc07cc22ef8f1d073ebed06bc4ed2c7bd51e3d4940b0238cd44f38178",
+      "bytes": 791
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-raytrace-b2-guard/process.json",
+      "sha256": "b2a4a77cc08f1785b95c85507b9ae568794578d3df0263c24ea6752b9f7aace3",
+      "bytes": 794
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-raytrace-typescript-guard/process.json",
+      "sha256": "7c0d0d3a11ef6d47eecf07a79df8dd45752d96ea53e6279a92a1d480c87e1c5f",
+      "bytes": 810
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-record-aggregation-b1-guard/process.json",
+      "sha256": "df30cb6d196600ce108f445e22bb6cf17c0652cc89efbd56c0f933849ce7b45f",
+      "bytes": 813
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-record-aggregation-b2-guard/process.json",
+      "sha256": "afa96e6c7dbf5d5ad78cf8b2d99849fe2804b84484a1b1f1a9f725abc972bd25",
+      "bytes": 813
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-record-aggregation-typescript-guard/process.json",
+      "sha256": "e8bd6f98988f90315dde2848132f3d37408adfe5dca21deb08498a87dbba63a6",
+      "bytes": 827
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-scalar-region-b1-guard/process.json",
+      "sha256": "7525f9e9ab0e7a20e6845feda45f828c0b1e3451da79460f3e60d088d7c0c114",
+      "bytes": 804
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-scalar-region-b2-guard/process.json",
+      "sha256": "f787d400f6ebe95c5aceaf28b58b672fcf42cd5ea68c5288f9c82aaf1ea4b70a",
+      "bytes": 802
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-scalar-region-typescript-guard/process.json",
+      "sha256": "f84431859561f928643a8337fb29af7ba0d64ba15a767ab2e40f4716e5347311",
+      "bytes": 820
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-symreg-b1-guard/process.json",
+      "sha256": "6dcc4da2f8d06d7943a4392b97f1c05df86e8f038349e69d6e0caf2e0b845cff",
+      "bytes": 790
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-symreg-b2-guard/process.json",
+      "sha256": "e0fb57f943c5bd37b021bfcee7f3ab595b3ef7cd42d143e5d65fe982fd5cbcec",
+      "bytes": 790
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-symreg-typescript-guard/process.json",
+      "sha256": "8e61b71b3f0c9ccd579107e692a4b89edc3512996032f724e34f2a90a3e10c4d",
+      "bytes": 803
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-test-evening-program-b1-guard/process.json",
+      "sha256": "b1431609e941ed7d6255c71647459b30cdc403b9e63ac071597e3961189d13e4",
+      "bytes": 818
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-test-evening-program-b2-guard/process.json",
+      "sha256": "6b15cc5c1c669375618e4ac40652c228b3e6544a5be052515aa2bd227175a1ca",
+      "bytes": 818
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-test-evening-program-typescript-guard/process.json",
+      "sha256": "20628584a2414958a760cee2ba88ba2c18ed3b95513c654aa6206c7ae11e10fa",
+      "bytes": 833
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-test-map-set-ops-b1-guard/process.json",
+      "sha256": "d66973c69d0eb7baec41ea911eaeb95b47c66eefc3459a0e466bad4d81070d54",
+      "bytes": 810
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-test-map-set-ops-b2-guard/process.json",
+      "sha256": "7135aba39983a993530d5bc432a24f379fb2abfb7b279298e0213a4489a92bef",
+      "bytes": 809
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-test-map-set-ops-typescript-guard/process.json",
+      "sha256": "49fa88e02e34c5df09b71efcde7d9b48482f8ddc822b53293d9717589195c786",
+      "bytes": 825
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-test-morning-program-b1-guard/process.json",
+      "sha256": "6035b082d5607d9f33f914b3f0e96e97d6beb9d54a7bfad41ab7e47a315c2e6a",
+      "bytes": 818
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-test-morning-program-b2-guard/process.json",
+      "sha256": "550f9c891c79d27b80db4bc55cf5e4fc0beb7620c496e1eaa5d450bed1696105",
+      "bytes": 817
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-test-morning-program-typescript-guard/process.json",
+      "sha256": "9455a0c1366131785d37752d5591c1c21dc6cbd6f56a5bd7a1aa5667e1c4531f",
+      "bytes": 833
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-test-rle-roundtrip-b1-guard/process.json",
+      "sha256": "2e4937f66de90205a4492dd907d89e4c7eb895271a840942f38ab4de757f32c6",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-test-rle-roundtrip-b2-guard/process.json",
+      "sha256": "d3d4fa79ae9ad29dded7b023cd0b501b5a25fe26b5420d3e4c8fdc4be40c8937",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-test-rle-roundtrip-typescript-guard/process.json",
+      "sha256": "4aacc030e428ffeeb7234268d3b0ac1ace1efeff0404a4da6928ef7126eff356",
+      "bytes": 829
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-tree-bitonic-b1-guard/process.json",
+      "sha256": "9c0b3a1523c546a2e0493d3ccde5569c8becf46f40b6075adc1d5a1981d5f3b0",
+      "bytes": 802
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-tree-bitonic-b2-guard/process.json",
+      "sha256": "bb115776d5fc531c8984d59459255031622a63175b6b69ed23ea1f90526a9d0a",
+      "bytes": 801
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-tree-bitonic-typescript-guard/process.json",
+      "sha256": "ea13e2421faf3db8f4cad268cd1bbfc8f6e4dc254c53b432cc83a9ca4bd1bff1",
+      "bytes": 818
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-unicode-text-b1-guard/process.json",
+      "sha256": "9f059d5590edf382ecefd9bb2ce38e47f3055eaf33f090885c3812440cd6e2fa",
+      "bytes": 802
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-unicode-text-b2-guard/process.json",
+      "sha256": "9e9d72b88c26a530ac60ffe563c3e3de1564ced3f1c513b628d3381240432c0e",
+      "bytes": 800
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-0-unicode-text-typescript-guard/process.json",
+      "sha256": "cc8bcf82df6ea1a82d5b5fb64e1480eb7062237b67de2c6da9829b9a7af303dd",
+      "bytes": 818
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-bst-b1-guard/process.json",
+      "sha256": "da87814d19e1606f3eab1072a3699c8b95d712c2ea1984d45c44a1cf21d43d82",
+      "bytes": 783
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-bst-b2-guard/process.json",
+      "sha256": "b09cbda47e9fa972c82858830d6a77a23642ddbc277cb6167f4c428a4e91a115",
+      "bytes": 783
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-bst-typescript-guard/process.json",
+      "sha256": "6d97c0303630f1584c3ac9e42311cc1f5a40e3cb89e791fdd730a059e7d46e2a",
+      "bytes": 799
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-closures-b1-guard/process.json",
+      "sha256": "bed47c15019389177ee34653048141479918664926278e11e3d6f9618bdb42e7",
+      "bytes": 792
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-closures-b2-guard/process.json",
+      "sha256": "707812458bdea7a7739da8e65cceda781409cc9799c748c279727eb5900dcf0b",
+      "bytes": 794
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-closures-typescript-guard/process.json",
+      "sha256": "8db96d187fd47b94528b44752df372e8042194b0f72a378241e4f400608a50cd",
+      "bytes": 809
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-editdist-b1-guard/process.json",
+      "sha256": "cf9ea3a12c9702be80e5c8df3c330dcc043fc8c03bf74a3fc8e09ccbca0ccabb",
+      "bytes": 793
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-editdist-b2-guard/process.json",
+      "sha256": "454ba4dbb9b08750d2e646b703213adf73129b7a0526d6fc448ceb1e40a86e57",
+      "bytes": 792
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-editdist-typescript-guard/process.json",
+      "sha256": "3b7da1251eff6f153fb07d8c534036265f138385855b0dc438d43dfe4ccd5f9c",
+      "bytes": 808
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-expression-b1-guard/process.json",
+      "sha256": "c503206383a379d8b896fd2d9cfef6575a29f81d7ac21b4fc9d146938f4c75b1",
+      "bytes": 798
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-expression-b2-guard/process.json",
+      "sha256": "12edb5a083d212382ed3acd588079d1295b0febb49ff99d378ede1e6141e7023",
+      "bytes": 798
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-expression-typescript-guard/process.json",
+      "sha256": "35dbbd8847c4224e074f372be4838b19e7394dab3e6f88dfd6a781818f343fa2",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-lexer-b1-guard/process.json",
+      "sha256": "373417ff7531062e5e24a516afc8e6370f09ae21e90ca20b672cebcb7c64d276",
+      "bytes": 788
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-lexer-b2-guard/process.json",
+      "sha256": "e9e431543e5247301a4dc0f1fcb26b519897a4a41a183e4216fcc7b0ec163ae6",
+      "bytes": 788
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-lexer-typescript-guard/process.json",
+      "sha256": "85885d130b8381f07486f511ff47082918f18d87b67eb8584d85d5e5ea4afba5",
+      "bytes": 802
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-list-pipeline-b1-guard/process.json",
+      "sha256": "38d5c60baf0d894dd57bfdd4531803cacb27ab98f9ee15f378ef4b24dacea6ae",
+      "bytes": 804
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-list-pipeline-b2-guard/process.json",
+      "sha256": "8aa19d54fbd4bb0583a00c1749e258edae697b36e7e58762afa1d8696ccf19f8",
+      "bytes": 804
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-list-pipeline-typescript-guard/process.json",
+      "sha256": "836fb13fd1f22e33940863fa5c5b23b458d231b5382d645f5c3f17192ae1862e",
+      "bytes": 818
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-local-fold-b1-guard/process.json",
+      "sha256": "0372a7a23c812475a82b4cb35f3f9af939f49904953ce9350032415b5a66cf01",
+      "bytes": 798
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-local-fold-b2-guard/process.json",
+      "sha256": "2eb5d1a7af0bd981a0f929651200afce97b2082bdf29df4ce837cf4ab43e52b8",
+      "bytes": 798
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-local-fold-typescript-guard/process.json",
+      "sha256": "83c9312a6a6edd2802857fde8d5e53b6ac647f882a6a94634bf0e21627e4d082",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-local-row-b1-guard/process.json",
+      "sha256": "4327470c7f8b30fea79a552b7a466d76361cc0fdc5c743130e21c76cef6cd9b6",
+      "bytes": 796
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-local-row-b2-guard/process.json",
+      "sha256": "072ec0547279660baeb0dde9f7a4d284524a6e1620e196941ba543c6c5ffc3d3",
+      "bytes": 796
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-local-row-typescript-guard/process.json",
+      "sha256": "495c9c468f284bd7bdbd2242df60584893d373ef8248b8ca1efb67eef8b384d3",
+      "bytes": 812
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-mandelbrot-b1-guard/process.json",
+      "sha256": "ecdfce3cde9acdaa1645db785ff309b19527d6699911f60184acf62281f8a4bd",
+      "bytes": 796
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-mandelbrot-b2-guard/process.json",
+      "sha256": "bbbfcc0a1abc6fbeb06744ef368381fa99d221d599df0608ef8cc26f05d2ea02",
+      "bytes": 798
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-mandelbrot-grid-b1-guard/process.json",
+      "sha256": "40f3db30787cbac34ba5c06c2a79626de4c6bbbf4b66e74eb9e5fed675b3de1d",
+      "bytes": 808
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-mandelbrot-grid-b2-guard/process.json",
+      "sha256": "1bb6dd9b9b89a94af1de0acbad339647f88872af69dd55bd2f4a0ee944d19cd5",
+      "bytes": 807
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-mandelbrot-grid-typescript-guard/process.json",
+      "sha256": "3664b1430108364011aa8d73b2710e6055e8f47e5ccdad0b9a7c49ed49a4d809",
+      "bytes": 824
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-mandelbrot-typescript-guard/process.json",
+      "sha256": "941d8f91f974404e6b473465c5a278037e565e5703ec54510eafcb9ffc235187",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-map-churn-b1-guard/process.json",
+      "sha256": "e6857c18fba2d0068d5ced188646f0e3ff168a42b9567839b3474044d926a6d9",
+      "bytes": 795
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-map-churn-b2-guard/process.json",
+      "sha256": "a1a9adb021f3cf5df5bc08bd2407203c85e3c78b900870d94edd43d0564cd43d",
+      "bytes": 795
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-map-churn-typescript-guard/process.json",
+      "sha256": "baea0a544dba6b78d15f3f4ef681a20389c5409042b4cbc7df3bdc6e5f4ed1bf",
+      "bytes": 812
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-numeric-recurrence-b1-guard/process.json",
+      "sha256": "038552bfcc55da7986fb96698ee58656bd2ac8a003110b0e2d70d245b20998bf",
+      "bytes": 813
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-numeric-recurrence-b2-guard/process.json",
+      "sha256": "baef60ef429aa2b5c36bda2ab17d754515086dcb0fa6884c33ae2cd229997d4b",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-numeric-recurrence-typescript-guard/process.json",
+      "sha256": "a4bce300d64c2a890853fd8812fd0787863f830b5b0e6da30d4ca39f1596d406",
+      "bytes": 829
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-raytrace-active-b1-guard/process.json",
+      "sha256": "1c3995143d33e3f5a444454cb6dbe5cf60d0b92ab62ec0ec4972b5be79b4bd38",
+      "bytes": 807
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-raytrace-active-b2-guard/process.json",
+      "sha256": "38c2d2052f293eec480f4ee64cb3e197d238b4d1e3bc0c0f6cb3b047ba355f42",
+      "bytes": 807
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-raytrace-active-typescript-guard/process.json",
+      "sha256": "860139c5a1ed057117e7938535d826ae98c9d22f1a8028ea9a6d932b065b5ed3",
+      "bytes": 822
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-raytrace-b1-guard/process.json",
+      "sha256": "a8cff100e3ca03d6005a41431cb2fe11763bc349547cc083fe79d0288729938e",
+      "bytes": 792
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-raytrace-b2-guard/process.json",
+      "sha256": "2c0560a901bcc1fa3fd08d5a585334bbadd450694d6ced5f538a3f89561cc241",
+      "bytes": 792
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-raytrace-typescript-guard/process.json",
+      "sha256": "205e6f182b11a70a55d7a5331378ff64c53ba765a9261abef4107a22e448d1fb",
+      "bytes": 809
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-record-aggregation-b1-guard/process.json",
+      "sha256": "21a0373ef243c6b734807de24c921a643efd16708a120003b41bfc93e11d46c0",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-record-aggregation-b2-guard/process.json",
+      "sha256": "3103f6d2450e520a42971180637d6c6e90910f02f9ce0566b272117b340cbe57",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-record-aggregation-typescript-guard/process.json",
+      "sha256": "6a6347c01ba8fcbe03688e0adda9d22ffe87b3fd4a97e3d8616850ce1806d431",
+      "bytes": 829
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-scalar-region-b1-guard/process.json",
+      "sha256": "7a15e82f5a83ca66141e6fd56af421f5a350b2b9f349a9829b473025eba3b710",
+      "bytes": 804
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-scalar-region-b2-guard/process.json",
+      "sha256": "6f35f39cbb8082406b2cea94f6481be08a26edfb6833a09b966ace0ac683bbfe",
+      "bytes": 803
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-scalar-region-typescript-guard/process.json",
+      "sha256": "3a55faad0a646443e7c4a18bdd759581ffd46c1991edefba377a59e38628d547",
+      "bytes": 820
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-symreg-b1-guard/process.json",
+      "sha256": "26db779cc9ee7d8b6747f1c8c1e53eeaf5d9e683e325659fe2eb8b8d31742b7e",
+      "bytes": 790
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-symreg-b2-guard/process.json",
+      "sha256": "63fa2124ea662b9b28282b439723b5bc285af35e66fa33d611b4939e037c26a9",
+      "bytes": 789
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-symreg-typescript-guard/process.json",
+      "sha256": "720fcdae1c2b59d667bacd64889ee2893d2793396753acd2178bc759da2445bf",
+      "bytes": 806
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-test-evening-program-b1-guard/process.json",
+      "sha256": "9547aa72312f2788b3542cf6828dc790367d262b1f2be4338fa3d0a121ae7be7",
+      "bytes": 818
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-test-evening-program-b2-guard/process.json",
+      "sha256": "eb402d9c0251c16e56735961e201e876563d21175bac90396cc5cbc383c64484",
+      "bytes": 817
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-test-evening-program-typescript-guard/process.json",
+      "sha256": "c5b996e1e6cbbcd4cda066367ff137fabb639a3a8326575b7f8c3be0f53086ec",
+      "bytes": 833
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-test-map-set-ops-b1-guard/process.json",
+      "sha256": "8081b6a9719e5c8ccf958d731dc5b0a07f2283e38d6d45dccbbf1d3fb1875c0e",
+      "bytes": 809
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-test-map-set-ops-b2-guard/process.json",
+      "sha256": "d7bd34bce5bb51288ea70680cdd76dcae302e7bc5a8c4d9b1b7597405f783b27",
+      "bytes": 810
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-test-map-set-ops-typescript-guard/process.json",
+      "sha256": "865006c657351091187f55355a3dd8ded11e3ed224cf04eddc135788f6dc3bbc",
+      "bytes": 826
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-test-morning-program-b1-guard/process.json",
+      "sha256": "adecbf6f7af151078ee5e085d2ef2193d63293ae6af85733e1e648eab82aca87",
+      "bytes": 818
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-test-morning-program-b2-guard/process.json",
+      "sha256": "1d600e1c273a40b71c92741d4952c6018197e830750fa690a5957c1bee9d9175",
+      "bytes": 817
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-test-morning-program-typescript-guard/process.json",
+      "sha256": "103a7585366d42d030a05a27ebb3884efcafc160249b0b5ed3402c68204dfc09",
+      "bytes": 834
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-test-rle-roundtrip-b1-guard/process.json",
+      "sha256": "dbed525c4d9ffc51824a6c26f3a59b8bb68743f9abb73cc478d407f056b4a56d",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-test-rle-roundtrip-b2-guard/process.json",
+      "sha256": "08cf686ac4de3b1f1015095019a76d374b4f20f5fab747f789a35dc18739f6fe",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-test-rle-roundtrip-typescript-guard/process.json",
+      "sha256": "f4cbfb238373d0019b4b6fb76c1656a0fb940fdcb42a515f96acb59441d7151c",
+      "bytes": 829
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-tree-bitonic-b1-guard/process.json",
+      "sha256": "4208397e09c18a92796590088c9fbf6a82dc905da5ff9f1c8e4193abaa8f77f3",
+      "bytes": 802
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-tree-bitonic-b2-guard/process.json",
+      "sha256": "f9b90991c53e95673d5e408da9bbe9e556d22c9c2e41a0770ca81e9f79da8ad4",
+      "bytes": 800
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-tree-bitonic-typescript-guard/process.json",
+      "sha256": "56036a235d9b556518cc47e88a7a89ea00e2441fbe6380bfde6f3667a8334100",
+      "bytes": 818
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-unicode-text-b1-guard/process.json",
+      "sha256": "5acc29a12a5c6969954cd048fc9d2bf0d1d6ed2243718556eabfb54a3616209e",
+      "bytes": 801
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-unicode-text-b2-guard/process.json",
+      "sha256": "7ab9a68c4fd0e4f8cdd0a47af0f0ee1ee75219fa739b97667b0585d219faf8d5",
+      "bytes": 801
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-1-unicode-text-typescript-guard/process.json",
+      "sha256": "82f6823e40ded9d14ae08cf8bfc40a0c435a9e1e9bee671110571459b52383c5",
+      "bytes": 818
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-bst-b1-guard/process.json",
+      "sha256": "d285057fe13c252f9ffc5f819e7403007e25f299ee4c835729c53796dd066888",
+      "bytes": 783
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-bst-b2-guard/process.json",
+      "sha256": "0a2065b3abce7907474e32c9df98cfc33da5ffca64d5dff1566b621fbeaeb7b7",
+      "bytes": 784
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-bst-typescript-guard/process.json",
+      "sha256": "86e1f2fcb1f94ceef564a3fb41c4e377f2c57bc2a4129eb58c4c5dc473117b09",
+      "bytes": 800
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-closures-b1-guard/process.json",
+      "sha256": "99f941f18c40c84ffa8efd7109deb27843451452f4b3e055238fd8abf551c866",
+      "bytes": 794
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-closures-b2-guard/process.json",
+      "sha256": "f2937c3ae7d12d312e5aa66c282f1049a173399281e32aaf4aca2e2e11b09a82",
+      "bytes": 793
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-closures-typescript-guard/process.json",
+      "sha256": "8706e3b7363e0f90aec7e2defba17399e330d68cc97914bd9a96154ca258b17f",
+      "bytes": 810
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-editdist-b1-guard/process.json",
+      "sha256": "62cd801acf2029b503a7f7218cbfd2234f9280d83387a63e5003d99286c73cde",
+      "bytes": 793
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-editdist-b2-guard/process.json",
+      "sha256": "4232a3ed8ce3bbc44edbb6c35951d211e7002ed5f5acc542fd49a91d3698be20",
+      "bytes": 792
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-editdist-typescript-guard/process.json",
+      "sha256": "df0600f7da65b94e403864bb3924e9b6050252e2f2aca909e193b4a3f291a6c1",
+      "bytes": 809
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-expression-b1-guard/process.json",
+      "sha256": "5184b7bae0035ba65c52f2e23aedb511ac43df760e0596471664ffca016e8403",
+      "bytes": 798
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-expression-b2-guard/process.json",
+      "sha256": "b47a1ff7d29c2f774a0dd6275b481be83ca10053b8215d2b0218c0d6d9104a22",
+      "bytes": 796
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-expression-typescript-guard/process.json",
+      "sha256": "613316b10f5c6610eab28eee63ca2bc6d74bac6f106717357f44e58fa945844f",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-lexer-b1-guard/process.json",
+      "sha256": "821f671ea81014d793597b2f29e83dda7dacb070e2970184b5e33b8b89e6e15b",
+      "bytes": 787
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-lexer-b2-guard/process.json",
+      "sha256": "8c4fdacf95235bef97b53b533fa003110eb9d1466600173310daf0f4428a6569",
+      "bytes": 787
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-lexer-typescript-guard/process.json",
+      "sha256": "02c95a2fb1772f93ad1d4d847f11a8389e2e139d9366d31ad386179cc409d6fb",
+      "bytes": 804
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-list-pipeline-b1-guard/process.json",
+      "sha256": "699f4e560a2b859519b31c7019df3bed2d115d6bec31f3d204046b711ddd3eb4",
+      "bytes": 804
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-list-pipeline-b2-guard/process.json",
+      "sha256": "b2dda88279bb765960927e0c88f7244691b4c09d4cbc4b9ad17718b625071e14",
+      "bytes": 804
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-list-pipeline-typescript-guard/process.json",
+      "sha256": "0f697bb5886e3adc7fd033c7709ec2c78cb141ea919a4da2e41ddf822c5b07d0",
+      "bytes": 820
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-local-fold-b1-guard/process.json",
+      "sha256": "95b8424299f949d5a0ef2cfd0d7e9a0472906db1399ced2af6be3922b9bc6d67",
+      "bytes": 797
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-local-fold-b2-guard/process.json",
+      "sha256": "8654d49ce512fbbb5e368449dc6a19a52bdcb00ec78998b5ac1b2b4b9196ef09",
+      "bytes": 798
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-local-fold-typescript-guard/process.json",
+      "sha256": "a56fc21dfa2d14fe5635d677a87f24dd0eb31db038a71cd5aa2894cfa8b46917",
+      "bytes": 813
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-local-row-b1-guard/process.json",
+      "sha256": "d0306cecdad1de3c4312e9fa88eaca2cb79cb63c738bb258bab40f3bc24d27b6",
+      "bytes": 795
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-local-row-b2-guard/process.json",
+      "sha256": "e8723d0e52d9ce0949ea836b7984d18dbafa70cf1ee73f65548f12f35ba65f12",
+      "bytes": 796
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-local-row-typescript-guard/process.json",
+      "sha256": "9bd2c62f207cb9428e1fa41690130d1c5131322b1352613479d6d22f93102fd2",
+      "bytes": 812
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-mandelbrot-b1-guard/process.json",
+      "sha256": "cbf02c18a7e36653a2e949840a38f31296a5937e5df8502775b430cc6f1e35ac",
+      "bytes": 797
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-mandelbrot-b2-guard/process.json",
+      "sha256": "ce001e136688eab69cfe04ba0a56ab08ccb838e1b5622c08e4c39c936a47b691",
+      "bytes": 797
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-mandelbrot-grid-b1-guard/process.json",
+      "sha256": "3a7b1e55324121cb47feb07ca3c97fa35e0fb39033304641ec55eedce74a0671",
+      "bytes": 808
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-mandelbrot-grid-b2-guard/process.json",
+      "sha256": "b6f1dd45706032eb763bacc903de265dc9b062501633d6fad27be81edebcd6b1",
+      "bytes": 808
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-mandelbrot-grid-typescript-guard/process.json",
+      "sha256": "a7ebcfdb9bcb6defcd18e43a7eecc28ba25cbdf805a05be076b695451d381206",
+      "bytes": 823
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-mandelbrot-typescript-guard/process.json",
+      "sha256": "4bc3a30c653ddf26001f2f72b8005966fd005f767b72221784f3e6866a3c20f4",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-map-churn-b1-guard/process.json",
+      "sha256": "b03d26b4391337bc04432f6d8e1ee8a5b6562af3bb0ddd18362a091f1cc84bb7",
+      "bytes": 795
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-map-churn-b2-guard/process.json",
+      "sha256": "65b87ebd86cda31523a99a10dc16a3b5c049fd5a7e454774735d3670cfee8a27",
+      "bytes": 795
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-map-churn-typescript-guard/process.json",
+      "sha256": "3599e14d2fb733c5482f20b32a4d6accc9807dd27fd78582935ed55e312eed6d",
+      "bytes": 810
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-numeric-recurrence-b1-guard/process.json",
+      "sha256": "7dac2df4e1c84e843c6acc4f5d50aa341cb9e6d47452f4c624d52d89adb6642a",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-numeric-recurrence-b2-guard/process.json",
+      "sha256": "cb26969bd3e0419dff14a8e96ed49be84f09e1660168da2b6b18b3cb6891a8af",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-numeric-recurrence-typescript-guard/process.json",
+      "sha256": "2d37ad3b2c2be75099f3b332f5d6580ee617f4e7db077a7c178227e8f7da54aa",
+      "bytes": 829
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-raytrace-active-b1-guard/process.json",
+      "sha256": "38aca53c9195e453b94736d6a59a327a7a987bb45f330adeb2f0da8c136e41f6",
+      "bytes": 808
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-raytrace-active-b2-guard/process.json",
+      "sha256": "be60906fc3db19c9b6cc94c8ea1cb6070ce7fea86284896b7f52891a0097a784",
+      "bytes": 807
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-raytrace-active-typescript-guard/process.json",
+      "sha256": "8a65a78b84d8a3c1b0b56ddaaf990ef6858b3a52a885529a18881b867bd311d6",
+      "bytes": 822
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-raytrace-b1-guard/process.json",
+      "sha256": "543cd4354fdb9b7f3e0852c88be317635fd18dc77f996ccbae7a2908d51895ed",
+      "bytes": 793
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-raytrace-b2-guard/process.json",
+      "sha256": "ca564e4322a3ca37f5883e7a7fd2b0973c5c79d6760cc8ce524e5de3bd217c6d",
+      "bytes": 793
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-raytrace-typescript-guard/process.json",
+      "sha256": "050ec64bc984b0040cc61499c89ef9f4cbb1979c3f3e9cfa330c215edb64d3f7",
+      "bytes": 809
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-record-aggregation-b1-guard/process.json",
+      "sha256": "9b7da0f00bf0bc5d4dc2f2b71f8599b5681d3b2d7aaaddff3ef68bf926693f89",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-record-aggregation-b2-guard/process.json",
+      "sha256": "95e22838d5e5b021a2cc2a3dff5269553d431f29a50188aabcb7605f339373bc",
+      "bytes": 812
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-record-aggregation-typescript-guard/process.json",
+      "sha256": "2e6cae001d8d4e29ff9f9097f40a769b43f1029169d7a367c54a17ccacaaff7b",
+      "bytes": 830
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-scalar-region-b1-guard/process.json",
+      "sha256": "d4448abefe258a113bb4526adf239f6d123040396d06609f8a848cf9e4990b44",
+      "bytes": 803
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-scalar-region-b2-guard/process.json",
+      "sha256": "4bb2fe57b533da5254556ebe80dd08488a8c986b7c0252bf402989773da1aa7b",
+      "bytes": 803
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-scalar-region-typescript-guard/process.json",
+      "sha256": "75fd4c9fe4b9e4b9d9ab5b652198090e55b48659113c54f77c134f2199584eaf",
+      "bytes": 820
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-symreg-b1-guard/process.json",
+      "sha256": "1c9c67e51250509bc612781ca40ac12d14057e8ec38ef1eebc6cd54d280d385a",
+      "bytes": 790
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-symreg-b2-guard/process.json",
+      "sha256": "68ba419944d83189fecc9fed7cf0b36db16245b2bf2f3da28d2c879bea8e1690",
+      "bytes": 789
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-symreg-typescript-guard/process.json",
+      "sha256": "9d1a3e478828d9dda50a15ce8411e874858ec7e60c9e1a577390a47455db1974",
+      "bytes": 806
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-test-evening-program-b1-guard/process.json",
+      "sha256": "7b0cb47870007ab3681390ae7d49f95b239a9fe69a92db6e145b7d04b78445a0",
+      "bytes": 817
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-test-evening-program-b2-guard/process.json",
+      "sha256": "5bbc8c351825574ffd8fd4eb4aa4354121d06731c8cadb6c3782a4a3121ae671",
+      "bytes": 818
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-test-evening-program-typescript-guard/process.json",
+      "sha256": "23de05fdba4d511cbadef4007e76608c19d5554167b7938f20af03e2fd79bfc5",
+      "bytes": 834
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-test-map-set-ops-b1-guard/process.json",
+      "sha256": "1a8edf006a4fa29ca824d1d6c0d4effd91a8ceead893a20b1ac40fa71a121b75",
+      "bytes": 808
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-test-map-set-ops-b2-guard/process.json",
+      "sha256": "9cfe8a2c2715c0ed7a47edfafb0501674b4ae1e26aa7b05fd354dbb111dca39d",
+      "bytes": 809
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-test-map-set-ops-typescript-guard/process.json",
+      "sha256": "98bc4c85aa756d53afb125d8bb240b7350d002ec94915eafb11bbdee7336ae8a",
+      "bytes": 826
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-test-morning-program-b1-guard/process.json",
+      "sha256": "132205dbde1df24db198e31e445619eca6894b1e354229dfab481855198176e4",
+      "bytes": 816
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-test-morning-program-b2-guard/process.json",
+      "sha256": "5595e9e591904a89e1104a858a1cdb0ceda533d18eb61824433b0a7a62615072",
+      "bytes": 817
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-test-morning-program-typescript-guard/process.json",
+      "sha256": "59a0d4e834e62998233143d8327d6b402794224b7d301a272c818bb788465251",
+      "bytes": 833
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-test-rle-roundtrip-b1-guard/process.json",
+      "sha256": "0786b79b3dcc24115962aa16405efcc2fb0e061485a11e083b6435b067409979",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-test-rle-roundtrip-b2-guard/process.json",
+      "sha256": "2b5b004e981da65b9c074c23c129528444637c324c88a33674288f643c1e2912",
+      "bytes": 814
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-test-rle-roundtrip-typescript-guard/process.json",
+      "sha256": "057c602390c14710034c0d79785b35f50468b7162aef49f5b5190bdf47f8ecb5",
+      "bytes": 828
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-tree-bitonic-b1-guard/process.json",
+      "sha256": "3e19dc742fd0725859a68a1baac576716b4bacef4b932029c2e6949787b8dfc4",
+      "bytes": 800
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-tree-bitonic-b2-guard/process.json",
+      "sha256": "08b61b7dec0411573f47e862d3c07d920033ea5e0090c14adf7ba9b0c8805391",
+      "bytes": 802
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-tree-bitonic-typescript-guard/process.json",
+      "sha256": "835aed26fcd70729504b7eeb27ed228ed50b77f65064e4ebdae9895a293f62b0",
+      "bytes": 818
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-unicode-text-b1-guard/process.json",
+      "sha256": "fd55a8a337354643c5879d046a3e21236b147dacab82a3e9d098aea71025a5ff",
+      "bytes": 802
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-unicode-text-b2-guard/process.json",
+      "sha256": "7b5a86fc802df0e62e1549f3fcc13046a2515569103652b6f2984cb27eda572c",
+      "bytes": 802
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/clean-js-2-unicode-text-typescript-guard/process.json",
+      "sha256": "96bf15cc620867440b00240a3469a304c245b15424fd52f04edbb81d00f18661",
+      "bytes": 817
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/prepare-c-b1-guard/process.json",
+      "sha256": "486c0ecdd37260921977a5fb256033c61b2645f3c54aee20e2c5fc01988bb605",
+      "bytes": 777
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/prepare-c-b2-guard/process.json",
+      "sha256": "da420fe8a9adee5feddad9e217bb42568f53a5decdb13d44968642833eb5e996",
+      "bytes": 777
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/prepare-c-typescript-guard/process.json",
+      "sha256": "2518bab2a45aa0a758ca5ba9daf61437dccf03ac4fdb2a414bc9c47dc5199f32",
+      "bytes": 794
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/prepare-js-b1-guard/process.json",
+      "sha256": "f7ed6a09ce09044132d3d3d79ea437eda8a68bc0330dfea8c475605f51662120",
+      "bytes": 779
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/prepare-js-b2-guard/process.json",
+      "sha256": "0d7f4b5f832935ab5918e97fcc8f6fb57f75da5279790a6b1b4fe4321e09010c",
+      "bytes": 778
+    },
+    {
+      "file": "selfhost/build/phase91/compilation01/runs/prepare-js-typescript-guard/process.json",
+      "sha256": "3f2de9ebe91b4d5a4d7f00b883b25a9a7dd21a155b55335a2fa4a643a13e458a",
+      "bytes": 796
+    },
+    {
+      "file": "selfhost/build/phase91/continuity01/b1-guard/process.json",
+      "sha256": "121ed55482b72b8256b33044c97b9b9349bce858109947f689d106ac872e031a",
+      "bytes": 720
+    },
+    {
+      "file": "selfhost/build/phase91/continuity01/b2-guard/process.json",
+      "sha256": "989e8a812d8e4a86995e8650009f31cb1ca0a9c9304c16d19da15cedfe6eb22d",
+      "bytes": 721
+    },
+    {
+      "file": "selfhost/build/phase91/deep-diagnostic01/b1/guard/process.json",
+      "sha256": "9f66c6be1084211560a31872572d38fb38a19e35f6c2decc13b5620669a326cc",
+      "bytes": 1898
+    },
+    {
+      "file": "selfhost/build/phase91/deep-diagnostic01/b2/guard/process.json",
+      "sha256": "0832db0b507cf3961df0ccbc7b539fee9304a0e04f18eb278baee5c60661c33c",
+      "bytes": 1877
+    },
+    {
+      "file": "selfhost/build/phase91/deep-diagnostic01/old-b2/guard/process.json",
+      "sha256": "70744b064a3ede9965f0afac605827baea8ca05ee6a2bc8ede4d74e9e67c288b",
+      "bytes": 1908
+    },
+    {
+      "file": "selfhost/build/phase91/deep-diagnostic01/typescript/guard/process.json",
+      "sha256": "7d1de65eabad097f1d639660ed169518b9ae07ce7e08fa29ec1018d1b2ca6aa4",
+      "bytes": 1887
+    },
+    {
+      "file": "selfhost/build/phase91/frontend01/guard/process.json",
+      "sha256": "16deff2053581fefd24d8cbd136d10ab89413ae0f59b2bd5e6b51287f74c9c38",
+      "bytes": 1825
+    },
+    {
+      "file": "selfhost/build/phase91/native100-01/guard/process.json",
+      "sha256": "cba98a8d5976ce33b179ce39de92acf7ad072f5b42271cca986cf74c1b2ab3b1",
+      "bytes": 1940
+    },
+    {
+      "file": "selfhost/build/phase91/release-verify/process.json",
+      "sha256": "d148ffe76cd274587bb658a6ee7f536df338993e136fa67961f56ca36788f534",
+      "bytes": 649
+    },
+    {
+      "file": "selfhost/build/phase91/release-verify/process.json",
+      "sha256": "d148ffe76cd274587bb658a6ee7f536df338993e136fa67961f56ca36788f534",
+      "bytes": 649
+    }
+  ],
+  "limits": [
+    "Node-hosted JS B1/B2 request latency is distinct from native07 host latency.",
+    "Phase90 native six-case and full-self results remain separate dated measurements.",
+    "No full JS1170 or native/GPU-language census was rerun.",
+    "Historical ratio changes across campaigns are not causal optimization estimates."
+  ]
+}
